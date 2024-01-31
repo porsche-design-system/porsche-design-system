@@ -11,10 +11,7 @@ exports[`getComponentCss() should return correct css for isDisabledOrLoading: fa
 }
 ::slotted(picture) {
   position: absolute !important;
-  top: 0 !important;
-  left: 0 !important;
-  right: 0 !important;
-  bottom: 0 !important;
+  inset: 0 !important;
 }
 ::slotted(img) {
   height: 100% !important;
@@ -42,11 +39,8 @@ p {
 }
 .image-container {
   position: absolute;
+  inset: 0;
   transition: transform var(--p-transition-duration, 0.4s) cubic-bezier(0.25,0.1,0.25,1);
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
 }
 .content {
   position: absolute;
@@ -94,10 +88,7 @@ exports[`getComponentCss() should return correct css for isDisabledOrLoading: fa
 }
 ::slotted(picture) {
   position: absolute !important;
-  top: 0 !important;
-  left: 0 !important;
-  right: 0 !important;
-  bottom: 0 !important;
+  inset: 0 !important;
 }
 ::slotted(img) {
   height: 100% !important;
@@ -125,11 +116,8 @@ p {
 }
 .image-container {
   position: absolute;
+  inset: 0;
   transition: transform var(--p-transition-duration, 0.4s) cubic-bezier(0.25,0.1,0.25,1);
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
 }
 .content {
   position: absolute;
@@ -176,10 +164,7 @@ exports[`getComponentCss() should return correct css for isDisabledOrLoading: fa
 }
 ::slotted(picture) {
   position: absolute !important;
-  top: 0 !important;
-  left: 0 !important;
-  right: 0 !important;
-  bottom: 0 !important;
+  inset: 0 !important;
 }
 ::slotted(img) {
   height: 100% !important;
@@ -207,11 +192,8 @@ p {
 }
 .image-container {
   position: absolute;
+  inset: 0;
   transition: transform var(--p-transition-duration, 0.4s) cubic-bezier(0.25,0.1,0.25,1);
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
 }
 .content {
   position: absolute;
@@ -253,10 +235,7 @@ exports[`getComponentCss() should return correct css for isDisabledOrLoading: fa
 }
 ::slotted(picture) {
   position: absolute !important;
-  top: 0 !important;
-  left: 0 !important;
-  right: 0 !important;
-  bottom: 0 !important;
+  inset: 0 !important;
 }
 ::slotted(img) {
   height: 100% !important;
@@ -319,11 +298,8 @@ p {
 }
 .image-container {
   position: absolute;
+  inset: 0;
   transition: transform var(--p-transition-duration, 0.4s) cubic-bezier(0.25,0.1,0.25,1);
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
 }
 .content {
   position: absolute;
@@ -455,10 +431,7 @@ exports[`getComponentCss() should return correct css for isDisabledOrLoading: tr
 }
 ::slotted(picture) {
   position: absolute !important;
-  top: 0 !important;
-  left: 0 !important;
-  right: 0 !important;
-  bottom: 0 !important;
+  inset: 0 !important;
 }
 ::slotted(img) {
   height: 100% !important;
@@ -486,11 +459,8 @@ p {
 }
 .image-container {
   position: absolute;
+  inset: 0;
   transition: transform var(--p-transition-duration, 0.4s) cubic-bezier(0.25,0.1,0.25,1);
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
 }
 .content {
   position: absolute;
@@ -531,10 +501,7 @@ exports[`getComponentCss() should return correct css for isDisabledOrLoading: tr
 }
 ::slotted(picture) {
   position: absolute !important;
-  top: 0 !important;
-  left: 0 !important;
-  right: 0 !important;
-  bottom: 0 !important;
+  inset: 0 !important;
 }
 ::slotted(img) {
   height: 100% !important;
@@ -562,11 +529,8 @@ p {
 }
 .image-container {
   position: absolute;
+  inset: 0;
   transition: transform var(--p-transition-duration, 0.4s) cubic-bezier(0.25,0.1,0.25,1);
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
 }
 .content {
   position: absolute;

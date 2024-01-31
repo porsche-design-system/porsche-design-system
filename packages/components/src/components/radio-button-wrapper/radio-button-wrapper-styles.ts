@@ -67,11 +67,6 @@ export const getComponentCss = (
                 }),
               },
             }),
-            ...(!isDisabled && {
-              '&(input:focus)::before': {
-                borderRadius: '50%',
-              },
-            }),
           },
         })
       ),

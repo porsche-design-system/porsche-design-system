@@ -1,16 +1,16 @@
 import type { AlignLabel, BreakpointCustomizable, Theme } from '../../types';
-import { buildResponsiveStyles, getCss, isHighContrastMode, isDisabledOrLoading, mergeDeep } from '../../utils';
+import { buildResponsiveStyles, getCss, isDisabledOrLoading, isHighContrastMode, mergeDeep } from '../../utils';
 import {
   addImportantToEachRule,
-  getTransition,
+  colorSchemeStyles,
+  getFocusJssStyle,
+  getHiddenTextJssStyle,
+  getHighContrastColors,
   getThemedColors,
-  getInsetJssStyle,
+  getTransition,
   hostHiddenStyles,
   hoverMediaQuery,
-  getHighContrastColors,
-  getHiddenTextJssStyle,
   prefersColorSchemeDarkMediaQuery,
-  colorSchemeStyles,
 } from '../../styles';
 import { borderWidthBase, spacingStaticSmall, textSmallStyle } from '@porsche-design-system/utilities-v2';
 import { getFunctionalComponentLoadingMessageStyles } from '../common/loading-message/loading-message-styles';
@@ -86,134 +86,109 @@ export const getComponentCss = (
     toggleBackgroundColorHover: toggleBackgroundColorHoverDark,
     textColor: textColorDark,
   } = getColors(checked, disabled, loading, 'dark');
-  const { focusColor } = getThemedColors(theme);
-  const { focusColor: focusColorDark } = getThemedColors('dark');
 
   return getCss({
     '@global': {
       ':host': {
         ...buildResponsiveStyles(stretch, (stretchValue: boolean) => ({
-          display: stretchValue ? 'block' : 'inline-block',
+          display: stretchValue ? 'flex' : 'inline-flex',
         })),
         ...addImportantToEachRule({
           outline: 0, // custom element is able to delegate the focus
+          gap: spacingStaticSmall,
           ...colorSchemeStyles,
           ...hostHiddenStyles,
           ...buildResponsiveStyles(stretch, (stretchValue: boolean) => ({
+            justifyContent: stretchValue ? 'space-between' : 'flex-start',
             width: stretchValue ? '100%' : 'auto', // prevents adjusting its size when used as flex or grid child
             ...(!stretchValue && { verticalAlign: 'top' }),
           })),
         }),
       },
-    },
-    root: {
-      display: 'flex',
-      alignItems: 'flex-start',
-      gap: spacingStaticSmall,
-      width: '100%',
-      padding: 0,
-      margin: 0, // Removes default button margin on safari 15
-      outline: 0,
-      border: 0,
-      textAlign: 'start',
-      background: 'transparent',
-      WebkitAppearance: 'none', // iOS safari
-      appearance: 'none',
-      cursor: isDisabledOrLoading(disabled, loading) ? 'auto' : 'pointer',
-      ...buildResponsiveStyles(stretch, (stretchValue: boolean) => ({
-        justifyContent: stretchValue ? 'space-between' : 'flex-start',
-      })),
-      ...(!isDisabledOrLoading(disabled, loading) &&
-        hoverMediaQuery({
-          '&:hover .switch': {
-            borderColor: buttonBorderColorHover,
-            backgroundColor: buttonBackgroundColorHover,
-            ...prefersColorSchemeDarkMediaQuery(theme, {
-              borderColor: buttonBorderColorHoverDark,
-              backgroundColor: buttonBackgroundColorHoverDark,
-            }),
-            '& .toggle': {
-              backgroundColor: toggleBackgroundColorHover,
-              ...prefersColorSchemeDarkMediaQuery(theme, {
-                backgroundColor: toggleBackgroundColorHoverDark,
-              }),
-            },
-          },
-        })),
-      '&:focus .switch::before': {
-        content: '""',
-        position: 'absolute',
-        ...getInsetJssStyle(-6),
-        border: `${borderWidthBase} solid ${focusColor}`,
+      button: {
+        display: 'flex',
+        alignItems: 'center',
+        flexShrink: 0,
+        width: '48px',
+        height: '28px',
+        boxSizing: 'border-box',
+        border: `${borderWidthBase} solid ${buttonBorderColor}`,
+        borderRadius: '14px',
+        backgroundColor: buttonBackgroundColor,
+        cursor: isDisabledOrLoading(disabled, loading) ? 'not-allowed' : 'pointer',
+        transition: `${getTransition('background-color')}, ${getTransition('border-color')}, ${getTransition('color')}`,
         ...prefersColorSchemeDarkMediaQuery(theme, {
-          borderColor: focusColorDark,
+          borderColor: buttonBorderColorDark,
+          backgroundColor: buttonBackgroundColorDark,
         }),
-        borderRadius: '18px',
+        margin: 0, // Removes default button margin on safari 15
+        padding: 0,
+        WebkitAppearance: 'none', // iOS safari
+        appearance: 'none',
+        ...(!isDisabledOrLoading(disabled, loading) &&
+          hoverMediaQuery({
+            '&:hover': {
+              borderColor: buttonBorderColorHover,
+              backgroundColor: buttonBackgroundColorHover,
+              ...prefersColorSchemeDarkMediaQuery(theme, {
+                borderColor: buttonBorderColorHoverDark,
+                backgroundColor: buttonBackgroundColorHoverDark,
+              }),
+              '& .toggle': {
+                backgroundColor: toggleBackgroundColorHover,
+                ...prefersColorSchemeDarkMediaQuery(theme, {
+                  backgroundColor: toggleBackgroundColorHoverDark,
+                }),
+              },
+            },
+          })),
+        ...getFocusJssStyle(theme),
       },
-      '&:not(:focus-visible) .switch::before': {
-        borderColor: 'transparent',
+      label: {
+        ...textSmallStyle,
+        minWidth: 0, // prevents flex child to overflow max available parent size
+        minHeight: 0, // prevents flex child to overflow max available parent size
+        cursor: isDisabledOrLoading(disabled, loading) ? 'not-allowed' : 'pointer',
+        color: textColor,
+        ...prefersColorSchemeDarkMediaQuery(theme, {
+          color: textColorDark,
+        }),
+        ...mergeDeep(
+          buildResponsiveStyles(alignLabel, (alignLabelValue: AlignLabel) => ({
+            // TODO: we should remove 'left' here and map the value in the component class already to 'start' but might be difficult due to breakpoint customizable prop value
+            order: alignLabelValue === 'left' || alignLabelValue === 'start' ? -1 : 0,
+          })),
+          buildResponsiveStyles(hideLabel, (isHidden: boolean) =>
+            getHiddenTextJssStyle(isHidden, {
+              paddingTop: '2px', // currently, line-height of textSmall doesn't match height of switch
+            })
+          )
+        ),
       },
-    },
-    switch: {
-      position: 'relative',
-      width: '48px',
-      height: '28px',
-      flexShrink: 0,
-      boxSizing: 'border-box',
-      border: `${borderWidthBase} solid ${buttonBorderColor}`,
-      borderRadius: '14px',
-      backgroundColor: buttonBackgroundColor,
-      cursor: isDisabledOrLoading(disabled, loading) ? 'not-allowed' : 'pointer',
-      transition: `${getTransition('background-color')}, ${getTransition('border-color')}, ${getTransition('color')}`,
-      ...prefersColorSchemeDarkMediaQuery(theme, {
-        borderColor: buttonBorderColorDark,
-        backgroundColor: buttonBackgroundColorDark,
-      }),
     },
     toggle: {
-      position: 'absolute',
-      top: '2px',
-      left: '2px',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
       width: '20px',
       height: '20px',
-      display: 'block',
       borderRadius: '50%',
       backgroundColor: toggleBackgroundColor,
+      transition: `${getTransition('background-color')}, ${getTransition('transform')}`,
+      transform: `translate3d(${checked ? '22px' : '2px'}, 0, 0)`,
+      '&:dir(rtl)': {
+        transform: `translate3d(${checked ? '-22px' : '-2px'}, 0, 0)`,
+      },
       ...prefersColorSchemeDarkMediaQuery(theme, {
         backgroundColor: toggleBackgroundColorDark,
       }),
-      transform: `translate3d(${checked ? '20px' : '0'}, 0, 0)`,
-      transition: `${getTransition('background-color')}, ${getTransition('transform')}`,
     },
     ...(loading && {
       spinner: {
-        position: 'absolute',
-        top: '-4px',
-        left: '-4px',
         width: '28px',
         height: '28px',
       },
     }),
-    label: {
-      ...textSmallStyle,
-      minWidth: 0, // prevents flex child to overflow max available parent size
-      minHeight: 0, // prevents flex child to overflow max available parent size
-      color: textColor,
-      ...prefersColorSchemeDarkMediaQuery(theme, {
-        color: textColorDark,
-      }),
-      ...mergeDeep(
-        buildResponsiveStyles(alignLabel, (alignLabelValue: AlignLabel) => ({
-          // TODO: we should remove 'left' here and map the value in the component class already to 'start' but might be difficult due to breakpoint customizable prop value
-          order: alignLabelValue === 'left' || alignLabelValue === 'start' ? -1 : 0,
-        })),
-        buildResponsiveStyles(hideLabel, (isHidden: boolean) =>
-          getHiddenTextJssStyle(isHidden, {
-            paddingTop: '2px', // currently, line-height of textSmall doesn't match height of switch
-          })
-        )
-      ),
-    },
     // .loading
     ...getFunctionalComponentLoadingMessageStyles(),
   });
