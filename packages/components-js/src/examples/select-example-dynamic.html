@@ -1,8 +1,8 @@
-<label>Value: <input name="input-value" type="text" placeholder="e.g. 1,2" /></label>
+<label>Value: <input name="input-value" type="text" placeholder="e.g. 1" /></label>
 <button id="btn-input-value" type="button">Set Value</button>
 <button id="btn-reset" type="button">Reset value</button>
 
-<p-select name="options" label="Some Label">
+<p-select name="options" label="Some Label" value="1">
   <p-select-option value="1">Option 1</p-select-option>
   <p-select-option value="2">Option 2</p-select-option>
   <p-select-option value="3">Option 3</p-select-option>
@@ -24,8 +24,8 @@
   });
 
   document.querySelector('#btn-reset').addEventListener('click', () => {
-    select.value = undefined;
-    console.log(select.value);
+    input.value = '';
+    select.value = '1';
   });
 
   document.querySelector('#btn-add').addEventListener('click', () => {

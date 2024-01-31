@@ -1,4 +1,4 @@
-<p-select name="options" label="Some Label">
+<p-select name="options" label="Some Label" value="a">
   <p-select-option value="a">Option A</p-select-option>
   <p-select-option value="b">Option B</p-select-option>
   <p-select-option value="c">Option C</p-select-option>
@@ -7,7 +7,7 @@
   <p-select-option value="f">Option F</p-select-option>
 </p-select>
 
-<p>Selected value: none</p>
+<p>Selected value: a</p>
 
 <script>
   const debugElement = document.querySelector('p');
@@ -19,6 +19,6 @@
   });
 
   function setDebugText(value) {
-    debugElement.innerText = `Selected value: ${value || 'none'}`;
+    debugElement.innerText = `Selected value: ${value}`;
   }
 </script>

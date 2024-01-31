@@ -1,0 +1,44 @@
+<input type="checkbox" id="required" name="required" checked="checked" /> <label for="required">Required</label><br />
+
+<input type="checkbox" id="deselection" name="deselection" />
+<label for="deselection">Allow deselection</label><br />
+
+<form>
+  <p-select name="options" label="Some Label" required>
+    <p-select-option value="1">Option 1</p-select-option>
+    <p-select-option value="2">Option 2</p-select-option>
+    <p-select-option value="3">Option 3</p-select-option>
+  </p-select>
+  <button type="submit">Submit</button>
+</form>
+
+<p>Last submitted data: none</p>
+
+<script>
+  const select = document.querySelector('p-select');
+  const required = document.querySelector('#required');
+  const deselection = document.querySelector('#deselection');
+
+  required.addEventListener('change', (e) => {
+    console.log(e.target.checked);
+    select.toggleAttribute('required', e.target.checked);
+  });
+
+  deselection.addEventListener('change', (e) => {
+    if (e.target.checked) {
+      select.prepend(document.createElement('p-select-option'));
+    } else {
+      document.querySelector('p-select-option:not([value])').remove();
+    }
+  });
+
+  const debugElement = document.querySelector('p');
+  const form = document.querySelector('form');
+
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const formData = new FormData(form);
+    console.log(formData.get('options'));
+    debugElement.innerText = `Last submitted data: ${formData.get('options')}`;
+  });
+</script>

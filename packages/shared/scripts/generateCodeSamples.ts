@@ -249,6 +249,35 @@ const generateCodeSamples = (): void => {
       ],
     },
     {
+      component: 'p-select',
+      samples: [
+        [
+          componentsJsPath + '/select-example.html',
+          componentsAngularPath + '/select-example.component.ts',
+          componentsReactPath + '/SelectExample.tsx',
+          componentsVuePath + '/SelectExample.vue',
+        ],
+        [
+          componentsJsPath + '/select-example-controlled.html',
+          componentsAngularPath + '/select-example-controlled.component.ts',
+          componentsReactPath + '/SelectExampleControlled.tsx',
+          componentsVuePath + '/SelectExampleControlled.vue',
+        ],
+        [
+          componentsJsPath + '/select-example-dynamic.html',
+          componentsAngularPath + '/select-example-dynamic.component.ts',
+          componentsReactPath + '/SelectExampleDynamic.tsx',
+          componentsVuePath + '/SelectExampleDynamic.vue',
+        ],
+        [
+          componentsJsPath + '/select-example-required.html',
+          componentsAngularPath + '/select-example-required.component.ts',
+          componentsReactPath + '/SelectExampleRequired.tsx',
+          componentsVuePath + '/SelectExampleRequired.vue',
+        ],
+      ],
+    },
+    {
       component: 'p-stepper-horizontal',
       samples: [
         [
