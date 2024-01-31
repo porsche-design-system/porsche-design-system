@@ -14,6 +14,30 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ### [Unreleased]
 
+- `Button`, `Button Pure`, `Switch`, `Checkbox Wrapper`, `Radio Button Wrapper`, `Pin Code`: optimized announcement of
+  loading state for assistive technologies
+  ([#3009](https://github.com/porsche-design-system/porsche-design-system/pull/3009))
+
+### [3.11.0] - 2024-01-30
+
+### [3.11.0-rc.0] - 2024-01-30
+
+#### Fixed
+
+- `Carousel`: Carousel does not work with single pointer event on smaller touch devices
+  ([#3003](https://github.com/porsche-design-system/porsche-design-system/pull/3003))
+- `Carousel`: `Each child in a list should have a unique "key" prop` warning in Next.js SSR context
+  ([#3001](https://github.com/porsche-design-system/porsche-design-system/pull/3001))
+
+#### Changed
+
+- Scroll-lock used in `Flyout`, `Flyout Navigation` and `Modal` is based on `body { overflow: hidden; }` for all devices
+  ([#3013](https://github.com/porsche-design-system/porsche-design-system/pull/3013))
+- `Toast`: Alignment reflects RTL (right-to-left) mode
+  ([#3010](https://github.com/porsche-design-system/porsche-design-system/pull/3010))
+- `Carousel`: Pagination can be used for navigation & pagination has more spacing on touch devices
+  ([#3003](https://github.com/porsche-design-system/porsche-design-system/pull/3003))
+
 ### [3.10.0] - 2024-01-17
 
 ### [3.10.0-rc.5] - 2024-01-16

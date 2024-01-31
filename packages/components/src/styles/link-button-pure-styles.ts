@@ -143,6 +143,7 @@ export const getLinkButtonPureStyles = (
       }),
     },
     label: {
+      transition: getTransition('opacity'),
       position: 'relative', // needed for hover state when icon="none" is set
     },
     ...(hasIcon && {

@@ -43,7 +43,8 @@ In case you want to have slides with different widths you can use `slidesPerPage
 ## Heading
 
 The `heading` of `p-carousel` can be either set via property or by having a named slot. The heading size can be changed
-by using the property `headingSize`.
+by using the property `headingSize`. If no heading is provided, the `aria` property should be used to provide an
+accessibility label e.g. `aria="{ 'aria-label': 'Some heading' }"`.
 
 <Playground :markup="headingSizeMarkup" :config="config">
   <PlaygroundSelect v-model="headingSize" :values="headingSizes" name="headingSize"></PlaygroundSelect>
@@ -187,6 +188,21 @@ over all carousel entries. The skip link is only visible when it receives focus 
 - Use the `skipLinkTarget` property if you have >5 carousel items
 
 <Playground :markup="skip" :config="config"></Playground>
+
+## Custom styling
+
+The navigation of the `p-carousel`, which includes the prev/next buttons, has a filter property which can be overwritten
+by a CSS Custom Property (aka CSS Variable):
+
+```scss
+// default CSS variable
+--p-carousel-prev-next-filter: none;
+
+// overwrite with CSS variable
+p-carousel {
+  --p-carousel-prev-next-filter: invert(1);
+}
+```
 
 <script lang="ts">
 import Vue from 'vue';

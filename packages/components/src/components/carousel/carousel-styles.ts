@@ -10,6 +10,7 @@ import {
   getHighContrastColors,
   getThemedColors,
   hostHiddenStyles,
+  hoverMediaQuery,
   prefersColorSchemeDarkMediaQuery,
 } from '../../styles';
 import {
@@ -33,19 +34,34 @@ import {
   textSmallStyle,
 } from '@porsche-design-system/utilities-v2';
 
+const cssVariablePrevNextFilter = '--p-carousel-prev-next-filter';
 export const carouselTransitionDuration = motionDurationModerate;
-export const bulletActiveClass = 'bullet--active';
 export const paginationInfiniteStartCaseClass = 'pagination--infinite';
+export const bulletClass = 'bullet';
+export const bulletActiveClass = 'bullet--active';
 export const bulletInfiniteClass = 'bullet--infinite';
 
-export const paginationBulletSize = '8px';
+const paginationVisibleBulletCount = 5;
+const paginationBulletSize = '8px';
 const paginationInfiniteBulletSize = '4px';
 const paginationActiveBulletSize = '20px';
+
+const paginationGap = '8px';
+const paginationWidth = `calc(${paginationActiveBulletSize} + ${paginationBulletSize} * ${
+  paginationVisibleBulletCount - 1
+} + ${paginationGap} * ${paginationVisibleBulletCount - 1})`; // Width for one active bullet + width of inactive bullets + spacing
+
+const paginationInset = '8px'; // Used to increase clickable area on touch devices
+const paginationGapLarge = '16px';
+const paginationWidthLarge = `calc(${paginationActiveBulletSize} + ${paginationBulletSize} * ${
+  paginationVisibleBulletCount - 1
+} + ${paginationGapLarge} * ${paginationVisibleBulletCount - 1} + 2 * ${paginationInset})`; // Width for one active bullet + width of inactive bullets + spacing
 
 const selectorHeading = 'h2,::slotted([slot="heading"])';
 const selectorDescription = 'p,::slotted([slot="description"])';
 const mediaQueryS = getMediaQueryMin('s');
 const mediaQueryXXL = getMediaQueryMin('xxl');
+const mediaQueryPointerCoarse = '@media (pointer: coarse)';
 
 const spacingMap: Record<CarouselWidth, { base: string; s: string; xxl: string }> = {
   basic: gridBasicOffset,
@@ -157,6 +173,7 @@ export const getComponentCss = (
         gap: spacingStaticXSmall,
         alignSelf: 'flex-start', // relevant in case slot="header" becomes higher than nav group
       },
+      filter: `var(${cssVariablePrevNextFilter}, none)`,
     },
     btn: {
       padding: spacingStaticSmall,
@@ -212,8 +229,12 @@ export const getComponentCss = (
         })),
         position: 'relative',
         justifyContent: isInfinitePagination ? 'flex-start' : 'center',
-        width: `calc(${paginationActiveBulletSize} + ${paginationBulletSize} * 4 + ${spacingStaticSmall} * 4)`, // Width for five bullets (one active + spacing)
-        left: 'calc(50% - 42px)',
+        width: paginationWidth,
+        left: `calc(50% - (${paginationWidth}) / 2)`,
+        [mediaQueryPointerCoarse]: {
+          width: paginationWidthLarge,
+          left: `calc(50% - ${paginationWidthLarge} / 2)`,
+        },
         overflowX: 'hidden',
       },
       pagination: {
@@ -221,10 +242,23 @@ export const getComponentCss = (
         alignItems: 'center',
         width: 'fit-content',
         height: paginationBulletSize, // Needed to avoid jumping when rewinding dynamically added slides
-        gap: spacingStaticSmall,
+        gap: paginationGap,
+        [mediaQueryPointerCoarse]: {
+          height: `calc(${paginationBulletSize} + 2 * ${paginationInset})`,
+          gap: paginationGapLarge,
+        },
         transition: `transform ${carouselTransitionDuration}`,
       },
-      bullet: {
+      [bulletClass]: {
+        // Increase clickable area on touch devices
+        [mediaQueryPointerCoarse]: {
+          '&::before': {
+            content: '""',
+            position: 'absolute',
+            inset: `-${paginationInset}`,
+          },
+          position: 'relative',
+        },
         borderRadius: borderRadiusSmall,
         ...(isHighContrastMode
           ? {
@@ -247,10 +281,13 @@ export const getComponentCss = (
               height: paginationBulletSize,
               transition: `background-color ${carouselTransitionDuration}, width ${carouselTransitionDuration}`,
             }),
+        ...hoverMediaQuery({
+          cursor: 'pointer',
+        }),
       },
       ...(isInfinitePagination && {
         [paginationInfiniteStartCaseClass]: {
-          '& > .bullet:nth-child(-n+4)': {
+          [`& > .${bulletClass}:nth-child(-n+4)`]: {
             width: paginationBulletSize,
             height: paginationBulletSize,
           },
@@ -261,11 +298,11 @@ export const getComponentCss = (
             width: paginationInfiniteBulletSize,
             height: paginationInfiniteBulletSize,
           }),
-          '& ~ span': {
+          [`& ~ .${bulletClass}`]: {
             width: paginationBulletSize,
             height: paginationBulletSize,
           },
-          [`& ~ .${bulletInfiniteClass} ~ span`]: {
+          [`& ~ .${bulletInfiniteClass} ~ .${bulletClass}`]: {
             width: '0px',
             height: '0px',
           },
@@ -285,11 +322,11 @@ export const getComponentCss = (
         height: paginationBulletSize,
         width: addImportantToRule(paginationActiveBulletSize),
         ...(isInfinitePagination && {
-          '& ~ span': {
+          [`& ~ .${bulletClass}`]: {
             width: paginationBulletSize,
             height: paginationBulletSize,
           },
-          [`& ~ .${bulletInfiniteClass} ~ span`]: {
+          [`& ~ .${bulletInfiniteClass} ~ .${bulletClass}`]: {
             width: '0px',
             height: '0px',
           },

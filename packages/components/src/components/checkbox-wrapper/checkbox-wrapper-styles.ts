@@ -24,6 +24,7 @@ import {
 } from '@porsche-design-system/utilities-v2';
 import { getFunctionalComponentLabelStyles } from '../common/label/label-styles';
 import { getFunctionalComponentStateMessageStyles } from '../common/state-message/state-message-styles';
+import { getFunctionalComponentLoadingMessageStyles } from '../common/loading-message/loading-message-styles';
 
 const getCheckedSVGBackgroundImage = (fill: string): string => {
   return getInlineSVGBackgroundImage(
@@ -140,5 +141,7 @@ export const getComponentCss = (
     ...getFunctionalComponentStateMessageStyles(theme, state, {
       gridColumn: '1/3',
     }),
+    // .loading
+    ...getFunctionalComponentLoadingMessageStyles(),
   });
 };
