@@ -28,6 +28,7 @@
     "@types/js-yaml": "^4.0.9",
     "change-case": "^4.1.2",
     "globby": "^11.0.4",
+    "gzip-size": "^6.0.0",
     "js-yaml": "^4.0.0",
     "svgo": "^3.1.0",
     "ts-node": "^10.9.2",
