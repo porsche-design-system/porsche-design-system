@@ -101,8 +101,8 @@
   },
   {
     "chunkShortName": "icon",
-    "size": 18033,
-    "gzipSize": 8348
+    "size": 18238,
+    "gzipSize": 8414
   },
   {
     "chunkShortName": "inline-notification",
@@ -142,7 +142,7 @@
   {
     "chunkShortName": "main",
     "size": 76212,
-    "gzipSize": 25423
+    "gzipSize": 25422
   },
   {
     "chunkShortName": "marque",
