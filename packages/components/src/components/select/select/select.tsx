@@ -33,6 +33,7 @@ import {
   attachComponentCss,
   FORM_STATES,
   getClosestHTMLElement,
+  getListAriaAttributes,
   getPrefixedTagNames,
   getShadowRootHTMLElement,
   handleButtonEvent,
@@ -45,7 +46,7 @@ import {
   validateProps,
 } from '../../../utils';
 import { getComponentCss } from './select-styles';
-import { Label } from '../../common/label/label';
+import { Label, labelId } from '../../common/label/label';
 import { StateMessage } from '../../common/state-message/state-message';
 
 const propTypes: PropTypes<typeof Select> = {
@@ -204,6 +205,10 @@ export class Select {
             type="button"
             role="combobox"
             id={buttonId}
+            aria-labelledby={labelId}
+            aria-controls={dropdownId}
+            aria-haspopup="listbox"
+            aria-expanded={`${this.isOpen}`}
             disabled={this.disabled}
             onClick={this.onInputClick}
             onKeyDown={this.onComboboxKeyDown}
@@ -217,7 +222,13 @@ export class Select {
             color={this.disabled ? 'state-disabled' : 'primary'}
             aria-hidden="true"
           />
-          <div id={dropdownId} class="listbox" ref={(el) => (this.listElement = el)}>
+          <div
+            id={dropdownId}
+            class="listbox"
+            {...getListAriaAttributes(this.label, this.required, false, this.isOpen)}
+            tabindex="-1"
+            ref={(el) => (this.listElement = el)}
+          >
             <slot />
           </div>
         </div>

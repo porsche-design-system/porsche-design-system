@@ -6,6 +6,7 @@ import { Component, Element, h, Host, type JSX, Prop } from '@stencil/core';
 import {
   AllowedTypes,
   attachComponentCss,
+  getOptionAriaAttributes,
   getPrefixedTagNames,
   throwIfParentIsNotOfKind,
   validateProps,
@@ -36,13 +37,13 @@ export class SelectOption {
 
   public render(): JSX.Element {
     validateProps(this, propTypes);
-    const { theme = 'light', selected, highlighted } = this.host;
+    const { theme = 'light', selected, highlighted, hidden } = this.host;
     attachComponentCss(this.host, getComponentCss, theme);
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
     return (
       <Host onClick={!this.disabled && this.onClick}>
-        <li
+        <div
           role="option"
           class={{
             option: true,
@@ -50,6 +51,7 @@ export class SelectOption {
             'option--highlighted': highlighted,
             'option--disabled': this.disabled,
           }}
+          {...getOptionAriaAttributes(selected, this.disabled, hidden, !!this.value)}
         >
           <slot onSlotchange={this.onSlotChange} />
           {selected && !this.disabled && (
@@ -61,7 +63,7 @@ export class SelectOption {
               theme={theme}
             />
           )}
-        </li>
+        </div>
       </Host>
     );
   }
