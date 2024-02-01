@@ -33,6 +33,11 @@ jobs:
         with:
           entrypoint: run-test-unit
           args: --assets:fallbacks
+      - name: 'Unit Test Icons'
+        uses: ./.github/actions/docker-run-playwright
+        with:
+          entrypoint: run-test-unit
+          args: --assets:icons
       - name: 'Unit Test Styles'
         uses: ./.github/actions/docker-run-playwright
         with:

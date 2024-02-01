@@ -7,6 +7,7 @@ if
   [[ "--assets" == "${1}" ]] ||
   [[ "--assets:assets" == "${1}" ]] ||
   [[ "--assets:fallbacks" == "${1}" ]] ||
+  [[ "--assets:icons" == "${1}" ]] ||
   [[ "--assets:styles" == "${1}" ]] ||
   [[ "--component-meta" == "${1}" ]] ||
   [[ "--components" == "${1}" ]] ||
