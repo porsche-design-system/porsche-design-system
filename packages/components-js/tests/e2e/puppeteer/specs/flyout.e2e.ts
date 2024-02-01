@@ -1,6 +1,5 @@
 import {
   addEventListener,
-  getHTMLAttributes,
   expectA11yToMatchSnapshot,
   getActiveElementClassNameInShadowRoot,
   getActiveElementId,
@@ -9,6 +8,7 @@ import {
   getAttribute,
   getElementStyle,
   getEventSummary,
+  getHTMLAttributes,
   getLifecycleStatus,
   getProperty,
   selectNode,
@@ -27,7 +27,7 @@ beforeEach(async () => (page = await browser.newPage()));
 afterEach(async () => await page.close());
 
 const getHost = () => selectNode(page, 'p-flyout');
-const getFlyout = () => selectNode(page, 'p-flyout >>> .root');
+const getFlyout = () => selectNode(page, 'p-flyout >>> dialog');
 const getHeader = () => selectNode(page, 'p-flyout >>> .header');
 const getHeaderSlottedContent = () => selectNode(page, '[slot="header"]');
 const getFooter = () => selectNode(page, 'p-flyout >>> .footer');
@@ -263,7 +263,7 @@ describe('can be dismissed', () => {
     await page.mouse.move(5, 5);
     await page.mouse.down();
 
-    expect((await getEventSummary(host, 'dismiss')).counter, 'after mouse down').toBe(1);
+    expect((await getEventSummary(host, 'dismiss')).counter, 'after mouse down').toBe(0);
 
     await page.mouse.up();
 
@@ -298,6 +298,7 @@ describe('can be dismissed', () => {
     await addEventListener(body, 'dismiss');
     await page.mouse.move(5, 5);
     await page.mouse.down();
+    await page.mouse.up();
 
     expect((await getEventSummary(host, 'dismiss')).counter).toBe(1);
     expect((await getEventSummary(body, 'dismiss')).counter).toBe(0);
