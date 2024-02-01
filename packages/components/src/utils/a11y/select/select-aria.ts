@@ -37,6 +37,7 @@ export const getSelectDropdownButtonAriaAttributes = (
   };
 };
 
+// TODO: Change to aria-labelledby
 export const getListAriaAttributes = (
   label: string,
   isRequired: boolean,
