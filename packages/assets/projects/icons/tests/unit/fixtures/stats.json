@@ -168,6 +168,7 @@
   { "name": "logo-wechat", "size": 724, "gzipSize": 365 },
   { "name": "logo-weibo", "size": 1572, "gzipSize": 705 },
   { "name": "logo-whatsapp", "size": 903, "gzipSize": 469 },
+  { "name": "logo-x", "size": 202, "gzipSize": 180 },
   { "name": "logo-xing", "size": 479, "gzipSize": 287 },
   { "name": "logo-yahoo", "size": 737, "gzipSize": 434 },
   { "name": "logo-youku", "size": 2025, "gzipSize": 974 },
