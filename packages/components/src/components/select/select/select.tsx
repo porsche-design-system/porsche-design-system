@@ -1,5 +1,5 @@
 import type { BreakpointCustomizable, PropTypes, Theme } from '../../../types';
-import type { SelectDirection, SelectOption, SelectState, SelectUpdateEventDetail } from './select-utils';
+import type { SelectOption, SelectState, SelectUpdateEventDetail } from './select-utils';
 import {
   getHighlightedSelectOption,
   getSelectDropdownDirection,
@@ -40,6 +40,7 @@ import {
   hasPropValueChanged,
   isClickOutside,
   SELECT_DROPDOWN_DIRECTIONS,
+  SelectDropdownDirection,
   SelectDropdownDirectionInternal,
   THEMES,
   throwIfElementIsNotOfKind,
@@ -59,7 +60,7 @@ const propTypes: PropTypes<typeof Select> = {
   hideLabel: AllowedTypes.breakpoint('boolean'),
   disabled: AllowedTypes.boolean,
   required: AllowedTypes.boolean,
-  dropdownDirection: AllowedTypes.oneOf<SelectDirection>(SELECT_DROPDOWN_DIRECTIONS),
+  dropdownDirection: AllowedTypes.oneOf<SelectDropdownDirection>(SELECT_DROPDOWN_DIRECTIONS),
   theme: AllowedTypes.oneOf<Theme>(THEMES),
 };
 
@@ -98,7 +99,7 @@ export class Select {
   @Prop() public required?: boolean = false;
 
   /** Changes the direction to which the dropdown list appears. */
-  @Prop() public dropdownDirection?: SelectDirection = 'auto';
+  @Prop() public dropdownDirection?: SelectDropdownDirection = 'auto';
 
   /** Adapts the select color depending on the theme. */
   @Prop() public theme?: Theme = 'light';
