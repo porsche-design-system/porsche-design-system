@@ -15,7 +15,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     <br />
 
     <form (submit)="handleSubmit($event)">
-      <p-select name="options" label="Some Label" required>
+      <p-select name="options" label="Some Label" required="true">
         <p-select-option *ngIf="hasDeselection"></p-select-option>
         <p-select-option value="1">Option 1</p-select-option>
         <p-select-option value="2">Option 2</p-select-option>
