@@ -20,15 +20,16 @@
     "build:lib": "yarn build:lib:cjs && yarn build:lib:esm",
     "build:lib:cjs": "tsc --build tsconfig.lib.cjs.json",
     "build:lib:esm": "tsc --build tsconfig.lib.esm.json",
+    "test:unit": "jest --colors -c tests/unit/config/jest.config.js",
     "clean": "yarn clean:node_modules && yarn clean:build",
     "clean:node_modules": "rm -rf ./node_modules && rm -rf ./yarn-error.log",
     "clean:build": "rm -rf ./index.ts && rm -rf ./dist"
   },
   "devDependencies": {
+    "@porsche-design-system/shared": "0.0.0",
     "@types/js-yaml": "^4.0.9",
     "change-case": "^4.1.2",
     "globby": "^11.0.4",
-    "gzip-size": "^6.0.0",
     "js-yaml": "^4.0.0",
     "svgo": "^3.1.0",
     "ts-node": "^10.9.2",

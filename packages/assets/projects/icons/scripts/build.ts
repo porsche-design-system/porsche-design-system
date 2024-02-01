@@ -13,7 +13,9 @@ type Manifest = {
 type IconsMap = Manifest;
 
 const toHash = (str: string): string => crypto.createHash('md5').update(str, 'utf8').digest('hex');
-const stats: { name: string; size: number; gzipSize: number }[] = [];
+
+type Stats = { name: string; size: number; gzipSize: number };
+const stats: Stats[] = [];
 const statsDir = path.normalize('./tests/unit/results');
 const statsPath = path.normalize(`${statsDir}/stats.json`);
 
