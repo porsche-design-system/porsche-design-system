@@ -21,8 +21,8 @@ const getStatsTest = (statsOld: Stats[], statsNew: Stats[]): StatsTest[] => {
     .filter((statOld) => !statsNew.find((statNew) => statOld['name'] === statNew['name']))
     .concat(statsNew)
     .map(({ name }) => {
-      const statsOldFiltered = statsOld.filter((i) => i.name === name)[0];
-      const statsNewFiltered = statsNew.filter((i) => i.name === name)[0];
+      const statsOldFiltered = statsOld.filter((i) => i.name === name)[0] || {}; // || {} handles case when icon was added
+      const statsNewFiltered = statsNew.filter((i) => i.name === name)[0] || {}; // || {} handles case when icon was removed
 
       const oldSize = statsOldFiltered.size;
       const newSize = statsNewFiltered.size;
