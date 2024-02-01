@@ -6,6 +6,7 @@ import * as globby from 'globby';
 import { paramCase } from 'change-case';
 import { CDN_BASE_PATH_ICONS } from '../../../../../cdn.config';
 import * as gzipSize from 'gzip-size';
+import { format } from 'prettier';
 
 type Manifest = {
   [name: string]: string;
@@ -19,7 +20,7 @@ const stats: Stats[] = [];
 const statsDir = path.normalize('./tests/unit/results');
 const statsPath = path.normalize(`${statsDir}/stats.json`);
 
-const createManifestAndOptimizeIcons = (files: string[], config: Config): void => {
+const createManifestAndOptimizeIcons = async (files: string[], config: Config): Promise<void> => {
   fs.rmSync(path.normalize('./dist'), { force: true, recursive: true });
   fs.mkdirSync(path.normalize('./dist/icons'), { recursive: true });
 
@@ -71,7 +72,7 @@ const createManifestAndOptimizeIcons = (files: string[], config: Config): void =
 
   fs.rmSync(statsDir, { force: true, recursive: true });
   fs.mkdirSync(statsDir, { recursive: true });
-  fs.writeFileSync(statsPath, JSON.stringify(stats), 'utf8');
+  fs.writeFileSync(statsPath, await format(JSON.stringify(stats), { parser: 'json' }), 'utf8');
   console.log(`Write optimized icon stats into "${statsPath}"`);
 
   const sortedManifestKeys = Object.keys(manifest).sort();
@@ -92,11 +93,13 @@ export type IconName = typeof ICON_NAMES[number];
   console.log('Created icons manifest.');
 };
 
-const generate = (): void => {
+const generate = async (): Promise<void> => {
   const files = globby.sync('./src/**/*.svg').sort();
   const config: Config = require('../svgo.config.js');
 
-  createManifestAndOptimizeIcons(files, config);
+  await createManifestAndOptimizeIcons(files, config);
 };
 
-generate();
+(async (): Promise<void> => {
+  await generate();
+})();
