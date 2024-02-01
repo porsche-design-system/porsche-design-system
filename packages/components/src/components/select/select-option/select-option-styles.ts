@@ -10,19 +10,13 @@ import {
   hoverMediaQuery,
   prefersColorSchemeDarkMediaQuery,
 } from '../../../styles';
-import {
-  borderRadiusSmall,
-  fontLineHeight,
-  fontWeightSemiBold,
-  spacingStaticSmall,
-} from '@porsche-design-system/utilities-v2';
+import { borderRadiusSmall, fontLineHeight, spacingStaticSmall } from '@porsche-design-system/utilities-v2';
 import { Styles } from 'jss';
 
 export const getComponentCss = (theme: Theme): string => {
   return getCss({
     '@global': {
       ':host': addImportantToEachRule({
-        display: 'flex',
         scrollMarginTop: spacingStaticSmall, // Creates top margin when navigating with keyboard and list is scrolled automatically
         ...hostHiddenStyles,
       }),
@@ -40,27 +34,31 @@ export const getComponentCss = (theme: Theme): string => {
   });
 };
 
-// TODO: Copied from select-wrapper-dropdown, extract and reuse
+// TODO: Copied from multi-select and select-wrapper-dropdown, extract and reuse
 export const getOptionStyles = (theme: Theme): Styles => {
   const {
     primaryColor: primaryColorDark,
-    contrastMediumColor: contrastMediumColorDark,
+    contrastHighColor: contrastHighColorDark,
     disabledColor: disabledColorDark,
     backgroundSurfaceColor: backgroundSurfaceColorDark,
     contrastLowColor: contrastLowColorDark,
   } = getThemedColors('dark');
-  const { primaryColor, contrastMediumColor, backgroundSurfaceColor, disabledColor, contrastLowColor } =
+  const { primaryColor, contrastHighColor, backgroundSurfaceColor, disabledColor, contrastLowColor } =
     getThemedColors(theme);
   const { highlightColor } = getHighContrastColors();
 
   return {
     option: {
       display: 'flex',
-      // justifyContent: 'space-between', // TODO: Commented out this line
+      // justifyContent: 'space-between', // TODO: Commenented out
       gap: '12px',
       padding: `${spacingStaticSmall} 12px`,
       flex: `1 0 calc(${fontLineHeight} + ${spacingStaticSmall} * 2)`,
       minHeight: `calc(${fontLineHeight} + ${spacingStaticSmall} * 2)`, // TODO: Added this line to preserve height for empty option
+      color: contrastHighColor,
+      ...prefersColorSchemeDarkMediaQuery(theme, {
+        color: contrastHighColorDark,
+      }),
       cursor: 'pointer',
       textAlign: 'start',
       wordBreak: 'break-word',
@@ -107,21 +105,6 @@ export const getOptionStyles = (theme: Theme): Styles => {
       },
       '&--hidden': {
         display: 'none',
-      },
-    },
-    optgroup: {
-      color: contrastMediumColor,
-      display: 'block',
-      padding: '3px 14px',
-      fontWeight: fontWeightSemiBold,
-      ...prefersColorSchemeDarkMediaQuery(theme, {
-        color: contrastMediumColorDark,
-      }),
-      '&:not(:first-child)': {
-        marginTop: spacingStaticSmall,
-      },
-      '&~$option': {
-        paddingLeft: '24px',
       },
     },
   };
