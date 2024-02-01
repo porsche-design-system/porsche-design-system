@@ -114,6 +114,21 @@ exports[`should have only high contrast styles for p-segmented-control-item 1`] 
 ]
 `;
 
+exports[`should have only high contrast styles for p-select-option 1`] = `
+[
+  {
+    ".option--highlighted, .option--selected": {
+      "color": "Highlight",
+    },
+    "@media(hover:hover)": {
+      ".option:not([aria-disabled]):not(.option--disabled):not([role=status]):hover": {
+        "color": "Highlight",
+      },
+    },
+  },
+]
+`;
+
 exports[`should have only high contrast styles for p-spinner 1`] = `
 [
   {

@@ -517,6 +517,29 @@ exports[`should call validateProps() with correct parameters via render for p-se
 }
 `;
 
+exports[`should call validateProps() with correct parameters via render for p-select: propTypes with ValidatorFunctions 1`] = `
+{
+  "description": "string",
+  "disabled": "boolean",
+  "dropdownDirection": "oneOf",
+  "hideLabel": "breakpoint",
+  "label": "string",
+  "message": "string",
+  "name": "string",
+  "required": "boolean",
+  "state": "oneOf",
+  "theme": "oneOf",
+  "value": "string",
+}
+`;
+
+exports[`should call validateProps() with correct parameters via render for p-select-option: propTypes with ValidatorFunctions 1`] = `
+{
+  "disabled": "boolean",
+  "value": "string",
+}
+`;
+
 exports[`should call validateProps() with correct parameters via render for p-select-wrapper: propTypes with ValidatorFunctions 1`] = `
 {
   "description": "string",
