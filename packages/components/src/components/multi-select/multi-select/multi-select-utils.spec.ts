@@ -9,7 +9,7 @@ import {
   getSelectedOptionValues,
   getUsableOptions,
   hasFilterOptionResults,
-  initNativeSelect,
+  initNativeMultiSelect,
   type MultiSelectOption,
   resetFilteredOptions,
   resetHighlightedOptions,
@@ -20,7 +20,7 @@ import {
   setNextOptionHighlighted,
   setSelectedOptions,
   syncMultiSelectOptionProps,
-  syncNativeSelect,
+  syncNativeMultiSelect,
   updateHighlightedOption,
   updateNativeOptions,
   updateOptionsFilterState,
@@ -72,17 +72,17 @@ describe('syncMultiSelectOptionProps', () => {
   });
 });
 
-describe('initNativeSelect', () => {
+describe('initNativeMultiSelect', () => {
   it('should return native select with added attributes and add native select to host', () => {
     const spy = jest.spyOn(setAttributesUtils, 'setAttributes');
-    const syncNativeSelectSpy = jest.spyOn(multiSelectUtils, 'syncNativeSelect');
+    const syncNativeMultiSelectSpy = jest.spyOn(multiSelectUtils, 'syncNativeMultiSelect');
 
     const host = document.createElement('p-multi-select');
     const name = 'options';
     const disabled = true;
     const required = false;
 
-    const nativeSelect = initNativeSelect(host, name, disabled, required);
+    const nativeSelect = initNativeMultiSelect(host, name, disabled, required);
 
     expect(nativeSelect instanceof HTMLSelectElement).toBe(true);
     expect(spy).toHaveBeenCalledWith(nativeSelect, {
@@ -91,12 +91,12 @@ describe('initNativeSelect', () => {
       tabindex: '-1',
       slot: 'internal-select',
     });
-    expect(syncNativeSelectSpy).toHaveBeenCalledWith(nativeSelect, name, disabled, required);
+    expect(syncNativeMultiSelectSpy).toHaveBeenCalledWith(nativeSelect, name, disabled, required);
     expect(host.firstChild).toBe(nativeSelect);
   });
 });
 
-describe('syncNativeSelect', () => {
+describe('syncNativeMultiSelect', () => {
   it('should synchronize attributes of native select element', () => {
     const setAttributeSpy = jest.spyOn(setAttributeUtils, 'setAttribute');
 
@@ -106,7 +106,7 @@ describe('syncNativeSelect', () => {
     const disabled = true;
     const required = false;
 
-    syncNativeSelect(nativeSelect, name, disabled, required);
+    syncNativeMultiSelect(nativeSelect, name, disabled, required);
 
     expect(setAttributeSpy).toHaveBeenCalledWith(nativeSelect, 'name', name);
     expect(toggleAttributeSpy).toHaveBeenCalledWith('disabled', true);
@@ -121,7 +121,7 @@ describe('syncNativeSelect', () => {
     const disabled = false;
     const required = false;
 
-    syncNativeSelect(nativeSelect, name, disabled, required);
+    syncNativeMultiSelect(nativeSelect, name, disabled, required);
 
     expect(setAttributeSpy).toHaveBeenCalledWith(nativeSelect, 'name', name);
     expect(toggleAttributeSpy).toHaveBeenCalledWith('disabled', false);
@@ -136,7 +136,7 @@ describe('syncNativeSelect', () => {
     const disabled = true;
     const required = true;
 
-    syncNativeSelect(nativeSelect, name, disabled, required);
+    syncNativeMultiSelect(nativeSelect, name, disabled, required);
 
     expect(setAttributeSpy).toHaveBeenCalledWith(nativeSelect, 'name', name);
     expect(toggleAttributeSpy).toHaveBeenCalledWith('disabled', true);
