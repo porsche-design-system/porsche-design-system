@@ -13,7 +13,7 @@ import {
 const components = (TAG_NAMES as unknown as TagName[])
   .filter((tagName) => {
     // TODO: should not needed to be maintained like this, e.g. find a logic here with matching names or use/extend getComponentMeta() accordingly
-    return !/item$|-table-|-select-wrapper-|multi-select-option$/.test(tagName);
+    return !/item$|-table-|-select-wrapper-|multi-select-option|select-option|p-select$/.test(tagName);
   })
   .map((tagName) => {
     return tagName.substring(2);
