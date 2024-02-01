@@ -192,17 +192,6 @@ export class Flyout {
     );
   }
 
-  // eslint-disable-next-line @typescript-eslint/member-ordering
-  private updateShadow = throttle(100, () => {
-    if (this.dialog.scrollHeight > this.dialog.clientHeight) {
-      this.updateHeaderShadow();
-
-      if (this.hasFooter) {
-        this.updateFooterShadow();
-      }
-    }
-  });
-
   private updateHeaderShadow = (): void => {
     const shouldApplyShadow = this.dialog.scrollTop > FLYOUT_SCROLL_SHADOW_THRESHOLD;
 
@@ -214,6 +203,17 @@ export class Flyout {
 
     this.footer.classList.toggle(footerShadowClass, shouldApplyShadow);
   };
+
+  // eslint-disable-next-line @typescript-eslint/member-ordering
+  private updateShadow = throttle(100, () => {
+    if (this.dialog.scrollHeight > this.dialog.clientHeight) {
+      this.updateHeaderShadow();
+
+      if (this.hasFooter) {
+        this.updateFooterShadow();
+      }
+    }
+  });
 
   private onClickDialog(e: MouseEvent): void {
     if ((e.target as any).nodeName === 'DIALOG') {
@@ -230,6 +230,10 @@ export class Flyout {
   }
 
   private setDialogVisibility(isOpen: boolean): void {
+    if (!this.dialog) {
+      return;
+    }
+
     // TODO: SupportsNativeDialog check
     // Only call showModal/close on dialog when state changes
     if (isOpen === true && !this.dialog.open) {
