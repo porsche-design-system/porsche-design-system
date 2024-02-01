@@ -27,6 +27,7 @@ export const bundles: { components: TagName[] }[] = [
   { components: ['p-segmented-control', 'p-segmented-control-item'] },
   { components: ['p-select-wrapper', 'p-select-wrapper-dropdown'] },
   { components: ['p-multi-select', 'p-multi-select-option'] },
+  { components: ['p-select', 'p-select-option'] },
   {
     components: [
       'p-table',
