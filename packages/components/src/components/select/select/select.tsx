@@ -5,9 +5,9 @@ import {
   getSelectDropdownDirection,
   getSelectedOptionString,
   initNativeSelect,
-  resetHighlightedSelectOption,
   setFirstSelectOptionHighlighted,
   setLastSelectOptionHighlighted,
+  setMatchingSelectOptionHighlighted,
   setSelectedOption,
   syncSelectOptionProps,
   updateHighlightedSelectOption,
@@ -36,7 +36,6 @@ import {
   getListAriaAttributes,
   getPrefixedTagNames,
   getShadowRootHTMLElement,
-  handleButtonEvent,
   hasPropValueChanged,
   isClickOutside,
   SELECT_DROPDOWN_DIRECTIONS,
@@ -258,10 +257,16 @@ export class Select {
   };
 
   private onInputClick = (): void => {
-    this.isOpen = true;
+    this.isOpen = !this.isOpen;
   };
 
   private onComboboxKeyDown = (e: KeyboardEvent): void => {
+    if (e.key.length === 1 && e.key !== ' ' && !e.altKey && !e.ctrlKey && !e.metaKey) {
+      if (!this.isOpen) {
+        this.isOpen = true;
+      }
+      setMatchingSelectOptionHighlighted(this.host, this.selectOptions, e.key);
+    }
     switch (e.key) {
       case 'ArrowUp':
       case 'Up':
@@ -282,43 +287,41 @@ export class Select {
           this.value = highlightedOption.value;
           this.emitUpdateEvent();
           forceUpdate(highlightedOption);
-          this.isOpen = false;
-        } else {
-          if (this.isWithinForm) {
-            handleButtonEvent(
-              e,
-              this.host,
-              () => 'submit',
-              () => this.disabled
-            );
-          }
         }
         break;
       case 'Escape':
       case 'Tab':
         this.isOpen = false;
-        resetHighlightedSelectOption(this.selectOptions);
         break;
+      case 'Home':
       case 'PageUp':
         if (this.isOpen) {
           e.preventDefault();
           setFirstSelectOptionHighlighted(this.listElement, this.selectOptions);
         }
         break;
+      case 'End':
       case 'PageDown':
         if (this.isOpen) {
           e.preventDefault();
           setLastSelectOptionHighlighted(this.listElement, this.selectOptions);
         }
         break;
-      default:
-      // TODO: Do we need something here?
+      case 'Backspace':
+      case 'Clear':
+        if (!this.isOpen) {
+          this.isOpen = true;
+        }
+        setMatchingSelectOptionHighlighted(this.host, this.selectOptions, e.key);
     }
   };
 
   private cycleDropdown(direction: SelectDropdownDirectionInternal): void {
-    this.isOpen = true;
-    updateHighlightedSelectOption(this.listElement, this.selectOptions, direction);
+    if (this.isOpen) {
+      updateHighlightedSelectOption(this.listElement, this.selectOptions, direction);
+    } else {
+      this.isOpen = true;
+    }
   }
 
   // TODO: Mostly similar to multi-select

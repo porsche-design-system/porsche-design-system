@@ -125,11 +125,6 @@ export const getHighlightedSelectOptionIndex = (options: SelectOption[]): number
 export const getHighlightedSelectOption = (options: SelectOption[]): SelectOption =>
   options.find((option) => option.highlighted);
 
-// TODO: Kind of similar to multi-select
-export const resetHighlightedSelectOption = (options: SelectOption[]): void => {
-  setHighlightedSelectOption(getHighlightedSelectOption(options), false);
-};
-
 // TODO: Similar to multi-select
 export const setHighlightedSelectOption = (option: SelectOption, highlighted: boolean): void => {
   option.highlighted = highlighted;
@@ -190,6 +185,45 @@ export const updateHighlightedSelectOption = (
 ): void => {
   const newIndex = getNewSelectOptionIndex(options, direction);
   setNextSelectOptionHighlighted(host, options, newIndex);
+};
+
+const filterSelectOptions = (options: SelectOption[], filter: string): SelectOption[] =>
+  getUsableSelectOptions(options).filter(
+    (option) => option.textContent.trim().toLowerCase().indexOf(filter.toLowerCase()) === 0
+  );
+
+const setMatchingSelectOptionIndex = (options: SelectOption[], filter: string): number => {
+  const startIndex = getHighlightedSelectOptionIndex(options) + 1;
+  // Shift already searched options to the end of the array in order to find the next matching option
+  const orderedOptions = [...options.slice(startIndex), ...options.slice(0, startIndex)];
+  const firstMatch = filterSelectOptions(orderedOptions, filter)[0];
+
+  const allSameLetter = (array) => array.every((letter) => letter === array[0]);
+
+  // first check if there is an exact match for the typed string
+  if (firstMatch) {
+    return options.indexOf(firstMatch);
+  }
+  // if the same letter is being repeated, cycle through first-letter matches
+  else if (allSameLetter(filter.split(''))) {
+    const matches = filterSelectOptions(orderedOptions, filter[0]);
+    return options.indexOf(matches[0]);
+  }
+  // No matching option found
+  else {
+    return -1;
+  }
+};
+
+export const setMatchingSelectOptionHighlighted = (
+  host: HTMLElement,
+  options: SelectOption[],
+  filter: string
+): void => {
+  const matchingIndex = setMatchingSelectOptionIndex(options, filter);
+  if (matchingIndex != -1) {
+    setNextSelectOptionHighlighted(host, options, matchingIndex);
+  }
 };
 
 // TODO: Similar to multi-select
