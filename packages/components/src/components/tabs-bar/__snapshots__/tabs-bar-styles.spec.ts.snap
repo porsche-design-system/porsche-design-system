@@ -9,6 +9,26 @@ exports[`getComponentCss() should return correct css for size: "medium", weight:
 :host([hidden]) {
   display: none !important;
 }
+::slotted(a::-moz-focus-inner) {
+  border: 0 !important;
+}
+::slotted(a:focus) {
+  outline: 0 !important;
+}
+::slotted(a:focus-visible) {
+  outline: 2px solid #1A44EA !important;
+  outline-offset: 1px !important;
+}
+::slotted(button::-moz-focus-inner) {
+  border: 0 !important;
+}
+::slotted(button:focus) {
+  outline: 0 !important;
+}
+::slotted(button:focus-visible) {
+  outline: 2px solid #1A44EA !important;
+  outline-offset: 1px !important;
+}
 ::slotted(a),::slotted(button) {
   margin: 0 0 4px 0 !important;
   padding: 0 !important;
@@ -48,9 +68,6 @@ exports[`getComponentCss() should return correct css for size: "medium", weight:
   right: 0px !important;
   bottom: -6px !important;
   visibility: inherit !important;
-}
-::slotted(a:focus:focus-visible)::before,::slotted(button:focus:focus-visible)::before {
-  border: 2px solid #1A44EA !important;
 }
 ::slotted(a:not(:last-child)),::slotted(button:not(:last-child)) {
   margin-inline-end: 16px !important;
@@ -108,6 +125,26 @@ exports[`getComponentCss() should return correct css for size: "medium", weight:
 :host([hidden]) {
   display: none !important;
 }
+::slotted(a::-moz-focus-inner) {
+  border: 0 !important;
+}
+::slotted(a:focus) {
+  outline: 0 !important;
+}
+::slotted(a:focus-visible) {
+  outline: 2px solid #1A44EA !important;
+  outline-offset: 1px !important;
+}
+::slotted(button::-moz-focus-inner) {
+  border: 0 !important;
+}
+::slotted(button:focus) {
+  outline: 0 !important;
+}
+::slotted(button:focus-visible) {
+  outline: 2px solid #1A44EA !important;
+  outline-offset: 1px !important;
+}
 ::slotted(a),::slotted(button) {
   margin: 0 0 4px 0 !important;
   padding: 0 !important;
@@ -147,9 +184,6 @@ exports[`getComponentCss() should return correct css for size: "medium", weight:
   right: 0px !important;
   bottom: -6px !important;
   visibility: inherit !important;
-}
-::slotted(a:focus:focus-visible)::before,::slotted(button:focus:focus-visible)::before {
-  border: 2px solid #1A44EA !important;
 }
 ::slotted(a:not(:last-child)),::slotted(button:not(:last-child)) {
   margin-inline-end: 16px !important;
@@ -207,6 +241,26 @@ exports[`getComponentCss() should return correct css for size: "small", weight: 
 :host([hidden]) {
   display: none !important;
 }
+::slotted(a::-moz-focus-inner) {
+  border: 0 !important;
+}
+::slotted(a:focus) {
+  outline: 0 !important;
+}
+::slotted(a:focus-visible) {
+  outline: 2px solid #1A44EA !important;
+  outline-offset: 1px !important;
+}
+::slotted(button::-moz-focus-inner) {
+  border: 0 !important;
+}
+::slotted(button:focus) {
+  outline: 0 !important;
+}
+::slotted(button:focus-visible) {
+  outline: 2px solid #1A44EA !important;
+  outline-offset: 1px !important;
+}
 ::slotted(a),::slotted(button) {
   margin: 0 0 4px 0 !important;
   padding: 0 !important;
@@ -246,9 +300,6 @@ exports[`getComponentCss() should return correct css for size: "small", weight: 
   right: 0px !important;
   bottom: -6px !important;
   visibility: inherit !important;
-}
-::slotted(a:focus:focus-visible)::before,::slotted(button:focus:focus-visible)::before {
-  border: 2px solid #1A44EA !important;
 }
 ::slotted(a:not(:last-child)),::slotted(button:not(:last-child)) {
   margin-inline-end: 16px !important;
@@ -306,6 +357,26 @@ exports[`getComponentCss() should return correct css for size: "small", weight: 
 :host([hidden]) {
   display: none !important;
 }
+::slotted(a::-moz-focus-inner) {
+  border: 0 !important;
+}
+::slotted(a:focus) {
+  outline: 0 !important;
+}
+::slotted(a:focus-visible) {
+  outline: 2px solid #1A44EA !important;
+  outline-offset: 1px !important;
+}
+::slotted(button::-moz-focus-inner) {
+  border: 0 !important;
+}
+::slotted(button:focus) {
+  outline: 0 !important;
+}
+::slotted(button:focus-visible) {
+  outline: 2px solid #1A44EA !important;
+  outline-offset: 1px !important;
+}
 ::slotted(a),::slotted(button) {
   margin: 0 0 4px 0 !important;
   padding: 0 !important;
@@ -345,9 +416,6 @@ exports[`getComponentCss() should return correct css for size: "small", weight: 
   right: 0px !important;
   bottom: -6px !important;
   visibility: inherit !important;
-}
-::slotted(a:focus:focus-visible)::before,::slotted(button:focus:focus-visible)::before {
-  border: 2px solid #1A44EA !important;
 }
 ::slotted(a:not(:last-child)),::slotted(button:not(:last-child)) {
   margin-inline-end: 16px !important;
@@ -405,6 +473,26 @@ exports[`getComponentCss() should return correct css for size: "small", weight: 
 :host([hidden]) {
   display: none !important;
 }
+::slotted(a::-moz-focus-inner) {
+  border: 0 !important;
+}
+::slotted(a:focus) {
+  outline: 0 !important;
+}
+::slotted(a:focus-visible) {
+  outline: 2px solid #1A44EA !important;
+  outline-offset: 1px !important;
+}
+::slotted(button::-moz-focus-inner) {
+  border: 0 !important;
+}
+::slotted(button:focus) {
+  outline: 0 !important;
+}
+::slotted(button:focus-visible) {
+  outline: 2px solid #1A44EA !important;
+  outline-offset: 1px !important;
+}
 ::slotted(a),::slotted(button) {
   margin: 0 0 4px 0 !important;
   padding: 0 !important;
@@ -444,9 +532,6 @@ exports[`getComponentCss() should return correct css for size: "small", weight: 
   right: 0px !important;
   bottom: -6px !important;
   visibility: inherit !important;
-}
-::slotted(a:focus:focus-visible)::before,::slotted(button:focus:focus-visible)::before {
-  border: 2px solid #1A44EA !important;
 }
 ::slotted(a:not(:last-child)),::slotted(button:not(:last-child)) {
   margin-inline-end: 16px !important;
@@ -504,6 +589,26 @@ exports[`getComponentCss() should return correct css for size: {"base":"small","
 :host([hidden]) {
   display: none !important;
 }
+::slotted(a::-moz-focus-inner) {
+  border: 0 !important;
+}
+::slotted(a:focus) {
+  outline: 0 !important;
+}
+::slotted(a:focus-visible) {
+  outline: 2px solid #1A44EA !important;
+  outline-offset: 1px !important;
+}
+::slotted(button::-moz-focus-inner) {
+  border: 0 !important;
+}
+::slotted(button:focus) {
+  outline: 0 !important;
+}
+::slotted(button:focus-visible) {
+  outline: 2px solid #1A44EA !important;
+  outline-offset: 1px !important;
+}
 ::slotted(a),::slotted(button) {
   margin: 0 0 4px 0 !important;
   padding: 0 !important;
@@ -543,9 +648,6 @@ exports[`getComponentCss() should return correct css for size: {"base":"small","
   right: 0px !important;
   bottom: -6px !important;
   visibility: inherit !important;
-}
-::slotted(a:focus:focus-visible)::before,::slotted(button:focus:focus-visible)::before {
-  border: 2px solid #1A44EA !important;
 }
 ::slotted(a:not(:last-child)),::slotted(button:not(:last-child)) {
   margin-inline-end: 16px !important;

@@ -38,19 +38,19 @@ slot[name="header"] {
 }
 .anchor {
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  inset: 0;
   z-index: 1;
   border-radius: 8px;
 }
+.anchor::-moz-focus-inner {
+  border: 0;
+}
 .anchor:focus {
+  outline: 0;
+}
+.anchor:focus-visible {
   outline: 2px solid #1A44EA;
   outline-offset: 2px;
-}
-.anchor:focus:not(:focus-visible) {
-  outline-color: transparent;
 }
 .header {
   display: flex;
@@ -153,19 +153,19 @@ slot[name="header"] {
 }
 .anchor {
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  inset: 0;
   z-index: 1;
   border-radius: 8px;
 }
+.anchor::-moz-focus-inner {
+  border: 0;
+}
 .anchor:focus {
+  outline: 0;
+}
+.anchor:focus-visible {
   outline: 2px solid #1A44EA;
   outline-offset: 2px;
-}
-.anchor:focus:not(:focus-visible) {
-  outline-color: transparent;
 }
 .header {
   display: flex;
@@ -231,6 +231,9 @@ slot[name="header"] {
     color: #FBFCFF;
     background-color: #212225;
   }
+  .anchor:focus-visible {
+    outline-color: #1A44EA;
+  }
   .description {
     color: #AFB0B3;
   }
@@ -282,19 +285,19 @@ slot[name="header"] {
 }
 .anchor {
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  inset: 0;
   z-index: 1;
   border-radius: 8px;
 }
+.anchor::-moz-focus-inner {
+  border: 0;
+}
 .anchor:focus {
+  outline: 0;
+}
+.anchor:focus-visible {
   outline: 2px solid #1A44EA;
   outline-offset: 2px;
-}
-.anchor:focus:not(:focus-visible) {
-  outline-color: transparent;
 }
 .header {
   display: flex;
@@ -401,19 +404,19 @@ slot[name="header"] {
 }
 .anchor {
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  inset: 0;
   z-index: 1;
   border-radius: 8px;
 }
+.anchor::-moz-focus-inner {
+  border: 0;
+}
 .anchor:focus {
+  outline: 0;
+}
+.anchor:focus-visible {
   outline: 2px solid #1A44EA;
   outline-offset: 2px;
-}
-.anchor:focus:not(:focus-visible) {
-  outline-color: transparent;
 }
 .header {
   display: flex;
@@ -502,20 +505,20 @@ slot[name="header"] {
 }
 ::slotted(a[slot='anchor']) {
   position: absolute !important;
-  top: 0 !important;
-  left: 0 !important;
-  right: 0 !important;
-  bottom: 0 !important;
+  inset: 0 !important;
   z-index: 1 !important;
   border-radius: 8px !important;
   text-indent: -999999px !important;
 }
+::slotted(a[slot='anchor']::-moz-focus-inner) {
+  border: 0 !important;
+}
 ::slotted(a[slot='anchor']:focus) {
+  outline: 0 !important;
+}
+::slotted(a[slot='anchor']:focus-visible) {
   outline: 2px solid #1A44EA !important;
   outline-offset: 2px !important;
-}
-::slotted(a[slot='anchor']:focus:not(:focus-visible)) {
-  outline-color: transparent !important;
 }
 ::slotted([slot="header"]) {
   display: flex !important;

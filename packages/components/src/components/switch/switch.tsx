@@ -1,4 +1,4 @@
-import { Component, Element, Event, type EventEmitter, h, type JSX, Listen, Prop, Watch, Host } from '@stencil/core';
+import { Component, Element, Event, type EventEmitter, h, Host, type JSX, Listen, Prop, Watch } from '@stencil/core';
 import type { BreakpointCustomizable, PropTypes, Theme } from '../../types';
 import {
   ALIGN_LABELS,
@@ -125,24 +125,23 @@ export class Switch {
       <Host>
         <button
           {...getSwitchButtonAriaAttributes(this.disabled, this.loading, this.checked)}
-          class="root"
+          id="switch"
           type="button"
           role="switch"
-          onClick={this.onSwitchClick}
+          aria-labelledby="label" // only relevant for axe-core because of https://github.com/dequelabs/axe-core/issues/1393
           aria-describedby={this.loading ? loadingId : undefined}
+          onClick={this.onSwitchClick}
         >
-          <span class="switch">
-            {/* it's necessary to always render toggle and a conditionally nested spinner, for smooth transitions */}
-            <span class="toggle">
-              {this.loading && (
-                <PrefixedTagNames.pSpinner class="spinner" size="inherit" theme={this.theme} aria-hidden="true" />
-              )}
-            </span>
-          </span>
-          <span class="label">
-            <slot />
+          {/* it's necessary to always render toggle and a conditionally nested spinner, for smooth transitions */}
+          <span class="toggle">
+            {this.loading && (
+              <PrefixedTagNames.pSpinner class="spinner" size="inherit" theme={this.theme} aria-hidden="true" />
+            )}
           </span>
         </button>
+        <label id="label" htmlFor="switch">
+          <slot />
+        </label>
         <LoadingMessage loading={this.loading} initialLoading={this.initialLoading} />
       </Host>
     );

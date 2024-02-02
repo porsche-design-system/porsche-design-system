@@ -15,10 +15,12 @@ export const getFocusStyle = (opts?: Options) => {
     borderRadius === 'small'
       ? borderRadiusSmall
       : borderRadius === 'medium'
-      ? borderRadiusMedium
-      : borderRadius || borderRadiusSmall;
+        ? borderRadiusMedium
+        : borderRadius || borderRadiusSmall;
 
   return {
+    // TODO: borderRadius should be removed from interface
+    // TODO: evaluate if '&::-moz-focus-inner': { border: 0 } is useful/needed for FF
     borderRadius: borderRadiusValue, // it's visually being reflected on both (when placed here), element and focus outline
     '&:focus': {
       outline: `${borderWidthBase} solid ${themeLightStateFocus}`,

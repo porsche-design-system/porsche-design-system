@@ -1,6 +1,7 @@
 import {
   addImportantToEachRule,
   colorSchemeStyles,
+  getFocusJssStyle,
   getHiddenTextJssStyle,
   getThemedColors,
   getTransition,
@@ -11,7 +12,7 @@ import {
 import { getCss, isHighContrastMode } from '../../utils';
 import type { TagDismissibleColor, TagDismissibleColorDeprecated } from './tag-dismissible-utils';
 import { borderRadiusSmall, fontSizeTextXSmall, textSmallStyle } from '@porsche-design-system/utilities-v2';
-import { getTagFocusJssStyle, getThemedBackgroundColor } from '../tag/tag-shared-utils';
+import { getThemedBackgroundColor } from '../tag/tag-shared-utils';
 import type { Theme } from '../../types';
 
 export const getComponentCss = (
@@ -56,7 +57,10 @@ export const getComponentCss = (
         color: primaryColor,
         textAlign: 'start',
         ...textSmallStyle,
-        outline: isHighContrastMode ? '1px solid transparent' : 0,
+        ...(isHighContrastMode && {
+          // TODO: using border would increase the dimension but using outline interferes with the focus style
+          outline: '1px solid transparent',
+        }),
         ...prefersColorSchemeDarkMediaQuery(theme, {
           background: backgroundColorDark,
           color: primaryColorDark,
@@ -69,7 +73,7 @@ export const getComponentCss = (
             }),
           },
         }),
-        ...getTagFocusJssStyle(themedColors),
+        ...getFocusJssStyle(theme),
       },
     },
     ...(hasLabel && {

@@ -22,23 +22,22 @@ a, svg {
 }
 a {
   text-decoration: none;
-  outline: 0;
 }
 a::before {
   content: "";
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-}
-a:focus::before {
+  inset: 0;
   border-radius: 1px;
+}
+a::-moz-focus-inner {
+  border: 0;
+}
+a:focus {
+  outline: 0;
+}
+a:focus-visible::before {
   outline: 2px solid #1A44EA;
   outline-offset: 2px;
-}
-a:focus:not(:focus-visible)::before {
-  outline: 0;
 }
 svg {
   fill: #FBFCFF;
@@ -67,23 +66,22 @@ a, svg {
 }
 a {
   text-decoration: none;
-  outline: 0;
 }
 a::before {
   content: "";
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-}
-a:focus::before {
+  inset: 0;
   border-radius: 1px;
+}
+a::-moz-focus-inner {
+  border: 0;
+}
+a:focus {
+  outline: 0;
+}
+a:focus-visible::before {
   outline: 2px solid #1A44EA;
   outline-offset: 2px;
-}
-a:focus:not(:focus-visible)::before {
-  outline: 0;
 }
 svg {
   fill: #010205;
@@ -113,23 +111,22 @@ a, svg {
 }
 a {
   text-decoration: none;
-  outline: 0;
 }
 a::before {
   content: "";
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-}
-a:focus::before {
+  inset: 0;
   border-radius: 1px;
+}
+a::-moz-focus-inner {
+  border: 0;
+}
+a:focus {
+  outline: 0;
+}
+a:focus-visible::before {
   outline: 2px solid #1A44EA;
   outline-offset: 2px;
-}
-a:focus:not(:focus-visible)::before {
-  outline: 0;
 }
 svg {
   fill: #FBFCFF;
@@ -165,23 +162,22 @@ a, svg {
 }
 a {
   text-decoration: none;
-  outline: 0;
 }
 a::before {
   content: "";
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-}
-a:focus::before {
+  inset: 0;
   border-radius: 1px;
+}
+a::-moz-focus-inner {
+  border: 0;
+}
+a:focus {
+  outline: 0;
+}
+a:focus-visible::before {
   outline: 2px solid #1A44EA;
   outline-offset: 2px;
-}
-a:focus:not(:focus-visible)::before {
-  outline: 0;
 }
 svg {
   fill: #010205;

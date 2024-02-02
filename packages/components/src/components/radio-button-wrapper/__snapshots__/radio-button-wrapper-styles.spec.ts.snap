@@ -9,7 +9,6 @@ exports[`getComponentCss() should return correct css for hideLabel: { base: true
   display: none !important;
 }
 ::slotted(input) {
-  position: relative !important;
   width: calc(6px + 2.125ex) !important;
   height: calc(6px + 2.125ex) !important;
   font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
@@ -173,7 +172,6 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   display: none !important;
 }
 ::slotted(input) {
-  position: relative !important;
   width: calc(6px + 2.125ex) !important;
   height: calc(6px + 2.125ex) !important;
   font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
@@ -195,18 +193,15 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   border-color: #7E7F82 !important;
   background-color: #7E7F82 !important;
 }
-::slotted(input:focus)::before {
-  content: "" !important;
-  position: absolute !important;
-  top: -6px !important;
-  left: -6px !important;
-  right: -6px !important;
-  bottom: -6px !important;
-  border: 2px solid #1A44EA !important;
-  border-radius: 50% !important;
+::slotted(input::-moz-focus-inner) {
+  border: 0 !important;
 }
-::slotted(input:focus:not(:focus-visible))::before {
-  border-color: transparent !important;
+::slotted(input:focus) {
+  outline: 0 !important;
+}
+::slotted(input:focus-visible) {
+  outline: 2px solid #1A44EA !important;
+  outline-offset: 2px !important;
 }
 .root {
   display: grid;
@@ -290,7 +285,6 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   display: none !important;
 }
 ::slotted(input) {
-  position: relative !important;
   width: calc(6px + 2.125ex) !important;
   height: calc(6px + 2.125ex) !important;
   font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
@@ -312,18 +306,15 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   border-color: #949598 !important;
   background-color: #949598 !important;
 }
-::slotted(input:focus)::before {
-  content: "" !important;
-  position: absolute !important;
-  top: -6px !important;
-  left: -6px !important;
-  right: -6px !important;
-  bottom: -6px !important;
-  border: 2px solid #1A44EA !important;
-  border-radius: 50% !important;
+::slotted(input::-moz-focus-inner) {
+  border: 0 !important;
 }
-::slotted(input:focus:not(:focus-visible))::before {
-  border-color: transparent !important;
+::slotted(input:focus) {
+  outline: 0 !important;
+}
+::slotted(input:focus-visible) {
+  outline: 2px solid #1A44EA !important;
+  outline-offset: 2px !important;
 }
 .root {
   display: grid;
@@ -407,7 +398,6 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   display: none !important;
 }
 ::slotted(input) {
-  position: relative !important;
   width: calc(6px + 2.125ex) !important;
   height: calc(6px + 2.125ex) !important;
   font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
@@ -503,7 +493,6 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   display: none !important;
 }
 ::slotted(input) {
-  position: relative !important;
   width: calc(6px + 2.125ex) !important;
   height: calc(6px + 2.125ex) !important;
   font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
@@ -599,7 +588,6 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   display: none !important;
 }
 ::slotted(input) {
-  position: relative !important;
   width: calc(6px + 2.125ex) !important;
   height: calc(6px + 2.125ex) !important;
   font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
@@ -621,18 +609,15 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   border-color: #7E7F82 !important;
   background-color: #7E7F82 !important;
 }
-::slotted(input:focus)::before {
-  content: "" !important;
-  position: absolute !important;
-  top: -6px !important;
-  left: -6px !important;
-  right: -6px !important;
-  bottom: -6px !important;
-  border: 2px solid #1A44EA !important;
-  border-radius: 50% !important;
+::slotted(input::-moz-focus-inner) {
+  border: 0 !important;
 }
-::slotted(input:focus:not(:focus-visible))::before {
-  border-color: transparent !important;
+::slotted(input:focus) {
+  outline: 0 !important;
+}
+::slotted(input:focus-visible) {
+  outline: 2px solid #1A44EA !important;
+  outline-offset: 2px !important;
 }
 .root {
   display: grid;
@@ -715,7 +700,6 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   display: none !important;
 }
 ::slotted(input) {
-  position: relative !important;
   width: calc(6px + 2.125ex) !important;
   height: calc(6px + 2.125ex) !important;
   font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
@@ -737,18 +721,15 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   border-color: #949598 !important;
   background-color: #949598 !important;
 }
-::slotted(input:focus)::before {
-  content: "" !important;
-  position: absolute !important;
-  top: -6px !important;
-  left: -6px !important;
-  right: -6px !important;
-  bottom: -6px !important;
-  border: 2px solid #1A44EA !important;
-  border-radius: 50% !important;
+::slotted(input::-moz-focus-inner) {
+  border: 0 !important;
 }
-::slotted(input:focus:not(:focus-visible))::before {
-  border-color: transparent !important;
+::slotted(input:focus) {
+  outline: 0 !important;
+}
+::slotted(input:focus-visible) {
+  outline: 2px solid #1A44EA !important;
+  outline-offset: 2px !important;
 }
 .root {
   display: grid;
@@ -831,7 +812,6 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   display: none !important;
 }
 ::slotted(input) {
-  position: relative !important;
   width: calc(6px + 2.125ex) !important;
   height: calc(6px + 2.125ex) !important;
   font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
@@ -926,7 +906,6 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   display: none !important;
 }
 ::slotted(input) {
-  position: relative !important;
   width: calc(6px + 2.125ex) !important;
   height: calc(6px + 2.125ex) !important;
   font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
@@ -1021,7 +1000,6 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   display: none !important;
 }
 ::slotted(input) {
-  position: relative !important;
   width: calc(6px + 2.125ex) !important;
   height: calc(6px + 2.125ex) !important;
   font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
@@ -1043,18 +1021,15 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   border-color: #7E7F82 !important;
   background-color: #7E7F82 !important;
 }
-::slotted(input:focus)::before {
-  content: "" !important;
-  position: absolute !important;
-  top: -6px !important;
-  left: -6px !important;
-  right: -6px !important;
-  bottom: -6px !important;
-  border: 2px solid #1A44EA !important;
-  border-radius: 50% !important;
+::slotted(input::-moz-focus-inner) {
+  border: 0 !important;
 }
-::slotted(input:focus:not(:focus-visible))::before {
-  border-color: transparent !important;
+::slotted(input:focus) {
+  outline: 0 !important;
+}
+::slotted(input:focus-visible) {
+  outline: 2px solid #1A44EA !important;
+  outline-offset: 2px !important;
 }
 .root {
   display: grid;
@@ -1138,7 +1113,6 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   display: none !important;
 }
 ::slotted(input) {
-  position: relative !important;
   width: calc(6px + 2.125ex) !important;
   height: calc(6px + 2.125ex) !important;
   font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
@@ -1160,18 +1134,15 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   border-color: #949598 !important;
   background-color: #949598 !important;
 }
-::slotted(input:focus)::before {
-  content: "" !important;
-  position: absolute !important;
-  top: -6px !important;
-  left: -6px !important;
-  right: -6px !important;
-  bottom: -6px !important;
-  border: 2px solid #1A44EA !important;
-  border-radius: 50% !important;
+::slotted(input::-moz-focus-inner) {
+  border: 0 !important;
 }
-::slotted(input:focus:not(:focus-visible))::before {
-  border-color: transparent !important;
+::slotted(input:focus) {
+  outline: 0 !important;
+}
+::slotted(input:focus-visible) {
+  outline: 2px solid #1A44EA !important;
+  outline-offset: 2px !important;
 }
 .root {
   display: grid;
@@ -1255,7 +1226,6 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   display: none !important;
 }
 ::slotted(input) {
-  position: relative !important;
   width: calc(6px + 2.125ex) !important;
   height: calc(6px + 2.125ex) !important;
   font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
@@ -1351,7 +1321,6 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   display: none !important;
 }
 ::slotted(input) {
-  position: relative !important;
   width: calc(6px + 2.125ex) !important;
   height: calc(6px + 2.125ex) !important;
   font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
@@ -1447,7 +1416,6 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   display: none !important;
 }
 ::slotted(input) {
-  position: relative !important;
   width: calc(6px + 2.125ex) !important;
   height: calc(6px + 2.125ex) !important;
   font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
@@ -1470,18 +1438,15 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   background-color: #FC4040 !important;
   background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle fill="%23010205" cx="12" cy="12" r="6"/></svg>') !important;
 }
-::slotted(input:focus)::before {
-  content: "" !important;
-  position: absolute !important;
-  top: -6px !important;
-  left: -6px !important;
-  right: -6px !important;
-  bottom: -6px !important;
-  border: 2px solid #1A44EA !important;
-  border-radius: 50% !important;
+::slotted(input::-moz-focus-inner) {
+  border: 0 !important;
 }
-::slotted(input:focus:not(:focus-visible))::before {
-  border-color: transparent !important;
+::slotted(input:focus) {
+  outline: 0 !important;
+}
+::slotted(input:focus-visible) {
+  outline: 2px solid #1A44EA !important;
+  outline-offset: 2px !important;
 }
 @media(hover:hover) {
   ::slotted(input:hover), label:hover~.wrapper ::slotted(input) {
@@ -1570,7 +1535,6 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   display: none !important;
 }
 ::slotted(input) {
-  position: relative !important;
   width: calc(6px + 2.125ex) !important;
   height: calc(6px + 2.125ex) !important;
   font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
@@ -1593,18 +1557,15 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   background-color: #CC1922 !important;
   background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle fill="%23FBFCFF" cx="12" cy="12" r="6"/></svg>') !important;
 }
-::slotted(input:focus)::before {
-  content: "" !important;
-  position: absolute !important;
-  top: -6px !important;
-  left: -6px !important;
-  right: -6px !important;
-  bottom: -6px !important;
-  border: 2px solid #1A44EA !important;
-  border-radius: 50% !important;
+::slotted(input::-moz-focus-inner) {
+  border: 0 !important;
 }
-::slotted(input:focus:not(:focus-visible))::before {
-  border-color: transparent !important;
+::slotted(input:focus) {
+  outline: 0 !important;
+}
+::slotted(input:focus-visible) {
+  outline: 2px solid #1A44EA !important;
+  outline-offset: 2px !important;
 }
 @media(hover:hover) {
   ::slotted(input:hover), label:hover~.wrapper ::slotted(input) {
@@ -1693,7 +1654,6 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   display: none !important;
 }
 ::slotted(input) {
-  position: relative !important;
   width: calc(6px + 2.125ex) !important;
   height: calc(6px + 2.125ex) !important;
   font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
@@ -1795,7 +1755,6 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   display: none !important;
 }
 ::slotted(input) {
-  position: relative !important;
   width: calc(6px + 2.125ex) !important;
   height: calc(6px + 2.125ex) !important;
   font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
@@ -1897,7 +1856,6 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   display: none !important;
 }
 ::slotted(input) {
-  position: relative !important;
   width: calc(6px + 2.125ex) !important;
   height: calc(6px + 2.125ex) !important;
   font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
@@ -1920,18 +1878,15 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   background-color: #FBFCFF !important;
   background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle fill="%23010205" cx="12" cy="12" r="6"/></svg>') !important;
 }
-::slotted(input:focus)::before {
-  content: "" !important;
-  position: absolute !important;
-  top: -6px !important;
-  left: -6px !important;
-  right: -6px !important;
-  bottom: -6px !important;
-  border: 2px solid #1A44EA !important;
-  border-radius: 50% !important;
+::slotted(input::-moz-focus-inner) {
+  border: 0 !important;
 }
-::slotted(input:focus:not(:focus-visible))::before {
-  border-color: transparent !important;
+::slotted(input:focus) {
+  outline: 0 !important;
+}
+::slotted(input:focus-visible) {
+  outline: 2px solid #1A44EA !important;
+  outline-offset: 2px !important;
 }
 @media(hover:hover) {
   ::slotted(input:hover), label:hover~.wrapper ::slotted(input) {
@@ -2019,7 +1974,6 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   display: none !important;
 }
 ::slotted(input) {
-  position: relative !important;
   width: calc(6px + 2.125ex) !important;
   height: calc(6px + 2.125ex) !important;
   font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
@@ -2042,18 +1996,15 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   background-color: #010205 !important;
   background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle fill="%23FBFCFF" cx="12" cy="12" r="6"/></svg>') !important;
 }
-::slotted(input:focus)::before {
-  content: "" !important;
-  position: absolute !important;
-  top: -6px !important;
-  left: -6px !important;
-  right: -6px !important;
-  bottom: -6px !important;
-  border: 2px solid #1A44EA !important;
-  border-radius: 50% !important;
+::slotted(input::-moz-focus-inner) {
+  border: 0 !important;
 }
-::slotted(input:focus:not(:focus-visible))::before {
-  border-color: transparent !important;
+::slotted(input:focus) {
+  outline: 0 !important;
+}
+::slotted(input:focus-visible) {
+  outline: 2px solid #1A44EA !important;
+  outline-offset: 2px !important;
 }
 @media(hover:hover) {
   ::slotted(input:hover), label:hover~.wrapper ::slotted(input) {
@@ -2141,7 +2092,6 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   display: none !important;
 }
 ::slotted(input) {
-  position: relative !important;
   width: calc(6px + 2.125ex) !important;
   height: calc(6px + 2.125ex) !important;
   font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
@@ -2242,7 +2192,6 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   display: none !important;
 }
 ::slotted(input) {
-  position: relative !important;
   width: calc(6px + 2.125ex) !important;
   height: calc(6px + 2.125ex) !important;
   font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
@@ -2343,7 +2292,6 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   display: none !important;
 }
 ::slotted(input) {
-  position: relative !important;
   width: calc(6px + 2.125ex) !important;
   height: calc(6px + 2.125ex) !important;
   font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
@@ -2366,18 +2314,15 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   background-color: #09D087 !important;
   background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle fill="%23010205" cx="12" cy="12" r="6"/></svg>') !important;
 }
-::slotted(input:focus)::before {
-  content: "" !important;
-  position: absolute !important;
-  top: -6px !important;
-  left: -6px !important;
-  right: -6px !important;
-  bottom: -6px !important;
-  border: 2px solid #1A44EA !important;
-  border-radius: 50% !important;
+::slotted(input::-moz-focus-inner) {
+  border: 0 !important;
 }
-::slotted(input:focus:not(:focus-visible))::before {
-  border-color: transparent !important;
+::slotted(input:focus) {
+  outline: 0 !important;
+}
+::slotted(input:focus-visible) {
+  outline: 2px solid #1A44EA !important;
+  outline-offset: 2px !important;
 }
 @media(hover:hover) {
   ::slotted(input:hover), label:hover~.wrapper ::slotted(input) {
@@ -2466,7 +2411,6 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   display: none !important;
 }
 ::slotted(input) {
-  position: relative !important;
   width: calc(6px + 2.125ex) !important;
   height: calc(6px + 2.125ex) !important;
   font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
@@ -2489,18 +2433,15 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   background-color: #197E10 !important;
   background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle fill="%23FBFCFF" cx="12" cy="12" r="6"/></svg>') !important;
 }
-::slotted(input:focus)::before {
-  content: "" !important;
-  position: absolute !important;
-  top: -6px !important;
-  left: -6px !important;
-  right: -6px !important;
-  bottom: -6px !important;
-  border: 2px solid #1A44EA !important;
-  border-radius: 50% !important;
+::slotted(input::-moz-focus-inner) {
+  border: 0 !important;
 }
-::slotted(input:focus:not(:focus-visible))::before {
-  border-color: transparent !important;
+::slotted(input:focus) {
+  outline: 0 !important;
+}
+::slotted(input:focus-visible) {
+  outline: 2px solid #1A44EA !important;
+  outline-offset: 2px !important;
 }
 @media(hover:hover) {
   ::slotted(input:hover), label:hover~.wrapper ::slotted(input) {
@@ -2589,7 +2530,6 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   display: none !important;
 }
 ::slotted(input) {
-  position: relative !important;
   width: calc(6px + 2.125ex) !important;
   height: calc(6px + 2.125ex) !important;
   font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
@@ -2691,7 +2631,6 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   display: none !important;
 }
 ::slotted(input) {
-  position: relative !important;
   width: calc(6px + 2.125ex) !important;
   height: calc(6px + 2.125ex) !important;
   font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;

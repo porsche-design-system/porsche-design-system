@@ -1,8 +1,8 @@
 import type { PopoverDirection } from './popover-utils';
+import { safeZonePx } from './popover-utils';
 import type { JssStyle } from 'jss';
 import {
   borderRadiusSmall,
-  borderWidthBase,
   fontLineHeight,
   frostedGlassStyle,
   motionDurationShort,
@@ -14,9 +14,9 @@ import {
   addImportantToEachRule,
   colorSchemeStyles,
   cssVariableAnimationDuration,
+  getFocusJssStyle,
   getHiddenTextJssStyle,
   getHighContrastColors,
-  getInsetJssStyle,
   getThemedColors,
   getTransition,
   hostHiddenStyles,
@@ -25,7 +25,6 @@ import {
 } from '../../styles';
 import { POPOVER_Z_INDEX } from '../../constants';
 import type { Theme } from '../../types';
-import { safeZonePx } from './popover-utils';
 
 const { canvasColor, canvasTextColor } = getHighContrastColors();
 
@@ -140,10 +139,9 @@ const getDirectionArrowMap = (theme: Theme): Record<PopoverDirection, JssStyle> 
 };
 
 export const getComponentCss = (direction: PopoverDirection, isNative: boolean, theme: Theme): string => {
-  const { hoverColor, focusColor, backgroundColor, primaryColor, backgroundSurfaceColor } = getThemedColors(theme);
+  const { hoverColor, backgroundColor, primaryColor, backgroundSurfaceColor } = getThemedColors(theme);
   const {
     hoverColor: hoverColorDark,
-    focusColor: focusColorDark,
     primaryColor: primaryColorDark,
     backgroundSurfaceColor: backgroundSurfaceColorDark,
   } = getThemedColors('dark');
@@ -167,18 +165,17 @@ export const getComponentCss = (direction: PopoverDirection, isNative: boolean, 
       },
       button: {
         display: 'block',
-        position: 'relative',
         WebkitAppearance: 'none', // iOS safari
         appearance: 'none',
         background: 'transparent',
         border: 0,
         padding: 0,
-        outline: 0,
         cursor: 'pointer',
         ...textSmallStyle,
         width: fontLineHeight, // width needed to improve ssr support
         height: fontLineHeight, // height needed to improve ssr support
         borderRadius: '50%',
+        // TODO: we should try to use getHoverStyle()
         ...hoverMediaQuery({
           transition: getTransition('background-color'),
           '&:hover': {
@@ -189,22 +186,7 @@ export const getComponentCss = (direction: PopoverDirection, isNative: boolean, 
             }),
           },
         }),
-        '&::before': {
-          content: '""',
-          position: 'absolute',
-          ...getInsetJssStyle(-2),
-          border: `${borderWidthBase} solid transparent`,
-          borderRadius: '50%',
-        },
-        '&:focus::before': {
-          borderColor: focusColor,
-          ...prefersColorSchemeDarkMediaQuery(theme, {
-            borderColor: focusColorDark,
-          }),
-        },
-        '&:focus:not(:focus-visible)::before': {
-          borderColor: 'transparent',
-        },
+        ...getFocusJssStyle(theme, { offset: 0 }),
       },
     },
     label: getHiddenTextJssStyle(),
@@ -220,7 +202,9 @@ export const getComponentCss = (direction: PopoverDirection, isNative: boolean, 
             margin: 0,
             padding: 0,
           }
-        : getInsetJssStyle(-safeZonePx)),
+        : {
+            inset: `${-safeZonePx}px`,
+          }),
       position: 'absolute',
       zIndex: POPOVER_Z_INDEX,
       filter: `drop-shadow(0 0 16px ${shadowColor})`,

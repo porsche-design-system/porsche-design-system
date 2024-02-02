@@ -2,14 +2,12 @@
 
 exports[`getComponentCss() should return correct css for isOpen: false, position: end, hasFooter: false, hasSubFooter: false, theme: light 1`] = `
 ":host {
-  display: block;
+  display: flex;
   --pds-internal-grid-outer-column: calc(clamp(32px, 2.75vw + 23px, 76px) - clamp(16px, 1.25vw + 12px, 36px)) !important;
   --pds-internal-grid-margin: calc(clamp(32px, 2.75vw + 23px, 76px) * -1) !important;
+  justify-content: flex-end !important;
   position: fixed !important;
-  top: 0 !important;
-  left: 0 !important;
-  right: 0 !important;
-  bottom: 0 !important;
+  inset: 0 !important;
   z-index: 99998 !important;
   background: rgba(1, 2, 5, 0.67) !important;
   visibility: hidden !important;
@@ -23,21 +21,13 @@ exports[`getComponentCss() should return correct css for isOpen: false, position
 :host([hidden]) {
   display: none !important;
 }
-dialog {
-  position: fixed;
-  inset-inline: auto 0;
-  inset-block: 0 0;
+.root {
+  position: relative;
   display: flex;
-  height: 100vh;
-  max-height: 100vh;
-  margin: 0;
-  padding: 0;
-  border: 0;
-  visibility: inherit;
-  overflow: hidden;
   flex-direction: column;
   box-sizing: border-box;
-  width: var(--p-flyout-width, fit-content);
+  width: var(--p-flyout-width, auto);
+  height: 100%;
   min-width: 320px;
   max-width: var(--p-flyout-max-width, 1180px);
   color: #010205;
@@ -46,12 +36,6 @@ dialog {
   transform: translate3d(100%, 0, 0);
   transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.4,0,0.5,1) var(--p-transition-duration, 0.6s), transform var(--p-transition-duration, 0.6s) cubic-bezier(0.4,0,0.5,1);
   box-shadow: -3px 0px 30px rgba(0, 0, 0, 0.25);
-}
-dialog:focus-visible {
-  outline: none;
-}
-dialog::backdrop {
-  opacity: 0;
 }
 .header {
   position: sticky;
@@ -75,7 +59,6 @@ dialog::backdrop {
   padding: 16px clamp(32px, 2.75vw + 23px, 76px);
   position: relative;
   z-index: 0;
-  flex-grow: 1;
   background-color: #FFF;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
@@ -90,14 +73,12 @@ dialog::backdrop {
 
 exports[`getComponentCss() should return correct css for isOpen: false, position: end, hasFooter: false, hasSubFooter: true, theme: dark 1`] = `
 ":host {
-  display: block;
+  display: flex;
   --pds-internal-grid-outer-column: calc(clamp(32px, 2.75vw + 23px, 76px) - clamp(16px, 1.25vw + 12px, 36px)) !important;
   --pds-internal-grid-margin: calc(clamp(32px, 2.75vw + 23px, 76px) * -1) !important;
+  justify-content: flex-end !important;
   position: fixed !important;
-  top: 0 !important;
-  left: 0 !important;
-  right: 0 !important;
-  bottom: 0 !important;
+  inset: 0 !important;
   z-index: 99998 !important;
   background: rgba(38, 38, 41, 0.67) !important;
   visibility: hidden !important;
@@ -111,23 +92,15 @@ exports[`getComponentCss() should return correct css for isOpen: false, position
 :host([hidden]) {
   display: none !important;
 }
-dialog {
-  position: fixed;
-  inset-inline: auto 0;
-  inset-block: 0 0;
+.root {
+  position: relative;
   display: flex;
-  height: 100vh;
-  max-height: 100vh;
-  margin: 0;
-  padding: 0;
-  border: 0;
-  visibility: inherit;
-  overflow: hidden;
   flex-direction: column;
   box-sizing: border-box;
   overflow-y: auto;
   overscroll-behavior-y: none;
-  width: var(--p-flyout-width, fit-content);
+  width: var(--p-flyout-width, auto);
+  height: 100%;
   min-width: 320px;
   max-width: var(--p-flyout-max-width, 1180px);
   color: #FBFCFF;
@@ -136,12 +109,6 @@ dialog {
   transform: translate3d(100%, 0, 0);
   transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.4,0,0.5,1) var(--p-transition-duration, 0.6s), transform var(--p-transition-duration, 0.6s) cubic-bezier(0.4,0,0.5,1);
   box-shadow: -3px 0px 30px rgba(0, 0, 0, 0.25);
-}
-dialog:focus-visible {
-  outline: none;
-}
-dialog::backdrop {
-  opacity: 0;
 }
 .header {
   position: sticky;
@@ -165,7 +132,6 @@ dialog::backdrop {
   padding: 16px clamp(32px, 2.75vw + 23px, 76px);
   position: relative;
   z-index: 0;
-  flex-grow: 1;
   background-color: #0E0E12;
 }
 .sub-footer {
@@ -175,14 +141,12 @@ dialog::backdrop {
 
 exports[`getComponentCss() should return correct css for isOpen: false, position: end, hasFooter: true, hasSubFooter: true, theme: dark 1`] = `
 ":host {
-  display: block;
+  display: flex;
   --pds-internal-grid-outer-column: calc(clamp(32px, 2.75vw + 23px, 76px) - clamp(16px, 1.25vw + 12px, 36px)) !important;
   --pds-internal-grid-margin: calc(clamp(32px, 2.75vw + 23px, 76px) * -1) !important;
+  justify-content: flex-end !important;
   position: fixed !important;
-  top: 0 !important;
-  left: 0 !important;
-  right: 0 !important;
-  bottom: 0 !important;
+  inset: 0 !important;
   z-index: 99998 !important;
   background: rgba(38, 38, 41, 0.67) !important;
   visibility: hidden !important;
@@ -196,23 +160,15 @@ exports[`getComponentCss() should return correct css for isOpen: false, position
 :host([hidden]) {
   display: none !important;
 }
-dialog {
-  position: fixed;
-  inset-inline: auto 0;
-  inset-block: 0 0;
+.root {
+  position: relative;
   display: flex;
-  height: 100vh;
-  max-height: 100vh;
-  margin: 0;
-  padding: 0;
-  border: 0;
-  visibility: inherit;
-  overflow: hidden;
   flex-direction: column;
   box-sizing: border-box;
   overflow-y: auto;
   overscroll-behavior-y: none;
-  width: var(--p-flyout-width, fit-content);
+  width: var(--p-flyout-width, auto);
+  height: 100%;
   min-width: 320px;
   max-width: var(--p-flyout-max-width, 1180px);
   color: #FBFCFF;
@@ -221,12 +177,6 @@ dialog {
   transform: translate3d(100%, 0, 0);
   transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.4,0,0.5,1) var(--p-transition-duration, 0.6s), transform var(--p-transition-duration, 0.6s) cubic-bezier(0.4,0,0.5,1);
   box-shadow: -3px 0px 30px rgba(0, 0, 0, 0.25);
-}
-dialog:focus-visible {
-  outline: none;
-}
-dialog::backdrop {
-  opacity: 0;
 }
 .header {
   position: sticky;
@@ -250,7 +200,6 @@ dialog::backdrop {
   padding: 16px clamp(32px, 2.75vw + 23px, 76px);
   position: relative;
   z-index: 0;
-  flex-grow: 1;
   background-color: #0E0E12;
 }
 .footer {
@@ -270,14 +219,12 @@ dialog::backdrop {
 
 exports[`getComponentCss() should return correct css for isOpen: false, position: left, hasFooter: false, hasSubFooter: false, theme: light 1`] = `
 ":host {
-  display: block;
+  display: flex;
   --pds-internal-grid-outer-column: calc(clamp(32px, 2.75vw + 23px, 76px) - clamp(16px, 1.25vw + 12px, 36px)) !important;
   --pds-internal-grid-margin: calc(clamp(32px, 2.75vw + 23px, 76px) * -1) !important;
+  justify-content: flex-end !important;
   position: fixed !important;
-  top: 0 !important;
-  left: 0 !important;
-  right: 0 !important;
-  bottom: 0 !important;
+  inset: 0 !important;
   z-index: 99998 !important;
   background: rgba(1, 2, 5, 0.67) !important;
   visibility: hidden !important;
@@ -291,21 +238,13 @@ exports[`getComponentCss() should return correct css for isOpen: false, position
 :host([hidden]) {
   display: none !important;
 }
-dialog {
-  position: fixed;
-  inset-inline: auto 0;
-  inset-block: 0 0;
+.root {
+  position: relative;
   display: flex;
-  height: 100vh;
-  max-height: 100vh;
-  margin: 0;
-  padding: 0;
-  border: 0;
-  visibility: inherit;
-  overflow: hidden;
   flex-direction: column;
   box-sizing: border-box;
-  width: var(--p-flyout-width, fit-content);
+  width: var(--p-flyout-width, auto);
+  height: 100%;
   min-width: 320px;
   max-width: var(--p-flyout-max-width, 1180px);
   color: #010205;
@@ -314,12 +253,6 @@ dialog {
   transform: translate3d(100%, 0, 0);
   transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.4,0,0.5,1) var(--p-transition-duration, 0.6s), transform var(--p-transition-duration, 0.6s) cubic-bezier(0.4,0,0.5,1);
   box-shadow: -3px 0px 30px rgba(0, 0, 0, 0.25);
-}
-dialog:focus-visible {
-  outline: none;
-}
-dialog::backdrop {
-  opacity: 0;
 }
 .header {
   position: sticky;
@@ -343,7 +276,6 @@ dialog::backdrop {
   padding: 16px clamp(32px, 2.75vw + 23px, 76px);
   position: relative;
   z-index: 0;
-  flex-grow: 1;
   background-color: #FFF;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
@@ -358,14 +290,12 @@ dialog::backdrop {
 
 exports[`getComponentCss() should return correct css for isOpen: false, position: right, hasFooter: false, hasSubFooter: false, theme: light 1`] = `
 ":host {
-  display: block;
+  display: flex;
   --pds-internal-grid-outer-column: calc(clamp(32px, 2.75vw + 23px, 76px) - clamp(16px, 1.25vw + 12px, 36px)) !important;
   --pds-internal-grid-margin: calc(clamp(32px, 2.75vw + 23px, 76px) * -1) !important;
+  justify-content: flex-end !important;
   position: fixed !important;
-  top: 0 !important;
-  left: 0 !important;
-  right: 0 !important;
-  bottom: 0 !important;
+  inset: 0 !important;
   z-index: 99998 !important;
   background: rgba(1, 2, 5, 0.67) !important;
   visibility: hidden !important;
@@ -379,21 +309,13 @@ exports[`getComponentCss() should return correct css for isOpen: false, position
 :host([hidden]) {
   display: none !important;
 }
-dialog {
-  position: fixed;
-  inset-inline: auto 0;
-  inset-block: 0 0;
+.root {
+  position: relative;
   display: flex;
-  height: 100vh;
-  max-height: 100vh;
-  margin: 0;
-  padding: 0;
-  border: 0;
-  visibility: inherit;
-  overflow: hidden;
   flex-direction: column;
   box-sizing: border-box;
-  width: var(--p-flyout-width, fit-content);
+  width: var(--p-flyout-width, auto);
+  height: 100%;
   min-width: 320px;
   max-width: var(--p-flyout-max-width, 1180px);
   color: #010205;
@@ -402,12 +324,6 @@ dialog {
   transform: translate3d(100%, 0, 0);
   transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.4,0,0.5,1) var(--p-transition-duration, 0.6s), transform var(--p-transition-duration, 0.6s) cubic-bezier(0.4,0,0.5,1);
   box-shadow: -3px 0px 30px rgba(0, 0, 0, 0.25);
-}
-dialog:focus-visible {
-  outline: none;
-}
-dialog::backdrop {
-  opacity: 0;
 }
 .header {
   position: sticky;
@@ -431,7 +347,6 @@ dialog::backdrop {
   padding: 16px clamp(32px, 2.75vw + 23px, 76px);
   position: relative;
   z-index: 0;
-  flex-grow: 1;
   background-color: #FFF;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
@@ -446,14 +361,12 @@ dialog::backdrop {
 
 exports[`getComponentCss() should return correct css for isOpen: false, position: start, hasFooter: false, hasSubFooter: false, theme: light 1`] = `
 ":host {
-  display: block;
+  display: flex;
   --pds-internal-grid-outer-column: calc(clamp(32px, 2.75vw + 23px, 76px) - clamp(16px, 1.25vw + 12px, 36px)) !important;
   --pds-internal-grid-margin: calc(clamp(32px, 2.75vw + 23px, 76px) * -1) !important;
+  justify-content: flex-start !important;
   position: fixed !important;
-  top: 0 !important;
-  left: 0 !important;
-  right: 0 !important;
-  bottom: 0 !important;
+  inset: 0 !important;
   z-index: 99998 !important;
   background: rgba(1, 2, 5, 0.67) !important;
   visibility: hidden !important;
@@ -467,21 +380,13 @@ exports[`getComponentCss() should return correct css for isOpen: false, position
 :host([hidden]) {
   display: none !important;
 }
-dialog {
-  position: fixed;
-  inset-inline: 0 0;
-  inset-block: 0 0;
+.root {
+  position: relative;
   display: flex;
-  height: 100vh;
-  max-height: 100vh;
-  margin: 0;
-  padding: 0;
-  border: 0;
-  visibility: inherit;
-  overflow: hidden;
   flex-direction: column;
   box-sizing: border-box;
-  width: var(--p-flyout-width, fit-content);
+  width: var(--p-flyout-width, auto);
+  height: 100%;
   min-width: 320px;
   max-width: var(--p-flyout-max-width, 1180px);
   color: #010205;
@@ -490,12 +395,6 @@ dialog {
   transform: translate3d(-100%, 0, 0);
   transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.4,0,0.5,1) var(--p-transition-duration, 0.6s), transform var(--p-transition-duration, 0.6s) cubic-bezier(0.4,0,0.5,1);
   box-shadow: 3px 0px 30px rgba(0, 0, 0, 0.25);
-}
-dialog:focus-visible {
-  outline: none;
-}
-dialog::backdrop {
-  opacity: 0;
 }
 .header {
   position: sticky;
@@ -519,7 +418,6 @@ dialog::backdrop {
   padding: 16px clamp(32px, 2.75vw + 23px, 76px);
   position: relative;
   z-index: 0;
-  flex-grow: 1;
   background-color: #FFF;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
@@ -534,14 +432,12 @@ dialog::backdrop {
 
 exports[`getComponentCss() should return correct css for isOpen: false, position: start, hasFooter: false, hasSubFooter: true, theme: dark 1`] = `
 ":host {
-  display: block;
+  display: flex;
   --pds-internal-grid-outer-column: calc(clamp(32px, 2.75vw + 23px, 76px) - clamp(16px, 1.25vw + 12px, 36px)) !important;
   --pds-internal-grid-margin: calc(clamp(32px, 2.75vw + 23px, 76px) * -1) !important;
+  justify-content: flex-start !important;
   position: fixed !important;
-  top: 0 !important;
-  left: 0 !important;
-  right: 0 !important;
-  bottom: 0 !important;
+  inset: 0 !important;
   z-index: 99998 !important;
   background: rgba(38, 38, 41, 0.67) !important;
   visibility: hidden !important;
@@ -555,23 +451,15 @@ exports[`getComponentCss() should return correct css for isOpen: false, position
 :host([hidden]) {
   display: none !important;
 }
-dialog {
-  position: fixed;
-  inset-inline: 0 0;
-  inset-block: 0 0;
+.root {
+  position: relative;
   display: flex;
-  height: 100vh;
-  max-height: 100vh;
-  margin: 0;
-  padding: 0;
-  border: 0;
-  visibility: inherit;
-  overflow: hidden;
   flex-direction: column;
   box-sizing: border-box;
   overflow-y: auto;
   overscroll-behavior-y: none;
-  width: var(--p-flyout-width, fit-content);
+  width: var(--p-flyout-width, auto);
+  height: 100%;
   min-width: 320px;
   max-width: var(--p-flyout-max-width, 1180px);
   color: #FBFCFF;
@@ -580,12 +468,6 @@ dialog {
   transform: translate3d(-100%, 0, 0);
   transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.4,0,0.5,1) var(--p-transition-duration, 0.6s), transform var(--p-transition-duration, 0.6s) cubic-bezier(0.4,0,0.5,1);
   box-shadow: 3px 0px 30px rgba(0, 0, 0, 0.25);
-}
-dialog:focus-visible {
-  outline: none;
-}
-dialog::backdrop {
-  opacity: 0;
 }
 .header {
   position: sticky;
@@ -609,7 +491,6 @@ dialog::backdrop {
   padding: 16px clamp(32px, 2.75vw + 23px, 76px);
   position: relative;
   z-index: 0;
-  flex-grow: 1;
   background-color: #0E0E12;
 }
 .sub-footer {
@@ -619,14 +500,12 @@ dialog::backdrop {
 
 exports[`getComponentCss() should return correct css for isOpen: false, position: start, hasFooter: true, hasSubFooter: true, theme: dark 1`] = `
 ":host {
-  display: block;
+  display: flex;
   --pds-internal-grid-outer-column: calc(clamp(32px, 2.75vw + 23px, 76px) - clamp(16px, 1.25vw + 12px, 36px)) !important;
   --pds-internal-grid-margin: calc(clamp(32px, 2.75vw + 23px, 76px) * -1) !important;
+  justify-content: flex-start !important;
   position: fixed !important;
-  top: 0 !important;
-  left: 0 !important;
-  right: 0 !important;
-  bottom: 0 !important;
+  inset: 0 !important;
   z-index: 99998 !important;
   background: rgba(38, 38, 41, 0.67) !important;
   visibility: hidden !important;
@@ -640,23 +519,15 @@ exports[`getComponentCss() should return correct css for isOpen: false, position
 :host([hidden]) {
   display: none !important;
 }
-dialog {
-  position: fixed;
-  inset-inline: 0 0;
-  inset-block: 0 0;
+.root {
+  position: relative;
   display: flex;
-  height: 100vh;
-  max-height: 100vh;
-  margin: 0;
-  padding: 0;
-  border: 0;
-  visibility: inherit;
-  overflow: hidden;
   flex-direction: column;
   box-sizing: border-box;
   overflow-y: auto;
   overscroll-behavior-y: none;
-  width: var(--p-flyout-width, fit-content);
+  width: var(--p-flyout-width, auto);
+  height: 100%;
   min-width: 320px;
   max-width: var(--p-flyout-max-width, 1180px);
   color: #FBFCFF;
@@ -665,12 +536,6 @@ dialog {
   transform: translate3d(-100%, 0, 0);
   transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.4,0,0.5,1) var(--p-transition-duration, 0.6s), transform var(--p-transition-duration, 0.6s) cubic-bezier(0.4,0,0.5,1);
   box-shadow: 3px 0px 30px rgba(0, 0, 0, 0.25);
-}
-dialog:focus-visible {
-  outline: none;
-}
-dialog::backdrop {
-  opacity: 0;
 }
 .header {
   position: sticky;
@@ -694,7 +559,6 @@ dialog::backdrop {
   padding: 16px clamp(32px, 2.75vw + 23px, 76px);
   position: relative;
   z-index: 0;
-  flex-grow: 1;
   background-color: #0E0E12;
 }
 .footer {
@@ -714,14 +578,12 @@ dialog::backdrop {
 
 exports[`getComponentCss() should return correct css for isOpen: true, position: end, hasFooter: false, hasSubFooter: false, theme: auto 1`] = `
 ":host {
-  display: block;
+  display: flex;
   --pds-internal-grid-outer-column: calc(clamp(32px, 2.75vw + 23px, 76px) - clamp(16px, 1.25vw + 12px, 36px)) !important;
   --pds-internal-grid-margin: calc(clamp(32px, 2.75vw + 23px, 76px) * -1) !important;
+  justify-content: flex-end !important;
   position: fixed !important;
-  top: 0 !important;
-  left: 0 !important;
-  right: 0 !important;
-  bottom: 0 !important;
+  inset: 0 !important;
   z-index: 99998 !important;
   background: rgba(1, 2, 5, 0.67) !important;
   visibility: inherit !important;
@@ -735,21 +597,19 @@ exports[`getComponentCss() should return correct css for isOpen: true, position:
 :host([hidden]) {
   display: none !important;
 }
-dialog {
-  position: fixed;
-  inset-inline: auto 0;
-  inset-block: 0 0;
+@media (prefers-color-scheme: dark) {
+  :host {
+    background: rgba(38, 38, 41, 0.67) !important;
+  }
+}
+
+.root {
+  position: relative;
   display: flex;
-  height: 100vh;
-  max-height: 100vh;
-  margin: 0;
-  padding: 0;
-  border: 0;
-  visibility: inherit;
-  overflow: hidden;
   flex-direction: column;
   box-sizing: border-box;
-  width: var(--p-flyout-width, fit-content);
+  width: var(--p-flyout-width, auto);
+  height: 100%;
   min-width: 320px;
   max-width: var(--p-flyout-max-width, 1180px);
   color: #010205;
@@ -759,22 +619,6 @@ dialog {
   transition: opacity var(--p-transition-duration, 0.6s) cubic-bezier(0,0,0.2,1), transform var(--p-transition-duration, 0.6s) cubic-bezier(0,0,0.2,1);
   box-shadow: -3px 0px 30px rgba(0, 0, 0, 0.25);
 }
-dialog:focus-visible {
-  outline: none;
-}
-dialog::backdrop {
-  opacity: 0;
-}
-@media (prefers-color-scheme: dark) {
-  :host {
-    background: rgba(38, 38, 41, 0.67) !important;
-  }
-  dialog {
-    color: #FBFCFF;
-    background: #0E0E12;
-  }
-}
-
 .header {
   position: sticky;
   top: 0;
@@ -797,7 +641,6 @@ dialog::backdrop {
   padding: 16px clamp(32px, 2.75vw + 23px, 76px);
   position: relative;
   z-index: 0;
-  flex-grow: 1;
   background-color: #FFF;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
@@ -809,6 +652,10 @@ dialog::backdrop {
   overscroll-behavior-y: none;
 }
 @media (prefers-color-scheme: dark) {
+  .root {
+    color: #FBFCFF;
+    background: #0E0E12;
+  }
   .header {
     background: #0E0E12;
   }
@@ -825,14 +672,12 @@ dialog::backdrop {
 
 exports[`getComponentCss() should return correct css for isOpen: true, position: end, hasFooter: false, hasSubFooter: false, theme: dark 1`] = `
 ":host {
-  display: block;
+  display: flex;
   --pds-internal-grid-outer-column: calc(clamp(32px, 2.75vw + 23px, 76px) - clamp(16px, 1.25vw + 12px, 36px)) !important;
   --pds-internal-grid-margin: calc(clamp(32px, 2.75vw + 23px, 76px) * -1) !important;
+  justify-content: flex-end !important;
   position: fixed !important;
-  top: 0 !important;
-  left: 0 !important;
-  right: 0 !important;
-  bottom: 0 !important;
+  inset: 0 !important;
   z-index: 99998 !important;
   background: rgba(38, 38, 41, 0.67) !important;
   visibility: inherit !important;
@@ -846,21 +691,13 @@ exports[`getComponentCss() should return correct css for isOpen: true, position:
 :host([hidden]) {
   display: none !important;
 }
-dialog {
-  position: fixed;
-  inset-inline: auto 0;
-  inset-block: 0 0;
+.root {
+  position: relative;
   display: flex;
-  height: 100vh;
-  max-height: 100vh;
-  margin: 0;
-  padding: 0;
-  border: 0;
-  visibility: inherit;
-  overflow: hidden;
   flex-direction: column;
   box-sizing: border-box;
-  width: var(--p-flyout-width, fit-content);
+  width: var(--p-flyout-width, auto);
+  height: 100%;
   min-width: 320px;
   max-width: var(--p-flyout-max-width, 1180px);
   color: #FBFCFF;
@@ -869,12 +706,6 @@ dialog {
   transform: initial;
   transition: opacity var(--p-transition-duration, 0.6s) cubic-bezier(0,0,0.2,1), transform var(--p-transition-duration, 0.6s) cubic-bezier(0,0,0.2,1);
   box-shadow: -3px 0px 30px rgba(0, 0, 0, 0.25);
-}
-dialog:focus-visible {
-  outline: none;
-}
-dialog::backdrop {
-  opacity: 0;
 }
 .header {
   position: sticky;
@@ -898,7 +729,6 @@ dialog::backdrop {
   padding: 16px clamp(32px, 2.75vw + 23px, 76px);
   position: relative;
   z-index: 0;
-  flex-grow: 1;
   background-color: #0E0E12;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
@@ -913,14 +743,12 @@ dialog::backdrop {
 
 exports[`getComponentCss() should return correct css for isOpen: true, position: end, hasFooter: false, hasSubFooter: false, theme: light 1`] = `
 ":host {
-  display: block;
+  display: flex;
   --pds-internal-grid-outer-column: calc(clamp(32px, 2.75vw + 23px, 76px) - clamp(16px, 1.25vw + 12px, 36px)) !important;
   --pds-internal-grid-margin: calc(clamp(32px, 2.75vw + 23px, 76px) * -1) !important;
+  justify-content: flex-end !important;
   position: fixed !important;
-  top: 0 !important;
-  left: 0 !important;
-  right: 0 !important;
-  bottom: 0 !important;
+  inset: 0 !important;
   z-index: 99998 !important;
   background: rgba(1, 2, 5, 0.67) !important;
   visibility: inherit !important;
@@ -934,21 +762,13 @@ exports[`getComponentCss() should return correct css for isOpen: true, position:
 :host([hidden]) {
   display: none !important;
 }
-dialog {
-  position: fixed;
-  inset-inline: auto 0;
-  inset-block: 0 0;
+.root {
+  position: relative;
   display: flex;
-  height: 100vh;
-  max-height: 100vh;
-  margin: 0;
-  padding: 0;
-  border: 0;
-  visibility: inherit;
-  overflow: hidden;
   flex-direction: column;
   box-sizing: border-box;
-  width: var(--p-flyout-width, fit-content);
+  width: var(--p-flyout-width, auto);
+  height: 100%;
   min-width: 320px;
   max-width: var(--p-flyout-max-width, 1180px);
   color: #010205;
@@ -957,12 +777,6 @@ dialog {
   transform: initial;
   transition: opacity var(--p-transition-duration, 0.6s) cubic-bezier(0,0,0.2,1), transform var(--p-transition-duration, 0.6s) cubic-bezier(0,0,0.2,1);
   box-shadow: -3px 0px 30px rgba(0, 0, 0, 0.25);
-}
-dialog:focus-visible {
-  outline: none;
-}
-dialog::backdrop {
-  opacity: 0;
 }
 .header {
   position: sticky;
@@ -986,7 +800,6 @@ dialog::backdrop {
   padding: 16px clamp(32px, 2.75vw + 23px, 76px);
   position: relative;
   z-index: 0;
-  flex-grow: 1;
   background-color: #FFF;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
@@ -1001,14 +814,12 @@ dialog::backdrop {
 
 exports[`getComponentCss() should return correct css for isOpen: true, position: end, hasFooter: false, hasSubFooter: true, theme: auto 1`] = `
 ":host {
-  display: block;
+  display: flex;
   --pds-internal-grid-outer-column: calc(clamp(32px, 2.75vw + 23px, 76px) - clamp(16px, 1.25vw + 12px, 36px)) !important;
   --pds-internal-grid-margin: calc(clamp(32px, 2.75vw + 23px, 76px) * -1) !important;
+  justify-content: flex-end !important;
   position: fixed !important;
-  top: 0 !important;
-  left: 0 !important;
-  right: 0 !important;
-  bottom: 0 !important;
+  inset: 0 !important;
   z-index: 99998 !important;
   background: rgba(1, 2, 5, 0.67) !important;
   visibility: inherit !important;
@@ -1022,23 +833,21 @@ exports[`getComponentCss() should return correct css for isOpen: true, position:
 :host([hidden]) {
   display: none !important;
 }
-dialog {
-  position: fixed;
-  inset-inline: auto 0;
-  inset-block: 0 0;
+@media (prefers-color-scheme: dark) {
+  :host {
+    background: rgba(38, 38, 41, 0.67) !important;
+  }
+}
+
+.root {
+  position: relative;
   display: flex;
-  height: 100vh;
-  max-height: 100vh;
-  margin: 0;
-  padding: 0;
-  border: 0;
-  visibility: inherit;
-  overflow: hidden;
   flex-direction: column;
   box-sizing: border-box;
   overflow-y: auto;
   overscroll-behavior-y: none;
-  width: var(--p-flyout-width, fit-content);
+  width: var(--p-flyout-width, auto);
+  height: 100%;
   min-width: 320px;
   max-width: var(--p-flyout-max-width, 1180px);
   color: #010205;
@@ -1048,22 +857,6 @@ dialog {
   transition: opacity var(--p-transition-duration, 0.6s) cubic-bezier(0,0,0.2,1), transform var(--p-transition-duration, 0.6s) cubic-bezier(0,0,0.2,1);
   box-shadow: -3px 0px 30px rgba(0, 0, 0, 0.25);
 }
-dialog:focus-visible {
-  outline: none;
-}
-dialog::backdrop {
-  opacity: 0;
-}
-@media (prefers-color-scheme: dark) {
-  :host {
-    background: rgba(38, 38, 41, 0.67) !important;
-  }
-  dialog {
-    color: #FBFCFF;
-    background: #0E0E12;
-  }
-}
-
 .header {
   position: sticky;
   top: 0;
@@ -1086,13 +879,16 @@ dialog::backdrop {
   padding: 16px clamp(32px, 2.75vw + 23px, 76px);
   position: relative;
   z-index: 0;
-  flex-grow: 1;
   background-color: #FFF;
 }
 .sub-footer {
   padding: 16px clamp(32px, 2.75vw + 23px, 76px);
 }
 @media (prefers-color-scheme: dark) {
+  .root {
+    color: #FBFCFF;
+    background: #0E0E12;
+  }
   .header {
     background: #0E0E12;
   }
@@ -1108,14 +904,12 @@ dialog::backdrop {
 
 exports[`getComponentCss() should return correct css for isOpen: true, position: end, hasFooter: true, hasSubFooter: false, theme: dark 1`] = `
 ":host {
-  display: block;
+  display: flex;
   --pds-internal-grid-outer-column: calc(clamp(32px, 2.75vw + 23px, 76px) - clamp(16px, 1.25vw + 12px, 36px)) !important;
   --pds-internal-grid-margin: calc(clamp(32px, 2.75vw + 23px, 76px) * -1) !important;
+  justify-content: flex-end !important;
   position: fixed !important;
-  top: 0 !important;
-  left: 0 !important;
-  right: 0 !important;
-  bottom: 0 !important;
+  inset: 0 !important;
   z-index: 99998 !important;
   background: rgba(38, 38, 41, 0.67) !important;
   visibility: inherit !important;
@@ -1129,21 +923,13 @@ exports[`getComponentCss() should return correct css for isOpen: true, position:
 :host([hidden]) {
   display: none !important;
 }
-dialog {
-  position: fixed;
-  inset-inline: auto 0;
-  inset-block: 0 0;
+.root {
+  position: relative;
   display: flex;
-  height: 100vh;
-  max-height: 100vh;
-  margin: 0;
-  padding: 0;
-  border: 0;
-  visibility: inherit;
-  overflow: hidden;
   flex-direction: column;
   box-sizing: border-box;
-  width: var(--p-flyout-width, fit-content);
+  width: var(--p-flyout-width, auto);
+  height: 100%;
   min-width: 320px;
   max-width: var(--p-flyout-max-width, 1180px);
   color: #FBFCFF;
@@ -1152,12 +938,6 @@ dialog {
   transform: initial;
   transition: opacity var(--p-transition-duration, 0.6s) cubic-bezier(0,0,0.2,1), transform var(--p-transition-duration, 0.6s) cubic-bezier(0,0,0.2,1);
   box-shadow: -3px 0px 30px rgba(0, 0, 0, 0.25);
-}
-dialog:focus-visible {
-  outline: none;
-}
-dialog::backdrop {
-  opacity: 0;
 }
 .header {
   position: sticky;
@@ -1181,7 +961,6 @@ dialog::backdrop {
   padding: 16px clamp(32px, 2.75vw + 23px, 76px);
   position: relative;
   z-index: 0;
-  flex-grow: 1;
   background-color: #0E0E12;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
@@ -1206,14 +985,12 @@ dialog::backdrop {
 
 exports[`getComponentCss() should return correct css for isOpen: true, position: end, hasFooter: true, hasSubFooter: false, theme: light 1`] = `
 ":host {
-  display: block;
+  display: flex;
   --pds-internal-grid-outer-column: calc(clamp(32px, 2.75vw + 23px, 76px) - clamp(16px, 1.25vw + 12px, 36px)) !important;
   --pds-internal-grid-margin: calc(clamp(32px, 2.75vw + 23px, 76px) * -1) !important;
+  justify-content: flex-end !important;
   position: fixed !important;
-  top: 0 !important;
-  left: 0 !important;
-  right: 0 !important;
-  bottom: 0 !important;
+  inset: 0 !important;
   z-index: 99998 !important;
   background: rgba(1, 2, 5, 0.67) !important;
   visibility: inherit !important;
@@ -1227,21 +1004,13 @@ exports[`getComponentCss() should return correct css for isOpen: true, position:
 :host([hidden]) {
   display: none !important;
 }
-dialog {
-  position: fixed;
-  inset-inline: auto 0;
-  inset-block: 0 0;
+.root {
+  position: relative;
   display: flex;
-  height: 100vh;
-  max-height: 100vh;
-  margin: 0;
-  padding: 0;
-  border: 0;
-  visibility: inherit;
-  overflow: hidden;
   flex-direction: column;
   box-sizing: border-box;
-  width: var(--p-flyout-width, fit-content);
+  width: var(--p-flyout-width, auto);
+  height: 100%;
   min-width: 320px;
   max-width: var(--p-flyout-max-width, 1180px);
   color: #010205;
@@ -1250,12 +1019,6 @@ dialog {
   transform: initial;
   transition: opacity var(--p-transition-duration, 0.6s) cubic-bezier(0,0,0.2,1), transform var(--p-transition-duration, 0.6s) cubic-bezier(0,0,0.2,1);
   box-shadow: -3px 0px 30px rgba(0, 0, 0, 0.25);
-}
-dialog:focus-visible {
-  outline: none;
-}
-dialog::backdrop {
-  opacity: 0;
 }
 .header {
   position: sticky;
@@ -1279,7 +1042,6 @@ dialog::backdrop {
   padding: 16px clamp(32px, 2.75vw + 23px, 76px);
   position: relative;
   z-index: 0;
-  flex-grow: 1;
   background-color: #FFF;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
@@ -1304,14 +1066,12 @@ dialog::backdrop {
 
 exports[`getComponentCss() should return correct css for isOpen: true, position: end, hasFooter: true, hasSubFooter: true, theme: light 1`] = `
 ":host {
-  display: block;
+  display: flex;
   --pds-internal-grid-outer-column: calc(clamp(32px, 2.75vw + 23px, 76px) - clamp(16px, 1.25vw + 12px, 36px)) !important;
   --pds-internal-grid-margin: calc(clamp(32px, 2.75vw + 23px, 76px) * -1) !important;
+  justify-content: flex-end !important;
   position: fixed !important;
-  top: 0 !important;
-  left: 0 !important;
-  right: 0 !important;
-  bottom: 0 !important;
+  inset: 0 !important;
   z-index: 99998 !important;
   background: rgba(1, 2, 5, 0.67) !important;
   visibility: inherit !important;
@@ -1325,23 +1085,15 @@ exports[`getComponentCss() should return correct css for isOpen: true, position:
 :host([hidden]) {
   display: none !important;
 }
-dialog {
-  position: fixed;
-  inset-inline: auto 0;
-  inset-block: 0 0;
+.root {
+  position: relative;
   display: flex;
-  height: 100vh;
-  max-height: 100vh;
-  margin: 0;
-  padding: 0;
-  border: 0;
-  visibility: inherit;
-  overflow: hidden;
   flex-direction: column;
   box-sizing: border-box;
   overflow-y: auto;
   overscroll-behavior-y: none;
-  width: var(--p-flyout-width, fit-content);
+  width: var(--p-flyout-width, auto);
+  height: 100%;
   min-width: 320px;
   max-width: var(--p-flyout-max-width, 1180px);
   color: #010205;
@@ -1350,12 +1102,6 @@ dialog {
   transform: initial;
   transition: opacity var(--p-transition-duration, 0.6s) cubic-bezier(0,0,0.2,1), transform var(--p-transition-duration, 0.6s) cubic-bezier(0,0,0.2,1);
   box-shadow: -3px 0px 30px rgba(0, 0, 0, 0.25);
-}
-dialog:focus-visible {
-  outline: none;
-}
-dialog::backdrop {
-  opacity: 0;
 }
 .header {
   position: sticky;
@@ -1379,7 +1125,6 @@ dialog::backdrop {
   padding: 16px clamp(32px, 2.75vw + 23px, 76px);
   position: relative;
   z-index: 0;
-  flex-grow: 1;
   background-color: #FFF;
 }
 .footer {
@@ -1399,14 +1144,12 @@ dialog::backdrop {
 
 exports[`getComponentCss() should return correct css for isOpen: true, position: start, hasFooter: false, hasSubFooter: false, theme: dark 1`] = `
 ":host {
-  display: block;
+  display: flex;
   --pds-internal-grid-outer-column: calc(clamp(32px, 2.75vw + 23px, 76px) - clamp(16px, 1.25vw + 12px, 36px)) !important;
   --pds-internal-grid-margin: calc(clamp(32px, 2.75vw + 23px, 76px) * -1) !important;
+  justify-content: flex-start !important;
   position: fixed !important;
-  top: 0 !important;
-  left: 0 !important;
-  right: 0 !important;
-  bottom: 0 !important;
+  inset: 0 !important;
   z-index: 99998 !important;
   background: rgba(38, 38, 41, 0.67) !important;
   visibility: inherit !important;
@@ -1420,21 +1163,13 @@ exports[`getComponentCss() should return correct css for isOpen: true, position:
 :host([hidden]) {
   display: none !important;
 }
-dialog {
-  position: fixed;
-  inset-inline: 0 0;
-  inset-block: 0 0;
+.root {
+  position: relative;
   display: flex;
-  height: 100vh;
-  max-height: 100vh;
-  margin: 0;
-  padding: 0;
-  border: 0;
-  visibility: inherit;
-  overflow: hidden;
   flex-direction: column;
   box-sizing: border-box;
-  width: var(--p-flyout-width, fit-content);
+  width: var(--p-flyout-width, auto);
+  height: 100%;
   min-width: 320px;
   max-width: var(--p-flyout-max-width, 1180px);
   color: #FBFCFF;
@@ -1443,12 +1178,6 @@ dialog {
   transform: initial;
   transition: opacity var(--p-transition-duration, 0.6s) cubic-bezier(0,0,0.2,1), transform var(--p-transition-duration, 0.6s) cubic-bezier(0,0,0.2,1);
   box-shadow: 3px 0px 30px rgba(0, 0, 0, 0.25);
-}
-dialog:focus-visible {
-  outline: none;
-}
-dialog::backdrop {
-  opacity: 0;
 }
 .header {
   position: sticky;
@@ -1472,7 +1201,6 @@ dialog::backdrop {
   padding: 16px clamp(32px, 2.75vw + 23px, 76px);
   position: relative;
   z-index: 0;
-  flex-grow: 1;
   background-color: #0E0E12;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
@@ -1487,14 +1215,12 @@ dialog::backdrop {
 
 exports[`getComponentCss() should return correct css for isOpen: true, position: start, hasFooter: false, hasSubFooter: false, theme: light 1`] = `
 ":host {
-  display: block;
+  display: flex;
   --pds-internal-grid-outer-column: calc(clamp(32px, 2.75vw + 23px, 76px) - clamp(16px, 1.25vw + 12px, 36px)) !important;
   --pds-internal-grid-margin: calc(clamp(32px, 2.75vw + 23px, 76px) * -1) !important;
+  justify-content: flex-start !important;
   position: fixed !important;
-  top: 0 !important;
-  left: 0 !important;
-  right: 0 !important;
-  bottom: 0 !important;
+  inset: 0 !important;
   z-index: 99998 !important;
   background: rgba(1, 2, 5, 0.67) !important;
   visibility: inherit !important;
@@ -1508,21 +1234,13 @@ exports[`getComponentCss() should return correct css for isOpen: true, position:
 :host([hidden]) {
   display: none !important;
 }
-dialog {
-  position: fixed;
-  inset-inline: 0 0;
-  inset-block: 0 0;
+.root {
+  position: relative;
   display: flex;
-  height: 100vh;
-  max-height: 100vh;
-  margin: 0;
-  padding: 0;
-  border: 0;
-  visibility: inherit;
-  overflow: hidden;
   flex-direction: column;
   box-sizing: border-box;
-  width: var(--p-flyout-width, fit-content);
+  width: var(--p-flyout-width, auto);
+  height: 100%;
   min-width: 320px;
   max-width: var(--p-flyout-max-width, 1180px);
   color: #010205;
@@ -1531,12 +1249,6 @@ dialog {
   transform: initial;
   transition: opacity var(--p-transition-duration, 0.6s) cubic-bezier(0,0,0.2,1), transform var(--p-transition-duration, 0.6s) cubic-bezier(0,0,0.2,1);
   box-shadow: 3px 0px 30px rgba(0, 0, 0, 0.25);
-}
-dialog:focus-visible {
-  outline: none;
-}
-dialog::backdrop {
-  opacity: 0;
 }
 .header {
   position: sticky;
@@ -1560,7 +1272,6 @@ dialog::backdrop {
   padding: 16px clamp(32px, 2.75vw + 23px, 76px);
   position: relative;
   z-index: 0;
-  flex-grow: 1;
   background-color: #FFF;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
@@ -1575,14 +1286,12 @@ dialog::backdrop {
 
 exports[`getComponentCss() should return correct css for isOpen: true, position: start, hasFooter: true, hasSubFooter: false, theme: dark 1`] = `
 ":host {
-  display: block;
+  display: flex;
   --pds-internal-grid-outer-column: calc(clamp(32px, 2.75vw + 23px, 76px) - clamp(16px, 1.25vw + 12px, 36px)) !important;
   --pds-internal-grid-margin: calc(clamp(32px, 2.75vw + 23px, 76px) * -1) !important;
+  justify-content: flex-start !important;
   position: fixed !important;
-  top: 0 !important;
-  left: 0 !important;
-  right: 0 !important;
-  bottom: 0 !important;
+  inset: 0 !important;
   z-index: 99998 !important;
   background: rgba(38, 38, 41, 0.67) !important;
   visibility: inherit !important;
@@ -1596,21 +1305,13 @@ exports[`getComponentCss() should return correct css for isOpen: true, position:
 :host([hidden]) {
   display: none !important;
 }
-dialog {
-  position: fixed;
-  inset-inline: 0 0;
-  inset-block: 0 0;
+.root {
+  position: relative;
   display: flex;
-  height: 100vh;
-  max-height: 100vh;
-  margin: 0;
-  padding: 0;
-  border: 0;
-  visibility: inherit;
-  overflow: hidden;
   flex-direction: column;
   box-sizing: border-box;
-  width: var(--p-flyout-width, fit-content);
+  width: var(--p-flyout-width, auto);
+  height: 100%;
   min-width: 320px;
   max-width: var(--p-flyout-max-width, 1180px);
   color: #FBFCFF;
@@ -1619,12 +1320,6 @@ dialog {
   transform: initial;
   transition: opacity var(--p-transition-duration, 0.6s) cubic-bezier(0,0,0.2,1), transform var(--p-transition-duration, 0.6s) cubic-bezier(0,0,0.2,1);
   box-shadow: 3px 0px 30px rgba(0, 0, 0, 0.25);
-}
-dialog:focus-visible {
-  outline: none;
-}
-dialog::backdrop {
-  opacity: 0;
 }
 .header {
   position: sticky;
@@ -1648,7 +1343,6 @@ dialog::backdrop {
   padding: 16px clamp(32px, 2.75vw + 23px, 76px);
   position: relative;
   z-index: 0;
-  flex-grow: 1;
   background-color: #0E0E12;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
@@ -1673,14 +1367,12 @@ dialog::backdrop {
 
 exports[`getComponentCss() should return correct css for isOpen: true, position: start, hasFooter: true, hasSubFooter: false, theme: light 1`] = `
 ":host {
-  display: block;
+  display: flex;
   --pds-internal-grid-outer-column: calc(clamp(32px, 2.75vw + 23px, 76px) - clamp(16px, 1.25vw + 12px, 36px)) !important;
   --pds-internal-grid-margin: calc(clamp(32px, 2.75vw + 23px, 76px) * -1) !important;
+  justify-content: flex-start !important;
   position: fixed !important;
-  top: 0 !important;
-  left: 0 !important;
-  right: 0 !important;
-  bottom: 0 !important;
+  inset: 0 !important;
   z-index: 99998 !important;
   background: rgba(1, 2, 5, 0.67) !important;
   visibility: inherit !important;
@@ -1694,21 +1386,13 @@ exports[`getComponentCss() should return correct css for isOpen: true, position:
 :host([hidden]) {
   display: none !important;
 }
-dialog {
-  position: fixed;
-  inset-inline: 0 0;
-  inset-block: 0 0;
+.root {
+  position: relative;
   display: flex;
-  height: 100vh;
-  max-height: 100vh;
-  margin: 0;
-  padding: 0;
-  border: 0;
-  visibility: inherit;
-  overflow: hidden;
   flex-direction: column;
   box-sizing: border-box;
-  width: var(--p-flyout-width, fit-content);
+  width: var(--p-flyout-width, auto);
+  height: 100%;
   min-width: 320px;
   max-width: var(--p-flyout-max-width, 1180px);
   color: #010205;
@@ -1717,12 +1401,6 @@ dialog {
   transform: initial;
   transition: opacity var(--p-transition-duration, 0.6s) cubic-bezier(0,0,0.2,1), transform var(--p-transition-duration, 0.6s) cubic-bezier(0,0,0.2,1);
   box-shadow: 3px 0px 30px rgba(0, 0, 0, 0.25);
-}
-dialog:focus-visible {
-  outline: none;
-}
-dialog::backdrop {
-  opacity: 0;
 }
 .header {
   position: sticky;
@@ -1746,7 +1424,6 @@ dialog::backdrop {
   padding: 16px clamp(32px, 2.75vw + 23px, 76px);
   position: relative;
   z-index: 0;
-  flex-grow: 1;
   background-color: #FFF;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
@@ -1771,14 +1448,12 @@ dialog::backdrop {
 
 exports[`getComponentCss() should return correct css for isOpen: true, position: start, hasFooter: true, hasSubFooter: true, theme: light 1`] = `
 ":host {
-  display: block;
+  display: flex;
   --pds-internal-grid-outer-column: calc(clamp(32px, 2.75vw + 23px, 76px) - clamp(16px, 1.25vw + 12px, 36px)) !important;
   --pds-internal-grid-margin: calc(clamp(32px, 2.75vw + 23px, 76px) * -1) !important;
+  justify-content: flex-start !important;
   position: fixed !important;
-  top: 0 !important;
-  left: 0 !important;
-  right: 0 !important;
-  bottom: 0 !important;
+  inset: 0 !important;
   z-index: 99998 !important;
   background: rgba(1, 2, 5, 0.67) !important;
   visibility: inherit !important;
@@ -1792,23 +1467,15 @@ exports[`getComponentCss() should return correct css for isOpen: true, position:
 :host([hidden]) {
   display: none !important;
 }
-dialog {
-  position: fixed;
-  inset-inline: 0 0;
-  inset-block: 0 0;
+.root {
+  position: relative;
   display: flex;
-  height: 100vh;
-  max-height: 100vh;
-  margin: 0;
-  padding: 0;
-  border: 0;
-  visibility: inherit;
-  overflow: hidden;
   flex-direction: column;
   box-sizing: border-box;
   overflow-y: auto;
   overscroll-behavior-y: none;
-  width: var(--p-flyout-width, fit-content);
+  width: var(--p-flyout-width, auto);
+  height: 100%;
   min-width: 320px;
   max-width: var(--p-flyout-max-width, 1180px);
   color: #010205;
@@ -1817,12 +1484,6 @@ dialog {
   transform: initial;
   transition: opacity var(--p-transition-duration, 0.6s) cubic-bezier(0,0,0.2,1), transform var(--p-transition-duration, 0.6s) cubic-bezier(0,0,0.2,1);
   box-shadow: 3px 0px 30px rgba(0, 0, 0, 0.25);
-}
-dialog:focus-visible {
-  outline: none;
-}
-dialog::backdrop {
-  opacity: 0;
 }
 .header {
   position: sticky;
@@ -1846,7 +1507,6 @@ dialog::backdrop {
   padding: 16px clamp(32px, 2.75vw + 23px, 76px);
   position: relative;
   z-index: 0;
-  flex-grow: 1;
   background-color: #FFF;
 }
 .footer {

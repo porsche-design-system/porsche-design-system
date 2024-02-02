@@ -2,8 +2,8 @@ import { type Theme } from '../types';
 import { type Styles } from 'jss';
 import { isDisabledOrLoading, isHighContrastMode, supportsChromiumMediaQuery } from '../utils';
 import {
+  getFocusJssStyle,
   getHighContrastColors,
-  getInsetJssStyle,
   getThemedColors,
   getTransition,
   hoverMediaQuery,
@@ -20,13 +20,12 @@ export const getSlottedCheckboxRadioButtonStyles = (
   isLoading: boolean,
   theme: Theme
 ): Styles => {
-  const { primaryColor, contrastMediumColor, contrastHighColor, disabledColor, focusColor } = getThemedColors(theme);
+  const { primaryColor, contrastMediumColor, contrastHighColor, disabledColor } = getThemedColors(theme);
   const {
     primaryColor: primaryColorDark,
     contrastMediumColor: contrastMediumColorDark,
     contrastHighColor: contrastHighColorDark,
     disabledColor: disabledColorDark,
-    focusColor: focusColorDark,
   } = getThemedColors('dark');
   const { formStateColor, formStateHoverColor } = getThemedFormStateColors(theme, state);
   const { formStateColor: formStateColorDark, formStateHoverColor: formStateHoverColorDark } = getThemedFormStateColors(
@@ -57,7 +56,6 @@ export const getSlottedCheckboxRadioButtonStyles = (
   return {
     '::slotted': {
       '&(input)': {
-        position: 'relative', // TODO: can be removed as soon as focus style was adjusted
         width: fontLineHeight,
         height: fontLineHeight,
         font: `${fontSizeTextSmall} ${fontFamily}`, // needed for correct width and height definition based on ex-unit
@@ -69,8 +67,8 @@ export const getSlottedCheckboxRadioButtonStyles = (
         boxSizing: 'content-box',
         background: `transparent 0% 0% / ${fontLineHeight}`,
         transition: `${getTransition('background-color')}, ${getTransition('border-color')}`,
-        border: `2px solid ${uncheckedColor}`,
-        outline: 0,
+        border: `${borderWidthBase} solid ${uncheckedColor}`,
+        outline: 0, // TODO: only relevant for VRT testing with forced states - prevents :focus style (in case getFocusJssStyle() condition is not matching)
         ...(disabledOrLoading
           ? {
               pointerEvents: 'none', // to prevent form element becomes clickable/toggleable
@@ -112,21 +110,7 @@ export const getSlottedCheckboxRadioButtonStyles = (
             transition: 'unset', // Fixes chrome bug where transition properties are stuck on hover
           }),
         })),
-      ...(!isDisabled && {
-        // TODO: can be done with getFocusStyle() in the meantime
-        '&(input:focus)::before': {
-          content: '""',
-          position: 'absolute',
-          ...getInsetJssStyle(-6),
-          border: `${borderWidthBase} solid ${focusColor}`,
-          ...prefersColorSchemeDarkMediaQuery(theme, {
-            borderColor: focusColorDark,
-          }),
-        },
-        '&(input:focus:not(:focus-visible))::before': {
-          borderColor: 'transparent',
-        },
-      }),
+      ...(!isDisabled && getFocusJssStyle(theme, { slotted: 'input' })),
     },
   };
 };

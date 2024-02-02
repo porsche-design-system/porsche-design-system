@@ -1,6 +1,6 @@
 import type { JssStyle } from 'jss';
 import { buildResponsiveStyles, getCss } from '../../utils';
-import { addImportantToRule, getInsetJssStyle } from '../../styles';
+import { addImportantToRule } from '../../styles';
 import { getFontWeight } from '../../styles/font-weight-styles';
 import {
   gradientToTopStyle,
@@ -15,8 +15,8 @@ import { getTileBaseStyles } from '../../styles/tile/tile-base-styles';
 import type { BreakpointCustomizable } from '../../types';
 import type {
   LinkTileModelSignatureAspectRatio,
-  LinkTileModelSignatureWeight,
   LinkTileModelSignatureLinkDirection,
+  LinkTileModelSignatureWeight,
 } from './link-tile-model-signature-utils';
 import { LINK_TILE_MODEL_SIGNATURE_HEADING_TAGS } from './link-tile-model-signature-utils';
 
@@ -72,7 +72,7 @@ export const getComponentCss = (
     'link-overlay': {
       // covers entire tile, used for expanded click-area only
       position: 'fixed',
-      ...getInsetJssStyle(),
+      inset: 0,
     },
   });
 };

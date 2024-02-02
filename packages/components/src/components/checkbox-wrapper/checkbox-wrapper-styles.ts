@@ -14,7 +14,6 @@ import {
   prefersColorSchemeDarkMediaQuery,
 } from '../../styles';
 import {
-  borderRadiusMedium,
   borderRadiusSmall,
   fontFamily,
   fontLineHeight,
@@ -87,11 +86,6 @@ export const getComponentCss = (
                 ...prefersColorSchemeDarkMediaQuery(theme, {
                   backgroundImage: getIndeterminateSVGBackgroundImage(indeterminateIconColorDark),
                 }),
-              },
-            }),
-            ...(!isDisabled && {
-              '&(input:focus)::before': {
-                borderRadius: borderRadiusMedium,
               },
             }),
           },

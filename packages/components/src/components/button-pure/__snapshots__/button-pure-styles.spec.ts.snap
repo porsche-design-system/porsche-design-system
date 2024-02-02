@@ -56,7 +56,6 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   padding: 0;
   margin: 0;
   color: #010205;
-  outline: 0;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
@@ -80,18 +79,19 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   border-radius: 4px;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
-.root:focus::before {
-  border: 2px solid #1A44EA;
-}
-.root:not(:focus-visible)::before {
+.root::-moz-focus-inner {
   border: 0;
+}
+.root:focus {
+  outline: 0;
+}
+.root:focus-visible::before {
+  outline: 2px solid #1A44EA;
+  outline-offset: -2px;
 }
 .label {
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  inset: 0;
   white-space: nowrap;
   text-indent: -999999px;
   order: -1;
@@ -131,10 +131,7 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   }
   .label {
     position: relative;
-    top: auto;
-    left: auto;
-    right: auto;
-    bottom: auto;
+    inset: auto;
     white-space: inherit;
     text-indent: 0;
     z-index: 1;
@@ -154,10 +151,7 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   }
   .label {
     position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
+    inset: 0;
     white-space: nowrap;
     text-indent: -999999px;
     order: -1;
@@ -176,10 +170,7 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   }
   .label {
     position: relative;
-    top: auto;
-    left: auto;
-    right: auto;
-    bottom: auto;
+    inset: auto;
     white-space: inherit;
     text-indent: 0;
     z-index: 1;
@@ -199,10 +190,7 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   }
   .label {
     position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
+    inset: 0;
     white-space: nowrap;
     text-indent: -999999px;
     order: -1;
@@ -221,10 +209,7 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   }
   .label {
     position: relative;
-    top: auto;
-    left: auto;
-    right: auto;
-    bottom: auto;
+    inset: auto;
     white-space: inherit;
     text-indent: 0;
     z-index: 1;
@@ -261,7 +246,6 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   padding: 0;
   margin: 0;
   color: #010205;
-  outline: 0;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
@@ -285,18 +269,19 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   border-radius: 4px;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
-.root:focus::before {
-  border: 2px solid #1A44EA;
-}
-.root:not(:focus-visible)::before {
+.root::-moz-focus-inner {
   border: 0;
+}
+.root:focus {
+  outline: 0;
+}
+.root:focus-visible::before {
+  outline: 2px solid #1A44EA;
+  outline-offset: -2px;
 }
 .label {
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  inset: 0;
   white-space: nowrap;
   text-indent: -999999px;
   order: 0;
@@ -331,10 +316,7 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   }
   .label {
     position: relative;
-    top: auto;
-    left: auto;
-    right: auto;
-    bottom: auto;
+    inset: auto;
     white-space: inherit;
     text-indent: 0;
     z-index: 1;
@@ -348,10 +330,7 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   }
   .label {
     position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
+    inset: 0;
     white-space: nowrap;
     text-indent: -999999px;
   }
@@ -364,10 +343,7 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   }
   .label {
     position: relative;
-    top: auto;
-    left: auto;
-    right: auto;
-    bottom: auto;
+    inset: auto;
     white-space: inherit;
     text-indent: 0;
     z-index: 1;
@@ -381,10 +357,7 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   }
   .label {
     position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
+    inset: 0;
     white-space: nowrap;
     text-indent: -999999px;
   }
@@ -397,10 +370,7 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   }
   .label {
     position: relative;
-    top: auto;
-    left: auto;
-    right: auto;
-    bottom: auto;
+    inset: auto;
     white-space: inherit;
     text-indent: 0;
     z-index: 1;
@@ -436,7 +406,6 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   padding: 0;
   margin: 0;
   color: #FBFCFF;
-  outline: 0;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
@@ -460,18 +429,19 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   border-radius: 4px;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
-.root:focus::before {
-  border: 2px solid #1A44EA;
-}
-.root:not(:focus-visible)::before {
+.root::-moz-focus-inner {
   border: 0;
+}
+.root:focus {
+  outline: 0;
+}
+.root:focus-visible::before {
+  outline: 2px solid #1A44EA;
+  outline-offset: -2px;
 }
 .label {
   position: relative;
-  top: auto;
-  left: auto;
-  right: auto;
-  bottom: auto;
+  inset: auto;
   white-space: inherit;
   text-indent: 0;
   z-index: 1;
@@ -529,7 +499,6 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   padding: 0;
   margin: 0;
   color: #010205;
-  outline: 0;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
@@ -553,18 +522,19 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   border-radius: 4px;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
-.root:focus::before {
-  border: 2px solid #1A44EA;
-}
-.root:not(:focus-visible)::before {
+.root::-moz-focus-inner {
   border: 0;
+}
+.root:focus {
+  outline: 0;
+}
+.root:focus-visible::before {
+  outline: 2px solid #1A44EA;
+  outline-offset: -2px;
 }
 .label {
   position: relative;
-  top: auto;
-  left: auto;
-  right: auto;
-  bottom: auto;
+  inset: auto;
   white-space: inherit;
   text-indent: 0;
   z-index: 1;
@@ -622,7 +592,6 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   padding: 0;
   margin: 0;
   color: #010205;
-  outline: 0;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
@@ -646,18 +615,19 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   border-radius: 4px;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
-.root:focus::before {
-  border: 2px solid #1A44EA;
-}
-.root:not(:focus-visible)::before {
+.root::-moz-focus-inner {
   border: 0;
+}
+.root:focus {
+  outline: 0;
+}
+.root:focus-visible::before {
+  outline: 2px solid #1A44EA;
+  outline-offset: -2px;
 }
 .label {
   position: relative;
-  top: auto;
-  left: auto;
-  right: auto;
-  bottom: auto;
+  inset: auto;
   white-space: inherit;
   text-indent: 0;
   z-index: 1;
@@ -715,7 +685,6 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   padding: 0;
   margin: 0;
   color: #010205;
-  outline: 0;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
@@ -739,18 +708,19 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   border-radius: 4px;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
-.root:focus::before {
-  border: 2px solid #1A44EA;
-}
-.root:not(:focus-visible)::before {
+.root::-moz-focus-inner {
   border: 0;
+}
+.root:focus {
+  outline: 0;
+}
+.root:focus-visible::before {
+  outline: 2px solid #1A44EA;
+  outline-offset: -2px;
 }
 .label {
   position: relative;
-  top: auto;
-  left: auto;
-  right: auto;
-  bottom: auto;
+  inset: auto;
   white-space: inherit;
   text-indent: 0;
   z-index: 1;
@@ -808,7 +778,6 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   padding: 0;
   margin: 0;
   color: #010205;
-  outline: 0;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
@@ -832,18 +801,19 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   border-radius: 4px;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
-.root:focus::before {
-  border: 2px solid #1A44EA;
-}
-.root:not(:focus-visible)::before {
+.root::-moz-focus-inner {
   border: 0;
+}
+.root:focus {
+  outline: 0;
+}
+.root:focus-visible::before {
+  outline: 2px solid #1A44EA;
+  outline-offset: -2px;
 }
 .label {
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  inset: 0;
   white-space: nowrap;
   text-indent: -999999px;
   order: 0;
@@ -900,7 +870,6 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   padding: 0;
   margin: 0;
   color: #010205;
-  outline: 0;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
@@ -924,18 +893,19 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   border-radius: 4px;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
-.root:focus::before {
-  border: 2px solid #1A44EA;
-}
-.root:not(:focus-visible)::before {
+.root::-moz-focus-inner {
   border: 0;
+}
+.root:focus {
+  outline: 0;
+}
+.root:focus-visible::before {
+  outline: 2px solid #1A44EA;
+  outline-offset: -2px;
 }
 .label {
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  inset: 0;
   white-space: nowrap;
   text-indent: -999999px;
   order: 0;
@@ -992,7 +962,6 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   padding: 0;
   margin: 0;
   color: #949598;
-  outline: 0;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
@@ -1016,18 +985,19 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   border-radius: 4px;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
-.root:focus::before {
-  border: 2px solid #1A44EA;
-}
-.root:not(:focus-visible)::before {
+.root::-moz-focus-inner {
   border: 0;
+}
+.root:focus {
+  outline: 0;
+}
+.root:focus-visible::before {
+  outline: 2px solid #1A44EA;
+  outline-offset: -2px;
 }
 .label {
   position: relative;
-  top: auto;
-  left: auto;
-  right: auto;
-  bottom: auto;
+  inset: auto;
   white-space: inherit;
   text-indent: 0;
   z-index: 1;
@@ -1077,7 +1047,6 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   padding: 0;
   margin: 0;
   color: #949598;
-  outline: 0;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
@@ -1101,18 +1070,19 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   border-radius: 4px;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
-.root:focus::before {
-  border: 2px solid #1A44EA;
-}
-.root:not(:focus-visible)::before {
+.root::-moz-focus-inner {
   border: 0;
+}
+.root:focus {
+  outline: 0;
+}
+.root:focus-visible::before {
+  outline: 2px solid #1A44EA;
+  outline-offset: -2px;
 }
 .label {
   position: relative;
-  top: auto;
-  left: auto;
-  right: auto;
-  bottom: auto;
+  inset: auto;
   white-space: inherit;
   text-indent: 0;
   z-index: 1;
@@ -1161,7 +1131,6 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   padding: 0;
   margin: 0;
   color: #FBFCFF;
-  outline: 0;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
@@ -1188,18 +1157,19 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   backdrop-filter: blur(32px);
   background-color: rgba(148, 149, 152, .18);
 }
-.root:focus::before {
-  border: 2px solid #1A44EA;
-}
-.root:not(:focus-visible)::before {
+.root::-moz-focus-inner {
   border: 0;
+}
+.root:focus {
+  outline: 0;
+}
+.root:focus-visible::before {
+  outline: 2px solid #1A44EA;
+  outline-offset: -2px;
 }
 .label {
   position: relative;
-  top: auto;
-  left: auto;
-  right: auto;
-  bottom: auto;
+  inset: auto;
   white-space: inherit;
   text-indent: 0;
   z-index: 1;
@@ -1256,7 +1226,6 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   padding: 0;
   margin: 0;
   color: #010205;
-  outline: 0;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
@@ -1283,18 +1252,19 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   backdrop-filter: blur(32px);
   background-color: rgba(148, 149, 152, .18);
 }
-.root:focus::before {
-  border: 2px solid #1A44EA;
-}
-.root:not(:focus-visible)::before {
+.root::-moz-focus-inner {
   border: 0;
+}
+.root:focus {
+  outline: 0;
+}
+.root:focus-visible::before {
+  outline: 2px solid #1A44EA;
+  outline-offset: -2px;
 }
 .label {
   position: relative;
-  top: auto;
-  left: auto;
-  right: auto;
-  bottom: auto;
+  inset: auto;
   white-space: inherit;
   text-indent: 0;
   z-index: 1;
@@ -1352,7 +1322,6 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   padding: 0;
   margin: 0;
   color: #949598;
-  outline: 0;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
@@ -1379,18 +1348,19 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   backdrop-filter: blur(32px);
   background-color: rgba(148, 149, 152, .18);
 }
-.root:focus::before {
-  border: 2px solid #1A44EA;
-}
-.root:not(:focus-visible)::before {
+.root::-moz-focus-inner {
   border: 0;
+}
+.root:focus {
+  outline: 0;
+}
+.root:focus-visible::before {
+  outline: 2px solid #1A44EA;
+  outline-offset: -2px;
 }
 .label {
   position: relative;
-  top: auto;
-  left: auto;
-  right: auto;
-  bottom: auto;
+  inset: auto;
   white-space: inherit;
   text-indent: 0;
   z-index: 1;
@@ -1440,7 +1410,6 @@ exports[`getComponentCss() should return correct css for {"icon":"none","iconSou
   padding: 0;
   margin: 0;
   color: #010205;
-  outline: 0;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
@@ -1464,11 +1433,15 @@ exports[`getComponentCss() should return correct css for {"icon":"none","iconSou
   border-radius: 4px;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
-.root:focus::before {
-  border: 2px solid #1A44EA;
-}
-.root:not(:focus-visible)::before {
+.root::-moz-focus-inner {
   border: 0;
+}
+.root:focus {
+  outline: 0;
+}
+.root:focus-visible::before {
+  outline: 2px solid #1A44EA;
+  outline-offset: -2px;
 }
 .label {
   transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
@@ -1513,7 +1486,6 @@ exports[`getComponentCss() should return correct css for {"icon":"none","iconSou
   padding: 0;
   margin: 0;
   color: #010205;
-  outline: 0;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
@@ -1537,11 +1509,15 @@ exports[`getComponentCss() should return correct css for {"icon":"none","iconSou
   border-radius: 4px;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
-.root:focus::before {
-  border: 2px solid #1A44EA;
-}
-.root:not(:focus-visible)::before {
+.root::-moz-focus-inner {
   border: 0;
+}
+.root:focus {
+  outline: 0;
+}
+.root:focus-visible::before {
+  outline: 2px solid #1A44EA;
+  outline-offset: -2px;
 }
 .label {
   transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
@@ -1586,7 +1562,6 @@ exports[`getComponentCss() should return correct css for {"icon":"none","iconSou
   padding: 0;
   margin: 0;
   color: #010205;
-  outline: 0;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
@@ -1610,11 +1585,15 @@ exports[`getComponentCss() should return correct css for {"icon":"none","iconSou
   border-radius: 4px;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
-.root:focus::before {
-  border: 2px solid #1A44EA;
-}
-.root:not(:focus-visible)::before {
+.root::-moz-focus-inner {
   border: 0;
+}
+.root:focus {
+  outline: 0;
+}
+.root:focus-visible::before {
+  outline: 2px solid #1A44EA;
+  outline-offset: -2px;
 }
 .label {
   transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
@@ -1689,7 +1668,6 @@ exports[`getComponentCss() should return correct css for {"icon":"none","iconSou
   padding: 0;
   margin: 0;
   color: #949598;
-  outline: 0;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
@@ -1713,11 +1691,15 @@ exports[`getComponentCss() should return correct css for {"icon":"none","iconSou
   border-radius: 4px;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
-.root:focus::before {
-  border: 2px solid #1A44EA;
-}
-.root:not(:focus-visible)::before {
+.root::-moz-focus-inner {
   border: 0;
+}
+.root:focus {
+  outline: 0;
+}
+.root:focus-visible::before {
+  outline: 2px solid #1A44EA;
+  outline-offset: -2px;
 }
 .label {
   transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);

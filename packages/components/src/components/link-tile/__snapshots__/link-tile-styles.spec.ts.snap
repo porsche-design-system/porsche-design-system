@@ -11,10 +11,7 @@ exports[`getComponentCss() should return correct css for aspectRatio: "1:1", siz
 }
 ::slotted(picture) {
   position: absolute !important;
-  top: 0 !important;
-  left: 0 !important;
-  right: 0 !important;
-  bottom: 0 !important;
+  inset: 0 !important;
 }
 ::slotted(img) {
   height: 100% !important;
@@ -41,11 +38,8 @@ p {
 }
 .image-container {
   position: absolute;
+  inset: 0;
   transition: transform var(--p-transition-duration, 0.4s) cubic-bezier(0.25,0.1,0.25,1);
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
 }
 .content {
   position: absolute;
@@ -69,10 +63,7 @@ p {
 }
 .link-overlay {
   position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  inset: 0;
 }
 @media (forced-colors: active) {
   .content {
@@ -99,10 +90,7 @@ exports[`getComponentCss() should return correct css for aspectRatio: "3:4", siz
 }
 ::slotted(picture) {
   position: absolute !important;
-  top: 0 !important;
-  left: 0 !important;
-  right: 0 !important;
-  bottom: 0 !important;
+  inset: 0 !important;
 }
 ::slotted(img) {
   height: 100% !important;
@@ -129,11 +117,8 @@ p {
 }
 .image-container {
   position: absolute;
+  inset: 0;
   transition: transform var(--p-transition-duration, 0.4s) cubic-bezier(0.25,0.1,0.25,1);
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
 }
 .content {
   position: absolute;
@@ -158,10 +143,7 @@ p {
 }
 .link-overlay {
   position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  inset: 0;
 }
 @media (forced-colors: active) {
   .content {
@@ -188,10 +170,7 @@ exports[`getComponentCss() should return correct css for aspectRatio: "4:3", siz
 }
 ::slotted(picture) {
   position: absolute !important;
-  top: 0 !important;
-  left: 0 !important;
-  right: 0 !important;
-  bottom: 0 !important;
+  inset: 0 !important;
 }
 ::slotted(img) {
   height: 100% !important;
@@ -218,11 +197,8 @@ p {
 }
 .image-container {
   position: absolute;
+  inset: 0;
   transition: transform var(--p-transition-duration, 0.4s) cubic-bezier(0.25,0.1,0.25,1);
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
 }
 .content {
   position: absolute;
@@ -247,10 +223,7 @@ p {
 }
 .link-overlay {
   position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  inset: 0;
 }
 @media (forced-colors: active) {
   .content {
@@ -277,10 +250,7 @@ exports[`getComponentCss() should return correct css for aspectRatio: "9:16", si
 }
 ::slotted(picture) {
   position: absolute !important;
-  top: 0 !important;
-  left: 0 !important;
-  right: 0 !important;
-  bottom: 0 !important;
+  inset: 0 !important;
 }
 ::slotted(img) {
   height: 100% !important;
@@ -307,11 +277,8 @@ p {
 }
 .image-container {
   position: absolute;
+  inset: 0;
   transition: transform var(--p-transition-duration, 0.4s) cubic-bezier(0.25,0.1,0.25,1);
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
 }
 .content {
   position: absolute;
@@ -335,10 +302,7 @@ p {
 }
 .link-overlay {
   position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  inset: 0;
 }
 @media (forced-colors: active) {
   .content {
@@ -365,10 +329,7 @@ exports[`getComponentCss() should return correct css for aspectRatio: "16:9", si
 }
 ::slotted(picture) {
   position: absolute !important;
-  top: 0 !important;
-  left: 0 !important;
-  right: 0 !important;
-  bottom: 0 !important;
+  inset: 0 !important;
 }
 ::slotted(img) {
   height: 100% !important;
@@ -395,11 +356,8 @@ p {
 }
 .image-container {
   position: absolute;
+  inset: 0;
   transition: transform var(--p-transition-duration, 0.4s) cubic-bezier(0.25,0.1,0.25,1);
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
 }
 .content {
   position: absolute;
@@ -424,10 +382,7 @@ p {
 }
 .link-overlay {
   position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  inset: 0;
 }
 @media (forced-colors: active) {
   .content {
@@ -454,10 +409,7 @@ exports[`getComponentCss() should return correct css for aspectRatio: {"base":"1
 }
 ::slotted(picture) {
   position: absolute !important;
-  top: 0 !important;
-  left: 0 !important;
-  right: 0 !important;
-  bottom: 0 !important;
+  inset: 0 !important;
 }
 ::slotted(img) {
   height: 100% !important;
@@ -519,11 +471,8 @@ p {
 }
 .image-container {
   position: absolute;
+  inset: 0;
   transition: transform var(--p-transition-duration, 0.4s) cubic-bezier(0.25,0.1,0.25,1);
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
 }
 .content {
   position: absolute;
@@ -548,10 +497,7 @@ p {
 }
 .link-overlay {
   position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  inset: 0;
 }
 @media(min-width:480px) {
   .root {
