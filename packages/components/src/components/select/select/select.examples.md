@@ -21,6 +21,43 @@ selected attribute or property. If an option should be visible but not selectabl
 
 <Playground :markup="basic()" :config="config"></Playground>
 
+---
+
+## Basic example without preselection
+
+If you want to give the user the option to deselect the current option, you can provide an empty
+`<p-select-option></p-select-option>`. To ensure the user makes a conscious choice, you can pass in `undefined` as value
+to the `value` property of the `p-select`.
+
+<Playground :frameworkMarkup="requiredExample" :config="{ ...config, withoutDemo: true }">
+  <PlaygroundCheckbox :checked="isRequiredSelect" name="Required" @change="isRequiredSelect = !isRequiredSelect"></PlaygroundCheckbox>
+  <br />
+  <PlaygroundCheckbox :checked="hasDeselection" name="Allow deselection" @change="hasDeselection = !hasDeselection"></PlaygroundCheckbox>
+  <br /><br />
+  <form @submit.prevent="onSubmitRequired">
+    <p-select name="options" label="Some Label" :required="isRequiredSelect" :theme="theme">
+      <p-select-option v-if="hasDeselection"></p-select-option>
+      <p-select-option value="1">Option 1</p-select-option>
+      <p-select-option value="2">Option 2</p-select-option>
+      <p-select-option value="3">Option 3</p-select-option>
+    </p-select>
+    <br/>
+    <PlaygroundButton name="Submit" type="submit"></PlaygroundButton>
+    <p-text :theme="theme" style="display: inline-block;">Last submitted data: {{ lastSubmittedData }}</p-text>
+  </form>
+</Playground>
+
+---
+
+## Slotted images
+
+In order to show an icon for each option, you can optionally slot an `img` tag within the `p-select-option`. Be aware
+that the `p-select-option` can only contain a `#text` and an `img` node.
+
+<Playground :markup="iconsExample" :config="config"></Playground>
+
+---
+
 ## Form
 
 When used within a form element, the `p-select` component creates an underlying native select element to handle the
@@ -30,7 +67,7 @@ component and the form, enabling the selected value to be included in the form's
 
 <Playground :frameworkMarkup="formExample" :config="{ ...config, withoutDemo: true }">
   <form @submit.prevent="onSubmit">
-    <p-select name="options" label="Some Label" value="a">
+    <p-select name="options" label="Some Label" value="a" :theme="theme">
       <p-select-option value="a">Option A</p-select-option>
       <p-select-option value="b">Option B</p-select-option>
       <p-select-option value="c">Option C</p-select-option>
@@ -44,6 +81,8 @@ component and the form, enabling the selected value to be included in the form's
   </form>
 </Playground>
 
+---
+
 ## Controlled
 
 In the controlled approach, the `p-select` component is externally controlled. Selecting an option triggers a custom
@@ -51,7 +90,7 @@ update event, allowing you to use the updated value. Internally, the value will 
 overwritten by passing in a new value.
 
 <Playground :frameworkMarkup="controlledExample" :config="{ ...config, withoutDemo: true }">
-<p-select name="options" label="Some Label" :theme="theme" @update="updateControlledExample">
+<p-select name="options" label="Some Label" value="a" :theme="theme" @update="updateControlledExample">
   <p-select-option value="a">Option A</p-select-option>
   <p-select-option value="b">Option B</p-select-option>
   <p-select-option value="c">Option C</p-select-option>
@@ -62,6 +101,8 @@ overwritten by passing in a new value.
 <br>
 <p-text :theme="theme">{{ selectedValueControlled }}</p-text>
 </Playground>
+
+---
 
 ## Set Value
 
@@ -114,7 +155,7 @@ export default class Code extends Vue {
   controlledExample = getSelectCodeSamples('example-controlled'); 
 
   basic() {
-    return `<p-select name="name" label="Some Label" description="Some description" required>
+    return `<p-select name="options" label="Some Label" description="Some description" value="a" required>
   <p-select-option value="a">Option A</p-select-option>
   <p-select-option value="b">Option B</p-select-option>
   <p-select-option value="c">Option C</p-select-option>
@@ -123,6 +164,51 @@ export default class Code extends Vue {
   <p-select-option value="f">Option F</p-select-option>
 </p-select>`;
   }
+
+  iconsExample = `<p-select name="options" label="Some Label" description="Some description" required>
+  <p-select-option value="911">
+    <img src="${require('@/assets/911.png')}" />
+    911
+  </p-select-option>
+  <p-select-option value="718">
+    <img src="${require('@/assets/718.png')}" />
+    718
+  </p-select-option>
+  <p-select-option value="boxster">
+    <img src="${require('@/assets/boxster.png')}" />
+    Boxster
+  </p-select-option>
+  <p-select-option value="cayenne">
+    <img src="${require('@/assets/cayenne.png')}" />
+    Cayenne
+  </p-select-option>
+  <p-select-option value="macan">
+    <img src="${require('@/assets/macan.png')}" />
+    Macan
+  </p-select-option>
+  <p-select-option value="panamera">
+    <img src="${require('@/assets/panamera.png')}" />
+    Panamera
+  </p-select-option>
+  <p-select-option value="taycan">
+    <img src="${require('@/assets/taycan.png')}" />
+    Taycan
+  </p-select-option>
+  <p-select-option value="cayman">
+    <img src="${require('@/assets/cayman.png')}" />
+    Cayman
+  </p-select-option>
+</p-select>`;
+
+  lastSubmittedData = 'None';
+  isRequiredSelect = true;
+  hasDeselection = false;
+
+  onSubmitRequired(e) {
+    const formData = new FormData(e.target);
+    this.lastSubmittedData = formData.get('options')?.toString() || 'none';
+  };
+
 
   selectedValueForm = 'Last submitted data: none';
   onSubmit(e) {
@@ -133,7 +219,7 @@ export default class Code extends Vue {
     }`;
   }
  
-  valueInput = '';
+  valueInput = '1';
   amountOfOptions = 3;
   getOptions = (amount = 3) => Array.from(Array(amount), (_, i) => `<p-select-option value="${i + 1}">Option ${i+1}</p-select-option>`).join('\n  ');
 
