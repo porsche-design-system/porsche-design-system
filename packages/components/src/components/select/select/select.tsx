@@ -265,7 +265,7 @@ export class Select {
       if (!this.isOpen) {
         this.isOpen = true;
       }
-      setMatchingSelectOptionHighlighted(this.host, this.selectOptions, e.key);
+      setMatchingSelectOptionHighlighted(this.listElement, this.selectOptions, e.key);
     }
     switch (e.key) {
       case 'ArrowUp':
@@ -312,7 +312,7 @@ export class Select {
         if (!this.isOpen) {
           this.isOpen = true;
         }
-        setMatchingSelectOptionHighlighted(this.host, this.selectOptions, e.key);
+        setMatchingSelectOptionHighlighted(this.listElement, this.selectOptions, e.key);
     }
   };
 
