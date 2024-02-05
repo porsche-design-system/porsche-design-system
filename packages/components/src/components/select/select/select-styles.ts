@@ -131,6 +131,7 @@ const getButtonStyles = (
     appearance: 'none',
     ...textSmallStyle,
     textOverflow: 'ellipsis',
+    cursor: 'pointer',
     '&:disabled': {
       cursor: 'not-allowed',
     },
