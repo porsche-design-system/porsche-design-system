@@ -1,11 +1,11 @@
 import type { FormState } from '../../../utils/form/form-state';
-import type { SelectDropdownDirection, SelectDropdownDirectionInternal, Theme } from '../../../utils';
+import type { SelectDropdownDirections, SelectDropdownDirectionInternal, Theme } from '../../../utils';
 import { consoleWarn, determineDropdownDirection, setAttribute, setAttributes } from '../../../utils';
 import type { MultiSelectOptionInternalHTMLProps } from '../multi-select-option/multi-select-option-utils';
 import { forceUpdate } from '@stencil/core';
 
 export type MultiSelectState = FormState;
-export type MultiSelectDropdownDirection = SelectDropdownDirection;
+export type MultiSelectDropdownDirection = SelectDropdownDirections;
 export type MultiSelectOption = HTMLPMultiSelectOptionElement & MultiSelectOptionInternalHTMLProps;
 
 /** @deprecated */
@@ -185,7 +185,7 @@ export const handleDropdownScroll = (scrollElement: HTMLElement, element: HTMLEl
 };
 
 export const getDropdownDirection = (
-  direction: SelectDropdownDirection,
+  direction: SelectDropdownDirections,
   host: HTMLElement,
   options: MultiSelectOption[]
 ): SelectDropdownDirectionInternal => {

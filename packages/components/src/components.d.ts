@@ -49,7 +49,7 @@ import { RadioButtonWrapperState } from "./components/radio-button-wrapper/radio
 import { ScrollerAlignScrollIndicator, ScrollerAriaAttribute, ScrollerGradientColor, ScrollerGradientColorScheme, ScrollerScrollIndicatorPosition, ScrollerScrollToPosition } from "./components/scroller/scroller-utils";
 import { SegmentedControlBackgroundColor, SegmentedControlColumns, SegmentedControlUpdateEventDetail } from "./components/segmented-control/segmented-control/segmented-control-utils";
 import { SegmentedControlItemIcon } from "./components/segmented-control/segmented-control-item/segmented-control-item-utils";
-import { SelectDirection, SelectState, SelectUpdateEventDetail } from "./components/select/select/select-utils";
+import { SelectDropdownDirection, SelectState, SelectUpdateEventDetail } from "./components/select/select/select-utils";
 import { SelectWrapperDropdownDirection, SelectWrapperState } from "./components/select-wrapper/select-wrapper/select-wrapper-utils";
 import { SpinnerAriaAttribute, SpinnerSize } from "./components/spinner/spinner-utils";
 import { StepperHorizontalSize, StepperHorizontalUpdateEventDetail } from "./components/stepper-horizontal/stepper-horizontal/stepper-horizontal-utils";
@@ -111,7 +111,7 @@ export { RadioButtonWrapperState } from "./components/radio-button-wrapper/radio
 export { ScrollerAlignScrollIndicator, ScrollerAriaAttribute, ScrollerGradientColor, ScrollerGradientColorScheme, ScrollerScrollIndicatorPosition, ScrollerScrollToPosition } from "./components/scroller/scroller-utils";
 export { SegmentedControlBackgroundColor, SegmentedControlColumns, SegmentedControlUpdateEventDetail } from "./components/segmented-control/segmented-control/segmented-control-utils";
 export { SegmentedControlItemIcon } from "./components/segmented-control/segmented-control-item/segmented-control-item-utils";
-export { SelectDirection, SelectState, SelectUpdateEventDetail } from "./components/select/select/select-utils";
+export { SelectDropdownDirection, SelectState, SelectUpdateEventDetail } from "./components/select/select/select-utils";
 export { SelectWrapperDropdownDirection, SelectWrapperState } from "./components/select-wrapper/select-wrapper/select-wrapper-utils";
 export { SpinnerAriaAttribute, SpinnerSize } from "./components/spinner/spinner-utils";
 export { StepperHorizontalSize, StepperHorizontalUpdateEventDetail } from "./components/stepper-horizontal/stepper-horizontal/stepper-horizontal-utils";
@@ -1494,7 +1494,7 @@ export namespace Components {
         /**
           * Changes the direction to which the dropdown list appears.
          */
-        "dropdownDirection"?: SelectDirection;
+        "dropdownDirection"?: SelectDropdownDirection;
         /**
           * Show or hide label. For better accessibility it is recommended to show the label.
          */
@@ -4262,7 +4262,7 @@ declare namespace LocalJSX {
         /**
           * Changes the direction to which the dropdown list appears.
          */
-        "dropdownDirection"?: SelectDirection;
+        "dropdownDirection"?: SelectDropdownDirection;
         /**
           * Show or hide label. For better accessibility it is recommended to show the label.
          */

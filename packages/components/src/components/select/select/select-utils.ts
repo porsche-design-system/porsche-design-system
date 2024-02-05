@@ -2,7 +2,7 @@ import { FormState } from '../../../utils/form/form-state';
 import {
   consoleWarn,
   determineDropdownDirection,
-  SelectDropdownDirection,
+  SelectDropdownDirections,
   SelectDropdownDirectionInternal,
   setAttribute,
   setAttributes,
@@ -13,6 +13,7 @@ import { forceUpdate } from '@stencil/core';
 
 export type SelectState = FormState;
 export type SelectOption = HTMLPSelectOptionElement & SelectOptionInternalHTMLProps;
+export type SelectDropdownDirection = SelectDropdownDirections;
 
 export type SelectUpdateEventDetail = {
   name: string;
@@ -103,7 +104,7 @@ export const updateNativeSelectOption = (nativeSelect: HTMLSelectElement, value:
 
 // TODO: This is copied from multi-select, extract and reuse in both components
 export const getSelectDropdownDirection = (
-  direction: SelectDropdownDirection,
+  direction: SelectDropdownDirections,
   host: HTMLElement,
   options: SelectOption[]
 ): SelectDropdownDirectionInternal => {
