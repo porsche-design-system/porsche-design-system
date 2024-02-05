@@ -5,6 +5,7 @@ export const WHITELISTED_TAG_NAMES = [
   'p-flyout-navigation-item',
   'p-grid-item',
   'p-multi-select-option',
+  'p-select-option',
   'p-stepper-horizontal-item',
   'p-tabs-item',
   'p-segmented-control-item',
@@ -122,6 +123,11 @@ export const tagNameMarkup: Record<TagNameRelevant, string> = {
     <p-segmented-control-item value="1">Item 1</p-segmented-control-item>
     <p-segmented-control-item value="2">Item 2</p-segmented-control-item>
   </p-segmented-control>`,
+  'p-select': `<p-select name="name">
+    <p-select-option value="a">Option A</p-select-option>
+    <p-select-option value="b">Option B</p-select-option>
+    <p-select-option value="c">Option C</p-select-option>
+  </p-select>`,
   'p-select-wrapper': `<p-select-wrapper label="Some label" >
     <select >
       <option value="a">Option A</option>
