@@ -198,7 +198,7 @@ const setMatchingSelectOptionIndex = (options: SelectOption[], filter: string): 
   const orderedOptions = [...options.slice(startIndex), ...options.slice(0, startIndex)];
   const firstMatch = filterSelectOptions(orderedOptions, filter)[0];
 
-  const allSameLetter = (string: string) => string.split('').every((letter: string) => letter === string[0]);
+  const allSameLetter = (str: string): boolean => str.split('').every((letter: string) => letter === str[0]);
 
   // first check if there is an exact match for the typed string
   if (firstMatch) {
@@ -222,7 +222,7 @@ export const setMatchingSelectOptionHighlighted = (
   filter: string
 ): void => {
   const matchingIndex = setMatchingSelectOptionIndex(options, filter);
-  if (matchingIndex != -1) {
+  if (matchingIndex !== -1) {
     setNextSelectOptionHighlighted(host, options, matchingIndex);
   }
 };
