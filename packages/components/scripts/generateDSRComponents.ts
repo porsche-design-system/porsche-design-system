@@ -272,7 +272,7 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
         .replace(/ {\.\.\.toast}/, '') // toast
         .replace(/return this\.selectRef\.selectedIndex;/, 'return 0;') // select-wrapper-dropdown
         .replace(/determineDropdownDirection\(this\.props\,.+\)/, "'down'") // select-wrapper-dropdown
-        .replace(/getDropdownDirection|getSelectDropdownDirection\(this\.props.+\)/, "'down'") // multi-select
+        .replace(/(getDropdownDirection|getSelectDropdownDirection)\(this\.props.+\)/, "'down'") // multi-select
         .replace(/(this\.)props\.(isDisabledOrLoading)/g, '$1$2') // button, button-pure
         .replace(/(const (?:iconProps|btnProps|linkProps|buttonProps)) =/, '$1: any =') // workaround typing issue
         .replace(/(any)Deprecated/g, '$1') // workaround typings of deprecation maps
@@ -499,7 +499,8 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
           .replace(
             /\{getSelectedOptionString\(typeof otherChildren\[0] === 'object' && 'props' in otherChildren\[0] && otherChildren\[0]\?\.propsOptions\)}/,
             '{getSelectedOptionString(otherChildren)}'
-          );
+          )
+          .replace(/(SelectDropdownDirectionInternal)/, 'type $1');
       } else if (tagName === 'p-select-option') {
         newFileContent = newFileContent
           // remove any jsx since options are not visible in closed select
