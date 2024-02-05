@@ -73,7 +73,7 @@ export const getComponentCss = (
               gridArea: '1/1',
               borderRadius: borderRadiusSmall,
             },
-            // TODO: is it somehow useful possible to make following styles configurable by paramter?
+            // TODO: is it somehow useful possible to make following styles configurable by parameter?
             ...(!isLoading && {
               '&(input:checked)': {
                 backgroundImage: getCheckedSVGBackgroundImage(checkedIconColor),

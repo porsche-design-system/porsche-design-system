@@ -1,6 +1,5 @@
 import { Component, Element, forceUpdate, h, type JSX, Prop, Watch } from '@stencil/core';
 import {
-  addChangeListener,
   AllowedTypes,
   attachComponentCss,
   FORM_STATES,
@@ -72,7 +71,6 @@ export class RadioButtonWrapper {
 
   public componentWillLoad(): void {
     this.input = getOnlyChildOfKindHTMLElementOrThrow(this.host, 'input[type=radio]');
-    addChangeListener(this.input);
     this.observeAttributes(); // once initially
     this.initialLoading = this.loading;
   }

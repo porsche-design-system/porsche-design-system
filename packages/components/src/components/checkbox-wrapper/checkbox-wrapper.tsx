@@ -1,6 +1,5 @@
 import { Component, Element, forceUpdate, h, type JSX, Listen, Prop, Watch } from '@stencil/core';
 import {
-  addChangeListener,
   AllowedTypes,
   attachComponentCss,
   FORM_STATES,
@@ -81,7 +80,6 @@ export class CheckboxWrapper {
 
   public componentWillLoad(): void {
     this.input = getOnlyChildOfKindHTMLElementOrThrow(this.host, 'input[type=checkbox]');
-    addChangeListener(this.input);
     this.observeAttributes(); // once initially
     this.initialLoading = this.loading;
   }

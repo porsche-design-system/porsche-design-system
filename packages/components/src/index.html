@@ -105,9 +105,119 @@
       </select>
     </header>
 
-    <main></main>
+    <main>
+      <style>
+        /*:is(p-checkbox-wrapper, p-radio-button-wrapper) input:checked {*/
+        input:checked {
+          transform: rotateZ(0);
+        }
+      </style>
+
+      <p-radio-button-wrapper label="PDS radio-button">
+        <input type="radio" name="some-radio" />
+      </p-radio-button-wrapper>
+      <label>
+        <input type="radio" name="some-radio" />
+        Native radio
+      </label>
+
+      <hr />
+
+      <p-checkbox-wrapper label="PDS checkbox">
+        <input type="checkbox" name="some-name" />
+      </p-checkbox-wrapper>
+      <label>
+        <input type="checkbox" name="some-name" />
+        Native checkbox
+      </label>
+
+      <div id="loading" style="display: none">loading</div>
+
+      <hr />
+
+      <my-custom-element>
+        <input type="checkbox" name="some-checkbox-shadow" />
+        okok ok
+      </my-custom-element>
+    </main>
 
     <script>
+      window.customElements.define(
+        'my-custom-element',
+        class extends HTMLElement {
+          constructor() {
+            super();
+            this.attachShadow({ mode: 'open' });
+            this.shadowRoot.innerHTML = `
+<h1>Nested Web Components</h1>
+
+<style>
+::slotted(input) {
+  height: 2rem;
+  width: 2rem;
+}
+
+::slotted(input:checked) {
+  filter: invert(1);
+}
+</style>
+
+<p-radio-button-wrapper label="PDS radio-button">
+  <input type="radio" name="some-radio-shadow" />
+</p-radio-button-wrapper>
+<p-radio-button-wrapper label="PDS radio-button">
+  <input type="radio" name="some-radio-shadow" />
+</p-radio-button-wrapper>
+<label>
+  <input type="radio" name="some-radio-shadow" />
+  Native radio
+</label>
+
+
+<p-checkbox-wrapper label="PDS checkbox">
+  <input type="checkbox" name="some-checkbox-shadow" />
+</p-checkbox-wrapper>
+<p-checkbox-wrapper label="PDS checkbox">
+  <input type="checkbox" name="some-checkbox-shadow" />
+</p-checkbox-wrapper>
+<label>
+  <input type="checkbox" name="some-checkbox-shadow" />
+  Native checkbox
+</label>
+
+<label>
+  <slot/>
+  Slotted checkbox
+</label>
+
+<p-text-field-wrapper label="PDS text field">
+  <input type="number">
+</p-text-field-wrapper>
+`;
+          }
+        }
+      );
+
+      const loadingEl = document.querySelector('#loading');
+
+      const inputEls = document.querySelectorAll('input[type=checkbox]');
+      inputEls.forEach((el) =>
+        el.addEventListener('change', (evt) => {
+          loadingEl.style.display = '';
+
+          evt.preventDefault();
+          evt.stopPropagation();
+
+          const { checked } = evt.target;
+          console.log('change', evt.target, checked);
+          evt.target.checked = !checked;
+          setTimeout(() => {
+            inputEls.forEach((e) => (e.checked = checked));
+            loadingEl.style.display = 'none';
+          }, 1000);
+        })
+      );
+
       <!-- START: keep this snippet to log component lifecycle events -->
       ['componentWillLoad', 'componentDidLoad', 'componentWillUpdate', 'componentDidUpdate'].forEach((x) =>
         window.addEventListener(`stencil_${x}`, (e) => {
