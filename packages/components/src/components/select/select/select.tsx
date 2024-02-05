@@ -125,7 +125,6 @@ export class Select {
     this.isOpen = false;
   }
 
-  // TODO: Similar to multi-select
   @Watch('value')
   public onValueChange(): void {
     // When setting initial value the watcher gets called before the options are defined
@@ -140,14 +139,12 @@ export class Select {
     }
   }
 
-  // TODO: Same as multi-select
   public connectedCallback(): void {
     document.addEventListener('mousedown', this.onClickOutside, true);
     this.form = getClosestHTMLElement(this.host, 'form');
     this.isWithinForm = !!this.form;
   }
 
-  // TODO: Similar to multi-select
   public componentWillLoad(): void {
     this.updateOptions();
     updateSelectOptions(this.selectOptions, this.value);
@@ -165,7 +162,6 @@ export class Select {
     return hasPropValueChanged(newVal, oldVal);
   }
 
-  // TODO: Same as multi-select
   public disconnectedCallback(): void {
     document.removeEventListener('mousedown', this.onClickOutside, true);
   }
@@ -247,7 +243,6 @@ export class Select {
     forceUpdate(this.host);
   };
 
-  // TODO: Similar to multi-select
   private updateOptions = (): void => {
     this.selectOptions = Array.from(this.host.children).filter(
       (el) => el.tagName !== 'SELECT' && el.slot !== 'label' && el.slot !== 'description' && el.slot !== 'message'
@@ -323,7 +318,6 @@ export class Select {
     }
   }
 
-  // TODO: Mostly similar to multi-select
   private onClickOutside = (e: MouseEvent): void => {
     if (this.isOpen && isClickOutside(e, this.inputContainer) && isClickOutside(e, this.listElement)) {
       this.isOpen = false;
