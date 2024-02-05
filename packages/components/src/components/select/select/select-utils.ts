@@ -198,14 +198,14 @@ const setMatchingSelectOptionIndex = (options: SelectOption[], filter: string): 
   const orderedOptions = [...options.slice(startIndex), ...options.slice(0, startIndex)];
   const firstMatch = filterSelectOptions(orderedOptions, filter)[0];
 
-  const allSameLetter = (array) => array.every((letter) => letter === array[0]);
+  const allSameLetter = (string: string) => string.split('').every((letter: string) => letter === string[0]);
 
   // first check if there is an exact match for the typed string
   if (firstMatch) {
     return options.indexOf(firstMatch);
   }
   // if the same letter is being repeated, cycle through first-letter matches
-  else if (allSameLetter(filter.split(''))) {
+  else if (allSameLetter(filter)) {
     const matches = filterSelectOptions(orderedOptions, filter[0]);
     return options.indexOf(matches[0]);
   }
@@ -215,6 +215,7 @@ const setMatchingSelectOptionIndex = (options: SelectOption[], filter: string): 
   }
 };
 
+// TODO: Use this in select-wrapper as well
 export const setMatchingSelectOptionHighlighted = (
   host: HTMLElement,
   options: SelectOption[],
