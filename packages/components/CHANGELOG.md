@@ -23,9 +23,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 #### Changed
 
-- `Icon`: `information-filled`, `information`, `success-filled`, `success`, `bookmark`, `compare`, `configurate`,
-  `heart-filled`, `heart`, `menu-lines`, `success`, `search`, `locate`, `star`, `shopping-bag-filled`, `shopping-bag`,
-  `user-filled` and `user` ([#3025](https://github.com/porsche-design-system/porsche-design-system/pull/3025))
+- `Icon`: Visual appearance of `information-filled`, `information`, `success-filled`, `success`, `bookmark`, `compare`,
+  `configurate`, `heart-filled`, `heart`, `menu-lines`, `success`, `search`, `locate`, `star`, `shopping-bag-filled`, 
+  `shopping-bag`, `user-filled` and `user` ([#3025](https://github.com/porsche-design-system/porsche-design-system/pull/3025))
 - All components (expect some form elements) have improved focus styling based on `:focus-visible`
   ([#3011](https://github.com/porsche-design-system/porsche-design-system/pull/3011))
 - Several components are using CSS property `inset|inset-inline|inset-block` instead of `top|bottom|left|right` for
