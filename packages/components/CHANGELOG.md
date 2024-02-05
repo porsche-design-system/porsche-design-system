@@ -14,6 +14,27 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ### [Unreleased]
 
+#### Changed
+
+- All components (expect some form elements) have improved focus styling based on `:focus-visible`
+  ([#3011](https://github.com/porsche-design-system/porsche-design-system/pull/3011))
+- Several components are using CSS property `inset|inset-inline|inset-block` instead of `top|bottom|left|right` for
+  better RTL (right-to-left) support ([#3011](https://github.com/porsche-design-system/porsche-design-system/pull/3011))
+- `Switch`: Improve RTL (right-to-left) mode
+  ([#2992](https://github.com/porsche-design-system/porsche-design-system/pull/2992))
+- `Button`, `Button Pure`, `Switch`, `Checkbox Wrapper`, `Radio Button Wrapper`, `Pin Code`: optimized announcement of
+  loading state for assistive technologies
+  ([#3009](https://github.com/porsche-design-system/porsche-design-system/pull/3009))
+
+#### Fixed
+
+- All components are supporting focus style in High Contrast Mode correctly
+  ([#3011](https://github.com/porsche-design-system/porsche-design-system/pull/3011))
+
+### [3.11.0] - 2024-01-30
+
+### [3.11.0-rc.0] - 2024-01-30
+
 #### Fixed
 
 - `Carousel`: Carousel does not work with single pointer event on smaller touch devices
@@ -23,6 +44,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 #### Changed
 
+- Scroll-lock used in `Flyout`, `Flyout Navigation` and `Modal` is based on `body { overflow: hidden; }` for all devices
+  ([#3013](https://github.com/porsche-design-system/porsche-design-system/pull/3013))
 - `Toast`: Alignment reflects RTL (right-to-left) mode
   ([#3010](https://github.com/porsche-design-system/porsche-design-system/pull/3010))
 - `Carousel`: Pagination can be used for navigation & pagination has more spacing on touch devices

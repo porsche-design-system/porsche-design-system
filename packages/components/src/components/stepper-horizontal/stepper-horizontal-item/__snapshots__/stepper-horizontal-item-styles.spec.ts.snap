@@ -19,7 +19,6 @@ button {
   margin: 0;
   background: 0;
   border: 0;
-  outline: 0;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
@@ -28,18 +27,15 @@ button {
   cursor: pointer;
   border-radius: 4px;
 }
-button:focus::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  border: 2px solid #1A44EA;
-  border-radius: 4px;
+button::-moz-focus-inner {
+  border: 0;
 }
-button:focus:not(:focus-visible)::after {
-  border-color: transparent;
+button:focus {
+  outline: 0;
+}
+button:focus-visible {
+  outline: 2px solid #1A44EA;
+  outline-offset: -2px;
 }
 @media(hover:hover) {
   button {
@@ -87,7 +83,6 @@ button {
   margin: 0;
   background: 0;
   border: 0;
-  outline: 0;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
@@ -96,18 +91,15 @@ button {
   cursor: pointer;
   border-radius: 4px;
 }
-button:focus::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  border: 2px solid #1A44EA;
-  border-radius: 4px;
+button::-moz-focus-inner {
+  border: 0;
 }
-button:focus:not(:focus-visible)::after {
-  border-color: transparent;
+button:focus {
+  outline: 0;
+}
+button:focus-visible {
+  outline: 2px solid #1A44EA;
+  outline-offset: -2px;
 }
 @media(hover:hover) {
   button {
@@ -155,7 +147,6 @@ button {
   margin: 0;
   background: 0;
   border: 0;
-  outline: 0;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
@@ -164,18 +155,15 @@ button {
   cursor: not-allowed;
   border-radius: 4px;
 }
-button:focus::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  border: 2px solid #1A44EA;
-  border-radius: 4px;
+button::-moz-focus-inner {
+  border: 0;
 }
-button:focus:not(:focus-visible)::after {
-  border-color: transparent;
+button:focus {
+  outline: 0;
+}
+button:focus-visible {
+  outline: 2px solid #1A44EA;
+  outline-offset: -2px;
 }
 .icon {
   height: calc(6px + 2.125ex);
@@ -212,7 +200,6 @@ button {
   margin: 0;
   background: 0;
   border: 0;
-  outline: 0;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
@@ -221,18 +208,15 @@ button {
   cursor: not-allowed;
   border-radius: 4px;
 }
-button:focus::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  border: 2px solid #1A44EA;
-  border-radius: 4px;
+button::-moz-focus-inner {
+  border: 0;
 }
-button:focus:not(:focus-visible)::after {
-  border-color: transparent;
+button:focus {
+  outline: 0;
+}
+button:focus-visible {
+  outline: 2px solid #1A44EA;
+  outline-offset: -2px;
 }
 .icon {
   height: calc(6px + 2.125ex);
@@ -296,7 +280,6 @@ button {
   margin: 0;
   background: rgba(148, 149, 152, .18);
   border: 0;
-  outline: 0;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
@@ -312,18 +295,15 @@ button::before {
   height: calc(6px + 2.125ex);
   width: calc(6px + 2.125ex);
 }
-button:focus::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  border: 2px solid #1A44EA;
-  border-radius: 4px;
+button::-moz-focus-inner {
+  border: 0;
 }
-button:focus:not(:focus-visible)::after {
-  border-color: transparent;
+button:focus {
+  outline: 0;
+}
+button:focus-visible {
+  outline: 2px solid #1A44EA;
+  outline-offset: -2px;
 }
 @media(hover:hover) {
   button {
@@ -394,7 +374,6 @@ button {
   margin: 0;
   background: rgba(148, 149, 152, .18);
   border: 0;
-  outline: 0;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
@@ -410,18 +389,15 @@ button::before {
   height: calc(6px + 2.125ex);
   width: calc(6px + 2.125ex);
 }
-button:focus::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  border: 2px solid #1A44EA;
-  border-radius: 4px;
+button::-moz-focus-inner {
+  border: 0;
 }
-button:focus:not(:focus-visible)::after {
-  border-color: transparent;
+button:focus {
+  outline: 0;
+}
+button:focus-visible {
+  outline: 2px solid #1A44EA;
+  outline-offset: -2px;
 }
 @media(hover:hover) {
   button {
@@ -492,7 +468,6 @@ button {
   margin: 0;
   background: rgba(148, 149, 152, .18);
   border: 0;
-  outline: 0;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
@@ -508,18 +483,15 @@ button::before {
   height: calc(6px + 2.125ex);
   width: calc(6px + 2.125ex);
 }
-button:focus::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  border: 2px solid #1A44EA;
-  border-radius: 4px;
+button::-moz-focus-inner {
+  border: 0;
 }
-button:focus:not(:focus-visible)::after {
-  border-color: transparent;
+button:focus {
+  outline: 0;
+}
+button:focus-visible {
+  outline: 2px solid #1A44EA;
+  outline-offset: -2px;
 }
 .sr-only {
   position: absolute;
@@ -579,7 +551,6 @@ button {
   margin: 0;
   background: rgba(148, 149, 152, .18);
   border: 0;
-  outline: 0;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
@@ -595,18 +566,15 @@ button::before {
   height: calc(6px + 2.125ex);
   width: calc(6px + 2.125ex);
 }
-button:focus::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  border: 2px solid #1A44EA;
-  border-radius: 4px;
+button::-moz-focus-inner {
+  border: 0;
 }
-button:focus:not(:focus-visible)::after {
-  border-color: transparent;
+button:focus {
+  outline: 0;
+}
+button:focus-visible {
+  outline: 2px solid #1A44EA;
+  outline-offset: -2px;
 }
 .sr-only {
   position: absolute;
@@ -666,7 +634,6 @@ button {
   margin: 0;
   background: 0;
   border: 0;
-  outline: 0;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
@@ -680,18 +647,15 @@ button::before {
   height: calc(6px + 2.125ex);
   width: calc(6px + 2.125ex);
 }
-button:focus::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  border: 2px solid #1A44EA;
-  border-radius: 4px;
+button::-moz-focus-inner {
+  border: 0;
 }
-button:focus:not(:focus-visible)::after {
-  border-color: transparent;
+button:focus {
+  outline: 0;
+}
+button:focus-visible {
+  outline: 2px solid #1A44EA;
+  outline-offset: -2px;
 }
 .sr-only {
   position: absolute;
@@ -751,7 +715,6 @@ button {
   margin: 0;
   background: 0;
   border: 0;
-  outline: 0;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
@@ -765,18 +728,15 @@ button::before {
   height: calc(6px + 2.125ex);
   width: calc(6px + 2.125ex);
 }
-button:focus::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  border: 2px solid #1A44EA;
-  border-radius: 4px;
+button::-moz-focus-inner {
+  border: 0;
 }
-button:focus:not(:focus-visible)::after {
-  border-color: transparent;
+button:focus {
+  outline: 0;
+}
+button:focus-visible {
+  outline: 2px solid #1A44EA;
+  outline-offset: -2px;
 }
 .sr-only {
   position: absolute;
@@ -836,7 +796,6 @@ button {
   margin: 0;
   background: 0;
   border: 0;
-  outline: 0;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
@@ -850,18 +809,15 @@ button::before {
   height: calc(6px + 2.125ex);
   width: calc(6px + 2.125ex);
 }
-button:focus::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  border: 2px solid #1A44EA;
-  border-radius: 4px;
+button::-moz-focus-inner {
+  border: 0;
 }
-button:focus:not(:focus-visible)::after {
-  border-color: transparent;
+button:focus {
+  outline: 0;
+}
+button:focus-visible {
+  outline: 2px solid #1A44EA;
+  outline-offset: -2px;
 }
 .sr-only {
   position: absolute;
@@ -921,7 +877,6 @@ button {
   margin: 0;
   background: 0;
   border: 0;
-  outline: 0;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
@@ -935,18 +890,15 @@ button::before {
   height: calc(6px + 2.125ex);
   width: calc(6px + 2.125ex);
 }
-button:focus::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  border: 2px solid #1A44EA;
-  border-radius: 4px;
+button::-moz-focus-inner {
+  border: 0;
 }
-button:focus:not(:focus-visible)::after {
-  border-color: transparent;
+button:focus {
+  outline: 0;
+}
+button:focus-visible {
+  outline: 2px solid #1A44EA;
+  outline-offset: -2px;
 }
 .sr-only {
   position: absolute;
@@ -979,7 +931,6 @@ button {
   margin: 0;
   background: 0;
   border: 0;
-  outline: 0;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
@@ -988,18 +939,15 @@ button {
   cursor: pointer;
   border-radius: 4px;
 }
-button:focus::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  border: 2px solid #1A44EA;
-  border-radius: 4px;
+button::-moz-focus-inner {
+  border: 0;
 }
-button:focus:not(:focus-visible)::after {
-  border-color: transparent;
+button:focus {
+  outline: 0;
+}
+button:focus-visible {
+  outline: 2px solid #1A44EA;
+  outline-offset: -2px;
 }
 @media(hover:hover) {
   button {
@@ -1047,7 +995,6 @@ button {
   margin: 0;
   background: 0;
   border: 0;
-  outline: 0;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
@@ -1056,18 +1003,15 @@ button {
   cursor: pointer;
   border-radius: 4px;
 }
-button:focus::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  border: 2px solid #1A44EA;
-  border-radius: 4px;
+button::-moz-focus-inner {
+  border: 0;
 }
-button:focus:not(:focus-visible)::after {
-  border-color: transparent;
+button:focus {
+  outline: 0;
+}
+button:focus-visible {
+  outline: 2px solid #1A44EA;
+  outline-offset: -2px;
 }
 @media(hover:hover) {
   button {
@@ -1115,7 +1059,6 @@ button {
   margin: 0;
   background: 0;
   border: 0;
-  outline: 0;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
@@ -1124,18 +1067,15 @@ button {
   cursor: not-allowed;
   border-radius: 4px;
 }
-button:focus::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  border: 2px solid #1A44EA;
-  border-radius: 4px;
+button::-moz-focus-inner {
+  border: 0;
 }
-button:focus:not(:focus-visible)::after {
-  border-color: transparent;
+button:focus {
+  outline: 0;
+}
+button:focus-visible {
+  outline: 2px solid #1A44EA;
+  outline-offset: -2px;
 }
 .icon {
   height: calc(6px + 2.125ex);
@@ -1172,7 +1112,6 @@ button {
   margin: 0;
   background: 0;
   border: 0;
-  outline: 0;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
@@ -1181,18 +1120,15 @@ button {
   cursor: not-allowed;
   border-radius: 4px;
 }
-button:focus::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  border: 2px solid #1A44EA;
-  border-radius: 4px;
+button::-moz-focus-inner {
+  border: 0;
 }
-button:focus:not(:focus-visible)::after {
-  border-color: transparent;
+button:focus {
+  outline: 0;
+}
+button:focus-visible {
+  outline: 2px solid #1A44EA;
+  outline-offset: -2px;
 }
 .icon {
   height: calc(6px + 2.125ex);

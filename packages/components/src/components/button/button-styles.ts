@@ -1,6 +1,7 @@
 import type { BreakpointCustomizable, ButtonVariant, LinkButtonIconName, LinkButtonVariant, Theme } from '../../types';
 import { getCss, isHighContrastMode, isDisabledOrLoading, mergeDeep } from '../../utils';
 import { getLinkButtonStyles } from '../../styles/link-button-styles';
+import { getFunctionalComponentLoadingMessageStyles } from '../common/loading-message/loading-message-styles';
 import { fontLineHeight, frostedGlassStyle } from '@porsche-design-system/utilities-v2';
 import { getHighContrastColors, getThemedColors, getTransition, prefersColorSchemeDarkMediaQuery } from '../../styles';
 
@@ -95,6 +96,8 @@ export const getComponentCss = (
           opacity: 0, // use opacity for smooth transition between states
         }),
       },
+      // .loading
+      ...getFunctionalComponentLoadingMessageStyles(),
     })
   );
 };

@@ -1,7 +1,7 @@
 import {
   addImportantToEachRule,
+  getFocusJssStyle,
   getHiddenTextJssStyle,
-  getInsetJssStyle,
   getInvertedThemedColors,
   getThemedColors,
   getTransition,
@@ -11,7 +11,6 @@ import {
 } from '../../../styles';
 import {
   borderRadiusSmall,
-  borderWidthBase,
   fontLineHeight,
   frostedGlassStyle,
   spacingFluidXSmall,
@@ -63,12 +62,11 @@ const getSVGPath = (stepCount: number, numberedCircleColors: NumberedCircleColor
 };
 
 export const getComponentCss = (state: StepperHorizontalItemState, disabled: boolean, theme: Theme): string => {
-  const { primaryColor, hoverColor, disabledColor, focusColor } = getThemedColors(theme);
+  const { primaryColor, hoverColor, disabledColor } = getThemedColors(theme);
   const {
     primaryColor: primaryColorDark,
     hoverColor: hoverColorDark,
     disabledColor: disabledColorDark,
-    focusColor: focusColorDark,
   } = getThemedColors('dark');
 
   const isStateCurrent = state === 'current';
@@ -128,7 +126,6 @@ export const getComponentCss = (state: StepperHorizontalItemState, disabled: boo
         margin: 0, // Removes default button margin on safari 15
         background: 0,
         border: 0,
-        outline: 0,
         ...textSmallStyle,
         fontSize: 'inherit',
         width: 'max-content',
@@ -164,19 +161,7 @@ export const getComponentCss = (state: StepperHorizontalItemState, disabled: boo
             width: fontLineHeight,
           },
         }),
-        '&:focus::after': {
-          content: '""',
-          position: 'absolute',
-          ...getInsetJssStyle(),
-          border: `${borderWidthBase} solid ${focusColor}`,
-          ...prefersColorSchemeDarkMediaQuery(theme, {
-            borderColor: focusColorDark,
-          }),
-          borderRadius: borderRadiusSmall,
-        },
-        '&:focus:not(:focus-visible)::after': {
-          borderColor: 'transparent',
-        },
+        ...getFocusJssStyle(theme, { offset: '-2px' }),
       },
     },
     ...(!isStateCurrentOrUndefined && {

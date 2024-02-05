@@ -9,7 +9,6 @@ exports[`getComponentCss() should return correct css for hideLabel: { base: true
   display: none !important;
 }
 ::slotted(input) {
-  position: relative !important;
   width: calc(6px + 2.125ex) !important;
   height: calc(6px + 2.125ex) !important;
   font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
@@ -83,6 +82,16 @@ exports[`getComponentCss() should return correct css for hideLabel: { base: true
   hyphens: auto;
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   grid-column: 1/3;
+}
+.loading {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
 }
 @media(min-width:480px) {
   .label {
@@ -166,7 +175,6 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   display: none !important;
 }
 ::slotted(input) {
-  position: relative !important;
   width: calc(6px + 2.125ex) !important;
   height: calc(6px + 2.125ex) !important;
   font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
@@ -189,18 +197,15 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   background-color: #FC4040 !important;
   background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23010205" d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') !important;
 }
-::slotted(input:focus)::before {
-  content: "" !important;
-  position: absolute !important;
-  top: -6px !important;
-  left: -6px !important;
-  right: -6px !important;
-  bottom: -6px !important;
-  border: 2px solid #1A44EA !important;
-  border-radius: 8px !important;
+::slotted(input::-moz-focus-inner) {
+  border: 0 !important;
 }
-::slotted(input:focus:not(:focus-visible))::before {
-  border-color: transparent !important;
+::slotted(input:focus) {
+  outline: 0 !important;
+}
+::slotted(input:focus-visible) {
+  outline: 2px solid #1A44EA !important;
+  outline-offset: 2px !important;
 }
 ::slotted(input:indeterminate) {
   background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23FBFCFF" d="m20,11v2H4v-2h16Z"/></svg>') !important;
@@ -272,6 +277,16 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   color: #FC4040;
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   grid-column: 1/3;
+}
+.loading {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
 }"
 `;
 
@@ -284,7 +299,6 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   display: none !important;
 }
 ::slotted(input) {
-  position: relative !important;
   width: calc(6px + 2.125ex) !important;
   height: calc(6px + 2.125ex) !important;
   font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
@@ -307,18 +321,15 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   background-color: #CC1922 !important;
   background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23FBFCFF" d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') !important;
 }
-::slotted(input:focus)::before {
-  content: "" !important;
-  position: absolute !important;
-  top: -6px !important;
-  left: -6px !important;
-  right: -6px !important;
-  bottom: -6px !important;
-  border: 2px solid #1A44EA !important;
-  border-radius: 8px !important;
+::slotted(input::-moz-focus-inner) {
+  border: 0 !important;
 }
-::slotted(input:focus:not(:focus-visible))::before {
-  border-color: transparent !important;
+::slotted(input:focus) {
+  outline: 0 !important;
+}
+::slotted(input:focus-visible) {
+  outline: 2px solid #1A44EA !important;
+  outline-offset: 2px !important;
 }
 ::slotted(input:indeterminate) {
   background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23010205" d="m20,11v2H4v-2h16Z"/></svg>') !important;
@@ -390,6 +401,16 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   color: #CC1922;
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   grid-column: 1/3;
+}
+.loading {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
 }"
 `;
 
@@ -402,7 +423,6 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   display: none !important;
 }
 ::slotted(input) {
-  position: relative !important;
   width: calc(6px + 2.125ex) !important;
   height: calc(6px + 2.125ex) !important;
   font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
@@ -479,6 +499,16 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   color: #FC4040;
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   grid-column: 1/3;
+}
+.loading {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
 }"
 `;
 
@@ -491,7 +521,6 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   display: none !important;
 }
 ::slotted(input) {
-  position: relative !important;
   width: calc(6px + 2.125ex) !important;
   height: calc(6px + 2.125ex) !important;
   font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
@@ -568,6 +597,16 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   color: #CC1922;
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   grid-column: 1/3;
+}
+.loading {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
 }"
 `;
 
@@ -580,7 +619,6 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   display: none !important;
 }
 ::slotted(input) {
-  position: relative !important;
   width: calc(6px + 2.125ex) !important;
   height: calc(6px + 2.125ex) !important;
   font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
@@ -603,18 +641,15 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   background-color: #FBFCFF !important;
   background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23010205" d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') !important;
 }
-::slotted(input:focus)::before {
-  content: "" !important;
-  position: absolute !important;
-  top: -6px !important;
-  left: -6px !important;
-  right: -6px !important;
-  bottom: -6px !important;
-  border: 2px solid #1A44EA !important;
-  border-radius: 8px !important;
+::slotted(input::-moz-focus-inner) {
+  border: 0 !important;
 }
-::slotted(input:focus:not(:focus-visible))::before {
-  border-color: transparent !important;
+::slotted(input:focus) {
+  outline: 0 !important;
+}
+::slotted(input:focus-visible) {
+  outline: 2px solid #1A44EA !important;
+  outline-offset: 2px !important;
 }
 ::slotted(input:indeterminate) {
   background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23FBFCFF" d="m20,11v2H4v-2h16Z"/></svg>') !important;
@@ -685,6 +720,16 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   hyphens: auto;
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   grid-column: 1/3;
+}
+.loading {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
 }"
 `;
 
@@ -697,7 +742,6 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   display: none !important;
 }
 ::slotted(input) {
-  position: relative !important;
   width: calc(6px + 2.125ex) !important;
   height: calc(6px + 2.125ex) !important;
   font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
@@ -720,18 +764,15 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   background-color: #010205 !important;
   background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23FBFCFF" d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') !important;
 }
-::slotted(input:focus)::before {
-  content: "" !important;
-  position: absolute !important;
-  top: -6px !important;
-  left: -6px !important;
-  right: -6px !important;
-  bottom: -6px !important;
-  border: 2px solid #1A44EA !important;
-  border-radius: 8px !important;
+::slotted(input::-moz-focus-inner) {
+  border: 0 !important;
 }
-::slotted(input:focus:not(:focus-visible))::before {
-  border-color: transparent !important;
+::slotted(input:focus) {
+  outline: 0 !important;
+}
+::slotted(input:focus-visible) {
+  outline: 2px solid #1A44EA !important;
+  outline-offset: 2px !important;
 }
 ::slotted(input:indeterminate) {
   background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23010205" d="m20,11v2H4v-2h16Z"/></svg>') !important;
@@ -802,6 +843,16 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   hyphens: auto;
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   grid-column: 1/3;
+}
+.loading {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
 }"
 `;
 
@@ -814,7 +865,6 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   display: none !important;
 }
 ::slotted(input) {
-  position: relative !important;
   width: calc(6px + 2.125ex) !important;
   height: calc(6px + 2.125ex) !important;
   font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
@@ -890,6 +940,16 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   hyphens: auto;
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   grid-column: 1/3;
+}
+.loading {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
 }"
 `;
 
@@ -902,7 +962,6 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   display: none !important;
 }
 ::slotted(input) {
-  position: relative !important;
   width: calc(6px + 2.125ex) !important;
   height: calc(6px + 2.125ex) !important;
   font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
@@ -978,6 +1037,16 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   hyphens: auto;
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   grid-column: 1/3;
+}
+.loading {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
 }"
 `;
 
@@ -990,7 +1059,6 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   display: none !important;
 }
 ::slotted(input) {
-  position: relative !important;
   width: calc(6px + 2.125ex) !important;
   height: calc(6px + 2.125ex) !important;
   font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
@@ -1013,18 +1081,15 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   background-color: #09D087 !important;
   background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23010205" d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') !important;
 }
-::slotted(input:focus)::before {
-  content: "" !important;
-  position: absolute !important;
-  top: -6px !important;
-  left: -6px !important;
-  right: -6px !important;
-  bottom: -6px !important;
-  border: 2px solid #1A44EA !important;
-  border-radius: 8px !important;
+::slotted(input::-moz-focus-inner) {
+  border: 0 !important;
 }
-::slotted(input:focus:not(:focus-visible))::before {
-  border-color: transparent !important;
+::slotted(input:focus) {
+  outline: 0 !important;
+}
+::slotted(input:focus-visible) {
+  outline: 2px solid #1A44EA !important;
+  outline-offset: 2px !important;
 }
 ::slotted(input:indeterminate) {
   background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23FBFCFF" d="m20,11v2H4v-2h16Z"/></svg>') !important;
@@ -1096,6 +1161,16 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   color: #09D087;
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   grid-column: 1/3;
+}
+.loading {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
 }"
 `;
 
@@ -1108,7 +1183,6 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   display: none !important;
 }
 ::slotted(input) {
-  position: relative !important;
   width: calc(6px + 2.125ex) !important;
   height: calc(6px + 2.125ex) !important;
   font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
@@ -1131,18 +1205,15 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   background-color: #197E10 !important;
   background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23FBFCFF" d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') !important;
 }
-::slotted(input:focus)::before {
-  content: "" !important;
-  position: absolute !important;
-  top: -6px !important;
-  left: -6px !important;
-  right: -6px !important;
-  bottom: -6px !important;
-  border: 2px solid #1A44EA !important;
-  border-radius: 8px !important;
+::slotted(input::-moz-focus-inner) {
+  border: 0 !important;
 }
-::slotted(input:focus:not(:focus-visible))::before {
-  border-color: transparent !important;
+::slotted(input:focus) {
+  outline: 0 !important;
+}
+::slotted(input:focus-visible) {
+  outline: 2px solid #1A44EA !important;
+  outline-offset: 2px !important;
 }
 ::slotted(input:indeterminate) {
   background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23010205" d="m20,11v2H4v-2h16Z"/></svg>') !important;
@@ -1214,6 +1285,16 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   color: #197E10;
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   grid-column: 1/3;
+}
+.loading {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
 }"
 `;
 
@@ -1226,7 +1307,6 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   display: none !important;
 }
 ::slotted(input) {
-  position: relative !important;
   width: calc(6px + 2.125ex) !important;
   height: calc(6px + 2.125ex) !important;
   font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
@@ -1303,6 +1383,16 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   color: #09D087;
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   grid-column: 1/3;
+}
+.loading {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
 }"
 `;
 
@@ -1315,7 +1405,6 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   display: none !important;
 }
 ::slotted(input) {
-  position: relative !important;
   width: calc(6px + 2.125ex) !important;
   height: calc(6px + 2.125ex) !important;
   font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
@@ -1392,6 +1481,16 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
   color: #197E10;
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   grid-column: 1/3;
+}
+.loading {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
 }"
 `;
 
@@ -1404,7 +1503,6 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   display: none !important;
 }
 ::slotted(input) {
-  position: relative !important;
   width: calc(6px + 2.125ex) !important;
   height: calc(6px + 2.125ex) !important;
   font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
@@ -1427,18 +1525,15 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   background-color: #FC4040 !important;
   background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23010205" d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') !important;
 }
-::slotted(input:focus)::before {
-  content: "" !important;
-  position: absolute !important;
-  top: -6px !important;
-  left: -6px !important;
-  right: -6px !important;
-  bottom: -6px !important;
-  border: 2px solid #1A44EA !important;
-  border-radius: 8px !important;
+::slotted(input::-moz-focus-inner) {
+  border: 0 !important;
 }
-::slotted(input:focus:not(:focus-visible))::before {
-  border-color: transparent !important;
+::slotted(input:focus) {
+  outline: 0 !important;
+}
+::slotted(input:focus-visible) {
+  outline: 2px solid #1A44EA !important;
+  outline-offset: 2px !important;
 }
 ::slotted(input:indeterminate) {
   background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23FBFCFF" d="m20,11v2H4v-2h16Z"/></svg>') !important;
@@ -1508,6 +1603,16 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   color: #FC4040;
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   grid-column: 1/3;
+}
+.loading {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
 }"
 `;
 
@@ -1520,7 +1625,6 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   display: none !important;
 }
 ::slotted(input) {
-  position: relative !important;
   width: calc(6px + 2.125ex) !important;
   height: calc(6px + 2.125ex) !important;
   font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
@@ -1543,18 +1647,15 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   background-color: #CC1922 !important;
   background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23FBFCFF" d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') !important;
 }
-::slotted(input:focus)::before {
-  content: "" !important;
-  position: absolute !important;
-  top: -6px !important;
-  left: -6px !important;
-  right: -6px !important;
-  bottom: -6px !important;
-  border: 2px solid #1A44EA !important;
-  border-radius: 8px !important;
+::slotted(input::-moz-focus-inner) {
+  border: 0 !important;
 }
-::slotted(input:focus:not(:focus-visible))::before {
-  border-color: transparent !important;
+::slotted(input:focus) {
+  outline: 0 !important;
+}
+::slotted(input:focus-visible) {
+  outline: 2px solid #1A44EA !important;
+  outline-offset: 2px !important;
 }
 ::slotted(input:indeterminate) {
   background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23010205" d="m20,11v2H4v-2h16Z"/></svg>') !important;
@@ -1624,6 +1725,16 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   color: #CC1922;
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   grid-column: 1/3;
+}
+.loading {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
 }"
 `;
 
@@ -1636,7 +1747,6 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   display: none !important;
 }
 ::slotted(input) {
-  position: relative !important;
   width: calc(6px + 2.125ex) !important;
   height: calc(6px + 2.125ex) !important;
   font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
@@ -1711,6 +1821,16 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   color: #FC4040;
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   grid-column: 1/3;
+}
+.loading {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
 }"
 `;
 
@@ -1723,7 +1843,6 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   display: none !important;
 }
 ::slotted(input) {
-  position: relative !important;
   width: calc(6px + 2.125ex) !important;
   height: calc(6px + 2.125ex) !important;
   font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
@@ -1798,6 +1917,16 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   color: #CC1922;
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   grid-column: 1/3;
+}
+.loading {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
 }"
 `;
 
@@ -1810,7 +1939,6 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   display: none !important;
 }
 ::slotted(input) {
-  position: relative !important;
   width: calc(6px + 2.125ex) !important;
   height: calc(6px + 2.125ex) !important;
   font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
@@ -1833,18 +1961,15 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   background-color: #FBFCFF !important;
   background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23010205" d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') !important;
 }
-::slotted(input:focus)::before {
-  content: "" !important;
-  position: absolute !important;
-  top: -6px !important;
-  left: -6px !important;
-  right: -6px !important;
-  bottom: -6px !important;
-  border: 2px solid #1A44EA !important;
-  border-radius: 8px !important;
+::slotted(input::-moz-focus-inner) {
+  border: 0 !important;
 }
-::slotted(input:focus:not(:focus-visible))::before {
-  border-color: transparent !important;
+::slotted(input:focus) {
+  outline: 0 !important;
+}
+::slotted(input:focus-visible) {
+  outline: 2px solid #1A44EA !important;
+  outline-offset: 2px !important;
 }
 ::slotted(input:indeterminate) {
   background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23FBFCFF" d="m20,11v2H4v-2h16Z"/></svg>') !important;
@@ -1913,6 +2038,16 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   hyphens: auto;
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   grid-column: 1/3;
+}
+.loading {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
 }"
 `;
 
@@ -1925,7 +2060,6 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   display: none !important;
 }
 ::slotted(input) {
-  position: relative !important;
   width: calc(6px + 2.125ex) !important;
   height: calc(6px + 2.125ex) !important;
   font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
@@ -1948,18 +2082,15 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   background-color: #010205 !important;
   background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23FBFCFF" d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') !important;
 }
-::slotted(input:focus)::before {
-  content: "" !important;
-  position: absolute !important;
-  top: -6px !important;
-  left: -6px !important;
-  right: -6px !important;
-  bottom: -6px !important;
-  border: 2px solid #1A44EA !important;
-  border-radius: 8px !important;
+::slotted(input::-moz-focus-inner) {
+  border: 0 !important;
 }
-::slotted(input:focus:not(:focus-visible))::before {
-  border-color: transparent !important;
+::slotted(input:focus) {
+  outline: 0 !important;
+}
+::slotted(input:focus-visible) {
+  outline: 2px solid #1A44EA !important;
+  outline-offset: 2px !important;
 }
 ::slotted(input:indeterminate) {
   background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23010205" d="m20,11v2H4v-2h16Z"/></svg>') !important;
@@ -2028,6 +2159,16 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   hyphens: auto;
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   grid-column: 1/3;
+}
+.loading {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
 }"
 `;
 
@@ -2040,7 +2181,6 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   display: none !important;
 }
 ::slotted(input) {
-  position: relative !important;
   width: calc(6px + 2.125ex) !important;
   height: calc(6px + 2.125ex) !important;
   font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
@@ -2062,18 +2202,15 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   border-color: #7E7F82 !important;
   background-color: #7E7F82 !important;
 }
-::slotted(input:focus)::before {
-  content: "" !important;
-  position: absolute !important;
-  top: -6px !important;
-  left: -6px !important;
-  right: -6px !important;
-  bottom: -6px !important;
-  border: 2px solid #1A44EA !important;
-  border-radius: 8px !important;
+::slotted(input::-moz-focus-inner) {
+  border: 0 !important;
 }
-::slotted(input:focus:not(:focus-visible))::before {
-  border-color: transparent !important;
+::slotted(input:focus) {
+  outline: 0 !important;
+}
+::slotted(input:focus-visible) {
+  outline: 2px solid #1A44EA !important;
+  outline-offset: 2px !important;
 }
 .root {
   display: grid;
@@ -2132,6 +2269,16 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   hyphens: auto;
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   grid-column: 1/3;
+}
+.loading {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
 }"
 `;
 
@@ -2144,7 +2291,6 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   display: none !important;
 }
 ::slotted(input) {
-  position: relative !important;
   width: calc(6px + 2.125ex) !important;
   height: calc(6px + 2.125ex) !important;
   font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
@@ -2166,18 +2312,15 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   border-color: #949598 !important;
   background-color: #949598 !important;
 }
-::slotted(input:focus)::before {
-  content: "" !important;
-  position: absolute !important;
-  top: -6px !important;
-  left: -6px !important;
-  right: -6px !important;
-  bottom: -6px !important;
-  border: 2px solid #1A44EA !important;
-  border-radius: 8px !important;
+::slotted(input::-moz-focus-inner) {
+  border: 0 !important;
 }
-::slotted(input:focus:not(:focus-visible))::before {
-  border-color: transparent !important;
+::slotted(input:focus) {
+  outline: 0 !important;
+}
+::slotted(input:focus-visible) {
+  outline: 2px solid #1A44EA !important;
+  outline-offset: 2px !important;
 }
 .root {
   display: grid;
@@ -2236,6 +2379,16 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   hyphens: auto;
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   grid-column: 1/3;
+}
+.loading {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
 }"
 `;
 
@@ -2248,7 +2401,6 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   display: none !important;
 }
 ::slotted(input) {
-  position: relative !important;
   width: calc(6px + 2.125ex) !important;
   height: calc(6px + 2.125ex) !important;
   font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
@@ -2322,6 +2474,16 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   hyphens: auto;
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   grid-column: 1/3;
+}
+.loading {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
 }"
 `;
 
@@ -2334,7 +2496,6 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   display: none !important;
 }
 ::slotted(input) {
-  position: relative !important;
   width: calc(6px + 2.125ex) !important;
   height: calc(6px + 2.125ex) !important;
   font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
@@ -2408,6 +2569,16 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   hyphens: auto;
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   grid-column: 1/3;
+}
+.loading {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
 }"
 `;
 
@@ -2420,7 +2591,6 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   display: none !important;
 }
 ::slotted(input) {
-  position: relative !important;
   width: calc(6px + 2.125ex) !important;
   height: calc(6px + 2.125ex) !important;
   font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
@@ -2499,6 +2669,16 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   hyphens: auto;
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   grid-column: 1/3;
+}
+.loading {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
 }"
 `;
 
@@ -2511,7 +2691,6 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   display: none !important;
 }
 ::slotted(input) {
-  position: relative !important;
   width: calc(6px + 2.125ex) !important;
   height: calc(6px + 2.125ex) !important;
   font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
@@ -2590,6 +2769,16 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   hyphens: auto;
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   grid-column: 1/3;
+}
+.loading {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
 }"
 `;
 
@@ -2602,7 +2791,6 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   display: none !important;
 }
 ::slotted(input) {
-  position: relative !important;
   width: calc(6px + 2.125ex) !important;
   height: calc(6px + 2.125ex) !important;
   font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
@@ -2625,18 +2813,15 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   background-color: #09D087 !important;
   background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23010205" d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') !important;
 }
-::slotted(input:focus)::before {
-  content: "" !important;
-  position: absolute !important;
-  top: -6px !important;
-  left: -6px !important;
-  right: -6px !important;
-  bottom: -6px !important;
-  border: 2px solid #1A44EA !important;
-  border-radius: 8px !important;
+::slotted(input::-moz-focus-inner) {
+  border: 0 !important;
 }
-::slotted(input:focus:not(:focus-visible))::before {
-  border-color: transparent !important;
+::slotted(input:focus) {
+  outline: 0 !important;
+}
+::slotted(input:focus-visible) {
+  outline: 2px solid #1A44EA !important;
+  outline-offset: 2px !important;
 }
 ::slotted(input:indeterminate) {
   background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23FBFCFF" d="m20,11v2H4v-2h16Z"/></svg>') !important;
@@ -2706,6 +2891,16 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   color: #09D087;
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   grid-column: 1/3;
+}
+.loading {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
 }"
 `;
 
@@ -2718,7 +2913,6 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   display: none !important;
 }
 ::slotted(input) {
-  position: relative !important;
   width: calc(6px + 2.125ex) !important;
   height: calc(6px + 2.125ex) !important;
   font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
@@ -2741,18 +2935,15 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   background-color: #197E10 !important;
   background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23FBFCFF" d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') !important;
 }
-::slotted(input:focus)::before {
-  content: "" !important;
-  position: absolute !important;
-  top: -6px !important;
-  left: -6px !important;
-  right: -6px !important;
-  bottom: -6px !important;
-  border: 2px solid #1A44EA !important;
-  border-radius: 8px !important;
+::slotted(input::-moz-focus-inner) {
+  border: 0 !important;
 }
-::slotted(input:focus:not(:focus-visible))::before {
-  border-color: transparent !important;
+::slotted(input:focus) {
+  outline: 0 !important;
+}
+::slotted(input:focus-visible) {
+  outline: 2px solid #1A44EA !important;
+  outline-offset: 2px !important;
 }
 ::slotted(input:indeterminate) {
   background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23010205" d="m20,11v2H4v-2h16Z"/></svg>') !important;
@@ -2822,6 +3013,16 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   color: #197E10;
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   grid-column: 1/3;
+}
+.loading {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
 }"
 `;
 
@@ -2834,7 +3035,6 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   display: none !important;
 }
 ::slotted(input) {
-  position: relative !important;
   width: calc(6px + 2.125ex) !important;
   height: calc(6px + 2.125ex) !important;
   font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
@@ -2909,6 +3109,16 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   color: #09D087;
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   grid-column: 1/3;
+}
+.loading {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
 }"
 `;
 
@@ -2921,7 +3131,6 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   display: none !important;
 }
 ::slotted(input) {
-  position: relative !important;
   width: calc(6px + 2.125ex) !important;
   height: calc(6px + 2.125ex) !important;
   font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
@@ -2996,5 +3205,15 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
   color: #197E10;
   transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   grid-column: 1/3;
+}
+.loading {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
 }"
 `;

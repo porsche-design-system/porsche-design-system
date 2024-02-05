@@ -5,7 +5,7 @@ import {
   addImportantToEachRule,
   addImportantToRule,
   colorSchemeStyles,
-  getBackfaceVisibilityJssStyle,
+  getFocusJssStyle,
   getHiddenTextJssStyle,
   getHighContrastColors,
   getThemedColors,
@@ -16,7 +16,6 @@ import {
 import {
   borderRadiusLarge,
   borderRadiusSmall,
-  borderWidthBase,
   getMediaQueryMax,
   getMediaQueryMin,
   gridBasicOffset,
@@ -33,6 +32,7 @@ import {
   spacingStaticXSmall,
   textSmallStyle,
 } from '@porsche-design-system/utilities-v2';
+import type { JssStyle } from 'jss';
 
 const cssVariablePrevNextFilter = '--p-carousel-prev-next-filter';
 export const carouselTransitionDuration = motionDurationModerate;
@@ -68,6 +68,11 @@ const spacingMap: Record<CarouselWidth, { base: string; s: string; xxl: string }
   extended: gridExtendedOffset,
 };
 
+const backfaceVisibilityJssStyle: JssStyle = {
+  backfaceVisibility: 'hidden',
+  WebkitBackfaceVisibility: 'hidden',
+};
+
 export const getComponentCss = (
   hasHeading: boolean,
   hasDescription: boolean,
@@ -79,12 +84,8 @@ export const getComponentCss = (
   alignHeader: CarouselAlignHeader,
   theme: Theme
 ): string => {
-  const { primaryColor, contrastMediumColor, focusColor } = getThemedColors(theme);
-  const {
-    primaryColor: primaryColorDark,
-    contrastMediumColor: contrastMediumColorDark,
-    focusColor: focusColorDark,
-  } = getThemedColors('dark');
+  const { primaryColor, contrastMediumColor } = getThemedColors(theme);
+  const { primaryColor: primaryColorDark, contrastMediumColor: contrastMediumColorDark } = getThemedColors('dark');
   const { canvasTextColor } = getHighContrastColors();
   const isHeaderAlignCenter = alignHeader === 'center';
 
@@ -109,15 +110,11 @@ export const getComponentCss = (
         },
       }),
       ...addImportantToEachRule({
-        '::slotted(*)': {
-          borderRadius: `var(--p-carousel-border-radius, ${borderRadiusLarge})`,
-        },
-        '::slotted(*:focus-visible)': {
-          outline: `${borderWidthBase} solid ${focusColor}`,
-          ...prefersColorSchemeDarkMediaQuery(theme, {
-            outlineColor: focusColorDark,
-          }),
-          outlineOffset: '2px',
+        '::slotted': {
+          '&(*)': {
+            borderRadius: `var(--p-carousel-border-radius, ${borderRadiusLarge})`,
+          },
+          ...getFocusJssStyle(theme, { slotted: true }),
         },
         // TODO: maybe it's better to style with slot[name="heading"] and slot[name="description"] instead, then styles would be part of shadow dom
         // h2,::slotted([slot=heading]),p,::slotted([slot=description])
@@ -181,7 +178,7 @@ export const getComponentCss = (
     'skip-link': {
       opacity: 0,
       pointerEvents: 'none',
-      '&:focus': {
+      '&:focus-visible': {
         opacity: 1,
         pointerEvents: 'all',
       },
@@ -212,12 +209,12 @@ export const getComponentCss = (
         },
       },
       '&__list': {
+        ...backfaceVisibilityJssStyle,
         display: 'flex',
-        ...getBackfaceVisibilityJssStyle(),
       },
       '&__slide': {
+        ...backfaceVisibilityJssStyle,
         flexShrink: 0,
-        ...getBackfaceVisibilityJssStyle(),
         transform: 'translateZ(0)', // fixes mobile safari flickering, https://github.com/nolimits4web/swiper/issues/3527#issuecomment-609088939
       },
       '&__sr': getHiddenTextJssStyle(), // appears in the DOM when sliding

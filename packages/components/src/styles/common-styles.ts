@@ -15,7 +15,6 @@ import {
   motionEasingOut,
   themeDarkBackgroundShading,
   themeLightBackgroundShading,
-  themeLightStateFocus,
 } from '@porsche-design-system/utilities-v2';
 import { isThemeDark } from '../utils';
 import type * as fromMotionType from '@porsche-design-system/utilities-v2/dist/esm/motion';
@@ -47,12 +46,11 @@ export const getTransition = (
   duration: MotionDurationKey = 'short',
   easing: keyof typeof motionEasingMap = 'base',
   delay?: MotionDurationKey
-): string =>
-  `${cssProperty} var(${cssVariableTransitionDuration}, ${motionDurationMap[duration]}) ${motionEasingMap[easing]}${
-    delay ? ` var(${cssVariableTransitionDuration}, ${motionDurationMap[delay]})` : ''
-  }`;
-
-export const pxToRemWithUnit = (px: number): string => `${px / 16}rem`;
+): string => {
+  return `${cssProperty} var(${cssVariableTransitionDuration}, ${motionDurationMap[duration]}) ${
+    motionEasingMap[easing]
+  }${delay ? ` var(${cssVariableTransitionDuration}, ${motionDurationMap[delay]})` : ''}`;
+};
 
 export const addImportantToRule = (value: any): string => `${value} !important`;
 
@@ -74,19 +72,31 @@ export const doGetThemedColors = (theme: Theme = 'light'): ThemedColors => {
   return getThemedColors(theme);
 };
 
-export type GetFocusStylesOptions = {
-  color?: string;
-  offset?: number;
-  pseudo?: '::after' | '::before';
+type Options = {
+  offset?: string | 0;
+  slotted?: true | string;
+  pseudo?: boolean;
 };
+export const getFocusJssStyle = (theme: Theme, opts?: Options): JssStyle => {
+  const { offset = '2px', slotted = '', pseudo = false } = opts || {};
+  const { focusColor } = getThemedColors(theme);
+  const { focusColor: focusColorDark } = getThemedColors('dark');
+  const slottedSelector = slotted && slotted !== true ? slotted : '';
 
-export const getInsetJssStyle = (value: 'auto' | number = 0): JssStyle => {
-  value = value === 0 || value === 'auto' ? value : (`${value}px` as any);
   return {
-    top: value,
-    left: value,
-    right: value,
-    bottom: value,
+    [`&${slotted ? '(' : ''}${slottedSelector}::-moz-focus-inner${slotted ? ')' : ''}`]: {
+      border: 0, // reset ua-style (for FF)
+    },
+    [`&${slotted ? '(' : ''}${slottedSelector}:focus${slotted ? ')' : ''}`]: {
+      outline: 0, // reset ua-style (for older browsers)
+    },
+    [`&${slotted ? '(' : ''}${slottedSelector}:focus-visible${slotted ? ')' : ''}${pseudo ? '::before' : ''}`]: {
+      outline: `${borderWidthBase} solid ${focusColor}`,
+      outlineOffset: offset,
+      ...prefersColorSchemeDarkMediaQuery(theme, {
+        outlineColor: focusColorDark,
+      }),
+    },
   };
 };
 
@@ -99,32 +109,14 @@ export const getResetInitialStylesForSlottedAnchor: JssStyle = {
   background: 'transparent',
 };
 
-export const focusPseudoJssStyle: JssStyle = {
-  outline: 0,
-  '&::before': {
-    // needs to be defined always to have correct custom click area
-    content: '""',
-    position: 'absolute',
-    ...getInsetJssStyle(),
-  },
-  '&:focus::before': {
-    borderRadius: '1px', // TODO: why just 1px border-radius?
-    outline: `${borderWidthBase} solid ${themeLightStateFocus}`,
-    outlineOffset: '2px',
-  },
-  '&:focus:not(:focus-visible)::before': {
-    outline: 0,
-  },
-};
-
 /**
  * Returns a JSS style object that can be used to visually hide text in the browser, while still allowing it to be accessed by screen readers.
  * @param {boolean} isHidden - A boolean value indicating whether the text should be hidden or not. Defaults to true.
  * @param {JssStyle} isShownJssStyle - Additional styles applied when isHidden = false
  * @returns {JssStyle} - A JSS style object containing styles depending on the value of isHidden and isShownJssStyle.
  */
-export const getHiddenTextJssStyle = (isHidden = true, isShownJssStyle?: JssStyle): JssStyle =>
-  isHidden
+export const getHiddenTextJssStyle = (isHidden = true, isShownJssStyle?: JssStyle): JssStyle => {
+  return isHidden
     ? {
         position: 'absolute',
         width: '1px',
@@ -146,12 +138,10 @@ export const getHiddenTextJssStyle = (isHidden = true, isShownJssStyle?: JssStyl
         whiteSpace: 'normal',
         ...isShownJssStyle,
       };
+};
 
-export const getBackfaceVisibilityJssStyle = (): JssStyle => ({
-  backfaceVisibility: 'hidden',
-  WebkitBackfaceVisibility: 'hidden',
-});
-
+// TODO: there should be a shared style util for modal, flyout and flyout-navigation instead of having this code in the
+//  main bundle. Or don't share it at all, in case same transition concept isn't ideal to be shared from an UI point of view.
 /**
  * Generates JSS styles for a frosted glass background.
  * @param {boolean} isVisible - Determines if the frosted glass effect is visible.
@@ -168,7 +158,7 @@ export const getBackdropJssStyle = (
 ): JssStyle => {
   return {
     position: 'fixed',
-    ...getInsetJssStyle(),
+    inset: 0,
     zIndex,
     // TODO: background shading is missing in getThemedColors(theme).backgroundShading
     background: isThemeDark(theme) ? themeDarkBackgroundShading : themeLightBackgroundShading,

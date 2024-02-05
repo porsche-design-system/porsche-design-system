@@ -151,7 +151,7 @@ exports[`should have only high contrast styles for p-switch 1`] = `
       "background-color": "CanvasText",
     },
     "@media(hover:hover)": {
-      ".root:hover .switch .toggle": {
+      "button:hover .toggle": {
         "background-color": "CanvasText",
       },
     },

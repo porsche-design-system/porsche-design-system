@@ -73,6 +73,7 @@ export const getSlottedTextFieldTextareaSelectStyles = (
           }),
         },
       }) as Styles)),
+    // TODO: getFocusJssStyle() can't be re-used because focus style differs for form elements
     [`::slotted(${child}:focus)`]: {
       borderColor: primaryColor,
       ...prefersColorSchemeDarkMediaQuery(theme, {

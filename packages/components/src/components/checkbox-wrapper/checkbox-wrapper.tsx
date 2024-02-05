@@ -1,4 +1,4 @@
-import { Component, Element, forceUpdate, h, type JSX, Listen, Prop } from '@stencil/core';
+import { Component, Element, forceUpdate, h, type JSX, Listen, Prop, Watch } from '@stencil/core';
 import {
   addChangeListener,
   AllowedTypes,
@@ -19,6 +19,7 @@ import { getComponentCss } from './checkbox-wrapper-styles';
 import { type CheckboxWrapperState } from './checkbox-wrapper-utils';
 import { StateMessage } from '../common/state-message/state-message';
 import { Label } from '../common/label/label';
+import { LoadingMessage } from '../common/loading-message/loading-message';
 
 const propTypes: PropTypes<typeof CheckboxWrapper> = {
   label: AllowedTypes.string,
@@ -55,6 +56,7 @@ export class CheckboxWrapper {
   @Prop() public theme?: Theme = 'light';
 
   private input: HTMLInputElement;
+  private initialLoading: boolean = false;
 
   @Listen('keydown')
   public onKeydown(e: KeyboardEvent): void {
@@ -64,14 +66,24 @@ export class CheckboxWrapper {
     }
   }
 
+  @Watch('loading')
+  public loadingChanged(newVal: boolean): void {
+    if (newVal) {
+      // don't reset initialLoading to false
+      this.initialLoading = newVal;
+    }
+  }
+
   public connectedCallback(): void {
     this.observeAttributes(); // on every reconnect
+    this.initialLoading = this.loading;
   }
 
   public componentWillLoad(): void {
     this.input = getOnlyChildOfKindHTMLElementOrThrow(this.host, 'input[type=checkbox]');
     addChangeListener(this.input);
     this.observeAttributes(); // once initially
+    this.initialLoading = this.loading;
   }
 
   public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
@@ -116,15 +128,11 @@ export class CheckboxWrapper {
         <div class="wrapper">
           <slot />
           {this.loading && (
-            <PrefixedTagNames.pSpinner
-              class="spinner"
-              size="inherit"
-              theme={this.theme}
-              aria={{ 'aria-label': `Loading state of ${this.label}` }}
-            />
+            <PrefixedTagNames.pSpinner class="spinner" size="inherit" theme={this.theme} aria-hidden="true" />
           )}
         </div>
         <StateMessage state={this.state} message={this.message} theme={this.theme} host={this.host} />
+        <LoadingMessage loading={this.loading} initialLoading={this.initialLoading} />
       </div>
     );
   }

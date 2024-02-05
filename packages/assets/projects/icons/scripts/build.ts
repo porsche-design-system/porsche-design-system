@@ -5,6 +5,8 @@ import { optimize, Config } from 'svgo';
 import * as globby from 'globby';
 import { paramCase } from 'change-case';
 import { CDN_BASE_PATH_ICONS } from '../../../../../cdn.config';
+import * as gzipSize from 'gzip-size';
+import { format } from 'prettier';
 
 type Manifest = {
   [name: string]: string;
@@ -13,7 +15,12 @@ type IconsMap = Manifest;
 
 const toHash = (str: string): string => crypto.createHash('md5').update(str, 'utf8').digest('hex');
 
-const createManifestAndOptimizeIcons = (files: string[], config: Config): void => {
+type Stats = { name: string; size: number; gzipSize: number };
+const stats: Stats[] = [];
+const statsDir = path.normalize('./tests/unit/results');
+const statsPath = path.normalize(`${statsDir}/stats.json`);
+
+const createManifestAndOptimizeIcons = async (files: string[], config: Config): Promise<void> => {
   fs.rmSync(path.normalize('./dist'), { force: true, recursive: true });
   fs.mkdirSync(path.normalize('./dist/icons'), { recursive: true });
 
@@ -41,6 +48,13 @@ const createManifestAndOptimizeIcons = (files: string[], config: Config): void =
 
     fs.writeFileSync(svgOptimizedPath, svgOptimizedData, 'utf8');
 
+    // TODO: we should create a shared and standardized stats generator for all assets
+    stats.push({
+      name: svgRawName,
+      size: Buffer.byteLength(svgOptimizedData),
+      gzipSize: gzipSize.sync(svgOptimizedData),
+    });
+
     const svgRawSize = fs.statSync(svgRawPath).size;
     const svgOptimizedSize = fs.statSync(svgOptimizedPath).size;
     const svgSizeDiff = svgOptimizedSize - svgRawSize;
@@ -55,6 +69,11 @@ const createManifestAndOptimizeIcons = (files: string[], config: Config): void =
       throw new Error(`Icon "${svgRawName}" is too large.`);
     }
   }
+
+  fs.rmSync(statsDir, { force: true, recursive: true });
+  fs.mkdirSync(statsDir, { recursive: true });
+  fs.writeFileSync(statsPath, await format(JSON.stringify(stats), { parser: 'json' }), 'utf8');
+  console.log(`Write optimized icon stats into "${statsPath}"`);
 
   const sortedManifestKeys = Object.keys(manifest).sort();
   const sortedManifest: Manifest = sortedManifestKeys.reduce((result, key) => {
@@ -74,11 +93,13 @@ export type IconName = typeof ICON_NAMES[number];
   console.log('Created icons manifest.');
 };
 
-const generate = (): void => {
+const generate = async (): Promise<void> => {
   const files = globby.sync('./src/**/*.svg').sort();
   const config: Config = require('../svgo.config.js');
 
-  createManifestAndOptimizeIcons(files, config);
+  await createManifestAndOptimizeIcons(files, config);
 };
 
-generate();
+(async (): Promise<void> => {
+  await generate();
+})();

@@ -2,6 +2,7 @@ import type { Direction } from '../table/table-utils';
 import { getCss } from '../../../utils';
 import {
   addImportantToEachRule,
+  getFocusJssStyle,
   getHiddenTextJssStyle,
   getThemedColors,
   getTransition,
@@ -10,7 +11,6 @@ import {
 } from '../../../styles';
 import {
   borderRadiusSmall,
-  borderWidthBase,
   frostedGlassStyle,
   spacingFluidSmall,
   spacingStaticXSmall,
@@ -18,7 +18,7 @@ import {
 import { isDirectionAsc, isSortable } from './table-head-cell-utils';
 import { cssVariableTableHeadCellIconFilter } from '../table/table-styles';
 
-const { hoverColor, focusColor } = getThemedColors('light'); // hover color and focus color are the same for light and dark
+const { hoverColor } = getThemedColors('light'); // hover color and focus color are the same for light and dark
 
 const buttonBeforeOffsetVertical = '-2px';
 const buttonBeforeOffsetHorizontal = '-4px';
@@ -53,7 +53,6 @@ export const getComponentCss = (
               padding: 0,
               font: 'inherit',
               color: 'inherit',
-              outline: 0,
               alignItems: 'flex-end',
               WebkitAppearance: 'none', // iOS safari
               appearance: 'none',
@@ -62,19 +61,17 @@ export const getComponentCss = (
               border: 0,
               zIndex: 0,
               cursor: 'pointer',
+              // TODO: re-think if ::before is still needed
               '&::before': {
                 content: '""',
                 position: 'absolute',
-                top: buttonBeforeOffsetVertical,
-                bottom: buttonBeforeOffsetVertical,
-                right: buttonBeforeOffsetHorizontal,
-                left: buttonBeforeOffsetHorizontal,
+                inset: `${buttonBeforeOffsetVertical} ${buttonBeforeOffsetHorizontal}`,
                 borderRadius: borderRadiusSmall,
                 zIndex: -1, // needed so that text behind element is selectable and/or visible
                 transition: getTransition('background-color'),
               },
               ...hoverMediaQuery({
-                '&:hover, &:focus': {
+                '&:hover, &:focus-visible': {
                   '& .icon': {
                     opacity: 1,
                   },
@@ -84,12 +81,8 @@ export const getComponentCss = (
                   backgroundColor: hoverColor,
                 },
               }),
-              '&:focus::before': {
-                border: `${borderWidthBase} solid ${focusColor}`,
-              },
-              '&:not(:focus-visible)::before': {
-                border: 0,
-              },
+              // TODO: to be future proof, we need to pass theme parameter
+              ...getFocusJssStyle('light', { pseudo: true, offset: '-2px' }),
             },
           }
         : hideLabel && {

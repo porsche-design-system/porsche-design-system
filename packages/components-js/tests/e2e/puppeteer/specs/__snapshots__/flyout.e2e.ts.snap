@@ -36,6 +36,10 @@ exports[`accessibility should expose correct initial accessibility tree 1`] = `
               "name": "Dismiss flyout",
               "role": "button",
             },
+            {
+              "name": "",
+              "role": "status",
+            },
           ],
           "name": "",
           "role": "generic",

@@ -1,8 +1,8 @@
 import type { Styles } from 'jss';
 import type { Theme, TileAlign, TileAspectRatio, TileBackground, TileSize, TileWeight } from '../../utils';
+import { buildResponsiveStyles, isThemeDark, mergeDeep } from '../../utils';
 import type { LinkTileWeight } from '../../components/link-tile/link-tile-utils';
 import type { BreakpointCustomizable } from '../../types';
-import { pxToRemWithUnit } from '../';
 import {
   fontSizeTextMedium,
   gradientToBottomStyle,
@@ -11,7 +11,6 @@ import {
   spacingFluidMedium,
   textLargeStyle,
 } from '@porsche-design-system/utilities-v2';
-import { buildResponsiveStyles, mergeDeep, isThemeDark } from '../../utils';
 import { getFontWeight } from '../font-weight-styles';
 import { getTileBaseStyles } from './tile-base-styles';
 import { getThemedColors } from '../colors';
@@ -36,7 +35,7 @@ export const getButtonLinkTileStyles = (
   return mergeDeep(getTileBaseStyles(aspectRatio, isDisabled), {
     '@global': {
       p: {
-        maxWidth: pxToRemWithUnit(550), // in this case rem unit makes sense to scale up available space
+        maxWidth: '34.375rem', // in this case rem unit makes sense to scale up available space
         margin: 0,
         ...textLargeStyle,
         hyphens: 'inherit',
