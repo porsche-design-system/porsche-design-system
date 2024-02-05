@@ -9166,7 +9166,7 @@ exports[`should match snapshot 1`] = `
         ],
         "defaultValue": "auto",
         "description": "Changes the direction to which the dropdown list appears.",
-        "type": "SelectDirection",
+        "type": "SelectDropdownDirection",
       },
       "hideLabel": {
         "allowedValues": "boolean",
