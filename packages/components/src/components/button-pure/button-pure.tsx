@@ -5,7 +5,6 @@ import {
   BUTTON_ARIA_ATTRIBUTES,
   BUTTON_TYPES,
   getPrefixedTagNames,
-  hasPropValueChanged,
   hasVisibleIcon,
   improveButtonHandlingForCustomElement,
   isDisabledOrLoading,
@@ -17,7 +16,7 @@ import {
   warnIfParentIsPTextAndIconIsNone,
 } from '../../utils';
 import type { BreakpointCustomizable, PropTypes, SelectedAriaAttributes, Theme } from '../../types';
-import { Component, Element, h, Host, type JSX, Listen, Prop, Watch } from '@stencil/core';
+import { Component, Element, h, Host, type JSX, Listen, Prop } from '@stencil/core';
 import type {
   ButtonPureAlignLabel,
   ButtonPureAlignLabelDeprecated,
@@ -30,8 +29,11 @@ import type {
 import { getButtonPureAriaAttributes, warnIfIsLoadingAndIconIsNone } from './button-pure-utils';
 import { getComponentCss } from './button-pure-styles';
 import { LoadingMessage, loadingId } from '../common/loading-message/loading-message';
+import { use } from 'typescript-mix';
+import { LoadingMixin } from '../../abstract-components';
 
-const propTypes: PropTypes<typeof ButtonPure> = {
+// a bit messy now but should be solvable maybe via private/public check or so
+const propTypes: Omit<PropTypes<typeof ButtonPure>, 'this' | 'initialLoading'> = {
   type: AllowedTypes.oneOf<ButtonPureType>(BUTTON_TYPES),
   name: AllowedTypes.string,
   value: AllowedTypes.string,
@@ -48,6 +50,9 @@ const propTypes: PropTypes<typeof ButtonPure> = {
   theme: AllowedTypes.oneOf<Theme>(THEMES),
   aria: AllowedTypes.aria<ButtonPureAriaAttribute>(BUTTON_ARIA_ATTRIBUTES),
 };
+
+// trick typing with interface inheritance and declaration merging
+export interface ButtonPure extends Partial<LoadingMixin> {}
 
 @Component({
   tag: 'p-button-pure',
@@ -68,6 +73,7 @@ export class ButtonPure {
   /** Disables the button. No events will be triggered while disabled state is active. */
   @Prop() public disabled?: boolean = false;
 
+  // @Prop decorator has to be used here for reactivity
   /** Disables the button and shows a loading indicator. No events will be triggered while loading state is active. */
   @Prop() public loading?: boolean = false;
 
@@ -104,7 +110,8 @@ export class ButtonPure {
   /** Add ARIA attributes. */
   @Prop() public aria?: SelectedAriaAttributes<ButtonPureAriaAttribute>;
 
-  private initialLoading: boolean = false;
+  // this is where the magic happens
+  @use(LoadingMixin) this: LoadingMixin;
 
   private get isDisabledOrLoading(): boolean {
     return isDisabledOrLoading(this.disabled, this.loading);
@@ -116,26 +123,6 @@ export class ButtonPure {
     if (this.isDisabledOrLoading) {
       e.stopPropagation();
     }
-  }
-
-  @Watch('loading')
-  public loadingChanged(newVal: boolean): void {
-    if (newVal) {
-      // don't reset initialLoading to false
-      this.initialLoading = newVal;
-    }
-  }
-
-  public connectedCallback(): void {
-    this.initialLoading = this.loading;
-  }
-
-  public componentWillLoad(): void {
-    this.initialLoading = this.loading;
-  }
-
-  public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
-    return hasPropValueChanged(newVal, oldVal);
   }
 
   public componentDidLoad(): void {
@@ -187,6 +174,7 @@ export class ButtonPure {
       class: 'icon',
       size: 'inherit',
       theme: this.theme,
+      'aria-hidden': 'true',
     };
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
@@ -194,15 +182,16 @@ export class ButtonPure {
     return (
       <Host>
         <button
-          {...getButtonPureAriaAttributes(this.disabled, this.loading, this.aria)}
           class="root"
           type={this.type}
           name={this.name}
           value={this.value}
+          {...getButtonPureAriaAttributes(this.disabled, this.loading, this.aria)}
           aria-describedby={this.loading ? loadingId : undefined}
         >
+          {/* TODO: different from p-button where there is no conditional rendering */}
           {this.loading ? (
-            <PrefixedTagNames.pSpinner {...iconProps} aria-hidden="true" />
+            <PrefixedTagNames.pSpinner {...iconProps} />
           ) : (
             hasIcon && (
               <PrefixedTagNames.pIcon
@@ -210,8 +199,6 @@ export class ButtonPure {
                 name={this.icon}
                 source={this.iconSource}
                 color={this.isDisabledOrLoading ? 'state-disabled' : 'primary'}
-                theme={this.theme}
-                aria-hidden="true"
               />
             )
           )}

@@ -24410,6 +24410,11 @@ typedarray@^0.0.6:
   resolved "https://registry.yarnpkg.com/typedarray/-/typedarray-0.0.6.tgz#867ac74e3864187b1d3d47d996a78ec5c8830777"
   integrity sha512-/aCDEGatGvZ2BIk+HmLf4ifCJFwvKFNb9/JeZPMulfgFracn9QFcAf5GO8B/mweUjSoblS5In0cWhqpfs/5PQA==
 
+typescript-mix@^3.1.3:
+  version "3.1.3"
+  resolved "https://registry.yarnpkg.com/typescript-mix/-/typescript-mix-3.1.3.tgz#3f86a5f23c8847d92a31499c36597c810c9d9e6d"
+  integrity sha512-xmRmx4afyjk+tNd1QsPKppzUtmqNpf4vMwRw0S7BZD/5A+/NFWNA6EacIB1/hchgnkfhO8se9Pf1C3Nxfb0Q9A==
+
 typescript@4.4.2:
   version "4.4.2"
   resolved "https://registry.yarnpkg.com/typescript/-/typescript-4.4.2.tgz#6d618640d430e3569a1dfb44f7d7e600ced3ee86"

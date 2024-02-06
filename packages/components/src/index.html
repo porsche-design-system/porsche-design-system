@@ -106,12 +106,12 @@
     </header>
 
     <main>
-      <p-button>Hi</p-button>
-      <p-button loading>Ho</p-button>
+      <p-button-pure>Hi</p-button-pure>
+      <p-button-pure loading>Ho</p-button-pure>
     </main>
 
     <script>
-      document.querySelectorAll('p-button').forEach((el) =>
+      document.querySelectorAll('p-button-pure').forEach((el) =>
         el.addEventListener('click', ({ target }) => {
           target.loading = !target.loading;
           setTimeout(() => {

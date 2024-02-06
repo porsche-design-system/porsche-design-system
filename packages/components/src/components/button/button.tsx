@@ -136,6 +136,12 @@ export class Button implements ILoadingComponent {
       this.theme
     );
 
+    const iconProps = {
+      size: 'inherit',
+      theme: this.theme,
+      'aria-hidden': 'true',
+    };
+
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
     return (
@@ -148,18 +154,15 @@ export class Button implements ILoadingComponent {
           {...getButtonAriaAttributes(this.disabled, this.loading, this.aria)}
           aria-describedby={this.loading ? loadingId : undefined}
         >
-          {this.loading && (
-            <PrefixedTagNames.pSpinner class="spinner" size="inherit" theme={this.theme} aria-hidden="true" />
-          )}
+          {/* TODO: different from p-button-pure where there is no conditional rendering */}
+          {this.loading && <PrefixedTagNames.pSpinner class="spinner" {...iconProps} />}
           {hasVisibleIcon(this.icon, this.iconSource) && (
             <PrefixedTagNames.pIcon
               class="icon"
-              size="inherit"
+              {...iconProps}
               name={this.iconSource ? undefined : this.icon}
               source={this.iconSource}
               color={this.disabled ? (this.variant === 'primary' ? 'contrast-high' : 'state-disabled') : 'primary'}
-              theme={this.theme}
-              aria-hidden="true"
             />
           )}
           <span class="label">
