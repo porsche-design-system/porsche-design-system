@@ -1,4 +1,4 @@
-import { Component, Element, Event, type EventEmitter, h, Host, type JSX, Listen, Prop, Watch } from '@stencil/core';
+import { Component, Element, Event, type EventEmitter, h, Host, type JSX, Listen, Prop } from '@stencil/core';
 import type { BreakpointCustomizable, PropTypes, Theme } from '../../types';
 import {
   ALIGN_LABELS,
@@ -15,8 +15,11 @@ import { getComponentCss } from './switch-styles';
 import type { SwitchAlignLabel, SwitchAlignLabelDeprecated, SwitchUpdateEventDetail } from './switch-utils';
 import { getSwitchButtonAriaAttributes } from './switch-utils';
 import { LoadingMessage, loadingId } from '../common/loading-message/loading-message';
+import { use } from 'typescript-mix';
+import { LoadingBaseComponent } from '../../abstract-components';
 
-const propTypes: PropTypes<typeof Switch> = {
+// a bit messy now but should be solvable maybe via private/public check or so
+const propTypes: Omit<PropTypes<typeof Switch>, 'this' | 'initialLoading'> = {
   alignLabel: AllowedTypes.breakpoint<SwitchAlignLabel>(ALIGN_LABELS),
   hideLabel: AllowedTypes.breakpoint('boolean'),
   stretch: AllowedTypes.breakpoint('boolean'),
@@ -25,6 +28,9 @@ const propTypes: PropTypes<typeof Switch> = {
   loading: AllowedTypes.boolean,
   theme: AllowedTypes.oneOf<Theme>(THEMES),
 };
+
+// trick typing with interface inheritance and declaration merging
+export interface Switch extends Partial<LoadingBaseComponent> {}
 
 @Component({
   tag: 'p-switch',
@@ -62,29 +68,14 @@ export class Switch {
   /** Emitted when checked status is changed. */
   @Event({ bubbles: false }) public update: EventEmitter<SwitchUpdateEventDetail>;
 
-  private initialLoading: boolean = false;
+  // this is where the magic happens
+  @use(LoadingBaseComponent) this: LoadingBaseComponent;
 
   @Listen('click', { capture: true })
   public onClick(e: MouseEvent): void {
     if (isDisabledOrLoading(this.disabled, this.loading)) {
       e.stopPropagation();
     }
-  }
-
-  @Watch('loading')
-  public loadingChanged(newVal: boolean): void {
-    if (newVal) {
-      // don't reset initialLoading to false
-      this.initialLoading = newVal;
-    }
-  }
-
-  public connectedCallback(): void {
-    this.initialLoading = this.loading;
-  }
-
-  public componentWillLoad(): void {
-    this.initialLoading = this.loading;
   }
 
   public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {

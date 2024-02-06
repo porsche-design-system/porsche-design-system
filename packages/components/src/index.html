@@ -106,12 +106,12 @@
     </header>
 
     <main>
-      <p-button-pure>Hi</p-button-pure>
-      <p-button-pure loading>Ho</p-button-pure>
+      <p-switch>Hi</p-switch>
+      <p-switch loading>Ho</p-switch>
     </main>
 
     <script>
-      document.querySelectorAll('p-button-pure').forEach((el) =>
+      document.querySelectorAll('p-switch').forEach((el) =>
         el.addEventListener('click', ({ target }) => {
           target.loading = !target.loading;
           setTimeout(() => {

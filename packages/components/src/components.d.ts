@@ -1123,6 +1123,9 @@ export namespace Components {
          */
         "theme"?: Theme;
     }
+    interface PLoadingBaseComponent {
+        "loading": boolean;
+    }
     /**
      * @deprecated since v3.0.0, will be removed with next major release. Please use "p-wordmark" instead.
      */
@@ -2291,6 +2294,12 @@ declare global {
         prototype: HTMLPLinkTileProductElement;
         new (): HTMLPLinkTileProductElement;
     };
+    interface HTMLPLoadingBaseComponentElement extends Components.PLoadingBaseComponent, HTMLStencilElement {
+    }
+    var HTMLPLoadingBaseComponentElement: {
+        prototype: HTMLPLoadingBaseComponentElement;
+        new (): HTMLPLoadingBaseComponentElement;
+    };
     /**
      * @deprecated since v3.0.0, will be removed with next major release. Please use "p-wordmark" instead.
      */
@@ -2694,6 +2703,7 @@ declare global {
         "p-link-tile": HTMLPLinkTileElement;
         "p-link-tile-model-signature": HTMLPLinkTileModelSignatureElement;
         "p-link-tile-product": HTMLPLinkTileProductElement;
+        "p-loading-base-component": HTMLPLoadingBaseComponentElement;
         "p-marque": HTMLPMarqueElement;
         "p-modal": HTMLPModalElement;
         "p-model-signature": HTMLPModelSignatureElement;
@@ -3774,6 +3784,9 @@ declare namespace LocalJSX {
          */
         "theme"?: Theme;
     }
+    interface PLoadingBaseComponent {
+        "loading"?: boolean;
+    }
     /**
      * @deprecated since v3.0.0, will be removed with next major release. Please use "p-wordmark" instead.
      */
@@ -4675,6 +4688,7 @@ declare namespace LocalJSX {
         "p-link-tile": PLinkTile;
         "p-link-tile-model-signature": PLinkTileModelSignature;
         "p-link-tile-product": PLinkTileProduct;
+        "p-loading-base-component": PLoadingBaseComponent;
         "p-marque": PMarque;
         "p-modal": PModal;
         "p-model-signature": PModelSignature;
@@ -4783,6 +4797,7 @@ declare module "@stencil/core" {
              * @experimental 
              */
             "p-link-tile-product": LocalJSX.PLinkTileProduct & JSXBase.HTMLAttributes<HTMLPLinkTileProductElement>;
+            "p-loading-base-component": LocalJSX.PLoadingBaseComponent & JSXBase.HTMLAttributes<HTMLPLoadingBaseComponentElement>;
             /**
              * @deprecated since v3.0.0, will be removed with next major release. Please use "p-wordmark" instead.
              */
