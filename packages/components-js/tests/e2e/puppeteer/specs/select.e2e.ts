@@ -1,8 +1,9 @@
-import type { Page } from 'puppeteer';
+import type { ElementHandle, Page } from 'puppeteer';
 import type { Components } from '@porsche-design-system/components';
 import {
   addEventListener,
   expectA11yToMatchSnapshot,
+  getActiveElementTagName,
   getActiveElementTagNameInShadowRoot,
   getAttribute,
   getConsoleErrorsAmount,
@@ -18,6 +19,7 @@ import {
   waitForStencilLifecycle,
 } from '../helpers';
 import type { SelectOption } from '@porsche-design-system/components/src/components/select/select/select-utils';
+import { test } from '@playwright/test';
 
 let page: Page;
 beforeEach(async () => (page = await browser.newPage()));
@@ -45,9 +47,18 @@ const getSelectedSelectOptionProperty = async <K extends keyof SelectOption>(pro
       (options.find((option: SelectOption) => option.selected) as SelectOption)[property] as SelectOption[K],
     property
   );
+
+const getSelectedOptionIndex = async (): Promise<number> =>
+  await page.$$eval('p-select p-select-option', (options: SelectOption[]) =>
+    options.indexOf(options.find((option: SelectOption) => option.selected))
+  );
 const getHighlightedOptionIndex = async (): Promise<number> =>
   await page.$$eval('p-select p-select-option', (options: SelectOption[]) =>
     options.filter((option) => !option.hidden).indexOf(options.find((option: SelectOption) => option.highlighted))
+  );
+const getHighlightedOption = async (): Promise<SelectOption> =>
+  await page.$$eval('p-select p-select-option', (options: SelectOption[]) =>
+    options.find((option: SelectOption) => option.highlighted)
   );
 const getNativeSelect = () => selectNode(page, 'p-select select');
 const getNativeSelectValue = async (): Promise<string> => await getProperty(await getNativeSelect(), 'value');
@@ -83,6 +94,130 @@ const addOption = async (value: string, textContent?: string) => {
 const removeLastOption = async () => {
   await page.evaluate((el: HTMLPSelectElement) => el.lastElementChild.remove(), await getHost());
 };
+
+const testValues = [
+  'Afghanistan',
+  'Åland Islands',
+  'Albania',
+  'Algeria',
+  'American Samoa',
+  'Andorra',
+  'Angola',
+  'Anguilla',
+  'Antarctica',
+  'Antigua and Barbuda',
+  'Argentina',
+  'Armenia',
+  'Aruba',
+  'Australia',
+  'Austria',
+  'Azerbaijan',
+  'Bahamas',
+  'Bahrain',
+  'Bangladesh',
+  'Barbados',
+  'Belarus',
+  'Belgium',
+  'Belize',
+  'Benin',
+  'Bermuda',
+  'Bhutan',
+  'Bolivia, Plurinational State of',
+  'Bonaire, Sint Eustatius and Saba',
+  'Bosnia and Herzegovina',
+  'Botswana',
+  'Bouvet Island',
+  'Brazil',
+  'British Indian Ocean Territory',
+  'Brunei Darussalam',
+  'Bulgaria',
+  'Burkina Faso',
+  'Burundi',
+  'Cambodia',
+  'Cameroon',
+  'Canada',
+  'Cape Verde',
+  'Cayman Islands',
+  'Central African Republic',
+  'Chad',
+  'Chile',
+  'China',
+  'Christmas Island',
+  'Cocos (Keeling) Islands',
+  'Colombia',
+  'Comoros',
+  'Congo',
+  'Congo, the Democratic Republic of the',
+  'Cook Islands',
+  'Costa Rica',
+  "Côte d'Ivoire",
+  'Croatia',
+  'Cuba',
+  'Curaçao',
+  'Cyprus',
+  'Czech Republic',
+  'Denmark',
+  'Djibouti',
+  'Dominica',
+  'Dominican Republic',
+  'Ecuador',
+  'Egypt',
+  'El Salvador',
+  'Equatorial Guinea',
+  'Eritrea',
+  'Estonia',
+  'Ethiopia',
+  'Falkland Islands (Malvinas)',
+  'Faroe Islands',
+  'Fiji',
+  'Finland',
+  'France',
+  'French Guiana',
+  'French Polynesia',
+  'French Southern Territories',
+  'Gabon',
+  'Gambia',
+  'Georgia',
+  'Germany',
+  'Ghana',
+  'Gibraltar',
+  'Greece',
+  'Greenland',
+  'Grenada',
+  'Guadeloupe',
+  'Guam',
+  'Guatemala',
+  'Guernsey',
+  'Guinea',
+  'Guinea-Bissau',
+  'Guyana',
+  'Haiti',
+  'Heard Island and McDonald Islands',
+  'Holy See (Vatican City State',
+  'Honduras',
+  'Hong Kong',
+  'Hungary',
+  'Iceland',
+  'India',
+  'Indonesia',
+  'Iran, Islamic Republic of',
+  'Iraq',
+  'Ireland',
+  'Isle of Man',
+  'Israel',
+  'Italy',
+  'Jamaica',
+  'Japan',
+  'Jersey',
+  'Jordan',
+  'Kazakhstan',
+  'Kenya',
+  'Kiribati',
+  "Korea, Democratic People's Republic of",
+  'Korea, Republic of',
+  'Kuwait',
+  'Kyrgyzstan',
+];
 
 type InitOptions = {
   props?: Components.PSelect;
@@ -406,7 +541,7 @@ describe('outside click', () => {
 //   });
 // });
 
-fdescribe('focus', () => {
+describe('focus', () => {
   it('should focus button when label text is clicked', async () => {
     await initSelect({ props: { name: 'options', label: 'Some Label' } });
 
@@ -458,44 +593,187 @@ fdescribe('focus', () => {
   });
 });
 
-// The keyboard behavior is aligned with the w3 suggestion https://www.w3.org/WAI/ARIA/apg/patterns/combobox/examples/combobox-select-only/
+// The keyboard behavior is aligned with the w3c suggestion https://www.w3.org/WAI/ARIA/apg/patterns/combobox/examples/combobox-select-only/
 describe('keyboard behavior', () => {
   describe('closed combobox', () => {
+    let buttonElement;
+    beforeEach(async () => {
+      await initSelect();
+      buttonElement = await getButton();
+      await addEventListener(buttonElement, 'focus');
+
+      expect((await getEventSummary(buttonElement, 'focus')).counter, 'initial focus').toBe(0);
+
+      await page.keyboard.press('Tab');
+      expect((await getEventSummary(buttonElement, 'focus')).counter, 'button focus after first tab').toBe(1);
+      expect(await getDropdownDisplay(), 'initial').toBe('none');
+    });
+
     // Opens the listbox if it is not already displayed without moving focus or changing selection.
     // DOM focus remains on the combobox.
-    it('should open the listbox when pressing Down Arrow', async () => {});
+    it('should open the listbox when pressing ArrowDown', async () => {
+      await page.keyboard.press('ArrowDown');
+      await waitForStencilLifecycle(page);
+
+      expect(await getDropdownDisplay(), 'initial').toBe('flex');
+      expect(await getHighlightedOptionIndex()).toBe(-1);
+      expect((await getEventSummary(buttonElement, 'focus')).counter, 'button focus after ArrowDown').toBe(1);
+    });
     // First opens the listbox if it is not already displayed and then moves visual focus to the first option.
     // DOM focus remains on the combobox.
-    it('should open the listbox and highlight first option when pressing Up Arrow', async () => {});
+    it('should open the listbox and highlight first option when pressing ArrowUp', async () => {
+      await page.keyboard.press('ArrowUp');
+      await waitForStencilLifecycle(page);
+
+      expect(await getDropdownDisplay(), 'initial').toBe('flex');
+      expect(await getHighlightedOptionIndex()).toBe(0);
+      expect((await getEventSummary(buttonElement, 'focus')).counter, 'button focus after ArrowUp').toBe(1);
+    });
     // Opens the listbox without moving focus or changing selection.
-    it('should open the listbox when pressing Enter', async () => {});
+    it('should open the listbox when pressing Enter', async () => {
+      await page.keyboard.press('Enter');
+      await waitForStencilLifecycle(page);
+
+      expect(await getDropdownDisplay(), 'initial').toBe('flex');
+      expect(await getHighlightedOptionIndex()).toBe(-1);
+      expect((await getEventSummary(buttonElement, 'focus')).counter, 'button focus after Enter').toBe(1);
+    });
     // Opens the listbox without moving focus or changing selection.
-    it('should open the listbox when pressing Space', async () => {});
+    it('should open the listbox when pressing Space', async () => {
+      await page.keyboard.press('Space');
+      await waitForStencilLifecycle(page);
+
+      expect(await getDropdownDisplay(), 'initial').toBe('flex');
+      expect(await getHighlightedOptionIndex()).toBe(-1);
+      expect((await getEventSummary(buttonElement, 'focus')).counter, 'button focus after Space').toBe(1);
+    });
     // Opens the listbox and moves visual focus to the first option.
-    it('should open the listbox when pressing Home', async () => {});
+    it('should open the listbox and move highlight to first option when pressing Home', async () => {
+      await page.keyboard.press('Home');
+      await waitForStencilLifecycle(page);
+
+      expect(await getDropdownDisplay(), 'initial').toBe('flex');
+      expect(await getHighlightedOptionIndex()).toBe(0);
+      expect((await getEventSummary(buttonElement, 'focus')).counter, 'button focus after Home').toBe(1);
+    });
     // Opens the listbox and moves visual focus to the last option.
-    it('should open the listbox when pressing End', async () => {});
+    it('should open the listbox when pressing End', async () => {
+      await page.keyboard.press('Home');
+      await waitForStencilLifecycle(page);
+
+      expect(await getDropdownDisplay(), 'initial').toBe('flex');
+      expect(await getHighlightedOptionIndex()).toBe(2);
+      expect((await getEventSummary(buttonElement, 'focus')).counter, 'button focus after End').toBe(1);
+    });
     // First opens the listbox if it is not already displayed and then moves visual focus to the first option that matches the typed character.
     // If multiple keys are typed in quick succession, visual focus moves to the first option that matches the full string.
     // If the same character is typed in succession, visual focus cycles among the options starting with that character.
-    it('should open the listbox when pressing a printable character', async () => {});
+    it('should open the listbox when pressing a printable character', async () => {
+      await page.keyboard.press('B');
+      await waitForStencilLifecycle(page);
+
+      expect(await getDropdownDisplay(), 'initial').toBe('flex');
+      expect(await getHighlightedOptionIndex()).toBe(1);
+      expect((await getEventSummary(buttonElement, 'focus')).counter, 'button focus after pressing "B"').toBe(1);
+    });
   });
-  describe('within listbox', () => {
+
+  fdescribe('within listbox', () => {
+    let buttonElement;
+    let buttonAfter;
+    beforeEach(async () => {
+      await initSelect({ options: { values: testValues, markupAfter: '<p-button>Button</p-button>' } });
+      buttonAfter = await selectNode(page, 'p-button');
+      await addEventListener(buttonAfter, 'focus');
+      buttonElement = await getButton();
+      await addEventListener(buttonElement, 'focus');
+
+      expect((await getEventSummary(buttonElement, 'focus')).counter, 'initial focus').toBe(0);
+
+      await page.keyboard.press('Tab');
+      expect((await getEventSummary(buttonElement, 'focus')).counter, 'button focus after first tab').toBe(1);
+      expect(await getDropdownDisplay(), 'initial').toBe('none');
+      await page.keyboard.press('ArrowDown');
+      await waitForStencilLifecycle(page);
+    });
+
     // Sets the value to the content of the focused option in the listbox.
     // Closes the listbox.
     // Sets visual focus on the combobox.
-    it('should select the option and close the dropdown when pressing Enter on option', async () => {});
+    it('should select the option and close the dropdown when pressing Enter on option', async () => {
+      await page.keyboard.press('ArrowDown');
+      await waitForStencilLifecycle(page);
+
+      expect(await getDropdownDisplay(), 'initial').toBe('flex');
+      expect(await getHighlightedOptionIndex()).toBe(0);
+
+      await page.keyboard.press('Enter');
+      await waitForStencilLifecycle(page);
+
+      expect(await getSelectValue()).toBe(testValues[0]);
+      expect(await getSelectedOptionIndex()).toBe(0);
+      expect(await getDropdownDisplay(), 'initial').toBe('none');
+      expect(await getHighlightedOptionIndex()).toBe(0); // Highlighted options stays highlighted even after closing of the dropdown
+      expect((await getEventSummary(buttonElement, 'focus')).counter, 'button focus after pressing Enter').toBe(1);
+      expect(await getActiveElementTagName(page)).toBe('P-SELECT');
+      expect(await getActiveElementTagNameInShadowRoot(await getHost())).toBe('BUTTON');
+    });
     // Sets the value to the content of the focused option in the listbox.
     // Closes the listbox.
     // Sets visual focus on the combobox.
-    it('should select the option and close the dropdown when pressing Space on option', async () => {});
+    it('should select the option and close the dropdown when pressing Space on option', async () => {
+      await page.keyboard.press('ArrowDown');
+      await waitForStencilLifecycle(page);
+
+      expect(await getDropdownDisplay(), 'initial').toBe('flex');
+      expect(await getHighlightedOptionIndex()).toBe(0);
+
+      await page.keyboard.press('Enter');
+      await waitForStencilLifecycle(page);
+
+      expect(await getSelectValue()).toBe(testValues[0]);
+      expect(await getSelectedOptionIndex()).toBe(0);
+      expect(await getDropdownDisplay(), 'initial').toBe('none');
+      expect(await getHighlightedOptionIndex()).toBe(0); // Highlighted options stays highlighted even after closing of the dropdown
+      expect((await getEventSummary(buttonElement, 'focus')).counter, 'button focus after pressing Space').toBe(1);
+      expect(await getActiveElementTagName(page)).toBe('P-SELECT');
+      expect(await getActiveElementTagNameInShadowRoot(await getHost())).toBe('BUTTON');
+    });
     // Sets the value to the content of the focused option in the listbox.
     // Closes the listbox.
     // Performs the default action, moving focus to the next focusable element. Note: the native <select> element closes the listbox but does not move focus on tab. This pattern matches the behavior of the other comboboxes rather than the native element in this case.
-    it('should select the option, close the dropdown and focus next element when pressing Tab on option', async () => {});
+    it('should select the option, close the dropdown and focus next element when pressing Tab on option', async () => {
+      await page.keyboard.press('ArrowDown');
+      await waitForStencilLifecycle(page);
+
+      expect(await getDropdownDisplay(), 'initial').toBe('flex');
+      expect(await getHighlightedOptionIndex()).toBe(0);
+      expect((await getEventSummary(buttonAfter, 'focus')).counter, 'before pressing Tab').toBe(0);
+
+      await page.keyboard.press('Tab');
+      await waitForStencilLifecycle(page);
+
+      expect(await getSelectValue()).toBe(testValues[0]);
+      expect(await getSelectedOptionIndex()).toBe(0);
+      expect(await getDropdownDisplay(), 'initial').toBe('none');
+      expect(await getHighlightedOptionIndex()).toBe(0); // Highlighted options stays highlighted even after closing of the dropdown
+      expect((await getEventSummary(buttonElement, 'focus')).counter, 'button focus after pressing Tab').toBe(1);
+      expect(await getActiveElementTagName(page)).toBe('P-BUTTON');
+      expect((await getEventSummary(buttonAfter, 'focus')).counter, 'after pressing Tab').toBe(1);
+    });
     // Closes the listbox.
     // Sets visual focus on the combobox.
-    it('should close the dropdown when pressing ESC', async () => {});
+    it('should close the dropdown when pressing Escape', async () => {
+      expect(await getDropdownDisplay(), 'initial').toBe('flex');
+
+      await page.keyboard.press('Escape');
+      await waitForStencilLifecycle(page);
+
+      expect(await getDropdownDisplay(), 'initial').toBe('none');
+      expect((await getEventSummary(buttonElement, 'focus')).counter, 'button focus after pressing Tab').toBe(1);
+      expect(await getActiveElementTagName(page)).toBe('P-SELECT');
+      expect(await getActiveElementTagNameInShadowRoot(await getHost())).toBe('BUTTON');
+    });
     // Moves visual focus to the next option.
     // If visual focus is on the last option, visual focus does not move.
     it('should move highlight to the next option when pressing Down Arrow', async () => {});
@@ -510,6 +788,10 @@ describe('keyboard behavior', () => {
     it('should move highlight up 10 options (or to first option) when pressing PageUp', async () => {});
     // Jumps visual focus down 10 options (or to last option).
     it('should move highlight down 10 options (or to last option) when pressing PageDown', async () => {});
+    // First opens the listbox if it is not already displayed and then moves visual focus to the first option that matches the typed character.
+    // If multiple keys are typed in quick succession, visual focus moves to the first option that matches the full string.
+    // If the same character is typed in succession, visual focus cycles among the options starting with that character.
+    it('should move highlight correctly when pressing printable characters', async () => {});
   });
 });
 
