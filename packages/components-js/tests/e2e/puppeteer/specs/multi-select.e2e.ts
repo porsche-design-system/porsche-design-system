@@ -24,7 +24,7 @@ beforeEach(async () => (page = await browser.newPage()));
 afterEach(async () => await page.close());
 
 const getHost = () => selectNode(page, 'p-multi-select');
-const getMultiSelectValue = async (): Promise<(string | number)[]> => await getProperty(await getHost(), 'value');
+const getMultiSelectValue = async (): Promise<string[]> => await getProperty(await getHost(), 'value');
 const getInputContainer = () => selectNode(page, 'p-multi-select >>> .wrapper');
 const getInput = () => selectNode(page, 'p-multi-select >>> input');
 const getInputValue = async (): Promise<string> => getProperty(await getInput(), 'value');
@@ -76,7 +76,7 @@ const messageSlotContent =
 const setValue = async (value: string[]) =>
   await page.evaluate((el: HTMLPMultiSelectElement, value) => (el.value = value), await getHost(), value);
 
-const addOption = async (value: string | number, textContent?: string) => {
+const addOption = async (value: string, textContent?: string) => {
   await page.evaluate(
     (el: HTMLPMultiSelectElement, value, textContent) => {
       const option: any = document.createElement('p-multi-select-option');
@@ -173,8 +173,16 @@ describe('native select', () => {
 
     await waitForStencilLifecycle(page);
 
-    expect(await getProperty(nativeSelectElement, 'required')).toBeTruthy();
-    expect(await getProperty(nativeSelectElement, 'disabled')).toBeTruthy();
+    expect(await getProperty(nativeSelectElement, 'required')).toBe(true);
+    expect(await getProperty(nativeSelectElement, 'disabled')).toBe(true);
+
+    await setProperty(host, 'required', false);
+    await setProperty(host, 'disabled', false);
+
+    await waitForStencilLifecycle(page);
+
+    expect(await getProperty(nativeSelectElement, 'required')).toBe(false);
+    expect(await getProperty(nativeSelectElement, 'disabled')).toBe(false);
   });
 
   it('should be in sync with selected options when selecting option', async () => {
@@ -269,7 +277,7 @@ describe('native select', () => {
     await waitForStencilLifecycle(page);
 
     const nativeSelectOptionsAfter = await getNativeSelectOptions();
-    expect(nativeSelectOptionsAfter.length, 'initial').toEqual(0);
+    expect(nativeSelectOptionsAfter.length, 'after removing option').toEqual(0);
     expect(nativeSelectOptionsAfter[0]).toBeUndefined();
   });
 
