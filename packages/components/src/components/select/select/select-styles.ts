@@ -56,6 +56,7 @@ export const getComponentCss = (
             position: 'absolute',
             opacity: 0,
             height: '0px',
+            bottom: 0,
           },
         })),
       // TODO: re-use select-wrapper-style
@@ -64,6 +65,9 @@ export const getComponentCss = (
     root: {
       display: 'grid',
       gap: spacingStaticXSmall,
+      ...(isWithinForm && {
+        position: 'relative', // Necessary for native HTML validation box positioning (internal-select)
+      }),
     },
     wrapper: {
       position: 'relative',
