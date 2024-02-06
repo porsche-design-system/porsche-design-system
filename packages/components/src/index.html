@@ -105,9 +105,21 @@
       </select>
     </header>
 
-    <main></main>
+    <main>
+      <p-button>Hi</p-button>
+      <p-button loading>Ho</p-button>
+    </main>
 
     <script>
+      document.querySelectorAll('p-button').forEach((el) =>
+        el.addEventListener('click', ({ target }) => {
+          target.loading = !target.loading;
+          setTimeout(() => {
+            target.loading = !target.loading;
+          }, 1000);
+        })
+      );
+
       <!-- START: keep this snippet to log component lifecycle events -->
       ['componentWillLoad', 'componentDidLoad', 'componentWillUpdate', 'componentDidUpdate'].forEach((x) =>
         window.addEventListener(`stencil_${x}`, (e) => {
