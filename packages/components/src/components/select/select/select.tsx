@@ -9,6 +9,7 @@ import {
   setLastSelectOptionHighlighted,
   setMatchingSelectOptionHighlighted,
   setSelectedOption,
+  syncNativeSelect,
   syncSelectOptionProps,
   updateHighlightedSelectOption,
   updateNativeSelectOption,
@@ -134,7 +135,7 @@ export class Select {
       }
       this.preventOptionUpdate = false;
       if (this.isWithinForm) {
-        updateNativeSelectOption(this.nativeSelect, this.value);
+        updateNativeSelectOption(this.nativeSelect, this.selectOptions);
       }
     }
   }
@@ -150,7 +151,7 @@ export class Select {
     updateSelectOptions(this.selectOptions, this.value);
     if (this.isWithinForm) {
       this.nativeSelect = initNativeSelect(this.host, this.name, this.disabled, this.required);
-      updateNativeSelectOption(this.nativeSelect, this.value);
+      updateNativeSelectOption(this.nativeSelect, this.selectOptions);
     }
   }
 
@@ -160,6 +161,12 @@ export class Select {
 
   public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
     return hasPropValueChanged(newVal, oldVal);
+  }
+
+  public componentWillUpdate(): void {
+    if (this.isWithinForm) {
+      syncNativeSelect(this.nativeSelect, this.name, this.disabled, this.required);
+    }
   }
 
   public disconnectedCallback(): void {
@@ -237,7 +244,7 @@ export class Select {
     this.updateOptions();
     updateSelectOptions(this.selectOptions, this.value);
     if (this.isWithinForm) {
-      updateNativeSelectOption(this.nativeSelect, this.value);
+      updateNativeSelectOption(this.nativeSelect, this.selectOptions);
     }
     // Necessary to update selected options in placeholder
     forceUpdate(this.host);

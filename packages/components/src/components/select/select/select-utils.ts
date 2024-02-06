@@ -41,6 +41,7 @@ const resetSelectedOption = (options: SelectOption[]): void => {
 };
 
 export const updateSelectOptions = (options: SelectOption[], value: string): void => {
+  resetSelectedOption(options);
   if (value === undefined) {
     // Option without value for empty selection
     const optionToSelect = options.find((option) => option.value === undefined);
@@ -49,7 +50,6 @@ export const updateSelectOptions = (options: SelectOption[], value: string): voi
       forceUpdate(optionToSelect);
     }
   } else {
-    resetSelectedOption(options);
     // TODO: Do we want to cover multiple options with the same value?
     const optionToSelect = options.find((option) => option.value === value);
     if (!optionToSelect) {
@@ -98,8 +98,10 @@ export const syncNativeSelect = (
   nativeSelect.toggleAttribute('required', required);
 };
 
-export const updateNativeSelectOption = (nativeSelect: HTMLSelectElement, value: string): void => {
-  nativeSelect.innerHTML = value ? `<option value="${value}" selected></option>` : '';
+export const updateNativeSelectOption = (nativeSelect: HTMLSelectElement, selectOptions: SelectOption[]): void => {
+  const selectedOption = selectOptions.find((option) => option.selected);
+  // Check for value since empty option can also be selected
+  nativeSelect.innerHTML = selectedOption?.value ? `<option value="${selectedOption.value}" selected></option>` : '';
 };
 
 // TODO: This is copied from multi-select, extract and reuse in both components
