@@ -2,8 +2,8 @@ import { FormState } from '../../../utils/form/form-state';
 import {
   consoleWarn,
   determineDropdownDirection,
-  SelectDropdownDirections,
   SelectDropdownDirectionInternal,
+  SelectDropdownDirections,
   setAttribute,
   setAttributes,
   Theme,
@@ -117,130 +117,5 @@ export const getSelectDropdownDirection = (
     return determineDropdownDirection(host, visibleOptionsLength);
   } else {
     return 'down';
-  }
-};
-
-// TODO: Similar to multi-select
-export const getHighlightedSelectOptionIndex = (options: SelectOption[]): number =>
-  options.indexOf(getHighlightedSelectOption(options));
-
-// TODO: Similiar to multi-select
-export const getHighlightedSelectOption = (options: SelectOption[]): SelectOption =>
-  options.find((option) => option.highlighted);
-
-// TODO: Similar to multi-select
-export const setHighlightedSelectOption = (option: SelectOption, highlighted: boolean): void => {
-  option.highlighted = highlighted;
-  forceUpdate(option);
-};
-
-// TODO: Similar to multi-select
-export const getUsableSelectOptions = (options: SelectOption[]): SelectOption[] =>
-  options.filter((option) => !option.hidden && !option.disabled);
-
-// TODO: Similar to multi-select
-export const setNextSelectOptionHighlighted = (host: HTMLElement, options: SelectOption[], newIndex: number): void => {
-  const oldIndex = getHighlightedSelectOptionIndex(options);
-  if (oldIndex !== -1) {
-    setHighlightedSelectOption(options[oldIndex], false);
-  }
-  setHighlightedSelectOption(options[newIndex], true);
-  handleSelectDropdownScroll(host, options[newIndex]);
-};
-
-// TODO: Similar to multi-select
-export const setFirstSelectOptionHighlighted = (host: HTMLElement, options: SelectOption[]): void => {
-  const validOptions = getUsableSelectOptions(options);
-  setNextSelectOptionHighlighted(host, options, options.indexOf(validOptions[0]));
-};
-
-// TODO: Similar to multi-select
-export const setLastSelectOptionHighlighted = (host: HTMLElement, options: SelectOption[]): void => {
-  const validOptions = getUsableSelectOptions(options);
-  setNextSelectOptionHighlighted(host, options, options.indexOf(validOptions.at(-1)));
-};
-
-// TODO: Similar to multi-select
-export const getNewSelectOptionIndex = (
-  options: SelectOption[],
-  direction: SelectDropdownDirectionInternal
-): number => {
-  const validItems = getUsableSelectOptions(options);
-  const validMax = validItems.length - 1;
-  if (validMax < 0) {
-    return;
-  }
-  const oldIndex = getHighlightedSelectOptionIndex(validItems);
-  let newIndex = oldIndex;
-  if (direction === 'down') {
-    newIndex = oldIndex < validMax ? oldIndex + 1 : 0;
-  } else if (direction === 'up') {
-    newIndex = oldIndex > 0 ? oldIndex - 1 : validMax;
-  }
-  return options.indexOf(validItems[newIndex]);
-};
-
-// TODO: Similar to multi-select
-export const updateHighlightedSelectOption = (
-  host: HTMLElement,
-  options: SelectOption[],
-  direction: SelectDropdownDirectionInternal
-): void => {
-  const newIndex = getNewSelectOptionIndex(options, direction);
-  setNextSelectOptionHighlighted(host, options, newIndex);
-};
-
-const filterSelectOptions = (options: SelectOption[], filter: string): SelectOption[] =>
-  getUsableSelectOptions(options).filter(
-    (option) => option.textContent.trim().toLowerCase().indexOf(filter.toLowerCase()) === 0
-  );
-
-const setMatchingSelectOptionIndex = (options: SelectOption[], filter: string): number => {
-  const startIndex = getHighlightedSelectOptionIndex(options) + 1;
-  // Shift already searched options to the end of the array in order to find the next matching option
-  const orderedOptions = [...options.slice(startIndex), ...options.slice(0, startIndex)];
-  const firstMatch = filterSelectOptions(orderedOptions, filter)[0];
-
-  const allSameLetter = (str: string): boolean => str.split('').every((letter: string) => letter === str[0]);
-
-  // first check if there is an exact match for the typed string
-  if (firstMatch) {
-    return options.indexOf(firstMatch);
-  }
-  // if the same letter is being repeated, cycle through first-letter matches
-  else if (allSameLetter(filter)) {
-    const matches = filterSelectOptions(orderedOptions, filter[0]);
-    return options.indexOf(matches[0]);
-  }
-  // No matching option found
-  else {
-    return -1;
-  }
-};
-
-// TODO: Use this in select-wrapper as well
-export const setMatchingSelectOptionHighlighted = (
-  host: HTMLElement,
-  options: SelectOption[],
-  filter: string
-): void => {
-  const matchingIndex = setMatchingSelectOptionIndex(options, filter);
-  if (matchingIndex !== -1) {
-    setNextSelectOptionHighlighted(host, options, matchingIndex);
-  }
-};
-
-// TODO: Similar to multi-select
-/**
- * Handles scrolling within the list to ensure that the highlighted item is always visible.
- * @param {HTMLElement} scrollElement - The HTML element to be scrolled.
- * @param {HTMLElement} element - The element to scroll to.
- * @returns {void}
- */
-export const handleSelectDropdownScroll = (scrollElement: HTMLElement, element: HTMLElement): void => {
-  const { maxHeight } = getComputedStyle(scrollElement);
-  const hostElementHeight = parseInt(maxHeight, 10);
-  if (scrollElement.scrollHeight > hostElementHeight) {
-    element.scrollIntoView();
   }
 };

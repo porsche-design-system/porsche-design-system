@@ -1,17 +1,12 @@
 import type { BreakpointCustomizable, PropTypes, Theme } from '../../../types';
 import type { SelectDropdownDirection, SelectOption, SelectState, SelectUpdateEventDetail } from './select-utils';
 import {
-  getHighlightedSelectOption,
   getSelectDropdownDirection,
   getSelectedOptionString,
   initNativeSelect,
-  setFirstSelectOptionHighlighted,
-  setLastSelectOptionHighlighted,
-  setMatchingSelectOptionHighlighted,
   setSelectedOption,
   syncNativeSelect,
   syncSelectOptionProps,
-  updateHighlightedSelectOption,
   updateNativeSelectOption,
   updateSelectOptions,
 } from './select-utils';
@@ -33,14 +28,20 @@ import {
   AllowedTypes,
   attachComponentCss,
   FORM_STATES,
+  getActionFromKey,
   getClosestHTMLElement,
+  getHighlightedSelectOption,
+  getHighlightedSelectOptionIndex,
   getListAriaAttributes,
   getPrefixedTagNames,
   getShadowRootHTMLElement,
+  getUpdatedIndex,
   hasPropValueChanged,
   isClickOutside,
   SELECT_DROPDOWN_DIRECTIONS,
-  SelectDropdownDirectionInternal,
+  SelectActions,
+  setMatchingSelectOptionIndex,
+  setNextSelectOptionHighlighted,
   THEMES,
   throwIfElementIsNotOfKind,
   validateProps,
@@ -115,6 +116,9 @@ export class Select {
   private form: HTMLFormElement;
   private isWithinForm: boolean;
   private preventOptionUpdate = false; // Used to prevent value watcher from updating options when options are already updated
+
+  private searchString: string = '';
+  private searchTimeout = null;
 
   @Listen('internalOptionUpdate')
   public updateOptionHandler(e: Event & { target: SelectOption }): void {
@@ -212,8 +216,9 @@ export class Select {
             aria-haspopup="listbox"
             aria-expanded={`${this.isOpen}`}
             disabled={this.disabled}
-            onClick={this.onInputClick}
-            onKeyDown={this.onComboboxKeyDown}
+            onClick={this.onComboClick}
+            onKeyDown={this.onComboKeyDown}
+            onBlur={this.onComboBlur}
           >
             {getSelectedOptionString(this.selectOptions)}
           </button>
@@ -257,73 +262,106 @@ export class Select {
     this.selectOptions.forEach((child) => throwIfElementIsNotOfKind(this.host, child, 'p-select-option'));
   };
 
-  private onInputClick = (): void => {
-    this.isOpen = !this.isOpen;
+  private onComboClick = (): void => {
+    this.updateMenuState(!this.isOpen);
   };
 
-  private onComboboxKeyDown = (e: KeyboardEvent): void => {
-    if (e.key.length === 1 && e.key !== ' ' && !e.altKey && !e.ctrlKey && !e.metaKey) {
-      if (!this.isOpen) {
-        this.isOpen = true;
-      }
-      setMatchingSelectOptionHighlighted(this.listElement, this.selectOptions, e.key);
+  private updateMenuState = (open: boolean) => {
+    if (this.isOpen === open) {
+      return;
     }
-    switch (e.key) {
-      case 'ArrowUp':
-      case 'Up':
-        e.preventDefault();
-        this.cycleDropdown('up');
-        break;
-      case 'ArrowDown':
-      case 'Down':
-        e.preventDefault();
-        this.cycleDropdown('down');
-        break;
-      case ' ':
-      case 'Spacebar':
-      case 'Enter':
-        const highlightedOption = getHighlightedSelectOption(this.selectOptions);
-        if (highlightedOption) {
-          setSelectedOption(this.selectOptions, highlightedOption);
-          this.value = highlightedOption.value;
-          this.emitUpdateEvent();
-          forceUpdate(highlightedOption);
-        }
-        break;
-      case 'Escape':
-      case 'Tab':
-        this.isOpen = false;
-        break;
-      case 'Home':
-      case 'PageUp':
-        if (this.isOpen) {
-          e.preventDefault();
-          setFirstSelectOptionHighlighted(this.listElement, this.selectOptions);
-        }
-        break;
-      case 'End':
-      case 'PageDown':
-        if (this.isOpen) {
-          e.preventDefault();
-          setLastSelectOptionHighlighted(this.listElement, this.selectOptions);
-        }
-        break;
-      case 'Backspace':
-      case 'Clear':
-        if (!this.isOpen) {
-          this.isOpen = true;
-        }
-        setMatchingSelectOptionHighlighted(this.listElement, this.selectOptions, e.key);
-    }
+    // update state
+    this.isOpen = open;
   };
 
-  private cycleDropdown(direction: SelectDropdownDirectionInternal): void {
+  private onComboBlur = (event: FocusEvent) => {
+    // do nothing if relatedTarget is contained within listboxEl
+    if (this.listElement.contains(event.relatedTarget as Node)) {
+      return;
+    }
+
+    // select current option and close
     if (this.isOpen) {
-      updateHighlightedSelectOption(this.listElement, this.selectOptions, direction);
-    } else {
-      this.isOpen = true;
+      setSelectedOption(this.selectOptions, getHighlightedSelectOption(this.selectOptions));
+      this.updateMenuState(false);
     }
-  }
+  };
+
+  private onComboKeyDown = (event: KeyboardEvent) => {
+    const { key } = event;
+    const max = this.selectOptions.length - 1;
+
+    const action = getActionFromKey(event, this.isOpen);
+
+    switch (action) {
+      case SelectActions.Last:
+      case SelectActions.First:
+        this.updateMenuState(true);
+      // intentional fallthrough
+      case SelectActions.Next:
+      case SelectActions.Previous:
+      case SelectActions.PageUp:
+      case SelectActions.PageDown:
+        event.preventDefault();
+        setNextSelectOptionHighlighted(
+          this.listElement,
+          this.selectOptions,
+          getUpdatedIndex(getHighlightedSelectOptionIndex(this.selectOptions), max, action)
+        );
+        break;
+      case SelectActions.CloseSelect:
+        event.preventDefault();
+        setSelectedOption(this.selectOptions, getHighlightedSelectOption(this.selectOptions));
+      // intentional fallthrough
+      case SelectActions.Close:
+        event.preventDefault();
+        this.updateMenuState(false);
+        break;
+      case SelectActions.Type:
+        this.onComboType(key);
+        break;
+      case SelectActions.Open:
+        event.preventDefault();
+        this.updateMenuState(true);
+        break;
+    }
+  };
+
+  private onComboType = (letter: string) => {
+    // open the listbox if it is closed
+    this.updateMenuState(true);
+
+    // find the index of the first matching option
+    const searchString = this.getSearchString(letter);
+
+    const matchingIndex = setMatchingSelectOptionIndex(this.selectOptions, searchString);
+    if (matchingIndex !== -1) {
+      setNextSelectOptionHighlighted(this.listElement, this.selectOptions, matchingIndex);
+    }
+
+    // if no matches, clear the timeout and search string
+    else {
+      window.clearTimeout(this.searchTimeout);
+      this.searchString = '';
+    }
+  };
+
+  private getSearchString = (char: string) => {
+    // reset typing timeout and start new timeout
+    // this allows us to make multiple-letter matches, like a native select
+    if (typeof this.searchTimeout === 'number') {
+      window.clearTimeout(this.searchTimeout);
+    }
+
+    this.searchTimeout = window.setTimeout(() => {
+      this.searchString = '';
+    }, 500);
+
+    // add most recent letter to saved search string
+    this.searchString += char;
+    console.log(this.searchString);
+    return this.searchString;
+  };
 
   private onClickOutside = (e: MouseEvent): void => {
     if (this.isOpen && isClickOutside(e, this.inputContainer) && isClickOutside(e, this.listElement)) {
