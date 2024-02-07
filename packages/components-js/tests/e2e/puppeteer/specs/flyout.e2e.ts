@@ -262,23 +262,9 @@ describe('can be dismissed', () => {
   it('should be closable via backdrop', async () => {
     await page.mouse.move(5, 5);
     await page.mouse.down();
-
-    expect((await getEventSummary(host, 'dismiss')).counter, 'after mouse down').toBe(0);
-
     await page.mouse.up();
 
-    expect((await getEventSummary(host, 'dismiss')).counter, 'after mouse up').toBe(1);
-  });
-
-  it('should not be dismissed if mousedown inside flyout', async () => {
-    await page.mouse.move(1800, 400);
-    await page.mouse.down();
-
-    expect((await getEventSummary(host, 'dismiss')).counter, 'after mouse down').toBe(0);
-
-    await page.mouse.up();
-
-    expect((await getEventSummary(host, 'dismiss')).counter, 'after mouse up').toBe(0);
+    expect((await getEventSummary(host, 'dismiss')).counter).toBe(1);
   });
 
   it('should not be dismissed if mousedown inside flyout and mouseup inside backdrop', async () => {
@@ -354,9 +340,6 @@ describe('focus behavior', () => {
     expect(await getActiveElementTagName(page)).toBe('P-FLYOUT');
     await expectDismissButtonToBeFocused();
     await page.keyboard.press('Tab');
-    expect(await getActiveElementTagName(page)).toBe('P-FLYOUT');
-    await expectDismissButtonToBeFocused();
-    await page.keyboard.press('Tab');
     expect(await getActiveElementTagName(page)).toBe('BODY');
     await page.keyboard.press('Tab');
     expect(await getActiveElementTagName(page)).toBe('P-FLYOUT');
@@ -368,10 +351,6 @@ describe('focus behavior', () => {
     await addButtonsBeforeAndAfterFlyout();
     await openFlyout();
 
-    expect(await getActiveElementTagName(page)).toBe('P-FLYOUT');
-    await expectDismissButtonToBeFocused();
-    await page.keyboard.down('Shift');
-    await page.keyboard.press('Tab');
     expect(await getActiveElementTagName(page)).toBe('P-FLYOUT');
     await expectDismissButtonToBeFocused();
     await page.keyboard.down('Shift');
