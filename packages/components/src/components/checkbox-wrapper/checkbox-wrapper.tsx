@@ -13,6 +13,7 @@ import {
   unobserveAttributes,
   validateProps,
 } from '../../utils';
+import { applyCheckboxRadioButtonSafariRenderingFix } from '../../utils/form/applyCheckboxRadioButtonSafariRenderingFix';
 import { type BreakpointCustomizable, type PropTypes, type Theme } from '../../types';
 import { getComponentCss } from './checkbox-wrapper-styles';
 import { type CheckboxWrapperState } from './checkbox-wrapper-utils';
@@ -74,6 +75,7 @@ export class CheckboxWrapper {
   }
 
   public connectedCallback(): void {
+    applyCheckboxRadioButtonSafariRenderingFix(this.host);
     this.observeAttributes(); // on every reconnect
     this.initialLoading = this.loading;
   }
