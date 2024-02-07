@@ -3,7 +3,7 @@
  */
 module.exports = {
   multipass: true,
-  floatPrecision: 3,
+  floatPrecision: 2,
   plugins: [
     {
       name: 'preset-default',

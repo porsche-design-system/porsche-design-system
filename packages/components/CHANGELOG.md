@@ -14,14 +14,24 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ### [Unreleased]
 
+### [3.12.0-rc.0] - 2024-02-05
+
+#### Added
+
+- `Icon`: `logo-x`, `bookmark-filled` and `star-filled`
+  ([#3025](https://github.com/porsche-design-system/porsche-design-system/pull/3025))
+
 #### Changed
 
+- `Icon`: Visual appearance of `information-filled`, `information`, `success-filled`, `success`, `bookmark`, `compare`,
+  `configurate`, `heart-filled`, `heart`, `menu-lines`, `success`, `search`, `locate`, `star`, `shopping-bag-filled`, 
+  `shopping-bag`, `user-filled` and `user` ([#3025](https://github.com/porsche-design-system/porsche-design-system/pull/3025))
 - All components (expect some form elements) have improved focus styling based on `:focus-visible`
   ([#3011](https://github.com/porsche-design-system/porsche-design-system/pull/3011))
 - Several components are using CSS property `inset|inset-inline|inset-block` instead of `top|bottom|left|right` for
   better RTL (right-to-left) support ([#3011](https://github.com/porsche-design-system/porsche-design-system/pull/3011))
 - `Switch`: Improve RTL (right-to-left) mode
-  ([#2992](https://github.com/porsche-design-system/porsche-design-system/pull/2992))
+  ([#3011](https://github.com/porsche-design-system/porsche-design-system/pull/3011))
 - `Button`, `Button Pure`, `Switch`, `Checkbox Wrapper`, `Radio Button Wrapper`, `Pin Code`: optimized announcement of
   loading state for assistive technologies
   ([#3009](https://github.com/porsche-design-system/porsche-design-system/pull/3009))
