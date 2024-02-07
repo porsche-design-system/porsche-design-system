@@ -41,9 +41,6 @@ const tagNamesWithSlottedAnchor = joinArrayElementsToString(tagNamesWithSlottedA
 const tagNamesWithSlottedInputIndicatorArray: TagName[] = ['p-text-field-wrapper'];
 const tagNamesWithSlottedInputIndicator = joinArrayElementsToString(tagNamesWithSlottedInputIndicatorArray);
 
-const tagNamesWithSlottedInputCheckedArray: TagName[] = ['p-checkbox-wrapper', 'p-radio-button-wrapper'];
-const tagNamesWithSlottedInputChecked = joinArrayElementsToString(tagNamesWithSlottedInputCheckedArray);
-
 const tagNamesWithSlottedImageArray: TagName[] = ['p-table'];
 const tagNamesWithSlottedImage = joinArrayElementsToString(tagNamesWithSlottedImageArray);
 
@@ -103,12 +100,6 @@ const slottedStyles: Styles = {
         }),
     },
 
-    // safari does not repaint with ::slotted(input:checked) via programmatic change
-    // and only updates when hovered, see #3012 for further details
-    ':is(%%tagNamesWithSlottedInputChecked%%) input:checked': {
-      transform: 'rotateZ(0)',
-    },
-
     ':is(%%tagNamesWithSlottedImage%%) img': addImportantToEachRule({
       verticalAlign: 'middle',
     }),
@@ -150,7 +141,6 @@ export function getInitialStyles(opts?: GetInitialStylesOptions): string | JSX.E
   const tagNames = [${tagNames}];
   const tagNamesWithSlottedAnchor = [${tagNamesWithSlottedAnchor}];
   const tagNamesWithSlottedInputIndicator = [${tagNamesWithSlottedInputIndicator}];
-  const tagNamesWithSlottedInputChecked = [${tagNamesWithSlottedInputChecked}];
   const tagNamesWithSlottedImage = [${tagNamesWithSlottedImage}];
   const tagNamesWithSlottedPictureImage = [${tagNamesWithSlottedPictureImage}];
   const tagNamesWithSiblingTabindex = [${tagNamesWithSiblingTabindex}];
@@ -158,7 +148,6 @@ export function getInitialStyles(opts?: GetInitialStylesOptions): string | JSX.E
   const prefixedTagNames = getPrefixedTagNames(tagNames, prefix);
   const prefixedTagNamesWithSlottedAnchor = getPrefixedTagNames(tagNamesWithSlottedAnchor, prefix);
   const prefixedTagNamesWithSlottedInputIndicator = getPrefixedTagNames(tagNamesWithSlottedInputIndicator, prefix);
-  const prefixedTagNamesWithSlottedInputChecked = getPrefixedTagNames(tagNamesWithSlottedInputChecked, prefix);
   const prefixedTagNamesWithSlottedImage = getPrefixedTagNames(tagNamesWithSlottedImage, prefix);
   const prefixedTagNamesWithSlottedPictureImage = getPrefixedTagNames(tagNamesWithSlottedPictureImage, prefix);
   const prefixedTagNamesWithSiblingTabindex = getPrefixedTagNames(tagNamesWithSiblingTabindex, prefix);
@@ -173,7 +162,6 @@ export function getInitialStyles(opts?: GetInitialStylesOptions): string | JSX.E
   const slottedStyles = \`${getMinifiedCss(slottedStyles)}\`
     .replace(/%%tagNamesWithSlottedAnchor%%/g, prefixedTagNamesWithSlottedAnchor.join())
     .replace(/%%tagNamesWithSlottedInputIndicator%%/g, prefixedTagNamesWithSlottedInputIndicator.join())
-    .replace(/%%tagNamesWithSlottedInputChecked%%/g, prefixedTagNamesWithSlottedInputChecked.join())
     .replace(/%%tagNamesWithSlottedImage%%/g, prefixedTagNamesWithSlottedImage.join())
     .replace(/%%tagNamesWithSlottedPictureImage%%/g, prefixedTagNamesWithSlottedPictureImage.join());
   const siblingStyles = \`${getMinifiedCss(siblingStyles)}\`
