@@ -14,6 +14,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ### [Unreleased]
 
+- `Checkbox Wrapper`, `Radio Button Wrapper`: Safari visually reflects input status (checked/unchecked) when 
+  used in another Shadow DOM or changed programmatically ([#3028](https://github.com/porsche-design-system/porsche-design-system/pull/3028))
+
 ### [3.12.0-rc.0] - 2024-02-05
 
 #### Added
