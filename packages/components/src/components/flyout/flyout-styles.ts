@@ -125,7 +125,6 @@ export const getComponentCss = (
       padding: contentPadding,
       position: 'relative',
       zIndex: 0,
-      'flex-grow': 1, // stretch content to fill remaining space, so backdrop is not clicked
       backgroundColor, // to ensure scrollbar coloring is optimal for light theme
       ...prefersColorSchemeDarkMediaQuery(theme, {
         backgroundColor: backgroundColorDark, // to ensure scrollbar coloring is optimal for dark theme

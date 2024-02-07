@@ -72,7 +72,6 @@ dialog::backdrop {
   padding: 16px clamp(32px, 2.75vw + 23px, 76px);
   position: relative;
   z-index: 0;
-  flex-grow: 1;
   background-color: #FFF;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
@@ -159,7 +158,6 @@ dialog::backdrop {
   padding: 16px clamp(32px, 2.75vw + 23px, 76px);
   position: relative;
   z-index: 0;
-  flex-grow: 1;
   background-color: #0E0E12;
 }
 .sub-footer {
@@ -241,7 +239,6 @@ dialog::backdrop {
   padding: 16px clamp(32px, 2.75vw + 23px, 76px);
   position: relative;
   z-index: 0;
-  flex-grow: 1;
   background-color: #0E0E12;
 }
 .footer {
@@ -331,7 +328,6 @@ dialog::backdrop {
   padding: 16px clamp(32px, 2.75vw + 23px, 76px);
   position: relative;
   z-index: 0;
-  flex-grow: 1;
   background-color: #FFF;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
@@ -416,7 +412,6 @@ dialog::backdrop {
   padding: 16px clamp(32px, 2.75vw + 23px, 76px);
   position: relative;
   z-index: 0;
-  flex-grow: 1;
   background-color: #FFF;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
@@ -501,7 +496,6 @@ dialog::backdrop {
   padding: 16px clamp(32px, 2.75vw + 23px, 76px);
   position: relative;
   z-index: 0;
-  flex-grow: 1;
   background-color: #FFF;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
@@ -588,7 +582,6 @@ dialog::backdrop {
   padding: 16px clamp(32px, 2.75vw + 23px, 76px);
   position: relative;
   z-index: 0;
-  flex-grow: 1;
   background-color: #0E0E12;
 }
 .sub-footer {
@@ -670,7 +663,6 @@ dialog::backdrop {
   padding: 16px clamp(32px, 2.75vw + 23px, 76px);
   position: relative;
   z-index: 0;
-  flex-grow: 1;
   background-color: #0E0E12;
 }
 .footer {
@@ -770,7 +762,6 @@ dialog::backdrop {
   padding: 16px clamp(32px, 2.75vw + 23px, 76px);
   position: relative;
   z-index: 0;
-  flex-grow: 1;
   background-color: #FFF;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
@@ -868,7 +859,6 @@ dialog::backdrop {
   padding: 16px clamp(32px, 2.75vw + 23px, 76px);
   position: relative;
   z-index: 0;
-  flex-grow: 1;
   background-color: #0E0E12;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
@@ -953,7 +943,6 @@ dialog::backdrop {
   padding: 16px clamp(32px, 2.75vw + 23px, 76px);
   position: relative;
   z-index: 0;
-  flex-grow: 1;
   background-color: #FFF;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
@@ -1050,7 +1039,6 @@ dialog::backdrop {
   padding: 16px clamp(32px, 2.75vw + 23px, 76px);
   position: relative;
   z-index: 0;
-  flex-grow: 1;
   background-color: #FFF;
 }
 .sub-footer {
@@ -1142,7 +1130,6 @@ dialog::backdrop {
   padding: 16px clamp(32px, 2.75vw + 23px, 76px);
   position: relative;
   z-index: 0;
-  flex-grow: 1;
   background-color: #0E0E12;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
@@ -1237,7 +1224,6 @@ dialog::backdrop {
   padding: 16px clamp(32px, 2.75vw + 23px, 76px);
   position: relative;
   z-index: 0;
-  flex-grow: 1;
   background-color: #FFF;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
@@ -1334,7 +1320,6 @@ dialog::backdrop {
   padding: 16px clamp(32px, 2.75vw + 23px, 76px);
   position: relative;
   z-index: 0;
-  flex-grow: 1;
   background-color: #FFF;
 }
 .footer {
@@ -1424,7 +1409,6 @@ dialog::backdrop {
   padding: 16px clamp(32px, 2.75vw + 23px, 76px);
   position: relative;
   z-index: 0;
-  flex-grow: 1;
   background-color: #0E0E12;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
@@ -1509,7 +1493,6 @@ dialog::backdrop {
   padding: 16px clamp(32px, 2.75vw + 23px, 76px);
   position: relative;
   z-index: 0;
-  flex-grow: 1;
   background-color: #FFF;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
@@ -1594,7 +1577,6 @@ dialog::backdrop {
   padding: 16px clamp(32px, 2.75vw + 23px, 76px);
   position: relative;
   z-index: 0;
-  flex-grow: 1;
   background-color: #0E0E12;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
@@ -1689,7 +1671,6 @@ dialog::backdrop {
   padding: 16px clamp(32px, 2.75vw + 23px, 76px);
   position: relative;
   z-index: 0;
-  flex-grow: 1;
   background-color: #FFF;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
@@ -1786,7 +1767,6 @@ dialog::backdrop {
   padding: 16px clamp(32px, 2.75vw + 23px, 76px);
   position: relative;
   z-index: 0;
-  flex-grow: 1;
   background-color: #FFF;
 }
 .footer {

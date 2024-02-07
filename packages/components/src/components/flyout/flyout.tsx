@@ -13,6 +13,7 @@ import {
   attachComponentCss,
   getPrefixedTagNames,
   getShadowRootHTMLElement,
+  getShadowRootHTMLElements,
   hasNamedSlot,
   hasPropValueChanged,
   parseAndGetAriaAttributes,
@@ -23,7 +24,6 @@ import {
 } from '../../utils';
 import type { PropTypes, SelectedAriaAttributes, Theme } from '../../types';
 import { throttle } from 'throttle-debounce';
-import { getShadowRootHTMLElements } from '../../utils/dom/getShadowRootHTMLElements';
 
 const propTypes: PropTypes<typeof Flyout> = {
   open: AllowedTypes.boolean,
@@ -84,11 +84,7 @@ export class Flyout {
 
     // TODO: would be great to use this in jsx but that doesn't work reliable and causes focus e2e test to fail
     getShadowRootHTMLElements(this.host, 'slot').forEach((element) =>
-      element.addEventListener('slotchange', () => {
-        forceUpdate(this.host);
-
-        this.dismissBtn.focus();
-      })
+      element.addEventListener('slotchange', this.onSlotChange)
     );
   }
 
@@ -155,7 +151,7 @@ export class Flyout {
         inert={this.open ? null : true} // prevents focusable elements during fade-out transition
         tabIndex={-1} // dialog always has a dismiss button to be focused
         ref={(ref) => (this.dialog = ref)}
-        onClick={(e) => this.onClickDialog(e)}
+        onMouseDown={(e) => this.onMouseDown(e)}
         onCancel={(e) => this.onCancelDialog(e)}
         {...(this.hasSubFooter && { onScroll: this.updateShadow })} // if no sub-footer is used scroll shadows are done via CSS
         {...parseAndGetAriaAttributes(this.aria)}
@@ -215,12 +211,20 @@ export class Flyout {
     }
   });
 
-  private onClickDialog(e: MouseEvent): void {
-    if ((e.target as any).nodeName === 'DIALOG') {
+  // by using mouse down instead of the click event it can be prevented that the dialog
+  // will be closed while dragging the mouse onto the backdrop and releasing it there (mouseup => click)
+  private onMouseDown = (event: MouseEvent): void => {
+    if ((event.target as any).nodeName === 'DIALOG') {
       // dismiss dialog when clicked on backdrop
       this.dismissDialog();
     }
-  }
+  };
+
+  private onSlotChange = (): void => {
+    forceUpdate(this.host);
+
+    this.dismissBtn.focus();
+  };
 
   private onCancelDialog(e: Event): void {
     // prevent closing the dialog uncontrolled by ESC (only relevant for browsers supporting <dialog/>)

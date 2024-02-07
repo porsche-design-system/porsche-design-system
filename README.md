@@ -53,7 +53,8 @@ volta install yarn
 #### Common errors during installation
 
 1. `Error: spawn node-gyp ENOENT` => You need to install `node-gyp` manually via `yarn global add node-gyp`
-2. `node-pre-gyp ERR! install response status 404 Not Found on https://github.com/Automattic/node-canvas/releases/download/v2.11.2/canvas-v2.11.2-node-v108-darwin-unknown-arm64.tar.gz` => Check out [this page](https://github.com/Automattic/node-canvas/wiki/Installation%3A-Mac-OS-X)
+2. `node-pre-gyp ERR! install response status 404 Not Found on https://github.com/Automattic/node-canvas/releases/download/v2.11.2/canvas-v2.11.2-node-v108-darwin-unknown-arm64.tar.gz`
+   => Check out [this page](https://github.com/Automattic/node-canvas/wiki/Installation%3A-Mac-OS-X)
 
 _Note: `./docker.sh run-install` and `yarn` should be executed after every pull._
 
@@ -158,7 +159,6 @@ _Note: `./docker.sh run-install` and `yarn` should be executed after every pull.
 1. Switch to **project root directory**
 2. For the different applications, select one of the following commands:
 
-- `./docker.sh run-test-vrt-puppeteer --components-js` (vrt tests for the native web components for Chromium)
 - `./docker.sh run-test-vrt-playwright --components-js` (vrt tests for the native web components for Webkit)
 - `./docker.sh run-test-vrt --components-angular` (vrt tests for angular components)
 - `./docker.sh run-test-vrt --components-react` (vrt tests for react components)

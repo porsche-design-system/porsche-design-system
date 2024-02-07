@@ -351,10 +351,15 @@ describe('focus behavior', () => {
     await addButtonsBeforeAndAfterFlyout();
     await openFlyout();
 
+    expect(await getActiveElementTagName(page)).toBe('P-FLYOUT');
     await expectDismissButtonToBeFocused();
     await page.keyboard.press('Tab');
+    expect(await getActiveElementTagName(page)).toBe('P-FLYOUT');
     await expectDismissButtonToBeFocused();
     await page.keyboard.press('Tab');
+    expect(await getActiveElementTagName(page)).toBe('BODY');
+    await page.keyboard.press('Tab');
+    expect(await getActiveElementTagName(page)).toBe('P-FLYOUT');
     await expectDismissButtonToBeFocused();
   });
 
@@ -363,11 +368,18 @@ describe('focus behavior', () => {
     await addButtonsBeforeAndAfterFlyout();
     await openFlyout();
 
+    expect(await getActiveElementTagName(page)).toBe('P-FLYOUT');
     await expectDismissButtonToBeFocused();
     await page.keyboard.down('Shift');
     await page.keyboard.press('Tab');
+    expect(await getActiveElementTagName(page)).toBe('P-FLYOUT');
     await expectDismissButtonToBeFocused();
+    await page.keyboard.down('Shift');
     await page.keyboard.press('Tab');
+    expect(await getActiveElementTagName(page)).toBe('BODY');
+    await page.keyboard.down('Shift');
+    await page.keyboard.press('Tab');
+    expect(await getActiveElementTagName(page)).toBe('P-FLYOUT');
     await expectDismissButtonToBeFocused();
   });
 
