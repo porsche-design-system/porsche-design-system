@@ -19,7 +19,6 @@ import {
   waitForStencilLifecycle,
 } from '../helpers';
 import type { SelectOption } from '@porsche-design-system/components/src/components/select/select/select-utils';
-import { test } from '@playwright/test';
 
 let page: Page;
 beforeEach(async () => (page = await browser.newPage()));
@@ -296,7 +295,7 @@ describe('native select', () => {
   it('props should be in sync', async () => {
     await initSelect();
     const nativeSelectElement = await getNativeSelect();
-    expect(await getAttribute(nativeSelectElement, 'name')).toBe('name');
+    expect(await getAttribute(nativeSelectElement, 'name')).toBe('options');
 
     const host = await getHost();
     await setProperty(host, 'required', true);
@@ -678,7 +677,7 @@ describe('keyboard behavior', () => {
     });
   });
 
-  fdescribe('within listbox', () => {
+  describe('within listbox', () => {
     let buttonElement;
     let buttonAfter;
     beforeEach(async () => {
@@ -776,22 +775,151 @@ describe('keyboard behavior', () => {
     });
     // Moves visual focus to the next option.
     // If visual focus is on the last option, visual focus does not move.
-    it('should move highlight to the next option when pressing Down Arrow', async () => {});
+    it('should move highlight to the next option when pressing Down Arrow', async () => {
+      await page.keyboard.press('ArrowDown');
+      await waitForStencilLifecycle(page);
+
+      expect(await getHighlightedOptionIndex()).toBe(0);
+
+      await page.keyboard.press('ArrowDown');
+      await waitForStencilLifecycle(page);
+
+      expect(await getHighlightedOptionIndex()).toBe(1);
+
+      await page.keyboard.press('End');
+      await waitForStencilLifecycle(page);
+
+      expect(await getHighlightedOptionIndex()).toBe(testValues.length - 1);
+
+      await page.keyboard.press('ArrowDown');
+      await waitForStencilLifecycle(page);
+
+      expect(await getHighlightedOptionIndex()).toBe(testValues.length - 1);
+    });
     // Moves visual focus to the previous option.
     // If visual focus is on the first option, visual focus does not move.
-    it('should move highlight to the next option when pressing Up Arrow', async () => {});
+    it('should move highlight to the next option when pressing ArrowUp', async () => {
+      await page.keyboard.press('ArrowDown');
+      await page.keyboard.press('ArrowDown');
+      await page.keyboard.press('ArrowDown');
+      await waitForStencilLifecycle(page);
+
+      expect(await getHighlightedOptionIndex()).toBe(2);
+
+      await page.keyboard.press('ArrowUp');
+      await waitForStencilLifecycle(page);
+
+      expect(await getHighlightedOptionIndex()).toBe(1);
+
+      await page.keyboard.press('ArrowUp');
+      await waitForStencilLifecycle(page);
+
+      expect(await getHighlightedOptionIndex()).toBe(0);
+
+      await page.keyboard.press('ArrowUp');
+      await waitForStencilLifecycle(page);
+
+      expect(await getHighlightedOptionIndex()).toBe(0);
+    });
     // Moves visual focus to the first option.
-    it('should move highlight to the first option when pressing Home', async () => {});
+    it('should move highlight to the first option when pressing Home', async () => {
+      await page.keyboard.press('End');
+      await waitForStencilLifecycle(page);
+
+      expect(await getHighlightedOptionIndex()).toBe(testValues.length - 1);
+
+      await page.keyboard.press('Home');
+      await waitForStencilLifecycle(page);
+
+      expect(await getHighlightedOptionIndex()).toBe(0);
+    });
     // Moves visual focus to the last option.
-    it('should move highlight to the last option when pressing End', async () => {});
+    it('should move highlight to the last option when pressing End', async () => {
+      await page.keyboard.press('End');
+      await waitForStencilLifecycle(page);
+
+      expect(await getHighlightedOptionIndex()).toBe(testValues.length - 1);
+
+      await page.keyboard.press('End');
+      await waitForStencilLifecycle(page);
+
+      expect(await getHighlightedOptionIndex()).toBe(testValues.length - 1);
+    });
     // Jumps visual focus up 10 options (or to first option).
-    it('should move highlight up 10 options (or to first option) when pressing PageUp', async () => {});
+    it('should move highlight up 10 options (or to first option) when pressing PageUp', async () => {
+      await page.keyboard.press('End');
+      await waitForStencilLifecycle(page);
+
+      expect(await getHighlightedOptionIndex()).toBe(testValues.length - 1);
+
+      await page.keyboard.press('PageUp');
+      await waitForStencilLifecycle(page);
+
+      expect(await getHighlightedOptionIndex()).toBe(testValues.length - 11);
+    });
     // Jumps visual focus down 10 options (or to last option).
-    it('should move highlight down 10 options (or to last option) when pressing PageDown', async () => {});
+    it('should move highlight down 10 options (or to last option) when pressing PageDown', async () => {
+      await page.keyboard.press('PageDown');
+      await waitForStencilLifecycle(page);
+
+      expect(await getHighlightedOptionIndex()).toBe(9);
+
+      await page.keyboard.press('PageDown');
+      await waitForStencilLifecycle(page);
+
+      expect(await getHighlightedOptionIndex()).toBe(19);
+
+      await page.keyboard.press('End');
+      await waitForStencilLifecycle(page);
+
+      expect(await getHighlightedOptionIndex()).toBe(testValues.length - 1);
+
+      await page.keyboard.press('PageUp');
+      await waitForStencilLifecycle(page);
+
+      expect(await getHighlightedOptionIndex()).toBe(testValues.length - 11);
+
+      await page.keyboard.press('PageDown');
+      await waitForStencilLifecycle(page);
+
+      expect(await getHighlightedOptionIndex()).toBe(testValues.length - 1);
+    });
     // First opens the listbox if it is not already displayed and then moves visual focus to the first option that matches the typed character.
     // If multiple keys are typed in quick succession, visual focus moves to the first option that matches the full string.
     // If the same character is typed in succession, visual focus cycles among the options starting with that character.
-    it('should move highlight correctly when pressing printable characters', async () => {});
+    it('should move highlight correctly when pressing printable characters', async () => {
+      await page.keyboard.press('B');
+      await page.keyboard.press('e');
+      await page.keyboard.press('n');
+      await waitForStencilLifecycle(page);
+
+      const valueIndex = testValues.indexOf(testValues.find((val) => val.startsWith('Ben')));
+
+      expect(await getHighlightedOptionIndex()).toBe(valueIndex);
+
+      await page.keyboard.press('B');
+      await waitForStencilLifecycle(page);
+
+      expect(await getHighlightedOptionIndex()).toBe(valueIndex + 1);
+
+      await page.keyboard.press('B');
+      await waitForStencilLifecycle(page);
+
+      expect(await getHighlightedOptionIndex()).toBe(valueIndex + 2);
+
+      await page.keyboard.press('D');
+      await page.keyboard.press('e');
+      await page.keyboard.press('n');
+
+      expect(await getHighlightedOptionIndex()).toBe(
+        testValues.indexOf(testValues.find((val) => val.startsWith('Den')))
+      );
+
+      await page.keyboard.press('A');
+      await waitForStencilLifecycle(page);
+
+      expect(await getHighlightedOptionIndex()).toBe(0);
+    });
   });
 });
 
