@@ -51,7 +51,9 @@ export const handleSelectDropdownScroll = (scrollElement: HTMLElement, element: 
  */
 export const filterOptions = <T extends Option>(options: T[], filter: string): T[] =>
   options.filter((option) => {
-    if (option.hidden || option.disabled) return false;
+    if (option.hidden || option.disabled) {
+      return false;
+    }
     return option.textContent.toLowerCase().indexOf(filter.toLowerCase()) === 0;
   });
 

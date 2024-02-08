@@ -118,7 +118,7 @@ export class Select {
   private preventOptionUpdate = false; // Used to prevent value watcher from updating options when options are already updated
 
   private searchString: string = '';
-  private searchTimeout = null;
+  private searchTimeout: NodeJS.Timeout | number = null;
 
   @Listen('internalOptionUpdate')
   public updateOptionHandler(e: Event & { target: SelectOption }): void {
@@ -266,7 +266,7 @@ export class Select {
     this.updateMenuState(!this.isOpen);
   };
 
-  private updateMenuState = (open: boolean) => {
+  private updateMenuState = (open: boolean): void => {
     if (this.isOpen === open) {
       return;
     }
@@ -274,7 +274,7 @@ export class Select {
     this.isOpen = open;
   };
 
-  private onComboBlur = (event: FocusEvent) => {
+  private onComboBlur = (event: FocusEvent): void => {
     // do nothing if relatedTarget is contained within listboxEl
     if (this.listElement.contains(event.relatedTarget as Node)) {
       return;
@@ -287,7 +287,7 @@ export class Select {
     }
   };
 
-  private onComboKeyDown = (event: KeyboardEvent) => {
+  private onComboKeyDown = (event: KeyboardEvent): void => {
     const { key } = event;
     const max = this.selectOptions.length - 1;
 
@@ -327,7 +327,7 @@ export class Select {
     }
   };
 
-  private onComboType = (letter: string) => {
+  private onComboType = (letter: string): void => {
     // open the listbox if it is closed
     this.updateMenuState(true);
 
@@ -346,7 +346,7 @@ export class Select {
     }
   };
 
-  private getSearchString = (char: string) => {
+  private getSearchString = (char: string): string => {
     // reset typing timeout and start new timeout
     // this allows us to make multiple-letter matches, like a native select
     if (typeof this.searchTimeout === 'number') {
@@ -359,7 +359,6 @@ export class Select {
 
     // add most recent letter to saved search string
     this.searchString += char;
-    console.log(this.searchString);
     return this.searchString;
   };
 
