@@ -39,8 +39,8 @@ import {
   hasPropValueChanged,
   isClickOutside,
   SELECT_DROPDOWN_DIRECTIONS,
-  SelectActions,
-  setMatchingSelectOptionIndex,
+  SelectAction,
+  getMatchingSelectOptionIndex,
   setNextSelectOptionHighlighted,
   THEMES,
   throwIfElementIsNotOfKind,
@@ -294,14 +294,14 @@ export class Select {
     const action = getActionFromKey(event, this.isOpen);
 
     switch (action) {
-      case SelectActions.Last:
-      case SelectActions.First:
+      case SelectAction.Last:
+      case SelectAction.First:
         this.updateMenuState(true);
       // intentional fallthrough
-      case SelectActions.Next:
-      case SelectActions.Previous:
-      case SelectActions.PageUp:
-      case SelectActions.PageDown:
+      case SelectAction.Next:
+      case SelectAction.Previous:
+      case SelectAction.PageUp:
+      case SelectAction.PageDown:
         event.preventDefault();
         setNextSelectOptionHighlighted(
           this.listElement,
@@ -309,18 +309,18 @@ export class Select {
           getUpdatedIndex(getHighlightedSelectOptionIndex(this.selectOptions), max, action)
         );
         break;
-      case SelectActions.CloseSelect:
+      case SelectAction.CloseSelect:
         event.preventDefault();
         setSelectedOption(this.selectOptions, getHighlightedSelectOption(this.selectOptions));
       // intentional fallthrough
-      case SelectActions.Close:
+      case SelectAction.Close:
         event.preventDefault();
         this.updateMenuState(false);
         break;
-      case SelectActions.Type:
+      case SelectAction.Type:
         this.onComboType(key);
         break;
-      case SelectActions.Open:
+      case SelectAction.Open:
         event.preventDefault();
         this.updateMenuState(true);
         break;
@@ -334,7 +334,7 @@ export class Select {
     // find the index of the first matching option
     const searchString = this.getSearchString(letter);
 
-    const matchingIndex = setMatchingSelectOptionIndex(this.selectOptions, searchString);
+    const matchingIndex = getMatchingSelectOptionIndex(this.selectOptions, searchString);
     if (matchingIndex !== -1) {
       setNextSelectOptionHighlighted(this.listElement, this.selectOptions, matchingIndex);
     }
