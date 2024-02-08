@@ -35,7 +35,7 @@ export const handleSelectDropdownScroll = (scrollElement: HTMLElement, element: 
   const { maxHeight } = getComputedStyle(scrollElement);
   const hostElementHeight = parseInt(maxHeight, 10);
   if (scrollElement.scrollHeight > hostElementHeight) {
-    element.scrollIntoView();
+    element.scrollIntoView({ block: 'nearest' });
   }
 };
 
