@@ -55,7 +55,6 @@ export const getComponentCss = (
         padding: 0, // ua-style reset
         border: 0, // ua-style reset
         visibility: 'inherit', // ua-style reset
-        overflow: 'hidden', // ua-style reset, dialog shall never become scrollable, it's handled by custom scroll areas
         flexDirection: 'column',
         boxSizing: 'border-box',
         ...(hasSubFooter && {
@@ -123,6 +122,7 @@ export const getComponentCss = (
     },
     content: {
       padding: contentPadding,
+      maxWidth: `calc(100vw - calc(${spacingFluidLarge} * 2))`,
       position: 'relative',
       zIndex: 0,
       backgroundColor, // to ensure scrollbar coloring is optimal for light theme
