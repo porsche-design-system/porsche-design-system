@@ -17,6 +17,8 @@
 
 <script>
   porscheDesignSystem.componentsReady().then(() => {
-    document.querySelector('.scroll-into-view').scrollIntoView();
+    document.querySelector('.scroll-into-view').scrollIntoView({
+      behavior: 'instant',
+    });
   });
 </script>
