@@ -1,3 +1,5 @@
+import { getHasConstructableStylesheetSupport } from '../jss';
+
 type ElementsMap = Map<string, ElementMap>;
 type ElementMap = Map<Document | ShadowRoot, boolean>;
 
@@ -14,17 +16,19 @@ const getElementMap = (element: HTMLElement): ElementMap => {
 // TODO: we can get rid of this fix, as soon as p-checkbox-wrapper and p-radio-button-wrapper have been deprecated and
 //  replaced by encapsulated p-checkbox and p-radio-button component
 export const applyCheckboxRadioButtonSafariRenderingFix = (element: HTMLElement): void => {
-  const documentOrShadowRoot = element.getRootNode() as Document | ShadowRoot;
-  const elementMap: ElementMap = getElementMap(element);
+  if (getHasConstructableStylesheetSupport()) {
+    const documentOrShadowRoot = element.getRootNode() as Document | ShadowRoot;
+    const elementMap: ElementMap = getElementMap(element);
 
-  if (!elementMap.has(documentOrShadowRoot)) {
-    elementMap.set(documentOrShadowRoot, true);
+    if (!elementMap.has(documentOrShadowRoot)) {
+      elementMap.set(documentOrShadowRoot, true);
 
-    // Workaround for Safari >= 15.5 rendering issues (see #3012 for reference).
-    // Checkbox/Radio-Button change is not rendered immediately if input or its label is still hovered.
-    // The same bug appears on keyboard navigation.
-    const sheet = new CSSStyleSheet();
-    sheet.replaceSync(`${element.tagName.toLowerCase()}>input:checked{transform:rotateZ(0)}`);
-    documentOrShadowRoot.adoptedStyleSheets.push(sheet);
+      // Workaround for Safari >= 16.4 rendering issues (see #3012 for reference).
+      // Checkbox/Radio-Button change is not rendered immediately if input or its label is still hovered.
+      // The same bug appears on keyboard navigation.
+      const sheet = new CSSStyleSheet();
+      sheet.replaceSync(`${element.tagName.toLowerCase()}>input:checked{transform:rotateZ(0)}`);
+      documentOrShadowRoot.adoptedStyleSheets.push(sheet);
+    }
   }
 };
