@@ -17,7 +17,7 @@ export const getComponentCss = (theme: Theme): string => {
   return getCss({
     '@global': {
       ':host': addImportantToEachRule({
-        scrollMarginTop: spacingStaticSmall, // Creates top margin when navigating with keyboard and list is scrolled automatically
+        scrollMargin: '6px', // Aligns option when list is scrolled by navigating with keyboard
         ...hostHiddenStyles,
       }),
       ...addImportantToEachRule({
