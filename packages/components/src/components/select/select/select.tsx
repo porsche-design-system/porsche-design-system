@@ -270,7 +270,6 @@ export class Select {
     if (this.isOpen === open) {
       return;
     }
-    // update state
     this.isOpen = open;
   };
 
@@ -328,19 +327,13 @@ export class Select {
   };
 
   private onComboType = (letter: string): void => {
-    // open the listbox if it is closed
     this.updateMenuState(true);
 
-    // find the index of the first matching option
     const searchString = this.getSearchString(letter);
-
     const matchingIndex = getMatchingSelectOptionIndex(this.selectOptions, searchString);
     if (matchingIndex !== -1) {
       setNextSelectOptionHighlighted(this.listElement, this.selectOptions, matchingIndex);
-    }
-
-    // if no matches, clear the timeout and search string
-    else {
+    } else {
       window.clearTimeout(this.searchTimeout);
       this.searchString = '';
     }
