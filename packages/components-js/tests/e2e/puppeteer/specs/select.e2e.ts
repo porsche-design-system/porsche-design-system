@@ -15,7 +15,6 @@ import {
   waitForStencilLifecycle,
 } from '../helpers';
 import type { SelectOption } from '@porsche-design-system/components/src/components/select/select/select-utils';
-import { SELECT_SEARCH_TIMEOUT } from '@porsche-design-system/components/src/utils';
 
 let page: Page;
 beforeEach(async () => (page = await browser.newPage()));
@@ -904,19 +903,19 @@ describe('keyboard behavior', () => {
 
       expect(await getHighlightedSelectOptionProperty('textContent')).toBe(testValues[valueIndex]);
 
-      await new Promise((resolve) => setTimeout(resolve, SELECT_SEARCH_TIMEOUT)); // Wait for searchString timeout
+      await new Promise((resolve) => setTimeout(resolve, 500)); // Wait for searchString timeout
       await page.keyboard.press('B');
       await waitForStencilLifecycle(page);
 
       expect(await getHighlightedSelectOptionProperty('textContent')).toBe(testValues[valueIndex + 1]);
 
-      await new Promise((resolve) => setTimeout(resolve, SELECT_SEARCH_TIMEOUT)); // Wait for searchString timeout
+      await new Promise((resolve) => setTimeout(resolve, 500)); // Wait for searchString timeout
       await page.keyboard.press('B');
       await waitForStencilLifecycle(page);
 
       expect(await getHighlightedSelectOptionProperty('textContent')).toBe(testValues[valueIndex + 2]);
 
-      await new Promise((resolve) => setTimeout(resolve, SELECT_SEARCH_TIMEOUT)); // Wait for searchString timeout
+      await new Promise((resolve) => setTimeout(resolve, 500)); // Wait for searchString timeout
       await page.keyboard.press('D');
       await page.keyboard.press('e');
       await page.keyboard.press('n');
@@ -925,7 +924,7 @@ describe('keyboard behavior', () => {
         testValues.find((val) => val.startsWith('Den'))
       );
 
-      await new Promise((resolve) => setTimeout(resolve, SELECT_SEARCH_TIMEOUT)); // Wait for searchString timeout
+      await new Promise((resolve) => setTimeout(resolve, 500)); // Wait for searchString timeout
       await page.keyboard.press('A');
       await waitForStencilLifecycle(page);
 
