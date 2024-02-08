@@ -45,6 +45,7 @@ import {
   THEMES,
   throwIfElementIsNotOfKind,
   validateProps,
+  SELECT_SEARCH_TIMEOUT,
 } from '../../../utils';
 import { getComponentCss } from './select-styles';
 import { Label, labelId } from '../../common/label/label';
@@ -262,6 +263,17 @@ export class Select {
     this.selectOptions.forEach((child) => throwIfElementIsNotOfKind(this.host, child, 'p-select-option'));
   };
 
+  private updateSelectedOption = () => {
+    const highlightedOption = getHighlightedSelectOption(this.selectOptions);
+    if (highlightedOption) {
+      this.preventOptionUpdate = true; // Avoid unnecessary updating of options in value watcher
+      setSelectedOption(this.selectOptions, highlightedOption);
+      this.value = highlightedOption.value;
+      this.emitUpdateEvent();
+    }
+    this.updateMenuState(false);
+  };
+
   private onComboClick = (): void => {
     this.updateMenuState(!this.isOpen);
   };
@@ -278,11 +290,9 @@ export class Select {
     if (this.listElement.contains(event.relatedTarget as Node)) {
       return;
     }
-
     // select current option and close
     if (this.isOpen) {
-      setSelectedOption(this.selectOptions, getHighlightedSelectOption(this.selectOptions));
-      this.updateMenuState(false);
+      this.updateSelectedOption();
     }
   };
 
@@ -310,7 +320,7 @@ export class Select {
         break;
       case SelectAction.CloseSelect:
         event.preventDefault();
-        setSelectedOption(this.selectOptions, getHighlightedSelectOption(this.selectOptions));
+        this.updateSelectedOption();
       // intentional fallthrough
       case SelectAction.Close:
         event.preventDefault();
@@ -348,7 +358,7 @@ export class Select {
 
     this.searchTimeout = window.setTimeout(() => {
       this.searchString = '';
-    }, 500);
+    }, SELECT_SEARCH_TIMEOUT);
 
     // add most recent letter to saved search string
     this.searchString += char;

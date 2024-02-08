@@ -21,6 +21,8 @@ type Option = HTMLElement &
     highlighted?: boolean;
   };
 
+// The amount of time in ms after the last key press before the searchString will get cleared
+export const SELECT_SEARCH_TIMEOUT: number = 500;
 // The amount of options to be jumped when performing a page-based navigation using PageUp or PageDown.
 const PAGE_UP_DOWN_STEP_AMOUNT: number = 10;
 
