@@ -4,7 +4,6 @@ import type { TagName } from '@porsche-design-system/shared';
 import * as getOnlyChildOfKindHTMLElementOrThrowUtils from '../utils/validation/getOnlyChildOfKindHTMLElementOrThrow';
 import * as jssUtils from '../utils/jss';
 import * as attributeObserverUtils from '../utils/attribute-observer';
-import * as applyCheckboxRadioButtonSafariRenderingFixUtils from '../utils/form/applyCheckboxRadioButtonSafariRenderingFix';
 import * as childrenObserverUtils from '../utils/children-observer';
 import * as throwIfParentIsNotOfKindUtils from '../utils/validation/throwIfParentIsNotOfKind';
 import * as throwIfRootNodeIsNotOneOfKindUtils from '../utils/validation/throwIfRootNodeIsNotOneOfKind';
@@ -209,7 +208,6 @@ describe.each<TagName>(tagNamesWithObserveAttributes)('%s', (tagName) => {
 
   it('should call observeAttributes() with correct parameters via connectedCallback', () => {
     const spy = jest.spyOn(attributeObserverUtils, 'observeAttributes');
-    jest.spyOn(applyCheckboxRadioButtonSafariRenderingFixUtils, 'applyCheckboxRadioButtonSafariRenderingFix').mockReturnValue();
     component.connectedCallback();
 
     expect(spy).toBeCalledWith(undefined, getComponentMeta(tagName).observedAttributes, expect.any(Function));
