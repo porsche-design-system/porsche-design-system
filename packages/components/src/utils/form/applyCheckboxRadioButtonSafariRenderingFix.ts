@@ -1,5 +1,3 @@
-import { getHasConstructableStylesheetSupport } from '../jss';
-
 type ElementsMap = Map<string, ElementMap>;
 type ElementMap = Map<Document | ShadowRoot, boolean>;
 
@@ -13,10 +11,18 @@ const getElementMap = (element: HTMLElement): ElementMap => {
   return elementsMap.get(tagName);
 };
 
+const hasConstructableStylesheetSupport = ((): boolean => {
+  try {
+    return typeof new CSSStyleSheet().replaceSync === 'function';
+  } catch {
+    return false;
+  }
+})(); // determine it once
+
 // TODO: we can get rid of this fix, as soon as p-checkbox-wrapper and p-radio-button-wrapper have been deprecated and
 //  replaced by encapsulated p-checkbox and p-radio-button component
 export const applyCheckboxRadioButtonSafariRenderingFix = (element: HTMLElement): void => {
-  if (getHasConstructableStylesheetSupport()) {
+  if (hasConstructableStylesheetSupport) {
     const documentOrShadowRoot = element.getRootNode() as Document | ShadowRoot;
     const elementMap: ElementMap = getElementMap(element);
 
