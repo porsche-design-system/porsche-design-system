@@ -1,24 +1,21 @@
-import type { ElementHandle, Page } from 'puppeteer';
+import type { Page } from 'puppeteer';
 import type { Components } from '@porsche-design-system/components';
 import {
   addEventListener,
-  expectA11yToMatchSnapshot,
   getActiveElementTagName,
   getActiveElementTagNameInShadowRoot,
   getAttribute,
-  getConsoleErrorsAmount,
   getElementStyle,
   getEventSummary,
   getHTMLAttributes,
-  getLifecycleStatus,
   getProperty,
-  initConsoleObserver,
   selectNode,
   setContentWithDesignSystem,
   setProperty,
   waitForStencilLifecycle,
 } from '../helpers';
 import type { SelectOption } from '@porsche-design-system/components/src/components/select/select/select-utils';
+import { SELECT_SEARCH_TIMEOUT } from '@porsche-design-system/components/src/utils';
 
 let page: Page;
 beforeEach(async () => (page = await browser.newPage()));
@@ -44,6 +41,16 @@ const getSelectedSelectOptionProperty = async <K extends keyof SelectOption>(pro
     'p-select p-select-option',
     (options, property) =>
       (options.find((option: SelectOption) => option.selected) as SelectOption)[property] as SelectOption[K],
+    property
+  );
+
+const getHighlightedSelectOptionProperty = async <K extends keyof SelectOption>(
+  property: K
+): Promise<SelectOption[K]> =>
+  await page.$$eval(
+    'p-select p-select-option',
+    (options, property) =>
+      (options.find((option: SelectOption) => option.highlighted) as SelectOption)[property] as SelectOption[K],
     property
   );
 
@@ -250,7 +257,7 @@ const initSelect = (opt?: InitOptions): Promise<void> => {
   const selectOptions = values
     .map((x, idx) => {
       const attrs = [disabledIndex === idx ? 'disabled' : ''].join(' ');
-      return `<p-select-option ${x ? `value="${x}"` : ''} ${attrs}>${x.toUpperCase()}</p-select-option>`;
+      return `<p-select-option ${x ? `value="${x}"` : ''} ${attrs}>${x}</p-select-option>`;
     })
     .join('\n');
 
@@ -569,14 +576,14 @@ describe('focus', () => {
   it('should close dropdown on tab and focus next element', async () => {
     await initSelect({ options: { markupAfter: '<p-button>Some button</p-button>' } });
     const button = await selectNode(page, 'p-button');
-    const buttonElement = await getButton();
-    await addEventListener(buttonElement, 'focus');
+    const comboboxEl = await getButton();
+    await addEventListener(comboboxEl, 'focus');
     await addEventListener(button, 'focus');
 
-    expect((await getEventSummary(buttonElement, 'focus')).counter, 'initial focus').toBe(0);
+    expect((await getEventSummary(comboboxEl, 'focus')).counter, 'initial focus').toBe(0);
 
     await page.keyboard.press('Tab');
-    expect((await getEventSummary(buttonElement, 'focus')).counter, 'button focus after first tab').toBe(1);
+    expect((await getEventSummary(comboboxEl, 'focus')).counter, 'combobox focus after first tab').toBe(1);
     expect(await getDropdownDisplay(), 'dropdown display after first tab').toBe('none');
 
     await page.keyboard.press('Space');
@@ -585,7 +592,7 @@ describe('focus', () => {
 
     await page.keyboard.press('Tab');
     await waitForStencilLifecycle(page);
-    expect((await getEventSummary(buttonElement, 'focus')).counter, 'input focus after second tab').toBe(1);
+    expect((await getEventSummary(comboboxEl, 'focus')).counter, 'combobox focus after second tab').toBe(1);
 
     expect(await getDropdownDisplay(), 'dropdown display after second tab').toBe('none');
     expect((await getEventSummary(button, 'focus')).counter, 'button focus after second tab').toBe(1);
@@ -618,14 +625,14 @@ describe('keyboard behavior', () => {
       expect(await getHighlightedOptionIndex()).toBe(-1);
       expect((await getEventSummary(buttonElement, 'focus')).counter, 'button focus after ArrowDown').toBe(1);
     });
-    // First opens the listbox if it is not already displayed and then moves visual focus to the first option.
+    // Opens the listbox if it is not already displayed without moving focus or changing selection.
     // DOM focus remains on the combobox.
     it('should open the listbox and highlight first option when pressing ArrowUp', async () => {
       await page.keyboard.press('ArrowUp');
       await waitForStencilLifecycle(page);
 
       expect(await getDropdownDisplay(), 'initial').toBe('flex');
-      expect(await getHighlightedOptionIndex()).toBe(0);
+      expect(await getHighlightedOptionIndex()).toBe(-1);
       expect((await getEventSummary(buttonElement, 'focus')).counter, 'button focus after ArrowUp').toBe(1);
     });
     // Opens the listbox without moving focus or changing selection.
@@ -657,7 +664,7 @@ describe('keyboard behavior', () => {
     });
     // Opens the listbox and moves visual focus to the last option.
     it('should open the listbox when pressing End', async () => {
-      await page.keyboard.press('Home');
+      await page.keyboard.press('End');
       await waitForStencilLifecycle(page);
 
       expect(await getDropdownDisplay(), 'initial').toBe('flex');
@@ -895,30 +902,34 @@ describe('keyboard behavior', () => {
 
       const valueIndex = testValues.indexOf(testValues.find((val) => val.startsWith('Ben')));
 
-      expect(await getHighlightedOptionIndex()).toBe(valueIndex);
+      expect(await getHighlightedSelectOptionProperty('textContent')).toBe(testValues[valueIndex]);
 
+      await new Promise((resolve) => setTimeout(resolve, SELECT_SEARCH_TIMEOUT)); // Wait for searchString timeout
       await page.keyboard.press('B');
       await waitForStencilLifecycle(page);
 
-      expect(await getHighlightedOptionIndex()).toBe(valueIndex + 1);
+      expect(await getHighlightedSelectOptionProperty('textContent')).toBe(testValues[valueIndex + 1]);
 
+      await new Promise((resolve) => setTimeout(resolve, SELECT_SEARCH_TIMEOUT)); // Wait for searchString timeout
       await page.keyboard.press('B');
       await waitForStencilLifecycle(page);
 
-      expect(await getHighlightedOptionIndex()).toBe(valueIndex + 2);
+      expect(await getHighlightedSelectOptionProperty('textContent')).toBe(testValues[valueIndex + 2]);
 
+      await new Promise((resolve) => setTimeout(resolve, SELECT_SEARCH_TIMEOUT)); // Wait for searchString timeout
       await page.keyboard.press('D');
       await page.keyboard.press('e');
       await page.keyboard.press('n');
 
-      expect(await getHighlightedOptionIndex()).toBe(
-        testValues.indexOf(testValues.find((val) => val.startsWith('Den')))
+      expect(await getHighlightedSelectOptionProperty('textContent')).toBe(
+        testValues.find((val) => val.startsWith('Den'))
       );
 
+      await new Promise((resolve) => setTimeout(resolve, SELECT_SEARCH_TIMEOUT)); // Wait for searchString timeout
       await page.keyboard.press('A');
       await waitForStencilLifecycle(page);
 
-      expect(await getHighlightedOptionIndex()).toBe(0);
+      expect(await getHighlightedSelectOptionProperty('textContent')).toBe(testValues[0]);
     });
   });
 });
