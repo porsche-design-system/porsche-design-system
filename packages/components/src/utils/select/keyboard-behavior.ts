@@ -17,8 +17,6 @@ export enum SelectAction {
 
 type Option = HTMLElement &
   HTMLStencilElement & {
-    textContent: string;
-    hidden: boolean;
     disabled?: boolean;
     highlighted?: boolean;
   };
