@@ -112,7 +112,8 @@ export class Select {
   @State() private isOpen = false;
 
   private nativeSelect: HTMLSelectElement;
-  private inputContainer: HTMLDivElement;
+  private comboboxContainer: HTMLDivElement;
+  private combobox: HTMLButtonElement;
   private listElement: HTMLDivElement;
   private selectOptions: SelectOption[] = [];
   private form: HTMLFormElement;
@@ -129,6 +130,7 @@ export class Select {
     this.value = e.target.value;
     e.stopPropagation();
     this.emitUpdateEvent();
+    this.combobox.focus();
     this.isOpen = false;
   }
 
@@ -184,7 +186,7 @@ export class Select {
     attachComponentCss(
       this.host,
       getComponentCss,
-      getSelectDropdownDirection(this.dropdownDirection, this.inputContainer, this.selectOptions),
+      getSelectDropdownDirection(this.dropdownDirection, this.comboboxContainer, this.selectOptions),
       this.isOpen,
       this.disabled,
       this.hideLabel,
@@ -208,7 +210,7 @@ export class Select {
           isRequired={this.required}
           isDisabled={this.disabled}
         />
-        <div class={{ wrapper: true, disabled: this.disabled }} ref={(el) => (this.inputContainer = el)}>
+        <div class={{ wrapper: true, disabled: this.disabled }} ref={(el) => (this.comboboxContainer = el)}>
           <button
             type="button"
             role="combobox"
@@ -220,7 +222,7 @@ export class Select {
             disabled={this.disabled}
             onClick={this.onComboClick}
             onKeyDown={this.onComboKeyDown}
-            onBlur={this.onComboBlur}
+            ref={(el) => (this.combobox = el)}
           >
             {getSelectedOptionString(this.selectOptions)}
           </button>
@@ -284,17 +286,6 @@ export class Select {
       return;
     }
     this.isOpen = open;
-  };
-
-  private onComboBlur = (event: FocusEvent): void => {
-    // do nothing if relatedTarget is contained within listboxEl
-    if (this.listElement.contains(event.relatedTarget as Node)) {
-      return;
-    }
-    // select current option and close
-    if (this.isOpen) {
-      this.updateSelectedOption();
-    }
   };
 
   private onComboKeyDown = (event: KeyboardEvent): void => {
@@ -370,7 +361,7 @@ export class Select {
   };
 
   private onClickOutside = (e: MouseEvent): void => {
-    if (this.isOpen && isClickOutside(e, this.inputContainer) && isClickOutside(e, this.listElement)) {
+    if (this.isOpen && isClickOutside(e, this.comboboxContainer) && isClickOutside(e, this.listElement)) {
       this.isOpen = false;
     }
   };
