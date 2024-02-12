@@ -43,14 +43,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: 'Checkout'
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       - name: 'Setup and install'
         uses: ./.github/actions/setup-and-install
         with:
           install: false
           github-token: ${{ secrets.github-token }}
       - name: 'Restore Assets Artifact'
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: assets-cdn
           path: ./packages/assets/cdn
@@ -66,13 +66,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: 'Checkout'
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       - name: 'Setup and install'
         uses: ./.github/actions/setup-and-install
         with:
           github-token: ${{ secrets.github-token }}
       - name: 'Restore Build Artifact'
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: storefront-build
           path: ./packages/storefront/dist
@@ -92,43 +92,43 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: 'Checkout'
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       - name: 'Setup and install'
         uses: ./.github/actions/setup-and-install
         with:
           github-token: ${{ secrets.github-token }}
       - name: 'Restore Assets Build Artifact'
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: assets-build
           path: ./packages/assets/dist
       - name: 'Restore Components JS Build Artifact'
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: components-js-prod-build
           path: ./packages/components-js/dist
       - name: 'Restore Components Angular Build Artifact'
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: components-angular-prod-build
           path: ./packages/components-angular/dist/angular-wrapper
       - name: 'Restore Components React Build Artifact'
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: components-react-prod-build
           path: ./packages/components-react/dist/react-wrapper
       - name: 'Restore Components Vue Build Artifact'
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: components-vue-prod-build
           path: ./packages/components-vue/dist/vue-wrapper
       - name: 'Restore Chunks Manifest Build Artifact'
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: components-js-chunks-manifest-prod-build
           path: ./packages/components-js/projects/components-wrapper/lib
       - name: 'Restore Shared Build Artifact'
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: shared-build
           path: ./packages/shared/dist
@@ -149,7 +149,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: 'Checkout'
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           fetch-depth: 0 # important for uxpin since it uses the commit history
       - name: 'Setup and install'
@@ -157,12 +157,12 @@ jobs:
         with:
           github-token: ${{ secrets.github-token }}
       - name: 'Restore Components JS Build Artifact'
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: components-js-prod-build
           path: ./packages/components-js/dist
       - name: 'Restore Components UXPin Source Artifact'
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: components-uxpin-source
           path: ./packages/components-react/projects/uxpin-wrapper
@@ -182,14 +182,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: 'Checkout'
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       - name: 'Setup and install'
         uses: ./.github/actions/setup-and-install
         with:
           install: false
           github-token: ${{ secrets.github-token }}
       - name: 'Restore Build Artifact'
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: components-js-prod-build
           path: ./packages/components-js/dist
@@ -210,14 +210,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: 'Checkout'
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       - name: 'Setup and install'
         uses: ./.github/actions/setup-and-install
         with:
           install: false
           github-token: ${{ secrets.github-token }}
       - name: 'Restore Build Artifact'
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: components-angular-prod-build
           path: ./packages/components-angular/dist/angular-wrapper
@@ -238,14 +238,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: 'Checkout'
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       - name: 'Setup and install'
         uses: ./.github/actions/setup-and-install
         with:
           install: false
           github-token: ${{ secrets.github-token }}
       - name: 'Restore Build Artifact'
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: components-react-prod-build
           path: ./packages/components-react/dist/react-wrapper
@@ -266,14 +266,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: 'Checkout'
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       - name: 'Setup and install'
         uses: ./.github/actions/setup-and-install
         with:
           install: false
           github-token: ${{ secrets.github-token }}
       - name: 'Restore Build Artifact'
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: components-vue-prod-build
           path: ./packages/components-vue/dist/vue-wrapper
@@ -295,14 +295,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: 'Checkout'
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       - name: 'Setup and install'
         uses: ./.github/actions/setup-and-install
         with:
           install: false
           github-token: ${{ secrets.github-token }}
       - name: 'Restore Build Artifact'
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: assets-build
           path: ./packages/assets/dist

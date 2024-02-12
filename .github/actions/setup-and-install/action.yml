@@ -13,13 +13,13 @@ runs:
   steps:
     - name: 'Cache node_modules'
       if: inputs.install == 'true'
-      uses: actions/cache@v3
+      uses: actions/cache@v4
       id: cache-node_modules
       with:
         path: '**/node_modules'
         key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
     - name: 'Login to GitHub Container Registry'
-      uses: docker/login-action@v2
+      uses: docker/login-action@v3
       with:
         registry: ghcr.io
         username: ${{ github.actor }}
