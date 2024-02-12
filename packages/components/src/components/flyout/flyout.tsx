@@ -12,7 +12,6 @@ import {
   AllowedTypes,
   attachComponentCss,
   getPrefixedTagNames,
-  getShadowRootHTMLElement,
   getShadowRootHTMLElements,
   hasNamedSlot,
   hasPropValueChanged,
@@ -104,8 +103,6 @@ export class Flyout {
       if (this.hasSubFooter) {
         this.updateShadow();
       }
-      // Necessary to select button to make :focus-visible work
-      getShadowRootHTMLElement(this.dismissBtn, 'button').focus();
     }
   }
 

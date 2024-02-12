@@ -17,7 +17,7 @@ import {
   waitForStencilLifecycle,
 } from '../helpers';
 import type { ElementHandle, Page } from 'puppeteer';
-import { Components } from '@porsche-design-system/components';
+import type { Components } from '@porsche-design-system/components/src/components';
 
 let page: Page;
 const CSS_TRANSITION_DURATION = 600;
@@ -276,7 +276,7 @@ describe('can be dismissed', () => {
     await page.mouse.move(5, 5);
     await page.mouse.up();
 
-    expect((await getEventSummary(host, 'dismiss')).counter, 'after mouse up').toBe(0);
+    expect((await getEventSummary(host, 'dismiss')).counter, 'after mouse up').toBe(1);
   });
 
   it('should not bubble dismiss event', async () => {

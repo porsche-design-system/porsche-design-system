@@ -18,7 +18,7 @@ import {
   waitForStencilLifecycle,
 } from '../helpers';
 import type { ElementHandle, Page } from 'puppeteer';
-import type { Components } from '@porsche-design-system/components';
+import type { Components } from '@porsche-design-system/components/src/components';
 
 let page: Page;
 beforeEach(async () => (page = await browser.newPage()));
