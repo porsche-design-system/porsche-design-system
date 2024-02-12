@@ -147,11 +147,12 @@ export const setNextSelectOptionHighlighted = <T extends Option>(
   newIndex: number
 ): void => {
   const oldIndex = getHighlightedSelectOptionIndex(options);
+  const usableOptions = getUsableSelectOptions(options);
   if (oldIndex !== -1) {
-    setHighlightedSelectOption(options[oldIndex], false);
+    setHighlightedSelectOption(usableOptions[oldIndex], false);
   }
-  setHighlightedSelectOption(options[newIndex], true);
-  handleSelectDropdownScroll(listElement, options[newIndex]);
+  setHighlightedSelectOption(usableOptions[newIndex], true);
+  handleSelectDropdownScroll(listElement, usableOptions[newIndex]);
 };
 
 /**
@@ -249,7 +250,7 @@ export const setHighlightedSelectOption = <T extends Option>(option: T, highligh
  * @returns {number} - The index of the highlighted select option, or -1 if none is highlighted.
  */
 export const getHighlightedSelectOptionIndex = <T extends Option>(options: T[]): number =>
-  options.indexOf(getHighlightedSelectOption(options));
+  getUsableSelectOptions(options).indexOf(getHighlightedSelectOption(options));
 
 /**
  * Gets the currently highlighted select option.
