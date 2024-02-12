@@ -99,7 +99,7 @@ export const getActionFromKey = (event: KeyboardEvent, menuOpen: boolean): Selec
       return SelectAction.PageDown;
     } else if (key === 'Escape') {
       return SelectAction.Close;
-    } else if (key === 'Enter' || key === ' ') {
+    } else if (key === 'Enter' || key === ' ' || key === 'Tab') {
       return SelectAction.CloseSelect;
     }
   }
