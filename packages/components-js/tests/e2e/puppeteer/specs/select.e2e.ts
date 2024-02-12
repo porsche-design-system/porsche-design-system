@@ -2,12 +2,14 @@ import type { Page } from 'puppeteer';
 import type { Components } from '@porsche-design-system/components';
 import {
   addEventListener,
+  expectA11yToMatchSnapshot,
   getActiveElementTagName,
   getActiveElementTagNameInShadowRoot,
   getAttribute,
   getElementStyle,
   getEventSummary,
   getHTMLAttributes,
+  getLifecycleStatus,
   getProperty,
   selectNode,
   setContentWithDesignSystem,
@@ -39,17 +41,19 @@ const getSelectedSelectOptionProperty = async <K extends keyof SelectOption>(pro
   await page.$$eval(
     'p-select p-select-option',
     (options, property) =>
-      (options.find((option: SelectOption) => option.selected) as SelectOption)[property] as SelectOption[K],
+      ((options.find((option: SelectOption) => option.selected) as SelectOption)?.[property] as SelectOption[K]) ??
+      undefined,
     property
   );
 
 const getHighlightedSelectOptionProperty = async <K extends keyof SelectOption>(
   property: K
-): Promise<SelectOption[K]> =>
+): Promise<SelectOption[K] | undefined> =>
   await page.$$eval(
     'p-select p-select-option',
     (options, property) =>
-      (options.find((option: SelectOption) => option.highlighted) as SelectOption)[property] as SelectOption[K],
+      ((options.find((option: SelectOption) => option.highlighted) as SelectOption)?.[property] as SelectOption[K]) ??
+      undefined,
     property
   );
 
@@ -233,7 +237,7 @@ type InitOptions = {
   };
   options?: {
     values?: string[];
-    disabledIndex?: number;
+    disabledIndices?: number[];
     isWithinForm?: boolean;
     markupBefore?: string;
     markupAfter?: string;
@@ -246,7 +250,7 @@ const initSelect = (opt?: InitOptions): Promise<void> => {
   const { props = { name: 'options' }, slots, options } = opt || {};
   const {
     values = ['a', 'b', 'c'],
-    disabledIndex,
+    disabledIndices = [],
     isWithinForm = true,
     markupBefore = '',
     markupAfter = '',
@@ -255,7 +259,7 @@ const initSelect = (opt?: InitOptions): Promise<void> => {
 
   const selectOptions = values
     .map((x, idx) => {
-      const attrs = [disabledIndex === idx ? 'disabled' : ''].join(' ');
+      const attrs = [disabledIndices.includes(idx) ? 'disabled' : ''].join(' ');
       return `<p-select-option ${x ? `value="${x}"` : ''} ${attrs}>${x}</p-select-option>`;
     })
     .join('\n');
@@ -591,9 +595,13 @@ describe('focus', () => {
 
     await page.keyboard.press('Tab');
     await waitForStencilLifecycle(page);
+    expect(await getDropdownDisplay(), 'dropdown display after second tab').toBe('none');
     expect((await getEventSummary(comboboxEl, 'focus')).counter, 'combobox focus after second tab').toBe(1);
 
-    expect(await getDropdownDisplay(), 'dropdown display after second tab').toBe('none');
+    // TODO: Tab should directly go to the next element instead of just closing and selecting an option
+    await page.keyboard.press('Tab');
+    await waitForStencilLifecycle(page);
+
     expect((await getEventSummary(button, 'focus')).counter, 'button focus after second tab').toBe(1);
   });
 });
@@ -617,7 +625,7 @@ describe('keyboard behavior', () => {
     // Opens the listbox if it is not already displayed without moving focus or changing selection.
     // DOM focus remains on the combobox.
     it('should open the listbox when pressing ArrowDown', async () => {
-      await page.keyboard.press('ArrowDown');
+      await buttonElement.press('ArrowDown');
       await waitForStencilLifecycle(page);
 
       expect(await getDropdownDisplay(), 'initial').toBe('flex');
@@ -627,7 +635,7 @@ describe('keyboard behavior', () => {
     // Opens the listbox if it is not already displayed without moving focus or changing selection.
     // DOM focus remains on the combobox.
     it('should open the listbox and highlight first option when pressing ArrowUp', async () => {
-      await page.keyboard.press('ArrowUp');
+      await buttonElement.press('ArrowUp');
       await waitForStencilLifecycle(page);
 
       expect(await getDropdownDisplay(), 'initial').toBe('flex');
@@ -636,7 +644,7 @@ describe('keyboard behavior', () => {
     });
     // Opens the listbox without moving focus or changing selection.
     it('should open the listbox when pressing Enter', async () => {
-      await page.keyboard.press('Enter');
+      await buttonElement.press('Enter');
       await waitForStencilLifecycle(page);
 
       expect(await getDropdownDisplay(), 'initial').toBe('flex');
@@ -645,7 +653,7 @@ describe('keyboard behavior', () => {
     });
     // Opens the listbox without moving focus or changing selection.
     it('should open the listbox when pressing Space', async () => {
-      await page.keyboard.press('Space');
+      await buttonElement.press('Space');
       await waitForStencilLifecycle(page);
 
       expect(await getDropdownDisplay(), 'initial').toBe('flex');
@@ -654,7 +662,7 @@ describe('keyboard behavior', () => {
     });
     // Opens the listbox and moves visual focus to the first option.
     it('should open the listbox and move highlight to first option when pressing Home', async () => {
-      await page.keyboard.press('Home');
+      await buttonElement.press('Home');
       await waitForStencilLifecycle(page);
 
       expect(await getDropdownDisplay(), 'initial').toBe('flex');
@@ -663,7 +671,7 @@ describe('keyboard behavior', () => {
     });
     // Opens the listbox and moves visual focus to the last option.
     it('should open the listbox when pressing End', async () => {
-      await page.keyboard.press('End');
+      await buttonElement.press('End');
       await waitForStencilLifecycle(page);
 
       expect(await getDropdownDisplay(), 'initial').toBe('flex');
@@ -674,7 +682,7 @@ describe('keyboard behavior', () => {
     // If multiple keys are typed in quick succession, visual focus moves to the first option that matches the full string.
     // If the same character is typed in succession, visual focus cycles among the options starting with that character.
     it('should open the listbox when pressing a printable character', async () => {
-      await page.keyboard.press('B');
+      await buttonElement.press('B');
       await waitForStencilLifecycle(page);
 
       expect(await getDropdownDisplay(), 'initial').toBe('flex');
@@ -698,7 +706,7 @@ describe('keyboard behavior', () => {
       await page.keyboard.press('Tab');
       expect((await getEventSummary(buttonElement, 'focus')).counter, 'button focus after first tab').toBe(1);
       expect(await getDropdownDisplay(), 'initial').toBe('none');
-      await page.keyboard.press('ArrowDown');
+      await buttonElement.press('ArrowDown'); // Open dropdown
       await waitForStencilLifecycle(page);
     });
 
@@ -706,13 +714,13 @@ describe('keyboard behavior', () => {
     // Closes the listbox.
     // Sets visual focus on the combobox.
     it('should select the option and close the dropdown when pressing Enter on option', async () => {
-      await page.keyboard.press('ArrowDown');
+      await buttonElement.press('ArrowDown');
       await waitForStencilLifecycle(page);
 
       expect(await getDropdownDisplay(), 'initial').toBe('flex');
       expect(await getHighlightedOptionIndex()).toBe(0);
 
-      await page.keyboard.press('Enter');
+      await buttonElement.press('Enter');
       await waitForStencilLifecycle(page);
 
       expect(await getSelectValue()).toBe(testValues[0]);
@@ -727,13 +735,13 @@ describe('keyboard behavior', () => {
     // Closes the listbox.
     // Sets visual focus on the combobox.
     it('should select the option and close the dropdown when pressing Space on option', async () => {
-      await page.keyboard.press('ArrowDown');
+      await buttonElement.press('ArrowDown');
       await waitForStencilLifecycle(page);
 
       expect(await getDropdownDisplay(), 'initial').toBe('flex');
       expect(await getHighlightedOptionIndex()).toBe(0);
 
-      await page.keyboard.press('Enter');
+      await buttonElement.press('Enter');
       await waitForStencilLifecycle(page);
 
       expect(await getSelectValue()).toBe(testValues[0]);
@@ -748,14 +756,14 @@ describe('keyboard behavior', () => {
     // Closes the listbox.
     // Performs the default action, moving focus to the next focusable element. Note: the native <select> element closes the listbox but does not move focus on tab. This pattern matches the behavior of the other comboboxes rather than the native element in this case.
     it('should select the option, close the dropdown and focus next element when pressing Tab on option', async () => {
-      await page.keyboard.press('ArrowDown');
+      await buttonElement.press('ArrowDown');
       await waitForStencilLifecycle(page);
 
       expect(await getDropdownDisplay(), 'initial').toBe('flex');
       expect(await getHighlightedOptionIndex()).toBe(0);
       expect((await getEventSummary(buttonAfter, 'focus')).counter, 'before pressing Tab').toBe(0);
 
-      await page.keyboard.press('Tab');
+      await buttonElement.press('Tab');
       await waitForStencilLifecycle(page);
 
       expect(await getSelectValue()).toBe(testValues[0]);
@@ -763,6 +771,12 @@ describe('keyboard behavior', () => {
       expect(await getDropdownDisplay(), 'initial').toBe('none');
       expect(await getHighlightedOptionIndex()).toBe(0); // Highlighted options stays highlighted even after closing of the dropdown
       expect((await getEventSummary(buttonElement, 'focus')).counter, 'button focus after pressing Tab').toBe(1);
+      expect(await getActiveElementTagName(page)).toBe('P-SELECT');
+
+      // TODO: Tab should directly go to the next element instead of just closing and selecting an option
+      await buttonElement.press('Tab');
+      await waitForStencilLifecycle(page);
+
       expect(await getActiveElementTagName(page)).toBe('P-BUTTON');
       expect((await getEventSummary(buttonAfter, 'focus')).counter, 'after pressing Tab').toBe(1);
     });
@@ -771,7 +785,7 @@ describe('keyboard behavior', () => {
     it('should close the dropdown when pressing Escape', async () => {
       expect(await getDropdownDisplay(), 'initial').toBe('flex');
 
-      await page.keyboard.press('Escape');
+      await buttonElement.press('Escape');
       await waitForStencilLifecycle(page);
 
       expect(await getDropdownDisplay(), 'initial').toBe('none');
@@ -782,22 +796,22 @@ describe('keyboard behavior', () => {
     // Moves visual focus to the next option.
     // If visual focus is on the last option, visual focus does not move.
     it('should move highlight to the next option when pressing Down Arrow', async () => {
-      await page.keyboard.press('ArrowDown');
+      await buttonElement.press('ArrowDown');
       await waitForStencilLifecycle(page);
 
       expect(await getHighlightedOptionIndex()).toBe(0);
 
-      await page.keyboard.press('ArrowDown');
+      await buttonElement.press('ArrowDown');
       await waitForStencilLifecycle(page);
 
       expect(await getHighlightedOptionIndex()).toBe(1);
 
-      await page.keyboard.press('End');
+      await buttonElement.press('End');
       await waitForStencilLifecycle(page);
 
       expect(await getHighlightedOptionIndex()).toBe(testValues.length - 1);
 
-      await page.keyboard.press('ArrowDown');
+      await buttonElement.press('ArrowDown');
       await waitForStencilLifecycle(page);
 
       expect(await getHighlightedOptionIndex()).toBe(testValues.length - 1);
@@ -805,87 +819,87 @@ describe('keyboard behavior', () => {
     // Moves visual focus to the previous option.
     // If visual focus is on the first option, visual focus does not move.
     it('should move highlight to the next option when pressing ArrowUp', async () => {
-      await page.keyboard.press('ArrowDown');
-      await page.keyboard.press('ArrowDown');
-      await page.keyboard.press('ArrowDown');
+      await buttonElement.press('ArrowDown');
+      await buttonElement.press('ArrowDown');
+      await buttonElement.press('ArrowDown');
       await waitForStencilLifecycle(page);
 
       expect(await getHighlightedOptionIndex()).toBe(2);
 
-      await page.keyboard.press('ArrowUp');
+      await buttonElement.press('ArrowUp');
       await waitForStencilLifecycle(page);
 
       expect(await getHighlightedOptionIndex()).toBe(1);
 
-      await page.keyboard.press('ArrowUp');
+      await buttonElement.press('ArrowUp');
       await waitForStencilLifecycle(page);
 
       expect(await getHighlightedOptionIndex()).toBe(0);
 
-      await page.keyboard.press('ArrowUp');
+      await buttonElement.press('ArrowUp');
       await waitForStencilLifecycle(page);
 
       expect(await getHighlightedOptionIndex()).toBe(0);
     });
     // Moves visual focus to the first option.
     it('should move highlight to the first option when pressing Home', async () => {
-      await page.keyboard.press('End');
+      await buttonElement.press('End');
       await waitForStencilLifecycle(page);
 
       expect(await getHighlightedOptionIndex()).toBe(testValues.length - 1);
 
-      await page.keyboard.press('Home');
+      await buttonElement.press('Home');
       await waitForStencilLifecycle(page);
 
       expect(await getHighlightedOptionIndex()).toBe(0);
     });
     // Moves visual focus to the last option.
     it('should move highlight to the last option when pressing End', async () => {
-      await page.keyboard.press('End');
+      await buttonElement.press('End');
       await waitForStencilLifecycle(page);
 
       expect(await getHighlightedOptionIndex()).toBe(testValues.length - 1);
 
-      await page.keyboard.press('End');
+      await buttonElement.press('End');
       await waitForStencilLifecycle(page);
 
       expect(await getHighlightedOptionIndex()).toBe(testValues.length - 1);
     });
     // Jumps visual focus up 10 options (or to first option).
     it('should move highlight up 10 options (or to first option) when pressing PageUp', async () => {
-      await page.keyboard.press('End');
+      await buttonElement.press('End');
       await waitForStencilLifecycle(page);
 
       expect(await getHighlightedOptionIndex()).toBe(testValues.length - 1);
 
-      await page.keyboard.press('PageUp');
+      await buttonElement.press('PageUp');
       await waitForStencilLifecycle(page);
 
       expect(await getHighlightedOptionIndex()).toBe(testValues.length - 11);
     });
     // Jumps visual focus down 10 options (or to last option).
     it('should move highlight down 10 options (or to last option) when pressing PageDown', async () => {
-      await page.keyboard.press('PageDown');
+      await buttonElement.press('PageDown');
       await waitForStencilLifecycle(page);
 
       expect(await getHighlightedOptionIndex()).toBe(9);
 
-      await page.keyboard.press('PageDown');
+      await buttonElement.press('PageDown');
       await waitForStencilLifecycle(page);
 
       expect(await getHighlightedOptionIndex()).toBe(19);
 
-      await page.keyboard.press('End');
+      await buttonElement.press('End');
       await waitForStencilLifecycle(page);
 
       expect(await getHighlightedOptionIndex()).toBe(testValues.length - 1);
 
-      await page.keyboard.press('PageUp');
+      await buttonElement.press('PageUp');
       await waitForStencilLifecycle(page);
 
       expect(await getHighlightedOptionIndex()).toBe(testValues.length - 11);
 
-      await page.keyboard.press('PageDown');
+      await buttonElement.press('PageDown');
       await waitForStencilLifecycle(page);
 
       expect(await getHighlightedOptionIndex()).toBe(testValues.length - 1);
@@ -894,9 +908,9 @@ describe('keyboard behavior', () => {
     // If multiple keys are typed in quick succession, visual focus moves to the first option that matches the full string.
     // If the same character is typed in succession, visual focus cycles among the options starting with that character.
     it('should move highlight correctly when pressing printable characters', async () => {
-      await page.keyboard.press('B');
-      await page.keyboard.press('e');
-      await page.keyboard.press('n');
+      await buttonElement.press('B');
+      await buttonElement.press('e');
+      await buttonElement.press('n');
       await waitForStencilLifecycle(page);
 
       const valueIndex = testValues.indexOf(testValues.find((val) => val.startsWith('Ben')));
@@ -904,710 +918,529 @@ describe('keyboard behavior', () => {
       expect(await getHighlightedSelectOptionProperty('textContent')).toBe(testValues[valueIndex]);
 
       await new Promise((resolve) => setTimeout(resolve, 500)); // Wait for searchString timeout
-      await page.keyboard.press('B');
+      await buttonElement.press('B');
       await waitForStencilLifecycle(page);
 
       expect(await getHighlightedSelectOptionProperty('textContent')).toBe(testValues[valueIndex + 1]);
 
       await new Promise((resolve) => setTimeout(resolve, 500)); // Wait for searchString timeout
-      await page.keyboard.press('B');
+      await buttonElement.press('B');
       await waitForStencilLifecycle(page);
 
       expect(await getHighlightedSelectOptionProperty('textContent')).toBe(testValues[valueIndex + 2]);
 
       await new Promise((resolve) => setTimeout(resolve, 500)); // Wait for searchString timeout
-      await page.keyboard.press('D');
-      await page.keyboard.press('e');
-      await page.keyboard.press('n');
+      await buttonElement.press('D');
+      await buttonElement.press('e');
+      await buttonElement.press('n');
 
       expect(await getHighlightedSelectOptionProperty('textContent')).toBe(
         testValues.find((val) => val.startsWith('Den'))
       );
 
       await new Promise((resolve) => setTimeout(resolve, 500)); // Wait for searchString timeout
-      await page.keyboard.press('A');
+      await buttonElement.press('A');
       await waitForStencilLifecycle(page);
 
       expect(await getHighlightedSelectOptionProperty('textContent')).toBe(testValues[0]);
     });
   });
+  it('should skip disabled option when pressing ArrowUp/ArrowDown', async () => {
+    await initSelect({ options: { disabledIndices: [0, 1, 3, 5], values: ['a', 'b', 'c', 'd', 'e', 'f'] } });
+    const buttonElement = await getButton();
+
+    console.log(await page.content());
+
+    expect(await getProperty(await getSelectOption(2), 'disabled'), 'disabled option').toBe(true);
+
+    await buttonElement.press('ArrowDown');
+    await waitForStencilLifecycle(page);
+
+    expect(await getHighlightedOptionIndex()).toBe(-1);
+
+    await buttonElement.press('ArrowDown');
+    await waitForStencilLifecycle(page);
+
+    expect(await getHighlightedOptionIndex()).toBe(2);
+
+    await buttonElement.press('ArrowDown');
+    await waitForStencilLifecycle(page);
+
+    expect(await getHighlightedOptionIndex()).toBe(4);
+
+    await buttonElement.press('ArrowDown');
+    await waitForStencilLifecycle(page);
+
+    expect(await getHighlightedOptionIndex()).toBe(4);
+
+    await buttonElement.press('ArrowUp');
+    await waitForStencilLifecycle(page);
+
+    expect(await getHighlightedOptionIndex()).toBe(2);
+
+    await buttonElement.press('ArrowUp');
+    await waitForStencilLifecycle(page);
+
+    expect(await getHighlightedOptionIndex()).toBe(2);
+  });
 });
 
-// describe('selection', () => {
-//   it('should add valid selection on enter', async () => {
-//     await initMultiSelect();
-//
-//     const inputElement = await getInput();
-//
-//     await inputElement.type('B');
-//     await waitForStencilLifecycle(page);
-//
-//     await page.keyboard.press('ArrowDown');
-//     await waitForStencilLifecycle(page);
-//
-//     await inputElement.press('Enter');
-//     await waitForStencilLifecycle(page);
-//
-//     const value = await getMultiSelectValue();
-//     const nativeSelectOptions = await getNativeSelectOptions();
-//     const filterPlaceholder = await getInputPlaceholder();
-//     const selectedMultiSelectOptions = await getSelectedMultiSelectOptionProperty('textContent');
-//
-//     expect(value).toStrictEqual(['b']);
-//     expect(await getProperty(nativeSelectOptions[0], 'value'), 'after first option selected').toEqual('b');
-//     expect(selectedMultiSelectOptions, 'after first option selected').toEqual(['Option B']);
-//     expect(filterPlaceholder, 'after first option selected').toBe(selectedMultiSelectOptions.join(', '));
-//
-//     await inputElement.press('Backspace');
-//     await page.keyboard.press('ArrowDown');
-//     await waitForStencilLifecycle(page);
-//     await inputElement.press('Enter');
-//     await waitForStencilLifecycle(page);
-//
-//     const valueAfter = await getMultiSelectValue();
-//     const nativeSelectOptionsAfter = await getNativeSelectOptions();
-//     const filterPlaceholderSecond = await getInputPlaceholder();
-//     const selectedMultiSelectOptionsSecond = await getSelectedMultiSelectOptionProperty('textContent');
-//
-//     expect(valueAfter).toStrictEqual(['b', 'c']);
-//     expect(await getProperty(nativeSelectOptionsAfter[0], 'value'), 'after second option selected').toEqual('b');
-//     expect(await getProperty(nativeSelectOptionsAfter[1], 'value'), 'after second option selected').toEqual('c');
-//     expect(selectedMultiSelectOptionsSecond, 'after second option selected').toEqual(['Option B', 'Option C']);
-//     expect(filterPlaceholderSecond, 'after second option selected').toBe(selectedMultiSelectOptionsSecond.join(', '));
-//   });
-//
-//   it('should add valid selection on click', async () => {
-//     await initMultiSelect();
-//
-//     const inputElement = await getInput();
-//     await inputElement.click();
-//     await waitForStencilLifecycle(page);
-//
-//     const dropdownOption2 = await getMultiSelectOption(2);
-//     await dropdownOption2.click();
-//     await waitForStencilLifecycle(page);
-//
-//     const value = await getMultiSelectValue();
-//     const nativeSelectOptions = await getNativeSelectOptions();
-//     const filterPlaceholder = await getInputPlaceholder();
-//     const selectedMultiSelectOptions = await getSelectedMultiSelectOptionProperty('textContent');
-//
-//     expect(value).toStrictEqual(['b']);
-//     expect(await getProperty(nativeSelectOptions[0], 'value'), 'after first option selected').toEqual('b');
-//     expect(filterPlaceholder, 'after first selection').toBe('Option B');
-//     expect(filterPlaceholder, 'after first selection').toEqual(selectedMultiSelectOptions.join(', '));
-//
-//     const dropdownOption3 = await getMultiSelectOption(3);
-//     await dropdownOption3.click();
-//     await waitForStencilLifecycle(page);
-//
-//     const valueAfter = await getMultiSelectValue();
-//     const nativeSelectOptionsAfter = await getNativeSelectOptions();
-//     const filterPlaceholderSecond = await getInputPlaceholder();
-//     const selectedMultiSelectOptionsSecond = await getSelectedMultiSelectOptionProperty('textContent');
-//
-//     expect(valueAfter).toStrictEqual(['b', 'c']);
-//     expect(await getProperty(nativeSelectOptionsAfter[0], 'value'), 'after second option selected').toEqual('b');
-//     expect(await getProperty(nativeSelectOptionsAfter[1], 'value'), 'after second option selected').toEqual('c');
-//     expect(filterPlaceholderSecond, 'after second selection').toBe('Option B, Option C');
-//     expect(filterPlaceholderSecond, 'after second selection').toEqual(selectedMultiSelectOptionsSecond.join(', '));
-//   });
-//
-//   it('should reset selection on reset button enter', async () => {
-//     await initMultiSelect();
-//     const inputElement = await getInput();
-//     await inputElement.press('Space');
-//     await waitForStencilLifecycle(page);
-//     await page.keyboard.press('ArrowDown');
-//     await waitForStencilLifecycle(page);
-//     await inputElement.press('Enter');
-//     await waitForStencilLifecycle(page);
-//
-//     expect(await getProperty((await getNativeSelectOptions())[0], 'value')).toEqual('a');
-//     expect(await getMultiSelectValue()).toEqual(['a']);
-//     expect(await getSelectedMultiSelectOptionProperty('value')).toEqual(['a']);
-//
-//     const resetButton = await getResetButton();
-//     await addEventListener(resetButton, 'focus');
-//
-//     await inputElement.press('Tab');
-//     await waitForStencilLifecycle(page);
-//     expect((await getEventSummary(resetButton, 'focus')).counter).toBe(1);
-//
-//     await resetButton.press('Enter');
-//     await waitForStencilLifecycle(page);
-//
-//     expect(await getNativeSelectOptions()).toEqual([]);
-//     expect(await getMultiSelectValue()).toEqual([]);
-//     expect(await getSelectedMultiSelectOptionProperty('value')).toEqual([]);
-//   });
-//
-//   it('should reset selection on reset button click', async () => {
-//     await initMultiSelect();
-//     const inputElement = await getInput();
-//     await inputElement.click();
-//     await waitForStencilLifecycle(page);
-//
-//     const option1 = await getMultiSelectOption(1);
-//     const option2 = await getMultiSelectOption(2);
-//     await option1.click();
-//     await option2.click();
-//     await waitForStencilLifecycle(page);
-//
-//     expect(await getProperty((await getNativeSelectOptions())[0], 'value')).toEqual('a');
-//     expect(await getProperty((await getNativeSelectOptions())[1], 'value')).toEqual('b');
-//     expect(await getMultiSelectValue()).toEqual(['a', 'b']);
-//     expect(await getSelectedMultiSelectOptionProperty('value')).toEqual(['a', 'b']);
-//
-//     const resetButton = await getResetButton();
-//     await resetButton.click();
-//     await waitForStencilLifecycle(page);
-//
-//     expect(await getNativeSelectOptions()).toEqual([]);
-//     expect(await getMultiSelectValue()).toEqual([]);
-//     expect(await getSelectedMultiSelectOptionProperty('value')).toEqual([]);
-//   });
-// });
-//
-// describe('keyboard and click events', () => {
-//   it('should highlight first option on arrow down', async () => {
-//     await initMultiSelect();
-//
-//     expect(await getHighlightedOptionIndex(), 'for highlighted option after arrow down').toBe(-1);
-//
-//     await page.keyboard.press('Tab');
-//     await page.keyboard.press('ArrowDown');
-//     await waitForStencilLifecycle(page);
-//
-//     expect(await getHighlightedOptionIndex(), 'for highlighted option after arrow down').toBe(0);
-//     expect(await getSelectedOptionIndicies()).toStrictEqual([]);
-//     expect(await getSelectedMultiSelectOptionProperty('value'), 'for selected index').toEqual([]);
-//
-//     await page.keyboard.press('Enter');
-//     await waitForStencilLifecycle(page);
-//
-//     expect(await getHighlightedOptionIndex(), 'for highlighted option after arrow down').toBe(0);
-//     expect(await getSelectedMultiSelectOptionProperty('value'), 'for selected index').toEqual(['a']);
-//     expect(await getSelectedOptionIndicies()).toStrictEqual([0]);
-//
-//     await page.keyboard.press('ArrowDown');
-//     await waitForStencilLifecycle(page);
-//
-//     expect(await getHighlightedOptionIndex(), 'for highlighted option after arrow down').toBe(1);
-//     expect(await getSelectedMultiSelectOptionProperty('value'), 'for selected index').toEqual(['a']);
-//     expect(await getSelectedOptionIndicies()).toStrictEqual([0]);
-//
-//     await page.keyboard.press('Enter');
-//     await waitForStencilLifecycle(page);
-//
-//     expect(await getHighlightedOptionIndex(), 'for highlighted option after arrow down').toBe(1);
-//     expect(await getSelectedMultiSelectOptionProperty('value'), 'for selected index').toEqual(['a', 'b']);
-//     expect(await getSelectedOptionIndicies()).toStrictEqual([0, 1]);
-//   });
-//
-//   it('should skip disabled option on arrow down', async () => {
-//     await initMultiSelect({ options: { disabledIndex: 0 } });
-//
-//     expect(await getProperty(await getMultiSelectOption(1), 'disabled'), 'disabled option').toBe(true);
-//
-//     await page.keyboard.press('Tab');
-//     await page.keyboard.press('ArrowDown');
-//     await waitForStencilLifecycle(page);
-//
-//     expect(await getHighlightedOptionIndex(), 'for highlighted option').toBe(1);
-//   });
-//
-//   it('should skip disabled option on arrow up', async () => {
-//     await initMultiSelect({ options: { disabledIndex: 1 } });
-//
-//     expect(await getProperty(await getMultiSelectOption(2), 'disabled'), 'disabled option').toBe(true);
-//
-//     await page.keyboard.press('Tab');
-//     await page.keyboard.press('ArrowDown');
-//     await page.keyboard.press('ArrowDown');
-//     await waitForStencilLifecycle(page);
-//
-//     expect(await getHighlightedOptionIndex(), 'for highlighted option after arrow down').toBe(2);
-//
-//     await page.keyboard.press('ArrowUp');
-//     await waitForStencilLifecycle(page);
-//
-//     expect(await getHighlightedOptionIndex(), 'for highlighted option after arrow down').toBe(0);
-//   });
-//
-//   it('should open dropdown with spacebar', async () => {
-//     await initMultiSelect();
-//
-//     await page.keyboard.press('Tab');
-//
-//     expect(await getDropdownDisplay()).toBe('none');
-//
-//     await page.keyboard.press('Space');
-//     await waitForStencilLifecycle(page);
-//
-//     expect(await getDropdownDisplay()).toBe('flex');
-//   });
-//
-//   it('should toggle selected with enter', async () => {
-//     await initMultiSelect();
-//
-//     await page.keyboard.press('Tab');
-//     await page.keyboard.press('Space');
-//     await page.keyboard.press('ArrowDown');
-//     await page.keyboard.press('Enter');
-//     await waitForStencilLifecycle(page);
-//
-//     expect(await getHighlightedOptionIndex(), 'for highlighted option after arrow down').toBe(0);
-//     expect(await getSelectedMultiSelectOptionProperty('value'), 'for selected index').toEqual(['a']);
-//     expect(await getSelectedOptionIndicies()).toStrictEqual([0]);
-//
-//     await page.keyboard.press('Enter');
-//     await waitForStencilLifecycle(page);
-//
-//     expect(await getHighlightedOptionIndex(), 'for highlighted option after arrow down').toBe(0);
-//     expect(await getSelectedMultiSelectOptionProperty('value'), 'for selected index').toEqual([]);
-//     expect(await getSelectedOptionIndicies()).toStrictEqual([]);
-//
-//     await page.keyboard.press('Enter');
-//     await waitForStencilLifecycle(page);
-//
-//     expect(await getHighlightedOptionIndex(), 'for highlighted option after arrow down').toBe(0);
-//     expect(await getSelectedMultiSelectOptionProperty('value'), 'for selected index').toEqual(['a']);
-//     expect(await getSelectedOptionIndicies()).toStrictEqual([0]);
-//   });
-//
-//   it('should not select option on Escape', async () => {
-//     await initMultiSelect();
-//     await page.keyboard.press('Tab');
-//     await page.keyboard.press('ArrowDown');
-//     await waitForStencilLifecycle(page);
-//
-//     expect(await getHighlightedOptionIndex(), 'for highlighted option after arrow down').toBe(0);
-//
-//     await page.keyboard.press('Escape');
-//     await waitForStencilLifecycle(page);
-//
-//     expect(await getSelectedOptionIndicies()).toStrictEqual([]);
-//     expect(await getDropdownDisplay()).toBe('none');
-//   });
-//
-//   it('should highlight and select options on PageDown/PageUp', async () => {
-//     await initMultiSelect();
-//     await page.keyboard.press('Tab');
-//     await page.keyboard.press('Space');
-//     await waitForStencilLifecycle(page);
-//     await page.keyboard.press('PageDown');
-//     await waitForStencilLifecycle(page);
-//
-//     expect(await getHighlightedOptionIndex(), 'for highlighted option after arrow down').toBe(2);
-//     expect(await getSelectedMultiSelectOptionProperty('value'), 'for selected index').toEqual([]);
-//     expect(await getSelectedOptionIndicies()).toStrictEqual([]);
-//
-//     await page.keyboard.press('Enter');
-//     await waitForStencilLifecycle(page);
-//
-//     expect(await getHighlightedOptionIndex(), 'for highlighted option after arrow down').toBe(2);
-//     expect(await getSelectedMultiSelectOptionProperty('value'), 'for selected index').toEqual(['c']);
-//     expect(await getSelectedOptionIndicies()).toStrictEqual([2]);
-//
-//     await page.keyboard.press('PageUp');
-//     await page.keyboard.press('Enter');
-//     await waitForStencilLifecycle(page);
-//
-//     expect(await getHighlightedOptionIndex(), 'for highlighted option after arrow down').toBe(0);
-//     expect(await getSelectedMultiSelectOptionProperty('value'), 'for selected index').toEqual(['a', 'c']);
-//     expect(await getSelectedOptionIndicies()).toStrictEqual([0, 2]);
-//   });
-//
-//   it('should open dropdown on mouseclick and stay open on 2nd click', async () => {
-//     await initMultiSelect();
-//     const inputElement = await getInput();
-//
-//     await inputElement.click();
-//     await waitForStencilLifecycle(page);
-//
-//     expect(await getDropdownDisplay(), 'after click').toBe('flex');
-//     expect(await getHighlightedOptionIndex(), 'for highlighted option').toBe(-1);
-//
-//     await inputElement.click();
-//     await waitForStencilLifecycle(page);
-//
-//     expect(await getDropdownDisplay(), 'after second click').toBe('flex');
-//     expect(await getHighlightedOptionIndex(), 'for highlighted option').toBe(-1);
-//   });
-//
-//   it('should select second option on mouseclick', async () => {
-//     await initMultiSelect();
-//     const inputElement = await getInput();
-//
-//     await inputElement.click();
-//     await waitForStencilLifecycle(page);
-//
-//     const dropdownOption = await getMultiSelectOption(2);
-//     await dropdownOption.click();
-//     await waitForStencilLifecycle(page);
-//
-//     expect(await getDropdownDisplay(), 'after click').toBe('flex');
-//     expect(await getSelectedMultiSelectOptionProperty('value'), 'for selected index').toEqual(['b']);
-//     expect(await getSelectedOptionIndicies()).toStrictEqual([1]);
-//   });
-//
-//   it('should close dropdown on Tab', async () => {
-//     await initMultiSelect();
-//
-//     await page.keyboard.press('Tab');
-//     await page.keyboard.press('Space');
-//     await waitForStencilLifecycle(page);
-//
-//     expect(await getDropdownDisplay(), 'after open').toBe('flex');
-//
-//     await page.keyboard.press('Tab');
-//     await waitForStencilLifecycle(page);
-//
-//     expect(await getDropdownDisplay(), 'after tab').toBe('none');
-//   });
-//   it('should focus reset button and dropdown should stay open when there is a selection', async () => {
-//     await initMultiSelect({
-//       options: { markupAfter: '<p-button>Button</p-button>' },
-//     });
-//     const button = await selectNode(page, 'p-button');
-//
-//     await setValue(['a']);
-//     const resetButton = await getResetButton();
-//     const inputElement = await getInput();
-//
-//     await addEventListener(button, 'focus');
-//     await addEventListener(resetButton, 'focus');
-//     await addEventListener(inputElement, 'focus');
-//     expect(resetButton).not.toBeNull();
-//     expect((await getEventSummary(button, 'focus')).counter, 'initial').toBe(0);
-//     expect((await getEventSummary(resetButton, 'focus')).counter, 'initial').toBe(0);
-//     expect((await getEventSummary(inputElement, 'focus')).counter, 'initial').toBe(0);
-//
-//     await page.keyboard.press('Tab');
-//     await page.keyboard.press('Space');
-//     await waitForStencilLifecycle(page);
-//
-//     expect((await getEventSummary(button, 'focus')).counter, 'initial').toBe(0);
-//     expect((await getEventSummary(resetButton, 'focus')).counter, 'initial').toBe(0);
-//     expect((await getEventSummary(inputElement, 'focus')).counter, 'after open').toBe(1);
-//     expect(await getDropdownDisplay(), 'after open').toBe('flex');
-//
-//     await page.keyboard.press('Tab');
-//     await waitForStencilLifecycle(page);
-//
-//     expect((await getEventSummary(button, 'focus')).counter, 'initial').toBe(0);
-//     expect((await getEventSummary(resetButton, 'focus')).counter, 'initial').toBe(1);
-//     expect((await getEventSummary(inputElement, 'focus')).counter, 'after open').toBe(1);
-//     expect(await getDropdownDisplay(), 'after tab').toBe('flex');
-//
-//     await page.keyboard.press('Tab');
-//     await waitForStencilLifecycle(page);
-//
-//     expect((await getEventSummary(button, 'focus')).counter, 'initial').toBe(1);
-//     expect((await getEventSummary(resetButton, 'focus')).counter, 'initial').toBe(1);
-//     expect((await getEventSummary(inputElement, 'focus')).counter, 'after open').toBe(1);
-//     expect(await getDropdownDisplay(), 'after tab').toBe('none');
-//   });
-//
-//   it('should close dropdown on Esc', async () => {
-//     await initMultiSelect();
-//
-//     const inputElement = await getInput();
-//
-//     await addEventListener(inputElement, 'focus');
-//     expect((await getEventSummary(inputElement, 'focus')).counter, 'initial').toBe(0);
-//
-//     await page.keyboard.press('Tab');
-//     await page.keyboard.press('Space');
-//     await waitForStencilLifecycle(page);
-//
-//     expect((await getEventSummary(inputElement, 'focus')).counter, 'after open').toBe(1);
-//     expect(await getDropdownDisplay(), 'after open').toBe('flex');
-//
-//     await page.keyboard.press('Escape');
-//     await waitForStencilLifecycle(page);
-//
-//     expect(await getDropdownDisplay(), 'after Esc').toBe('none');
-//     await setValue(['a']);
-//
-//     await page.keyboard.press('Space');
-//     await waitForStencilLifecycle(page);
-//
-//     expect(await getDropdownDisplay(), 'after second open').toBe('flex');
-//
-//     await page.keyboard.press('Escape');
-//     await waitForStencilLifecycle(page);
-//
-//     expect(await getDropdownDisplay(), 'after second Esc').toBe('none');
-//   });
-//
-//   it('should submit form with correct values when is wrapped by form on Enter', async () => {
-//     await initMultiSelect();
-//     const form = await selectNode(page, 'form');
-//     const inputElement = await getInput();
-//
-//     await addEventListener(form, 'submit');
-//     await addEventListener(inputElement, 'focus');
-//     expect((await getEventSummary(form, 'submit')).counter, 'initial').toBe(0);
-//     expect((await getEventSummary(inputElement, 'focus')).counter, 'initial').toBe(0);
-//
-//     await page.keyboard.press('Tab');
-//     await page.keyboard.press('Space');
-//     await page.keyboard.press('ArrowDown');
-//     await page.keyboard.press('Enter');
-//     await waitForStencilLifecycle(page);
-//
-//     expect((await getEventSummary(form, 'submit')).counter, 'initial').toBe(0);
-//     expect(await getMultiSelectValue()).toEqual(['a']);
-//
-//     await page.keyboard.press('Escape');
-//     expect((await getEventSummary(inputElement, 'focus')).counter, 'after escape').toBe(1);
-//     expect(await getHighlightedOptionIndex(), 'after escape').toBe(-1);
-//
-//     await page.keyboard.press('Enter');
-//     await waitForStencilLifecycle(page);
-//
-//     expect((await getEventSummary(form, 'submit')).counter, 'after Enter').toBe(1);
-//     expect(
-//       await form.evaluate((form: HTMLFormElement) => Array.from(new FormData(form).values()).join(',')),
-//       'after Enter'
-//     ).toEqual('a');
-//   });
-//
-//   it('should not submit form when is not wrapped by form on Enter', async () => {
-//     initConsoleObserver(page);
-//     await initMultiSelect({ options: { isWithinForm: false } });
-//     expect(getConsoleErrorsAmount()).toBe(0);
-//     const inputElement = await getInput();
-//
-//     await addEventListener(inputElement, 'focus');
-//     expect((await getEventSummary(inputElement, 'focus')).counter, 'initial').toBe(0);
-//
-//     await page.keyboard.press('Tab');
-//     await page.keyboard.press('Space');
-//     await page.keyboard.press('ArrowDown');
-//     await page.keyboard.press('Enter');
-//     await waitForStencilLifecycle(page);
-//
-//     expect(await getMultiSelectValue()).toEqual(['a']);
-//
-//     await page.keyboard.press('Escape');
-//     expect((await getEventSummary(inputElement, 'focus')).counter, 'after escape').toBe(1);
-//     expect(await getHighlightedOptionIndex(), 'after escape').toBe(-1);
-//
-//     await page.keyboard.press('Enter');
-//     await waitForStencilLifecycle(page);
-//
-//     expect(getConsoleErrorsAmount()).toBe(0);
-//   });
-// });
-//
-// describe('disabled', () => {
-//   it('should have not-allowed cursor', async () => {
-//     await initMultiSelect({ props: { name: 'options', disabled: true } });
-//     expect(await getElementStyle(await getInput(), 'cursor')).toBe('not-allowed');
-//   });
-//
-//   it('should not be able to open or interact', async () => {
-//     await initMultiSelect({
-//       props: { name: 'options', disabled: true },
-//       options: { markupAfter: '<p-button>Button</p-button>' },
-//     });
-//     const button = await selectNode(page, 'p-button');
-//
-//     await addEventListener(button, 'focus');
-//     expect((await getEventSummary(button, 'focus')).counter, 'before focus').toBe(0);
-//
-//     await page.keyboard.press('Tab');
-//     expect((await getEventSummary(button, 'focus')).counter, 'before focus').toBe(1);
-//   });
-// });
-//
-// describe('slots', () => {
-//   it('should update when selected option is added', async () => {
-//     await initMultiSelect();
-//     expect(await getMultiSelectValue()).toStrictEqual([]);
-//
-//     await setValue(['d']);
-//     await waitForStencilLifecycle(page);
-//     expect(await getMultiSelectValue()).toStrictEqual(['d']);
-//
-//     await addOption('d', 'Option D');
-//     await waitForStencilLifecycle(page);
-//     const nativeOptions = await getNativeSelectOptions();
-//     const filterPlaceholder = await getInputPlaceholder();
-//     expect(await getProperty(nativeOptions[0], 'value'), 'after option was added').toStrictEqual('d');
-//     expect(filterPlaceholder, 'after option was added').toBe('Option D');
-//   });
-//
-//   it('should update when selected option is removed', async () => {
-//     await initMultiSelect();
-//     await setValue(['c']);
-//     await waitForStencilLifecycle(page);
-//     const nativeOptions = await getNativeSelectOptions();
-//     const filterPlaceholder = await getInputPlaceholder();
-//     expect(await getProperty(nativeOptions[0], 'value'), 'after option was added').toStrictEqual('c');
-//     expect(await getMultiSelectValue()).toStrictEqual(['c']);
-//     expect(filterPlaceholder, 'after option was added').toBe('Option C');
-//
-//     await page.evaluate(
-//       (el) => {
-//         el.lastElementChild.remove();
-//       },
-//       await getHost()
-//     );
-//     await waitForStencilLifecycle(page);
-//
-//     const nativeOptionsAfter = await getNativeSelectOptions();
-//     const filterPlaceholderAfter = await getInputPlaceholder();
-//
-//     expect(nativeOptionsAfter, 'after selected option was removed').toStrictEqual([]);
-//     expect(filterPlaceholderAfter, 'after option was added').toBeNull();
-//   });
-// });
-//
-// describe('lifecycle', () => {
-//   it('should work without unnecessary round trips on init', async () => {
-//     await initMultiSelect();
-//     const inputElement = await getInput();
-//     const status1 = await getLifecycleStatus(page);
-//
-//     expect(status1.componentDidLoad['p-multi-select'], 'componentDidLoad: p-multi-select').toBe(1);
-//     expect(status1.componentDidLoad['p-multi-select-option'], 'componentDidLoad: p-multi-select-option').toBe(3);
-//     expect(status1.componentDidLoad['p-checkbox-wrapper'], 'componentDidLoad: p-checkbox-wrapper').toBe(3);
-//     expect(status1.componentDidLoad['p-icon'], 'componentDidLoad: p-icon').toBe(1); // arrow down and reset icon
-//
-//     expect(status1.componentDidLoad.all, 'componentDidLoad: all').toBe(8);
-//     expect(status1.componentDidUpdate.all, 'componentDidUpdate: all').toBe(0);
-//
-//     await inputElement.click();
-//     await waitForStencilLifecycle(page);
-//     const status2 = await getLifecycleStatus(page);
-//     expect(status2.componentDidUpdate['p-multi-select'], 'componentDidUpdate: p-multi-select').toBe(1);
-//     expect(status2.componentDidUpdate.all, 'componentDidUpdate: all').toBe(1);
-//   });
-//
-//   it('should work without unnecessary round trips when selecting option', async () => {
-//     await initMultiSelect();
-//     const inputElement = await getInput();
-//
-//     await inputElement.click();
-//     await waitForStencilLifecycle(page);
-//     const status1 = await getLifecycleStatus(page);
-//
-//     expect(status1.componentDidLoad['p-multi-select'], 'componentDidLoad: p-multi-select').toBe(1);
-//     expect(status1.componentDidLoad['p-multi-select-option'], 'componentDidLoad: p-multi-select-option').toBe(3);
-//     expect(status1.componentDidLoad['p-checkbox-wrapper'], 'componentDidLoad: p-checkbox-wrapper').toBe(3);
-//     expect(status1.componentDidLoad['p-icon'], 'componentDidLoad: p-icon').toBe(1); // arrow down and reset icon
-//
-//     expect(status1.componentDidLoad.all, 'componentDidLoad: all').toBe(8);
-//     expect(status1.componentDidUpdate.all, 'componentDidUpdate: all').toBe(1);
-//
-//     const option1 = await getMultiSelectOption(1);
-//     await option1.click();
-//     await waitForStencilLifecycle(page);
-//
-//     const status2 = await getLifecycleStatus(page);
-//     expect(status2.componentDidLoad['p-button-pure'], 'componentDidLoad: p-button-pure').toBe(1); // reset button
-//     expect(status2.componentDidUpdate['p-multi-select-option'], 'componentDidUpdate: p-multi-select-option').toBe(1);
-//     expect(status2.componentDidUpdate['p-multi-select'], 'componentDidUpdate: p-multi-select').toBe(2);
-//     expect(status2.componentDidUpdate.all, 'componentDidUpdate: all').toBe(3);
-//   });
-//
-//   it('should work without unnecessary round trips on filter input change', async () => {
-//     await initMultiSelect();
-//     const inputElement = await getInput();
-//
-//     await inputElement.click();
-//     await waitForStencilLifecycle(page);
-//
-//     const status1 = await getLifecycleStatus(page);
-//     expect(status1.componentDidLoad['p-multi-select'], 'componentDidLoad: p-multi-select').toBe(1);
-//     expect(status1.componentDidLoad['p-multi-select-option'], 'componentDidLoad: p-multi-select-option').toBe(3);
-//     expect(status1.componentDidLoad['p-checkbox-wrapper'], 'componentDidLoad: p-checkbox-wrapper').toBe(3);
-//     expect(status1.componentDidLoad['p-icon'], 'componentDidLoad: p-icon').toBe(1); // arrow down and reset icon
-//
-//     expect(status1.componentDidLoad.all, 'componentDidLoad: all').toBe(8);
-//     expect(status1.componentDidUpdate.all, 'componentDidUpdate: all').toBe(1); // slotchange forces second update
-//
-//     await page.keyboard.press('c');
-//     await waitForStencilLifecycle(page);
-//
-//     const status2 = await getLifecycleStatus(page);
-//     expect(status2.componentDidUpdate['p-multi-select-option'], 'componentDidUpdate: p-multi-select-option').toBe(0);
-//     expect(status2.componentDidUpdate['p-multi-select'], 'componentDidUpdate: p-multi-select').toBe(1);
-//     expect(status2.componentDidUpdate.all, 'componentDidUpdate: all').toBe(1);
-//   });
-// });
-//
-// describe('accessibility', () => {
-//   it('should expose correct initial accessibility tree and aria properties of filter', async () => {
-//     await initMultiSelect({ options: { disabledIndex: 1 } });
-//     const inputElement = await getInput();
-//
-//     await expectA11yToMatchSnapshot(page, inputElement, { interestingOnly: false });
-//   });
-//
-//   it('should expose correct accessibility tree of option list if filter value has no match', async () => {
-//     await initMultiSelect();
-//     const inputElement = await getInput();
-//     await inputElement.type('d');
-//     await waitForStencilLifecycle(page);
-//
-//     const dropDown = await getDropdown();
-//     const assertiveText = await getAssertiveText();
-//
-//     await expectA11yToMatchSnapshot(page, dropDown, { interestingOnly: false });
-//   });
-//
-//   it('should expose correct accessibility tree if option is highlighted', async () => {
-//     await initMultiSelect();
-//     await page.keyboard.press('Tab');
-//     await page.keyboard.press('Space');
-//     await page.keyboard.press('ArrowDown');
-//     await waitForStencilLifecycle(page);
-//
-//     const inputElement = await getInput();
-//     const assertiveText = await getAssertiveText();
-//
-//     await expectA11yToMatchSnapshot(page, inputElement, { interestingOnly: false });
-//     await expectA11yToMatchSnapshot(page, assertiveText, { interestingOnly: false });
-//   });
-//
-//   it('should expose correct accessibility tree if option is selected', async () => {
-//     await initMultiSelect();
-//     await page.keyboard.press('Tab');
-//     await page.keyboard.press('Space');
-//     await page.keyboard.press('ArrowDown');
-//     await page.keyboard.press('Enter');
-//     await waitForStencilLifecycle(page);
-//
-//     const inputElement = await getInput();
-//     const assertiveText = await getAssertiveText();
-//
-//     await expectA11yToMatchSnapshot(page, inputElement, { interestingOnly: false });
-//     await expectA11yToMatchSnapshot(page, assertiveText, { interestingOnly: false });
-//   });
-//
-//   it('should expose correct accessibility tree if description is set', async () => {
-//     await initMultiSelect();
-//     const host = await getHost();
-//     await setProperty(host, 'description', 'Some description');
-//     await waitForStencilLifecycle(page);
-//     const inputElement = await getInput();
-//
-//     await expectA11yToMatchSnapshot(page, inputElement);
-//   });
-//
-//   it('should expose correct accessibility tree in error state', async () => {
-//     await initMultiSelect();
-//     const host = await getHost();
-//     await setProperty(host, 'state', 'error');
-//     await setProperty(host, 'message', 'Some error message');
-//     await waitForStencilLifecycle(page);
-//     const inputElement = await getInput();
-//
-//     await expectA11yToMatchSnapshot(page, inputElement);
-//   });
-// });
+describe('selection', () => {
+  it('should add valid selection on Enter', async () => {
+    await initSelect();
+
+    const buttonElement = await getButton();
+
+    await buttonElement.type('B');
+    await waitForStencilLifecycle(page);
+
+    expect(await getHighlightedSelectOptionProperty('textContent')).toBe('b');
+
+    await buttonElement.press('Enter');
+    await waitForStencilLifecycle(page);
+
+    expect(await getNativeSelectValue(), 'after first option selected').toBe('b');
+    expect(await getNativeSelectInnerHTML(), 'after first option selected').toBe(
+      '<option value="b" selected=""></option>'
+    );
+    expect(await getSelectValue(), 'after first option selected').toBe('b');
+    expect(await getSelectedSelectOptionProperty('value'), 'after first option selected').toEqual('b');
+    expect(await getButtonText()).toBe('b');
+
+    await page.keyboard.press('Space'); // Open dropdown again
+    await waitForStencilLifecycle(page);
+    expect(await getHighlightedSelectOptionProperty('textContent')).toBe('b');
+
+    await page.keyboard.press('ArrowDown');
+    await waitForStencilLifecycle(page);
+
+    expect(await getHighlightedSelectOptionProperty('textContent')).toBe('c');
+
+    await buttonElement.press('Enter');
+    await waitForStencilLifecycle(page);
+
+    expect(await getNativeSelectValue(), 'after first option selected').toBe('c');
+    expect(await getNativeSelectInnerHTML(), 'after first option selected').toBe(
+      '<option value="c" selected=""></option>'
+    );
+    expect(await getSelectValue(), 'after first option selected').toBe('c');
+    expect(await getSelectedSelectOptionProperty('value'), 'after first option selected').toEqual('c');
+    expect(await getButtonText()).toBe('c');
+  });
+
+  it('should add valid selection on Space', async () => {
+    await initSelect();
+
+    const buttonElement = await getButton();
+
+    await buttonElement.type('B');
+    await waitForStencilLifecycle(page);
+
+    expect(await getHighlightedSelectOptionProperty('textContent')).toBe('b');
+
+    await buttonElement.press('Space');
+    await waitForStencilLifecycle(page);
+
+    expect(await getNativeSelectValue(), 'after first option selected').toBe('b');
+    expect(await getNativeSelectInnerHTML(), 'after first option selected').toBe(
+      '<option value="b" selected=""></option>'
+    );
+    expect(await getSelectValue(), 'after first option selected').toBe('b');
+    expect(await getSelectedSelectOptionProperty('value'), 'after first option selected').toEqual('b');
+    expect(await getButtonText()).toBe('b');
+
+    await page.keyboard.press('Space'); // Open dropdown again
+    await waitForStencilLifecycle(page);
+    expect(await getHighlightedSelectOptionProperty('textContent')).toBe('b');
+
+    await page.keyboard.press('ArrowDown');
+    await waitForStencilLifecycle(page);
+
+    expect(await getHighlightedSelectOptionProperty('textContent')).toBe('c');
+
+    await buttonElement.press('Space');
+    await waitForStencilLifecycle(page);
+
+    expect(await getNativeSelectValue(), 'after first option selected').toBe('c');
+    expect(await getNativeSelectInnerHTML(), 'after first option selected').toBe(
+      '<option value="c" selected=""></option>'
+    );
+    expect(await getSelectValue(), 'after first option selected').toBe('c');
+    expect(await getSelectedSelectOptionProperty('value'), 'after first option selected').toEqual('c');
+    expect(await getButtonText()).toBe('c');
+  });
+
+  it('should add valid selection on Tab', async () => {
+    await initSelect();
+
+    const buttonElement = await getButton();
+
+    await buttonElement.type('B');
+    await waitForStencilLifecycle(page);
+
+    expect(await getHighlightedSelectOptionProperty('textContent')).toBe('b');
+
+    await buttonElement.press('Tab');
+    await waitForStencilLifecycle(page);
+
+    expect(await getNativeSelectValue(), 'after first option selected').toBe('b');
+    expect(await getNativeSelectInnerHTML(), 'after first option selected').toBe(
+      '<option value="b" selected=""></option>'
+    );
+    expect(await getSelectValue(), 'after first option selected').toBe('b');
+    expect(await getSelectedSelectOptionProperty('value'), 'after first option selected').toEqual('b');
+    expect(await getButtonText()).toBe('b');
+
+    await page.keyboard.press('Space'); // Open dropdown again
+    await waitForStencilLifecycle(page);
+    expect(await getHighlightedSelectOptionProperty('textContent')).toBe('b');
+
+    await page.keyboard.press('ArrowDown');
+    await waitForStencilLifecycle(page);
+
+    expect(await getHighlightedSelectOptionProperty('textContent')).toBe('c');
+
+    await buttonElement.press('Tab');
+    await waitForStencilLifecycle(page);
+
+    expect(await getNativeSelectValue(), 'after first option selected').toBe('c');
+    expect(await getNativeSelectInnerHTML(), 'after first option selected').toBe(
+      '<option value="c" selected=""></option>'
+    );
+    expect(await getSelectValue(), 'after first option selected').toBe('c');
+    expect(await getSelectedSelectOptionProperty('value'), 'after first option selected').toEqual('c');
+    expect(await getButtonText()).toBe('c');
+  });
+
+  it('should reset selection on enter empty selection', async () => {
+    await initSelect({ options: { values: ['', 'a', 'b', 'c'] } });
+
+    const buttonElement = await getButton();
+
+    await buttonElement.type('B');
+    await waitForStencilLifecycle(page);
+
+    expect(await getHighlightedSelectOptionProperty('textContent')).toBe('b');
+
+    await buttonElement.press('Enter');
+    await waitForStencilLifecycle(page);
+
+    expect(await getNativeSelectValue(), 'after first option selected').toBe('b');
+    expect(await getNativeSelectInnerHTML(), 'after first option selected').toBe(
+      '<option value="b" selected=""></option>'
+    );
+    expect(await getSelectValue(), 'after first option selected').toBe('b');
+    expect(await getSelectedSelectOptionProperty('value'), 'after first option selected').toEqual('b');
+    expect(await getButtonText()).toBe('b');
+
+    await page.keyboard.press('Space'); // Open dropdown again
+    await page.keyboard.press('PageUp');
+    await waitForStencilLifecycle(page);
+
+    expect(await getHighlightedSelectOptionProperty('textContent')).toBe('');
+
+    await buttonElement.press('Enter');
+    await waitForStencilLifecycle(page);
+
+    expect(await getNativeSelectValue(), 'after first option selected').toBe('');
+    expect(await getNativeSelectInnerHTML(), 'after first option selected').toBe('');
+    expect(await getSelectValue(), 'after first option selected').toBeUndefined();
+    expect(await getSelectedSelectOptionProperty('value'), 'after first option selected').toBeUndefined();
+    expect(await getButtonText()).toBe('');
+  });
+
+  it('should add valid selection on Click', async () => {
+    await initSelect();
+    const buttonElement = await getButton();
+
+    await buttonElement.click(); // Open dropdown
+    await waitForStencilLifecycle(page);
+
+    expect(await getHighlightedOptionIndex()).toBe(-1); // No option highlighted
+
+    const option = await getSelectOption(1);
+    await option.click();
+    await waitForStencilLifecycle(page);
+
+    expect(await getNativeSelectValue(), 'after first option selected').toBe('a');
+    expect(await getNativeSelectInnerHTML(), 'after first option selected').toBe(
+      '<option value="a" selected=""></option>'
+    );
+    expect(await getSelectValue(), 'after first option selected').toBe('a');
+    expect(await getSelectedSelectOptionProperty('value'), 'after first option selected').toEqual('a');
+    expect(await getButtonText()).toBe('a');
+
+    await buttonElement.click(); // Open dropdown again
+    await waitForStencilLifecycle(page);
+
+    // TODO: Do we want to set highlight on the option when selecting with click
+    expect(await getHighlightedOptionIndex()).toBe(-1); // No option highlighted
+
+    const option2 = await getSelectOption(3);
+    await option2.click();
+    await waitForStencilLifecycle(page);
+
+    expect(await getNativeSelectValue(), 'after first option selected').toBe('c');
+    expect(await getNativeSelectInnerHTML(), 'after first option selected').toBe(
+      '<option value="c" selected=""></option>'
+    );
+    expect(await getSelectValue(), 'after first option selected').toBe('c');
+    expect(await getSelectedSelectOptionProperty('value'), 'after first option selected').toEqual('c');
+    expect(await getButtonText()).toBe('c');
+  });
+
+  it('should not select disabled option on Click', async () => {
+    await initSelect({ options: { disabledIndices: [0] } });
+    const buttonElement = await getButton();
+
+    await buttonElement.click(); // Open dropdown
+    await waitForStencilLifecycle(page);
+
+    const option = await getSelectOption(1);
+    console.log(option);
+    await option.click();
+    await waitForStencilLifecycle(page);
+
+    expect(await getNativeSelectValue(), 'after first option selected').toBe('');
+    expect(await getNativeSelectInnerHTML(), 'after first option selected').toBe('');
+    expect(await getSelectValue(), 'after first option selected').toBeUndefined();
+    expect(await getSelectedSelectOptionProperty('value'), 'after first option selected').toBeUndefined();
+    expect(await getButtonText()).toBe('');
+  });
+});
+
+describe('click events', () => {
+  it('should open dropdown on mouseclick and close dropdown on 2nd click', async () => {
+    await initSelect();
+    const buttonElement = await getButton();
+
+    await buttonElement.click();
+    await waitForStencilLifecycle(page);
+
+    expect(await getDropdownDisplay(), 'after click').toBe('flex');
+    expect(await getHighlightedOptionIndex(), 'for highlighted option').toBe(-1);
+
+    await buttonElement.click();
+    await waitForStencilLifecycle(page);
+
+    expect(await getDropdownDisplay(), 'after second click').toBe('none');
+    expect(await getHighlightedOptionIndex(), 'for highlighted option').toBe(-1);
+  });
+
+  describe('disabled', () => {
+    it('should have not-allowed cursor', async () => {
+      await initSelect({ props: { name: 'options', disabled: true } });
+      expect(await getElementStyle(await getButton(), 'cursor')).toBe('not-allowed');
+    });
+
+    it('should not be able to open or interact', async () => {
+      await initSelect({
+        props: { name: 'options', disabled: true },
+        options: { markupAfter: '<p-button>Button</p-button>' },
+      });
+      const button = await selectNode(page, 'p-button');
+
+      await addEventListener(button, 'focus');
+      expect((await getEventSummary(button, 'focus')).counter, 'before focus').toBe(0);
+
+      await page.keyboard.press('Tab');
+      expect((await getEventSummary(button, 'focus')).counter, 'before focus').toBe(1);
+    });
+  });
+});
+
+describe('slots', () => {
+  it('should update when selected option is added', async () => {
+    await initSelect();
+    expect(await getSelectValue()).toBeUndefined();
+
+    await setValue('d');
+    await waitForStencilLifecycle(page);
+    expect(await getSelectValue()).toBe('d');
+    expect(await getNativeSelectValue(), 'after setting value').toBe('');
+
+    await addOption('d', 'd');
+    await waitForStencilLifecycle(page);
+
+    expect(await getNativeSelectValue(), 'after option added').toBe('d');
+    expect(await getNativeSelectInnerHTML(), 'after option added').toBe('<option value="d" selected=""></option>');
+    expect(await getSelectValue(), 'after option added').toBe('d');
+    expect(await getSelectedSelectOptionProperty('value'), 'after option added').toEqual('d');
+    expect(await getButtonText()).toBe('d');
+  });
+
+  it('should update when selected option is removed', async () => {
+    await initSelect({ props: { value: 'c' } });
+    await waitForStencilLifecycle(page);
+
+    expect(await getNativeSelectValue(), 'initial').toBe('c');
+    expect(await getNativeSelectInnerHTML(), 'initial').toBe('<option value="c" selected=""></option>');
+    expect(await getSelectValue(), 'initial').toBe('c');
+    expect(await getSelectedSelectOptionProperty('value'), 'initial').toEqual('c');
+    expect(await getButtonText()).toBe('c');
+
+    await page.evaluate(
+      (el) => {
+        el.lastElementChild.remove();
+      },
+      await getHost()
+    );
+    await waitForStencilLifecycle(page);
+
+    expect(await getNativeSelectValue(), 'after option selected removed').toBe('');
+    expect(await getNativeSelectInnerHTML(), 'after option selected removed').toBe('');
+    expect(await getSelectValue(), 'after option selected removed').toBe('c');
+    expect(await getSelectedSelectOptionProperty('value'), 'after option selected removed').toBeUndefined();
+    expect(await getButtonText()).toBe('');
+  });
+});
+
+fdescribe('lifecycle', () => {
+  it('should work without unnecessary round trips on init', async () => {
+    await initSelect();
+    const buttonElement = await getButton();
+    const status1 = await getLifecycleStatus(page);
+
+    expect(status1.componentDidLoad['p-select'], 'componentDidLoad: p-select').toBe(1);
+    expect(status1.componentDidLoad['p-select-option'], 'componentDidLoad: p-select-option').toBe(3);
+    expect(status1.componentDidLoad['p-icon'], 'componentDidLoad: p-icon').toBe(1); // arrow down
+
+    expect(status1.componentDidLoad.all, 'componentDidLoad: all').toBe(5);
+    expect(status1.componentDidUpdate.all, 'componentDidUpdate: all').toBe(0);
+
+    await buttonElement.click();
+    await waitForStencilLifecycle(page);
+    const status2 = await getLifecycleStatus(page);
+    expect(status2.componentDidUpdate['p-select'], 'componentDidUpdate: p-select').toBe(1);
+    expect(status2.componentDidUpdate.all, 'componentDidUpdate: all').toBe(1);
+  });
+
+  it('should work without unnecessary round trips when selecting option', async () => {
+    await initSelect();
+    const buttonElement = await getButton();
+
+    await buttonElement.click();
+    await waitForStencilLifecycle(page);
+    const status1 = await getLifecycleStatus(page);
+
+    expect(status1.componentDidLoad['p-select'], 'componentDidLoad: p-select').toBe(1);
+    expect(status1.componentDidLoad['p-select-option'], 'componentDidLoad: p-select-option').toBe(3);
+    expect(status1.componentDidLoad['p-icon'], 'componentDidLoad: p-icon').toBe(1); // arrow down
+
+    expect(status1.componentDidLoad.all, 'componentDidLoad: all').toBe(5);
+    expect(status1.componentDidUpdate.all, 'componentDidUpdate: all').toBe(1);
+
+    const option1 = await getSelectOption(1);
+    await option1.click();
+    await waitForStencilLifecycle(page);
+
+    const status2 = await getLifecycleStatus(page);
+    expect(status2.componentDidUpdate['p-select-option'], 'componentDidUpdate: p-select-option').toBe(1);
+    expect(status2.componentDidUpdate['p-select'], 'componentDidUpdate: p-select').toBe(2);
+    expect(status1.componentDidLoad['p-icon'], 'componentDidLoad: p-icon').toBe(1); // checkmark icon
+    expect(status2.componentDidUpdate.all, 'componentDidUpdate: all').toBe(3);
+  });
+
+  it('should work without unnecessary round trips on selection change by click', async () => {
+    await initSelect({ props: { value: 'a' } });
+    const buttonElement = await getButton();
+
+    await buttonElement.click();
+    await waitForStencilLifecycle(page);
+    const status1 = await getLifecycleStatus(page);
+
+    expect(status1.componentDidLoad['p-select'], 'componentDidLoad: p-select').toBe(1);
+    expect(status1.componentDidLoad['p-select-option'], 'componentDidLoad: p-select-option').toBe(3);
+    expect(status1.componentDidLoad['p-icon'], 'componentDidLoad: p-icon').toBe(2); // arrow down and checkmark icon
+
+    expect(status1.componentDidLoad.all, 'componentDidLoad: all').toBe(6);
+    expect(status1.componentDidUpdate.all, 'componentDidUpdate: all').toBe(1);
+
+    const option1 = await getSelectOption(2);
+    await option1.click();
+    await waitForStencilLifecycle(page);
+
+    const status2 = await getLifecycleStatus(page);
+    expect(status2.componentDidUpdate['p-select-option'], 'componentDidUpdate: p-select-option').toBe(2);
+    expect(status2.componentDidUpdate['p-select'], 'componentDidUpdate: p-select').toBe(2);
+    expect(status2.componentDidUpdate.all, 'componentDidUpdate: all').toBe(4);
+  });
+
+  it('should work without unnecessary round trips on selection change by keyboard', async () => {
+    await initSelect({ props: { value: 'a' } });
+    const buttonElement = await getButton();
+
+    await buttonElement.press('Space'); // Open dropdown
+    await waitForStencilLifecycle(page);
+    const status1 = await getLifecycleStatus(page);
+
+    expect(status1.componentDidLoad['p-select'], 'componentDidLoad: p-select').toBe(1);
+    expect(status1.componentDidLoad['p-select-option'], 'componentDidLoad: p-select-option').toBe(3);
+    expect(status1.componentDidLoad['p-icon'], 'componentDidLoad: p-icon').toBe(2); // arrow down and checkmark icon
+
+    expect(status1.componentDidLoad.all, 'componentDidLoad: all').toBe(6);
+    expect(status1.componentDidUpdate.all, 'componentDidUpdate: all').toBe(1);
+
+    await buttonElement.press('ArrowDown');
+    await buttonElement.press('Enter');
+    await waitForStencilLifecycle(page);
+
+    const status2 = await getLifecycleStatus(page);
+    expect(status2.componentDidUpdate['p-select-option'], 'componentDidUpdate: p-select-option').toBe(2);
+    expect(status2.componentDidUpdate['p-select'], 'componentDidUpdate: p-select').toBe(2);
+    expect(status2.componentDidUpdate.all, 'componentDidUpdate: all').toBe(4);
+  });
+});
+
+fdescribe('accessibility', () => {
+  it('should expose correct initial accessibility tree and aria properties of button', async () => {
+    await initSelect({ options: { disabledIndices: [1] } });
+    const buttonElement = await getButton();
+
+    await expectA11yToMatchSnapshot(page, buttonElement, { interestingOnly: false });
+  });
+
+  it('should expose correct accessibility tree if option is highlighted', async () => {
+    await initSelect();
+    const buttonElement = await getButton();
+
+    await buttonElement.press('Space');
+    await buttonElement.press('ArrowDown');
+    await waitForStencilLifecycle(page);
+
+    await expectA11yToMatchSnapshot(page, buttonElement, { interestingOnly: false });
+  });
+
+  it('should expose correct accessibility tree if option is selected', async () => {
+    await initSelect();
+    const buttonElement = await getButton();
+
+    await buttonElement.press('Space');
+    await buttonElement.press('ArrowDown');
+    await buttonElement.press('Enter');
+    await waitForStencilLifecycle(page);
+
+    await expectA11yToMatchSnapshot(page, buttonElement, { interestingOnly: false });
+  });
+
+  it('should expose correct accessibility tree if description is set', async () => {
+    await initSelect();
+    const host = await getHost();
+    await setProperty(host, 'description', 'Some description');
+    await waitForStencilLifecycle(page);
+    const buttonElement = await getButton();
+
+    await expectA11yToMatchSnapshot(page, buttonElement);
+  });
+
+  it('should expose correct accessibility tree in error state', async () => {
+    await initSelect();
+    const host = await getHost();
+    await setProperty(host, 'state', 'error');
+    await setProperty(host, 'message', 'Some error message');
+    await waitForStencilLifecycle(page);
+    const buttonElement = await getButton();
+
+    await expectA11yToMatchSnapshot(page, buttonElement);
+  });
+});
