@@ -57,10 +57,6 @@ export const getComponentCss = (
         visibility: 'inherit', // ua-style reset
         flexDirection: 'column',
         boxSizing: 'border-box',
-        ...(hasSubFooter && {
-          overflowY: 'auto',
-          overscrollBehaviorY: 'none',
-        }),
         width: 'var(--p-flyout-width, fit-content)',
         minWidth: '320px',
         maxWidth: 'var(--p-flyout-max-width, 1180px)',
@@ -95,6 +91,16 @@ export const getComponentCss = (
           opacity: 0, // to support backdrop click for modern browsers supporting ::backdrop
         },
       },
+    },
+    wrapper: {
+      display: 'flex', // ua-style reset
+      flexGrow: 1,
+      height: 0,
+      flexDirection: 'column',
+      ...(hasSubFooter && {
+        overflowY: 'auto',
+        overscrollBehaviorY: 'none',
+      }),
     },
     header: {
       position: 'sticky',

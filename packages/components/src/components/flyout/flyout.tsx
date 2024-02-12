@@ -55,6 +55,7 @@ export class Flyout {
   @Event({ bubbles: false }) public dismiss?: EventEmitter<void>;
 
   private dialog: HTMLDialogElement;
+  private wrapper: HTMLDivElement;
   private dismissBtn: HTMLElement;
   private header: HTMLElement;
   private footer: HTMLElement;
@@ -146,63 +147,66 @@ export class Flyout {
 
     return (
       <dialog
-        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-        /* @ts-ignore */
         inert={this.open ? null : true} // prevents focusable elements during fade-out transition
         tabIndex={-1} // dialog always has a dismiss button to be focused
         ref={(ref) => (this.dialog = ref)}
-        onMouseDown={(e) => this.onMouseDown(e)}
-        onCancel={(e) => this.onCancelDialog(e)}
-        {...(this.hasSubFooter && { onScroll: this.updateShadow })} // if no sub-footer is used scroll shadows are done via CSS
+        onCancel={this.onCancelDialog}
+        onClick={this.onClickDialog}
         {...parseAndGetAriaAttributes(this.aria)}
       >
-        <div key="header" class="header" ref={(el) => (this.header = el)}>
-          <PrefixedTagNames.pButtonPure
-            class="dismiss"
-            type="button"
-            hideLabel
-            icon="close"
-            theme={this.theme}
-            onClick={this.dismissDialog}
-            ref={(el) => (this.dismissBtn = el)}
-          >
-            Dismiss flyout
-          </PrefixedTagNames.pButtonPure>
+        <div
+          class="wrapper"
+          ref={(ref) => (this.wrapper = ref)}
+          {...(this.hasSubFooter && { onScroll: this.updateShadow })} // if no sub-footer is used scroll shadows are done via CSS
+        >
+          <div key="header" class="header" ref={(el) => (this.header = el)}>
+            <PrefixedTagNames.pButtonPure
+              class="dismiss"
+              type="button"
+              hideLabel
+              icon="close"
+              theme={this.theme}
+              onClick={this.dismissDialog}
+              ref={(el: HTMLButtonElement) => (this.dismissBtn = el)}
+            >
+              Dismiss flyout
+            </PrefixedTagNames.pButtonPure>
 
-          {this.hasHeader && <slot name="header" />}
-        </div>
-        <div class="content">
-          <slot />
-        </div>
-        {this.hasFooter && (
-          <div key="footer" class="footer" ref={(el) => (this.footer = el)}>
-            <slot name="footer" />
+            {this.hasHeader && <slot name="header" />}
           </div>
-        )}
-        {this.hasSubFooter && (
-          <div key="sub-footer" class="sub-footer" ref={(el) => (this.subFooter = el)}>
-            <slot name="sub-footer" />
+          <div class="content">
+            <slot />
           </div>
-        )}
+          {this.hasFooter && (
+            <div key="footer" class="footer" ref={(el) => (this.footer = el)}>
+              <slot name="footer" />
+            </div>
+          )}
+          {this.hasSubFooter && (
+            <div key="sub-footer" class="sub-footer" ref={(el) => (this.subFooter = el)}>
+              <slot name="sub-footer" />
+            </div>
+          )}
+        </div>
       </dialog>
     );
   }
 
   private updateHeaderShadow = (): void => {
-    const shouldApplyShadow = this.dialog.scrollTop > FLYOUT_SCROLL_SHADOW_THRESHOLD;
+    const shouldApplyShadow = this.wrapper.scrollTop > FLYOUT_SCROLL_SHADOW_THRESHOLD;
 
     this.header.classList.toggle(headerShadowClass, shouldApplyShadow);
   };
 
   private updateFooterShadow = (): void => {
-    const shouldApplyShadow = this.subFooter.offsetTop > this.dialog.clientHeight + this.dialog.scrollTop;
+    const shouldApplyShadow = this.subFooter.offsetTop > this.wrapper.clientHeight + this.wrapper.scrollTop;
 
     this.footer.classList.toggle(footerShadowClass, shouldApplyShadow);
   };
 
   // eslint-disable-next-line @typescript-eslint/member-ordering
   private updateShadow = throttle(100, () => {
-    if (this.dialog.scrollHeight > this.dialog.clientHeight) {
+    if (this.wrapper.scrollHeight > this.wrapper.clientHeight) {
       this.updateHeaderShadow();
 
       if (this.hasFooter) {
@@ -211,10 +215,8 @@ export class Flyout {
     }
   });
 
-  // by using mouse down instead of the click event it can be prevented that the dialog
-  // will be closed while dragging the mouse onto the backdrop and releasing it there (mouseup => click)
-  private onMouseDown = (event: MouseEvent): void => {
-    if ((event.target as any).nodeName === 'DIALOG') {
+  private onClickDialog = (e: MouseEvent & { target: HTMLElement }): void => {
+    if (e.target.tagName === 'DIALOG') {
       // dismiss dialog when clicked on backdrop
       this.dismissDialog();
     }
@@ -226,12 +228,12 @@ export class Flyout {
     this.dismissBtn.focus();
   };
 
-  private onCancelDialog(e: Event): void {
+  private onCancelDialog = (e: Event): void => {
     // prevent closing the dialog uncontrolled by ESC (only relevant for browsers supporting <dialog/>)
     e.preventDefault();
 
     this.dismissDialog();
-  }
+  };
 
   private setDialogVisibility(isOpen: boolean): void {
     if (!this.dialog) {

@@ -69,8 +69,6 @@ export class FlyoutNavigationItem {
         </PrefixedTagNames.pButtonPure>
         <div
           class="scroller"
-          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-          /* @ts-ignore */
           inert={this.open ? null : true} // prevents focusable elements during fade-out transition
         >
           <div class="header">

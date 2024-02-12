@@ -16,7 +16,7 @@ import {
   warnIfDeprecatedPropIsUsed,
 } from '../../utils';
 import type { ModalAriaAttribute } from './modal-utils';
-import { MODAL_ARIA_ATTRIBUTES, clickStartedInScrollbarTrack } from './modal-utils';
+import { clickStartedInScrollbarTrack, MODAL_ARIA_ATTRIBUTES } from './modal-utils';
 import { footerShadowClass, getComponentCss } from './modal-styles';
 import { throttle } from 'throttle-debounce';
 
@@ -79,6 +79,22 @@ export class Modal {
   private hasFooter: boolean;
   private footer: HTMLElement;
   private dialog: HTMLElement;
+  // eslint-disable-next-line @typescript-eslint/member-ordering
+  private onScroll = throttle(100, () => {
+    // using an intersection observer would be so much easier but very tricky with the current layout
+    // also transform scale3d has an impact on the intersection observer, causing it to trigger
+    // initially and after the transition which makes the shadow appear later
+    // using an invisible element after the dialog div would work
+    // but layout with position: fixed and flex for vertical/horizontal centering scrollable content
+    // causes tons of problems, also considering fullscreen mode, etc.
+    // see https://stackoverflow.com/questions/33454533/cant-scroll-to-top-of-flex-item-that-is-overflowing-container
+    const { scrollHeight, clientHeight, scrollTop } = this.scrollContainerEl;
+    if (scrollHeight > clientHeight) {
+      const shouldApplyShadow =
+        scrollHeight - clientHeight > scrollTop + parseInt(getComputedStyle(this.dialog).marginBottom, 10);
+      this.footer.classList.toggle(footerShadowClass, shouldApplyShadow);
+    }
+  });
 
   private get hasDismissButton(): boolean {
     return this.disableCloseButton ? false : this.dismissButton;
@@ -164,8 +180,6 @@ export class Modal {
               ...parseAndGetAriaAttributes(this.aria),
             })}
             tabIndex={-1}
-            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-            /* @ts-ignore */
             inert={this.open ? null : true} // prevents focusable elements within nested open accordion
             ref={(el) => (this.dialog = el)}
           >
@@ -215,23 +229,6 @@ export class Modal {
       });
     }
   };
-
-  // eslint-disable-next-line @typescript-eslint/member-ordering
-  private onScroll = throttle(100, () => {
-    // using an intersection observer would be so much easier but very tricky with the current layout
-    // also transform scale3d has an impact on the intersection observer, causing it to trigger
-    // initially and after the transition which makes the shadow appear later
-    // using an invisible element after the dialog div would work
-    // but layout with position: fixed and flex for vertical/horizontal centering scrollable content
-    // causes tons of problems, also considering fullscreen mode, etc.
-    // see https://stackoverflow.com/questions/33454533/cant-scroll-to-top-of-flex-item-that-is-overflowing-container
-    const { scrollHeight, clientHeight, scrollTop } = this.scrollContainerEl;
-    if (scrollHeight > clientHeight) {
-      const shouldApplyShadow =
-        scrollHeight - clientHeight > scrollTop + parseInt(getComputedStyle(this.dialog).marginBottom, 10);
-      this.footer.classList.toggle(footerShadowClass, shouldApplyShadow);
-    }
-  });
 
   private onMouseDown = (e: MouseEvent): void => {
     if (

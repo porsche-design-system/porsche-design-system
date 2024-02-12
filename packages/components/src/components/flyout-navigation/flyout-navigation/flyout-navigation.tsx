@@ -1,4 +1,4 @@
-import { Component, Element, Event, type EventEmitter, h, type JSX, Prop, Watch, State } from '@stencil/core';
+import { Component, Element, Event, type EventEmitter, h, type JSX, Prop, State, Watch } from '@stencil/core';
 import {
   FLYOUT_NAVIGATION_ARIA_ATTRIBUTES,
   type FlyoutNavigationAriaAttribute,
@@ -109,13 +109,11 @@ export class FlyoutNavigation {
 
     return (
       <dialog
-        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-        /* @ts-ignore */
         inert={this.open ? null : true} // prevents focusable elements during fade-out transition
         tabIndex={-1} // dialog always has a dismiss button to be focused
         ref={(ref) => (this.dialog = ref)}
-        onClick={(e) => this.onClickDialog(e)}
-        onCancel={(e) => this.onCancelDialog(e)}
+        onCancel={this.onCancelDialog}
+        onClick={this.onClickDialog}
       >
         <div class="header">
           <PrefixedTagNames.pButtonPure
@@ -146,18 +144,18 @@ export class FlyoutNavigation {
     ) as HTMLPFlyoutNavigationItemElement[];
   };
 
-  private onClickDialog(e: MouseEvent): void {
-    if ((e.target as any).nodeName === 'DIALOG') {
+  private onClickDialog = (e: MouseEvent & { target: HTMLElement }): void => {
+    if (e.target.tagName === 'DIALOG') {
       // dismiss dialog when clicked on backdrop
       this.dismissDialog();
     }
-  }
+  };
 
-  private onCancelDialog(e: Event): void {
+  private onCancelDialog = (e: Event): void => {
     // prevent closing the dialog uncontrolled by ESC (only relevant for browsers supporting <dialog/>)
     e.preventDefault();
     this.dismissDialog();
-  }
+  };
 
   private setDialogVisibility(isOpen: boolean): void {
     // TODO: SupportsNativeDialog check
