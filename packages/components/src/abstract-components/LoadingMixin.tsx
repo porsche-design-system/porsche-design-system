@@ -1,3 +1,5 @@
+import type { ComponentInterface } from '@stencil/core';
+import type { FunctionPropertyNames } from '../types';
 import { hasPropValueChanged } from '../utils';
 
 export class LoadingMixin {
@@ -51,5 +53,71 @@ export class LoadingMixin {
 
   public componentWillUpdate(): void {
     console.log('LoadingMixin componentWillUpdate');
+  }
+}
+
+type PrefixWithUnderscore<T> = {
+  [K in keyof T as K extends string ? `_${K}` : never]: T[K];
+};
+
+// TODO: make this nicer and get rid of `[memberName: string]: any;` which is part of ComponentInterface
+export type MixedComponent = PrefixWithUnderscore<
+  Pick<ComponentInterface, FunctionPropertyNames<Omit<ComponentInterface, 'render'>>>
+>;
+
+export interface AnotherLoadingMixin extends Required<MixedComponent> {}
+
+export class AnotherLoadingMixin implements ComponentInterface {
+  public loading: boolean = false;
+  public initialLoading: boolean = false;
+
+  constructor() {
+    // never gets called, probably because @use mixing mutates prototype and merges the classes together
+    console.log('AnotherLoadingMixin constructor');
+  }
+
+  public connectedCallback(): void {
+    console.log('AnotherLoadingMixin connectedCallback');
+    this.initialLoading = this.loading;
+    this._connectedCallback?.();
+  }
+
+  public componentWillLoad(): void {
+    console.log('AnotherLoadingMixin componentWillLoad');
+    this.initialLoading = this.loading;
+    this._componentWillLoad?.();
+  }
+
+  // we can't use any stencil decorators here since it isn't a stencil component
+  // that's why we use the componentShouldUpdate lifecycle to check for the loading change
+  // keep in mind that `hasPropValueChanged(newVal, oldVal)` was added here, which was previously in the component itself
+  // because defining same lifecycle here and in component will override with the one from component
+  public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
+    this._componentShouldUpdate?.();
+    return hasPropValueChanged(newVal, oldVal);
+  }
+
+  public componentWillUpdate(): void {
+    console.log('AnotherLoadingMixin componentWillUpdate', this.loading, this.initialLoading);
+    if (this.loading) {
+      this.initialLoading = true;
+    }
+
+    this._componentWillUpdate?.();
+  }
+
+  public componentDidUpdate(): void {
+    console.log('AnotherLoadingMixin componentDidUpdate', this.loading, this.initialLoading);
+    this._componentDidUpdate?.();
+  }
+
+  public componentWillRender(): void {
+    console.log('AnotherLoadingMixin componentWillRender');
+    this._componentWillRender?.();
+  }
+
+  public componentDidRender(): void {
+    console.log('AnotherLoadingMixin componentDidRender');
+    this._componentDidRender?.();
   }
 }

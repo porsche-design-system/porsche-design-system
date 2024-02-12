@@ -125,19 +125,27 @@
       <hr />
 
       <h2>reactive controller works</h2>
-      <p-checkbox-wrapper label="Hi"><input type="checkbox" /></p-checkbox-wrapper>
-      <p-checkbox-wrapper label="Ho" loading><input type="checkbox" /></p-checkbox-wrapper>
+      <p-checkbox-wrapper label="Hi"><input type="checkbox" name="checkbox" /></p-checkbox-wrapper>
+      <p-checkbox-wrapper label="Ho" loading><input type="checkbox" name="checkbox" /></p-checkbox-wrapper>
+
+      <hr />
+
+      <h2>@use generic mixin works</h2>
+      <p-radio-button-wrapper label="Hi"><input type="radio" name="radio" /></p-radio-button-wrapper>
+      <p-radio-button-wrapper label="Ho" loading><input type="radio" name="radio" /></p-radio-button-wrapper>
     </main>
 
     <script>
-      document.querySelectorAll('p-button,p-button-pure,p-switch,p-checkbox-wrapper').forEach((el) =>
-        el.addEventListener('click', ({ target }) => {
-          target.loading = !target.loading;
-          setTimeout(() => {
+      document
+        .querySelectorAll('p-button,p-button-pure,p-switch,p-checkbox-wrapper,p-radio-button-wrapper')
+        .forEach((el) =>
+          el.addEventListener('click', ({ target }) => {
             target.loading = !target.loading;
-          }, 1000);
-        })
-      );
+            setTimeout(() => {
+              target.loading = !target.loading;
+            }, 1000);
+          })
+        );
 
       <!-- START: keep this snippet to log component lifecycle events -->
       ['componentWillLoad', 'componentDidLoad', 'componentWillUpdate', 'componentDidUpdate'].forEach((x) =>

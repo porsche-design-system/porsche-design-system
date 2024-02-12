@@ -1,4 +1,4 @@
-import { Component, Element, forceUpdate, h, type JSX, Prop, Watch } from '@stencil/core';
+import { Component, Element, forceUpdate, h, type JSX, Prop } from '@stencil/core';
 import {
   addChangeListener,
   AllowedTypes,
@@ -6,7 +6,6 @@ import {
   FORM_STATES,
   getOnlyChildOfKindHTMLElementOrThrow,
   getPrefixedTagNames,
-  hasPropValueChanged,
   observeAttributes,
   setAriaAttributes,
   THEMES,
@@ -19,8 +18,10 @@ import { type RadioButtonWrapperState } from './radio-button-wrapper-utils';
 import { StateMessage } from '../common/state-message/state-message';
 import { Label } from '../common/label/label';
 import { LoadingMessage } from '../common/loading-message/loading-message';
+import { use } from 'typescript-mix';
+import { AnotherLoadingMixin, type MixedComponent } from '../../abstract-components';
 
-const propTypes: PropTypes<typeof RadioButtonWrapper> = {
+const propTypes: Omit<PropTypes<typeof RadioButtonWrapper>, 'this' | 'initialLoading'> = {
   label: AllowedTypes.string,
   state: AllowedTypes.oneOf<RadioButtonWrapperState>(FORM_STATES),
   message: AllowedTypes.string,
@@ -29,11 +30,14 @@ const propTypes: PropTypes<typeof RadioButtonWrapper> = {
   theme: AllowedTypes.oneOf<Theme>(THEMES),
 };
 
+// trick typing with interface inheritance and declaration merging
+export interface RadioButtonWrapper extends Partial<AnotherLoadingMixin> {}
+
 @Component({
   tag: 'p-radio-button-wrapper',
   shadow: true,
 })
-export class RadioButtonWrapper {
+export class RadioButtonWrapper implements MixedComponent {
   @Element() public host!: HTMLElement;
 
   /** The label text. */
@@ -55,33 +59,24 @@ export class RadioButtonWrapper {
   @Prop() public theme?: Theme = 'light';
 
   private input: HTMLInputElement;
-  private initialLoading: boolean = false;
 
-  @Watch('loading')
-  public loadingChanged(newVal: boolean): void {
-    if (newVal) {
-      // don't reset initialLoading to false
-      this.initialLoading = newVal;
-    }
-  }
+  // this is where the magic happens
+  @use(AnotherLoadingMixin) this: AnotherLoadingMixin;
 
-  public connectedCallback(): void {
+  public _connectedCallback(): void {
+    console.log('RadioButtonWrapper _connectedCallback');
     this.observeAttributes(); // on every reconnect
-    this.initialLoading = this.loading;
   }
 
-  public componentWillLoad(): void {
+  public _componentWillLoad(): void {
+    console.log('RadioButtonWrapper _componentWillLoad');
     this.input = getOnlyChildOfKindHTMLElementOrThrow(this.host, 'input[type=radio]');
     addChangeListener(this.input);
     this.observeAttributes(); // once initially
-    this.initialLoading = this.loading;
   }
 
-  public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
-    return hasPropValueChanged(newVal, oldVal);
-  }
-
-  public componentDidRender(): void {
+  public _componentDidRender(): void {
+    console.log('RadioButtonWrapper _componentDidRender');
     /*
      * This is a workaround to improve accessibility because the input and the label/description/message text are placed in different DOM.
      * Referencing ID's from outside the component is impossible because the web component’s DOM is separate.
@@ -94,7 +89,8 @@ export class RadioButtonWrapper {
     });
   }
 
-  public disconnectedCallback(): void {
+  public _disconnectedCallback(): void {
+    console.log('RadioButtonWrapper _disconnectedCallback');
     unobserveAttributes(this.input);
   }
 
