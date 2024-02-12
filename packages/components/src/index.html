@@ -106,12 +106,25 @@
     </header>
 
     <main>
+      <h2>base class composition works</h2>
+      <p-button>Hi</p-button>
+      <p-button loading>Ho</p-button>
+
+      <hr />
+
+      <h2>@use mixin composition works</h2>
+      <p-button-pure>Hi</p-button-pure>
+      <p-button-pure loading>Ho</p-button-pure>
+
+      <hr />
+
+      <h2>@use stencil component composition partially works</h2>
       <p-switch>Hi</p-switch>
       <p-switch loading>Ho</p-switch>
     </main>
 
     <script>
-      document.querySelectorAll('p-switch').forEach((el) =>
+      document.querySelectorAll('p-button,p-button-pure,p-switch').forEach((el) =>
         el.addEventListener('click', ({ target }) => {
           target.loading = !target.loading;
           setTimeout(() => {
