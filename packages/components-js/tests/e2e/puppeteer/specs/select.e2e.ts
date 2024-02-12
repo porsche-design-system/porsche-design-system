@@ -24,19 +24,11 @@ afterEach(async () => await page.close());
 
 const getHost = () => selectNode(page, 'p-select');
 const getSelectValue = async (): Promise<string> => await getProperty(await getHost(), 'value');
-const getInputContainer = () => selectNode(page, 'p-select >>> .wrapper');
 const getButton = () => selectNode(page, 'p-select >>> button');
 const getButtonText = async (): Promise<string> => getProperty(await getButton(), 'textContent');
 const getDropdown = () => selectNode(page, 'p-select >>> .listbox');
 const getDropdownDisplay = async (): Promise<string> => await getElementStyle(await getDropdown(), 'display');
-const getShadowDropdownOption = (n: number) => selectNode(page, `p-select >>> .listbox div:nth-child(${n})`);
 const getSelectOption = (n: number) => selectNode(page, `p-select p-select-option:nth-child(${n + 1})`); // First one is native select
-const getSelectOptions = () => page.$$('p-select p-select-option');
-const getAmountOfVisibleSelectOptions = async (): Promise<number> =>
-  await page.$$eval(
-    'p-select p-select-option',
-    (options) => options.filter((option: HTMLElement) => !option.hidden).length
-  );
 const getSelectedSelectOptionProperty = async <K extends keyof SelectOption>(property: K): Promise<SelectOption[K]> =>
   await page.$$eval(
     'p-select p-select-option',
@@ -64,10 +56,6 @@ const getSelectedOptionIndex = async (): Promise<number> =>
 const getHighlightedOptionIndex = async (): Promise<number> =>
   await page.$$eval('p-select p-select-option', (options: SelectOption[]) =>
     options.filter((option) => !option.hidden).indexOf(options.find((option: SelectOption) => option.highlighted))
-  );
-const getHighlightedOption = async (): Promise<SelectOption> =>
-  await page.$$eval('p-select p-select-option', (options: SelectOption[]) =>
-    options.find((option: SelectOption) => option.highlighted)
   );
 const getNativeSelect = () => selectNode(page, 'p-select select');
 const getNativeSelectValue = async (): Promise<string> => await getProperty(await getNativeSelect(), 'value');
@@ -244,8 +232,6 @@ type InitOptions = {
   };
 };
 
-// TODO: Test keyboard behavior with multiple same textContent
-// TODO: When testing the option--selected, set value undefined with or without empty option and check that no option is selected or the empty option
 const initSelect = (opt?: InitOptions): Promise<void> => {
   const { props = { name: 'options' }, slots, options } = opt || {};
   const {
@@ -534,22 +520,6 @@ describe('outside click', () => {
   });
 });
 
-// // puppeteer ignores @media(hover: hover) styles, but playwright can handle it
-// xdescribe('hover', () => {
-//   it('should change border-color when input is hovered', async () => {
-//     await initMultiSelect();
-//     await page.mouse.move(0, 300); // avoid potential hover initially
-//
-//     const inputContainer = await getInputContainer();
-//     const initialStyle = await getElementStyle(inputContainer, 'borderColor');
-//     expect(initialStyle, 'before hover').toBe('rgb(107, 109, 112)');
-//
-//     await inputContainer.hover();
-//     const hoverColor = await getElementStyle(inputContainer, 'borderColor');
-//     expect(hoverColor, 'after hover').toBe('rgb(1, 2, 5)');
-//   });
-// });
-
 describe('focus', () => {
   it('should focus button when label text is clicked', async () => {
     await initSelect({ props: { name: 'options', label: 'Some Label' } });
@@ -606,6 +576,8 @@ describe('focus', () => {
   });
 });
 
+// TODO: Test keyboard behavior with multiple same textContent
+// TODO: Test keyboard behavior scrolldown to selected option
 // The keyboard behavior is aligned with the w3c suggestion https://www.w3.org/WAI/ARIA/apg/patterns/combobox/examples/combobox-select-only/
 describe('keyboard behavior', () => {
   describe('closed combobox', () => {
@@ -949,8 +921,6 @@ describe('keyboard behavior', () => {
     await initSelect({ options: { disabledIndices: [0, 1, 3, 5], values: ['a', 'b', 'c', 'd', 'e', 'f'] } });
     const buttonElement = await getButton();
 
-    console.log(await page.content());
-
     expect(await getProperty(await getSelectOption(2), 'disabled'), 'disabled option').toBe(true);
 
     await buttonElement.press('ArrowDown');
@@ -1197,7 +1167,6 @@ describe('selection', () => {
     await waitForStencilLifecycle(page);
 
     const option = await getSelectOption(1);
-    console.log(option);
     await option.click();
     await waitForStencilLifecycle(page);
 
@@ -1205,6 +1174,46 @@ describe('selection', () => {
     expect(await getNativeSelectInnerHTML(), 'after first option selected').toBe('');
     expect(await getSelectValue(), 'after first option selected').toBeUndefined();
     expect(await getSelectedSelectOptionProperty('value'), 'after first option selected').toBeUndefined();
+    expect(await getButtonText()).toBe('');
+  });
+
+  it('should select empty option when setting value to undefined', async () => {
+    await initSelect({ props: { name: 'options', value: 'a' }, options: { values: ['', 'a', 'b', 'c'] } });
+
+    expect(await getSelectedOptionIndex()).toBe(1);
+    expect(await getNativeSelectValue(), 'initial').toBe('a');
+    expect(await getNativeSelectInnerHTML(), 'initial').toBe('<option value="a" selected=""></option>');
+    expect(await getSelectValue(), 'initial').toBe('a');
+    expect(await getSelectedSelectOptionProperty('value'), 'initial').toEqual('a');
+    expect(await getButtonText()).toBe('a');
+
+    await setValue(undefined);
+
+    expect(await getSelectedOptionIndex()).toBe(0);
+    expect(await getNativeSelectValue(), 'after setting value to undefined').toBe('');
+    expect(await getNativeSelectInnerHTML(), 'after setting value to undefined').toBe('');
+    expect(await getSelectValue(), 'initial').toBeUndefined();
+    expect(await getSelectedSelectOptionProperty('value'), 'after setting value to undefined').toBeUndefined();
+    expect(await getButtonText()).toBe('');
+  });
+
+  it('should reset selection when value is set to undefined and no empty option provided', async () => {
+    await initSelect({ props: { name: 'options', value: 'a' } });
+
+    expect(await getSelectedOptionIndex()).toBe(0);
+    expect(await getNativeSelectValue(), 'initial').toBe('a');
+    expect(await getNativeSelectInnerHTML(), 'initial').toBe('<option value="a" selected=""></option>');
+    expect(await getSelectValue(), 'initial').toBe('a');
+    expect(await getSelectedSelectOptionProperty('value'), 'initial').toEqual('a');
+    expect(await getButtonText()).toBe('a');
+
+    await setValue(undefined);
+
+    expect(await getSelectedOptionIndex()).toBe(-1);
+    expect(await getNativeSelectValue(), 'after setting value to undefined').toBe('');
+    expect(await getNativeSelectInnerHTML(), 'after setting value to undefined').toBe('');
+    expect(await getSelectValue(), 'initial').toBeUndefined();
+    expect(await getSelectedSelectOptionProperty('value'), 'after setting value to undefined').toBeUndefined();
     expect(await getButtonText()).toBe('');
   });
 });
@@ -1295,7 +1304,7 @@ describe('slots', () => {
   });
 });
 
-fdescribe('lifecycle', () => {
+describe('lifecycle', () => {
   it('should work without unnecessary round trips on init', async () => {
     await initSelect();
     const buttonElement = await getButton();
@@ -1392,7 +1401,7 @@ fdescribe('lifecycle', () => {
   });
 });
 
-fdescribe('accessibility', () => {
+describe('accessibility', () => {
   it('should expose correct initial accessibility tree and aria properties of button', async () => {
     await initSelect({ options: { disabledIndices: [1] } });
     const buttonElement = await getButton();
