@@ -37,6 +37,24 @@ export const getSelectDropdownButtonAriaAttributes = (
   };
 };
 
+// TODO: Can this be shared with select-wrapper dropdown?
+export const getComboboxAriaAttributes = (
+  isOpen: boolean,
+  isRequired: boolean,
+  labelId: string,
+  descriptionId: string,
+  dropdownId: string
+): AriaAttributes => {
+  return {
+    'aria-labelledby': labelId || null,
+    'aria-describedby': descriptionId || null,
+    'aria-haspopup': 'listbox',
+    'aria-expanded': isOpen ? 'true' : 'false',
+    'aria-required': isRequired ? 'true' : 'false',
+    'aria-controls': dropdownId,
+  };
+};
+
 // TODO: Change to aria-labelledby
 export const getListAriaAttributes = (
   label: string,

@@ -30,6 +30,7 @@ import {
   FORM_STATES,
   getActionFromKey,
   getClosestHTMLElement,
+  getComboboxAriaAttributes,
   getHighlightedSelectOption,
   getHighlightedSelectOptionIndex,
   getListAriaAttributes,
@@ -38,6 +39,7 @@ import {
   getShadowRootHTMLElement,
   getUpdatedIndex,
   getUsableSelectOptions,
+  hasMessage,
   hasPropValueChanged,
   isClickOutside,
   SELECT_DROPDOWN_DIRECTIONS,
@@ -50,7 +52,7 @@ import {
 } from '../../../utils';
 import { getComponentCss } from './select-styles';
 import { Label, labelId } from '../../common/label/label';
-import { StateMessage } from '../../common/state-message/state-message';
+import { messageId, StateMessage } from '../../common/state-message/state-message';
 
 const propTypes: PropTypes<typeof Select> = {
   label: AllowedTypes.string,
@@ -199,6 +201,12 @@ export class Select {
     const PrefixedTagNames = getPrefixedTagNames(this.host);
     const buttonId = 'value';
     const dropdownId = 'list';
+    const descriptionId = this.description ? 'description' : undefined;
+    const selectMessageId = hasMessage(this.host, this.message, this.state) ? messageId : undefined;
+    const ariaDescribedBy =
+      descriptionId && selectMessageId
+        ? `${descriptionId} ${selectMessageId}`
+        : descriptionId || selectMessageId || undefined;
 
     return (
       <div class="root">
@@ -215,10 +223,7 @@ export class Select {
             type="button"
             role="combobox"
             id={buttonId}
-            aria-labelledby={labelId}
-            aria-controls={dropdownId}
-            aria-haspopup="listbox"
-            aria-expanded={`${this.isOpen}`}
+            {...getComboboxAriaAttributes(this.isOpen, this.required, labelId, ariaDescribedBy, dropdownId)}
             disabled={this.disabled}
             onClick={this.onComboClick}
             onKeyDown={this.onComboKeyDown}
