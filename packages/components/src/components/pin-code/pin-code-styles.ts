@@ -13,6 +13,7 @@ import {
   spacingStaticXSmall,
 } from '@porsche-design-system/utilities-v2';
 import { getFunctionalComponentLabelStyles } from '../common/label/label-styles';
+import { getFunctionalComponentLoadingMessageStyles } from '../common/loading-message/loading-message-styles';
 
 export const getComponentCss = (
   hideLabel: BreakpointCustomizable<boolean>,
@@ -105,5 +106,7 @@ export const getComponentCss = (
     ...getFunctionalComponentLabelStyles(isDisabled, hideLabel, theme),
     // .message
     ...getFunctionalComponentStateMessageStyles(theme, state),
+    // .loading
+    ...getFunctionalComponentLoadingMessageStyles(),
   });
 };

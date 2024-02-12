@@ -4,7 +4,6 @@ exports[`getColors() should return correct colors for tagColor: background-base 
 {
   "backgroundColor": "#0E0E12",
   "backgroundHoverColor": "#292934",
-  "focusColor": "#1A44EA",
   "primaryColor": "#FBFCFF",
 }
 `;
@@ -13,7 +12,6 @@ exports[`getColors() should return correct colors for tagColor: background-base 
 {
   "backgroundColor": "#FFF",
   "backgroundHoverColor": "#E0E0E0",
-  "focusColor": "#1A44EA",
   "primaryColor": "#010205",
 }
 `;
@@ -22,7 +20,6 @@ exports[`getColors() should return correct colors for tagColor: primary and them
 {
   "backgroundColor": "#FBFCFF",
   "backgroundHoverColor": "#CECFD1",
-  "focusColor": "#1A44EA",
   "primaryColor": "#010205",
 }
 `;
@@ -31,7 +28,6 @@ exports[`getColors() should return correct colors for tagColor: primary and them
 {
   "backgroundColor": "#010205",
   "backgroundHoverColor": "#535457",
-  "focusColor": "#1A44EA",
   "primaryColor": "#FBFCFF",
 }
 `;
@@ -74,18 +70,31 @@ span {
   border: 0 !important;
   text-align: start !important;
 }
-::slotted(a:focus)::before, ::slotted(button:focus)::before {
+::slotted(a)::before, ::slotted(button)::before {
   content: "" !important;
   position: absolute !important;
-  top: -4px !important;
-  left: -4px !important;
-  right: -4px !important;
-  bottom: -4px !important;
-  border: 2px solid #1A44EA !important;
-  border-radius: 8px !important;
+  inset: 0 !important;
+  border-radius: 4px !important;
 }
-::slotted(a:focus:not(:focus-visible))::before, ::slotted(button:focus:not(:focus-visible))::before {
-  border-color: transparent !important;
+::slotted(a::-moz-focus-inner) {
+  border: 0 !important;
+}
+::slotted(a:focus) {
+  outline: 0 !important;
+}
+::slotted(a:focus-visible)::before {
+  outline: 2px solid #1A44EA !important;
+  outline-offset: 2px !important;
+}
+::slotted(button::-moz-focus-inner) {
+  border: 0 !important;
+}
+::slotted(button:focus) {
+  outline: 0 !important;
+}
+::slotted(button:focus-visible)::before {
+  outline: 2px solid #1A44EA !important;
+  outline-offset: 2px !important;
 }
 ::slotted(br) {
   display: none !important;
@@ -134,18 +143,31 @@ span {
   border: 0 !important;
   text-align: start !important;
 }
-::slotted(a:focus)::before, ::slotted(button:focus)::before {
+::slotted(a)::before, ::slotted(button)::before {
   content: "" !important;
   position: absolute !important;
-  top: -4px !important;
-  left: -4px !important;
-  right: -4px !important;
-  bottom: -4px !important;
-  border: 2px solid #1A44EA !important;
-  border-radius: 8px !important;
+  inset: 0 !important;
+  border-radius: 4px !important;
 }
-::slotted(a:focus:not(:focus-visible))::before, ::slotted(button:focus:not(:focus-visible))::before {
-  border-color: transparent !important;
+::slotted(a::-moz-focus-inner) {
+  border: 0 !important;
+}
+::slotted(a:focus) {
+  outline: 0 !important;
+}
+::slotted(a:focus-visible)::before {
+  outline: 2px solid #1A44EA !important;
+  outline-offset: 2px !important;
+}
+::slotted(button::-moz-focus-inner) {
+  border: 0 !important;
+}
+::slotted(button:focus) {
+  outline: 0 !important;
+}
+::slotted(button:focus-visible)::before {
+  outline: 2px solid #1A44EA !important;
+  outline-offset: 2px !important;
 }
 ::slotted(br) {
   display: none !important;
@@ -194,18 +216,31 @@ span {
   border: 0 !important;
   text-align: start !important;
 }
-::slotted(a:focus)::before, ::slotted(button:focus)::before {
+::slotted(a)::before, ::slotted(button)::before {
   content: "" !important;
   position: absolute !important;
-  top: -4px !important;
-  left: -4px !important;
-  right: -4px !important;
-  bottom: -4px !important;
-  border: 2px solid #1A44EA !important;
-  border-radius: 8px !important;
+  inset: 0 !important;
+  border-radius: 4px !important;
 }
-::slotted(a:focus:not(:focus-visible))::before, ::slotted(button:focus:not(:focus-visible))::before {
-  border-color: transparent !important;
+::slotted(a::-moz-focus-inner) {
+  border: 0 !important;
+}
+::slotted(a:focus) {
+  outline: 0 !important;
+}
+::slotted(a:focus-visible)::before {
+  outline: 2px solid #1A44EA !important;
+  outline-offset: 2px !important;
+}
+::slotted(button::-moz-focus-inner) {
+  border: 0 !important;
+}
+::slotted(button:focus) {
+  outline: 0 !important;
+}
+::slotted(button:focus-visible)::before {
+  outline: 2px solid #1A44EA !important;
+  outline-offset: 2px !important;
 }
 ::slotted(br) {
   display: none !important;
@@ -263,18 +298,31 @@ span {
   border: 0 !important;
   text-align: start !important;
 }
-::slotted(a:focus)::before, ::slotted(button:focus)::before {
+::slotted(a)::before, ::slotted(button)::before {
   content: "" !important;
   position: absolute !important;
-  top: -4px !important;
-  left: -4px !important;
-  right: -4px !important;
-  bottom: -4px !important;
-  border: 2px solid #1A44EA !important;
-  border-radius: 8px !important;
+  inset: 0 !important;
+  border-radius: 4px !important;
 }
-::slotted(a:focus:not(:focus-visible))::before, ::slotted(button:focus:not(:focus-visible))::before {
-  border-color: transparent !important;
+::slotted(a::-moz-focus-inner) {
+  border: 0 !important;
+}
+::slotted(a:focus) {
+  outline: 0 !important;
+}
+::slotted(a:focus-visible)::before {
+  outline: 2px solid #1A44EA !important;
+  outline-offset: 2px !important;
+}
+::slotted(button::-moz-focus-inner) {
+  border: 0 !important;
+}
+::slotted(button:focus) {
+  outline: 0 !important;
+}
+::slotted(button:focus-visible)::before {
+  outline: 2px solid #1A44EA !important;
+  outline-offset: 2px !important;
 }
 ::slotted(br) {
   display: none !important;
@@ -332,18 +380,31 @@ span {
   border: 0 !important;
   text-align: start !important;
 }
-::slotted(a:focus)::before, ::slotted(button:focus)::before {
+::slotted(a)::before, ::slotted(button)::before {
   content: "" !important;
   position: absolute !important;
-  top: -4px !important;
-  left: -4px !important;
-  right: -4px !important;
-  bottom: -4px !important;
-  border: 2px solid #1A44EA !important;
-  border-radius: 8px !important;
+  inset: 0 !important;
+  border-radius: 4px !important;
 }
-::slotted(a:focus:not(:focus-visible))::before, ::slotted(button:focus:not(:focus-visible))::before {
-  border-color: transparent !important;
+::slotted(a::-moz-focus-inner) {
+  border: 0 !important;
+}
+::slotted(a:focus) {
+  outline: 0 !important;
+}
+::slotted(a:focus-visible)::before {
+  outline: 2px solid #1A44EA !important;
+  outline-offset: 2px !important;
+}
+::slotted(button::-moz-focus-inner) {
+  border: 0 !important;
+}
+::slotted(button:focus) {
+  outline: 0 !important;
+}
+::slotted(button:focus-visible)::before {
+  outline: 2px solid #1A44EA !important;
+  outline-offset: 2px !important;
 }
 ::slotted(br) {
   display: none !important;
@@ -401,18 +462,31 @@ span {
   border: 0 !important;
   text-align: start !important;
 }
-::slotted(a:focus)::before, ::slotted(button:focus)::before {
+::slotted(a)::before, ::slotted(button)::before {
   content: "" !important;
   position: absolute !important;
-  top: -4px !important;
-  left: -4px !important;
-  right: -4px !important;
-  bottom: -4px !important;
-  border: 2px solid #1A44EA !important;
-  border-radius: 8px !important;
+  inset: 0 !important;
+  border-radius: 4px !important;
 }
-::slotted(a:focus:not(:focus-visible))::before, ::slotted(button:focus:not(:focus-visible))::before {
-  border-color: transparent !important;
+::slotted(a::-moz-focus-inner) {
+  border: 0 !important;
+}
+::slotted(a:focus) {
+  outline: 0 !important;
+}
+::slotted(a:focus-visible)::before {
+  outline: 2px solid #1A44EA !important;
+  outline-offset: 2px !important;
+}
+::slotted(button::-moz-focus-inner) {
+  border: 0 !important;
+}
+::slotted(button:focus) {
+  outline: 0 !important;
+}
+::slotted(button:focus-visible)::before {
+  outline: 2px solid #1A44EA !important;
+  outline-offset: 2px !important;
 }
 ::slotted(br) {
   display: none !important;
@@ -470,18 +544,31 @@ span {
   border: 0 !important;
   text-align: start !important;
 }
-::slotted(a:focus)::before, ::slotted(button:focus)::before {
+::slotted(a)::before, ::slotted(button)::before {
   content: "" !important;
   position: absolute !important;
-  top: -4px !important;
-  left: -4px !important;
-  right: -4px !important;
-  bottom: -4px !important;
-  border: 2px solid #1A44EA !important;
-  border-radius: 8px !important;
+  inset: 0 !important;
+  border-radius: 4px !important;
 }
-::slotted(a:focus:not(:focus-visible))::before, ::slotted(button:focus:not(:focus-visible))::before {
-  border-color: transparent !important;
+::slotted(a::-moz-focus-inner) {
+  border: 0 !important;
+}
+::slotted(a:focus) {
+  outline: 0 !important;
+}
+::slotted(a:focus-visible)::before {
+  outline: 2px solid #1A44EA !important;
+  outline-offset: 2px !important;
+}
+::slotted(button::-moz-focus-inner) {
+  border: 0 !important;
+}
+::slotted(button:focus) {
+  outline: 0 !important;
+}
+::slotted(button:focus-visible)::before {
+  outline: 2px solid #1A44EA !important;
+  outline-offset: 2px !important;
 }
 ::slotted(br) {
   display: none !important;
@@ -539,18 +626,31 @@ span {
   border: 0 !important;
   text-align: start !important;
 }
-::slotted(a:focus)::before, ::slotted(button:focus)::before {
+::slotted(a)::before, ::slotted(button)::before {
   content: "" !important;
   position: absolute !important;
-  top: -4px !important;
-  left: -4px !important;
-  right: -4px !important;
-  bottom: -4px !important;
-  border: 2px solid #1A44EA !important;
-  border-radius: 8px !important;
+  inset: 0 !important;
+  border-radius: 4px !important;
 }
-::slotted(a:focus:not(:focus-visible))::before, ::slotted(button:focus:not(:focus-visible))::before {
-  border-color: transparent !important;
+::slotted(a::-moz-focus-inner) {
+  border: 0 !important;
+}
+::slotted(a:focus) {
+  outline: 0 !important;
+}
+::slotted(a:focus-visible)::before {
+  outline: 2px solid #1A44EA !important;
+  outline-offset: 2px !important;
+}
+::slotted(button::-moz-focus-inner) {
+  border: 0 !important;
+}
+::slotted(button:focus) {
+  outline: 0 !important;
+}
+::slotted(button:focus-visible)::before {
+  outline: 2px solid #1A44EA !important;
+  outline-offset: 2px !important;
 }
 ::slotted(br) {
   display: none !important;
@@ -608,18 +708,31 @@ span {
   border: 0 !important;
   text-align: start !important;
 }
-::slotted(a:focus)::before, ::slotted(button:focus)::before {
+::slotted(a)::before, ::slotted(button)::before {
   content: "" !important;
   position: absolute !important;
-  top: -4px !important;
-  left: -4px !important;
-  right: -4px !important;
-  bottom: -4px !important;
-  border: 2px solid #1A44EA !important;
-  border-radius: 8px !important;
+  inset: 0 !important;
+  border-radius: 4px !important;
 }
-::slotted(a:focus:not(:focus-visible))::before, ::slotted(button:focus:not(:focus-visible))::before {
-  border-color: transparent !important;
+::slotted(a::-moz-focus-inner) {
+  border: 0 !important;
+}
+::slotted(a:focus) {
+  outline: 0 !important;
+}
+::slotted(a:focus-visible)::before {
+  outline: 2px solid #1A44EA !important;
+  outline-offset: 2px !important;
+}
+::slotted(button::-moz-focus-inner) {
+  border: 0 !important;
+}
+::slotted(button:focus) {
+  outline: 0 !important;
+}
+::slotted(button:focus-visible)::before {
+  outline: 2px solid #1A44EA !important;
+  outline-offset: 2px !important;
 }
 ::slotted(br) {
   display: none !important;
@@ -677,18 +790,31 @@ span {
   border: 0 !important;
   text-align: start !important;
 }
-::slotted(a:focus)::before, ::slotted(button:focus)::before {
+::slotted(a)::before, ::slotted(button)::before {
   content: "" !important;
   position: absolute !important;
-  top: -4px !important;
-  left: -4px !important;
-  right: -4px !important;
-  bottom: -4px !important;
-  border: 2px solid #1A44EA !important;
-  border-radius: 8px !important;
+  inset: 0 !important;
+  border-radius: 4px !important;
 }
-::slotted(a:focus:not(:focus-visible))::before, ::slotted(button:focus:not(:focus-visible))::before {
-  border-color: transparent !important;
+::slotted(a::-moz-focus-inner) {
+  border: 0 !important;
+}
+::slotted(a:focus) {
+  outline: 0 !important;
+}
+::slotted(a:focus-visible)::before {
+  outline: 2px solid #1A44EA !important;
+  outline-offset: 2px !important;
+}
+::slotted(button::-moz-focus-inner) {
+  border: 0 !important;
+}
+::slotted(button:focus) {
+  outline: 0 !important;
+}
+::slotted(button:focus-visible)::before {
+  outline: 2px solid #1A44EA !important;
+  outline-offset: 2px !important;
 }
 ::slotted(br) {
   display: none !important;
@@ -746,18 +872,31 @@ span {
   border: 0 !important;
   text-align: start !important;
 }
-::slotted(a:focus)::before, ::slotted(button:focus)::before {
+::slotted(a)::before, ::slotted(button)::before {
   content: "" !important;
   position: absolute !important;
-  top: -4px !important;
-  left: -4px !important;
-  right: -4px !important;
-  bottom: -4px !important;
-  border: 2px solid #1A44EA !important;
-  border-radius: 8px !important;
+  inset: 0 !important;
+  border-radius: 4px !important;
 }
-::slotted(a:focus:not(:focus-visible))::before, ::slotted(button:focus:not(:focus-visible))::before {
-  border-color: transparent !important;
+::slotted(a::-moz-focus-inner) {
+  border: 0 !important;
+}
+::slotted(a:focus) {
+  outline: 0 !important;
+}
+::slotted(a:focus-visible)::before {
+  outline: 2px solid #1A44EA !important;
+  outline-offset: 2px !important;
+}
+::slotted(button::-moz-focus-inner) {
+  border: 0 !important;
+}
+::slotted(button:focus) {
+  outline: 0 !important;
+}
+::slotted(button:focus-visible)::before {
+  outline: 2px solid #1A44EA !important;
+  outline-offset: 2px !important;
 }
 ::slotted(br) {
   display: none !important;
@@ -815,18 +954,31 @@ span {
   border: 0 !important;
   text-align: start !important;
 }
-::slotted(a:focus)::before, ::slotted(button:focus)::before {
+::slotted(a)::before, ::slotted(button)::before {
   content: "" !important;
   position: absolute !important;
-  top: -4px !important;
-  left: -4px !important;
-  right: -4px !important;
-  bottom: -4px !important;
-  border: 2px solid #1A44EA !important;
-  border-radius: 8px !important;
+  inset: 0 !important;
+  border-radius: 4px !important;
 }
-::slotted(a:focus:not(:focus-visible))::before, ::slotted(button:focus:not(:focus-visible))::before {
-  border-color: transparent !important;
+::slotted(a::-moz-focus-inner) {
+  border: 0 !important;
+}
+::slotted(a:focus) {
+  outline: 0 !important;
+}
+::slotted(a:focus-visible)::before {
+  outline: 2px solid #1A44EA !important;
+  outline-offset: 2px !important;
+}
+::slotted(button::-moz-focus-inner) {
+  border: 0 !important;
+}
+::slotted(button:focus) {
+  outline: 0 !important;
+}
+::slotted(button:focus-visible)::before {
+  outline: 2px solid #1A44EA !important;
+  outline-offset: 2px !important;
 }
 ::slotted(br) {
   display: none !important;
@@ -884,18 +1036,31 @@ span {
   border: 0 !important;
   text-align: start !important;
 }
-::slotted(a:focus)::before, ::slotted(button:focus)::before {
+::slotted(a)::before, ::slotted(button)::before {
   content: "" !important;
   position: absolute !important;
-  top: -4px !important;
-  left: -4px !important;
-  right: -4px !important;
-  bottom: -4px !important;
-  border: 2px solid #1A44EA !important;
-  border-radius: 8px !important;
+  inset: 0 !important;
+  border-radius: 4px !important;
 }
-::slotted(a:focus:not(:focus-visible))::before, ::slotted(button:focus:not(:focus-visible))::before {
-  border-color: transparent !important;
+::slotted(a::-moz-focus-inner) {
+  border: 0 !important;
+}
+::slotted(a:focus) {
+  outline: 0 !important;
+}
+::slotted(a:focus-visible)::before {
+  outline: 2px solid #1A44EA !important;
+  outline-offset: 2px !important;
+}
+::slotted(button::-moz-focus-inner) {
+  border: 0 !important;
+}
+::slotted(button:focus) {
+  outline: 0 !important;
+}
+::slotted(button:focus-visible)::before {
+  outline: 2px solid #1A44EA !important;
+  outline-offset: 2px !important;
 }
 ::slotted(br) {
   display: none !important;
@@ -953,18 +1118,31 @@ span {
   border: 0 !important;
   text-align: start !important;
 }
-::slotted(a:focus)::before, ::slotted(button:focus)::before {
+::slotted(a)::before, ::slotted(button)::before {
   content: "" !important;
   position: absolute !important;
-  top: -4px !important;
-  left: -4px !important;
-  right: -4px !important;
-  bottom: -4px !important;
-  border: 2px solid #1A44EA !important;
-  border-radius: 8px !important;
+  inset: 0 !important;
+  border-radius: 4px !important;
 }
-::slotted(a:focus:not(:focus-visible))::before, ::slotted(button:focus:not(:focus-visible))::before {
-  border-color: transparent !important;
+::slotted(a::-moz-focus-inner) {
+  border: 0 !important;
+}
+::slotted(a:focus) {
+  outline: 0 !important;
+}
+::slotted(a:focus-visible)::before {
+  outline: 2px solid #1A44EA !important;
+  outline-offset: 2px !important;
+}
+::slotted(button::-moz-focus-inner) {
+  border: 0 !important;
+}
+::slotted(button:focus) {
+  outline: 0 !important;
+}
+::slotted(button:focus-visible)::before {
+  outline: 2px solid #1A44EA !important;
+  outline-offset: 2px !important;
 }
 ::slotted(br) {
   display: none !important;
@@ -1022,18 +1200,31 @@ span {
   border: 0 !important;
   text-align: start !important;
 }
-::slotted(a:focus)::before, ::slotted(button:focus)::before {
+::slotted(a)::before, ::slotted(button)::before {
   content: "" !important;
   position: absolute !important;
-  top: -4px !important;
-  left: -4px !important;
-  right: -4px !important;
-  bottom: -4px !important;
-  border: 2px solid #1A44EA !important;
-  border-radius: 8px !important;
+  inset: 0 !important;
+  border-radius: 4px !important;
 }
-::slotted(a:focus:not(:focus-visible))::before, ::slotted(button:focus:not(:focus-visible))::before {
-  border-color: transparent !important;
+::slotted(a::-moz-focus-inner) {
+  border: 0 !important;
+}
+::slotted(a:focus) {
+  outline: 0 !important;
+}
+::slotted(a:focus-visible)::before {
+  outline: 2px solid #1A44EA !important;
+  outline-offset: 2px !important;
+}
+::slotted(button::-moz-focus-inner) {
+  border: 0 !important;
+}
+::slotted(button:focus) {
+  outline: 0 !important;
+}
+::slotted(button:focus-visible)::before {
+  outline: 2px solid #1A44EA !important;
+  outline-offset: 2px !important;
 }
 ::slotted(br) {
   display: none !important;
@@ -1091,18 +1282,31 @@ span {
   border: 0 !important;
   text-align: start !important;
 }
-::slotted(a:focus)::before, ::slotted(button:focus)::before {
+::slotted(a)::before, ::slotted(button)::before {
   content: "" !important;
   position: absolute !important;
-  top: -4px !important;
-  left: -4px !important;
-  right: -4px !important;
-  bottom: -4px !important;
-  border: 2px solid #1A44EA !important;
-  border-radius: 8px !important;
+  inset: 0 !important;
+  border-radius: 4px !important;
 }
-::slotted(a:focus:not(:focus-visible))::before, ::slotted(button:focus:not(:focus-visible))::before {
-  border-color: transparent !important;
+::slotted(a::-moz-focus-inner) {
+  border: 0 !important;
+}
+::slotted(a:focus) {
+  outline: 0 !important;
+}
+::slotted(a:focus-visible)::before {
+  outline: 2px solid #1A44EA !important;
+  outline-offset: 2px !important;
+}
+::slotted(button::-moz-focus-inner) {
+  border: 0 !important;
+}
+::slotted(button:focus) {
+  outline: 0 !important;
+}
+::slotted(button:focus-visible)::before {
+  outline: 2px solid #1A44EA !important;
+  outline-offset: 2px !important;
 }
 ::slotted(br) {
   display: none !important;

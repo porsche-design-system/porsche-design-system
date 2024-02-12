@@ -130,8 +130,7 @@ exports[`accessibility should expose correct accessibility tree when loading=tru
                 {
                   "children": [
                     {
-                      "name": " ",
-                      "role": "StaticText",
+                      "role": "none",
                     },
                   ],
                   "role": "none",
@@ -148,15 +147,23 @@ exports[`accessibility should expose correct accessibility tree when loading=tru
                   "role": "none",
                 },
               ],
-              "name": "Loading state of Some Label",
-              "role": "alert",
+              "role": "none",
             },
           ],
-          "name": "",
-          "role": "generic",
+          "role": "none",
         },
       ],
       "role": "none",
+    },
+    {
+      "children": [
+        {
+          "name": "Loading",
+          "role": "StaticText",
+        },
+      ],
+      "name": "",
+      "role": "status",
     },
   ],
   "role": "none",

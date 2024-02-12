@@ -4,7 +4,7 @@ import { getCss, isHighContrastMode } from '../../utils';
 import {
   addImportantToEachRule,
   colorSchemeStyles,
-  focusPseudoJssStyle,
+  getFocusJssStyle,
   getHighContrastColors,
   getThemedColors,
   hostHiddenStyles,
@@ -42,7 +42,14 @@ export const getComponentCss = (size: WordmarkSize, theme: Theme): string => {
       },
       a: {
         textDecoration: 'none',
-        ...focusPseudoJssStyle,
+        '&::before': {
+          // needs to be defined always to have correct custom click area
+          content: '""',
+          position: 'absolute',
+          inset: 0,
+          borderRadius: '1px',
+        },
+        ...getFocusJssStyle('light', { pseudo: true }), // TODO: we need to support theme
       },
       svg: isHighContrastMode
         ? {

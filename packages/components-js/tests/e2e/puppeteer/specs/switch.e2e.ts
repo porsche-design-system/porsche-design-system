@@ -19,7 +19,7 @@ afterEach(async () => await page.close());
 
 const getHost = () => selectNode(page, 'p-switch');
 const getButton = () => selectNode(page, 'p-switch >>> button');
-const getLabel = () => selectNode(page, 'p-switch >>> .label');
+const getLabel = () => selectNode(page, 'p-switch >>> label');
 
 const clickHandlerScript = `
 <script>
@@ -103,15 +103,15 @@ describe('events', () => {
     await setContentWithDesignSystem(page, `<div><p-switch id="hostElement">Some label</p-switch></div>`);
 
     const wrapper = await selectNode(page, 'div');
-    const host = await getHost();
     const button = await getButton();
+    const label = await getLabel();
     await addEventListener(wrapper, 'click');
 
     await button.click();
-    await host.click();
+    await label.click(); // the first click is related to the label, the second to the associated button => native browser behaviour results in 2 clicks
     const { counter, targets } = await getEventSummary(wrapper, 'click');
 
-    expect(counter).toBe(2);
+    expect(counter).toBe(3);
     for (const target of targets) {
       expect(target.id).toBe('hostElement');
     }

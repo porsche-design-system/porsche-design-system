@@ -1,6 +1,5 @@
-import { Component, Element, forceUpdate, h, type JSX, Prop } from '@stencil/core';
+import { Component, Element, forceUpdate, h, type JSX, Prop, Watch } from '@stencil/core';
 import {
-  addChangeListener,
   AllowedTypes,
   attachComponentCss,
   FORM_STATES,
@@ -13,11 +12,13 @@ import {
   unobserveAttributes,
   validateProps,
 } from '../../utils';
+import { applyCheckboxRadioButtonSafariRenderingFix } from '../../utils/form/applyCheckboxRadioButtonSafariRenderingFix';
 import { type BreakpointCustomizable, type PropTypes, type Theme } from '../../types';
 import { getComponentCss } from './radio-button-wrapper-styles';
 import { type RadioButtonWrapperState } from './radio-button-wrapper-utils';
 import { StateMessage } from '../common/state-message/state-message';
 import { Label } from '../common/label/label';
+import { LoadingMessage } from '../common/loading-message/loading-message';
 
 const propTypes: PropTypes<typeof RadioButtonWrapper> = {
   label: AllowedTypes.string,
@@ -54,15 +55,26 @@ export class RadioButtonWrapper {
   @Prop() public theme?: Theme = 'light';
 
   private input: HTMLInputElement;
+  private initialLoading: boolean = false;
+
+  @Watch('loading')
+  public loadingChanged(newVal: boolean): void {
+    if (newVal) {
+      // don't reset initialLoading to false
+      this.initialLoading = newVal;
+    }
+  }
 
   public connectedCallback(): void {
+    applyCheckboxRadioButtonSafariRenderingFix(this.host);
     this.observeAttributes(); // on every reconnect
+    this.initialLoading = this.loading;
   }
 
   public componentWillLoad(): void {
     this.input = getOnlyChildOfKindHTMLElementOrThrow(this.host, 'input[type=radio]');
-    addChangeListener(this.input);
     this.observeAttributes(); // once initially
+    this.initialLoading = this.loading;
   }
 
   public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
@@ -108,15 +120,11 @@ export class RadioButtonWrapper {
         <div class="wrapper">
           <slot />
           {isLoading && (
-            <PrefixedTagNames.pSpinner
-              class="spinner"
-              size="inherit"
-              theme={this.theme}
-              aria={{ 'aria-label': `Loading state of ${this.label}` }}
-            />
+            <PrefixedTagNames.pSpinner class="spinner" size="inherit" theme={this.theme} aria-hidden="true" />
           )}
         </div>
         <StateMessage state={this.state} message={this.message} theme={this.theme} host={this.host} />
+        <LoadingMessage loading={isLoading} initialLoading={this.initialLoading} />
       </div>
     );
   }

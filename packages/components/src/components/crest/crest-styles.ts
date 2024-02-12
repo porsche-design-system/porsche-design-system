@@ -1,6 +1,6 @@
 import { getCss } from '../../utils';
 import { crestSize } from './crest-utils';
-import { addImportantToEachRule, colorSchemeStyles, focusPseudoJssStyle, hostHiddenStyles } from '../../styles';
+import { addImportantToEachRule, colorSchemeStyles, getFocusJssStyle, hostHiddenStyles } from '../../styles';
 
 const { width, height } = crestSize;
 const getDimensionStyle = {
@@ -18,7 +18,7 @@ export const getComponentCss = (): string => {
         display: 'inline-block',
         verticalAlign: 'top',
         ...addImportantToEachRule({
-          outline: 0,
+          outline: 0, // TODO: is it still necessary?
           boxSizing: 'content-box', // needed for correct height calculation when padding is set on host (e.g. custom click area)
           ...getDimensionStyle,
           ...colorSchemeStyles,
@@ -29,7 +29,14 @@ export const getComponentCss = (): string => {
         display: 'block',
         textDecoration: 'none',
         ...getDimensionStyle,
-        ...focusPseudoJssStyle,
+        '&::before': {
+          // needs to be defined always to have correct custom click area
+          content: '""',
+          position: 'absolute',
+          inset: 0,
+          borderRadius: '1px',
+        },
+        ...getFocusJssStyle('light', { pseudo: true }), // TODO: we need to support theme
       },
       picture: {
         display: 'block',

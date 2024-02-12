@@ -2,6 +2,7 @@ import type { AlignLabel, BreakpointCustomizable, LinkButtonIconName, TextSize, 
 import { getCss, hasVisibleIcon, mergeDeep } from '../../utils';
 import { getLinkButtonPureStyles } from '../../styles/link-button-pure-styles';
 import { fontLineHeight } from '@porsche-design-system/utilities-v2';
+import { getFunctionalComponentLoadingMessageStyles } from '../common/loading-message/loading-message-styles';
 
 export const getComponentCss = (
   icon: LinkButtonIconName,
@@ -43,7 +44,7 @@ export const getComponentCss = (
         ...(!hasIcon &&
           isLoading && {
             label: {
-              visibility: 'hidden',
+              opacity: 0, // use opacity for smooth transition between states and to keep accessible name available
             },
             icon: {
               position: 'absolute',
@@ -53,6 +54,8 @@ export const getComponentCss = (
               height: fontLineHeight,
             },
           }),
+        // .loading
+        ...getFunctionalComponentLoadingMessageStyles(),
       }
     )
   );

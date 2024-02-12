@@ -8,9 +8,8 @@ With the new **Porsche Design Language** comes a lot of changes regarding layout
 refactoring efforts as low as possible when upgrading from `v2` to `v3`, **breaking changes** were avoided as far as
 possible. Nevertheless, there are a few breaking changes and some more deprecations which should receive attention.
 
-Please follow the migration guide on this page. In addition, we offer a
-[components overview](https://designsystem.porsche.com/latest/component-meta) which shows all component information
-including deprecated components/props/values.
+Please follow the migration guide on this page. In addition, we offer a [components overview](components/introduction)
+which shows all component information including deprecated components/props/values.
 
 <Notification heading="Deprecation hint" state="error">
   Porsche Design System <b>v2</b> support will end on <b>June 30th, 2023</b> (until EOL date only critical bug fixing takes place).<br>

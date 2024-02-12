@@ -6,14 +6,14 @@ on:
         required: true
 name: 'Build and Test'
 env:
-  PDS_PLAYWRIGHT_DOCKER_IMAGE: ghcr.io/porsche-design-system/porsche-design-system/playwright:v1.40.1-focal-test5
+  PDS_PLAYWRIGHT_DOCKER_IMAGE: ghcr.io/porsche-design-system/porsche-design-system/playwright:v1.40.1-focal-test6
 jobs:
   assets:
     name: 'Assets'
     runs-on: ubuntu-latest
     steps:
       - name: 'Checkout'
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       - name: 'Setup and install'
         uses: ./.github/actions/setup-and-install
         with:
@@ -33,6 +33,11 @@ jobs:
         with:
           entrypoint: run-test-unit
           args: --assets:fallbacks
+      - name: 'Unit Test Icons'
+        uses: ./.github/actions/docker-run-playwright
+        with:
+          entrypoint: run-test-unit
+          args: --assets:icons
       - name: 'Unit Test Styles'
         uses: ./.github/actions/docker-run-playwright
         with:
@@ -45,7 +50,7 @@ jobs:
           args: --assets:fallbacks
       - name: 'VRT Regression Fallbacks'
         if: failure()
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: fallbacks-vrt-regression
           path: ./packages/assets/projects/fallbacks/tests/vrt/results
@@ -54,7 +59,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: 'Checkout'
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       - name: 'Setup and install'
         uses: ./.github/actions/setup-and-install
         with:
@@ -79,7 +84,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: 'Checkout'
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       - name: 'Setup and install'
         uses: ./.github/actions/setup-and-install
         with:
@@ -126,7 +131,7 @@ jobs:
           args: --components-js:partials
       - name: 'Unit Regression'
         if: failure()
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: components-js-unit-regression
           path: ./packages/components-js/tests/unit/results
@@ -135,7 +140,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: 'Checkout'
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       - name: 'Setup and install'
         uses: ./.github/actions/setup-and-install
         with:
@@ -152,7 +157,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: 'Checkout'
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       - name: 'Setup and install'
         uses: ./.github/actions/setup-and-install
         with:
@@ -169,7 +174,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: 'Checkout'
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       - name: 'Setup and install'
         uses: ./.github/actions/setup-and-install
         with:
@@ -183,7 +188,7 @@ jobs:
           args: --components-js:chrome:common
       - name: 'VRT Regression (Playwright)'
         if: failure()
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: components-js-vrt-common-playwright-chrome-regression
           path: ./packages/components-js/tests/vrt/playwright/results
@@ -192,7 +197,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: 'Checkout'
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       - name: 'Setup and install'
         uses: ./.github/actions/setup-and-install
         with:
@@ -206,7 +211,7 @@ jobs:
           args: --components-js:chrome:customAndStates
       - name: 'VRT Regression (Playwright)'
         if: failure()
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: components-js-vrt-custom-states-playwright-chrome-regression
           path: ./packages/components-js/tests/vrt/playwright/results
@@ -215,7 +220,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: 'Checkout'
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       - name: 'Setup and install'
         uses: ./.github/actions/setup-and-install
         with:
@@ -229,7 +234,7 @@ jobs:
           args: --components-js:safari
       - name: 'VRT Regression (Playwright)'
         if: failure()
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: components-js-vrt-playwright-safari-regression
           path: ./packages/components-js/tests/vrt/playwright/results
@@ -238,7 +243,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: 'Checkout'
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       - name: 'Setup and install'
         uses: ./.github/actions/setup-and-install
         with:
@@ -272,7 +277,7 @@ jobs:
           args: --components-angular
       - name: 'VRT Regression'
         if: failure()
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: components-angular-vrt-regression
           path: ./packages/components-angular/tests/vrt/results
@@ -281,7 +286,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: 'Checkout'
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       - name: 'Setup and install'
         uses: ./.github/actions/setup-and-install
         with:
@@ -315,7 +320,7 @@ jobs:
           args: --components-react
       - name: 'VRT Regression components-react'
         if: failure()
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: components-react-vrt-regression
           path: ./packages/components-react/tests/vrt/results
@@ -324,7 +329,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: 'Checkout'
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       - name: 'Setup and install'
         uses: ./.github/actions/setup-and-install
         with:
@@ -348,7 +353,7 @@ jobs:
           args: --components-react/remix
       - name: 'VRT Regression components-react/remix'
         if: failure()
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: components-react-remix-vrt-regression
           path: ./packages/components-react/projects/remix/tests/vrt/results
@@ -357,7 +362,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: 'Checkout'
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       - name: 'Setup and install'
         uses: ./.github/actions/setup-and-install
         with:
@@ -391,7 +396,7 @@ jobs:
           args: --components-react:react-ssr-wrapper
       - name: 'VRT Regression components-react/nextjs'
         if: failure()
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: components-react-nextjs-vrt-regression
           path: ./packages/components-react/projects/nextjs/tests/vrt/results
@@ -400,7 +405,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: 'Checkout'
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
     - name: 'Setup and install'
       uses: ./.github/actions/setup-and-install
       with:
@@ -434,7 +439,7 @@ jobs:
         args: --components-vue
     - name: 'VRT Regression components-vue'
       if: failure()
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: components-vue-vrt-regression
         path: ./packages/components-vue/tests/vrt/results
@@ -443,7 +448,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: 'Checkout'
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       - name: 'Setup and install'
         uses: ./.github/actions/setup-and-install
         with:
@@ -460,7 +465,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: 'Checkout'
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       - name: 'Setup and install'
         uses: ./.github/actions/setup-and-install
         with:
@@ -480,7 +485,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: 'Checkout'
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       - name: 'Setup and install'
         uses: ./.github/actions/setup-and-install
         with:
@@ -500,7 +505,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: 'Checkout'
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       - name: 'Setup and install'
         uses: ./.github/actions/setup-and-install
         with:
@@ -532,7 +537,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: 'Checkout'
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       - name: 'Setup and install'
         uses: ./.github/actions/setup-and-install
         with:
@@ -556,7 +561,7 @@ jobs:
           args: --storefront
       - name: 'E2E Regression'
         if: failure()
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: storefront-e2e-regression
           path: ./packages/storefront/tests/e2e/results
@@ -565,7 +570,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: 'Checkout'
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       - name: 'Setup and install'
         uses: ./.github/actions/setup-and-install
         with:
@@ -589,7 +594,7 @@ jobs:
           args: --storefront
       - name: 'a11y Regression'
         if: failure()
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: storefront-a11y-regression
           path: ./packages/storefront/tests/e2e/results
@@ -598,7 +603,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: 'Checkout'
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       - name: 'Setup and install'
         uses: ./.github/actions/setup-and-install
         with:
@@ -622,7 +627,7 @@ jobs:
           args: --storefront
       - name: 'VRT Regression'
         if: failure()
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: storefront-vrt-regression
           path: ./packages/storefront/tests/vrt/results
@@ -631,7 +636,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: 'Checkout'
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       - name: 'Setup and install'
         uses: ./.github/actions/setup-and-install
         with:
@@ -672,54 +677,54 @@ jobs:
           entrypoint: run-build-prod
           args: --storefront
       - name: 'Store Assets CDN Artifact'
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: assets-cdn
           path: ./packages/assets/cdn
       - name: 'Store Assets Build Artifact'
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: assets-build
           path: ./packages/assets/dist
       - name: 'Store Components JS Build Artifact'
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: components-js-prod-build
           path: ./packages/components-js/dist
       - name: 'Store Components Angular Build Artifact'
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: components-angular-prod-build
           path: ./packages/components-angular/dist/angular-wrapper
       - name: 'Store Components React Build Artifact'
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: components-react-prod-build
           path: ./packages/components-react/dist/react-wrapper
       - name: 'Store Components UXPin Source Artifact'
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: components-uxpin-source
           path: |
             ./packages/components-react/projects/uxpin-wrapper/src
             ./packages/components-react/projects/uxpin-wrapper/uxpin.config.js
       - name: 'Store Components Vue Build Artifact'
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: components-vue-prod-build
           path: ./packages/components-vue/dist/vue-wrapper
       - name: 'Store Chunks Manifest Build Artifact'
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: components-js-chunks-manifest-prod-build
           path: ./packages/components-js/projects/components-wrapper/lib
       - name: 'Store Shared Build Artifact'
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: shared-build
           path: ./packages/shared/dist
       - name: 'Store Storefront Build Artifact'
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: storefront-build
           path: ./packages/storefront/dist
@@ -728,7 +733,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: 'Checkout'
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       - name: 'Setup and install'
         uses: ./.github/actions/setup-and-install
         with:

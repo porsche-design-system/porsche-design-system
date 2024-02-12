@@ -14,7 +14,6 @@ import {
   prefersColorSchemeDarkMediaQuery,
 } from '../../styles';
 import {
-  borderRadiusMedium,
   borderRadiusSmall,
   fontFamily,
   fontLineHeight,
@@ -24,6 +23,7 @@ import {
 } from '@porsche-design-system/utilities-v2';
 import { getFunctionalComponentLabelStyles } from '../common/label/label-styles';
 import { getFunctionalComponentStateMessageStyles } from '../common/state-message/state-message-styles';
+import { getFunctionalComponentLoadingMessageStyles } from '../common/loading-message/loading-message-styles';
 
 const getCheckedSVGBackgroundImage = (fill: string): string => {
   return getInlineSVGBackgroundImage(
@@ -73,7 +73,7 @@ export const getComponentCss = (
               gridArea: '1/1',
               borderRadius: borderRadiusSmall,
             },
-            // TODO: is it somehow useful possible to make following styles configurable by paramter?
+            // TODO: is it somehow useful possible to make following styles configurable by parameter?
             ...(!isLoading && {
               '&(input:checked)': {
                 backgroundImage: getCheckedSVGBackgroundImage(checkedIconColor),
@@ -86,11 +86,6 @@ export const getComponentCss = (
                 ...prefersColorSchemeDarkMediaQuery(theme, {
                   backgroundImage: getIndeterminateSVGBackgroundImage(indeterminateIconColorDark),
                 }),
-              },
-            }),
-            ...(!isDisabled && {
-              '&(input:focus)::before': {
-                borderRadius: borderRadiusMedium,
               },
             }),
           },
@@ -140,5 +135,7 @@ export const getComponentCss = (
     ...getFunctionalComponentStateMessageStyles(theme, state, {
       gridColumn: '1/3',
     }),
+    // .loading
+    ...getFunctionalComponentLoadingMessageStyles(),
   });
 };
