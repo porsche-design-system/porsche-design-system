@@ -4,7 +4,7 @@ runs:
   using: 'composite'
   steps:
     - name: 'Restore Cached Builds'
-      uses: actions/cache/restore@v3
+      uses: actions/cache/restore@v4
       id: cache-builds-restore
       with:
         # TODO: icons and utilities/styles wouldn't be needed if icon-utils and injectGlobalStyle would use treeshakable assets package
@@ -50,7 +50,7 @@ runs:
         args: --components-js
     - name: 'Cache Builds'
       if: steps.cache-builds-restore.outputs.cache-hit != 'true'
-      uses: actions/cache/save@v3
+      uses: actions/cache/save@v4
       id: cache-builds-save
       with:
         path: |

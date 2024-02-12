@@ -123,6 +123,7 @@ export const getComponentCss = (
   const isColorInherit = color === 'inherit';
   const isSizeInherit = size === 'inherit';
   const isDark = isThemeDark(theme);
+  const animationName = `${isDark ? keyFramesDark : keyFramesLight}-${color}`;
 
   return getCss({
     '@global': {
@@ -153,7 +154,7 @@ export const getComponentCss = (
                 filter: filterMap.dark[color],
               }
             )),
-          WebkitAnimation: `${isDark ? keyFramesDark : keyFramesLight}-${color} 1ms`, // needed to enforce repaint in Safari if theme is switched programmatically.
+          WebkitAnimation: `${animationName} 1ms`, // needed to enforce repaint in Safari if theme is switched programmatically
         }),
         ...(isSizeInherit
           ? {
@@ -172,7 +173,7 @@ export const getComponentCss = (
         }),
       },
       ...(!isColorInherit && {
-        [`@keyframes ${isDark ? keyFramesDark : keyFramesLight}-${color}`]: forceRerenderAnimationStyle,
+        [`@keyframes ${animationName}`]: forceRerenderAnimationStyle,
       }),
     },
   });

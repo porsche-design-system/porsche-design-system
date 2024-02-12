@@ -6,7 +6,6 @@ export { observeBreakpointChange, unobserveBreakpointChange } from './breakpoint
 export { getCurrentMatchingBreakpointValue } from './breakpoint-observer-utils';
 export * from './button-handling';
 export * from './button-link-pure-utils';
-export * from './checkbox-radio-button-wrapper-utils';
 export * from './children-observer';
 export * from './device-detection';
 export * from './dom';
