@@ -121,10 +121,16 @@
       <h2>@use stencil component composition partially works</h2>
       <p-switch>Hi</p-switch>
       <p-switch loading>Ho</p-switch>
+
+      <hr />
+
+      <h2>reactive controller works</h2>
+      <p-checkbox-wrapper label="Hi"><input type="checkbox" /></p-checkbox-wrapper>
+      <p-checkbox-wrapper label="Ho" loading><input type="checkbox" /></p-checkbox-wrapper>
     </main>
 
     <script>
-      document.querySelectorAll('p-button,p-button-pure,p-switch').forEach((el) =>
+      document.querySelectorAll('p-button,p-button-pure,p-switch,p-checkbox-wrapper').forEach((el) =>
         el.addEventListener('click', ({ target }) => {
           target.loading = !target.loading;
           setTimeout(() => {
