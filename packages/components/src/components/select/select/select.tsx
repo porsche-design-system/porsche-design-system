@@ -33,19 +33,20 @@ import {
   getHighlightedSelectOption,
   getHighlightedSelectOptionIndex,
   getListAriaAttributes,
+  getMatchingSelectOptionIndex,
   getPrefixedTagNames,
   getShadowRootHTMLElement,
   getUpdatedIndex,
+  getUsableSelectOptions,
   hasPropValueChanged,
   isClickOutside,
   SELECT_DROPDOWN_DIRECTIONS,
+  SELECT_SEARCH_TIMEOUT,
   SelectAction,
-  getMatchingSelectOptionIndex,
   setNextSelectOptionHighlighted,
   THEMES,
   throwIfElementIsNotOfKind,
   validateProps,
-  SELECT_SEARCH_TIMEOUT,
 } from '../../../utils';
 import { getComponentCss } from './select-styles';
 import { Label, labelId } from '../../common/label/label';
@@ -298,7 +299,6 @@ export class Select {
 
   private onComboKeyDown = (event: KeyboardEvent): void => {
     const { key } = event;
-    const max = this.selectOptions.length - 1;
 
     const action = getActionFromKey(event, this.isOpen);
 
@@ -315,7 +315,11 @@ export class Select {
         setNextSelectOptionHighlighted(
           this.listElement,
           this.selectOptions,
-          getUpdatedIndex(getHighlightedSelectOptionIndex(this.selectOptions), max, action)
+          getUpdatedIndex(
+            getHighlightedSelectOptionIndex(this.selectOptions),
+            getUsableSelectOptions(this.selectOptions).length - 1,
+            action
+          )
         );
         break;
       case SelectAction.CloseSelect:

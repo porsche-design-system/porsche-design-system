@@ -162,7 +162,7 @@ export const setNextSelectOptionHighlighted = <T extends Option>(
  * @param {T[]} options - The array of select options to filter.
  * @returns {T[]} - An array of usable select options.
  */
-const getUsableSelectOptions = <T extends Option>(options: T[]): T[] =>
+export const getUsableSelectOptions = <T extends Option>(options: T[]): T[] =>
   options.filter((option) => !option.hidden && !option.disabled);
 
 /**
