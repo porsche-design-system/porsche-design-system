@@ -1,0 +1,51 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`accessibility should expose correct accessibility tree if description is set 1`] = `
+{
+  "haspopup": "listbox",
+  "name": "",
+  "role": "combobox",
+}
+`;
+
+exports[`accessibility should expose correct accessibility tree if option is highlighted 1`] = `
+{
+  "expanded": true,
+  "focused": true,
+  "haspopup": "listbox",
+  "name": "",
+  "role": "combobox",
+}
+`;
+
+exports[`accessibility should expose correct accessibility tree if option is selected 1`] = `
+{
+  "children": [
+    {
+      "name": "a",
+      "role": "StaticText",
+    },
+  ],
+  "focused": true,
+  "haspopup": "listbox",
+  "name": "",
+  "role": "combobox",
+  "value": "a",
+}
+`;
+
+exports[`accessibility should expose correct accessibility tree in error state 1`] = `
+{
+  "haspopup": "listbox",
+  "name": "",
+  "role": "combobox",
+}
+`;
+
+exports[`accessibility should expose correct initial accessibility tree and aria properties of button 1`] = `
+{
+  "haspopup": "listbox",
+  "name": "",
+  "role": "combobox",
+}
+`;
