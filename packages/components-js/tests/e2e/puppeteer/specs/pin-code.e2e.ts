@@ -14,7 +14,7 @@ import {
   setProperty,
   waitForStencilLifecycle,
 } from '../helpers';
-import { Components } from '@porsche-design-system/components';
+import { Components } from '@porsche-design-system/components/src/components';
 import { PIN_CODE_LENGTHS } from '@porsche-design-system/components/src/components/pin-code/pin-code-utils';
 
 let page: Page;
