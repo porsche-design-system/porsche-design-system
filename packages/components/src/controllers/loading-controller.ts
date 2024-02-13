@@ -1,4 +1,4 @@
-import type { ReactiveController, ReactiveControllerHost } from './host-controller';
+import type { ReactiveController, ReactiveControllerHost } from './controller-host';
 
 export class LoadingController implements ReactiveController {
   public initialLoading: boolean = false;
