@@ -133,6 +133,14 @@
     </p-radio-button-wrapper>
   </div>
 
+  <div class="playground light" title="should render default select">
+    <p-select name="options" label="Some label">
+      <p-select-option value="a">Option A</p-select-option>
+      <p-select-option value="b">Option B</p-select-option>
+      <p-select-option value="c">Option C</p-select-option>
+    </p-select>
+  </div>
+
   <div class="playground light" title="should render default select-wrapper">
     <p-select-wrapper label="Some label">
       <select>
@@ -467,6 +475,14 @@
     <my-prefix-p-radio-button-wrapper label="Some label">
       <input type="radio" />
     </my-prefix-p-radio-button-wrapper>
+  </div>
+
+  <div class="playground light" title="should render default select with custom prefix">
+    <my-prefix-p-select name="options" label="Some label">
+      <my-prefix-p-select-option value="a">Option A</my-prefix-p-select-option>
+      <my-prefix-p-select-option value="b">Option B</my-prefix-p-select-option>
+      <my-prefix-p-select-option value="c">Option C</my-prefix-p-select-option>
+    </my-prefix-p-select>
   </div>
 
   <div class="playground light" title="should render default select-wrapper with custom prefix">
