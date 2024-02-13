@@ -207,15 +207,33 @@ export const getActiveElementClassNameInShadowRoot = (element: ElementHandle): P
 };
 
 export const getActiveElementId = (page: Page): Promise<string> => {
-  return page.evaluate(() => document.activeElement.id);
+  return page.evaluate(() => {
+    try {
+      return document.activeElement.id;
+    } catch (e) {
+      throw new Error(`Could not get "id" from document.activeElement (${document.activeElement}) `);
+    }
+  });
 };
 
 export const getActiveElementTagName = (page: Page): Promise<string> => {
-  return page.evaluate(() => document.activeElement.tagName);
+  return page.evaluate(() => {
+    try {
+      return document.activeElement.tagName;
+    } catch (e) {
+      throw new Error(`Could not get "tagName" from document.activeElement (${document.activeElement}) `);
+    }
+  });
 };
 
 export const getActiveElementProp = (page: Page, prop: string): Promise<string> => {
-  return page.evaluate((prop) => document.activeElement[prop], prop);
+  return page.evaluate((prop) => {
+    try {
+      return document.activeElement[prop];
+    } catch (e) {
+      throw new Error(`Could not get "${prop}" from document.activeElement (${document.activeElement}) `);
+    }
+  }, prop);
 };
 
 type Pseudo = '::before' | '::after' | '::-webkit-search-decoration';
