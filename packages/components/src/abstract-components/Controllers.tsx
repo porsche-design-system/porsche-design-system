@@ -133,6 +133,7 @@ export class ControllerHost implements ReactiveControllerHost {
 // - https://lit.dev/docs/composition/overview/
 // - https://lit.dev/docs/composition/mixins/
 // - https://lit.dev/docs/composition/controllers/
+// this is sometimes also called "behaviors"
 export class LoadingController implements ReactiveController {
   public initialLoading: boolean = false;
 

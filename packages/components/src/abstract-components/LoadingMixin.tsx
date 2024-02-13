@@ -67,6 +67,9 @@ export type MixedComponent = PrefixWithUnderscore<
 
 export interface AnotherLoadingMixin extends Required<MixedComponent> {}
 
+// extended mixin that does not override lifecycles
+// but instead has a typing convention that prefixes them with an `_` underscore in the stencil component
+// and then calls them from the mixin if they exist
 export class AnotherLoadingMixin implements ComponentInterface {
   public loading: boolean = false;
   public initialLoading: boolean = false;
@@ -88,11 +91,8 @@ export class AnotherLoadingMixin implements ComponentInterface {
     this._componentWillLoad?.();
   }
 
-  // we can't use any stencil decorators here since it isn't a stencil component
-  // that's why we use the componentShouldUpdate lifecycle to check for the loading change
-  // keep in mind that `hasPropValueChanged(newVal, oldVal)` was added here, which was previously in the component itself
-  // because defining same lifecycle here and in component will override with the one from component
   public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
+    console.log('AnotherLoadingMixin componentShouldUpdate');
     this._componentShouldUpdate?.();
     return hasPropValueChanged(newVal, oldVal);
   }
