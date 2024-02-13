@@ -37,6 +37,8 @@
     PScroller,
     PSegmentedControl,
     PSegmentedControlItem,
+    PSelect,
+    PSelectOption,
     PSelectWrapper,
     PSpinner,
     PTable,
@@ -142,6 +144,14 @@
         <PRadioButtonWrapper :label="'Some label'">
           <input type="radio" />
         </PRadioButtonWrapper>
+      </div>
+
+      <div class="playground light" title="should render default select">
+        <PSelect :name="'options'" :label="'Some label'">
+          <PSelectOption value="a">Option A</PSelectOption>
+          <PSelectOption value="b">Option B</PSelectOption>
+          <PSelectOption value="c">Option C</PSelectOption>
+        </PSelect>
       </div>
 
       <div class="playground light" title="should render default select-wrapper">
@@ -480,6 +490,14 @@
           <PRadioButtonWrapper :label="'Some label'">
             <input type="radio" />
           </PRadioButtonWrapper>
+        </div>
+
+        <div class="playground light" title="should render default select with custom prefix">
+          <PSelect :name="'options'" :label="'Some label'">
+            <PSelectOption value="a">Option A</PSelectOption>
+            <PSelectOption value="b">Option B</PSelectOption>
+            <PSelectOption value="c">Option C</PSelectOption>
+          </PSelect>
         </div>
 
         <div class="playground light" title="should render default select-wrapper with custom prefix">
