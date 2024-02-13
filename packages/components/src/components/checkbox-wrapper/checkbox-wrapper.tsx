@@ -1,4 +1,4 @@
-import { Component, Element, forceUpdate, h, type JSX, Listen, Prop, Watch } from '@stencil/core';
+import { Component, Element, forceUpdate, h, type JSX, Listen, Prop } from '@stencil/core';
 import {
   AllowedTypes,
   attachComponentCss,
@@ -20,6 +20,7 @@ import { type CheckboxWrapperState } from './checkbox-wrapper-utils';
 import { StateMessage } from '../common/state-message/state-message';
 import { Label } from '../common/label/label';
 import { LoadingMessage } from '../common/loading-message/loading-message';
+import { ControllerHost, LoadingController } from '../../controllers';
 
 const propTypes: PropTypes<typeof CheckboxWrapper> = {
   label: AllowedTypes.string,
@@ -55,8 +56,9 @@ export class CheckboxWrapper {
   /** Adapts the color depending on the theme. */
   @Prop() public theme?: Theme = 'light';
 
+  private controllerHost = new ControllerHost(this);
+  private loadingCtrl = new LoadingController(this.controllerHost);
   private input: HTMLInputElement;
-  private initialLoading: boolean = false;
 
   @Listen('keydown')
   public onKeydown(e: KeyboardEvent): void {
@@ -66,24 +68,14 @@ export class CheckboxWrapper {
     }
   }
 
-  @Watch('loading')
-  public loadingChanged(newVal: boolean): void {
-    if (newVal) {
-      // don't reset initialLoading to false
-      this.initialLoading = newVal;
-    }
-  }
-
   public connectedCallback(): void {
     applyCheckboxRadioButtonSafariRenderingFix(this.host);
     this.observeAttributes(); // on every reconnect
-    this.initialLoading = this.loading;
   }
 
   public componentWillLoad(): void {
     this.input = getOnlyChildOfKindHTMLElementOrThrow(this.host, 'input[type=checkbox]');
     this.observeAttributes(); // once initially
-    this.initialLoading = this.loading;
   }
 
   public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
@@ -132,7 +124,7 @@ export class CheckboxWrapper {
           )}
         </div>
         <StateMessage state={this.state} message={this.message} theme={this.theme} host={this.host} />
-        <LoadingMessage loading={this.loading} initialLoading={this.initialLoading} />
+        <LoadingMessage loading={this.loading} initialLoading={this.loadingCtrl.initialLoading} />
       </div>
     );
   }

@@ -17,7 +17,7 @@ import {
   warnIfParentIsPTextAndIconIsNone,
 } from '../../utils';
 import type { BreakpointCustomizable, PropTypes, SelectedAriaAttributes, Theme } from '../../types';
-import { Component, Element, h, Host, type JSX, Listen, Prop, Watch } from '@stencil/core';
+import { Component, Element, h, Host, type JSX, Listen, Prop } from '@stencil/core';
 import type {
   ButtonPureAlignLabel,
   ButtonPureAlignLabelDeprecated,
@@ -30,6 +30,7 @@ import type {
 import { getButtonPureAriaAttributes, warnIfIsLoadingAndIconIsNone } from './button-pure-utils';
 import { getComponentCss } from './button-pure-styles';
 import { LoadingMessage, loadingId } from '../common/loading-message/loading-message';
+import { ControllerHost, LoadingController } from '../../controllers';
 
 const propTypes: PropTypes<typeof ButtonPure> = {
   type: AllowedTypes.oneOf<ButtonPureType>(BUTTON_TYPES),
@@ -104,7 +105,8 @@ export class ButtonPure {
   /** Add ARIA attributes. */
   @Prop() public aria?: SelectedAriaAttributes<ButtonPureAriaAttribute>;
 
-  private initialLoading: boolean = false;
+  private controllerHost = new ControllerHost(this);
+  private loadingCtrl = new LoadingController(this.controllerHost);
 
   private get isDisabledOrLoading(): boolean {
     return isDisabledOrLoading(this.disabled, this.loading);
@@ -116,22 +118,6 @@ export class ButtonPure {
     if (this.isDisabledOrLoading) {
       e.stopPropagation();
     }
-  }
-
-  @Watch('loading')
-  public loadingChanged(newVal: boolean): void {
-    if (newVal) {
-      // don't reset initialLoading to false
-      this.initialLoading = newVal;
-    }
-  }
-
-  public connectedCallback(): void {
-    this.initialLoading = this.loading;
-  }
-
-  public componentWillLoad(): void {
-    this.initialLoading = this.loading;
   }
 
   public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
@@ -219,7 +205,7 @@ export class ButtonPure {
             <slot />
           </span>
         </button>
-        <LoadingMessage loading={this.loading} initialLoading={this.initialLoading} />
+        <LoadingMessage loading={this.loading} initialLoading={this.loadingCtrl.initialLoading} />
       </Host>
     );
   }

@@ -21,11 +21,12 @@ import {
   THEMES,
   validateProps,
 } from '../../utils';
-import { Component, Element, h, Host, type JSX, Listen, Prop, Watch } from '@stencil/core';
+import { Component, Element, h, Host, type JSX, Listen, Prop } from '@stencil/core';
 import { getButtonAriaAttributes } from './button-utils';
 import type { ButtonIcon } from './button-utils';
 import { getComponentCss } from './button-styles';
 import { loadingId, LoadingMessage } from '../common/loading-message/loading-message';
+import { ControllerHost, LoadingController } from '../../controllers';
 
 const propTypes: PropTypes<typeof Button> = {
   type: AllowedTypes.oneOf<ButtonType>(BUTTON_TYPES),
@@ -81,29 +82,14 @@ export class Button {
   /** Add ARIA attributes. */
   @Prop() public aria?: SelectedAriaAttributes<ButtonAriaAttribute>;
 
-  private initialLoading: boolean = false;
+  private controllerHost = new ControllerHost(this);
+  private loadingCtrl = new LoadingController(this.controllerHost);
 
   @Listen('click', { capture: true })
   public onClick(e: MouseEvent): void {
     if (isDisabledOrLoading(this.disabled, this.loading)) {
       e.stopPropagation();
     }
-  }
-
-  @Watch('loading')
-  public loadingChanged(newVal: boolean): void {
-    if (newVal) {
-      // don't reset initialLoading to false
-      this.initialLoading = newVal;
-    }
-  }
-
-  public connectedCallback(): void {
-    this.initialLoading = this.loading;
-  }
-
-  public componentWillLoad(): void {
-    this.initialLoading = this.loading;
   }
 
   public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
@@ -164,7 +150,7 @@ export class Button {
             <slot />
           </span>
         </button>
-        <LoadingMessage loading={this.loading} initialLoading={this.initialLoading} />
+        <LoadingMessage loading={this.loading} initialLoading={this.loadingCtrl.initialLoading} />
       </Host>
     );
   }
