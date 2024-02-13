@@ -165,37 +165,29 @@ export default class Code extends Vue {
   }
 
   iconsExample = `<p-select name="options" label="Some Label" description="Some description" required>
-  <p-select-option value="911">
-    <img src="${require('@/assets/911.png')}" />
-    911
-  </p-select-option>
   <p-select-option value="718">
-    <img src="${require('@/assets/718.png')}" />
+    <img src="https://porsche-design-system.github.io/porsche-design-system/718.png" />
     718
   </p-select-option>
-  <p-select-option value="boxster">
-    <img src="${require('@/assets/boxster.png')}" />
-    Boxster
-  </p-select-option>
-  <p-select-option value="cayenne">
-    <img src="${require('@/assets/cayenne.png')}" />
-    Cayenne
-  </p-select-option>
-  <p-select-option value="macan">
-    <img src="${require('@/assets/macan.png')}" />
-    Macan
-  </p-select-option>
-  <p-select-option value="panamera">
-    <img src="${require('@/assets/panamera.png')}" />
-    Panamera
+  <p-select-option value="911">
+    <img src="https://porsche-design-system.github.io/porsche-design-system/911.png" />
+    911
   </p-select-option>
   <p-select-option value="taycan">
-    <img src="${require('@/assets/taycan.png')}" />
+    <img src="https://porsche-design-system.github.io/porsche-design-system/taycan.png" />
     Taycan
   </p-select-option>
-  <p-select-option value="cayman">
-    <img src="${require('@/assets/cayman.png')}" />
-    Cayman
+  <p-select-option value="macan">
+    <img src="https://porsche-design-system.github.io/porsche-design-system/macan.png" />
+    Macan
+  </p-select-option>
+  <p-select-option value="cayenne">
+    <img src="https://porsche-design-system.github.io/porsche-design-system/cayenne.png" />
+    Cayenne
+  </p-select-option>
+  <p-select-option value="panamera">
+    <img src="https://porsche-design-system.github.io/porsche-design-system/panamera.png" />
+    Panamera
   </p-select-option>
 </p-select>`;
 
