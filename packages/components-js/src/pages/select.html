@@ -1,0 +1,333 @@
+<div class="playground light" title="should render without label and without description">
+  <p-select name="options" value="a">
+    <p-select-option value="a">Option A</p-select-option>
+    <p-select-option value="b">Option B</p-select-option>
+    <p-select-option value="c">Option C</p-select-option>
+  </p-select>
+</div>
+
+<div class="playground light" title="should render with label">
+  <p-select name="options" value="a" label="Some Label">
+    <p-select-option value="a">Option A</p-select-option>
+    <p-select-option value="b">Option B</p-select-option>
+    <p-select-option value="c">Option C</p-select-option>
+  </p-select>
+</div>
+
+<div class="playground light" title="should render with label and description">
+  <p-select name="options" value="a" label="Some Label" description="Some description">
+    <p-select-option value="a">Option A</p-select-option>
+    <p-select-option value="b">Option B</p-select-option>
+    <p-select-option value="c">Option C</p-select-option>
+  </p-select>
+</div>
+
+<div class="playground light" title="should render with responsive label and description">
+  <p-select
+    name="options"
+    value="a"
+    label="Hide label responsive"
+    description="Some description"
+    hide-label="{ base: true, xs: false, s: true, m: false, l: true, xl: false }"
+  >
+    <p-select-option value="a">Option A</p-select-option>
+    <p-select-option value="b">Option B</p-select-option>
+    <p-select-option value="c">Option C</p-select-option>
+  </p-select>
+</div>
+
+<div class="playground light" title="should render in disabled state">
+  <p-select name="options" value="a" label="Some Label disabled" disabled="true">
+    <p-select-option value="a">Option A</p-select-option>
+    <p-select-option value="b">Option B</p-select-option>
+    <p-select-option value="c">Option C</p-select-option>
+  </p-select>
+</div>
+
+<div class="playground light" title="should render in required state">
+  <p-select name="options" value="a" label="Some label required" required="true">
+    <p-select-option value="a">Option A</p-select-option>
+    <p-select-option value="b">Option B</p-select-option>
+    <p-select-option value="c">Option C</p-select-option>
+  </p-select>
+  <p-select
+    name="options"
+    value="a"
+    label="This is a very insanely super long label across multiple lines required"
+    required="true"
+  >
+    <p-select-option value="a">Option A</p-select-option>
+    <p-select-option value="b">Option B</p-select-option>
+    <p-select-option value="c">Option C</p-select-option>
+  </p-select>
+</div>
+
+<div class="playground light" title="should render with error state and error message">
+  <p-select name="options" value="a" label="Error state" state="error" message="Some error message." value="a">
+    <p-select-option value="a">Option A</p-select-option>
+    <p-select-option value="b">Option B</p-select-option>
+    <p-select-option value="c">Option C</p-select-option>
+  </p-select>
+</div>
+
+<div class="playground light" title="should render with error state and no error message">
+  <p-select name="options" value="a" label="Error state (no message)" state="error" value="a">
+    <p-select-option value="a">Option A</p-select-option>
+    <p-select-option value="b">Option B</p-select-option>
+    <p-select-option value="c">Option C</p-select-option>
+  </p-select>
+</div>
+
+<div class="playground light" title="should render with success state and success message">
+  <p-select name="options" value="a" label="Success state" state="success" message="Some success message.">
+    <p-select-option value="a">Option A</p-select-option>
+    <p-select-option value="b">Option B</p-select-option>
+    <p-select-option value="c">Option C</p-select-option>
+  </p-select>
+</div>
+
+<div class="playground light" title="should render with success state and no success message">
+  <p-select name="options" value="a" label="Success state (no message)" state="success">
+    <p-select-option value="a">Option A</p-select-option>
+    <p-select-option value="b">Option B</p-select-option>
+    <p-select-option value="c">Option C</p-select-option>
+  </p-select>
+</div>
+
+<div class="playground light" title="should render with default state and no message">
+  <p-select
+    name="options"
+    value="a"
+    label="Default state, no message should be visible"
+    state="none"
+    message="Some message which should not be rendered."
+  >
+    <p-select-option value="a">Option A</p-select-option>
+    <p-select-option value="b">Option B</p-select-option>
+    <p-select-option value="c">Option C</p-select-option>
+  </p-select>
+</div>
+
+<div class="playground light" title="should render label, description and message by slotted content with error state">
+  <p-select name="options" value="a" state="error">
+    <span slot="label">
+      <span>
+        Slotted label. And some slotted and deeply nested <a href="#">anchor</a>, <b>bold</b>, <strong>strong</strong>,
+        <em>emphasized</em> and <i>italic</i> text.
+      </span>
+    </span>
+    <span slot="description">
+      <span>
+        Slotted description. And some slotted and deeply nested <a href="#">anchor</a>, <b>bold</b>,
+        <strong>strong</strong>, <em>emphasized</em> and <i>italic</i> text.
+      </span>
+    </span>
+    <p-select-option value="a">Option A</p-select-option>
+    <p-select-option value="b">Option B</p-select-option>
+    <p-select-option value="c">Option C</p-select-option>
+    <span slot="message">
+      <span>
+        Slotted error message. And some slotted and deeply nested <a href="#">anchor</a>, <b>bold</b>,
+        <strong>strong</strong>, <em>emphasized</em> and <i>italic</i> text.
+      </span>
+    </span>
+  </p-select>
+</div>
+
+<div
+  class="playground light"
+  title="should render label, description and message by slotted content with success state"
+>
+  <p-select name="options" value="a" state="success">
+    <span slot="label">
+      <span>
+        Slotted label. And some slotted and deeply nested <a href="#">anchor</a>, <b>bold</b>, <strong>strong</strong>,
+        <em>emphasized</em> and <i>italic</i> text.
+      </span>
+    </span>
+    <span slot="description">
+      <span>
+        Slotted description. And some slotted and deeply nested <a href="#">anchor</a>, <b>bold</b>,
+        <strong>strong</strong>, <em>emphasized</em> and <i>italic</i> text.
+      </span>
+    </span>
+    <p-select-option value="a">Option A</p-select-option>
+    <p-select-option value="b">Option B</p-select-option>
+    <p-select-option value="c">Option C</p-select-option>
+    <span slot="message">
+      <span>
+        Slotted success message. And some slotted and deeply nested <a href="#">anchor</a>, <b>bold</b>,
+        <strong>strong</strong>, <em>emphasized</em> and <i>italic</i> text.
+      </span>
+    </span>
+  </p-select>
+</div>
+
+<div class="playground light" title="should render with multiline label, description and cut off too long option text">
+  <p-select
+    name="options"
+    value="a"
+    label="Extra long label and selected option to see the text being cut off"
+    description="Lorem ipsum dolor sit amet, consetetur sadipscing lorem ipsum dolor sit amet"
+    style="max-width: 15rem"
+  >
+    <p-select-option value="a"
+      >Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
+      dolore magna aliquyam erat, sed diam voluptua.</p-select-option
+    >
+    <p-select-option value="b">Option B</p-select-option>
+    <p-select-option value="c">Option C</p-select-option>
+  </p-select>
+</div>
+
+<div class="playground light" title="should render unopened without preselection">
+  <p-select name="options" label="No selection" class="focus">
+    <p-select-option value="a">Option A</p-select-option>
+    <p-select-option value="b">Option B</p-select-option>
+    <p-select-option value="c">Option C</p-select-option>
+  </p-select>
+</div>
+
+<div class="playground light" title="should render opened" style="padding-bottom: calc(1rem + 450px)">
+  <p-select name="options" value="a" label="Opened" dropdown-direction="down" class="open">
+    <p-select-option value="a"
+      >Multiline options could be quite long, especially on smaller screens. Let's check if the height of the option is
+      displaying correctly. Also, the checkbox-wrapper should show up on the right of the text, aligned to the
+      top.</p-select-option
+    >
+    <p-select-option value="b">Option B</p-select-option>
+    <p-select-option value="c">Option C</p-select-option>
+    <p-select-option value="d"
+      >Multiline options could be quite long, especially on smaller screens. Let's check if the height of the option is
+      displaying correctly. Also, the checkbox-wrapper should show up on the right of the text, aligned to the
+      top.</p-select-option
+    >
+    <p-select-option value="e">Option E</p-select-option>
+    <p-select-option value="f">Option F</p-select-option>
+    <p-select-option value="g">Option G</p-select-option>
+    <p-select-option value="h">Option H</p-select-option>
+    <p-select-option value="i">Option I</p-select-option>
+    <p-select-option value="j">Option J</p-select-option>
+    <p-select-option value="k">Option K</p-select-option>
+  </p-select>
+</div>
+
+<div
+  class="playground light"
+  title="should render with open dropdown direction up"
+  style="padding-top: calc(1rem + 450px)"
+>
+  <p-select name="options" value="a" label="Opened direction up" dropdown-direction="up" class="open">
+    <p-select-option value="a">Should show dropdown direction up</p-select-option>
+    <p-select-option value="b">Option B</p-select-option>
+    <p-select-option value="c">Option C</p-select-option>
+    <p-select-option value="d"
+      >Multiline options could be quite long, especially on smaller screens. Let's check if the height of the option is
+      displaying correctly.</p-select-option
+    >
+    <p-select-option value="e">Option E</p-select-option>
+    <p-select-option value="f">Option F</p-select-option>
+    <p-select-option value="g">Option G</p-select-option>
+    <p-select-option value="h">Option H</p-select-option>
+    <p-select-option value="i">Option I</p-select-option>
+    <p-select-option value="j">Option J</p-select-option>
+    <p-select-option value="k">Option K</p-select-option>
+  </p-select>
+</div>
+
+<div
+  class="playground light"
+  title="should render opened and with disabled, highlighted and selected"
+  style="padding-bottom: calc(1rem + 450px)"
+>
+  <p-select
+    name="options"
+    value="c"
+    label="Opened with disabled (Option A), highlighted (Option B) and selected (Option C)"
+    dropdown-direction="down"
+    class="open highlight"
+  >
+    <p-select-option value="a" disabled="true">Option A</p-select-option>
+    <p-select-option value="b">Option B</p-select-option>
+    <p-select-option value="c">Option C</p-select-option>
+    <p-select-option value="d">Option D</p-select-option>
+    <p-select-option value="e">Option E</p-select-option>
+    <p-select-option value="f">Option F</p-select-option>
+    <p-select-option value="g">Option G</p-select-option>
+    <p-select-option value="h">Option H</p-select-option>
+    <p-select-option value="i">Option I</p-select-option>
+    <p-select-option value="j">Option J</p-select-option>
+    <p-select-option value="k">Option K</p-select-option>
+  </p-select>
+</div>
+
+<div
+  class="playground light"
+  title="should render opened and with selected empty option"
+  style="padding-bottom: calc(1rem + 450px)"
+>
+  <p-select name="options" label="Opened with selected empty Option" dropdown-direction="down" class="open">
+    <p-select-option></p-select-option>
+    <p-select-option value="a">Option A</p-select-option>
+    <p-select-option value="b">Option B</p-select-option>
+    <p-select-option value="c">Option C</p-select-option>
+    <p-select-option value="d">Option D</p-select-option>
+    <p-select-option value="e">Option E</p-select-option>
+    <p-select-option value="f">Option F</p-select-option>
+    <p-select-option value="g">Option G</p-select-option>
+    <p-select-option value="h">Option H</p-select-option>
+    <p-select-option value="i">Option I</p-select-option>
+    <p-select-option value="j">Option J</p-select-option>
+    <p-select-option value="k">Option K</p-select-option>
+  </p-select>
+</div>
+
+<div
+  class="playground light"
+  title="should render opened and with slotted images"
+  style="padding-bottom: calc(1rem + 450px)"
+>
+  <p-select name="options" label="Opened with slotted images" dropdown-direction="down" class="open">
+    <p-select-option value="a">
+      <img
+        src="https://porsche-design-system.github.io/porsche-design-system/placeholder_800x500.svg"
+        alt="Some alt text"
+      />
+      Multiline options could be quite long, especially on smaller screens. Let's check if the height of the option is
+      displaying correctly. Also, the slotted image should be aligned correctly to the top-left and preserve the space
+      even for multiple lines.</p-select-option
+    >
+    <p-select-option value="b">
+      <img
+        src="https://porsche-design-system.github.io/porsche-design-system/placeholder_800x900.svg"
+        alt="Some alt text"
+      />
+      Option B
+    </p-select-option>
+    <p-select-option value="c">
+      <img
+        src="https://porsche-design-system.github.io/porsche-design-system/placeholder_800x900.svg"
+        alt="Some alt text"
+      />
+      Option C
+    </p-select-option>
+    <p-select-option value="d">
+      <img src="https://porsche-design-system.github.io/porsche-design-system/weekender.webp" alt="Some alt text" />
+      Option C
+    </p-select-option>
+    <p-select-option value="e">Option E</p-select-option>
+    <p-select-option value="f">Option F</p-select-option>
+  </p-select>
+</div>
+
+<script>
+  porscheDesignSystem.componentsReady().then(() => {
+    // Call click on the shadow root input so isOutsideClick won't close the dropdowns
+    document.querySelectorAll('p-select.open').forEach((el) => el.shadowRoot.querySelector('BUTTON').click());
+
+    // Highlight second option
+    document
+      .querySelectorAll('p-select.highlight')
+      .forEach((select) => select.children[1].shadowRoot.firstElementChild.classList.add('option--highlighted'));
+  });
+</script>
