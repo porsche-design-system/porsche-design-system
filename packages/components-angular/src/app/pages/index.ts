@@ -109,6 +109,7 @@ import { PopoverComponent } from './generated/popover.component';
 import { RadioButtonWrapperComponent } from './generated/radio-button-wrapper.component';
 import { ScrollerComponent } from './generated/scroller.component';
 import { SegmentedControlComponent } from './generated/segmented-control.component';
+import { SelectComponent } from './generated/select.component';
 import { SelectWrapperComponent } from './generated/select-wrapper.component';
 import { SpinnerComponent } from './generated/spinner.component';
 import { StepperHorizontalComponent } from './generated/stepper-horizontal.component';
@@ -214,6 +215,7 @@ export const generatedPages = [
   RadioButtonWrapperComponent,
   ScrollerComponent,
   SegmentedControlComponent,
+  SelectComponent,
   SelectWrapperComponent,
   SpinnerComponent,
   StepperHorizontalComponent,
@@ -612,6 +614,11 @@ export const generatedRoutes: ExtendedRoute[] = [
     name: 'Segmented Control',
     path: 'segmented-control',
     component: SegmentedControlComponent,
+  },
+  {
+    name: 'Select',
+    path: 'select',
+    component: SelectComponent,
   },
   {
     name: 'Select Wrapper',

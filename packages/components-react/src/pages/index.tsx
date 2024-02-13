@@ -87,6 +87,7 @@ import { PopoverPage } from './generated/Popover';
 import { RadioButtonWrapperPage } from './generated/RadioButtonWrapper';
 import { ScrollerPage } from './generated/Scroller';
 import { SegmentedControlPage } from './generated/SegmentedControl';
+import { SelectPage } from './generated/Select';
 import { SelectWrapperPage } from './generated/SelectWrapper';
 import { SpinnerPage } from './generated/Spinner';
 import { StepperHorizontalPage } from './generated/StepperHorizontal';
@@ -484,6 +485,11 @@ export const generatedRoutes: RouteType[] = [
     name: 'Segmented Control',
     path: '/segmented-control',
     element: <SegmentedControlPage />,
+  },
+  {
+    name: 'Select',
+    path: '/select',
+    element: <SelectPage />,
   },
   {
     name: 'Select Wrapper',

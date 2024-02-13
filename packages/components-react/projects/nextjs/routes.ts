@@ -308,6 +308,10 @@ const generatedRoutes = {
     "path": "/segmented-control",
     "name": "SegmentedControl"
   },
+  "select": {
+    "path": "/select",
+    "name": "Select"
+  },
   "selectWrapper": {
     "path": "/select-wrapper",
     "name": "SelectWrapper"
