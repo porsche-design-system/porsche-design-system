@@ -3,19 +3,19 @@ import type { ReactiveController, ReactiveControllerHost } from './host-controll
 export class LoadingController implements ReactiveController {
   public initialLoading: boolean = false;
 
-  constructor(private controllerHost: ReactiveControllerHost<{ loading?: boolean }>) {
+  public constructor(private controllerHost: ReactiveControllerHost<{ loading?: boolean }>) {
     this.controllerHost.addController(this);
   }
 
-  hostConnected() {
+  public hostConnected(): void {
     this.initialLoading = this.controllerHost.host.loading;
   }
 
-  hostWillLoad() {
+  public hostWillLoad(): void {
     this.initialLoading = this.controllerHost.host.loading;
   }
 
-  hostWillUpdate() {
+  public hostWillUpdate(): void {
     if (this.controllerHost.host.loading) {
       this.initialLoading = true;
     }

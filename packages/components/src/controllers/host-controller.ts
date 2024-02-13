@@ -89,14 +89,14 @@ export type ReactiveController = {
 export class ControllerHost<T extends object> implements ReactiveControllerHost<T> {
   private controllers = new Set<ReactiveController>();
 
-  constructor(public host: ComponentInterface & T) {
+  public constructor(public host: ComponentInterface & T) {
     const {
-      connectedCallback,
-      disconnectedCallback,
-      componentWillLoad,
-      componentDidLoad,
-      componentWillUpdate,
-      componentDidUpdate,
+      connectedCallback, // eslint-disable-line @typescript-eslint/unbound-method
+      disconnectedCallback, // eslint-disable-line @typescript-eslint/unbound-method
+      componentWillLoad, // eslint-disable-line @typescript-eslint/unbound-method
+      componentDidLoad, // eslint-disable-line @typescript-eslint/unbound-method
+      componentWillUpdate, // eslint-disable-line @typescript-eslint/unbound-method
+      componentDidUpdate, // eslint-disable-line @typescript-eslint/unbound-method
     } = host;
 
     host.connectedCallback = (): void => {
