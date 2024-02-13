@@ -1,8 +1,8 @@
-import type { ConsoleMessage, ElementHandle, Page, WaitForOptions, SnapshotOptions } from 'puppeteer';
+import type { ConsoleMessage, ElementHandle, Page, SnapshotOptions, WaitForOptions } from 'puppeteer';
 import { waitForComponentsReady } from './stencil';
 import type { TagName } from '@porsche-design-system/shared';
-import { getComponentMeta } from '@porsche-design-system/component-meta';
 import type { ComponentMeta } from '@porsche-design-system/component-meta';
+import { getComponentMeta } from '@porsche-design-system/component-meta';
 import * as beautify from 'js-beautify';
 import { getInitialStyles } from '@porsche-design-system/components-js/partials';
 import type { FormState } from '@porsche-design-system/components/dist/types/bundle';
@@ -182,12 +182,28 @@ export const getCssClasses = async (element: ElementHandle): Promise<string> => 
   return Object.values(await getProperty(element, 'classList')).join(' ');
 };
 
-export const getActiveElementTagNameInShadowRoot = (element: ElementHandle): Promise<string> => {
-  return element.evaluate((el) => el.shadowRoot.activeElement.tagName);
+export const getActiveElementTagNameInShadowRoot = async (element: ElementHandle): Promise<string> => {
+  return element.evaluate((el) => {
+    try {
+      return el.shadowRoot.activeElement.tagName;
+    } catch (e) {
+      throw new Error(
+        `Could not get "tagName" from ${el.tagName}.shadowRoot.activeElement (${el.shadowRoot.activeElement}) `
+      );
+    }
+  });
 };
 
 export const getActiveElementClassNameInShadowRoot = (element: ElementHandle): Promise<string> => {
-  return element.evaluate((el) => el.shadowRoot.activeElement.className);
+  return element.evaluate((el) => {
+    try {
+      return el.shadowRoot.activeElement.className;
+    } catch (e) {
+      throw new Error(
+        `Could not get "className" from ${el.tagName}.shadowRoot.activeElement (${el.shadowRoot.activeElement}) `
+      );
+    }
+  });
 };
 
 export const getActiveElementId = (page: Page): Promise<string> => {
