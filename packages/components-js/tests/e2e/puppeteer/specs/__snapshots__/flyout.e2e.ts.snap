@@ -12,62 +12,67 @@ exports[`accessibility should expose correct initial accessibility tree 1`] = `
                 {
                   "children": [
                     {
+                      "children": [
+                        {
+                          "role": "none",
+                        },
+                      ],
                       "role": "none",
                     },
-                  ],
-                  "role": "none",
-                },
-                {
-                  "children": [
                     {
                       "children": [
                         {
-                          "name": "Dismiss flyout",
-                          "role": "StaticText",
+                          "children": [
+                            {
+                              "name": "Dismiss flyout",
+                              "role": "StaticText",
+                            },
+                          ],
+                          "role": "none",
                         },
                       ],
                       "role": "none",
                     },
                   ],
-                  "role": "none",
+                  "focused": true,
+                  "name": "Dismiss flyout",
+                  "role": "button",
+                },
+                {
+                  "name": "",
+                  "role": "status",
                 },
               ],
-              "focused": true,
-              "name": "Dismiss flyout",
-              "role": "button",
-            },
-            {
               "name": "",
-              "role": "status",
+              "role": "generic",
+            },
+          ],
+          "name": "",
+          "role": "generic",
+        },
+        {
+          "children": [
+            {
+              "children": [
+                {
+                  "children": [
+                    {
+                      "name": "Some Content",
+                      "role": "StaticText",
+                    },
+                  ],
+                  "name": "",
+                  "role": "paragraph",
+                },
+              ],
+              "role": "none",
             },
           ],
           "name": "",
           "role": "generic",
         },
       ],
-      "name": "",
-      "role": "generic",
-    },
-    {
-      "children": [
-        {
-          "children": [
-            {
-              "children": [
-                {
-                  "name": "Some Content",
-                  "role": "StaticText",
-                },
-              ],
-              "name": "",
-              "role": "paragraph",
-            },
-          ],
-          "role": "none",
-        },
-      ],
-      "name": "",
-      "role": "generic",
+      "role": "none",
     },
   ],
   "modal": true,
