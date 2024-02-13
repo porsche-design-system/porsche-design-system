@@ -279,7 +279,7 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
         .replace(/Exclude<any, any>/g, 'any') // workaround typings of deprecation maps
         .replace(/ onSlotchange={this\.props\..+}/, '') // doesn't exist in React JSX and makes no sense
         .replace(/\s+private controllerHost =[\S\s]+controllerHost[\S\s]+?;/, '') // components with loading prop and LoadingController
-        .replace(/(this\.props)\.loadingCtrl\.initialLoading/, '$1.loading'); // components with loading prop and LoadingController
+        .replace(/this\.props\.loadingCtrl\.initialLoading/, 'false'); // components with loading prop and LoadingController
 
       // component based tweaks
       if (tagName === 'p-carousel') {
