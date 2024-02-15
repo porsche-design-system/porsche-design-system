@@ -41,16 +41,16 @@ const propTypes: PropTypes<typeof LinkTileProduct> = {
 export class LinkTileProduct {
   @Element() public host!: HTMLElement;
 
-  /** Product heading */
+  /** Product heading. */
   @Prop() public heading: string;
 
-  /** Product price, either original or sale price */
+  /** Product price, either original or sale price. */
   @Prop() public price: string;
 
   /** Shows original price with line-through. Needs prop "price" to be defined, otherwise this prop has no effect. */
-  @Prop() public priceOriginal: string;
+  @Prop() public priceOriginal?: string;
 
-  /** Additional product description */
+  /** Additional product description. */
   @Prop() public description?: string;
 
   /** A Boolean attribute indicating that a like button should be shown. */
