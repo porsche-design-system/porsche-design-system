@@ -2,7 +2,8 @@ import { buildResponsiveStyles, getCss, type Theme } from '../../utils';
 import {
   addImportantToEachRule,
   colorSchemeStyles,
-  getFocusJssStyle, getHiddenTextJssStyle,
+  getFocusJssStyle,
+  getHiddenTextJssStyle,
   getThemedColors,
   getTransition,
   hostHiddenStyles,
@@ -46,8 +47,6 @@ const getMultilineEllipsis = (lineClamp: number): JssStyle => {
 export const getComponentCss = (
   hasLikeButton: boolean,
   hasSlottedAnchor: boolean,
-  hasHeading: boolean,
-  hasPrice: boolean,
   hasPriceOriginal: boolean,
   hasDescription: boolean,
   aspectRatio: BreakpointCustomizable<LinkTileProductAspectRatio>,
@@ -163,26 +162,22 @@ export const getComponentCss = (
       margin: 'auto',
       textAlign: 'center',
     },
-    ...(hasHeading && {
-      heading: {
-        margin: '0 0 2px', // ua-style reset
-        ...headingSmallStyle,
-        ...fontHyphenationStyle,
-        ...getMultilineEllipsis(3),
-      },
-    }),
-    ...(hasPrice && {
-      price: {
-        margin: 0, // ua-style reset
-        ...textXSmallStyle,
-        ...(hasPriceOriginal && {
-          display: 'flex',
-          flexWrap: 'wrap',
-          justifyContent: 'center',
-          columnGap: spacingFluidXSmall,
-        }),
-      },
-    }),
+    heading: {
+      margin: '0 0 2px', // ua-style reset
+      ...headingSmallStyle,
+      ...fontHyphenationStyle,
+      ...getMultilineEllipsis(3),
+    },
+    price: {
+      margin: 0, // ua-style reset
+      ...textXSmallStyle,
+      ...(hasPriceOriginal && {
+        display: 'flex',
+        flexWrap: 'wrap',
+        justifyContent: 'center',
+        columnGap: spacingFluidXSmall,
+      }),
+    },
     ...(hasDescription && {
       description: {
         margin: 0, // ua-style reset

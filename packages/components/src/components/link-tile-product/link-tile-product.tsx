@@ -1,5 +1,5 @@
-import {Component, Element, Event, type EventEmitter, Fragment, h, Prop} from '@stencil/core';
-import type {BreakpointCustomizable, PropTypes, Theme} from '../../types';
+import { Component, Element, Event, type EventEmitter, Fragment, h, Prop } from '@stencil/core';
+import type { BreakpointCustomizable, PropTypes, Theme } from '../../types';
 import {
   AllowedTypes,
   attachComponentCss,
@@ -9,7 +9,7 @@ import {
   throwIfInvalidLinkTileProductUsage,
   validateProps,
 } from '../../utils';
-import {getComponentCss} from './link-tile-product-styles';
+import { getComponentCss } from './link-tile-product-styles';
 import {
   anchorSlot,
   headerSlot,
@@ -87,7 +87,16 @@ export class LinkTileProduct {
 
   public render(): JSX.Element {
     validateProps(this, propTypes);
-    attachComponentCss(this.host, getComponentCss, this.likeButton, !this.href, !!this.heading, !!this.price, !!this.priceOriginal, !!this.description, this.aspectRatio, this.theme);
+    attachComponentCss(
+      this.host,
+      getComponentCss,
+      this.likeButton,
+      !this.href,
+      !!this.priceOriginal,
+      !!this.description,
+      this.aspectRatio,
+      this.theme
+    );
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
     const headerId = 'header';
@@ -142,7 +151,9 @@ export class LinkTileProduct {
                   <span class="sr-only">original price</span>
                   <s>{this.priceOriginal}</s>
                 </Fragment>
-              ) : this.price}
+              ) : (
+                this.price
+              )}
             </p>
           )}
           {this.description && (
