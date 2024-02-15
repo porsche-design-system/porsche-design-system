@@ -38,6 +38,13 @@ Although you can pass in anything, it is recommended to use the `p-tag` componen
 
 <Playground :markup="header" :config="config"></Playground>
 
+## Original & Sale Price
+
+If you want to visualize the original and the sale price. You can use the `priceOriginal` property, which shows the
+recommended retail price while `price` shows the retail price.
+
+<Playground :markup="priceOriginalMarkup" :config="config"></Playground>
+
 ## Description
 
 If you want to add any additional description, use the `description` property.
@@ -133,6 +140,12 @@ export default class Code extends Vue {
   ${this.headerSlot}
   ${this.img}
 </p-link-tile-product>`;
+
+  get priceOriginalMarkup() {
+    return`<p-link-tile-product heading="Weekender" price="718,00 €" price-original="911,00 €" href="https://porsche.com" ${this.likeButton === 'false' ? 'like-button="false"' : ''}>
+  ${this.img}
+</p-link-tile-product>`;
+  };
 
   description = `<p-link-tile-product heading="Weekender" price="1.911,00 €" href="https://porsche.com" description="incl. VAT">
   ${this.img}
