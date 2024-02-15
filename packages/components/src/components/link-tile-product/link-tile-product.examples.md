@@ -38,10 +38,10 @@ Although you can pass in anything, it is recommended to use the `p-tag` componen
 
 <Playground :markup="header" :config="config"></Playground>
 
-## Original & Sale Price
+## Original Price
 
-If you want to visualize the original and the sale price. You can use the `priceOriginal` property, which shows the
-recommended retail price while `price` shows the retail price.
+If you want to visualize the original (recommended retail price) and the retail price (with discount) then you can make
+use of `priceOriginal` property.
 
 <Playground :markup="priceOriginalMarkup" :config="config"></Playground>
 
@@ -100,7 +100,7 @@ export default class Code extends Vue {
   imgSrcLarge = 'https://porsche-design-system.github.io/porsche-design-system/weekender@2x.webp';
   imgSrc2 = 'https://porsche-design-system.github.io/porsche-design-system/placeholder_800x900.svg';
   img = `<img src="${this.imgSrc}" alt="Some alt text" />`;
-  link = `<a slot="anchor" href="https://www.porsche.com">Weekender, sale price 718,00 €, original price 911,00 €</a>`;
+  link = `<a slot="anchor" href="https://www.porsche.com">Weekender, sale price 718,00 €, original price <s>911,00 €</s></a>`;
   headerSlot = `<p-tag slot="header" color="background-base">New</p-tag>`;
 
   liked = false;

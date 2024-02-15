@@ -1107,11 +1107,11 @@ export namespace Components {
          */
         "liked"?: boolean;
         /**
-          * Product price, either original or sale price.
+          * Product retail price (with or without discount).
          */
         "price": string;
         /**
-          * Shows original price with line-through. Needs prop "price" to be defined, otherwise this prop has no effect.
+          * Shows original price (recommended retail price) with line-through. Needs prop "price" to be defined, otherwise this prop has no effect.
          */
         "priceOriginal"?: string;
         /**
@@ -3762,11 +3762,11 @@ declare namespace LocalJSX {
          */
         "onLike"?: (event: PLinkTileProductCustomEvent<LinkTileProductLikeEventDetail>) => void;
         /**
-          * Product price, either original or sale price.
+          * Product retail price (with or without discount).
          */
         "price"?: string;
         /**
-          * Shows original price with line-through. Needs prop "price" to be defined, otherwise this prop has no effect.
+          * Shows original price (recommended retail price) with line-through. Needs prop "price" to be defined, otherwise this prop has no effect.
          */
         "priceOriginal"?: string;
         /**

@@ -44,10 +44,10 @@ export class LinkTileProduct {
   /** Product heading. */
   @Prop() public heading: string;
 
-  /** Product price, either original or sale price. */
+  /** Product retail price (with or without discount). */
   @Prop() public price: string;
 
-  /** Shows original price with line-through. Needs prop "price" to be defined, otherwise this prop has no effect. */
+  /** Shows original price (recommended retail price) with line-through. Needs prop "price" to be defined, otherwise this prop has no effect. */
   @Prop() public priceOriginal?: string;
 
   /** Additional product description. */

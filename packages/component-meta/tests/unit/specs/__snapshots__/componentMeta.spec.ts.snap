@@ -7268,14 +7268,14 @@ exports[`should match snapshot 1`] = `
       "price": {
         "allowedValues": "string",
         "defaultValue": null,
-        "description": "Product price, either original or sale price.",
+        "description": "Product retail price (with or without discount).",
         "isRequired": true,
         "type": "string",
       },
       "priceOriginal": {
         "allowedValues": "string",
         "defaultValue": null,
-        "description": "Shows original price with line-through. Needs prop "price" to be defined, otherwise this prop has no effect.",
+        "description": "Shows original price (recommended retail price) with line-through. Needs prop "price" to be defined, otherwise this prop has no effect.",
         "type": "string",
       },
       "rel": {
