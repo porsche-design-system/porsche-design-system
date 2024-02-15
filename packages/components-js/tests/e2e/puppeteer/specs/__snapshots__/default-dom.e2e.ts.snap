@@ -322,8 +322,6 @@ exports[`should have no basic DOM regression for p-link-tile-product 1`] = `
       value</h3>
     <p id="price" class="price">
       value</p>
-    <p id="description" class="description">
-    </p>
   </div>
 </div>"
 `;
