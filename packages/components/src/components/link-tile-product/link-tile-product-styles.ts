@@ -165,28 +165,29 @@ export const getComponentCss = (
     },
     ...(hasHeading && {
       heading: {
+        margin: '0 0 2px', // ua-style reset
         ...headingSmallStyle,
         ...fontHyphenationStyle,
         ...getMultilineEllipsis(3),
-        margin: '0 0 2px',
       },
     }),
     ...(hasPrice && {
       price: {
-        ...textXSmallStyle,
-        ...getMultilineEllipsis(2),
         margin: 0, // ua-style reset
-        display: 'flex',
-        flexWrap: 'wrap',
-        justifyContent: 'center',
-        columnGap: spacingFluidXSmall,
+        ...textXSmallStyle,
+        ...(hasPriceOriginal && {
+          display: 'flex',
+          flexWrap: 'wrap',
+          justifyContent: 'center',
+          columnGap: spacingFluidXSmall,
+        }),
       },
     }),
     ...(hasDescription && {
       description: {
+        margin: 0, // ua-style reset
         ...textXXSmallStyle,
         ...getMultilineEllipsis(2),
-        margin: 0, // ua-style reset
         color: contrastHighColor,
         ...prefersColorSchemeDarkMediaQuery(theme, {
           color: contrastHighColorDark,
