@@ -56,6 +56,7 @@ import { FlyoutNavigationPrefixedPage } from './generated/FlyoutNavigationPrefix
 import { FlyoutNavigationScrolledPage } from './generated/FlyoutNavigationScrolled';
 import { FlyoutPositionLeftPage } from './generated/FlyoutPositionLeft';
 import { FlyoutPositionStartPage } from './generated/FlyoutPositionStart';
+import { FlyoutPrefixedHeaderFooterSubfooterPage } from './generated/FlyoutPrefixedHeaderFooterSubfooter';
 import { GridPage } from './generated/Grid';
 import { HeadingPage } from './generated/Heading';
 import { HeadlinePage } from './generated/Headline';
@@ -329,6 +330,11 @@ export const generatedRoutes: RouteType[] = [
     name: 'Flyout Position Start',
     path: '/flyout-position-start',
     element: <FlyoutPositionStartPage />,
+  },
+  {
+    name: 'Flyout Prefixed Header Footer Subfooter',
+    path: '/flyout-prefixed-header-footer-subfooter',
+    element: <FlyoutPrefixedHeaderFooterSubfooterPage />,
   },
   {
     name: 'Grid',
