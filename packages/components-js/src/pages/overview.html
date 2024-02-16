@@ -86,16 +86,11 @@
   </div>
 
   <div class="playground light playground--flyout" title="should render default flyout">
-    <p-flyout open="true">
-      <span slot="header">Sticky Header</span>
-      Some Content
-      <span slot="footer">Sticky Footer</span>
-      <span slot="sub-footer">Some Sub Footer Content</span>
-    </p-flyout>
+    <iframe loading="eager" src="/flyout-header-footer-subfooter?iframe=true"></iframe>
   </div>
 
   <div class="playground light" title="should render default inline-notification">
-    <p-inline-notification heading="Some heading" description="Some description"></p-inline-notification>
+    <p-inline-notification description="Some description" heading="Some heading"></p-inline-notification>
   </div>
 
   <div class="playground light" title="should render default popover">
@@ -144,7 +139,7 @@
   </div>
 
   <div class="playground light" title="should render default multi-select">
-    <p-multi-select name="options" label="Some label">
+    <p-multi-select label="Some label" name="options">
       <p-multi-select-option value="a">Option A</p-multi-select-option>
       <p-multi-select-option value="b">Option B</p-multi-select-option>
       <p-multi-select-option value="c">Option C</p-multi-select-option>
@@ -220,7 +215,7 @@
   </div>
 
   <div class="playground light" title="should render default pagination">
-    <p-pagination total-items-count="500" items-per-page="25" active-page="1"></p-pagination>
+    <p-pagination active-page="1" items-per-page="25" total-items-count="500"></p-pagination>
   </div>
 
   <div class="playground light" title="should render default pin-code">
@@ -344,47 +339,47 @@
   </div>
 
   <div class="playground light" title="should render default link-tile">
-    <p-link-tile href="#" label="Some Label" description="Default">
+    <p-link-tile description="Default" href="#" label="Some Label">
       <img
+        alt="Beach"
+        height="50"
         src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyAQMAAAAk8RryAAAABlBMVEUAAAD2vP9xXLiUAAAAAXRSTlMAQObYZgAAABxJREFUGNNjYOBgYGBhYKAZ/R8MDsD4Q5amkz8ASp4PtTYYQZIAAAAASUVORK5CYII="
         width="50"
-        height="50"
-        alt="Beach"
       />
     </p-link-tile>
   </div>
 
   <div class="playground light" title="should render default button-tile">
-    <p-button-tile label="Some Label" description="Default">
+    <p-button-tile description="Default" label="Some Label">
       <img
+        alt="Beach"
+        height="50"
         src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyAQMAAAAk8RryAAAABlBMVEUAAAD2vP9xXLiUAAAAAXRSTlMAQObYZgAAABxJREFUGNNjYOBgYGBhYKAZ/R8MDsD4Q5amkz8ASp4PtTYYQZIAAAAASUVORK5CYII="
         width="50"
-        height="50"
-        alt="Beach"
       />
     </p-button-tile>
   </div>
 
   <div class="playground light" title="should render default link-tile-model-signature">
-    <p-link-tile-model-signature heading="Some Heading" description="Default">
+    <p-link-tile-model-signature description="Default" heading="Some Heading">
       <img
+        alt="Beach"
+        height="50"
         src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyAQMAAAAk8RryAAAABlBMVEUAAAD2vP9xXLiUAAAAAXRSTlMAQObYZgAAABxJREFUGNNjYOBgYGBhYKAZ/R8MDsD4Q5amkz8ASp4PtTYYQZIAAAAASUVORK5CYII="
         width="50"
-        height="50"
-        alt="Beach"
       />
-      <p-link slot="primary" href="#primary">Some label</p-link>
-      <p-link slot="secondary" href="#secondary">Some label</p-link>
+      <p-link href="#primary" slot="primary">Some label</p-link>
+      <p-link href="#secondary" slot="secondary">Some label</p-link>
     </p-link-tile-model-signature>
   </div>
 
   <div class="playground light" title="should render default link-tile-product">
-    <p-link-tile-product heading="Some product" price="1.911,00 €" href="https://www.porsche.com">
+    <p-link-tile-product heading="Some product" href="https://www.porsche.com" price="1.911,00 €">
       <img
+        alt="Some alt text"
+        height="900"
         src="https://porsche-design-system.github.io/porsche-design-system/placeholder_800x900.svg"
         width="800"
-        height="900"
-        alt="Some alt text"
       />
     </p-link-tile-product>
   </div>
@@ -429,8 +424,8 @@
 
   <div class="playground light" title="should render default inline-notification with custom prefix">
     <my-prefix-p-inline-notification
-      heading="Some heading"
       description="Some description"
+      heading="Some heading"
     ></my-prefix-p-inline-notification>
   </div>
 
@@ -480,7 +475,7 @@
   </div>
 
   <div class="playground light" title="should render default multi-select with custom prefix">
-    <my-prefix-p-multi-select name="options" label="Some label">
+    <my-prefix-p-multi-select label="Some label" name="options">
       <my-prefix-p-multi-select-option value="a">Option A</my-prefix-p-multi-select-option>
       <my-prefix-p-multi-select-option value="b">Option B</my-prefix-p-multi-select-option>
       <my-prefix-p-multi-select-option value="c">Option C</my-prefix-p-multi-select-option>
@@ -556,7 +551,7 @@
   </div>
 
   <div class="playground light" title="should render default pagination with custom prefix">
-    <my-prefix-p-pagination total-items-count="500" items-per-page="25" active-page="1"></my-prefix-p-pagination>
+    <my-prefix-p-pagination active-page="1" items-per-page="25" total-items-count="500"></my-prefix-p-pagination>
   </div>
 
   <div class="playground light" title="should render default pin-code with custom prefix">
@@ -680,47 +675,47 @@
   </div>
 
   <div class="playground light" title="should render default link-tile with custom prefix">
-    <my-prefix-p-link-tile href="#" label="Some Label" description="Default">
+    <my-prefix-p-link-tile description="Default" href="#" label="Some Label">
       <img
+        alt="Beach"
+        height="50"
         src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyAQMAAAAk8RryAAAABlBMVEUAAAD2vP9xXLiUAAAAAXRSTlMAQObYZgAAABxJREFUGNNjYOBgYGBhYKAZ/R8MDsD4Q5amkz8ASp4PtTYYQZIAAAAASUVORK5CYII="
         width="50"
-        height="50"
-        alt="Beach"
       />
     </my-prefix-p-link-tile>
   </div>
 
   <div class="playground light" title="should render default button-tile with custom prefix">
-    <my-prefix-p-button-tile label="Some Label" description="Default">
+    <my-prefix-p-button-tile description="Default" label="Some Label">
       <img
+        alt="Beach"
+        height="50"
         src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyAQMAAAAk8RryAAAABlBMVEUAAAD2vP9xXLiUAAAAAXRSTlMAQObYZgAAABxJREFUGNNjYOBgYGBhYKAZ/R8MDsD4Q5amkz8ASp4PtTYYQZIAAAAASUVORK5CYII="
         width="50"
-        height="50"
-        alt="Beach"
       />
     </my-prefix-p-button-tile>
   </div>
 
   <div class="playground light" title="should render default link-tile-model-signature with custom prefix">
-    <my-prefix-p-link-tile-model-signature heading="Some Heading" description="Default">
+    <my-prefix-p-link-tile-model-signature description="Default" heading="Some Heading">
       <img
+        alt="Beach"
+        height="50"
         src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyAQMAAAAk8RryAAAABlBMVEUAAAD2vP9xXLiUAAAAAXRSTlMAQObYZgAAABxJREFUGNNjYOBgYGBhYKAZ/R8MDsD4Q5amkz8ASp4PtTYYQZIAAAAASUVORK5CYII="
         width="50"
-        height="50"
-        alt="Beach"
       />
-      <my-prefix-p-link slot="primary" href="#primary">Some label</my-prefix-p-link>
-      <my-prefix-p-link slot="secondary" href="#secondary">Some label</my-prefix-p-link>
+      <my-prefix-p-link href="#primary" slot="primary">Some label</my-prefix-p-link>
+      <my-prefix-p-link href="#secondary" slot="secondary">Some label</my-prefix-p-link>
     </my-prefix-p-link-tile-model-signature>
   </div>
 
   <div class="playground light" title="should render default link-tile-product with custom prefix">
-    <my-prefix-p-link-tile-product heading="Some product" price="1.911,00 €" href="https://www.porsche.com">
+    <my-prefix-p-link-tile-product heading="Some product" href="https://www.porsche.com" price="1.911,00 €">
       <img
+        alt="Some alt text"
+        height="900"
         src="https://porsche-design-system.github.io/porsche-design-system/placeholder_800x900.svg"
         width="800"
-        height="900"
-        alt="Some alt text"
       />
     </my-prefix-p-link-tile-product>
   </div>
