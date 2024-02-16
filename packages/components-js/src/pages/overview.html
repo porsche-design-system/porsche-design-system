@@ -59,6 +59,10 @@
   .playground--flyout {
     height: 20rem;
   }
+
+  .playground > iframe {
+    width: 100%;
+  }
 </style>
 
 <div>
@@ -414,12 +418,7 @@
   </div>
 
   <div class="playground light playground--flyout" title="should render default flyout">
-    <my-prefix-p-flyout open="true">
-      <span slot="header">Sticky Header</span>
-      Some Content
-      <span slot="footer">Sticky Footer</span>
-      <span slot="sub-footer">Some Sub Footer Content</span>
-    </my-prefix-p-flyout>
+    <iframe loading="eager" src="/flyout-prefixed-header-footer-subfooter?iframe=true"></iframe>
   </div>
 
   <div class="playground light" title="should render default inline-notification with custom prefix">
