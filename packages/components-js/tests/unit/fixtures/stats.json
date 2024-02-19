@@ -136,13 +136,13 @@
   },
   {
     "chunkShortName": "link-tile-product",
-    "size": 6788,
-    "gzipSize": 2808
+    "size": 6273,
+    "gzipSize": 2662
   },
   {
     "chunkShortName": "main",
-    "size": 76249,
-    "gzipSize": 25422
+    "size": 76076,
+    "gzipSize": 25361
   },
   {
     "chunkShortName": "marque",
