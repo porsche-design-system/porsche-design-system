@@ -3,6 +3,7 @@ import {
   addImportantToEachRule,
   colorSchemeStyles,
   getFocusJssStyle,
+  getHiddenTextJssStyle,
   getThemedColors,
   getTransition,
   hostHiddenStyles,
@@ -46,13 +47,16 @@ const getMultilineEllipsis = (lineClamp: number): JssStyle => {
 export const getComponentCss = (
   hasLikeButton: boolean,
   hasSlottedAnchor: boolean,
+  hasPriceOriginal: boolean,
+  hasDescription: boolean,
   aspectRatio: BreakpointCustomizable<LinkTileProductAspectRatio>,
   theme: Theme
 ): string => {
-  const { primaryColor, contrastHighColor, backgroundSurfaceColor } = getThemedColors(theme);
+  const { primaryColor, contrastHighColor, contrastMediumColor, backgroundSurfaceColor } = getThemedColors(theme);
   const {
     primaryColor: primaryColorDark,
     contrastHighColor: contrastHighColorDark,
+    contrastMediumColor: contrastMediumColorDark,
     backgroundSurfaceColor: backgroundSurfaceColorDark,
   } = getThemedColors('dark');
 
@@ -91,6 +95,14 @@ export const getComponentCss = (
             borderRadius: borderRadiusLarge,
             overflow: 'hidden', // needed for picture > img to have correct border-radius
           },
+        },
+      }),
+      ...(hasPriceOriginal && {
+        s: {
+          color: contrastMediumColor,
+          ...prefersColorSchemeDarkMediaQuery(theme, {
+            color: contrastMediumColorDark,
+          }),
         },
       }),
     },
@@ -151,24 +163,34 @@ export const getComponentCss = (
       textAlign: 'center',
     },
     heading: {
+      margin: '0 0 2px', // ua-style reset
       ...headingSmallStyle,
       ...fontHyphenationStyle,
       ...getMultilineEllipsis(3),
-      margin: '0 0 2px',
     },
     price: {
+      margin: 0, // ua-style reset
       ...textXSmallStyle,
-      ...getMultilineEllipsis(2),
-      margin: 0, // ua-style reset
-    },
-    description: {
-      ...textXXSmallStyle,
-      ...getMultilineEllipsis(2),
-      margin: 0, // ua-style reset
-      color: contrastHighColor,
-      ...prefersColorSchemeDarkMediaQuery(theme, {
-        color: contrastHighColorDark,
+      ...(hasPriceOriginal && {
+        display: 'flex',
+        flexWrap: 'wrap',
+        justifyContent: 'center',
+        columnGap: spacingFluidXSmall,
       }),
     },
+    ...(hasDescription && {
+      description: {
+        margin: 0, // ua-style reset
+        ...textXXSmallStyle,
+        ...getMultilineEllipsis(2),
+        color: contrastHighColor,
+        ...prefersColorSchemeDarkMediaQuery(theme, {
+          color: contrastHighColorDark,
+        }),
+      },
+    }),
+    ...(hasPriceOriginal && {
+      'sr-only': getHiddenTextJssStyle(),
+    }),
   });
 };

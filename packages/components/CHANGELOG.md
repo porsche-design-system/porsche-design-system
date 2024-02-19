@@ -14,6 +14,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ### [Unreleased]
 
+#### Added
+
+- `Link Tile Product`: Prop `price-original` to be able to visualize sale and original price
+  ([#3040](https://github.com/porsche-design-system/porsche-design-system/pull/3040))
+
 ### [3.12.0] - 2024-02-12
 
 ### [3.12.0-rc.1] - 2024-02-08
