@@ -412,6 +412,7 @@ export class MultiSelect {
 
   private updateSrHighlightedOptionText = (): void => {
     const highlightedOptionIndex = getHighlightedOptionIndex(this.multiSelectOptions);
+    // TODO: Does this consider hidden/disabled options?
     const highlightedOption = this.multiSelectOptions[highlightedOptionIndex];
     this.srHighlightedOptionText =
       highlightedOption &&
