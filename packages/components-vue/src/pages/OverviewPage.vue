@@ -16,7 +16,6 @@
     PFieldsetWrapper,
     PFlex,
     PFlexItem,
-    PFlyout,
     PGrid,
     PGridItem,
     PHeading,
@@ -423,15 +422,6 @@
 
         <div class="playground light playground--modal" title="should render default modal with custom prefix">
           <PModal :heading="'Heading'" :open="true">Some Content</PModal>
-        </div>
-
-        <div class="playground light playground--flyout" title="should render default flyout with custom prefix">
-          <PFlyout :open="true">
-            <span slot="header">Sticky Header</span>
-            Some Content
-            <span slot="footer">Sticky Footer</span>
-            <span slot="sub-footer">Some Sub Footer Content</span>
-          </PFlyout>
         </div>
 
         <div class="playground light" title="should render default inline-notification with custom prefix">
