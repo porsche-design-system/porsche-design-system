@@ -38,7 +38,7 @@ Although you can pass in anything, it is recommended to use the `p-tag` componen
 
 <Playground :markup="header" :config="config"></Playground>
 
-## Original Price
+## Price Original
 
 If you want to visualize the original (recommended retail price) and the retail price (with discount) then you can make
 use of `priceOriginal` property.
@@ -142,7 +142,7 @@ export default class Code extends Vue {
 </p-link-tile-product>`;
 
   get priceOriginalMarkup() {
-    return`<p-link-tile-product heading="Weekender" price="718,00 €" price-original="911,00 €" href="https://porsche.com" ${this.likeButton === 'false' ? 'like-button="false"' : ''}>
+    return`<p-link-tile-product heading="Weekender" price="718,00 €" price-original="911,00 €" href="https://porsche.com">
   ${this.img}
 </p-link-tile-product>`;
   };
