@@ -487,10 +487,6 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
           .replace(/this\.theme/, 'this.props.theme');
       } else if (tagName === 'p-select') {
         newFileContent = newFileContent
-          // remove aria attributes
-          .replace(/\{\.\.\.getListAriaAttributes\([\s\S]+?\)}\s*/, '')
-          .replace(/aria-expanded=\{`\$\{this\.props\.isOpen}`}/, '')
-          .replace(/tabindex="-1"/, '')
           // replace wrapper className
           .replace(/\{\{ wrapper: true, disabled: (this\.props\.disabled) }}/, `{\`wrapper\${$1 ? ' disabled' : ''}\`}`)
           // replace toggle icon className
@@ -500,7 +496,9 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
             /\{getSelectedOptionString\(typeof otherChildren\[0] === 'object' && 'props' in otherChildren\[0] && otherChildren\[0]\?\.propsOptions\)}/,
             '{getSelectedOptionString(otherChildren)}'
           )
-          .replace(/(SelectDropdownDirectionInternal)/, 'type $1');
+          .replace(/<span className="sr-only"[^<]*<\/span>/, '')
+          // .replace(/(SelectDropdownDirectionInternal)/, 'type $1')
+          .replace(/private searchTimeout: any\.Timeout \| number = null;/, '');
       } else if (tagName === 'p-select-option') {
         newFileContent = newFileContent
           // remove any jsx since options are not visible in closed select
