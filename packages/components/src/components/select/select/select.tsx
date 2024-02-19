@@ -112,6 +112,7 @@ export class Select {
   @Event({ bubbles: false }) public update: EventEmitter<SelectUpdateEventDetail>;
 
   @State() private isOpen = false;
+  @State() private srHighlightedOptionText = '';
 
   private nativeSelect: HTMLSelectElement;
   private comboboxContainer: HTMLDivElement;
@@ -127,13 +128,8 @@ export class Select {
 
   @Listen('internalOptionUpdate')
   public updateOptionHandler(e: Event & { target: SelectOption }): void {
-    this.preventOptionUpdate = true; // Avoid unnecessary updating of options in value watcher
-    setSelectedOption(this.selectOptions, e.target);
-    this.value = e.target.value;
     e.stopPropagation();
-    this.emitUpdateEvent();
-    this.combobox.focus();
-    this.isOpen = false;
+    this.updateSelectedOption(e.target);
   }
 
   @Watch('value')
@@ -218,6 +214,10 @@ export class Select {
           isRequired={this.required}
           isDisabled={this.disabled}
         />
+        <span class="sr-only">
+          {getSelectedOptionString(this.selectOptions) || 'No option'} selected, {this.selectOptions.length} options in
+          total
+        </span>
         <div class={{ wrapper: true, disabled: this.disabled }} ref={(el) => (this.comboboxContainer = el)}>
           <button
             type="button"
@@ -249,6 +249,9 @@ export class Select {
           </div>
         </div>
         <StateMessage state={this.state} message={this.message} theme={this.theme} host={this.host} />
+        <span class="sr-only" role="status" aria-live="assertive" aria-relevant="additions text">
+          {this.srHighlightedOptionText}
+        </span>
         {this.isWithinForm && <slot name="internal-select" />}
       </div>
     );
@@ -271,15 +274,14 @@ export class Select {
     this.selectOptions.forEach((child) => throwIfElementIsNotOfKind(this.host, child, 'p-select-option'));
   };
 
-  private updateSelectedOption = () => {
-    const highlightedOption = getHighlightedSelectOption(this.selectOptions);
-    if (highlightedOption) {
-      this.preventOptionUpdate = true; // Avoid unnecessary updating of options in value watcher
-      setSelectedOption(this.selectOptions, highlightedOption);
-      this.value = highlightedOption.value;
-      this.emitUpdateEvent();
-    }
+  private updateSelectedOption = (selectedOption: SelectOption) => {
+    this.preventOptionUpdate = true; // Avoid unnecessary updating of options in value watcher
+    setSelectedOption(this.selectOptions, selectedOption);
+    this.value = selectedOption.value;
+    this.emitUpdateEvent();
     this.updateMenuState(false);
+    this.combobox.focus();
+    this.updateSrHighlightedOptionText();
   };
 
   private onComboClick = (): void => {
@@ -317,10 +319,11 @@ export class Select {
             action
           )
         );
+        this.updateSrHighlightedOptionText();
         break;
       case SelectAction.CloseSelect:
         event.preventDefault();
-        this.updateSelectedOption();
+        this.updateSelectedOption(getHighlightedSelectOption(this.selectOptions));
       // intentional fallthrough
       case SelectAction.Close:
         event.preventDefault();
@@ -343,6 +346,7 @@ export class Select {
     const matchingIndex = getMatchingSelectOptionIndex(this.selectOptions, searchString);
     if (matchingIndex !== -1) {
       setNextSelectOptionHighlighted(this.listElement, this.selectOptions, matchingIndex);
+      this.updateSrHighlightedOptionText();
     } else {
       window.clearTimeout(this.searchTimeout);
       this.searchString = '';
@@ -363,6 +367,16 @@ export class Select {
     // add most recent letter to saved search string
     this.searchString += char;
     return this.searchString;
+  };
+
+  private updateSrHighlightedOptionText = (): void => {
+    const highlightedOptionIndex = getHighlightedSelectOptionIndex(this.selectOptions);
+    const highlightedOption = getUsableSelectOptions(this.selectOptions)[highlightedOptionIndex];
+    this.srHighlightedOptionText =
+      highlightedOption &&
+      `${highlightedOption.textContent || 'Empty option'}${
+        highlightedOption.selected ? ', selected' : ' not selected'
+      } (${highlightedOptionIndex + 1} of ${this.selectOptions.length})`;
   };
 
   private onClickOutside = (e: MouseEvent): void => {

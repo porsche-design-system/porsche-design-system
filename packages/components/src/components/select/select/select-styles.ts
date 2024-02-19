@@ -4,6 +4,7 @@ import {
   addImportantToEachRule,
   addImportantToRule,
   colorSchemeStyles,
+  getHiddenTextJssStyle,
   getThemedColors,
   getTransition,
   hostHiddenStyles,
@@ -86,6 +87,7 @@ export const getComponentCss = (
       },
     },
     listbox: getListStyles(isOpen, direction, theme),
+    'sr-only': getHiddenTextJssStyle(),
     // .label / .required
     ...getFunctionalComponentLabelStyles(isDisabled, hideLabel, theme),
     // .message
