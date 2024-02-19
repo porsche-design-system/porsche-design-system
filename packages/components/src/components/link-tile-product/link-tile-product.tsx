@@ -1,4 +1,4 @@
-import { Component, Element, Event, type EventEmitter, h, Prop } from '@stencil/core';
+import { Component, Element, Event, type EventEmitter, Fragment, h, Prop } from '@stencil/core';
 import type { BreakpointCustomizable, PropTypes, Theme } from '../../types';
 import {
   AllowedTypes,
@@ -22,6 +22,7 @@ import {
 const propTypes: PropTypes<typeof LinkTileProduct> = {
   heading: AllowedTypes.string,
   price: AllowedTypes.string,
+  priceOriginal: AllowedTypes.string,
   description: AllowedTypes.string,
   likeButton: AllowedTypes.boolean,
   liked: AllowedTypes.boolean,
@@ -40,13 +41,16 @@ const propTypes: PropTypes<typeof LinkTileProduct> = {
 export class LinkTileProduct {
   @Element() public host!: HTMLElement;
 
-  /** Product heading */
+  /** Product heading. */
   @Prop() public heading: string;
 
-  /** Product price */
+  /** Product retail price (with or without discount). */
   @Prop() public price: string;
 
-  /** Additional product description */
+  /** Shows original price (recommended retail price) with line-through. Needs prop "price" to be defined, otherwise this prop has no effect. */
+  @Prop() public priceOriginal?: string;
+
+  /** Additional product description. */
   @Prop() public description?: string;
 
   /** A Boolean attribute indicating that a like button should be shown. */
@@ -83,7 +87,16 @@ export class LinkTileProduct {
 
   public render(): JSX.Element {
     validateProps(this, propTypes);
-    attachComponentCss(this.host, getComponentCss, this.likeButton, !this.href, this.aspectRatio, this.theme);
+    attachComponentCss(
+      this.host,
+      getComponentCss,
+      this.likeButton,
+      !this.href,
+      !!this.priceOriginal,
+      !!this.description,
+      this.aspectRatio,
+      this.theme
+    );
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
     const headerId = 'header';
@@ -124,15 +137,30 @@ export class LinkTileProduct {
           <slot />
         </div>
         <div class="wrapper">
-          <h3 id={headingId} class="heading">
-            {this.heading}
-          </h3>
-          <p id={priceId} class="price">
-            {this.price}
-          </p>
-          <p id={descriptionId} class="description">
-            {this.description}
-          </p>
+          {this.heading && (
+            <h3 id={headingId} class="heading">
+              {this.heading}
+            </h3>
+          )}
+          {this.price && (
+            <p id={priceId} class="price">
+              {this.priceOriginal ? (
+                <Fragment>
+                  <span class="sr-only">sale price</span>
+                  {this.price}
+                  <span class="sr-only">original price</span>
+                  <s>{this.priceOriginal}</s>
+                </Fragment>
+              ) : (
+                this.price
+              )}
+            </p>
+          )}
+          {this.description && (
+            <p id={descriptionId} class="description">
+              {this.description}
+            </p>
+          )}
         </div>
       </div>
     );
