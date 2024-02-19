@@ -54,7 +54,7 @@ export class SelectOption {
           {...getOptionAriaAttributes(selected, this.disabled, hidden, !!this.value)}
         >
           <slot onSlotchange={this.onSlotChange} />
-          {selected && !this.disabled && (
+          {selected && (
             <PrefixedTagNames.pIcon
               class="icon"
               aria-hidden="true"
