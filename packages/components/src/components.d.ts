@@ -1089,11 +1089,11 @@ export namespace Components {
          */
         "aspectRatio"?: BreakpointCustomizable<LinkTileProductAspectRatio>;
         /**
-          * Additional product description
+          * Additional product description.
          */
         "description"?: string;
         /**
-          * Product heading
+          * Product heading.
          */
         "heading": string;
         /**
@@ -1109,9 +1109,13 @@ export namespace Components {
          */
         "liked"?: boolean;
         /**
-          * Product price
+          * Product retail price (with or without discount).
          */
         "price": string;
+        /**
+          * Shows original price (recommended retail price) with line-through. Needs prop "price" to be defined, otherwise this prop has no effect.
+         */
+        "priceOriginal"?: string;
         /**
           * Specifies the relationship of the target object to the link object.
          */
@@ -3821,11 +3825,11 @@ declare namespace LocalJSX {
          */
         "aspectRatio"?: BreakpointCustomizable<LinkTileProductAspectRatio>;
         /**
-          * Additional product description
+          * Additional product description.
          */
         "description"?: string;
         /**
-          * Product heading
+          * Product heading.
          */
         "heading"?: string;
         /**
@@ -3845,9 +3849,13 @@ declare namespace LocalJSX {
          */
         "onLike"?: (event: PLinkTileProductCustomEvent<LinkTileProductLikeEventDetail>) => void;
         /**
-          * Product price
+          * Product retail price (with or without discount).
          */
         "price"?: string;
+        /**
+          * Shows original price (recommended retail price) with line-through. Needs prop "price" to be defined, otherwise this prop has no effect.
+         */
+        "priceOriginal"?: string;
         /**
           * Specifies the relationship of the target object to the link object.
          */

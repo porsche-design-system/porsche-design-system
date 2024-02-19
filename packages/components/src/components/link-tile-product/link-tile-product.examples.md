@@ -38,6 +38,13 @@ Although you can pass in anything, it is recommended to use the `p-tag` componen
 
 <Playground :markup="header" :config="config"></Playground>
 
+## Price Original
+
+If you want to visualize the original (recommended retail price) and the retail price (with discount) then you can make
+use of `priceOriginal` property.
+
+<Playground :markup="priceOriginalMarkup" :config="config"></Playground>
+
 ## Description
 
 If you want to add any additional description, use the `description` property.
@@ -58,7 +65,7 @@ the image by using the `9:16` aspect ratio on smaller viewports and the `3:4` on
 
 To support framework routing you can provide the link as a slotted element by using the `anchor` slot instead of using
 the `href` property. Ensure the named slot is directly on the anchor element, without nesting. To ensure accessibility,
-the slotted link must be labeled with both the product name and its price.
+the slotted link must be labeled with both the product name, its price and optionally with the original price.
 
 <Playground :markup="slottedLink" :config="config"></Playground>
 
@@ -93,7 +100,7 @@ export default class Code extends Vue {
   imgSrcLarge = 'https://porsche-design-system.github.io/porsche-design-system/weekender@2x.webp';
   imgSrc2 = 'https://porsche-design-system.github.io/porsche-design-system/placeholder_800x900.svg';
   img = `<img src="${this.imgSrc}" alt="Some alt text" />`;
-  link = `<a slot="anchor" href="https://www.porsche.com">Weekender, 1.911,00 €</a>`;
+  link = `<a slot="anchor" href="https://www.porsche.com">Weekender, sale price 718,00 €, original price <s>911,00 €</s></a>`;
   headerSlot = `<p-tag slot="header" color="background-base">New</p-tag>`;
 
   liked = false;
@@ -134,6 +141,12 @@ export default class Code extends Vue {
   ${this.img}
 </p-link-tile-product>`;
 
+  get priceOriginalMarkup() {
+    return`<p-link-tile-product heading="Weekender" price="718,00 €" price-original="911,00 €" href="https://porsche.com">
+  ${this.img}
+</p-link-tile-product>`;
+  };
+
   description = `<p-link-tile-product heading="Weekender" price="1.911,00 €" href="https://porsche.com" description="incl. VAT">
   ${this.img}
 </p-link-tile-product>`;
@@ -147,7 +160,7 @@ export default class Code extends Vue {
 </p-link-tile-product>`;
   };
 
-  slottedLink = `<p-link-tile-product heading="Weekender" price="1.911,00 €" description="incl. VAT">
+  slottedLink = `<p-link-tile-product heading="Weekender" price="718,00 €" price-original="911,00 €" description="incl. VAT">
   ${this.link}
   ${this.img}
 </p-link-tile-product>`;

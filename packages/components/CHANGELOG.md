@@ -17,6 +17,13 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 #### Added
 
 - `Select` ([#3008](https://github.com/porsche-design-system/porsche-design-system/pull/3008))
+- `Link Tile Product`: Prop `price-original` to be able to visualize sale and original price
+  ([#3040](https://github.com/porsche-design-system/porsche-design-system/pull/3040))
+
+#### Changed
+
+- Validation of `getInitialStyles()` partial is temporarily disabled
+  ([#3049](https://github.com/porsche-design-system/porsche-design-system/pull/3049))
 
 ### [3.12.0] - 2024-02-12
 
