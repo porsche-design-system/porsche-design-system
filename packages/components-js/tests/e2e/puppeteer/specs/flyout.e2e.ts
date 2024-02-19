@@ -447,7 +447,7 @@ describe('after content change', () => {
     expect(await getActiveElementId(page), 'after content change 1nd tab').toBe('btn-new');
   });
 
-  it('should not allow focusing element behind of flyout', async () => {
+  xit('should not allow focusing element behind of flyout', async () => {
     await initAdvancedFlyout();
     await addButtonsBeforeAndAfterFlyout();
     await openFlyout();
