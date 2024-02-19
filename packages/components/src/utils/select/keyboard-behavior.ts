@@ -1,19 +1,21 @@
 import { forceUpdate } from '@stencil/core';
 import { HTMLStencilElement } from '@stencil/core/internal';
 
-export enum SelectAction {
-  Close, // Close select dropdown
-  CloseSelect, // Close and select currently highlighted option
-  First, // Highlight first option
-  Last, // Highlight last option
-  Next, // Highlight next option
-  Open, // Open select dropdown
-  PageDown, // Go 10 options down or to the last option
-  PageUp, // Go 10 options up or to the first option
-  Previous, // Highlight the previous option
-  Select, // Select the currently highlighted option
-  Type, // Jump to the matching option by searching
-}
+export const selectActions = {
+  Close: 0, // Close select dropdown
+  CloseSelect: 1, // Close and select currently highlighted option
+  First: 2, // Highlight first option
+  Last: 3, // Highlight last option
+  Next: 4, // Highlight next option
+  Open: 5, // Open select dropdown
+  PageDown: 6, // Go 10 options down or to the last option
+  PageUp: 7, // Go 10 options up or to the first option
+  Previous: 8, // Highlight the previous option
+  Select: 9, // Select the currently highlighted option
+  Type: 10, // Jump to the matching option by searching
+} as const;
+
+type SelectAction = (typeof selectActions)[keyof typeof selectActions];
 
 type Option = HTMLElement &
   HTMLStencilElement & {
@@ -62,45 +64,45 @@ export const filterOptions = <T extends Option>(options: T[], filter: string): T
  *
  * @param {KeyboardEvent} event - The keyboard event triggering the action.
  * @param {boolean} menuOpen - A boolean indicating whether the select menu is open or closed.
- * @returns {SelectAction} - The corresponding action to be performed.
+ * @returns {selectActions} - The corresponding action to be performed.
  */
 export const getActionFromKey = (event: KeyboardEvent, menuOpen: boolean): SelectAction => {
   const { key, altKey, ctrlKey, metaKey } = event;
   const openKeys = ['ArrowDown', 'ArrowUp', 'Enter', ' ']; // all keys that will do the default open action
   // handle opening when closed
   if (!menuOpen && openKeys.includes(key)) {
-    return SelectAction.Open;
+    return selectActions.Open;
   }
 
   // home and end move the selected option when open or closed
   if (key === 'Home') {
-    return SelectAction.First;
+    return selectActions.First;
   }
   if (key === 'End') {
-    return SelectAction.Last;
+    return selectActions.Last;
   }
 
   // handle typing characters when open or closed
   if (key === 'Backspace' || key === 'Clear' || (key.length === 1 && key !== ' ' && !altKey && !ctrlKey && !metaKey)) {
-    return SelectAction.Type;
+    return selectActions.Type;
   }
 
   // handle keys when open
   if (menuOpen) {
     if (key === 'ArrowUp' && altKey) {
-      return SelectAction.CloseSelect;
+      return selectActions.CloseSelect;
     } else if (key === 'ArrowDown' && !altKey) {
-      return SelectAction.Next;
+      return selectActions.Next;
     } else if (key === 'ArrowUp') {
-      return SelectAction.Previous;
+      return selectActions.Previous;
     } else if (key === 'PageUp') {
-      return SelectAction.PageUp;
+      return selectActions.PageUp;
     } else if (key === 'PageDown') {
-      return SelectAction.PageDown;
+      return selectActions.PageDown;
     } else if (key === 'Escape') {
-      return SelectAction.Close;
+      return selectActions.Close;
     } else if (key === 'Enter' || key === ' ' || key === 'Tab') {
-      return SelectAction.CloseSelect;
+      return selectActions.CloseSelect;
     }
   }
 };
@@ -110,22 +112,22 @@ export const getActionFromKey = (event: KeyboardEvent, menuOpen: boolean): Selec
  *
  * @param {number} currentIndex - The current index in the list of options.
  * @param {number} maxIndex - The maximum index in the list of options.
- * @param {SelectAction} action - The select action indicating how to update the index.
+ * @param {selectActions} action - The select action indicating how to update the index.
  * @returns {number} - The updated index after applying the specified action.
  */
 export const getUpdatedIndex = (currentIndex: number, maxIndex: number, action: SelectAction): number => {
   switch (action) {
-    case SelectAction.First:
+    case selectActions.First:
       return 0;
-    case SelectAction.Last:
+    case selectActions.Last:
       return maxIndex;
-    case SelectAction.Previous:
+    case selectActions.Previous:
       return Math.max(0, currentIndex - 1);
-    case SelectAction.Next:
+    case selectActions.Next:
       return Math.min(maxIndex, currentIndex + 1);
-    case SelectAction.PageUp:
+    case selectActions.PageUp:
       return Math.max(0, currentIndex - PAGE_UP_DOWN_STEP_AMOUNT);
-    case SelectAction.PageDown:
+    case selectActions.PageDown:
       return Math.min(maxIndex, currentIndex + PAGE_UP_DOWN_STEP_AMOUNT);
     default:
       return currentIndex;
