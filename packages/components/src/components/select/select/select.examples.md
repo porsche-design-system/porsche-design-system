@@ -26,7 +26,10 @@ selected attribute or property. If an option should be visible but not selectabl
 ## Basic example without preselection
 
 To ensure the user makes a conscious choice, use the initial value `undefined` of the `value` property. If you want to
-give the user the choice to deselect the current option, you can provide an empty `<p-select-option></p-select-option>`.
+give the user the choice to deselect the current option, you can provide an option without a value
+`<p-select-option></p-select-option>`. If you don't want the user to be able to deselect the current option, but still
+want to show a placeholder text you can set the option `disabled` like this
+`<p-select-option disabled>Please choose an option</p-select-option>`.
 
 <Playground :frameworkMarkup="requiredExample" :config="{ ...config, withoutDemo: true }">
   <PlaygroundCheckbox :checked="isRequiredSelect" name="Required" @change="isRequiredSelect = !isRequiredSelect"></PlaygroundCheckbox>
