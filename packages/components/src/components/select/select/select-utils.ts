@@ -20,6 +20,8 @@ export type SelectUpdateEventDetail = {
   value: string;
 };
 
+export const INTERNAL_SELECT_SLOT = 'internal-select';
+
 export const syncSelectOptionProps = (options: SelectOption[], theme: Theme): void => {
   options
     .filter((option) => option.theme !== theme)
@@ -79,7 +81,7 @@ export const initNativeSelect = (
   setAttributes(nativeSelect, {
     'aria-hidden': 'true',
     tabindex: '-1',
-    slot: 'internal-select',
+    slot: INTERNAL_SELECT_SLOT,
   });
   syncNativeSelect(nativeSelect, name, disabled, required);
   host.prepend(nativeSelect);

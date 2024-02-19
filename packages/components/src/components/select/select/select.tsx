@@ -4,6 +4,7 @@ import {
   getSelectDropdownDirection,
   getSelectedOptionString,
   initNativeSelect,
+  INTERNAL_SELECT_SLOT,
   setSelectedOption,
   syncNativeSelect,
   syncSelectOptionProps,
@@ -252,7 +253,7 @@ export class Select {
         <span class="sr-only" role="status" aria-live="assertive" aria-relevant="additions text">
           {this.srHighlightedOptionText}
         </span>
-        {this.isWithinForm && <slot name="internal-select" />}
+        {this.isWithinForm && <slot name={INTERNAL_SELECT_SLOT} />}
       </div>
     );
   }
