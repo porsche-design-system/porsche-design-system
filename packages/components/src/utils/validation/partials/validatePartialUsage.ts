@@ -10,7 +10,8 @@ import { consoleWarn, throwException } from '../../log';
 import { getCDNBaseURL } from '../../getCDNBaseURL';
 
 export const validatePartialUsage = (): void => {
-  validateGetInitialStylesUsage();
+  // TODO: before reactivating we need to be able to distinguish between Light DOM and/or Shadow DOM usage.
+  // validateGetInitialStylesUsage();
   validateGetFontFaceStylesheetUsage();
   validateGetFontLinksUsage();
   // TODO: integration test (real world test) first, before rollout

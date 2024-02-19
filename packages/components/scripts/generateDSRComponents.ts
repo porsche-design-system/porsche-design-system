@@ -99,7 +99,8 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
         .replace(/(public state)\?(: any)/, '$1$2') // make state required to fix linting issue with React
         .replace(/\bbreakpoint\.l\b/, `'${breakpoint.l}'`) // inline breakpoint value from utilities-v2 for marque
         .replace(/{(isRequiredAndParentNotRequired\(.*)}/, '{/* $1 */}') // comment out isRequiredAndParentNotRequired for now
-        .replace(/{(!isParentFieldsetRequired\(.*)}/, '{/* $1 */}'); // comment out isParentFieldsetRequired for now
+        .replace(/{(!isParentFieldsetRequired\(.*)}/, '{/* $1 */}') // comment out isParentFieldsetRequired for now
+        .replace(/(<\/?)Fragment(>)/g, '$1$2'); // replace <Fragment> with <> or </Fragment> with </>
 
       if (hasSlot && !newFileContent.includes('FunctionalComponent')) {
         newFileContent = newFileContent.replace(
@@ -195,7 +196,6 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
           .replace(/FunctionalComponent/, 'FC')
           .replace(/: FormState/g, ': any')
           .replace(/: Theme/g, ': any')
-          .replace(/(<\/?)Fragment(>)/g, '$1$2') // replace <Fragment> with <> or </Fragment> with </>
           .replace(new RegExp(`\n.*${stylesBundleImportPath}.*`), '')
           .replace(/&& !isParentFieldsetRequired\(.*?\)/, '/* $& */') // let's disable it for now
           .replace(/\|\|\s.*\(.*isRequiredAndParentNotRequired\(.*?\)\)/, '/* $& */') // let's disable it for now

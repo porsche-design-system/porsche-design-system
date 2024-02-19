@@ -1,5 +1,61 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`accessibility should expose correct accessibility tree properties when price original is set 1`] = `
+{
+  "children": [
+    {
+      "children": [
+        {
+          "name": "Some product name",
+          "role": "StaticText",
+        },
+      ],
+      "level": 3,
+      "name": "Some product name",
+      "role": "heading",
+    },
+    {
+      "children": [
+        {
+          "children": [
+            {
+              "name": "sale price",
+              "role": "StaticText",
+            },
+          ],
+          "role": "none",
+        },
+        {
+          "name": "718,00 €",
+          "role": "StaticText",
+        },
+        {
+          "children": [
+            {
+              "name": "original price",
+              "role": "StaticText",
+            },
+          ],
+          "role": "none",
+        },
+        {
+          "children": [
+            {
+              "name": "911,00 €",
+              "role": "StaticText",
+            },
+          ],
+          "name": "",
+          "role": "deletion",
+        },
+      ],
+      "role": "none",
+    },
+  ],
+  "role": "none",
+}
+`;
+
 exports[`accessibility should expose correct initial accessibility tree properties 1`] = `
 {
   "children": [
@@ -82,9 +138,6 @@ exports[`accessibility should expose correct initial accessibility tree properti
           ],
           "name": "",
           "role": "paragraph",
-        },
-        {
-          "role": "none",
         },
       ],
       "role": "none",
