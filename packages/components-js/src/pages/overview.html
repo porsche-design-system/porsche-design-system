@@ -44,8 +44,7 @@
   }
 
   .playground--banner,
-  .playground--modal,
-  .playground--flyout {
+  .playground--modal {
     transform: translate3d(0, 0, 0);
     height: 10rem;
     padding: 0;
@@ -54,18 +53,6 @@
 
   .playground--modal {
     height: 20rem;
-  }
-
-  .playground--flyout {
-    height: 24rem;
-    display: flex;
-    flex-direction: column;
-  }
-
-  .playground--flyout > iframe {
-    margin: 0;
-    width: auto;
-    height: 100%;
   }
 </style>
 
@@ -91,14 +78,6 @@
 
   <div class="playground light playground--modal" title="should render default modal">
     <p-modal heading="Heading" open="true">Some Content</p-modal>
-  </div>
-
-  <div class="playground light playground--flyout" title="should render default flyout">
-    <iframe
-      loading="eager"
-      src="/flyout-header-footer-subfooter?iframe=true"
-      title="should render default flyout"
-    ></iframe>
   </div>
 
   <div class="playground light" title="should render default inline-notification">
@@ -423,14 +402,6 @@
 
   <div class="playground light playground--modal" title="should render default modal with custom prefix">
     <my-prefix-p-modal heading="Heading" open="true">Some Content</my-prefix-p-modal>
-  </div>
-
-  <div class="playground light playground--flyout" title="should render default flyout">
-    <iframe
-      loading="eager"
-      src="/flyout-prefixed-header-footer-subfooter?iframe=true"
-      title="should render default flyout"
-    ></iframe>
   </div>
 
   <div class="playground light" title="should render default inline-notification with custom prefix">
