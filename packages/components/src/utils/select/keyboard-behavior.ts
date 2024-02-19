@@ -17,7 +17,7 @@ export const selectActions = {
 
 type SelectAction = (typeof selectActions)[keyof typeof selectActions];
 
-type Option = HTMLElement &
+export type Option = HTMLElement &
   HTMLStencilElement & {
     disabled?: boolean;
     highlighted?: boolean;
@@ -42,22 +42,6 @@ export const handleSelectDropdownScroll = (scrollElement: HTMLElement, element: 
     element.scrollIntoView({ block: 'nearest' });
   }
 };
-
-/**
- * Filters an array of options based on a filter string, considering hidden and disabled options.
- *
- * @template T - The type of the options in the array.
- * @param {T[]} options - The array of options to filter.
- * @param {string} filter - The filter string to match against option text content.
- * @returns {T[]} - The filtered array of options.
- */
-export const filterOptions = <T extends Option>(options: T[], filter: string): T[] =>
-  options.filter((option) => {
-    if (option.hidden || option.disabled) {
-      return false;
-    }
-    return option.textContent.toLowerCase().indexOf(filter.toLowerCase()) === 0;
-  });
 
 /**
  * Determines the action to be taken based on a keyboard event and the state of the select menu.
@@ -175,7 +159,7 @@ export const getUsableSelectOptions = <T extends Option>(options: T[]): T[] =>
  * @param {string} filter - The filter string to match against option text content.
  * @returns {T[]} - An array of filtered and usable select options.
  */
-const filterSelectOptions = <T extends Option>(options: T[], filter: string): T[] =>
+export const filterSelectOptions = <T extends Option>(options: T[], filter: string): T[] =>
   getUsableSelectOptions(options).filter(
     (option) => option.textContent.trim().toLowerCase().indexOf(filter.toLowerCase()) === 0
   );
