@@ -631,6 +631,12 @@ describe('keyboard behavior', () => {
       expect(await getDropdownDisplay(), 'initial').toBe('flex');
       expect(await getHighlightedOptionIndex()).toBe(-1);
       expect((await getEventSummary(buttonElement, 'focus')).counter, 'button focus after Space').toBe(1);
+
+      await buttonElement.press('Space');
+      await waitForStencilLifecycle(page);
+
+      expect(await getDropdownDisplay(), 'initial').toBe('none');
+      expect(await getSelectValue()).toBeUndefined(); // No option got selected
     });
     // Opens the listbox and moves visual focus to the first option.
     it('should open the listbox and move highlight to first option when pressing Home', async () => {
