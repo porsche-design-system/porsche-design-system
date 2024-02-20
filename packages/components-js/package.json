@@ -33,7 +33,7 @@
     "test:unit": "yarn test:unit:components-manager-cli && yarn test:unit:components-manager-core && yarn test:unit:components-js && yarn test:unit:jsdom-polyfill && yarn test:unit:partials",
     "test:unit:components-manager-cli": "yarn --cwd ./projects/components-manager-cli test:unit",
     "test:unit:components-manager-core": "yarn --cwd ./projects/components-manager-core test:unit",
-    "test:unit:components-js": "jest --colors -c tests/unit/config/jest.config.js",
+    "test:unit:components-js": "vitest --config tests/unit/config/vitest.config.ts",
     "test:unit:jsdom-polyfill": "yarn --cwd ./projects/jsdom-polyfill test:unit",
     "test:unit:partials": "yarn --cwd ./projects/partials test:unit",
     "test:e2e:puppeteer": "TYPE=E2E PORT=8575 jest --colors -c tests/e2e/puppeteer/config/jest.config.ts",
