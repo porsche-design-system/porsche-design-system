@@ -1,5 +1,5 @@
 /* eslint-disable prefer-arrow/prefer-arrow-functions */
-import {getHTMLElements} from './getHTMLElements';
+import { getHTMLElements } from './getHTMLElements';
 
 // prettier-ignore
 export function getShadowRootHTMLElements<K extends keyof HTMLElementTagNameMap>(element: HTMLElement, selectors: K): NodeListOf<HTMLElementTagNameMap[K]>;
