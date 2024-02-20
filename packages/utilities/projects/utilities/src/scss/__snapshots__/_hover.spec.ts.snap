@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`pds-hover() should return correct css for opts: { borderRadius: '6px' } 1`] = `
+exports[`pds-hover() > should return correct css for opts: { borderRadius: '6px' } 1`] = `
 "div {
   border-radius: 6px;
   margin-left: -2px;
@@ -16,7 +16,7 @@ exports[`pds-hover() should return correct css for opts: { borderRadius: '6px' }
 }"
 `;
 
-exports[`pds-hover() should return correct css for opts: { borderRadius: 'medium' } 1`] = `
+exports[`pds-hover() > should return correct css for opts: { borderRadius: 'medium' } 1`] = `
 "div {
   border-radius: 8px;
   margin-left: -2px;
@@ -32,7 +32,7 @@ exports[`pds-hover() should return correct css for opts: { borderRadius: 'medium
 }"
 `;
 
-exports[`pds-hover() should return correct css for opts: { borderRadius: 'small' } 1`] = `
+exports[`pds-hover() > should return correct css for opts: { borderRadius: 'small' } 1`] = `
 "div {
   border-radius: 4px;
   margin-left: -2px;
@@ -48,7 +48,7 @@ exports[`pds-hover() should return correct css for opts: { borderRadius: 'small'
 }"
 `;
 
-exports[`pds-hover() should return correct css for opts: {} 1`] = `
+exports[`pds-hover() > should return correct css for opts: {} 1`] = `
 "div {
   border-radius: 4px;
   margin-left: -2px;

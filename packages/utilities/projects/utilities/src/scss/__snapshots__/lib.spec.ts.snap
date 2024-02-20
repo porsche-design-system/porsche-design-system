@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`should contain correct content for auto generated file ./src/scss/lib/_border.scss 1`] = `
 "$pds-border-radius-small: 4px;

@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`pds-focus() should return correct css for opts: { offset: '3px', borderRadius: '6px' } 1`] = `
+exports[`pds-focus() > should return correct css for opts: { offset: '3px', borderRadius: '6px' } 1`] = `
 "div {
   border-radius: 6px;
 }
@@ -13,7 +13,7 @@ div:focus:not(:focus-visible) {
 }"
 `;
 
-exports[`pds-focus() should return correct css for opts: { offset: 'none', borderRadius: 'medium' } 1`] = `
+exports[`pds-focus() > should return correct css for opts: { offset: 'none', borderRadius: 'medium' } 1`] = `
 "div {
   border-radius: 8px;
 }
@@ -26,7 +26,7 @@ div:focus:not(:focus-visible) {
 }"
 `;
 
-exports[`pds-focus() should return correct css for opts: { offset: 'small', borderRadius: 'small' } 1`] = `
+exports[`pds-focus() > should return correct css for opts: { offset: 'small', borderRadius: 'small' } 1`] = `
 "div {
   border-radius: 4px;
 }
@@ -39,7 +39,7 @@ div:focus:not(:focus-visible) {
 }"
 `;
 
-exports[`pds-focus() should return correct css for opts: {} 1`] = `
+exports[`pds-focus() > should return correct css for opts: {} 1`] = `
 "div {
   border-radius: 4px;
 }

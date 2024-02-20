@@ -39,7 +39,7 @@ beforeEach(() => {
 
 // TODO: not necessary anymore since we have VRT test for both implementations
 // TODO: re-enable frostedGlass test to ensure forced vendor prefixing
-xit('should have equal styles for styled-components and jss', async () => {
+test.skip('should have equal styles for styled-components and jss', async () => {
   const SampleStyles = styled.div({
     focus: getFocusStyle(),
     heading: headingMediumStyle,
@@ -56,7 +56,7 @@ xit('should have equal styles for styled-components and jss', async () => {
 });
 
 // TODO: not necessary anymore since we have VRT test for both implementations
-xit('should have equal styles for scss and jss', async () => {
+test.skip('should have equal styles for scss and jss', async () => {
   const focusMixin = fs.readFileSync(path.resolve('./src/scss/_focus.scss'), 'utf8');
   const headingMixin = fs.readFileSync(path.resolve('./src/scss/lib/_heading.scss'), 'utf8');
   const frostedGlassMixin = fs.readFileSync(path.resolve('./src/scss/lib/_frosted-glass.scss'), 'utf8');
