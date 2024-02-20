@@ -43,7 +43,7 @@
     "jss-plugin-sort-css-media-queries": "^1.0.1-beta.0",
     "jss-preset-default": "^10.10.0",
     "pixelmatch": "^5.3.0",
-    "puppeteer": "~21.6.1",
+    "puppeteer": "~22.1.0",
     "rollup": "^4.9.1",
     "rollup-plugin-bin": "^1.0.0",
     "rollup-plugin-copy": "^3.4.0",

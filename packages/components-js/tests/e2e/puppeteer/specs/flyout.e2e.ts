@@ -315,8 +315,7 @@ describe('focus behavior', () => {
     await expectDismissButtonToBeFocused();
   });
 
-  // TODO: Disabled for now since dismiss button focus is not working properly in e2e test scenario
-  xit('should have correct focus order when there are focusable elements in header, content, footer and sub-footer', async () => {
+  it('should have correct focus order when there are focusable elements in header, content, footer and sub-footer', async () => {
     await initAdvancedFlyout();
     await openFlyout();
 
@@ -333,8 +332,7 @@ describe('focus behavior', () => {
     await expectDismissButtonToBeFocused();
   });
 
-  // TODO: Disabled for now since tabbing is not working properly in e2e test scenario
-  xit('should not allow focusing element behind of flyout when pressing Tab', async () => {
+  it('should not allow focusing element behind of flyout when pressing Tab', async () => {
     await initBasicFlyout({ open: false });
     await addButtonsBeforeAndAfterFlyout();
     await openFlyout();
@@ -447,7 +445,7 @@ describe('after content change', () => {
     expect(await getActiveElementId(page), 'after content change 1nd tab').toBe('btn-new');
   });
 
-  xit('should not allow focusing element behind of flyout', async () => {
+  it('should not allow focusing element behind of flyout', async () => {
     await initAdvancedFlyout();
     await addButtonsBeforeAndAfterFlyout();
     await openFlyout();
@@ -469,8 +467,7 @@ describe('after content change', () => {
     await expectDismissButtonToBeFocused('after content change 2nd tab');
   });
 
-  // TODO: Disabled for now since focusing is not working properly in e2e test scenario
-  xit('should correctly focus dismiss button from appended focusable element', async () => {
+  it('should correctly focus dismiss button from appended focusable element', async () => {
     await initAdvancedFlyout();
     await openFlyout();
 
@@ -500,8 +497,7 @@ describe('after content change', () => {
 });
 
 describe('can be controlled via keyboard', () => {
-  // TODO: Disabled for now since tabbing is not working properly in e2e test scenario
-  xit('should cycle tab events within flyout', async () => {
+  it('should cycle tab events within flyout', async () => {
     await initAdvancedFlyout();
     await openFlyout();
     await expectDismissButtonToBeFocused('initially');
@@ -518,8 +514,7 @@ describe('can be controlled via keyboard', () => {
     await expectDismissButtonToBeFocused('finally');
   });
 
-  // TODO: Disabled for now since tabbing is not working properly in e2e test scenario
-  xit('should reverse cycle tab events within flyout', async () => {
+  it('should reverse cycle tab events within flyout', async () => {
     await initAdvancedFlyout();
     await openFlyout();
     await expectDismissButtonToBeFocused('initially');
