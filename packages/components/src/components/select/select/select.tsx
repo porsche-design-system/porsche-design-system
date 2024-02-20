@@ -277,13 +277,16 @@ export class Select {
   };
 
   private updateSelectedOption = (selectedOption: SelectOption) => {
-    this.preventOptionUpdate = true; // Avoid unnecessary updating of options in value watcher
-    setSelectedOption(this.selectOptions, selectedOption);
-    this.value = selectedOption.value;
-    this.emitUpdateEvent();
+    // option can be undefined when no option is highlighted and keyboard action calls this
+    if (selectedOption) {
+      this.preventOptionUpdate = true; // Avoid unnecessary updating of options in value watcher
+      setSelectedOption(this.selectOptions, selectedOption);
+      this.value = selectedOption.value;
+      this.emitUpdateEvent();
+      this.updateSrHighlightedOptionText();
+    }
     this.updateMenuState(false);
     this.combobox.focus();
-    this.updateSrHighlightedOptionText();
   };
 
   private onComboClick = (): void => {
