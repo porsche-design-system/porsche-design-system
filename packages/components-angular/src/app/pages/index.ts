@@ -7,31 +7,6 @@ import { ThemeInjectionComponent } from './theme-injection.component';
 import { UtilitiesComponent } from './utilities.component';
 import { tabsBarNavigationComponents } from './tabs-bar-navigation';
 import { tabsBarNavigationBugComponents } from './tabs-bar-navigation-bug';
-
-export const pages = [
-  CoreInitializerPrefixedComponent,
-  EventsComponent,
-  FormWrapperBindingComponent,
-  OptionalPropertiesComponent,
-  ThemeInjectionComponent,
-  UtilitiesComponent,
-  ...tabsBarNavigationComponents,
-  ...tabsBarNavigationBugComponents,
-];
-
-export * from './core-initializer-prefixed.component';
-export * from './events.component';
-export * from './form-wrapper-binding.component';
-export * from './optional-properties.component';
-export * from './theme-injection.component';
-export * from './utilities.component';
-export * from './tabs-bar-navigation';
-export * from './tabs-bar-navigation-bug';
-
-/* Auto Generated Below */
-export * from './generated/core-initializer.component';
-export * from './generated/overview-notifications.component';
-export * from './generated/overview.component';
 import { AccordionComponent } from './generated/accordion.component';
 import { BannerComponent } from './generated/banner.component';
 import { ButtonComponent } from './generated/button.component';
@@ -76,7 +51,6 @@ import { FlyoutNavigationPrefixedComponent } from './generated/flyout-navigation
 import { FlyoutNavigationScrolledComponent } from './generated/flyout-navigation-scrolled.component';
 import { FlyoutPositionLeftComponent } from './generated/flyout-position-left.component';
 import { FlyoutPositionStartComponent } from './generated/flyout-position-start.component';
-import { FlyoutPrefixedHeaderFooterSubfooterComponent } from './generated/flyout-prefixed-header-footer-subfooter.component';
 import { GridComponent } from './generated/grid.component';
 import { HeadingComponent } from './generated/heading.component';
 import { HeadlineComponent } from './generated/headline.component';
@@ -137,6 +111,31 @@ import { TypographyLatinComponent } from './generated/typography-latin.component
 import { TypographyMiddleEastComponent } from './generated/typography-middle-east.component';
 import { WordmarkComponent } from './generated/wordmark.component';
 
+export const pages = [
+  CoreInitializerPrefixedComponent,
+  EventsComponent,
+  FormWrapperBindingComponent,
+  OptionalPropertiesComponent,
+  ThemeInjectionComponent,
+  UtilitiesComponent,
+  ...tabsBarNavigationComponents,
+  ...tabsBarNavigationBugComponents,
+];
+
+export * from './core-initializer-prefixed.component';
+export * from './events.component';
+export * from './form-wrapper-binding.component';
+export * from './optional-properties.component';
+export * from './theme-injection.component';
+export * from './utilities.component';
+export * from './tabs-bar-navigation';
+export * from './tabs-bar-navigation-bug';
+
+/* Auto Generated Below */
+export * from './generated/core-initializer.component';
+export * from './generated/overview-notifications.component';
+export * from './generated/overview.component';
+
 export const generatedPages = [
   AccordionComponent,
   BannerComponent,
@@ -182,7 +181,6 @@ export const generatedPages = [
   FlyoutNavigationScrolledComponent,
   FlyoutPositionLeftComponent,
   FlyoutPositionStartComponent,
-  FlyoutPrefixedHeaderFooterSubfooterComponent,
   GridComponent,
   HeadingComponent,
   HeadlineComponent,
@@ -459,11 +457,6 @@ export const generatedRoutes: ExtendedRoute[] = [
     name: 'Flyout Position Start',
     path: 'flyout-position-start',
     component: FlyoutPositionStartComponent,
-  },
-  {
-    name: 'Flyout Prefixed Header Footer Subfooter',
-    path: 'flyout-prefixed-header-footer-subfooter',
-    component: FlyoutPrefixedHeaderFooterSubfooterComponent,
   },
   {
     name: 'Grid',
