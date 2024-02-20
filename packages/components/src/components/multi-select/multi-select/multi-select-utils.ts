@@ -15,7 +15,7 @@ export type MultiSelectUpdateEvent = {
 };
 export type MultiSelectUpdateEventDetail = MultiSelectUpdateEvent;
 
-export const INTERNAL_MULTISELECT_SLOT = 'internal-select';
+export const INTERNAL_MULTI_SELECT_SLOT = 'internal-select';
 
 export const syncMultiSelectOptionProps = (options: MultiSelectOption[], theme: Theme): void => {
   options
@@ -37,7 +37,7 @@ export const initNativeMultiSelect = (
     multiple: 'true',
     'aria-hidden': 'true',
     tabindex: '-1',
-    slot: INTERNAL_MULTISELECT_SLOT,
+    slot: INTERNAL_MULTI_SELECT_SLOT,
   });
   syncNativeMultiSelect(nativeSelect, name, disabled, required);
   host.prepend(nativeSelect);

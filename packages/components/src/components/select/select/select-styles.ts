@@ -33,6 +33,7 @@ import { getPlaceholderJssStyle } from '../../../styles/placeholder';
 import { getFunctionalComponentLabelStyles } from '../../common/label/label-styles';
 import { getFunctionalComponentStateMessageStyles } from '../../common/state-message/state-message-styles';
 import { MULTI_SELECT_OPTION_HEIGHT } from '../../../styles/option-styles';
+import { INTERNAL_SELECT_SLOT } from './select-utils';
 
 export const getComponentCss = (
   direction: SelectDropdownDirectionInternal,
@@ -53,7 +54,7 @@ export const getComponentCss = (
       },
       ...(isWithinForm &&
         addImportantToEachRule({
-          '::slotted([slot=internal-select])': {
+          [`::slotted([slot=${INTERNAL_SELECT_SLOT}])`]: {
             position: 'absolute',
             opacity: 0,
             height: '0px',

@@ -8,7 +8,7 @@ import {
   getSelectedOptionValues,
   hasFilterOptionResults,
   initNativeMultiSelect,
-  INTERNAL_MULTISELECT_SLOT,
+  INTERNAL_MULTI_SELECT_SLOT,
   type MultiSelectOption,
   type MultiSelectUpdateEventDetail,
   resetFilteredOptions,
@@ -289,7 +289,7 @@ export class MultiSelect {
           {this.srHighlightedOptionText}
         </span>
         {/* named slot needs to be placed before closing root element, otherwise slot change listener might not always work for unknown reasons */}
-        {this.isWithinForm && <slot name={INTERNAL_MULTISELECT_SLOT} />}
+        {this.isWithinForm && <slot name={INTERNAL_MULTI_SELECT_SLOT} />}
       </div>
     );
   }
