@@ -348,8 +348,8 @@ export class Select {
   private onComboType = (letter: string): void => {
     this.updateMenuState(true);
 
-    const searchString = this.updateSearchString(letter);
-    const matchingIndex = getMatchingSelectOptionIndex(this.selectOptions, searchString);
+    this.updateSearchString(letter);
+    const matchingIndex = getMatchingSelectOptionIndex(this.selectOptions, this.searchString);
     if (matchingIndex !== -1) {
       setNextSelectOptionHighlighted(this.listElement, this.selectOptions, matchingIndex);
       this.updateSrHighlightedOptionText();
@@ -359,7 +359,7 @@ export class Select {
     }
   };
 
-  private updateSearchString = (char: string): string => {
+  private updateSearchString = (char: string): void => {
     // reset typing timeout and start new timeout
     // this allows us to make multiple-letter matches, like a native select
     if (this.searchTimeout) {
@@ -372,7 +372,6 @@ export class Select {
 
     // add most recent letter to saved search string
     this.searchString += char;
-    return this.searchString;
   };
 
   private updateSrHighlightedOptionText = (): void => {
