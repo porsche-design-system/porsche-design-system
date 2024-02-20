@@ -76,7 +76,7 @@ export class SelectOption {
     );
   };
 
-  private onSlotChange = (e: Event): void => {
-    validateSelectOption(e.target as HTMLSlotElement, this.host);
+  private onSlotChange = (e: Event & { target: HTMLSlotElement }): void => {
+    validateSelectOption(e.target, this.host);
   };
 }
