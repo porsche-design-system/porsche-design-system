@@ -2,6 +2,8 @@ import { FormState } from '../../../utils/form/form-state';
 import {
   consoleWarn,
   determineDropdownDirection,
+  getHighlightedSelectOptionIndex,
+  getUsableSelectOptions,
   SelectDropdownDirectionInternal,
   SelectDropdownDirections,
   setAttribute,
@@ -120,4 +122,15 @@ export const getSelectDropdownDirection = (
   } else {
     return 'down';
   }
+};
+
+export const getSrHighlightedOptionText = (options: SelectOption[]): string => {
+  const highlightedOptionIndex = getHighlightedSelectOptionIndex(options);
+  const highlightedOption = getUsableSelectOptions(options)[highlightedOptionIndex];
+  return (
+    highlightedOption &&
+    `${highlightedOption.textContent || 'Empty option'}${
+      highlightedOption.selected ? ', selected' : ' not selected'
+    } (${highlightedOptionIndex + 1} of ${options.length})`
+  );
 };

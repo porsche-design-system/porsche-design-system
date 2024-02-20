@@ -3,6 +3,7 @@ import type { SelectDropdownDirection, SelectOption, SelectState, SelectUpdateEv
 import {
   getSelectDropdownDirection,
   getSelectedOptionString,
+  getSrHighlightedOptionText,
   initNativeSelect,
   INTERNAL_SELECT_SLOT,
   setSelectedOption,
@@ -371,13 +372,7 @@ export class Select {
   };
 
   private updateSrHighlightedOptionText = (): void => {
-    const highlightedOptionIndex = getHighlightedSelectOptionIndex(this.selectOptions);
-    const highlightedOption = getUsableSelectOptions(this.selectOptions)[highlightedOptionIndex];
-    this.srHighlightedOptionText =
-      highlightedOption &&
-      `${highlightedOption.textContent || 'Empty option'}${
-        highlightedOption.selected ? ', selected' : ' not selected'
-      } (${highlightedOptionIndex + 1} of ${this.selectOptions.length})`;
+    this.srHighlightedOptionText = getSrHighlightedOptionText(this.selectOptions);
   };
 
   private onClickOutside = (e: MouseEvent): void => {
