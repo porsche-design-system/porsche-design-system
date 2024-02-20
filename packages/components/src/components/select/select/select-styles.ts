@@ -26,8 +26,8 @@ import {
   spacingStaticXSmall,
   textSmallStyle,
 } from '@porsche-design-system/utilities-v2';
-import { JssStyle } from 'jss';
-import { FormState } from '../../../utils/form/form-state';
+import type { JssStyle } from 'jss';
+import type { FormState } from '../../../utils/form/form-state';
 import { getThemedFormStateColors } from '../../../styles/form-state-color-styles';
 import { getPlaceholderJssStyle } from '../../../styles/placeholder';
 import { getFunctionalComponentLabelStyles } from '../../common/label/label-styles';
