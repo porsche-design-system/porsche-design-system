@@ -48,7 +48,7 @@ export const handleSelectDropdownScroll = (scrollElement: HTMLElement, element: 
  *
  * @param {KeyboardEvent} event - The keyboard event triggering the action.
  * @param {boolean} menuOpen - A boolean indicating whether the select menu is open or closed.
- * @returns {selectActions} - The corresponding action to be performed.
+ * @returns {SelectAction} - The corresponding action to be performed.
  */
 export const getActionFromKey = (event: KeyboardEvent, menuOpen: boolean): SelectAction => {
   const { key, altKey, ctrlKey, metaKey } = event;
