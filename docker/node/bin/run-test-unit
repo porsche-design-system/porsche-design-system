@@ -13,7 +13,6 @@ if
   [[ "--components" == "${1}" ]] ||
   [[ "--components-js:components-manager-cli" == "${1}" ]] ||
   [[ "--components-js:components-manager-core" == "${1}" ]] ||
-  [[ "--components-js:components-wrapper" == "${1}" ]] ||
   [[ "--components-js:jsdom-polyfill" == "${1}" ]] ||
   [[ "--components-js:partials" == "${1}" ]] ||
   [[ "--components-angular" == "${1}" ]] ||
@@ -30,6 +29,7 @@ then
   yarn test:unit:${1:2} --ci
 elif
   [[ "--components-js" == "${1}" ]] ||
+  [[ "--components-js:components-wrapper" == "${1}" ]] ||
   [[ "--utilities" == "${1}" ]]
 then
   yarn test:unit:${1:2}
