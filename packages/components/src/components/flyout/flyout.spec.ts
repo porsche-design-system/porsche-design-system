@@ -12,6 +12,8 @@ beforeEach(() => {
   component = new Flyout();
   component.host = document.createElement('p-flyout');
   component.host.attachShadow({ mode: 'open' });
+
+  jest.spyOn(component, 'setDialogVisibility' as any).mockImplementation(() => {});
 });
 
 describe('componentDidLoad', () => {
