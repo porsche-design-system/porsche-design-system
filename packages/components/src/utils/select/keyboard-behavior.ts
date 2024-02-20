@@ -1,5 +1,5 @@
 import { forceUpdate } from '@stencil/core';
-import { HTMLStencilElement } from '@stencil/core/internal';
+import type { HTMLStencilElement } from '@stencil/core/internal';
 
 export const selectActions = {
   Close: 0, // Close select dropdown
