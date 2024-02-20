@@ -27,7 +27,7 @@ describe('componentDidLoad', () => {
     jest.spyOn(domUtils, 'getShadowRootHTMLElement').mockImplementation(() => document.createElement('slot'));
 
     const slotElement = document.createElement('slot');
-    const slotNodeList = document.createElement('div').appendChild(slotElement).querySelectorAll('slot');
+    const slotNodeList = document.createElement('div').appendChild(slotElement).parentNode.querySelectorAll('slot');
 
     jest.spyOn(domUtils, 'getShadowRootHTMLElements').mockImplementation(() => slotNodeList);
   });
