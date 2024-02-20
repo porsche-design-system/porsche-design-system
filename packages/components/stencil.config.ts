@@ -22,12 +22,14 @@ const isDevBuild = process.env.PDS_IS_STAGING === '1';
 // specify chunking of components that can't be used standalone
 // it's important to list the parent component first since it affects the chunk name
 export const bundles: { components: TagName[] }[] = [
-  { components: ['p-grid', 'p-grid-item'] },
   { components: ['p-flex', 'p-flex-item'] },
-  { components: ['p-segmented-control', 'p-segmented-control-item'] },
-  { components: ['p-select-wrapper', 'p-select-wrapper-dropdown'] },
+  { components: ['p-flyout-navigation', 'p-flyout-navigation-item'] },
+  { components: ['p-grid', 'p-grid-item'] },
   { components: ['p-multi-select', 'p-multi-select-option'] },
+  { components: ['p-segmented-control', 'p-segmented-control-item'] },
   { components: ['p-select', 'p-select-option'] },
+  { components: ['p-select-wrapper', 'p-select-wrapper-dropdown'] },
+  { components: ['p-stepper-horizontal', 'p-stepper-horizontal-item'] },
   {
     components: [
       'p-table',
@@ -42,8 +44,6 @@ export const bundles: { components: TagName[] }[] = [
   { components: ['p-tabs', 'p-tabs-item'] },
   { components: ['p-text-list', 'p-text-list-item'] },
   { components: ['p-toast', 'p-toast-item'] },
-  { components: ['p-stepper-horizontal', 'p-stepper-horizontal-item'] },
-  { components: ['p-flyout-navigation', 'p-flyout-navigation-item'] },
 ];
 
 export const config: Config = {
