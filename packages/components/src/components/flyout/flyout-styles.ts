@@ -46,8 +46,8 @@ export const getComponentCss = (
       },
       dialog: {
         position: 'fixed',
-        'inset-inline': isPositionStart ? '0 0' : 'auto 0',
-        'inset-block': '0 0',
+        insetInline: isPositionStart ? '0 0' : 'auto 0',
+        insetBlock: '0 0',
         display: 'flex', // ua-style reset
         height: '100vh', // ua-style reset
         maxHeight: '100vh', // ua-style reset

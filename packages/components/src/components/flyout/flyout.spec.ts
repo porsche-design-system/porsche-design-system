@@ -23,8 +23,15 @@ describe('componentDidLoad', () => {
   beforeEach(() => {
     jest.spyOn(focusTrapUtils, 'getFirstAndLastFocusableElement').mockImplementation(() => focusableElements);
     jest.spyOn(domUtils, 'getShadowRootHTMLElement').mockImplementation(() => document.createElement('slot'));
-    // @ts-ignore
-    jest.spyOn(domUtils, 'getShadowRootHTMLElements').mockImplementation(() => [document.createElement('slot')]);
+
+    const slotElement = document.createElement('slot');
+    const slotNodeList = document
+      .createElement('div')
+      .appendChild(slotElement)
+      .appendChild(slotElement)
+      .querySelectorAll('slot');
+
+    jest.spyOn(domUtils, 'getShadowRootHTMLElements').mockImplementation(() => slotNodeList);
   });
 
   it('should call setScrollLock() with correct parameters if flyout is open', () => {

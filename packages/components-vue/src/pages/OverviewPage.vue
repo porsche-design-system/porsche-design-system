@@ -1,4 +1,4 @@
-<script lang="ts" setup>
+<script setup lang="ts">
   import {
     PAccordion,
     PBanner,
@@ -96,7 +96,7 @@
       </div>
 
       <div class="playground light" title="should render default inline-notification">
-        <PInlineNotification :description="'Some description'" :heading="'Some heading'" />
+        <PInlineNotification :heading="'Some heading'" :description="'Some description'" />
       </div>
 
       <div class="playground light" title="should render default popover">
@@ -145,7 +145,7 @@
       </div>
 
       <div class="playground light" title="should render default multi-select">
-        <PMultiSelect :label="'Some label'" :name="'options'">
+        <PMultiSelect :name="'options'" :label="'Some label'">
           <PMultiSelectOption value="a">Option A</PMultiSelectOption>
           <PMultiSelectOption value="b">Option B</PMultiSelectOption>
           <PMultiSelectOption value="c">Option C</PMultiSelectOption>
@@ -221,7 +221,7 @@
       </div>
 
       <div class="playground light" title="should render default pagination">
-        <PPagination :activePage="1" :itemsPerPage="25" :totalItemsCount="500" />
+        <PPagination :totalItemsCount="500" :itemsPerPage="25" :activePage="1" />
       </div>
 
       <div class="playground light" title="should render default pin-code">
@@ -345,35 +345,35 @@
       </div>
 
       <div class="playground light" title="should render default link-tile">
-        <PLinkTile :description="'Default'" :href="'#'" :label="'Some Label'">
+        <PLinkTile :href="'#'" :label="'Some Label'" :description="'Default'">
           <img
-            alt="Beach"
-            height="50"
             src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyAQMAAAAk8RryAAAABlBMVEUAAAD2vP9xXLiUAAAAAXRSTlMAQObYZgAAABxJREFUGNNjYOBgYGBhYKAZ/R8MDsD4Q5amkz8ASp4PtTYYQZIAAAAASUVORK5CYII="
             width="50"
+            height="50"
+            alt="Beach"
           />
         </PLinkTile>
       </div>
 
       <div class="playground light" title="should render default button-tile">
-        <PButtonTile :description="'Default'" :label="'Some Label'">
+        <PButtonTile :label="'Some Label'" :description="'Default'">
           <img
-            alt="Beach"
-            height="50"
             src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyAQMAAAAk8RryAAAABlBMVEUAAAD2vP9xXLiUAAAAAXRSTlMAQObYZgAAABxJREFUGNNjYOBgYGBhYKAZ/R8MDsD4Q5amkz8ASp4PtTYYQZIAAAAASUVORK5CYII="
             width="50"
+            height="50"
+            alt="Beach"
           />
         </PButtonTile>
       </div>
 
       <div class="playground light" title="should render default link-tile-model-signature">
         <!-- eslint-disable vue/no-deprecated-slot-attribute -->
-        <PLinkTileModelSignature :description="'Default'" :heading="'Some Heading'">
+        <PLinkTileModelSignature :heading="'Some Heading'" :description="'Default'">
           <img
-            alt="Beach"
-            height="50"
             src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyAQMAAAAk8RryAAAABlBMVEUAAAD2vP9xXLiUAAAAAXRSTlMAQObYZgAAABxJREFUGNNjYOBgYGBhYKAZ/R8MDsD4Q5amkz8ASp4PtTYYQZIAAAAASUVORK5CYII="
             width="50"
+            height="50"
+            alt="Beach"
           />
           <PLink slot="primary" :href="'#primary'">Some label</PLink>
           <PLink slot="secondary" :href="'#secondary'">Some label</PLink>
@@ -382,12 +382,12 @@
       </div>
 
       <div class="playground light" title="should render default link-tile-product">
-        <PLinkTileProduct :heading="'Some product'" :href="'https://www.porsche.com'" :price="'1.911,00 €'">
+        <PLinkTileProduct :heading="'Some product'" :price="'1.911,00 €'" :href="'https://www.porsche.com'">
           <img
-            alt="Some alt text"
-            height="900"
             src="https://porsche-design-system.github.io/porsche-design-system/placeholder_800x900.svg"
             width="800"
+            height="900"
+            alt="Some alt text"
           />
         </PLinkTileProduct>
       </div>
@@ -425,7 +425,7 @@
         </div>
 
         <div class="playground light" title="should render default inline-notification with custom prefix">
-          <PInlineNotification :description="'Some description'" :heading="'Some heading'" />
+          <PInlineNotification :heading="'Some heading'" :description="'Some description'" />
         </div>
 
         <div class="playground light" title="should render default popover with custom prefix">
@@ -474,7 +474,7 @@
         </div>
 
         <div class="playground light" title="should render default multi-select with custom prefix">
-          <PMultiSelect :label="'Some label'" :name="'options'">
+          <PMultiSelect :name="'options'" :label="'Some label'">
             <PMultiSelectOption value="a">Option A</PMultiSelectOption>
             <PMultiSelectOption value="b">Option B</PMultiSelectOption>
             <PMultiSelectOption value="c">Option C</PMultiSelectOption>
@@ -550,7 +550,7 @@
         </div>
 
         <div class="playground light" title="should render default pagination with custom prefix">
-          <PPagination :activePage="1" :itemsPerPage="25" :totalItemsCount="500" />
+          <PPagination :totalItemsCount="500" :itemsPerPage="25" :activePage="1" />
         </div>
 
         <div class="playground light" title="should render default pin-code with custom prefix">
@@ -674,35 +674,35 @@
         </div>
 
         <div class="playground light" title="should render default link-tile with custom prefix">
-          <PLinkTile :description="'Default'" :href="'#'" :label="'Some Label'">
+          <PLinkTile :href="'#'" :label="'Some Label'" :description="'Default'">
             <img
-              alt="Beach"
-              height="50"
               src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyAQMAAAAk8RryAAAABlBMVEUAAAD2vP9xXLiUAAAAAXRSTlMAQObYZgAAABxJREFUGNNjYOBgYGBhYKAZ/R8MDsD4Q5amkz8ASp4PtTYYQZIAAAAASUVORK5CYII="
               width="50"
+              height="50"
+              alt="Beach"
             />
           </PLinkTile>
         </div>
 
         <div class="playground light" title="should render default button-tile with custom prefix">
-          <PButtonTile :description="'Default'" :label="'Some Label'">
+          <PButtonTile :label="'Some Label'" :description="'Default'">
             <img
-              alt="Beach"
-              height="50"
               src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyAQMAAAAk8RryAAAABlBMVEUAAAD2vP9xXLiUAAAAAXRSTlMAQObYZgAAABxJREFUGNNjYOBgYGBhYKAZ/R8MDsD4Q5amkz8ASp4PtTYYQZIAAAAASUVORK5CYII="
               width="50"
+              height="50"
+              alt="Beach"
             />
           </PButtonTile>
         </div>
 
         <div class="playground light" title="should render default link-tile-model-signature with custom prefix">
           <!-- eslint-disable vue/no-deprecated-slot-attribute -->
-          <PLinkTileModelSignature :description="'Default'" :heading="'Some Heading'">
+          <PLinkTileModelSignature :heading="'Some Heading'" :description="'Default'">
             <img
-              alt="Beach"
-              height="50"
               src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyAQMAAAAk8RryAAAABlBMVEUAAAD2vP9xXLiUAAAAAXRSTlMAQObYZgAAABxJREFUGNNjYOBgYGBhYKAZ/R8MDsD4Q5amkz8ASp4PtTYYQZIAAAAASUVORK5CYII="
               width="50"
+              height="50"
+              alt="Beach"
             />
             <PLink slot="primary" :href="'#primary'">Some label</PLink>
             <PLink slot="secondary" :href="'#secondary'">Some label</PLink>
@@ -711,12 +711,12 @@
         </div>
 
         <div class="playground light" title="should render default link-tile-product with custom prefix">
-          <PLinkTileProduct :heading="'Some product'" :href="'https://www.porsche.com'" :price="'1.911,00 €'">
+          <PLinkTileProduct :heading="'Some product'" :price="'1.911,00 €'" :href="'https://www.porsche.com'">
             <img
-              alt="Some alt text"
-              height="900"
               src="https://porsche-design-system.github.io/porsche-design-system/placeholder_800x900.svg"
               width="800"
+              height="900"
+              alt="Some alt text"
             />
           </PLinkTileProduct>
         </div>
@@ -774,8 +774,7 @@
   }
 
   .playground--banner,
-  .playground--modal,
-  .playground--flyout {
+  .playground--modal {
     transform: translate3d(0, 0, 0);
     height: 10rem;
     padding: 0;
@@ -783,10 +782,6 @@
   }
 
   .playground--modal {
-    height: 20rem;
-  }
-
-  .playground--flyout {
     height: 20rem;
   }
 </style>

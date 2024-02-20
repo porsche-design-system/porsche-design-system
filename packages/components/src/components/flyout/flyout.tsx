@@ -67,10 +67,8 @@ export class Flyout {
   public openChangeHandler(isOpen: boolean): void {
     setScrollLock(isOpen);
 
-    if (isOpen) {
-      if (this.hasSubFooter) {
-        this.updateShadow();
-      }
+    if (isOpen && this.hasSubFooter) {
+      this.updateShadow();
     }
   }
 
@@ -97,12 +95,9 @@ export class Flyout {
     this.setDialogVisibility(this.open);
 
     // TODO: should this really be executed on every rerender, e.g. prop change?
-    if (this.open) {
+    if (this.open && this.hasSubFooter) {
       // TODO: why not scroll to top when opened just like modal does?
-
-      if (this.hasSubFooter) {
-        this.updateShadow();
-      }
+      this.updateShadow();
     }
   }
 
@@ -233,10 +228,6 @@ export class Flyout {
   };
 
   private setDialogVisibility(isOpen: boolean): void {
-    if (!this.dialog) {
-      return;
-    }
-
     // TODO: SupportsNativeDialog check
     // Only call showModal/close on dialog when state changes
     if (isOpen === true && !this.dialog.open) {

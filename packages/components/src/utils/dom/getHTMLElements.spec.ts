@@ -13,9 +13,13 @@ it('should call querySelectorAll on element with selector parameter', () => {
 
 it('should return result of querySelectorAll', () => {
   const element = document.createElement('div');
-  const childElement = document.createElement('span');
-  // @ts-ignore
-  jest.spyOn(element, 'querySelectorAll').mockReturnValue([childElement]);
+  const spanElement = document.createElement('span');
+  const slotNodeList = document
+    .createElement('div')
+    .appendChild(spanElement)
+    .appendChild(spanElement)
+    .querySelectorAll('slot');
+  jest.spyOn(element, 'querySelectorAll').mockReturnValue(slotNodeList);
 
-  expect(getHTMLElements(element, 'span')).toStrictEqual([childElement]);
+  expect(getHTMLElements(element, 'span')).toStrictEqual(slotNodeList);
 });
