@@ -22,7 +22,7 @@ export const validateSelectOption = (slot: HTMLSlotElement, host: HTMLElement): 
 
   if (notValid) {
     consoleError(
-      `child HTMLElements of ${getTagNameWithoutPrefix(host)} are invalid. Expected all of: text or img.`,
+      `child HTMLElements of ${getTagNameWithoutPrefix(host)} are invalid. Expected all of: #text or <img />.`,
       host
     );
   }
