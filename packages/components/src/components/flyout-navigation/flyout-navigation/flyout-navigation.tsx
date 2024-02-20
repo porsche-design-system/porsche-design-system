@@ -109,6 +109,9 @@ export class FlyoutNavigation {
 
     return (
       <dialog
+        // ignore needed for pipeline
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        /* @ts-ignore */
         inert={this.open ? null : true} // prevents focusable elements during fade-out transition
         tabIndex={-1} // dialog always has a dismiss button to be focused
         ref={(ref) => (this.dialog = ref)}
