@@ -21,17 +21,12 @@ export const isFocusableElement = (el: HTMLInputElement): boolean => {
   );
 };
 
-export type FirstAndLastFocusableElement = HTMLElement[];
+export type FirstAndLastFocusableElement = [HTMLElement, HTMLElement] | [];
 export const getFirstAndLastFocusableElement = (
   host: HTMLElement,
-  closeButton?: HTMLElement
+  closeButton: HTMLElement
 ): FirstAndLastFocusableElement => {
-  const focusableElements = unpackChildren(host).filter(isFocusableElement);
-
-  if (closeButton) {
-    return [closeButton, focusableElements.pop() || closeButton];
-  }
-
+  const focusableElements = (closeButton ? [closeButton] : []).concat(unpackChildren(host).filter(isFocusableElement));
   return [focusableElements[0], focusableElements.pop()];
 };
 
@@ -47,42 +42,26 @@ export const setFocusTrap = (
   let focusableElements: FirstAndLastFocusableElement = [];
 
   document.removeEventListener('keydown', documentKeydownListener);
-
   if (isOpen) {
-    // the filter removes falsy values: https://stackoverflow.com/a/41346932
-    focusableElements = getFirstAndLastFocusableElement(host, closeBtn).filter((x) => x);
-
+    focusableElements = getFirstAndLastFocusableElement(host, closeBtn);
     documentKeydownListener = (e: KeyboardEvent): void => {
       const { key, shiftKey } = e;
       const { activeElement } = host.shadowRoot;
-
       if (key === 'Escape') {
         closeFn();
-
-        return;
-      }
-
-      // all other cases respect the natural tab order
-      // the cycle itself is accomplished within setFirstAndLastFocusableElementKeydownListener
-      if (key !== 'Tab') {
-        return;
-      }
-
-      // if we don't have any focusableElements we need to prevent Tab here
-      if (focusableElements.length === 0) {
-        e.preventDefault();
-
-        return;
-      }
-
-      // when component is opened initially, the dialog is focused and shift + tab would break out of cycle
-      if (shiftKey && activeElement === firstFocusableElement) {
-        e.preventDefault();
-
-        focusableElements[1]?.focus();
+      } else if (key === 'Tab') {
+        if (shiftKey && activeElement === firstFocusableElement) {
+          // when component is opened initially, the dialog is focused and shift + tab would break out of cycle
+          e.preventDefault();
+          focusableElements[1]?.focus();
+        } else if (!focusableElements.filter((x) => x).length) {
+          // if we don't have any focusableElements we need to prevent Tab here
+          e.preventDefault();
+        }
+        // all other cases respect the natural tab order
+        // the cycle itself is accomplished within setFirstAndLastFocusableElementKeydownListener
       }
     };
-
     document.addEventListener('keydown', documentKeydownListener);
   }
 
@@ -114,9 +93,7 @@ export const setFirstAndLastFocusableElementKeydownListener = (
           focusableElements[idx === 0 ? 1 : 0].focus();
         }
       };
-
       el.addEventListener('keydown', handler);
-
       return handler;
     }) as KeyboardHandlerTuple;
   }
