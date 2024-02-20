@@ -11,7 +11,7 @@
   "homepage": "https://designsystem.porsche.com",
   "scripts": {
     "build": "yarn clean:build && yarn build:generateComponentMeta && yarn build:bundle",
-    "build:generateComponentMeta": "ts-node scripts/generateComponentMeta.ts",
+    "build:generateComponentMeta": "tsx scripts/generateComponentMeta.ts",
     "build:bundle": "rollup -c rollup.config.js --bundleConfigAsCjs",
     "test": "yarn test:unit",
     "test:unit": "jest --colors -c tests/unit/config/jest.config.js",
@@ -22,8 +22,8 @@
   "devDependencies": {
     "@porsche-design-system/shared": "0.0.0",
     "change-case": "^4.1.2",
-    "globby": "^11.0.4",
-    "ts-node": "^10.9.2",
+    "globby": "^14.0.1",
+    "tsx": "^4.7.1",
     "typescript": "~5.3.3"
   },
   "volta": {
