@@ -11,7 +11,6 @@ if
   [[ "--assets:styles" == "${1}" ]] ||
   [[ "--component-meta" == "${1}" ]] ||
   [[ "--components" == "${1}" ]] ||
-  [[ "--components-js" == "${1}" ]] ||
   [[ "--components-js:components-manager-cli" == "${1}" ]] ||
   [[ "--components-js:components-manager-core" == "${1}" ]] ||
   [[ "--components-js:components-wrapper" == "${1}" ]] ||
@@ -26,10 +25,14 @@ if
   [[ "--components-vue" == "${1}" ]] ||
   [[ "--components-vue:vue-wrapper" == "${1}" ]] ||
   [[ "--shared" == "${1}" ]] ||
-  [[ "--storefront" == "${1}" ]] ||
-  [[ "--utilities" == "${1}" ]]
+  [[ "--storefront" == "${1}" ]]
 then
   yarn test:unit:${1:2} --ci
+elif
+  [[ "--components-js" == "${1}" ]] ||
+  [[ "--utilities" == "${1}" ]]
+then
+  yarn test:unit:${1:2}
 elif [[ "--components-angular:karma" == "${1}" ]]; then
   CI=true yarn test:unit:${1:2}-ci
 fi
