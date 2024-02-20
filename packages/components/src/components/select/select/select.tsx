@@ -46,7 +46,6 @@ import {
   isClickOutside,
   SELECT_DROPDOWN_DIRECTIONS,
   SELECT_SEARCH_TIMEOUT,
-  selectActions,
   type SelectDropdownDirection,
   setNextSelectOptionHighlighted,
   THEMES,
@@ -307,14 +306,14 @@ export class Select {
     const action = getActionFromKey(event, this.isOpen);
 
     switch (action) {
-      case selectActions.Last:
-      case selectActions.First:
+      case 'Last':
+      case 'First':
         this.updateMenuState(true);
       // intentional fallthrough
-      case selectActions.Next:
-      case selectActions.Previous:
-      case selectActions.PageUp:
-      case selectActions.PageDown:
+      case 'Next':
+      case 'Previous':
+      case 'PageUp':
+      case 'PageDown':
         event.preventDefault();
         setNextSelectOptionHighlighted(
           this.listElement,
@@ -327,18 +326,18 @@ export class Select {
         );
         this.updateSrHighlightedOptionText();
         break;
-      case selectActions.CloseSelect:
+      case 'CloseSelect':
         event.preventDefault();
         this.updateSelectedOption(getHighlightedSelectOption(this.selectOptions));
       // intentional fallthrough
-      case selectActions.Close:
+      case 'Close':
         event.preventDefault();
         this.updateMenuState(false);
         break;
-      case selectActions.Type:
+      case 'Type':
         this.onComboType(key);
         break;
-      case selectActions.Open:
+      case 'Open':
         event.preventDefault();
         this.updateMenuState(true);
         break;

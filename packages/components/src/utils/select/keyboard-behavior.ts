@@ -1,21 +1,18 @@
 import { forceUpdate } from '@stencil/core';
 import type { HTMLStencilElement } from '@stencil/core/internal';
 
-export const selectActions = {
-  Close: 0, // Close select dropdown
-  CloseSelect: 1, // Close and select currently highlighted option
-  First: 2, // Highlight first option
-  Last: 3, // Highlight last option
-  Next: 4, // Highlight next option
-  Open: 5, // Open select dropdown
-  PageDown: 6, // Go 10 options down or to the last option
-  PageUp: 7, // Go 10 options up or to the first option
-  Previous: 8, // Highlight the previous option
-  Select: 9, // Select the currently highlighted option
-  Type: 10, // Jump to the matching option by searching
-} as const;
-
-type SelectAction = (typeof selectActions)[keyof typeof selectActions];
+type SelectAction =
+  | 'Close' // Close select dropdown
+  | 'CloseSelect' // Close and select currently highlighted option
+  | 'First' // Highlight first option
+  | 'Last' // Highlight last option
+  | 'Next' // Highlight next option
+  | 'Open' // Open select dropdown
+  | 'PageDown' // Go 10 options down or to the last option
+  | 'PageUp' // Go 10 options up or to the first option
+  | 'Previous' // Highlight the previous option
+  | 'Select' // Select the currently highlighted option
+  | 'Type'; // Jump to the matching option by searching
 
 export type Option = HTMLElement &
   HTMLStencilElement & {
@@ -55,38 +52,38 @@ export const getActionFromKey = (event: KeyboardEvent, menuOpen: boolean): Selec
   const openKeys = ['ArrowDown', 'ArrowUp', 'Enter', ' ']; // all keys that will do the default open action
   // handle opening when closed
   if (!menuOpen && openKeys.includes(key)) {
-    return selectActions.Open;
+    return 'Open';
   }
 
   // home and end move the selected option when open or closed
   if (key === 'Home') {
-    return selectActions.First;
+    return 'First';
   }
   if (key === 'End') {
-    return selectActions.Last;
+    return 'Last';
   }
 
   // handle typing characters when open or closed
   if (key === 'Backspace' || key === 'Clear' || (key.length === 1 && key !== ' ' && !altKey && !ctrlKey && !metaKey)) {
-    return selectActions.Type;
+    return 'Type';
   }
 
   // handle keys when open
   if (menuOpen) {
     if (key === 'ArrowUp' && altKey) {
-      return selectActions.CloseSelect;
+      return 'CloseSelect';
     } else if (key === 'ArrowDown' && !altKey) {
-      return selectActions.Next;
+      return 'Next';
     } else if (key === 'ArrowUp') {
-      return selectActions.Previous;
+      return 'Previous';
     } else if (key === 'PageUp') {
-      return selectActions.PageUp;
+      return 'PageUp';
     } else if (key === 'PageDown') {
-      return selectActions.PageDown;
+      return 'PageDown';
     } else if (key === 'Escape') {
-      return selectActions.Close;
+      return 'Close';
     } else if (key === 'Enter' || key === ' ' || key === 'Tab') {
-      return selectActions.CloseSelect;
+      return 'CloseSelect';
     }
   }
 };
@@ -101,17 +98,17 @@ export const getActionFromKey = (event: KeyboardEvent, menuOpen: boolean): Selec
  */
 export const getUpdatedIndex = (currentIndex: number, maxIndex: number, action: SelectAction): number => {
   switch (action) {
-    case selectActions.First:
+    case 'First':
       return 0;
-    case selectActions.Last:
+    case 'Last':
       return maxIndex;
-    case selectActions.Previous:
+    case 'Previous':
       return Math.max(0, currentIndex - 1);
-    case selectActions.Next:
+    case 'Next':
       return Math.min(maxIndex, currentIndex + 1);
-    case selectActions.PageUp:
+    case 'PageUp':
       return Math.max(0, currentIndex - PAGE_UP_DOWN_STEP_AMOUNT);
-    case selectActions.PageDown:
+    case 'PageDown':
       return Math.min(maxIndex, currentIndex + PAGE_UP_DOWN_STEP_AMOUNT);
     default:
       return currentIndex;
