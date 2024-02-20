@@ -5,7 +5,7 @@ import {
   getHighlightedSelectOptionIndex,
   getUsableSelectOptions,
   type SelectDropdownDirectionInternal,
-  type SelectDropdownDirection,
+  type SelectComponentsDropdownDirection,
   setAttribute,
   setAttributes,
   type Theme,
@@ -15,6 +15,7 @@ import { forceUpdate } from '@stencil/core';
 
 export type SelectState = FormState;
 export type SelectOption = HTMLPSelectOptionElement & SelectOptionInternalHTMLProps;
+export type SelectDropdownDirection = SelectComponentsDropdownDirection;
 
 export type SelectUpdateEventDetail = {
   name: string;
@@ -109,7 +110,7 @@ export const updateNativeSelectOption = (nativeSelect: HTMLSelectElement, select
 
 // TODO: This is copied from multi-select, extract and reuse in both components
 export const getSelectDropdownDirection = (
-  direction: SelectDropdownDirection,
+  direction: SelectComponentsDropdownDirection,
   host: HTMLElement,
   options: SelectOption[]
 ): SelectDropdownDirectionInternal => {

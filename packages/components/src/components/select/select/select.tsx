@@ -1,5 +1,5 @@
 import type { BreakpointCustomizable, PropTypes, Theme } from '../../../types';
-import type { SelectOption, SelectState, SelectUpdateEventDetail } from './select-utils';
+import type { SelectOption, SelectState, SelectUpdateEventDetail, SelectDropdownDirection } from './select-utils';
 import {
   getSelectDropdownDirection,
   getSelectedOptionString,
@@ -46,7 +46,6 @@ import {
   isClickOutside,
   SELECT_DROPDOWN_DIRECTIONS,
   SELECT_SEARCH_TIMEOUT,
-  type SelectDropdownDirection,
   setNextSelectOptionHighlighted,
   THEMES,
   throwIfElementIsNotOfKind,
