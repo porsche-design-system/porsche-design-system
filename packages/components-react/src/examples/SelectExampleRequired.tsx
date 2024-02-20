@@ -26,12 +26,10 @@ export const SelectRequiredExamplePage = (): JSX.Element => {
         <input type="checkbox" name="required" checked={isRequired} onChange={() => onChangeRequired} />
         Required
       </label>
-      <br />
       <label>
         <input type="checkbox" name="deselection" checked={hasDeselection} onChange={() => onChangeDeselection} />
         Allow deselection
       </label>
-      <br />
 
       <form onSubmit={onSubmit}>
         <PSelect name="options" label="Some Label" required={true}>

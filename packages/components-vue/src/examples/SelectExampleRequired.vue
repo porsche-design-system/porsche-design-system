@@ -25,12 +25,10 @@
     <input type="checkbox" name="required" :checked="isRequired" @change="onChangeRequired" />
     Required
   </label>
-  <br />
   <label>
     <input type="checkbox" name="deselection" :checked="hasDeselection" @change="onChangeDeselection" />
     Allow deselection
   </label>
-  <br />
 
   <form @submit.prevent="onSubmit">
     <p-select name="options" label="Some Label" :required="true">

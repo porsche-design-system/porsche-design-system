@@ -7,12 +7,10 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       <input type="checkbox" name="required" [checked]="isRequired" (change)="onChangeRequired()" />
       Required
     </label>
-    <br />
     <label>
       <input type="checkbox" name="deselection" [checked]="hasDeselection" (change)="onChangeDeselection()" />
       Allow deselection
     </label>
-    <br />
 
     <form (submit)="onSubmit($event)">
       <p-select name="options" label="Some Label" [required]="true">
