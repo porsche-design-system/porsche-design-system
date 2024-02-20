@@ -8,7 +8,8 @@ import {
   type PrefersColorScheme,
   setContentWithDesignSystem,
 } from '../../helpers';
-import { type Theme } from '@porsche-design-system/utilities-v2';
+// TODO: Change this import for all other vrt tests too
+import type { Theme } from '@porsche-design-system/components/src/types';
 
 const component = 'select';
 
