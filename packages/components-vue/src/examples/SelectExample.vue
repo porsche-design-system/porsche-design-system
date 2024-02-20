@@ -2,7 +2,7 @@
   import { PSelect, PSelectOption } from '@porsche-design-system/components-vue';
   import { ref } from 'vue';
 
-  const lastSubmittedData = ref('none');
+  const lastSubmittedData = ref<string>('none');
   const onSubmit = (e: Event) => {
     const formData = new FormData(e.target as HTMLFormElement);
     lastSubmittedData.value = formData.get('options')?.toString() || 'none';

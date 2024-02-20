@@ -3,8 +3,8 @@
   import { ref } from 'vue';
 
   const selectedValue = ref<string>('1');
-  const inputValue = ref('');
-  const optionCount = ref(3);
+  const inputValue = ref<string>('');
+  const optionCount = ref<number>(3);
 
   const onSetValue = () => {
     selectedValue.value = inputValue.value;

@@ -2,9 +2,9 @@
   import { PSelect, PSelectOption } from '@porsche-design-system/components-vue';
   import { ref } from 'vue';
 
-  const lastSubmittedData = ref('none');
-  const isRequired = ref(true);
-  const hasDeselection = ref(false);
+  const lastSubmittedData = ref<string>('none');
+  const isRequired = ref<boolean>(true);
+  const hasDeselection = ref<boolean>(false);
 
   const onChangeRequired = () => {
     isRequired.value = !isRequired.value;
