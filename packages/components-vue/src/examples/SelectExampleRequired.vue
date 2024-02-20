@@ -14,7 +14,7 @@
     hasDeselection.value = !hasDeselection.value;
   };
 
-  const handleSubmit = (e: Event) => {
+  const onSubmit = (e: Event) => {
     const formData = new FormData(e.target as HTMLFormElement);
     lastSubmittedData.value = formData.get('options')?.toString() || 'none';
   };
@@ -32,7 +32,7 @@
   </label>
   <br />
 
-  <form @submit.prevent="handleSubmit">
+  <form @submit.prevent="onSubmit">
     <p-select name="options" label="Some Label" :required="true">
       <p-select-option v-if="hasDeselection"></p-select-option>
       <p-select-option value="1">Option 1</p-select-option>

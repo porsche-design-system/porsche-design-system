@@ -11,7 +11,7 @@ import type { SelectUpdateEventDetail } from '@porsche-design-system/components-
     <button type="button" (click)="onSetValue()">Set Value</button>
     <button type="button" (click)="onResetValue()">Reset value</button>
 
-    <p-select name="options" label="Some Label" [value]="selectedValue" (update)="handleUpdate($event)">
+    <p-select name="options" label="Some Label" [value]="selectedValue" (update)="onUpdate($event)">
       <p-select-option *ngFor="let idx of optionIndices" [value]="(idx + 1).toString()"
         >Option {{ idx + 1 }}</p-select-option
       >
@@ -44,7 +44,7 @@ export class SelectExampleDynamicComponent {
     this.inputValue = '';
   }
 
-  handleUpdate(e: CustomEvent<SelectUpdateEventDetail>) {
+  onUpdate(e: CustomEvent<SelectUpdateEventDetail>) {
     this.selectedValue = e.detail.value;
     this.inputValue = e.detail.value;
   }

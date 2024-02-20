@@ -3,14 +3,14 @@
   import { ref } from 'vue';
 
   const lastSubmittedData = ref('none');
-  const handleSubmit = (e: Event) => {
+  const onSubmit = (e: Event) => {
     const formData = new FormData(e.target as HTMLFormElement);
     lastSubmittedData.value = Array.from(formData.values()).join(', ') || 'none';
   };
 </script>
 
 <template>
-  <form @submit.prevent="handleSubmit">
+  <form @submit.prevent="onSubmit">
     <PMultiSelect :name="'options'" :label="'Some Label'">
       <PMultiSelectOption :value="'a'">Option A</PMultiSelectOption>
       <PMultiSelectOption :value="'b'">Option B</PMultiSelectOption>

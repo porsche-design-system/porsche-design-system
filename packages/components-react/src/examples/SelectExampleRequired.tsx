@@ -14,7 +14,7 @@ export const SelectRequiredExamplePage = (): JSX.Element => {
     setHasDeselection((prev) => !prev);
   };
 
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+  const onSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
     setLastSubmittedData(formData.get('options')?.toString() || 'none');
@@ -33,7 +33,7 @@ export const SelectRequiredExamplePage = (): JSX.Element => {
       </label>
       <br />
 
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={onSubmit}>
         <PSelect name="options" label="Some Label" required={true}>
           {hasDeselection && <PSelectOption></PSelectOption>}
           <PSelectOption value="1">Option 1</PSelectOption>

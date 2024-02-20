@@ -3,7 +3,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 @Component({
   selector: 'page-select-example',
   template: `
-    <form (submit)="handleSubmit($event)">
+    <form (submit)="onSubmit($event)">
       <p-select name="options" label="Some Label">
         <p-select-option value="a">Option A</p-select-option>
         <p-select-option value="b">Option B</p-select-option>
@@ -22,7 +22,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 export class SelectExampleComponent {
   lastSubmittedData: string = 'none';
 
-  handleSubmit(e: Event): void {
+  onSubmit(e: Event): void {
     e.preventDefault();
     const formData = new FormData(e.target as HTMLFormElement);
     this.lastSubmittedData = formData.get('options')?.toString() || 'none';

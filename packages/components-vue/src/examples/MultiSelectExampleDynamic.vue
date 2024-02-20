@@ -19,7 +19,7 @@
     inputValue.value = '';
   };
 
-  const handleUpdate = (e: MultiSelectUpdateEventDetail) => {
+  const onUpdate = (e: MultiSelectUpdateEventDetail) => {
     selectedValues.value = e.value;
     inputValue.value = e.value.join(',');
   };
@@ -44,7 +44,7 @@
     <button type="button" @click="onSetValue">Set Value</button>
     <button type="button" @click="onResetValue">Reset value</button>
 
-    <PMultiSelect :name="'options'" :label="'Some Label'" :value="selectedValues" @update="handleUpdate">
+    <PMultiSelect :name="'options'" :label="'Some Label'" :value="selectedValues" @update="onUpdate">
       <PMultiSelectOption v-for="idx in optionCount" :key="idx" :value="`${idx}`">
         Option {{ idx }}
       </PMultiSelectOption>

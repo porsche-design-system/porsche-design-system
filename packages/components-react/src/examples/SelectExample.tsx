@@ -4,7 +4,7 @@ import { PSelect, PSelectOption } from '@porsche-design-system/components-react'
 export const SelectExamplePage = (): JSX.Element => {
   const [lastSubmittedData, setLastSubmittedData] = useState('none');
 
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+  const onSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
     setLastSubmittedData(formData.get('options')?.toString() || 'none');
@@ -12,7 +12,7 @@ export const SelectExamplePage = (): JSX.Element => {
 
   return (
     <>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={onSubmit}>
         <PSelect name="options" label="Some Label" value="a">
           <PSelectOption value="a">Option A</PSelectOption>
           <PSelectOption value="b">Option B</PSelectOption>

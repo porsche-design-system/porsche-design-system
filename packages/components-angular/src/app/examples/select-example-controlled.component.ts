@@ -4,7 +4,7 @@ import type { SelectUpdateEventDetail } from '@porsche-design-system/components-
 @Component({
   selector: 'page-select-example-controlled',
   template: `
-    <p-select name="options" label="Some Label" [value]="selectedValue" (update)="handleUpdate($event)">
+    <p-select name="options" label="Some Label" [value]="selectedValue" (update)="onUpdate($event)">
       <p-select-option value="a">Option A</p-select-option>
       <p-select-option value="b">Option B</p-select-option>
       <p-select-option value="c">Option C</p-select-option>
@@ -24,7 +24,7 @@ export class SelectExampleControlledComponent {
     return `Selected value: ${this.selectedValue}`;
   }
 
-  handleUpdate(e: CustomEvent<SelectUpdateEventDetail>) {
+  onUpdate(e: CustomEvent<SelectUpdateEventDetail>) {
     this.selectedValue = e.detail.value;
   }
 }

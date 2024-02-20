@@ -9,7 +9,7 @@ import {
 export const SelectControlledExamplePage = (): JSX.Element => {
   const [selectedValue, setSelectedValue] = useState<PSelectProps['value']>('a');
 
-  const handleUpdate = (e: CustomEvent<SelectUpdateEventDetail>) => {
+  const onUpdate = (e: CustomEvent<SelectUpdateEventDetail>) => {
     setSelectedValue(e.detail.value);
   };
 
@@ -17,7 +17,7 @@ export const SelectControlledExamplePage = (): JSX.Element => {
 
   return (
     <>
-      <PSelect name="options" label="Some Label" value={selectedValue} onUpdate={handleUpdate}>
+      <PSelect name="options" label="Some Label" value={selectedValue} onUpdate={onUpdate}>
         <PSelectOption value="a">Option A</PSelectOption>
         <PSelectOption value="b">Option B</PSelectOption>
         <PSelectOption value="c">Option C</PSelectOption>

@@ -14,7 +14,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     </label>
     <br />
 
-    <form (submit)="handleSubmit($event)">
+    <form (submit)="onSubmit($event)">
       <p-select name="options" label="Some Label" [required]="true">
         <p-select-option *ngIf="hasDeselection"></p-select-option>
         <p-select-option value="1">Option 1</p-select-option>
@@ -41,7 +41,7 @@ export class SelectExampleRequiredComponent {
     this.hasDeselection = !this.hasDeselection;
   }
 
-  handleSubmit(e: Event): void {
+  onSubmit(e: Event): void {
     e.preventDefault();
     const formData = new FormData(e.target as HTMLFormElement);
     this.lastSubmittedData = formData.get('options')?.toString() || 'none';

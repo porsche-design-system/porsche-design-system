@@ -15,7 +15,7 @@
     inputValue.value = '';
   };
 
-  const handleUpdate = (e: SelectUpdateEventDetail) => {
+  const onUpdate = (e: SelectUpdateEventDetail) => {
     selectedValue.value = e.value;
     inputValue.value = e.value;
   };
@@ -40,7 +40,7 @@
     <button type="button" @click="onSetValue">Set Value</button>
     <button type="button" @click="onResetValue">Reset value</button>
 
-    <PSelect :name="'options'" :label="'Some Label'" :value="selectedValue" @update="handleUpdate">
+    <PSelect :name="'options'" :label="'Some Label'" :value="selectedValue" @update="onUpdate">
       <PSelectOption v-for="idx in optionCount" :key="idx" :value="`${idx}`"> Option {{ idx }} </PSelectOption>
     </PSelect>
 

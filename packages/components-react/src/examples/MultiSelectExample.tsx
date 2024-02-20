@@ -4,7 +4,7 @@ import { PMultiSelect, PMultiSelectOption } from '@porsche-design-system/compone
 export const MultiSelectExamplePage = (): JSX.Element => {
   const [lastSubmittedData, setLastSubmittedData] = useState('none');
 
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+  const onSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
     setLastSubmittedData(Array.from(formData.values()).join(', ') || 'none');
@@ -12,7 +12,7 @@ export const MultiSelectExamplePage = (): JSX.Element => {
 
   return (
     <>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={onSubmit}>
         <PMultiSelect name="options" label="Some Label">
           <PMultiSelectOption value="a">Option A</PMultiSelectOption>
           <PMultiSelectOption value="b">Option B</PMultiSelectOption>

@@ -24,7 +24,7 @@ export const SelectDynamicExamplePage = (): JSX.Element => {
     setInputValue('');
   };
 
-  const handleUpdate = (e: CustomEvent<SelectUpdateEventDetail>) => {
+  const onUpdate = (e: CustomEvent<SelectUpdateEventDetail>) => {
     setSelectedValue(e.detail.value);
     setInputValue(e.detail.value);
   };
@@ -52,7 +52,7 @@ export const SelectDynamicExamplePage = (): JSX.Element => {
         Reset value
       </button>
 
-      <PSelect name="options" label="Some Label" value={selectedValue} onUpdate={handleUpdate}>
+      <PSelect name="options" label="Some Label" value={selectedValue} onUpdate={onUpdate}>
         {[...Array(optionCount).keys()].map((idx) => (
           <PSelectOption key={idx} value={`${idx + 1}`}>
             Option {idx + 1}
