@@ -1,4 +1,4 @@
-import { Component, Element, forceUpdate, h, type JSX, Prop, Watch } from '@stencil/core';
+import { Component, Element, forceUpdate, h, type JSX, Prop } from '@stencil/core';
 import {
   AllowedTypes,
   attachComponentCss,
@@ -19,6 +19,7 @@ import { type RadioButtonWrapperState } from './radio-button-wrapper-utils';
 import { StateMessage } from '../common/state-message/state-message';
 import { Label } from '../common/label/label';
 import { LoadingMessage } from '../common/loading-message/loading-message';
+import { ControllerHost, InitialLoadingController } from '../../controllers';
 
 const propTypes: PropTypes<typeof RadioButtonWrapper> = {
   label: AllowedTypes.string,
@@ -54,27 +55,18 @@ export class RadioButtonWrapper {
   /** Adapts the color depending on the theme. */
   @Prop() public theme?: Theme = 'light';
 
+  private controllerHost = new ControllerHost(this);
+  private loadingCtrl = new InitialLoadingController(this.controllerHost);
   private input: HTMLInputElement;
-  private initialLoading: boolean = false;
-
-  @Watch('loading')
-  public loadingChanged(newVal: boolean): void {
-    if (newVal) {
-      // don't reset initialLoading to false
-      this.initialLoading = newVal;
-    }
-  }
 
   public connectedCallback(): void {
     applyCheckboxRadioButtonSafariRenderingFix(this.host);
     this.observeAttributes(); // on every reconnect
-    this.initialLoading = this.loading;
   }
 
   public componentWillLoad(): void {
     this.input = getOnlyChildOfKindHTMLElementOrThrow(this.host, 'input[type=radio]');
     this.observeAttributes(); // once initially
-    this.initialLoading = this.loading;
   }
 
   public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
@@ -124,7 +116,7 @@ export class RadioButtonWrapper {
           )}
         </div>
         <StateMessage state={this.state} message={this.message} theme={this.theme} host={this.host} />
-        <LoadingMessage loading={isLoading} initialLoading={this.initialLoading} />
+        <LoadingMessage loading={isLoading} initialLoading={this.loadingCtrl.initialLoading} />
       </div>
     );
   }
