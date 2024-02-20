@@ -1,2 +1,2 @@
 export * from './controller-host';
-export * from './loading-controller';
+export * from './initial-loading-controller';

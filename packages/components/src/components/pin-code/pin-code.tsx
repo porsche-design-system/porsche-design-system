@@ -29,7 +29,7 @@ import { getComponentCss } from './pin-code-styles';
 import { messageId, StateMessage } from '../common/state-message/state-message';
 import { descriptionId, labelId, Label } from '../common/label/label';
 import { LoadingMessage } from '../common/loading-message/loading-message';
-import { ControllerHost, LoadingController } from '../../controllers';
+import { ControllerHost, InitialLoadingController } from '../../controllers';
 
 const propTypes: PropTypes<typeof PinCode> = {
   label: AllowedTypes.string,
@@ -97,7 +97,7 @@ export class PinCode {
   @Event({ bubbles: false }) public update: EventEmitter<PinCodeUpdateEventDetail>;
 
   private controllerHost = new ControllerHost(this);
-  private loadingCtrl = new LoadingController(this.controllerHost);
+  private loadingCtrl = new InitialLoadingController(this.controllerHost);
   private form: HTMLFormElement;
   private isWithinForm: boolean;
   private hiddenInput: HTMLInputElement;

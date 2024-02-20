@@ -15,7 +15,7 @@ import { getComponentCss } from './switch-styles';
 import type { SwitchAlignLabel, SwitchAlignLabelDeprecated, SwitchUpdateEventDetail } from './switch-utils';
 import { getSwitchButtonAriaAttributes } from './switch-utils';
 import { LoadingMessage, loadingId } from '../common/loading-message/loading-message';
-import { ControllerHost, LoadingController } from '../../controllers';
+import { ControllerHost, InitialLoadingController } from '../../controllers';
 
 const propTypes: PropTypes<typeof Switch> = {
   alignLabel: AllowedTypes.breakpoint<SwitchAlignLabel>(ALIGN_LABELS),
@@ -64,7 +64,7 @@ export class Switch {
   @Event({ bubbles: false }) public update: EventEmitter<SwitchUpdateEventDetail>;
 
   private controllerHost = new ControllerHost(this);
-  private loadingCtrl = new LoadingController(this.controllerHost);
+  private loadingCtrl = new InitialLoadingController(this.controllerHost);
 
   @Listen('click', { capture: true })
   public onClick(e: MouseEvent): void {

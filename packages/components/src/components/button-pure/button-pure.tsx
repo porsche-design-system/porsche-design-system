@@ -30,7 +30,7 @@ import type {
 import { getButtonPureAriaAttributes, warnIfIsLoadingAndIconIsNone } from './button-pure-utils';
 import { getComponentCss } from './button-pure-styles';
 import { LoadingMessage, loadingId } from '../common/loading-message/loading-message';
-import { ControllerHost, LoadingController } from '../../controllers';
+import { ControllerHost, InitialLoadingController } from '../../controllers';
 
 const propTypes: PropTypes<typeof ButtonPure> = {
   type: AllowedTypes.oneOf<ButtonPureType>(BUTTON_TYPES),
@@ -106,7 +106,7 @@ export class ButtonPure {
   @Prop() public aria?: SelectedAriaAttributes<ButtonPureAriaAttribute>;
 
   private controllerHost = new ControllerHost(this);
-  private loadingCtrl = new LoadingController(this.controllerHost);
+  private loadingCtrl = new InitialLoadingController(this.controllerHost);
 
   private get isDisabledOrLoading(): boolean {
     return isDisabledOrLoading(this.disabled, this.loading);

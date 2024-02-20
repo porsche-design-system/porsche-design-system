@@ -1,6 +1,6 @@
 import type { ReactiveController, ReactiveControllerHost } from './controller-host';
 
-export class LoadingController implements ReactiveController {
+export class InitialLoadingController implements ReactiveController {
   public initialLoading: boolean = false;
 
   public constructor(private controllerHost: ReactiveControllerHost<{ loading?: boolean }>) {

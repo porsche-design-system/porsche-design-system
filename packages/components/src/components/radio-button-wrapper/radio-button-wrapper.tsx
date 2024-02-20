@@ -19,7 +19,7 @@ import { type RadioButtonWrapperState } from './radio-button-wrapper-utils';
 import { StateMessage } from '../common/state-message/state-message';
 import { Label } from '../common/label/label';
 import { LoadingMessage } from '../common/loading-message/loading-message';
-import { ControllerHost, LoadingController } from '../../controllers';
+import { ControllerHost, InitialLoadingController } from '../../controllers';
 
 const propTypes: PropTypes<typeof RadioButtonWrapper> = {
   label: AllowedTypes.string,
@@ -56,7 +56,7 @@ export class RadioButtonWrapper {
   @Prop() public theme?: Theme = 'light';
 
   private controllerHost = new ControllerHost(this);
-  private loadingCtrl = new LoadingController(this.controllerHost);
+  private loadingCtrl = new InitialLoadingController(this.controllerHost);
   private input: HTMLInputElement;
 
   public connectedCallback(): void {

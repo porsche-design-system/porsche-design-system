@@ -26,7 +26,7 @@ import { getButtonAriaAttributes } from './button-utils';
 import type { ButtonIcon } from './button-utils';
 import { getComponentCss } from './button-styles';
 import { loadingId, LoadingMessage } from '../common/loading-message/loading-message';
-import { ControllerHost, LoadingController } from '../../controllers';
+import { ControllerHost, InitialLoadingController } from '../../controllers';
 
 const propTypes: PropTypes<typeof Button> = {
   type: AllowedTypes.oneOf<ButtonType>(BUTTON_TYPES),
@@ -83,7 +83,7 @@ export class Button {
   @Prop() public aria?: SelectedAriaAttributes<ButtonAriaAttribute>;
 
   private controllerHost = new ControllerHost(this);
-  private loadingCtrl = new LoadingController(this.controllerHost);
+  private loadingCtrl = new InitialLoadingController(this.controllerHost);
 
   @Listen('click', { capture: true })
   public onClick(e: MouseEvent): void {
