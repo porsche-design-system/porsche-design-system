@@ -11,7 +11,7 @@ import {
   prefersColorSchemeDarkMediaQuery,
 } from '../../../styles';
 import { borderRadiusSmall, fontLineHeight, spacingStaticSmall } from '@porsche-design-system/utilities-v2';
-import { Styles } from 'jss';
+import type { Styles } from 'jss';
 
 export const getComponentCss = (theme: Theme): string => {
   return getCss({
