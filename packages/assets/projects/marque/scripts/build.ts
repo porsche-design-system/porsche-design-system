@@ -1,7 +1,7 @@
 import * as fs from 'fs';
 import * as path from 'path';
 import * as crypto from 'crypto';
-import * as globby from 'globby';
+import { globbySync } from 'globby';
 import { paramCase, camelCase } from 'change-case';
 import { CDN_BASE_PATH_MARQUE } from '../../../../../cdn.config';
 
@@ -50,7 +50,7 @@ const checkIntegrity = (manifest: Manifest): void => {
 };
 
 const createManifestAndCopyMarque = (): void => {
-  const files = globby.sync('./src/**/*.{png,webp}').sort();
+  const files = globbySync('./src/**/*.{png,webp}').sort();
 
   fs.rmSync(path.normalize('./dist'), { force: true, recursive: true });
   fs.mkdirSync(path.normalize('./dist/marque'), { recursive: true });

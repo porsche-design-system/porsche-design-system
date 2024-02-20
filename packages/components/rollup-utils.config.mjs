@@ -3,7 +3,7 @@ import commonjs from '@rollup/plugin-commonjs';
 import nodeResolve from '@rollup/plugin-node-resolve';
 import replace from '@rollup/plugin-replace';
 import generatePackageJson from 'rollup-plugin-generate-package-json';
-import * as globby from 'globby';
+import { globbySync } from 'globby';
 import * as path from 'path';
 import * as fs from 'fs';
 import pkgJson from './package.json' assert { type: 'json' };
@@ -16,7 +16,7 @@ const input = 'src/utils-entry.ts';
 const generateUtilsEntryFile = () => {
   const __dirname = dirname(fileURLToPath(import.meta.url));
   const componentsDir = path.resolve(__dirname, 'src/components');
-  const utilsPaths = globby.sync(`${componentsDir}/**/*-utils.ts`).sort();
+  const utilsPaths = globbySync(`${componentsDir}/**/*-utils.ts`).sort();
 
   const utilsExports = utilsPaths
     .map((utilPath) => `export * from './components${utilPath.replace(componentsDir, '').replace(/\.ts$/, '')}';`)

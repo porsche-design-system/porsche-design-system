@@ -6,7 +6,7 @@
   "scope": "@porsche-design-system",
   "author": "Dr. Ing. h.c. F. Porsche AG",
   "scripts": {
-    "start": "yarn clean:reports && ts-node src/index.ts",
+    "start": "yarn clean:reports && tsx src/index.ts",
     "start-app": "serve-cdn",
     "test": "yarn test:e2e",
     "test:e2e": "PORT=3001 jest --colors -c tests/e2e/config/jest.config.ts",
@@ -20,7 +20,7 @@
     "@porsche-design-system/shared": "0.0.0"
   },
   "devDependencies": {
-    "ts-node": "^10.9.2",
+    "tsx": "^4.7.1",
     "typescript": "~5.3.3"
   },
   "volta": {

@@ -5,8 +5,5 @@
     "verbatimModuleSyntax": false,
     "moduleResolution": "node"
   },
-  "include": ["./src", "./scripts"],
-  "ts-node": {
-    "transpileOnly": true // to ignore error of circular dependency with stencil.config.ts importing @porsche-design-system/shared
-  }
+  "include": ["./src", "./scripts"]
 }

@@ -1,13 +1,13 @@
 import * as fs from 'fs';
 import * as path from 'path';
-import * as globby from 'globby';
+import { globbySync } from 'globby';
 import { paramCase } from 'change-case';
 import type { TagName } from '@porsche-design-system/shared';
 import { getComponentMeta } from '@porsche-design-system/component-meta';
 
 const addDeprecatedAnnotations = (): void => {
   const distDir = path.resolve(__dirname, '../dist/vue-wrapper/esm/lib/components');
-  const typingFilePaths = globby.sync(`${distDir}/*.vue.d.ts`);
+  const typingFilePaths = globbySync(`${distDir}/*.vue.d.ts`);
 
   let count = 0;
   typingFilePaths.forEach((filePath) => {

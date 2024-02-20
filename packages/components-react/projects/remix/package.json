@@ -19,7 +19,7 @@
     "clean": "yarn clean:node_modules && yarn clean:build",
     "clean:node_modules": "rm -rf ./node_modules && rm -rf ./yarn-error.log",
     "clean:build": "rm -rf ./build && rm -rf ./public/build",
-    "patchRemixRunProcessBrowserGlobalIdentifier": "ts-node ../react-wrapper/bin/patchRemixRunProcessBrowserGlobalIdentifier.ts"
+    "patchRemixRunProcessBrowserGlobalIdentifier": "tsx ../react-wrapper/bin/patchRemixRunProcessBrowserGlobalIdentifier.ts"
   },
   "dependencies": {
     "@porsche-design-system/components-react": "3.13.0-rc.0",
@@ -54,7 +54,7 @@
     "npm-run-all": "^4.1.5",
     "postcss": "^8.4.35",
     "start-server-and-test": "^2.0.3",
-    "ts-node": "^10.9.2",
+    "tsx": "^4.7.1",
     "tsconfig-paths": "^4.2.0",
     "typescript": "~5.3.3",
     "vite": "^5.1.3",
