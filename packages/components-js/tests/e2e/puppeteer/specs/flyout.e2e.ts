@@ -262,12 +262,27 @@ describe('can be dismissed', () => {
   it('should be closable via backdrop', async () => {
     await page.mouse.move(5, 5);
     await page.mouse.down();
+
+    expect((await getEventSummary(host, 'dismiss')).counter, 'after mouse down').toBe(0);
+
     await page.mouse.up();
 
-    expect((await getEventSummary(host, 'dismiss')).counter).toBe(1);
+    expect((await getEventSummary(host, 'dismiss')).counter, 'after mouse up').toBe(1);
   });
 
-  it('should not be dismissed if mousedown inside flyout and mouseup inside backdrop', async () => {
+  it('should not be dismissed if mousedown inside flyout', async () => {
+    await page.mouse.move(1800, 400);
+    await page.mouse.down();
+
+    expect((await getEventSummary(host, 'dismiss')).counter, 'after mouse down').toBe(0);
+
+    await page.mouse.up();
+
+    expect((await getEventSummary(host, 'dismiss')).counter, 'after mouse up').toBe(0);
+  });
+
+  // native dialog behaviour, disabled for now
+  xit('should not be dismissed if mousedown inside flyout and mouseup inside backdrop', async () => {
     await page.mouse.move(1800, 400);
     await page.mouse.down();
 
@@ -276,7 +291,7 @@ describe('can be dismissed', () => {
     await page.mouse.move(5, 5);
     await page.mouse.up();
 
-    expect((await getEventSummary(host, 'dismiss')).counter, 'after mouse up').toBe(1);
+    expect((await getEventSummary(host, 'dismiss')).counter, 'after mouse up').toBe(0);
   });
 
   it('should not bubble dismiss event', async () => {
@@ -337,12 +352,10 @@ describe('focus behavior', () => {
     await addButtonsBeforeAndAfterFlyout();
     await openFlyout();
 
-    expect(await getActiveElementTagName(page)).toBe('P-FLYOUT');
     await expectDismissButtonToBeFocused();
     await page.keyboard.press('Tab');
-    expect(await getActiveElementTagName(page)).toBe('BODY');
+    await expectDismissButtonToBeFocused();
     await page.keyboard.press('Tab');
-    expect(await getActiveElementTagName(page)).toBe('P-FLYOUT');
     await expectDismissButtonToBeFocused();
   });
 
@@ -351,14 +364,11 @@ describe('focus behavior', () => {
     await addButtonsBeforeAndAfterFlyout();
     await openFlyout();
 
-    expect(await getActiveElementTagName(page)).toBe('P-FLYOUT');
     await expectDismissButtonToBeFocused();
     await page.keyboard.down('Shift');
     await page.keyboard.press('Tab');
-    expect(await getActiveElementTagName(page)).toBe('BODY');
-    await page.keyboard.down('Shift');
+    await expectDismissButtonToBeFocused();
     await page.keyboard.press('Tab');
-    expect(await getActiveElementTagName(page)).toBe('P-FLYOUT');
     await expectDismissButtonToBeFocused();
   });
 
