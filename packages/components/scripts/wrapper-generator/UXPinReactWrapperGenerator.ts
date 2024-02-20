@@ -7,7 +7,7 @@ import { paramCase, pascalCase } from 'change-case';
 
 type PresetsProps = { [key: string]: number | string | boolean | string[] | object | null };
 
-type FormComponentName = 'Checkbox' | 'RadioButton' | 'Select' | 'TextField' | 'Textarea'; // the 5 form components created "manually" in uxpin-wrapper project
+type FormComponentName = 'Checkbox' | 'RadioButton' | 'SelectWrapperDummy' | 'TextField' | 'Textarea'; // the 5 form components created "manually" in uxpin-wrapper project
 
 const addNestedIndentation = (x: string): string => `  ${x}`;
 
@@ -360,7 +360,7 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
         children:
           '<DummySelect uxpId="dummy-select" options={Array.from(Array(3)).map((_, i) => `Option ${i + 1}`)} />',
         formComponent: {
-          name: 'Select',
+          name: 'SelectWrapperDummy',
           extraProps: { label: 'My Select', options: ['Option 1', 'Option 2', 'Option 3'] },
         },
       },
