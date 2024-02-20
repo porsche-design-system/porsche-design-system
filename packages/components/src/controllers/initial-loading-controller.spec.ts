@@ -1,4 +1,4 @@
-import { LoadingController } from './loading-controller';
+import { InitialLoadingController } from './initial-loading-controller';
 import { ControllerHost } from './controller-host';
 
 jest.mock('./controller-host');
@@ -7,7 +7,7 @@ describe('constructor', () => {
   it('should call controllerHost.addController() with correct parameter', () => {
     const mockControllerHost = new ControllerHost({});
     const spy = jest.spyOn(mockControllerHost, 'addController');
-    const loadingCtrl = new LoadingController(mockControllerHost);
+    const loadingCtrl = new InitialLoadingController(mockControllerHost);
 
     expect(spy).toBeCalledWith(loadingCtrl);
   });
@@ -18,7 +18,7 @@ describe('hostConnected()', () => {
     const host = { loading: true };
     const mockControllerHost = new ControllerHost(host);
     mockControllerHost.host = host;
-    const loadingCtrl = new LoadingController(mockControllerHost);
+    const loadingCtrl = new InitialLoadingController(mockControllerHost);
 
     expect(loadingCtrl.initialLoading).toBe(false);
 
@@ -36,7 +36,7 @@ describe('hostWillLoad()', () => {
     const host = { loading: true };
     const mockControllerHost = new ControllerHost(host);
     mockControllerHost.host = host;
-    const loadingCtrl = new LoadingController(mockControllerHost);
+    const loadingCtrl = new InitialLoadingController(mockControllerHost);
 
     expect(loadingCtrl.initialLoading).toBe(false);
 
@@ -54,7 +54,7 @@ describe('hostWillUpdate()', () => {
     const host = { loading: true };
     const mockControllerHost = new ControllerHost(host);
     mockControllerHost.host = host;
-    const loadingCtrl = new LoadingController(mockControllerHost);
+    const loadingCtrl = new InitialLoadingController(mockControllerHost);
 
     expect(loadingCtrl.initialLoading).toBe(false);
 
@@ -66,7 +66,7 @@ describe('hostWillUpdate()', () => {
     const host = { loading: false };
     const mockControllerHost = new ControllerHost(host);
     mockControllerHost.host = host;
-    const loadingCtrl = new LoadingController(mockControllerHost);
+    const loadingCtrl = new InitialLoadingController(mockControllerHost);
 
     expect(loadingCtrl.initialLoading).toBe(false);
 
