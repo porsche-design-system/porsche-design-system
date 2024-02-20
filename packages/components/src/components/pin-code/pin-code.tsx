@@ -1,4 +1,4 @@
-import { Component, Element, Event, type EventEmitter, h, type JSX, Prop, Watch } from '@stencil/core';
+import { Component, Element, Event, type EventEmitter, h, type JSX, Prop } from '@stencil/core';
 import type { BreakpointCustomizable, PropTypes, Theme } from '../../types';
 import type { PinCodeLength, PinCodeState, PinCodeType, PinCodeUpdateEventDetail } from './pin-code-utils';
 import {
@@ -29,6 +29,7 @@ import { getComponentCss } from './pin-code-styles';
 import { messageId, StateMessage } from '../common/state-message/state-message';
 import { descriptionId, labelId, Label } from '../common/label/label';
 import { LoadingMessage } from '../common/loading-message/loading-message';
+import { ControllerHost, InitialLoadingController } from '../../controllers';
 
 const propTypes: PropTypes<typeof PinCode> = {
   label: AllowedTypes.string,
@@ -95,23 +96,12 @@ export class PinCode {
   /** Emitted when selected element changes. */
   @Event({ bubbles: false }) public update: EventEmitter<PinCodeUpdateEventDetail>;
 
+  private controllerHost = new ControllerHost(this);
+  private loadingCtrl = new InitialLoadingController(this.controllerHost);
   private form: HTMLFormElement;
   private isWithinForm: boolean;
   private hiddenInput: HTMLInputElement;
   private inputElements: HTMLInputElement[] = [];
-  private initialLoading: boolean = false;
-
-  @Watch('loading')
-  public loadingChanged(newVal: boolean): void {
-    if (newVal) {
-      // don't reset initialLoading to false
-      this.initialLoading = newVal;
-    }
-  }
-
-  public connectedCallback(): void {
-    this.initialLoading = this.loading;
-  }
 
   public componentWillLoad(): void {
     this.form = getClosestHTMLElement(this.host, 'form');
@@ -120,7 +110,6 @@ export class PinCode {
       this.hiddenInput = initHiddenInput(this.host, this.name, this.value, this.disabled, this.required);
     }
     this.value = getSanitisedValue(this.host, this.value, this.length);
-    this.initialLoading = this.loading;
   }
 
   public componentWillUpdate(): void {
@@ -190,7 +179,7 @@ export class PinCode {
         </div>
         <StateMessage state={this.state} message={this.message} theme={this.theme} host={this.host} />
         {this.isWithinForm && <slot name="internal-input" />}
-        <LoadingMessage loading={this.loading} initialLoading={this.initialLoading} />
+        <LoadingMessage loading={this.loading} initialLoading={this.loadingCtrl.initialLoading} />
       </div>
     );
   }

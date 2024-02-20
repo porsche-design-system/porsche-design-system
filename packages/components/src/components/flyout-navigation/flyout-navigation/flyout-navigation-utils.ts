@@ -45,7 +45,7 @@ export const validateActiveIdentifier = <T extends Class<any>>(
 const logInvalidIdentifierError = <T extends Class<any>>(
   instance: InstanceType<T>,
   activeIdentifier: string | undefined
-) =>
+): void =>
   consoleError(
     `Invalid value '${activeIdentifier}' supplied to ${getTagNameWithoutPrefix(
       instance.host as HTMLElement
@@ -56,7 +56,7 @@ const logMultipleIdentifierError = <T extends Class<any>>(
   instance: InstanceType<T>,
   activeIdentifier: string | undefined,
   matchingItems: HTMLElement[]
-) =>
+): void =>
   consoleError(
     `Found multiple matching items for value '${activeIdentifier}' supplied to ${getTagNameWithoutPrefix(
       instance.host as HTMLElement
