@@ -16,11 +16,11 @@ import type { Styles } from 'jss';
 export const getComponentCss = (theme: Theme): string => {
   return getCss({
     '@global': {
-      ':host': addImportantToEachRule({
-        scrollMargin: '6px', // Aligns option when list is scrolled by navigating with keyboard
-        ...hostHiddenStyles,
-      }),
       ...addImportantToEachRule({
+        ':host': {
+          scrollMargin: '6px', // Aligns option when list is scrolled by navigating with keyboard
+          ...hostHiddenStyles,
+        },
         '::slotted(img)': {
           height: fontLineHeight,
           borderRadius: borderRadiusSmall,
