@@ -127,7 +127,7 @@ export class Select {
   private preventOptionUpdate = false; // Used to prevent value watcher from updating options when options are already updated
 
   private searchString: string = '';
-  private searchTimeout: NodeJS.Timeout | number = null;
+  private searchTimeout: ReturnType<typeof setTimeout> | number = null;
 
   @Listen('internalOptionUpdate')
   public updateOptionHandler(e: Event & { target: SelectOption }): void {
@@ -362,7 +362,7 @@ export class Select {
   private updateSearchString = (char: string): string => {
     // reset typing timeout and start new timeout
     // this allows us to make multiple-letter matches, like a native select
-    if (typeof this.searchTimeout === 'number') {
+    if (this.searchTimeout) {
       window.clearTimeout(this.searchTimeout);
     }
 
