@@ -28,7 +28,6 @@ export const SELECT_SEARCH_TIMEOUT: number = 500;
 // The amount of options to be jumped when performing a page-based navigation using PageUp or PageDown.
 const PAGE_UP_DOWN_STEP_AMOUNT: number = 10;
 
-// TODO: Improve this to be a smooth transition
 /**
  * Handles scrolling within the list to ensure that the highlighted item is always visible.
  * @param {HTMLElement} scrollElement - The HTML element to be scrolled.
@@ -38,6 +37,7 @@ const PAGE_UP_DOWN_STEP_AMOUNT: number = 10;
 export const handleSelectDropdownScroll = (scrollElement: HTMLElement, element: HTMLElement): void => {
   const { maxHeight } = getComputedStyle(scrollElement);
   const hostElementHeight = parseInt(maxHeight, 10);
+  // TODO: If dropdown was closed this might get called too early before the list is opened which causes the scrollHeight to be 0
   if (scrollElement.scrollHeight > hostElementHeight) {
     element.scrollIntoView({ block: 'nearest' });
   }
@@ -173,21 +173,22 @@ export const filterSelectOptions = <T extends Option>(options: T[], filter: stri
  * @returns {number} - The index of the next matching select option, or -1 if none is found.
  */
 export const getMatchingSelectOptionIndex = <T extends Option>(options: T[], filter: string): number => {
+  const usableOptions = getUsableSelectOptions(options);
   const startIndex = getHighlightedSelectOptionIndex(options) + 1;
   // Shift already searched options to the end of the array in order to find the next matching option
-  const orderedOptions = [...options.slice(startIndex), ...options.slice(0, startIndex)];
+  const orderedOptions = [...usableOptions.slice(startIndex), ...usableOptions.slice(0, startIndex)];
   const firstMatch = filterSelectOptions(orderedOptions, filter)[0];
 
   const allSameLetter = (str: string): boolean => str.split('').every((letter: string) => letter === str[0]);
 
   // first check if there is an exact match for the typed string
   if (firstMatch) {
-    return options.indexOf(firstMatch);
+    return usableOptions.indexOf(firstMatch);
   }
   // if the same letter is being repeated, cycle through first-letter matches
   else if (allSameLetter(filter)) {
     const matches = filterSelectOptions(orderedOptions, filter[0]);
-    return options.indexOf(matches[0]);
+    return usableOptions.indexOf(matches[0]);
   }
   // No matching option found
   else {
