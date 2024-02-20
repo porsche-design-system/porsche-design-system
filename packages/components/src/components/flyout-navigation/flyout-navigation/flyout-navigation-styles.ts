@@ -20,6 +20,7 @@ import {
   spacingStaticSmall,
 } from '@porsche-design-system/utilities-v2';
 import { FLYOUT_Z_INDEX } from '../../../constants';
+import { getFlyoutDialogResetStyles } from '../../../styles/dialog-reset-styles';
 
 export const cssVariableVisibility = '--p-internal-flyout-navigation-visibility';
 export const cssVariableVisibilityTransitionDuration = '--p-internal-flyout-navigation-visibility-transition-duration';
@@ -58,20 +59,13 @@ export const getComponentCss = (
         }),
       },
       dialog: {
-        position: 'fixed',
-        inset: 0,
-        display: 'grid', // ua-style reset
-        width: 'auto', // ua-style reset and to ensure transition duration works correctly
-        height: '100vh', // ua-style reset
-        maxWidth: '100vw', // ua-style reset
-        maxHeight: '100vh', // ua-style reset
-        margin: 0, // ua-style reset
-        padding: 0, // ua-style reset
-        border: 0, // ua-style reset
-        visibility: 'inherit', // ua-style reset
-        background: 'none', // ua-style reset
-        overflow: 'hidden', // ua-style reset, dialog shall never become scrollable, it's handled by custom scroll areas
-        outline: 0, // ua-style reset
+        ...getFlyoutDialogResetStyles(),
+        inset: '0',
+        display: 'grid',
+        overflow: 'hidden',
+        width: 'auto',
+        maxWidth: '100vw',
+        background: 'none',
         ...(isPrimaryScrollerVisible
           ? {
               transform: 'translate3d(0, 0, 0)',

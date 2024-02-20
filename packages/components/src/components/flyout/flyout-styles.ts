@@ -11,6 +11,7 @@ import {
 import { FLYOUT_Z_INDEX } from '../../constants';
 import { gridGap, spacingFluidLarge, spacingStaticMedium } from '@porsche-design-system/utilities-v2';
 import type { FlyoutPosition } from './flyout-utils';
+import { getFlyoutDialogResetStyles } from '../../styles/dialog-reset-styles';
 
 export const headerShadowClass = 'header--shadow';
 export const footerShadowClass = 'footer--shadow';
@@ -45,16 +46,10 @@ export const getComponentCss = (
         }),
       },
       dialog: {
-        position: 'fixed',
+        ...getFlyoutDialogResetStyles(),
         insetInline: isPositionStart ? '0 0' : 'auto 0',
         insetBlock: '0 0',
-        display: 'flex', // ua-style reset
-        height: '100vh', // ua-style reset
-        maxHeight: '100vh', // ua-style reset
-        margin: 0, // ua-style reset
-        padding: 0, // ua-style reset
-        border: 0, // ua-style reset
-        visibility: 'inherit', // ua-style reset
+        display: 'flex',
         flexDirection: 'column',
         boxSizing: 'border-box',
         width: 'var(--p-flyout-width, fit-content)',
