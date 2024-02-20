@@ -96,7 +96,7 @@ export const getActionFromKey = (event: KeyboardEvent, menuOpen: boolean): Selec
  *
  * @param {number} currentIndex - The current index in the list of options.
  * @param {number} maxIndex - The maximum index in the list of options.
- * @param {selectActions} action - The select action indicating how to update the index.
+ * @param {SelectAction} action - The select action indicating how to update the index.
  * @returns {number} - The updated index after applying the specified action.
  */
 export const getUpdatedIndex = (currentIndex: number, maxIndex: number, action: SelectAction): number => {
