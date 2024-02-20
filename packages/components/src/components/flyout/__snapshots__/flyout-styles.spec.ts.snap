@@ -22,15 +22,16 @@ exports[`getComponentCss() should return correct css for isOpen: false, position
 }
 dialog {
   position: fixed;
-  inset-inline: auto 0;
-  inset-block: 0 0;
-  display: flex;
   height: 100vh;
   max-height: 100vh;
   margin: 0;
   padding: 0;
   border: 0;
   visibility: inherit;
+  outline: 0;
+  inset-inline: auto 0;
+  inset-block: 0 0;
+  display: flex;
   flex-direction: column;
   box-sizing: border-box;
   width: var(--p-flyout-width, fit-content);
@@ -112,15 +113,16 @@ exports[`getComponentCss() should return correct css for isOpen: false, position
 }
 dialog {
   position: fixed;
-  inset-inline: auto 0;
-  inset-block: 0 0;
-  display: flex;
   height: 100vh;
   max-height: 100vh;
   margin: 0;
   padding: 0;
   border: 0;
   visibility: inherit;
+  outline: 0;
+  inset-inline: auto 0;
+  inset-block: 0 0;
+  display: flex;
   flex-direction: column;
   box-sizing: border-box;
   width: var(--p-flyout-width, fit-content);
@@ -199,15 +201,16 @@ exports[`getComponentCss() should return correct css for isOpen: false, position
 }
 dialog {
   position: fixed;
-  inset-inline: auto 0;
-  inset-block: 0 0;
-  display: flex;
   height: 100vh;
   max-height: 100vh;
   margin: 0;
   padding: 0;
   border: 0;
   visibility: inherit;
+  outline: 0;
+  inset-inline: auto 0;
+  inset-block: 0 0;
+  display: flex;
   flex-direction: column;
   box-sizing: border-box;
   width: var(--p-flyout-width, fit-content);
@@ -296,15 +299,16 @@ exports[`getComponentCss() should return correct css for isOpen: false, position
 }
 dialog {
   position: fixed;
-  inset-inline: auto 0;
-  inset-block: 0 0;
-  display: flex;
   height: 100vh;
   max-height: 100vh;
   margin: 0;
   padding: 0;
   border: 0;
   visibility: inherit;
+  outline: 0;
+  inset-inline: auto 0;
+  inset-block: 0 0;
+  display: flex;
   flex-direction: column;
   box-sizing: border-box;
   width: var(--p-flyout-width, fit-content);
@@ -386,15 +390,16 @@ exports[`getComponentCss() should return correct css for isOpen: false, position
 }
 dialog {
   position: fixed;
-  inset-inline: auto 0;
-  inset-block: 0 0;
-  display: flex;
   height: 100vh;
   max-height: 100vh;
   margin: 0;
   padding: 0;
   border: 0;
   visibility: inherit;
+  outline: 0;
+  inset-inline: auto 0;
+  inset-block: 0 0;
+  display: flex;
   flex-direction: column;
   box-sizing: border-box;
   width: var(--p-flyout-width, fit-content);
@@ -476,15 +481,16 @@ exports[`getComponentCss() should return correct css for isOpen: false, position
 }
 dialog {
   position: fixed;
-  inset-inline: 0 0;
-  inset-block: 0 0;
-  display: flex;
   height: 100vh;
   max-height: 100vh;
   margin: 0;
   padding: 0;
   border: 0;
   visibility: inherit;
+  outline: 0;
+  inset-inline: 0 0;
+  inset-block: 0 0;
+  display: flex;
   flex-direction: column;
   box-sizing: border-box;
   width: var(--p-flyout-width, fit-content);
@@ -566,15 +572,16 @@ exports[`getComponentCss() should return correct css for isOpen: false, position
 }
 dialog {
   position: fixed;
-  inset-inline: 0 0;
-  inset-block: 0 0;
-  display: flex;
   height: 100vh;
   max-height: 100vh;
   margin: 0;
   padding: 0;
   border: 0;
   visibility: inherit;
+  outline: 0;
+  inset-inline: 0 0;
+  inset-block: 0 0;
+  display: flex;
   flex-direction: column;
   box-sizing: border-box;
   width: var(--p-flyout-width, fit-content);
@@ -653,15 +660,16 @@ exports[`getComponentCss() should return correct css for isOpen: false, position
 }
 dialog {
   position: fixed;
-  inset-inline: 0 0;
-  inset-block: 0 0;
-  display: flex;
   height: 100vh;
   max-height: 100vh;
   margin: 0;
   padding: 0;
   border: 0;
   visibility: inherit;
+  outline: 0;
+  inset-inline: 0 0;
+  inset-block: 0 0;
+  display: flex;
   flex-direction: column;
   box-sizing: border-box;
   width: var(--p-flyout-width, fit-content);
@@ -750,15 +758,16 @@ exports[`getComponentCss() should return correct css for isOpen: true, position:
 }
 dialog {
   position: fixed;
-  inset-inline: auto 0;
-  inset-block: 0 0;
-  display: flex;
   height: 100vh;
   max-height: 100vh;
   margin: 0;
   padding: 0;
   border: 0;
   visibility: inherit;
+  outline: 0;
+  inset-inline: auto 0;
+  inset-block: 0 0;
+  display: flex;
   flex-direction: column;
   box-sizing: border-box;
   width: var(--p-flyout-width, fit-content);
@@ -863,15 +872,16 @@ exports[`getComponentCss() should return correct css for isOpen: true, position:
 }
 dialog {
   position: fixed;
-  inset-inline: auto 0;
-  inset-block: 0 0;
-  display: flex;
   height: 100vh;
   max-height: 100vh;
   margin: 0;
   padding: 0;
   border: 0;
   visibility: inherit;
+  outline: 0;
+  inset-inline: auto 0;
+  inset-block: 0 0;
+  display: flex;
   flex-direction: column;
   box-sizing: border-box;
   width: var(--p-flyout-width, fit-content);
@@ -953,15 +963,16 @@ exports[`getComponentCss() should return correct css for isOpen: true, position:
 }
 dialog {
   position: fixed;
-  inset-inline: auto 0;
-  inset-block: 0 0;
-  display: flex;
   height: 100vh;
   max-height: 100vh;
   margin: 0;
   padding: 0;
   border: 0;
   visibility: inherit;
+  outline: 0;
+  inset-inline: auto 0;
+  inset-block: 0 0;
+  display: flex;
   flex-direction: column;
   box-sizing: border-box;
   width: var(--p-flyout-width, fit-content);
@@ -1043,15 +1054,16 @@ exports[`getComponentCss() should return correct css for isOpen: true, position:
 }
 dialog {
   position: fixed;
-  inset-inline: auto 0;
-  inset-block: 0 0;
-  display: flex;
   height: 100vh;
   max-height: 100vh;
   margin: 0;
   padding: 0;
   border: 0;
   visibility: inherit;
+  outline: 0;
+  inset-inline: auto 0;
+  inset-block: 0 0;
+  display: flex;
   flex-direction: column;
   box-sizing: border-box;
   width: var(--p-flyout-width, fit-content);
@@ -1152,15 +1164,16 @@ exports[`getComponentCss() should return correct css for isOpen: true, position:
 }
 dialog {
   position: fixed;
-  inset-inline: auto 0;
-  inset-block: 0 0;
-  display: flex;
   height: 100vh;
   max-height: 100vh;
   margin: 0;
   padding: 0;
   border: 0;
   visibility: inherit;
+  outline: 0;
+  inset-inline: auto 0;
+  inset-block: 0 0;
+  display: flex;
   flex-direction: column;
   box-sizing: border-box;
   width: var(--p-flyout-width, fit-content);
@@ -1252,15 +1265,16 @@ exports[`getComponentCss() should return correct css for isOpen: true, position:
 }
 dialog {
   position: fixed;
-  inset-inline: auto 0;
-  inset-block: 0 0;
-  display: flex;
   height: 100vh;
   max-height: 100vh;
   margin: 0;
   padding: 0;
   border: 0;
   visibility: inherit;
+  outline: 0;
+  inset-inline: auto 0;
+  inset-block: 0 0;
+  display: flex;
   flex-direction: column;
   box-sizing: border-box;
   width: var(--p-flyout-width, fit-content);
@@ -1352,15 +1366,16 @@ exports[`getComponentCss() should return correct css for isOpen: true, position:
 }
 dialog {
   position: fixed;
-  inset-inline: auto 0;
-  inset-block: 0 0;
-  display: flex;
   height: 100vh;
   max-height: 100vh;
   margin: 0;
   padding: 0;
   border: 0;
   visibility: inherit;
+  outline: 0;
+  inset-inline: auto 0;
+  inset-block: 0 0;
+  display: flex;
   flex-direction: column;
   box-sizing: border-box;
   width: var(--p-flyout-width, fit-content);
@@ -1449,15 +1464,16 @@ exports[`getComponentCss() should return correct css for isOpen: true, position:
 }
 dialog {
   position: fixed;
-  inset-inline: 0 0;
-  inset-block: 0 0;
-  display: flex;
   height: 100vh;
   max-height: 100vh;
   margin: 0;
   padding: 0;
   border: 0;
   visibility: inherit;
+  outline: 0;
+  inset-inline: 0 0;
+  inset-block: 0 0;
+  display: flex;
   flex-direction: column;
   box-sizing: border-box;
   width: var(--p-flyout-width, fit-content);
@@ -1539,15 +1555,16 @@ exports[`getComponentCss() should return correct css for isOpen: true, position:
 }
 dialog {
   position: fixed;
-  inset-inline: 0 0;
-  inset-block: 0 0;
-  display: flex;
   height: 100vh;
   max-height: 100vh;
   margin: 0;
   padding: 0;
   border: 0;
   visibility: inherit;
+  outline: 0;
+  inset-inline: 0 0;
+  inset-block: 0 0;
+  display: flex;
   flex-direction: column;
   box-sizing: border-box;
   width: var(--p-flyout-width, fit-content);
@@ -1629,15 +1646,16 @@ exports[`getComponentCss() should return correct css for isOpen: true, position:
 }
 dialog {
   position: fixed;
-  inset-inline: 0 0;
-  inset-block: 0 0;
-  display: flex;
   height: 100vh;
   max-height: 100vh;
   margin: 0;
   padding: 0;
   border: 0;
   visibility: inherit;
+  outline: 0;
+  inset-inline: 0 0;
+  inset-block: 0 0;
+  display: flex;
   flex-direction: column;
   box-sizing: border-box;
   width: var(--p-flyout-width, fit-content);
@@ -1729,15 +1747,16 @@ exports[`getComponentCss() should return correct css for isOpen: true, position:
 }
 dialog {
   position: fixed;
-  inset-inline: 0 0;
-  inset-block: 0 0;
-  display: flex;
   height: 100vh;
   max-height: 100vh;
   margin: 0;
   padding: 0;
   border: 0;
   visibility: inherit;
+  outline: 0;
+  inset-inline: 0 0;
+  inset-block: 0 0;
+  display: flex;
   flex-direction: column;
   box-sizing: border-box;
   width: var(--p-flyout-width, fit-content);
@@ -1829,15 +1848,16 @@ exports[`getComponentCss() should return correct css for isOpen: true, position:
 }
 dialog {
   position: fixed;
-  inset-inline: 0 0;
-  inset-block: 0 0;
-  display: flex;
   height: 100vh;
   max-height: 100vh;
   margin: 0;
   padding: 0;
   border: 0;
   visibility: inherit;
+  outline: 0;
+  inset-inline: 0 0;
+  inset-block: 0 0;
+  display: flex;
   flex-direction: column;
   box-sizing: border-box;
   width: var(--p-flyout-width, fit-content);
