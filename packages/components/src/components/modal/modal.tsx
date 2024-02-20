@@ -79,7 +79,6 @@ export class Modal {
   private hasFooter: boolean;
   private footer: HTMLElement;
   private dialog: HTMLElement;
-  // eslint-disable-next-line @typescript-eslint/member-ordering
   private onScroll = throttle(100, () => {
     // using an intersection observer would be so much easier but very tricky with the current layout
     // also transform scale3d has an impact on the intersection observer, causing it to trigger
