@@ -7,6 +7,31 @@ import { ThemeInjectionComponent } from './theme-injection.component';
 import { UtilitiesComponent } from './utilities.component';
 import { tabsBarNavigationComponents } from './tabs-bar-navigation';
 import { tabsBarNavigationBugComponents } from './tabs-bar-navigation-bug';
+
+export const pages = [
+  CoreInitializerPrefixedComponent,
+  EventsComponent,
+  FormWrapperBindingComponent,
+  OptionalPropertiesComponent,
+  ThemeInjectionComponent,
+  UtilitiesComponent,
+  ...tabsBarNavigationComponents,
+  ...tabsBarNavigationBugComponents,
+];
+
+export * from './core-initializer-prefixed.component';
+export * from './events.component';
+export * from './form-wrapper-binding.component';
+export * from './optional-properties.component';
+export * from './theme-injection.component';
+export * from './utilities.component';
+export * from './tabs-bar-navigation';
+export * from './tabs-bar-navigation-bug';
+
+/* Auto Generated Below */
+export * from './generated/core-initializer.component';
+export * from './generated/overview-notifications.component';
+export * from './generated/overview.component';
 import { AccordionComponent } from './generated/accordion.component';
 import { BannerComponent } from './generated/banner.component';
 import { ButtonComponent } from './generated/button.component';
@@ -110,31 +135,6 @@ import { TypographyGreekAndCopticComponent } from './generated/typography-greek-
 import { TypographyLatinComponent } from './generated/typography-latin.component';
 import { TypographyMiddleEastComponent } from './generated/typography-middle-east.component';
 import { WordmarkComponent } from './generated/wordmark.component';
-
-export const pages = [
-  CoreInitializerPrefixedComponent,
-  EventsComponent,
-  FormWrapperBindingComponent,
-  OptionalPropertiesComponent,
-  ThemeInjectionComponent,
-  UtilitiesComponent,
-  ...tabsBarNavigationComponents,
-  ...tabsBarNavigationBugComponents,
-];
-
-export * from './core-initializer-prefixed.component';
-export * from './events.component';
-export * from './form-wrapper-binding.component';
-export * from './optional-properties.component';
-export * from './theme-injection.component';
-export * from './utilities.component';
-export * from './tabs-bar-navigation';
-export * from './tabs-bar-navigation-bug';
-
-/* Auto Generated Below */
-export * from './generated/core-initializer.component';
-export * from './generated/overview-notifications.component';
-export * from './generated/overview.component';
 
 export const generatedPages = [
   AccordionComponent,
