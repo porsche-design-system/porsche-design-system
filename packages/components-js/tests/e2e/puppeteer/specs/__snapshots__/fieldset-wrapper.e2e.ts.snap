@@ -14,6 +14,11 @@ exports[`accessibility should expose correct accessibility tree property if erro
           "role": "none",
         },
         {
+          "children": [
+            {
+              "role": "InlineTextBox",
+            },
+          ],
           "name": "Some Message",
           "role": "StaticText",
         },
@@ -42,6 +47,11 @@ exports[`accessibility should expose correct accessibility tree property in erro
           "role": "none",
         },
         {
+          "children": [
+            {
+              "role": "InlineTextBox",
+            },
+          ],
           "name": "Some Message",
           "role": "StaticText",
         },

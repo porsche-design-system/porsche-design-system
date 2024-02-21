@@ -37,6 +37,11 @@ exports[`accessibility should add/remove accessibility tree properties if state 
       "role": "none",
     },
     {
+      "children": [
+        {
+          "role": "InlineTextBox",
+        },
+      ],
       "name": "Some error message.",
       "role": "StaticText",
     },
@@ -58,6 +63,11 @@ exports[`accessibility should add/remove accessibility tree properties if state 
       "role": "none",
     },
     {
+      "children": [
+        {
+          "role": "InlineTextBox",
+        },
+      ],
       "name": "Some success message.",
       "role": "StaticText",
     },
@@ -88,6 +98,11 @@ exports[`accessibility should expose correct accessibility tree properties in er
       "role": "none",
     },
     {
+      "children": [
+        {
+          "role": "InlineTextBox",
+        },
+      ],
       "name": "Some error message.",
       "role": "StaticText",
     },
@@ -103,6 +118,11 @@ exports[`accessibility should expose correct accessibility tree when loading=tru
     {
       "children": [
         {
+          "children": [
+            {
+              "role": "InlineTextBox",
+            },
+          ],
           "name": "Some Label",
           "role": "StaticText",
         },
@@ -158,6 +178,11 @@ exports[`accessibility should expose correct accessibility tree when loading=tru
     {
       "children": [
         {
+          "children": [
+            {
+              "role": "InlineTextBox",
+            },
+          ],
           "name": "Loading",
           "role": "StaticText",
         },

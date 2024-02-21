@@ -22,6 +22,11 @@ exports[`accessibility should expose correct initial accessibility tree of stepp
                                     {
                                       "children": [
                                         {
+                                          "children": [
+                                            {
+                                              "role": "InlineTextBox",
+                                            },
+                                          ],
                                           "name": "current:",
                                           "role": "StaticText",
                                         },
@@ -31,6 +36,11 @@ exports[`accessibility should expose correct initial accessibility tree of stepp
                                     {
                                       "children": [
                                         {
+                                          "children": [
+                                            {
+                                              "role": "InlineTextBox",
+                                            },
+                                          ],
                                           "name": "Step 1",
                                           "role": "StaticText",
                                         },
@@ -53,6 +63,11 @@ exports[`accessibility should expose correct initial accessibility tree of stepp
                                     {
                                       "children": [
                                         {
+                                          "children": [
+                                            {
+                                              "role": "InlineTextBox",
+                                            },
+                                          ],
                                           "name": "Step 2",
                                           "role": "StaticText",
                                         },
@@ -76,6 +91,11 @@ exports[`accessibility should expose correct initial accessibility tree of stepp
                                     {
                                       "children": [
                                         {
+                                          "children": [
+                                            {
+                                              "role": "InlineTextBox",
+                                            },
+                                          ],
                                           "name": "Step 3",
                                           "role": "StaticText",
                                         },

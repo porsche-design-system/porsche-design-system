@@ -24,6 +24,11 @@ exports[`accessibility should expose correct initial accessibility tree of tabli
                                         {
                                           "children": [
                                             {
+                                              "children": [
+                                                {
+                                                  "role": "InlineTextBox",
+                                                },
+                                              ],
                                               "name": "Tab Button 1",
                                               "role": "StaticText",
                                             },
@@ -37,6 +42,11 @@ exports[`accessibility should expose correct initial accessibility tree of tabli
                                         {
                                           "children": [
                                             {
+                                              "children": [
+                                                {
+                                                  "role": "InlineTextBox",
+                                                },
+                                              ],
                                               "name": "Tab Button 2",
                                               "role": "StaticText",
                                             },
@@ -50,6 +60,11 @@ exports[`accessibility should expose correct initial accessibility tree of tabli
                                         {
                                           "children": [
                                             {
+                                              "children": [
+                                                {
+                                                  "role": "InlineTextBox",
+                                                },
+                                              ],
                                               "name": "Tab Button 3",
                                               "role": "StaticText",
                                             },
@@ -168,6 +183,11 @@ exports[`accessibility should render correct accessibility tree if activeTabInde
                                         {
                                           "children": [
                                             {
+                                              "children": [
+                                                {
+                                                  "role": "InlineTextBox",
+                                                },
+                                              ],
                                               "name": "Tab Button 1",
                                               "role": "StaticText",
                                             },
@@ -181,6 +201,11 @@ exports[`accessibility should render correct accessibility tree if activeTabInde
                                         {
                                           "children": [
                                             {
+                                              "children": [
+                                                {
+                                                  "role": "InlineTextBox",
+                                                },
+                                              ],
                                               "name": "Tab Button 2",
                                               "role": "StaticText",
                                             },
@@ -194,6 +219,11 @@ exports[`accessibility should render correct accessibility tree if activeTabInde
                                         {
                                           "children": [
                                             {
+                                              "children": [
+                                                {
+                                                  "role": "InlineTextBox",
+                                                },
+                                              ],
                                               "name": "Tab Button 3",
                                               "role": "StaticText",
                                             },
@@ -312,6 +342,11 @@ exports[`accessibility should render correct accessibility tree if activeTabInde
                                         {
                                           "children": [
                                             {
+                                              "children": [
+                                                {
+                                                  "role": "InlineTextBox",
+                                                },
+                                              ],
                                               "name": "Tab Button 1",
                                               "role": "StaticText",
                                             },
@@ -325,6 +360,11 @@ exports[`accessibility should render correct accessibility tree if activeTabInde
                                         {
                                           "children": [
                                             {
+                                              "children": [
+                                                {
+                                                  "role": "InlineTextBox",
+                                                },
+                                              ],
                                               "name": "Tab Button 2",
                                               "role": "StaticText",
                                             },
@@ -336,6 +376,11 @@ exports[`accessibility should render correct accessibility tree if activeTabInde
                                         {
                                           "children": [
                                             {
+                                              "children": [
+                                                {
+                                                  "role": "InlineTextBox",
+                                                },
+                                              ],
                                               "name": "Tab Button 3",
                                               "role": "StaticText",
                                             },
@@ -454,6 +499,11 @@ exports[`accessibility should render correct accessibility tree on focus change 
                                         {
                                           "children": [
                                             {
+                                              "children": [
+                                                {
+                                                  "role": "InlineTextBox",
+                                                },
+                                              ],
                                               "name": "Tab Button 1",
                                               "role": "StaticText",
                                             },
@@ -467,6 +517,11 @@ exports[`accessibility should render correct accessibility tree on focus change 
                                         {
                                           "children": [
                                             {
+                                              "children": [
+                                                {
+                                                  "role": "InlineTextBox",
+                                                },
+                                              ],
                                               "name": "Tab Button 2",
                                               "role": "StaticText",
                                             },
@@ -479,6 +534,11 @@ exports[`accessibility should render correct accessibility tree on focus change 
                                         {
                                           "children": [
                                             {
+                                              "children": [
+                                                {
+                                                  "role": "InlineTextBox",
+                                                },
+                                              ],
                                               "name": "Tab Button 3",
                                               "role": "StaticText",
                                             },
@@ -597,6 +657,11 @@ exports[`accessibility should render correct accessibility tree on focus change 
                                         {
                                           "children": [
                                             {
+                                              "children": [
+                                                {
+                                                  "role": "InlineTextBox",
+                                                },
+                                              ],
                                               "name": "Tab Button 1",
                                               "role": "StaticText",
                                             },
@@ -608,6 +673,11 @@ exports[`accessibility should render correct accessibility tree on focus change 
                                         {
                                           "children": [
                                             {
+                                              "children": [
+                                                {
+                                                  "role": "InlineTextBox",
+                                                },
+                                              ],
                                               "name": "Tab Button 2",
                                               "role": "StaticText",
                                             },
@@ -621,6 +691,11 @@ exports[`accessibility should render correct accessibility tree on focus change 
                                         {
                                           "children": [
                                             {
+                                              "children": [
+                                                {
+                                                  "role": "InlineTextBox",
+                                                },
+                                              ],
                                               "name": "Tab Button 3",
                                               "role": "StaticText",
                                             },
@@ -739,6 +814,11 @@ exports[`accessibility should render correct accessibility tree on scrollArea cl
                                         {
                                           "children": [
                                             {
+                                              "children": [
+                                                {
+                                                  "role": "InlineTextBox",
+                                                },
+                                              ],
                                               "name": "Tab Button 1",
                                               "role": "StaticText",
                                             },
@@ -752,6 +832,11 @@ exports[`accessibility should render correct accessibility tree on scrollArea cl
                                         {
                                           "children": [
                                             {
+                                              "children": [
+                                                {
+                                                  "role": "InlineTextBox",
+                                                },
+                                              ],
                                               "name": "Tab Button 2",
                                               "role": "StaticText",
                                             },
@@ -765,6 +850,11 @@ exports[`accessibility should render correct accessibility tree on scrollArea cl
                                         {
                                           "children": [
                                             {
+                                              "children": [
+                                                {
+                                                  "role": "InlineTextBox",
+                                                },
+                                              ],
                                               "name": "Tab Button 3",
                                               "role": "StaticText",
                                             },
@@ -778,6 +868,11 @@ exports[`accessibility should render correct accessibility tree on scrollArea cl
                                         {
                                           "children": [
                                             {
+                                              "children": [
+                                                {
+                                                  "role": "InlineTextBox",
+                                                },
+                                              ],
                                               "name": "Tab Button 4",
                                               "role": "StaticText",
                                             },
@@ -894,6 +989,11 @@ exports[`accessibility should render correct accessibility tree on scrollArea cl
                                         {
                                           "children": [
                                             {
+                                              "children": [
+                                                {
+                                                  "role": "InlineTextBox",
+                                                },
+                                              ],
                                               "name": "Tab Button 1",
                                               "role": "StaticText",
                                             },
@@ -907,6 +1007,11 @@ exports[`accessibility should render correct accessibility tree on scrollArea cl
                                         {
                                           "children": [
                                             {
+                                              "children": [
+                                                {
+                                                  "role": "InlineTextBox",
+                                                },
+                                              ],
                                               "name": "Tab Button 2",
                                               "role": "StaticText",
                                             },
@@ -920,6 +1025,11 @@ exports[`accessibility should render correct accessibility tree on scrollArea cl
                                         {
                                           "children": [
                                             {
+                                              "children": [
+                                                {
+                                                  "role": "InlineTextBox",
+                                                },
+                                              ],
                                               "name": "Tab Button 3",
                                               "role": "StaticText",
                                             },
@@ -933,6 +1043,11 @@ exports[`accessibility should render correct accessibility tree on scrollArea cl
                                         {
                                           "children": [
                                             {
+                                              "children": [
+                                                {
+                                                  "role": "InlineTextBox",
+                                                },
+                                              ],
                                               "name": "Tab Button 4",
                                               "role": "StaticText",
                                             },

@@ -4,6 +4,11 @@ exports[`toast-item accessibility should expose correct accessibility tree prope
 {
   "children": [
     {
+      "children": [
+        {
+          "role": "InlineTextBox",
+        },
+      ],
       "name": "Some message",
       "role": "StaticText",
     },

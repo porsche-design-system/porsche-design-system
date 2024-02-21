@@ -14,6 +14,11 @@ exports[`accessibility should expose correct initial accessibility tree if aria 
                     {
                       "children": [
                         {
+                          "children": [
+                            {
+                              "role": "InlineTextBox",
+                            },
+                          ],
                           "name": "Button 1",
                           "role": "StaticText",
                         },
@@ -24,6 +29,11 @@ exports[`accessibility should expose correct initial accessibility tree if aria 
                     {
                       "children": [
                         {
+                          "children": [
+                            {
+                              "role": "InlineTextBox",
+                            },
+                          ],
                           "name": "Button 2",
                           "role": "StaticText",
                         },
@@ -34,6 +44,11 @@ exports[`accessibility should expose correct initial accessibility tree if aria 
                     {
                       "children": [
                         {
+                          "children": [
+                            {
+                              "role": "InlineTextBox",
+                            },
+                          ],
                           "name": "Button 3",
                           "role": "StaticText",
                         },
