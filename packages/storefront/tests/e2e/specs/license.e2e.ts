@@ -15,7 +15,9 @@ it('should navigate to license', async () => {
   await page.goto(baseURL);
   await page.evaluate(() => (window as any).componentsReady());
 
-  const [linkElement] = await page.$x(`//div[contains(@class, 'menu-desktop')]//footer//a[contains(., 'License')]`);
+  const linkElement = await page.waitForSelector(
+    `xpath///div[contains(@class, 'menu-desktop')]//footer//a[contains(., 'License')]`
+  );
 
   expect(await isLinkActive(linkElement)).toBe(false);
 

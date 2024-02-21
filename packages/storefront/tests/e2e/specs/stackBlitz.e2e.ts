@@ -17,7 +17,9 @@ xit.each(<Framework[]>['vanilla-js', 'angular', 'react'])(
   async (framework) => {
     await page.goto(`${baseURL}/components/button/examples`);
 
-    const [frameworkButton] = await page.$x(`//button[text() = '${frameworkToButtonTextMap[framework]}']`);
+    const frameworkButton = await page.waitForSelector(
+      `xpath///button[text() = '${frameworkToButtonTextMap[framework]}']`
+    );
 
     await frameworkButton.click();
     await page.waitForFunction((el) => el.getAttribute('aria-selected') === 'true', {}, frameworkButton);
