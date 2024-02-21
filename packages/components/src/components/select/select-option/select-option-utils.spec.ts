@@ -17,7 +17,7 @@ describe('validateSelectOption()', () => {
     const slot = createMockSlot([img, p]);
     validateSelectOption(slot, host);
     expect(consoleErrorSpy).toHaveBeenCalledWith(
-      `child HTMLElements of p-select-option are invalid. Expected all of: text or img.`,
+      `child HTMLElements of p-select-option are invalid. Expected all of: #text or <img />.`,
       host
     );
   });
