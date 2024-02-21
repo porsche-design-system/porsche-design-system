@@ -2,13 +2,13 @@ import type { BreakpointValue, BreakpointValues } from './breakpoint-customizabl
 import { parseJSON } from './breakpoint-customizable';
 import * as path from 'path';
 import * as fs from 'fs';
-import * as globby from 'globby';
+import * as globby from 'globby-legacy';
 
 describe('parseJSON()', () => {
   it.each<
     [
       string | boolean | number | { base: string },
-      BreakpointValues<BreakpointValue> | boolean | number | { base: string }
+      BreakpointValues<BreakpointValue> | boolean | number | { base: string },
     ]
   >([
     ['{base: true, s: false}', { base: true, s: false }],
