@@ -1,6 +1,5 @@
 import {
   addEventListener,
-  enableBrowserLogging,
   expectA11yToMatchSnapshot,
   getActiveElementClassNameInShadowRoot,
   getActiveElementId,
@@ -24,10 +23,7 @@ let page: Page;
 const CSS_TRANSITION_DURATION = 600;
 const flyoutMinWidth = 320;
 
-beforeEach(async () => {
-  page = await browser.newPage();
-  enableBrowserLogging(page);
-});
+beforeEach(async () => (page = await browser.newPage()));
 afterEach(async () => await page.close());
 
 const getHost = () => selectNode(page, 'p-flyout');
