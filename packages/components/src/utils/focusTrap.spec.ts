@@ -1,15 +1,15 @@
-import * as focusTrapUtils from './focusTrap';
 import {
-  documentKeydownListener,
   FirstAndLastFocusableElement,
   FOCUSABLE_ELEMENT_CACHE,
   getFirstAndLastFocusableElement,
   isFocusableElement,
   KEYDOWN_EVENT_HANDLER_CACHE,
   setFirstAndLastFocusableElementKeydownListener,
-  setFocusTrap,
   unpackChildren,
+  setFocusTrap,
+  documentKeydownListener,
 } from './focusTrap';
+import * as focusTrapUtils from './focusTrap';
 
 describe('setFocusTrap()', () => {
   const closeFn = () => {};
