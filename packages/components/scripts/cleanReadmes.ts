@@ -1,6 +1,6 @@
 import * as fs from 'fs';
 import * as path from 'path';
-import * as globby from 'globby';
+import { globbySync } from 'globby';
 import { capitalCase } from 'change-case';
 import type { TagName } from '@porsche-design-system/shared';
 
@@ -82,7 +82,7 @@ const replaceEventsTable =
     );
 
 const cleanReadmes = (): void => {
-  const files = globby.sync('./src/components/**/readme.md');
+  const files = globbySync('./src/components/**/readme.md');
   for (const file of files) {
     const sourceFile = path.normalize(file);
     const sourceDirectory = path.dirname(sourceFile);

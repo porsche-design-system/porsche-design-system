@@ -25,9 +25,9 @@
     "start-app": "yarn start",
     "build": "yarn clean:build && yarn build:fallbacks && yarn build:lib && yarn build:www",
     "build:fallbacks": "yarn build:fallbacks:generate-overlay && yarn build:fallbacks:tmp && yarn build:fallbacks:cdn+loader",
-    "build:fallbacks:generate-overlay": "ts-node scripts/generate-overlay.ts",
+    "build:fallbacks:generate-overlay": "tsx scripts/generate-overlay.ts",
     "build:fallbacks:tmp": "rollup -c rollup.config.js --bundleConfigAsCjs",
-    "build:fallbacks:cdn+loader": "ts-node scripts/generate-cdn-loader.ts",
+    "build:fallbacks:cdn+loader": "tsx scripts/generate-cdn-loader.ts",
     "build:lib": "yarn build:lib:cjs && yarn build:lib:esm",
     "build:lib:cjs": "tsc --build tsconfig.lib.cjs.json",
     "build:lib:esm": "tsc --build tsconfig.lib.esm.json",
@@ -44,8 +44,8 @@
     "change-case": "^4.1.2",
     "html-minifier": "^4.0.0",
     "http-server": "^14.1.0",
-    "ts-node": "^10.9.2",
     "tslib": "^2.6.2",
+    "tsx": "^4.7.1",
     "typescript": "~5.3.3"
   },
   "volta": {

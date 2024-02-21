@@ -8,7 +8,7 @@ const baseHrefCn = 'https:\\/\\/cdn\\.ui\\.porsche\\.cn\\/porsche-design-system\
 describe('validation', () => {
   it('should throw error on unprovided appTitle', () => {
     expect(() => getMetaTagsAndIconLinks()).toThrowErrorMatchingInlineSnapshot(
-      `"[Porsche Design System] Option "appTitle" is required to output "<meta name="apple-mobile-web-app-title" content="appTitle" />"`
+      `[Error: [Porsche Design System] Option "appTitle" is required to output "<meta name="apple-mobile-web-app-title" content="appTitle" />]`
     );
   });
 });

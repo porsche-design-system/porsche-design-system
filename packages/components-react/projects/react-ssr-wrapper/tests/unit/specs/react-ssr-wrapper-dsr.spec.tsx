@@ -8,9 +8,10 @@ import {
   PSegmentedControl,
   PSegmentedControlItem,
 } from '@porsche-design-system/components-react/ssr';
+import { vi } from 'vitest';
 
 it('should have working SSR PLink component', async () => {
-  const consoleErrorSpy = jest.spyOn(global.console, 'error').mockImplementation();
+  const consoleErrorSpy = vi.spyOn(global.console, 'error').mockImplementation();
 
   render(
     <PorscheDesignSystemProvider>
@@ -33,7 +34,7 @@ it('should have working SSR PLink component', async () => {
 });
 
 it('should have working SSR PButton component', async () => {
-  const consoleErrorSpy = jest.spyOn(global.console, 'error').mockImplementation();
+  const consoleErrorSpy = vi.spyOn(global.console, 'error').mockImplementation();
 
   render(
     <PorscheDesignSystemProvider>
@@ -56,7 +57,7 @@ it('should have working SSR PButton component', async () => {
 });
 
 it('should have working SSR PSegmentedControl component', async () => {
-  const consoleErrorSpy = jest.spyOn(global.console, 'error').mockImplementation();
+  const consoleErrorSpy = vi.spyOn(global.console, 'error').mockImplementation();
 
   render(
     <PorscheDesignSystemProvider>

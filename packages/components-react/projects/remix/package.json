@@ -19,7 +19,7 @@
     "clean": "yarn clean:node_modules && yarn clean:build",
     "clean:node_modules": "rm -rf ./node_modules && rm -rf ./yarn-error.log",
     "clean:build": "rm -rf ./build && rm -rf ./public/build",
-    "patchRemixRunProcessBrowserGlobalIdentifier": "ts-node ../react-wrapper/bin/patchRemixRunProcessBrowserGlobalIdentifier.ts"
+    "patchRemixRunProcessBrowserGlobalIdentifier": "tsx ../react-wrapper/bin/patchRemixRunProcessBrowserGlobalIdentifier.ts"
   },
   "dependencies": {
     "@porsche-design-system/components-react": "3.13.0-rc.0",
@@ -39,9 +39,9 @@
     "@remix-run/eslint-config": "^2.4.0",
     "@types/bcryptjs": "^2.4.6",
     "@types/eslint": "^8.44.9",
-    "@types/react": "^18.2.45",
+    "@types/react": "^18.2.57",
     "@types/react-dom": "^18.2.18",
-    "autoprefixer": "^10.4.16",
+    "autoprefixer": "^10.4.17",
     "binode": "^1.0.5",
     "concurrently": "^8.2.2",
     "cookie": "^0.6.0",
@@ -52,13 +52,13 @@
     "happy-dom": "^12.10.3",
     "msw": "^2.0.11",
     "npm-run-all": "^4.1.5",
-    "postcss": "^8.4.32",
+    "postcss": "^8.4.35",
     "start-server-and-test": "^2.0.3",
-    "ts-node": "^10.9.2",
+    "tsx": "^4.7.1",
     "tsconfig-paths": "^4.2.0",
     "typescript": "~5.3.3",
-    "vite": "^5.0.10",
-    "vite-tsconfig-paths": "^4.2.2"
+    "vite": "^5.1.3",
+    "vite-tsconfig-paths": "^4.3.1"
   },
   "eslintIgnore": [
     "/node_modules",
