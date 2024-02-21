@@ -45,7 +45,7 @@ slot[name="controls"] {
   opacity: 0;
   pointer-events: none;
 }
-.skip-link:focus-visible {
+.skip-link:focus {
   opacity: 1;
   pointer-events: all;
 }
@@ -217,7 +217,7 @@ slot[name="controls"] {
   opacity: 0;
   pointer-events: none;
 }
-.skip-link:focus-visible {
+.skip-link:focus {
   opacity: 1;
   pointer-events: all;
 }
@@ -389,7 +389,7 @@ slot[name="controls"] {
   opacity: 0;
   pointer-events: none;
 }
-.skip-link:focus-visible {
+.skip-link:focus {
   opacity: 1;
   pointer-events: all;
 }
@@ -585,7 +585,7 @@ slot[name="controls"] {
   opacity: 0;
   pointer-events: none;
 }
-.skip-link:focus-visible {
+.skip-link:focus {
   opacity: 1;
   pointer-events: all;
 }
@@ -715,7 +715,7 @@ p,::slotted([slot="description"]) {
   opacity: 0;
   pointer-events: none;
 }
-.skip-link:focus-visible {
+.skip-link:focus {
   opacity: 1;
   pointer-events: all;
 }
@@ -847,7 +847,7 @@ p,::slotted([slot="description"]) {
   opacity: 0;
   pointer-events: none;
 }
-.skip-link:focus-visible {
+.skip-link:focus {
   opacity: 1;
   pointer-events: all;
 }
@@ -1079,7 +1079,7 @@ h2,::slotted([slot="heading"]) {
   opacity: 0;
   pointer-events: none;
 }
-.skip-link:focus-visible {
+.skip-link:focus {
   opacity: 1;
   pointer-events: all;
 }
@@ -1209,7 +1209,7 @@ h2,::slotted([slot="heading"]) {
   opacity: 0;
   pointer-events: none;
 }
-.skip-link:focus-visible {
+.skip-link:focus {
   opacity: 1;
   pointer-events: all;
 }
@@ -1338,7 +1338,7 @@ p,::slotted([slot="description"]) {
   opacity: 0;
   pointer-events: none;
 }
-.skip-link:focus-visible {
+.skip-link:focus {
   opacity: 1;
   pointer-events: all;
 }
@@ -1528,7 +1528,7 @@ p,::slotted([slot="description"]) {
   opacity: 0;
   pointer-events: none;
 }
-.skip-link:focus-visible {
+.skip-link:focus {
   opacity: 1;
   pointer-events: all;
 }
@@ -1663,7 +1663,7 @@ p,::slotted([slot="description"]) {
   opacity: 0;
   pointer-events: none;
 }
-.skip-link:focus-visible {
+.skip-link:focus {
   opacity: 1;
   pointer-events: all;
 }
@@ -1875,7 +1875,7 @@ p,::slotted([slot="description"]) {
   opacity: 0;
   pointer-events: none;
 }
-.skip-link:focus-visible {
+.skip-link:focus {
   opacity: 1;
   pointer-events: all;
 }
@@ -2090,7 +2090,7 @@ p,::slotted([slot="description"]) {
   opacity: 0;
   pointer-events: none;
 }
-.skip-link:focus-visible {
+.skip-link:focus {
   opacity: 1;
   pointer-events: all;
 }
@@ -2280,7 +2280,7 @@ p,::slotted([slot="description"]) {
   opacity: 0;
   pointer-events: none;
 }
-.skip-link:focus-visible {
+.skip-link:focus {
   opacity: 1;
   pointer-events: all;
 }
