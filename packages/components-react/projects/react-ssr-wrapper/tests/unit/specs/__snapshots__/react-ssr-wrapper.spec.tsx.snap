@@ -8138,6 +8138,16 @@ button:disabled {
   transition: border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   transform: translate3d(0,0,0);
 }
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+}
 .label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
@@ -8189,8 +8199,10 @@ button:disabled {
       >
         <button
           aria-controls="list"
+          aria-expanded="false"
           aria-haspopup="listbox"
           aria-labelledby="label"
+          aria-required="false"
           id="value"
           role="combobox"
           type="button"
@@ -8242,12 +8254,21 @@ img {
           </template>
         </p-icon>
         <div
+          aria-hidden="true"
+          aria-label=""
           class="listbox"
           id="list"
+          role="listbox"
         >
           <slot />
         </div>
       </div>
+      <span
+        aria-live="assertive"
+        aria-relevant="additions text"
+        class="sr-only"
+        role="status"
+      />
     </div>
   </template>
   Some child
