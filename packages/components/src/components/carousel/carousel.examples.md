@@ -335,7 +335,7 @@ get customBorderRadiusMarkup() {
 };
 
 skip = `<p-carousel heading="${this.basicHeading}" skip-link-target="components/carousel/examples#target">
-  ${this.getSlides(4)}
+  ${this.getSlides(6)}
 </p-carousel>
 <p-heading id="target" tag="h2" size="x-large">Next Heading</p-heading>`;
 
