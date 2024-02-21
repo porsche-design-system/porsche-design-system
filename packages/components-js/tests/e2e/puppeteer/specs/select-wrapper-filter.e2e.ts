@@ -12,8 +12,7 @@ import {
   setProperty,
   waitForStencilLifecycle,
 } from '../helpers';
-import type { Page } from 'puppeteer';
-import { devices } from 'puppeteer';
+import { KnownDevices, Page } from 'puppeteer';
 
 let page: Page;
 beforeEach(async () => (page = await browser.newPage()));
@@ -99,7 +98,7 @@ it('should render', async () => {
 });
 
 it('should render dropdown if touch support is detected', async () => {
-  await page.emulate(devices['iPhone X']);
+  await page.emulate(KnownDevices['iPhone X']);
   await initSelect();
 
   const dropdown = await getDropdown();
