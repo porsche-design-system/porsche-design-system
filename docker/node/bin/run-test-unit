@@ -17,7 +17,6 @@ if
   [[ "--components-angular:jest" == "${1}" ]] ||
   [[ "--components-react" == "${1}" ]] ||
   [[ "--components-react:react-wrapper" == "${1}" ]] ||
-  [[ "--components-react:react-ssr-wrapper" == "${1}" ]] ||
   [[ "--components-react:uxpin-wrapper" == "${1}" ]] ||
   [[ "--components-vue" == "${1}" ]] ||
   [[ "--components-vue:vue-wrapper" == "${1}" ]] ||
@@ -30,6 +29,7 @@ elif
   [[ "--components-js:components-wrapper" == "${1}" ]] ||
   [[ "--components-js:jsdom-polyfill" == "${1}" ]] ||
   [[ "--components-js:partials" == "${1}" ]] ||
+  [[ "--components-react:react-ssr-wrapper" == "${1}" ]] ||
   [[ "--utilities" == "${1}" ]]
 then
   yarn test:unit:${1:2}
