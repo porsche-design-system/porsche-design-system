@@ -127,7 +127,8 @@ it('should have correct transform when opened and dismissed', async () => {
     getElementStyle(await getFlyoutNavigationDialog(), 'transform', { waitForTransition: true });
 
   const initialFlyoutTransform = await getFlyoutTransform();
-  expect(initialFlyoutTransform).toBe(`matrix(1, 0, 0, 1, -537, 0)`);
+  // somehow after puppeteer update the value changed consistently from -537 to -537.094
+  expect(initialFlyoutTransform).toBe(`matrix(1, 0, 0, 1, -537.094, 0)`);
 
   await openFlyoutNavigation();
 

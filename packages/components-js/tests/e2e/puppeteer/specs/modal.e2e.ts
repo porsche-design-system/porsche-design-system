@@ -148,7 +148,8 @@ it('should have correct transform when dismissed and opened', async () => {
   const getModalTransform = async () => getElementStyle(await getModal(), 'transform', { waitForTransition: true });
 
   const initialModalTransform = await getModalTransform();
-  expect(initialModalTransform).toBe('matrix(1, 0, 0, 1, 0, 33.5)');
+  // somehow after puppeteer update the value changed consistently from 33.5 to 33.4727
+  expect(initialModalTransform).toBe('matrix(1, 0, 0, 1, 0, 33.4727)');
 
   await openModal();
   const openModalTransform = await getModalTransform();
