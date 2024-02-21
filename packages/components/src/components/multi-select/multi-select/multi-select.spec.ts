@@ -1,6 +1,7 @@
 import { MultiSelect } from './multi-select';
 import * as multiSelectUtils from './multi-select-utils';
 import * as getClosestHTMLElementUtils from '../../../utils/dom/getClosestHTMLElement';
+import * as getShadowRootHTMLElementUtils from '../../../utils/dom/getShadowRootHTMLElement';
 
 const initComponent = (): MultiSelect => {
   const component = new MultiSelect();
@@ -18,7 +19,7 @@ describe('connectedCallback', () => {
     expect(getClosestHTMLElementSpy).toBeCalledWith(component.host, 'form');
     expect(component['form']).toBe(null);
     expect(component['isWithinForm']).toBe(false);
-    expect(addEventListenerSpy).toBeCalledTimes(1);
+    expect(addEventListenerSpy).toBeCalledWith('mousedown', component['onClickOutside'], true);
   });
 
   it('should set isWithinForm if is within form', () => {
@@ -51,6 +52,20 @@ describe('componentWillLoad', () => {
     const setSelectedOptionsSpy = jest.spyOn(multiSelectUtils, 'setSelectedOptions');
     component.componentWillLoad();
     expect(setSelectedOptionsSpy).toBeCalledWith([], []);
+  });
+});
+
+describe('componentDidLoad', () => {
+  it('should call getShadowRootHTMLElement() with correct parameters and add event listener', () => {
+    const component = initComponent();
+    const slot = document.createElement('slot');
+    const slotSpy = jest.spyOn(slot, 'addEventListener');
+    const getShadowRootHTMLElementSpy = jest
+      .spyOn(getShadowRootHTMLElementUtils, 'getShadowRootHTMLElement')
+      .mockReturnValueOnce(slot);
+    component.componentDidLoad();
+    expect(getShadowRootHTMLElementSpy).toHaveBeenCalledWith(component.host, 'slot');
+    expect(slotSpy).toHaveBeenCalledTimes(1);
   });
 });
 
