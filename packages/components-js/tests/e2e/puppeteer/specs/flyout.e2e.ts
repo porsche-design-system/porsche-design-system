@@ -1,5 +1,6 @@
 import {
   addEventListener,
+  enableBrowserLogging,
   expectA11yToMatchSnapshot,
   getActiveElementClassNameInShadowRoot,
   getActiveElementId,
@@ -23,7 +24,10 @@ let page: Page;
 const CSS_TRANSITION_DURATION = 600;
 const flyoutMinWidth = 320;
 
-beforeEach(async () => (page = await browser.newPage()));
+beforeEach(async () => {
+  page = await browser.newPage();
+  enableBrowserLogging(page);
+});
 afterEach(async () => await page.close());
 
 const getHost = () => selectNode(page, 'p-flyout');
@@ -344,6 +348,8 @@ describe('focus behavior', () => {
     await page.keyboard.press('Tab');
     expect(await getActiveElementId(page)).toBe('btn-sub-footer');
     await page.keyboard.press('Tab');
+    // now the focus is on the address bar, so we need to tab again to get back to the flyout (native dialog behaviour)
+    await page.keyboard.press('Tab');
     await expectDismissButtonToBeFocused();
   });
 
@@ -354,7 +360,19 @@ describe('focus behavior', () => {
 
     await expectDismissButtonToBeFocused();
     await page.keyboard.press('Tab');
+
+    expect(await getActiveElementId(page)).not.toBe('btn-after');
+    expect(await getActiveElementId(page)).not.toBe('btn-before');
+
+    // now the focus is on the address bar, so we need to tab again to get back to the flyout (native dialog behaviour)
+    await page.keyboard.press('Tab');
     await expectDismissButtonToBeFocused();
+
+    await page.keyboard.press('Tab');
+    expect(await getActiveElementId(page)).not.toBe('btn-after');
+    expect(await getActiveElementId(page)).not.toBe('btn-before');
+
+    // now the focus is on the address bar, so we need to tab again to get back to the flyout (native dialog behaviour)
     await page.keyboard.press('Tab');
     await expectDismissButtonToBeFocused();
   });
@@ -367,7 +385,12 @@ describe('focus behavior', () => {
     await expectDismissButtonToBeFocused();
     await page.keyboard.down('Shift');
     await page.keyboard.press('Tab');
-    await expectDismissButtonToBeFocused();
+
+    expect(await getActiveElementId(page)).not.toBe('btn-after');
+    expect(await getActiveElementId(page)).not.toBe('btn-before');
+
+    // now the focus is on the address bar, so we need to tab again to get back to the flyout (native dialog behaviour)
+    await page.keyboard.down('Shift');
     await page.keyboard.press('Tab');
     await expectDismissButtonToBeFocused();
   });
@@ -471,7 +494,7 @@ describe('after content change', () => {
     await expectDismissButtonToBeFocused('after content change');
 
     await page.keyboard.press('Tab');
-    await expectDismissButtonToBeFocused('after content change 1st tab');
+    expect(await getActiveElementTagName(page)).toBe('BODY');
 
     await page.keyboard.press('Tab');
     await expectDismissButtonToBeFocused('after content change 2nd tab');
@@ -502,6 +525,8 @@ describe('after content change', () => {
     await page.keyboard.press('Tab');
     expect(await getActiveElementId(page)).toBe('btn-sub-footer');
     await page.keyboard.press('Tab');
+    expect(await getActiveElementTagName(page)).toBe('BODY');
+    await page.keyboard.press('Tab');
     await expectDismissButtonToBeFocused('finally');
   });
 });
@@ -521,6 +546,8 @@ describe('can be controlled via keyboard', () => {
     await page.keyboard.press('Tab');
     expect(await getActiveElementId(page)).toBe('btn-sub-footer');
     await page.keyboard.press('Tab');
+    expect(await getActiveElementTagName(page)).toBe('BODY');
+    await page.keyboard.press('Tab');
     await expectDismissButtonToBeFocused('finally');
   });
 
@@ -530,6 +557,8 @@ describe('can be controlled via keyboard', () => {
     await expectDismissButtonToBeFocused('initially');
 
     await page.keyboard.down('ShiftLeft');
+    await page.keyboard.press('Tab');
+    expect(await getActiveElementTagName(page)).toBe('BODY');
     await page.keyboard.press('Tab');
     expect(await getActiveElementId(page)).toBe('btn-sub-footer');
     await page.keyboard.press('Tab');
