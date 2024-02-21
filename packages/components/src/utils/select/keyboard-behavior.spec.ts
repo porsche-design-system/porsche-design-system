@@ -1,17 +1,16 @@
+import * as keyboardBehaviorUtils from './keyboard-behavior';
 import {
-  getUpdatedIndex,
   filterSelectOptions,
+  getHighlightedSelectOption,
+  getHighlightedSelectOptionIndex,
+  getMatchingSelectOptionIndex,
+  getUpdatedIndex,
   getUsableSelectOptions,
   Option,
-  selectActions,
-  setNextSelectOptionHighlighted,
-  getMatchingSelectOptionIndex,
-  setMatchingSelectOptionHighlighted,
   setHighlightedSelectOption,
-  getHighlightedSelectOptionIndex,
-  getHighlightedSelectOption,
+  setMatchingSelectOptionHighlighted,
+  setNextSelectOptionHighlighted,
 } from './keyboard-behavior';
-import * as keyboardBehaviorUtils from './keyboard-behavior';
 import * as stencilUtils from '@stencil/core';
 
 type GenerateOptionsParams = {
@@ -60,39 +59,39 @@ export const generateOptions = (
 
 describe('getUpdatedIndex()', () => {
   it('should return 0 if action is First', () => {
-    const index = getUpdatedIndex(1, 10, selectActions.First);
+    const index = getUpdatedIndex(1, 10, 'First');
     expect(index).toBe(0);
   });
   it('should return maxIndex if action is Last', () => {
-    const index = getUpdatedIndex(1, 10, selectActions.Last);
+    const index = getUpdatedIndex(1, 10, 'Last');
     expect(index).toBe(10);
   });
   it('should return correct previous index if action is Previous', () => {
-    const index = getUpdatedIndex(5, 10, selectActions.Previous);
+    const index = getUpdatedIndex(5, 10, 'Previous');
     expect(index).toBe(4);
-    const index2 = getUpdatedIndex(0, 10, selectActions.Previous);
+    const index2 = getUpdatedIndex(0, 10, 'Previous');
     expect(index2).toBe(0);
   });
   it('should return correct next index if action is Next', () => {
-    const index = getUpdatedIndex(5, 10, selectActions.Next);
+    const index = getUpdatedIndex(5, 10, 'Next');
     expect(index).toBe(6);
-    const index2 = getUpdatedIndex(10, 10, selectActions.Next);
+    const index2 = getUpdatedIndex(10, 10, 'Next');
     expect(index2).toBe(10);
   });
   it('should return correct next index if action is PageUp', () => {
-    const index = getUpdatedIndex(20, 20, selectActions.PageUp);
+    const index = getUpdatedIndex(20, 20, 'PageUp');
     expect(index).toBe(10);
-    const index2 = getUpdatedIndex(8, 20, selectActions.PageUp);
+    const index2 = getUpdatedIndex(8, 20, 'PageUp');
     expect(index2).toBe(0);
   });
   it('should return correct next index if action is PageDown', () => {
-    const index = getUpdatedIndex(0, 20, selectActions.PageDown);
+    const index = getUpdatedIndex(0, 20, 'PageDown');
     expect(index).toBe(10);
-    const index2 = getUpdatedIndex(12, 20, selectActions.PageDown);
+    const index2 = getUpdatedIndex(12, 20, 'PageDown');
     expect(index2).toBe(20);
   });
   it('should return currentIndex as default', () => {
-    const index = getUpdatedIndex(5, 20, selectActions.CloseSelect);
+    const index = getUpdatedIndex(5, 20, 'CloseSelect');
     expect(index).toBe(5);
   });
 });
