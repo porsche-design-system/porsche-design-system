@@ -178,7 +178,8 @@ export const getComponentCss = (
     'skip-link': {
       opacity: 0,
       pointerEvents: 'none',
-      '&:focus-visible': {
+      // :focus mut be used in this case, because :focus-visible is just matched on the focusable element itself, not on the host element.
+      '&:focus': {
         opacity: 1,
         pointerEvents: 'all',
       },
