@@ -2,7 +2,7 @@ import * as fs from 'fs';
 import * as path from 'path';
 import * as crypto from 'crypto';
 import { globbySync } from 'globby';
-import { paramCase } from 'change-case';
+import { kebabCase } from 'change-case';
 import { CDN_BASE_PATH_MODEL_SIGNATURES } from '../../../../../cdn.config';
 
 type Manifest = {
@@ -22,7 +22,7 @@ const createManifestAndCopyAssets = (files: string[]): void => {
     const svgRawName = path.basename(svgRawPath, '.svg');
     const svgRawData = fs.readFileSync(svgRawPath, 'utf8');
     const hash = toHash(svgRawData);
-    const filename = `${paramCase(svgRawName)}.min.${hash}.svg`;
+    const filename = `${kebabCase(svgRawName)}.min.${hash}.svg`;
     const targetPath = path.normalize(`./dist/model-signatures/${filename}`);
 
     manifest[svgRawName] = filename;
