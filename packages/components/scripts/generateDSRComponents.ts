@@ -493,6 +493,7 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
           .replace(/\{\{ wrapper: true, disabled: (this\.props\.disabled) }}/, `{\`wrapper\${$1 ? ' disabled' : ''}\`}`)
           // replace toggle icon className
           .replace(/className=\{\{ icon: true, 'icon--rotate': this\.props\.isOpen }}/, 'className="icon"')
+          .replace(/tabindex="-1"/, '')
           // replace getSelectedOptionString
           .replace(
             /\{getSelectedOptionString\(typeof otherChildren\[0] === 'object' && 'props' in otherChildren\[0] && otherChildren\[0]\?\.propsOptions\)}/,
