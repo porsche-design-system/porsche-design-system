@@ -22,8 +22,7 @@
     "build:partials": "tsx scripts/buildPartials.ts",
     "build:copyToComponentsJs": "TARGET=../../dist/components-wrapper/partials && rm -rf $TARGET && mkdir -p $TARGET && cp -r ./dist/. $TARGET",
     "test": "yarn test:unit",
-    "test:unit": "NODE_OPTIONS=--experimental-vm-modules jest --colors -c tests/unit/config/jest.config.ts",
-    "test:unit:watch": "yarn test:unit --watch",
+    "test:unit": "vitest --config tests/unit/config/vitest.config.ts",
     "clean": "yarn clean:node_modules && yarn clean:build",
     "clean:node_modules": "rm -rf ./node_modules && rm -rf ./yarn-error.log",
     "clean:build": "rm -rf ./src/lib && rm -rf ./dist && rm -rf ./dist-tmp"
