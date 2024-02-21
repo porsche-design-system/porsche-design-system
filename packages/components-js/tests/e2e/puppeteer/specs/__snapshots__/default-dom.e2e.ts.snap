@@ -486,8 +486,10 @@ exports[`should have no basic DOM regression for p-select 1`] = `
 "<div class="root">
   <label class="label" id="label" for="value">
   </label>
+  <span class="sr-only">
+    No option selected, 0 options in total</span>
   <div class="wrapper">
-    <button type="button" role="combobox" id="value" aria-labelledby="label" aria-controls="list" aria-haspopup="listbox" aria-expanded="false">
+    <button type="button" role="combobox" id="value" aria-labelledby="label" aria-haspopup="listbox" aria-expanded="false" aria-required="false" aria-controls="list">
     </button>
     <p-icon class="icon hydrated" aria-hidden="true">
     </p-icon>
@@ -496,6 +498,8 @@ exports[`should have no basic DOM regression for p-select 1`] = `
       </slot>
     </div>
   </div>
+  <span class="sr-only" role="status" aria-live="assertive" aria-relevant="additions text">
+  </span>
 </div>"
 `;
 
