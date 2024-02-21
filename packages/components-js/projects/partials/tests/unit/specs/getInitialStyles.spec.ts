@@ -52,16 +52,16 @@ describe('format: jsx', () => {
 describe('format: sha256', () => {
   it('should return hash for core styles', async () => {
     const result = getInitialStyles({ format: 'sha256' });
-    expect(result).toMatchInlineSnapshot(`"'sha256-q0MoUVMGaY8QFiumVSoMB2wE8Y0NbgtU3Dhk4ZpbYwM='"`);
+    expect(result).toMatchInlineSnapshot(`"'sha256-UguFKCeHZXfhsKSZfsWNYMeEhs48HCjbGHv80i5zDdM='"`);
   });
 
   it('should return hash for core styles with custom prefix', async () => {
     const result = getInitialStyles({ format: 'sha256', prefix: 'custom-prefix' });
-    expect(result).toMatchInlineSnapshot(`"'sha256-Lx/YUqcAFqIVH3EVcxyoN7qHeKCO1jUzLERgECpWUt0='"`);
+    expect(result).toMatchInlineSnapshot(`"'sha256-kRWIbFND6gQyArAuUZ3+lSEiOeWaKoqSjsiqbLzc1zM='"`);
   });
 
   it('should return hash for core styles with multiple custom prefixes', async () => {
     const result = getInitialStyles({ format: 'sha256', prefix: ['', 'some-prefix', 'another-prefix'] });
-    expect(result).toMatchInlineSnapshot(`"'sha256-mXLpXutiTTyGjJbEOP+CGPl4YGAsYDal+oaI/PiWkJQ='"`);
+    expect(result).toMatchInlineSnapshot(`"'sha256-q3Zz2Wx8FBAOYayFvusrUX4Y6T+BIIoeW//7xaLEKT8='"`);
   });
 });
