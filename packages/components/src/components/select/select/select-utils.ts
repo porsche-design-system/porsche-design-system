@@ -36,7 +36,7 @@ export const syncSelectOptionProps = (options: SelectOption[], theme: Theme): vo
 export const getSelectedOptionString = (options: SelectOption[]): string =>
   options.find((option) => option.selected)?.textContent ?? '';
 
-const resetSelectedOption = (options: SelectOption[]): void => {
+export const resetSelectedOption = (options: SelectOption[]): void => {
   const currentSelectedOption = options.find((option) => option.selected);
   if (currentSelectedOption) {
     currentSelectedOption.selected = false;
