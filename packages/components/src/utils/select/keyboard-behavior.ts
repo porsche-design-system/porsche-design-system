@@ -36,7 +36,10 @@ export const handleSelectDropdownScroll = (scrollElement: HTMLElement, element: 
   const hostElementHeight = parseInt(maxHeight, 10);
   // TODO: If dropdown was closed this might get called too early before the list is opened which causes the scrollHeight to be 0
   if (scrollElement.scrollHeight > hostElementHeight) {
-    element.scrollIntoView({ block: 'nearest' });
+    element.scrollIntoView({
+      block: 'nearest',
+      // behavior: 'smooth' // Intentionally not smooth since highlighted options can quickly change when searching
+    });
   }
 };
 
