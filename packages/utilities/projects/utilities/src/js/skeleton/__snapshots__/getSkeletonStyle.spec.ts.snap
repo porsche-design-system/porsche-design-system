@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`getSkeletonStyle() should return correct css for opts: { theme: 'dark' } 1`] = `
+exports[`getSkeletonStyle() > should return correct css for opts: { theme: 'dark' } 1`] = `
 {
   "@keyframes skeletonAnimation": {
     "from": {
@@ -17,7 +17,7 @@ exports[`getSkeletonStyle() should return correct css for opts: { theme: 'dark' 
 }
 `;
 
-exports[`getSkeletonStyle() should return correct css for opts: { theme: 'light' } 1`] = `
+exports[`getSkeletonStyle() > should return correct css for opts: { theme: 'light' } 1`] = `
 {
   "@keyframes skeletonAnimation": {
     "from": {

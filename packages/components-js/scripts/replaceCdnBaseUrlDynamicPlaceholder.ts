@@ -1,6 +1,6 @@
 import * as fs from 'fs';
 import * as path from 'path';
-import * as globby from 'globby';
+import { globbySync } from 'globby';
 import { npmDistTmpSubPath } from '../projects/components-wrapper/environment';
 
 const packageDir = path.resolve(__dirname, '..');
@@ -30,7 +30,7 @@ const replaceCdnBaseUrlDynamicPlaceholder = () => {
     componentsJsEsmFilePath, // core loader esm build
     componentsJsLegacyFilePath, // same as umd build under cjs folder but different file extension for webpack 4
     componentsJsIifeFilePath, // temporary core loader used for getLoaderScript partial
-    globby.sync(path.resolve(packageDir, '../components/porsche-design-system.v*'))[0], // core chunk on cdn
+    globbySync(path.resolve(packageDir, '../components/porsche-design-system.v*'))[0], // core chunk on cdn
   ].forEach(readAndWriteFile);
 
   console.log(`Replaced: "%%%CDN_BASE_URL_DYNAMIC%%%" –> "document.porscheDesignSystem.cdn.url"`);

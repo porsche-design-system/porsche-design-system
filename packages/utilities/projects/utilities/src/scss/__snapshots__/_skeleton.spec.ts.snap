@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`pds-skeleton() should return correct css for opts: { theme: 'dark' } 1`] = `
+exports[`pds-skeleton() > should return correct css for opts: { theme: 'dark' } 1`] = `
 "div {
   background: #212225 linear-gradient(to right, transparent 0%, #1a1b1e 20%, transparent 50%) 0 0/200% 100%;
   display: block;
@@ -17,7 +17,7 @@ exports[`pds-skeleton() should return correct css for opts: { theme: 'dark' } 1`
 }"
 `;
 
-exports[`pds-skeleton() should return correct css for opts: { theme: 'light' } 1`] = `
+exports[`pds-skeleton() > should return correct css for opts: { theme: 'light' } 1`] = `
 "div {
   background: #eeeff2 linear-gradient(to right, transparent 0%, #f7f7f7 20%, transparent 50%) 0 0/200% 100%;
   display: block;
@@ -34,7 +34,7 @@ exports[`pds-skeleton() should return correct css for opts: { theme: 'light' } 1
 }"
 `;
 
-exports[`pds-skeleton() should return correct css for opts: {} 1`] = `
+exports[`pds-skeleton() > should return correct css for opts: {} 1`] = `
 "div {
   background: #eeeff2 linear-gradient(to right, transparent 0%, #f7f7f7 20%, transparent 50%) 0 0/200% 100%;
   display: block;

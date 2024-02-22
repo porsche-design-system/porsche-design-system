@@ -1,6 +1,7 @@
 import { componentsReady } from '@porsche-design-system/components-js';
 import userEvent from '@testing-library/user-event';
 import { getMarkup } from '../helper';
+import { vi } from 'vitest';
 
 it('should have initialized shadow dom', async () => {
   document.body.innerHTML = getMarkup('p-tabs');
@@ -43,7 +44,7 @@ it('should have working events', async () => {
 
 // seems to only happen when one of the previous tests is executed
 it('should not console.error because of Object.getOwnPropertyDescriptor', async () => {
-  const spy = jest.spyOn(global.console, 'error');
+  const spy = vi.spyOn(global.console, 'error');
 
   document.body.innerHTML = getMarkup('p-tabs');
   await componentsReady();

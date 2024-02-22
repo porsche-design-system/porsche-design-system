@@ -275,14 +275,13 @@ describe('chunk content', () => {
       }
     );
 
-    xit.each(chunkFileNames.filter((x) => !isCoreChunk(x) && containsHexColor(x)))(
-      'should contain single hex color in %s',
-      (chunkFileName) => {
+    for (const chunkFileName of chunkFileNames.filter((x) => !isCoreChunk(x) && containsHexColor(x))) {
+      it.skip(`should contain single hex color in ${chunkFileName}`, () => {
         const content = getChunkContent(chunkFileName);
         expect(content).toMatch(hexColorRegEx);
         expect(content.match(hexColorRegEx)!.length).toBe(1);
-      }
-    );
+      });
+    }
   });
 
   describe('color scheme', () => {

@@ -6,6 +6,7 @@ import {
 import '@porsche-design-system/components-js/jsdom-polyfill';
 import { componentsReady } from '@porsche-design-system/components-js';
 import { fireEvent, getByRole } from '@testing-library/dom';
+import { vi } from 'vitest';
 
 describe('getByRoleShadowed()', () => {
   it('should work for native button', async () => {
@@ -110,7 +111,7 @@ describe('getByRole()', () => {
   });
 
   it('should be supported for p-select-wrapper', async () => {
-    const callback = jest.fn();
+    const callback = vi.fn();
 
     document.body.innerHTML = `<p-select-wrapper>
   <select value="1">
