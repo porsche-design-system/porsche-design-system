@@ -79,7 +79,7 @@
     "@playwright/test": "1.41.2",
     "@porsche-design-system/shared": "0.0.0",
     "@types/js-beautify": "^1.14.3",
-    "change-case-legacy": "npm:change-case@^4.1.2",
+    "change-case-legacy": "^5.4.2",
     "change-case": "^5.4.3",
     "concurrently": "^8.2.2",
     "devtools-protocol": "^0.0.1237913",

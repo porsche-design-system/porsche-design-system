@@ -6,7 +6,7 @@ import type { ComponentMeta } from '@porsche-design-system/component-meta';
 import * as beautify from 'js-beautify';
 import { getInitialStyles } from '@porsche-design-system/components-js/partials';
 import type { FormState } from '@porsche-design-system/components/dist/types/bundle';
-import { paramCase } from 'change-case-legacy';
+import { kebabCase } from 'change-case-legacy';
 
 export type ClickableTests = {
   state: string;
@@ -360,7 +360,7 @@ export const buildDefaultComponentMarkup = (tagName: TagName): string => {
         .map(
           ([propName, { defaultValue, isRequired }]) =>
             // handling all href attributes to trick throwIfInvalidLinkUsage and throwIfInvalidLinkTileProductUsage
-            (isRequired || propName === 'href') && ` ${paramCase(propName)}="${defaultValue ?? 'value'}"`
+            (isRequired || propName === 'href') && ` ${kebabCase(propName)}="${defaultValue ?? 'value'}"`
         )
         .filter(Boolean)
         .join()

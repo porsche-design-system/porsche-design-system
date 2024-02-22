@@ -8612,7 +8612,12 @@ chalk@^4.0.0, chalk@^4.0.2, chalk@^4.1.0, chalk@^4.1.1, chalk@^4.1.2:
     ansi-styles "^4.1.0"
     supports-color "^7.1.0"
 
-"change-case-legacy@npm:change-case@^4.1.2", change-case@^4.1.2:
+change-case-legacy@^5.4.2:
+  version "5.4.2"
+  resolved "https://registry.yarnpkg.com/change-case-legacy/-/change-case-legacy-5.4.2.tgz#03b1f104a1605c7b160afffe170135b9f934dff1"
+  integrity sha512-sIxxCIo7TpPicBymabidXNo20SkDCin2lZekiuse5XpqCd+wIu0A0kmGCit23we0PanZMkiObgZUmd0pWg9Diw==
+
+change-case@^4.1.2:
   version "4.1.2"
   resolved "https://registry.yarnpkg.com/change-case/-/change-case-4.1.2.tgz#fedfc5f136045e2398c0410ee441f95704641e12"
   integrity sha512-bSxY2ws9OtviILG1EiY5K7NNxkqg/JnRnFxLtKQ96JaviiIxi7djMrSd0ECT9AC+lttClmYwKw53BWpOMblo7A==
