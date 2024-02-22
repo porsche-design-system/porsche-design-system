@@ -13,6 +13,7 @@ import {
 import { borderRadiusSmall, fontLineHeight, spacingStaticSmall } from '@porsche-design-system/utilities-v2';
 import type { Styles } from 'jss';
 
+// TODO: Enforce order of slotted text, img
 export const getComponentCss = (theme: Theme): string => {
   return getCss({
     '@global': addImportantToEachRule({
