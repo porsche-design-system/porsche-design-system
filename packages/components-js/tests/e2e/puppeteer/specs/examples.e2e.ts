@@ -37,6 +37,8 @@ const exampleUrls = exampleRoutes.map((item) => item.path);
 it.each(exampleUrls)('should work without error or warning for %s', async (exampleUrl) => {
   await goto(page, exampleUrl);
 
+  await page.waitForNetworkIdle();
+
   if (getConsoleErrorsAmount() !== 0) {
     console.log(getConsoleErrorMessages());
   }
