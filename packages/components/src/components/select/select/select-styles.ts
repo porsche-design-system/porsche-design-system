@@ -94,6 +94,7 @@ export const getComponentCss = (
   });
 };
 
+// TODO: Rename to JSSStyles
 // TODO: use getSlottedTextFieldTextareaSelectStyles() instead an manipulate selectors like done with PIN Code or even better make it configurable as parameter
 const getButtonStyles = (
   isDisabled: boolean,
@@ -196,6 +197,7 @@ const getButtonStyles = (
   };
 };
 
+// TODO: Rename to JSSStyles
 // TODO: Copied from multi-select, extract and use in select and multi-select
 const getListStyles = (isOpen: boolean, direction: SelectDropdownDirectionInternal, theme: Theme): JssStyle => {
   const isDirectionDown = direction === 'down';
@@ -211,6 +213,7 @@ const getListStyles = (isOpen: boolean, direction: SelectDropdownDirectionIntern
     padding: '6px',
     ...textSmallStyle,
     zIndex: 10,
+    // TODO: Inset inline 0
     left: 0,
     right: 0,
     [isDirectionDown ? 'top' : 'bottom']: '100%',
