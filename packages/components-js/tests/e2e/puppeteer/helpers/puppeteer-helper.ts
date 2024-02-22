@@ -6,7 +6,7 @@ import type { ComponentMeta } from '@porsche-design-system/component-meta';
 import * as beautify from 'js-beautify';
 import { getInitialStyles } from '@porsche-design-system/components-js/partials';
 import type { FormState } from '@porsche-design-system/components/dist/types/bundle';
-import { kebabCase } from 'change-case-legacy';
+import { kebabCase } from 'change-case';
 
 export type ClickableTests = {
   state: string;
