@@ -10,7 +10,7 @@ import {
   supportsConstructableStylesheets,
 } from './jss';
 import type { JssStyle, Styles } from 'jss';
-import * as globby from 'globby';
+import * as globby from 'globby-legacy';
 import * as path from 'path';
 import * as fs from 'fs';
 

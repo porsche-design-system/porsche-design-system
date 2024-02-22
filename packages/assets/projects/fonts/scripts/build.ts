@@ -1,7 +1,7 @@
 import * as fs from 'fs';
 import * as path from 'path';
 import * as crypto from 'crypto';
-import * as globby from 'globby';
+import { globbySync } from 'globby';
 import { paramCase, camelCase } from 'change-case';
 import { CDN_BASE_PATH_FONTS } from '../../../../../cdn.config';
 
@@ -45,7 +45,7 @@ export const FONTS_MANIFEST = ${JSON.stringify(manifest)};
 };
 
 const generate = (): void => {
-  const files = globby.sync('./src/**/*.@(woff2)').sort();
+  const files = globbySync('./src/**/*.@(woff2)').sort();
 
   createManifestAndCopyFonts(files);
 };

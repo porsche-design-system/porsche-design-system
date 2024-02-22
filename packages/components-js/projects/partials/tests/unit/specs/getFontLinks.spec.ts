@@ -8,21 +8,21 @@ const baseHrefCn = 'https:\\/\\/cdn\\.ui\\.porsche.cn\\/porsche-design-system\\/
 describe('validation', () => {
   it('should throw error on invalid font weights option', () => {
     expect(() => getFontLinks({ weights: ['some-invalid-weight'] as any[] })).toThrowErrorMatchingInlineSnapshot(`
-"[Porsche Design System] The following supplied font weights are invalid:
+[Error: [Porsche Design System] The following supplied font weights are invalid:
   some-invalid-weight
 
 Please use only valid font weights:
-  regular, semi-bold, bold"
+  regular, semi-bold, bold]
 `);
   });
 
   it('should throw error on invalid font subset option', () => {
     expect(() => getFontLinks({ subset: 'some-invalid-subset' as any })).toThrowErrorMatchingInlineSnapshot(`
-"[Porsche Design System] The following supplied font subset is invalid:
+[Error: [Porsche Design System] The following supplied font subset is invalid:
   some-invalid-subset
 
 Please use only valid font subset:
-  latin, greek, cyril, arabic, pashto, urdu"
+  latin, greek, cyril, arabic, pashto, urdu]
 `);
   });
 });

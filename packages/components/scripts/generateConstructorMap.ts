@@ -1,13 +1,13 @@
 import * as fs from 'fs';
 import * as path from 'path';
-import * as globby from 'globby';
+import { globbySync } from 'globby';
 import type { TagName } from '@porsche-design-system/shared';
 import { TAG_NAMES } from '@porsche-design-system/shared';
 import { pascalCase } from 'change-case';
 
 const generateConstructorMap = (): void => {
   const sourceDirectory = path.resolve('./src/components');
-  const componentFiles = globby.sync(`${sourceDirectory}/**/*.tsx`);
+  const componentFiles = globbySync(`${sourceDirectory}/**/*.tsx`);
 
   const importsRaw: string[] = ["import type { TagName } from '@porsche-design-system/shared';"];
 

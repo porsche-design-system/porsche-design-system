@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`getFocusStyle() should return correct css for opts: { offset: '3px', borderRadius: '6px' } 1`] = `
+exports[`getFocusStyle() > should return correct css for opts: { offset: '3px', borderRadius: '6px' } 1`] = `
 {
   "&:focus": {
     "outline": "2px solid #1A44EA",
@@ -13,7 +13,7 @@ exports[`getFocusStyle() should return correct css for opts: { offset: '3px', bo
 }
 `;
 
-exports[`getFocusStyle() should return correct css for opts: { offset: 'none', borderRadius: 'medium' } 1`] = `
+exports[`getFocusStyle() > should return correct css for opts: { offset: 'none', borderRadius: 'medium' } 1`] = `
 {
   "&:focus": {
     "outline": "2px solid #1A44EA",
@@ -26,7 +26,7 @@ exports[`getFocusStyle() should return correct css for opts: { offset: 'none', b
 }
 `;
 
-exports[`getFocusStyle() should return correct css for opts: { offset: 'small', borderRadius: 'small' } 1`] = `
+exports[`getFocusStyle() > should return correct css for opts: { offset: 'small', borderRadius: 'small' } 1`] = `
 {
   "&:focus": {
     "outline": "2px solid #1A44EA",
@@ -39,7 +39,7 @@ exports[`getFocusStyle() should return correct css for opts: { offset: 'small', 
 }
 `;
 
-exports[`getFocusStyle() should return correct css for opts: { offset: undefined, borderRadius: undefined } 1`] = `
+exports[`getFocusStyle() > should return correct css for opts: { offset: undefined, borderRadius: undefined } 1`] = `
 {
   "&:focus": {
     "outline": "2px solid #1A44EA",

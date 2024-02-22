@@ -1,6 +1,6 @@
 import * as fs from 'fs';
 import * as path from 'path';
-import * as globby from 'globby';
+import { globbySync } from 'globby';
 import { paramCase } from 'change-case';
 import { type TagName, TAG_NAMES, INTERNAL_TAG_NAMES } from '@porsche-design-system/shared';
 import { ICONS_MANIFEST } from '@porsche-design-system/assets';
@@ -11,7 +11,7 @@ global.ROLLUP_REPLACE_IS_STAGING = 'staging';
 
 // can't resolve @porsche-design-system/components without building it first, therefore we use relative path
 const sourceDirectory = path.resolve('../components/src/components');
-const componentFileNames = globby.sync(`${sourceDirectory}/**/*.tsx`);
+const componentFileNames = globbySync(`${sourceDirectory}/**/*.tsx`);
 
 const getComponentFilePath = (tagName: TagName): string => {
   return componentFileNames.find((fileName) => fileName.match(new RegExp(`${tagName.replace(/^p-/, '/')}\\.tsx$`)));
