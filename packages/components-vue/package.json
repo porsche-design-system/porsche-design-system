@@ -48,7 +48,7 @@
     "change-case": "^5.4.3",
     "concurrently": "^8.2.2",
     "eslint": "^8.56.0",
-    "eslint-plugin-vue": "^9.19.1",
+    "eslint-plugin-vue": "^9.21.1",
     "globby": "^14.0.1",
     "local-web-server": "^5.3.1",
     "tsx": "^4.7.1",

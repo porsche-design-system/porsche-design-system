@@ -63,7 +63,7 @@
     "@vue/test-utils": "1.2.2",
     "concurrently": "^8.2.2",
     "eslint": "^8.56.0",
-    "eslint-plugin-vue": "^9.19.1",
+    "eslint-plugin-vue": "^9.21.1",
     "globby": "^14.0.1",
     "local-web-server": "^5.3.1",
     "sass": "^1.69.5",
