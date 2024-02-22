@@ -2,6 +2,7 @@
 
 exports[`accessibility should expose correct accessibility tree if description is set 1`] = `
 {
+  "description": "Some description",
   "haspopup": "listbox",
   "name": "",
   "role": "combobox",
@@ -36,6 +37,7 @@ exports[`accessibility should expose correct accessibility tree if option is sel
 
 exports[`accessibility should expose correct accessibility tree in error state 1`] = `
 {
+  "description": "Some error message",
   "haspopup": "listbox",
   "name": "",
   "role": "combobox",
