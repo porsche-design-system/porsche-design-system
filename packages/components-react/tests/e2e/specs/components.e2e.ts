@@ -1,7 +1,6 @@
 import type { Page } from 'puppeteer';
 import { getConsoleErrorsAmount, getOuterHTML, goto, initConsoleObserver } from '../helpers';
-
-const console = require('console');
+import * as console from 'console';
 
 let page: Page;
 beforeEach(async () => (page = await browser.newPage()));
