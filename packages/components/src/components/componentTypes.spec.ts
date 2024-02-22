@@ -3,7 +3,7 @@ import { getComponentMeta } from '@porsche-design-system/component-meta';
 import type { TagName } from '@porsche-design-system/shared';
 import * as fs from 'fs';
 import * as path from 'path';
-import * as globby from 'globby';
+import * as globby from 'globby-legacy';
 import { pascalCase } from 'change-case';
 
 const componentsDir = path.resolve(__dirname);
