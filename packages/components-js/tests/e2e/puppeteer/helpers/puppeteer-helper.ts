@@ -6,7 +6,12 @@ import type { ComponentMeta } from '@porsche-design-system/component-meta';
 import { format } from 'prettier';
 import { getInitialStyles } from '@porsche-design-system/components-js/partials';
 import type { FormState } from '@porsche-design-system/components/dist/types/bundle';
-import { kebabCase } from 'change-case';
+
+// TODO: temporary workaround, because of https://github.com/microsoft/playwright/issues/17075
+// import { kebabCase } from 'change-case';
+const kebabCase = (str: string): string => {
+  return str.replace(/-(\w)/g, (_, group) => group.toUpperCase());
+};
 
 export type ClickableTests = {
   state: string;
