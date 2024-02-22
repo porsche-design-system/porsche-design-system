@@ -4812,11 +4812,6 @@
     expect "^29.0.0"
     pretty-format "^29.0.0"
 
-"@types/js-beautify@^1.14.3":
-  version "1.14.3"
-  resolved "https://registry.yarnpkg.com/@types/js-beautify/-/js-beautify-1.14.3.tgz#6ced76f79935e37e0d613110dea369881d93c1ff"
-  integrity sha512-FMbQHz+qd9DoGvgLHxeqqVPaNRffpIu5ZjozwV8hf9JAGpIOzuAf4wGbRSo8LNITHqGjmmVjaMggTT5P4v4IHg==
-
 "@types/js-levenshtein@^1.1.1":
   version "1.1.3"
   resolved "https://registry.yarnpkg.com/@types/js-levenshtein/-/js-levenshtein-1.1.3.tgz#a6fd0bdc8255b274e5438e0bfb25f154492d1106"
@@ -15727,7 +15722,7 @@ joi@^17.11.0:
     "@sideway/formula" "^3.0.1"
     "@sideway/pinpoint" "^2.0.0"
 
-js-beautify@^1.14.11, js-beautify@^1.14.9, js-beautify@^1.6.12, js-beautify@^1.6.14:
+js-beautify@^1.14.9, js-beautify@^1.6.12, js-beautify@^1.6.14:
   version "1.14.11"
   resolved "https://registry.yarnpkg.com/js-beautify/-/js-beautify-1.14.11.tgz#57b17e009549ac845bdc58eddf8e1862e311314e"
   integrity sha512-rPogWqAfoYh1Ryqqh2agUpVfbxAhbjuN1SmU86dskQUKouRiggUTCO4+2ym9UPXllc2WAp0J+T5qxn7Um3lCdw==
