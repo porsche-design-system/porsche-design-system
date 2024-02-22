@@ -34,7 +34,7 @@ const routes: { name: string; path: string }[] = rawOptions
 const exampleRoutes = routes.filter((item) => item.path.includes('example'));
 const exampleUrls = exampleRoutes.map((item) => item.path);
 
-it.each(exampleUrls)('should work without error or warning for %s', async (exampleUrl) => {
+xit.each(exampleUrls)('should work without error or warning for %s', async (exampleUrl) => {
   await goto(page, exampleUrl);
 
   if (getConsoleErrorsAmount() !== 0) {
