@@ -1143,7 +1143,7 @@ describe('accessibility', () => {
     await expectA11yToMatchSnapshot(page, splide, { message: 'splide', interestingOnly: false });
   });
 
-  fit('should change skip-link to visible if it receives keyboard focus', async () => {
+  it('should change skip-link to visible if it receives keyboard focus', async () => {
     await initCarousel({ skipLinkTarget: '#link-after' });
     const skipLinkHost = await getSkipLinkHost();
 
