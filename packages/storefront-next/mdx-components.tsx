@@ -1,5 +1,17 @@
 import type { MDXComponents } from 'mdx/types';
-import { PHeading } from '@porsche-design-system/components-react/ssr';
+import {
+  PDivider,
+  PHeading,
+  PTable,
+  PTableBody,
+  PTableCell,
+  PTableHead,
+  PTableHeadCell,
+  PTableRow,
+  PText,
+  PTextList,
+  PTextListItem,
+} from '@porsche-design-system/components-react/ssr';
 
 // This file is required to use MDX in `app` directory.
 export function useMDXComponents(components: MDXComponents): MDXComponents {
@@ -35,6 +47,17 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
         {children}
       </PHeading>
     ),
+    p: ({ children }) => <PText>{children}</PText>,
+    hr: ({ children }) => <PDivider>{children}</PDivider>,
+    ul: ({ children }) => <PTextList>{children}</PTextList>,
+    ol: ({ children }) => <PTextList type="numbered">{children}</PTextList>,
+    li: ({ children }) => <PTextListItem>{children}</PTextListItem>,
+    table: ({ children }) => <PTable>{children}</PTable>,
+    thead: ({ children }) => <PTableHead>{children}</PTableHead>,
+    th: ({ children }) => <PTableHeadCell>{children}</PTableHeadCell>,
+    tbody: ({ children }) => <PTableBody>{children}</PTableBody>,
+    td: ({ children }) => <PTableCell>{children}</PTableCell>,
+    tr: ({ children }) => <PTableRow>{children}</PTableRow>,
     ...components,
   };
 }
