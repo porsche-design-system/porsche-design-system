@@ -23,13 +23,13 @@
   "dependencies": {
     "@porsche-design-system/assets": "5.0.2",
     "@porsche-design-system/components-react": "3.13.0-rc.0",
-    "next": "14.0.4",
+    "next": "14.1.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
   "devDependencies": {
     "@porsche-design-system/shared": "0.0.0",
-    "@types/react": "^18.2.45",
+    "@types/react": "^18.2.57",
     "@types/react-dom": "^18.2.19",
     "concurrently": "^8.2.2",
     "eslint": "^8.56.0",
