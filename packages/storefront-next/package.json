@@ -6,12 +6,13 @@
   "scope": "@porsche-design-system",
   "description": "Porsche Design System",
   "scripts": {
-    "dev": "next dev",
+    "dev": "serve-cdn & next dev",
     "build": "next build",
-    "start": "next start",
+    "start": "serve-cdn & next start",
     "lint": "next lint"
   },
   "dependencies": {
+    "@porsche-design-system/components-react": "3.13.0-rc.0",
     "@mdx-js/loader": "^3.0.1",
     "@mdx-js/react": "^3.0.1",
     "@next/mdx": "^14.1.0",

@@ -1,3 +1,9 @@
+import { PHeading } from '@porsche-design-system/components-react/ssr';
+
 export default function Home() {
-  return <main>Storefront Next</main>;
+  return (
+    <main>
+      <PHeading>Hello World!</PHeading>
+    </main>
+  );
 }
