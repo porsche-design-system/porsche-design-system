@@ -41,13 +41,9 @@ slot[name="controls"] {
 .btn {
   padding: 8px;
 }
-.skip-link {
+.skip-link:not(:focus) {
   opacity: 0;
   pointer-events: none;
-}
-.skip-link:focus {
-  opacity: 1;
-  pointer-events: all;
 }
 .splide {
   overflow: hidden;
@@ -213,13 +209,9 @@ slot[name="controls"] {
 .btn {
   padding: 8px;
 }
-.skip-link {
+.skip-link:not(:focus) {
   opacity: 0;
   pointer-events: none;
-}
-.skip-link:focus {
-  opacity: 1;
-  pointer-events: all;
 }
 .splide {
   overflow: hidden;
@@ -385,13 +377,9 @@ slot[name="controls"] {
 .btn {
   padding: 8px;
 }
-.skip-link {
+.skip-link:not(:focus) {
   opacity: 0;
   pointer-events: none;
-}
-.skip-link:focus {
-  opacity: 1;
-  pointer-events: all;
 }
 .splide {
   overflow: hidden;
@@ -581,13 +569,9 @@ slot[name="controls"] {
 .btn {
   padding: 8px;
 }
-.skip-link {
+.skip-link:not(:focus) {
   opacity: 0;
   pointer-events: none;
-}
-.skip-link:focus {
-  opacity: 1;
-  pointer-events: all;
 }
 .splide {
   overflow: hidden;
@@ -711,13 +695,9 @@ p,::slotted([slot="description"]) {
 .btn {
   padding: 8px;
 }
-.skip-link {
+.skip-link:not(:focus) {
   opacity: 0;
   pointer-events: none;
-}
-.skip-link:focus {
-  opacity: 1;
-  pointer-events: all;
 }
 .splide {
   overflow: hidden;
@@ -843,13 +823,9 @@ p,::slotted([slot="description"]) {
 .btn {
   padding: 8px;
 }
-.skip-link {
+.skip-link:not(:focus) {
   opacity: 0;
   pointer-events: none;
-}
-.skip-link:focus {
-  opacity: 1;
-  pointer-events: all;
 }
 .splide {
   overflow: hidden;
@@ -1075,13 +1051,9 @@ h2,::slotted([slot="heading"]) {
 .btn {
   padding: 8px;
 }
-.skip-link {
+.skip-link:not(:focus) {
   opacity: 0;
   pointer-events: none;
-}
-.skip-link:focus {
-  opacity: 1;
-  pointer-events: all;
 }
 .splide {
   overflow: hidden;
@@ -1205,13 +1177,9 @@ h2,::slotted([slot="heading"]) {
 .btn {
   padding: 8px;
 }
-.skip-link {
+.skip-link:not(:focus) {
   opacity: 0;
   pointer-events: none;
-}
-.skip-link:focus {
-  opacity: 1;
-  pointer-events: all;
 }
 .splide {
   overflow: hidden;
@@ -1334,13 +1302,9 @@ p,::slotted([slot="description"]) {
 .btn {
   padding: 8px;
 }
-.skip-link {
+.skip-link:not(:focus) {
   opacity: 0;
   pointer-events: none;
-}
-.skip-link:focus {
-  opacity: 1;
-  pointer-events: all;
 }
 .splide {
   overflow: hidden;
@@ -1524,13 +1488,9 @@ p,::slotted([slot="description"]) {
 .btn {
   padding: 8px;
 }
-.skip-link {
+.skip-link:not(:focus) {
   opacity: 0;
   pointer-events: none;
-}
-.skip-link:focus {
-  opacity: 1;
-  pointer-events: all;
 }
 .splide {
   overflow: hidden;
@@ -1659,13 +1619,9 @@ p,::slotted([slot="description"]) {
 .btn {
   padding: 8px;
 }
-.skip-link {
+.skip-link:not(:focus) {
   opacity: 0;
   pointer-events: none;
-}
-.skip-link:focus {
-  opacity: 1;
-  pointer-events: all;
 }
 .splide {
   overflow: hidden;
@@ -1871,13 +1827,9 @@ p,::slotted([slot="description"]) {
 .btn {
   padding: 8px;
 }
-.skip-link {
+.skip-link:not(:focus) {
   opacity: 0;
   pointer-events: none;
-}
-.skip-link:focus {
-  opacity: 1;
-  pointer-events: all;
 }
 .splide {
   overflow: hidden;
@@ -2086,13 +2038,9 @@ p,::slotted([slot="description"]) {
 .btn {
   padding: 8px;
 }
-.skip-link {
+.skip-link:not(:focus) {
   opacity: 0;
   pointer-events: none;
-}
-.skip-link:focus {
-  opacity: 1;
-  pointer-events: all;
 }
 .splide {
   overflow: hidden;
@@ -2276,13 +2224,9 @@ p,::slotted([slot="description"]) {
 .btn {
   padding: 8px;
 }
-.skip-link {
+.skip-link:not(:focus) {
   opacity: 0;
   pointer-events: none;
-}
-.skip-link:focus {
-  opacity: 1;
-  pointer-events: all;
 }
 .splide {
   overflow: hidden;
