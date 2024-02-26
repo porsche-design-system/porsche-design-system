@@ -31,6 +31,11 @@ export default [
         replace: (match) => `if(!window.PDS_SKIP_FETCH) { ${match} }`,
       }),
       modify({
+        // Remove async/await
+        find: /(async|await)/,
+        replace: () => '',
+      }),
+      modify({
         // icon svgs (img src)
         find: /(src:) (buildIconUrl\()/,
         replace: (_, $1, $2) => `${$1} window.PDS_SKIP_FETCH ? undefined : ${$2}`,
