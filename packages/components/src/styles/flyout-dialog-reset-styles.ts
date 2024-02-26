@@ -1,6 +1,6 @@
-import type { Styles } from 'jss';
+import { JssStyle } from 'jss';
 
-export const getFlyoutDialogResetStyles = (): Styles => {
+export const getFlyoutDialogResetJssStyle = (): JssStyle => {
   return {
     position: 'fixed',
     height: '100vh',

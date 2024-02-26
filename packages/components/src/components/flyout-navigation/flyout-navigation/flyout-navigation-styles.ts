@@ -20,7 +20,7 @@ import {
   spacingStaticSmall,
 } from '@porsche-design-system/utilities-v2';
 import { FLYOUT_Z_INDEX } from '../../../constants';
-import { getFlyoutDialogResetStyles } from '../../../styles/flyout-dialog-reset-styles';
+import { getFlyoutDialogResetJssStyle } from '../../../styles/flyout-dialog-reset-styles';
 
 export const cssVariableVisibility = '--p-internal-flyout-navigation-visibility';
 export const cssVariableVisibilityTransitionDuration = '--p-internal-flyout-navigation-visibility-transition-duration';
@@ -59,7 +59,7 @@ export const getComponentCss = (
         }),
       },
       dialog: {
-        ...getFlyoutDialogResetStyles(),
+        ...getFlyoutDialogResetJssStyle(),
         inset: '0',
         display: 'grid',
         overflow: 'hidden',
