@@ -2,6 +2,10 @@ import type { Page } from 'puppeteer';
 import { goto, initConsoleObserver, getConsoleErrorsAmount, getConsoleWarningsAmount } from '../helpers';
 import * as fs from 'fs';
 import * as path from 'path';
+import { createRequire } from 'node:module';
+
+// @ts-ignore
+const nodeRequire = createRequire(import.meta.url);
 
 let page: Page;
 
@@ -11,7 +15,10 @@ beforeEach(async () => {
 });
 afterEach(async () => await page.close());
 
-const filePath = path.resolve(require.resolve('@porsche-design-system/components-react'), '../../../../src/routes.tsx');
+const filePath = path.resolve(
+  nodeRequire.resolve('@porsche-design-system/components-react'),
+  '../../../../src/routes.tsx'
+);
 const fileContent = fs.readFileSync(filePath, 'utf8');
 
 const [, rawRoutes] = /const routes.*(\[[\s\S]*\]);/.exec(fileContent) || [];

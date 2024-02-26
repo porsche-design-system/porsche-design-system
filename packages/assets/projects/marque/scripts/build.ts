@@ -2,7 +2,7 @@ import * as fs from 'fs';
 import * as path from 'path';
 import * as crypto from 'crypto';
 import { globbySync } from 'globby';
-import { paramCase, camelCase } from 'change-case';
+import { kebabCase, camelCase } from 'change-case';
 import { CDN_BASE_PATH_MARQUE } from '../../../../../cdn.config';
 
 type Manifest = {
@@ -64,7 +64,7 @@ const createManifestAndCopyMarque = (): void => {
     const hash = toHash(marque);
     const [name, size, resolution] = path.basename(sourcePath, ext).split(/[.@]/g);
     const extension = ext.slice(1);
-    const filename = `${paramCase(name)}.${paramCase(size)}.min.${hash}@${paramCase(resolution)}.${extension}`;
+    const filename = `${kebabCase(name)}.${kebabCase(size)}.min.${hash}@${kebabCase(resolution)}.${extension}`;
     const targetPath = path.normalize(`./dist/marque/${filename}`);
 
     const nameKey = camelCase(name);

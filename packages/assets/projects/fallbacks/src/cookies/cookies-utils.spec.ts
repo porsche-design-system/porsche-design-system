@@ -1,10 +1,11 @@
 import { hasCookiesEnabled } from './cookies-utils';
+import { vi, MockInstance } from 'vitest';
 
 describe('hasCookiesEnabled()', () => {
-  let cookieEnabledGetter: jest.SpyInstance;
+  let cookieEnabledGetter: MockInstance;
 
   beforeEach(() => {
-    cookieEnabledGetter = jest.spyOn(window.navigator, 'cookieEnabled', 'get');
+    cookieEnabledGetter = vi.spyOn(window.navigator, 'cookieEnabled', 'get');
   });
 
   it('should be true', () => {

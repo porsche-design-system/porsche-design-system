@@ -69,15 +69,6 @@ export default [
     plugins: [typescript()],
   },
   {
-    input: 'src/testing.ts',
-    external,
-    output: {
-      dir: 'dist',
-      format: 'cjs',
-    },
-    plugins: [typescript()],
-  },
-  {
     input: 'src/testing/jest.config.ts',
     output: {
       dir: 'dist/testing',

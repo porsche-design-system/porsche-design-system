@@ -1,7 +1,7 @@
 import * as fs from 'fs';
 import * as path from 'path';
 import { globbySync } from 'globby';
-import { camelCase, capitalCase, paramCase, pascalCase } from 'change-case';
+import { camelCase, capitalCase, kebabCase, pascalCase } from 'change-case';
 import { type AngularCharacteristics, convertToAngularVRTPage } from './convertToAngularVRTPage';
 import { convertToReactVRTPage, type ReactCharacteristics } from './convertToReactVRTPage';
 import { convertToNextJsVRTPage } from './convertToNextJsVRTPage';
@@ -56,7 +56,7 @@ const writeFile = (filePath: string, content: string): void => {
 };
 
 const normalizeImportPath = (input: string): string =>
-  paramCase(input.replace('.component', '').replace('generated/', ''));
+  kebabCase(input.replace('.component', '').replace('generated/', ''));
 const isPageWithoutRoute = (importPath: string): boolean =>
   PAGES_WITHOUT_ROUTE.includes(normalizeImportPath(importPath));
 

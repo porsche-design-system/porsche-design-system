@@ -1,6 +1,6 @@
 import { getIconLinks } from '../../../src';
 import { ICON_NAMES, type IconName } from '@porsche-design-system/icons';
-import { paramCase } from 'change-case';
+import { kebabCase } from 'change-case';
 import { renderToString } from 'react-dom/server';
 import { vi } from 'vitest';
 
@@ -52,7 +52,7 @@ describe('format: html', () => {
     it(`should match regex for ['${iconName}']`, () => {
       const result = getIconLinks({ icons: [iconName] });
       const regex = new RegExp(
-        `^<link rel=prefetch href=${baseHrefCom}/${paramCase(
+        `^<link rel=prefetch href=${baseHrefCom}/${kebabCase(
           iconName
         )}.min.${hash}.svg as=image type=image/svg\\+xml crossorigin>$`
       );
@@ -90,7 +90,7 @@ describe('format: jsx', () => {
     it(`should match regex for ['${iconName}']`, () => {
       const result = getIconLinks({ format: 'jsx', icons: [iconName] });
       const regex = new RegExp(
-        `^<link rel="prefetch" href="${baseHrefCom}/${paramCase(
+        `^<link rel="prefetch" href="${baseHrefCom}/${kebabCase(
           iconName
         )}\\.min\\.${hash}\\.svg" as="image" type="image/svg\\+xml" crossorigin=""/>$`
       );

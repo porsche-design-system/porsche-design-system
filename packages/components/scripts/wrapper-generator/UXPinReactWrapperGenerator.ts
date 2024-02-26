@@ -3,7 +3,7 @@ import { getComponentMeta } from '@porsche-design-system/component-meta';
 import { ReactWrapperGenerator } from './ReactWrapperGenerator';
 import type { ExtendedProp } from './DataStructureBuilder';
 import type { AdditionalFile } from './AbstractWrapperGenerator';
-import { paramCase, pascalCase } from 'change-case';
+import { kebabCase, pascalCase } from 'latest-change-case';
 
 type PresetsProps = { [key: string]: number | string | boolean | string[] | object | null };
 
@@ -504,7 +504,7 @@ ${comments.join(`\n`)}
       .join('\n');
 
     const stringifiedProps = getStringifiedProps({
-      uxpId: paramCase(componentName),
+      uxpId: kebabCase(componentName),
       ...props,
     });
 
@@ -528,7 +528,7 @@ export default (
     const defaultProps = cleanComponentMetaProps(props);
 
     const stringifiedProps = getStringifiedProps({
-      uxpId: paramCase(formComponentName),
+      uxpId: kebabCase(formComponentName),
       ...defaultProps,
       ...extraProps,
     });
