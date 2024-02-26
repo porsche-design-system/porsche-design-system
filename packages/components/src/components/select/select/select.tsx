@@ -30,7 +30,7 @@ import {
   AllowedTypes,
   attachComponentCss,
   FORM_STATES,
-  getActionFromKey,
+  getActionFromKeyboardEvent,
   getClosestHTMLElement,
   getComboboxAriaAttributes,
   getHighlightedSelectOption,
@@ -302,7 +302,7 @@ export class Select {
   private onComboKeyDown = (event: KeyboardEvent): void => {
     const { key } = event;
 
-    const action = getActionFromKey(event, this.isOpen);
+    const action = getActionFromKeyboardEvent(event, this.isOpen);
 
     switch (action) {
       case 'Last':
