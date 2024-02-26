@@ -74,7 +74,7 @@ describe('search', () => {
   it('should hide hits after clicking on a result', async () => {
     // await openSearchOnButtonClick();
     await sendAlgoliaRequest();
-    const [linkElement] = await page.$x(`//header//a[contains(., 'Button')]`);
+    const [linkElement] = await page.$$(`xpath/.//header//a[contains(., 'Button')]`);
     await linkElement.click();
     const hitsWrapper = await getHitsWrapper();
 
@@ -84,7 +84,7 @@ describe('search', () => {
   it('should show hits after navigation and click on search input focus', async () => {
     // await openSearchOnButtonClick();
     await sendAlgoliaRequest();
-    const [linkElement] = await page.$x(`//header//a[contains(., 'Button')]`);
+    const [linkElement] = await page.$$(`xpath/.//header//a[contains(., 'Button')]`);
     await linkElement.click();
 
     await page.focus(searchInputSelector);

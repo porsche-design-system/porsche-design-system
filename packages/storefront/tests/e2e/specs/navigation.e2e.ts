@@ -85,8 +85,8 @@ it.each<[string, string, string, string | undefined, boolean]>(
     .join('')}${humanCaseIndex}/${cases.length}`;
   console.log(`${counter}: ${[category, page, tab].filter(Boolean).join(' > ')}`);
 
-  const [accordionElement] = (await browserPage.$x(
-    `//div[contains(@class, 'menu-desktop')]//nav/p-accordion[@heading='${category}']`
+  const [accordionElement] = (await browserPage.$$(
+    `xpath/.//div[contains(@class, 'menu-desktop')]//nav/p-accordion[@heading='${category}']`
   )) as ElementHandle<HTMLElement>[];
   await accordionElement.click();
   await browserPage.waitForFunction(
@@ -108,8 +108,8 @@ it.each<[string, string, string, string | undefined, boolean]>(
     .filter(Boolean)
     .map((part) => paramCase(part))
     .join('/')}`;
-  const [linkPureElement] = (await browserPage.$x(
-    `//div[contains(@class, 'menu-desktop')]//nav//p-link-pure/a[contains(., '${page}')][@href='${linkPureHref}']/parent::p-link-pure`
+  const [linkPureElement] = (await browserPage.$$(
+    `xpath/.//div[contains(@class, 'menu-desktop')]//nav//p-link-pure/a[contains(., '${page}')][@href='${linkPureHref}']/parent::p-link-pure`
   )) as ElementHandle<HTMLElement>[];
   expect(await isLinkActive(linkPureElement), 'sidebar link should not be active initially').toBe(false);
 
@@ -131,8 +131,8 @@ it.each<[string, string, string, string | undefined, boolean]>(
 
   if (tab) {
     const tabHref = `\/${paramCase(category)}\/${paramCase(page)}\/${paramCase(tab)}`;
-    const [tabElement] = (await browserPage.$x(
-      `//p-tabs-bar//a[contains(., '${tab}')][@href='${tabHref}']`
+    const [tabElement] = (await browserPage.$$(
+      `xpath/.//p-tabs-bar//a[contains(., '${tab}')][@href='${tabHref}']`
     )) as ElementHandle<HTMLElement>[];
 
     const isTabElementActiveInitially = await isTabActive(tabElement);
