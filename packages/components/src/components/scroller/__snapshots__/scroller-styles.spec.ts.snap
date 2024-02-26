@@ -62,24 +62,17 @@ button {
   min-height: 28px;
   min-width: 100%;
   vertical-align: top;
+  border-radius: 4px;
+}
+.scroll-wrapper::-moz-focus-inner {
+  border: 0;
+}
+.scroll-wrapper:focus {
   outline: 0;
 }
-.scroll-wrapper::before {
-  content: "";
-  position: absolute;
-  top: -4px;
-  left: -4px;
-  right: -4px;
-  bottom: -4px;
-  border: 2px solid transparent;
-  border-radius: 4px;
-  pointer-events: none;
-}
-.scroll-wrapper:focus::before {
-  border-color: #1A44EA;
-}
-.scroll-wrapper:focus:not(:focus-visible)::before {
-  border-color: transparent;
+.scroll-wrapper:focus-visible {
+  outline: 2px solid #1A44EA;
+  outline-offset: 2px;
 }
 .trigger {
   position: absolute;
@@ -207,24 +200,17 @@ button {
   min-height: 28px;
   min-width: 100%;
   vertical-align: top;
+  border-radius: 4px;
+}
+.scroll-wrapper::-moz-focus-inner {
+  border: 0;
+}
+.scroll-wrapper:focus {
   outline: 0;
 }
-.scroll-wrapper::before {
-  content: "";
-  position: absolute;
-  top: -4px;
-  left: -4px;
-  right: -4px;
-  bottom: -4px;
-  border: 2px solid transparent;
-  border-radius: 4px;
-  pointer-events: none;
-}
-.scroll-wrapper:focus::before {
-  border-color: #1A44EA;
-}
-.scroll-wrapper:focus:not(:focus-visible)::before {
-  border-color: transparent;
+.scroll-wrapper:focus-visible {
+  outline: 2px solid #1A44EA;
+  outline-offset: 2px;
 }
 .trigger {
   position: absolute;
@@ -347,24 +333,17 @@ button {
   min-height: 28px;
   min-width: 100%;
   vertical-align: top;
+  border-radius: 4px;
+}
+.scroll-wrapper::-moz-focus-inner {
+  border: 0;
+}
+.scroll-wrapper:focus {
   outline: 0;
 }
-.scroll-wrapper::before {
-  content: "";
-  position: absolute;
-  top: -4px;
-  left: -4px;
-  right: -4px;
-  bottom: -4px;
-  border: 2px solid transparent;
-  border-radius: 4px;
-  pointer-events: none;
-}
-.scroll-wrapper:focus::before {
-  border-color: #1A44EA;
-}
-.scroll-wrapper:focus:not(:focus-visible)::before {
-  border-color: transparent;
+.scroll-wrapper:focus-visible {
+  outline: 2px solid #1A44EA;
+  outline-offset: 2px;
 }
 .trigger {
   position: absolute;
@@ -486,24 +465,17 @@ button {
   min-height: 28px;
   min-width: 100%;
   vertical-align: top;
+  border-radius: 4px;
+}
+.scroll-wrapper::-moz-focus-inner {
+  border: 0;
+}
+.scroll-wrapper:focus {
   outline: 0;
 }
-.scroll-wrapper::before {
-  content: "";
-  position: absolute;
-  top: -4px;
-  left: -4px;
-  right: -4px;
-  bottom: -4px;
-  border: 2px solid transparent;
-  border-radius: 4px;
-  pointer-events: none;
-}
-.scroll-wrapper:focus::before {
-  border-color: #1A44EA;
-}
-.scroll-wrapper:focus:not(:focus-visible)::before {
-  border-color: transparent;
+.scroll-wrapper:focus-visible {
+  outline: 2px solid #1A44EA;
+  outline-offset: 2px;
 }
 .trigger {
   position: absolute;
@@ -626,24 +598,17 @@ button {
   min-height: 28px;
   min-width: 100%;
   vertical-align: top;
+  border-radius: 4px;
+}
+.scroll-wrapper::-moz-focus-inner {
+  border: 0;
+}
+.scroll-wrapper:focus {
   outline: 0;
 }
-.scroll-wrapper::before {
-  content: "";
-  position: absolute;
-  top: -4px;
-  left: -4px;
-  right: -4px;
-  bottom: -4px;
-  border: 2px solid transparent;
-  border-radius: 4px;
-  pointer-events: none;
-}
-.scroll-wrapper:focus::before {
-  border-color: #1A44EA;
-}
-.scroll-wrapper:focus:not(:focus-visible)::before {
-  border-color: transparent;
+.scroll-wrapper:focus-visible {
+  outline: 2px solid #1A44EA;
+  outline-offset: 2px;
 }
 .trigger {
   position: absolute;
@@ -766,24 +731,17 @@ button {
   min-height: 28px;
   min-width: 100%;
   vertical-align: top;
+  border-radius: 4px;
+}
+.scroll-wrapper::-moz-focus-inner {
+  border: 0;
+}
+.scroll-wrapper:focus {
   outline: 0;
 }
-.scroll-wrapper::before {
-  content: "";
-  position: absolute;
-  top: -4px;
-  left: -4px;
-  right: -4px;
-  bottom: -4px;
-  border: 2px solid transparent;
-  border-radius: 4px;
-  pointer-events: none;
-}
-.scroll-wrapper:focus::before {
-  border-color: #1A44EA;
-}
-.scroll-wrapper:focus:not(:focus-visible)::before {
-  border-color: transparent;
+.scroll-wrapper:focus-visible {
+  outline: 2px solid #1A44EA;
+  outline-offset: 2px;
 }
 .trigger {
   position: absolute;
@@ -910,24 +868,17 @@ button {
   min-height: 28px;
   min-width: 100%;
   vertical-align: top;
+  border-radius: 4px;
+}
+.scroll-wrapper::-moz-focus-inner {
+  border: 0;
+}
+.scroll-wrapper:focus {
   outline: 0;
 }
-.scroll-wrapper::before {
-  content: "";
-  position: absolute;
-  top: -4px;
-  left: -4px;
-  right: -4px;
-  bottom: -4px;
-  border: 2px solid transparent;
-  border-radius: 4px;
-  pointer-events: none;
-}
-.scroll-wrapper:focus::before {
-  border-color: #1A44EA;
-}
-.scroll-wrapper:focus:not(:focus-visible)::before {
-  border-color: transparent;
+.scroll-wrapper:focus-visible {
+  outline: 2px solid #1A44EA;
+  outline-offset: 2px;
 }
 .trigger {
   position: absolute;
@@ -1055,24 +1006,17 @@ button {
   min-height: 28px;
   min-width: 100%;
   vertical-align: top;
+  border-radius: 4px;
+}
+.scroll-wrapper::-moz-focus-inner {
+  border: 0;
+}
+.scroll-wrapper:focus {
   outline: 0;
 }
-.scroll-wrapper::before {
-  content: "";
-  position: absolute;
-  top: -4px;
-  left: -4px;
-  right: -4px;
-  bottom: -4px;
-  border: 2px solid transparent;
-  border-radius: 4px;
-  pointer-events: none;
-}
-.scroll-wrapper:focus::before {
-  border-color: #1A44EA;
-}
-.scroll-wrapper:focus:not(:focus-visible)::before {
-  border-color: transparent;
+.scroll-wrapper:focus-visible {
+  outline: 2px solid #1A44EA;
+  outline-offset: 2px;
 }
 .trigger {
   position: absolute;

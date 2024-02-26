@@ -18,7 +18,6 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
   min-width: 54px;
   min-height: 54px;
   box-sizing: border-box;
-  outline: 0;
   text-align: start;
   -webkit-appearance: none;
   appearance: none;
@@ -38,18 +37,15 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
   border-color: #7E7F82;
   margin: 0;
 }
-.root:focus::before {
-  content: "";
-  position: fixed;
-  border: 2px solid #1A44EA;
-  border-radius: 8px;
-  top: -6px;
-  left: -6px;
-  right: -6px;
-  bottom: -6px;
-}
-.root:not(:focus-visible)::before {
+.root::-moz-focus-inner {
   border: 0;
+}
+.root:focus {
+  outline: 0;
+}
+.root:focus-visible {
+  outline: 2px solid #1A44EA;
+  outline-offset: 2px;
 }
 .label {
   position: absolute;
@@ -67,6 +63,16 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
   height: calc(6px + 2.125ex);
   margin-inline-start: 0;
   transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+}
+.loading {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
 }
 @media(min-width:480px) {
   .root {
@@ -188,7 +194,6 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
   min-width: 54px;
   min-height: 54px;
   box-sizing: border-box;
-  outline: 0;
   text-align: start;
   -webkit-appearance: none;
   appearance: none;
@@ -207,18 +212,15 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
   cursor: pointer;
   margin: 0;
 }
-.root:focus::before {
-  content: "";
-  position: fixed;
-  border: 2px solid #1A44EA;
-  border-radius: 8px;
-  top: -6px;
-  left: -6px;
-  right: -6px;
-  bottom: -6px;
-}
-.root:not(:focus-visible)::before {
+.root::-moz-focus-inner {
   border: 0;
+}
+.root:focus {
+  outline: 0;
+}
+.root:focus-visible {
+  outline: 2px solid #1A44EA;
+  outline-offset: 2px;
 }
 .label {
   position: static;
@@ -237,6 +239,16 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
   margin-inline-start: -8px;
   transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   filter: invert(1);
+}
+.loading {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
 }
 @media(hover:hover) {
   .root:hover {
@@ -265,7 +277,6 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
   min-width: 54px;
   min-height: 54px;
   box-sizing: border-box;
-  outline: 0;
   text-align: start;
   -webkit-appearance: none;
   appearance: none;
@@ -284,18 +295,15 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
   cursor: pointer;
   margin: 0;
 }
-.root:focus::before {
-  content: "";
-  position: fixed;
-  border: 2px solid #1A44EA;
-  border-radius: 8px;
-  top: -6px;
-  left: -6px;
-  right: -6px;
-  bottom: -6px;
-}
-.root:not(:focus-visible)::before {
+.root::-moz-focus-inner {
   border: 0;
+}
+.root:focus {
+  outline: 0;
+}
+.root:focus-visible {
+  outline: 2px solid #1A44EA;
+  outline-offset: 2px;
 }
 .label {
   position: static;
@@ -314,6 +322,16 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
   margin-inline-start: -8px;
   transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   filter: invert(1);
+}
+.loading {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
 }
 @media(hover:hover) {
   .root:hover {
@@ -342,7 +360,6 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
   min-width: 54px;
   min-height: 54px;
   box-sizing: border-box;
-  outline: 0;
   text-align: start;
   -webkit-appearance: none;
   appearance: none;
@@ -361,18 +378,15 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
   cursor: pointer;
   margin: 0;
 }
-.root:focus::before {
-  content: "";
-  position: fixed;
-  border: 2px solid #1A44EA;
-  border-radius: 8px;
-  top: -6px;
-  left: -6px;
-  right: -6px;
-  bottom: -6px;
-}
-.root:not(:focus-visible)::before {
+.root::-moz-focus-inner {
   border: 0;
+}
+.root:focus {
+  outline: 0;
+}
+.root:focus-visible {
+  outline: 2px solid #1A44EA;
+  outline-offset: 2px;
 }
 .label {
   position: static;
@@ -391,6 +405,16 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
   margin-inline-start: -8px;
   transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   filter: invert(1);
+}
+.loading {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
 }
 @media(hover:hover) {
   .root:hover {
@@ -419,7 +443,6 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
   min-width: 54px;
   min-height: 54px;
   box-sizing: border-box;
-  outline: 0;
   text-align: start;
   -webkit-appearance: none;
   appearance: none;
@@ -439,18 +462,15 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
   border-color: #535457;
   margin: 0;
 }
-.root:focus::before {
-  content: "";
-  position: fixed;
-  border: 2px solid #1A44EA;
-  border-radius: 8px;
-  top: -6px;
-  left: -6px;
-  right: -6px;
-  bottom: -6px;
-}
-.root:not(:focus-visible)::before {
+.root::-moz-focus-inner {
   border: 0;
+}
+.root:focus {
+  outline: 0;
+}
+.root:focus-visible {
+  outline: 2px solid #1A44EA;
+  outline-offset: 2px;
 }
 .label {
   position: static;
@@ -481,6 +501,16 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
   left: 50%;
   transform: translate(-50%, -50%);
   filter: invert(1);
+}
+.loading {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
 }"
 `;
 
@@ -502,7 +532,6 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
   min-width: 54px;
   min-height: 54px;
   box-sizing: border-box;
-  outline: 0;
   text-align: start;
   -webkit-appearance: none;
   appearance: none;
@@ -522,18 +551,15 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
   border-color: #949598;
   margin: 0;
 }
-.root:focus::before {
-  content: "";
-  position: fixed;
-  border: 2px solid #1A44EA;
-  border-radius: 8px;
-  top: -6px;
-  left: -6px;
-  right: -6px;
-  bottom: -6px;
-}
-.root:not(:focus-visible)::before {
+.root::-moz-focus-inner {
   border: 0;
+}
+.root:focus {
+  outline: 0;
+}
+.root:focus-visible {
+  outline: 2px solid #1A44EA;
+  outline-offset: 2px;
 }
 .label {
   position: static;
@@ -551,6 +577,16 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
   height: calc(6px + 2.125ex);
   margin-inline-start: -8px;
   transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+}
+.loading {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
 }"
 `;
 
@@ -572,7 +608,6 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
   min-width: 54px;
   min-height: 54px;
   box-sizing: border-box;
-  outline: 0;
   text-align: start;
   -webkit-appearance: none;
   appearance: none;
@@ -591,18 +626,15 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
   cursor: pointer;
   margin: 0;
 }
-.root:focus::before {
-  content: "";
-  position: fixed;
-  border: 2px solid #1A44EA;
-  border-radius: 8px;
-  top: -6px;
-  left: -6px;
-  right: -6px;
-  bottom: -6px;
-}
-.root:not(:focus-visible)::before {
+.root::-moz-focus-inner {
   border: 0;
+}
+.root:focus {
+  outline: 0;
+}
+.root:focus-visible {
+  outline: 2px solid #1A44EA;
+  outline-offset: 2px;
 }
 .label {
   position: static;
@@ -620,6 +652,16 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
   height: calc(6px + 2.125ex);
   margin-inline-start: -8px;
   transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+}
+.loading {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
 }
 @media(hover:hover) {
   .root:hover {
@@ -650,7 +692,6 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
   min-width: 54px;
   min-height: 54px;
   box-sizing: border-box;
-  outline: 0;
   text-align: start;
   -webkit-appearance: none;
   appearance: none;
@@ -669,18 +710,15 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
   cursor: pointer;
   margin: 0;
 }
-.root:focus::before {
-  content: "";
-  position: fixed;
-  border: 2px solid #1A44EA;
-  border-radius: 8px;
-  top: -6px;
-  left: -6px;
-  right: -6px;
-  bottom: -6px;
-}
-.root:not(:focus-visible)::before {
+.root::-moz-focus-inner {
   border: 0;
+}
+.root:focus {
+  outline: 0;
+}
+.root:focus-visible {
+  outline: 2px solid #1A44EA;
+  outline-offset: 2px;
 }
 .label {
   position: static;
@@ -698,6 +736,16 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
   height: calc(6px + 2.125ex);
   margin-inline-start: -8px;
   transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+}
+.loading {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
 }
 @media(hover:hover) {
   .root:hover {
@@ -728,7 +776,6 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
   min-width: 54px;
   min-height: 54px;
   box-sizing: border-box;
-  outline: 0;
   text-align: start;
   -webkit-appearance: none;
   appearance: none;
@@ -747,18 +794,15 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
   cursor: pointer;
   margin: 0;
 }
-.root:focus::before {
-  content: "";
-  position: fixed;
-  border: 2px solid #1A44EA;
-  border-radius: 8px;
-  top: -6px;
-  left: -6px;
-  right: -6px;
-  bottom: -6px;
-}
-.root:not(:focus-visible)::before {
+.root::-moz-focus-inner {
   border: 0;
+}
+.root:focus {
+  outline: 0;
+}
+.root:focus-visible {
+  outline: 2px solid #1A44EA;
+  outline-offset: 2px;
 }
 .label {
   position: static;
@@ -776,6 +820,16 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
   height: calc(6px + 2.125ex);
   margin-inline-start: -8px;
   transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+}
+.loading {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
 }
 @media(hover:hover) {
   .root:hover {
@@ -806,7 +860,6 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
   min-width: 54px;
   min-height: 54px;
   box-sizing: border-box;
-  outline: 0;
   text-align: start;
   -webkit-appearance: none;
   appearance: none;
@@ -825,18 +878,15 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
   cursor: pointer;
   margin: 0;
 }
-.root:focus::before {
-  content: "";
-  position: fixed;
-  border: 2px solid #1A44EA;
-  border-radius: 8px;
-  top: -6px;
-  left: -6px;
-  right: -6px;
-  bottom: -6px;
-}
-.root:not(:focus-visible)::before {
+.root::-moz-focus-inner {
   border: 0;
+}
+.root:focus {
+  outline: 0;
+}
+.root:focus-visible {
+  outline: 2px solid #1A44EA;
+  outline-offset: 2px;
 }
 .label {
   position: static;
@@ -854,6 +904,16 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
   height: calc(6px + 2.125ex);
   margin-inline-start: -8px;
   transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+}
+.loading {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
 }
 @media(hover:hover) {
   .root:hover {
@@ -884,7 +944,6 @@ exports[`getComponentCss() should return correct css for icon: none, iconSource:
   min-width: 54px;
   min-height: 54px;
   box-sizing: border-box;
-  outline: 0;
   text-align: start;
   -webkit-appearance: none;
   appearance: none;
@@ -904,18 +963,15 @@ exports[`getComponentCss() should return correct css for icon: none, iconSource:
   border-color: #535457;
   margin: 0;
 }
-.root:focus::before {
-  content: "";
-  position: fixed;
-  border: 2px solid #1A44EA;
-  border-radius: 8px;
-  top: -6px;
-  left: -6px;
-  right: -6px;
-  bottom: -6px;
-}
-.root:not(:focus-visible)::before {
+.root::-moz-focus-inner {
   border: 0;
+}
+.root:focus {
+  outline: 0;
+}
+.root:focus-visible {
+  outline: 2px solid #1A44EA;
+  outline-offset: 2px;
 }
 .label {
   position: static;
@@ -942,5 +998,15 @@ exports[`getComponentCss() should return correct css for icon: none, iconSource:
 .icon {
   transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   opacity: 0;
+}
+.loading {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
 }"
 `;

@@ -2,28 +2,24 @@
 
 exports[`getButtonAttributes() should return correct aria attributes for isDisabled: false and isLoading: false 1`] = `
 {
-  "aria-busy": null,
   "aria-disabled": null,
 }
 `;
 
 exports[`getButtonAttributes() should return correct aria attributes for isDisabled: false and isLoading: true 1`] = `
 {
-  "aria-busy": "true",
   "aria-disabled": "true",
 }
 `;
 
 exports[`getButtonAttributes() should return correct aria attributes for isDisabled: true and isLoading: false 1`] = `
 {
-  "aria-busy": null,
   "aria-disabled": "true",
 }
 `;
 
 exports[`getButtonAttributes() should return correct aria attributes for isDisabled: true and isLoading: true 1`] = `
 {
-  "aria-busy": "true",
   "aria-disabled": "true",
 }
 `;

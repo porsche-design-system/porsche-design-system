@@ -80,6 +80,10 @@ const generatedRoutes = {
     "path": "/flyout-footer-scrollable-content",
     "name": "FlyoutFooterScrollableContent"
   },
+  "flyoutGrid": {
+    "path": "/flyout-grid",
+    "name": "FlyoutGrid"
+  },
   "flyoutHeader": {
     "path": "/flyout-header",
     "name": "FlyoutHeader"

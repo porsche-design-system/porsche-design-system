@@ -2,8 +2,7 @@ module.exports = {
   preset: 'ts-jest',
   rootDir: '../../../',
   verbose: true,
-  testEnvironment: 'jsdom',
-  setupFilesAfterEnv: ['<rootDir>/tests/unit/config/jest.setup.ts'],
+  testEnvironment: 'node',
   testMatch: ['**/tests/unit/specs/**/*.spec.ts'],
   modulePathIgnorePatterns: ['<rootDir>/dist'],
   clearMocks: true,
@@ -12,10 +11,8 @@ module.exports = {
     '^.+\\.tsx?$': [
       'ts-jest',
       {
-        tsconfig: {
-          strict: false, // too many errors
-          verbatimModuleSyntax: false,
-        },
+        isolatedModules: true, // disable type-checking and compile each file as an isolated module
+        diagnostics: false,
       },
     ],
   },

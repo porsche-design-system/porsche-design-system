@@ -2,7 +2,6 @@
 
 exports[`getButtonAttributes() should return correct css for isSelected: false and isDisabled: false 1`] = `
 {
-  "aria-busy": null,
   "aria-disabled": null,
   "aria-pressed": "false",
 }
@@ -10,7 +9,6 @@ exports[`getButtonAttributes() should return correct css for isSelected: false a
 
 exports[`getButtonAttributes() should return correct css for isSelected: false and isDisabled: true 1`] = `
 {
-  "aria-busy": null,
   "aria-disabled": "true",
   "aria-pressed": "false",
 }
@@ -18,7 +16,6 @@ exports[`getButtonAttributes() should return correct css for isSelected: false a
 
 exports[`getButtonAttributes() should return correct css for isSelected: true and isDisabled: false 1`] = `
 {
-  "aria-busy": null,
   "aria-disabled": null,
   "aria-pressed": "true",
 }
@@ -26,7 +23,6 @@ exports[`getButtonAttributes() should return correct css for isSelected: true an
 
 exports[`getButtonAttributes() should return correct css for isSelected: true and isDisabled: true 1`] = `
 {
-  "aria-busy": null,
   "aria-disabled": "true",
   "aria-pressed": "true",
 }

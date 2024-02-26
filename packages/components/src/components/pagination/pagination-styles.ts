@@ -4,7 +4,7 @@ import { getCss } from '../../utils';
 import {
   addImportantToEachRule,
   colorSchemeStyles,
-  getInsetJssStyle,
+  getFocusJssStyle,
   getThemedColors,
   getTransition,
   hostHiddenStyles,
@@ -12,7 +12,6 @@ import {
   prefersColorSchemeDarkMediaQuery,
 } from '../../styles';
 import {
-  borderRadiusMedium,
   borderRadiusSmall,
   borderWidthBase,
   fontLineHeight,
@@ -39,12 +38,11 @@ const disabledCursorStyle: JssStyle = {
 const hiddenStyle: JssStyle = { display: 'none' };
 
 export const getComponentCss = (activePage: number, pageTotal: number, showLastPage: boolean, theme: Theme): string => {
-  const { primaryColor, disabledColor, hoverColor, focusColor } = getThemedColors(theme);
+  const { primaryColor, disabledColor, hoverColor } = getThemedColors(theme);
   const {
     primaryColor: primaryColorDark,
     disabledColor: disabledColorDark,
     hoverColor: hoverColorDark,
-    focusColor: focusColorDark,
   } = getThemedColors('dark');
 
   return getCss({
@@ -125,9 +123,9 @@ export const getComponentCss = (activePage: number, pageTotal: number, showLastP
         whiteSpace: 'nowrap',
         cursor: 'pointer',
         color: primaryColor,
-        outline: 0,
         borderRadius: borderRadiusSmall,
         borderColor: 'transparent', // default value is needed for smooth transition
+        outline: 0, // TODO: only relevant for VRT testing with forced states - prevents :focus style
         ...prefersColorSchemeDarkMediaQuery(theme, {
           color: primaryColorDark,
         }),
@@ -140,16 +138,6 @@ export const getComponentCss = (activePage: number, pageTotal: number, showLastP
             }),
           },
         }),
-        '&:not(.ellipsis):focus:focus-visible::before': {
-          content: '""',
-          position: 'absolute',
-          ...getInsetJssStyle(-4),
-          border: `${borderWidthBase} solid ${focusColor}`,
-          borderRadius: borderRadiusMedium,
-          ...prefersColorSchemeDarkMediaQuery(theme, {
-            borderColor: focusColorDark,
-          }),
-        },
         '&[aria-current]': {
           ...disabledCursorStyle,
           color: primaryColor,
@@ -158,7 +146,6 @@ export const getComponentCss = (activePage: number, pageTotal: number, showLastP
             color: primaryColorDark,
             borderColor: primaryColorDark,
           }),
-          '&:not(.ellipsis):focus::before': getInsetJssStyle(-6), // adjust for missing 2px border
         },
         '&[aria-disabled]': {
           ...disabledCursorStyle,
@@ -167,6 +154,8 @@ export const getComponentCss = (activePage: number, pageTotal: number, showLastP
             color: disabledColorDark,
           }),
         },
+        // TODO :not(.ellipsis) is only needed for VRT states tests to work properly
+        '&:not(.ellipsis)': getFocusJssStyle(theme),
       },
     },
     ellipsis: {

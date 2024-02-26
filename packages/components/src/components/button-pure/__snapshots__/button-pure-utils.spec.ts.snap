@@ -2,28 +2,24 @@
 
 exports[`getButtonPureAriaAttributes() should return correct aria attributes for isDisabled: false, isLoading: false and aria: {} 1`] = `
 {
-  "aria-busy": null,
   "aria-disabled": null,
 }
 `;
 
 exports[`getButtonPureAriaAttributes() should return correct aria attributes for isDisabled: false, isLoading: false and aria: {} 2`] = `
 {
-  "aria-busy": null,
   "aria-disabled": null,
 }
 `;
 
 exports[`getButtonPureAriaAttributes() should return correct aria attributes for isDisabled: false, isLoading: true and aria: {} 1`] = `
 {
-  "aria-busy": "true",
   "aria-disabled": "true",
 }
 `;
 
 exports[`getButtonPureAriaAttributes() should return correct aria attributes for isDisabled: true, isLoading: false and aria: {} 1`] = `
 {
-  "aria-busy": null,
   "aria-disabled": "true",
 }
 `;
@@ -35,7 +31,6 @@ exports[`getButtonPureAriaAttributes() should return correct aria attributes for
   'aria-pressed': true
 } 1`] = `
 {
-  "aria-busy": "true",
   "aria-disabled": "true",
   "aria-expanded": "true",
   "aria-haspopup": "true",
@@ -46,7 +41,6 @@ exports[`getButtonPureAriaAttributes() should return correct aria attributes for
 
 exports[`getButtonPureAriaAttributes() should return correct aria attributes for isDisabled: true, isLoading: true and aria: {} 1`] = `
 {
-  "aria-busy": "true",
   "aria-disabled": "true",
 }
 `;

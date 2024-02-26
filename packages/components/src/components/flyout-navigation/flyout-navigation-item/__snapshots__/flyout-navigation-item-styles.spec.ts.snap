@@ -41,28 +41,31 @@ exports[`getComponentCss() should return correct css for isSecondaryScrollerVisi
 ::slotted(a[aria-current]) {
   background: rgba(148, 149, 152, .18) !important;
 }
+::slotted(a::-moz-focus-inner) {
+  border: 0 !important;
+}
 ::slotted(a:focus) {
+  outline: 0 !important;
+}
+::slotted(a:focus-visible) {
   outline: 2px solid #1A44EA !important;
   outline-offset: -2px !important;
-}
-::slotted(a:focus:not(:focus-visible)) {
-  outline-color: transparent !important;
 }
 @media (prefers-color-scheme: dark) {
   ::slotted(:is(h1, h2, h3, h4, h5, h6)) {
     color: #FBFCFF !important;
   }
-  ::slotted(p) {
-    color: #FBFCFF !important;
-  }
-  ::slotted(a) {
-    color: #FBFCFF !important;
+  ::slotted(a:focus-visible) {
+    outline-color: #1A44EA !important;
   }
   ::slotted(a[aria-current]) {
     background: rgba(148, 149, 152, .18) !important;
   }
-  ::slotted(a:focus) {
-    outline-color: #1A44EA !important;
+  ::slotted(a) {
+    color: #FBFCFF !important;
+  }
+  ::slotted(p) {
+    color: #FBFCFF !important;
   }
 }
 
@@ -85,10 +88,7 @@ exports[`getComponentCss() should return correct css for isSecondaryScrollerVisi
 }
 .scroller {
   position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  inset: 0;
   z-index: 1;
   transform: translate3d(100%, 0, 0);
   visibility: var(--p-internal-flyout-navigation-visibility,hidden);
@@ -212,12 +212,15 @@ exports[`getComponentCss() should return correct css for isSecondaryScrollerVisi
 ::slotted(a[aria-current]) {
   background: rgba(148, 149, 152, .18) !important;
 }
+::slotted(a::-moz-focus-inner) {
+  border: 0 !important;
+}
 ::slotted(a:focus) {
+  outline: 0 !important;
+}
+::slotted(a:focus-visible) {
   outline: 2px solid #1A44EA !important;
   outline-offset: -2px !important;
-}
-::slotted(a:focus:not(:focus-visible)) {
-  outline-color: transparent !important;
 }
 @media(hover:hover) {
   ::slotted(a:hover) {
@@ -232,10 +235,7 @@ exports[`getComponentCss() should return correct css for isSecondaryScrollerVisi
 }
 .scroller {
   position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  inset: 0;
   z-index: 1;
   transform: translate3d(100%, 0, 0);
   visibility: var(--p-internal-flyout-navigation-visibility,hidden);
@@ -347,12 +347,15 @@ exports[`getComponentCss() should return correct css for isSecondaryScrollerVisi
 ::slotted(a[aria-current]) {
   background: rgba(148, 149, 152, .18) !important;
 }
+::slotted(a::-moz-focus-inner) {
+  border: 0 !important;
+}
 ::slotted(a:focus) {
+  outline: 0 !important;
+}
+::slotted(a:focus-visible) {
   outline: 2px solid #1A44EA !important;
   outline-offset: -2px !important;
-}
-::slotted(a:focus:not(:focus-visible)) {
-  outline-color: transparent !important;
 }
 @media(hover:hover) {
   ::slotted(a:hover) {
@@ -367,10 +370,7 @@ exports[`getComponentCss() should return correct css for isSecondaryScrollerVisi
 }
 .scroller {
   position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  inset: 0;
   z-index: 1;
   transform: translate3d(100%, 0, 0);
   visibility: var(--p-internal-flyout-navigation-visibility,hidden);
@@ -482,28 +482,31 @@ exports[`getComponentCss() should return correct css for isSecondaryScrollerVisi
 ::slotted(a[aria-current]) {
   background: rgba(148, 149, 152, .18) !important;
 }
+::slotted(a::-moz-focus-inner) {
+  border: 0 !important;
+}
 ::slotted(a:focus) {
+  outline: 0 !important;
+}
+::slotted(a:focus-visible) {
   outline: 2px solid #1A44EA !important;
   outline-offset: -2px !important;
-}
-::slotted(a:focus:not(:focus-visible)) {
-  outline-color: transparent !important;
 }
 @media (prefers-color-scheme: dark) {
   ::slotted(:is(h1, h2, h3, h4, h5, h6)) {
     color: #FBFCFF !important;
   }
-  ::slotted(p) {
-    color: #FBFCFF !important;
-  }
-  ::slotted(a) {
-    color: #FBFCFF !important;
+  ::slotted(a:focus-visible) {
+    outline-color: #1A44EA !important;
   }
   ::slotted(a[aria-current]) {
     background: rgba(148, 149, 152, .18) !important;
   }
-  ::slotted(a:focus) {
-    outline-color: #1A44EA !important;
+  ::slotted(a) {
+    color: #FBFCFF !important;
+  }
+  ::slotted(p) {
+    color: #FBFCFF !important;
   }
 }
 
@@ -526,10 +529,7 @@ exports[`getComponentCss() should return correct css for isSecondaryScrollerVisi
 }
 .scroller {
   position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  inset: 0;
   z-index: 2;
   transform: translate3d(0, 0, 0);
   visibility: var(--p-internal-flyout-navigation-visibility,visible);
@@ -651,12 +651,15 @@ exports[`getComponentCss() should return correct css for isSecondaryScrollerVisi
 ::slotted(a[aria-current]) {
   background: rgba(148, 149, 152, .18) !important;
 }
+::slotted(a::-moz-focus-inner) {
+  border: 0 !important;
+}
 ::slotted(a:focus) {
+  outline: 0 !important;
+}
+::slotted(a:focus-visible) {
   outline: 2px solid #1A44EA !important;
   outline-offset: -2px !important;
-}
-::slotted(a:focus:not(:focus-visible)) {
-  outline-color: transparent !important;
 }
 @media(hover:hover) {
   ::slotted(a:hover) {
@@ -671,10 +674,7 @@ exports[`getComponentCss() should return correct css for isSecondaryScrollerVisi
 }
 .scroller {
   position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  inset: 0;
   z-index: 2;
   transform: translate3d(0, 0, 0);
   visibility: var(--p-internal-flyout-navigation-visibility,visible);
@@ -784,12 +784,15 @@ exports[`getComponentCss() should return correct css for isSecondaryScrollerVisi
 ::slotted(a[aria-current]) {
   background: rgba(148, 149, 152, .18) !important;
 }
+::slotted(a::-moz-focus-inner) {
+  border: 0 !important;
+}
 ::slotted(a:focus) {
+  outline: 0 !important;
+}
+::slotted(a:focus-visible) {
   outline: 2px solid #1A44EA !important;
   outline-offset: -2px !important;
-}
-::slotted(a:focus:not(:focus-visible)) {
-  outline-color: transparent !important;
 }
 @media(hover:hover) {
   ::slotted(a:hover) {
@@ -804,10 +807,7 @@ exports[`getComponentCss() should return correct css for isSecondaryScrollerVisi
 }
 .scroller {
   position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  inset: 0;
   z-index: 2;
   transform: translate3d(0, 0, 0);
   visibility: var(--p-internal-flyout-navigation-visibility,visible);

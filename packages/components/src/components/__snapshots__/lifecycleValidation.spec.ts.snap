@@ -370,6 +370,7 @@ exports[`should call validateProps() with correct parameters via render for p-li
   "likeButton": "boolean",
   "liked": "boolean",
   "price": "string",
+  "priceOriginal": "string",
   "rel": "string",
   "target": "string",
   "theme": "oneOf",

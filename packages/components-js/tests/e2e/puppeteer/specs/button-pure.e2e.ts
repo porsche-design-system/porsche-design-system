@@ -328,24 +328,6 @@ it('should submit form via enter key when type is submit', async () => {
   expect((await getEventSummary(form, 'submit')).counter).toBe(3);
 });
 
-it('should add aria-busy when loading and remove if finished', async () => {
-  await setContentWithDesignSystem(page, `<p-button-pure>Some label</p-button-pure>`);
-  const host = await getHost();
-  const button = await getButton();
-
-  expect(await getAttribute(button, 'aria-busy')).toBeNull();
-
-  await setProperty(host, 'loading', true);
-  await waitForStencilLifecycle(page);
-
-  expect(await getAttribute(button, 'aria-busy')).toBe('true');
-
-  await setProperty(host, 'loading', false);
-  await waitForStencilLifecycle(page);
-
-  expect(await getAttribute(button, 'aria-busy')).toBeNull();
-});
-
 describe('focus state', () => {
   it('should keep focus if state switches to loading', async () => {
     await initButtonPure();

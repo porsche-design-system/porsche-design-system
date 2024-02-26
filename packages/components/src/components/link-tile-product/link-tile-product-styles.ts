@@ -2,7 +2,8 @@ import { buildResponsiveStyles, getCss, type Theme } from '../../utils';
 import {
   addImportantToEachRule,
   colorSchemeStyles,
-  getInsetJssStyle,
+  getFocusJssStyle,
+  getHiddenTextJssStyle,
   getThemedColors,
   getTransition,
   hostHiddenStyles,
@@ -12,9 +13,7 @@ import {
 import {
   borderRadiusLarge,
   borderRadiusMedium,
-  borderWidthBase,
   fontHyphenationStyle,
-  getFocusStyle,
   getMediaQueryMin,
   headingSmallStyle,
   spacingFluidMedium,
@@ -31,7 +30,7 @@ const slottedAnchorSelector = `a[slot='${anchorSlot}']`;
 
 const anchorJssStyle: JssStyle = {
   position: 'absolute',
-  ...getInsetJssStyle(),
+  inset: 0,
   zIndex: 1, // necessary to be on top of img
   borderRadius: borderRadiusMedium,
 };
@@ -48,15 +47,17 @@ const getMultilineEllipsis = (lineClamp: number): JssStyle => {
 export const getComponentCss = (
   hasLikeButton: boolean,
   hasSlottedAnchor: boolean,
+  hasPriceOriginal: boolean,
+  hasDescription: boolean,
   aspectRatio: BreakpointCustomizable<LinkTileProductAspectRatio>,
   theme: Theme
 ): string => {
-  const { primaryColor, contrastHighColor, backgroundSurfaceColor, focusColor } = getThemedColors(theme);
+  const { primaryColor, contrastHighColor, contrastMediumColor, backgroundSurfaceColor } = getThemedColors(theme);
   const {
     primaryColor: primaryColorDark,
     contrastHighColor: contrastHighColorDark,
+    contrastMediumColor: contrastMediumColorDark,
     backgroundSurfaceColor: backgroundSurfaceColorDark,
-    focusColor: focusColorDark,
   } = getThemedColors('dark');
 
   return getCss({
@@ -79,17 +80,7 @@ export const getComponentCss = (
               ...anchorJssStyle,
               textIndent: '-999999px', // hide anchor label visually but still usable for a11y (only works in RTL-mode because of `overflow: hidden;` parent)
             },
-            // TODO: Refactor getFocusStyles to support slotted selector
-            [`&(${slottedAnchorSelector}:focus)`]: {
-              outline: `${borderWidthBase} solid ${focusColor}`,
-              outlineOffset: '2px',
-              ...prefersColorSchemeDarkMediaQuery(theme, {
-                outlineColor: focusColorDark,
-              }),
-            },
-            [`&(${slottedAnchorSelector}:focus:not(:focus-visible))`]: {
-              outlineColor: 'transparent',
-            },
+            ...getFocusJssStyle(theme, { slotted: slottedAnchorSelector }),
           }),
           [`&([slot="${headerSlot}"])`]: {
             display: 'flex',
@@ -104,6 +95,14 @@ export const getComponentCss = (
             borderRadius: borderRadiusLarge,
             overflow: 'hidden', // needed for picture > img to have correct border-radius
           },
+        },
+      }),
+      ...(hasPriceOriginal && {
+        s: {
+          color: contrastMediumColor,
+          ...prefersColorSchemeDarkMediaQuery(theme, {
+            color: contrastMediumColorDark,
+          }),
         },
       }),
     },
@@ -128,7 +127,7 @@ export const getComponentCss = (
     ...(!hasSlottedAnchor && {
       anchor: {
         ...anchorJssStyle,
-        ...getFocusStyle({ borderRadius: 'medium' }),
+        ...getFocusJssStyle(theme),
       },
     }),
     header: {
@@ -164,24 +163,34 @@ export const getComponentCss = (
       textAlign: 'center',
     },
     heading: {
+      margin: '0 0 2px', // ua-style reset
       ...headingSmallStyle,
       ...fontHyphenationStyle,
       ...getMultilineEllipsis(3),
-      margin: '0 0 2px',
     },
     price: {
+      margin: 0, // ua-style reset
       ...textXSmallStyle,
-      ...getMultilineEllipsis(2),
-      margin: 0, // ua-style reset
-    },
-    description: {
-      ...textXXSmallStyle,
-      ...getMultilineEllipsis(2),
-      margin: 0, // ua-style reset
-      color: contrastHighColor,
-      ...prefersColorSchemeDarkMediaQuery(theme, {
-        color: contrastHighColorDark,
+      ...(hasPriceOriginal && {
+        display: 'flex',
+        flexWrap: 'wrap',
+        justifyContent: 'center',
+        columnGap: spacingFluidXSmall,
       }),
     },
+    ...(hasDescription && {
+      description: {
+        margin: 0, // ua-style reset
+        ...textXXSmallStyle,
+        ...getMultilineEllipsis(2),
+        color: contrastHighColor,
+        ...prefersColorSchemeDarkMediaQuery(theme, {
+          color: contrastHighColorDark,
+        }),
+      },
+    }),
+    ...(hasPriceOriginal && {
+      'sr-only': getHiddenTextJssStyle(),
+    }),
   });
 };

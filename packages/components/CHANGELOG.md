@@ -14,6 +14,60 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ### [Unreleased]
 
+### [3.13.0-rc.0] - 2024-02-19
+
+#### Added
+
+- `Link Tile Product`: Prop `price-original` to be able to visualize sale and original price
+  ([#3040](https://github.com/porsche-design-system/porsche-design-system/pull/3040))
+
+#### Changed
+
+- Validation of `getInitialStyles()` partial is temporarily disabled
+  ([#3049](https://github.com/porsche-design-system/porsche-design-system/pull/3049))
+
+### [3.12.0] - 2024-02-12
+
+### [3.12.0-rc.1] - 2024-02-08
+
+#### Fixed
+
+- `Checkbox Wrapper`, `Radio Button Wrapper`: Safari visually reflects input status (checked/unchecked) when used in
+  another Shadow DOM or changed programmatically
+  ([#3028](https://github.com/porsche-design-system/porsche-design-system/pull/3028))
+
+### [3.12.0-rc.0] - 2024-02-05
+
+#### Added
+
+- `Icon`: `logo-x`, `bookmark-filled` and `star-filled`
+  ([#3025](https://github.com/porsche-design-system/porsche-design-system/pull/3025))
+
+#### Changed
+
+- `Icon`: Visual appearance of `information-filled`, `information`, `success-filled`, `success`, `bookmark`, `compare`,
+  `configurate`, `heart-filled`, `heart`, `menu-lines`, `success`, `search`, `locate`, `star`, `shopping-bag-filled`,
+  `shopping-bag`, `user-filled` and `user`
+  ([#3025](https://github.com/porsche-design-system/porsche-design-system/pull/3025))
+- All components (expect some form elements) have improved focus styling based on `:focus-visible`
+  ([#3011](https://github.com/porsche-design-system/porsche-design-system/pull/3011))
+- Several components are using CSS property `inset|inset-inline|inset-block` instead of `top|bottom|left|right` for
+  better RTL (right-to-left) support ([#3011](https://github.com/porsche-design-system/porsche-design-system/pull/3011))
+- `Switch`: Improve RTL (right-to-left) mode
+  ([#3011](https://github.com/porsche-design-system/porsche-design-system/pull/3011))
+- `Button`, `Button Pure`, `Switch`, `Checkbox Wrapper`, `Radio Button Wrapper`, `Pin Code`: optimized announcement of
+  loading state for assistive technologies
+  ([#3009](https://github.com/porsche-design-system/porsche-design-system/pull/3009))
+
+#### Fixed
+
+- All components are supporting focus style in High Contrast Mode correctly
+  ([#3011](https://github.com/porsche-design-system/porsche-design-system/pull/3011))
+
+### [3.11.0] - 2024-01-30
+
+### [3.11.0-rc.0] - 2024-01-30
+
 #### Fixed
 
 - `Carousel`: Carousel does not work with single pointer event on smaller touch devices
@@ -23,6 +77,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 #### Changed
 
+- Scroll-lock used in `Flyout`, `Flyout Navigation` and `Modal` is based on `body { overflow: hidden; }` for all devices
+  ([#3013](https://github.com/porsche-design-system/porsche-design-system/pull/3013))
+- `Toast`: Alignment reflects RTL (right-to-left) mode
+  ([#3010](https://github.com/porsche-design-system/porsche-design-system/pull/3010))
 - `Carousel`: Pagination can be used for navigation & pagination has more spacing on touch devices
   ([#3003](https://github.com/porsche-design-system/porsche-design-system/pull/3003))
 

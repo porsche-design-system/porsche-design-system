@@ -1,6 +1,5 @@
 import type { Styles } from 'jss';
-import type { TagName } from '@porsche-design-system/shared';
-import { getMinifiedCss, INTERNAL_TAG_NAMES, TAG_NAMES } from '@porsche-design-system/shared';
+import { getMinifiedCss, INTERNAL_TAG_NAMES, TAG_NAMES, type TagName } from '@porsche-design-system/shared';
 import { joinArrayElementsToString } from './utils';
 import {
   fontFamily,
@@ -10,10 +9,10 @@ import {
   getFocusStyle,
   getHoverStyle,
 } from '@porsche-design-system/utilities-v2';
-import { addImportantToEachRule } from '@porsche-design-system/components/src/styles';
+import { addImportantToEachRule } from '@porsche-design-system/components/src/styles'; // TODO: remove cross package src import
 
 const tagNames = joinArrayElementsToString(TAG_NAMES.filter((x) => !INTERNAL_TAG_NAMES.includes(x)));
-const tagNamesWithSlottedAnchor = joinArrayElementsToString([
+const tagNamesWithSlottedAnchorArray: TagName[] = [
   'p-accordion',
   'p-banner',
   'p-carousel',
@@ -36,16 +35,25 @@ const tagNamesWithSlottedAnchor = joinArrayElementsToString([
   'p-text-field-wrapper',
   'p-text-list',
   'p-textarea-wrapper',
-] as TagName[]);
-const tagNamesWithSlottedInputIndicator = joinArrayElementsToString(['p-text-field-wrapper'] as TagName[]);
-const tagNamesWithSlottedImage = joinArrayElementsToString(['p-table'] as TagName[]);
-const tagNamesWithSlottedPictureImage = joinArrayElementsToString([
+];
+const tagNamesWithSlottedAnchor = joinArrayElementsToString(tagNamesWithSlottedAnchorArray);
+
+const tagNamesWithSlottedInputIndicatorArray: TagName[] = ['p-text-field-wrapper'];
+const tagNamesWithSlottedInputIndicator = joinArrayElementsToString(tagNamesWithSlottedInputIndicatorArray);
+
+const tagNamesWithSlottedImageArray: TagName[] = ['p-table'];
+const tagNamesWithSlottedImage = joinArrayElementsToString(tagNamesWithSlottedImageArray);
+
+const tagNamesWithSlottedPictureImageArray: TagName[] = [
   'p-button-tile',
   'p-link-tile',
   'p-link-tile-model-signature',
   'p-link-tile-product',
-] as TagName[]);
-const tagNamesWithSiblingTabindex = joinArrayElementsToString(['p-tabs-bar'] as TagName[]);
+];
+const tagNamesWithSlottedPictureImage = joinArrayElementsToString(tagNamesWithSlottedPictureImageArray);
+
+const tagNamesWithSiblingTabindexArray: TagName[] = ['p-tabs-bar'];
+const tagNamesWithSiblingTabindex = joinArrayElementsToString(tagNamesWithSiblingTabindexArray);
 
 const normalizeStyles: Styles = {
   '@global': {

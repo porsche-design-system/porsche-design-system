@@ -20,7 +20,13 @@ slot[name="controls"] {
 ::slotted(*) {
   border-radius: var(--p-carousel-border-radius, 12px) !important;
 }
-::slotted(*:focus-visible) {
+::slotted(::-moz-focus-inner) {
+  border: 0 !important;
+}
+::slotted(:focus) {
+  outline: 0 !important;
+}
+::slotted(:focus-visible) {
   outline: 2px solid #1A44EA !important;
   outline-offset: 2px !important;
 }
@@ -39,7 +45,7 @@ slot[name="controls"] {
   opacity: 0;
   pointer-events: none;
 }
-.skip-link:focus {
+.skip-link:focus-visible {
   opacity: 1;
   pointer-events: all;
 }
@@ -52,14 +58,14 @@ slot[name="controls"] {
   padding: 0 max(22px, 10.625vw - 12px) !important;
 }
 .splide__list {
-  display: flex;
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
+  display: flex;
 }
 .splide__slide {
-  flex-shrink: 0;
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
+  flex-shrink: 0;
   transform: translateZ(0);
 }
 .splide__sr {
@@ -186,7 +192,13 @@ slot[name="controls"] {
 ::slotted(*) {
   border-radius: var(--p-carousel-border-radius, 12px) !important;
 }
-::slotted(*:focus-visible) {
+::slotted(::-moz-focus-inner) {
+  border: 0 !important;
+}
+::slotted(:focus) {
+  outline: 0 !important;
+}
+::slotted(:focus-visible) {
   outline: 2px solid #1A44EA !important;
   outline-offset: 2px !important;
 }
@@ -205,7 +217,7 @@ slot[name="controls"] {
   opacity: 0;
   pointer-events: none;
 }
-.skip-link:focus {
+.skip-link:focus-visible {
   opacity: 1;
   pointer-events: all;
 }
@@ -218,14 +230,14 @@ slot[name="controls"] {
   padding: 0 max(22px, 10.625vw - 12px) !important;
 }
 .splide__list {
-  display: flex;
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
+  display: flex;
 }
 .splide__slide {
-  flex-shrink: 0;
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
+  flex-shrink: 0;
   transform: translateZ(0);
 }
 .splide__sr {
@@ -352,7 +364,13 @@ slot[name="controls"] {
 ::slotted(*) {
   border-radius: var(--p-carousel-border-radius, 12px) !important;
 }
-::slotted(*:focus-visible) {
+::slotted(::-moz-focus-inner) {
+  border: 0 !important;
+}
+::slotted(:focus) {
+  outline: 0 !important;
+}
+::slotted(:focus-visible) {
   outline: 2px solid #1A44EA !important;
   outline-offset: 2px !important;
 }
@@ -371,7 +389,7 @@ slot[name="controls"] {
   opacity: 0;
   pointer-events: none;
 }
-.skip-link:focus {
+.skip-link:focus-visible {
   opacity: 1;
   pointer-events: all;
 }
@@ -384,14 +402,14 @@ slot[name="controls"] {
   padding: 0 max(22px, 10.625vw - 12px) !important;
 }
 .splide__list {
-  display: flex;
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
+  display: flex;
 }
 .splide__slide {
-  flex-shrink: 0;
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
+  flex-shrink: 0;
   transform: translateZ(0);
 }
 .splide__sr {
@@ -542,7 +560,13 @@ slot[name="controls"] {
 ::slotted(*) {
   border-radius: var(--p-carousel-border-radius, 12px) !important;
 }
-::slotted(*:focus-visible) {
+::slotted(::-moz-focus-inner) {
+  border: 0 !important;
+}
+::slotted(:focus) {
+  outline: 0 !important;
+}
+::slotted(:focus-visible) {
   outline: 2px solid #1A44EA !important;
   outline-offset: 2px !important;
 }
@@ -561,7 +585,7 @@ slot[name="controls"] {
   opacity: 0;
   pointer-events: none;
 }
-.skip-link:focus {
+.skip-link:focus-visible {
   opacity: 1;
   pointer-events: all;
 }
@@ -574,14 +598,14 @@ slot[name="controls"] {
   padding: 0 max(22px, 10.625vw - 12px) !important;
 }
 .splide__list {
-  display: flex;
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
+  display: flex;
 }
 .splide__slide {
-  flex-shrink: 0;
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
+  flex-shrink: 0;
   transform: translateZ(0);
 }
 .splide__sr {
@@ -655,7 +679,13 @@ slot[name="controls"] {
 ::slotted(*) {
   border-radius: var(--p-carousel-border-radius, 12px) !important;
 }
-::slotted(*:focus-visible) {
+::slotted(::-moz-focus-inner) {
+  border: 0 !important;
+}
+::slotted(:focus) {
+  outline: 0 !important;
+}
+::slotted(:focus-visible) {
   outline: 2px solid #1A44EA !important;
   outline-offset: 2px !important;
 }
@@ -685,7 +715,7 @@ p,::slotted([slot="description"]) {
   opacity: 0;
   pointer-events: none;
 }
-.skip-link:focus {
+.skip-link:focus-visible {
   opacity: 1;
   pointer-events: all;
 }
@@ -698,14 +728,14 @@ p,::slotted([slot="description"]) {
   padding: 0 max(22px, 10.625vw - 12px) !important;
 }
 .splide__list {
-  display: flex;
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
+  display: flex;
 }
 .splide__slide {
-  flex-shrink: 0;
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
+  flex-shrink: 0;
   transform: translateZ(0);
 }
 .splide__sr {
@@ -779,7 +809,13 @@ slot[name="controls"] {
 ::slotted(*) {
   border-radius: var(--p-carousel-border-radius, 12px) !important;
 }
-::slotted(*:focus-visible) {
+::slotted(::-moz-focus-inner) {
+  border: 0 !important;
+}
+::slotted(:focus) {
+  outline: 0 !important;
+}
+::slotted(:focus-visible) {
   outline: 2px solid #1A44EA !important;
   outline-offset: 2px !important;
 }
@@ -811,7 +847,7 @@ p,::slotted([slot="description"]) {
   opacity: 0;
   pointer-events: none;
 }
-.skip-link:focus {
+.skip-link:focus-visible {
   opacity: 1;
   pointer-events: all;
 }
@@ -824,14 +860,14 @@ p,::slotted([slot="description"]) {
   padding: 0 max(22px, 10.625vw - 12px) !important;
 }
 .splide__list {
-  display: flex;
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
+  display: flex;
 }
 .splide__slide {
-  flex-shrink: 0;
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
+  flex-shrink: 0;
   transform: translateZ(0);
 }
 .splide__sr {
@@ -1009,7 +1045,13 @@ slot[name="controls"] {
 ::slotted(*) {
   border-radius: var(--p-carousel-border-radius, 12px) !important;
 }
-::slotted(*:focus-visible) {
+::slotted(::-moz-focus-inner) {
+  border: 0 !important;
+}
+::slotted(:focus) {
+  outline: 0 !important;
+}
+::slotted(:focus-visible) {
   outline: 2px solid #1A44EA !important;
   outline-offset: 2px !important;
 }
@@ -1037,7 +1079,7 @@ h2,::slotted([slot="heading"]) {
   opacity: 0;
   pointer-events: none;
 }
-.skip-link:focus {
+.skip-link:focus-visible {
   opacity: 1;
   pointer-events: all;
 }
@@ -1050,14 +1092,14 @@ h2,::slotted([slot="heading"]) {
   padding: 0 max(22px, 10.625vw - 12px) !important;
 }
 .splide__list {
-  display: flex;
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
+  display: flex;
 }
 .splide__slide {
-  flex-shrink: 0;
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
+  flex-shrink: 0;
   transform: translateZ(0);
 }
 .splide__sr {
@@ -1131,7 +1173,13 @@ slot[name="controls"] {
 ::slotted(*) {
   border-radius: var(--p-carousel-border-radius, 12px) !important;
 }
-::slotted(*:focus-visible) {
+::slotted(::-moz-focus-inner) {
+  border: 0 !important;
+}
+::slotted(:focus) {
+  outline: 0 !important;
+}
+::slotted(:focus-visible) {
   outline: 2px solid #1A44EA !important;
   outline-offset: 2px !important;
 }
@@ -1161,7 +1209,7 @@ h2,::slotted([slot="heading"]) {
   opacity: 0;
   pointer-events: none;
 }
-.skip-link:focus {
+.skip-link:focus-visible {
   opacity: 1;
   pointer-events: all;
 }
@@ -1174,14 +1222,14 @@ h2,::slotted([slot="heading"]) {
   padding: 0 max(22px, 10.625vw - 12px) !important;
 }
 .splide__list {
-  display: flex;
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
+  display: flex;
 }
 .splide__slide {
-  flex-shrink: 0;
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
+  flex-shrink: 0;
   transform: translateZ(0);
 }
 .splide__sr {
@@ -1249,7 +1297,13 @@ exports[`getComponentCss() should return correct css for hasHeading: true, hasDe
 ::slotted(*) {
   border-radius: var(--p-carousel-border-radius, 12px) !important;
 }
-::slotted(*:focus-visible) {
+::slotted(::-moz-focus-inner) {
+  border: 0 !important;
+}
+::slotted(:focus) {
+  outline: 0 !important;
+}
+::slotted(:focus-visible) {
   outline: 2px solid #1A44EA !important;
   outline-offset: 2px !important;
 }
@@ -1284,7 +1338,7 @@ p,::slotted([slot="description"]) {
   opacity: 0;
   pointer-events: none;
 }
-.skip-link:focus {
+.skip-link:focus-visible {
   opacity: 1;
   pointer-events: all;
 }
@@ -1297,14 +1351,14 @@ p,::slotted([slot="description"]) {
   padding: 0 max(22px, 10.625vw - 12px) !important;
 }
 .splide__list {
-  display: flex;
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
+  display: flex;
 }
 .splide__slide {
-  flex-shrink: 0;
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
+  flex-shrink: 0;
   transform: translateZ(0);
 }
 .splide__sr {
@@ -1431,7 +1485,13 @@ slot[name="controls"] {
 ::slotted(*) {
   border-radius: var(--p-carousel-border-radius, 12px) !important;
 }
-::slotted(*:focus-visible) {
+::slotted(::-moz-focus-inner) {
+  border: 0 !important;
+}
+::slotted(:focus) {
+  outline: 0 !important;
+}
+::slotted(:focus-visible) {
   outline: 2px solid #1A44EA !important;
   outline-offset: 2px !important;
 }
@@ -1468,7 +1528,7 @@ p,::slotted([slot="description"]) {
   opacity: 0;
   pointer-events: none;
 }
-.skip-link:focus {
+.skip-link:focus-visible {
   opacity: 1;
   pointer-events: all;
 }
@@ -1481,14 +1541,14 @@ p,::slotted([slot="description"]) {
   padding: 0 max(22px, 10.625vw - 12px) !important;
 }
 .splide__list {
-  display: flex;
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
+  display: flex;
 }
 .splide__slide {
-  flex-shrink: 0;
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
+  flex-shrink: 0;
   transform: translateZ(0);
 }
 .splide__sr {
@@ -1562,7 +1622,13 @@ slot[name="controls"] {
 ::slotted(*) {
   border-radius: var(--p-carousel-border-radius, 12px) !important;
 }
-::slotted(*:focus-visible) {
+::slotted(::-moz-focus-inner) {
+  border: 0 !important;
+}
+::slotted(:focus) {
+  outline: 0 !important;
+}
+::slotted(:focus-visible) {
   outline: 2px solid #1A44EA !important;
   outline-offset: 2px !important;
 }
@@ -1597,7 +1663,7 @@ p,::slotted([slot="description"]) {
   opacity: 0;
   pointer-events: none;
 }
-.skip-link:focus {
+.skip-link:focus-visible {
   opacity: 1;
   pointer-events: all;
 }
@@ -1610,14 +1676,14 @@ p,::slotted([slot="description"]) {
   padding: 0 max(22px, 10.625vw - 12px) !important;
 }
 .splide__list {
-  display: flex;
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
+  display: flex;
 }
 .splide__slide {
-  flex-shrink: 0;
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
+  flex-shrink: 0;
   transform: translateZ(0);
 }
 .splide__sr {
@@ -1768,7 +1834,13 @@ slot[name="controls"] {
 ::slotted(*) {
   border-radius: var(--p-carousel-border-radius, 12px) !important;
 }
-::slotted(*:focus-visible) {
+::slotted(::-moz-focus-inner) {
+  border: 0 !important;
+}
+::slotted(:focus) {
+  outline: 0 !important;
+}
+::slotted(:focus-visible) {
   outline: 2px solid #1A44EA !important;
   outline-offset: 2px !important;
 }
@@ -1803,7 +1875,7 @@ p,::slotted([slot="description"]) {
   opacity: 0;
   pointer-events: none;
 }
-.skip-link:focus {
+.skip-link:focus-visible {
   opacity: 1;
   pointer-events: all;
 }
@@ -1816,14 +1888,14 @@ p,::slotted([slot="description"]) {
   padding: 0 max(22px, 10.625vw - 12px) !important;
 }
 .splide__list {
-  display: flex;
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
+  display: flex;
 }
 .splide__slide {
-  flex-shrink: 0;
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
+  flex-shrink: 0;
   transform: translateZ(0);
 }
 .splide__sr {
@@ -1977,7 +2049,13 @@ slot[name="controls"] {
 ::slotted(*) {
   border-radius: var(--p-carousel-border-radius, 12px) !important;
 }
-::slotted(*:focus-visible) {
+::slotted(::-moz-focus-inner) {
+  border: 0 !important;
+}
+::slotted(:focus) {
+  outline: 0 !important;
+}
+::slotted(:focus-visible) {
   outline: 2px solid #1A44EA !important;
   outline-offset: 2px !important;
 }
@@ -2012,7 +2090,7 @@ p,::slotted([slot="description"]) {
   opacity: 0;
   pointer-events: none;
 }
-.skip-link:focus {
+.skip-link:focus-visible {
   opacity: 1;
   pointer-events: all;
 }
@@ -2025,14 +2103,14 @@ p,::slotted([slot="description"]) {
   padding: 0 max(22px, 10.625vw - 12px) !important;
 }
 .splide__list {
-  display: flex;
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
+  display: flex;
 }
 .splide__slide {
-  flex-shrink: 0;
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
+  flex-shrink: 0;
   transform: translateZ(0);
 }
 .splide__sr {
@@ -2159,7 +2237,13 @@ slot[name="controls"] {
 ::slotted(*) {
   border-radius: var(--p-carousel-border-radius, 12px) !important;
 }
-::slotted(*:focus-visible) {
+::slotted(::-moz-focus-inner) {
+  border: 0 !important;
+}
+::slotted(:focus) {
+  outline: 0 !important;
+}
+::slotted(:focus-visible) {
   outline: 2px solid #1A44EA !important;
   outline-offset: 2px !important;
 }
@@ -2196,7 +2280,7 @@ p,::slotted([slot="description"]) {
   opacity: 0;
   pointer-events: none;
 }
-.skip-link:focus {
+.skip-link:focus-visible {
   opacity: 1;
   pointer-events: all;
 }
@@ -2209,14 +2293,14 @@ p,::slotted([slot="description"]) {
   padding: 0 max(22px, 10.625vw - 12px) !important;
 }
 .splide__list {
-  display: flex;
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
+  display: flex;
 }
 .splide__slide {
-  flex-shrink: 0;
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
+  flex-shrink: 0;
   transform: translateZ(0);
 }
 .splide__sr {

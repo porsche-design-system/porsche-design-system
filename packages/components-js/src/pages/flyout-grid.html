@@ -1,0 +1,50 @@
+<style>
+  p-flyout {
+    --p-flyout-width: 1000px;
+    --p-flyout-max-width: 100vw;
+  }
+
+  .visualize-grid {
+    position: static;
+    row-gap: 16px;
+  }
+
+  .visualize-grid > span {
+    grid-row: 1 / 6;
+  }
+
+  .visualize-grid > div {
+    padding: 0 16px;
+    background: rgba(255, 0, 0, 0.1);
+  }
+</style>
+
+<p-flyout open="true">
+  <div slot="header">Some Header</div>
+  <div class="visualize-grid">
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <div style="grid-area: 1 / full-start / auto / full-end">Full</div>
+    <div style="grid-area: 2 / wide-start / auto / wide-end">Wide</div>
+    <div style="grid-area: 3 / extended-start / auto / extended-end">Extended</div>
+    <div style="grid-area: 4 / basic-start / auto / basic-end">Basic</div>
+    <div style="grid-area: 5 / narrow-start / auto / narrow-end">Narrow</div>
+  </div>
+  <div slot="footer">Some Footer</div>
+</p-flyout>

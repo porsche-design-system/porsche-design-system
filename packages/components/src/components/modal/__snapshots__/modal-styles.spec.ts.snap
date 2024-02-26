@@ -5,10 +5,7 @@ exports[`getComponentCss() should return correct css for open: false, fullscreen
   overflow-y: auto;
   color-scheme: light dark !important;
   position: fixed !important;
-  top: 0 !important;
-  left: 0 !important;
-  right: 0 !important;
-  bottom: 0 !important;
+  inset: 0 !important;
   z-index: 99999 !important;
   background: rgba(1, 2, 5, 0.67) !important;
   visibility: hidden !important;
@@ -41,10 +38,7 @@ h2 {
 }
 .scroll-container {
   display: flex;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  inset: 0;
   height: 100%;
   overflow-y: inherit;
   align-items: center;
@@ -75,10 +69,7 @@ h2 {
   pointer-events: none;
   border-radius: 12px;
   border-color: #FBFCFF;
-  top: -4px;
-  left: -4px;
-  right: -4px;
-  bottom: -4px;
+  inset: -4px;
 }
 .root:not(:focus-visible)::before {
   border: 0;
@@ -102,10 +93,7 @@ exports[`getComponentCss() should return correct css for open: false, fullscreen
   overflow-y: auto;
   color-scheme: light dark !important;
   position: fixed !important;
-  top: 0 !important;
-  left: 0 !important;
-  right: 0 !important;
-  bottom: 0 !important;
+  inset: 0 !important;
   z-index: 99999 !important;
   background: rgba(1, 2, 5, 0.67) !important;
   visibility: hidden !important;
@@ -141,10 +129,7 @@ h2 {
 }
 .scroll-container {
   display: flex;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  inset: 0;
   height: 100%;
   overflow-y: inherit;
   align-items: center;
@@ -175,10 +160,7 @@ h2 {
   pointer-events: none;
   border-radius: 12px;
   border-color: #FBFCFF;
-  top: -4px;
-  left: -4px;
-  right: -4px;
-  bottom: -4px;
+  inset: -4px;
 }
 .root:not(:focus-visible)::before {
   border: 0;
@@ -220,10 +202,7 @@ exports[`getComponentCss() should return correct css for open: false, fullscreen
   overflow-y: auto;
   color-scheme: light dark !important;
   position: fixed !important;
-  top: 0 !important;
-  left: 0 !important;
-  right: 0 !important;
-  bottom: 0 !important;
+  inset: 0 !important;
   z-index: 99999 !important;
   background: rgba(38, 38, 41, 0.67) !important;
   visibility: hidden !important;
@@ -256,10 +235,7 @@ h2 {
 }
 .scroll-container {
   display: flex;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  inset: 0;
   height: 100%;
   overflow-y: inherit;
   align-items: center;
@@ -290,10 +266,7 @@ h2 {
   pointer-events: none;
   border-radius: 12px;
   border-color: #FBFCFF;
-  top: -4px;
-  left: -4px;
-  right: -4px;
-  bottom: -4px;
+  inset: -4px;
 }
 .root:not(:focus-visible)::before {
   border: 0;
@@ -338,10 +311,7 @@ exports[`getComponentCss() should return correct css for open: false, fullscreen
   overflow-y: auto;
   color-scheme: light dark !important;
   position: fixed !important;
-  top: 0 !important;
-  left: 0 !important;
-  right: 0 !important;
-  bottom: 0 !important;
+  inset: 0 !important;
   z-index: 99999 !important;
   background: rgba(1, 2, 5, 0.67) !important;
   visibility: hidden !important;
@@ -377,10 +347,7 @@ h2 {
 }
 .scroll-container {
   display: flex;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  inset: 0;
   height: 100%;
   overflow-y: inherit;
   align-items: center;
@@ -411,10 +378,7 @@ h2 {
   pointer-events: none;
   border-radius: 0;
   border-color: #010205;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  inset: 0;
 }
 .root:not(:focus-visible)::before {
   border: 0;
@@ -435,10 +399,7 @@ exports[`getComponentCss() should return correct css for open: false, fullscreen
   overflow-y: auto;
   color-scheme: light dark !important;
   position: fixed !important;
-  top: 0 !important;
-  left: 0 !important;
-  right: 0 !important;
-  bottom: 0 !important;
+  inset: 0 !important;
   z-index: 99999 !important;
   background: rgba(38, 38, 41, 0.67) !important;
   visibility: hidden !important;
@@ -471,10 +432,7 @@ h2 {
 }
 .scroll-container {
   display: flex;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  inset: 0;
   height: 100%;
   overflow-y: inherit;
   align-items: center;
@@ -505,10 +463,7 @@ h2 {
   pointer-events: none;
   border-radius: 0;
   border-color: #FBFCFF;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  inset: 0;
 }
 .root:not(:focus-visible)::before {
   border: 0;
@@ -532,10 +487,7 @@ exports[`getComponentCss() should return correct css for open: false, fullscreen
   overflow-y: auto;
   color-scheme: light dark !important;
   position: fixed !important;
-  top: 0 !important;
-  left: 0 !important;
-  right: 0 !important;
-  bottom: 0 !important;
+  inset: 0 !important;
   z-index: 99999 !important;
   background: rgba(38, 38, 41, 0.67) !important;
   visibility: hidden !important;
@@ -571,10 +523,7 @@ h2 {
 }
 .scroll-container {
   display: flex;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  inset: 0;
   height: 100%;
   overflow-y: inherit;
   align-items: center;
@@ -605,10 +554,7 @@ h2 {
   pointer-events: none;
   border-radius: 0;
   border-color: #FBFCFF;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  inset: 0;
 }
 .root:not(:focus-visible)::before {
   border: 0;
@@ -650,10 +596,7 @@ exports[`getComponentCss() should return correct css for open: false, fullscreen
   overflow-y: auto;
   color-scheme: light dark !important;
   position: fixed !important;
-  top: 0 !important;
-  left: 0 !important;
-  right: 0 !important;
-  bottom: 0 !important;
+  inset: 0 !important;
   z-index: 99999 !important;
   background: rgba(1, 2, 5, 0.67) !important;
   visibility: hidden !important;
@@ -686,10 +629,7 @@ h2 {
 }
 .scroll-container {
   display: flex;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  inset: 0;
   height: 100%;
   overflow-y: inherit;
   align-items: center;
@@ -720,10 +660,7 @@ h2 {
   pointer-events: none;
   border-radius: 0;
   border-color: #010205;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  inset: 0;
 }
 .root:not(:focus-visible)::before {
   border: 0;
@@ -768,10 +705,7 @@ exports[`getComponentCss() should return correct css for open: true, fullscreen:
   overflow-y: auto;
   color-scheme: light dark !important;
   position: fixed !important;
-  top: 0 !important;
-  left: 0 !important;
-  right: 0 !important;
-  bottom: 0 !important;
+  inset: 0 !important;
   z-index: 99999 !important;
   background: rgba(1, 2, 5, 0.67) !important;
   visibility: inherit !important;
@@ -852,10 +786,7 @@ h2 {
 
 .scroll-container {
   display: flex;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  inset: 0;
   height: 100%;
   overflow-y: inherit;
   align-items: center;
@@ -886,10 +817,7 @@ h2 {
   pointer-events: none;
   border-radius: 0;
   border-color: #010205;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  inset: 0;
 }
 .root:not(:focus-visible)::before {
   border: 0;
@@ -922,10 +850,7 @@ h2 {
   .root:focus::after {
     border-radius: 12px;
     border-color: #FBFCFF;
-    top: -4px;
-    left: -4px;
-    right: -4px;
-    bottom: -4px;
+    inset: -4px;
   }
 }
 
@@ -940,10 +865,7 @@ h2 {
   .root:focus::after {
     border-radius: 0;
     border-color: #010205;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
+    inset: 0;
   }
 }
 
@@ -958,10 +880,7 @@ h2 {
   .root:focus::after {
     border-radius: 12px;
     border-color: #FBFCFF;
-    top: -4px;
-    left: -4px;
-    right: -4px;
-    bottom: -4px;
+    inset: -4px;
   }
 }
 
@@ -976,10 +895,7 @@ h2 {
   .root:focus::after {
     border-radius: 0;
     border-color: #010205;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
+    inset: 0;
   }
 }
 
@@ -994,10 +910,7 @@ h2 {
   .root:focus::after {
     border-radius: 12px;
     border-color: #FBFCFF;
-    top: -4px;
-    left: -4px;
-    right: -4px;
-    bottom: -4px;
+    inset: -4px;
   }
 }
 
@@ -1015,10 +928,7 @@ exports[`getComponentCss() should return correct css for open: true, fullscreen:
   overflow-y: auto;
   color-scheme: light dark !important;
   position: fixed !important;
-  top: 0 !important;
-  left: 0 !important;
-  right: 0 !important;
-  bottom: 0 !important;
+  inset: 0 !important;
   z-index: 99999 !important;
   background: rgba(1, 2, 5, 0.67) !important;
   visibility: inherit !important;
@@ -1054,10 +964,7 @@ h2 {
 }
 .scroll-container {
   display: flex;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  inset: 0;
   height: 100%;
   overflow-y: inherit;
   align-items: center;
@@ -1087,10 +994,7 @@ h2 {
   pointer-events: none;
   border-radius: 12px;
   border-color: #FBFCFF;
-  top: -4px;
-  left: -4px;
-  right: -4px;
-  bottom: -4px;
+  inset: -4px;
 }
 .root:not(:focus-visible)::before {
   border: 0;
@@ -1125,10 +1029,7 @@ exports[`getComponentCss() should return correct css for open: true, fullscreen:
   overflow-y: auto;
   color-scheme: light dark !important;
   position: fixed !important;
-  top: 0 !important;
-  left: 0 !important;
-  right: 0 !important;
-  bottom: 0 !important;
+  inset: 0 !important;
   z-index: 99999 !important;
   background: rgba(38, 38, 41, 0.67) !important;
   visibility: inherit !important;
@@ -1161,10 +1062,7 @@ h2 {
 }
 .scroll-container {
   display: flex;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  inset: 0;
   height: 100%;
   overflow-y: inherit;
   align-items: center;
@@ -1195,10 +1093,7 @@ h2 {
   pointer-events: none;
   border-radius: 12px;
   border-color: #FBFCFF;
-  top: -4px;
-  left: -4px;
-  right: -4px;
-  bottom: -4px;
+  inset: -4px;
 }
 .root:not(:focus-visible)::before {
   border: 0;
@@ -1222,10 +1117,7 @@ exports[`getComponentCss() should return correct css for open: true, fullscreen:
   overflow-y: auto;
   color-scheme: light dark !important;
   position: fixed !important;
-  top: 0 !important;
-  left: 0 !important;
-  right: 0 !important;
-  bottom: 0 !important;
+  inset: 0 !important;
   z-index: 99999 !important;
   background: rgba(38, 38, 41, 0.67) !important;
   visibility: inherit !important;
@@ -1258,10 +1150,7 @@ h2 {
 }
 .scroll-container {
   display: flex;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  inset: 0;
   height: 100%;
   overflow-y: inherit;
   align-items: center;
@@ -1291,10 +1180,7 @@ h2 {
   pointer-events: none;
   border-radius: 12px;
   border-color: #FBFCFF;
-  top: -4px;
-  left: -4px;
-  right: -4px;
-  bottom: -4px;
+  inset: -4px;
 }
 .root:not(:focus-visible)::before {
   border: 0;
@@ -1332,10 +1218,7 @@ exports[`getComponentCss() should return correct css for open: true, fullscreen:
   overflow-y: auto;
   color-scheme: light dark !important;
   position: fixed !important;
-  top: 0 !important;
-  left: 0 !important;
-  right: 0 !important;
-  bottom: 0 !important;
+  inset: 0 !important;
   z-index: 99999 !important;
   background: rgba(38, 38, 41, 0.67) !important;
   visibility: inherit !important;
@@ -1371,10 +1254,7 @@ h2 {
 }
 .scroll-container {
   display: flex;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  inset: 0;
   height: 100%;
   overflow-y: inherit;
   align-items: center;
@@ -1405,10 +1285,7 @@ h2 {
   pointer-events: none;
   border-radius: 12px;
   border-color: #FBFCFF;
-  top: -4px;
-  left: -4px;
-  right: -4px;
-  bottom: -4px;
+  inset: -4px;
 }
 .root:not(:focus-visible)::before {
   border: 0;
@@ -1450,10 +1327,7 @@ exports[`getComponentCss() should return correct css for open: true, fullscreen:
   overflow-y: auto;
   color-scheme: light dark !important;
   position: fixed !important;
-  top: 0 !important;
-  left: 0 !important;
-  right: 0 !important;
-  bottom: 0 !important;
+  inset: 0 !important;
   z-index: 99999 !important;
   background: rgba(1, 2, 5, 0.67) !important;
   visibility: inherit !important;
@@ -1486,10 +1360,7 @@ h2 {
 }
 .scroll-container {
   display: flex;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  inset: 0;
   height: 100%;
   overflow-y: inherit;
   align-items: center;
@@ -1520,10 +1391,7 @@ h2 {
   pointer-events: none;
   border-radius: 12px;
   border-color: #FBFCFF;
-  top: -4px;
-  left: -4px;
-  right: -4px;
-  bottom: -4px;
+  inset: -4px;
 }
 .root:not(:focus-visible)::before {
   border: 0;
@@ -1568,10 +1436,7 @@ exports[`getComponentCss() should return correct css for open: true, fullscreen:
   overflow-y: auto;
   color-scheme: light dark !important;
   position: fixed !important;
-  top: 0 !important;
-  left: 0 !important;
-  right: 0 !important;
-  bottom: 0 !important;
+  inset: 0 !important;
   z-index: 99999 !important;
   background: rgba(38, 38, 41, 0.67) !important;
   visibility: inherit !important;
@@ -1607,10 +1472,7 @@ h2 {
 }
 .scroll-container {
   display: flex;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  inset: 0;
   height: 100%;
   overflow-y: inherit;
   align-items: center;
@@ -1641,10 +1503,7 @@ h2 {
   pointer-events: none;
   border-radius: 0;
   border-color: #FBFCFF;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  inset: 0;
 }
 .root:not(:focus-visible)::before {
   border: 0;
@@ -1665,10 +1524,7 @@ exports[`getComponentCss() should return correct css for open: true, fullscreen:
   overflow-y: auto;
   color-scheme: light dark !important;
   position: fixed !important;
-  top: 0 !important;
-  left: 0 !important;
-  right: 0 !important;
-  bottom: 0 !important;
+  inset: 0 !important;
   z-index: 99999 !important;
   background: rgba(1, 2, 5, 0.67) !important;
   visibility: inherit !important;
@@ -1701,10 +1557,7 @@ h2 {
 }
 .scroll-container {
   display: flex;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  inset: 0;
   height: 100%;
   overflow-y: inherit;
   align-items: center;
@@ -1735,10 +1588,7 @@ h2 {
   pointer-events: none;
   border-radius: 0;
   border-color: #010205;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  inset: 0;
 }
 .root:not(:focus-visible)::before {
   border: 0;
@@ -1762,10 +1612,7 @@ exports[`getComponentCss() should return correct css for open: true, fullscreen:
   overflow-y: auto;
   color-scheme: light dark !important;
   position: fixed !important;
-  top: 0 !important;
-  left: 0 !important;
-  right: 0 !important;
-  bottom: 0 !important;
+  inset: 0 !important;
   z-index: 99999 !important;
   background: rgba(1, 2, 5, 0.67) !important;
   visibility: inherit !important;
@@ -1801,10 +1648,7 @@ h2 {
 }
 .scroll-container {
   display: flex;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  inset: 0;
   height: 100%;
   overflow-y: inherit;
   align-items: center;
@@ -1835,10 +1679,7 @@ h2 {
   pointer-events: none;
   border-radius: 0;
   border-color: #010205;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  inset: 0;
 }
 .root:not(:focus-visible)::before {
   border: 0;
@@ -1880,10 +1721,7 @@ exports[`getComponentCss() should return correct css for open: true, fullscreen:
   overflow-y: auto;
   color-scheme: light dark !important;
   position: fixed !important;
-  top: 0 !important;
-  left: 0 !important;
-  right: 0 !important;
-  bottom: 0 !important;
+  inset: 0 !important;
   z-index: 99999 !important;
   background: rgba(38, 38, 41, 0.67) !important;
   visibility: inherit !important;
@@ -1916,10 +1754,7 @@ h2 {
 }
 .scroll-container {
   display: flex;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  inset: 0;
   height: 100%;
   overflow-y: inherit;
   align-items: center;
@@ -1950,10 +1785,7 @@ h2 {
   pointer-events: none;
   border-radius: 0;
   border-color: #FBFCFF;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  inset: 0;
 }
 .root:not(:focus-visible)::before {
   border: 0;

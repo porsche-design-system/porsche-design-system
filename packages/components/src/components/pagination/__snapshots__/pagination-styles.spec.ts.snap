@@ -37,19 +37,9 @@ span {
   white-space: nowrap;
   cursor: pointer;
   color: #010205;
-  outline: 0;
   border-radius: 4px;
   border-color: transparent;
-}
-span:not(.ellipsis):focus:focus-visible::before {
-  content: "";
-  position: absolute;
-  top: -4px;
-  left: -4px;
-  right: -4px;
-  bottom: -4px;
-  border: 2px solid #1A44EA;
-  border-radius: 8px;
+  outline: 0;
 }
 span[aria-current] {
   cursor: default;
@@ -62,11 +52,15 @@ span[aria-disabled] {
   pointer-events: none;
   color: #949598;
 }
-span[aria-current]:not(.ellipsis):focus::before {
-  top: -6px;
-  left: -6px;
-  right: -6px;
-  bottom: -6px;
+span:not(.ellipsis)::-moz-focus-inner {
+  border: 0;
+}
+span:not(.ellipsis):focus {
+  outline: 0;
+}
+span:not(.ellipsis):focus-visible {
+  outline: 2px solid #1A44EA;
+  outline-offset: 2px;
 }
 @media(min-width:760px) {
   ul {
@@ -137,19 +131,9 @@ span {
   white-space: nowrap;
   cursor: pointer;
   color: #FBFCFF;
-  outline: 0;
   border-radius: 4px;
   border-color: transparent;
-}
-span:not(.ellipsis):focus:focus-visible::before {
-  content: "";
-  position: absolute;
-  top: -4px;
-  left: -4px;
-  right: -4px;
-  bottom: -4px;
-  border: 2px solid #1A44EA;
-  border-radius: 8px;
+  outline: 0;
 }
 span[aria-current] {
   cursor: default;
@@ -162,11 +146,15 @@ span[aria-disabled] {
   pointer-events: none;
   color: #7E7F82;
 }
-span[aria-current]:not(.ellipsis):focus::before {
-  top: -6px;
-  left: -6px;
-  right: -6px;
-  bottom: -6px;
+span:not(.ellipsis)::-moz-focus-inner {
+  border: 0;
+}
+span:not(.ellipsis):focus {
+  outline: 0;
+}
+span:not(.ellipsis):focus-visible {
+  outline: 2px solid #1A44EA;
+  outline-offset: 2px;
 }
 @media(min-width:760px) {
   ul {
@@ -237,19 +225,9 @@ span {
   white-space: nowrap;
   cursor: pointer;
   color: #010205;
-  outline: 0;
   border-radius: 4px;
   border-color: transparent;
-}
-span:not(.ellipsis):focus:focus-visible::before {
-  content: "";
-  position: absolute;
-  top: -4px;
-  left: -4px;
-  right: -4px;
-  bottom: -4px;
-  border: 2px solid #1A44EA;
-  border-radius: 8px;
+  outline: 0;
 }
 span[aria-current] {
   cursor: default;
@@ -262,11 +240,15 @@ span[aria-disabled] {
   pointer-events: none;
   color: #949598;
 }
-span[aria-current]:not(.ellipsis):focus::before {
-  top: -6px;
-  left: -6px;
-  right: -6px;
-  bottom: -6px;
+span:not(.ellipsis)::-moz-focus-inner {
+  border: 0;
+}
+span:not(.ellipsis):focus {
+  outline: 0;
+}
+span:not(.ellipsis):focus-visible {
+  outline: 2px solid #1A44EA;
+  outline-offset: 2px;
 }
 @media(min-width:760px) {
   ul {
@@ -337,19 +319,9 @@ span {
   white-space: nowrap;
   cursor: pointer;
   color: #010205;
-  outline: 0;
   border-radius: 4px;
   border-color: transparent;
-}
-span:not(.ellipsis):focus:focus-visible::before {
-  content: "";
-  position: absolute;
-  top: -4px;
-  left: -4px;
-  right: -4px;
-  bottom: -4px;
-  border: 2px solid #1A44EA;
-  border-radius: 8px;
+  outline: 0;
 }
 span[aria-current] {
   cursor: default;
@@ -362,11 +334,15 @@ span[aria-disabled] {
   pointer-events: none;
   color: #949598;
 }
-span[aria-current]:not(.ellipsis):focus::before {
-  top: -6px;
-  left: -6px;
-  right: -6px;
-  bottom: -6px;
+span:not(.ellipsis)::-moz-focus-inner {
+  border: 0;
+}
+span:not(.ellipsis):focus {
+  outline: 0;
+}
+span:not(.ellipsis):focus-visible {
+  outline: 2px solid #1A44EA;
+  outline-offset: 2px;
 }
 @media(min-width:760px) {
   ul {
@@ -443,19 +419,9 @@ span {
   white-space: nowrap;
   cursor: pointer;
   color: #010205;
-  outline: 0;
   border-radius: 4px;
   border-color: transparent;
-}
-span:not(.ellipsis):focus:focus-visible::before {
-  content: "";
-  position: absolute;
-  top: -4px;
-  left: -4px;
-  right: -4px;
-  bottom: -4px;
-  border: 2px solid #1A44EA;
-  border-radius: 8px;
+  outline: 0;
 }
 span[aria-current] {
   cursor: default;
@@ -468,11 +434,15 @@ span[aria-disabled] {
   pointer-events: none;
   color: #949598;
 }
-span[aria-current]:not(.ellipsis):focus::before {
-  top: -6px;
-  left: -6px;
-  right: -6px;
-  bottom: -6px;
+span:not(.ellipsis)::-moz-focus-inner {
+  border: 0;
+}
+span:not(.ellipsis):focus {
+  outline: 0;
+}
+span:not(.ellipsis):focus-visible {
+  outline: 2px solid #1A44EA;
+  outline-offset: 2px;
 }
 @media(min-width:760px) {
   ul {
@@ -549,19 +519,9 @@ span {
   white-space: nowrap;
   cursor: pointer;
   color: #010205;
-  outline: 0;
   border-radius: 4px;
   border-color: transparent;
-}
-span:not(.ellipsis):focus:focus-visible::before {
-  content: "";
-  position: absolute;
-  top: -4px;
-  left: -4px;
-  right: -4px;
-  bottom: -4px;
-  border: 2px solid #1A44EA;
-  border-radius: 8px;
+  outline: 0;
 }
 span[aria-current] {
   cursor: default;
@@ -574,11 +534,15 @@ span[aria-disabled] {
   pointer-events: none;
   color: #949598;
 }
-span[aria-current]:not(.ellipsis):focus::before {
-  top: -6px;
-  left: -6px;
-  right: -6px;
-  bottom: -6px;
+span:not(.ellipsis)::-moz-focus-inner {
+  border: 0;
+}
+span:not(.ellipsis):focus {
+  outline: 0;
+}
+span:not(.ellipsis):focus-visible {
+  outline: 2px solid #1A44EA;
+  outline-offset: 2px;
 }
 @media(min-width:760px) {
   ul {
@@ -655,19 +619,9 @@ span {
   white-space: nowrap;
   cursor: pointer;
   color: #010205;
-  outline: 0;
   border-radius: 4px;
   border-color: transparent;
-}
-span:not(.ellipsis):focus:focus-visible::before {
-  content: "";
-  position: absolute;
-  top: -4px;
-  left: -4px;
-  right: -4px;
-  bottom: -4px;
-  border: 2px solid #1A44EA;
-  border-radius: 8px;
+  outline: 0;
 }
 span[aria-current] {
   cursor: default;
@@ -680,11 +634,15 @@ span[aria-disabled] {
   pointer-events: none;
   color: #949598;
 }
-span[aria-current]:not(.ellipsis):focus::before {
-  top: -6px;
-  left: -6px;
-  right: -6px;
-  bottom: -6px;
+span:not(.ellipsis)::-moz-focus-inner {
+  border: 0;
+}
+span:not(.ellipsis):focus {
+  outline: 0;
+}
+span:not(.ellipsis):focus-visible {
+  outline: 2px solid #1A44EA;
+  outline-offset: 2px;
 }
 @media(min-width:760px) {
   ul {
@@ -761,19 +719,9 @@ span {
   white-space: nowrap;
   cursor: pointer;
   color: #010205;
-  outline: 0;
   border-radius: 4px;
   border-color: transparent;
-}
-span:not(.ellipsis):focus:focus-visible::before {
-  content: "";
-  position: absolute;
-  top: -4px;
-  left: -4px;
-  right: -4px;
-  bottom: -4px;
-  border: 2px solid #1A44EA;
-  border-radius: 8px;
+  outline: 0;
 }
 span[aria-current] {
   cursor: default;
@@ -786,11 +734,15 @@ span[aria-disabled] {
   pointer-events: none;
   color: #949598;
 }
-span[aria-current]:not(.ellipsis):focus::before {
-  top: -6px;
-  left: -6px;
-  right: -6px;
-  bottom: -6px;
+span:not(.ellipsis)::-moz-focus-inner {
+  border: 0;
+}
+span:not(.ellipsis):focus {
+  outline: 0;
+}
+span:not(.ellipsis):focus-visible {
+  outline: 2px solid #1A44EA;
+  outline-offset: 2px;
 }
 @media(min-width:760px) {
   ul {
@@ -867,19 +819,9 @@ span {
   white-space: nowrap;
   cursor: pointer;
   color: #010205;
-  outline: 0;
   border-radius: 4px;
   border-color: transparent;
-}
-span:not(.ellipsis):focus:focus-visible::before {
-  content: "";
-  position: absolute;
-  top: -4px;
-  left: -4px;
-  right: -4px;
-  bottom: -4px;
-  border: 2px solid #1A44EA;
-  border-radius: 8px;
+  outline: 0;
 }
 span[aria-current] {
   cursor: default;
@@ -892,11 +834,15 @@ span[aria-disabled] {
   pointer-events: none;
   color: #949598;
 }
-span[aria-current]:not(.ellipsis):focus::before {
-  top: -6px;
-  left: -6px;
-  right: -6px;
-  bottom: -6px;
+span:not(.ellipsis)::-moz-focus-inner {
+  border: 0;
+}
+span:not(.ellipsis):focus {
+  outline: 0;
+}
+span:not(.ellipsis):focus-visible {
+  outline: 2px solid #1A44EA;
+  outline-offset: 2px;
 }
 @media(min-width:760px) {
   ul {
@@ -973,19 +919,9 @@ span {
   white-space: nowrap;
   cursor: pointer;
   color: #010205;
-  outline: 0;
   border-radius: 4px;
   border-color: transparent;
-}
-span:not(.ellipsis):focus:focus-visible::before {
-  content: "";
-  position: absolute;
-  top: -4px;
-  left: -4px;
-  right: -4px;
-  bottom: -4px;
-  border: 2px solid #1A44EA;
-  border-radius: 8px;
+  outline: 0;
 }
 span[aria-current] {
   cursor: default;
@@ -998,11 +934,15 @@ span[aria-disabled] {
   pointer-events: none;
   color: #949598;
 }
-span[aria-current]:not(.ellipsis):focus::before {
-  top: -6px;
-  left: -6px;
-  right: -6px;
-  bottom: -6px;
+span:not(.ellipsis)::-moz-focus-inner {
+  border: 0;
+}
+span:not(.ellipsis):focus {
+  outline: 0;
+}
+span:not(.ellipsis):focus-visible {
+  outline: 2px solid #1A44EA;
+  outline-offset: 2px;
 }
 @media(min-width:760px) {
   ul {
@@ -1079,19 +1019,9 @@ span {
   white-space: nowrap;
   cursor: pointer;
   color: #010205;
-  outline: 0;
   border-radius: 4px;
   border-color: transparent;
-}
-span:not(.ellipsis):focus:focus-visible::before {
-  content: "";
-  position: absolute;
-  top: -4px;
-  left: -4px;
-  right: -4px;
-  bottom: -4px;
-  border: 2px solid #1A44EA;
-  border-radius: 8px;
+  outline: 0;
 }
 span[aria-current] {
   cursor: default;
@@ -1104,11 +1034,15 @@ span[aria-disabled] {
   pointer-events: none;
   color: #949598;
 }
-span[aria-current]:not(.ellipsis):focus::before {
-  top: -6px;
-  left: -6px;
-  right: -6px;
-  bottom: -6px;
+span:not(.ellipsis)::-moz-focus-inner {
+  border: 0;
+}
+span:not(.ellipsis):focus {
+  outline: 0;
+}
+span:not(.ellipsis):focus-visible {
+  outline: 2px solid #1A44EA;
+  outline-offset: 2px;
 }
 @media(min-width:760px) {
   ul {
@@ -1185,19 +1119,9 @@ span {
   white-space: nowrap;
   cursor: pointer;
   color: #010205;
-  outline: 0;
   border-radius: 4px;
   border-color: transparent;
-}
-span:not(.ellipsis):focus:focus-visible::before {
-  content: "";
-  position: absolute;
-  top: -4px;
-  left: -4px;
-  right: -4px;
-  bottom: -4px;
-  border: 2px solid #1A44EA;
-  border-radius: 8px;
+  outline: 0;
 }
 span[aria-current] {
   cursor: default;
@@ -1210,11 +1134,15 @@ span[aria-disabled] {
   pointer-events: none;
   color: #949598;
 }
-span[aria-current]:not(.ellipsis):focus::before {
-  top: -6px;
-  left: -6px;
-  right: -6px;
-  bottom: -6px;
+span:not(.ellipsis)::-moz-focus-inner {
+  border: 0;
+}
+span:not(.ellipsis):focus {
+  outline: 0;
+}
+span:not(.ellipsis):focus-visible {
+  outline: 2px solid #1A44EA;
+  outline-offset: 2px;
 }
 @media(min-width:760px) {
   ul {
@@ -1291,19 +1219,9 @@ span {
   white-space: nowrap;
   cursor: pointer;
   color: #010205;
-  outline: 0;
   border-radius: 4px;
   border-color: transparent;
-}
-span:not(.ellipsis):focus:focus-visible::before {
-  content: "";
-  position: absolute;
-  top: -4px;
-  left: -4px;
-  right: -4px;
-  bottom: -4px;
-  border: 2px solid #1A44EA;
-  border-radius: 8px;
+  outline: 0;
 }
 span[aria-current] {
   cursor: default;
@@ -1316,11 +1234,15 @@ span[aria-disabled] {
   pointer-events: none;
   color: #949598;
 }
-span[aria-current]:not(.ellipsis):focus::before {
-  top: -6px;
-  left: -6px;
-  right: -6px;
-  bottom: -6px;
+span:not(.ellipsis)::-moz-focus-inner {
+  border: 0;
+}
+span:not(.ellipsis):focus {
+  outline: 0;
+}
+span:not(.ellipsis):focus-visible {
+  outline: 2px solid #1A44EA;
+  outline-offset: 2px;
 }
 @media(min-width:760px) {
   ul {
@@ -1397,19 +1319,9 @@ span {
   white-space: nowrap;
   cursor: pointer;
   color: #010205;
-  outline: 0;
   border-radius: 4px;
   border-color: transparent;
-}
-span:not(.ellipsis):focus:focus-visible::before {
-  content: "";
-  position: absolute;
-  top: -4px;
-  left: -4px;
-  right: -4px;
-  bottom: -4px;
-  border: 2px solid #1A44EA;
-  border-radius: 8px;
+  outline: 0;
 }
 span[aria-current] {
   cursor: default;
@@ -1422,11 +1334,15 @@ span[aria-disabled] {
   pointer-events: none;
   color: #949598;
 }
-span[aria-current]:not(.ellipsis):focus::before {
-  top: -6px;
-  left: -6px;
-  right: -6px;
-  bottom: -6px;
+span:not(.ellipsis)::-moz-focus-inner {
+  border: 0;
+}
+span:not(.ellipsis):focus {
+  outline: 0;
+}
+span:not(.ellipsis):focus-visible {
+  outline: 2px solid #1A44EA;
+  outline-offset: 2px;
 }
 @media(min-width:760px) {
   ul {
@@ -1500,19 +1416,9 @@ span {
   white-space: nowrap;
   cursor: pointer;
   color: #010205;
-  outline: 0;
   border-radius: 4px;
   border-color: transparent;
-}
-span:not(.ellipsis):focus:focus-visible::before {
-  content: "";
-  position: absolute;
-  top: -4px;
-  left: -4px;
-  right: -4px;
-  bottom: -4px;
-  border: 2px solid #1A44EA;
-  border-radius: 8px;
+  outline: 0;
 }
 span[aria-current] {
   cursor: default;
@@ -1525,11 +1431,15 @@ span[aria-disabled] {
   pointer-events: none;
   color: #949598;
 }
-span[aria-current]:not(.ellipsis):focus::before {
-  top: -6px;
-  left: -6px;
-  right: -6px;
-  bottom: -6px;
+span:not(.ellipsis)::-moz-focus-inner {
+  border: 0;
+}
+span:not(.ellipsis):focus {
+  outline: 0;
+}
+span:not(.ellipsis):focus-visible {
+  outline: 2px solid #1A44EA;
+  outline-offset: 2px;
 }
 @media(min-width:760px) {
   ul {
@@ -1606,19 +1516,9 @@ span {
   white-space: nowrap;
   cursor: pointer;
   color: #010205;
-  outline: 0;
   border-radius: 4px;
   border-color: transparent;
-}
-span:not(.ellipsis):focus:focus-visible::before {
-  content: "";
-  position: absolute;
-  top: -4px;
-  left: -4px;
-  right: -4px;
-  bottom: -4px;
-  border: 2px solid #1A44EA;
-  border-radius: 8px;
+  outline: 0;
 }
 span[aria-current] {
   cursor: default;
@@ -1631,11 +1531,15 @@ span[aria-disabled] {
   pointer-events: none;
   color: #949598;
 }
-span[aria-current]:not(.ellipsis):focus::before {
-  top: -6px;
-  left: -6px;
-  right: -6px;
-  bottom: -6px;
+span:not(.ellipsis)::-moz-focus-inner {
+  border: 0;
+}
+span:not(.ellipsis):focus {
+  outline: 0;
+}
+span:not(.ellipsis):focus-visible {
+  outline: 2px solid #1A44EA;
+  outline-offset: 2px;
 }
 @media(min-width:760px) {
   ul {
@@ -1709,19 +1613,9 @@ span {
   white-space: nowrap;
   cursor: pointer;
   color: #010205;
-  outline: 0;
   border-radius: 4px;
   border-color: transparent;
-}
-span:not(.ellipsis):focus:focus-visible::before {
-  content: "";
-  position: absolute;
-  top: -4px;
-  left: -4px;
-  right: -4px;
-  bottom: -4px;
-  border: 2px solid #1A44EA;
-  border-radius: 8px;
+  outline: 0;
 }
 span[aria-current] {
   cursor: default;
@@ -1734,11 +1628,15 @@ span[aria-disabled] {
   pointer-events: none;
   color: #949598;
 }
-span[aria-current]:not(.ellipsis):focus::before {
-  top: -6px;
-  left: -6px;
-  right: -6px;
-  bottom: -6px;
+span:not(.ellipsis)::-moz-focus-inner {
+  border: 0;
+}
+span:not(.ellipsis):focus {
+  outline: 0;
+}
+span:not(.ellipsis):focus-visible {
+  outline: 2px solid #1A44EA;
+  outline-offset: 2px;
 }
 @media(min-width:760px) {
   ul {
@@ -1815,19 +1713,9 @@ span {
   white-space: nowrap;
   cursor: pointer;
   color: #010205;
-  outline: 0;
   border-radius: 4px;
   border-color: transparent;
-}
-span:not(.ellipsis):focus:focus-visible::before {
-  content: "";
-  position: absolute;
-  top: -4px;
-  left: -4px;
-  right: -4px;
-  bottom: -4px;
-  border: 2px solid #1A44EA;
-  border-radius: 8px;
+  outline: 0;
 }
 span[aria-current] {
   cursor: default;
@@ -1840,11 +1728,15 @@ span[aria-disabled] {
   pointer-events: none;
   color: #949598;
 }
-span[aria-current]:not(.ellipsis):focus::before {
-  top: -6px;
-  left: -6px;
-  right: -6px;
-  bottom: -6px;
+span:not(.ellipsis)::-moz-focus-inner {
+  border: 0;
+}
+span:not(.ellipsis):focus {
+  outline: 0;
+}
+span:not(.ellipsis):focus-visible {
+  outline: 2px solid #1A44EA;
+  outline-offset: 2px;
 }
 @media(min-width:760px) {
   ul {
@@ -1924,19 +1816,9 @@ span {
   white-space: nowrap;
   cursor: pointer;
   color: #010205;
-  outline: 0;
   border-radius: 4px;
   border-color: transparent;
-}
-span:not(.ellipsis):focus:focus-visible::before {
-  content: "";
-  position: absolute;
-  top: -4px;
-  left: -4px;
-  right: -4px;
-  bottom: -4px;
-  border: 2px solid #1A44EA;
-  border-radius: 8px;
+  outline: 0;
 }
 span[aria-current] {
   cursor: default;
@@ -1949,11 +1831,15 @@ span[aria-disabled] {
   pointer-events: none;
   color: #949598;
 }
-span[aria-current]:not(.ellipsis):focus::before {
-  top: -6px;
-  left: -6px;
-  right: -6px;
-  bottom: -6px;
+span:not(.ellipsis)::-moz-focus-inner {
+  border: 0;
+}
+span:not(.ellipsis):focus {
+  outline: 0;
+}
+span:not(.ellipsis):focus-visible {
+  outline: 2px solid #1A44EA;
+  outline-offset: 2px;
 }
 @media(min-width:760px) {
   ul {
@@ -2033,19 +1919,9 @@ span {
   white-space: nowrap;
   cursor: pointer;
   color: #010205;
-  outline: 0;
   border-radius: 4px;
   border-color: transparent;
-}
-span:not(.ellipsis):focus:focus-visible::before {
-  content: "";
-  position: absolute;
-  top: -4px;
-  left: -4px;
-  right: -4px;
-  bottom: -4px;
-  border: 2px solid #1A44EA;
-  border-radius: 8px;
+  outline: 0;
 }
 span[aria-current] {
   cursor: default;
@@ -2058,11 +1934,15 @@ span[aria-disabled] {
   pointer-events: none;
   color: #949598;
 }
-span[aria-current]:not(.ellipsis):focus::before {
-  top: -6px;
-  left: -6px;
-  right: -6px;
-  bottom: -6px;
+span:not(.ellipsis)::-moz-focus-inner {
+  border: 0;
+}
+span:not(.ellipsis):focus {
+  outline: 0;
+}
+span:not(.ellipsis):focus-visible {
+  outline: 2px solid #1A44EA;
+  outline-offset: 2px;
 }
 @media(min-width:760px) {
   ul {

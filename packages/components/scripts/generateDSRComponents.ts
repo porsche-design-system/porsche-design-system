@@ -1,6 +1,6 @@
 import * as path from 'path';
 import * as fs from 'fs';
-import * as globby from 'globby';
+import { globbySync } from 'globby';
 import { paramCase, pascalCase } from 'change-case';
 import { breakpoint } from '@porsche-design-system/utilities-v2';
 import type { TagName } from '@porsche-design-system/shared';
@@ -15,7 +15,7 @@ const generateDSRComponents = (): void => {
   const relativeDestinationDirectory = '../components-react/projects/react-ssr-wrapper/src/lib/dsr-components';
   const destinationDirectory = path.resolve(rootDirectory, relativeDestinationDirectory);
 
-  const componentPaths = globby.sync(`${componentsDirectory}/**/*.tsx`).sort();
+  const componentPaths = globbySync(`${componentsDirectory}/**/*.tsx`).sort();
 
   const stylesBundleImportPath = '@porsche-design-system/components/dist/styles';
   const utilsBundleImportPath = '@porsche-design-system/components/dist/utils';
@@ -77,7 +77,10 @@ const generateDSRComponents = (): void => {
         .replace(/import[\s\S]*?from '(.*)';\n/g, (m, group) =>
           group.endsWith('utils')
             ? m.replace(group, utilsBundleImportPath)
-            : group.endsWith('state-message') || group.endsWith('required') || group.endsWith('label')
+            : group.endsWith('state-message') ||
+                group.endsWith('loading-message') ||
+                group.endsWith('required') ||
+                group.endsWith('label')
               ? m.replace(group, './' + group.split('/').pop())
               : ''
         )
@@ -96,7 +99,8 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
         .replace(/(public state)\?(: any)/, '$1$2') // make state required to fix linting issue with React
         .replace(/\bbreakpoint\.l\b/, `'${breakpoint.l}'`) // inline breakpoint value from utilities-v2 for marque
         .replace(/{(isRequiredAndParentNotRequired\(.*)}/, '{/* $1 */}') // comment out isRequiredAndParentNotRequired for now
-        .replace(/{(!isParentFieldsetRequired\(.*)}/, '{/* $1 */}'); // comment out isParentFieldsetRequired for now
+        .replace(/{(!isParentFieldsetRequired\(.*)}/, '{/* $1 */}') // comment out isParentFieldsetRequired for now
+        .replace(/(<\/?)Fragment(>)/g, '$1$2'); // replace <Fragment> with <> or </Fragment> with </>
 
       if (hasSlot && !newFileContent.includes('FunctionalComponent')) {
         newFileContent = newFileContent.replace(
@@ -192,7 +196,6 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
           .replace(/FunctionalComponent/, 'FC')
           .replace(/: FormState/g, ': any')
           .replace(/: Theme/g, ': any')
-          .replace(/(<\/?)Fragment(>)/g, '$1$2') // replace <Fragment> with <> or </Fragment> with </>
           .replace(new RegExp(`\n.*${stylesBundleImportPath}.*`), '')
           .replace(/&& !isParentFieldsetRequired\(.*?\)/, '/* $& */') // let's disable it for now
           .replace(/\|\|\s.*\(.*isRequiredAndParentNotRequired\(.*?\)\)/, '/* $& */') // let's disable it for now
@@ -274,7 +277,9 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
         .replace(/(const (?:iconProps|btnProps|linkProps|buttonProps)) =/, '$1: any =') // workaround typing issue
         .replace(/(any)Deprecated/g, '$1') // workaround typings of deprecation maps
         .replace(/Exclude<any, any>/g, 'any') // workaround typings of deprecation maps
-        .replace(/ onSlotchange={this\.props\..+}/, ''); // doesn't exist in React JSX and makes no sense
+        .replace(/ onSlotchange={this\.props\..+}/, '') // doesn't exist in React JSX and makes no sense
+        .replace(/\s+private controllerHost =[\S\s]+controllerHost[\S\s]+?;/, '') // components with loading prop and LoadingController
+        .replace(/this\.props\.loadingCtrl\.initialLoading/, 'false'); // components with loading prop and LoadingController
 
       // component based tweaks
       if (tagName === 'p-carousel') {

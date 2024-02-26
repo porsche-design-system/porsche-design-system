@@ -4,13 +4,11 @@ import type { BreakpointCustomizable, LinkButtonIconName, LinkVariant, Theme } f
 import {
   addImportantToEachRule,
   addImportantToRule,
+  getFocusJssStyle,
   getHighContrastColors,
-  getInsetJssStyle,
   getResetInitialStylesForSlottedAnchor,
-  getThemedColors,
-  prefersColorSchemeDarkMediaQuery,
 } from '../../styles';
-import { borderRadiusMedium, borderWidthBase } from '@porsche-design-system/utilities-v2';
+import { borderRadiusSmall } from '@porsche-design-system/utilities-v2';
 
 export const getComponentCss = (
   icon: LinkButtonIconName,
@@ -20,8 +18,6 @@ export const getComponentCss = (
   hasSlottedAnchor: boolean,
   theme: Theme
 ): string => {
-  const { focusColor } = getThemedColors(theme);
-  const { focusColor: focusColorDark } = getThemedColors('dark');
   const { linkColor } = getHighContrastColors();
   const isPrimary = variant === 'primary';
 
@@ -59,22 +55,10 @@ export const getComponentCss = (
             '&(a)::before': {
               content: '""',
               position: 'fixed',
-              borderRadius: borderRadiusMedium,
-              ...getInsetJssStyle(-6),
+              inset: '-2px',
+              borderRadius: borderRadiusSmall,
             },
-            // TODO: combine link-social-styles with link-button-styles and tabs-bar-styles
-            '&(a::-moz-focus-inner)': {
-              border: 0,
-            },
-            '&(a:focus)::before': {
-              border: `${borderWidthBase} solid ${focusColor}`,
-              ...prefersColorSchemeDarkMediaQuery(theme, {
-                borderColor: focusColorDark,
-              }),
-            },
-            '&(a:focus:not(:focus-visible))::before': {
-              border: 0,
-            },
+            ...getFocusJssStyle(theme, { slotted: 'a', pseudo: true }),
           },
         }),
       }

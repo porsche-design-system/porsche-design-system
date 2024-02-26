@@ -52,6 +52,7 @@ import { FlyoutComponent } from './generated/flyout.component';
 import { FlyoutBasicComponent } from './generated/flyout-basic.component';
 import { FlyoutFooterComponent } from './generated/flyout-footer.component';
 import { FlyoutFooterScrollableContentComponent } from './generated/flyout-footer-scrollable-content.component';
+import { FlyoutGridComponent } from './generated/flyout-grid.component';
 import { FlyoutHeaderComponent } from './generated/flyout-header.component';
 import { FlyoutHeaderFooterComponent } from './generated/flyout-header-footer.component';
 import { FlyoutHeaderFooterScrollableContentComponent } from './generated/flyout-header-footer-scrollable-content.component';
@@ -156,6 +157,7 @@ export const generatedPages = [
   FlyoutBasicComponent,
   FlyoutFooterComponent,
   FlyoutFooterScrollableContentComponent,
+  FlyoutGridComponent,
   FlyoutHeaderComponent,
   FlyoutHeaderFooterComponent,
   FlyoutHeaderFooterScrollableContentComponent,
@@ -335,6 +337,11 @@ export const generatedRoutes: ExtendedRoute[] = [
     name: 'Flyout Footer Scrollable Content',
     path: 'flyout-footer-scrollable-content',
     component: FlyoutFooterScrollableContentComponent,
+  },
+  {
+    name: 'Flyout Grid',
+    path: 'flyout-grid',
+    component: FlyoutGridComponent,
   },
   {
     name: 'Flyout Header',

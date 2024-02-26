@@ -3,10 +3,7 @@
 exports[`getButtonStyles() should return correct css for direction: down, isOpen: false, state: error and theme: light 1`] = `
 "button {
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  inset: 0;
   width: 100%;
   height: 100%;
   margin: 0;
@@ -36,10 +33,7 @@ button:disabled {
 exports[`getButtonStyles() should return correct css for direction: down, isOpen: false, state: none and theme: light 1`] = `
 "button {
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  inset: 0;
   width: 100%;
   height: 100%;
   margin: 0;
@@ -69,10 +63,7 @@ button:disabled {
 exports[`getButtonStyles() should return correct css for direction: down, isOpen: false, state: success and theme: light 1`] = `
 "button {
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  inset: 0;
   width: 100%;
   height: 100%;
   margin: 0;
@@ -102,10 +93,7 @@ button:disabled {
 exports[`getButtonStyles() should return correct css for direction: down, isOpen: true, state: error and theme: light 1`] = `
 "button {
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  inset: 0;
   width: 100%;
   height: 100%;
   margin: 0;
@@ -137,10 +125,7 @@ button:disabled {
 exports[`getButtonStyles() should return correct css for direction: down, isOpen: true, state: none and theme: light 1`] = `
 "button {
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  inset: 0;
   width: 100%;
   height: 100%;
   margin: 0;
@@ -172,10 +157,7 @@ button:disabled {
 exports[`getButtonStyles() should return correct css for direction: down, isOpen: true, state: success and theme: light 1`] = `
 "button {
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  inset: 0;
   width: 100%;
   height: 100%;
   margin: 0;
@@ -207,10 +189,7 @@ button:disabled {
 exports[`getButtonStyles() should return correct css for direction: up, isOpen: false, state: error and theme: dark 1`] = `
 "button {
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  inset: 0;
   width: 100%;
   height: 100%;
   margin: 0;
@@ -240,10 +219,7 @@ button:disabled {
 exports[`getButtonStyles() should return correct css for direction: up, isOpen: false, state: none and theme: dark 1`] = `
 "button {
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  inset: 0;
   width: 100%;
   height: 100%;
   margin: 0;
@@ -273,10 +249,7 @@ button:disabled {
 exports[`getButtonStyles() should return correct css for direction: up, isOpen: false, state: success and theme: dark 1`] = `
 "button {
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  inset: 0;
   width: 100%;
   height: 100%;
   margin: 0;
@@ -306,10 +279,7 @@ button:disabled {
 exports[`getButtonStyles() should return correct css for direction: up, isOpen: true, state: error and theme: dark 1`] = `
 "button {
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  inset: 0;
   width: 100%;
   height: 100%;
   margin: 0;
@@ -341,10 +311,7 @@ button:disabled {
 exports[`getButtonStyles() should return correct css for direction: up, isOpen: true, state: none and theme: dark 1`] = `
 "button {
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  inset: 0;
   width: 100%;
   height: 100%;
   margin: 0;
@@ -376,10 +343,7 @@ button:disabled {
 exports[`getButtonStyles() should return correct css for direction: up, isOpen: true, state: success and theme: dark 1`] = `
 "button {
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  inset: 0;
   width: 100%;
   height: 100%;
   margin: 0;
@@ -415,10 +379,7 @@ exports[`getComponentCss() should return correct css for direction: down, isOpen
 }
 button {
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  inset: 0;
   width: 100%;
   height: 100%;
   margin: 0;
@@ -456,10 +417,7 @@ exports[`getComponentCss() should return correct css for direction: down, isOpen
 input {
   display: block;
   position: absolute;
-  top: 2px;
-  left: 2px;
-  right: 2px;
-  bottom: 2px;
+  inset: 2px;
   width: calc(100% - 4px);
   height: calc(100% - 4px);
   z-index: 1;
@@ -498,10 +456,7 @@ input:not(:disabled):focus {
 }
 input+span {
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  inset: 0;
   transition: border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   pointer-events: all;
   cursor: pointer;
@@ -532,10 +487,7 @@ exports[`getComponentCss() should return correct css for direction: down, isOpen
 }
 button {
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  inset: 0;
   width: 100%;
   height: 100%;
   margin: 0;
@@ -573,10 +525,7 @@ exports[`getComponentCss() should return correct css for direction: down, isOpen
 input {
   display: block;
   position: absolute;
-  top: 2px;
-  left: 2px;
-  right: 2px;
-  bottom: 2px;
+  inset: 2px;
   width: calc(100% - 4px);
   height: calc(100% - 4px);
   z-index: 1;
@@ -615,10 +564,7 @@ input:not(:disabled):focus {
 }
 input+span {
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  inset: 0;
   transition: border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   pointer-events: all;
   cursor: not-allowed;
@@ -649,10 +595,7 @@ exports[`getComponentCss() should return correct css for direction: down, isOpen
 }
 button {
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  inset: 0;
   width: 100%;
   height: 100%;
   margin: 0;
@@ -784,10 +727,7 @@ exports[`getComponentCss() should return correct css for direction: down, isOpen
 }
 button {
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  inset: 0;
   width: 100%;
   height: 100%;
   margin: 0;
@@ -935,10 +875,7 @@ exports[`getComponentCss() should return correct css for direction: down, isOpen
 input {
   display: block;
   position: absolute;
-  top: 2px;
-  left: 2px;
-  right: 2px;
-  bottom: 2px;
+  inset: 2px;
   width: calc(100% - 4px);
   height: calc(100% - 4px);
   z-index: 1;
@@ -977,10 +914,7 @@ input:not(:disabled):focus {
 }
 input+span {
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  inset: 0;
   transition: border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   pointer-events: all;
   cursor: pointer;
@@ -1106,10 +1040,7 @@ exports[`getComponentCss() should return correct css for direction: down, isOpen
 }
 button {
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  inset: 0;
   width: 100%;
   height: 100%;
   margin: 0;
@@ -1242,10 +1173,7 @@ exports[`getComponentCss() should return correct css for direction: down, isOpen
 input {
   display: block;
   position: absolute;
-  top: 2px;
-  left: 2px;
-  right: 2px;
-  bottom: 2px;
+  inset: 2px;
   width: calc(100% - 4px);
   height: calc(100% - 4px);
   z-index: 1;
@@ -1284,10 +1212,7 @@ input:not(:disabled):focus {
 }
 input+span {
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  inset: 0;
   transition: border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   pointer-events: all;
   cursor: not-allowed;
@@ -1413,10 +1338,7 @@ exports[`getComponentCss() should return correct css for direction: up, isOpen: 
 }
 button {
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  inset: 0;
   width: 100%;
   height: 100%;
   margin: 0;
@@ -1454,10 +1376,7 @@ exports[`getComponentCss() should return correct css for direction: up, isOpen: 
 input {
   display: block;
   position: absolute;
-  top: 2px;
-  left: 2px;
-  right: 2px;
-  bottom: 2px;
+  inset: 2px;
   width: calc(100% - 4px);
   height: calc(100% - 4px);
   z-index: 1;
@@ -1496,10 +1415,7 @@ input:not(:disabled):focus {
 }
 input+span {
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  inset: 0;
   transition: border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   pointer-events: all;
   cursor: pointer;
@@ -1530,10 +1446,7 @@ exports[`getComponentCss() should return correct css for direction: up, isOpen: 
 }
 button {
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  inset: 0;
   width: 100%;
   height: 100%;
   margin: 0;
@@ -1571,10 +1484,7 @@ exports[`getComponentCss() should return correct css for direction: up, isOpen: 
 input {
   display: block;
   position: absolute;
-  top: 2px;
-  left: 2px;
-  right: 2px;
-  bottom: 2px;
+  inset: 2px;
   width: calc(100% - 4px);
   height: calc(100% - 4px);
   z-index: 1;
@@ -1613,10 +1523,7 @@ input:not(:disabled):focus {
 }
 input+span {
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  inset: 0;
   transition: border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   pointer-events: all;
   cursor: not-allowed;
@@ -1647,10 +1554,7 @@ exports[`getComponentCss() should return correct css for direction: up, isOpen: 
 }
 button {
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  inset: 0;
   width: 100%;
   height: 100%;
   margin: 0;
@@ -1782,10 +1686,7 @@ exports[`getComponentCss() should return correct css for direction: up, isOpen: 
 }
 button {
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  inset: 0;
   width: 100%;
   height: 100%;
   margin: 0;
@@ -1933,10 +1834,7 @@ exports[`getComponentCss() should return correct css for direction: up, isOpen: 
 input {
   display: block;
   position: absolute;
-  top: 2px;
-  left: 2px;
-  right: 2px;
-  bottom: 2px;
+  inset: 2px;
   width: calc(100% - 4px);
   height: calc(100% - 4px);
   z-index: 1;
@@ -1975,10 +1873,7 @@ input:not(:disabled):focus {
 }
 input+span {
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  inset: 0;
   transition: border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   pointer-events: all;
   cursor: pointer;
@@ -2104,10 +1999,7 @@ exports[`getComponentCss() should return correct css for direction: up, isOpen: 
 }
 button {
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  inset: 0;
   width: 100%;
   height: 100%;
   margin: 0;
@@ -2240,10 +2132,7 @@ exports[`getComponentCss() should return correct css for direction: up, isOpen: 
 input {
   display: block;
   position: absolute;
-  top: 2px;
-  left: 2px;
-  right: 2px;
-  bottom: 2px;
+  inset: 2px;
   width: calc(100% - 4px);
   height: calc(100% - 4px);
   z-index: 1;
@@ -2282,10 +2171,7 @@ input:not(:disabled):focus {
 }
 input+span {
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  inset: 0;
   transition: border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   pointer-events: all;
   cursor: not-allowed;
@@ -2408,10 +2294,7 @@ exports[`getFilterStyles() should return correct css for direction: down, isOpen
 "input {
   display: block;
   position: absolute;
-  top: 2px;
-  left: 2px;
-  right: 2px;
-  bottom: 2px;
+  inset: 2px;
   width: calc(100% - 4px);
   height: calc(100% - 4px);
   z-index: 1;
@@ -2450,10 +2333,7 @@ input:not(:disabled):focus {
 }
 input+span {
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  inset: 0;
   transition: border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   pointer-events: all;
   cursor: pointer;
@@ -2478,10 +2358,7 @@ exports[`getFilterStyles() should return correct css for direction: down, isOpen
 "input {
   display: block;
   position: absolute;
-  top: 2px;
-  left: 2px;
-  right: 2px;
-  bottom: 2px;
+  inset: 2px;
   width: calc(100% - 4px);
   height: calc(100% - 4px);
   z-index: 1;
@@ -2520,10 +2397,7 @@ input:not(:disabled):focus {
 }
 input+span {
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  inset: 0;
   transition: border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   pointer-events: all;
   cursor: not-allowed;
@@ -2548,10 +2422,7 @@ exports[`getFilterStyles() should return correct css for direction: down, isOpen
 "input {
   display: block;
   position: absolute;
-  top: 2px;
-  left: 2px;
-  right: 2px;
-  bottom: 2px;
+  inset: 2px;
   width: calc(100% - 4px);
   height: calc(100% - 4px);
   z-index: 1;
@@ -2590,10 +2461,7 @@ input:not(:disabled):focus {
 }
 input+span {
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  inset: 0;
   transition: border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   pointer-events: all;
   cursor: pointer;
@@ -2618,10 +2486,7 @@ exports[`getFilterStyles() should return correct css for direction: down, isOpen
 "input {
   display: block;
   position: absolute;
-  top: 2px;
-  left: 2px;
-  right: 2px;
-  bottom: 2px;
+  inset: 2px;
   width: calc(100% - 4px);
   height: calc(100% - 4px);
   z-index: 1;
@@ -2660,10 +2525,7 @@ input:not(:disabled):focus {
 }
 input+span {
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  inset: 0;
   transition: border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   pointer-events: all;
   cursor: not-allowed;
@@ -2688,10 +2550,7 @@ exports[`getFilterStyles() should return correct css for direction: down, isOpen
 "input {
   display: block;
   position: absolute;
-  top: 2px;
-  left: 2px;
-  right: 2px;
-  bottom: 2px;
+  inset: 2px;
   width: calc(100% - 4px);
   height: calc(100% - 4px);
   z-index: 1;
@@ -2730,10 +2589,7 @@ input:not(:disabled):focus {
 }
 input+span {
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  inset: 0;
   transition: border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   pointer-events: all;
   cursor: pointer;
@@ -2758,10 +2614,7 @@ exports[`getFilterStyles() should return correct css for direction: down, isOpen
 "input {
   display: block;
   position: absolute;
-  top: 2px;
-  left: 2px;
-  right: 2px;
-  bottom: 2px;
+  inset: 2px;
   width: calc(100% - 4px);
   height: calc(100% - 4px);
   z-index: 1;
@@ -2800,10 +2653,7 @@ input:not(:disabled):focus {
 }
 input+span {
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  inset: 0;
   transition: border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   pointer-events: all;
   cursor: not-allowed;
@@ -2828,10 +2678,7 @@ exports[`getFilterStyles() should return correct css for direction: down, isOpen
 "input {
   display: block;
   position: absolute;
-  top: 2px;
-  left: 2px;
-  right: 2px;
-  bottom: 2px;
+  inset: 2px;
   width: calc(100% - 4px);
   height: calc(100% - 4px);
   z-index: 1;
@@ -2870,10 +2717,7 @@ input:not(:disabled):focus {
 }
 input+span {
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  inset: 0;
   transition: border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   pointer-events: all;
   cursor: pointer;
@@ -2900,10 +2744,7 @@ exports[`getFilterStyles() should return correct css for direction: down, isOpen
 "input {
   display: block;
   position: absolute;
-  top: 2px;
-  left: 2px;
-  right: 2px;
-  bottom: 2px;
+  inset: 2px;
   width: calc(100% - 4px);
   height: calc(100% - 4px);
   z-index: 1;
@@ -2942,10 +2783,7 @@ input:not(:disabled):focus {
 }
 input+span {
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  inset: 0;
   transition: border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   pointer-events: all;
   cursor: not-allowed;
@@ -2972,10 +2810,7 @@ exports[`getFilterStyles() should return correct css for direction: down, isOpen
 "input {
   display: block;
   position: absolute;
-  top: 2px;
-  left: 2px;
-  right: 2px;
-  bottom: 2px;
+  inset: 2px;
   width: calc(100% - 4px);
   height: calc(100% - 4px);
   z-index: 1;
@@ -3014,10 +2849,7 @@ input:not(:disabled):focus {
 }
 input+span {
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  inset: 0;
   transition: border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   pointer-events: all;
   cursor: pointer;
@@ -3044,10 +2876,7 @@ exports[`getFilterStyles() should return correct css for direction: down, isOpen
 "input {
   display: block;
   position: absolute;
-  top: 2px;
-  left: 2px;
-  right: 2px;
-  bottom: 2px;
+  inset: 2px;
   width: calc(100% - 4px);
   height: calc(100% - 4px);
   z-index: 1;
@@ -3086,10 +2915,7 @@ input:not(:disabled):focus {
 }
 input+span {
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  inset: 0;
   transition: border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   pointer-events: all;
   cursor: not-allowed;
@@ -3116,10 +2942,7 @@ exports[`getFilterStyles() should return correct css for direction: down, isOpen
 "input {
   display: block;
   position: absolute;
-  top: 2px;
-  left: 2px;
-  right: 2px;
-  bottom: 2px;
+  inset: 2px;
   width: calc(100% - 4px);
   height: calc(100% - 4px);
   z-index: 1;
@@ -3158,10 +2981,7 @@ input:not(:disabled):focus {
 }
 input+span {
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  inset: 0;
   transition: border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   pointer-events: all;
   cursor: pointer;
@@ -3188,10 +3008,7 @@ exports[`getFilterStyles() should return correct css for direction: down, isOpen
 "input {
   display: block;
   position: absolute;
-  top: 2px;
-  left: 2px;
-  right: 2px;
-  bottom: 2px;
+  inset: 2px;
   width: calc(100% - 4px);
   height: calc(100% - 4px);
   z-index: 1;
@@ -3230,10 +3047,7 @@ input:not(:disabled):focus {
 }
 input+span {
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  inset: 0;
   transition: border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   pointer-events: all;
   cursor: not-allowed;
@@ -3260,10 +3074,7 @@ exports[`getFilterStyles() should return correct css for direction: up, isOpen: 
 "input {
   display: block;
   position: absolute;
-  top: 2px;
-  left: 2px;
-  right: 2px;
-  bottom: 2px;
+  inset: 2px;
   width: calc(100% - 4px);
   height: calc(100% - 4px);
   z-index: 1;
@@ -3302,10 +3113,7 @@ input:not(:disabled):focus {
 }
 input+span {
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  inset: 0;
   transition: border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   pointer-events: all;
   cursor: pointer;
@@ -3330,10 +3138,7 @@ exports[`getFilterStyles() should return correct css for direction: up, isOpen: 
 "input {
   display: block;
   position: absolute;
-  top: 2px;
-  left: 2px;
-  right: 2px;
-  bottom: 2px;
+  inset: 2px;
   width: calc(100% - 4px);
   height: calc(100% - 4px);
   z-index: 1;
@@ -3372,10 +3177,7 @@ input:not(:disabled):focus {
 }
 input+span {
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  inset: 0;
   transition: border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   pointer-events: all;
   cursor: not-allowed;
@@ -3400,10 +3202,7 @@ exports[`getFilterStyles() should return correct css for direction: up, isOpen: 
 "input {
   display: block;
   position: absolute;
-  top: 2px;
-  left: 2px;
-  right: 2px;
-  bottom: 2px;
+  inset: 2px;
   width: calc(100% - 4px);
   height: calc(100% - 4px);
   z-index: 1;
@@ -3442,10 +3241,7 @@ input:not(:disabled):focus {
 }
 input+span {
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  inset: 0;
   transition: border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   pointer-events: all;
   cursor: pointer;
@@ -3470,10 +3266,7 @@ exports[`getFilterStyles() should return correct css for direction: up, isOpen: 
 "input {
   display: block;
   position: absolute;
-  top: 2px;
-  left: 2px;
-  right: 2px;
-  bottom: 2px;
+  inset: 2px;
   width: calc(100% - 4px);
   height: calc(100% - 4px);
   z-index: 1;
@@ -3512,10 +3305,7 @@ input:not(:disabled):focus {
 }
 input+span {
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  inset: 0;
   transition: border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   pointer-events: all;
   cursor: not-allowed;
@@ -3540,10 +3330,7 @@ exports[`getFilterStyles() should return correct css for direction: up, isOpen: 
 "input {
   display: block;
   position: absolute;
-  top: 2px;
-  left: 2px;
-  right: 2px;
-  bottom: 2px;
+  inset: 2px;
   width: calc(100% - 4px);
   height: calc(100% - 4px);
   z-index: 1;
@@ -3582,10 +3369,7 @@ input:not(:disabled):focus {
 }
 input+span {
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  inset: 0;
   transition: border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   pointer-events: all;
   cursor: pointer;
@@ -3610,10 +3394,7 @@ exports[`getFilterStyles() should return correct css for direction: up, isOpen: 
 "input {
   display: block;
   position: absolute;
-  top: 2px;
-  left: 2px;
-  right: 2px;
-  bottom: 2px;
+  inset: 2px;
   width: calc(100% - 4px);
   height: calc(100% - 4px);
   z-index: 1;
@@ -3652,10 +3433,7 @@ input:not(:disabled):focus {
 }
 input+span {
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  inset: 0;
   transition: border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   pointer-events: all;
   cursor: not-allowed;
@@ -3680,10 +3458,7 @@ exports[`getFilterStyles() should return correct css for direction: up, isOpen: 
 "input {
   display: block;
   position: absolute;
-  top: 2px;
-  left: 2px;
-  right: 2px;
-  bottom: 2px;
+  inset: 2px;
   width: calc(100% - 4px);
   height: calc(100% - 4px);
   z-index: 1;
@@ -3722,10 +3497,7 @@ input:not(:disabled):focus {
 }
 input+span {
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  inset: 0;
   transition: border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   pointer-events: all;
   cursor: pointer;
@@ -3752,10 +3524,7 @@ exports[`getFilterStyles() should return correct css for direction: up, isOpen: 
 "input {
   display: block;
   position: absolute;
-  top: 2px;
-  left: 2px;
-  right: 2px;
-  bottom: 2px;
+  inset: 2px;
   width: calc(100% - 4px);
   height: calc(100% - 4px);
   z-index: 1;
@@ -3794,10 +3563,7 @@ input:not(:disabled):focus {
 }
 input+span {
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  inset: 0;
   transition: border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   pointer-events: all;
   cursor: not-allowed;
@@ -3824,10 +3590,7 @@ exports[`getFilterStyles() should return correct css for direction: up, isOpen: 
 "input {
   display: block;
   position: absolute;
-  top: 2px;
-  left: 2px;
-  right: 2px;
-  bottom: 2px;
+  inset: 2px;
   width: calc(100% - 4px);
   height: calc(100% - 4px);
   z-index: 1;
@@ -3866,10 +3629,7 @@ input:not(:disabled):focus {
 }
 input+span {
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  inset: 0;
   transition: border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   pointer-events: all;
   cursor: pointer;
@@ -3896,10 +3656,7 @@ exports[`getFilterStyles() should return correct css for direction: up, isOpen: 
 "input {
   display: block;
   position: absolute;
-  top: 2px;
-  left: 2px;
-  right: 2px;
-  bottom: 2px;
+  inset: 2px;
   width: calc(100% - 4px);
   height: calc(100% - 4px);
   z-index: 1;
@@ -3938,10 +3695,7 @@ input:not(:disabled):focus {
 }
 input+span {
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  inset: 0;
   transition: border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   pointer-events: all;
   cursor: not-allowed;
@@ -3968,10 +3722,7 @@ exports[`getFilterStyles() should return correct css for direction: up, isOpen: 
 "input {
   display: block;
   position: absolute;
-  top: 2px;
-  left: 2px;
-  right: 2px;
-  bottom: 2px;
+  inset: 2px;
   width: calc(100% - 4px);
   height: calc(100% - 4px);
   z-index: 1;
@@ -4010,10 +3761,7 @@ input:not(:disabled):focus {
 }
 input+span {
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  inset: 0;
   transition: border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   pointer-events: all;
   cursor: pointer;
@@ -4040,10 +3788,7 @@ exports[`getFilterStyles() should return correct css for direction: up, isOpen: 
 "input {
   display: block;
   position: absolute;
-  top: 2px;
-  left: 2px;
-  right: 2px;
-  bottom: 2px;
+  inset: 2px;
   width: calc(100% - 4px);
   height: calc(100% - 4px);
   z-index: 1;
@@ -4082,10 +3827,7 @@ input:not(:disabled):focus {
 }
 input+span {
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  inset: 0;
   transition: border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   pointer-events: all;
   cursor: not-allowed;

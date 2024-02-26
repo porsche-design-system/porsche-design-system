@@ -12,9 +12,6 @@ exports[`accessibility should expose correct initial accessibility tree of stepp
                 {
                   "children": [
                     {
-                      "role": "none",
-                    },
-                    {
                       "children": [
                         {
                           "children": [

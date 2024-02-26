@@ -2,15 +2,12 @@ import type { JssStyle } from 'jss';
 import {
   addImportantToEachRule,
   addImportantToRule,
-  focusPseudoJssStyle,
   getBackdropJssStyle,
-  getBackfaceVisibilityJssStyle,
+  getFocusJssStyle,
   getHiddenTextJssStyle,
-  getInsetJssStyle,
   getTransition,
   type MotionDurationKey,
   motionEasingMap,
-  pxToRemWithUnit,
 } from './common-styles';
 import type { PropertiesHyphen } from 'csstype';
 
@@ -64,19 +61,6 @@ describe('getTransition()', () => {
   });
 });
 
-describe('pxToRemWithUnit()', () => {
-  it.each([
-    [undefined, NaN + 'rem'],
-    [null, '0rem'],
-    [0, '0rem'],
-    [16, '1rem'],
-    [24, '1.5rem'],
-    [32, '2rem'],
-  ])('should for parameter %s return %s', (input: number, result: string) => {
-    expect(pxToRemWithUnit(input)).toBe(result);
-  });
-});
-
 describe('addImportantToRule()', () => {
   it.each([
     [0, '0 !important'],
@@ -113,21 +97,6 @@ describe('addImportantToEachRule()', () => {
   });
 });
 
-describe('getInsetJssStyle()', () => {
-  it.each<Parameters<typeof getInsetJssStyle>>([[undefined], ['auto'], [2], [-1]])(
-    'should return correct JssStyle for parameter: %o',
-    (value) => {
-      expect(getInsetJssStyle(value)).toMatchSnapshot();
-    }
-  );
-});
-
-describe('focusPseudoJssStyle', () => {
-  it('should return correct jss style', () => {
-    expect(focusPseudoJssStyle).toMatchSnapshot();
-  });
-});
-
 describe('getHiddenTextStyles()', () => {
   it.each<[boolean, JssStyle]>([
     [true, undefined],
@@ -139,12 +108,6 @@ describe('getHiddenTextStyles()', () => {
   });
 });
 
-describe('getBackfaceVisibilityJssStyle()', () => {
-  it('should return correct styles', () => {
-    expect(getBackfaceVisibilityJssStyle()).toMatchSnapshot();
-  });
-});
-
 describe('getBackdropJssStyle()', () => {
   it.each<Parameters<typeof getBackdropJssStyle>>([
     [true, 9999, 'light', 'short'],
@@ -153,5 +116,30 @@ describe('getBackdropJssStyle()', () => {
     [false, 9999, 'dark', 'veryLong'],
   ])('should return correct JssStyle for isVisible: %s, zIndex: %s, theme: %s and duration: %s', (...args) => {
     expect(getBackdropJssStyle(...args)).toMatchSnapshot();
+  });
+});
+
+describe('getFocusJssStyle()', () => {
+  it.each<Parameters<typeof getFocusJssStyle>>([
+    ['light'],
+    ['dark'],
+    ['auto'],
+    ['light', { offset: '911px' }],
+    ['dark', { offset: '911px' }],
+    ['auto', { offset: '911px' }],
+    ['light', { slotted: true }],
+    ['dark', { slotted: true }],
+    ['auto', { slotted: true }],
+    ['light', { slotted: '.some-slotted-selector' }],
+    ['dark', { slotted: '.some-slotted-selector' }],
+    ['auto', { slotted: '.some-slotted-selector' }],
+    ['light', { slotted: true, pseudo: true }],
+    ['dark', { slotted: true, pseudo: true }],
+    ['auto', { slotted: true, pseudo: true }],
+    ['light', { slotted: '.some-slotted-selector', pseudo: true }],
+    ['dark', { slotted: '.some-slotted-selector', pseudo: true }],
+    ['auto', { slotted: '.some-slotted-selector', pseudo: true }],
+  ])('should return correct JssStyle for theme: %s and options: %o', (...args) => {
+    expect(getFocusJssStyle(...args)).toMatchSnapshot();
   });
 });

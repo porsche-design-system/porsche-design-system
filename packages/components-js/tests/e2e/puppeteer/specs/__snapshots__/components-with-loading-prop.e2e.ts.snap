@@ -1,0 +1,50 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`p-button accessibility should expose correct initial accessibility tree properties 1`] = `
+{
+  "name": "",
+  "role": "status",
+}
+`;
+
+exports[`p-button-pure accessibility should expose correct initial accessibility tree properties 1`] = `
+{
+  "name": "",
+  "role": "status",
+}
+`;
+
+exports[`p-button-tile accessibility should expose correct initial accessibility tree properties 1`] = `
+{
+  "name": "",
+  "role": "status",
+}
+`;
+
+exports[`p-checkbox-wrapper accessibility should expose correct initial accessibility tree properties 1`] = `
+{
+  "name": "",
+  "role": "status",
+}
+`;
+
+exports[`p-pin-code accessibility should expose correct initial accessibility tree properties 1`] = `
+{
+  "name": "",
+  "role": "status",
+}
+`;
+
+exports[`p-radio-button-wrapper accessibility should expose correct initial accessibility tree properties 1`] = `
+{
+  "name": "",
+  "role": "status",
+}
+`;
+
+exports[`p-switch accessibility should expose correct initial accessibility tree properties 1`] = `
+{
+  "name": "",
+  "role": "status",
+}
+`;

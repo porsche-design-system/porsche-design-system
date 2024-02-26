@@ -6,13 +6,13 @@ import {
   waitForComponentsReady,
 } from '../helpers';
 import type { Page } from 'puppeteer';
-import { INTERNAL_TAG_NAMES, TAG_NAMES } from '@porsche-design-system/shared';
+import { INTERNAL_TAG_NAMES, TAG_NAMES, type TagName } from '@porsche-design-system/shared';
 
 let page: Page;
 beforeEach(async () => (page = await browser.newPage()));
 afterEach(async () => await page.close());
 
-it.each(TAG_NAMES.filter((x) => !INTERNAL_TAG_NAMES.includes(x)))(
+it.each<TagName>(TAG_NAMES.filter((x) => !INTERNAL_TAG_NAMES.includes(x)))(
   'should have no basic DOM regression for %s',
   async (tagName) => {
     await goto(page, ''); // start page
@@ -22,6 +22,7 @@ it.each(TAG_NAMES.filter((x) => !INTERNAL_TAG_NAMES.includes(x)))(
       document.getElementById('app').innerHTML = markup;
     }, markup);
     await waitForComponentsReady(page);
+
     if (tagName === 'p-icon') {
       // some buffer for the svg to load
       await new Promise((resolve) => setTimeout(resolve, 50));

@@ -4,7 +4,7 @@
 
 |         | Monorepo | Sample Integrations    |
 | ------- | -------- | ---------------------- |
-| Angular | 15.2.10  | 17.0.4                 |
+| Angular | 15.2.10  | 17.1.1                 |
 | React   | 18.2.0   | 18.2.0                 |
 | Next.js | 14.0.4   | 13.4.19 (React 18.2.0) |
 
@@ -90,7 +90,7 @@ Those issues were not resolved in `6.0.7`, yet.
 ## Globby
 
 `globby` decided to provide just a modern _ESM_ build with their latest npm package. Unfortunately there's no stable way
-of using it with Node or TS-Node.
+of using it with Jest / Angular Karma.
 
 - [Pure ESM package](https://gist.github.com/sindresorhus/a39789f98801d908bbc7ff3ecc99d99c#how-can-i-make-my-typescript-project-output-esm)
 - [ESM support: soliciting feedback](https://github.com/TypeStrong/ts-node/issues/1007)

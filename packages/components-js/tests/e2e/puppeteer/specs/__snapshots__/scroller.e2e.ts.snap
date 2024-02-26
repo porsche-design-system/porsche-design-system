@@ -10,9 +10,6 @@ exports[`accessibility should expose correct initial accessibility tree if aria 
             {
               "children": [
                 {
-                  "role": "none",
-                },
-                {
                   "children": [
                     {
                       "children": [

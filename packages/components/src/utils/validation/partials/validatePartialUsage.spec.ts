@@ -63,7 +63,8 @@ describe('validatePartialUsage()', () => {
 
     validatePartialUsage();
 
-    expect(validateGetInitialStylesUsageSpy).toBeCalledWith();
+    // TODO: before reactivating we need to be able to distinguish between Light DOM and/or Shadow DOM usage.
+    expect(validateGetInitialStylesUsageSpy).not.toBeCalledWith();
     expect(validateGetFontFaceStylesheetUsageSpy).toBeCalledWith();
     expect(validateGetFontLinksUsageSpy).toBeCalledWith();
     // TODO: integration test (real world test) first, before rollout

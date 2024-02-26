@@ -28,6 +28,8 @@ import {
 import { getComponentCss } from './pin-code-styles';
 import { messageId, StateMessage } from '../common/state-message/state-message';
 import { descriptionId, labelId, Label } from '../common/label/label';
+import { LoadingMessage } from '../common/loading-message/loading-message';
+import { ControllerHost, InitialLoadingController } from '../../controllers';
 
 const propTypes: PropTypes<typeof PinCode> = {
   label: AllowedTypes.string,
@@ -94,6 +96,8 @@ export class PinCode {
   /** Emitted when selected element changes. */
   @Event({ bubbles: false }) public update: EventEmitter<PinCodeUpdateEventDetail>;
 
+  private controllerHost = new ControllerHost(this);
+  private loadingCtrl = new InitialLoadingController(this.controllerHost);
   private form: HTMLFormElement;
   private isWithinForm: boolean;
   private hiddenInput: HTMLInputElement;
@@ -159,7 +163,6 @@ export class PinCode {
               aria-label={`${index + 1}-${this.length}`}
               aria-describedby={`${labelId} ${descriptionId} ${messageId}`}
               aria-invalid={this.state === 'error' ? 'true' : null}
-              aria-busy={this.loading ? 'true' : null}
               aria-disabled={this.loading ? 'true' : null}
               autoComplete="one-time-code"
               pattern="\d*"
@@ -171,16 +174,12 @@ export class PinCode {
             />
           ))}
           {this.loading && (
-            <PrefixedTagNames.pSpinner
-              class="spinner"
-              size="inherit"
-              theme={this.theme}
-              aria={{ 'aria-label': 'Loading state' }}
-            />
+            <PrefixedTagNames.pSpinner class="spinner" size="inherit" theme={this.theme} aria-hidden="true" />
           )}
         </div>
         <StateMessage state={this.state} message={this.message} theme={this.theme} host={this.host} />
         {this.isWithinForm && <slot name="internal-input" />}
+        <LoadingMessage loading={this.loading} initialLoading={this.loadingCtrl.initialLoading} />
       </div>
     );
   }

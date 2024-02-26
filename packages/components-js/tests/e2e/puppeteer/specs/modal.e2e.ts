@@ -601,125 +601,35 @@ it('should open modal at scroll top position zero when its content is scrollable
 });
 
 describe('scroll lock', () => {
-  describe('Desktop Browser', () => {
-    const bodyLockedStyle = 'overflow: hidden;';
+  const bodyLockedStyle = 'overflow: hidden;';
 
-    it('should prevent page from scrolling when open', async () => {
-      await initBasicModal({ isOpen: false });
-      expect(await getBodyStyle()).toBe(null);
+  it('should prevent page from scrolling when open', async () => {
+    await initBasicModal({ isOpen: false });
+    expect(await getBodyStyle()).toBe(null);
 
-      await openModal();
-      expect(await getBodyStyle()).toBe(bodyLockedStyle);
+    await openModal();
+    expect(await getBodyStyle()).toBe(bodyLockedStyle);
 
-      await setProperty(await getHost(), 'open', false);
-      await waitForStencilLifecycle(page);
-      expect(await getBodyStyle()).toBe('');
-    });
-
-    it('should prevent page from scrolling when initially open', async () => {
-      await initBasicModal({ isOpen: true });
-      expect(await getBodyStyle()).toBe(bodyLockedStyle);
-    });
-
-    it('should remove overflow hidden from body if unmounted', async () => {
-      await initBasicModal({ isOpen: true });
-      expect(await getBodyStyle()).toBe(bodyLockedStyle);
-
-      await page.evaluate(() => {
-        document.querySelector('p-modal').remove();
-      });
-      await waitForStencilLifecycle(page);
-
-      expect(await getBodyStyle()).toBe('');
-    });
+    await setProperty(await getHost(), 'open', false);
+    await waitForStencilLifecycle(page);
+    expect(await getBodyStyle()).toBe('');
   });
 
-  describe('iOS Safari', () => {
-    const bodyLockedStyleIOS = 'top: 0px; overflow-y: scroll; position: fixed;';
+  it('should prevent page from scrolling when initially open', async () => {
+    await initBasicModal({ isOpen: true });
+    expect(await getBodyStyle()).toBe(bodyLockedStyle);
+  });
 
-    it('should prevent page from scrolling when open', async () => {
-      await page.setUserAgent(
-        'Mozilla/5.0 (iPhone; CPU iPhone OS 17_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.0 Mobile/15E148 Safari/604.1'
-      );
+  it('should remove overflow hidden from body if unmounted', async () => {
+    await initBasicModal({ isOpen: true });
+    expect(await getBodyStyle()).toBe(bodyLockedStyle);
 
-      await initBasicModal({ isOpen: false });
-      expect(await getBodyStyle()).toBe(null);
-
-      await openModal();
-      expect(await getBodyStyle()).toBe(bodyLockedStyleIOS);
-
-      await setProperty(await getHost(), 'open', false);
-      await waitForStencilLifecycle(page);
-      expect(await getBodyStyle()).toBe('');
+    await page.evaluate(() => {
+      document.querySelector('p-modal').remove();
     });
+    await waitForStencilLifecycle(page);
 
-    it('should not override body styles on prop change', async () => {
-      await page.setUserAgent(
-        'Mozilla/5.0 (iPhone; CPU iPhone OS 17_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.0 Mobile/15E148 Safari/604.1'
-      );
-
-      await initBasicModal({ isOpen: false, markupBefore: '<div style="height: 2000px;"></div>' });
-      expect(await getBodyStyle()).toBe(null);
-
-      await page.evaluate(() => {
-        window.scrollTo(0, 500);
-      });
-
-      await openModal();
-      expect(await getBodyStyle()).toBe('top: -500px; overflow-y: scroll; position: fixed;');
-
-      await setProperty(await getHost(), 'aria', "{'aria-label': 'Other Heading'}");
-      expect(await getBodyStyle()).toBe('top: -500px; overflow-y: scroll; position: fixed;');
-    });
-
-    it('should not override body styles on slot change', async () => {
-      await page.setUserAgent(
-        'Mozilla/5.0 (iPhone; CPU iPhone OS 17_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.0 Mobile/15E148 Safari/604.1'
-      );
-
-      await initBasicModal({
-        isOpen: false,
-        markupBefore: '<div style="height: 2000px;"></div>',
-        hasSlottedHeading: true,
-      });
-      expect(await getBodyStyle()).toBe(null);
-
-      await page.evaluate(() => {
-        window.scrollTo(0, 500);
-      });
-
-      await openModal();
-      expect(await getBodyStyle()).toBe('top: -500px; overflow-y: scroll; position: fixed;');
-
-      await setProperty(await getHost(), 'heading', 'Some Heading');
-
-      expect(await getBodyStyle()).toBe('top: -500px; overflow-y: scroll; position: fixed;');
-    });
-
-    it('should prevent page from scrolling when initially open', async () => {
-      await page.setUserAgent(
-        'Mozilla/5.0 (iPhone; CPU iPhone OS 17_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.0 Mobile/15E148 Safari/604.1'
-      );
-
-      await initBasicModal({ isOpen: true });
-      expect(await getBodyStyle()).toBe(bodyLockedStyleIOS);
-    });
-
-    it('should remove overflow hidden from body if unmounted', async () => {
-      await page.setUserAgent(
-        'Mozilla/5.0 (iPhone; CPU iPhone OS 17_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.0 Mobile/15E148 Safari/604.1'
-      );
-
-      await initBasicModal({ isOpen: true });
-      expect(await getBodyStyle()).toBe(bodyLockedStyleIOS);
-
-      await page.evaluate(() => {
-        document.querySelector('p-modal').remove();
-      });
-      await waitForStencilLifecycle(page);
-
-      expect(await getBodyStyle()).toBe('');
-    });
+    expect(await getBodyStyle()).toBe('');
   });
 });
 

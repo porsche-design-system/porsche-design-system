@@ -1,14 +1,13 @@
 import { getCss, isHighContrastMode } from '../../../utils';
 import {
   addImportantToEachRule,
+  getFocusJssStyle,
   getHighContrastColors,
-  getInsetJssStyle,
   getThemedColors,
   getTransition,
   hostHiddenStyles,
   hoverMediaQuery,
   prefersColorSchemeDarkMediaQuery,
-  pxToRemWithUnit,
 } from '../../../styles';
 import {
   borderRadiusSmall,
@@ -21,8 +20,8 @@ import type { Theme } from '../../../types';
 export const ITEM_PADDING = '17px';
 export const { font: BUTTON_FONT } = textSmallStyle;
 export const { font: LABEL_FONT } = textXSmallStyle;
-export const ICON_SIZE = pxToRemWithUnit(24);
-export const ICON_MARGIN = pxToRemWithUnit(4);
+export const ICON_SIZE = '1.5rem';
+export const ICON_MARGIN = '.25rem';
 
 export const getColors = (
   isDisabled: boolean,
@@ -55,8 +54,6 @@ export const getComponentCss = (
   hasSlottedContent: boolean,
   theme: Theme
 ): string => {
-  const { focusColor } = getThemedColors(theme);
-  const { focusColor: focusColorDark } = getThemedColors('dark');
   const { buttonColor, labelColor, borderColor, hoverBorderColor } = getColors(isDisabled, isSelected, theme);
   const {
     buttonColor: buttonColorDark,
@@ -84,30 +81,9 @@ export const getComponentCss = (
         margin: 0, // Removes default button margin on safari 15
         border: `${borderWidthBase} solid ${borderColor}`,
         borderRadius: borderRadiusSmall,
-        outline: 0,
         background: 'transparent',
         color: buttonColor,
         ...textSmallStyle,
-        ...prefersColorSchemeDarkMediaQuery(theme, {
-          borderColor: borderColorDark,
-          color: buttonColorDark,
-        }),
-        '&::before': {
-          content: '""',
-          position: 'absolute',
-          ...getInsetJssStyle(-5),
-          border: `${borderWidthBase} solid transparent`,
-          borderRadius: '7px',
-        },
-        '&:focus::before': {
-          borderColor: focusColor,
-          ...prefersColorSchemeDarkMediaQuery(theme, {
-            borderColor: focusColorDark,
-          }),
-        },
-        '&:focus:not(:focus-visible)::before': {
-          borderColor: 'transparent',
-        },
         ...(isDisabled
           ? {
               cursor: 'not-allowed',
@@ -125,6 +101,11 @@ export const getComponentCss = (
                   },
                 })),
             }),
+        ...prefersColorSchemeDarkMediaQuery(theme, {
+          borderColor: borderColorDark,
+          color: buttonColorDark,
+        }),
+        ...getFocusJssStyle(theme),
       },
       // label
       span: {

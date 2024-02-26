@@ -1,5 +1,5 @@
 module.exports = {
-  preset: 'ts-jest',
+  preset: 'ts-jest/presets/default-esm',
   rootDir: '../../../',
   verbose: true,
   testEnvironment: 'node',
@@ -11,6 +11,7 @@ module.exports = {
     '^.+\\.tsx?$': [
       'ts-jest',
       {
+        useESM: true,
         tsconfig: {
           verbatimModuleSyntax: false,
         },

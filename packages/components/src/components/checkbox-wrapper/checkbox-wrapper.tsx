@@ -1,6 +1,5 @@
 import { Component, Element, forceUpdate, h, type JSX, Listen, Prop } from '@stencil/core';
 import {
-  addChangeListener,
   AllowedTypes,
   attachComponentCss,
   FORM_STATES,
@@ -14,11 +13,14 @@ import {
   unobserveAttributes,
   validateProps,
 } from '../../utils';
+import { applyCheckboxRadioButtonSafariRenderingFix } from '../../utils/form/applyCheckboxRadioButtonSafariRenderingFix';
 import { type BreakpointCustomizable, type PropTypes, type Theme } from '../../types';
 import { getComponentCss } from './checkbox-wrapper-styles';
 import { type CheckboxWrapperState } from './checkbox-wrapper-utils';
 import { StateMessage } from '../common/state-message/state-message';
 import { Label } from '../common/label/label';
+import { LoadingMessage } from '../common/loading-message/loading-message';
+import { ControllerHost, InitialLoadingController } from '../../controllers';
 
 const propTypes: PropTypes<typeof CheckboxWrapper> = {
   label: AllowedTypes.string,
@@ -54,6 +56,8 @@ export class CheckboxWrapper {
   /** Adapts the color depending on the theme. */
   @Prop() public theme?: Theme = 'light';
 
+  private controllerHost = new ControllerHost(this);
+  private loadingCtrl = new InitialLoadingController(this.controllerHost);
   private input: HTMLInputElement;
 
   @Listen('keydown')
@@ -65,12 +69,12 @@ export class CheckboxWrapper {
   }
 
   public connectedCallback(): void {
+    applyCheckboxRadioButtonSafariRenderingFix(this.host);
     this.observeAttributes(); // on every reconnect
   }
 
   public componentWillLoad(): void {
     this.input = getOnlyChildOfKindHTMLElementOrThrow(this.host, 'input[type=checkbox]');
-    addChangeListener(this.input);
     this.observeAttributes(); // once initially
   }
 
@@ -116,15 +120,11 @@ export class CheckboxWrapper {
         <div class="wrapper">
           <slot />
           {this.loading && (
-            <PrefixedTagNames.pSpinner
-              class="spinner"
-              size="inherit"
-              theme={this.theme}
-              aria={{ 'aria-label': `Loading state of ${this.label}` }}
-            />
+            <PrefixedTagNames.pSpinner class="spinner" size="inherit" theme={this.theme} aria-hidden="true" />
           )}
         </div>
         <StateMessage state={this.state} message={this.message} theme={this.theme} host={this.host} />
+        <LoadingMessage loading={this.loading} initialLoading={this.loadingCtrl.initialLoading} />
       </div>
     );
   }

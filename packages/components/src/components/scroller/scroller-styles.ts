@@ -2,7 +2,7 @@ import { getCss, isThemeDark } from '../../utils';
 import {
   addImportantToEachRule,
   colorSchemeStyles,
-  getInsetJssStyle,
+  getFocusJssStyle,
   getThemedColors,
   getTransition,
   hostHiddenStyles,
@@ -13,7 +13,6 @@ import type { Theme } from '../../types';
 import type { ScrollerGradientColor, ScrollerScrollIndicatorPosition } from './scroller-utils';
 import {
   borderRadiusSmall,
-  borderWidthBase,
   dropShadowLowStyle,
   fontLineHeight,
   frostedGlassStyle,
@@ -57,11 +56,10 @@ export const getComponentCss = (
   hasScrollbar: boolean,
   theme: Theme
 ): string => {
-  const { backgroundColor, backgroundSurfaceColor, focusColor, hoverColor } = getThemedColors(theme);
+  const { backgroundColor, backgroundSurfaceColor, hoverColor } = getThemedColors(theme);
   const {
     backgroundColor: backgroundColorDark,
     backgroundSurfaceColor: backgroundSurfaceColorDark,
-    focusColor: focusColorDark,
     hoverColor: hoverColorDark,
   } = getThemedColors('dark');
   const backgroundColorLight: Record<ScrollerGradientColor, string> = {
@@ -159,24 +157,8 @@ export const getComponentCss = (
       minHeight: '28px',
       minWidth: '100%',
       verticalAlign: 'top',
-      outline: 0,
-      '&::before': {
-        content: '""',
-        position: 'absolute',
-        ...getInsetJssStyle(-4),
-        border: `${borderWidthBase} solid transparent`,
-        borderRadius: borderRadiusSmall,
-        pointerEvents: 'none', // Needed to enable clicks inside of slot
-      },
-      '&:focus::before': {
-        borderColor: focusColor,
-        ...prefersColorSchemeDarkMediaQuery(theme, {
-          borderColor: focusColorDark,
-        }),
-      },
-      '&:focus:not(:focus-visible)::before': {
-        borderColor: 'transparent',
-      },
+      borderRadius: borderRadiusSmall,
+      ...getFocusJssStyle(theme),
     },
     trigger: {
       position: 'absolute',

@@ -21,10 +21,12 @@ import {
   THEMES,
   validateProps,
 } from '../../utils';
-import { Component, Element, h, type JSX, Listen, Prop } from '@stencil/core';
+import { Component, Element, h, Host, type JSX, Listen, Prop } from '@stencil/core';
 import { getButtonAriaAttributes } from './button-utils';
 import type { ButtonIcon } from './button-utils';
 import { getComponentCss } from './button-styles';
+import { loadingId, LoadingMessage } from '../common/loading-message/loading-message';
+import { ControllerHost, InitialLoadingController } from '../../controllers';
 
 const propTypes: PropTypes<typeof Button> = {
   type: AllowedTypes.oneOf<ButtonType>(BUTTON_TYPES),
@@ -80,6 +82,9 @@ export class Button {
   /** Add ARIA attributes. */
   @Prop() public aria?: SelectedAriaAttributes<ButtonAriaAttribute>;
 
+  private controllerHost = new ControllerHost(this);
+  private loadingCtrl = new InitialLoadingController(this.controllerHost);
+
   @Listen('click', { capture: true })
   public onClick(e: MouseEvent): void {
     if (isDisabledOrLoading(this.disabled, this.loading)) {
@@ -118,36 +123,35 @@ export class Button {
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
     return (
-      <button
-        {...getButtonAriaAttributes(this.disabled, this.loading, this.aria)}
-        class="root"
-        type={this.type}
-        name={this.name}
-        value={this.value}
-      >
-        {this.loading && (
-          <PrefixedTagNames.pSpinner
-            class="spinner"
-            size="inherit"
-            theme={this.theme}
-            aria={{ 'aria-label': 'Loading state' }}
-          />
-        )}
-        {hasVisibleIcon(this.icon, this.iconSource) && (
-          <PrefixedTagNames.pIcon
-            class="icon"
-            size="inherit"
-            name={this.iconSource ? undefined : this.icon}
-            source={this.iconSource}
-            color={this.disabled ? (this.variant === 'primary' ? 'contrast-high' : 'state-disabled') : 'primary'}
-            theme={this.theme}
-            aria-hidden="true"
-          />
-        )}
-        <span class="label">
-          <slot />
-        </span>
-      </button>
+      <Host>
+        <button
+          {...getButtonAriaAttributes(this.disabled, this.loading, this.aria)}
+          class="root"
+          type={this.type}
+          name={this.name}
+          value={this.value}
+          aria-describedby={this.loading ? loadingId : undefined}
+        >
+          {this.loading && (
+            <PrefixedTagNames.pSpinner class="spinner" size="inherit" theme={this.theme} aria-hidden="true" />
+          )}
+          {hasVisibleIcon(this.icon, this.iconSource) && (
+            <PrefixedTagNames.pIcon
+              class="icon"
+              size="inherit"
+              name={this.iconSource ? undefined : this.icon}
+              source={this.iconSource}
+              color={this.disabled ? (this.variant === 'primary' ? 'contrast-high' : 'state-disabled') : 'primary'}
+              theme={this.theme}
+              aria-hidden="true"
+            />
+          )}
+          <span class="label">
+            <slot />
+          </span>
+        </button>
+        <LoadingMessage loading={this.loading} initialLoading={this.loadingCtrl.initialLoading} />
+      </Host>
     );
   }
 }

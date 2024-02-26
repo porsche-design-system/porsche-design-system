@@ -3,15 +3,16 @@ import { INTERNAL_TAG_NAMES, TAG_NAMES } from '@porsche-design-system/shared';
 import { componentsReady } from '@porsche-design-system/components-js';
 import * as fs from 'fs';
 import * as path from 'path';
-import * as globby from 'globby';
+import { globbySync } from 'globby';
 import { tagNameMarkup, WHITELISTED_TAG_NAMES } from '../helper';
+import { vi } from 'vitest';
 
 it('should have one unit test per component', () => {
   const whitelistedComponents: TagName[] = [...INTERNAL_TAG_NAMES, ...WHITELISTED_TAG_NAMES] as TagName[];
 
   const currentFileName = path.normalize(__filename);
   const srcDir = path.normalize(__dirname);
-  const specFileNames = globby.sync(`${srcDir}/**/*.spec.ts`).filter((fileName) => fileName !== currentFileName);
+  const specFileNames = globbySync(`${srcDir}/**/*.spec.ts`).filter((fileName) => fileName !== currentFileName);
 
   const componentsTagNamesWithTests: [TagName, string][] = specFileNames
     .map<[TagName, string]>((filePath) => [
@@ -41,7 +42,7 @@ it('should have one unit test per component', () => {
 });
 
 it.each(Object.entries(tagNameMarkup))('should have no fetch call for %s', async (_, markup) => {
-  const spy = jest.spyOn(global, 'fetch');
+  const spy = vi.spyOn(global, 'fetch');
 
   document.body.innerHTML = markup;
   expect(await componentsReady()).toBeGreaterThan(0);

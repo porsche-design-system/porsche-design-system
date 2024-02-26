@@ -36,6 +36,10 @@ exports[`accessibility should expose correct initial accessibility tree 1`] = `
               "name": "Dismiss flyout",
               "role": "button",
             },
+            {
+              "name": "",
+              "role": "status",
+            },
           ],
           "name": "",
           "role": "generic",
@@ -71,6 +75,10 @@ exports[`accessibility should expose correct initial accessibility tree 1`] = `
                           "name": "",
                           "role": "button",
                         },
+                        {
+                          "name": "",
+                          "role": "status",
+                        },
                       ],
                       "name": "",
                       "role": "generic",
@@ -105,6 +113,9 @@ exports[`accessibility should expose correct initial accessibility tree 1`] = `
                                       "role": "none",
                                     },
                                   ],
+                                  "role": "none",
+                                },
+                                {
                                   "role": "none",
                                 },
                               ],
@@ -185,6 +196,10 @@ exports[`accessibility should expose correct initial accessibility tree 1`] = `
                           "name": "",
                           "role": "button",
                         },
+                        {
+                          "name": "",
+                          "role": "status",
+                        },
                       ],
                       "name": "",
                       "role": "generic",
@@ -219,6 +234,9 @@ exports[`accessibility should expose correct initial accessibility tree 1`] = `
                                       "role": "none",
                                     },
                                   ],
+                                  "role": "none",
+                                },
+                                {
                                   "role": "none",
                                 },
                               ],
@@ -299,6 +317,10 @@ exports[`accessibility should expose correct initial accessibility tree 1`] = `
                           "name": "",
                           "role": "button",
                         },
+                        {
+                          "name": "",
+                          "role": "status",
+                        },
                       ],
                       "name": "",
                       "role": "generic",
@@ -333,6 +355,9 @@ exports[`accessibility should expose correct initial accessibility tree 1`] = `
                                       "role": "none",
                                     },
                                   ],
+                                  "role": "none",
+                                },
+                                {
                                   "role": "none",
                                 },
                               ],

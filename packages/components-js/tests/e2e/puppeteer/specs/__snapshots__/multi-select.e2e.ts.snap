@@ -113,6 +113,10 @@ exports[`accessibility should expose correct accessibility tree if option is hig
                                                       ],
                                                       "role": "none",
                                                     },
+                                                    {
+                                                      "name": "",
+                                                      "role": "status",
+                                                    },
                                                   ],
                                                   "role": "none",
                                                 },
@@ -168,6 +172,10 @@ exports[`accessibility should expose correct accessibility tree if option is hig
                                                       ],
                                                       "role": "none",
                                                     },
+                                                    {
+                                                      "name": "",
+                                                      "role": "status",
+                                                    },
                                                   ],
                                                   "role": "none",
                                                 },
@@ -222,6 +230,10 @@ exports[`accessibility should expose correct accessibility tree if option is hig
                                                         },
                                                       ],
                                                       "role": "none",
+                                                    },
+                                                    {
+                                                      "name": "",
+                                                      "role": "status",
                                                     },
                                                   ],
                                                   "role": "none",
@@ -393,6 +405,10 @@ exports[`accessibility should expose correct accessibility tree if option is sel
                                   "name": "Reset selection",
                                   "role": "button",
                                 },
+                                {
+                                  "name": "",
+                                  "role": "status",
+                                },
                               ],
                               "name": "",
                               "role": "generic",
@@ -443,6 +459,10 @@ exports[`accessibility should expose correct accessibility tree if option is sel
                                                         },
                                                       ],
                                                       "role": "none",
+                                                    },
+                                                    {
+                                                      "name": "",
+                                                      "role": "status",
                                                     },
                                                   ],
                                                   "role": "none",
@@ -499,6 +519,10 @@ exports[`accessibility should expose correct accessibility tree if option is sel
                                                       ],
                                                       "role": "none",
                                                     },
+                                                    {
+                                                      "name": "",
+                                                      "role": "status",
+                                                    },
                                                   ],
                                                   "role": "none",
                                                 },
@@ -553,6 +577,10 @@ exports[`accessibility should expose correct accessibility tree if option is sel
                                                         },
                                                       ],
                                                       "role": "none",
+                                                    },
+                                                    {
+                                                      "name": "",
+                                                      "role": "status",
                                                     },
                                                   ],
                                                   "role": "none",
@@ -708,55 +736,7 @@ exports[`accessibility should expose correct accessibility tree of option list i
                           ],
                           "role": "none",
                         },
-                      ],
-                      "role": "none",
-                    },
-                  ],
-                  "role": "none",
-                },
-              ],
-              "role": "none",
-            },
-          ],
-          "role": "none",
-        },
-        {
-          "children": [
-            {
-              "children": [
-                {
-                  "children": [
-                    {
-                      "children": [
                         {
-                          "children": [
-                            {
-                              "children": [
-                                {
-                                  "children": [
-                                    {
-                                      "role": "none",
-                                    },
-                                  ],
-                                  "role": "none",
-                                },
-                              ],
-                              "role": "none",
-                            },
-                          ],
-                          "role": "none",
-                        },
-                        {
-                          "children": [
-                            {
-                              "children": [
-                                {
-                                  "role": "none",
-                                },
-                              ],
-                              "role": "none",
-                            },
-                          ],
                           "role": "none",
                         },
                       ],
@@ -808,6 +788,63 @@ exports[`accessibility should expose correct accessibility tree of option list i
                               "role": "none",
                             },
                           ],
+                          "role": "none",
+                        },
+                        {
+                          "role": "none",
+                        },
+                      ],
+                      "role": "none",
+                    },
+                  ],
+                  "role": "none",
+                },
+              ],
+              "role": "none",
+            },
+          ],
+          "role": "none",
+        },
+        {
+          "children": [
+            {
+              "children": [
+                {
+                  "children": [
+                    {
+                      "children": [
+                        {
+                          "children": [
+                            {
+                              "children": [
+                                {
+                                  "children": [
+                                    {
+                                      "role": "none",
+                                    },
+                                  ],
+                                  "role": "none",
+                                },
+                              ],
+                              "role": "none",
+                            },
+                          ],
+                          "role": "none",
+                        },
+                        {
+                          "children": [
+                            {
+                              "children": [
+                                {
+                                  "role": "none",
+                                },
+                              ],
+                              "role": "none",
+                            },
+                          ],
+                          "role": "none",
+                        },
+                        {
                           "role": "none",
                         },
                       ],
