@@ -149,12 +149,13 @@ const getButtonStyles = (
     }, // Opacity fixes placeholder being shown lighter in firefox
 
     ...hoverMediaQuery({
-      '&:hover:not(:disabled):not(:focus),label:hover~.wrapper &:not(:disabled):not(:focus)': {
-        borderColor: isOpen ? primaryColor : formStateHoverColor || primaryColor,
-        ...prefersColorSchemeDarkMediaQuery(theme, {
-          borderColor: isOpen ? primaryColorDark : formStateHoverColorDark || primaryColorDark,
-        }),
-      },
+      '&:hover:not(:disabled):not(:focus):not([readonly]),label:hover~.wrapper &:not(:disabled):not(:focus):not([readonly])':
+        {
+          borderColor: isOpen ? primaryColor : formStateHoverColor || primaryColor,
+          ...prefersColorSchemeDarkMediaQuery(theme, {
+            borderColor: isOpen ? primaryColorDark : formStateHoverColorDark || primaryColorDark,
+          }),
+        },
     }),
     ...(!isDisabled && {
       '&:focus': {
