@@ -31,7 +31,7 @@
   </label>
 
   <form @submit.prevent="onSubmit">
-    <p-select name="options" label="Some Label" :required="true">
+    <p-select name="options" label="Some Label" :required="isRequired">
       <p-select-option v-if="hasDeselection"></p-select-option>
       <p-select-option value="1">Option 1</p-select-option>
       <p-select-option value="2">Option 2</p-select-option>

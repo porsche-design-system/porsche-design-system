@@ -32,7 +32,7 @@ export const SelectRequiredExamplePage = (): JSX.Element => {
       </label>
 
       <form onSubmit={onSubmit}>
-        <PSelect name="options" label="Some Label" required={true}>
+        <PSelect name="options" label="Some Label" required={isRequired}>
           {hasDeselection && <PSelectOption></PSelectOption>}
           <PSelectOption value="1">Option 1</PSelectOption>
           <PSelectOption value="2">Option 2</PSelectOption>
