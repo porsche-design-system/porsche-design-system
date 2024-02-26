@@ -1,7 +1,7 @@
 import * as fs from 'fs';
 import * as path from 'path';
 import { globbySync } from 'globby';
-import { paramCase } from 'change-case';
+import { kebabCase } from 'change-case';
 import { type TagName, TAG_NAMES, INTERNAL_TAG_NAMES } from '@porsche-design-system/shared';
 import { ICONS_MANIFEST } from '@porsche-design-system/assets';
 
@@ -264,7 +264,7 @@ const generateComponentMeta = (): void => {
     // nested pds components
     const nestedComponents: TagName[] = [
       ...Array.from(source.matchAll(/<PrefixedTagNames\.(p[A-Za-z]+)/g)).map(
-        ([, tagName]) => paramCase(tagName) as TagName
+        ([, tagName]) => kebabCase(tagName) as TagName
       ),
       ...(source.match(/<StateMessage/) ? ['p-icon' as TagName] : []),
     ].filter((x, idx, arr) => arr.findIndex((t) => t === x) === idx); // remove duplicates;

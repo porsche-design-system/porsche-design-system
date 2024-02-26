@@ -2,7 +2,7 @@ import { AbstractWrapperGenerator } from './AbstractWrapperGenerator';
 import { getComponentMeta } from '@porsche-design-system/component-meta';
 import type { TagName } from '@porsche-design-system/shared';
 import type { ExtendedProp } from './DataStructureBuilder';
-import { camelCase, pascalCase } from 'change-case';
+import { camelCase, pascalCase } from 'latest-change-case';
 
 export class VueWrapperGenerator extends AbstractWrapperGenerator {
   protected packageDir = 'components-vue';

@@ -13,7 +13,7 @@
     "build:fontFace": "tsx scripts/buildFontFace.ts",
     "build:bundle": "rollup -c rollup.config.js --bundleConfigAsCjs",
     "test": "yarn test:unit",
-    "test:unit": "jest --colors -c tests/unit/config/jest.config.js",
+    "test:unit": "vitest --config tests/unit/config/vitest.config.ts",
     "clean": "yarn clean:node_modules && yarn clean:build",
     "clean:node_modules": "rm -rf ./node_modules && rm -rf ./yarn-error.log",
     "clean:build": "rm -rf ./dist && rm -rf ./src"
@@ -21,6 +21,7 @@
   "devDependencies": {
     "@porsche-design-system/fonts": "0.0.0",
     "@porsche-design-system/shared": "0.0.0",
+    "change-case": "^5.4.3",
     "jss": "^10.10.0",
     "jss-preset-default": "^10.10.0",
     "tsx": "^4.7.1",

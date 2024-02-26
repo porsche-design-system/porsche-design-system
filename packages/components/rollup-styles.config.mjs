@@ -6,7 +6,7 @@ import generatePackageJson from 'rollup-plugin-generate-package-json';
 import { globbySync } from 'globby';
 import * as path from 'path';
 import * as fs from 'fs';
-import { pascalCase } from 'change-case';
+import { pascalCase } from 'latest-change-case';
 import pkgJson from './package.json' assert { type: 'json' };
 import { fileURLToPath } from 'url';
 import { dirname } from 'path';

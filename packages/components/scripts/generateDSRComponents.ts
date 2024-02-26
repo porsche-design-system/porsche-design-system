@@ -1,7 +1,7 @@
 import * as path from 'path';
 import * as fs from 'fs';
 import { globbySync } from 'globby';
-import { paramCase, pascalCase } from 'change-case';
+import { kebabCase, pascalCase } from 'latest-change-case';
 import { breakpoint } from '@porsche-design-system/utilities-v2';
 import type { TagName } from '@porsche-design-system/shared';
 import { INTERNAL_TAG_NAMES } from '@porsche-design-system/shared';
@@ -27,7 +27,7 @@ const generateDSRComponents = (): void => {
       const fileContent = fs.readFileSync(filePath, 'utf8');
 
       const componentName = pascalCase(filePath.split('/')!.pop()!.split('.')![0]);
-      const tagName = paramCase(`P${componentName}`) as TagName;
+      const tagName = kebabCase(`P${componentName}`) as TagName;
       const { isDelegatingFocus, hasSlot } = getComponentMeta(tagName) || {}; // Could be common component
 
       let newFileContent = fileContent
@@ -148,7 +148,7 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
       const componentImports = Array.from(newFileContent.matchAll(/<PrefixedTagNames.p([A-Za-z]+)/g))
         .map(([, cmpName]) => `P${cmpName}`)
         .filter((x, idx, arr) => arr.findIndex((t) => t === x) === idx) // remove duplicates
-        .filter((x) => !INTERNAL_TAG_NAMES.includes(paramCase(x) as TagName))
+        .filter((x) => !INTERNAL_TAG_NAMES.includes(kebabCase(x) as TagName))
         .join(', ');
       if (componentImports) {
         newFileContent = newFileContent.replace(/^/, `import { ${componentImports} } from '../components';\n`);
@@ -608,7 +608,7 @@ $&`
   componentFileContents.forEach((fileContent) => {
     const name = /export (?:class|const) ([A-Z][A-Za-z]+)/.exec(fileContent)![1];
 
-    const fileName = `${paramCase(name.replace('DSR', ''))}.tsx`;
+    const fileName = `${kebabCase(name.replace('DSR', ''))}.tsx`;
     const filePath = path.resolve(destinationDirectory, fileName);
 
     fs.writeFileSync(filePath, fileContent);

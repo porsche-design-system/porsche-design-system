@@ -1,7 +1,7 @@
 import * as fs from 'fs';
 import * as path from 'path';
 import { globbySync } from 'globby';
-import { capitalCase } from 'change-case';
+import { capitalCase } from 'latest-change-case';
 import type { TagName } from '@porsche-design-system/shared';
 
 const removeBuiltWith = (str: string): string =>
