@@ -9,6 +9,10 @@ import {
 } from '../helpers';
 import * as path from 'path';
 import * as fs from 'fs';
+import { createRequire } from 'node:module';
+
+// @ts-ignore
+const nodeRequire = createRequire(import.meta.url);
 
 let page: Page;
 
@@ -18,7 +22,7 @@ beforeEach(async () => {
 });
 afterEach(async () => await page.close());
 
-const filePath = path.resolve(require.resolve('@porsche-design-system/components-js'), '../../../../index.html');
+const filePath = path.resolve(nodeRequire.resolve('@porsche-design-system/components-js'), '../../../../index.html');
 const fileContent = fs.readFileSync(filePath, 'utf8');
 
 const [, rawOptions] = /<optgroup label="Examples">.*([\s\S]*?)<\/optgroup>/.exec(fileContent) || [];
