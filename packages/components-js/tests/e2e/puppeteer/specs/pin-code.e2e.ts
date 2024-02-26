@@ -53,12 +53,12 @@ const initPinCode = (opts?: InitOptions) => {
   const { label = '', description = '', message = '' } = slots || {};
 
   const markup = `${markupBefore}
-    <p-pin-code ${getHTMLAttributes(props)}>
-      ${label}
-      ${description}
-      ${message}
-    </p-pin-code>
-    ${markupAfter}`;
+     <p-pin-code ${getHTMLAttributes(props)}>
+       ${label}
+       ${description}
+       ${message}
+     </p-pin-code>
+     ${markupAfter}`;
 
   return setContentWithDesignSystem(page, isWithinForm ? `<form onsubmit="return false;">${markup}</form>` : markup);
 };

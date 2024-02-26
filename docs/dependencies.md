@@ -112,28 +112,6 @@ there's no stable way of using it with Node or TS-Node.
 
 ---
 
-## Sharp
-
-Since v0.33.0 `sharp` does not work in docker anymore and outputs the following error:
-
-```
-Could not load the "sharp" module using the linux-x64 runtime
-Possible solutions:
-- Add platform-specific dependencies:
-    npm install --os=linux --cpu=x64 sharp
-  or
-    npm install --force @img/sharp-linux-x64
-- Consult the installation documentation: https://sharp.pixelplumbing.com/install
-```
-
-There is an open issue about it: https://github.com/lovell/sharp/issues/3870
-
-### Affected dependencies:
-
-- `sharp`
-
----
-
 ## iMask
 
 Since v7.2.0 `imask` uses static class properties which can't be handled by our outdated vue 2 setup without additional

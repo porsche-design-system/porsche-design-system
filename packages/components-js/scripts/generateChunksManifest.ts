@@ -1,6 +1,6 @@
 import * as fs from 'fs';
 import * as path from 'path';
-import { paramCase } from 'change-case';
+import { kebabCase } from 'change-case';
 import type { TagName } from '@porsche-design-system/shared';
 
 type Manifest = {
@@ -30,7 +30,7 @@ const createManifest = (indexJsFile: string): Manifest => {
 
   chunkFileNames.forEach((chunkFileName) => {
     const [, componentName] = /\.([a-z-]+)\./.exec(chunkFileName) || [];
-    manifest[paramCase(componentName) as keyof Manifest] = chunkFileName;
+    manifest[kebabCase(componentName) as keyof Manifest] = chunkFileName;
   });
 
   return manifest;

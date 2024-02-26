@@ -2,11 +2,15 @@ import type { ConsoleMessage, ElementHandle, Page, SnapshotOptions, WaitForOptio
 import { waitForComponentsReady } from './stencil';
 import type { TagName } from '@porsche-design-system/shared';
 import type { ComponentMeta } from '@porsche-design-system/component-meta';
-import { getComponentMeta } from '@porsche-design-system/component-meta';
-import * as beautify from 'js-beautify';
+import { format } from 'prettier';
 import { getInitialStyles } from '@porsche-design-system/components-js/partials';
 import type { FormState } from '@porsche-design-system/components/dist/types/bundle';
-import { paramCase } from 'change-case';
+
+// TODO: temporary workaround, because of https://github.com/microsoft/playwright/issues/17075
+// import { kebabCase } from 'change-case';
+const kebabCase = (str: string): string => {
+  return str.replace(/-(\w)/g, (_, group) => group.toUpperCase());
+};
 
 export type ClickableTests = {
   state: string;
@@ -394,7 +398,7 @@ export const buildDefaultComponentMarkup = (tagName: TagName): string => {
         .map(
           ([propName, { defaultValue, isRequired }]) =>
             // handling all href attributes to trick throwIfInvalidLinkUsage and throwIfInvalidLinkTileProductUsage
-            (isRequired || propName === 'href') && ` ${paramCase(propName)}="${defaultValue ?? 'value'}"`
+            (isRequired || propName === 'href') && ` ${kebabCase(propName)}="${defaultValue ?? 'value'}"`
         )
         .filter(Boolean)
         .join()
@@ -410,10 +414,7 @@ export const buildDefaultComponentMarkup = (tagName: TagName): string => {
 
 export const expectShadowDomToMatchSnapshot = async (host: ElementHandle): Promise<void> => {
   const html = await host.evaluate((el) => el.shadowRoot.innerHTML);
-  const prettyHtml = beautify.html(html.replace(/>/g, '>\n'), {
-    indent_inner_html: true,
-    indent_size: 2,
-  });
+  const prettyHtml = await format(html.replace(/>/g, '>\n'), { parser: 'html' });
 
   expect(prettyHtml).not.toContain('[object Object]');
   expect(prettyHtml).toMatchSnapshot();
