@@ -6771,10 +6771,6 @@ exports[`should render dsr component for PCarousel 1`] = `
 .btn {
   padding: 8px;
 }
-.skip-link {
-  opacity: 0;
-  pointer-events: none;
-}
 .splide {
   overflow: hidden;
   padding: 4px 0;
