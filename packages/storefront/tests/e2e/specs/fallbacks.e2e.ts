@@ -21,9 +21,7 @@ it('should show browser support fallback', async () => {
 
   expect(await isElementVisible(page, `#${fallbackID}`)).toBe(false);
 
-  const buttonElement = await page.waitForSelector(
-    `xpath///p-button[contains(., 'Force display of browser support fallback')]`
-  );
+  const [buttonElement] = await page.$x(`//p-button[contains(., 'Force display of browser support fallback')]`);
   await buttonElement.click();
 
   expect(await isElementVisible(page, `#${fallbackID}`)).toBe(true);
@@ -37,9 +35,7 @@ it('should show cookies fallback', async () => {
 
   expect(await isElementVisible(page, `#${fallbackID}`)).toBe(false);
 
-  const buttonElement = await page.waitForSelector(
-    `xpath///p-button[contains(., 'Force display of cookies fallback')]`
-  );
+  const [buttonElement] = await page.$x(`//p-button[contains(., 'Force display of cookies fallback')]`);
   await buttonElement.click();
 
   expect(await isElementVisible(page, `#${fallbackID}`)).toBe(true);

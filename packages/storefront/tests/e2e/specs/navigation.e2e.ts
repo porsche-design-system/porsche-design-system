@@ -85,9 +85,9 @@ it.each<[string, string, string, string | undefined, boolean]>(
     .join('')}${humanCaseIndex}/${cases.length}`;
   console.log(`${counter}: ${[category, page, tab].filter(Boolean).join(' > ')}`);
 
-  const accordionElement = (await browserPage.waitForSelector(
-    `xpath///div[contains(@class, 'menu-desktop')]//nav/p-accordion[@heading='${category}']`
-  )) as ElementHandle<HTMLElement>;
+  const [accordionElement] = (await browserPage.$x(
+    `//div[contains(@class, 'menu-desktop')]//nav/p-accordion[@heading='${category}']`
+  )) as ElementHandle<HTMLElement>[];
   await accordionElement.click();
   await browserPage.waitForFunction(
     (el) => getComputedStyle(el.shadowRoot.querySelector('.collapsible')).visibility === 'visible',
@@ -101,14 +101,16 @@ it.each<[string, string, string, string | undefined, boolean]>(
   // for everything else there is no tab url
   const firstOrNoTab =
     tab &&
-    (isFirst ? tab : cases.find(([itemCategory, itemPage]) => itemCategory === category && itemPage === page)[2]);
+    (isFirst
+      ? tab
+      : cases.find(([itemCategory, itemPage, itemTab]) => itemCategory === category && itemPage === page)[2]);
   const linkPureHref = `/${[category, page, firstOrNoTab]
     .filter(Boolean)
     .map((part) => paramCase(part))
     .join('/')}`;
-  const linkPureElement = (await browserPage.waitForSelector(
-    `xpath///div[contains(@class, 'menu-desktop')]//nav//p-link-pure/a[contains(., '${page}')][@href='${linkPureHref}']/parent::p-link-pure`
-  )) as ElementHandle<HTMLElement>;
+  const [linkPureElement] = (await browserPage.$x(
+    `//div[contains(@class, 'menu-desktop')]//nav//p-link-pure/a[contains(., '${page}')][@href='${linkPureHref}']/parent::p-link-pure`
+  )) as ElementHandle<HTMLElement>[];
   expect(await isLinkActive(linkPureElement), 'sidebar link should not be active initially').toBe(false);
 
   // NOTE: very flaky and potential timeout here 🤷‍
@@ -116,7 +118,6 @@ it.each<[string, string, string, string | undefined, boolean]>(
 
   // wait for p-heading and p-tabs-bar to be ready
   const mainElementHandle = await browserPage.$('main');
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   await mainElementHandle.evaluate((el) => (window as any).componentsReady(el));
 
   await waitForHeading(browserPage);
@@ -129,10 +130,10 @@ it.each<[string, string, string, string | undefined, boolean]>(
   expect(getConsoleErrorsAmount(), `Errors on ${category}/${page}`).toBe(0);
 
   if (tab) {
-    const tabHref = `/${paramCase(category)}/${paramCase(page)}/${paramCase(tab)}`;
-    const tabElement = (await browserPage.waitForSelector(
-      `xpath///p-tabs-bar//a[contains(., '${tab}')][@href='${tabHref}']`
-    )) as ElementHandle<HTMLElement>;
+    const tabHref = `\/${paramCase(category)}\/${paramCase(page)}\/${paramCase(tab)}`;
+    const [tabElement] = (await browserPage.$x(
+      `//p-tabs-bar//a[contains(., '${tab}')][@href='${tabHref}']`
+    )) as ElementHandle<HTMLElement>[];
 
     const isTabElementActiveInitially = await isTabActive(tabElement);
     if (isFirst) {

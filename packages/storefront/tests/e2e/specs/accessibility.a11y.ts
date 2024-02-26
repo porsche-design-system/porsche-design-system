@@ -71,16 +71,19 @@ describe('within main element', () => {
     const buttons = (
       await Promise.all([
         // page.$x("//button[text() = 'Vanilla JS']"),
-        page.waitForSelector("xpath///button[text() = 'Angular']"),
-        page.waitForSelector("xpath///button[text() = 'React']"),
+        page.$x("//button[text() = 'Angular']"),
+        page.$x("//button[text() = 'React']"),
         // TODO: vue is missing
       ])
-    ).filter(Boolean); // get rid of null values
+    )
+      .map(([handle]) => handle)
+      .flat()
+      .filter(Boolean); // get rid of null values
 
     if (buttons.length) {
       expect(buttons.length).toBe(2);
 
-      const vanillaJsButton = await page.waitForSelector("xpath///button[text() = 'Vanilla JS']");
+      const [vanillaJsButton] = await page.$x("//button[text() = 'Vanilla JS']");
 
       for (const button of buttons) {
         // pages for styles sub-package don't have vanilla js examples and angular is selected initially
@@ -116,7 +119,7 @@ describe('within main element', () => {
       // disabled because highly redundant, instead this should be tested once for light and dark with a good code example for angular, react and vue
       // await cycleFrameworkTabs('light');
 
-      const darkThemeButton = await page.waitForSelector("xpath///button[text() = 'Dark theme']");
+      const [darkThemeButton] = await page.$x("//button[text() = 'Dark theme']");
 
       if (darkThemeButton) {
         await darkThemeButton.click();

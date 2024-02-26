@@ -9,12 +9,12 @@ it('should have no leading and trailing whitespace in framework buttons of tabs-
   await page.goto(`${baseURL}/components/button/examples`);
 
   const buttons = await Promise.all([
-    page.waitForSelector("xpath///button[text() = 'Vanilla JS']"),
-    page.waitForSelector("xpath///button[text() = 'Angular']"),
-    page.waitForSelector("xpath///button[text() = 'React']"),
+    page.$x("//button[text() = 'Vanilla JS']"),
+    page.$x("//button[text() = 'Angular']"),
+    page.$x("//button[text() = 'React']"),
   ]);
 
-  const [vanillaButton, angularButton, reactButton] = buttons;
+  const [[vanillaButton], [angularButton], [reactButton]] = buttons;
 
   expect(await getElementInnerText(vanillaButton)).toBe('Vanilla JS');
   expect(await getElementInnerText(angularButton)).toBe('Angular');
