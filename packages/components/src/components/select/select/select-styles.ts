@@ -118,9 +118,9 @@ const getButtonStyles = (
   );
 
   return {
-    textAlign: 'start', // TODO: Newly added
-    overflowX: 'hidden', // TODO: Newly added
-    whiteSpace: 'nowrap', // TODO: Newly added
+    textAlign: 'start', // TODO: Newly added (rest is copied from select-wrapper-dropdown), share rest for both components
+    overflowX: 'hidden', // TODO: Newly added (rest is copied from select-wrapper-dropdown), share rest for both components
+    whiteSpace: 'nowrap', // TODO: Newly added (rest is copied from select-wrapper-dropdown), share rest for both components
 
     gridArea: '1/1/1/-1',
     flex: 1,
