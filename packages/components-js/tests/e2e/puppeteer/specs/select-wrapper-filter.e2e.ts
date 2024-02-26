@@ -12,7 +12,7 @@ import {
   setProperty,
   waitForStencilLifecycle,
 } from '../helpers';
-import { KnownDevices, Page } from 'puppeteer';
+import { KnownDevices, type Page } from 'puppeteer';
 
 let page: Page;
 beforeEach(async () => (page = await browser.newPage()));
