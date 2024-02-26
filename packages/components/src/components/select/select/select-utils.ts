@@ -10,7 +10,7 @@ import {
   setAttributes,
   type Theme,
 } from '../../../utils';
-import { SelectOptionInternalHTMLProps } from '../select-option/select-option-utils';
+import type { SelectOptionInternalHTMLProps } from '../select-option/select-option-utils';
 import { forceUpdate } from '@stencil/core';
 
 export type SelectState = FormState;
