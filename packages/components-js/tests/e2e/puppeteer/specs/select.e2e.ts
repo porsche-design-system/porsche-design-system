@@ -1,5 +1,5 @@
 import type { Page } from 'puppeteer';
-import type { Components } from '@porsche-design-system/components';
+import type { Components } from '@porsche-design-system/components/src/components';
 import {
   addEventListener,
   expectA11yToMatchSnapshot,
@@ -59,16 +59,8 @@ const getHighlightedOptionIndex = async (): Promise<number> =>
   );
 const getNativeSelect = () => selectNode(page, 'p-select select');
 const getNativeSelectValue = async (): Promise<string> => await getProperty(await getNativeSelect(), 'value');
-const getNativeSelectOptions = () => page.$$('p-select select option');
 const getNativeSelectInnerHTML = () => page.$eval('p-select select', (el) => el.innerHTML);
 const getLabel = () => selectNode(page, 'p-select >>> label');
-
-const labelSlotContent =
-  '<span slot="label" id="some-label-id">Some label with a <a href="https://designsystem.porsche.com">link</a>.</span>';
-const descriptionSlotContent =
-  '<span slot="description" id="some-description-id">Some description with a <a href="https://designsystem.porsche.com">link</a>.</span>';
-const messageSlotContent =
-  '<span slot="message" id="some-message-id">Some error message with a <a href="https://designsystem.porsche.com">link</a>.</span>';
 
 const setValue = async (value: string) =>
   await page.evaluate((el: HTMLPSelectElement, value) => (el.value = value), await getHost(), value);
@@ -1285,7 +1277,7 @@ describe('slots', () => {
   });
 
   it('should update when selected option is removed', async () => {
-    await initSelect({ props: { value: 'c' } });
+    await initSelect({ props: { name: 'options', value: 'c' } });
     await waitForStencilLifecycle(page);
 
     expect(await getNativeSelectValue(), 'initial').toBe('c');
@@ -1357,7 +1349,7 @@ describe('lifecycle', () => {
   });
 
   it('should work without unnecessary round trips on selection change by click', async () => {
-    await initSelect({ props: { value: 'a' } });
+    await initSelect({ props: { name: 'options', value: 'a' } });
     const buttonElement = await getButton();
 
     await buttonElement.click();
@@ -1382,7 +1374,7 @@ describe('lifecycle', () => {
   });
 
   it('should work without unnecessary round trips on selection change by keyboard', async () => {
-    await initSelect({ props: { value: 'a' } });
+    await initSelect({ props: { name: 'options', value: 'a' } });
     const buttonElement = await getButton();
 
     await buttonElement.press('Space'); // Open dropdown

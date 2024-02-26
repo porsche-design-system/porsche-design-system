@@ -1,5 +1,5 @@
 import type { Page } from 'puppeteer';
-import type { Components } from '@porsche-design-system/components';
+import type { Components } from '@porsche-design-system/components/src/components';
 import {
   addEventListener,
   expectA11yToMatchSnapshot,
@@ -65,13 +65,6 @@ const getNativeSelectOptions = () => page.$$('p-multi-select select option');
 const getLabel = () => selectNode(page, 'p-multi-select >>> label');
 const getResetButton = () => selectNode(page, 'p-multi-select >>> .button');
 const getAssertiveText = async () => await selectNode(page, 'span[aria-live="assertive"]');
-
-const labelSlotContent =
-  '<span slot="label" id="some-label-id">Some label with a <a href="https://designsystem.porsche.com">link</a>.</span>';
-const descriptionSlotContent =
-  '<span slot="description" id="some-description-id">Some description with a <a href="https://designsystem.porsche.com">link</a>.</span>';
-const messageSlotContent =
-  '<span slot="message" id="some-message-id">Some error message with a <a href="https://designsystem.porsche.com">link</a>.</span>';
 
 const setValue = async (value: string[]) =>
   await page.evaluate((el: HTMLPMultiSelectElement, value) => (el.value = value), await getHost(), value);
