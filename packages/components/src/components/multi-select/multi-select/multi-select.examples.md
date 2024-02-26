@@ -30,7 +30,7 @@ the component and the form, enabling the selected values to be included in the f
 
 <Playground :frameworkMarkup="formExample" :config="{ ...config, withoutDemo: true }">
   <form @submit.prevent="onSubmit">
-    <p-multi-select name="options" label="Some Label">
+    <p-multi-select name="options" label="Some Label" :theme="theme">
       <p-multi-select-option value="a">Option A</p-multi-select-option>
       <p-multi-select-option value="b">Option B</p-multi-select-option>
       <p-multi-select-option value="c">Option C</p-multi-select-option>
@@ -113,7 +113,7 @@ export default class Code extends Vue {
   formExample = getMultiSelectCodeSamples('default');
 
   basic() {
-    return `<p-multi-select name="name" label="Some Label" description="Some description" theme="${this.theme}" required>
+    return `<p-multi-select name="name" label="Some Label" description="Some description" required>
   <p-multi-select-option value="a">Option A</p-multi-select-option>
   <p-multi-select-option value="b">Option B</p-multi-select-option>
   <p-multi-select-option value="c">Option C</p-multi-select-option>
