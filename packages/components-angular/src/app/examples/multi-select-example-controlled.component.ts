@@ -12,7 +12,6 @@ import type { MultiSelectUpdateEventDetail } from '@porsche-design-system/compon
       <p-multi-select-option value="e">Option E</p-multi-select-option>
       <p-multi-select-option value="f">Option F</p-multi-select-option>
     </p-multi-select>
-    <button type="submit">Submit</button>
 
     <p-text>{{ debugText }}</p-text>
   `,
