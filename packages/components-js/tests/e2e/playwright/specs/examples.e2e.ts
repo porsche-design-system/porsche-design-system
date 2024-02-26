@@ -10,17 +10,12 @@ import {
   initConsoleObserver,
 } from '../helpers';
 
-import { createRequire } from 'node:module';
-
-// @ts-ignore
-const nodeRequire = createRequire(import.meta.url);
-
 test.beforeEach(async ({ page }) => {
   initConsoleObserver(page);
 });
 test.afterEach(async ({ page }) => await page.close());
 
-const filePath = path.resolve(nodeRequire.resolve('@porsche-design-system/components-js'), '../../../../index.html');
+const filePath = path.resolve(require.resolve('@porsche-design-system/components-js'), '../../../../index.html');
 const fileContent = fs.readFileSync(filePath, 'utf8');
 
 const [, rawOptions] = /<optgroup label="Examples">.*([\s\S]*?)<\/optgroup>/.exec(fileContent) || [];
