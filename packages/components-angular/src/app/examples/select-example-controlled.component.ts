@@ -12,7 +12,6 @@ import type { SelectUpdateEventDetail } from '@porsche-design-system/components-
       <p-select-option value="e">Option E</p-select-option>
       <p-select-option value="f">Option F</p-select-option>
     </p-select>
-    <button type="submit">Submit</button>
 
     <p-text>{{ debugText }}</p-text>
   `,
