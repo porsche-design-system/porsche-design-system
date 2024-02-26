@@ -1,5 +1,5 @@
 <script setup lang="ts">
-  import { PSelect, PSelectOption } from '@porsche-design-system/components-vue';
+  import { PSelect, PSelectOption, PText } from '@porsche-design-system/components-vue';
   import { ref } from 'vue';
 
   const lastSubmittedData = ref<string>('none');
@@ -22,5 +22,5 @@
     <button type="submit">Submit</button>
   </form>
 
-  <p>Last submitted data: {{ lastSubmittedData }}</p>
+  <PText>Last submitted data: {{ lastSubmittedData }}</PText>
 </template>

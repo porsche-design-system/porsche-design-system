@@ -14,7 +14,7 @@ import type { SelectUpdateEventDetail } from '@porsche-design-system/components-
     </p-select>
     <button type="submit">Submit</button>
 
-    <p>{{ debugText }}</p>
+    <p-text>{{ debugText }}</p-text>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })

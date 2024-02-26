@@ -1,5 +1,5 @@
 <script setup lang="ts">
-  import { type SelectUpdateEventDetail, PSelect, PSelectOption } from '@porsche-design-system/components-vue';
+  import { type SelectUpdateEventDetail, PSelect, PSelectOption, PText } from '@porsche-design-system/components-vue';
   import { computed, ref } from 'vue';
 
   const selectedValue = ref<string>('a');
@@ -23,5 +23,5 @@
     <PSelectOption :value="'f'">Option F</PSelectOption>
   </PSelect>
 
-  <p>{{ debugText }}</p>
+  <PText>{{ debugText }}</PText>
 </template>

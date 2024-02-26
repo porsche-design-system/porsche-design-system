@@ -15,7 +15,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       <button type="submit">Submit</button>
     </form>
 
-    <p>Last submitted data: {{ lastSubmittedData }}</p>
+    <p-text>Last submitted data: {{ lastSubmittedData }}</p-text>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })

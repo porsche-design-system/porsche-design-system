@@ -14,7 +14,7 @@ import type { MultiSelectUpdateEventDetail } from '@porsche-design-system/compon
     </p-multi-select>
     <button type="submit">Submit</button>
 
-    <p>{{ debugText }}</p>
+    <p-text>{{ debugText }}</p-text>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })

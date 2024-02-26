@@ -4,6 +4,7 @@ import {
   PMultiSelect,
   PMultiSelectOption,
   type PMultiSelectProps,
+  PText,
 } from '@porsche-design-system/components-react';
 
 export const MultiSelectControlledExamplePage = (): JSX.Element => {
@@ -26,7 +27,7 @@ export const MultiSelectControlledExamplePage = (): JSX.Element => {
         <PMultiSelectOption value="f">Option F</PMultiSelectOption>
       </PMultiSelect>
 
-      <p>{debugText}</p>
+      <PText>{debugText}</PText>
     </>
   );
 };

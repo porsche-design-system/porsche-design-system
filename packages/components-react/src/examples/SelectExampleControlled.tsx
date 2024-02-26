@@ -4,6 +4,7 @@ import {
   PSelect,
   PSelectOption,
   type PSelectProps,
+  PText,
 } from '@porsche-design-system/components-react';
 
 export const SelectControlledExamplePage = (): JSX.Element => {
@@ -26,7 +27,7 @@ export const SelectControlledExamplePage = (): JSX.Element => {
         <PSelectOption value="f">Option F</PSelectOption>
       </PSelect>
 
-      <p>{debugText}</p>
+      <PText>{debugText}</PText>
     </>
   );
 };

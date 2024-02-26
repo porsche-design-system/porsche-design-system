@@ -1,5 +1,5 @@
 import { type FormEvent, useState } from 'react';
-import { PMultiSelect, PMultiSelectOption } from '@porsche-design-system/components-react';
+import { PMultiSelect, PMultiSelectOption, PText } from '@porsche-design-system/components-react';
 
 export const MultiSelectExamplePage = (): JSX.Element => {
   const [lastSubmittedData, setLastSubmittedData] = useState('none');
@@ -24,7 +24,7 @@ export const MultiSelectExamplePage = (): JSX.Element => {
         <button type="submit">Submit</button>
       </form>
 
-      <p>Last submitted data: {lastSubmittedData}</p>
+      <PText>Last submitted data: {lastSubmittedData}</PText>
     </>
   );
 };

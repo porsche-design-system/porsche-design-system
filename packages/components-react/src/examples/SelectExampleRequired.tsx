@@ -1,5 +1,5 @@
 import { type FormEvent, useState } from 'react';
-import { PSelect, PSelectOption } from '@porsche-design-system/components-react';
+import { PSelect, PSelectOption, PText } from '@porsche-design-system/components-react';
 
 export const SelectRequiredExamplePage = (): JSX.Element => {
   const [lastSubmittedData, setLastSubmittedData] = useState('none');
@@ -41,7 +41,7 @@ export const SelectRequiredExamplePage = (): JSX.Element => {
         <button type="submit">Submit</button>
       </form>
 
-      <p>Last submitted data: {lastSubmittedData}</p>
+      <PText>Last submitted data: {lastSubmittedData}</PText>
     </>
   );
 };
