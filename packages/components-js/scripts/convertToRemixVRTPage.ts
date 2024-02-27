@@ -1,6 +1,6 @@
 import * as fs from 'fs';
 import * as path from 'path';
-import { paramCase } from 'change-case';
+import { kebabCase } from 'change-case';
 import { convertToReactVRTPage, ReactCharacteristics } from './convertToReactVRTPage';
 
 const sourceBasePath = path.resolve(__dirname, '../../components-react/src');
@@ -20,5 +20,5 @@ export const convertToRemixVRTPage = (
     .replace(/([\w>(])"([\w<)])/g, '$1&quot;$2') // escape double quotes
     .replace(/(url\()&quot;(.*)&quot;(\);)/, '$1"$2"$3'); // revert escaped double quotes for css styles
 
-  return { fileName: paramCase(fileName.replace(/\.tsx/, '')) + '.tsx', fileContent: newFileContent };
+  return { fileName: kebabCase(fileName.replace(/\.tsx/, '')) + '.tsx', fileContent: newFileContent };
 };

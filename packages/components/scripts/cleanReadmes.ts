@@ -1,7 +1,7 @@
 import * as fs from 'fs';
 import * as path from 'path';
 import { globbySync } from 'globby';
-import { capitalCase } from 'change-case';
+import { capitalCase } from 'latest-change-case';
 import type { TagName } from '@porsche-design-system/shared';
 
 const removeBuiltWith = (str: string): string =>
@@ -33,8 +33,9 @@ const adjustHeadlines = (str: string): string => {
     'p-flyout-navigation-item',
     'p-grid-item',
     'p-multi-select-option',
-    'p-stepper-horizontal-item',
     'p-segmented-control-item',
+    'p-select-option',
+    'p-stepper-horizontal-item',
     'p-table-cell',
     'p-table-head-cell',
     'p-tabs-item',

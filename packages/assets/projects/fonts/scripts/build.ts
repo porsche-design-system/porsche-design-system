@@ -2,7 +2,7 @@ import * as fs from 'fs';
 import * as path from 'path';
 import * as crypto from 'crypto';
 import { globbySync } from 'globby';
-import { paramCase, camelCase } from 'change-case';
+import { kebabCase, camelCase } from 'change-case';
 import { CDN_BASE_PATH_FONTS } from '../../../../../cdn.config';
 
 type Manifest = {
@@ -23,7 +23,7 @@ const createManifestAndCopyFonts = (files: string[]): void => {
     const name = path.basename(sourcePath, ext);
     const font = fs.readFileSync(sourcePath, { encoding: 'binary' });
     const hash = toHash(font);
-    const filename = `${paramCase(name)}.min.${hash}${ext}`;
+    const filename = `${kebabCase(name)}.min.${hash}${ext}`;
     const targetPath = path.normalize(`./dist/fonts/${filename}`);
 
     const nameKey = camelCase(name);

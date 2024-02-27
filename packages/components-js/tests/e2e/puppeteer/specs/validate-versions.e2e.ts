@@ -5,9 +5,11 @@ import {
   initConsoleObserver,
   setContentWithDesignSystem,
 } from '../helpers';
-import { version } from '@porsche-design-system/components-js/package.json';
+import pkg from '@porsche-design-system/components-js/package.json';
 import type { PorscheDesignSystem } from '@porsche-design-system/components/dist/types/bundle';
-import { VERSION_VALIDATION_TIMEOUT } from '@porsche-design-system/components/src/utils/validation';
+
+const version = pkg.version;
+const VERSION_VALIDATION_TIMEOUT = 3000;
 
 let page: Page;
 beforeEach(async () => {
@@ -22,7 +24,7 @@ it('should show warning about multiple different versions correctly', async () =
   await setContentWithDesignSystem(
     page,
     `<p-text>Some Text</p-text>
-    ${getOldLoaderScriptForPrefixes(prefixes)}`,
+     ${getOldLoaderScriptForPrefixes(prefixes)}`,
     {
       withoutWaitForComponentsReady: true,
     }

@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { themeLight, textSmallStyle } from '@porsche-design-system/components-angular/styles';
-import { paramCase } from 'change-case';
+import { kebabCase } from 'change-case';
 
 @Component({
   selector: 'page-utilities',
@@ -22,7 +22,7 @@ export class UtilitiesComponent {
       background: themeLight.primary,
       ...textSmallStyle,
     })
-      .map(([key, value]) => [paramCase(key), value].join(':'))
+      .map(([key, value]) => [kebabCase(key), value].join(':'))
       .join(';');
   };
 }

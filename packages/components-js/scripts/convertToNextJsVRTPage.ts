@@ -1,7 +1,7 @@
 import * as fs from 'fs';
 import * as path from 'path';
 import { convertToReactVRTPage, ReactCharacteristics } from './convertToReactVRTPage';
-import { paramCase } from 'change-case';
+import { kebabCase } from 'change-case';
 
 const sourceBasePath = path.resolve(__dirname, '../../components-react/src');
 const pollComponentsReadyFilePath = path.resolve(sourceBasePath, 'pollComponentsReady.ts');
@@ -36,7 +36,7 @@ export const convertToNextJsVRTPage = (
   }
 
   return {
-    fileName: `${paramCase(convertedFileName.replace(/\.tsx/, ''))}/page.tsx`,
+    fileName: `${kebabCase(convertedFileName.replace(/\.tsx/, ''))}/page.tsx`,
     fileContent: newFileContent,
   };
 };

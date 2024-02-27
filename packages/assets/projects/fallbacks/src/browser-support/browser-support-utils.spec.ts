@@ -1,4 +1,5 @@
 import { hasPorscheDesignSystemBrowserSupport } from './browser-support-utils';
+import { vi } from 'vitest';
 
 type Scenario = {
   IntersectionObserver: boolean;
@@ -24,7 +25,7 @@ describe('hasPorscheDesignSystemBrowserSupport()', () => {
     (scenario) => {
       const { IntersectionObserver, MutationObserver, customElements, result } = scenario;
 
-      jest.spyOn(global, 'window', 'get').mockImplementation(() => {
+      vi.spyOn(global, 'window', 'get').mockImplementation(() => {
         return {
           ...(IntersectionObserver && { IntersectionObserver: 'some IntersectionObserver constructor' }),
           ...(MutationObserver && { MutationObserver: 'some MutationObserver constructor' }),

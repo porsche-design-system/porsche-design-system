@@ -33,7 +33,7 @@
     "buildCopyComponentsOnly": "rm -rf ./cdn/components && COMPONENTS_ONLY=1 yarn build:copyAssets",
     "test": "yarn test:unit",
     "test:unit": "yarn test:unit:assets && yarn test:unit:fallbacks && yarn test:unit:icons && yarn test:unit:styles",
-    "test:unit:assets": "jest --colors -c tests/unit/config/jest.config.js",
+    "test:unit:assets": "vitest --config tests/unit/config/vitest.config.ts",
     "test:unit:fallbacks": "yarn --cwd projects/fallbacks test:unit",
     "test:unit:icons": "yarn --cwd projects/icons test:unit",
     "test:unit:styles": "yarn --cwd projects/styles test:unit",

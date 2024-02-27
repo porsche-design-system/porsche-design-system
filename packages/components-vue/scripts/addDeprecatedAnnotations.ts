@@ -1,7 +1,7 @@
 import * as fs from 'fs';
 import * as path from 'path';
 import { globbySync } from 'globby';
-import { paramCase } from 'change-case';
+import { kebabCase } from 'change-case';
 import type { TagName } from '@porsche-design-system/shared';
 import { getComponentMeta } from '@porsche-design-system/component-meta';
 
@@ -11,7 +11,7 @@ const addDeprecatedAnnotations = (): void => {
 
   let count = 0;
   typingFilePaths.forEach((filePath) => {
-    const tagName = ('p-' + paramCase(path.basename(filePath).replace(/Wrapper\.vue\.d\.ts$/, ''))) as TagName;
+    const tagName = ('p-' + kebabCase(path.basename(filePath).replace(/Wrapper\.vue\.d\.ts$/, ''))) as TagName;
     const { isDeprecated, deprecationMessage } = getComponentMeta(tagName);
 
     if (isDeprecated) {

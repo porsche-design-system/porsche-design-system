@@ -1,7 +1,7 @@
 import * as path from 'path';
 import * as fs from 'fs';
 import { globbySync } from 'globby';
-import { paramCase, pascalCase } from 'change-case';
+import { kebabCase, pascalCase } from 'latest-change-case';
 import { breakpoint } from '@porsche-design-system/utilities-v2';
 import type { TagName } from '@porsche-design-system/shared';
 import { INTERNAL_TAG_NAMES } from '@porsche-design-system/shared';
@@ -27,7 +27,7 @@ const generateDSRComponents = (): void => {
       const fileContent = fs.readFileSync(filePath, 'utf8');
 
       const componentName = pascalCase(filePath.split('/')!.pop()!.split('.')![0]);
-      const tagName = paramCase(`P${componentName}`) as TagName;
+      const tagName = kebabCase(`P${componentName}`) as TagName;
       const { isDelegatingFocus, hasSlot } = getComponentMeta(tagName) || {}; // Could be common component
 
       let newFileContent = fileContent
@@ -148,7 +148,7 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
       const componentImports = Array.from(newFileContent.matchAll(/<PrefixedTagNames.p([A-Za-z]+)/g))
         .map(([, cmpName]) => `P${cmpName}`)
         .filter((x, idx, arr) => arr.findIndex((t) => t === x) === idx) // remove duplicates
-        .filter((x) => !INTERNAL_TAG_NAMES.includes(paramCase(x) as TagName))
+        .filter((x) => !INTERNAL_TAG_NAMES.includes(kebabCase(x) as TagName))
         .join(', ');
       if (componentImports) {
         newFileContent = newFileContent.replace(/^/, `import { ${componentImports} } from '../components';\n`);
@@ -272,7 +272,7 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
         .replace(/ {\.\.\.toast}/, '') // toast
         .replace(/return this\.selectRef\.selectedIndex;/, 'return 0;') // select-wrapper-dropdown
         .replace(/determineDropdownDirection\(this\.props\,.+\)/, "'down'") // select-wrapper-dropdown
-        .replace(/getDropdownDirection\(this\.props.+\)/, "'down'") // multi-select
+        .replace(/(getDropdownDirection|getSelectDropdownDirection)\(this\.props.+\)/, "'down'") // select and multi-select
         .replace(/(this\.)props\.(isDisabledOrLoading)/g, '$1$2') // button, button-pure
         .replace(/(const (?:iconProps|btnProps|linkProps|buttonProps)) =/, '$1: any =') // workaround typing issue
         .replace(/(any)Deprecated/g, '$1') // workaround typings of deprecation maps
@@ -487,6 +487,26 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
           // remove any jsx since options are not visible in closed multi-select
           .replace(/<>\s*([\s\S]*)\s*<\/>/, '<></>')
           .replace(/this\.theme/, 'this.props.theme');
+      } else if (tagName === 'p-select') {
+        newFileContent = newFileContent
+          // replace wrapper className
+          .replace(/\{\{ wrapper: true, disabled: (this\.props\.disabled) }}/, `{\`wrapper\${$1 ? ' disabled' : ''}\`}`)
+          // replace toggle icon className
+          .replace(/className=\{\{ icon: true, 'icon--rotate': this\.props\.isOpen }}/, 'className="icon"')
+          .replace(/tabindex="-1"/, '')
+          // replace getSelectedOptionString
+          .replace(
+            /\{getSelectedOptionString\(typeof otherChildren\[0] === 'object' && 'props' in otherChildren\[0] && otherChildren\[0]\?\.propsOptions\)}/,
+            '{getSelectedOptionString(otherChildren)}'
+          )
+          .replace(/<span className="sr-only"[^<]*<\/span>/, '')
+          // .replace(/(SelectDropdownDirectionInternal)/, 'type $1')
+          .replace(/private searchTimeout: any\.Timeout \| number = null;/, '');
+      } else if (tagName === 'p-select-option') {
+        newFileContent = newFileContent
+          // remove any jsx since options are not visible in closed select
+          .replace(/<>\s*([\s\S]*)\s*<\/>/, '<></>')
+          .replace(/this\.theme/, 'this.props.theme');
       } else if (tagName === 'p-text-field-wrapper') {
         // make private like isSearch, isPassword and hasUnit work
         const rawPrivateMembers = Array.from(fileContent.matchAll(/this\.(?:is|has)[A-Z][A-Za-z]+ = .*?;/g))
@@ -588,7 +608,7 @@ $&`
   componentFileContents.forEach((fileContent) => {
     const name = /export (?:class|const) ([A-Z][A-Za-z]+)/.exec(fileContent)![1];
 
-    const fileName = `${paramCase(name.replace('DSR', ''))}.tsx`;
+    const fileName = `${kebabCase(name.replace('DSR', ''))}.tsx`;
     const filePath = path.resolve(destinationDirectory, fileName);
 
     fs.writeFileSync(filePath, fileContent);

@@ -4,7 +4,7 @@ import * as path from 'path';
 import * as fs from 'fs';
 import { themeLight, themeDark } from '@porsche-design-system/utilities-v2';
 import tinycolor2 from 'tinycolor2';
-import { pascalCase } from 'change-case';
+import { pascalCase } from 'latest-change-case';
 
 const darkenColor = (color: string) => tinycolor2(color).darken(12).toHexString().toUpperCase();
 const darkenColorSlightly = (color: string) => tinycolor2(color).darken(6).desaturate(37).toHexString().toUpperCase();

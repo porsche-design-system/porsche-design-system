@@ -1,7 +1,7 @@
 import type { TagName } from '@porsche-design-system/shared';
 import { ReactWrapperGenerator } from './ReactWrapperGenerator';
 import type { ExtendedProp } from './DataStructureBuilder';
-import { pascalCase, paramCase } from 'change-case';
+import { pascalCase, kebabCase } from 'latest-change-case';
 import { getComponentMeta } from '@porsche-design-system/component-meta';
 import { INTERNAL_TAG_NAMES } from '@porsche-design-system/shared';
 
@@ -14,7 +14,7 @@ export class NextJsReactWrapperGenerator extends ReactWrapperGenerator {
   public generateImports(component: TagName, extendedProps: ExtendedProp[], nonPrimitiveTypes: string[]): string {
     let imports = super.generateImports(component, extendedProps, nonPrimitiveTypes);
     const ssrComponentName = this.getSsrComponentName(component);
-    imports += `\nimport { ${ssrComponentName} } from '../dsr-components/${paramCase(
+    imports += `\nimport { ${ssrComponentName} } from '../dsr-components/${kebabCase(
       ssrComponentName.replace('DSR', '')
     )}';`;
 

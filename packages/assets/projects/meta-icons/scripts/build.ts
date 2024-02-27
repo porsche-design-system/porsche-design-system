@@ -2,7 +2,7 @@ import * as fs from 'fs';
 import * as path from 'path';
 import * as crypto from 'crypto';
 import { globbySync } from 'globby';
-import { paramCase, camelCase } from 'change-case';
+import { kebabCase, camelCase } from 'change-case';
 import { CDN_BASE_PATH_META_ICONS, CDN_BASE_URL_COM, CDN_BASE_URL_CN } from '../../../../../cdn.config';
 
 type Cdn = 'auto' | 'cn';
@@ -69,7 +69,7 @@ const copyMetaIconsAndBuildIconManifest = (files: string[]): MetaIconsManifest =
     const name = path.basename(sourcePath, ext);
     const metaIcons = fs.readFileSync(sourcePath, { encoding: 'binary' });
     const hash = toHash(metaIcons);
-    const filename = `${paramCase(name)}.${hash}${ext}`;
+    const filename = `${kebabCase(name)}.${hash}${ext}`;
     const targetPath = path.normalize(`./dist/meta-icons/${filename}`);
 
     const typeKey = camelCase(type);

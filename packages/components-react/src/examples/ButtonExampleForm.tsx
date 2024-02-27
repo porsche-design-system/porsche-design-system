@@ -1,5 +1,5 @@
 import { type FormEvent, useState } from 'react';
-import { PButton } from '@porsche-design-system/components-react';
+import { PButton, PText } from '@porsche-design-system/components-react';
 
 export const ButtonExampleFormPage = (): JSX.Element => {
   const [lastSubmittedData, setLastSubmittedData] = useState('none');
@@ -21,7 +21,7 @@ export const ButtonExampleFormPage = (): JSX.Element => {
         </PButton>
       </form>
 
-      <p>Last submitted data: {lastSubmittedData}</p>
+      <PText>Last submitted data: {lastSubmittedData}</PText>
     </>
   );
 };

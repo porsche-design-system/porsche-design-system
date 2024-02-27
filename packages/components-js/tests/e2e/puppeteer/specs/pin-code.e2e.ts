@@ -15,7 +15,6 @@ import {
   waitForStencilLifecycle,
 } from '../helpers';
 import { Components } from '@porsche-design-system/components';
-import { PIN_CODE_LENGTHS } from '@porsche-design-system/components/src/components/pin-code/pin-code-utils';
 
 let page: Page;
 beforeEach(async () => {
@@ -53,12 +52,12 @@ const initPinCode = (opts?: InitOptions) => {
   const { label = '', description = '', message = '' } = slots || {};
 
   const markup = `${markupBefore}
-    <p-pin-code ${getHTMLAttributes(props)}>
-      ${label}
-      ${description}
-      ${message}
-    </p-pin-code>
-    ${markupAfter}`;
+     <p-pin-code ${getHTMLAttributes(props)}>
+       ${label}
+       ${description}
+       ${message}
+     </p-pin-code>
+     ${markupAfter}`;
 
   return setContentWithDesignSystem(page, isWithinForm ? `<form onsubmit="return false;">${markup}</form>` : markup);
 };
@@ -79,12 +78,15 @@ describe('label', () => {
 });
 
 describe('render', () => {
-  it.each(PIN_CODE_LENGTHS)('should render correct amount of inputs with length=%d', async (length) => {
-    await initPinCode({ props: { length } });
-    const host = await getHost();
-    const amountOfInputs = await host.evaluate((el) => Array.from(el.shadowRoot.querySelectorAll('input')).length);
-    expect(amountOfInputs).toBe(length);
-  });
+  it.each([1, 2, 3, 4, 5, 6] as (1 | 2 | 3 | 4 | 5 | 6)[])(
+    'should render correct amount of inputs with length=%d',
+    async (length) => {
+      await initPinCode({ props: { length } });
+      const host = await getHost();
+      const amountOfInputs = await host.evaluate((el) => Array.from(el.shadowRoot.querySelectorAll('input')).length);
+      expect(amountOfInputs).toBe(length);
+    }
+  );
 });
 
 describe('within form', () => {
