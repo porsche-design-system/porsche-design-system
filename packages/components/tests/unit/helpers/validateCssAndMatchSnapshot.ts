@@ -78,11 +78,11 @@ const validateHoverMediaQuery = (cssObject: object) => {
 
 /**
  * Recursively applies a function to each key-value pair in a nested object.
- * @param jsonObject - The object to traverse recursively.
+ * @param obj - The object to traverse recursively.
  * @param fn - The function to apply to each key-value pair.
  */
-const recursivelyApply = (jsonObject: object, fn: (key: string, value: any) => void) => {
-  for (const [key, value] of Object.entries(jsonObject)) {
+const recursivelyApply = (obj: object, fn: (key: string, value: any) => void) => {
+  for (const [key, value] of Object.entries(obj)) {
     if (typeof value === 'object') {
       recursivelyApply(value, fn);
     } else {
