@@ -19,10 +19,8 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   box-sizing: border-box !important;
   border: 2px solid #6B6D70 !important;
   border-radius: 4px !important;
-  background: transparent !important;
   font: normal normal 400 1rem/calc(6px + 2.125ex + 6px) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   text-indent: 0 !important;
-  color: #010205 !important;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
   grid-area: 1/1/1/-1 !important;
   padding: 8px 16px !important;
@@ -48,6 +46,13 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 @media(hover:hover) {
   ::slotted(input:not(:disabled):not(:focus):not([readonly]):hover),label:hover~.wrapper ::slotted(input:not(:disabled):not(:focus):not([readonly])) {
     border-color: #010205 !important;
+  }
+}
+
+@supports (-webkit-touch-callout: none) {
+  ::slotted(input) {
+    background: transparent !important;
+    color: #010205 !important;
   }
 }
 
@@ -194,10 +199,8 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   box-sizing: border-box !important;
   border: 2px solid #CC1922 !important;
   border-radius: 4px !important;
-  background: transparent !important;
   font: normal normal 400 1rem/calc(6px + 2.125ex + 6px) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   text-indent: 0 !important;
-  color: #010205 !important;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
   grid-area: 1/1/1/-1 !important;
   padding: 8px 16px !important;
@@ -223,6 +226,13 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 @media(hover:hover) {
   ::slotted(input:not(:disabled):not(:focus):not([readonly]):hover),label:hover~.wrapper ::slotted(input:not(:disabled):not(:focus):not([readonly])) {
     border-color: #951219 !important;
+  }
+}
+
+@supports (-webkit-touch-callout: none) {
+  ::slotted(input) {
+    background: transparent !important;
+    color: #010205 !important;
   }
 }
 
@@ -313,10 +323,8 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   box-sizing: border-box !important;
   border: 2px solid #CC1922 !important;
   border-radius: 4px !important;
-  background: transparent !important;
   font: normal normal 400 1rem/calc(6px + 2.125ex + 6px) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   text-indent: 0 !important;
-  color: #010205 !important;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
   grid-area: 1/1/1/-1 !important;
   padding: 8px 16px !important;
@@ -342,6 +350,13 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 @media(hover:hover) {
   ::slotted(input:not(:disabled):not(:focus):not([readonly]):hover),label:hover~.wrapper ::slotted(input:not(:disabled):not(:focus):not([readonly])) {
     border-color: #951219 !important;
+  }
+}
+
+@supports (-webkit-touch-callout: none) {
+  ::slotted(input) {
+    background: transparent !important;
+    color: #010205 !important;
   }
 }
 
@@ -424,10 +439,8 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   box-sizing: border-box !important;
   border: 2px solid #CC1922 !important;
   border-radius: 4px !important;
-  background: transparent !important;
   font: normal normal 400 1rem/calc(6px + 2.125ex + 6px) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   text-indent: 0 !important;
-  color: #010205 !important;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
   grid-area: 1/1/1/-1 !important;
   padding: 8px 16px !important;
@@ -453,6 +466,13 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 @media(hover:hover) {
   ::slotted(input:not(:disabled):not(:focus):not([readonly]):hover),label:hover~.wrapper ::slotted(input:not(:disabled):not(:focus):not([readonly])) {
     border-color: #951219 !important;
+  }
+}
+
+@supports (-webkit-touch-callout: none) {
+  ::slotted(input) {
+    background: transparent !important;
+    color: #010205 !important;
   }
 }
 
@@ -548,10 +568,8 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   box-sizing: border-box !important;
   border: 2px solid #FC4040 !important;
   border-radius: 4px !important;
-  background: transparent !important;
   font: normal normal 400 1rem/calc(6px + 2.125ex + 6px) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   text-indent: 0 !important;
-  color: #FBFCFF !important;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
   grid-area: 1/1/1/-1 !important;
   padding: 8px 16px !important;
@@ -577,6 +595,13 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 @media(hover:hover) {
   ::slotted(input:not(:disabled):not(:focus):not([readonly]):hover),label:hover~.wrapper ::slotted(input:not(:disabled):not(:focus):not([readonly])) {
     border-color: #FB0404 !important;
+  }
+}
+
+@supports (-webkit-touch-callout: none) {
+  ::slotted(input) {
+    background: transparent !important;
+    color: #FBFCFF !important;
   }
 }
 
@@ -672,10 +697,8 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   box-sizing: border-box !important;
   border: 2px solid #CC1922 !important;
   border-radius: 4px !important;
-  background: transparent !important;
   font: normal normal 400 1rem/calc(6px + 2.125ex + 6px) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   text-indent: 0 !important;
-  color: #010205 !important;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
   grid-area: 1/1/1/-1 !important;
   padding: 8px 16px !important;
@@ -701,6 +724,13 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 @media(hover:hover) {
   ::slotted(input:not(:disabled):not(:focus):not([readonly]):hover),label:hover~.wrapper ::slotted(input:not(:disabled):not(:focus):not([readonly])) {
     border-color: #951219 !important;
+  }
+}
+
+@supports (-webkit-touch-callout: none) {
+  ::slotted(input) {
+    background: transparent !important;
+    color: #010205 !important;
   }
 }
 
@@ -796,10 +826,8 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   box-sizing: border-box !important;
   border: 2px solid #6B6D70 !important;
   border-radius: 4px !important;
-  background: transparent !important;
   font: normal normal 400 1rem/calc(6px + 2.125ex + 6px) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   text-indent: 0 !important;
-  color: #010205 !important;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
   grid-area: 1/1/1/-1 !important;
   padding: 8px 16px !important;
@@ -825,6 +853,13 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 @media(hover:hover) {
   ::slotted(input:not(:disabled):not(:focus):not([readonly]):hover),label:hover~.wrapper ::slotted(input:not(:disabled):not(:focus):not([readonly])) {
     border-color: #010205 !important;
+  }
+}
+
+@supports (-webkit-touch-callout: none) {
+  ::slotted(input) {
+    background: transparent !important;
+    color: #010205 !important;
   }
 }
 
@@ -914,10 +949,8 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   box-sizing: border-box !important;
   border: 2px solid #6B6D70 !important;
   border-radius: 4px !important;
-  background: transparent !important;
   font: normal normal 400 1rem/calc(6px + 2.125ex + 6px) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   text-indent: 0 !important;
-  color: #010205 !important;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
   grid-area: 1/1/1/-1 !important;
   padding: 8px 16px !important;
@@ -943,6 +976,13 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 @media(hover:hover) {
   ::slotted(input:not(:disabled):not(:focus):not([readonly]):hover),label:hover~.wrapper ::slotted(input:not(:disabled):not(:focus):not([readonly])) {
     border-color: #010205 !important;
+  }
+}
+
+@supports (-webkit-touch-callout: none) {
+  ::slotted(input) {
+    background: transparent !important;
+    color: #010205 !important;
   }
 }
 
@@ -1038,10 +1078,8 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   box-sizing: border-box !important;
   border: 2px solid #6B6D70 !important;
   border-radius: 4px !important;
-  background: transparent !important;
   font: normal normal 400 1rem/calc(6px + 2.125ex + 6px) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   text-indent: 0 !important;
-  color: #010205 !important;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
   grid-area: 1/1/1/-1 !important;
   padding: 8px 16px !important;
@@ -1067,6 +1105,13 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 @media(hover:hover) {
   ::slotted(input:not(:disabled):not(:focus):not([readonly]):hover),label:hover~.wrapper ::slotted(input:not(:disabled):not(:focus):not([readonly])) {
     border-color: #010205 !important;
+  }
+}
+
+@supports (-webkit-touch-callout: none) {
+  ::slotted(input) {
+    background: transparent !important;
+    color: #010205 !important;
   }
 }
 
@@ -1162,10 +1207,8 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   box-sizing: border-box !important;
   border: 2px solid #6B6D70 !important;
   border-radius: 4px !important;
-  background: transparent !important;
   font: normal normal 400 1rem/calc(6px + 2.125ex + 6px) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   text-indent: 0 !important;
-  color: #010205 !important;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
   grid-area: 1/1/1/-1 !important;
   padding: 8px 16px !important;
@@ -1191,6 +1234,13 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 @media(hover:hover) {
   ::slotted(input:not(:disabled):not(:focus):not([readonly]):hover),label:hover~.wrapper ::slotted(input:not(:disabled):not(:focus):not([readonly])) {
     border-color: #010205 !important;
+  }
+}
+
+@supports (-webkit-touch-callout: none) {
+  ::slotted(input) {
+    background: transparent !important;
+    color: #010205 !important;
   }
 }
 
@@ -1280,10 +1330,8 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   box-sizing: border-box !important;
   border: 2px solid #6B6D70 !important;
   border-radius: 4px !important;
-  background: transparent !important;
   font: normal normal 400 1rem/calc(6px + 2.125ex + 6px) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   text-indent: 0 !important;
-  color: #010205 !important;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
   grid-area: 1/1/1/-1 !important;
   padding: 8px 16px !important;
@@ -1309,6 +1357,13 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 @media(hover:hover) {
   ::slotted(input:not(:disabled):not(:focus):not([readonly]):hover),label:hover~.wrapper ::slotted(input:not(:disabled):not(:focus):not([readonly])) {
     border-color: #010205 !important;
+  }
+}
+
+@supports (-webkit-touch-callout: none) {
+  ::slotted(input) {
+    background: transparent !important;
+    color: #010205 !important;
   }
 }
 
@@ -1390,10 +1445,8 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   box-sizing: border-box !important;
   border: 2px solid #6B6D70 !important;
   border-radius: 4px !important;
-  background: transparent !important;
   font: normal normal 400 1rem/calc(6px + 2.125ex + 6px) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   text-indent: 0 !important;
-  color: #010205 !important;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
   grid-area: 1/1/1/-1 !important;
   padding: 8px 16px !important;
@@ -1420,6 +1473,13 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 @media(hover:hover) {
   ::slotted(input:not(:disabled):not(:focus):not([readonly]):hover),label:hover~.wrapper ::slotted(input:not(:disabled):not(:focus):not([readonly])) {
     border-color: #010205 !important;
+  }
+}
+
+@supports (-webkit-touch-callout: none) {
+  ::slotted(input) {
+    background: transparent !important;
+    color: #010205 !important;
   }
 }
 
@@ -1514,10 +1574,8 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   box-sizing: border-box !important;
   border: 2px solid #6B6D70 !important;
   border-radius: 4px !important;
-  background: transparent !important;
   font: normal normal 400 1rem/calc(6px + 2.125ex + 6px) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   text-indent: 0 !important;
-  color: #010205 !important;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
   grid-area: 1/1/1/-1 !important;
   padding: 8px 16px !important;
@@ -1543,6 +1601,13 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 @media(hover:hover) {
   ::slotted(input:not(:disabled):not(:focus):not([readonly]):hover),label:hover~.wrapper ::slotted(input:not(:disabled):not(:focus):not([readonly])) {
     border-color: #010205 !important;
+  }
+}
+
+@supports (-webkit-touch-callout: none) {
+  ::slotted(input) {
+    background: transparent !important;
+    color: #010205 !important;
   }
 }
 
@@ -1637,10 +1702,8 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   box-sizing: border-box !important;
   border: 2px solid #88898C !important;
   border-radius: 4px !important;
-  background: transparent !important;
   font: normal normal 400 1rem/calc(6px + 2.125ex + 6px) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   text-indent: 0 !important;
-  color: #FBFCFF !important;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
   grid-area: 1/1/1/-1 !important;
   padding: 8px 16px !important;
@@ -1666,6 +1729,13 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 @media(hover:hover) {
   ::slotted(input:not(:disabled):not(:focus):not([readonly]):hover),label:hover~.wrapper ::slotted(input:not(:disabled):not(:focus):not([readonly])) {
     border-color: #FBFCFF !important;
+  }
+}
+
+@supports (-webkit-touch-callout: none) {
+  ::slotted(input) {
+    background: transparent !important;
+    color: #FBFCFF !important;
   }
 }
 
@@ -1760,10 +1830,8 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   box-sizing: border-box !important;
   border: 2px solid #6B6D70 !important;
   border-radius: 4px !important;
-  background: transparent !important;
   font: normal normal 400 1rem/calc(6px + 2.125ex + 6px) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   text-indent: 0 !important;
-  color: #010205 !important;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
   grid-area: 1/1/1/-1 !important;
   padding: 8px 16px !important;
@@ -1789,6 +1857,13 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 @media(hover:hover) {
   ::slotted(input:not(:disabled):not(:focus):not([readonly]):hover),label:hover~.wrapper ::slotted(input:not(:disabled):not(:focus):not([readonly])) {
     border-color: #010205 !important;
+  }
+}
+
+@supports (-webkit-touch-callout: none) {
+  ::slotted(input) {
+    background: transparent !important;
+    color: #010205 !important;
   }
 }
 
@@ -1883,10 +1958,8 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   box-sizing: border-box !important;
   border: 2px solid #197E10 !important;
   border-radius: 4px !important;
-  background: transparent !important;
   font: normal normal 400 1rem/calc(6px + 2.125ex + 6px) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   text-indent: 0 !important;
-  color: #010205 !important;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
   grid-area: 1/1/1/-1 !important;
   padding: 8px 16px !important;
@@ -1912,6 +1985,13 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 @media(hover:hover) {
   ::slotted(input:not(:disabled):not(:focus):not([readonly]):hover),label:hover~.wrapper ::slotted(input:not(:disabled):not(:focus):not([readonly])) {
     border-color: #0E4809 !important;
+  }
+}
+
+@supports (-webkit-touch-callout: none) {
+  ::slotted(input) {
+    background: transparent !important;
+    color: #010205 !important;
   }
 }
 
@@ -2002,10 +2082,8 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   box-sizing: border-box !important;
   border: 2px solid #197E10 !important;
   border-radius: 4px !important;
-  background: transparent !important;
   font: normal normal 400 1rem/calc(6px + 2.125ex + 6px) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   text-indent: 0 !important;
-  color: #010205 !important;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
   grid-area: 1/1/1/-1 !important;
   padding: 8px 16px !important;
@@ -2031,6 +2109,13 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 @media(hover:hover) {
   ::slotted(input:not(:disabled):not(:focus):not([readonly]):hover),label:hover~.wrapper ::slotted(input:not(:disabled):not(:focus):not([readonly])) {
     border-color: #0E4809 !important;
+  }
+}
+
+@supports (-webkit-touch-callout: none) {
+  ::slotted(input) {
+    background: transparent !important;
+    color: #010205 !important;
   }
 }
 
@@ -2113,10 +2198,8 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   box-sizing: border-box !important;
   border: 2px solid #197E10 !important;
   border-radius: 4px !important;
-  background: transparent !important;
   font: normal normal 400 1rem/calc(6px + 2.125ex + 6px) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   text-indent: 0 !important;
-  color: #010205 !important;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
   grid-area: 1/1/1/-1 !important;
   padding: 8px 16px !important;
@@ -2142,6 +2225,13 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 @media(hover:hover) {
   ::slotted(input:not(:disabled):not(:focus):not([readonly]):hover),label:hover~.wrapper ::slotted(input:not(:disabled):not(:focus):not([readonly])) {
     border-color: #0E4809 !important;
+  }
+}
+
+@supports (-webkit-touch-callout: none) {
+  ::slotted(input) {
+    background: transparent !important;
+    color: #010205 !important;
   }
 }
 
@@ -2237,10 +2327,8 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   box-sizing: border-box !important;
   border: 2px solid #09D087 !important;
   border-radius: 4px !important;
-  background: transparent !important;
   font: normal normal 400 1rem/calc(6px + 2.125ex + 6px) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   text-indent: 0 !important;
-  color: #FBFCFF !important;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
   grid-area: 1/1/1/-1 !important;
   padding: 8px 16px !important;
@@ -2266,6 +2354,13 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 @media(hover:hover) {
   ::slotted(input:not(:disabled):not(:focus):not([readonly]):hover),label:hover~.wrapper ::slotted(input:not(:disabled):not(:focus):not([readonly])) {
     border-color: #069561 !important;
+  }
+}
+
+@supports (-webkit-touch-callout: none) {
+  ::slotted(input) {
+    background: transparent !important;
+    color: #FBFCFF !important;
   }
 }
 
@@ -2361,10 +2456,8 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   box-sizing: border-box !important;
   border: 2px solid #197E10 !important;
   border-radius: 4px !important;
-  background: transparent !important;
   font: normal normal 400 1rem/calc(6px + 2.125ex + 6px) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   text-indent: 0 !important;
-  color: #010205 !important;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
   grid-area: 1/1/1/-1 !important;
   padding: 8px 16px !important;
@@ -2390,6 +2483,13 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 @media(hover:hover) {
   ::slotted(input:not(:disabled):not(:focus):not([readonly]):hover),label:hover~.wrapper ::slotted(input:not(:disabled):not(:focus):not([readonly])) {
     border-color: #0E4809 !important;
+  }
+}
+
+@supports (-webkit-touch-callout: none) {
+  ::slotted(input) {
+    background: transparent !important;
+    color: #010205 !important;
   }
 }
 
@@ -2485,10 +2585,8 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
   box-sizing: border-box !important;
   border: 2px solid #CC1922 !important;
   border-radius: 4px !important;
-  background: transparent !important;
   font: normal normal 400 1rem/calc(6px + 2.125ex + 6px) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   text-indent: 0 !important;
-  color: #010205 !important;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
   grid-area: 1/1/1/-1 !important;
   padding: 8px 16px !important;
@@ -2514,6 +2612,13 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
 @media(hover:hover) {
   ::slotted(input:not(:disabled):not(:focus):not([readonly]):hover),label:hover~.wrapper ::slotted(input:not(:disabled):not(:focus):not([readonly])) {
     border-color: #951219 !important;
+  }
+}
+
+@supports (-webkit-touch-callout: none) {
+  ::slotted(input) {
+    background: transparent !important;
+    color: #010205 !important;
   }
 }
 
@@ -2603,10 +2708,8 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
   box-sizing: border-box !important;
   border: 2px solid #CC1922 !important;
   border-radius: 4px !important;
-  background: transparent !important;
   font: normal normal 400 1rem/calc(6px + 2.125ex + 6px) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   text-indent: 0 !important;
-  color: #010205 !important;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
   grid-area: 1/1/1/-1 !important;
   padding: 8px 16px !important;
@@ -2632,6 +2735,13 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
 @media(hover:hover) {
   ::slotted(input:not(:disabled):not(:focus):not([readonly]):hover),label:hover~.wrapper ::slotted(input:not(:disabled):not(:focus):not([readonly])) {
     border-color: #951219 !important;
+  }
+}
+
+@supports (-webkit-touch-callout: none) {
+  ::slotted(input) {
+    background: transparent !important;
+    color: #010205 !important;
   }
 }
 
@@ -2713,10 +2823,8 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
   box-sizing: border-box !important;
   border: 2px solid #CC1922 !important;
   border-radius: 4px !important;
-  background: transparent !important;
   font: normal normal 400 1rem/calc(6px + 2.125ex + 6px) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   text-indent: 0 !important;
-  color: #010205 !important;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
   grid-area: 1/1/1/-1 !important;
   padding: 8px 16px !important;
@@ -2742,6 +2850,13 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
 @media(hover:hover) {
   ::slotted(input:not(:disabled):not(:focus):not([readonly]):hover),label:hover~.wrapper ::slotted(input:not(:disabled):not(:focus):not([readonly])) {
     border-color: #951219 !important;
+  }
+}
+
+@supports (-webkit-touch-callout: none) {
+  ::slotted(input) {
+    background: transparent !important;
+    color: #010205 !important;
   }
 }
 
@@ -2836,10 +2951,8 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
   box-sizing: border-box !important;
   border: 2px solid #6B6D70 !important;
   border-radius: 4px !important;
-  background: transparent !important;
   font: normal normal 400 1rem/calc(6px + 2.125ex + 6px) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   text-indent: 0 !important;
-  color: #010205 !important;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
   grid-area: 1/1/1/-1 !important;
   padding: 8px 16px !important;
@@ -2865,6 +2978,13 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
 @media(hover:hover) {
   ::slotted(input:not(:disabled):not(:focus):not([readonly]):hover),label:hover~.wrapper ::slotted(input:not(:disabled):not(:focus):not([readonly])) {
     border-color: #010205 !important;
+  }
+}
+
+@supports (-webkit-touch-callout: none) {
+  ::slotted(input) {
+    background: transparent !important;
+    color: #010205 !important;
   }
 }
 
@@ -2953,10 +3073,8 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
   box-sizing: border-box !important;
   border: 2px solid #6B6D70 !important;
   border-radius: 4px !important;
-  background: transparent !important;
   font: normal normal 400 1rem/calc(6px + 2.125ex + 6px) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   text-indent: 0 !important;
-  color: #010205 !important;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
   grid-area: 1/1/1/-1 !important;
   padding: 8px 16px !important;
@@ -2982,6 +3100,13 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
 @media(hover:hover) {
   ::slotted(input:not(:disabled):not(:focus):not([readonly]):hover),label:hover~.wrapper ::slotted(input:not(:disabled):not(:focus):not([readonly])) {
     border-color: #010205 !important;
+  }
+}
+
+@supports (-webkit-touch-callout: none) {
+  ::slotted(input) {
+    background: transparent !important;
+    color: #010205 !important;
   }
 }
 
@@ -3062,10 +3187,8 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
   box-sizing: border-box !important;
   border: 2px solid #6B6D70 !important;
   border-radius: 4px !important;
-  background: transparent !important;
   font: normal normal 400 1rem/calc(6px + 2.125ex + 6px) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   text-indent: 0 !important;
-  color: #010205 !important;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
   grid-area: 1/1/1/-1 !important;
   padding: 8px 16px !important;
@@ -3091,6 +3214,13 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
 @media(hover:hover) {
   ::slotted(input:not(:disabled):not(:focus):not([readonly]):hover),label:hover~.wrapper ::slotted(input:not(:disabled):not(:focus):not([readonly])) {
     border-color: #010205 !important;
+  }
+}
+
+@supports (-webkit-touch-callout: none) {
+  ::slotted(input) {
+    background: transparent !important;
+    color: #010205 !important;
   }
 }
 
@@ -3184,10 +3314,8 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
   box-sizing: border-box !important;
   border: 2px solid #197E10 !important;
   border-radius: 4px !important;
-  background: transparent !important;
   font: normal normal 400 1rem/calc(6px + 2.125ex + 6px) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   text-indent: 0 !important;
-  color: #010205 !important;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
   grid-area: 1/1/1/-1 !important;
   padding: 8px 16px !important;
@@ -3213,6 +3341,13 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
 @media(hover:hover) {
   ::slotted(input:not(:disabled):not(:focus):not([readonly]):hover),label:hover~.wrapper ::slotted(input:not(:disabled):not(:focus):not([readonly])) {
     border-color: #0E4809 !important;
+  }
+}
+
+@supports (-webkit-touch-callout: none) {
+  ::slotted(input) {
+    background: transparent !important;
+    color: #010205 !important;
   }
 }
 
@@ -3302,10 +3437,8 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
   box-sizing: border-box !important;
   border: 2px solid #197E10 !important;
   border-radius: 4px !important;
-  background: transparent !important;
   font: normal normal 400 1rem/calc(6px + 2.125ex + 6px) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   text-indent: 0 !important;
-  color: #010205 !important;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
   grid-area: 1/1/1/-1 !important;
   padding: 8px 16px !important;
@@ -3331,6 +3464,13 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
 @media(hover:hover) {
   ::slotted(input:not(:disabled):not(:focus):not([readonly]):hover),label:hover~.wrapper ::slotted(input:not(:disabled):not(:focus):not([readonly])) {
     border-color: #0E4809 !important;
+  }
+}
+
+@supports (-webkit-touch-callout: none) {
+  ::slotted(input) {
+    background: transparent !important;
+    color: #010205 !important;
   }
 }
 
@@ -3412,10 +3552,8 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
   box-sizing: border-box !important;
   border: 2px solid #197E10 !important;
   border-radius: 4px !important;
-  background: transparent !important;
   font: normal normal 400 1rem/calc(6px + 2.125ex + 6px) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   text-indent: 0 !important;
-  color: #010205 !important;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
   grid-area: 1/1/1/-1 !important;
   padding: 8px 16px !important;
@@ -3441,6 +3579,13 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
 @media(hover:hover) {
   ::slotted(input:not(:disabled):not(:focus):not([readonly]):hover),label:hover~.wrapper ::slotted(input:not(:disabled):not(:focus):not([readonly])) {
     border-color: #0E4809 !important;
+  }
+}
+
+@supports (-webkit-touch-callout: none) {
+  ::slotted(input) {
+    background: transparent !important;
+    color: #010205 !important;
   }
 }
 
@@ -3535,10 +3680,8 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
   box-sizing: border-box !important;
   border: 2px solid #CC1922 !important;
   border-radius: 4px !important;
-  background: transparent !important;
   font: normal normal 400 1rem/calc(6px + 2.125ex + 6px) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   text-indent: 0 !important;
-  color: #010205 !important;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
   grid-area: 1/1/1/-1 !important;
   padding: 8px 16px !important;
@@ -3564,6 +3707,13 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
 @media(hover:hover) {
   ::slotted(input:not(:disabled):not(:focus):not([readonly]):hover),label:hover~.wrapper ::slotted(input:not(:disabled):not(:focus):not([readonly])) {
     border-color: #951219 !important;
+  }
+}
+
+@supports (-webkit-touch-callout: none) {
+  ::slotted(input) {
+    background: transparent !important;
+    color: #010205 !important;
   }
 }
 
@@ -3645,10 +3795,8 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
   box-sizing: border-box !important;
   border: 2px solid #CC1922 !important;
   border-radius: 4px !important;
-  background: transparent !important;
   font: normal normal 400 1rem/calc(6px + 2.125ex + 6px) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   text-indent: 0 !important;
-  color: #010205 !important;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
   grid-area: 1/1/1/-1 !important;
   padding: 8px 16px !important;
@@ -3674,6 +3822,13 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
 @media(hover:hover) {
   ::slotted(input:not(:disabled):not(:focus):not([readonly]):hover),label:hover~.wrapper ::slotted(input:not(:disabled):not(:focus):not([readonly])) {
     border-color: #951219 !important;
+  }
+}
+
+@supports (-webkit-touch-callout: none) {
+  ::slotted(input) {
+    background: transparent !important;
+    color: #010205 !important;
   }
 }
 
