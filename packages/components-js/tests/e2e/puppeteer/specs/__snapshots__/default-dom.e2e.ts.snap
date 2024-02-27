@@ -190,15 +190,14 @@ exports[`should have no basic DOM regression for p-flyout 1`] = `
 "<dialog inert="" tabindex="-1">
   <div class="wrapper">
     <div class="header">
-      <p-button-pure class="dismiss hydrated">
-        Dismiss flyout</p-button-pure>
+      <p-button-pure class="dismiss hydrated"> Dismiss flyout</p-button-pure>
     </div>
     <div class="content">
-      <slot>
-      </slot>
+      <slot> </slot>
     </div>
   </div>
-</dialog>"
+</dialog>
+"
 `;
 
 exports[`should have no basic DOM regression for p-flyout-navigation 1`] = `
@@ -633,57 +632,6 @@ exports[`should have no basic DOM regression for p-segmented-control-item 1`] = 
 "<button type="button" aria-pressed="false">
   <slot> </slot>
 </button>
-"
-`;
-
-exports[`should have no basic DOM regression for p-select 1`] = `
-"<div class="root">
-  <label class="label" id="label" for="value"> </label>
-  <span class="sr-only"> No option selected, 0 options in total</span>
-  <div class="wrapper">
-    <button
-      type="button"
-      role="combobox"
-      id="value"
-      aria-labelledby="label"
-      aria-haspopup="listbox"
-      aria-expanded="false"
-      aria-required="false"
-      aria-controls="list"
-    ></button>
-    <p-icon class="icon hydrated" aria-hidden="true"> </p-icon>
-    <div
-      id="list"
-      class="listbox"
-      role="listbox"
-      aria-label=""
-      aria-hidden="true"
-      tabindex="-1"
-    >
-      <slot> </slot>
-    </div>
-  </div>
-  <span
-    class="sr-only"
-    role="status"
-    aria-live="assertive"
-    aria-relevant="additions text"
-  >
-  </span>
-</div>
-"
-`;
-
-exports[`should have no basic DOM regression for p-select-option 1`] = `
-"<div
-  role="option"
-  class="option option--selected"
-  aria-selected="true"
-  aria-label="Empty value"
->
-  <slot> </slot>
-  <p-icon class="icon hydrated" aria-hidden="true"> </p-icon>
-</div>
 "
 `;
 
