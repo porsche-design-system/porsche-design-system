@@ -61,7 +61,7 @@ const validateHoverMediaQuery = (cssObject: object) => {
   Object.entries(cssObject).forEach(([key, value]) => {
     // potential media query
     if (typeof value === 'object') {
-      Object.entries(value).forEach(([childKey]) => {
+      Object.keys(value).forEach((childKey) => {
         // nested selectors inside media query
         if (childKey.match(/:hover/)) {
           expect(key).toBe('@media(hover:hover)');
