@@ -1,5 +1,5 @@
 import { expect } from '@jest/globals';
-import { componentMeta } from '@porsche-design-system/component-meta';
+import { getComponentMeta } from '@porsche-design-system/component-meta';
 import { getCssObject } from '../../../src/test-utils';
 import { TagName } from '@porsche-design-system/shared';
 
@@ -8,7 +8,7 @@ export const validateCssAndMatchSnapshot = (css: string) => {
   const componentName = expect.getState().testPath.match(/\/([^\/]+)\/[^\/]+\.spec\.ts/)[1];
   const componentTagName = `p-${componentName}` as TagName;
   // Extract componentMeta from testPath, if it's a functional component this will be undefined
-  const currentComponentMeta = componentMeta[componentTagName];
+  const componentMeta = getComponentMeta(componentTagName);
 
   expect(css).not.toMatch('. {'); // Invalid css which was produced before
 
@@ -17,7 +17,7 @@ export const validateCssAndMatchSnapshot = (css: string) => {
   validateHoverMediaQuery(cssObject);
 
   // Validations for components only
-  if (currentComponentMeta && !currentComponentMeta.isInternal) {
+  if (componentMeta && !componentMeta.isInternal) {
     expect(cssObject[':host([hidden])']).toEqual({ display: 'none !important' });
     validateHostDisplayStyle(cssObject);
   }
