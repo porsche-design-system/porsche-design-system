@@ -17,7 +17,7 @@ import type { MultiSelectUpdateEventDetail } from '@porsche-design-system/compon
     <button type="button" (click)="onSetValue()">Set Value</button>
     <button type="button" (click)="onResetValue()">Reset value</button>
 
-    <p-multi-select name="options" label="Some Label" [value]="selectedValues" (update)="handleUpdate($event)">
+    <p-multi-select name="options" label="Some Label" [value]="selectedValues" (update)="onUpdate($event)">
       <p-multi-select-option *ngFor="let idx of optionIndices" [value]="(idx + 1).toString()"
         >Option {{ idx + 1 }}</p-multi-select-option
       >
@@ -50,7 +50,7 @@ export class MultiSelectExampleDynamicComponent {
     this.inputValue = '';
   }
 
-  handleUpdate(e: CustomEvent<MultiSelectUpdateEventDetail>) {
+  onUpdate(e: CustomEvent<MultiSelectUpdateEventDetail>) {
     this.selectedValues = e.detail.value;
     this.inputValue = e.detail.value.join(',');
   }

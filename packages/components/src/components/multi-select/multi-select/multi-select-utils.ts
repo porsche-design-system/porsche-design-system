@@ -1,11 +1,11 @@
 import type { FormState } from '../../../utils/form/form-state';
-import type { SelectDropdownDirection, SelectDropdownDirectionInternal, Theme } from '../../../utils';
+import type { SelectComponentsDropdownDirection, SelectDropdownDirectionInternal, Theme } from '../../../utils';
 import { consoleWarn, determineDropdownDirection, setAttribute, setAttributes } from '../../../utils';
 import type { MultiSelectOptionInternalHTMLProps } from '../multi-select-option/multi-select-option-utils';
 import { forceUpdate } from '@stencil/core';
 
 export type MultiSelectState = FormState;
-export type MultiSelectDropdownDirection = SelectDropdownDirection;
+export type MultiSelectDropdownDirection = SelectComponentsDropdownDirection;
 export type MultiSelectOption = HTMLPMultiSelectOptionElement & MultiSelectOptionInternalHTMLProps;
 
 /** @deprecated */
@@ -14,6 +14,8 @@ export type MultiSelectUpdateEvent = {
   value: string[];
 };
 export type MultiSelectUpdateEventDetail = MultiSelectUpdateEvent;
+
+export const INTERNAL_MULTI_SELECT_SLOT = 'internal-select';
 
 export const syncMultiSelectOptionProps = (options: MultiSelectOption[], theme: Theme): void => {
   options
@@ -24,7 +26,7 @@ export const syncMultiSelectOptionProps = (options: MultiSelectOption[], theme: 
     });
 };
 
-export const initNativeSelect = (
+export const initNativeMultiSelect = (
   host: HTMLElement,
   name: string,
   disabled: boolean,
@@ -35,14 +37,14 @@ export const initNativeSelect = (
     multiple: 'true',
     'aria-hidden': 'true',
     tabindex: '-1',
-    slot: 'internal-select',
+    slot: INTERNAL_MULTI_SELECT_SLOT,
   });
-  syncNativeSelect(nativeSelect, name, disabled, required);
+  syncNativeMultiSelect(nativeSelect, name, disabled, required);
   host.prepend(nativeSelect);
   return nativeSelect;
 };
 
-export const syncNativeSelect = (
+export const syncNativeMultiSelect = (
   nativeSelect: HTMLSelectElement,
   name: string,
   disabled: boolean,
@@ -185,7 +187,7 @@ export const handleDropdownScroll = (scrollElement: HTMLElement, element: HTMLEl
 };
 
 export const getDropdownDirection = (
-  direction: SelectDropdownDirection,
+  direction: SelectComponentsDropdownDirection,
   host: HTMLElement,
   options: MultiSelectOption[]
 ): SelectDropdownDirectionInternal => {

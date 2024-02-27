@@ -201,6 +201,26 @@ export const routes: ExtendedRoute[] = [
     component: fromExamples.SegmentedControlExampleComponent,
   },
   {
+    name: 'Select Example',
+    path: 'select-example',
+    component: fromExamples.SelectExampleComponent,
+  },
+  {
+    name: 'Select Example Controlled',
+    path: 'select-example-controlled',
+    component: fromExamples.SelectExampleControlledComponent,
+  },
+  {
+    name: 'Select Example Dynamic',
+    path: 'select-example-dynamic',
+    component: fromExamples.SelectExampleDynamicComponent,
+  },
+  {
+    name: 'Select Example Required',
+    path: 'select-example-required',
+    component: fromExamples.SelectExampleRequiredComponent,
+  },
+  {
     name: 'Stepper Horizontal Example',
     path: 'stepper-horizontal-example',
     component: fromExamples.StepperHorizontalExampleComponent,
