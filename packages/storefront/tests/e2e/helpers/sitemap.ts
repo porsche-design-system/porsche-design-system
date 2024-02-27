@@ -58,7 +58,8 @@ export const buildSitemap = async (): Promise<string[]> => {
     }
   }
 
-  allUrls = allUrls.sort();
+  // filter out porsche design system pull request urls, otherwise we'd need to re-run CI all the time
+  allUrls = allUrls.sort().filter(link => !link.startsWith('https://github.com/porsche-design-system/porsche-design-system/pull/'));
   const internalUrls = allUrls.filter((link) => link.startsWith('/'));
   const externalUrls = allUrls.filter((link) => !link.startsWith('/'));
 
