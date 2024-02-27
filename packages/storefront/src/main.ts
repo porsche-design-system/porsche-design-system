@@ -10,6 +10,7 @@ import A11yIcon from '@/components/A11yIcon.vue';
 import PartialDocs from '@/components/PartialDocs.vue';
 import PlaygroundButton from '@/components/PlaygroundButton.vue';
 import PlaygroundInput from '@/components/PlaygroundInput.vue';
+import PlaygroundCheckbox from '@/components/PlaygroundCheckbox.vue';
 import PlaygroundSelect from '@/components/PlaygroundSelect.vue';
 import ComponentHeading from '@/components/ComponentHeading.vue';
 import ComponentMetaOverview from '@/components/ComponentMetaOverview.vue';
@@ -52,6 +53,7 @@ Vue.use({
     vue.component('Playground', Playground);
     vue.component('PlaygroundButton', PlaygroundButton);
     vue.component('PlaygroundInput', PlaygroundInput);
+    vue.component('PlaygroundCheckbox', PlaygroundCheckbox);
     vue.component('PlaygroundSelect', PlaygroundSelect);
     vue.component('TableOfContents', TableOfContents);
     vue.component('ComponentHeading', ComponentHeading);

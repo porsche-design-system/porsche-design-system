@@ -3,6 +3,7 @@
     type MultiSelectUpdateEventDetail,
     PMultiSelect,
     PMultiSelectOption,
+    PText,
   } from '@porsche-design-system/components-vue';
   import { computed, ref } from 'vue';
 
@@ -27,5 +28,5 @@
     <PMultiSelectOption :value="'f'">Option F</PMultiSelectOption>
   </PMultiSelect>
 
-  <p>{{ debugText }}</p>
+  <PText>{{ debugText }}</PText>
 </template>

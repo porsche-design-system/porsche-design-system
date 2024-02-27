@@ -640,6 +640,57 @@ exports[`should have no basic DOM regression for p-segmented-control-item 1`] = 
 "
 `;
 
+exports[`should have no basic DOM regression for p-select 1`] = `
+"<div class="root">
+  <label class="label" id="label" for="value"> </label>
+  <span class="sr-only"> No option selected, 0 options in total</span>
+  <div class="wrapper">
+    <button
+      type="button"
+      role="combobox"
+      id="value"
+      aria-labelledby="label"
+      aria-haspopup="listbox"
+      aria-expanded="false"
+      aria-required="false"
+      aria-controls="list"
+    ></button>
+    <p-icon class="icon hydrated" aria-hidden="true"> </p-icon>
+    <div
+      id="list"
+      class="listbox"
+      role="listbox"
+      aria-label=""
+      aria-hidden="true"
+      tabindex="-1"
+    >
+      <slot> </slot>
+    </div>
+  </div>
+  <span
+    class="sr-only"
+    role="status"
+    aria-live="assertive"
+    aria-relevant="additions text"
+  >
+  </span>
+</div>
+"
+`;
+
+exports[`should have no basic DOM regression for p-select-option 1`] = `
+"<div
+  role="option"
+  class="option option--selected"
+  aria-selected="true"
+  aria-label="Empty value"
+>
+  <slot> </slot>
+  <p-icon class="icon hydrated" aria-hidden="true"> </p-icon>
+</div>
+"
+`;
+
 exports[`should have no basic DOM regression for p-select-wrapper 1`] = `
 "<div class="root">
   <label class="label" id="label"> </label>
