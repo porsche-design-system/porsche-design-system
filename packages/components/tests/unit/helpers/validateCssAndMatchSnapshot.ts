@@ -28,7 +28,7 @@ export const validateCssAndMatchSnapshot = (css: string) => {
 // We shouldn't use visibility: visible since it cannot be overridden, use inherit instead
 const validateVisibilityStyle = (cssObject: object) => {
   recursivelyApply(cssObject, (key, value) => {
-    if (key.includes('visibility')) {
+    if (key === 'visibility') {
       expect(value).not.toMatch(/visible/);
     }
   });
