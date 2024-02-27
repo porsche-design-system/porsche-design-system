@@ -1,7 +1,7 @@
 import { expect } from '@jest/globals';
 import { getComponentMeta } from '@porsche-design-system/component-meta';
 import { getCssObject } from '../../../src/test-utils';
-import { TagName } from '@porsche-design-system/shared';
+import type { TagName } from '@porsche-design-system/shared';
 
 export const validateCssAndMatchSnapshot = (css: string) => {
   const cssObject = getCssObject(css);
