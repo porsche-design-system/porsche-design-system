@@ -46,7 +46,7 @@ const validateHostDisplayStyle = (cssObject: object) => {
 
 // Expect all slotted styles to be !important since they shouldn't be overridable
 const validateSlottedStyles = (cssObject: object, tagName: TagName) => {
-  recursivelyApplyForKey(cssObject, '::slotted', (_, value) => {
+  recursivelyApplyForKeyIncludes(cssObject, '::slotted', (_, value) => {
     Object.entries(value).forEach(([cssProp, cssValue]) => {
       // exceptions for tagName and css property are defined here
       if (tagName !== 'p-textarea-wrapper' || !['height', 'min-height', 'resize'].includes(cssProp)) {
@@ -92,17 +92,17 @@ const recursivelyApply = (obj: object, fn: (key: string, value: any) => void) =>
 };
 
 /**
- * Recursively applies a function to key-value pairs in a nested object based on a key selector.
- * @param jsonObject - The object to traverse recursively.
- * @param keySelector - The key or pattern to match for applying the function.
+ * Recursively applies a function to key-value pairs in a nested object based on if a keySearch string is included in the key.
+ * @param obj - The object to traverse recursively.
+ * @param keySearch - The string to be included in the key for applying the function.
  * @param fn - The function to apply to matching key-value pairs.
  */
-const recursivelyApplyForKey = (jsonObject: object, keySelector: string, fn: (key: string, value: any) => void) => {
-  for (const [key, value] of Object.entries(jsonObject)) {
-    if (key.includes(keySelector)) {
+const recursivelyApplyForKeyIncludes = (obj: object, keySearch: string, fn: (key: string, value: any) => void) => {
+  for (const [key, value] of Object.entries(obj)) {
+    if (key.includes(keySearch)) {
       fn(key, value);
     } else if (typeof value === 'object') {
-      recursivelyApplyForKey(value, keySelector, fn);
+      recursivelyApplyForKeyIncludes(value, keySearch, fn);
     }
   }
 };
