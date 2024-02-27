@@ -19,6 +19,15 @@ export default [
     plugins: [
       commonjs({ dynamicRequireTargets: ['src/**/*.js'] }),
       resolve(),
+      /* TODO: There should be a better solution for this
+       * This is necessary since stencil made the appGlobals function async.
+       * Following error is produced without the replacement: (plugin commonjs--resolver) RollupError: Expression expected
+       * Other solutions to switch to vite or to use the ESM build directly didn't work eiter due to problems with the dynamic imports
+       */
+      modify({
+        find: /await (appGlobals)/,
+        replace: (_, $1) => `${$1}`,
+      }),
       // inject actual version so that componentsReady works
       modify({
         find: /'ROLLUP_REPLACE_VERSION'/,
@@ -29,11 +38,6 @@ export default [
         // font-face css via injectGlobalStyle() and validatePartialUsage()
         find: /appGlobals\.globalScripts\(\);/,
         replace: (match) => `if(!window.PDS_SKIP_FETCH) { ${match} }`,
-      }),
-      modify({
-        // Remove async/await
-        find: /(async|await)/,
-        replace: () => '',
       }),
       modify({
         // icon svgs (img src)
