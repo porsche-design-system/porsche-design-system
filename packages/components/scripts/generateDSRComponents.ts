@@ -272,7 +272,7 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
         .replace(/ {\.\.\.toast}/, '') // toast
         .replace(/return this\.selectRef\.selectedIndex;/, 'return 0;') // select-wrapper-dropdown
         .replace(/determineDropdownDirection\(this\.props\,.+\)/, "'down'") // select-wrapper-dropdown
-        .replace(/getDropdownDirection\(this\.props.+\)/, "'down'") // multi-select
+        .replace(/(getDropdownDirection|getSelectDropdownDirection)\(this\.props.+\)/, "'down'") // select and multi-select
         .replace(/(this\.)props\.(isDisabledOrLoading)/g, '$1$2') // button, button-pure
         .replace(/(const (?:iconProps|btnProps|linkProps|buttonProps)) =/, '$1: any =') // workaround typing issue
         .replace(/(any)Deprecated/g, '$1') // workaround typings of deprecation maps
@@ -485,6 +485,26 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
       } else if (tagName === 'p-multi-select-option') {
         newFileContent = newFileContent
           // remove any jsx since options are not visible in closed multi-select
+          .replace(/<>\s*([\s\S]*)\s*<\/>/, '<></>')
+          .replace(/this\.theme/, 'this.props.theme');
+      } else if (tagName === 'p-select') {
+        newFileContent = newFileContent
+          // replace wrapper className
+          .replace(/\{\{ wrapper: true, disabled: (this\.props\.disabled) }}/, `{\`wrapper\${$1 ? ' disabled' : ''}\`}`)
+          // replace toggle icon className
+          .replace(/className=\{\{ icon: true, 'icon--rotate': this\.props\.isOpen }}/, 'className="icon"')
+          .replace(/tabindex="-1"/, '')
+          // replace getSelectedOptionString
+          .replace(
+            /\{getSelectedOptionString\(typeof otherChildren\[0] === 'object' && 'props' in otherChildren\[0] && otherChildren\[0]\?\.propsOptions\)}/,
+            '{getSelectedOptionString(otherChildren)}'
+          )
+          .replace(/<span className="sr-only"[^<]*<\/span>/, '')
+          // .replace(/(SelectDropdownDirectionInternal)/, 'type $1')
+          .replace(/private searchTimeout: any\.Timeout \| number = null;/, '');
+      } else if (tagName === 'p-select-option') {
+        newFileContent = newFileContent
+          // remove any jsx since options are not visible in closed select
           .replace(/<>\s*([\s\S]*)\s*<\/>/, '<></>')
           .replace(/this\.theme/, 'this.props.theme');
       } else if (tagName === 'p-text-field-wrapper') {

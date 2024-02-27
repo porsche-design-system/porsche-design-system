@@ -33,6 +33,7 @@ import {
   formElementPaddingVertical,
   getCalculatedFormElementPaddingHorizontal,
 } from '../../../styles/form-styles';
+import { INTERNAL_MULTI_SELECT_SLOT } from './multi-select-utils';
 
 export const getComponentCss = (
   direction: SelectDropdownDirectionInternal,
@@ -57,10 +58,11 @@ export const getComponentCss = (
       },
       ...(isWithinForm &&
         addImportantToEachRule({
-          '::slotted([slot=internal-select])': {
+          [`::slotted([slot=${INTERNAL_MULTI_SELECT_SLOT}])`]: {
             position: 'absolute',
             opacity: 0,
             height: '0px',
+            bottom: 0,
           },
         })),
       // TODO: re-use select-wrapper-style
@@ -69,6 +71,9 @@ export const getComponentCss = (
     root: {
       display: 'grid',
       gap: spacingStaticXSmall,
+      ...(isWithinForm && {
+        position: 'relative', // Necessary for native HTML validation box positioning (internal-select)
+      }),
     },
     wrapper: {
       position: 'relative',
