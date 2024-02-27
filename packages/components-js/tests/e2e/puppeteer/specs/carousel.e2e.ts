@@ -9,7 +9,6 @@ import {
   getElementStyle,
   getEventSummary,
   getLifecycleStatus,
-  getProperty,
   goto,
   reattachElementHandle,
   selectNode,
@@ -1145,12 +1144,14 @@ describe('accessibility', () => {
 
   it('should change skip-link to visible if it receives keyboard focus', async () => {
     await initCarousel({ skipLinkTarget: '#link-after' });
+    const host = await getHost();
     const skipLinkHost = await getSkipLinkHost();
 
     expect(await getElementStyle(skipLinkHost, 'opacity')).toBe('0');
 
     await page.keyboard.press('Tab');
 
+    expect(await getActiveElementTagNameInShadowRoot(host)).toBe('P-LINK-PURE');
     expect(await getElementStyle(skipLinkHost, 'opacity')).toBe('1');
   });
 });
