@@ -16,9 +16,9 @@ examples and solutions for testing.
 
 - [Node.js & NPM](https://nodejs.org)
 
-### Get required NPM-Packages
+### Get required npm-packages
 
-All releases of the Porsche Design System are available as versioned NPM packages. Please read more about them on the
+All releases of the Porsche Design System are available as versioned npm packages. Please read more about them on the
 corresponding docs.
 
 - [Web components](developing/vanilla-js): `@porsche-design-system/components-js`
@@ -28,20 +28,7 @@ corresponding docs.
 - [Remix components](developing/remix): `@porsche-design-system/components-react/ssr`
 - [Vue components](developing/vue): `@porsche-design-system/components-vue`
 
-Those packages can be consumed by the following public NPM registry:
+Those packages can be consumed by the following public npm registry:
 
-- NPM registry ([https://www.npmjs.com](https://www.npmjs.com))
-
-Alternatively, they can also be found on the following private NPM registries:
-
-- Porsche Design System NPM registry ([https://porscheui.jfrog.io](https://porscheui.jfrog.io))
-- My Porsche NPM registry ([https://porschedev.jfrog.io](https://porschedev.jfrog.io))
-- Porsche Highway NPM registry ([https://highway.porsche.com/artifactory](https://highway.porsche.com/artifactory))
-
-## Web components used with a not-supported framework
-
-At the time of writing, we only provide wrappers for Angular, React and Vue. But this doesn't mean that our web
-components can't be used with other frameworks like Ember. Just follow these guidelines to make our web components work
-in other frameworks:
-
-- [Guidelines for Ember](https://stenciljs.com/docs/ember)
+- npm registry ([https://www.npmjs.com](https://www.npmjs.com))
+- yarn registry ([https://yarnpkg.com](https://yarnpkg.com))
