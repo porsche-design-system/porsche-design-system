@@ -1,3 +1,5 @@
+import type { ElementHandle, Page } from 'playwright';
+import { expect, test } from '@playwright/test';
 import {
   addEventListener,
   getCssClasses,
@@ -11,12 +13,9 @@ import {
   setProperty,
   waitForStencilLifecycle,
 } from '../helpers';
-import type { ElementHandle, Page } from 'puppeteer';
 import type { BannerState } from '@porsche-design-system/components/dist/types/bundle';
 
-let page: Page;
-beforeEach(async () => (page = await browser.newPage()));
-afterEach(async () => await page.close());
+test.afterEach(async ({ page }) => await page.close());
 
 type InitOptions = {
   open: boolean;
@@ -24,7 +23,7 @@ type InitOptions = {
   dismissButton?: boolean;
 };
 
-const initBanner = (opts: InitOptions): Promise<void> => {
+const initBanner = (page: Page, opts: InitOptions): Promise<void> => {
   const { open = false, state, dismissButton = true } = opts || {};
 
   const attrs = [`open="${open}"`, state ? `state="${state}"` : '', `dismiss-button="${dismissButton}"`].join(' ');
@@ -37,11 +36,11 @@ const initBanner = (opts: InitOptions): Promise<void> => {
   );
 };
 
-const getHost = () => selectNode(page, 'p-banner');
-const getInlineNotification = () => selectNode(page, 'p-banner >>> p-inline-notification');
-const getCloseButton = () => selectNode(page, 'p-banner >>> p-inline-notification >>> p-button-pure.close');
+const getHost = (page: Page) => selectNode(page, 'p-banner');
+const getInlineNotification = (page: Page) => selectNode(page, 'p-banner >>> p-inline-notification');
+const getCloseButton = (page: Page) => selectNode(page, 'p-banner >>> p-inline-notification >>> p-button-pure.close');
 
-it('should forward props correctly to p-inline-notification', async () => {
+test('should forward props correctly to p-inline-notification', async ({ page }) => {
   await setContentWithDesignSystem(
     page,
     `
@@ -51,93 +50,93 @@ it('should forward props correctly to p-inline-notification', async () => {
     </p-banner>`
   );
 
-  const inlineNotification = await getInlineNotification();
+  const inlineNotification = await getInlineNotification(page);
   expect(await getProperty(inlineNotification, 'state')).toBe('error');
   expect(await getProperty(inlineNotification, 'dismissButton')).toBe(false);
   expect(await getProperty(inlineNotification, 'theme')).toBe('dark');
 });
 
-it('should not show banner by default', async () => {
-  await initBanner({ open: false });
-  const banner = await getHost();
+test('should not show banner by default', async ({ page }) => {
+  await initBanner(page, { open: false });
+  const banner = await getHost(page);
   expect(await getElementStyle(banner, 'opacity')).toBe('0');
   expect(await getElementStyle(banner, 'visibility')).toBe('hidden');
 });
 
-it('should show banner when prop open is true', async () => {
-  await initBanner({ open: true });
-  const banner = await getHost();
+test('should show banner when prop open is true', async ({ page }) => {
+  await initBanner(page, { open: true });
+  const banner = await getHost(page);
   expect(await getElementStyle(banner, 'opacity')).toBe('1');
   expect(await getElementStyle(banner, 'visibility')).toBe('visible');
 });
 
-it('should show banner when setting open prop true ', async () => {
-  await initBanner({ open: false });
-  const banner = await getHost();
+test('should show banner when setting open prop true ', async ({ page }) => {
+  await initBanner(page, { open: false });
+  const banner = await getHost(page);
   await setProperty(banner, 'open', true);
   await waitForStencilLifecycle(page);
   expect(await getElementStyle(banner, 'opacity')).toBe('1');
   expect(await getElementStyle(banner, 'visibility')).toBe('visible');
 });
 
-it('should not show banner by setting open prop false', async () => {
-  await initBanner({ open: true });
-  const banner = await getHost();
+test('should not show banner by setting open prop false', async ({ page }) => {
+  await initBanner(page, { open: true });
+  const banner = await getHost(page);
   await setProperty(banner, 'open', false);
   await waitForStencilLifecycle(page);
   expect(await getElementStyle(banner, 'opacity')).toBe('0');
   expect(await getElementStyle(banner, 'visibility')).toBe('hidden');
 });
 
-describe('close', () => {
+test.describe('close', () => {
   const getComputedElementHandleStyles = async (elHandle: ElementHandle<Element>): Promise<CSSStyleDeclaration> => {
     return elHandle.evaluate((el: Element): CSSStyleDeclaration => {
       return getComputedStyle(el);
     });
   };
 
-  it('should not show dismiss button when dismissButton prop is set false', async () => {
-    await initBanner({ open: true, dismissButton: false });
-    const banner = await getHost();
-    expect(await getCloseButton()).toBeNull();
+  test('should not show dismiss button when dismissButton prop is set false', async ({ page }) => {
+    await initBanner(page, { open: true, dismissButton: false });
+    const banner = await getHost(page);
+    expect(await getCloseButton(page)).toBeNull();
   });
 
-  it('should emit dismiss event by pressing ESC key', async () => {
-    await initBanner({ open: true });
-    const host = await getHost();
+  test('should emit dismiss event by pressing ESC key', async ({ page }) => {
+    await initBanner(page, { open: true });
+    const host = await getHost(page);
     await addEventListener(host, 'dismiss');
     await page.keyboard.press('Escape');
     expect((await getEventSummary(host, 'dismiss')).counter).toBe(1);
   });
 
-  it('should not emit dismiss event by pressing ESC key when banner is not open', async () => {
-    await initBanner({ open: false });
-    const host = await getHost();
+  test('should not emit dismiss event by pressing ESC key when banner is not open', async ({ page }) => {
+    await initBanner(page, { open: false });
+    const host = await getHost(page);
     await addEventListener(host, 'dismiss');
     await page.keyboard.press('Escape');
     expect((await getEventSummary(host, 'dismiss')).counter).toBe(0);
   });
 
-  it('should not emit dismiss event by pressing ESC key when dismissButton is set false', async () => {
-    await initBanner({ open: true, dismissButton: false });
-    const host = await getHost();
+  test('should not emit dismiss event by pressing ESC key when dismissButton is set false', async ({ page }) => {
+    await initBanner(page, { open: true, dismissButton: false });
+    const host = await getHost(page);
     await addEventListener(host, 'dismiss');
     await page.keyboard.press('Escape');
     expect((await getEventSummary(host, 'dismiss')).counter).toBe(0);
   });
 
-  it('should emit dismiss by click on close button', async () => {
-    await initBanner({ open: true });
-    const host = await getHost();
+  test('should emit dismiss by click on close button', async ({ page }) => {
+    await initBanner(page, { open: true });
+    const host = await getHost(page);
     await addEventListener(host, 'dismiss');
-    const closeButton = await getCloseButton();
+    const closeButton = await getCloseButton(page);
     await closeButton.click();
     expect((await getEventSummary(host, 'dismiss')).counter).toBe(1);
   });
 
-  it('should remove and re-attach keydown event listener', async () => {
-    await initBanner({ open: true });
-    const host = await getHost();
+  test('should remove and re-attach keydown event listener', async ({ page }) => {
+    await initBanner(page, { open: true });
+    const host = await getHost(page);
     await addEventListener(host, 'dismiss');
     expect((await getEventSummary(host, 'dismiss')).counter).toBe(0);
     await reattachElementHandle(host);
@@ -145,7 +144,7 @@ describe('close', () => {
     expect((await getEventSummary(host, 'dismiss')).counter).toBe(1);
   });
 
-  it('should not influence other banner styles', async () => {
+  test('should not influence other banner styles', async ({ page }) => {
     await setContentWithDesignSystem(
       page,
       `
@@ -181,9 +180,9 @@ describe('close', () => {
   });
 });
 
-describe('lifecycle', () => {
-  it('should work without unnecessary round trips on init', async () => {
-    await initBanner({ state: 'error', open: true });
+test.describe('lifecycle', () => {
+  test('should work without unnecessary round trips on init', async ({ page }) => {
+    await initBanner(page, { state: 'error', open: true });
     const status = await getLifecycleStatus(page);
 
     expect(status.componentDidLoad['p-banner'], 'componentDidLoad: p-banner').toBe(1);
@@ -195,9 +194,9 @@ describe('lifecycle', () => {
     expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(0);
   });
 
-  it('should work without unnecessary round trips after state change', async () => {
-    await initBanner({ state: 'error', open: true });
-    const host = await getHost();
+  test('should work without unnecessary round trips after state change', async ({ page }) => {
+    await initBanner(page, { state: 'error', open: true });
+    const host = await getHost(page);
 
     await setProperty(host, 'state', 'warning');
     await waitForStencilLifecycle(page);
