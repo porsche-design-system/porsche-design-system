@@ -14,7 +14,7 @@ const getSitemap = (): string[] => {
 const describeIf = (condition: boolean) => (condition ? describe : describe.skip);
 const testIf = (condition: boolean) => (condition ? test : test.skip);
 
-describe('urls', () => {
+describe('url', () => {
   for (const url of getSitemap()) {
     describe(`"${url}"`, () => {
       testIf(url !== '/')('should not end with trailing slash', async () => {
