@@ -237,7 +237,10 @@ export const getElementStyle = (
   );
 };
 
-export const getElementIndex = (element: ElementHandle<HTMLElement>, selector: string): Promise<number> => {
+export const getElementIndex = (
+  element: ElementHandle<HTMLElement | ShadowRoot>,
+  selector: string
+): Promise<number> => {
   return element.evaluate(async (el, selector: string): Promise<number> => {
     let option: ChildNode = el.querySelector(selector);
     let pos = 0;
