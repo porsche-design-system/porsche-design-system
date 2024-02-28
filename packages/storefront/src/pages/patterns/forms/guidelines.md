@@ -160,7 +160,7 @@ applications for Porsche. For form design you should consider in particular the 
   success notifications and for highlighting incorrect form fields it's highly recommended to work with further
   formatting, e.g. a larger border width. This is also already predefined in the Porsche Design System form components.
 - **Provide a sufficient click/touch area** for each component.
-  [Apple’s Human Interface Guidelines](https://developer.apple.com/design/human-interface-guidelines/ios/visual-design/adaptivity-and-layout/)
+  [Apple’s Human Interface Guidelines](https://developer.apple.com/design/human-interface-guidelines/ios/visual-design/adaptivity-and-layout)
   suggest providing a tappable area of 44 x 44 px for all controls. As this "safe zone" might result in large spacings
   between components (just think of a stacked checkbox list) or overlapping of the tappable areas, we'd recommend
   defining the tappable area component-based, as the size of the tappable area is also a matter of the general height

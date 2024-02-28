@@ -9,7 +9,7 @@ styles and templates - fast and high-quality. If you are working for a digital p
 you to our UX onboarding process and tell you more about our culture of designing great digital experiences and give you
 access to all of our tools, methods and communication channels:
 
-<p-link :theme="$store.getters.storefrontTheme" target="_blank" variant="secondary" href="https://ux.porsche.com/">Sign
+<p-link :theme="$store.getters.storefrontTheme" target="_blank" variant="secondary" href="https://ux.porsche.com">Sign
 Up for the Onboarding</p-link>
 
 ## Tooling
@@ -21,7 +21,7 @@ and has a variety of features that make it the perfect tool for designing digita
 and download the desktop app. See this video for the main functionalities See this video on how to work with our
 components.
 
-<p-link-pure :theme="$store.getters.storefrontTheme" target="_blank" href="https://www.figma.com/">Figma
+<p-link-pure :theme="$store.getters.storefrontTheme" target="_blank" href="https://www.figma.com">Figma
 Download</p-link-pure>
 
 <p-link-pure :theme="$store.getters.storefrontTheme" target="_blank" href="https://www.youtube.com/watch?v=Cx2dkpBxst8&list=PLXDU_eVOJTx7QHLShNqIXL1Cgbxj7HlN4">Figma
@@ -37,10 +37,10 @@ of the design process. Sign up for a UXPin account and start building prototypes
 Sign up for a UXPin account and download the desktop app. See this video for the main functionalities See this video on
 how to work with our components.
 
-<p-link-pure :theme="$store.getters.storefrontTheme" target="_blank" href="https://www.uxpin.com/">UXPin
+<p-link-pure :theme="$store.getters.storefrontTheme" target="_blank" href="https://www.uxpin.com">UXPin
 Download</p-link-pure>
 
-<p-link-pure :theme="$store.getters.storefrontTheme" target="_blank" href="https://www.uxpin.com/docs/getting-started/downloading-and-using-uxpin/">UXPin
+<p-link-pure :theme="$store.getters.storefrontTheme" target="_blank" href="https://www.uxpin.com/docs/getting-started/downloading-and-using-uxpin">UXPin
 Tutorials</p-link-pure>
 
 ## Get inspired
@@ -69,5 +69,5 @@ Next font download</p-link-pure>
 
 If you want to use media you can register and search for appropriate images and videos in the VM Media Database.
 
-<p-link-pure :theme="$store.getters.storefrontTheme" target="_blank" variant="secondary" href="https://vmmedia.porsche.de/">VM
+<p-link-pure :theme="$store.getters.storefrontTheme" target="_blank" variant="secondary" href="https://vmmedia.porsche.de">VM
 Media Database</p-link-pure>

@@ -24,4 +24,4 @@ component in various situations.
 
 ## References
 
-Nielsen Norman Group [Tooltip Guidelines](https://www.nngroup.com/articles/tooltip-guidelines/)
+Nielsen Norman Group [Tooltip Guidelines](https://www.nngroup.com/articles/tooltip-guidelines)

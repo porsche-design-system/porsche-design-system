@@ -25,7 +25,7 @@ In the example from above we didn't render any component, yet, so let's render a
 ### Server Side
 
 On the **server side** the components of the `@porsche-design-system/components-react/ssr` sub-package render static
-markup for something called <a href="https://web.dev/declarative-shadow-dom/" target="_blank">Declarative Shadow DOM</a>
+markup for something called <a href="https://web.dev/declarative-shadow-dom" target="_blank">Declarative Shadow DOM</a>
 which is converted into a real Shadow DOM by modern browsers without any JavaScript.
 
 <Notification heading="Hint" state="warning">

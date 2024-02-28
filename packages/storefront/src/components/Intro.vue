@@ -11,7 +11,7 @@
       <a href="https://www.figma.com/file/EkdP468u4ZVuIRwalKCscb/Design-System-v3?type=design&node-id=105-146">Figma</a>
       and UX Pin libraries, as well as public accessible
       <a href="https://www.npmjs.com/org/porsche-design-system">npm releases</a> for Vanilla JS,
-      <a href="https://angular.io" target="_blank">Angular</a>, <a href="https://react.dev/">React</a>,
+      <a href="https://angular.io" target="_blank">Angular</a>, <a href="https://react.dev">React</a>,
       <a href="https://nextjs.org">Next.js</a>, <a href="https://remix.run">Remix</a> and
       <a href="https://vuejs.org">Vue</a> based on Web Components with TypeScript and SSR support and appreciate any
       feedback, feature requests or suggestions on our public accessible

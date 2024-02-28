@@ -40,6 +40,6 @@ System. Feel free to get in touch with us on our
 
 ##### Read more on
 
-[Nielsen Norman Group](https://www.nngroup.com/articles/icon-testing/)
+[Nielsen Norman Group](https://www.nngroup.com/articles/icon-testing)
 
 [UsabilityHub](https://usabilityhub.com/examples/easiest-icon-to-understand)

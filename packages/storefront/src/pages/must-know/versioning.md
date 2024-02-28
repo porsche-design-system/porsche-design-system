@@ -1,12 +1,13 @@
 # Versioning
 
-We value stability and transparency. Thus we strive to ensure that our reusable components and libraries don't become outdated and obsolete.
+We value stability and transparency. Thus we strive to ensure that our reusable components and libraries don't become
+outdated and obsolete.
 
 <TableOfContents></TableOfContents>
 
 ## General information
 
-The Porsche Design System Libraries are released separately following [semantic versioning](http://semver.org/) whereby
+The Porsche Design System Libraries are released separately following [semantic versioning](http://semver.org) whereby
 the numbers indicate the level of changes that are introduced. It should help you understand and plan the potential
 impact of updating.
 
