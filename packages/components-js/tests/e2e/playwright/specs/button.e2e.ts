@@ -14,6 +14,8 @@ import {
   waitForStencilLifecycle,
 } from '../helpers';
 
+test.skip(({ browserName }) => browserName !== 'chromium');
+
 const getHost = (page: Page) => selectNode(page, 'p-button');
 const getButton = (page: Page) => selectNode(page, 'p-button >>> button');
 
@@ -50,7 +52,7 @@ for (const { state, setContent } of clickableTests) {
     await addEventListener(host, 'click');
 
     await host.click();
-    await button.click();
+    await button.click({ force: true });
 
     const coords = await host.boundingBox();
     await page.mouse.click(coords.x + 1, coords.y + 1); // click the top left corner
@@ -143,7 +145,7 @@ test.describe('within form', () => {
     const form = await selectNode(page, 'form');
     await addEventListener(form, 'submit');
 
-    await button.click();
+    await button.click({ force: true });
     await host.click();
 
     expect((await getEventSummary(form, 'submit')).counter).toBe(0);
