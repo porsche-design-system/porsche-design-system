@@ -7,7 +7,7 @@ outdated and obsolete.
 
 ## General information
 
-The Porsche Design System Libraries are released separately following [semantic versioning](http://semver.org) whereby
+The Porsche Design System Libraries are released separately following [semantic versioning](https://semver.org) whereby
 the numbers indicate the level of changes that are introduced. It should help you understand and plan the potential
 impact of updating.
 

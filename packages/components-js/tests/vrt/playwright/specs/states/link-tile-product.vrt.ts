@@ -23,14 +23,14 @@ const scenario = async (page: Page, theme: Theme, scheme?: PrefersColorScheme): 
       <img src="https://porsche-design-system.github.io/porsche-design-system/placeholder_800x900.svg" alt="Some alt text" />
     </picture>`;
 
-  const link = '<a slot="anchor" href="https://www.porsche.com">Some label</a>';
+  const link = '<a slot="anchor" href="https://porsche.com">Some label</a>';
 
   const markup = () => `
     <div style="display: grid; grid-template-columns: repeat(2, 1fr); column-gap: 16px; padding-bottom: 2rem">
-      <p-link-tile-product heading="Product Tile (href, img)" price="1.911,00 €" href="https://www.porsche.com">
+      <p-link-tile-product heading="Product Tile (href, img)" price="1.911,00 €" href="https://porsche.com">
         ${image}
       </p-link-tile-product>
-      <p-link-tile-product heading="Product Tile (href, picture)" price="1.911,00 €" href="https://www.porsche.com">
+      <p-link-tile-product heading="Product Tile (href, picture)" price="1.911,00 €" href="https://porsche.com">
         ${picture}
       </p-link-tile-product>
     </div>

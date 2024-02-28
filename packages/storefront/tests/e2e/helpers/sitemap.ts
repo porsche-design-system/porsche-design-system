@@ -6,9 +6,9 @@ import * as path from 'path';
 const whitelistedUrls: string[] = [
   'https://github.com/porsche-design-system/porsche-design-system',
   'https://cdn.ui.porsche.com/porsche-design-system/font/v1/Porsche_Next_WebOTF_Lat-Gr-Cyr.zip',
-  'https://www.sitepoint.com/introduction-wai-aria/',
+  'https://sitepoint.com/introduction-wai-aria/',
   'https://adabook.com/',
-  'https://www.etsi.org/deliver/etsi_en/301500_301599/301549/02.01.02_60/en_301549v020102p.pdf',
+  'https://etsi.org/deliver/etsi_en/301500_301599/301549/02.01.02_60/en_301549v020102p.pdf',
 ];
 
 const console = require('console'); // workaround for nicer logs

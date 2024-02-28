@@ -86,8 +86,8 @@ anything besides the two `p-link` elements needs to be handled manually.
 <Playground>
   <p-link-tile-model-signature heading="Some heading" aspect-ratio="16:9" @click="onClick">
     <img :src="imgSrc" width="3000" height="2000" alt="Some alt text" />
-    <p-link slot="primary"><a href="https://www.porsche.com/#primary">Primary label</a></p-link>
-    <p-link slot="secondary"><a href="https://www.porsche.com/#secondary">Secondary label</a></p-link>
+    <p-link slot="primary"><a href="https://porsche.com/#primary">Primary label</a></p-link>
+    <p-link slot="secondary"><a href="https://porsche.com/#secondary">Secondary label</a></p-link>
   </p-link-tile-model-signature>
   <p-text>clicked href: {{clickedHref}}</p-text>
 </Playground>
@@ -116,8 +116,8 @@ export default class Code extends Vue {
   config = { spacing: 'block' };
   imgSrc = require('@/assets/image-grid.png');
   img = `<img src="${this.imgSrc}" width="3000" height="2000" alt="Some alt text" />`;
-  primaryLink = '<p-link slot="primary" href="https://www.porsche.com/#primary">Primary label</p-link>';
-  secondaryLink = '<p-link slot="secondary" href="https://www.porsche.com/#secondary">Secondary label</p-link>';
+  primaryLink = '<p-link slot="primary" href="https://porsche.com/#primary">Primary label</p-link>';
+  secondaryLink = '<p-link slot="secondary" href="https://porsche.com/#secondary">Secondary label</p-link>';
 
   basic = `<p-link-tile-model-signature heading="Some heading">
   ${this.img}

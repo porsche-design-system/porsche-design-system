@@ -62,14 +62,14 @@ the Decision Tree</p-link>
   [How Do Interruptions Affect Productivity?](https://link.springer.com/chapter/10.1007/978-1-4842-4221-6_9) (Rethinking
   Productivity in Software Engineering, 2019)
 - Kim Flaherty,
-  [Indicators, Validations, and Notifications](https://www.nngroup.com/articles/indicators-validations-notifications)s
+  [Indicators, Validations, and Notifications](https://nngroup.com/articles/indicators-validations-notifications)s
   (Nielsen Norman Group, 2015)
-- Aurora Harley, [Visibility of System Status](https://www.nngroup.com/articles/visibility-system-status) (Nielsen
-  Norman Group, 2018)
+- Aurora Harley, [Visibility of System Status](https://nngroup.com/articles/visibility-system-status) (Nielsen Norman
+  Group, 2018)
 - Jakob Nielsen,
-  [10 Usability Heuristics for User Interface Design](https://www.nngroup.com/articles/ten-usability-heuristics)
-  (Nielsen Norman Group, 1994)
-- [Web Content Accessibility Guidelines](https://www.w3.org/WAI/standards-guidelines/wcag)
+  [10 Usability Heuristics for User Interface Design](https://nngroup.com/articles/ten-usability-heuristics) (Nielsen
+  Norman Group, 1994)
+- [Web Content Accessibility Guidelines](https://w3.org/WAI/standards-guidelines/wcag)
 
 <script lang="ts">
 import Vue from 'vue';

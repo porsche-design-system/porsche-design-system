@@ -21,10 +21,10 @@ and has a variety of features that make it the perfect tool for designing digita
 and download the desktop app. See this video for the main functionalities See this video on how to work with our
 components.
 
-<p-link-pure :theme="$store.getters.storefrontTheme" target="_blank" href="https://www.figma.com">Figma
+<p-link-pure :theme="$store.getters.storefrontTheme" target="_blank" href="https://figma.com">Figma
 Download</p-link-pure>
 
-<p-link-pure :theme="$store.getters.storefrontTheme" target="_blank" href="https://www.youtube.com/watch?v=Cx2dkpBxst8&list=PLXDU_eVOJTx7QHLShNqIXL1Cgbxj7HlN4">Figma
+<p-link-pure :theme="$store.getters.storefrontTheme" target="_blank" href="https://youtube.com/watch?v=Cx2dkpBxst8&list=PLXDU_eVOJTx7QHLShNqIXL1Cgbxj7HlN4">Figma
 Tutorials</p-link-pure>
 
 ##### UXPin:
@@ -37,10 +37,10 @@ of the design process. Sign up for a UXPin account and start building prototypes
 Sign up for a UXPin account and download the desktop app. See this video for the main functionalities See this video on
 how to work with our components.
 
-<p-link-pure :theme="$store.getters.storefrontTheme" target="_blank" href="https://www.uxpin.com">UXPin
+<p-link-pure :theme="$store.getters.storefrontTheme" target="_blank" href="https://uxpin.com">UXPin
 Download</p-link-pure>
 
-<p-link-pure :theme="$store.getters.storefrontTheme" target="_blank" href="https://www.uxpin.com/docs/getting-started/downloading-and-using-uxpin">UXPin
+<p-link-pure :theme="$store.getters.storefrontTheme" target="_blank" href="https://uxpin.com/docs/getting-started/downloading-and-using-uxpin">UXPin
 Tutorials</p-link-pure>
 
 ## Get inspired
@@ -49,10 +49,10 @@ You are welcome to have a look into other digital Porsche projects within our Po
 them as a starting point. The styles and components of the Porsche Design System are provided in one Figma and UX Pin
 library that can be easily linked with your file.
 
-<p-link-pure :theme="$store.getters.storefrontTheme" target="_blank" href="https://www.figma.com/file/EkdP468u4ZVuIRwalKCscb/Design-System-v3?node-id=105%3A146&t=U501JwGtSL3KHyJk-1">Design
+<p-link-pure :theme="$store.getters.storefrontTheme" target="_blank" href="https://figma.com/file/EkdP468u4ZVuIRwalKCscb/Design-System-v3?node-id=105%3A146&t=U501JwGtSL3KHyJk-1">Design
 System v3 (Figma)</p-link-pure>
 
-<p-link-pure :theme="$store.getters.storefrontTheme" target="_blank" href="https://www.figma.com/file/0GbGhymVN01gdkpWBTv8wS/Overview-%26-Key-Screens?node-id=235%3A6014&t=HmQ6ZStK7BiIj6EW-1">Overview
+<p-link-pure :theme="$store.getters.storefrontTheme" target="_blank" href="https://figma.com/file/0GbGhymVN01gdkpWBTv8wS/Overview-%26-Key-Screens?node-id=235%3A6014&t=HmQ6ZStK7BiIj6EW-1">Overview
 & Key Screens (Figma)</p-link-pure>
 
 ## Resources

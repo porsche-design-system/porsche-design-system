@@ -40,9 +40,9 @@ const scenario = async (page: Page, theme: Theme, scheme?: PrefersColorScheme): 
        Slotted content
     </p-accordion>
     <p-accordion heading="Compact slotted content" open="true" compact="true">
-      <p-link-pure href="https://www.porsche.com">Some link</p-link-pure>
+      <p-link-pure href="https://porsche.com">Some link</p-link-pure>
       <br />
-      <p-link-pure href="https://www.porsche.com">Some link</p-link-pure>
+      <p-link-pure href="https://porsche.com">Some link</p-link-pure>
     </p-accordion>`;
 
   await setContentWithDesignSystem(page, getPlaygroundPseudoStatesMarkup(markup), {

@@ -13,8 +13,8 @@ const component = 'crest';
 
 const scenario = async (page: Page, theme: Theme, scheme?: PrefersColorScheme): Promise<void> => {
   const markup = () => `
-    <p-crest href="https://www.porsche.com"></p-crest>
-    <p-crest href="https://www.porsche.com" style="padding: 1rem"></p-crest>`;
+    <p-crest href="https://porsche.com"></p-crest>
+    <p-crest href="https://porsche.com" style="padding: 1rem"></p-crest>`;
 
   await setContentWithDesignSystem(page, getPlaygroundPseudoStatesMarkup(markup, { autoLayout: 'inline' }), {
     forceComponentTheme: theme,

@@ -13,8 +13,8 @@ const component = 'wordmark';
 
 const scenario = async (page: Page, theme: Theme, scheme?: PrefersColorScheme): Promise<void> => {
   const markup = () => `
-    <p-wordmark href="https://www.porsche.com"></p-wordmark>
-    <p-wordmark href="https://www.porsche.com" style="padding: 1rem"></p-wordmark>`;
+    <p-wordmark href="https://porsche.com"></p-wordmark>
+    <p-wordmark href="https://porsche.com" style="padding: 1rem"></p-wordmark>`;
 
   await setContentWithDesignSystem(page, getPlaygroundPseudoStatesMarkup(markup, { autoLayout: 'inline' }), {
     forceComponentTheme: theme,

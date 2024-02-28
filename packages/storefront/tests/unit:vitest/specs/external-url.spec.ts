@@ -11,41 +11,45 @@ const getSitemap = (): string[] => {
   return JSON.parse(sitemapData);
 };
 
-const getAllUrlsExceptRoot = (): string[] => {
-  return getSitemap().filter((link) => link !== '/');
-};
+const describeIf = (condition: boolean) => (condition ? describe : describe.skip);
+const testIf = (condition: boolean) => (condition ? test : test.skip);
 
-const getExternalUrls = (): string[] => {
-  return getSitemap().filter((link) => !link.startsWith('/'));
-};
+describe('urls', () => {
+  for (const url of getSitemap()) {
+    describe(`"${url}"`, () => {
+      testIf(url !== '/')('should not end with trailing slash', async () => {
+        expect(url.endsWith('/')).toBe(false);
+      });
 
-describe('all urls except root ("/")', () => {
-  for (const url of getAllUrlsExceptRoot()) {
-    test(`should not end with trailing slash: "${url}"`, async () => {
-      expect(url.slice(-1)).not.toBe('/');
-    });
-  }
-});
+      describeIf(!url.startsWith('/'))('external url', () => {
+        test('should not use unencrypted http protocol', async () => {
+          expect(url.startsWith('http://')).toBe(false);
+        });
 
-describe('external urls', () => {
-  for (const url of getExternalUrls()) {
-    test(`should be reachable: "${url}"`, async () => {
-      const { status } = await fetch(url);
+        // Although it should be reachable without "www.", https://wechat.com is not.
+        testIf(url !== 'https://www.wechat.com')('should not contain "www."', async () => {
+          expect(url.startsWith('https://www.')).toBe(false);
+        });
 
-      if (
-        [
-          'https://www.reddit.com',
-          'https://www.figma.com/file/0GbGhymVN01gdkpWBTv8wS/Overview-%26-Key-Screens?node-id=235%3A6014&t=HmQ6ZStK7BiIj6EW-1',
-        ].includes(url)
-      ) {
-        expect(status).toBe(403); // 403 Forbidden
-      } else if (['https://vmmedia.porsche.de'].includes(url)) {
-        expect(status).toBe(401); // 401 Unauthorized
-      } else if (['https://www.twitter.com'].includes(url)) {
-        expect(status).toBe(400); // 400 Bad Request
-      } else {
-        expect(status).toBe(200); // 200: OK
-      }
+        test('should be reachable', async () => {
+          const { status } = await fetch(url);
+
+          switch (url) {
+            case 'https://reddit.com':
+            case 'https://figma.com/file/0GbGhymVN01gdkpWBTv8wS/Overview-%26-Key-Screens?node-id=235%3A6014&t=HmQ6ZStK7BiIj6EW-1':
+              expect(status).toBe(403); // 403 Forbidden
+              break;
+            case 'https://vmmedia.porsche.de':
+              expect(status).toBe(401); // 401 Unauthorized
+              break;
+            case 'https://twitter.com':
+              expect(status).toBe(400); // 400 Bad Request
+              break;
+            default:
+              expect(status).toBe(200); // 200: OK
+          }
+        });
+      });
     });
   }
 });

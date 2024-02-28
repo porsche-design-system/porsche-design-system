@@ -21,7 +21,7 @@ export const handleButtonEvent = (
   getName?: () => string | undefined,
   getValue?: () => string | undefined
 ): void => {
-  // Why? That's why: https://www.hjorthhansen.dev/shadow-dom-and-forms/
+  // Why? That's why: https://hjorthhansen.dev/shadow-dom-and-forms/
   const form = getClosestHTMLElement(element, 'form');
   if (form && !getDisabled()) {
     /**

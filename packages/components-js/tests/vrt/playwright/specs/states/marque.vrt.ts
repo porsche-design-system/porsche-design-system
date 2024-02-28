@@ -13,8 +13,8 @@ const component = 'marque';
 
 const scenario = async (page: Page, theme: Theme, scheme?: PrefersColorScheme): Promise<void> => {
   const markup = () => `
-    <p-marque href="https://www.porsche.com"></p-marque>
-    <p-marque href="https://www.porsche.com" style="padding: 1rem"></p-marque>`;
+    <p-marque href="https://porsche.com"></p-marque>
+    <p-marque href="https://porsche.com" style="padding: 1rem"></p-marque>`;
 
   await setContentWithDesignSystem(page, getPlaygroundPseudoStatesMarkup(markup, { autoLayout: 'inline' }), {
     forceComponentTheme: theme,

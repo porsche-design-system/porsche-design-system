@@ -17,7 +17,7 @@ We support the **following Browsers in the latest stable and deprecated predeces
 - **Google Chrome** on Windows and macOS, Android and iOS ([see version history](https://chromereleases.googleblog.com))
 - **Microsoft Edge Chromium** on Windows
   ([see version history](https://learn.microsoft.com/en-us/deployedge/microsoft-edge-relnote-stable-channel))
-- **Mozilla Firefox** on Windows and macOS ([see version history](https://www.mozilla.org/en-US/firefox/releases))
+- **Mozilla Firefox** on Windows and macOS ([see version history](https://mozilla.org/en-US/firefox/releases))
 - **Apple Safari** on macOS and iOS
   ([see version history](https://developer.apple.com/documentation/safari-release-notes))
 

@@ -30,5 +30,5 @@ corresponding docs.
 
 Those packages can be consumed by the following public npm registry:
 
-- npm registry ([https://www.npmjs.com](https://www.npmjs.com))
+- npm registry ([https://npmjs.com](https://npmjs.com))
 - yarn registry ([https://yarnpkg.com](https://yarnpkg.com))
