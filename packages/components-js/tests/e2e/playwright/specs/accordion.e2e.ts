@@ -11,18 +11,8 @@ import {
   setContentWithDesignSystem,
   setProperty,
   waitForStencilLifecycle,
-} from '../../playwright/helpers';
+} from '../helpers';
 import type { HeadingTag } from '@porsche-design-system/components/dist/types/bundle';
-
-let page: Page;
-
-test.beforeEach(async ({ browser }) => {
-  page = await browser.newPage();
-});
-
-test.afterEach(async () => {
-  await page.close();
-});
 
 const clickHandlerScript = `
 <script>
@@ -39,7 +29,7 @@ type InitOptions = {
   isOpen?: boolean;
 };
 
-const initAccordion = (opts?: InitOptions) => {
+const initAccordion = (page: Page, opts?: InitOptions) => {
   const { tag = 'h2', otherMarkup = '', hasInput, isOpen = false } = opts || {};
 
   const content = `<p-accordion heading="Some Accordion" tag="${tag}" open="${isOpen}">
@@ -50,49 +40,54 @@ ut labore et dolore magna aliquyam erat, sed diam voluptua.${hasInput ? '<input 
   return setContentWithDesignSystem(page, content);
 };
 
-const getHost = () => selectNode(page, 'p-accordion');
-const getButton = () => selectNode(page, 'p-accordion >>> button');
-const getInput = () => selectNode(page, 'input');
-const getCollapsible = () => selectNode(page, 'p-accordion >>> .collapsible');
-const getBody = () => selectNode(page, 'body');
-const getCollapseVisibility = async () => getElementStyle(await getCollapsible(), 'visibility');
-const getCollapseGridTemplateRows = async () => getElementStyle(await getCollapsible(), 'gridTemplateRows');
+const getHost = (page: Page) => selectNode(page, 'p-accordion');
+const getButton = (page: Page) => selectNode(page, 'p-accordion >>> button');
+const getInput = (page: Page) => selectNode(page, 'input');
+const getCollapsible = (page: Page) => selectNode(page, 'p-accordion >>> .collapsible');
+const getBody = (page: Page) => selectNode(page, 'body');
+const getCollapseVisibility = async (page: Page) => getElementStyle(await getCollapsible(page), 'visibility');
+const getCollapseGridTemplateRows = async (page: Page) =>
+  getElementStyle(await getCollapsible(page), 'gridTemplateRows');
 
-test('should set "gridTemplateRows: 1fr" and "visibility: visible" on collapsible on initial open', async () => {
-  await initAccordion({ isOpen: true });
-  expect(await getCollapseGridTemplateRows()).not.toBe('0px');
-  expect(await getCollapseVisibility()).toBe('visible');
+test('should set "gridTemplateRows: 1fr" and "visibility: visible" on collapsible on initial open', async ({
+  page,
+}) => {
+  await initAccordion(page, { isOpen: true });
+  expect(await getCollapseGridTemplateRows(page)).not.toBe('0px');
+  expect(await getCollapseVisibility(page)).toBe('visible');
 });
 
-test('should set "gridTemplateRows: 0fr" (0px) and "visibility: hidden" on collapsible on initial close', async () => {
-  await initAccordion();
-  expect(await getCollapseGridTemplateRows()).toBe('0px');
-  expect(await getCollapseVisibility()).toBe('hidden');
+test('should set "gridTemplateRows: 0fr" (0px) and "visibility: hidden" on collapsible on initial close', async ({
+  page,
+}) => {
+  await initAccordion(page);
+  expect(await getCollapseGridTemplateRows(page)).toBe('0px');
+  expect(await getCollapseVisibility(page)).toBe('hidden');
 });
 
-test('should set correct gridTemplateRows and visibility on collapsible on open change', async () => {
-  await initAccordion();
-  const host = await getHost();
+test('should set correct gridTemplateRows and visibility on collapsible on open change', async ({ page }) => {
+  await initAccordion(page);
+  const host = await getHost(page);
 
-  expect(await getCollapseGridTemplateRows(), 'initially').toBe('0px');
-  expect(await getCollapseVisibility()).toBe('hidden');
+  expect(await getCollapseGridTemplateRows(page), 'initially').toBe('0px');
+  expect(await getCollapseVisibility(page)).toBe('hidden');
 
   await setProperty(host, 'open', true);
   await waitForStencilLifecycle(page);
 
-  expect(await getCollapseGridTemplateRows(), 'after open=true').not.toBe('0px');
-  expect(await getCollapseVisibility()).toBe('visible');
+  expect(await getCollapseGridTemplateRows(page), 'after open=true').not.toBe('0px');
+  expect(await getCollapseVisibility(page)).toBe('visible');
 
   await setProperty(host, 'open', false);
   await waitForStencilLifecycle(page);
 
-  expect(await getCollapseGridTemplateRows(), 'after open=false').toBe('0px');
-  expect(await getCollapseVisibility()).toBe('hidden');
+  expect(await getCollapseGridTemplateRows(page), 'after open=false').toBe('0px');
+  expect(await getCollapseVisibility(page)).toBe('hidden');
 });
 
-test('should have correct gridTemplateRows and visibility after fast open/close re-trigger', async () => {
-  await initAccordion({ otherMarkup: clickHandlerScript });
-  const button = await getButton();
+test('should have correct gridTemplateRows and visibility after fast open/close re-trigger', async ({ page }) => {
+  await initAccordion(page, { otherMarkup: clickHandlerScript });
+  const button = await getButton(page);
 
   // expand -> collapse -> expand
   await button.click();
@@ -100,13 +95,13 @@ test('should have correct gridTemplateRows and visibility after fast open/close 
   await button.click();
   await waitForStencilLifecycle(page);
 
-  expect(await getCollapseGridTemplateRows()).not.toBe('0px');
-  expect(await getCollapseVisibility()).toBe('visible');
+  expect(await getCollapseGridTemplateRows(page)).not.toBe('0px');
+  expect(await getCollapseVisibility(page)).toBe('visible');
 });
 
-test('should have correct gridTemplateRows and visibility after fast close/open re-trigger', async () => {
-  await initAccordion({ isOpen: true, otherMarkup: clickHandlerScript });
-  const button = await getButton();
+test('should have correct gridTemplateRows and visibility after fast close/open re-trigger', async ({ page }) => {
+  await initAccordion(page, { isOpen: true, otherMarkup: clickHandlerScript });
+  const button = await getButton(page);
 
   // collapse -> expand -> collapse
   await button.click();
@@ -114,13 +109,13 @@ test('should have correct gridTemplateRows and visibility after fast close/open 
   await button.click();
   await waitForStencilLifecycle(page);
 
-  expect(await getCollapseGridTemplateRows()).toBe('0px');
-  expect(await getCollapseVisibility()).toBe('hidden');
+  expect(await getCollapseGridTemplateRows(page)).toBe('0px');
+  expect(await getCollapseVisibility(page)).toBe('hidden');
 });
 
-test('should show aria-expanded true when open and false when closed', async () => {
-  await initAccordion({ otherMarkup: clickHandlerScript });
-  const button = await getButton();
+test('should show aria-expanded true when open and false when closed', async ({ page }) => {
+  await initAccordion(page, { otherMarkup: clickHandlerScript });
+  const button = await getButton(page);
 
   expect(await getAttribute(button, 'aria-expanded'), 'initial when closed').toBe('false');
 
@@ -136,10 +131,10 @@ test('should show aria-expanded true when open and false when closed', async () 
 });
 
 test.describe('events', () => {
-  test('should emit accordionChange event on button mouse click', async () => {
-    await initAccordion({ otherMarkup: clickHandlerScript });
-    const host = await getHost();
-    const button = await getButton();
+  test('should emit accordionChange event on button mouse click', async ({ page }) => {
+    await initAccordion(page, { otherMarkup: clickHandlerScript });
+    const host = await getHost(page);
+    const button = await getButton(page);
     await addEventListener(host, 'accordionChange');
     expect((await getEventSummary(host, 'accordionChange')).counter).toBe(0);
 
@@ -147,9 +142,9 @@ test.describe('events', () => {
     expect((await getEventSummary(host, 'accordionChange')).counter).toBe(1);
   });
 
-  test('should emit accordionChange event on enter press', async () => {
-    await initAccordion({ otherMarkup: clickHandlerScript });
-    const host = await getHost();
+  test('should emit accordionChange event on enter press', async ({ page }) => {
+    await initAccordion(page, { otherMarkup: clickHandlerScript });
+    const host = await getHost(page);
     await addEventListener(host, 'accordionChange');
     expect((await getEventSummary(host, 'accordionChange')).counter).toBe(0);
 
@@ -158,16 +153,16 @@ test.describe('events', () => {
     expect((await getEventSummary(host, 'accordionChange')).counter).toBe(1);
   });
 
-  test('should emit both accordionChange and update event', async () => {
-    await initAccordion();
-    const host = await getHost();
+  test('should emit both accordionChange and update event', async ({ page }) => {
+    await initAccordion(page);
+    const host = await getHost(page);
 
     await addEventListener(host, 'accordionChange');
     await addEventListener(host, 'update');
     expect((await getEventSummary(host, 'accordionChange')).counter).toBe(0);
     expect((await getEventSummary(host, 'update')).counter).toBe(0);
 
-    const button = await getButton();
+    const button = await getButton(page);
     await button.click();
     expect((await getEventSummary(host, 'accordionChange')).counter).toBe(1);
     expect((await getEventSummary(host, 'update')).counter).toBe(1);
@@ -175,11 +170,11 @@ test.describe('events', () => {
 });
 
 test.describe('focus', () => {
-  test('should have focusable content when opened', async () => {
-    await initAccordion({ otherMarkup: clickHandlerScript, hasInput: true });
-    const button = await getButton();
-    const input = await getInput();
-    const body = await getBody();
+  test('should have focusable content when opened', async ({ page }) => {
+    await initAccordion(page, { otherMarkup: clickHandlerScript, hasInput: true });
+    const button = await getButton(page);
+    const input = await getInput(page);
+    const body = await getBody(page);
 
     expect(await hasFocus(body)).toBe(true);
 
@@ -190,11 +185,11 @@ test.describe('focus', () => {
     expect(await hasFocus(input)).toBe(true);
   });
 
-  test('should not have focusable content when closed', async () => {
+  test('should not have focusable content when closed', async ({ page }) => {
     const otherMarkup = '<a href="#">Some Link</a>';
-    await initAccordion({ otherMarkup, hasInput: true });
-    const host = await getHost();
-    const body = await getBody();
+    await initAccordion(page, { otherMarkup, hasInput: true });
+    const host = await getHost(page);
+    const body = await getBody(page);
     const link = await selectNode(page, 'a');
 
     expect(await hasFocus(body)).toBe(true);
@@ -208,11 +203,11 @@ test.describe('focus', () => {
     expect(await hasFocus(link)).toBe(true);
   });
 
-  test('should lose focus on content when closed', async () => {
-    await initAccordion({ otherMarkup: clickHandlerScript, hasInput: true, isOpen: true });
-    const host = await getHost();
-    const input = await getInput();
-    const body = await getBody();
+  test('should lose focus on content when closed', async ({ page }) => {
+    await initAccordion(page, { otherMarkup: clickHandlerScript, hasInput: true, isOpen: true });
+    const host = await getHost(page);
+    const input = await getInput(page);
+    const body = await getBody(page);
 
     await page.keyboard.press('Tab');
 
@@ -230,8 +225,8 @@ test.describe('focus', () => {
 });
 
 test.describe('lifecycle', () => {
-  test('should work without unnecessary round trips on init', async () => {
-    await initAccordion();
+  test('should work without unnecessary round trips on init', async ({ page }) => {
+    await initAccordion(page);
     const status = await getLifecycleStatus(page);
 
     expect(status.componentDidLoad['p-accordion'], 'componentDidLoad: p-accordion').toBe(1);
@@ -241,9 +236,9 @@ test.describe('lifecycle', () => {
     expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(2);
   });
 
-  test('should work without unnecessary round trips on prop change', async () => {
-    await initAccordion();
-    const host = await getHost();
+  test('should work without unnecessary round trips on prop change', async ({ page }) => {
+    await initAccordion(page);
+    const host = await getHost(page);
     await setProperty(host, 'open', true);
     await waitForStencilLifecycle(page);
     const status = await getLifecycleStatus(page);

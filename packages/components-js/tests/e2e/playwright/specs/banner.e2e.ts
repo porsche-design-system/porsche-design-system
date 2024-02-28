@@ -15,8 +15,6 @@ import {
 } from '../helpers';
 import type { BannerState } from '@porsche-design-system/components/dist/types/bundle';
 
-test.afterEach(async ({ page }) => await page.close());
-
 type InitOptions = {
   open: boolean;
   state?: BannerState;
