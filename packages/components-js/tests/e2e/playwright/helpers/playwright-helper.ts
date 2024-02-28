@@ -1,8 +1,9 @@
 import type { ConsoleMessage, ElementHandle, Page } from 'playwright';
+import { expect } from '@playwright/test';
 import { waitForComponentsReady } from './stencil';
 import type { TagName } from '@porsche-design-system/shared';
-import { getComponentMeta } from '@porsche-design-system/component-meta';
 import type { ComponentMeta } from '@porsche-design-system/component-meta';
+import { getComponentMeta } from '@porsche-design-system/component-meta';
 import { format } from 'prettier';
 import { getInitialStyles } from '@porsche-design-system/components-js/partials';
 import type { FormState } from '@porsche-design-system/components/dist/types/bundle';
@@ -134,7 +135,7 @@ export const setContentWithDesignSystem = async (page: Page, content: string, op
   }
 };
 
-export const selectNode = async (page: Page, selector: string): Promise<ElementHandle> => {
+export const selectNode = async (page: Page, selector: string): Promise<ElementHandle<HTMLElement>> => {
   const selectorParts = selector.split('>>>');
   const shadowRootSelectors =
     selectorParts.length > 1
@@ -145,7 +146,7 @@ export const selectNode = async (page: Page, selector: string): Promise<ElementH
       : '';
   return (
     await page.evaluateHandle(`document.querySelector('${selectorParts[0].trim()}')${shadowRootSelectors}`)
-  ).asElement() as ElementHandle;
+  ).asElement() as ElementHandle<HTMLElement>;
 };
 
 export const getShadowRoot = async (element: ElementHandle<HTMLElement>): Promise<ElementHandle<ShadowRoot>> => {
@@ -382,56 +383,6 @@ export const expectShadowDomToMatchSnapshot = async (host: ElementHandle<HTMLEle
 
   expect(prettyHtml).not.toContain('[object Object]');
   expect(prettyHtml).toMatchSnapshot();
-};
-
-// TODO: Fix typing
-export type ExpectToMatchSnapshotOptions = any & {
-  message?: string;
-  skipWaitForFunction?: boolean;
-};
-export const expectA11yToMatchSnapshot = async (
-  page: Page,
-  elementHandle: ElementHandle<HTMLElement>,
-  opts?: ExpectToMatchSnapshotOptions
-): Promise<void> => {
-  const { message, skipWaitForFunction, ...options } = opts || {};
-
-  // TODO: remove this workaround once waitForStencilLifecycle() is reliable
-  // currently it is mostly based on a 40ms timeout which isn't always enough
-  // in scenarios when multiple properties are changed after each other, e.g.
-  // await setProperty(host, 'state', 'error');
-  // await setProperty(host, 'message', 'Some error message.');
-  // then there are 2 lifecycles but waitForStencilLifecycle() can resolve after the 1st
-  if (!skipWaitForFunction && elementHandle) {
-    const tagName = (await (await elementHandle.getProperty('tagName')).jsonValue()).toLowerCase();
-    if (['input', 'select', 'textarea'].includes(tagName)) {
-      const state: FormState = await elementHandle.evaluate(
-        (el) => (el.parentElement as any)?.state || (el.getRootNode() as any).host?.state
-      );
-      if (state) {
-        await page.waitForFunction(
-          ({ el, state }) => {
-            if (!el.ariaLabel) {
-              return true; // some nested input elements don't have/need it
-            } else if (state === 'none') {
-              return !el.ariaLabel.includes('success') && !el.ariaLabel.includes('error');
-            } else {
-              return el.ariaLabel.includes(state);
-            }
-          },
-          { el: elementHandle, state },
-          { timeout: 500 }
-        );
-      }
-    }
-  }
-
-  const snapshot = await page.accessibility.snapshot({
-    root: elementHandle,
-    ...options,
-  });
-
-  message ? expect(snapshot).toMatchSnapshot(message) : expect(snapshot).toMatchSnapshot();
 };
 
 export const expectToSkipFocusOnComponent = async (page: Page, component: ElementHandle, before: ElementHandle) => {
