@@ -136,6 +136,26 @@ export const routes: RouteType[] = [
     component: fromExamples.SegmentedControlExample,
   },
   {
+    path: '/select-example',
+    name: 'Select Example',
+    component: fromExamples.SelectExample,
+  },
+  {
+    path: '/select-example-controlled',
+    name: 'Select Example Controlled',
+    component: fromExamples.SelectExampleControlled,
+  },
+  {
+    path: '/select-example-dynamic',
+    name: 'Select Example Dynamic',
+    component: fromExamples.SelectExampleDynamic,
+  },
+  {
+    path: '/select-example-dynamic',
+    name: 'Select Example Required',
+    component: fromExamples.SelectExampleRequired,
+  },
+  {
     path: '/stepper-horizontal-example',
     name: 'Stepper Horizontal Example',
     component: fromExamples.StepperHorizontalExample,

@@ -21,6 +21,10 @@ import { PinCodeExampleComponent } from './pin-code-example.component';
 import { PinCodeExampleControlledComponent } from './pin-code-example-controlled.component';
 import { ScrollerExampleComponent } from './scroller-example.component';
 import { SegmentedControlExampleComponent } from './segmented-control-example.component';
+import { SelectExampleComponent } from './select-example.component';
+import { SelectExampleControlledComponent } from './select-example-controlled.component';
+import { SelectExampleDynamicComponent } from './select-example-dynamic.component';
+import { SelectExampleRequiredComponent } from './select-example-required.component';
 import { StepperHorizontalExampleComponent } from './stepper-horizontal-example.component';
 import { StepperHorizontalNavigationExampleStartComponent } from './stepper-horizontal-navigation-example-start.component';
 import { StepperHorizontalNavigationExampleSecondComponent } from './stepper-horizontal-navigation-example-second.component';
@@ -57,6 +61,10 @@ export const examples = [
   PinCodeExampleControlledComponent,
   ScrollerExampleComponent,
   SegmentedControlExampleComponent,
+  SelectExampleComponent,
+  SelectExampleControlledComponent,
+  SelectExampleDynamicComponent,
+  SelectExampleRequiredComponent,
   StepperHorizontalExampleComponent,
   StepperHorizontalNavigationExampleStartComponent,
   StepperHorizontalNavigationExampleSecondComponent,
@@ -93,6 +101,10 @@ export * from './pin-code-example.component';
 export * from './pin-code-example-controlled.component';
 export * from './scroller-example.component';
 export * from './segmented-control-example.component';
+export * from './select-example.component';
+export * from './select-example-controlled.component';
+export * from './select-example-dynamic.component';
+export * from './select-example-required.component';
 export * from './stepper-horizontal-example.component';
 export * from './stepper-horizontal-navigation-example-start.component';
 export * from './stepper-horizontal-navigation-example-second.component';
