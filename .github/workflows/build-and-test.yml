@@ -6,7 +6,7 @@ on:
         required: true
 name: 'Build and Test'
 env:
-  PDS_PLAYWRIGHT_DOCKER_IMAGE: ghcr.io/porsche-design-system/porsche-design-system/playwright:v1.41.2-focal-test8
+  PDS_PLAYWRIGHT_DOCKER_IMAGE: ghcr.io/porsche-design-system/porsche-design-system/playwright:v1.41.2-focal-test9
 jobs:
   assets:
     name: 'Assets'
@@ -532,6 +532,11 @@ jobs:
         with:
           entrypoint: run-test-unit
           args: --storefront
+      - name: 'Unit Test (Vitest)'
+        uses: ./.github/actions/docker-run-playwright
+        with:
+          entrypoint: run-test-unit
+          args: --vitest:storefront
   storefront-e2e:
     name: 'Storefront E2E'
     runs-on: ubuntu-latest

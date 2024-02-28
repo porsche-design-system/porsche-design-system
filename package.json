@@ -112,6 +112,7 @@
     "test:unit:components-vue:vue-wrapper": "yarn --cwd ./packages/components-vue test:unit:vue-wrapper",
     "test:unit:shared": "yarn --cwd ./packages/shared test:unit",
     "test:unit:storefront": "yarn --cwd ./packages/storefront test:unit",
+    "test:unit:vitest:storefront": "yarn --cwd ./packages/storefront test:unit:vitest",
     "test:unit:utilities": "yarn --cwd ./packages/utilities test:unit",
     "test:e2e:puppeteer:components-js": "yarn --cwd ./packages/components-js test:e2e:puppeteer",
     "test:e2e:playwright:components-js": "yarn --cwd ./packages/components-js test:e2e:playwright",
