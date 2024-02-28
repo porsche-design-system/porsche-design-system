@@ -2,7 +2,7 @@ import { expect, type Page, test } from '@playwright/test';
 import { schemes, themes, viewportWidthM } from '@porsche-design-system/shared/testing/playwright.vrt.config';
 import {
   forceFocusHoverState,
-  forceFocusState,
+  forceFocusVisibleState,
   forceHoverState,
   getPlaygroundPseudoStatesMarkup,
   type PrefersColorScheme,
@@ -116,10 +116,10 @@ const scenario = async (page: Page, theme: Theme, scheme?: PrefersColorScheme): 
   await forceHoverState(page, '.hover p-textarea-wrapper:not(.force-label) textarea');
   await forceHoverState(page, '.hover p-textarea-wrapper.force-label >>> label');
   await forceHoverState(page, '.hover p-textarea-wrapper a');
-  await forceFocusState(page, '.focus p-textarea-wrapper textarea');
-  await forceFocusState(page, '.focus p-textarea-wrapper a');
+  await forceFocusVisibleState(page, '.focus p-textarea-wrapper textarea');
+  await forceFocusVisibleState(page, '.focus p-textarea-wrapper a');
   await forceFocusHoverState(page, '.focus-hover p-textarea-wrapper:not(.force-label) textarea');
-  await forceFocusState(page, '.focus-hover p-textarea-wrapper.force-label textarea');
+  await forceFocusVisibleState(page, '.focus-hover p-textarea-wrapper.force-label textarea');
   await forceHoverState(page, '.focus-hover p-textarea-wrapper.force-label >>> label');
   await forceFocusHoverState(page, '.focus-hover p-textarea-wrapper a');
 };

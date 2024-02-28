@@ -2,7 +2,7 @@ import { expect, type Page, test } from '@playwright/test';
 import { schemes, themes, viewportWidthM } from '@porsche-design-system/shared/testing/playwright.vrt.config';
 import {
   forceFocusHoverState,
-  forceFocusState,
+  forceFocusVisibleState,
   forceHoverState,
   getValueOfForAttribute,
   getPlaygroundPseudoStatesMarkup,
@@ -65,10 +65,10 @@ const scenario = async (page: Page, theme: Theme, scheme?: PrefersColorScheme): 
     `.hover p-pin-code.force-label >>> #${await getValueOfForAttribute(page, 'p-pin-code >>> label')}`
   );
   await forceHoverState(page, '.hover p-pin-code span a');
-  await forceFocusState(page, '.focus p-pin-code >>> input');
-  await forceFocusState(page, '.focus p-pin-code span a');
+  await forceFocusVisibleState(page, '.focus p-pin-code >>> input');
+  await forceFocusVisibleState(page, '.focus p-pin-code span a');
   await forceFocusHoverState(page, '.focus-hover p-pin-code:not(.force-label) >>> input');
-  await forceFocusState(page, '.focus-hover p-pin-code.force-label >>> input');
+  await forceFocusVisibleState(page, '.focus-hover p-pin-code.force-label >>> input');
   await forceHoverState(page, '.focus-hover p-pin-code.force-label >>> label');
   await forceFocusHoverState(page, '.focus-hover p-pin-code span a');
 };

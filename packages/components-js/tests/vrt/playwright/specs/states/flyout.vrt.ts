@@ -2,7 +2,7 @@ import { expect, type Page, test } from '@playwright/test';
 import { schemes, themes, viewportWidthM } from '@porsche-design-system/shared/testing/playwright.vrt.config';
 import {
   forceFocusHoverState,
-  forceFocusState,
+  forceFocusVisibleState,
   forceHoverState,
   getPlaygroundPseudoStatesMarkup,
   type PrefersColorScheme,
@@ -38,8 +38,8 @@ const scenario = async (page: Page, theme: Theme, scheme?: PrefersColorScheme): 
   // due to custom hover state we need to set hover also on component itself
   await forceHoverState(page, '.hover p-flyout >>> p-button-pure');
   await forceHoverState(page, '.hover p-flyout >>> p-button-pure >>> button');
-  await forceFocusState(page, '.focus p-flyout a');
-  await forceFocusState(page, '.focus p-flyout >>> p-button-pure >>> button');
+  await forceFocusVisibleState(page, '.focus p-flyout a');
+  await forceFocusVisibleState(page, '.focus p-flyout >>> p-button-pure >>> button');
   await forceFocusHoverState(page, '.focus-hover p-flyout a');
   // due to custom hover state we need to set hover also on component itself
   await forceFocusHoverState(page, '.focus-hover p-flyout >>> p-button-pure');
