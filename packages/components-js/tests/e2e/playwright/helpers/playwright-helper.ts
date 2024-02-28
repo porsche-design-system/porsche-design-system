@@ -6,7 +6,6 @@ import type { ComponentMeta } from '@porsche-design-system/component-meta';
 import { getComponentMeta } from '@porsche-design-system/component-meta';
 import { format } from 'prettier';
 import { getInitialStyles } from '@porsche-design-system/components-js/partials';
-import type { FormState } from '@porsche-design-system/components/dist/types/bundle';
 
 // TODO: temporary workaround, because of https://github.com/microsoft/playwright/issues/17075
 // import { kebabCase } from 'change-case';
@@ -16,7 +15,7 @@ const kebabCase = (str: string): string => {
 
 export type ClickableTests = {
   state: string;
-  setContent: () => Promise<void>;
+  setContent: (page: Page) => Promise<void>;
 }[];
 
 // TODO: fix typing

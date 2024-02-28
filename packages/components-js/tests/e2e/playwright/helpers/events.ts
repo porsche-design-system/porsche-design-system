@@ -1,4 +1,4 @@
-import type { ElementHandle, Page } from 'Playwright';
+import type { ElementHandle, Page } from 'playwright';
 
 type SerializedTarget = {
   nodeName: string;
