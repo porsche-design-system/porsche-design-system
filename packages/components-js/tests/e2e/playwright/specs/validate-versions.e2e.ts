@@ -1,4 +1,4 @@
-import { Page } from 'puppeteer';
+import { expect, test } from '@playwright/test';
 import {
   getConsoleWarnings,
   getOldLoaderScriptForPrefixes,
@@ -11,14 +11,11 @@ import type { PorscheDesignSystem } from '@porsche-design-system/components/dist
 const version = pkg.version;
 const VERSION_VALIDATION_TIMEOUT = 3000;
 
-let page: Page;
-beforeEach(async () => {
-  page = await browser.newPage();
+test.beforeEach(({ page }) => {
   initConsoleObserver(page);
 });
-afterEach(async () => await page.close());
 
-it('should show warning about multiple different versions correctly', async () => {
+test('should show warning about multiple different versions correctly', async ({ page }) => {
   const prefixes = ['test', 'my-prefix'];
 
   await setContentWithDesignSystem(
@@ -51,7 +48,7 @@ it('should show warning about multiple different versions correctly', async () =
   ]);
 });
 
-it('should not show warning about multiple different versions if only one version is used', async () => {
+test('should not show warning about multiple different versions if only one version is used', async ({ page }) => {
   await setContentWithDesignSystem(page, '<p-text>Some Text</p-text>');
 
   const porscheDesignSystem = await page.evaluate(() => document.porscheDesignSystem);

@@ -1,3 +1,5 @@
+import type { Page } from 'playwright';
+import { expect, test } from '@playwright/test';
 import {
   getElementStyle,
   getLifecycleStatus,
@@ -7,13 +9,8 @@ import {
   setProperty,
   waitForStencilLifecycle,
 } from '../helpers';
-import type { Page } from 'puppeteer';
 
-let page: Page;
-beforeEach(async () => (page = await browser.newPage()));
-afterEach(async () => await page.close());
-
-const initText = (): Promise<void> => {
+const initText = (page: Page): Promise<void> => {
   return setContentWithDesignSystem(
     page,
     `
@@ -23,12 +20,12 @@ const initText = (): Promise<void> => {
   );
 };
 
-const getHost = () => selectNode(page, 'p-text');
-const getParagraph = () => selectNode(page, 'p-text >>> p');
+const getHost = (page: Page) => selectNode(page, 'p-text');
+const getParagraph = (page: Page) => selectNode(page, 'p-text >>> p');
 
-describe('lifecycle', () => {
-  it('should work without unnecessary round trips on init', async () => {
-    await initText();
+test.describe('lifecycle', () => {
+  test('should work without unnecessary round trips on init', async ({ page }) => {
+    await initText(page);
     const status = await getLifecycleStatus(page);
 
     expect(status.componentDidLoad['p-text'], 'componentDidLoad: p-text').toBe(1);
@@ -37,9 +34,9 @@ describe('lifecycle', () => {
     expect(status.componentDidLoad.all, 'componentDidUpdate: all').toBe(1);
   });
 
-  it('should work without unnecessary round trips after state change', async () => {
-    await initText();
-    const host = await getHost();
+  test('should work without unnecessary round trips after state change', async ({ page }) => {
+    await initText(page);
+    const host = await getHost(page);
 
     await setProperty(host, 'weight', 'semibold');
     await waitForStencilLifecycle(page);
@@ -49,9 +46,9 @@ describe('lifecycle', () => {
     expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(1);
   });
 
-  it('should have a theme prop defined at any time without any unnecessary round trips', async () => {
-    await initText();
-    const host = await getHost();
+  test('should have a theme prop defined at any time without any unnecessary round trips', async ({ page }) => {
+    await initText(page);
+    const host = await getHost(page);
 
     expect(await getProperty(host, 'theme')).toBe('light');
 
@@ -71,7 +68,7 @@ describe('lifecycle', () => {
   });
 });
 
-xit('should have "text-size-adjust: none" set', async () => {
+test('should have "text-size-adjust: none" set', async ({ page }) => {
   await setContentWithDesignSystem(
     page,
     `
@@ -79,7 +76,7 @@ xit('should have "text-size-adjust: none" set', async () => {
       Some message
     </p-text>`
   );
-  const paragraph = await getParagraph();
+  const paragraph = await getParagraph(page);
   const webkitTextSizeAdjustStyle = await getElementStyle(paragraph, 'webkitTextSizeAdjust' as any);
 
   // when webkitTextSizeAdjust is set to "none", it defaults to 100%
