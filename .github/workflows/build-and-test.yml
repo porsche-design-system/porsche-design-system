@@ -192,8 +192,8 @@ jobs:
         with:
           name: components-js-vrt-common-playwright-chrome-regression
           path: ./packages/components-js/tests/vrt/playwright/results
-  components-js-custom-states-vrt-playwright-chrome:
-    name: 'Components JS VRT Custom/States (Playwright Chrome)'
+  components-js-custom-vrt-playwright-chrome:
+    name: 'Components JS VRT Custom (Playwright Chrome)'
     runs-on: ubuntu-latest
     steps:
       - name: 'Checkout'
@@ -208,12 +208,35 @@ jobs:
         uses: ./.github/actions/docker-run-playwright
         with:
           entrypoint: run-test-vrt-playwright
-          args: --components-js:chrome:customAndStates
+          args: --components-js:chrome:custom
       - name: 'VRT Regression (Playwright)'
         if: failure()
         uses: actions/upload-artifact@v4
         with:
-          name: components-js-vrt-custom-states-playwright-chrome-regression
+          name: components-js-vrt-custom-playwright-chrome-regression
+          path: ./packages/components-js/tests/vrt/playwright/results
+  components-js-states-vrt-playwright-chrome:
+    name: 'Components JS VRT States (Playwright Chrome)'
+    runs-on: ubuntu-latest
+    steps:
+      - name: 'Checkout'
+        uses: actions/checkout@v4
+      - name: 'Setup and install'
+        uses: ./.github/actions/setup-and-install
+        with:
+          github-token: ${{ secrets.github-token }}
+      - name: 'Build assets, component-meta, components, components-js, shared and utilities'
+        uses: ./.github/actions/build-components-js
+      - name: 'VRT Test (Playwright)'
+        uses: ./.github/actions/docker-run-playwright
+        with:
+          entrypoint: run-test-vrt-playwright
+          args: --components-js:chrome:states
+      - name: 'VRT Regression (Playwright)'
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: components-js-vrt-states-playwright-chrome-regression
           path: ./packages/components-js/tests/vrt/playwright/results
   components-js-vrt-playwright-safari:
     name: 'Components JS VRT (Playwright Safari)'
