@@ -4,7 +4,6 @@ import { TAG_NAMES, type TagName } from '@porsche-design-system/shared';
 import { getComponentMeta } from '@porsche-design-system/component-meta';
 import {
   buildDefaultComponentMarkup,
-  selectNode,
   setContentWithDesignSystem,
   setProperty,
   waitForStencilLifecycle,
@@ -19,11 +18,10 @@ for (const tagName of tagNamesWithLoadingProp) {
         getComponentMeta(tagName).nestedComponents?.includes(tagNameWithLoadingProp)
       );
 
-      return await selectNode(
-        page,
+      return await page.$(
         nestedComponentWithLoadingProp
-          ? `${tagName} >>> ${nestedComponentWithLoadingProp} >>> .loading` // e.g. for p-button-tile
-          : `${tagName} >>> .loading`
+          ? `${tagName} ${nestedComponentWithLoadingProp} .loading` // e.g. for p-button-tile
+          : `${tagName} .loading`
       );
     };
 
@@ -43,7 +41,7 @@ for (const tagName of tagNamesWithLoadingProp) {
       test('should render loading finished message when loading is set to false', async ({ page }) => {
         await setContentWithDesignSystem(page, markup);
 
-        const host = await selectNode(page, tagName);
+        const host = await page.$(tagName);
         await setProperty(host, 'loading', false);
         await waitForStencilLifecycle(page);
 
@@ -63,7 +61,7 @@ for (const tagName of tagNamesWithLoadingProp) {
       test('should render loading message when loading is set to true', async ({ page }) => {
         await setContentWithDesignSystem(page, markup);
 
-        const host = await selectNode(page, tagName);
+        const host = await page.$(tagName);
         await setProperty(host, 'loading', true);
         await waitForStencilLifecycle(page);
 
@@ -73,7 +71,7 @@ for (const tagName of tagNamesWithLoadingProp) {
       test('should render loading finished message when loading is set to true, then to false', async ({ page }) => {
         await setContentWithDesignSystem(page, markup);
 
-        const host = await selectNode(page, tagName);
+        const host = await page.$(tagName);
         await setProperty(host, 'loading', true);
         await waitForStencilLifecycle(page);
 

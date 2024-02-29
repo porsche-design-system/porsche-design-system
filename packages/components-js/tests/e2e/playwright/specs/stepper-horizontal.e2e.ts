@@ -14,7 +14,6 @@ import {
   initConsoleObserver,
   initPageErrorObserver,
   reattachElementHandle,
-  selectNode,
   setContentWithDesignSystem,
   setProperty,
   waitForStencilLifecycle,
@@ -62,7 +61,7 @@ const initStepperHorizontal = (page: Page, opts?: InitOptions) => {
   return setContentWithDesignSystem(page, isWrapped ? `<div style="width: 300px">${content}</div>` : content);
 };
 
-const getHost = (page: Page) => selectNode(page, 'p-stepper-horizontal');
+const getHost = (page: Page) => page.$('p-stepper-horizontal');
 const getStepItems = (page: Page) => page.$$('p-stepper-horizontal-item');
 const getButtons = async (page: Page) =>
   Promise.all(
@@ -70,8 +69,8 @@ const getButtons = async (page: Page) =>
       (await x.evaluateHandle((x) => x.shadowRoot.querySelector('button'))).asElement()
     )
   );
-const getScrollArea = (page: Page) => selectNode(page, 'p-stepper-horizontal >>> p-scroller >>> .scroll-area');
-const getGradientNext = (page: Page) => selectNode(page, 'p-stepper-horizontal >>> p-scroller >>> .action-next');
+const getScrollArea = (page: Page) => page.$('p-stepper-horizontal p-scroller .scroll-area');
+const getGradientNext = (page: Page) => page.$('p-stepper-horizontal p-scroller .action-next');
 
 test.describe('validation', () => {
   test('should throw error if an item with current state is added while another exists', async ({ page }) => {

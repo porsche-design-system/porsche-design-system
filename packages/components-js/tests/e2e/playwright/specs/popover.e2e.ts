@@ -9,19 +9,18 @@ import {
   getEventSummary,
   getLifecycleStatus,
   getProperty,
-  selectNode,
   setContentWithDesignSystem,
   setProperty,
   waitForStencilLifecycle,
 } from '../helpers';
 import type { PopoverDirection } from '@porsche-design-system/components/dist/types/bundle';
 
-const getHost = (page: Page) => selectNode(page, 'p-popover');
-const getSpacer = (page: Page) => selectNode(page, 'p-popover >>> .spacer');
-const getPopover = (page: Page) => selectNode(page, 'p-popover >>> .popover');
-const getButton = (page: Page) => selectNode(page, 'p-popover >>> button');
-const getSecondPopover = (page: Page) => selectNode(page, 'p-popover.second >>> .popover');
-const getTableScroller = (page: Page) => selectNode(page, 'p-table >>> p-scroller >>> .scroll-area');
+const getHost = (page: Page) => page.$('p-popover');
+const getSpacer = (page: Page) => page.$('p-popover .spacer');
+const getPopover = (page: Page) => page.$('p-popover .popover');
+const getButton = (page: Page) => page.$('p-popover button');
+const getSecondPopover = (page: Page) => page.$('p-popover.second .popover');
+const getTableScroller = (page: Page) => page.$('p-table p-scroller .scroll-area');
 const isNativePopoverOpen = async (page: Page): Promise<boolean> =>
   (await getSpacer(page)).evaluate((el) => el.matches(':popover-open'));
 
@@ -86,8 +85,8 @@ test('should trigger focus & blur events at the correct time', async ({ page }) 
   );
 
   const popover = await getHost(page);
-  const before = await selectNode(page, '#before');
-  const after = await selectNode(page, '#after');
+  const before = await page.$('#before');
+  const after = await page.$('#after');
 
   await addEventListener(before, 'focus');
   await addEventListener(popover, 'focus');
@@ -180,7 +179,7 @@ test.describe('mouse behavior', () => {
     await togglePopover(page);
     expect(await getPopover(page)).not.toBeNull();
 
-    (await selectNode(page, 'body')).click();
+    (await page.$('body')).click();
     await waitForStencilLifecycle(page);
 
     expect(await getPopover(page)).toBeNull();
@@ -194,7 +193,7 @@ test.describe('mouse behavior', () => {
     );
 
     const firstButton = await getButton(page);
-    const secondButton = await selectNode(page, 'p-popover.second >>> button');
+    const secondButton = await page.$('p-popover.second button');
 
     // We have to click the second button first, otherwise it gets overlapped by the first button and cant be clicked
     await secondButton.click();
@@ -222,7 +221,7 @@ test.describe('mouse behavior', () => {
     await initPopover(page, { withStrong: true });
     await togglePopover(page);
 
-    const strongEl = await selectNode(page, 'strong');
+    const strongEl = await page.$('strong');
     await strongEl.click({ clickCount: 2 });
 
     const selection = await page.evaluate(() => window.getSelection().toString());

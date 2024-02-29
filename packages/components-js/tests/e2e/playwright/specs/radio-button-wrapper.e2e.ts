@@ -1,4 +1,4 @@
-import type { Page, ElementHandle } from 'playwright';
+import type { ElementHandle, Page } from 'playwright';
 import { expect, test } from '@playwright/test';
 import {
   addEventListener,
@@ -8,7 +8,6 @@ import {
   getEventSummary,
   getLifecycleStatus,
   hasFocus,
-  selectNode,
   setContentWithDesignSystem,
   setProperty,
   waitForInputTransition,
@@ -16,10 +15,10 @@ import {
 } from '../helpers';
 import type { FormState } from '@porsche-design-system/components/dist/types/bundle';
 
-const getHost = (page: Page) => selectNode(page, 'p-radio-button-wrapper');
-const getInput = (page: Page) => selectNode(page, 'p-radio-button-wrapper input');
-const getWrapper = (page: Page) => selectNode(page, 'p-radio-button-wrapper >>> .wrapper');
-const getMessage = (page: Page) => selectNode(page, 'p-radio-button-wrapper >>> .message');
+const getHost = (page: Page) => page.$('p-radio-button-wrapper');
+const getInput = (page: Page) => page.$('p-radio-button-wrapper input');
+const getWrapper = (page: Page) => page.$('p-radio-button-wrapper .wrapper');
+const getMessage = (page: Page) => page.$('p-radio-button-wrapper .message');
 const getBackgroundStyle = (element: ElementHandle<HTMLElement>) => getElementStyle(element, 'background');
 
 type InitOptions = {
@@ -143,8 +142,8 @@ test.describe('checked state', () => {
       </p-radio-button-wrapper>`
     );
 
-    const input1 = await selectNode(page, '#radio-1 > input[type="radio"]');
-    const input2 = await selectNode(page, '#radio-2 > input[type="radio"]');
+    const input1 = await page.$('#radio-1 > input[type="radio"]');
+    const input2 = await page.$('#radio-2 > input[type="radio"]');
 
     const initialStyleInput1 = await getBackgroundStyle(input1);
     const initialStyleInput2 = await getBackgroundStyle(input2);
@@ -176,10 +175,10 @@ test.describe('checked state', () => {
       </p-radio-button-wrapper>`
     );
 
-    const input1 = await selectNode(page, '#radio-1 > input[type="radio"]');
-    const input2 = await selectNode(page, '#radio-2 > input[type="radio"]');
-    const label1 = await selectNode(page, '#radio-1 >>> label');
-    const label2 = await selectNode(page, '#radio-2 >>> label');
+    const input1 = await page.$('#radio-1 > input[type="radio"]');
+    const input2 = await page.$('#radio-2 > input[type="radio"]');
+    const label1 = await page.$('#radio-1 label');
+    const label2 = await page.$('#radio-2 label');
     const initialStyleInput1 = await getBackgroundStyle(input1);
     const initialStyleInput2 = await getBackgroundStyle(input2);
 
@@ -214,8 +213,8 @@ test.describe('checked state', () => {
       </p-radio-button-wrapper>`
     );
 
-    const input1 = await selectNode(page, '#radio-1 > input');
-    const input2 = await selectNode(page, '#radio-2 > input');
+    const input1 = await page.$('#radio-1 > input');
+    const input2 = await page.$('#radio-2 > input');
     const initialStyleInput1 = await getBackgroundStyle(input1);
     const initialStyleInput2 = await getBackgroundStyle(input2);
 
@@ -245,8 +244,8 @@ test.describe('checked state', () => {
         <input type="radio" name="some-name" checked />
       </p-radio-button-wrapper>`
     );
-    const host1 = await selectNode(page, '#radio-1');
-    const input1 = await selectNode(page, '#radio-1 > input');
+    const host1 = await page.$('#radio-1');
+    const input1 = await page.$('#radio-1 > input');
     await addEventListener(host1, 'click');
     await addEventListener(input1, 'change');
 
@@ -282,8 +281,8 @@ test.describe('checked state', () => {
         <input type="radio" name="some-name" />
       </p-radio-button-wrapper>`
     );
-    const host1 = await selectNode(page, '#radio-1');
-    const input1 = await selectNode(page, '#radio-1 > input');
+    const host1 = await page.$('#radio-1');
+    const input1 = await page.$('#radio-1 > input');
 
     expect(await hasFocus(input1)).toBe(false);
     await page.keyboard.press('Tab');
@@ -313,8 +312,8 @@ test('should check radio-button when checked property is changed programmaticall
     </p-radio-button-wrapper>`
   );
 
-  const input1 = await selectNode(page, '#radio-1 > input');
-  const input2 = await selectNode(page, '#radio-2 > input');
+  const input1 = await page.$('#radio-1 > input');
+  const input2 = await page.$('#radio-2 > input');
   const initialStyleInput1 = await getBackgroundStyle(input1);
   const initialStyleInput2 = await getBackgroundStyle(input2);
 

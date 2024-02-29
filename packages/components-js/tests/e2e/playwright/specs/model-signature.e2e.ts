@@ -1,12 +1,6 @@
 import type { Page } from 'playwright';
 import { expect, test } from '@playwright/test';
-import {
-  getLifecycleStatus,
-  selectNode,
-  setContentWithDesignSystem,
-  setProperty,
-  waitForStencilLifecycle,
-} from '../helpers';
+import { getLifecycleStatus, setContentWithDesignSystem, setProperty, waitForStencilLifecycle } from '../helpers';
 
 let page: Page;
 
@@ -22,7 +16,7 @@ const initModelSignature = (page: Page): Promise<void> => {
   return setContentWithDesignSystem(page, `<p-model-signature></p-model-signature>`);
 };
 
-const getHost = (page: Page) => selectNode(page, 'p-model-signature');
+const getHost = (page: Page) => page.$('p-model-signature');
 
 test.describe('lifecycle', () => {
   test('should work without unnecessary round trips on init', async ({ page }) => {

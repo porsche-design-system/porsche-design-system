@@ -1,4 +1,3 @@
-import type { Components } from '@porsche-design-system/components/src/components';
 import type { ElementHandle, Page } from 'playwright';
 import { expect, test } from '@playwright/test';
 import {
@@ -10,7 +9,6 @@ import {
   getProperty,
   initConsoleObserver,
   reattachElementHandle,
-  selectNode,
   setContentWithDesignSystem,
   setProperty,
   waitForComponentsReady,
@@ -29,9 +27,9 @@ const initTabs = (page: Page, opts?: { amount?: number; activeTabIndex?: number 
   return setContentWithDesignSystem(page, content);
 };
 
-const getHost = (page: Page) => selectNode(page, 'p-tabs');
+const getHost = (page: Page) => page.$('p-tabs');
 const getAllTabsItems = (page: Page) => page.$$<'p-tabs-item'>('p-tabs-item');
-const getTabsBar = (page: Page) => selectNode(page, 'p-tabs >>> p-tabs-bar');
+const getTabsBar = (page: Page) => page.$('p-tabs p-tabs-bar');
 const getAllTabs = async (page: Page) => (await getTabsBar(page)).$$('button[role="tab"]');
 const getHiddenAttribute = (element: ElementHandle<HTMLElement>) => getAttribute(element, 'hidden');
 const isHidden = async (element: ElementHandle<HTMLElement>): Promise<boolean> =>

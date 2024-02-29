@@ -1,4 +1,4 @@
-import type { Page, ElementHandle } from 'playwright';
+import type { ElementHandle, Page } from 'playwright';
 import { expect, test } from '@playwright/test';
 import {
   addEventListener,
@@ -11,24 +11,22 @@ import {
   getEventSummary,
   getLifecycleStatus,
   getProperty,
-  selectNode,
   setContentWithDesignSystem,
   setProperty,
   waitForStencilLifecycle,
 } from '../helpers';
 import type { ModalAriaAttribute, SelectedAriaAttributes } from '@porsche-design-system/components/dist/types/bundle';
-import type { TagName } from '@porsche-design-system/shared';
 
 const CSS_TRANSITION_DURATION = 600;
 
-const getHost = (page: Page) => selectNode(page, 'p-modal');
-const getScrollContainer = (page: Page) => selectNode(page, 'p-modal >>> .scroll-container');
-const getHeader = (page: Page) => selectNode(page, 'p-modal >>> .header');
-const getModal = (page: Page) => selectNode(page, 'p-modal >>> .root');
-const getDismissButton = (page: Page) => selectNode(page, 'p-modal >>> p-button-pure.dismiss');
-const getFooter = (page: Page) => selectNode(page, 'p-modal >>> .footer');
+const getHost = (page: Page) => page.$('p-modal');
+const getScrollContainer = (page: Page) => page.$('p-modal .scroll-container');
+const getHeader = (page: Page) => page.$('p-modal .header');
+const getModal = (page: Page) => page.$('p-modal .root');
+const getDismissButton = (page: Page) => page.$('p-modal p-button-pure.dismiss');
+const getFooter = (page: Page) => page.$('p-modal .footer');
 const getFooterBoxShadow = async (page: Page): Promise<string> => getElementStyle(await getFooter(page), 'boxShadow');
-const getBodyStyle = async (page: Page) => getAttribute(await selectNode(page, 'body'), 'style');
+const getBodyStyle = async (page: Page) => getAttribute(await page.$('body'), 'style');
 
 const initBasicModal = (
   page: Page,
@@ -207,7 +205,7 @@ test.describe('can be dismissed', () => {
     const dismissBtn = await getDismissButton(page);
     expect(dismissBtn).not.toBeNull();
 
-    const dismissBtnReal = await selectNode(page, 'p-modal >>> p-button-pure.dismiss >>> button');
+    const dismissBtnReal = await page.$('p-modal p-button-pure.dismiss button');
     expect(await getAttribute(dismissBtnReal, 'type')).toBe('button');
 
     await dismissBtn.click();
@@ -279,7 +277,7 @@ test.describe('can be dismissed', () => {
   });
 
   test('should not bubble close event', async ({ page }) => {
-    const body = await selectNode(page, 'body');
+    const body = await page.$('body');
     await addEventListener(body, 'close');
     await page.mouse.move(5, 5);
     await page.mouse.down();
@@ -391,7 +389,7 @@ test.describe('focus behavior', () => {
     expect(await getModalVisibility(page), 'initial').toBe('hidden');
     expect(await getActiveElementTagName(page)).toBe('BODY');
 
-    await (await selectNode(page, '#btn-open')).click();
+    await (await page.$('#btn-open')).click();
     await waitForStencilLifecycle(page);
 
     expect(await getModalVisibility(page)).toBe('visible');

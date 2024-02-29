@@ -8,7 +8,6 @@ import {
   getLifecycleStatus,
   getProperty,
   hasFocus,
-  selectNode,
   setContentWithDesignSystem,
   setProperty,
   skipInBrowser,
@@ -17,11 +16,11 @@ import {
 } from '../helpers';
 import type { FormState } from '@porsche-design-system/components/dist/types/bundle';
 
-const getHost = (page: Page) => selectNode(page, 'p-checkbox-wrapper');
-const getInput = (page: Page) => selectNode(page, 'p-checkbox-wrapper input[type="checkbox"]');
-const getWrapper = (page: Page) => selectNode(page, 'p-checkbox-wrapper >>> .wrapper');
-const getLabel = (page: Page) => selectNode(page, 'p-checkbox-wrapper >>> label');
-const getMessage = (page: Page) => selectNode(page, 'p-checkbox-wrapper >>> .message');
+const getHost = (page: Page) => page.$('p-checkbox-wrapper');
+const getInput = (page: Page) => page.$('p-checkbox-wrapper input[type="checkbox"]');
+const getWrapper = (page: Page) => page.$('p-checkbox-wrapper .wrapper');
+const getLabel = (page: Page) => page.$('p-checkbox-wrapper label');
+const getMessage = (page: Page) => page.$('p-checkbox-wrapper .message');
 
 const setIndeterminate = async (element: ElementHandle, value: boolean) => {
   await setProperty(element, 'indeterminate', value);

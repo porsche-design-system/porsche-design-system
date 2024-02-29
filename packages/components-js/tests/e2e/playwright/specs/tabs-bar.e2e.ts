@@ -4,7 +4,6 @@ import {
   addEventListener,
   CSS_ANIMATION_DURATION,
   FOCUS_PADDING,
-  getActiveElementId,
   getAttribute,
   getConsoleErrorsAmount,
   getElementPositions,
@@ -18,12 +17,11 @@ import {
   initConsoleObserver,
   reattachElementHandle,
   SCROLL_PERCENTAGE,
-  selectNode,
   setContentWithDesignSystem,
   setProperty,
   waitForStencilLifecycle,
 } from '../helpers';
-import type { BreakpointCustomizable, TabsSize } from '@porsche-design-system/components/dist/types/bundle';
+import type { BreakpointCustomizable } from '@porsche-design-system/components/dist/types/bundle';
 
 type InitOptions = {
   amount?: number;
@@ -59,15 +57,15 @@ ${otherMarkup}
   return setContentWithDesignSystem(page, isWrapped ? `<div style="width: 300px">${content}</div>` : content);
 };
 
-const getHost = (page: Page) => selectNode(page, 'p-tabs-bar');
+const getHost = (page: Page) => page.$('p-tabs-bar');
 const getAllButtons = (page: Page) => page.$$('button[role="tab"]');
-const getScrollArea = (page: Page) => selectNode(page, 'p-tabs-bar >>> p-scroller >>> .scroll-area');
-const getBar = (page: Page) => selectNode(page, 'p-tabs-bar >>> .bar');
-const getGradientNext = (page: Page) => selectNode(page, 'p-tabs-bar >>> p-scroller >>> .action-next');
+const getScrollArea = (page: Page) => page.$('p-tabs-bar p-scroller .scroll-area');
+const getBar = (page: Page) => page.$('p-tabs-bar .bar');
+const getGradientNext = (page: Page) => page.$('p-tabs-bar p-scroller .action-next');
 
 const getPrevNextButton = async (page: Page) => {
-  const prevButton = await selectNode(page, 'p-tabs-bar >>> p-scroller >>> .action-prev button');
-  const nextButton = await selectNode(page, 'p-tabs-bar >>> p-scroller >>> .action-next button');
+  const prevButton = await page.$('p-tabs-bar p-scroller .action-prev button');
+  const nextButton = await page.$('p-tabs-bar p-scroller .action-next button');
   return { prevButton, nextButton };
 };
 

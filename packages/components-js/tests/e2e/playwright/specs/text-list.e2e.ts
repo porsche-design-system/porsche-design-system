@@ -3,7 +3,6 @@ import { expect, test } from '@playwright/test';
 import {
   getLifecycleStatus,
   getProperty,
-  selectNode,
   setContentWithDesignSystem,
   setProperty,
   waitForStencilLifecycle,
@@ -28,7 +27,7 @@ const initTextList = (page: Page): Promise<void> => {
   );
 };
 
-const getHost = (page: Page) => selectNode(page, 'p-text-list');
+const getHost = (page: Page) => page.$('p-text-list');
 
 test.describe('lifecycle', () => {
   test('should have a theme prop defined at any time without any unnecessary round trips', async ({ page }) => {

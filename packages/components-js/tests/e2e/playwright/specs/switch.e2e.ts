@@ -7,15 +7,14 @@ import {
   getLifecycleStatus,
   getProperty,
   hasFocus,
-  selectNode,
   setContentWithDesignSystem,
   setProperty,
   waitForStencilLifecycle,
 } from '../helpers';
 
-const getHost = (page: Page) => selectNode(page, 'p-switch');
-const getButton = (page: Page) => selectNode(page, 'p-switch >>> button');
-const getLabel = (page: Page) => selectNode(page, 'p-switch >>> label');
+const getHost = (page: Page) => page.$('p-switch');
+const getButton = (page: Page) => page.$('p-switch button');
+const getLabel = (page: Page) => page.$('p-switch label');
 
 const clickHandlerScript = `
 <script>
@@ -98,7 +97,7 @@ test.describe('events', () => {
   test('should dispatch correct click events', async ({ page }) => {
     await setContentWithDesignSystem(page, `<div><p-switch id="hostElement">Some label</p-switch></div>`);
 
-    const wrapper = await selectNode(page, 'div');
+    const wrapper = await page.$('div');
     const button = await getButton(page);
     const label = await getLabel(page);
     await addEventListener(wrapper, 'click');
@@ -124,8 +123,8 @@ test.describe('events', () => {
     );
 
     const host = await getHost(page);
-    const before = await selectNode(page, '#before');
-    const after = await selectNode(page, '#after');
+    const before = await page.$('#before');
+    const after = await page.$('#after');
 
     await addEventListener(before, 'focus');
     await addEventListener(host, 'focus');
@@ -202,7 +201,7 @@ test.describe('events', () => {
     );
 
     const host = await getHost(page);
-    const before = await selectNode(page, '#before');
+    const before = await page.$('#before');
     await before.focus();
     expect(await hasFocus(host)).toBe(false);
     await host.focus();

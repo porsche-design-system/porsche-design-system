@@ -1,12 +1,6 @@
 import type { Page } from 'playwright';
 import { expect, test } from '@playwright/test';
-import {
-  getLifecycleStatus,
-  selectNode,
-  setContentWithDesignSystem,
-  setProperty,
-  waitForStencilLifecycle,
-} from '../helpers';
+import { getLifecycleStatus, setContentWithDesignSystem, setProperty, waitForStencilLifecycle } from '../helpers';
 
 type InitOpts = {
   withLabel?: boolean;
@@ -21,7 +15,7 @@ const initTagDismissible = (page: Page, props?: InitOpts) => {
   return setContentWithDesignSystem(page, content);
 };
 
-const getHost = (page: Page) => selectNode(page, 'p-tag-dismissible');
+const getHost = (page: Page) => page.$('p-tag-dismissible');
 
 test.describe('focus', () => {
   test('should provide functionality to focus & blur the custom element', async ({ page }) => {
@@ -35,7 +29,7 @@ test.describe('focus', () => {
     const host = await getHost(page);
     const hostHasFocus = () => host.evaluate((el) => document.activeElement === el);
 
-    const before = await selectNode(page, '#before');
+    const before = await page.$('#before');
     await before.focus();
     expect(await hostHasFocus()).toBe(false);
     await host.focus();

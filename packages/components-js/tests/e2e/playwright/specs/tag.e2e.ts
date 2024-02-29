@@ -1,12 +1,6 @@
 import type { Page } from 'playwright';
 import { expect, test } from '@playwright/test';
-import {
-  getLifecycleStatus,
-  selectNode,
-  setContentWithDesignSystem,
-  setProperty,
-  waitForStencilLifecycle,
-} from '../helpers';
+import { getLifecycleStatus, setContentWithDesignSystem, setProperty, waitForStencilLifecycle } from '../helpers';
 
 type InitOpts = {
   withIcon?: boolean;
@@ -21,8 +15,8 @@ const initTag = (page: Page, props?: InitOpts) => {
   return setContentWithDesignSystem(page, content);
 };
 
-const getHost = (page: Page) => selectNode(page, 'p-tag');
-const getSpan = (page: Page) => selectNode(page, 'p-tag >>> span');
+const getHost = (page: Page) => page.$('p-tag');
+const getSpan = (page: Page) => page.$('p-tag span');
 
 test.describe('lifecycle', () => {
   test('should work without unnecessary round trips on init', async ({ page }) => {

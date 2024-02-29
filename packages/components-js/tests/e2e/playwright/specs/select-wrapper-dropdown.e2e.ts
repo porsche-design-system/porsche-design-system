@@ -1,5 +1,5 @@
 import type { Page } from 'playwright';
-import { expect, test, devices } from '@playwright/test';
+import { expect, test } from '@playwright/test';
 import {
   addEventListener,
   getAttribute,
@@ -14,31 +14,30 @@ import {
   getShadowRoot,
   initPageErrorObserver,
   reattachElementHandle,
-  selectNode,
   setContentWithDesignSystem,
   setProperty,
   waitForStencilLifecycle,
 } from '../helpers';
 
-const getHost = (page: Page) => selectNode(page, 'p-select-wrapper');
-const getSelect = (page: Page) => selectNode(page, 'p-select-wrapper select');
-const getSelectIcon = (page: Page) => selectNode(page, 'p-select-wrapper >>> .icon');
+const getHost = (page: Page) => page.$('p-select-wrapper');
+const getSelect = (page: Page) => page.$('p-select-wrapper select');
+const getSelectIcon = (page: Page) => page.$('p-select-wrapper .icon');
 
-const dropdownSelector = 'p-select-wrapper >>> p-select-wrapper-dropdown';
+const dropdownSelector = 'p-select-wrapper p-select-wrapper-dropdown';
 const highlightedClass = 'option--highlighted';
 const selectedClass = 'option--selected';
 const disabledClass = 'option--disabled';
 const hiddenClass = 'option--hidden';
 
-const getDropdown = (page: Page) => selectNode(page, dropdownSelector);
-const getDropdownCombobox = (page: Page) => selectNode(page, `${dropdownSelector} >>> [role="combobox"]`);
-const getDropdownList = (page: Page) => selectNode(page, `${dropdownSelector} >>> [role="listbox"]`);
-const getDropdownOption1 = (page: Page) => selectNode(page, `${dropdownSelector} >>> .option:nth-child(1)`);
-const getDropdownOption2 = (page: Page) => selectNode(page, `${dropdownSelector} >>> .option:nth-child(2)`);
-const getDropdownOption4 = (page: Page) => selectNode(page, `${dropdownSelector} >>> .option:nth-child(4)`);
-const getDisabledDropdownOption = (page: Page) => selectNode(page, `${dropdownSelector} >>> .${disabledClass}`);
-const getDropdownOptgroup = (page: Page) => selectNode(page, `${dropdownSelector} >>> .optgroup`);
-const getDropdownCheckmarkIcon = (page: Page) => selectNode(page, `${dropdownSelector} >>> .icon`);
+const getDropdown = (page: Page) => page.$(dropdownSelector);
+const getDropdownCombobox = (page: Page) => page.$(`${dropdownSelector} [role="combobox"]`);
+const getDropdownList = (page: Page) => page.$(`${dropdownSelector} [role="listbox"]`);
+const getDropdownOption1 = (page: Page) => page.$(`${dropdownSelector} .option:nth-child(1)`);
+const getDropdownOption2 = (page: Page) => page.$(`${dropdownSelector} .option:nth-child(2)`);
+const getDropdownOption4 = (page: Page) => page.$(`${dropdownSelector} .option:nth-child(4)`);
+const getDisabledDropdownOption = (page: Page) => page.$(`${dropdownSelector} .${disabledClass}`);
+const getDropdownOptgroup = (page: Page) => page.$(`${dropdownSelector} .optgroup`);
+const getDropdownCheckmarkIcon = (page: Page) => page.$(`${dropdownSelector} .icon`);
 
 const getComboboxAriaActiveDescendant = async (page: Page) =>
   getAttribute(await getDropdownCombobox(page), 'aria-activedescendant');
@@ -236,7 +235,7 @@ test('should be visible if select is clicked and hidden again when clicked outsi
   await initSelect(page, { markupBefore: '<p-text>Some text</p-text>' });
 
   const host = await getHost(page);
-  const text = await selectNode(page, 'p-text');
+  const text = await page.$('p-text');
 
   expect(await getDropdownList(page)).toBeNull();
 
@@ -882,15 +881,15 @@ test.describe('keyboard and click events', () => {
         <${customElementName}></${customElementName}>`
     );
 
-    const host = await selectNode(page, `${customElementName} >>> p-select-wrapper`);
+    const host = await page.$(`${customElementName} p-select-wrapper`);
     await host.click();
     await waitForStencilLifecycle(page);
 
-    const nestedDropdownSelector = `${customElementName} >>> ${dropdownSelector}`;
-    const dropdownOption2 = await selectNode(page, `${nestedDropdownSelector} >>> .option:nth-child(2)`);
+    const nestedDropdownSelector = `${customElementName} ${dropdownSelector}`;
+    const dropdownOption2 = await page.$(`${nestedDropdownSelector} .option:nth-child(2)`);
     const dropdownOption2BoundingBox = await dropdownOption2.boundingBox();
 
-    const dropdownInCustomElement = await getShadowRoot(await selectNode(page, nestedDropdownSelector));
+    const dropdownInCustomElement = await getShadowRoot(await page.$(nestedDropdownSelector));
     const getSelectedOptionInCustomElement = () => getElementIndex(dropdownInCustomElement, `.${selectedClass}`);
 
     expect(await getSelectedOptionInCustomElement(), 'initially').toBe(0);
@@ -900,7 +899,7 @@ test.describe('keyboard and click events', () => {
     await waitForStencilLifecycle(page);
 
     expect(
-      await getProperty(await selectNode(page, `${customElementName} >>> p-select-wrapper select`), 'selectedIndex'),
+      await getProperty(await page.$(`${customElementName} p-select-wrapper select`), 'selectedIndex'),
       'after click'
     ).toBe(1);
   });

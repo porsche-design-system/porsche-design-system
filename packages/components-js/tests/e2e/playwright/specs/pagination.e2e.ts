@@ -6,12 +6,11 @@ import {
   getEventSummary,
   getLifecycleStatus,
   initConsoleObserver,
-  selectNode,
   setContentWithDesignSystem,
 } from '../helpers';
 
-const getHost = (page: Page) => selectNode(page, 'p-pagination');
-const getNav = (page: Page) => selectNode(page, 'p-pagination >>> nav');
+const getHost = (page: Page) => page.$('p-pagination');
+const getNav = (page: Page) => page.$('p-pagination nav');
 const getPaginationItems = async (page: Page) => (await (await getNav(page)).$$('span:not(.ellipsis)')).slice(1, -1); // without prev and next
 
 const initPagination = (page: Page, opts?: { activePage?: number }) => {

@@ -1,4 +1,4 @@
-import type { Page, ElementHandle } from 'playwright';
+import type { ElementHandle, Page } from 'playwright';
 import { expect, test } from '@playwright/test';
 import {
   addEventListener,
@@ -8,7 +8,6 @@ import {
   getEventSummary,
   getLifecycleStatus,
   getProperty,
-  selectNode,
   setAttribute,
   setContentWithDesignSystem,
   setProperty,
@@ -17,16 +16,15 @@ import {
 } from '../helpers';
 import type { FormState } from '@porsche-design-system/components/dist/types/bundle';
 
-const getHost = (page: Page) => selectNode(page, 'p-text-field-wrapper');
-const getInput = (page: Page) => selectNode(page, 'input');
-const getLabel = (page: Page) => selectNode(page, 'p-text-field-wrapper >>> label');
-const getCounterOrUnit = (page: Page) => selectNode(page, 'p-text-field-wrapper >>> .unit-counter');
-const getToggleOrClearButtonHost = (page: Page) => selectNode(page, 'p-text-field-wrapper >>> p-button-pure');
-const getToggleOrClearButton = (page: Page) => selectNode(page, 'p-text-field-wrapper >>> p-button-pure >>> button');
-const getLocateActionButton = (page: Page) =>
-  selectNode(page, 'p-text-field-wrapper >>> p-button-pure + p-button-pure >>> button');
-const getSubmitButtonHost = (page: Page) => selectNode(page, 'p-text-field-wrapper >>> p-button-pure');
-const getSubmitButton = (page: Page) => selectNode(page, 'p-text-field-wrapper >>> p-button-pure >>> button');
+const getHost = (page: Page) => page.$('p-text-field-wrapper');
+const getInput = (page: Page) => page.$('input');
+const getLabel = (page: Page) => page.$('p-text-field-wrapper label');
+const getCounterOrUnit = (page: Page) => page.$('p-text-field-wrapper .unit-counter');
+const getToggleOrClearButtonHost = (page: Page) => page.$('p-text-field-wrapper p-button-pure');
+const getToggleOrClearButton = (page: Page) => page.$('p-text-field-wrapper p-button-pure button');
+const getLocateActionButton = (page: Page) => page.$('p-text-field-wrapper p-button-pure + p-button-pure button');
+const getSubmitButtonHost = (page: Page) => page.$('p-text-field-wrapper p-button-pure');
+const getSubmitButton = (page: Page) => page.$('p-text-field-wrapper p-button-pure button');
 const getIconName = (icon: ElementHandle) => getProperty(icon, 'icon');
 
 type InitOptions = {
@@ -314,7 +312,7 @@ test.describe('input type="search"', () => {
       await initTextField(page, { type: 'search', isWrappedInForm: true });
       const searchButton = await getSubmitButton(page);
 
-      const form = await selectNode(page, 'form');
+      const form = await page.$('form');
       await addEventListener(form, 'submit');
 
       await searchButton.click();
@@ -437,11 +435,11 @@ test('should render characterCountElement when maxlength is set', async ({ page 
   await initTextField(page);
   const input = await getInput(page);
 
-  expect(await selectNode(page, 'p-text-field-wrapper >>> label .sr-only')).toBeNull();
+  expect(await page.$('p-text-field-wrapper label .sr-only')).toBeNull();
 
   await setAttribute(input, 'maxlength', '20');
 
-  expect(await selectNode(page, 'p-text-field-wrapper >>> label .sr-only')).toBeDefined();
+  expect(await page.$('p-text-field-wrapper label .sr-only')).toBeDefined();
 });
 
 test.describe('lifecycle', () => {

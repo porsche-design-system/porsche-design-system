@@ -1,7 +1,6 @@
 import {
   getLifecycleStatus,
   getProperty,
-  selectNode,
   setContentWithDesignSystem,
   setProperty,
   waitForStencilLifecycle,
@@ -38,7 +37,7 @@ const initDisplay = (
   );
 };
 
-const getHost = (page: Page) => selectNode(page, 'p-display');
+const getHost = (page: Page) => page.$('p-display');
 
 const getDisplayTagName = async (page: Page): Promise<string> =>
   (await getHost(page)).evaluate((el) => el.shadowRoot.querySelector('.root').tagName);

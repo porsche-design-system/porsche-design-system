@@ -8,16 +8,15 @@ import {
   getProperty,
   hasFocus,
   reattachElementHandle,
-  selectNode,
   setContentWithDesignSystem,
   setProperty,
   waitForStencilLifecycle,
 } from '../helpers';
 
-const getHost = (page: Page) => selectNode(page, 'p-segmented-control');
-const getFirstItemHost = (page: Page) => selectNode(page, 'p-segmented-control-item');
-const getSecondItemHost = (page: Page) => selectNode(page, 'p-segmented-control-item:nth-child(2)');
-const getFirstItemButton = (page: Page) => selectNode(page, 'p-segmented-control-item >>> button');
+const getHost = (page: Page) => page.$('p-segmented-control');
+const getFirstItemHost = (page: Page) => page.$('p-segmented-control-item');
+const getSecondItemHost = (page: Page) => page.$('p-segmented-control-item:nth-child(2)');
+const getFirstItemButton = (page: Page) => page.$('p-segmented-control-item button');
 const getAllItemHosts = (page: Page) => page.$$('p-segmented-control-item');
 const getAllItemButtons = async (page: Page) =>
   Promise.all(
@@ -209,7 +208,7 @@ test.describe('keyboard', () => {
     const secondItemHost = await getSecondItemHost(page);
     const [firstAnchor, secondAnchor] = await page.$$('a');
 
-    expect(await hasFocus(await selectNode(page, 'body'))).toBe(true);
+    expect(await hasFocus(await page.$('body'))).toBe(true);
 
     await page.keyboard.press('Tab');
     expect(await hasFocus(firstAnchor)).toBe(true);

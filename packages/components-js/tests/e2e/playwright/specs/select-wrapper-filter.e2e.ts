@@ -1,5 +1,5 @@
 import type { Page } from 'playwright';
-import { expect, test, devices } from '@playwright/test';
+import { expect, test } from '@playwright/test';
 import {
   addEventListener,
   getAttribute,
@@ -8,30 +8,29 @@ import {
   getEventSummary,
   getLifecycleStatus,
   getProperty,
-  selectNode,
   setContentWithDesignSystem,
   setProperty,
   waitForStencilLifecycle,
 } from '../helpers';
 
-const getHost = (page: Page) => selectNode(page, 'p-select-wrapper');
-const getSelect = (page: Page) => selectNode(page, 'p-select-wrapper select');
-const getLabel = (page: Page) => selectNode(page, 'p-select-wrapper >>> label');
+const getHost = (page: Page) => page.$('p-select-wrapper');
+const getSelect = (page: Page) => page.$('p-select-wrapper select');
+const getLabel = (page: Page) => page.$('p-select-wrapper label');
 
-const dropdownSelector = 'p-select-wrapper >>> p-select-wrapper-dropdown';
-const filterInputSelector = `${dropdownSelector} >>> input`;
+const dropdownSelector = 'p-select-wrapper p-select-wrapper-dropdown';
+const filterInputSelector = `${dropdownSelector} input`;
 const highlightedClass = 'option--highlighted';
 const selectedClass = 'option--selected';
 const hiddenClass = 'option--hidden';
 
-const getDropdown = (page: Page) => selectNode(page, dropdownSelector);
-const getDropdownList = (page: Page) => selectNode(page, `${dropdownSelector} >>> [role="listbox"]`);
-const getDropdownOption1 = (page: Page) => selectNode(page, `${dropdownSelector} >>> .option:nth-child(1)`);
-const getDropdownOption2 = (page: Page) => selectNode(page, `${dropdownSelector} >>> .option:nth-child(2)`);
-const getSelectedDropdownOption = (page: Page) => selectNode(page, `${dropdownSelector} >>> .${selectedClass}`);
-const getFilterInput = (page: Page) => selectNode(page, filterInputSelector);
+const getDropdown = (page: Page) => page.$(dropdownSelector);
+const getDropdownList = (page: Page) => page.$(`${dropdownSelector} [role="listbox"]`);
+const getDropdownOption1 = (page: Page) => page.$(`${dropdownSelector} .option:nth-child(1)`);
+const getDropdownOption2 = (page: Page) => page.$(`${dropdownSelector} .option:nth-child(2)`);
+const getSelectedDropdownOption = (page: Page) => page.$(`${dropdownSelector} .${selectedClass}`);
+const getFilterInput = (page: Page) => page.$(filterInputSelector);
 const getFilterInputValue = async (page: Page) => getProperty(await getFilterInput(page), 'value');
-const getFilterInputOverlay = (page: Page) => selectNode(page, `${filterInputSelector} + span`);
+const getFilterInputOverlay = (page: Page) => page.$(`${filterInputSelector} + span`);
 
 const getFilterPlaceholder = async (page: Page) => getAttribute(await getFilterInput(page), 'placeholder');
 const getFilterAriaActiveDescendant = async (page: Page) =>
@@ -141,7 +140,7 @@ test('should render dropdown list if filter input is clicked and remove via outs
   await initSelect(page, { markupBefore: '<p-text>Some text</p-text>' });
 
   const filterInput = await getFilterInput(page);
-  const text = await selectNode(page, 'p-text');
+  const text = await page.$('p-text');
 
   expect(await getDropdownList(page), 'initially').toBeNull();
 
@@ -219,7 +218,7 @@ test('should clear input value and reset dropdown on click outside', async ({ pa
   await initSelect(page, { markupBefore: '<p-text>Some text</p-text>' });
 
   const filterInput = await getFilterInput(page);
-  const text = await selectNode(page, 'p-text');
+  const text = await page.$('p-text');
 
   await filterInput.click();
   await waitForStencilLifecycle(page);

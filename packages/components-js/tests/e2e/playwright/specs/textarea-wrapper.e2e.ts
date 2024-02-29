@@ -1,23 +1,22 @@
-import type { Page, ElementHandle } from 'playwright';
+import type { ElementHandle, Page } from 'playwright';
 import { expect, test } from '@playwright/test';
 import {
+  addEventListener,
+  getElementInnerText,
+  getElementStyle,
+  getEventSummary,
   getLifecycleStatus,
-  selectNode,
+  setAttribute,
   setContentWithDesignSystem,
   setProperty,
   waitForStencilLifecycle,
-  getElementInnerText,
-  getElementStyle,
-  setAttribute,
-  addEventListener,
-  getEventSummary,
 } from '../helpers';
 import type { FormState } from '@porsche-design-system/components/dist/types/bundle';
 
-const getHost = (page: Page) => selectNode(page, 'p-textarea-wrapper');
-const getTextarea = (page: Page) => selectNode(page, 'p-textarea-wrapper textarea');
-const getLabel = (page: Page) => selectNode(page, 'p-textarea-wrapper >>> label');
-const getCounter = (page: Page) => selectNode(page, 'p-textarea-wrapper >>> .counter');
+const getHost = (page: Page) => page.$('p-textarea-wrapper');
+const getTextarea = (page: Page) => page.$('p-textarea-wrapper textarea');
+const getLabel = (page: Page) => page.$('p-textarea-wrapper label');
+const getCounter = (page: Page) => page.$('p-textarea-wrapper .counter');
 
 type InitOptions = {
   useSlottedLabel?: boolean;
@@ -106,11 +105,11 @@ test('should render characterCountElement when maxlength is set', async ({ page 
   await initTextarea(page);
   const textarea = await getTextarea(page);
 
-  expect(await selectNode(page, 'p-textarea-wrapper >>> label .sr-only')).toBeNull();
+  expect(await page.$('p-textarea-wrapper label .sr-only')).toBeNull();
 
   await setAttribute(textarea, 'maxlength', '20');
 
-  expect(await selectNode(page, 'p-textarea-wrapper >>> label .sr-only')).toBeDefined();
+  expect(await page.$('p-textarea-wrapper label .sr-only')).toBeDefined();
 });
 
 // TODO: Activate test

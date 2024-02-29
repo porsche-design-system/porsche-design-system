@@ -4,15 +4,14 @@ import {
   addEventListener,
   getEventSummary,
   getLifecycleStatus,
-  selectNode,
   setContentWithDesignSystem,
   waitForStencilLifecycle,
 } from '../helpers';
 
-const getHost = (page: Page) => selectNode(page, 'p-table');
-const getFirstTableHeadCell = (page: Page) => selectNode(page, 'p-table-head-cell:nth-child(1)');
+const getHost = (page: Page) => page.$('p-table');
+const getFirstTableHeadCell = (page: Page) => page.$('p-table-head-cell:nth-child(1)');
 
-const getFirstTableHeadCellButton = (page: Page) => selectNode(page, 'p-table-head-cell:nth-child(1) >>> button');
+const getFirstTableHeadCellButton = (page: Page) => page.$('p-table-head-cell:nth-child(1) button');
 
 type InitOptions = {
   columnAmount?: number;
