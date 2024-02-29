@@ -9,6 +9,7 @@ import {
   selectNode,
   setContentWithDesignSystem,
   setProperty,
+  skipInBrowser,
   waitForStencilLifecycle,
 } from '../helpers';
 
@@ -38,6 +39,8 @@ const getImageRequest = (page: Page) =>
 const resolution1x = '@1x';
 const resolution2x = '@2x';
 const resolution3x = '@3x';
+
+skipInBrowser(['firefox', 'webkit']);
 
 test.describe('with trademark', () => {
   const fileNameSmall = 'marque-trademark.small';

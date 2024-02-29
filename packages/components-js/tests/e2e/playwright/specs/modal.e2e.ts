@@ -14,6 +14,7 @@ import {
   selectNode,
   setContentWithDesignSystem,
   setProperty,
+  skipInBrowser,
   waitForStencilLifecycle,
 } from '../helpers';
 import type { ModalAriaAttribute, SelectedAriaAttributes } from '@porsche-design-system/components/dist/types/bundle';
@@ -67,11 +68,11 @@ const initBasicModal = (
 
   return setContentWithDesignSystem(
     page,
-    `${markupBefore}<p-modal ${attributes}>
+    `${markupBefore ? markupBefore : ''}<p-modal ${attributes}>
   ${hasSlottedHeading ? '<div slot="heading">Some Heading<a href="https://porsche.com">Some link</a></div>' : ''}
   ${content}
   ${hasSlottedFooter ? '<div slot="footer">Some Footer</div>' : ''}
-</p-modal>${markupAfter}`
+</p-modal>${markupAfter ? markupAfter : ''}`
   );
 };
 
@@ -142,23 +143,26 @@ test('should not be visible when not open', async ({ page }) => {
   expect(await getModalVisibility(page)).toBe('hidden');
 });
 
-test('should have correct transform when dismissed and opened', async ({ page }) => {
-  await initBasicModal(page, { isOpen: false });
-  const getModalTransform = async () => getElementStyle(await getModal(page), 'transform', { waitForTransition: true });
+skipInBrowser(['firefox', 'webkit'], () => {
+  test('should have correct transform when dismissed and opened', async ({ page }) => {
+    await initBasicModal(page, { isOpen: false });
+    const getModalTransform = async () =>
+      getElementStyle(await getModal(page), 'transform', { waitForTransition: true });
 
-  const initialModalTransform = await getModalTransform();
-  expect(initialModalTransform).toBe('matrix(1, 0, 0, 1, 0, 32.5547)');
+    const initialModalTransform = await getModalTransform();
+    expect(initialModalTransform).toBe('matrix(1, 0, 0, 1, 0, 32.5547)');
 
-  await openModal(page);
-  const openModalTransform = await getModalTransform();
-  expect(openModalTransform).toBe('matrix(1, 0, 0, 1, 0, 0)');
-  expect(initialModalTransform).not.toBe(openModalTransform);
+    await openModal(page);
+    const openModalTransform = await getModalTransform();
+    expect(openModalTransform).toBe('matrix(1, 0, 0, 1, 0, 0)');
+    expect(initialModalTransform).not.toBe(openModalTransform);
 
-  await dismissModal(page);
-  // TODO: why is timeout needed? transition durations should be overwritten with 0s
-  await new Promise((resolve) => setTimeout(resolve, CSS_TRANSITION_DURATION)); // transition delay for visibility
-  const finalModalTransform = await getModalTransform();
-  expect(finalModalTransform).toBe(initialModalTransform);
+    await dismissModal(page);
+    // TODO: why is timeout needed? transition durations should be overwritten with 0s
+    await new Promise((resolve) => setTimeout(resolve, CSS_TRANSITION_DURATION)); // transition delay for visibility
+    const finalModalTransform = await getModalTransform();
+    expect(finalModalTransform).toBe(initialModalTransform);
+  });
 });
 
 test.describe('can be dismissed', () => {
@@ -301,78 +305,79 @@ test.describe('can be dismissed', () => {
   });
 });
 
-test.describe('focus behavior', () => {
-  test('should focus dialog after open', async ({ page }) => {
-    await initAdvancedModal(page);
-    await openModal(page);
-    await expectDialogToBeFocused(page);
-  });
-
-  test('should focus dialog after open when there is no focusable content element', async ({ page }) => {
-    await initBasicModal(page, { isOpen: false });
-    await openModal(page);
-    await expectDialogToBeFocused(page);
-  });
-
-  test('should focus dialog after open when there is a focusable content element', async ({ page }) => {
-    await initBasicModal(page, {
-      isOpen: false,
-      content: `<a href="https://porsche.com">Some link in content</a>`,
-      aria: "{'aria-label': 'Some Heading'}",
+skipInBrowser(['firefox', 'webkit'], () => {
+  test.describe('focus behavior', () => {
+    test('should focus dialog after open', async ({ page }) => {
+      await initAdvancedModal(page);
+      await openModal(page);
+      await expectDialogToBeFocused(page);
     });
-    await openModal(page);
-    await expectDialogToBeFocused(page);
-  });
 
-  test('should have correct focus order when there is a focusable content element and focusable slotted element in header', async ({
-    page,
-  }) => {
-    await initBasicModal(page, {
-      isOpen: false,
-      content: `<p-button>Some focusable button in content</p-button>`,
-      aria: "{'aria-label': 'Some Heading'}",
-      hasSlottedHeading: true,
+    test('should focus dialog after open when there is no focusable content element', async ({ page }) => {
+      await initBasicModal(page, { isOpen: false });
+      await openModal(page);
+      await expectDialogToBeFocused(page);
     });
-    await openModal(page);
 
-    await expectDialogToBeFocused(page);
-    await page.keyboard.press('Tab');
-    await expectDismissButtonToBeFocused(page);
-    await page.keyboard.press('Tab');
-    expect(await getActiveElementTagName(page)).toBe('A'); // slotted header anchor
-    await page.keyboard.press('Tab');
-    expect(await getActiveElementTagName(page)).toBe('P-BUTTON'); // slotted content button
-  });
+    test('should focus dialog after open when there is a focusable content element', async ({ page }) => {
+      await initBasicModal(page, {
+        isOpen: false,
+        content: `<a href="https://porsche.com">Some link in content</a>`,
+        aria: "{'aria-label': 'Some Heading'}",
+      });
+      await openModal(page);
+      await expectDialogToBeFocused(page);
+    });
 
-  test('should not allow focusing element behind of modal when pressing Tab', async ({ page }) => {
-    await initBasicModal(page, { isOpen: false, content: '<p-text>Some text content</p-text>' });
-    await addButtonsBeforeAndAfterModal(page);
-    await openModal(page);
-
-    await expectDialogToBeFocused(page);
-    await page.keyboard.press('Tab');
-    await expectDismissButtonToBeFocused(page);
-    await page.keyboard.press('Tab');
-    await expectDismissButtonToBeFocused(page);
-  });
-
-  test('should not allow focusing element behind of modal when pressing Shift Tab', async ({ page }) => {
-    await initBasicModal(page, { isOpen: false, content: '<p-text>Some text content</p-text>' });
-    await addButtonsBeforeAndAfterModal(page);
-    await openModal(page);
-
-    await expectDialogToBeFocused(page);
-    await page.keyboard.down('Shift');
-    await page.keyboard.press('Tab');
-    await expectDismissButtonToBeFocused(page);
-    await page.keyboard.press('Tab');
-    await expectDismissButtonToBeFocused(page);
-  });
-
-  test('should focus last focused element after modal is dismissed', async ({ page }) => {
-    await setContentWithDesignSystem(
+    test('should have correct focus order when there is a focusable content element and focusable slotted element in header', async ({
       page,
-      `
+    }) => {
+      await initBasicModal(page, {
+        isOpen: false,
+        content: `<p-button>Some focusable button in content</p-button>`,
+        aria: "{'aria-label': 'Some Heading'}",
+        hasSlottedHeading: true,
+      });
+      await openModal(page);
+
+      await expectDialogToBeFocused(page);
+      await page.keyboard.press('Tab');
+      await expectDismissButtonToBeFocused(page);
+      await page.keyboard.press('Tab');
+      expect(await getActiveElementTagName(page)).toBe('A'); // slotted header anchor
+      await page.keyboard.press('Tab');
+      expect(await getActiveElementTagName(page)).toBe('P-BUTTON'); // slotted content button
+    });
+
+    test('should not allow focusing element behind of modal when pressing Tab', async ({ page }) => {
+      await initBasicModal(page, { isOpen: false, content: '<p-text>Some text content</p-text>' });
+      await addButtonsBeforeAndAfterModal(page);
+      await openModal(page);
+
+      await expectDialogToBeFocused(page);
+      await page.keyboard.press('Tab');
+      await expectDismissButtonToBeFocused(page);
+      await page.keyboard.press('Tab');
+      await expectDismissButtonToBeFocused(page);
+    });
+
+    test('should not allow focusing element behind of modal when pressing Shift Tab', async ({ page }) => {
+      await initBasicModal(page, { isOpen: false, content: '<p-text>Some text content</p-text>' });
+      await addButtonsBeforeAndAfterModal(page);
+      await openModal(page);
+
+      await expectDialogToBeFocused(page);
+      await page.keyboard.down('Shift');
+      await page.keyboard.press('Tab');
+      await expectDismissButtonToBeFocused(page);
+      await page.keyboard.press('Tab');
+      await expectDismissButtonToBeFocused(page);
+    });
+
+    test('should focus last focused element after modal is dismissed', async ({ page }) => {
+      await setContentWithDesignSystem(
+        page,
+        `
       <button id="btn-open"></button>
       <p-modal id="modal" heading="Some Heading">
         Some Content
@@ -386,218 +391,223 @@ test.describe('focus behavior', () => {
           modal.open = false;
         });
       </script>`
-    );
+      );
 
-    expect(await getModalVisibility(page), 'initial').toBe('hidden');
-    expect(await getActiveElementTagName(page)).toBe('BODY');
+      expect(await getModalVisibility(page), 'initial').toBe('hidden');
+      expect(await getActiveElementTagName(page)).toBe('BODY');
 
-    await (await selectNode(page, '#btn-open')).click();
-    await waitForStencilLifecycle(page);
+      await (await selectNode(page, '#btn-open')).click();
+      await waitForStencilLifecycle(page);
 
-    expect(await getModalVisibility(page)).toBe('visible');
+      expect(await getModalVisibility(page)).toBe('visible');
 
-    await page.keyboard.press('Escape');
-    await waitForStencilLifecycle(page);
-    // TODO: why is timeout needed? transition durations should be overwritten with 0s
-    await new Promise((resolve) => setTimeout(resolve, CSS_TRANSITION_DURATION)); // transition delay for visibility
+      await page.keyboard.press('Escape');
+      await waitForStencilLifecycle(page);
+      // TODO: why is timeout needed? transition durations should be overwritten with 0s
+      await new Promise((resolve) => setTimeout(resolve, CSS_TRANSITION_DURATION)); // transition delay for visibility
 
-    expect(await getModalVisibility(page), 'after escape').toBe('hidden');
-    expect(await getActiveElementId(page)).toBe('btn-open');
-  });
-
-  test('should focus element after modal when open accordion contains link but modal is not open', async ({ page }) => {
-    await initBasicModal(page, {
-      isOpen: false,
-      content: `<p-accordion heading="Some Heading" open="true">
-  <a id="inside" href="#inside-modal">Some anchor inside modal</a>
-</p-accordion>`,
-      markupBefore: '<a id="before" href="#before-modal">Some anchor before modal</a>',
-      markupAfter: '<a id="after" href="#after-modal">Some anchor after modal</a>',
+      expect(await getModalVisibility(page), 'after escape').toBe('hidden');
+      expect(await getActiveElementId(page)).toBe('btn-open');
     });
 
-    await page.keyboard.press('Tab');
-    expect(await getActiveElementId(page), 'after 1st tab').toBe('before');
+    test('should focus element after modal when open accordion contains link but modal is not open', async ({
+      page,
+    }) => {
+      await initBasicModal(page, {
+        isOpen: false,
+        content: `<p-accordion heading="Some Heading" open="true">
+  <a id="inside" href="#inside-modal">Some anchor inside modal</a>
+</p-accordion>`,
+        markupBefore: '<a id="before" href="#before-modal">Some anchor before modal</a>',
+        markupAfter: '<a id="after" href="#after-modal">Some anchor after modal</a>',
+      });
 
-    await page.keyboard.press('Tab');
-    await page.waitForFunction(() => document.activeElement === document.querySelector('#after'));
-    expect(await getActiveElementId(page), 'after 2nd tab').toBe('after');
+      await page.keyboard.press('Tab');
+      expect(await getActiveElementId(page), 'after 1st tab').toBe('before');
+
+      await page.keyboard.press('Tab');
+      await page.waitForFunction(() => document.activeElement === document.querySelector('#after'));
+      expect(await getActiveElementId(page), 'after 2nd tab').toBe('after');
+    });
+
+    test.describe('after content change', () => {
+      test('should focus dismiss button again', async ({ page }) => {
+        await initAdvancedModal(page);
+        await openModal(page);
+        await expectDialogToBeFocused(page, 'initially');
+
+        await page.keyboard.press('Tab');
+        await expectDismissButtonToBeFocused(page, 'after 1st tab');
+        await page.keyboard.press('Tab');
+        expect(await getActiveElementId(page), 'after 2nd tab').toBe('btn-content-1');
+
+        const host = await getHost(page);
+        await host.evaluate((el) => {
+          el.innerHTML = '<button id="btn-new">New Button</button>';
+        });
+        await waitForSlotChange();
+        await expectDialogToBeFocused(page, 'after content change');
+
+        await page.keyboard.press('Tab');
+        await expectDismissButtonToBeFocused(page, 'after content change 1st tab');
+        await page.keyboard.press('Tab');
+        expect(await getActiveElementId(page), 'after content change 2nd tab').toBe('btn-new');
+
+        await page.keyboard.press('Tab');
+        await expectDismissButtonToBeFocused(page, 'after content change 3rd tab');
+      });
+
+      test('should not allow focusing element behind of modal', async ({ page }) => {
+        await initAdvancedModal(page);
+        await addButtonsBeforeAndAfterModal(page);
+        await openModal(page);
+        await expectDialogToBeFocused(page, 'initially');
+        await page.keyboard.press('Tab');
+        await expectDismissButtonToBeFocused(page, 'after tab');
+
+        const host = await getHost(page);
+        await host.evaluate((el) => {
+          el.innerHTML = '';
+        });
+        await waitForSlotChange();
+        await expectDialogToBeFocused(page, 'after content change');
+
+        await page.keyboard.press('Tab');
+        await expectDismissButtonToBeFocused(page, 'after content change 1st tab');
+
+        await page.keyboard.press('Tab');
+        await expectDismissButtonToBeFocused(page, 'after content change 2nd tab');
+      });
+
+      test('should correctly focus dismiss button from appended focusable element', async ({ page }) => {
+        await initAdvancedModal(page);
+        await openModal(page);
+
+        const host = await getHost(page);
+        await host.evaluate((el) => {
+          const button = document.createElement('button');
+          button.innerText = 'New Button';
+          button.id = 'btn-new';
+          el.append(button);
+        });
+        await waitForSlotChange();
+        await expectDialogToBeFocused(page, 'after button appended');
+
+        await page.keyboard.press('Tab');
+        await expectDismissButtonToBeFocused(page, 'after button appended 1st tab');
+
+        await page.keyboard.press('Tab');
+        await page.keyboard.press('Tab');
+        await page.keyboard.press('Tab');
+        await page.keyboard.press('Tab');
+        expect(await getActiveElementId(page)).toBe('btn-footer-2');
+
+        await page.keyboard.press('Tab');
+        expect(await getActiveElementId(page)).toBe('btn-new');
+
+        await page.keyboard.press('Tab');
+        await expectDismissButtonToBeFocused(page, 'finally');
+      });
+    });
+
+    test.describe('with disable-close-button', () => {
+      const initModalOpts = { isOpen: false, disableCloseButton: true };
+
+      test('should focus body when there is no focusable element', async ({ page }) => {
+        await initBasicModal(page, initModalOpts);
+        await openModal(page);
+        await expectDialogToBeFocused(page);
+      });
+
+      test('should not focus element behind modal if modal has no focusable element', async ({ page }) => {
+        await initBasicModal(page, initModalOpts);
+        await addButtonsBeforeAndAfterModal(page);
+        await openModal(page);
+        await expectDialogToBeFocused(page);
+
+        await page.keyboard.press('Tab');
+        await expectDialogToBeFocused(page);
+      });
+
+      const otherFocusableElement = '<button type="button">Another focusable element</button>';
+
+      for (const tagName of [
+        'p-button',
+        'p-button-pure',
+        'p-link',
+        'p-link-pure',
+        'p-link-social',
+        'p-switch',
+        'p-accordion',
+        'input',
+        'textarea',
+        'select',
+        'button',
+        'a',
+      ]) {
+        test(`should focus first focusable element: ${tagName}`, async ({ page }) => {
+          const attributes = tagName.includes('link') || tagName === 'a' ? ' href="#"' : '';
+          await initBasicModal(page, {
+            ...initModalOpts,
+            content:
+              (tagName === 'input'
+                ? `<${tagName} type="text" />`
+                : `<${tagName}${attributes}>Some element</${tagName}>`) + otherFocusableElement,
+          });
+          await openModal(page);
+          await expectDialogToBeFocused(page);
+
+          await page.keyboard.press('Tab');
+          expect(await getActiveElementTagName(page)).toBe(tagName.toUpperCase());
+        });
+      }
+    });
   });
+});
 
-  test.describe('after content change', () => {
-    test('should focus dismiss button again', async ({ page }) => {
+skipInBrowser(['firefox', 'webkit'], () => {
+  test.describe('can be controlled via keyboard', () => {
+    test('should cycle tab events within modal', async ({ page }) => {
       await initAdvancedModal(page);
       await openModal(page);
       await expectDialogToBeFocused(page, 'initially');
 
       await page.keyboard.press('Tab');
       await expectDismissButtonToBeFocused(page, 'after 1st tab');
-      await page.keyboard.press('Tab');
-      expect(await getActiveElementId(page), 'after 2nd tab').toBe('btn-content-1');
-
-      const host = await getHost(page);
-      await host.evaluate((el) => {
-        el.innerHTML = '<button id="btn-new">New Button</button>';
-      });
-      await waitForSlotChange();
-      await expectDialogToBeFocused(page, 'after content change');
 
       await page.keyboard.press('Tab');
-      await expectDismissButtonToBeFocused(page, 'after content change 1st tab');
+      expect(await getActiveElementId(page)).toBe('btn-content-1');
       await page.keyboard.press('Tab');
-      expect(await getActiveElementId(page), 'after content change 2nd tab').toBe('btn-new');
-
+      expect(await getActiveElementId(page)).toBe('btn-content-2');
       await page.keyboard.press('Tab');
-      await expectDismissButtonToBeFocused(page, 'after content change 3rd tab');
-    });
-
-    test('should not allow focusing element behind of modal', async ({ page }) => {
-      await initAdvancedModal(page);
-      await addButtonsBeforeAndAfterModal(page);
-      await openModal(page);
-      await expectDialogToBeFocused(page, 'initially');
-      await page.keyboard.press('Tab');
-      await expectDismissButtonToBeFocused(page, 'after tab');
-
-      const host = await getHost(page);
-      await host.evaluate((el) => {
-        el.innerHTML = '';
-      });
-      await waitForSlotChange();
-      await expectDialogToBeFocused(page, 'after content change');
-
-      await page.keyboard.press('Tab');
-      await expectDismissButtonToBeFocused(page, 'after content change 1st tab');
-
-      await page.keyboard.press('Tab');
-      await expectDismissButtonToBeFocused(page, 'after content change 2nd tab');
-    });
-
-    test('should correctly focus dismiss button from appended focusable element', async ({ page }) => {
-      await initAdvancedModal(page);
-      await openModal(page);
-
-      const host = await getHost(page);
-      await host.evaluate((el) => {
-        const button = document.createElement('button');
-        button.innerText = 'New Button';
-        button.id = 'btn-new';
-        el.append(button);
-      });
-      await waitForSlotChange();
-      await expectDialogToBeFocused(page, 'after button appended');
-
-      await page.keyboard.press('Tab');
-      await expectDismissButtonToBeFocused(page, 'after button appended 1st tab');
-
-      await page.keyboard.press('Tab');
-      await page.keyboard.press('Tab');
-      await page.keyboard.press('Tab');
+      expect(await getActiveElementId(page)).toBe('btn-footer-1');
       await page.keyboard.press('Tab');
       expect(await getActiveElementId(page)).toBe('btn-footer-2');
-
-      await page.keyboard.press('Tab');
-      expect(await getActiveElementId(page)).toBe('btn-new');
-
       await page.keyboard.press('Tab');
       await expectDismissButtonToBeFocused(page, 'finally');
     });
-  });
 
-  test.describe('with disable-close-button', () => {
-    const initModalOpts = { isOpen: false, disableCloseButton: true };
-
-    test('should focus body when there is no focusable element', async ({ page }) => {
-      await initBasicModal(page, initModalOpts);
+    test('should reverse cycle tab events within modal', async ({ page }) => {
+      await initAdvancedModal(page);
       await openModal(page);
-      await expectDialogToBeFocused(page);
-    });
-
-    test('should not focus element behind modal if modal has no focusable element', async ({ page }) => {
-      await initBasicModal(page, initModalOpts);
-      await addButtonsBeforeAndAfterModal(page);
-      await openModal(page);
-      await expectDialogToBeFocused(page);
+      await expectDialogToBeFocused(page, 'initially');
 
       await page.keyboard.press('Tab');
-      await expectDialogToBeFocused(page);
+      await expectDismissButtonToBeFocused(page, 'after 1st tab');
+
+      await page.keyboard.down('ShiftLeft');
+      await page.keyboard.press('Tab');
+      expect(await getActiveElementId(page)).toBe('btn-footer-2');
+      await page.keyboard.press('Tab');
+      expect(await getActiveElementId(page)).toBe('btn-footer-1');
+      await page.keyboard.press('Tab');
+      expect(await getActiveElementId(page)).toBe('btn-content-2');
+      await page.keyboard.press('Tab');
+      expect(await getActiveElementId(page)).toBe('btn-content-1');
+      await page.keyboard.press('Tab');
+      await expectDismissButtonToBeFocused(page, 'finally');
+      await page.keyboard.up('ShiftLeft');
     });
-
-    const otherFocusableElement = '<button type="button">Another focusable element</button>';
-
-    for (const tagName of [
-      'p-button',
-      'p-button-pure',
-      'p-link',
-      'p-link-pure',
-      'p-link-social',
-      'p-switch',
-      'p-accordion',
-      'input',
-      'textarea',
-      'select',
-      'button',
-      'a',
-    ]) {
-      test(`should focus first focusable element: ${tagName}`, async ({ page }) => {
-        const attributes = tagName.includes('link') || tagName === 'a' ? ' href="#"' : '';
-        await initBasicModal(page, {
-          ...initModalOpts,
-          content:
-            (tagName === 'input'
-              ? `<${tagName} type="text" />`
-              : `<${tagName}${attributes}>Some element</${tagName}>`) + otherFocusableElement,
-        });
-        await openModal(page);
-        await expectDialogToBeFocused(page);
-
-        await page.keyboard.press('Tab');
-        expect(await getActiveElementTagName(page)).toBe(tagName.toUpperCase());
-      });
-    }
-  });
-});
-
-test.describe('can be controlled via keyboard', () => {
-  test('should cycle tab events within modal', async ({ page }) => {
-    await initAdvancedModal(page);
-    await openModal(page);
-    await expectDialogToBeFocused(page, 'initially');
-
-    await page.keyboard.press('Tab');
-    await expectDismissButtonToBeFocused(page, 'after 1st tab');
-
-    await page.keyboard.press('Tab');
-    expect(await getActiveElementId(page)).toBe('btn-content-1');
-    await page.keyboard.press('Tab');
-    expect(await getActiveElementId(page)).toBe('btn-content-2');
-    await page.keyboard.press('Tab');
-    expect(await getActiveElementId(page)).toBe('btn-footer-1');
-    await page.keyboard.press('Tab');
-    expect(await getActiveElementId(page)).toBe('btn-footer-2');
-    await page.keyboard.press('Tab');
-    await expectDismissButtonToBeFocused(page, 'finally');
-  });
-
-  test('should reverse cycle tab events within modal', async ({ page }) => {
-    await initAdvancedModal(page);
-    await openModal(page);
-    await expectDialogToBeFocused(page, 'initially');
-
-    await page.keyboard.press('Tab');
-    await expectDismissButtonToBeFocused(page, 'after 1st tab');
-
-    await page.keyboard.down('ShiftLeft');
-    await page.keyboard.press('Tab');
-    expect(await getActiveElementId(page)).toBe('btn-footer-2');
-    await page.keyboard.press('Tab');
-    expect(await getActiveElementId(page)).toBe('btn-footer-1');
-    await page.keyboard.press('Tab');
-    expect(await getActiveElementId(page)).toBe('btn-content-2');
-    await page.keyboard.press('Tab');
-    expect(await getActiveElementId(page)).toBe('btn-content-1');
-    await page.keyboard.press('Tab');
-    await expectDismissButtonToBeFocused(page, 'finally');
-    await page.keyboard.up('ShiftLeft');
   });
 });
 

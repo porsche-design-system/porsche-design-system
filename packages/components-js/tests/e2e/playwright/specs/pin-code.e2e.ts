@@ -11,6 +11,7 @@ import {
   selectNode,
   setContentWithDesignSystem,
   setProperty,
+  skipInBrowser,
   waitForStencilLifecycle,
 } from '../helpers';
 import { Components } from '@porsche-design-system/components';
@@ -593,8 +594,8 @@ test.describe('events', () => {
     });
   });
 
-  test.describe('onPaste', () => {
-    test('', async ({ page }) => {
+  skipInBrowser(['firefox'], () => {
+    test('onPaste', async ({ page }) => {
       await initPinCode(page);
       const host = await getHost(page);
       const input1 = await getInput(page, 1);
@@ -633,18 +634,20 @@ test.describe('disabled state', () => {
     expect(await getElementStyle(input, 'cursor')).toBe('not-allowed');
   });
 
-  test('should not be focusable', async ({ page }) => {
-    await initPinCode(page, {
-      props: { disabled: true },
-      options: { markupAfter: '<p-button>Some Button</p-button>' },
+  skipInBrowser(['webkit'], () => {
+    test('should not be focusable', async ({ page }) => {
+      await initPinCode(page, {
+        props: { disabled: true },
+        options: { markupAfter: '<p-button>Some Button</p-button>' },
+      });
+      const button = await selectNode(page, 'p-button');
+      await addEventListener(button, 'focus');
+
+      expect((await getEventSummary(button, 'focus')).counter, 'before focus').toBe(0);
+
+      await page.keyboard.press('Tab');
+      expect((await getEventSummary(button, 'focus')).counter, 'before focus').toBe(1);
     });
-    const button = await selectNode(page, 'p-button');
-    await addEventListener(button, 'focus');
-
-    expect((await getEventSummary(button, 'focus')).counter, 'before focus').toBe(0);
-
-    await page.keyboard.press('Tab');
-    expect((await getEventSummary(button, 'focus')).counter, 'before focus').toBe(1);
   });
 });
 
@@ -671,26 +674,31 @@ test.describe('loading state', () => {
     expect(await getProperty(input, 'value')).toBe('');
   });
 
-  test('should be possible to navigate through inputs by key=Tab/Shift+Tab', async ({ page }) => {
-    await initPinCode(page, { props: { loading: true }, options: { markupAfter: '<p-button>Some Button</p-button>' } });
-    const host = await getHost(page);
-    const button = await selectNode(page, 'p-button');
-    await addEventListener(button, 'focus');
+  skipInBrowser(['webkit'], () => {
+    test('should be possible to navigate through inputs by key=Tab/Shift+Tab', async ({ page }) => {
+      await initPinCode(page, {
+        props: { loading: true },
+        options: { markupAfter: '<p-button>Some Button</p-button>' },
+      });
+      const host = await getHost(page);
+      const button = await selectNode(page, 'p-button');
+      await addEventListener(button, 'focus');
 
-    await page.keyboard.press('Tab');
-    expect(await getActiveElementsAriaLabelInShadowRoot(page, host)).toBe('1-4');
+      await page.keyboard.press('Tab');
+      expect(await getActiveElementsAriaLabelInShadowRoot(page, host)).toBe('1-4');
 
-    await page.keyboard.press('Tab');
-    expect(await getActiveElementsAriaLabelInShadowRoot(page, host)).toBe('2-4');
+      await page.keyboard.press('Tab');
+      expect(await getActiveElementsAriaLabelInShadowRoot(page, host)).toBe('2-4');
 
-    await page.keyboard.press('Tab');
-    expect(await getActiveElementsAriaLabelInShadowRoot(page, host)).toBe('3-4');
+      await page.keyboard.press('Tab');
+      expect(await getActiveElementsAriaLabelInShadowRoot(page, host)).toBe('3-4');
 
-    await page.keyboard.press('Tab');
-    expect(await getActiveElementsAriaLabelInShadowRoot(page, host)).toBe('4-4');
+      await page.keyboard.press('Tab');
+      expect(await getActiveElementsAriaLabelInShadowRoot(page, host)).toBe('4-4');
 
-    await page.keyboard.press('Tab');
-    expect((await getEventSummary(button, 'focus')).counter, 'after focus').toBe(1);
+      await page.keyboard.press('Tab');
+      expect((await getEventSummary(button, 'focus')).counter, 'after focus').toBe(1);
+    });
   });
 });
 

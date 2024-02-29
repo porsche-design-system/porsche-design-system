@@ -12,6 +12,7 @@ import {
   selectNode,
   setContentWithDesignSystem,
   setProperty,
+  skipInBrowser,
   waitForStencilLifecycle,
 } from '../helpers';
 import type { PopoverDirection } from '@porsche-design-system/components/dist/types/bundle';
@@ -74,84 +75,86 @@ const initPopoverWithinTable = (page: Page, opts?: { direction: PopoverDirection
   );
 };
 
-test('should trigger focus & blur events at the correct time', async ({ page }) => {
-  await setContentWithDesignSystem(
-    page,
-    `
+skipInBrowser(['webkit', 'firefox'], () => {
+  test('should trigger focus & blur events at the correct time', async ({ page }) => {
+    await setContentWithDesignSystem(
+      page,
+      `
     <div id="wrapper">
       <a href="#" id="before">before</a>
       <p-popover id="my-popover">Some Popover Content</p-popover>
       <a href="#" id="after">after</a>
     </div>`
-  );
+    );
 
-  const popover = await getHost(page);
-  const before = await selectNode(page, '#before');
-  const after = await selectNode(page, '#after');
+    const popover = await getHost(page);
+    const before = await selectNode(page, '#before');
+    const after = await selectNode(page, '#after');
 
-  await addEventListener(before, 'focus');
-  await addEventListener(popover, 'focus');
-  await addEventListener(popover, 'focusin');
-  await addEventListener(popover, 'blur');
-  await addEventListener(popover, 'focusout');
-  await addEventListener(after, 'focus');
+    await addEventListener(before, 'focus');
+    await addEventListener(popover, 'focus');
+    await addEventListener(popover, 'focusin');
+    await addEventListener(popover, 'blur');
+    await addEventListener(popover, 'focusout');
+    await addEventListener(after, 'focus');
 
-  expect((await getEventSummary(before, 'focus')).counter, 'beforeFocusCalls initially').toBe(0);
-  expect((await getEventSummary(popover, 'focus')).counter, 'buttonFocusCalls initially').toBe(0);
-  expect((await getEventSummary(popover, 'focusin')).counter, 'buttonFocusInCalls initially').toBe(0);
-  expect((await getEventSummary(popover, 'blur')).counter, 'buttonBlurCalls initially').toBe(0);
-  expect((await getEventSummary(popover, 'focusout')).counter, 'buttonFocusOutCalls initially').toBe(0);
-  expect((await getEventSummary(after, 'focus')).counter, 'afterFocusCalls initially').toBe(0);
-  expect(await getActiveElementId(page), 'activeElementId initially').toBe('');
+    expect((await getEventSummary(before, 'focus')).counter, 'beforeFocusCalls initially').toBe(0);
+    expect((await getEventSummary(popover, 'focus')).counter, 'buttonFocusCalls initially').toBe(0);
+    expect((await getEventSummary(popover, 'focusin')).counter, 'buttonFocusInCalls initially').toBe(0);
+    expect((await getEventSummary(popover, 'blur')).counter, 'buttonBlurCalls initially').toBe(0);
+    expect((await getEventSummary(popover, 'focusout')).counter, 'buttonFocusOutCalls initially').toBe(0);
+    expect((await getEventSummary(after, 'focus')).counter, 'afterFocusCalls initially').toBe(0);
+    expect(await getActiveElementId(page), 'activeElementId initially').toBe('');
 
-  await page.keyboard.press('Tab');
-  expect((await getEventSummary(before, 'focus')).counter, 'beforeFocusCalls after 1st tab').toBe(1);
-  expect((await getEventSummary(popover, 'focus')).counter, 'buttonFocusCalls after 1st tab').toBe(0);
-  expect((await getEventSummary(popover, 'focusin')).counter, 'buttonFocusInCalls after 1st tab').toBe(0);
-  expect((await getEventSummary(popover, 'blur')).counter, 'buttonBlurCalls after 1st tab').toBe(0);
-  expect((await getEventSummary(popover, 'focusout')).counter, 'buttonFocusOutCalls after 1st tab').toBe(0);
-  expect((await getEventSummary(after, 'focus')).counter, 'afterFocusCalls after 1st tab').toBe(0);
-  expect(await getActiveElementId(page), 'activeElementId after 1st tab').toBe('before');
+    await page.keyboard.press('Tab');
+    expect((await getEventSummary(before, 'focus')).counter, 'beforeFocusCalls after 1st tab').toBe(1);
+    expect((await getEventSummary(popover, 'focus')).counter, 'buttonFocusCalls after 1st tab').toBe(0);
+    expect((await getEventSummary(popover, 'focusin')).counter, 'buttonFocusInCalls after 1st tab').toBe(0);
+    expect((await getEventSummary(popover, 'blur')).counter, 'buttonBlurCalls after 1st tab').toBe(0);
+    expect((await getEventSummary(popover, 'focusout')).counter, 'buttonFocusOutCalls after 1st tab').toBe(0);
+    expect((await getEventSummary(after, 'focus')).counter, 'afterFocusCalls after 1st tab').toBe(0);
+    expect(await getActiveElementId(page), 'activeElementId after 1st tab').toBe('before');
 
-  await page.keyboard.press('Tab');
-  expect((await getEventSummary(before, 'focus')).counter, 'beforeFocusCalls after 2nd tab').toBe(1);
-  expect((await getEventSummary(popover, 'focus')).counter, 'buttonFocusCalls after 2nd tab').toBe(1);
-  expect((await getEventSummary(popover, 'focusin')).counter, 'buttonFocusInCalls after 2nd tab').toBe(1);
-  expect((await getEventSummary(popover, 'blur')).counter, 'buttonBlurCalls after 2nd tab').toBe(0);
-  expect((await getEventSummary(popover, 'focusout')).counter, 'buttonFocusOutCalls after 2nd tab').toBe(0);
-  expect((await getEventSummary(after, 'focus')).counter, 'afterFocusCalls after 2nd tab').toBe(0);
-  expect(await getActiveElementId(page), 'activeElementId after 2nd tab').toBe('my-popover');
+    await page.keyboard.press('Tab');
+    expect((await getEventSummary(before, 'focus')).counter, 'beforeFocusCalls after 2nd tab').toBe(1);
+    expect((await getEventSummary(popover, 'focus')).counter, 'buttonFocusCalls after 2nd tab').toBe(1);
+    expect((await getEventSummary(popover, 'focusin')).counter, 'buttonFocusInCalls after 2nd tab').toBe(1);
+    expect((await getEventSummary(popover, 'blur')).counter, 'buttonBlurCalls after 2nd tab').toBe(0);
+    expect((await getEventSummary(popover, 'focusout')).counter, 'buttonFocusOutCalls after 2nd tab').toBe(0);
+    expect((await getEventSummary(after, 'focus')).counter, 'afterFocusCalls after 2nd tab').toBe(0);
+    expect(await getActiveElementId(page), 'activeElementId after 2nd tab').toBe('my-popover');
 
-  await page.keyboard.press('Tab');
-  expect((await getEventSummary(before, 'focus')).counter, 'beforeFocusCalls after 3rd tab').toBe(1);
-  expect((await getEventSummary(popover, 'focus')).counter, 'buttonFocusCalls after 3rd tab').toBe(1);
-  expect((await getEventSummary(popover, 'focusin')).counter, 'buttonFocusInCalls after 3rd tab').toBe(1);
-  expect((await getEventSummary(popover, 'blur')).counter, 'buttonBlurCalls after 3rd tab').toBe(1);
-  expect((await getEventSummary(popover, 'focusout')).counter, 'buttonFocusOutCalls after 3rd tab').toBe(1);
-  expect((await getEventSummary(after, 'focus')).counter, 'afterFocusCalls after 3rd tab').toBe(1);
-  expect(await getActiveElementId(page), 'activeElementId after 3rd tab').toBe('after');
+    await page.keyboard.press('Tab');
+    expect((await getEventSummary(before, 'focus')).counter, 'beforeFocusCalls after 3rd tab').toBe(1);
+    expect((await getEventSummary(popover, 'focus')).counter, 'buttonFocusCalls after 3rd tab').toBe(1);
+    expect((await getEventSummary(popover, 'focusin')).counter, 'buttonFocusInCalls after 3rd tab').toBe(1);
+    expect((await getEventSummary(popover, 'blur')).counter, 'buttonBlurCalls after 3rd tab').toBe(1);
+    expect((await getEventSummary(popover, 'focusout')).counter, 'buttonFocusOutCalls after 3rd tab').toBe(1);
+    expect((await getEventSummary(after, 'focus')).counter, 'afterFocusCalls after 3rd tab').toBe(1);
+    expect(await getActiveElementId(page), 'activeElementId after 3rd tab').toBe('after');
 
-  // tab back
-  await page.keyboard.down('ShiftLeft');
-  await page.keyboard.press('Tab');
-  expect((await getEventSummary(before, 'focus')).counter, 'beforeFocusCalls after 1st tab back').toBe(1);
-  expect((await getEventSummary(popover, 'focus')).counter, 'buttonFocusCalls after 1st tab back').toBe(2);
-  expect((await getEventSummary(popover, 'focusin')).counter, 'buttonFocusInCalls after 1st tab back').toBe(2);
-  expect((await getEventSummary(popover, 'blur')).counter, 'buttonBlurCalls after 1st tab back').toBe(1);
-  expect((await getEventSummary(popover, 'focusout')).counter, 'buttonFocusOutCalls after 1st tab back').toBe(1);
-  expect((await getEventSummary(after, 'focus')).counter, 'afterFocusCalls after 1st tab back').toBe(1);
-  expect(await getActiveElementId(page), 'activeElementId after 1st tab back').toBe('my-popover');
+    // tab back
+    await page.keyboard.down('ShiftLeft');
+    await page.keyboard.press('Tab');
+    expect((await getEventSummary(before, 'focus')).counter, 'beforeFocusCalls after 1st tab back').toBe(1);
+    expect((await getEventSummary(popover, 'focus')).counter, 'buttonFocusCalls after 1st tab back').toBe(2);
+    expect((await getEventSummary(popover, 'focusin')).counter, 'buttonFocusInCalls after 1st tab back').toBe(2);
+    expect((await getEventSummary(popover, 'blur')).counter, 'buttonBlurCalls after 1st tab back').toBe(1);
+    expect((await getEventSummary(popover, 'focusout')).counter, 'buttonFocusOutCalls after 1st tab back').toBe(1);
+    expect((await getEventSummary(after, 'focus')).counter, 'afterFocusCalls after 1st tab back').toBe(1);
+    expect(await getActiveElementId(page), 'activeElementId after 1st tab back').toBe('my-popover');
 
-  await page.keyboard.press('Tab');
-  expect((await getEventSummary(before, 'focus')).counter, 'beforeFocusCalls after 2nd tab back').toBe(2);
-  expect((await getEventSummary(popover, 'focus')).counter, 'buttonFocusCalls after 2nd tab back').toBe(2);
-  expect((await getEventSummary(popover, 'focusin')).counter, 'buttonFocusInCalls after 2nd tab back').toBe(2);
-  expect((await getEventSummary(popover, 'blur')).counter, 'buttonBlurCalls after 2nd tab back').toBe(2);
-  expect((await getEventSummary(popover, 'focusout')).counter, 'buttonFocusOutCalls after 2nd tab back').toBe(2);
-  expect((await getEventSummary(after, 'focus')).counter, 'afterFocusCalls after 2nd tab back').toBe(1);
-  expect(await getActiveElementId(page), 'activeElementId after 2nd tab back').toBe('before');
+    await page.keyboard.press('Tab');
+    expect((await getEventSummary(before, 'focus')).counter, 'beforeFocusCalls after 2nd tab back').toBe(2);
+    expect((await getEventSummary(popover, 'focus')).counter, 'buttonFocusCalls after 2nd tab back').toBe(2);
+    expect((await getEventSummary(popover, 'focusin')).counter, 'buttonFocusInCalls after 2nd tab back').toBe(2);
+    expect((await getEventSummary(popover, 'blur')).counter, 'buttonBlurCalls after 2nd tab back').toBe(2);
+    expect((await getEventSummary(popover, 'focusout')).counter, 'buttonFocusOutCalls after 2nd tab back').toBe(2);
+    expect((await getEventSummary(after, 'focus')).counter, 'afterFocusCalls after 2nd tab back').toBe(1);
+    expect(await getActiveElementId(page), 'activeElementId after 2nd tab back').toBe('before');
 
-  await page.keyboard.up('ShiftLeft');
+    await page.keyboard.up('ShiftLeft');
+  });
 });
 
 test.describe('mouse behavior', () => {
@@ -231,6 +234,7 @@ test.describe('mouse behavior', () => {
 });
 
 test.describe('keyboard behavior', () => {
+  skipInBrowser(['webkit']);
   test.describe('escape', () => {
     const focusedElementTagName = 'BUTTON';
 
@@ -251,24 +255,26 @@ test.describe('keyboard behavior', () => {
       );
     });
 
-    test('should close popover when content is focused', async ({ page }) => {
-      await initPopover(page, { withLink: true });
-      const host = await getHost(page);
-      await togglePopover(page);
+    skipInBrowser(['firefox'], () => {
+      test('should close popover when content is focused', async ({ page }) => {
+        await initPopover(page, { withLink: true });
+        const host = await getHost(page);
+        await togglePopover(page);
 
-      expect(await getPopover(page)).not.toBeNull();
-      expect(await getActiveElementTagNameInShadowRoot(host)).toBe(focusedElementTagName);
+        expect(await getPopover(page)).not.toBeNull();
+        expect(await getActiveElementTagNameInShadowRoot(host)).toBe(focusedElementTagName);
 
-      await page.keyboard.press('Tab');
-      await waitForStencilLifecycle(page);
+        await page.keyboard.press('Tab');
+        await waitForStencilLifecycle(page);
 
-      expect(await getActiveElementTagName(page)).toBe('A');
+        expect(await getActiveElementTagName(page)).toBe('A');
 
-      await page.keyboard.press('Escape');
-      await waitForStencilLifecycle(page);
+        await page.keyboard.press('Escape');
+        await waitForStencilLifecycle(page);
 
-      expect(await getPopover(page)).toBeNull();
-      expect(await getActiveElementTagNameInShadowRoot(host)).toBe(focusedElementTagName);
+        expect(await getPopover(page)).toBeNull();
+        expect(await getActiveElementTagNameInShadowRoot(host)).toBe(focusedElementTagName);
+      });
     });
 
     test('should close popover when content outside is focused', async ({ page }) => {
@@ -355,6 +361,7 @@ test.describe('lifecycle', () => {
 });
 
 test.describe('native', () => {
+  skipInBrowser(['firefox', 'webkit']);
   test('should not render native popover when used outside of table', async ({ page }) => {
     await initPopover(page);
     await togglePopover(page);

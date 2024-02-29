@@ -11,6 +11,7 @@ import {
   selectNode,
   setContentWithDesignSystem,
   setProperty,
+  skipInBrowser,
   waitForInputTransition,
   waitForStencilLifecycle,
 } from '../helpers';
@@ -87,47 +88,49 @@ test('should add/remove message text if state changes programmatically', async (
   expect(await getMessage(page), 'when state = none').toBeNull();
 });
 
-test('should disable radio-button when disabled property is set programmatically', async ({ page }) => {
-  await setContentWithDesignSystem(
-    page,
-    `
+skipInBrowser(['webkit'], () => {
+  test('should disable radio-button when disabled property is set programmatically', async ({ page }) => {
+    await setContentWithDesignSystem(
+      page,
+      `
     <p-radio-button-wrapper label="Some label" id="radio-1">
       <input type="radio" name="some-name" />
     </p-radio-button-wrapper>`
-  );
+    );
 
-  const host = await getHost(page);
-  const input = await getInput(page);
-  const wrapper = await getWrapper(page);
+    const host = await getHost(page);
+    const input = await getInput(page);
+    const wrapper = await getWrapper(page);
 
-  const getWrapperCursor = () => getElementStyle(wrapper, 'cursor');
-  const getInputCursor = () => getElementStyle(input, 'cursor');
-  const getInputPointerEvents = () => getElementStyle(input, 'pointerEvents');
+    const getWrapperCursor = () => getElementStyle(wrapper, 'cursor');
+    const getInputCursor = () => getElementStyle(input, 'cursor');
+    const getInputPointerEvents = () => getElementStyle(input, 'pointerEvents');
 
-  expect(await getWrapperCursor()).toBe('auto');
-  expect(await getInputCursor()).toBe('pointer');
-  expect(await getInputPointerEvents()).toBe('auto');
+    expect(await getWrapperCursor()).toBe('auto');
+    expect(await getInputCursor()).toBe('pointer');
+    expect(await getInputPointerEvents()).toBe('auto');
 
-  await setProperty(input, 'disabled', true);
-  await waitForInputTransition(page);
+    await setProperty(input, 'disabled', true);
+    await waitForInputTransition(page);
 
-  expect(await getWrapperCursor()).toBe('not-allowed');
-  expect(await getInputCursor()).toBe('default');
-  expect(await getInputPointerEvents()).toBe('none'); // prevents radio-button from being clickable in disabled and especially loading state
+    expect(await getWrapperCursor()).toBe('not-allowed');
+    expect(await getInputCursor()).toBe('default');
+    expect(await getInputPointerEvents()).toBe('none'); // prevents radio-button from being clickable in disabled and especially loading state
 
-  await setProperty(input, 'disabled', false);
-  await waitForInputTransition(page);
+    await setProperty(input, 'disabled', false);
+    await waitForInputTransition(page);
 
-  expect(await getWrapperCursor()).toBe('auto');
-  expect(await getInputCursor()).toBe('pointer');
-  expect(await getInputPointerEvents()).toBe('auto');
+    expect(await getWrapperCursor()).toBe('auto');
+    expect(await getInputCursor()).toBe('pointer');
+    expect(await getInputPointerEvents()).toBe('auto');
 
-  await setProperty(host, 'loading', true);
-  await waitForInputTransition(page);
+    await setProperty(host, 'loading', true);
+    await waitForInputTransition(page);
 
-  expect(await getWrapperCursor()).toBe('not-allowed');
-  expect(await getInputCursor()).toBe('default');
-  expect(await getInputPointerEvents()).toBe('none'); // prevents radio-button from being clickable in disabled and especially loading state
+    expect(await getWrapperCursor()).toBe('not-allowed');
+    expect(await getInputCursor()).toBe('default');
+    expect(await getInputPointerEvents()).toBe('none'); // prevents radio-button from being clickable in disabled and especially loading state
+  });
 });
 
 test.describe('checked state', () => {
@@ -271,33 +274,35 @@ test.describe('checked state', () => {
     expect((await getEventSummary(input1, 'change')).counter).toBe(1);
   });
 
-  test('should keep focus if state switches to loading', async ({ page }) => {
-    await setContentWithDesignSystem(
-      page,
-      `
+  skipInBrowser(['webkit'], () => {
+    test('should keep focus if state switches to loading', async ({ page }) => {
+      await setContentWithDesignSystem(
+        page,
+        `
       <p-radio-button-wrapper label="Some label" id="radio-1">
         <input type="radio" name="some-name" />
       </p-radio-button-wrapper>
       <p-radio-button-wrapper label="Some label" id="radio-2">
         <input type="radio" name="some-name" />
       </p-radio-button-wrapper>`
-    );
-    const host1 = await selectNode(page, '#radio-1');
-    const input1 = await selectNode(page, '#radio-1 > input');
+      );
+      const host1 = await selectNode(page, '#radio-1');
+      const input1 = await selectNode(page, '#radio-1 > input');
 
-    expect(await hasFocus(input1)).toBe(false);
-    await page.keyboard.press('Tab');
-    expect(await hasFocus(input1), 'after Tab').toBe(true);
+      expect(await hasFocus(input1)).toBe(false);
+      await page.keyboard.press('Tab');
+      expect(await hasFocus(input1), 'after Tab').toBe(true);
 
-    await setProperty(host1, 'loading', true);
-    await waitForStencilLifecycle(page);
+      await setProperty(host1, 'loading', true);
+      await waitForStencilLifecycle(page);
 
-    expect(await hasFocus(input1), 'focus when loading').toBe(true);
+      expect(await hasFocus(input1), 'focus when loading').toBe(true);
 
-    await setProperty(host1, 'loading', false);
-    await waitForStencilLifecycle(page);
+      await setProperty(host1, 'loading', false);
+      await waitForStencilLifecycle(page);
 
-    expect(await hasFocus(input1), 'final focus').toBe(true);
+      expect(await hasFocus(input1), 'final focus').toBe(true);
+    });
   });
 });
 

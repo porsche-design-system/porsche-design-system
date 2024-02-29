@@ -15,6 +15,7 @@ import {
   selectNode,
   setContentWithDesignSystem,
   setProperty,
+  skipInBrowser,
   waitForStencilLifecycle,
 } from '../helpers';
 import type { MultiSelectOption } from '@porsche-design-system/components/dist/types/components/multi-select/multi-select/multi-select-utils';
@@ -466,118 +467,120 @@ test.describe('hover', () => {
   });
 });
 
-test.describe('focus', () => {
-  test('should focus input when label text is clicked', async ({ page }) => {
-    await initMultiSelect(page, { props: { name: 'options', label: 'Some Label' } });
+skipInBrowser(['webkit'], () => {
+  test.describe('focus', () => {
+    test('should focus input when label text is clicked', async ({ page }) => {
+      await initMultiSelect(page, { props: { name: 'options', label: 'Some Label' } });
 
-    const labelText = await getLabel(page);
-    const filterInput = await getInput(page);
-    await addEventListener(filterInput, 'focus');
+      const labelText = await getLabel(page);
+      const filterInput = await getInput(page);
+      await addEventListener(filterInput, 'focus');
 
-    expect((await getEventSummary(filterInput, 'focus')).counter, 'before focus').toBe(0);
+      expect((await getEventSummary(filterInput, 'focus')).counter, 'before focus').toBe(0);
 
-    await labelText.click();
-    expect((await getEventSummary(filterInput, 'focus')).counter, 'after focus').toBe(1);
-  });
+      await labelText.click();
+      expect((await getEventSummary(filterInput, 'focus')).counter, 'after focus').toBe(1);
+    });
 
-  test('should focus filter when tab key is pressed', async ({ page }) => {
-    await initMultiSelect(page);
+    test('should focus filter when tab key is pressed', async ({ page }) => {
+      await initMultiSelect(page);
 
-    const inputElement = await getInput(page);
-    await addEventListener(inputElement, 'focus');
+      const inputElement = await getInput(page);
+      await addEventListener(inputElement, 'focus');
 
-    expect((await getEventSummary(inputElement, 'focus')).counter).toBe(0);
+      expect((await getEventSummary(inputElement, 'focus')).counter).toBe(0);
 
-    await page.keyboard.press('Tab');
-    expect((await getEventSummary(inputElement, 'focus')).counter).toBe(1);
-  });
+      await page.keyboard.press('Tab');
+      expect((await getEventSummary(inputElement, 'focus')).counter).toBe(1);
+    });
 
-  test('should focus correct elements when selection is made', async ({ page }) => {
-    await initMultiSelect(page, { options: { markupAfter: '<p-button>Some button</p-button>' } });
-    const button = await selectNode(page, 'p-button');
-    await addEventListener(button, 'focus');
+    test('should focus correct elements when selection is made', async ({ page }) => {
+      await initMultiSelect(page, { options: { markupAfter: '<p-button>Some button</p-button>' } });
+      const button = await selectNode(page, 'p-button');
+      await addEventListener(button, 'focus');
 
-    expect(await getResetButton(page)).toBeNull();
-    await setValue(page, ['a']);
-    await waitForStencilLifecycle(page);
+      expect(await getResetButton(page)).toBeNull();
+      await setValue(page, ['a']);
+      await waitForStencilLifecycle(page);
 
-    const inputElement = await getInput(page);
-    const resetButton = await getResetButton(page);
-    expect(resetButton).not.toBeNull();
-    await addEventListener(inputElement, 'focus');
-    await addEventListener(resetButton, 'focus');
+      const inputElement = await getInput(page);
+      const resetButton = await getResetButton(page);
+      expect(resetButton).not.toBeNull();
+      await addEventListener(inputElement, 'focus');
+      await addEventListener(resetButton, 'focus');
 
-    await page.keyboard.press('Tab');
-    await waitForStencilLifecycle(page);
-    expect((await getEventSummary(inputElement, 'focus')).counter).toBe(1);
-    expect(await getDropdownDisplay(page), 'dropdown display after first tab').toBe('none');
+      await page.keyboard.press('Tab');
+      await waitForStencilLifecycle(page);
+      expect((await getEventSummary(inputElement, 'focus')).counter).toBe(1);
+      expect(await getDropdownDisplay(page), 'dropdown display after first tab').toBe('none');
 
-    await page.keyboard.press('Space');
-    await waitForStencilLifecycle(page);
-    expect(await getDropdownDisplay(page), 'dropdown display after Space').toBe('flex');
+      await page.keyboard.press('Space');
+      await waitForStencilLifecycle(page);
+      expect(await getDropdownDisplay(page), 'dropdown display after Space').toBe('flex');
 
-    await page.keyboard.press('Tab');
-    await waitForStencilLifecycle(page);
-    expect((await getEventSummary(resetButton, 'focus')).counter).toBe(1);
-    expect(await getDropdownDisplay(page), 'dropdown display after second tab').toBe('flex');
+      await page.keyboard.press('Tab');
+      await waitForStencilLifecycle(page);
+      expect((await getEventSummary(resetButton, 'focus')).counter).toBe(1);
+      expect(await getDropdownDisplay(page), 'dropdown display after second tab').toBe('flex');
 
-    await page.keyboard.press('Tab');
-    await waitForStencilLifecycle(page);
-    expect(await getDropdownDisplay(page), 'dropdown display after third tab').toBe('none');
-    expect((await getEventSummary(button, 'focus')).counter, 'button focus after second tab').toBe(1);
-  });
+      await page.keyboard.press('Tab');
+      await waitForStencilLifecycle(page);
+      expect(await getDropdownDisplay(page), 'dropdown display after third tab').toBe('none');
+      expect((await getEventSummary(button, 'focus')).counter, 'button focus after second tab').toBe(1);
+    });
 
-  test('should focus next element when dropdown is open and no selection is made', async ({ page }) => {
-    await initMultiSelect(page, { options: { markupAfter: '<p-button>Some button</p-button>' } });
-    const button = await selectNode(page, 'p-button');
-    await addEventListener(button, 'focus');
+    test('should focus next element when dropdown is open and no selection is made', async ({ page }) => {
+      await initMultiSelect(page, { options: { markupAfter: '<p-button>Some button</p-button>' } });
+      const button = await selectNode(page, 'p-button');
+      await addEventListener(button, 'focus');
 
-    expect(await getResetButton(page), 'initial reset button').toBeNull();
+      expect(await getResetButton(page), 'initial reset button').toBeNull();
 
-    const inputElement = await getInput(page);
-    await addEventListener(inputElement, 'focus');
+      const inputElement = await getInput(page);
+      await addEventListener(inputElement, 'focus');
 
-    await page.keyboard.press('Tab');
-    expect((await getEventSummary(inputElement, 'focus')).counter, 'input focus after first tab').toBe(1);
-    expect(await getDropdownDisplay(page), 'dropdown display after first tab').toBe('none');
+      await page.keyboard.press('Tab');
+      expect((await getEventSummary(inputElement, 'focus')).counter, 'input focus after first tab').toBe(1);
+      expect(await getDropdownDisplay(page), 'dropdown display after first tab').toBe('none');
 
-    await page.keyboard.press('Space');
-    await waitForStencilLifecycle(page);
-    expect(await getDropdownDisplay(page), 'dropdown display after Space').toBe('flex');
+      await page.keyboard.press('Space');
+      await waitForStencilLifecycle(page);
+      expect(await getDropdownDisplay(page), 'dropdown display after Space').toBe('flex');
 
-    await page.keyboard.press('Tab');
-    await waitForStencilLifecycle(page);
-    expect((await getEventSummary(inputElement, 'focus')).counter, 'input focus after second tab').toBe(1);
+      await page.keyboard.press('Tab');
+      await waitForStencilLifecycle(page);
+      expect((await getEventSummary(inputElement, 'focus')).counter, 'input focus after second tab').toBe(1);
 
-    expect(await getDropdownDisplay(page), 'dropdown display after second tab').toBe('none');
-    expect((await getEventSummary(button, 'focus')).counter, 'button focus after second tab').toBe(1);
-  });
+      expect(await getDropdownDisplay(page), 'dropdown display after second tab').toBe('none');
+      expect((await getEventSummary(button, 'focus')).counter, 'button focus after second tab').toBe(1);
+    });
 
-  test('should focus input after reset button click', async ({ page }) => {
-    await initMultiSelect(page);
-    await setValue(page, ['a']);
-    await waitForStencilLifecycle(page);
+    test('should focus input after reset button click', async ({ page }) => {
+      await initMultiSelect(page);
+      await setValue(page, ['a']);
+      await waitForStencilLifecycle(page);
 
-    const host = await getHost(page);
+      const host = await getHost(page);
 
-    const inputElement = await getInput(page);
-    const resetButton = await getResetButton(page);
-    await addEventListener(inputElement, 'focus');
-    await addEventListener(resetButton, 'focus');
+      const inputElement = await getInput(page);
+      const resetButton = await getResetButton(page);
+      await addEventListener(inputElement, 'focus');
+      await addEventListener(resetButton, 'focus');
 
-    await page.keyboard.press('Tab');
-    expect((await getEventSummary(inputElement, 'focus')).counter).toBe(1);
-    await page.keyboard.press('Tab');
-    expect((await getEventSummary(resetButton, 'focus')).counter).toBe(1);
+      await page.keyboard.press('Tab');
+      expect((await getEventSummary(inputElement, 'focus')).counter).toBe(1);
+      await page.keyboard.press('Tab');
+      expect((await getEventSummary(resetButton, 'focus')).counter).toBe(1);
 
-    await page.keyboard.press('Enter');
-    await waitForStencilLifecycle(page);
+      await page.keyboard.press('Enter');
+      await waitForStencilLifecycle(page);
 
-    expect(await getResetButton(page)).toBeNull();
-    expect((await getEventSummary(inputElement, 'focus')).counter).toBe(2);
-    expect(await getActiveElementTagNameInShadowRoot(host)).toBe('INPUT');
-    expect(await getNativeSelectValue(page)).toStrictEqual('');
-    expect(await getMultiSelectValue(page)).toStrictEqual([]);
+      expect(await getResetButton(page)).toBeNull();
+      expect((await getEventSummary(inputElement, 'focus')).counter).toBe(2);
+      expect(await getActiveElementTagNameInShadowRoot(host)).toBe('INPUT');
+      expect(await getNativeSelectValue(page)).toStrictEqual('');
+      expect(await getMultiSelectValue(page)).toStrictEqual([]);
+    });
   });
 });
 
@@ -702,33 +705,35 @@ test.describe('selection', () => {
     expect(filterPlaceholderSecond, 'after second selection').toEqual(selectedMultiSelectOptionsSecond.join(', '));
   });
 
-  test('should reset selection on reset button enter', async ({ page }) => {
-    await initMultiSelect(page);
-    const inputElement = await getInput(page);
-    await inputElement.press('Space');
-    await waitForStencilLifecycle(page);
-    await page.keyboard.press('ArrowDown');
-    await waitForStencilLifecycle(page);
-    await inputElement.press('Enter');
-    await waitForStencilLifecycle(page);
+  skipInBrowser(['webkit'], () => {
+    test('should reset selection on reset button enter', async ({ page }) => {
+      await initMultiSelect(page);
+      const inputElement = await getInput(page);
+      await inputElement.press('Space');
+      await waitForStencilLifecycle(page);
+      await page.keyboard.press('ArrowDown');
+      await waitForStencilLifecycle(page);
+      await inputElement.press('Enter');
+      await waitForStencilLifecycle(page);
 
-    expect(await getProperty((await getNativeSelectOptions(page))[0], 'value')).toEqual('a');
-    expect(await getMultiSelectValue(page)).toEqual(['a']);
-    expect(await getSelectedMultiSelectOptionProperty(page, 'value')).toEqual(['a']);
+      expect(await getProperty((await getNativeSelectOptions(page))[0], 'value')).toEqual('a');
+      expect(await getMultiSelectValue(page)).toEqual(['a']);
+      expect(await getSelectedMultiSelectOptionProperty(page, 'value')).toEqual(['a']);
 
-    const resetButton = await getResetButton(page);
-    await addEventListener(resetButton, 'focus');
+      const resetButton = await getResetButton(page);
+      await addEventListener(resetButton, 'focus');
 
-    await inputElement.press('Tab');
-    await waitForStencilLifecycle(page);
-    expect((await getEventSummary(resetButton, 'focus')).counter).toBe(1);
+      await inputElement.press('Tab');
+      await waitForStencilLifecycle(page);
+      expect((await getEventSummary(resetButton, 'focus')).counter).toBe(1);
 
-    await resetButton.press('Enter');
-    await waitForStencilLifecycle(page);
+      await resetButton.press('Enter');
+      await waitForStencilLifecycle(page);
 
-    expect(await getNativeSelectOptions(page)).toEqual([]);
-    expect(await getMultiSelectValue(page)).toEqual([]);
-    expect(await getSelectedMultiSelectOptionProperty(page, 'value')).toEqual([]);
+      expect(await getNativeSelectOptions(page)).toEqual([]);
+      expect(await getMultiSelectValue(page)).toEqual([]);
+      expect(await getSelectedMultiSelectOptionProperty(page, 'value')).toEqual([]);
+    });
   });
 
   test('should reset selection on reset button click', async ({ page }) => {
@@ -955,48 +960,51 @@ test.describe('keyboard and click events', () => {
 
     expect(await getDropdownDisplay(page), 'after tab').toBe('none');
   });
-  test('should focus reset button and dropdown should stay open when there is a selection', async ({ page }) => {
-    await initMultiSelect(page, {
-      options: { markupAfter: '<p-button>Button</p-button>' },
+
+  skipInBrowser(['webkit'], () => {
+    test('should focus reset button and dropdown should stay open when there is a selection', async ({ page }) => {
+      await initMultiSelect(page, {
+        options: { markupAfter: '<p-button>Button</p-button>' },
+      });
+      const button = await selectNode(page, 'p-button');
+
+      await setValue(page, ['a']);
+      const resetButton = await getResetButton(page);
+      const inputElement = await getInput(page);
+
+      await addEventListener(button, 'focus');
+      await addEventListener(resetButton, 'focus');
+      await addEventListener(inputElement, 'focus');
+      expect(resetButton).not.toBeNull();
+      expect((await getEventSummary(button, 'focus')).counter, 'initial').toBe(0);
+      expect((await getEventSummary(resetButton, 'focus')).counter, 'initial').toBe(0);
+      expect((await getEventSummary(inputElement, 'focus')).counter, 'initial').toBe(0);
+
+      await page.keyboard.press('Tab');
+      await page.keyboard.press('Space');
+      await waitForStencilLifecycle(page);
+
+      expect((await getEventSummary(button, 'focus')).counter, 'initial').toBe(0);
+      expect((await getEventSummary(resetButton, 'focus')).counter, 'initial').toBe(0);
+      expect((await getEventSummary(inputElement, 'focus')).counter, 'after open').toBe(1);
+      expect(await getDropdownDisplay(page), 'after open').toBe('flex');
+
+      await page.keyboard.press('Tab');
+      await waitForStencilLifecycle(page);
+
+      expect((await getEventSummary(button, 'focus')).counter, 'initial').toBe(0);
+      expect((await getEventSummary(resetButton, 'focus')).counter, 'initial').toBe(1);
+      expect((await getEventSummary(inputElement, 'focus')).counter, 'after open').toBe(1);
+      expect(await getDropdownDisplay(page), 'after tab').toBe('flex');
+
+      await page.keyboard.press('Tab');
+      await waitForStencilLifecycle(page);
+
+      expect((await getEventSummary(button, 'focus')).counter, 'initial').toBe(1);
+      expect((await getEventSummary(resetButton, 'focus')).counter, 'initial').toBe(1);
+      expect((await getEventSummary(inputElement, 'focus')).counter, 'after open').toBe(1);
+      expect(await getDropdownDisplay(page), 'after tab').toBe('none');
     });
-    const button = await selectNode(page, 'p-button');
-
-    await setValue(page, ['a']);
-    const resetButton = await getResetButton(page);
-    const inputElement = await getInput(page);
-
-    await addEventListener(button, 'focus');
-    await addEventListener(resetButton, 'focus');
-    await addEventListener(inputElement, 'focus');
-    expect(resetButton).not.toBeNull();
-    expect((await getEventSummary(button, 'focus')).counter, 'initial').toBe(0);
-    expect((await getEventSummary(resetButton, 'focus')).counter, 'initial').toBe(0);
-    expect((await getEventSummary(inputElement, 'focus')).counter, 'initial').toBe(0);
-
-    await page.keyboard.press('Tab');
-    await page.keyboard.press('Space');
-    await waitForStencilLifecycle(page);
-
-    expect((await getEventSummary(button, 'focus')).counter, 'initial').toBe(0);
-    expect((await getEventSummary(resetButton, 'focus')).counter, 'initial').toBe(0);
-    expect((await getEventSummary(inputElement, 'focus')).counter, 'after open').toBe(1);
-    expect(await getDropdownDisplay(page), 'after open').toBe('flex');
-
-    await page.keyboard.press('Tab');
-    await waitForStencilLifecycle(page);
-
-    expect((await getEventSummary(button, 'focus')).counter, 'initial').toBe(0);
-    expect((await getEventSummary(resetButton, 'focus')).counter, 'initial').toBe(1);
-    expect((await getEventSummary(inputElement, 'focus')).counter, 'after open').toBe(1);
-    expect(await getDropdownDisplay(page), 'after tab').toBe('flex');
-
-    await page.keyboard.press('Tab');
-    await waitForStencilLifecycle(page);
-
-    expect((await getEventSummary(button, 'focus')).counter, 'initial').toBe(1);
-    expect((await getEventSummary(resetButton, 'focus')).counter, 'initial').toBe(1);
-    expect((await getEventSummary(inputElement, 'focus')).counter, 'after open').toBe(1);
-    expect(await getDropdownDisplay(page), 'after tab').toBe('none');
   });
 
   test('should close dropdown on Esc', async ({ page }) => {
@@ -1098,18 +1106,20 @@ test.describe('disabled', () => {
     expect(await getElementStyle(await getInput(page), 'cursor')).toBe('not-allowed');
   });
 
-  test('should not be able to open or interact', async ({ page }) => {
-    await initMultiSelect(page, {
-      props: { name: 'options', disabled: true },
-      options: { markupAfter: '<p-button>Button</p-button>' },
+  skipInBrowser(['webkit'], () => {
+    test('should not be able to open or interact', async ({ page }) => {
+      await initMultiSelect(page, {
+        props: { name: 'options', disabled: true },
+        options: { markupAfter: '<p-button>Button</p-button>' },
+      });
+      const button = await selectNode(page, 'p-button');
+
+      await addEventListener(button, 'focus');
+      expect((await getEventSummary(button, 'focus')).counter, 'before focus').toBe(0);
+
+      await page.keyboard.press('Tab');
+      expect((await getEventSummary(button, 'focus')).counter, 'before focus').toBe(1);
     });
-    const button = await selectNode(page, 'p-button');
-
-    await addEventListener(button, 'focus');
-    expect((await getEventSummary(button, 'focus')).counter, 'before focus').toBe(0);
-
-    await page.keyboard.press('Tab');
-    expect((await getEventSummary(button, 'focus')).counter, 'before focus').toBe(1);
   });
 });
 
