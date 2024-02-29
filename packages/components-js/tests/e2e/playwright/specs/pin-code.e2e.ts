@@ -8,7 +8,6 @@ import {
   getHTMLAttributes,
   getLifecycleStatus,
   getProperty,
-  selectNode,
   setContentWithDesignSystem,
   setProperty,
   skipInBrowser,
@@ -16,11 +15,11 @@ import {
 } from '../helpers';
 import { Components } from '@porsche-design-system/components';
 
-const getHost = (page: Page) => selectNode(page, 'p-pin-code');
-const getLabel = (page: Page) => selectNode(page, 'p-pin-code >>> label');
-const getCurrentInput = (page: Page) => selectNode(page, 'p-pin-code >>> #current-input');
-const getHiddenInput = (page: Page) => selectNode(page, 'p-pin-code input[slot="internal-input"]');
-const getInput = (page: Page, n: number) => selectNode(page, `p-pin-code >>> .wrapper input:nth-child(${n})`);
+const getHost = (page: Page) => page.$('p-pin-code');
+const getLabel = (page: Page) => page.$('p-pin-code label');
+const getCurrentInput = (page: Page) => page.$('p-pin-code #current-input');
+const getHiddenInput = (page: Page) => page.$('p-pin-code input[slot="internal-input"]');
+const getInput = (page: Page, n: number) => page.$(`p-pin-code .wrapper input:nth-child(${n})`);
 const getActiveElementsAriaLabelInShadowRoot = (page: Page, element: ElementHandle<HTMLElement>): Promise<string> => {
   return element.evaluate((el) => el.shadowRoot.activeElement.ariaLabel);
 };
@@ -126,7 +125,7 @@ test.describe('within form', () => {
     await initPinCode(page, { options: { isWithinForm: true } });
     const host = await getHost(page);
     const input = await getCurrentInput(page);
-    const form = await selectNode(page, 'form');
+    const form = await page.$('form');
     await addEventListener(form, 'submit');
     await setProperty(host, 'value', '1234');
 
@@ -149,7 +148,7 @@ test.describe('within form', () => {
     await initPinCode(page, { options: { isWithinForm: true, markupAfter: '<input type="hidden"/>' } });
     const host = await getHost(page);
     const input = await getCurrentInput(page);
-    const form = await selectNode(page, 'form');
+    const form = await page.$('form');
     await addEventListener(form, 'submit');
     await setProperty(host, 'value', '1234');
 
@@ -170,7 +169,7 @@ test.describe('within form', () => {
     await initPinCode(page, { options: { isWithinForm: true, markupAfter: '<input type="submit"/>' } });
     const host = await getHost(page);
     const input = await getCurrentInput(page);
-    const form = await selectNode(page, 'form');
+    const form = await page.$('form');
     await addEventListener(form, 'submit');
     await setProperty(host, 'value', '1234');
 
@@ -195,7 +194,7 @@ test.describe('within form', () => {
     });
     const host = await getHost(page);
     const input = await getCurrentInput(page);
-    const form = await selectNode(page, 'form');
+    const form = await page.$('form');
     await addEventListener(form, 'submit');
     await setProperty(host, 'value', '1234');
 
@@ -220,7 +219,7 @@ test.describe('within form', () => {
     });
     const host = await getHost(page);
     const input = await getCurrentInput(page);
-    const form = await selectNode(page, 'form');
+    const form = await page.$('form');
     await addEventListener(form, 'submit');
     await setProperty(host, 'value', '1234');
 
@@ -248,7 +247,7 @@ test.describe('within form', () => {
     });
     const host = await getHost(page);
     const input = await getCurrentInput(page);
-    const form = await selectNode(page, 'form');
+    const form = await page.$('form');
     await addEventListener(form, 'submit');
     await setProperty(host, 'value', '1234');
 
@@ -276,7 +275,7 @@ test.describe('within form', () => {
     });
     const host = await getHost(page);
     const input = await getCurrentInput(page);
-    const form = await selectNode(page, 'form');
+    const form = await page.$('form');
     await addEventListener(form, 'submit');
     await setProperty(host, 'value', '1234');
 
@@ -305,7 +304,7 @@ test.describe('within form', () => {
     });
     const host = await getHost(page);
     const input = await getCurrentInput(page);
-    const form = await selectNode(page, 'form');
+    const form = await page.$('form');
     await addEventListener(form, 'submit');
     await setProperty(host, 'value', '1234');
 
@@ -328,7 +327,7 @@ test.describe('within form', () => {
     await initPinCode(page, { options: { isWithinForm: true, markupAfter: '<input />' } });
     const host = await getHost(page);
     const input = await getCurrentInput(page);
-    const form = await selectNode(page, 'form');
+    const form = await page.$('form');
     await addEventListener(form, 'submit');
     await setProperty(host, 'value', '1234');
 
@@ -634,14 +633,14 @@ test.describe('disabled state', () => {
     expect(await getElementStyle(input, 'cursor')).toBe('not-allowed');
   });
 
-  skipInBrowser(['webkit'], () => {
-    test('should not be focusable', async ({ page }) => {
-      await initPinCode(page, {
-        props: { disabled: true },
-        options: { markupAfter: '<p-button>Some Button</p-button>' },
-      });
-      const button = await selectNode(page, 'p-button');
-      await addEventListener(button, 'focus');
+    skipInBrowser(['webkit'], () => {
+  test('should not be focusable', async ({ page }) => {
+    await initPinCode(page, {
+      props: { disabled: true },
+      options: { markupAfter: '<p-button>Some Button</p-button>' },
+    });
+    const button = await page.$('p-button');
+    await addEventListener(button, 'focus');
 
       expect((await getEventSummary(button, 'focus')).counter, 'before focus').toBe(0);
 
@@ -674,15 +673,12 @@ test.describe('loading state', () => {
     expect(await getProperty(input, 'value')).toBe('');
   });
 
-  skipInBrowser(['webkit'], () => {
-    test('should be possible to navigate through inputs by key=Tab/Shift+Tab', async ({ page }) => {
-      await initPinCode(page, {
-        props: { loading: true },
-        options: { markupAfter: '<p-button>Some Button</p-button>' },
-      });
-      const host = await getHost(page);
-      const button = await selectNode(page, 'p-button');
-      await addEventListener(button, 'focus');
+    skipInBrowser(['webkit'], () => {
+  test('should be possible to navigate through inputs by key=Tab/Shift+Tab', async ({ page }) => {
+    await initPinCode(page, { props: { loading: true }, options: { markupAfter: '<p-button>Some Button</p-button>' } });
+    const host = await getHost(page);
+    const button = await page.$('p-button');
+    await addEventListener(button, 'focus');
 
       await page.keyboard.press('Tab');
       expect(await getActiveElementsAriaLabelInShadowRoot(page, host)).toBe('1-4');

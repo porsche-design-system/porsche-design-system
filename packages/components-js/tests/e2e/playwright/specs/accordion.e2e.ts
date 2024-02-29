@@ -7,7 +7,6 @@ import {
   getEventSummary,
   getLifecycleStatus,
   hasFocus,
-  selectNode,
   setContentWithDesignSystem,
   setProperty,
   skipInBrowser,
@@ -41,11 +40,11 @@ ut labore et dolore magna aliquyam erat, sed diam voluptua.${hasInput ? '<input 
   return setContentWithDesignSystem(page, content);
 };
 
-const getHost = (page: Page) => selectNode(page, 'p-accordion');
-const getButton = (page: Page) => selectNode(page, 'p-accordion >>> button');
-const getInput = (page: Page) => selectNode(page, 'input');
-const getCollapsible = (page: Page) => selectNode(page, 'p-accordion >>> .collapsible');
-const getBody = (page: Page) => selectNode(page, 'body');
+const getHost = (page: Page) => page.$('p-accordion');
+const getButton = (page: Page) => page.$('p-accordion button');
+const getInput = (page: Page) => page.$('input');
+const getCollapsible = (page: Page) => page.$('p-accordion .collapsible');
+const getBody = (page: Page) => page.$('body');
 const getCollapseVisibility = async (page: Page) => getElementStyle(await getCollapsible(page), 'visibility');
 const getCollapseGridTemplateRows = async (page: Page) =>
   getElementStyle(await getCollapsible(page), 'gridTemplateRows');
@@ -195,7 +194,7 @@ test.describe('focus', () => {
     await initAccordion(page, { otherMarkup, hasInput: true });
     const host = await getHost(page);
     const body = await getBody(page);
-    const link = await selectNode(page, 'a');
+    const link = await page.$('a');
 
     expect(await hasFocus(body)).toBe(true);
 

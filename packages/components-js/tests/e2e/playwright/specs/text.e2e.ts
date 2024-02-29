@@ -4,7 +4,6 @@ import {
   getElementStyle,
   getLifecycleStatus,
   getProperty,
-  selectNode,
   setContentWithDesignSystem,
   setProperty,
   waitForStencilLifecycle,
@@ -20,8 +19,8 @@ const initText = (page: Page): Promise<void> => {
   );
 };
 
-const getHost = (page: Page) => selectNode(page, 'p-text');
-const getParagraph = (page: Page) => selectNode(page, 'p-text >>> p');
+const getHost = (page: Page) => page.$('p-text');
+const getParagraph = (page: Page) => page.$('p-text p');
 
 test.describe('lifecycle', () => {
   test('should work without unnecessary round trips on init', async ({ page }) => {

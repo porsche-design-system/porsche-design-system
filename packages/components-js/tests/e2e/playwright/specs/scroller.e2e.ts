@@ -1,4 +1,4 @@
-import type { Page, ElementHandle } from 'playwright';
+import type { ElementHandle, Page } from 'playwright';
 import { expect, test } from '@playwright/test';
 import {
   CSS_ANIMATION_DURATION,
@@ -7,7 +7,6 @@ import {
   getLifecycleStatus,
   getProperty,
   SCROLL_PERCENTAGE,
-  selectNode,
   setContentWithDesignSystem,
   setProperty,
   waitForStencilLifecycle,
@@ -41,17 +40,17 @@ const initScroller = (page: Page, opts?: InitOptions) => {
   return setContentWithDesignSystem(page, isWrapped ? `<div style="width: 200px">${content}</div>` : content);
 };
 
-const getHost = (page: Page) => selectNode(page, 'p-scroller');
+const getHost = (page: Page) => page.$('p-scroller');
 const getAllButtons = (page: Page) => page.$$('button');
-const getScrollArea = (page: Page) => selectNode(page, 'p-scroller >>> .scroll-area');
+const getScrollArea = (page: Page) => page.$('p-scroller .scroll-area');
 const getActionContainers = async (page: Page) => {
-  const actionPrev = await selectNode(page, 'p-scroller >>> .action-prev');
-  const actionNext = await selectNode(page, 'p-scroller >>> .action-next');
+  const actionPrev = await page.$('p-scroller .action-prev');
+  const actionNext = await page.$('p-scroller .action-next');
   return { actionPrev, actionNext };
 };
 const getPrevNextButton = async (page: Page) => {
-  const prevButton = await selectNode(page, 'p-scroller >>> .action-prev button');
-  const nextButton = await selectNode(page, 'p-scroller >>> .action-next button');
+  const prevButton = await page.$('p-scroller .action-prev button');
+  const nextButton = await page.$('p-scroller .action-next button');
   return { prevButton, nextButton };
 };
 const getScrollLeft = (page: Page, element: ElementHandle) => getProperty(element, 'scrollLeft');

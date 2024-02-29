@@ -11,21 +11,20 @@ import {
   getHTMLAttributes,
   getLifecycleStatus,
   getProperty,
-  selectNode,
   setContentWithDesignSystem,
   setProperty,
   waitForStencilLifecycle,
 } from '../helpers';
 import type { SelectOption } from '@porsche-design-system/components/src/components/select/select/select-utils';
 
-const getHost = (page: Page) => selectNode(page, 'p-select');
+const getHost = (page: Page) => page.$('p-select');
 const getSelectValue = async (page: Page): Promise<string> => await getProperty(await getHost(page), 'value');
-const getButton = (page: Page) => selectNode(page, 'p-select >>> button');
+const getButton = (page: Page) => page.$('p-select button');
 const getButtonText = async (page: Page): Promise<string> => getProperty(await getButton(page), 'textContent');
-const getDropdown = (page: Page) => selectNode(page, 'p-select >>> .listbox');
+const getDropdown = (page: Page) => page.$('p-select .listbox');
 const getDropdownDisplay = async (page: Page): Promise<string> =>
   await getElementStyle(await getDropdown(page), 'display');
-const getSelectOption = (page: Page, n: number) => selectNode(page, `p-select p-select-option:nth-child(${n + 1})`); // First one is native select
+const getSelectOption = (page: Page, n: number) => page.$(`p-select p-select-option:nth-child(${n + 1})`); // First one is native select
 const getSelectedSelectOptionProperty = async <K extends keyof SelectOption>(
   page: Page,
   property: K
@@ -58,11 +57,11 @@ const getHighlightedOptionIndex = async (page: Page): Promise<number> =>
   await page.$$eval('p-select p-select-option', (options: SelectOption[]) =>
     options.filter((option) => !option.hidden).indexOf(options.find((option: SelectOption) => option.highlighted))
   );
-const getNativeSelect = (page: Page) => selectNode(page, 'p-select select');
+const getNativeSelect = (page: Page) => page.$('p-select select');
 const getNativeSelectValue = async (page: Page): Promise<string> =>
   await getProperty(await getNativeSelect(page), 'value');
 const getNativeSelectInnerHTML = (page: Page) => page.$eval('p-select select', (el) => el.innerHTML);
-const getLabel = (page: Page) => selectNode(page, 'p-select >>> label');
+const getLabel = (page: Page) => page.$('p-select label');
 
 const setValue = async (page: Page, value: string) =>
   await page.evaluate(({ el, value }) => ((el as HTMLPSelectElement).value = value), {
@@ -496,7 +495,7 @@ test.describe('outside click', () => {
     await initSelect(page, { options: { markupBefore: '<p-text>Some Text</p-text>' } });
 
     const buttonElement = await getButton(page);
-    const text = await selectNode(page, 'p-text');
+    const text = await page.$('p-text');
     expect(await getDropdownDisplay(page)).toBe('none');
 
     await buttonElement.click();
@@ -549,7 +548,7 @@ test.describe('focus', () => {
 
   test('should close dropdown on tab and focus next element', async ({ page }) => {
     await initSelect(page, { options: { markupAfter: '<p-button>Some button</p-button>' } });
-    const button = await selectNode(page, 'p-button');
+    const button = await page.$('p-button');
     const comboboxEl = await getButton(page);
     await addEventListener(comboboxEl, 'focus');
     await addEventListener(button, 'focus');
@@ -675,7 +674,7 @@ test.describe('keyboard behavior', () => {
     let buttonAfter;
     test.beforeEach(async ({ page }) => {
       await initSelect(page, { options: { values: testValues, markupAfter: '<p-button>Button</p-button>' } });
-      buttonAfter = await selectNode(page, 'p-button');
+      buttonAfter = await page.$('p-button');
       await addEventListener(buttonAfter, 'focus');
       buttonElement = await getButton(page);
       await addEventListener(buttonElement, 'focus');
@@ -1256,7 +1255,7 @@ test.describe('click events', () => {
         props: { name: 'options', disabled: true },
         options: { markupAfter: '<p-button>Button</p-button>' },
       });
-      const button = await selectNode(page, 'p-button');
+      const button = await page.$('p-button');
 
       await addEventListener(button, 'focus');
       expect((await getEventSummary(button, 'focus')).counter, 'before focus').toBe(0);

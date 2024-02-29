@@ -1,4 +1,4 @@
-import type { Page, ElementHandle } from 'playwright';
+import type { ElementHandle, Page } from 'playwright';
 import { expect, test } from '@playwright/test';
 import {
   addEventListener,
@@ -6,7 +6,6 @@ import {
   getEventSummary,
   getLifecycleStatus,
   getProperty,
-  selectNode,
   setContentWithDesignSystem,
   setProperty,
   skipInBrowser,
@@ -29,9 +28,9 @@ const setContentWithLink = (page: Page) =>
     </div>`
   );
 
-const getHost = (page: Page) => selectNode(page, 'p-marque');
-const getSource = (page: Page): Promise<ElementHandle> => selectNode(page, 'p-marque >>> source');
-const getLink = (page: Page) => selectNode(page, 'p-marque >>> a');
+const getHost = (page: Page) => page.$('p-marque');
+const getSource = (page: Page): Promise<ElementHandle<HTMLElement | SVGElement>> => page.$('p-marque source');
+const getLink = (page: Page) => page.$('p-marque a');
 
 const getImageRequest = (page: Page) =>
   page.waitForRequest((request) => request.url().endsWith('.png') || request.url().endsWith('.webp'));
@@ -414,7 +413,7 @@ test.describe('with link', () => {
   test('should dispatch correct click events', async ({ page }) => {
     await setContentWithLink(page);
 
-    const wrapper = await selectNode(page, 'div');
+    const wrapper = await page.$('div');
     const host = await getHost(page);
     const link = await getLink(page);
 
@@ -442,8 +441,8 @@ test.describe('with link', () => {
     );
 
     const marque = await getHost(page);
-    const before = await selectNode(page, '#before');
-    const after = await selectNode(page, '#after');
+    const before = await page.$('#before');
+    const after = await page.$('#after');
 
     await addEventListener(before, 'focus');
     await addEventListener(marque, 'focus');
@@ -523,7 +522,7 @@ test.describe('with link', () => {
     const marqueHasFocus = () => page.evaluate(() => document.activeElement === document.querySelector('p-marque'));
 
     const marque = await getHost(page);
-    const before = await selectNode(page, '#before');
+    const before = await page.$('#before');
 
     await before.focus();
     expect(await marqueHasFocus()).toBe(false);

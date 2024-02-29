@@ -5,17 +5,16 @@ import {
   getLifecycleStatus,
   getProperty,
   hasFocus,
-  selectNode,
   setContentWithDesignSystem,
   setProperty,
   waitForStencilLifecycle,
 } from '../helpers';
 import type { FormState } from '@porsche-design-system/components/dist/types/bundle';
 
-const getHost = (page: Page) => selectNode(page, 'p-select-wrapper');
-const getSelect = (page: Page) => selectNode(page, 'p-select-wrapper select');
-const getMessage = (page: Page) => selectNode(page, 'p-select-wrapper >>> .message');
-const getLabel = (page: Page) => selectNode(page, 'p-select-wrapper >>> label');
+const getHost = (page: Page) => page.$('p-select-wrapper');
+const getSelect = (page: Page) => page.$('p-select-wrapper select');
+const getMessage = (page: Page) => page.$('p-select-wrapper .message');
+const getLabel = (page: Page) => page.$('p-select-wrapper label');
 
 type InitOptions = {
   useSlottedLabel?: boolean;

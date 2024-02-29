@@ -1,14 +1,8 @@
 import { expect, test } from '@playwright/test';
 import type { Page } from 'playwright';
-import {
-  getLifecycleStatus,
-  selectNode,
-  setContentWithDesignSystem,
-  setProperty,
-  waitForStencilLifecycle,
-} from '../helpers';
+import { getLifecycleStatus, setContentWithDesignSystem, setProperty, waitForStencilLifecycle } from '../helpers';
 
-const getHost = (page: Page) => selectNode(page, 'p-button-tile');
+const getHost = (page: Page) => page.$('p-button-tile');
 
 const imgSrc =
   'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyAQMAAAAk8RryAAAABlBMVEUAAAD2vP9xXLiUAAAAAXRSTlMAQObYZgAAABxJREFUGNNjYOBgYGBhYKAZ/R8MDsD4Q5amkz8ASp4PtTYYQZIAAAAASUVORK5CYII=';

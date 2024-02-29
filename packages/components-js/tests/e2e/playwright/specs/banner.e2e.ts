@@ -8,7 +8,6 @@ import {
   getLifecycleStatus,
   getProperty,
   reattachElementHandle,
-  selectNode,
   setContentWithDesignSystem,
   setProperty,
   waitForStencilLifecycle,
@@ -34,9 +33,9 @@ const initBanner = (page: Page, opts: InitOptions): Promise<void> => {
   );
 };
 
-const getHost = (page: Page) => selectNode(page, 'p-banner');
-const getInlineNotification = (page: Page) => selectNode(page, 'p-banner >>> p-inline-notification');
-const getCloseButton = (page: Page) => selectNode(page, 'p-banner >>> p-inline-notification >>> p-button-pure.close');
+const getHost = (page: Page) => page.$('p-banner');
+const getInlineNotification = (page: Page) => page.$('p-banner p-inline-notification');
+const getCloseButton = (page: Page) => page.$('p-banner p-inline-notification p-button-pure.close');
 
 test('should forward props correctly to p-inline-notification', async ({ page }) => {
   await setContentWithDesignSystem(
@@ -156,9 +155,9 @@ test.describe('close', () => {
       </p-banner>`
     );
 
-    const banner1 = await selectNode(page, '#banner1');
-    const banner2 = await selectNode(page, '#banner2');
-    const closeButtonBanner2 = await selectNode(page, '#banner2 >>> p-inline-notification >>> p-button-pure');
+    const banner1 = await page.$('#banner1');
+    const banner2 = await page.$('#banner2');
+    const closeButtonBanner2 = await page.$('#banner2 p-inline-notification p-button-pure');
 
     const classListBanner1 = await getCssClasses(banner1);
     const classListBanner2 = await getCssClasses(banner2);

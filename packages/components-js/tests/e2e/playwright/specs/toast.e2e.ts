@@ -5,12 +5,11 @@ import {
   getElementStyle,
   getLifecycleStatus,
   getProperty,
-  selectNode,
   setContentWithDesignSystem,
   setProperty,
   waitForStencilLifecycle,
 } from '../helpers';
-import type { ToastMessage, ToastState } from '@porsche-design-system/components/dist/types/bundle';
+import type { ToastMessage } from '@porsche-design-system/components/dist/types/bundle';
 import { TOAST_STATES } from '@porsche-design-system/components/src/components/toast/toast/toast-utils';
 
 const TOAST_TIMEOUT_DURATION_OVERRIDE = 1000;
@@ -63,9 +62,9 @@ const waitForToastTimeout = async (page: Page): Promise<void> => {
 
 const waitForAnimationFinish = () => new Promise((resolve) => setTimeout(resolve, ANIMATION_DURATION));
 
-const getHost = (page: Page) => selectNode(page, 'p-toast');
-const getToastItem = (page: Page) => selectNode(page, 'p-toast >>> p-toast-item');
-const getCloseButton = (page: Page) => selectNode(page, 'p-toast >>> p-toast-item >>> p-button-pure');
+const getHost = (page: Page) => page.$('p-toast');
+const getToastItem = (page: Page) => page.$('p-toast p-toast-item');
+const getCloseButton = (page: Page) => page.$('p-toast p-toast-item p-button-pure');
 
 for (const state of TOAST_STATES) {
   test(`should forward state: ${state} to p-toast-item`, async ({ page }) => {
@@ -153,7 +152,7 @@ test.describe('lifecycle', () => {
 test.describe('toast-item', () => {
   test('should render close button with type of "button"', async ({ page }) => {
     await initToastWithToastItem(page);
-    const closeBtnReal = await selectNode(page, 'p-toast >>> p-toast-item >>> p-button-pure >>> button');
+    const closeBtnReal = await page.$('p-toast p-toast-item p-button-pure button');
     expect(await getAttribute(closeBtnReal, 'type')).toBe('button');
   });
 

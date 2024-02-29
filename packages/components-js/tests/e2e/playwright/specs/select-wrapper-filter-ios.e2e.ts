@@ -1,10 +1,10 @@
 import { devices, expect, test } from '@playwright/test';
 import { Page } from 'playwright';
-import { selectNode, setContentWithDesignSystem } from '../helpers';
+import { setContentWithDesignSystem } from '../helpers';
 
-const dropdownSelector = 'p-select-wrapper >>> p-select-wrapper-dropdown';
+const dropdownSelector = 'p-select-wrapper p-select-wrapper-dropdown';
 
-const getDropdown = (page: Page) => selectNode(page, dropdownSelector);
+const getDropdown = (page: Page) => page.$(dropdownSelector);
 
 // TODO: Create a shared init fn for select-wrapper filter
 const initSelect = (page: Page, opts?: InitOptions): Promise<void> => {

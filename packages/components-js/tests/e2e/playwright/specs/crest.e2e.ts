@@ -5,7 +5,6 @@ import {
   getActiveElementId,
   getEventSummary,
   getLifecycleStatus,
-  selectNode,
   setContentWithDesignSystem,
   setProperty,
   skipInBrowser,
@@ -38,8 +37,8 @@ const setContentWithLink = (page: Page) =>
     </div>`
   );
 
-const getHost = (page: Page) => selectNode(page, 'p-crest');
-const getLink = (page: Page) => selectNode(page, 'p-crest >>> a');
+const getHost = (page: Page) => page.$('p-crest');
+const getLink = (page: Page) => page.$('p-crest a');
 test.describe('on default screen', () => {
   const viewport = { width: 1299, height: 300 };
 
@@ -78,7 +77,7 @@ test.describe('with link', () => {
   test('should dispatch correct click events', async ({ page }) => {
     await setContentWithLink(page);
 
-    const wrapper = await selectNode(page, 'div');
+    const wrapper = await page.$('div');
     const host = await getHost(page);
     const link = await getLink(page);
 
@@ -108,8 +107,8 @@ test.describe('with link', () => {
       );
 
       const crest = await getHost(page);
-      const before = await selectNode(page, '#before');
-      const after = await selectNode(page, '#after');
+      const before = await page.$('#before');
+      const after = await page.$('#after');
 
       await addEventListener(before, 'focus');
       await addEventListener(crest, 'focus');
@@ -190,7 +189,7 @@ test.describe('with link', () => {
     const crestHasFocus = () => page.evaluate(() => document.activeElement === document.querySelector('p-crest'));
 
     const crest = await getHost(page);
-    const before = await selectNode(page, '#before');
+    const before = await page.$('#before');
 
     await before.focus();
     expect(await crestHasFocus()).toBe(false);

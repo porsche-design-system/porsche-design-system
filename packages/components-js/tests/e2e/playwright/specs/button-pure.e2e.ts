@@ -7,7 +7,6 @@ import {
   getEventSummary,
   getLifecycleStatus,
   hasFocus,
-  selectNode,
   setContentWithDesignSystem,
   setProperty,
   skipInBrowser,
@@ -15,8 +14,8 @@ import {
   waitForStencilLifecycle,
 } from '../helpers';
 
-const getHost = (page: Page) => selectNode(page, 'p-button-pure');
-const getButton = (page: Page) => selectNode(page, 'p-button-pure >>> button');
+const getHost = (page: Page) => page.$('p-button-pure');
+const getButton = (page: Page) => page.$('p-button-pure button');
 
 const initButtonPure = (
   page: Page,
@@ -78,7 +77,7 @@ for (const { state, setContent } of clickableTests) {
 test('should dispatch correct click events', async ({ page }) => {
   await setContentWithDesignSystem(page, `<div><p-button-pure id="hostElement">Some label</p-button-pure></div>`);
 
-  const wrapper = await selectNode(page, 'div');
+  const wrapper = await page.$('div');
   const host = await getHost(page);
   const button = await getButton(page);
   await addEventListener(wrapper, 'click');
@@ -103,7 +102,7 @@ test.describe('within form', () => {
     );
     const button = await getButton(page);
     const host = await getHost(page);
-    const form = await selectNode(page, 'form');
+    const form = await page.$('form');
     await addEventListener(form, 'submit');
 
     await button.click();
@@ -130,7 +129,7 @@ test.describe('within form', () => {
     );
 
     const button = await getButton(page);
-    const form = await selectNode(page, 'form');
+    const form = await page.$('form');
     await addEventListener(form, 'submit');
 
     await button.click();
@@ -149,7 +148,7 @@ test.describe('within form', () => {
     );
     const button = await getButton(page);
     const outerButton = await getHost(page);
-    const form = await selectNode(page, 'form');
+    const form = await page.$('form');
     await addEventListener(form, 'submit');
 
     await button.click({ force: true });
@@ -189,8 +188,8 @@ skipInBrowser(['firefox', 'webkit'], () => {
     );
 
     const button = await getHost(page);
-    const before = await selectNode(page, '#before');
-    const after = await selectNode(page, '#after');
+    const before = await page.$('#before');
+    const after = await page.$('#after');
 
     await addEventListener(before, 'focus');
     await addEventListener(button, 'focus');
@@ -271,7 +270,7 @@ test('should provide functionality to focus & blur the custom element', async ({
   const buttonHasFocus = () => page.evaluate(() => document.activeElement === document.querySelector('p-button-pure'));
 
   const button = await getHost(page);
-  const before = await selectNode(page, '#before');
+  const before = await page.$('#before');
   await before.focus();
   expect(await buttonHasFocus()).toBe(false);
   await button.focus();
@@ -300,7 +299,7 @@ test('should submit form via enter key when type is submit', async ({ page }) =>
   );
 
   const host = await getHost(page);
-  const form = await selectNode(page, 'form');
+  const form = await page.$('form');
   await addEventListener(form, 'submit');
 
   const focusElAndPressEnter = async (el: ElementHandle<Element>) => {
@@ -309,7 +308,7 @@ test('should submit form via enter key when type is submit', async ({ page }) =>
     await waitForImproveButtonHandlingForCustomElement(page);
   };
 
-  const input = await selectNode(page, 'input');
+  const input = await page.$('input');
   await focusElAndPressEnter(input);
   expect((await getEventSummary(form, 'submit')).counter).toBe(1);
 

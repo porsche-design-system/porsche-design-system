@@ -134,27 +134,13 @@ export const setContentWithDesignSystem = async (page: Page, content: string, op
   }
 };
 
-export const selectNode = async (page: Page, selector: string): Promise<ElementHandle<HTMLElement>> => {
-  const selectorParts = selector.split('>>>');
-  const shadowRootSelectors =
-    selectorParts.length > 1
-      ? selectorParts
-          .slice(1)
-          .map((x) => `.shadowRoot.querySelector('${x.trim()}')`)
-          .join('')
-      : '';
-  return (
-    await page.evaluateHandle(`document.querySelector('${selectorParts[0].trim()}')${shadowRootSelectors}`)
-  ).asElement() as ElementHandle<HTMLElement>;
-};
-
 export const getShadowRoot = async (element: ElementHandle<HTMLElement>): Promise<ElementHandle<ShadowRoot>> => {
   return (await element.evaluateHandle((el) => el.shadowRoot)).asElement();
 };
 
 const containsCapitalChar = (key: string): boolean => /[A-Z]/.test(key);
 
-export const getAttribute = (element: ElementHandle<HTMLElement>, attribute: string): Promise<string> => {
+export const getAttribute = (element: ElementHandle<HTMLElement | SVGElement>, attribute: string): Promise<string> => {
   return element.evaluate((el, attr: string) => el.getAttribute(attr), attribute);
 };
 
@@ -165,14 +151,14 @@ export const setAttribute = async (element: ElementHandle<HTMLElement>, key: str
   await element.evaluate((el, { key, value }) => el.setAttribute(key, value), { key, value });
 };
 
-export const removeAttribute = async (element: ElementHandle<HTMLElement>, key: string): Promise<void> => {
+export const removeAttribute = async (element: ElementHandle<HTMLElement | SVGElement>, key: string): Promise<void> => {
   if (containsCapitalChar(key)) {
     console.warn(`removeAttribute: '${key}' contains a capital character which is most likely wrong`);
   }
   await element.evaluate((el, key) => el.removeAttribute(key), key);
 };
 
-export const getProperty = async <T>(element: ElementHandle, prop: string): Promise<T> => {
+export const getProperty = async <T>(element: ElementHandle<HTMLElement | SVGElement>, prop: string): Promise<T> => {
   return element.evaluate((el, prop: string) => el[prop], prop);
 };
 
@@ -184,28 +170,66 @@ export const setProperty = async <T>(
   await element.evaluate((el, { key, value }) => (el[key] = value), { key, value } as any);
 };
 
-export const getCssClasses = async (element: ElementHandle): Promise<string> => {
+export const getCssClasses = async (element: ElementHandle<HTMLElement | SVGElement>): Promise<string> => {
   return Object.values(await getProperty(element, 'classList')).join(' ');
 };
 
-export const getActiveElementTagNameInShadowRoot = (element: ElementHandle<HTMLElement>): Promise<string> => {
-  return element.evaluate((el) => el.shadowRoot.activeElement.tagName);
+export const getActiveElementTagNameInShadowRoot = async (
+  element: ElementHandle<HTMLElement | SVGElement>
+): Promise<string> => {
+  return element.evaluate((el) => {
+    try {
+      return el.shadowRoot.activeElement.tagName;
+    } catch (e) {
+      throw new Error(
+        `Could not get "tagName" from ${el.tagName}.shadowRoot.activeElement (${el.shadowRoot.activeElement}) `
+      );
+    }
+  });
 };
 
-export const getActiveElementClassNameInShadowRoot = (element: ElementHandle<HTMLElement>): Promise<string> => {
-  return element.evaluate((el) => el.shadowRoot.activeElement.className);
+export const getActiveElementClassNameInShadowRoot = (
+  element: ElementHandle<HTMLElement | SVGElement>
+): Promise<string> => {
+  return element.evaluate((el) => {
+    try {
+      return el.shadowRoot.activeElement.className;
+    } catch (e) {
+      throw new Error(
+        `Could not get "className" from ${el.tagName}.shadowRoot.activeElement (${el.shadowRoot.activeElement}) `
+      );
+    }
+  });
 };
 
 export const getActiveElementId = (page: Page): Promise<string> => {
-  return page.evaluate(() => document.activeElement.id);
+  return page.evaluate(() => {
+    try {
+      return document.activeElement.id;
+    } catch (e) {
+      throw new Error(`Could not get "id" from document.activeElement (${document.activeElement}) `);
+    }
+  });
 };
 
 export const getActiveElementTagName = (page: Page): Promise<string> => {
-  return page.evaluate(() => document.activeElement.tagName);
+  return page.evaluate(() => {
+    try {
+      return document.activeElement.tagName;
+    } catch (e) {
+      throw new Error(`Could not get "tagName" from document.activeElement (${document.activeElement}) `);
+    }
+  });
 };
 
 export const getActiveElementProp = (page: Page, prop: string): Promise<string> => {
-  return page.evaluate((prop) => document.activeElement[prop], prop);
+  return page.evaluate((prop) => {
+    try {
+      return document.activeElement[prop];
+    } catch (e) {
+      throw new Error(`Could not get "${prop}" from document.activeElement (${document.activeElement}) `);
+    }
+  }, prop);
 };
 
 type Pseudo = '::before' | '::after' | '::-webkit-search-decoration';
@@ -215,7 +239,7 @@ type GetElementStyleOptions = {
 };
 
 export const getElementStyle = (
-  element: ElementHandle<HTMLElement>,
+  element: ElementHandle<HTMLElement | SVGElement>,
   property: keyof CSSStyleDeclaration,
   opts?: GetElementStyleOptions
 ): Promise<string> => {
@@ -278,7 +302,7 @@ export const enableBrowserLogging = (page: Page): void => {
 
 export const waitForInputTransition = (page: Page): Promise<void> => new Promise((resolve) => setTimeout(resolve, 250));
 
-export const hasFocus = (element: ElementHandle): Promise<boolean> =>
+export const hasFocus = (element: ElementHandle<HTMLElement>): Promise<boolean> =>
   element.evaluate((el) => document.activeElement === el);
 
 const consoleMessages: ConsoleMessage[] = [];
@@ -401,9 +425,12 @@ export const expectToSkipFocusOnComponent = async (page: Page, component: Elemen
   expect(await getActiveElementId(page)).toBe('before');
 };
 
-export const getScrollLeft = (element: ElementHandle): Promise<number> => getProperty<number>(element, 'scrollLeft');
-export const getOffsetLeft = (element: ElementHandle): Promise<number> => getProperty<number>(element, 'offsetLeft');
-export const getOffsetWidth = (element: ElementHandle): Promise<number> => getProperty<number>(element, 'offsetWidth');
+export const getScrollLeft = (element: ElementHandle<HTMLElement>): Promise<number> =>
+  getProperty<number>(element, 'scrollLeft');
+export const getOffsetLeft = (element: ElementHandle<HTMLElement>): Promise<number> =>
+  getProperty<number>(element, 'offsetLeft');
+export const getOffsetWidth = (element: ElementHandle<HTMLElement>): Promise<number> =>
+  getProperty<number>(element, 'offsetWidth');
 
 /**
  * Get HTML attributes string from an object of properties.
