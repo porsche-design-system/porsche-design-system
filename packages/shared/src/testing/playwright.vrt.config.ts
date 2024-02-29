@@ -36,16 +36,16 @@ export const config: Config = {
      */
     timeout: 30000,
     // These are the defaults, use in case you need to change the threshold
-    toMatchSnapshot: {
-      maxDiffPixelRatio: undefined,
-      maxDiffPixels: undefined,
-      threshold: 0, // default Playwright threshold
-    },
-    toHaveScreenshot: {
-      maxDiffPixelRatio: undefined,
-      maxDiffPixels: undefined,
-      threshold: 0, // default Playwright threshold
-    },
+    // toMatchSnapshot: {
+    //   maxDiffPixelRatio: undefined,
+    //   maxDiffPixels: undefined,
+    //   threshold: 0.2, // default Playwright threshold
+    // },
+    // toHaveScreenshot: {
+    //   maxDiffPixelRatio: undefined,
+    //   maxDiffPixels: undefined,
+    //   threshold: 0.2, // default Playwright threshold
+    // },
   },
   snapshotPathTemplate: '{testDir}/__screenshots__/{arg}-{projectName}{ext}',
   /* Run tests in files in parallel */
