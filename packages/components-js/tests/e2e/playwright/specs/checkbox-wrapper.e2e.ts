@@ -11,6 +11,7 @@ import {
   selectNode,
   setContentWithDesignSystem,
   setProperty,
+  skipInBrowser,
   waitForInputTransition,
   waitForStencilLifecycle,
 } from '../helpers';
@@ -162,9 +163,7 @@ test('should not toggle checkbox when pressed space in focus in loading state', 
   expect((await getEventSummary(input, 'change')).counter).toBe(1);
 });
 
-test.describe('skip in safari', () => {
-  test.skip(({ browserName }) => browserName === 'webkit');
-
+skipInBrowser(['firefox', 'webkit'], () => {
   test('should keep focus if state switches to loading', async ({ page }) => {
     await initCheckbox(page);
     const input = await getInput(page);
@@ -234,9 +233,7 @@ test('should check/uncheck checkbox when checkbox property is changed programmat
   expect(await getBackgroundImage(input)).toBe('none');
 });
 
-test.describe('skip in firefox and safari', () => {
-  test.skip(({ browserName }) => browserName !== 'chromium');
-
+skipInBrowser(['firefox', 'webkit'], () => {
   test('should disable checkbox when disabled property is set programmatically', async ({ page }) => {
     await initCheckbox(page);
     const host = await getHost(page);
@@ -275,7 +272,7 @@ test.describe('skip in firefox and safari', () => {
 });
 
 test.describe('indeterminate state', () => {
-  test.skip(({ browserName }) => browserName === 'webkit');
+  skipInBrowser(['webkit']);
 
   test('should show indeterminate state when checkbox is set to indeterminate', async ({ page }) => {
     await initCheckbox(page);

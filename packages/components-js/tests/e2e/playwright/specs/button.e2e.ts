@@ -10,11 +10,12 @@ import {
   selectNode,
   setContentWithDesignSystem,
   setProperty,
+  skipInBrowser,
   waitForImproveButtonHandlingForCustomElement,
   waitForStencilLifecycle,
 } from '../helpers';
 
-test.skip(({ browserName }) => browserName !== 'chromium');
+skipInBrowser(['firefox', 'webkit']);
 
 const getHost = (page: Page) => selectNode(page, 'p-button');
 const getButton = (page: Page) => selectNode(page, 'p-button >>> button');
