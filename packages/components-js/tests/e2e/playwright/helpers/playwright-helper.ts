@@ -425,9 +425,12 @@ export const expectToSkipFocusOnComponent = async (page: Page, component: Elemen
   expect(await getActiveElementId(page)).toBe('before');
 };
 
-export const getScrollLeft = (element: ElementHandle): Promise<number> => getProperty<number>(element, 'scrollLeft');
-export const getOffsetLeft = (element: ElementHandle): Promise<number> => getProperty<number>(element, 'offsetLeft');
-export const getOffsetWidth = (element: ElementHandle): Promise<number> => getProperty<number>(element, 'offsetWidth');
+export const getScrollLeft = (element: ElementHandle<HTMLElement>): Promise<number> =>
+  getProperty<number>(element, 'scrollLeft');
+export const getOffsetLeft = (element: ElementHandle<HTMLElement>): Promise<number> =>
+  getProperty<number>(element, 'offsetLeft');
+export const getOffsetWidth = (element: ElementHandle<HTMLElement>): Promise<number> =>
+  getProperty<number>(element, 'offsetWidth');
 
 /**
  * Get HTML attributes string from an object of properties.

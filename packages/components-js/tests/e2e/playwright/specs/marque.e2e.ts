@@ -28,7 +28,7 @@ const setContentWithLink = (page: Page) =>
   );
 
 const getHost = (page: Page) => page.$('p-marque');
-const getSource = (page: Page): Promise<ElementHandle> => page.$('p-marque source');
+const getSource = (page: Page): Promise<ElementHandle<HTMLElement | SVGElement>> => page.$('p-marque source');
 const getLink = (page: Page) => page.$('p-marque a');
 
 const getImageRequest = (page: Page) =>
