@@ -30,7 +30,7 @@ const setChecked = async (element: ElementHandle, value: boolean) => {
   await setProperty(element, 'checked', value);
 };
 
-const getBackgroundImage = (input: ElementHandle) => getElementStyle(input, 'backgroundImage');
+const getBackgroundImage = (input: ElementHandle<HTMLElement>) => getElementStyle(input, 'backgroundImage');
 const backgroundURL = 'url("data:image';
 
 type InitOptions = {
