@@ -41,6 +41,7 @@ export const forceFocusVisibleState = (page: Page, selector: string): Promise<vo
 export const forceFocusState = (page: Page, selector: string): Promise<void> => {
   return forceStateOnElements(page, selector, FOCUS_STATE);
 };
+// TODO: shouldn't it be named `forceFocusAndFocusVisibleAndHoverState()`?
 export const forceFocusHoverState = (page: Page, selector: string): Promise<void> => {
   return forceStateOnElements(page, selector, FOCUS_HOVER_STATE);
 };
