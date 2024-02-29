@@ -170,7 +170,7 @@ jobs:
           entrypoint: run-test-e2e-playwright
           args: --components-js
   components-js-common-vrt-playwright-chrome:
-    name: 'Components JS VRT Common (Playwright Chrome)'
+    name: 'Components JS VRT Common (Chrome)'
     runs-on: ubuntu-latest
     steps:
       - name: 'Checkout'
@@ -193,7 +193,7 @@ jobs:
           name: components-js-vrt-common-playwright-chrome-regression
           path: ./packages/components-js/tests/vrt/playwright/results
   components-js-custom-vrt-playwright-chrome:
-    name: 'Components JS VRT Custom (Playwright Chrome)'
+    name: 'Components JS VRT Custom (Chrome)'
     runs-on: ubuntu-latest
     steps:
       - name: 'Checkout'
@@ -216,7 +216,7 @@ jobs:
           name: components-js-vrt-custom-playwright-chrome-regression
           path: ./packages/components-js/tests/vrt/playwright/results
   components-js-states-vrt-playwright-chrome:
-    name: 'Components JS VRT States (Playwright Chrome)'
+    name: 'Components JS VRT States (Chrome)'
     runs-on: ubuntu-latest
     steps:
       - name: 'Checkout'
@@ -239,7 +239,7 @@ jobs:
           name: components-js-vrt-states-playwright-chrome-regression
           path: ./packages/components-js/tests/vrt/playwright/results
   components-js-vrt-playwright-safari:
-    name: 'Components JS VRT (Playwright Safari)'
+    name: 'Components JS VRT (Safari)'
     runs-on: ubuntu-latest
     steps:
       - name: 'Checkout'
