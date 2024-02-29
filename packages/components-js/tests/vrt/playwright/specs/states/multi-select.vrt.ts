@@ -2,6 +2,7 @@ import { expect, type Page, test } from '@playwright/test';
 import { schemes, themes, viewportWidthM } from '@porsche-design-system/shared/testing/playwright.vrt.config';
 import {
   forceFocusHoverState,
+  forceFocusState,
   forceFocusVisibleState,
   forceHoverState,
   getPlaygroundPseudoStatesMarkup,
@@ -124,7 +125,7 @@ const scenario = async (page: Page, theme: Theme, scheme?: PrefersColorScheme): 
   await forceHoverState(page, '.hover p-multi-select >>> input');
   await forceHoverState(page, '.hover p-multi-select span a');
   await forceFocusVisibleState(page, '.focus p-multi-select span a');
-  await forceFocusVisibleState(page, '.focus p-multi-select >>> input');
+  await forceFocusState(page, '.focus p-multi-select >>> input');
   await forceFocusHoverState(page, '.focus-hover p-multi-select >>> input');
   await forceFocusHoverState(page, '.focus-hover p-multi-select span a');
 };

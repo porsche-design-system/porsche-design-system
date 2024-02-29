@@ -2,6 +2,7 @@ import { expect, type Page, test } from '@playwright/test';
 import { schemes, themes, viewportWidthM } from '@porsche-design-system/shared/testing/playwright.vrt.config';
 import {
   forceFocusHoverState,
+  forceFocusState,
   forceFocusVisibleState,
   forceHoverState,
   getPlaygroundPseudoStatesMarkup,
@@ -149,16 +150,16 @@ const scenario = async (page: Page, theme: Theme, scheme?: PrefersColorScheme): 
   await forceHoverState(page, '.hover .native p-select-wrapper select');
   await forceHoverState(page, '.hover p-select-wrapper span a');
   await forceHoverState(page, '.hover p-select-wrapper >>> p-select-wrapper-dropdown');
-  await forceFocusVisibleState(page, '.focus .native p-select-wrapper select');
+  await forceFocusState(page, '.focus .native p-select-wrapper select');
   await forceFocusVisibleState(page, '.focus p-select-wrapper span a');
-  await forceFocusVisibleState(page, '.focus p-select-wrapper >>> p-select-wrapper-dropdown >>> button');
-  await forceFocusVisibleState(page, '.focus p-select-wrapper >>> p-select-wrapper-dropdown >>> input');
+  await forceFocusState(page, '.focus p-select-wrapper >>> p-select-wrapper-dropdown >>> button');
+  await forceFocusState(page, '.focus p-select-wrapper >>> p-select-wrapper-dropdown >>> input');
   await forceFocusHoverState(page, '.focus-hover .native p-select-wrapper select');
   await forceFocusHoverState(page, '.focus-hover p-select-wrapper span a');
   // actual user interaction happens on multiple nodes that's why forceFocusedHoveredState is wrong
   await forceHoverState(page, '.focus-hover p-select-wrapper >>> p-select-wrapper-dropdown');
-  await forceFocusVisibleState(page, '.focus-hover p-select-wrapper >>> p-select-wrapper-dropdown >>> button');
-  await forceFocusVisibleState(page, '.focus-hover p-select-wrapper >>> p-select-wrapper-dropdown >>> input');
+  await forceFocusState(page, '.focus-hover p-select-wrapper >>> p-select-wrapper-dropdown >>> button');
+  await forceFocusState(page, '.focus-hover p-select-wrapper >>> p-select-wrapper-dropdown >>> input');
 };
 
 // executed in Chrome only

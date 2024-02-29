@@ -1,6 +1,7 @@
 import { expect, type Page, test } from '@playwright/test';
 import {
   forceFocusHoverState,
+  forceFocusState,
   forceFocusVisibleState,
   forceHoverState,
   getPlaygroundPseudoStatesMarkup,
@@ -85,12 +86,14 @@ const scenario = async (page: Page, theme: Theme): Promise<void> => {
   await forceHoverState(page, '.hover p-select >>> button');
   await forceHoverState(page, '.hover p-multi-select >>> input');
   await forceHoverState(page, `.hover p-pin-code >>> #${valueOfForAttribute}`);
-  await forceFocusVisibleState(page, '.focus input');
-  await forceFocusVisibleState(page, '.focus select');
-  await forceFocusVisibleState(page, '.focus textarea');
-  await forceFocusVisibleState(page, '.focus p-select >>> button');
-  await forceFocusVisibleState(page, '.focus p-multi-select >>> input');
-  await forceFocusVisibleState(page, `.focus p-pin-code >>> #${valueOfForAttribute}`);
+  await forceFocusState(page, '.focus input[type="text"]');
+  await forceFocusVisibleState(page, '.focus input[type="checkbox"]');
+  await forceFocusVisibleState(page, '.focus input[type="radio"]');
+  await forceFocusState(page, '.focus select');
+  await forceFocusState(page, '.focus textarea');
+  await forceFocusState(page, '.focus p-select >>> button');
+  await forceFocusState(page, '.focus p-multi-select >>> input');
+  await forceFocusState(page, `.focus p-pin-code >>> #${valueOfForAttribute}`);
   await forceFocusHoverState(page, '.focus-hover input');
   await forceFocusHoverState(page, '.focus-hover select');
   await forceFocusHoverState(page, '.focus-hover textarea');

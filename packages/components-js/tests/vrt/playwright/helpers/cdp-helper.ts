@@ -38,6 +38,9 @@ export const forceHoverState = (page: Page, selector: string): Promise<void> => 
 export const forceFocusVisibleState = (page: Page, selector: string): Promise<void> => {
   return forceStateOnElements(page, selector, FOCUS_VISIBLE_STATE);
 };
+export const forceFocusState = (page: Page, selector: string): Promise<void> => {
+  return forceStateOnElements(page, selector, FOCUS_STATE);
+};
 export const forceFocusHoverState = (page: Page, selector: string): Promise<void> => {
   return forceStateOnElements(page, selector, FOCUS_HOVER_STATE);
 };
