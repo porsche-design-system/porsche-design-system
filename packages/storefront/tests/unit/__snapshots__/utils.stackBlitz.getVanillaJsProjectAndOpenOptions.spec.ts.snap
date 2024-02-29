@@ -164,13 +164,17 @@ exports[`getIndexHtml() development mode or non stable storefront release (e.g. 
         text-decoration: underline !important
       }
 
-      :is(p-accordion, p-banner, p-carousel, p-checkbox-wrapper, p-display, p-flyout, p-heading, p-headline, p-inline-notification, p-modal, p-multi-select, p-pin-code, p-popover, p-radio-button-wrapper, p-select, p-select-wrapper, p-switch, p-table, p-tabs, p-text, p-text-field-wrapper, p-text-list, p-textarea-wrapper) a:focus {
-        outline: 2px solid #1A44EA !important;
-        outline-offset: 0 !important
+      :is(p-accordion, p-banner, p-carousel, p-checkbox-wrapper, p-display, p-flyout, p-heading, p-headline, p-inline-notification, p-modal, p-multi-select, p-pin-code, p-popover, p-radio-button-wrapper, p-select, p-select-wrapper, p-switch, p-table, p-tabs, p-text, p-text-field-wrapper, p-text-list, p-textarea-wrapper) a::-moz-focus-inner {
+        border: 0 !important
       }
 
-      :is(p-accordion, p-banner, p-carousel, p-checkbox-wrapper, p-display, p-flyout, p-heading, p-headline, p-inline-notification, p-modal, p-multi-select, p-pin-code, p-popover, p-radio-button-wrapper, p-select, p-select-wrapper, p-switch, p-table, p-tabs, p-text, p-text-field-wrapper, p-text-list, p-textarea-wrapper) a:focus:not(:focus-visible) {
-        outline-color: transparent !important
+      :is(p-accordion, p-banner, p-carousel, p-checkbox-wrapper, p-display, p-flyout, p-heading, p-headline, p-inline-notification, p-modal, p-multi-select, p-pin-code, p-popover, p-radio-button-wrapper, p-select, p-select-wrapper, p-switch, p-table, p-tabs, p-text, p-text-field-wrapper, p-text-list, p-textarea-wrapper) a:focus {
+        outline: 0 !important
+      }
+
+      :is(p-accordion, p-banner, p-carousel, p-checkbox-wrapper, p-display, p-flyout, p-heading, p-headline, p-inline-notification, p-modal, p-multi-select, p-pin-code, p-popover, p-radio-button-wrapper, p-select, p-select-wrapper, p-switch, p-table, p-tabs, p-text, p-text-field-wrapper, p-text-list, p-textarea-wrapper) a:focus-visible {
+        outline: 2px solid #1A44EA !important;
+        outline-offset: 0 !important
       }
 
       :is(p-text-field-wrapper) input::-webkit-outer-spin-button,
@@ -201,13 +205,17 @@ exports[`getIndexHtml() development mode or non stable storefront release (e.g. 
         border-radius: 1px !important
       }
 
-      p-tabs-bar~[tabindex="0"][role="tabpanel"]:focus {
-        outline: 2px solid #1A44EA !important;
-        outline-offset: 2px !important
+      p-tabs-bar~[tabindex="0"][role="tabpanel"]::-moz-focus-inner {
+        border: 0 !important
       }
 
-      p-tabs-bar~[tabindex="0"][role="tabpanel"]:focus:not(:focus-visible) {
-        outline-color: transparent !important
+      p-tabs-bar~[tabindex="0"][role="tabpanel"]:focus {
+        outline: 0 !important
+      }
+
+      p-tabs-bar~[tabindex="0"][role="tabpanel"]:focus-visible {
+        outline: 2px solid #1A44EA !important;
+        outline-offset: 2px !important
       }
     </style>
 
@@ -398,13 +406,17 @@ exports[`getIndexHtml() development mode or non stable storefront release (e.g. 
             text-decoration: underline !important
           }
 
-          :is(p-accordion, p-banner, p-carousel, p-checkbox-wrapper, p-display, p-flyout, p-heading, p-headline, p-inline-notification, p-modal, p-multi-select, p-pin-code, p-popover, p-radio-button-wrapper, p-select, p-select-wrapper, p-switch, p-table, p-tabs, p-text, p-text-field-wrapper, p-text-list, p-textarea-wrapper) a:focus {
-            outline: 2px solid #1A44EA !important;
-            outline-offset: 0 !important
+          :is(p-accordion, p-banner, p-carousel, p-checkbox-wrapper, p-display, p-flyout, p-heading, p-headline, p-inline-notification, p-modal, p-multi-select, p-pin-code, p-popover, p-radio-button-wrapper, p-select, p-select-wrapper, p-switch, p-table, p-tabs, p-text, p-text-field-wrapper, p-text-list, p-textarea-wrapper) a::-moz-focus-inner {
+            border: 0 !important
           }
 
-          :is(p-accordion, p-banner, p-carousel, p-checkbox-wrapper, p-display, p-flyout, p-heading, p-headline, p-inline-notification, p-modal, p-multi-select, p-pin-code, p-popover, p-radio-button-wrapper, p-select, p-select-wrapper, p-switch, p-table, p-tabs, p-text, p-text-field-wrapper, p-text-list, p-textarea-wrapper) a:focus:not(:focus-visible) {
-            outline-color: transparent !important
+          :is(p-accordion, p-banner, p-carousel, p-checkbox-wrapper, p-display, p-flyout, p-heading, p-headline, p-inline-notification, p-modal, p-multi-select, p-pin-code, p-popover, p-radio-button-wrapper, p-select, p-select-wrapper, p-switch, p-table, p-tabs, p-text, p-text-field-wrapper, p-text-list, p-textarea-wrapper) a:focus {
+            outline: 0 !important
+          }
+
+          :is(p-accordion, p-banner, p-carousel, p-checkbox-wrapper, p-display, p-flyout, p-heading, p-headline, p-inline-notification, p-modal, p-multi-select, p-pin-code, p-popover, p-radio-button-wrapper, p-select, p-select-wrapper, p-switch, p-table, p-tabs, p-text, p-text-field-wrapper, p-text-list, p-textarea-wrapper) a:focus-visible {
+            outline: 2px solid #1A44EA !important;
+            outline-offset: 0 !important
           }
 
           :is(p-text-field-wrapper) input::-webkit-outer-spin-button,
@@ -435,13 +447,17 @@ exports[`getIndexHtml() development mode or non stable storefront release (e.g. 
             border-radius: 1px !important
           }
 
-          p-tabs-bar~[tabindex="0"][role="tabpanel"]:focus {
-            outline: 2px solid #1A44EA !important;
-            outline-offset: 2px !important
+          p-tabs-bar~[tabindex="0"][role="tabpanel"]::-moz-focus-inner {
+            border: 0 !important
           }
 
-          p-tabs-bar~[tabindex="0"][role="tabpanel"]:focus:not(:focus-visible) {
-            outline-color: transparent !important
+          p-tabs-bar~[tabindex="0"][role="tabpanel"]:focus {
+            outline: 0 !important
+          }
+
+          p-tabs-bar~[tabindex="0"][role="tabpanel"]:focus-visible {
+            outline: 2px solid #1A44EA !important;
+            outline-offset: 2px !important
           }
         </style>
 
@@ -593,13 +609,17 @@ exports[`getIndexHtml() development mode or non stable storefront release (e.g. 
         text-decoration: underline !important
       }
 
-      :is(p-accordion, p-banner, p-carousel, p-checkbox-wrapper, p-display, p-flyout, p-heading, p-headline, p-inline-notification, p-modal, p-multi-select, p-pin-code, p-popover, p-radio-button-wrapper, p-select, p-select-wrapper, p-switch, p-table, p-tabs, p-text, p-text-field-wrapper, p-text-list, p-textarea-wrapper) a:focus {
-        outline: 2px solid #1A44EA !important;
-        outline-offset: 0 !important
+      :is(p-accordion, p-banner, p-carousel, p-checkbox-wrapper, p-display, p-flyout, p-heading, p-headline, p-inline-notification, p-modal, p-multi-select, p-pin-code, p-popover, p-radio-button-wrapper, p-select, p-select-wrapper, p-switch, p-table, p-tabs, p-text, p-text-field-wrapper, p-text-list, p-textarea-wrapper) a::-moz-focus-inner {
+        border: 0 !important
       }
 
-      :is(p-accordion, p-banner, p-carousel, p-checkbox-wrapper, p-display, p-flyout, p-heading, p-headline, p-inline-notification, p-modal, p-multi-select, p-pin-code, p-popover, p-radio-button-wrapper, p-select, p-select-wrapper, p-switch, p-table, p-tabs, p-text, p-text-field-wrapper, p-text-list, p-textarea-wrapper) a:focus:not(:focus-visible) {
-        outline-color: transparent !important
+      :is(p-accordion, p-banner, p-carousel, p-checkbox-wrapper, p-display, p-flyout, p-heading, p-headline, p-inline-notification, p-modal, p-multi-select, p-pin-code, p-popover, p-radio-button-wrapper, p-select, p-select-wrapper, p-switch, p-table, p-tabs, p-text, p-text-field-wrapper, p-text-list, p-textarea-wrapper) a:focus {
+        outline: 0 !important
+      }
+
+      :is(p-accordion, p-banner, p-carousel, p-checkbox-wrapper, p-display, p-flyout, p-heading, p-headline, p-inline-notification, p-modal, p-multi-select, p-pin-code, p-popover, p-radio-button-wrapper, p-select, p-select-wrapper, p-switch, p-table, p-tabs, p-text, p-text-field-wrapper, p-text-list, p-textarea-wrapper) a:focus-visible {
+        outline: 2px solid #1A44EA !important;
+        outline-offset: 0 !important
       }
 
       :is(p-text-field-wrapper) input::-webkit-outer-spin-button,
@@ -630,13 +650,17 @@ exports[`getIndexHtml() development mode or non stable storefront release (e.g. 
         border-radius: 1px !important
       }
 
-      p-tabs-bar~[tabindex="0"][role="tabpanel"]:focus {
-        outline: 2px solid #1A44EA !important;
-        outline-offset: 2px !important
+      p-tabs-bar~[tabindex="0"][role="tabpanel"]::-moz-focus-inner {
+        border: 0 !important
       }
 
-      p-tabs-bar~[tabindex="0"][role="tabpanel"]:focus:not(:focus-visible) {
-        outline-color: transparent !important
+      p-tabs-bar~[tabindex="0"][role="tabpanel"]:focus {
+        outline: 0 !important
+      }
+
+      p-tabs-bar~[tabindex="0"][role="tabpanel"]:focus-visible {
+        outline: 2px solid #1A44EA !important;
+        outline-offset: 2px !important
       }
     </style>
 
@@ -788,13 +812,17 @@ exports[`getIndexHtml() development mode or non stable storefront release (e.g. 
         text-decoration: underline !important
       }
 
-      :is(p-accordion, p-banner, p-carousel, p-checkbox-wrapper, p-display, p-flyout, p-heading, p-headline, p-inline-notification, p-modal, p-multi-select, p-pin-code, p-popover, p-radio-button-wrapper, p-select, p-select-wrapper, p-switch, p-table, p-tabs, p-text, p-text-field-wrapper, p-text-list, p-textarea-wrapper) a:focus {
-        outline: 2px solid #1A44EA !important;
-        outline-offset: 0 !important
+      :is(p-accordion, p-banner, p-carousel, p-checkbox-wrapper, p-display, p-flyout, p-heading, p-headline, p-inline-notification, p-modal, p-multi-select, p-pin-code, p-popover, p-radio-button-wrapper, p-select, p-select-wrapper, p-switch, p-table, p-tabs, p-text, p-text-field-wrapper, p-text-list, p-textarea-wrapper) a::-moz-focus-inner {
+        border: 0 !important
       }
 
-      :is(p-accordion, p-banner, p-carousel, p-checkbox-wrapper, p-display, p-flyout, p-heading, p-headline, p-inline-notification, p-modal, p-multi-select, p-pin-code, p-popover, p-radio-button-wrapper, p-select, p-select-wrapper, p-switch, p-table, p-tabs, p-text, p-text-field-wrapper, p-text-list, p-textarea-wrapper) a:focus:not(:focus-visible) {
-        outline-color: transparent !important
+      :is(p-accordion, p-banner, p-carousel, p-checkbox-wrapper, p-display, p-flyout, p-heading, p-headline, p-inline-notification, p-modal, p-multi-select, p-pin-code, p-popover, p-radio-button-wrapper, p-select, p-select-wrapper, p-switch, p-table, p-tabs, p-text, p-text-field-wrapper, p-text-list, p-textarea-wrapper) a:focus {
+        outline: 0 !important
+      }
+
+      :is(p-accordion, p-banner, p-carousel, p-checkbox-wrapper, p-display, p-flyout, p-heading, p-headline, p-inline-notification, p-modal, p-multi-select, p-pin-code, p-popover, p-radio-button-wrapper, p-select, p-select-wrapper, p-switch, p-table, p-tabs, p-text, p-text-field-wrapper, p-text-list, p-textarea-wrapper) a:focus-visible {
+        outline: 2px solid #1A44EA !important;
+        outline-offset: 0 !important
       }
 
       :is(p-text-field-wrapper) input::-webkit-outer-spin-button,
@@ -825,13 +853,17 @@ exports[`getIndexHtml() development mode or non stable storefront release (e.g. 
         border-radius: 1px !important
       }
 
-      p-tabs-bar~[tabindex="0"][role="tabpanel"]:focus {
-        outline: 2px solid #1A44EA !important;
-        outline-offset: 2px !important
+      p-tabs-bar~[tabindex="0"][role="tabpanel"]::-moz-focus-inner {
+        border: 0 !important
       }
 
-      p-tabs-bar~[tabindex="0"][role="tabpanel"]:focus:not(:focus-visible) {
-        outline-color: transparent !important
+      p-tabs-bar~[tabindex="0"][role="tabpanel"]:focus {
+        outline: 0 !important
+      }
+
+      p-tabs-bar~[tabindex="0"][role="tabpanel"]:focus-visible {
+        outline: 2px solid #1A44EA !important;
+        outline-offset: 2px !important
       }
     </style>
 
@@ -983,13 +1015,17 @@ exports[`getIndexHtml() stable storefront release (e.g. /v2/…, /v3/…) should
         text-decoration: underline !important
       }
 
-      :is(p-accordion, p-banner, p-carousel, p-checkbox-wrapper, p-display, p-flyout, p-heading, p-headline, p-inline-notification, p-modal, p-multi-select, p-pin-code, p-popover, p-radio-button-wrapper, p-select, p-select-wrapper, p-switch, p-table, p-tabs, p-text, p-text-field-wrapper, p-text-list, p-textarea-wrapper) a:focus {
-        outline: 2px solid #1A44EA !important;
-        outline-offset: 0 !important
+      :is(p-accordion, p-banner, p-carousel, p-checkbox-wrapper, p-display, p-flyout, p-heading, p-headline, p-inline-notification, p-modal, p-multi-select, p-pin-code, p-popover, p-radio-button-wrapper, p-select, p-select-wrapper, p-switch, p-table, p-tabs, p-text, p-text-field-wrapper, p-text-list, p-textarea-wrapper) a::-moz-focus-inner {
+        border: 0 !important
       }
 
-      :is(p-accordion, p-banner, p-carousel, p-checkbox-wrapper, p-display, p-flyout, p-heading, p-headline, p-inline-notification, p-modal, p-multi-select, p-pin-code, p-popover, p-radio-button-wrapper, p-select, p-select-wrapper, p-switch, p-table, p-tabs, p-text, p-text-field-wrapper, p-text-list, p-textarea-wrapper) a:focus:not(:focus-visible) {
-        outline-color: transparent !important
+      :is(p-accordion, p-banner, p-carousel, p-checkbox-wrapper, p-display, p-flyout, p-heading, p-headline, p-inline-notification, p-modal, p-multi-select, p-pin-code, p-popover, p-radio-button-wrapper, p-select, p-select-wrapper, p-switch, p-table, p-tabs, p-text, p-text-field-wrapper, p-text-list, p-textarea-wrapper) a:focus {
+        outline: 0 !important
+      }
+
+      :is(p-accordion, p-banner, p-carousel, p-checkbox-wrapper, p-display, p-flyout, p-heading, p-headline, p-inline-notification, p-modal, p-multi-select, p-pin-code, p-popover, p-radio-button-wrapper, p-select, p-select-wrapper, p-switch, p-table, p-tabs, p-text, p-text-field-wrapper, p-text-list, p-textarea-wrapper) a:focus-visible {
+        outline: 2px solid #1A44EA !important;
+        outline-offset: 0 !important
       }
 
       :is(p-text-field-wrapper) input::-webkit-outer-spin-button,
@@ -1020,13 +1056,17 @@ exports[`getIndexHtml() stable storefront release (e.g. /v2/…, /v3/…) should
         border-radius: 1px !important
       }
 
-      p-tabs-bar~[tabindex="0"][role="tabpanel"]:focus {
-        outline: 2px solid #1A44EA !important;
-        outline-offset: 2px !important
+      p-tabs-bar~[tabindex="0"][role="tabpanel"]::-moz-focus-inner {
+        border: 0 !important
       }
 
-      p-tabs-bar~[tabindex="0"][role="tabpanel"]:focus:not(:focus-visible) {
-        outline-color: transparent !important
+      p-tabs-bar~[tabindex="0"][role="tabpanel"]:focus {
+        outline: 0 !important
+      }
+
+      p-tabs-bar~[tabindex="0"][role="tabpanel"]:focus-visible {
+        outline: 2px solid #1A44EA !important;
+        outline-offset: 2px !important
       }
     </style>
 
@@ -1217,13 +1257,17 @@ exports[`getIndexHtml() stable storefront release (e.g. /v2/…, /v3/…) should
             text-decoration: underline !important
           }
 
-          :is(p-accordion, p-banner, p-carousel, p-checkbox-wrapper, p-display, p-flyout, p-heading, p-headline, p-inline-notification, p-modal, p-multi-select, p-pin-code, p-popover, p-radio-button-wrapper, p-select, p-select-wrapper, p-switch, p-table, p-tabs, p-text, p-text-field-wrapper, p-text-list, p-textarea-wrapper) a:focus {
-            outline: 2px solid #1A44EA !important;
-            outline-offset: 0 !important
+          :is(p-accordion, p-banner, p-carousel, p-checkbox-wrapper, p-display, p-flyout, p-heading, p-headline, p-inline-notification, p-modal, p-multi-select, p-pin-code, p-popover, p-radio-button-wrapper, p-select, p-select-wrapper, p-switch, p-table, p-tabs, p-text, p-text-field-wrapper, p-text-list, p-textarea-wrapper) a::-moz-focus-inner {
+            border: 0 !important
           }
 
-          :is(p-accordion, p-banner, p-carousel, p-checkbox-wrapper, p-display, p-flyout, p-heading, p-headline, p-inline-notification, p-modal, p-multi-select, p-pin-code, p-popover, p-radio-button-wrapper, p-select, p-select-wrapper, p-switch, p-table, p-tabs, p-text, p-text-field-wrapper, p-text-list, p-textarea-wrapper) a:focus:not(:focus-visible) {
-            outline-color: transparent !important
+          :is(p-accordion, p-banner, p-carousel, p-checkbox-wrapper, p-display, p-flyout, p-heading, p-headline, p-inline-notification, p-modal, p-multi-select, p-pin-code, p-popover, p-radio-button-wrapper, p-select, p-select-wrapper, p-switch, p-table, p-tabs, p-text, p-text-field-wrapper, p-text-list, p-textarea-wrapper) a:focus {
+            outline: 0 !important
+          }
+
+          :is(p-accordion, p-banner, p-carousel, p-checkbox-wrapper, p-display, p-flyout, p-heading, p-headline, p-inline-notification, p-modal, p-multi-select, p-pin-code, p-popover, p-radio-button-wrapper, p-select, p-select-wrapper, p-switch, p-table, p-tabs, p-text, p-text-field-wrapper, p-text-list, p-textarea-wrapper) a:focus-visible {
+            outline: 2px solid #1A44EA !important;
+            outline-offset: 0 !important
           }
 
           :is(p-text-field-wrapper) input::-webkit-outer-spin-button,
@@ -1254,13 +1298,17 @@ exports[`getIndexHtml() stable storefront release (e.g. /v2/…, /v3/…) should
             border-radius: 1px !important
           }
 
-          p-tabs-bar~[tabindex="0"][role="tabpanel"]:focus {
-            outline: 2px solid #1A44EA !important;
-            outline-offset: 2px !important
+          p-tabs-bar~[tabindex="0"][role="tabpanel"]::-moz-focus-inner {
+            border: 0 !important
           }
 
-          p-tabs-bar~[tabindex="0"][role="tabpanel"]:focus:not(:focus-visible) {
-            outline-color: transparent !important
+          p-tabs-bar~[tabindex="0"][role="tabpanel"]:focus {
+            outline: 0 !important
+          }
+
+          p-tabs-bar~[tabindex="0"][role="tabpanel"]:focus-visible {
+            outline: 2px solid #1A44EA !important;
+            outline-offset: 2px !important
           }
         </style>
 
@@ -1412,13 +1460,17 @@ exports[`getIndexHtml() stable storefront release (e.g. /v2/…, /v3/…) should
         text-decoration: underline !important
       }
 
-      :is(p-accordion, p-banner, p-carousel, p-checkbox-wrapper, p-display, p-flyout, p-heading, p-headline, p-inline-notification, p-modal, p-multi-select, p-pin-code, p-popover, p-radio-button-wrapper, p-select, p-select-wrapper, p-switch, p-table, p-tabs, p-text, p-text-field-wrapper, p-text-list, p-textarea-wrapper) a:focus {
-        outline: 2px solid #1A44EA !important;
-        outline-offset: 0 !important
+      :is(p-accordion, p-banner, p-carousel, p-checkbox-wrapper, p-display, p-flyout, p-heading, p-headline, p-inline-notification, p-modal, p-multi-select, p-pin-code, p-popover, p-radio-button-wrapper, p-select, p-select-wrapper, p-switch, p-table, p-tabs, p-text, p-text-field-wrapper, p-text-list, p-textarea-wrapper) a::-moz-focus-inner {
+        border: 0 !important
       }
 
-      :is(p-accordion, p-banner, p-carousel, p-checkbox-wrapper, p-display, p-flyout, p-heading, p-headline, p-inline-notification, p-modal, p-multi-select, p-pin-code, p-popover, p-radio-button-wrapper, p-select, p-select-wrapper, p-switch, p-table, p-tabs, p-text, p-text-field-wrapper, p-text-list, p-textarea-wrapper) a:focus:not(:focus-visible) {
-        outline-color: transparent !important
+      :is(p-accordion, p-banner, p-carousel, p-checkbox-wrapper, p-display, p-flyout, p-heading, p-headline, p-inline-notification, p-modal, p-multi-select, p-pin-code, p-popover, p-radio-button-wrapper, p-select, p-select-wrapper, p-switch, p-table, p-tabs, p-text, p-text-field-wrapper, p-text-list, p-textarea-wrapper) a:focus {
+        outline: 0 !important
+      }
+
+      :is(p-accordion, p-banner, p-carousel, p-checkbox-wrapper, p-display, p-flyout, p-heading, p-headline, p-inline-notification, p-modal, p-multi-select, p-pin-code, p-popover, p-radio-button-wrapper, p-select, p-select-wrapper, p-switch, p-table, p-tabs, p-text, p-text-field-wrapper, p-text-list, p-textarea-wrapper) a:focus-visible {
+        outline: 2px solid #1A44EA !important;
+        outline-offset: 0 !important
       }
 
       :is(p-text-field-wrapper) input::-webkit-outer-spin-button,
@@ -1449,13 +1501,17 @@ exports[`getIndexHtml() stable storefront release (e.g. /v2/…, /v3/…) should
         border-radius: 1px !important
       }
 
-      p-tabs-bar~[tabindex="0"][role="tabpanel"]:focus {
-        outline: 2px solid #1A44EA !important;
-        outline-offset: 2px !important
+      p-tabs-bar~[tabindex="0"][role="tabpanel"]::-moz-focus-inner {
+        border: 0 !important
       }
 
-      p-tabs-bar~[tabindex="0"][role="tabpanel"]:focus:not(:focus-visible) {
-        outline-color: transparent !important
+      p-tabs-bar~[tabindex="0"][role="tabpanel"]:focus {
+        outline: 0 !important
+      }
+
+      p-tabs-bar~[tabindex="0"][role="tabpanel"]:focus-visible {
+        outline: 2px solid #1A44EA !important;
+        outline-offset: 2px !important
       }
     </style>
 
