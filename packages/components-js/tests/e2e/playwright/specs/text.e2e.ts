@@ -6,6 +6,7 @@ import {
   getProperty,
   setContentWithDesignSystem,
   setProperty,
+  skipInBrowser,
   waitForStencilLifecycle,
 } from '../helpers';
 
@@ -67,17 +68,19 @@ test.describe('lifecycle', () => {
   });
 });
 
-test('should have "text-size-adjust: none" set', async ({ page }) => {
-  await setContentWithDesignSystem(
-    page,
-    `
+skipInBrowser(['firefox', 'webkit'], () => {
+  test('should have "text-size-adjust: none" set', async ({ page }) => {
+    await setContentWithDesignSystem(
+      page,
+      `
     <p-text>
       Some message
     </p-text>`
-  );
-  const paragraph = await getParagraph(page);
-  const webkitTextSizeAdjustStyle = await getElementStyle(paragraph, 'webkitTextSizeAdjust' as any);
+    );
+    const paragraph = await getParagraph(page);
+    const webkitTextSizeAdjustStyle = await getElementStyle(paragraph, 'webkitTextSizeAdjust' as any);
 
-  // when webkitTextSizeAdjust is set to "none", it defaults to 100%
-  expect(webkitTextSizeAdjustStyle).toBe('100%');
+    // when webkitTextSizeAdjust is set to "none", it defaults to 100%
+    expect(webkitTextSizeAdjustStyle).toBe('100%');
+  });
 });

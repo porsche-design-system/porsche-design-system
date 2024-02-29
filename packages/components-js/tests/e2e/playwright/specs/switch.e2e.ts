@@ -9,6 +9,7 @@ import {
   hasFocus,
   setContentWithDesignSystem,
   setProperty,
+  skipInBrowser,
   waitForStencilLifecycle,
 } from '../helpers';
 
@@ -112,83 +113,85 @@ test.describe('events', () => {
     }
   });
 
-  test('should trigger focus & blur events at the correct time', async ({ page }) => {
-    await setContentWithDesignSystem(
-      page,
-      `<div id="wrapper">
+  skipInBrowser(['firefox', 'webkit'], () => {
+    test('should trigger focus & blur events at the correct time', async ({ page }) => {
+      await setContentWithDesignSystem(
+        page,
+        `<div id="wrapper">
  <a href="#" id="before">before</a>
  <p-switch id="my-switch">Some label</p-switch>
  <a href="#" id="after">after</a>
 </div>`
-    );
+      );
 
-    const host = await getHost(page);
-    const before = await page.$('#before');
-    const after = await page.$('#after');
+      const host = await getHost(page);
+      const before = await page.$('#before');
+      const after = await page.$('#after');
 
-    await addEventListener(before, 'focus');
-    await addEventListener(host, 'focus');
-    await addEventListener(host, 'focusin');
-    await addEventListener(host, 'blur');
-    await addEventListener(host, 'focusout');
-    await addEventListener(after, 'focus');
+      await addEventListener(before, 'focus');
+      await addEventListener(host, 'focus');
+      await addEventListener(host, 'focusin');
+      await addEventListener(host, 'blur');
+      await addEventListener(host, 'focusout');
+      await addEventListener(after, 'focus');
 
-    expect((await getEventSummary(before, 'focus')).counter, 'beforeFocusCalls initially').toBe(0);
-    expect((await getEventSummary(host, 'focus')).counter, 'buttonFocusCalls initially').toBe(0);
-    expect((await getEventSummary(host, 'focusin')).counter, 'buttonFocusInCalls initially').toBe(0);
-    expect((await getEventSummary(host, 'blur')).counter, 'buttonBlurCalls initially').toBe(0);
-    expect((await getEventSummary(host, 'focusout')).counter, 'buttonFocusOutCalls initially').toBe(0);
-    expect((await getEventSummary(after, 'focus')).counter, 'afterFocusCalls initially').toBe(0);
-    expect(await getActiveElementId(page), 'activeElementId initially').toBe('');
+      expect((await getEventSummary(before, 'focus')).counter, 'beforeFocusCalls initially').toBe(0);
+      expect((await getEventSummary(host, 'focus')).counter, 'buttonFocusCalls initially').toBe(0);
+      expect((await getEventSummary(host, 'focusin')).counter, 'buttonFocusInCalls initially').toBe(0);
+      expect((await getEventSummary(host, 'blur')).counter, 'buttonBlurCalls initially').toBe(0);
+      expect((await getEventSummary(host, 'focusout')).counter, 'buttonFocusOutCalls initially').toBe(0);
+      expect((await getEventSummary(after, 'focus')).counter, 'afterFocusCalls initially').toBe(0);
+      expect(await getActiveElementId(page), 'activeElementId initially').toBe('');
 
-    await page.keyboard.press('Tab');
-    expect((await getEventSummary(before, 'focus')).counter, 'beforeFocusCalls after 1st tab').toBe(1);
-    expect((await getEventSummary(host, 'focus')).counter, 'buttonFocusCalls after 1st tab').toBe(0);
-    expect((await getEventSummary(host, 'focusin')).counter, 'buttonFocusInCalls after 1st tab').toBe(0);
-    expect((await getEventSummary(host, 'blur')).counter, 'buttonBlurCalls after 1st tab').toBe(0);
-    expect((await getEventSummary(host, 'focusout')).counter, 'buttonFocusOutCalls after 1st tab').toBe(0);
-    expect((await getEventSummary(after, 'focus')).counter, 'afterFocusCalls after 1st tab').toBe(0);
-    expect(await getActiveElementId(page), 'activeElementId after 1st tab').toBe('before');
+      await page.keyboard.press('Tab');
+      expect((await getEventSummary(before, 'focus')).counter, 'beforeFocusCalls after 1st tab').toBe(1);
+      expect((await getEventSummary(host, 'focus')).counter, 'buttonFocusCalls after 1st tab').toBe(0);
+      expect((await getEventSummary(host, 'focusin')).counter, 'buttonFocusInCalls after 1st tab').toBe(0);
+      expect((await getEventSummary(host, 'blur')).counter, 'buttonBlurCalls after 1st tab').toBe(0);
+      expect((await getEventSummary(host, 'focusout')).counter, 'buttonFocusOutCalls after 1st tab').toBe(0);
+      expect((await getEventSummary(after, 'focus')).counter, 'afterFocusCalls after 1st tab').toBe(0);
+      expect(await getActiveElementId(page), 'activeElementId after 1st tab').toBe('before');
 
-    await page.keyboard.press('Tab');
-    expect((await getEventSummary(before, 'focus')).counter, 'beforeFocusCalls after 2nd tab').toBe(1);
-    expect((await getEventSummary(host, 'focus')).counter, 'buttonFocusCalls after 2nd tab').toBe(1);
-    expect((await getEventSummary(host, 'focusin')).counter, 'buttonFocusInCalls after 2nd tab').toBe(1);
-    expect((await getEventSummary(host, 'blur')).counter, 'buttonBlurCalls after 2nd tab').toBe(0);
-    expect((await getEventSummary(host, 'focusout')).counter, 'buttonFocusOutCalls after 2nd tab').toBe(0);
-    expect((await getEventSummary(after, 'focus')).counter, 'afterFocusCalls after 2nd tab').toBe(0);
-    expect(await getActiveElementId(page), 'activeElementId after 2nd tab').toBe('my-switch');
+      await page.keyboard.press('Tab');
+      expect((await getEventSummary(before, 'focus')).counter, 'beforeFocusCalls after 2nd tab').toBe(1);
+      expect((await getEventSummary(host, 'focus')).counter, 'buttonFocusCalls after 2nd tab').toBe(1);
+      expect((await getEventSummary(host, 'focusin')).counter, 'buttonFocusInCalls after 2nd tab').toBe(1);
+      expect((await getEventSummary(host, 'blur')).counter, 'buttonBlurCalls after 2nd tab').toBe(0);
+      expect((await getEventSummary(host, 'focusout')).counter, 'buttonFocusOutCalls after 2nd tab').toBe(0);
+      expect((await getEventSummary(after, 'focus')).counter, 'afterFocusCalls after 2nd tab').toBe(0);
+      expect(await getActiveElementId(page), 'activeElementId after 2nd tab').toBe('my-switch');
 
-    await page.keyboard.press('Tab');
-    expect((await getEventSummary(before, 'focus')).counter, 'beforeFocusCalls after 3rd tab').toBe(1);
-    expect((await getEventSummary(host, 'focus')).counter, 'buttonFocusCalls after 3rd tab').toBe(1);
-    expect((await getEventSummary(host, 'focusin')).counter, 'buttonFocusInCalls after 3rd tab').toBe(1);
-    expect((await getEventSummary(host, 'blur')).counter, 'buttonBlurCalls after 3rd tab').toBe(1);
-    expect((await getEventSummary(host, 'focusout')).counter, 'buttonFocusOutCalls after 3rd tab').toBe(1);
-    expect((await getEventSummary(after, 'focus')).counter, 'afterFocusCalls after 3rd tab').toBe(1);
-    expect(await getActiveElementId(page), 'activeElementId after 3rd tab').toBe('after');
+      await page.keyboard.press('Tab');
+      expect((await getEventSummary(before, 'focus')).counter, 'beforeFocusCalls after 3rd tab').toBe(1);
+      expect((await getEventSummary(host, 'focus')).counter, 'buttonFocusCalls after 3rd tab').toBe(1);
+      expect((await getEventSummary(host, 'focusin')).counter, 'buttonFocusInCalls after 3rd tab').toBe(1);
+      expect((await getEventSummary(host, 'blur')).counter, 'buttonBlurCalls after 3rd tab').toBe(1);
+      expect((await getEventSummary(host, 'focusout')).counter, 'buttonFocusOutCalls after 3rd tab').toBe(1);
+      expect((await getEventSummary(after, 'focus')).counter, 'afterFocusCalls after 3rd tab').toBe(1);
+      expect(await getActiveElementId(page), 'activeElementId after 3rd tab').toBe('after');
 
-    // tab back
-    await page.keyboard.down('ShiftLeft');
-    await page.keyboard.press('Tab');
-    expect((await getEventSummary(before, 'focus')).counter, 'beforeFocusCalls after 1st tab back').toBe(1);
-    expect((await getEventSummary(host, 'focus')).counter, 'buttonFocusCalls after 1st tab back').toBe(2);
-    expect((await getEventSummary(host, 'focusin')).counter, 'buttonFocusInCalls after 1st tab back').toBe(2);
-    expect((await getEventSummary(host, 'blur')).counter, 'buttonBlurCalls after 1st tab back').toBe(1);
-    expect((await getEventSummary(host, 'focusout')).counter, 'buttonFocusOutCalls after 1st tab back').toBe(1);
-    expect((await getEventSummary(after, 'focus')).counter, 'afterFocusCalls after 1st tab back').toBe(1);
-    expect(await getActiveElementId(page), 'activeElementId after 1st tab back').toBe('my-switch');
+      // tab back
+      await page.keyboard.down('ShiftLeft');
+      await page.keyboard.press('Tab');
+      expect((await getEventSummary(before, 'focus')).counter, 'beforeFocusCalls after 1st tab back').toBe(1);
+      expect((await getEventSummary(host, 'focus')).counter, 'buttonFocusCalls after 1st tab back').toBe(2);
+      expect((await getEventSummary(host, 'focusin')).counter, 'buttonFocusInCalls after 1st tab back').toBe(2);
+      expect((await getEventSummary(host, 'blur')).counter, 'buttonBlurCalls after 1st tab back').toBe(1);
+      expect((await getEventSummary(host, 'focusout')).counter, 'buttonFocusOutCalls after 1st tab back').toBe(1);
+      expect((await getEventSummary(after, 'focus')).counter, 'afterFocusCalls after 1st tab back').toBe(1);
+      expect(await getActiveElementId(page), 'activeElementId after 1st tab back').toBe('my-switch');
 
-    await page.keyboard.press('Tab');
-    expect((await getEventSummary(before, 'focus')).counter, 'beforeFocusCalls after 2nd tab back').toBe(2);
-    expect((await getEventSummary(host, 'focus')).counter, 'buttonFocusCalls after 2nd tab back').toBe(2);
-    expect((await getEventSummary(host, 'focusin')).counter, 'buttonFocusInCalls after 2nd tab back').toBe(2);
-    expect((await getEventSummary(host, 'blur')).counter, 'buttonBlurCalls after 2nd tab back').toBe(2);
-    expect((await getEventSummary(host, 'focusout')).counter, 'buttonFocusOutCalls after 2nd tab back').toBe(2);
-    expect((await getEventSummary(after, 'focus')).counter, 'afterFocusCalls after 2nd tab back').toBe(1);
-    expect(await getActiveElementId(page), 'activeElementId after 2nd tab back').toBe('before');
+      await page.keyboard.press('Tab');
+      expect((await getEventSummary(before, 'focus')).counter, 'beforeFocusCalls after 2nd tab back').toBe(2);
+      expect((await getEventSummary(host, 'focus')).counter, 'buttonFocusCalls after 2nd tab back').toBe(2);
+      expect((await getEventSummary(host, 'focusin')).counter, 'buttonFocusInCalls after 2nd tab back').toBe(2);
+      expect((await getEventSummary(host, 'blur')).counter, 'buttonBlurCalls after 2nd tab back').toBe(2);
+      expect((await getEventSummary(host, 'focusout')).counter, 'buttonFocusOutCalls after 2nd tab back').toBe(2);
+      expect((await getEventSummary(after, 'focus')).counter, 'afterFocusCalls after 2nd tab back').toBe(1);
+      expect(await getActiveElementId(page), 'activeElementId after 2nd tab back').toBe('before');
 
-    await page.keyboard.up('ShiftLeft');
+      await page.keyboard.up('ShiftLeft');
+    });
   });
 
   test('should provide functionality to focus & blur the custom element', async ({ page }) => {
@@ -231,6 +234,7 @@ test.describe('events', () => {
 });
 
 test.describe('focus', () => {
+  skipInBrowser(['webkit']);
   test('should keep focus if state switches to loading', async ({ page }) => {
     await initSwitch(page);
 

@@ -1,6 +1,6 @@
 import { devices, expect, test } from '@playwright/test';
 import { Page } from 'playwright';
-import { setContentWithDesignSystem } from '../helpers';
+import { setContentWithDesignSystem, skipInBrowser } from '../helpers';
 
 const dropdownSelector = 'p-select-wrapper p-select-wrapper-dropdown';
 

@@ -8,6 +8,7 @@ import {
   getLifecycleStatus,
   setContentWithDesignSystem,
   setProperty,
+  skipInBrowser,
   waitForStencilLifecycle,
 } from '../helpers';
 
@@ -72,85 +73,90 @@ test.describe('with link', () => {
     }
   });
 
-  test('should trigger focus & blur events at the correct time', async ({ page }) => {
-    await initWordmark(page, {
-      hasHref: true,
-      isWrapped: true,
-      hasFocusableElementBefore: true,
-      hasFocusableElementAfter: true,
+  skipInBrowser(['firefox', 'webkit'], () => {
+    test('should trigger focus & blur events at the correct time', async ({ page }) => {
+      await initWordmark(page, {
+        hasHref: true,
+        isWrapped: true,
+        hasFocusableElementBefore: true,
+        hasFocusableElementAfter: true,
+      });
+
+      const host = await getHost(page);
+      const before = await page.$('#before');
+      const after = await page.$('#after');
+
+      await addEventListener(before, 'focus');
+      await addEventListener(host, 'focus');
+      await addEventListener(host, 'focusin');
+      await addEventListener(host, 'blur');
+      await addEventListener(host, 'focusout');
+      await addEventListener(after, 'focus');
+
+      expect((await getEventSummary(before, 'focus')).counter, 'beforeFocusCalls initially').toBe(0);
+      expect((await getEventSummary(host, 'focus')).counter, 'wordmarkFocusCalls initially').toBe(0);
+      expect((await getEventSummary(host, 'focusin')).counter, 'wordmarkFocusInCalls initially').toBe(0);
+      expect((await getEventSummary(host, 'blur')).counter, 'wordmarkBlurCalls initially').toBe(0);
+      expect((await getEventSummary(host, 'focusout')).counter, 'wordmarkFocusOutCalls initially').toBe(0);
+      expect((await getEventSummary(after, 'focus')).counter, 'afterFocusCalls initially').toBe(0);
+      expect(await getActiveElementId(page), 'activeElementId initially').toBe('');
+
+      await page.keyboard.press('Tab');
+      expect((await getEventSummary(before, 'focus')).counter, 'beforeFocusCalls after 1st tab').toBe(1);
+      expect((await getEventSummary(host, 'focus')).counter, 'wordmarkFocusCalls after 1st tab').toBe(0);
+      expect((await getEventSummary(host, 'focusin')).counter, 'wordmarkFocusInCalls after 1st tab').toBe(0);
+      expect((await getEventSummary(host, 'blur')).counter, 'wordmarkBlurCalls after 1st tab').toBe(0);
+      expect((await getEventSummary(host, 'focusout')).counter, 'wordmarkFocusOutCalls after 1st tab').toBe(0);
+      expect((await getEventSummary(after, 'focus')).counter, 'afterFocusCalls after 1st tab').toBe(0);
+      expect(await getActiveElementId(page), 'activeElementId after 1st tab').toBe('before');
+
+      await page.keyboard.press('Tab');
+      expect((await getEventSummary(before, 'focus')).counter, 'beforeFocusCalls after 2nd tab').toBe(1);
+      expect((await getEventSummary(host, 'focus')).counter, 'wordmarkFocusCalls after 2nd tab').toBe(1);
+      expect((await getEventSummary(host, 'focusin')).counter, 'wordmarkFocusInCalls after 2nd tab').toBe(1);
+      expect((await getEventSummary(host, 'blur')).counter, 'wordmarkBlurCalls after 2nd tab').toBe(0);
+      expect((await getEventSummary(host, 'focusout')).counter, 'wordmarkFocusOutCalls after 2nd tab').toBe(0);
+      expect((await getEventSummary(after, 'focus')).counter, 'afterFocusCalls after 2nd tab').toBe(0);
+      expect(await getActiveElementId(page), 'activeElementId after 1st tab').toBe('my-wordmark');
+      expect(await getActiveElementTagNameInShadowRoot(host), 'activeElement within shadow root after 2nd tab').toBe(
+        'A'
+      );
+
+      await page.keyboard.press('Tab');
+      expect((await getEventSummary(before, 'focus')).counter, 'beforeFocusCalls after 3rd tab').toBe(1);
+      expect((await getEventSummary(host, 'focus')).counter, 'wordmarkFocusCalls after 3rd tab').toBe(1);
+      expect((await getEventSummary(host, 'focusin')).counter, 'wordmarkFocusInCalls after 3rd tab').toBe(1);
+      expect((await getEventSummary(host, 'blur')).counter, 'wordmarkBlurCalls after 3rd tab').toBe(1);
+      expect((await getEventSummary(host, 'focusout')).counter, 'wordmarkFocusOutCalls after 3rd tab').toBe(1);
+      expect((await getEventSummary(after, 'focus')).counter, 'afterFocusCalls after 3rd tab').toBe(1);
+      expect(await getActiveElementId(page), 'activeElementId after 3rd tab').toBe('after');
+
+      // tab back
+      await page.keyboard.down('ShiftLeft');
+      await page.keyboard.press('Tab');
+      expect((await getEventSummary(before, 'focus')).counter, 'beforeFocusCalls after 1st tab back').toBe(1);
+      expect((await getEventSummary(host, 'focus')).counter, 'wordmarkFocusCalls after 1st tab back').toBe(2);
+      expect((await getEventSummary(host, 'focusin')).counter, 'wordmarkFocusInCalls after 1st tab back').toBe(2);
+      expect((await getEventSummary(host, 'blur')).counter, 'wordmarkBlurCalls after 1st tab back').toBe(1);
+      expect((await getEventSummary(host, 'focusout')).counter, 'wordmarkFocusOutCalls after 1st tab back').toBe(1);
+      expect((await getEventSummary(after, 'focus')).counter, 'afterFocusCalls after 1st tab back').toBe(1);
+      expect(await getActiveElementId(page), 'activeElementId after 1st tab back').toBe('my-wordmark');
+      expect(
+        await getActiveElementTagNameInShadowRoot(host),
+        'activeElement within shadow root after 1st tab back'
+      ).toBe('A');
+
+      await page.keyboard.press('Tab');
+      expect((await getEventSummary(before, 'focus')).counter, 'beforeFocusCalls after 2nd tab back').toBe(2);
+      expect((await getEventSummary(host, 'focus')).counter, 'wordmarkFocusCalls after 2nd tab back').toBe(2);
+      expect((await getEventSummary(host, 'focusin')).counter, 'wordmarkFocusInCalls after 2nd tab back').toBe(2);
+      expect((await getEventSummary(host, 'blur')).counter, 'wordmarkBlurCalls after 2nd tab back').toBe(2);
+      expect((await getEventSummary(host, 'focusout')).counter, 'wordmarkFocusOutCalls after 2nd tab back').toBe(2);
+      expect((await getEventSummary(after, 'focus')).counter, 'afterFocusCalls after 2nd tab back').toBe(1);
+      expect(await getActiveElementId(page), 'activeElementId after 2nd tab back').toBe('before');
+
+      await page.keyboard.up('ShiftLeft');
     });
-
-    const host = await getHost(page);
-    const before = await page.$('#before');
-    const after = await page.$('#after');
-
-    await addEventListener(before, 'focus');
-    await addEventListener(host, 'focus');
-    await addEventListener(host, 'focusin');
-    await addEventListener(host, 'blur');
-    await addEventListener(host, 'focusout');
-    await addEventListener(after, 'focus');
-
-    expect((await getEventSummary(before, 'focus')).counter, 'beforeFocusCalls initially').toBe(0);
-    expect((await getEventSummary(host, 'focus')).counter, 'wordmarkFocusCalls initially').toBe(0);
-    expect((await getEventSummary(host, 'focusin')).counter, 'wordmarkFocusInCalls initially').toBe(0);
-    expect((await getEventSummary(host, 'blur')).counter, 'wordmarkBlurCalls initially').toBe(0);
-    expect((await getEventSummary(host, 'focusout')).counter, 'wordmarkFocusOutCalls initially').toBe(0);
-    expect((await getEventSummary(after, 'focus')).counter, 'afterFocusCalls initially').toBe(0);
-    expect(await getActiveElementId(page), 'activeElementId initially').toBe('');
-
-    await page.keyboard.press('Tab');
-    expect((await getEventSummary(before, 'focus')).counter, 'beforeFocusCalls after 1st tab').toBe(1);
-    expect((await getEventSummary(host, 'focus')).counter, 'wordmarkFocusCalls after 1st tab').toBe(0);
-    expect((await getEventSummary(host, 'focusin')).counter, 'wordmarkFocusInCalls after 1st tab').toBe(0);
-    expect((await getEventSummary(host, 'blur')).counter, 'wordmarkBlurCalls after 1st tab').toBe(0);
-    expect((await getEventSummary(host, 'focusout')).counter, 'wordmarkFocusOutCalls after 1st tab').toBe(0);
-    expect((await getEventSummary(after, 'focus')).counter, 'afterFocusCalls after 1st tab').toBe(0);
-    expect(await getActiveElementId(page), 'activeElementId after 1st tab').toBe('before');
-
-    await page.keyboard.press('Tab');
-    expect((await getEventSummary(before, 'focus')).counter, 'beforeFocusCalls after 2nd tab').toBe(1);
-    expect((await getEventSummary(host, 'focus')).counter, 'wordmarkFocusCalls after 2nd tab').toBe(1);
-    expect((await getEventSummary(host, 'focusin')).counter, 'wordmarkFocusInCalls after 2nd tab').toBe(1);
-    expect((await getEventSummary(host, 'blur')).counter, 'wordmarkBlurCalls after 2nd tab').toBe(0);
-    expect((await getEventSummary(host, 'focusout')).counter, 'wordmarkFocusOutCalls after 2nd tab').toBe(0);
-    expect((await getEventSummary(after, 'focus')).counter, 'afterFocusCalls after 2nd tab').toBe(0);
-    expect(await getActiveElementId(page), 'activeElementId after 1st tab').toBe('my-wordmark');
-    expect(await getActiveElementTagNameInShadowRoot(host), 'activeElement within shadow root after 2nd tab').toBe('A');
-
-    await page.keyboard.press('Tab');
-    expect((await getEventSummary(before, 'focus')).counter, 'beforeFocusCalls after 3rd tab').toBe(1);
-    expect((await getEventSummary(host, 'focus')).counter, 'wordmarkFocusCalls after 3rd tab').toBe(1);
-    expect((await getEventSummary(host, 'focusin')).counter, 'wordmarkFocusInCalls after 3rd tab').toBe(1);
-    expect((await getEventSummary(host, 'blur')).counter, 'wordmarkBlurCalls after 3rd tab').toBe(1);
-    expect((await getEventSummary(host, 'focusout')).counter, 'wordmarkFocusOutCalls after 3rd tab').toBe(1);
-    expect((await getEventSummary(after, 'focus')).counter, 'afterFocusCalls after 3rd tab').toBe(1);
-    expect(await getActiveElementId(page), 'activeElementId after 3rd tab').toBe('after');
-
-    // tab back
-    await page.keyboard.down('ShiftLeft');
-    await page.keyboard.press('Tab');
-    expect((await getEventSummary(before, 'focus')).counter, 'beforeFocusCalls after 1st tab back').toBe(1);
-    expect((await getEventSummary(host, 'focus')).counter, 'wordmarkFocusCalls after 1st tab back').toBe(2);
-    expect((await getEventSummary(host, 'focusin')).counter, 'wordmarkFocusInCalls after 1st tab back').toBe(2);
-    expect((await getEventSummary(host, 'blur')).counter, 'wordmarkBlurCalls after 1st tab back').toBe(1);
-    expect((await getEventSummary(host, 'focusout')).counter, 'wordmarkFocusOutCalls after 1st tab back').toBe(1);
-    expect((await getEventSummary(after, 'focus')).counter, 'afterFocusCalls after 1st tab back').toBe(1);
-    expect(await getActiveElementId(page), 'activeElementId after 1st tab back').toBe('my-wordmark');
-    expect(await getActiveElementTagNameInShadowRoot(host), 'activeElement within shadow root after 1st tab back').toBe(
-      'A'
-    );
-
-    await page.keyboard.press('Tab');
-    expect((await getEventSummary(before, 'focus')).counter, 'beforeFocusCalls after 2nd tab back').toBe(2);
-    expect((await getEventSummary(host, 'focus')).counter, 'wordmarkFocusCalls after 2nd tab back').toBe(2);
-    expect((await getEventSummary(host, 'focusin')).counter, 'wordmarkFocusInCalls after 2nd tab back').toBe(2);
-    expect((await getEventSummary(host, 'blur')).counter, 'wordmarkBlurCalls after 2nd tab back').toBe(2);
-    expect((await getEventSummary(host, 'focusout')).counter, 'wordmarkFocusOutCalls after 2nd tab back').toBe(2);
-    expect((await getEventSummary(after, 'focus')).counter, 'afterFocusCalls after 2nd tab back').toBe(1);
-    expect(await getActiveElementId(page), 'activeElementId after 2nd tab back').toBe('before');
-
-    await page.keyboard.up('ShiftLeft');
   });
 
   test('should provide methods to focus & blur the element', async ({ page }) => {

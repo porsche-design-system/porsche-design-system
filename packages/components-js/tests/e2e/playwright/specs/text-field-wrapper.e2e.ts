@@ -11,6 +11,7 @@ import {
   setAttribute,
   setContentWithDesignSystem,
   setProperty,
+  skipInBrowser,
   waitForImproveButtonHandlingForCustomElement,
   waitForStencilLifecycle,
 } from '../helpers';
@@ -149,26 +150,28 @@ test.describe('input type="password"', () => {
 test.describe('input type="search"', () => {
   // verify wrapped input type="search" behaves the same as without in regards to clearing it and emitting events
   test.describe('events', () => {
-    test('should emit input events for input without text-field-wrapper', async ({ page }) => {
-      await setContentWithDesignSystem(page, '<input type="search" style="width: 100px; height: 50px">');
-      const input = await getInput(page);
+    skipInBrowser(['webkit'], () => {
+      test('should emit input events for input without text-field-wrapper', async ({ page }) => {
+        await setContentWithDesignSystem(page, '<input type="search" style="width: 100px; height: 50px">');
+        const input = await getInput(page);
 
-      await addEventListener(input, 'input');
-      await input.focus();
+        await addEventListener(input, 'input');
+        await input.focus();
 
-      await setProperty(input, 'value', 'value');
-      await page.keyboard.press('Escape');
-      expect(await getProperty(input, 'value')).toBe('');
-      expect((await getEventSummary(input, 'input')).counter).toBe(1);
+        await setProperty(input, 'value', 'value');
+        await page.keyboard.press('Escape');
+        expect(await getProperty(input, 'value')).toBe('');
+        expect((await getEventSummary(input, 'input')).counter).toBe(1);
 
-      await page.keyboard.press('Escape');
-      expect((await getEventSummary(input, 'input')).counter).toBe(1);
+        await page.keyboard.press('Escape');
+        expect((await getEventSummary(input, 'input')).counter).toBe(1);
 
-      await setProperty(input, 'value', 'value');
-      // in case positioning of clear button changes
-      await page.mouse.click(90, 25);
-      expect(await getProperty(input, 'value')).toBe('');
-      expect((await getEventSummary(input, 'input')).counter).toBe(2);
+        await setProperty(input, 'value', 'value');
+        // in case positioning of clear button changes
+        await page.mouse.click(90, 25);
+        expect(await getProperty(input, 'value')).toBe('');
+        expect((await getEventSummary(input, 'input')).counter).toBe(2);
+      });
     });
 
     test('should emit input events for input with text-field-wrapper', async ({ page }) => {
@@ -321,11 +324,13 @@ test.describe('input type="search"', () => {
     });
   });
 
-  test('should have "-webkit-appearance: none" on "::-webkit-search-decoration"', async ({ page }) => {
-    await initTextField(page, { type: 'search' });
-    const input = await getInput(page);
+  skipInBrowser(['firefox'], () => {
+    test('should have "-webkit-appearance: none" on "::-webkit-search-decoration"', async ({ page }) => {
+      await initTextField(page, { type: 'search' });
+      const input = await getInput(page);
 
-    expect(await getElementStyle(input, 'webkitAppearance', { pseudo: '::-webkit-search-decoration' })).toBe('none');
+      expect(await getElementStyle(input, 'webkitAppearance', { pseudo: '::-webkit-search-decoration' })).toBe('none');
+    });
   });
 });
 

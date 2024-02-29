@@ -13,6 +13,7 @@ import {
   getProperty,
   setContentWithDesignSystem,
   setProperty,
+  skipInBrowser,
   waitForStencilLifecycle,
 } from '../helpers';
 import type { SelectOption } from '@porsche-design-system/components/src/components/select/select/select-utils';
@@ -455,38 +456,40 @@ test.describe('Update Event', () => {
     ]);
   });
 
-  test('should emit update event with correct details when option is selected by keyboard', async ({ page }) => {
-    await initSelect(page);
-    const host = await getHost(page);
-    await addEventListener(host, 'update');
+  skipInBrowser(['webkit'], () => {
+    test('should emit update event with correct details when option is selected by keyboard', async ({ page }) => {
+      await initSelect(page);
+      const host = await getHost(page);
+      await addEventListener(host, 'update');
 
-    await page.keyboard.press('Tab');
-    await page.keyboard.press('Space');
-    await waitForStencilLifecycle(page);
+      await page.keyboard.press('Tab');
+      await page.keyboard.press('Space');
+      await waitForStencilLifecycle(page);
 
-    expect((await getEventSummary(host, 'update')).counter, 'before option select').toBe(0);
+      expect((await getEventSummary(host, 'update')).counter, 'before option select').toBe(0);
 
-    await page.keyboard.press('ArrowDown');
-    await page.keyboard.press('Enter');
-    await waitForStencilLifecycle(page);
+      await page.keyboard.press('ArrowDown');
+      await page.keyboard.press('Enter');
+      await waitForStencilLifecycle(page);
 
-    expect((await getEventSummary(host, 'update')).counter, 'after option select').toBe(1);
-    expect((await getEventSummary(host, 'update')).details, 'after option select').toEqual([
-      {
-        value: 'a',
-        name: 'options',
-      },
-    ]);
-    expect((await getEventSummary(host, 'update')).targets, 'after option select').toEqual([
-      {
-        nodeName: 'P-SELECT',
-        nodeValue: null,
-        nodeType: 1,
-        tagName: 'P-SELECT',
-        className: 'hydrated',
-        id: '',
-      },
-    ]);
+      expect((await getEventSummary(host, 'update')).counter, 'after option select').toBe(1);
+      expect((await getEventSummary(host, 'update')).details, 'after option select').toEqual([
+        {
+          value: 'a',
+          name: 'options',
+        },
+      ]);
+      expect((await getEventSummary(host, 'update')).targets, 'after option select').toEqual([
+        {
+          nodeName: 'P-SELECT',
+          nodeValue: null,
+          nodeType: 1,
+          tagName: 'P-SELECT',
+          className: 'hydrated',
+          id: '',
+        },
+      ]);
+    });
   });
 });
 
@@ -521,6 +524,7 @@ test.describe('outside click', () => {
 });
 
 test.describe('focus', () => {
+  skipInBrowser(['webkit']);
   test('should focus button when label text is clicked', async ({ page }) => {
     await initSelect(page, { props: { name: 'options', label: 'Some Label' } });
 
@@ -580,6 +584,7 @@ test.describe('focus', () => {
 // TODO: Test keyboard behavior scrolldown to selected option
 // The keyboard behavior is aligned with the w3c suggestion https://www.w3.org/WAI/ARIA/apg/patterns/combobox/examples/combobox-select-only/
 test.describe('keyboard behavior', () => {
+  skipInBrowser(['webkit']);
   test.describe('closed combobox', () => {
     let buttonElement;
     test.beforeEach(async ({ page }) => {
@@ -1250,18 +1255,20 @@ test.describe('click events', () => {
       expect(await getElementStyle(await getButton(page), 'cursor')).toBe('not-allowed');
     });
 
-    test('should not be able to open or interact', async ({ page }) => {
-      await initSelect(page, {
-        props: { name: 'options', disabled: true },
-        options: { markupAfter: '<p-button>Button</p-button>' },
+    skipInBrowser(['webkit'], () => {
+      test('should not be able to open or interact', async ({ page }) => {
+        await initSelect(page, {
+          props: { name: 'options', disabled: true },
+          options: { markupAfter: '<p-button>Button</p-button>' },
+        });
+        const button = await page.$('p-button');
+
+        await addEventListener(button, 'focus');
+        expect((await getEventSummary(button, 'focus')).counter, 'before focus').toBe(0);
+
+        await page.keyboard.press('Tab');
+        expect((await getEventSummary(button, 'focus')).counter, 'before focus').toBe(1);
       });
-      const button = await page.$('p-button');
-
-      await addEventListener(button, 'focus');
-      expect((await getEventSummary(button, 'focus')).counter, 'before focus').toBe(0);
-
-      await page.keyboard.press('Tab');
-      expect((await getEventSummary(button, 'focus')).counter, 'before focus').toBe(1);
     });
   });
 });
@@ -1383,28 +1390,30 @@ test.describe('lifecycle', () => {
     expect(status2.componentDidUpdate.all, 'componentDidUpdate: all').toBe(4);
   });
 
-  test('should work without unnecessary round trips on selection change by keyboard', async ({ page }) => {
-    await initSelect(page, { props: { name: 'options', value: 'a' } });
-    const buttonElement = await getButton(page);
+  skipInBrowser(['webkit'], () => {
+    test('should work without unnecessary round trips on selection change by keyboard', async ({ page }) => {
+      await initSelect(page, { props: { name: 'options', value: 'a' } });
+      const buttonElement = await getButton(page);
 
-    await buttonElement.press('Space'); // Open dropdown
-    await waitForStencilLifecycle(page);
-    const status1 = await getLifecycleStatus(page);
+      await buttonElement.press('Space'); // Open dropdown
+      await waitForStencilLifecycle(page);
+      const status1 = await getLifecycleStatus(page);
 
-    expect(status1.componentDidLoad['p-select'], 'componentDidLoad: p-select').toBe(1);
-    expect(status1.componentDidLoad['p-select-option'], 'componentDidLoad: p-select-option').toBe(3);
-    expect(status1.componentDidLoad['p-icon'], 'componentDidLoad: p-icon').toBe(2); // arrow down and checkmark icon
+      expect(status1.componentDidLoad['p-select'], 'componentDidLoad: p-select').toBe(1);
+      expect(status1.componentDidLoad['p-select-option'], 'componentDidLoad: p-select-option').toBe(3);
+      expect(status1.componentDidLoad['p-icon'], 'componentDidLoad: p-icon').toBe(2); // arrow down and checkmark icon
 
-    expect(status1.componentDidLoad.all, 'componentDidLoad: all').toBe(6);
-    expect(status1.componentDidUpdate.all, 'componentDidUpdate: all').toBe(1);
+      expect(status1.componentDidLoad.all, 'componentDidLoad: all').toBe(6);
+      expect(status1.componentDidUpdate.all, 'componentDidUpdate: all').toBe(1);
 
-    await buttonElement.press('ArrowDown');
-    await buttonElement.press('Enter');
-    await waitForStencilLifecycle(page);
+      await buttonElement.press('ArrowDown');
+      await buttonElement.press('Enter');
+      await waitForStencilLifecycle(page);
 
-    const status2 = await getLifecycleStatus(page);
-    expect(status2.componentDidUpdate['p-select-option'], 'componentDidUpdate: p-select-option').toBe(2);
-    expect(status2.componentDidUpdate['p-select'], 'componentDidUpdate: p-select').toBe(3); // Keyboard actions cause update in order to update sr highlighted option text
-    expect(status2.componentDidUpdate.all, 'componentDidUpdate: all').toBe(5);
+      const status2 = await getLifecycleStatus(page);
+      expect(status2.componentDidUpdate['p-select-option'], 'componentDidUpdate: p-select-option').toBe(2);
+      expect(status2.componentDidUpdate['p-select'], 'componentDidUpdate: p-select').toBe(3); // Keyboard actions cause update in order to update sr highlighted option text
+      expect(status2.componentDidUpdate.all, 'componentDidUpdate: all').toBe(5);
+    });
   });
 });

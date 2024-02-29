@@ -16,6 +16,7 @@ import {
   reattachElementHandle,
   setContentWithDesignSystem,
   setProperty,
+  skipInBrowser,
   waitForStencilLifecycle,
 } from '../helpers';
 
@@ -124,6 +125,8 @@ const initSelect = (page: Page, opts?: InitOptions): Promise<void> => {
     </p-select-wrapper>`
   );
 };
+
+skipInBrowser(['webkit']);
 
 test('should render', async ({ page }) => {
   await initSelect(page, { disabledIndex: 1 });

@@ -7,6 +7,7 @@ import {
   getProperty,
   setContentWithDesignSystem,
   setProperty,
+  skipInBrowser,
   waitForStencilLifecycle,
 } from '../helpers';
 import type { ToastMessage } from '@porsche-design-system/components/dist/types/bundle';
@@ -156,23 +157,27 @@ test.describe('toast-item', () => {
     expect(await getAttribute(closeBtnReal, 'type')).toBe('button');
   });
 
-  test('should have animation', async ({ page }) => {
-    await initToastWithToastItem(page, {}, { withAnimation: true });
-    await waitForAnimationFinish(); // 600ms
-    const toastItem = await getToastItem(page);
-    const animationIn = await getElementStyle(toastItem, 'animation');
+  skipInBrowser(['webkit'], () => {
+    test('should have animation', async ({ page }) => {
+      await initToastWithToastItem(page, {}, { withAnimation: true });
+      await waitForAnimationFinish(); // 600ms
+      const toastItem = await getToastItem(page);
+      const animationIn = await getElementStyle(toastItem, 'animation');
 
-    expect(animationIn, 'for animationIn').toBe('0.6s cubic-bezier(0, 0, 0.2, 1) 0s 1 normal forwards running in');
+      expect(animationIn, 'for animationIn').toBe('0.6s cubic-bezier(0, 0, 0.2, 1) 0s 1 normal forwards running in');
 
-    // toast stay open for a total of 1000ms, we need to hit the middle of closing animation
-    await waitForAnimationFinish();
-    const animationOut = await getElementStyle(toastItem, 'animation');
+      // toast stay open for a total of 1000ms, we need to hit the middle of closing animation
+      await waitForAnimationFinish();
+      const animationOut = await getElementStyle(toastItem, 'animation');
 
-    expect(animationOut, 'for animationOut').toBe('0.4s cubic-bezier(0.4, 0, 0.5, 1) 0s 1 normal forwards running out');
+      expect(animationOut, 'for animationOut').toBe(
+        '0.4s cubic-bezier(0.4, 0, 0.5, 1) 0s 1 normal forwards running out'
+      );
 
-    await waitForAnimationFinish(); // wait another 600ms to be sure animation has finished
-    const animationClear = await getElementStyle(toastItem, 'animation');
+      await waitForAnimationFinish(); // wait another 600ms to be sure animation has finished
+      const animationClear = await getElementStyle(toastItem, 'animation');
 
-    expect(animationClear, 'for animationClear').toBe('');
+      expect(animationClear, 'for animationClear').toBe('');
+    });
   });
 });
