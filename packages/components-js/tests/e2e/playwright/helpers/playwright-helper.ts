@@ -163,7 +163,7 @@ export const getProperty = async <T>(element: ElementHandle<HTMLElement | SVGEle
 };
 
 export const setProperty = async <T>(
-  element: ElementHandle,
+  element: ElementHandle<HTMLElement | SVGElement>,
   key: string,
   value: string | boolean | number | T
 ): Promise<void> => {
