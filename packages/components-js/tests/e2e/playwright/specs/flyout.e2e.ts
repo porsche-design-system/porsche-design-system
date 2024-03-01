@@ -150,8 +150,6 @@ test('should have correct transform when opened and dismissed', async ({ page })
   expect(initialFlyoutTransform).not.toBe(openFlyoutTransform);
 
   await dismissFlyout(page);
-  // TODO: why is timeout needed? transition durations should be overwritten with 0s
-  await waitForFlyoutTransition();
   const finalFlyoutTransform = await getFlyoutTransform(page);
   expect(finalFlyoutTransform).toBe(initialFlyoutTransform);
 });
@@ -414,10 +412,6 @@ test.describe('focus behavior', () => {
 
       await page.keyboard.press('Escape');
       await waitForStencilLifecycle(page);
-
-      // TODO: why is timeout needed? transition durations should be overwritten with 0s
-      // TODO: Check why this is taking so much time?
-      await waitForFlyoutTransition(); // Necessary extra time
 
       expect(await getFlyoutVisibility(page), 'after escape').toBe('hidden');
       expect(await getActiveElementId(page)).toBe('btn-open');

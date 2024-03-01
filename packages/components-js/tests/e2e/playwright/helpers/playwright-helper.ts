@@ -302,7 +302,7 @@ export const enableBrowserLogging = (page: Page): void => {
 
 export const waitForInputTransition = (page: Page): Promise<void> => new Promise((resolve) => setTimeout(resolve, 250));
 
-export const hasFocus = (element: ElementHandle<HTMLElement>): Promise<boolean> =>
+export const hasFocus = (element: ElementHandle<HTMLElement | SVGElement>): Promise<boolean> =>
   element.evaluate((el) => document.activeElement === el);
 
 const consoleMessages: ConsoleMessage[] = [];
