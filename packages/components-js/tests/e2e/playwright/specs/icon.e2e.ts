@@ -23,7 +23,7 @@ const initIcon = async (page: Page, opts?: InitOptions): Promise<void> => {
 const getHost = async (page: Page) => page.$('p-icon');
 
 test.describe('lifecycle', () => {
-  initOptions.forEach((opts) => {
+  for (const opts of initOptions) {
     test('should work without unnecessary round trips on init', async ({ page }) => {
       await initIcon(page, opts);
       const status = await getLifecycleStatus(page);
@@ -47,5 +47,5 @@ test.describe('lifecycle', () => {
       expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(1);
       expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(1);
     });
-  });
+  }
 });

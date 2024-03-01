@@ -1,32 +1,27 @@
+import { expect, test } from '@playwright/test';
 import { buildDefaultComponentMarkup, getConsoleErrorsAmount, goto, initConsoleObserver } from '../helpers';
-import type { Page } from 'puppeteer';
-import { INTERNAL_TAG_NAMES, TAG_NAMES } from '@porsche-design-system/shared';
-import type { TagName } from '@porsche-design-system/shared';
-
-let page: Page;
-beforeEach(async () => (page = await browser.newPage()));
-afterEach(async () => await page.close());
+import { INTERNAL_TAG_NAMES, TAG_NAMES, TagName } from '@porsche-design-system/shared';
 
 /**
  * When stencil web components are unmounted directly, their lifecycle hooks are invoked after disconnectedCallback.
  * This can lead to exceptions when components require references to their parent element which is already gone.
  * https://github.com/ionic-team/stencil/issues/2502
  */
-it.each(TAG_NAMES.filter((x) => !INTERNAL_TAG_NAMES.includes(x)))(
-  'should not throw error after disconnectedCallback for %s',
-  async (tagName) => {
+const tagNames: TagName[] = TAG_NAMES.filter((tagName) => !INTERNAL_TAG_NAMES.includes(tagName));
+
+for (const tagName of tagNames) {
+  test(`should not throw error after disconnectedCallback for ${tagName}`, async ({ page }) => {
     initConsoleObserver(page);
     await goto(page, ''); // start page
 
     const markup = buildDefaultComponentMarkup(tagName);
 
     await page.evaluate(
-      (tag: TagName, markup: string) => {
+      ({ tagName, markup }) => {
         document.getElementById('app').innerHTML = markup;
-        document.getElementById('app').querySelector(tag).remove(); // remove component immediately
+        document.getElementById('app').querySelector(tagName).remove(); // remove component immediately
       },
-      tagName,
-      markup
+      { tagName, markup }
     );
 
     await new Promise((resolve) => setTimeout(resolve, 100));
@@ -34,5 +29,5 @@ it.each(TAG_NAMES.filter((x) => !INTERNAL_TAG_NAMES.includes(x)))(
 
     await page.evaluate(() => console.error('test error'));
     expect(getConsoleErrorsAmount()).toBe(1);
-  }
-);
+  });
+}

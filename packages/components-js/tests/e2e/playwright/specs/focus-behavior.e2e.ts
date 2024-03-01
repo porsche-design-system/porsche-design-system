@@ -1,5 +1,5 @@
 import { expect, test } from '@playwright/test';
-import { TAG_NAMES } from '@porsche-design-system/shared';
+import { TAG_NAMES, TagName } from '@porsche-design-system/shared';
 import { getComponentMeta } from '@porsche-design-system/component-meta';
 import {
   expectToSkipFocusOnComponent,
@@ -10,7 +10,9 @@ import {
 
 skipInBrowser(['webkit', 'firefox']);
 
-TAG_NAMES.filter((tagName) => getComponentMeta(tagName).isDelegatingFocus).forEach((tagName) => {
+const tagNames: TagName[] = TAG_NAMES.filter((tagName) => getComponentMeta(tagName).isDelegatingFocus);
+
+for (const tagName of tagNames) {
   const href =
     tagName.includes('link') || tagName.includes('wordmark') || tagName.includes('marque') || tagName.includes('crest')
       ? ' href="#"'
@@ -52,4 +54,4 @@ ${component}
     expect(await getActiveElementTagName(page)).toBe(elTagName);
     expect(await page.evaluate(() => document.activeElement.shadowRoot.activeElement.tagName)).not.toBeNull();
   });
-});
+}
