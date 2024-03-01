@@ -134,7 +134,9 @@ export const setContentWithDesignSystem = async (page: Page, content: string, op
   }
 };
 
-export const getShadowRoot = async (element: ElementHandle<HTMLElement>): Promise<ElementHandle<ShadowRoot>> => {
+export const getShadowRoot = async (
+  element: ElementHandle<HTMLElement | SVGElement>
+): Promise<ElementHandle<ShadowRoot>> => {
   return (await element.evaluateHandle((el) => el.shadowRoot)).asElement();
 };
 
@@ -144,7 +146,11 @@ export const getAttribute = (element: ElementHandle<HTMLElement | SVGElement>, a
   return element.evaluate((el, attr: string) => el.getAttribute(attr), attribute);
 };
 
-export const setAttribute = async (element: ElementHandle<HTMLElement>, key: string, value: string): Promise<void> => {
+export const setAttribute = async (
+  element: ElementHandle<HTMLElement | SVGElement>,
+  key: string,
+  value: string
+): Promise<void> => {
   if (containsCapitalChar(key)) {
     console.warn(`setAttribute: '${key}' contains a capital character which is most likely wrong`);
   }
@@ -261,7 +267,7 @@ export const getElementStyle = (
 };
 
 export const getElementIndex = (
-  element: ElementHandle<HTMLElement | ShadowRoot>,
+  element: ElementHandle<HTMLElement | SVGElement | ShadowRoot>,
   selector: string
 ): Promise<number> => {
   return element.evaluate(async (el, selector: string): Promise<number> => {
@@ -279,7 +285,7 @@ export const getElementInnerText = (element: ElementHandle): Promise<string> =>
 
 export const getElementPositions = (
   page: Page,
-  element: ElementHandle<HTMLElement>
+  element: ElementHandle<HTMLElement | SVGElement>
 ): Promise<{ top: number; left: number; bottom: number; right: number }> => {
   return page.evaluate((element) => {
     const { top, left, bottom, right } = element.getBoundingClientRect();
@@ -287,7 +293,7 @@ export const getElementPositions = (
   }, element);
 };
 
-export const reattachElementHandle = (handle: ElementHandle<HTMLElement>): Promise<void> => {
+export const reattachElementHandle = (handle: ElementHandle<HTMLElement | SVGElement>): Promise<void> => {
   return handle.evaluate((el) => {
     el.remove();
     document.body.appendChild(el);
@@ -403,7 +409,7 @@ export const buildDefaultComponentMarkup = (tagName: TagName): string => {
   return buildParentMarkup(componentMarkup, requiredParent);
 };
 
-export const expectShadowDomToMatchSnapshot = async (host: ElementHandle<HTMLElement>): Promise<void> => {
+export const expectShadowDomToMatchSnapshot = async (host: ElementHandle<HTMLElement | SVGElement>): Promise<void> => {
   const html = await host.evaluate((el) => el.shadowRoot.innerHTML);
   const prettyHtml = await format(html.replace(/>/g, '>\n'), { parser: 'html' });
 
@@ -425,11 +431,11 @@ export const expectToSkipFocusOnComponent = async (page: Page, component: Elemen
   expect(await getActiveElementId(page)).toBe('before');
 };
 
-export const getScrollLeft = (element: ElementHandle<HTMLElement>): Promise<number> =>
+export const getScrollLeft = (element: ElementHandle<HTMLElement | SVGElement>): Promise<number> =>
   getProperty<number>(element, 'scrollLeft');
-export const getOffsetLeft = (element: ElementHandle<HTMLElement>): Promise<number> =>
+export const getOffsetLeft = (element: ElementHandle<HTMLElement | SVGElement>): Promise<number> =>
   getProperty<number>(element, 'offsetLeft');
-export const getOffsetWidth = (element: ElementHandle<HTMLElement>): Promise<number> =>
+export const getOffsetWidth = (element: ElementHandle<HTMLElement | SVGElement>): Promise<number> =>
   getProperty<number>(element, 'offsetWidth');
 
 /**

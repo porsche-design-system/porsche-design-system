@@ -7,11 +7,7 @@ import {
 } from '../helpers';
 import type { Page } from 'playwright';
 import { expect, test } from '@playwright/test';
-import type {
-  BreakpointCustomizable,
-  DisplaySize,
-  DisplayTag,
-} from '@porsche-design-system/components/dist/types/bundle';
+import type { BreakpointCustomizable, DisplaySize, DisplayTag } from '@porsche-design-system/components';
 
 const initDisplay = (
   page: Page,

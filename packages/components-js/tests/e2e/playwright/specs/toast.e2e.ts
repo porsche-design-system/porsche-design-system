@@ -8,9 +8,10 @@ import {
   setContentWithDesignSystem,
   setProperty,
   skipInBrowser,
+  sleep,
   waitForStencilLifecycle,
 } from '../helpers';
-import type { ToastMessage } from '@porsche-design-system/components/dist/types/bundle';
+import type { ToastMessage } from '@porsche-design-system/components';
 import { TOAST_STATES } from '@porsche-design-system/components/src/components/toast/toast/toast-utils';
 
 const TOAST_TIMEOUT_DURATION_OVERRIDE = 1000;
@@ -56,12 +57,13 @@ const addMessage = async (page: Page, message?: Partial<ToastMessage>): Promise<
 };
 
 const waitForToastTimeout = async (page: Page): Promise<void> => {
-  await new Promise((resolve) => setTimeout(resolve, TOAST_TIMEOUT_DURATION_OVERRIDE));
+  await sleep(TOAST_TIMEOUT_DURATION_OVERRIDE);
+
   await waitForAnimationFinish();
   await waitForStencilLifecycle(page);
 };
 
-const waitForAnimationFinish = () => new Promise((resolve) => setTimeout(resolve, ANIMATION_DURATION));
+const waitForAnimationFinish = () => sleep(ANIMATION_DURATION);
 
 const getHost = (page: Page) => page.$('p-toast');
 const getToastItem = (page: Page) => page.$('p-toast p-toast-item');

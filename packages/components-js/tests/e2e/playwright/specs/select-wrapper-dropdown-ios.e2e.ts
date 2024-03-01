@@ -1,6 +1,6 @@
 import { devices, expect, test } from '@playwright/test';
 import { Page } from 'playwright';
-import { setContentWithDesignSystem, skipInBrowser } from '../helpers';
+import { setContentWithDesignSystem } from '../helpers';
 
 const dropdownSelector = 'p-select-wrapper p-select-wrapper-dropdown';
 
@@ -30,6 +30,7 @@ const initSelect = (page: Page, opts?: InitOptions): Promise<void> => {
     beginUnique,
   } = opts || {};
 
+  // TODO: wtf?
   const options = [...'abc', ...(amount === 5 ? 'de' : '')].map((x, idx) => {
     const attrs = [
       disabledIndex === idx ? 'disabled' : '',

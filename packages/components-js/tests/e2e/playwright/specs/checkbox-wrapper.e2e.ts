@@ -14,7 +14,7 @@ import {
   waitForInputTransition,
   waitForStencilLifecycle,
 } from '../helpers';
-import type { FormState } from '@porsche-design-system/components/dist/types/bundle';
+import type { FormState } from '@porsche-design-system/components';
 
 const getHost = (page: Page) => page.$('p-checkbox-wrapper');
 const getInput = (page: Page) => page.$('p-checkbox-wrapper input[type="checkbox"]');

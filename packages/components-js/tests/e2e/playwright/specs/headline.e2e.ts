@@ -7,7 +7,7 @@ import {
   setProperty,
   waitForStencilLifecycle,
 } from '../helpers';
-import type { HeadlineTag, HeadlineVariant } from '@porsche-design-system/components/dist/types/bundle';
+import type { HeadlineTag, HeadlineVariant } from '@porsche-design-system/components';
 
 const initHeadline = (
   page: Page,

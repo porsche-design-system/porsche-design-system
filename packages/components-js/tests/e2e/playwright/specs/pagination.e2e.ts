@@ -7,6 +7,7 @@ import {
   getLifecycleStatus,
   initConsoleObserver,
   setContentWithDesignSystem,
+  sleep,
 } from '../helpers';
 
 const getHost = (page: Page) => page.$('p-pagination');
@@ -33,7 +34,8 @@ test('should have no errors if disconnected before fully loaded', async ({ page 
     setTimeout(() => el.remove(), 10);
   });
 
-  await new Promise((resolve) => setTimeout(resolve, 10));
+  await sleep(10);
+
   expect(getConsoleErrorsAmount()).toBe(0);
 
   await page.evaluate(() => console.error('test error'));

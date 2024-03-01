@@ -11,7 +11,7 @@ import {
   setProperty,
   waitForStencilLifecycle,
 } from '../helpers';
-import type { InlineNotificationState } from '@porsche-design-system/components/dist/types/bundle';
+import type { InlineNotificationState } from '@porsche-design-system/components';
 
 const initInlineNotification = (
   page: Page,

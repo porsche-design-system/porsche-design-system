@@ -11,6 +11,7 @@ import {
   reattachElementHandle,
   setContentWithDesignSystem,
   setProperty,
+  sleep,
   waitForComponentsReady,
   waitForStencilLifecycle,
 } from '../helpers';
@@ -28,11 +29,11 @@ const initTabs = (page: Page, opts?: { amount?: number; activeTabIndex?: number 
 };
 
 const getHost = (page: Page) => page.$('p-tabs');
-const getAllTabsItems = (page: Page) => page.$$<'p-tabs-item'>('p-tabs-item');
+const getAllTabsItems = (page: Page) => page.$$('p-tabs-item');
 const getTabsBar = (page: Page) => page.$('p-tabs p-tabs-bar');
 const getAllTabs = async (page: Page) => (await getTabsBar(page)).$$('button[role="tab"]');
-const getHiddenAttribute = (element: ElementHandle<HTMLElement>) => getAttribute(element, 'hidden');
-const isHidden = async (element: ElementHandle<HTMLElement>): Promise<boolean> =>
+const getHiddenAttribute = (element: ElementHandle<HTMLElement | SVGElement>) => getAttribute(element, 'hidden');
+const isHidden = async (element: ElementHandle<HTMLElement | SVGElement>): Promise<boolean> =>
   (await getHiddenAttribute(element)) === '';
 
 test('should render', async ({ page }) => {
@@ -262,7 +263,9 @@ test.describe('events', () => {
     const [, secondButton] = await getAllTabs(page);
     await secondButton.click();
     await waitForStencilLifecycle(page);
-    await new Promise((resolve) => setTimeout(resolve, 200)); // to be on the safe side
+    await sleep(200);
+
+    // to be on the safe side
 
     expect(await getCountedEvents()).toBe(1);
   });

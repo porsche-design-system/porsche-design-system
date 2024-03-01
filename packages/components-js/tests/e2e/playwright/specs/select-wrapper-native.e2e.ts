@@ -9,7 +9,7 @@ import {
   setProperty,
   waitForStencilLifecycle,
 } from '../helpers';
-import type { FormState } from '@porsche-design-system/components/dist/types/bundle';
+import type { FormState } from '@porsche-design-system/components';
 
 const getHost = (page: Page) => page.$('p-select-wrapper');
 const getSelect = (page: Page) => page.$('p-select-wrapper select');

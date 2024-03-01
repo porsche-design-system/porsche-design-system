@@ -1,7 +1,7 @@
 import type { Page } from 'playwright';
 import { expect, test } from '@playwright/test';
 import { getLifecycleStatus, setContentWithDesignSystem, setProperty, waitForStencilLifecycle } from '../helpers';
-import type { IconName } from '@porsche-design-system/components/dist/types/bundle';
+import type { IconName } from '@porsche-design-system/components';
 
 type InitOptions = {
   name?: IconName;

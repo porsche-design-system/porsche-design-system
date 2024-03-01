@@ -15,7 +15,7 @@ import {
   waitForImproveButtonHandlingForCustomElement,
   waitForStencilLifecycle,
 } from '../helpers';
-import type { FormState } from '@porsche-design-system/components/dist/types/bundle';
+import type { FormState } from '@porsche-design-system/components';
 
 const getHost = (page: Page) => page.$('p-text-field-wrapper');
 const getInput = (page: Page) => page.$('input');

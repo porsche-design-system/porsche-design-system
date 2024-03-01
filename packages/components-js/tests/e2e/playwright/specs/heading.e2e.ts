@@ -7,11 +7,7 @@ import {
   setProperty,
   waitForStencilLifecycle,
 } from '../helpers';
-import type {
-  BreakpointCustomizable,
-  HeadingSize,
-  HeadingTag,
-} from '@porsche-design-system/components/dist/types/bundle';
+import type { BreakpointCustomizable, HeadingSize, HeadingTag } from '@porsche-design-system/components';
 
 const initHeading = (
   page: Page,

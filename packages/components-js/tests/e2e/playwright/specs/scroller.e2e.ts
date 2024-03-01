@@ -9,16 +9,17 @@ import {
   SCROLL_PERCENTAGE,
   setContentWithDesignSystem,
   setProperty,
+  sleep,
   waitForStencilLifecycle,
 } from '../helpers';
-import type { ScrollToPosition } from '@porsche-design-system/components/dist/types/bundle';
+import type { Components } from '@porsche-design-system/components';
 
 type InitOptions = {
   amount?: number;
   isWrapped?: boolean;
   otherMarkup?: string;
   tag?: 'a' | 'button' | 'span';
-  scrollToPosition?: ScrollToPosition;
+  scrollToPosition?: Components.PScroller['scrollToPosition'];
   hasScrollbar?: boolean;
 };
 
@@ -53,8 +54,8 @@ const getPrevNextButton = async (page: Page) => {
   const nextButton = await page.$('p-scroller .action-next button');
   return { prevButton, nextButton };
 };
-const getScrollLeft = (page: Page, element: ElementHandle) => getProperty(element, 'scrollLeft');
-const getOffsetWidth = (page: Page, element: ElementHandle) => getProperty(element, 'offsetWidth');
+const getScrollLeft = (element: ElementHandle<HTMLElement | SVGElement>) => getProperty(element, 'scrollLeft');
+const getOffsetWidth = (element: ElementHandle<HTMLElement | SVGElement>) => getProperty(element, 'offsetWidth');
 
 const getScrollDistance = (page: Page, scrollAreaWidth: number): number =>
   Math.round(scrollAreaWidth * SCROLL_PERCENTAGE);
@@ -62,7 +63,7 @@ const getScrollDistance = (page: Page, scrollAreaWidth: number): number =>
 const clickElement = async (page: Page, el: ElementHandle) => {
   await el.click();
   await waitForStencilLifecycle(page);
-  await new Promise((resolve) => setTimeout(resolve, CSS_ANIMATION_DURATION));
+  await sleep(CSS_ANIMATION_DURATION);
 };
 
 const addNewButton = async (page: Page) => {
@@ -78,7 +79,7 @@ test.describe('scrolling', () => {
   test('should have correct initial scroll position when scrollToPosition is set', async ({ page }) => {
     await initScroller(page, { isWrapped: true, scrollToPosition: { scrollPosition: 50 } });
 
-    expect(await getScrollLeft(page, await getScrollArea(page))).toBe(50);
+    expect(await getScrollLeft(await getScrollArea(page))).toBe(50);
   });
 });
 
@@ -103,22 +104,22 @@ test.describe('next/prev buttons', () => {
     await initScroller(page, { isWrapped: true });
     const { prevButton, nextButton } = await getPrevNextButton(page);
     const scrollArea = await getScrollArea(page);
-    const scrollAreaWidth = await getOffsetWidth(page, scrollArea);
+    const scrollAreaWidth = await getOffsetWidth(scrollArea);
     const scrollDistance = await getScrollDistance(page, +scrollAreaWidth);
 
-    expect(await getScrollLeft(page, scrollArea)).toEqual(0);
+    expect(await getScrollLeft(scrollArea)).toEqual(0);
 
     await clickElement(page, nextButton);
-    expect(await getScrollLeft(page, scrollArea)).toEqual(scrollDistance);
+    expect(await getScrollLeft(scrollArea)).toEqual(scrollDistance);
 
     await clickElement(page, nextButton);
-    expect(await getScrollLeft(page, scrollArea)).toEqual(scrollDistance * 2);
+    expect(await getScrollLeft(scrollArea)).toEqual(scrollDistance * 2);
 
     await clickElement(page, prevButton);
-    expect(await getScrollLeft(page, scrollArea)).toEqual(scrollDistance);
+    expect(await getScrollLeft(scrollArea)).toEqual(scrollDistance);
 
     await clickElement(page, prevButton);
-    expect(await getScrollLeft(page, scrollArea)).toEqual(0);
+    expect(await getScrollLeft(scrollArea)).toEqual(0);
   });
 
   test('should scroll to max scroll-position on multiple next clicks', async ({ page }) => {
@@ -127,7 +128,7 @@ test.describe('next/prev buttons', () => {
     const { nextButton } = await getPrevNextButton(page);
     const scrollArea = await getScrollArea(page);
 
-    expect(await getScrollLeft(page, scrollArea)).toEqual(0);
+    expect(await getScrollLeft(scrollArea)).toEqual(0);
 
     await clickElement(page, nextButton);
     await clickElement(page, nextButton);
@@ -135,7 +136,7 @@ test.describe('next/prev buttons', () => {
     await clickElement(page, nextButton);
     await clickElement(page, nextButton);
 
-    const scrollPosition = await getScrollLeft(page, scrollArea);
+    const scrollPosition = await getScrollLeft(scrollArea);
 
     await clickElement(page, firstButton);
     const scrollMax = await scrollArea.evaluate((el): number => {

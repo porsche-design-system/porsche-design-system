@@ -1,5 +1,5 @@
 import { expect, test } from '@playwright/test';
-import { buildDefaultComponentMarkup, getConsoleErrorsAmount, goto, initConsoleObserver } from '../helpers';
+import { buildDefaultComponentMarkup, getConsoleErrorsAmount, goto, initConsoleObserver, sleep } from '../helpers';
 import { INTERNAL_TAG_NAMES, TAG_NAMES, TagName } from '@porsche-design-system/shared';
 
 /**
@@ -24,7 +24,8 @@ for (const tagName of tagNames) {
       { tagName, markup }
     );
 
-    await new Promise((resolve) => setTimeout(resolve, 100));
+    await sleep(100);
+
     expect(getConsoleErrorsAmount()).toBe(0);
 
     await page.evaluate(() => console.error('test error'));
