@@ -2,7 +2,7 @@ import { expect, type Page, test } from '@playwright/test';
 import { schemes, themes, viewportWidthM } from '@porsche-design-system/shared/testing/playwright.vrt.config';
 import {
   forceFocusHoverState,
-  forceFocusState,
+  forceFocusVisibleState,
   forceHoverState,
   getPlaygroundPseudoStatesMarkup,
   type PrefersColorScheme,
@@ -28,8 +28,8 @@ const scenario = async (page: Page, theme: Theme, scheme?: PrefersColorScheme): 
 
   await forceHoverState(page, '.hover p-display a');
   await forceHoverState(page, '.hover p-display button');
-  await forceFocusState(page, '.focus p-display a');
-  await forceFocusState(page, '.focus p-display button');
+  await forceFocusVisibleState(page, '.focus p-display a');
+  await forceFocusVisibleState(page, '.focus p-display button');
   await forceFocusHoverState(page, '.focus-hover p-display a');
   await forceFocusHoverState(page, '.focus-hover p-display button');
 };

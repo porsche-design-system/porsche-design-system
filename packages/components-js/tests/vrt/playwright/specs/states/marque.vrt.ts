@@ -1,7 +1,7 @@
 import { expect, type Page, test } from '@playwright/test';
 import {
   forceFocusHoverState,
-  forceFocusState,
+  forceFocusVisibleState,
   getPlaygroundPseudoStatesMarkup,
   type PrefersColorScheme,
   setContentWithDesignSystem,
@@ -21,8 +21,8 @@ const scenario = async (page: Page, theme: Theme, scheme?: PrefersColorScheme): 
     prefersColorScheme: scheme,
   });
 
-  await forceFocusState(page, '.focus p-marque'); // native outline should not be visible
-  await forceFocusState(page, '.focus p-marque >>> a');
+  await forceFocusVisibleState(page, '.focus p-marque'); // native outline should not be visible
+  await forceFocusVisibleState(page, '.focus p-marque >>> a');
   await forceFocusHoverState(page, '.focus-hover p-marque >>> a');
 };
 

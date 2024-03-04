@@ -12,6 +12,7 @@ exports[`getComponentCss() should return correct css for direction: down, isOpen
   position: absolute !important;
   opacity: 0 !important;
   height: 0px !important;
+  bottom: 0 !important;
 }
 input {
   grid-area: 1/1/1/-1;
@@ -66,6 +67,7 @@ input:not(:focus):-moz-placeholder {
 .root {
   display: grid;
   gap: 4px;
+  position: relative;
 }
 .wrapper {
   position: relative;
@@ -196,6 +198,7 @@ exports[`getComponentCss() should return correct css for direction: down, isOpen
   position: absolute !important;
   opacity: 0 !important;
   height: 0px !important;
+  bottom: 0 !important;
 }
 input {
   grid-area: 1/1/1/-1;
@@ -250,6 +253,7 @@ input:not(:focus):-moz-placeholder {
 .root {
   display: grid;
   gap: 4px;
+  position: relative;
 }
 .wrapper {
   position: relative;
@@ -381,6 +385,7 @@ exports[`getComponentCss() should return correct css for direction: down, isOpen
   position: absolute !important;
   opacity: 0 !important;
   height: 0px !important;
+  bottom: 0 !important;
 }
 input {
   grid-area: 1/1/1/-1;
@@ -447,6 +452,7 @@ input:not(:focus):-moz-placeholder {
 .root {
   display: grid;
   gap: 4px;
+  position: relative;
 }
 .wrapper {
   position: relative;
@@ -576,6 +582,7 @@ exports[`getComponentCss() should return correct css for direction: down, isOpen
   position: absolute !important;
   opacity: 0 !important;
   height: 0px !important;
+  bottom: 0 !important;
 }
 input {
   grid-area: 1/1/1/-1;
@@ -642,6 +649,7 @@ input:not(:focus):-moz-placeholder {
 .root {
   display: grid;
   gap: 4px;
+  position: relative;
 }
 .wrapper {
   position: relative;
@@ -771,6 +779,7 @@ exports[`getComponentCss() should return correct css for direction: down, isOpen
   position: absolute !important;
   opacity: 0 !important;
   height: 0px !important;
+  bottom: 0 !important;
 }
 input {
   grid-area: 1/1/1/-1;
@@ -837,6 +846,7 @@ input:not(:focus):-moz-placeholder {
 .root {
   display: grid;
   gap: 4px;
+  position: relative;
 }
 .wrapper {
   position: relative;
@@ -967,6 +977,7 @@ exports[`getComponentCss() should return correct css for direction: down, isOpen
   position: absolute !important;
   opacity: 0 !important;
   height: 0px !important;
+  bottom: 0 !important;
 }
 input {
   grid-area: 1/1/1/-1;
@@ -1033,6 +1044,7 @@ input:not(:focus):-moz-placeholder {
 .root {
   display: grid;
   gap: 4px;
+  position: relative;
 }
 .wrapper {
   position: relative;
@@ -1162,6 +1174,7 @@ exports[`getComponentCss() should return correct css for direction: down, isOpen
   position: absolute !important;
   opacity: 0 !important;
   height: 0px !important;
+  bottom: 0 !important;
 }
 input {
   grid-area: 1/1/1/-1;
@@ -1228,6 +1241,7 @@ input:not(:focus):-moz-placeholder {
 .root {
   display: grid;
   gap: 4px;
+  position: relative;
 }
 .wrapper {
   position: relative;
@@ -1357,6 +1371,7 @@ exports[`getComponentCss() should return correct css for direction: down, isOpen
   position: absolute !important;
   opacity: 0 !important;
   height: 0px !important;
+  bottom: 0 !important;
 }
 input {
   grid-area: 1/1/1/-1;
@@ -1415,6 +1430,7 @@ input:not(:focus):-moz-placeholder {
 .root {
   display: grid;
   gap: 4px;
+  position: relative;
 }
 .wrapper {
   position: relative;
@@ -1545,6 +1561,7 @@ exports[`getComponentCss() should return correct css for direction: down, isOpen
   position: absolute !important;
   opacity: 0 !important;
   height: 0px !important;
+  bottom: 0 !important;
 }
 input {
   grid-area: 1/1/1/-1;
@@ -1603,6 +1620,7 @@ input:not(:focus):-moz-placeholder {
 .root {
   display: grid;
   gap: 4px;
+  position: relative;
 }
 .wrapper {
   position: relative;
@@ -1733,6 +1751,7 @@ exports[`getComponentCss() should return correct css for direction: down, isOpen
   position: absolute !important;
   opacity: 0 !important;
   height: 0px !important;
+  bottom: 0 !important;
 }
 input {
   grid-area: 1/1/1/-1;
@@ -1791,6 +1810,7 @@ input:not(:focus):-moz-placeholder {
 .root {
   display: grid;
   gap: 4px;
+  position: relative;
 }
 .wrapper {
   position: relative;
@@ -1921,6 +1941,7 @@ exports[`getComponentCss() should return correct css for direction: down, isOpen
   position: absolute !important;
   opacity: 0 !important;
   height: 0px !important;
+  bottom: 0 !important;
 }
 input {
   grid-area: 1/1/1/-1;
@@ -1979,6 +2000,7 @@ input:not(:focus):-moz-placeholder {
 .root {
   display: grid;
   gap: 4px;
+  position: relative;
 }
 .wrapper {
   position: relative;
@@ -2110,6 +2132,7 @@ exports[`getComponentCss() should return correct css for direction: down, isOpen
   position: absolute !important;
   opacity: 0 !important;
   height: 0px !important;
+  bottom: 0 !important;
 }
 input {
   grid-area: 1/1/1/-1;
@@ -2180,6 +2203,7 @@ input:not(:focus):-moz-placeholder {
 .root {
   display: grid;
   gap: 4px;
+  position: relative;
 }
 .wrapper {
   position: relative;
@@ -2309,6 +2333,7 @@ exports[`getComponentCss() should return correct css for direction: down, isOpen
   position: absolute !important;
   opacity: 0 !important;
   height: 0px !important;
+  bottom: 0 !important;
 }
 input {
   grid-area: 1/1/1/-1;
@@ -2379,6 +2404,7 @@ input:not(:focus):-moz-placeholder {
 .root {
   display: grid;
   gap: 4px;
+  position: relative;
 }
 .wrapper {
   position: relative;
@@ -2508,6 +2534,7 @@ exports[`getComponentCss() should return correct css for direction: up, isOpen: 
   position: absolute !important;
   opacity: 0 !important;
   height: 0px !important;
+  bottom: 0 !important;
 }
 input {
   grid-area: 1/1/1/-1;
@@ -2562,6 +2589,7 @@ input:not(:focus):-moz-placeholder {
 .root {
   display: grid;
   gap: 4px;
+  position: relative;
 }
 .wrapper {
   position: relative;
@@ -2693,6 +2721,7 @@ exports[`getComponentCss() should return correct css for direction: up, isOpen: 
   position: absolute !important;
   opacity: 0 !important;
   height: 0px !important;
+  bottom: 0 !important;
 }
 input {
   grid-area: 1/1/1/-1;
@@ -2747,6 +2776,7 @@ input:not(:focus):-moz-placeholder {
 .root {
   display: grid;
   gap: 4px;
+  position: relative;
 }
 .wrapper {
   position: relative;
@@ -2878,6 +2908,7 @@ exports[`getComponentCss() should return correct css for direction: up, isOpen: 
   position: absolute !important;
   opacity: 0 !important;
   height: 0px !important;
+  bottom: 0 !important;
 }
 input {
   grid-area: 1/1/1/-1;
@@ -2944,6 +2975,7 @@ input:not(:focus):-moz-placeholder {
 .root {
   display: grid;
   gap: 4px;
+  position: relative;
 }
 .wrapper {
   position: relative;
@@ -3074,6 +3106,7 @@ exports[`getComponentCss() should return correct css for direction: up, isOpen: 
   position: absolute !important;
   opacity: 0 !important;
   height: 0px !important;
+  bottom: 0 !important;
 }
 input {
   grid-area: 1/1/1/-1;
@@ -3140,6 +3173,7 @@ input:not(:focus):-moz-placeholder {
 .root {
   display: grid;
   gap: 4px;
+  position: relative;
 }
 .wrapper {
   position: relative;
@@ -3270,6 +3304,7 @@ exports[`getComponentCss() should return correct css for direction: up, isOpen: 
   position: absolute !important;
   opacity: 0 !important;
   height: 0px !important;
+  bottom: 0 !important;
 }
 input {
   grid-area: 1/1/1/-1;
@@ -3336,6 +3371,7 @@ input:not(:focus):-moz-placeholder {
 .root {
   display: grid;
   gap: 4px;
+  position: relative;
 }
 .wrapper {
   position: relative;
@@ -3466,6 +3502,7 @@ exports[`getComponentCss() should return correct css for direction: up, isOpen: 
   position: absolute !important;
   opacity: 0 !important;
   height: 0px !important;
+  bottom: 0 !important;
 }
 input {
   grid-area: 1/1/1/-1;
@@ -3532,6 +3569,7 @@ input:not(:focus):-moz-placeholder {
 .root {
   display: grid;
   gap: 4px;
+  position: relative;
 }
 .wrapper {
   position: relative;
@@ -3662,6 +3700,7 @@ exports[`getComponentCss() should return correct css for direction: up, isOpen: 
   position: absolute !important;
   opacity: 0 !important;
   height: 0px !important;
+  bottom: 0 !important;
 }
 input {
   grid-area: 1/1/1/-1;
@@ -3720,6 +3759,7 @@ input:not(:focus):-moz-placeholder {
 .root {
   display: grid;
   gap: 4px;
+  position: relative;
 }
 .wrapper {
   position: relative;
@@ -3851,6 +3891,7 @@ exports[`getComponentCss() should return correct css for direction: up, isOpen: 
   position: absolute !important;
   opacity: 0 !important;
   height: 0px !important;
+  bottom: 0 !important;
 }
 input {
   grid-area: 1/1/1/-1;
@@ -3909,6 +3950,7 @@ input:not(:focus):-moz-placeholder {
 .root {
   display: grid;
   gap: 4px;
+  position: relative;
 }
 .wrapper {
   position: relative;
@@ -4040,6 +4082,7 @@ exports[`getComponentCss() should return correct css for direction: up, isOpen: 
   position: absolute !important;
   opacity: 0 !important;
   height: 0px !important;
+  bottom: 0 !important;
 }
 input {
   grid-area: 1/1/1/-1;
@@ -4098,6 +4141,7 @@ input:not(:focus):-moz-placeholder {
 .root {
   display: grid;
   gap: 4px;
+  position: relative;
 }
 .wrapper {
   position: relative;
@@ -4229,6 +4273,7 @@ exports[`getComponentCss() should return correct css for direction: up, isOpen: 
   position: absolute !important;
   opacity: 0 !important;
   height: 0px !important;
+  bottom: 0 !important;
 }
 input {
   grid-area: 1/1/1/-1;
@@ -4287,6 +4332,7 @@ input:not(:focus):-moz-placeholder {
 .root {
   display: grid;
   gap: 4px;
+  position: relative;
 }
 .wrapper {
   position: relative;
@@ -4418,6 +4464,7 @@ exports[`getComponentCss() should return correct css for direction: up, isOpen: 
   position: absolute !important;
   opacity: 0 !important;
   height: 0px !important;
+  bottom: 0 !important;
 }
 input {
   grid-area: 1/1/1/-1;
@@ -4488,6 +4535,7 @@ input:not(:focus):-moz-placeholder {
 .root {
   display: grid;
   gap: 4px;
+  position: relative;
 }
 .wrapper {
   position: relative;
@@ -4618,6 +4666,7 @@ exports[`getComponentCss() should return correct css for direction: up, isOpen: 
   position: absolute !important;
   opacity: 0 !important;
   height: 0px !important;
+  bottom: 0 !important;
 }
 input {
   grid-area: 1/1/1/-1;
@@ -4688,6 +4737,7 @@ input:not(:focus):-moz-placeholder {
 .root {
   display: grid;
   gap: 4px;
+  position: relative;
 }
 .wrapper {
   position: relative;
@@ -4818,6 +4868,7 @@ exports[`getComponentCss() should return correct css for direction: up, isOpen: 
   position: absolute !important;
   opacity: 0 !important;
   height: 0px !important;
+  bottom: 0 !important;
 }
 input {
   grid-area: 1/1/1/-1;
@@ -4888,6 +4939,7 @@ input:not(:focus):-moz-placeholder {
 .root {
   display: grid;
   gap: 4px;
+  position: relative;
 }
 .wrapper {
   position: relative;

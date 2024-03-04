@@ -298,7 +298,6 @@ export class Carousel {
                 class="btn skip-link"
                 alignLabel="start"
                 hideLabel={true}
-                aria-describedby={this.heading ? headingId : null}
               >
                 {/* TODO: make it i18n configurable */}
                 Skip carousel entries

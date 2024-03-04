@@ -9,7 +9,6 @@ import {
   getElementStyle,
   getEventSummary,
   getLifecycleStatus,
-  getProperty,
   goto,
   reattachElementHandle,
   selectNode,
@@ -81,6 +80,7 @@ const getButtonPrev = () => selectNode(page, 'p-carousel >>> p-button-pure:first
 const getButtonNext = () => selectNode(page, 'p-carousel >>> p-button-pure:last-of-type >>> button');
 const getPagination = () => selectNode(page, 'p-carousel >>> .pagination');
 const getPaginationBullets = async () => (await getPagination()).$$('span');
+const getSkipLinkHost = () => selectNode(page, 'p-carousel >>> .skip-link');
 const getSkipLink = () => selectNode(page, 'p-carousel >>> .skip-link >>> a');
 
 const waitForSlideToBeActive = (slide: ElementHandle) =>
@@ -1140,5 +1140,18 @@ describe('accessibility', () => {
     const splide = await getSplide();
 
     await expectA11yToMatchSnapshot(page, splide, { message: 'splide', interestingOnly: false });
+  });
+
+  it('should change skip-link to visible if it receives keyboard focus', async () => {
+    await initCarousel({ skipLinkTarget: '#link-after' });
+    const host = await getHost();
+    const skipLinkHost = await getSkipLinkHost();
+
+    expect(await getElementStyle(skipLinkHost, 'opacity')).toBe('0');
+
+    await page.keyboard.press('Tab');
+
+    expect(await getActiveElementTagNameInShadowRoot(host)).toBe('P-LINK-PURE');
+    expect(await getElementStyle(skipLinkHost, 'opacity')).toBe('1');
   });
 });
