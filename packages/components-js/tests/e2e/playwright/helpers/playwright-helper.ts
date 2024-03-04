@@ -457,3 +457,8 @@ export const getOldLoaderScriptForPrefixes = (prefixes: string[]): string => {
     '</script>'
   );
 };
+
+export const clickElementPosition = async (page: Page, el: ElementHandle<SVGElement | HTMLElement>): Promise<void> => {
+  const pos = await el.evaluate((el) => el.getBoundingClientRect());
+  await page.mouse.click(pos.x + pos.width / 2, pos.y + pos.height / 2);
+};
