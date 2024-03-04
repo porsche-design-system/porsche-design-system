@@ -2,7 +2,7 @@ import type { BreakpointCustomizable, Theme } from '../../types';
 import type { TextFieldWrapperUnitPosition } from './text-field-wrapper-utils';
 import { isType, showCustomCalendarOrTimeIndicator } from './text-field-wrapper-utils';
 import type { FormState } from '../../utils/form/form-state';
-import { getCss } from '../../utils';
+import { getCss, isThemeDark } from '../../utils';
 import {
   addImportantToEachRule,
   colorSchemeStyles,
@@ -48,7 +48,6 @@ export const getComponentCss = (
   const isSearchWithoutFormOrSubmitButton = isSearch && (!isWithinForm || !hasSubmitButton);
   const isSearchWithForm = isSearch && isWithinForm;
   const isCalendarOrTimeWithCustomIndicator = showCustomCalendarOrTimeIndicator(isCalendar, isTime);
-  const { primaryColor } = getThemedColors(theme);
 
   return getCss({
     '@global': {
@@ -71,11 +70,12 @@ export const getComponentCss = (
             MozAppearance: 'textfield', // hides up/down spin button for Firefox
           }),
           ...((isCalendar || isTime) && {
-            background: 'rgba(0,0,1,0)', // for native placeholder color in safari, `transparent` or `rgba(0,0,0,0)` won't work
-            color: undefined, // for native placeholder color in safari this can't be set
-            // conditional hopefully for mobile safari, only
-            '@supports (-webkit-touch-callout: none)': {
-              color: primaryColor,
+            // for native placeholder color in safari, background ahs to be a special value, `transparent` or `rgba(0,0,0,0)` won't work
+            // this works nice for `theme="light"`, but for `theme="dark"` placeholder appears blue which is still better
+            // than having invisible dots or colons for data/time or not seeing the value at all after selection
+            '@supports (-webkit-hyphens: none)': {
+              background: 'rgba(0,0,1,0)',
+              color: isThemeDark(theme) ? getThemedColors(theme).primaryColor : 'initial',
             },
           }),
         }),

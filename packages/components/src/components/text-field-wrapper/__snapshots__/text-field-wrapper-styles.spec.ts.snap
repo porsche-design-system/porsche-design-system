@@ -1390,10 +1390,10 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   box-sizing: border-box !important;
   border: 2px solid #6B6D70 !important;
   border-radius: 4px !important;
-  background: rgba(0,0,1,0) !important;
+  background: transparent !important;
   font: normal normal 400 1rem/calc(6px + 2.125ex + 6px) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   text-indent: 0 !important;
-  color: undefined !important;
+  color: #010205 !important;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
   grid-area: 1/1/1/-1 !important;
   padding: 8px 16px !important;
@@ -1422,9 +1422,10 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   }
 }
 
-@supports (-webkit-touch-callout: none) {
+@supports (-webkit-hyphens: none) {
   ::slotted(input) {
-    color: #010205 !important;
+    background: rgba(0,0,1,0) !important;
+    color: initial !important;
   }
 }
 
@@ -1519,10 +1520,10 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   box-sizing: border-box !important;
   border: 2px solid #6B6D70 !important;
   border-radius: 4px !important;
-  background: rgba(0,0,1,0) !important;
+  background: transparent !important;
   font: normal normal 400 1rem/calc(6px + 2.125ex + 6px) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   text-indent: 0 !important;
-  color: undefined !important;
+  color: #010205 !important;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
   grid-area: 1/1/1/-1 !important;
   padding: 8px 16px !important;
@@ -1551,9 +1552,10 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   }
 }
 
-@supports (-webkit-touch-callout: none) {
+@supports (-webkit-hyphens: none) {
   ::slotted(input) {
-    color: #010205 !important;
+    background: rgba(0,0,1,0) !important;
+    color: initial !important;
   }
 }
 
@@ -1895,10 +1897,10 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   box-sizing: border-box !important;
   border: 2px solid #6B6D70 !important;
   border-radius: 4px !important;
-  background: rgba(0,0,1,0) !important;
+  background: transparent !important;
   font: normal normal 400 1rem/calc(6px + 2.125ex + 6px) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   text-indent: 0 !important;
-  color: undefined !important;
+  color: #010205 !important;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
   grid-area: 1/1/1/-1 !important;
   padding: 8px 16px !important;
@@ -1927,9 +1929,10 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   }
 }
 
-@supports (-webkit-touch-callout: none) {
+@supports (-webkit-hyphens: none) {
   ::slotted(input) {
-    color: #010205 !important;
+    background: rgba(0,0,1,0) !important;
+    color: initial !important;
   }
 }
 
@@ -2024,10 +2027,10 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   box-sizing: border-box !important;
   border: 2px solid #6B6D70 !important;
   border-radius: 4px !important;
-  background: rgba(0,0,1,0) !important;
+  background: transparent !important;
   font: normal normal 400 1rem/calc(6px + 2.125ex + 6px) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   text-indent: 0 !important;
-  color: undefined !important;
+  color: #010205 !important;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
   grid-area: 1/1/1/-1 !important;
   padding: 8px 16px !important;
@@ -2056,9 +2059,10 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   }
 }
 
-@supports (-webkit-touch-callout: none) {
+@supports (-webkit-hyphens: none) {
   ::slotted(input) {
-    color: #010205 !important;
+    background: rgba(0,0,1,0) !important;
+    color: initial !important;
   }
 }
 
