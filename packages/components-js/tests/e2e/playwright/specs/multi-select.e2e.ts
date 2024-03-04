@@ -967,6 +967,8 @@ test.describe('keyboard and click events', () => {
       const button = await page.$('p-button');
 
       await setValue(page, ['a']);
+      await waitForStencilLifecycle(page);
+
       const resetButton = await getResetButton(page);
       const inputElement = await getInput(page);
 
