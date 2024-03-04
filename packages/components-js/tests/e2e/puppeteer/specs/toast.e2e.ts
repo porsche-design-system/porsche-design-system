@@ -7,6 +7,7 @@ import {
   waitForStencilLifecycle,
 } from '../helpers';
 import type { ToastMessage } from '@porsche-design-system/components/dist/types/bundle';
+import { Components } from '@porsche-design-system/components/src/components';
 
 const TOAST_TIMEOUT_DURATION_OVERRIDE = 1000;
 const ANIMATION_DURATION = 600;
@@ -48,7 +49,7 @@ const addMessage = async (message?: Partial<ToastMessage>): Promise<void> => {
   };
 
   await page.evaluate(async (msg: ToastMessage) => {
-    document.querySelector('p-toast').addMessage(msg);
+    await (document.querySelector('p-toast') as HTMLPToastElement).addMessage(msg);
   }, msg);
 
   await waitForStencilLifecycle(page);
@@ -60,9 +61,9 @@ describe('accessibility', () => {
     await initToastWithToastItem();
     const toastItemMessage = await getToastItemMessage();
 
+    expect(await getAttribute(toastItemMessage, 'aria-live')).toBeDefined();
     await expectA11yToMatchSnapshot(page, toastItemMessage, {
       interestingOnly: false,
     });
-    expect(await getAttribute(toastItemMessage, 'aria-live')).toBeDefined();
   });
 });
