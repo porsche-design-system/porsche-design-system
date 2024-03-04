@@ -1,6 +1,7 @@
 import { MultiSelect } from './multi-select';
 import * as multiSelectUtils from './multi-select-utils';
 import * as getClosestHTMLElementUtils from '../../../utils/dom/getClosestHTMLElement';
+import * as getShadowRootHTMLElementUtils from '../../../utils/dom/getShadowRootHTMLElement';
 
 const initComponent = (): MultiSelect => {
   const component = new MultiSelect();
@@ -18,7 +19,7 @@ describe('connectedCallback', () => {
     expect(getClosestHTMLElementSpy).toBeCalledWith(component.host, 'form');
     expect(component['form']).toBe(null);
     expect(component['isWithinForm']).toBe(false);
-    expect(addEventListenerSpy).toBeCalledTimes(1);
+    expect(addEventListenerSpy).toBeCalledWith('mousedown', component['onClickOutside'], true);
   });
 
   it('should set isWithinForm if is within form', () => {
@@ -33,7 +34,7 @@ describe('componentWillLoad', () => {
   it('should call initNativeSelect() with correct parameters if is within form', () => {
     const component = initComponent();
     component['isWithinForm'] = true;
-    const initNativeSelectSpy = jest.spyOn(multiSelectUtils, 'initNativeSelect');
+    const initNativeSelectSpy = jest.spyOn(multiSelectUtils, 'initNativeMultiSelect');
     component.componentWillLoad();
     expect(initNativeSelectSpy).toBeCalledWith(component.host, undefined, false, false);
   });
@@ -41,7 +42,7 @@ describe('componentWillLoad', () => {
   it('should not call initNativeSelect() if is not within form', () => {
     const component = initComponent();
     component['isWithinForm'] = false;
-    const initNativeSelectSpy = jest.spyOn(multiSelectUtils, 'initNativeSelect');
+    const initNativeSelectSpy = jest.spyOn(multiSelectUtils, 'initNativeMultiSelect');
     component.componentWillLoad();
     expect(initNativeSelectSpy).not.toBeCalled();
   });
@@ -54,12 +55,26 @@ describe('componentWillLoad', () => {
   });
 });
 
+describe('componentDidLoad', () => {
+  it('should call getShadowRootHTMLElement() with correct parameters and add event listener', () => {
+    const component = initComponent();
+    const slot = document.createElement('slot');
+    const slotSpy = jest.spyOn(slot, 'addEventListener');
+    const getShadowRootHTMLElementSpy = jest
+      .spyOn(getShadowRootHTMLElementUtils, 'getShadowRootHTMLElement')
+      .mockReturnValueOnce(slot);
+    component.componentDidLoad();
+    expect(getShadowRootHTMLElementSpy).toHaveBeenCalledWith(component.host, 'slot');
+    expect(slotSpy).toHaveBeenCalledTimes(1);
+  });
+});
+
 describe('componentWillUpdate', () => {
   it('should call syncNativeSelect() with correct parameters if is within form', () => {
     const component = initComponent();
     component['nativeSelect'] = document.createElement('select');
     component['isWithinForm'] = true;
-    const syncNativeSelectSpy = jest.spyOn(multiSelectUtils, 'syncNativeSelect');
+    const syncNativeSelectSpy = jest.spyOn(multiSelectUtils, 'syncNativeMultiSelect');
     component.componentWillUpdate();
     expect(syncNativeSelectSpy).toBeCalledWith(component['nativeSelect'], undefined, false, false);
   });
@@ -67,7 +82,7 @@ describe('componentWillUpdate', () => {
   it('should not call syncNativeSelect() if is not within form', () => {
     const component = initComponent();
     component['isWithinForm'] = false;
-    const syncNativeSelectSpy = jest.spyOn(multiSelectUtils, 'syncNativeSelect');
+    const syncNativeSelectSpy = jest.spyOn(multiSelectUtils, 'syncNativeMultiSelect');
     component.componentWillUpdate();
     expect(syncNativeSelectSpy).not.toBeCalled();
   });

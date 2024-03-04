@@ -4,7 +4,7 @@ import type { MultiSelectUpdateEventDetail } from '@porsche-design-system/compon
 @Component({
   selector: 'page-multi-select-example-controlled',
   template: `
-    <p-multi-select name="options" label="Some Label" [value]="selectedValues" (update)="handleUpdate($event)">
+    <p-multi-select name="options" label="Some Label" [value]="selectedValues" (update)="onUpdate($event)">
       <p-multi-select-option value="a">Option A</p-multi-select-option>
       <p-multi-select-option value="b">Option B</p-multi-select-option>
       <p-multi-select-option value="c">Option C</p-multi-select-option>
@@ -12,9 +12,8 @@ import type { MultiSelectUpdateEventDetail } from '@porsche-design-system/compon
       <p-multi-select-option value="e">Option E</p-multi-select-option>
       <p-multi-select-option value="f">Option F</p-multi-select-option>
     </p-multi-select>
-    <button type="submit">Submit</button>
 
-    <p>{{ debugText }}</p>
+    <p-text>{{ debugText }}</p-text>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
@@ -24,7 +23,7 @@ export class MultiSelectExampleControlledComponent {
     return `Selected values: ${this.selectedValues.join(', ') || 'none'}`;
   }
 
-  handleUpdate(e: CustomEvent<MultiSelectUpdateEventDetail>) {
+  onUpdate(e: CustomEvent<MultiSelectUpdateEventDetail>) {
     this.selectedValues = e.detail.value;
   }
 }

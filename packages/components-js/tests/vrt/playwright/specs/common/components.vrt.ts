@@ -13,7 +13,7 @@ import {
 const components = (TAG_NAMES as unknown as TagName[])
   .filter((tagName) => {
     // TODO: should not needed to be maintained like this, e.g. find a logic here with matching names or use/extend getComponentMeta() accordingly
-    return !/item$|-table-|-select-wrapper-|multi-select-option$/.test(tagName);
+    return !/item$|-table-|-select-wrapper-|multi-select-option|select-option$/.test(tagName);
   })
   .map((tagName) => {
     return tagName.substring(2);
@@ -36,7 +36,7 @@ const revertAutoFocus = async (page: Page, component: string): Promise<void> => 
 };
 
 test(`should have certain amount of components`, () => {
-  expect(components.length).toBe(53);
+  expect(components.length).toBe(54);
 });
 
 components.forEach((component) => {

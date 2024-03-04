@@ -27,6 +27,7 @@ const tagNamesWithSlottedAnchorArray: TagName[] = [
   'p-pin-code',
   'p-popover',
   'p-radio-button-wrapper',
+  'p-select',
   'p-select-wrapper',
   'p-switch',
   'p-table',
