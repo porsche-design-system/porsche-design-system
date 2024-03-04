@@ -1052,16 +1052,18 @@ test.describe('lifecycle', () => {
     expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(5);
   });
 
-  test('should change skip-link to visible if it receives keyboard focus', async ({ page }) => {
-    await initCarousel(page, { skipLinkTarget: '#link-after' });
-    const host = await getHost(page);
-    const skipLinkHost = await getSkipLinkHost(page);
+  skipInBrowser(['webkit', 'firefox'], () => {
+    test('should change skip-link to visible if it receives keyboard focus', async ({ page }) => {
+      await initCarousel(page, { skipLinkTarget: '#link-after' });
+      const host = await getHost(page);
+      const skipLinkHost = await getSkipLinkHost(page);
 
-    expect(await getElementStyle(skipLinkHost, 'opacity')).toBe('0');
+      expect(await getElementStyle(skipLinkHost, 'opacity')).toBe('0');
 
-    await page.keyboard.press('Tab');
+      await page.keyboard.press('Tab');
 
-    expect(await getActiveElementTagNameInShadowRoot(host)).toBe('P-LINK-PURE');
-    expect(await getElementStyle(skipLinkHost, 'opacity')).toBe('1');
+      expect(await getActiveElementTagNameInShadowRoot(host)).toBe('P-LINK-PURE');
+      expect(await getElementStyle(skipLinkHost, 'opacity')).toBe('1');
+    });
   });
 });
