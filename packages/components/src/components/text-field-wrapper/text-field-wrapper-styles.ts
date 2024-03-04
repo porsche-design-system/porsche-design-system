@@ -3,7 +3,13 @@ import type { TextFieldWrapperUnitPosition } from './text-field-wrapper-utils';
 import { isType, showCustomCalendarOrTimeIndicator } from './text-field-wrapper-utils';
 import type { FormState } from '../../utils/form/form-state';
 import { getCss } from '../../utils';
-import { addImportantToEachRule, colorSchemeStyles, getHiddenTextJssStyle, hostHiddenStyles } from '../../styles';
+import {
+  addImportantToEachRule,
+  colorSchemeStyles,
+  getHiddenTextJssStyle,
+  getThemedColors,
+  hostHiddenStyles,
+} from '../../styles';
 import {
   formButtonOrIconPadding,
   formElementLayeredGap,
@@ -42,6 +48,7 @@ export const getComponentCss = (
   const isSearchWithoutFormOrSubmitButton = isSearch && (!isWithinForm || !hasSubmitButton);
   const isSearchWithForm = isSearch && isWithinForm;
   const isCalendarOrTimeWithCustomIndicator = showCustomCalendarOrTimeIndicator(isCalendar, isTime);
+  const { primaryColor } = getThemedColors(theme);
 
   return getCss({
     '@global': {
@@ -62,6 +69,14 @@ export const getComponentCss = (
           // TODO: move into getSlottedTextFieldTextareaSelectStyles()
           ...(isNumber && {
             MozAppearance: 'textfield', // hides up/down spin button for Firefox
+          }),
+          ...((isCalendar || isTime) && {
+            background: 'rgba(0,0,1,0)', // for native placeholder color in safari, `transparent` or `rgba(0,0,0,0)` won't work
+            color: undefined, // for native placeholder color in safari this can't be set
+            // conditional hopefully for mobile safari, only
+            '@supports (-webkit-touch-callout: none)': {
+              color: primaryColor,
+            },
           }),
         }),
         // TODO: move into getSlottedTextFieldTextareaSelectStyles()

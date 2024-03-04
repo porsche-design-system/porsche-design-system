@@ -3,15 +3,13 @@
 exports[`getSlottedTextFieldTextareaSelectStyles() should return correct jss style for child: input, state: error, isLoading: false, theme: light and additionalDefaultJssStyle: undefined 1`] = `
 {
   "::slotted(input)": {
-    "@supports (-webkit-touch-callout: none)": {
-      "background": "transparent",
-      "color": "#010205",
-    },
     "WebkitAppearance": "none",
     "appearance": "none",
+    "background": "transparent",
     "border": "2px solid #CC1922",
     "borderRadius": "4px",
     "boxSizing": "border-box",
+    "color": "#010205",
     "display": "block",
     "font": "normal normal 400 1rem/calc(6px + 2.125ex + 6px) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
     "height": "calc(calc(6px + 2.125ex) + 10px + 2px * 2 + 8px * 2)",
@@ -45,15 +43,13 @@ exports[`getSlottedTextFieldTextareaSelectStyles() should return correct jss sty
 exports[`getSlottedTextFieldTextareaSelectStyles() should return correct jss style for child: input, state: none, isLoading: false, theme: light and additionalDefaultJssStyle: undefined 1`] = `
 {
   "::slotted(input)": {
-    "@supports (-webkit-touch-callout: none)": {
-      "background": "transparent",
-      "color": "#010205",
-    },
     "WebkitAppearance": "none",
     "appearance": "none",
+    "background": "transparent",
     "border": "2px solid #6B6D70",
     "borderRadius": "4px",
     "boxSizing": "border-box",
+    "color": "#010205",
     "display": "block",
     "font": "normal normal 400 1rem/calc(6px + 2.125ex + 6px) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
     "height": "calc(calc(6px + 2.125ex) + 10px + 2px * 2 + 8px * 2)",
@@ -87,15 +83,13 @@ exports[`getSlottedTextFieldTextareaSelectStyles() should return correct jss sty
 exports[`getSlottedTextFieldTextareaSelectStyles() should return correct jss style for child: input, state: none, isLoading: true, theme: light and additionalDefaultJssStyle: undefined 1`] = `
 {
   "::slotted(input)": {
-    "@supports (-webkit-touch-callout: none)": {
-      "background": "transparent",
-      "color": "#010205",
-    },
     "WebkitAppearance": "none",
     "appearance": "none",
+    "background": "transparent",
     "border": "2px solid #6B6D70",
     "borderRadius": "4px",
     "boxSizing": "border-box",
+    "color": "#010205",
     "display": "block",
     "font": "normal normal 400 1rem/calc(6px + 2.125ex + 6px) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
     "height": "calc(calc(6px + 2.125ex) + 10px + 2px * 2 + 8px * 2)",
@@ -124,15 +118,13 @@ exports[`getSlottedTextFieldTextareaSelectStyles() should return correct jss sty
 exports[`getSlottedTextFieldTextareaSelectStyles() should return correct jss style for child: input, state: success, isLoading: false, theme: light and additionalDefaultJssStyle: undefined 1`] = `
 {
   "::slotted(input)": {
-    "@supports (-webkit-touch-callout: none)": {
-      "background": "transparent",
-      "color": "#010205",
-    },
     "WebkitAppearance": "none",
     "appearance": "none",
+    "background": "transparent",
     "border": "2px solid #197E10",
     "borderRadius": "4px",
     "boxSizing": "border-box",
+    "color": "#010205",
     "display": "block",
     "font": "normal normal 400 1rem/calc(6px + 2.125ex + 6px) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
     "height": "calc(calc(6px + 2.125ex) + 10px + 2px * 2 + 8px * 2)",
@@ -166,15 +158,13 @@ exports[`getSlottedTextFieldTextareaSelectStyles() should return correct jss sty
 exports[`getSlottedTextFieldTextareaSelectStyles() should return correct jss style for child: select, state: error, isLoading: false, theme: dark and additionalDefaultJssStyle: undefined 1`] = `
 {
   "::slotted(select)": {
-    "@supports (-webkit-touch-callout: none)": {
-      "background": "transparent",
-      "color": "#FBFCFF",
-    },
     "WebkitAppearance": "none",
     "appearance": "none",
+    "background": "transparent",
     "border": "2px solid #FC4040",
     "borderRadius": "4px",
     "boxSizing": "border-box",
+    "color": "#FBFCFF",
     "display": "block",
     "font": "normal normal 400 1rem/calc(6px + 2.125ex + 6px) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
     "height": "calc(calc(6px + 2.125ex) + 10px + 2px * 2 + 8px * 2)",
@@ -204,15 +194,13 @@ exports[`getSlottedTextFieldTextareaSelectStyles() should return correct jss sty
 exports[`getSlottedTextFieldTextareaSelectStyles() should return correct jss style for child: select, state: none, isLoading: false, theme: dark and additionalDefaultJssStyle: undefined 1`] = `
 {
   "::slotted(select)": {
-    "@supports (-webkit-touch-callout: none)": {
-      "background": "transparent",
-      "color": "#FBFCFF",
-    },
     "WebkitAppearance": "none",
     "appearance": "none",
+    "background": "transparent",
     "border": "2px solid #88898C",
     "borderRadius": "4px",
     "boxSizing": "border-box",
+    "color": "#FBFCFF",
     "display": "block",
     "font": "normal normal 400 1rem/calc(6px + 2.125ex + 6px) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
     "height": "calc(calc(6px + 2.125ex) + 10px + 2px * 2 + 8px * 2)",
@@ -242,15 +230,13 @@ exports[`getSlottedTextFieldTextareaSelectStyles() should return correct jss sty
 exports[`getSlottedTextFieldTextareaSelectStyles() should return correct jss style for child: select, state: success, isLoading: false, theme: dark and additionalDefaultJssStyle: undefined 1`] = `
 {
   "::slotted(select)": {
-    "@supports (-webkit-touch-callout: none)": {
-      "background": "transparent",
-      "color": "#FBFCFF",
-    },
     "WebkitAppearance": "none",
     "appearance": "none",
+    "background": "transparent",
     "border": "2px solid #09D087",
     "borderRadius": "4px",
     "boxSizing": "border-box",
+    "color": "#FBFCFF",
     "display": "block",
     "font": "normal normal 400 1rem/calc(6px + 2.125ex + 6px) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
     "height": "calc(calc(6px + 2.125ex) + 10px + 2px * 2 + 8px * 2)",
@@ -280,16 +266,14 @@ exports[`getSlottedTextFieldTextareaSelectStyles() should return correct jss sty
 exports[`getSlottedTextFieldTextareaSelectStyles() should return correct jss style for child: textarea, state: error, isLoading: false, theme: dark and additionalDefaultJssStyle: { bottom: 5 } 1`] = `
 {
   "::slotted(textarea)": {
-    "@supports (-webkit-touch-callout: none)": {
-      "background": "transparent",
-      "color": "#FBFCFF",
-    },
     "WebkitAppearance": "none",
     "appearance": "none",
+    "background": "transparent",
     "border": "2px solid #FC4040",
     "borderRadius": "4px",
     "bottom": 5,
     "boxSizing": "border-box",
+    "color": "#FBFCFF",
     "display": "block",
     "font": "normal normal 400 1rem/calc(6px + 2.125ex + 6px) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
     "height": "auto",
@@ -323,15 +307,13 @@ exports[`getSlottedTextFieldTextareaSelectStyles() should return correct jss sty
 exports[`getSlottedTextFieldTextareaSelectStyles() should return correct jss style for child: textarea, state: error, isLoading: false, theme: dark and additionalDefaultJssStyle: undefined 1`] = `
 {
   "::slotted(textarea)": {
-    "@supports (-webkit-touch-callout: none)": {
-      "background": "transparent",
-      "color": "#FBFCFF",
-    },
     "WebkitAppearance": "none",
     "appearance": "none",
+    "background": "transparent",
     "border": "2px solid #FC4040",
     "borderRadius": "4px",
     "boxSizing": "border-box",
+    "color": "#FBFCFF",
     "display": "block",
     "font": "normal normal 400 1rem/calc(6px + 2.125ex + 6px) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
     "height": "auto",
@@ -365,15 +347,13 @@ exports[`getSlottedTextFieldTextareaSelectStyles() should return correct jss sty
 exports[`getSlottedTextFieldTextareaSelectStyles() should return correct jss style for child: textarea, state: none, isLoading: false, theme: dark and additionalDefaultJssStyle: undefined 1`] = `
 {
   "::slotted(textarea)": {
-    "@supports (-webkit-touch-callout: none)": {
-      "background": "transparent",
-      "color": "#FBFCFF",
-    },
     "WebkitAppearance": "none",
     "appearance": "none",
+    "background": "transparent",
     "border": "2px solid #88898C",
     "borderRadius": "4px",
     "boxSizing": "border-box",
+    "color": "#FBFCFF",
     "display": "block",
     "font": "normal normal 400 1rem/calc(6px + 2.125ex + 6px) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
     "height": "auto",
@@ -407,15 +387,13 @@ exports[`getSlottedTextFieldTextareaSelectStyles() should return correct jss sty
 exports[`getSlottedTextFieldTextareaSelectStyles() should return correct jss style for child: textarea, state: success, isLoading: false, theme: dark and additionalDefaultJssStyle: undefined 1`] = `
 {
   "::slotted(textarea)": {
-    "@supports (-webkit-touch-callout: none)": {
-      "background": "transparent",
-      "color": "#FBFCFF",
-    },
     "WebkitAppearance": "none",
     "appearance": "none",
+    "background": "transparent",
     "border": "2px solid #09D087",
     "borderRadius": "4px",
     "boxSizing": "border-box",
+    "color": "#FBFCFF",
     "display": "block",
     "font": "normal normal 400 1rem/calc(6px + 2.125ex + 6px) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif",
     "height": "auto",
