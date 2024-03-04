@@ -32,8 +32,6 @@ type InitOptions = {
   skipLinkTarget?: string;
 };
 
-skipInBrowser(['webkit', 'firefox']);
-
 const initCarousel = (page: Page, opts?: InitOptions) => {
   const {
     aria,
@@ -609,6 +607,8 @@ test.describe('viewport change', () => {
 });
 
 test.describe('focus behavior', () => {
+  skipInBrowser(['firefox', 'webkit']);
+
   test('should have correct focus cycle for slidesPerPage=1', async ({ page }) => {
     await initCarousel(page, { amountOfSlides: 2, slidesPerPage: 1, withFocusableElements: true });
     const host = await getHost(page);
@@ -779,6 +779,8 @@ test.describe('events', () => {
 });
 
 test.describe('activeSlideIndex', () => {
+  skipInBrowser(['firefox', 'webkit']);
+
   test('should set active slide correctly on initialization', async ({ page }) => {
     await initCarousel(page, { activeSlideIndex: 2 });
     const [slide1, slide2, slide3] = await getSlides(page);
