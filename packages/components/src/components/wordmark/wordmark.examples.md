@@ -53,7 +53,7 @@ export default class Code extends Vue {
   config = { themeable: true };
 
   basicMarkup = `<p-wordmark></p-wordmark>`;
-  linkMarkup = `<p-wordmark href="https://www.porsche.com" aria="{ 'aria-label': 'Porsche Homepage' }"></p-wordmark>`;
+  linkMarkup = `<p-wordmark href="https://porsche.com" aria="{ 'aria-label': 'Porsche Homepage' }"></p-wordmark>`;
 
   size = 'small';
   sizes = WORDMARK_SIZES;
@@ -64,7 +64,7 @@ export default class Code extends Vue {
 
   eventsMarkup =
 `<p-wordmark
-  href="https://www.porsche.com"
+  href="https://porsche.com"
   onclick="alert('click'); return false;"
   onfocus="console.log('focus')"
   onfocusin="console.log('focusin')"
@@ -73,6 +73,6 @@ export default class Code extends Vue {
   aria="{ 'aria-label': 'Porsche Homepage' }"
 ></p-wordmark>`;
 
-  clickableAreaMarkup = `<p-wordmark href="https://www.porsche.com" aria="{ 'aria-label': 'Porsche Homepage' }" style="padding: 1.5rem"></p-wordmark>`;
+  clickableAreaMarkup = `<p-wordmark href="https://porsche.com" aria="{ 'aria-label': 'Porsche Homepage' }" style="padding: 1.5rem"></p-wordmark>`;
 }
 </script>

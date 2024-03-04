@@ -202,71 +202,71 @@ export default class Code extends Vue {
   ];
 
   withLabel =
-`<p-link-pure href="https://www.porsche.com">Some label</p-link-pure>
-<p-link-pure underline="true" href="https://www.porsche.com">Some label</p-link-pure>`;
+`<p-link-pure href="https://porsche.com">Some label</p-link-pure>
+<p-link-pure underline="true" href="https://porsche.com">Some label</p-link-pure>`;
 
   withoutLabel =
-`<p-link-pure hide-label="true" href="https://www.porsche.com">Some label</p-link-pure>
-<p-link-pure hide-label="true" underline="true" href="https://www.porsche.com">Some label</p-link-pure>`;
+`<p-link-pure hide-label="true" href="https://porsche.com">Some label</p-link-pure>
+<p-link-pure hide-label="true" underline="true" href="https://porsche.com">Some label</p-link-pure>`;
 
   responsive =
-`<p-link-pure href="https://www.porsche.com" hide-label="{ base: true, l: false }">Some label</p-link-pure>`;
+`<p-link-pure href="https://porsche.com" hide-label="{ base: true, l: false }">Some label</p-link-pure>`;
 
   accessibility = 
-`<p-link-pure href="https://www.porsche.com" aria="{ 'aria-label': 'Some more descriptive label' }">Some label</p-link-pure>`;
+`<p-link-pure href="https://porsche.com" aria="{ 'aria-label': 'Some more descriptive label' }">Some label</p-link-pure>`;
 
   withoutIcon =
-`<p-link-pure icon="none" href="https://www.porsche.com">Some label</p-link-pure>
-<p-link-pure icon="none" underline="true" href="https://www.porsche.com">Some label</p-link-pure>`;
+`<p-link-pure icon="none" href="https://porsche.com">Some label</p-link-pure>
+<p-link-pure icon="none" underline="true" href="https://porsche.com">Some label</p-link-pure>`;
 
   size = 'medium';
   sizes = TEXT_SIZES;
   get sizeMarkup() {
     const style =this.size === 'inherit' ? ' style="font-size: 3rem;"' : '';
-    return `<p-link-pure href="https://www.porsche.com" size="${this.size}"${style}>Some label</p-link-pure>`;
+    return `<p-link-pure href="https://porsche.com" size="${this.size}"${style}>Some label</p-link-pure>`;
   }
 
   sizeResponsive =
-`<p-link-pure href="https://www.porsche.com" size="{ base: 'small', l: 'medium' }">Some label</p-link-pure>`;
+`<p-link-pure href="https://porsche.com" size="{ base: 'small', l: 'medium' }">Some label</p-link-pure>`;
 
   routing =
 `<p-link-pure>
-  <a href="https://www.porsche.com">Some label</a>
+  <a href="https://porsche.com">Some label</a>
 </p-link-pure>`;
 
   activeHref =
-`<p-link-pure active="true" href="https://www.porsche.com">Some label</p-link-pure>`;
+`<p-link-pure active="true" href="https://porsche.com">Some label</p-link-pure>`;
 
   activeWithoutHref =
 `<p-link-pure active="true">Some label</p-link-pure>`;
 
   icon =
-`<p-link-pure href="https://www.porsche.com" icon="phone">Some label</p-link-pure>
-<p-link-pure icon-source="${require('../../assets/icon-custom-kaixin.svg')}" hide-label="true" href="https://www.porsche.com">Some label</p-link-pure>`;
+`<p-link-pure href="https://porsche.com" icon="phone">Some label</p-link-pure>
+<p-link-pure icon-source="${require('../../assets/icon-custom-kaixin.svg')}" hide-label="true" href="https://porsche.com">Some label</p-link-pure>`;
 
   clickableArea =
-`<p-link-pure href="https://www.porsche.com" style="padding: 1rem;">Some label</p-link-pure>
-<p-link-pure href="https://www.porsche.com" hide-label="true" style="padding: 1rem;">Some label</p-link-pure>
+`<p-link-pure href="https://porsche.com" style="padding: 1rem;">Some label</p-link-pure>
+<p-link-pure href="https://porsche.com" hide-label="true" style="padding: 1rem;">Some label</p-link-pure>
 <p-link-pure style="padding: 1rem;">
-  <a href="https://www.porsche.com">Some label</a>
+  <a href="https://porsche.com">Some label</a>
 </p-link-pure>
 <p-link-pure hide-label="true" style="padding: 1rem;">
-  <a href="https://www.porsche.com">Some label</a>
+  <a href="https://porsche.com">Some label</a>
 </p-link-pure>`;
 
   alignLabel = 'start';
   alignLabels = [...ALIGN_LABELS.map(item => ALIGN_LABELS_DEPRECATED.includes(item) ? item + ' (deprecated)' : item), "{ base: 'start', l: 'end' }"];
   get alignLabelMarkup() {
-    return `<p-link-pure align-label="${this.alignLabel}" href="https://www.porsche.com">Some label</p-link-pure>`;
+    return `<p-link-pure align-label="${this.alignLabel}" href="https://porsche.com">Some label</p-link-pure>`;
   };
 
   get stretchMarkup() {
-    return `<p-link-pure ${this.stretch} href="https://www.porsche.com">Some label</p-link-pure>`;
+    return `<p-link-pure ${this.stretch} href="https://porsche.com">Some label</p-link-pure>`;
   };
 
   events =
 `<p-link-pure
-  href="https://www.porsche.com"
+  href="https://porsche.com"
   onclick="alert('click'); return false;"
   onfocus="console.log('focus')"
   onfocusin="console.log('focusin')"
@@ -275,9 +275,9 @@ export default class Code extends Vue {
 >Some label</p-link-pure>`;
 
   taborder =
-`<p-link-pure href="https://www.porsche.com">Some label</p-link-pure>
-<p-link-pure href="https://www.porsche.com" tabindex="-1">Some label</p-link-pure>
-<p-link-pure href="https://www.porsche.com">Some label</p-link-pure>`;
+`<p-link-pure href="https://porsche.com">Some label</p-link-pure>
+<p-link-pure href="https://porsche.com" tabindex="-1">Some label</p-link-pure>
+<p-link-pure href="https://porsche.com">Some label</p-link-pure>`;
 }
 </script>
 

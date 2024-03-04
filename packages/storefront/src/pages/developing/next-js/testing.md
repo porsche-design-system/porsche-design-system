@@ -207,7 +207,7 @@ uses default `roles`.
 For example a `<button>` gets the role `button` without explicitly setting the attribute. To achieve this it uses
 [aria-query](https://github.com/A11yance/aria-query) internally which replicates the
 [Accessibility Tree](https://developer.mozilla.org/en-US/docs/Glossary/Accessibility_tree), see
-[documentation](https://testing-library.com/docs/guide-which-query/).
+[documentation](https://testing-library.com/docs/guide-which-query).
 
 Therefore, we provide the `getByRoleShadowed` utility function that can be used as a drop-in replacement for
 `getByRole`.

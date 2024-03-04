@@ -137,8 +137,8 @@
           >
         </li>
         <li>
-          <a href="https://www.aleksandrhovhannisyan.com/blog/dont-use-a-fixed-line-height/#solution-2-use-the-ex-unit"
-            >https://www.aleksandrhovhannisyan.com/blog/dont-use-a-fixed-line-height/#solution-2-use-the-ex-unit</a
+          <a href="https://aleksandrhovhannisyan.com/blog/dont-use-a-fixed-line-height/#solution-2-use-the-ex-unit"
+            >https://aleksandrhovhannisyan.com/blog/dont-use-a-fixed-line-height/#solution-2-use-the-ex-unit</a
           >
         </li>
         <li>
@@ -147,8 +147,8 @@
           >
         </li>
         <li>
-          <a href="https://www.joshwcomeau.com/css/surprising-truth-about-pixels-and-accessibility/"
-            >https://www.joshwcomeau.com/css/surprising-truth-about-pixels-and-accessibility/</a
+          <a href="https://joshwcomeau.com/css/surprising-truth-about-pixels-and-accessibility/"
+            >https://joshwcomeau.com/css/surprising-truth-about-pixels-and-accessibility/</a
           >
         </li>
       </ul>

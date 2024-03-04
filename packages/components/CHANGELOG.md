@@ -9,7 +9,7 @@ All notable changes to this project will be documented in this file and publishe
 - `@porsche-design-system/components-react`
 - `@porsche-design-system/components-vue`
 
-The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), and this project adheres to
+The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), and this project adheres to
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### [Unreleased]
@@ -2532,7 +2532,7 @@ color contrast and might even be removed in an upcoming major release again.
 
 ### [2.0.0] - 2021-04-13
 
-In keeping with [Semver](https://semver.org/), Porsche Design System v2.0.0 was released due to changes in the API,
+In keeping with [Semver](https://semver.org), Porsche Design System v2.0.0 was released due to changes in the API,
 fundamental changes in loading behavior and others. With our new major version `v2.0.0` there are some important changes
 that you should watch out for. To make the migration from `v1.5.x` to our current `v2.0.0` easier, we offer a few
 guidelines.

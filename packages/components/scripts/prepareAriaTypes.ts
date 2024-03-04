@@ -11,7 +11,7 @@ const prepareAriaTypes = (): void => {
   const ariaTypes = `export type AriaAttributes = ${ariaRawTypes
     .replace(
       /}/g,
-      '  /** All the WAI-ARIA 1.1 role attribute values from https://www.w3.org/TR/wai-aria-1.1/#role_definitions */\n  role?: AriaRole;\n}'
+      '  /** All the WAI-ARIA 1.1 role attribute values from https://w3.org/TR/wai-aria-1.1/#role_definitions */\n  role?: AriaRole;\n}'
     )
     .replace(/ {8}/g, '  ')
     .replace(/ {4}/g, '')};`;

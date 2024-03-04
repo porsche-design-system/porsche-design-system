@@ -76,7 +76,7 @@ the slotted link must be labeled with both the product name, its price and optio
     :heading="'Some product'"
     :price="'1.911,00 €'"
     :description="'Some description'"
-    :href="'https://www.porsche.com'"
+    :href="'https://porsche.com'"
     :liked="liked"
     @like="handleLike"
     :theme="theme"
@@ -100,7 +100,7 @@ export default class Code extends Vue {
   imgSrcLarge = 'https://porsche-design-system.github.io/porsche-design-system/weekender@2x.webp';
   imgSrc2 = 'https://porsche-design-system.github.io/porsche-design-system/placeholder_800x900.svg';
   img = `<img src="${this.imgSrc}" alt="Some alt text" />`;
-  link = `<a slot="anchor" href="https://www.porsche.com">Weekender, sale price 718,00 €, original price <s>911,00 €</s></a>`;
+  link = `<a slot="anchor" href="https://porsche.com">Weekender, sale price 718,00 €, original price <s>911,00 €</s></a>`;
   headerSlot = `<p-tag slot="header" color="background-base">New</p-tag>`;
 
   liked = false;

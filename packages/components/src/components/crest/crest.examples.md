@@ -46,11 +46,11 @@ import Component from 'vue-class-component';
 @Component
 export default class Code extends Vue {
   basicMarkup = `<p-crest></p-crest>`;
-  linkMarkup = `<p-crest href="https://www.porsche.com" aria="{ 'aria-label': 'Porsche Homepage' }"></p-crest>`;
+  linkMarkup = `<p-crest href="https://porsche.com" aria="{ 'aria-label': 'Porsche Homepage' }"></p-crest>`;
 
   eventsMarkup =
 `<p-crest
-  href="https://www.porsche.com"
+  href="https://porsche.com"
   onclick="alert('click'); return false;"
   onfocus="console.log('focus')"
   onfocusin="console.log('focusin')"
@@ -58,6 +58,6 @@ export default class Code extends Vue {
   onfocusout="console.log('focusout')"
 ></p-crest>`;
 
-  clickableAreaMarkup = `<p-crest href="https://www.porsche.com" aria="{ 'aria-label': 'Porsche Homepage' }" style="padding: 16px"></p-crest>`;
+  clickableAreaMarkup = `<p-crest href="https://porsche.com" aria="{ 'aria-label': 'Porsche Homepage' }" style="padding: 16px"></p-crest>`;
 }
 </script>

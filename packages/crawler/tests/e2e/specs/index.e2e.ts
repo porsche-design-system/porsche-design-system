@@ -26,7 +26,7 @@ it('should retrieve children and hostPdsComponent correctly', async () => {
 <p-banner theme="dark">
   <span slot="title">Some notification title</span>
   <span slot="description">
-    Some notification description. And some <a href="https://www.porsche.com/">LINK</a> element.
+    Some notification description. And some <a href="https://porsche.com/">LINK</a> element.
   </span>
 </p-banner>`,
   });

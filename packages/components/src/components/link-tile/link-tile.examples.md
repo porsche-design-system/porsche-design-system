@@ -126,14 +126,14 @@ export default class Code extends Vue {
   imgAttributes = 'width="3000" height="2000" alt="Some alt text"';
 
   basic = `<p-link-tile
-  href="https://www.porsche.com"
+  href="https://porsche.com"
   label="Some label"
   description="Some Description"
 >
   <img src="${require('@/assets/image-grid.png')}" ${this.imgAttributes} />
 </p-link-tile>
 <p-link-tile
-  href="https://www.porsche.com"
+  href="https://porsche.com"
   label="Some label"
   description="Some Description"
 >
@@ -144,7 +144,7 @@ export default class Code extends Vue {
 </p-link-tile>`;
 
   accessibility = `<p-link-tile
-  href="https://www.porsche.com"
+  href="https://porsche.com"
   label="Some label"
   aria="{ 'aria-label': 'Some more descriptive label' }"
   description="Some Description"
@@ -185,7 +185,7 @@ export default class Code extends Vue {
   gradients = [false, true];
   get gradientMarkup() { 
   return `<p-link-tile
-  href="https://www.porsche.com"
+  href="https://porsche.com"
   label="Some label"
   description="Some Description"
   gradient="${this.gradient}"
@@ -193,7 +193,7 @@ export default class Code extends Vue {
   <img src="${require('@/assets/image-grid-split.png')}" ${this.imgAttributes} />
 </p-link-tile>
 <p-link-tile
-  href="https://www.porsche.com"
+  href="https://porsche.com"
   label="Some label"
   description="Some Description"
   compact="true"
@@ -206,7 +206,7 @@ export default class Code extends Vue {
   backgrounds = [...THEMES];
   get backgroundMarkup() { 
   return `<p-link-tile
-  href="https://www.porsche.com"
+  href="https://porsche.com"
   label="Some label"
   description="Some Description"
   background="${this.background}"
@@ -214,7 +214,7 @@ export default class Code extends Vue {
   <img src="${require('@/assets/image-grid-split-light.png')}" ${this.imgAttributes} />
 </p-link-tile>
 <p-link-tile
-  href="https://www.porsche.com"
+  href="https://porsche.com"
   label="Some label"
   description="Some Description"
   compact="true"
@@ -227,7 +227,7 @@ export default class Code extends Vue {
   compacts = [false, true, "{ base: true, m: false }"];
   get compactMarkup() {
     return `<p-link-tile
-  href="https://www.porsche.com"
+  href="https://porsche.com"
   label="Some label"
   description="Some Description"
   compact="${this.compact}"
@@ -239,7 +239,7 @@ export default class Code extends Vue {
   aligns = TILE_ALIGNS;
   get alignMarkup() {
     return `<p-link-tile
-  href="https://www.porsche.com"
+  href="https://porsche.com"
   label="Some label"
   description="Some Description"
   compact="true"
@@ -252,7 +252,7 @@ export default class Code extends Vue {
   hyphens = ['auto', 'manual', 'none'];
   get hyphenMarkup() {
     return `<p-link-tile
-  href="https://www.porsche.com"
+  href="https://porsche.com"
   label="Some label"
   description="An extra&shy;ordinarily Porsche"
   compact="true"

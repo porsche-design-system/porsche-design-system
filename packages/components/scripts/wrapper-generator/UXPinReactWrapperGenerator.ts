@@ -454,7 +454,7 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
 
   // Component declaration can be preceded by JSDoc comments
   // to customize the behavior in UXPin Editor or Preview (E.g.: render in a React Portal)
-  // https://www.uxpin.com/docs/merge/adjusting-components/
+  // https://uxpin.com/docs/merge/adjusting-components/
   private insertComponentAnnotation(cleanedComponent: string, component: TagName): string {
     const comments = this.getAllComponentComments(component);
     if (comments.length) {

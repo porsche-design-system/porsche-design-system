@@ -98,7 +98,7 @@ is not applicable for testing with `Karma`.
 There are different approaches to inject the partial into `karma-context.html`:
 
 - `karma.conf.js` option
-  [customContextFile](http://karma-runner.github.io/6.4/config/configuration-file.html#customcontextfile) would be
+  [customContextFile](https://karma-runner.github.io/6.4/config/configuration-file.html#customcontextfile) would be
   easiest, but this is overridden by `@angular-devkit/build-angular/plugins/karma`
 - `karma.conf.js` custom middleware which injects the `getInitialStyles()` partial on the fly
 - manipulation of `karma-context.html` via `post-install` or within `karma.conf.js`
