@@ -232,33 +232,34 @@ test.describe('scrolling', () => {
     expect(await getScrollLeft(scrollArea)).toEqual(scrollDistanceLeft);
   });
 
-  test('should scroll to correct position if newly added item is set to current', async ({ page }) => {
-    skipInBrowser(['webkit']);
-    await initStepperHorizontal(page, { amount: 5, currentStep: 0, isWrapped: true });
-    const host = await getHost(page);
+  skipInBrowser(['webkit'], () => {
+    test('should scroll to correct position if newly added item is set to current', async ({ page }) => {
+      await initStepperHorizontal(page, { amount: 5, currentStep: 0, isWrapped: true });
+      const host = await getHost(page);
 
-    await host.evaluate((host) => {
-      const newStepperHorizontalItem = document.createElement('p-stepper-horizontal-item');
-      newStepperHorizontalItem.innerText = 'Step 6';
-      host.appendChild(newStepperHorizontalItem);
+      await host.evaluate((host) => {
+        const newStepperHorizontalItem = document.createElement('p-stepper-horizontal-item');
+        newStepperHorizontalItem.innerText = 'Step 6';
+        host.appendChild(newStepperHorizontalItem);
+      });
+      await waitForStencilLifecycle(page);
+      await sleep(CSS_ANIMATION_DURATION);
+
+      const [item1, , , , , item6] = await getStepItems(page);
+
+      const scrollArea = await getScrollArea(page);
+      const scrollAreaWidth = await getOffsetWidth(scrollArea);
+
+      await setProperty(item1, 'state', 'complete');
+      await setProperty(item6, 'state', 'current');
+      await waitForStencilLifecycle(page);
+      await sleep(CSS_ANIMATION_DURATION);
+
+      const item6Offset = await getOffsetLeft(item6);
+      const item6Width = await getOffsetWidth(item6);
+      const scrollDistanceLeft = item6Offset + item6Width + FOCUS_PADDING - scrollAreaWidth;
+      expect((await getScrollLeft(scrollArea)) - 1).toEqual(scrollDistanceLeft);
     });
-    await waitForStencilLifecycle(page);
-    await sleep(CSS_ANIMATION_DURATION);
-
-    const [item1, , , , , item6] = await getStepItems(page);
-
-    const scrollArea = await getScrollArea(page);
-    const scrollAreaWidth = await getOffsetWidth(scrollArea);
-
-    await setProperty(item1, 'state', 'complete');
-    await setProperty(item6, 'state', 'current');
-    await waitForStencilLifecycle(page);
-    await sleep(CSS_ANIMATION_DURATION);
-
-    const item6Offset = await getOffsetLeft(item6);
-    const item6Width = await getOffsetWidth(item6);
-    const scrollDistanceLeft = item6Offset + item6Width + FOCUS_PADDING - scrollAreaWidth;
-    expect((await getScrollLeft(scrollArea)) - 1).toEqual(scrollDistanceLeft);
   });
 });
 
