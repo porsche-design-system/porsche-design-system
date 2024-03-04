@@ -283,25 +283,8 @@ export const getElementIndex = (
 export const getElementInnerText = (element: ElementHandle): Promise<string> =>
   element.evaluate((el) => (el as HTMLElement).innerText);
 
-// TODO: Return the whole position object instead of destructuring
-export const getElementPositions = (
-  page: Page,
-  element: ElementHandle<HTMLElement | SVGElement>
-): Promise<{
-  top: number;
-  left: number;
-  bottom: number;
-  right: number;
-  x: number;
-  y: number;
-  width: number;
-  height: number;
-}> => {
-  return page.evaluate((element) => {
-    const { top, left, bottom, right, x, y, width, height } = element.getBoundingClientRect();
-    return { top, left, bottom, right, x, y, width, height };
-  }, element);
-};
+export const getElementPositions = (page: Page, element: ElementHandle<HTMLElement | SVGElement>): Promise<DOMRect> =>
+  page.evaluate((element) => element.getBoundingClientRect(), element);
 
 export const reattachElementHandle = (handle: ElementHandle<HTMLElement | SVGElement>): Promise<void> => {
   return handle.evaluate((el) => {
