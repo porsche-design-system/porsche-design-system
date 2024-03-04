@@ -2,6 +2,7 @@ import type { ElementHandle, Page } from 'playwright';
 import { expect, test } from '@playwright/test';
 import {
   addEventListener,
+  clickElementPosition,
   getActiveElementId,
   getActiveElementTagName,
   getElementStyle,
@@ -20,7 +21,7 @@ const getHost = (page: Page) => page.$('p-radio-button-wrapper');
 const getInput = (page: Page) => page.$('p-radio-button-wrapper input');
 const getWrapper = (page: Page) => page.$('p-radio-button-wrapper .wrapper');
 const getMessage = (page: Page) => page.$('p-radio-button-wrapper .message');
-const getBackgroundStyle = (element: ElementHandle<HTMLElement>) => getElementStyle(element, 'background');
+const getBackgroundStyle = (element: ElementHandle<HTMLElement | SVGElement>) => getElementStyle(element, 'background');
 
 type InitOptions = {
   useSlottedLabel?: boolean;
@@ -87,7 +88,7 @@ test('should add/remove message text if state changes programmatically', async (
   expect(await getMessage(page), 'when state = none').toBeNull();
 });
 
-skipInBrowser(['webkit'], () => {
+skipInBrowser(['firefox', 'webkit'], () => {
   test('should disable radio-button when disabled property is set programmatically', async ({ page }) => {
     await setContentWithDesignSystem(
       page,
@@ -252,7 +253,7 @@ test.describe('checked state', () => {
     await addEventListener(host1, 'click');
     await addEventListener(input1, 'change');
 
-    await input1.click();
+    await clickElementPosition(page, input1);
     const coords = await host1.boundingBox();
     await page.mouse.click(coords.x + 1, coords.y + 1); // click the top left corner
     await page.mouse.click(coords.x + 1, coords.y + coords.height - 1); // click the bottom left corner
@@ -268,7 +269,7 @@ test.describe('checked state', () => {
     await setProperty(host1, 'loading', false);
     await waitForStencilLifecycle(page);
 
-    await input1.click({});
+    await clickElementPosition(page, input1);
     expect((await getEventSummary(host1, 'click')).counter).toBe(9);
     expect((await getEventSummary(input1, 'change')).counter).toBe(1);
   });

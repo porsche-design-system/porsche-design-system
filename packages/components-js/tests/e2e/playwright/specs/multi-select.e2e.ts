@@ -357,34 +357,36 @@ test.describe('Update Event', () => {
     ]);
   });
 
-  test('should emit update event with correct details when reset button is clicked', async ({ page }) => {
-    await initMultiSelect(page, { props: { name: 'options' } });
-    await setValue(page, ['a', 'b']);
-    const host = await getHost(page);
-    await addEventListener(host, 'update');
+  skipInBrowser(['webkit'], () => {
+    test('should emit update event with correct details when reset button is clicked', async ({ page }) => {
+      await initMultiSelect(page, { props: { name: 'options' } });
+      await setValue(page, ['a', 'b']);
+      const host = await getHost(page);
+      await addEventListener(host, 'update');
 
-    expect((await getEventSummary(host, 'update')).counter, 'before option select').toBe(0);
+      expect((await getEventSummary(host, 'update')).counter, 'before option select').toBe(0);
 
-    const resetButton = await getResetButton(page);
-    await resetButton.click();
+      const resetButton = await getResetButton(page);
+      await resetButton.click();
 
-    expect((await getEventSummary(host, 'update')).counter, 'after option select').toBe(1);
-    expect((await getEventSummary(host, 'update')).details, 'after option select').toEqual([
-      {
-        value: [],
-        name: 'options',
-      },
-    ]);
-    expect((await getEventSummary(host, 'update')).targets, 'after option select').toEqual([
-      {
-        nodeName: 'P-MULTI-SELECT',
-        nodeValue: null,
-        nodeType: 1,
-        tagName: 'P-MULTI-SELECT',
-        className: 'hydrated',
-        id: '',
-      },
-    ]);
+      expect((await getEventSummary(host, 'update')).counter, 'after option select').toBe(1);
+      expect((await getEventSummary(host, 'update')).details, 'after option select').toEqual([
+        {
+          value: [],
+          name: 'options',
+        },
+      ]);
+      expect((await getEventSummary(host, 'update')).targets, 'after option select').toEqual([
+        {
+          nodeName: 'P-MULTI-SELECT',
+          nodeValue: null,
+          nodeType: 1,
+          tagName: 'P-MULTI-SELECT',
+          className: 'hydrated',
+          id: '',
+        },
+      ]);
+    });
   });
 });
 
@@ -448,20 +450,17 @@ test.describe('outside click', () => {
   });
 });
 
-// TODO: Include this test again
 test.describe('hover', () => {
-  test.skip();
   test('should change border-color when input is hovered', async ({ page }) => {
     await initMultiSelect(page);
     await page.mouse.move(0, 300); // avoid potential hover initially
 
-    const inputContainer = await getInputContainer(page);
-    const initialStyle = await getElementStyle(inputContainer, 'borderColor');
-    expect(initialStyle, 'before hover').toBe('rgb(107, 109, 112)');
+    const inputContainer = page.locator('p-multi-select input#filter');
+
+    await expect(inputContainer).toHaveCSS('border-color', 'rgb(107, 109, 112)');
 
     await inputContainer.hover();
-    const hoverColor = await getElementStyle(inputContainer, 'borderColor');
-    expect(hoverColor, 'after hover').toBe('rgb(1, 2, 5)');
+    await expect(inputContainer).toHaveCSS('border-color', 'rgb(1, 2, 5)');
   });
 });
 

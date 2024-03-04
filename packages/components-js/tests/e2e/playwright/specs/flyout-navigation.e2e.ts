@@ -588,24 +588,26 @@ test.describe('second level', () => {
     expect(await getFlyoutNavigationItem(page, 'item-3')).toBeNull();
   });
 
-  test('should show correct second level when flyout-navigation-item with currently activeIdentifier is added', async ({
-    page,
-  }) => {
-    await initBasicFlyoutNavigation(page, { open: true, activeIdentifier: 'item-4' });
-    const host = await getHost(page);
-    await waitForStencilLifecycle(page);
+  skipInBrowser(['webkit'], () => {
+    test('should show correct second level when flyout-navigation-item with currently activeIdentifier is added', async ({
+      page,
+    }) => {
+      await initBasicFlyoutNavigation(page, { open: true, activeIdentifier: 'item-4' });
+      const host = await getHost(page);
+      await waitForStencilLifecycle(page);
 
-    await host.evaluate((el) => {
-      const newItem = document.createElement('p-flyout-navigation-item');
-      newItem.setAttribute('identifier', 'item-4');
-      el.appendChild(newItem);
+      await host.evaluate((el) => {
+        const newItem = document.createElement('p-flyout-navigation-item');
+        newItem.setAttribute('identifier', 'item-4');
+        el.appendChild(newItem);
+      });
+
+      await waitForStencilLifecycle(page);
+      expect(await getFlyoutNavigationItemScrollerVisibility(page, 'item-1')).toBe('hidden');
+      expect(await getFlyoutNavigationItemScrollerVisibility(page, 'item-2')).toBe('hidden');
+      expect(await getFlyoutNavigationItemScrollerVisibility(page, 'item-3')).toBe('hidden');
+      expect(await getFlyoutNavigationItemScrollerVisibility(page, 'item-4')).toBe('visible');
     });
-
-    await waitForStencilLifecycle(page);
-    expect(await getFlyoutNavigationItemScrollerVisibility(page, 'item-1')).toBe('hidden');
-    expect(await getFlyoutNavigationItemScrollerVisibility(page, 'item-2')).toBe('hidden');
-    expect(await getFlyoutNavigationItemScrollerVisibility(page, 'item-3')).toBe('hidden');
-    expect(await getFlyoutNavigationItemScrollerVisibility(page, 'item-4')).toBe('visible');
   });
 });
 

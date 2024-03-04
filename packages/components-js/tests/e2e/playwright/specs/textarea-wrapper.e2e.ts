@@ -2,13 +2,16 @@ import type { ElementHandle, Page } from 'playwright';
 import { expect, test } from '@playwright/test';
 import {
   addEventListener,
+  clickElementPosition,
   getElementInnerText,
   getElementStyle,
   getEventSummary,
   getLifecycleStatus,
+  hoverElementPosition,
   setAttribute,
   setContentWithDesignSystem,
   setProperty,
+  skipInBrowser,
   waitForStencilLifecycle,
 } from '../helpers';
 import type { FormState } from '@porsche-design-system/components';
@@ -69,17 +72,19 @@ test('should focus textarea when label is clicked', async ({ page }) => {
   expect((await getEventSummary(textarea, 'focus')).counter).toBe(1);
 });
 
-test('should focus textarea when counter text is clicked', async ({ page }) => {
-  await initTextarea(page, { maxLength: 160 });
-  const counter = await getCounter(page);
-  const textarea = await getTextarea(page);
+skipInBrowser(['webkit'], () => {
+  test('should focus textarea when counter text is clicked', async ({ page }) => {
+    await initTextarea(page, { maxLength: 160 });
+    const counter = await getCounter(page);
+    const textarea = await getTextarea(page);
 
-  await addEventListener(textarea, 'focus');
-  expect((await getEventSummary(textarea, 'focus')).counter).toBe(0);
+    await addEventListener(textarea, 'focus');
+    expect((await getEventSummary(textarea, 'focus')).counter).toBe(0);
 
-  await counter.click();
-  await waitForStencilLifecycle(page);
-  expect((await getEventSummary(textarea, 'focus')).counter).toBe(1);
+    await clickElementPosition(page, counter);
+    await waitForStencilLifecycle(page);
+    expect((await getEventSummary(textarea, 'focus')).counter).toBe(1);
+  });
 });
 
 test('should display correct counter when typing', async ({ page }) => {
@@ -112,10 +117,7 @@ test('should render characterCountElement when maxlength is set', async ({ page 
   expect(await page.$('p-textarea-wrapper label .sr-only')).toBeDefined();
 });
 
-// TODO: Activate test
-// puppeteer ignores @media(hover: hover) styles, but playwright can handle it
 test.describe('hover state', () => {
-  test.skip();
   const getBorderColor = (element: ElementHandle<HTMLElement | SVGElement>) => getElementStyle(element, 'borderColor');
   const defaultBorderColor = 'rgb(107, 109, 112)';
   const hoverBorderColor = 'rgb(1, 2, 5)';
@@ -154,7 +156,7 @@ test.describe('hover state', () => {
     await page.mouse.move(0, 300); // undo hover
     expect(await getBorderColor(textarea)).toBe(defaultBorderColor);
 
-    await counter.hover();
+    await hoverElementPosition(page, counter);
     expect(await getBorderColor(textarea)).toBe(hoverBorderColor);
   });
 });

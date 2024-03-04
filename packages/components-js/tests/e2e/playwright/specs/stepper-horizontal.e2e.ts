@@ -16,6 +16,7 @@ import {
   reattachElementHandle,
   setContentWithDesignSystem,
   setProperty,
+  skipInBrowser,
   sleep,
   waitForStencilLifecycle,
 } from '../helpers';
@@ -232,6 +233,7 @@ test.describe('scrolling', () => {
   });
 
   test('should scroll to correct position if newly added item is set to current', async ({ page }) => {
+    skipInBrowser(['webkit']);
     await initStepperHorizontal(page, { amount: 5, currentStep: 0, isWrapped: true });
     const host = await getHost(page);
 

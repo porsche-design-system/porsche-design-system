@@ -9,6 +9,7 @@ import {
   getEventSummary,
   getLifecycleStatus,
   getProperty,
+  hoverElementPosition,
   setAttribute,
   setContentWithDesignSystem,
   setProperty,
@@ -400,7 +401,6 @@ test.describe('hover state', () => {
 
   // TODO: Activate again, hovering does not work over shadowRoot element
   test('should show hover state on input when unit/counter is hovered', async ({ page }) => {
-    test.skip();
     await initTextField(page, { maxLength: 20 });
     await page.mouse.move(0, 300); // avoid potential hover initially
     const counter = await getCounterOrUnit(page);
@@ -414,7 +414,7 @@ test.describe('hover state', () => {
     await page.mouse.move(0, 300); // undo hover
     expect(await getBorderColor(input)).toBe(defaultBorderColor);
 
-    await counter.hover();
+    await hoverElementPosition(page, counter);
     expect(await getBorderColor(input)).toBe(hoverBorderColor);
   });
 });

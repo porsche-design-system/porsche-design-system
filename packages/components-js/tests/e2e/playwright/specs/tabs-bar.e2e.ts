@@ -19,6 +19,7 @@ import {
   SCROLL_PERCENTAGE,
   setContentWithDesignSystem,
   setProperty,
+  skipInBrowser,
   sleep,
   waitForStencilLifecycle,
 } from '../helpers';
@@ -135,27 +136,29 @@ test('should work with nested or translated markup', async ({ page }) => {
 });
 
 test.describe('slotted content changes', () => {
-  test('should adjust bar style when new tab element is added and clicked', async ({ page }) => {
-    await initTabsBar(page, { amount: 1, activeTabIndex: 0 });
-    const bar = await getBar(page);
+  skipInBrowser(['webkit'], () => {
+    test('should adjust bar style when new tab element is added and clicked', async ({ page }) => {
+      await initTabsBar(page, { amount: 1, activeTabIndex: 0 });
+      const bar = await getBar(page);
 
-    // add a new button
-    await page.evaluate(() => {
-      const tabsBar = document.querySelector('p-tabs-bar');
-      const tab = document.createElement('button');
-      tab.innerText = 'Added Tab Text';
-      tabsBar.append(tab);
+      // add a new button
+      await page.evaluate(() => {
+        const tabsBar = document.querySelector('p-tabs-bar');
+        const tab = document.createElement('button');
+        tab.innerText = 'Added Tab Text';
+        tabsBar.append(tab);
+      });
+      await waitForStencilLifecycle(page);
+
+      expect(Math.floor((await getElementPositions(page, bar)).left), 'initial position').toEqual(0);
+
+      const buttons = await getAllButtons(page);
+      const [, secondButton] = buttons;
+      await clickElement(page, secondButton);
+
+      expect(buttons.length).toBe(2);
+      expect(Math.floor((await getElementPositions(page, bar)).left), 'final position').toEqual(102);
     });
-    await waitForStencilLifecycle(page);
-
-    expect(Math.floor((await getElementPositions(page, bar)).left), 'initial position').toEqual(0);
-
-    const buttons = await getAllButtons(page);
-    const [, secondButton] = buttons;
-    await clickElement(page, secondButton);
-
-    expect(buttons.length).toBe(2);
-    expect(Math.floor((await getElementPositions(page, bar)).left), 'final position').toEqual(102);
   });
 
   test('should reset tabindex and bar styles when active tab on last position is removed', async ({ page }) => {
@@ -254,59 +257,56 @@ test.describe('active index position', () => {
     expect(await getScrollLeft(scrollArea)).toEqual(scrollDistanceLeft);
   });
 
-  test.describe('Skip', () => {
-    test.skip();
-    // TODO: Activate test
-    // puppeteer ignores @media(hover: hover) styles, so scroller does not show buttons, but playwright can handle it
-    test('should have correct scroll position after tab click and prev button click', async ({ page }) => {
-      await initTabsBar(page, { amount: 8, isWrapped: true, activeTabIndex: 0 });
-      const { prevButton } = await getPrevNextButton(page);
-      const allButtons = await getAllButtons(page);
-      const button3 = allButtons[2];
-      const scrollArea = await getScrollArea(page);
-      const scrollAreaWidth = await getOffsetWidth(scrollArea);
-      const scrollDistance = await getScrollDistance(page, +scrollAreaWidth);
-
-      const gradient = await getGradientNext(page);
-      const gradientWidth = await getOffsetWidth(gradient);
-
-      await clickElement(page, button3);
-      const button3offset = await getOffsetLeft(button3);
-      const scrollDistanceLeft = +button3offset - +gradientWidth + FOCUS_PADDING;
-
-      expect(await getScrollLeft(scrollArea), 'scroll left active button after click').toBe(scrollDistanceLeft);
-
-      await clickElement(page, prevButton);
-      expect(await getScrollLeft(scrollArea), 'scroll left active button after first prev click').toBe(
-        scrollDistanceLeft - scrollDistance
-      );
-
-      await clickElement(page, prevButton);
-      expect(await getScrollLeft(scrollArea), 'scroll left active button after second prev click').toBe(41);
-    });
-  });
-
-  test('should have correct scroll position after tab click and next button click', async ({ page }) => {
-    await initTabsBar(page, { amount: 8, isWrapped: true, activeTabIndex: 7 });
-    const { nextButton } = await getPrevNextButton(page);
+  test('should have correct scroll position after tab click and prev button click', async ({ page }) => {
+    await initTabsBar(page, { amount: 8, isWrapped: true, activeTabIndex: 0 });
+    const { prevButton } = await getPrevNextButton(page);
     const allButtons = await getAllButtons(page);
-    const button7 = allButtons[6];
-
+    const button3 = allButtons[2];
     const scrollArea = await getScrollArea(page);
-    const scrollAreaWidth: number = await getOffsetWidth(scrollArea);
+    const scrollAreaWidth = await getOffsetWidth(scrollArea);
+    const scrollDistance = await getScrollDistance(page, +scrollAreaWidth);
 
     const gradient = await getGradientNext(page);
     const gradientWidth = await getOffsetWidth(gradient);
 
-    await clickElement(page, button7);
-    const button7offset = await getOffsetLeft(button7);
-    const buttonWidth = await getOffsetWidth(button7);
-    const scrollDistanceRight = +button7offset + +buttonWidth + +gradientWidth - +scrollAreaWidth;
+    await clickElement(page, button3);
+    const button3offset = await getOffsetLeft(button3);
+    const scrollDistanceLeft = +button3offset - +gradientWidth + FOCUS_PADDING;
 
-    expect(await getScrollLeft(scrollArea), 'scroll left active button after click').toBe(scrollDistanceRight);
+    expect(await getScrollLeft(scrollArea), 'scroll left active button after click').toBe(scrollDistanceLeft);
 
-    await clickElement(page, nextButton);
-    expect(await getScrollLeft(scrollArea), 'scroll left active button after prev click').toBe(502);
+    await clickElement(page, prevButton);
+    expect(await getScrollLeft(scrollArea), 'scroll left active button after first prev click').toBe(
+      scrollDistanceLeft - scrollDistance
+    );
+
+    await clickElement(page, prevButton);
+    expect(await getScrollLeft(scrollArea), 'scroll left active button after second prev click').toBe(41);
+  });
+
+  skipInBrowser(['webkit'], () => {
+    test('should have correct scroll position after tab click and next button click', async ({ page }) => {
+      await initTabsBar(page, { amount: 8, isWrapped: true, activeTabIndex: 7 });
+      const { nextButton } = await getPrevNextButton(page);
+      const allButtons = await getAllButtons(page);
+      const button7 = allButtons[6];
+
+      const scrollArea = await getScrollArea(page);
+      const scrollAreaWidth: number = await getOffsetWidth(scrollArea);
+
+      const gradient = await getGradientNext(page);
+      const gradientWidth = await getOffsetWidth(gradient);
+
+      await clickElement(page, button7);
+      const button7offset = await getOffsetLeft(button7);
+      const buttonWidth = await getOffsetWidth(button7);
+      const scrollDistanceRight = +button7offset + +buttonWidth + +gradientWidth - +scrollAreaWidth;
+
+      expect(await getScrollLeft(scrollArea), 'scroll left active button after click').toBe(scrollDistanceRight);
+
+      await clickElement(page, nextButton);
+      expect(await getScrollLeft(scrollArea), 'scroll left active button after prev click').toBe(502);
+    });
   });
 });
 

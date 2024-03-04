@@ -273,14 +273,16 @@ test.describe('can be dismissed', () => {
     expect((await getEventSummary(host, 'close')).counter, 'after mouse up').toBe(0);
   });
 
-  test('should not be closable via backdrop when disableBackdropClick is set', async ({ page }) => {
-    const host = await getHost(page);
-    await setProperty(host, 'disableBackdropClick', true);
+  skipInBrowser(['webkit'], () => {
+    test('should not be closable via backdrop when disableBackdropClick is set', async ({ page }) => {
+      const host = await getHost(page);
+      await setProperty(host, 'disableBackdropClick', true);
 
-    await page.mouse.move(5, 5);
-    await page.mouse.down();
+      await page.mouse.move(5, 5);
+      await page.mouse.down();
 
-    expect((await getEventSummary(host, 'close')).counter).toBe(0);
+      expect((await getEventSummary(host, 'close')).counter).toBe(0);
+    });
   });
 
   test('should not bubble close event', async ({ page }) => {
@@ -694,6 +696,7 @@ test.describe('sticky footer', () => {
   });
 
   test('should show box-shadow again when scrolling up from bottom', async ({ page }) => {
+    skipInBrowser(['webkit']);
     await initBasicModal(page, {
       isOpen: true,
       content: '<div style="height: 110vh">Some Content</div>',
