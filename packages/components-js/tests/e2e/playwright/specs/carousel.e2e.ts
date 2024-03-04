@@ -75,6 +75,7 @@ const getButtonPrev = (page: Page) => page.$('p-carousel p-button-pure:first-of-
 const getButtonNext = (page: Page) => page.$('p-carousel p-button-pure:last-of-type button');
 const getPagination = (page: Page) => page.$('p-carousel .pagination');
 const getPaginationBullets = async (page: Page) => (await getPagination(page)).$$('span');
+const getSkipLinkHost = (page: Page) => page.$('p-carousel >>> .skip-link');
 const getSkipLink = (page: Page) => page.$('p-carousel .skip-link a');
 const isElementCompletelyInViewport = (slide: Locator) => expect(slide).toBeInViewport({ ratio: 1 });
 const isElementNotInViewport = (slide: Locator) => expect(slide).not.toBeInViewport({ ratio: 1 });
@@ -1049,5 +1050,18 @@ test.describe('lifecycle', () => {
     expect(status.componentDidUpdate['p-button-pure'], 'componentDidUpdate: p-button-pure').toBe(3);
     expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(3);
     expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(5);
+  });
+
+  test('should change skip-link to visible if it receives keyboard focus', async ({ page }) => {
+    await initCarousel(page, { skipLinkTarget: '#link-after' });
+    const host = await getHost(page);
+    const skipLinkHost = await getSkipLinkHost(page);
+
+    expect(await getElementStyle(skipLinkHost, 'opacity')).toBe('0');
+
+    await page.keyboard.press('Tab');
+
+    expect(await getActiveElementTagNameInShadowRoot(host)).toBe('P-LINK-PURE');
+    expect(await getElementStyle(skipLinkHost, 'opacity')).toBe('1');
   });
 });
