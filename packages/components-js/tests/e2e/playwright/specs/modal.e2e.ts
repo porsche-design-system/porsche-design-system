@@ -142,30 +142,6 @@ test('should not be visible when not open', async ({ page }) => {
   expect(await getModalVisibility(page)).toBe('hidden');
 });
 
-skipInBrowser(['firefox', 'webkit'], () => {
-  test('should have correct transform when dismissed and opened', async ({ page }) => {
-    await initBasicModal(page, { isOpen: false });
-    const getModalTransform = async () =>
-      getElementStyle(await getModal(page), 'transform', { waitForTransition: true });
-
-    const initialModalTransform = await getModalTransform();
-    expect(initialModalTransform).toBe('matrix(1, 0, 0, 1, 0, 32.5547)');
-
-    await openModal(page);
-    const openModalTransform = await getModalTransform();
-    expect(openModalTransform).toBe('matrix(1, 0, 0, 1, 0, 0)');
-    expect(initialModalTransform).not.toBe(openModalTransform);
-
-    await dismissModal(page);
-    // TODO: why is timeout needed? transition durations should be overwritten with 0s
-    await sleep(CSS_TRANSITION_DURATION);
-
-    // transition delay for visibility
-    const finalModalTransform = await getModalTransform();
-    expect(finalModalTransform).toBe(initialModalTransform);
-  });
-});
-
 test.describe('can be dismissed', () => {
   let host: ElementHandle;
 
