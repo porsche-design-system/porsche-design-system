@@ -11,23 +11,20 @@ const getSitemap = (): string[] => {
   return JSON.parse(sitemapData);
 };
 
-const describeIf = (condition: boolean) => (condition ? describe : describe.skip);
-const testIf = (condition: boolean) => (condition ? test : test.skip);
-
 describe('url', () => {
   for (const url of getSitemap()) {
     describe(`"${url}"`, () => {
-      testIf(url !== '/')('should not end with trailing slash', async () => {
+      test.skipIf(url === '/')('should not end with trailing slash', async () => {
         expect(url.endsWith('/')).toBe(false);
       });
 
-      describeIf(!url.startsWith('/'))('external url', () => {
+      describe.runIf(url.startsWith('https://') || url.startsWith('http://'))('external url', () => {
         test('should not use unencrypted http protocol', async () => {
           expect(url.startsWith('http://')).toBe(false);
         });
 
         // Although it should be reachable without "www.", https://wechat.com is not.
-        testIf(url !== 'https://www.wechat.com')('should not contain "www."', async () => {
+        test.skipIf(url === 'https://www.wechat.com')('should not contain "www."', async () => {
           expect(url.startsWith('https://www.')).toBe(false);
         });
 
