@@ -2,7 +2,7 @@ import { expect, type Page, test } from '@playwright/test';
 import { schemes, themes, viewportWidthM } from '@porsche-design-system/shared/testing/playwright.vrt.config';
 import {
   forceFocusHoverState,
-  forceFocusState,
+  forceFocusVisibleState,
   forceHoverState,
   type PrefersColorScheme,
   PSEUDO_STATES,
@@ -39,9 +39,9 @@ const scenario = async (
     await forceHoverState(page, 'p-flyout-navigation-item >>> p-button-pure >>> button');
     await forceHoverState(page, 'p-flyout-navigation-item a');
   } else if (pseudoState === 'focus') {
-    await forceFocusState(page, 'p-flyout-navigation >>> p-button-pure >>> button');
-    await forceFocusState(page, 'p-flyout-navigation-item >>> p-button-pure >>> button');
-    await forceFocusState(page, 'p-flyout-navigation-item a');
+    await forceFocusVisibleState(page, 'p-flyout-navigation >>> p-button-pure >>> button');
+    await forceFocusVisibleState(page, 'p-flyout-navigation-item >>> p-button-pure >>> button');
+    await forceFocusVisibleState(page, 'p-flyout-navigation-item a');
   } else if (pseudoState === 'focus-hover') {
     await forceFocusHoverState(page, 'p-flyout-navigation >>> p-button-pure >>> button');
     await forceFocusHoverState(page, 'p-flyout-navigation-item >>> p-button-pure >>> button');

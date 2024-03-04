@@ -8,8 +8,9 @@ const FORCED_PSEUDO_CLASSES = ['hover', 'focus', 'focus-visible'] as const;
 type ForcedPseudoClasses = (typeof FORCED_PSEUDO_CLASSES)[number];
 
 const HOVER_STATE: ForcedPseudoClasses[] = ['hover'];
-const FOCUS_STATE: ForcedPseudoClasses[] = ['focus', 'focus-visible'];
-const FOCUS_HOVER_STATE = HOVER_STATE.concat(FOCUS_STATE);
+const FOCUS_STATE: ForcedPseudoClasses[] = ['focus'];
+const FOCUS_VISIBLE_STATE: ForcedPseudoClasses[] = ['focus-visible'];
+const FOCUS_HOVER_STATE = HOVER_STATE.concat(FOCUS_STATE, FOCUS_VISIBLE_STATE);
 
 export const PSEUDO_STATES = ['hover', 'focus', 'focus-hover'] as const;
 
@@ -34,9 +35,13 @@ export const generateGUID = (): string => {
 export const forceHoverState = (page: Page, selector: string): Promise<void> => {
   return forceStateOnElements(page, selector, HOVER_STATE);
 };
+export const forceFocusVisibleState = (page: Page, selector: string): Promise<void> => {
+  return forceStateOnElements(page, selector, FOCUS_VISIBLE_STATE);
+};
 export const forceFocusState = (page: Page, selector: string): Promise<void> => {
   return forceStateOnElements(page, selector, FOCUS_STATE);
 };
+// TODO: shouldn't it be named `forceFocusAndFocusVisibleAndHoverState()`?
 export const forceFocusHoverState = (page: Page, selector: string): Promise<void> => {
   return forceStateOnElements(page, selector, FOCUS_HOVER_STATE);
 };

@@ -90,6 +90,11 @@ export const getFocusJssStyle = (theme: Theme, opts?: Options): JssStyle => {
     [`&${slotted ? '(' : ''}${slottedSelector}:focus${slotted ? ')' : ''}`]: {
       outline: 0, // reset ua-style (for older browsers)
     },
+    ...(pseudo && {
+      [`&${slotted ? '(' : ''}${slottedSelector}:focus-visible${slotted ? ')' : ''}`]: {
+        outline: 0, // reset ua-style (for modern browsers)
+      },
+    }),
     [`&${slotted ? '(' : ''}${slottedSelector}:focus-visible${slotted ? ')' : ''}${pseudo ? '::before' : ''}`]: {
       outline: `${borderWidthBase} solid ${focusColor}`,
       outlineOffset: offset,

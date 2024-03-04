@@ -137,6 +137,9 @@ exports[`getFocusJssStyle() should return correct JssStyle for theme: auto and o
   "&(.some-slotted-selector:focus)": {
     "outline": 0,
   },
+  "&(.some-slotted-selector:focus-visible)": {
+    "outline": 0,
+  },
   "&(.some-slotted-selector:focus-visible)::before": {
     "@media (prefers-color-scheme: dark)": {
       "outlineColor": "#1A44EA",
@@ -171,6 +174,9 @@ exports[`getFocusJssStyle() should return correct JssStyle for theme: auto and o
     "border": 0,
   },
   "&(:focus)": {
+    "outline": 0,
+  },
+  "&(:focus-visible)": {
     "outline": 0,
   },
   "&(:focus-visible)::before": {
@@ -236,6 +242,9 @@ exports[`getFocusJssStyle() should return correct JssStyle for theme: dark and o
   "&(.some-slotted-selector:focus)": {
     "outline": 0,
   },
+  "&(.some-slotted-selector:focus-visible)": {
+    "outline": 0,
+  },
   "&(.some-slotted-selector:focus-visible)::before": {
     "outline": "2px solid #1A44EA",
     "outlineOffset": "2px",
@@ -264,6 +273,9 @@ exports[`getFocusJssStyle() should return correct JssStyle for theme: dark and o
     "border": 0,
   },
   "&(:focus)": {
+    "outline": 0,
+  },
+  "&(:focus-visible)": {
     "outline": 0,
   },
   "&(:focus-visible)::before": {
@@ -326,6 +338,9 @@ exports[`getFocusJssStyle() should return correct JssStyle for theme: light and 
   "&(.some-slotted-selector:focus)": {
     "outline": 0,
   },
+  "&(.some-slotted-selector:focus-visible)": {
+    "outline": 0,
+  },
   "&(.some-slotted-selector:focus-visible)::before": {
     "outline": "2px solid #1A44EA",
     "outlineOffset": "2px",
@@ -354,6 +369,9 @@ exports[`getFocusJssStyle() should return correct JssStyle for theme: light and 
     "border": 0,
   },
   "&(:focus)": {
+    "outline": 0,
+  },
+  "&(:focus-visible)": {
     "outline": 0,
   },
   "&(:focus-visible)::before": {

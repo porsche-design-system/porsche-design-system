@@ -1,7 +1,7 @@
 import { expect, type Page, test } from '@playwright/test';
 import {
   forceFocusHoverState,
-  forceFocusState,
+  forceFocusVisibleState,
   forceHoverState,
   getPlaygroundPseudoStatesMarkup,
   type PrefersColorScheme,
@@ -39,9 +39,9 @@ const scenario = async (page: Page, theme: Theme, scheme?: PrefersColorScheme): 
   await forceHoverState(page, '.hover p-link-tile >>> .root');
   await forceHoverState(page, '.hover p-link-tile >>> p-link >>> .root');
   await forceHoverState(page, '.hover p-link-tile >>> p-link-pure >>> .root');
-  await forceFocusState(page, '.focus p-link-tile >>> p-link >>> .root');
-  await forceFocusState(page, '.focus p-link-tile >>> p-link-pure >>> .root');
-  await forceFocusState(page, '.focus p-link-tile >>> a');
+  await forceFocusVisibleState(page, '.focus p-link-tile >>> p-link >>> .root');
+  await forceFocusVisibleState(page, '.focus p-link-tile >>> p-link-pure >>> .root');
+  await forceFocusVisibleState(page, '.focus p-link-tile >>> a');
   await forceHoverState(page, '.focus-hover p-link-tile >>> p-link >>> .root');
   await forceHoverState(page, '.focus-hover p-link-tile >>> p-link-pure >>> .root');
   await forceHoverState(page, '.focus-hover p-link-tile >>> .root');

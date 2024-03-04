@@ -2,7 +2,7 @@ import { expect, type Page, test } from '@playwright/test';
 import { schemes, themes, viewportWidthM } from '@porsche-design-system/shared/testing/playwright.vrt.config';
 import {
   forceFocusHoverState,
-  forceFocusState,
+  forceFocusVisibleState,
   forceHoverState,
   getPlaygroundPseudoStatesMarkup,
   openAllPopover,
@@ -31,9 +31,9 @@ const scenario = async (page: Page, theme: Theme, scheme?: PrefersColorScheme): 
   await forceHoverState(page, '.hover p-popover >>> button');
   await forceHoverState(page, '.hover p-popover > a');
   await forceHoverState(page, '.hover p-popover a');
-  await forceFocusState(page, '.focus p-popover >>> button');
-  await forceFocusState(page, '.focus p-popover > a');
-  await forceFocusState(page, '.focus p-popover a');
+  await forceFocusVisibleState(page, '.focus p-popover >>> button');
+  await forceFocusVisibleState(page, '.focus p-popover > a');
+  await forceFocusVisibleState(page, '.focus p-popover a');
   await forceFocusHoverState(page, '.focus-hover p-popover >>> button');
   await forceFocusHoverState(page, '.focus-hover p-popover > a');
   await forceFocusHoverState(page, '.focus-hover p-popover a');

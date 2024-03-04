@@ -2,7 +2,7 @@ import { expect, type Page, test } from '@playwright/test';
 import { schemes, themes, viewportWidthM } from '@porsche-design-system/shared/testing/playwright.vrt.config';
 import {
   forceFocusHoverState,
-  forceFocusState,
+  forceFocusVisibleState,
   forceHoverState,
   getPlaygroundPseudoStatesMarkup,
   type PrefersColorScheme,
@@ -45,9 +45,9 @@ const scenario = async (page: Page, theme: Theme, scheme?: PrefersColorScheme): 
   // TODO: scroll trigger :hover + :focus-visible test is missing due piercing selector only works for nested child
   // TODO: `await forceFocusedState(page, '.focus p-table >>> .scroll-area');`, no class is selectable after piercing selector
 
-  await forceFocusState(page, '.focus p-table-cell a');
-  await forceFocusState(page, '.focus [slot="caption"] a');
-  await forceFocusState(page, '.focus p-table-head-cell >>> button');
+  await forceFocusVisibleState(page, '.focus p-table-cell a');
+  await forceFocusVisibleState(page, '.focus [slot="caption"] a');
+  await forceFocusVisibleState(page, '.focus p-table-head-cell >>> button');
 
   await forceFocusHoverState(page, '.focus-hover p-table-cell a');
   await forceFocusHoverState(page, '.focus-hover [slot="caption"] a');

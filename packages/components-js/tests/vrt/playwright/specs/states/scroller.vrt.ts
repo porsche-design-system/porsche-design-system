@@ -1,7 +1,7 @@
 import { expect, type Page, test } from '@playwright/test';
 import { schemes, themes, viewportWidthM } from '@porsche-design-system/shared/testing/playwright.vrt.config';
 import {
-  forceFocusState,
+  forceFocusVisibleState,
   forceHoverState,
   getPlaygroundPseudoStatesMarkup,
   type PrefersColorScheme,
@@ -31,9 +31,9 @@ const scenario = async (page: Page, theme: Theme, scheme?: PrefersColorScheme): 
   });
 
   await forceHoverState(page, '.hover p-scroller >>> button'); // Scroll indicator hover
-  await forceFocusState(page, '.focus p-scroller >>> .scroll-wrapper');
+  await forceFocusVisibleState(page, '.focus p-scroller >>> .scroll-wrapper');
   await forceHoverState(page, '.focus-hover p-scroller >>> button');
-  await forceFocusState(page, '.focus-hover p-scroller >>> .scroll-wrapper');
+  await forceFocusVisibleState(page, '.focus-hover p-scroller >>> .scroll-wrapper');
 };
 
 // executed in Chrome only
