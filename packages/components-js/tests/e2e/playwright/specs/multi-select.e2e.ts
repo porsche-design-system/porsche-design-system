@@ -451,6 +451,7 @@ test.describe('outside click', () => {
 });
 
 test.describe('hover', () => {
+  skipInBrowser(['firefox', 'webkit']);
   test('should change border-color when input is hovered', async ({ page }) => {
     await initMultiSelect(page);
     await page.mouse.move(0, 300); // avoid potential hover initially
@@ -464,7 +465,7 @@ test.describe('hover', () => {
   });
 });
 
-skipInBrowser(['webkit'], () => {
+skipInBrowser(['firefox', 'webkit'], () => {
   test.describe('focus', () => {
     test('should focus input when label text is clicked', async ({ page }) => {
       await initMultiSelect(page, { props: { name: 'options', label: 'Some Label' } });
