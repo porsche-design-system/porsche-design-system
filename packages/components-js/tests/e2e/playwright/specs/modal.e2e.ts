@@ -703,21 +703,20 @@ test.describe('sticky footer', () => {
         hasSlottedFooter: true,
       });
 
+      const footer = page.locator('p-modal .footer');
+
       const scrollContainer = await getScrollContainer(page);
       await scrollContainer.evaluate((el) => {
         el.scrollBy({ top: 1000 }); // should be bottom
       });
 
-      expect(await getFooterBoxShadow(page)).toBe('none');
+      await expect(footer).toHaveCSS('box-shadow', 'none');
 
       await scrollContainer.evaluate((el) => {
         el.scrollBy({ top: -81 }); // margin-bottom of modal is 80px for whatever reason, so this is the edge on when the shadow appears again
       });
 
-      const footer = await getFooter(page);
-      await page.waitForFunction((el) => getComputedStyle(el).boxShadow !== 'none', footer);
-
-      expect(await getFooterBoxShadow(page)).toBe(expectedBoxShadow);
+      await expect(footer).toHaveCSS('box-shadow', expectedBoxShadow);
     });
   });
 });
