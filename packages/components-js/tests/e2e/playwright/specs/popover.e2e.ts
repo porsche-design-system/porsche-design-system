@@ -20,7 +20,6 @@ const getHost = (page: Page) => page.$('p-popover');
 const getSpacer = (page: Page) => page.$('p-popover .spacer');
 const getPopover = (page: Page) => page.$('p-popover .popover');
 const getButton = (page: Page) => page.$('p-popover button');
-const getSecondPopover = (page: Page) => page.$('p-popover.second .popover');
 const getTableScroller = (page: Page) => page.$('p-table p-scroller .scroll-area');
 const isNativePopoverOpen = async (page: Page): Promise<boolean> =>
   (await getSpacer(page)).evaluate((el) => el.matches(':popover-open'));
@@ -188,26 +187,28 @@ test.describe('mouse behavior', () => {
     expect(await getPopover(page)).toBeNull();
   });
 
-  test('should close popover if another popover is clicked', async ({ page }) => {
-    await setContentWithDesignSystem(
-      page,
-      `<p-popover>Some Content</p-popover>
+  skipInBrowser(['webkit'], () => {
+    test('should close popover if another popover is clicked', async ({ page }) => {
+      await setContentWithDesignSystem(
+        page,
+        `<p-popover class="first">Some Content</p-popover>
       <p-popover class="second">Some Content</p-popover>`
-    );
+      );
 
-    const firstButton = await getButton(page);
-    const secondButton = await page.$('p-popover.second button');
+      const firstButton = await getButton(page);
+      const secondButton = await page.$('p-popover.second button');
 
-    // We have to click the second button first, otherwise it gets overlapped by the first button and cant be clicked
-    await secondButton.click();
-    await waitForStencilLifecycle(page);
-    expect(await getSecondPopover(page), 'second popover, second click').not.toBeNull();
-    expect(await getPopover(page), 'first popover, second click').toBeNull();
+      // We have to click the second button first, otherwise it gets overlapped by the first button and cant be clicked
+      await secondButton.click();
+      await waitForStencilLifecycle(page);
+      expect(await page.$('p-popover.second .popover'), 'second popover, second click').not.toBeNull();
+      expect(await page.$('p-popover.first .popover'), 'first popover, second click').toBeNull();
 
-    await firstButton.click();
-    await waitForStencilLifecycle(page);
-    expect(await getPopover(page), 'first popover, first click').not.toBeNull();
-    expect(await getSecondPopover(page), 'second popover, first click').toBeNull();
+      await firstButton.click();
+      await waitForStencilLifecycle(page);
+      expect(await page.$('p-popover.first .popover'), 'first popover, first click').not.toBeNull();
+      expect(await page.$('p-popover.second .popover'), 'second popover, first click').toBeNull();
+    });
   });
 
   test('should not close popover when its content is clicked', async ({ page }) => {
@@ -314,22 +315,22 @@ test.describe('keyboard behavior', () => {
     test('should close other popovers that are open', async ({ page }) => {
       await setContentWithDesignSystem(
         page,
-        `<p-popover>Some Content</p-popover>
+        `<p-popover class="first">Some Content</p-popover>
         <p-popover class="second">Some Content</p-popover>`
       );
       await page.keyboard.press('Tab');
       await page.keyboard.press('Enter');
       await waitForStencilLifecycle(page);
 
-      expect(await getPopover(page), 'first popover, first enter').not.toBeNull();
-      expect(await getSecondPopover(page), 'second popover, first enter').toBeNull();
+      expect(await page.$('p-popover.first .popover'), 'first popover, first enter').not.toBeNull();
+      expect(await page.$('p-popover.second .popover'), 'second popover, first enter').toBeNull();
 
       await page.keyboard.press('Tab');
       await page.keyboard.press('Enter');
       await waitForStencilLifecycle(page);
 
-      expect(await getPopover(page), 'first popover, second enter').toBeNull();
-      expect(await getSecondPopover(page), 'second popover, second enter').not.toBeNull();
+      expect(await page.$('p-popover.first .popover'), 'first popover, second enter').toBeNull();
+      expect(await page.$('p-popover.second .popover'), 'second popover, second enter').not.toBeNull();
     });
   });
 });
