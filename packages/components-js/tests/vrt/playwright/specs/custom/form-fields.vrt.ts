@@ -2,6 +2,7 @@ import { expect, type Page, test } from '@playwright/test';
 import {
   forceFocusHoverState,
   forceFocusState,
+  forceFocusVisibleState,
   forceHoverState,
   getPlaygroundPseudoStatesMarkup,
   getValueOfForAttribute,
@@ -85,7 +86,9 @@ const scenario = async (page: Page, theme: Theme): Promise<void> => {
   await forceHoverState(page, '.hover p-select >>> button');
   await forceHoverState(page, '.hover p-multi-select >>> input');
   await forceHoverState(page, `.hover p-pin-code >>> #${valueOfForAttribute}`);
-  await forceFocusState(page, '.focus input');
+  await forceFocusState(page, '.focus input[type="text"]');
+  await forceFocusVisibleState(page, '.focus input[type="checkbox"]');
+  await forceFocusVisibleState(page, '.focus input[type="radio"]');
   await forceFocusState(page, '.focus select');
   await forceFocusState(page, '.focus textarea');
   await forceFocusState(page, '.focus p-select >>> button');

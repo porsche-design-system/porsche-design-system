@@ -3,6 +3,7 @@ import { schemes, themes, viewportWidthM } from '@porsche-design-system/shared/t
 import {
   forceFocusHoverState,
   forceFocusState,
+  forceFocusVisibleState,
   forceHoverState,
   getPlaygroundPseudoStatesMarkup,
   type PrefersColorScheme,
@@ -123,7 +124,7 @@ const scenario = async (page: Page, theme: Theme, scheme?: PrefersColorScheme): 
 
   await forceHoverState(page, '.hover p-multi-select >>> input');
   await forceHoverState(page, '.hover p-multi-select span a');
-  await forceFocusState(page, '.focus p-multi-select span a');
+  await forceFocusVisibleState(page, '.focus p-multi-select span a');
   await forceFocusState(page, '.focus p-multi-select >>> input');
   await forceFocusHoverState(page, '.focus-hover p-multi-select >>> input');
   await forceFocusHoverState(page, '.focus-hover p-multi-select span a');

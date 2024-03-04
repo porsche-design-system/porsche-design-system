@@ -270,6 +270,9 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
 ::slotted(a:focus) {
   outline: 0 !important;
 }
+::slotted(a:focus-visible) {
+  outline: 0 !important;
+}
 ::slotted(a:focus-visible)::before {
   outline: 2px solid #1A44EA !important;
   outline-offset: 2px !important;
@@ -355,6 +358,9 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
 ::slotted(a:focus) {
   outline: 0 !important;
 }
+::slotted(a:focus-visible) {
+  outline: 0 !important;
+}
 ::slotted(a:focus-visible)::before {
   outline: 2px solid #1A44EA !important;
   outline-offset: 2px !important;
@@ -438,6 +444,9 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
   border: 0 !important;
 }
 ::slotted(a:focus) {
+  outline: 0 !important;
+}
+::slotted(a:focus-visible) {
   outline: 0 !important;
 }
 ::slotted(a:focus-visible)::before {
@@ -526,6 +535,9 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
 ::slotted(a:focus) {
   outline: 0 !important;
 }
+::slotted(a:focus-visible) {
+  outline: 0 !important;
+}
 ::slotted(a:focus-visible)::before {
   outline: 2px solid #1A44EA !important;
   outline-offset: 2px !important;
@@ -610,6 +622,9 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
   border: 0 !important;
 }
 ::slotted(a:focus) {
+  outline: 0 !important;
+}
+::slotted(a:focus-visible) {
   outline: 0 !important;
 }
 ::slotted(a:focus-visible)::before {
@@ -698,6 +713,9 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
 ::slotted(a:focus) {
   outline: 0 !important;
 }
+::slotted(a:focus-visible) {
+  outline: 0 !important;
+}
 ::slotted(a:focus-visible)::before {
   outline: 2px solid #1A44EA !important;
   outline-offset: 2px !important;
@@ -782,6 +800,9 @@ exports[`getComponentCss() should return correct css for icon: none, iconSource:
   border: 0 !important;
 }
 ::slotted(a:focus) {
+  outline: 0 !important;
+}
+::slotted(a:focus-visible) {
   outline: 0 !important;
 }
 ::slotted(a:focus-visible)::before {

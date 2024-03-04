@@ -2,7 +2,7 @@ import { expect, Page, test } from '@playwright/test';
 import { schemes, themes, viewportWidthM } from '@porsche-design-system/shared/testing/playwright.vrt.config';
 import {
   forceFocusHoverState,
-  forceFocusState,
+  forceFocusVisibleState,
   forceHoverState,
   getPlaygroundPseudoStatesMarkup,
   type PrefersColorScheme,
@@ -39,7 +39,7 @@ const scenario = async (page: Page, theme: Theme, scheme?: PrefersColorScheme): 
   await forceHoverState(page, '.hover p-banner span a');
   // TODO: support for 3rd level of shadow DOM is missing
   // await forceHoveredState(page, '.hover p-banner >>> p-inline-notification >>> p-button-pure >>> button');
-  await forceFocusState(page, '.focus p-banner span a');
+  await forceFocusVisibleState(page, '.focus p-banner span a');
   // await forceFocusedState(page, '.focus p-banner >>> p-inline-notification >>> p-button-pure >>> button');
   await forceFocusHoverState(page, '.focus-hover p-banner span a');
   // await forceFocusedHoveredState(page, '.focus-hover p-banner >>> p-inline-notification >>> p-button-pure >>> button');

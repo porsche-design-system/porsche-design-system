@@ -176,11 +176,10 @@ export const getComponentCss = (
       padding: spacingStaticSmall,
     },
     'skip-link': {
-      opacity: 0,
-      pointerEvents: 'none',
-      '&:focus-visible': {
-        opacity: 1,
-        pointerEvents: 'all',
+      // :focus must be used in this case, because :focus-visible is just matched on the focusable element itself, not on the host element.
+      '&:not(:focus)': {
+        opacity: 0,
+        pointerEvents: 'none',
       },
     },
     splide: {

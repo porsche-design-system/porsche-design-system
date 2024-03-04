@@ -2,7 +2,7 @@ import { expect, type Page, test } from '@playwright/test';
 import { schemes, themes, viewportWidthM } from '@porsche-design-system/shared/testing/playwright.vrt.config';
 import {
   forceFocusHoverState,
-  forceFocusState,
+  forceFocusVisibleState,
   forceHoverState,
   getPlaygroundPseudoStatesMarkup,
   type PrefersColorScheme,
@@ -53,9 +53,9 @@ const scenario = async (page: Page, theme: Theme, scheme?: PrefersColorScheme): 
   await forceHoverState(page, '.hover p-link-tile-product >>> .root');
   await forceHoverState(page, '.hover p-link-tile-product >>> p-button-pure >>> .root');
 
-  await forceFocusState(page, '.focus p-link-tile-product >>> p-button-pure >>> .root');
-  await forceFocusState(page, '.focus p-link-tile-product a');
-  await forceFocusState(page, '.focus p-link-tile-product >>> a');
+  await forceFocusVisibleState(page, '.focus p-link-tile-product >>> p-button-pure >>> .root');
+  await forceFocusVisibleState(page, '.focus p-link-tile-product a');
+  await forceFocusVisibleState(page, '.focus p-link-tile-product >>> a');
 
   await forceHoverState(page, '.focus-hover p-link-tile-product >>> .root');
   await forceFocusHoverState(page, '.focus-hover p-link-tile-product >>> p-button-pure >>> .root');

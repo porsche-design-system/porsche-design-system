@@ -3,6 +3,7 @@ import { schemes, themes, viewportWidthM } from '@porsche-design-system/shared/t
 import {
   forceFocusHoverState,
   forceFocusState,
+  forceFocusVisibleState,
   forceHoverState,
   getPlaygroundPseudoStatesMarkup,
   type PrefersColorScheme,
@@ -164,8 +165,8 @@ const scenario = async (page: Page, theme: Theme, scheme?: PrefersColorScheme): 
   await forceHoverState(page, '.hover p-text-field-wrapper a');
   await forceHoverState(page, '.hover p-text-field-wrapper >>> p-button-pure >>> button');
   await forceFocusState(page, '.focus p-text-field-wrapper input');
-  await forceFocusState(page, '.focus p-text-field-wrapper a');
-  await forceFocusState(page, '.focus p-text-field-wrapper >>> p-button-pure >>> button');
+  await forceFocusVisibleState(page, '.focus p-text-field-wrapper a');
+  await forceFocusVisibleState(page, '.focus p-text-field-wrapper >>> p-button-pure >>> button');
   await forceFocusHoverState(page, '.focus-hover p-text-field-wrapper:not(.force-label) input');
   await forceFocusState(page, '.focus-hover p-text-field-wrapper.force-label input');
   await forceHoverState(page, '.focus-hover p-text-field-wrapper.force-label >>> label');

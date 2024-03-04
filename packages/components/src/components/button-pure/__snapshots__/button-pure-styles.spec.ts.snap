@@ -85,6 +85,9 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
 .root:focus {
   outline: 0;
 }
+.root:focus-visible {
+  outline: 0;
+}
 .root:focus-visible::before {
   outline: 2px solid #1A44EA;
   outline-offset: -2px;
@@ -275,6 +278,9 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
 .root:focus {
   outline: 0;
 }
+.root:focus-visible {
+  outline: 0;
+}
 .root:focus-visible::before {
   outline: 2px solid #1A44EA;
   outline-offset: -2px;
@@ -435,6 +441,9 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
 .root:focus {
   outline: 0;
 }
+.root:focus-visible {
+  outline: 0;
+}
 .root:focus-visible::before {
   outline: 2px solid #1A44EA;
   outline-offset: -2px;
@@ -526,6 +535,9 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   border: 0;
 }
 .root:focus {
+  outline: 0;
+}
+.root:focus-visible {
   outline: 0;
 }
 .root:focus-visible::before {
@@ -621,6 +633,9 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
 .root:focus {
   outline: 0;
 }
+.root:focus-visible {
+  outline: 0;
+}
 .root:focus-visible::before {
   outline: 2px solid #1A44EA;
   outline-offset: -2px;
@@ -712,6 +727,9 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   border: 0;
 }
 .root:focus {
+  outline: 0;
+}
+.root:focus-visible {
   outline: 0;
 }
 .root:focus-visible::before {
@@ -807,6 +825,9 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
 .root:focus {
   outline: 0;
 }
+.root:focus-visible {
+  outline: 0;
+}
 .root:focus-visible::before {
   outline: 2px solid #1A44EA;
   outline-offset: -2px;
@@ -897,6 +918,9 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   border: 0;
 }
 .root:focus {
+  outline: 0;
+}
+.root:focus-visible {
   outline: 0;
 }
 .root:focus-visible::before {
@@ -991,6 +1015,9 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
 .root:focus {
   outline: 0;
 }
+.root:focus-visible {
+  outline: 0;
+}
 .root:focus-visible::before {
   outline: 2px solid #1A44EA;
   outline-offset: -2px;
@@ -1074,6 +1101,9 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   border: 0;
 }
 .root:focus {
+  outline: 0;
+}
+.root:focus-visible {
   outline: 0;
 }
 .root:focus-visible::before {
@@ -1161,6 +1191,9 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   border: 0;
 }
 .root:focus {
+  outline: 0;
+}
+.root:focus-visible {
   outline: 0;
 }
 .root:focus-visible::before {
@@ -1256,6 +1289,9 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   border: 0;
 }
 .root:focus {
+  outline: 0;
+}
+.root:focus-visible {
   outline: 0;
 }
 .root:focus-visible::before {
@@ -1354,6 +1390,9 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
 .root:focus {
   outline: 0;
 }
+.root:focus-visible {
+  outline: 0;
+}
 .root:focus-visible::before {
   outline: 2px solid #1A44EA;
   outline-offset: -2px;
@@ -1439,6 +1478,9 @@ exports[`getComponentCss() should return correct css for {"icon":"none","iconSou
 .root:focus {
   outline: 0;
 }
+.root:focus-visible {
+  outline: 0;
+}
 .root:focus-visible::before {
   outline: 2px solid #1A44EA;
   outline-offset: -2px;
@@ -1515,6 +1557,9 @@ exports[`getComponentCss() should return correct css for {"icon":"none","iconSou
 .root:focus {
   outline: 0;
 }
+.root:focus-visible {
+  outline: 0;
+}
 .root:focus-visible::before {
   outline: 2px solid #1A44EA;
   outline-offset: -2px;
@@ -1589,6 +1634,9 @@ exports[`getComponentCss() should return correct css for {"icon":"none","iconSou
   border: 0;
 }
 .root:focus {
+  outline: 0;
+}
+.root:focus-visible {
   outline: 0;
 }
 .root:focus-visible::before {
@@ -1695,6 +1743,9 @@ exports[`getComponentCss() should return correct css for {"icon":"none","iconSou
   border: 0;
 }
 .root:focus {
+  outline: 0;
+}
+.root:focus-visible {
   outline: 0;
 }
 .root:focus-visible::before {
