@@ -16,6 +16,7 @@ import {
   reattachElementHandle,
   setContentWithDesignSystem,
   setProperty,
+  sleep,
   waitForStencilLifecycle,
 } from '../helpers';
 
@@ -163,7 +164,7 @@ test.describe('scrolling', () => {
 
     await item5.click();
     await waitForStencilLifecycle(page);
-    await new Promise((resolve) => setTimeout(resolve, CSS_ANIMATION_DURATION));
+    await sleep(CSS_ANIMATION_DURATION);
 
     const item5Offset = await getOffsetLeft(item5);
     const scrollDistanceRight = item5Offset - gradientWidth + FOCUS_PADDING;
@@ -171,7 +172,7 @@ test.describe('scrolling', () => {
 
     await item4.click();
     await waitForStencilLifecycle(page);
-    await new Promise((resolve) => setTimeout(resolve, CSS_ANIMATION_DURATION));
+    await sleep(CSS_ANIMATION_DURATION);
 
     const item4Offset = await getOffsetLeft(item4);
     const item4Width = await getOffsetWidth(item4);
@@ -191,7 +192,7 @@ test.describe('scrolling', () => {
     await setProperty(item1, 'state', 'complete');
     await setProperty(item5, 'state', 'current');
     await waitForStencilLifecycle(page);
-    await new Promise((resolve) => setTimeout(resolve, CSS_ANIMATION_DURATION));
+    await sleep(CSS_ANIMATION_DURATION);
 
     const item5Offset = await getOffsetLeft(item5);
     const scrollDistanceRight = item5Offset - gradientWidth + FOCUS_PADDING;
@@ -200,7 +201,7 @@ test.describe('scrolling', () => {
     await setProperty(item5, 'state', 'complete');
     await setProperty(item4, 'state', 'current');
     await waitForStencilLifecycle(page);
-    await new Promise((resolve) => setTimeout(resolve, CSS_ANIMATION_DURATION));
+    await sleep(CSS_ANIMATION_DURATION);
 
     const item4Offset = await getOffsetLeft(item4);
     const item4Width = await getOffsetWidth(item4);
@@ -217,7 +218,7 @@ test.describe('scrolling', () => {
       host.removeChild(host.firstChild);
     });
     await waitForStencilLifecycle(page);
-    await new Promise((resolve) => setTimeout(resolve, CSS_ANIMATION_DURATION));
+    await sleep(CSS_ANIMATION_DURATION);
 
     const gradient = await getGradientNext(page);
     const gradientWidth = await getOffsetWidth(gradient);
@@ -240,7 +241,7 @@ test.describe('scrolling', () => {
       host.appendChild(newStepperHorizontalItem);
     });
     await waitForStencilLifecycle(page);
-    await new Promise((resolve) => setTimeout(resolve, CSS_ANIMATION_DURATION));
+    await sleep(CSS_ANIMATION_DURATION);
 
     const [item1, , , , , item6] = await getStepItems(page);
 
@@ -250,7 +251,7 @@ test.describe('scrolling', () => {
     await setProperty(item1, 'state', 'complete');
     await setProperty(item6, 'state', 'current');
     await waitForStencilLifecycle(page);
-    await new Promise((resolve) => setTimeout(resolve, CSS_ANIMATION_DURATION));
+    await sleep(CSS_ANIMATION_DURATION);
 
     const item6Offset = await getOffsetLeft(item6);
     const item6Width = await getOffsetWidth(item6);

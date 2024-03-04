@@ -633,14 +633,14 @@ test.describe('disabled state', () => {
     expect(await getElementStyle(input, 'cursor')).toBe('not-allowed');
   });
 
-    skipInBrowser(['webkit'], () => {
-  test('should not be focusable', async ({ page }) => {
-    await initPinCode(page, {
-      props: { disabled: true },
-      options: { markupAfter: '<p-button>Some Button</p-button>' },
-    });
-    const button = await page.$('p-button');
-    await addEventListener(button, 'focus');
+  skipInBrowser(['webkit'], () => {
+    test('should not be focusable', async ({ page }) => {
+      await initPinCode(page, {
+        props: { disabled: true },
+        options: { markupAfter: '<p-button>Some Button</p-button>' },
+      });
+      const button = await page.$('p-button');
+      await addEventListener(button, 'focus');
 
       expect((await getEventSummary(button, 'focus')).counter, 'before focus').toBe(0);
 
@@ -673,12 +673,15 @@ test.describe('loading state', () => {
     expect(await getProperty(input, 'value')).toBe('');
   });
 
-    skipInBrowser(['webkit'], () => {
-  test('should be possible to navigate through inputs by key=Tab/Shift+Tab', async ({ page }) => {
-    await initPinCode(page, { props: { loading: true }, options: { markupAfter: '<p-button>Some Button</p-button>' } });
-    const host = await getHost(page);
-    const button = await page.$('p-button');
-    await addEventListener(button, 'focus');
+  skipInBrowser(['webkit'], () => {
+    test('should be possible to navigate through inputs by key=Tab/Shift+Tab', async ({ page }) => {
+      await initPinCode(page, {
+        props: { loading: true },
+        options: { markupAfter: '<p-button>Some Button</p-button>' },
+      });
+      const host = await getHost(page);
+      const button = await page.$('p-button');
+      await addEventListener(button, 'focus');
 
       await page.keyboard.press('Tab');
       expect(await getActiveElementsAriaLabelInShadowRoot(page, host)).toBe('1-4');

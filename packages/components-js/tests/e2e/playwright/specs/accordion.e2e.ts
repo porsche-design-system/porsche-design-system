@@ -12,7 +12,7 @@ import {
   skipInBrowser,
   waitForStencilLifecycle,
 } from '../helpers';
-import type { HeadingTag } from '@porsche-design-system/components/dist/types/bundle';
+import type { HeadingTag } from '@porsche-design-system/components';
 
 const clickHandlerScript = `
 <script>

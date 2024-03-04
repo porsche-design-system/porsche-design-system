@@ -19,9 +19,10 @@ import {
   SCROLL_PERCENTAGE,
   setContentWithDesignSystem,
   setProperty,
+  sleep,
   waitForStencilLifecycle,
 } from '../helpers';
-import type { BreakpointCustomizable } from '@porsche-design-system/components/dist/types/bundle';
+import type { BreakpointCustomizable } from '@porsche-design-system/components';
 
 type InitOptions = {
   amount?: number;
@@ -80,7 +81,7 @@ const clickElement = async (page: Page, el: ElementHandle) => {
   await waitForAnimation();
 };
 
-const waitForAnimation = () => new Promise((resolve) => setTimeout(resolve, CSS_ANIMATION_DURATION));
+const waitForAnimation = () => sleep(CSS_ANIMATION_DURATION);
 
 test('should work with nested or translated markup', async ({ page }) => {
   const content = `

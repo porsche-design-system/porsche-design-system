@@ -4,9 +4,10 @@ import {
   getOldLoaderScriptForPrefixes,
   initConsoleObserver,
   setContentWithDesignSystem,
+  sleep,
 } from '../helpers';
 import pkg from '@porsche-design-system/components-js/package.json';
-import type { PorscheDesignSystem } from '@porsche-design-system/components/dist/types/bundle';
+import type { PorscheDesignSystem } from '@porsche-design-system/components';
 
 const version = pkg.version;
 const VERSION_VALIDATION_TIMEOUT = 3000;
@@ -33,7 +34,9 @@ test('should show warning about multiple different versions correctly', async ({
   expect(porscheDesignSystem['3.7.0']).toBeDefined();
   expect(porscheDesignSystem['3.7.0'].prefixes).toEqual(prefixes);
 
-  await new Promise((resolve) => setTimeout(resolve, VERSION_VALIDATION_TIMEOUT)); // Wait until version validation
+  await sleep(VERSION_VALIDATION_TIMEOUT);
+
+  // Wait until version validation
 
   const versionWarning = getConsoleWarnings().find((warning) => warning.text().includes('Multiple different versions'));
 
@@ -56,7 +59,9 @@ test('should not show warning about multiple different versions if only one vers
   expect(porscheDesignSystem[version]).toBeDefined();
   expect(Object.keys(porscheDesignSystem).length).toBe(2); // cdn and one version
 
-  await new Promise((resolve) => setTimeout(resolve, VERSION_VALIDATION_TIMEOUT)); // Wait until version validation
+  await sleep(VERSION_VALIDATION_TIMEOUT);
+
+  // Wait until version validation
 
   const versionWarning = getConsoleWarnings().find((warning) => warning.text().includes('Multiple different versions'));
 

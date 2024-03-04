@@ -14,6 +14,7 @@ import {
   setContentWithDesignSystem,
   setProperty,
   skipInBrowser,
+  sleep,
   waitForStencilLifecycle,
 } from '../helpers';
 import type { SelectOption } from '@porsche-design-system/components/src/components/select/select/select-utils';
@@ -902,19 +903,25 @@ test.describe('keyboard behavior', () => {
 
       expect(await getHighlightedSelectOptionProperty(page, 'textContent')).toBe(testValues[valueIndex]);
 
-      await new Promise((resolve) => setTimeout(resolve, 500)); // Wait for searchString timeout
+      await sleep(500);
+
+      // Wait for searchString timeout
       await buttonElement.press('B');
       await waitForStencilLifecycle(page);
 
       expect(await getHighlightedSelectOptionProperty(page, 'textContent')).toBe(testValues[valueIndex + 1]);
 
-      await new Promise((resolve) => setTimeout(resolve, 500)); // Wait for searchString timeout
+      await sleep(500);
+
+      // Wait for searchString timeout
       await buttonElement.press('B');
       await waitForStencilLifecycle(page);
 
       expect(await getHighlightedSelectOptionProperty(page, 'textContent')).toBe(testValues[valueIndex + 2]);
 
-      await new Promise((resolve) => setTimeout(resolve, 500)); // Wait for searchString timeout
+      await sleep(500);
+
+      // Wait for searchString timeout
       await buttonElement.press('D');
       await buttonElement.press('e');
       await buttonElement.press('n');
@@ -923,7 +930,9 @@ test.describe('keyboard behavior', () => {
         testValues.find((val) => val.startsWith('Den'))
       );
 
-      await new Promise((resolve) => setTimeout(resolve, 500)); // Wait for searchString timeout
+      await sleep(500);
+
+      // Wait for searchString timeout
       await buttonElement.press('A');
       await waitForStencilLifecycle(page);
 

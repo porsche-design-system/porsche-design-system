@@ -14,7 +14,7 @@ import {
   waitForInputTransition,
   waitForStencilLifecycle,
 } from '../helpers';
-import type { FormState } from '@porsche-design-system/components/dist/types/bundle';
+import type { FormState } from '@porsche-design-system/components';
 
 const getHost = (page: Page) => page.$('p-radio-button-wrapper');
 const getInput = (page: Page) => page.$('p-radio-button-wrapper input');
@@ -284,9 +284,9 @@ test.describe('checked state', () => {
       <p-radio-button-wrapper label="Some label" id="radio-2">
         <input type="radio" name="some-name" />
       </p-radio-button-wrapper>`
-    );
-    const host1 = await page.$('#radio-1');
-    const input1 = await page.$('#radio-1 > input');
+      );
+      const host1 = await page.$('#radio-1');
+      const input1 = await page.$('#radio-1 > input');
 
       expect(await hasFocus(input1)).toBe(false);
       await page.keyboard.press('Tab');

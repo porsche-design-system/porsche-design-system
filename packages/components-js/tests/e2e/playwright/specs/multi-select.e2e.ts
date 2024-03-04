@@ -492,10 +492,10 @@ skipInBrowser(['webkit'], () => {
       expect((await getEventSummary(inputElement, 'focus')).counter).toBe(1);
     });
 
-  test('should focus correct elements when selection is made', async ({ page }) => {
-    await initMultiSelect(page, { options: { markupAfter: '<p-button>Some button</p-button>' } });
-    const button = await page.$('p-button');
-    await addEventListener(button, 'focus');
+    test('should focus correct elements when selection is made', async ({ page }) => {
+      await initMultiSelect(page, { options: { markupAfter: '<p-button>Some button</p-button>' } });
+      const button = await page.$('p-button');
+      await addEventListener(button, 'focus');
 
       expect(await getResetButton(page)).toBeNull();
       await setValue(page, ['a']);
@@ -527,10 +527,10 @@ skipInBrowser(['webkit'], () => {
       expect((await getEventSummary(button, 'focus')).counter, 'button focus after second tab').toBe(1);
     });
 
-  test('should focus next element when dropdown is open and no selection is made', async ({ page }) => {
-    await initMultiSelect(page, { options: { markupAfter: '<p-button>Some button</p-button>' } });
-    const button = await page.$('p-button');
-    await addEventListener(button, 'focus');
+    test('should focus next element when dropdown is open and no selection is made', async ({ page }) => {
+      await initMultiSelect(page, { options: { markupAfter: '<p-button>Some button</p-button>' } });
+      const button = await page.$('p-button');
+      await addEventListener(button, 'focus');
 
       expect(await getResetButton(page), 'initial reset button').toBeNull();
 
@@ -959,12 +959,12 @@ test.describe('keyboard and click events', () => {
     expect(await getDropdownDisplay(page), 'after tab').toBe('none');
   });
 
-    skipInBrowser(['webkit'], () => {
-  test('should focus reset button and dropdown should stay open when there is a selection', async ({ page }) => {
-    await initMultiSelect(page, {
-      options: { markupAfter: '<p-button>Button</p-button>' },
-    });
-    const button = await page.$('p-button');
+  skipInBrowser(['webkit'], () => {
+    test('should focus reset button and dropdown should stay open when there is a selection', async ({ page }) => {
+      await initMultiSelect(page, {
+        options: { markupAfter: '<p-button>Button</p-button>' },
+      });
+      const button = await page.$('p-button');
 
       await setValue(page, ['a']);
       const resetButton = await getResetButton(page);
@@ -1104,13 +1104,13 @@ test.describe('disabled', () => {
     expect(await getElementStyle(await getInput(page), 'cursor')).toBe('not-allowed');
   });
 
-    skipInBrowser(['webkit'], () => {
-  test('should not be able to open or interact', async ({ page }) => {
-    await initMultiSelect(page, {
-      props: { name: 'options', disabled: true },
-      options: { markupAfter: '<p-button>Button</p-button>' },
-    });
-    const button = await page.$('p-button');
+  skipInBrowser(['webkit'], () => {
+    test('should not be able to open or interact', async ({ page }) => {
+      await initMultiSelect(page, {
+        props: { name: 'options', disabled: true },
+        options: { markupAfter: '<p-button>Button</p-button>' },
+      });
+      const button = await page.$('p-button');
 
       await addEventListener(button, 'focus');
       expect((await getEventSummary(button, 'focus')).counter, 'before focus').toBe(0);

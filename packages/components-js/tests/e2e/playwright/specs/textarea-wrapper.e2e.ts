@@ -11,7 +11,7 @@ import {
   setProperty,
   waitForStencilLifecycle,
 } from '../helpers';
-import type { FormState } from '@porsche-design-system/components/dist/types/bundle';
+import type { FormState } from '@porsche-design-system/components';
 
 const getHost = (page: Page) => page.$('p-textarea-wrapper');
 const getTextarea = (page: Page) => page.$('p-textarea-wrapper textarea');
@@ -116,7 +116,7 @@ test('should render characterCountElement when maxlength is set', async ({ page 
 // puppeteer ignores @media(hover: hover) styles, but playwright can handle it
 test.describe('hover state', () => {
   test.skip();
-  const getBorderColor = (element: ElementHandle<HTMLElement>) => getElementStyle(element, 'borderColor');
+  const getBorderColor = (element: ElementHandle<HTMLElement | SVGElement>) => getElementStyle(element, 'borderColor');
   const defaultBorderColor = 'rgb(107, 109, 112)';
   const hoverBorderColor = 'rgb(1, 2, 5)';
 

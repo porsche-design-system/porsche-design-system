@@ -14,9 +14,10 @@ import {
   setContentWithDesignSystem,
   setProperty,
   skipInBrowser,
+  sleep,
   waitForStencilLifecycle,
 } from '../helpers';
-import type { ModalAriaAttribute, SelectedAriaAttributes } from '@porsche-design-system/components/dist/types/bundle';
+import type { ModalAriaAttribute, SelectedAriaAttributes } from '@porsche-design-system/components';
 
 const CSS_TRANSITION_DURATION = 600;
 
@@ -157,7 +158,9 @@ skipInBrowser(['firefox', 'webkit'], () => {
 
     await dismissModal(page);
     // TODO: why is timeout needed? transition durations should be overwritten with 0s
-    await new Promise((resolve) => setTimeout(resolve, CSS_TRANSITION_DURATION)); // transition delay for visibility
+    await sleep(CSS_TRANSITION_DURATION);
+
+    // transition delay for visibility
     const finalModalTransform = await getModalTransform();
     expect(finalModalTransform).toBe(initialModalTransform);
   });
@@ -394,15 +397,17 @@ skipInBrowser(['firefox', 'webkit'], () => {
       expect(await getModalVisibility(page), 'initial').toBe('hidden');
       expect(await getActiveElementTagName(page)).toBe('BODY');
 
-    await (await page.$('#btn-open')).click();
-    await waitForStencilLifecycle(page);
+      await (await page.$('#btn-open')).click();
+      await waitForStencilLifecycle(page);
 
       expect(await getModalVisibility(page)).toBe('visible');
 
       await page.keyboard.press('Escape');
       await waitForStencilLifecycle(page);
       // TODO: why is timeout needed? transition durations should be overwritten with 0s
-      await new Promise((resolve) => setTimeout(resolve, CSS_TRANSITION_DURATION)); // transition delay for visibility
+      await sleep(CSS_TRANSITION_DURATION);
+
+      // transition delay for visibility
 
       expect(await getModalVisibility(page), 'after escape').toBe('hidden');
       expect(await getActiveElementId(page)).toBe('btn-open');

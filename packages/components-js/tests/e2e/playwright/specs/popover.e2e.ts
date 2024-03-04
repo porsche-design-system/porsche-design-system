@@ -14,7 +14,7 @@ import {
   skipInBrowser,
   waitForStencilLifecycle,
 } from '../helpers';
-import type { PopoverDirection } from '@porsche-design-system/components/dist/types/bundle';
+import type { PopoverDirection } from '@porsche-design-system/components';
 
 const getHost = (page: Page) => page.$('p-popover');
 const getSpacer = (page: Page) => page.$('p-popover .spacer');
@@ -86,9 +86,9 @@ skipInBrowser(['webkit', 'firefox'], () => {
     </div>`
     );
 
-  const popover = await getHost(page);
-  const before = await page.$('#before');
-  const after = await page.$('#after');
+    const popover = await getHost(page);
+    const before = await page.$('#before');
+    const after = await page.$('#after');
 
     await addEventListener(before, 'focus');
     await addEventListener(popover, 'focus');

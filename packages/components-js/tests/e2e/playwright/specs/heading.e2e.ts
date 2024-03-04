@@ -1,3 +1,5 @@
+import type { Page } from 'playwright';
+import { expect, test } from '@playwright/test';
 import {
   getLifecycleStatus,
   getProperty,
@@ -5,16 +7,14 @@ import {
   setProperty,
   waitForStencilLifecycle,
 } from '../helpers';
-import type { Page } from 'playwright';
-import { expect, test } from '@playwright/test';
-import type { BreakpointCustomizable, DisplaySize, DisplayTag } from '@porsche-design-system/components';
+import type { BreakpointCustomizable, HeadingSize, HeadingTag } from '@porsche-design-system/components';
 
-const initDisplay = (
+const initHeading = (
   page: Page,
   opts?: {
-    size?: BreakpointCustomizable<DisplaySize>;
+    size?: BreakpointCustomizable<HeadingSize>;
     slot?: string;
-    tag?: DisplayTag;
+    tag?: HeadingTag;
   }
 ): Promise<void> => {
   const { size, slot, tag } = opts;
@@ -27,99 +27,108 @@ const initDisplay = (
   return setContentWithDesignSystem(
     page,
     `
-    <p-display ${attrs}>
+    <p-heading ${attrs}>
       ${slot ? slot : 'Some Heading'}
-    </p-display>`
+    </p-heading>`
   );
 };
 
-const getHost = (page: Page) => page.$('p-display');
+const getHost = (page: Page) => page.$('p-heading');
 
-const getDisplayTagName = async (page: Page): Promise<string> =>
+const getHeadingTagName = async (page: Page): Promise<string> =>
   (await getHost(page)).evaluate((el) => el.shadowRoot.querySelector('.root').tagName);
 
 test.describe('tag', () => {
   test('should render according to size', async ({ page }) => {
-    await initDisplay(page, { size: 'large' });
-    expect(await getDisplayTagName(page), 'for size="large"').toBe('H1');
+    await initHeading(page, { size: 'xx-large' });
+    expect(await getHeadingTagName(page), 'for size="xx-large"').toBe('H2');
 
-    await initDisplay(page, { size: 'medium' });
-    expect(await getDisplayTagName(page), 'for size="medium"').toBe('H2');
+    await initHeading(page, { size: 'x-large' });
+    expect(await getHeadingTagName(page), 'for size="x-large"').toBe('H3');
+
+    await initHeading(page, { size: 'large' });
+    expect(await getHeadingTagName(page), 'for size="large"').toBe('H4');
+
+    await initHeading(page, { size: 'medium' });
+    expect(await getHeadingTagName(page), 'for size="medium"').toBe('H5');
+
+    await initHeading(page, { size: 'small' });
+    expect(await getHeadingTagName(page), 'for size="small"').toBe('H6');
   });
 
-  test('should render according to tag h6 when tag is set', async ({ page }) => {
-    await initDisplay(page, { size: 'large', tag: 'h6' });
-    expect(await getDisplayTagName(page)).toBe('H6');
-  });
-
-  test('should render according to tag h6 when tag is set and if size is a size object', async ({ page }) => {
-    await initDisplay(page, { size: { base: 'large' }, tag: 'h6' });
-    expect(await getDisplayTagName(page)).toBe('H6');
+  test('should render according to tag h6 when size is set', async ({ page }) => {
+    await initHeading(page, { size: 'large-title', tag: 'h6' });
+    expect(await getHeadingTagName(page)).toBe('H6');
   });
 
   test('should render as default if size is a size object without tag', async ({ page }) => {
-    await initDisplay(page, { size: { base: 'large' } });
-    expect(await getDisplayTagName(page)).toBe('H1');
+    await initHeading(page, { size: { base: 'large' } });
+    expect(await getHeadingTagName(page)).toBe('H2');
+  });
+
+  test('should render according to tag h6 if size is set', async ({ page }) => {
+    await initHeading(page, { size: { base: 'large' }, tag: 'h6' });
+    expect(await getHeadingTagName(page)).toBe('H6');
   });
 
   test('should render as div due to slotted heading content', async ({ page }) => {
-    await initDisplay(page, { slot: '<h3>Some Heading</h3>' });
-    expect(await getDisplayTagName(page)).toBe('DIV');
+    await initHeading(page, { slot: '<h3>Some Heading</h3>' });
+    expect(await getHeadingTagName(page)).toBe('DIV');
   });
 
-  test('should render as width default display tag if slotted content is not a heading', async ({ page }) => {
-    await initDisplay(page, { slot: '<div>Some Heading</div>' });
-    expect(await getDisplayTagName(page)).toBe('H1');
+  test('should render as default heading if slotted content is not a heading', async ({ page }) => {
+    await initHeading(page, { slot: '<div>Some Heading</div>' });
+    expect(await getHeadingTagName(page)).toBe('H2');
   });
 });
 
 test.describe('lifecycle', () => {
   test('should work without unnecessary round trips on init', async ({ page }) => {
-    await initDisplay(page, { size: 'xx-large' });
+    await initHeading(page, { size: 'xx-large' });
     const status = await getLifecycleStatus(page);
 
-    expect(status.componentDidLoad['p-display'], 'componentDidLoad: p-display').toBe(1);
+    expect(status.componentDidLoad['p-heading'], 'componentDidLoad: p-heading').toBe(1);
 
     expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(1);
     expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(0);
   });
 
   test('should work without unnecessary round trips with custom breakpoints', async ({ page }) => {
-    await initDisplay(page, { size: { base: 'medium', l: 'large' } });
+    await initHeading(page, { size: { base: 'small', l: 'large' } });
     const status = await getLifecycleStatus(page);
 
-    expect(status.componentDidLoad['p-display'], 'componentDidLoad: p-display').toBe(1);
+    expect(status.componentDidLoad['p-heading'], 'componentDidLoad: p-heading').toBe(1);
 
     expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(1);
     expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(0);
   });
 
   test('should work without unnecessary round trips after prop change', async ({ page }) => {
-    await initDisplay(page, { size: 'large' });
+    await initHeading(page, { size: 'xx-large' });
     const host = await getHost(page);
 
     await setProperty(host, 'size', 'medium');
     await waitForStencilLifecycle(page);
     const status = await getLifecycleStatus(page);
 
-    expect(status.componentDidUpdate['p-display'], 'componentDidUpdate: p-display').toBe(1);
+    expect(status.componentDidUpdate['p-heading'], 'componentDidUpdate: p-heading').toBe(1);
     expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(1);
   });
 
   test('should work without unnecessary round trips after state change with custom breakpoints', async ({ page }) => {
-    await initDisplay(page, { size: { base: 'medium', l: 'large' } });
+    await initHeading(page, { size: { base: 'small', l: 'large' } });
     const host = await getHost(page);
 
     await setProperty(host, 'size', 'medium');
     await waitForStencilLifecycle(page);
     const status = await getLifecycleStatus(page);
 
-    expect(status.componentDidUpdate['p-display'], 'componentDidUpdate: p-display').toBe(1);
+    expect(status.componentDidUpdate['p-heading'], 'componentDidUpdate: p-heading').toBe(1);
     expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(1);
   });
 
   test('should have a theme prop defined at any time without any unnecessary round trips', async ({ page }) => {
-    await initDisplay(page, { size: 'large-title' });
+    await initHeading(page, { size: 'large-title' });
     const host = await getHost(page);
 
     expect(await getProperty(host, 'theme')).toBe('light');
@@ -127,14 +136,14 @@ test.describe('lifecycle', () => {
     await setProperty(host, 'theme', 'dark');
     await waitForStencilLifecycle(page);
     const status = await getLifecycleStatus(page);
-    expect(status.componentDidUpdate['p-display'], 'componentDidUpdate: p-display').toBe(1);
+    expect(status.componentDidUpdate['p-heading'], 'componentDidUpdate: p-heading').toBe(1);
     expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(1);
     expect(await getProperty(host, 'theme')).toBe('dark');
 
     await setProperty(host, 'theme', 'light');
     await waitForStencilLifecycle(page);
     const status2 = await getLifecycleStatus(page);
-    expect(status2.componentDidUpdate['p-display'], 'componentDidUpdate: p-display').toBe(2);
+    expect(status2.componentDidUpdate['p-heading'], 'componentDidUpdate: p-heading').toBe(2);
     expect(status2.componentDidUpdate.all, 'componentDidUpdate: all').toBe(2);
     expect(await getProperty(host, 'theme')).toBe('light');
   });

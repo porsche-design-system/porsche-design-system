@@ -12,7 +12,7 @@ import {
   setProperty,
   waitForStencilLifecycle,
 } from '../helpers';
-import type { BannerState } from '@porsche-design-system/components/dist/types/bundle';
+import type { BannerState } from '@porsche-design-system/components';
 
 type InitOptions = {
   open: boolean;
