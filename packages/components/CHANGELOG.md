@@ -14,7 +14,14 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ### [Unreleased]
 
+#### Added
+
 - `Select` ([#3008](https://github.com/porsche-design-system/porsche-design-system/pull/3008))
+
+#### Fixed
+
+- Placeholder color of `Text Field Wrapper` for `input type="date"` and `input type="time"` in Safari and alignment in
+  Mobile Safari ([#3068](https://github.com/porsche-design-system/porsche-design-system/pull/3068))
 
 ### [3.13.0-rc.0] - 2024-02-19
 
