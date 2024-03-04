@@ -127,21 +127,16 @@ test('should be visible after opened', async ({ page }) => {
 skipInBrowser(['webkit', 'firefox'], () => {
   test('should have correct transform when opened and dismissed', async ({ page }) => {
     await initBasicFlyoutNavigation(page, { open: false });
-    const getFlyoutTransform = async () =>
-      getElementStyle(await getFlyoutNavigationDialog(page), 'transform', { waitForTransition: true });
 
-    const initialFlyoutTransform = await getFlyoutTransform();
-    expect(initialFlyoutTransform).toBe(`matrix(1, 0, 0, 1, -461.898, 0)`);
+    const flyoutDialogElement = page.locator('p-flyout-navigation dialog');
+    await expect(flyoutDialogElement).toHaveCSS('transform', 'matrix(1, 0, 0, 1, -461.898, 0)');
 
     await openFlyoutNavigation(page);
 
-    const openFlyoutTransform = await getFlyoutTransform();
-    expect(openFlyoutTransform).toBe('matrix(1, 0, 0, 1, 0, 0)');
-    expect(initialFlyoutTransform).not.toBe(openFlyoutTransform);
+    await expect(flyoutDialogElement).toHaveCSS('transform', 'matrix(1, 0, 0, 1, 0, 0)');
 
     await dismissFlyoutNavigation(page);
-    const finalFlyoutTransform = await getFlyoutTransform();
-    expect(finalFlyoutTransform).toBe(initialFlyoutTransform);
+    await expect(flyoutDialogElement).toHaveCSS('transform', 'matrix(1, 0, 0, 1, -461.898, 0)');
   });
 });
 
