@@ -1,7 +1,7 @@
 import { expect, type Page, test } from '@playwright/test';
 import { schemes, themes, viewportWidthM } from '@porsche-design-system/shared/testing/playwright.vrt.config';
 import {
-  forceFocusState,
+  forceFocusVisibleState,
   forceHoverState,
   getPlaygroundPseudoStatesMarkup,
   type PrefersColorScheme,
@@ -30,10 +30,10 @@ const scenario = async (page: Page, theme: Theme, scheme?: PrefersColorScheme): 
 
   await forceHoverState(page, '.hover p-tag >>> span');
   await forceHoverState(page, '.hover p-tag a'); // TODO: chrome hover bug. Remove when fixed.
-  await forceFocusState(page, '.focus p-tag a');
-  await forceFocusState(page, '.focus p-tag button');
-  await forceFocusState(page, '.focus-hover p-tag a');
-  await forceFocusState(page, '.focus-hover p-tag button');
+  await forceFocusVisibleState(page, '.focus p-tag a');
+  await forceFocusVisibleState(page, '.focus p-tag button');
+  await forceFocusVisibleState(page, '.focus-hover p-tag a');
+  await forceFocusVisibleState(page, '.focus-hover p-tag button');
   await forceHoverState(page, '.focus-hover p-tag >>> span');
   await forceHoverState(page, '.focus-hover p-tag button');
   await forceHoverState(page, '.focus-hover p-tag a'); // TODO: chrome hover bug. Remove when fixed.

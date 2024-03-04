@@ -3,6 +3,7 @@ import { schemes, themes, viewportWidthM } from '@porsche-design-system/shared/t
 import {
   forceFocusHoverState,
   forceFocusState,
+  forceFocusVisibleState,
   forceHoverState,
   getPlaygroundPseudoStatesMarkup,
   type PrefersColorScheme,
@@ -55,13 +56,13 @@ const scenario = async (page: Page, theme: Theme, scheme?: PrefersColorScheme): 
   await forceFocusState(page, '.hover p-carousel >>> p-link-pure'); // to make it appear via :focus
   await forceHoverState(page, '.hover p-carousel >>> p-link-pure >>> a');
   await forceHoverState(page, '.hover p-carousel span a');
-  await forceFocusState(page, '.focus p-carousel >>> p-button-pure >>> button');
+  await forceFocusVisibleState(page, '.focus p-carousel >>> p-button-pure >>> button');
   await forceFocusState(page, '.focus p-carousel >>> p-link-pure'); // to make it appear via :focus
-  await forceFocusState(page, '.focus p-carousel >>> p-link-pure >>> a');
-  await forceFocusState(page, '.focus p-carousel span a');
-  await forceFocusState(page, '.focus p-carousel >>> .splide__slide'); // TODO: make this work 🤷‍
+  await forceFocusVisibleState(page, '.focus p-carousel >>> p-link-pure >>> a');
+  await forceFocusVisibleState(page, '.focus p-carousel span a');
+  await forceFocusVisibleState(page, '.focus p-carousel >>> .splide__slide'); // TODO: make this work 🤷‍
   await forceFocusHoverState(page, '.focus-hover p-carousel >>> p-button-pure >>> button');
-  await forceFocusState(page, '.focus-hover p-carousel >>> p-link-pure'); // to make it appear via :focus
+  await forceFocusHoverState(page, '.focus-hover p-carousel >>> p-link-pure'); // to make it appear via :focus
   await forceFocusHoverState(page, '.focus-hover p-carousel >>> p-link-pure >>> a');
   await forceFocusHoverState(page, '.focus-hover p-carousel span a');
 };

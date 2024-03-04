@@ -50,8 +50,7 @@ and in which context a single component is tested.
 - unit tests for component itself, e.g. `button.spec.ts`
 - unit tests for component styles, e.g. `button-styles.spec.ts`
 - unit tests for component utils, e.g. `button-utils.spec.ts`
-- generic unit tests for all components, e.g. `lifecycleValidtion.spec.ts`, `host-hidden-styles.spec.ts`,
-  `slotted-styles.spec.ts`, `hover-media-query.spec.ts` and `a11y.spec.ts`
+- generic unit tests for all components, e.g. `lifecycleValidtion.spec.ts` or `a11y.spec.ts`
 
 ##### `components-js`
 
