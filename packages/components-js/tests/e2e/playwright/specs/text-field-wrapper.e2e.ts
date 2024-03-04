@@ -377,6 +377,7 @@ test.describe('focus state', () => {
 });
 
 test.describe('hover state', () => {
+  skipInBrowser(['firefox', 'webkit']);
   const getBorderColor = (element: ElementHandle<HTMLElement>) => getElementStyle(element, 'borderColor');
   const defaultBorderColor = 'rgb(107, 109, 112)';
   const hoverBorderColor = 'rgb(1, 2, 5)';

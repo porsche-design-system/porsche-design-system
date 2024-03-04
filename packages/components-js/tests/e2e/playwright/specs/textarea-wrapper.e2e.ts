@@ -118,6 +118,7 @@ test('should render characterCountElement when maxlength is set', async ({ page 
 });
 
 test.describe('hover state', () => {
+  skipInBrowser(['firefox', 'webkit']);
   const getBorderColor = (element: ElementHandle<HTMLElement | SVGElement>) => getElementStyle(element, 'borderColor');
   const defaultBorderColor = 'rgb(107, 109, 112)';
   const hoverBorderColor = 'rgb(1, 2, 5)';

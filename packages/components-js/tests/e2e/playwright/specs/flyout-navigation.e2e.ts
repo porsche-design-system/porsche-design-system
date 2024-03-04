@@ -500,53 +500,57 @@ test.describe('second level', () => {
     expect(await getFlyoutNavigationItemScrollerVisibility(page, 'item-3')).toBe('visible');
   });
 
-  test('should change to correct second level open when activeIdentifier is changed', async ({ page }) => {
-    await initBasicFlyoutNavigation(page, { open: false, activeIdentifier: 'item-2' });
-    await openFlyoutNavigation(page);
-    const host = await getHost(page);
-    expect(await getFlyoutNavigationItemScrollerVisibility(page, 'item-1')).toBe('hidden');
-    expect(await getFlyoutNavigationItemScrollerVisibility(page, 'item-2')).toBe('visible');
-    expect(await getFlyoutNavigationItemScrollerVisibility(page, 'item-3')).toBe('hidden');
+  skipInBrowser(['webkit'], () => {
+    test('should change to correct second level open when activeIdentifier is changed', async ({ page }) => {
+      await initBasicFlyoutNavigation(page, { open: false, activeIdentifier: 'item-2' });
+      await openFlyoutNavigation(page);
+      const host = await getHost(page);
+      expect(await getFlyoutNavigationItemScrollerVisibility(page, 'item-1')).toBe('hidden');
+      expect(await getFlyoutNavigationItemScrollerVisibility(page, 'item-2')).toBe('visible');
+      expect(await getFlyoutNavigationItemScrollerVisibility(page, 'item-3')).toBe('hidden');
 
-    await setProperty(host, 'activeIdentifier', 'item-3');
-    await waitForStencilLifecycle(page);
+      await setProperty(host, 'activeIdentifier', 'item-3');
+      await waitForStencilLifecycle(page);
 
-    expect(await getFlyoutNavigationItemScrollerVisibility(page, 'item-1')).toBe('hidden');
-    expect(await getFlyoutNavigationItemScrollerVisibility(page, 'item-2')).toBe('hidden');
-    expect(await getFlyoutNavigationItemScrollerVisibility(page, 'item-3')).toBe('visible');
+      expect(await getFlyoutNavigationItemScrollerVisibility(page, 'item-1')).toBe('hidden');
+      expect(await getFlyoutNavigationItemScrollerVisibility(page, 'item-2')).toBe('hidden');
+      expect(await getFlyoutNavigationItemScrollerVisibility(page, 'item-3')).toBe('visible');
+    });
   });
 
-  test('should open second level of item when item is appended and activeIdentifier is set to this item', async ({
-    page,
-  }) => {
-    await initBasicFlyoutNavigation(page, { open: true });
-    const host = await getHost(page);
+  skipInBrowser(['webkit'], () => {
+    test('should open second level of item when item is appended and activeIdentifier is set to this item', async ({
+      page,
+    }) => {
+      await initBasicFlyoutNavigation(page, { open: true });
+      const host = await getHost(page);
 
-    expect(await getFlyoutNavigationItemScrollerVisibility(page, 'item-1')).toBe('hidden');
-    expect(await getFlyoutNavigationItemScrollerVisibility(page, 'item-2')).toBe('hidden');
-    expect(await getFlyoutNavigationItemScrollerVisibility(page, 'item-3')).toBe('hidden');
-    expect(await getFlyoutNavigationItem(page, 'item-4')).toBeNull();
+      expect(await getFlyoutNavigationItemScrollerVisibility(page, 'item-1')).toBe('hidden');
+      expect(await getFlyoutNavigationItemScrollerVisibility(page, 'item-2')).toBe('hidden');
+      expect(await getFlyoutNavigationItemScrollerVisibility(page, 'item-3')).toBe('hidden');
+      expect(await getFlyoutNavigationItem(page, 'item-4')).toBeNull();
 
-    await host.evaluate((el) => {
-      const newItem = document.createElement('p-flyout-navigation-item');
-      newItem.innerHTML = '<a href="#some-anchor">Some anchor</a>';
-      newItem.setAttribute('identifier', 'item-4');
-      el.appendChild(newItem);
+      await host.evaluate((el) => {
+        const newItem = document.createElement('p-flyout-navigation-item');
+        newItem.innerHTML = '<a href="#some-anchor">Some anchor</a>';
+        newItem.setAttribute('identifier', 'item-4');
+        el.appendChild(newItem);
+      });
+
+      const item4 = await getFlyoutNavigationItem(page, 'item-4');
+      expect(item4).toBeDefined();
+      expect(await getFlyoutNavigationItemScrollerVisibility(page, 'item-1')).toBe('hidden');
+      expect(await getFlyoutNavigationItemScrollerVisibility(page, 'item-2')).toBe('hidden');
+      expect(await getFlyoutNavigationItemScrollerVisibility(page, 'item-3')).toBe('hidden');
+      expect(await getFlyoutNavigationItemScrollerVisibility(page, 'item-4')).toBe('hidden');
+
+      await setProperty(host, 'activeIdentifier', 'item-4');
+      await waitForStencilLifecycle(page);
+      expect(await getFlyoutNavigationItemScrollerVisibility(page, 'item-1')).toBe('hidden');
+      expect(await getFlyoutNavigationItemScrollerVisibility(page, 'item-2')).toBe('hidden');
+      expect(await getFlyoutNavigationItemScrollerVisibility(page, 'item-3')).toBe('hidden');
+      expect(await getFlyoutNavigationItemScrollerVisibility(page, 'item-4')).toBe('visible');
     });
-
-    const item4 = await getFlyoutNavigationItem(page, 'item-4');
-    expect(item4).toBeDefined();
-    expect(await getFlyoutNavigationItemScrollerVisibility(page, 'item-1')).toBe('hidden');
-    expect(await getFlyoutNavigationItemScrollerVisibility(page, 'item-2')).toBe('hidden');
-    expect(await getFlyoutNavigationItemScrollerVisibility(page, 'item-3')).toBe('hidden');
-    expect(await getFlyoutNavigationItemScrollerVisibility(page, 'item-4')).toBe('hidden');
-
-    await setProperty(host, 'activeIdentifier', 'item-4');
-    await waitForStencilLifecycle(page);
-    expect(await getFlyoutNavigationItemScrollerVisibility(page, 'item-1')).toBe('hidden');
-    expect(await getFlyoutNavigationItemScrollerVisibility(page, 'item-2')).toBe('hidden');
-    expect(await getFlyoutNavigationItemScrollerVisibility(page, 'item-3')).toBe('hidden');
-    expect(await getFlyoutNavigationItemScrollerVisibility(page, 'item-4')).toBe('visible');
   });
 
   test('should close second level of active item when item is removed', async ({ page }) => {

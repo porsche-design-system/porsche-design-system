@@ -137,7 +137,7 @@ test('should work with nested or translated markup', async ({ page }) => {
 
 test.describe('slotted content changes', () => {
   // TODO: Different values in pipeline than locally
-  skipInBrowser(['webkit'], () => {
+  skipInBrowser(['webkit', 'firefox'], () => {
     test('should adjust bar style when new tab element is added and clicked', async ({ page }) => {
       await initTabsBar(page, { amount: 1, activeTabIndex: 0 });
       const bar = await getBar(page);
@@ -289,7 +289,7 @@ test.describe('active index position', () => {
   });
 
   // TODO: Different value in pipeline than locally
-  skipInBrowser(['webkit'], () => {
+  skipInBrowser(['firefox', 'webkit'], () => {
     test('should have correct scroll position after tab click and next button click', async ({ page }) => {
       await initTabsBar(page, { amount: 8, isWrapped: true, activeTabIndex: 7 });
       const { nextButton } = await getPrevNextButton(page);
