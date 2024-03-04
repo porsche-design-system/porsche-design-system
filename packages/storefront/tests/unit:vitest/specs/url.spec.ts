@@ -36,7 +36,6 @@ describe('url', () => {
 
           switch (url) {
             case 'https://reddit.com':
-            case 'https://figma.com/file/0GbGhymVN01gdkpWBTv8wS/Overview-%26-Key-Screens?node-id=235%3A6014&t=HmQ6ZStK7BiIj6EW-1':
               expect(status).toBe(403); // 403 Forbidden
               break;
             case 'https://vmmedia.porsche.de':
