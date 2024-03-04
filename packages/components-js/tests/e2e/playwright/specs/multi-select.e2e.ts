@@ -361,6 +361,8 @@ test.describe('Update Event', () => {
     test('should emit update event with correct details when reset button is clicked', async ({ page }) => {
       await initMultiSelect(page, { props: { name: 'options' } });
       await setValue(page, ['a', 'b']);
+      await waitForStencilLifecycle(page);
+
       const host = await getHost(page);
       await addEventListener(host, 'update');
 
