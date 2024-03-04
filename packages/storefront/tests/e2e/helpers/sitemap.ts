@@ -6,9 +6,9 @@ import * as path from 'path';
 const whitelistedUrls: string[] = [
   'https://github.com/porsche-design-system/porsche-design-system',
   'https://cdn.ui.porsche.com/porsche-design-system/font/v1/Porsche_Next_WebOTF_Lat-Gr-Cyr.zip',
-  'https://www.sitepoint.com/introduction-wai-aria/',
+  'https://sitepoint.com/introduction-wai-aria/',
   'https://adabook.com/',
-  'https://www.etsi.org/deliver/etsi_en/301500_301599/301549/02.01.02_60/en_301549v020102p.pdf',
+  'https://etsi.org/deliver/etsi_en/301500_301599/301549/02.01.02_60/en_301549v020102p.pdf',
 ];
 
 const console = require('console'); // workaround for nicer logs
@@ -58,18 +58,19 @@ export const buildSitemap = async (): Promise<string[]> => {
     }
   }
 
-  allUrls = allUrls.sort();
+  // filter out porsche design system pull request urls, otherwise we'd need to re-run CI all the time
+  allUrls = allUrls.sort().filter(link => !link.startsWith('https://github.com/porsche-design-system/porsche-design-system/pull/'));
   const internalUrls = allUrls.filter((link) => link.startsWith('/'));
   const externalUrls = allUrls.filter((link) => !link.startsWith('/'));
 
-  console.log(`Finished building sitemap.json with only ${internalUrls.length} internalUrls`);
+  console.log(`Finished building sitemap.json with only ${allUrls.length} urls`);
   console.log(`– Internal urls: ${internalUrls.length}`);
   console.log(`– External urls: ${externalUrls.length}`);
 
   // write results/sitemap.json
   // we only care about internalUrls, since we do nothing with external ones and they just cause an additional CI run when extending the changelog
-  fs.writeFileSync(sitemapResultPath, JSON.stringify(internalUrls, null, 2));
-  return internalUrls;
+  fs.writeFileSync(sitemapResultPath, JSON.stringify(allUrls, null, 2));
+  return allUrls;
 };
 
 const mapAsync = <T, U>(array: T[], callbackFn: (value: T, index: number, array: T[]) => Promise<U>): Promise<U[]> =>

@@ -37,14 +37,13 @@ who uses accessible products:
 - **Better brand image** (e.g. more trust)
 - **Better business** (e.g. more customers)
 - **Better legal compliance** (e.g. avoiding lawsuits)
-  [Read more about this topic on our UX Platform compliance page.](https://ux.porsche.com/accessibility/legal-compliance)
+  [Read more about this topic on our UX Platform compliance page.](https://ux.porsche.com/d/6VNB3CeLHcJz/accessibility#/accessibility/legal-compliance)
 
 ## How we reach and sustain accessibility compliance
 
 At Porsche, we are **driven by excellence**, and the **Porsche Design System** is committed to deliver highly **usable
 and accessible** components that are not limited to certain users or use cases. The **Design System Components** are
-tested automatically and manually against all official success criteria of
-[WCAG 2.2 (AA)](https://www.w3.org/TR/WCAG22/).
+tested automatically and manually against all official success criteria of [WCAG 2.2 (AA)](https://w3.org/TR/WCAG22).
 
 If you find any accessibility issue, please feel free to [**report it**](help/bug-report).
 
@@ -54,8 +53,8 @@ Further you can find **accessibility specific documentation** on component level
 ## Further information
 
 For more information about the topic and insights how to reduce possible
-[**violations against country-specific laws**](https://ux.porsche.com/accessibility/legal-compliance), we highly
-recommend our guidelines to enhance accessibility in your products:
+[**violations against country-specific laws**](https://ux.porsche.com/d/6VNB3CeLHcJz/accessibility#/accessibility/legal-compliance),
+we highly recommend our guidelines to enhance accessibility in your products:
 
-<p-link :theme="this.$store.getters.storefrontTheme" href="https://ux.porsche.com/accessibility/">Accessibility of
-digital products at Porsche</p-link>
+<p-link :theme="this.$store.getters.storefrontTheme" href="https://ux.porsche.com/d/6VNB3CeLHcJz/accessibility#/accessibility/introduction">Accessibility
+of digital products at Porsche</p-link>

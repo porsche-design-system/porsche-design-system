@@ -14,7 +14,7 @@ The Porsche Design System **components**, **marque**, **icons**, **fonts** and *
 Let's have a look at following applications and assume that all of these applications have integrated a Porsche Design
 System Button:
 
-- [Porsche.com](https://www.porsche.com) created with Vanilla JS
+- [Porsche.com](https://porsche.com) created with Vanilla JS
 - [Porsche Finder](https://finder.porsche.com) created with React
 - [My Porsche](https://login.porsche.com/login) created with Angular
 

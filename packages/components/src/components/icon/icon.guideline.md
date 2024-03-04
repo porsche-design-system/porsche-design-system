@@ -1,6 +1,6 @@
 <ComponentHeading name="Icon"></ComponentHeading>
 
-We want to enable you to use the icons you need. Check the [Porsche Design System](https://icons.porsche.com/#/) for an
+We want to enable you to use the icons you need. Check the [Porsche Design System](https://icons.porsche.com) for an
 appropriate icon you are looking for. If there is no match, we encourage you to build, test and use the icons you need.
 To help you meet the quality standards of Porsche, you will find the guidelines below.
 
@@ -40,6 +40,6 @@ System. Feel free to get in touch with us on our
 
 ##### Read more on
 
-[Nielsen Norman Group](https://www.nngroup.com/articles/icon-testing/)
+[Nielsen Norman Group](https://nngroup.com/articles/icon-testing)
 
 [UsabilityHub](https://usabilityhub.com/examples/easiest-icon-to-understand)

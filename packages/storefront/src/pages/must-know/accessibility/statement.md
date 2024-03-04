@@ -30,7 +30,7 @@ commitment to accessibility. The following example can be seen as a blueprint an
 needs**.
 
 This template is based on the guidelines on
-[How to develop an Accessibility Statement](https://www.w3.org/WAI/planning/statements/) provided by **W3C**.
+[How to develop an Accessibility Statement](https://w3.org/WAI/planning/statements) provided by **W3C**.
 
 <Playground :markup="statement" class="p-accessibility-statement"></Playground>
 
@@ -62,7 +62,7 @@ export default class Code extends Vue {
   </p-text-list>
   <p-heading size="medium"><h2>Conformance status</h2></p-heading>
   <p-text>
-    The <a href="https://www.w3.org/WAI/standards-guidelines/wcag/">Web Content Accessibility Guidelines (WCAG)</a> defines requirements for designers and developers to improve accessibility for people with disabilities.
+    The <a href="https://w3.org/WAI/standards-guidelines/wcag">Web Content Accessibility Guidelines (WCAG)</a> defines requirements for designers and developers to improve accessibility for people with disabilities.
   </p-text>
   <p-text>
 Porsche is committed to making its websites usable by all people by meeting or exceeding the requirements of the Web Content Accessibility Guidelines 2.1 Level AA (the Guidelines). 

@@ -66,7 +66,7 @@
       ...this.algoliaClient,
       search: (requests: AlgoliaRequest[]): ReturnType<SearchClient['search']> => {
         // remove initial search
-        // https://www.algolia.com/doc/guides/building-search-ui/going-further/conditional-requests/vue/#detecting-empty-search-requests
+        // https://algolia.com/doc/guides/building-search-ui/going-further/conditional-requests/vue/#detecting-empty-search-requests
         if (requests.every(({ params }: AlgoliaRequest) => !params?.query.trim())) {
           return Promise.resolve({
             results: requests.map(() => ({
@@ -97,8 +97,8 @@
       return baseHref.includes('/issue/')
         ? 'latest'
         : baseHref.length > 1
-        ? baseHref.slice(1, -1).replace('/', '_')
-        : 'latest';
+          ? baseHref.slice(1, -1).replace('/', '_')
+          : 'latest';
     }
 
     transformItems(items: AlgoliaRecord[]): AlgoliaResult[] {

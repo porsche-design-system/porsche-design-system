@@ -90,7 +90,7 @@ export default class Code extends Vue {
 
   get linkMarkup(){
     return TAG_COLORS.map((color, idx) => `<p-tag${idx === 0 ? ' icon="car"' : ''} color="${color}">
-  <a href="https://www.porsche.com">Color ${color}${TAG_COLORS_DEPRECATED.includes(color) ? ' (deprecated)' : ''}</a>
+  <a href="https://porsche.com">Color ${color}${TAG_COLORS_DEPRECATED.includes(color) ? ' (deprecated)' : ''}</a>
 </p-tag>`).join('\n');
   };
 
@@ -99,7 +99,7 @@ export default class Code extends Vue {
 </p-tag>`;
 
   linkAccessibility = `<p-tag icon="car">
-  <a href="https://www.porsche.com" aria-label="More information about used cars">Used cars</a>
+  <a href="https://porsche.com" aria-label="More information about used cars">Used cars</a>
 </p-tag>`;
 
   textWrap = `<div style="width: 100px"><p-tag color="notification-success-soft" style="white-space: normal">Some label with longer text wrapped in a narrow container</p-tag></div>`;

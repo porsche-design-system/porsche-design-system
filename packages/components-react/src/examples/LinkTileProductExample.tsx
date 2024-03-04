@@ -13,7 +13,7 @@ export const LinkTileProductExample = (): JSX.Element => {
       heading="Some product"
       price="1.911,00 €"
       description="Some description"
-      href="https://www.porsche.com"
+      href="https://porsche.com"
       liked={liked}
       onLike={handleLike}
     >

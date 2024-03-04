@@ -3,9 +3,9 @@ import type { Lang, Locales } from '../types';
 const ID = 'porsche-design-system-fallbacks-browser-support';
 
 const linkAttributes = 'target=_blank rel="nofollow noopener"';
-const chrome = `<a href=https://www.google.com/chrome/ ${linkAttributes}>Google Chrome</a>`;
-const firefox = `<a href=https://www.mozilla.org/firefox/new/ ${linkAttributes}>Mozilla Firefox</a>`;
-const edge = `<a href=https://www.microsoft.com/edge ${linkAttributes}>Microsoft Edge</a>`;
+const chrome = `<a href=https://google.com/chrome/ ${linkAttributes}>Google Chrome</a>`;
+const firefox = `<a href=https://mozilla.org/firefox/new/ ${linkAttributes}>Mozilla Firefox</a>`;
+const edge = `<a href=https://microsoft.com/edge ${linkAttributes}>Microsoft Edge</a>`;
 
 const locales: Locales = {
   de: {
