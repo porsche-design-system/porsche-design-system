@@ -695,29 +695,30 @@ test.describe('sticky footer', () => {
     expect(await getFooterBoxShadow(page)).toBe('none');
   });
 
-  test('should show box-shadow again when scrolling up from bottom', async ({ page }) => {
-    skipInBrowser(['webkit']);
-    await initBasicModal(page, {
-      isOpen: true,
-      content: '<div style="height: 110vh">Some Content</div>',
-      hasSlottedFooter: true,
+  skipInBrowser(['webkit'], () => {
+    test('should show box-shadow again when scrolling up from bottom', async ({ page }) => {
+      await initBasicModal(page, {
+        isOpen: true,
+        content: '<div style="height: 110vh">Some Content</div>',
+        hasSlottedFooter: true,
+      });
+
+      const scrollContainer = await getScrollContainer(page);
+      await scrollContainer.evaluate((el) => {
+        el.scrollBy({ top: 1000 }); // should be bottom
+      });
+
+      expect(await getFooterBoxShadow(page)).toBe('none');
+
+      await scrollContainer.evaluate((el) => {
+        el.scrollBy({ top: -81 }); // margin-bottom of modal is 80px for whatever reason, so this is the edge on when the shadow appears again
+      });
+
+      const footer = await getFooter(page);
+      await page.waitForFunction((el) => getComputedStyle(el).boxShadow !== 'none', footer);
+
+      expect(await getFooterBoxShadow(page)).toBe(expectedBoxShadow);
     });
-
-    const scrollContainer = await getScrollContainer(page);
-    await scrollContainer.evaluate((el) => {
-      el.scrollBy({ top: 1000 }); // should be bottom
-    });
-
-    expect(await getFooterBoxShadow(page)).toBe('none');
-
-    await scrollContainer.evaluate((el) => {
-      el.scrollBy({ top: -81 }); // margin-bottom of modal is 80px for whatever reason, so this is the edge on when the shadow appears again
-    });
-
-    const footer = await getFooter(page);
-    await page.waitForFunction((el) => getComputedStyle(el).boxShadow !== 'none', footer);
-
-    expect(await getFooterBoxShadow(page)).toBe(expectedBoxShadow);
   });
 });
 
