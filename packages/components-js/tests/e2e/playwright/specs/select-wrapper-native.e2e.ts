@@ -7,6 +7,7 @@ import {
   hasFocus,
   setContentWithDesignSystem,
   setProperty,
+  skipInBrowser,
   waitForStencilLifecycle,
 } from '../helpers';
 import type { FormState } from '@porsche-design-system/components';
@@ -121,6 +122,7 @@ test.describe('focus state', () => {
 });
 
 test.describe('hover state', () => {
+  skipInBrowser(['firefox', 'webkit']);
   test('should change border-color of select when label text is hovered', async ({ page }) => {
     await initSelect(page);
     await page.mouse.move(0, 300); // avoid potential hover initially

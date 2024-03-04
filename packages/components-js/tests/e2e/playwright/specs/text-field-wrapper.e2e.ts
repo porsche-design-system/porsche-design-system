@@ -399,7 +399,6 @@ test.describe('hover state', () => {
     expect(await getBorderColor(input)).toBe(hoverBorderColor);
   });
 
-  // TODO: Activate again, hovering does not work over shadowRoot element
   test('should show hover state on input when unit/counter is hovered', async ({ page }) => {
     await initTextField(page, { maxLength: 20 });
     await page.mouse.move(0, 300); // avoid potential hover initially

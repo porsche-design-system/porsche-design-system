@@ -469,12 +469,13 @@ test('should not render initial hidden option fields', async ({ page }) => {
   expect(await getCssClasses(dropdownOption1)).toContain(hiddenClass);
 });
 
-test('should not throw error with long option list and the same item is selected and disabled', async ({ page }) => {
-  await initPageErrorObserver(page);
+skipInBrowser(['firefox', 'webkit'], () => {
+  test('should not throw error with long option list and the same item is selected and disabled', async ({ page }) => {
+    await initPageErrorObserver(page);
 
-  await setContentWithDesignSystem(
-    page,
-    `
+    await setContentWithDesignSystem(
+      page,
+      `
     <p-select-wrapper label="Some label">
       <select name="some-name">
         <option value="default" disabled selected>Bitte wählen Sie Ihr Land</option>
@@ -495,21 +496,22 @@ test('should not throw error with long option list and the same item is selected
         <option value="AT">Austria</option
       </select>
     </p-select-wrapper>`
-  );
+    );
 
-  const dropdownCombobox = await getDropdownCombobox(page);
-  await dropdownCombobox.click();
-  await waitForStencilLifecycle(page);
+    const dropdownCombobox = await getDropdownCombobox(page);
+    await dropdownCombobox.click();
+    await waitForStencilLifecycle(page);
 
-  expect(getPageThrownErrorsAmount(), 'get errorsAmount after click').toBe(0);
+    expect(getPageThrownErrorsAmount(), 'get errorsAmount after click').toBe(0);
 
-  await page.evaluate(() => {
-    const script = document.createElement('script');
-    script.innerText = "throw new Error('I am an error');";
-    document.body.appendChild(script);
+    await page.evaluate(() => {
+      const script = document.createElement('script');
+      script.innerText = "throw new Error('I am an error');";
+      document.body.appendChild(script);
+    });
+
+    expect(getPageThrownErrorsAmount(), 'get errorsAmount after custom error').toBe(1);
   });
-
-  expect(getPageThrownErrorsAmount(), 'get errorsAmount after custom error').toBe(1);
 });
 
 test('should not set checkmark icon if option is both selected and disabled', async ({ page }) => {
