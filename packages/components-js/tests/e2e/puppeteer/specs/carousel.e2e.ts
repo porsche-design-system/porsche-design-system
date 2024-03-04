@@ -1,7 +1,9 @@
 import type { Page } from 'puppeteer';
 import {
   expectA11yToMatchSnapshot,
+  getActiveElementTagNameInShadowRoot,
   getAttribute,
+  getElementStyle,
   selectNode,
   setContentWithDesignSystem,
   waitForStencilLifecycle,
@@ -60,6 +62,8 @@ const initCarousel = (opts?: InitOptions) => {
   return setContentWithDesignSystem(page, content);
 };
 
+const getHost = () => selectNode(page, 'p-carousel');
+const getSkipLinkHost = () => selectNode(page, 'p-carousel >>> .skip-link');
 const getSplide = () => selectNode(page, 'p-carousel >>> .splide');
 const getSplideTrack = () => selectNode(page, 'p-carousel >>> .splide__track');
 const getSlides = async () => (await selectNode(page, 'p-carousel >>> .splide')).$$('.splide__slide');
@@ -155,5 +159,17 @@ describe('accessibility', () => {
     const splide = await getSplide();
 
     await expectA11yToMatchSnapshot(page, splide, { message: 'splide', interestingOnly: false });
+  });
+  it('should change skip-link to visible if it receives keyboard focus', async () => {
+    await initCarousel({ skipLinkTarget: '#link-after' });
+    const host = await getHost();
+    const skipLinkHost = await getSkipLinkHost();
+
+    expect(await getElementStyle(skipLinkHost, 'opacity')).toBe('0');
+
+    await page.keyboard.press('Tab');
+
+    expect(await getActiveElementTagNameInShadowRoot(host)).toBe('P-LINK-PURE');
+    expect(await getElementStyle(skipLinkHost, 'opacity')).toBe('1');
   });
 });
