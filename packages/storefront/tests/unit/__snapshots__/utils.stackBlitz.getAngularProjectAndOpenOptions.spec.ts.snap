@@ -278,6 +278,12 @@ exports[`getIndexHtml() should return correct markup with styles 1`] = `
         display: none !important
       }
 
+      :is(p-text-field-wrapper) input::-webkit-date-and-time-value {
+        display: inline-block !important;
+        text-align: inherit !important;
+        vertical-align: middle !important
+      }
+
       :is(p-table) img {
         vertical-align: middle !important
       }
@@ -478,6 +484,12 @@ exports[`getIndexHtml() should return correct markup with styles and rtl mode 1`
       :is(p-text-field-wrapper) input::-webkit-search-cancel-button,
       :is(p-text-field-wrapper) input::-webkit-calendar-picker-indicator {
         display: none !important
+      }
+
+      :is(p-text-field-wrapper) input::-webkit-date-and-time-value {
+        display: inline-block !important;
+        text-align: inherit !important;
+        vertical-align: middle !important
       }
 
       :is(p-table) img {
