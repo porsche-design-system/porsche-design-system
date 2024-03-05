@@ -2,7 +2,7 @@ import { expect, type Page, test } from '@playwright/test';
 import { schemes, themes, viewportWidthM } from '@porsche-design-system/shared/testing/playwright.vrt.config';
 import {
   forceFocusHoverState,
-  forceFocusState,
+  forceFocusVisibleState,
   forceHoverState,
   getPlaygroundPseudoStatesMarkup,
   type PrefersColorScheme,
@@ -41,11 +41,11 @@ const scenario = async (page: Page, theme: Theme, scheme?: PrefersColorScheme): 
   await forceHoverState(page, '.hover p-link-pure[href] >>> a');
   await forceHoverState(page, '.hover p-link-pure:not([href]) >>> span'); // with slotted <a>, the shadowed <span> is used for hover styling
   await forceHoverState(page, '.hover p-link-pure:not([href]) a'); // TODO: chrome hover bug. Remove when fixed.
-  await forceFocusState(page, '.focus p-link-pure'); // native outline should not be visible
-  await forceFocusState(page, '.focus p-link-pure[href] >>> a');
-  await forceFocusState(page, '.focus:not([href]) p-link-pure a');
+  await forceFocusVisibleState(page, '.focus p-link-pure'); // native outline should not be visible
+  await forceFocusVisibleState(page, '.focus p-link-pure[href] >>> a');
+  await forceFocusVisibleState(page, '.focus:not([href]) p-link-pure a');
   await forceFocusHoverState(page, '.focus-hover p-link-pure[href] >>> a');
-  await forceFocusState(page, '.focus-hover p-link-pure:not([href]) a');
+  await forceFocusVisibleState(page, '.focus-hover p-link-pure:not([href]) a');
   await forceHoverState(page, '.focus-hover p-link-pure:not([href]) a'); // TODO: chrome hover bug. Remove when fixed.
   await forceHoverState(page, '.focus-hover p-link-pure:not([href]) >>> span'); // with slotted <a>, the shadowed <span> is used for hover styling
 };

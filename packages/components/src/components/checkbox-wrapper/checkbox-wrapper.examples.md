@@ -25,7 +25,7 @@ group might have a mixed state. In this case we recommend to use `checked=false`
 **Note: The `indeterminate` attribute can only be set through the DOM node. There is no HTML attribute to set it. Also
 it's worth to know, that the `indeterminate` attribute only affects how the checkbox is shown. The current value is
 hidden from the user, but the checkbox still keeps it's `checked` state. You can find more details in
-[the specification](https://www.w3.org/TR/html52/sec-forms.html#dom-htmlinputelement-indeterminate).**
+[the specification](https://w3.org/TR/html52/sec-forms.html#dom-htmlinputelement-indeterminate).**
 
 <Playground :markup="indeterminate" :config="config"></Playground>
 

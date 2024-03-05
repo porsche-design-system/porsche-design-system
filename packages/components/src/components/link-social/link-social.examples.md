@@ -112,11 +112,11 @@ export default class Code extends Vue {
   }
 
   responsive =
-`<p-link-social href="https://www.facebook.com/" icon="logo-facebook" hide-label="{ base: true, l: false }" target="_blank" rel="nofollow noopener">Facebook</p-link-social>`;
+`<p-link-social href="https://facebook.com" icon="logo-facebook" hide-label="{ base: true, l: false }" target="_blank" rel="nofollow noopener">Facebook</p-link-social>`;
 
   routing =
 `<p-link-social icon="logo-facebook">
-  <a href="https://www.facebook.com/" target="_blank" rel="nofollow noopener">Facebook</a>
+  <a href="https://facebook.com" target="_blank" rel="nofollow noopener">Facebook</a>
 </p-link-social>`;
 
   iconMarkup =
@@ -125,25 +125,25 @@ export default class Code extends Vue {
 
   grouped =
 `<div class="example-grouped">
-<p-link-social href="https://www.facebook.com/" icon="logo-facebook" hide-label="true" target="_blank" rel="nofollow noopener">Facebook</p-link-social>
-<p-link-social href="https://www.google.com/" icon="logo-google" hide-label="true" target="_blank" rel="nofollow noopener">Google</p-link-social>
-<p-link-social href="https://www.instagram.com/" icon="logo-instagram" hide-label="true" target="_blank" rel="nofollow noopener">Instagram</p-link-social>
-<p-link-social href="https://www.kakaocorp.com/" icon="logo-kakaotalk" hide-label="true" target="_blank" rel="nofollow noopener">KakaoTalk</p-link-social>
-<p-link-social href="https://www.linkedin.com/" icon="logo-linkedin" hide-label="true" target="_blank" rel="nofollow noopener">LinkedIn</p-link-social>
-<p-link-social href="https://www.naver.com/" icon="logo-naver" hide-label="true" target="_blank" rel="nofollow noopener">Naver</p-link-social>
-<p-link-social href="https://www.pinterest.com/" icon="logo-pinterest" hide-label="true" target="_blank" rel="nofollow noopener">Pinterest</p-link-social>
-<p-link-social href="https://www.reddit.com/" icon="logo-reddit" hide-label="true" target="_blank" rel="nofollow noopener">Reddit</p-link-social>
-<p-link-social href="https://www.tiktok.com/" icon="logo-tiktok" hide-label="true" target="_blank" rel="nofollow noopener">TikTok</p-link-social>
-<p-link-social href="https://www.twitter.com/" icon="logo-twitter" hide-label="true" target="_blank" rel="nofollow noopener">Twitter</p-link-social>
-<p-link-social href="https://www.wechat.com/" icon="logo-wechat" hide-label="true" target="_blank" rel="nofollow noopener">Wechat</p-link-social>
+<p-link-social href="https://facebook.com" icon="logo-facebook" hide-label="true" target="_blank" rel="nofollow noopener">Facebook</p-link-social>
+<p-link-social href="https://google.com" icon="logo-google" hide-label="true" target="_blank" rel="nofollow noopener">Google</p-link-social>
+<p-link-social href="https://instagram.com" icon="logo-instagram" hide-label="true" target="_blank" rel="nofollow noopener">Instagram</p-link-social>
+<p-link-social href="https://kakaocorp.com" icon="logo-kakaotalk" hide-label="true" target="_blank" rel="nofollow noopener">KakaoTalk</p-link-social>
+<p-link-social href="https://linkedin.com" icon="logo-linkedin" hide-label="true" target="_blank" rel="nofollow noopener">LinkedIn</p-link-social>
+<p-link-social href="https://naver.com" icon="logo-naver" hide-label="true" target="_blank" rel="nofollow noopener">Naver</p-link-social>
+<p-link-social href="https://pinterest.com" icon="logo-pinterest" hide-label="true" target="_blank" rel="nofollow noopener">Pinterest</p-link-social>
+<p-link-social href="https://reddit.com" icon="logo-reddit" hide-label="true" target="_blank" rel="nofollow noopener">Reddit</p-link-social>
+<p-link-social href="https://tiktok.com" icon="logo-tiktok" hide-label="true" target="_blank" rel="nofollow noopener">TikTok</p-link-social>
+<p-link-social href="https://twitter.com" icon="logo-twitter" hide-label="true" target="_blank" rel="nofollow noopener">Twitter</p-link-social>
+<p-link-social href="https://www.wechat.com" icon="logo-wechat" hide-label="true" target="_blank" rel="nofollow noopener">Wechat</p-link-social>
 <p-link-social href="https://wa.me/491525557912" icon="logo-whatsapp" hide-label="true" target="_blank" rel="nofollow noopener">Whatsapp</p-link-social>
-<p-link-social href="https://www.xing.com" icon="logo-xing" hide-label="true" target="_blank" rel="nofollow noopener">XING</p-link-social>
-<p-link-social href="https://www.youtube.com" icon="logo-youtube" hide-label="true" target="_blank" rel="nofollow noopener">Youtube</p-link-social>
+<p-link-social href="https://xing.com" icon="logo-xing" hide-label="true" target="_blank" rel="nofollow noopener">XING</p-link-social>
+<p-link-social href="https://youtube.com" icon="logo-youtube" hide-label="true" target="_blank" rel="nofollow noopener">Youtube</p-link-social>
 </div>`;
 
   events =
 `<p-link-social
-  href="https://www.facebook.com/"
+  href="https://facebook.com"
   icon="logo-facebook"
   onclick="alert('click'); return false;"
   onfocus="console.log('focus')"
@@ -155,9 +155,9 @@ export default class Code extends Vue {
 >Facebook</p-link-social>`;
 
   taborder =
-`<p-link-social href="https://www.porsche.com" icon="logo-facebook">Some label</p-link-social>
-<p-link-social href="https://www.porsche.com" tabindex="-1" icon="logo-facebook">Some label</p-link-social>
-<p-link-social href="https://www.porsche.com" icon="logo-facebook">Some label</p-link-social>`;
+`<p-link-social href="https://porsche.com" icon="logo-facebook">Some label</p-link-social>
+<p-link-social href="https://porsche.com" tabindex="-1" icon="logo-facebook">Some label</p-link-social>
+<p-link-social href="https://porsche.com" icon="logo-facebook">Some label</p-link-social>`;
 }
 </script>
 

@@ -159,7 +159,16 @@ _Note: `./docker.sh run-install` and `yarn` should be executed after every pull.
 1. Switch to **project root directory**
 2. For the different applications, select one of the following commands:
 
-- `./docker.sh run-test-vrt-playwright --components-js` (vrt tests for the native web components for Webkit)
+- `./docker.sh run-test-vrt-playwright --components-js` (executes all vrt tests in Chromium and WebKit)
+  - `./docker.sh run-test-vrt-playwright --components-js --grep multi-select` (executes e.g. all "Multi Select" related
+    vrt tests in Chromium and WebKit)
+  - `yarn test:vrt:playwright:components-js --ui` (launches UI Mode of Playwright, – not possible within Docker context
+    but perhaps still helpful for debugging purposes)
+  - `./docker.sh run-test-vrt-playwright --components-js:chrome` (executes all vrt tests in Chromium)
+  - `./docker.sh run-test-vrt-playwright --components-js:chrome:common` (executes all "common" vrt tests in Chromium)
+  - `./docker.sh run-test-vrt-playwright --components-js:chrome:custom` (executes all "custom" vrt tests in Chromium)
+  - `./docker.sh run-test-vrt-playwright --components-js:chrome:states` (executes all "states" vrt tests in Chromium)
+  - `./docker.sh run-test-vrt-playwright --components-js:safari` (executes all vrt tests in WebKit)
 - `./docker.sh run-test-vrt --components-angular` (vrt tests for angular components)
 - `./docker.sh run-test-vrt --components-react` (vrt tests for react components)
 - `./docker.sh run-test-vrt --components-react/nextjs` (vrt tests for react ssr components in nextjs setup)

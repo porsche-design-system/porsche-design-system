@@ -203,15 +203,15 @@
       </div>
 
       <div class="playground light" title="should render default link">
-        <PLink :href="'https://www.porsche.com'">Some label</PLink>
+        <PLink :href="'https://porsche.com'">Some label</PLink>
       </div>
 
       <div class="playground light" title="should render default link-pure">
-        <PLinkPure :href="'https://www.porsche.com'">Some label</PLinkPure>
+        <PLinkPure :href="'https://porsche.com'">Some label</PLinkPure>
       </div>
 
       <div class="playground light" title="should render default link-social">
-        <PLinkSocial :href="'https://www.porsche.com'" :icon="'logo-facebook'">Some label</PLinkSocial>
+        <PLinkSocial :href="'https://porsche.com'" :icon="'logo-facebook'">Some label</PLinkSocial>
       </div>
 
       <div class="playground light" title="should render default marque">
@@ -392,7 +392,7 @@
       </div>
 
       <div class="playground light" title="should render default link-tile-product">
-        <PLinkTileProduct :heading="'Some product'" :price="'1.911,00 €'" :href="'https://www.porsche.com'">
+        <PLinkTileProduct :heading="'Some product'" :price="'1.911,00 €'" :href="'https://porsche.com'">
           <img
             src="https://porsche-design-system.github.io/porsche-design-system/placeholder_800x900.svg"
             width="800"
@@ -540,15 +540,15 @@
         </div>
 
         <div class="playground light" title="should render default link with custom prefix">
-          <PLink :href="'https://www.porsche.com'">Some label</PLink>
+          <PLink :href="'https://porsche.com'">Some label</PLink>
         </div>
 
         <div class="playground light" title="should render default link-pure with custom prefix">
-          <PLinkPure :href="'https://www.porsche.com'">Some label</PLinkPure>
+          <PLinkPure :href="'https://porsche.com'">Some label</PLinkPure>
         </div>
 
         <div class="playground light" title="should render default link-social with custom prefix">
-          <PLinkSocial :href="'https://www.porsche.com'" :icon="'logo-facebook'">Some label</PLinkSocial>
+          <PLinkSocial :href="'https://porsche.com'" :icon="'logo-facebook'">Some label</PLinkSocial>
         </div>
 
         <div class="playground light" title="should render default marque with custom prefix">
@@ -729,7 +729,7 @@
         </div>
 
         <div class="playground light" title="should render default link-tile-product with custom prefix">
-          <PLinkTileProduct :heading="'Some product'" :price="'1.911,00 €'" :href="'https://www.porsche.com'">
+          <PLinkTileProduct :heading="'Some product'" :price="'1.911,00 €'" :href="'https://porsche.com'">
             <img
               src="https://porsche-design-system.github.io/porsche-design-system/placeholder_800x900.svg"
               width="800"

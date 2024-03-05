@@ -15,10 +15,10 @@ reserves the right to change and update this licensing agreement at any time.
 ## General Notices
 
 Further information regarding license terms and – where required by license – source codes are available at
-<p-link-pure :theme="this.$store.getters.storefrontTheme" icon="none" target="_blank" href="https://www.porsche.com/softwareinfo">www.porsche.com/softwareinfo</p-link-pure>
+<p-link-pure :theme="this.$store.getters.storefrontTheme" icon="none" target="_blank" href="https://porsche.com/softwareinfo">www.porsche.com/softwareinfo</p-link-pure>
 free of charge. Some licenses, however, require the provision of physical copies of source or object code. In this case,
 you may obtain a copy of the source codes by contacting us at
-<p-link-pure :theme="this.$store.getters.storefrontTheme" icon="none" target="_blank" href="https://www.porsche.com/softwareinfo">www.porsche.com/softwareinfo</p-link-pure>.
+<p-link-pure :theme="this.$store.getters.storefrontTheme" icon="none" target="_blank" href="https://porsche.com/softwareinfo">www.porsche.com/softwareinfo</p-link-pure>.
 Furthermore, please contact us at the foregoing URL in case you need assistance regarding the exercise of rights
 guaranteed by an Open Source License. A nominal fee (i.e., the cost of physically performing the distribution) will be
 charged for these services.

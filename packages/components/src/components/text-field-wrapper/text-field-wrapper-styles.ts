@@ -2,8 +2,14 @@ import type { BreakpointCustomizable, Theme } from '../../types';
 import type { TextFieldWrapperUnitPosition } from './text-field-wrapper-utils';
 import { isType, showCustomCalendarOrTimeIndicator } from './text-field-wrapper-utils';
 import type { FormState } from '../../utils/form/form-state';
-import { getCss } from '../../utils';
-import { addImportantToEachRule, colorSchemeStyles, getHiddenTextJssStyle, hostHiddenStyles } from '../../styles';
+import { getCss, isThemeDark } from '../../utils';
+import {
+  addImportantToEachRule,
+  colorSchemeStyles,
+  getHiddenTextJssStyle,
+  getThemedColors,
+  hostHiddenStyles,
+} from '../../styles';
 import {
   formButtonOrIconPadding,
   formElementLayeredGap,
@@ -62,6 +68,16 @@ export const getComponentCss = (
           // TODO: move into getSlottedTextFieldTextareaSelectStyles()
           ...(isNumber && {
             MozAppearance: 'textfield', // hides up/down spin button for Firefox
+          }),
+          ...((isCalendar || isTime) && {
+            // for native placeholder color in safari, background has to be a special value, `transparent` or `rgba(0,0,0,0)` won't work
+            // this works nice for `theme="light"`, but for `theme="dark"` placeholder appears blue which is still better
+            // than having invisible dots or colons for data/time or not seeing the value at all after selection
+            // found on https://browserstrangeness.bitbucket.io/css_hacks.html#safari
+            '@supports (-webkit-hyphens: none)': {
+              background: 'rgba(0,0,1,0)',
+              color: isThemeDark(theme) ? getThemedColors(theme).primaryColor : 'initial',
+            },
           }),
         }),
         // TODO: move into getSlottedTextFieldTextareaSelectStyles()

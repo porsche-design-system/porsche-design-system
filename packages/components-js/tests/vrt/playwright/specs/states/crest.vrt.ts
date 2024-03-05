@@ -1,7 +1,7 @@
 import { expect, type Page, test } from '@playwright/test';
 import {
   forceFocusHoverState,
-  forceFocusState,
+  forceFocusVisibleState,
   getPlaygroundPseudoStatesMarkup,
   type PrefersColorScheme,
   setContentWithDesignSystem,
@@ -13,16 +13,16 @@ const component = 'crest';
 
 const scenario = async (page: Page, theme: Theme, scheme?: PrefersColorScheme): Promise<void> => {
   const markup = () => `
-    <p-crest href="https://www.porsche.com"></p-crest>
-    <p-crest href="https://www.porsche.com" style="padding: 1rem"></p-crest>`;
+    <p-crest href="https://porsche.com"></p-crest>
+    <p-crest href="https://porsche.com" style="padding: 1rem"></p-crest>`;
 
   await setContentWithDesignSystem(page, getPlaygroundPseudoStatesMarkup(markup, { autoLayout: 'inline' }), {
     forceComponentTheme: theme,
     prefersColorScheme: scheme,
   });
 
-  await forceFocusState(page, '.focus p-crest'); // native outline should not be visible
-  await forceFocusState(page, '.focus p-crest >>> a');
+  await forceFocusVisibleState(page, '.focus p-crest'); // native outline should not be visible
+  await forceFocusVisibleState(page, '.focus p-crest >>> a');
   await forceFocusHoverState(page, '.focus-hover p-crest >>> a');
 };
 

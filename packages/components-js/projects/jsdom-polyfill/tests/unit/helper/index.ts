@@ -97,7 +97,7 @@ export const tagNameMarkup: Record<TagNameRelevant, string> = {
   'p-link-tile-product': `<p-link-tile-product
           heading="Some product"
           price="Some price"
-          href="https://www.porsche.com"
+          href="https://porsche.com"
         >
     <img src="" />
   </p-link-tile-product>`,

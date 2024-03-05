@@ -2,7 +2,7 @@ import { expect, type Page, test } from '@playwright/test';
 import { schemes, themes, viewportWidthM } from '@porsche-design-system/shared/testing/playwright.vrt.config';
 import {
   forceFocusHoverState,
-  forceFocusState,
+  forceFocusVisibleState,
   forceHoverState,
   getPlaygroundPseudoStatesMarkup,
   type PrefersColorScheme,
@@ -83,10 +83,10 @@ const scenario = async (page: Page, theme: Theme, scheme?: PrefersColorScheme): 
   await forceHoverState(page, '.hover p-checkbox-wrapper:not(.force-label) input[type="checkbox"]');
   await forceHoverState(page, '.hover p-checkbox-wrapper.force-label >>> label');
   await forceHoverState(page, '.hover p-checkbox-wrapper span a');
-  await forceFocusState(page, '.focus p-checkbox-wrapper input[type="checkbox"]');
-  await forceFocusState(page, '.focus p-checkbox-wrapper span a');
+  await forceFocusVisibleState(page, '.focus p-checkbox-wrapper input[type="checkbox"]');
+  await forceFocusVisibleState(page, '.focus p-checkbox-wrapper span a');
   await forceFocusHoverState(page, '.focus-hover p-checkbox-wrapper:not(.force-label) input[type="checkbox"]');
-  await forceFocusState(page, '.focus-hover p-checkbox-wrapper.force-label input[type="checkbox"]');
+  await forceFocusVisibleState(page, '.focus-hover p-checkbox-wrapper.force-label input[type="checkbox"]');
   await forceHoverState(page, '.focus-hover p-checkbox-wrapper.force-label >>> label');
   await forceFocusHoverState(page, '.focus-hover p-checkbox-wrapper span a');
 };

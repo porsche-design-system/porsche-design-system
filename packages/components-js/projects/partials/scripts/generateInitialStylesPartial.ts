@@ -6,10 +6,9 @@ import {
   fontHyphenationStyle,
   fontLineHeight,
   fontWeight,
-  getFocusStyle,
   getHoverStyle,
 } from '@porsche-design-system/utilities-v2';
-import { addImportantToEachRule } from '@porsche-design-system/components/src/styles'; // TODO: remove cross package src import
+import { addImportantToEachRule, getFocusJssStyle } from '@porsche-design-system/components/src/styles'; // TODO: remove cross package src import
 
 const tagNames = joinArrayElementsToString(TAG_NAMES.filter((x) => !INTERNAL_TAG_NAMES.includes(x)));
 const tagNamesWithSlottedAnchorArray: TagName[] = [
@@ -90,7 +89,8 @@ const slottedStyles: Styles = {
       textDecoration: 'underline',
       color: 'currentcolor',
       ...getHoverStyle(),
-      ...getFocusStyle({ offset: 'none' }),
+      // light and dark theme are using the same color atm.
+      ...getFocusJssStyle('light', { offset: 0 }),
     }),
 
     ':is(%%tagNamesWithSlottedInputIndicator%%) input': {
@@ -99,6 +99,13 @@ const slottedStyles: Styles = {
         addImportantToEachRule({
           display: 'none',
         }),
+      // for type="date" and type="time" we need to override some mobile safari user agent styles
+      // https://stackoverflow.com/questions/37457097/input-type-date-text-alignright-ios-devices
+      '&::-webkit-date-and-time-value': addImportantToEachRule({
+        display: 'inline-block',
+        textAlign: 'inherit', // for LTR/RTL
+        verticalAlign: 'middle',
+      }),
     },
 
     ':is(%%tagNamesWithSlottedImage%%) img': addImportantToEachRule({
@@ -117,7 +124,8 @@ const siblingStyles: Styles = {
   '@global': {
     '%%tagNamesWithSiblingTabindex%%': {
       '& ~ [tabindex="0"][role="tabpanel"]': addImportantToEachRule({
-        ...getFocusStyle({ offset: 'small' }),
+        // light and dark theme are using the same color atm.
+        ...getFocusJssStyle('light'),
         borderRadius: '1px', // needs to be overwritten due to scaled border-radius if offset is set
       }),
     },
