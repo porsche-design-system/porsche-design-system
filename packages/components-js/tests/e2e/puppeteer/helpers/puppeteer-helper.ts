@@ -6,7 +6,6 @@ import { getComponentMeta } from '@porsche-design-system/component-meta';
 import { format } from 'prettier';
 import { getInitialStyles } from '@porsche-design-system/components-js/partials';
 import type { FormState } from '@porsche-design-system/components/dist/types/bundle';
-import { getComponentMeta } from '@porsche-design-system/component-meta';
 
 // TODO: temporary workaround, because of https://github.com/microsoft/playwright/issues/17075
 // import { kebabCase } from 'change-case';
