@@ -148,7 +148,7 @@ like a safe zone.
 
 ```scss
 --p-modal-spacing-top: 200px;
---p-modal-spacing-bottom: 200px;
+--p-modal-spacing-bottom: 50px;
 ```
 
 <Playground :markup="customStylingMarkup" :config="config">
@@ -287,7 +287,7 @@ export default class Code extends Vue {
 </p-modal>`;
 
   spacingTop = 200;
-  spacingBottom = 200;
+    spacingBottom = 50;
 
   get customStylingMarkup() {
     return `<p-button type="button" aria="{ 'aria-haspopup': 'dialog' }">Open Modal</p-button>
