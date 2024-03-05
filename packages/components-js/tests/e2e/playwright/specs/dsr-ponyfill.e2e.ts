@@ -1,4 +1,4 @@
-import type { Page, ElementHandle } from '@playwright/test';
+import type { ElementHandle, Page } from '@playwright/test';
 import { expect, test } from '@playwright/test';
 import { getDSRPonyfill, getInitialStyles } from '@porsche-design-system/components-js/partials';
 import { setProperty, supportsDeclarativeShadowDOM, waitForComponentsReady, waitForStencilLifecycle } from '../utils';

@@ -1,17 +1,14 @@
+import type { ElementHandle } from 'playwright';
+import { expect, test } from '@playwright/test';
 import { goto } from '../helpers';
-import type { ElementHandle, Page } from 'puppeteer';
 
-describe('core-initializer', () => {
-  let page: Page;
-  beforeEach(async () => (page = await browser.newPage()));
-  afterEach(async () => await page.close());
-
-  it('should initialize component deterministically', async () => {
+test.describe('core-initializer', () => {
+  test('should initialize component deterministically', async ({ page }) => {
     await goto(page, 'core-initializer');
     await page.waitForFunction(() => document.querySelectorAll('p-text-field-wrapper').length === 2);
 
     const [component1, component2] = await page.$$('p-text-field-wrapper');
-    const getOuterHTML = (elHandle: ElementHandle) => elHandle.evaluate((el) => el.outerHTML);
+    const getOuterHTML = (elHandle: ElementHandle<HTMLElement | SVGElement>) => elHandle.evaluate((el) => el.outerHTML);
 
     const component1HTML = await getOuterHTML(component1);
     const component2HTML = await getOuterHTML(component2);

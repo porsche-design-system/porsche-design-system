@@ -170,12 +170,14 @@ export class TextFieldWrapper {
     this.setInputStyles();
 
     if (this.hasCounter) {
+      // renders innerHTML of unitOrCounterElement initially and on every input event
       addInputEventListenerForCounter(
         this.input,
         this.ariaElement,
         this.isCounterVisible && this.unitOrCounterElement,
         this.setInputStyles
       );
+      this.setInputStyles(); // set style initially after componentDidRender already ran with empty unitOrCounterElement
     } else if (this.isSearch) {
       addInputEventListenerForSearch(this.input, (hasValue) => (this.isClearable = hasValue));
     }

@@ -32,9 +32,7 @@ const updateCounter = (
     setCounterInnerHtml(el, counterElement);
   }
   setAriaElementInnerHtml(el, characterCountElement);
-  if (inputChangeCallback) {
-    inputChangeCallback();
-  }
+  inputChangeCallback?.();
 };
 
 export const setCounterInnerHtml = (el: HTMLTextAreaElement | HTMLInputElement, counterElement: HTMLElement): void => {

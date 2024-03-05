@@ -1,17 +1,11 @@
 import {
   expectA11yToMatchSnapshot,
-  getLifecycleStatus,
   selectNode,
   setContentWithDesignSystem,
   setProperty,
   waitForStencilLifecycle,
-  getElementInnerText,
-  getElementStyle,
-  setAttribute,
-  addEventListener,
-  getEventSummary,
 } from '../helpers';
-import type { ElementHandle, Page } from 'puppeteer';
+import type { Page } from 'puppeteer';
 import type { FormState } from '@porsche-design-system/components/dist/types/bundle';
 
 let page: Page;
@@ -21,8 +15,6 @@ afterEach(async () => await page.close());
 const getHost = () => selectNode(page, 'p-textarea-wrapper');
 const getTextarea = () => selectNode(page, 'p-textarea-wrapper textarea');
 const getMessage = () => selectNode(page, 'p-textarea-wrapper >>> .message');
-const getLabel = () => selectNode(page, 'p-textarea-wrapper >>> label');
-const getCounter = () => selectNode(page, 'p-textarea-wrapper >>> .counter');
 
 type InitOptions = {
   useSlottedLabel?: boolean;
@@ -61,143 +53,6 @@ const initTextarea = (opts?: InitOptions): Promise<void> => {
     </p-textarea-wrapper>`
   );
 };
-
-it('should focus textarea when label is clicked', async () => {
-  await initTextarea({ hasLabel: true });
-  const label = await getLabel();
-  const textarea = await getTextarea();
-
-  await addEventListener(textarea, 'focus');
-  expect((await getEventSummary(textarea, 'focus')).counter).toBe(0);
-
-  await label.click();
-  await waitForStencilLifecycle(page);
-  expect((await getEventSummary(textarea, 'focus')).counter).toBe(1);
-});
-
-it('should focus textarea when counter text is clicked', async () => {
-  await initTextarea({ maxLength: 160 });
-  const counter = await getCounter();
-  const textarea = await getTextarea();
-
-  await addEventListener(textarea, 'focus');
-  expect((await getEventSummary(textarea, 'focus')).counter).toBe(0);
-
-  await counter.click();
-  await waitForStencilLifecycle(page);
-  expect((await getEventSummary(textarea, 'focus')).counter).toBe(1);
-});
-
-it('should display correct counter when typing', async () => {
-  await initTextarea({ maxLength: 160 });
-  const counter = await getCounter();
-  const textarea = await getTextarea();
-
-  expect(await getElementInnerText(counter)).toBe('0/160');
-  await textarea.type('h');
-  expect(await getElementInnerText(counter)).toBe('1/160');
-  await textarea.type('ello');
-  expect(await getElementInnerText(counter)).toBe('5/160');
-  await textarea.press('Backspace');
-  expect(await getElementInnerText(counter)).toBe('4/160');
-  await textarea.press('Backspace');
-  await textarea.press('Backspace');
-  await textarea.press('Backspace');
-  await textarea.press('Backspace');
-  expect(await getElementInnerText(counter)).toBe('0/160');
-});
-
-it('should render characterCountElement when maxlength is set', async () => {
-  await initTextarea();
-  const textarea = await getTextarea();
-
-  expect(await selectNode(page, 'p-textarea-wrapper >>> label .sr-only')).toBeNull();
-
-  await setAttribute(textarea, 'maxlength', '20');
-
-  expect(await selectNode(page, 'p-textarea-wrapper >>> label .sr-only')).toBeDefined();
-});
-
-// puppeteer ignores @media(hover: hover) styles, but playwright can handle it
-xdescribe('hover state', () => {
-  const getBorderColor = (element: ElementHandle) => getElementStyle(element, 'borderColor');
-  const defaultBorderColor = 'rgb(107, 109, 112)';
-  const hoverBorderColor = 'rgb(1, 2, 5)';
-
-  it('should show hover state on input when label is hovered', async () => {
-    await initTextarea({ hasLabel: true });
-    await page.mouse.move(0, 300); // avoid potential hover initially
-    const label = await getLabel();
-    const textarea = await getTextarea();
-
-    const initialStyle = await getBorderColor(textarea);
-    expect(initialStyle).toBe(defaultBorderColor);
-    await textarea.hover();
-    const hoverStyle = await getBorderColor(textarea);
-    expect(hoverStyle).toBe(hoverBorderColor);
-
-    await page.mouse.move(0, 300); // undo hover
-    expect(await getBorderColor(textarea)).toBe(defaultBorderColor);
-
-    await label.hover();
-    expect(await getBorderColor(textarea)).toBe(hoverBorderColor);
-  });
-
-  it('should show hover state on textarea when counter is hovered', async () => {
-    await initTextarea({ maxLength: 160 });
-    await page.mouse.move(0, 300); // avoid potential hover initially
-    const counter = await getCounter();
-    const textarea = await getTextarea();
-
-    const initialStyle = await getBorderColor(textarea);
-    expect(initialStyle).toBe(defaultBorderColor);
-    await textarea.hover();
-    const hoverStyle = await getBorderColor(textarea);
-    expect(hoverStyle).toBe(hoverBorderColor);
-
-    await page.mouse.move(0, 300); // undo hover
-    expect(await getBorderColor(textarea)).toBe(defaultBorderColor);
-
-    await counter.hover();
-    expect(await getBorderColor(textarea)).toBe(hoverBorderColor);
-  });
-});
-
-describe('lifecycle', () => {
-  it('should work without unnecessary round trips on init', async () => {
-    await initTextarea({
-      useSlottedLabel: true,
-      useSlottedMessage: true,
-      useSlottedDescription: true,
-      state: 'error',
-    });
-    const status = await getLifecycleStatus(page);
-
-    expect(status.componentDidLoad['p-textarea-wrapper'], 'componentDidLoad: p-textarea-wrapper').toBe(1);
-    expect(status.componentDidLoad['p-icon'], 'componentDidLoad: p-icon').toBe(1);
-
-    expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(2);
-    expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(0);
-  });
-
-  it('should work without unnecessary round trips after state change', async () => {
-    await initTextarea({
-      useSlottedLabel: true,
-      useSlottedMessage: true,
-      useSlottedDescription: true,
-      state: 'error',
-    });
-    const host = await getHost();
-    await setProperty(host, 'state', 'none');
-    await waitForStencilLifecycle(page);
-    const status = await getLifecycleStatus(page);
-
-    expect(status.componentDidUpdate['p-textarea-wrapper'], 'componentDidUpdate: p-textarea-wrapper').toBe(1);
-
-    expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(2);
-    expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(1);
-  });
-});
 
 describe('accessibility', () => {
   it('should expose correct initial accessibility tree', async () => {
