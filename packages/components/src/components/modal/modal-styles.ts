@@ -33,12 +33,15 @@ import {
 import { MODAL_Z_INDEX } from '../../constants';
 import { type ModalBackdrop } from './modal-utils';
 
+const cssVariableSpacingTop = '--p-modal-spacing-top';
+const cssVariableSpacingBottom = '--p-modal-spacing-bottom';
+
 const mediaQueryXl = getMediaQueryMin('xl');
 const { primaryColor: darkThemePrimaryColor, contrastHighColor: darkThemeContrastHighColor } = getThemedColors('dark');
 
 export const stretchToFullModalWidthClassName = 'stretch-to-full-modal-width';
 
-const marginTopBottom = 'clamp(16px, 7vh, 192px)';
+const marginTopBottomFallback = 'clamp(16px, 7vh, 192px)';
 export const footerShadowClass = 'footer--shadow';
 
 export const getFullscreenJssStyles: GetJssStyleFunction = (fullscreen: boolean): JssStyle => {
@@ -54,7 +57,7 @@ export const getFullscreenJssStyles: GetJssStyleFunction = (fullscreen: boolean)
         minWidth: '276px', // on viewport 320px: calc(${gridColumnWidthBase} * 6 + ${gridGap} * 5)
         maxWidth: '1535.5px', // on viewport 1920px: `calc(${gridColumnWidthXXL} * 14 + ${gridGap} * 13)`
         minHeight: 'auto',
-        margin: `${marginTopBottom} ${gridExtendedOffsetBase}`,
+        margin: `var(${cssVariableSpacingTop},${marginTopBottomFallback}) ${gridExtendedOffsetBase} var(${cssVariableSpacingBottom},${marginTopBottomFallback})`,
         borderRadius: borderRadiusMedium,
       };
 };
