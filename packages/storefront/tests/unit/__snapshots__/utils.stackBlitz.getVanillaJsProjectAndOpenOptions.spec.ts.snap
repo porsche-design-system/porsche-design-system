@@ -185,6 +185,12 @@ exports[`getIndexHtml() development mode or non stable storefront release (e.g. 
         display: none !important
       }
 
+      :is(p-text-field-wrapper) input::-webkit-date-and-time-value {
+        display: inline-block !important;
+        text-align: inherit !important;
+        vertical-align: middle !important
+      }
+
       :is(p-table) img {
         vertical-align: middle !important
       }
@@ -427,6 +433,12 @@ exports[`getIndexHtml() development mode or non stable storefront release (e.g. 
             display: none !important
           }
 
+          :is(p-text-field-wrapper) input::-webkit-date-and-time-value {
+            display: inline-block !important;
+            text-align: inherit !important;
+            vertical-align: middle !important
+          }
+
           :is(p-table) img {
             vertical-align: middle !important
           }
@@ -628,6 +640,12 @@ exports[`getIndexHtml() development mode or non stable storefront release (e.g. 
       :is(p-text-field-wrapper) input::-webkit-search-cancel-button,
       :is(p-text-field-wrapper) input::-webkit-calendar-picker-indicator {
         display: none !important
+      }
+
+      :is(p-text-field-wrapper) input::-webkit-date-and-time-value {
+        display: inline-block !important;
+        text-align: inherit !important;
+        vertical-align: middle !important
       }
 
       :is(p-table) img {
@@ -833,6 +851,12 @@ exports[`getIndexHtml() development mode or non stable storefront release (e.g. 
         display: none !important
       }
 
+      :is(p-text-field-wrapper) input::-webkit-date-and-time-value {
+        display: inline-block !important;
+        text-align: inherit !important;
+        vertical-align: middle !important
+      }
+
       :is(p-table) img {
         vertical-align: middle !important
       }
@@ -1034,6 +1058,12 @@ exports[`getIndexHtml() stable storefront release (e.g. /v2/…, /v3/…) should
       :is(p-text-field-wrapper) input::-webkit-search-cancel-button,
       :is(p-text-field-wrapper) input::-webkit-calendar-picker-indicator {
         display: none !important
+      }
+
+      :is(p-text-field-wrapper) input::-webkit-date-and-time-value {
+        display: inline-block !important;
+        text-align: inherit !important;
+        vertical-align: middle !important
       }
 
       :is(p-table) img {
@@ -1278,6 +1308,12 @@ exports[`getIndexHtml() stable storefront release (e.g. /v2/…, /v3/…) should
             display: none !important
           }
 
+          :is(p-text-field-wrapper) input::-webkit-date-and-time-value {
+            display: inline-block !important;
+            text-align: inherit !important;
+            vertical-align: middle !important
+          }
+
           :is(p-table) img {
             vertical-align: middle !important
           }
@@ -1479,6 +1515,12 @@ exports[`getIndexHtml() stable storefront release (e.g. /v2/…, /v3/…) should
       :is(p-text-field-wrapper) input::-webkit-search-cancel-button,
       :is(p-text-field-wrapper) input::-webkit-calendar-picker-indicator {
         display: none !important
+      }
+
+      :is(p-text-field-wrapper) input::-webkit-date-and-time-value {
+        display: inline-block !important;
+        text-align: inherit !important;
+        vertical-align: middle !important
       }
 
       :is(p-table) img {

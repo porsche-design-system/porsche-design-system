@@ -12,7 +12,6 @@
     "build:lib": "tsc --build tsconfig.library-entry.json",
     "test": "yarn test:unit",
     "test:unit": "jest",
-    "test:unit:watch": "yarn test:unit --watch",
     "clean": "yarn clean:node_modules && yarn clean:build",
     "clean:node_modules": "rm -rf ./node_modules && rm -rf ./yarn-error.log",
     "clean:build": "rm -rf ./dist"
