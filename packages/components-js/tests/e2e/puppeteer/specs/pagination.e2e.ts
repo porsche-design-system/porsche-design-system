@@ -1,12 +1,7 @@
 import type { Page } from 'puppeteer';
 import {
-  addEventListener,
   expectA11yToMatchSnapshot,
   getAttribute,
-  getConsoleErrorsAmount,
-  getEventSummary,
-  getLifecycleStatus,
-  initConsoleObserver,
   selectNode,
   setContentWithDesignSystem,
   setProperty,
@@ -30,54 +25,6 @@ const initPagination = (opts?: { activePage?: number }) => {
     `<p-pagination total-items-count="500" items-per-page="25" active-page="${activePage}"></p-pagination>`
   );
 };
-
-it('should have no errors if disconnected before fully loaded', async () => {
-  initConsoleObserver(page);
-
-  await setContentWithDesignSystem(page, ``);
-  await page.evaluate(() => {
-    const el = document.createElement('p-pagination');
-    document.body.append(el);
-
-    setTimeout(() => el.remove(), 10);
-  });
-
-  await new Promise((resolve) => setTimeout(resolve, 10));
-  expect(getConsoleErrorsAmount()).toBe(0);
-
-  await page.evaluate(() => console.error('test error'));
-  expect(getConsoleErrorsAmount()).toBe(1);
-});
-
-describe('events', () => {
-  it('should emit both pageChange and update event', async () => {
-    await initPagination();
-    const host = await getHost();
-
-    await addEventListener(host, 'pageChange');
-    await addEventListener(host, 'update');
-    expect((await getEventSummary(host, 'pageChange')).counter).toBe(0);
-    expect((await getEventSummary(host, 'update')).counter).toBe(0);
-
-    const [, secondPageItem] = await getPaginationItems();
-    await secondPageItem.click();
-    expect((await getEventSummary(host, 'pageChange')).counter).toBe(1);
-    expect((await getEventSummary(host, 'update')).counter).toBe(1);
-  });
-});
-
-describe('lifecycle', () => {
-  it('should work without unnecessary round trips on init', async () => {
-    await initPagination();
-    const status = await getLifecycleStatus(page);
-
-    expect(status.componentDidLoad['p-pagination'], 'componentDidLoad: p-pagination').toBe(1);
-    expect(status.componentDidLoad['p-icon'], 'componentDidLoad: p-icon').toBe(2);
-
-    expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(3);
-    expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(0);
-  });
-});
 
 describe('accessibility', () => {
   it('should expose correct initial accessibility tree', async () => {

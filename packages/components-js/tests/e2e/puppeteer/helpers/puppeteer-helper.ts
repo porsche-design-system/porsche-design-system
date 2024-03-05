@@ -2,6 +2,7 @@ import type { ConsoleMessage, ElementHandle, Page, SnapshotOptions, WaitForOptio
 import { waitForComponentsReady } from './stencil';
 import type { TagName } from '@porsche-design-system/shared';
 import type { ComponentMeta } from '@porsche-design-system/component-meta';
+import { getComponentMeta } from '@porsche-design-system/component-meta';
 import { format } from 'prettier';
 import { getInitialStyles } from '@porsche-design-system/components-js/partials';
 import type { FormState } from '@porsche-design-system/components/dist/types/bundle';

@@ -13,7 +13,7 @@
 
 <template>
   <PButton type="button" :aria="{ 'aria-haspopup': 'dialog' }" @click="onOpen">Open Flyout</PButton>
-  <PFlyout :open="isFlyoutOpen" @dismiss="onDismiss">
+  <PFlyout :open="isFlyoutOpen" :position="'end'" @dismiss="onDismiss">
     <PText>Some content that dynamically scales the width of the flyout.</PText>
   </PFlyout>
 </template>
