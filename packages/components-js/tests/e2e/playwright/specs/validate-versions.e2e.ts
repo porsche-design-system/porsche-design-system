@@ -1,24 +1,22 @@
-import { Page } from 'puppeteer';
+import { expect, test } from '@playwright/test';
 import {
   getConsoleWarnings,
   getOldLoaderScriptForPrefixes,
   initConsoleObserver,
   setContentWithDesignSystem,
+  sleep,
 } from '../helpers';
 import pkg from '@porsche-design-system/components-js/package.json';
-import type { PorscheDesignSystem } from '@porsche-design-system/components/dist/types/bundle';
+import type { PorscheDesignSystem } from '@porsche-design-system/components';
 
 const version = pkg.version;
 const VERSION_VALIDATION_TIMEOUT = 3000;
 
-let page: Page;
-beforeEach(async () => {
-  page = await browser.newPage();
+test.beforeEach(({ page }) => {
   initConsoleObserver(page);
 });
-afterEach(async () => await page.close());
 
-it('should show warning about multiple different versions correctly', async () => {
+test('should show warning about multiple different versions correctly', async ({ page }) => {
   const prefixes = ['test', 'my-prefix'];
 
   await setContentWithDesignSystem(
@@ -36,7 +34,9 @@ it('should show warning about multiple different versions correctly', async () =
   expect(porscheDesignSystem['3.7.0']).toBeDefined();
   expect(porscheDesignSystem['3.7.0'].prefixes).toEqual(prefixes);
 
-  await new Promise((resolve) => setTimeout(resolve, VERSION_VALIDATION_TIMEOUT)); // Wait until version validation
+  await sleep(VERSION_VALIDATION_TIMEOUT);
+
+  // Wait until version validation
 
   const versionWarning = getConsoleWarnings().find((warning) => warning.text().includes('Multiple different versions'));
 
@@ -51,7 +51,7 @@ it('should show warning about multiple different versions correctly', async () =
   ]);
 });
 
-it('should not show warning about multiple different versions if only one version is used', async () => {
+test('should not show warning about multiple different versions if only one version is used', async ({ page }) => {
   await setContentWithDesignSystem(page, '<p-text>Some Text</p-text>');
 
   const porscheDesignSystem = await page.evaluate(() => document.porscheDesignSystem);
@@ -59,7 +59,9 @@ it('should not show warning about multiple different versions if only one versio
   expect(porscheDesignSystem[version]).toBeDefined();
   expect(Object.keys(porscheDesignSystem).length).toBe(2); // cdn and one version
 
-  await new Promise((resolve) => setTimeout(resolve, VERSION_VALIDATION_TIMEOUT)); // Wait until version validation
+  await sleep(VERSION_VALIDATION_TIMEOUT);
+
+  // Wait until version validation
 
   const versionWarning = getConsoleWarnings().find((warning) => warning.text().includes('Multiple different versions'));
 

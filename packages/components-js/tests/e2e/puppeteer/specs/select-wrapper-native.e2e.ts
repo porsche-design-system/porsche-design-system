@@ -1,9 +1,5 @@
 import {
   expectA11yToMatchSnapshot,
-  getElementStyle,
-  getLifecycleStatus,
-  getProperty,
-  hasFocus,
   selectNode,
   setContentWithDesignSystem,
   setProperty,
@@ -19,7 +15,6 @@ afterEach(async () => await page.close());
 const getHost = () => selectNode(page, 'p-select-wrapper');
 const getSelect = () => selectNode(page, 'p-select-wrapper select');
 const getMessage = () => selectNode(page, 'p-select-wrapper >>> .message');
-const getLabel = () => selectNode(page, 'p-select-wrapper >>> label');
 
 type InitOptions = {
   useSlottedLabel?: boolean;
@@ -64,114 +59,6 @@ const initSelect = (opts?: InitOptions): Promise<void> => {
     </p-select-wrapper>`
   );
 };
-
-it('should add/remove message text and update aria-label attribute with message text if state changes programmatically', async () => {
-  await initSelect();
-  const host = await getHost();
-
-  expect(await getMessage(), 'initially').toBeNull();
-
-  await setProperty(host, 'state', 'error');
-  await setProperty(host, 'message', 'Some error message');
-  await waitForStencilLifecycle(page);
-
-  expect(await getMessage(), 'when state = error').toBeDefined();
-
-  await setProperty(host, 'state', 'success');
-  await setProperty(host, 'message', 'Some success message');
-  await waitForStencilLifecycle(page);
-
-  expect(await getMessage(), 'when state = success').toBeDefined();
-
-  await setProperty(host, 'state', 'none');
-  await setProperty(host, 'message', '');
-  await waitForStencilLifecycle(page);
-
-  expect(await getMessage(), 'when state = none').toBeNull();
-});
-
-it('should disable select when select is disabled programmatically', async () => {
-  await initSelect();
-  const select = await getSelect();
-
-  const getSelectCursorStyle = () => getElementStyle(select, 'cursor');
-
-  expect(await getSelectCursorStyle(), 'initially').toBe('pointer');
-
-  await setProperty(select, 'disabled', true);
-  await waitForStencilLifecycle(page);
-
-  expect(await getSelectCursorStyle(), 'when disabled = true').toBe('not-allowed');
-
-  await setProperty(select, 'disabled', false);
-  await waitForStencilLifecycle(page);
-
-  expect(await getSelectCursorStyle(), 'when disabled = false').toBe('pointer');
-});
-
-describe('focus state', () => {
-  it('should focus select when label text is clicked', async () => {
-    await initSelect();
-    const select = await getSelect();
-    const hasSelectFocus = () => hasFocus(select);
-
-    const labelText = await getLabel();
-    expect(await hasSelectFocus()).toBe(false);
-
-    await labelText.click();
-    expect(await hasSelectFocus()).toBe(true);
-  });
-});
-
-// puppeteer ignores @media(hover: hover) styles, but playwright can handle it
-xdescribe('hover state', () => {
-  it('should change border-color of select when label text is hovered', async () => {
-    await initSelect();
-    await page.mouse.move(0, 300); // avoid potential hover initially
-
-    const select = await getSelect();
-    const label = await getLabel();
-    const initialStyle = await getElementStyle(select, 'borderColor');
-    expect(initialStyle).toBe('rgb(107, 109, 112)');
-
-    await label.hover();
-    const hoverColor = await getElementStyle(select, 'borderColor');
-    expect(hoverColor).toBe('rgb(1, 2, 5)');
-  });
-});
-
-describe('lifecycle', () => {
-  it('should work without unnecessary round trips on init', async () => {
-    await initSelect();
-    const status = await getLifecycleStatus(page);
-
-    expect(status.componentDidLoad['p-select-wrapper'], 'componentDidLoad: p-select-wrapper').toBe(1);
-    expect(status.componentDidLoad['p-icon'], 'componentDidLoad: p-icon').toBe(1); // arrow down
-
-    expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(2);
-    expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(0);
-  });
-
-  it('should work without unnecessary round trips when opened', async () => {
-    await initSelect();
-    const select = await getSelect();
-    const [, secondOption] = await select.$$('option');
-
-    expect(await getProperty(select, 'value')).toBe('a');
-
-    // Ensure no update on native select render
-    await select.click();
-    await setProperty(secondOption, 'selected', true);
-    await waitForStencilLifecycle(page);
-
-    expect(await getProperty(select, 'value')).toBe('b');
-
-    const status = await getLifecycleStatus(page);
-
-    expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(2);
-    expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(0);
-  });
-});
 
 describe('accessibility', () => {
   it('should expose correct initial accessibility tree', async () => {
