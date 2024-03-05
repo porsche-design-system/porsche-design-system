@@ -70,9 +70,10 @@ export const getComponentCss = (
             MozAppearance: 'textfield', // hides up/down spin button for Firefox
           }),
           ...((isCalendar || isTime) && {
-            // for native placeholder color in safari, background ahs to be a special value, `transparent` or `rgba(0,0,0,0)` won't work
+            // for native placeholder color in safari, background has to be a special value, `transparent` or `rgba(0,0,0,0)` won't work
             // this works nice for `theme="light"`, but for `theme="dark"` placeholder appears blue which is still better
             // than having invisible dots or colons for data/time or not seeing the value at all after selection
+            // found on https://browserstrangeness.bitbucket.io/css_hacks.html#safari
             '@supports (-webkit-hyphens: none)': {
               background: 'rgba(0,0,1,0)',
               color: isThemeDark(theme) ? getThemedColors(theme).primaryColor : 'initial',
