@@ -57,7 +57,7 @@ export class Modal {
   /** The title of the modal */
   @Prop() public heading?: string;
 
-  /** Defines the backdrop, 'blur' (should be used when Modal is opened by user interaction, e.g. after a click on a button) and 'shading' (should be used when Modal gets opened automatically, e.g. Cookie Consent) */
+  /** Defines the backdrop, 'blur' (should be used when Modal is opened by user interaction, e.g. after a click on a button) and 'shading' (should be used when Modal gets opened automatically, e.g. Cookie Consent). */
   @Prop() public backdrop?: ModalBackdrop = 'blur';
 
   /** If true the modal uses max viewport height and width. Should only be used for mobile. */

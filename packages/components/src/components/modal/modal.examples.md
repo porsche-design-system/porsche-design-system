@@ -118,6 +118,16 @@ value when omitting the heading.
 
 <Playground :markup="fullWidthContent" :config="config"></Playground>
 
+## Backdrop
+
+By default, `blur` should be used whenever the Modal gets opened by a user interaction, e.g. a click on a button, to
+allow the user to fully concentrate on the Modal content. While `shading` should be used when the Modal gets opened
+automatically, e.g. through a "Cookie Consent Dialog", so that the user still knows which page it is.
+
+<Playground :markup="backdropMarkup" :config="config">
+  <PlaygroundSelect v-model="backdrop" :values="backdrops" name="backdrop"></PlaygroundSelect>
+</Playground>
+
 ## Fullscreen
 
 The Modal supports a `fullscreen` property. Due to the size of fullscreen on desktop, it is easy to lose context for the
@@ -127,6 +137,24 @@ for mobile devices only.
 <Playground :markup="fullscreen" :config="config"></Playground>
 
 Of course, any combination of the available options is possible.
+
+## Custom styling
+
+The Modal component has some values which can be overwritten by CSS Custom Properties (aka CSS Variables). This might be
+useful for e.g. a "Cookie Consent Dialog" to reserve certain space when used with `backdrop: 'shading'` to always have
+the Porsche [crest](components/crest) or [wordmark](components/wordmark) visible in the background of the page. Since
+the Modal is centered within the viewport and shrinks to its content, the custom vertical spacing definition will act
+like a safe zone.
+
+```scss
+--p-modal-spacing-top: 200px;
+--p-modal-spacing-bottom: 200px;
+```
+
+<Playground :markup="customStylingMarkup" :config="config">
+  <PlaygroundInput type="number" v-model="spacingTop" name="Spacing Top (px)"></PlaygroundInput>
+  <PlaygroundInput type="number" v-model="spacingBottom" name="Spacing Bottom (px)"></PlaygroundInput>
+</Playground>
 
 <script lang="ts">
 import Vue from 'vue';
@@ -239,6 +267,15 @@ export default class Code extends Vue {
   <p-text>Some Content</p-text>
 </p-modal>`;
 
+  backdrops = ['blur', 'shading'];
+  backdrop = 'shading';
+  get backdropMarkup() { 
+    return `<p-button type="button" aria="{ 'aria-haspopup': 'dialog' }">Open Modal</p-button>
+<p-modal heading="Some Heading" backdrop="${this.backdrop}" open="false">
+  <p-text>Some Content</p-text>
+</p-modal>`;
+  }
+
   fullscreen =
     `<p-button type="button" aria="{ 'aria-haspopup': 'dialog' }">Open Modal</p-button>
 <p-modal heading="Some Heading" fullscreen="{ base: true, s: false }" open="false">
@@ -248,6 +285,16 @@ export default class Code extends Vue {
     <p-button type="button" variant="secondary">Close</p-button>
   </p-button-group>
 </p-modal>`;
+
+  spacingTop = 200;
+  spacingBottom = 200;
+
+  get customStylingMarkup() {
+    return `<p-button type="button" aria="{ 'aria-haspopup': 'dialog' }">Open Modal</p-button>
+<p-modal heading="Some Heading" open="false" backdrop="shading" style="--p-modal-spacing-top: ${this.spacingTop}px; --p-modal-spacing-bottom: ${this.spacingBottom}px;">
+  <p-text>Some Content</p-text>
+</p-modal>`;
+  }
 
   openModal(index: number): void {
     this.modals[index].open = true;
