@@ -146,10 +146,6 @@ export class TextFieldWrapper {
     this.isTime = isType(type, 'time');
     this.isWithinForm = isWithinForm(this.host);
     this.hasAction = hasLocateAction(this.actionIcon);
-    this.hasCounter = hasCounterAndIsTypeText(this.input);
-    this.isCounterVisible =
-      this.hasCounter && (typeof this.showCharacterCount === 'undefined' ? this.showCounter : this.showCharacterCount);
-    this.hasUnit = !this.isCounterVisible && hasUnitAndIsTypeTextOrNumber(this.input, this.unit);
 
     if (this.isSearch) {
       this.isClearable = !!this.input.value;
@@ -162,7 +158,17 @@ export class TextFieldWrapper {
     return hasPropValueChanged(newVal, oldVal);
   }
 
-  public componentDidLoad(): void {
+  public componentWillRender(): void {
+    this.hasCounter = hasCounterAndIsTypeText(this.input);
+    this.isCounterVisible =
+      this.hasCounter && (typeof this.showCharacterCount === 'undefined' ? this.showCounter : this.showCharacterCount);
+    this.hasUnit = !this.isCounterVisible && hasUnitAndIsTypeTextOrNumber(this.input, this.unit);
+  }
+
+  public componentDidRender(): void {
+    // needs to happen after render in order to have unitOrCounterElement defined
+    this.setInputStyles();
+
     if (this.hasCounter) {
       addInputEventListenerForCounter(
         this.input,
@@ -173,11 +179,6 @@ export class TextFieldWrapper {
     } else if (this.isSearch) {
       addInputEventListenerForSearch(this.input, (hasValue) => (this.isClearable = hasValue));
     }
-  }
-
-  public componentDidRender(): void {
-    // needs to happen after render in order to have unitOrCounterElement defined
-    this.setInputStyles();
 
     /*
      * This is a workaround to improve accessibility because the input and the label/description/message text are placed in different DOM.
