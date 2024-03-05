@@ -8,7 +8,7 @@ import {
   getLifecycleStatus,
   setContentWithDesignSystem,
   setProperty,
-  skipInBrowser,
+  skipInBrowsers,
   waitForStencilLifecycle,
 } from '../helpers';
 
@@ -49,7 +49,7 @@ test('should dispatch correct click events', async ({ page }) => {
   }
 });
 
-skipInBrowser(['webkit', 'firefox'], () => {
+skipInBrowsers(['webkit', 'firefox'], () => {
   test('should trigger focus & blur events at the correct time', async ({ page }) => {
     await setContentWithDesignSystem(
       page,

@@ -9,7 +9,7 @@ import {
   hasFocus,
   setContentWithDesignSystem,
   setProperty,
-  skipInBrowser,
+  skipInBrowsers,
   waitForStencilLifecycle,
 } from '../helpers';
 import type { HeadingTag } from '@porsche-design-system/components';
@@ -131,7 +131,7 @@ test('should show aria-expanded true when open and false when closed', async ({ 
 });
 
 test.describe('events', () => {
-  skipInBrowser(['webkit']);
+  skipInBrowsers(['webkit']);
 
   test('should emit accordionChange event on button mouse click', async ({ page }) => {
     await initAccordion(page, { otherMarkup: clickHandlerScript });
@@ -172,7 +172,7 @@ test.describe('events', () => {
 });
 
 test.describe('focus', () => {
-  skipInBrowser(['firefox', 'webkit']);
+  skipInBrowsers(['firefox', 'webkit']);
 
   test('should have focusable content when opened', async ({ page }) => {
     await initAccordion(page, { otherMarkup: clickHandlerScript, hasInput: true });

@@ -14,7 +14,7 @@ import {
   initConsoleObserver,
   setContentWithDesignSystem,
   setProperty,
-  skipInBrowser,
+  skipInBrowsers,
   waitForStencilLifecycle,
 } from '../helpers';
 import type { MultiSelectOption } from '@porsche-design-system/components/dist/types/components/multi-select/multi-select/multi-select-utils';
@@ -357,7 +357,7 @@ test.describe('Update Event', () => {
     ]);
   });
 
-  skipInBrowser(['webkit'], () => {
+  skipInBrowsers(['webkit'], () => {
     test('should emit update event with correct details when reset button is clicked', async ({ page }) => {
       await initMultiSelect(page, { props: { name: 'options' } });
       await setValue(page, ['a', 'b']);
@@ -453,7 +453,7 @@ test.describe('outside click', () => {
 });
 
 test.describe('hover', () => {
-  skipInBrowser(['firefox', 'webkit']);
+  skipInBrowsers(['firefox', 'webkit']);
   test('should change border-color when input is hovered', async ({ page }) => {
     await initMultiSelect(page);
     await page.mouse.move(0, 300); // avoid potential hover initially
@@ -467,7 +467,7 @@ test.describe('hover', () => {
   });
 });
 
-skipInBrowser(['firefox', 'webkit'], () => {
+skipInBrowsers(['firefox', 'webkit'], () => {
   test.describe('focus', () => {
     test('should focus input when label text is clicked', async ({ page }) => {
       await initMultiSelect(page, { props: { name: 'options', label: 'Some Label' } });
@@ -705,7 +705,7 @@ test.describe('selection', () => {
     expect(filterPlaceholderSecond, 'after second selection').toEqual(selectedMultiSelectOptionsSecond.join(', '));
   });
 
-  skipInBrowser(['webkit'], () => {
+  skipInBrowsers(['webkit'], () => {
     test('should reset selection on reset button enter', async ({ page }) => {
       await initMultiSelect(page);
       const inputElement = await getInput(page);
@@ -961,7 +961,7 @@ test.describe('keyboard and click events', () => {
     expect(await getDropdownDisplay(page), 'after tab').toBe('none');
   });
 
-  skipInBrowser(['webkit'], () => {
+  skipInBrowsers(['webkit'], () => {
     test('should focus reset button and dropdown should stay open when there is a selection', async ({ page }) => {
       await initMultiSelect(page, {
         options: { markupAfter: '<p-button>Button</p-button>' },
@@ -1108,7 +1108,7 @@ test.describe('disabled', () => {
     expect(await getElementStyle(await getInput(page), 'cursor')).toBe('not-allowed');
   });
 
-  skipInBrowser(['webkit'], () => {
+  skipInBrowsers(['webkit'], () => {
     test('should not be able to open or interact', async ({ page }) => {
       await initMultiSelect(page, {
         props: { name: 'options', disabled: true },

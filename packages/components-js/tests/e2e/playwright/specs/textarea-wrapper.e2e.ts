@@ -11,7 +11,7 @@ import {
   setAttribute,
   setContentWithDesignSystem,
   setProperty,
-  skipInBrowser,
+  skipInBrowsers,
   waitForStencilLifecycle,
 } from '../helpers';
 import type { FormState } from '@porsche-design-system/components';
@@ -72,7 +72,7 @@ test('should focus textarea when label is clicked', async ({ page }) => {
   expect((await getEventSummary(textarea, 'focus')).counter).toBe(1);
 });
 
-skipInBrowser(['webkit'], () => {
+skipInBrowsers(['webkit'], () => {
   test('should focus textarea when counter text is clicked', async ({ page }) => {
     await initTextarea(page, { maxLength: 160 });
     const counter = await getCounter(page);
@@ -118,7 +118,7 @@ test('should render characterCountElement when maxlength is set', async ({ page 
 });
 
 test.describe('hover state', () => {
-  skipInBrowser(['firefox', 'webkit']);
+  skipInBrowsers(['firefox', 'webkit']);
   const getBorderColor = (element: ElementHandle<HTMLElement | SVGElement>) => getElementStyle(element, 'borderColor');
   const defaultBorderColor = 'rgb(107, 109, 112)';
   const hoverBorderColor = 'rgb(1, 2, 5)';

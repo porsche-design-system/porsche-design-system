@@ -8,7 +8,7 @@ import {
   getProperty,
   setContentWithDesignSystem,
   setProperty,
-  skipInBrowser,
+  skipInBrowsers,
   sleep,
   waitForStencilLifecycle,
 } from '../helpers';
@@ -134,7 +134,7 @@ test.describe('lifecycle', () => {
 });
 
 test.describe('focus', () => {
-  skipInBrowser(['firefox', 'webkit']);
+  skipInBrowsers(['firefox', 'webkit']);
 
   test('should have correct focus order', async ({ page }) => {
     await initLinkTileModelSignature(page);

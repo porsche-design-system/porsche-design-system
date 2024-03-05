@@ -9,7 +9,7 @@ import {
   hasFocus,
   setContentWithDesignSystem,
   setProperty,
-  skipInBrowser,
+  skipInBrowsers,
   waitForStencilLifecycle,
 } from '../helpers';
 
@@ -113,7 +113,7 @@ test.describe('events', () => {
     }
   });
 
-  skipInBrowser(['firefox', 'webkit'], () => {
+  skipInBrowsers(['firefox', 'webkit'], () => {
     test('should trigger focus & blur events at the correct time', async ({ page }) => {
       await setContentWithDesignSystem(
         page,
@@ -234,7 +234,7 @@ test.describe('events', () => {
 });
 
 test.describe('focus', () => {
-  skipInBrowser(['webkit']);
+  skipInBrowsers(['webkit']);
   test('should keep focus if state switches to loading', async ({ page }) => {
     await initSwitch(page);
 

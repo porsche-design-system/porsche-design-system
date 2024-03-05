@@ -8,7 +8,7 @@ import {
   getProperty,
   setContentWithDesignSystem,
   setProperty,
-  skipInBrowser,
+  skipInBrowsers,
   waitForStencilLifecycle,
 } from '../helpers';
 
@@ -39,7 +39,7 @@ const resolution1x = '@1x';
 const resolution2x = '@2x';
 const resolution3x = '@3x';
 
-skipInBrowser(['firefox', 'webkit']);
+skipInBrowsers(['firefox', 'webkit']);
 
 test.describe('with trademark', () => {
   const fileNameSmall = 'marque-trademark.small';

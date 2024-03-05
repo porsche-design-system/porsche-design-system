@@ -10,7 +10,7 @@ import {
   getProperty,
   setContentWithDesignSystem,
   setProperty,
-  skipInBrowser,
+  skipInBrowsers,
   waitForStencilLifecycle,
 } from '../helpers';
 
@@ -84,7 +84,7 @@ const initSelect = (page: Page, opts?: InitOptions): Promise<void> => {
   );
 };
 
-skipInBrowser(['webkit']);
+skipInBrowsers(['webkit']);
 
 test('should render', async ({ page }) => {
   await initSelect(page);

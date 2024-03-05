@@ -11,7 +11,7 @@ import {
   hasFocus,
   setContentWithDesignSystem,
   setProperty,
-  skipInBrowser,
+  skipInBrowsers,
   waitForInputTransition,
   waitForStencilLifecycle,
 } from '../helpers';
@@ -88,7 +88,7 @@ test('should add/remove message text if state changes programmatically', async (
   expect(await getMessage(page), 'when state = none').toBeNull();
 });
 
-skipInBrowser(['firefox', 'webkit'], () => {
+skipInBrowsers(['firefox', 'webkit'], () => {
   test('should disable radio-button when disabled property is set programmatically', async ({ page }) => {
     await setContentWithDesignSystem(
       page,
@@ -274,7 +274,7 @@ test.describe('checked state', () => {
     expect((await getEventSummary(input1, 'change')).counter).toBe(1);
   });
 
-  skipInBrowser(['webkit'], () => {
+  skipInBrowsers(['webkit'], () => {
     test('should keep focus if state switches to loading', async ({ page }) => {
       await setContentWithDesignSystem(
         page,

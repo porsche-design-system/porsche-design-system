@@ -5,10 +5,10 @@ import {
   expectToSkipFocusOnComponent,
   getActiveElementTagName,
   setContentWithDesignSystem,
-  skipInBrowser,
+  skipInBrowsers,
 } from '../helpers';
 
-skipInBrowser(['webkit', 'firefox']);
+skipInBrowsers(['webkit', 'firefox']);
 
 const tagNames: TagName[] = TAG_NAMES.filter((tagName) => getComponentMeta(tagName).isDelegatingFocus);
 

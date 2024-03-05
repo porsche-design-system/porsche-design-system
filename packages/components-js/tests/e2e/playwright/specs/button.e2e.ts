@@ -9,12 +9,12 @@ import {
   hasFocus,
   setContentWithDesignSystem,
   setProperty,
-  skipInBrowser,
+  skipInBrowsers,
   waitForImproveButtonHandlingForCustomElement,
   waitForStencilLifecycle,
 } from '../helpers';
 
-skipInBrowser(['firefox', 'webkit']);
+skipInBrowsers(['firefox', 'webkit']);
 
 const getHost = (page: Page) => page.$('p-button');
 const getButton = (page: Page) => page.$('p-button button');

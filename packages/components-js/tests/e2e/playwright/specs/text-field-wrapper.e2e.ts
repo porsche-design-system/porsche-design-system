@@ -13,7 +13,7 @@ import {
   setAttribute,
   setContentWithDesignSystem,
   setProperty,
-  skipInBrowser,
+  skipInBrowsers,
   waitForImproveButtonHandlingForCustomElement,
   waitForStencilLifecycle,
 } from '../helpers';
@@ -152,7 +152,7 @@ test.describe('input type="password"', () => {
 test.describe('input type="search"', () => {
   // verify wrapped input type="search" behaves the same as without in regards to clearing it and emitting events
   test.describe('events', () => {
-    skipInBrowser(['firefox', 'webkit'], () => {
+    skipInBrowsers(['firefox', 'webkit'], () => {
       test('should emit input events for input without text-field-wrapper', async ({ page }) => {
         await setContentWithDesignSystem(page, '<input type="search" style="width: 100px; height: 50px">');
         const input = await getInput(page);
@@ -326,7 +326,7 @@ test.describe('input type="search"', () => {
     });
   });
 
-  skipInBrowser(['firefox'], () => {
+  skipInBrowsers(['firefox'], () => {
     test('should have "-webkit-appearance: none" on "::-webkit-search-decoration"', async ({ page }) => {
       await initTextField(page, { type: 'search' });
       const input = await getInput(page);
@@ -377,7 +377,7 @@ test.describe('focus state', () => {
 });
 
 test.describe('hover state', () => {
-  skipInBrowser(['firefox', 'webkit']);
+  skipInBrowsers(['firefox', 'webkit']);
   const getBorderColor = (element: ElementHandle<HTMLElement>) => getElementStyle(element, 'borderColor');
   const defaultBorderColor = 'rgb(107, 109, 112)';
   const hoverBorderColor = 'rgb(1, 2, 5)';

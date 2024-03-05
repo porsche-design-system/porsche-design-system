@@ -13,7 +13,7 @@ import {
   reattachElementHandle,
   setContentWithDesignSystem,
   setProperty,
-  skipInBrowser,
+  skipInBrowsers,
   waitForComponentsReady,
   waitForStencilLifecycle,
 } from '../helpers';
@@ -607,7 +607,7 @@ test.describe('viewport change', () => {
 });
 
 test.describe('focus behavior', () => {
-  skipInBrowser(['firefox', 'webkit']);
+  skipInBrowsers(['firefox', 'webkit']);
 
   test('should have correct focus cycle for slidesPerPage=1', async ({ page }) => {
     await initCarousel(page, { amountOfSlides: 2, slidesPerPage: 1, withFocusableElements: true });
@@ -779,7 +779,7 @@ test.describe('events', () => {
 });
 
 test.describe('activeSlideIndex', () => {
-  skipInBrowser(['firefox', 'webkit']);
+  skipInBrowsers(['firefox', 'webkit']);
 
   test('should set active slide correctly on initialization', async ({ page }) => {
     await initCarousel(page, { activeSlideIndex: 2 });

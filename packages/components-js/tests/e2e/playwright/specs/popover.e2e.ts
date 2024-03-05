@@ -11,7 +11,7 @@ import {
   getProperty,
   setContentWithDesignSystem,
   setProperty,
-  skipInBrowser,
+  skipInBrowsers,
   waitForStencilLifecycle,
 } from '../helpers';
 import type { PopoverDirection } from '@porsche-design-system/components';
@@ -73,7 +73,7 @@ const initPopoverWithinTable = (page: Page, opts?: { direction: PopoverDirection
   );
 };
 
-skipInBrowser(['webkit', 'firefox'], () => {
+skipInBrowsers(['webkit', 'firefox'], () => {
   test('should trigger focus & blur events at the correct time', async ({ page }) => {
     await setContentWithDesignSystem(
       page,
@@ -187,7 +187,7 @@ test.describe('mouse behavior', () => {
     expect(await getPopover(page)).toBeNull();
   });
 
-  skipInBrowser(['webkit'], () => {
+  skipInBrowsers(['webkit'], () => {
     test('should close popover if another popover is clicked', async ({ page }) => {
       await setContentWithDesignSystem(
         page,
@@ -234,7 +234,7 @@ test.describe('mouse behavior', () => {
 });
 
 test.describe('keyboard behavior', () => {
-  skipInBrowser(['webkit']);
+  skipInBrowsers(['webkit']);
   test.describe('escape', () => {
     const focusedElementTagName = 'BUTTON';
 
@@ -255,7 +255,7 @@ test.describe('keyboard behavior', () => {
       );
     });
 
-    skipInBrowser(['firefox'], () => {
+    skipInBrowsers(['firefox'], () => {
       test('should close popover when content is focused', async ({ page }) => {
         await initPopover(page, { withLink: true });
         const host = await getHost(page);
@@ -361,7 +361,7 @@ test.describe('lifecycle', () => {
 });
 
 test.describe('native', () => {
-  skipInBrowser(['firefox', 'webkit']);
+  skipInBrowsers(['firefox', 'webkit']);
   test('should not render native popover when used outside of table', async ({ page }) => {
     await initPopover(page);
     await togglePopover(page);

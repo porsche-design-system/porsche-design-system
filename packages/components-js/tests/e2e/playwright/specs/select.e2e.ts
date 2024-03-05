@@ -13,7 +13,7 @@ import {
   getProperty,
   setContentWithDesignSystem,
   setProperty,
-  skipInBrowser,
+  skipInBrowsers,
   sleep,
   waitForStencilLifecycle,
 } from '../helpers';
@@ -457,7 +457,7 @@ test.describe('Update Event', () => {
     ]);
   });
 
-  skipInBrowser(['webkit'], () => {
+  skipInBrowsers(['webkit'], () => {
     test('should emit update event with correct details when option is selected by keyboard', async ({ page }) => {
       await initSelect(page);
       const host = await getHost(page);
@@ -525,7 +525,7 @@ test.describe('outside click', () => {
 });
 
 test.describe('focus', () => {
-  skipInBrowser(['webkit']);
+  skipInBrowsers(['webkit']);
   test('should focus button when label text is clicked', async ({ page }) => {
     await initSelect(page, { props: { name: 'options', label: 'Some Label' } });
 
@@ -585,7 +585,7 @@ test.describe('focus', () => {
 // TODO: Test keyboard behavior scrolldown to selected option
 // The keyboard behavior is aligned with the w3c suggestion https://www.w3.org/WAI/ARIA/apg/patterns/combobox/examples/combobox-select-only/
 test.describe('keyboard behavior', () => {
-  skipInBrowser(['webkit']);
+  skipInBrowsers(['webkit']);
   test.describe('closed combobox', () => {
     let buttonElement;
     test.beforeEach(async ({ page }) => {
@@ -1264,7 +1264,7 @@ test.describe('click events', () => {
       expect(await getElementStyle(await getButton(page), 'cursor')).toBe('not-allowed');
     });
 
-    skipInBrowser(['webkit'], () => {
+    skipInBrowsers(['webkit'], () => {
       test('should not be able to open or interact', async ({ page }) => {
         await initSelect(page, {
           props: { name: 'options', disabled: true },
@@ -1399,7 +1399,7 @@ test.describe('lifecycle', () => {
     expect(status2.componentDidUpdate.all, 'componentDidUpdate: all').toBe(4);
   });
 
-  skipInBrowser(['webkit'], () => {
+  skipInBrowsers(['webkit'], () => {
     test('should work without unnecessary round trips on selection change by keyboard', async ({ page }) => {
       await initSelect(page, { props: { name: 'options', value: 'a' } });
       const buttonElement = await getButton(page);

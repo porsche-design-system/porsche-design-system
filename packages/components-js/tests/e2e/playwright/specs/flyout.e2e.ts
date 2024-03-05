@@ -13,7 +13,7 @@ import {
   getLifecycleStatus,
   setContentWithDesignSystem,
   setProperty,
-  skipInBrowser,
+  skipInBrowsers,
   sleep,
   waitForStencilLifecycle,
 } from '../helpers';
@@ -335,7 +335,7 @@ test.describe('focus behavior', () => {
     await expectDismissButtonToBeFocused(page);
   });
 
-  skipInBrowser(['firefox', 'webkit'], () => {
+  skipInBrowsers(['firefox', 'webkit'], () => {
     test('should have correct focus order when there are focusable elements in header, content, footer and sub-footer', async ({
       page,
     }) => {
@@ -381,7 +381,7 @@ test.describe('focus behavior', () => {
     await expectDismissButtonToBeFocused(page);
   });
 
-  skipInBrowser(['webkit'], () => {
+  skipInBrowsers(['webkit'], () => {
     test('should focus last focused element after flyout is dismissed', async ({ page }) => {
       await setContentWithDesignSystem(
         page,
@@ -418,7 +418,7 @@ test.describe('focus behavior', () => {
     });
   });
 
-  skipInBrowser(['firefox', 'webkit'], () => {
+  skipInBrowsers(['firefox', 'webkit'], () => {
     test('should focus element after flyout when open accordion contains link but flyout is not open', async ({
       page,
     }) => {
@@ -447,7 +447,7 @@ test.describe('focus behavior', () => {
 });
 
 test.describe('after content change', () => {
-  skipInBrowser(['webkit']);
+  skipInBrowsers(['webkit']);
 
   test('should focus dismiss button again', async ({ page }) => {
     await initAdvancedFlyout(page);
@@ -521,7 +521,7 @@ test.describe('after content change', () => {
 });
 
 test.describe('can be controlled via keyboard', () => {
-  skipInBrowser(['webkit']);
+  skipInBrowsers(['webkit']);
 
   test('should cycle tab events within flyout', async ({ page }) => {
     await initAdvancedFlyout(page);

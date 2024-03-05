@@ -16,7 +16,7 @@ import {
   reattachElementHandle,
   setContentWithDesignSystem,
   setProperty,
-  skipInBrowser,
+  skipInBrowsers,
   waitForStencilLifecycle,
 } from '../helpers';
 
@@ -127,7 +127,7 @@ const initSelect = (page: Page, opts?: InitOptions): Promise<void> => {
   );
 };
 
-skipInBrowser(['webkit']);
+skipInBrowsers(['webkit']);
 
 test('should render', async ({ page }) => {
   await initSelect(page, { disabledIndex: 1 });
@@ -469,7 +469,7 @@ test('should not render initial hidden option fields', async ({ page }) => {
   expect(await getCssClasses(dropdownOption1)).toContain(hiddenClass);
 });
 
-skipInBrowser(['firefox', 'webkit'], () => {
+skipInBrowsers(['firefox', 'webkit'], () => {
   test('should not throw error with long option list and the same item is selected and disabled', async ({ page }) => {
     await initPageErrorObserver(page);
 

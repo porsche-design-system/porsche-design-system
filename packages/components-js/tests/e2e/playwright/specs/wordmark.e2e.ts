@@ -8,7 +8,7 @@ import {
   getLifecycleStatus,
   setContentWithDesignSystem,
   setProperty,
-  skipInBrowser,
+  skipInBrowsers,
   waitForStencilLifecycle,
 } from '../helpers';
 
@@ -73,7 +73,7 @@ test.describe('with link', () => {
     }
   });
 
-  skipInBrowser(['firefox', 'webkit'], () => {
+  skipInBrowsers(['firefox', 'webkit'], () => {
     test('should trigger focus & blur events at the correct time', async ({ page }) => {
       await initWordmark(page, {
         hasHref: true,

@@ -10,7 +10,7 @@ import {
   reattachElementHandle,
   setContentWithDesignSystem,
   setProperty,
-  skipInBrowser,
+  skipInBrowsers,
   waitForStencilLifecycle,
 } from '../helpers';
 
@@ -195,7 +195,7 @@ test.describe('events', () => {
 });
 
 test.describe('keyboard', () => {
-  skipInBrowser(['firefox', 'webkit']);
+  skipInBrowsers(['firefox', 'webkit']);
   test('should focus items when keyboard "tab" is pressed', async ({ page }) => {
     await setContentWithDesignSystem(
       page,

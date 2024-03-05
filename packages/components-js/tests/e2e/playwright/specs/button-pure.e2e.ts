@@ -9,7 +9,7 @@ import {
   hasFocus,
   setContentWithDesignSystem,
   setProperty,
-  skipInBrowser,
+  skipInBrowsers,
   waitForImproveButtonHandlingForCustomElement,
   waitForStencilLifecycle,
 } from '../helpers';
@@ -175,7 +175,7 @@ test.describe('within form', () => {
   });
 });
 
-skipInBrowser(['firefox', 'webkit'], () => {
+skipInBrowsers(['firefox', 'webkit'], () => {
   test('should trigger focus & blur events at the correct time', async ({ page }) => {
     await setContentWithDesignSystem(
       page,
@@ -333,7 +333,7 @@ test('should submit form via enter key when type is submit', async ({ page }) =>
 });
 
 test.describe('focus state', () => {
-  skipInBrowser(['webkit']);
+  skipInBrowsers(['webkit']);
 
   test('should keep focus if state switches to loading', async ({ page }) => {
     await initButtonPure(page);

@@ -10,7 +10,7 @@ import {
   getProperty,
   setContentWithDesignSystem,
   setProperty,
-  skipInBrowser,
+  skipInBrowsers,
   waitForStencilLifecycle,
 } from '../helpers';
 import { Components } from '@porsche-design-system/components';
@@ -593,7 +593,7 @@ test.describe('events', () => {
     });
   });
 
-  skipInBrowser(['firefox'], () => {
+  skipInBrowsers(['firefox'], () => {
     test('onPaste', async ({ page }) => {
       await initPinCode(page);
       const host = await getHost(page);
@@ -633,7 +633,7 @@ test.describe('disabled state', () => {
     expect(await getElementStyle(input, 'cursor')).toBe('not-allowed');
   });
 
-  skipInBrowser(['webkit'], () => {
+  skipInBrowsers(['webkit'], () => {
     test('should not be focusable', async ({ page }) => {
       await initPinCode(page, {
         props: { disabled: true },
@@ -673,7 +673,7 @@ test.describe('loading state', () => {
     expect(await getProperty(input, 'value')).toBe('');
   });
 
-  skipInBrowser(['webkit'], () => {
+  skipInBrowsers(['webkit'], () => {
     test('should be possible to navigate through inputs by key=Tab/Shift+Tab', async ({ page }) => {
       await initPinCode(page, {
         props: { loading: true },

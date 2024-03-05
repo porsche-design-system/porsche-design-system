@@ -15,7 +15,7 @@ import {
   getProperty,
   setContentWithDesignSystem,
   setProperty,
-  skipInBrowser,
+  skipInBrowsers,
   sleep,
   waitForStencilLifecycle,
 } from '../helpers';
@@ -145,7 +145,7 @@ test.describe('update event', () => {
     ]);
   });
 
-  skipInBrowser(['webkit'], () => {
+  skipInBrowsers(['webkit'], () => {
     test('should be emitted when pressing Enter on a navigation-item', async ({ page }) => {
       expect((await getEventSummary(host, 'update')).counter, 'before activeIdentifier change').toBe(0);
 
@@ -163,7 +163,7 @@ test.describe('update event', () => {
     });
   });
 
-  skipInBrowser(['webkit'], () => {
+  skipInBrowsers(['webkit'], () => {
     test('should be emitted when pressing Space on a navigation-item', async ({ page }) => {
       expect((await getEventSummary(host, 'update')).counter, 'before activeIdentifier change').toBe(0);
 
@@ -271,7 +271,7 @@ test.describe('dismiss event', () => {
 });
 
 test.describe('focus behavior', () => {
-  skipInBrowser(['webkit']);
+  skipInBrowsers(['webkit']);
 
   test('should focus dismiss button after open', async ({ page }) => {
     await initBasicFlyoutNavigation(page, { open: false });
@@ -294,7 +294,7 @@ test.describe('focus behavior', () => {
     expect(await getActiveElementProp(page, 'identifier')).toBe('item-2');
   });
 
-  skipInBrowser(['firefox'], () => {
+  skipInBrowsers(['firefox'], () => {
     test('should have correct focus order when level 2 is open', async ({ page }) => {
       await initBasicFlyoutNavigation(page, { open: false, activeIdentifier: 'item-1' });
       await openFlyoutNavigation(page);
@@ -308,7 +308,7 @@ test.describe('focus behavior', () => {
     });
   });
 
-  skipInBrowser(['firefox'], () => {
+  skipInBrowsers(['firefox'], () => {
     test('should have correct focus order when level 2 is opened', async ({ page }) => {
       await initBasicFlyoutNavigation(page, { open: false });
       const host = await getHost(page);
@@ -353,7 +353,7 @@ test.describe('focus behavior', () => {
     await expectDismissButtonToBeFocused(page);
   });
 
-  skipInBrowser(['firefox'], () => {
+  skipInBrowsers(['firefox'], () => {
     test('should not allow focusing element behind of flyout when pressing Shift Tab', async ({ page }) => {
       await initBasicFlyoutNavigation(page, { open: false }, { amount: 0 });
       await addButtonsBeforeAndAfterFlyout(page);
@@ -500,7 +500,7 @@ test.describe('second level', () => {
     expect(await getFlyoutNavigationItemScrollerVisibility(page, 'item-3')).toBe('visible');
   });
 
-  skipInBrowser(['webkit'], () => {
+  skipInBrowsers(['webkit'], () => {
     test('should change to correct second level open when activeIdentifier is changed', async ({ page }) => {
       await initBasicFlyoutNavigation(page, { open: false, activeIdentifier: 'item-2' });
       await openFlyoutNavigation(page);
@@ -518,7 +518,7 @@ test.describe('second level', () => {
     });
   });
 
-  skipInBrowser(['webkit'], () => {
+  skipInBrowsers(['webkit'], () => {
     test('should open second level of item when item is appended and activeIdentifier is set to this item', async ({
       page,
     }) => {
@@ -571,7 +571,7 @@ test.describe('second level', () => {
     expect(await getFlyoutNavigationItem(page, 'item-3')).toBeNull();
   });
 
-  skipInBrowser(['webkit'], () => {
+  skipInBrowsers(['webkit'], () => {
     test('should show correct second level when flyout-navigation-item with currently activeIdentifier is added', async ({
       page,
     }) => {

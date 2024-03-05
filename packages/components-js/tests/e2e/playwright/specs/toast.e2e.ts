@@ -7,7 +7,7 @@ import {
   getProperty,
   setContentWithDesignSystem,
   setProperty,
-  skipInBrowser,
+  skipInBrowsers,
   sleep,
   waitForStencilLifecycle,
 } from '../helpers';
@@ -159,7 +159,7 @@ test.describe('toast-item', () => {
     expect(await getAttribute(closeBtnReal, 'type')).toBe('button');
   });
 
-  skipInBrowser(['webkit'], () => {
+  skipInBrowsers(['webkit'], () => {
     test('should have animation', async ({ page }) => {
       await initToastWithToastItem(page, {}, { withAnimation: true });
       await waitForAnimationFinish(); // 600ms

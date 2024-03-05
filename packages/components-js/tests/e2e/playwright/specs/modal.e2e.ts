@@ -13,7 +13,7 @@ import {
   getProperty,
   setContentWithDesignSystem,
   setProperty,
-  skipInBrowser,
+  skipInBrowsers,
   sleep,
   waitForStencilLifecycle,
 } from '../helpers';
@@ -249,7 +249,7 @@ test.describe('can be dismissed', () => {
     expect((await getEventSummary(host, 'close')).counter, 'after mouse up').toBe(0);
   });
 
-  skipInBrowser(['webkit'], () => {
+  skipInBrowsers(['webkit'], () => {
     test('should not be closable via backdrop when disableBackdropClick is set', async ({ page }) => {
       const host = await getHost(page);
       await setProperty(host, 'disableBackdropClick', true);
@@ -284,7 +284,7 @@ test.describe('can be dismissed', () => {
   });
 });
 
-skipInBrowser(['firefox', 'webkit'], () => {
+skipInBrowsers(['firefox', 'webkit'], () => {
   test.describe('focus behavior', () => {
     test('should focus dialog after open', async ({ page }) => {
       await initAdvancedModal(page);
@@ -546,7 +546,7 @@ skipInBrowser(['firefox', 'webkit'], () => {
   });
 });
 
-skipInBrowser(['firefox', 'webkit'], () => {
+skipInBrowsers(['firefox', 'webkit'], () => {
   test.describe('can be controlled via keyboard', () => {
     test('should cycle tab events within modal', async ({ page }) => {
       await initAdvancedModal(page);
@@ -671,7 +671,7 @@ test.describe('sticky footer', () => {
     expect(await getFooterBoxShadow(page)).toBe('none');
   });
 
-  skipInBrowser(['webkit'], () => {
+  skipInBrowsers(['webkit'], () => {
     test('should show box-shadow again when scrolling up from bottom', async ({ page }) => {
       await initBasicModal(page, {
         isOpen: true,

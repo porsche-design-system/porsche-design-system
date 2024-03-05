@@ -6,7 +6,7 @@ import {
   getProperty,
   setContentWithDesignSystem,
   setProperty,
-  skipInBrowser,
+  skipInBrowsers,
   waitForStencilLifecycle,
 } from '../helpers';
 
@@ -68,7 +68,7 @@ test.describe('lifecycle', () => {
   });
 });
 
-skipInBrowser(['firefox', 'webkit'], () => {
+skipInBrowsers(['firefox', 'webkit'], () => {
   test('should have "text-size-adjust: none" set', async ({ page }) => {
     await setContentWithDesignSystem(
       page,

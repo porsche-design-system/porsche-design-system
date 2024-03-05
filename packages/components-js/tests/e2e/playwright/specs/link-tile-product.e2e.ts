@@ -11,7 +11,7 @@ import {
   getProperty,
   setContentWithDesignSystem,
   setProperty,
-  skipInBrowser,
+  skipInBrowsers,
   waitForStencilLifecycle,
 } from '../helpers';
 import { Components } from '@porsche-design-system/components';
@@ -113,7 +113,7 @@ test.describe('lifecycle', () => {
 });
 
 test.describe('focus', () => {
-  skipInBrowser(['firefox', 'webkit']);
+  skipInBrowsers(['firefox', 'webkit']);
 
   test('should have correct focus order when using href prop', async ({ page }) => {
     await initLinkTileProduct(page);

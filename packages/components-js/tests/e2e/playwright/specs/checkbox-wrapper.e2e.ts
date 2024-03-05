@@ -10,7 +10,7 @@ import {
   hasFocus,
   setContentWithDesignSystem,
   setProperty,
-  skipInBrowser,
+  skipInBrowsers,
   waitForInputTransition,
   waitForStencilLifecycle,
 } from '../helpers';
@@ -162,7 +162,7 @@ test('should not toggle checkbox when pressed space in focus in loading state', 
   expect((await getEventSummary(input, 'change')).counter).toBe(1);
 });
 
-skipInBrowser(['firefox', 'webkit'], () => {
+skipInBrowsers(['firefox', 'webkit'], () => {
   test('should keep focus if state switches to loading', async ({ page }) => {
     await initCheckbox(page);
     const input = await getInput(page);
@@ -232,7 +232,7 @@ test('should check/uncheck checkbox when checkbox property is changed programmat
   expect(await getBackgroundImage(input)).toBe('none');
 });
 
-skipInBrowser(['firefox', 'webkit'], () => {
+skipInBrowsers(['firefox', 'webkit'], () => {
   test('should disable checkbox when disabled property is set programmatically', async ({ page }) => {
     await initCheckbox(page);
     const host = await getHost(page);
@@ -271,7 +271,7 @@ skipInBrowser(['firefox', 'webkit'], () => {
 });
 
 test.describe('indeterminate state', () => {
-  skipInBrowser(['webkit']);
+  skipInBrowsers(['webkit']);
 
   test('should show indeterminate state when checkbox is set to indeterminate', async ({ page }) => {
     await initCheckbox(page);
