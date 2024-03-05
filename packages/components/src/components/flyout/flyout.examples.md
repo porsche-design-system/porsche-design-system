@@ -149,8 +149,11 @@ export default class Code extends Vue {
     position = 'end';
     positions = FLYOUT_POSITIONS.map(item => FLYOUT_POSITIONS_DEPRECATED.includes(item) ? item + ' (deprecated)' : item);
     get basicSample() {
-      Object.entries(this.codeExample).forEach(([key, value]) => this.codeExample[key] = value.replace(/start|end|left|right/, this.position));
-      return this.codeExample
+      Object.entries(this.codeExample).forEach(([key, value]) => {
+        this.codeExample[key] = value.replace(/(position]?=[{'"]+)(?:start|end|left|right)(["'}]+)/, `$1${this.position}$2`);
+      });
+
+      return this.codeExample;
     }
     
     scrollable = 'true';
@@ -164,7 +167,7 @@ export default class Code extends Vue {
                 this.codeExampleSlotted[key] = value
                   .replace(/100vh|initial/, this.scrollable === 'true' ? '100vh' : 'initial')
                   .replace(/(\s*<div slot="sub-footer">Some Sub Footer Content<\/div>)?(\s*)(<\/p-flyout>|<\/PFlyout>)/, this.subFooter === 'true' ? `$2\t${content}$2$3` : '$2$3'));
-      return this.codeExampleSlotted
+      return this.codeExampleSlotted;
     }
     
   openFlyout(index: number): void {
