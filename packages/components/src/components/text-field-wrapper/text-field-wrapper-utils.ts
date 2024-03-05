@@ -33,7 +33,7 @@ export const setInputStyles = (
 
     input.style.setProperty(
       unitPosition === 'prefix' ? cssVariableInputPaddingStart : cssVariableInputPaddingEnd,
-      getInputPaddingLeftOrRight(unitOrCounterElement.offsetWidth),
+      getInputPaddingLeftOrRight(unitOrCounterElement.offsetWidth), // in case fonts are not loaded, this value is wrong
       'important'
     );
   }
