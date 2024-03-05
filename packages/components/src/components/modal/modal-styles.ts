@@ -31,6 +31,7 @@ import {
   prefersColorSchemeDarkMediaQuery,
 } from '../../styles';
 import { MODAL_Z_INDEX } from '../../constants';
+import { type ModalBackdrop } from './modal-utils';
 
 const mediaQueryXl = getMediaQueryMin('xl');
 const { primaryColor: darkThemePrimaryColor, contrastHighColor: darkThemeContrastHighColor } = getThemedColors('dark');
@@ -92,6 +93,7 @@ const getSlottedJssStyle = (marginValue: number, hasHeader: boolean, hasDismissB
 
 export const getComponentCss = (
   isOpen: boolean,
+  backdrop: ModalBackdrop,
   isFullscreen: BreakpointCustomizable<boolean>,
   hasDismissButton: boolean,
   hasHeader: boolean,
@@ -112,7 +114,7 @@ export const getComponentCss = (
         ...addImportantToEachRule({
           ...colorSchemeStyles,
           ...hostHiddenStyles,
-          ...getBackdropJssStyle(isOpen, MODAL_Z_INDEX, theme, duration),
+          ...getBackdropJssStyle(isOpen, MODAL_Z_INDEX, theme, duration, backdrop),
         }),
       },
       '::slotted': addImportantToEachRule(

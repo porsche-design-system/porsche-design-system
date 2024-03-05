@@ -15,10 +15,11 @@ import {
   warnIfAriaAndHeadingPropsAreUndefined,
   warnIfDeprecatedPropIsUsed,
 } from '../../utils';
-import type { ModalAriaAttribute } from './modal-utils';
+import type { ModalAriaAttribute, ModalBackdrop } from './modal-utils';
 import { MODAL_ARIA_ATTRIBUTES, clickStartedInScrollbarTrack } from './modal-utils';
 import { footerShadowClass, getComponentCss } from './modal-styles';
 import { throttle } from 'throttle-debounce';
+import { BACKDROPS } from '../../styles';
 
 const propTypes: PropTypes<typeof Modal> = {
   open: AllowedTypes.boolean,
@@ -26,6 +27,7 @@ const propTypes: PropTypes<typeof Modal> = {
   dismissButton: AllowedTypes.boolean,
   disableBackdropClick: AllowedTypes.boolean,
   heading: AllowedTypes.string,
+  backdrop: AllowedTypes.oneOf<ModalBackdrop>(BACKDROPS),
   fullscreen: AllowedTypes.breakpoint('boolean'),
   aria: AllowedTypes.aria<ModalAriaAttribute>(MODAL_ARIA_ATTRIBUTES),
   theme: AllowedTypes.oneOf<Theme>(THEMES),
@@ -54,6 +56,9 @@ export class Modal {
 
   /** The title of the modal */
   @Prop() public heading?: string;
+
+  /** Defines the backdrop, 'blur' (should be used when Modal is opened by user interaction, e.g. after a click on a button) and 'shading' (should be used when Modal gets opened automatically, e.g. Cookie Consent) */
+  @Prop() public backdrop?: ModalBackdrop = 'blur';
 
   /** If true the modal uses max viewport height and width. Should only be used for mobile. */
   @Prop() public fullscreen?: BreakpointCustomizable<boolean> = false;
@@ -137,6 +142,7 @@ export class Modal {
       this.host,
       getComponentCss,
       this.open,
+      this.backdrop,
       this.fullscreen,
       this.hasDismissButton,
       this.hasHeader,
