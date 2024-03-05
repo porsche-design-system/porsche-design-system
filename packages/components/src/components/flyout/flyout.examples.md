@@ -136,9 +136,9 @@ export default class Code extends Vue {
   }
 
   registerEvents() {
-    this.flyouts = document.querySelectorAll('.playground .demo p-flyout');
+    this.flyouts = this.$el.querySelectorAll('.playground .demo p-flyout');
     
-    const buttonsOpen = document.querySelectorAll('.playground .demo > p-button');
+    const buttonsOpen = this.$el.querySelectorAll('.playground .demo > p-button');
     buttonsOpen.forEach((btn, index) => btn.addEventListener('click', () => this.openFlyout(index)));
     
     this.flyouts.forEach((flyout, index) => {
