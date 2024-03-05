@@ -8,7 +8,7 @@ to learn more.
 
 ### Installation
 
-Run the following command using [npm](https://www.npmjs.com):
+Run the following command using [npm](https://npmjs.com):
 
 ```bash
 npm install @porsche-design-system/components-react

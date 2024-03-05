@@ -40,7 +40,7 @@ TODO: update this
 ESM with type module works in ts-node with following configuration:
 https://github.com/TypeStrong/ts-node#commonjs-vs-native-ecmascript-modules  
 This also causes follow-up work in our scripts e.g. `__dirname is not defined in ES module scope.`  
-Could be fixed via https://www.kindacode.com/article/node-js-using-**dirname-and-\_\_filename-with-es-modules/  
+Could be fixed via https://kindacode.com/article/node-js-using-**dirname-and-\_\_filename-with-es-modules/  
 Also using `"type": "module"` causes discrepancy in our typechecking and runtime errors:
 
 - e.g. `AbstractWrapperGenerator.ts` throws typing errors with unused parameters.

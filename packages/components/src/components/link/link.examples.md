@@ -98,29 +98,29 @@ export default class Code extends Vue {
   
   buttons(value: string) {
     const attr = value ? ` variant="${value}"` : '';
-    return `<p-link${attr} href="https://www.porsche.com">Some label</p-link>
-<p-link${attr} href="https://www.porsche.com" hide-label="true" icon="arrow-right">Some label</p-link>`;
+    return `<p-link${attr} href="https://porsche.com">Some label</p-link>
+<p-link${attr} href="https://porsche.com" hide-label="true" icon="arrow-right">Some label</p-link>`;
     }
 
   responsive =
-`<p-link variant="primary" href="https://www.porsche.com" hide-label="{ base: true, s: false }" icon="arrow-right">Some label</p-link>
-<p-link variant="secondary" href="https://www.porsche.com" hide-label="{ base: true, m: false }" icon="arrow-right">Some label</p-link>`;
+`<p-link variant="primary" href="https://porsche.com" hide-label="{ base: true, s: false }" icon="arrow-right">Some label</p-link>
+<p-link variant="secondary" href="https://porsche.com" hide-label="{ base: true, m: false }" icon="arrow-right">Some label</p-link>`;
 
   accessibility = 
-`<p-link href="https://www.porsche.com" aria="{ 'aria-label': 'Some more descriptive label' }">Some label</p-link>`;
+`<p-link href="https://porsche.com" aria="{ 'aria-label': 'Some more descriptive label' }">Some label</p-link>`;
 
   routing =
 `<p-link>
-  <a href="https://www.porsche.com">Some label</a>
+  <a href="https://porsche.com">Some label</a>
 </p-link>`;
 
   icon =
-`<p-link href="https://www.porsche.com" icon="phone">Some label</p-link>
-<p-link href="https://www.porsche.com" icon-source="${require('../../assets/icon-custom-kaixin.svg')}" hide-label="true">Some label</p-link>`;
+`<p-link href="https://porsche.com" icon="phone">Some label</p-link>
+<p-link href="https://porsche.com" icon-source="${require('../../assets/icon-custom-kaixin.svg')}" hide-label="true">Some label</p-link>`;
 
   events =
 `<p-link
-  href="https://www.porsche.com"
+  href="https://porsche.com"
   onclick="alert('click'); return false;"
   onfocus="console.log('focus')"
   onfocusin="console.log('focusin')"
@@ -129,9 +129,9 @@ export default class Code extends Vue {
 >Some label</p-link>`;
 
   taborder =
-`<p-link href="https://www.porsche.com">Some label</p-link>
-<p-link href="https://www.porsche.com" tabindex="-1">Some label</p-link>
-<p-link href="https://www.porsche.com">Some label</p-link>`;
+`<p-link href="https://porsche.com">Some label</p-link>
+<p-link href="https://porsche.com" tabindex="-1">Some label</p-link>
+<p-link href="https://porsche.com">Some label</p-link>`;
 }
 </script>
 

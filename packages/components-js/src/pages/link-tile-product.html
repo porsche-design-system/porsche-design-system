@@ -6,7 +6,7 @@
 </style>
 
 <div class="playground light auto-layout-inline" title="should render default with 3:4 and 9:16">
-  <p-link-tile-product heading="Some product" price="1.911,00 €" href="https://www.porsche.com">
+  <p-link-tile-product heading="Some product" price="1.911,00 €" href="https://porsche.com">
     <img
       src="https://porsche-design-system.github.io/porsche-design-system/placeholder_800x900.svg"
       width="800"
@@ -14,7 +14,7 @@
       alt="Some alt text"
     />
   </p-link-tile-product>
-  <p-link-tile-product heading="Some product" price="1.911,00 €" href="https://www.porsche.com" aspect-ratio="9:16">
+  <p-link-tile-product heading="Some product" price="1.911,00 €" href="https://porsche.com" aspect-ratio="9:16">
     <img
       src="https://porsche-design-system.github.io/porsche-design-system/placeholder_800x900.svg"
       width="800"
@@ -24,7 +24,7 @@
   </p-link-tile-product>
 </div>
 <div class="playground light auto-layout-inline" title="should render without like button">
-  <p-link-tile-product heading="Some product" price="1.911,00 €" href="https://www.porsche.com" like-button="false">
+  <p-link-tile-product heading="Some product" price="1.911,00 €" href="https://porsche.com" like-button="false">
     <img
       src="https://porsche-design-system.github.io/porsche-design-system/placeholder_800x900.svg"
       width="800"
@@ -34,7 +34,13 @@
   </p-link-tile-product>
 </div>
 <div class="playground light auto-layout-inline" title="should render with sale and original price">
-  <p-link-tile-product heading="Some product" price="718,00 €" price-original="911,00 €" href="https://www.porsche.com" like-button="false">
+  <p-link-tile-product
+    heading="Some product"
+    price="718,00 €"
+    price-original="911,00 €"
+    href="https://porsche.com"
+    like-button="false"
+  >
     <img
       src="https://porsche-design-system.github.io/porsche-design-system/placeholder_800x900.svg"
       width="800"
@@ -42,7 +48,14 @@
       alt="Some alt text"
     />
   </p-link-tile-product>
-  <p-link-tile-product heading="Some product" price="999.999,99 €" price-original="999.999,99 €" href="https://www.porsche.com" like-button="false" style="width: 130px;">
+  <p-link-tile-product
+    heading="Some product"
+    price="999.999,99 €"
+    price-original="999.999,99 €"
+    href="https://porsche.com"
+    like-button="false"
+    style="width: 130px"
+  >
     <img
       src="https://porsche-design-system.github.io/porsche-design-system/placeholder_800x900.svg"
       width="800"
@@ -55,7 +68,7 @@
   <p-link-tile-product
     heading="Some very long product name to illustrate what happens when the text takes a lot of space"
     price="1.911,00 €"
-    href="https://www.porsche.com"
+    href="https://porsche.com"
   >
     <img
       src="https://porsche-design-system.github.io/porsche-design-system/placeholder_800x900.svg"
@@ -70,7 +83,7 @@
     heading="Some product"
     price="1.911,00 €"
     description="Some additional description"
-    href="https://www.porsche.com"
+    href="https://porsche.com"
   >
     <p-tag slot="header" color="background-base">New</p-tag>
     <img
@@ -87,7 +100,7 @@
     heading="Some product"
     price="Some very long price text to illustrate what happens when the text takes a lot of space"
     description="Some very long additional description to illustrate what happens when the text takes a lot of space"
-    href="https://www.porsche.com"
+    href="https://porsche.com"
   >
     <p-tag slot="header" color="background-base">New</p-tag>
     <img
@@ -104,7 +117,7 @@
     heading="Some very long product name text to illustrate what happens when the text is too long for the container and the image will become a lot smaller"
     price="Some very long price text to illustrate what happens when the text takes a lot of space. Some very long price text to illustrate what happens when the text takes a lot of space"
     description="Some very long additional description to illustrate what happens when the text takes a lot of space. Some very long additional description to illustrate what happens when the text takes a lot of space"
-    href="https://www.porsche.com"
+    href="https://porsche.com"
   >
     <p-tag slot="header" color="background-base">New</p-tag>
     <img
@@ -117,7 +130,7 @@
 </div>
 
 <div class="playground light auto-layout-inline" title="should render with like button and too many tags">
-  <p-link-tile-product heading="Some product" price="1.911,00 €" href="https://www.porsche.com">
+  <p-link-tile-product heading="Some product" price="1.911,00 €" href="https://porsche.com">
     <div slot="header">
       <p-tag color="background-base">Using</p-tag>
       <p-tag color="background-base">too</p-tag>
@@ -136,7 +149,7 @@
   </p-link-tile-product>
 </div>
 <div class="playground light auto-layout-inline" title="should render without like button and too many tags">
-  <p-link-tile-product heading="Some product" price="1.911,00 €" href="https://www.porsche.com" like-button="false">
+  <p-link-tile-product heading="Some product" price="1.911,00 €" href="https://porsche.com" like-button="false">
     <div slot="header">
       <p-tag color="background-base">Using</p-tag>
       <p-tag color="background-base">too</p-tag>
@@ -155,7 +168,7 @@
   </p-link-tile-product>
 </div>
 <div class="playground light auto-layout-inline" title="should render with slotted picture">
-  <p-link-tile-product heading="Product Name" price="1.911,00 €" href="https://www.porsche.com">
+  <p-link-tile-product heading="Product Name" price="1.911,00 €" href="https://porsche.com">
     <picture>
       <img
         src="https://porsche-design-system.github.io/porsche-design-system/placeholder_800x900.svg"
@@ -165,7 +178,7 @@
   </p-link-tile-product>
 </div>
 <div class="playground light auto-layout-inline" title="should render with image which has wrong aspect-ratio">
-  <p-link-tile-product heading="Product Name" price="1.911,00 €" href="https://www.porsche.com">
+  <p-link-tile-product heading="Product Name" price="1.911,00 €" href="https://porsche.com">
     <img
       src="https://porsche-design-system.github.io/porsche-design-system/placeholder_800x500.svg"
       width="800"
@@ -178,7 +191,7 @@
   class="playground light auto-layout-inline"
   title="should render with images which have wrong aspect-ratios when using slotted picture"
 >
-  <p-link-tile-product heading="Product Name" price="1.911,00 €" href="https://www.porsche.com">
+  <p-link-tile-product heading="Product Name" price="1.911,00 €" href="https://porsche.com">
     <picture>
       <img
         src="https://porsche-design-system.github.io/porsche-design-system/placeholder_800x500.svg"
@@ -196,7 +209,7 @@
       height="900"
       alt="Some alt text"
     />
-    <a slot="anchor" href="https://www.porsche.com">Some label</a>
+    <a slot="anchor" href="https://porsche.com">Some label</a>
   </p-link-tile-product>
 </div>
 <div class="playground light auto-layout-inline" title="should render with picture and slotted link">
@@ -207,7 +220,7 @@
         alt="Some alt text"
       />
     </picture>
-    <a slot="anchor" href="https://www.porsche.com">Some label</a>
+    <a slot="anchor" href="https://porsche.com">Some label</a>
   </p-link-tile-product>
 </div>
 
@@ -218,7 +231,7 @@
   <p-link-tile-product
     heading="Product Name"
     price="1.911,00 €"
-    href="https://www.porsche.com"
+    href="https://porsche.com"
     aspect-ratio="{ base: '9:16', s: '3:4' }"
   >
     <img
@@ -231,11 +244,11 @@
 </div>
 
 <div class="playground light auto-layout-inline" title="should render with image not found">
-  <p-link-tile-product heading="Product Name" price="1.911,00 €" href="https://www.porsche.com">
+  <p-link-tile-product heading="Product Name" price="1.911,00 €" href="https://porsche.com">
     <img src="nonexistent.png" width="800" height="900" alt="Some alt text" />
   </p-link-tile-product>
 </div>
 
 <div class="playground light auto-layout-inline" title="should render without slotted image">
-  <p-link-tile-product heading="Product Name" price="1.911,00 €" href="https://www.porsche.com"> </p-link-tile-product>
+  <p-link-tile-product heading="Product Name" price="1.911,00 €" href="https://porsche.com"> </p-link-tile-product>
 </div>

@@ -126,7 +126,7 @@
           >
             <span slot="label" id="terms">
               I have read the
-              <a href="https://porsche.com/some-url">general terms and conditions</a> and I accept them.
+              <a href="https://porsche.com">general terms and conditions</a> and I accept them.
             </span>
             <input
               type="checkbox"
@@ -145,7 +145,7 @@
             v-bind:state="getState('privacy')"
           >
             <span slot="label" id="privacy"
-              >I have read the <a href="https://porsche.com/some-url">Data Privacy Statement</a>.</span
+              >I have read the <a href="https://porsche.com">Data Privacy Statement</a>.</span
             >
             <input
               type="checkbox"

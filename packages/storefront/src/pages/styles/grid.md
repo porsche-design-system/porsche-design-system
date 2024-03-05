@@ -4,7 +4,7 @@
 
 ## Example
 
-The Porsche grid system is based on native [CSS Grid](https://css-tricks.com/snippets/css/complete-guide-grid/) for best
+The Porsche grid system is based on native [CSS Grid](https://css-tricks.com/snippets/css/complete-guide-grid) for best
 performance, changing its available columns on mobile (6 content columns + 2 safe zone columns) and desktop view >=
 760px viewport width (8-narrow/12-basic/14-extended/16-wide content columns + 2 safe zone columns). It has a size range
 between 320px and 2560px, using fluid sized columns and gaps.

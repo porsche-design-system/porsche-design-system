@@ -157,7 +157,7 @@ reader users the corresponding information:
 ## Masked Input
 
 If you want to use localized input masks to improve the user experience we recommend using
-<a href="https://imask.js.org/" target="_blank">iMask</a>. Make sure to handle potential drawbacks (e.g. auto-formatting
+<a href="https://imask.js.org" target="_blank">iMask</a>. Make sure to handle potential drawbacks (e.g. auto-formatting
 /-correction, styling to distinguish between masked input, placeholder and input value, error handling etc.) to avoid
 user frustration.
 
