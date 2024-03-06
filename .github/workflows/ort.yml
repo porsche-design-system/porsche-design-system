@@ -16,8 +16,8 @@ jobs:
     steps:
       - name: 'Checkout'
         uses: actions/checkout@v4
-      - name: 'Clear cache'
-        uses: ./github/actions/clear-action-cache
+      - name: 'Clear action cache'
+        uses: ./.github/actions/clear-action-cache
       - name: 'Cache node_modules'
         uses: actions/cache@v4
         id: cache
