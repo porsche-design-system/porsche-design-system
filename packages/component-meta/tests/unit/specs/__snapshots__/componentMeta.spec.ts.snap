@@ -7418,6 +7418,10 @@ exports[`should match snapshot 1`] = `
       "aria": {
         "aria-label": "string",
       },
+      "backdrop": [
+        "blur",
+        "shading",
+      ],
       "disableBackdropClick": "boolean",
       "disableCloseButton": "boolean",
       "dismissButton": "boolean",
@@ -7471,6 +7475,7 @@ exports[`should match snapshot 1`] = `
     ],
     "props": {
       "aria": null,
+      "backdrop": "blur",
       "disableBackdropClick": false,
       "disableCloseButton": null,
       "dismissButton": true,
@@ -7488,6 +7493,15 @@ exports[`should match snapshot 1`] = `
         "description": "Add ARIA attributes.",
         "isAria": true,
         "type": "ModalAriaAttribute",
+      },
+      "backdrop": {
+        "allowedValues": [
+          "blur",
+          "shading",
+        ],
+        "defaultValue": "blur",
+        "description": "Defines the backdrop, 'blur' (should be used when Modal is opened by user interaction, e.g. after a click on a button) and 'shading' (should be used when Modal gets opened automatically, e.g. Cookie Consent).",
+        "type": "ModalBackdrop",
       },
       "disableBackdropClick": {
         "allowedValues": "boolean",
