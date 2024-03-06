@@ -6,7 +6,7 @@ on:
         required: true
 name: 'Build and Test'
 env:
-  PDS_PLAYWRIGHT_DOCKER_IMAGE: ghcr.io/porsche-design-system/porsche-design-system/playwright:v1.41.2-focal-test12
+  PDS_PLAYWRIGHT_DOCKER_IMAGE: ghcr.io/porsche-design-system/porsche-design-system/playwright:v1.41.2-focal-test13
 jobs:
   assets:
     name: 'Assets'
@@ -155,6 +155,11 @@ jobs:
   components-js-e2e-playwright-chrome:
     name: 'Components JS E2E (Chrome/Playwright)'
     runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        shardIndex: [ 1, 2 ]
+        shardTotal: [ 2 ]
     steps:
       - name: 'Checkout'
         uses: actions/checkout@v4
@@ -168,7 +173,7 @@ jobs:
         uses: ./.github/actions/docker-run-playwright
         with:
           entrypoint: run-test-e2e-playwright
-          args: --components-js:chrome
+          args: --components-js:chrome:${{ matrix.shardIndex }}/${{ matrix.shardTotal }}
   components-js-e2e-playwright-firefox:
     name: 'Components JS E2E (Firefox/Playwright)'
     runs-on: ubuntu-latest
