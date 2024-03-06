@@ -159,6 +159,7 @@ export const getComponentCss = (
         margin: '-4px',
         // Fix scrollbar issues when slotted content includes .sr-only styles (see issue #3042)
         transform: 'translate3d(0,0,0)',
+        zIndex: 1,
       },
     },
     '@keyframes overflow': {
