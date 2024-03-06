@@ -27,6 +27,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 - Counter overlap with long initial value in `Text Field Wrapper` for `input type="text"` with `maxlength`
   ([#3079](https://github.com/porsche-design-system/porsche-design-system/pull/3079))
 
+#### Changed
+
+- Updated favicons output via `getMetaTagsAndIconLinks()` partial
+  ([#3081](https://github.com/porsche-design-system/porsche-design-system/pull/3081))
+
 ### [3.13.0-rc.0] - 2024-02-19
 
 #### Added
