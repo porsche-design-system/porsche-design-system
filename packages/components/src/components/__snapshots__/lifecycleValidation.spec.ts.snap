@@ -391,6 +391,7 @@ exports[`should call validateProps() with correct parameters via render for p-ma
 exports[`should call validateProps() with correct parameters via render for p-modal: propTypes with ValidatorFunctions 1`] = `
 {
   "aria": "aria",
+  "backdrop": "oneOf",
   "disableBackdropClick": "boolean",
   "disableCloseButton": "boolean",
   "dismissButton": "boolean",

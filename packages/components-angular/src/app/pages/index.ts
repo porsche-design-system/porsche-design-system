@@ -89,7 +89,10 @@ import { LinkTileModelSignatureComponent } from './generated/link-tile-model-sig
 import { LinkTileProductComponent } from './generated/link-tile-product.component';
 import { MarqueComponent } from './generated/marque.component';
 import { ModalComponent } from './generated/modal.component';
+import { ModalBackdropBlurComponent } from './generated/modal-backdrop-blur.component';
+import { ModalBackdropShadingComponent } from './generated/modal-backdrop-shading.component';
 import { ModalBasicComponent } from './generated/modal-basic.component';
+import { ModalCustomStylingComponent } from './generated/modal-custom-styling.component';
 import { ModalDisableCloseButtonComponent } from './generated/modal-disable-close-button.component';
 import { ModalFullscreenComponent } from './generated/modal-fullscreen.component';
 import { ModalFullscreenResponsiveComponent } from './generated/modal-fullscreen-responsive.component';
@@ -195,7 +198,10 @@ export const generatedPages = [
   LinkTileProductComponent,
   MarqueComponent,
   ModalComponent,
+  ModalBackdropBlurComponent,
+  ModalBackdropShadingComponent,
   ModalBasicComponent,
+  ModalCustomStylingComponent,
   ModalDisableCloseButtonComponent,
   ModalFullscreenComponent,
   ModalFullscreenResponsiveComponent,
@@ -526,9 +532,24 @@ export const generatedRoutes: ExtendedRoute[] = [
     component: ModalComponent,
   },
   {
+    name: 'Modal Backdrop Blur',
+    path: 'modal-backdrop-blur',
+    component: ModalBackdropBlurComponent,
+  },
+  {
+    name: 'Modal Backdrop Shading',
+    path: 'modal-backdrop-shading',
+    component: ModalBackdropShadingComponent,
+  },
+  {
     name: 'Modal Basic',
     path: 'modal-basic',
     component: ModalBasicComponent,
+  },
+  {
+    name: 'Modal Custom Styling',
+    path: 'modal-custom-styling',
+    component: ModalCustomStylingComponent,
   },
   {
     name: 'Modal Disable Close Button',

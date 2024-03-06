@@ -145,6 +145,9 @@ export const getHiddenTextJssStyle = (isHidden = true, isShownJssStyle?: JssStyl
       };
 };
 
+export const BACKDROPS = ['blur', 'shading'] as const;
+export type Backdrop = (typeof BACKDROPS)[number];
+
 // TODO: there should be a shared style util for modal, flyout and flyout-navigation instead of having this code in the
 //  main bundle. Or don't share it at all, in case same transition concept isn't ideal to be shared from an UI point of view.
 /**
@@ -153,13 +156,15 @@ export const getHiddenTextJssStyle = (isHidden = true, isShownJssStyle?: JssStyl
  * @param {number} zIndex - The z-index to be used.
  * @param {Theme} theme - The theme to be used.
  * @param {string} duration - The duration of the transition animation.
+ * @param {'blur' | 'shading'} backdrop - The backdrop variant.
  * @returns {JssStyle} - The JSS styles for the frosted glass backdrop.
  */
 export const getBackdropJssStyle = (
   isVisible: boolean,
   zIndex: number,
   theme: Theme,
-  duration: MotionDurationKey = 'long'
+  duration: MotionDurationKey = 'long',
+  backdrop: Backdrop = 'blur'
 ): JssStyle => {
   return {
     position: 'fixed',
@@ -174,14 +179,17 @@ export const getBackdropJssStyle = (
       ? {
           visibility: 'inherit',
           pointerEvents: 'auto',
-          ...frostedGlassStyle,
+          ...(backdrop === 'blur' && frostedGlassStyle),
           opacity: 1,
         }
       : {
           visibility: 'hidden', // element shall not be tabbable after fade out transition has finished
           pointerEvents: 'none',
-          WebkitBackdropFilter: 'blur(0px)',
-          backdropFilter: 'blur(0px)',
+          ...(backdrop === 'blur' && {
+            // TODO: is `blur(0px)` necessary at all?
+            WebkitBackdropFilter: 'blur(0px)',
+            backdropFilter: 'blur(0px)',
+          }),
           opacity: 0,
         }),
     transition: `${getTransition('opacity', duration)}, ${getTransition('backdrop-filter', duration)}, ${getTransition(

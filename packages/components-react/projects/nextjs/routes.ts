@@ -228,9 +228,21 @@ const generatedRoutes = {
     "path": "/modal",
     "name": "Modal"
   },
+  "modalBackdropBlur": {
+    "path": "/modal-backdrop-blur",
+    "name": "ModalBackdropBlur"
+  },
+  "modalBackdropShading": {
+    "path": "/modal-backdrop-shading",
+    "name": "ModalBackdropShading"
+  },
   "modalBasic": {
     "path": "/modal-basic",
     "name": "ModalBasic"
+  },
+  "modalCustomStyling": {
+    "path": "/modal-custom-styling",
+    "name": "ModalCustomStyling"
   },
   "modalDisableCloseButton": {
     "path": "/modal-disable-close-button",
