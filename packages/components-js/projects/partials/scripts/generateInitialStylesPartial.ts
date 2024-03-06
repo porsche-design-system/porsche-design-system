@@ -99,6 +99,13 @@ const slottedStyles: Styles = {
         addImportantToEachRule({
           display: 'none',
         }),
+      // for type="date" and type="time" we need to override some mobile safari user agent styles
+      // https://stackoverflow.com/questions/37457097/input-type-date-text-alignright-ios-devices
+      '&::-webkit-date-and-time-value': addImportantToEachRule({
+        display: 'inline-block',
+        textAlign: 'inherit', // for LTR/RTL
+        verticalAlign: 'middle',
+      }),
     },
 
     ':is(%%tagNamesWithSlottedImage%%) img': addImportantToEachRule({

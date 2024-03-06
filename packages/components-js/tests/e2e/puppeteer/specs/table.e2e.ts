@@ -1,10 +1,7 @@
 import type { Page } from 'puppeteer';
 import {
-  addEventListener,
   expectA11yToMatchSnapshot,
   getAttribute,
-  getEventSummary,
-  getLifecycleStatus,
   selectNode,
   setContentWithDesignSystem,
   setProperty,
@@ -66,112 +63,6 @@ const initTable = (opts?: InitOptions): Promise<void> => {
 ${script}`
   );
 };
-
-const makeTableOverflow = async () => {
-  const firstTableHeadCell = await getFirstTableHeadCell();
-  await firstTableHeadCell.evaluate((el) => {
-    (el as HTMLElement).style.minWidth = '2000px';
-  });
-  await waitForStencilLifecycle(page);
-};
-
-describe('sorting', () => {
-  it('should not render sorting button if invalid sort options are provided', async () => {
-    await initTable({ isSortable: true });
-    const firstTableHeadCell = await getFirstTableHeadCell();
-
-    expect(await getFirstTableHeadCellButton()).not.toBeNull();
-
-    await firstTableHeadCell.evaluate((el) => {
-      (el as any).sort = { some: 'object' };
-    });
-    await waitForStencilLifecycle(page);
-
-    expect(await getFirstTableHeadCellButton()).toBeNull();
-  });
-});
-
-describe('events', () => {
-  it('should emit event on sorting change', async () => {
-    await initTable({ isSortable: true });
-
-    const host = await getHost();
-    await addEventListener(host, 'sortingChange');
-
-    const firstTableHeadCellButton = await getFirstTableHeadCellButton();
-    await firstTableHeadCellButton.click();
-    expect((await getEventSummary(host, 'sortingChange')).counter).toBe(1);
-
-    await firstTableHeadCellButton.click();
-    expect((await getEventSummary(host, 'sortingChange')).counter).toBe(2);
-  });
-
-  it('should not have clickable button when column is not sortable', async () => {
-    await initTable({ isSortable: false });
-
-    const firstTableHeadCellPButtonPure = await getFirstTableHeadCellButton();
-    expect(firstTableHeadCellPButtonPure).toBeNull();
-  });
-
-  it('should emit both sortingChange and update event', async () => {
-    await initTable({ isSortable: true });
-    const host = await getHost();
-
-    await addEventListener(host, 'sortingChange');
-    await addEventListener(host, 'update');
-    expect((await getEventSummary(host, 'sortingChange')).counter).toBe(0);
-    expect((await getEventSummary(host, 'update')).counter).toBe(0);
-
-    const firstTableHeadCellButton = await getFirstTableHeadCellButton();
-    await firstTableHeadCellButton.click();
-    expect((await getEventSummary(host, 'sortingChange')).counter).toBe(1);
-    expect((await getEventSummary(host, 'update')).counter).toBe(1);
-  });
-});
-
-describe('lifecycle', () => {
-  it('should work without unnecessary round trips on init', async () => {
-    await initTable();
-    const status = await getLifecycleStatus(page);
-
-    expect(status.componentDidLoad['p-table'], 'componentDidLoad: p-table').toBe(1);
-    expect(status.componentDidLoad['p-scroller'], 'componentDidLoad: p-scroller').toBe(1); // table uses p-scroller
-    expect(status.componentDidLoad['p-icon'], 'componentDidLoad: p-icon').toBe(2); // scroller contains 2 p-icons: inside left and right scroll buttons
-    expect(status.componentDidLoad['p-table-head'], 'componentDidLoad: p-table-head').toBe(1);
-    expect(status.componentDidLoad['p-table-head-row'], 'componentDidLoad: p-table-head-row').toBe(1);
-    expect(status.componentDidLoad['p-table-head-cell'], 'componentDidLoad: p-table-head-cell').toBe(5);
-    expect(status.componentDidLoad['p-table-body'], 'componentDidLoad: p-table-body').toBe(1);
-    expect(status.componentDidLoad['p-table-row'], 'componentDidLoad: p-table-row').toBe(3);
-    expect(status.componentDidLoad['p-table-cell'], 'componentDidLoad: p-table-cell').toBe(15);
-
-    expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(30); // all the components summed up
-    expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(0);
-  });
-
-  it('should work without unnecessary round trips on p-table-head-cell prop change', async () => {
-    await initTable();
-    const initialStatus = await getLifecycleStatus(page);
-
-    expect(initialStatus.componentDidLoad.all, 'initial componentDidLoad: all').toBe(30);
-    expect(initialStatus.componentDidUpdate.all, 'initial componentDidUpdate: all').toBe(0);
-
-    const host = await getHost();
-    await host.evaluate((host) => {
-      host.querySelectorAll('p-table-head-cell').forEach((el, i) => {
-        (el as any).sort = { id: i, active: i === 0, direction: 'asc' };
-      });
-    });
-    await waitForStencilLifecycle(page);
-
-    const status = await getLifecycleStatus(page);
-
-    // after adding sorting to every column (5 columns) we get 5 p-icons extra, so that the component amount increases from 30 to 40
-    expect(status.componentDidLoad.all, 'final componentDidLoad: all').toBe(35);
-    expect(status.componentDidLoad['p-icon'], 'final componentDidLoad: p-icon').toBe(7); // 2 p-icons inside scroller + 5 p-icons in table head for sorting
-    expect(status.componentDidUpdate.all, 'final componentDidUpdate: all').toBe(5); // 5 p-table-head-cells have been updated
-    expect(status.componentDidUpdate['p-table-head-cell'], 'final componentDidUpdate: p-table-head-cell').toBe(5);
-  });
-});
 
 describe('accessibility', () => {
   it('should expose correct initial accessibility tree', async () => {

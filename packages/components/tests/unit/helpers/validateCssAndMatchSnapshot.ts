@@ -52,6 +52,10 @@ const validateSlottedStyles = (cssObject: object, tagName: TagName) => {
       if (tagName !== 'p-textarea-wrapper' || !['height', 'min-height', 'resize'].includes(cssProp)) {
         expect(cssValue).toMatch(/!important$/);
       }
+
+      // merging jss objects with `key: 'undefined'` to unset a css property won't work
+      // when it is interpolated to `undefined !important` already which is invalid
+      expect(cssValue).not.toMatch(/undefined !important$/);
     });
   });
 };

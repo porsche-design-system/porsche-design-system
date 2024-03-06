@@ -33,6 +33,10 @@ describe('getComponentCss()', () => {
     [false, false, 'none', false, 'prefix', 'search', true, true, false, 'light'],
     [false, false, 'none', false, 'prefix', 'search', true, true, true, 'light'],
     [false, false, 'none', true, 'prefix', 'number', true, false, true, 'light'],
+    [false, false, 'none', true, 'prefix', 'date', true, false, true, 'light'],
+    [false, false, 'none', true, 'prefix', 'week', true, false, true, 'light'],
+    [false, false, 'none', true, 'prefix', 'month', true, false, true, 'light'],
+    [false, false, 'none', true, 'prefix', 'time', true, false, true, 'light'],
     [
       false,
       { base: true, xs: false, s: true, m: false, l: true, xl: false },
