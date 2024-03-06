@@ -11,7 +11,7 @@ export default function RootLayout({ children }: PropsWithChildren<{}>): JSX.Ele
       <head>
         <title>Porsche Design System - NextJS</title>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="http://localhost:3001/meta-icons/favicon-32x32.5638ae59e85b68cac7febfffe555dbe7.png" />
+        <link rel="icon" href="http://localhost:3001/meta-icons/favicon-32x32.d42ac2876697ec701e95e4a4d608fb0e.png" />
 
         <HeaderPartials cdn={cdn} />
       </head>
