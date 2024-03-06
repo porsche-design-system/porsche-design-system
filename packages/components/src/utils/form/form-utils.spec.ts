@@ -1,3 +1,4 @@
+import * as propertyObserverUtils from '../property-observer';
 import * as formUtils from './form-utils';
 import {
   addInputEventListenerForCounter,
@@ -81,6 +82,44 @@ describe('setAriaElementInnerHtml()', () => {
 });
 
 describe('addInputEventListenerForCounter()', () => {
+  it('should initially call updateCounter()', () => {
+    const inputElement = getInputElement();
+    const counterElement = getCounterElement();
+    const ariaElement = getAriaElement();
+
+    const updateCounterSpy = jest.spyOn(formUtils, 'updateCounter');
+    addInputEventListenerForCounter(inputElement, ariaElement, counterElement);
+
+    expect(updateCounterSpy).toBeCalledWith(inputElement, ariaElement, counterElement);
+  });
+  it('should register property observer for value of input by calling observeProperties()', () => {
+    const inputElement = getInputElement();
+    const counterElement = getCounterElement();
+    const ariaElement = getAriaElement();
+
+    const observePropertiesSpy = jest.spyOn(propertyObserverUtils, 'observeProperties');
+    addInputEventListenerForCounter(inputElement, ariaElement, counterElement);
+
+    expect(observePropertiesSpy).toBeCalledWith(inputElement, ['value'], expect.anything());
+  });
+
+  it('should call updateCounter() when value of input changes', () => {
+    const inputElement = getInputElement();
+    const counterElement = getCounterElement();
+    const ariaElement = getAriaElement();
+
+    const updateCounterSpy = jest.spyOn(formUtils, 'updateCounter');
+    addInputEventListenerForCounter(inputElement, ariaElement, counterElement);
+
+    expect(updateCounterSpy).toHaveBeenNthCalledWith(1, inputElement, ariaElement, counterElement);
+    expect(updateCounterSpy).toHaveBeenCalledTimes(1);
+
+    inputElement.value = 'Change value';
+
+    expect(updateCounterSpy).toHaveBeenNthCalledWith(2, inputElement, ariaElement, counterElement, undefined);
+    expect(updateCounterSpy).toHaveBeenCalledTimes(2);
+  });
+
   it('should register event listener on element', () => {
     const inputElement = getInputElement();
     const counterElement = getCounterElement();
@@ -104,7 +143,9 @@ describe('addInputEventListenerForCounter()', () => {
     expect(error).toBeUndefined();
     expect(spy).toBeCalledWith('input', expect.anything());
   });
+});
 
+describe('updateCounter()', () => {
   it('should initially call setCounterInnerHtml() and setAriaElementInnerHtml()', () => {
     const inputElement = getInputElement();
     const counterElement = getCounterElement();

@@ -22,7 +22,7 @@ export const addInputEventListenerForCounter = (
   });
 };
 
-const updateCounter = (
+export const updateCounter = (
   el: HTMLTextAreaElement | HTMLInputElement,
   characterCountElement: HTMLSpanElement,
   counterElement?: HTMLSpanElement,
