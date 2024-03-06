@@ -28,18 +28,28 @@ const clickHandlerScript = `
 
 type InitOptions = {
   tag?: HeadingTag;
-  otherMarkup?: string;
+  otherPreMarkup?: string;
+  otherPostMarkup?: string;
+  otherSlottedMarkup?: string;
   hasInput?: boolean;
   isOpen?: boolean;
 };
 
 const initAccordion = (opts?: InitOptions) => {
-  const { tag = 'h2', otherMarkup = '', hasInput, isOpen = false } = opts || {};
+  const {
+    tag = 'h2',
+    otherPreMarkup = '',
+    otherPostMarkup = '',
+    otherSlottedMarkup = '',
+    hasInput,
+    isOpen = false,
+  } = opts || {};
 
-  const content = `<p-accordion heading="Some Accordion" tag="${tag}" open="${isOpen}">
+  const content = `${otherPreMarkup}<p-accordion heading="Some Accordion" tag="${tag}" open="${isOpen}">
 Test content Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt
 ut labore et dolore magna aliquyam erat, sed diam voluptua.${hasInput ? '<input type="text"/>' : ''}
-</p-accordion>${otherMarkup}`;
+${otherSlottedMarkup}
+</p-accordion>${otherPostMarkup}`;
 
   return setContentWithDesignSystem(page, content);
 };
@@ -64,6 +74,24 @@ it('should set "gridTemplateRows: 0fr" (0px) and "visibility: hidden" on collaps
   expect(await getCollapseVisibility()).toBe('hidden');
 });
 
+it('should not produce scrollbars of parent element on initial close', async () => {
+  const otherPreMarkup = `
+    <div id="container" style="height: 200px; overflow: auto">
+      <div style="transform: translate3d(0, 0, 0)">`;
+  const otherPostMarkup = '</div></div>';
+  const otherSlottedMarkup = `
+    <div style="height: 1000px"></div>
+    <p-button>Lorem ipsum</p-button>`;
+
+  await initAccordion({ otherPreMarkup, otherPostMarkup, otherSlottedMarkup });
+
+  const container = () => selectNode(page, '#container');
+  const clientHeight = async () => (await container()).evaluate((el) => el.clientHeight);
+  const scrollHeight = async () => (await container()).evaluate((el) => el.scrollHeight);
+
+  expect((await scrollHeight()) > (await clientHeight())).toBe(false);
+});
+
 it('should set correct gridTemplateRows and visibility on collapsible on open change', async () => {
   await initAccordion();
   const host = await getHost();
@@ -85,7 +113,7 @@ it('should set correct gridTemplateRows and visibility on collapsible on open ch
 });
 
 it('should have correct gridTemplateRows and visibility after fast open/close re-trigger', async () => {
-  await initAccordion({ otherMarkup: clickHandlerScript });
+  await initAccordion({ otherPostMarkup: clickHandlerScript });
   const button = await getButton();
 
   // expand -> collapse -> expand
@@ -99,7 +127,7 @@ it('should have correct gridTemplateRows and visibility after fast open/close re
 });
 
 it('should have correct gridTemplateRows and visibility after fast close/open re-trigger', async () => {
-  await initAccordion({ isOpen: true, otherMarkup: clickHandlerScript });
+  await initAccordion({ isOpen: true, otherPostMarkup: clickHandlerScript });
   const button = await getButton();
 
   // collapse -> expand -> collapse
@@ -113,7 +141,7 @@ it('should have correct gridTemplateRows and visibility after fast close/open re
 });
 
 it('should show aria-expanded true when open and false when closed', async () => {
-  await initAccordion({ otherMarkup: clickHandlerScript });
+  await initAccordion({ otherPostMarkup: clickHandlerScript });
   const button = await getButton();
 
   expect(await getAttribute(button, 'aria-expanded'), 'initial when closed').toBe('false');
@@ -131,7 +159,7 @@ it('should show aria-expanded true when open and false when closed', async () =>
 
 describe('events', () => {
   it('should emit accordionChange event on button mouse click', async () => {
-    await initAccordion({ otherMarkup: clickHandlerScript });
+    await initAccordion({ otherPostMarkup: clickHandlerScript });
     const host = await getHost();
     const button = await getButton();
     await addEventListener(host, 'accordionChange');
@@ -142,7 +170,7 @@ describe('events', () => {
   });
 
   it('should emit accordionChange event on enter press', async () => {
-    await initAccordion({ otherMarkup: clickHandlerScript });
+    await initAccordion({ otherPostMarkup: clickHandlerScript });
     const host = await getHost();
     await addEventListener(host, 'accordionChange');
     expect((await getEventSummary(host, 'accordionChange')).counter).toBe(0);
@@ -170,7 +198,7 @@ describe('events', () => {
 
 describe('focus', () => {
   it('should have focusable content when opened', async () => {
-    await initAccordion({ otherMarkup: clickHandlerScript, hasInput: true });
+    await initAccordion({ otherPostMarkup: clickHandlerScript, hasInput: true });
     const button = await getButton();
     const input = await getInput();
     const body = await getBody();
@@ -186,7 +214,7 @@ describe('focus', () => {
 
   it('should not have focusable content when closed', async () => {
     const otherMarkup = '<a href="#">Some Link</a>';
-    await initAccordion({ otherMarkup, hasInput: true });
+    await initAccordion({ otherPostMarkup: otherMarkup, hasInput: true });
     const host = await getHost();
     const body = await getBody();
     const link = await selectNode(page, 'a');
@@ -203,7 +231,7 @@ describe('focus', () => {
   });
 
   it('should lose focus on content when closed', async () => {
-    await initAccordion({ otherMarkup: clickHandlerScript, hasInput: true, isOpen: true });
+    await initAccordion({ otherPostMarkup: clickHandlerScript, hasInput: true, isOpen: true });
     const host = await getHost();
     const input = await getInput();
     const body = await getBody();
@@ -259,7 +287,7 @@ describe('accessibility', () => {
   });
 
   it('should expose correct accessibility tree properties in open state', async () => {
-    await initAccordion({ otherMarkup: clickHandlerScript });
+    await initAccordion({ otherPostMarkup: clickHandlerScript });
     const button = await getButton();
     const panel = await getCollapsible();
     await page.keyboard.press('Tab');
