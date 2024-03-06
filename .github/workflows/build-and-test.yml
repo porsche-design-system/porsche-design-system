@@ -152,8 +152,8 @@ jobs:
         with:
           entrypoint: run-test-e2e-puppeteer
           args: --components-js
-  components-js-e2e-playwright:
-    name: 'Components JS E2E (Playwright)'
+  components-js-e2e-playwright-chrome:
+    name: 'Components JS E2E (Chrome/Playwright)'
     runs-on: ubuntu-latest
     steps:
       - name: 'Checkout'
@@ -168,7 +168,41 @@ jobs:
         uses: ./.github/actions/docker-run-playwright
         with:
           entrypoint: run-test-e2e-playwright
-          args: --components-js
+          args: --components-js:chrome
+  components-js-e2e-playwright-firefox:
+    name: 'Components JS E2E (Firefox/Playwright)'
+    runs-on: ubuntu-latest
+    steps:
+      - name: 'Checkout'
+        uses: actions/checkout@v4
+      - name: 'Setup and install'
+        uses: ./.github/actions/setup-and-install
+        with:
+          github-token: ${{ secrets.github-token }}
+      - name: 'Build assets, component-meta, components, components-js, shared and utilities'
+        uses: ./.github/actions/build-components-js
+      - name: 'E2E Test (Playwright)'
+        uses: ./.github/actions/docker-run-playwright
+        with:
+          entrypoint: run-test-e2e-playwright
+          args: --components-js:firefox
+  components-js-e2e-playwright-safari:
+    name: 'Components JS E2E (Safari/Playwright)'
+    runs-on: ubuntu-latest
+    steps:
+      - name: 'Checkout'
+        uses: actions/checkout@v4
+      - name: 'Setup and install'
+        uses: ./.github/actions/setup-and-install
+        with:
+          github-token: ${{ secrets.github-token }}
+      - name: 'Build assets, component-meta, components, components-js, shared and utilities'
+        uses: ./.github/actions/build-components-js
+      - name: 'E2E Test (Playwright)'
+        uses: ./.github/actions/docker-run-playwright
+        with:
+          entrypoint: run-test-e2e-playwright
+          args: --components-js:safari
   components-js-common-vrt-playwright-chrome:
     name: 'Components JS VRT Common (Chrome)'
     runs-on: ubuntu-latest
