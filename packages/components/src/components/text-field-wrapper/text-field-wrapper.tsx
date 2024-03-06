@@ -1,4 +1,15 @@
-import { Component, Element, Event, type EventEmitter, forceUpdate, h, type JSX, Prop, State } from '@stencil/core';
+import {
+  Component,
+  Element,
+  Event,
+  type EventEmitter,
+  forceUpdate,
+  h,
+  type JSX,
+  Prop,
+  State,
+  Watch,
+} from '@stencil/core';
 import {
   addInputEventListenerForCounter,
   AllowedTypes,
@@ -127,6 +138,11 @@ export class TextFieldWrapper {
   private isCounterVisible: boolean;
   private hasUnit: boolean;
 
+  @Watch('showCounter')
+  public onShowCounterChange(): void {
+    this.updateCounterVisibility();
+  }
+
   public connectedCallback(): void {
     this.observeAttributes(); // on every reconnect
   }
@@ -146,6 +162,7 @@ export class TextFieldWrapper {
     this.isTime = isType(type, 'time');
     this.isWithinForm = isWithinForm(this.host);
     this.hasAction = hasLocateAction(this.actionIcon);
+    this.updateCounterVisibility();
 
     if (this.isSearch) {
       this.isClearable = !!this.input.value;
@@ -156,13 +173,6 @@ export class TextFieldWrapper {
 
   public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
     return hasPropValueChanged(newVal, oldVal);
-  }
-
-  public componentWillRender(): void {
-    this.hasCounter = hasCounterAndIsTypeText(this.input);
-    this.isCounterVisible =
-      this.hasCounter && (typeof this.showCharacterCount === 'undefined' ? this.showCounter : this.showCharacterCount);
-    this.hasUnit = !this.isCounterVisible && hasUnitAndIsTypeTextOrNumber(this.input, this.unit);
   }
 
   public componentDidRender(): void {
@@ -355,7 +365,17 @@ export class TextFieldWrapper {
   };
 
   private observeAttributes = (): void => {
-    observeAttributes(this.input, ['disabled', 'readonly', 'required'], () => forceUpdate(this.host));
+    observeAttributes(this.input, ['disabled', 'readonly', 'required', 'type', 'maxlength'], () => {
+      this.updateCounterVisibility();
+      forceUpdate(this.host);
+    });
+  };
+
+  private updateCounterVisibility = (): void => {
+    this.hasCounter = hasCounterAndIsTypeText(this.input);
+    this.isCounterVisible =
+      this.hasCounter && (typeof this.showCharacterCount === 'undefined' ? this.showCounter : this.showCharacterCount);
+    this.hasUnit = !this.isCounterVisible && hasUnitAndIsTypeTextOrNumber(this.input, this.unit);
   };
 
   private setInputStyles = (): void => {
