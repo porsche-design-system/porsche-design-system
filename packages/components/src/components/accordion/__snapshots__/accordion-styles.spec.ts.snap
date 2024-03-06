@@ -93,6 +93,7 @@ button:focus-visible::before {
   animation: none;
   padding: 4px;
   margin: -4px;
+  transform: translate3d(0,0,0);
 }
 @keyframes keyframes-overflow {
   from {
@@ -198,6 +199,7 @@ button:focus-visible::before {
   animation: keyframes-overflow var(--p-transition-duration,0.25s);
   padding: 4px;
   margin: -4px;
+  transform: translate3d(0,0,0);
 }
 @keyframes keyframes-overflow {
   from {
@@ -302,6 +304,7 @@ button:focus-visible::before {
   animation: none;
   padding: 4px;
   margin: -4px;
+  transform: translate3d(0,0,0);
 }
 @keyframes keyframes-overflow {
   from {
@@ -406,6 +409,7 @@ button:focus-visible::before {
   animation: none;
   padding: 4px;
   margin: -4px;
+  transform: translate3d(0,0,0);
 }
 @keyframes keyframes-overflow {
   from {
@@ -511,6 +515,7 @@ button:focus-visible::before {
   animation: keyframes-overflow var(--p-transition-duration,0.25s);
   padding: 4px;
   margin: -4px;
+  transform: translate3d(0,0,0);
 }
 @keyframes keyframes-overflow {
   from {
@@ -615,6 +620,7 @@ button:focus-visible::before {
   animation: none;
   padding: 4px;
   margin: -4px;
+  transform: translate3d(0,0,0);
 }
 @keyframes keyframes-overflow {
   from {
@@ -720,6 +726,7 @@ button:focus-visible::before {
   animation: keyframes-overflow var(--p-transition-duration,0.25s);
   padding: 4px;
   margin: -4px;
+  transform: translate3d(0,0,0);
 }
 @keyframes keyframes-overflow {
   from {
@@ -825,6 +832,7 @@ button:focus-visible::before {
   animation: keyframes-overflow var(--p-transition-duration,0.25s);
   padding: 4px;
   margin: -4px;
+  transform: translate3d(0,0,0);
 }
 @keyframes keyframes-overflow {
   from {
@@ -929,6 +937,7 @@ button:focus-visible::before {
   animation: none;
   padding: 4px;
   margin: -4px;
+  transform: translate3d(0,0,0);
 }
 @keyframes keyframes-overflow {
   from {
@@ -1034,6 +1043,7 @@ button:focus-visible::before {
   animation: keyframes-overflow var(--p-transition-duration,0.25s);
   padding: 4px;
   margin: -4px;
+  transform: translate3d(0,0,0);
 }
 @keyframes keyframes-overflow {
   from {
@@ -1174,6 +1184,7 @@ button:focus-visible::before {
   animation: keyframes-overflow var(--p-transition-duration,0.25s);
   padding: 4px;
   margin: -4px;
+  transform: translate3d(0,0,0);
 }
 @keyframes keyframes-overflow {
   from {
