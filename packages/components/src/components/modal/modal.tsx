@@ -15,10 +15,11 @@ import {
   warnIfAriaAndHeadingPropsAreUndefined,
   warnIfDeprecatedPropIsUsed,
 } from '../../utils';
-import type { ModalAriaAttribute } from './modal-utils';
-import { clickStartedInScrollbarTrack, MODAL_ARIA_ATTRIBUTES } from './modal-utils';
+import type { ModalAriaAttribute, ModalBackdrop } from './modal-utils';
+import { MODAL_ARIA_ATTRIBUTES, clickStartedInScrollbarTrack } from './modal-utils';
 import { footerShadowClass, getComponentCss } from './modal-styles';
 import { throttle } from 'throttle-debounce';
+import { BACKDROPS } from '../../styles';
 
 const propTypes: PropTypes<typeof Modal> = {
   open: AllowedTypes.boolean,
@@ -26,6 +27,7 @@ const propTypes: PropTypes<typeof Modal> = {
   dismissButton: AllowedTypes.boolean,
   disableBackdropClick: AllowedTypes.boolean,
   heading: AllowedTypes.string,
+  backdrop: AllowedTypes.oneOf<ModalBackdrop>(BACKDROPS),
   fullscreen: AllowedTypes.breakpoint('boolean'),
   aria: AllowedTypes.aria<ModalAriaAttribute>(MODAL_ARIA_ATTRIBUTES),
   theme: AllowedTypes.oneOf<Theme>(THEMES),
@@ -55,6 +57,9 @@ export class Modal {
   /** The title of the modal */
   @Prop() public heading?: string;
 
+  /** Defines the backdrop, 'blur' (should be used when Modal is opened by user interaction, e.g. after a click on a button) and 'shading' (should be used when Modal gets opened automatically, e.g. Cookie Consent). */
+  @Prop() public backdrop?: ModalBackdrop = 'blur';
+
   /** If true the modal uses max viewport height and width. Should only be used for mobile. */
   @Prop() public fullscreen?: BreakpointCustomizable<boolean> = false;
 
@@ -79,21 +84,6 @@ export class Modal {
   private hasFooter: boolean;
   private footer: HTMLElement;
   private dialog: HTMLElement;
-  private onScroll = throttle(100, () => {
-    // using an intersection observer would be so much easier but very tricky with the current layout
-    // also transform scale3d has an impact on the intersection observer, causing it to trigger
-    // initially and after the transition which makes the shadow appear later
-    // using an invisible element after the dialog div would work
-    // but layout with position: fixed and flex for vertical/horizontal centering scrollable content
-    // causes tons of problems, also considering fullscreen mode, etc.
-    // see https://stackoverflow.com/questions/33454533/cant-scroll-to-top-of-flex-item-that-is-overflowing-container
-    const { scrollHeight, clientHeight, scrollTop } = this.scrollContainerEl;
-    if (scrollHeight > clientHeight) {
-      const shouldApplyShadow =
-        scrollHeight - clientHeight > scrollTop + parseInt(getComputedStyle(this.dialog).marginBottom, 10);
-      this.footer.classList.toggle(footerShadowClass, shouldApplyShadow);
-    }
-  });
 
   private get hasDismissButton(): boolean {
     return this.disableCloseButton ? false : this.dismissButton;
@@ -152,6 +142,7 @@ export class Modal {
       this.host,
       getComponentCss,
       this.open,
+      this.backdrop,
       this.fullscreen,
       this.hasDismissButton,
       this.hasHeader,
@@ -231,6 +222,23 @@ export class Modal {
       });
     }
   };
+
+  // eslint-disable-next-line @typescript-eslint/member-ordering
+  private onScroll = throttle(100, () => {
+    // using an intersection observer would be so much easier but very tricky with the current layout
+    // also transform scale3d has an impact on the intersection observer, causing it to trigger
+    // initially and after the transition which makes the shadow appear later
+    // using an invisible element after the dialog div would work
+    // but layout with position: fixed and flex for vertical/horizontal centering scrollable content
+    // causes tons of problems, also considering fullscreen mode, etc.
+    // see https://stackoverflow.com/questions/33454533/cant-scroll-to-top-of-flex-item-that-is-overflowing-container
+    const { scrollHeight, clientHeight, scrollTop } = this.scrollContainerEl;
+    if (scrollHeight > clientHeight) {
+      const shouldApplyShadow =
+        scrollHeight - clientHeight > scrollTop + parseInt(getComputedStyle(this.dialog).marginBottom, 10);
+      this.footer.classList.toggle(footerShadowClass, shouldApplyShadow);
+    }
+  });
 
   private onMouseDown = (e: MouseEvent): void => {
     if (

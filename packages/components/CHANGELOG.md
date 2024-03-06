@@ -17,6 +17,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 #### Added
 
 - `Select` ([#3008](https://github.com/porsche-design-system/porsche-design-system/pull/3008))
+- `Modal`: Prop `backdrop` ([#3082](https://github.com/porsche-design-system/porsche-design-system/pull/3082))
+- `Modal`: CSS variables `--p-modal-spacing-top` and `--p-modal-spacing-bottom`
+  ([#3082](https://github.com/porsche-design-system/porsche-design-system/pull/3082))
 
 #### Fixed
 
