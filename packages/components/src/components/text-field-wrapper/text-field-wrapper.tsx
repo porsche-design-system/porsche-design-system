@@ -365,7 +365,7 @@ export class TextFieldWrapper {
   };
 
   private observeAttributes = (): void => {
-    observeAttributes(this.input, ['disabled', 'readonly', 'required', 'type', 'maxlength'], () => {
+    observeAttributes(this.input, ['disabled', 'readonly', 'required', 'maxlength'], () => {
       this.updateCounterVisibility();
       forceUpdate(this.host);
     });
