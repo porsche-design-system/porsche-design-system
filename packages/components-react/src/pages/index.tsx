@@ -69,7 +69,10 @@ import { LinkTileModelSignaturePage } from './generated/LinkTileModelSignature';
 import { LinkTileProductPage } from './generated/LinkTileProduct';
 import { MarquePage } from './generated/Marque';
 import { ModalPage } from './generated/Modal';
+import { ModalBackdropBlurPage } from './generated/ModalBackdropBlur';
+import { ModalBackdropShadingPage } from './generated/ModalBackdropShading';
 import { ModalBasicPage } from './generated/ModalBasic';
+import { ModalCustomStylingPage } from './generated/ModalCustomStyling';
 import { ModalDisableCloseButtonPage } from './generated/ModalDisableCloseButton';
 import { ModalFullscreenPage } from './generated/ModalFullscreen';
 import { ModalFullscreenResponsivePage } from './generated/ModalFullscreenResponsive';
@@ -397,9 +400,24 @@ export const generatedRoutes: RouteType[] = [
     element: <ModalPage />,
   },
   {
+    name: 'Modal Backdrop Blur',
+    path: '/modal-backdrop-blur',
+    element: <ModalBackdropBlurPage />,
+  },
+  {
+    name: 'Modal Backdrop Shading',
+    path: '/modal-backdrop-shading',
+    element: <ModalBackdropShadingPage />,
+  },
+  {
     name: 'Modal Basic',
     path: '/modal-basic',
     element: <ModalBasicPage />,
+  },
+  {
+    name: 'Modal Custom Styling',
+    path: '/modal-custom-styling',
+    element: <ModalCustomStylingPage />,
   },
   {
     name: 'Modal Disable Close Button',

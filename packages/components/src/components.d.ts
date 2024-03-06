@@ -39,7 +39,7 @@ import { LinkTileModelSignatureAspectRatio, LinkTileModelSignatureHeadingTag, Li
 import { LinkTileProductAspectRatio, LinkTileProductLikeEventDetail, LinkTileProductTarget } from "./components/link-tile-product/link-tile-product-utils";
 import { MarqueAriaAttribute, MarqueTarget, MarqueVariant } from "./components/marque/marque-utils";
 import { MarqueSize } from "./components/marque/marque-size";
-import { ModalAriaAttribute } from "./components/modal/modal-utils";
+import { ModalAriaAttribute, ModalBackdrop } from "./components/modal/modal-utils";
 import { ModelSignatureColor, ModelSignatureModel, ModelSignatureSize } from "./components/model-signature/model-signature-utils";
 import { MultiSelectDropdownDirection, MultiSelectState, MultiSelectUpdateEventDetail } from "./components/multi-select/multi-select/multi-select-utils";
 import { PaginationInternationalization, PaginationMaxNumberOfPageLinks, PaginationUpdateEventDetail } from "./components/pagination/pagination-utils";
@@ -101,7 +101,7 @@ export { LinkTileModelSignatureAspectRatio, LinkTileModelSignatureHeadingTag, Li
 export { LinkTileProductAspectRatio, LinkTileProductLikeEventDetail, LinkTileProductTarget } from "./components/link-tile-product/link-tile-product-utils";
 export { MarqueAriaAttribute, MarqueTarget, MarqueVariant } from "./components/marque/marque-utils";
 export { MarqueSize } from "./components/marque/marque-size";
-export { ModalAriaAttribute } from "./components/modal/modal-utils";
+export { ModalAriaAttribute, ModalBackdrop } from "./components/modal/modal-utils";
 export { ModelSignatureColor, ModelSignatureModel, ModelSignatureSize } from "./components/model-signature/model-signature-utils";
 export { MultiSelectDropdownDirection, MultiSelectState, MultiSelectUpdateEventDetail } from "./components/multi-select/multi-select/multi-select-utils";
 export { PaginationInternationalization, PaginationMaxNumberOfPageLinks, PaginationUpdateEventDetail } from "./components/pagination/pagination-utils";
@@ -1163,6 +1163,10 @@ export namespace Components {
           * Add ARIA attributes.
          */
         "aria"?: SelectedAriaAttributes<ModalAriaAttribute>;
+        /**
+          * Defines the backdrop, 'blur' (should be used when Modal is opened by user interaction, e.g. after a click on a button) and 'shading' (should be used when Modal gets opened automatically, e.g. Cookie Consent).
+         */
+        "backdrop"?: ModalBackdrop;
         /**
           * If true, the modal will not be closable via backdrop click.
          */
@@ -3903,6 +3907,10 @@ declare namespace LocalJSX {
           * Add ARIA attributes.
          */
         "aria"?: SelectedAriaAttributes<ModalAriaAttribute>;
+        /**
+          * Defines the backdrop, 'blur' (should be used when Modal is opened by user interaction, e.g. after a click on a button) and 'shading' (should be used when Modal gets opened automatically, e.g. Cookie Consent).
+         */
+        "backdrop"?: ModalBackdrop;
         /**
           * If true, the modal will not be closable via backdrop click.
          */
