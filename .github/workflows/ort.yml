@@ -14,10 +14,10 @@ jobs:
       OSO_AWS_ECR_REGISTRY: 215495424956.dkr.ecr.eu-central-1.amazonaws.com
       PDS_DOCKER_IMAGE: ghcr.io/porsche-design-system/porsche-design-system/playwright:v1.41.2-focal-test11
     steps:
-      - name: 'Clear cache'
-        uses: ./github/actions/clear-action-cache
       - name: 'Checkout'
         uses: actions/checkout@v4
+      - name: 'Clear cache'
+        uses: ./github/actions/clear-action-cache
       - name: 'Cache node_modules'
         uses: actions/cache@v4
         id: cache
