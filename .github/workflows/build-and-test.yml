@@ -177,6 +177,11 @@ jobs:
   components-js-e2e-playwright-firefox:
     name: 'Components JS E2E (Firefox/Playwright)'
     runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        shardIndex: [ 1, 2 ]
+        shardTotal: [ 2 ]
     steps:
       - name: 'Checkout'
         uses: actions/checkout@v4
@@ -190,10 +195,15 @@ jobs:
         uses: ./.github/actions/docker-run-playwright
         with:
           entrypoint: run-test-e2e-playwright
-          args: --components-js:firefox
+          args: --components-js:firefox:${{ matrix.shardIndex }}/${{ matrix.shardTotal }}
   components-js-e2e-playwright-safari:
     name: 'Components JS E2E (Safari/Playwright)'
     runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        shardIndex: [ 1, 2 ]
+        shardTotal: [ 2 ]
     steps:
       - name: 'Checkout'
         uses: actions/checkout@v4
@@ -207,10 +217,15 @@ jobs:
         uses: ./.github/actions/docker-run-playwright
         with:
           entrypoint: run-test-e2e-playwright
-          args: --components-js:safari
+          args: --components-js:safari:${{ matrix.shardIndex }}/${{ matrix.shardTotal }}
   components-js-common-vrt-playwright-chrome:
     name: 'Components JS VRT Common (Chrome)'
     runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        shardIndex: [ 1, 2 ]
+        shardTotal: [ 2 ]
     steps:
       - name: 'Checkout'
         uses: actions/checkout@v4
@@ -224,12 +239,12 @@ jobs:
         uses: ./.github/actions/docker-run-playwright
         with:
           entrypoint: run-test-vrt-playwright
-          args: --components-js:chrome:common
+          args: --components-js:chrome:common:${{ matrix.shardIndex }}/${{ matrix.shardTotal }}
       - name: 'VRT Regression (Playwright)'
         if: failure()
         uses: actions/upload-artifact@v4
         with:
-          name: components-js-vrt-common-playwright-chrome-regression
+          name: components-js-vrt-common-playwright-chrome-regression-${{ matrix.shardIndex }}
           path: ./packages/components-js/tests/vrt/playwright/results
   components-js-custom-vrt-playwright-chrome:
     name: 'Components JS VRT Custom (Chrome)'
