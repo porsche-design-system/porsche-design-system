@@ -157,6 +157,8 @@ export const getComponentCss = (
         // Necessary to make focus outlines fully visible
         padding: '4px',
         margin: '-4px',
+        // Fix scrollbar issues when slotted content includes .sr-only styles (see issue #3042)
+        transform: 'translate3d(0,0,0)',
       },
     },
     '@keyframes overflow': {
