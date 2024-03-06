@@ -20,6 +20,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 #### Fixed
 
+- `Accordion`: Fix overflow scrollbar issues
+  ([#3042](https://github.com/porsche-design-system/porsche-design-system/pull/3042))
 - `Carousel`: Skip link is visible when it receives keyboard focus
   ([#3055](https://github.com/porsche-design-system/porsche-design-system/pull/3055))
 - Placeholder color of `Text Field Wrapper` for `input type="date"` and `input type="time"` in Safari and alignment in
