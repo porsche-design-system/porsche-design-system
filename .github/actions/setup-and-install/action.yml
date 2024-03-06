@@ -11,6 +11,8 @@ inputs:
 runs:
   using: 'composite'
   steps:
+    - name: 'Clear action cache'
+      uses: ./.github/actions/clear-action-cache
     - name: 'Cache node_modules'
       if: inputs.install == 'true'
       uses: actions/cache@v4
