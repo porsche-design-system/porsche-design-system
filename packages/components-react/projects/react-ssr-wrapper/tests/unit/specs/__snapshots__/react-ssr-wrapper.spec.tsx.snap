@@ -10205,7 +10205,7 @@ h2 {
   min-width: 276px;
   max-width: 1535.5px;
   min-height: auto;
-  margin: clamp(16px, 7vh, 192px) max(22px, 10.625vw - 12px);
+  margin: var(--p-modal-spacing-top,clamp(16px, 7vh, 192px)) max(22px, 10.625vw - 12px) var(--p-modal-spacing-bottom,clamp(16px, 7vh, 192px));
   border-radius: 8px;
 }
 .content {
@@ -10227,7 +10227,7 @@ h2 {
 }
 @media(min-width:1760px) {
   .root {
-    margin: min(192px, 10vh) max(22px, 10.625vw - 12px);
+    margin: var(--p-modal-spacing-top,min(192px, 10vh)) max(22px, 10.625vw - 12px) var(--p-modal-spacing-bottom,min(192px, 10vh));
   }
 }
 
