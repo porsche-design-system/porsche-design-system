@@ -42,6 +42,7 @@ const { primaryColor: darkThemePrimaryColor, contrastHighColor: darkThemeContras
 export const stretchToFullModalWidthClassName = 'stretch-to-full-modal-width';
 
 const marginTopBottomFallback = 'clamp(16px, 7vh, 192px)';
+const marginTopBottomXlandXxlFallback = 'min(192px, 10vh)';
 export const footerShadowClass = 'footer--shadow';
 
 export const getFullscreenJssStyles: GetJssStyleFunction = (fullscreen: boolean): JssStyle => {
@@ -186,7 +187,9 @@ export const getComponentCss = (
           border: 0,
         },
         [mediaQueryXl]: {
-          margin: isFullscreenForXlAndXxl ? 0 : `min(192px, 10vh) ${gridExtendedOffsetBase}`,
+          margin: isFullscreenForXlAndXxl
+            ? 0
+            : `var(${cssVariableSpacingTop},${marginTopBottomXlandXxlFallback}) ${gridExtendedOffsetBase} var(${cssVariableSpacingBottom},${marginTopBottomXlandXxlFallback})`,
         },
         ...prefersColorSchemeDarkMediaQuery(theme, {
           color: primaryColorDark,

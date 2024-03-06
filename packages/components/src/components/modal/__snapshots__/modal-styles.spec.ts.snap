@@ -82,7 +82,7 @@ h2 {
 }
 @media(min-width:1760px) {
   .root {
-    margin: min(192px, 10vh) max(22px, 10.625vw - 12px);
+    margin: var(--p-modal-spacing-top,min(192px, 10vh)) max(22px, 10.625vw - 12px) var(--p-modal-spacing-bottom,min(192px, 10vh));
   }
 }
 "
@@ -184,7 +184,7 @@ h2 {
 }
 @media(min-width:1760px) {
   .root {
-    margin: min(192px, 10vh) max(22px, 10.625vw - 12px);
+    margin: var(--p-modal-spacing-top,min(192px, 10vh)) max(22px, 10.625vw - 12px) var(--p-modal-spacing-bottom,min(192px, 10vh));
   }
 }
 
@@ -293,7 +293,7 @@ h2 {
 }
 @media(min-width:1760px) {
   .root {
-    margin: min(192px, 10vh) max(22px, 10.625vw - 12px);
+    margin: var(--p-modal-spacing-top,min(192px, 10vh)) max(22px, 10.625vw - 12px) var(--p-modal-spacing-bottom,min(192px, 10vh));
   }
 }
 
@@ -926,7 +926,7 @@ h2 {
 }
 @media(min-width:1760px) {
   .root {
-    margin: min(192px, 10vh) max(22px, 10.625vw - 12px);
+    margin: var(--p-modal-spacing-top,min(192px, 10vh)) max(22px, 10.625vw - 12px) var(--p-modal-spacing-bottom,min(192px, 10vh));
   }
 }
 
@@ -1494,7 +1494,7 @@ h2 {
 }
 @media(min-width:1760px) {
   .root {
-    margin: min(192px, 10vh) max(22px, 10.625vw - 12px);
+    margin: var(--p-modal-spacing-top,min(192px, 10vh)) max(22px, 10.625vw - 12px) var(--p-modal-spacing-bottom,min(192px, 10vh));
   }
 }
 "
@@ -1582,7 +1582,7 @@ h2 {
 }
 @media(min-width:1760px) {
   .root {
-    margin: min(192px, 10vh) max(22px, 10.625vw - 12px);
+    margin: var(--p-modal-spacing-top,min(192px, 10vh)) max(22px, 10.625vw - 12px) var(--p-modal-spacing-bottom,min(192px, 10vh));
   }
 }
 "
@@ -1683,7 +1683,7 @@ h2 {
 }
 @media(min-width:1760px) {
   .root {
-    margin: min(192px, 10vh) max(22px, 10.625vw - 12px);
+    margin: var(--p-modal-spacing-top,min(192px, 10vh)) max(22px, 10.625vw - 12px) var(--p-modal-spacing-bottom,min(192px, 10vh));
   }
 }
 "
@@ -1785,7 +1785,7 @@ h2 {
 }
 @media(min-width:1760px) {
   .root {
-    margin: min(192px, 10vh) max(22px, 10.625vw - 12px);
+    margin: var(--p-modal-spacing-top,min(192px, 10vh)) max(22px, 10.625vw - 12px) var(--p-modal-spacing-bottom,min(192px, 10vh));
   }
 }
 
@@ -1894,7 +1894,7 @@ h2 {
 }
 @media(min-width:1760px) {
   .root {
-    margin: min(192px, 10vh) max(22px, 10.625vw - 12px);
+    margin: var(--p-modal-spacing-top,min(192px, 10vh)) max(22px, 10.625vw - 12px) var(--p-modal-spacing-bottom,min(192px, 10vh));
   }
 }
 
