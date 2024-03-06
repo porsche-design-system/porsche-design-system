@@ -240,7 +240,15 @@ describe('render', () => {
   });
 });
 
-describe('componentDidLoad', () => {
+describe('componentDidRender', () => {
+  it('should call setInputStyles()', () => {
+    const component = new TextFieldWrapper();
+    const spy = jest.spyOn(textFieldWrapperUtils, 'setInputStyles');
+
+    component.componentDidRender();
+    expect(spy).toBeCalledTimes(1);
+  });
+
   it('should call addInputEventListenerForCounter() with correct parameters if hasCounter is true and isCounterVisible is false', () => {
     const spy = jest.spyOn(formUtils, 'addInputEventListenerForCounter');
 
@@ -252,12 +260,12 @@ describe('componentDidLoad', () => {
     component['input'] = input;
     component['ariaElement'] = ariaElement;
 
-    component.componentDidLoad();
+    component.componentDidRender();
     expect(spy).not.toBeCalled();
 
     component['hasCounter'] = true;
 
-    component.componentDidLoad();
+    component.componentDidRender();
     expect(spy).toBeCalledWith(input, ariaElement, undefined, component['setInputStyles']);
   });
 
@@ -274,12 +282,12 @@ describe('componentDidLoad', () => {
     component['unitOrCounterElement'] = counter;
     component['ariaElement'] = ariaElement;
 
-    component.componentDidLoad();
+    component.componentDidRender();
     expect(spy).not.toBeCalled();
 
     component['hasCounter'] = true;
     component['isCounterVisible'] = true;
-    component.componentDidLoad();
+    component.componentDidRender();
     expect(spy).toBeCalledWith(input, ariaElement, counter, component['setInputStyles']);
   });
 
@@ -289,19 +297,9 @@ describe('componentDidLoad', () => {
     const component = new TextFieldWrapper();
     component['input'] = input;
     component['isSearch'] = true;
-    component.componentDidLoad();
+    component.componentDidRender();
     expect(spy).toBeCalledWith(input, expect.any(Function));
     component['isSearch'] = false;
-    component.componentDidLoad();
-    expect(spy).toBeCalledTimes(1);
-  });
-});
-
-describe('componentDidRender', () => {
-  it('should call setInputStyles()', () => {
-    const component = new TextFieldWrapper();
-    const spy = jest.spyOn(textFieldWrapperUtils, 'setInputStyles');
-
     component.componentDidRender();
     expect(spy).toBeCalledTimes(1);
   });
