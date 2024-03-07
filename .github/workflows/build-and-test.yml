@@ -6,7 +6,7 @@ on:
         required: true
 name: 'Build and Test'
 env:
-  PDS_PLAYWRIGHT_DOCKER_IMAGE: ghcr.io/porsche-design-system/porsche-design-system/playwright:v1.41.2-focal-test17
+  PDS_PLAYWRIGHT_DOCKER_IMAGE: ghcr.io/porsche-design-system/porsche-design-system/playwright:v1.41.2-focal-test18
 jobs:
   assets:
     name: 'Assets'
@@ -620,8 +620,8 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        shardIndex: [ 1, 2 ]
-        shardTotal: [ 2 ]
+        shardIndex: [ 1, 2, 3, 4 ]
+        shardTotal: [ 4 ]
     steps:
       - name: 'Checkout'
         uses: actions/checkout@v4

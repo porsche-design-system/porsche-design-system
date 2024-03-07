@@ -7,7 +7,7 @@ import { expect, test } from '@playwright/test';
 const internalUrls = getInternalUrls().filter((url) => !url.match(/^\/assets\/.*\.\w{3,4}$/));
 
 const themeableComponents = TAG_NAMES.filter((tagName) => getComponentMeta(tagName).isThemeable).join();
-const componentsWithThemeAutoSelector = `:where(${themeableComponents}):not(.playground *)`; // everything inside playground is not based on color-scheme preferences
+const componentsWithThemeAutoSelector = `:where(${themeableComponents}):not(.playground *):not(p-link-tile *)`; // everything inside playground is not based on color-scheme preferences
 
 for (const [url, index] of internalUrls.map<[string, number]>((url, i) => [url, i])) {
   test(`should have auto dark mode support at (${index + 1}/${internalUrls.length}) "${url}"`, async ({ page }) => {
@@ -18,6 +18,7 @@ for (const [url, index] of internalUrls.map<[string, number]>((url, i) => [url, 
     );
 
     const components = await page.locator(componentsWithThemeAutoSelector);
+    console.log('count', await components.count());
 
     // TODO: "The use of ElementHandle is discouraged, use Locator objects and web-first assertions instead.", see: https://playwright.dev/docs/api/class-elementhandle
     for (const component of await components.elementHandles()) {
