@@ -5843,6 +5843,8 @@ button::-moz-focus-inner {
   animation: none;
   padding: 4px;
   margin: -4px;
+  transform: translate3d(0,0,0);
+  z-index: 1;
 }
 @keyframes keyframes-overflow {
   from {
