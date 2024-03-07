@@ -1,0 +1,39 @@
+{
+  "name": "@porsche-design-system/storefront-next",
+  "version": "0.1.0",
+  "private": true,
+  "license": "UNLICENSED",
+  "scope": "@porsche-design-system",
+  "description": "Porsche Design System",
+  "scripts": {
+    "dev": "serve-cdn & next dev",
+    "build": "next build",
+    "start": "serve-cdn & next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@mdx-js/loader": "^3.0.1",
+    "@mdx-js/react": "^3.0.1",
+    "@next/mdx": "^14.1.0",
+    "@porsche-design-system/components-react": "3.13.0-rc.0",
+    "next": "14.1.0",
+    "react": "^18",
+    "react-dom": "^18",
+    "remark-gfm": "^4.0.0"
+  },
+  "devDependencies": {
+    "@types/mdx": "^2.0.11",
+    "@types/node": "^20",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "autoprefixer": "^10.0.1",
+    "eslint": "^8",
+    "eslint-config-next": "14.1.0",
+    "postcss": "^8",
+    "tailwindcss": "^3.3.0",
+    "typescript": "^5"
+  },
+  "volta": {
+    "extends": "../../package.json"
+  }
+}
