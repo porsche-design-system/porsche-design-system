@@ -18,7 +18,6 @@ for (const [url, index] of internalUrls.map<[string, number]>((url, i) => [url, 
     );
 
     const components = await page.locator(componentsWithThemeAutoSelector);
-    console.log('count', await components.count());
 
     // TODO: "The use of ElementHandle is discouraged, use Locator objects and web-first assertions instead.", see: https://playwright.dev/docs/api/class-elementhandle
     for (const component of await components.elementHandles()) {

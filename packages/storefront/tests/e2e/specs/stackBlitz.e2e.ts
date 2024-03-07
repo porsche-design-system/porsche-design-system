@@ -1,5 +1,4 @@
 import { expect, test } from '@playwright/test';
-import { baseURL } from '../helpers';
 import type { Framework } from '../../../src/models';
 
 const frameworkToButtonTextMap: Record<Exclude<Exclude<Framework, 'shared'>, 'vue'>, string> = {
@@ -18,7 +17,7 @@ for (const framework of frameworks) {
         'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/97.0.4692.99 Safari/537.36',
     });
     const page = await context.newPage();
-    await page.goto(`${baseURL}/components/button/examples`);
+    await page.goto('/components/button/examples');
 
     const [frameworkButton] = await page
       .locator(`xpath=//button[text() = '${frameworkToButtonTextMap[framework]}']`)

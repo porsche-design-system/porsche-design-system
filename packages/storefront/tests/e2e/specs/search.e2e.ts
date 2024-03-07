@@ -1,11 +1,10 @@
 import { expect, type Page, test } from '@playwright/test';
 import { getElementStyle } from '@porsche-design-system/js/tests/e2e/playwright/helpers';
 import { ALGOLIA_APP_ID } from '../../../storefront.config';
-import { ALGOLIA_RESPONSE_MOCK } from '../helpers/algolia-response-mock';
-import { baseURL } from '../helpers';
+import { ALGOLIA_RESPONSE_MOCK } from '../helpers';
 
 test.beforeEach(async ({ page }) => {
-  await page.goto(baseURL);
+  await page.goto('/');
   await page.evaluate(() => (window as any).componentsReady());
 
   await page.route('**/*', async (route) => {

@@ -1,7 +1,6 @@
-import { baseURL } from './index';
 import * as fs from 'fs';
 import * as path from 'path';
-import { Page } from '@playwright/test';
+import { type Page } from '@playwright/test';
 
 // exclude URLS which should not be checked -> include all links which lead to downloads because puppeteer cant handle that
 const whitelistedUrls: string[] = [
@@ -40,7 +39,7 @@ export const buildSitemap = async (page: Page): Promise<string[]> => {
   console.log('Building sitemap...');
   fs.mkdirSync(path.dirname(sitemapResultPath), { recursive: true });
 
-  await page.goto(baseURL);
+  await page.goto('/');
 
   // initial scan on front page without duplicates
   let allUrls = (await scanForUrls(page)).filter((x, i, array) => array.indexOf(x) === i);
@@ -51,7 +50,7 @@ export const buildSitemap = async (page: Page): Promise<string[]> => {
     // follow internal urls only
     if (href.startsWith('/')) {
       console.log(`Crawling url ${i + 1}/${allUrls.length}...`);
-      await page.goto(`${baseURL}${href}`);
+      await page.goto(href);
 
       const newLinks = await scanForUrls(page);
       // get rid of duplicates

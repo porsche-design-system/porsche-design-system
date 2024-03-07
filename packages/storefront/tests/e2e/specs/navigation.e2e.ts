@@ -1,5 +1,5 @@
 import { type ElementHandle, expect, Locator, type Page, test } from '@playwright/test';
-import { baseURL, getConsoleErrorsAmount, initConsoleObserver } from '../helpers';
+import { getConsoleErrorsAmount, initConsoleObserver } from '../helpers';
 import { config as STOREFRONT_CONFIG } from '../../../storefront.config';
 import { paramCase } from 'change-case';
 import * as path from 'path';
@@ -17,7 +17,7 @@ const [, rootStyles] = /(:root {[\s\S]+?})/.exec(styleOverrides) || [];
 test.beforeEach(async ({ page }) => {
   initConsoleObserver(page);
 
-  await page.goto(baseURL);
+  await page.goto('/');
   await injectCSSOverrides(page);
   await page.evaluate(() => (window as any).componentsReady());
 });

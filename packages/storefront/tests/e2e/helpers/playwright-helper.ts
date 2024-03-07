@@ -1,4 +1,4 @@
-import type { ConsoleMessage, ElementHandle, Page } from '@playwright/test';
+import { type ConsoleMessage, type ElementHandle, type Page } from '@playwright/test';
 
 const consoleMessages: ConsoleMessage[] = [];
 

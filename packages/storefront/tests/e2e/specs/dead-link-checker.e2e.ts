@@ -1,5 +1,5 @@
-import { type Page, test, expect } from '@playwright/test';
-import { baseURL, getInternalUrls } from '../helpers';
+import { expect, type Page, test } from '@playwright/test';
+import { getInternalUrls } from '../helpers';
 
 const console = require('console'); // workaround for nicer logs
 
@@ -31,7 +31,7 @@ test('should have no exponential increase in internal urls', () => {
 
 for (const [url, index] of internalUrls.map<[string, number]>((url, i) => [url, i])) {
   test(`should have valid headline at (${index + 1}/${internalUrls.length}) "${url}"`, async ({ page }) => {
-    const response = await page.goto(baseURL + url);
+    const response = await page.goto(url);
 
     // match static files in public/assets directory
     if (url.match(/^\/assets\/.*\.\w{3,4}$/)) {
