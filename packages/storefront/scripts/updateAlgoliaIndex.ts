@@ -19,7 +19,7 @@ const resolveImports = (imports: StorefrontConfigPage): string => {
   return imports
     .map((page) => {
       const importLine = page.toString();
-      const [_, importPath] = importLine.match(/require\([`']@\/(.*?)[`']/) || [];
+      const [_, importPath] = importLine.match(/import\([`'"]@\/(.*?)[`'"]/) || [];
 
       return fs
         .readFileSync(path.resolve(__dirname, '../src', importPath), 'utf8')
