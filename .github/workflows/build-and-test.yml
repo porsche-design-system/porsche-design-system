@@ -639,7 +639,7 @@ jobs:
       - name: 'E2E Test'
         uses: ./.github/actions/docker-run-playwright
         with:
-          entrypoint: run-test-e2e
+          entrypoint: run-test-e2e-playwright
           args: --storefront
       - name: 'E2E Regression'
         if: failure()
