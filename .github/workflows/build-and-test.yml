@@ -648,7 +648,7 @@ jobs:
           name: storefront-e2e-regression
           path: ./packages/storefront/tests/e2e/results
   storefront-a11y:
-    name: 'Storefront a11y'
+    name: 'Storefront A11y'
     runs-on: ubuntu-latest
     steps:
       - name: 'Checkout'
@@ -669,12 +669,12 @@ jobs:
         with:
           entrypoint: run-build
           args: --components-react
-      - name: 'a11y Test'
+      - name: 'A11y Test'
         uses: ./.github/actions/docker-run-playwright
         with:
           entrypoint: run-test-a11y
           args: --storefront
-      - name: 'a11y Regression'
+      - name: 'A11y Regression'
         if: failure()
         uses: actions/upload-artifact@v4
         with:
