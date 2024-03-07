@@ -185,7 +185,8 @@ export class TextFieldWrapper {
     // needs to happen after render in order to have unitOrCounterElement defined
     this.setInputStyles();
 
-    if (this.hasCounter) {
+    // TODO: The listener gets added multiple times if showCounter is toggled multiple times
+    if (this.isCounterVisible) {
       // renders innerHTML of unitOrCounterElement initially and on every input event
       addInputEventListenerForCounter(
         this.input,
