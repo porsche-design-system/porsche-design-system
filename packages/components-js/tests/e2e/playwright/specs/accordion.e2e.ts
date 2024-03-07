@@ -86,11 +86,11 @@ test('should not produce scrollbars of parent element on initial close', async (
 
   await initAccordion(page, { otherPreMarkup, otherPostMarkup, otherSlottedMarkup });
 
-  const container = (page: Page) => page.$('#container');
-  const clientHeight = async () => (await container(page)).evaluate((el) => el.clientHeight);
-  const scrollHeight = async () => (await container(page)).evaluate((el) => el.scrollHeight);
+  const container = await page.$('#container');
+  const clientHeight = await container.evaluate((el) => el.clientHeight);
+  const scrollHeight = await container.evaluate((el) => el.scrollHeight);
 
-  expect((await scrollHeight()) > (await clientHeight())).toBe(false);
+  expect(scrollHeight > clientHeight).toBe(false);
 });
 
 test('should set correct gridTemplateRows and visibility on collapsible on open change', async ({ page }) => {
