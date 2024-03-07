@@ -77,16 +77,14 @@ const sitemap: [string, string, string, string | undefined, boolean][] = cases.m
 ]);
 
 for (const [path, category, page, tab, isFirst] of sitemap) {
-  test(`should navigate to "${path}" and have correct heading`, async ({ page: browserPage }) => {
-    const caseIndex = cases.findIndex(
-      ([itemCategory, itemPage, itemTab]) => itemCategory === category && itemPage === page && itemTab === tab
-    );
-    const humanCaseIndex = caseIndex + 1;
-    const counter = `${Array.from(Array(cases.length.toString().length - humanCaseIndex.toString().length))
-      .map(() => ' ') // add leading spaces if needed for nice formatting
-      .join('')}${humanCaseIndex}/${cases.length}`;
-    console.log(`${counter}: ${[category, page, tab].filter(Boolean).join(' > ')}`);
-
+  const caseIndex = cases.findIndex(
+    ([itemCategory, itemPage, itemTab]) => itemCategory === category && itemPage === page && itemTab === tab
+  );
+  const humanCaseIndex = caseIndex + 1;
+  const counter = `${Array.from(Array(cases.length.toString().length - humanCaseIndex.toString().length))
+    .map(() => ' ') // add leading spaces if needed for nice formatting
+    .join('')}${humanCaseIndex}/${cases.length}`;
+  test(`should navigate to (${counter}) "${path}" and have correct heading`, async ({ page: browserPage }) => {
     const [accordionElement] = await browserPage
       .locator(`xpath=//div[contains(@class, 'menu-desktop')]//nav/p-accordion[@heading='${category}']`)
       .all();
