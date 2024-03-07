@@ -679,7 +679,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: storefront-a11y-regression
-          path: ./packages/storefront/tests/e2e/results
+          path: ./packages/storefront/tests/a11y/results
   storefront-vrt:
     name: 'Storefront VRT'
     runs-on: ubuntu-latest
