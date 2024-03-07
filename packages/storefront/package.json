@@ -52,7 +52,6 @@
     "yup": "^1.3.3"
   },
   "devDependencies": {
-    "@axe-core/puppeteer": "^4.8.2",
     "@axe-core/playwright": "^4.8.5",
     "@playwright/test": "1.41.2",
     "@types/prismjs": "^1.26.3",
