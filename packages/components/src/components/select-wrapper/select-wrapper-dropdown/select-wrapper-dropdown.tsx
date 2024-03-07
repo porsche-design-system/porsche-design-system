@@ -2,10 +2,10 @@ import { Component, Element, h, Host, type JSX, Prop, State } from '@stencil/cor
 import {
   addNativePopoverScrollAndResizeListeners,
   attachComponentCss,
+  detectNativePopoverCase,
   determineDropdownDirection,
   findClosestComponent,
   getFilterInputAriaAttributes,
-  getHasNativePopoverSupport,
   getListAriaAttributes,
   getOptionAriaAttributes,
   getPrefixedTagNames,
@@ -93,7 +93,13 @@ export class SelectWrapperDropdown {
       // therefore we do it here via attribute
       ['hidden', 'disabled', 'selected']
     );
-    this.detectNativePopoverCase();
+    this.isNativePopover = detectNativePopoverCase(this.host, true);
+    if (this.isNativePopover) {
+      this.parentTableElement = findClosestComponent(
+        (this.host.getRootNode() as ShadowRoot).host as HTMLElement,
+        'pTable'
+      );
+    }
   }
 
   public componentDidRender(): void {
@@ -412,17 +418,5 @@ export class SelectWrapperDropdown {
 
     // in case input is focused via tab instead of click
     this.setDropdownVisibility('show');
-  };
-
-  private detectNativePopoverCase = (): void => {
-    if (getHasNativePopoverSupport()) {
-      this.parentTableElement = findClosestComponent(
-        (this.host.getRootNode() as ShadowRoot).host as HTMLElement,
-        'pTable'
-      );
-      if (!!this.parentTableElement) {
-        this.isNativePopover = true;
-      }
-    }
   };
 }
