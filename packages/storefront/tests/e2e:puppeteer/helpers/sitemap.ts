@@ -59,9 +59,7 @@ export const buildSitemap = async (): Promise<string[]> => {
   }
 
   // filter out porsche design system pull request urls, otherwise we'd need to re-run CI all the time
-  allUrls = allUrls
-    .sort()
-    .filter((link) => !link.startsWith('https://github.com/porsche-design-system/porsche-design-system/pull/'));
+  allUrls = allUrls.sort().filter(link => !link.startsWith('https://github.com/porsche-design-system/porsche-design-system/pull/'));
   const internalUrls = allUrls.filter((link) => link.startsWith('/'));
   const externalUrls = allUrls.filter((link) => !link.startsWith('/'));
 
@@ -99,8 +97,11 @@ const scanForUrls = async (): Promise<string[]> => {
     link.evaluate((el) => el.getAttribute('href'))
   );
 
-  return bodyHrefs
-    .map((url) => (!url.startsWith('http') && !url.startsWith('/') ? `/${url}` : url)) // add leading slash for links within markdown
-    .filter((url) => !whitelistedUrls.includes(url)) // get rid of whitelisted urls
-    .filter((url) => (url.startsWith('/') ? !url.includes('#') : true)); // get rid of internal anchor links
+  return (
+    bodyHrefs
+      // add leading slash for links within markdown
+      .map((url) => (!url.startsWith('http') && !url.startsWith('/') ) ? `/${url}` : url))
+      .filter((url) => !whitelistedUrls.includes(url)) // get rid of whitelisted urls
+      .filter((url) => (url.startsWith('/') ? !url.includes('#') : true)) // get rid of internal anchor links
+  );
 };
