@@ -6,7 +6,7 @@ on:
         required: true
 name: 'Build and Test'
 env:
-  PDS_PLAYWRIGHT_DOCKER_IMAGE: ghcr.io/porsche-design-system/porsche-design-system/playwright:v1.41.2-focal-test15
+  PDS_PLAYWRIGHT_DOCKER_IMAGE: ghcr.io/porsche-design-system/porsche-design-system/playwright:v1.41.2-focal-test16
 jobs:
   assets:
     name: 'Assets'
@@ -650,6 +650,11 @@ jobs:
   storefront-a11y:
     name: 'Storefront A11y'
     runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        shardIndex: [ 1, 2 ]
+        shardTotal: [ 2 ]
     steps:
       - name: 'Checkout'
         uses: actions/checkout@v4
@@ -673,12 +678,12 @@ jobs:
         uses: ./.github/actions/docker-run-playwright
         with:
           entrypoint: run-test-a11y
-          args: --storefront
+          args: --storefront:${{ matrix.shardIndex }}/${{ matrix.shardTotal }}
       - name: 'A11y Regression'
         if: failure()
         uses: actions/upload-artifact@v4
         with:
-          name: storefront-a11y-regression
+          name: storefront-a11y-regression-${{ matrix.shardIndex }}
           path: ./packages/storefront/tests/a11y/results
   storefront-vrt:
     name: 'Storefront VRT'

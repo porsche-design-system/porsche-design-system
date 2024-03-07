@@ -133,6 +133,8 @@
     "test:e2e:crawler": "yarn --cwd ./packages/crawler test:e2e",
     "test:e2e:playwright:storefront": "yarn --cwd ./packages/storefront test:e2e",
     "test:a11y:storefront": "yarn --cwd ./packages/storefront test:a11y",
+    "test:a11y:storefront:1/2": "yarn --cwd ./packages/storefront test:a11y:1/2",
+    "test:a11y:storefront:2/2": "yarn --cwd ./packages/storefront test:a11y:2/2",
     "test:vrt:playwright:components-js": "yarn --cwd ./packages/components-js test:vrt:playwright",
     "test:vrt:playwright:components-js:chrome:common": "yarn --cwd ./packages/components-js test:vrt:playwright:chrome:common",
     "test:vrt:playwright:components-js:chrome:common:1/2": "yarn --cwd ./packages/components-js test:vrt:playwright:chrome:common:1/2",
