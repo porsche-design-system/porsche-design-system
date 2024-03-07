@@ -175,6 +175,12 @@ export class TextFieldWrapper {
     return hasPropValueChanged(newVal, oldVal);
   }
 
+  public componentDidLoad(): void {
+    if (this.isSearch) {
+      addInputEventListenerForSearch(this.input, (hasValue) => (this.isClearable = hasValue));
+    }
+  }
+
   public componentDidRender(): void {
     // needs to happen after render in order to have unitOrCounterElement defined
     this.setInputStyles();
@@ -188,8 +194,6 @@ export class TextFieldWrapper {
         this.setInputStyles
       );
       this.setInputStyles(); // set style initially after componentDidRender already ran with empty unitOrCounterElement
-    } else if (this.isSearch) {
-      addInputEventListenerForSearch(this.input, (hasValue) => (this.isClearable = hasValue));
     }
 
     /*

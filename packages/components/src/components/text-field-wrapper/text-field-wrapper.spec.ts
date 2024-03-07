@@ -240,6 +240,21 @@ describe('render', () => {
   });
 });
 
+describe('componentDidLoad', () => {
+  it('should call addInputEventListenerForSearch() based on isSearch with correct parameters', () => {
+    const spy = jest.spyOn(textFieldWrapperUtils, 'addInputEventListenerForSearch');
+    const input = document.createElement('input');
+    const component = new TextFieldWrapper();
+    component['input'] = input;
+    component['isSearch'] = true;
+    component.componentDidLoad();
+    expect(spy).toBeCalledWith(input, expect.any(Function));
+    component['isSearch'] = false;
+    component.componentDidLoad();
+    expect(spy).toBeCalledTimes(1);
+  });
+});
+
 describe('componentDidRender', () => {
   it('should call setInputStyles()', () => {
     const component = new TextFieldWrapper();
@@ -289,19 +304,6 @@ describe('componentDidRender', () => {
     component['isCounterVisible'] = true;
     component.componentDidRender();
     expect(spy).toBeCalledWith(input, ariaElement, counter, component['setInputStyles']);
-  });
-
-  it('should call addInputEventListenerForSearch() based on isSearch with correct parameters', () => {
-    const spy = jest.spyOn(textFieldWrapperUtils, 'addInputEventListenerForSearch');
-    const input = document.createElement('input');
-    const component = new TextFieldWrapper();
-    component['input'] = input;
-    component['isSearch'] = true;
-    component.componentDidRender();
-    expect(spy).toBeCalledWith(input, expect.any(Function));
-    component['isSearch'] = false;
-    component.componentDidRender();
-    expect(spy).toBeCalledTimes(1);
   });
 
   it('should call setAriaAttributes() with correct parameters', () => {
