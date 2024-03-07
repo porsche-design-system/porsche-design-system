@@ -1,4 +1,4 @@
-import type { ConsoleMessage, Page, ElementHandle } from 'puppeteer';
+import type { ConsoleMessage, ElementHandle, Page } from '@playwright/test';
 
 const consoleMessages: ConsoleMessage[] = [];
 

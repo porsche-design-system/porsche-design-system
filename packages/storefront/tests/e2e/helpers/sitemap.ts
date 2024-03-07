@@ -1,6 +1,7 @@
 import { baseURL } from './index';
 import * as fs from 'fs';
 import * as path from 'path';
+import { Page } from '@playwright/test';
 
 // exclude URLS which should not be checked -> include all links which lead to downloads because puppeteer cant handle that
 const whitelistedUrls: string[] = [
@@ -35,14 +36,14 @@ export const getExternalUrls = (): string[] => {
   return getSitemap().filter((link) => !link.startsWith('/'));
 };
 
-export const buildSitemap = async (): Promise<string[]> => {
+export const buildSitemap = async (page: Page): Promise<string[]> => {
   console.log('Building sitemap...');
   fs.mkdirSync(path.dirname(sitemapResultPath), { recursive: true });
 
   await page.goto(baseURL);
 
   // initial scan on front page without duplicates
-  let allUrls = (await scanForUrls()).filter((x, i, array) => array.indexOf(x) === i);
+  let allUrls = (await scanForUrls(page)).filter((x, i, array) => array.indexOf(x) === i);
 
   for (let i = 0; i < allUrls.length; i++) {
     const href = allUrls[i];
@@ -52,7 +53,7 @@ export const buildSitemap = async (): Promise<string[]> => {
       console.log(`Crawling url ${i + 1}/${allUrls.length}...`);
       await page.goto(`${baseURL}${href}`);
 
-      const newLinks = await scanForUrls();
+      const newLinks = await scanForUrls(page);
       // get rid of duplicates
       allUrls = allUrls.concat(newLinks).filter((x, i, array) => array.indexOf(x) === i);
     }
@@ -86,18 +87,15 @@ const filterAsync = async <T>(
   return array.filter((value, index) => filterMap[index]);
 };
 
-const scanForUrls = async (): Promise<string[]> => {
-  const bodyLinks = await page.$$('body [href]');
+const scanForUrls = async (page: Page): Promise<string[]> => {
+  const bodyLinks = await page.locator('body [href]').all();
 
   // get rid of toc links since anchor links lead to the same page they where found on
-  const bodyLinksWithoutToc = await filterAsync(
-    bodyLinks,
-    async (link) => (await link.evaluate((x) => x.parentElement.parentElement.parentElement.className)) !== 'toc'
-  );
+  const bodyLinksWithoutToc = await filterAsync(bodyLinks, async (link) => {
+    return (await link.evaluate((x) => x.parentElement?.parentElement?.className)) !== 'toc';
+  });
 
-  const bodyHrefs: string[] = await mapAsync(bodyLinksWithoutToc, (link) =>
-    link.evaluate((el) => el.getAttribute('href'))
-  );
+  const bodyHrefs: string[] = await mapAsync(bodyLinksWithoutToc, (link) => link.getAttribute('href'));
 
   return bodyHrefs
     .map((url) => (!url.startsWith('http') && !url.startsWith('/') ? `/${url}` : url)) // add leading slash for links within markdown
