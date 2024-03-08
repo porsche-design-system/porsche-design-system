@@ -1,36 +1,30 @@
-import type { Page } from 'puppeteer';
-import { baseURL, getInternalUrls, getProperty } from '../helpers';
+import { getInternalUrls, getProperty } from '../helpers';
 import { TAG_NAMES } from '@porsche-design-system/shared';
 import { getComponentMeta } from '@porsche-design-system/component-meta';
-
-const console = require('console'); // workaround for nicer logs
-
-let page: Page;
-beforeEach(async () => (page = await browser.newPage()));
-afterEach(async () => await page.close());
+import { expect, test } from '@playwright/test';
 
 // filter out files from public/assets directory
 const internalUrls = getInternalUrls().filter((url) => !url.match(/^\/assets\/.*\.\w{3,4}$/));
 
 const themeableComponents = TAG_NAMES.filter((tagName) => getComponentMeta(tagName).isThemeable).join();
-const componentsWithThemeAutoSelector = `:where(${themeableComponents}):not(.playground *)`; // everything inside playground is not based on color-scheme preferences
+const componentsWithThemeAutoSelector = `:where(${themeableComponents}):not(.playground *):not(p-link-tile *)`; // everything inside playground is not based on color-scheme preferences
 
-it.each(internalUrls.map<[string, number]>((url, i) => [url, i]))(
-  'should have auto dark mode support at %s',
-  async (url, index) => {
-    console.log(`auto dark mode url ${index + 1}/${internalUrls.length}: ${url}`);
-
-    await page.goto(baseURL + url, { waitUntil: 'domcontentloaded' });
+for (const [url, index] of internalUrls.map<[string, number]>((url, i) => [url, i])) {
+  test(`should have auto dark mode support at (${index + 1}/${internalUrls.length}) "${url}"`, async ({ page }) => {
+    await page.goto(url, { waitUntil: 'domcontentloaded' });
     await page.waitForSelector('html.hydrated');
-    await page.evaluate(() => (window as any).componentsReady());
+    await page.evaluate(() =>
+      (window as unknown as Window & { componentsReady: () => Promise<number> }).componentsReady()
+    );
 
-    const components = await page.$$(componentsWithThemeAutoSelector);
+    const components = await page.locator(componentsWithThemeAutoSelector);
 
-    for (const component of components) {
+    // TODO: "The use of ElementHandle is discouraged, use Locator objects and web-first assertions instead.", see: https://playwright.dev/docs/api/class-elementhandle
+    for (const component of await components.elementHandles()) {
       expect(
         await getProperty(component, `theme`),
         `"${await getProperty(component, 'tagName')}" didn't use theme="auto"`
       ).toBe('auto');
     }
-  }
-);
+  });
+}

@@ -1,42 +1,33 @@
-import { baseURL } from '../helpers';
-import type { Page } from 'puppeteer';
+import { type Page, test, expect } from '@playwright/test';
 
-let page: Page;
-beforeEach(async () => (page = await browser.newPage()));
-afterEach(async () => await page.close());
-
-const isElementVisible = async (page: Page, cssSelector: string): Promise<boolean> => {
-  let visible = true;
-  await page.waitForSelector(cssSelector, { visible: true, timeout: 2000 }).catch(() => {
-    visible = false;
-  });
-  return visible;
+const waitForComponentsToBeReady = async (page: Page): Promise<void> => {
+  await page.evaluate(() =>
+    (window as unknown as Window & { componentsReady: () => Promise<number> }).componentsReady()
+  );
 };
 
-it('should show browser support fallback', async () => {
+test('should show browser support fallback', async ({ page }) => {
   const fallbackID = 'porsche-design-system-fallbacks-browser-support';
 
-  await page.goto(`${baseURL}/partials/browser-support-fallback-script`);
-  await page.evaluate(() => (window as any).componentsReady());
+  await page.goto('/partials/browser-support-fallback-script');
+  await waitForComponentsToBeReady(page);
 
-  expect(await isElementVisible(page, `#${fallbackID}`)).toBe(false);
+  await expect(await page.locator(`#${fallbackID}`)).not.toBeVisible();
 
-  const [buttonElement] = await page.$$(`xpath/.//p-button[contains(., 'Force display of browser support fallback')]`);
-  await buttonElement.click();
+  await page.locator(`xpath=//p-button[contains(., 'Force display of browser support fallback')]`).click();
 
-  expect(await isElementVisible(page, `#${fallbackID}`)).toBe(true);
+  await expect(await page.locator(`#${fallbackID}`)).toBeVisible();
 });
 
-it('should show cookies fallback', async () => {
+test('should show cookies fallback', async ({ page }) => {
   const fallbackID = 'porsche-design-system-fallbacks-cookies';
 
-  await page.goto(`${baseURL}/partials/cookies-fallback-script`);
-  await page.evaluate(() => (window as any).componentsReady());
+  await page.goto('/partials/cookies-fallback-script');
+  await waitForComponentsToBeReady(page);
 
-  expect(await isElementVisible(page, `#${fallbackID}`)).toBe(false);
+  await expect(await page.locator(`#${fallbackID}`)).not.toBeVisible();
 
-  const [buttonElement] = await page.$$(`xpath/.//p-button[contains(., 'Force display of cookies fallback')]`);
-  await buttonElement.click();
+  await page.locator(`xpath=//p-button[contains(., 'Force display of cookies fallback')]`).click();
 
-  expect(await isElementVisible(page, `#${fallbackID}`)).toBe(true);
+  await expect(await page.locator(`#${fallbackID}`)).toBeVisible();
 });

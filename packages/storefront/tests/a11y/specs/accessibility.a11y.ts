@@ -1,14 +1,20 @@
-import type { Page } from 'puppeteer';
-import { a11yAnalyze, baseURL, getInternalUrls } from '../helpers';
+import { type Page, test, expect } from '@playwright/test';
+import { a11yAnalyze } from '../helpers';
 import { paramCase } from 'change-case';
 import * as fs from 'fs';
 import * as path from 'path';
 
-const console = require('console'); // workaround for nicer logs
+const getInternalUrls = (): string[] => {
+  const sitemapPath = path.resolve(__dirname, '../../e2e/fixtures/sitemap.json');
+  const sitemap = JSON.parse(fs.readFileSync(sitemapPath, 'utf8'));
 
-let page: Page;
-beforeEach(async () => (page = await browser.newPage()));
-afterEach(async () => await page.close());
+  return (
+    sitemap
+      .filter((link) => link.startsWith('/'))
+      // drop "base" links that are redirected to first tab
+      .filter((link, i, array) => !array.some((x) => x.startsWith(link + '/')))
+  );
+};
 
 // style overrides for css variables
 const styleOverrides = fs.readFileSync(
@@ -17,8 +23,8 @@ const styleOverrides = fs.readFileSync(
 );
 const [, rootStyles] = /(:root {[\s\S]+?})/.exec(styleOverrides) || [];
 
-const gotoUrl = async (url: string): Promise<void> => {
-  await page.goto(baseURL + url, { waitUntil: 'domcontentloaded' });
+const gotoUrl = async (page: Page, url: string): Promise<void> => {
+  await page.goto(url, { waitUntil: 'domcontentloaded' });
 
   // inject style overrides for css variables
   await page.evaluate((styles) => {
@@ -28,51 +34,53 @@ const gotoUrl = async (url: string): Promise<void> => {
   }, rootStyles);
 
   await page.waitForSelector('html.hydrated');
-  await page.evaluate(() => (window as any).componentsReady());
+  await page.evaluate(() =>
+    (window as unknown as Window & { componentsReady: () => Promise<number> }).componentsReady()
+  );
 };
 
-const enableDarkMode = async (): Promise<void> => {
+const enableDarkMode = async (page: Page): Promise<void> => {
   const themeBtn = await page.$('.cycle-platform-theme');
   await themeBtn.click();
 
   await page.waitForFunction(() => document.body.className === 'dark-mode');
 };
 
-it('should have successfully extracted :root styles', () => {
+test('should have successfully extracted :root styles', () => {
   expect(rootStyles).toContain(':root');
   expect(rootStyles).toContain('--p-transition-duration: 0s');
   expect(rootStyles).toContain('--p-animation-duration: 0s');
 });
 
-describe('outside main element', () => {
+test.describe('outside main element', () => {
   const excludeSelector = 'main';
 
-  it('should have no accessibility issues on front page', async () => {
-    await gotoUrl('/');
+  test('should have no accessibility issues on front page', async ({ page }) => {
+    await gotoUrl(page, '/');
     await a11yAnalyze(page, { suffix: 'light', excludeSelector });
 
-    await enableDarkMode();
+    await enableDarkMode(page);
     await a11yAnalyze(page, { suffix: 'dark', excludeSelector });
   });
 
-  it('should have no accessibility issues on changelog page', async () => {
-    await gotoUrl('/news/changelog'); // to have open accordion in sidebar
+  test('should have no accessibility issues on changelog page', async ({ page }) => {
+    await gotoUrl(page, '/news/changelog'); // to have open accordion in sidebar
     await a11yAnalyze(page, { suffix: 'light', excludeSelector });
 
-    await enableDarkMode();
+    await enableDarkMode(page);
     await a11yAnalyze(page, { suffix: 'dark', excludeSelector });
   });
 });
 
-describe('within main element', () => {
+test.describe('within main element', () => {
   const includeSelector = 'main';
 
-  const cycleFrameworkTabs = async (theme: string): Promise<void> => {
+  const cycleFrameworkTabs = async (page: Page, theme: string): Promise<void> => {
     const buttons = (
       await Promise.all([
-        // page.$$("xpath/.//button[text() = 'Vanilla JS']"),
-        page.$$("xpath/.//button[text() = 'Angular']"),
-        page.$$("xpath/.//button[text() = 'React']"),
+        // page.locator("xpath=//button[text() = 'Vanilla JS']"),
+        page.locator("xpath=//button[text() = 'Angular']"),
+        page.locator("xpath=//button[text() = 'React']"),
         // TODO: vue is missing
       ])
     )
@@ -83,7 +91,7 @@ describe('within main element', () => {
     if (buttons.length) {
       expect(buttons.length).toBe(2);
 
-      const [vanillaJsButton] = await page.$$("xpath/.//button[text() = 'Vanilla JS']");
+      const [vanillaJsButton] = await page.locator("//xpath=button[text() = 'Vanilla JS']");
 
       for (const button of buttons) {
         // pages for styles sub-package don't have vanilla js examples and angular is selected initially
@@ -108,18 +116,20 @@ describe('within main element', () => {
   // filter out files from public/assets directory
   const internalUrls = getInternalUrls().filter((url) => !url.match(/^\/assets\/.*\.\w{3,4}$/));
 
-  it.each(internalUrls.map<[string, number]>((url, i) => [url, i]))(
-    'should have no accessibility issues in main element at %s',
-    async (url, index) => {
-      console.log(`a11y url ${index + 1}/${internalUrls.length}: ${url}`);
-
-      await gotoUrl(url);
+  for (const [url, index] of internalUrls.map<[string, number]>((url, i) => [url, i])) {
+    test(`should have no accessibility issues in main element at (${index + 1}/${internalUrls.length}) "${url}"`, async ({
+      page,
+    }) => {
+      await gotoUrl(page, url);
 
       await a11yAnalyze(page, { suffix: 'main-light', includeSelector }); // page in default/initial state
       // disabled because highly redundant, instead this should be tested once for light and dark with a good code example for angular, react and vue
       // await cycleFrameworkTabs('light');
 
-      const [darkThemeButton] = await page.$$("xpath/.//button[text() = 'Dark theme']");
+      // TODO: commented out test, because `darkThemeButton` doesn't exist anymore on Storefront.
+      //  Test needs to be refactored to make use of Select. In addition, we should ensure the `if()` condition
+      //  will work in also in regards of future Storefront refactorings.
+      /*const darkThemeButton = await page.locator("xpath=//button[text() = 'Dark theme']");
 
       if (darkThemeButton) {
         await darkThemeButton.click();
@@ -130,7 +140,7 @@ describe('within main element', () => {
         expect(playgroundClassName).toContain('example--dark');
 
         // reset framework to vanilla js if available
-        // const [vanillaJsButton] = await page.$$("xpath/.//button[text() = 'Vanilla JS']");
+        // const [vanillaJsButton] = await page.locator("xpath=//button[text() = 'Vanilla JS']");
         // if (vanillaJsButton) {
         //   await vanillaJsButton.click();
         // }
@@ -138,7 +148,7 @@ describe('within main element', () => {
         await a11yAnalyze(page, { suffix: 'main-dark', includeSelector });
         // disabled because highly redundant, instead this should be tested once for light and dark with a good code example for angular, react and vue
         // await cycleFrameworkTabs('dark');
-      }
-    }
-  );
+      }*/
+    });
+  }
 });

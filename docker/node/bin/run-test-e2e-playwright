@@ -13,7 +13,12 @@ if
   [[ "--components-js:firefox:2/2" == "${1}" ]] ||
   [[ "--components-js:safari" == "${1}" ]] ||
   [[ "--components-js:safari:1/2" == "${1}" ]] ||
-  [[ "--components-js:safari:2/2" == "${1}" ]];
+  [[ "--components-js:safari:2/2" == "${1}" ]] ||
+  [[ "--storefront" == "${1}" ]] ||
+  [[ "--storefront:1/4" == "${1}" ]] ||
+  [[ "--storefront:2/4" == "${1}" ]] ||
+  [[ "--storefront:3/4" == "${1}" ]] ||
+  [[ "--storefront:4/4" == "${1}" ]];
 then
   # HOME=/root fixes Running Nightly as root in a regular user's session is not supported. ($HOME is /github/home which is owned by uid 1001.)
   # https://github.com/microsoft/playwright/issues/6500
