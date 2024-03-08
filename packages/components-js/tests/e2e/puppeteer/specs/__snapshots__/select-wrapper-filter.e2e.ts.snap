@@ -35,6 +35,11 @@ exports[`accessibility should expose correct accessibility tree of option list i
         {
           "children": [
             {
+              "children": [
+                {
+                  "role": "InlineTextBox",
+                },
+              ],
               "name": "No results found",
               "role": "StaticText",
             },

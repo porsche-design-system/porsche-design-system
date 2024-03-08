@@ -5,13 +5,14 @@
     PButton,
     PButtonGroup,
     PButtonPure,
+    PButtonTile,
     PCarousel,
     PCheckboxWrapper,
     PContentWrapper,
     PCrest,
     PDisplay,
     PDivider,
-    PFlyout,
+    PFieldset,
     PFieldsetWrapper,
     PFlex,
     PFlexItem,
@@ -24,6 +25,9 @@
     PLink,
     PLinkPure,
     PLinkSocial,
+    PLinkTile,
+    PLinkTileModelSignature,
+    PLinkTileProduct,
     PMarque,
     PModal,
     PModelSignature,
@@ -41,6 +45,9 @@
     PSelectOption,
     PSelectWrapper,
     PSpinner,
+    PStepperHorizontal,
+    PStepperHorizontalItem,
+    PSwitch,
     PTable,
     PTableBody,
     PTableCell,
@@ -55,18 +62,10 @@
     PTagDismissible,
     PText,
     PTextareaWrapper,
-    PFieldset,
     PTextFieldWrapper,
     PTextList,
     PTextListItem,
     PWordmark,
-    PStepperHorizontal,
-    PButtonTile,
-    PStepperHorizontalItem,
-    PLinkTileModelSignature,
-    PLinkTile,
-    PLinkTileProduct,
-    PSwitch,
   } from '@porsche-design-system/components-vue';
 </script>
 
@@ -96,15 +95,6 @@
 
       <div class="playground light playground--modal" title="should render default modal">
         <PModal :heading="'Heading'" :open="true">Some Content</PModal>
-      </div>
-
-      <div class="playground light playground--flyout" title="should render default flyout">
-        <PFlyout :open="true">
-          <span slot="header">Sticky Header</span>
-          Some Content
-          <span slot="footer">Sticky Footer</span>
-          <span slot="sub-footer">Some Sub Footer Content</span>
-        </PFlyout>
       </div>
 
       <div class="playground light" title="should render default inline-notification">
@@ -442,15 +432,6 @@
 
         <div class="playground light playground--modal" title="should render default modal with custom prefix">
           <PModal :heading="'Heading'" :open="true">Some Content</PModal>
-        </div>
-
-        <div class="playground light playground--flyout" title="should render default flyout with custom prefix">
-          <PFlyout :open="true">
-            <span slot="header">Sticky Header</span>
-            Some Content
-            <span slot="footer">Sticky Footer</span>
-            <span slot="sub-footer">Some Sub Footer Content</span>
-          </PFlyout>
         </div>
 
         <div class="playground light" title="should render default inline-notification with custom prefix">
@@ -811,8 +792,7 @@
   }
 
   .playground--banner,
-  .playground--modal,
-  .playground--flyout {
+  .playground--modal {
     transform: translate3d(0, 0, 0);
     height: 10rem;
     padding: 0;
@@ -820,10 +800,6 @@
   }
 
   .playground--modal {
-    height: 20rem;
-  }
-
-  .playground--flyout {
     height: 20rem;
   }
 </style>

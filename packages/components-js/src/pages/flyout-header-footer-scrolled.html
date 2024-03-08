@@ -1,4 +1,4 @@
-<p-flyout open="true" class="scroll content">
+<p-flyout class="scroll content" open="true">
   <div slot="header">
     <h1>Sticky Heading</h1>
     <p>Sticky header text</p>
@@ -42,7 +42,7 @@
   gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing
   elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos
   et accusam.
-  <span class="scroll-into-view"></span>
+  <div class="scroll-into-view"></div>
   <div slot="footer">
     <button>Sticky Footer Button</button>
   </div>
@@ -50,6 +50,8 @@
 
 <script>
   porscheDesignSystem.componentsReady().then(() => {
-    document.querySelector('.scroll-into-view').scrollIntoView();
+    document.querySelector('.scroll-into-view').scrollIntoView({
+      behavior: 'instant',
+    });
   });
 </script>

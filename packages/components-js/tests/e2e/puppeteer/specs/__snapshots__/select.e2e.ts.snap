@@ -23,6 +23,11 @@ exports[`accessibility should expose correct accessibility tree if option is sel
 {
   "children": [
     {
+      "children": [
+        {
+          "role": "InlineTextBox",
+        },
+      ],
       "name": "a",
       "role": "StaticText",
     },

@@ -329,7 +329,7 @@ export const initConsoleObserver = (page: Page): void => {
 };
 
 const getConsoleErrors = () => consoleMessages.filter((x) => x.type() === 'error');
-export const getConsoleWarnings = () => consoleMessages.filter((x) => x.type() === 'warning');
+export const getConsoleWarnings = () => consoleMessages.filter((x) => x.type() === 'warn');
 export const getConsoleErrorsAmount = () => getConsoleErrors().length;
 export const getConsoleErrorMessages = () =>
   getConsoleErrors()
