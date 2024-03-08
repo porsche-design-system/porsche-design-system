@@ -1,6 +1,6 @@
-import { baseURL } from './index';
 import * as fs from 'fs';
 import * as path from 'path';
+import { type Page } from '@playwright/test';
 
 // exclude URLS which should not be checked -> include all links which lead to downloads because puppeteer cant handle that
 const whitelistedUrls: string[] = [
@@ -35,14 +35,14 @@ export const getExternalUrls = (): string[] => {
   return getSitemap().filter((link) => !link.startsWith('/'));
 };
 
-export const buildSitemap = async (): Promise<string[]> => {
+export const buildSitemap = async (page: Page): Promise<string[]> => {
   console.log('Building sitemap...');
   fs.mkdirSync(path.dirname(sitemapResultPath), { recursive: true });
 
-  await page.goto(baseURL);
+  await page.goto('/');
 
   // initial scan on front page without duplicates
-  let allUrls = (await scanForUrls()).filter((x, i, array) => array.indexOf(x) === i);
+  let allUrls = (await scanForUrls(page)).filter((x, i, array) => array.indexOf(x) === i);
 
   for (let i = 0; i < allUrls.length; i++) {
     const href = allUrls[i];
@@ -50,16 +50,18 @@ export const buildSitemap = async (): Promise<string[]> => {
     // follow internal urls only
     if (href.startsWith('/')) {
       console.log(`Crawling url ${i + 1}/${allUrls.length}...`);
-      await page.goto(`${baseURL}${href}`);
+      await page.goto(href);
 
-      const newLinks = await scanForUrls();
+      const newLinks = await scanForUrls(page);
       // get rid of duplicates
       allUrls = allUrls.concat(newLinks).filter((x, i, array) => array.indexOf(x) === i);
     }
   }
 
   // filter out porsche design system pull request urls, otherwise we'd need to re-run CI all the time
-  allUrls = allUrls.sort().filter(link => !link.startsWith('https://github.com/porsche-design-system/porsche-design-system/pull/'));
+  allUrls = allUrls
+    .sort()
+    .filter((link) => !link.startsWith('https://github.com/porsche-design-system/porsche-design-system/pull/'));
   const internalUrls = allUrls.filter((link) => link.startsWith('/'));
   const externalUrls = allUrls.filter((link) => !link.startsWith('/'));
 
@@ -84,24 +86,18 @@ const filterAsync = async <T>(
   return array.filter((value, index) => filterMap[index]);
 };
 
-const scanForUrls = async (): Promise<string[]> => {
-  const bodyLinks = await page.$$('body [href]');
+const scanForUrls = async (page: Page): Promise<string[]> => {
+  const bodyLinks = await page.locator('body [href]').all();
 
   // get rid of toc links since anchor links lead to the same page they where found on
-  const bodyLinksWithoutToc = await filterAsync(
-    bodyLinks,
-    async (link) => (await link.evaluate((x) => x.parentElement.parentElement.parentElement.className)) !== 'toc'
-  );
+  const bodyLinksWithoutToc = await filterAsync(bodyLinks, async (link) => {
+    return (await link.evaluate((x) => x.parentElement?.parentElement?.className)) !== 'toc';
+  });
 
-  const bodyHrefs: string[] = await mapAsync(bodyLinksWithoutToc, (link) =>
-    link.evaluate((el) => el.getAttribute('href'))
-  );
+  const bodyHrefs: string[] = await mapAsync(bodyLinksWithoutToc, (link) => link.getAttribute('href'));
 
-  return (
-    bodyHrefs
-      // add leading slash for links within markdown
-      .map((url) => (!url.startsWith('http') && !url.startsWith('/') ) ? `/${url}` : url))
-      .filter((url) => !whitelistedUrls.includes(url)) // get rid of whitelisted urls
-      .filter((url) => (url.startsWith('/') ? !url.includes('#') : true)) // get rid of internal anchor links
-  );
+  return bodyHrefs
+    .map((url) => (!url.startsWith('http') && !url.startsWith('/') ? `/${url}` : url)) // add leading slash for links within markdown
+    .filter((url) => !whitelistedUrls.includes(url)) // get rid of whitelisted urls
+    .filter((url) => (url.startsWith('/') ? !url.includes('#') : true)); // get rid of internal anchor links
 };

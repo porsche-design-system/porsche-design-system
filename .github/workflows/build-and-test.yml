@@ -6,7 +6,7 @@ on:
         required: true
 name: 'Build and Test'
 env:
-  PDS_PLAYWRIGHT_DOCKER_IMAGE: ghcr.io/porsche-design-system/porsche-design-system/playwright:v1.41.2-focal-test13
+  PDS_PLAYWRIGHT_DOCKER_IMAGE: ghcr.io/porsche-design-system/porsche-design-system/playwright:v1.41.2-focal-test18
 jobs:
   assets:
     name: 'Assets'
@@ -617,6 +617,11 @@ jobs:
   storefront-e2e:
     name: 'Storefront E2E'
     runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        shardIndex: [ 1, 2, 3, 4 ]
+        shardTotal: [ 4 ]
     steps:
       - name: 'Checkout'
         uses: actions/checkout@v4
@@ -639,17 +644,22 @@ jobs:
       - name: 'E2E Test'
         uses: ./.github/actions/docker-run-playwright
         with:
-          entrypoint: run-test-e2e
-          args: --storefront
+          entrypoint: run-test-e2e-playwright
+          args: --storefront:${{ matrix.shardIndex }}/${{ matrix.shardTotal }}
       - name: 'E2E Regression'
         if: failure()
         uses: actions/upload-artifact@v4
         with:
-          name: storefront-e2e-regression
+          name: storefront-e2e-regression-${{ matrix.shardIndex }}
           path: ./packages/storefront/tests/e2e/results
   storefront-a11y:
-    name: 'Storefront a11y'
+    name: 'Storefront A11y'
     runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        shardIndex: [ 1, 2 ]
+        shardTotal: [ 2 ]
     steps:
       - name: 'Checkout'
         uses: actions/checkout@v4
@@ -669,17 +679,17 @@ jobs:
         with:
           entrypoint: run-build
           args: --components-react
-      - name: 'a11y Test'
+      - name: 'A11y Test'
         uses: ./.github/actions/docker-run-playwright
         with:
           entrypoint: run-test-a11y
-          args: --storefront
-      - name: 'a11y Regression'
+          args: --storefront:${{ matrix.shardIndex }}/${{ matrix.shardTotal }}
+      - name: 'A11y Regression'
         if: failure()
         uses: actions/upload-artifact@v4
         with:
-          name: storefront-a11y-regression
-          path: ./packages/storefront/tests/e2e/results
+          name: storefront-a11y-regression-${{ matrix.shardIndex }}
+          path: ./packages/storefront/tests/a11y/results
   storefront-vrt:
     name: 'Storefront VRT'
     runs-on: ubuntu-latest
