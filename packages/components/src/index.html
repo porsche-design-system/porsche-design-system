@@ -88,7 +88,7 @@
   </head>
   <body>
     <header dir="ltr">
-      <h1>Porsche Design System - Playground</h1>
+      <h1>Porsche Design Syst - Playground</h1>
 
       <select id="theme" onchange="updateRoute({theme: this.value})">
         <option disabled selected>Select a theme</option>
@@ -105,9 +105,46 @@
       </select>
     </header>
 
-    <main></main>
+    <main>
+      <!--      <p-textarea-wrapper label="Some label">-->
+      <!--        <textarea name="some-name" maxlength="200">Some value</textarea>-->
+      <!--      </p-textarea-wrapper>-->
+
+      <p-text-field-wrapper label="Some label">
+        <input type="text" name="some-name" value="Some value" maxlength="20" />
+      </p-text-field-wrapper>
+
+      <p-button type="button" id="value">Change value</p-button>
+      <p-button type="button" id="max">Toggle maxlength</p-button>
+      <p-button type="button" id="show">Toggle showCounter</p-button>
+    </main>
 
     <script>
+      const ptextarea = document.querySelector('p-textarea-wrapper');
+      const ptextfield = document.querySelector('p-text-field-wrapper');
+      const btn = document.querySelector('p-button#value');
+      const btnMax = document.querySelector('p-button#max');
+      const btnShow = document.querySelector('p-button#show');
+      const textarea = document.querySelector('textarea');
+      const input = document.querySelector('input');
+
+      btn.addEventListener('click', () => {
+        // textarea.value = 'Changed value';
+        input.value = 'Changed value';
+      });
+
+      btnMax.addEventListener('click', () => {
+        !input.getAttribute('maxlength') ? input.setAttribute('maxlength', '20') : input.removeAttribute('maxlength');
+        // !textarea.getAttribute('maxlength')
+        //   ? textarea.setAttribute('maxlength', '20')
+        //   : textarea.removeAttribute('maxlength');
+      });
+
+      btnShow.addEventListener('click', () => {
+        // ptextarea.showCounter = !ptextarea.showCounter;
+        ptextfield.showCounter = !ptextfield.showCounter;
+      });
+
       <!-- START: keep this snippet to log component lifecycle events -->
       ['componentWillLoad', 'componentDidLoad', 'componentWillUpdate', 'componentDidUpdate'].forEach((x) =>
         window.addEventListener(`stencil_${x}`, (e) => {
