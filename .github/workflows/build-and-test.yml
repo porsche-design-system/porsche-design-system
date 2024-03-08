@@ -678,7 +678,7 @@ jobs:
         uses: ./.github/actions/docker-run-playwright
         with:
           entrypoint: run-test-e2e-playwright
-          args: --storefront:e2e-sitemap
+          args: --storefront:sitemap
       - name: 'E2E Regression'
         if: failure()
         uses: actions/upload-artifact@v4
