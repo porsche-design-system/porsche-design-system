@@ -20,9 +20,10 @@
       this.highlightDiffs();
     }
 
+    // besides of syntax highlighting it also adds `tabindex="0"` to `<pre>`
     highlightDiffs(): void {
       this.$el
-        .querySelectorAll('pre[class*="diff"], code[class*="diff"]')
+        .querySelectorAll('pre[class*="diff"], code[class*="diff"], pre[class*="language"], code[class*="language"]')
         .forEach((diff) => Prism.highlightElement(diff));
     }
 
