@@ -21,6 +21,7 @@
     "test:unit": "NODE_OPTIONS=--openssl-legacy-provider vue-cli-service test:unit",
     "test:unit:vitest": "vitest --config tests/unit:vitest/config/vitest.config.ts",
     "test:e2e": "NODE_ENV=development yarn build && playwright test --config=tests/e2e/config/playwright.config.ts",
+    "test:e2e:no-build": "playwright test --config=tests/e2e/config/playwright.config.ts",
     "test:e2e:1/4": "yarn test:e2e --shard=1/4",
     "test:e2e:2/4": "yarn test:e2e --shard=2/4",
     "test:e2e:3/4": "yarn test:e2e --shard=3/4",
