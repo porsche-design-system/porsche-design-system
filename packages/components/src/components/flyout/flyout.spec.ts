@@ -12,7 +12,8 @@ beforeEach(() => {
   component = new Flyout();
   component.host = document.createElement('p-flyout');
   component.host.attachShadow({ mode: 'open' });
-  component['closeBtn'] = document.createElement('button');
+
+  jest.spyOn(component, 'setDialogVisibility' as any).mockImplementation(() => {});
 });
 
 describe('componentDidLoad', () => {
@@ -24,20 +25,11 @@ describe('componentDidLoad', () => {
   beforeEach(() => {
     jest.spyOn(focusTrapUtils, 'getFirstAndLastFocusableElement').mockImplementation(() => focusableElements);
     jest.spyOn(domUtils, 'getShadowRootHTMLElement').mockImplementation(() => document.createElement('slot'));
-  });
 
-  it('should call setFocusTrap() with correct parameters if flyout is open', () => {
-    const utilsSpy = jest.spyOn(focusTrapUtils, 'setFocusTrap');
-    component.open = true;
-    component.componentDidLoad();
+    const slotElement = document.createElement('slot');
+    const slotNodeList = document.createElement('div').appendChild(slotElement).parentNode.querySelectorAll('slot');
 
-    expect(utilsSpy).toBeCalledWith(
-      component.host,
-      true,
-      component['dialog'],
-      component['dismissBtn'],
-      component['dismissFlyout']
-    );
+    jest.spyOn(domUtils, 'getShadowRootHTMLElements').mockImplementation(() => slotNodeList);
   });
 
   it('should call setScrollLock() with correct parameters if flyout is open', () => {
@@ -57,13 +49,6 @@ describe('componentDidLoad', () => {
 });
 
 describe('disconnectedCallback', () => {
-  it('should call setFocusTrap() with correct parameters', () => {
-    const utilsSpy = jest.spyOn(focusTrapUtils, 'setFocusTrap');
-    component.disconnectedCallback();
-
-    expect(utilsSpy).toBeCalledWith(component.host, false, component['dialog']);
-  });
-
   it('should call setScrollLock() with correct parameters', () => {
     const utilsSpy = jest.spyOn(setScrollLockUtils, 'setScrollLock');
     component.disconnectedCallback();

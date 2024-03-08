@@ -52,12 +52,22 @@ exports[`accessibility should expose correct accessibility tree if rendered with
         {
           "children": [
             {
+              "children": [
+                {
+                  "role": "InlineTextBox",
+                },
+              ],
               "name": "Some optgroup label 1",
               "role": "StaticText",
             },
             {
               "children": [
                 {
+                  "children": [
+                    {
+                      "role": "InlineTextBox",
+                    },
+                  ],
                   "name": "Option A",
                   "role": "StaticText",
                 },
@@ -77,6 +87,11 @@ exports[`accessibility should expose correct accessibility tree if rendered with
             {
               "children": [
                 {
+                  "children": [
+                    {
+                      "role": "InlineTextBox",
+                    },
+                  ],
                   "name": "Option B",
                   "role": "StaticText",
                 },
@@ -85,12 +100,22 @@ exports[`accessibility should expose correct accessibility tree if rendered with
               "role": "option",
             },
             {
+              "children": [
+                {
+                  "role": "InlineTextBox",
+                },
+              ],
               "name": "Some optgroup label 1",
               "role": "StaticText",
             },
             {
               "children": [
                 {
+                  "children": [
+                    {
+                      "role": "InlineTextBox",
+                    },
+                  ],
                   "name": "Option A",
                   "role": "StaticText",
                 },
@@ -101,6 +126,11 @@ exports[`accessibility should expose correct accessibility tree if rendered with
             {
               "children": [
                 {
+                  "children": [
+                    {
+                      "role": "InlineTextBox",
+                    },
+                  ],
                   "name": "Option B",
                   "role": "StaticText",
                 },
@@ -136,6 +166,11 @@ exports[`accessibility should expose correct accessibility tree on selected cust
 {
   "children": [
     {
+      "children": [
+        {
+          "role": "InlineTextBox",
+        },
+      ],
       "name": "Option A",
       "role": "StaticText",
     },
@@ -158,6 +193,11 @@ exports[`accessibility should expose correct accessibility tree on selected cust
 {
   "children": [
     {
+      "children": [
+        {
+          "role": "InlineTextBox",
+        },
+      ],
       "name": "Option B",
       "role": "StaticText",
     },
@@ -171,6 +211,11 @@ exports[`accessibility should expose correct accessibility tree on selected cust
 {
   "children": [
     {
+      "children": [
+        {
+          "role": "InlineTextBox",
+        },
+      ],
       "name": "Option A",
       "role": "StaticText",
     },
@@ -184,6 +229,11 @@ exports[`accessibility should expose correct accessibility tree on selected cust
 {
   "children": [
     {
+      "children": [
+        {
+          "role": "InlineTextBox",
+        },
+      ],
       "name": "Option B",
       "role": "StaticText",
     },
@@ -247,6 +297,11 @@ exports[`accessibility should expose correct initial accessibility tree in open 
             {
               "children": [
                 {
+                  "children": [
+                    {
+                      "role": "InlineTextBox",
+                    },
+                  ],
                   "name": "Option A",
                   "role": "StaticText",
                 },
@@ -266,6 +321,11 @@ exports[`accessibility should expose correct initial accessibility tree in open 
             {
               "children": [
                 {
+                  "children": [
+                    {
+                      "role": "InlineTextBox",
+                    },
+                  ],
                   "name": "Option B",
                   "role": "StaticText",
                 },
@@ -277,6 +337,11 @@ exports[`accessibility should expose correct initial accessibility tree in open 
             {
               "children": [
                 {
+                  "children": [
+                    {
+                      "role": "InlineTextBox",
+                    },
+                  ],
                   "name": "Option C",
                   "role": "StaticText",
                 },

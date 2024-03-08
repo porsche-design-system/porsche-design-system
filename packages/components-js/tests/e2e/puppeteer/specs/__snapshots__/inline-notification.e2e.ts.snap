@@ -6,6 +6,11 @@ exports[`accessibility should expose correct accessibility tree properties for s
     {
       "children": [
         {
+          "children": [
+            {
+              "role": "InlineTextBox",
+            },
+          ],
           "name": "Some inline-notification heading.",
           "role": "StaticText",
         },
@@ -17,6 +22,11 @@ exports[`accessibility should expose correct accessibility tree properties for s
     {
       "children": [
         {
+          "children": [
+            {
+              "role": "InlineTextBox",
+            },
+          ],
           "name": "Some inline-notification description.",
           "role": "StaticText",
         },
@@ -37,6 +47,11 @@ exports[`accessibility should expose correct accessibility tree properties for s
     {
       "children": [
         {
+          "children": [
+            {
+              "role": "InlineTextBox",
+            },
+          ],
           "name": "Some inline-notification heading.",
           "role": "StaticText",
         },
@@ -48,6 +63,11 @@ exports[`accessibility should expose correct accessibility tree properties for s
     {
       "children": [
         {
+          "children": [
+            {
+              "role": "InlineTextBox",
+            },
+          ],
           "name": "Some inline-notification description.",
           "role": "StaticText",
         },
@@ -68,6 +88,11 @@ exports[`accessibility should expose correct accessibility tree properties for s
     {
       "children": [
         {
+          "children": [
+            {
+              "role": "InlineTextBox",
+            },
+          ],
           "name": "Some inline-notification heading.",
           "role": "StaticText",
         },
@@ -79,6 +104,11 @@ exports[`accessibility should expose correct accessibility tree properties for s
     {
       "children": [
         {
+          "children": [
+            {
+              "role": "InlineTextBox",
+            },
+          ],
           "name": "Some inline-notification description.",
           "role": "StaticText",
         },
@@ -99,6 +129,11 @@ exports[`accessibility should expose correct accessibility tree properties for s
     {
       "children": [
         {
+          "children": [
+            {
+              "role": "InlineTextBox",
+            },
+          ],
           "name": "Some inline-notification heading.",
           "role": "StaticText",
         },
@@ -110,6 +145,11 @@ exports[`accessibility should expose correct accessibility tree properties for s
     {
       "children": [
         {
+          "children": [
+            {
+              "role": "InlineTextBox",
+            },
+          ],
           "name": "Some inline-notification description.",
           "role": "StaticText",
         },
@@ -130,6 +170,11 @@ exports[`accessibility should expose correct accessibility tree properties for s
     {
       "children": [
         {
+          "children": [
+            {
+              "role": "InlineTextBox",
+            },
+          ],
           "name": "Some inline-notification heading.",
           "role": "StaticText",
         },
@@ -141,6 +186,11 @@ exports[`accessibility should expose correct accessibility tree properties for s
     {
       "children": [
         {
+          "children": [
+            {
+              "role": "InlineTextBox",
+            },
+          ],
           "name": "Some inline-notification description.",
           "role": "StaticText",
         },

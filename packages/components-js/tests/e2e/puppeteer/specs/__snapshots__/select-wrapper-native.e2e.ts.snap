@@ -36,6 +36,11 @@ exports[`accessibility should update accessibility tree with message text if sta
       "role": "none",
     },
     {
+      "children": [
+        {
+          "role": "InlineTextBox",
+        },
+      ],
       "name": "Some error message.",
       "role": "StaticText",
     },
@@ -57,6 +62,11 @@ exports[`accessibility should update accessibility tree with message text if sta
       "role": "none",
     },
     {
+      "children": [
+        {
+          "role": "InlineTextBox",
+        },
+      ],
       "name": "Some success message.",
       "role": "StaticText",
     },

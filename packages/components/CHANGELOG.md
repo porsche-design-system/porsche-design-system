@@ -26,6 +26,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 - `Text Field Wrapper`: Dynamic changes of `showCounter` and `maxLength` are reflected. The counter element dynamically
   adjusts to changes in the input value accurately.
   ([#3084](https://github.com/porsche-design-system/porsche-design-system/pull/3084))
+- `Flyout`: Refactor Flyout to use native Dialog element to resolve focus issues
+  ([#2998](https://github.com/porsche-design-system/porsche-design-system/pull/2998))
 - `Accordion`: Fix overflow scrollbar issues
   ([#3042](https://github.com/porsche-design-system/porsche-design-system/pull/3042))
 - `Carousel`: Skip link is visible when it receives keyboard focus

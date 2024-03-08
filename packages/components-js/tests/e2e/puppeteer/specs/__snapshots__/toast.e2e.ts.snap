@@ -4,6 +4,11 @@ exports[`accessibility should expose correct accessibility tree properties 1`] =
 {
   "children": [
     {
+      "children": [
+        {
+          "role": "InlineTextBox",
+        },
+      ],
       "name": "Some message",
       "role": "StaticText",
     },

@@ -6,6 +6,11 @@ exports[`accessibility should expose correct accessibility tree properties when 
     {
       "children": [
         {
+          "children": [
+            {
+              "role": "InlineTextBox",
+            },
+          ],
           "name": "Some product name",
           "role": "StaticText",
         },
@@ -19,6 +24,11 @@ exports[`accessibility should expose correct accessibility tree properties when 
         {
           "children": [
             {
+              "children": [
+                {
+                  "role": "InlineTextBox",
+                },
+              ],
               "name": "sale price",
               "role": "StaticText",
             },
@@ -26,12 +36,22 @@ exports[`accessibility should expose correct accessibility tree properties when 
           "role": "none",
         },
         {
+          "children": [
+            {
+              "role": "InlineTextBox",
+            },
+          ],
           "name": "718,00 €",
           "role": "StaticText",
         },
         {
           "children": [
             {
+              "children": [
+                {
+                  "role": "InlineTextBox",
+                },
+              ],
               "name": "original price",
               "role": "StaticText",
             },
@@ -41,6 +61,11 @@ exports[`accessibility should expose correct accessibility tree properties when 
         {
           "children": [
             {
+              "children": [
+                {
+                  "role": "InlineTextBox",
+                },
+              ],
               "name": "911,00 €",
               "role": "StaticText",
             },
@@ -83,6 +108,11 @@ exports[`accessibility should expose correct initial accessibility tree properti
                     {
                       "children": [
                         {
+                          "children": [
+                            {
+                              "role": "InlineTextBox",
+                            },
+                          ],
                           "name": "Add to wishlist",
                           "role": "StaticText",
                         },
@@ -121,6 +151,11 @@ exports[`accessibility should expose correct initial accessibility tree properti
         {
           "children": [
             {
+              "children": [
+                {
+                  "role": "InlineTextBox",
+                },
+              ],
               "name": "Some product name",
               "role": "StaticText",
             },
@@ -132,6 +167,11 @@ exports[`accessibility should expose correct initial accessibility tree properti
         {
           "children": [
             {
+              "children": [
+                {
+                  "role": "InlineTextBox",
+                },
+              ],
               "name": "1.199,00 €",
               "role": "StaticText",
             },

@@ -6,6 +6,11 @@ exports[`accessibility should expose correct initial accessibility tree of tabpa
     {
       "children": [
         {
+          "children": [
+            {
+              "role": "InlineTextBox",
+            },
+          ],
           "name": "Content 1",
           "role": "StaticText",
         },
