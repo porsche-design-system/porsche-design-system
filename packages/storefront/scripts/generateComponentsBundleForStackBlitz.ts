@@ -33,8 +33,10 @@ const generateComponentsBundleForStackBlitz = (framework: Framework): void => {
   // stackblitz with EngineBlock environment doesn't use esm builds (.mjs) files, so we can ignore them
   // which also results in smaller json manifest and faster stackblitz
   // however, vue with vite using WebContainers environment uses esm builds, therefore we have conditional globby
+  // where components-js is included with cjs and mjs
+  // components-vue is mjs and others are in cjs
   // https://developer.stackblitz.com/platform/api/javascript-sdk-options#projecttemplate
-  const esmOrCjsFileExtension = framework === 'react' ? 'cjs' : 'mjs';
+  const esmOrCjsFileExtension = framework === 'js' ? 'cjs,mjs' : framework === 'vue' ? 'mjs' : 'cjs';
   const files = globbySync(
     `../components-${framework}/dist/${distSubFolder}/**/*.{js,${esmOrCjsFileExtension},d.ts,json,scss}`
   ).filter(
