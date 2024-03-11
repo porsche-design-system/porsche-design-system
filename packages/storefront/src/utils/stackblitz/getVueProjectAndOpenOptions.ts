@@ -40,7 +40,7 @@ export const extendMarkupWithAppComponent = (markup: string): string => {
 `;
 };
 
-export const getAppTsx = (
+export const getAppVue = (
   markup: string,
   isExampleMarkup: boolean,
   sharedImportKeys: SharedImportKey[],
@@ -123,47 +123,48 @@ export const getVueProjectAndOpenOptions: GetStackBlitzProjectAndOpenOptions = (
   // docs: https://developer.stackblitz.com/platform/webcontainers/project-config
   return {
     files: {
-      // currently, requests from local CDN (localhost:3001) are blocked by webcontainers
-      // because of missing COOP/COEP headers
+      // currently, requests from local CDN `localhost:3001` are blocked by webcontainers because of missing
+      // COOP/COEP headers, therefore local bundle is not supported
       // https://webcontainers.io/guides/configuring-headers
-      // therefore local bundle is not supported
       // ...porscheDesignSystemBundle,
-      'src/App.vue': getAppTsx(markup, !!markup.match(componentNameRegex), sharedImportKeys, pdsVersion),
+      'src/App.vue': getAppVue(markup, !!markup.match(componentNameRegex), sharedImportKeys, pdsVersion),
       'src/main.ts': getMainTs(),
       'index.html': getIndexHtml(dir, globalStyles),
-      'style.css': '', // empty file seems to be required
       'vite.config.ts': `import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [vue()],
-})
+});
 `,
-      'package.json': `{
-  "name": "porsche-design-system-vue",
-  "private": true,
-  "version": "0.0.0",
-  "type": "module",
-  "scripts": {
-    "dev": "vite",
-    "build": "vue-tsc && vite build",
-    "preview": "vite preview"
-  },
-  "stackblitz": {
-    "installDependencies": false,
-    "startCommand": "yarn && yarn dev"
-  },
-  "dependencies": ${JSON.stringify(getDependencies(externalDependencies, pdsVersion))},
-  "devDependencies": ${JSON.stringify({
-    '@vitejs/plugin-vue': devDependencies['@vitejs/plugin-vue'],
-    '@vitejs/plugin-vue-jsx': devDependencies['@vitejs/plugin-vue-jsx'],
-    typescript: devDependencies['typescript'],
-    vite: devDependencies['vite'],
-    'vue-tsc': devDependencies['vue-tsc'],
-  })}
-}
-`,
+      'package.json': JSON.stringify(
+        {
+          name: 'porsche-design-system-vue-example',
+          private: true,
+          version: '0.0.0',
+          type: 'module',
+          scripts: {
+            dev: 'vite',
+            build: 'vue-tsc && vite build',
+            preview: 'vite preview',
+          },
+          stackblitz: {
+            installDependencies: false, // disable npm i
+            startCommand: 'yarn && yarn dev', // manually install dependencies and start app
+          },
+          dependencies: getDependencies(externalDependencies, pdsVersion),
+          devDependencies: {
+            '@vitejs/plugin-vue': devDependencies['@vitejs/plugin-vue'],
+            '@vitejs/plugin-vue-jsx': devDependencies['@vitejs/plugin-vue-jsx'],
+            typescript: devDependencies['typescript'],
+            vite: devDependencies['vite'],
+            'vue-tsc': devDependencies['vue-tsc'],
+          },
+        },
+        null,
+        2
+      ),
     },
     template: 'node',
     title,
