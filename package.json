@@ -184,7 +184,7 @@
     "clean:utilities:build": "yarn --cwd ./packages/utilities clean:build"
   },
   "devDependencies": {
-    "@porsche-design-system/prettier-config": "^1.0.0",
+    "@porsche-design-system/prettier-config": "^1.0.1",
     "prettier": "^3.2.5"
   },
   "resolutions": {
