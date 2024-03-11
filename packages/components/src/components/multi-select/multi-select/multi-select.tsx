@@ -21,7 +21,6 @@ import {
   syncNativeMultiSelect,
   updateHighlightedOption,
   updateNativeOptions,
-  updateNativePopoverMultiSelectStyles,
   updateOptionsFilterState,
 } from './multi-select-utils';
 import type { BreakpointCustomizable, PropTypes, Theme } from '../../../types';
@@ -35,6 +34,7 @@ import {
   getClosestHTMLElement,
   getFilterInputAriaAttributes,
   getListAriaAttributes,
+  getNativePopoverDropdownPosition,
   getPrefixedTagNames,
   getShadowRootHTMLElement,
   handleButtonEvent,
@@ -132,7 +132,7 @@ export class MultiSelect {
   private form: HTMLFormElement;
   private isWithinForm: boolean;
   private preventOptionUpdate = false; // Used to prevent value watcher from updating options when options are already updated
-  private isNativePopover: boolean = false;
+  private isNativePopoverCase: boolean = false;
   private parentTableElement: HTMLElement;
   private popoverElement: HTMLElement;
 
@@ -168,8 +168,8 @@ export class MultiSelect {
     document.addEventListener('mousedown', this.onClickOutside, true);
     this.form = getClosestHTMLElement(this.host, 'form');
     this.isWithinForm = !!this.form;
-    this.isNativePopover = detectNativePopoverCase(this.host, false);
-    if (this.isNativePopover) {
+    this.isNativePopoverCase = detectNativePopoverCase(this.host, false);
+    if (this.isNativePopoverCase) {
       this.parentTableElement = findClosestComponent(this.host, 'pTable');
     }
   }
@@ -189,14 +189,14 @@ export class MultiSelect {
   }
 
   public componentDidRender(): void {
-    if (this.isNativePopover) {
+    if (this.isNativePopoverCase) {
       addNativePopoverScrollAndResizeListeners(this.host, this.parentTableElement, this.popoverElement, () => {
         this.isOpen = false;
       });
       if (this.isOpen) {
-        updateNativePopoverMultiSelectStyles(
-          this.host,
-          this.multiSelectOptions,
+        getNativePopoverDropdownPosition(
+          this.inputElement,
+          this.multiSelectOptions.filter((option) => !option.hidden).length,
           this.popoverElement,
           this.dropdownDirection
         );
@@ -232,7 +232,7 @@ export class MultiSelect {
       this.hideLabel,
       this.state,
       this.isWithinForm,
-      this.isNativePopover,
+      this.isNativePopoverCase,
       this.theme
     );
     syncMultiSelectOptionProps(this.multiSelectOptions, this.theme);
@@ -302,7 +302,7 @@ export class MultiSelect {
           )}
 
           <div
-            {...(this.isNativePopover && {
+            {...(this.isNativePopoverCase && {
               popover: 'auto',
               class: 'popover',
               ...(this.popoverElement?.matches(':popover-open') && {
@@ -367,6 +367,9 @@ export class MultiSelect {
 
   private onInputClick = (): void => {
     this.isOpen = true;
+    if (this.isNativePopoverCase) {
+      this.popoverElement.showPopover();
+    }
   };
 
   private onResetClick = (): void => {

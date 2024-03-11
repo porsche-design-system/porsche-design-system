@@ -32,6 +32,7 @@ import { getThemedFormStateColors } from '../../../styles/form-state-color-style
 import { getPlaceholderJssStyle } from '../../../styles/placeholder';
 import { getFunctionalComponentLabelStyles } from '../../common/label/label-styles';
 import { getFunctionalComponentStateMessageStyles } from '../../common/state-message/state-message-styles';
+import { getPopoverResetJssStyle } from '../../../styles/popover-reset-styles';
 import { MULTI_SELECT_OPTION_HEIGHT } from '../../../styles/option-styles';
 import { INTERNAL_SELECT_SLOT } from './select-utils';
 
@@ -42,6 +43,7 @@ export const getComponentCss = (
   hideLabel: BreakpointCustomizable<boolean>,
   state: FormState,
   isWithinForm: boolean,
+  isNativePopoverCase: boolean,
   theme: Theme
 ): string => {
   return getCss({
@@ -91,6 +93,11 @@ export const getComponentCss = (
     ...getFunctionalComponentLabelStyles(isDisabled, hideLabel, theme),
     // .message
     ...getFunctionalComponentStateMessageStyles(theme, state),
+    ...(isNativePopoverCase && {
+      popover: {
+        ...getPopoverResetJssStyle(),
+      },
+    }),
   });
 };
 

@@ -26,6 +26,7 @@ import { getPlaceholderJssStyle } from '../../../styles/placeholder';
 import { getNoResultsOptionJssStyle, MULTI_SELECT_OPTION_HEIGHT } from '../../../styles/option-styles';
 import { getFunctionalComponentStateMessageStyles } from '../../common/state-message/state-message-styles';
 import { getFunctionalComponentLabelStyles } from '../../common/label/label-styles';
+import { getPopoverResetJssStyle } from '../../../styles/popover-reset-styles';
 import {
   formButtonOrIconPadding,
   formElementLayeredSafeZone,
@@ -42,7 +43,7 @@ export const getComponentCss = (
   hideLabel: BreakpointCustomizable<boolean>,
   state: FormState,
   isWithinForm: boolean,
-  isNativePopover: boolean,
+  isNativePopoverCase: boolean,
   theme: Theme
 ): string => {
   const { contrastHighColor } = getThemedColors(theme);
@@ -116,21 +117,9 @@ export const getComponentCss = (
     ...getFunctionalComponentLabelStyles(isDisabled, hideLabel, theme),
     // .message
     ...getFunctionalComponentStateMessageStyles(theme, state),
-    ...(isNativePopover && {
+    ...(isNativePopoverCase && {
       popover: {
-        position: 'absolute',
-        bottom: 'auto',
-        border: 'none',
-        background: 'none',
-        pointerEvents: 'all',
-        padding: 0,
-        margin: 0,
-        overflow: 'initial',
-        height: 'auto',
-        maxHeight: `${8.5 * (MULTI_SELECT_OPTION_HEIGHT + 8) + 6 + 2}px`, // 8.5 options * option height + 8px gap + additional spacing (6px = padding, 2px = border)
-        '&:-internal-popover-in-top-layer::backdrop': {
-          display: 'none',
-        },
+        ...getPopoverResetJssStyle(),
       },
     }),
   });

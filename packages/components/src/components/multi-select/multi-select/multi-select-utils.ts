@@ -3,7 +3,6 @@ import type { SelectComponentsDropdownDirection, SelectDropdownDirectionInternal
 import { consoleWarn, determineDropdownDirection, setAttribute, setAttributes } from '../../../utils';
 import type { MultiSelectOptionInternalHTMLProps } from '../multi-select-option/multi-select-option-utils';
 import { forceUpdate } from '@stencil/core';
-import type { SelectWrapperDropdownDirection } from '../../select-wrapper/select-wrapper/select-wrapper-utils';
 
 export type MultiSelectState = FormState;
 export type MultiSelectDropdownDirection = SelectComponentsDropdownDirection;
@@ -200,19 +199,4 @@ export const getDropdownDirection = (
   } else {
     return 'down';
   }
-};
-
-export const updateNativePopoverMultiSelectStyles = (
-  host: HTMLElement,
-  options: MultiSelectOption[],
-  nativePopover: HTMLElement,
-  direction: SelectWrapperDropdownDirection
-): void => {
-  const { left, top, width, height } = host.getBoundingClientRect();
-  const visibleOptionsLength = options.filter((option) => !option.hidden).length;
-  const isDirectionDown =
-    direction === 'down' || (direction === 'auto' && determineDropdownDirection(host, visibleOptionsLength) === 'down');
-  nativePopover.style.left = `${left + window.scrollX}px`;
-  nativePopover.style.top = `${top + window.scrollY + (isDirectionDown ? height : 0)}px`;
-  nativePopover.style.width = `${width}px`;
 };
