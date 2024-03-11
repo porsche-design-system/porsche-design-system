@@ -34,7 +34,7 @@ const generateComponentsBundleForStackBlitz = (framework: Framework): void => {
   // which also results in smaller json manifest and faster stackblitz
   // however, vue with vite using WebContainers environment uses esm builds, therefore we have conditional globby
   // https://developer.stackblitz.com/platform/api/javascript-sdk-options#projecttemplate
-  const esmOrCjsFileExtension = framework === 'vue' ? 'mjs' : 'cjs';
+  const esmOrCjsFileExtension = framework === 'react' ? 'cjs' : 'mjs';
   const files = globbySync(
     `../components-${framework}/dist/${distSubFolder}/**/*.{js,${esmOrCjsFileExtension},d.ts,json,scss}`
   ).filter(
