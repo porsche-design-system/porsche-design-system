@@ -1,4 +1,4 @@
-import type { ConsoleMessage, ElementHandle, Page } from 'puppeteer';
+import { type ConsoleMessage, type ElementHandle, type Page } from '@playwright/test';
 import { waitForComponentsReady } from './stencil';
 
 export const selectNode = async (page: Page, selector: string): Promise<ElementHandle> => {
@@ -17,10 +17,8 @@ export const selectNode = async (page: Page, selector: string): Promise<ElementH
 
 export const getOuterHTML = (el: ElementHandle): Promise<string> => el.evaluate((el) => el.outerHTML);
 
-const BASE_URL = 'http://localhost:5173';
-
-export const goto = async (page: Page, url: string) => {
-  await page.goto(`${BASE_URL}/${url}`);
+export const goto = async (page: Page, url: string): Promise<void> => {
+  await page.goto(url);
   await page.waitForSelector('html.hydrated');
   await waitForComponentsReady(page);
 
@@ -33,15 +31,19 @@ const consoleMessages: ConsoleMessage[] = [];
 export const initConsoleObserver = (page: Page): void => {
   consoleMessages.length = 0; // reset
 
-  page.on('console', (msg) => {
+  page.on('console', (msg: ConsoleMessage): void => {
     consoleMessages.push(msg);
     if (msg.type() === 'error') {
-      const { description } = msg.args()[0].remoteObject();
+      const description = msg.text();
       if (description) {
         console.error(description);
       }
     }
   });
 };
-export const getConsoleErrorsAmount = () => consoleMessages.filter((x) => x.type() === 'error').length;
-export const getConsoleWarningsAmount = () => consoleMessages.filter((x) => x.type() === 'warn').length;
+export const getConsoleErrorsAmount = (): number => {
+  return consoleMessages.filter((x: ConsoleMessage): boolean => x.type() === 'error').length;
+};
+export const getConsoleWarningsAmount = (): number => {
+  return consoleMessages.filter((x: ConsoleMessage): boolean => x.type() === 'warning').length;
+};

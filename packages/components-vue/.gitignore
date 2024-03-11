@@ -15,6 +15,7 @@ coverage
 *.local
 
 # testing
+tests/e2e/results
 tests/vrt/results
 
 /cypress/videos/
