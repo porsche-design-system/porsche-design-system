@@ -77,7 +77,7 @@
           :theme="theme"
           :dir="dir"
           :framework="activeFramework"
-          :externalStackBlitzDependencies="getExternalDependenciesOrThrow(this.externalStackBlitzDependencies)"
+          :externalStackBlitzDependencies="getExternalDependenciesOrThrow(externalStackBlitzDependencies)"
           :sharedImportKeys="sharedImportKeys"
           :backgroundColor="config.backgroundColor"
         ></CodeEditor>
