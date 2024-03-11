@@ -5,13 +5,14 @@
     PButton,
     PButtonGroup,
     PButtonPure,
+    PButtonTile,
     PCarousel,
     PCheckboxWrapper,
     PContentWrapper,
     PCrest,
     PDisplay,
     PDivider,
-    PFlyout,
+    PFieldset,
     PFieldsetWrapper,
     PFlex,
     PFlexItem,
@@ -24,6 +25,9 @@
     PLink,
     PLinkPure,
     PLinkSocial,
+    PLinkTile,
+    PLinkTileModelSignature,
+    PLinkTileProduct,
     PMarque,
     PModal,
     PModelSignature,
@@ -37,8 +41,13 @@
     PScroller,
     PSegmentedControl,
     PSegmentedControlItem,
+    PSelect,
+    PSelectOption,
     PSelectWrapper,
     PSpinner,
+    PStepperHorizontal,
+    PStepperHorizontalItem,
+    PSwitch,
     PTable,
     PTableBody,
     PTableCell,
@@ -53,18 +62,10 @@
     PTagDismissible,
     PText,
     PTextareaWrapper,
-    PFieldset,
     PTextFieldWrapper,
     PTextList,
     PTextListItem,
     PWordmark,
-    PStepperHorizontal,
-    PButtonTile,
-    PStepperHorizontalItem,
-    PLinkTileModelSignature,
-    PLinkTile,
-    PLinkTileProduct,
-    PSwitch,
   } from '@porsche-design-system/components-vue';
 </script>
 
@@ -94,15 +95,6 @@
 
       <div class="playground light playground--modal" title="should render default modal">
         <PModal :heading="'Heading'" :open="true">Some Content</PModal>
-      </div>
-
-      <div class="playground light playground--flyout" title="should render default flyout">
-        <PFlyout :open="true">
-          <span slot="header">Sticky Header</span>
-          Some Content
-          <span slot="footer">Sticky Footer</span>
-          <span slot="sub-footer">Some Sub Footer Content</span>
-        </PFlyout>
       </div>
 
       <div class="playground light" title="should render default inline-notification">
@@ -142,6 +134,14 @@
         <PRadioButtonWrapper :label="'Some label'">
           <input type="radio" />
         </PRadioButtonWrapper>
+      </div>
+
+      <div class="playground light" title="should render default select">
+        <PSelect :name="'options'" :label="'Some label'">
+          <PSelectOption value="a">Option A</PSelectOption>
+          <PSelectOption value="b">Option B</PSelectOption>
+          <PSelectOption value="c">Option C</PSelectOption>
+        </PSelect>
       </div>
 
       <div class="playground light" title="should render default select-wrapper">
@@ -203,15 +203,15 @@
       </div>
 
       <div class="playground light" title="should render default link">
-        <PLink :href="'https://www.porsche.com'">Some label</PLink>
+        <PLink :href="'https://porsche.com'">Some label</PLink>
       </div>
 
       <div class="playground light" title="should render default link-pure">
-        <PLinkPure :href="'https://www.porsche.com'">Some label</PLinkPure>
+        <PLinkPure :href="'https://porsche.com'">Some label</PLinkPure>
       </div>
 
       <div class="playground light" title="should render default link-social">
-        <PLinkSocial :href="'https://www.porsche.com'" :icon="'logo-facebook'">Some label</PLinkSocial>
+        <PLinkSocial :href="'https://porsche.com'" :icon="'logo-facebook'">Some label</PLinkSocial>
       </div>
 
       <div class="playground light" title="should render default marque">
@@ -392,7 +392,7 @@
       </div>
 
       <div class="playground light" title="should render default link-tile-product">
-        <PLinkTileProduct :heading="'Some product'" :price="'1.911,00 €'" :href="'https://www.porsche.com'">
+        <PLinkTileProduct :heading="'Some product'" :price="'1.911,00 €'" :href="'https://porsche.com'">
           <img
             src="https://porsche-design-system.github.io/porsche-design-system/placeholder_800x900.svg"
             width="800"
@@ -434,15 +434,6 @@
           <PModal :heading="'Heading'" :open="true">Some Content</PModal>
         </div>
 
-        <div class="playground light playground--flyout" title="should render default flyout with custom prefix">
-          <PFlyout :open="true">
-            <span slot="header">Sticky Header</span>
-            Some Content
-            <span slot="footer">Sticky Footer</span>
-            <span slot="sub-footer">Some Sub Footer Content</span>
-          </PFlyout>
-        </div>
-
         <div class="playground light" title="should render default inline-notification with custom prefix">
           <PInlineNotification :heading="'Some heading'" :description="'Some description'" />
         </div>
@@ -480,6 +471,14 @@
           <PRadioButtonWrapper :label="'Some label'">
             <input type="radio" />
           </PRadioButtonWrapper>
+        </div>
+
+        <div class="playground light" title="should render default select with custom prefix">
+          <PSelect :name="'options'" :label="'Some label'">
+            <PSelectOption value="a">Option A</PSelectOption>
+            <PSelectOption value="b">Option B</PSelectOption>
+            <PSelectOption value="c">Option C</PSelectOption>
+          </PSelect>
         </div>
 
         <div class="playground light" title="should render default select-wrapper with custom prefix">
@@ -541,15 +540,15 @@
         </div>
 
         <div class="playground light" title="should render default link with custom prefix">
-          <PLink :href="'https://www.porsche.com'">Some label</PLink>
+          <PLink :href="'https://porsche.com'">Some label</PLink>
         </div>
 
         <div class="playground light" title="should render default link-pure with custom prefix">
-          <PLinkPure :href="'https://www.porsche.com'">Some label</PLinkPure>
+          <PLinkPure :href="'https://porsche.com'">Some label</PLinkPure>
         </div>
 
         <div class="playground light" title="should render default link-social with custom prefix">
-          <PLinkSocial :href="'https://www.porsche.com'" :icon="'logo-facebook'">Some label</PLinkSocial>
+          <PLinkSocial :href="'https://porsche.com'" :icon="'logo-facebook'">Some label</PLinkSocial>
         </div>
 
         <div class="playground light" title="should render default marque with custom prefix">
@@ -730,7 +729,7 @@
         </div>
 
         <div class="playground light" title="should render default link-tile-product with custom prefix">
-          <PLinkTileProduct :heading="'Some product'" :price="'1.911,00 €'" :href="'https://www.porsche.com'">
+          <PLinkTileProduct :heading="'Some product'" :price="'1.911,00 €'" :href="'https://porsche.com'">
             <img
               src="https://porsche-design-system.github.io/porsche-design-system/placeholder_800x900.svg"
               width="800"
@@ -793,8 +792,7 @@
   }
 
   .playground--banner,
-  .playground--modal,
-  .playground--flyout {
+  .playground--modal {
     transform: translate3d(0, 0, 0);
     height: 10rem;
     padding: 0;
@@ -802,10 +800,6 @@
   }
 
   .playground--modal {
-    height: 20rem;
-  }
-
-  .playground--flyout {
     height: 20rem;
   }
 </style>

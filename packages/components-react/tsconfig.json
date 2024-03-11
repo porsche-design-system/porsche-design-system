@@ -4,7 +4,8 @@
     "allowJs": true,
     "noEmit": true,
     "jsx": "react-jsx",
-    "noFallthroughCasesInSwitch": true
+    "noFallthroughCasesInSwitch": true,
+    "verbatimModuleSyntax": false
   },
   "include": ["src"]
 }

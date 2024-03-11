@@ -1,5 +1,5 @@
 <script setup lang="ts">
-  import { PButton } from '@porsche-design-system/components-vue';
+  import { PButton, PText } from '@porsche-design-system/components-vue';
   import { ref } from 'vue';
 
   const lastSubmittedData = ref('none');
@@ -15,5 +15,5 @@
     <PButton name="option" value="B" type="submit">Button B</PButton>
   </form>
 
-  <p>Last submitted data: {{ lastSubmittedData }}</p>
+  <PText>Last submitted data: {{ lastSubmittedData }}</PText>
 </template>

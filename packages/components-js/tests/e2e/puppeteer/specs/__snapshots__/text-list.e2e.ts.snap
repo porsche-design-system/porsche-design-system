@@ -18,6 +18,11 @@ exports[`accessibility should expose correct initial accessibility tree 1`] = `
                             {
                               "children": [
                                 {
+                                  "children": [
+                                    {
+                                      "role": "InlineTextBox",
+                                    },
+                                  ],
                                   "name": "•",
                                   "role": "StaticText",
                                 },
@@ -30,6 +35,11 @@ exports[`accessibility should expose correct initial accessibility tree 1`] = `
                                 {
                                   "children": [
                                     {
+                                      "children": [
+                                        {
+                                          "role": "InlineTextBox",
+                                        },
+                                      ],
                                       "name": "The quick brown fox jumps over the lazy dog",
                                       "role": "StaticText",
                                     },
@@ -49,6 +59,11 @@ exports[`accessibility should expose correct initial accessibility tree 1`] = `
                             {
                               "children": [
                                 {
+                                  "children": [
+                                    {
+                                      "role": "InlineTextBox",
+                                    },
+                                  ],
                                   "name": "•",
                                   "role": "StaticText",
                                 },
@@ -61,12 +76,22 @@ exports[`accessibility should expose correct initial accessibility tree 1`] = `
                                 {
                                   "children": [
                                     {
+                                      "children": [
+                                        {
+                                          "role": "InlineTextBox",
+                                        },
+                                      ],
                                       "name": "The quick ",
                                       "role": "StaticText",
                                     },
                                     {
                                       "children": [
                                         {
+                                          "children": [
+                                            {
+                                              "role": "InlineTextBox",
+                                            },
+                                          ],
                                           "name": "brown fox",
                                           "role": "StaticText",
                                         },
@@ -75,6 +100,11 @@ exports[`accessibility should expose correct initial accessibility tree 1`] = `
                                       "role": "link",
                                     },
                                     {
+                                      "children": [
+                                        {
+                                          "role": "InlineTextBox",
+                                        },
+                                      ],
                                       "name": " jumps over the lazy dog",
                                       "role": "StaticText",
                                     },
@@ -94,6 +124,11 @@ exports[`accessibility should expose correct initial accessibility tree 1`] = `
                             {
                               "children": [
                                 {
+                                  "children": [
+                                    {
+                                      "role": "InlineTextBox",
+                                    },
+                                  ],
                                   "name": "•",
                                   "role": "StaticText",
                                 },
@@ -106,6 +141,11 @@ exports[`accessibility should expose correct initial accessibility tree 1`] = `
                                 {
                                   "children": [
                                     {
+                                      "children": [
+                                        {
+                                          "role": "InlineTextBox",
+                                        },
+                                      ],
                                       "name": "The quick brown fox jumps over the lazy dog",
                                       "role": "StaticText",
                                     },
@@ -120,6 +160,11 @@ exports[`accessibility should expose correct initial accessibility tree 1`] = `
                                                     {
                                                       "children": [
                                                         {
+                                                          "children": [
+                                                            {
+                                                              "role": "InlineTextBox",
+                                                            },
+                                                          ],
                                                           "name": "–",
                                                           "role": "StaticText",
                                                         },
@@ -132,6 +177,11 @@ exports[`accessibility should expose correct initial accessibility tree 1`] = `
                                                         {
                                                           "children": [
                                                             {
+                                                              "children": [
+                                                                {
+                                                                  "role": "InlineTextBox",
+                                                                },
+                                                              ],
                                                               "name": "The quick brown fox jumps over the lazy dog",
                                                               "role": "StaticText",
                                                             },

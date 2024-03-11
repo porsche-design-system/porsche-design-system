@@ -39,7 +39,7 @@ import { LinkTileModelSignatureAspectRatio, LinkTileModelSignatureHeadingTag, Li
 import { LinkTileProductAspectRatio, LinkTileProductLikeEventDetail, LinkTileProductTarget } from "./components/link-tile-product/link-tile-product-utils";
 import { MarqueAriaAttribute, MarqueTarget, MarqueVariant } from "./components/marque/marque-utils";
 import { MarqueSize } from "./components/marque/marque-size";
-import { ModalAriaAttribute } from "./components/modal/modal-utils";
+import { ModalAriaAttribute, ModalBackdrop } from "./components/modal/modal-utils";
 import { ModelSignatureColor, ModelSignatureModel, ModelSignatureSize } from "./components/model-signature/model-signature-utils";
 import { MultiSelectDropdownDirection, MultiSelectState, MultiSelectUpdateEventDetail } from "./components/multi-select/multi-select/multi-select-utils";
 import { PaginationInternationalization, PaginationMaxNumberOfPageLinks, PaginationUpdateEventDetail } from "./components/pagination/pagination-utils";
@@ -49,6 +49,7 @@ import { RadioButtonWrapperState } from "./components/radio-button-wrapper/radio
 import { ScrollerAlignScrollIndicator, ScrollerAriaAttribute, ScrollerGradientColor, ScrollerGradientColorScheme, ScrollerScrollIndicatorPosition, ScrollerScrollToPosition } from "./components/scroller/scroller-utils";
 import { SegmentedControlBackgroundColor, SegmentedControlColumns, SegmentedControlUpdateEventDetail } from "./components/segmented-control/segmented-control/segmented-control-utils";
 import { SegmentedControlItemIcon } from "./components/segmented-control/segmented-control-item/segmented-control-item-utils";
+import { SelectDropdownDirection, SelectState, SelectUpdateEventDetail } from "./components/select/select/select-utils";
 import { SelectWrapperDropdownDirection, SelectWrapperState } from "./components/select-wrapper/select-wrapper/select-wrapper-utils";
 import { SpinnerAriaAttribute, SpinnerSize } from "./components/spinner/spinner-utils";
 import { StepperHorizontalSize, StepperHorizontalUpdateEventDetail } from "./components/stepper-horizontal/stepper-horizontal/stepper-horizontal-utils";
@@ -100,7 +101,7 @@ export { LinkTileModelSignatureAspectRatio, LinkTileModelSignatureHeadingTag, Li
 export { LinkTileProductAspectRatio, LinkTileProductLikeEventDetail, LinkTileProductTarget } from "./components/link-tile-product/link-tile-product-utils";
 export { MarqueAriaAttribute, MarqueTarget, MarqueVariant } from "./components/marque/marque-utils";
 export { MarqueSize } from "./components/marque/marque-size";
-export { ModalAriaAttribute } from "./components/modal/modal-utils";
+export { ModalAriaAttribute, ModalBackdrop } from "./components/modal/modal-utils";
 export { ModelSignatureColor, ModelSignatureModel, ModelSignatureSize } from "./components/model-signature/model-signature-utils";
 export { MultiSelectDropdownDirection, MultiSelectState, MultiSelectUpdateEventDetail } from "./components/multi-select/multi-select/multi-select-utils";
 export { PaginationInternationalization, PaginationMaxNumberOfPageLinks, PaginationUpdateEventDetail } from "./components/pagination/pagination-utils";
@@ -110,6 +111,7 @@ export { RadioButtonWrapperState } from "./components/radio-button-wrapper/radio
 export { ScrollerAlignScrollIndicator, ScrollerAriaAttribute, ScrollerGradientColor, ScrollerGradientColorScheme, ScrollerScrollIndicatorPosition, ScrollerScrollToPosition } from "./components/scroller/scroller-utils";
 export { SegmentedControlBackgroundColor, SegmentedControlColumns, SegmentedControlUpdateEventDetail } from "./components/segmented-control/segmented-control/segmented-control-utils";
 export { SegmentedControlItemIcon } from "./components/segmented-control/segmented-control-item/segmented-control-item-utils";
+export { SelectDropdownDirection, SelectState, SelectUpdateEventDetail } from "./components/select/select/select-utils";
 export { SelectWrapperDropdownDirection, SelectWrapperState } from "./components/select-wrapper/select-wrapper/select-wrapper-utils";
 export { SpinnerAriaAttribute, SpinnerSize } from "./components/spinner/spinner-utils";
 export { StepperHorizontalSize, StepperHorizontalUpdateEventDetail } from "./components/stepper-horizontal/stepper-horizontal/stepper-horizontal-utils";
@@ -1087,11 +1089,11 @@ export namespace Components {
          */
         "aspectRatio"?: BreakpointCustomizable<LinkTileProductAspectRatio>;
         /**
-          * Additional product description
+          * Additional product description.
          */
         "description"?: string;
         /**
-          * Product heading
+          * Product heading.
          */
         "heading": string;
         /**
@@ -1107,9 +1109,13 @@ export namespace Components {
          */
         "liked"?: boolean;
         /**
-          * Product price
+          * Product retail price (with or without discount).
          */
         "price": string;
+        /**
+          * Shows original price (recommended retail price) with line-through. Needs prop "price" to be defined, otherwise this prop has no effect.
+         */
+        "priceOriginal"?: string;
         /**
           * Specifies the relationship of the target object to the link object.
          */
@@ -1157,6 +1163,10 @@ export namespace Components {
           * Add ARIA attributes.
          */
         "aria"?: SelectedAriaAttributes<ModalAriaAttribute>;
+        /**
+          * Defines the backdrop, 'blur' (should be used when Modal is opened by user interaction, e.g. after a click on a button) and 'shading' (should be used when Modal gets opened automatically, e.g. Cookie Consent).
+         */
+        "backdrop"?: ModalBackdrop;
         /**
           * If true, the modal will not be closable via backdrop click.
          */
@@ -1479,6 +1489,62 @@ export namespace Components {
           * The value of this item which is emitted by the parent element if it becomes selected. This property is **required**.
          */
         "value": string | number;
+    }
+    interface PSelect {
+        /**
+          * The description text.
+         */
+        "description"?: string;
+        /**
+          * Disables the select
+         */
+        "disabled"?: boolean;
+        /**
+          * Changes the direction to which the dropdown list appears.
+         */
+        "dropdownDirection"?: SelectDropdownDirection;
+        /**
+          * Show or hide label. For better accessibility it is recommended to show the label.
+         */
+        "hideLabel"?: BreakpointCustomizable<boolean>;
+        /**
+          * The label text.
+         */
+        "label"?: string;
+        /**
+          * The message styled depending on validation state.
+         */
+        "message"?: string;
+        /**
+          * The name of the control.
+         */
+        "name": string;
+        /**
+          * A Boolean attribute indicating that an option with a non-empty string value must be selected.
+         */
+        "required"?: boolean;
+        /**
+          * The validation state.
+         */
+        "state"?: SelectState;
+        /**
+          * Adapts the select color depending on the theme.
+         */
+        "theme"?: Theme;
+        /**
+          * The selected value.
+         */
+        "value"?: string;
+    }
+    interface PSelectOption {
+        /**
+          * Disables the option.
+         */
+        "disabled"?: boolean;
+        /**
+          * The option value.
+         */
+        "value"?: string;
     }
     interface PSelectWrapper {
         /**
@@ -1962,6 +2028,10 @@ export interface PSegmentedControlCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLPSegmentedControlElement;
 }
+export interface PSelectCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLPSelectElement;
+}
 export interface PStepperHorizontalCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLPStepperHorizontalElement;
@@ -2424,6 +2494,29 @@ declare global {
         prototype: HTMLPSegmentedControlItemElement;
         new (): HTMLPSegmentedControlItemElement;
     };
+    interface HTMLPSelectElementEventMap {
+        "update": SelectUpdateEventDetail;
+    }
+    interface HTMLPSelectElement extends Components.PSelect, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLPSelectElementEventMap>(type: K, listener: (this: HTMLPSelectElement, ev: PSelectCustomEvent<HTMLPSelectElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLPSelectElementEventMap>(type: K, listener: (this: HTMLPSelectElement, ev: PSelectCustomEvent<HTMLPSelectElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLPSelectElement: {
+        prototype: HTMLPSelectElement;
+        new (): HTMLPSelectElement;
+    };
+    interface HTMLPSelectOptionElement extends Components.PSelectOption, HTMLStencilElement {
+    }
+    var HTMLPSelectOptionElement: {
+        prototype: HTMLPSelectOptionElement;
+        new (): HTMLPSelectOptionElement;
+    };
     interface HTMLPSelectWrapperElement extends Components.PSelectWrapper, HTMLStencilElement {
     }
     var HTMLPSelectWrapperElement: {
@@ -2706,6 +2799,8 @@ declare global {
         "p-scroller": HTMLPScrollerElement;
         "p-segmented-control": HTMLPSegmentedControlElement;
         "p-segmented-control-item": HTMLPSegmentedControlItemElement;
+        "p-select": HTMLPSelectElement;
+        "p-select-option": HTMLPSelectOptionElement;
         "p-select-wrapper": HTMLPSelectWrapperElement;
         "p-select-wrapper-dropdown": HTMLPSelectWrapperDropdownElement;
         "p-spinner": HTMLPSpinnerElement;
@@ -3734,11 +3829,11 @@ declare namespace LocalJSX {
          */
         "aspectRatio"?: BreakpointCustomizable<LinkTileProductAspectRatio>;
         /**
-          * Additional product description
+          * Additional product description.
          */
         "description"?: string;
         /**
-          * Product heading
+          * Product heading.
          */
         "heading"?: string;
         /**
@@ -3758,9 +3853,13 @@ declare namespace LocalJSX {
          */
         "onLike"?: (event: PLinkTileProductCustomEvent<LinkTileProductLikeEventDetail>) => void;
         /**
-          * Product price
+          * Product retail price (with or without discount).
          */
         "price"?: string;
+        /**
+          * Shows original price (recommended retail price) with line-through. Needs prop "price" to be defined, otherwise this prop has no effect.
+         */
+        "priceOriginal"?: string;
         /**
           * Specifies the relationship of the target object to the link object.
          */
@@ -3808,6 +3907,10 @@ declare namespace LocalJSX {
           * Add ARIA attributes.
          */
         "aria"?: SelectedAriaAttributes<ModalAriaAttribute>;
+        /**
+          * Defines the backdrop, 'blur' (should be used when Modal is opened by user interaction, e.g. after a click on a button) and 'shading' (should be used when Modal gets opened automatically, e.g. Cookie Consent).
+         */
+        "backdrop"?: ModalBackdrop;
         /**
           * If true, the modal will not be closable via backdrop click.
          */
@@ -4162,6 +4265,66 @@ declare namespace LocalJSX {
           * The value of this item which is emitted by the parent element if it becomes selected. This property is **required**.
          */
         "value"?: string | number;
+    }
+    interface PSelect {
+        /**
+          * The description text.
+         */
+        "description"?: string;
+        /**
+          * Disables the select
+         */
+        "disabled"?: boolean;
+        /**
+          * Changes the direction to which the dropdown list appears.
+         */
+        "dropdownDirection"?: SelectDropdownDirection;
+        /**
+          * Show or hide label. For better accessibility it is recommended to show the label.
+         */
+        "hideLabel"?: BreakpointCustomizable<boolean>;
+        /**
+          * The label text.
+         */
+        "label"?: string;
+        /**
+          * The message styled depending on validation state.
+         */
+        "message"?: string;
+        /**
+          * The name of the control.
+         */
+        "name"?: string;
+        /**
+          * Emitted when the selection is changed.
+         */
+        "onUpdate"?: (event: PSelectCustomEvent<SelectUpdateEventDetail>) => void;
+        /**
+          * A Boolean attribute indicating that an option with a non-empty string value must be selected.
+         */
+        "required"?: boolean;
+        /**
+          * The validation state.
+         */
+        "state"?: SelectState;
+        /**
+          * Adapts the select color depending on the theme.
+         */
+        "theme"?: Theme;
+        /**
+          * The selected value.
+         */
+        "value"?: string;
+    }
+    interface PSelectOption {
+        /**
+          * Disables the option.
+         */
+        "disabled"?: boolean;
+        /**
+          * The option value.
+         */
+        "value"?: string;
     }
     interface PSelectWrapper {
         /**
@@ -4687,6 +4850,8 @@ declare namespace LocalJSX {
         "p-scroller": PScroller;
         "p-segmented-control": PSegmentedControl;
         "p-segmented-control-item": PSegmentedControlItem;
+        "p-select": PSelect;
+        "p-select-option": PSelectOption;
         "p-select-wrapper": PSelectWrapper;
         "p-select-wrapper-dropdown": PSelectWrapperDropdown;
         "p-spinner": PSpinner;
@@ -4798,6 +4963,8 @@ declare module "@stencil/core" {
             "p-scroller": LocalJSX.PScroller & JSXBase.HTMLAttributes<HTMLPScrollerElement>;
             "p-segmented-control": LocalJSX.PSegmentedControl & JSXBase.HTMLAttributes<HTMLPSegmentedControlElement>;
             "p-segmented-control-item": LocalJSX.PSegmentedControlItem & JSXBase.HTMLAttributes<HTMLPSegmentedControlItemElement>;
+            "p-select": LocalJSX.PSelect & JSXBase.HTMLAttributes<HTMLPSelectElement>;
+            "p-select-option": LocalJSX.PSelectOption & JSXBase.HTMLAttributes<HTMLPSelectOptionElement>;
             "p-select-wrapper": LocalJSX.PSelectWrapper & JSXBase.HTMLAttributes<HTMLPSelectWrapperElement>;
             "p-select-wrapper-dropdown": LocalJSX.PSelectWrapperDropdown & JSXBase.HTMLAttributes<HTMLPSelectWrapperDropdownElement>;
             "p-spinner": LocalJSX.PSpinner & JSXBase.HTMLAttributes<HTMLPSpinnerElement>;

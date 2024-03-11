@@ -1,12 +1,9 @@
-/**
- * @jest-environment node
- */
-
 import * as fromPartials from '../../../src';
 import * as shared from '../../../src/shared';
+import { vi } from 'vitest';
 
 it.each(Object.keys(fromPartials))('should not throw in node for %s', (partialName) => {
-  const spy = jest.spyOn(shared, 'throwIfRunInBrowser');
+  const spy = vi.spyOn(shared, 'throwIfRunInBrowser');
 
   try {
     // catch exception that may occur in followup validation regarding options

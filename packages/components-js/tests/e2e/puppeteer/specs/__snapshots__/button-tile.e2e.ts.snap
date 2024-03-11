@@ -40,6 +40,11 @@ exports[`accessibility should expose correct initial accessibility tree properti
         {
           "children": [
             {
+              "children": [
+                {
+                  "role": "InlineTextBox",
+                },
+              ],
               "name": "Some description",
               "role": "StaticText",
             },
@@ -56,6 +61,11 @@ exports[`accessibility should expose correct initial accessibility tree properti
                     {
                       "children": [
                         {
+                          "children": [
+                            {
+                              "role": "InlineTextBox",
+                            },
+                          ],
                           "name": "Some label",
                           "role": "StaticText",
                         },

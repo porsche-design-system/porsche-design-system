@@ -79,7 +79,7 @@ export default class Code extends Vue {
   basicMarkup = `<p-marque></p-marque>`;
   withoutTrademarkMarkup = `<p-marque trademark="false"></p-marque>`;
   marque75Markup = `<p-marque variant="75-years"></p-marque>`;
-  linkMarkup = `<p-marque href="https://www.porsche.com" aria="{ 'aria-label': 'Porsche Homepage' }"></p-marque>`;
+  linkMarkup = `<p-marque href="https://porsche.com" aria="{ 'aria-label': 'Porsche Homepage' }"></p-marque>`;
 
   size = 'small';
   sizes = MARQUE_SIZES;
@@ -89,7 +89,7 @@ export default class Code extends Vue {
 
   eventsMarkup =
 `<p-marque
-  href="https://www.porsche.com"
+  href="https://porsche.com"
   onclick="alert('click'); return false;"
   onfocus="console.log('focus')"
   onfocusin="console.log('focusin')"
@@ -97,6 +97,6 @@ export default class Code extends Vue {
   onfocusout="console.log('focusout')"
 ></p-marque>`;
 
-  clickableAreaMarkup = `<p-marque href="https://www.porsche.com" aria="{ 'aria-label': 'Porsche Homepage' }" style="padding: 1.5rem"></p-marque>`;
+  clickableAreaMarkup = `<p-marque href="https://porsche.com" aria="{ 'aria-label': 'Porsche Homepage' }" style="padding: 1.5rem"></p-marque>`;
 }
 </script>

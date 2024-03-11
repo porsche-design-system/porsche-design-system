@@ -1,4 +1,4 @@
-import { Component, Element, Event, type EventEmitter, h, Host, type JSX, Prop, Watch } from '@stencil/core';
+import { Component, Element, Event, type EventEmitter, forceUpdate, h, type JSX, Prop, Watch } from '@stencil/core';
 import {
   FLYOUT_ARIA_ATTRIBUTES,
   FLYOUT_POSITIONS,
@@ -9,21 +9,19 @@ import {
 } from './flyout-utils';
 import { footerShadowClass, getComponentCss, headerShadowClass } from './flyout-styles';
 import {
+  AllowedTypes,
   attachComponentCss,
   getPrefixedTagNames,
-  getShadowRootHTMLElement,
+  getShadowRootHTMLElements,
   hasNamedSlot,
   hasPropValueChanged,
   parseAndGetAriaAttributes,
-  THEMES,
-  AllowedTypes,
-  validateProps,
   setScrollLock,
-  setFocusTrap,
+  THEMES,
+  validateProps,
   warnIfDeprecatedPropValueIsUsed,
 } from '../../utils';
 import type { PropTypes, SelectedAriaAttributes, Theme } from '../../types';
-import { clickStartedInScrollbarTrack } from '../modal/modal-utils';
 import { throttle } from 'throttle-debounce';
 
 const propTypes: PropTypes<typeof Flyout> = {
@@ -55,8 +53,8 @@ export class Flyout {
   /** Emitted when the component requests to be dismissed. */
   @Event({ bubbles: false }) public dismiss?: EventEmitter<void>;
 
-  private focusedElBeforeOpen: HTMLElement;
-  private dialog: HTMLElement;
+  private dialog: HTMLDialogElement;
+  private wrapper: HTMLDivElement;
   private dismissBtn: HTMLElement;
   private header: HTMLElement;
   private footer: HTMLElement;
@@ -68,15 +66,9 @@ export class Flyout {
   @Watch('open')
   public openChangeHandler(isOpen: boolean): void {
     setScrollLock(isOpen);
-    this.updateFocusTrap(isOpen);
 
-    if (isOpen) {
-      if (this.hasSubFooter) {
-        this.onScroll();
-      }
-      this.focusedElBeforeOpen = document.activeElement as HTMLElement;
-    } else {
-      this.focusedElBeforeOpen?.focus();
+    if (isOpen && this.hasSubFooter) {
+      this.updateShadow();
     }
   }
 
@@ -84,19 +76,14 @@ export class Flyout {
     // in case flyout is rendered with open prop
     if (this.open) {
       setScrollLock(true);
-      this.updateFocusTrap(true);
+
+      this.setDialogVisibility(true);
     }
 
     // TODO: would be great to use this in jsx but that doesn't work reliable and causes focus e2e test to fail
-    getShadowRootHTMLElement(this.host, 'slot').addEventListener('slotchange', () => {
-      if (this.open) {
-        // 1 tick delay is needed so that web components can be bootstrapped
-        setTimeout(() => {
-          this.updateFocusTrap(true);
-          getShadowRootHTMLElement(this.dismissBtn, 'button').focus(); // set initial focus
-        });
-      }
-    });
+    getShadowRootHTMLElements(this.host, 'slot').forEach((element) =>
+      element.addEventListener('slotchange', this.onSlotChange)
+    );
   }
 
   public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
@@ -104,20 +91,17 @@ export class Flyout {
   }
 
   public componentDidRender(): void {
-    // TODO: should this really be executed on every rerender, e.g. prop change?
-    if (this.open) {
-      // TODO: why not scroll to top when opened just like modal does?
+    // showModal needs to be called after render cycle to prepare visibility states of dialog in order to focus the dismiss button correctly
+    this.setDialogVisibility(this.open);
 
-      if (this.hasSubFooter) {
-        this.onScroll();
-      }
-      // Necessary to select button to make :focus-visible work
-      getShadowRootHTMLElement(this.dismissBtn, 'button').focus();
+    // TODO: should this really be executed on every rerender, e.g. prop change?
+    if (this.open && this.hasSubFooter) {
+      // TODO: why not scroll to top when opened just like modal does?
+      this.updateShadow();
     }
   }
 
   public disconnectedCallback(): void {
-    setFocusTrap(this.host, false, this.dialog);
     setScrollLock(false);
   }
 
@@ -154,31 +138,31 @@ export class Flyout {
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
     return (
-      <Host onMouseDown={this.onMouseDown}>
+      <dialog
+        // ignore needed for pipeline
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        /* @ts-ignore */
+        inert={this.open ? null : true} // prevents focusable elements during fade-out transition
+        tabIndex={-1} // dialog always has a dismiss button to be focused
+        ref={(ref) => (this.dialog = ref)}
+        onCancel={this.onCancelDialog}
+        onClick={this.onClickDialog}
+        {...parseAndGetAriaAttributes(this.aria)}
+      >
         <div
-          class="root"
-          role="dialog"
-          {...parseAndGetAriaAttributes({
-            'aria-modal': true,
-            'aria-hidden': !this.open,
-            ...parseAndGetAriaAttributes(this.aria),
-          })}
-          tabIndex={-1}
-          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-          /* @ts-ignore */
-          inert={this.open ? null : true} // prevents focusable elements within nested open accordion
-          ref={(el) => (this.dialog = el)}
-          {...(this.hasSubFooter && { onScroll: this.onScroll })} // if no sub-footer is used scroll shadows are done via CSS
+          class="wrapper"
+          ref={(ref) => (this.wrapper = ref)}
+          {...(this.hasSubFooter && { onScroll: this.updateShadow })} // if no sub-footer is used scroll shadows are done via CSS
         >
-          <div class="header" ref={(el) => (this.header = el)}>
+          <div key="header" class="header" ref={(el) => (this.header = el)}>
             <PrefixedTagNames.pButtonPure
               class="dismiss"
               type="button"
               hideLabel
               icon="close"
               theme={this.theme}
-              onClick={this.dismissFlyout}
-              ref={(el) => (this.dismissBtn = el)}
+              onClick={this.dismissDialog}
+              ref={(el: HTMLButtonElement) => (this.dismissBtn = el)}
             >
               Dismiss flyout
             </PrefixedTagNames.pButtonPure>
@@ -189,51 +173,74 @@ export class Flyout {
             <slot />
           </div>
           {this.hasFooter && (
-            <div class="footer" ref={(el) => (this.footer = el)}>
+            <div key="footer" class="footer" ref={(el) => (this.footer = el)}>
               <slot name="footer" />
             </div>
           )}
           {this.hasSubFooter && (
-            <div class="sub-footer" ref={(el) => (this.subFooter = el)}>
+            <div key="sub-footer" class="sub-footer" ref={(el) => (this.subFooter = el)}>
               <slot name="sub-footer" />
             </div>
           )}
         </div>
-      </Host>
+      </dialog>
     );
   }
 
-  private onMouseDown = (e: MouseEvent): void => {
-    if ((e.composedPath() as HTMLElement[])[0] === this.host && !clickStartedInScrollbarTrack(this.host, e)) {
-      this.dismissFlyout();
-    }
+  private updateHeaderShadow = (): void => {
+    const shouldApplyShadow = this.wrapper.scrollTop > FLYOUT_SCROLL_SHADOW_THRESHOLD;
+
+    this.header.classList.toggle(headerShadowClass, shouldApplyShadow);
   };
 
-  private updateFocusTrap = (isOpen: boolean): void => {
-    setFocusTrap(this.host, isOpen, this.dialog, this.dismissBtn, this.dismissFlyout);
+  private updateFooterShadow = (): void => {
+    const shouldApplyShadow = this.subFooter.offsetTop > this.wrapper.clientHeight + this.wrapper.scrollTop;
+
+    this.footer.classList.toggle(footerShadowClass, shouldApplyShadow);
   };
 
   // eslint-disable-next-line @typescript-eslint/member-ordering
-  private onScroll = throttle(100, () => {
-    if (this.dialog.scrollHeight > this.dialog.clientHeight) {
+  private updateShadow = throttle(100, () => {
+    if (this.wrapper.scrollHeight > this.wrapper.clientHeight) {
       this.updateHeaderShadow();
+
       if (this.hasFooter) {
         this.updateFooterShadow();
       }
     }
   });
 
-  private updateHeaderShadow = (): void => {
-    const shouldApplyShadow = this.dialog.scrollTop > FLYOUT_SCROLL_SHADOW_THRESHOLD;
-    this.header.classList.toggle(headerShadowClass, shouldApplyShadow);
+  private onClickDialog = (e: MouseEvent & { target: HTMLElement }): void => {
+    if (e.target.tagName === 'DIALOG') {
+      // dismiss dialog when clicked on backdrop
+      this.dismissDialog();
+    }
   };
 
-  private updateFooterShadow = (): void => {
-    const shouldApplyShadow = this.subFooter.offsetTop > this.dialog.clientHeight + this.dialog.scrollTop;
-    this.footer.classList.toggle(footerShadowClass, shouldApplyShadow);
+  private onSlotChange = (): void => {
+    forceUpdate(this.host);
+
+    this.dismissBtn.focus();
   };
 
-  private dismissFlyout = (): void => {
+  private onCancelDialog = (e: Event): void => {
+    // prevent closing the dialog uncontrolled by ESC (only relevant for browsers supporting <dialog/>)
+    e.preventDefault();
+
+    this.dismissDialog();
+  };
+
+  private setDialogVisibility(isOpen: boolean): void {
+    // TODO: SupportsNativeDialog check
+    // Only call showModal/close on dialog when state changes
+    if (isOpen === true && !this.dialog.open) {
+      this.dialog.showModal();
+    } else if (isOpen === false && this.dialog.open) {
+      this.dialog.close();
+    }
+  }
+
+  private dismissDialog = (): void => {
     this.dismiss.emit();
   };
 }

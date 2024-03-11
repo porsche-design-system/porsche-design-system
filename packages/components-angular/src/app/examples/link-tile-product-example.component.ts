@@ -8,7 +8,7 @@ import type { LinkTileProductLikeEventDetail } from '@porsche-design-system/comp
       [heading]="'Some product name'"
       [price]="'1.911,00 €'"
       [description]="'Some description'"
-      [href]="'https://www.porsche.com'"
+      [href]="'https://porsche.com'"
       [liked]="liked"
       (like)="handleLike($event)"
     >

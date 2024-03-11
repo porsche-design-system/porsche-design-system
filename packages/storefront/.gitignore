@@ -7,6 +7,7 @@ node_modules
 
 /public/porsche-design-system
 
+/tests/a11y/results
 /tests/e2e/results
 /tests/vrt/results
 

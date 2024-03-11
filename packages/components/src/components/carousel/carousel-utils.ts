@@ -156,7 +156,7 @@ export const updateBulletState = (paginationEl: HTMLElement, amountOfPages: numb
 
   const paginationGap = getComputedStyle(paginationEl).columnGap; // Touch devices use a larger gap
 
-  const getTranslateX = () => {
+  const getTranslateX = (): string => {
     if (isStartCase) {
       return '0';
     } else if (isEndCase) {

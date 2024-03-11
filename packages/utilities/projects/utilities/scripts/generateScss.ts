@@ -25,7 +25,7 @@ import * as heading from '../src/js/typography/heading';
 import * as text from '../src/js/typography/text';
 import * as display from '../src/js/typography/display';
 import * as breakpoint from '../src/js/mediaQuery/breakpoint';
-import { paramCase, camelCase } from 'change-case';
+import { kebabCase, camelCase } from 'change-case';
 import { getCss } from '@porsche-design-system/shared';
 
 const targetDirectory = './src/scss/lib';
@@ -52,7 +52,7 @@ const cleanLib = (): void => {
 };
 
 const writeFile = async (filename: string, content: string): Promise<void> => {
-  const targetPath = path.normalize(`${targetDirectory}/_${paramCase(filename)}.scss`);
+  const targetPath = path.normalize(`${targetDirectory}/_${kebabCase(filename)}.scss`);
   const contentFormatted = (await prettier.format(content, { parser: 'scss', printWidth: 120 }))
     .replace(/calc\s+\(/g, 'calc(') // fix issue with prettier
     .replace(/\s*\/\s*/g, '/'); // fix issue with prettier
@@ -67,7 +67,7 @@ const generateVariables = async (variables: Variables): Promise<void> => {
   for (const [filename, map] of Object.entries(variables)) {
     const mapFlattened = flattenObject(map);
     const content = Object.entries(mapFlattened)
-      .map(([k, v]) => `$pds-${paramCase(k)}: ${v};`)
+      .map(([k, v]) => `$pds-${kebabCase(k)}: ${v};`)
       .join('\n');
 
     await writeFile(filename, content);
@@ -85,7 +85,7 @@ const generateMixins = async (mixins: Mixins): Promise<void> => {
           /\._key_ {([A-Za-z0-9:\-/.'"[\]()%,;\s*+]*)}/g, // search for styles only
           '$1'
         );
-        return `@mixin ${paramCase(`pds-${k.replace(/Style$/, '')}`)} {${scss}}`;
+        return `@mixin ${kebabCase(`pds-${k.replace(/Style$/, '')}`)} {${scss}}`;
       })
       .join('\n\n');
 

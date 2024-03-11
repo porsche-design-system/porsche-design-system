@@ -1,12 +1,17 @@
-import type { ConsoleMessage, ElementHandle, Page, WaitForOptions, SnapshotOptions } from 'puppeteer';
+import type { ConsoleMessage, ElementHandle, Page, SnapshotOptions, WaitForOptions } from 'puppeteer';
 import { waitForComponentsReady } from './stencil';
 import type { TagName } from '@porsche-design-system/shared';
-import { getComponentMeta } from '@porsche-design-system/component-meta';
 import type { ComponentMeta } from '@porsche-design-system/component-meta';
-import * as beautify from 'js-beautify';
+import { getComponentMeta } from '@porsche-design-system/component-meta';
+import { format } from 'prettier';
 import { getInitialStyles } from '@porsche-design-system/components-js/partials';
 import type { FormState } from '@porsche-design-system/components/dist/types/bundle';
-import { paramCase } from 'change-case';
+
+// TODO: temporary workaround, because of https://github.com/microsoft/playwright/issues/17075
+// import { kebabCase } from 'change-case';
+const kebabCase = (str: string): string => {
+  return str.replace(/-(\w)/g, (_, group) => group.toUpperCase());
+};
 
 export type ClickableTests = {
   state: string;
@@ -182,24 +187,58 @@ export const getCssClasses = async (element: ElementHandle): Promise<string> => 
   return Object.values(await getProperty(element, 'classList')).join(' ');
 };
 
-export const getActiveElementTagNameInShadowRoot = (element: ElementHandle): Promise<string> => {
-  return element.evaluate((el) => el.shadowRoot.activeElement.tagName);
+export const getActiveElementTagNameInShadowRoot = async (element: ElementHandle): Promise<string> => {
+  return element.evaluate((el) => {
+    try {
+      return el.shadowRoot.activeElement.tagName;
+    } catch (e) {
+      throw new Error(
+        `Could not get "tagName" from ${el.tagName}.shadowRoot.activeElement (${el.shadowRoot.activeElement}) `
+      );
+    }
+  });
 };
 
 export const getActiveElementClassNameInShadowRoot = (element: ElementHandle): Promise<string> => {
-  return element.evaluate((el) => el.shadowRoot.activeElement.className);
+  return element.evaluate((el) => {
+    try {
+      return el.shadowRoot.activeElement.className;
+    } catch (e) {
+      throw new Error(
+        `Could not get "className" from ${el.tagName}.shadowRoot.activeElement (${el.shadowRoot.activeElement}) `
+      );
+    }
+  });
 };
 
 export const getActiveElementId = (page: Page): Promise<string> => {
-  return page.evaluate(() => document.activeElement.id);
+  return page.evaluate(() => {
+    try {
+      return document.activeElement.id;
+    } catch (e) {
+      throw new Error(`Could not get "id" from document.activeElement (${document.activeElement}) `);
+    }
+  });
 };
 
 export const getActiveElementTagName = (page: Page): Promise<string> => {
-  return page.evaluate(() => document.activeElement.tagName);
+  return page.evaluate(() => {
+    try {
+      return document.activeElement.tagName;
+    } catch (e) {
+      throw new Error(`Could not get "tagName" from document.activeElement (${document.activeElement}) `);
+    }
+  });
 };
 
 export const getActiveElementProp = (page: Page, prop: string): Promise<string> => {
-  return page.evaluate((prop) => document.activeElement[prop], prop);
+  return page.evaluate((prop) => {
+    try {
+      return document.activeElement[prop];
+    } catch (e) {
+      throw new Error(`Could not get "${prop}" from document.activeElement (${document.activeElement}) `);
+    }
+  }, prop);
 };
 
 type Pseudo = '::before' | '::after' | '::-webkit-search-decoration';
@@ -290,7 +329,7 @@ export const initConsoleObserver = (page: Page): void => {
 };
 
 const getConsoleErrors = () => consoleMessages.filter((x) => x.type() === 'error');
-export const getConsoleWarnings = () => consoleMessages.filter((x) => x.type() === 'warning');
+export const getConsoleWarnings = () => consoleMessages.filter((x) => x.type() === 'warn');
 export const getConsoleErrorsAmount = () => getConsoleErrors().length;
 export const getConsoleErrorMessages = () =>
   getConsoleErrors()
@@ -360,7 +399,7 @@ export const buildDefaultComponentMarkup = (tagName: TagName): string => {
         .map(
           ([propName, { defaultValue, isRequired }]) =>
             // handling all href attributes to trick throwIfInvalidLinkUsage and throwIfInvalidLinkTileProductUsage
-            (isRequired || propName === 'href') && ` ${paramCase(propName)}="${defaultValue ?? 'value'}"`
+            (isRequired || propName === 'href') && ` ${kebabCase(propName)}="${defaultValue ?? 'value'}"`
         )
         .filter(Boolean)
         .join()
@@ -376,10 +415,7 @@ export const buildDefaultComponentMarkup = (tagName: TagName): string => {
 
 export const expectShadowDomToMatchSnapshot = async (host: ElementHandle): Promise<void> => {
   const html = await host.evaluate((el) => el.shadowRoot.innerHTML);
-  const prettyHtml = beautify.html(html.replace(/>/g, '>\n'), {
-    indent_inner_html: true,
-    indent_size: 2,
-  });
+  const prettyHtml = await format(html.replace(/>/g, '>\n'), { parser: 'html' });
 
   expect(prettyHtml).not.toContain('[object Object]');
   expect(prettyHtml).toMatchSnapshot();

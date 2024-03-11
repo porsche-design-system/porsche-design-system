@@ -1,49 +1,39 @@
-import { baseURL } from '../helpers';
-import type { Page } from 'puppeteer';
+import { expect, test } from '@playwright/test';
 import type { Framework } from '../../../src/models';
 
-let page: Page;
-beforeEach(async () => (page = await browser.newPage()));
-afterEach(async () => await page.close());
-
-const frameworkToButtonTextMap: Record<Exclude<Framework, 'shared'>, string> = {
+const frameworkToButtonTextMap: Record<Exclude<Exclude<Framework, 'shared'>, 'vue'>, string> = {
   'vanilla-js': 'Vanilla JS',
   angular: 'Angular',
   react: 'React',
 };
 
-xit.each(<Framework[]>['vanilla-js', 'angular', 'react'])(
-  'should have working stackBlitz button for framework: %s',
-  async (framework) => {
-    await page.goto(`${baseURL}/components/button/examples`);
+const frameworks: Framework[] = ['vanilla-js', 'angular', 'react'];
 
-    const [frameworkButton] = await page.$x(`//button[text() = '${frameworkToButtonTextMap[framework]}']`);
+for (const framework of frameworks) {
+  test.fixme(`should have working stackBlitz button for framework: ${framework}`, async ({ browser }) => {
+    const context = await browser.newContext({
+      // bypass captcha in headless chrome
+      userAgent:
+        'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/97.0.4692.99 Safari/537.36',
+    });
+    const page = await context.newPage();
+    await page.goto('/components/button/examples');
+
+    const [frameworkButton] = await page
+      .locator(`xpath=//button[text() = '${frameworkToButtonTextMap[framework]}']`)
+      .all();
 
     await frameworkButton.click();
-    await page.waitForFunction((el) => el.getAttribute('aria-selected') === 'true', {}, frameworkButton);
+    expect(await frameworkButton.getAttribute('aria-selected')).toBe('true');
 
-    // bypass captcha in headless chrome
-    await page.setUserAgent(
-      'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/97.0.4692.99 Safari/537.36'
-    );
-
-    // save target of original page to know that this was the opener
-    const pageTarget = page.target();
-
-    const stackBlitzButton = await page.$('.playground p-button[type=button]');
+    const stackBlitzButton = page.locator('.playground p-button[type=button]').first();
+    const stackBlitzPagePromise = page.waitForEvent('popup');
 
     await stackBlitzButton.click();
-
+    const stackBlitzPage = await stackBlitzPagePromise;
+    await stackBlitzPage.waitForLoadState();
     // now we're on the stackBlitz website
-    // get stackBlitz tab
-    // check that the first page opened this new page
-    const newTarget = await browser.waitForTarget((target) => target.opener() === pageTarget);
-    // get the new page object
-    const stackBlitzPage = await newTarget.page();
-
-    await stackBlitzPage.waitForSelector('#PreviewContentWrapper');
-    const previewContentWrapper = await stackBlitzPage.$('#PreviewContentWrapper');
-    await previewContentWrapper.waitForSelector('iframe');
+    await stackBlitzPage.waitForSelector('#PreviewContentWrapper iframe');
 
     // Wait for StackBlitz dev-server to be done
     await stackBlitzPage.waitForFunction(
@@ -62,5 +52,5 @@ xit.each(<Framework[]>['vanilla-js', 'angular', 'react'])(
 
     expect(documentPDS).toBeDefined();
     await stackBlitzPage.close();
-  }
-);
+  });
+}

@@ -9,10 +9,58 @@ All notable changes to this project will be documented in this file and publishe
 - `@porsche-design-system/components-react`
 - `@porsche-design-system/components-vue`
 
-The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), and this project adheres to
+The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), and this project adheres to
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### [Unreleased]
+
+### [3.13.0] - 2024-03-11
+
+### [3.13.0-rc.2] - 2024-03-11
+
+#### Added
+
+- `Icon`: `battery-empty-co2` and `co2-class`
+  ([#3103](https://github.com/porsche-design-system/porsche-design-system/pull/3103))
+
+### [3.13.0-rc.1] - 2024-03-08
+
+#### Added
+
+- `Select` ([#3008](https://github.com/porsche-design-system/porsche-design-system/pull/3008))
+- `Modal`: Prop `backdrop` ([#3082](https://github.com/porsche-design-system/porsche-design-system/pull/3082))
+- `Modal`: CSS variables `--p-modal-spacing-top` and `--p-modal-spacing-bottom`
+  ([#3082](https://github.com/porsche-design-system/porsche-design-system/pull/3082))
+
+#### Fixed
+
+- `Flyout`: Refactor Flyout to use native Dialog element to resolve focus issues
+  ([#2998](https://github.com/porsche-design-system/porsche-design-system/pull/2998))
+- `Accordion`: Fix overflow scrollbar issues
+  ([#3042](https://github.com/porsche-design-system/porsche-design-system/pull/3042))
+- `Carousel`: Skip link is visible when it receives keyboard focus
+  ([#3055](https://github.com/porsche-design-system/porsche-design-system/pull/3055))
+- Placeholder color of `Text Field Wrapper` for `input type="date"` and `input type="time"` in Safari and alignment in
+  Mobile Safari ([#3068](https://github.com/porsche-design-system/porsche-design-system/pull/3068))
+- Counter overlap with long initial value in `Text Field Wrapper` for `input type="text"` with `maxlength`
+  ([#3079](https://github.com/porsche-design-system/porsche-design-system/pull/3079))
+
+#### Changed
+
+- Updated favicons output via `getMetaTagsAndIconLinks()` partial
+  ([#3081](https://github.com/porsche-design-system/porsche-design-system/pull/3081))
+
+### [3.13.0-rc.0] - 2024-02-19
+
+#### Added
+
+- `Link Tile Product`: Prop `price-original` to be able to visualize sale and original price
+  ([#3040](https://github.com/porsche-design-system/porsche-design-system/pull/3040))
+
+#### Changed
+
+- Validation of `getInitialStyles()` partial is temporarily disabled
+  ([#3049](https://github.com/porsche-design-system/porsche-design-system/pull/3049))
 
 ### [3.12.0] - 2024-02-12
 
@@ -20,8 +68,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 #### Fixed
 
-- `Checkbox Wrapper`, `Radio Button Wrapper`: Safari visually reflects input status (checked/unchecked) when 
-  used in another Shadow DOM or changed programmatically ([#3028](https://github.com/porsche-design-system/porsche-design-system/pull/3028))
+- `Checkbox Wrapper`, `Radio Button Wrapper`: Safari visually reflects input status (checked/unchecked) when used in
+  another Shadow DOM or changed programmatically
+  ([#3028](https://github.com/porsche-design-system/porsche-design-system/pull/3028))
 
 ### [3.12.0-rc.0] - 2024-02-05
 
@@ -33,8 +82,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 #### Changed
 
 - `Icon`: Visual appearance of `information-filled`, `information`, `success-filled`, `success`, `bookmark`, `compare`,
-  `configurate`, `heart-filled`, `heart`, `menu-lines`, `success`, `search`, `locate`, `star`, `shopping-bag-filled`, 
-  `shopping-bag`, `user-filled` and `user` ([#3025](https://github.com/porsche-design-system/porsche-design-system/pull/3025))
+  `configurate`, `heart-filled`, `heart`, `menu-lines`, `success`, `search`, `locate`, `star`, `shopping-bag-filled`,
+  `shopping-bag`, `user-filled` and `user`
+  ([#3025](https://github.com/porsche-design-system/porsche-design-system/pull/3025))
 - All components (expect some form elements) have improved focus styling based on `:focus-visible`
   ([#3011](https://github.com/porsche-design-system/porsche-design-system/pull/3011))
 - Several components are using CSS property `inset|inset-inline|inset-block` instead of `top|bottom|left|right` for
@@ -2509,7 +2559,7 @@ color contrast and might even be removed in an upcoming major release again.
 
 ### [2.0.0] - 2021-04-13
 
-In keeping with [Semver](https://semver.org/), Porsche Design System v2.0.0 was released due to changes in the API,
+In keeping with [Semver](https://semver.org), Porsche Design System v2.0.0 was released due to changes in the API,
 fundamental changes in loading behavior and others. With our new major version `v2.0.0` there are some important changes
 that you should watch out for. To make the migration from `v1.5.x` to our current `v2.0.0` easier, we offer a few
 guidelines.

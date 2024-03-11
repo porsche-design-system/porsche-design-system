@@ -10,24 +10,24 @@
     "start": "concurrently -k -s 'first' -n 'cdn,uxpin' 'serve-cdn' 'uxpin-merge --disable-tunneling'",
     "build": "cp ../react-wrapper/src/provider.tsx ./src && cp ../react-wrapper/src/hooks.ts ./src && cp ../react-wrapper/src/utils.ts ./src",
     "test": "yarn test:unit",
-    "test:unit": "jest --colors -c tests/unit/config/jest.config.js",
+    "test:unit": "NODE_OPTIONS=--experimental-vm-modules jest --colors -c tests/unit/config/jest.config.js",
     "clean": "yarn clean:node_modules && yarn clean:build",
     "clean:node_modules": "rm -rf ./node_modules && rm -rf ./yarn-error.log",
     "clean:build": "rm -rf ./.uxpin-merge",
     "dump": "./node_modules/.bin/uxpin-merge dump"
   },
   "dependencies": {
-    "@porsche-design-system/components-js": "3.12.0",
+    "@porsche-design-system/components-js": "3.13.0",
     "react": "^18.2.0"
   },
   "devDependencies": {
     "@babel/preset-typescript": "^7.23.3",
     "@porsche-design-system/assets": "5.0.2",
-    "@types/react": "^18.2.45",
+    "@types/react": "^18.2.57",
     "@uxpin/merge-cli": "3.4.2",
     "babel-loader": "^9.1.3",
     "typescript": "~5.3.3",
-    "webpack": "^5.89.0"
+    "webpack": "^5.90.3"
   },
   "volta": {
     "extends": "../../../../package.json"

@@ -1,8 +1,8 @@
 import * as fs from 'fs';
 import * as path from 'path';
 import * as crypto from 'crypto';
-import * as globby from 'globby';
-import { paramCase, camelCase } from 'change-case';
+import { globbySync } from 'globby';
+import { kebabCase, camelCase } from 'change-case';
 import { CDN_BASE_PATH_META_ICONS, CDN_BASE_URL_COM, CDN_BASE_URL_CN } from '../../../../../cdn.config';
 
 type Cdn = 'auto' | 'cn';
@@ -69,7 +69,7 @@ const copyMetaIconsAndBuildIconManifest = (files: string[]): MetaIconsManifest =
     const name = path.basename(sourcePath, ext);
     const metaIcons = fs.readFileSync(sourcePath, { encoding: 'binary' });
     const hash = toHash(metaIcons);
-    const filename = `${paramCase(name)}.${hash}${ext}`;
+    const filename = `${kebabCase(name)}.${hash}${ext}`;
     const targetPath = path.normalize(`./dist/meta-icons/${filename}`);
 
     const typeKey = camelCase(type);
@@ -98,7 +98,7 @@ export const META_ICONS_MANIFEST = ${JSON.stringify(manifest)};
 };
 
 const generate = (): void => {
-  const icons = globby.sync('./src/**/*').sort();
+  const icons = globbySync('./src/**/*').sort();
   const metaIconsManifest = copyMetaIconsAndBuildIconManifest(icons);
   const metaIconsManifestWithWebManifest = generateWebManifestAndExtendIconManifest(metaIconsManifest);
 

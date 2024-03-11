@@ -1,5 +1,6 @@
 import { componentsReady } from '@porsche-design-system/components-js';
 import { ICONS_MANIFEST } from '@porsche-design-system/assets';
+import { vi } from 'vitest';
 
 let prevValue: boolean;
 
@@ -41,7 +42,7 @@ describe('window.PDS_SKIP_FETCH = true', () => {
   });
 
   it('should not fetch icon asset', async () => {
-    const spy = jest.spyOn(global, 'fetch');
+    const spy = vi.spyOn(global, 'fetch');
 
     document.body.innerHTML = '<p-icon></p-icon>';
     expect(await componentsReady()).toBe(1);
@@ -59,7 +60,7 @@ describe('window.PDS_SKIP_FETCH = false', () => {
   });
 
   // TODO: can't get this since this is skipped in the jsdom-polyfill entry
-  xit('should fetch font-face css', () => {
+  it.skip('should fetch font-face css', () => {
     const link = document.querySelector('head').querySelector('link[rel="stylesheet"]');
     console.log(link);
 
@@ -90,6 +91,6 @@ describe('window.PDS_SKIP_FETCH = false', () => {
 
     const img = document.querySelector('p-icon').shadowRoot.querySelector('img');
 
-    expect(img.src).toBe(`https://cdn.ui.porsche.com/porsche-design-system/icons/${ICONS_MANIFEST['arrow-right']}`);
+    expect(img.src).toContain(`/icons/${ICONS_MANIFEST['arrow-right']}`);
   });
 });

@@ -1,8 +1,8 @@
 import * as fs from 'fs';
 import * as path from 'path';
 import * as crypto from 'crypto';
-import * as globby from 'globby';
-import { paramCase, camelCase } from 'change-case';
+import { globbySync } from 'globby';
+import { kebabCase, camelCase } from 'change-case';
 import { CDN_BASE_PATH_MARQUE } from '../../../../../cdn.config';
 
 type Manifest = {
@@ -50,7 +50,7 @@ const checkIntegrity = (manifest: Manifest): void => {
 };
 
 const createManifestAndCopyMarque = (): void => {
-  const files = globby.sync('./src/**/*.{png,webp}').sort();
+  const files = globbySync('./src/**/*.{png,webp}').sort();
 
   fs.rmSync(path.normalize('./dist'), { force: true, recursive: true });
   fs.mkdirSync(path.normalize('./dist/marque'), { recursive: true });
@@ -64,7 +64,7 @@ const createManifestAndCopyMarque = (): void => {
     const hash = toHash(marque);
     const [name, size, resolution] = path.basename(sourcePath, ext).split(/[.@]/g);
     const extension = ext.slice(1);
-    const filename = `${paramCase(name)}.${paramCase(size)}.min.${hash}@${paramCase(resolution)}.${extension}`;
+    const filename = `${kebabCase(name)}.${kebabCase(size)}.min.${hash}@${kebabCase(resolution)}.${extension}`;
     const targetPath = path.normalize(`./dist/marque/${filename}`);
 
     const nameKey = camelCase(name);

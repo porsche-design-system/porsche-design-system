@@ -1,7 +1,7 @@
 import * as fs from 'fs';
 import * as path from 'path';
-import * as globby from 'globby';
-import { paramCase } from 'change-case';
+import { globbySync } from 'globby';
+import { kebabCase } from 'change-case';
 import { type TagName, TAG_NAMES, INTERNAL_TAG_NAMES } from '@porsche-design-system/shared';
 import { ICONS_MANIFEST } from '@porsche-design-system/assets';
 
@@ -11,7 +11,7 @@ global.ROLLUP_REPLACE_IS_STAGING = 'staging';
 
 // can't resolve @porsche-design-system/components without building it first, therefore we use relative path
 const sourceDirectory = path.resolve('../components/src/components');
-const componentFileNames = globby.sync(`${sourceDirectory}/**/*.tsx`);
+const componentFileNames = globbySync(`${sourceDirectory}/**/*.tsx`);
 
 const getComponentFilePath = (tagName: TagName): string => {
   return componentFileNames.find((fileName) => fileName.match(new RegExp(`${tagName.replace(/^p-/, '/')}\\.tsx$`)));
@@ -264,7 +264,7 @@ const generateComponentMeta = (): void => {
     // nested pds components
     const nestedComponents: TagName[] = [
       ...Array.from(source.matchAll(/<PrefixedTagNames\.(p[A-Za-z]+)/g)).map(
-        ([, tagName]) => paramCase(tagName) as TagName
+        ([, tagName]) => kebabCase(tagName) as TagName
       ),
       ...(source.match(/<StateMessage/) ? ['p-icon' as TagName] : []),
     ].filter((x, idx, arr) => arr.findIndex((t) => t === x) === idx); // remove duplicates;
@@ -663,10 +663,7 @@ const generateComponentMeta = (): void => {
         // let's find the file where the type is defined
         const [, relativeEventTypePath] =
           source.match(new RegExp(`import [\\s\\S]+?${eventType}[\\s\\S]+?from '([\\s\\S]+?)';`)) || [];
-
-        const componentSourceFilePath = componentFileNames.find((fileName) =>
-          fileName.match(new RegExp(`${tagName.replace('p-', '')}\.tsx$`))
-        );
+        const componentSourceFilePath = getComponentFilePath(tagName);
         const eventTypePath = path.resolve(componentSourceFilePath, `../${relativeEventTypePath}.ts`);
         const eventTypeFileContent = fs.readFileSync(eventTypePath, 'utf8');
 

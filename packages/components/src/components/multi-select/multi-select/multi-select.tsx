@@ -7,7 +7,8 @@ import {
   getSelectedOptionsString,
   getSelectedOptionValues,
   hasFilterOptionResults,
-  initNativeSelect,
+  initNativeMultiSelect,
+  INTERNAL_MULTI_SELECT_SLOT,
   type MultiSelectOption,
   type MultiSelectUpdateEventDetail,
   resetFilteredOptions,
@@ -17,7 +18,7 @@ import {
   setLastOptionHighlighted,
   setSelectedOptions,
   syncMultiSelectOptionProps,
-  syncNativeSelect,
+  syncNativeMultiSelect,
   updateHighlightedOption,
   updateNativeOptions,
   updateOptionsFilterState,
@@ -56,7 +57,7 @@ import {
 } from '@stencil/core';
 import { getComponentCss } from './multi-select-styles';
 import { messageId, StateMessage } from '../../common/state-message/state-message';
-import { descriptionId, labelId, Label } from '../../common/label/label';
+import { descriptionId, Label, labelId } from '../../common/label/label';
 
 const propTypes: PropTypes<typeof MultiSelect> = {
   label: AllowedTypes.string,
@@ -167,7 +168,7 @@ export class MultiSelect {
     // Use initial value to set options
     setSelectedOptions(this.multiSelectOptions, this.value);
     if (this.isWithinForm) {
-      this.nativeSelect = initNativeSelect(this.host, this.name, this.disabled, this.required);
+      this.nativeSelect = initNativeMultiSelect(this.host, this.name, this.disabled, this.required);
       updateNativeOptions(this.nativeSelect, this.multiSelectOptions);
     }
   }
@@ -182,7 +183,7 @@ export class MultiSelect {
 
   public componentWillUpdate(): void {
     if (this.isWithinForm) {
-      syncNativeSelect(this.nativeSelect, this.name, this.disabled, this.required);
+      syncNativeMultiSelect(this.nativeSelect, this.name, this.disabled, this.required);
     }
   }
 
@@ -288,7 +289,7 @@ export class MultiSelect {
           {this.srHighlightedOptionText}
         </span>
         {/* named slot needs to be placed before closing root element, otherwise slot change listener might not always work for unknown reasons */}
-        {this.isWithinForm && <slot name="internal-select" />}
+        {this.isWithinForm && <slot name={INTERNAL_MULTI_SELECT_SLOT} />}
       </div>
     );
   }
@@ -412,6 +413,7 @@ export class MultiSelect {
 
   private updateSrHighlightedOptionText = (): void => {
     const highlightedOptionIndex = getHighlightedOptionIndex(this.multiSelectOptions);
+    // TODO: Does this consider hidden/disabled options?
     const highlightedOption = this.multiSelectOptions[highlightedOptionIndex];
     this.srHighlightedOptionText =
       highlightedOption &&

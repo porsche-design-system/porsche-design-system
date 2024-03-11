@@ -6,7 +6,7 @@
   "scope": "@porsche-design-system",
   "author": "Dr. Ing. h.c. F. Porsche AG",
   "scripts": {
-    "prestartAndBuild": "yarn clean:build && ts-node scripts/prepareSharedStyles.ts",
+    "prestartAndBuild": "yarn clean:build && tsx scripts/prepareSharedStyles.ts",
     "prestart": "yarn prestartAndBuild",
     "prebuild-app": "yarn prestartAndBuild",
     "start": "concurrently -k -s 'first' -n 'cdn,nextjs' 'serve-cdn' 'next dev'",
@@ -22,19 +22,19 @@
   },
   "dependencies": {
     "@porsche-design-system/assets": "5.0.2",
-    "@porsche-design-system/components-react": "3.12.0",
-    "next": "14.0.4",
+    "@porsche-design-system/components-react": "3.13.0",
+    "next": "14.1.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
   "devDependencies": {
     "@porsche-design-system/shared": "0.0.0",
-    "@types/react": "^18.2.45",
-    "@types/react-dom": "^18.2.18",
+    "@types/react": "^18.2.57",
+    "@types/react-dom": "^18.2.19",
     "concurrently": "^8.2.2",
     "eslint": "^8.56.0",
-    "eslint-config-next": "^14.0.4",
-    "ts-node": "^10.9.2",
+    "eslint-config-next": "^14.1.0",
+    "tsx": "^4.7.1",
     "typescript": "~5.3.3"
   },
   "eslintConfig": {

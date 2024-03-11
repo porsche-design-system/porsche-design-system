@@ -1,7 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import type { RouteComponent, RouteRecordRaw } from 'vue-router';
 import * as fromPages from '../pages';
-import { paramCase } from 'change-case';
+import { kebabCase } from 'change-case';
 import * as fromExamples from '../examples';
 
 export type RouteType = RouteRecordRaw & {
@@ -11,7 +11,7 @@ export type RouteType = RouteRecordRaw & {
 const generatedRoutes: RouteType[] = Object.keys(fromPages).map<RouteType>((page) => {
   const name = page.replace(/Page$/, '');
   return {
-    path: '/' + paramCase(name),
+    path: '/' + kebabCase(name),
     name: name,
     component: (fromPages as Record<string, RouteComponent>)[page],
   };
@@ -134,6 +134,26 @@ export const routes: RouteType[] = [
     path: '/segmented-control-example',
     name: 'Segmented Control Example',
     component: fromExamples.SegmentedControlExample,
+  },
+  {
+    path: '/select-example',
+    name: 'Select Example',
+    component: fromExamples.SelectExample,
+  },
+  {
+    path: '/select-example-controlled',
+    name: 'Select Example Controlled',
+    component: fromExamples.SelectExampleControlled,
+  },
+  {
+    path: '/select-example-dynamic',
+    name: 'Select Example Dynamic',
+    component: fromExamples.SelectExampleDynamic,
+  },
+  {
+    path: '/select-example-dynamic',
+    name: 'Select Example Required',
+    component: fromExamples.SelectExampleRequired,
   },
   {
     path: '/stepper-horizontal-example',

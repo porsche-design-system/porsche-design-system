@@ -89,7 +89,10 @@ import { LinkTileModelSignatureComponent } from './generated/link-tile-model-sig
 import { LinkTileProductComponent } from './generated/link-tile-product.component';
 import { MarqueComponent } from './generated/marque.component';
 import { ModalComponent } from './generated/modal.component';
+import { ModalBackdropBlurComponent } from './generated/modal-backdrop-blur.component';
+import { ModalBackdropShadingComponent } from './generated/modal-backdrop-shading.component';
 import { ModalBasicComponent } from './generated/modal-basic.component';
+import { ModalCustomStylingComponent } from './generated/modal-custom-styling.component';
 import { ModalDisableCloseButtonComponent } from './generated/modal-disable-close-button.component';
 import { ModalFullscreenComponent } from './generated/modal-fullscreen.component';
 import { ModalFullscreenResponsiveComponent } from './generated/modal-fullscreen-responsive.component';
@@ -109,6 +112,7 @@ import { PopoverComponent } from './generated/popover.component';
 import { RadioButtonWrapperComponent } from './generated/radio-button-wrapper.component';
 import { ScrollerComponent } from './generated/scroller.component';
 import { SegmentedControlComponent } from './generated/segmented-control.component';
+import { SelectComponent } from './generated/select.component';
 import { SelectWrapperComponent } from './generated/select-wrapper.component';
 import { SpinnerComponent } from './generated/spinner.component';
 import { StepperHorizontalComponent } from './generated/stepper-horizontal.component';
@@ -194,7 +198,10 @@ export const generatedPages = [
   LinkTileProductComponent,
   MarqueComponent,
   ModalComponent,
+  ModalBackdropBlurComponent,
+  ModalBackdropShadingComponent,
   ModalBasicComponent,
+  ModalCustomStylingComponent,
   ModalDisableCloseButtonComponent,
   ModalFullscreenComponent,
   ModalFullscreenResponsiveComponent,
@@ -214,6 +221,7 @@ export const generatedPages = [
   RadioButtonWrapperComponent,
   ScrollerComponent,
   SegmentedControlComponent,
+  SelectComponent,
   SelectWrapperComponent,
   SpinnerComponent,
   StepperHorizontalComponent,
@@ -524,9 +532,24 @@ export const generatedRoutes: ExtendedRoute[] = [
     component: ModalComponent,
   },
   {
+    name: 'Modal Backdrop Blur',
+    path: 'modal-backdrop-blur',
+    component: ModalBackdropBlurComponent,
+  },
+  {
+    name: 'Modal Backdrop Shading',
+    path: 'modal-backdrop-shading',
+    component: ModalBackdropShadingComponent,
+  },
+  {
     name: 'Modal Basic',
     path: 'modal-basic',
     component: ModalBasicComponent,
+  },
+  {
+    name: 'Modal Custom Styling',
+    path: 'modal-custom-styling',
+    component: ModalCustomStylingComponent,
   },
   {
     name: 'Modal Disable Close Button',
@@ -612,6 +635,11 @@ export const generatedRoutes: ExtendedRoute[] = [
     name: 'Segmented Control',
     path: 'segmented-control',
     component: SegmentedControlComponent,
+  },
+  {
+    name: 'Select',
+    path: 'select',
+    component: SelectComponent,
   },
   {
     name: 'Select Wrapper',

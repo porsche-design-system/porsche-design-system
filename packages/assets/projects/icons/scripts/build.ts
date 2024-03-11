@@ -2,8 +2,8 @@ import * as fs from 'fs';
 import * as path from 'path';
 import * as crypto from 'crypto';
 import { optimize, Config } from 'svgo';
-import * as globby from 'globby';
-import { paramCase } from 'change-case';
+import { globbySync } from 'globby';
+import { kebabCase } from 'change-case';
 import { CDN_BASE_PATH_ICONS } from '../../../../../cdn.config';
 import * as gzipSize from 'gzip-size';
 import { format } from 'prettier';
@@ -36,7 +36,7 @@ const createManifestAndOptimizeIcons = async (files: string[], config: Config): 
     const svgOptimizedFilename = `${svgRawName}.min.${svgOptimizedHash}.svg`;
     const svgOptimizedPath = path.normalize(`./dist/icons/${svgOptimizedFilename}`);
 
-    if (svgRawName !== paramCase(svgRawName)) {
+    if (svgRawName !== kebabCase(svgRawName)) {
       throw new Error(`Icon name "${svgRawName}" does not fit naming convention »param-case«.`);
     }
     if (svgRawName in manifest) {
@@ -94,7 +94,7 @@ export type IconName = typeof ICON_NAMES[number];
 };
 
 const generate = async (): Promise<void> => {
-  const files = globby.sync('./src/**/*.svg').sort();
+  const files = globbySync('./src/**/*.svg').sort();
   const config: Config = require('../svgo.config.js');
 
   await createManifestAndOptimizeIcons(files, config);

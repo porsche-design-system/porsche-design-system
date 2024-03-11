@@ -31,13 +31,18 @@ import {
   prefersColorSchemeDarkMediaQuery,
 } from '../../styles';
 import { MODAL_Z_INDEX } from '../../constants';
+import { type ModalBackdrop } from './modal-utils';
+
+const cssVariableSpacingTop = '--p-modal-spacing-top';
+const cssVariableSpacingBottom = '--p-modal-spacing-bottom';
 
 const mediaQueryXl = getMediaQueryMin('xl');
 const { primaryColor: darkThemePrimaryColor, contrastHighColor: darkThemeContrastHighColor } = getThemedColors('dark');
 
 export const stretchToFullModalWidthClassName = 'stretch-to-full-modal-width';
 
-const marginTopBottom = 'clamp(16px, 7vh, 192px)';
+const marginTopBottomFallback = 'clamp(16px, 7vh, 192px)';
+const marginTopBottomXlandXxlFallback = 'min(192px, 10vh)';
 export const footerShadowClass = 'footer--shadow';
 
 export const getFullscreenJssStyles: GetJssStyleFunction = (fullscreen: boolean): JssStyle => {
@@ -53,7 +58,7 @@ export const getFullscreenJssStyles: GetJssStyleFunction = (fullscreen: boolean)
         minWidth: '276px', // on viewport 320px: calc(${gridColumnWidthBase} * 6 + ${gridGap} * 5)
         maxWidth: '1535.5px', // on viewport 1920px: `calc(${gridColumnWidthXXL} * 14 + ${gridGap} * 13)`
         minHeight: 'auto',
-        margin: `${marginTopBottom} ${gridExtendedOffsetBase}`,
+        margin: `var(${cssVariableSpacingTop},${marginTopBottomFallback}) ${gridExtendedOffsetBase} var(${cssVariableSpacingBottom},${marginTopBottomFallback})`,
         borderRadius: borderRadiusMedium,
       };
 };
@@ -92,6 +97,7 @@ const getSlottedJssStyle = (marginValue: number, hasHeader: boolean, hasDismissB
 
 export const getComponentCss = (
   isOpen: boolean,
+  backdrop: ModalBackdrop,
   isFullscreen: BreakpointCustomizable<boolean>,
   hasDismissButton: boolean,
   hasHeader: boolean,
@@ -112,7 +118,7 @@ export const getComponentCss = (
         ...addImportantToEachRule({
           ...colorSchemeStyles,
           ...hostHiddenStyles,
-          ...getBackdropJssStyle(isOpen, MODAL_Z_INDEX, theme, duration),
+          ...getBackdropJssStyle(isOpen, MODAL_Z_INDEX, theme, duration, backdrop),
         }),
       },
       '::slotted': addImportantToEachRule(
@@ -181,7 +187,9 @@ export const getComponentCss = (
           border: 0,
         },
         [mediaQueryXl]: {
-          margin: isFullscreenForXlAndXxl ? 0 : `min(192px, 10vh) ${gridExtendedOffsetBase}`,
+          margin: isFullscreenForXlAndXxl
+            ? 0
+            : `var(${cssVariableSpacingTop},${marginTopBottomXlandXxlFallback}) ${gridExtendedOffsetBase} var(${cssVariableSpacingBottom},${marginTopBottomXlandXxlFallback})`,
         },
         ...prefersColorSchemeDarkMediaQuery(theme, {
           color: primaryColorDark,

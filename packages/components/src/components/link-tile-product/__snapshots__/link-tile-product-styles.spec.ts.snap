@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`getComponentCss() should return correct css for hasLikeButton: false, hasSlottedAnchor: false, aspectRatio: "9:16" and theme: dark 1`] = `
+exports[`getComponentCss() should return correct css for hasLikeButton: false, hasSlottedAnchor: false, hasPriceOriginal: false, hasDescription: false, aspectRatio: "9:16" and theme: dark 1`] = `
 ":host {
   display: block;
   position: relative;
@@ -71,6 +71,7 @@ slot[name="header"] {
   text-align: center;
 }
 .heading {
+  margin: 0 0 2px;
   font: normal normal 600 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
@@ -78,28 +79,12 @@ slot[name="header"] {
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
-  margin: 0 0 2px;
 }
 .price {
+  margin: 0;
   font: normal normal 400 clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-  margin: 0;
-}
-.description {
-  font: normal normal 400 .75rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-  margin: 0;
-  color: #AFB0B3;
 }
 @media(min-width:760px) {
   .image {
@@ -115,7 +100,7 @@ slot[name="header"] {
 "
 `;
 
-exports[`getComponentCss() should return correct css for hasLikeButton: true, hasSlottedAnchor: false, aspectRatio: "3:4" and theme: auto 1`] = `
+exports[`getComponentCss() should return correct css for hasLikeButton: true, hasSlottedAnchor: false, hasPriceOriginal: false, hasDescription: false, aspectRatio: "3:4" and theme: auto 1`] = `
 ":host {
   display: block;
   position: relative;
@@ -190,6 +175,7 @@ slot[name="header"] {
   text-align: center;
 }
 .heading {
+  margin: 0 0 2px;
   font: normal normal 600 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
@@ -197,28 +183,12 @@ slot[name="header"] {
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
-  margin: 0 0 2px;
 }
 .price {
+  margin: 0;
   font: normal normal 400 clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-  margin: 0;
-}
-.description {
-  font: normal normal 400 .75rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-  margin: 0;
-  color: #535457;
 }
 @media(min-width:760px) {
   .image {
@@ -234,9 +204,6 @@ slot[name="header"] {
   .anchor:focus-visible {
     outline-color: #1A44EA;
   }
-  .description {
-    color: #AFB0B3;
-  }
 }
 
 @media(hover:hover) {
@@ -247,7 +214,7 @@ slot[name="header"] {
 "
 `;
 
-exports[`getComponentCss() should return correct css for hasLikeButton: true, hasSlottedAnchor: false, aspectRatio: "3:4" and theme: dark 1`] = `
+exports[`getComponentCss() should return correct css for hasLikeButton: true, hasSlottedAnchor: false, hasPriceOriginal: false, hasDescription: false, aspectRatio: "3:4" and theme: dark 1`] = `
 ":host {
   display: block;
   position: relative;
@@ -322,6 +289,7 @@ slot[name="header"] {
   text-align: center;
 }
 .heading {
+  margin: 0 0 2px;
   font: normal normal 600 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
@@ -329,28 +297,12 @@ slot[name="header"] {
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
-  margin: 0 0 2px;
 }
 .price {
+  margin: 0;
   font: normal normal 400 clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-  margin: 0;
-}
-.description {
-  font: normal normal 400 .75rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-  margin: 0;
-  color: #AFB0B3;
 }
 @media(min-width:760px) {
   .image {
@@ -366,7 +318,7 @@ slot[name="header"] {
 "
 `;
 
-exports[`getComponentCss() should return correct css for hasLikeButton: true, hasSlottedAnchor: false, aspectRatio: {"base":"3:4","xs":"9:16"} and theme: light 1`] = `
+exports[`getComponentCss() should return correct css for hasLikeButton: true, hasSlottedAnchor: false, hasPriceOriginal: false, hasDescription: false, aspectRatio: {"base":"3:4","xs":"9:16"} and theme: light 1`] = `
 ":host {
   display: block;
   position: relative;
@@ -441,6 +393,7 @@ slot[name="header"] {
   text-align: center;
 }
 .heading {
+  margin: 0 0 2px;
   font: normal normal 600 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
@@ -448,28 +401,12 @@ slot[name="header"] {
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
-  margin: 0 0 2px;
 }
 .price {
+  margin: 0;
   font: normal normal 400 clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-  margin: 0;
-}
-.description {
-  font: normal normal 400 .75rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-  margin: 0;
-  color: #535457;
 }
 @media(min-width:480px) {
   .root {
@@ -491,7 +428,7 @@ slot[name="header"] {
 "
 `;
 
-exports[`getComponentCss() should return correct css for hasLikeButton: true, hasSlottedAnchor: true, aspectRatio: "3:4" and theme: light 1`] = `
+exports[`getComponentCss() should return correct css for hasLikeButton: true, hasSlottedAnchor: true, hasPriceOriginal: false, hasDescription: false, aspectRatio: "3:4" and theme: light 1`] = `
 ":host {
   display: block;
   position: relative;
@@ -567,6 +504,7 @@ slot[name="header"] {
   text-align: center;
 }
 .heading {
+  margin: 0 0 2px;
   font: normal normal 600 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
@@ -574,19 +512,249 @@ slot[name="header"] {
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
-  margin: 0 0 2px;
 }
 .price {
+  margin: 0;
   font: normal normal 400 clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
+}
+@media(min-width:760px) {
+  .image {
+    padding: 0 clamp(16px, 1.25vw + 12px, 36px);
+  }
+}
+
+@media(hover:hover) {
+  .root:hover .image {
+    transform: scale3d(1.05,1.05,1.05);
+  }
+}
+"
+`;
+
+exports[`getComponentCss() should return correct css for hasLikeButton: true, hasSlottedAnchor: true, hasPriceOriginal: true, hasDescription: false, aspectRatio: "3:4" and theme: light 1`] = `
+":host {
+  display: block;
+  position: relative;
+  color-scheme: light dark !important;
+}
+:host([hidden]) {
+  display: none !important;
+}
+slot[name="header"] {
+  display: block;
+}
+::slotted(a[slot='anchor']) {
+  position: absolute !important;
+  inset: 0 !important;
+  z-index: 1 !important;
+  border-radius: 8px !important;
+  text-indent: -999999px !important;
+}
+::slotted(a[slot='anchor']::-moz-focus-inner) {
+  border: 0 !important;
+}
+::slotted(a[slot='anchor']:focus) {
+  outline: 0 !important;
+}
+::slotted(a[slot='anchor']:focus-visible) {
+  outline: 2px solid #1A44EA !important;
+  outline-offset: 2px !important;
+}
+::slotted([slot="header"]) {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  gap: clamp(4px, 0.25vw + 3px, 8px) !important;
+}
+::slotted(img), ::slotted(picture) {
+  display: block !important;
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  border-radius: 12px !important;
+  overflow: hidden !important;
+}
+s {
+  color: #6B6D70;
+}
+.root {
+  display: flex;
+  flex-direction: column;
+  aspect-ratio: 3/4;
+  overflow: hidden;
+  box-sizing: border-box;
+  border-radius: 8px;
+  padding: clamp(8px, 0.5vw + 6px, 16px);
+  color: #010205;
+  background-color: #EEEFF2;
+}
+.header {
+  display: flex;
+  gap: clamp(8px, 0.5vw + 6px, 16px);
+  justify-content: space-between;
+  align-items: flex-start;
+}
+.button {
+  position: relative;
+  z-index: 2;
+}
+.image {
+  aspect-ratio: 8/9;
+  margin: clamp(8px, 0.5vw + 6px, 16px) auto clamp(4px, 0.25vw + 3px, 8px);
+  overflow: hidden;
+  transition: transform var(--p-transition-duration, 0.4s) cubic-bezier(0.25,0.1,0.25,1);
+}
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  text-align: center;
+}
+.heading {
+  margin: 0 0 2px;
+  font: normal normal 600 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
   display: -webkit-box;
-  -webkit-line-clamp: 2;
+  -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
+}
+.price {
   margin: 0;
+  font: normal normal 400 clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  column-gap: clamp(4px, 0.25vw + 3px, 8px);
+}
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+}
+@media(min-width:760px) {
+  .image {
+    padding: 0 clamp(16px, 1.25vw + 12px, 36px);
+  }
+}
+
+@media(hover:hover) {
+  .root:hover .image {
+    transform: scale3d(1.05,1.05,1.05);
+  }
+}
+"
+`;
+
+exports[`getComponentCss() should return correct css for hasLikeButton: true, hasSlottedAnchor: true, hasPriceOriginal: true, hasDescription: true, aspectRatio: "3:4" and theme: light 1`] = `
+":host {
+  display: block;
+  position: relative;
+  color-scheme: light dark !important;
+}
+:host([hidden]) {
+  display: none !important;
+}
+slot[name="header"] {
+  display: block;
+}
+::slotted(a[slot='anchor']) {
+  position: absolute !important;
+  inset: 0 !important;
+  z-index: 1 !important;
+  border-radius: 8px !important;
+  text-indent: -999999px !important;
+}
+::slotted(a[slot='anchor']::-moz-focus-inner) {
+  border: 0 !important;
+}
+::slotted(a[slot='anchor']:focus) {
+  outline: 0 !important;
+}
+::slotted(a[slot='anchor']:focus-visible) {
+  outline: 2px solid #1A44EA !important;
+  outline-offset: 2px !important;
+}
+::slotted([slot="header"]) {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  gap: clamp(4px, 0.25vw + 3px, 8px) !important;
+}
+::slotted(img), ::slotted(picture) {
+  display: block !important;
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  border-radius: 12px !important;
+  overflow: hidden !important;
+}
+s {
+  color: #6B6D70;
+}
+.root {
+  display: flex;
+  flex-direction: column;
+  aspect-ratio: 3/4;
+  overflow: hidden;
+  box-sizing: border-box;
+  border-radius: 8px;
+  padding: clamp(8px, 0.5vw + 6px, 16px);
+  color: #010205;
+  background-color: #EEEFF2;
+}
+.header {
+  display: flex;
+  gap: clamp(8px, 0.5vw + 6px, 16px);
+  justify-content: space-between;
+  align-items: flex-start;
+}
+.button {
+  position: relative;
+  z-index: 2;
+}
+.image {
+  aspect-ratio: 8/9;
+  margin: clamp(8px, 0.5vw + 6px, 16px) auto clamp(4px, 0.25vw + 3px, 8px);
+  overflow: hidden;
+  transition: transform var(--p-transition-duration, 0.4s) cubic-bezier(0.25,0.1,0.25,1);
+}
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  text-align: center;
+}
+.heading {
+  margin: 0 0 2px;
+  font: normal normal 600 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.price {
+  margin: 0;
+  font: normal normal 400 clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  column-gap: clamp(4px, 0.25vw + 3px, 8px);
 }
 .description {
+  margin: 0;
   font: normal normal 400 .75rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
@@ -594,8 +762,17 @@ slot[name="header"] {
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
-  margin: 0;
   color: #535457;
+}
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
 }
 @media(min-width:760px) {
   .image {

@@ -2,7 +2,7 @@ import { expect, type Page, test } from '@playwright/test';
 import { schemes, themes, viewportWidthM } from '@porsche-design-system/shared/testing/playwright.vrt.config';
 import {
   forceFocusHoverState,
-  forceFocusState,
+  forceFocusVisibleState,
   getPlaygroundPseudoStatesMarkup,
   type PrefersColorScheme,
   setContentWithDesignSystem,
@@ -13,16 +13,16 @@ const component = 'wordmark';
 
 const scenario = async (page: Page, theme: Theme, scheme?: PrefersColorScheme): Promise<void> => {
   const markup = () => `
-    <p-wordmark href="https://www.porsche.com"></p-wordmark>
-    <p-wordmark href="https://www.porsche.com" style="padding: 1rem"></p-wordmark>`;
+    <p-wordmark href="https://porsche.com"></p-wordmark>
+    <p-wordmark href="https://porsche.com" style="padding: 1rem"></p-wordmark>`;
 
   await setContentWithDesignSystem(page, getPlaygroundPseudoStatesMarkup(markup, { autoLayout: 'inline' }), {
     forceComponentTheme: theme,
     prefersColorScheme: scheme,
   });
 
-  await forceFocusState(page, '.focus p-wordmark'); // native outline should not be visible
-  await forceFocusState(page, '.focus p-wordmark >>> a');
+  await forceFocusVisibleState(page, '.focus p-wordmark'); // native outline should not be visible
+  await forceFocusVisibleState(page, '.focus p-wordmark >>> a');
   await forceFocusHoverState(page, '.focus-hover p-wordmark >>> a');
 };
 

@@ -6,7 +6,7 @@ on:
         required: true
 name: 'Build and Test'
 env:
-  PDS_PLAYWRIGHT_DOCKER_IMAGE: ghcr.io/porsche-design-system/porsche-design-system/playwright:v1.40.1-focal-test6
+  PDS_PLAYWRIGHT_DOCKER_IMAGE: ghcr.io/porsche-design-system/porsche-design-system/playwright:v1.41.2-focal-test19
 jobs:
   assets:
     name: 'Assets'
@@ -152,9 +152,14 @@ jobs:
         with:
           entrypoint: run-test-e2e-puppeteer
           args: --components-js
-  components-js-e2e-playwright:
-    name: 'Components JS E2E (Playwright)'
+  components-js-e2e-playwright-chrome:
+    name: 'Components JS E2E (Chrome/Playwright)'
     runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        shardIndex: [ 1, 2 ]
+        shardTotal: [ 2 ]
     steps:
       - name: 'Checkout'
         uses: actions/checkout@v4
@@ -168,10 +173,59 @@ jobs:
         uses: ./.github/actions/docker-run-playwright
         with:
           entrypoint: run-test-e2e-playwright
-          args: --components-js
+          args: --components-js:chrome:${{ matrix.shardIndex }}/${{ matrix.shardTotal }}
+  components-js-e2e-playwright-firefox:
+    name: 'Components JS E2E (Firefox/Playwright)'
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        shardIndex: [ 1, 2 ]
+        shardTotal: [ 2 ]
+    steps:
+      - name: 'Checkout'
+        uses: actions/checkout@v4
+      - name: 'Setup and install'
+        uses: ./.github/actions/setup-and-install
+        with:
+          github-token: ${{ secrets.github-token }}
+      - name: 'Build assets, component-meta, components, components-js, shared and utilities'
+        uses: ./.github/actions/build-components-js
+      - name: 'E2E Test (Playwright)'
+        uses: ./.github/actions/docker-run-playwright
+        with:
+          entrypoint: run-test-e2e-playwright
+          args: --components-js:firefox:${{ matrix.shardIndex }}/${{ matrix.shardTotal }}
+  components-js-e2e-playwright-safari:
+    name: 'Components JS E2E (Safari/Playwright)'
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        shardIndex: [ 1, 2 ]
+        shardTotal: [ 2 ]
+    steps:
+      - name: 'Checkout'
+        uses: actions/checkout@v4
+      - name: 'Setup and install'
+        uses: ./.github/actions/setup-and-install
+        with:
+          github-token: ${{ secrets.github-token }}
+      - name: 'Build assets, component-meta, components, components-js, shared and utilities'
+        uses: ./.github/actions/build-components-js
+      - name: 'E2E Test (Playwright)'
+        uses: ./.github/actions/docker-run-playwright
+        with:
+          entrypoint: run-test-e2e-playwright
+          args: --components-js:safari:${{ matrix.shardIndex }}/${{ matrix.shardTotal }}
   components-js-common-vrt-playwright-chrome:
-    name: 'Components JS VRT Common (Playwright Chrome)'
+    name: 'Components JS VRT Common (Chrome)'
     runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        shardIndex: [ 1, 2 ]
+        shardTotal: [ 2 ]
     steps:
       - name: 'Checkout'
         uses: actions/checkout@v4
@@ -185,15 +239,15 @@ jobs:
         uses: ./.github/actions/docker-run-playwright
         with:
           entrypoint: run-test-vrt-playwright
-          args: --components-js:chrome:common
+          args: --components-js:chrome:common:${{ matrix.shardIndex }}/${{ matrix.shardTotal }}
       - name: 'VRT Regression (Playwright)'
         if: failure()
         uses: actions/upload-artifact@v4
         with:
-          name: components-js-vrt-common-playwright-chrome-regression
+          name: components-js-vrt-common-playwright-chrome-regression-${{ matrix.shardIndex }}
           path: ./packages/components-js/tests/vrt/playwright/results
-  components-js-custom-states-vrt-playwright-chrome:
-    name: 'Components JS VRT Custom/States (Playwright Chrome)'
+  components-js-custom-vrt-playwright-chrome:
+    name: 'Components JS VRT Custom (Chrome)'
     runs-on: ubuntu-latest
     steps:
       - name: 'Checkout'
@@ -208,15 +262,38 @@ jobs:
         uses: ./.github/actions/docker-run-playwright
         with:
           entrypoint: run-test-vrt-playwright
-          args: --components-js:chrome:customAndStates
+          args: --components-js:chrome:custom
       - name: 'VRT Regression (Playwright)'
         if: failure()
         uses: actions/upload-artifact@v4
         with:
-          name: components-js-vrt-custom-states-playwright-chrome-regression
+          name: components-js-vrt-custom-playwright-chrome-regression
+          path: ./packages/components-js/tests/vrt/playwright/results
+  components-js-states-vrt-playwright-chrome:
+    name: 'Components JS VRT States (Chrome)'
+    runs-on: ubuntu-latest
+    steps:
+      - name: 'Checkout'
+        uses: actions/checkout@v4
+      - name: 'Setup and install'
+        uses: ./.github/actions/setup-and-install
+        with:
+          github-token: ${{ secrets.github-token }}
+      - name: 'Build assets, component-meta, components, components-js, shared and utilities'
+        uses: ./.github/actions/build-components-js
+      - name: 'VRT Test (Playwright)'
+        uses: ./.github/actions/docker-run-playwright
+        with:
+          entrypoint: run-test-vrt-playwright
+          args: --components-js:chrome:states
+      - name: 'VRT Regression (Playwright)'
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: components-js-vrt-states-playwright-chrome-regression
           path: ./packages/components-js/tests/vrt/playwright/results
   components-js-vrt-playwright-safari:
-    name: 'Components JS VRT (Playwright Safari)'
+    name: 'Components JS VRT (Safari)'
     runs-on: ubuntu-latest
     steps:
       - name: 'Checkout'
@@ -404,45 +481,45 @@ jobs:
     name: 'Components Vue'
     runs-on: ubuntu-latest
     steps:
-    - name: 'Checkout'
-      uses: actions/checkout@v4
-    - name: 'Setup and install'
-      uses: ./.github/actions/setup-and-install
-      with:
-        github-token: ${{ secrets.github-token }}
-    - name: 'Build assets, component-meta, components, components-js, shared and utilities'
-      uses: ./.github/actions/build-components-js
-    - name: 'Lint'
-      uses: ./.github/actions/docker-run-playwright
-      with:
-        entrypoint: run-lint
-        args: --components-vue
-    - name: 'Build Components Vue'
-      uses: ./.github/actions/docker-run-playwright
-      with:
-        entrypoint: run-build
-        args: --components-vue
-    - name: 'Unit Test vue-wrapper'
-      uses: ./.github/actions/docker-run-playwright
-      with:
-        entrypoint: run-test-unit
-        args: --components-vue
-    - name: 'E2E Test components-vue'
-      uses: ./.github/actions/docker-run-playwright
-      with:
-        entrypoint: run-test-e2e
-        args: --components-vue
-    - name: 'VRT Test components-vue'
-      uses: ./.github/actions/docker-run-playwright
-      with:
-        entrypoint: run-test-vrt
-        args: --components-vue
-    - name: 'VRT Regression components-vue'
-      if: failure()
-      uses: actions/upload-artifact@v4
-      with:
-        name: components-vue-vrt-regression
-        path: ./packages/components-vue/tests/vrt/results
+      - name: 'Checkout'
+        uses: actions/checkout@v4
+      - name: 'Setup and install'
+        uses: ./.github/actions/setup-and-install
+        with:
+          github-token: ${{ secrets.github-token }}
+      - name: 'Build assets, component-meta, components, components-js, shared and utilities'
+        uses: ./.github/actions/build-components-js
+      - name: 'Lint'
+        uses: ./.github/actions/docker-run-playwright
+        with:
+          entrypoint: run-lint
+          args: --components-vue
+      - name: 'Build Components Vue'
+        uses: ./.github/actions/docker-run-playwright
+        with:
+          entrypoint: run-build
+          args: --components-vue
+      - name: 'Unit Test vue-wrapper'
+        uses: ./.github/actions/docker-run-playwright
+        with:
+          entrypoint: run-test-unit
+          args: --components-vue
+      - name: 'E2E Test components-vue'
+        uses: ./.github/actions/docker-run-playwright
+        with:
+          entrypoint: run-test-e2e
+          args: --components-vue
+      - name: 'VRT Test components-vue'
+        uses: ./.github/actions/docker-run-playwright
+        with:
+          entrypoint: run-test-vrt
+          args: --components-vue
+      - name: 'VRT Regression components-vue'
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: components-vue-vrt-regression
+          path: ./packages/components-vue/tests/vrt/results
   crawler-e2e-puppeteer:
     name: 'Crawler E2E (Puppeteer)'
     runs-on: ubuntu-latest
@@ -532,8 +609,51 @@ jobs:
         with:
           entrypoint: run-test-unit
           args: --storefront
+      - name: 'Unit Test (Vitest)'
+        uses: ./.github/actions/docker-run-playwright
+        with:
+          entrypoint: run-test-unit
+          args: --vitest:storefront
   storefront-e2e:
     name: 'Storefront E2E'
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        shardIndex: [ 1, 2, 3, 4 ]
+        shardTotal: [ 4 ]
+    steps:
+      - name: 'Checkout'
+        uses: actions/checkout@v4
+      - name: 'Setup and install'
+        uses: ./.github/actions/setup-and-install
+        with:
+          github-token: ${{ secrets.github-token }}
+      - name: 'Build assets, component-meta, components, components-js, shared and utilities'
+        uses: ./.github/actions/build-components-js
+      - name: 'Build Components Angular'
+        uses: ./.github/actions/docker-run-playwright
+        with:
+          entrypoint: run-build
+          args: --components-angular
+      - name: 'Build Components React'
+        uses: ./.github/actions/docker-run-playwright
+        with:
+          entrypoint: run-build
+          args: --components-react
+      - name: 'E2E Test'
+        uses: ./.github/actions/docker-run-playwright
+        with:
+          entrypoint: run-test-e2e-playwright
+          args: --storefront:${{ matrix.shardIndex }}/${{ matrix.shardTotal }}
+      - name: 'E2E Regression'
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: storefront-e2e-regression-${{ matrix.shardIndex }}
+          path: ./packages/storefront/tests/e2e/results
+  storefront-e2e-sitemap:
+    name: 'Storefront E2E Sitemap'
     runs-on: ubuntu-latest
     steps:
       - name: 'Checkout'
@@ -557,17 +677,22 @@ jobs:
       - name: 'E2E Test'
         uses: ./.github/actions/docker-run-playwright
         with:
-          entrypoint: run-test-e2e
-          args: --storefront
+          entrypoint: run-test-e2e-playwright
+          args: --storefront:sitemap
       - name: 'E2E Regression'
         if: failure()
         uses: actions/upload-artifact@v4
         with:
-          name: storefront-e2e-regression
+          name: storefront-e2e-regression-sitemap
           path: ./packages/storefront/tests/e2e/results
   storefront-a11y:
-    name: 'Storefront a11y'
+    name: 'Storefront A11y'
     runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        shardIndex: [ 1, 2 ]
+        shardTotal: [ 2 ]
     steps:
       - name: 'Checkout'
         uses: actions/checkout@v4
@@ -587,17 +712,17 @@ jobs:
         with:
           entrypoint: run-build
           args: --components-react
-      - name: 'a11y Test'
+      - name: 'A11y Test'
         uses: ./.github/actions/docker-run-playwright
         with:
           entrypoint: run-test-a11y
-          args: --storefront
-      - name: 'a11y Regression'
+          args: --storefront:${{ matrix.shardIndex }}/${{ matrix.shardTotal }}
+      - name: 'A11y Regression'
         if: failure()
         uses: actions/upload-artifact@v4
         with:
-          name: storefront-a11y-regression
-          path: ./packages/storefront/tests/e2e/results
+          name: storefront-a11y-regression-${{ matrix.shardIndex }}
+          path: ./packages/storefront/tests/a11y/results
   storefront-vrt:
     name: 'Storefront VRT'
     runs-on: ubuntu-latest

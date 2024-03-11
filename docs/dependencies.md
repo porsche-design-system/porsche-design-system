@@ -90,7 +90,7 @@ Those issues were not resolved in `6.0.7`, yet.
 ## Globby
 
 `globby` decided to provide just a modern _ESM_ build with their latest npm package. Unfortunately there's no stable way
-of using it with Node or TS-Node.
+of using it with Jest / Angular Karma.
 
 - [Pure ESM package](https://gist.github.com/sindresorhus/a39789f98801d908bbc7ff3ecc99d99c#how-can-i-make-my-typescript-project-output-esm)
 - [ESM support: soliciting feedback](https://github.com/TypeStrong/ts-node/issues/1007)
@@ -109,28 +109,6 @@ there's no stable way of using it with Node or TS-Node.
 ### Affected dependencies:
 
 - `change-case`
-
----
-
-## Sharp
-
-Since v0.33.0 `sharp` does not work in docker anymore and outputs the following error:
-
-```
-Could not load the "sharp" module using the linux-x64 runtime
-Possible solutions:
-- Add platform-specific dependencies:
-    npm install --os=linux --cpu=x64 sharp
-  or
-    npm install --force @img/sharp-linux-x64
-- Consult the installation documentation: https://sharp.pixelplumbing.com/install
-```
-
-There is an open issue about it: https://github.com/lovell/sharp/issues/3870
-
-### Affected dependencies:
-
-- `sharp`
 
 ---
 

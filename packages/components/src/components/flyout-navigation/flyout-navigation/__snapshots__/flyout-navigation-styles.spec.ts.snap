@@ -22,19 +22,19 @@ exports[`getComponentCss() should return correct css for isPrimaryScrollerVisibl
 }
 dialog {
   position: fixed;
-  inset: 0;
-  display: grid;
-  width: auto;
   height: 100vh;
-  max-width: 100vw;
   max-height: 100vh;
   margin: 0;
   padding: 0;
   border: 0;
   visibility: inherit;
-  background: none;
-  overflow: hidden;
   outline: 0;
+  inset: 0;
+  display: grid;
+  overflow: hidden;
+  width: auto;
+  max-width: 100vw;
+  background: none;
   transform: translate3d(-100%, 0, 0);
   transition: transform var(--p-transition-duration, 0.6s) cubic-bezier(0.4,0,0.5,1);
 }
@@ -152,19 +152,19 @@ exports[`getComponentCss() should return correct css for isPrimaryScrollerVisibl
 }
 dialog {
   position: fixed;
-  inset: 0;
-  display: grid;
-  width: auto;
   height: 100vh;
-  max-width: 100vw;
   max-height: 100vh;
   margin: 0;
   padding: 0;
   border: 0;
   visibility: inherit;
-  background: none;
-  overflow: hidden;
   outline: 0;
+  inset: 0;
+  display: grid;
+  overflow: hidden;
+  width: auto;
+  max-width: 100vw;
+  background: none;
   transform: translate3d(-100%, 0, 0);
   transition: transform var(--p-transition-duration, 0.6s) cubic-bezier(0.4,0,0.5,1);
 }
@@ -267,19 +267,19 @@ exports[`getComponentCss() should return correct css for isPrimaryScrollerVisibl
 }
 dialog {
   position: fixed;
-  inset: 0;
-  display: grid;
-  width: auto;
   height: 100vh;
-  max-width: 100vw;
   max-height: 100vh;
   margin: 0;
   padding: 0;
   border: 0;
   visibility: inherit;
-  background: none;
-  overflow: hidden;
   outline: 0;
+  inset: 0;
+  display: grid;
+  overflow: hidden;
+  width: auto;
+  max-width: 100vw;
+  background: none;
   transform: translate3d(-100%, 0, 0);
   transition: transform var(--p-transition-duration, 0.6s) cubic-bezier(0.4,0,0.5,1);
 }
@@ -380,19 +380,19 @@ exports[`getComponentCss() should return correct css for isPrimaryScrollerVisibl
 }
 dialog {
   position: fixed;
-  inset: 0;
-  display: grid;
-  width: auto;
   height: 100vh;
-  max-width: 100vw;
   max-height: 100vh;
   margin: 0;
   padding: 0;
   border: 0;
   visibility: inherit;
-  background: none;
-  overflow: hidden;
   outline: 0;
+  inset: 0;
+  display: grid;
+  overflow: hidden;
+  width: auto;
+  max-width: 100vw;
+  background: none;
   transform: translate3d(0, 0, 0);
   transition: transform var(--p-transition-duration, 0.6s) cubic-bezier(0,0,0.2,1);
 }
@@ -505,19 +505,19 @@ exports[`getComponentCss() should return correct css for isPrimaryScrollerVisibl
 }
 dialog {
   position: fixed;
-  inset: 0;
-  display: grid;
-  width: auto;
   height: 100vh;
-  max-width: 100vw;
   max-height: 100vh;
   margin: 0;
   padding: 0;
   border: 0;
   visibility: inherit;
-  background: none;
-  overflow: hidden;
   outline: 0;
+  inset: 0;
+  display: grid;
+  overflow: hidden;
+  width: auto;
+  max-width: 100vw;
+  background: none;
   transform: translate3d(0, 0, 0);
   transition: transform var(--p-transition-duration, 0.6s) cubic-bezier(0,0,0.2,1);
 }
@@ -615,19 +615,19 @@ exports[`getComponentCss() should return correct css for isPrimaryScrollerVisibl
 }
 dialog {
   position: fixed;
-  inset: 0;
-  display: grid;
-  width: auto;
   height: 100vh;
-  max-width: 100vw;
   max-height: 100vh;
   margin: 0;
   padding: 0;
   border: 0;
   visibility: inherit;
-  background: none;
-  overflow: hidden;
   outline: 0;
+  inset: 0;
+  display: grid;
+  overflow: hidden;
+  width: auto;
+  max-width: 100vw;
+  background: none;
   transform: translate3d(0, 0, 0);
   transition: transform var(--p-transition-duration, 0.6s) cubic-bezier(0,0,0.2,1);
 }
@@ -725,19 +725,19 @@ exports[`getComponentCss() should return correct css for isPrimaryScrollerVisibl
 }
 dialog {
   position: fixed;
-  inset: 0;
-  display: grid;
-  width: auto;
   height: 100vh;
-  max-width: 100vw;
   max-height: 100vh;
   margin: 0;
   padding: 0;
   border: 0;
   visibility: inherit;
-  background: none;
-  overflow: hidden;
   outline: 0;
+  inset: 0;
+  display: grid;
+  overflow: hidden;
+  width: auto;
+  max-width: 100vw;
+  background: none;
   transform: translate3d(0, 0, 0);
   transition: transform var(--p-transition-duration, 0.6s) cubic-bezier(0,0,0.2,1);
 }
@@ -850,19 +850,19 @@ exports[`getComponentCss() should return correct css for isPrimaryScrollerVisibl
 }
 dialog {
   position: fixed;
-  inset: 0;
-  display: grid;
-  width: auto;
   height: 100vh;
-  max-width: 100vw;
   max-height: 100vh;
   margin: 0;
   padding: 0;
   border: 0;
   visibility: inherit;
-  background: none;
-  overflow: hidden;
   outline: 0;
+  inset: 0;
+  display: grid;
+  overflow: hidden;
+  width: auto;
+  max-width: 100vw;
+  background: none;
   transform: translate3d(0, 0, 0);
   transition: transform var(--p-transition-duration, 0.6s) cubic-bezier(0,0,0.2,1);
 }
@@ -960,19 +960,19 @@ exports[`getComponentCss() should return correct css for isPrimaryScrollerVisibl
 }
 dialog {
   position: fixed;
-  inset: 0;
-  display: grid;
-  width: auto;
   height: 100vh;
-  max-width: 100vw;
   max-height: 100vh;
   margin: 0;
   padding: 0;
   border: 0;
   visibility: inherit;
-  background: none;
-  overflow: hidden;
   outline: 0;
+  inset: 0;
+  display: grid;
+  overflow: hidden;
+  width: auto;
+  max-width: 100vw;
+  background: none;
   transform: translate3d(0, 0, 0);
   transition: transform var(--p-transition-duration, 0.6s) cubic-bezier(0,0,0.2,1);
 }

@@ -11,6 +11,7 @@ import {
 import { FLYOUT_Z_INDEX } from '../../constants';
 import { gridGap, spacingFluidLarge, spacingStaticMedium } from '@porsche-design-system/utilities-v2';
 import type { FlyoutPosition } from './flyout-utils';
+import { getFlyoutDialogResetJssStyle } from '../../styles/flyout-dialog-reset-styles';
 
 export const headerShadowClass = 'header--shadow';
 export const footerShadowClass = 'footer--shadow';
@@ -34,52 +35,66 @@ export const getComponentCss = (
   return getCss({
     '@global': {
       ':host': {
-        display: 'flex',
+        display: 'block',
         ...addImportantToEachRule({
           // needed for correct alignment of the Porsche Grid within the Flyout
           '--pds-internal-grid-outer-column': `calc(${spacingFluidLarge} - ${gridGap})`,
           '--pds-internal-grid-margin': `calc(${spacingFluidLarge} * -1)`,
-          justifyContent: isPositionStart ? 'flex-start' : 'flex-end',
           ...getBackdropJssStyle(isOpen, FLYOUT_Z_INDEX, theme),
           ...colorSchemeStyles,
           ...hostHiddenStyles,
         }),
       },
+      dialog: {
+        ...getFlyoutDialogResetJssStyle(),
+        insetInline: isPositionStart ? '0 0' : 'auto 0',
+        insetBlock: '0 0',
+        display: 'flex',
+        flexDirection: 'column',
+        boxSizing: 'border-box',
+        width: 'var(--p-flyout-width, fit-content)',
+        minWidth: '320px',
+        maxWidth: 'var(--p-flyout-max-width, 1180px)',
+        color: primaryColor, // enables color inheritance for slotted content
+        background: backgroundColor,
+        ...(isOpen
+          ? {
+              opacity: 1,
+              transform: 'initial',
+              transition: `${getTransition('opacity', 'long', 'in')}, ${getTransition('transform', 'long', 'in')}`,
+            }
+          : {
+              opacity: 0,
+              transform: `translate3d(${isPositionStart ? '-100%' : '100%'}, 0, 0)`,
+              transition: `${getTransition('opacity', 'short', 'out', 'long')}, ${getTransition(
+                'transform',
+                'long',
+                'out'
+              )}`,
+            }),
+        boxShadow: `${isPositionStart ? '3px' : '-3px'} 0px 30px rgba(0, 0, 0, 0.25)`,
+        ...prefersColorSchemeDarkMediaQuery(theme, {
+          color: primaryColorDark,
+          background: backgroundColorDark,
+        }),
+        '&:focus-visible': {
+          outline: 'none', // ua-style reset
+        },
+        '&::backdrop': {
+          // to improve browser backwards compatibility we visually style the backdrop on the :host,
+          // although it's not on the #top-layer like it would be for modern browsers supporting ::backdrop
+          opacity: 0, // to support backdrop click for modern browsers supporting ::backdrop
+        },
+      },
     },
-    root: {
-      position: 'relative',
-      display: 'flex',
+    wrapper: {
+      display: 'flex', // ua-style reset
+      flexGrow: 1,
+      height: 0,
       flexDirection: 'column',
-      boxSizing: 'border-box',
       ...(hasSubFooter && {
         overflowY: 'auto',
         overscrollBehaviorY: 'none',
-      }),
-      width: 'var(--p-flyout-width, auto)',
-      height: '100%',
-      minWidth: '320px',
-      maxWidth: 'var(--p-flyout-max-width, 1180px)',
-      color: primaryColor, // enables color inheritance for slotted content
-      background: backgroundColor,
-      ...(isOpen
-        ? {
-            opacity: 1,
-            transform: 'initial',
-            transition: `${getTransition('opacity', 'long', 'in')}, ${getTransition('transform', 'long', 'in')}`,
-          }
-        : {
-            opacity: 0,
-            transform: `translate3d(${isPositionStart ? '-100%' : '100%'}, 0, 0)`,
-            transition: `${getTransition('opacity', 'short', 'out', 'long')}, ${getTransition(
-              'transform',
-              'long',
-              'out'
-            )}`,
-          }),
-      boxShadow: `${isPositionStart ? '3px' : '-3px'} 0px 30px rgba(0, 0, 0, 0.25)`,
-      ...prefersColorSchemeDarkMediaQuery(theme, {
-        color: primaryColorDark,
-        background: backgroundColorDark,
       }),
     },
     header: {
@@ -108,6 +123,7 @@ export const getComponentCss = (
     },
     content: {
       padding: contentPadding,
+      maxWidth: `calc(100vw - calc(${spacingFluidLarge} * 2))`,
       position: 'relative',
       zIndex: 0,
       backgroundColor, // to ensure scrollbar coloring is optimal for light theme

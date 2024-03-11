@@ -3,11 +3,11 @@ import { getComponentMeta } from '@porsche-design-system/component-meta';
 import { ReactWrapperGenerator } from './ReactWrapperGenerator';
 import type { ExtendedProp } from './DataStructureBuilder';
 import type { AdditionalFile } from './AbstractWrapperGenerator';
-import { paramCase, pascalCase } from 'change-case';
+import { kebabCase, pascalCase } from 'latest-change-case';
 
 type PresetsProps = { [key: string]: number | string | boolean | string[] | object | null };
 
-type FormComponentName = 'Checkbox' | 'RadioButton' | 'Select' | 'TextField' | 'Textarea'; // the 5 form components created "manually" in uxpin-wrapper project
+type FormComponentName = 'Checkbox' | 'RadioButton' | 'SelectWrapperDummy' | 'TextField' | 'Textarea'; // the 5 form components created "manually" in uxpin-wrapper project
 
 const addNestedIndentation = (x: string): string => `  ${x}`;
 
@@ -360,7 +360,7 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
         children:
           '<DummySelect uxpId="dummy-select" options={Array.from(Array(3)).map((_, i) => `Option ${i + 1}`)} />',
         formComponent: {
-          name: 'Select',
+          name: 'SelectWrapperDummy',
           extraProps: { label: 'My Select', options: ['Option 1', 'Option 2', 'Option 3'] },
         },
       },
@@ -454,7 +454,7 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
 
   // Component declaration can be preceded by JSDoc comments
   // to customize the behavior in UXPin Editor or Preview (E.g.: render in a React Portal)
-  // https://www.uxpin.com/docs/merge/adjusting-components/
+  // https://uxpin.com/docs/merge/adjusting-components/
   private insertComponentAnnotation(cleanedComponent: string, component: TagName): string {
     const comments = this.getAllComponentComments(component);
     if (comments.length) {
@@ -504,7 +504,7 @@ ${comments.join(`\n`)}
       .join('\n');
 
     const stringifiedProps = getStringifiedProps({
-      uxpId: paramCase(componentName),
+      uxpId: kebabCase(componentName),
       ...props,
     });
 
@@ -528,7 +528,7 @@ export default (
     const defaultProps = cleanComponentMetaProps(props);
 
     const stringifiedProps = getStringifiedProps({
-      uxpId: paramCase(formComponentName),
+      uxpId: kebabCase(formComponentName),
       ...defaultProps,
       ...extraProps,
     });

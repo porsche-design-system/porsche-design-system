@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`getHoverStyle() should return correct css for opts: { borderRadius: '6px' } 1`] = `
+exports[`getHoverStyle() > should return correct css for opts: { borderRadius: '6px' } 1`] = `
 {
   "@media(hover:hover)": {
     "&:hover": {
@@ -16,7 +16,7 @@ exports[`getHoverStyle() should return correct css for opts: { borderRadius: '6p
 }
 `;
 
-exports[`getHoverStyle() should return correct css for opts: { borderRadius: 'medium' } 1`] = `
+exports[`getHoverStyle() > should return correct css for opts: { borderRadius: 'medium' } 1`] = `
 {
   "@media(hover:hover)": {
     "&:hover": {
@@ -32,7 +32,7 @@ exports[`getHoverStyle() should return correct css for opts: { borderRadius: 'me
 }
 `;
 
-exports[`getHoverStyle() should return correct css for opts: { borderRadius: 'small' } 1`] = `
+exports[`getHoverStyle() > should return correct css for opts: { borderRadius: 'small' } 1`] = `
 {
   "@media(hover:hover)": {
     "&:hover": {
@@ -48,7 +48,7 @@ exports[`getHoverStyle() should return correct css for opts: { borderRadius: 'sm
 }
 `;
 
-exports[`getHoverStyle() should return correct css for opts: { borderRadius: undefined } 1`] = `
+exports[`getHoverStyle() > should return correct css for opts: { borderRadius: undefined } 1`] = `
 {
   "@media(hover:hover)": {
     "&:hover": {

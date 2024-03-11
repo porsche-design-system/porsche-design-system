@@ -3,12 +3,12 @@
 **Function name:** `getDSRPonyfill()`
 
 In SSR projects like NextJS, the Porsche Design System components are getting rendered on the server using native web
-platform API called [Declarative Shadow DOM (DSR)](https://web.dev/declarative-shadow-dom/). The
+platform API called [Declarative Shadow DOM (DSR)](https://web.dev/declarative-shadow-dom). The
 [browser support](https://caniuse.com/?search=declarative%20shadow%20dom) is already good but major browsers like Safari
 and Firefox aren't supporting it yet.
 
 Therefor, we provide a partial in `@porsche-design-system/components-react` package based on
-[@webcomponents/template-shadowroot](https://www.npmjs.com/package/@webcomponents/template-shadowroot) which needs to be
+[@webcomponents/template-shadowroot](https://npmjs.com/package/@webcomponents/template-shadowroot) which needs to be
 injected before the closing `</body>` of your `index.html`.
 
 ## Supported options

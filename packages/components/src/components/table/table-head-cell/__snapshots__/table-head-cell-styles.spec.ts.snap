@@ -42,6 +42,9 @@ button::-moz-focus-inner {
 button:focus {
   outline: 0;
 }
+button:focus-visible {
+  outline: 0;
+}
 button:focus-visible::before {
   outline: 2px solid #1A44EA;
   outline-offset: -2px;
@@ -106,6 +109,9 @@ button::-moz-focus-inner {
   border: 0;
 }
 button:focus {
+  outline: 0;
+}
+button:focus-visible {
   outline: 0;
 }
 button:focus-visible::before {
@@ -174,6 +180,9 @@ button::-moz-focus-inner {
 button:focus {
   outline: 0;
 }
+button:focus-visible {
+  outline: 0;
+}
 button:focus-visible::before {
   outline: 2px solid #1A44EA;
   outline-offset: -2px;
@@ -240,6 +249,9 @@ button::-moz-focus-inner {
 button:focus {
   outline: 0;
 }
+button:focus-visible {
+  outline: 0;
+}
 button:focus-visible::before {
   outline: 2px solid #1A44EA;
   outline-offset: -2px;
@@ -304,6 +316,9 @@ button::-moz-focus-inner {
   border: 0;
 }
 button:focus {
+  outline: 0;
+}
+button:focus-visible {
   outline: 0;
 }
 button:focus-visible::before {

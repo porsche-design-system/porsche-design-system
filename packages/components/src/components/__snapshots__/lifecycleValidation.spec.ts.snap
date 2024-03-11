@@ -370,6 +370,7 @@ exports[`should call validateProps() with correct parameters via render for p-li
   "likeButton": "boolean",
   "liked": "boolean",
   "price": "string",
+  "priceOriginal": "string",
   "rel": "string",
   "target": "string",
   "theme": "oneOf",
@@ -390,6 +391,7 @@ exports[`should call validateProps() with correct parameters via render for p-ma
 exports[`should call validateProps() with correct parameters via render for p-modal: propTypes with ValidatorFunctions 1`] = `
 {
   "aria": "aria",
+  "backdrop": "oneOf",
   "disableBackdropClick": "boolean",
   "disableCloseButton": "boolean",
   "dismissButton": "boolean",
@@ -514,6 +516,29 @@ exports[`should call validateProps() with correct parameters via render for p-se
   "iconSource": "string",
   "label": "string",
   "value": "oneOf",
+}
+`;
+
+exports[`should call validateProps() with correct parameters via render for p-select: propTypes with ValidatorFunctions 1`] = `
+{
+  "description": "string",
+  "disabled": "boolean",
+  "dropdownDirection": "oneOf",
+  "hideLabel": "breakpoint",
+  "label": "string",
+  "message": "string",
+  "name": "string",
+  "required": "boolean",
+  "state": "oneOf",
+  "theme": "oneOf",
+  "value": "string",
+}
+`;
+
+exports[`should call validateProps() with correct parameters via render for p-select-option: propTypes with ValidatorFunctions 1`] = `
+{
+  "disabled": "boolean",
+  "value": "string",
 }
 `;
 

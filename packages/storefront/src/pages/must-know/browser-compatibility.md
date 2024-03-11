@@ -14,14 +14,12 @@ versions. If a browser is not listed on this page we don’t test it, provide as
 
 We support the **following Browsers in the latest stable and deprecated predecessor version**:
 
-- **Google Chrome** on Windows and macOS, Android and iOS
-  ([see version history](https://en.wikipedia.org/wiki/Google_Chrome_version_history))
+- **Google Chrome** on Windows and macOS, Android and iOS ([see version history](https://chromereleases.googleblog.com))
 - **Microsoft Edge Chromium** on Windows
-  ([see version history](https://en.wikipedia.org/wiki/Microsoft_Edge#Release_history))
-- **Mozilla Firefox** on Windows and macOS
-  ([see version history](https://en.wikipedia.org/wiki/Firefox_version_history))
+  ([see version history](https://learn.microsoft.com/en-us/deployedge/microsoft-edge-relnote-stable-channel))
+- **Mozilla Firefox** on Windows and macOS ([see version history](https://mozilla.org/en-US/firefox/releases))
 - **Apple Safari** on macOS and iOS
-  ([see version history](https://en.wikipedia.org/wiki/Safari_version_history#Safari_13))
+  ([see version history](https://developer.apple.com/documentation/safari-release-notes))
 
 <p-text :theme="this.$store.getters.storefrontTheme" size="x-small">Chromium is the basis of Microsoft Edge since 79.0,
 Android Webview since 33.0 and of Samsung Internet since 11.0. <br/>We want to support the deprecated predecessor

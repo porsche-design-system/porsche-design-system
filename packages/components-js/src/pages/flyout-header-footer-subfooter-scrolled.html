@@ -1,4 +1,4 @@
-<p-flyout open="true" class="scroll root">
+<p-flyout class="scroll root" open="true">
   <div slot="header">
     <h1>Sticky Heading</h1>
     <p>Sticky header text</p>
@@ -47,12 +47,14 @@
   </div>
   <div slot="sub-footer">
     <p>Some Sub Footer Content</p>
-    <span class="scroll-into-view"></span>
+    <div class="scroll-into-view"></div>
   </div>
 </p-flyout>
 
 <script>
   porscheDesignSystem.componentsReady().then(() => {
-    document.querySelector('.scroll-into-view').scrollIntoView();
+    document.querySelector('.scroll-into-view').scrollIntoView({
+      behavior: 'instant',
+    });
   });
 </script>

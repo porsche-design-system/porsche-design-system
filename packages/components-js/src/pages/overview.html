@@ -44,8 +44,7 @@
   }
 
   .playground--banner,
-  .playground--modal,
-  .playground--flyout {
+  .playground--modal {
     transform: translate3d(0, 0, 0);
     height: 10rem;
     padding: 0;
@@ -53,10 +52,6 @@
   }
 
   .playground--modal {
-    height: 20rem;
-  }
-
-  .playground--flyout {
     height: 20rem;
   }
 </style>
@@ -83,15 +78,6 @@
 
   <div class="playground light playground--modal" title="should render default modal">
     <p-modal heading="Heading" open="true">Some Content</p-modal>
-  </div>
-
-  <div class="playground light playground--flyout" title="should render default flyout">
-    <p-flyout open="true">
-      <span slot="header">Sticky Header</span>
-      Some Content
-      <span slot="footer">Sticky Footer</span>
-      <span slot="sub-footer">Some Sub Footer Content</span>
-    </p-flyout>
   </div>
 
   <div class="playground light" title="should render default inline-notification">
@@ -131,6 +117,14 @@
     <p-radio-button-wrapper label="Some label">
       <input type="radio" />
     </p-radio-button-wrapper>
+  </div>
+
+  <div class="playground light" title="should render default select">
+    <p-select name="options" label="Some label">
+      <p-select-option value="a">Option A</p-select-option>
+      <p-select-option value="b">Option B</p-select-option>
+      <p-select-option value="c">Option C</p-select-option>
+    </p-select>
   </div>
 
   <div class="playground light" title="should render default select-wrapper">
@@ -192,15 +186,15 @@
   </div>
 
   <div class="playground light" title="should render default link">
-    <p-link href="https://www.porsche.com">Some label</p-link>
+    <p-link href="https://porsche.com">Some label</p-link>
   </div>
 
   <div class="playground light" title="should render default link-pure">
-    <p-link-pure href="https://www.porsche.com">Some label</p-link-pure>
+    <p-link-pure href="https://porsche.com">Some label</p-link-pure>
   </div>
 
   <div class="playground light" title="should render default link-social">
-    <p-link-social href="https://www.porsche.com" icon="logo-facebook">Some label</p-link-social>
+    <p-link-social href="https://porsche.com" icon="logo-facebook">Some label</p-link-social>
   </div>
 
   <div class="playground light" title="should render default marque">
@@ -379,7 +373,7 @@
   </div>
 
   <div class="playground light" title="should render default link-tile-product">
-    <p-link-tile-product heading="Some product" price="1.911,00 €" href="https://www.porsche.com">
+    <p-link-tile-product heading="Some product" price="1.911,00 €" href="https://porsche.com">
       <img
         src="https://porsche-design-system.github.io/porsche-design-system/placeholder_800x900.svg"
         width="800"
@@ -416,15 +410,6 @@
 
   <div class="playground light playground--modal" title="should render default modal with custom prefix">
     <my-prefix-p-modal heading="Heading" open="true">Some Content</my-prefix-p-modal>
-  </div>
-
-  <div class="playground light playground--flyout" title="should render default flyout">
-    <my-prefix-p-flyout open="true">
-      <span slot="header">Sticky Header</span>
-      Some Content
-      <span slot="footer">Sticky Footer</span>
-      <span slot="sub-footer">Some Sub Footer Content</span>
-    </my-prefix-p-flyout>
   </div>
 
   <div class="playground light" title="should render default inline-notification with custom prefix">
@@ -467,6 +452,14 @@
     <my-prefix-p-radio-button-wrapper label="Some label">
       <input type="radio" />
     </my-prefix-p-radio-button-wrapper>
+  </div>
+
+  <div class="playground light" title="should render default select with custom prefix">
+    <my-prefix-p-select name="options" label="Some label">
+      <my-prefix-p-select-option value="a">Option A</my-prefix-p-select-option>
+      <my-prefix-p-select-option value="b">Option B</my-prefix-p-select-option>
+      <my-prefix-p-select-option value="c">Option C</my-prefix-p-select-option>
+    </my-prefix-p-select>
   </div>
 
   <div class="playground light" title="should render default select-wrapper with custom prefix">
@@ -528,15 +521,15 @@
   </div>
 
   <div class="playground light" title="should render default link with custom prefix">
-    <my-prefix-p-link href="https://www.porsche.com">Some label</my-prefix-p-link>
+    <my-prefix-p-link href="https://porsche.com">Some label</my-prefix-p-link>
   </div>
 
   <div class="playground light" title="should render default link-pure with custom prefix">
-    <my-prefix-p-link-pure href="https://www.porsche.com">Some label</my-prefix-p-link-pure>
+    <my-prefix-p-link-pure href="https://porsche.com">Some label</my-prefix-p-link-pure>
   </div>
 
   <div class="playground light" title="should render default link-social with custom prefix">
-    <my-prefix-p-link-social href="https://www.porsche.com" icon="logo-facebook">Some label</my-prefix-p-link-social>
+    <my-prefix-p-link-social href="https://porsche.com" icon="logo-facebook">Some label</my-prefix-p-link-social>
   </div>
 
   <div class="playground light" title="should render default marque with custom prefix">
@@ -715,7 +708,7 @@
   </div>
 
   <div class="playground light" title="should render default link-tile-product with custom prefix">
-    <my-prefix-p-link-tile-product heading="Some product" price="1.911,00 €" href="https://www.porsche.com">
+    <my-prefix-p-link-tile-product heading="Some product" price="1.911,00 €" href="https://porsche.com">
       <img
         src="https://porsche-design-system.github.io/porsche-design-system/placeholder_800x900.svg"
         width="800"

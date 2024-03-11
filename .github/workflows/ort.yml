@@ -12,10 +12,12 @@ jobs:
     env:
       OSO_PROJECT_NAME: porsche_design_system
       OSO_AWS_ECR_REGISTRY: 215495424956.dkr.ecr.eu-central-1.amazonaws.com
-      PDS_DOCKER_IMAGE: ghcr.io/porsche-design-system/porsche-design-system/playwright:v1.40.1-focal-test6
+      PDS_DOCKER_IMAGE: ghcr.io/porsche-design-system/porsche-design-system/playwright:v1.41.2-focal-test19
     steps:
       - name: 'Checkout'
         uses: actions/checkout@v4
+      - name: 'Clear action cache'
+        uses: ./.github/actions/clear-action-cache
       - name: 'Cache node_modules'
         uses: actions/cache@v4
         id: cache

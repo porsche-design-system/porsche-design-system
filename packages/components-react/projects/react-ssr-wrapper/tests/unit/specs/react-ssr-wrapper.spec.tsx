@@ -5,16 +5,17 @@ import { PorscheDesignSystemProvider } from '../../../src/provider';
 import * as minifyCssUtils from '../../../src/minifyCss';
 import { TAG_NAMES, type TagName } from '@porsche-design-system/shared';
 import { getComponentMeta } from '@porsche-design-system/component-meta';
-import { paramCase, pascalCase } from 'change-case';
+import { kebabCase, pascalCase } from 'change-case';
 import Link from 'next/link';
+import { vi } from 'vitest';
 
 it.each(Object.keys(fromComponents))('should render dsr component for %s', (componentName) => {
   const Component = fromComponents[componentName];
-  const tagName = paramCase(componentName) as TagName;
+  const tagName = kebabCase(componentName) as TagName;
   const componentMeta = getComponentMeta(tagName);
 
   // skip minifyCss for snapshots
-  jest.spyOn(minifyCssUtils, 'minifyCss').mockImplementation((css) => css);
+  vi.spyOn(minifyCssUtils, 'minifyCss').mockImplementation((css) => css);
 
   // default children
   const { requiredChild, hasSlot, requiredNamedSlots } =
@@ -54,7 +55,7 @@ it.each(Object.keys(fromComponents))('should render dsr component for %s', (comp
       }
     : null;
 
-  const consoleSpy = jest.spyOn(console, 'error');
+  const consoleSpy = vi.spyOn(console, 'error');
   const { container } = render(
     <PorscheDesignSystemProvider>
       <Component {...props} />

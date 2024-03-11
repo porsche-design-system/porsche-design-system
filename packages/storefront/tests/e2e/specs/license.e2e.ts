@@ -1,9 +1,5 @@
-import { baseURL, getProperty } from '../helpers';
-import type { ElementHandle, Page } from 'puppeteer';
-
-let page: Page;
-beforeEach(async () => (page = await browser.newPage()));
-afterEach(async () => await page.close());
+import { type ElementHandle, expect, type Page, test } from '@playwright/test';
+import { getProperty } from '../helpers';
 
 const getTitle = (page: Page): Promise<string> => page.$eval('.vmark > h1', (x) => x.innerHTML);
 const isLinkActive = async (element: ElementHandle): Promise<boolean> =>
@@ -11,19 +7,18 @@ const isLinkActive = async (element: ElementHandle): Promise<boolean> =>
 const getCssClasses = async (element: ElementHandle): Promise<string> =>
   Object.values(await getProperty(element, 'classList')).join(' ');
 
-it('should navigate to license', async () => {
-  await page.goto(baseURL);
-  await page.evaluate(() => (window as any).componentsReady());
+test('should navigate to license', async ({ page }) => {
+  await page.goto('/');
 
-  const [linkElement] = await page.$x(`//div[contains(@class, 'menu-desktop')]//footer//a[contains(., 'License')]`);
+  const linkElement = await page.locator(
+    `xpath=//div[contains(@class, 'menu-desktop')]//footer//a[contains(., 'License')]`
+  );
 
   expect(await isLinkActive(linkElement)).toBe(false);
 
   await linkElement.click();
-  await page.waitForSelector('.vmark');
-  await page.evaluate(() => (window as any).componentsReady());
 
   expect(await isLinkActive(linkElement)).toBe(true);
-
   expect(await getTitle(page)).toBe('License');
+  expect(true).toBe(true);
 });
