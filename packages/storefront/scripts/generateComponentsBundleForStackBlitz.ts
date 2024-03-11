@@ -9,7 +9,7 @@ const targetPath = 'public/porsche-design-system';
 fs.rmSync(targetPath, { force: true, recursive: true });
 
 // read local file contents of components-js/angular/react/vue builds and output them in a json file per framework
-// which is dynamically requested by our storefront upon cling `Edit in StackBlitz` button and then sent
+// which is dynamically requested by our storefront upon clicking `Edit in StackBlitz` button and then sent
 // together with the actual example code and config to StackBlitz via http POST
 // this is important for local testing and issue branches, where we don't have a stable release on npm, yet
 const generateComponentsBundleForStackBlitz = (framework: Framework): void => {
