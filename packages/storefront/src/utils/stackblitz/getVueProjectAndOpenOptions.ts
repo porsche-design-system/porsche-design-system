@@ -1,5 +1,5 @@
 import { devDependencies, dependencies } from '../../../../components-vue/package.json';
-import { convertImportPaths, getExternalDependencies, getSharedImportConstants, removeSharedImport } from './helper';
+import { getExternalDependencies, getSharedImportConstants, removeSharedImport } from './helper';
 import { convertMarkup } from '../../utils/formatting';
 import type {
   DependencyMap,
@@ -44,14 +44,14 @@ export const getAppTsx = (
   markup: string,
   isExampleMarkup: boolean,
   sharedImportKeys: SharedImportKey[],
-  _pdsVersion: string
+  pdsVersion: string // eslint-disable-line @typescript-eslint/no-unused-vars
 ): string => {
   const finalMarkup = isExampleMarkup
     ? replaceSharedImportsWithConstants(markup, sharedImportKeys)
     : extendMarkupWithAppComponent(markup);
 
   // local bundle isn't supported because of missing COOP/COEP headers
-  // return convertImportPaths(finalMarkup, 'vue', _pdsVersion);
+  // return convertImportPaths(finalMarkup, 'vue', pdsVersion);
   return finalMarkup;
 };
 
