@@ -1,5 +1,11 @@
 import { devDependencies, dependencies } from '../../../../components-vue/package.json';
-import { getExternalDependencies, getSharedImportConstants, removeSharedImport } from './helper';
+import {
+  convertImportPaths,
+  getExternalDependencies,
+  getSharedImportConstants,
+  isStableStorefrontReleaseOrForcedPdsVersion,
+  removeSharedImport,
+} from './helper';
 import { convertMarkup } from '../../utils/formatting';
 import type {
   DependencyMap,
@@ -51,8 +57,7 @@ export const getAppVue = (
     : extendMarkupWithAppComponent(markup);
 
   // local bundle isn't supported because of missing COOP/COEP headers
-  // return convertImportPaths(finalMarkup, 'vue', pdsVersion);
-  return finalMarkup;
+  return process.env.NODE_ENV === 'production' ? convertImportPaths(finalMarkup, 'vue', pdsVersion) : finalMarkup;
 };
 
 export const getIndexHtml = (dir: PlaygroundDir, globalStyles: string) => {
@@ -99,9 +104,13 @@ export const getDependencies = (
 ): StackBlitzProjectDependencies => {
   return {
     // local bundle isn't supported because of missing COOP/COEP headers
-    // ...(isStableStorefrontReleaseOrForcedPdsVersion(pdsVersion) && {
-    '@porsche-design-system/components-vue': pdsVersion || dependencies['@porsche-design-system/components-vue'],
-    // }),
+    ...(process.env.NODE_ENV === 'production'
+      ? isStableStorefrontReleaseOrForcedPdsVersion(pdsVersion) && {
+          '@porsche-design-system/components-vue': pdsVersion || dependencies['@porsche-design-system/components-vue'],
+        }
+      : {
+          '@porsche-design-system/components-vue': pdsVersion || dependencies['@porsche-design-system/components-vue'],
+        }),
     vue: dependencies['vue'],
     ...getExternalDependencies(externalDependencies, dependencyMap),
   };
@@ -116,7 +125,7 @@ export const getVueProjectAndOpenOptions: GetStackBlitzProjectAndOpenOptions = (
     globalStyles,
     sharedImportKeys,
     externalDependencies,
-    // porscheDesignSystemBundle,
+    porscheDesignSystemBundle,
     pdsVersion,
   } = opts;
 
@@ -126,7 +135,7 @@ export const getVueProjectAndOpenOptions: GetStackBlitzProjectAndOpenOptions = (
       // currently, requests from local CDN `localhost:3001` are blocked by webcontainers because of missing
       // COOP/COEP headers, therefore local bundle is not supported
       // https://webcontainers.io/guides/configuring-headers
-      // ...porscheDesignSystemBundle,
+      ...(process.env.NODE_ENV === 'production' && porscheDesignSystemBundle),
       'src/App.vue': getAppVue(markup, !!markup.match(componentNameRegex), sharedImportKeys, pdsVersion),
       'src/main.ts': getMainTs(),
       'index.html': getIndexHtml(dir, globalStyles),
