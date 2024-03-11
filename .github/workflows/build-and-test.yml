@@ -683,7 +683,7 @@ jobs:
         if: failure()
         uses: actions/upload-artifact@v4
         with:
-          name: storefront-e2e-regression-${{ matrix.shardIndex }}
+          name: storefront-e2e-regression-sitemap
           path: ./packages/storefront/tests/e2e/results
   storefront-a11y:
     name: 'Storefront A11y'
