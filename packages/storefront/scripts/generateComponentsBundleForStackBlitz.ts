@@ -1,7 +1,7 @@
 import * as fs from 'fs';
 import { globbySync } from 'globby';
 
-const frameworks = ['js', 'angular', 'react'] as const;
+const frameworks = ['js', 'angular', 'react', 'vue'] as const;
 type Framework = (typeof frameworks)[number];
 
 const targetPath = 'public/porsche-design-system';
