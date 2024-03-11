@@ -56,13 +56,13 @@ export class Popover {
   private popover: HTMLDivElement;
   private button: HTMLButtonElement;
 
-  private isNativePopover: boolean = false;
+  private isNativePopoverCase: boolean = false;
   private parentTableElement: HTMLElement;
 
   public connectedCallback(): void {
     addDocumentEventListener(this);
-    this.isNativePopover = detectNativePopoverCase(this.host, false);
-    if (this.isNativePopover) {
+    this.isNativePopoverCase = detectNativePopoverCase(this.host, false);
+    if (this.isNativePopoverCase) {
       this.parentTableElement = findClosestComponent(this.host, 'pTable');
     }
   }
@@ -72,12 +72,12 @@ export class Popover {
   }
 
   public componentDidRender(): void {
-    if (this.isNativePopover && this.spacer?.matches(':popover-open')) {
+    if (this.isNativePopoverCase && this.spacer?.matches(':popover-open')) {
       addNativePopoverScrollAndResizeListeners(this.host, this.parentTableElement, this.spacer);
       // Set new popover position depending on button position
       updateNativePopoverStyles(this.spacer, this.button);
       // Update popover styles with new position
-      updatePopoverStyles(this.host, this.spacer, this.popover, this.direction, this.isNativePopover, this.theme);
+      updatePopoverStyles(this.host, this.spacer, this.popover, this.direction, this.isNativePopoverCase, this.theme);
     } else {
       if (this.open) {
         // calculate / update position only possible after render
@@ -92,7 +92,7 @@ export class Popover {
 
   public render(): JSX.Element {
     validateProps(this, propTypes);
-    attachComponentCss(this.host, getComponentCss, this.direction, this.isNativePopover, this.theme);
+    attachComponentCss(this.host, getComponentCss, this.direction, this.isNativePopoverCase, this.theme);
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
@@ -100,21 +100,21 @@ export class Popover {
       <Host onKeydown={this.onKeydown}>
         <button
           type="button"
-          {...(this.isNativePopover ? { popoverTarget: 'spacer' } : { onClick: () => (this.open = !this.open) })}
+          {...(this.isNativePopoverCase ? { popoverTarget: 'spacer' } : { onClick: () => (this.open = !this.open) })}
           {...parseAndGetAriaAttributes({
             ...parseAndGetAriaAttributes(this.aria),
-            ...(!this.isNativePopover && { 'aria-expanded': this.open }),
+            ...(!this.isNativePopoverCase && { 'aria-expanded': this.open }),
           })}
           ref={(el) => (this.button = el)}
         >
           <PrefixedTagNames.pIcon class="icon" name="information" theme={this.theme} />
           <span class="label">More information</span>
         </button>
-        {(this.open || this.isNativePopover) && (
+        {(this.open || this.isNativePopoverCase) && (
           <div
             class="spacer"
             ref={(el) => (this.spacer = el)}
-            {...(this.isNativePopover && { popover: 'auto', id: 'spacer', onToggle: this.onToggle })}
+            {...(this.isNativePopoverCase && { popover: 'auto', id: 'spacer', onToggle: this.onToggle })}
           >
             <div class="popover" ref={(el) => (this.popover = el)}>
               {this.description ? <p>{this.description}</p> : <slot />}

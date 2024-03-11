@@ -25,6 +25,7 @@ import {
 } from '../../styles';
 import { POPOVER_Z_INDEX } from '../../constants';
 import type { Theme } from '../../types';
+import { getPopoverResetJssStyle } from '../../styles/popover-reset-styles';
 
 const { canvasColor, canvasTextColor } = getHighContrastColors();
 
@@ -138,7 +139,7 @@ const getDirectionArrowMap = (theme: Theme): Record<PopoverDirection, JssStyle> 
   };
 };
 
-export const getComponentCss = (direction: PopoverDirection, isNative: boolean, theme: Theme): string => {
+export const getComponentCss = (direction: PopoverDirection, isNativePopoverCase: boolean, theme: Theme): string => {
   const { hoverColor, backgroundColor, primaryColor, backgroundSurfaceColor } = getThemedColors(theme);
   const {
     hoverColor: hoverColorDark,
@@ -194,13 +195,9 @@ export const getComponentCss = (direction: PopoverDirection, isNative: boolean, 
       transform: 'translate3d(0,0,0)', // Fixes movement on hover in Safari
     },
     spacer: {
-      ...(isNative
+      ...(isNativePopoverCase
         ? {
-            overflow: 'initial',
-            backgroundColor: 'transparent',
-            border: 'none',
-            margin: 0,
-            padding: 0,
+            ...getPopoverResetJssStyle(),
           }
         : {
             inset: `${-safeZonePx}px`,

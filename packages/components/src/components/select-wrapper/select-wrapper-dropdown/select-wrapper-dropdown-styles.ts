@@ -21,6 +21,7 @@ import {
 
 import { getNoResultsOptionJssStyle, OPTION_HEIGHT } from '../../../styles/option-styles';
 import { getThemedFormStateColors } from '../../../styles/form-state-color-styles';
+import { getPopoverResetJssStyle } from '../../../styles/popover-reset-styles';
 import type { FormState } from '../../../utils/form/form-state';
 import {
   formElementPaddingHorizontal,
@@ -362,7 +363,7 @@ export const getComponentCss = (
   state: FormState,
   disabled: boolean,
   filter: boolean,
-  isNativePopover: boolean,
+  isNativePopoverCase: boolean,
   theme: Theme
 ): string => {
   return getCss(
@@ -378,21 +379,9 @@ export const getComponentCss = (
         'sr-text': {
           display: 'none',
         },
-        ...(isNativePopover && {
+        ...(isNativePopoverCase && {
           popover: {
-            position: 'absolute',
-            bottom: 'auto',
-            border: 'none',
-            background: 'none',
-            pointerEvents: 'all',
-            padding: 0,
-            margin: 0,
-            overflow: 'initial',
-            height: 'auto',
-            maxHeight: `${8.5 * (OPTION_HEIGHT + 8) + 6 + 2}px`, // 8px = gap, 6px = padding, 2px = border
-            '&:-internal-popover-in-top-layer::backdrop': {
-              display: 'none',
-            },
+            ...getPopoverResetJssStyle(),
           },
         }),
       },
