@@ -20,6 +20,11 @@ exports[`accessibility should expose correct initial accessibility tree 1`] = `
                                 {
                                   "children": [
                                     {
+                                      "children": [
+                                        {
+                                          "role": "InlineTextBox",
+                                        },
+                                      ],
                                       "name": "Column 1",
                                       "role": "StaticText",
                                     },
@@ -34,6 +39,11 @@ exports[`accessibility should expose correct initial accessibility tree 1`] = `
                           "role": "columnheader",
                         },
                         {
+                          "children": [
+                            {
+                              "role": "InlineTextBox",
+                            },
+                          ],
                           "name": ",",
                           "role": "StaticText",
                         },
@@ -44,6 +54,11 @@ exports[`accessibility should expose correct initial accessibility tree 1`] = `
                                 {
                                   "children": [
                                     {
+                                      "children": [
+                                        {
+                                          "role": "InlineTextBox",
+                                        },
+                                      ],
                                       "name": "Column 2",
                                       "role": "StaticText",
                                     },
@@ -58,6 +73,11 @@ exports[`accessibility should expose correct initial accessibility tree 1`] = `
                           "role": "columnheader",
                         },
                         {
+                          "children": [
+                            {
+                              "role": "InlineTextBox",
+                            },
+                          ],
                           "name": ",",
                           "role": "StaticText",
                         },
@@ -68,6 +88,11 @@ exports[`accessibility should expose correct initial accessibility tree 1`] = `
                                 {
                                   "children": [
                                     {
+                                      "children": [
+                                        {
+                                          "role": "InlineTextBox",
+                                        },
+                                      ],
                                       "name": "Column 3",
                                       "role": "StaticText",
                                     },
@@ -82,6 +107,11 @@ exports[`accessibility should expose correct initial accessibility tree 1`] = `
                           "role": "columnheader",
                         },
                         {
+                          "children": [
+                            {
+                              "role": "InlineTextBox",
+                            },
+                          ],
                           "name": ",",
                           "role": "StaticText",
                         },
@@ -92,6 +122,11 @@ exports[`accessibility should expose correct initial accessibility tree 1`] = `
                                 {
                                   "children": [
                                     {
+                                      "children": [
+                                        {
+                                          "role": "InlineTextBox",
+                                        },
+                                      ],
                                       "name": "Column 4",
                                       "role": "StaticText",
                                     },
@@ -106,6 +141,11 @@ exports[`accessibility should expose correct initial accessibility tree 1`] = `
                           "role": "columnheader",
                         },
                         {
+                          "children": [
+                            {
+                              "role": "InlineTextBox",
+                            },
+                          ],
                           "name": ",",
                           "role": "StaticText",
                         },
@@ -116,6 +156,11 @@ exports[`accessibility should expose correct initial accessibility tree 1`] = `
                                 {
                                   "children": [
                                     {
+                                      "children": [
+                                        {
+                                          "role": "InlineTextBox",
+                                        },
+                                      ],
                                       "name": "Column 5",
                                       "role": "StaticText",
                                     },
@@ -156,6 +201,11 @@ exports[`accessibility should expose correct initial accessibility tree 1`] = `
                             {
                               "children": [
                                 {
+                                  "children": [
+                                    {
+                                      "role": "InlineTextBox",
+                                    },
+                                  ],
                                   "name": "Row 1 Cell 1",
                                   "role": "StaticText",
                                 },
@@ -167,6 +217,11 @@ exports[`accessibility should expose correct initial accessibility tree 1`] = `
                           "role": "gridcell",
                         },
                         {
+                          "children": [
+                            {
+                              "role": "InlineTextBox",
+                            },
+                          ],
                           "name": ",",
                           "role": "StaticText",
                         },
@@ -175,6 +230,11 @@ exports[`accessibility should expose correct initial accessibility tree 1`] = `
                             {
                               "children": [
                                 {
+                                  "children": [
+                                    {
+                                      "role": "InlineTextBox",
+                                    },
+                                  ],
                                   "name": "Row 1 Cell 2",
                                   "role": "StaticText",
                                 },
@@ -186,6 +246,11 @@ exports[`accessibility should expose correct initial accessibility tree 1`] = `
                           "role": "gridcell",
                         },
                         {
+                          "children": [
+                            {
+                              "role": "InlineTextBox",
+                            },
+                          ],
                           "name": ",",
                           "role": "StaticText",
                         },
@@ -194,6 +259,11 @@ exports[`accessibility should expose correct initial accessibility tree 1`] = `
                             {
                               "children": [
                                 {
+                                  "children": [
+                                    {
+                                      "role": "InlineTextBox",
+                                    },
+                                  ],
                                   "name": "Row 1 Cell 3",
                                   "role": "StaticText",
                                 },
@@ -205,6 +275,11 @@ exports[`accessibility should expose correct initial accessibility tree 1`] = `
                           "role": "gridcell",
                         },
                         {
+                          "children": [
+                            {
+                              "role": "InlineTextBox",
+                            },
+                          ],
                           "name": ",",
                           "role": "StaticText",
                         },
@@ -213,6 +288,11 @@ exports[`accessibility should expose correct initial accessibility tree 1`] = `
                             {
                               "children": [
                                 {
+                                  "children": [
+                                    {
+                                      "role": "InlineTextBox",
+                                    },
+                                  ],
                                   "name": "Row 1 Cell 4",
                                   "role": "StaticText",
                                 },
@@ -224,6 +304,11 @@ exports[`accessibility should expose correct initial accessibility tree 1`] = `
                           "role": "gridcell",
                         },
                         {
+                          "children": [
+                            {
+                              "role": "InlineTextBox",
+                            },
+                          ],
                           "name": ",",
                           "role": "StaticText",
                         },
@@ -232,6 +317,11 @@ exports[`accessibility should expose correct initial accessibility tree 1`] = `
                             {
                               "children": [
                                 {
+                                  "children": [
+                                    {
+                                      "role": "InlineTextBox",
+                                    },
+                                  ],
                                   "name": "Row 1 Cell 5",
                                   "role": "StaticText",
                                 },
@@ -250,6 +340,11 @@ exports[`accessibility should expose correct initial accessibility tree 1`] = `
                   "role": "row",
                 },
                 {
+                  "children": [
+                    {
+                      "role": "InlineTextBox",
+                    },
+                  ],
                   "name": ",",
                   "role": "StaticText",
                 },
@@ -262,6 +357,11 @@ exports[`accessibility should expose correct initial accessibility tree 1`] = `
                             {
                               "children": [
                                 {
+                                  "children": [
+                                    {
+                                      "role": "InlineTextBox",
+                                    },
+                                  ],
                                   "name": "Row 2 Cell 1",
                                   "role": "StaticText",
                                 },
@@ -273,6 +373,11 @@ exports[`accessibility should expose correct initial accessibility tree 1`] = `
                           "role": "gridcell",
                         },
                         {
+                          "children": [
+                            {
+                              "role": "InlineTextBox",
+                            },
+                          ],
                           "name": ",",
                           "role": "StaticText",
                         },
@@ -281,6 +386,11 @@ exports[`accessibility should expose correct initial accessibility tree 1`] = `
                             {
                               "children": [
                                 {
+                                  "children": [
+                                    {
+                                      "role": "InlineTextBox",
+                                    },
+                                  ],
                                   "name": "Row 2 Cell 2",
                                   "role": "StaticText",
                                 },
@@ -292,6 +402,11 @@ exports[`accessibility should expose correct initial accessibility tree 1`] = `
                           "role": "gridcell",
                         },
                         {
+                          "children": [
+                            {
+                              "role": "InlineTextBox",
+                            },
+                          ],
                           "name": ",",
                           "role": "StaticText",
                         },
@@ -300,6 +415,11 @@ exports[`accessibility should expose correct initial accessibility tree 1`] = `
                             {
                               "children": [
                                 {
+                                  "children": [
+                                    {
+                                      "role": "InlineTextBox",
+                                    },
+                                  ],
                                   "name": "Row 2 Cell 3",
                                   "role": "StaticText",
                                 },
@@ -311,6 +431,11 @@ exports[`accessibility should expose correct initial accessibility tree 1`] = `
                           "role": "gridcell",
                         },
                         {
+                          "children": [
+                            {
+                              "role": "InlineTextBox",
+                            },
+                          ],
                           "name": ",",
                           "role": "StaticText",
                         },
@@ -319,6 +444,11 @@ exports[`accessibility should expose correct initial accessibility tree 1`] = `
                             {
                               "children": [
                                 {
+                                  "children": [
+                                    {
+                                      "role": "InlineTextBox",
+                                    },
+                                  ],
                                   "name": "Row 2 Cell 4",
                                   "role": "StaticText",
                                 },
@@ -330,6 +460,11 @@ exports[`accessibility should expose correct initial accessibility tree 1`] = `
                           "role": "gridcell",
                         },
                         {
+                          "children": [
+                            {
+                              "role": "InlineTextBox",
+                            },
+                          ],
                           "name": ",",
                           "role": "StaticText",
                         },
@@ -338,6 +473,11 @@ exports[`accessibility should expose correct initial accessibility tree 1`] = `
                             {
                               "children": [
                                 {
+                                  "children": [
+                                    {
+                                      "role": "InlineTextBox",
+                                    },
+                                  ],
                                   "name": "Row 2 Cell 5",
                                   "role": "StaticText",
                                 },
@@ -356,6 +496,11 @@ exports[`accessibility should expose correct initial accessibility tree 1`] = `
                   "role": "row",
                 },
                 {
+                  "children": [
+                    {
+                      "role": "InlineTextBox",
+                    },
+                  ],
                   "name": ",",
                   "role": "StaticText",
                 },
@@ -368,6 +513,11 @@ exports[`accessibility should expose correct initial accessibility tree 1`] = `
                             {
                               "children": [
                                 {
+                                  "children": [
+                                    {
+                                      "role": "InlineTextBox",
+                                    },
+                                  ],
                                   "name": "Row 3 Cell 1",
                                   "role": "StaticText",
                                 },
@@ -379,6 +529,11 @@ exports[`accessibility should expose correct initial accessibility tree 1`] = `
                           "role": "gridcell",
                         },
                         {
+                          "children": [
+                            {
+                              "role": "InlineTextBox",
+                            },
+                          ],
                           "name": ",",
                           "role": "StaticText",
                         },
@@ -387,6 +542,11 @@ exports[`accessibility should expose correct initial accessibility tree 1`] = `
                             {
                               "children": [
                                 {
+                                  "children": [
+                                    {
+                                      "role": "InlineTextBox",
+                                    },
+                                  ],
                                   "name": "Row 3 Cell 2",
                                   "role": "StaticText",
                                 },
@@ -398,6 +558,11 @@ exports[`accessibility should expose correct initial accessibility tree 1`] = `
                           "role": "gridcell",
                         },
                         {
+                          "children": [
+                            {
+                              "role": "InlineTextBox",
+                            },
+                          ],
                           "name": ",",
                           "role": "StaticText",
                         },
@@ -406,6 +571,11 @@ exports[`accessibility should expose correct initial accessibility tree 1`] = `
                             {
                               "children": [
                                 {
+                                  "children": [
+                                    {
+                                      "role": "InlineTextBox",
+                                    },
+                                  ],
                                   "name": "Row 3 Cell 3",
                                   "role": "StaticText",
                                 },
@@ -417,6 +587,11 @@ exports[`accessibility should expose correct initial accessibility tree 1`] = `
                           "role": "gridcell",
                         },
                         {
+                          "children": [
+                            {
+                              "role": "InlineTextBox",
+                            },
+                          ],
                           "name": ",",
                           "role": "StaticText",
                         },
@@ -425,6 +600,11 @@ exports[`accessibility should expose correct initial accessibility tree 1`] = `
                             {
                               "children": [
                                 {
+                                  "children": [
+                                    {
+                                      "role": "InlineTextBox",
+                                    },
+                                  ],
                                   "name": "Row 3 Cell 4",
                                   "role": "StaticText",
                                 },
@@ -436,6 +616,11 @@ exports[`accessibility should expose correct initial accessibility tree 1`] = `
                           "role": "gridcell",
                         },
                         {
+                          "children": [
+                            {
+                              "role": "InlineTextBox",
+                            },
+                          ],
                           "name": ",",
                           "role": "StaticText",
                         },
@@ -444,6 +629,11 @@ exports[`accessibility should expose correct initial accessibility tree 1`] = `
                             {
                               "children": [
                                 {
+                                  "children": [
+                                    {
+                                      "role": "InlineTextBox",
+                                    },
+                                  ],
                                   "name": "Row 3 Cell 5",
                                   "role": "StaticText",
                                 },

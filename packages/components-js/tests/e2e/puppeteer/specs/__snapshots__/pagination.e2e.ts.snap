@@ -47,6 +47,11 @@ exports[`accessibility should expose correct initial accessibility tree 1`] = `
             {
               "children": [
                 {
+                  "children": [
+                    {
+                      "role": "InlineTextBox",
+                    },
+                  ],
                   "name": "1",
                   "role": "StaticText",
                 },
@@ -72,6 +77,11 @@ exports[`accessibility should expose correct initial accessibility tree 1`] = `
             {
               "children": [
                 {
+                  "children": [
+                    {
+                      "role": "InlineTextBox",
+                    },
+                  ],
                   "name": "2",
                   "role": "StaticText",
                 },
@@ -89,6 +99,11 @@ exports[`accessibility should expose correct initial accessibility tree 1`] = `
             {
               "children": [
                 {
+                  "children": [
+                    {
+                      "role": "InlineTextBox",
+                    },
+                  ],
                   "name": "3",
                   "role": "StaticText",
                 },
@@ -106,6 +121,11 @@ exports[`accessibility should expose correct initial accessibility tree 1`] = `
             {
               "children": [
                 {
+                  "children": [
+                    {
+                      "role": "InlineTextBox",
+                    },
+                  ],
                   "name": "4",
                   "role": "StaticText",
                 },
@@ -123,6 +143,11 @@ exports[`accessibility should expose correct initial accessibility tree 1`] = `
             {
               "children": [
                 {
+                  "children": [
+                    {
+                      "role": "InlineTextBox",
+                    },
+                  ],
                   "name": "5",
                   "role": "StaticText",
                 },
@@ -142,6 +167,11 @@ exports[`accessibility should expose correct initial accessibility tree 1`] = `
                 {
                   "children": [
                     {
+                      "children": [
+                        {
+                          "role": "InlineTextBox",
+                        },
+                      ],
                       "name": "…",
                       "role": "StaticText",
                     },
@@ -162,6 +192,11 @@ exports[`accessibility should expose correct initial accessibility tree 1`] = `
             {
               "children": [
                 {
+                  "children": [
+                    {
+                      "role": "InlineTextBox",
+                    },
+                  ],
                   "name": "20",
                   "role": "StaticText",
                 },

@@ -16,7 +16,7 @@ beforeEach(async () => (page = await browser.newPage()));
 afterEach(async () => await page.close());
 
 const getHost = () => selectNode(page, 'p-flyout');
-const getFlyout = () => selectNode(page, 'p-flyout >>> .root');
+const getFlyout = () => selectNode(page, 'p-flyout >>> dialog');
 const getHeader = () => selectNode(page, 'p-flyout >>> .header');
 const getHeaderSlottedContent = () => selectNode(page, '[slot="header"]');
 const getFooter = () => selectNode(page, 'p-flyout >>> .footer');

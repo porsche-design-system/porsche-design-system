@@ -17,6 +17,11 @@ exports[`accessibility should expose correct accessibility tree properties in op
         {
           "children": [
             {
+              "children": [
+                {
+                  "role": "InlineTextBox",
+                },
+              ],
               "name": "Test content Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.",
               "role": "StaticText",
             },

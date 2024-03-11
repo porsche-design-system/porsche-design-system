@@ -1,10 +1,10 @@
-<p-flyout open="true" class="scroll content center">
+<p-flyout class="scroll content center" open="true">
   <div slot="header">
     <h1>Sticky Heading</h1>
     <p>Sticky header text</p>
   </div>
   <div style="position: relative; z-index: 10; height: 600px; background-color: #61dafb"></div>
-  <span class="scroll-into-view vertical-center">Some content</span>
+  <div class="scroll-into-view vertical-center">Some content</div>
   <div style="position: relative; z-index: 10; height: 600px; background-color: #ebddf9"></div>
   <div slot="footer">
     <button>Sticky Footer Button</button>
@@ -13,6 +13,8 @@
 
 <script>
   porscheDesignSystem.componentsReady().then(() => {
-    document.querySelector('.scroll-into-view').scrollIntoView();
+    document.querySelector('.scroll-into-view').scrollIntoView({
+      behavior: 'instant',
+    });
   });
 </script>
