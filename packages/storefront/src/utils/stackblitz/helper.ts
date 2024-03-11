@@ -66,11 +66,12 @@ export const getExternalDependenciesOrThrow = (externalDependencies: ExternalDep
 export const isStableStorefrontRelease = (): boolean => /^\/v\d+\//.test(location.pathname);
 
 export const convertImportPaths = (markup: string, framework: Framework, pdsVersion: string): string => {
+  const relativeDirectory = framework === 'angular' ? '../../' : framework === 'vue' ? '../' : '';
   return isStableStorefrontReleaseOrForcedPdsVersion(pdsVersion)
     ? markup
     : markup.replace(
         new RegExp(`@porsche-design-system\\/components-${framework.replace(/^vanilla-/, '')}`, 'g'),
-        `./${framework === 'angular' ? '../../' : ''}@porsche-design-system/components-${framework}`
+        `./${relativeDirectory}@porsche-design-system/components-${framework}`
       );
 };
 
