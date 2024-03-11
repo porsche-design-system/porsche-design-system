@@ -116,6 +116,16 @@ export const getDependencies = (
   };
 };
 
+export const getDevDependencies = (): StackBlitzProjectDependencies => {
+  return {
+    '@vitejs/plugin-vue': devDependencies['@vitejs/plugin-vue'],
+    '@vitejs/plugin-vue-jsx': devDependencies['@vitejs/plugin-vue-jsx'],
+    typescript: devDependencies['typescript'],
+    vite: devDependencies['vite'],
+    'vue-tsc': devDependencies['vue-tsc'],
+  };
+};
+
 export const getVueProjectAndOpenOptions: GetStackBlitzProjectAndOpenOptions = (opts) => {
   const {
     markup,
@@ -163,13 +173,7 @@ export default defineConfig({
             startCommand: 'yarn && yarn dev', // manually install dependencies and start app
           },
           dependencies: getDependencies(externalDependencies, pdsVersion),
-          devDependencies: {
-            '@vitejs/plugin-vue': devDependencies['@vitejs/plugin-vue'],
-            '@vitejs/plugin-vue-jsx': devDependencies['@vitejs/plugin-vue-jsx'],
-            typescript: devDependencies['typescript'],
-            vite: devDependencies['vite'],
-            'vue-tsc': devDependencies['vue-tsc'],
-          },
+          devDependencies: getDevDependencies(),
         },
         null,
         2
