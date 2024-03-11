@@ -599,6 +599,11 @@ jobs:
         with:
           entrypoint: run-build
           args: --components-react
+      - name: 'Build Components Vue'
+        uses: ./.github/actions/docker-run-playwright
+        with:
+          entrypoint: run-build
+          args: --components-vue
       - name: 'Lint'
         uses: ./.github/actions/docker-run-playwright
         with:
@@ -641,6 +646,11 @@ jobs:
         with:
           entrypoint: run-build
           args: --components-react
+      - name: 'Build Components Vue'
+        uses: ./.github/actions/docker-run-playwright
+        with:
+          entrypoint: run-build
+          args: --components-vue
       - name: 'E2E Test'
         uses: ./.github/actions/docker-run-playwright
         with:
@@ -674,6 +684,11 @@ jobs:
         with:
           entrypoint: run-build
           args: --components-react
+      - name: 'Build Components Vue'
+        uses: ./.github/actions/docker-run-playwright
+        with:
+          entrypoint: run-build
+          args: --components-vue
       - name: 'E2E Test'
         uses: ./.github/actions/docker-run-playwright
         with:
@@ -712,6 +727,11 @@ jobs:
         with:
           entrypoint: run-build
           args: --components-react
+      - name: 'Build Components Vue'
+        uses: ./.github/actions/docker-run-playwright
+        with:
+          entrypoint: run-build
+          args: --components-vue
       - name: 'A11y Test'
         uses: ./.github/actions/docker-run-playwright
         with:
@@ -745,6 +765,11 @@ jobs:
         with:
           entrypoint: run-build
           args: --components-react
+      - name: 'Build Components Vue'
+        uses: ./.github/actions/docker-run-playwright
+        with:
+          entrypoint: run-build
+          args: --components-vue
       - name: 'VRT Test'
         uses: ./.github/actions/docker-run-playwright
         with:
