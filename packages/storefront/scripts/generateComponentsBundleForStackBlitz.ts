@@ -8,11 +8,17 @@ const targetPath = 'public/porsche-design-system';
 
 fs.rmSync(targetPath, { force: true, recursive: true });
 
+// read local file contents of components-js/angular/react/vue builds and output them in a json file per framework
+// which is dynamically requested by our storefront upon cling `Edit in StackBlitz` button and then sent
+// together with the actual example code and config to StackBlitz via http POST
+// this is important for local testing and issue branches, where we don't have a stable release on npm, yet
 const generateComponentsBundleForStackBlitz = (framework: Framework): void => {
   const targetFile = `${targetPath}/components-${framework}.json`;
   const bundle: { [path: string]: string } = {};
   const distSubFolder = framework === 'js' ? 'components-wrapper' : `${framework}-wrapper`;
 
+  // file size matters, if too large, stackblitz will run into a 500
+  // hence, removing irrelevant sub-packages and unused builds is necessary
   const ignoredSubPackages = [
     'bin',
     'ssr',
@@ -23,9 +29,15 @@ const generateComponentsBundleForStackBlitz = (framework: Framework): void => {
     'fesm2015', // so we just initialize components-js manually
     'fesm2020',
   ];
-  // stackblitz doesn't use esm builds (.mjs) files, so we can ignore them
+
+  // stackblitz with EngineBlock environment doesn't use esm builds (.mjs) files, so we can ignore them
   // which also results in smaller json manifest and faster stackblitz
-  const files = globbySync(`../components-${framework}/dist/${distSubFolder}/**/*.{js,cjs,d.ts,json,scss}`).filter(
+  // however, vue with vite using WebContainers environment uses esm builds, therefore we have conditional globby
+  // https://developer.stackblitz.com/platform/api/javascript-sdk-options#projecttemplate
+  const esmOrCjsFileExtension = framework === 'vue' ? 'mjs' : 'cjs';
+  const files = globbySync(
+    `../components-${framework}/dist/${distSubFolder}/**/*.{js,${esmOrCjsFileExtension},d.ts,json,scss}`
+  ).filter(
     (filePath) =>
       !ignoredSubPackages.some((subPackage) =>
         filePath.includes(`components-${framework}/dist/${distSubFolder}/${subPackage}`)
