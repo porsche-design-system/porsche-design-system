@@ -1,19 +1,15 @@
-import type { Page } from 'puppeteer';
-import { getLifecycleStatus, goto, selectNode, trackLifecycleStatus, waitForComponentsReady } from '../helpers';
+import { test, expect, type CDPSession } from '@playwright/test';
+import { getLifecycleStatus, goto, trackLifecycleStatus, waitForComponentsReady } from '../helpers';
 
-let page: Page;
-beforeEach(async () => (page = await browser.newPage()));
-afterEach(async () => await page.close());
-
-it('should not trigger updates on non-default props', async () => {
+test('should not trigger updates on non-default props', async ({ page }) => {
   // Throttle cpu 6x
-  const client = await page.target().createCDPSession();
+  const client: CDPSession = await page.context().newCDPSession(page);
   await client.send('Emulation.setCPUThrottlingRate', { rate: 6 });
 
   await goto(page, 'stencil-lifecycles');
   await trackLifecycleStatus(page);
 
-  const button = await selectNode(page, 'button');
+  const button = page.getByRole('button', { name: 'Render Link and Change key on click' });
   const status = await getLifecycleStatus(page);
 
   expect(status.componentDidUpdate.all, 'initial componentDidUpdate: all').toBe(0);

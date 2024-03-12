@@ -3,6 +3,7 @@ import { getBackgroundColor, transformSrcAndSrcsetOfImgAndSourceTags } from './h
 import { getVanillaJsProjectAndOpenOptions } from './getVanillaJsProjectAndOpenOptions';
 import { getAngularProjectAndOpenOptions } from './getAngularProjectAndOpenOptions';
 import { getReactProjectAndOpenOptions } from './getReactProjectAndOpenOptions';
+import { getVueProjectAndOpenOptions } from './getVueProjectAndOpenOptions';
 import type {
   StackBlitzFrameworkOpts,
   GetStackBlitzProjectAndOpenOptions,
@@ -16,7 +17,7 @@ export type OpenInStackBlitzOpts = {
   porscheDesignSystemBundle: PorscheDesignSystemBundle;
   markup: string;
   dir: PlaygroundDir;
-  framework: Exclude<Framework, 'shared' | 'vue'>; // we don't have stackblitz integration for vue yet, therefore excluding vue
+  framework: Exclude<Framework, 'shared'>;
   theme: PlaygroundTheme;
   backgroundColor: BackgroundColor;
   externalDependencies: ExternalDependency[];
@@ -35,19 +36,17 @@ export const openInStackBlitz = (opts: OpenInStackBlitzOpts): void => {
     globalStyles:
       theme === 'auto'
         ? `body { background: ${getBackgroundColor('light', backgroundColor)}; }
-          @media (prefers-color-scheme: dark) {
-            body { background: ${getBackgroundColor('dark', backgroundColor)}; }
-          }`
+      @media (prefers-color-scheme: dark) {
+        body { background: ${getBackgroundColor('dark', backgroundColor)}; }
+      }`
         : `body { background: ${getBackgroundColor(theme, backgroundColor)}; }`,
   };
 
-  const getProjectAndOpenOptionsMap: Record<
-    Exclude<Framework, 'shared' | 'vue'>, // we don't have stackblitz integration for vue yet, therefore excluding vue
-    GetStackBlitzProjectAndOpenOptions
-  > = {
+  const getProjectAndOpenOptionsMap: Record<Exclude<Framework, 'shared'>, GetStackBlitzProjectAndOpenOptions> = {
     'vanilla-js': getVanillaJsProjectAndOpenOptions,
     angular: getAngularProjectAndOpenOptions,
     react: getReactProjectAndOpenOptions,
+    vue: getVueProjectAndOpenOptions,
   };
 
   const { openFile, ...project } = getProjectAndOpenOptionsMap[framework](stackBlitzFrameworkOpts);

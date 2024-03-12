@@ -3,7 +3,7 @@
     type="button"
     :theme="theme"
     :icon-source="stackBlitzIcon"
-    :disabled="framework === 'shared' || framework === 'vue'"
+    :disabled="framework === 'shared'"
     :loading="isLoading"
     @click="onButtonClick()"
     >{{ buttonLabel }}
@@ -27,7 +27,7 @@
     @Prop({ default: '' }) public markup!: string;
     @Prop({ default: 'light' }) public theme!: PlaygroundTheme;
     @Prop({ default: 'ltr' }) public dir!: PlaygroundDir;
-    @Prop({ default: 'vanilla-js' }) public framework!: Exclude<Framework, 'shared' | 'vue'>; // we don't have stackblitz integration for vue yet, therefore excluding vue
+    @Prop({ default: 'vanilla-js' }) public framework!: Exclude<Framework, 'shared'>;
     @Prop({ default: 'background-base' }) public backgroundColor!: BackgroundColor;
     @Prop({ default: () => [] }) public externalStackBlitzDependencies!: ExternalDependency[];
     @Prop({ default: () => [] }) public sharedImportKeys!: SharedImportKey[];
@@ -54,7 +54,7 @@
     }
 
     private static async porscheDesignSystemBundle(
-      framework: Exclude<Framework, 'shared' | 'vue'>, // we don't have stackblitz integration for vue yet, therefore excluding vue
+      framework: Exclude<Framework, 'shared'>,
       pdsVersion?: string
     ): Promise<PorscheDesignSystemBundle> {
       const jsBundle = await CodeEditor.fetchPorscheDesignSystemBundle('js', pdsVersion);
@@ -71,6 +71,11 @@
           return {
             ...jsBundle,
             ...(await CodeEditor.fetchPorscheDesignSystemBundle('react', pdsVersion)),
+          };
+        case 'vue':
+          return {
+            ...jsBundle,
+            ...(await CodeEditor.fetchPorscheDesignSystemBundle('vue', pdsVersion)),
           };
       }
     }

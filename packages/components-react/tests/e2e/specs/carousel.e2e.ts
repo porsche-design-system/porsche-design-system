@@ -1,18 +1,17 @@
-import type { Page } from 'puppeteer';
-import { getLifecycleStatus, goto, selectNode, trackLifecycleStatus, waitForComponentsReady } from '../helpers';
+import { test, expect } from '@playwright/test';
+import { getLifecycleStatus, goto, trackLifecycleStatus, waitForComponentsReady } from '../helpers';
 
-let page: Page;
-beforeEach(async () => (page = await browser.newPage()));
-afterEach(async () => await page.close());
-
-it('should not cause new lifecycle when nothing on the component changes', async () => {
+test('should not cause new lifecycle when nothing on the component changes', async ({ page }) => {
   await goto(page, 'carousel-example-events');
   expect(await waitForComponentsReady(page)).toBe(2); // p-carousel and p-text
 
-  const prevButton = await selectNode(page, 'p-carousel >>> p-button-pure:first-of-type >>> button');
-  const nextButton = await selectNode(page, 'p-carousel >>> p-button-pure:last-of-type >>> button');
+  const goToLastSlideButton = page.getByRole('button', { name: 'Go to last slide' }); // await selectNode(page, 'p-carousel >>> p-button-pure:first-of-type >>> button');
+  const prevSlideButton = page.getByRole('button', { name: 'Previous slide' }); // await selectNode(page, 'p-carousel >>> p-button-pure:first-of-type >>> button');
+  const nextSlideButton = page.getByRole('button', { name: 'Next slide' }); // await selectNode(page, 'p-carousel >>> p-button-pure:last-of-type >>> button');
 
-  await page.waitForFunction((el: HTMLElement) => el.getAttribute('aria-label') === 'Go to last slide', {}, prevButton);
+  await expect(goToLastSlideButton).toBeVisible();
+  await expect(prevSlideButton).toBeHidden();
+  await expect(nextSlideButton).toBeVisible();
 
   await trackLifecycleStatus(page);
 
@@ -20,9 +19,11 @@ it('should not cause new lifecycle when nothing on the component changes', async
   expect(initialStatus.componentDidUpdate.all, 'initial componentDidUpdate: all').toBe(0); // tracking was started after page was loaded
   expect(initialStatus.componentDidLoad.all, 'initial componentDidLoad: all').toBe(0); // tracking was started after page was loaded
 
-  await nextButton.click();
+  await nextSlideButton.click();
 
-  await page.waitForFunction((el: HTMLElement) => el.getAttribute('aria-label') === 'Previous slide', {}, prevButton);
+  await expect(goToLastSlideButton).toBeHidden();
+  await expect(prevSlideButton).toBeVisible();
+  await expect(nextSlideButton).toBeVisible();
 
   const finalStatus = await getLifecycleStatus(page);
   expect(finalStatus.componentDidUpdate['p-button-pure'], 'final componentDidUpdate: p-button-pure').toBe(1);
