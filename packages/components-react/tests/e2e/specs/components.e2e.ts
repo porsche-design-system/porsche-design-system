@@ -1,12 +1,8 @@
-import type { Page } from 'puppeteer';
+import { test, expect } from '@playwright/test';
 import { getConsoleErrorsAmount, getOuterHTML, goto, initConsoleObserver } from '../helpers';
 import * as console from 'console';
 
-let page: Page;
-beforeEach(async () => (page = await browser.newPage()));
-afterEach(async () => await page.close());
-
-it('overview should work without errors', async () => {
+test('overview should work without errors', async ({ page }) => {
   initConsoleObserver(page);
   await goto(page, 'overview');
 
@@ -16,7 +12,7 @@ it('overview should work without errors', async () => {
   expect(getConsoleErrorsAmount()).toBe(1);
 });
 
-it('should stringify object props correctly', async () => {
+test('should stringify object props correctly', async ({ page }) => {
   await goto(page, 'overview');
 
   const innerHTML = await page.evaluate(() => document.querySelector('#app').innerHTML);
@@ -26,7 +22,7 @@ it('should stringify object props correctly', async () => {
   expect(innerHTML).not.toContain('[object Object]');
 });
 
-it('should initialize component deterministically', async () => {
+test('should initialize component deterministically', async ({ page }) => {
   await goto(page, 'core-initializer');
   await page.waitForFunction(() => document.querySelectorAll('p-text-field-wrapper').length === 2);
 
