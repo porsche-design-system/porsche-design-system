@@ -12,4 +12,5 @@ node_modules
 /app/routes/overview.tsx
 
 # testing
+/tests/e2e/results
 /tests/vrt/results

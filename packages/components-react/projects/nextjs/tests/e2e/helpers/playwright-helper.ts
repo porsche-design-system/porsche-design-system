@@ -1,29 +1,16 @@
 import { type ConsoleMessage, type ElementHandle, type Page } from '@playwright/test';
-import { waitForComponentsReady } from './stencil';
 
-export const selectNode = async (page: Page, selector: string): Promise<ElementHandle> => {
-  const selectorParts = selector.split('>>>');
-  const shadowRootSelectors =
-    selectorParts.length > 1
-      ? selectorParts
-          .slice(1)
-          .map((x) => `.shadowRoot.querySelector('${x.trim()}')`)
-          .join('')
-      : '';
-  return (
-    await page.evaluateHandle(`document.querySelector('${selectorParts[0].trim()}')${shadowRootSelectors}`)
-  ).asElement() as ElementHandle;
+export const waitForComponentsReady = (page: Page): Promise<number> => {
+  // componentsReady is exposed via index.tsx of React vrt app
+  return page.evaluate(() =>
+    (window as unknown as Window & { componentsReady: () => Promise<number> }).componentsReady()
+  );
 };
 
-export const getOuterHTML = (el: ElementHandle): Promise<string> => el.evaluate((el) => el.outerHTML);
-
-export const goto = async (page: Page, url: string): Promise<void> => {
+export const goto = async (page: Page, url: string) => {
   await page.goto(url);
   await page.locator('html.hydrated').waitFor();
   await waitForComponentsReady(page);
-
-  // it looks like vue event binding is a bit unreliable and happens after onMounted
-  await new Promise((resolve) => setTimeout(resolve, 100));
 };
 
 const consoleMessages: ConsoleMessage[] = [];
@@ -46,4 +33,8 @@ export const getConsoleErrorsAmount = (): number => {
 };
 export const getConsoleWarningsAmount = (): number => {
   return consoleMessages.filter((x: ConsoleMessage): boolean => x.type() === 'warning').length;
+};
+
+export const getAttribute = (element: ElementHandle, attribute: string): Promise<string> => {
+  return element.evaluate((el: HTMLElement, attr: string) => el.getAttribute(attr), attribute);
 };

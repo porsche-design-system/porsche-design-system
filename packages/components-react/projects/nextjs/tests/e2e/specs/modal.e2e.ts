@@ -1,62 +1,62 @@
-import type { Page } from 'puppeteer';
-import { goto, getAttribute, selectNode } from '../helpers';
-
-let page: Page;
-
-beforeEach(async () => (page = await browser.newPage()));
-afterEach(async () => await page.close());
+import { type Page, test, expect } from '@playwright/test';
+import { goto, getAttribute } from '../helpers';
+import { viewportWidthM } from '@porsche-design-system/shared/testing/playwright.vrt.config';
 
 const pageUrl = '/modal-standalone';
-const getOpenModalBtn = () => selectNode(page, 'p-button >>> button');
-const getLinkToModal = () => selectNode(page, 'p-link a[href="/modal-standalone/open"]');
-const getDismissButton = () => selectNode(page, 'p-modal >>> p-button-pure >>> button');
-const getRootElement = () => selectNode(page, 'html');
-const getBodyStyle = async () => getAttribute(await selectNode(page, 'body'), 'style');
+const getOpenModalBtn = (page: Page) => page.getByRole('button', { name: 'Open Modal (without route change)' }); // selectNode(page, 'p-button >>> button');
+const getLinkToModal = (page: Page) => page.getByRole('link', { name: 'Link to Modal (with route change)' }); // selectNode(page, 'p-link a[href="/modal-standalone/open"]');
+const getDismissButton = (page: Page) => page.getByRole('button', { name: 'Dismiss modal' }); // selectNode(page, 'p-modal >>> p-button-pure >>> button');
+const getRootElement = (page: Page) => page.$('html');
+const getBodyStyle = async (page: Page) => getAttribute(await page.$('body'), 'style');
 
-it('should keep same scroll position when modal is opened and closed with route change', async () => {
-  await goto(page, pageUrl);
-  expect(await getBodyStyle()).toBe(null);
-
-  const linkToModal = await getLinkToModal();
-  const rootElement = await getRootElement();
-  expect(await rootElement.evaluate((el) => el.scrollTop)).toBe(0);
-
-  await linkToModal.scrollIntoView();
-  expect(await rootElement.evaluate((el) => el.scrollTop)).toBe(332);
-
-  await linkToModal.click();
-  await page.waitForSelector('p-modal >>> p-button-pure >>> button');
-  expect(await rootElement.evaluate((el) => el.scrollTop)).toBe(332);
-
-  const dismissButton = await getDismissButton();
-  await Promise.all([
-    page.waitForNavigation({
-      waitUntil: 'networkidle0',
-    }),
-    dismissButton.click(),
-  ]);
-  await page.waitForFunction(() => !document.querySelector('p-modal'));
-
-  expect(await rootElement.evaluate((el) => el.scrollTop)).toBe(332);
+test.use({
+  // ensures expected scroll positions are the same
+  viewport: { width: viewportWidthM, height: 600 },
 });
 
-it('should keep same scroll position when modal is opened and closed', async () => {
+test('should keep same scroll position when modal is opened and closed with route change', async ({ page }) => {
   await goto(page, pageUrl);
-  expect(await getBodyStyle()).toBe(null);
+  expect(await getBodyStyle(page)).toBe(null);
 
-  const openModalBtn = await getOpenModalBtn();
-  const rootElement = await getRootElement();
+  const linkToModal = await getLinkToModal(page);
+  const rootElement = await getRootElement(page);
   expect(await rootElement.evaluate((el) => el.scrollTop)).toBe(0);
 
-  await openModalBtn.scrollIntoView();
-  expect(await rootElement.evaluate((el) => el.scrollTop)).toBe(332);
+  await linkToModal.scrollIntoViewIfNeeded();
+  expect(await rootElement.evaluate((el) => el.scrollTop)).toBe(532);
+
+  await linkToModal.click();
+  expect(await rootElement.evaluate((el) => el.scrollTop)).toBe(532);
+
+  await page.waitForLoadState();
+  const dismissButton = await getDismissButton(page);
+
+  expect(await rootElement.evaluate((el) => el.scrollTop)).toBe(532);
+
+  await dismissButton.click();
+
+  await page.waitForFunction(() => !document.querySelector('p-modal'));
+  expect(await rootElement.evaluate((el) => el.scrollTop)).toBe(532);
+});
+
+test('should keep same scroll position when modal is opened and closed', async ({ page }) => {
+  await goto(page, pageUrl);
+  expect(await getBodyStyle(page)).toBe(null);
+
+  const openModalBtn = await getOpenModalBtn(page);
+  const rootElement = await getRootElement(page);
+  expect(await rootElement.evaluate((el) => el.scrollTop)).toBe(0);
+
+  await openModalBtn.scrollIntoViewIfNeeded();
+  expect(await rootElement.evaluate((el) => el.scrollTop)).toBe(532);
 
   await openModalBtn.click();
-  await page.waitForSelector('p-modal >>> p-button-pure >>> button');
-  expect(await rootElement.evaluate((el) => el.scrollTop)).toBe(332);
+  expect(await rootElement.evaluate((el) => el.scrollTop)).toBe(532);
 
-  const dismissButton = await getDismissButton();
+  await page.waitForLoadState();
+  const dismissButton = await getDismissButton(page);
   await dismissButton.click();
-  expect(await getBodyStyle()).toBe('');
-  expect(await rootElement.evaluate((el) => el.scrollTop)).toBe(332);
+
+  expect(await getBodyStyle(page)).toBe('');
+  expect(await rootElement.evaluate((el) => el.scrollTop)).toBe(532);
 });
