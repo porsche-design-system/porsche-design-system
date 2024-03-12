@@ -177,21 +177,10 @@ export class Select {
   }
 
   public componentDidRender(): void {
-    if (this.isNativePopoverCase) {
+    if (this.isNativePopoverCase && this.isOpen) {
       addNativePopoverScrollAndResizeListeners(this.host, this.parentTableElement, this.popoverElement, () => {
         this.isOpen = false;
       });
-      if (this.isOpen) {
-        getNativePopoverDropdownPosition(
-          this.combobox,
-          this.selectOptions.filter((option) => !option.hidden).length,
-          this.popoverElement,
-          this.dropdownDirection
-        );
-        this.popoverElement.showPopover();
-      } else {
-        this.popoverElement.hidePopover();
-      }
     }
   }
 
@@ -338,6 +327,19 @@ export class Select {
       return;
     }
     this.isOpen = open;
+    if (this.isNativePopoverCase) {
+      if (this.isOpen) {
+        getNativePopoverDropdownPosition(
+          this.combobox,
+          this.selectOptions.filter((option) => !option.hidden).length,
+          this.popoverElement,
+          this.dropdownDirection
+        );
+        this.popoverElement.showPopover();
+      } else {
+        this.popoverElement.hidePopover();
+      }
+    }
   };
 
   private onComboKeyDown = (event: KeyboardEvent): void => {
