@@ -8,6 +8,12 @@
 | React   | 18.2.0   | 18.2.0                 |
 | Next.js | 14.0.4   | 13.4.19 (React 18.2.0) |
 
+## Playwright
+
+Playwright Update is currently fixed to 1.41.2. If one wants to update it, it must be updated in the docker container
+aswell (Dockerfile-playwright plus workflow "Build and Push Docker Image"), affecting all running workflows even outside
+the changed branch so this must be aligned with the other developers.
+
 ## Vue
 
 All Vue related dependencies can't be updated at the moment because `vue-property-decorator` and `vue-class-component`
