@@ -4,28 +4,45 @@ exports[`convertImportPaths() should return markup with updated import path for 
 "
 'import * from '@porsche-design-system/components-js';
 'import * from './../../@porsche-design-system/components-angular';
-'import * from '@porsche-design-system/components-react';"
+'import * from '@porsche-design-system/components-react';
+'import * from '@porsche-design-system/components-vue';
+"
 `;
 
 exports[`convertImportPaths() should return markup with updated import path for js 1`] = `
 "
 'import * from './@porsche-design-system/components-vanilla-js';
 'import * from '@porsche-design-system/components-angular';
-'import * from '@porsche-design-system/components-react';"
+'import * from '@porsche-design-system/components-react';
+'import * from '@porsche-design-system/components-vue';
+"
 `;
 
 exports[`convertImportPaths() should return markup with updated import path for react 1`] = `
 "
 'import * from '@porsche-design-system/components-js';
 'import * from '@porsche-design-system/components-angular';
-'import * from './@porsche-design-system/components-react';"
+'import * from './@porsche-design-system/components-react';
+'import * from '@porsche-design-system/components-vue';
+"
+`;
+
+exports[`convertImportPaths() should return markup with updated import path for vue 1`] = `
+"
+'import * from '@porsche-design-system/components-js';
+'import * from '@porsche-design-system/components-angular';
+'import * from '@porsche-design-system/components-react';
+'import * from './../@porsche-design-system/components-vue';
+"
 `;
 
 exports[`convertImportPaths() should return markup without modification 1`] = `
 "
 'import * from '@porsche-design-system/components-js';
 'import * from '@porsche-design-system/components-angular';
-'import * from '@porsche-design-system/components-react';"
+'import * from '@porsche-design-system/components-react';
+'import * from '@porsche-design-system/components-vue';
+"
 `;
 
 exports[`validateExternalDependencies() should throw error if invalid externalDependency is passed 1`] = `"Passed 'externalStackBlitzDependencies[]' contains invalid value. Allowed are 'imask, styled-components'."`;

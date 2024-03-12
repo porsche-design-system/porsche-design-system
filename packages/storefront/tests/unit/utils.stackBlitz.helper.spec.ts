@@ -27,7 +27,7 @@ describe('removeSharedImport()', () => {
 
     removeSharedImport(markup);
 
-    expect(spy).toBeCalledWith(/import { .+ } from '@porsche-design-system\/shared';/, '');
+    expect(spy).toBeCalledWith(/\s*import { .+ } from '@porsche-design-system\/shared';/, '');
   });
 
   it('should return result of replace()', () => {
@@ -137,29 +137,33 @@ describe('convertImportPaths()', () => {
   const markup = `
 'import * from '@porsche-design-system/components-js';
 'import * from '@porsche-design-system/components-angular';
-'import * from '@porsche-design-system/components-react';`;
+'import * from '@porsche-design-system/components-react';
+'import * from '@porsche-design-system/components-vue';
+`;
 
   it('should return markup without modification', () => {
     jest.spyOn(helper, 'isStableStorefrontReleaseOrForcedPdsVersion').mockReturnValue(true);
-
     expect(convertImportPaths(markup, 'vanilla-js', '1.2.3')).toMatchSnapshot();
   });
 
   it('should return markup with updated import path for js', () => {
     jest.spyOn(helper, 'isStableStorefrontReleaseOrForcedPdsVersion').mockReturnValue(false);
-
     expect(convertImportPaths(markup, 'vanilla-js', '1.2.3')).toMatchSnapshot();
   });
 
   it('should return markup with updated import path for angular', () => {
     jest.spyOn(helper, 'isStableStorefrontReleaseOrForcedPdsVersion').mockReturnValue(false);
-
     expect(convertImportPaths(markup, 'angular', '1.2.3')).toMatchSnapshot();
   });
+
   it('should return markup with updated import path for react', () => {
     jest.spyOn(helper, 'isStableStorefrontReleaseOrForcedPdsVersion').mockReturnValue(false);
-
     expect(convertImportPaths(markup, 'react', '1.2.3')).toMatchSnapshot();
+  });
+
+  it('should return markup with updated import path for vue', () => {
+    jest.spyOn(helper, 'isStableStorefrontReleaseOrForcedPdsVersion').mockReturnValue(false);
+    expect(convertImportPaths(markup, 'vue', '1.2.3')).toMatchSnapshot();
   });
 });
 
