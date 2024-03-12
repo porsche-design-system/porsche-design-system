@@ -134,7 +134,7 @@ The appearance of a table's contents can be customized as illustrated in the fol
         <p-table-cell multiline="true" style="min-width: 10rem;">{{ item.comment }}</p-table-cell>
         <p-table-cell>{{ item.leadId }} <p-popover description="Some additional content."></p-popover></p-table-cell>
         <p-table-cell>
-          <p-select-wrapper filter="true" label="Select Something" style="width: 160px;">
+          <p-select-wrapper filter="true" label="Select Something" style="min-width: 160px;">
             <select name="some-name">
               <option value="a">Option A</option>
               <option value="b">Option B</option>
@@ -149,6 +149,36 @@ The appearance of a table's contents can be customized as illustrated in the fol
               <option value="k">Option K</option>
             </select>
           </p-select-wrapper>
+        </p-table-cell>
+        <p-table-cell>
+          <p-select name="options" label="Select Something" style="min-width: 160px; display: block;">
+            <p-select-option value="a">Option A</p-select-option>
+            <p-select-option value="b">Option B</p-select-option>
+            <p-select-option value="c">Option C</p-select-option>
+            <p-select-option value="d">Option D</p-select-option>
+            <p-select-option value="e">Option E</p-select-option>
+            <p-select-option value="f">Option F</p-select-option>
+            <p-select-option value="g">Option G</p-select-option>
+            <p-select-option value="h">Option H</p-select-option>
+            <p-select-option value="i">Option I</p-select-option>
+            <p-select-option value="j">Option J</p-select-option>
+            <p-select-option value="k">Option K</p-select-option>
+          </p-select>
+        </p-table-cell>
+        <p-table-cell>
+          <p-multi-select name="name" label="Multi-Select Something" style="min-width: 160px;">
+            <p-multi-select-option value="a">Option A</p-multi-select-option>
+            <p-multi-select-option value="b">Option B</p-multi-select-option>
+            <p-multi-select-option value="c">Option C</p-multi-select-option>
+            <p-multi-select-option value="d">Option D</p-multi-select-option>
+            <p-multi-select-option value="e">Option E</p-multi-select-option>
+            <p-multi-select-option value="f">Option F</p-multi-select-option>
+            <p-multi-select-option value="g">Option G</p-multi-select-option>
+            <p-multi-select-option value="h">Option H</p-multi-select-option>
+            <p-multi-select-option value="i">Option I</p-multi-select-option>
+            <p-multi-select-option value="j">Option J</p-multi-select-option>
+            <p-multi-select-option value="k">Option K</p-multi-select-option>
+          </p-multi-select>
         </p-table-cell>
         <p-table-cell>
           <p-button-pure :theme="theme" icon="edit" style="padding: .5rem">Edit</p-button-pure>
