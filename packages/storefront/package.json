@@ -57,7 +57,7 @@
   },
   "devDependencies": {
     "@axe-core/playwright": "^4.8.5",
-    "@playwright/test": "^1.42.1",
+    "@playwright/test": "1.41.2",
     "@types/prismjs": "^1.26.3",
     "@typescript-eslint/eslint-plugin": "^6.14.0",
     "@typescript-eslint/parser": "^6.14.0",
