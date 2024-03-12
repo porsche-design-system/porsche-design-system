@@ -44,7 +44,7 @@
     "imask": "^7.2.0",
     "rxjs": "^7.8.1",
     "tslib": "^2.6.2",
-    "zone.js": "~0.14.2"
+    "zone.js": "~0.14.4"
   },
   "devDependencies": {
     "@angular-builders/custom-webpack": "^15.0.0",
@@ -54,14 +54,14 @@
     "@angular/language-service": "^15.2.10",
     "@porsche-design-system/assets": "5.0.2",
     "@porsche-design-system/shared": "0.0.0",
-    "@testing-library/angular": "^15.1.0",
+    "@testing-library/angular": "^15.2.0",
     "@types/jasmine": "^5.1.4",
     "concurrently": "^8.2.2",
     "globby": "^11.0.4",
     "jest-preset-angular": "^13.1.4",
     "karma": "~6.4.2",
     "karma-chrome-launcher": "~3.2.0",
-    "karma-coverage-istanbul-reporter": "~3.0.2",
+    "karma-coverage-istanbul-reporter": "~3.0.3",
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "^2.1.0",
     "local-web-server": "^5.3.1",
