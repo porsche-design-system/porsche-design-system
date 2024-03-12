@@ -74,7 +74,7 @@
     "latest-change-case": "npm:change-case@^5.4.3",
     "tinycolor2": "^1.6.0",
     "tsx": "^4.7.1",
-    "typescript": "~5.3.3"
+    "typescript": "~5.4.2"
   },
   "main": "dist/index.cjs.js",
   "module": "dist/index.js",

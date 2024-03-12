@@ -35,7 +35,7 @@
     "eslint": "^8.56.0",
     "eslint-config-next": "^14.1.0",
     "tsx": "^4.7.1",
-    "typescript": "~5.3.3"
+    "typescript": "~5.4.2"
   },
   "eslintConfig": {
     "extends": [
