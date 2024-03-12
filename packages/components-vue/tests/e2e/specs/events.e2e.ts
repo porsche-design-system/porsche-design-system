@@ -1,28 +1,12 @@
-import type { ElementHandle, Page } from 'puppeteer';
+import { type ElementHandle, test, expect } from '@playwright/test';
 import { getConsoleErrorsAmount, goto, initConsoleObserver, selectNode } from '../helpers';
 
-let page: Page;
-beforeEach(async () => (page = await browser.newPage()));
-afterEach(async () => await page.close());
-
 const getCounterValue = async (el: ElementHandle): Promise<string> => {
-  // wait for innerHTML change by storing previous innerHTML
-  await page.waitForFunction(
-    (element: Element & { prevInnerHtml: string }) => {
-      return element.innerHTML !== element.prevInnerHtml;
-    },
-    {},
-    el
-  );
-
-  return el.evaluate((element: Element & { prevInnerHtml: string }) => {
-    element.prevInnerHtml = element.innerHTML;
-    return element.innerHTML;
-  });
+  return el.evaluate((element: Element) => element.innerHTML);
 };
 
-describe('pagination', () => {
-  it('should emit events once', async () => {
+test.describe('pagination', () => {
+  test('should emit events once', async ({ page }) => {
     await goto(page, 'events');
 
     const nav = await selectNode(page, 'p-pagination >>> nav');
@@ -40,8 +24,8 @@ describe('pagination', () => {
   });
 });
 
-describe('tabs-bar', () => {
-  it('should emit events once', async () => {
+test.describe('tabs-bar', () => {
+  test('should emit events once', async ({ page }) => {
     await goto(page, 'events');
 
     const tabsBar = await selectNode(page, 'p-tabs-bar');
@@ -59,7 +43,7 @@ describe('tabs-bar', () => {
     expect(await getCounterValue(tabsBarUpdateEventCounter)).toBe('3');
   });
 
-  it('should not throw error when used with router', async () => {
+  test('should not throw error when used with router', async ({ page }) => {
     initConsoleObserver(page);
     await goto(page, 'overview'); // to load component chunk
 
@@ -75,8 +59,8 @@ describe('tabs-bar', () => {
   });
 });
 
-describe('tabs', () => {
-  it('should emit events once', async () => {
+test.describe('tabs', () => {
+  test('should emit events once', async ({ page }) => {
     await goto(page, 'events');
 
     const tabsBar = await selectNode(page, 'p-tabs >>> p-tabs-bar');
@@ -94,8 +78,8 @@ describe('tabs', () => {
   });
 });
 
-describe('text-field-wrapper type="search"', () => {
-  it('should have working clear functionality', async () => {
+test.describe('text-field-wrapper type="search"', () => {
+  test('should have working clear functionality', async ({ page }) => {
     await goto(page, 'events');
 
     const input = await selectNode(page, 'p-text-field-wrapper > input[type=search]');
@@ -113,8 +97,8 @@ describe('text-field-wrapper type="search"', () => {
   });
 });
 
-describe('switch', () => {
-  it('should emit events once', async () => {
+test.describe('switch', () => {
+  test('should emit events once', async ({ page }) => {
     await goto(page, 'events');
 
     const switchBtn = await selectNode(page, 'p-switch >>> button');
@@ -131,37 +115,37 @@ describe('switch', () => {
   });
 });
 
-describe('banner', () => {
-  it('should emit events once', async () => {
+test.describe('banner', () => {
+  test('should emit events once', async ({ page }) => {
     await goto(page, 'events');
 
-    const banner = await selectNode(page, 'p-banner');
+    const banner = await page.locator('p-banner');
     const bannerOpenBtn = await selectNode(page, 'p-banner ~ button');
     const bannerCloseBtn = await selectNode(page, 'p-banner >>> p-inline-notification >>> p-button-pure.close');
     const bannerDismissEventCounter = await selectNode(page, 'p-banner + p');
 
     await bannerOpenBtn.click();
-    await page.waitForFunction((el) => getComputedStyle(el).opacity === '1', {}, banner);
+    await expect(banner).toBeVisible();
     await bannerCloseBtn.click();
-    await page.waitForFunction((el) => getComputedStyle(el).opacity === '0', {}, banner);
+    await expect(banner).toBeHidden();
     expect(await getCounterValue(bannerDismissEventCounter)).toBe('1');
 
     await bannerOpenBtn.click();
-    await page.waitForFunction((el) => getComputedStyle(el).opacity === '1', {}, banner);
+    await expect(banner).toBeVisible();
     await bannerCloseBtn.click();
-    await page.waitForFunction((el) => getComputedStyle(el).opacity === '0', {}, banner);
+    await expect(banner).toBeHidden();
     expect(await getCounterValue(bannerDismissEventCounter)).toBe('2');
 
     await bannerOpenBtn.click();
-    await page.waitForFunction((el) => getComputedStyle(el).opacity === '1', {}, banner);
+    await expect(banner).toBeVisible();
     await bannerCloseBtn.click();
-    await page.waitForFunction((el) => getComputedStyle(el).opacity === '0', {}, banner);
+    await expect(banner).toBeHidden();
     expect(await getCounterValue(bannerDismissEventCounter)).toBe('3');
   });
 });
 
-describe('modal', () => {
-  it('should emit events once', async () => {
+test.describe('modal', () => {
+  test('should emit events once', async ({ page }) => {
     await goto(page, 'events');
 
     const modalOpenBtn = await selectNode(page, 'p-modal ~ button');
@@ -194,8 +178,8 @@ describe('modal', () => {
   });
 });
 
-describe('table', () => {
-  it('should emit events once', async () => {
+test.describe('table', () => {
+  test('should emit events once', async ({ page }) => {
     await goto(page, 'events');
 
     const tableHeadBtn = await selectNode(page, 'p-table-head-cell >>> button');
@@ -212,8 +196,8 @@ describe('table', () => {
   });
 });
 
-describe('accordion', () => {
-  it('should emit events once', async () => {
+test.describe('accordion', () => {
+  test('should emit events once', async ({ page }) => {
     await goto(page, 'events');
 
     const accordionButton = await selectNode(page, 'p-accordion >>> button');
@@ -231,8 +215,8 @@ describe('accordion', () => {
   });
 });
 
-describe('carousel', () => {
-  it('should emit events once', async () => {
+test.describe('carousel', () => {
+  test('should emit events once', async ({ page }) => {
     await goto(page, 'events');
 
     const prevButton = await selectNode(page, 'p-carousel >>> p-button-pure');
