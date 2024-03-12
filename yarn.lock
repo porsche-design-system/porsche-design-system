@@ -434,10 +434,10 @@
     jsonpointer "^5.0.0"
     leven "^3.1.0"
 
-"@arethetypeswrong/core@^0.14.1":
-  version "0.14.1"
-  resolved "https://registry.yarnpkg.com/@arethetypeswrong/core/-/core-0.14.1.tgz#32e2a341b3ed2949e4e25cd20311a6b120c44305"
-  integrity sha512-B5cjaC9BQLhdSNQmG9dbcam8UFcXprgvY1YMxAfw/utCpUgPlKXK3wR3WphNr9CFlgcBaZL7NTuH/I7T17Kstw==
+"@arethetypeswrong/core@^0.15.1":
+  version "0.15.1"
+  resolved "https://registry.yarnpkg.com/@arethetypeswrong/core/-/core-0.15.1.tgz#b01b2d73ffa9d341fcc1c1ccc23bb30d2e64cf0e"
+  integrity sha512-FYp6GBAgsNz81BkfItRz8RLZO03w5+BaeiPma1uCfmxTnxbtuMrI/dbzGiOk8VghO108uFI0oJo0OkewdSHw7g==
   dependencies:
     "@andrewbranch/untar.js" "^1.0.3"
     fflate "^0.8.2"

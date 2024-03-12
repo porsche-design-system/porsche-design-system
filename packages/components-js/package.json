@@ -86,7 +86,7 @@
     "imask": "^7.4.0"
   },
   "devDependencies": {
-    "@arethetypeswrong/core": "^0.14.1",
+    "@arethetypeswrong/core": "^0.15.1",
     "@playwright/test": "1.41.2",
     "@porsche-design-system/shared": "0.0.0",
     "change-case": "^5.4.3",
