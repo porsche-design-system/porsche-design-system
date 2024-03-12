@@ -85,7 +85,7 @@ Helpful overview: https://angular.io/guide/versions#actively-supported-versions
 With v6 they are providing their own types and thereby replace `@types/styled-components` but with tons of issues
 especially around style objects that we provide. This seems to be the main issue covering all typing related problems:
 https://github.com/styled-components/styled-components/issues/4062  
-Those issues were not resolved in `6.0.7`, yet.
+Those issues were not resolved in `6.1.8`, yet.
 
 ### Affected dependencies:
 
