@@ -34,6 +34,7 @@ with Vue **2** and **3**.
 - `@vue/cli-plugin-vuex`
 - `@vue/cli-service`
 - `@vue/test-utils`
+- `@vue/tsconfig`
 - `sass-loader`
 - `vmark`
 - `vmark-loader`
