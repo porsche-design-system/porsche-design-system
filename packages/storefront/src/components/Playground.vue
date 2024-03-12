@@ -77,7 +77,7 @@
           :theme="theme"
           :dir="dir"
           :framework="activeFramework"
-          :externalStackBlitzDependencies="getExternalDependenciesOrThrow(this.externalStackBlitzDependencies)"
+          :externalStackBlitzDependencies="getExternalDependenciesOrThrow(externalStackBlitzDependencies)"
           :sharedImportKeys="sharedImportKeys"
           :backgroundColor="config.backgroundColor"
         ></CodeEditor>
@@ -232,9 +232,9 @@
       if (this.hasFrameworkMarkup && this.frameworks.includes('shared')) {
         return (
           (this.frameworkMarkup
-            .react!.match(/import { (.+) } from '@porsche-design-system\/shared';/)?.[1]
-            .match(/\b([a-z][a-zA-Z]+)/g) as SharedImportKey[]) || []
-        ); // extract consts, ignore types;
+            .react!.match(/import { (.+) } from '@porsche-design-system\/shared';/)?.[1] // extract all imports
+            .match(/(?!type)\b[a-z][a-zA-Z]+/g) as SharedImportKey[]) || [] // extract constants, ignore types
+        );
       } else {
         return [];
       }

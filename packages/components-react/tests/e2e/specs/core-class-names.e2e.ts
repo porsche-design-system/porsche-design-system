@@ -1,32 +1,28 @@
-import type { ElementHandle, Page } from 'puppeteer';
-import { goto, selectNode } from '../helpers';
+import { type ElementHandle, expect, type Page, test } from '@playwright/test';
+import { goto } from '../helpers';
 
 const SOME_CLASS_1 = 'someClass1';
 const SOME_CLASS_2 = 'someClass2';
 const HYDRATED_CLASS = 'hydrated';
 
-let page: Page;
-beforeEach(async () => (page = await browser.newPage()));
-afterEach(async () => await page.close());
-
-const getClassName = async (element: ElementHandle): Promise<string> => {
+const getClassName = async (element: ElementHandle<SVGElement | HTMLElement>): Promise<string> => {
   return element.evaluate((el) => el.className);
 };
 
-const getButton1 = () => selectNode(page, 'p-button:first-child');
-const getButton2 = () => selectNode(page, 'p-button:last-child');
+const getButton1 = (page: Page) => page.$('p-button:first-child');
+const getButton2 = (page: Page) => page.$('p-button:last-child');
 
-it('should map className to class initially', async () => {
+test('should map className to class initially', async ({ page }) => {
   await goto(page, 'core-class-names');
 
-  const button = await getButton1();
+  const button = await getButton1(page);
   expect(await getClassName(button)).toBe(`${SOME_CLASS_1} ${SOME_CLASS_2} ${HYDRATED_CLASS}`);
 });
 
-it('should keep hydrated class on rerender with className change', async () => {
+test('should keep hydrated class on rerender with className change', async ({ page }) => {
   await goto(page, 'core-class-names');
 
-  const button = await getButton1();
+  const button = await getButton1(page);
 
   expect(await getClassName(button)).toContain(HYDRATED_CLASS);
 
@@ -35,10 +31,10 @@ it('should keep hydrated class on rerender with className change', async () => {
   expect(await getClassName(button)).toContain(HYDRATED_CLASS);
 });
 
-it('should keep added class on rerender with className change', async () => {
+test('should keep added class on rerender with className change', async ({ page }) => {
   await goto(page, 'core-class-names');
 
-  const button = await getButton1();
+  const button = await getButton1(page);
   const addedClass = 'xyClass';
   await button.evaluate((el: Element, addedClass: string): void => {
     el.classList.add(addedClass);
@@ -51,10 +47,10 @@ it('should keep added class on rerender with className change', async () => {
   expect(await getClassName(button)).toBe(`${SOME_CLASS_1} ${HYDRATED_CLASS} ${addedClass}`);
 });
 
-it('should keep other classes if one is removed', async () => {
+test('should keep other classes if one is removed', async ({ page }) => {
   await goto(page, 'core-class-names');
 
-  const button = await getButton1();
+  const button = await getButton1(page);
 
   expect(await getClassName(button)).toBe(`${SOME_CLASS_1} ${SOME_CLASS_2} ${HYDRATED_CLASS}`);
 
@@ -63,11 +59,11 @@ it('should keep other classes if one is removed', async () => {
   expect(await getClassName(button)).toBe(`${SOME_CLASS_1} ${HYDRATED_CLASS}`);
 });
 
-it('should not interfere with classNames of another PButton', async () => {
+test('should not interfere with classNames of another PButton', async ({ page }) => {
   await goto(page, 'core-class-names');
 
-  const button1 = await getButton1();
-  const button2 = await getButton2();
+  const button1 = await getButton1(page);
+  const button2 = await getButton2(page);
 
   await button1.click();
 

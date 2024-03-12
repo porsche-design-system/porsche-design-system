@@ -1,21 +1,16 @@
-import type { Page } from 'puppeteer';
+import { test, expect } from '@playwright/test';
 import {
   getConsoleErrorsAmount,
   getElementProp,
   getOuterHTML,
   goto,
   initConsoleObserver,
-  selectNode,
   waitForComponentsReady,
 } from '../helpers';
 
 const console = require('console');
 
-let page: Page;
-beforeEach(async () => (page = await browser.newPage()));
-afterEach(async () => await page.close());
-
-it('overview should work without errors', async () => {
+test('overview should work without errors', async ({ page }) => {
   initConsoleObserver(page);
   await goto(page, 'overview');
 
@@ -25,8 +20,8 @@ it('overview should work without errors', async () => {
   expect(getConsoleErrorsAmount()).toBe(1);
 });
 
-describe('without prefix', () => {
-  it('should initialize component deterministically', async () => {
+test.describe('without prefix', () => {
+  test('should initialize component deterministically', async ({ page }) => {
     await goto(page, 'core-initializer');
     await page.waitForFunction(() => document.querySelectorAll('p-text-field-wrapper').length === 2);
 
@@ -44,30 +39,30 @@ describe('without prefix', () => {
   });
 });
 
-describe('with prefix', () => {
+test.describe('with prefix', () => {
   const regularSelector = 'p-text-field-wrapper';
   const prefixedSelector = `my-prefix-${regularSelector}`;
 
-  it('should initialize angular component', async () => {
+  test('should initialize angular component', async ({ page }) => {
     await goto(page, 'core-initializer-prefixed');
 
-    const prefixedComponent = await selectNode(page, prefixedSelector);
+    const prefixedComponent = await page.$(prefixedSelector);
 
     expect(await getElementProp(prefixedComponent, 'description')).toBe('Some Description');
     expect(await getElementProp(prefixedComponent, 'label')).toBe('Some Label');
   });
 });
 
-describe('Form Wrapper with slotted input', () => {
-  it('should have no console error if input type is bound', async () => {
+test.describe('Form Wrapper with slotted input', () => {
+  test('should have no console error if input type is bound', async ({ page }) => {
     initConsoleObserver(page);
     await goto(page, 'form-wrapper-binding');
 
-    await page.select('select', 'overview');
+    await page.locator('select[name="route"]').selectOption('overview');
     await waitForComponentsReady(page);
 
     // back and forth navigation seems to be necessary to reproduce a bug
-    await page.select('select', 'form-wrapper-binding');
+    await page.locator('select[name="route"]').selectOption('form-wrapper-binding');
 
     expect(getConsoleErrorsAmount()).toBe(0);
 
@@ -76,8 +71,8 @@ describe('Form Wrapper with slotted input', () => {
   });
 });
 
-describe('Stepper Horizontal states', () => {
-  it('should have no console error if navigated between two pages', async () => {
+test.describe('Stepper Horizontal states', () => {
+  test('should have no console error if navigated between two pages', async ({ page }) => {
     initConsoleObserver(page);
     await goto(page, 'stepper-horizontal-navigation-example-start-component');
     expect(getConsoleErrorsAmount()).toBe(0);
