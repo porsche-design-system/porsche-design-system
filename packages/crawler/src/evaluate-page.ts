@@ -1,6 +1,6 @@
-import * as puppeteer from 'puppeteer';
-import { TagName } from '@porsche-design-system/shared';
-import { ConsumedTagNamesForVersionsAndPrefixes, Properties, TagNameData, TagNamesWithPropertyNames } from './types';
+import * as playwright from 'playwright';
+import { type TagName } from '@porsche-design-system/shared';
+import { type ConsumedTagNamesForVersionsAndPrefixes, type Properties, type TagNameData } from './types';
 import { getPdsTagNamesWithPropertyNames } from './helpers/convert-data-helper';
 
 declare global {
@@ -22,7 +22,7 @@ declare global {
 
 const pdsTagNamesWithPropertyNames = getPdsTagNamesWithPropertyNames();
 
-export const evaluatePage = async (page: puppeteer.Page): Promise<ConsumedTagNamesForVersionsAndPrefixes> => {
+export const evaluatePage = async (page: playwright.Page): Promise<ConsumedTagNamesForVersionsAndPrefixes> => {
   const pdsCrawlerRawData = await page.evaluate(
     async ({ pdsTagNamesWithPropertyNames }): Promise<ConsumedTagNamesForVersionsAndPrefixes> => {
       const tagNames = Object.keys(pdsTagNamesWithPropertyNames);

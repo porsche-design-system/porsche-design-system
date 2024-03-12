@@ -1,5 +1,4 @@
-import { crawlerConfig as config } from '../constants';
-import * as puppeteer from 'puppeteer';
+import * as playwright from 'playwright';
 import { evaluatePage } from './evaluate-page';
 import {
   getAggregatedConsumedTagNames,
@@ -10,15 +9,23 @@ import {
 import { writeGeneralReport, writeWebsiteReport } from './helpers/fs-helper';
 import { TagNameData } from './types';
 import { stringifyObject } from './utils';
+import { crawlerConfig } from '../constants';
 
-export const crawlWebsite = async (browser: puppeteer.Browser, websiteUrl: string): Promise<TagNameData[]> => {
-  const page = await browser.newPage();
+export const crawlWebsite = async (browser: playwright.Browser, websiteUrl: string): Promise<TagNameData[]> => {
   // at least porsche finder seems to check the headers to block scrapers, setting the UA solves this
-  await page.setUserAgent(
-    'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36'
-  );
+  const context = await browser.newContext({
+    userAgent:
+      'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36',
+  });
+
+  // Create a new page in the browser context and navigate to target URL
+  const page = await context.newPage();
+  await page.setViewportSize({
+    width: crawlerConfig.viewport.width,
+    height: crawlerConfig.viewport.height,
+  });
   await page.goto(websiteUrl, {
-    waitUntil: 'networkidle0',
+    waitUntil: 'networkidle',
   });
 
   console.log('Crawling page ' + websiteUrl);
@@ -56,7 +63,7 @@ export const crawlWebsite = async (browser: puppeteer.Browser, websiteUrl: strin
 
   return pdsCrawlerRawDataWithoutVersionsAndPrefixes;
 };
-export const crawlWebsites = async (browser: puppeteer.Browser, customerWebsites: string[]): Promise<void> => {
+export const crawlWebsites = async (browser: playwright.Browser, customerWebsites: string[]): Promise<void> => {
   // data for all websites
   let generalRawData = [] as TagNameData[];
 

@@ -35,7 +35,7 @@ In easy words, crawler does two things:
 2. Aggregate the "Raw Data" - put it into format we want
 
 - `crawl-websites.ts` - main logic, goes over all the websites, fetches data and creates reports
-- `evaluate-page.ts` - everything what happens inside of Puppeteer's _page.evaluate_: getting PDS Dom Elements with
+- `evaluate-page.ts` - everything what happens inside of Playwright's _page.evaluate_: getting PDS Dom Elements with
   their configurations and building Raw Data
 
 - `helpers/convert-data-helper.ts` - helper functions for converting data into other format
