@@ -27,7 +27,7 @@ describe('removeSharedImport()', () => {
 
     removeSharedImport(markup);
 
-    expect(spy).toBeCalledWith(/import { .+ } from '@porsche-design-system\/shared';/, '');
+    expect(spy).toBeCalledWith(/\s*import { .+ } from '@porsche-design-system\/shared';/, '');
   });
 
   it('should return result of replace()', () => {

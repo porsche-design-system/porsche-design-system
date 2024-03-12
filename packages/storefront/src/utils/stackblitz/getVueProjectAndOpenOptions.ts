@@ -22,25 +22,30 @@ import { initialStyles } from '@/lib/partialResults';
 export const extendExampleWithConstantsAndProvider = (markup: string, sharedImportKeys: SharedImportKey[]): string => {
   const sharedImportConstants = getSharedImportConstants(sharedImportKeys);
 
-  return removeSharedImport(markup.replace(/<\/script>/, `${sharedImportConstants}$&`))
-    .replace(/(?:,\s+)?( } from '@porsche-design-system\/components-vue')/, ', PorscheDesignSystemProvider$1')
-    .replace(
-      /(<template>)([\s\S]+?)(<\/template>)/,
-      (_, g1, g2, g3): string => `${g1}
+  return removeSharedImport(
+    markup
+      // add const definitions after last import statement
+      .replace(/([\s\S]+import[\s\S]+?;)\n+/, `$1\n\n  ${sharedImportConstants.replace(/\n/g, '$&  ').trim()}\n\n`)
+      // add PorscheDesignSystemProvider import
+      .replace(/(?:,\s+)?( } from '@porsche-design-system\/components-vue')/, ', PorscheDesignSystemProvider$1')
+  ).replace(
+    // wrap template in PorscheDesignSystemProvider
+    /(<template>)([\s\S]+?)(<\/template>)/,
+    (_, g1, g2, g3): string => `${g1}
   <PorscheDesignSystemProvider>
 
-    ${g2.trim().replace(/(\n)/g, '$1  ')}
+    ${g2.trim().replace(/\n/g, '$&  ')}
 
   </PorscheDesignSystemProvider>
 ${g3}`
-    );
+  );
 };
 
 export const extendMarkupWithAppComponent = (markup: string): string => {
-  const convertedMarkup = convertMarkup(markup, 'vue').replace(/(\n)/g, '$1    ');
-  const vueComponentsToImport = Array.from(convertedMarkup.matchAll(/<(P[a-zA-Z]+)/g)) // Returns array of all matches and captured groups
+  const convertedMarkup = convertMarkup(markup, 'vue').replace(/\n/g, '$&    ');
+  const vueComponentsToImport = Array.from(convertedMarkup.matchAll(/<(P[a-zA-Z]+)/g)) // returns array of all matches and captured groups
     .map(([, vueComponentName]) => vueComponentName)
-    .filter((vueComponentName, idx, arr) => arr.findIndex((t) => t === vueComponentName) === idx) // Remove duplicates
+    .filter((vueComponentName, idx, arr) => arr.findIndex((t) => t === vueComponentName) === idx) // remove duplicates
     .join(', ');
 
   return `<script setup lang="ts">
