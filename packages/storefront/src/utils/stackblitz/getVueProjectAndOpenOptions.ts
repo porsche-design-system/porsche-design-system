@@ -185,7 +185,7 @@ export default defineConfig({
             preview: 'vite preview',
           },
           stackblitz: {
-            installDependencies: false, // disable npm i
+            installDependencies: false, // disable initial `npm i`
             startCommand: 'yarn && yarn dev', // manually install dependencies and start app
           },
           dependencies: getDependencies(externalDependencies, pdsVersion),
@@ -195,7 +195,7 @@ export default defineConfig({
         2
       ),
     },
-    template: 'node',
+    template: 'node', // WebContainers environment, see: https://developer.stackblitz.com/platform/api/javascript-sdk-options#projecttemplate
     title,
     description,
     openFile: 'src/App.vue',
