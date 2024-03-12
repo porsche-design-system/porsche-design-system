@@ -83,7 +83,7 @@
     "@porsche-design-system/components-js": "3.13.0",
     "@porsche-design-system/components-manager-cli": "0.0.0",
     "@porsche-design-system/partials": "0.0.0",
-    "imask": "^7.4.0"
+    "imask": "^7.5.0"
   },
   "devDependencies": {
     "@arethetypeswrong/core": "^0.15.1",
