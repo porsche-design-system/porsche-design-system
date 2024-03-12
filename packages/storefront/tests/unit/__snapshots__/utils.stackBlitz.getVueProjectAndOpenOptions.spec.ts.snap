@@ -1,16 +1,34 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`extendMarkupWithAppComponent() should return correct app markup 1`] = `
+exports[`extendExampleWithConstantsAndProvider() should add import for PorscheDesignSystemProvider and wrap template 1`] = `
 <script setup lang="ts">
   import {
-    PorscheDesignSystemProvider,
-    PButton,
-    PText
+    PText,
+    PorscheDesignSystemProvider
   } from '@porsche-design-system/components-vue';
 </script>
 
 <template>
   <PorscheDesignSystemProvider>
+
+    <PText>Hello</PText>
+
+  </PorscheDesignSystemProvider>
+</template>
+`;
+
+exports[`extendMarkupWithAppComponent() should return correct app markup 1`] = `
+<script setup lang="ts">
+  import {
+    PButton,
+    PText,
+    PorscheDesignSystemProvider
+  } from '@porsche-design-system/components-vue';
+</script>
+
+<template>
+  <PorscheDesignSystemProvider>
+
     <PButton />
     <PText>
       Some Text
@@ -21,6 +39,7 @@ exports[`extendMarkupWithAppComponent() should return correct app markup 1`] = `
       </p>
     </PButton>
     <button />
+
   </PorscheDesignSystemProvider>
 </template>
 `;

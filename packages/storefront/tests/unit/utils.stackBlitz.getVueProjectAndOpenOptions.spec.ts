@@ -2,7 +2,7 @@ import {
   extendMarkupWithAppComponent,
   getDependencies,
   getVueProjectAndOpenOptions,
-  replaceSharedImportsWithConstants,
+  extendExampleWithConstantsAndProvider,
   dependencyMap,
   getMainTs,
   getAppVue,
@@ -27,14 +27,14 @@ afterEach(() => {
   process.env.NODE_ENV = 'test';
 });
 
-describe('replaceSharedImportsWithConstants()', () => {
+describe('extendExampleWithConstantsAndProvider()', () => {
   const markup = 'Some markup';
   const sharedImportKeys: SharedImportKey[] = [];
 
   it('should call getSharedImportConstants() with correct parameters', () => {
     const spy = jest.spyOn(stackBlitzHelperUtils, 'getSharedImportConstants');
 
-    replaceSharedImportsWithConstants(markup, sharedImportKeys);
+    extendExampleWithConstantsAndProvider(markup, sharedImportKeys);
 
     expect(spy).toBeCalledWith(sharedImportKeys);
   });
@@ -45,30 +45,23 @@ describe('replaceSharedImportsWithConstants()', () => {
     const spy = jest.spyOn(stackBlitzHelperUtils, 'removeSharedImport');
     jest.spyOn(String.prototype, 'replace').mockReturnValue(mockedReplaceValue);
 
-    replaceSharedImportsWithConstants(markup, sharedImportKeys);
+    extendExampleWithConstantsAndProvider(markup, sharedImportKeys);
 
     expect(spy).toBeCalledWith(mockedReplaceValue);
   });
 
-  it('should call replace() with correct parameters', () => {
-    const mockedGetSharedImportConstants = 'Some mocked markup';
+  it('should add import for PorscheDesignSystemProvider and wrap template', () => {
+    const input = `<script setup lang="ts">
+  import { PText } from '@porsche-design-system/components-vue';
+</script>
 
-    jest.spyOn(stackBlitzHelperUtils, 'getSharedImportConstants').mockReturnValue(mockedGetSharedImportConstants);
-    const spy = jest.spyOn(String.prototype, 'replace');
+<template>
+  <PText>Hello</PText>
+</template>
+`;
 
-    replaceSharedImportsWithConstants(markup, sharedImportKeys);
-
-    expect(spy).toBeCalledWith(
-      /(export const )[a-zA-Z]+( = \(({[^}]+})?\): JSX.Element => {)/,
-      `${mockedGetSharedImportConstants}$1App$2`
-    );
-  });
-
-  it('should return result of removeSharedImport()', () => {
-    const mockedRemoveSharedImport = 'Markup with removed import';
-    jest.spyOn(stackBlitzHelperUtils, 'removeSharedImport').mockReturnValue(mockedRemoveSharedImport);
-
-    expect(replaceSharedImportsWithConstants(markup, sharedImportKeys)).toBe(mockedRemoveSharedImport);
+    const result = extendExampleWithConstantsAndProvider(input, sharedImportKeys);
+    expect(result).toMatchSnapshot();
   });
 });
 
@@ -118,10 +111,10 @@ describe('getAppVue()', () => {
     expect(convertImportPathsSpy).not.toBeCalled();
   });
 
-  it('should call convertImportPaths() + replaceSharedImportsWithConstants()', () => {
-    const replaceSharedImportsWithConstantsSpy = jest.spyOn(
+  it('should call convertImportPaths() + extendExampleWithConstantsAndProvider()', () => {
+    const extendExampleWithConstantsAndProviderSpy = jest.spyOn(
       getVueProjectAndOpenOptionsUtils,
-      'replaceSharedImportsWithConstants'
+      'extendExampleWithConstantsAndProvider'
     );
     const extendMarkupWithAppComponentSpy = jest.spyOn(
       getVueProjectAndOpenOptionsUtils,
@@ -130,14 +123,14 @@ describe('getAppVue()', () => {
 
     getAppVue('some markup', true, [], '');
 
-    expect(replaceSharedImportsWithConstantsSpy).toBeCalledWith('some markup', []);
+    expect(extendExampleWithConstantsAndProviderSpy).toBeCalledWith('some markup', []);
     expect(extendMarkupWithAppComponentSpy).not.toBeCalled();
   });
 
   it('should call convertImportPaths() + extendMarkupWithAppComponent()', () => {
-    const replaceSharedImportsWithConstantsSpy = jest.spyOn(
+    const extendExampleWithConstantsAndProviderSpy = jest.spyOn(
       getVueProjectAndOpenOptionsUtils,
-      'replaceSharedImportsWithConstants'
+      'extendExampleWithConstantsAndProvider'
     );
     const extendMarkupWithAppComponentSpy = jest.spyOn(
       getVueProjectAndOpenOptionsUtils,
@@ -146,7 +139,7 @@ describe('getAppVue()', () => {
 
     getAppVue('some markup', false, [], '');
 
-    expect(replaceSharedImportsWithConstantsSpy).not.toBeCalled();
+    expect(extendExampleWithConstantsAndProviderSpy).not.toBeCalled();
     expect(extendMarkupWithAppComponentSpy).toBeCalledWith('some markup');
   });
 });

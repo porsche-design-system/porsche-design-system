@@ -16,15 +16,24 @@ import type {
 import type { PlaygroundDir, StackBlitzProjectDependencies } from '../../models';
 import { initialStyles } from '@/lib/partialResults';
 
-const componentNameRegex = /(export const )[a-zA-Z]+( = \(({[^}]+})?\): JSX.Element => {)/;
-
 // TODO: this entire puzzle should be refactored into an object-oriented way so that there is a clear and clean structure
 // as well as code flow, similar to our WrapperGenerator
 
-export const replaceSharedImportsWithConstants = (markup: string, sharedImportKeys: SharedImportKey[]): string => {
+export const extendExampleWithConstantsAndProvider = (markup: string, sharedImportKeys: SharedImportKey[]): string => {
   const sharedImportConstants = getSharedImportConstants(sharedImportKeys);
 
-  return removeSharedImport(markup.replace(componentNameRegex, `${sharedImportConstants}$1App$2`));
+  return removeSharedImport(markup.replace(/<\/script>/, `${sharedImportConstants}$&`))
+    .replace(/ } from '@porsche-design-system\/components-vue'/, ', PorscheDesignSystemProvider$&')
+    .replace(
+      /(<template>)([\s\S]+?)(<\/template>)/,
+      (_, g1, g2, g3): string => `${g1}
+  <PorscheDesignSystemProvider>
+
+    ${g2.trim().replace(/(\n)/g, '$1  ')}
+
+  </PorscheDesignSystemProvider>
+${g3}`
+    );
 };
 
 export const extendMarkupWithAppComponent = (markup: string): string => {
@@ -35,12 +44,14 @@ export const extendMarkupWithAppComponent = (markup: string): string => {
     .join(', ');
 
   return `<script setup lang="ts">
-  import { PorscheDesignSystemProvider, ${vueComponentsToImport} } from '@porsche-design-system/components-vue';
+  import { ${vueComponentsToImport}, PorscheDesignSystemProvider } from '@porsche-design-system/components-vue';
 </script>
 
 <template>
   <PorscheDesignSystemProvider>
+
     ${convertedMarkup}
+
   </PorscheDesignSystemProvider>
 </template>
 `;
@@ -53,7 +64,7 @@ export const getAppVue = (
   pdsVersion: string // eslint-disable-line @typescript-eslint/no-unused-vars
 ): string => {
   const finalMarkup = isExampleMarkup
-    ? replaceSharedImportsWithConstants(markup, sharedImportKeys)
+    ? extendExampleWithConstantsAndProvider(markup, sharedImportKeys)
     : extendMarkupWithAppComponent(markup);
 
   // local bundle isn't supported because of missing COOP/COEP headers
@@ -146,7 +157,7 @@ export const getVueProjectAndOpenOptions: GetStackBlitzProjectAndOpenOptions = (
       // COOP/COEP headers, therefore local bundle is not supported
       // https://webcontainers.io/guides/configuring-headers
       ...(process.env.NODE_ENV === 'production' && porscheDesignSystemBundle),
-      'src/App.vue': getAppVue(markup, !!markup.match(componentNameRegex), sharedImportKeys, pdsVersion),
+      'src/App.vue': getAppVue(markup, !!markup.match(/<script|<template/), sharedImportKeys, pdsVersion),
       'src/main.ts': getMainTs(),
       'index.html': getIndexHtml(dir, globalStyles),
       'vite.config.ts': `import { defineConfig } from 'vite'
