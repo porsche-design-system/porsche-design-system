@@ -1,12 +1,8 @@
-import type { ElementHandle, Page } from 'puppeteer';
+import { type ElementHandle, test, expect } from '@playwright/test';
 import { goto } from '../helpers';
-import type { Theme } from '@porsche-design-system/components-react';
+import { type Theme } from '@porsche-design-system/components-react';
 
-let page: Page;
-beforeEach(async () => (page = await browser.newPage()));
-afterEach(async () => await page.close());
-
-it('should provide global theme correctly to 4th p-button', async () => {
+test('should provide global theme correctly to 4th p-button', async ({ page }) => {
   await goto(page, 'theme-injection');
 
   const [button1, button2, button3, button4Initial] = await page.$$('p-button');
@@ -23,7 +19,7 @@ it('should provide global theme correctly to 4th p-button', async () => {
   expect(await getTheme(button4Render1)).toBe('light');
 
   // change global theme
-  await page.select('select[name="theme"]', 'dark');
+  await page.locator('select[name="theme"]').selectOption('dark');
   expect(await getTheme(button3)).toBe('dark');
   expect(await getTheme(button4Render1)).toBe('dark');
 
@@ -39,7 +35,7 @@ it('should provide global theme correctly to 4th p-button', async () => {
   expect(await getTheme(button4Render2)).toBe('dark');
 
   // change global theme
-  await page.select('select[name="theme"]', 'light');
+  await page.locator('select[name="theme"]').selectOption('light');
   expect(await getTheme(button3)).toBe('light');
   expect(await getTheme(button4Render2)).toBe('light');
 });

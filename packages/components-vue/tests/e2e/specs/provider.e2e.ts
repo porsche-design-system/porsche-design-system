@@ -19,7 +19,7 @@ test('should provide global theme correctly to 4th p-button', async ({ page }) =
   expect(await getTheme(button4Render1)).toBe('light');
 
   // change global theme
-  await (await page.locator('select[name="theme"]')).selectOption('dark');
+  await page.locator('select[name="theme"]').selectOption('dark');
   expect(await getTheme(button3)).toBe('dark');
   expect(await getTheme(button4Render1)).toBe('dark');
 
@@ -35,7 +35,7 @@ test('should provide global theme correctly to 4th p-button', async ({ page }) =
   expect(await getTheme(button4Render2)).toBe('dark');
 
   // change global theme
-  await (await page.locator('select[name="theme"]')).selectOption('light');
+  await page.locator('select[name="theme"]').selectOption('light');
   expect(await getTheme(button3)).toBe('light');
   expect(await getTheme(button4Render2)).toBe('light');
 });
