@@ -15,6 +15,7 @@ if
   [[ "--components-js:safari:1/2" == "${1}" ]] ||
   [[ "--components-js:safari:2/2" == "${1}" ]] ||
   [[ "--components-react/nextjs" == "${1}" ]] ||
+  [[ "--components-react/remix" == "${1}" ]] ||
   [[ "--components-vue" == "${1}" ]] ||
   [[ "--storefront" == "${1}" ]] ||
   [[ "--storefront:1/4" == "${1}" ]] ||
