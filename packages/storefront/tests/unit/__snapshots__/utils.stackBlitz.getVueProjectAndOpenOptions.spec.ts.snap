@@ -1,13 +1,26 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`extendExampleWithConstantsAndProvider() should add import for PorscheDesignSystemProvider and wrap template 1`] = `
+exports[`extendExampleWithConstantsAndProvider() should add multi line import for PorscheDesignSystemProvider 1`] = `
+<script setup lang="ts">
+  import {
+    PTable,
+    PTableBody,
+    PorscheDesignSystemProvider
+  } from '@porsche-design-system/components-vue';
+</script>
+`;
+
+exports[`extendExampleWithConstantsAndProvider() should add single line import for PorscheDesignSystemProvider  1`] = `
 <script setup lang="ts">
   import {
     PText,
     PorscheDesignSystemProvider
   } from '@porsche-design-system/components-vue';
 </script>
+`;
 
+exports[`extendExampleWithConstantsAndProvider() should wrap template with PorscheDesignSystemProvider 1`] = `
+"
 <template>
   <PorscheDesignSystemProvider>
 
@@ -15,6 +28,7 @@ exports[`extendExampleWithConstantsAndProvider() should add import for PorscheDe
 
   </PorscheDesignSystemProvider>
 </template>
+"
 `;
 
 exports[`extendMarkupWithAppComponent() should return correct app markup 1`] = `

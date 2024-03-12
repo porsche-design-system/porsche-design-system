@@ -50,11 +50,31 @@ describe('extendExampleWithConstantsAndProvider()', () => {
     expect(spy).toBeCalledWith(mockedReplaceValue);
   });
 
-  it('should add import for PorscheDesignSystemProvider and wrap template', () => {
+  it('should add single line import for PorscheDesignSystemProvider ', () => {
     const input = `<script setup lang="ts">
   import { PText } from '@porsche-design-system/components-vue';
 </script>
+`;
 
+    const result = extendExampleWithConstantsAndProvider(input, sharedImportKeys);
+    expect(result).toMatchSnapshot();
+  });
+
+  it('should add multi line import for PorscheDesignSystemProvider', () => {
+    const input = `<script setup lang="ts">
+  import {
+    PTable,
+    PTableBody,
+  } from '@porsche-design-system/components-vue';
+</script>
+`;
+
+    const result = extendExampleWithConstantsAndProvider(input, sharedImportKeys);
+    expect(result).toMatchSnapshot();
+  });
+
+  it('should wrap template with PorscheDesignSystemProvider', () => {
+    const input = `
 <template>
   <PText>Hello</PText>
 </template>

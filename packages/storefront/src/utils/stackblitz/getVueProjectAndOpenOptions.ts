@@ -23,7 +23,7 @@ export const extendExampleWithConstantsAndProvider = (markup: string, sharedImpo
   const sharedImportConstants = getSharedImportConstants(sharedImportKeys);
 
   return removeSharedImport(markup.replace(/<\/script>/, `${sharedImportConstants}$&`))
-    .replace(/ } from '@porsche-design-system\/components-vue'/, ', PorscheDesignSystemProvider$&')
+    .replace(/(?:,\s+)?( } from '@porsche-design-system\/components-vue')/, ', PorscheDesignSystemProvider$1')
     .replace(
       /(<template>)([\s\S]+?)(<\/template>)/,
       (_, g1, g2, g3): string => `${g1}
