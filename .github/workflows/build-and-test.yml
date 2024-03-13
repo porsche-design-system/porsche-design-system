@@ -6,7 +6,7 @@ on:
         required: true
 name: 'Build and Test'
 env:
-  PDS_PLAYWRIGHT_DOCKER_IMAGE: ghcr.io/porsche-design-system/porsche-design-system/playwright:v1.41.2-focal-test26
+  PDS_PLAYWRIGHT_DOCKER_IMAGE: ghcr.io/porsche-design-system/porsche-design-system/playwright:v1.41.2-focal-test27
 jobs:
   assets:
     name: 'Assets'
@@ -135,8 +135,8 @@ jobs:
         with:
           name: components-js-unit-regression
           path: ./packages/components-js/tests/unit/results
-  components-js-e2e-puppeteer:
-    name: 'Components JS E2E (Puppeteer)'
+  components-js-a11y:
+    name: 'Components JS A11y'
     runs-on: ubuntu-latest
     steps:
       - name: 'Checkout'
@@ -147,10 +147,10 @@ jobs:
           github-token: ${{ secrets.github-token }}
       - name: 'Build assets, component-meta, components, components-js, shared and utilities'
         uses: ./.github/actions/build-components-js
-      - name: 'E2E Test (Puppeteer)'
+      - name: 'A11y Test'
         uses: ./.github/actions/docker-run-playwright
         with:
-          entrypoint: run-test-e2e-puppeteer
+          entrypoint: run-test-a11y
           args: --components-js
   components-js-e2e-playwright-chrome:
     name: 'Components JS E2E (Chrome/Playwright)'
