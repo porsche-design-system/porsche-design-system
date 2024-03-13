@@ -402,14 +402,6 @@ export const buildDefaultComponentMarkup = (tagName: TagName): string => {
   return buildParentMarkup(componentMarkup, requiredParent);
 };
 
-export const expectShadowDomToMatchSnapshot = async (host: ElementHandle<HTMLElement | SVGElement>): Promise<void> => {
-  const html = await host.evaluate((el) => el.shadowRoot.innerHTML);
-  const prettyHtml = await format(html.replace(/>/g, '>\n'), { parser: 'html' });
-
-  expect(prettyHtml).not.toContain('[object Object]');
-  expect(prettyHtml).toMatchSnapshot();
-};
-
 export type ExpectToMatchSnapshotOptions = Omit<any, 'root'> & {
   message?: string;
   skipWaitForFunction?: boolean;
