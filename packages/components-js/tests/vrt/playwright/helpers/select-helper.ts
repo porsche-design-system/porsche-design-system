@@ -7,13 +7,13 @@ export const openAllSelect = async (page: Page, tagName: TagName, nested: boolea
       document.addEventListener('mousedown', (e) => e.stopPropagation(), true);
       document.querySelectorAll(tagName).forEach((select) => {
         if (select.shadowRoot) {
-          const combobox =
+          const combobox: HTMLElement | undefined =
             nested === true
               ? select.shadowRoot
                   .querySelector('p-select-wrapper-dropdown')
                   .shadowRoot.querySelector('[role="combobox"]')
               : select.shadowRoot.querySelector('[role="combobox"]');
-          (combobox as HTMLElement).click();
+          combobox.click();
         }
       });
     },
