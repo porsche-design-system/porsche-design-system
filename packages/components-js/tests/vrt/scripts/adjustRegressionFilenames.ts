@@ -51,7 +51,7 @@ const deleteRetryDirectories = (source: string): void => {
     });
 };
 
-const path = 'tests/vrt/playwright/results';
+const path = 'tests/vrt/results';
 if (fs.existsSync(path)) {
   deleteRetryDirectories(path);
   walk(path, (error: any): void => {

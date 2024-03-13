@@ -58,12 +58,11 @@ and in which context a single component is tested.
 - generic e2e tests for all components, e.g. `e2e/puppeteer/specs/default-dom.e2e.ts` and
   `e2e/puppeteer/specs/lifecycle-after-disconnect.e2e.ts`
 - vrt tests of `button.html` page with puppeteer for component, e.g. `vrt/puppeteer/specs/button.vrt.ts`
-- vrt tests of `button.html` with playwright for component, e.g. `vrt/playwright/specs/button.vrt.ts`
+- vrt tests of `button.html` with playwright for component, e.g. `vrt/specs/button.vrt.ts`
 - vrt tests of hover and focus states with puppeteer for component, e.g. `vrt/puppeteer/specs/button.vrt.ts`
 - vrt tests of `overview.html` for all components including prefixing with puppeteer, e.g.
   `vrt/puppeteer/specs/overview.vrt.ts`
-- vrt tests of `overview.html` for all components including prefixing with playwright, e.g.
-  `vrt/playwright/specs/overview.vrt.ts`
+- vrt tests of `overview.html` for all components including prefixing with playwright, e.g. `vrt/specs/overview.vrt.ts`
 - generic vrt tests for all components, e.g. `vrt/puppeteer/specs/component-high-contrast-mode.vrt.ts` and
   `vrt/puppeteer/specs/component-scaling.vrt.ts`
 
