@@ -55,5 +55,5 @@ const startBrowser = async (): Promise<void> => {
 };
 
 startBrowser().catch((err) => {
-  throw new Error(`An error occurred during crawling: ${err}`);
+  throw err;
 });

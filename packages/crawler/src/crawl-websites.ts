@@ -1,4 +1,4 @@
-import * as playwright from 'playwright';
+import { type Browser } from '@playwright/test';
 import { evaluatePage } from './evaluate-page';
 import {
   getAggregatedConsumedTagNames,
@@ -11,7 +11,7 @@ import { TagNameData } from './types';
 import { stringifyObject } from './utils';
 import { crawlerConfig } from '../constants';
 
-export const crawlWebsite = async (browser: playwright.Browser, websiteUrl: string): Promise<TagNameData[]> => {
+export const crawlWebsite = async (browser: Browser, websiteUrl: string): Promise<TagNameData[]> => {
   // at least porsche finder seems to check the headers to block scrapers, setting the UA solves this
   const context = await browser.newContext({
     userAgent:
@@ -63,7 +63,7 @@ export const crawlWebsite = async (browser: playwright.Browser, websiteUrl: stri
 
   return pdsCrawlerRawDataWithoutVersionsAndPrefixes;
 };
-export const crawlWebsites = async (browser: playwright.Browser, customerWebsites: string[]): Promise<void> => {
+export const crawlWebsites = async (browser: Browser, customerWebsites: string[]): Promise<void> => {
   // data for all websites
   let generalRawData = [] as TagNameData[];
 
