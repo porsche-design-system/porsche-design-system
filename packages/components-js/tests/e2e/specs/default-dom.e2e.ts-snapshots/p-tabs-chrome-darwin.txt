@@ -1,0 +1,2 @@
+<p-tabs-bar class="root hydrated"> </p-tabs-bar>
+<slot> </slot>
