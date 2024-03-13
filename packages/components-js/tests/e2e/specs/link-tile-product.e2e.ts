@@ -150,7 +150,7 @@ test.describe('focus', () => {
   test('should have correct focus order when slotted link', async ({ page }) => {
     await initLinkTileProduct(page, {
       props: { heading: 'Some product name', price: '1.199,00 €', href: undefined },
-      slotted: '<a slot="anchor" href="/">Some product name, 1.199,00 €</a>',
+      slotted: '<a slot="anchor" href="/packages/components-js/public">Some product name, 1.199,00 €</a>',
     });
     const host = await getHost(page);
     await page.evaluate(() => {

@@ -156,7 +156,7 @@ test.describe('within form', () => {
     const value = 'Value';
     await setContentWithDesignSystem(
       page,
-      `<form action="/">
+      `<form action="/packages/components-js/public">
       <p-button type="submit" name="${name}" value="${value}">Some label</p-button>
     </form>`
     );
