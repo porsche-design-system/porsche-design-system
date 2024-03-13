@@ -76,7 +76,7 @@ const forceStateOnElements = async (page: Page, selector: string, states: Forced
     }
   }
 };
-const resolveSelector = (
+export const resolveSelector = (
   selector: string
 ): { hostElementSelector: string; shadowRootNodeName: string; deepShadowRootNodeName: string } => {
   const [hostElementSelector, shadowRootNodeName, deepShadowRootNodeName] = selector.split('>>>').map((x) => {
@@ -100,7 +100,7 @@ const getHostElementNodeIds = async (cdp: CDPSession, selector: string): Promise
   ).nodeIds;
 };
 
-const findBackendNodeIds = (currentNode: Protocol.DOM.Node, selector: string): BackendNodeId[] => {
+export const findBackendNodeIds = (currentNode: Protocol.DOM.Node, selector: string): BackendNodeId[] => {
   const attributes = currentNode.attributes || [];
   // support tag names, ids & class names
   if (
