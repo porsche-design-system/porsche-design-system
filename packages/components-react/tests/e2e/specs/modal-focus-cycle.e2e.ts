@@ -1,6 +1,6 @@
 import { type ElementHandle, test, expect } from '@playwright/test';
 import { goto } from '../helpers';
-import { getProperty } from '../../../../components-js/tests/e2e/puppeteer/helpers';
+import { getProperty } from '../../../../components-js/tests/a11y/helpers';
 
 test.use({
   // to prevent horizontal scrollable table
