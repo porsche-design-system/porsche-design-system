@@ -83,15 +83,15 @@
     "@porsche-design-system/components-js": "3.13.0",
     "@porsche-design-system/components-manager-cli": "0.0.0",
     "@porsche-design-system/partials": "0.0.0",
-    "imask": "^7.4.0"
+    "imask": "^7.5.0"
   },
   "devDependencies": {
-    "@arethetypeswrong/core": "^0.14.1",
+    "@arethetypeswrong/core": "^0.15.1",
     "@playwright/test": "1.41.2",
     "@porsche-design-system/shared": "0.0.0",
     "change-case": "^5.4.3",
     "concurrently": "^8.2.2",
-    "devtools-protocol": "^0.0.1263784",
+    "devtools-protocol": "^0.0.1271979",
     "globby": "^14.0.1",
     "jsdom": "^24.0.0",
     "local-web-server": "^5.3.1",
@@ -100,8 +100,8 @@
     "sass": "^1.71.1",
     "terser-webpack-plugin": "^5.3.10",
     "tsx": "^4.7.1",
-    "typescript": "~5.3.3",
-    "vite": "^5.1.4",
+    "typescript": "~5.4.2",
+    "vite": "^5.1.6",
     "webpack": "^5.90.3",
     "webpack-bundle-analyzer": "^4.10.1",
     "webpack-cli": "^5.1.4"

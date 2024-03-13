@@ -1,4 +1,4 @@
-# Dependencies 18.12.2023
+# Dependencies
 
 ## Overview of Framework Versions
 
@@ -7,6 +7,12 @@
 | Angular | 15.2.10  | 17.1.1                 |
 | React   | 18.2.0   | 18.2.0                 |
 | Next.js | 14.0.4   | 13.4.19 (React 18.2.0) |
+
+## Playwright
+
+Playwright Update is currently fixed to 1.41.2. If one wants to update it, it must be updated in the docker container
+aswell (Dockerfile-playwright plus workflow "Build and Push Docker Image"), affecting all running workflows even outside
+the changed branch so this must be aligned with the other developers.
 
 ## Vue
 
@@ -28,6 +34,7 @@ with Vue **2** and **3**.
 - `@vue/cli-plugin-vuex`
 - `@vue/cli-service`
 - `@vue/test-utils`
+- `@vue/tsconfig`
 - `sass-loader`
 - `vmark`
 - `vmark-loader`
@@ -79,7 +86,7 @@ Helpful overview: https://angular.io/guide/versions#actively-supported-versions
 With v6 they are providing their own types and thereby replace `@types/styled-components` but with tons of issues
 especially around style objects that we provide. This seems to be the main issue covering all typing related problems:
 https://github.com/styled-components/styled-components/issues/4062  
-Those issues were not resolved in `6.0.7`, yet.
+Those issues were not resolved in `6.1.8`, yet.
 
 ### Affected dependencies:
 
