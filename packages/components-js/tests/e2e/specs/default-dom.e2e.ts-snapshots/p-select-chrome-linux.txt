@@ -13,15 +13,17 @@
       aria-controls="list"
     ></button>
     <p-icon class="icon hydrated" aria-hidden="true"> </p-icon>
-    <div
-      id="list"
-      class="listbox"
-      role="listbox"
-      aria-label=""
-      aria-hidden="true"
-      tabindex="-1"
-    >
-      <slot> </slot>
+    <div>
+      <div
+        id="list"
+        class="listbox"
+        role="listbox"
+        aria-label=""
+        aria-hidden="true"
+        tabindex="-1"
+      >
+        <slot> </slot>
+      </div>
     </div>
   </div>
   <span
