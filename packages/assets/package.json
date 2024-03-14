@@ -75,7 +75,7 @@
     "http-server": "^14.1.1",
     "madge": "^6.1.0",
     "tsx": "^4.7.1",
-    "typescript": "~5.3.3"
+    "typescript": "~5.4.2"
   },
   "bin": {
     "serve-cdn": "./bin/serve-cdn.js"
