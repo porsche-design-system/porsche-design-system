@@ -1,0 +1,7 @@
+<div class="root">
+  <label class="label" id="label"> </label>
+  <div class="wrapper">
+    <slot> </slot>
+  </div>
+  <span id="loading" class="loading" role="status"> </span>
+</div>

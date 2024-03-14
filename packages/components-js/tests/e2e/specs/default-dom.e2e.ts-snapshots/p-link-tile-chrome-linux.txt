@@ -1,0 +1,17 @@
+<div class="root">
+  <div class="image-container">
+    <slot> </slot>
+  </div>
+  <div class="content">
+    <a
+      href="value"
+      target="_self"
+      class="link-overlay"
+      tabindex="-1"
+      aria-hidden="true"
+    >
+    </a>
+    <p>value</p>
+    <p-link class="link-or-button hydrated"> value</p-link>
+  </div>
+</div>

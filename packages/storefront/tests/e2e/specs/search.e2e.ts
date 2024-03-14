@@ -1,5 +1,5 @@
 import { expect, type Page, test } from '@playwright/test';
-import { getElementStyle } from '@porsche-design-system/js/tests/e2e/playwright/helpers';
+import { getElementStyle } from '../../../../components-js/tests/e2e/helpers';
 import { ALGOLIA_APP_ID } from '../../../storefront.config';
 import { ALGOLIA_RESPONSE_MOCK } from '../helpers';
 

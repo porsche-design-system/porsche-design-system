@@ -1,0 +1,3 @@
+<button type="button" aria-disabled="true">
+  <slot> </slot>
+</button>
