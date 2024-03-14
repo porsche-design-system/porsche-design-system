@@ -1,0 +1,9 @@
+<div class="root">
+  <div class="image-container">
+    <slot> </slot>
+  </div>
+  <div class="content">
+    <p>value</p>
+    <p-button class="link-or-button hydrated"> value</p-button>
+  </div>
+</div>

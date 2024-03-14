@@ -1,0 +1,5 @@
+<p-scroller class="hydrated">
+  <div class="table" role="table">
+    <slot> </slot>
+  </div>
+</p-scroller>

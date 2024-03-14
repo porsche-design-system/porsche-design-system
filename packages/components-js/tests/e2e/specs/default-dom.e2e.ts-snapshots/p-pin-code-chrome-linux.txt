@@ -1,0 +1,39 @@
+<div class="root">
+  <label class="label" id="label" for="current-input"> </label>
+  <div class="wrapper">
+    <input
+      id="current-input"
+      type="text"
+      aria-label="1-4"
+      aria-describedby="label description message"
+      autocomplete="one-time-code"
+      pattern="\d*"
+      inputmode="numeric"
+    />
+    <input
+      type="text"
+      aria-label="2-4"
+      aria-describedby="label description message"
+      autocomplete="one-time-code"
+      pattern="\d*"
+      inputmode="numeric"
+    />
+    <input
+      type="text"
+      aria-label="3-4"
+      aria-describedby="label description message"
+      autocomplete="one-time-code"
+      pattern="\d*"
+      inputmode="numeric"
+    />
+    <input
+      type="text"
+      aria-label="4-4"
+      aria-describedby="label description message"
+      autocomplete="one-time-code"
+      pattern="\d*"
+      inputmode="numeric"
+    />
+  </div>
+  <span id="loading" class="loading" role="status"> </span>
+</div>

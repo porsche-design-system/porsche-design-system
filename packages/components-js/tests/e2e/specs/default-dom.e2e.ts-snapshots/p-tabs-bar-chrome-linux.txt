@@ -1,0 +1,4 @@
+<p-scroller class="scroller hydrated">
+  <slot> </slot>
+  <span class="bar"> </span>
+</p-scroller>
