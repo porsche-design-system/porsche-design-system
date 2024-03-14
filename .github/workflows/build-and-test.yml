@@ -153,7 +153,7 @@ jobs:
           entrypoint: run-test-a11y
           args: --components-js
   components-js-e2e-playwright-dom:
-    name: 'Components JS E2E (DOM)'
+    name: 'Components JS E2E "DOM"'
     runs-on: ubuntu-latest
     steps:
       - name: 'Checkout'
@@ -236,7 +236,7 @@ jobs:
           entrypoint: run-test-e2e-playwright
           args: --components-js:safari:${{ matrix.shardIndex }}/${{ matrix.shardTotal }}
   components-js-common-vrt-playwright-chrome:
-    name: 'Components JS VRT Common (Chrome)'
+    name: 'Components JS VRT "Common" (Chrome)'
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
@@ -264,7 +264,7 @@ jobs:
           name: components-js-vrt-common-playwright-chrome-regression-${{ matrix.shardIndex }}
           path: ./packages/components-js/tests/vrt/results
   components-js-custom-vrt-playwright-chrome:
-    name: 'Components JS VRT Custom (Chrome)'
+    name: 'Components JS VRT "Custom" (Chrome)'
     runs-on: ubuntu-latest
     steps:
       - name: 'Checkout'
@@ -287,7 +287,7 @@ jobs:
           name: components-js-vrt-custom-playwright-chrome-regression
           path: ./packages/components-js/tests/vrt/results
   components-js-states-vrt-playwright-chrome:
-    name: 'Components JS VRT States (Chrome)'
+    name: 'Components JS VRT "States" (Chrome)'
     runs-on: ubuntu-latest
     steps:
       - name: 'Checkout'
@@ -419,7 +419,7 @@ jobs:
           name: components-react-vrt-regression
           path: ./packages/components-react/tests/vrt/results
   components-react-remix:
-    name: 'Components React Remix'
+    name: 'Components React/Remix'
     runs-on: ubuntu-latest
     steps:
       - name: 'Checkout'
@@ -452,7 +452,7 @@ jobs:
           name: components-react-remix-vrt-regression
           path: ./packages/components-react/projects/remix/tests/vrt/results
   components-react-nextjs:
-    name: 'Components React NextJS'
+    name: 'Components React/NextJS'
     runs-on: ubuntu-latest
     steps:
       - name: 'Checkout'
@@ -680,7 +680,7 @@ jobs:
           name: storefront-e2e-regression-${{ matrix.shardIndex }}
           path: ./packages/storefront/tests/e2e/results
   storefront-e2e-sitemap:
-    name: 'Storefront E2E Sitemap'
+    name: 'Storefront E2E "Sitemap"'
     runs-on: ubuntu-latest
     steps:
       - name: 'Checkout'
