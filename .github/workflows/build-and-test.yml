@@ -6,7 +6,7 @@ on:
         required: true
 name: 'Build and Test'
 env:
-  PDS_PLAYWRIGHT_DOCKER_IMAGE: ghcr.io/porsche-design-system/porsche-design-system/playwright:v1.41.2-focal-test26
+  PDS_PLAYWRIGHT_DOCKER_IMAGE: ghcr.io/porsche-design-system/porsche-design-system/playwright:v1.41.2-focal-test28
 jobs:
   assets:
     name: 'Assets'
@@ -135,8 +135,8 @@ jobs:
         with:
           name: components-js-unit-regression
           path: ./packages/components-js/tests/unit/results
-  components-js-e2e-puppeteer:
-    name: 'Components JS E2E (Puppeteer)'
+  components-js-a11y:
+    name: 'Components JS A11y'
     runs-on: ubuntu-latest
     steps:
       - name: 'Checkout'
@@ -147,13 +147,30 @@ jobs:
           github-token: ${{ secrets.github-token }}
       - name: 'Build assets, component-meta, components, components-js, shared and utilities'
         uses: ./.github/actions/build-components-js
-      - name: 'E2E Test (Puppeteer)'
+      - name: 'A11y Test'
         uses: ./.github/actions/docker-run-playwright
         with:
-          entrypoint: run-test-e2e-puppeteer
+          entrypoint: run-test-a11y
           args: --components-js
+  components-js-e2e-playwright-dom:
+    name: 'Components JS E2E "DOM"'
+    runs-on: ubuntu-latest
+    steps:
+      - name: 'Checkout'
+        uses: actions/checkout@v4
+      - name: 'Setup and install'
+        uses: ./.github/actions/setup-and-install
+        with:
+          github-token: ${{ secrets.github-token }}
+      - name: 'Build assets, component-meta, components, components-js, shared and utilities'
+        uses: ./.github/actions/build-components-js
+      - name: 'E2E Test (DOM)'
+        uses: ./.github/actions/docker-run-playwright
+        with:
+          entrypoint: run-test-e2e-playwright
+          args: --components-js:dom
   components-js-e2e-playwright-chrome:
-    name: 'Components JS E2E (Chrome/Playwright)'
+    name: 'Components JS E2E (Chrome)'
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
@@ -169,13 +186,13 @@ jobs:
           github-token: ${{ secrets.github-token }}
       - name: 'Build assets, component-meta, components, components-js, shared and utilities'
         uses: ./.github/actions/build-components-js
-      - name: 'E2E Test (Playwright)'
+      - name: 'E2E Test'
         uses: ./.github/actions/docker-run-playwright
         with:
           entrypoint: run-test-e2e-playwright
           args: --components-js:chrome:${{ matrix.shardIndex }}/${{ matrix.shardTotal }}
   components-js-e2e-playwright-firefox:
-    name: 'Components JS E2E (Firefox/Playwright)'
+    name: 'Components JS E2E (Firefox)'
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
@@ -191,13 +208,13 @@ jobs:
           github-token: ${{ secrets.github-token }}
       - name: 'Build assets, component-meta, components, components-js, shared and utilities'
         uses: ./.github/actions/build-components-js
-      - name: 'E2E Test (Playwright)'
+      - name: 'E2E Test'
         uses: ./.github/actions/docker-run-playwright
         with:
           entrypoint: run-test-e2e-playwright
           args: --components-js:firefox:${{ matrix.shardIndex }}/${{ matrix.shardTotal }}
   components-js-e2e-playwright-safari:
-    name: 'Components JS E2E (Safari/Playwright)'
+    name: 'Components JS E2E (Safari)'
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
@@ -213,13 +230,13 @@ jobs:
           github-token: ${{ secrets.github-token }}
       - name: 'Build assets, component-meta, components, components-js, shared and utilities'
         uses: ./.github/actions/build-components-js
-      - name: 'E2E Test (Playwright)'
+      - name: 'E2E Test'
         uses: ./.github/actions/docker-run-playwright
         with:
           entrypoint: run-test-e2e-playwright
           args: --components-js:safari:${{ matrix.shardIndex }}/${{ matrix.shardTotal }}
   components-js-common-vrt-playwright-chrome:
-    name: 'Components JS VRT Common (Chrome)'
+    name: 'Components JS VRT "Common" (Chrome)'
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
@@ -235,19 +252,19 @@ jobs:
           github-token: ${{ secrets.github-token }}
       - name: 'Build assets, component-meta, components, components-js, shared and utilities'
         uses: ./.github/actions/build-components-js
-      - name: 'VRT Test (Playwright)'
+      - name: 'VRT Test'
         uses: ./.github/actions/docker-run-playwright
         with:
           entrypoint: run-test-vrt-playwright
           args: --components-js:chrome:common:${{ matrix.shardIndex }}/${{ matrix.shardTotal }}
-      - name: 'VRT Regression (Playwright)'
+      - name: 'VRT Regression'
         if: failure()
         uses: actions/upload-artifact@v4
         with:
           name: components-js-vrt-common-playwright-chrome-regression-${{ matrix.shardIndex }}
-          path: ./packages/components-js/tests/vrt/playwright/results
+          path: ./packages/components-js/tests/vrt/results
   components-js-custom-vrt-playwright-chrome:
-    name: 'Components JS VRT Custom (Chrome)'
+    name: 'Components JS VRT "Custom" (Chrome)'
     runs-on: ubuntu-latest
     steps:
       - name: 'Checkout'
@@ -258,19 +275,19 @@ jobs:
           github-token: ${{ secrets.github-token }}
       - name: 'Build assets, component-meta, components, components-js, shared and utilities'
         uses: ./.github/actions/build-components-js
-      - name: 'VRT Test (Playwright)'
+      - name: 'VRT Test'
         uses: ./.github/actions/docker-run-playwright
         with:
           entrypoint: run-test-vrt-playwright
           args: --components-js:chrome:custom
-      - name: 'VRT Regression (Playwright)'
+      - name: 'VRT Regression'
         if: failure()
         uses: actions/upload-artifact@v4
         with:
           name: components-js-vrt-custom-playwright-chrome-regression
-          path: ./packages/components-js/tests/vrt/playwright/results
+          path: ./packages/components-js/tests/vrt/results
   components-js-states-vrt-playwright-chrome:
-    name: 'Components JS VRT States (Chrome)'
+    name: 'Components JS VRT "States" (Chrome)'
     runs-on: ubuntu-latest
     steps:
       - name: 'Checkout'
@@ -281,17 +298,17 @@ jobs:
           github-token: ${{ secrets.github-token }}
       - name: 'Build assets, component-meta, components, components-js, shared and utilities'
         uses: ./.github/actions/build-components-js
-      - name: 'VRT Test (Playwright)'
+      - name: 'VRT Test'
         uses: ./.github/actions/docker-run-playwright
         with:
           entrypoint: run-test-vrt-playwright
           args: --components-js:chrome:states
-      - name: 'VRT Regression (Playwright)'
+      - name: 'VRT Regression'
         if: failure()
         uses: actions/upload-artifact@v4
         with:
           name: components-js-vrt-states-playwright-chrome-regression
-          path: ./packages/components-js/tests/vrt/playwright/results
+          path: ./packages/components-js/tests/vrt/results
   components-js-vrt-playwright-safari:
     name: 'Components JS VRT (Safari)'
     runs-on: ubuntu-latest
@@ -304,17 +321,17 @@ jobs:
           github-token: ${{ secrets.github-token }}
       - name: 'Build assets, component-meta, components, components-js, shared and utilities'
         uses: ./.github/actions/build-components-js
-      - name: 'VRT Test (Playwright)'
+      - name: 'VRT Test'
         uses: ./.github/actions/docker-run-playwright
         with:
           entrypoint: run-test-vrt-playwright
           args: --components-js:safari
-      - name: 'VRT Regression (Playwright)'
+      - name: 'VRT Regression'
         if: failure()
         uses: actions/upload-artifact@v4
         with:
           name: components-js-vrt-playwright-safari-regression
-          path: ./packages/components-js/tests/vrt/playwright/results
+          path: ./packages/components-js/tests/vrt/results
   components-angular:
     name: 'Components Angular'
     runs-on: ubuntu-latest
@@ -402,7 +419,7 @@ jobs:
           name: components-react-vrt-regression
           path: ./packages/components-react/tests/vrt/results
   components-react-remix:
-    name: 'Components React Remix'
+    name: 'Components React/Remix'
     runs-on: ubuntu-latest
     steps:
       - name: 'Checkout'
@@ -435,7 +452,7 @@ jobs:
           name: components-react-remix-vrt-regression
           path: ./packages/components-react/projects/remix/tests/vrt/results
   components-react-nextjs:
-    name: 'Components React NextJS'
+    name: 'Components React/NextJS'
     runs-on: ubuntu-latest
     steps:
       - name: 'Checkout'
@@ -663,7 +680,7 @@ jobs:
           name: storefront-e2e-regression-${{ matrix.shardIndex }}
           path: ./packages/storefront/tests/e2e/results
   storefront-e2e-sitemap:
-    name: 'Storefront E2E Sitemap'
+    name: 'Storefront E2E "Sitemap"'
     runs-on: ubuntu-latest
     steps:
       - name: 'Checkout'

@@ -1,0 +1,23 @@
+<div class="root">
+  <div class="image-container">
+    <slot> </slot>
+  </div>
+  <div class="signature">
+    <p-model-signature class="hydrated"> </p-model-signature>
+  </div>
+  <div class="content">
+    <a
+      class="link-overlay"
+      href="#"
+      target="_self"
+      tabindex="-1"
+      aria-hidden="true"
+    >
+    </a>
+    <h2 class="heading">value</h2>
+    <div class="link-group" role="group">
+      <slot name="primary"> </slot>
+      <slot name="secondary"> </slot>
+    </div>
+  </div>
+</div>

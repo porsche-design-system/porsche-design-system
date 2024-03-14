@@ -1,0 +1,5 @@
+<span>
+  <div class="label">
+    <slot> </slot>
+  </div>
+</span>

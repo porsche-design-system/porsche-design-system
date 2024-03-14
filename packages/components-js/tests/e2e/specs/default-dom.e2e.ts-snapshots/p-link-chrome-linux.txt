@@ -1,0 +1,5 @@
+<a class="root" href="value" target="_self">
+  <span class="label">
+    <slot> </slot>
+  </span>
+</a>
