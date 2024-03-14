@@ -16,9 +16,7 @@ const expectShadowDomToMatchSnapshot = async (
 };
 
 for (const tagName of TAG_NAMES.filter((x) => !INTERNAL_TAG_NAMES.includes(x))) {
-  test(`should have no basic DOM regression for ${tagName}`, async ({ page, browserName }) => {
-    test.skip(browserName !== 'chromium');
-
+  test(`should have no basic DOM regression for ${tagName}`, async ({ page }) => {
     await goto(page, ''); // start page
 
     const markup = buildDefaultComponentMarkup(tagName);
