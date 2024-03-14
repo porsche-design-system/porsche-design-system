@@ -2254,27 +2254,29 @@ img {
             />
           </template>
         </p-icon>
-        <div
-          class="listbox"
-          id="list"
-        >
+        <div>
           <div
-            aria-live="polite"
-            class="no-results"
-            role="status"
+            class="listbox"
+            id="list"
           >
-            <span
-              aria-hidden="true"
+            <div
+              aria-live="polite"
+              class="no-results"
+              role="status"
             >
-              ---
-            </span>
-            <span
-              class="sr-only"
-            >
-              No results found
-            </span>
+              <span
+                aria-hidden="true"
+              >
+                ---
+              </span>
+              <span
+                class="sr-only"
+              >
+                No results found
+              </span>
+            </div>
+            <slot />
           </div>
-          <slot />
         </div>
       </div>
       <span
@@ -10689,27 +10691,29 @@ img {
             />
           </template>
         </p-icon>
-        <div
-          class="listbox"
-          id="list"
-        >
+        <div>
           <div
-            aria-live="polite"
-            class="no-results"
-            role="status"
+            class="listbox"
+            id="list"
           >
-            <span
-              aria-hidden="true"
+            <div
+              aria-live="polite"
+              class="no-results"
+              role="status"
             >
-              ---
-            </span>
-            <span
-              class="sr-only"
-            >
-              No results found
-            </span>
+              <span
+                aria-hidden="true"
+              >
+                ---
+              </span>
+              <span
+                class="sr-only"
+              >
+                No results found
+              </span>
+            </div>
+            <slot />
           </div>
-          <slot />
         </div>
       </div>
       <span
@@ -11983,14 +11987,16 @@ img {
             />
           </template>
         </p-icon>
-        <div
-          aria-hidden="true"
-          aria-label=""
-          class="listbox"
-          id="list"
-          role="listbox"
-        >
-          <slot />
+        <div>
+          <div
+            aria-hidden="true"
+            aria-label=""
+            class="listbox"
+            id="list"
+            role="listbox"
+          >
+            <slot />
+          </div>
         </div>
       </div>
       <span
