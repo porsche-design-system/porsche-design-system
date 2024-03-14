@@ -70,7 +70,7 @@ const scenario = async (page: Page): Promise<void> => {
   });
 
   await page.setViewportSize({ width: viewportWidthXL, height: 2500 });
-  await setNativePopoversToAllowMultipleOpen(page);
+  await setNativePopoversToAllowMultipleOpen(page, 'p-select-wrapper');
   await openAllSelect(page, 'p-select-wrapper', true);
 };
 
