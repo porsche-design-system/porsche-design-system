@@ -6,7 +6,7 @@ on:
         required: true
 name: 'Build and Test'
 env:
-  PDS_PLAYWRIGHT_DOCKER_IMAGE: ghcr.io/porsche-design-system/porsche-design-system/playwright:v1.41.2-focal-test27
+  PDS_PLAYWRIGHT_DOCKER_IMAGE: ghcr.io/porsche-design-system/porsche-design-system/playwright:v1.41.2-focal-test28
 jobs:
   assets:
     name: 'Assets'
@@ -152,6 +152,23 @@ jobs:
         with:
           entrypoint: run-test-a11y
           args: --components-js
+  components-js-e2e-playwright-dom:
+    name: 'Components JS E2E (DOM)'
+    runs-on: ubuntu-latest
+    steps:
+      - name: 'Checkout'
+        uses: actions/checkout@v4
+      - name: 'Setup and install'
+        uses: ./.github/actions/setup-and-install
+        with:
+          github-token: ${{ secrets.github-token }}
+      - name: 'Build assets, component-meta, components, components-js, shared and utilities'
+        uses: ./.github/actions/build-components-js
+      - name: 'E2E Test (DOM)'
+        uses: ./.github/actions/docker-run-playwright
+        with:
+          entrypoint: run-test-e2e-playwright
+          args: --components-js:dom
   components-js-e2e-playwright-chrome:
     name: 'Components JS E2E (Chrome/Playwright)'
     runs-on: ubuntu-latest
