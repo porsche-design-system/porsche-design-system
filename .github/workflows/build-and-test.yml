@@ -170,7 +170,7 @@ jobs:
           entrypoint: run-test-e2e-playwright
           args: --components-js:dom
   components-js-e2e-playwright-chrome:
-    name: 'Components JS E2E (Chrome/Playwright)'
+    name: 'Components JS E2E (Chrome)'
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
@@ -192,7 +192,7 @@ jobs:
           entrypoint: run-test-e2e-playwright
           args: --components-js:chrome:${{ matrix.shardIndex }}/${{ matrix.shardTotal }}
   components-js-e2e-playwright-firefox:
-    name: 'Components JS E2E (Firefox/Playwright)'
+    name: 'Components JS E2E (Firefox)'
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
@@ -214,7 +214,7 @@ jobs:
           entrypoint: run-test-e2e-playwright
           args: --components-js:firefox:${{ matrix.shardIndex }}/${{ matrix.shardTotal }}
   components-js-e2e-playwright-safari:
-    name: 'Components JS E2E (Safari/Playwright)'
+    name: 'Components JS E2E (Safari)'
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
