@@ -78,7 +78,7 @@ const scenario = async (page: Page, theme: Theme): Promise<void> => {
     forceComponentTheme: theme,
   });
 
-  const valueOfForAttribute = await getValueOfForAttribute(page, 'p-pin-code >>> label');
+  const valueOfForAttribute = await getValueOfForAttribute(page, 'p-pin-code label');
 
   await forceHoverState(page, '.hover input');
   await forceHoverState(page, '.hover select');
