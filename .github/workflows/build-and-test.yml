@@ -6,7 +6,7 @@ on:
         required: true
 name: 'Build and Test'
 env:
-  PDS_PLAYWRIGHT_DOCKER_IMAGE: ghcr.io/porsche-design-system/porsche-design-system/playwright:v1.41.2-focal-test28
+  PDS_PLAYWRIGHT_DOCKER_IMAGE: ghcr.io/porsche-design-system/porsche-design-system/playwright:v1.41.2-focal-test29
 jobs:
   assets:
     name: 'Assets'
@@ -235,14 +235,14 @@ jobs:
         with:
           entrypoint: run-test-e2e-playwright
           args: --components-js:safari:${{ matrix.shardIndex }}/${{ matrix.shardTotal }}
-  components-js-common-vrt-playwright-chrome:
-    name: 'Components JS VRT "Common" (Chrome)'
+  components-js-vrt-playwright-chrome:
+    name: 'Components JS VRT (Chrome)'
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
       matrix:
-        shardIndex: [ 1, 2 ]
-        shardTotal: [ 2 ]
+        shardIndex: [ 1, 2, 3, 4 ]
+        shardTotal: [ 4 ]
     steps:
       - name: 'Checkout'
         uses: actions/checkout@v4
@@ -256,58 +256,12 @@ jobs:
         uses: ./.github/actions/docker-run-playwright
         with:
           entrypoint: run-test-vrt-playwright
-          args: --components-js:chrome:common:${{ matrix.shardIndex }}/${{ matrix.shardTotal }}
+          args: --components-js:chrome:${{ matrix.shardIndex }}/${{ matrix.shardTotal }}
       - name: 'VRT Regression'
         if: failure()
         uses: actions/upload-artifact@v4
         with:
-          name: components-js-vrt-common-playwright-chrome-regression-${{ matrix.shardIndex }}
-          path: ./packages/components-js/tests/vrt/results
-  components-js-custom-vrt-playwright-chrome:
-    name: 'Components JS VRT "Custom" (Chrome)'
-    runs-on: ubuntu-latest
-    steps:
-      - name: 'Checkout'
-        uses: actions/checkout@v4
-      - name: 'Setup and install'
-        uses: ./.github/actions/setup-and-install
-        with:
-          github-token: ${{ secrets.github-token }}
-      - name: 'Build assets, component-meta, components, components-js, shared and utilities'
-        uses: ./.github/actions/build-components-js
-      - name: 'VRT Test'
-        uses: ./.github/actions/docker-run-playwright
-        with:
-          entrypoint: run-test-vrt-playwright
-          args: --components-js:chrome:custom
-      - name: 'VRT Regression'
-        if: failure()
-        uses: actions/upload-artifact@v4
-        with:
-          name: components-js-vrt-custom-playwright-chrome-regression
-          path: ./packages/components-js/tests/vrt/results
-  components-js-states-vrt-playwright-chrome:
-    name: 'Components JS VRT "States" (Chrome)'
-    runs-on: ubuntu-latest
-    steps:
-      - name: 'Checkout'
-        uses: actions/checkout@v4
-      - name: 'Setup and install'
-        uses: ./.github/actions/setup-and-install
-        with:
-          github-token: ${{ secrets.github-token }}
-      - name: 'Build assets, component-meta, components, components-js, shared and utilities'
-        uses: ./.github/actions/build-components-js
-      - name: 'VRT Test'
-        uses: ./.github/actions/docker-run-playwright
-        with:
-          entrypoint: run-test-vrt-playwright
-          args: --components-js:chrome:states
-      - name: 'VRT Regression'
-        if: failure()
-        uses: actions/upload-artifact@v4
-        with:
-          name: components-js-vrt-states-playwright-chrome-regression
+          name: components-js-vrt-playwright-chrome-regression-${{ matrix.shardIndex }}
           path: ./packages/components-js/tests/vrt/results
   components-js-vrt-playwright-safari:
     name: 'Components JS VRT (Safari)'
