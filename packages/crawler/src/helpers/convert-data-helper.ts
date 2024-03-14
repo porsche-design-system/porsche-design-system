@@ -10,7 +10,7 @@ import { getUnusedTagNames, incrementTagName } from './count-data-helper';
 import { INTERNAL_TAG_NAMES, TAG_NAMES, TagName } from '@porsche-design-system/shared';
 import { getComponentMeta } from '@porsche-design-system/component-meta';
 
-export const getPdsTagNamesWithPropertyNames = async (): Promise<TagNamesWithPropertyNames> =>
+export const getPdsTagNamesWithPropertyNames = (): TagNamesWithPropertyNames =>
   Object.values(TAG_NAMES).reduce((result, tagName) => {
     const componentMeta = getComponentMeta(tagName);
     return !INTERNAL_TAG_NAMES.includes(tagName)
