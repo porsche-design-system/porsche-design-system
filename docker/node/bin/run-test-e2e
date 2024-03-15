@@ -29,10 +29,10 @@ if
   [[ "--crawler" == "${1}" ]];
 then
   if [ "$CI" != true ]; then
-    yarn test:e2e:playwright:${1:2}
+    yarn test:e2e:${1:2}
   else
     # HOME=/root fixes Running Nightly as root in a regular user's session is not supported. ($HOME is /github/home which is owned by uid 1001.)
     # https://github.com/microsoft/playwright/issues/6500
-    HOME=/root yarn test:e2e:playwright:${1:2}
+    HOME=/root yarn test:e2e:${1:2}
   fi
 fi
