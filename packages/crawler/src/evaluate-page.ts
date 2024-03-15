@@ -101,8 +101,8 @@ const getAllConsumedProperties = <
   }, allPdsPropertiesForComponentName);
 };
 
-const getConsumedTagNamesForPrefix = async (prefix: string, pdsElements: Locator[]): Promise<TagNameData[]> => {
-  const tagNameDatas: TagNameData[] = [];
+const getConsumedTagNames = async (prefix: string, pdsElements: Locator[]): Promise<TagNameData[]> => {
+  const tagNameData: TagNameData[] = [];
 
   for (const pdsElement of pdsElements) {
     const componentName = await getPdsComponentNameByPrefix(pdsElement, prefix);
@@ -114,12 +114,7 @@ const getConsumedTagNamesForPrefix = async (prefix: string, pdsElements: Locator
     const slotInfo = await getHighestLevelChildrenOrTextContent(pdsElement);
     const hostPdsComponent = await getHostPdsComponent(pdsElement, prefix);
 
-    // TODO: Check if that is correct because it was not needed before
-    if (!hostPdsComponent) {
-      continue;
-    }
-
-    tagNameDatas.push({
+    tagNameData.push({
       [componentName]: {
         properties: await getAllConsumedProperties(pdsElement, pdsTagNamesWithPropertyNames[componentName]),
         children: slotInfo ? slotInfo : null,
@@ -128,11 +123,10 @@ const getConsumedTagNamesForPrefix = async (prefix: string, pdsElements: Locator
     } as TagNameData);
   }
 
-  return tagNameDatas;
+  return tagNameData;
 };
 
-// get all dom elements from body
-const getAllPdsElementsForPrefix = async (allDOMElements: Locator[], prefix: string): Promise<Locator[]> => {
+const getAllPdsElements = async (allDOMElements: Locator[], prefix: string): Promise<Locator[]> => {
   const tagNames = Object.keys(pdsTagNamesWithPropertyNames);
   const selector = (prefix ? tagNames.map((tagName) => `${prefix}-${tagName}`) : tagNames).join();
   const matches = [];
@@ -159,23 +153,33 @@ export const evaluatePage = async (page: Page): Promise<ConsumedTagNamesForVersi
     return document.porscheDesignSystem;
   });
 
-  return await Object.entries(pdsConfig).reduce(async (result, [key, { prefixes }]) => {
+  let consumedTagNamesPerVersion: ConsumedTagNamesForVersionsAndPrefixes = {};
+
+  for (const [key, { prefixes }] of Object.entries(pdsConfig)) {
     if (key === 'cdn') {
-      return result;
+      continue;
     }
 
-    return {
-      ...(await result),
-      [key]: await prefixes.reduce(
-        async (result, prefix: string) => ({
-          ...(await result),
-          [prefix]: await getConsumedTagNamesForPrefix(
-            prefix,
-            await getAllPdsElementsForPrefix(allDOMElements, prefix)
-          ),
-        }),
-        Promise.resolve({})
-      ),
+    let consumedTagNames = {};
+
+    for (let prefix of prefixes) {
+      if (prefix === '') {
+        prefix = 'no-prefix';
+      }
+
+      const allPdsElementsForPrefix = await getAllPdsElements(allDOMElements, prefix);
+
+      consumedTagNames = {
+        ...consumedTagNames,
+        [prefix]: await getConsumedTagNames(prefix, allPdsElementsForPrefix),
+      };
+    }
+
+    consumedTagNamesPerVersion = {
+      ...consumedTagNamesPerVersion,
+      [key]: consumedTagNames,
     };
-  }, Promise.resolve({}));
+  }
+
+  return consumedTagNamesPerVersion;
 };
