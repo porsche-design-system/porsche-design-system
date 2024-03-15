@@ -20,31 +20,37 @@ export const crawlWebsite = async (browser: Browser, websiteUrl: string): Promis
 
   // Create a new page in the browser context and navigate to target URL
   const page = await context.newPage();
+
   await page.setViewportSize({
     width: crawlerConfig.viewport.width,
     height: crawlerConfig.viewport.height,
   });
+
   await page.goto(websiteUrl, {
     waitUntil: 'networkidle',
   });
 
   console.log('Crawling page ' + websiteUrl);
+
   // getting raw data
   const pdsCrawlerRawData = await evaluatePage(page);
 
   // raw data in another format - without versions and prefixes
   const pdsCrawlerRawDataWithoutVersionsAndPrefixes = getRawDataWithoutVersionsAndPrefixes(pdsCrawlerRawData);
+
   console.log('Aggregating data for ' + page.url());
+
   // info about used versions and prefixes
   const consumedPdsVersionsWithPrefixes = getConsumedPrefixesForVersions(pdsCrawlerRawData);
 
   // aggregated data
   const aggregatedConsumedTagNamesForVersionsAndPrefixes =
     getAggregatedConsumedTagNamesForVersionsAndPrefixes(pdsCrawlerRawData);
+
   // aggregated data without versions and prefixes
   const aggregatedConsumedTagNames = getAggregatedConsumedTagNames(pdsCrawlerRawDataWithoutVersionsAndPrefixes);
 
-  writeWebsiteReport(
+  await writeWebsiteReport(
     websiteUrl,
     stringifyObject({
       url: websiteUrl,
@@ -63,21 +69,24 @@ export const crawlWebsite = async (browser: Browser, websiteUrl: string): Promis
 
   return pdsCrawlerRawDataWithoutVersionsAndPrefixes;
 };
+
 export const crawlWebsites = async (browser: Browser, customerWebsites: string[]): Promise<void> => {
   // data for all websites
   let generalRawData = [] as TagNameData[];
 
   for (const websiteUrl of customerWebsites) {
     const pdsCrawlerRawDataWithoutVersionsAndPrefixes = await crawlWebsite(browser, websiteUrl);
+
     // collecting data for general report (over all websites)
-    generalRawData = generalRawData.concat(pdsCrawlerRawDataWithoutVersionsAndPrefixes);
+    generalRawData.concat(pdsCrawlerRawDataWithoutVersionsAndPrefixes);
   }
 
   console.log('Aggregating general data..');
+
   // creating general report (over all websites)
   const aggregatedConsumedTagNamesAllWebsites = getAggregatedConsumedTagNames(generalRawData);
 
-  writeGeneralReport(
+  return writeGeneralReport(
     stringifyObject({
       crawledWebsites: customerWebsites,
       aggregatedConsumedTagNames: aggregatedConsumedTagNamesAllWebsites,
