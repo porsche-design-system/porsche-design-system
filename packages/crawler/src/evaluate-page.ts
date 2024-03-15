@@ -22,35 +22,43 @@ declare global {
 
 const pdsTagNamesWithPropertyNames = getPdsTagNamesWithPropertyNames();
 
-const getPdsComponentNameByPrefix = async (locator: Locator, prefix: string): Promise<TagName | null> => {
+const getPdsComponentName = async (locator: Locator, prefix: string): Promise<TagName | null> => {
   const tagName = await locator.evaluate((el) => el.tagName.toLowerCase());
   const tagNames = Object.keys(pdsTagNamesWithPropertyNames);
+  const match = tagNames.find((compName) => {
+    const prefixedTagName = prefix !== '' ? `${prefix}-${compName}` : compName;
 
-  return (tagNames.find((compName) => (prefix ? `${prefix}-${compName}` : compName) === tagName) as TagName) || null;
+    return prefixedTagName === tagName;
+  }) as TagName;
+
+  return match || null;
 };
 
 const getHighestLevelChildrenOrTextContent = (locator: Locator): Promise<string | null> =>
-  locator.evaluate(
-    (el) =>
-      Array.from(el.children).reduce((result, child) => {
-        if (child.children.length) {
-          const copy = child.cloneNode(true) as Element;
+  locator.evaluate((el) => {
+    let content = '';
 
-          // we save only the highest dom level in the reports, in order not to make them too big
-          copy.innerHTML = '(the content was stripped)';
+    for (const child of Array.from(el.children)) {
+      if (child.children.length) {
+        const copy = child.cloneNode(true) as Element;
 
-          return result + copy.outerHTML;
-        }
+        // we save only the highest dom level in the reports, in order not to make them too big
+        copy.innerHTML = '(the content was stripped)';
 
-        return result + child.outerHTML;
-      }, '' as string) || el.textContent
-  );
+        content += copy.outerHTML;
+      }
+
+      content += child.outerHTML;
+    }
+
+    return content || el.textContent;
+  });
 
 const getHostPdsComponent = async (locator: Locator, prefix: string): Promise<TagName | null> => {
   const rootNode = await locator.evaluate((el) => (el.getRootNode() as ShadowRoot).host);
 
   if (rootNode) {
-    return getPdsComponentNameByPrefix(locator, prefix);
+    return getPdsComponentName(locator, prefix);
   } else {
     return null;
   }
@@ -65,39 +73,40 @@ const getAllConsumedProperties = <
   locator: Locator,
   allPdsPropertiesForComponentName: string[]
 ): Promise<Properties> => {
-  // we consider this element as PDS Component, therefore we need this alias here
-  return locator.evaluate((el, allPdsPropertiesForComponentName) => {
-    const pEl = el as PComponentElement;
+  // WARNING: Cannot pull out complexity in functions here because it's executed inside evaluate (browser context)
+  return locator.evaluate((pComponentElement: PComponentElement, allPdsPropertiesForComponentName) => {
+    // we consider this element as PDS Component, therefore we need this alias here
 
-    return allPdsPropertiesForComponentName.reduce((result, propName) => {
-      const propValue = pEl[propName as PComponentPropertyName] as PComponentPropertyValue;
+    let properties = {};
 
-      let parsedVal = propValue;
+    for (const propName of allPdsPropertiesForComponentName) {
+      let propValue = pComponentElement[propName as PComponentPropertyName] as PComponentPropertyValue;
 
       if (typeof propValue === 'string') {
         try {
           // jsonStr is potentially JSON parsable string, e.g. "{ base: 'block', l: 'inline' }" or "true" or "123"
-          parsedVal = JSON.parse(
+          propValue = JSON.parse(
             propValue
               .replace(/'/g, '"') // convert single quotes to double quotes
               .replace(/[\s"]?([a-z\-]+)[\s"]?:([^//])/g, '"$1":$2') // wrap keys in double quotes if they don't have them but ignore potential urls
           );
         } catch {
-          // jsonStr is string, e.g. "block" or "inline"
+          // jsonStr is string, e.g. "block" or "inline", do nothing
         }
-      } else {
-        // jsonStr is object, e.g. { base: 'block', l: 'inline' } or number, e.g. 123 or boolean, e.g. true
       }
 
-      return {
-        ...result,
-        // check if it's an object and stringify
-        [propName]:
-          typeof parsedVal === 'object'
-            ? (JSON.stringify(parsedVal) as PComponentPropertyValue)
-            : (parsedVal as PComponentPropertyValue),
+      // check if it's an object and stringify
+      if (typeof propValue === 'object') {
+        propValue = JSON.stringify(propValue) as PComponentPropertyValue;
+      }
+
+      properties = {
+        ...properties,
+        [propName]: propValue,
       };
-    }, {});
+    }
+
+    return properties;
   }, allPdsPropertiesForComponentName);
 };
 
@@ -105,10 +114,10 @@ const getConsumedTagNames = async (prefix: string, pdsElements: Locator[]): Prom
   const tagNameData: TagNameData[] = [];
 
   for (const pdsElement of pdsElements) {
-    const componentName = await getPdsComponentNameByPrefix(pdsElement, prefix);
+    const componentName = await getPdsComponentName(pdsElement, prefix);
 
     if (!componentName) {
-      throw new Error('Could not find component name');
+      continue;
     }
 
     const slotInfo = await getHighestLevelChildrenOrTextContent(pdsElement);
@@ -128,18 +137,18 @@ const getConsumedTagNames = async (prefix: string, pdsElements: Locator[]): Prom
 
 const getAllPdsElements = async (allDOMElements: Locator[], prefix: string): Promise<Locator[]> => {
   const tagNames = Object.keys(pdsTagNamesWithPropertyNames);
-  const selector = (prefix ? tagNames.map((tagName) => `${prefix}-${tagName}`) : tagNames).join();
-  const matches = [];
+  const selector = (prefix !== '' ? tagNames.map((tagName) => `${prefix}-${tagName}`) : tagNames).join();
+  const pdsElements: Locator[] = [];
 
   for (const domElement of allDOMElements) {
-    const result = await domElement.evaluate((el, selector) => el.matches(selector), selector);
+    const selectorMatch = await domElement.evaluate((el, selector) => el.matches(selector), selector);
 
-    if (result) {
-      matches.push(domElement);
+    if (selectorMatch) {
+      pdsElements.push(domElement);
     }
   }
 
-  return matches;
+  return pdsElements;
 };
 
 export const evaluatePage = async (page: Page): Promise<ConsumedTagNamesForVersionsAndPrefixes> => {
@@ -163,10 +172,6 @@ export const evaluatePage = async (page: Page): Promise<ConsumedTagNamesForVersi
     let consumedTagNames = {};
 
     for (let prefix of prefixes) {
-      if (prefix === '') {
-        prefix = 'no-prefix';
-      }
-
       const allPdsElementsForPrefix = await getAllPdsElements(allDOMElements, prefix);
 
       consumedTagNames = {
