@@ -146,8 +146,7 @@ _Note: `./docker.sh run-install` and `yarn` should be executed after every pull.
 2. For the different applications, select one of the following commands:
 
 - `./docker.sh run-test-e2e` (e2e tests for the entire application)
-- `./docker.sh run-test-e2e-puppeteer --components-js` (e2e tests for the native web components for Chromium)
-- `./docker.sh run-test-e2e-playwright --components-js` (e2e tests for the native web components for Webkit)
+- `./docker.sh run-test-e2e --components-js` (e2e tests for the native web components)
 - `./docker.sh run-test-e2e --components-angular` (e2e tests for angular components)
 - `./docker.sh run-test-e2e --components-react` (e2e tests for react components)
 - `./docker.sh run-test-e2e --components-vue` (e2e tests for vue components)
@@ -178,7 +177,7 @@ _Note: `./docker.sh run-install` and `yarn` should be executed after every pull.
 - `./docker.sh run-test-vrt --utilities` (vrt tests for the utilities)
 - `./docker.sh run-test-vrt --fallbacks` (vrt tests for the fallbacks)
 
-#### What to do when VRT Puppeteer tests are failing
+#### What to do when VRT tests are failing
 
 1. Switch to your results directory in `/packages/{DESIRED_PACKAGE_NAME}/tests/vrt/(puppeteer?)/results`. Here you can
    find the belonging `diff` and `regression` images.
