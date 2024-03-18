@@ -1,4 +1,4 @@
-import type { Page } from 'puppeteer';
+import { type Page } from '@playwright/test';
 import { getInitialStyles, getLoaderScript } from '@porsche-design-system/components-js/partials';
 
 export type PdsTestingContext = {
@@ -52,6 +52,6 @@ export const setContentWithDesignSystem = async (page: Page, pdsTestingContext: 
     ${bodyHtml}
   </body>
 </html>`,
-    { waitUntil: 'networkidle0' }
+    { waitUntil: 'networkidle' }
   );
 };

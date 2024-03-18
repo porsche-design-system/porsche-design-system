@@ -10,16 +10,22 @@ import { getUnusedTagNames, incrementTagName } from './count-data-helper';
 import { INTERNAL_TAG_NAMES, TAG_NAMES, TagName } from '@porsche-design-system/shared';
 import { getComponentMeta } from '@porsche-design-system/component-meta';
 
-export const getPdsTagNamesWithPropertyNames = (): TagNamesWithPropertyNames =>
-  Object.values(TAG_NAMES).reduce((result, tagName) => {
-    const componentMeta = getComponentMeta(tagName);
-    return !INTERNAL_TAG_NAMES.includes(tagName)
-      ? {
-          ...result,
-          [tagName]: componentMeta.props ? Object.keys(componentMeta.props) : [],
-        }
-      : result;
-  }, {} as TagNamesWithPropertyNames);
+export const getPdsTagNamesWithPropertyNames = (): TagNamesWithPropertyNames => {
+  let result = {} as TagNamesWithPropertyNames;
+
+  for (const tagName of Object.values(TAG_NAMES)) {
+    const { propsMeta } = getComponentMeta(tagName);
+
+    if (!INTERNAL_TAG_NAMES.includes(tagName)) {
+      result = {
+        ...result,
+        [tagName]: propsMeta ? Object.keys(propsMeta) : [],
+      };
+    }
+  }
+
+  return result;
+};
 
 export const getConsumedPrefixesForVersions = (
   consumedTagNamesForVersions: ConsumedTagNamesForVersionsAndPrefixes
@@ -69,10 +75,10 @@ export const getRawDataWithoutVersionsAndPrefixes = (
   consumedTagNamesForVersions: ConsumedTagNamesForVersionsAndPrefixes
 ): TagNameData[] =>
   Object.entries(consumedTagNamesForVersions).reduce(
-    (result, [pdsVersion, prefixesWithData]) =>
+    (result, [_pdsVersion, prefixesWithData]) =>
       result.concat(
         Object.entries(prefixesWithData).reduce(
-          (result, [prefix, tagNamesWithProperties]) => result.concat(tagNamesWithProperties),
+          (result, [_prefix, tagNamesWithProperties]) => result.concat(tagNamesWithProperties),
           [] as TagNameData[]
         )
       ),
