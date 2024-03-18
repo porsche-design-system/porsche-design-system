@@ -21,30 +21,19 @@ import {
 } from '@porsche-design-system/utilities-v2';
 import { getFontSizeText } from './font-size-text-styles';
 
-// TODO: enhance buildResponsiveStyles() to accept a function as value so that we can use getHiddenTextJssStyle() directly
 // Needed for slotted anchor and hidden label, which then enlarges the hidden label to equal host size and indents the text to be visually hidden.
 const getVisibilityJssStyle: GetJssStyleFunction = (hideLabel: boolean): JssStyle => {
   return hideLabel
     ? {
-        position: 'absolute',
-        width: '1px',
-        height: '1px',
-        padding: 0,
-        margin: '-1px',
-        overflow: 'hidden',
-        clip: 'rect(0,0,0,0)',
         whiteSpace: 'nowrap',
+        textIndent: '-999999px', // Needed because standard sr-only classes don't work here due that we need a bounding box for the focus style
+        overflow: 'hidden',
       }
     : {
-        position: 'relative',
-        width: 'auto',
-        height: 'auto',
-        padding: 0,
-        margin: 0,
-        overflow: 'visible',
-        clip: 'auto',
         whiteSpace: 'inherit',
+        textIndent: 0,
         zIndex: 1, // fix Firefox bug on :hover (#2583)
+        overflow: 'visible',
       };
 };
 
@@ -89,7 +78,9 @@ export const getLinkButtonPureStyles = (
     },
     root: {
       display: 'flex',
-      gap: spacingStaticXSmall,
+      ...buildResponsiveStyles(hideLabel, (hidelabelValue: boolean) => ({
+        gap: hidelabelValue ? 0 : spacingStaticXSmall,
+      })),
       width: '100%',
       padding: 0,
       margin: 0, // Removes default button margin on safari 15
