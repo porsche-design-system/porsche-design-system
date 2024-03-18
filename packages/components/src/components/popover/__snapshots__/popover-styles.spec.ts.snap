@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`getComponentCss() should return correct css for direction: bottom, isNative: false and theme: dark 1`] = `
+exports[`getComponentCss() should return correct css for direction: bottom, isNativePopoverCase: false and theme: dark 1`] = `
 ":host {
   display: inline-block;
   vertical-align: top;
@@ -113,7 +113,7 @@ button:focus-visible {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for direction: bottom, isNative: false and theme: light 1`] = `
+exports[`getComponentCss() should return correct css for direction: bottom, isNativePopoverCase: false and theme: light 1`] = `
 ":host {
   display: inline-block;
   vertical-align: top;
@@ -226,7 +226,7 @@ button:focus-visible {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for direction: left, isNative: false and theme: dark 1`] = `
+exports[`getComponentCss() should return correct css for direction: left, isNativePopoverCase: false and theme: dark 1`] = `
 ":host {
   display: inline-block;
   vertical-align: top;
@@ -339,7 +339,7 @@ button:focus-visible {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for direction: left, isNative: false and theme: light 1`] = `
+exports[`getComponentCss() should return correct css for direction: left, isNativePopoverCase: false and theme: light 1`] = `
 ":host {
   display: inline-block;
   vertical-align: top;
@@ -452,7 +452,7 @@ button:focus-visible {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for direction: right, isNative: false and theme: dark 1`] = `
+exports[`getComponentCss() should return correct css for direction: right, isNativePopoverCase: false and theme: dark 1`] = `
 ":host {
   display: inline-block;
   vertical-align: top;
@@ -565,7 +565,7 @@ button:focus-visible {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for direction: right, isNative: false and theme: light 1`] = `
+exports[`getComponentCss() should return correct css for direction: right, isNativePopoverCase: false and theme: light 1`] = `
 ":host {
   display: inline-block;
   vertical-align: top;
@@ -678,7 +678,7 @@ button:focus-visible {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for direction: top, isNative: false and theme: dark 1`] = `
+exports[`getComponentCss() should return correct css for direction: top, isNativePopoverCase: false and theme: dark 1`] = `
 ":host {
   display: inline-block;
   vertical-align: top;
@@ -791,7 +791,7 @@ button:focus-visible {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for direction: top, isNative: false and theme: light 1`] = `
+exports[`getComponentCss() should return correct css for direction: top, isNativePopoverCase: false and theme: light 1`] = `
 ":host {
   display: inline-block;
   vertical-align: top;
@@ -904,7 +904,7 @@ button:focus-visible {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for direction: top, isNative: true and theme: light 1`] = `
+exports[`getComponentCss() should return correct css for direction: top, isNativePopoverCase: true and theme: light 1`] = `
 ":host {
   display: inline-block;
   vertical-align: top;
@@ -970,17 +970,20 @@ button:focus-visible {
   transform: translate3d(0,0,0);
 }
 .spacer {
-  overflow: initial;
-  background-color: transparent;
-  border: none;
-  margin: 0;
-  padding: 0;
   position: absolute;
+  border: none;
+  background: none;
+  pointer-events: none;
+  padding: 0;
+  margin: 0;
+  overflow: initial;
   z-index: 9999;
   filter: drop-shadow(0 0 16px rgba(0,0,0,0.3));
   backdrop-filter: drop-shadow(0px 0px 0px transparent);
-  pointer-events: none;
   animation: 0.25s keyframes-fadeIn cubic-bezier(0.25,0.1,0.25,1) forwards;
+}
+.spacer:-internal-popover-in-top-layer::backdrop {
+  display: none;
 }
 .spacer::before {
   content: "";

@@ -143,7 +143,7 @@ const scenario = async (page: Page, theme: Theme, withinTable: boolean = false):
   }
 
   await page.setViewportSize({ width: viewportWidthXL, height: 600 });
-  await setNativePopoversToAllowMultipleOpen(page);
+  await setNativePopoversToAllowMultipleOpen(page, 'p-popover');
   await openAllPopover(page);
 };
 

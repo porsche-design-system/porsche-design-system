@@ -27,8 +27,11 @@ import {
   Watch,
 } from '@stencil/core';
 import {
+  addNativePopoverScrollAndResizeListeners,
   AllowedTypes,
   attachComponentCss,
+  detectNativePopoverCase,
+  findClosestComponent,
   FORM_STATES,
   getActionFromKeyboardEvent,
   getClosestHTMLElement,
@@ -37,6 +40,7 @@ import {
   getHighlightedSelectOptionIndex,
   getListAriaAttributes,
   getMatchingSelectOptionIndex,
+  getNativePopoverDropdownPosition,
   getPrefixedTagNames,
   getShadowRootHTMLElement,
   getUpdatedIndex,
@@ -123,9 +127,11 @@ export class Select {
   private form: HTMLFormElement;
   private isWithinForm: boolean;
   private preventOptionUpdate = false; // Used to prevent value watcher from updating options when options are already updated
-
   private searchString: string = '';
   private searchTimeout: ReturnType<typeof setTimeout> | number = null;
+  private isNativePopoverCase: boolean = false;
+  private parentTableElement: HTMLElement;
+  private popoverElement: HTMLElement;
 
   @Listen('internalOptionUpdate')
   public updateOptionHandler(e: Event & { target: SelectOption }): void {
@@ -151,6 +157,10 @@ export class Select {
     document.addEventListener('mousedown', this.onClickOutside, true);
     this.form = getClosestHTMLElement(this.host, 'form');
     this.isWithinForm = !!this.form;
+    this.isNativePopoverCase = detectNativePopoverCase(this.host, false);
+    if (this.isNativePopoverCase) {
+      this.parentTableElement = findClosestComponent(this.host, 'pTable');
+    }
   }
 
   public componentWillLoad(): void {
@@ -164,6 +174,14 @@ export class Select {
 
   public componentDidLoad(): void {
     getShadowRootHTMLElement(this.host, 'slot').addEventListener('slotchange', this.onSlotchange);
+  }
+
+  public componentDidRender(): void {
+    if (this.isNativePopoverCase && this.isOpen) {
+      addNativePopoverScrollAndResizeListeners(this.host, this.parentTableElement, this.popoverElement, () => {
+        this.isOpen = false;
+      });
+    }
   }
 
   public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
@@ -191,6 +209,7 @@ export class Select {
       this.hideLabel,
       this.state,
       this.isWithinForm,
+      this.isNativePopoverCase,
       this.theme
     );
     syncSelectOptionProps(this.selectOptions, this.theme);
@@ -240,13 +259,24 @@ export class Select {
             aria-hidden="true"
           />
           <div
-            id={dropdownId}
-            class="listbox"
-            {...getListAriaAttributes(this.label, this.required, false, this.isOpen)}
-            tabindex="-1"
-            ref={(el) => (this.listElement = el)}
+            {...(this.isNativePopoverCase && {
+              popover: 'auto',
+              class: 'popover',
+              ...(this.popoverElement?.matches(':popover-open') && {
+                'popover-open': true,
+              }),
+            })}
+            ref={(el) => (this.popoverElement = el)}
           >
-            <slot />
+            <div
+              id={dropdownId}
+              class="listbox"
+              {...getListAriaAttributes(this.label, this.required, false, this.isOpen)}
+              tabindex="-1"
+              ref={(el) => (this.listElement = el)}
+            >
+              <slot />
+            </div>
           </div>
         </div>
         <StateMessage state={this.state} message={this.message} theme={this.theme} host={this.host} />
@@ -297,6 +327,19 @@ export class Select {
       return;
     }
     this.isOpen = open;
+    if (this.isNativePopoverCase) {
+      if (this.isOpen) {
+        getNativePopoverDropdownPosition(
+          this.combobox,
+          this.selectOptions.filter((option) => !option.hidden).length,
+          this.popoverElement,
+          this.dropdownDirection
+        );
+        this.popoverElement.showPopover();
+      } else {
+        this.popoverElement.hidePopover();
+      }
+    }
   };
 
   private onComboKeyDown = (event: KeyboardEvent): void => {

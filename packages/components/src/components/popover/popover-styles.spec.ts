@@ -12,7 +12,7 @@ describe('getComponentCss()', () => {
     ['bottom', false, 'dark'],
     ['left', false, 'dark'],
     ['top', true, 'light'],
-  ])('should return correct css for direction: %s, isNative: %s and theme: %s', (...args) => {
+  ])('should return correct css for direction: %s, isNativePopoverCase: %s and theme: %s', (...args) => {
     validateCssAndMatchSnapshot(getComponentCss(...args));
   });
 });

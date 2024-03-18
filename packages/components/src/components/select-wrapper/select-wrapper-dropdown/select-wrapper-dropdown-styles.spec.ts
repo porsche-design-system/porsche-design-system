@@ -90,7 +90,7 @@ describe('getComponentCss()', () => {
     ['up', true, 'none', true, true, false, 'light'],
     ['up', false, 'none', true, true, false, 'light'],
   ])(
-    'should return correct css for direction: %s, isOpen: %s, state: %s, disabled: %s, filter: %s, isNativePopover: %s and theme: %s',
+    'should return correct css for direction: %s, isOpen: %s, state: %s, disabled: %s, filter: %s, isNativePopoverCase: %s and theme: %s',
     (...args) => {
       validateCssAndMatchSnapshot(getComponentCss(...args));
     }

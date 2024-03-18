@@ -8,6 +8,7 @@ export * from './button-handling';
 export * from './button-link-pure-utils';
 export * from './children-observer';
 export * from './device-detection';
+export * from './detect-native-popover-case';
 export * from './dom';
 export * from './focusTrap';
 export * from './form';

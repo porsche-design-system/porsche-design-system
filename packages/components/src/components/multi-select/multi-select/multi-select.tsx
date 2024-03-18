@@ -24,20 +24,24 @@ import {
   updateOptionsFilterState,
 } from './multi-select-utils';
 import type { BreakpointCustomizable, PropTypes, Theme } from '../../../types';
-import type { SelectDropdownDirectionInternal } from '../../../utils';
 import {
+  addNativePopoverScrollAndResizeListeners,
   AllowedTypes,
   attachComponentCss,
+  detectNativePopoverCase,
+  findClosestComponent,
   FORM_STATES,
   getClosestHTMLElement,
   getFilterInputAriaAttributes,
   getListAriaAttributes,
+  getNativePopoverDropdownPosition,
   getPrefixedTagNames,
   getShadowRootHTMLElement,
   handleButtonEvent,
   hasPropValueChanged,
   isClickOutside,
   SELECT_DROPDOWN_DIRECTIONS,
+  SelectDropdownDirectionInternal,
   THEMES,
   throwIfElementIsNotOfKind,
   validateProps,
@@ -128,6 +132,9 @@ export class MultiSelect {
   private form: HTMLFormElement;
   private isWithinForm: boolean;
   private preventOptionUpdate = false; // Used to prevent value watcher from updating options when options are already updated
+  private isNativePopoverCase: boolean = false;
+  private parentTableElement: HTMLElement;
+  private popoverElement: HTMLElement;
 
   private get currentValue(): string[] {
     return getSelectedOptionValues(this.multiSelectOptions);
@@ -161,6 +168,10 @@ export class MultiSelect {
     document.addEventListener('mousedown', this.onClickOutside, true);
     this.form = getClosestHTMLElement(this.host, 'form');
     this.isWithinForm = !!this.form;
+    this.isNativePopoverCase = detectNativePopoverCase(this.host, false);
+    if (this.isNativePopoverCase) {
+      this.parentTableElement = findClosestComponent(this.host, 'pTable');
+    }
   }
 
   public componentWillLoad(): void {
@@ -175,6 +186,25 @@ export class MultiSelect {
 
   public componentDidLoad(): void {
     getShadowRootHTMLElement(this.host, 'slot').addEventListener('slotchange', this.onSlotchange);
+  }
+
+  public componentDidRender(): void {
+    if (this.isNativePopoverCase) {
+      addNativePopoverScrollAndResizeListeners(this.host, this.parentTableElement, this.popoverElement, () => {
+        this.isOpen = false;
+      });
+      if (this.isOpen) {
+        getNativePopoverDropdownPosition(
+          this.inputElement,
+          this.multiSelectOptions.filter((option) => !option.hidden).length,
+          this.popoverElement,
+          this.dropdownDirection
+        );
+        this.popoverElement.showPopover();
+      } else {
+        this.popoverElement.hidePopover();
+      }
+    }
   }
 
   public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
@@ -202,6 +232,7 @@ export class MultiSelect {
       this.hideLabel,
       this.state,
       this.isWithinForm,
+      this.isNativePopoverCase,
       this.theme
     );
     syncMultiSelectOptionProps(this.multiSelectOptions, this.theme);
@@ -269,19 +300,31 @@ export class MultiSelect {
               Reset selection
             </PrefixedTagNames.pButtonPure>
           )}
+
           <div
-            id={dropdownId}
-            class="listbox"
-            {...getListAriaAttributes(this.label, this.required, true, this.isOpen, true)}
-            ref={(el) => (this.listElement = el)}
+            {...(this.isNativePopoverCase && {
+              popover: 'auto',
+              class: 'popover',
+              ...(this.popoverElement?.matches(':popover-open') && {
+                'popover-open': true,
+              }),
+            })}
+            ref={(el) => (this.popoverElement = el)}
           >
-            {!this.hasFilterResults && (
-              <div class="no-results" aria-live="polite" role="status">
-                <span aria-hidden="true">---</span>
-                <span class="sr-only">No results found</span>
-              </div>
-            )}
-            <slot />
+            <div
+              id={dropdownId}
+              class="listbox"
+              {...getListAriaAttributes(this.label, this.required, true, this.isOpen, true)}
+              ref={(el) => (this.listElement = el)}
+            >
+              {!this.hasFilterResults && (
+                <div class="no-results" aria-live="polite" role="status">
+                  <span aria-hidden="true">---</span>
+                  <span class="sr-only">No results found</span>
+                </div>
+              )}
+              <slot />
+            </div>
           </div>
         </div>
         <StateMessage state={this.state} message={this.message} theme={this.theme} host={this.host} />
@@ -324,6 +367,9 @@ export class MultiSelect {
 
   private onInputClick = (): void => {
     this.isOpen = true;
+    if (this.isNativePopoverCase) {
+      this.popoverElement.showPopover();
+    }
   };
 
   private onResetClick = (): void => {

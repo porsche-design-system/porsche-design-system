@@ -26,6 +26,7 @@ import { getPlaceholderJssStyle } from '../../../styles/placeholder';
 import { getNoResultsOptionJssStyle, MULTI_SELECT_OPTION_HEIGHT } from '../../../styles/option-styles';
 import { getFunctionalComponentStateMessageStyles } from '../../common/state-message/state-message-styles';
 import { getFunctionalComponentLabelStyles } from '../../common/label/label-styles';
+import { getPopoverResetJssStyle } from '../../../styles/popover-reset-styles';
 import {
   formButtonOrIconPadding,
   formElementLayeredSafeZone,
@@ -42,6 +43,7 @@ export const getComponentCss = (
   hideLabel: BreakpointCustomizable<boolean>,
   state: FormState,
   isWithinForm: boolean,
+  isNativePopoverCase: boolean,
   theme: Theme
 ): string => {
   const { contrastHighColor } = getThemedColors(theme);
@@ -115,6 +117,11 @@ export const getComponentCss = (
     ...getFunctionalComponentLabelStyles(isDisabled, hideLabel, theme),
     // .message
     ...getFunctionalComponentStateMessageStyles(theme, state),
+    ...(isNativePopoverCase && {
+      popover: {
+        ...getPopoverResetJssStyle(),
+      },
+    }),
   });
 };
 
