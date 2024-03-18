@@ -10458,10 +10458,10 @@ devtools-protocol@0.0.1249869:
   resolved "https://registry.yarnpkg.com/devtools-protocol/-/devtools-protocol-0.0.1249869.tgz#000c3cf1afc189a18db98135a50d4a8f95a47d29"
   integrity sha512-Ctp4hInA0BEavlUoRy9mhGq0i+JSo/AwVyX2EFgZmV1kYB+Zq+EMBAn52QWu6FbRr10hRb6pBl420upbp4++vg==
 
-devtools-protocol@^0.0.1271979:
-  version "0.0.1271979"
-  resolved "https://registry.yarnpkg.com/devtools-protocol/-/devtools-protocol-0.0.1271979.tgz#d6c24e36c07052ef58e01a23d18be18516145ab2"
-  integrity sha512-Brn6lsYfJl/wwhjbYG7TO8kPiN5FozTWzZJAytjvaUCgX7rvnc3jyxeh2Rne3yTsM7UOOXpY2ttKR009OPnzYw==
+devtools-protocol@^0.0.1273771:
+  version "0.0.1273771"
+  resolved "https://registry.yarnpkg.com/devtools-protocol/-/devtools-protocol-0.0.1273771.tgz#46aeb5db41417e2c2ad3d8367c598c975290b1a5"
+  integrity sha512-QDbb27xcTVReQQW/GHJsdQqGKwYBE7re7gxehj467kKP2DKuYBUj6i2k5LRiAC66J1yZG/9gsxooz/s9pcm0Og==
 
 di@^0.0.1:
   version "0.0.1"
@@ -13187,10 +13187,10 @@ handle-thing@^2.0.0:
   resolved "https://registry.yarnpkg.com/handle-thing/-/handle-thing-2.0.1.tgz#857f79ce359580c340d43081cc648970d0bb234e"
   integrity sha512-9Qn4yBxelxoh2Ow62nP+Ka/kMnOXRi8BXnRaUwezLNhqelnN49xKz4F/dPP8OYLxLxq6JDtZb2i9XznUQbNPTg==
 
-happy-dom@^13.10.0:
-  version "13.10.0"
-  resolved "https://registry.yarnpkg.com/happy-dom/-/happy-dom-13.10.0.tgz#f45b10bb7712a196402652de0c1ce7d5b801642f"
-  integrity sha512-e5PUMmcJjwuIBTChTGa1cgzKJnPPaMLFXFRYDnFv1j5hdbZ25F5lj+nYOVB4Nx7RaHLkTvn6Il6cFyPAff1L2w==
+happy-dom@^13.10.1:
+  version "13.10.1"
+  resolved "https://registry.yarnpkg.com/happy-dom/-/happy-dom-13.10.1.tgz#bfaf147704055e7c2feb4069adc899a838588307"
+  integrity sha512-9GZLEFvQL5EgfJX2zcBgu1nsPUn98JF/EiJnSfQbdxI6YEQGqpd09lXXxOmYonRBIEFz9JlGCOiPflDzgS1p8w==
   dependencies:
     entities "^4.5.0"
     webidl-conversions "^7.0.0"

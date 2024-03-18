@@ -89,7 +89,7 @@
     "@porsche-design-system/shared": "0.0.0",
     "change-case": "^5.4.3",
     "concurrently": "^8.2.2",
-    "devtools-protocol": "^0.0.1271979",
+    "devtools-protocol": "^0.0.1273771",
     "globby": "^14.0.1",
     "jsdom": "^24.0.0",
     "local-web-server": "^5.3.1",
