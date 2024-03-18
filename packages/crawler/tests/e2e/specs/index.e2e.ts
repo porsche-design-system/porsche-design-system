@@ -1,18 +1,18 @@
-import { test, expect } from '@playwright/test';
+import { expect, test } from '@playwright/test';
 import { setContentWithDesignSystem } from '../helpers';
 import { evaluatePage } from '../../../src/evaluate-page';
 import type { ConsumedTagNamesForVersionsAndPrefixes } from '../../../src/types';
 import { dependencies } from '../../../package.json';
 
 // for stable tests that don't need adjustment on every release we replace the version with `latest`
-const replaceCurrentVersion = (
-  data: ConsumedTagNamesForVersionsAndPrefixes
-): ConsumedTagNamesForVersionsAndPrefixes => {
-  return Object.fromEntries(
-    Object.entries(data).map(([key, value]) => [
-      key.replace(dependencies['@porsche-design-system/components-js'], 'latest'),
-      value,
-    ])
+const replaceCurrentVersion = (data: ConsumedTagNamesForVersionsAndPrefixes): string => {
+  return JSON.stringify(
+    Object.fromEntries(
+      Object.entries(data).map(([key, value]) => [
+        key.replace(dependencies['@porsche-design-system/components-js'], 'latest'),
+        value,
+      ])
+    )
   );
 };
 
