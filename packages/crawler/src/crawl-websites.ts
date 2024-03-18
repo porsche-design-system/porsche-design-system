@@ -1,4 +1,4 @@
-import { type Browser } from '@playwright/test';
+import { type Browser, type Page } from '@playwright/test';
 import { evaluatePage } from './evaluate-page';
 import {
   getAggregatedConsumedTagNames,
@@ -11,21 +11,7 @@ import { TagNameData } from './types';
 import { stringifyObject } from './utils';
 import { crawlerConfig } from '../constants';
 
-export const crawlWebsite = async (browser: Browser, websiteUrl: string): Promise<TagNameData[]> => {
-  // at least porsche finder seems to check the headers to block scrapers, setting the UA solves this
-  const context = await browser.newContext({
-    userAgent:
-      'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36',
-  });
-
-  // Create a new page in the browser context and navigate to target URL
-  const page = await context.newPage();
-
-  await page.setViewportSize({
-    width: crawlerConfig.viewport.width,
-    height: crawlerConfig.viewport.height,
-  });
-
+export const crawlWebsite = async (page: Page, websiteUrl: string): Promise<TagNameData[]> => {
   await page.goto(websiteUrl, {
     waitUntil: 'networkidle',
   });
@@ -65,8 +51,6 @@ export const crawlWebsite = async (browser: Browser, websiteUrl: string): Promis
     })
   );
 
-  await page.close();
-
   return pdsCrawlerRawDataWithoutVersionsAndPrefixes;
 };
 
@@ -74,8 +58,22 @@ export const crawlWebsites = async (browser: Browser, customerWebsites: string[]
   // data for all websites
   let generalRawData = [] as TagNameData[];
 
+  // at least porsche finder seems to check the headers to block scrapers, setting the UA solves this
+  const context = await browser.newContext({
+    userAgent:
+      'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36',
+  });
+
+  // Create a new page in the browser context and navigate to target URL
+  const page = await context.newPage();
+
+  await page.setViewportSize({
+    width: crawlerConfig.viewport.width,
+    height: crawlerConfig.viewport.height,
+  });
+
   for (const websiteUrl of customerWebsites) {
-    const pdsCrawlerRawDataWithoutVersionsAndPrefixes = await crawlWebsite(browser, websiteUrl);
+    const pdsCrawlerRawDataWithoutVersionsAndPrefixes = await crawlWebsite(page, websiteUrl);
 
     // collecting data for general report (over all websites)
     generalRawData.concat(pdsCrawlerRawDataWithoutVersionsAndPrefixes);
@@ -85,6 +83,8 @@ export const crawlWebsites = async (browser: Browser, customerWebsites: string[]
 
   // creating general report (over all websites)
   const aggregatedConsumedTagNamesAllWebsites = getAggregatedConsumedTagNames(generalRawData);
+
+  await page.close();
 
   return writeGeneralReport(
     stringifyObject({
