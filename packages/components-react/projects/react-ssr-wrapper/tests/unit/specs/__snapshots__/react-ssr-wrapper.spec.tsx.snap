@@ -5172,7 +5172,7 @@ exports[`manual test cases > should pass internal props correctly to p-text-fiel
 }
 .root {
   display: flex;
-  gap: 4px;
+  gap: 0;
   width: 100%;
   padding: 0;
   margin: 0;
@@ -5204,14 +5204,9 @@ exports[`manual test cases > should pass internal props correctly to p-text-fiel
   border: 0;
 }
 .label {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0,0,0,0);
   white-space: nowrap;
+  text-indent: -999999px;
+  overflow: hidden;
   order: 0;
 }
 .icon {
@@ -5516,7 +5511,7 @@ img {
 }
 .root {
   display: flex;
-  gap: 4px;
+  gap: 0;
   width: 100%;
   padding: 0;
   margin: 0;
@@ -5548,14 +5543,9 @@ img {
   border: 0;
 }
 .label {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0,0,0,0);
   white-space: nowrap;
+  text-indent: -999999px;
+  overflow: hidden;
   order: 0;
 }
 .icon {
@@ -6135,7 +6125,7 @@ img {
 }
 .root {
   display: flex;
-  gap: 4px;
+  gap: 0;
   width: 100%;
   padding: 0;
   margin: 0;
@@ -6167,14 +6157,9 @@ img {
   border: 0;
 }
 .label {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0,0,0,0);
   white-space: nowrap;
+  text-indent: -999999px;
+  overflow: hidden;
   order: 0;
 }
 .icon {
@@ -6462,15 +6447,10 @@ exports[`should render dsr component for PButtonPure 1`] = `
   border: 0;
 }
 .label {
-  position: relative;
-  width: auto;
-  height: auto;
-  padding: 0;
-  margin: 0;
-  overflow: visible;
-  clip: auto;
   white-space: inherit;
+  text-indent: 0;
   z-index: 1;
+  overflow: visible;
   order: 0;
 }
 .icon {
@@ -7545,7 +7525,7 @@ dialog::backdrop {
 }
 .root {
   display: flex;
-  gap: 4px;
+  gap: 0;
   width: 100%;
   padding: 0;
   margin: 0;
@@ -7577,14 +7557,9 @@ dialog::backdrop {
   border: 0;
 }
 .label {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0,0,0,0);
   white-space: nowrap;
+  text-indent: -999999px;
+  overflow: hidden;
   order: 0;
 }
 .icon {
@@ -7839,7 +7814,7 @@ dialog::backdrop {
 }
 .root {
   display: flex;
-  gap: 4px;
+  gap: 0;
   width: 100%;
   padding: 0;
   margin: 0;
@@ -7871,14 +7846,9 @@ dialog::backdrop {
   border: 0;
 }
 .label {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0,0,0,0);
   white-space: nowrap;
+  text-indent: -999999px;
+  overflow: hidden;
   order: 0;
 }
 .icon {
@@ -8168,15 +8138,10 @@ exports[`should render dsr component for PFlyoutNavigationItem 1`] = `
   border: 0;
 }
 .label {
-  position: relative;
-  width: auto;
-  height: auto;
-  padding: 0;
-  margin: 0;
-  overflow: visible;
-  clip: auto;
   white-space: inherit;
+  text-indent: 0;
   z-index: 1;
+  overflow: visible;
   order: -1;
 }
 .icon {
@@ -8299,7 +8264,7 @@ img:dir(rtl) {
 }
 .root {
   display: flex;
-  gap: 4px;
+  gap: 0;
   width: 100%;
   padding: 0;
   margin: 0;
@@ -8331,14 +8296,9 @@ img:dir(rtl) {
   border: 0;
 }
 .label {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0,0,0,0);
   white-space: nowrap;
+  text-indent: -999999px;
+  overflow: hidden;
   order: 0;
 }
 .icon {
@@ -8805,7 +8765,7 @@ img {
 }
 .root {
   display: flex;
-  gap: 4px;
+  gap: 0;
   width: 100%;
   padding: 0;
   margin: 0;
@@ -8837,14 +8797,9 @@ img {
   border: 0;
 }
 .label {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0,0,0,0);
   white-space: nowrap;
+  text-indent: -999999px;
+  overflow: hidden;
   order: 0;
 }
 .icon {
@@ -9098,15 +9053,10 @@ exports[`should render dsr component for PLinkPure 1`] = `
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 .label {
-  position: relative;
-  width: auto;
-  height: auto;
-  padding: 0;
-  margin: 0;
-  overflow: visible;
-  clip: auto;
   white-space: inherit;
+  text-indent: 0;
   z-index: 1;
+  overflow: visible;
   order: 0;
 }
 .icon {
@@ -9975,7 +9925,7 @@ slot[name="header"] {
 }
 .root {
   display: flex;
-  gap: 4px;
+  gap: 0;
   width: 100%;
   padding: 0;
   margin: 0;
@@ -10007,14 +9957,9 @@ slot[name="header"] {
   border: 0;
 }
 .label {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0,0,0,0);
   white-space: nowrap;
+  text-indent: -999999px;
+  overflow: hidden;
   order: 0;
 }
 .icon {
@@ -10334,7 +10279,7 @@ h2 {
 }
 .root {
   display: flex;
-  gap: 4px;
+  gap: 0;
   width: 100%;
   padding: 0;
   margin: 0;
@@ -10366,14 +10311,9 @@ h2 {
   border: 0;
 }
 .label {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0,0,0,0);
   white-space: nowrap;
+  text-indent: -999999px;
+  overflow: hidden;
   order: 0;
 }
 .icon {
