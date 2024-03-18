@@ -95,7 +95,7 @@
     "local-web-server": "^5.3.1",
     "mime": "^3.0.0",
     "pdf-to-png-converter": "^3.1.0",
-    "sass": "^1.71.1",
+    "sass": "^1.72.0",
     "terser-webpack-plugin": "^5.3.10",
     "tsx": "^4.7.1",
     "typescript": "~5.4.2",
