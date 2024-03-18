@@ -75,8 +75,6 @@ const getAllConsumedProperties = <
 ): Promise<Properties> => {
   // WARNING: Cannot pull out complexity in functions here because it's executed inside evaluate (browser context)
   return locator.evaluate((pComponentElement: PComponentElement, allPdsPropertiesForComponentName) => {
-    // we consider this element as PDS Component, therefore we need this alias here
-
     let properties = {};
 
     for (const propName of allPdsPropertiesForComponentName) {
