@@ -14,6 +14,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ### [Unreleased]
 
+#### Fixed
+
+- `Select`, `Multi-Select`: Cropping issues of select dropdown when used inside `Table` component
+  ([#3114](https://github.com/porsche-design-system/porsche-design-system/pull/3114))
+
 ### [3.13.0] - 2024-03-11
 
 ### [3.13.0-rc.2] - 2024-03-11

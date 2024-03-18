@@ -84,6 +84,13 @@ represent the selected option values.
   <PlaygroundButton name="Remove last option" @click="amountOfOptions--"></PlaygroundButton>
 </Playground>
 
+## Within table
+
+When a `p-multi-select` is used within the `p-table` component the dropdown will automatically switch to a native
+popover behavior. This will prevent the dropdown of the `p-multi-select` from being cut off when it overlaps with the
+component's scroll container. The `p-multi-select` will be automatically closed when the user scrolls within the table.
+Have a look at our [advanced example page](components/table/examples#advanced-table) of `p-table` component.
+
 <script lang="ts">
 import Vue from 'vue';
 import { ref, onMounted } from 'vue';

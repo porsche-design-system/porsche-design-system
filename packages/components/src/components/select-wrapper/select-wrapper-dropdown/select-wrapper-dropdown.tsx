@@ -2,11 +2,12 @@ import { Component, Element, h, Host, type JSX, Prop, State } from '@stencil/cor
 import {
   addNativePopoverScrollAndResizeListeners,
   attachComponentCss,
+  detectNativePopoverCase,
   determineDropdownDirection,
   findClosestComponent,
   getFilterInputAriaAttributes,
-  getHasNativePopoverSupport,
   getListAriaAttributes,
+  getNativePopoverDropdownPosition,
   getOptionAriaAttributes,
   getPrefixedTagNames,
   getSelectDropdownButtonAriaAttributes,
@@ -42,7 +43,6 @@ import {
   setHighlightedOptionMaps,
   setLastHighlightedOptionMaps,
   setSelectedOptionMaps,
-  updateNativePopoverSelectStyles,
 } from './select-wrapper-dropdown-utils';
 import type { Theme } from '../../../types';
 import { getComponentCss } from './select-wrapper-dropdown-styles';
@@ -73,7 +73,7 @@ export class SelectWrapperDropdown {
 
   private inputElement: HTMLInputElement;
   private listElement: HTMLUListElement;
-  private isNativePopover: boolean = false;
+  private isNativePopoverCase: boolean = false;
   private parentTableElement: HTMLElement;
   private popoverElement: HTMLElement;
 
@@ -93,14 +93,20 @@ export class SelectWrapperDropdown {
       // therefore we do it here via attribute
       ['hidden', 'disabled', 'selected']
     );
-    this.detectNativePopoverCase();
+    this.isNativePopoverCase = detectNativePopoverCase(this.host, true);
+    if (this.isNativePopoverCase) {
+      this.parentTableElement = findClosestComponent(
+        (this.host.getRootNode() as ShadowRoot).host as HTMLElement,
+        'pTable'
+      );
+    }
   }
 
   public componentDidRender(): void {
     if (this.isOpen) {
       handleScroll(this.listElement, getHighlightedOptionMapIndex(this.optionMaps));
 
-      if (this.isNativePopover) {
+      if (this.isNativePopoverCase) {
         addNativePopoverScrollAndResizeListeners(this.host, this.parentTableElement, this.popoverElement, () => {
           this.setDropdownVisibility('hide');
         });
@@ -133,7 +139,7 @@ export class SelectWrapperDropdown {
       this.state,
       this.disabled,
       this.filter,
-      this.isNativePopover,
+      this.isNativePopoverCase,
       this.theme
     );
 
@@ -205,7 +211,7 @@ export class SelectWrapperDropdown {
             </div>
           ),
           <div
-            {...(this.isNativePopover && {
+            {...(this.isNativePopoverCase && {
               popover: 'auto',
               class: 'popover',
               ...(this.popoverElement?.matches(':popover-open') && {
@@ -293,9 +299,14 @@ export class SelectWrapperDropdown {
     this.isOpen = getDropdownVisibility(this.isOpen, type, this.filter && this.resetFilter);
     this.onOpenChange(this.isOpen);
 
-    if (this.isNativePopover) {
+    if (this.isNativePopoverCase) {
       if (this.isOpen) {
-        updateNativePopoverSelectStyles(this.host, this.optionMaps, this.popoverElement, this.direction);
+        getNativePopoverDropdownPosition(
+          this.host,
+          getAmountOfVisibleOptionsAndOptgroups(this.optionMaps),
+          this.popoverElement,
+          this.direction
+        );
         this.popoverElement.showPopover();
       } else {
         this.popoverElement.hidePopover();
@@ -412,17 +423,5 @@ export class SelectWrapperDropdown {
 
     // in case input is focused via tab instead of click
     this.setDropdownVisibility('show');
-  };
-
-  private detectNativePopoverCase = (): void => {
-    if (getHasNativePopoverSupport()) {
-      this.parentTableElement = findClosestComponent(
-        (this.host.getRootNode() as ShadowRoot).host as HTMLElement,
-        'pTable'
-      );
-      if (!!this.parentTableElement) {
-        this.isNativePopover = true;
-      }
-    }
   };
 }

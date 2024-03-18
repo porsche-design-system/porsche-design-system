@@ -1,5 +1,5 @@
 import { expect, type Page, test } from '@playwright/test';
-import { openAllSelectWrapper, setNativePopoversToAllowMultipleOpen, setContentWithDesignSystem } from '../../helpers';
+import { openAllSelect, setNativePopoversToAllowMultipleOpen, setContentWithDesignSystem } from '../../helpers';
 import { viewportWidthXL } from '@porsche-design-system/shared/testing/playwright.vrt.config';
 
 const component = 'select-wrapper';
@@ -70,8 +70,8 @@ const scenario = async (page: Page): Promise<void> => {
   });
 
   await page.setViewportSize({ width: viewportWidthXL, height: 2500 });
-  await setNativePopoversToAllowMultipleOpen(page);
-  await openAllSelectWrapper(page);
+  await setNativePopoversToAllowMultipleOpen(page, 'p-select-wrapper');
+  await openAllSelect(page, 'p-select-wrapper', true);
 };
 
 // executed in Chrome only

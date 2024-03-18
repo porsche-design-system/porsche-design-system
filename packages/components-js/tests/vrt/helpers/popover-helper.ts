@@ -1,4 +1,5 @@
 import { type Page } from '@playwright/test';
+import type { TagName } from '@porsche-design-system/shared';
 
 export const openAllPopover = async (page: Page): Promise<void> => {
   await page.evaluate(() => {
@@ -9,16 +10,16 @@ export const openAllPopover = async (page: Page): Promise<void> => {
   });
 };
 
-export const setNativePopoversToAllowMultipleOpen = async (page: Page): Promise<void> => {
-  await page.evaluate(() => {
-    document.querySelectorAll('p-popover, p-select-wrapper').forEach((el) => {
+export const setNativePopoversToAllowMultipleOpen = async (page: Page, tagName: TagName): Promise<void> => {
+  await page.evaluate((tagName) => {
+    document.querySelectorAll(tagName).forEach((el) => {
       const nativePopover: HTMLElement | undefined =
-        el.tagName === 'P-POPOVER'
-          ? el.shadowRoot.querySelector('[popover="auto"]')
-          : el.shadowRoot.querySelector('p-select-wrapper-dropdown').shadowRoot.querySelector('[popover="auto"]');
+        el.tagName === 'P-SELECT-WRAPPER'
+          ? el.shadowRoot.querySelector('p-select-wrapper-dropdown').shadowRoot.querySelector('[popover="auto"]')
+          : el.shadowRoot.querySelector('[popover="auto"]');
       if (nativePopover?.popover) {
         nativePopover.popover = 'manual'; // Set to manual to allow multiple popovers to be open at the same time
       }
     });
-  });
+  }, tagName);
 };

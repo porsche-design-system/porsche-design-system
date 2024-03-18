@@ -1,5 +1,5 @@
-import type { DropdownDirectionInternal, SelectWrapperDropdownDirection } from '../select-wrapper/select-wrapper-utils';
-import { determineDropdownDirection, getHTMLElements, getTagName, hasAttribute } from '../../../utils';
+import type { DropdownDirectionInternal } from '../select-wrapper/select-wrapper-utils';
+import { getHTMLElements, getTagName, hasAttribute } from '../../../utils';
 
 /**
  * Handles scrolling within the list to ensure that the highlighted item is always visible.
@@ -160,20 +160,4 @@ export const getDropdownVisibility = (
   } else {
     return isOpen;
   }
-};
-
-export const updateNativePopoverSelectStyles = (
-  host: HTMLElement,
-  optionMaps: OptionMap[],
-  nativePopover: HTMLElement,
-  direction: SelectWrapperDropdownDirection
-): void => {
-  const { left, top, width, height } = host.getBoundingClientRect();
-  const isDirectionDown =
-    direction === 'down' ||
-    (direction === 'auto' &&
-      determineDropdownDirection(host, getAmountOfVisibleOptionsAndOptgroups(optionMaps)) === 'down');
-  nativePopover.style.left = `${left + window.scrollX}px`;
-  nativePopover.style.top = `${top + window.scrollY + (isDirectionDown ? height : 0)}px`;
-  nativePopover.style.width = `${width}px`;
 };
