@@ -36,7 +36,7 @@ export const crawlWebsite = async (page: Page, websiteUrl: string): Promise<TagN
   // aggregated data without versions and prefixes
   const aggregatedConsumedTagNames = getAggregatedConsumedTagNames(pdsCrawlerRawDataWithoutVersionsAndPrefixes);
 
-  await writeWebsiteReport(
+  writeWebsiteReport(
     websiteUrl,
     stringifyObject({
       url: websiteUrl,

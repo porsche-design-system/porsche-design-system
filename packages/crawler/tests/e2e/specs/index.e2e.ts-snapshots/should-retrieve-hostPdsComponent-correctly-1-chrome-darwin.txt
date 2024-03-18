@@ -1,1 +1,0 @@
-{"latest":{"":[{"p-button":{"properties":{"type":"submit","disabled":false,"loading":false,"variant":"primary","icon":"none","hideLabel":false,"theme":"light"},"children":"Test button","hostPdsComponent":null}}]}}
