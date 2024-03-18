@@ -94,9 +94,13 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
 }
 .label {
   position: absolute;
-  inset: 0;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
   white-space: nowrap;
-  text-indent: -999999px;
   order: -1;
 }
 .icon {
@@ -134,9 +138,13 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   }
   .label {
     position: relative;
-    inset: auto;
+    width: auto;
+    height: auto;
+    padding: 0;
+    margin: 0;
+    overflow: visible;
+    clip: auto;
     white-space: inherit;
-    text-indent: 0;
     z-index: 1;
     order: 0;
   }
@@ -154,9 +162,13 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   }
   .label {
     position: absolute;
-    inset: 0;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
     white-space: nowrap;
-    text-indent: -999999px;
     order: -1;
   }
 }
@@ -173,9 +185,13 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   }
   .label {
     position: relative;
-    inset: auto;
+    width: auto;
+    height: auto;
+    padding: 0;
+    margin: 0;
+    overflow: visible;
+    clip: auto;
     white-space: inherit;
-    text-indent: 0;
     z-index: 1;
     order: 0;
   }
@@ -193,9 +209,13 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   }
   .label {
     position: absolute;
-    inset: 0;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
     white-space: nowrap;
-    text-indent: -999999px;
     order: -1;
   }
 }
@@ -212,9 +232,13 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   }
   .label {
     position: relative;
-    inset: auto;
+    width: auto;
+    height: auto;
+    padding: 0;
+    margin: 0;
+    overflow: visible;
+    clip: auto;
     white-space: inherit;
-    text-indent: 0;
     z-index: 1;
     order: 0;
   }
@@ -287,9 +311,13 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
 }
 .label {
   position: absolute;
-  inset: 0;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
   white-space: nowrap;
-  text-indent: -999999px;
   order: 0;
 }
 .icon {
@@ -322,9 +350,13 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   }
   .label {
     position: relative;
-    inset: auto;
+    width: auto;
+    height: auto;
+    padding: 0;
+    margin: 0;
+    overflow: visible;
+    clip: auto;
     white-space: inherit;
-    text-indent: 0;
     z-index: 1;
   }
 }
@@ -336,9 +368,13 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   }
   .label {
     position: absolute;
-    inset: 0;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
     white-space: nowrap;
-    text-indent: -999999px;
   }
 }
 
@@ -349,9 +385,13 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   }
   .label {
     position: relative;
-    inset: auto;
+    width: auto;
+    height: auto;
+    padding: 0;
+    margin: 0;
+    overflow: visible;
+    clip: auto;
     white-space: inherit;
-    text-indent: 0;
     z-index: 1;
   }
 }
@@ -363,9 +403,13 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   }
   .label {
     position: absolute;
-    inset: 0;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
     white-space: nowrap;
-    text-indent: -999999px;
   }
 }
 
@@ -376,9 +420,13 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   }
   .label {
     position: relative;
-    inset: auto;
+    width: auto;
+    height: auto;
+    padding: 0;
+    margin: 0;
+    overflow: visible;
+    clip: auto;
     white-space: inherit;
-    text-indent: 0;
     z-index: 1;
   }
 }
@@ -450,9 +498,13 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
 }
 .label {
   position: relative;
-  inset: auto;
+  width: auto;
+  height: auto;
+  padding: 0;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
   white-space: inherit;
-  text-indent: 0;
   z-index: 1;
   order: 0;
 }
@@ -546,9 +598,13 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
 }
 .label {
   position: relative;
-  inset: auto;
+  width: auto;
+  height: auto;
+  padding: 0;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
   white-space: inherit;
-  text-indent: 0;
   z-index: 1;
   order: 0;
 }
@@ -642,9 +698,13 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
 }
 .label {
   position: relative;
-  inset: auto;
+  width: auto;
+  height: auto;
+  padding: 0;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
   white-space: inherit;
-  text-indent: 0;
   z-index: 1;
   order: -1;
 }
@@ -738,9 +798,13 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
 }
 .label {
   position: relative;
-  inset: auto;
+  width: auto;
+  height: auto;
+  padding: 0;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
   white-space: inherit;
-  text-indent: 0;
   z-index: 1;
   order: 0;
 }
@@ -834,9 +898,13 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
 }
 .label {
   position: absolute;
-  inset: 0;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
   white-space: nowrap;
-  text-indent: -999999px;
   order: 0;
 }
 .icon {
@@ -929,9 +997,13 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
 }
 .label {
   position: absolute;
-  inset: 0;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
   white-space: nowrap;
-  text-indent: -999999px;
   order: 0;
 }
 .icon {
@@ -1024,9 +1096,13 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
 }
 .label {
   position: relative;
-  inset: auto;
+  width: auto;
+  height: auto;
+  padding: 0;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
   white-space: inherit;
-  text-indent: 0;
   z-index: 1;
   order: 0;
 }
@@ -1112,9 +1188,13 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
 }
 .label {
   position: relative;
-  inset: auto;
+  width: auto;
+  height: auto;
+  padding: 0;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
   white-space: inherit;
-  text-indent: 0;
   z-index: 1;
   order: 0;
 }
@@ -1202,9 +1282,13 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
 }
 .label {
   position: relative;
-  inset: auto;
+  width: auto;
+  height: auto;
+  padding: 0;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
   white-space: inherit;
-  text-indent: 0;
   z-index: 1;
   order: -1;
 }
@@ -1300,9 +1384,13 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
 }
 .label {
   position: relative;
-  inset: auto;
+  width: auto;
+  height: auto;
+  padding: 0;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
   white-space: inherit;
-  text-indent: 0;
   z-index: 1;
   order: -1;
 }
@@ -1399,9 +1487,13 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
 }
 .label {
   position: relative;
-  inset: auto;
+  width: auto;
+  height: auto;
+  padding: 0;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
   white-space: inherit;
-  text-indent: 0;
   z-index: 1;
   order: 0;
 }

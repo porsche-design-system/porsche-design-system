@@ -5205,9 +5205,13 @@ exports[`manual test cases > should pass internal props correctly to p-text-fiel
 }
 .label {
   position: absolute;
-  inset: 0;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
   white-space: nowrap;
-  text-indent: -999999px;
   order: 0;
 }
 .icon {
@@ -5545,9 +5549,13 @@ img {
 }
 .label {
   position: absolute;
-  inset: 0;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
   white-space: nowrap;
-  text-indent: -999999px;
   order: 0;
 }
 .icon {
@@ -6160,9 +6168,13 @@ img {
 }
 .label {
   position: absolute;
-  inset: 0;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
   white-space: nowrap;
-  text-indent: -999999px;
   order: 0;
 }
 .icon {
@@ -6451,9 +6463,13 @@ exports[`should render dsr component for PButtonPure 1`] = `
 }
 .label {
   position: relative;
-  inset: auto;
+  width: auto;
+  height: auto;
+  padding: 0;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
   white-space: inherit;
-  text-indent: 0;
   z-index: 1;
   order: 0;
 }
@@ -7562,9 +7578,13 @@ dialog::backdrop {
 }
 .label {
   position: absolute;
-  inset: 0;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
   white-space: nowrap;
-  text-indent: -999999px;
   order: 0;
 }
 .icon {
@@ -7852,9 +7872,13 @@ dialog::backdrop {
 }
 .label {
   position: absolute;
-  inset: 0;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
   white-space: nowrap;
-  text-indent: -999999px;
   order: 0;
 }
 .icon {
@@ -8145,9 +8169,13 @@ exports[`should render dsr component for PFlyoutNavigationItem 1`] = `
 }
 .label {
   position: relative;
-  inset: auto;
+  width: auto;
+  height: auto;
+  padding: 0;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
   white-space: inherit;
-  text-indent: 0;
   z-index: 1;
   order: -1;
 }
@@ -8304,9 +8332,13 @@ img:dir(rtl) {
 }
 .label {
   position: absolute;
-  inset: 0;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
   white-space: nowrap;
-  text-indent: -999999px;
   order: 0;
 }
 .icon {
@@ -8806,9 +8838,13 @@ img {
 }
 .label {
   position: absolute;
-  inset: 0;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
   white-space: nowrap;
-  text-indent: -999999px;
   order: 0;
 }
 .icon {
@@ -9063,9 +9099,13 @@ exports[`should render dsr component for PLinkPure 1`] = `
 }
 .label {
   position: relative;
-  inset: auto;
+  width: auto;
+  height: auto;
+  padding: 0;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
   white-space: inherit;
-  text-indent: 0;
   z-index: 1;
   order: 0;
 }
@@ -9968,9 +10008,13 @@ slot[name="header"] {
 }
 .label {
   position: absolute;
-  inset: 0;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
   white-space: nowrap;
-  text-indent: -999999px;
   order: 0;
 }
 .icon {
@@ -10323,9 +10367,13 @@ h2 {
 }
 .label {
   position: absolute;
-  inset: 0;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
   white-space: nowrap;
-  text-indent: -999999px;
   order: 0;
 }
 .icon {
