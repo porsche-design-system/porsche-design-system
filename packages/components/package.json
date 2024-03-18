@@ -58,7 +58,7 @@
     "@types/react": "18.2.65",
     "@types/throttle-debounce": "^5.0.2",
     "@types/tinycolor2": "^1.4.6",
-    "@typescript-eslint/eslint-plugin": "^7.2.0",
+    "@typescript-eslint/eslint-plugin": "^7.3.0",
     "@typescript-eslint/parser": "^7.2.0",
     "change-case": "^4.1.2",
     "concurrently": "^8.2.2",
