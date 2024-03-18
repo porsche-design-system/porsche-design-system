@@ -74,9 +74,9 @@ const initPorscheDesignSystem = async (page: Page): Promise<void> => {
   expect(amount).toBe(2);
 };
 
-test('should handle initial phase correctly', async ({ page }) => {
+test('should handle initial phase correctly', async ({ page, browserName }) => {
   // firefox seams to boostrap declarative shadow dom differently in playwright than in real browser
-  test.fixme(({ browserName }) => browserName === 'firefox');
+  test.fixme(browserName === 'firefox');
   await setPageWithContent(page);
   const [buttonWithTemplate, button] = await getButtons(page);
 
