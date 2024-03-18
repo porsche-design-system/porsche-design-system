@@ -7432,8 +7432,8 @@ exports[`should render dsr component for PFlyout 1`] = `
 }
 dialog {
   position: fixed;
-  height: 100vh;
-  max-height: 100vh;
+  height: 100dvh;
+  max-height: 100dvh;
   margin: 0;
   padding: 0;
   border: 0;
@@ -7698,8 +7698,8 @@ exports[`should render dsr component for PFlyoutNavigation 1`] = `
 }
 dialog {
   position: fixed;
-  height: 100vh;
-  max-height: 100vh;
+  height: 100dvh;
+  max-height: 100dvh;
   margin: 0;
   padding: 0;
   border: 0;
