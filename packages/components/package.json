@@ -67,7 +67,7 @@
     "eslint": "^8.57.0",
     "eslint-plugin-fp": "^2.3.0",
     "eslint-plugin-prefer-arrow": "^1.2.3",
-    "eslint-plugin-react": "^7.34.0",
+    "eslint-plugin-react": "^7.34.1",
     "globby": "^14.0.1",
     "globby-legacy": "npm:globby@^11.0.4",
     "imask": "7.1.3",
