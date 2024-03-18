@@ -13187,10 +13187,10 @@ handle-thing@^2.0.0:
   resolved "https://registry.yarnpkg.com/handle-thing/-/handle-thing-2.0.1.tgz#857f79ce359580c340d43081cc648970d0bb234e"
   integrity sha512-9Qn4yBxelxoh2Ow62nP+Ka/kMnOXRi8BXnRaUwezLNhqelnN49xKz4F/dPP8OYLxLxq6JDtZb2i9XznUQbNPTg==
 
-happy-dom@^13.8.2:
-  version "13.8.2"
-  resolved "https://registry.yarnpkg.com/happy-dom/-/happy-dom-13.8.2.tgz#ab6d74cd0f712403d07d3b88dac6baa32659c346"
-  integrity sha512-u9KxyeQNIzkJDR2iCitKeS5Uy0YUv5eOntpO8e7ZzbDVv4kP5Y77Zo2LnZitwMrss/1pY2Uc2e5qOVGkiKE5Gg==
+happy-dom@^13.10.0:
+  version "13.10.0"
+  resolved "https://registry.yarnpkg.com/happy-dom/-/happy-dom-13.10.0.tgz#f45b10bb7712a196402652de0c1ce7d5b801642f"
+  integrity sha512-e5PUMmcJjwuIBTChTGa1cgzKJnPPaMLFXFRYDnFv1j5hdbZ25F5lj+nYOVB4Nx7RaHLkTvn6Il6cFyPAff1L2w==
   dependencies:
     entities "^4.5.0"
     webidl-conversions "^7.0.0"
