@@ -60,7 +60,7 @@
     "@playwright/test": "1.42.1",
     "@types/prismjs": "^1.26.3",
     "@typescript-eslint/eslint-plugin": "^7.3.0",
-    "@typescript-eslint/parser": "^7.2.0",
+    "@typescript-eslint/parser": "^7.3.0",
     "@vue/cli-plugin-babel": "^4.5.19",
     "@vue/cli-plugin-router": "^4.5.19",
     "@vue/cli-plugin-typescript": "^4.5.19",
