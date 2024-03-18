@@ -76,7 +76,7 @@ export const crawlWebsites = async (browser: Browser, customerWebsites: string[]
     const pdsCrawlerRawDataWithoutVersionsAndPrefixes = await crawlWebsite(page, websiteUrl);
 
     // collecting data for general report (over all websites)
-    generalRawData.concat(pdsCrawlerRawDataWithoutVersionsAndPrefixes);
+    generalRawData = generalRawData.concat(pdsCrawlerRawDataWithoutVersionsAndPrefixes);
   }
 
   console.log('Aggregating general data..');
