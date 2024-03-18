@@ -6,7 +6,7 @@ on:
         required: true
 name: 'Build and Test'
 env:
-  PDS_PLAYWRIGHT_DOCKER_IMAGE: ghcr.io/porsche-design-system/porsche-design-system/playwright:v1.42.1-focal-1
+  PDS_PLAYWRIGHT_DOCKER_IMAGE: ghcr.io/porsche-design-system/porsche-design-system/playwright:v1.41.2-focal-test32
 jobs:
   assets:
     name: 'Assets'
@@ -167,7 +167,7 @@ jobs:
       - name: 'E2E Test (DOM)'
         uses: ./.github/actions/docker-run-playwright
         with:
-          entrypoint: run-test-e2e-playwright
+          entrypoint: run-test-e2e
           args: --components-js:dom
   components-js-e2e-playwright-chrome:
     name: 'Components JS E2E (Chrome)'
@@ -189,7 +189,7 @@ jobs:
       - name: 'E2E Test'
         uses: ./.github/actions/docker-run-playwright
         with:
-          entrypoint: run-test-e2e-playwright
+          entrypoint: run-test-e2e
           args: --components-js:chrome:${{ matrix.shardIndex }}/${{ matrix.shardTotal }}
   components-js-e2e-playwright-firefox:
     name: 'Components JS E2E (Firefox)'
@@ -211,7 +211,7 @@ jobs:
       - name: 'E2E Test'
         uses: ./.github/actions/docker-run-playwright
         with:
-          entrypoint: run-test-e2e-playwright
+          entrypoint: run-test-e2e
           args: --components-js:firefox:${{ matrix.shardIndex }}/${{ matrix.shardTotal }}
   components-js-e2e-playwright-safari:
     name: 'Components JS E2E (Safari)'
@@ -233,7 +233,7 @@ jobs:
       - name: 'E2E Test'
         uses: ./.github/actions/docker-run-playwright
         with:
-          entrypoint: run-test-e2e-playwright
+          entrypoint: run-test-e2e
           args: --components-js:safari:${{ matrix.shardIndex }}/${{ matrix.shardTotal }}
   components-js-vrt-playwright-chrome:
     name: 'Components JS VRT (Chrome)'
@@ -316,7 +316,7 @@ jobs:
       - name: 'E2E Test'
         uses: ./.github/actions/docker-run-playwright
         with:
-          entrypoint: run-test-e2e-playwright
+          entrypoint: run-test-e2e
           args: --components-angular
       - name: 'VRT Test'
         uses: ./.github/actions/docker-run-playwright
@@ -359,7 +359,7 @@ jobs:
       - name: 'E2E Test'
         uses: ./.github/actions/docker-run-playwright
         with:
-          entrypoint: run-test-e2e-playwright
+          entrypoint: run-test-e2e
           args: --components-react
       - name: 'VRT Test components-react'
         uses: ./.github/actions/docker-run-playwright
@@ -392,7 +392,7 @@ jobs:
       - name: 'E2E Test components-react/remix'
         uses: ./.github/actions/docker-run-playwright
         with:
-          entrypoint: run-test-e2e-playwright
+          entrypoint: run-test-e2e
           args: --components-react/remix
       - name: 'VRT Test components-react/remix'
         uses: ./.github/actions/docker-run-playwright
@@ -430,7 +430,7 @@ jobs:
       - name: 'E2E Test components-react/nextjs'
         uses: ./.github/actions/docker-run-playwright
         with:
-          entrypoint: run-test-e2e-playwright
+          entrypoint: run-test-e2e
           args: --components-react/nextjs
       - name: 'VRT Test components-react/nextjs'
         uses: ./.github/actions/docker-run-playwright
@@ -478,7 +478,7 @@ jobs:
       - name: 'E2E Test components-vue'
         uses: ./.github/actions/docker-run-playwright
         with:
-          entrypoint: run-test-e2e-playwright
+          entrypoint: run-test-e2e
           args: --components-vue
       - name: 'VRT Test components-vue'
         uses: ./.github/actions/docker-run-playwright
@@ -491,8 +491,8 @@ jobs:
         with:
           name: components-vue-vrt-regression
           path: ./packages/components-vue/tests/vrt/results
-  crawler-e2e-puppeteer:
-    name: 'Crawler E2E (Puppeteer)'
+  crawler-e2e:
+    name: 'Crawler E2E'
     runs-on: ubuntu-latest
     steps:
       - name: 'Checkout'
@@ -503,7 +503,7 @@ jobs:
           github-token: ${{ secrets.github-token }}
       - name: 'Build assets, component-meta, components, components-js, shared and utilities'
         uses: ./.github/actions/build-components-js
-      - name: 'E2E Test (Puppeteer)'
+      - name: 'E2E Test'
         uses: ./.github/actions/docker-run-playwright
         with:
           entrypoint: run-test-e2e
@@ -625,7 +625,7 @@ jobs:
       - name: 'E2E Test'
         uses: ./.github/actions/docker-run-playwright
         with:
-          entrypoint: run-test-e2e-playwright
+          entrypoint: run-test-e2e
           args: --storefront:${{ matrix.shardIndex }}/${{ matrix.shardTotal }}
       - name: 'E2E Regression'
         if: failure()
@@ -663,7 +663,7 @@ jobs:
       - name: 'E2E Test'
         uses: ./.github/actions/docker-run-playwright
         with:
-          entrypoint: run-test-e2e-playwright
+          entrypoint: run-test-e2e
           args: --storefront:sitemap
       - name: 'E2E Regression'
         if: failure()
