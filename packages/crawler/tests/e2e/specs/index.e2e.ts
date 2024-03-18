@@ -5,16 +5,18 @@ import type { ConsumedTagNamesForVersionsAndPrefixes } from '../../../src/types'
 import { dependencies } from '../../../package.json';
 
 // for stable tests that don't need adjustment on every release we replace the version with `latest`
-const replaceCurrentVersion = (data: ConsumedTagNamesForVersionsAndPrefixes): string => {
-  return JSON.stringify(
-    Object.fromEntries(
-      Object.entries(data).map(([key, value]) => [
-        key.replace(dependencies['@porsche-design-system/components-js'], 'latest'),
-        value,
-      ])
-    )
+function replaceCurrentVersion(data: ConsumedTagNamesForVersionsAndPrefixes): ConsumedTagNamesForVersionsAndPrefixes {
+  return Object.fromEntries(
+    Object.entries(data).map(([key, value]) => [
+      key.replace(dependencies['@porsche-design-system/components-js'], 'latest'),
+      value,
+    ])
   );
-};
+}
+
+function prepareCrawlerDataForSnapshot(data: ConsumedTagNamesForVersionsAndPrefixes): string {
+  return JSON.stringify(data, null, 2);
+}
 
 test('should retrieve children and hostPdsComponent correctly', async ({ page }) => {
   await setContentWithDesignSystem(page, {
@@ -28,7 +30,7 @@ test('should retrieve children and hostPdsComponent correctly', async ({ page })
   });
   const crawlerData = await evaluatePage(page);
 
-  expect(replaceCurrentVersion(crawlerData)).toMatchSnapshot();
+  expect(prepareCrawlerDataForSnapshot(replaceCurrentVersion(crawlerData))).toMatchSnapshot();
 });
 
 test('should retrieve children correctly and put stripped content', async ({ page }) => {
@@ -45,7 +47,7 @@ test('should retrieve children correctly and put stripped content', async ({ pag
   });
   const crawlerData = await evaluatePage(page);
 
-  expect(replaceCurrentVersion(crawlerData)).toMatchSnapshot();
+  expect(prepareCrawlerDataForSnapshot(replaceCurrentVersion(crawlerData))).toMatchSnapshot();
 });
 
 test('should retrieve hostPdsComponent correctly', async ({ page }) => {
@@ -54,7 +56,7 @@ test('should retrieve hostPdsComponent correctly', async ({ page }) => {
   });
   const crawlerData = await evaluatePage(page);
 
-  expect(replaceCurrentVersion(crawlerData)).toMatchSnapshot();
+  expect(prepareCrawlerDataForSnapshot(replaceCurrentVersion(crawlerData))).toMatchSnapshot();
 });
 
 test('should generate raw data correctly for 1 version and 2 prefixes', async ({ page }) => {
@@ -66,7 +68,7 @@ test('should generate raw data correctly for 1 version and 2 prefixes', async ({
   });
   const crawlerData = await evaluatePage(page);
 
-  expect(replaceCurrentVersion(crawlerData)).toMatchSnapshot();
+  expect(prepareCrawlerDataForSnapshot(replaceCurrentVersion(crawlerData))).toMatchSnapshot();
 });
 
 test('should generate raw data correctly for 2 versions and 2 prefixes', async ({ page }) => {
@@ -81,7 +83,7 @@ test('should generate raw data correctly for 2 versions and 2 prefixes', async (
   });
   const crawlerData = await evaluatePage(page);
 
-  expect(replaceCurrentVersion(crawlerData)).toMatchSnapshot();
+  expect(prepareCrawlerDataForSnapshot(replaceCurrentVersion(crawlerData))).toMatchSnapshot();
 });
 
 test('should retrieve object value from string correctly', async ({ page }) => {
@@ -90,5 +92,5 @@ test('should retrieve object value from string correctly', async ({ page }) => {
   });
   const crawlerData = await evaluatePage(page);
 
-  expect(replaceCurrentVersion(crawlerData)).toMatchSnapshot();
+  expect(prepareCrawlerDataForSnapshot(replaceCurrentVersion(crawlerData))).toMatchSnapshot();
 });

@@ -1,0 +1,78 @@
+{
+  "latest": {
+    "": [
+      {
+        "p-banner": {
+          "properties": {
+            "open": false,
+            "heading": "",
+            "description": "",
+            "state": "info",
+            "dismissButton": true,
+            "theme": "dark"
+          },
+          "children": "<span slot=\"title\">Some notification title</span><span slot=\"description\">(the content was stripped)</span><span slot=\"description\">\n    Some notification description. And some <a href=\"https://porsche.com/\">LINK</a> element.\n  </span>",
+          "hostPdsComponent": null
+        }
+      },
+      {
+        "p-inline-notification": {
+          "properties": {
+            "heading": "",
+            "description": "",
+            "state": "info",
+            "dismissButton": true,
+            "actionLoading": false,
+            "actionIcon": "arrow-right",
+            "theme": "dark"
+          },
+          "children": "<slot name=\"title\" slot=\"heading\"></slot><slot name=\"description\"></slot>",
+          "hostPdsComponent": "p-inline-notification"
+        }
+      },
+      {
+        "p-icon": {
+          "properties": {
+            "name": "information-filled",
+            "color": "notification-info",
+            "size": "small",
+            "theme": "dark"
+          },
+          "children": null,
+          "hostPdsComponent": "p-icon"
+        }
+      },
+      {
+        "p-button-pure": {
+          "properties": {
+            "type": "button",
+            "disabled": false,
+            "loading": false,
+            "size": "small",
+            "weight": "regular",
+            "icon": "close",
+            "active": false,
+            "hideLabel": true,
+            "alignLabel": "end",
+            "stretch": false,
+            "theme": "dark"
+          },
+          "children": "Close notification",
+          "hostPdsComponent": "p-button-pure"
+        }
+      },
+      {
+        "p-icon": {
+          "properties": {
+            "name": "close",
+            "color": "primary",
+            "size": "inherit",
+            "theme": "dark"
+          },
+          "children": null,
+          "hostPdsComponent": "p-icon"
+        }
+      }
+    ]
+  }
+}
