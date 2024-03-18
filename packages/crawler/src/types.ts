@@ -1,5 +1,5 @@
-import { TagName } from '@porsche-design-system/shared';
-import { Viewport } from 'puppeteer';
+import { type TagName } from '@porsche-design-system/shared';
+import { type ViewportSize } from 'playwright';
 
 /* Generics */
 
@@ -15,7 +15,7 @@ export type CrawlerConfig = {
   reportFolderName: string;
   dateSplitter: string;
   jsonSpace: number;
-  viewport: Viewport;
+  viewport: ViewportSize;
 };
 
 /* PDS Components info */
