@@ -19591,18 +19591,18 @@ pbkdf2@^3.0.3, pbkdf2@^3.1.2:
     safe-buffer "^5.0.1"
     sha.js "^2.4.8"
 
-pdf-to-png-converter@^3.1.0:
-  version "3.1.0"
-  resolved "https://registry.yarnpkg.com/pdf-to-png-converter/-/pdf-to-png-converter-3.1.0.tgz#b458ed2615a0a70c47c9fcb5dd90fa9eae9f3597"
-  integrity sha512-9AXXTjq/8lYtvyRCWQ5BI7IV7JlZPzmQat90tCBzZ9Vzowz7iTAaT4W3ttRixMH3IWSC87tM2EctJENRzii+zg==
+pdf-to-png-converter@^3.2.0:
+  version "3.2.0"
+  resolved "https://registry.yarnpkg.com/pdf-to-png-converter/-/pdf-to-png-converter-3.2.0.tgz#e24c793c6174effb4d0d814f339cf7e5aec9ea4a"
+  integrity sha512-8XzGRRVKcCxST6SilOADO5pI+z11FIVWaFU2a5Re6UDXNUS2+m3H5N/Riv5qz17K7hG1EXOP5WLmD5/IMckzUA==
   dependencies:
     canvas "^2.11.2"
-    pdfjs-dist "^3.8.162"
+    pdfjs-dist "^4.0.379"
 
-pdfjs-dist@^3.8.162:
-  version "3.11.174"
-  resolved "https://registry.yarnpkg.com/pdfjs-dist/-/pdfjs-dist-3.11.174.tgz#5ff47b80f2d58c8dd0d74f615e7c6a7e7e704c4b"
-  integrity sha512-TdTZPf1trZ8/UFu5Cx/GXB7GZM30LT+wWUNfsi6Bq8ePLnb+woNKtDymI2mxZYBpMbonNFqKmiz684DIfnd8dA==
+pdfjs-dist@^4.0.379:
+  version "4.0.379"
+  resolved "https://registry.yarnpkg.com/pdfjs-dist/-/pdfjs-dist-4.0.379.tgz#e2e967255d63c9caf0b6fe944e99ec9a746649da"
+  integrity sha512-6H0Gv1nna+wmrr3CakaKlZ4rbrL8hvGIFAgg4YcoFuGC0HC4B2DVjXEGTFjJEjLlf8nYi3C3/MYRcM5bNx0elA==
   optionalDependencies:
     canvas "^2.11.2"
     path2d-polyfill "^2.0.1"
