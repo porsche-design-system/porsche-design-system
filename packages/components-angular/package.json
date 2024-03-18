@@ -53,7 +53,6 @@
     "@angular/compiler-cli": "^15.2.10",
     "@angular/language-service": "^15.2.10",
     "@porsche-design-system/assets": "5.0.2",
-    "@porsche-design-system/shared": "0.0.0",
     "@testing-library/angular": "^15.2.0",
     "@types/jasmine": "^5.1.4",
     "concurrently": "^8.2.2",
