@@ -92,16 +92,6 @@ babel plugins, this is imported via text-field-wrapper.examples.md.
 
 - `imask`
 
----
-
-## Mime
-
-Since v4.0.0 `mime` decided to provide just a modern _ESM_ build with their latest npm package.
-
-### Affected dependencies:
-
-- `mime`
-
 ## @types/react
 
 Is currently fixed to "18.2.65" because of typing incompatibility with JSX namespace.
