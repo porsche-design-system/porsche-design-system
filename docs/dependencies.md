@@ -45,42 +45,6 @@ with Vue **2** and **3**.
 
 ---
 
-## Angular
-
-Angular CLI decides by itself which TypeScript version it supports. As soon as an unsupported TypeScript version is
-installed, the Angular build will fail.
-
-As mentioned here https://angular.io/guide/creating-libraries#ensuring-library-version-compatibility, if building
-component-libraries, the Angular version used to build an application should always be the same or greater than the
-Angular versions used to build any of its dependent libraries.
-
-We are now on `Angular v15` after conformation of our consuming teams. Before upgrading to a new version, ensure all
-consuming teams are already on the next major.
-
-Helpful overview: https://angular.io/guide/versions#actively-supported-versions
-
-### Affected dependencies:
-
-- `typescript`
-- `@angular/animations`
-- `@angular/common`
-- `@angular/compiler`
-- `@angular/core`
-- `@angular/forms`
-- `@angular/platform-browser`
-- `@angular/platform-browser-dynamic`
-- `@angular/router`
-- `@angular-builders/custom-webpack`
-- `@angular-devkit/build-angular`
-- `@angular/cli`
-- `@angular/compiler-cli`
-- `@angular/language-service`
-- `ng-packagr`
-- `angular-imask` with v7.0.0 it is bundled for Angular 16 and became incompatible with our Angular 15 setup:
-  https://github.com/uNmAnNeR/imaskjs/releases
-
----
-
 ## Styled Components
 
 With v6 they are providing their own types and thereby replace `@types/styled-components` but with tons of issues
