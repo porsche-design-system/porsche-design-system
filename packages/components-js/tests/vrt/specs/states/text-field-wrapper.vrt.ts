@@ -153,7 +153,7 @@ const scenario = async (page: Page, theme: Theme, scheme?: PrefersColorScheme): 
       async (item) =>
         (await item.evaluateHandle((el) => el.shadowRoot.querySelector('p-button-pure'))).evaluate((el: HTMLElement) =>
           el.click()
-        ) // js element.click() instead of puppeteer ElementHandle.click() to workaround element off screen issue
+        ) // js element.click() instead ElementHandle.click() to workaround element off screen issue
     )
   );
 
