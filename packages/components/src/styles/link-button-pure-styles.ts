@@ -129,30 +129,32 @@ export const getLinkButtonPureStyles = (
         })),
       ...(!hasSlottedAnchor && getFocusJssStyle(theme, { pseudo: true, offset: '-2px' })),
     },
-    label: {
-      transition: getTransition('opacity'),
-      position: 'relative', // needed for hover state when icon="none" is set
-    },
-    ...(hasIcon && {
-      icon: {
-        position: 'relative',
-        flexShrink: '0',
-        width: fontLineHeight,
-        height: fontLineHeight,
-        // workaround for Safari to optimize vertical alignment of icons
-        // TODO: check if this is still needed after optimized icons are included
-        '@supports (width: round(down, 1px, 1px))': {
-          width: `round(down, ${fontLineHeight}, 1px)`,
-          height: `round(down, ${fontLineHeight}, 1px)`,
-        },
-      },
-      label: mergeDeep(
-        buildResponsiveStyles(hideLabel, getVisibilityJssStyle),
-        buildResponsiveStyles(alignLabel, (alignLabelValue: AlignLabel) => ({
-          // TODO: we should remove 'left' here and map the value in the component class already to 'start' but might be difficult due to breakpoint customizable prop value
-          order: alignLabelValue === 'left' || alignLabelValue === 'start' ? -1 : 0,
-        }))
-      ),
-    }),
+    ...(hasIcon
+      ? {
+          icon: {
+            position: 'relative',
+            flexShrink: '0',
+            width: fontLineHeight,
+            height: fontLineHeight,
+            // workaround for Safari to optimize vertical alignment of icons
+            // TODO: check if this is still needed after optimized icons are included
+            '@supports (width: round(down, 1px, 1px))': {
+              width: `round(down, ${fontLineHeight}, 1px)`,
+              height: `round(down, ${fontLineHeight}, 1px)`,
+            },
+          },
+          label: mergeDeep(
+            buildResponsiveStyles(hideLabel, getVisibilityJssStyle),
+            buildResponsiveStyles(alignLabel, (alignLabelValue: AlignLabel) => ({
+              // TODO: we should remove 'left' here and map the value in the component class already to 'start' but might be difficult due to breakpoint customizable prop value
+              order: alignLabelValue === 'left' || alignLabelValue === 'start' ? -1 : 0,
+            }))
+          ),
+        }
+      : {
+          label: {
+            position: 'relative', // needed for hover state when icon="none" is set
+          },
+        }),
   };
 };
