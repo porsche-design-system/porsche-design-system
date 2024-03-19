@@ -18,7 +18,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 - `Select`, `Multi-Select`: Cropping issues of select dropdown when used inside `Table` component
   ([#3114](https://github.com/porsche-design-system/porsche-design-system/pull/3114))
-- `Flyout`: iOS Safari URL bar overlaying
+- `Flyout`, `Flyout Navigation`: iOS Safari URL bar overlaying
   ([#3131](https://github.com/porsche-design-system/porsche-design-system/pull/3131))
 
 ### [3.13.0] - 2024-03-11
