@@ -7,7 +7,7 @@ import '@porsche-design-system/components-angular/jsdom-polyfill';
 
 @Component({
   selector: 'empty',
-  template: `<div></div>`,
+  template: ` <div></div>`,
 })
 class EmptyComponent {}
 
@@ -20,6 +20,7 @@ class EmptyComponent {}
 })
 class SampleComponent {
   active = false;
+
   onClick() {
     this.active = true;
   }
@@ -32,7 +33,7 @@ beforeAll(() => {
 });
 
 beforeEach(waitForAsync(() => {
-  TestBed.configureTestingModule({
+  return TestBed.configureTestingModule({
     imports: [CommonModule],
     declarations: [EmptyComponent, SampleComponent],
   }).compileComponents();
