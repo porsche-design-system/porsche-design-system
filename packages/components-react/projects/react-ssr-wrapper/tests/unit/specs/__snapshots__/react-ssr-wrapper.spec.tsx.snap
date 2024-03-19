@@ -5172,7 +5172,6 @@ exports[`manual test cases > should pass internal props correctly to p-text-fiel
 }
 .root {
   display: flex;
-  gap: 0;
   width: 100%;
   padding: 0;
   margin: 0;
@@ -5180,6 +5179,7 @@ exports[`manual test cases > should pass internal props correctly to p-text-fiel
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
+  gap: 0;
   justify-content: flex-start;
   align-items: flex-start;
   font-size: 1rem;
@@ -5511,7 +5511,6 @@ img {
 }
 .root {
   display: flex;
-  gap: 0;
   width: 100%;
   padding: 0;
   margin: 0;
@@ -5519,6 +5518,7 @@ img {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
+  gap: 0;
   justify-content: flex-start;
   align-items: flex-start;
   font-size: 1rem;
@@ -6125,7 +6125,6 @@ img {
 }
 .root {
   display: flex;
-  gap: 0;
   width: 100%;
   padding: 0;
   margin: 0;
@@ -6133,6 +6132,7 @@ img {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
+  gap: 0;
   justify-content: flex-start;
   align-items: flex-start;
   font-size: 1rem;
@@ -6415,7 +6415,6 @@ exports[`should render dsr component for PButtonPure 1`] = `
 }
 .root {
   display: flex;
-  gap: 4px;
   width: 100%;
   padding: 0;
   margin: 0;
@@ -6423,6 +6422,7 @@ exports[`should render dsr component for PButtonPure 1`] = `
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
+  gap: 4px;
   justify-content: flex-start;
   align-items: flex-start;
   font-size: 1rem;
@@ -7525,7 +7525,6 @@ dialog::backdrop {
 }
 .root {
   display: flex;
-  gap: 0;
   width: 100%;
   padding: 0;
   margin: 0;
@@ -7533,6 +7532,7 @@ dialog::backdrop {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
+  gap: 0;
   justify-content: flex-start;
   align-items: flex-start;
   font-size: 1rem;
@@ -7814,7 +7814,6 @@ dialog::backdrop {
 }
 .root {
   display: flex;
-  gap: 0;
   width: 100%;
   padding: 0;
   margin: 0;
@@ -7822,6 +7821,7 @@ dialog::backdrop {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
+  gap: 0;
   justify-content: flex-start;
   align-items: flex-start;
   font-size: clamp(1.13rem, 0.21vw + 1.08rem, 1.33rem);
@@ -8106,7 +8106,6 @@ exports[`should render dsr component for PFlyoutNavigationItem 1`] = `
 }
 .root {
   display: flex;
-  gap: 4px;
   width: 100%;
   padding: 0;
   margin: 0;
@@ -8114,6 +8113,7 @@ exports[`should render dsr component for PFlyoutNavigationItem 1`] = `
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
+  gap: 4px;
   justify-content: space-between;
   align-items: center;
   font-size: clamp(1.13rem, 0.21vw + 1.08rem, 1.33rem);
@@ -8264,7 +8264,6 @@ img:dir(rtl) {
 }
 .root {
   display: flex;
-  gap: 0;
   width: 100%;
   padding: 0;
   margin: 0;
@@ -8272,6 +8271,7 @@ img:dir(rtl) {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
+  gap: 0;
   justify-content: flex-start;
   align-items: flex-start;
   font-size: clamp(1.13rem, 0.21vw + 1.08rem, 1.33rem);
@@ -8765,7 +8765,6 @@ img {
 }
 .root {
   display: flex;
-  gap: 0;
   width: 100%;
   padding: 0;
   margin: 0;
@@ -8773,6 +8772,7 @@ img {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
+  gap: 0;
   justify-content: flex-start;
   align-items: flex-start;
   font-size: 1rem;
@@ -9029,7 +9029,6 @@ exports[`should render dsr component for PLinkPure 1`] = `
 }
 .root {
   display: flex;
-  gap: 4px;
   width: 100%;
   padding: 0;
   margin: 0;
@@ -9037,6 +9036,7 @@ exports[`should render dsr component for PLinkPure 1`] = `
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
+  gap: 4px;
   justify-content: flex-start;
   align-items: flex-start;
   font-size: 1rem;
@@ -9925,7 +9925,6 @@ slot[name="header"] {
 }
 .root {
   display: flex;
-  gap: 0;
   width: 100%;
   padding: 0;
   margin: 0;
@@ -9933,6 +9932,7 @@ slot[name="header"] {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
+  gap: 0;
   justify-content: flex-start;
   align-items: flex-start;
   font-size: 1rem;
@@ -10279,7 +10279,6 @@ h2 {
 }
 .root {
   display: flex;
-  gap: 0;
   width: 100%;
   padding: 0;
   margin: 0;
@@ -10287,6 +10286,7 @@ h2 {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
+  gap: 0;
   justify-content: flex-start;
   align-items: flex-start;
   font-size: 1rem;
