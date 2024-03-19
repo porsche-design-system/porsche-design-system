@@ -1,13 +1,9 @@
-import type { Page } from 'puppeteer';
-import { setContentWithDesignSystem } from './helpers';
+import { test, expect } from '@playwright/test';
 import { getComponentChunkLinks } from '@porsche-design-system/components-js/partials';
+import { setContentWithDesignSystem } from '../helpers';
 
-describe('components', () => {
-  let page: Page;
-  beforeEach(async () => (page = await browser.newPage()));
-  afterEach(async () => await page.close());
-
-  it('should not emit lifecycleDOMEvents', async () => {
+test.describe('components', () => {
+  test('should not emit lifecycleDOMEvents', async ({ page }) => {
     const COUNTER_KEY = 'lifecycleCounter';
     const content = `
 <script>
@@ -19,14 +15,14 @@ describe('components', () => {
   })
 </script>
 
-<p-content-wrapper>
-  <p-marque></p-marque>
-  <p-heading size="xx-large">Some Headline</p-heading>
-  <p-button>Some label</p-button>
-</p-content-wrapper>`;
+<p-crest></p-crest>
+<p-heading size="xx-large">Some Headline</p-heading>
+<p-button>Some label</p-button>
+`;
 
-    const getCountedEvents = (): Promise<number> =>
-      page.evaluate((COUNTER_KEY: string) => window[COUNTER_KEY], COUNTER_KEY);
+    function getCountedEvents(): Promise<number> {
+      return page.evaluate((COUNTER_KEY: string) => window[COUNTER_KEY], COUNTER_KEY);
+    }
 
     await setContentWithDesignSystem(page, content);
 
@@ -41,14 +37,8 @@ describe('components', () => {
   });
 });
 
-describe('chunk preloading', () => {
-  let page: Page;
-  beforeEach(async () => (page = await browser.newPage()));
-  afterEach(async () => await page.close());
-
-  it('should load porsche-design-system.v2.x.HASH.js chunk only once', async () => {
-    await page.setRequestInterception(true);
-
+test.describe('chunk preloading', () => {
+  test(`should load porsche-design-system.v3.x.HASH.js chunk only once`, async ({ page }) => {
     const requests: string[] = [];
     page.on('request', (req) => {
       const url = req.url();
@@ -56,7 +46,6 @@ describe('chunk preloading', () => {
       if (url.includes('cdn.ui.porsche') && url.endsWith('.js')) {
         requests.push(url);
       }
-      req.continue();
     });
 
     const headContent = getComponentChunkLinks(); // only preload core
