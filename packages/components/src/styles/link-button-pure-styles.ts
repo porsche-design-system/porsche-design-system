@@ -78,9 +78,6 @@ export const getLinkButtonPureStyles = (
     },
     root: {
       display: 'flex',
-      ...buildResponsiveStyles(hideLabel, (hidelabelValue: boolean) => ({
-        gap: hidelabelValue ? 0 : spacingStaticXSmall,
-      })),
       width: '100%',
       padding: 0,
       margin: 0, // Removes default button margin on safari 15
@@ -90,6 +87,9 @@ export const getLinkButtonPureStyles = (
       }),
       ...textSmallStyle,
       ...mergeDeep(
+        buildResponsiveStyles(hideLabel, (hidelabelValue: boolean) => ({
+          gap: hidelabelValue ? 0 : spacingStaticXSmall,
+        })),
         buildResponsiveStyles(stretch, (stretchValue: boolean) => ({
           justifyContent: stretchValue ? 'space-between' : 'flex-start',
           alignItems: stretchValue ? 'center' : 'flex-start',
