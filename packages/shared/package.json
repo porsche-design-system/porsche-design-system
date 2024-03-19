@@ -10,7 +10,6 @@
   "license": "UNLICENSED",
   "homepage": "https://designsystem.porsche.com",
   "scripts": {
-    "postinstall": "rm -rf ../../node_modules/@types/puppeteer",
     "build": "yarn clean:build && yarn build:generateTagNames && yarn build:generateChunkNames && yarn build:generatePartialNames && yarn build:generateCodeSamples && yarn build:bundle",
     "build:generateTagNames": "tsx scripts/generateTagNames.ts",
     "build:generateCodeSamples": "tsx scripts/generateCodeSamples.ts",
@@ -32,7 +31,6 @@
     "@rollup/plugin-replace": "^5.0.5",
     "@rollup/plugin-typescript": "^11.1.6",
     "@types/jest": "^29.5.12",
-    "@types/jest-environment-puppeteer": "^5.0.6",
     "@types/jest-expect-message": "^1.1.0",
     "@types/node": "^20.11.28",
     "@vitest/ui": "^1.4.0",
