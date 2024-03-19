@@ -127,13 +127,3 @@ babel plugins, this is imported via text-field-wrapper.examples.md.
 ### Affected dependencies:
 
 - `imask`
-
----
-
-## Mime
-
-Since v4.0.0 `mime` decided to provide just a modern _ESM_ build with their latest npm package.
-
-### Affected dependencies:
-
-- `mime`

@@ -93,7 +93,7 @@
     "globby": "^14.0.1",
     "jsdom": "^24.0.0",
     "local-web-server": "^5.3.1",
-    "mime": "^3.0.0",
+    "mime": "^4.0.1",
     "pdf-to-png-converter": "^3.2.0",
     "sass": "^1.72.0",
     "terser-webpack-plugin": "^5.3.10",

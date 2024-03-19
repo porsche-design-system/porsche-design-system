@@ -20,7 +20,7 @@ import {
 } from '@porsche-design-system/assets';
 import { COMPONENT_CHUNKS_MANIFEST } from '../../../../projects/components-wrapper/lib/chunksManifest';
 import { CDN_BASE_PATH_COMPONENTS, CDN_BASE_URL_COM } from '../../../../../../cdn.config';
-import * as mime from 'mime';
+import mime from 'mime';
 
 describe('cdn', () => {
   let fetchCounter = 0;
