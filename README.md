@@ -179,13 +179,12 @@ _Note: `./docker.sh run-install` and `yarn` should be executed after every pull.
 
 #### What to do when VRT tests are failing
 
-1. Switch to your results directory in `/packages/{DESIRED_PACKAGE_NAME}/tests/vrt/(puppeteer?)/results`. Here you can
-   find the belonging `diff` and `regression` images.
+1. Switch to your results directory in `/packages/{DESIRED_PACKAGE_NAME}/tests/vrt/results`. Here you can find the
+   belonging `diff` and `regression` images.
 2. Check if you would like to accept the changes
 
-- **If yes**: Replace the reference shot in the `/vrt/fixtures` folder with the belonging one in the
-  `/vrt/(puppeteer?)/results` folder and delete the images in the `/vrt/(puppeteer?)/results` directory afterwards
-  manually.
+- **If yes**: Replace the reference shot in the `/vrt/fixtures` folder with the belonging one in the `/vrt/results`
+  folder and delete the images in the `/vrt/results` directory afterwards manually.
 - **If no**: Recheck your code and run the tests again, when you think you fixed it.
 
 ### Smoke Tests
