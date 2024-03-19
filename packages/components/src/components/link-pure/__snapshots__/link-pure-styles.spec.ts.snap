@@ -87,17 +87,17 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   outline: 2px solid #1A44EA;
   outline-offset: -2px;
 }
-.label {
-  white-space: nowrap;
-  text-indent: -999999px;
-  overflow: hidden;
-  order: -1;
-}
 .icon {
   position: relative;
   flex-shrink: 0;
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
+}
+.label {
+  white-space: nowrap;
+  text-indent: -999999px;
+  overflow: hidden;
+  order: -1;
 }
 @supports (width: round(down, 1px, 1px)) {
   .icon {
@@ -264,17 +264,17 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   outline: 2px solid #1A44EA;
   outline-offset: -2px;
 }
-.label {
-  white-space: nowrap;
-  text-indent: -999999px;
-  overflow: hidden;
-  order: 0;
-}
 .icon {
   position: relative;
   flex-shrink: 0;
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
+}
+.label {
+  white-space: nowrap;
+  text-indent: -999999px;
+  overflow: hidden;
+  order: 0;
 }
 @supports (width: round(down, 1px, 1px)) {
   .icon {
@@ -421,18 +421,18 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   outline: 2px solid #1A44EA;
   outline-offset: -2px;
 }
+.icon {
+  position: relative;
+  flex-shrink: 0;
+  width: calc(6px + 2.125ex);
+  height: calc(6px + 2.125ex);
+}
 .label {
   white-space: inherit;
   text-indent: 0;
   z-index: 1;
   overflow: visible;
   order: 0;
-}
-.icon {
-  position: relative;
-  flex-shrink: 0;
-  width: calc(6px + 2.125ex);
-  height: calc(6px + 2.125ex);
 }
 @supports (width: round(down, 1px, 1px)) {
   .icon {
@@ -501,18 +501,18 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   outline: 2px solid #1A44EA;
   outline-offset: -2px;
 }
+.icon {
+  position: relative;
+  flex-shrink: 0;
+  width: calc(6px + 2.125ex);
+  height: calc(6px + 2.125ex);
+}
 .label {
   white-space: inherit;
   text-indent: 0;
   z-index: 1;
   overflow: visible;
   order: 0;
-}
-.icon {
-  position: relative;
-  flex-shrink: 0;
-  width: calc(6px + 2.125ex);
-  height: calc(6px + 2.125ex);
 }
 @supports (width: round(down, 1px, 1px)) {
   .icon {
@@ -598,18 +598,18 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   border-radius: 4px;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
+.icon {
+  position: relative;
+  flex-shrink: 0;
+  width: calc(6px + 2.125ex);
+  height: calc(6px + 2.125ex);
+}
 .label {
   white-space: inherit;
   text-indent: 0;
   z-index: 1;
   overflow: visible;
   order: 0;
-}
-.icon {
-  position: relative;
-  flex-shrink: 0;
-  width: calc(6px + 2.125ex);
-  height: calc(6px + 2.125ex);
 }
 @supports (width: round(down, 1px, 1px)) {
   .icon {
@@ -678,18 +678,18 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   outline: 2px solid #1A44EA;
   outline-offset: -2px;
 }
+.icon {
+  position: relative;
+  flex-shrink: 0;
+  width: calc(6px + 2.125ex);
+  height: calc(6px + 2.125ex);
+}
 .label {
   white-space: inherit;
   text-indent: 0;
   z-index: 1;
   overflow: visible;
   order: 0;
-}
-.icon {
-  position: relative;
-  flex-shrink: 0;
-  width: calc(6px + 2.125ex);
-  height: calc(6px + 2.125ex);
 }
 @supports (width: round(down, 1px, 1px)) {
   .icon {
@@ -758,18 +758,18 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   outline: 2px solid #1A44EA;
   outline-offset: -2px;
 }
+.icon {
+  position: relative;
+  flex-shrink: 0;
+  width: calc(6px + 2.125ex);
+  height: calc(6px + 2.125ex);
+}
 .label {
   white-space: inherit;
   text-indent: 0;
   z-index: 1;
   overflow: visible;
   order: -1;
-}
-.icon {
-  position: relative;
-  flex-shrink: 0;
-  width: calc(6px + 2.125ex);
-  height: calc(6px + 2.125ex);
 }
 @supports (width: round(down, 1px, 1px)) {
   .icon {
@@ -838,18 +838,18 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   outline: 2px solid #1A44EA;
   outline-offset: -2px;
 }
+.icon {
+  position: relative;
+  flex-shrink: 0;
+  width: calc(6px + 2.125ex);
+  height: calc(6px + 2.125ex);
+}
 .label {
   white-space: inherit;
   text-indent: 0;
   z-index: 1;
   overflow: visible;
   order: 0;
-}
-.icon {
-  position: relative;
-  flex-shrink: 0;
-  width: calc(6px + 2.125ex);
-  height: calc(6px + 2.125ex);
 }
 @supports (width: round(down, 1px, 1px)) {
   .icon {
@@ -918,17 +918,17 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   outline: 2px solid #1A44EA;
   outline-offset: -2px;
 }
-.label {
-  white-space: nowrap;
-  text-indent: -999999px;
-  overflow: hidden;
-  order: 0;
-}
 .icon {
   position: relative;
   flex-shrink: 0;
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
+}
+.label {
+  white-space: nowrap;
+  text-indent: -999999px;
+  overflow: hidden;
+  order: 0;
 }
 @supports (width: round(down, 1px, 1px)) {
   .icon {
@@ -997,17 +997,17 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   outline: 2px solid #1A44EA;
   outline-offset: -2px;
 }
-.label {
-  white-space: nowrap;
-  text-indent: -999999px;
-  overflow: hidden;
-  order: 0;
-}
 .icon {
   position: relative;
   flex-shrink: 0;
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
+}
+.label {
+  white-space: nowrap;
+  text-indent: -999999px;
+  overflow: hidden;
+  order: 0;
 }
 @supports (width: round(down, 1px, 1px)) {
   .icon {
@@ -1093,17 +1093,17 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   border-radius: 4px;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
-.label {
-  white-space: nowrap;
-  text-indent: -999999px;
-  overflow: hidden;
-  order: 0;
-}
 .icon {
   position: relative;
   flex-shrink: 0;
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
+}
+.label {
+  white-space: nowrap;
+  text-indent: -999999px;
+  overflow: hidden;
+  order: 0;
 }
 @supports (width: round(down, 1px, 1px)) {
   .icon {
@@ -1174,18 +1174,18 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   outline: 2px solid #1A44EA;
   outline-offset: -2px;
 }
+.icon {
+  position: relative;
+  flex-shrink: 0;
+  width: calc(6px + 2.125ex);
+  height: calc(6px + 2.125ex);
+}
 .label {
   white-space: inherit;
   text-indent: 0;
   z-index: 1;
   overflow: visible;
   order: -1;
-}
-.icon {
-  position: relative;
-  flex-shrink: 0;
-  width: calc(6px + 2.125ex);
-  height: calc(6px + 2.125ex);
 }
 @supports (width: round(down, 1px, 1px)) {
   .icon {
@@ -1256,18 +1256,18 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   outline: 2px solid #1A44EA;
   outline-offset: -2px;
 }
+.icon {
+  position: relative;
+  flex-shrink: 0;
+  width: calc(6px + 2.125ex);
+  height: calc(6px + 2.125ex);
+}
 .label {
   white-space: inherit;
   text-indent: 0;
   z-index: 1;
   overflow: visible;
   order: -1;
-}
-.icon {
-  position: relative;
-  flex-shrink: 0;
-  width: calc(6px + 2.125ex);
-  height: calc(6px + 2.125ex);
 }
 @supports (width: round(down, 1px, 1px)) {
   .icon {
@@ -1337,7 +1337,6 @@ exports[`getComponentCss() should return correct css for {"icon":"none","iconSou
   outline-offset: -2px;
 }
 .label {
-  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   position: relative;
 }
 @media(hover:hover) {
@@ -1401,7 +1400,6 @@ exports[`getComponentCss() should return correct css for {"icon":"none","iconSou
   outline-offset: -2px;
 }
 .label {
-  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   position: relative;
 }
 @media(hover:hover) {
