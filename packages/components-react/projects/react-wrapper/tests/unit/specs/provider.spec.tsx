@@ -2,6 +2,7 @@ import { render } from '@testing-library/react';
 import { testSnapshot } from '../helpers';
 import { PButton, PorscheDesignSystemProvider } from '../../../src/public-api';
 import * as fromComponentsJs from '@porsche-design-system/components-js';
+import { useDefaultProps } from '../../../src/hooks';
 
 jest.mock('@porsche-design-system/components-js', () => ({
   load: jest.fn(),
@@ -66,6 +67,27 @@ describe('PorscheDesignSystemProvider', () => {
 
     rerender(<PorscheDesignSystemProvider prefix="new-prefix" cdn="cn" />);
     expect(spy).toBeCalledTimes(1);
+  });
+
+  // TODO: tests for theme prop are missing
+
+  describe('components prop', () => {
+    it('should correctly pass wordings to context', () => {
+      const DemoComponent = (): JSX.Element => {
+        const defaultProps = useDefaultProps('PInlineNotification');
+        return <>{JSON.stringify(defaultProps)}</>;
+      };
+
+      const { container } = render(
+        <PorscheDesignSystemProvider
+          components={{ PInlineNotification: { wordings: { dismiss: 'Avvisa meddelande' } } }}
+        >
+          <DemoComponent />
+        </PorscheDesignSystemProvider>
+      );
+
+      expect(container.innerHTML).toBe('{"wordings":{"dismiss":"Avvisa meddelande"}}');
+    });
   });
 
   describe('on server', () => {

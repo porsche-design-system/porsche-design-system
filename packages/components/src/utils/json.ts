@@ -1,5 +1,6 @@
 export const parseJSONAttribute = <T>(attribute: T | string): T => {
-  return typeof attribute === 'string'
+  // JSON.parse throws exception for empty string: `""`
+  return typeof attribute === 'string' && attribute
     ? // input is potentially JSON parsable string, e.g. "{ aria-label: 'Some label' }"
       JSON.parse(
         attribute

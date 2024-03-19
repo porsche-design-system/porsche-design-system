@@ -2,7 +2,7 @@
 
 import type { MutableRefObject } from 'react';
 import { useContext, useEffect, useLayoutEffect, useMemo, useRef } from 'react';
-import { PorscheDesignSystemContext } from './provider';
+import { type ComponentDefaults, PorscheDesignSystemContext } from './provider';
 import { getMergedClassName } from './utils';
 import type { Theme, ToastMessage } from './lib/types';
 
@@ -30,11 +30,21 @@ export const usePrefix = (tagName: string): string => {
   }
 };
 
+// TODO: unit tests missing
 export const useTheme = (): Theme => {
   if (process.env.NODE_ENV === 'test' && skipCheck) {
     return 'light';
   } else {
     return useContext(PorscheDesignSystemContext).theme; // eslint-disable-line react-hooks/rules-of-hooks
+  }
+};
+
+// TODO: adjust wrapper generator to use this
+export const useDefaultProps = <Key extends keyof ComponentDefaults>(component: Key): ComponentDefaults[Key] => {
+  if (process.env.NODE_ENV === 'test' && skipCheck) {
+    return {};
+  } else {
+    return useContext(PorscheDesignSystemContext).components?.[component]; // eslint-disable-line react-hooks/rules-of-hooks
   }
 };
 

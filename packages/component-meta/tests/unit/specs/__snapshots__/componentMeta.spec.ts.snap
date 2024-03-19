@@ -3411,6 +3411,9 @@ exports[`should match snapshot 1`] = `
       "open",
     ],
     "styling": "jss",
+    "wordings": [
+      "Dismiss flyout",
+    ],
   },
   "p-flyout-navigation": {
     "allowedPropValues": {
@@ -3492,6 +3495,9 @@ exports[`should match snapshot 1`] = `
       },
     },
     "styling": "jss",
+    "wordings": [
+      "Dismiss flyout",
+    ],
   },
   "p-flyout-navigation-item": {
     "allowedPropValues": {
@@ -3534,6 +3540,9 @@ exports[`should match snapshot 1`] = `
       "identifier",
     ],
     "styling": "jss",
+    "wordings": [
+      "Back",
+    ],
   },
   "p-grid": {
     "allowedPropValues": {
@@ -5105,6 +5114,9 @@ exports[`should match snapshot 1`] = `
       },
     },
     "styling": "jss",
+    "wordings": [
+      "Close notification",
+    ],
   },
   "p-link": {
     "allowedPropValues": {
@@ -7589,6 +7601,9 @@ exports[`should match snapshot 1`] = `
       "open",
     ],
     "styling": "jss",
+    "wordings": [
+      "Dismiss modal",
+    ],
   },
   "p-model-signature": {
     "allowedPropValues": {
@@ -7846,6 +7861,10 @@ exports[`should match snapshot 1`] = `
       "name",
     ],
     "styling": "jss",
+    "wordings": [
+      "Reset selection",
+      "No results found",
+    ],
   },
   "p-multi-select-option": {
     "allowedPropValues": {
@@ -8314,6 +8333,9 @@ exports[`should match snapshot 1`] = `
       },
     },
     "styling": "jss",
+    "wordings": [
+      "More information",
+    ],
   },
   "p-radio-button-wrapper": {
     "allowedPropValues": {
@@ -9597,6 +9619,9 @@ exports[`should match snapshot 1`] = `
       "p-select-wrapper",
     ],
     "styling": "jss",
+    "wordings": [
+      "No results found",
+    ],
   },
   "p-spinner": {
     "allowedPropValues": {
@@ -11457,6 +11482,12 @@ exports[`should match snapshot 1`] = `
     "requiredChild": "input type=text",
     "requiredChildSelector": "input[type=text],input[type=number],input[type=email],input[type=tel],input[type=search],input[type=url],input[type=date],input[type=time],input[type=month],input[type=week],input[type=password]",
     "styling": "jss",
+    "wordings": [
+      "Toggle password visibility",
+      "Search",
+      "Clear field",
+      "Locate me",
+    ],
   },
   "p-text-list": {
     "allowedPropValues": {
@@ -11764,6 +11795,9 @@ exports[`should match snapshot 1`] = `
       "p-toast",
     ],
     "styling": "jss",
+    "wordings": [
+      "Close notification message",
+    ],
   },
   "p-wordmark": {
     "allowedPropValues": {
@@ -11854,6 +11888,9 @@ exports[`should match snapshot 1`] = `
       },
     },
     "styling": "jss",
+    "wordings": [
+      "Porsche",
+    ],
   },
 }
 `;

@@ -105,7 +105,29 @@
       </select>
     </header>
 
-    <main></main>
+    <main>
+      <div class="playground">
+        <p-inline-notification state="neutral" heading="Default" description="Description"></p-inline-notification>
+      </div>
+
+      <div class="playground">
+        <p-inline-notification
+          state="neutral"
+          heading="Deutsch"
+          description="Beschreibung"
+          wordings="{ dismiss: 'Benachrichtigung schließen' }"
+        ></p-inline-notification>
+      </div>
+
+      <div class="playground">
+        <p-inline-notification
+          state="neutral"
+          heading="Empty with default as fallback"
+          description="Description"
+          wordings=""
+        ></p-inline-notification>
+      </div>
+    </main>
 
     <script>
       <!-- START: keep this snippet to log component lifecycle events -->
