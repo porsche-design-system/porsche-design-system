@@ -4,9 +4,9 @@
 
 |         | Monorepo | Sample Integrations    |
 | ------- | -------- | ---------------------- |
-| Angular | 15.2.10  | 17.1.1                 |
+| Angular | 17.3.0   | 17.1.1                 |
 | React   | 18.2.0   | 18.2.0                 |
-| Next.js | 14.0.4   | 13.4.19 (React 18.2.0) |
+| Next.js | 14.1.3   | 13.4.19 (React 18.2.0) |
 
 ## Playwright
 
