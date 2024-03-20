@@ -5172,7 +5172,6 @@ exports[`manual test cases > should pass internal props correctly to p-text-fiel
 }
 .root {
   display: flex;
-  gap: 4px;
   width: 100%;
   padding: 0;
   margin: 0;
@@ -5180,6 +5179,7 @@ exports[`manual test cases > should pass internal props correctly to p-text-fiel
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
+  gap: 0;
   justify-content: flex-start;
   align-items: flex-start;
   font-size: 1rem;
@@ -5203,18 +5203,17 @@ exports[`manual test cases > should pass internal props correctly to p-text-fiel
 .root::-moz-focus-inner {
   border: 0;
 }
-.label {
-  position: absolute;
-  inset: 0;
-  white-space: nowrap;
-  text-indent: -999999px;
-  order: 0;
-}
 .icon {
   position: relative;
   flex-shrink: 0;
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
+}
+.label {
+  white-space: nowrap;
+  text-indent: -999999px;
+  overflow: hidden;
+  order: 0;
 }
 .loading {
   position: absolute;
@@ -5512,7 +5511,6 @@ img {
 }
 .root {
   display: flex;
-  gap: 4px;
   width: 100%;
   padding: 0;
   margin: 0;
@@ -5520,6 +5518,7 @@ img {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
+  gap: 0;
   justify-content: flex-start;
   align-items: flex-start;
   font-size: 1rem;
@@ -5543,18 +5542,17 @@ img {
 .root::-moz-focus-inner {
   border: 0;
 }
-.label {
-  position: absolute;
-  inset: 0;
-  white-space: nowrap;
-  text-indent: -999999px;
-  order: 0;
-}
 .icon {
   position: relative;
   flex-shrink: 0;
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
+}
+.label {
+  white-space: nowrap;
+  text-indent: -999999px;
+  overflow: hidden;
+  order: 0;
 }
 .loading {
   position: absolute;
@@ -6127,7 +6125,6 @@ img {
 }
 .root {
   display: flex;
-  gap: 4px;
   width: 100%;
   padding: 0;
   margin: 0;
@@ -6135,6 +6132,7 @@ img {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
+  gap: 0;
   justify-content: flex-start;
   align-items: flex-start;
   font-size: 1rem;
@@ -6158,18 +6156,17 @@ img {
 .root::-moz-focus-inner {
   border: 0;
 }
-.label {
-  position: absolute;
-  inset: 0;
-  white-space: nowrap;
-  text-indent: -999999px;
-  order: 0;
-}
 .icon {
   position: relative;
   flex-shrink: 0;
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
+}
+.label {
+  white-space: nowrap;
+  text-indent: -999999px;
+  overflow: hidden;
+  order: 0;
 }
 .loading {
   position: absolute;
@@ -6418,7 +6415,6 @@ exports[`should render dsr component for PButtonPure 1`] = `
 }
 .root {
   display: flex;
-  gap: 4px;
   width: 100%;
   padding: 0;
   margin: 0;
@@ -6426,6 +6422,7 @@ exports[`should render dsr component for PButtonPure 1`] = `
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
+  gap: 4px;
   justify-content: flex-start;
   align-items: flex-start;
   font-size: 1rem;
@@ -6449,19 +6446,18 @@ exports[`should render dsr component for PButtonPure 1`] = `
 .root::-moz-focus-inner {
   border: 0;
 }
-.label {
-  position: relative;
-  inset: auto;
-  white-space: inherit;
-  text-indent: 0;
-  z-index: 1;
-  order: 0;
-}
 .icon {
   position: relative;
   flex-shrink: 0;
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
+}
+.label {
+  white-space: inherit;
+  text-indent: 0;
+  z-index: 1;
+  overflow: visible;
+  order: 0;
 }
 .loading {
   position: absolute;
@@ -7529,7 +7525,6 @@ dialog::backdrop {
 }
 .root {
   display: flex;
-  gap: 4px;
   width: 100%;
   padding: 0;
   margin: 0;
@@ -7537,6 +7532,7 @@ dialog::backdrop {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
+  gap: 0;
   justify-content: flex-start;
   align-items: flex-start;
   font-size: 1rem;
@@ -7560,18 +7556,17 @@ dialog::backdrop {
 .root::-moz-focus-inner {
   border: 0;
 }
-.label {
-  position: absolute;
-  inset: 0;
-  white-space: nowrap;
-  text-indent: -999999px;
-  order: 0;
-}
 .icon {
   position: relative;
   flex-shrink: 0;
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
+}
+.label {
+  white-space: nowrap;
+  text-indent: -999999px;
+  overflow: hidden;
+  order: 0;
 }
 .loading {
   position: absolute;
@@ -7819,7 +7814,6 @@ dialog::backdrop {
 }
 .root {
   display: flex;
-  gap: 4px;
   width: 100%;
   padding: 0;
   margin: 0;
@@ -7827,6 +7821,7 @@ dialog::backdrop {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
+  gap: 0;
   justify-content: flex-start;
   align-items: flex-start;
   font-size: clamp(1.13rem, 0.21vw + 1.08rem, 1.33rem);
@@ -7850,18 +7845,17 @@ dialog::backdrop {
 .root::-moz-focus-inner {
   border: 0;
 }
-.label {
-  position: absolute;
-  inset: 0;
-  white-space: nowrap;
-  text-indent: -999999px;
-  order: 0;
-}
 .icon {
   position: relative;
   flex-shrink: 0;
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
+}
+.label {
+  white-space: nowrap;
+  text-indent: -999999px;
+  overflow: hidden;
+  order: 0;
 }
 .loading {
   position: absolute;
@@ -8112,7 +8106,6 @@ exports[`should render dsr component for PFlyoutNavigationItem 1`] = `
 }
 .root {
   display: flex;
-  gap: 4px;
   width: 100%;
   padding: 0;
   margin: 0;
@@ -8120,6 +8113,7 @@ exports[`should render dsr component for PFlyoutNavigationItem 1`] = `
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
+  gap: 4px;
   justify-content: space-between;
   align-items: center;
   font-size: clamp(1.13rem, 0.21vw + 1.08rem, 1.33rem);
@@ -8143,19 +8137,18 @@ exports[`should render dsr component for PFlyoutNavigationItem 1`] = `
 .root::-moz-focus-inner {
   border: 0;
 }
-.label {
-  position: relative;
-  inset: auto;
-  white-space: inherit;
-  text-indent: 0;
-  z-index: 1;
-  order: -1;
-}
 .icon {
   position: relative;
   flex-shrink: 0;
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
+}
+.label {
+  white-space: inherit;
+  text-indent: 0;
+  z-index: 1;
+  overflow: visible;
+  order: -1;
 }
 .loading {
   position: absolute;
@@ -8271,7 +8264,6 @@ img:dir(rtl) {
 }
 .root {
   display: flex;
-  gap: 4px;
   width: 100%;
   padding: 0;
   margin: 0;
@@ -8279,6 +8271,7 @@ img:dir(rtl) {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
+  gap: 0;
   justify-content: flex-start;
   align-items: flex-start;
   font-size: clamp(1.13rem, 0.21vw + 1.08rem, 1.33rem);
@@ -8302,18 +8295,17 @@ img:dir(rtl) {
 .root::-moz-focus-inner {
   border: 0;
 }
-.label {
-  position: absolute;
-  inset: 0;
-  white-space: nowrap;
-  text-indent: -999999px;
-  order: 0;
-}
 .icon {
   position: relative;
   flex-shrink: 0;
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
+}
+.label {
+  white-space: nowrap;
+  text-indent: -999999px;
+  overflow: hidden;
+  order: 0;
 }
 .loading {
   position: absolute;
@@ -8773,7 +8765,6 @@ img {
 }
 .root {
   display: flex;
-  gap: 4px;
   width: 100%;
   padding: 0;
   margin: 0;
@@ -8781,6 +8772,7 @@ img {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
+  gap: 0;
   justify-content: flex-start;
   align-items: flex-start;
   font-size: 1rem;
@@ -8804,18 +8796,17 @@ img {
 .root::-moz-focus-inner {
   border: 0;
 }
-.label {
-  position: absolute;
-  inset: 0;
-  white-space: nowrap;
-  text-indent: -999999px;
-  order: 0;
-}
 .icon {
   position: relative;
   flex-shrink: 0;
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
+}
+.label {
+  white-space: nowrap;
+  text-indent: -999999px;
+  overflow: hidden;
+  order: 0;
 }
 .loading {
   position: absolute;
@@ -9038,7 +9029,6 @@ exports[`should render dsr component for PLinkPure 1`] = `
 }
 .root {
   display: flex;
-  gap: 4px;
   width: 100%;
   padding: 0;
   margin: 0;
@@ -9046,6 +9036,7 @@ exports[`should render dsr component for PLinkPure 1`] = `
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
+  gap: 4px;
   justify-content: flex-start;
   align-items: flex-start;
   font-size: 1rem;
@@ -9061,19 +9052,18 @@ exports[`should render dsr component for PLinkPure 1`] = `
   border-radius: 4px;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
-.label {
-  position: relative;
-  inset: auto;
-  white-space: inherit;
-  text-indent: 0;
-  z-index: 1;
-  order: 0;
-}
 .icon {
   position: relative;
   flex-shrink: 0;
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
+}
+.label {
+  white-space: inherit;
+  text-indent: 0;
+  z-index: 1;
+  overflow: visible;
+  order: 0;
 }
 @supports (width: round(down, 1px, 1px)) {
   .icon {
@@ -9935,7 +9925,6 @@ slot[name="header"] {
 }
 .root {
   display: flex;
-  gap: 4px;
   width: 100%;
   padding: 0;
   margin: 0;
@@ -9943,6 +9932,7 @@ slot[name="header"] {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
+  gap: 0;
   justify-content: flex-start;
   align-items: flex-start;
   font-size: 1rem;
@@ -9966,18 +9956,17 @@ slot[name="header"] {
 .root::-moz-focus-inner {
   border: 0;
 }
-.label {
-  position: absolute;
-  inset: 0;
-  white-space: nowrap;
-  text-indent: -999999px;
-  order: 0;
-}
 .icon {
   position: relative;
   flex-shrink: 0;
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
+}
+.label {
+  white-space: nowrap;
+  text-indent: -999999px;
+  overflow: hidden;
+  order: 0;
 }
 .loading {
   position: absolute;
@@ -10290,7 +10279,6 @@ h2 {
 }
 .root {
   display: flex;
-  gap: 4px;
   width: 100%;
   padding: 0;
   margin: 0;
@@ -10298,6 +10286,7 @@ h2 {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
+  gap: 0;
   justify-content: flex-start;
   align-items: flex-start;
   font-size: 1rem;
@@ -10321,18 +10310,17 @@ h2 {
 .root::-moz-focus-inner {
   border: 0;
 }
-.label {
-  position: absolute;
-  inset: 0;
-  white-space: nowrap;
-  text-indent: -999999px;
-  order: 0;
-}
 .icon {
   position: relative;
   flex-shrink: 0;
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
+}
+.label {
+  white-space: nowrap;
+  text-indent: -999999px;
+  overflow: hidden;
+  order: 0;
 }
 .loading {
   position: absolute;

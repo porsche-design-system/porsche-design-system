@@ -16,6 +16,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 #### Fixed
 
+- `Modal`: Unexpected scrolling behavior on iOS >= 17.4
+  ([#3128](https://github.com/porsche-design-system/porsche-design-system/pull/3128))
 - `Select`, `Multi-Select`: Cropping issues of select dropdown when used inside `Table` component
   ([#3114](https://github.com/porsche-design-system/porsche-design-system/pull/3114))
 - `Flyout`, `Flyout Navigation`: iOS Safari URL bar overlaying
