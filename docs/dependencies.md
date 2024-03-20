@@ -11,8 +11,8 @@
 ## Playwright
 
 Playwright Update is currently fixed to 1.41.2. If one wants to update it, it must be updated in the docker container
-aswell (Dockerfile-playwright plus workflow "Build and Push Docker Image"), affecting all running workflows even outside
-the changed branch so this must be aligned with the other developers.
+aswell (Dockerfile plus workflow "Build and Push Docker Image"), affecting all running workflows even outside the
+changed branch so this must be aligned with the other developers.
 
 ## Vue
 
