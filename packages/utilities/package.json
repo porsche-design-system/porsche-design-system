@@ -9,8 +9,6 @@
     "build-app": "react-scripts build",
     "test": "yarn test:unit",
     "test:unit": "yarn --cwd ./projects/utilities test:unit",
-    "clean": "yarn clean:node_modules && yarn clean:build",
-    "clean:node_modules": "yarn --cwd ./projects/utilities clean:node_modules",
     "clean:build": "yarn --cwd ./projects/utilities clean:build"
   },
   "dependencies": {

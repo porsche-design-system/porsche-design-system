@@ -23,8 +23,6 @@
     "test:unit:vue-wrapper": "jest --colors -c projects/vue-wrapper/tests/unit/config/jest.config.js",
     "test:e2e": "yarn build-app && playwright test --config=tests/e2e/config/playwright.config.ts",
     "test:vrt": "playwright test --config=tests/vrt/config/playwright.config.ts",
-    "clean": "yarn clean:node_modules && yarn clean:build",
-    "clean:node_modules": "rm -rf ./node_modules && rm -rf ./yarn-error.log",
     "clean:build": "rm -rf ./dist"
   },
   "dependencies": {
