@@ -21,6 +21,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 - React: updated peer dependency to `>=18.0.0 <19.0.0`
   ([#3125](https://github.com/porsche-design-system/porsche-design-system/pull/3125))
 
+### [3.13.1] - 2024-03-20
+
 #### Fixed
 
 - `Modal`: Unexpected scrolling behavior on iOS >= 17.4
