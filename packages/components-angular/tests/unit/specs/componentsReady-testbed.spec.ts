@@ -7,7 +7,7 @@ import '@porsche-design-system/components-angular/jsdom-polyfill';
 
 @Component({
   selector: 'empty',
-  template: ` <div></div>`,
+  template: '<div></div>',
 })
 class EmptyComponent {}
 
