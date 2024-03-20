@@ -4,9 +4,9 @@
 
 |         | Monorepo | Sample Integrations    |
 | ------- | -------- | ---------------------- |
-| Angular | 15.2.10  | 17.1.1                 |
+| Angular | 17.3.0   | 17.1.1                 |
 | React   | 18.2.0   | 18.2.0                 |
-| Next.js | 14.0.4   | 13.4.19 (React 18.2.0) |
+| Next.js | 14.1.3   | 13.4.19 (React 18.2.0) |
 
 ## Playwright
 
@@ -42,42 +42,6 @@ with Vue **2** and **3**.
   plugins
 - `imask` uses static class properties since v7.2.0 which can't be handled by our outdated vue 2 setup without
   additional babel plugins
-
----
-
-## Angular
-
-Angular CLI decides by itself which TypeScript version it supports. As soon as an unsupported TypeScript version is
-installed, the Angular build will fail.
-
-As mentioned here https://angular.io/guide/creating-libraries#ensuring-library-version-compatibility, if building
-component-libraries, the Angular version used to build an application should always be the same or greater than the
-Angular versions used to build any of its dependent libraries.
-
-We are now on `Angular v15` after conformation of our consuming teams. Before upgrading to a new version, ensure all
-consuming teams are already on the next major.
-
-Helpful overview: https://angular.io/guide/versions#actively-supported-versions
-
-### Affected dependencies:
-
-- `typescript`
-- `@angular/animations`
-- `@angular/common`
-- `@angular/compiler`
-- `@angular/core`
-- `@angular/forms`
-- `@angular/platform-browser`
-- `@angular/platform-browser-dynamic`
-- `@angular/router`
-- `@angular-builders/custom-webpack`
-- `@angular-devkit/build-angular`
-- `@angular/cli`
-- `@angular/compiler-cli`
-- `@angular/language-service`
-- `ng-packagr`
-- `angular-imask` with v7.0.0 it is bundled for Angular 16 and became incompatible with our Angular 15 setup:
-  https://github.com/uNmAnNeR/imaskjs/releases
 
 ---
 
@@ -128,12 +92,6 @@ babel plugins, this is imported via text-field-wrapper.examples.md.
 
 - `imask`
 
----
+## @types/react
 
-## Mime
-
-Since v4.0.0 `mime` decided to provide just a modern _ESM_ build with their latest npm package.
-
-### Affected dependencies:
-
-- `mime`
+Is currently fixed to "18.2.65" because of typing incompatibility with JSX namespace.

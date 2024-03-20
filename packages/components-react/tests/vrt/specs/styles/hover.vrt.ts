@@ -6,7 +6,8 @@ const style = 'styles-hover';
 
 test.describe(style, async () => {
   // TODO: test is pointless?
-  // hover media query isn't supported by puppeteer and therefore no hover style is visible
+  // hover media query wasn't supported and therefore no hover style is visible
+  // needs to be re-evaluated, maybe we can emulate it with Playwright
   test(`should have no visual regression for viewport ${viewportWidthM}`, async ({ page }) => {
     await page.goto(`/${style}`);
     await page.setViewportSize({ width: viewportWidthM, height: 600 });

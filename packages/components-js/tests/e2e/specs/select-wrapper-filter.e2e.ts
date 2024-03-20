@@ -122,7 +122,8 @@ test.describe('focus state', () => {
 });
 
 // TODO: Activate test
-// puppeteer ignores @media(hover: hover) styles, but playwright can handle it
+// hover media query "@media(hover: hover)" wasn't supported
+// needs to be re-evaluated, maybe we can emulate it with Playwright
 test.describe('hover state', () => {
   test.skip();
   test('should change border-color when filter input is hovered', async ({ page }) => {
