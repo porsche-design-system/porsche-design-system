@@ -1,0 +1,36 @@
+<div class="root">
+  <label class="label" id="label" for="filter"> </label>
+  <div class="wrapper">
+    <input
+      id="filter"
+      role="combobox"
+      autocomplete="off"
+      aria-labelledby="label"
+      aria-describedby="description options-selected message"
+      aria-haspopup="listbox"
+      aria-expanded="false"
+      aria-controls="list"
+      aria-autocomplete="list"
+    />
+    <p-icon class="icon hydrated" aria-hidden="true"> </p-icon>
+    <div>
+      <div
+        id="list"
+        class="listbox"
+        role="listbox"
+        aria-label=""
+        aria-hidden="true"
+        aria-multiselectable="true"
+      >
+        <slot> </slot>
+      </div>
+    </div>
+  </div>
+  <span
+    class="sr-only"
+    role="status"
+    aria-live="assertive"
+    aria-relevant="additions text"
+  >
+  </span>
+</div>

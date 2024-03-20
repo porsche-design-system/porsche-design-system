@@ -1,0 +1,5 @@
+<img
+  src="http://localhost:3001/model-signatures/911.min.5c462658f9d472e90a139173414e8fdd.svg"
+  height="36"
+  alt="911"
+/>

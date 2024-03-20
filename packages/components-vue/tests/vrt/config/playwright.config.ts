@@ -3,8 +3,7 @@ import { devices, defineConfig } from '@playwright/test';
 
 export default defineConfig({
   ...config,
-  snapshotPathTemplate:
-    '{testDir}/../../../../components-js/tests/vrt/playwright/specs/__screenshots__/{arg}-{projectName}{ext}',
+  snapshotPathTemplate: '{testDir}/../../../../components-js/tests/vrt/specs/__screenshots__/{arg}-{projectName}{ext}',
   use: {
     /* Maximum time each action such as `click()` can take. Defaults to 0 (no limit). */
     actionTimeout: 0,

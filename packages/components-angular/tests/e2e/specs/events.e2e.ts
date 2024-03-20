@@ -1,32 +1,19 @@
-import type { ElementHandle, Page } from 'puppeteer';
-import { getConsoleErrorsAmount, goto, initConsoleObserver, selectNode, waitForComponentsReady } from '../helpers';
-
-let page: Page;
-beforeEach(async () => (page = await browser.newPage()));
-afterEach(async () => await page.close());
+import { type ElementHandle, test, expect } from '@playwright/test';
+import { getConsoleErrorsAmount, goto, initConsoleObserver, waitForComponentsReady } from '../helpers';
 
 const getCounterValue = async (el: ElementHandle): Promise<string> => {
-  // wait for innerHTML change by storing previous innerHTML
-  await page.waitForFunction(
-    (element: Element & { prevInnerHtml: string }) => {
-      return element.innerHTML !== element.prevInnerHtml;
-    },
-    {},
-    el
-  );
-
   return el.evaluate((element: Element & { prevInnerHtml: string }) => {
     element.prevInnerHtml = element.innerHTML;
     return element.innerHTML;
   });
 };
 
-describe('pagination', () => {
-  it('should emit events once', async () => {
+test.describe('pagination', () => {
+  test('should emit events once', async ({ page }) => {
     await goto(page, 'events');
 
-    const nav = await selectNode(page, 'p-pagination >>> nav');
-    const paginationUpdateEventCounter = await selectNode(page, 'p-pagination + p');
+    const nav = await page.$('p-pagination >>> nav');
+    const paginationUpdateEventCounter = await page.$('p-pagination + p');
     const [, secondBtn, thirdBtn, fourthBtn] = (await nav.$$('span:not(.ellipsis)')).slice(1, -1); // without prev and next;
 
     await secondBtn.click();
@@ -40,12 +27,12 @@ describe('pagination', () => {
   });
 });
 
-describe('tabs-bar', () => {
-  it('should emit events once', async () => {
+test.describe('tabs-bar', () => {
+  test('should emit events once', async ({ page }) => {
     await goto(page, 'events');
 
-    const tabsBar = await selectNode(page, 'p-tabs-bar');
-    const tabsBarUpdateEventCounter = await selectNode(page, 'p-tabs-bar + p');
+    const tabsBar = await page.$('p-tabs-bar');
+    const tabsBarUpdateEventCounter = await page.$('p-tabs-bar + p');
     const [firstBtn, secondBtn, thirdBtn] = await tabsBar.$$('button');
 
     await secondBtn.click();
@@ -58,12 +45,12 @@ describe('tabs-bar', () => {
     expect(await getCounterValue(tabsBarUpdateEventCounter)).toBe('3');
   });
 
-  it('should not throw error error when used with router', async () => {
+  test('should not throw error when used with router', async ({ page }) => {
     initConsoleObserver(page);
     await goto(page, 'tabs-bar'); // to load component chunk
 
     // navigate via select, otherwise we would have a reload
-    const select = await selectNode(page, 'select');
+    const select = await page.$('select');
     await select.click();
     await page.keyboard.type('Events');
     await page.keyboard.press('Enter');
@@ -74,12 +61,12 @@ describe('tabs-bar', () => {
   });
 });
 
-describe('tabs', () => {
-  it('should emit events once', async () => {
+test.describe('tabs', () => {
+  test('should emit events once', async ({ page }) => {
     await goto(page, 'events');
 
-    const tabsBar = await selectNode(page, 'p-tabs >>> p-tabs-bar');
-    const tabsUpdateEventCounter = await selectNode(page, 'p-tabs + p');
+    const tabsBar = await page.$('p-tabs >>> p-tabs-bar');
+    const tabsUpdateEventCounter = await page.$('p-tabs + p');
     const [firstBtn, secondBtn, thirdBtn] = await tabsBar.$$('button');
 
     await secondBtn.click();
@@ -93,12 +80,12 @@ describe('tabs', () => {
   });
 });
 
-describe('text-field-wrapper type="search"', () => {
-  it('should have working clear functionality', async () => {
+test.describe('text-field-wrapper type="search"', () => {
+  test('should have working clear functionality', async ({ page }) => {
     await goto(page, 'events');
 
-    const input = await selectNode(page, 'p-text-field-wrapper > input[type=search]');
-    const inputValue = await selectNode(page, 'p-text-field-wrapper + p');
+    const input = await page.$('p-text-field-wrapper > input[type=search]');
+    const inputValue = await page.$('p-text-field-wrapper + p');
 
     await input.focus();
     await page.keyboard.type('hello');
@@ -112,12 +99,12 @@ describe('text-field-wrapper type="search"', () => {
   });
 });
 
-describe('switch', () => {
-  it('should emit events once', async () => {
+test.describe('switch', () => {
+  test('should emit events once', async ({ page }) => {
     await goto(page, 'events');
 
-    const switchBtn = await selectNode(page, 'p-switch >>> button');
-    const switchUpdateEventCounter = await selectNode(page, 'p-switch + p');
+    const switchBtn = await page.$('p-switch >>> button');
+    const switchUpdateEventCounter = await page.$('p-switch + p');
 
     await switchBtn.click();
     expect(await getCounterValue(switchUpdateEventCounter)).toBe('1');
@@ -130,42 +117,42 @@ describe('switch', () => {
   });
 });
 
-describe('banner', () => {
-  it('should emit events once', async () => {
+test.describe('banner', () => {
+  test('should emit events once', async ({ page }) => {
     await goto(page, 'events');
 
-    const banner = await selectNode(page, 'p-banner');
-    const bannerOpenBtn = await selectNode(page, 'p-banner ~ button');
-    const bannerCloseBtn = await selectNode(page, 'p-banner >>> p-inline-notification >>> p-button-pure.close');
-    const bannerDismissEventCounter = await selectNode(page, 'p-banner + p');
+    const banner = page.locator('p-banner');
+    const bannerOpenBtn = await page.$('p-banner ~ button');
+    const bannerCloseBtn = await page.$('p-banner >>> p-inline-notification >>> p-button-pure.close');
+    const bannerDismissEventCounter = await page.$('p-banner + p');
 
     await bannerOpenBtn.click();
-    await page.waitForFunction((el) => getComputedStyle(el).opacity === '1', {}, banner);
+    await expect(banner).toBeVisible();
     await bannerCloseBtn.click();
-    await page.waitForFunction((el) => getComputedStyle(el).opacity === '0', {}, banner);
+    await expect(banner).toBeHidden();
     expect(await getCounterValue(bannerDismissEventCounter)).toBe('1');
 
     await bannerOpenBtn.click();
-    await page.waitForFunction((el) => getComputedStyle(el).opacity === '1', {}, banner);
+    await expect(banner).toBeVisible();
     await bannerCloseBtn.click();
-    await page.waitForFunction((el) => getComputedStyle(el).opacity === '0', {}, banner);
+    await expect(banner).toBeHidden();
     expect(await getCounterValue(bannerDismissEventCounter)).toBe('2');
 
     await bannerOpenBtn.click();
-    await page.waitForFunction((el) => getComputedStyle(el).opacity === '1', {}, banner);
+    await expect(banner).toBeVisible();
     await bannerCloseBtn.click();
-    await page.waitForFunction((el) => getComputedStyle(el).opacity === '0', {}, banner);
+    await expect(banner).toBeHidden();
     expect(await getCounterValue(bannerDismissEventCounter)).toBe('3');
   });
 });
 
-describe('modal', () => {
-  it('should emit events once', async () => {
+test.describe('modal', () => {
+  test('should emit events once', async ({ page }) => {
     await goto(page, 'events');
 
-    const modalOpenBtn = await selectNode(page, 'p-modal ~ button');
-    const modalCloseBtn = await selectNode(page, 'p-modal >>> p-button-pure >>> button');
-    const modalDismissEventCounter = await selectNode(page, 'p-modal + p');
+    const modalOpenBtn = page.getByRole('button', { name: 'Open Modal' });
+    const modalCloseBtn = page.locator('p-modal').getByRole('button', { name: 'Dismiss modal' });
+    const modalDismissEventCounter = await page.$('p-modal + p');
 
     await modalOpenBtn.click();
     await waitForComponentsReady(page);
@@ -193,12 +180,12 @@ describe('modal', () => {
   });
 });
 
-describe('table', () => {
-  it('should emit events once', async () => {
+test.describe('table', () => {
+  test('should emit events once', async ({ page }) => {
     await goto(page, 'events');
 
-    const tableHeadBtn = await selectNode(page, 'p-table-head-cell >>> button');
-    const tableUpdateEventCounter = await selectNode(page, 'p-table + p');
+    const tableHeadBtn = page.locator('p-table-head-cell').getByRole('button');
+    const tableUpdateEventCounter = await page.$('p-table + p');
 
     await tableHeadBtn.click();
     expect(await getCounterValue(tableUpdateEventCounter)).toBe('1');
@@ -211,12 +198,12 @@ describe('table', () => {
   });
 });
 
-describe('accordion', () => {
-  it('should emit events once', async () => {
+test.describe('accordion', () => {
+  test('should emit events once', async ({ page }) => {
     await goto(page, 'events');
 
-    const accordionButton = await selectNode(page, 'p-accordion >>> button');
-    const accordionUpdateEventCounter = await selectNode(page, 'p-accordion + p');
+    const accordionButton = page.locator('p-accordion').getByRole('button');
+    const accordionUpdateEventCounter = await page.$('p-accordion + p');
 
     await accordionButton.click();
     expect(await getCounterValue(accordionUpdateEventCounter)).toBe('1');
@@ -229,20 +216,21 @@ describe('accordion', () => {
   });
 });
 
-describe('carousel', () => {
-  it('should emit events once', async () => {
+test.describe('carousel', () => {
+  test('should emit events once', async ({ page }) => {
     await goto(page, 'events');
 
-    const prevButton = await selectNode(page, 'p-carousel >>> p-button-pure');
-    const carouselUpdateEventCounter = await selectNode(page, 'p-carousel + p');
+    const goToLastSlideButton = page.locator('p-carousel').getByRole('button', { name: 'Go to last slide' }); // await selectNode(page, 'p-carousel >>> p-button-pure:first-of-type >>> button');
+    const prevSlideButton = page.locator('p-carousel').getByRole('button', { name: 'Previous slide' });
+    const carouselUpdateEventCounter = await page.$('p-carousel + p');
 
-    await prevButton.click();
+    await goToLastSlideButton.click();
     expect(await getCounterValue(carouselUpdateEventCounter)).toBe('1');
 
-    await prevButton.click();
+    await prevSlideButton.click();
     expect(await getCounterValue(carouselUpdateEventCounter)).toBe('2');
 
-    await prevButton.click();
+    await prevSlideButton.click();
     expect(await getCounterValue(carouselUpdateEventCounter)).toBe('3');
   });
 });

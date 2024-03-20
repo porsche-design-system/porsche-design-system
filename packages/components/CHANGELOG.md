@@ -14,6 +14,35 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ### [Unreleased]
 
+#### Changed
+
+- Angular: updated peer dependency to `>=17.0.0 <18.0.0`
+  ([#3125](https://github.com/porsche-design-system/porsche-design-system/pull/3125))
+- React: updated peer dependency to `>=18.0.0 <19.0.0`
+  ([#3125](https://github.com/porsche-design-system/porsche-design-system/pull/3125))
+
+### [3.13.1] - 2024-03-20
+
+#### Fixed
+
+- `Modal`: Unexpected scrolling behavior on iOS >= 17.4
+  ([#3128](https://github.com/porsche-design-system/porsche-design-system/pull/3128))
+- `Select`, `Multi-Select`: Cropping issues of select dropdown when used inside `Table` component
+  ([#3114](https://github.com/porsche-design-system/porsche-design-system/pull/3114))
+- `Flyout`, `Flyout Navigation`: iOS Safari URL bar overlaying
+  ([#3131](https://github.com/porsche-design-system/porsche-design-system/pull/3131))
+
+### [3.13.0] - 2024-03-11
+
+### [3.13.0-rc.2] - 2024-03-11
+
+#### Added
+
+- `Icon`: `battery-empty-co2` and `co2-class`
+  ([#3103](https://github.com/porsche-design-system/porsche-design-system/pull/3103))
+
+### [3.13.0-rc.1] - 2024-03-08
+
 #### Added
 
 - `Select` ([#3008](https://github.com/porsche-design-system/porsche-design-system/pull/3008))

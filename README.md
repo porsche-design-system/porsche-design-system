@@ -146,8 +146,7 @@ _Note: `./docker.sh run-install` and `yarn` should be executed after every pull.
 2. For the different applications, select one of the following commands:
 
 - `./docker.sh run-test-e2e` (e2e tests for the entire application)
-- `./docker.sh run-test-e2e-puppeteer --components-js` (e2e tests for the native web components for Chromium)
-- `./docker.sh run-test-e2e-playwright --components-js` (e2e tests for the native web components for Webkit)
+- `./docker.sh run-test-e2e --components-js` (e2e tests for the native web components)
 - `./docker.sh run-test-e2e --components-angular` (e2e tests for angular components)
 - `./docker.sh run-test-e2e --components-react` (e2e tests for react components)
 - `./docker.sh run-test-e2e --components-vue` (e2e tests for vue components)
@@ -159,16 +158,16 @@ _Note: `./docker.sh run-install` and `yarn` should be executed after every pull.
 1. Switch to **project root directory**
 2. For the different applications, select one of the following commands:
 
-- `./docker.sh run-test-vrt-playwright --components-js` (executes all vrt tests in Chromium and WebKit)
-  - `./docker.sh run-test-vrt-playwright --components-js --grep multi-select` (executes e.g. all "Multi Select" related
-    vrt tests in Chromium and WebKit)
-  - `yarn test:vrt:playwright:components-js --ui` (launches UI Mode of Playwright, – not possible within Docker context
-    but perhaps still helpful for debugging purposes)
-  - `./docker.sh run-test-vrt-playwright --components-js:chrome` (executes all vrt tests in Chromium)
-  - `./docker.sh run-test-vrt-playwright --components-js:chrome:common` (executes all "common" vrt tests in Chromium)
-  - `./docker.sh run-test-vrt-playwright --components-js:chrome:custom` (executes all "custom" vrt tests in Chromium)
-  - `./docker.sh run-test-vrt-playwright --components-js:chrome:states` (executes all "states" vrt tests in Chromium)
-  - `./docker.sh run-test-vrt-playwright --components-js:safari` (executes all vrt tests in WebKit)
+- `./docker.sh run-test-vrt --components-js` (executes all vrt tests in Chromium and WebKit)
+  - `./docker.sh run-test-vrt --components-js --grep multi-select` (executes e.g. all "Multi Select" related vrt tests
+    in Chromium and WebKit)
+  - `yarn test:vrt:components-js --ui` (launches UI Mode of Playwright, – not possible within Docker context but perhaps
+    still helpful for debugging purposes)
+  - `./docker.sh run-test-vrt --components-js:chrome` (executes all vrt tests in Chromium)
+  - `./docker.sh run-test-vrt --components-js:chrome:common` (executes all "common" vrt tests in Chromium)
+  - `./docker.sh run-test-vrt --components-js:chrome:custom` (executes all "custom" vrt tests in Chromium)
+  - `./docker.sh run-test-vrt --components-js:chrome:states` (executes all "states" vrt tests in Chromium)
+  - `./docker.sh run-test-vrt --components-js:safari` (executes all vrt tests in WebKit)
 - `./docker.sh run-test-vrt --components-angular` (vrt tests for angular components)
 - `./docker.sh run-test-vrt --components-react` (vrt tests for react components)
 - `./docker.sh run-test-vrt --components-react/nextjs` (vrt tests for react ssr components in nextjs setup)
@@ -178,15 +177,14 @@ _Note: `./docker.sh run-install` and `yarn` should be executed after every pull.
 - `./docker.sh run-test-vrt --utilities` (vrt tests for the utilities)
 - `./docker.sh run-test-vrt --fallbacks` (vrt tests for the fallbacks)
 
-#### What to do when VRT Puppeteer tests are failing
+#### What to do when VRT tests are failing
 
-1. Switch to your results directory in `/packages/{DESIRED_PACKAGE_NAME}/tests/vrt/(puppeteer?)/results`. Here you can
-   find the belonging `diff` and `regression` images.
+1. Switch to your results directory in `/packages/{DESIRED_PACKAGE_NAME}/tests/vrt/results`. Here you can find the
+   belonging `diff` and `regression` images.
 2. Check if you would like to accept the changes
 
-- **If yes**: Replace the reference shot in the `/vrt/fixtures` folder with the belonging one in the
-  `/vrt/(puppeteer?)/results` folder and delete the images in the `/vrt/(puppeteer?)/results` directory afterwards
-  manually.
+- **If yes**: Replace the reference shot in the `/vrt/fixtures` folder with the belonging one in the `/vrt/results`
+  folder and delete the images in the `/vrt/results` directory afterwards manually.
 - **If no**: Recheck your code and run the tests again, when you think you fixed it.
 
 ### Smoke Tests
@@ -196,8 +194,8 @@ _Note: `./docker.sh run-install` and `yarn` should be executed after every pull.
 1. Switch to **project root directory**
 2. For the different applications, select one of the following commands:
 
-- `./docker.sh run-test-smoke` (smoke tests for the entire application)
 - `./docker.sh run-test-smoke --components-js` (smoke tests for the native web components)
+- `./docker.sh run-test-smoke --components-react` (smoke tests for the React components based on web components)
 
 ---
 

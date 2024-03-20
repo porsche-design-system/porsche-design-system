@@ -1,0 +1,7 @@
+<button type="button">
+  <span class="sr-only"> Remove:</span>
+  <span>
+    <slot> </slot>
+  </span>
+  <p-icon class="icon hydrated" aria-hidden="true"> </p-icon>
+</button>

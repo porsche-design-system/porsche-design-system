@@ -8,9 +8,12 @@
 
 /projects/components-wrapper/environment.js
 
-/tests/vrt/puppeteer/results
-/tests/vrt/playwright/results
 /tests/unit/results
+/tests/e2e/results
+/tests/a11y/results
+/tests/vrt/results
+/tests/smoke/unit/results
+/tests/smoke/e2e/results
 /playwright-report/
 /playwright/.cache/
 

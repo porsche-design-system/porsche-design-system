@@ -1,2 +1,2 @@
-export * from './puppeteer-helper';
+export * from './playwright-helper';
 export * from './stencil';

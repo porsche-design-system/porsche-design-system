@@ -1,0 +1,10 @@
+<dialog inert="" tabindex="-1">
+  <div class="header">
+    <p-button-pure class="dismiss hydrated"> Dismiss flyout</p-button-pure>
+  </div>
+  <div class="scroller">
+    <nav class="content">
+      <slot> </slot>
+    </nav>
+  </div>
+</dialog>

@@ -1,6 +1,6 @@
-import * as puppeteer from 'puppeteer';
+import { type Locator, type Page } from '@playwright/test';
 import { TagName } from '@porsche-design-system/shared';
-import { ConsumedTagNamesForVersionsAndPrefixes, Properties, TagNameData, TagNamesWithPropertyNames } from './types';
+import { ConsumedTagNamesForVersionsAndPrefixes, Properties, TagNameData } from './types';
 import { getPdsTagNamesWithPropertyNames } from './helpers/convert-data-helper';
 
 declare global {
@@ -22,146 +22,167 @@ declare global {
 
 const pdsTagNamesWithPropertyNames = getPdsTagNamesWithPropertyNames();
 
-export const evaluatePage = async (page: puppeteer.Page): Promise<ConsumedTagNamesForVersionsAndPrefixes> => {
-  const pdsCrawlerRawData = await page.evaluate(
-    async ({ pdsTagNamesWithPropertyNames }): Promise<ConsumedTagNamesForVersionsAndPrefixes> => {
-      const tagNames = Object.keys(pdsTagNamesWithPropertyNames);
+const getPdsComponentName = async (locator: Locator, prefix: string): Promise<TagName | null> => {
+  const tagName = await locator.evaluate((el) => el.tagName.toLowerCase());
+  const tagNames = Object.keys(pdsTagNamesWithPropertyNames);
+  const match = tagNames.find((compName) => {
+    const prefixedTagName = prefix !== '' ? `${prefix}-${compName}` : compName;
 
-      const getPdsComponentNameByPrefix = (el: Element, prefix: string): TagName | null => {
-        const tagName = el.tagName.toLowerCase();
-        return (
-          (Object.keys(pdsTagNamesWithPropertyNames).find(
-            (compName) => (prefix ? `${prefix}-${compName}` : compName) === tagName
-          ) as TagName) || null
-        );
-      };
+    return prefixedTagName === tagName;
+  }) as TagName;
 
-      const getAllChildElements = (el: Element): Element[] => {
-        const children = Array.from(el.children)
-          .concat(Array.from(el.shadowRoot?.children || []))
-          .flat() as Element[];
-        return children.concat(children.map(getAllChildElements).flat());
-      };
+  return match || null;
+};
 
-      const getHighestLevelChildrenOrTextContent = (el: Element): string | null =>
-        Array.from(el.children).reduce((result, child) => {
-          if (child.children.length) {
-            const copy = child.cloneNode(true) as Element;
-            // we save only the highest dom level in the reports, in order not to make them too big
-            copy.innerHTML = '(the content was stripped)';
-            return result + copy.outerHTML;
-          }
-          return result + child.outerHTML;
-        }, '' as string) || el.textContent;
+const getHighestLevelChildrenOrTextContent = (locator: Locator): Promise<string | null> =>
+  locator.evaluate((el) => {
+    let content = '';
 
-      const getHostPdsComponent = (el: Element, prefix: string): TagName | null => {
-        const rootNode = (el.getRootNode() as ShadowRoot).host;
-        if (rootNode) {
-          return getPdsComponentNameByPrefix(rootNode, prefix);
-        } else {
-          return null;
-        }
-      };
+    for (const child of Array.from(el.children)) {
+      if (child.children.length) {
+        const copy = child.cloneNode(true) as Element;
 
-      const parseIfJSON = (jsonStr: string | number | symbol): object | string | number | symbol => {
-        if (typeof jsonStr === 'string') {
-          try {
-            // jsonStr is potentially JSON parsable string, e.g. "{ base: 'block', l: 'inline' }" or "true" or "123"
-            return JSON.parse(
-              jsonStr
-                .replace(/'/g, '"') // convert single quotes to double quotes
-                .replace(/[\s"]?([a-z\-]+)[\s"]?:([^//])/g, '"$1":$2') // wrap keys in double quotes if they don't have them but ignore potential urls
-            );
-          } catch {
-            // jsonStr is string, e.g. "block" or "inline"
-            return jsonStr;
-          }
-        } else {
-          // jsonStr is object, e.g. { base: 'block', l: 'inline' } or number, e.g. 123 or boolean, e.g. true
-          return jsonStr;
-        }
-      };
+        // we save only the highest dom level in the reports, in order not to make them too big
+        copy.innerHTML = '(the content was stripped)';
 
-      const getAllConsumedProperties = <
-        PComponentName extends keyof HTMLElementTagNameMap,
-        PComponentElement extends HTMLElementTagNameMap[PComponentName],
-        PComponentPropertyName extends keyof PComponentElement,
-        PComponentPropertyValue extends keyof PComponentElement[PComponentPropertyName],
-      >(
-        el: Element,
-        allPdsPropertiesForComponentName: string[]
-      ): Properties => {
-        // we consider this element as PDS Component, therefore we need this alias here
-        const pEl = el as PComponentElement;
-
-        const stringifyIfObject = (val: PComponentPropertyValue): PComponentPropertyValue => {
-          const parsedVal = parseIfJSON(val);
-          // check if it's an object and stringify
-          return typeof parsedVal === 'object'
-            ? (JSON.stringify(parsedVal) as PComponentPropertyValue)
-            : (parsedVal as PComponentPropertyValue);
-        };
-
-        return allPdsPropertiesForComponentName.reduce((result, propName) => {
-          const propValue = pEl[propName as PComponentPropertyName] as PComponentPropertyValue;
-          return {
-            ...result,
-            [propName]: stringifyIfObject(propValue),
-          };
-        }, {});
-      };
-
-      const getConsumedTagNamesForPrefix = (prefix: string, pdsElements: Element[]): TagNameData[] => {
-        return pdsElements.map((el) => {
-          const componentName = getPdsComponentNameByPrefix(el, prefix);
-
-          if (!componentName) {
-            throw new Error('Could not find component name');
-          }
-
-          const slotInfo = getHighestLevelChildrenOrTextContent(el);
-          const hostPdsComponent = getHostPdsComponent(el, prefix);
-
-          return {
-            [componentName]: {
-              properties: getAllConsumedProperties(el, pdsTagNamesWithPropertyNames[componentName]),
-              children: slotInfo ? slotInfo : null,
-              hostPdsComponent: hostPdsComponent ? hostPdsComponent : null,
-            },
-          } as TagNameData;
-        });
-      };
-
-      // get all dom elements from body
-      const allDOMElements = getAllChildElements(document.querySelector('body') as Element);
-      const getAllPdsElementsForPrefix = (prefix: string): Element[] =>
-        allDOMElements.filter((el: Element) =>
-          el.matches((prefix ? tagNames.map((tagName) => `${prefix}-${tagName}`) : tagNames).join())
-        );
-
-      if (!document.porscheDesignSystem) {
-        throw new Error('document.porscheDesignSystem is undefined');
+        content += copy.outerHTML;
       }
 
-      return Object.entries(document.porscheDesignSystem).reduce(
-        (result, [version, data]) =>
-          typeof data === 'string'
-            ? result // can be 'cdn' key with string value
-            : {
-                ...result,
-                [version]: data.prefixes.reduce(
-                  (result, prefix: string) => ({
-                    ...result,
-                    [prefix]: getConsumedTagNamesForPrefix(prefix, getAllPdsElementsForPrefix(prefix)),
-                  }),
-                  {}
-                ),
-              },
-        {}
-      );
-    },
-    { pdsTagNamesWithPropertyNames }
-  );
+      content += child.outerHTML;
+    }
 
-  return pdsCrawlerRawData;
+    return content || el.textContent;
+  });
+
+const getHostPdsComponent = async (locator: Locator, prefix: string): Promise<TagName | null> => {
+  const rootNode = await locator.evaluate((el) => (el.getRootNode() as ShadowRoot).host);
+
+  if (rootNode) {
+    return getPdsComponentName(locator, prefix);
+  } else {
+    return null;
+  }
+};
+
+const getAllConsumedProperties = <
+  PComponentName extends keyof HTMLElementTagNameMap,
+  PComponentElement extends HTMLElementTagNameMap[PComponentName],
+  PComponentPropertyName extends keyof PComponentElement,
+  PComponentPropertyValue extends keyof PComponentElement[PComponentPropertyName],
+>(
+  locator: Locator,
+  allPdsPropertiesForComponentName: string[]
+): Promise<Properties> => {
+  // WARNING: Cannot pull out complexity in functions here because it's executed inside evaluate (browser context)
+  return locator.evaluate((pComponentElement: PComponentElement, allPdsPropertiesForComponentName) => {
+    let properties = {};
+
+    for (const propName of allPdsPropertiesForComponentName) {
+      let propValue = pComponentElement[propName as PComponentPropertyName] as PComponentPropertyValue;
+
+      if (typeof propValue === 'string') {
+        try {
+          // jsonStr is potentially JSON parsable string, e.g. "{ base: 'block', l: 'inline' }" or "true" or "123"
+          propValue = JSON.parse(
+            propValue
+              .replace(/'/g, '"') // convert single quotes to double quotes
+              .replace(/[\s"]?([a-z\-]+)[\s"]?:([^//])/g, '"$1":$2') // wrap keys in double quotes if they don't have them but ignore potential urls
+          );
+        } catch {
+          // jsonStr is string, e.g. "block" or "inline", do nothing
+        }
+      }
+
+      // check if it's an object and stringify
+      if (typeof propValue === 'object') {
+        propValue = JSON.stringify(propValue) as PComponentPropertyValue;
+      }
+
+      properties = {
+        ...properties,
+        [propName]: propValue,
+      };
+    }
+
+    return properties;
+  }, allPdsPropertiesForComponentName);
+};
+
+const getConsumedTagNames = async (prefix: string, pdsElements: Locator[]): Promise<TagNameData[]> => {
+  const tagNameData: TagNameData[] = [];
+
+  for (const pdsElement of pdsElements) {
+    const componentName = await getPdsComponentName(pdsElement, prefix);
+
+    if (!componentName) {
+      continue;
+    }
+
+    const slotInfo = await getHighestLevelChildrenOrTextContent(pdsElement);
+    const hostPdsComponent = await getHostPdsComponent(pdsElement, prefix);
+
+    tagNameData.push({
+      [componentName]: {
+        properties: await getAllConsumedProperties(pdsElement, pdsTagNamesWithPropertyNames[componentName]),
+        children: slotInfo ? slotInfo : null,
+        hostPdsComponent: hostPdsComponent ? hostPdsComponent : null,
+      },
+    } as TagNameData);
+  }
+
+  return tagNameData;
+};
+
+const getAllPdsElements = async (allDOMElements: Locator[], prefix: string): Promise<Locator[]> => {
+  const tagNames = Object.keys(pdsTagNamesWithPropertyNames);
+  const selector = (prefix !== '' ? tagNames.map((tagName) => `${prefix}-${tagName}`) : tagNames).join();
+  const pdsElements: Locator[] = [];
+
+  for (const domElement of allDOMElements) {
+    const selectorMatch = await domElement.evaluate((el, selector) => el.matches(selector), selector);
+
+    if (selectorMatch) {
+      pdsElements.push(domElement);
+    }
+  }
+
+  return pdsElements;
+};
+
+export const evaluatePage = async (page: Page): Promise<ConsumedTagNamesForVersionsAndPrefixes> => {
+  const allDOMElements = await page.locator('body *').all();
+
+  const pdsConfig = await page.evaluate(async (): Promise<typeof document.porscheDesignSystem> => {
+    if (!document.porscheDesignSystem) {
+      throw new Error('document.porscheDesignSystem is undefined');
+    }
+
+    return document.porscheDesignSystem;
+  });
+
+  let consumedTagNamesPerVersion: ConsumedTagNamesForVersionsAndPrefixes = {};
+
+  for (const [key, { prefixes }] of Object.entries(pdsConfig)) {
+    if (key === 'cdn') {
+      continue;
+    }
+
+    let consumedTagNames = {};
+
+    for (let prefix of prefixes) {
+      const allPdsElementsForPrefix = await getAllPdsElements(allDOMElements, prefix);
+
+      consumedTagNames = {
+        ...consumedTagNames,
+        [prefix]: await getConsumedTagNames(prefix, allPdsElementsForPrefix),
+      };
+    }
+
+    consumedTagNamesPerVersion = {
+      ...consumedTagNamesPerVersion,
+      [key]: consumedTagNames,
+    };
+  }
+
+  return consumedTagNamesPerVersion;
 };

@@ -1,0 +1,3 @@
+<h2 class="root">
+  <slot> </slot>
+</h2>

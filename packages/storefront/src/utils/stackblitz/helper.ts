@@ -20,11 +20,11 @@ export type StackBlitzFrameworkOpts = Omit<OpenInStackBlitzOpts, 'framework' | '
 export type SharedImportKey = Exclude<keyof typeof sharedData, 'headVrt' | 'dataVrt'>;
 
 export const removeSharedImport = (markup: string): string =>
-  markup.replace(/import { .+ } from '@porsche-design-system\/shared';/, '');
+  markup.replace(/\s*import { .+ } from '@porsche-design-system\/shared';/, '');
 
 export const getSharedImportConstants = (sharedImportKeys: SharedImportKey[]): string => {
   const sharedImportConstants = sharedImportKeys
-    .map((x) => `const ${x} = ${JSON.stringify(sharedData[x], null, 1)};`)
+    .map((x) => `const ${x} = ${JSON.stringify(sharedData[x], null, 2)};`)
     .join('\n\n');
 
   return sharedImportConstants ? `${sharedImportConstants}\n\n` : '';
@@ -66,11 +66,12 @@ export const getExternalDependenciesOrThrow = (externalDependencies: ExternalDep
 export const isStableStorefrontRelease = (): boolean => /^\/v\d+\//.test(location.pathname);
 
 export const convertImportPaths = (markup: string, framework: Framework, pdsVersion: string): string => {
+  const relativeDirectory = framework === 'angular' ? '../../' : framework === 'vue' ? '../' : '';
   return isStableStorefrontReleaseOrForcedPdsVersion(pdsVersion)
     ? markup
     : markup.replace(
         new RegExp(`@porsche-design-system\\/components-${framework.replace(/^vanilla-/, '')}`, 'g'),
-        `./${framework === 'angular' ? '../../' : ''}@porsche-design-system/components-${framework}`
+        `./${relativeDirectory}@porsche-design-system/components-${framework}`
       );
 };
 

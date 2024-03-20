@@ -15,6 +15,7 @@
 /src/app/pages/generated
 
 # testing
+/tests/e2e/results
 /tests/vrt/results
 
 # profiling files
