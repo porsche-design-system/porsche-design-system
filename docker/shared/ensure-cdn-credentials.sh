@@ -10,19 +10,19 @@ if [[ -z "${CDN_SSH_KEY}" ]]; then
   exit 1
 fi
 
-cleanup_credentials() {
+cleanup_cdn_credentials() {
   local exit_code=$?
-  echo "task: [$(date)] \"cleanup_credentials\""
+  echo "task: [$(date)] \"cleanup_cdn_credentials\""
   rm "/root/.ssh/id_rsa"
   exit ${exit_code}
 }
 
-setup_credentials() {
-  echo "task: [$(date)] \"setup_credentials\""
+setup_cdn_credentials() {
+  echo "task: [$(date)] \"setup_cdn_credentials\""
   mkdir -p "/root/.ssh"
   printf -- "${CDN_SSH_KEY}\n" > "/root/.ssh/id_rsa"
   chmod 600 "/root/.ssh/id_rsa"
 }
 
-trap cleanup_credentials EXIT
-setup_credentials
+trap cleanup_cdn_credentials EXIT
+setup_cdn_credentials
