@@ -1,0 +1,7 @@
+<img
+  src="http://localhost:3001/icons/arrow-right.min.c5cbce45d98d6d1178cc72ea8bfbfa10.svg"
+  width="24"
+  height="24"
+  loading="lazy"
+  alt=""
+/>

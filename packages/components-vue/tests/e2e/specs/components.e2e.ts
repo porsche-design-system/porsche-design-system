@@ -1,13 +1,9 @@
-import type { Page } from 'puppeteer';
-import { getConsoleErrorsAmount, goto, initConsoleObserver } from '../helpers';
+import { test, expect } from '@playwright/test';
+import { getConsoleErrorsAmount, getOuterHTML, goto, initConsoleObserver } from '../helpers';
 
 const console = require('console');
 
-let page: Page;
-beforeEach(async () => (page = await browser.newPage()));
-afterEach(async () => await page.close());
-
-it('overview should work without errors', async () => {
+test('overview should work without errors', async ({ page }) => {
   initConsoleObserver(page);
   await goto(page, 'overview');
 
@@ -17,7 +13,7 @@ it('overview should work without errors', async () => {
   expect(getConsoleErrorsAmount()).toBe(1);
 });
 
-it('should stringify object props correctly', async () => {
+test('should stringify object props correctly', async ({ page }) => {
   await goto(page, 'overview');
 
   const innerHTML = await page.evaluate(() => document.querySelector('#app').innerHTML);
@@ -27,19 +23,19 @@ it('should stringify object props correctly', async () => {
   expect(innerHTML).not.toContain('[object Object]');
 });
 
-// it('should initialize component deterministically', async () => {
-//   await goto(page, 'core-initializer');
-//   await new Promise((resolve) => setTimeout(resolve, 1000));
-//
-//   const [component1, component2] = await page.$$('p-text-field-wrapper');
-//
-//   const component1HTML = await getOuterHTML(component1);
-//   const component2HTML = await getOuterHTML(component2);
-//
-//   expect(component1HTML).toBe(component2HTML);
-//
-//   if (component1HTML !== component2HTML) {
-//     console.log('component1HTML', component1HTML);
-//     console.log('component2HTML', component2HTML);
-//   }
-// });
+test.fixme('should initialize component deterministically', async ({ page }) => {
+  await goto(page, 'core-initializer');
+  await new Promise((resolve) => setTimeout(resolve, 1000));
+
+  const [component1, component2] = await page.$$('p-text-field-wrapper');
+
+  const component1HTML = await getOuterHTML(component1);
+  const component2HTML = await getOuterHTML(component2);
+
+  expect(component1HTML).toBe(component2HTML);
+
+  if (component1HTML !== component2HTML) {
+    console.log('component1HTML', component1HTML);
+    console.log('component2HTML', component2HTML);
+  }
+});

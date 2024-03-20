@@ -18,13 +18,13 @@
   },
   "dependencies": {
     "@porsche-design-system/components-manager-core": "0.0.0",
-    "globby": "^11.0.4",
-    "webpack": "^5.89.0"
+    "globby": "^11.1.0",
+    "webpack": "^5.90.3"
   },
   "devDependencies": {
     "jest": "^29.7.0",
     "ts-jest": "^29.1.2",
-    "typescript": "~5.3.3"
+    "typescript": "~5.4.2"
   },
   "volta": {
     "extends": "../../../../package.json"

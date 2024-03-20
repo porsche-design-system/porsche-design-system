@@ -21,22 +21,19 @@ import {
 } from '@porsche-design-system/utilities-v2';
 import { getFontSizeText } from './font-size-text-styles';
 
-// TODO: why not using getHiddenTextJssStyle()?
 // Needed for slotted anchor and hidden label, which then enlarges the hidden label to equal host size and indents the text to be visually hidden.
 const getVisibilityJssStyle: GetJssStyleFunction = (hideLabel: boolean): JssStyle => {
   return hideLabel
     ? {
-        position: 'absolute',
-        inset: 0,
         whiteSpace: 'nowrap',
-        textIndent: '-999999px', // TODO: check if text-indent still works for RTL-mode in this case
+        textIndent: '-999999px', // Needed because standard sr-only classes don't work here due that we need a bounding box for the focus style
+        overflow: 'hidden',
       }
     : {
-        position: 'relative',
-        inset: 'auto',
         whiteSpace: 'inherit',
         textIndent: 0,
         zIndex: 1, // fix Firefox bug on :hover (#2583)
+        overflow: 'visible',
       };
 };
 
@@ -81,7 +78,6 @@ export const getLinkButtonPureStyles = (
     },
     root: {
       display: 'flex',
-      gap: spacingStaticXSmall,
       width: '100%',
       padding: 0,
       margin: 0, // Removes default button margin on safari 15
@@ -91,6 +87,9 @@ export const getLinkButtonPureStyles = (
       }),
       ...textSmallStyle,
       ...mergeDeep(
+        buildResponsiveStyles(hideLabel, (hidelabelValue: boolean) => ({
+          gap: hidelabelValue ? 0 : spacingStaticXSmall,
+        })),
         buildResponsiveStyles(stretch, (stretchValue: boolean) => ({
           justifyContent: stretchValue ? 'space-between' : 'flex-start',
           alignItems: stretchValue ? 'center' : 'flex-start',
@@ -130,30 +129,32 @@ export const getLinkButtonPureStyles = (
         })),
       ...(!hasSlottedAnchor && getFocusJssStyle(theme, { pseudo: true, offset: '-2px' })),
     },
-    label: {
-      transition: getTransition('opacity'),
-      position: 'relative', // needed for hover state when icon="none" is set
-    },
-    ...(hasIcon && {
-      icon: {
-        position: 'relative',
-        flexShrink: '0',
-        width: fontLineHeight,
-        height: fontLineHeight,
-        // workaround for Safari to optimize vertical alignment of icons
-        // TODO: check if this is still needed after optimized icons are included
-        '@supports (width: round(down, 1px, 1px))': {
-          width: `round(down, ${fontLineHeight}, 1px)`,
-          height: `round(down, ${fontLineHeight}, 1px)`,
-        },
-      },
-      label: mergeDeep(
-        buildResponsiveStyles(hideLabel, getVisibilityJssStyle),
-        buildResponsiveStyles(alignLabel, (alignLabelValue: AlignLabel) => ({
-          // TODO: we should remove 'left' here and map the value in the component class already to 'start' but might be difficult due to breakpoint customizable prop value
-          order: alignLabelValue === 'left' || alignLabelValue === 'start' ? -1 : 0,
-        }))
-      ),
-    }),
+    ...(hasIcon
+      ? {
+          icon: {
+            position: 'relative',
+            flexShrink: '0',
+            width: fontLineHeight,
+            height: fontLineHeight,
+            // workaround for Safari to optimize vertical alignment of icons
+            // TODO: check if this is still needed after optimized icons are included
+            '@supports (width: round(down, 1px, 1px))': {
+              width: `round(down, ${fontLineHeight}, 1px)`,
+              height: `round(down, ${fontLineHeight}, 1px)`,
+            },
+          },
+          label: mergeDeep(
+            buildResponsiveStyles(hideLabel, getVisibilityJssStyle),
+            buildResponsiveStyles(alignLabel, (alignLabelValue: AlignLabel) => ({
+              // TODO: we should remove 'left' here and map the value in the component class already to 'start' but might be difficult due to breakpoint customizable prop value
+              order: alignLabelValue === 'left' || alignLabelValue === 'start' ? -1 : 0,
+            }))
+          ),
+        }
+      : {
+          label: {
+            position: 'relative', // needed for hover state when icon="none" is set
+          },
+        }),
   };
 };

@@ -22,8 +22,8 @@ exports[`getComponentCss() should return correct css for isPrimaryScrollerVisibl
 }
 dialog {
   position: fixed;
-  height: 100vh;
-  max-height: 100vh;
+  height: 100dvh;
+  max-height: 100dvh;
   margin: 0;
   padding: 0;
   border: 0;
@@ -152,8 +152,8 @@ exports[`getComponentCss() should return correct css for isPrimaryScrollerVisibl
 }
 dialog {
   position: fixed;
-  height: 100vh;
-  max-height: 100vh;
+  height: 100dvh;
+  max-height: 100dvh;
   margin: 0;
   padding: 0;
   border: 0;
@@ -267,8 +267,8 @@ exports[`getComponentCss() should return correct css for isPrimaryScrollerVisibl
 }
 dialog {
   position: fixed;
-  height: 100vh;
-  max-height: 100vh;
+  height: 100dvh;
+  max-height: 100dvh;
   margin: 0;
   padding: 0;
   border: 0;
@@ -380,8 +380,8 @@ exports[`getComponentCss() should return correct css for isPrimaryScrollerVisibl
 }
 dialog {
   position: fixed;
-  height: 100vh;
-  max-height: 100vh;
+  height: 100dvh;
+  max-height: 100dvh;
   margin: 0;
   padding: 0;
   border: 0;
@@ -505,8 +505,8 @@ exports[`getComponentCss() should return correct css for isPrimaryScrollerVisibl
 }
 dialog {
   position: fixed;
-  height: 100vh;
-  max-height: 100vh;
+  height: 100dvh;
+  max-height: 100dvh;
   margin: 0;
   padding: 0;
   border: 0;
@@ -615,8 +615,8 @@ exports[`getComponentCss() should return correct css for isPrimaryScrollerVisibl
 }
 dialog {
   position: fixed;
-  height: 100vh;
-  max-height: 100vh;
+  height: 100dvh;
+  max-height: 100dvh;
   margin: 0;
   padding: 0;
   border: 0;
@@ -725,8 +725,8 @@ exports[`getComponentCss() should return correct css for isPrimaryScrollerVisibl
 }
 dialog {
   position: fixed;
-  height: 100vh;
-  max-height: 100vh;
+  height: 100dvh;
+  max-height: 100dvh;
   margin: 0;
   padding: 0;
   border: 0;
@@ -850,8 +850,8 @@ exports[`getComponentCss() should return correct css for isPrimaryScrollerVisibl
 }
 dialog {
   position: fixed;
-  height: 100vh;
-  max-height: 100vh;
+  height: 100dvh;
+  max-height: 100dvh;
   margin: 0;
   padding: 0;
   border: 0;
@@ -960,8 +960,8 @@ exports[`getComponentCss() should return correct css for isPrimaryScrollerVisibl
 }
 dialog {
   position: fixed;
-  height: 100vh;
-  max-height: 100vh;
+  height: 100dvh;
+  max-height: 100dvh;
   margin: 0;
   padding: 0;
   border: 0;

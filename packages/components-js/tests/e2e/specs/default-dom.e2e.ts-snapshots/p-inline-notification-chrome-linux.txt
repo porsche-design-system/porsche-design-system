@@ -1,0 +1,16 @@
+<p-icon class="icon hydrated" aria-hidden="true"> </p-icon>
+<div
+  id="banner"
+  class="content"
+  role="status"
+  aria-live="polite"
+  aria-labelledby="label"
+  aria-describedby="description"
+>
+  <p id="description">
+    <slot> </slot>
+  </p>
+</div>
+<p-button-pure class="close hydrated" aria-controls="banner">
+  Close notification</p-button-pure
+>

@@ -51,7 +51,6 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
 
 .root {
   display: flex;
-  gap: 4px;
   width: 100%;
   padding: 0;
   margin: 0;
@@ -59,6 +58,7 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
+  gap: 0;
   justify-content: space-between;
   align-items: center;
   font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
@@ -87,18 +87,17 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   outline: 2px solid #1A44EA;
   outline-offset: -2px;
 }
-.label {
-  position: absolute;
-  inset: 0;
-  white-space: nowrap;
-  text-indent: -999999px;
-  order: -1;
-}
 .icon {
   position: relative;
   flex-shrink: 0;
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
+}
+.label {
+  white-space: nowrap;
+  text-indent: -999999px;
+  overflow: hidden;
+  order: -1;
 }
 @supports (width: round(down, 1px, 1px)) {
   .icon {
@@ -109,6 +108,7 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
 
 @media(min-width:480px) {
   .root {
+    gap: 4px;
     justify-content: flex-start;
     align-items: flex-start;
     font-size: 1rem;
@@ -118,17 +118,17 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
     left: -4px;
   }
   .label {
-    position: relative;
-    inset: auto;
     white-space: inherit;
     text-indent: 0;
     z-index: 1;
+    overflow: visible;
     order: 0;
   }
 }
 
 @media(min-width:760px) {
   .root {
+    gap: 0;
     justify-content: space-between;
     align-items: center;
     font-size: clamp(1.13rem, 0.21vw + 1.08rem, 1.33rem);
@@ -138,16 +138,16 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
     left: -2px;
   }
   .label {
-    position: absolute;
-    inset: 0;
     white-space: nowrap;
     text-indent: -999999px;
+    overflow: hidden;
     order: -1;
   }
 }
 
 @media(min-width:1000px) {
   .root {
+    gap: 4px;
     justify-content: flex-start;
     align-items: flex-start;
     font-size: clamp(1.27rem, 0.51vw + 1.16rem, 1.78rem);
@@ -157,17 +157,17 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
     left: -4px;
   }
   .label {
-    position: relative;
-    inset: auto;
     white-space: inherit;
     text-indent: 0;
     z-index: 1;
+    overflow: visible;
     order: 0;
   }
 }
 
 @media(min-width:1300px) {
   .root {
+    gap: 0;
     justify-content: space-between;
     align-items: center;
     font-size: clamp(1.42rem, 0.94vw + 1.23rem, 2.37rem);
@@ -177,16 +177,16 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
     left: -2px;
   }
   .label {
-    position: absolute;
-    inset: 0;
     white-space: nowrap;
     text-indent: -999999px;
+    overflow: hidden;
     order: -1;
   }
 }
 
 @media(min-width:1760px) {
   .root {
+    gap: 4px;
     justify-content: flex-start;
     align-items: flex-start;
     font-size: inherit;
@@ -196,11 +196,10 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
     left: -4px;
   }
   .label {
-    position: relative;
-    inset: auto;
     white-space: inherit;
     text-indent: 0;
     z-index: 1;
+    overflow: visible;
     order: 0;
   }
 }
@@ -229,7 +228,6 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
 }
 .root {
   display: flex;
-  gap: 4px;
   width: 100%;
   padding: 0;
   margin: 0;
@@ -237,6 +235,7 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
+  gap: 0;
   justify-content: flex-start;
   align-items: flex-start;
   font-size: 1rem;
@@ -265,18 +264,17 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   outline: 2px solid #1A44EA;
   outline-offset: -2px;
 }
-.label {
-  position: absolute;
-  inset: 0;
-  white-space: nowrap;
-  text-indent: -999999px;
-  order: 0;
-}
 .icon {
   position: relative;
   flex-shrink: 0;
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
+}
+.label {
+  white-space: nowrap;
+  text-indent: -999999px;
+  overflow: hidden;
+  order: 0;
 }
 @supports (width: round(down, 1px, 1px)) {
   .icon {
@@ -286,70 +284,80 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
 }
 
 @media(min-width:480px) {
+  .root {
+    gap: 4px;
+  }
   .root::before {
     right: -4px;
     left: -4px;
   }
   .label {
-    position: relative;
-    inset: auto;
     white-space: inherit;
     text-indent: 0;
     z-index: 1;
+    overflow: visible;
   }
 }
 
 @media(min-width:760px) {
+  .root {
+    gap: 0;
+  }
   .root::before {
     right: -2px;
     left: -2px;
   }
   .label {
-    position: absolute;
-    inset: 0;
     white-space: nowrap;
     text-indent: -999999px;
+    overflow: hidden;
   }
 }
 
 @media(min-width:1000px) {
+  .root {
+    gap: 4px;
+  }
   .root::before {
     right: -4px;
     left: -4px;
   }
   .label {
-    position: relative;
-    inset: auto;
     white-space: inherit;
     text-indent: 0;
     z-index: 1;
+    overflow: visible;
   }
 }
 
 @media(min-width:1300px) {
+  .root {
+    gap: 0;
+  }
   .root::before {
     right: -2px;
     left: -2px;
   }
   .label {
-    position: absolute;
-    inset: 0;
     white-space: nowrap;
     text-indent: -999999px;
+    overflow: hidden;
   }
 }
 
 @media(min-width:1760px) {
+  .root {
+    gap: 4px;
+  }
   .root::before {
     right: -4px;
     left: -4px;
   }
   .label {
-    position: relative;
-    inset: auto;
     white-space: inherit;
     text-indent: 0;
     z-index: 1;
+    overflow: visible;
   }
 }
 
@@ -377,7 +385,6 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
 }
 .root {
   display: flex;
-  gap: 4px;
   width: 100%;
   padding: 0;
   margin: 0;
@@ -385,6 +392,7 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
+  gap: 4px;
   justify-content: flex-start;
   align-items: flex-start;
   font-size: 1rem;
@@ -413,19 +421,18 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   outline: 2px solid #1A44EA;
   outline-offset: -2px;
 }
-.label {
-  position: relative;
-  inset: auto;
-  white-space: inherit;
-  text-indent: 0;
-  z-index: 1;
-  order: 0;
-}
 .icon {
   position: relative;
   flex-shrink: 0;
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
+}
+.label {
+  white-space: inherit;
+  text-indent: 0;
+  z-index: 1;
+  overflow: visible;
+  order: 0;
 }
 @supports (width: round(down, 1px, 1px)) {
   .icon {
@@ -458,7 +465,6 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
 }
 .root {
   display: flex;
-  gap: 4px;
   width: 100%;
   padding: 0;
   margin: 0;
@@ -466,6 +472,7 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
+  gap: 4px;
   justify-content: flex-start;
   align-items: flex-start;
   font-size: 1rem;
@@ -494,19 +501,18 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   outline: 2px solid #1A44EA;
   outline-offset: -2px;
 }
-.label {
-  position: relative;
-  inset: auto;
-  white-space: inherit;
-  text-indent: 0;
-  z-index: 1;
-  order: 0;
-}
 .icon {
   position: relative;
   flex-shrink: 0;
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
+}
+.label {
+  white-space: inherit;
+  text-indent: 0;
+  z-index: 1;
+  overflow: visible;
+  order: 0;
 }
 @supports (width: round(down, 1px, 1px)) {
   .icon {
@@ -569,7 +575,6 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
 }
 .root {
   display: flex;
-  gap: 4px;
   width: 100%;
   padding: 0;
   margin: 0;
@@ -577,6 +582,7 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
+  gap: 4px;
   justify-content: flex-start;
   align-items: flex-start;
   font-size: 1rem;
@@ -592,19 +598,18 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   border-radius: 4px;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
-.label {
-  position: relative;
-  inset: auto;
-  white-space: inherit;
-  text-indent: 0;
-  z-index: 1;
-  order: 0;
-}
 .icon {
   position: relative;
   flex-shrink: 0;
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
+}
+.label {
+  white-space: inherit;
+  text-indent: 0;
+  z-index: 1;
+  overflow: visible;
+  order: 0;
 }
 @supports (width: round(down, 1px, 1px)) {
   .icon {
@@ -637,7 +642,6 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
 }
 .root {
   display: flex;
-  gap: 4px;
   width: 100%;
   padding: 0;
   margin: 0;
@@ -645,6 +649,7 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
+  gap: 4px;
   justify-content: flex-start;
   align-items: flex-start;
   font-size: 1rem;
@@ -673,19 +678,18 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   outline: 2px solid #1A44EA;
   outline-offset: -2px;
 }
-.label {
-  position: relative;
-  inset: auto;
-  white-space: inherit;
-  text-indent: 0;
-  z-index: 1;
-  order: 0;
-}
 .icon {
   position: relative;
   flex-shrink: 0;
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
+}
+.label {
+  white-space: inherit;
+  text-indent: 0;
+  z-index: 1;
+  overflow: visible;
+  order: 0;
 }
 @supports (width: round(down, 1px, 1px)) {
   .icon {
@@ -718,7 +722,6 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
 }
 .root {
   display: flex;
-  gap: 4px;
   width: 100%;
   padding: 0;
   margin: 0;
@@ -726,6 +729,7 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
+  gap: 4px;
   justify-content: flex-start;
   align-items: flex-start;
   font-size: 1rem;
@@ -754,19 +758,18 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   outline: 2px solid #1A44EA;
   outline-offset: -2px;
 }
-.label {
-  position: relative;
-  inset: auto;
-  white-space: inherit;
-  text-indent: 0;
-  z-index: 1;
-  order: -1;
-}
 .icon {
   position: relative;
   flex-shrink: 0;
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
+}
+.label {
+  white-space: inherit;
+  text-indent: 0;
+  z-index: 1;
+  overflow: visible;
+  order: -1;
 }
 @supports (width: round(down, 1px, 1px)) {
   .icon {
@@ -799,7 +802,6 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
 }
 .root {
   display: flex;
-  gap: 4px;
   width: 100%;
   padding: 0;
   margin: 0;
@@ -807,6 +809,7 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
+  gap: 4px;
   justify-content: flex-start;
   align-items: flex-start;
   font-size: 1rem;
@@ -835,19 +838,18 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   outline: 2px solid #1A44EA;
   outline-offset: -2px;
 }
-.label {
-  position: relative;
-  inset: auto;
-  white-space: inherit;
-  text-indent: 0;
-  z-index: 1;
-  order: 0;
-}
 .icon {
   position: relative;
   flex-shrink: 0;
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
+}
+.label {
+  white-space: inherit;
+  text-indent: 0;
+  z-index: 1;
+  overflow: visible;
+  order: 0;
 }
 @supports (width: round(down, 1px, 1px)) {
   .icon {
@@ -880,7 +882,6 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
 }
 .root {
   display: flex;
-  gap: 4px;
   width: 100%;
   padding: 0;
   margin: 0;
@@ -888,6 +889,7 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
+  gap: 0;
   justify-content: flex-start;
   align-items: flex-start;
   font-size: 1rem;
@@ -916,18 +918,17 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   outline: 2px solid #1A44EA;
   outline-offset: -2px;
 }
-.label {
-  position: absolute;
-  inset: 0;
-  white-space: nowrap;
-  text-indent: -999999px;
-  order: 0;
-}
 .icon {
   position: relative;
   flex-shrink: 0;
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
+}
+.label {
+  white-space: nowrap;
+  text-indent: -999999px;
+  overflow: hidden;
+  order: 0;
 }
 @supports (width: round(down, 1px, 1px)) {
   .icon {
@@ -960,7 +961,6 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
 }
 .root {
   display: flex;
-  gap: 4px;
   width: 100%;
   padding: 0;
   margin: 0;
@@ -968,6 +968,7 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
+  gap: 0;
   justify-content: flex-start;
   align-items: flex-start;
   font-size: 1rem;
@@ -996,18 +997,17 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   outline: 2px solid #1A44EA;
   outline-offset: -2px;
 }
-.label {
-  position: absolute;
-  inset: 0;
-  white-space: nowrap;
-  text-indent: -999999px;
-  order: 0;
-}
 .icon {
   position: relative;
   flex-shrink: 0;
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
+}
+.label {
+  white-space: nowrap;
+  text-indent: -999999px;
+  overflow: hidden;
+  order: 0;
 }
 @supports (width: round(down, 1px, 1px)) {
   .icon {
@@ -1070,7 +1070,6 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
 }
 .root {
   display: flex;
-  gap: 4px;
   width: 100%;
   padding: 0;
   margin: 0;
@@ -1078,6 +1077,7 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
+  gap: 0;
   justify-content: flex-start;
   align-items: flex-start;
   font-size: 1rem;
@@ -1093,18 +1093,17 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   border-radius: 4px;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
-.label {
-  position: absolute;
-  inset: 0;
-  white-space: nowrap;
-  text-indent: -999999px;
-  order: 0;
-}
 .icon {
   position: relative;
   flex-shrink: 0;
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
+}
+.label {
+  white-space: nowrap;
+  text-indent: -999999px;
+  overflow: hidden;
+  order: 0;
 }
 @supports (width: round(down, 1px, 1px)) {
   .icon {
@@ -1136,7 +1135,6 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
 }
 .root {
   display: flex;
-  gap: 4px;
   width: 100%;
   padding: 0;
   margin: 0;
@@ -1144,6 +1142,7 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
+  gap: 4px;
   justify-content: space-between;
   align-items: center;
   font-size: clamp(1.42rem, 0.94vw + 1.23rem, 2.37rem);
@@ -1175,19 +1174,18 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   outline: 2px solid #1A44EA;
   outline-offset: -2px;
 }
-.label {
-  position: relative;
-  inset: auto;
-  white-space: inherit;
-  text-indent: 0;
-  z-index: 1;
-  order: -1;
-}
 .icon {
   position: relative;
   flex-shrink: 0;
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
+}
+.label {
+  white-space: inherit;
+  text-indent: 0;
+  z-index: 1;
+  overflow: visible;
+  order: -1;
 }
 @supports (width: round(down, 1px, 1px)) {
   .icon {
@@ -1219,7 +1217,6 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
 }
 .root {
   display: flex;
-  gap: 4px;
   width: 100%;
   padding: 0;
   margin: 0;
@@ -1227,6 +1224,7 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
+  gap: 4px;
   justify-content: space-between;
   align-items: center;
   font-size: clamp(1.42rem, 0.94vw + 1.23rem, 2.37rem);
@@ -1258,19 +1256,18 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   outline: 2px solid #1A44EA;
   outline-offset: -2px;
 }
-.label {
-  position: relative;
-  inset: auto;
-  white-space: inherit;
-  text-indent: 0;
-  z-index: 1;
-  order: -1;
-}
 .icon {
   position: relative;
   flex-shrink: 0;
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
+}
+.label {
+  white-space: inherit;
+  text-indent: 0;
+  z-index: 1;
+  overflow: visible;
+  order: -1;
 }
 @supports (width: round(down, 1px, 1px)) {
   .icon {
@@ -1303,7 +1300,6 @@ exports[`getComponentCss() should return correct css for {"icon":"none","iconSou
 }
 .root {
   display: flex;
-  gap: 4px;
   width: 100%;
   padding: 0;
   margin: 0;
@@ -1311,6 +1307,7 @@ exports[`getComponentCss() should return correct css for {"icon":"none","iconSou
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
+  gap: 4px;
   justify-content: flex-start;
   align-items: flex-start;
   font-size: inherit;
@@ -1340,7 +1337,6 @@ exports[`getComponentCss() should return correct css for {"icon":"none","iconSou
   outline-offset: -2px;
 }
 .label {
-  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   position: relative;
 }
 @media(hover:hover) {
@@ -1367,7 +1363,6 @@ exports[`getComponentCss() should return correct css for {"icon":"none","iconSou
 }
 .root {
   display: flex;
-  gap: 4px;
   width: 100%;
   padding: 0;
   margin: 0;
@@ -1375,6 +1370,7 @@ exports[`getComponentCss() should return correct css for {"icon":"none","iconSou
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
+  gap: 4px;
   justify-content: flex-start;
   align-items: flex-start;
   font-size: 1rem;
@@ -1404,7 +1400,6 @@ exports[`getComponentCss() should return correct css for {"icon":"none","iconSou
   outline-offset: -2px;
 }
 .label {
-  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   position: relative;
 }
 @media(hover:hover) {

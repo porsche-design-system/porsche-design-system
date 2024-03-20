@@ -1,0 +1,19 @@
+<div class="root">
+  <div class="scroll-area">
+    <div class="scroll-wrapper">
+      <slot> </slot>
+      <div class="trigger"></div>
+      <div class="trigger"></div>
+    </div>
+  </div>
+  <div class="action-prev">
+    <button type="button" tabindex="-1" aria-hidden="true" aria-label="prev">
+      <p-icon class="icon hydrated"> </p-icon>
+    </button>
+  </div>
+  <div class="action-next">
+    <button type="button" tabindex="-1" aria-hidden="true" aria-label="next">
+      <p-icon class="icon hydrated"> </p-icon>
+    </button>
+  </div>
+</div>

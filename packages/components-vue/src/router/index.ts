@@ -151,7 +151,7 @@ export const routes: RouteType[] = [
     component: fromExamples.SelectExampleDynamic,
   },
   {
-    path: '/select-example-dynamic',
+    path: '/select-example-required',
     name: 'Select Example Required',
     component: fromExamples.SelectExampleRequired,
   },

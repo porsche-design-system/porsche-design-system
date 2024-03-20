@@ -1,11 +1,7 @@
-import type { Page } from 'puppeteer';
+import { test, expect } from '@playwright/test';
 import { goto } from '../helpers';
 
-let page: Page;
-beforeEach(async () => (page = await browser.newPage()));
-afterEach(async () => await page.close());
-
-it('should correctly set activeTabIndex on p-tabs-bar', async () => {
+test('should correctly set activeTabIndex on p-tabs-bar', async ({ page }) => {
   await goto(page, 'tabs-bar-navigation-bug');
 
   const getTabsBarActiveTabIndex = (): Promise<number> => page.$eval('p-tabs-bar', (el) => (el as any).activeTabIndex);

@@ -9,19 +9,19 @@
     "start": "yarn clean:reports && tsx src/index.ts",
     "start-app": "serve-cdn",
     "test": "yarn test:e2e",
-    "test:e2e": "PORT=3001 jest --colors -c tests/e2e/config/jest.config.ts",
+    "test:e2e": "playwright test --config=tests/e2e/config/playwright.config.ts",
     "clean": "yarn clean:node_modules && yarn clean:reports",
     "clean:node_modules": "rm -rf ./node_modules && rm -rf ./yarn-error.log",
     "clean:reports": "rm -rf ./reports"
   },
   "dependencies": {
     "@porsche-design-system/assets": "5.0.2",
-    "@porsche-design-system/components-js": "3.13.0",
+    "@porsche-design-system/components-js": "3.13.1",
     "@porsche-design-system/shared": "0.0.0"
   },
   "devDependencies": {
     "tsx": "^4.7.1",
-    "typescript": "~5.3.3"
+    "typescript": "~5.4.2"
   },
   "volta": {
     "extends": "../../package.json"

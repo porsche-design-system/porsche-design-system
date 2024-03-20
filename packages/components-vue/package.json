@@ -21,16 +21,16 @@
     "test": "yarn test:unit && yarn test:e2e && yarn test:vrt",
     "test:unit": "yarn test:unit:vue-wrapper",
     "test:unit:vue-wrapper": "jest --colors -c projects/vue-wrapper/tests/unit/config/jest.config.js",
-    "test:e2e": "yarn build-app && TYPE=E2E PORT=5173 jest --colors -c tests/e2e/config/jest.config.ts",
+    "test:e2e": "yarn build-app && playwright test --config=tests/e2e/config/playwright.config.ts",
     "test:vrt": "playwright test --config=tests/vrt/config/playwright.config.ts",
     "clean": "yarn clean:node_modules && yarn clean:build",
     "clean:node_modules": "rm -rf ./node_modules && rm -rf ./yarn-error.log",
     "clean:build": "rm -rf ./dist"
   },
   "dependencies": {
-    "@porsche-design-system/components-vue": "3.13.0",
-    "vue": "^3.4.19",
-    "vue-imask": "^7.4.0",
+    "@porsche-design-system/components-vue": "3.13.1",
+    "vue": "^3.4.21",
+    "vue-imask": "^7.5.0",
     "vue-router": "^4.3.0"
   },
   "devDependencies": {
@@ -42,21 +42,21 @@
     "@vitejs/plugin-vue": "^5.0.4",
     "@vitejs/plugin-vue-jsx": "^3.1.0",
     "@vue/eslint-config-prettier": "^9.0.0",
-    "@vue/eslint-config-typescript": "^12.0.0",
-    "@vue/tsconfig": "^0.4.0",
+    "@vue/eslint-config-typescript": "^13.0.0",
+    "@vue/tsconfig": "0.4.0",
     "@vue/vue3-jest": "29.2.6",
     "change-case": "^5.4.3",
     "concurrently": "^8.2.2",
-    "eslint": "^8.56.0",
-    "eslint-plugin-vue": "^9.21.1",
+    "eslint": "^8.57.0",
+    "eslint-plugin-vue": "^9.23.0",
     "globby": "^14.0.1",
     "local-web-server": "^5.3.1",
     "tsx": "^4.7.1",
-    "typescript": "~5.3.3",
-    "vite": "^5.1.4",
+    "typescript": "~5.4.2",
+    "vite": "^5.1.6",
     "vite-plugin-html": "^3.2.2",
     "vite-plugin-static-copy": "^1.0.1",
-    "vue-tsc": "^1.8.27"
+    "vue-tsc": "^2.0.6"
   },
   "volta": {
     "extends": "../../package.json"
