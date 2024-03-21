@@ -27,6 +27,7 @@ const config: PlaywrightTestConfig = {
       threshold: 0,
     },
   },
+  snapshotPathTemplate: '{testDir}/{testFilePath}-snapshots/{arg}{ext}',
   /* Run tests in files in parallel */
   fullyParallel: true,
   /* Fail the build on CI if you accidentally left test.only in the source code. */
