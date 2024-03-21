@@ -1,3 +1,5 @@
+name: 'Deploy and Release'
+
 on:
   workflow_call:
     secrets:
@@ -34,9 +36,22 @@ on:
       uxpin-token-latest:
         description: 'uxpin-token-latest'
         required: true
-name: 'Deploy and Release'
+
 env:
   PDS_PLAYWRIGHT_DOCKER_IMAGE: ghcr.io/porsche-design-system/porsche-design-system/playwright:v1.42.1-focal
+
+# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Allow only one concurrent deployment, skipping runs queued between the run in-progress and latest queued.
+# However, do NOT cancel in-progress runs as we want to allow these production deployments to complete.
+concurrency:
+  group: 'pages'
+  cancel-in-progress: false
+
 jobs:
   assets-deployment:
     name: 'Assets Deployment'
