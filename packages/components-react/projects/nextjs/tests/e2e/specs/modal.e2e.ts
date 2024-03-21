@@ -7,7 +7,7 @@ const getLinkToModal = (page: Page) => page.getByRole('link', { name: 'Link to M
 const getDismissButton = (page: Page) => page.getByRole('button', { name: 'Dismiss modal' });
 
 async function getScrollPosition(page: Page): Promise<number> {
-  return await page.evaluate(() => window.scrollY);
+  return page.evaluate(() => window.scrollY);
 }
 
 test.use({
