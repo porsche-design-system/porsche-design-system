@@ -63,7 +63,6 @@ services:
       - storefront-node-modules:/opt/porsche-design-system-app/packages/storefront/node_modules
       - utilities-node-modules:/opt/porsche-design-system-app/packages/utilities/node_modules
       - utilities-utilities-node-modules:/opt/porsche-design-system-app/packages/utilities/projects/utilities/node_modules
-      - utilities-styles-node-modules:/opt/porsche-design-system-app/packages/utilities/projects/styles/node_modules
   change-volume-owner:
     image: ghcr.io/porsche-design-system/porsche-design-system/playwright:v1.42.1-focal
     volumes:
@@ -97,7 +96,6 @@ services:
       - storefront-node-modules:/opt/porsche-design-system-volumes/storefront-node_modules
       - utilities-node-modules:/opt/porsche-design-system-volumes/utilities-node_modules
       - utilities-utilities-node-modules:/opt/porsche-design-system-volumes/utilities-utilities-node_modules
-      - utilities-styles-node-modules:/opt/porsche-design-system-volumes/utilities-styles-node_modules
     command: |
       sh -c "chown ${RUN_UID}:${RUN_GID} /opt/porsche-design-system-volumes/*"
 volumes:
@@ -131,4 +129,3 @@ volumes:
   storefront-node-modules:
   utilities-node-modules:
   utilities-utilities-node-modules:
-  utilities-styles-node-modules:
