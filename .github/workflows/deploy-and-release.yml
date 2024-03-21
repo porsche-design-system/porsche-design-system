@@ -85,6 +85,15 @@ jobs:
           AWS_SECRET_ACCESS_KEY: ${{ secrets.aws-secret-access-key }}
         with:
           entrypoint: run-deploy-storefront
+      - name: 'Setup GitHub Pages'
+        uses: actions/configure-pages@v4
+      - name: 'Upload artifact'
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./packages/storefront/dist
+      - name: 'Deploy to GitHub Pages'
+        id: deployment
+        uses: actions/deploy-pages@v4
   smoke-test:
     name: 'Smoke Test'
     needs:
