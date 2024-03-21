@@ -1,4 +1,4 @@
-import { type Config, devices } from '@playwright/test';
+import { type Config } from '@playwright/test';
 
 /**
  * See https://playwright.dev/docs/test-configuration.
@@ -25,13 +25,6 @@ export const config: Config = {
     trace: 'off', // 'on-first-retry' causes CI job to get stuck
     viewport: null,
   },
-  /* Configure projects for major browsers */
-  projects: [
-    {
-      name: 'chrome',
-      use: devices['Desktop Chrome'],
-    },
-  ],
   /* Run tests in files in parallel */
   fullyParallel: true,
   /* Fail the build on CI if you accidentally left test.only in the source code. */
