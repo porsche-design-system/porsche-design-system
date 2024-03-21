@@ -117,7 +117,6 @@
     "test:unit:vitest:storefront": "yarn --cwd ./packages/storefront test:unit:vitest",
     "test:unit:utilities": "yarn --cwd ./packages/utilities test:unit",
     "test:e2e:components-js": "yarn --cwd ./packages/components-js test:e2e",
-    "test:e2e:components-js:dom": "yarn --cwd ./packages/components-js test:e2e:dom",
     "test:e2e:components-js:chrome": "yarn --cwd ./packages/components-js test:e2e:chrome",
     "test:e2e:components-js:chrome:1/2": "yarn --cwd ./packages/components-js test:e2e:chrome:1/2",
     "test:e2e:components-js:chrome:2/2": "yarn --cwd ./packages/components-js test:e2e:chrome:2/2",
