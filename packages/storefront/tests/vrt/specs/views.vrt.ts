@@ -6,7 +6,7 @@ import {
   viewportWidthM,
   viewportWidths,
   viewportWidthXXL,
-} from '@porsche-design-system/shared/testing/playwright.vrt.config';
+} from '@porsche-design-system/shared/testing/playwright.vrt';
 
 const urls = {
   home: '/',

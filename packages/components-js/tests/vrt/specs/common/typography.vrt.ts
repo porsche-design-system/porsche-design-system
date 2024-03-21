@@ -1,6 +1,6 @@
 import { expect, test } from '@playwright/test';
 import { setupScenario } from '../../helpers';
-import { viewportWidthXXL } from '@porsche-design-system/shared/testing/playwright.vrt.config';
+import { viewportWidthXXL } from '@porsche-design-system/shared/testing/playwright.vrt';
 
 // executed in Chrome only
 ['latin', 'greek-and-coptic', 'cyril', 'middle-east', 'fallback'].forEach((typography) => {

@@ -1,5 +1,5 @@
 import { expect, test } from '@playwright/test';
-import { schemes, viewportWidthXL } from '@porsche-design-system/shared/testing/playwright.vrt.config';
+import { schemes, viewportWidthXL } from '@porsche-design-system/shared/testing/playwright.vrt';
 
 const urls = {
   'tabs-bar': '/components/tabs-bar/props',

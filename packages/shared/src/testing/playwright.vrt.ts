@@ -35,19 +35,17 @@ export const config: Config = {
      * For example in `await expect(locator).toHaveText();`
      */
     timeout: 30000,
-    // These are the defaults, use in case you need to change the threshold
-    // toMatchSnapshot: {
-    //   maxDiffPixelRatio: undefined,
-    //   maxDiffPixels: undefined,
-    //   threshold: 0.2, // default Playwright threshold
-    // },
-    // toHaveScreenshot: {
-    //   maxDiffPixelRatio: undefined,
-    //   maxDiffPixels: undefined,
-    //   threshold: 0.2, // default Playwright threshold
-    // },
   },
   snapshotPathTemplate: '{testDir}/__screenshots__/{arg}-{projectName}{ext}',
+  use: {
+    /* Maximum time each action such as `click()` can take. Defaults to 0 (no limit). */
+    actionTimeout: 0,
+    /* Base URL to use in actions like `await page.goto('/')`. */
+    // baseURL: 'http://localhost:3000',
+    /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
+    trace: 'off', // 'on-first-retry' causes CI job to get stuck
+    viewport: null,
+  },
   /* Run tests in files in parallel */
   fullyParallel: true,
   /* Fail the build on CI if you accidentally left test.only in the source code. */
@@ -55,7 +53,7 @@ export const config: Config = {
   /* Retry on CI only */
   retries: process.env.CI ? 2 : 0,
   /* Opt out of parallel tests on CI. */
-  workers: process.env.CI ? 1 : 1,
+  workers: process.env.CI ? 1 : undefined,
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
   reporter: 'list',
   /* Folder for test artifacts such as screenshots, videos, traces, etc. */
