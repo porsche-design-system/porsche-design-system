@@ -1,6 +1,6 @@
 import { expect, test } from '@playwright/test';
 import { setupScenario } from '../../helpers';
-import { viewportWidthM, viewportWidthXXL } from '@porsche-design-system/shared/testing/playwright.vrt.config';
+import { viewportWidthM, viewportWidthXXL } from '@porsche-design-system/shared/testing/playwright.vrt';
 
 // executed in Chrome only
 test.describe('overview', async () => {

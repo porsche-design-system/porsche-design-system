@@ -1,6 +1,6 @@
 import { expect, test } from '@playwright/test';
 import { forceFocusState, forceFocusVisibleState } from '../../../../../components-js/tests/vrt/helpers';
-import { viewportWidthM } from '@porsche-design-system/shared/testing/playwright.vrt.config';
+import { viewportWidthM } from '@porsche-design-system/shared/testing/playwright.vrt';
 
 const style = 'styles-focus';
 

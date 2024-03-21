@@ -10,7 +10,7 @@ import { getComponentMeta } from '@porsche-design-system/component-meta';
 import { type Theme } from '@porsche-design-system/utilities-v2';
 import { COMPONENT_CHUNK_NAMES } from '../../../projects/components-wrapper';
 import { ICON_NAMES } from '@porsche-design-system/assets';
-import { viewportWidthM } from '@porsche-design-system/shared/testing/playwright.vrt.config';
+import { viewportWidthM } from '@porsche-design-system/shared/testing/playwright.vrt';
 
 const themeableTagNames = (TAG_NAMES as unknown as TagName[]).filter(
   (tagName) => getComponentMeta(tagName).isThemeable
