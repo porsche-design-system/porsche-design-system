@@ -69,6 +69,14 @@ export default [
     plugins: [typescript()],
   },
   {
+    input: 'src/testing/playwright.a11y.ts',
+    output: {
+      dir: 'dist/testing',
+      format: 'cjs',
+    },
+    plugins: [typescript()],
+  },
+  {
     input: 'src/testing/playwright.e2e.ts',
     output: {
       dir: 'dist/testing',
