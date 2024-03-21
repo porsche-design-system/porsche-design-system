@@ -3,6 +3,7 @@ import { defineConfig, devices } from '@playwright/test';
 
 export default defineConfig({
   ...config,
+  testMatch: '**.smoke.ts',
   projects: [
     {
       name: 'chrome',
