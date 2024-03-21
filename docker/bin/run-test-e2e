@@ -5,7 +5,6 @@ set -o pipefail
 
 if
   [[ "--components-js" == "${1}" ]] ||
-  [[ "--components-js:dom" == "${1}" ]] ||
   [[ "--components-js:chrome" == "${1}" ]] ||
   [[ "--components-js:chrome:1/2" == "${1}" ]] ||
   [[ "--components-js:chrome:2/2" == "${1}" ]] ||
