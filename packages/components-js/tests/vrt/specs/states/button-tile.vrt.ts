@@ -8,7 +8,7 @@ import {
   setContentWithDesignSystem,
 } from '../../helpers';
 import { type Theme } from '@porsche-design-system/utilities-v2';
-import { viewportWidthM } from '@porsche-design-system/shared/testing/playwright.vrt.config';
+import { viewportWidthM } from '@porsche-design-system/shared/testing/playwright.vrt';
 
 const component = 'button-tile';
 

@@ -1,5 +1,5 @@
 import { expect, type Page, test } from '@playwright/test';
-import { schemes, themes, viewportWidthM } from '@porsche-design-system/shared/testing/playwright.vrt.config';
+import { schemes, themes, viewportWidthM } from '@porsche-design-system/shared/testing/playwright.vrt';
 import {
   forceFocusHoverState,
   forceFocusState,

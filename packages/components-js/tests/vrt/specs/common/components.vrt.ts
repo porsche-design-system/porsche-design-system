@@ -3,12 +3,7 @@ import { setupScenario } from '../../helpers';
 import { TAG_NAMES, type TagName } from '@porsche-design-system/shared';
 import { getComponentMeta } from '@porsche-design-system/component-meta';
 import { pdfToPng } from 'pdf-to-png-converter';
-import {
-  schemes,
-  themes,
-  viewportWidthM,
-  viewportWidths,
-} from '@porsche-design-system/shared/testing/playwright.vrt.config';
+import { schemes, themes, viewportWidthM, viewportWidths } from '@porsche-design-system/shared/testing/playwright.vrt';
 
 const components = (TAG_NAMES as unknown as TagName[])
   .filter((tagName) => {

@@ -1,5 +1,5 @@
 import { expect, test } from '@playwright/test';
-import { schemes, viewportWidthM, viewportWidths } from '@porsche-design-system/shared/testing/playwright.vrt.config';
+import { schemes, viewportWidthM, viewportWidths } from '@porsche-design-system/shared/testing/playwright.vrt';
 
 test.describe('markdown', async () => {
   schemes.forEach((scheme) => {

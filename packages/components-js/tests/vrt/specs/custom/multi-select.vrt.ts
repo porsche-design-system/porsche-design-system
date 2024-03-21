@@ -1,6 +1,6 @@
 import { expect, type Page, test } from '@playwright/test';
 import { openAllSelect, setNativePopoversToAllowMultipleOpen, setContentWithDesignSystem } from '../../helpers';
-import { viewportWidthXL } from '@porsche-design-system/shared/testing/playwright.vrt.config';
+import { viewportWidthXL } from '@porsche-design-system/shared/testing/playwright.vrt';
 
 const component = 'multi-select';
 

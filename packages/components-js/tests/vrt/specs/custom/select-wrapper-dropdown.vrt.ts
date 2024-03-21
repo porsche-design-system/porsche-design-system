@@ -1,7 +1,7 @@
 import { expect, type Page, test } from '@playwright/test';
 import type { Theme } from '@porsche-design-system/components/dist/types/types';
 import { forceHoverState, getPlaygroundPseudoStatesMarkup, setContentWithDesignSystem } from '../../helpers';
-import { viewportWidthM } from '@porsche-design-system/shared/testing/playwright.vrt.config';
+import { viewportWidthM } from '@porsche-design-system/shared/testing/playwright.vrt';
 
 const component = 'select-wrapper-dropdown';
 
