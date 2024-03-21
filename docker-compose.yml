@@ -47,18 +47,18 @@ services:
       - component-meta-node-modules:/opt/porsche-design-system-app/packages/component-meta/node_modules
       - components-node-modules:/opt/porsche-design-system-app/packages/components/node_modules
       - components-js-node-modules:/opt/porsche-design-system-app/packages/components-js/node_modules
+      - components-js-components-manager-cli-node-modules:/opt/porsche-design-system-app/packages/components-js/projects/components-manager-cli/node_modules
+      - components-js-components-manager-core-node-modules:/opt/porsche-design-system-app/packages/components-js/projects/components-manager-core/node_modules
       - components-js-jsdom-polyfill-node-modules:/opt/porsche-design-system-app/packages/components-js/projects/jsdom-polyfill/node_modules
+      - components-js-partials-node-modules:/opt/porsche-design-system-app/packages/components-js/projects/partials/node_modules
       - components-angular-node-modules:/opt/porsche-design-system-app/packages/components-angular/node_modules
       - components-react-node-modules:/opt/porsche-design-system-app/packages/components-react/node_modules
-      - components-react-uxpin-wrapper-node-modules:/opt/porsche-design-system-app/packages/components-react/projects/uxpin-wrapper/node_modules
-      - components-react-react-ssr-wrapper-node-modules:/opt/porsche-design-system-app/packages/components-react/projects/react-ssr-wrapper/node_modules
       - components-react-nextjs-node-modules:/opt/porsche-design-system-app/packages/components-react/projects/nextjs/node_modules
+      - components-react-react-ssr-wrapper-node-modules:/opt/porsche-design-system-app/packages/components-react/projects/react-ssr-wrapper/node_modules
       - components-react-remix-node-modules:/opt/porsche-design-system-app/packages/components-react/projects/remix/node_modules
+      - components-react-uxpin-wrapper-node-modules:/opt/porsche-design-system-app/packages/components-react/projects/uxpin-wrapper/node_modules
       - components-vue-node-modules:/opt/porsche-design-system-app/packages/components-vue/node_modules
       - crawler-node-modules:/opt/porsche-design-system-app/packages/crawler/node_modules
-      - partials-node-modules:/opt/porsche-design-system-app/packages/components-js/projects/partials/node_modules
-      - components-manager-cli-node-modules:/opt/porsche-design-system-app/packages/components-js/projects/components-manager-cli/node_modules
-      - components-manager-core-node-modules:/opt/porsche-design-system-app/packages/components-js/projects/components-manager-core/node_modules
       - shared-node-modules:/opt/porsche-design-system-app/packages/shared/node_modules
       - storefront-node-modules:/opt/porsche-design-system-app/packages/storefront/node_modules
       - utilities-node-modules:/opt/porsche-design-system-app/packages/utilities/node_modules
@@ -80,18 +80,18 @@ services:
       - component-meta-node-modules:/opt/porsche-design-system-volumes/component-meta-node_modules
       - components-node-modules:/opt/porsche-design-system-volumes/components-node_modules
       - components-js-node-modules:/opt/porsche-design-system-volumes/components-js-node_modules
+      - components-js-components-manager-cli-node-modules:/opt/porsche-design-system-volumes/components-manager-cli-node_modules
+      - components-js-components-manager-core-node-modules:/opt/porsche-design-system-volumes/components-manager-core-node_modules
       - components-js-jsdom-polyfill-node-modules:/opt/porsche-design-system-volumes/components-js-jsdom-polyfill-node_modules
+      - components-js-partials-node-modules:/opt/porsche-design-system-volumes/partials-node_modules
       - components-angular-node-modules:/opt/porsche-design-system-volumes/components-angular-node_modules
       - components-react-node-modules:/opt/porsche-design-system-volumes/components-react-node_modules
-      - components-react-uxpin-wrapper-node-modules:/opt/porsche-design-system-volumes/components-react-uxpin-wrapper-node_modules
-      - components-react-react-ssr-wrapper-node-modules:/opt/porsche-design-system-volumes/components-react-react-ssr-wrapper-node_modules
       - components-react-nextjs-node-modules:/opt/porsche-design-system-volumes/components-react-nextjs-node_modules
+      - components-react-react-ssr-wrapper-node-modules:/opt/porsche-design-system-volumes/components-react-react-ssr-wrapper-node_modules
       - components-react-remix-node-modules:/opt/porsche-design-system-volumes/components-react-remix-node_modules
+      - components-react-uxpin-wrapper-node-modules:/opt/porsche-design-system-volumes/components-react-uxpin-wrapper-node_modules
       - components-vue-node-modules:/opt/porsche-design-system-volumes/components-vue-node_modules
       - crawler-node-modules:/opt/porsche-design-system-volumes/crawler-node_modules
-      - partials-node-modules:/opt/porsche-design-system-volumes/partials-node_modules
-      - components-manager-cli-node-modules:/opt/porsche-design-system-volumes/components-manager-cli-node_modules
-      - components-manager-core-node-modules:/opt/porsche-design-system-volumes/components-manager-core-node_modules
       - shared-node-modules:/opt/porsche-design-system-volumes/shared-node_modules
       - storefront-node-modules:/opt/porsche-design-system-volumes/storefront-node_modules
       - utilities-node-modules:/opt/porsche-design-system-volumes/utilities-node_modules
@@ -112,19 +112,19 @@ volumes:
   assets-styles-node-modules:
   component-meta-node-modules:
   components-node-modules:
-  components-js-node-modules:
-  components-js-jsdom-polyfill-node-modules:
   components-angular-node-modules:
+  components-js-node-modules:
+  components-js-components-manager-cli-node-modules:
+  components-js-components-manager-core-node-modules:
+  components-js-jsdom-polyfill-node-modules:
+  components-js-partials-node-modules:
   components-react-node-modules:
-  components-react-react-ssr-wrapper-node-modules:
-  components-react-uxpin-wrapper-node-modules:
   components-react-nextjs-node-modules:
+  components-react-react-ssr-wrapper-node-modules:
   components-react-remix-node-modules:
+  components-react-uxpin-wrapper-node-modules:
   components-vue-node-modules:
   crawler-node-modules:
-  partials-node-modules:
-  components-manager-cli-node-modules:
-  components-manager-core-node-modules:
   shared-node-modules:
   storefront-node-modules:
   utilities-node-modules:
