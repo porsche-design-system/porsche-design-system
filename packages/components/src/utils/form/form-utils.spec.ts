@@ -7,6 +7,8 @@ import {
   setCounterInnerHtml,
 } from './form-utils';
 
+const inputEventName = 'input.pds-counter';
+
 const getInputElement = (): HTMLInputElement => {
   const el = document.createElement('input');
   el.id = 'input';
@@ -127,7 +129,7 @@ describe('addInputEventListenerForCounter()', () => {
     const spy = jest.spyOn(inputElement, 'addEventListener');
 
     addInputEventListenerForCounter(inputElement, ariaElement, counterElement);
-    expect(spy).toBeCalledWith('input', expect.anything());
+    expect(spy).toBeCalledWith(inputEventName, expect.anything());
   });
 
   it('should register event listener on element without error when no counterElement is provided', () => {
@@ -141,7 +143,7 @@ describe('addInputEventListenerForCounter()', () => {
       error = e;
     }
     expect(error).toBeUndefined();
-    expect(spy).toBeCalledWith('input', expect.anything());
+    expect(spy).toBeCalledWith(inputEventName, expect.anything());
   });
 });
 
@@ -170,7 +172,7 @@ describe('updateCounter()', () => {
     const setAriaElementInnerHtmlSpy = jest.spyOn(formUtils, 'setAriaElementInnerHtml');
     addInputEventListenerForCounter(inputElement, ariaElement, counterElement);
 
-    inputElement.dispatchEvent(new Event('input'));
+    inputElement.dispatchEvent(new Event(inputEventName));
     expect(setCounterInnerHtmlSpy).toBeCalledWith(inputElement, counterElement);
     expect(setCounterInnerHtmlSpy).toBeCalledTimes(2);
     expect(setAriaElementInnerHtmlSpy).toBeCalledWith(inputElement, ariaElement);
@@ -184,7 +186,7 @@ describe('updateCounter()', () => {
     const callback = jest.fn();
     addInputEventListenerForCounter(inputElement, ariaElement, counterElement, callback);
 
-    inputElement.dispatchEvent(new Event('input'));
+    inputElement.dispatchEvent(new Event(inputEventName));
     expect(callback).toBeCalledTimes(1);
   });
 });
