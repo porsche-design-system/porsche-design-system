@@ -20,7 +20,7 @@ const inputEventListenerCurry = (
   };
 };
 
-let eventListener: EventListener | null = null;
+const controller = new AbortController();
 
 export const addInputEventListenerForCounter = (
   input: HTMLTextAreaElement | HTMLInputElement,
@@ -35,13 +35,13 @@ export const addInputEventListenerForCounter = (
     updateCounter(input, characterCountElement, counterElement, inputChangeCallback);
   });
 
-  // save returned function from inputEventListenerCurry, which is the actual listener function to be able to remove it
-  eventListener = inputEventListenerCurry(characterCountElement, counterElement, inputChangeCallback);
+  // remove the listener first to avoid multiple listeners on re-renders
+  controller.abort();
 
   // remove the listener first to avoid multiple listeners on re-renders
-  input.removeEventListener('input', eventListener);
-
-  input.addEventListener('input', eventListener);
+  input.addEventListener('input', inputEventListenerCurry(characterCountElement, counterElement, inputChangeCallback), {
+    signal: controller.signal,
+  });
 };
 
 export const updateCounter = (
