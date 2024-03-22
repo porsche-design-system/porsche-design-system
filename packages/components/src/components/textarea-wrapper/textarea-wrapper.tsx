@@ -1,4 +1,4 @@
-import { Component, Element, forceUpdate, h, type JSX, Prop } from '@stencil/core';
+import { Component, Element, forceUpdate, h, type JSX, Prop, Watch } from '@stencil/core';
 import { type BreakpointCustomizable, type PropTypes, type Theme } from '../../types';
 import {
   addInputEventListenerForCounter,
@@ -69,6 +69,11 @@ export class TextareaWrapper {
   private ariaElement: HTMLSpanElement;
   private hasCounter: boolean;
 
+  @Watch('showCounter')
+  public onShowCounterChange(): void {
+    this.updateCounterVisibility();
+  }
+
   public connectedCallback(): void {
     this.observeAttributes(); // on every reconnect
   }
@@ -76,9 +81,7 @@ export class TextareaWrapper {
   public componentWillLoad(): void {
     this.textarea = getOnlyChildOfKindHTMLElementOrThrow(this.host, 'textarea');
     this.observeAttributes(); // once initially
-    this.hasCounter =
-      hasCounter(this.textarea) &&
-      (typeof this.showCharacterCount === 'undefined' ? this.showCounter : this.showCharacterCount);
+    this.updateCounterVisibility();
   }
 
   public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
@@ -140,6 +143,15 @@ export class TextareaWrapper {
   }
 
   private observeAttributes = (): void => {
-    observeAttributes(this.textarea, ['disabled', 'readonly', 'required'], () => forceUpdate(this.host));
+    observeAttributes(this.textarea, ['disabled', 'readonly', 'required', 'maxlength'], () => {
+      forceUpdate(this.host);
+      this.updateCounterVisibility();
+    });
+  };
+
+  private updateCounterVisibility = (): void => {
+    this.hasCounter =
+      hasCounter(this.textarea) &&
+      (typeof this.showCharacterCount === 'undefined' ? this.showCounter : this.showCharacterCount);
   };
 }

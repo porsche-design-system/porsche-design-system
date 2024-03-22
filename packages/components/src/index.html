@@ -5,11 +5,11 @@
     <title>Porsche Design System - Playground</title>
     <base href="/" />
 
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="icon" type="image/x-icon" href="favicon.ico" />
-    <link rel="stylesheet" type="text/css" href="http://localhost:3001/styles/font-face.min.css" />
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <link href="favicon.ico" rel="icon" type="image/x-icon" />
+    <link href="http://localhost:3001/styles/font-face.min.css" rel="stylesheet" type="text/css" />
     <script nomodule src="build/porsche-design-system.js"></script>
-    <script type="module" src="build/porsche-design-system.esm.js"></script>
+    <script src="build/porsche-design-system.esm.js" type="module"></script>
     <!-- to pass partial validation via validateGetInitialStylesUsage() -->
     <style data-pds-initial-styles>
       html,
@@ -88,7 +88,7 @@
   </head>
   <body>
     <header dir="ltr">
-      <h1>Porsche Design Syst - Playground</h1>
+      <h1>Porsche Design System - Playground</h1>
 
       <select id="theme" onchange="updateRoute({theme: this.value})">
         <option disabled selected>Select a theme</option>
@@ -106,17 +106,17 @@
     </header>
 
     <main>
-      <!--      <p-textarea-wrapper label="Some label">-->
-      <!--        <textarea name="some-name" maxlength="200">Some value</textarea>-->
-      <!--      </p-textarea-wrapper>-->
+      <p-textarea-wrapper label="Some label">
+        <textarea maxlength="200" name="some-name">Some value</textarea>
+      </p-textarea-wrapper>
 
       <p-text-field-wrapper label="Some label">
-        <input type="text" name="some-name" value="Some value" maxlength="20" />
+        <input maxlength="20" name="some-name" type="text" value="Some value" />
       </p-text-field-wrapper>
 
-      <p-button type="button" id="value">Change value</p-button>
-      <p-button type="button" id="max">Toggle maxlength</p-button>
-      <p-button type="button" id="show">Toggle showCounter</p-button>
+      <p-button id="value" type="button">Change value</p-button>
+      <p-button id="max" type="button">Toggle maxlength</p-button>
+      <p-button id="show" type="button">Toggle showCounter</p-button>
     </main>
 
     <script>
@@ -129,19 +129,19 @@
       const input = document.querySelector('input');
 
       btn.addEventListener('click', () => {
-        // textarea.value = 'Changed value';
+        textarea.value = 'Changed value';
         input.value = 'Changed value';
       });
 
       btnMax.addEventListener('click', () => {
-        !input.getAttribute('maxlength') ? input.setAttribute('maxlength', '20') : input.removeAttribute('maxlength');
-        // !textarea.getAttribute('maxlength')
-        //   ? textarea.setAttribute('maxlength', '20')
-        //   : textarea.removeAttribute('maxlength');
+        !input.getAttribute('maxlength') ? input.setAttribute('maxlength', '19') : input.removeAttribute('maxlength');
+        !textarea.getAttribute('maxlength')
+          ? textarea.setAttribute('maxlength', '19')
+          : textarea.removeAttribute('maxlength');
       });
 
       btnShow.addEventListener('click', () => {
-        // ptextarea.showCounter = !ptextarea.showCounter;
+        ptextarea.showCounter = !ptextarea.showCounter;
         ptextfield.showCounter = !ptextfield.showCounter;
       });
 
