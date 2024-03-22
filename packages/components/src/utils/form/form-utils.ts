@@ -3,6 +3,25 @@ import { observeProperties } from '../property-observer';
 
 export const hasCounter = (el: HTMLTextAreaElement | HTMLInputElement): boolean => el.maxLength >= 0;
 
+// https://javascript.info/currying-partials
+const inputEventListenerCurry = (
+  characterCountElement: HTMLSpanElement,
+  counterElement?: HTMLSpanElement,
+  inputChangeCallback?: () => void
+): EventListener => {
+  // returns actual listener function
+  return (e: InputEvent): void => {
+    updateCounter(
+      e.target as HTMLInputElement | HTMLTextAreaElement,
+      characterCountElement,
+      counterElement,
+      inputChangeCallback
+    );
+  };
+};
+
+let eventListener: EventListener | null = null;
+
 export const addInputEventListenerForCounter = (
   input: HTMLTextAreaElement | HTMLInputElement,
   characterCountElement: HTMLSpanElement,
@@ -16,20 +35,13 @@ export const addInputEventListenerForCounter = (
     updateCounter(input, characterCountElement, counterElement, inputChangeCallback);
   });
 
-  const eventKey = 'input.pds-counter';
-  const eventListener = (
-    e: Event & {
-      target: HTMLTextAreaElement | HTMLInputElement;
-    }
-  ): void => {
-    updateCounter(e.target, characterCountElement, counterElement, inputChangeCallback);
-  };
+  // save returned function from inputEventListenerCurry, which is the actual listener function to be able to remove it
+  eventListener = inputEventListenerCurry(characterCountElement, counterElement, inputChangeCallback);
 
   // remove the listener first to avoid multiple listeners on re-renders
-  input.removeEventListener(eventKey, eventListener);
+  input.removeEventListener('input', eventListener);
 
-  // When value changes by input
-  input.addEventListener(eventKey, eventListener);
+  input.addEventListener('input', eventListener);
 };
 
 export const updateCounter = (

@@ -37,16 +37,14 @@ describe('componentDidLoad', () => {
     component['counterElement'] = counter;
     component['ariaElement'] = ariaElement;
 
-    component.componentDidLoad();
+    component.componentDidRender();
     expect(spy).not.toBeCalled();
 
     component['hasCounter'] = true;
-    component.componentDidLoad();
+    component.componentDidRender();
     expect(spy).toBeCalledWith(textarea, ariaElement, counter);
   });
-});
 
-describe('componentDidRender', () => {
   it('should call setAriaAttributes() with correct parameters', () => {
     const spy = jest.spyOn(a11yUtils, 'setAriaAttributes');
     const component = new TextareaWrapper();
