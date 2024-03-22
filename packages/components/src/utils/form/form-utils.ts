@@ -16,10 +16,20 @@ export const addInputEventListenerForCounter = (
     updateCounter(input, characterCountElement, counterElement, inputChangeCallback);
   });
 
-  // When value changes by input
-  input.addEventListener('input', (e: Event & { target: HTMLTextAreaElement | HTMLInputElement }) => {
+  const eventKey = 'input.pds-counter';
+  const eventListener = (
+    e: Event & {
+      target: HTMLTextAreaElement | HTMLInputElement;
+    }
+  ): void => {
     updateCounter(e.target, characterCountElement, counterElement, inputChangeCallback);
-  });
+  };
+
+  // remove the listener first to avoid multiple listeners on re-renders
+  input.removeEventListener(eventKey, eventListener);
+
+  // When value changes by input
+  input.addEventListener(eventKey, eventListener);
 };
 
 export const updateCounter = (

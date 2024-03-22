@@ -88,13 +88,11 @@ export class TextareaWrapper {
     return hasPropValueChanged(newVal, oldVal);
   }
 
-  public componentDidLoad(): void {
+  public componentDidRender(): void {
     if (this.hasCounter) {
       addInputEventListenerForCounter(this.textarea, this.ariaElement, this.counterElement);
     }
-  }
 
-  public componentDidRender(): void {
     /*
      * This is a workaround to improve accessibility because the textarea and the label/description/message text are placed in different DOM.
      * Referencing ID's from outside the component is impossible because the web component’s DOM is separate.
