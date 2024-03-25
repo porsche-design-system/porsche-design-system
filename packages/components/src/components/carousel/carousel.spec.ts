@@ -60,7 +60,7 @@ describe('connectedCallback', () => {
     const spy = jest.spyOn(component, 'observeBreakpointChange' as any);
 
     component.connectedCallback();
-    expect(spy).toBeCalledWith();
+    expect(spy).toHaveBeenCalledWith();
   });
 
   describe('on reconnect', () => {
@@ -70,7 +70,7 @@ describe('connectedCallback', () => {
       const spy = jest.spyOn(component, 'updateSlidesAndPagination' as any).mockImplementation();
 
       component.connectedCallback();
-      expect(spy).toBeCalledWith();
+      expect(spy).toHaveBeenCalledWith();
     });
 
     it('should call this.registerSplideHandlers() with correct parameters', () => {
@@ -80,7 +80,7 @@ describe('connectedCallback', () => {
       const spy = jest.spyOn(component, 'registerSplideHandlers' as any);
 
       component.connectedCallback();
-      expect(spy).toBeCalledWith(component['splide']);
+      expect(spy).toHaveBeenCalledWith(component['splide']);
     });
   });
 });
@@ -93,7 +93,7 @@ describe('componentWillLoad', () => {
     component.slidesPerPage = 2;
 
     component.componentWillLoad();
-    expect(spy).toBeCalledWith(2);
+    expect(spy).toHaveBeenCalledWith(2);
 
     expect(component.slidesPerPage).toBe(5);
   });
@@ -104,7 +104,7 @@ describe('componentWillLoad', () => {
     const spy = jest.spyOn(component, 'updateSlidesAndPagination' as any);
 
     component.componentWillLoad();
-    expect(spy).toBeCalledWith();
+    expect(spy).toHaveBeenCalledWith();
   });
 
   it('should call this.observeBreakpointChange()', () => {
@@ -113,7 +113,7 @@ describe('componentWillLoad', () => {
     const spy = jest.spyOn(component, 'observeBreakpointChange' as any);
 
     component.componentWillLoad();
-    expect(spy).toBeCalledWith();
+    expect(spy).toHaveBeenCalledWith();
   });
 });
 
@@ -126,7 +126,7 @@ describe('componentDidLoad', () => {
     component.slidesPerPage = 3;
 
     component.componentDidLoad();
-    expect(spy).toBeCalledWith(3);
+    expect(spy).toHaveBeenCalledWith(3);
   });
 
   it('should call parseJSONAttribute() with correct parameter', () => {
@@ -137,7 +137,7 @@ describe('componentDidLoad', () => {
     component.intl = { first: 'first' };
 
     component.componentDidLoad();
-    expect(spy).toBeCalledWith(component.intl);
+    expect(spy).toHaveBeenCalledWith(component.intl);
   });
 
   it('should call Splide constructor with correct parameters and set this.splide', () => {
@@ -148,7 +148,7 @@ describe('componentDidLoad', () => {
     expect(component['splide']).toBeUndefined();
 
     component.componentDidLoad();
-    expect(spy).toBeCalledTimes(1);
+    expect(spy).toHaveBeenCalledTimes(1);
     expect(spy.mock.calls[0]).toMatchSnapshot();
     expect(component['splide']).toBe(splideMock);
   });
@@ -162,7 +162,7 @@ describe('componentDidLoad', () => {
     expect(component['splide']).toBeUndefined();
 
     component.componentDidLoad();
-    expect(spy).toBeCalledTimes(1);
+    expect(spy).toHaveBeenCalledTimes(1);
     expect(spy.mock.calls[0]).toMatchSnapshot();
     expect(component['splide']).toBe(splideMock);
   });
@@ -174,7 +174,7 @@ describe('componentDidLoad', () => {
     const spy = jest.spyOn(component, 'registerSplideHandlers' as any);
 
     component.componentDidLoad();
-    expect(spy).toBeCalledWith(splideMock);
+    expect(spy).toHaveBeenCalledWith(splideMock);
   });
 });
 
@@ -188,7 +188,7 @@ describe('render', () => {
 
     component.render();
 
-    expect(spy).toBeCalledWith(component, 'wrapContent');
+    expect(spy).toHaveBeenCalledWith(component, 'wrapContent');
   });
 
   it('should call hasHeading() with correct parameters', () => {
@@ -199,7 +199,7 @@ describe('render', () => {
     component.heading = 'heading';
 
     component.render();
-    expect(spy).toBeCalledWith(component.host, component.heading);
+    expect(spy).toHaveBeenCalledWith(component.host, component.heading);
   });
 
   it('should call hasDescription() with correct parameters', () => {
@@ -210,7 +210,7 @@ describe('render', () => {
     component.description = 'description';
 
     component.render();
-    expect(spy).toBeCalledWith(component.host, component.description);
+    expect(spy).toHaveBeenCalledWith(component.host, component.description);
   });
 
   it('should call parseJSON() with correct parameter and set this.disablePagination', () => {
@@ -222,7 +222,7 @@ describe('render', () => {
     component.disablePagination = true;
 
     component.render();
-    expect(spy).toBeCalledWith(true);
+    expect(spy).toHaveBeenCalledWith(true);
 
     expect(component.disablePagination).toBe(false);
   });
@@ -236,7 +236,7 @@ describe('componentDidUpdate', () => {
     component['splide'] = { refresh: refreshSpy } as Splide;
 
     component.componentDidUpdate();
-    expect(refreshSpy).toBeCalledWith();
+    expect(refreshSpy).toHaveBeenCalledWith();
   });
 
   it('should set drag in this.splide.options to true when amountOfPages > 1', () => {
@@ -296,7 +296,7 @@ describe('componentDidUpdate', () => {
     Object.defineProperty(component, 'hasNavigation', { value: true });
 
     component.componentDidUpdate();
-    expect(renderPaginationSpy).toBeCalledWith(
+    expect(renderPaginationSpy).toHaveBeenCalledWith(
       component['paginationEl'],
       component['amountOfPages'],
       0,
@@ -314,27 +314,31 @@ describe('componentDidUpdate', () => {
     Object.defineProperty(component, 'hasNavigation', { value: false });
 
     component.componentDidUpdate();
-    expect(renderPaginationSpy).not.toBeCalled();
+    expect(renderPaginationSpy).not.toHaveBeenCalled();
   });
 
   it('should call updatePrevNextButtons() with correct parameters when hasNavigation = true', () => {
     const spy = jest.spyOn(carouselUtils, 'updatePrevNextButtons').mockImplementation();
     const component = new Carousel();
     Object.defineProperty(component, 'hasNavigation', { value: true });
-    component['splide'] = { refresh: () => {} } as Splide;
+    component['splide'] = {
+      refresh: () => {},
+    } as Splide;
 
     component.componentDidUpdate();
-    expect(spy).toBeCalledWith(component['btnPrev'], component['btnNext'], component['splide']);
+    expect(spy).toHaveBeenCalledWith(component['btnPrev'], component['btnNext'], component['splide']);
   });
 
   it('should not call updatePrevNextButtons() when hasNavigation = false', () => {
     const spy = jest.spyOn(carouselUtils, 'updatePrevNextButtons').mockImplementation();
     const component = new Carousel();
     Object.defineProperty(component, 'hasNavigation', { value: false });
-    component['splide'] = { refresh: () => {} } as Splide;
+    component['splide'] = {
+      refresh: () => {},
+    } as Splide;
 
     component.componentDidUpdate();
-    expect(spy).not.toBeCalled();
+    expect(spy).not.toHaveBeenCalled();
   });
 });
 
@@ -346,7 +350,7 @@ describe('disconnectedCallback', () => {
     component['splide'] = { destroy: jest.fn() as any } as Splide;
 
     component.disconnectedCallback();
-    expect(spy).toBeCalledWith(component.host);
+    expect(spy).toHaveBeenCalledWith(component.host);
   });
 
   it('should call this.splide.destroy()', () => {
@@ -356,7 +360,7 @@ describe('disconnectedCallback', () => {
     component['splide'] = { destroy: destroySpy } as Splide;
 
     component.disconnectedCallback();
-    expect(destroySpy).toBeCalledWith();
+    expect(destroySpy).toHaveBeenCalledWith();
   });
 });
 
@@ -367,7 +371,7 @@ describe('registerSplideHandlers()', () => {
     const splide = { ...splideMock, on: onSpy } as Splide;
 
     component['registerSplideHandlers'](splide);
-    expect(onSpy).toBeCalledTimes(2);
+    expect(onSpy).toHaveBeenCalledTimes(2);
     expect(onSpy).toHaveBeenNthCalledWith(1, 'mounted', expect.any(Function));
     expect(onSpy).toHaveBeenNthCalledWith(2, 'move', expect.any(Function));
   });
@@ -380,8 +384,12 @@ describe('registerSplideHandlers()', () => {
     component['registerSplideHandlers'](component['splide']);
 
     component['splide'].emit('mounted');
-    expect(updatePrevNextButtonsSpy).toBeCalledWith(component['btnPrev'], component['btnNext'], component['splide']);
-    expect(renderPaginationSpy).toBeCalledWith(
+    expect(updatePrevNextButtonsSpy).toHaveBeenCalledWith(
+      component['btnPrev'],
+      component['btnNext'],
+      component['splide']
+    );
+    expect(renderPaginationSpy).toHaveBeenCalledWith(
       component['paginationEl'],
       component['amountOfPages'],
       0,
@@ -397,8 +405,8 @@ describe('registerSplideHandlers()', () => {
     component['registerSplideHandlers'](component['splide']);
 
     component['splide'].emit('mounted');
-    expect(updatePrevNextButtonsSpy).not.toBeCalled();
-    expect(renderPaginationSpy).not.toBeCalled();
+    expect(updatePrevNextButtonsSpy).not.toHaveBeenCalled();
+    expect(renderPaginationSpy).not.toHaveBeenCalled();
   });
 
   it('should call updatePrevNextButtons(), updatePagination(), this.change.emit() and this.carouselChange.emit() with correct parameters on splide events', () => {
@@ -414,10 +422,14 @@ describe('registerSplideHandlers()', () => {
     component['registerSplideHandlers'](component['splide']);
 
     component['splide'].emit('move', 1, 0);
-    expect(updatePrevNextButtonsSpy).toBeCalledWith(component['btnPrev'], component['btnNext'], component['splide']);
-    expect(updatePaginationSpy).toBeCalledWith(component['paginationEl'], 2, 1);
-    expect(changeEmitSpy).toBeCalledWith({ activeIndex: 1, previousIndex: 0 });
-    expect(carouselChangeEmitSpy).toBeCalledWith({ activeIndex: 1, previousIndex: 0 });
+    expect(updatePrevNextButtonsSpy).toHaveBeenCalledWith(
+      component['btnPrev'],
+      component['btnNext'],
+      component['splide']
+    );
+    expect(updatePaginationSpy).toHaveBeenCalledWith(component['paginationEl'], 2, 1);
+    expect(changeEmitSpy).toHaveBeenCalledWith({ activeIndex: 1, previousIndex: 0 });
+    expect(carouselChangeEmitSpy).toHaveBeenCalledWith({ activeIndex: 1, previousIndex: 0 });
   });
 
   it('should call this.splide.mount()', () => {
@@ -426,7 +438,7 @@ describe('registerSplideHandlers()', () => {
     const component = new Carousel();
 
     component['registerSplideHandlers'](splide);
-    expect(mountSpy).toBeCalledWith();
+    expect(mountSpy).toHaveBeenCalledWith();
   });
 });
 
@@ -437,7 +449,7 @@ describe('observeBreakpointChange()', () => {
     component.slidesPerPage = 1;
 
     component['observeBreakpointChange']();
-    expect(spy).not.toBeCalled();
+    expect(spy).not.toHaveBeenCalled();
   });
 
   it('should call observeBreakpointChange() with correct parameters if slidesPerPage is an object', () => {
@@ -447,7 +459,7 @@ describe('observeBreakpointChange()', () => {
     component.slidesPerPage = { base: 2, m: 3 };
 
     component['observeBreakpointChange']();
-    expect(spy).toBeCalledWith(component.host, component['updateAmountOfPages']);
+    expect(spy).toHaveBeenCalledWith(component.host, component['updateAmountOfPages']);
   });
 });
 
@@ -464,7 +476,7 @@ describe('updateSlidesAndPagination()', () => {
     expect(component['slides']).toEqual([]);
 
     component['updateSlidesAndPagination']();
-    expect(spy).toBeCalledWith(component.host);
+    expect(spy).toHaveBeenCalledWith(component.host);
     expect(component['slides']).toBe(getSlidesMock);
   });
 
@@ -474,7 +486,7 @@ describe('updateSlidesAndPagination()', () => {
     const spy = jest.spyOn(component, 'updateAmountOfPages' as any);
 
     component['updateSlidesAndPagination']();
-    expect(spy).toBeCalledWith();
+    expect(spy).toHaveBeenCalledWith();
   });
 });
 
@@ -491,9 +503,9 @@ describe('updateAmountOfPages()', () => {
     expect(component['amountOfPages']).toBeUndefined();
 
     component['updateAmountOfPages']();
-    expect(getCurrentMatchingBreakpointValueSpy).toBeCalledWith(1);
-    expect(mathRoundSpy).toBeCalledWith(11);
-    expect(getAmountOfPagesSpy).toBeCalledWith(2, 12);
+    expect(getCurrentMatchingBreakpointValueSpy).toHaveBeenCalledWith(1);
+    expect(mathRoundSpy).toHaveBeenCalledWith(11);
+    expect(getAmountOfPagesSpy).toHaveBeenCalledWith(2, 12);
     expect(component['amountOfPages']).toBe(5);
   });
 
@@ -510,9 +522,9 @@ describe('updateAmountOfPages()', () => {
     expect(component['amountOfPages']).toBeUndefined();
 
     component['updateAmountOfPages']();
-    expect(getCurrentMatchingBreakpointValueSpy).not.toBeCalledWith();
-    expect(mathRoundSpy).not.toBeCalled();
-    expect(getAmountOfPagesSpy).toBeCalledWith(2, 1); // 'auto' causes a value of 1
+    expect(getCurrentMatchingBreakpointValueSpy).not.toHaveBeenCalledWith();
+    expect(mathRoundSpy).not.toHaveBeenCalled();
+    expect(getAmountOfPagesSpy).toHaveBeenCalledWith(2, 1); // 'auto' causes a value of 1
     expect(component['amountOfPages']).toBe(5);
   });
 
@@ -524,6 +536,6 @@ describe('updateAmountOfPages()', () => {
     component['splide'] = { index: 1 } as Splide;
 
     component['updateAmountOfPages']();
-    expect(spy).toBeCalledWith(component['paginationEl'], 5, 1, component['splide']);
+    expect(spy).toHaveBeenCalledWith(component['paginationEl'], 5, 1, component['splide']);
   });
 });

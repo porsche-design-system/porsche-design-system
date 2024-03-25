@@ -153,7 +153,7 @@ describe('slidePrev()', () => {
     const splide = { index: 1, go: (_: string | number) => {} } as Splide;
     slidePrev(splide, 5);
 
-    expect(spy).toBeCalledWith(splide);
+    expect(spy).toHaveBeenCalledWith(splide);
   });
 
   it.each<[number, number, string | number]>([
@@ -172,7 +172,7 @@ describe('slidePrev()', () => {
       const splide = { index, go } as Splide;
 
       slidePrev(splide, amountOfPages);
-      expect(go).toBeCalledWith(expected);
+      expect(go).toHaveBeenCalledWith(expected);
     }
   );
 });
@@ -183,7 +183,7 @@ describe('slideNext()', () => {
     const splide = { index: 1, go: (_: string | number) => {} } as Splide;
     slideNext(splide, 5);
 
-    expect(spy).toBeCalledWith(splide, 5);
+    expect(spy).toHaveBeenCalledWith(splide, 5);
   });
 
   it.each<[number, number, string | number]>([
@@ -200,7 +200,7 @@ describe('slideNext()', () => {
       const splide = { index, go } as Splide;
 
       slideNext(splide, amountOfPages);
-      expect(go).toBeCalledWith(expected);
+      expect(go).toHaveBeenCalledWith(expected);
     }
   );
 });
@@ -235,7 +235,7 @@ describe('updatePrevNextButtons()', () => {
     const splide = getSplide();
 
     updatePrevNextButtons(...getButtons(), splide);
-    expect(spy).toBeCalledWith(splide);
+    expect(spy).toHaveBeenCalledWith(splide);
   });
 
   it('should call isLastPage() with correct parameters', () => {
@@ -244,7 +244,7 @@ describe('updatePrevNextButtons()', () => {
     const splide = getSplide();
 
     updatePrevNextButtons(...getButtons(), splide);
-    expect(spy).toBeCalledWith(splide, 5);
+    expect(spy).toHaveBeenCalledWith(splide, 5);
   });
 
   it('should call getAmountOfPages() with correct parameters', () => {
@@ -252,7 +252,7 @@ describe('updatePrevNextButtons()', () => {
     const splide = getSplide();
 
     updatePrevNextButtons(...getButtons(), splide);
-    expect(spy).toBeCalledWith(3, 1);
+    expect(spy).toHaveBeenCalledWith(3, 1);
   });
 
   it('should correctly set aria property on btnNext and btnPrev parameter', () => {

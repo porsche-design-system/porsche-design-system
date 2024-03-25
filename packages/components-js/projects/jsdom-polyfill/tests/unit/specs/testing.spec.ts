@@ -127,6 +127,6 @@ describe('getByRole()', () => {
 
     fireEvent.change(selectEl, { target: { value: '2' } });
 
-    expect(callback).toBeCalledWith('2');
+    expect(callback).toHaveBeenCalledWith('2');
   });
 });

@@ -11,7 +11,7 @@ describe('table', () => {
       component.caption = 'some valid caption';
       component.componentWillLoad();
 
-      expect(spy).toBeCalledWith(component.host, 'some valid caption');
+      expect(spy).toHaveBeenCalledWith(component.host, 'some valid caption');
     });
   });
 });

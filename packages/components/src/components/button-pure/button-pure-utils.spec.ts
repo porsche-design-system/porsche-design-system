@@ -9,11 +9,11 @@ describe('warnIfIsLoadingAndIconIsNone()', () => {
     warnIfIsLoadingAndIconIsNone(host, true, 'none', 'custom.svg');
     warnIfIsLoadingAndIconIsNone(host, false, 'none', '');
 
-    expect(spy).not.toBeCalled();
+    expect(spy).not.toHaveBeenCalled();
 
     warnIfIsLoadingAndIconIsNone(host, true, 'none', '');
 
-    expect(spy).toBeCalledTimes(1);
+    expect(spy).toHaveBeenCalledTimes(1);
   });
 });
 

@@ -63,7 +63,7 @@ it.each(Object.keys(fromComponents))('should render dsr component for %s', (comp
   );
 
   expect(container.firstElementChild).toMatchSnapshot();
-  expect(consoleSpy).not.toBeCalled(); // detect react jsx errors/warnings
+  expect(consoleSpy).not.toHaveBeenCalled(); // detect react jsx errors/warnings
 });
 
 describe('manual test cases', () => {

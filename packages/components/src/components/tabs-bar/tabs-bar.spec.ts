@@ -20,7 +20,7 @@ describe('connectedCallback', () => {
     const spy = jest.spyOn(component, 'observeBreakpointChange' as any);
 
     component.connectedCallback();
-    expect(spy).toBeCalledWith();
+    expect(spy).toHaveBeenCalledWith();
   });
 });
 
@@ -30,8 +30,8 @@ describe('componentWillLoad', () => {
     const spy = jest.spyOn(component, 'setTabElements' as any);
 
     component.componentWillLoad();
-    expect(spy).toBeCalledWith();
-    expect(spy).toBeCalledTimes(1);
+    expect(spy).toHaveBeenCalledWith();
+    expect(spy).toHaveBeenCalledTimes(1);
   });
 
   it('should call sanitizeActiveTabIndex() with correct parameters', () => {
@@ -40,8 +40,8 @@ describe('componentWillLoad', () => {
     const spy = jest.spyOn(tabsBarUtils, 'sanitizeActiveTabIndex' as any);
 
     component.componentWillLoad();
-    expect(spy).toBeCalledWith(5, 0);
-    expect(spy).toBeCalledTimes(1);
+    expect(spy).toHaveBeenCalledWith(5, 0);
+    expect(spy).toHaveBeenCalledTimes(1);
   });
 });
 
@@ -55,7 +55,7 @@ describe('componentDidLoad', () => {
       .mockReturnValue(document.createElement('slot'));
 
     component.componentDidLoad();
-    expect(spy).toBeCalledWith(false);
+    expect(spy).toHaveBeenCalledWith(false);
   });
 
   it('should call this.observeBreakpointChange()', () => {
@@ -67,7 +67,7 @@ describe('componentDidLoad', () => {
       .mockReturnValue(document.createElement('slot'));
 
     component.componentDidLoad();
-    expect(spy).toBeCalledWith();
+    expect(spy).toHaveBeenCalledWith();
   });
 });
 
@@ -78,8 +78,8 @@ describe('render', () => {
     const spy = jest.spyOn(component, 'setAccessibilityAttributes' as any);
 
     component.render();
-    expect(spy).toBeCalledWith();
-    expect(spy).toBeCalledTimes(1);
+    expect(spy).toHaveBeenCalledWith();
+    expect(spy).toHaveBeenCalledTimes(1);
   });
 });
 
@@ -89,7 +89,7 @@ describe('disconnectedCallback', () => {
     const component = initComponent();
 
     component.disconnectedCallback();
-    expect(spy).toBeCalledWith(component.host);
+    expect(spy).toHaveBeenCalledWith(component.host);
   });
 });
 
@@ -99,8 +99,8 @@ describe('this.activeTabIndexHandler()', () => {
     const spy = jest.spyOn(component, 'setTabElements' as any);
 
     component.activeTabIndexHandler(0, null);
-    expect(spy).toBeCalledWith();
-    expect(spy).toBeCalledTimes(1);
+    expect(spy).toHaveBeenCalledWith();
+    expect(spy).toHaveBeenCalledTimes(1);
   });
 
   it('should set this.direction to "next" if oldValue is smaller than this.internalTabIndex', () => {
@@ -143,7 +143,7 @@ describe('this.activeTabIndexHandler()', () => {
     const spy = jest.spyOn(component, 'setBarStyle' as any).mockImplementation();
 
     component.activeTabIndexHandler(0, undefined);
-    expect(spy).toBeCalledWith();
+    expect(spy).toHaveBeenCalledWith();
   });
 
   it('should call this.scrollActiveTabIntoView()', () => {
@@ -151,7 +151,7 @@ describe('this.activeTabIndexHandler()', () => {
     const spy = jest.spyOn(component, 'scrollActiveTabIntoView' as any).mockImplementation();
 
     component.activeTabIndexHandler(0, undefined);
-    expect(spy).toBeCalledWith();
+    expect(spy).toHaveBeenCalledWith();
   });
 });
 
@@ -161,7 +161,7 @@ describe('this.observeBreakpointChange()', () => {
     const component = initComponent();
 
     component['observeBreakpointChange']();
-    expect(spy).not.toBeCalled();
+    expect(spy).not.toHaveBeenCalled();
   });
 
   it('should call observeBreakpointChange() if size is BreakpointCustomizable', () => {
@@ -170,7 +170,7 @@ describe('this.observeBreakpointChange()', () => {
     component.size = { base: 'small', m: 'medium' };
 
     component['observeBreakpointChange']();
-    expect(spy).toBeCalledWith(component.host, expect.any(Function));
+    expect(spy).toHaveBeenCalledWith(component.host, expect.any(Function));
   });
 });
 
@@ -187,7 +187,7 @@ describe('this.setTabElements()', () => {
     const spy = jest.spyOn(getOnlyChildrenOfKindHTMLElementOrThrowUtils, 'getOnlyChildrenOfKindHTMLElementOrThrow');
 
     component['setTabElements']();
-    expect(spy).toBeCalledWith(component.host, 'a,button');
+    expect(spy).toHaveBeenCalledWith(component.host, 'a,button');
   });
 
   it('should set this.tabElements', () => {
@@ -230,10 +230,10 @@ describe('this.setTabElements()', () => {
     const spy = jest.spyOn(tabsBarUtils, 'sanitizeActiveTabIndex');
 
     component['setTabElements']();
-    expect(spy).toBeCalledWith(component.activeTabIndex, 0);
+    expect(spy).toHaveBeenCalledWith(component.activeTabIndex, 0);
 
     component['setTabElements']();
-    expect(spy).toBeCalledWith(component.activeTabIndex, 3);
+    expect(spy).toHaveBeenCalledWith(component.activeTabIndex, 3);
   });
 
   it('should set this.internalTabIndex based on result of sanitizeActiveTabIndex()', () => {

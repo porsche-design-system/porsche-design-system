@@ -85,11 +85,11 @@ describe('updateCounter()', () => {
     const setAriaElementInnerHtmlSpy = jest.spyOn(formUtils, 'setAriaElementInnerHtml');
     updateCounter(inputElement, ariaElement, counterElement);
 
-    expect(setCounterInnerHtmlSpy).toBeCalledWith(inputElement, counterElement);
-    expect(setCounterInnerHtmlSpy).toBeCalledTimes(1);
+    expect(setCounterInnerHtmlSpy).toHaveBeenCalledWith(inputElement, counterElement);
+    expect(setCounterInnerHtmlSpy).toHaveBeenCalledTimes(1);
 
-    expect(setAriaElementInnerHtmlSpy).toBeCalledWith(inputElement, ariaElement);
-    expect(setAriaElementInnerHtmlSpy).toBeCalledTimes(1);
+    expect(setAriaElementInnerHtmlSpy).toHaveBeenCalledWith(inputElement, ariaElement);
+    expect(setAriaElementInnerHtmlSpy).toHaveBeenCalledTimes(1);
   });
 
   it('should on input event call setCounterInnerHtml() and setAriaElementInnerHtml()', () => {
@@ -100,10 +100,10 @@ describe('updateCounter()', () => {
     const setAriaElementInnerHtmlSpy = jest.spyOn(formUtils, 'setAriaElementInnerHtml');
     updateCounter(inputElement, ariaElement, counterElement);
 
-    expect(setCounterInnerHtmlSpy).toBeCalledWith(inputElement, counterElement);
-    expect(setCounterInnerHtmlSpy).toBeCalledTimes(2);
-    expect(setAriaElementInnerHtmlSpy).toBeCalledWith(inputElement, ariaElement);
-    expect(setAriaElementInnerHtmlSpy).toBeCalledTimes(2);
+    expect(setCounterInnerHtmlSpy).toHaveBeenCalledWith(inputElement, counterElement);
+    expect(setCounterInnerHtmlSpy).toHaveBeenCalledTimes(2);
+    expect(setAriaElementInnerHtmlSpy).toHaveBeenCalledWith(inputElement, ariaElement);
+    expect(setAriaElementInnerHtmlSpy).toHaveBeenCalledTimes(2);
   });
 
   it('should on input event call inputChangeCallback() if supplied', () => {
@@ -113,6 +113,6 @@ describe('updateCounter()', () => {
     const callback = jest.fn();
     updateCounter(inputElement, ariaElement, counterElement, callback);
 
-    expect(callback).toBeCalledTimes(1);
+    expect(callback).toHaveBeenCalledTimes(1);
   });
 });

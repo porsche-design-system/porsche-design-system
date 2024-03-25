@@ -5,10 +5,10 @@ it('should call querySelectorAll on element with selector parameter', () => {
   const spy = jest.spyOn(element, 'querySelectorAll');
 
   getHTMLElements(element, 'span');
-  expect(spy).toBeCalledWith('span');
+  expect(spy).toHaveBeenCalledWith('span');
 
   getHTMLElements(element, 'div');
-  expect(spy).toBeCalledWith('div');
+  expect(spy).toHaveBeenCalledWith('div');
 });
 
 it('should return result of querySelectorAll', () => {

@@ -10,7 +10,7 @@ describe('componentWillLoad', () => {
     const spy = jest.spyOn(component, 'defineTabsItemElements' as any);
 
     component.componentWillLoad();
-    expect(spy).toBeCalledWith();
+    expect(spy).toHaveBeenCalledWith();
   });
 });
 
@@ -26,7 +26,7 @@ describe('render', () => {
 
     component.render();
 
-    expect(spy).toBeCalledWith((component as any).tabsItemElements, component.theme);
+    expect(spy).toHaveBeenCalledWith((component as any).tabsItemElements, component.theme);
   });
 });
 
@@ -36,7 +36,7 @@ describe('componentDidRender', () => {
     const spy = jest.spyOn(component, 'setAccessibilityAttributes' as any);
 
     component.componentDidRender();
-    expect(spy).toBeCalledWith();
+    expect(spy).toHaveBeenCalledWith();
   });
 });
 
@@ -47,10 +47,10 @@ describe('this.defineTabsItemElements()', () => {
     component.host = document.createElement('p-tabs');
 
     component['defineTabsItemElements']();
-    expect(spy).toBeCalledWith(component.host, 'p-tabs-item');
+    expect(spy).toHaveBeenCalledWith(component.host, 'p-tabs-item');
   });
 
-  it("should set this.tabsItemElements with host's children", () => {
+  it('should set this.tabsItemElements with host\'s children', () => {
     const component = new Tabs();
     component.host = document.createElement('p-tabs');
     const child1 = document.createElement('p-tabs-item');

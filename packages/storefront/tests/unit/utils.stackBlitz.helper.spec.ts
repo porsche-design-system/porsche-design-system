@@ -27,7 +27,7 @@ describe('removeSharedImport()', () => {
 
     removeSharedImport(markup);
 
-    expect(spy).toBeCalledWith(/\s*import { .+ } from '@porsche-design-system\/shared';/, '');
+    expect(spy).toHaveBeenCalledWith(/\s*import { .+ } from '@porsche-design-system\/shared';/, '');
   });
 
   it('should return result of replace()', () => {
@@ -182,9 +182,9 @@ describe('transformSrcAndSrcsetOfImgAndSourceTags()', () => {
       const getAttributeSpy = jest.spyOn(div, 'getAttribute');
 
       expect(transformSrcAndSrcsetOfImgAndSourceTags(input)).toBe(output);
-      expect(querySelectorSpy).toBeCalledWith('base');
-      expect(getAttributeSpy).toBeCalledWith('href');
-    }
+      expect(querySelectorSpy).toHaveBeenCalledWith('base');
+      expect(getAttributeSpy).toHaveBeenCalledWith('href');
+    },
   );
 
   it.each<string>([
@@ -203,7 +203,7 @@ describe('isStableStorefrontReleaseOrForcedPdsVersion()', () => {
   it('should call isStableStorefrontRelease() with correct parameters', () => {
     const spy = jest.spyOn(helper, 'isStableStorefrontRelease');
     isStableStorefrontReleaseOrForcedPdsVersion('');
-    expect(spy).toBeCalledWith();
+    expect(spy).toHaveBeenCalledWith();
   });
 
   it.each<[string, boolean, boolean]>([
@@ -217,6 +217,6 @@ describe('isStableStorefrontReleaseOrForcedPdsVersion()', () => {
       jest.spyOn(helper, 'isStableStorefrontRelease').mockReturnValue(isStableStorefrontRelease);
 
       expect(isStableStorefrontReleaseOrForcedPdsVersion(pdsVersion)).toBe(expected);
-    }
+    },
   );
 });
