@@ -267,12 +267,12 @@ describe('componentDidRender', () => {
   it('should call addInputEventListenerForCounter() with correct parameters if hasCounter is true and isCounterVisible is false/true', () => {
     const updateCounterSpy = jest.spyOn(formUtils, 'updateCounter');
     const observePropertiesSpy = jest.spyOn(propertyObserverUtils, 'observeProperties');
-    const inputAddEventListenerSpy = jest.fn();
+    const addEventListenerSpy = jest.fn();
     const removeEventListenerSpy = jest.fn();
 
     const input = document.createElement('input');
     input.type = 'text';
-    input.addEventListener = inputAddEventListenerSpy;
+    input.addEventListener = addEventListenerSpy;
     input.removeEventListener = removeEventListenerSpy;
 
     const ariaElement = document.createElement('span');
@@ -292,7 +292,7 @@ describe('componentDidRender', () => {
 
     expect(updateCounterSpy).toHaveBeenCalledWith(input, ariaElement, undefined);
     expect(observePropertiesSpy).toHaveBeenCalledWith(input, ['value'], expect.any(Function));
-    expect(inputAddEventListenerSpy).toHaveBeenCalledWith('input', component['inputEventListener']);
+    expect(addEventListenerSpy).toHaveBeenCalledWith('input', component['inputEventListener']);
     expect(removeEventListenerSpy).toHaveBeenCalledWith('input', component['inputEventListener']);
 
     const counter = document.createElement('span');
@@ -304,7 +304,7 @@ describe('componentDidRender', () => {
 
     expect(updateCounterSpy).toHaveBeenCalledWith(input, ariaElement, counter);
     expect(observePropertiesSpy).toHaveBeenCalledWith(input, ['value'], expect.any(Function));
-    expect(inputAddEventListenerSpy).toHaveBeenCalledWith('input', component['inputEventListener']);
+    expect(addEventListenerSpy).toHaveBeenCalledWith('input', component['inputEventListener']);
     expect(removeEventListenerSpy).toHaveBeenCalledWith('input', component['inputEventListener']);
   });
 

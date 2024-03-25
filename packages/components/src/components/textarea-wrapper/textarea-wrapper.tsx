@@ -70,7 +70,7 @@ export class TextareaWrapper {
   private counterElement: HTMLSpanElement;
   private ariaElement: HTMLSpanElement;
   private hasCounter: boolean;
-  private listener: EventListener;
+  private textareaEventListener: EventListener;
 
   @Watch('showCounter')
   public onShowCounterChange(): void {
@@ -168,9 +168,9 @@ export class TextareaWrapper {
       updateCounter(this.textarea, characterCountElement, counterElement, inputChangeCallback);
     });
 
-    this.listener = inputEventListenerCurry(characterCountElement, counterElement, inputChangeCallback);
+    this.textareaEventListener = inputEventListenerCurry(characterCountElement, counterElement, inputChangeCallback);
 
-    this.textarea.removeEventListener('input', this.listener);
-    this.textarea.addEventListener('input', this.listener);
+    this.textarea.removeEventListener('input', this.textareaEventListener);
+    this.textarea.addEventListener('input', this.textareaEventListener);
   };
 }
