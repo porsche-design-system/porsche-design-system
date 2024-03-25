@@ -97,6 +97,7 @@
       <option value="auto">Auto</option>
     </select>
 
+
     <select id="dir" onchange="updateRoute({dir: this.value})">
       <option disabled selected>Select a direction</option>
       <option value="ltr">LTR (left-to-right)</option>
@@ -105,19 +106,7 @@
     </select>
   </header>
 
-  <main>
-    <p-textarea-wrapper label="Some label">
-      <textarea maxlength="200" name="some-name">Some value</textarea>
-    </p-textarea-wrapper>
-
-    <p-text-field-wrapper label="Some label">
-      <input maxlength="20" name="some-name" type="text" value="Some value" />
-    </p-text-field-wrapper>
-
-    <p-button id="value" type="button">Change value</p-button>
-    <p-button id="max" type="button">Toggle maxlength</p-button>
-    <p-button id="show" type="button">Toggle showCounter</p-button>
-  </main>
+  <main></main>
 
   <script>
     const ptextarea = document.querySelector('p-textarea-wrapper');
