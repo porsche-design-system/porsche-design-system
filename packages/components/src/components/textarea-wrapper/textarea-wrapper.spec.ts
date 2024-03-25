@@ -19,30 +19,30 @@ describe('componentWillLoad', () => {
     expect(component['hasCounter']).toBe(undefined);
     component.componentWillLoad();
 
-    expect(spy).toBeCalledWith(textarea);
+    expect(spy).toHaveBeenCalledWith(textarea);
     expect(component['hasCounter']).toBe(true);
   });
 });
 
 describe('componentDidLoad', () => {
   it('should call addInputEventListenerForCounter() with correct parameters if hasCounter is true', () => {
-    const spy = jest.spyOn(formUtils, 'addInputEventListenerForCounter');
+    const component = new TextareaWrapper();
+    const spy = jest.spyOn(component as any, 'addInputEventListenerForCounter');
 
     const textarea = document.createElement('textarea');
     const counter = document.createElement('span');
     const ariaElement = document.createElement('span');
 
-    const component = new TextareaWrapper();
     component['textarea'] = textarea;
     component['counterElement'] = counter;
     component['ariaElement'] = ariaElement;
 
     component.componentDidRender();
-    expect(spy).not.toBeCalled();
+    expect(spy).not.toHaveBeenCalled();
 
     component['hasCounter'] = true;
     component.componentDidRender();
-    expect(spy).toBeCalledWith(textarea, ariaElement, counter);
+    expect(spy).toHaveBeenCalledWith(textarea, ariaElement, counter);
   });
 
   it('should call setAriaAttributes() with correct parameters', () => {
@@ -55,6 +55,6 @@ describe('componentDidLoad', () => {
     component.state = 'success';
 
     component.componentDidRender();
-    expect(spy).toBeCalledWith(textarea, { label: 'Some label', message: 'Some message', state: 'success' });
+    expect(spy).toHaveBeenCalledWith(textarea, { label: 'Some label', message: 'Some message', state: 'success' });
   });
 });
