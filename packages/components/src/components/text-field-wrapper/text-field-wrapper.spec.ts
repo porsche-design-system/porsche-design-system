@@ -4,6 +4,7 @@ import * as a11yUtils from '../../utils/a11y/a11y';
 import * as getOnlyChildOfKindHTMLElementOrThrowUtils from '../../utils/validation/getOnlyChildOfKindHTMLElementOrThrow';
 import * as propertyObserverUtils from '../../utils/property-observer';
 import * as isWithinFormUtils from '../../utils/form/isWithinForm';
+import * as formUtils from '../../utils/form/form-utils';
 
 jest.mock('../../utils/dom');
 
@@ -263,46 +264,48 @@ describe('componentDidRender', () => {
     expect(spy).toHaveBeenCalledTimes(1);
   });
 
-  it('should call addInputEventListenerForCounter() with correct parameters if hasCounter is true and isCounterVisible is false', () => {
-    const component = new TextFieldWrapper();
-    const spy = jest.spyOn(component as any, 'addInputEventListenerForCounter');
+  it('should call addInputEventListenerForCounter() with correct parameters if hasCounter is true and isCounterVisible is false/true', () => {
+    const updateCounterSpy = jest.spyOn(formUtils, 'updateCounter');
+    const observePropertiesSpy = jest.spyOn(propertyObserverUtils, 'observeProperties');
+    const inputAddEventListenerSpy = jest.fn();
+    const removeEventListenerSpy = jest.fn();
 
     const input = document.createElement('input');
     input.type = 'text';
+    input.addEventListener = inputAddEventListenerSpy;
+    input.removeEventListener = removeEventListenerSpy;
+
     const ariaElement = document.createElement('span');
+    const component = new TextFieldWrapper();
 
     component['input'] = input;
     component['ariaElement'] = ariaElement;
 
     component.componentDidRender();
-    expect(spy).not.toHaveBeenCalled();
+
+    expect(updateCounterSpy).not.toHaveBeenCalled();
+    expect(observePropertiesSpy).not.toHaveBeenCalled();
 
     component['hasCounter'] = true;
 
     component.componentDidRender();
-    expect(spy).toHaveBeenCalledWith(input, ariaElement, undefined, component['setInputStyles']);
-  });
 
-  it('should call addInputEventListenerForCounter() if hasCounter is true and isCounterVisible is true', () => {
-    const component = new TextFieldWrapper();
-    const spy = jest.spyOn(component as any, 'addInputEventListenerForCounter');
+    expect(updateCounterSpy).toHaveBeenCalledWith(input, ariaElement, undefined);
+    expect(observePropertiesSpy).toHaveBeenCalledWith(input, ['value'], expect.any(Function));
+    expect(inputAddEventListenerSpy).toHaveBeenCalledWith('input', component['inputEventListener']);
+    expect(removeEventListenerSpy).toHaveBeenCalledWith('input', component['inputEventListener']);
 
-    const input = document.createElement('input');
-    input.type = 'text';
     const counter = document.createElement('span');
-    const ariaElement = document.createElement('span');
 
-    component['input'] = input;
     component['unitOrCounterElement'] = counter;
-    component['ariaElement'] = ariaElement;
-
-    component.componentDidRender();
-    expect(spy).not.toHaveBeenCalled();
-
-    component['hasCounter'] = true;
     component['isCounterVisible'] = true;
+
     component.componentDidRender();
-    expect(spy).toHaveBeenCalledWith(input, ariaElement, counter, component['setInputStyles']);
+
+    expect(updateCounterSpy).toHaveBeenCalledWith(input, ariaElement, counter);
+    expect(observePropertiesSpy).toHaveBeenCalledWith(input, ['value'], expect.any(Function));
+    expect(inputAddEventListenerSpy).toHaveBeenCalledWith('input', component['inputEventListener']);
+    expect(removeEventListenerSpy).toHaveBeenCalledWith('input', component['inputEventListener']);
   });
 
   it('should call setAriaAttributes() with correct parameters', () => {

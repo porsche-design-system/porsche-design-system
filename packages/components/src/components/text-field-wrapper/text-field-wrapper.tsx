@@ -138,7 +138,7 @@ export class TextFieldWrapper {
   private hasCounter: boolean;
   private isCounterVisible: boolean;
   private hasUnit: boolean;
-  private listener: EventListener;
+  private inputEventListener: EventListener;
 
   @Watch('showCounter')
   public onShowCounterChange(): void {
@@ -187,8 +187,7 @@ export class TextFieldWrapper {
     // needs to happen after render in order to have unitOrCounterElement defined
     this.setInputStyles();
 
-    // TODO: The listener gets added multiple times if showCounter is toggled multiple times
-    if (this.isCounterVisible) {
+    if (this.isCounterVisible || this.hasCounter) {
       // renders innerHTML of unitOrCounterElement initially and on every input event
       this.addInputEventListenerForCounter(
         this.ariaElement,
@@ -400,9 +399,9 @@ export class TextFieldWrapper {
       updateCounter(this.input, characterCountElement, counterElement, inputChangeCallback);
     });
 
-    this.listener = inputEventListenerCurry(characterCountElement, counterElement, inputChangeCallback);
+    this.inputEventListener = inputEventListenerCurry(characterCountElement, counterElement, inputChangeCallback);
 
-    this.input.removeEventListener('input', this.listener);
-    this.input.addEventListener('input', this.listener);
+    this.input.removeEventListener('input', this.inputEventListener);
+    this.input.addEventListener('input', this.inputEventListener);
   };
 }
