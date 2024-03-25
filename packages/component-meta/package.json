@@ -15,8 +15,6 @@
     "build:bundle": "rollup -c rollup.config.js --bundleConfigAsCjs",
     "test": "yarn test:unit",
     "test:unit": "vitest --config tests/unit/config/vitest.config.ts",
-    "clean": "yarn clean:node_modules && yarn clean:build",
-    "clean:node_modules": "rm -rf ./node_modules && rm -rf ./yarn-error.log",
     "clean:build": "rm -rf ./src/lib && rm -rf ./dist"
   },
   "devDependencies": {
@@ -25,7 +23,7 @@
     "globby": "^14.0.1",
     "tsx": "^4.7.1",
     "typescript": "~5.4.2",
-    "vitest": "^1.3.1"
+    "vitest": "^1.4.0"
   },
   "volta": {
     "extends": "../../package.json"

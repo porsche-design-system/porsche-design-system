@@ -520,7 +520,6 @@ test('should not set checkmark icon if option is both selected and disabled', as
   expect(await getDropdownCheckmarkIcon(page)).toBeNull();
 });
 
-// puppeteer ignores @media(hover: hover) styles, but playwright can handle it
 test.describe('hover state', () => {
   test.skip();
   test('should change border-color when dropdown combobox is hovered', async ({ page }) => {

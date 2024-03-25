@@ -36,11 +36,10 @@ export abstract class BaseComponent implements OnChanges {
   template: '',
 })
 export abstract class BaseComponentWithTheme extends BaseComponent implements OnDestroy {
-  protected declare el: HTMLElement & { theme: Theme };
-  private themeSubscription = inject(THEME_TOKEN).subscribe((theme) => {
-    this.el.theme = this.theme || theme;
-  });
   theme?: Theme;
+  private themeSubscription = inject(THEME_TOKEN).subscribe((theme) => {
+    (this.el as HTMLElement & { theme: Theme }).theme = this.theme || theme;
+  });
 
   ngOnDestroy(): void {
     // need to manually unsubscribe or otherwise subscription is still active even after unmount

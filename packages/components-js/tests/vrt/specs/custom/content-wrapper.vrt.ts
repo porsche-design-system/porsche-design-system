@@ -4,7 +4,7 @@ import {
   viewportWidth3XL,
   viewportWidth4XL,
   viewportWidthXXL,
-} from '@porsche-design-system/shared/testing/playwright.vrt.config';
+} from '@porsche-design-system/shared/testing/playwright.vrt';
 
 const component = 'content-wrapper';
 

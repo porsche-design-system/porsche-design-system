@@ -3,12 +3,7 @@ import { setupScenario } from '../../helpers';
 import { TAG_NAMES, type TagName } from '@porsche-design-system/shared';
 import { getComponentMeta } from '@porsche-design-system/component-meta';
 import { pdfToPng } from 'pdf-to-png-converter';
-import {
-  schemes,
-  themes,
-  viewportWidthM,
-  viewportWidths,
-} from '@porsche-design-system/shared/testing/playwright.vrt.config';
+import { schemes, themes, viewportWidthM, viewportWidths } from '@porsche-design-system/shared/testing/playwright.vrt';
 
 const components = (TAG_NAMES as unknown as TagName[])
   .filter((tagName) => {
@@ -155,7 +150,7 @@ components.forEach((component) => {
         // next best approach is to open the PDF in browser like
         // await page.goto(`/assets/${component}.pdf#toolbar=0&navpanes=0&view=FitH`);
         // and then take a screenshot, but that does not work in headless chrome as described here
-        // https://github.com/microsoft/playwright/issues/6342 and https://github.com/puppeteer/puppeteer/issues/1872#issuecomment-401523623
+        // https://github.com/microsoft/playwright/issues/6342
         // same goes with embedding the pdf file in an iframe or embed tag
         // as an alternative, pdf.js (also possible to self-host) is an option but why render the pdf in a website again?
         // https://mozilla.github.io/pdf.js/web/viewer.html?file=${baseURL}/assets/pdf/${component}.pdf

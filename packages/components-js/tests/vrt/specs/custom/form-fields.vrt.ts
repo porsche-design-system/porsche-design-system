@@ -10,7 +10,7 @@ import {
 } from '../../helpers';
 import { type Theme } from '@porsche-design-system/utilities-v2';
 import { type TagName } from '@porsche-design-system/shared';
-import { themes, viewportWidthXXL } from '@porsche-design-system/shared/testing/playwright.vrt.config';
+import { themes, viewportWidthXXL } from '@porsche-design-system/shared/testing/playwright.vrt';
 
 const component = 'form-fields';
 

@@ -10,13 +10,11 @@
     "start-app": "serve-cdn",
     "test": "yarn test:e2e",
     "test:e2e": "playwright test --config=tests/e2e/config/playwright.config.ts",
-    "clean": "yarn clean:node_modules && yarn clean:reports",
-    "clean:node_modules": "rm -rf ./node_modules && rm -rf ./yarn-error.log",
     "clean:reports": "rm -rf ./reports"
   },
   "dependencies": {
     "@porsche-design-system/assets": "5.0.2",
-    "@porsche-design-system/components-js": "3.13.1",
+    "@porsche-design-system/components-js": "3.14.0",
     "@porsche-design-system/shared": "0.0.0"
   },
   "devDependencies": {

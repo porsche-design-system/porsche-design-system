@@ -9,8 +9,6 @@
     "build": "rollup -c rollup.config.js --bundleConfigAsCjs && mv ../../dist/components-wrapper/testing/testing.d.ts ../../dist/components-wrapper/testing/index.d.ts",
     "test": "yarn test:unit",
     "test:unit": "vitest --config tests/unit/config/vitest.config.ts",
-    "clean": "yarn clean:node_modules && yarn clean:build",
-    "clean:node_modules": "rm -rf ./node_modules && rm -rf ./yarn-error.log",
     "clean:build": "rm -rf ../../dist/jsdom-polyfill"
   },
   "dependencies": {

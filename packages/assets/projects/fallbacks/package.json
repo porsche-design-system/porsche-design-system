@@ -34,8 +34,6 @@
     "build:www": "rm -rf ./www && mkdir -p ./www && cp -r ./public/. ./www && cp -r ./dist/tmp/. ./www/.",
     "test:unit": "vitest --config tests/unit/config/vitest.config.ts",
     "test:vrt": "playwright test --config=tests/vrt/config/playwright.config.ts",
-    "clean": "yarn clean:node_modules && yarn clean:build",
-    "clean:node_modules": "rm -rf ./node_modules && rm -rf ./yarn-error.log",
     "clean:build": " rm -rf ./cdn && rm -rf ./dist && rm -rf ./tmp && rm -rf ./www"
   },
   "devDependencies": {

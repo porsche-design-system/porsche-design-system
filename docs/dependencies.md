@@ -4,15 +4,33 @@
 
 |         | Monorepo | Sample Integrations    |
 | ------- | -------- | ---------------------- |
-| Angular | 15.2.10  | 17.1.1                 |
+| Angular | 17.3.0   | 17.1.1                 |
 | React   | 18.2.0   | 18.2.0                 |
-| Next.js | 14.0.4   | 13.4.19 (React 18.2.0) |
+| Next.js | 14.1.3   | 13.4.19 (React 18.2.0) |
 
 ## Playwright
 
-Playwright Update is currently fixed to 1.41.2. If one wants to update it, it must be updated in the docker container
-aswell (Dockerfile-playwright plus workflow "Build and Push Docker Image"), affecting all running workflows even outside
-the changed branch so this must be aligned with the other developers.
+In case it gets updated, the Porsche Design System / Playwright Docker image needs to be updated too (this might affect
+all running workflows even outside the changed branch, so this must be aligned with the other developers).
+
+1. Open `./docker/Dockerfile` and adjust the Playwright docker image with the updated npm `@playwright/test` version,
+   e.g. from `FROM mcr.microsoft.com/playwright:v7.1.8-focal` to `FROM mcr.microsoft.com/playwright:v9.1.1-focal`.
+2. Open `./docker/build-and-push-docker-image.sh` and adjust the `TAG` with the updated Playwright docker image version,
+   e.g. from `TAG=v7.1.8-focal` to `TAG=v9.1.1-focal`.
+3. Adjust all files within repository using the docker image by search & replace all, e.g.
+   `ghcr.io/porsche-design-system/porsche-design-system/playwright:v7.1.8-focal` with
+   `ghcr.io/porsche-design-system/porsche-design-system/playwright:v9.1.1-focal`
+4. Commit and push the changes to a Git branch
+5. Navigate to
+   [CI/CD workflow "Build and Push Docker Image"](https://github.com/porsche-design-system/porsche-design-system/actions/workflows/build-and-push-docker-image.yml)
+6. Select the Git branch to which the changes have been pushed by "Run workflow > Use workflow from"
+7. Manually execute "Run workflow"
+8. After docker image has been built by CI/CD, execute `./docker.sh bash` in the root directory of the repository
+9. Execute within Docker container `node --version` and update the Volta section of `./package.json` in the root
+   directory of the repository accordingly
+10. Execute within Docker container `yarn --version` and update the Volta section of `./package.json` in the root
+    directory of the repository accordingly
+11. Commit and push the changes to a Git branch
 
 ## Vue
 
@@ -42,42 +60,6 @@ with Vue **2** and **3**.
   plugins
 - `imask` uses static class properties since v7.2.0 which can't be handled by our outdated vue 2 setup without
   additional babel plugins
-
----
-
-## Angular
-
-Angular CLI decides by itself which TypeScript version it supports. As soon as an unsupported TypeScript version is
-installed, the Angular build will fail.
-
-As mentioned here https://angular.io/guide/creating-libraries#ensuring-library-version-compatibility, if building
-component-libraries, the Angular version used to build an application should always be the same or greater than the
-Angular versions used to build any of its dependent libraries.
-
-We are now on `Angular v15` after conformation of our consuming teams. Before upgrading to a new version, ensure all
-consuming teams are already on the next major.
-
-Helpful overview: https://angular.io/guide/versions#actively-supported-versions
-
-### Affected dependencies:
-
-- `typescript`
-- `@angular/animations`
-- `@angular/common`
-- `@angular/compiler`
-- `@angular/core`
-- `@angular/forms`
-- `@angular/platform-browser`
-- `@angular/platform-browser-dynamic`
-- `@angular/router`
-- `@angular-builders/custom-webpack`
-- `@angular-devkit/build-angular`
-- `@angular/cli`
-- `@angular/compiler-cli`
-- `@angular/language-service`
-- `ng-packagr`
-- `angular-imask` with v7.0.0 it is bundled for Angular 16 and became incompatible with our Angular 15 setup:
-  https://github.com/uNmAnNeR/imaskjs/releases
 
 ---
 
@@ -128,12 +110,6 @@ babel plugins, this is imported via text-field-wrapper.examples.md.
 
 - `imask`
 
----
+## @types/react
 
-## Mime
-
-Since v4.0.0 `mime` decided to provide just a modern _ESM_ build with their latest npm package.
-
-### Affected dependencies:
-
-- `mime`
+Is currently fixed to "18.2.65" because of typing incompatibility with JSX namespace.

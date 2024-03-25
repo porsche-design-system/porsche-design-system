@@ -20,8 +20,6 @@
     "build:lib": "yarn build:lib:cjs && yarn build:lib:esm",
     "build:lib:cjs": "tsc --build tsconfig.lib.cjs.json",
     "build:lib:esm": "tsc --build tsconfig.lib.esm.json",
-    "clean": "yarn clean:node_modules && yarn clean:build",
-    "clean:node_modules": "rm -rf ./node_modules && rm -rf ./yarn-error.log",
     "clean:build": "rm -rf ./index.ts && rm -rf ./dist"
   },
   "devDependencies": {

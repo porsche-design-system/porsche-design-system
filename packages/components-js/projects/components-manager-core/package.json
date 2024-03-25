@@ -10,8 +10,6 @@
     "build": "yarn clean:build && tsc --build tsconfig.json && tsc --project tsconfig.json --module CommonJS --outDir ./dist",
     "test": "yarn test:unit",
     "test:unit": "jest",
-    "clean": "yarn clean:node_modules && yarn clean:build",
-    "clean:node_modules": "rm -rf ./node_modules && rm -rf ./yarn-error.log",
     "clean:build": "rm -rf ./dist"
   },
   "devDependencies": {

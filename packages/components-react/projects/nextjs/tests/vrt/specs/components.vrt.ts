@@ -1,6 +1,6 @@
 import { expect, test } from '@playwright/test';
 import { TAG_NAMES, type TagName } from '@porsche-design-system/shared';
-import { viewportWidths } from '@porsche-design-system/shared/testing/playwright.vrt.config';
+import { viewportWidths } from '@porsche-design-system/shared/testing/playwright.vrt';
 
 const components = (TAG_NAMES as unknown as TagName[])
   .filter((tagName) => {

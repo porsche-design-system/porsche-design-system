@@ -23,12 +23,10 @@
     "test:unit:vue-wrapper": "jest --colors -c projects/vue-wrapper/tests/unit/config/jest.config.js",
     "test:e2e": "yarn build-app && playwright test --config=tests/e2e/config/playwright.config.ts",
     "test:vrt": "playwright test --config=tests/vrt/config/playwright.config.ts",
-    "clean": "yarn clean:node_modules && yarn clean:build",
-    "clean:node_modules": "rm -rf ./node_modules && rm -rf ./yarn-error.log",
     "clean:build": "rm -rf ./dist"
   },
   "dependencies": {
-    "@porsche-design-system/components-vue": "3.13.1",
+    "@porsche-design-system/components-vue": "3.14.0",
     "vue": "^3.4.21",
     "vue-imask": "^7.5.0",
     "vue-router": "^4.3.0"
@@ -37,7 +35,7 @@
     "@porsche-design-system/assets": "5.0.2",
     "@porsche-design-system/shared": "0.0.0",
     "@rushstack/eslint-patch": "^1.7.2",
-    "@testing-library/vue": "^8.0.2",
+    "@testing-library/vue": "^8.0.3",
     "@tsconfig/node18": "^18.2.2",
     "@vitejs/plugin-vue": "^5.0.4",
     "@vitejs/plugin-vue-jsx": "^3.1.0",
