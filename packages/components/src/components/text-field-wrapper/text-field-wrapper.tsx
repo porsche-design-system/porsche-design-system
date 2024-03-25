@@ -11,7 +11,6 @@ import {
   Watch,
 } from '@stencil/core';
 import {
-  addInputEventListenerForCounter,
   AllowedTypes,
   attachComponentCss,
   FORM_STATES,
@@ -19,12 +18,14 @@ import {
   getPrefixedTagNames,
   handleButtonEvent,
   hasPropValueChanged,
+  inputEventListenerCurry,
   isWithinForm,
   observeAttributes,
   observeProperties,
   setAriaAttributes,
   THEMES,
   unobserveAttributes,
+  updateCounter,
   validateProps,
   warnIfDeprecatedPropIsUsed,
 } from '../../utils';
@@ -137,6 +138,7 @@ export class TextFieldWrapper {
   private hasCounter: boolean;
   private isCounterVisible: boolean;
   private hasUnit: boolean;
+  private listener: EventListener;
 
   @Watch('showCounter')
   public onShowCounterChange(): void {
@@ -188,8 +190,7 @@ export class TextFieldWrapper {
     // TODO: The listener gets added multiple times if showCounter is toggled multiple times
     if (this.isCounterVisible) {
       // renders innerHTML of unitOrCounterElement initially and on every input event
-      addInputEventListenerForCounter(
-        this.input,
+      this.addInputEventListenerForCounter(
         this.ariaElement,
         this.isCounterVisible && this.unitOrCounterElement,
         this.setInputStyles
@@ -385,5 +386,23 @@ export class TextFieldWrapper {
 
   private setInputStyles = (): void => {
     setInputStyles(this.input, this.unitOrCounterElement, this.isCounterVisible ? 'suffix' : this.unitPosition);
+  };
+
+  private addInputEventListenerForCounter = (
+    characterCountElement: HTMLSpanElement,
+    counterElement?: HTMLSpanElement,
+    inputChangeCallback?: () => void
+  ): void => {
+    updateCounter(this.input, characterCountElement, counterElement); // Initial value
+
+    // When value changes programmatically
+    observeProperties(this.input, ['value'], () => {
+      updateCounter(this.input, characterCountElement, counterElement, inputChangeCallback);
+    });
+
+    this.listener = inputEventListenerCurry(characterCountElement, counterElement, inputChangeCallback);
+
+    this.input.removeEventListener('input', this.listener);
+    this.input.addEventListener('input', this.listener);
   };
 }

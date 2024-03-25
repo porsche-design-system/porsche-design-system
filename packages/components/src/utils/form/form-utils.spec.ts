@@ -1,11 +1,5 @@
-import * as propertyObserverUtils from '../property-observer';
 import * as formUtils from './form-utils';
-import {
-  addInputEventListenerForCounter,
-  hasCounter,
-  setAriaElementInnerHtml,
-  setCounterInnerHtml,
-} from './form-utils';
+import { hasCounter, setAriaElementInnerHtml, setCounterInnerHtml, updateCounter } from './form-utils';
 
 const getInputElement = (): HTMLInputElement => {
   const el = document.createElement('input');
@@ -81,70 +75,6 @@ describe('setAriaElementInnerHtml()', () => {
   });
 });
 
-describe('addInputEventListenerForCounter()', () => {
-  it('should initially call updateCounter()', () => {
-    const inputElement = getInputElement();
-    const counterElement = getCounterElement();
-    const ariaElement = getAriaElement();
-
-    const updateCounterSpy = jest.spyOn(formUtils, 'updateCounter');
-    addInputEventListenerForCounter(inputElement, ariaElement, counterElement);
-
-    expect(updateCounterSpy).toBeCalledWith(inputElement, ariaElement, counterElement);
-  });
-  it('should register property observer for value of input by calling observeProperties()', () => {
-    const inputElement = getInputElement();
-    const counterElement = getCounterElement();
-    const ariaElement = getAriaElement();
-
-    const observePropertiesSpy = jest.spyOn(propertyObserverUtils, 'observeProperties');
-    addInputEventListenerForCounter(inputElement, ariaElement, counterElement);
-
-    expect(observePropertiesSpy).toBeCalledWith(inputElement, ['value'], expect.anything());
-  });
-
-  it('should call updateCounter() when value of input changes', () => {
-    const inputElement = getInputElement();
-    const counterElement = getCounterElement();
-    const ariaElement = getAriaElement();
-
-    const updateCounterSpy = jest.spyOn(formUtils, 'updateCounter');
-    addInputEventListenerForCounter(inputElement, ariaElement, counterElement);
-
-    expect(updateCounterSpy).toHaveBeenNthCalledWith(1, inputElement, ariaElement, counterElement);
-    expect(updateCounterSpy).toHaveBeenCalledTimes(1);
-
-    inputElement.value = 'Change value';
-
-    expect(updateCounterSpy).toHaveBeenNthCalledWith(2, inputElement, ariaElement, counterElement, undefined);
-    expect(updateCounterSpy).toHaveBeenCalledTimes(2);
-  });
-
-  it('should register event listener on element', () => {
-    const inputElement = getInputElement();
-    const counterElement = getCounterElement();
-    const ariaElement = getAriaElement();
-    const spy = jest.spyOn(inputElement, 'addEventListener');
-
-    addInputEventListenerForCounter(inputElement, ariaElement, counterElement);
-    expect(spy).toBeCalledWith('input', expect.anything());
-  });
-
-  it('should register event listener on element without error when no counterElement is provided', () => {
-    const inputElement = getInputElement();
-    const ariaElement = getAriaElement();
-    const spy = jest.spyOn(inputElement, 'addEventListener');
-    let error = undefined;
-    try {
-      addInputEventListenerForCounter(inputElement, ariaElement);
-    } catch (e) {
-      error = e;
-    }
-    expect(error).toBeUndefined();
-    expect(spy).toBeCalledWith('input', expect.anything());
-  });
-});
-
 describe('updateCounter()', () => {
   it('should initially call setCounterInnerHtml() and setAriaElementInnerHtml()', () => {
     const inputElement = getInputElement();
@@ -153,7 +83,7 @@ describe('updateCounter()', () => {
 
     const setCounterInnerHtmlSpy = jest.spyOn(formUtils, 'setCounterInnerHtml');
     const setAriaElementInnerHtmlSpy = jest.spyOn(formUtils, 'setAriaElementInnerHtml');
-    addInputEventListenerForCounter(inputElement, ariaElement, counterElement);
+    updateCounter(inputElement, ariaElement, counterElement);
 
     expect(setCounterInnerHtmlSpy).toBeCalledWith(inputElement, counterElement);
     expect(setCounterInnerHtmlSpy).toBeCalledTimes(1);
@@ -168,9 +98,8 @@ describe('updateCounter()', () => {
     const ariaElement = getAriaElement();
     const setCounterInnerHtmlSpy = jest.spyOn(formUtils, 'setCounterInnerHtml');
     const setAriaElementInnerHtmlSpy = jest.spyOn(formUtils, 'setAriaElementInnerHtml');
-    addInputEventListenerForCounter(inputElement, ariaElement, counterElement);
+    updateCounter(inputElement, ariaElement, counterElement);
 
-    inputElement.dispatchEvent(new Event('input'));
     expect(setCounterInnerHtmlSpy).toBeCalledWith(inputElement, counterElement);
     expect(setCounterInnerHtmlSpy).toBeCalledTimes(2);
     expect(setAriaElementInnerHtmlSpy).toBeCalledWith(inputElement, ariaElement);
@@ -182,9 +111,8 @@ describe('updateCounter()', () => {
     const counterElement = getCounterElement();
     const ariaElement = getAriaElement();
     const callback = jest.fn();
-    addInputEventListenerForCounter(inputElement, ariaElement, counterElement, callback);
+    updateCounter(inputElement, ariaElement, counterElement, callback);
 
-    inputElement.dispatchEvent(new Event('input'));
     expect(callback).toBeCalledTimes(1);
   });
 });

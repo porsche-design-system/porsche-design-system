@@ -1,17 +1,19 @@
 import { Component, Element, forceUpdate, h, type JSX, Prop, Watch } from '@stencil/core';
 import { type BreakpointCustomizable, type PropTypes, type Theme } from '../../types';
 import {
-  addInputEventListenerForCounter,
   AllowedTypes,
   attachComponentCss,
   FORM_STATES,
   getOnlyChildOfKindHTMLElementOrThrow,
   hasCounter,
   hasPropValueChanged,
+  inputEventListenerCurry,
   observeAttributes,
+  observeProperties,
   setAriaAttributes,
   THEMES,
   unobserveAttributes,
+  updateCounter,
   validateProps,
   warnIfDeprecatedPropIsUsed,
 } from '../../utils';
@@ -68,6 +70,7 @@ export class TextareaWrapper {
   private counterElement: HTMLSpanElement;
   private ariaElement: HTMLSpanElement;
   private hasCounter: boolean;
+  private listener: EventListener;
 
   @Watch('showCounter')
   public onShowCounterChange(): void {
@@ -90,7 +93,7 @@ export class TextareaWrapper {
 
   public componentDidRender(): void {
     if (this.hasCounter) {
-      addInputEventListenerForCounter(this.textarea, this.ariaElement, this.counterElement);
+      this.addInputEventListenerForCounter(this.ariaElement, this.counterElement);
     }
 
     /*
@@ -151,5 +154,23 @@ export class TextareaWrapper {
     this.hasCounter =
       hasCounter(this.textarea) &&
       (typeof this.showCharacterCount === 'undefined' ? this.showCounter : this.showCharacterCount);
+  };
+
+  private addInputEventListenerForCounter = (
+    characterCountElement: HTMLSpanElement,
+    counterElement?: HTMLSpanElement,
+    inputChangeCallback?: () => void
+  ): void => {
+    updateCounter(this.textarea, characterCountElement, counterElement); // Initial value
+
+    // When value changes programmatically
+    observeProperties(this.textarea, ['value'], () => {
+      updateCounter(this.textarea, characterCountElement, counterElement, inputChangeCallback);
+    });
+
+    this.listener = inputEventListenerCurry(characterCountElement, counterElement, inputChangeCallback);
+
+    this.textarea.removeEventListener('input', this.listener);
+    this.textarea.addEventListener('input', this.listener);
   };
 }

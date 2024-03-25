@@ -1,10 +1,9 @@
 import { debounce } from 'throttle-debounce';
-import { observeProperties } from '../property-observer';
 
 export const hasCounter = (el: HTMLTextAreaElement | HTMLInputElement): boolean => el.maxLength >= 0;
 
 // https://javascript.info/currying-partials
-const inputEventListenerCurry = (
+export const inputEventListenerCurry = (
   characterCountElement: HTMLSpanElement,
   counterElement?: HTMLSpanElement,
   inputChangeCallback?: () => void
@@ -18,30 +17,6 @@ const inputEventListenerCurry = (
       inputChangeCallback
     );
   };
-};
-
-const controller = new AbortController();
-
-export const addInputEventListenerForCounter = (
-  input: HTMLTextAreaElement | HTMLInputElement,
-  characterCountElement: HTMLSpanElement,
-  counterElement?: HTMLSpanElement,
-  inputChangeCallback?: () => void
-): void => {
-  updateCounter(input, characterCountElement, counterElement); // Initial value
-
-  // When value changes programmatically
-  observeProperties(input, ['value'], () => {
-    updateCounter(input, characterCountElement, counterElement, inputChangeCallback);
-  });
-
-  // remove the listener first to avoid multiple listeners on re-renders
-  controller.abort();
-
-  // remove the listener first to avoid multiple listeners on re-renders
-  input.addEventListener('input', inputEventListenerCurry(characterCountElement, counterElement, inputChangeCallback), {
-    signal: controller.signal,
-  });
 };
 
 export const updateCounter = (
