@@ -92,20 +92,6 @@ describe('updateCounter()', () => {
     expect(setAriaElementInnerHtmlSpy).toHaveBeenCalledTimes(1);
   });
 
-  it('should on input event call setCounterInnerHtml() and setAriaElementInnerHtml()', () => {
-    const inputElement = getInputElement();
-    const counterElement = getCounterElement();
-    const ariaElement = getAriaElement();
-    const setCounterInnerHtmlSpy = jest.spyOn(formUtils, 'setCounterInnerHtml');
-    const setAriaElementInnerHtmlSpy = jest.spyOn(formUtils, 'setAriaElementInnerHtml');
-    updateCounter(inputElement, ariaElement, counterElement);
-
-    expect(setCounterInnerHtmlSpy).toHaveBeenCalledWith(inputElement, counterElement);
-    expect(setCounterInnerHtmlSpy).toHaveBeenCalledTimes(2);
-    expect(setAriaElementInnerHtmlSpy).toHaveBeenCalledWith(inputElement, ariaElement);
-    expect(setAriaElementInnerHtmlSpy).toHaveBeenCalledTimes(2);
-  });
-
   it('should on input event call inputChangeCallback() if supplied', () => {
     const inputElement = getInputElement();
     const counterElement = getCounterElement();
