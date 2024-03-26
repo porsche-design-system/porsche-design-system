@@ -241,8 +241,8 @@ describe('render', () => {
 });
 
 describe('componentDidLoad', () => {
-  it('should call addInputEventListenerForSearch() based on isSearch with correct parameters', () => {
-    const spy = jest.spyOn(textFieldWrapperUtils, 'addInputEventListenerForSearch');
+  it('should call addeventListenerForSearch() based on isSearch with correct parameters', () => {
+    const spy = jest.spyOn(textFieldWrapperUtils, 'addeventListenerForSearch');
     const input = document.createElement('input');
     const component = new TextFieldWrapper();
     component['input'] = input;
@@ -264,7 +264,7 @@ describe('componentDidRender', () => {
     expect(spy).toHaveBeenCalledTimes(1);
   });
 
-  it('should call addInputEventListenerForCounter() with correct parameters if hasCounter is true and isCounterVisible is false/true', () => {
+  it('should call addeventListenerForCounter() with correct parameters if hasCounter is true and isCounterVisible is false/true', () => {
     const updateCounterSpy = jest.spyOn(formUtils, 'updateCounter');
     const observePropertiesSpy = jest.spyOn(propertyObserverUtils, 'observeProperties');
     const addEventListenerSpy = jest.fn();
@@ -292,8 +292,8 @@ describe('componentDidRender', () => {
 
     expect(updateCounterSpy).toHaveBeenCalledWith(input, ariaElement, undefined);
     expect(observePropertiesSpy).toHaveBeenCalledWith(input, ['value'], expect.any(Function));
-    expect(addEventListenerSpy).toHaveBeenCalledWith('input', component['inputEventListener']);
-    expect(removeEventListenerSpy).toHaveBeenCalledWith('input', component['inputEventListener']);
+    expect(addEventListenerSpy).toHaveBeenCalledWith('input', component['eventListener']);
+    expect(removeEventListenerSpy).toHaveBeenCalledWith('input', component['eventListener']);
 
     const counter = document.createElement('span');
 
@@ -304,8 +304,8 @@ describe('componentDidRender', () => {
 
     expect(updateCounterSpy).toHaveBeenCalledWith(input, ariaElement, counter);
     expect(observePropertiesSpy).toHaveBeenCalledWith(input, ['value'], expect.any(Function));
-    expect(addEventListenerSpy).toHaveBeenCalledWith('input', component['inputEventListener']);
-    expect(removeEventListenerSpy).toHaveBeenCalledWith('input', component['inputEventListener']);
+    expect(addEventListenerSpy).toHaveBeenCalledWith('input', component['eventListener']);
+    expect(removeEventListenerSpy).toHaveBeenCalledWith('input', component['eventListener']);
   });
 
   it('should call setAriaAttributes() with correct parameters', () => {

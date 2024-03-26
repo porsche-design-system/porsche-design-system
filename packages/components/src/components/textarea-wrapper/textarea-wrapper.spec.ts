@@ -55,8 +55,8 @@ describe('componentDidRender', () => {
 
     expect(updateCounterSpy).toHaveBeenCalledWith(textarea, ariaElement, counter);
     expect(observePropertiesSpy).toHaveBeenCalledWith(textarea, ['value'], expect.any(Function));
-    expect(addEventListenerSpy).toHaveBeenCalledWith('input', component['textareaEventListener']);
-    expect(removeEventListenerSpy).toHaveBeenCalledWith('input', component['textareaEventListener']);
+    expect(addEventListenerSpy).toHaveBeenCalledWith('input', component['eventListener']);
+    expect(removeEventListenerSpy).toHaveBeenCalledWith('input', component['eventListener']);
   });
 
   it('should call setAriaAttributes() with correct parameters', () => {
