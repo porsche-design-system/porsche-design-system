@@ -138,7 +138,7 @@ export class TextFieldWrapper {
   private hasCounter: boolean;
   private isCounterVisible: boolean;
   private hasUnit: boolean;
-  private inputEventListener: EventListener;
+  private eventListener: EventListener;
 
   @Watch('showCounter')
   public onShowCounterChange(): void {
@@ -399,9 +399,9 @@ export class TextFieldWrapper {
       updateCounter(this.input, characterCountElement, counterElement, inputChangeCallback);
     });
 
-    this.inputEventListener = inputEventListenerCurry(characterCountElement, counterElement, inputChangeCallback);
+    this.eventListener = inputEventListenerCurry(characterCountElement, counterElement, inputChangeCallback);
 
-    this.input.removeEventListener('input', this.inputEventListener);
-    this.input.addEventListener('input', this.inputEventListener);
+    this.input.removeEventListener('input', this.eventListener);
+    this.input.addEventListener('input', this.eventListener);
   };
 }
