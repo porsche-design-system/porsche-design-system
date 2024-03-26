@@ -241,8 +241,8 @@ describe('render', () => {
 });
 
 describe('componentDidLoad', () => {
-  it('should call addeventListenerForSearch() based on isSearch with correct parameters', () => {
-    const spy = jest.spyOn(textFieldWrapperUtils, 'addeventListenerForSearch');
+  it('should call addInputEventListenerForSearch() based on isSearch with correct parameters', () => {
+    const spy = jest.spyOn(textFieldWrapperUtils, 'addInputEventListenerForSearch');
     const input = document.createElement('input');
     const component = new TextFieldWrapper();
     component['input'] = input;
