@@ -11334,6 +11334,7 @@ exports[`should match snapshot 1`] = `
       "disabled",
       "readonly",
       "required",
+      "maxlength",
     ],
     "props": {
       "actionIcon": null,
@@ -11605,6 +11606,7 @@ exports[`should match snapshot 1`] = `
       "disabled",
       "readonly",
       "required",
+      "maxlength",
     ],
     "props": {
       "description": "",
