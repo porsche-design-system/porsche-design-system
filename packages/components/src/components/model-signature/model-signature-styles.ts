@@ -39,18 +39,23 @@ export const getComponentCss = (
       ':host': {
         display: 'inline-block',
         verticalAlign: 'top',
+        ...(!isColorInherit
+          ? addImportantToEachRule({
+              background: getThemedColor(color, getThemedColors(theme)),
+              ...prefersColorSchemeDarkMediaQuery(theme, {
+                background: getThemedColor(color, getThemedColors('dark')),
+              }),
+            })
+          : {
+              // needed for backwards compatibility when color prop is set to "inherit" and custom CSS filter is used
+              background: '#000',
+            }),
         ...addImportantToEachRule({
           mask: `url(${getSvgUrl(model)}) no-repeat left top / contain`,
           aspectRatio: `${width} / ${safeZone ? 36 : height}`, // 36px is the max-height for SVG model signature creation
           maxWidth: '100%',
           ...(!isSizeInherit && {
             width: `${width}px`,
-          }),
-          ...(!isColorInherit && {
-            background: getThemedColor(color, getThemedColors(theme)),
-            ...prefersColorSchemeDarkMediaQuery(theme, {
-              background: getThemedColor(color, getThemedColors('dark')),
-            }),
           }),
           ...colorSchemeStyles,
           ...hostHiddenStyles,
