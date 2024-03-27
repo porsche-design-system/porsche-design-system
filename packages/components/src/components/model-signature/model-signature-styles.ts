@@ -62,12 +62,14 @@ export const getComponentCss = (
         }),
       },
       '::slotted(:is(img,video))': addImportantToEachRule({
+        display: 'block', // prevents unintended bottom white-space
         width: '100%',
         height: '100%',
         objectFit: 'cover',
       }),
       // the <img /> is only needed for a11y compliance because of alt text and to handle the fetch priority
       img: {
+        position: 'absolute', // prevents unintended bottom white-space
         opacity: 0,
         width: '1px',
         height: '1px',
