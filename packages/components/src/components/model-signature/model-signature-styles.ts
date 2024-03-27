@@ -1,46 +1,36 @@
-import { getCss, isHighContrastMode } from '../../utils';
+import { getCss } from '../../utils';
 import {
   addImportantToEachRule,
-  hostHiddenStyles,
-  getSchemedHighContrastMediaQuery,
-  prefersColorSchemeDarkMediaQuery,
   colorSchemeStyles,
+  getThemedColors,
+  hostHiddenStyles,
+  prefersColorSchemeDarkMediaQuery,
+  type ThemedColors,
 } from '../../styles';
-import type { ModelSignatureColor, ModelSignatureSize } from './model-signature-utils';
+import type { ModelSignatureColor, ModelSignatureModel, ModelSignatureSize } from './model-signature-utils';
+import { getSvgUrl } from './model-signature-utils';
 import type { Theme } from '../../types';
-import {
-  filterDarkContrastHigh,
-  filterDarkContrastLow,
-  filterDarkContrastMedium,
-  filterDarkPrimary,
-  filterLightContrastHigh,
-  filterLightContrastLow,
-  filterLightContrastMedium,
-  filterLightPrimary,
-} from '../../styles/color-filters';
-import { modelSignatureHeight } from './model-signature-utils';
+import { MODEL_SIGNATURES_MANIFEST } from '@porsche-design-system/assets';
 
-const colorToFilterLight: Record<Exclude<ModelSignatureColor, 'inherit'>, string> = {
-  primary: filterLightPrimary,
-  'contrast-low': filterLightContrastLow,
-  'contrast-medium': filterLightContrastMedium,
-  'contrast-high': filterLightContrastHigh,
+const getThemedColor = (color: ModelSignatureColor, themedColors: ThemedColors): string => {
+  const colorMap: Record<Exclude<ModelSignatureColor, 'inherit'>, string> = {
+    primary: themedColors.primaryColor,
+    'contrast-low': themedColors.contrastLowColor,
+    'contrast-medium': themedColors.contrastMediumColor,
+    'contrast-high': themedColors.contrastHighColor,
+  };
+
+  return colorMap[color];
 };
 
-const colorToFilterDark: Record<Exclude<ModelSignatureColor, 'inherit'>, string> = {
-  primary: filterDarkPrimary,
-  'contrast-low': filterDarkContrastLow,
-  'contrast-medium': filterDarkContrastMedium,
-  'contrast-high': filterDarkContrastHigh,
-};
-
-const colorToFilterMap: Record<Theme, Record<Exclude<ModelSignatureColor, 'inherit'>, string>> = {
-  auto: colorToFilterLight,
-  light: colorToFilterLight,
-  dark: colorToFilterDark,
-};
-
-export const getComponentCss = (size: ModelSignatureSize, color: ModelSignatureColor, theme: Theme): string => {
+export const getComponentCss = (
+  model: ModelSignatureModel,
+  safeZone: boolean,
+  size: ModelSignatureSize,
+  color: ModelSignatureColor,
+  theme: Theme
+): string => {
+  const { width, height } = MODEL_SIGNATURES_MANIFEST[model];
   const isSizeInherit = size === 'inherit';
   const isColorInherit = color === 'inherit';
 
@@ -50,39 +40,32 @@ export const getComponentCss = (size: ModelSignatureSize, color: ModelSignatureC
         display: 'inline-block',
         verticalAlign: 'top',
         ...addImportantToEachRule({
+          mask: `url(${getSvgUrl(model)}) no-repeat left top / contain`,
+          aspectRatio: `${width} / ${safeZone ? 36 : height}`, // 36px is the max-height for SVG model signature creation
           maxWidth: '100%',
-          maxHeight: '100%',
           ...(!isSizeInherit && {
-            width: 'inherit',
-            height: 'inherit',
-            // TODO: we need a width map of all signatures to ensure same fluid behavior like implemented fro crest + wordmark
-            maxHeight: `${modelSignatureHeight}px`,
+            width: `${width}px`,
+          }),
+          ...(!isColorInherit && {
+            background: getThemedColor(color, getThemedColors(theme)),
+            ...prefersColorSchemeDarkMediaQuery(theme, {
+              background: getThemedColor(color, getThemedColors('dark')),
+            }),
           }),
           ...colorSchemeStyles,
           ...hostHiddenStyles,
         }),
       },
+      '::slotted(:is(img,video))': addImportantToEachRule({
+        width: '100%',
+        height: '100%',
+        objectFit: 'cover',
+      }),
+      // the <img /> is only needed for a11y compliance because of alt text and to handle the fetch priority
       img: {
-        display: 'block',
-        maxWidth: '100%',
-        maxHeight: '100%',
-        pointerEvents: 'none', // prevents image drag
-        ...(!isColorInherit && {
-          filter: colorToFilterMap[theme][color],
-          ...prefersColorSchemeDarkMediaQuery(theme, {
-            filter: colorToFilterMap.dark[color],
-          }),
-          ...(isHighContrastMode &&
-            getSchemedHighContrastMediaQuery(
-              {
-                filter: colorToFilterMap.light[color],
-              },
-              {
-                filter: colorToFilterMap.dark[color],
-              }
-            )),
-        }),
-        ...(isSizeInherit && { height: size }),
+        opacity: 0,
+        width: '1px',
+        height: '1px',
       },
     },
   });
