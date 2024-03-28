@@ -15,9 +15,10 @@ The `model` prop's default is `{{ meta.props.model }}`, which can be changed to 
 
 ## Safe Zone
 
-The `safe-zone` prop's default is `{{ meta.props.safeZone }}`, which visually aligns all Model Signatures. When `false`
-is set as value, the Model Signature comes without any safe zone which is probably preferred when the element is
-positioned independently.
+The `safe-zone` prop's default is `{{ meta.props.safeZone }}`, which ensures a visual balance across all model
+signatures. This is most likely the best option when the model signatures are used in combination or within tiles next
+to each other. When `false` is set as value, the model signatures come without any safe zone which is probably preferred
+when the element is positioned independently.
 
 <Playground :markup="safeZoneMarkup" :config="config">
   <PlaygroundSelect v-model="safeZone" :values="safeZones" name="safe-zone"></PlaygroundSelect>
@@ -33,9 +34,9 @@ The `color` prop's default is `{{ meta.props.color }}`, which can be changed to 
 
 ## Sizes
 
-The `size` prop's default is `{{ meta.props.size }}`. When `inherit` is set as value, the size of the Model Signature
-can be defined with CSS `width | height`. Depending on the use case it might make sense to use it in combination with
-`safe-zone=false`.
+The `size` prop's default is `{{ meta.props.size }}`. When `inherit` is set as value, the size of the model signature
+can be defined with either CSS `width` or `height`. Depending on the use case it might make sense to use it in
+combination with `safe-zone=false`.
 
 <Playground :markup="sizeMarkup" :config="config">
   <PlaygroundSelect v-model="size" :values="sizes" name="size"></PlaygroundSelect>
@@ -54,13 +55,25 @@ proper blend mode results.
 
 ## Mask: Gradient
 
+<Notification heading="Experimental" state="warning">
+  The following example shows what is technically possible but has not yet been approved by the Porsche Brand Guide.
+</Notification>
+
 <Playground :markup="gradientMarkup" :config="config"></Playground>
 
 ## Mask: Image
 
+<Notification heading="Experimental" state="warning">
+  The following example shows what is technically possible but has not yet been approved by the Porsche Brand Guide.
+</Notification>
+
 <Playground :markup="imageMarkup" :config="config"></Playground>
 
 ## Mask: Video
+
+<Notification heading="Experimental" state="warning">
+  The following example shows what is technically possible but has not yet been approved by the Porsche Brand Guide.
+</Notification>
 
 <Playground :markup="videoMarkup" :config="config"></Playground>
 
@@ -85,7 +98,9 @@ export default class Code extends Vue {
   safeZone: boolean = false;
   safeZones = [true, false];
   get safeZoneMarkup() {
-    return `<p-model-signature safe-zone="${this.safeZone}"></p-model-signature>`;
+    return MODEL_SIGNATURE_MODELS.map((model) => `<div style="background: rgba(255,0,0,0.2); display: inline-block;">
+  <p-model-signature safe-zone="${this.safeZone}" model="${model}"></p-model-signature>
+</div>`).join('\n');
   }
 
   size: ModelSignatureSize = this.meta.props.size;
