@@ -482,7 +482,7 @@ test.describe('showCounter', () => {
     await initTextField(page);
     const input = await getInput(page);
 
-    await expect(page.getByText('0/20')).not.toBeVisible();
+    await expect(page.getByText('0/20')).toBeHidden();
     expect(await getLabelSrText(page)).toBeNull();
 
     await setAttribute(input, 'maxlength', '20');
@@ -492,7 +492,7 @@ test.describe('showCounter', () => {
 
     await removeAttribute(input, 'maxlength');
 
-    await expect(page.getByText('0/20')).not.toBeVisible();
+    await expect(page.getByText('0/20')).toBeHidden();
     expect(await getLabelSrText(page)).toBeNull();
   });
 
@@ -500,12 +500,12 @@ test.describe('showCounter', () => {
     await initTextField(page, { showCounter: false });
     const input = await getInput(page);
 
-    await expect(page.getByText('0/20')).not.toBeVisible();
+    await expect(page.getByText('0/20')).toBeHidden();
     expect(await getLabelSrText(page)).toBeNull();
 
     await setAttribute(input, 'maxlength', '20');
 
-    await expect(page.getByText('0/20')).not.toBeVisible();
+    await expect(page.getByText('0/20')).toBeHidden();
     expect(await getLabelSrText(page)).toBeNull();
   });
 });
