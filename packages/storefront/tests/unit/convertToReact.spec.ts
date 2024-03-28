@@ -26,7 +26,7 @@ describe('transformObjectValues()', () => {
   <span>Some text</span>
   <input type="checkbox">
   <button type="button"></button>
-</p-some-tag>`
+</p-some-tag>`,
     );
   });
 });
@@ -38,15 +38,15 @@ describe('transformStandardAttributes()', () => {
   <span>Some text</span>
   <input type="checkbox">
   <button type="button"></button>
-</p-some-tag>`
+</p-some-tag>`,
     );
   });
 
   it('should not transform aria attributes', () => {
     expect(
       transformStandardAttributes(
-        '<div aria-label="some label" aria-checked="false" aria-disabled="false" aria-live="polite"></div>'
-      )
+        '<div aria-label="some label" aria-checked="false" aria-disabled="false" aria-live="polite"></div>',
+      ),
     ).toBe('<div aria-label="some label" aria-checked="false" aria-disabled="false" aria-live="polite"></div>');
   });
 
@@ -60,19 +60,19 @@ describe('transformStandardAttributes()', () => {
 
   it('should not transform readonly innerText to camelCase', () => {
     expect(transformStandardAttributes('<label>Some readonly label</label>')).toBe(
-      '<label>Some readonly label</label>'
+      '<label>Some readonly label</label>',
     );
   });
 
   it('should transform maxlength attribute to camelCase', () => {
     expect(transformStandardAttributes('<input type="text" maxlength="20">')).toBe(
-      '<input type="text" maxLength="20">'
+      '<input type="text" maxLength="20">',
     );
   });
 
   it('should not transform maxlength innerText to camelCase', () => {
     expect(transformStandardAttributes('<label>Some maxlength label</label>')).toBe(
-      '<label>Some maxlength label</label>'
+      '<label>Some maxlength label</label>',
     );
   });
 
@@ -82,13 +82,13 @@ describe('transformStandardAttributes()', () => {
 
   it('should transform srcset attribute to camelCase for img tag', () => {
     expect(transformStandardAttributes('<img src="./some_png.png" srcset="./some_png.png">')).toBe(
-      '<img src="./some_png.png" srcSet={"./some_png.png"}>'
+      '<img src="./some_png.png" srcSet={"./some_png.png"}>',
     );
   });
 
   it('should transform srcset attribute to camelCase for source tag', () => {
     expect(transformStandardAttributes('<source src="./some_png.png" srcset="./some_png.png">')).toBe(
-      '<source src="./some_png.png" srcSet={"./some_png.png"}>'
+      '<source src="./some_png.png" srcSet={"./some_png.png"}>',
     );
   });
 });
@@ -100,7 +100,7 @@ describe('transformClassAttribute()', () => {
   <span>Some text</span>
   <input type="checkbox">
   <button type="button"></button>
-</p-some-tag>`
+</p-some-tag>`,
     );
   });
 });
@@ -112,13 +112,13 @@ describe('transformEvents()', () => {
   <span>Some text</span>
   <input type="checkbox">
   <button type="button"></button>
-</p-some-tag>`
+</p-some-tag>`,
     );
   });
 
   it('should not transform attribute values containing " on"', () => {
     expect(transformEvents('<p-somme-tag label="Icon only" icon="user"></p-somme-tag>')).toBe(
-      `<p-somme-tag label="Icon only" icon="user"></p-somme-tag>`
+      `<p-somme-tag label="Icon only" icon="user"></p-somme-tag>`,
     );
   });
 });
@@ -130,24 +130,24 @@ describe('transformBooleanDigitAndUndefinedValues()', () => {
   <span>Some text</span>
   <input type="checkbox">
   <button type="button"></button>
-</p-some-tag>`
+</p-some-tag>`,
     );
   });
 
   it('should remove quotes and add brackets to undefined values', () => {
     expect(transformBooleanDigitAndUndefinedValues(`<p-some-tag attribute="undefined"></p-some-tag>`)).toBe(
-      `<p-some-tag attribute={undefined}></p-some-tag>`
+      `<p-some-tag attribute={undefined}></p-some-tag>`,
     );
   });
 
   it('should not transform prop model with digit values', () => {
     expect(transformAttributesWithDigitValue('<p-model-signature model="911"></p-model-signature>')).toBe(
-      `<p-model-signature [model]="'911'"></p-model-signature>`
+      `<p-model-signature [model]="'911'"></p-model-signature>`,
     );
   });
   it('should not transform pin codes prop value with digit values', () => {
     expect(transformAttributesWithDigitValue('<p-pin-code value="1234"></p-pin-code>')).toBe(
-      `<p-pin-code [value]="'1234'"></p-pin-code>`
+      `<p-pin-code [value]="'1234'"></p-pin-code>`,
     );
   });
 });
@@ -159,7 +159,7 @@ describe('transformCustomElementTagName()', () => {
   <span>Some text</span>
   <input type="checkbox">
   <button type="button"></button>
-</PSomeTag>`
+</PSomeTag>`,
     );
   });
 
@@ -174,7 +174,7 @@ describe('transformCustomElementTagName()', () => {
   attribute="some value"
   class="some-class"
 >
-</PSomeTag>`
+</PSomeTag>`,
     );
   });
 
@@ -191,7 +191,7 @@ describe('transformInputs()', () => {
   <span>Some text</span>
   <input type="checkbox" />
   <button type="button"></button>
-</p-some-tag>`
+</p-some-tag>`,
     );
   });
 });
@@ -203,7 +203,7 @@ describe('transformToSelfClosingTags()', () => {
   <span>Some text</span>
   <input type="checkbox">
   <button type="button" />
-</p-some-tag>`
+</p-some-tag>`,
     );
   });
 
@@ -222,17 +222,17 @@ describe('transformToSelfClosingTags()', () => {
 describe('transformStyleAttribute()', () => {
   it('should quote values', () => {
     const markup = '<div style="display: block"></div>';
-    expect(transformStyleAttribute(markup)).toBe("<div style={{ display: 'block' }}></div>");
+    expect(transformStyleAttribute(markup)).toBe('<div style={{ display: \'block\' }}></div>');
   });
 
   it('should transform properties to camelCase', () => {
     const markup = '<div style="text-align: center"></div>';
-    expect(transformStyleAttribute(markup)).toBe("<div style={{ textAlign: 'center' }}></div>");
+    expect(transformStyleAttribute(markup)).toBe('<div style={{ textAlign: \'center\' }}></div>');
   });
 
   it('should handle multiple styles', () => {
     const markup = '<div style="text-align: center; font-size: 16px"></div>';
-    expect(transformStyleAttribute(markup)).toBe("<div style={{ textAlign: 'center', fontSize: '16px' }}></div>");
+    expect(transformStyleAttribute(markup)).toBe('<div style={{ textAlign: \'center\', fontSize: \'16px\' }}></div>');
   });
 
   it('should handle multiline style', () => {
@@ -250,7 +250,7 @@ describe('transformStyleAttribute()', () => {
 
   it('should correctly convert number values', () => {
     expect(transformStyleAttribute('<div style="font-size: 60px; line-height: 1.5; font-weight: 100"></div>')).toBe(
-      `<div style={{ fontSize: '60px', lineHeight: 1.5, fontWeight: 100 }}></div>`
+      `<div style={{ fontSize: '60px', lineHeight: 1.5, fontWeight: 100 }}></div>`,
     );
   });
 });
@@ -281,7 +281,7 @@ describe('convertToReact()', () => {
 
     convertToReact(markup);
 
-    expect(spy).toBeCalledWith(expect.stringMatching(/p-some-tag|PSomeTag/));
+    expect(spy).toHaveBeenCalledWith(expect.stringMatching(/p-some-tag|PSomeTag/));
     if (previousSpy) {
       expect(previousSpy.mock.invocationCallOrder[0]).toBeLessThan(spy.mock.invocationCallOrder[0]);
     }
@@ -293,7 +293,7 @@ describe('convertToReact()', () => {
   <span>Some text</span>
   <input type="checkbox" />
   <button type="button" />
-</PSomeTag>`
+</PSomeTag>`,
     );
   });
 });

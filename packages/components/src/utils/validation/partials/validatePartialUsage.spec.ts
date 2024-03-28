@@ -64,12 +64,12 @@ describe('validatePartialUsage()', () => {
     validatePartialUsage();
 
     // TODO: before reactivating we need to be able to distinguish between Light DOM and/or Shadow DOM usage.
-    expect(validateGetInitialStylesUsageSpy).not.toBeCalledWith();
-    expect(validateGetFontFaceStylesheetUsageSpy).toBeCalledWith();
-    expect(validateGetFontLinksUsageSpy).toBeCalledWith();
+    expect(validateGetInitialStylesUsageSpy).not.toHaveBeenCalledWith();
+    expect(validateGetFontFaceStylesheetUsageSpy).toHaveBeenCalledWith();
+    expect(validateGetFontLinksUsageSpy).toHaveBeenCalledWith();
     // TODO: integration test (real world test) first, before rollout
-    expect(validateGetComponentChunkLinksUsagesSpy).not.toBeCalled();
-    expect(validateGetLoaderScriptUsageSpy).not.toBeCalledWith();
+    expect(validateGetComponentChunkLinksUsagesSpy).not.toHaveBeenCalled();
+    expect(validateGetLoaderScriptUsageSpy).not.toHaveBeenCalledWith();
   });
 });
 
@@ -92,7 +92,7 @@ describe('validateGetFontFaceStylesheetUsage()', () => {
       const spy = jest.spyOn(document.head, 'querySelector');
       validateGetFontFaceStylesheetUsage();
 
-      expect(spy).toBeCalledWith(
+      expect(spy).toHaveBeenCalledWith(
         `link[href="https://cdn.ui.porsche.com/porsche-design-system/styles/${FONT_FACE_CDN_FILE_COM}"]`
       );
 
@@ -101,7 +101,7 @@ describe('validateGetFontFaceStylesheetUsage()', () => {
         .mockReturnValue('https://cdn.ui.porsche.cn/porsche-design-system');
       validateGetFontFaceStylesheetUsage();
 
-      expect(spy).toBeCalledWith(
+      expect(spy).toHaveBeenCalledWith(
         `link[href="https://cdn.ui.porsche.cn/porsche-design-system/styles/${FONT_FACE_CDN_FILE_CN}"]`
       );
     }
@@ -122,7 +122,7 @@ describe('validateGetFontFaceStylesheetUsage()', () => {
       const spy = jest.spyOn(document.head, 'querySelector');
       validateGetFontFaceStylesheetUsage();
 
-      expect(spy).toBeCalledWith('link[href="http://localhost:3001/styles/font-face.min.css"]');
+      expect(spy).toHaveBeenCalledWith('link[href="http://localhost:3001/styles/font-face.min.css"]');
     }
   );
 
@@ -130,14 +130,14 @@ describe('validateGetFontFaceStylesheetUsage()', () => {
     const spy = jest.spyOn(document.head, 'querySelector');
     validateGetFontFaceStylesheetUsage();
 
-    expect(spy).toBeCalledWith(
+    expect(spy).toHaveBeenCalledWith(
       `link[href="https://cdn.ui.porsche.com/porsche-design-system/styles/${FONT_FACE_CDN_FILE_COM}"]`
     );
 
     jest.spyOn(getCDNBaseURLUtils, 'getCDNBaseURL').mockReturnValue('https://cdn.ui.porsche.cn/porsche-design-system');
     validateGetFontFaceStylesheetUsage();
 
-    expect(spy).toBeCalledWith(
+    expect(spy).toHaveBeenCalledWith(
       `link[href="https://cdn.ui.porsche.cn/porsche-design-system/styles/${FONT_FACE_CDN_FILE_CN}"]`
     );
   });
@@ -148,7 +148,7 @@ describe('validateGetFontFaceStylesheetUsage()', () => {
 
     validateGetFontFaceStylesheetUsage();
 
-    expect(spy).toBeCalledWith('getFontFaceStylesheet');
+    expect(spy).toHaveBeenCalledWith('getFontFaceStylesheet');
   });
 });
 
@@ -158,7 +158,7 @@ describe('validateGetFontLinksUsage()', () => {
 
     validateGetFontLinksUsage();
 
-    expect(spy).toBeCalledWith('link[rel=preload][as=font][href*=porsche-next-w-la-regular]');
+    expect(spy).toHaveBeenCalledWith('link[rel=preload][as=font][href*=porsche-next-w-la-regular]');
   });
 
   it('should call logPartialValidationWarning() with correct parameters', () => {
@@ -167,7 +167,7 @@ describe('validateGetFontLinksUsage()', () => {
 
     validateGetFontLinksUsage();
 
-    expect(spy).toBeCalledWith('getFontLinks');
+    expect(spy).toHaveBeenCalledWith('getFontLinks');
   });
 
   it('should not call logPartialValidationWarning() if font link is found', () => {
@@ -176,7 +176,7 @@ describe('validateGetFontLinksUsage()', () => {
 
     validateGetFontLinksUsage();
 
-    expect(spy).not.toBeCalled();
+    expect(spy).not.toHaveBeenCalled();
   });
 });
 
@@ -186,7 +186,7 @@ describe('validateGetComponentChunkLinksUsage()', () => {
 
     validateGetComponentChunkLinksUsage();
 
-    expect(spy).toBeCalledWith(document.porscheDesignSystem);
+    expect(spy).toHaveBeenCalledWith(document.porscheDesignSystem);
   });
 
   it('should call getPorscheDesignSystemPrefixesForVersions() with correct parameters', () => {
@@ -194,7 +194,7 @@ describe('validateGetComponentChunkLinksUsage()', () => {
 
     validateGetComponentChunkLinksUsage();
 
-    expect(spy).toBeCalledWith();
+    expect(spy).toHaveBeenCalledWith();
   });
 
   it('should call getPreloadedTagNamesForVersions() with correct parameters', () => {
@@ -204,7 +204,7 @@ describe('validateGetComponentChunkLinksUsage()', () => {
 
     validateGetComponentChunkLinksUsage();
 
-    expect(spy).toBeCalledWith(mockReturnValue);
+    expect(spy).toHaveBeenCalledWith(mockReturnValue);
   });
 
   it('should call getUsedTagNamesForVersions() with correct parameters', () => {
@@ -214,7 +214,7 @@ describe('validateGetComponentChunkLinksUsage()', () => {
 
     validateGetComponentChunkLinksUsage();
 
-    expect(spy).toBeCalledWith(mockReturnValue);
+    expect(spy).toHaveBeenCalledWith(mockReturnValue);
   });
 
   it('should call getUsedTagNamesWithoutPreloadForVersions() with correct parameters', () => {
@@ -227,7 +227,7 @@ describe('validateGetComponentChunkLinksUsage()', () => {
     const spy = jest.spyOn(helperUtils, 'getUsedTagNamesWithoutPreloadForVersions');
     validateGetComponentChunkLinksUsage();
 
-    expect(spy).toBeCalledWith(usedTagNamesForVersionsMock, preloadTagNamesForVersionsMock);
+    expect(spy).toHaveBeenCalledWith(usedTagNamesForVersionsMock, preloadTagNamesForVersionsMock);
   });
 
   it('should call consoleWarn() util for each version returned from getUsedTagNamesWithoutPreloadForVersions()', () => {
@@ -238,7 +238,7 @@ describe('validateGetComponentChunkLinksUsage()', () => {
 
     validateGetComponentChunkLinksUsage();
 
-    expect(spy).toBeCalledTimes(2);
+    expect(spy).toHaveBeenCalledTimes(2);
   });
 
   it('should call getValidatePartialErrorSecondaryText() with correct parameters for each version returned from getUsedTagNamesWithoutPreloadForVersions()', () => {
@@ -249,8 +249,8 @@ describe('validateGetComponentChunkLinksUsage()', () => {
 
     validateGetComponentChunkLinksUsage();
 
-    expect(spy).toBeCalledWith('getComponentChunkLinks');
-    expect(spy).toBeCalledTimes(2);
+    expect(spy).toHaveBeenCalledWith('getComponentChunkLinks');
+    expect(spy).toHaveBeenCalledTimes(2);
   });
 
   it('should not call consoleWarn() util and should not call getValidatePartialErrorSecondaryText() when getUsedTagNamesWithoutPreloadForVersions() returns {}', () => {
@@ -263,8 +263,8 @@ describe('validateGetComponentChunkLinksUsage()', () => {
 
     validateGetComponentChunkLinksUsage();
 
-    expect(warnSpy).not.toBeCalled();
-    expect(getValidatePartialErrorSecondaryTextSpy).not.toBeCalled();
+    expect(warnSpy).not.toHaveBeenCalled();
+    expect(getValidatePartialErrorSecondaryTextSpy).not.toHaveBeenCalled();
   });
 });
 
@@ -273,7 +273,7 @@ describe('validateGetLoaderScriptUsage()', () => {
     const spy = jest.spyOn(document.body, 'querySelector');
     validateGetLoaderScriptUsage();
 
-    expect(spy).toBeCalledWith('script[data-pds-loader-script]');
+    expect(spy).toHaveBeenCalledWith('script[data-pds-loader-script]');
   });
 
   it('should call logPartialValidationWarning() with correct parameters', () => {
@@ -282,7 +282,7 @@ describe('validateGetLoaderScriptUsage()', () => {
 
     validateGetLoaderScriptUsage();
 
-    expect(spy).toBeCalledWith('getLoaderScript');
+    expect(spy).toHaveBeenCalledWith('getLoaderScript');
   });
 
   it('should not call logPartialValidationWarning() if loader script is found', () => {
@@ -291,7 +291,7 @@ describe('validateGetLoaderScriptUsage()', () => {
 
     validateGetLoaderScriptUsage();
 
-    expect(spy).not.toBeCalled();
+    expect(spy).not.toHaveBeenCalled();
   });
 });
 
@@ -302,8 +302,8 @@ describe('validateGetInitialStylesUsage()', () => {
 
     validateGetInitialStylesUsage();
 
-    expect(spy).toBeCalledWith('style[data-pds-initial-styles]');
-    expect(spy).toBeCalledTimes(1);
+    expect(spy).toHaveBeenCalledWith('style[data-pds-initial-styles]');
+    expect(spy).toHaveBeenCalledTimes(1);
   });
 
   it('should call throwPartialValidationError() with correct parameters when initial style is not found', () => {
@@ -311,8 +311,8 @@ describe('validateGetInitialStylesUsage()', () => {
 
     validateGetInitialStylesUsage();
 
-    expect(spy).toBeCalledWith('getInitialStyles');
-    expect(spy).toBeCalledTimes(1);
+    expect(spy).toHaveBeenCalledWith('getInitialStyles');
+    expect(spy).toHaveBeenCalledTimes(1);
   });
 
   it('should not call throwPartialValidationError() when initial style tags are found for each prefix', () => {
@@ -321,7 +321,7 @@ describe('validateGetInitialStylesUsage()', () => {
 
     validateGetInitialStylesUsage();
 
-    expect(spy).not.toBeCalled();
+    expect(spy).not.toHaveBeenCalled();
   });
 });
 
@@ -338,9 +338,9 @@ describe('throwPartialValidationError()', () => {
 
   throwPartialValidationError('getInitialStyles', 'my-prefix');
 
-  expect(getValidatePartialErrorPrimaryTextSpy).toBeCalledWith('getInitialStyles', 'my-prefix');
-  expect(getValidatePartialErrorSecondaryTextSpy).toBeCalledWith('getInitialStyles', true);
-  expect(throwExceptionSpy).toBeCalledWith('main additional');
+  expect(getValidatePartialErrorPrimaryTextSpy).toHaveBeenCalledWith('getInitialStyles', 'my-prefix');
+  expect(getValidatePartialErrorSecondaryTextSpy).toHaveBeenCalledWith('getInitialStyles', true);
+  expect(throwExceptionSpy).toHaveBeenCalledWith('main additional');
 });
 
 describe('logPartialValidationWarning()', () => {
@@ -363,9 +363,9 @@ describe('logPartialValidationWarning()', () => {
 
       logPartialValidationWarning(partialName);
 
-      expect(getValidatePartialErrorPrimaryTextSpy).toBeCalledWith(partialName, undefined);
-      expect(getValidatePartialErrorSecondaryTextSpy).toBeCalledWith(partialName);
-      expect(consoleWarnSpy).toBeCalledWith('main', 'additional');
+      expect(getValidatePartialErrorPrimaryTextSpy).toHaveBeenCalledWith(partialName, undefined);
+      expect(getValidatePartialErrorSecondaryTextSpy).toHaveBeenCalledWith(partialName);
+      expect(consoleWarnSpy).toHaveBeenCalledWith('main', 'additional');
     }
   );
 });

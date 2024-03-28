@@ -9,14 +9,14 @@ it('should call getPrefixedTagNames() with correct parameters', () => {
   const spy = jest.spyOn(getPrefixedTagNamesUtils, 'getPrefixedTagNames');
   throwIfElementIsNotOfKind(host, link, 'p-link');
 
-  expect(spy).toBeCalledWith(host);
+  expect(spy).toHaveBeenCalledWith(host);
 });
 
 it('should call getTagName() with correct parameters', () => {
   const spy = jest.spyOn(getPrefixedTagNamesUtils, 'getTagName');
   throwIfElementIsNotOfKind(host, link, 'p-link');
 
-  expect(spy).toBeCalledWith(link);
+  expect(spy).toHaveBeenCalledWith(link);
 });
 
 it('should throw error if return value of getPrefixedTagNames() !== getTagName()', () => {
@@ -25,7 +25,7 @@ it('should throw error if return value of getPrefixedTagNames() !== getTagName()
   const slot = document.createElement('a');
 
   expect(() => throwIfElementIsNotOfKind(host, slot, 'p-link')).toThrowErrorMatchingInlineSnapshot(
-    `"[Porsche Design System] child a of div has to be a p-link."`
+    `"[Porsche Design System] child a of div has to be a p-link."`,
   );
 });
 

@@ -20,19 +20,22 @@ describe('observeBreakpointChange()', () => {
     const spies = mediaQueryLists.map((mediaQueryList) => jest.spyOn(mediaQueryList, 'addEventListener'));
 
     const node = document.createElement('div');
-    const callback = () => {};
+    const callback = () => {
+    };
 
     observeBreakpointChange(node, callback);
 
     expect(spies.length).toBe(7);
-    spies.forEach((spy) => expect(spy).toBeCalledWith('change', handleBreakpointChange));
+    spies.forEach((spy) => expect(spy).toHaveBeenCalledWith('change', handleBreakpointChange));
   });
 
   it('should add callback and key to breakpointChangeCallbackMap', () => {
     const node1 = document.createElement('div');
     const node2 = document.createElement('div');
-    const callback1 = () => {};
-    const callback2 = () => {};
+    const callback1 = () => {
+    };
+    const callback2 = () => {
+    };
 
     observeBreakpointChange(node1, callback1);
     expect(breakpointChangeCallbackMap.size).toBe(1);
@@ -53,8 +56,10 @@ describe('unobserveBreakpointChange()', () => {
   it('should remove host from breakpointChangeCallbackMap', () => {
     const node1 = document.createElement('div');
     const node2 = document.createElement('div');
-    const callback1 = () => {};
-    const callback2 = () => {};
+    const callback1 = () => {
+    };
+    const callback2 = () => {
+    };
     observeBreakpointChange(node1, callback1);
     observeBreakpointChange(node2, callback2);
 
@@ -66,11 +71,12 @@ describe('unobserveBreakpointChange()', () => {
   it('should call removeEventListener() for each media query with correct parameters', () => {
     const spies = mediaQueryLists.map((mediaQueryList) => jest.spyOn(mediaQueryList, 'removeEventListener'));
     const node = document.createElement('div');
-    const callback = () => {};
+    const callback = () => {
+    };
     observeBreakpointChange(node, callback);
 
     unobserveBreakpointChange(node);
 
-    spies.forEach((spy) => expect(spy).toBeCalledWith('change', handleBreakpointChange));
+    spies.forEach((spy) => expect(spy).toHaveBeenCalledWith('change', handleBreakpointChange));
   });
 });

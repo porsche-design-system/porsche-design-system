@@ -10,6 +10,7 @@ import {
   getLifecycleStatus,
   getProperty,
   hoverElementPosition,
+  removeAttribute,
   setAttribute,
   setContentWithDesignSystem,
   setProperty,
@@ -22,6 +23,7 @@ import type { FormState } from '@porsche-design-system/components';
 const getHost = (page: Page) => page.$('p-text-field-wrapper');
 const getInput = (page: Page) => page.$('input');
 const getLabel = (page: Page) => page.$('p-text-field-wrapper label');
+const getLabelSrText = (page: Page) => page.$('p-text-field-wrapper label .sr-only');
 const getCounterOrUnit = (page: Page) => page.$('p-text-field-wrapper .unit-counter');
 const getToggleOrClearButtonHost = (page: Page) => page.$('p-text-field-wrapper p-button-pure');
 const getToggleOrClearButton = (page: Page) => page.$('p-text-field-wrapper p-button-pure button');
@@ -41,6 +43,7 @@ type InitOptions = {
   maxLength?: number;
   isWrappedInForm?: boolean;
   hasLocateAction?: boolean;
+  showCounter?: boolean;
 };
 
 const initTextField = (page: Page, opts?: InitOptions): Promise<void> => {
@@ -55,6 +58,7 @@ const initTextField = (page: Page, opts?: InitOptions): Promise<void> => {
     maxLength,
     isWrappedInForm = false,
     hasLocateAction = false,
+    showCounter,
   } = opts || {};
 
   const link = '<a href="#" onclick="return false;">link</a>';
@@ -67,6 +71,7 @@ const initTextField = (page: Page, opts?: InitOptions): Promise<void> => {
     hasLabel && 'label="Some label"',
     hasUnit && 'unit="km/h"',
     hasLocateAction && 'action-icon="locate"',
+    showCounter !== undefined && `show-counter="${showCounter}"`,
   ]
     .filter((x) => x)
     .join(' ');
@@ -419,34 +424,90 @@ test.describe('hover state', () => {
   });
 });
 
-test('should display correct counter when typing', async ({ page }) => {
-  await initTextField(page, { maxLength: 20 });
-  const counter = await getCounterOrUnit(page);
-  const input = await getInput(page);
+test.describe('showCounter', () => {
+  test('should display correct counter when typing', async ({ page }) => {
+    await initTextField(page, { maxLength: 20 });
+    const counter = await getCounterOrUnit(page);
+    const input = await getInput(page);
 
-  expect(await getElementInnerText(counter)).toBe('0/20');
-  await input.type('h');
-  expect(await getElementInnerText(counter)).toBe('1/20');
-  await input.type('ello');
-  expect(await getElementInnerText(counter)).toBe('5/20');
-  await input.press('Backspace');
-  expect(await getElementInnerText(counter)).toBe('4/20');
-  await input.press('Backspace');
-  await input.press('Backspace');
-  await input.press('Backspace');
-  await input.press('Backspace');
-  expect(await getElementInnerText(counter)).toBe('0/20');
-});
+    expect(await getElementInnerText(counter)).toBe('0/20');
+    await input.type('h');
+    expect(await getElementInnerText(counter)).toBe('1/20');
+    await input.type('ello');
+    expect(await getElementInnerText(counter)).toBe('5/20');
+    await input.press('Backspace');
+    expect(await getElementInnerText(counter)).toBe('4/20');
+    await input.press('Backspace');
+    await input.press('Backspace');
+    await input.press('Backspace');
+    await input.press('Backspace');
+    expect(await getElementInnerText(counter)).toBe('0/20');
+  });
 
-test('should render characterCountElement when maxlength is set', async ({ page }) => {
-  await initTextField(page);
-  const input = await getInput(page);
+  test('should display correct counter when dynamically changing input value', async ({ page }) => {
+    await initTextField(page, { maxLength: 20 });
+    const counter = await getCounterOrUnit(page);
+    const input = await getInput(page);
+    const text1 = 'test string';
+    const text2 = 'test test string';
 
-  expect(await page.$('p-text-field-wrapper label .sr-only')).toBeNull();
+    await setProperty(input, 'value', text1);
+    await waitForStencilLifecycle(page);
 
-  await setAttribute(input, 'maxlength', '20');
+    expect(await getElementInnerText(counter)).toBe(`${text1.length}/20`);
 
-  expect(await page.$('p-text-field-wrapper label .sr-only')).toBeDefined();
+    await setProperty(input, 'value', text2);
+    await waitForStencilLifecycle(page);
+
+    expect(await getElementInnerText(counter)).toBe(`${text2.length}/20`);
+  });
+
+  test('should render counter when showCounter is dynamically changed', async ({ page }) => {
+    await initTextField(page, { maxLength: 20 });
+    const host = await getHost(page);
+    await expect(page.getByText('0/20')).toBeVisible();
+
+    await setProperty(host, 'showCounter', false);
+    await waitForStencilLifecycle(page);
+
+    expect(await getCounterOrUnit(page)).toBeNull();
+
+    await setProperty(host, 'showCounter', true);
+    await waitForStencilLifecycle(page);
+
+    await expect(page.getByText('0/20')).toBeVisible();
+  });
+
+  test('should render counter when maxlength is changed dynamically', async ({ page }) => {
+    await initTextField(page);
+    const input = await getInput(page);
+
+    await expect(page.getByText('0/20')).toBeHidden();
+    expect(await getLabelSrText(page)).toBeNull();
+
+    await setAttribute(input, 'maxlength', '20');
+
+    await expect(page.getByText('0/20')).toBeVisible();
+    expect(await getLabelSrText(page)).toBeDefined();
+
+    await removeAttribute(input, 'maxlength');
+
+    await expect(page.getByText('0/20')).toBeHidden();
+    expect(await getLabelSrText(page)).toBeNull();
+  });
+
+  test('should not render counter when showCounter=false and maxlength is changed dynamically', async ({ page }) => {
+    await initTextField(page, { showCounter: false });
+    const input = await getInput(page);
+
+    await expect(page.getByText('0/20')).toBeHidden();
+    expect(await getLabelSrText(page)).toBeNull();
+
+    await setAttribute(input, 'maxlength', '20');
+
+    await expect(page.getByText('0/20')).toBeHidden();
+    expect(await getLabelSrText(page)).toBeNull();
+  });
 });
 
 test.describe('lifecycle', () => {

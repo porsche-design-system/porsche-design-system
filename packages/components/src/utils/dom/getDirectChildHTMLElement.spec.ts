@@ -14,8 +14,8 @@ it('should call getHTMLElement() with element and result of transformSelectorToD
 
   getDirectChildHTMLElement(parent, selector);
 
-  expect(transformSelectorToDirectChildSelectorSpy).toBeCalledWith(selector);
-  expect(getHTMLElementSpy).toBeCalledTimes(2);
+  expect(transformSelectorToDirectChildSelectorSpy).toHaveBeenCalledWith(selector);
+  expect(getHTMLElementSpy).toHaveBeenCalledTimes(2);
   expect(getHTMLElementSpy).toHaveBeenNthCalledWith(1, parent, transformSelectorToDirectChildSelector('span'));
   expect(getHTMLElementSpy).toHaveBeenNthCalledWith(2, parent, transformSelectorToDirectChildSelector('a'));
 });

@@ -1,5 +1,5 @@
 export { FORM_STATES } from './form-state';
-export { addInputEventListenerForCounter, hasCounter } from './form-utils';
+export { inputEventListenerCurry, updateCounter, hasCounter } from './form-utils';
 export { getRole } from './getRole';
 export { hasDescription } from './hasDescription';
 export { hasHeading } from './hasHeading';

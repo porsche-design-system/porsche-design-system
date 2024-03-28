@@ -51,7 +51,7 @@ it.each<TagName>(tagNamesWithRequiredChild)(
       component.componentWillLoad();
     } catch {}
 
-    expect(spy).toBeCalledWith(component.host, getComponentMeta(tagName).requiredChildSelector);
+    expect(spy).toHaveBeenCalledWith(component.host, getComponentMeta(tagName).requiredChildSelector);
   }
 );
 
@@ -71,7 +71,7 @@ it.each<TagName>(tagNamesWithRequiredParent)(
 
     component.connectedCallback();
 
-    expect(spy).toBeCalledWith(component.host, getComponentMeta(tagName).requiredParent as unknown as string);
+    expect(spy).toHaveBeenCalledWith(component.host, getComponentMeta(tagName).requiredParent as unknown as string);
   }
 );
 
@@ -85,7 +85,7 @@ it.each<TagName>(tagNamesWithRequiredRootNode)(
       component.connectedCallback();
     } catch {}
 
-    expect(spy).toBeCalledWith(component.host, getComponentMeta(tagName).requiredRootNode);
+    expect(spy).toHaveBeenCalledWith(component.host, getComponentMeta(tagName).requiredRootNode);
   }
 );
 
@@ -112,7 +112,7 @@ it.each<TagName>(tagNamesPublicWithProps)(
       component.componentWillRender();
     } catch {}
 
-    expect(spy).not.toBeCalled();
+    expect(spy).not.toHaveBeenCalled();
 
     try {
       component.render();
@@ -134,7 +134,7 @@ it.each<TagName>(tagNamesPublicWithProps)(
       delete propTypesStructure.maxNumberOfPageLinks;
     }
 
-    expect(spy).toBeCalledWith(component, expect.objectContaining(propTypesStructure));
+    expect(spy).toHaveBeenCalledWith(component, expect.objectContaining(propTypesStructure));
     expect(propTypes).toMatchSnapshot('propTypes with ValidatorFunctions');
   }
 );
@@ -147,7 +147,7 @@ it.each<TagName>(tagNamesPublicWithoutProps)('should not call validateProps() fo
     component.componentWillRender();
   } catch {}
 
-  expect(spy).not.toBeCalled();
+  expect(spy).not.toHaveBeenCalled();
 });
 
 describe.each<TagName>(tagNamesWithPropsOfTypeObject)('%s', (tagName) => {
@@ -161,11 +161,11 @@ describe.each<TagName>(tagNamesWithPropsOfTypeObject)('%s', (tagName) => {
 
     const result1 = component.componentShouldUpdate('newVal', 'oldVal', 'propOrStateName');
     expect(result1).toBe(true);
-    expect(spy).toBeCalledWith('newVal', 'oldVal');
+    expect(spy).toHaveBeenCalledWith('newVal', 'oldVal');
 
     const result2 = component.componentShouldUpdate('sameVal', 'sameVal', 'propOrStateName');
     expect(result2).toBe(false);
-    expect(spy).toBeCalledWith('sameVal', 'sameVal');
+    expect(spy).toHaveBeenCalledWith('sameVal', 'sameVal');
   });
 });
 
@@ -183,7 +183,7 @@ it.each<TagName>(tagNamesWithJss)(
         component.connectedCallback();
       } catch {}
 
-      expect(spy).not.toBeCalled();
+      expect(spy).not.toHaveBeenCalled();
     }
 
     if (component.componentWillRender) {
@@ -191,14 +191,14 @@ it.each<TagName>(tagNamesWithJss)(
         component.componentWillRender();
       } catch {}
 
-      expect(spy).not.toBeCalled();
+      expect(spy).not.toHaveBeenCalled();
     }
 
     try {
       component.render();
     } catch {}
 
-    expect(spy).toBeCalledTimes(1); // via render
+    expect(spy).toHaveBeenCalledTimes(1); // via render
   }
 );
 
@@ -210,7 +210,7 @@ describe.each<TagName>(tagNamesWithObserveAttributes)('%s', (tagName) => {
     const spy = jest.spyOn(attributeObserverUtils, 'observeAttributes');
     component.connectedCallback();
 
-    expect(spy).toBeCalledWith(undefined, getComponentMeta(tagName).observedAttributes, expect.any(Function));
+    expect(spy).toHaveBeenCalledWith(undefined, getComponentMeta(tagName).observedAttributes, expect.any(Function));
   });
 
   it('should call observeAttributes() with correct parameters via componentWillLoad', () => {
@@ -223,7 +223,7 @@ describe.each<TagName>(tagNamesWithObserveAttributes)('%s', (tagName) => {
 
     component.componentWillLoad();
 
-    expect(spy).toBeCalledWith(el, getComponentMeta(tagName).observedAttributes, expect.any(Function));
+    expect(spy).toHaveBeenCalledWith(el, getComponentMeta(tagName).observedAttributes, expect.any(Function));
   });
 
   it('should call unobserveAttributes() with correct parameters via disconnectedCallback', () => {
@@ -233,7 +233,7 @@ describe.each<TagName>(tagNamesWithObserveAttributes)('%s', (tagName) => {
     const spy = jest.spyOn(attributeObserverUtils, 'unobserveAttributes');
     component.disconnectedCallback();
 
-    expect(spy).toBeCalledWith(el);
+    expect(spy).toHaveBeenCalledWith(el);
   });
 });
 
@@ -247,7 +247,7 @@ describe.each<TagName>(tagNamesWithObserveChildren.filter((tagName) => tagName !
       const spy = jest.spyOn(childrenObserverUtils, 'observeChildren');
       component.connectedCallback();
 
-      expect(spy).toBeCalledWith(component.host, expect.any(Function));
+      expect(spy).toHaveBeenCalledWith(component.host, expect.any(Function));
     });
 
     it('should call unobserveChildren() with correct parameters via disconnectedCallback', () => {
@@ -258,7 +258,7 @@ describe.each<TagName>(tagNamesWithObserveChildren.filter((tagName) => tagName !
         component.disconnectedCallback();
       } catch {}
 
-      expect(spy).toBeCalledWith(component.host);
+      expect(spy).toHaveBeenCalledWith(component.host);
     });
   }
 );

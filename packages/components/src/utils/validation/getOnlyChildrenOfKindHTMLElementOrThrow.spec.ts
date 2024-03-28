@@ -12,7 +12,7 @@ it('should call getDirectChildHTMLElements() with correct parameters and return 
 
   const result = getOnlyChildrenOfKindHTMLElementOrThrow(parent, selector);
   expect(result[0]).toBe(child1);
-  expect(spy).toBeCalledWith(parent, selector);
+  expect(spy).toHaveBeenCalledWith(parent, selector);
 });
 
 it('should not throw error if there is exactly 1 child of kind', () => {
@@ -39,6 +39,6 @@ it('should throw error if there are children not of kind', () => {
   parent.append(child1, child2);
 
   expect(() => getOnlyChildrenOfKindHTMLElementOrThrow(parent, 'a,button')).toThrowErrorMatchingInlineSnapshot(
-    '"[Porsche Design System] child HTMLElements of div are invalid. Expected all of: a or button."'
+    '"[Porsche Design System] child HTMLElements of div are invalid. Expected all of: a or button."',
   );
 });

@@ -36,7 +36,7 @@ describe('extendExampleWithConstantsAndProvider()', () => {
 
     extendExampleWithConstantsAndProvider(markup, sharedImportKeys);
 
-    expect(spy).toBeCalledWith(sharedImportKeys);
+    expect(spy).toHaveBeenCalledWith(sharedImportKeys);
   });
 
   it('should call removeSharedImport() with correct parameters', () => {
@@ -47,7 +47,7 @@ describe('extendExampleWithConstantsAndProvider()', () => {
 
     extendExampleWithConstantsAndProvider(markup, sharedImportKeys);
 
-    expect(spy).toBeCalledWith(mockedReplaceValue);
+    expect(spy).toHaveBeenCalledWith(mockedReplaceValue);
   });
 
   it('should add single line import for PorscheDesignSystemProvider ', () => {
@@ -93,7 +93,7 @@ describe('extendMarkupWithAppComponent()', () => {
 
     extendMarkupWithAppComponent(markup);
 
-    expect(spy).toBeCalledWith(markup, 'vue');
+    expect(spy).toHaveBeenCalledWith(markup, 'vue');
   });
 
   it('should return correct app markup', () => {
@@ -120,7 +120,7 @@ describe('getAppVue()', () => {
 
     getAppVue('some markup', true, [], '');
 
-    expect(convertImportPathsSpy).toBeCalledTimes(1);
+    expect(convertImportPathsSpy).toHaveBeenCalledTimes(1);
   });
 
   it('should not call convertImportPaths() for dev/test build', () => {
@@ -128,7 +128,7 @@ describe('getAppVue()', () => {
 
     getAppVue('some markup', true, [], '');
 
-    expect(convertImportPathsSpy).not.toBeCalled();
+    expect(convertImportPathsSpy).not.toHaveBeenCalled();
   });
 
   it('should call convertImportPaths() + extendExampleWithConstantsAndProvider()', () => {
@@ -143,8 +143,8 @@ describe('getAppVue()', () => {
 
     getAppVue('some markup', true, [], '');
 
-    expect(extendExampleWithConstantsAndProviderSpy).toBeCalledWith('some markup', []);
-    expect(extendMarkupWithAppComponentSpy).not.toBeCalled();
+    expect(extendExampleWithConstantsAndProviderSpy).toHaveBeenCalledWith('some markup', []);
+    expect(extendMarkupWithAppComponentSpy).not.toHaveBeenCalled();
   });
 
   it('should call convertImportPaths() + extendMarkupWithAppComponent()', () => {
@@ -159,8 +159,8 @@ describe('getAppVue()', () => {
 
     getAppVue('some markup', false, [], '');
 
-    expect(extendExampleWithConstantsAndProviderSpy).not.toBeCalled();
-    expect(extendMarkupWithAppComponentSpy).toBeCalledWith('some markup');
+    expect(extendExampleWithConstantsAndProviderSpy).not.toHaveBeenCalled();
+    expect(extendMarkupWithAppComponentSpy).toHaveBeenCalledWith('some markup');
   });
 });
 
@@ -204,7 +204,7 @@ describe('getDependencies()', () => {
 
     getDependencies(externalDependencies, '');
 
-    expect(spy).toBeCalledWith(externalDependencies, dependencyMap);
+    expect(spy).toHaveBeenCalledWith(externalDependencies, dependencyMap);
   });
 
   it('should return correct StackBlitzProjectDependencies with externalDependency for stable storefront release (e.g. /v2/…, /v3/…)', () => {
@@ -299,16 +299,16 @@ describe('getVueProjectAndOpenOptions()', () => {
 
     getVueProjectAndOpenOptions(stackBlitzFrameworkOpts);
 
-    expect(isStableStorefrontReleaseSpy).toBeCalled();
-    expect(getAppVueSpy).toBeCalledWith(
+    expect(isStableStorefrontReleaseSpy).toHaveBeenCalled();
+    expect(getAppVueSpy).toHaveBeenCalledWith(
       stackBlitzFrameworkOpts.markup,
       false,
       stackBlitzFrameworkOpts.sharedImportKeys,
       ''
     );
-    expect(getMainTsSpy).toBeCalledWith();
-    expect(getDependenciesSpy).toBeCalledWith(stackBlitzFrameworkOpts.externalDependencies, '');
-    expect(getDevDependenciesSpy).toBeCalledWith();
+    expect(getMainTsSpy).toHaveBeenCalledWith();
+    expect(getDependenciesSpy).toHaveBeenCalledWith(stackBlitzFrameworkOpts.externalDependencies, '');
+    expect(getDevDependenciesSpy).toHaveBeenCalledWith();
   });
 
   it('should return correct StackBlitzProjectAndOpenOptions', () => {

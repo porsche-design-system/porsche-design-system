@@ -16,7 +16,7 @@ describe('getPrefixedTagName()', () => {
 
     usePrefix('p-text');
 
-    expect(spy).toBeCalledWith(prefixInjectionKey);
+    expect(spy).toHaveBeenCalledWith(prefixInjectionKey);
   });
 
   it('should throw error if inject returns undefined', () => {
@@ -101,7 +101,7 @@ describe('addEventListenerToElementRef()', () => {
 
     addEventListenerToElementRef(elementRef, eventName, () => {});
 
-    expect(spy).toBeCalledWith(eventName, expect.any(Function));
+    expect(spy).toHaveBeenCalledWith(eventName, expect.any(Function));
   });
 
   it('should call passed emit() with correct parameters', () => {
@@ -115,7 +115,7 @@ describe('addEventListenerToElementRef()', () => {
     const event = new CustomEvent(eventName, { detail: 'someDetail' });
     element.dispatchEvent(event);
 
-    expect(emit).toBeCalledWith(eventName, event.detail);
+    expect(emit).toHaveBeenCalledWith(eventName, event.detail);
   });
 });
 
@@ -129,7 +129,7 @@ describe('useToastManager()', () => {
 
     useToastManager();
 
-    expect(spy).toBeCalledWith('p-toast');
+    expect(spy).toHaveBeenCalledWith('p-toast');
   });
 
   it('should provide addMessage()', () => {
@@ -153,7 +153,7 @@ describe('useToastManager()', () => {
       // wait for customElements.whenDefined to be resolved
       await new Promise((resolve) => setTimeout(resolve));
 
-      expect(addMessageMock).toBeCalledWith(message);
+      expect(addMessageMock).toHaveBeenCalledWith(message);
     });
   });
 });

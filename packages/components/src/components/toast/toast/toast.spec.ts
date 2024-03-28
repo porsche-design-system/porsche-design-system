@@ -9,7 +9,7 @@ describe('connectedCallback', () => {
     component.host.attachShadow({ mode: 'open' });
     component.connectedCallback();
 
-    expect(spy).toBeCalledWith(component.host, expect.anything());
+    expect(spy).toHaveBeenCalledWith(component.host, expect.anything());
   });
 });
 
@@ -20,7 +20,7 @@ describe('componentDidLoad', () => {
     const spy = jest.spyOn(component.host, 'addEventListener');
     component.componentDidLoad();
 
-    expect(spy).toBeCalledWith('dismiss', expect.anything());
+    expect(spy).toHaveBeenCalledWith('dismiss', expect.anything());
   });
 });
 
@@ -43,6 +43,6 @@ describe('disconnectedCallback', () => {
     component['manager'] = toastManager;
     component.disconnectedCallback();
 
-    expect(spy).toBeCalledWith();
+    expect(spy).toHaveBeenCalledWith();
   });
 });

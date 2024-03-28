@@ -18,15 +18,15 @@ describe('if global styles are missing', () => {
       const spy = jest.spyOn(document.head, 'querySelector');
       injectGlobalStyle();
 
-      expect(spy).toBeCalledWith(
+      expect(spy).toHaveBeenCalledWith(
         `link[href='https://cdn.ui.porsche.com/porsche-design-system/styles/${FONT_FACE_CDN_FILE_COM}']`
       );
 
       jest
-        .spyOn(getCDNBaseURLUtils, 'getCDNBaseURL')
-        .mockReturnValue('https://cdn.ui.porsche.cn/porsche-design-system');
+      .spyOn(getCDNBaseURLUtils, 'getCDNBaseURL')
+      .mockReturnValue('https://cdn.ui.porsche.cn/porsche-design-system');
       injectGlobalStyle();
-      expect(spy).toBeCalledWith(
+      expect(spy).toHaveBeenCalledWith(
         `link[href='https://cdn.ui.porsche.cn/porsche-design-system/styles/${FONT_FACE_CDN_FILE_CN}']`
       );
     });
@@ -54,7 +54,7 @@ describe('if global styles are missing', () => {
       const spy = jest.spyOn(document.head, 'querySelector');
       injectGlobalStyle();
 
-      expect(spy).not.toBeCalled();
+      expect(spy).not.toHaveBeenCalled();
     });
   });
 });
@@ -75,7 +75,7 @@ describe('if global styles are there', () => {
       const spy = jest.spyOn(document.head, 'querySelector');
       injectGlobalStyle();
 
-      expect(spy).toBeCalledWith(
+      expect(spy).toHaveBeenCalledWith(
         `link[href='https://cdn.ui.porsche.com/porsche-design-system/styles/${FONT_FACE_CDN_FILE_COM}']`
       );
     });
@@ -91,7 +91,7 @@ describe('if global styles are there', () => {
       const spy = jest.spyOn(document.head, 'querySelector');
       injectGlobalStyle();
 
-      expect(spy).not.toBeCalled();
+      expect(spy).not.toHaveBeenCalled();
     });
   });
 });

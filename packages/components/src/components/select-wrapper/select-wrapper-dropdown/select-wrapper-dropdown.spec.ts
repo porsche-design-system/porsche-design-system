@@ -19,7 +19,7 @@ describe('connectedCallback', () => {
     jest.spyOn(throwIfRootNodeIsNotOneOfKindUtils, 'throwIfRootNodeIsNotOneOfKind').mockReturnValue();
     component.connectedCallback();
 
-    expect(spy).toBeCalledWith(component.selectRef, expect.anything(), ['hidden', 'disabled', 'selected']);
+    expect(spy).toHaveBeenCalledWith(component.selectRef, expect.anything(), ['hidden', 'disabled', 'selected']);
   });
 });
 
@@ -32,7 +32,7 @@ describe('disconnectedCallback', () => {
       component.disconnectedCallback();
     } catch {}
 
-    expect(spy).toBeCalledWith(component.host);
+    expect(spy).toHaveBeenCalledWith(component.host);
   });
 });
 
@@ -46,7 +46,7 @@ describe('componentDidRender', () => {
       component.componentDidRender();
     } catch (e) {}
 
-    expect(spy).toBeCalledWith(undefined, -1);
+    expect(spy).toHaveBeenCalledWith(undefined, -1);
   });
   it('should not call handleScroll() when dropdown isOpen = false', () => {
     const component = initComponent();
@@ -56,7 +56,7 @@ describe('componentDidRender', () => {
       component.componentDidRender();
     } catch (e) {}
 
-    expect(spy).not.toBeCalled();
+    expect(spy).not.toHaveBeenCalled();
   });
 });
 
@@ -69,7 +69,7 @@ describe('componentWillLoad', () => {
       component.componentWillLoad();
     } catch (e) {}
 
-    expect(spy).toBeCalledTimes(1);
+    expect(spy).toHaveBeenCalledTimes(1);
   });
 });
 
@@ -79,7 +79,7 @@ describe('observeProperties()', () => {
     const spy = jest.spyOn(component, fn as any);
     component.componentWillLoad();
 
-    expect(spy).toBeCalledTimes(1);
+    expect(spy).toHaveBeenCalledTimes(1);
   });
 
   it('should call observeProperties() with correct parameters', () => {
@@ -87,7 +87,7 @@ describe('observeProperties()', () => {
     const spy = jest.spyOn(propertyObserverUtils, 'observeProperties');
     component.componentWillLoad();
 
-    expect(spy).toBeCalledWith(component.selectRef, ['value', 'selectedIndex'], expect.anything());
+    expect(spy).toHaveBeenCalledWith(component.selectRef, ['value', 'selectedIndex'], expect.anything());
   });
 });
 
@@ -106,7 +106,7 @@ describe('this.observeOptions()', () => {
     const spy = jest.spyOn(propertyObserverUtils, 'observeProperties');
     component['observeOptions']();
 
-    expect(spy).toBeCalledTimes(3);
+    expect(spy).toHaveBeenCalledTimes(3);
     expect(spy).toHaveBeenLastCalledWith(options[2], ['selected', 'disabled'], expect.anything());
   });
 });

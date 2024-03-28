@@ -33,7 +33,7 @@ describe('observeAttributes()', () => {
       input.setAttribute('disabled', '');
 
       await tick();
-      expect(cb).toBeCalledTimes(1);
+      expect(cb).toHaveBeenCalledTimes(1);
     });
 
     it('should run callback once when observeAttributes is called multiple times', async () => {
@@ -47,7 +47,7 @@ describe('observeAttributes()', () => {
       input.setAttribute('disabled', '');
 
       await tick();
-      expect(cb).toBeCalledTimes(1);
+      expect(cb).toHaveBeenCalledTimes(1);
     });
 
     it('should run callback once when multiple elements are observed', async () => {
@@ -63,8 +63,8 @@ describe('observeAttributes()', () => {
       input1.setAttribute('disabled', '');
 
       await tick();
-      expect(cb1).toBeCalledTimes(1);
-      expect(cb2).not.toBeCalled();
+      expect(cb1).toHaveBeenCalledTimes(1);
+      expect(cb2).not.toHaveBeenCalled();
     });
 
     it('should run callback once when multiple attributes are changed', async () => {
@@ -79,7 +79,7 @@ describe('observeAttributes()', () => {
       input.setAttribute('name', name);
 
       await tick();
-      expect(cb).toBeCalledTimes(1);
+      expect(cb).toHaveBeenCalledTimes(1);
     });
   });
 });

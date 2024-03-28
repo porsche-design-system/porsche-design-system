@@ -9,7 +9,7 @@ it('should call areChildrenOfKind() with correct parameters', () => {
 
   throwIfChildrenAreNotOfKind(parent, allowedTagName);
 
-  expect(spy).toBeCalledWith(parent, allowedTagName);
+  expect(spy).toHaveBeenCalledWith(parent, allowedTagName);
 });
 
 it('should throw correct error message when areChildrenOfKind() is false', () => {
@@ -20,7 +20,7 @@ it('should throw correct error message when areChildrenOfKind() is false', () =>
   parent.append(child1, child2);
 
   expect(() => throwIfChildrenAreNotOfKind(parent, 'p-grid-item')).toThrow(
-    '[Porsche Design System] child HTMLElements of p-grid should be of kind p-grid-item but got div'
+    '[Porsche Design System] child HTMLElements of p-grid should be of kind p-grid-item but got div',
   );
 });
 

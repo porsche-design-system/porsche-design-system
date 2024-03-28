@@ -69,6 +69,6 @@ describe('isItemClickable()', () => {
     const spy = jest.spyOn(stepperHorizontalItemUtils, 'isStateCompleteOrWarning');
     isItemClickable('current', false);
 
-    expect(spy).toBeCalledWith('current');
+    expect(spy).toHaveBeenCalledWith('current');
   });
 });

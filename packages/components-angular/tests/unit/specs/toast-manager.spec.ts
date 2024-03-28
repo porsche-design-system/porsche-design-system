@@ -20,7 +20,8 @@ describe('addMessage()', () => {
     const addMessageMock = jest.fn();
     toastElement.addMessage = addMessageMock;
     document.body.appendChild(toastElement);
-    customElements.define('p-toast', class PToast extends HTMLElement {});
+    customElements.define('p-toast', class PToast extends HTMLElement {
+    });
 
     const message: ToastMessage = { text: 'Test', state: 'success' };
     toastManager.addMessage(message);
@@ -28,6 +29,6 @@ describe('addMessage()', () => {
     // wait for customElements.whenDefined to be resolved
     await new Promise((resolve) => setTimeout(resolve));
 
-    expect(addMessageMock).toBeCalledWith(message);
+    expect(addMessageMock).toHaveBeenCalledWith(message);
   });
 });

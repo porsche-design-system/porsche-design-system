@@ -9,7 +9,7 @@ describe('constructor', () => {
     const spy = jest.spyOn(mockControllerHost, 'addController');
     const loadingCtrl = new InitialLoadingController(mockControllerHost);
 
-    expect(spy).toBeCalledWith(loadingCtrl);
+    expect(spy).toHaveBeenCalledWith(loadingCtrl);
   });
 });
 

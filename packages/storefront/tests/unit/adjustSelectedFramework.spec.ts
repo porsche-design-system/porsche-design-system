@@ -14,11 +14,11 @@ it('should do nothing if selectedFramework exists in markup', () => {
   const spy = jest.spyOn(store, 'commit');
 
   adjustSelectedFramework({ angular: '', react: '' });
-  expect(spy).not.toBeCalled();
+  expect(spy).not.toHaveBeenCalled();
 
   store.getters.selectedFramework = 'react';
   adjustSelectedFramework({ angular: '', react: '' });
-  expect(spy).not.toBeCalled();
+  expect(spy).not.toHaveBeenCalled();
 });
 
 it('should call store.commit() with first framework if selectedFramework does not exist in markup', () => {
@@ -26,8 +26,8 @@ it('should call store.commit() with first framework if selectedFramework does no
   const spy = jest.spyOn(store, 'commit');
 
   adjustSelectedFramework({ angular: '', react: '' });
-  expect(spy).toBeCalledWith('setSelectedFramework', 'angular');
+  expect(spy).toHaveBeenCalledWith('setSelectedFramework', 'angular');
 
   adjustSelectedFramework({ react: '' });
-  expect(spy).toBeCalledWith('setSelectedFramework', 'react');
+  expect(spy).toHaveBeenCalledWith('setSelectedFramework', 'react');
 });

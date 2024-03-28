@@ -55,7 +55,7 @@ describe('openInStackBlitz()', () => {
 
     openInStackBlitz(openInStackBlitzOptions);
 
-    expect(spy).toBeCalledWith(openInStackBlitzOptions.theme, openInStackBlitzOptions.backgroundColor);
+    expect(spy).toHaveBeenCalledWith(openInStackBlitzOptions.theme, openInStackBlitzOptions.backgroundColor);
   });
 
   it('should call getVanillaJsProjectAndOpenOptions() with correct parameters', () => {
@@ -66,7 +66,10 @@ describe('openInStackBlitz()', () => {
 
     openInStackBlitz(openInStackBlitzOptions);
 
-    expect(spy).toBeCalledWith({ ...sharedFrameworkOptions, title: `Porsche Design System vanilla-js sandbox` });
+    expect(spy).toHaveBeenCalledWith({
+      ...sharedFrameworkOptions,
+      title: `Porsche Design System vanilla-js sandbox`,
+    });
   });
 
   it('should call getAngularProjectAndOpenOptions() with correct parameters', () => {
@@ -80,7 +83,7 @@ describe('openInStackBlitz()', () => {
 
     openInStackBlitz(openInStackBlitzOptions);
 
-    expect(spy).toBeCalledWith({ ...sharedFrameworkOptions, title: `Porsche Design System angular sandbox` });
+    expect(spy).toHaveBeenCalledWith({ ...sharedFrameworkOptions, title: `Porsche Design System angular sandbox` });
   });
 
   it('should call getReactProjectAndOpenOptions() with correct parameters', () => {
@@ -94,7 +97,7 @@ describe('openInStackBlitz()', () => {
 
     openInStackBlitz(openInStackBlitzOptions);
 
-    expect(spy).toBeCalledWith({ ...sharedFrameworkOptions, title: `Porsche Design System react sandbox` });
+    expect(spy).toHaveBeenCalledWith({ ...sharedFrameworkOptions, title: `Porsche Design System react sandbox` });
   });
 
   it.each<Exclude<Framework, 'shared'>>(['vanilla-js', 'angular', 'react'])(
@@ -103,20 +106,20 @@ describe('openInStackBlitz()', () => {
       // @ts-ignore
       const spy = jest.spyOn(sdk, 'openProject');
       jest
-        .spyOn(getVanillaJsProjectAndOpenOptionsUtils, 'getVanillaJsProjectAndOpenOptions')
-        .mockReturnValue(mockedProjectAndOpenOptions);
+      .spyOn(getVanillaJsProjectAndOpenOptionsUtils, 'getVanillaJsProjectAndOpenOptions')
+      .mockReturnValue(mockedProjectAndOpenOptions);
       jest
-        .spyOn(getAngularProjectAndOpenOptionsUtils, 'getAngularProjectAndOpenOptions')
-        .mockReturnValue(mockedProjectAndOpenOptions);
+      .spyOn(getAngularProjectAndOpenOptionsUtils, 'getAngularProjectAndOpenOptions')
+      .mockReturnValue(mockedProjectAndOpenOptions);
       jest
-        .spyOn(getReactProjectAndOpenOptionsUtils, 'getReactProjectAndOpenOptions')
-        .mockReturnValue(mockedProjectAndOpenOptions);
+      .spyOn(getReactProjectAndOpenOptionsUtils, 'getReactProjectAndOpenOptions')
+      .mockReturnValue(mockedProjectAndOpenOptions);
 
       openInStackBlitz(sharedOpenInStackBlitzOptions);
 
       const { openFile, ...project } = mockedProjectAndOpenOptions;
 
-      expect(spy).toBeCalledWith(project, { openFile });
-    }
+      expect(spy).toHaveBeenCalledWith(project, { openFile });
+    },
   );
 });

@@ -13,7 +13,8 @@ beforeEach(() => {
   component.host = document.createElement('p-flyout');
   component.host.attachShadow({ mode: 'open' });
 
-  jest.spyOn(component, 'setDialogVisibility' as any).mockImplementation(() => {});
+  jest.spyOn(component, 'setDialogVisibility' as any).mockImplementation(() => {
+  });
 });
 
 describe('componentDidLoad', () => {
@@ -37,14 +38,14 @@ describe('componentDidLoad', () => {
     component.open = true;
     component.componentDidLoad();
 
-    expect(utilsSpy).toBeCalledWith(true);
+    expect(utilsSpy).toHaveBeenCalledWith(true);
   });
 
   it('should not call setScrollLock() if flyout is not open', () => {
     const utilsSpy = jest.spyOn(setScrollLockUtils, 'setScrollLock');
     component.componentDidLoad();
 
-    expect(utilsSpy).not.toBeCalled();
+    expect(utilsSpy).not.toHaveBeenCalled();
   });
 });
 
@@ -53,6 +54,6 @@ describe('disconnectedCallback', () => {
     const utilsSpy = jest.spyOn(setScrollLockUtils, 'setScrollLock');
     component.disconnectedCallback();
 
-    expect(utilsSpy).toBeCalledWith(false);
+    expect(utilsSpy).toHaveBeenCalledWith(false);
   });
 });

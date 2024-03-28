@@ -12,7 +12,7 @@ describe('scrollToPositionHandler', () => {
 
     component.scrollToPositionHandler();
 
-    expect(spy).toBeCalledWith({ scrollPosition: 100 });
+    expect(spy).toHaveBeenCalledWith({ scrollPosition: 100 });
     expect(component.scrollToPosition).toStrictEqual({ scrollPosition: 200 });
   });
 
@@ -24,7 +24,7 @@ describe('scrollToPositionHandler', () => {
 
     component.scrollToPositionHandler();
 
-    expect(spy).toBeCalledTimes(1);
+    expect(spy).toHaveBeenCalledTimes(1);
   });
 
   it('should set scrollAreaElement.scrollLeft if !isSmooth', () => {
@@ -47,7 +47,7 @@ describe('connectedCallback', () => {
 
     component.connectedCallback();
 
-    expect(spy).toBeCalledWith({ scrollPosition: 100 });
+    expect(spy).toHaveBeenCalledWith({ scrollPosition: 100 });
     expect(component.scrollToPosition).toStrictEqual({ scrollPosition: 200 });
   });
 });
@@ -61,7 +61,7 @@ describe('componentDidLoad', () => {
       component.componentDidLoad();
     } catch {}
 
-    expect(spy).toBeCalledTimes(1);
+    expect(spy).toHaveBeenCalledTimes(1);
   });
   it('should call scrollToPositionHandler() if scrollToPosition', () => {
     const component = new Scroller();
@@ -72,7 +72,7 @@ describe('componentDidLoad', () => {
 
     component.componentDidLoad();
 
-    expect(spy).toBeCalledTimes(1);
+    expect(spy).toHaveBeenCalledTimes(1);
   });
 });
 

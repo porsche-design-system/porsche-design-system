@@ -11,7 +11,7 @@ describe('OpenBugTemplateInStackBlitz.vue', () => {
 
       const result = await component['fetchVersions']();
 
-      expect(fetchSpy).toBeCalledWith(url, { headers: { accept: 'application/vnd.npm.install-v1+json' } });
+      expect(fetchSpy).toHaveBeenCalledWith(url, { headers: { accept: 'application/vnd.npm.install-v1+json' } });
 
       expect(result.length).toBeGreaterThan(0);
       expect(result).toContain('2.17.0');
@@ -35,7 +35,7 @@ describe('OpenBugTemplateInStackBlitz.vue', () => {
           '11.22.33',
           '1.2.3-beta.0',
           '1.2.3-alpha.0',
-        ])
+        ]),
       ).toEqual(['11.22.33', '11.2.5', '3.0.0', '1.22.5', '1.2.55', '1.2.5', '1.2.4', '1.2.3']);
     });
   });

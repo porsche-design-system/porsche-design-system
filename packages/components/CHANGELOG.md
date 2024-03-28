@@ -14,6 +14,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ### [Unreleased]
 
+### Fixed
+
+- `Text Field Wrapper`, `Textarea Wrapper`: Dynamic changes of `showCounter` and `maxLength` are reflected. The counter
+  element dynamically adjusts to changes in the input value accurately.
+  ([#3084](https://github.com/porsche-design-system/porsche-design-system/pull/3084))
+
 ### [3.14.0] - 2024-03-25
 
 ### [3.14.0-rc.0] - 2024-03-25

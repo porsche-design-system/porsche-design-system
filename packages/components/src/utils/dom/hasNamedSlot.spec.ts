@@ -8,7 +8,7 @@ it('should call getNamedSlot() with correct parameters', () => {
 
   hasNamedSlot(host, slotName);
 
-  expect(spy).toBeCalledWith(host, slotName);
+  expect(spy).toHaveBeenCalledWith(host, slotName);
 });
 
 it('should return false if element has no slotted child', () => {

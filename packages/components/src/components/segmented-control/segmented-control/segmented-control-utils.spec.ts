@@ -48,7 +48,7 @@ describe('getItemMaxWidth()', () => {
 
     getItemMaxWidth(host);
 
-    expect(spy).toBeCalledWith(tempDiv);
+    expect(spy).toHaveBeenCalledWith(tempDiv);
     expect(Array.from(host.shadowRoot.children)).toContain(tempDiv);
   });
 
@@ -56,7 +56,7 @@ describe('getItemMaxWidth()', () => {
     const spy = jest.spyOn(tempDiv, 'remove');
     getItemMaxWidth(host);
 
-    expect(spy).toBeCalledWith();
+    expect(spy).toHaveBeenCalledWith();
     expect(Array.from(host.shadowRoot.children)).not.toContain(tempDiv);
   });
 
@@ -70,7 +70,7 @@ describe('getItemMaxWidth()', () => {
 
     getItemMaxWidth(host);
 
-    expect(spy).toBeCalledWith(tempIcon);
+    expect(spy).toHaveBeenCalledWith(tempIcon);
     expect(Array.from(tempDiv.children)).toContain(tempIcon);
   });
 
@@ -84,7 +84,7 @@ describe('getItemMaxWidth()', () => {
 
     getItemMaxWidth(host);
 
-    expect(spy).toBeCalledWith(tempIcon);
+    expect(spy).toHaveBeenCalledWith(tempIcon);
     expect(Array.from(tempDiv.children)).toContain(tempIcon);
   });
 
@@ -98,7 +98,7 @@ describe('getItemMaxWidth()', () => {
 
     getItemMaxWidth(host);
 
-    expect(spy).toBeCalledWith(tempLabel);
+    expect(spy).toHaveBeenCalledWith(tempLabel);
     expect(Array.from(tempDiv.children)).toContain(tempLabel);
   });
 
@@ -154,7 +154,7 @@ describe('syncSegmentedControlItemsProps()', () => {
 
     syncSegmentedControlItemsProps(host, value, theme);
 
-    expect(spy).toBeCalledTimes(2);
+    expect(spy).toHaveBeenCalledTimes(2);
     expect(spy.mock.calls[0][0]).toEqual(child1); // toHaveBeenNthCalledWith doesn't work
     expect(spy.mock.calls[1][0]).toEqual(child2);
   });

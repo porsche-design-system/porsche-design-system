@@ -120,18 +120,18 @@ describe('warnAboutTransformedValue()', () => {
 
     warnAboutTransformedValue(host, 4);
 
-    expect(spyGetTagNameWithoutPrefix).toBeCalledTimes(1);
-    expect(spyGetTagNameWithoutPrefix).toBeCalledWith(host);
-    expect(spyConsoleWarn).toBeCalledWith(
+    expect(spyGetTagNameWithoutPrefix).toHaveBeenCalledTimes(1);
+    expect(spyGetTagNameWithoutPrefix).toHaveBeenCalledWith(host);
+    expect(spyConsoleWarn).toHaveBeenCalledWith(
       warningPrefix,
       'Provided value has too many characters and was truncated to the max length of 4.'
     );
 
     warnAboutTransformedValue(host);
 
-    expect(spyGetTagNameWithoutPrefix).toBeCalledTimes(2);
-    expect(spyGetTagNameWithoutPrefix).toBeCalledWith(host);
-    expect(spyConsoleWarn).toBeCalledWith(
+    expect(spyGetTagNameWithoutPrefix).toHaveBeenCalledTimes(2);
+    expect(spyGetTagNameWithoutPrefix).toHaveBeenCalledWith(host);
+    expect(spyConsoleWarn).toHaveBeenCalledWith(
       warningPrefix,
       'Provided value contains characters that are not of type number, the value was therefore reset.'
     );
@@ -195,7 +195,7 @@ describe('getSanitisedValue()', () => {
 
     const sanitisedValue = getSanitisedValue(component.host, component.value, 4);
 
-    expect(spy).not.toBeCalled();
+    expect(spy).not.toHaveBeenCalled();
     expect(sanitisedValue).toBe('1234');
   });
 
@@ -207,7 +207,7 @@ describe('getSanitisedValue()', () => {
 
     const sanitisedValue = getSanitisedValue(component.host, component.value, 4);
 
-    expect(spy).toBeCalledWith(component.host);
+    expect(spy).toHaveBeenCalledWith(component.host);
     expect(sanitisedValue).toBe('');
   });
 
@@ -220,7 +220,7 @@ describe('getSanitisedValue()', () => {
     const sanitisedValue = getSanitisedValue(component.host, component.value, 4);
 
     expect(sanitisedValue).toBe('1234');
-    expect(spy).toBeCalledWith(component.host, 4);
+    expect(spy).toHaveBeenCalledWith(component.host, 4);
   });
 });
 
@@ -242,7 +242,7 @@ describe('initHiddenInput()', () => {
 
     const hiddenInput = initHiddenInput(component.host, 'name', '1234', false, false);
 
-    expect(spy).toBeCalledWith(hiddenInput, 'name', '1234', false, false);
+    expect(spy).toHaveBeenCalledWith(hiddenInput, 'name', '1234', false, false);
   });
 
   it('should call setAttributes() with correct parameters', () => {
@@ -252,9 +252,9 @@ describe('initHiddenInput()', () => {
 
     const hiddenInput = initHiddenInput(component.host, 'name', '1234', false, false);
 
-    expect(spy).toBeCalledTimes(2); // it is also called in syncHiddenInput()
-    expect(spy).toBeCalledWith(hiddenInput, { 'aria-hidden': 'true', slot: 'internal-input', tabindex: '-1' });
-    expect(spy).toBeCalledWith(hiddenInput, { name: 'name', value: '1234' });
+    expect(spy).toHaveBeenCalledTimes(2); // it is also called in syncHiddenInput()
+    expect(spy).toHaveBeenCalledWith(hiddenInput, { 'aria-hidden': 'true', slot: 'internal-input', tabindex: '-1' });
+    expect(spy).toHaveBeenCalledWith(hiddenInput, { name: 'name', value: '1234' });
   });
 
   it('should return hidden input element with added attributes and prepend hidden input element to host', () => {
@@ -274,8 +274,8 @@ describe('syncHiddenInput()', () => {
 
     syncHiddenInput(hiddenInput, 'updatedName', '432 1', false, false);
 
-    expect(spy).toBeCalledTimes(1);
-    expect(spy).toBeCalledWith('432 1');
+    expect(spy).toHaveBeenCalledTimes(1);
+    expect(spy).toHaveBeenCalledWith('432 1');
   });
 
   it('should call setAttributes() with correct parameters', () => {
@@ -284,8 +284,8 @@ describe('syncHiddenInput()', () => {
 
     syncHiddenInput(hiddenInput, 'updatedName', '4321', false, false);
 
-    expect(spy).toBeCalledTimes(1);
-    expect(spy).toBeCalledWith(hiddenInput, { name: 'updatedName', value: '4321' });
+    expect(spy).toHaveBeenCalledTimes(1);
+    expect(spy).toHaveBeenCalledWith(hiddenInput, { name: 'updatedName', value: '4321' });
   });
 
   it('should call setAttributes() with correct parameters when name=undefined', () => {
@@ -294,8 +294,8 @@ describe('syncHiddenInput()', () => {
 
     syncHiddenInput(hiddenInput, undefined, '4321', false, false);
 
-    expect(spy).toBeCalledTimes(1);
-    expect(spy).toBeCalledWith(hiddenInput, { value: '4321' });
+    expect(spy).toHaveBeenCalledTimes(1);
+    expect(spy).toHaveBeenCalledWith(hiddenInput, { value: '4321' });
   });
 
   it('should call toggleAttribute() with correct parameters and update "required" and "disabled" attributes', () => {
@@ -304,9 +304,9 @@ describe('syncHiddenInput()', () => {
 
     syncHiddenInput(hiddenInput, 'updatedName', '4321', true, true);
 
-    expect(spy).toBeCalledTimes(2);
-    expect(spy).toBeCalledWith('disabled', true);
-    expect(spy).toBeCalledWith('required', true);
+    expect(spy).toHaveBeenCalledTimes(2);
+    expect(spy).toHaveBeenCalledWith('disabled', true);
+    expect(spy).toHaveBeenCalledWith('required', true);
 
     expect(hiddenInput.disabled).toBe(true);
     expect(hiddenInput.required).toBe(true);

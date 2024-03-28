@@ -23,14 +23,14 @@ describe('load()', () => {
     const spy = jest.spyOn(fromComponentsManagerCore, 'loadComponentLibrary');
 
     load();
-    expect(spy).toBeCalledWith({ prefix: '', ...global.CM_CONFIG });
+    expect(spy).toHaveBeenCalledWith({ prefix: '', ...global.CM_CONFIG });
   });
 
   it('should call loadComponentLibrary() with correct prefix parameters', () => {
     const spy = jest.spyOn(fromComponentsManagerCore, 'loadComponentLibrary');
 
     load({ prefix: 'my-prefix' });
-    expect(spy).toBeCalledWith({ prefix: 'my-prefix', ...global.CM_CONFIG });
+    expect(spy).toHaveBeenCalledWith({ prefix: 'my-prefix', ...global.CM_CONFIG });
   });
 
   it('should by default set window.PORSCHE_DESIGN_SYSTEM_CDN="auto"', () => {

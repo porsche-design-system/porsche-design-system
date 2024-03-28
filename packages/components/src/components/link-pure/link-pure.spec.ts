@@ -11,7 +11,7 @@ describe('componentWillLoad', () => {
     component.href = '#';
     component.componentWillLoad();
 
-    expect(spy).toBeCalledWith(component.host, component.href);
+    expect(spy).toHaveBeenCalledWith(component.host, component.href);
   });
 });
 
@@ -25,6 +25,6 @@ describe('render', () => {
     component.href = '#';
     component.render();
 
-    expect(spy).toBeCalledWith(component.host, component.icon, component.iconSource);
+    expect(spy).toHaveBeenCalledWith(component.host, component.icon, component.iconSource);
   });
 });

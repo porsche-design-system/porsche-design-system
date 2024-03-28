@@ -8,7 +8,7 @@ it('should call getDirectChildHTMLElement() with correct parameters', () => {
 
   hasSpecificDirectChildTag(host, tag);
 
-  expect(spy).toBeCalledWith(host, ':only-child');
+  expect(spy).toHaveBeenCalledWith(host, ':only-child');
 });
 
 it('should return true if getDirectChildHTMLElement returns an element matching the tag param', () => {

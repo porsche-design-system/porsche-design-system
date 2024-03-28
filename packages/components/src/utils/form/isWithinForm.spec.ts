@@ -6,7 +6,7 @@ it('should call getClosestHTMLElement() with correct parameters', () => {
   const el = document.createElement('input');
   isWithinForm(el);
 
-  expect(spy).toBeCalledWith(el, 'form');
+  expect(spy).toHaveBeenCalledWith(el, 'form');
 });
 
 it('should return true or false based on result of getClosestHTMLElement()', () => {

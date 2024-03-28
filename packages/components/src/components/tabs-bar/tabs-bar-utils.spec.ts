@@ -92,16 +92,16 @@ describe('setBarStyle()', () => {
     const spy = jest.spyOn(tabsBarUtils, 'getTransformation');
     setBarStyle([el1, el2], undefined, barElement);
 
-    expect(spy).not.toBeCalled();
+    expect(spy).not.toHaveBeenCalled();
   });
 
   it('should call getTransformation() with correct parameters if there is an active tabElement ', () => {
     const spy = jest.spyOn(tabsBarUtils, 'getTransformation');
     setBarStyle([el1, el2], 1, barElement);
 
-    expect(spy).toBeCalledWith(el1);
-    expect(spy).toBeCalledWith(el2);
-    expect(spy.mock.calls[0][0]).toBe(el2); // toBeCalledWith doesn't deep compare 🤷‍
+    expect(spy).toHaveBeenCalledWith(el1);
+    expect(spy).toHaveBeenCalledWith(el2);
+    expect(spy.mock.calls[0][0]).toBe(el2); // .toHaveBeenCalledWith( doesn't deep compare 🤷‍
   });
 
   it('should set result of getTransformation() as style on barElement', () => {
@@ -117,7 +117,7 @@ describe('setBarStyle()', () => {
 
     setBarStyle([el1, el2], 0, barElement);
 
-    expect(spy).not.toBeCalled();
+    expect(spy).not.toHaveBeenCalled();
   });
 
   it('should reset animation on barElement when there is a selected tabElement', () => {
@@ -138,7 +138,7 @@ describe('setBarStyle()', () => {
 
     jest.runAllTimers();
 
-    expect(spy).toBeCalledWith(expect.any(Function));
+    expect(spy).toHaveBeenCalledWith(expect.any(Function));
     expect(barElement.style.animation).toBe('');
 
     el1.removeAttribute('aria-selected');
@@ -149,7 +149,7 @@ describe('setBarStyle()', () => {
 
     jest.runAllTimers();
 
-    expect(spy).toBeCalledWith(expect.any(Function));
+    expect(spy).toHaveBeenCalledWith(expect.any(Function));
     expect(barElement.style.animation).toBe('');
 
     jest.useRealTimers();

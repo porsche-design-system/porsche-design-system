@@ -15,10 +15,9 @@ it('should have one unit test per component', () => {
   const specFileNames = globbySync(`${srcDir}/**/*.spec.ts`).filter((fileName) => fileName !== currentFileName);
 
   const componentsTagNamesWithTests: [TagName, string][] = specFileNames
-    .map<[TagName, string]>((filePath) => [
-      ('p-' + path.basename(filePath).replace('.spec.ts', '')) as TagName,
-      filePath,
-    ])
+    .map<
+      [TagName, string]
+    >((filePath) => [('p-' + path.basename(filePath).replace('.spec.ts', '')) as TagName, filePath])
     .filter(([tagName]) => TAG_NAMES.includes(tagName));
 
   const componentsWithTests = componentsTagNamesWithTests.map(([tagName, filePath]) => {
@@ -54,5 +53,5 @@ it.each(Object.entries(tagNameMarkup))('should have no fetch call for %s', async
     console.log(spy.mock.calls.flat());
   }
 
-  expect(spy).not.toBeCalled();
+  expect(spy).not.toHaveBeenCalled();
 });

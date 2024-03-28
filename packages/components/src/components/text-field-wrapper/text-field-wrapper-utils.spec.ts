@@ -29,7 +29,7 @@ describe('hasCounterAndIsTypeText()', () => {
     const spy = jest.spyOn(textFieldWrapperUtils, 'isType');
     hasCounterAndIsTypeText(inputElement);
 
-    expect(spy).toBeCalledWith(inputElement.type, 'text');
+    expect(spy).toHaveBeenCalledWith(inputElement.type, 'text');
   });
 
   it('should call hasCounter() with correct parameters', () => {
@@ -37,7 +37,7 @@ describe('hasCounterAndIsTypeText()', () => {
     const spy = jest.spyOn(formUtils, 'hasCounter');
     hasCounterAndIsTypeText(inputElement);
 
-    expect(spy).toBeCalledWith(inputElement);
+    expect(spy).toHaveBeenCalledWith(inputElement);
   });
 
   it('should for input type="text" with maxLength return true', () => {
@@ -184,7 +184,7 @@ describe('addInputEventListenerForSearch()', () => {
 
     expect(spy).toHaveBeenNthCalledWith(1, 'input', expect.any(Function));
     expect(spy).toHaveBeenNthCalledWith(2, 'keydown', expect.any(Function));
-    expect(spy).toBeCalledTimes(2);
+    expect(spy).toHaveBeenCalledTimes(2);
   });
 
   it('should on input event call inputChangeCallback()', () => {
@@ -193,8 +193,8 @@ describe('addInputEventListenerForSearch()', () => {
     addInputEventListenerForSearch(inputElement, callback);
 
     inputElement.dispatchEvent(new Event('input'));
-    expect(callback).toBeCalledWith(expect.any(Boolean));
-    expect(callback).toBeCalledTimes(1);
+    expect(callback).toHaveBeenCalledWith(expect.any(Boolean));
+    expect(callback).toHaveBeenCalledTimes(1);
   });
 
   it('should if input.value is not empty on keydown event for Escape key, call event.preventDefault(), reset input.value, call dispatchInputEvent() with correct parameter', () => {
@@ -207,9 +207,9 @@ describe('addInputEventListenerForSearch()', () => {
     const spyDispatchInputEvent = jest.spyOn(textFieldWrapperUtils, 'dispatchInputEvent');
     inputElement.dispatchEvent(event);
 
-    expect(spyPreventDefault).toBeCalledWith();
+    expect(spyPreventDefault).toHaveBeenCalledWith();
     expect(inputElement.value).toBe('');
-    expect(spyDispatchInputEvent).toBeCalledWith(event.target);
+    expect(spyDispatchInputEvent).toHaveBeenCalledWith(event.target);
   });
 
   it('should if input.value is empty on keydown event for Escape key not call event.preventDefault(), not reset input.value and not call dispatchInputEvent()', () => {
@@ -222,9 +222,9 @@ describe('addInputEventListenerForSearch()', () => {
     const spyDispatchInputEvent = jest.spyOn(textFieldWrapperUtils, 'dispatchInputEvent');
     inputElement.dispatchEvent(event);
 
-    expect(spyPreventDefault).not.toBeCalled();
+    expect(spyPreventDefault).not.toHaveBeenCalled();
     expect(inputElement.value).toBe('');
-    expect(spyDispatchInputEvent).not.toBeCalled();
+    expect(spyDispatchInputEvent).not.toHaveBeenCalled();
   });
 
   it('should on keydown event for other keys than Escape, not call event.preventDefault(), not reset input.value and not call dispatchInputEvent()', () => {
@@ -241,10 +241,10 @@ describe('addInputEventListenerForSearch()', () => {
     inputElement.dispatchEvent(event1);
     inputElement.dispatchEvent(event2);
 
-    expect(spyPreventDefaultEvent1).not.toBeCalled();
-    expect(spyPreventDefaultEvent2).not.toBeCalled();
+    expect(spyPreventDefaultEvent1).not.toHaveBeenCalled();
+    expect(spyPreventDefaultEvent2).not.toHaveBeenCalled();
     expect(inputElement.value).toBe('search-term');
-    expect(spyDispatchInputEvent).not.toBeCalled();
+    expect(spyDispatchInputEvent).not.toHaveBeenCalled();
   });
 });
 
@@ -254,7 +254,7 @@ describe('dispatchInputEvent()', () => {
     const spy = jest.spyOn(inputElement, 'dispatchEvent');
     dispatchInputEvent(inputElement);
 
-    expect(spy).toBeCalledWith(new Event('input', { bubbles: true }));
-    expect(spy.mock.calls[0][0].bubbles).toBe(true); // toBeCalledWith matcher doesn't verify value of bubbles
+    expect(spy).toHaveBeenCalledWith(new Event('input', { bubbles: true }));
+    expect(spy.mock.calls[0][0].bubbles).toBe(true); // .toHaveBeenCalledWith( matcher doesn't verify value of bubbles
   });
 });

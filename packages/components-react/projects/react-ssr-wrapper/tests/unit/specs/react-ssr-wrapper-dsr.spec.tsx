@@ -30,7 +30,7 @@ it('should have working SSR PLink component', async () => {
   expect(shadowRoot.innerHTML.trim()).not.toBe('');
 
   // Check for console errors
-  expect(consoleErrorSpy).not.toBeCalled();
+  expect(consoleErrorSpy).not.toHaveBeenCalled();
 });
 
 it('should have working SSR PButton component', async () => {
@@ -53,7 +53,7 @@ it('should have working SSR PButton component', async () => {
   expect(shadowRoot.innerHTML.trim()).not.toBe('');
 
   // Check for console errors
-  expect(consoleErrorSpy).not.toBeCalled();
+  expect(consoleErrorSpy).not.toHaveBeenCalled();
 });
 
 it('should have working SSR PSegmentedControl component', async () => {
@@ -88,5 +88,5 @@ it('should have working SSR PSegmentedControl component', async () => {
   expect(component).toHaveValue(3);
 
   // Check for console errors
-  expect(consoleErrorSpy).not.toBeCalled();
+  expect(consoleErrorSpy).not.toHaveBeenCalled();
 });

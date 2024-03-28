@@ -16,9 +16,9 @@ describe('getColors()', () => {
     const themedColors = getThemedColors('light');
     getColors(themedColors, 'background-surface', 'light');
 
-    expect(getInvertedThemedColorsSpy).not.toBeCalled();
-    expect(getThemedBackgroundColorSpy).toBeCalledWith('background-surface', themedColors);
-    expect(getThemedBackgroundHoverColorSpy).toBeCalledWith('background-surface', themedColors, 'light');
+    expect(getInvertedThemedColorsSpy).not.toHaveBeenCalled();
+    expect(getThemedBackgroundColorSpy).toHaveBeenCalledWith('background-surface', themedColors);
+    expect(getThemedBackgroundHoverColorSpy).toHaveBeenCalledWith('background-surface', themedColors, 'light');
   });
 
   it('should for tagColor: primary call getInvertedThemedColorsSpy(), getThemedBackgroundColor() and getThemedBackgroundHoverColor() with correct parameters', () => {
@@ -29,9 +29,9 @@ describe('getColors()', () => {
     const themedColors = getThemedColors('light');
     getColors(themedColors, 'primary', 'light');
 
-    expect(getInvertedThemedColorsSpy).toBeCalledWith('light');
-    expect(getThemedBackgroundColorSpy).toBeCalledWith('primary', themedColors);
-    expect(getThemedBackgroundHoverColorSpy).toBeCalledWith('primary', themedColors, 'light');
+    expect(getInvertedThemedColorsSpy).toHaveBeenCalledWith('light');
+    expect(getThemedBackgroundColorSpy).toHaveBeenCalledWith('primary', themedColors);
+    expect(getThemedBackgroundHoverColorSpy).toHaveBeenCalledWith('primary', themedColors, 'light');
   });
 
   it.each<[Exclude<TagColor, TagColorDeprecated>, Theme]>([

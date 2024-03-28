@@ -9,7 +9,8 @@ it.each(Object.keys(fromPartials))('should not throw in node for %s', (partialNa
     // catch exception that may occur in followup validation regarding options
     // @ts-ignore
     expect(fromPartials[partialName]).not.toThrow();
-  } catch {}
+  } catch {
+  }
 
-  expect(spy).toBeCalledWith(partialName);
+  expect(spy).toHaveBeenCalledWith(partialName);
 });

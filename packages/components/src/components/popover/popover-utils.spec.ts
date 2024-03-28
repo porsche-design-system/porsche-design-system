@@ -106,7 +106,7 @@ describe('updatePopoverStyles()', () => {
   it('should call isElementWithinViewport() with correct parameters', () => {
     const spy = jest.spyOn(popoverUtils, 'isElementWithinViewport');
     updatePopoverStyles(host, spacer, popover, 'top', false, 'light');
-    expect(spy).toBeCalledWith(spacer, popover, 'top');
+    expect(spy).toHaveBeenCalledWith(spacer, popover, 'top');
   });
 
   it('should call getAutoDirection() and attachComponentCss()', () => {
@@ -115,20 +115,20 @@ describe('updatePopoverStyles()', () => {
 
     jest.spyOn(popoverUtils, 'isElementWithinViewport').mockImplementationOnce(() => true);
     updatePopoverStyles(host, spacer, popover, 'top', false, 'light');
-    expect(getAutoDirectionSpy).not.toBeCalled();
-    expect(attachComponentCssSpy).not.toBeCalled();
+    expect(getAutoDirectionSpy).not.toHaveBeenCalled();
+    expect(attachComponentCssSpy).not.toHaveBeenCalled();
 
     jest.spyOn(popoverUtils, 'isElementWithinViewport').mockImplementationOnce(() => false);
     updatePopoverStyles(host, spacer, popover, 'top', false, 'light');
 
-    expect(getAutoDirectionSpy).toBeCalledWith(spacer, popover);
-    expect(attachComponentCssSpy).toBeCalledWith(host, getComponentCss, 'bottom', false, 'light');
+    expect(getAutoDirectionSpy).toHaveBeenCalledWith(spacer, popover);
+    expect(attachComponentCssSpy).toHaveBeenCalledWith(host, getComponentCss, 'bottom', false, 'light');
   });
 
   it('should call getPopoverMargin()', () => {
     const spy = jest.spyOn(popoverUtils, 'getPopoverMargin');
     updatePopoverStyles(host, spacer, popover, 'top', false, 'light');
-    expect(spy).toBeCalledWith(spacer, popover, 'top');
+    expect(spy).toHaveBeenCalledWith(spacer, popover, 'top');
   });
 
   it('should set margin to popover', () => {
@@ -206,7 +206,7 @@ describe('getAutoDirection()', () => {
     const spy = jest.spyOn(popoverUtils, 'calcSpaceForDirections');
 
     getAutoDirection(spacer, popover);
-    expect(spy).toBeCalledWith(spacer, popover);
+    expect(spy).toHaveBeenCalledWith(spacer, popover);
   });
 
   it.each<PopoverDirection>(POPOVER_DIRECTIONS)(
@@ -399,9 +399,9 @@ describe('addDocumentEventListener()', () => {
     const spy = jest.spyOn(document, 'addEventListener');
     addDocumentEventListener(popover);
 
-    expect(spy).toBeCalledWith('mousedown', onDocumentMousedown);
-    expect(spy).toBeCalledWith('keydown', onDocumentKeydown);
-    expect(spy).toBeCalledTimes(2);
+    expect(spy).toHaveBeenCalledWith('mousedown', onDocumentMousedown);
+    expect(spy).toHaveBeenCalledWith('keydown', onDocumentKeydown);
+    expect(spy).toHaveBeenCalledTimes(2);
   });
 
   it('should register eventListeners only once', () => {
@@ -409,9 +409,9 @@ describe('addDocumentEventListener()', () => {
     addDocumentEventListener(popover);
     addDocumentEventListener(popover);
 
-    expect(spy).toBeCalledWith('mousedown', onDocumentMousedown);
-    expect(spy).toBeCalledWith('keydown', onDocumentKeydown);
-    expect(spy).toBeCalledTimes(2);
+    expect(spy).toHaveBeenCalledWith('mousedown', onDocumentMousedown);
+    expect(spy).toHaveBeenCalledWith('keydown', onDocumentKeydown);
+    expect(spy).toHaveBeenCalledTimes(2);
   });
 
   it('should push popover into registeredPopovers array', () => {
@@ -480,8 +480,8 @@ describe('removeDocumentEventListener()', () => {
 
     removeDocumentEventListener(popover);
     expect(registeredPopovers.length).toBe(0);
-    expect(spy).toBeCalledWith('mousedown', onDocumentMousedown);
-    expect(spy).toBeCalledWith('keydown', onDocumentKeydown);
+    expect(spy).toHaveBeenCalledWith('mousedown', onDocumentMousedown);
+    expect(spy).toHaveBeenCalledWith('keydown', onDocumentKeydown);
   });
 });
 
@@ -506,7 +506,7 @@ describe('onDocumentMousedown()', () => {
     popover.open = true;
     popover.host.dispatchEvent(new MouseEvent('mousedown', { bubbles: true }));
 
-    expect(spy).toBeCalledTimes(1);
+    expect(spy).toHaveBeenCalledTimes(1);
     expect(popover.open).toBe(true);
   });
 
@@ -514,7 +514,7 @@ describe('onDocumentMousedown()', () => {
     popover.open = true;
     document.body.dispatchEvent(new MouseEvent('mousedown', { bubbles: true }));
 
-    expect(spy).toBeCalledTimes(1);
+    expect(spy).toHaveBeenCalledTimes(1);
     expect(popover.open).toBe(false);
   });
 
@@ -522,11 +522,11 @@ describe('onDocumentMousedown()', () => {
     const clickEvent = new MouseEvent('mousedown');
     const spy1 = jest.spyOn(clickEvent, 'composedPath');
     onDocumentMousedown(clickEvent);
-    expect(spy1).not.toBeCalled();
+    expect(spy1).not.toHaveBeenCalled();
 
     popover.open = true;
     onDocumentMousedown(clickEvent);
-    expect(spy1).toBeCalledTimes(1);
+    expect(spy1).toHaveBeenCalledTimes(1);
   });
 
   it('should close correct popover', () => {
@@ -541,7 +541,7 @@ describe('onDocumentMousedown()', () => {
 
     document.body.dispatchEvent(new MouseEvent('mousedown', { bubbles: true }));
 
-    expect(spy).toBeCalledTimes(1);
+    expect(spy).toHaveBeenCalledTimes(1);
     expect(popover.open).toBe(false);
     expect(popover1.open).toBe(false);
     expect(popover2.open).toBe(false);
@@ -570,7 +570,7 @@ describe('onDocumentKeydown()', () => {
       popover.open = true;
       document.body.dispatchEvent(new KeyboardEvent('keydown', { key, bubbles: true }));
 
-      expect(spy).toBeCalledTimes(1);
+      expect(spy).toHaveBeenCalledTimes(1);
       expect(popover.open).toBe(false);
     });
 
@@ -578,7 +578,7 @@ describe('onDocumentKeydown()', () => {
       popover.open = true;
       popover.host.dispatchEvent(new KeyboardEvent('keydown', { key, bubbles: true }));
 
-      expect(spy).toBeCalledTimes(1);
+      expect(spy).toHaveBeenCalledTimes(1);
       expect(popover.open).toBe(true);
     });
 
@@ -586,11 +586,11 @@ describe('onDocumentKeydown()', () => {
       const keyboardEvent = new KeyboardEvent('keydown', { key });
       const spy1 = jest.spyOn(keyboardEvent, 'composedPath');
       onDocumentKeydown(keyboardEvent);
-      expect(spy1).not.toBeCalled();
+      expect(spy1).not.toHaveBeenCalled();
 
       popover.open = true;
       onDocumentKeydown(keyboardEvent);
-      expect(spy1).toBeCalledTimes(1);
+      expect(spy1).toHaveBeenCalledTimes(1);
     });
   });
 
@@ -599,7 +599,7 @@ describe('onDocumentKeydown()', () => {
       popover.open = true;
       document.body.dispatchEvent(new KeyboardEvent('keydown', { key: 'Escape', bubbles: true }));
 
-      expect(spy).toBeCalledTimes(1);
+      expect(spy).toHaveBeenCalledTimes(1);
       expect(popover.open).toBe(false);
     });
 
@@ -608,7 +608,7 @@ describe('onDocumentKeydown()', () => {
       const spy = jest.spyOn(keyboardEvent, 'composedPath');
       onDocumentKeydown(keyboardEvent);
 
-      expect(spy).not.toBeCalled();
+      expect(spy).not.toHaveBeenCalled();
     });
 
     it('should close correct popover', () => {
@@ -623,7 +623,7 @@ describe('onDocumentKeydown()', () => {
 
       document.body.dispatchEvent(new KeyboardEvent('keydown', { key: 'Escape', bubbles: true }));
 
-      expect(spy).toBeCalledTimes(1);
+      expect(spy).toHaveBeenCalledTimes(1);
       expect(popover.open).toBe(false);
       expect(popover1.open).toBe(false);
       expect(popover2.open).toBe(false);

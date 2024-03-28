@@ -17,6 +17,6 @@ describe('componentWillLoad', () => {
     const spy = jest.spyOn(selectWrapperUtils, 'isCustomDropdown');
     component.componentWillLoad();
 
-    expect(spy).toBeCalledWith(false, true);
+    expect(spy).toHaveBeenCalledWith(false, true);
   });
 });

@@ -22,7 +22,7 @@ it.each<TagName>(tagNamesWithJss)(
     addParentAndSetRequiredProps(tagName, component);
 
     component.render();
-    expect(spy).toBeCalledTimes(1);
+    expect(spy).toHaveBeenCalledTimes(1);
 
     const cssObject = getComponentCssObject(spy);
     if (cssObject[':host'].display) {

@@ -8,19 +8,29 @@ class SomeComponent implements ComponentInterface {
   private controllerHost = new ControllerHost(this);
 
   connectedCallback(): void {}
+
   disconnectedCallback(): void {}
+
   componentWillLoad(): void {}
+
   componentDidLoad(): void {}
+
   componentWillUpdate(): void {}
+
   componentDidUpdate(): void {}
 }
 
 class TestController implements ReactiveController {
   public hostConnected(): void {}
+
   public hostDisconnected(): void {}
+
   public hostWillUpdate(): void {}
+
   public hostDidUpdate(): void {}
+
   public hostWillLoad(): void {}
+
   public hostDidLoad(): void {}
 }
 
@@ -35,22 +45,22 @@ it('should call regular lifecycle hooks of component', () => {
   const componentDidUpdateSpy = jest.spyOn(someComponent, 'componentDidUpdate');
 
   someComponent.connectedCallback();
-  expect(connectedCallbackSpy).toBeCalledTimes(1);
+  expect(connectedCallbackSpy).toHaveBeenCalledTimes(1);
 
   someComponent.disconnectedCallback();
-  expect(disconnectedCallbackSpy).toBeCalledTimes(1);
+  expect(disconnectedCallbackSpy).toHaveBeenCalledTimes(1);
 
   someComponent.componentWillLoad();
-  expect(componentWillLoadSpy).toBeCalledTimes(1);
+  expect(componentWillLoadSpy).toHaveBeenCalledTimes(1);
 
   someComponent.componentDidLoad();
-  expect(componentDidLoadSpy).toBeCalledTimes(1);
+  expect(componentDidLoadSpy).toHaveBeenCalledTimes(1);
 
   someComponent.componentWillUpdate();
-  expect(componentWillUpdateSpy).toBeCalledTimes(1);
+  expect(componentWillUpdateSpy).toHaveBeenCalledTimes(1);
 
   someComponent.componentDidUpdate();
-  expect(componentDidUpdateSpy).toBeCalledTimes(1);
+  expect(componentDidUpdateSpy).toHaveBeenCalledTimes(1);
 });
 
 describe('addController()', () => {
@@ -79,22 +89,22 @@ describe('addController()', () => {
     const hostDidLoadSpy = jest.spyOn(testCtrl, 'hostDidLoad');
 
     someComponent.connectedCallback();
-    expect(hostConnectedSpy).toBeCalledTimes(1);
+    expect(hostConnectedSpy).toHaveBeenCalledTimes(1);
 
     someComponent.disconnectedCallback();
-    expect(hostDisconnectedSpy).toBeCalledTimes(1);
+    expect(hostDisconnectedSpy).toHaveBeenCalledTimes(1);
 
     someComponent.componentWillLoad();
-    expect(hostWillLoadSpy).toBeCalledTimes(1);
+    expect(hostWillLoadSpy).toHaveBeenCalledTimes(1);
 
     someComponent.componentDidLoad();
-    expect(hostDidLoadSpy).toBeCalledTimes(1);
+    expect(hostDidLoadSpy).toHaveBeenCalledTimes(1);
 
     someComponent.componentWillUpdate();
-    expect(hostWillUpdateSpy).toBeCalledTimes(1);
+    expect(hostWillUpdateSpy).toHaveBeenCalledTimes(1);
 
     someComponent.componentDidUpdate();
-    expect(hostDidUpdateSpy).toBeCalledTimes(1);
+    expect(hostDidUpdateSpy).toHaveBeenCalledTimes(1);
   });
 });
 
@@ -126,22 +136,22 @@ describe('removeController()', () => {
     const hostDidLoadSpy = jest.spyOn(testCtrl, 'hostDidLoad');
 
     someComponent.connectedCallback();
-    expect(hostConnectedSpy).toBeCalledTimes(0);
+    expect(hostConnectedSpy).toHaveBeenCalledTimes(0);
 
     someComponent.disconnectedCallback();
-    expect(hostDisconnectedSpy).toBeCalledTimes(0);
+    expect(hostDisconnectedSpy).toHaveBeenCalledTimes(0);
 
     someComponent.componentWillLoad();
-    expect(hostWillLoadSpy).toBeCalledTimes(0);
+    expect(hostWillLoadSpy).toHaveBeenCalledTimes(0);
 
     someComponent.componentDidLoad();
-    expect(hostDidLoadSpy).toBeCalledTimes(0);
+    expect(hostDidLoadSpy).toHaveBeenCalledTimes(0);
 
     someComponent.componentWillUpdate();
-    expect(hostWillUpdateSpy).toBeCalledTimes(0);
+    expect(hostWillUpdateSpy).toHaveBeenCalledTimes(0);
 
     someComponent.componentDidUpdate();
-    expect(hostDidUpdateSpy).toBeCalledTimes(0);
+    expect(hostDidUpdateSpy).toHaveBeenCalledTimes(0);
   });
 });
 
@@ -152,7 +162,7 @@ describe('requestUpdate()', () => {
     const spy = jest.spyOn(stencilCore, 'forceUpdate');
 
     controllerHost.requestUpdate();
-    expect(spy).toBeCalledTimes(1);
-    expect(spy).toBeCalledWith(someComponent);
+    expect(spy).toHaveBeenCalledTimes(1);
+    expect(spy).toHaveBeenCalledWith(someComponent);
   });
 });

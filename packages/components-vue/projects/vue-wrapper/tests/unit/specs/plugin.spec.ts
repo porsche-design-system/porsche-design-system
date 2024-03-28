@@ -31,7 +31,7 @@ describe('createPorscheDesignSystem()', () => {
     const app = getApp();
 
     app.use(plugin);
-    expect(spy).toBeCalledWith(app);
+    expect(spy).toHaveBeenCalledWith(app);
   });
 
   it('should call porscheDesignSystem.load() without prefix', async () => {
@@ -41,7 +41,7 @@ describe('createPorscheDesignSystem()', () => {
 
     app.use(plugin);
     await flushPromises();
-    expect(spy).toBeCalledWith({ prefix: '' });
+    expect(spy).toHaveBeenCalledWith({ prefix: '' });
   });
 
   it('should call porscheDesignSystem.load() with prefix', async () => {
@@ -51,7 +51,7 @@ describe('createPorscheDesignSystem()', () => {
 
     app.use(plugin);
     await flushPromises();
-    expect(spy).toBeCalledWith({ prefix: 'prefix' });
+    expect(spy).toHaveBeenCalledWith({ prefix: 'prefix' });
   });
 
   it('should provide prefix via prefixInjectionKey and plugin via porscheDesignSystemSymbol', async () => {

@@ -12,7 +12,7 @@ it('should call getDirectChildHTMLElements() with correct parameters and return 
 
   const result = getOnlyChildOfKindHTMLElementOrThrow(parent, selector);
   expect(result).toBe(child1);
-  expect(spy).toBeCalledWith(parent, selector);
+  expect(spy).toHaveBeenCalledWith(parent, selector);
 });
 
 const errorMessage = '"[Porsche Design System] div has to contain a single direct child of: a"';

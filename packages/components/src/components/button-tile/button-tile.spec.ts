@@ -9,6 +9,6 @@ describe('componentWillLoad', () => {
     component.host = document.createElement('p-button-tile');
 
     component.componentWillLoad();
-    expect(spy).toBeCalledWith(component.host, component.align, component.compact);
+    expect(spy).toHaveBeenCalledWith(component.host, component.align, component.compact);
   });
 });
