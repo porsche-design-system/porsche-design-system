@@ -35,6 +35,8 @@ export const applyCheckboxRadioButtonSafariRenderingFix = (element: HTMLElement)
       const sheet = new CSSStyleSheet();
       sheet.replaceSync(`${element.tagName.toLowerCase()}>input:checked{transform:rotateZ(0)}`);
       // TODO: for some reason unit test in Docker environment throws TS2339: Property 'push' does not exist on type 'readonly CSSStyleSheet[]'
+      /* eslint-disable @typescript-eslint/prefer-ts-expect-error, @typescript-eslint/ban-ts-comment */
+      // @ts-ignore
       documentOrShadowRoot.adoptedStyleSheets?.push(sheet);
     }
   }
