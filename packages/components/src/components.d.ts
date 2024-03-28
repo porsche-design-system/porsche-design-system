@@ -40,7 +40,7 @@ import { LinkTileProductAspectRatio, LinkTileProductLikeEventDetail, LinkTilePro
 import { MarqueAriaAttribute, MarqueTarget, MarqueVariant } from "./components/marque/marque-utils";
 import { MarqueSize } from "./components/marque/marque-size";
 import { ModalAriaAttribute, ModalBackdrop } from "./components/modal/modal-utils";
-import { ModelSignatureColor, ModelSignatureFetchPriority, ModelSignatureLoading, ModelSignatureModel, ModelSignatureSize } from "./components/model-signature/model-signature-utils";
+import { ModelSignatureColor, ModelSignatureFetchPriority, ModelSignatureModel, ModelSignatureSize } from "./components/model-signature/model-signature-utils";
 import { MultiSelectDropdownDirection, MultiSelectState, MultiSelectUpdateEventDetail } from "./components/multi-select/multi-select/multi-select-utils";
 import { PaginationInternationalization, PaginationMaxNumberOfPageLinks, PaginationUpdateEventDetail } from "./components/pagination/pagination-utils";
 import { PinCodeLength, PinCodeState, PinCodeType, PinCodeUpdateEventDetail } from "./components/pin-code/pin-code-utils";
@@ -102,7 +102,7 @@ export { LinkTileProductAspectRatio, LinkTileProductLikeEventDetail, LinkTilePro
 export { MarqueAriaAttribute, MarqueTarget, MarqueVariant } from "./components/marque/marque-utils";
 export { MarqueSize } from "./components/marque/marque-size";
 export { ModalAriaAttribute, ModalBackdrop } from "./components/modal/modal-utils";
-export { ModelSignatureColor, ModelSignatureFetchPriority, ModelSignatureLoading, ModelSignatureModel, ModelSignatureSize } from "./components/model-signature/model-signature-utils";
+export { ModelSignatureColor, ModelSignatureFetchPriority, ModelSignatureModel, ModelSignatureSize } from "./components/model-signature/model-signature-utils";
 export { MultiSelectDropdownDirection, MultiSelectState, MultiSelectUpdateEventDetail } from "./components/multi-select/multi-select/multi-select-utils";
 export { PaginationInternationalization, PaginationMaxNumberOfPageLinks, PaginationUpdateEventDetail } from "./components/pagination/pagination-utils";
 export { PinCodeLength, PinCodeState, PinCodeType, PinCodeUpdateEventDetail } from "./components/pin-code/pin-code-utils";
@@ -1209,7 +1209,7 @@ export namespace Components {
         /**
           * Defines whether the model signature is always loaded or only loaded when it is in the viewport (this feature may not work reliably).
          */
-        "loading"?: ModelSignatureLoading;
+        "lazy"?: boolean;
         /**
           * Adapts the model of the component.
          */
@@ -3973,7 +3973,7 @@ declare namespace LocalJSX {
         /**
           * Defines whether the model signature is always loaded or only loaded when it is in the viewport (this feature may not work reliably).
          */
-        "loading"?: ModelSignatureLoading;
+        "lazy"?: boolean;
         /**
           * Adapts the model of the component.
          */

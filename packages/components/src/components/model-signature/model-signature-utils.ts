@@ -1,9 +1,6 @@
 import { MODEL_SIGNATURES_MANIFEST } from '@porsche-design-system/assets';
 import { getCDNBaseURL } from '../../utils';
 
-export const MODEL_SIGNATURE_LOADING = ['eager', 'lazy'] as const;
-export type ModelSignatureLoading = (typeof MODEL_SIGNATURE_LOADING)[number];
-
 export const MODEL_SIGNATURE_FETCH_PRIORITY = ['low', 'high', 'auto'] as const;
 export type ModelSignatureFetchPriority = (typeof MODEL_SIGNATURE_FETCH_PRIORITY)[number];
 
