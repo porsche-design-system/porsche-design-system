@@ -97,7 +97,6 @@
       <option value="auto">Auto</option>
     </select>
 
-
     <select id="dir" onchange="updateRoute({dir: this.value})">
       <option disabled selected>Select a direction</option>
       <option value="ltr">LTR (left-to-right)</option>
@@ -109,31 +108,6 @@
   <main></main>
 
   <script>
-    const ptextarea = document.querySelector('p-textarea-wrapper');
-    const ptextfield = document.querySelector('p-text-field-wrapper');
-    const btn = document.querySelector('p-button#value');
-    const btnMax = document.querySelector('p-button#max');
-    const btnShow = document.querySelector('p-button#show');
-    const textarea = document.querySelector('textarea');
-    const input = document.querySelector('input');
-
-    btn.addEventListener('click', () => {
-      textarea.value = 'Changed value';
-      input.value = 'Changed value';
-    });
-
-    btnMax.addEventListener('click', () => {
-      !input.getAttribute('maxlength') ? input.setAttribute('maxlength', '19') : input.removeAttribute('maxlength');
-      !textarea.getAttribute('maxlength')
-        ? textarea.setAttribute('maxlength', '199')
-        : textarea.removeAttribute('maxlength');
-    });
-
-    btnShow.addEventListener('click', () => {
-      ptextarea.showCounter = !ptextarea.showCounter;
-      ptextfield.showCounter = !ptextfield.showCounter;
-    });
-
     <!-- START: keep this snippet to log component lifecycle events -->
     ['componentWillLoad', 'componentDidLoad', 'componentWillUpdate', 'componentDidUpdate'].forEach((x) =>
       window.addEventListener(`stencil_${x}`, (e) => {
