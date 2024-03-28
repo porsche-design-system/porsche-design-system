@@ -7615,6 +7615,12 @@ exports[`should match snapshot 1`] = `
         "contrast-high",
         "inherit",
       ],
+      "fetchPriority": [
+        "low",
+        "high",
+        "auto",
+      ],
+      "lazy": "boolean",
       "model": [
         "718",
         "911",
@@ -7627,6 +7633,7 @@ exports[`should match snapshot 1`] = `
         "turbo-s",
         "turbo",
       ],
+      "safeZone": "boolean",
       "size": [
         "small",
         "inherit",
@@ -7641,13 +7648,16 @@ exports[`should match snapshot 1`] = `
     "hasEvent": false,
     "hasObserveAttributes": false,
     "hasObserveChildren": false,
-    "hasSlot": false,
+    "hasSlot": true,
     "isDelegatingFocus": false,
     "isInternal": false,
     "isThemeable": true,
     "props": {
       "color": "primary",
+      "fetchPriority": "auto",
+      "lazy": false,
       "model": "911",
+      "safeZone": true,
       "size": "small",
       "theme": "light",
     },
@@ -7663,6 +7673,22 @@ exports[`should match snapshot 1`] = `
         "defaultValue": "primary",
         "description": "Adapts the color of the component.",
         "type": "ModelSignatureColor",
+      },
+      "fetchPriority": {
+        "allowedValues": [
+          "low",
+          "high",
+          "auto",
+        ],
+        "defaultValue": "auto",
+        "description": "Defines the fetch priority of the model signature. In the end it is just a recommendation to the browser, but it defines the priority on its own.",
+        "type": "ModelSignatureFetchPriority",
+      },
+      "lazy": {
+        "allowedValues": "boolean",
+        "defaultValue": false,
+        "description": "Defines whether the model signature is always loaded or only loaded when it is in the viewport (this feature may not work reliably).",
+        "type": "boolean",
       },
       "model": {
         "allowedValues": [
@@ -7681,13 +7707,19 @@ exports[`should match snapshot 1`] = `
         "description": "Adapts the model of the component.",
         "type": "ModelSignatureModel",
       },
+      "safeZone": {
+        "allowedValues": "boolean",
+        "defaultValue": true,
+        "description": "When set to \`true\`, then all model signatures are visually aligned with each other. When set to \`false\` the model signature comes without any safe zone.",
+        "type": "boolean",
+      },
       "size": {
         "allowedValues": [
           "small",
           "inherit",
         ],
         "defaultValue": "small",
-        "description": "Adapts the size of the component.",
+        "description": "Adapts the size of the component. When set to \`inherit\` a CSS \`width\` or \`height\` needs to be defined on the host but not both.",
         "type": "ModelSignatureSize",
       },
       "theme": {

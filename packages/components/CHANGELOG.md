@@ -14,6 +14,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ### [Unreleased]
 
+#### Changed
+
+- `Model Signature`: Uses CSS mask to visualize SVG
+  ([#3153](https://github.com/porsche-design-system/porsche-design-system/pull/3153))
+
 ### [3.14.0] - 2024-03-25
 
 ### [3.14.0-rc.0] - 2024-03-25

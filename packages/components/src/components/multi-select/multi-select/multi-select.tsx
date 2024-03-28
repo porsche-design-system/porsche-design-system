@@ -41,7 +41,7 @@ import {
   hasPropValueChanged,
   isClickOutside,
   SELECT_DROPDOWN_DIRECTIONS,
-  SelectDropdownDirectionInternal,
+  type SelectDropdownDirectionInternal,
   THEMES,
   throwIfElementIsNotOfKind,
   validateProps,

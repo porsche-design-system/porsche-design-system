@@ -305,7 +305,7 @@ export class Select {
     this.selectOptions.forEach((child) => throwIfElementIsNotOfKind(this.host, child, 'p-select-option'));
   };
 
-  private updateSelectedOption = (selectedOption: SelectOption) => {
+  private updateSelectedOption = (selectedOption: SelectOption): void => {
     // option can be undefined when no option is highlighted and keyboard action calls this
     if (selectedOption) {
       this.preventOptionUpdate = true; // Avoid unnecessary updating of options in value watcher

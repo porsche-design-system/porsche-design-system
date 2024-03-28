@@ -46,8 +46,7 @@ const isDesignSystemReady = (): Promise<void> => {
         if (prop === ROLLUP_REPLACE_VERSION) {
           value.isReady().then(promiseResolve);
         }
-        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-        // @ts-ignore
+        // @ts-expect-error ...
         return Reflect.set(...arguments); // eslint-disable-line prefer-rest-params
       },
     };

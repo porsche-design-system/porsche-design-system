@@ -76,6 +76,7 @@ module.exports = {
     '@typescript-eslint/prefer-for-of': 'off',
     '@typescript-eslint/prefer-function-type': 'error',
     '@typescript-eslint/prefer-namespace-keyword': 'error',
+    '@typescript-eslint/prefer-ts-expect-error': 'error',
     '@typescript-eslint/quotes': ['error', 'single'],
     '@typescript-eslint/semi': ['error', 'always'],
     '@typescript-eslint/triple-slash-reference': 'error',
