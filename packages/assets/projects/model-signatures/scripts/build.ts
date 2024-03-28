@@ -3,8 +3,9 @@ import * as path from 'path';
 import * as crypto from 'crypto';
 import { globbySync } from 'globby';
 import { kebabCase } from 'change-case';
-import { loadConfig, optimize, type Config } from 'svgo';
+import { optimize, Config } from 'svgo';
 import { CDN_BASE_PATH_MODEL_SIGNATURES } from '../../../../../cdn.config';
+import { config } from '../svgo.config';
 
 type Manifest = {
   [name: string]: {
@@ -55,7 +56,7 @@ const createManifestAndCopyAssets = (files: string[], config: Config): void => {
 
     fs.writeFileSync(svgOptimizedPath, svgOptimizedData, 'utf8');
 
-    console.log(`Model signature "${svgRawName}" copied`);
+    console.log(`Model signature "${svgRawName}" optimized`);
   }
 
   fs.writeFileSync(
@@ -68,9 +69,5 @@ export const MODEL_SIGNATURES_MANIFEST = ${JSON.stringify(manifest)};
   console.log('Created model-signatures manifest.');
 };
 
-(async () => {
-  const files = globbySync('./src/*.svg').sort();
-  const config = (await loadConfig()) || {};
-
-  createManifestAndCopyAssets(files, config);
-})();
+const files = globbySync('./src/*.svg').sort();
+createManifestAndCopyAssets(files, config);
