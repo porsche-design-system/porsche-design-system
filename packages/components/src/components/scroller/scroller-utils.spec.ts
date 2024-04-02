@@ -13,7 +13,7 @@ describe('getScrollPositionAfterPrevNextClick()', () => {
     'should for offsetWidth: %s, scrollLeft: %s and direction: %s return %s',
     (offsetWidth, scrollLeft, direction, expected) => {
       expect(getScrollPositionAfterPrevNextClick({ offsetWidth, scrollLeft } as HTMLElement, direction)).toBe(expected);
-    }
+    },
   );
 });
 
@@ -24,7 +24,7 @@ describe('getScrollerElements()', () => {
     scroller.attachShadow({ mode: 'open' });
 
     getScrollerElements(scroller);
-    expect(spy).toBeCalledWith(scroller.shadowRoot, '.scroll-area,.action-prev');
+    expect(spy).toHaveBeenCalledWith(scroller.shadowRoot, '.scroll-area,.action-prev');
   });
 
   it('should return tuple result of getHTMLElements()', () => {

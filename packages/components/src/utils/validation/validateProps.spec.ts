@@ -49,7 +49,7 @@ describe('validateValueOfType()', () => {
     const spy = jest.spyOn(validatePropsUtils, 'isValueNotOfType');
     validateValueOfType('propName', 'propValue', 'string');
 
-    expect(spy).toBeCalledWith('propValue', 'string');
+    expect(spy).toHaveBeenCalledWith('propValue', 'string');
   });
 
   it('should return undefined if isValueNotOfType() is false', () => {
@@ -85,11 +85,11 @@ describe('getBreakpointCustomizableStructure()', () => {
   it('should call formatArrayOutput() for array type', () => {
     const spy = jest.spyOn(validatePropsUtils, 'formatArrayOutput');
     getBreakpointCustomizableStructure('boolean');
-    expect(spy).not.toBeCalled();
+    expect(spy).not.toHaveBeenCalled();
 
     const allowedValues = ['a', 'b'];
     getBreakpointCustomizableStructure(allowedValues);
-    expect(spy).toBeCalledWith(allowedValues);
+    expect(spy).toHaveBeenCalledWith(allowedValues);
   });
 });
 
@@ -121,7 +121,7 @@ describe('isBreakpointCustomizableValueInvalid()', () => {
     it('should call isValueNotOfType() with correct parameters', () => {
       const spy = jest.spyOn(validatePropsUtils, 'isValueNotOfType');
       isBreakpointCustomizableValueInvalid(true, 'boolean');
-      expect(spy).toBeCalledWith(true, 'boolean');
+      expect(spy).toHaveBeenCalledWith(true, 'boolean');
     });
 
     it('should return result of isValueNotOfType()', () => {
@@ -135,7 +135,7 @@ describe('isBreakpointCustomizableValueInvalid()', () => {
     it('should call isValueNotOfType() with correct parameters', () => {
       const spy = jest.spyOn(validatePropsUtils, 'isValueNotOfType');
       isBreakpointCustomizableValueInvalid(true, 'number');
-      expect(spy).toBeCalledWith(true, 'number');
+      expect(spy).toHaveBeenCalledWith(true, 'number');
     });
 
     it('should return result of isValueNotOfType()', () => {
@@ -209,9 +209,9 @@ describe('validateProps()', () => {
   it('should call validatorFunction with correct parameters for each propType', () => {
     validateProps(instance, propTypes);
 
-    expect(validatorFunction1).toBeCalledWith('prop1', 'value1');
-    expect(validatorFunction2).toBeCalledWith('prop2', 'value2');
-    expect(validatorFunction3).toBeCalledWith('prop3', undefined);
+    expect(validatorFunction1).toHaveBeenCalledWith('prop1', 'value1');
+    expect(validatorFunction2).toHaveBeenCalledWith('prop2', 'value2');
+    expect(validatorFunction3).toHaveBeenCalledWith('prop3', undefined);
   });
 
   it('should call printErrorMessage() for each validation error', () => {
@@ -229,7 +229,7 @@ describe('validateProps()', () => {
 
     validateProps(instance, propTypes);
 
-    expect(spy).toBeCalledTimes(2);
+    expect(spy).toHaveBeenCalledTimes(2);
     // other parameters because callback is passed to forEach
     expect(spy).toHaveBeenNthCalledWith(1, error1);
     expect(spy).toHaveBeenNthCalledWith(2, error2);
@@ -239,7 +239,7 @@ describe('validateProps()', () => {
     const spy = jest.spyOn(validatePropsUtils, 'printErrorMessage');
     validateProps(instance, propTypes);
 
-    expect(spy).not.toBeCalled();
+    expect(spy).not.toHaveBeenCalled();
   });
 });
 
@@ -254,7 +254,7 @@ describe('AllowedTypes', () => {
     it('should call validateValueOfType() with correct parameters', () => {
       const spy = jest.spyOn(validatePropsUtils, 'validateValueOfType');
       AllowedTypes.string('propName', 'propValue');
-      expect(spy).toBeCalledWith('propName', 'propValue', 'string');
+      expect(spy).toHaveBeenCalledWith('propName', 'propValue', 'string');
     });
 
     it('should return result of validateValueOfType()', () => {
@@ -268,7 +268,7 @@ describe('AllowedTypes', () => {
     it('should call validateValueOfType() with correct parameters', () => {
       const spy = jest.spyOn(validatePropsUtils, 'validateValueOfType');
       AllowedTypes.number('propName', 1);
-      expect(spy).toBeCalledWith('propName', 1, 'number');
+      expect(spy).toHaveBeenCalledWith('propName', 1, 'number');
     });
 
     it('should return result of validateValueOfType()', () => {
@@ -282,7 +282,7 @@ describe('AllowedTypes', () => {
     it('should call validateValueOfType() with correct parameters', () => {
       const spy = jest.spyOn(validatePropsUtils, 'validateValueOfType');
       AllowedTypes.boolean('propName', true);
-      expect(spy).toBeCalledWith('propName', true, 'boolean');
+      expect(spy).toHaveBeenCalledWith('propName', true, 'boolean');
     });
 
     it('should return result of validateValueOfType()', () => {
@@ -302,7 +302,7 @@ describe('AllowedTypes', () => {
     it('should call isValidArray() via anonymous ValidatorFunction', () => {
       const spy = jest.spyOn(validatePropsUtils, 'isValidArray');
       validatorFunctionValues('propName', ['a', 'b']);
-      expect(spy).toBeCalledWith('propName', ['a', 'b'], AllowedTypes.string);
+      expect(spy).toHaveBeenCalledWith('propName', ['a', 'b'], AllowedTypes.string);
     });
 
     it('should return error object via anonymous ValidatorFunction if value is not in allowedValues array', () => {
@@ -340,7 +340,7 @@ describe('AllowedTypes', () => {
       it('should call formatArrayOutput() via anonymous ValidatorFunction', () => {
         const spy = jest.spyOn(validatePropsUtils, 'formatArrayOutput');
         validatorFunctionValues('propName', 'c');
-        expect(spy).toBeCalledWith(['a', 'b']);
+        expect(spy).toHaveBeenCalledWith(['a', 'b']);
       });
 
       it('should return error object via anonymous ValidatorFunction if value is not in allowedValues array', () => {
@@ -383,9 +383,9 @@ describe('AllowedTypes', () => {
         nestedValidatorFunc1.mockReturnValueOnce({ ...error, propType: 'string' });
         nestedValidatorFunc2.mockReturnValueOnce(undefined);
         validatorFunctionFunctions('propName', 'c');
-        expect(nestedValidatorFunc1).toBeCalledWith('propName', 'c');
-        expect(nestedValidatorFunc2).toBeCalledWith('propName', 'c');
-        expect(nestedValidatorFunc3).not.toBeCalled();
+        expect(nestedValidatorFunc1).toHaveBeenCalledWith('propName', 'c');
+        expect(nestedValidatorFunc2).toHaveBeenCalledWith('propName', 'c');
+        expect(nestedValidatorFunc3).not.toHaveBeenCalled();
       });
 
       it('should return error object via anonymous ValidatorFunction if value does not pass any nested validator function', () => {
@@ -427,20 +427,20 @@ describe('AllowedTypes', () => {
       const spy = jest.spyOn(breakpointCustomizableUtils, 'parseJSON');
       const propValue = { base: 'a', s: 'b' };
       validatorFunctionArray('propName', propValue);
-      expect(spy).toBeCalledWith(propValue);
+      expect(spy).toHaveBeenCalledWith(propValue);
     });
 
     it('should call isBreakpointCustomizableValueInvalid() with correct parameters for flat value via anonymous ValidatorFunction', () => {
       const spy = jest.spyOn(validatePropsUtils, 'isBreakpointCustomizableValueInvalid');
       validatorFunctionArray('propName', 'a');
-      expect(spy).toBeCalledWith('a', ['a', 'b']);
+      expect(spy).toHaveBeenCalledWith('a', ['a', 'b']);
     });
 
     it('should call isBreakpointCustomizableValueInvalid() with correct parameters for nested values via anonymous ValidatorFunction', () => {
       const spy = jest.spyOn(validatePropsUtils, 'isBreakpointCustomizableValueInvalid');
       const propValue = { base: 'a', s: 'b' };
       validatorFunctionArray('propName', propValue);
-      expect(spy).toBeCalledTimes(2);
+      expect(spy).toHaveBeenCalledTimes(2);
       expect(spy).toHaveBeenNthCalledWith(1, 'a', ['a', 'b']);
       expect(spy).toHaveBeenNthCalledWith(2, 'b', ['a', 'b']);
     });
@@ -448,13 +448,13 @@ describe('AllowedTypes', () => {
     it('should call getBreakpointCustomizableStructure() via anonymous ValidatorFunction', () => {
       const spy = jest.spyOn(validatePropsUtils, 'getBreakpointCustomizableStructure');
       validatorFunctionArray('propName', 'c');
-      expect(spy).toBeCalledWith(['a', 'b']);
+      expect(spy).toHaveBeenCalledWith(['a', 'b']);
     });
 
     it('should call formatObjectOutput() via anonymous ValidatorFunction', () => {
       const spy = jest.spyOn(validatePropsUtils, 'formatObjectOutput');
       validatorFunctionArray('propName', 'c');
-      expect(spy).toBeCalledWith('c');
+      expect(spy).toHaveBeenCalledWith('c');
     });
 
     describe('returns error object', () => {
@@ -514,7 +514,7 @@ describe('AllowedTypes', () => {
       const spy = jest.spyOn(jsonUtils, 'parseJSONAttribute');
       const propValue = { 'aria-label': 'Some label' };
       validatorFunction('aria', propValue);
-      expect(spy).toBeCalledWith(propValue);
+      expect(spy).toHaveBeenCalledWith(propValue);
     });
 
     it('should call formatObjectOutput() with result of parseJSONAttribute() via anonymous ValidatorFunction', () => {
@@ -522,7 +522,7 @@ describe('AllowedTypes', () => {
       const spy = jest.spyOn(validatePropsUtils, 'formatObjectOutput');
       validatorFunction('aria', 'propValue');
 
-      expect(spy).toBeCalledWith(mockResult);
+      expect(spy).toHaveBeenCalledWith(mockResult);
     });
 
     it('should call getAriaStructure() with correct parameters via anonymous ValidatorFunction', () => {
@@ -530,7 +530,7 @@ describe('AllowedTypes', () => {
       const spy = jest.spyOn(validatePropsUtils, 'getAriaStructure');
       validatorFunction('aria', 'propValue');
 
-      expect(spy).toBeCalledWith(['aria-label', 'aria-disabled']);
+      expect(spy).toHaveBeenCalledWith(['aria-label', 'aria-disabled']);
     });
 
     it('should return error object via anonymous ValidatorFunction if aria keys are not in allowedAriaAttributes array', () => {
@@ -567,21 +567,21 @@ describe('AllowedTypes', () => {
 
     it('should call each nested validator function if propValue is defined', () => {
       validatorFunction('sort', { id: '1', active: true });
-      expect(nestedValidatorFunction1).toBeCalledWith('id', '1');
-      expect(nestedValidatorFunction2).toBeCalledWith('active', true);
+      expect(nestedValidatorFunction1).toHaveBeenCalledWith('id', '1');
+      expect(nestedValidatorFunction2).toHaveBeenCalledWith('active', true);
     });
 
     it('should not call any nested validator function if propValue is undefined', () => {
       validatorFunction('sort', undefined);
-      expect(nestedValidatorFunction1).not.toBeCalled();
-      expect(nestedValidatorFunction2).not.toBeCalled();
+      expect(nestedValidatorFunction1).not.toHaveBeenCalled();
+      expect(nestedValidatorFunction2).not.toHaveBeenCalled();
     });
 
     it('should call getShapeStructure() with correct parameter', () => {
       const spy = jest.spyOn(validatePropsUtils, 'getShapeStructure');
       nestedValidatorFunction1.mockReturnValueOnce(mockError);
       validatorFunction('sort', { id: '1' });
-      expect(spy).toBeCalledWith(shapeStructure);
+      expect(spy).toHaveBeenCalledWith(shapeStructure);
     });
 
     it('should return error object via anonymous ValidatorFunction if a nested validator function returns an error', () => {
@@ -631,7 +631,7 @@ describe('printErrorMessage()', () => {
     const spy = jest.spyOn(loggerUtils, 'consoleError').mockImplementation();
     printErrorMessage({ propName: 'href', propValue: 'a', propType: 'string', componentName: 'p-link' });
 
-    expect(spy).toBeCalledWith(expect.any(String));
+    expect(spy).toHaveBeenCalledWith(expect.any(String));
     expect(spy.mock.calls[0][0]).toMatchSnapshot();
   });
 });

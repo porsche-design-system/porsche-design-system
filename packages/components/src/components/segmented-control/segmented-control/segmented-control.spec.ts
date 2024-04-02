@@ -13,7 +13,7 @@ describe('connectedCallback', () => {
     component.host = document.createElement('p-segmented-control');
 
     component.connectedCallback();
-    expect(spy).toBeCalledWith(component.host, 'p-segmented-control-item');
+    expect(spy).toHaveBeenCalledWith(component.host, 'p-segmented-control-item');
   });
 });
 
@@ -27,7 +27,7 @@ describe('render', () => {
 
     component.render();
 
-    expect(spy).toBeCalledWith(component.host, component.value, component.theme);
+    expect(spy).toHaveBeenCalledWith(component.host, component.value, component.theme);
   });
 
   it('should call warnIfDeprecatedPropIsUsed() with correct parameters', () => {
@@ -39,7 +39,7 @@ describe('render', () => {
 
     component.render();
 
-    expect(spy).toBeCalledWith(component, 'backgroundColor');
+    expect(spy).toHaveBeenCalledWith(component, 'backgroundColor');
   });
 });
 
@@ -50,7 +50,7 @@ describe('componentDidLoad', () => {
     const spy = jest.spyOn(component.host, 'addEventListener');
 
     component.componentDidLoad();
-    expect(spy).toBeCalledWith('click', expect.any(Function));
+    expect(spy).toHaveBeenCalledWith('click', expect.any(Function));
   });
 
   it('should call updateValue via event handlers', () => {
@@ -69,8 +69,8 @@ describe('componentDidLoad', () => {
 
     component.host.click();
 
-    expect(spy).toBeCalledTimes(1);
-    expect(spy).toBeCalledWith(item1);
+    expect(spy).toHaveBeenCalledTimes(1);
+    expect(spy).toHaveBeenCalledWith(item1);
   });
 });
 
@@ -99,7 +99,7 @@ describe('updateValue()', () => {
     // @ts-ignore
     component.updateValue(item);
 
-    expect(emitSpy).toBeCalledWith({ value: item.value });
+    expect(emitSpy).toHaveBeenCalledWith({ value: item.value });
   });
 
   it('should call focus() on item', () => {
@@ -107,7 +107,7 @@ describe('updateValue()', () => {
     // @ts-ignore
     component.updateValue(item);
 
-    expect(spy).toBeCalledWith();
+    expect(spy).toHaveBeenCalledWith();
   });
 
   it('should do nothing for undefined parameter', () => {
@@ -116,7 +116,7 @@ describe('updateValue()', () => {
     component.updateValue(undefined);
 
     expect(component.value).toBeUndefined();
-    expect(emitSpy).not.toBeCalled();
-    expect(spy).not.toBeCalled();
+    expect(emitSpy).not.toHaveBeenCalled();
+    expect(spy).not.toHaveBeenCalled();
   });
 });

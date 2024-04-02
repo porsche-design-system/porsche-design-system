@@ -28,29 +28,29 @@ describe('setAriaAttributes()', () => {
     setAriaAttributes(node, options);
 
     if (options.label && !options.message) {
-      expect(setAttributeSpy).toBeCalledWith(node, 'aria-label', options.label);
+      expect(setAttributeSpy).toHaveBeenCalledWith(node, 'aria-label', options.label);
     } else if (!options.label && options.message) {
-      expect(setAttributeSpy).not.toBeCalled();
+      expect(setAttributeSpy).not.toHaveBeenCalled();
     } else if (options.label && options.message) {
-      expect(setAttributeSpy).toBeCalledWith(node, 'aria-label', options.label + '. ' + options.message);
+      expect(setAttributeSpy).toHaveBeenCalledWith(node, 'aria-label', options.label + '. ' + options.message);
     }
 
     if (options.state === 'error') {
-      expect(setAttributeSpy).toBeCalledWith(node, 'aria-invalid', 'true');
+      expect(setAttributeSpy).toHaveBeenCalledWith(node, 'aria-invalid', 'true');
     } else if (options.state) {
-      expect(removeAttributeSpy).toBeCalledWith(node, 'aria-invalid');
+      expect(removeAttributeSpy).toHaveBeenCalledWith(node, 'aria-invalid');
     }
   });
 });
 
 describe('parseAndGetAriaAttributes()', () => {
-  const rawAttributes = "{ aria-label: 'Some label' }";
+  const rawAttributes = '{ aria-label: \'Some label\' }';
 
   it('should call parseJSONAttribute()', () => {
     const spy = jest.spyOn(jsonUtils, 'parseJSONAttribute');
 
     parseAndGetAriaAttributes(rawAttributes);
-    expect(spy).toBeCalledWith(rawAttributes);
+    expect(spy).toHaveBeenCalledWith(rawAttributes);
   });
 
   it.each<AriaAttributes | string>([
@@ -62,8 +62,8 @@ describe('parseAndGetAriaAttributes()', () => {
       'aria-label': 'Some label',
       'aria-pressed': 'true',
     },
-    "{'aria-label': 'Some label', 'aria-pressed': true}",
-    "{'aria-label': 'Some label', 'aria-pressed': 'true'}",
+    '{\'aria-label\': \'Some label\', \'aria-pressed\': true}',
+    '{\'aria-label\': \'Some label\', \'aria-pressed\': \'true\'}',
   ])('should return correct aria attributes with boolean for %o', (rawAttributes) => {
     expect(parseAndGetAriaAttributes(rawAttributes)).toEqual({
       'aria-label': 'Some label',
@@ -77,7 +77,7 @@ describe('parseAndGetAriaAttributes()', () => {
 
   // 'p-button-tile' and 'p-link-tile' have to be excluded because parseAndGetAriaAttributes() is not applied
   const tagNamesWithAriaProp = TAG_NAMES.filter(
-    (tagName) => getComponentMeta(tagName).hasAriaProp && tagName !== 'p-button-tile' && tagName !== 'p-link-tile'
+    (tagName) => getComponentMeta(tagName).hasAriaProp && tagName !== 'p-button-tile' && tagName !== 'p-link-tile',
   );
 
   it.each<TagName>(tagNamesWithAriaProp)('should call parseAndGetAriaAttributes() via render for %s', (tagName) => {
@@ -97,8 +97,9 @@ describe('parseAndGetAriaAttributes()', () => {
         component.host.shadowRoot.append(document.createElement('i'));
         component['setIconContent']();
       }
-    } catch (e) {}
+    } catch (e) {
+    }
 
-    expect(spy).toBeCalledWith(component['aria']);
+    expect(spy).toHaveBeenCalledWith(component['aria']);
   });
 });

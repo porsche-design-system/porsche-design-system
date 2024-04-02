@@ -29,7 +29,7 @@ it.each<TagName>(tagNamesWithJss)('should have only high contrast styles for %s'
   addParentAndSetRequiredProps(tagName, component);
 
   component.render();
-  expect(spy).toBeCalledTimes(1);
+  expect(spy).toHaveBeenCalledTimes(1);
 
   const highContrastColors = getHighContrastColors();
   const cssObject = getComponentCssObject(spy);

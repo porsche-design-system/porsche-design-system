@@ -33,7 +33,7 @@ describe('observeChildren()', () => {
       div.appendChild(document.createElement('span'));
 
       await tick();
-      expect(cb).toBeCalledTimes(1);
+      expect(cb).toHaveBeenCalledTimes(1);
     });
 
     it('should run callback once when observeChildren is called multiple times', async () => {
@@ -47,7 +47,7 @@ describe('observeChildren()', () => {
       div.appendChild(document.createElement('span'));
 
       await tick();
-      expect(cb).toBeCalledTimes(1);
+      expect(cb).toHaveBeenCalledTimes(1);
     });
 
     it('should run callback once when multiple elements are observed', async () => {
@@ -63,8 +63,8 @@ describe('observeChildren()', () => {
       div1.appendChild(document.createElement('span'));
 
       await tick();
-      expect(cb1).toBeCalledTimes(1);
-      expect(cb2).not.toBeCalled();
+      expect(cb1).toHaveBeenCalledTimes(1);
+      expect(cb2).not.toHaveBeenCalled();
     });
 
     it('should run callback once when multiple attributes are changed', async () => {
@@ -79,7 +79,7 @@ describe('observeChildren()', () => {
       input.setAttribute('name', name);
 
       await tick();
-      expect(cb).toBeCalledTimes(1);
+      expect(cb).toHaveBeenCalledTimes(1);
     });
 
     it('should run all callbacks of observing parents when nested child node changes', async () => {
@@ -103,8 +103,8 @@ describe('observeChildren()', () => {
       subParent.appendChild(document.createElement('span'));
 
       await tick();
-      expect(cb1).toBeCalledTimes(1);
-      expect(cb2).toBeCalledTimes(1);
+      expect(cb1).toHaveBeenCalledTimes(1);
+      expect(cb2).toHaveBeenCalledTimes(1);
     });
   });
 });
