@@ -34,45 +34,140 @@
   <p-model-signature model="turbo"></p-model-signature>
 </div>
 
-<div class="playground light" title="should render for color primary">
-  <p-model-signature model="911" color="primary"></p-model-signature>
+<div class="playground light" title="should render for model turbo-s">
+  <p-model-signature model="turbo-s"></p-model-signature>
 </div>
 
-<div class="playground light" title="should render for color contrast-low">
-  <p-model-signature model="911" color="contrast-low"></p-model-signature>
-</div>
-
-<div class="playground light" title="should render for color contrast-medium">
-  <p-model-signature model="911" color="contrast-medium"></p-model-signature>
-</div>
-
-<div class="playground light" title="should render for color contrast-high">
-  <p-model-signature model="911" color="contrast-high"></p-model-signature>
-</div>
-
-<div class="playground light" title="should render for color inherit">
+<div class="playground light auto-layout-inline" title="should render different colors">
+  <p-model-signature color="primary"></p-model-signature>
+  <p-model-signature color="contrast-low"></p-model-signature>
+  <p-model-signature color="contrast-medium"></p-model-signature>
+  <p-model-signature color="contrast-high"></p-model-signature>
   <p-model-signature
-    model="911"
     color="inherit"
     style="filter: invert(24%) sepia(70%) saturate(5969%) hue-rotate(316deg) brightness(102%) contrast(102%)"
   ></p-model-signature>
+  <p-model-signature color="inherit" style="background: deeppink"></p-model-signature>
 </div>
 
-<div class="playground light" title="should render for size small">
-  <p-model-signature model="911" size="small"></p-model-signature>
+<div class="playground light auto-layout-inline" title="should render different sizes">
+  <p-model-signature size="inherit" style="width: 50px"></p-model-signature>
+  <p-model-signature size="small"></p-model-signature>
+  <p-model-signature size="inherit" style="height: 50px"></p-model-signature>
 </div>
 
-<div class="playground light" title="should render for size inherit">
-  <p-model-signature model="911" size="inherit" style="height: 100px"></p-model-signature>
+<div class="playground light auto-layout-inline" title="should render with safe-zone">
+  <div style="background: #ff000033">
+    <p-model-signature model="718"></p-model-signature>
+  </div>
+  <div style="background: #ff000033">
+    <p-model-signature model="911"></p-model-signature>
+  </div>
+  <div style="background: #ff000033">
+    <p-model-signature model="boxster"></p-model-signature>
+  </div>
+  <div style="background: #ff000033">
+    <p-model-signature model="cayenne"></p-model-signature>
+  </div>
+  <div style="background: #ff000033">
+    <p-model-signature model="cayman"></p-model-signature>
+  </div>
+  <div style="background: #ff000033">
+    <p-model-signature model="macan"></p-model-signature>
+  </div>
+  <div style="background: #ff000033">
+    <p-model-signature model="panamera"></p-model-signature>
+  </div>
+  <div style="background: #ff000033">
+    <p-model-signature model="taycan"></p-model-signature>
+  </div>
+  <div style="background: #ff000033">
+    <p-model-signature model="turbo-s"></p-model-signature>
+  </div>
+  <div style="background: #ff000033">
+    <p-model-signature model="turbo"></p-model-signature>
+  </div>
+</div>
+
+<div class="playground light auto-layout-inline" title="should render without safe-zone">
+  <div style="background: #ff000033">
+    <p-model-signature safe-zone="false" model="718"></p-model-signature>
+  </div>
+  <div style="background: #ff000033">
+    <p-model-signature safe-zone="false" model="911"></p-model-signature>
+  </div>
+  <div style="background: #ff000033">
+    <p-model-signature safe-zone="false" model="boxster"></p-model-signature>
+  </div>
+  <div style="background: #ff000033">
+    <p-model-signature safe-zone="false" model="cayenne"></p-model-signature>
+  </div>
+  <div style="background: #ff000033">
+    <p-model-signature safe-zone="false" model="cayman"></p-model-signature>
+  </div>
+  <div style="background: #ff000033">
+    <p-model-signature safe-zone="false" model="macan"></p-model-signature>
+  </div>
+  <div style="background: #ff000033">
+    <p-model-signature safe-zone="false" model="panamera"></p-model-signature>
+  </div>
+  <div style="background: #ff000033">
+    <p-model-signature safe-zone="false" model="taycan"></p-model-signature>
+  </div>
+  <div style="background: #ff000033">
+    <p-model-signature safe-zone="false" model="turbo-s"></p-model-signature>
+  </div>
+  <div style="background: #ff000033">
+    <p-model-signature safe-zone="false" model="turbo"></p-model-signature>
+  </div>
+</div>
+
+<div class="playground light auto-layout-inline" title="should render different CSS blend-modes">
+  <div style="isolation: isolate; background: #00aa3680; padding: 32px">
+    <p-model-signature color="contrast-medium" safe-zone="false" style="mix-blend-mode: overlay"></p-model-signature>
+  </div>
+  <div style="isolation: isolate; background: #f2f2f280; padding: 32px">
+    <p-model-signature color="contrast-medium" safe-zone="false" style="mix-blend-mode: overlay"></p-model-signature>
+  </div>
+  <div style="isolation: isolate; background: #1f1f1f80; padding: 32px">
+    <p-model-signature color="contrast-medium" safe-zone="false" style="mix-blend-mode: overlay"></p-model-signature>
+  </div>
+  <div style="isolation: isolate; background: #c5004280; padding: 32px">
+    <p-model-signature color="contrast-medium" safe-zone="false" style="mix-blend-mode: overlay"></p-model-signature>
+  </div>
+  <div style="isolation: isolate; background: #e1d4a480; padding: 32px">
+    <p-model-signature color="contrast-medium" safe-zone="false" style="mix-blend-mode: overlay"></p-model-signature>
+  </div>
+  <div style="isolation: isolate; background: #0099e080; padding: 32px">
+    <p-model-signature color="contrast-medium" safe-zone="false" style="mix-blend-mode: overlay"></p-model-signature>
+  </div>
+</div>
+
+<div class="playground light auto-layout-inline" title="should render with image">
+  <p-model-signature safe-zone="false" size="inherit" style="width: 200px">
+    <img src="https://porsche-design-system.github.io/porsche-design-system/dessert.jpg" alt="Dessert" />
+  </p-model-signature>
+</div>
+
+<div class="playground light auto-layout-inline" title="should render with video">
+  <p-model-signature safe-zone="false" size="inherit" style="width: 200px">
+    <video
+      poster="https://porsche-design-system.github.io/porsche-design-system/ocean.jpg"
+      src="https://porsche-design-system.github.io/porsche-design-system/ocean.mp4"
+      playsinline
+      loop
+      muted
+    ></video>
+  </p-model-signature>
 </div>
 
 <div class="playground light" title="should not exceed parents width">
-  <div style="width: 180px; background: lightsalmon">
-    <p-model-signature model="cayenne" style="background: lightblue"></p-model-signature>
+  <div style="width: 50px; background: lightsalmon">
+    <p-model-signature style="background: lightblue"></p-model-signature>
   </div>
   <br />
-  <div style="width: 180px; background: lightsalmon">
-    <p-model-signature model="cayenne" size="inherit" style="background: lightblue; height: 40px"></p-model-signature>
+  <div style="width: 50px; background: lightsalmon">
+    <p-model-signature size="inherit" style="background: lightblue; width: 94px"></p-model-signature>
   </div>
 </div>
 
@@ -81,21 +176,21 @@
   title="should not exceed max-width of model-signature itself, although parent provides more width"
 >
   <div style="width: 272px; background: lightsalmon">
-    <p-model-signature model="cayenne" style="background: lightblue"></p-model-signature>
+    <p-model-signature style="background: lightblue"></p-model-signature>
   </div>
   <br />
   <div style="width: 272px; background: lightsalmon">
-    <p-model-signature model="cayenne" size="inherit" style="background: lightblue; height: 40px"></p-model-signature>
+    <p-model-signature size="inherit" style="background: lightblue; width: 94px"></p-model-signature>
   </div>
 </div>
 
 <div class="playground light" title="should not exceed parents height">
   <div style="height: 10px; background: lightsalmon">
-    <p-model-signature model="cayenne" style="background: lightblue"></p-model-signature>
+    <p-model-signature style="background: lightblue"></p-model-signature>
   </div>
   <br />
   <div style="height: 10px; background: lightsalmon">
-    <p-model-signature model="cayenne" size="inherit" style="background: lightblue; height: 40px"></p-model-signature>
+    <p-model-signature size="inherit" style="background: lightblue; width: 94px"></p-model-signature>
   </div>
 </div>
 
@@ -104,10 +199,10 @@
   title="should not exceed max-height of model-signature itself, although parent provides more height"
 >
   <div style="height: 100px; background: lightsalmon">
-    <p-model-signature model="cayenne" style="background: lightblue"></p-model-signature>
+    <p-model-signature style="background: lightblue"></p-model-signature>
   </div>
   <br />
   <div style="height: 100px; background: lightsalmon">
-    <p-model-signature model="cayenne" size="inherit" style="background: lightblue; height: 40px"></p-model-signature>
+    <p-model-signature size="inherit" style="background: lightblue; width: 94px"></p-model-signature>
   </div>
 </div>
