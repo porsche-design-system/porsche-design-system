@@ -10,6 +10,6 @@ describe('componentWillLoad', () => {
     component.href = '#';
 
     component.componentWillLoad();
-    expect(spy).toBeCalledWith(component.host, component.align, component.compact);
+    expect(spy).toHaveBeenCalledWith(component.host, component.align, component.compact);
   });
 });

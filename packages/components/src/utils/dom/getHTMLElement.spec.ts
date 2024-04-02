@@ -5,10 +5,10 @@ it('should call querySelector on element with selector parameter', () => {
   const spy = jest.spyOn(element, 'querySelector');
 
   getHTMLElement(element, 'span');
-  expect(spy).toBeCalledWith('span');
+  expect(spy).toHaveBeenCalledWith('span');
 
   getHTMLElement(element, 'div');
-  expect(spy).toBeCalledWith('div');
+  expect(spy).toHaveBeenCalledWith('div');
 });
 
 it('should return result of querySelector', () => {

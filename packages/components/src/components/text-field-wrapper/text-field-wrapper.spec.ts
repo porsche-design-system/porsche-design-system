@@ -1,10 +1,10 @@
 import * as textFieldWrapperUtils from './text-field-wrapper-utils';
-import * as formUtils from '../../utils/form/form-utils';
 import { TextFieldWrapper } from './text-field-wrapper';
 import * as a11yUtils from '../../utils/a11y/a11y';
 import * as getOnlyChildOfKindHTMLElementOrThrowUtils from '../../utils/validation/getOnlyChildOfKindHTMLElementOrThrow';
 import * as propertyObserverUtils from '../../utils/property-observer';
 import * as isWithinFormUtils from '../../utils/form/isWithinForm';
+import * as formUtils from '../../utils/form/form-utils';
 
 jest.mock('../../utils/dom');
 
@@ -131,7 +131,7 @@ describe('componentWillLoad', () => {
     const component = new TextFieldWrapper();
     component.componentWillLoad();
 
-    expect(spy).toBeCalledWith(component['input'], ['value'], expect.any(Function));
+    expect(spy).toHaveBeenCalledWith(component['input'], ['value'], expect.any(Function));
   });
 
   it('should call hasCounterAndIsTypeText() with correct parameter and set hasCounter', () => {
@@ -147,12 +147,12 @@ describe('componentWillLoad', () => {
     expect(component['hasCounter']).toBe(undefined);
     component.componentWillLoad();
 
-    expect(spy).toBeCalledWith(input);
+    expect(spy).toHaveBeenCalledWith(input);
     expect(component['hasCounter']).toBe(false);
 
     component.componentWillLoad();
 
-    expect(spy).toBeCalledWith(input);
+    expect(spy).toHaveBeenCalledWith(input);
     expect(component['hasCounter']).toBe(true);
   });
 
@@ -169,7 +169,7 @@ describe('componentWillLoad', () => {
     expect(component['hasUnit']).toBe(undefined);
     component.componentWillLoad();
 
-    expect(spy).not.toBeCalled();
+    expect(spy).not.toHaveBeenCalled();
     expect(component['hasUnit']).toBe(false);
   });
 
@@ -188,12 +188,12 @@ describe('componentWillLoad', () => {
     expect(component['hasUnit']).toBe(undefined);
     component.componentWillLoad();
 
-    expect(spy).toBeCalledWith(input, 'EUR');
+    expect(spy).toHaveBeenCalledWith(input, 'EUR');
     expect(component['hasUnit']).toBe(false);
 
     component.componentWillLoad();
 
-    expect(spy).toBeCalledWith(input, 'EUR');
+    expect(spy).toHaveBeenCalledWith(input, 'EUR');
     expect(component['hasUnit']).toBe(true);
   });
 
@@ -215,12 +215,12 @@ describe('componentWillLoad', () => {
       expect(component['hasUnit']).toBe(undefined);
       component.componentWillLoad();
 
-      expect(spy).toBeCalledWith(input, 'EUR');
+      expect(spy).toHaveBeenCalledWith(input, 'EUR');
       expect(component['hasUnit']).toBe(false);
 
       component.componentWillLoad();
 
-      expect(spy).toBeCalledWith(input, 'EUR');
+      expect(spy).toHaveBeenCalledWith(input, 'EUR');
       expect(component['hasUnit']).toBe(true);
     }
   );
@@ -236,53 +236,11 @@ describe('render', () => {
       component.render();
     } catch {}
 
-    expect(spy).toBeCalledWith('123456');
+    expect(spy).toHaveBeenCalledWith('123456');
   });
 });
 
 describe('componentDidLoad', () => {
-  it('should call addInputEventListenerForCounter() with correct parameters if hasCounter is true and isCounterVisible is false', () => {
-    const spy = jest.spyOn(formUtils, 'addInputEventListenerForCounter');
-
-    const input = document.createElement('input');
-    input.type = 'text';
-    const ariaElement = document.createElement('span');
-
-    const component = new TextFieldWrapper();
-    component['input'] = input;
-    component['ariaElement'] = ariaElement;
-
-    component.componentDidLoad();
-    expect(spy).not.toBeCalled();
-
-    component['hasCounter'] = true;
-
-    component.componentDidLoad();
-    expect(spy).toBeCalledWith(input, ariaElement, undefined, component['setInputStyles']);
-  });
-
-  it('should call addInputEventListenerForCounter() if hasCounter is true and isCounterVisible is true', () => {
-    const spy = jest.spyOn(formUtils, 'addInputEventListenerForCounter');
-
-    const input = document.createElement('input');
-    input.type = 'text';
-    const counter = document.createElement('span');
-    const ariaElement = document.createElement('span');
-
-    const component = new TextFieldWrapper();
-    component['input'] = input;
-    component['unitOrCounterElement'] = counter;
-    component['ariaElement'] = ariaElement;
-
-    component.componentDidLoad();
-    expect(spy).not.toBeCalled();
-
-    component['hasCounter'] = true;
-    component['isCounterVisible'] = true;
-    component.componentDidLoad();
-    expect(spy).toBeCalledWith(input, ariaElement, counter, component['setInputStyles']);
-  });
-
   it('should call addInputEventListenerForSearch() based on isSearch with correct parameters', () => {
     const spy = jest.spyOn(textFieldWrapperUtils, 'addInputEventListenerForSearch');
     const input = document.createElement('input');
@@ -290,10 +248,10 @@ describe('componentDidLoad', () => {
     component['input'] = input;
     component['isSearch'] = true;
     component.componentDidLoad();
-    expect(spy).toBeCalledWith(input, expect.any(Function));
+    expect(spy).toHaveBeenCalledWith(input, expect.any(Function));
     component['isSearch'] = false;
     component.componentDidLoad();
-    expect(spy).toBeCalledTimes(1);
+    expect(spy).toHaveBeenCalledTimes(1);
   });
 });
 
@@ -303,7 +261,51 @@ describe('componentDidRender', () => {
     const spy = jest.spyOn(textFieldWrapperUtils, 'setInputStyles');
 
     component.componentDidRender();
-    expect(spy).toBeCalledTimes(1);
+    expect(spy).toHaveBeenCalledTimes(1);
+  });
+
+  it('should call addeventListenerForCounter() with correct parameters if hasCounter is true and isCounterVisible is false/true', () => {
+    const updateCounterSpy = jest.spyOn(formUtils, 'updateCounter');
+    const observePropertiesSpy = jest.spyOn(propertyObserverUtils, 'observeProperties');
+    const addEventListenerSpy = jest.fn();
+    const removeEventListenerSpy = jest.fn();
+
+    const input = document.createElement('input');
+    input.type = 'text';
+    input.addEventListener = addEventListenerSpy;
+    input.removeEventListener = removeEventListenerSpy;
+
+    const ariaElement = document.createElement('span');
+    const component = new TextFieldWrapper();
+
+    component['input'] = input;
+    component['ariaElement'] = ariaElement;
+
+    component.componentDidRender();
+
+    expect(updateCounterSpy).not.toHaveBeenCalled();
+    expect(observePropertiesSpy).not.toHaveBeenCalled();
+
+    component['hasCounter'] = true;
+
+    component.componentDidRender();
+
+    expect(updateCounterSpy).toHaveBeenCalledWith(input, ariaElement, undefined);
+    expect(observePropertiesSpy).toHaveBeenCalledWith(input, ['value'], expect.any(Function));
+    expect(addEventListenerSpy).toHaveBeenCalledWith('input', component['eventListener']);
+    expect(removeEventListenerSpy).toHaveBeenCalledWith('input', component['eventListener']);
+
+    const counter = document.createElement('span');
+
+    component['unitOrCounterElement'] = counter;
+    component['isCounterVisible'] = true;
+
+    component.componentDidRender();
+
+    expect(updateCounterSpy).toHaveBeenCalledWith(input, ariaElement, counter);
+    expect(observePropertiesSpy).toHaveBeenCalledWith(input, ['value'], expect.any(Function));
+    expect(addEventListenerSpy).toHaveBeenCalledWith('input', component['eventListener']);
+    expect(removeEventListenerSpy).toHaveBeenCalledWith('input', component['eventListener']);
   });
 
   it('should call setAriaAttributes() with correct parameters', () => {
@@ -317,7 +319,7 @@ describe('componentDidRender', () => {
     component.state = 'success';
 
     component.componentDidRender();
-    expect(spy).toBeCalledWith(input, { label: 'Some label', message: 'Some message', state: 'success' });
+    expect(spy).toHaveBeenCalledWith(input, { label: 'Some label', message: 'Some message', state: 'success' });
   });
 });
 
@@ -331,9 +333,9 @@ describe('onClear()', () => {
     component['input'] = input;
     component['onClear']();
 
-    expect(spyOnLabelClick).toBeCalledWith();
+    expect(spyOnLabelClick).toHaveBeenCalledWith();
     expect(input.value).toBe('');
-    expect(spyDispatchInputEvent).toBeCalledWith(input);
-    expect(spyDispatchInputEvent).toBeCalledTimes(1);
+    expect(spyDispatchInputEvent).toHaveBeenCalledWith(input);
+    expect(spyDispatchInputEvent).toHaveBeenCalledTimes(1);
   });
 });

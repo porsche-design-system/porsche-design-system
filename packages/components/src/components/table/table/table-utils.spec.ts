@@ -14,13 +14,13 @@ describe('warnIfCaptionIsMissing()', () => {
 
     warnIfCaptionIsMissing(host, 'some valid caption');
 
-    expect(spy).not.toBeCalled();
+    expect(spy).not.toHaveBeenCalled();
 
     warnIfCaptionIsMissing(host, '');
     warnIfCaptionIsMissing(host, undefined);
     warnIfCaptionIsMissing(host, null);
 
-    expect(spy).toBeCalledTimes(3);
+    expect(spy).toHaveBeenCalledTimes(3);
   });
 
   it('should not print warning when caption as slot is defined', () => {
@@ -32,6 +32,6 @@ describe('warnIfCaptionIsMissing()', () => {
     warnIfCaptionIsMissing(host, undefined);
     warnIfCaptionIsMissing(host, 'some valid caption');
 
-    expect(spy).not.toBeCalled();
+    expect(spy).not.toHaveBeenCalled();
   });
 });

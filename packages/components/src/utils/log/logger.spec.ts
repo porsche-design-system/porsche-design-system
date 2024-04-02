@@ -7,10 +7,10 @@ describe('consoleWarn()', () => {
     const spy = jest.spyOn(global.console, 'warn').mockImplementation();
 
     consoleWarn('a message');
-    expect(spy).toBeCalledWith(messagePrefix, 'a message');
+    expect(spy).toHaveBeenCalledWith(messagePrefix, 'a message');
 
     consoleWarn('a message', 'and another one');
-    expect(spy).toBeCalledWith(messagePrefix, 'a message', 'and another one');
+    expect(spy).toHaveBeenCalledWith(messagePrefix, 'a message', 'and another one');
   });
 });
 
@@ -19,10 +19,10 @@ describe('consoleError()', () => {
     const spy = jest.spyOn(global.console, 'error').mockImplementation();
 
     consoleError('a message');
-    expect(spy).toBeCalledWith(messagePrefix, 'a message');
+    expect(spy).toHaveBeenCalledWith(messagePrefix, 'a message');
 
     consoleError('a message', 'and another one');
-    expect(spy).toBeCalledWith(messagePrefix, 'a message', 'and another one');
+    expect(spy).toHaveBeenCalledWith(messagePrefix, 'a message', 'and another one');
   });
 });
 

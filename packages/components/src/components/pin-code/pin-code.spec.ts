@@ -17,13 +17,13 @@ describe('componentWillLoad', () => {
     spy.mockReturnValue(null);
     component.componentWillLoad();
 
-    expect(spy).toBeCalledWith(component.host, 'form');
+    expect(spy).toHaveBeenCalledWith(component.host, 'form');
     expect(component['isWithinForm']).toBe(false);
 
     spy.mockReturnValue(document.createElement('form'));
     component.componentWillLoad();
 
-    expect(spy).toBeCalledWith(component.host, 'form');
+    expect(spy).toHaveBeenCalledWith(component.host, 'form');
     expect(component['isWithinForm']).toBe(true);
   });
 
@@ -39,7 +39,7 @@ describe('componentWillLoad', () => {
 
     component.componentWillLoad();
 
-    expect(spy).toBeCalledWith(component.host, 'name', '', false, false);
+    expect(spy).toHaveBeenCalledWith(component.host, 'name', '', false, false);
     expect(component['hiddenInput']).toBe(hiddenInput);
   });
 
@@ -50,7 +50,7 @@ describe('componentWillLoad', () => {
 
     component.componentWillLoad();
 
-    expect(spy).not.toBeCalled();
+    expect(spy).not.toHaveBeenCalled();
     expect(component['hiddenInput']).toBeUndefined();
   });
 
@@ -60,7 +60,7 @@ describe('componentWillLoad', () => {
 
     component.componentWillLoad();
 
-    expect(spy).toBeCalledWith(component.host, component.value, component.length);
+    expect(spy).toHaveBeenCalledWith(component.host, component.value, component.length);
   });
 });
 
@@ -74,7 +74,7 @@ describe('componentWillUpdate', () => {
 
     component.componentWillUpdate();
 
-    expect(spy).toBeCalledWith(component['hiddenInput'], undefined, '1234', false, false);
+    expect(spy).toHaveBeenCalledWith(component['hiddenInput'], undefined, '1234', false, false);
   });
 
   it('should not call syncHiddenInput() if component is not used within form', () => {
@@ -84,7 +84,7 @@ describe('componentWillUpdate', () => {
 
     component.componentWillUpdate();
 
-    expect(spy).not.toBeCalled();
+    expect(spy).not.toHaveBeenCalled();
   });
 });
 
@@ -97,6 +97,6 @@ describe('updateValue()', () => {
     // @ts-ignore
     component.updateValue('1234');
 
-    expect(emitSpy).toBeCalledWith({ value: '1234', isComplete: true });
+    expect(emitSpy).toHaveBeenCalledWith({ value: '1234', isComplete: true });
   });
 });

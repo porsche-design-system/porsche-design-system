@@ -68,6 +68,6 @@ describe('getPrefixedTagNames()', () => {
     const spy = jest.spyOn(PREFIXED_TAG_NAMES_CACHE, 'set');
     getPrefixedTagNames(document.createElement('p-button'));
     getPrefixedTagNames(document.createElement('p-button'));
-    expect(spy).toBeCalledTimes(1);
+    expect(spy).toHaveBeenCalledTimes(1);
   });
 });

@@ -1,10 +1,5 @@
 import * as formUtils from './form-utils';
-import {
-  addInputEventListenerForCounter,
-  hasCounter,
-  setAriaElementInnerHtml,
-  setCounterInnerHtml,
-} from './form-utils';
+import { hasCounter, setAriaElementInnerHtml, setCounterInnerHtml, updateCounter } from './form-utils';
 
 const getInputElement = (): HTMLInputElement => {
   const el = document.createElement('input');
@@ -80,31 +75,7 @@ describe('setAriaElementInnerHtml()', () => {
   });
 });
 
-describe('addInputEventListenerForCounter()', () => {
-  it('should register event listener on element', () => {
-    const inputElement = getInputElement();
-    const counterElement = getCounterElement();
-    const ariaElement = getAriaElement();
-    const spy = jest.spyOn(inputElement, 'addEventListener');
-
-    addInputEventListenerForCounter(inputElement, ariaElement, counterElement);
-    expect(spy).toBeCalledWith('input', expect.anything());
-  });
-
-  it('should register event listener on element without error when no counterElement is provided', () => {
-    const inputElement = getInputElement();
-    const ariaElement = getAriaElement();
-    const spy = jest.spyOn(inputElement, 'addEventListener');
-    let error = undefined;
-    try {
-      addInputEventListenerForCounter(inputElement, ariaElement);
-    } catch (e) {
-      error = e;
-    }
-    expect(error).toBeUndefined();
-    expect(spy).toBeCalledWith('input', expect.anything());
-  });
-
+describe('updateCounter()', () => {
   it('should initially call setCounterInnerHtml() and setAriaElementInnerHtml()', () => {
     const inputElement = getInputElement();
     const counterElement = getCounterElement();
@@ -112,28 +83,13 @@ describe('addInputEventListenerForCounter()', () => {
 
     const setCounterInnerHtmlSpy = jest.spyOn(formUtils, 'setCounterInnerHtml');
     const setAriaElementInnerHtmlSpy = jest.spyOn(formUtils, 'setAriaElementInnerHtml');
-    addInputEventListenerForCounter(inputElement, ariaElement, counterElement);
+    updateCounter(inputElement, ariaElement, counterElement);
 
-    expect(setCounterInnerHtmlSpy).toBeCalledWith(inputElement, counterElement);
-    expect(setCounterInnerHtmlSpy).toBeCalledTimes(1);
+    expect(setCounterInnerHtmlSpy).toHaveBeenCalledWith(inputElement, counterElement);
+    expect(setCounterInnerHtmlSpy).toHaveBeenCalledTimes(1);
 
-    expect(setAriaElementInnerHtmlSpy).toBeCalledWith(inputElement, ariaElement);
-    expect(setAriaElementInnerHtmlSpy).toBeCalledTimes(1);
-  });
-
-  it('should on input event call setCounterInnerHtml() and setAriaElementInnerHtml()', () => {
-    const inputElement = getInputElement();
-    const counterElement = getCounterElement();
-    const ariaElement = getAriaElement();
-    const setCounterInnerHtmlSpy = jest.spyOn(formUtils, 'setCounterInnerHtml');
-    const setAriaElementInnerHtmlSpy = jest.spyOn(formUtils, 'setAriaElementInnerHtml');
-    addInputEventListenerForCounter(inputElement, ariaElement, counterElement);
-
-    inputElement.dispatchEvent(new Event('input'));
-    expect(setCounterInnerHtmlSpy).toBeCalledWith(inputElement, counterElement);
-    expect(setCounterInnerHtmlSpy).toBeCalledTimes(2);
-    expect(setAriaElementInnerHtmlSpy).toBeCalledWith(inputElement, ariaElement);
-    expect(setAriaElementInnerHtmlSpy).toBeCalledTimes(2);
+    expect(setAriaElementInnerHtmlSpy).toHaveBeenCalledWith(inputElement, ariaElement);
+    expect(setAriaElementInnerHtmlSpy).toHaveBeenCalledTimes(1);
   });
 
   it('should on input event call inputChangeCallback() if supplied', () => {
@@ -141,9 +97,8 @@ describe('addInputEventListenerForCounter()', () => {
     const counterElement = getCounterElement();
     const ariaElement = getAriaElement();
     const callback = jest.fn();
-    addInputEventListenerForCounter(inputElement, ariaElement, counterElement, callback);
+    updateCounter(inputElement, ariaElement, counterElement, callback);
 
-    inputElement.dispatchEvent(new Event('input'));
-    expect(callback).toBeCalledTimes(1);
+    expect(callback).toHaveBeenCalledTimes(1);
   });
 });

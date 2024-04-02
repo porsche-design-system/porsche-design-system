@@ -734,7 +734,7 @@ const generateComponentMeta = (): void => {
 
     // observed attributes
     let observedAttributes: ComponentMeta['observedAttributes'] = [];
-    const [, rawObservedAttributes] = /observeAttributes\([a-zA-Z.]+, (\[.+]),.+?\);/.exec(source) || [];
+    const [, rawObservedAttributes] = /observeAttributes\([a-zA-Z.]+, (\[.+])/.exec(source) || [];
     if (rawObservedAttributes) {
       observedAttributes = eval(rawObservedAttributes);
     }
