@@ -7,7 +7,7 @@ It can be used to overlay background images or enhance cards and teasers to be m
 
 ## Models
 
-The `model` prop's default is `{{ meta.props.model }}`, which can be changed to the following values.
+The `model` prop's default is `{{ meta.props.model }}`.
 
 <Playground :markup="modelMarkup" :config="config">
   <PlaygroundSelect v-model="model" :values="models" name="model"></PlaygroundSelect>
@@ -26,7 +26,7 @@ when the element is positioned independently.
 
 ## Colors
 
-The `color` prop's default is `{{ meta.props.color }}`, which can be changed to the following values.
+The `color` prop's default is `{{ meta.props.color }}`.
 
 <Playground :markup="colorMarkup" :config="config">
   <PlaygroundSelect v-model="color" :values="colors" name="color"></PlaygroundSelect>
@@ -34,9 +34,7 @@ The `color` prop's default is `{{ meta.props.color }}`, which can be changed to 
 
 ## Sizes
 
-The `size` prop's default is `{{ meta.props.size }}`. When `inherit` is set as value, the size of the model signature
-can be defined with either CSS `width` or `height`. Depending on the use case it might make sense to use it in
-combination with `safe-zone=false`.
+The `size` prop's default is `{{ meta.props.size }}`.
 
 <Playground :markup="sizeMarkup" :config="config">
   <PlaygroundSelect v-model="size" :values="sizes" name="size"></PlaygroundSelect>
@@ -53,14 +51,6 @@ proper blend mode results.
 
 <Playground :markup="blendModeMarkup" :config="config"></Playground>
 
-## Mask: Gradient
-
-<Notification heading="Experimental" state="warning">
-  The following example shows what is technically possible but has not yet been approved by the Porsche Brand Guide.
-</Notification>
-
-<Playground :markup="gradientMarkup" :config="config"></Playground>
-
 ## Mask: Image
 
 <Notification heading="Experimental" state="warning">
@@ -76,6 +66,18 @@ proper blend mode results.
 </Notification>
 
 <Playground :markup="videoMarkup" :config="config"></Playground>
+
+## Custom styling
+
+The `p-model-signature` component has some values which can be overwritten by CSS Custom Properties (aka CSS Variables):
+
+```scss
+--p-model-signature-color
+--p-model-signature-width
+--p-model-signature-height
+```
+
+<Playground :markup="customStylingMarkup" :config="config"></Playground>
 
 <script lang="ts">
 import Vue from 'vue';
@@ -104,17 +106,15 @@ export default class Code extends Vue {
   }
 
   size: ModelSignatureSize = this.meta.props.size;
-  sizes = MODEL_SIGNATURE_SIZES;
+  sizes = MODEL_SIGNATURE_SIZES.filter(x => x !== 'inherit');
   get sizeMarkup() {
-    const style = this.size === 'inherit' ? ' style="width: clamp(240px, 100%, 640px)"' : '';
-    return `<p-model-signature size="${this.size}"${style}></p-model-signature>`;
+    return `<p-model-signature size="${this.size}"></p-model-signature>`;
   }
 
   color: ModelSignatureColor = this.meta.props.color;
-  colors = MODEL_SIGNATURE_COLORS;
+  colors = MODEL_SIGNATURE_COLORS.filter(x => x !== 'inherit');
   get colorMarkup() {
-    const style = this.color === 'inherit' ? ' style="background: deeppink"' : '';
-    return `<p-model-signature color="${this.color}"${style}></p-model-signature>`;
+    return `<p-model-signature color="${this.color}"></p-model-signature>`;
   }
 
   blendMode = 'overlay';
@@ -139,18 +139,14 @@ export default class Code extends Vue {
 </div>`;
   }
 
-  get gradientMarkup() {
-    return `<p-model-signature color="inherit" safe-zone="false" size="inherit" style="width: clamp(240px, 100%, 640px); background: linear-gradient(0deg, rgba(216,216,219,1) 0%, rgba(107,109,112,1) 100%);"></p-model-signature>`;
-  }
-
   get imageMarkup() {
-    return `<p-model-signature safe-zone="false" size="inherit" style="width: clamp(240px, 100%, 640px);">
+    return `<p-model-signature safe-zone="false" style="--p-model-signature-width: auto;">
   <img src="https://porsche-design-system.github.io/porsche-design-system/dessert.jpg" alt="Dessert" />
 </p-model-signature>`;
   }
 
   get videoMarkup() {
-    return `<p-model-signature safe-zone="false" size="inherit" style="width: clamp(240px, 100%, 640px);">
+    return `<p-model-signature safe-zone="false" style="--p-model-signature-width: auto;">
   <video
     poster="https://porsche-design-system.github.io/porsche-design-system/ocean.jpg"
     src="https://porsche-design-system.github.io/porsche-design-system/ocean.mp4"
@@ -160,6 +156,12 @@ export default class Code extends Vue {
     muted
   ></video>
 </p-model-signature>`;
+  }
+
+  get customStylingMarkup() {
+    return `<p-model-signature style="--p-model-signature-color: deeppink;"></p-model-signature>
+<p-model-signature style="--p-model-signature-width: auto; --p-model-signature-height: 50px;"></p-model-signature>
+<p-model-signature style="--p-model-signature-width: 50px; --p-model-signature-height: auto;"></p-model-signature>`;
   }
 }
 </script>
