@@ -98,7 +98,7 @@ export default class Code extends Vue {
   safeZone: boolean = false;
   safeZones = [true, false];
   get safeZoneMarkup() {
-    return MODEL_SIGNATURE_MODELS.map((model) => `<div style="background: rgba(255,0,0,0.2); display: inline-block;">
+    return MODEL_SIGNATURE_MODELS.map((model) => `<div style="background: #ff000033; display: inline-block;">
   <p-model-signature safe-zone="${this.safeZone}" model="${model}"></p-model-signature>
 </div>`).join('\n');
   }
