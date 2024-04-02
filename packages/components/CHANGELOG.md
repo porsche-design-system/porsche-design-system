@@ -16,8 +16,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 #### Changed
 
-- `Model Signature`: Uses CSS mask to visualize SVG and slightly adjust its sizing
-  ([#3153](https://github.com/porsche-design-system/porsche-design-system/pull/3153))
+- `Model Signature`: Enabling the use of hex colors, CSS gradients, CSS image and video masks. In addition, the size was
+  slightly adjusted. ([#3153](https://github.com/porsche-design-system/porsche-design-system/pull/3153))
 
 ### Fixed
 
