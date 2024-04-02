@@ -2,6 +2,8 @@ import { getCss } from '../../utils';
 import {
   addImportantToEachRule,
   colorSchemeStyles,
+  forcedColorsMediaQuery,
+  getHighContrastColors,
   getThemedColors,
   hostHiddenStyles,
   prefersColorSchemeDarkMediaQuery,
@@ -12,9 +14,16 @@ import { getSvgUrl } from './model-signature-utils';
 import type { Theme } from '../../types';
 import { MODEL_SIGNATURES_MANIFEST } from '@porsche-design-system/assets';
 
+const cssVariableWidth = '--p-model-signature-width';
+const cssVariableHeight = '--p-model-signature-height';
+const cssVariableColor = '--p-model-signature-color';
+
+const { canvasTextColor } = getHighContrastColors();
+
 const getThemedColor = (color: ModelSignatureColor, themedColors: ThemedColors): string => {
-  const colorMap: Record<Exclude<ModelSignatureColor, 'inherit'>, string> = {
+  const colorMap: Record<ModelSignatureColor, string> = {
     primary: themedColors.primaryColor,
+    inherit: themedColors.primaryColor,
     'contrast-low': themedColors.contrastLowColor,
     'contrast-medium': themedColors.contrastMediumColor,
     'contrast-high': themedColors.contrastHighColor,
@@ -32,7 +41,6 @@ export const getComponentCss = (
 ): string => {
   const { width, height } = MODEL_SIGNATURES_MANIFEST[model];
   const isSizeInherit = size === 'inherit';
-  const isColorInherit = color === 'inherit';
 
   return getCss({
     '@global': {
@@ -41,21 +49,18 @@ export const getComponentCss = (
         verticalAlign: 'top',
         maxWidth: '100%',
         maxHeight: '100%',
-        ...(isColorInherit && {
-          // needed for backwards compatibility when color prop is set to "inherit" and custom CSS filter is used
-          background: '#000',
-        }),
+        // width + height style can't be !important atm to be backwards compatible with e.g. `<p-model-signature size="inherit" style="height: 50px"/>`
+        width: `var(${cssVariableWidth},${isSizeInherit ? 'auto' : width + 'px'})`,
+        height: `var(${cssVariableHeight},auto)`,
         ...addImportantToEachRule({
           mask: `url(${getSvgUrl(model)}) no-repeat left top / contain`,
           aspectRatio: `${width} / ${safeZone ? 36 : height}`, // 36px is the max-height for SVG model signature creation
-          ...(!isSizeInherit && {
-            width: `${width}px`,
+          background: `var(${cssVariableColor},${getThemedColor(color, getThemedColors(theme))})`,
+          ...prefersColorSchemeDarkMediaQuery(theme, {
+            background: `var(${cssVariableColor},${getThemedColor(color, getThemedColors('dark'))})`,
           }),
-          ...(!isColorInherit && {
-            background: getThemedColor(color, getThemedColors(theme)),
-            ...prefersColorSchemeDarkMediaQuery(theme, {
-              background: getThemedColor(color, getThemedColors('dark')),
-            }),
+          ...forcedColorsMediaQuery({
+            background: canvasTextColor,
           }),
           ...colorSchemeStyles,
           ...hostHiddenStyles,
