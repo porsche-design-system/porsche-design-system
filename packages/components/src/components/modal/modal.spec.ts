@@ -34,14 +34,14 @@ describe('componentDidLoad', () => {
     component.open = true;
     component.componentDidLoad();
 
-    expect(spy).toBeCalledWith(true);
+    expect(spy).toHaveBeenCalledWith(true);
   });
 
   it('should not call this.updateFocusTrap() if modal is not open', () => {
     const spy = jest.spyOn(component, 'updateFocusTrap' as any);
     component.componentDidLoad();
 
-    expect(spy).not.toBeCalled();
+    expect(spy).not.toHaveBeenCalled();
   });
 });
 
@@ -52,7 +52,7 @@ describe('componentDidRender', () => {
 
     component.componentDidRender();
 
-    expect(spy).toBeCalledWith();
+    expect(spy).toHaveBeenCalledWith();
   });
   it('should not focus dialog if modal is not open', () => {
     component.open = false;
@@ -60,7 +60,7 @@ describe('componentDidRender', () => {
 
     component.componentDidRender();
 
-    expect(spy).not.toBeCalled();
+    expect(spy).not.toHaveBeenCalled();
   });
 });
 
@@ -78,7 +78,7 @@ describe('render', () => {
     component.heading = 'Some Heading';
     component.render();
 
-    expect(warnIfAriaAndHeadingPropsAreUndefinedSpy).toBeCalledWith(component.host, true, component.aria);
+    expect(warnIfAriaAndHeadingPropsAreUndefinedSpy).toHaveBeenCalledWith(component.host, true, component.aria);
   });
 
   it('should not call warnIfAriaAndHeadingPropsAreUndefined() when open="false"', () => {
@@ -89,7 +89,7 @@ describe('render', () => {
     component.open = false;
     component.render();
 
-    expect(warnIfAriaAndHeadingPropsAreUndefinedSpy).not.toBeCalled();
+    expect(warnIfAriaAndHeadingPropsAreUndefinedSpy).not.toHaveBeenCalled();
   });
 
   it('should call hasHeading() with correct parameters', () => {
@@ -97,7 +97,7 @@ describe('render', () => {
     component.heading = 'Some Heading';
     component.render();
 
-    expect(spy).toBeCalledWith(component.host, component.heading);
+    expect(spy).toHaveBeenCalledWith(component.host, component.heading);
   });
 
   it('should call hasNamedSlot() with correct parameters', () => {
@@ -109,7 +109,7 @@ describe('render', () => {
 
     expect(hasNamedSlotSpy).toHaveBeenNthCalledWith(1, component.host, 'heading');
     expect(hasNamedSlotSpy).toHaveBeenNthCalledWith(2, component.host, 'footer');
-    expect(hasNamedSlotSpy).toBeCalledTimes(2);
+    expect(hasNamedSlotSpy).toHaveBeenCalledTimes(2);
   });
 });
 
@@ -118,7 +118,7 @@ describe('disconnectedCallback', () => {
     const spy = jest.spyOn(component, 'updateFocusTrap' as any);
     component.disconnectedCallback();
 
-    expect(spy).toBeCalledWith(false);
+    expect(spy).toHaveBeenCalledWith(false);
   });
 });
 
@@ -127,7 +127,7 @@ describe('this.updateFocusTrap()', () => {
     const utilsSpy = jest.spyOn(focusTrapUtils, 'setFocusTrap');
     component['updateFocusTrap'](true);
 
-    expect(utilsSpy).toBeCalledWith(
+    expect(utilsSpy).toHaveBeenCalledWith(
       component.host,
       true,
       component['dialog'],
@@ -140,14 +140,14 @@ describe('this.updateFocusTrap()', () => {
     const utilsSpy = jest.spyOn(setScrollLockUtils, 'setScrollLock');
     component['updateFocusTrap'](true);
 
-    expect(utilsSpy).toBeCalledWith(true);
+    expect(utilsSpy).toHaveBeenCalledWith(true);
   });
 
   it('should call setFocusTrap() with correct parameters for isOpen = false', () => {
     const utilsSpy = jest.spyOn(focusTrapUtils, 'setFocusTrap');
     component['updateFocusTrap'](false);
 
-    expect(utilsSpy).toBeCalledWith(
+    expect(utilsSpy).toHaveBeenCalledWith(
       component.host,
       false,
       component['dialog'],
@@ -160,6 +160,6 @@ describe('this.updateFocusTrap()', () => {
     const utilsSpy = jest.spyOn(setScrollLockUtils, 'setScrollLock');
     component['updateFocusTrap'](false);
 
-    expect(utilsSpy).toBeCalledWith(false);
+    expect(utilsSpy).toHaveBeenCalledWith(false);
   });
 });

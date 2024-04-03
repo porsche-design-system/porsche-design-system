@@ -235,7 +235,7 @@ describe('setMatchingSelectOptionHighlighted()', () => {
     const setNextSelectOptionHighlightedSpy = jest.spyOn(keyboardBehaviorUtils, 'setNextSelectOptionHighlighted');
     setMatchingSelectOptionHighlighted(listElement, options, 'a');
     expect(getMatchingSelectOptionIndexSpy).toHaveBeenCalledWith(options, 'a');
-    expect(setNextSelectOptionHighlightedSpy).not.toBeCalled();
+    expect(setNextSelectOptionHighlightedSpy).not.toHaveBeenCalled();
   });
 });
 describe('setHighlightedSelectOption()', () => {

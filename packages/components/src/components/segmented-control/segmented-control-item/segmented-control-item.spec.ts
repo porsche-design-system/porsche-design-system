@@ -10,8 +10,9 @@ describe('render', () => {
 
     try {
       component.render();
-    } catch {}
+    } catch {
+    }
 
-    expect(spy).toBeCalledWith(component.host, 'value', component.value);
+    expect(spy).toHaveBeenCalledWith(component.host, 'value', component.value);
   });
 });

@@ -2,6 +2,7 @@ import * as getOnlyChildOfKindHTMLElementOrThrowUtils from '../../utils/validati
 import { TextareaWrapper } from './textarea-wrapper';
 import * as formUtils from '../../utils/form/form-utils';
 import * as a11yUtils from '../../utils/a11y/a11y';
+import * as propertyObserverUtils from '../../utils/property-observer';
 
 jest.mock('../../utils/dom');
 
@@ -19,34 +20,45 @@ describe('componentWillLoad', () => {
     expect(component['hasCounter']).toBe(undefined);
     component.componentWillLoad();
 
-    expect(spy).toBeCalledWith(textarea);
+    expect(spy).toHaveBeenCalledWith(textarea);
     expect(component['hasCounter']).toBe(true);
   });
 });
 
-describe('componentDidLoad', () => {
-  it('should call addInputEventListenerForCounter() with correct parameters if hasCounter is true', () => {
-    const spy = jest.spyOn(formUtils, 'addInputEventListenerForCounter');
+describe('componentDidRender', () => {
+  it('should call addInputEventListenerForCounter() with correct parameters if hasCounter is true and isCounterVisible is false/true', () => {
+    const updateCounterSpy = jest.spyOn(formUtils, 'updateCounter');
+    const observePropertiesSpy = jest.spyOn(propertyObserverUtils, 'observeProperties');
+    const addEventListenerSpy = jest.fn();
+    const removeEventListenerSpy = jest.fn();
 
     const textarea = document.createElement('textarea');
-    const counter = document.createElement('span');
-    const ariaElement = document.createElement('span');
+    textarea.addEventListener = addEventListenerSpy;
+    textarea.removeEventListener = removeEventListenerSpy;
 
+    const ariaElement = document.createElement('span');
+    const counter = document.createElement('span');
     const component = new TextareaWrapper();
+
     component['textarea'] = textarea;
-    component['counterElement'] = counter;
     component['ariaElement'] = ariaElement;
 
-    component.componentDidLoad();
-    expect(spy).not.toBeCalled();
+    component.componentDidRender();
+
+    expect(updateCounterSpy).not.toHaveBeenCalled();
+    expect(observePropertiesSpy).not.toHaveBeenCalled();
 
     component['hasCounter'] = true;
-    component.componentDidLoad();
-    expect(spy).toBeCalledWith(textarea, ariaElement, counter);
-  });
-});
+    component['counterElement'] = counter;
 
-describe('componentDidRender', () => {
+    component.componentDidRender();
+
+    expect(updateCounterSpy).toHaveBeenCalledWith(textarea, ariaElement, counter);
+    expect(observePropertiesSpy).toHaveBeenCalledWith(textarea, ['value'], expect.any(Function));
+    expect(addEventListenerSpy).toHaveBeenCalledWith('input', component['eventListener']);
+    expect(removeEventListenerSpy).toHaveBeenCalledWith('input', component['eventListener']);
+  });
+
   it('should call setAriaAttributes() with correct parameters', () => {
     const spy = jest.spyOn(a11yUtils, 'setAriaAttributes');
     const component = new TextareaWrapper();
@@ -57,6 +69,6 @@ describe('componentDidRender', () => {
     component.state = 'success';
 
     component.componentDidRender();
-    expect(spy).toBeCalledWith(textarea, { label: 'Some label', message: 'Some message', state: 'success' });
+    expect(spy).toHaveBeenCalledWith(textarea, { label: 'Some label', message: 'Some message', state: 'success' });
   });
 });

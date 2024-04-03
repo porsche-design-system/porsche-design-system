@@ -49,5 +49,5 @@ it('should not console.error because of Object.getOwnPropertyDescriptor', async 
   document.body.innerHTML = getMarkup('p-tabs');
   await componentsReady();
 
-  expect(spy).not.toBeCalled();
+  expect(spy).not.toHaveBeenCalled();
 });

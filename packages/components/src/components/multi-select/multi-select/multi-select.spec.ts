@@ -16,10 +16,10 @@ describe('connectedCallback', () => {
     const getClosestHTMLElementSpy = jest.spyOn(getClosestHTMLElementUtils, 'getClosestHTMLElement');
     const addEventListenerSpy = jest.spyOn(document, 'addEventListener');
     component.connectedCallback();
-    expect(getClosestHTMLElementSpy).toBeCalledWith(component.host, 'form');
+    expect(getClosestHTMLElementSpy).toHaveBeenCalledWith(component.host, 'form');
     expect(component['form']).toBe(null);
     expect(component['isWithinForm']).toBe(false);
-    expect(addEventListenerSpy).toBeCalledWith('mousedown', component['onClickOutside'], true);
+    expect(addEventListenerSpy).toHaveBeenCalledWith('mousedown', component['onClickOutside'], true);
   });
 
   it('should set isWithinForm if is within form', () => {
@@ -36,7 +36,7 @@ describe('componentWillLoad', () => {
     component['isWithinForm'] = true;
     const initNativeSelectSpy = jest.spyOn(multiSelectUtils, 'initNativeMultiSelect');
     component.componentWillLoad();
-    expect(initNativeSelectSpy).toBeCalledWith(component.host, undefined, false, false);
+    expect(initNativeSelectSpy).toHaveBeenCalledWith(component.host, undefined, false, false);
   });
 
   it('should not call initNativeSelect() if is not within form', () => {
@@ -44,14 +44,14 @@ describe('componentWillLoad', () => {
     component['isWithinForm'] = false;
     const initNativeSelectSpy = jest.spyOn(multiSelectUtils, 'initNativeMultiSelect');
     component.componentWillLoad();
-    expect(initNativeSelectSpy).not.toBeCalled();
+    expect(initNativeSelectSpy).not.toHaveBeenCalled();
   });
 
   it('should call setSelectedOptions() with correct parameters', () => {
     const component = initComponent();
     const setSelectedOptionsSpy = jest.spyOn(multiSelectUtils, 'setSelectedOptions');
     component.componentWillLoad();
-    expect(setSelectedOptionsSpy).toBeCalledWith([], []);
+    expect(setSelectedOptionsSpy).toHaveBeenCalledWith([], []);
   });
 });
 
@@ -61,8 +61,8 @@ describe('componentDidLoad', () => {
     const slot = document.createElement('slot');
     const slotSpy = jest.spyOn(slot, 'addEventListener');
     const getShadowRootHTMLElementSpy = jest
-      .spyOn(getShadowRootHTMLElementUtils, 'getShadowRootHTMLElement')
-      .mockReturnValueOnce(slot);
+    .spyOn(getShadowRootHTMLElementUtils, 'getShadowRootHTMLElement')
+    .mockReturnValueOnce(slot);
     component.componentDidLoad();
     expect(getShadowRootHTMLElementSpy).toHaveBeenCalledWith(component.host, 'slot');
     expect(slotSpy).toHaveBeenCalledTimes(1);
@@ -76,7 +76,7 @@ describe('componentWillUpdate', () => {
     component['isWithinForm'] = true;
     const syncNativeSelectSpy = jest.spyOn(multiSelectUtils, 'syncNativeMultiSelect');
     component.componentWillUpdate();
-    expect(syncNativeSelectSpy).toBeCalledWith(component['nativeSelect'], undefined, false, false);
+    expect(syncNativeSelectSpy).toHaveBeenCalledWith(component['nativeSelect'], undefined, false, false);
   });
 
   it('should not call syncNativeSelect() if is not within form', () => {
@@ -84,7 +84,7 @@ describe('componentWillUpdate', () => {
     component['isWithinForm'] = false;
     const syncNativeSelectSpy = jest.spyOn(multiSelectUtils, 'syncNativeMultiSelect');
     component.componentWillUpdate();
-    expect(syncNativeSelectSpy).not.toBeCalled();
+    expect(syncNativeSelectSpy).not.toHaveBeenCalled();
   });
 });
 
@@ -93,7 +93,7 @@ describe('disconnectedCallback', () => {
     const component = initComponent();
     const spy = jest.spyOn(document, 'removeEventListener');
     component.disconnectedCallback();
-    expect(spy).toBeCalledWith('mousedown', component['onClickOutside'], true);
+    expect(spy).toHaveBeenCalledWith('mousedown', component['onClickOutside'], true);
   });
 });
 
@@ -102,6 +102,6 @@ describe('render', () => {
     const spy = jest.spyOn(multiSelectUtils, 'syncMultiSelectOptionProps');
     const component = initComponent();
     component.render();
-    expect(spy).toBeCalledWith(component['multiSelectOptions'], component.theme);
+    expect(spy).toHaveBeenCalledWith(component['multiSelectOptions'], component.theme);
   });
 });

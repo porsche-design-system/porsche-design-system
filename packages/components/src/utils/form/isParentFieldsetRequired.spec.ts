@@ -8,9 +8,9 @@ it('should call isParentOfKind() with correct parameters', () => {
 
   isParentFieldsetRequired(child);
 
-  expect(spy).toBeCalledWith(child, 'p-fieldset');
-  expect(spy).toBeCalledWith(child, 'p-fieldset-wrapper');
-  expect(spy).toBeCalledTimes(2);
+  expect(spy).toHaveBeenCalledWith(child, 'p-fieldset');
+  expect(spy).toHaveBeenCalledWith(child, 'p-fieldset-wrapper');
+  expect(spy).toHaveBeenCalledTimes(2);
 });
 
 it('should call isRequired() with correct parameters', () => {
@@ -21,7 +21,7 @@ it('should call isRequired() with correct parameters', () => {
 
   isParentFieldsetRequired(child);
 
-  expect(spy).toBeCalledWith(parent);
+  expect(spy).toHaveBeenCalledWith(parent);
 });
 
 it.each<[boolean, boolean, boolean]>([
