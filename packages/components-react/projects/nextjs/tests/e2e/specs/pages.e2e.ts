@@ -10,9 +10,6 @@ const pageUrls = routes.map((item) => item.path);
 
 for (const pageUrl of pageUrls) {
   test(`should work without error or warning for ${pageUrl}`, async ({ page }) => {
-    // TODO: seams like the whole test didn't work as expected before migration to Playwright.
-    test.fixme(['/select'].includes(pageUrl));
-
     await goto(page, pageUrl);
     expect(getConsoleErrorsAmount()).toBe(0);
     // tons of deprecation warnings, therefore disabled for now
