@@ -1,15 +1,4 @@
-import {
-  Component,
-  Element,
-  Event,
-  type EventEmitter,
-  forceUpdate,
-  h,
-  Host,
-  type JSX,
-  Prop,
-  Watch,
-} from '@stencil/core';
+import { Component, Element, Event, type EventEmitter, h, Host, type JSX, Prop, Watch } from '@stencil/core';
 import type { BreakpointCustomizable, PropTypes, SelectedAriaAttributes, Theme } from '../../types';
 import {
   AllowedTypes,
@@ -249,14 +238,15 @@ export class Modal {
   }
 
   private onSlotChange = (): void => {
-    forceUpdate(this.host);
-
     if (this.open) {
       // 1 tick delay is needed so that web components can be bootstrapped
       setTimeout(() => {
         this.updateFocusTrap(true);
         this.dialog.focus(); // set initial focus
       });
+    }
+    if (this.hasFooter) {
+      this.onScroll();
     }
   };
 
