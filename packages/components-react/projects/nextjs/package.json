@@ -31,7 +31,7 @@
     "@types/react-dom": "^18.2.22",
     "concurrently": "^8.2.2",
     "eslint": "^8.57.0",
-    "eslint-config-next": "^14.1.3",
+    "eslint-config-next": "^14.1.4",
     "tsx": "^4.7.2",
     "typescript": "~5.4.3"
   },
