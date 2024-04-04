@@ -10346,10 +10346,10 @@ detective-typescript@^9.0.0, detective-typescript@^9.1.1:
     node-source-walk "^5.0.1"
     typescript "^4.9.5"
 
-devtools-protocol@^0.0.1273771:
-  version "0.0.1273771"
-  resolved "https://registry.yarnpkg.com/devtools-protocol/-/devtools-protocol-0.0.1273771.tgz#46aeb5db41417e2c2ad3d8367c598c975290b1a5"
-  integrity sha512-QDbb27xcTVReQQW/GHJsdQqGKwYBE7re7gxehj467kKP2DKuYBUj6i2k5LRiAC66J1yZG/9gsxooz/s9pcm0Og==
+devtools-protocol@^0.0.1282316:
+  version "0.0.1282316"
+  resolved "https://registry.yarnpkg.com/devtools-protocol/-/devtools-protocol-0.0.1282316.tgz#4b398549e48251a09bbad7056578f7ad376f9b81"
+  integrity sha512-i7eIqWdVxeXBY/M+v83yRkOV1sTHnr3XYiC0YNBivLIE6hBfE2H0c2o8VC5ynT44yjy+Ei0kLrBQFK/RUKaAHQ==
 
 di@^0.0.1:
   version "0.0.1"
@@ -11062,12 +11062,12 @@ esbuild-plugins-node-modules-polyfill@^1.6.0:
     local-pkg "^0.5.0"
     resolve.exports "^2.0.2"
 
-esbuild-wasm@0.20.1, esbuild-wasm@>=0.13.8:
+esbuild-wasm@0.20.1:
   version "0.20.1"
   resolved "https://registry.yarnpkg.com/esbuild-wasm/-/esbuild-wasm-0.20.1.tgz#fdc14b95e3e16ec8e082dd641edb96140c1723f7"
   integrity sha512-6v/WJubRsjxBbQdz6izgvx7LsVFvVaGmSdwrFHmEzoVgfXL89hkKPoQHsnVI2ngOkcBUQT9kmAM1hVL1k/Av4A==
 
-esbuild-wasm@^0.20.0:
+esbuild-wasm@>=0.15.13, esbuild-wasm@^0.20.0:
   version "0.20.2"
   resolved "https://registry.yarnpkg.com/esbuild-wasm/-/esbuild-wasm-0.20.2.tgz#bbee2a729776b0b88b765c014f161b627435c5b6"
   integrity sha512-7o6nmsEqlcXJXMNqnx5K+M4w4OPx7yTFXQHcJyeP3SkXb8p2T8N9E1ayK4vd/qDBepH6fuPoZwiFvZm8x5qv+w==
@@ -11100,7 +11100,7 @@ esbuild@0.17.6:
     "@esbuild/win32-ia32" "0.17.6"
     "@esbuild/win32-x64" "0.17.6"
 
-esbuild@0.20.1, esbuild@>=0.13.8:
+esbuild@0.20.1:
   version "0.20.1"
   resolved "https://registry.yarnpkg.com/esbuild/-/esbuild-0.20.1.tgz#1e4cbb380ad1959db7609cb9573ee77257724a3e"
   integrity sha512-OJwEgrpWm/PCMsLVWXKqvcjme3bHNpOgN7Tb6cQnR5n0TPbQx1/Xrn7rqM+wn17bYeT6MGB5sn1Bh5YiGi70nA==
@@ -11128,6 +11128,35 @@ esbuild@0.20.1, esbuild@>=0.13.8:
     "@esbuild/win32-arm64" "0.20.1"
     "@esbuild/win32-ia32" "0.20.1"
     "@esbuild/win32-x64" "0.20.1"
+
+esbuild@>=0.15.13, esbuild@^0.20.0, esbuild@^0.20.1:
+  version "0.20.2"
+  resolved "https://registry.yarnpkg.com/esbuild/-/esbuild-0.20.2.tgz#9d6b2386561766ee6b5a55196c6d766d28c87ea1"
+  integrity sha512-WdOOppmUNU+IbZ0PaDiTst80zjnrOkyJNHoKupIcVyU8Lvla3Ugx94VzkQ32Ijqd7UhHJy75gNWDMUekcrSJ6g==
+  optionalDependencies:
+    "@esbuild/aix-ppc64" "0.20.2"
+    "@esbuild/android-arm" "0.20.2"
+    "@esbuild/android-arm64" "0.20.2"
+    "@esbuild/android-x64" "0.20.2"
+    "@esbuild/darwin-arm64" "0.20.2"
+    "@esbuild/darwin-x64" "0.20.2"
+    "@esbuild/freebsd-arm64" "0.20.2"
+    "@esbuild/freebsd-x64" "0.20.2"
+    "@esbuild/linux-arm" "0.20.2"
+    "@esbuild/linux-arm64" "0.20.2"
+    "@esbuild/linux-ia32" "0.20.2"
+    "@esbuild/linux-loong64" "0.20.2"
+    "@esbuild/linux-mips64el" "0.20.2"
+    "@esbuild/linux-ppc64" "0.20.2"
+    "@esbuild/linux-riscv64" "0.20.2"
+    "@esbuild/linux-s390x" "0.20.2"
+    "@esbuild/linux-x64" "0.20.2"
+    "@esbuild/netbsd-x64" "0.20.2"
+    "@esbuild/openbsd-x64" "0.20.2"
+    "@esbuild/sunos-x64" "0.20.2"
+    "@esbuild/win32-arm64" "0.20.2"
+    "@esbuild/win32-ia32" "0.20.2"
+    "@esbuild/win32-x64" "0.20.2"
 
 esbuild@^0.19.3, "esbuild@npm:esbuild@~0.17.6 || ~0.18.0 || ~0.19.0", esbuild@~0.19.10:
   version "0.19.12"
@@ -11157,35 +11186,6 @@ esbuild@^0.19.3, "esbuild@npm:esbuild@~0.17.6 || ~0.18.0 || ~0.19.0", esbuild@~0
     "@esbuild/win32-arm64" "0.19.12"
     "@esbuild/win32-ia32" "0.19.12"
     "@esbuild/win32-x64" "0.19.12"
-
-esbuild@^0.20.0, esbuild@^0.20.1:
-  version "0.20.2"
-  resolved "https://registry.yarnpkg.com/esbuild/-/esbuild-0.20.2.tgz#9d6b2386561766ee6b5a55196c6d766d28c87ea1"
-  integrity sha512-WdOOppmUNU+IbZ0PaDiTst80zjnrOkyJNHoKupIcVyU8Lvla3Ugx94VzkQ32Ijqd7UhHJy75gNWDMUekcrSJ6g==
-  optionalDependencies:
-    "@esbuild/aix-ppc64" "0.20.2"
-    "@esbuild/android-arm" "0.20.2"
-    "@esbuild/android-arm64" "0.20.2"
-    "@esbuild/android-x64" "0.20.2"
-    "@esbuild/darwin-arm64" "0.20.2"
-    "@esbuild/darwin-x64" "0.20.2"
-    "@esbuild/freebsd-arm64" "0.20.2"
-    "@esbuild/freebsd-x64" "0.20.2"
-    "@esbuild/linux-arm" "0.20.2"
-    "@esbuild/linux-arm64" "0.20.2"
-    "@esbuild/linux-ia32" "0.20.2"
-    "@esbuild/linux-loong64" "0.20.2"
-    "@esbuild/linux-mips64el" "0.20.2"
-    "@esbuild/linux-ppc64" "0.20.2"
-    "@esbuild/linux-riscv64" "0.20.2"
-    "@esbuild/linux-s390x" "0.20.2"
-    "@esbuild/linux-x64" "0.20.2"
-    "@esbuild/netbsd-x64" "0.20.2"
-    "@esbuild/openbsd-x64" "0.20.2"
-    "@esbuild/sunos-x64" "0.20.2"
-    "@esbuild/win32-arm64" "0.20.2"
-    "@esbuild/win32-ia32" "0.20.2"
-    "@esbuild/win32-x64" "0.20.2"
 
 escalade@^3.1.1:
   version "3.1.2"
@@ -13047,10 +13047,10 @@ handle-thing@^2.0.0:
   resolved "https://registry.yarnpkg.com/handle-thing/-/handle-thing-2.0.1.tgz#857f79ce359580c340d43081cc648970d0bb234e"
   integrity sha512-9Qn4yBxelxoh2Ow62nP+Ka/kMnOXRi8BXnRaUwezLNhqelnN49xKz4F/dPP8OYLxLxq6JDtZb2i9XznUQbNPTg==
 
-happy-dom@^13.10.1:
-  version "13.10.1"
-  resolved "https://registry.yarnpkg.com/happy-dom/-/happy-dom-13.10.1.tgz#bfaf147704055e7c2feb4069adc899a838588307"
-  integrity sha512-9GZLEFvQL5EgfJX2zcBgu1nsPUn98JF/EiJnSfQbdxI6YEQGqpd09lXXxOmYonRBIEFz9JlGCOiPflDzgS1p8w==
+happy-dom@^14.4.0:
+  version "14.4.0"
+  resolved "https://registry.yarnpkg.com/happy-dom/-/happy-dom-14.4.0.tgz#f7f3142ded2d0fcda3cd6d6a86bfa603e879c790"
+  integrity sha512-H/vV0+/rGhdQeKGjvMVE4X0/pHNmymEnyGvo0nx9TYfo5DwByOqrnOpLRsepwROEkM0vi1ddw9yJW3sBzwzK1A==
   dependencies:
     entities "^4.5.0"
     webidl-conversions "^7.0.0"
@@ -15076,19 +15076,19 @@ jest-pnp-resolver@^1.2.2:
   resolved "https://registry.yarnpkg.com/jest-pnp-resolver/-/jest-pnp-resolver-1.2.3.tgz#930b1546164d4ad5937d5540e711d4d38d4cad2e"
   integrity sha512-+3NpwQEnRoIBtx4fyhblQDPgJI0H1IEIkX7ShLUjPGA7TtUTvI1oiKi3SR4oBR0hQhQR80l4WAe5RrXBwWMA8w==
 
-jest-preset-angular@^13.1.6:
-  version "13.1.6"
-  resolved "https://registry.yarnpkg.com/jest-preset-angular/-/jest-preset-angular-13.1.6.tgz#c32af7b3071a917c7fc75534f5aa00db1f36700a"
-  integrity sha512-0pXSm6168Qn+qKp7DpzYoaIp0uyMHdQaWYVp8jlw7Mh+NEBtrBjKqts3kLeBHgAhGMQArp07S2IxZ6eCr8fc7Q==
+jest-preset-angular@^14.0.3:
+  version "14.0.3"
+  resolved "https://registry.yarnpkg.com/jest-preset-angular/-/jest-preset-angular-14.0.3.tgz#ce78451a61bad0e4828bd75dd36542ad5bf48dac"
+  integrity sha512-usgBL7x0rXMnMSx8iEFeOozj50W6fp+YAmQcQBUdAXhN+PAXRy4UXL6I/rfcAOU09rnnq7RKsLsmhpp/fFEuag==
   dependencies:
     bs-logger "^0.2.6"
-    esbuild-wasm ">=0.13.8"
+    esbuild-wasm ">=0.15.13"
     jest-environment-jsdom "^29.0.0"
     jest-util "^29.0.0"
     pretty-format "^29.0.0"
     ts-jest "^29.0.0"
   optionalDependencies:
-    esbuild ">=0.13.8"
+    esbuild ">=0.15.13"
 
 jest-regex-util@^24.9.0:
   version "24.9.0"

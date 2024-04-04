@@ -55,7 +55,7 @@
     "@types/jasmine": "^5.1.4",
     "concurrently": "^8.2.2",
     "globby": "^11.1.0",
-    "jest-preset-angular": "^13.1.6",
+    "jest-preset-angular": "^14.0.3",
     "karma": "~6.4.3",
     "karma-chrome-launcher": "~3.2.0",
     "karma-coverage-istanbul-reporter": "~3.0.3",
