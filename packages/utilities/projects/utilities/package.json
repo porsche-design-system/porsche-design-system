@@ -24,7 +24,7 @@
     "madge": "^6.1.0",
     "prettier": "^3.2.5",
     "react-jss": "^10.10.0",
-    "sass": "^1.72.0",
+    "sass": "^1.74.1",
     "styled-components": "^5.3.11",
     "tsx": "^4.7.2",
     "typescript": "~5.4.3"
