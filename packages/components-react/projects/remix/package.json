@@ -53,8 +53,8 @@
     "postcss": "^8.4.36",
     "start-server-and-test": "^2.0.3",
     "tsconfig-paths": "^4.2.0",
-    "tsx": "^4.7.1",
-    "typescript": "~5.4.2",
+    "tsx": "^4.7.2",
+    "typescript": "~5.4.3",
     "vite": "^5.1.6",
     "vite-tsconfig-paths": "^4.3.2"
   },

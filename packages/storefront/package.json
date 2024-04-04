@@ -74,8 +74,8 @@
     "local-web-server": "^5.3.1",
     "sass": "^1.72.0",
     "sass-loader": "^10.5.2",
-    "tsx": "^4.7.1",
-    "typescript": "~5.4.2",
+    "tsx": "^4.7.2",
+    "typescript": "~5.4.3",
     "vue-template-compiler": "^2.7.16",
     "whatwg-fetch": "^3.6.20"
   },
