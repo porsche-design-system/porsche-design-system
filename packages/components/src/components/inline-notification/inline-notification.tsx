@@ -7,6 +7,7 @@ import {
   attachComponentCss,
   getPrefixedTagNames,
   hasHeading,
+  HEADING_TAGS,
   THEMES,
   validateProps,
   warnIfDeprecatedPropIsUsed,
@@ -18,10 +19,11 @@ import {
   getInlineNotificationIconName,
   INLINE_NOTIFICATION_STATES,
 } from './inline-notification-utils';
-import type { InlineNotificationActionIcon } from './inline-notification-utils';
+import type { InlineNotificationActionIcon, InlineNotificationHeadingTag } from './inline-notification-utils';
 
 const propTypes: PropTypes<typeof InlineNotification> = {
   heading: AllowedTypes.string,
+  headingTag: AllowedTypes.oneOf<InlineNotificationHeadingTag>(HEADING_TAGS),
   description: AllowedTypes.string,
   state: AllowedTypes.oneOf<InlineNotificationState>(INLINE_NOTIFICATION_STATES),
   dismissButton: AllowedTypes.boolean,
@@ -41,6 +43,9 @@ export class InlineNotification {
 
   /** Heading of the inline-notification. */
   @Prop() public heading?: string = '';
+
+  /** Heading-Tag of the inline-notification. */
+  @Prop() public headingTag?: InlineNotificationHeadingTag = 'h5';
 
   /** Description of the inline-notification. */
   @Prop() public description?: string = '';
@@ -94,6 +99,7 @@ export class InlineNotification {
     const labelId = 'label';
     const descriptionId = 'description';
     const PrefixedTagNames = getPrefixedTagNames(this.host);
+    const Heading = this.headingTag;
 
     return (
       <Host>
@@ -105,8 +111,14 @@ export class InlineNotification {
           aria-hidden="true"
         />
         <div id={bannerId} class="content" {...getContentAriaAttributes(this.state, labelId, descriptionId)}>
-          {hasHeading(this.host, this.heading) && <h5 id={labelId}>{this.heading || <slot name="heading" />}</h5>}
-          <p id={descriptionId}>{this.description || <slot />}</p>
+          {hasHeading(this.host, this.heading) && (
+            <Heading id={labelId} class="heading">
+              {this.heading || <slot name="heading" />}
+            </Heading>
+          )}
+          <p id={descriptionId} class="description">
+            {this.description || <slot />}
+          </p>
         </div>
         {this.actionLabel && (
           <PrefixedTagNames.pButtonPure

@@ -14,8 +14,16 @@ import {
   getNotificationIconJssStyle,
   getNotificationRootJssStyle,
 } from './inline-notification-styles-shared';
+import { JssStyle } from 'jss';
 
 const mediaQueryMaxS = getMediaQueryMax('s');
+const textStyles = (theme: Theme): JssStyle => ({
+  margin: 0,
+  color: getThemedColors(theme).primaryColor,
+  ...prefersColorSchemeDarkMediaQuery(theme, {
+    color: getThemedColors('dark').primaryColor,
+  }),
+});
 
 export const getComponentCss = (
   state: InlineNotificationState,
@@ -33,15 +41,14 @@ export const getComponentCss = (
           ...hostHiddenStyles,
         }),
       },
-      h5: headingSmallStyle,
-      p: textSmallStyle,
-      'h5,p': {
-        margin: 0,
-        color: getThemedColors(theme).primaryColor,
-        ...prefersColorSchemeDarkMediaQuery(theme, {
-          color: getThemedColors('dark').primaryColor,
-        }),
-      },
+    },
+    heading: {
+      ...headingSmallStyle,
+      ...textStyles(theme),
+    },
+    description: {
+      ...textSmallStyle,
+      ...textStyles(theme),
     },
     icon: getNotificationIconJssStyle(),
     content: getNotificationContentJssStyle(),

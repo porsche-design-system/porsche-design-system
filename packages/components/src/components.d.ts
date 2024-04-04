@@ -7,7 +7,7 @@
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { BreakpointCustomizable, ButtonAriaAttribute, ButtonType, ButtonVariant, HeadingSize, IconName, LinkAriaAttribute, LinkTarget, LinkVariant, SelectedAriaAttributes, TextSize, Theme } from "./types";
 import { AccordionSize, AccordionTag, AccordionUpdateEventDetail } from "./components/accordion/accordion-utils";
-import { BannerState, BannerWidth } from "./components/banner/banner-utils";
+import { BannerHeadingTag, BannerState, BannerWidth } from "./components/banner/banner-utils";
 import { ButtonIcon } from "./components/button/button-utils";
 import { ButtonGroupDirection } from "./components/button-group/button-group-utils";
 import { ButtonPureAlignLabel, ButtonPureAriaAttribute, ButtonPureIcon, ButtonPureSize, ButtonPureType, ButtonPureWeight } from "./components/button-pure/button-pure-utils";
@@ -30,7 +30,7 @@ import { HeadingTag } from "./components/heading/heading-tag";
 import { HeadingAlign, HeadingColor } from "./components/heading/heading-utils";
 import { HeadlineAlign, HeadlineColor, HeadlineTag, HeadlineVariant } from "./components/headline/headline-utils";
 import { IconAriaAttribute, IconColor, IconSize } from "./components/icon/icon-utils";
-import { InlineNotificationActionIcon, InlineNotificationState } from "./components/inline-notification/inline-notification-utils";
+import { InlineNotificationActionIcon, InlineNotificationHeadingTag, InlineNotificationState } from "./components/inline-notification/inline-notification-utils";
 import { LinkIcon } from "./components/link/link-utils";
 import { LinkPureAlignLabel, LinkPureAriaAttribute, LinkPureIcon, LinkPureSize, LinkPureTarget, LinkPureWeight } from "./components/link-pure/link-pure-utils";
 import { LinkSocialIcon, LinkSocialTarget } from "./components/link-social/link-social-utils";
@@ -69,7 +69,7 @@ import { ToastState } from "./components/toast/toast/toast-utils";
 import { WordmarkAriaAttribute, WordmarkSize, WordmarkTarget } from "./components/wordmark/wordmark-utils";
 export { BreakpointCustomizable, ButtonAriaAttribute, ButtonType, ButtonVariant, HeadingSize, IconName, LinkAriaAttribute, LinkTarget, LinkVariant, SelectedAriaAttributes, TextSize, Theme } from "./types";
 export { AccordionSize, AccordionTag, AccordionUpdateEventDetail } from "./components/accordion/accordion-utils";
-export { BannerState, BannerWidth } from "./components/banner/banner-utils";
+export { BannerHeadingTag, BannerState, BannerWidth } from "./components/banner/banner-utils";
 export { ButtonIcon } from "./components/button/button-utils";
 export { ButtonGroupDirection } from "./components/button-group/button-group-utils";
 export { ButtonPureAlignLabel, ButtonPureAriaAttribute, ButtonPureIcon, ButtonPureSize, ButtonPureType, ButtonPureWeight } from "./components/button-pure/button-pure-utils";
@@ -92,7 +92,7 @@ export { HeadingTag } from "./components/heading/heading-tag";
 export { HeadingAlign, HeadingColor } from "./components/heading/heading-utils";
 export { HeadlineAlign, HeadlineColor, HeadlineTag, HeadlineVariant } from "./components/headline/headline-utils";
 export { IconAriaAttribute, IconColor, IconSize } from "./components/icon/icon-utils";
-export { InlineNotificationActionIcon, InlineNotificationState } from "./components/inline-notification/inline-notification-utils";
+export { InlineNotificationActionIcon, InlineNotificationHeadingTag, InlineNotificationState } from "./components/inline-notification/inline-notification-utils";
 export { LinkIcon } from "./components/link/link-utils";
 export { LinkPureAlignLabel, LinkPureAriaAttribute, LinkPureIcon, LinkPureSize, LinkPureTarget, LinkPureWeight } from "./components/link-pure/link-pure-utils";
 export { LinkSocialIcon, LinkSocialTarget } from "./components/link-social/link-social-utils";
@@ -169,6 +169,10 @@ export namespace Components {
           * Heading of the banner.
          */
         "heading"?: string;
+        /**
+          * Heading-Tag of the inline-notification.
+         */
+        "headingTag"?: BannerHeadingTag;
         /**
           * If true, the banner is open.
          */
@@ -841,6 +845,10 @@ export namespace Components {
           * Heading of the inline-notification.
          */
         "heading"?: string;
+        /**
+          * Heading-Tag of the inline-notification.
+         */
+        "headingTag"?: InlineNotificationHeadingTag;
         /**
           * @deprecated since v3.0.0, will be removed with next major release, use `dismissButton` instead. Defines if the inline-notification can be closed/removed by the user.
          */
@@ -2878,6 +2886,10 @@ declare namespace LocalJSX {
          */
         "heading"?: string;
         /**
+          * Heading-Tag of the inline-notification.
+         */
+        "headingTag"?: BannerHeadingTag;
+        /**
           * Emitted when the close button is clicked.
          */
         "onDismiss"?: (event: PBannerCustomEvent<void>) => void;
@@ -3573,6 +3585,10 @@ declare namespace LocalJSX {
           * Heading of the inline-notification.
          */
         "heading"?: string;
+        /**
+          * Heading-Tag of the inline-notification.
+         */
+        "headingTag"?: InlineNotificationHeadingTag;
         /**
           * Emitted when the action button is clicked.
          */
