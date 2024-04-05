@@ -23,7 +23,7 @@ const { canvasTextColor } = getHighContrastColors();
 const getThemedColor = (color: ModelSignatureColor, themedColors: ThemedColors): string => {
   const colorMap: Record<ModelSignatureColor, string> = {
     primary: themedColors.primaryColor,
-    inherit: themedColors.primaryColor,
+    inherit: 'black',
     'contrast-low': themedColors.contrastLowColor,
     'contrast-medium': themedColors.contrastMediumColor,
     'contrast-high': themedColors.contrastHighColor,

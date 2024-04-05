@@ -10,7 +10,7 @@ exports[`getComponentCss() should return correct css for model: 911, safe-zone: 
   height: var(--p-model-signature-height,auto);
   mask: url(https://cdn.ui.porsche.com/porsche-design-system/model-signatures/911.min.b68f913216168583298ccf83f1a6b8d5.svg) no-repeat left top / contain !important;
   aspect-ratio: 94 / 36 !important;
-  background: var(--p-model-signature-color,#FBFCFF) !important;
+  background: var(--p-model-signature-color,black) !important;
   color-scheme: light dark !important;
 }
 :host([hidden]) {
@@ -46,7 +46,7 @@ exports[`getComponentCss() should return correct css for model: 911, safe-zone: 
   height: var(--p-model-signature-height,auto);
   mask: url(https://cdn.ui.porsche.com/porsche-design-system/model-signatures/911.min.b68f913216168583298ccf83f1a6b8d5.svg) no-repeat left top / contain !important;
   aspect-ratio: 94 / 36 !important;
-  background: var(--p-model-signature-color,#010205) !important;
+  background: var(--p-model-signature-color,black) !important;
   color-scheme: light dark !important;
 }
 :host([hidden]) {
@@ -370,7 +370,7 @@ exports[`getComponentCss() should return correct css for model: 911, safe-zone: 
   height: var(--p-model-signature-height,auto);
   mask: url(https://cdn.ui.porsche.com/porsche-design-system/model-signatures/911.min.b68f913216168583298ccf83f1a6b8d5.svg) no-repeat left top / contain !important;
   aspect-ratio: 94 / 36 !important;
-  background: var(--p-model-signature-color,#FBFCFF) !important;
+  background: var(--p-model-signature-color,black) !important;
   color-scheme: light dark !important;
 }
 :host([hidden]) {
@@ -406,7 +406,7 @@ exports[`getComponentCss() should return correct css for model: 911, safe-zone: 
   height: var(--p-model-signature-height,auto);
   mask: url(https://cdn.ui.porsche.com/porsche-design-system/model-signatures/911.min.b68f913216168583298ccf83f1a6b8d5.svg) no-repeat left top / contain !important;
   aspect-ratio: 94 / 36 !important;
-  background: var(--p-model-signature-color,#010205) !important;
+  background: var(--p-model-signature-color,black) !important;
   color-scheme: light dark !important;
 }
 :host([hidden]) {
