@@ -1,88 +1,83 @@
-import { getCss, isHighContrastMode } from '../../utils';
+import { getCss } from '../../utils';
 import {
   addImportantToEachRule,
-  hostHiddenStyles,
-  getSchemedHighContrastMediaQuery,
-  prefersColorSchemeDarkMediaQuery,
   colorSchemeStyles,
+  forcedColorsMediaQuery,
+  getHighContrastColors,
+  getThemedColors,
+  hostHiddenStyles,
+  prefersColorSchemeDarkMediaQuery,
+  type ThemedColors,
 } from '../../styles';
-import type { ModelSignatureColor, ModelSignatureSize } from './model-signature-utils';
+import type { ModelSignatureColor, ModelSignatureModel, ModelSignatureSize } from './model-signature-utils';
+import { getSvgUrl } from './model-signature-utils';
 import type { Theme } from '../../types';
-import {
-  filterDarkContrastHigh,
-  filterDarkContrastLow,
-  filterDarkContrastMedium,
-  filterDarkPrimary,
-  filterLightContrastHigh,
-  filterLightContrastLow,
-  filterLightContrastMedium,
-  filterLightPrimary,
-} from '../../styles/color-filters';
-import { modelSignatureHeight } from './model-signature-utils';
+import { MODEL_SIGNATURES_MANIFEST } from '@porsche-design-system/assets';
 
-const colorToFilterLight: Record<Exclude<ModelSignatureColor, 'inherit'>, string> = {
-  primary: filterLightPrimary,
-  'contrast-low': filterLightContrastLow,
-  'contrast-medium': filterLightContrastMedium,
-  'contrast-high': filterLightContrastHigh,
+const cssVariableWidth = '--p-model-signature-width';
+const cssVariableHeight = '--p-model-signature-height';
+const cssVariableColor = '--p-model-signature-color';
+
+const { canvasTextColor } = getHighContrastColors();
+
+const getThemedColor = (color: ModelSignatureColor, themedColors: ThemedColors): string => {
+  const colorMap: Record<ModelSignatureColor, string> = {
+    primary: themedColors.primaryColor,
+    inherit: 'black',
+    'contrast-low': themedColors.contrastLowColor,
+    'contrast-medium': themedColors.contrastMediumColor,
+    'contrast-high': themedColors.contrastHighColor,
+  };
+
+  return colorMap[color];
 };
 
-const colorToFilterDark: Record<Exclude<ModelSignatureColor, 'inherit'>, string> = {
-  primary: filterDarkPrimary,
-  'contrast-low': filterDarkContrastLow,
-  'contrast-medium': filterDarkContrastMedium,
-  'contrast-high': filterDarkContrastHigh,
-};
-
-const colorToFilterMap: Record<Theme, Record<Exclude<ModelSignatureColor, 'inherit'>, string>> = {
-  auto: colorToFilterLight,
-  light: colorToFilterLight,
-  dark: colorToFilterDark,
-};
-
-export const getComponentCss = (size: ModelSignatureSize, color: ModelSignatureColor, theme: Theme): string => {
+export const getComponentCss = (
+  model: ModelSignatureModel,
+  safeZone: boolean,
+  size: ModelSignatureSize,
+  color: ModelSignatureColor,
+  theme: Theme
+): string => {
+  const { width, height } = MODEL_SIGNATURES_MANIFEST[model];
   const isSizeInherit = size === 'inherit';
-  const isColorInherit = color === 'inherit';
 
   return getCss({
     '@global': {
       ':host': {
         display: 'inline-block',
         verticalAlign: 'top',
+        maxWidth: '100%',
+        maxHeight: '100%',
+        // width + height style can't be !important atm to be backwards compatible with e.g. `<p-model-signature size="inherit" style="height: 50px"/>`
+        width: `var(${cssVariableWidth},${isSizeInherit ? 'auto' : width + 'px'})`,
+        height: `var(${cssVariableHeight},auto)`,
         ...addImportantToEachRule({
-          maxWidth: '100%',
-          maxHeight: '100%',
-          ...(!isSizeInherit && {
-            width: 'inherit',
-            height: 'inherit',
-            // TODO: we need a width map of all signatures to ensure same fluid behavior like implemented fro crest + wordmark
-            maxHeight: `${modelSignatureHeight}px`,
+          mask: `url(${getSvgUrl(model)}) no-repeat left top / contain`,
+          aspectRatio: `${width} / ${safeZone ? 36 : height}`, // 36px is the max-height for SVG model signature creation
+          background: `var(${cssVariableColor},${getThemedColor(color, getThemedColors(theme))})`,
+          ...prefersColorSchemeDarkMediaQuery(theme, {
+            background: `var(${cssVariableColor},${getThemedColor(color, getThemedColors('dark'))})`,
+          }),
+          ...forcedColorsMediaQuery({
+            background: canvasTextColor,
           }),
           ...colorSchemeStyles,
           ...hostHiddenStyles,
         }),
       },
+      '::slotted(:is(img,video))': addImportantToEachRule({
+        display: 'block', // prevents unintended bottom white-space
+        width: '100%',
+        height: '100%',
+        objectFit: 'cover',
+      }),
+      // the <img /> is only needed for a11y compliance because of alt text and to handle the fetch priority
       img: {
-        display: 'block',
-        maxWidth: '100%',
-        maxHeight: '100%',
-        pointerEvents: 'none', // prevents image drag
-        ...(!isColorInherit && {
-          filter: colorToFilterMap[theme][color],
-          ...prefersColorSchemeDarkMediaQuery(theme, {
-            filter: colorToFilterMap.dark[color],
-          }),
-          ...(isHighContrastMode &&
-            getSchemedHighContrastMediaQuery(
-              {
-                filter: colorToFilterMap.light[color],
-              },
-              {
-                filter: colorToFilterMap.dark[color],
-              }
-            )),
-        }),
-        ...(isSizeInherit && { height: size }),
+        position: 'absolute', // prevents unintended bottom white-space
+        opacity: 0,
+        width: '1px',
+        height: '1px',
       },
     },
   });

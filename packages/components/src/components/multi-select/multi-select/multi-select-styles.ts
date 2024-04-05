@@ -1,5 +1,5 @@
 import type { BreakpointCustomizable, Theme } from '../../../types';
-import { getCss, SelectDropdownDirectionInternal } from '../../../utils';
+import { getCss, type SelectDropdownDirectionInternal } from '../../../utils';
 import {
   addImportantToEachRule,
   addImportantToRule,
