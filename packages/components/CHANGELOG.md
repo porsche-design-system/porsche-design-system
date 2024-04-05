@@ -14,6 +14,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ### [Unreleased]
 
+### [3.15.0-rc.0] - 2024-04-05
+
 #### Changed
 
 - `Model Signature`: Enabling the use of hex colors, CSS gradients, CSS image and video masks. In addition, the size was
