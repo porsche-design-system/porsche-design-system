@@ -21,6 +21,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ### Fixed
 
+- `Select`: Hydration error in Next.js when using slotted `img`
+  ([#3162](https://github.com/porsche-design-system/porsche-design-system/pull/3162))
 - `Text Field Wrapper`, `Textarea Wrapper`: Dynamic changes of `showCounter` and `maxLength` are reflected. The counter
   element dynamically adjusts to changes in the input value accurately.
   ([#3084](https://github.com/porsche-design-system/porsche-design-system/pull/3084))
