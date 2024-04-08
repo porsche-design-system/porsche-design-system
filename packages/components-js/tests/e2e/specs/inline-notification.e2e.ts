@@ -11,7 +11,7 @@ import {
   setProperty,
   waitForStencilLifecycle,
 } from '../helpers';
-import type { InlineNotificationState } from '@porsche-design-system/components';
+import type { InlineNotificationState, InlineNotificationHeadingTag } from '@porsche-design-system/components';
 
 const initInlineNotification = (
   page: Page,
@@ -20,9 +20,10 @@ const initInlineNotification = (
     persistent?: boolean;
     dismissButton?: boolean;
     actionLabel?: string;
+    headingTag?: InlineNotificationHeadingTag;
   }
 ): Promise<void> => {
-  const { state, persistent, dismissButton = true, actionLabel } = opts || {};
+  const { state, persistent, dismissButton = true, actionLabel, headingTag } = opts || {};
   const attributes = [
     'heading="Some inline-notification heading."',
     'description="Some inline-notification description."',
@@ -30,6 +31,7 @@ const initInlineNotification = (
     persistent && 'persistent',
     `dismiss-button="${dismissButton}"`,
     actionLabel && `action-label="${actionLabel}"`,
+    headingTag && `heading-tag="${headingTag}"`,
   ]
     .filter((x) => x)
     .join(' ');
@@ -46,6 +48,8 @@ const initInlineNotification = (
 const getHost = (page: Page) => page.$('p-inline-notification');
 const getCloseButton = (page: Page) => page.$('p-inline-notification p-button-pure.close');
 const getActionButton = (page: Page) => page.$('p-inline-notification p-button-pure.action');
+const getHeadingTagName = async (page: Page): Promise<string> =>
+  (await getHost(page)).evaluate((el) => el.shadowRoot.querySelector('.heading').tagName);
 
 test('should render close button with type of "button"', async ({ page }) => {
   await initInlineNotification(page);
@@ -64,6 +68,11 @@ test('should render without button when dismissButton prop false', async ({ page
   console.log(await getProperty(await getHost(page), 'dismissButton'));
   const el = await getCloseButton(page);
   expect(el).toBeNull();
+});
+
+test('should render correct heading tag when tag property is set', async ({ page }) => {
+  await initInlineNotification(page, { headingTag: 'h2' });
+  expect(await getHeadingTagName(page)).toBe('H2');
 });
 
 test.describe('close button', () => {

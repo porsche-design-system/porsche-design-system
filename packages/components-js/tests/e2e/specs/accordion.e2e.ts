@@ -58,6 +58,8 @@ const getBody = (page: Page) => page.$('body');
 const getCollapseVisibility = async (page: Page) => getElementStyle(await getCollapsible(page), 'visibility');
 const getCollapseGridTemplateRows = async (page: Page) =>
   getElementStyle(await getCollapsible(page), 'gridTemplateRows');
+const getHeadingTagName = async (page: Page): Promise<string> =>
+  (await getHost(page)).evaluate((el) => el.shadowRoot.querySelector('.heading').tagName);
 
 test('should set "gridTemplateRows: 1fr" and "visibility: visible" on collapsible on initial open', async ({
   page,
@@ -156,6 +158,11 @@ test('should show aria-expanded true when open and false when closed', async ({ 
   await waitForStencilLifecycle(page);
 
   expect(await getAttribute(button, 'aria-expanded'), 'after click to close').toBe('false');
+});
+
+test('should render correct heading tag when tag property is set', async ({ page }) => {
+  await initAccordion(page, { tag: 'h2' });
+  expect(await getHeadingTagName(page)).toBe('H2');
 });
 
 test.describe('events', () => {
