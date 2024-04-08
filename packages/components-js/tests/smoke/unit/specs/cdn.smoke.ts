@@ -26,11 +26,13 @@ describe('cdn', () => {
   let fetchCounter = 0;
 
   function unpackObject(obj: Object): any[] {
-    return typeof obj === 'object' ? Object.values(obj).map(unpackObject) : obj;
+    return typeof obj === 'object' ? Object.values(obj).map(unpackObject) : typeof obj === 'string' ? obj : null;
   }
 
   function objectToFlatArray(object: Object): string[] {
-    return unpackObject(object).flat(3);
+    return unpackObject(object)
+      .flat(3)
+      .filter((x) => x !== null);
   }
 
   function bulkRequestItems(chunks: string[], baseUrl: string): void {

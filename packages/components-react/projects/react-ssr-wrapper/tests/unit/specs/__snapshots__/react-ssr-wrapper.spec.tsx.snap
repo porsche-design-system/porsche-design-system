@@ -752,27 +752,41 @@ h2,h3,h4,h5,h6 {
               :host {
   display: inline-block;
   vertical-align: top;
-  max-width: 100% !important;
-  max-height: 36px !important;
-  width: inherit !important;
-  height: inherit !important;
+  max-width: 100%;
+  max-height: 100%;
+  width: var(--p-model-signature-width,94px);
+  height: var(--p-model-signature-height,auto);
+  mask: url(http://localhost:3001/model-signatures/911.min.b68f913216168583298ccf83f1a6b8d5.svg) no-repeat left top / contain !important;
+  aspect-ratio: 94 / 36 !important;
+  background: var(--p-model-signature-color,#FBFCFF) !important;
   color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
 }
-img {
-  display: block;
-  max-width: 100%;
-  max-height: 100%;
-  pointer-events: none;
-  filter: invert(100%) sepia(91%) saturate(38%) hue-rotate(254deg) brightness(110%) contrast(110%);
+::slotted(:is(img,video)) {
+  display: block !important;
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
 }
+img {
+  position: absolute;
+  opacity: 0;
+  width: 1px;
+  height: 1px;
+}
+@media (forced-colors: active) {
+  :host {
+    background: CanvasText !important;
+  }
+}
+
             </style>
+            <slot />
             <img
               alt="911"
-              height="36"
-              src="http://localhost:3001/model-signatures/911.min.5c462658f9d472e90a139173414e8fdd.svg"
+              src="http://localhost:3001/model-signatures/911.min.b68f913216168583298ccf83f1a6b8d5.svg"
             />
           </template>
         </p-model-signature>
@@ -1073,27 +1087,41 @@ h2,h3,h4,h5,h6 {
               :host {
   display: inline-block;
   vertical-align: top;
-  max-width: 100% !important;
-  max-height: 36px !important;
-  width: inherit !important;
-  height: inherit !important;
+  max-width: 100%;
+  max-height: 100%;
+  width: var(--p-model-signature-width,94px);
+  height: var(--p-model-signature-height,auto);
+  mask: url(http://localhost:3001/model-signatures/911.min.b68f913216168583298ccf83f1a6b8d5.svg) no-repeat left top / contain !important;
+  aspect-ratio: 94 / 36 !important;
+  background: var(--p-model-signature-color,#FBFCFF) !important;
   color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
 }
-img {
-  display: block;
-  max-width: 100%;
-  max-height: 100%;
-  pointer-events: none;
-  filter: invert(100%) sepia(91%) saturate(38%) hue-rotate(254deg) brightness(110%) contrast(110%);
+::slotted(:is(img,video)) {
+  display: block !important;
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
 }
+img {
+  position: absolute;
+  opacity: 0;
+  width: 1px;
+  height: 1px;
+}
+@media (forced-colors: active) {
+  :host {
+    background: CanvasText !important;
+  }
+}
+
             </style>
+            <slot />
             <img
               alt="911"
-              height="36"
-              src="http://localhost:3001/model-signatures/911.min.5c462658f9d472e90a139173414e8fdd.svg"
+              src="http://localhost:3001/model-signatures/911.min.b68f913216168583298ccf83f1a6b8d5.svg"
             />
           </template>
         </p-model-signature>
@@ -1430,27 +1458,41 @@ h2,h3,h4,h5,h6 {
               :host {
   display: inline-block;
   vertical-align: top;
-  max-width: 100% !important;
-  max-height: 36px !important;
-  width: inherit !important;
-  height: inherit !important;
+  max-width: 100%;
+  max-height: 100%;
+  width: var(--p-model-signature-width,94px);
+  height: var(--p-model-signature-height,auto);
+  mask: url(http://localhost:3001/model-signatures/911.min.b68f913216168583298ccf83f1a6b8d5.svg) no-repeat left top / contain !important;
+  aspect-ratio: 94 / 36 !important;
+  background: var(--p-model-signature-color,#FBFCFF) !important;
   color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
 }
-img {
-  display: block;
-  max-width: 100%;
-  max-height: 100%;
-  pointer-events: none;
-  filter: invert(100%) sepia(91%) saturate(38%) hue-rotate(254deg) brightness(110%) contrast(110%);
+::slotted(:is(img,video)) {
+  display: block !important;
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
 }
+img {
+  position: absolute;
+  opacity: 0;
+  width: 1px;
+  height: 1px;
+}
+@media (forced-colors: active) {
+  :host {
+    background: CanvasText !important;
+  }
+}
+
             </style>
+            <slot />
             <img
               alt="911"
-              height="36"
-              src="http://localhost:3001/model-signatures/911.min.5c462658f9d472e90a139173414e8fdd.svg"
+              src="http://localhost:3001/model-signatures/911.min.b68f913216168583298ccf83f1a6b8d5.svg"
             />
           </template>
         </p-model-signature>
@@ -1787,27 +1829,41 @@ h2,h3,h4,h5,h6 {
               :host {
   display: inline-block;
   vertical-align: top;
-  max-width: 100% !important;
-  max-height: 36px !important;
-  width: inherit !important;
-  height: inherit !important;
+  max-width: 100%;
+  max-height: 100%;
+  width: var(--p-model-signature-width,94px);
+  height: var(--p-model-signature-height,auto);
+  mask: url(http://localhost:3001/model-signatures/911.min.b68f913216168583298ccf83f1a6b8d5.svg) no-repeat left top / contain !important;
+  aspect-ratio: 94 / 36 !important;
+  background: var(--p-model-signature-color,#FBFCFF) !important;
   color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
 }
-img {
-  display: block;
-  max-width: 100%;
-  max-height: 100%;
-  pointer-events: none;
-  filter: invert(100%) sepia(91%) saturate(38%) hue-rotate(254deg) brightness(110%) contrast(110%);
+::slotted(:is(img,video)) {
+  display: block !important;
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
 }
+img {
+  position: absolute;
+  opacity: 0;
+  width: 1px;
+  height: 1px;
+}
+@media (forced-colors: active) {
+  :host {
+    background: CanvasText !important;
+  }
+}
+
             </style>
+            <slot />
             <img
               alt="911"
-              height="36"
-              src="http://localhost:3001/model-signatures/911.min.5c462658f9d472e90a139173414e8fdd.svg"
+              src="http://localhost:3001/model-signatures/911.min.b68f913216168583298ccf83f1a6b8d5.svg"
             />
           </template>
         </p-model-signature>
@@ -9587,27 +9643,41 @@ h2,h3,h4,h5,h6 {
               :host {
   display: inline-block;
   vertical-align: top;
-  max-width: 100% !important;
-  max-height: 36px !important;
-  width: inherit !important;
-  height: inherit !important;
+  max-width: 100%;
+  max-height: 100%;
+  width: var(--p-model-signature-width,94px);
+  height: var(--p-model-signature-height,auto);
+  mask: url(http://localhost:3001/model-signatures/911.min.b68f913216168583298ccf83f1a6b8d5.svg) no-repeat left top / contain !important;
+  aspect-ratio: 94 / 36 !important;
+  background: var(--p-model-signature-color,#FBFCFF) !important;
   color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
 }
-img {
-  display: block;
-  max-width: 100%;
-  max-height: 100%;
-  pointer-events: none;
-  filter: invert(100%) sepia(91%) saturate(38%) hue-rotate(254deg) brightness(110%) contrast(110%);
+::slotted(:is(img,video)) {
+  display: block !important;
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
 }
+img {
+  position: absolute;
+  opacity: 0;
+  width: 1px;
+  height: 1px;
+}
+@media (forced-colors: active) {
+  :host {
+    background: CanvasText !important;
+  }
+}
+
             </style>
+            <slot />
             <img
               alt="911"
-              height="36"
-              src="http://localhost:3001/model-signatures/911.min.5c462658f9d472e90a139173414e8fdd.svg"
+              src="http://localhost:3001/model-signatures/911.min.b68f913216168583298ccf83f1a6b8d5.svg"
             />
           </template>
         </p-model-signature>
@@ -10429,29 +10499,44 @@ exports[`should render dsr component for PModelSignature 1`] = `
       :host {
   display: inline-block;
   vertical-align: top;
-  max-width: 100% !important;
-  max-height: 36px !important;
-  width: inherit !important;
-  height: inherit !important;
+  max-width: 100%;
+  max-height: 100%;
+  width: var(--p-model-signature-width,94px);
+  height: var(--p-model-signature-height,auto);
+  mask: url(http://localhost:3001/model-signatures/911.min.b68f913216168583298ccf83f1a6b8d5.svg) no-repeat left top / contain !important;
+  aspect-ratio: 94 / 36 !important;
+  background: var(--p-model-signature-color,#010205) !important;
   color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
 }
-img {
-  display: block;
-  max-width: 100%;
-  max-height: 100%;
-  pointer-events: none;
-  filter: invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%);
+::slotted(:is(img,video)) {
+  display: block !important;
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
 }
+img {
+  position: absolute;
+  opacity: 0;
+  width: 1px;
+  height: 1px;
+}
+@media (forced-colors: active) {
+  :host {
+    background: CanvasText !important;
+  }
+}
+
     </style>
+    <slot />
     <img
       alt="911"
-      height="36"
-      src="http://localhost:3001/model-signatures/911.min.5c462658f9d472e90a139173414e8fdd.svg"
+      src="http://localhost:3001/model-signatures/911.min.b68f913216168583298ccf83f1a6b8d5.svg"
     />
   </template>
+  Some child
 </p-model-signature>
 `;
 
