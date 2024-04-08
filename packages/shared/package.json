@@ -37,7 +37,7 @@
     "jss": "^10.10.0",
     "jss-plugin-sort-css-media-queries": "^1.0.1-beta.0",
     "jss-preset-default": "^10.10.0",
-    "rollup": "^4.14.0",
+    "rollup": "^4.14.1",
     "rollup-plugin-bin": "^1.0.0",
     "rollup-plugin-copy": "^3.5.0",
     "rollup-plugin-generate-package-json": "^3.2.0",
