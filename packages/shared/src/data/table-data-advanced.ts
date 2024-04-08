@@ -42,8 +42,8 @@ export type DataAdvanced = {
 
 export const dataAdvanced: DataAdvanced[] = [
   {
-    imageUrl: 'https://nav.porsche.com/00BC524/series-assets/1366/718@2x.jpg',
-    model: '718 Cayman',
+    imageUrl: 'https://porsche-design-system.github.io/porsche-design-system/718.png',
+    model: '718',
     date: '23.06.2021',
     interest: 'New Car',
     vin: '1FM5K7F84FGB16304',
@@ -53,8 +53,8 @@ export const dataAdvanced: DataAdvanced[] = [
     leadId: '0000824402',
   },
   {
-    imageUrl: 'https://nav.porsche.com/00BC524/series-assets/1366/panamera@2x.jpg',
-    model: 'Panamera 4S',
+    imageUrl: 'https://porsche-design-system.github.io/porsche-design-system/panamera.png',
+    model: 'Panamera',
     date: '19.06.2021',
     interest: 'New Car',
     vin: '2GCEC13T141374801',
@@ -64,8 +64,8 @@ export const dataAdvanced: DataAdvanced[] = [
     leadId: '0000824409',
   },
   {
-    imageUrl: 'https://nav.porsche.com/00BC524/series-assets/1366/911@2x.jpg',
-    model: '911 Carrera S',
+    imageUrl: 'https://porsche-design-system.github.io/porsche-design-system/911.png',
+    model: '911',
     date: '19.05.2021',
     interest: 'Used Car',
     vin: '5GAKVCKD8EJ335750',
@@ -75,8 +75,8 @@ export const dataAdvanced: DataAdvanced[] = [
     leadId: '0000824408',
   },
   {
-    imageUrl: 'https://nav.porsche.com/00BC524/series-assets/1366/macan@2x.jpg',
-    model: 'Macan Turbo',
+    imageUrl: 'https://porsche-design-system.github.io/porsche-design-system/macan.png',
+    model: 'Macan',
     date: '10.05.2021',
     interest: 'Used Car',
     vin: '1FMPU17L83LC09302',
@@ -86,7 +86,7 @@ export const dataAdvanced: DataAdvanced[] = [
     leadId: '0000824407',
   },
   {
-    imageUrl: 'https://nav.porsche.com/00BC524/series-assets/768/taycan@2x.jpg',
+    imageUrl: 'https://porsche-design-system.github.io/porsche-design-system/taycan.png',
     model: 'Taycan',
     date: '03.05.2021',
     interest: 'New Car',
