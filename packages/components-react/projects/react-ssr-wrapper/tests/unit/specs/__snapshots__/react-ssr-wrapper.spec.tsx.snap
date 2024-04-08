@@ -6062,24 +6062,24 @@ exports[`should render dsr component for PBanner 1`] = `
 :host([hidden]) {
   display: none !important;
 }
-h5 {
-  font: normal normal 600 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-}
-p {
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: auto;
-}
-h5,p {
-  margin: 0;
-  color: #010205;
-}
 @media(min-width:760px) {
   :host {
     grid-template-columns: auto minmax(auto, 1fr) auto !important;
   }
 }
 
+.heading {
+  font: normal normal 600 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  margin: 0;
+  color: #010205;
+}
+.description {
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  margin: 0;
+  color: #010205;
+}
 .content {
   display: grid;
   gap: 4px;
@@ -6153,6 +6153,7 @@ img {
           role="status"
         >
           <p
+            class="description"
             id="description"
           >
             <slot />
@@ -8702,24 +8703,24 @@ exports[`should render dsr component for PInlineNotification 1`] = `
 :host([hidden]) {
   display: none !important;
 }
-h5 {
-  font: normal normal 600 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-}
-p {
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: auto;
-}
-h5,p {
-  margin: 0;
-  color: #010205;
-}
 @media(min-width:760px) {
   :host {
     grid-template-columns: auto minmax(auto, 1fr) auto !important;
   }
 }
 
+.heading {
+  font: normal normal 600 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  margin: 0;
+  color: #010205;
+}
+.description {
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  margin: 0;
+  color: #010205;
+}
 .content {
   display: grid;
   gap: 4px;
@@ -8793,6 +8794,7 @@ img {
       role="status"
     >
       <p
+        class="description"
         id="description"
       >
         <slot />
