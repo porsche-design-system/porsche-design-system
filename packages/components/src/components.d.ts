@@ -40,7 +40,7 @@ import { LinkTileProductAspectRatio, LinkTileProductLikeEventDetail, LinkTilePro
 import { MarqueAriaAttribute, MarqueTarget, MarqueVariant } from "./components/marque/marque-utils";
 import { MarqueSize } from "./components/marque/marque-size";
 import { ModalAriaAttribute, ModalBackdrop } from "./components/modal/modal-utils";
-import { ModelSignatureColor, ModelSignatureModel, ModelSignatureSize } from "./components/model-signature/model-signature-utils";
+import { ModelSignatureColor, ModelSignatureFetchPriority, ModelSignatureModel, ModelSignatureSize } from "./components/model-signature/model-signature-utils";
 import { MultiSelectDropdownDirection, MultiSelectState, MultiSelectUpdateEventDetail } from "./components/multi-select/multi-select/multi-select-utils";
 import { PaginationInternationalization, PaginationMaxNumberOfPageLinks, PaginationUpdateEventDetail } from "./components/pagination/pagination-utils";
 import { PinCodeLength, PinCodeState, PinCodeType, PinCodeUpdateEventDetail } from "./components/pin-code/pin-code-utils";
@@ -102,7 +102,7 @@ export { LinkTileProductAspectRatio, LinkTileProductLikeEventDetail, LinkTilePro
 export { MarqueAriaAttribute, MarqueTarget, MarqueVariant } from "./components/marque/marque-utils";
 export { MarqueSize } from "./components/marque/marque-size";
 export { ModalAriaAttribute, ModalBackdrop } from "./components/modal/modal-utils";
-export { ModelSignatureColor, ModelSignatureModel, ModelSignatureSize } from "./components/model-signature/model-signature-utils";
+export { ModelSignatureColor, ModelSignatureFetchPriority, ModelSignatureModel, ModelSignatureSize } from "./components/model-signature/model-signature-utils";
 export { MultiSelectDropdownDirection, MultiSelectState, MultiSelectUpdateEventDetail } from "./components/multi-select/multi-select/multi-select-utils";
 export { PaginationInternationalization, PaginationMaxNumberOfPageLinks, PaginationUpdateEventDetail } from "./components/pagination/pagination-utils";
 export { PinCodeLength, PinCodeState, PinCodeType, PinCodeUpdateEventDetail } from "./components/pin-code/pin-code-utils";
@@ -1211,11 +1211,23 @@ export namespace Components {
          */
         "color"?: ModelSignatureColor;
         /**
+          * Defines the fetch priority of the model signature. In the end it is just a recommendation to the browser, but it defines the priority on its own.
+         */
+        "fetchPriority"?: ModelSignatureFetchPriority;
+        /**
+          * Defines whether the model signature is always loaded or only loaded when it is in the viewport (this feature may not work reliably).
+         */
+        "lazy"?: boolean;
+        /**
           * Adapts the model of the component.
          */
         "model"?: ModelSignatureModel;
         /**
-          * Adapts the size of the component.
+          * When set to `true`, then all model signatures are visually aligned with each other. When set to `false` the model signature comes without any safe zone.
+         */
+        "safeZone"?: boolean;
+        /**
+          * Adapts the size of the component. When set to `inherit` a CSS `width` or `height` needs to be defined on the host but not both.
          */
         "size"?: ModelSignatureSize;
         /**
@@ -3971,11 +3983,23 @@ declare namespace LocalJSX {
          */
         "color"?: ModelSignatureColor;
         /**
+          * Defines the fetch priority of the model signature. In the end it is just a recommendation to the browser, but it defines the priority on its own.
+         */
+        "fetchPriority"?: ModelSignatureFetchPriority;
+        /**
+          * Defines whether the model signature is always loaded or only loaded when it is in the viewport (this feature may not work reliably).
+         */
+        "lazy"?: boolean;
+        /**
           * Adapts the model of the component.
          */
         "model"?: ModelSignatureModel;
         /**
-          * Adapts the size of the component.
+          * When set to `true`, then all model signatures are visually aligned with each other. When set to `false` the model signature comes without any safe zone.
+         */
+        "safeZone"?: boolean;
+        /**
+          * Adapts the size of the component. When set to `inherit` a CSS `width` or `height` needs to be defined on the host but not both.
          */
         "size"?: ModelSignatureSize;
         /**
