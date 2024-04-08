@@ -3,7 +3,7 @@ FROM mcr.microsoft.com/playwright:v1.43.0-focal
 ENV PATH="/opt/porsche-design-system/bin:${PATH}"
 
 RUN apt-get update && \
-    apt-get install rsync git curl unzip && \
+    apt-get install libasound2 rsync git curl unzip && \
     rm -rf /var/lib/apt/lists/*
 
 # https://docs.aws.amazon.com/cli/latest/userguide/install-cliv2-linux.html#cliv2-linux-install
