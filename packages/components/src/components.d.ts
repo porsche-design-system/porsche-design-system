@@ -512,7 +512,7 @@ export namespace Components {
          */
         "size"?: BreakpointCustomizable<DisplaySize>;
         /**
-          * Sets a custom HTML tag depending on the usage of the display component.
+          * Sets a heading tag, so it fits correctly within the outline of the page.
          */
         "tag"?: DisplayTag;
         /**
@@ -752,7 +752,7 @@ export namespace Components {
          */
         "size"?: BreakpointCustomizable<HeadingSize>;
         /**
-          * Sets a custom HTML tag depending on the usage of the heading component.
+          * Sets a heading tag, so it fits correctly within the outline of the page.
          */
         "tag"?: HeadingTag;
         /**
@@ -1072,7 +1072,7 @@ export namespace Components {
          */
         "heading": string;
         /**
-          * Sets a custom headline tag which wraps the heading to enhance semantics.
+          * Sets a heading tag, so it fits correctly within the outline of the page.
          */
         "headingTag"?: LinkTileModelSignatureHeadingTag;
         /**
@@ -3252,7 +3252,7 @@ declare namespace LocalJSX {
          */
         "size"?: BreakpointCustomizable<DisplaySize>;
         /**
-          * Sets a custom HTML tag depending on the usage of the display component.
+          * Sets a heading tag, so it fits correctly within the outline of the page.
          */
         "tag"?: DisplayTag;
         /**
@@ -3504,7 +3504,7 @@ declare namespace LocalJSX {
          */
         "size"?: BreakpointCustomizable<HeadingSize>;
         /**
-          * Sets a custom HTML tag depending on the usage of the heading component.
+          * Sets a heading tag, so it fits correctly within the outline of the page.
          */
         "tag"?: HeadingTag;
         /**
@@ -3832,7 +3832,7 @@ declare namespace LocalJSX {
          */
         "heading"?: string;
         /**
-          * Sets a custom headline tag which wraps the heading to enhance semantics.
+          * Sets a heading tag, so it fits correctly within the outline of the page.
          */
         "headingTag"?: LinkTileModelSignatureHeadingTag;
         /**

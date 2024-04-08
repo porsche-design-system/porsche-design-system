@@ -14,24 +14,24 @@ exports[`getComponentCss() should return correct css for state: error, hasAction
 :host([hidden]) {
   display: none !important;
 }
-h5 {
-  font: normal normal 600 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-}
-p {
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: auto;
-}
-h5,p {
-  margin: 0;
-  color: #FBFCFF;
-}
 @media(min-width:760px) {
   :host {
     grid-template-columns: auto minmax(auto, 1fr) !important;
   }
 }
 
+.heading {
+  font: normal normal 600 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  margin: 0;
+  color: #FBFCFF;
+}
+.description {
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  margin: 0;
+  color: #FBFCFF;
+}
 .content {
   display: grid;
   gap: 4px;
@@ -65,24 +65,24 @@ exports[`getComponentCss() should return correct css for state: error, hasAction
 :host([hidden]) {
   display: none !important;
 }
-h5 {
-  font: normal normal 600 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-}
-p {
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: auto;
-}
-h5,p {
-  margin: 0;
-  color: #010205;
-}
 @media(min-width:760px) {
   :host {
     grid-template-columns: auto minmax(auto, 1fr) !important;
   }
 }
 
+.heading {
+  font: normal normal 600 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  margin: 0;
+  color: #010205;
+}
+.description {
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  margin: 0;
+  color: #010205;
+}
 .content {
   display: grid;
   gap: 4px;
@@ -116,24 +116,24 @@ exports[`getComponentCss() should return correct css for state: info, hasAction:
 :host([hidden]) {
   display: none !important;
 }
-h5 {
-  font: normal normal 600 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-}
-p {
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: auto;
-}
-h5,p {
-  margin: 0;
-  color: #FBFCFF;
-}
 @media(min-width:760px) {
   :host {
     grid-template-columns: auto minmax(auto, 1fr) !important;
   }
 }
 
+.heading {
+  font: normal normal 600 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  margin: 0;
+  color: #FBFCFF;
+}
+.description {
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  margin: 0;
+  color: #FBFCFF;
+}
 .content {
   display: grid;
   gap: 4px;
@@ -167,24 +167,24 @@ exports[`getComponentCss() should return correct css for state: info, hasAction:
 :host([hidden]) {
   display: none !important;
 }
-h5 {
-  font: normal normal 600 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-}
-p {
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: auto;
-}
-h5,p {
-  margin: 0;
-  color: #010205;
-}
 @media(min-width:760px) {
   :host {
     grid-template-columns: auto minmax(auto, 1fr) !important;
   }
 }
 
+.heading {
+  font: normal normal 600 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  margin: 0;
+  color: #010205;
+}
+.description {
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  margin: 0;
+  color: #010205;
+}
 .content {
   display: grid;
   gap: 4px;
@@ -218,24 +218,24 @@ exports[`getComponentCss() should return correct css for state: info, hasAction:
 :host([hidden]) {
   display: none !important;
 }
-h5 {
-  font: normal normal 600 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-}
-p {
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: auto;
-}
-h5,p {
-  margin: 0;
-  color: #FBFCFF;
-}
 @media(min-width:760px) {
   :host {
     grid-template-columns: auto minmax(auto, 1fr) auto !important;
   }
 }
 
+.heading {
+  font: normal normal 600 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  margin: 0;
+  color: #FBFCFF;
+}
+.description {
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  margin: 0;
+  color: #FBFCFF;
+}
 .content {
   display: grid;
   gap: 4px;
@@ -269,24 +269,24 @@ exports[`getComponentCss() should return correct css for state: info, hasAction:
 :host([hidden]) {
   display: none !important;
 }
-h5 {
-  font: normal normal 600 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-}
-p {
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: auto;
-}
-h5,p {
-  margin: 0;
-  color: #010205;
-}
 @media(min-width:760px) {
   :host {
     grid-template-columns: auto minmax(auto, 1fr) auto !important;
   }
 }
 
+.heading {
+  font: normal normal 600 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  margin: 0;
+  color: #010205;
+}
+.description {
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  margin: 0;
+  color: #010205;
+}
 .content {
   display: grid;
   gap: 4px;
@@ -320,24 +320,24 @@ exports[`getComponentCss() should return correct css for state: info, hasAction:
 :host([hidden]) {
   display: none !important;
 }
-h5 {
-  font: normal normal 600 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-}
-p {
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: auto;
-}
-h5,p {
-  margin: 0;
-  color: #FBFCFF;
-}
 @media(min-width:760px) {
   :host {
     grid-template-columns: auto minmax(auto, 1fr) auto !important;
   }
 }
 
+.heading {
+  font: normal normal 600 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  margin: 0;
+  color: #FBFCFF;
+}
+.description {
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  margin: 0;
+  color: #FBFCFF;
+}
 .content {
   display: grid;
   gap: 4px;
@@ -374,24 +374,24 @@ exports[`getComponentCss() should return correct css for state: info, hasAction:
 :host([hidden]) {
   display: none !important;
 }
-h5 {
-  font: normal normal 600 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-}
-p {
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: auto;
-}
-h5,p {
-  margin: 0;
-  color: #010205;
-}
 @media(min-width:760px) {
   :host {
     grid-template-columns: auto minmax(auto, 1fr) auto !important;
   }
 }
 
+.heading {
+  font: normal normal 600 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  margin: 0;
+  color: #010205;
+}
+.description {
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  margin: 0;
+  color: #010205;
+}
 .content {
   display: grid;
   gap: 4px;
@@ -428,24 +428,24 @@ exports[`getComponentCss() should return correct css for state: info, hasAction:
 :host([hidden]) {
   display: none !important;
 }
-h5 {
-  font: normal normal 600 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-}
-p {
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: auto;
-}
-h5,p {
-  margin: 0;
-  color: #FBFCFF;
-}
 @media(min-width:760px) {
   :host {
     grid-template-columns: auto minmax(auto, 1fr) auto auto !important;
   }
 }
 
+.heading {
+  font: normal normal 600 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  margin: 0;
+  color: #FBFCFF;
+}
+.description {
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  margin: 0;
+  color: #FBFCFF;
+}
 .content {
   display: grid;
   gap: 4px;
@@ -482,24 +482,24 @@ exports[`getComponentCss() should return correct css for state: info, hasAction:
 :host([hidden]) {
   display: none !important;
 }
-h5 {
-  font: normal normal 600 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-}
-p {
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: auto;
-}
-h5,p {
-  margin: 0;
-  color: #010205;
-}
 @media(min-width:760px) {
   :host {
     grid-template-columns: auto minmax(auto, 1fr) auto auto !important;
   }
 }
 
+.heading {
+  font: normal normal 600 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  margin: 0;
+  color: #010205;
+}
+.description {
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  margin: 0;
+  color: #010205;
+}
 .content {
   display: grid;
   gap: 4px;
@@ -536,24 +536,24 @@ exports[`getComponentCss() should return correct css for state: neutral, hasActi
 :host([hidden]) {
   display: none !important;
 }
-h5 {
-  font: normal normal 600 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-}
-p {
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: auto;
-}
-h5,p {
-  margin: 0;
-  color: #FBFCFF;
-}
 @media(min-width:760px) {
   :host {
     grid-template-columns: auto minmax(auto, 1fr) !important;
   }
 }
 
+.heading {
+  font: normal normal 600 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  margin: 0;
+  color: #FBFCFF;
+}
+.description {
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  margin: 0;
+  color: #FBFCFF;
+}
 .content {
   display: grid;
   gap: 4px;
@@ -587,24 +587,24 @@ exports[`getComponentCss() should return correct css for state: neutral, hasActi
 :host([hidden]) {
   display: none !important;
 }
-h5 {
-  font: normal normal 600 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-}
-p {
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: auto;
-}
-h5,p {
-  margin: 0;
-  color: #010205;
-}
 @media(min-width:760px) {
   :host {
     grid-template-columns: auto minmax(auto, 1fr) !important;
   }
 }
 
+.heading {
+  font: normal normal 600 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  margin: 0;
+  color: #010205;
+}
+.description {
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  margin: 0;
+  color: #010205;
+}
 .content {
   display: grid;
   gap: 4px;
@@ -638,24 +638,24 @@ exports[`getComponentCss() should return correct css for state: neutral, hasActi
 :host([hidden]) {
   display: none !important;
 }
-h5 {
-  font: normal normal 600 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-}
-p {
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: auto;
-}
-h5,p {
-  margin: 0;
-  color: #FBFCFF;
-}
 @media(min-width:760px) {
   :host {
     grid-template-columns: auto minmax(auto, 1fr) auto !important;
   }
 }
 
+.heading {
+  font: normal normal 600 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  margin: 0;
+  color: #FBFCFF;
+}
+.description {
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  margin: 0;
+  color: #FBFCFF;
+}
 .content {
   display: grid;
   gap: 4px;
@@ -689,24 +689,24 @@ exports[`getComponentCss() should return correct css for state: neutral, hasActi
 :host([hidden]) {
   display: none !important;
 }
-h5 {
-  font: normal normal 600 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-}
-p {
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: auto;
-}
-h5,p {
-  margin: 0;
-  color: #010205;
-}
 @media(min-width:760px) {
   :host {
     grid-template-columns: auto minmax(auto, 1fr) auto !important;
   }
 }
 
+.heading {
+  font: normal normal 600 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  margin: 0;
+  color: #010205;
+}
+.description {
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  margin: 0;
+  color: #010205;
+}
 .content {
   display: grid;
   gap: 4px;
@@ -740,24 +740,24 @@ exports[`getComponentCss() should return correct css for state: neutral, hasActi
 :host([hidden]) {
   display: none !important;
 }
-h5 {
-  font: normal normal 600 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-}
-p {
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: auto;
-}
-h5,p {
-  margin: 0;
-  color: #FBFCFF;
-}
 @media(min-width:760px) {
   :host {
     grid-template-columns: auto minmax(auto, 1fr) auto !important;
   }
 }
 
+.heading {
+  font: normal normal 600 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  margin: 0;
+  color: #FBFCFF;
+}
+.description {
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  margin: 0;
+  color: #FBFCFF;
+}
 .content {
   display: grid;
   gap: 4px;
@@ -794,24 +794,24 @@ exports[`getComponentCss() should return correct css for state: neutral, hasActi
 :host([hidden]) {
   display: none !important;
 }
-h5 {
-  font: normal normal 600 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-}
-p {
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: auto;
-}
-h5,p {
-  margin: 0;
-  color: #010205;
-}
 @media(min-width:760px) {
   :host {
     grid-template-columns: auto minmax(auto, 1fr) auto !important;
   }
 }
 
+.heading {
+  font: normal normal 600 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  margin: 0;
+  color: #010205;
+}
+.description {
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  margin: 0;
+  color: #010205;
+}
 .content {
   display: grid;
   gap: 4px;
@@ -848,24 +848,24 @@ exports[`getComponentCss() should return correct css for state: neutral, hasActi
 :host([hidden]) {
   display: none !important;
 }
-h5 {
-  font: normal normal 600 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-}
-p {
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: auto;
-}
-h5,p {
-  margin: 0;
-  color: #FBFCFF;
-}
 @media(min-width:760px) {
   :host {
     grid-template-columns: auto minmax(auto, 1fr) auto auto !important;
   }
 }
 
+.heading {
+  font: normal normal 600 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  margin: 0;
+  color: #FBFCFF;
+}
+.description {
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  margin: 0;
+  color: #FBFCFF;
+}
 .content {
   display: grid;
   gap: 4px;
@@ -902,24 +902,24 @@ exports[`getComponentCss() should return correct css for state: neutral, hasActi
 :host([hidden]) {
   display: none !important;
 }
-h5 {
-  font: normal normal 600 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-}
-p {
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: auto;
-}
-h5,p {
-  margin: 0;
-  color: #010205;
-}
 @media(min-width:760px) {
   :host {
     grid-template-columns: auto minmax(auto, 1fr) auto auto !important;
   }
 }
 
+.heading {
+  font: normal normal 600 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  margin: 0;
+  color: #010205;
+}
+.description {
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  margin: 0;
+  color: #010205;
+}
 .content {
   display: grid;
   gap: 4px;
@@ -956,24 +956,24 @@ exports[`getComponentCss() should return correct css for state: success, hasActi
 :host([hidden]) {
   display: none !important;
 }
-h5 {
-  font: normal normal 600 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-}
-p {
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: auto;
-}
-h5,p {
-  margin: 0;
-  color: #FBFCFF;
-}
 @media(min-width:760px) {
   :host {
     grid-template-columns: auto minmax(auto, 1fr) !important;
   }
 }
 
+.heading {
+  font: normal normal 600 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  margin: 0;
+  color: #FBFCFF;
+}
+.description {
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  margin: 0;
+  color: #FBFCFF;
+}
 .content {
   display: grid;
   gap: 4px;
@@ -1007,24 +1007,24 @@ exports[`getComponentCss() should return correct css for state: success, hasActi
 :host([hidden]) {
   display: none !important;
 }
-h5 {
-  font: normal normal 600 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-}
-p {
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: auto;
-}
-h5,p {
-  margin: 0;
-  color: #010205;
-}
 @media(min-width:760px) {
   :host {
     grid-template-columns: auto minmax(auto, 1fr) !important;
   }
 }
 
+.heading {
+  font: normal normal 600 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  margin: 0;
+  color: #010205;
+}
+.description {
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  margin: 0;
+  color: #010205;
+}
 .content {
   display: grid;
   gap: 4px;
@@ -1058,24 +1058,24 @@ exports[`getComponentCss() should return correct css for state: warning, hasActi
 :host([hidden]) {
   display: none !important;
 }
-h5 {
-  font: normal normal 600 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-}
-p {
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: auto;
-}
-h5,p {
-  margin: 0;
-  color: #FBFCFF;
-}
 @media(min-width:760px) {
   :host {
     grid-template-columns: auto minmax(auto, 1fr) !important;
   }
 }
 
+.heading {
+  font: normal normal 600 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  margin: 0;
+  color: #FBFCFF;
+}
+.description {
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  margin: 0;
+  color: #FBFCFF;
+}
 .content {
   display: grid;
   gap: 4px;
@@ -1109,24 +1109,24 @@ exports[`getComponentCss() should return correct css for state: warning, hasActi
 :host([hidden]) {
   display: none !important;
 }
-h5 {
-  font: normal normal 600 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-}
-p {
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: auto;
-}
-h5,p {
-  margin: 0;
-  color: #010205;
-}
 @media(min-width:760px) {
   :host {
     grid-template-columns: auto minmax(auto, 1fr) !important;
   }
 }
 
+.heading {
+  font: normal normal 600 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  margin: 0;
+  color: #010205;
+}
+.description {
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  margin: 0;
+  color: #010205;
+}
 .content {
   display: grid;
   gap: 4px;
