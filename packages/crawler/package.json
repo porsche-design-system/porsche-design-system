@@ -19,7 +19,7 @@
   },
   "devDependencies": {
     "tsx": "^4.7.2",
-    "typescript": "~5.4.3"
+    "typescript": "~5.4.4"
   },
   "volta": {
     "extends": "../../package.json"

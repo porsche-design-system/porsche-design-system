@@ -27,7 +27,7 @@
     "sass": "^1.74.1",
     "styled-components": "^5.3.11",
     "tsx": "^4.7.2",
-    "typescript": "~5.4.3"
+    "typescript": "~5.4.4"
   },
   "volta": {
     "extends": "../../package.json"

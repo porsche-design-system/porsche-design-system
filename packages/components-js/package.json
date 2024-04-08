@@ -89,7 +89,7 @@
     "sass": "^1.74.1",
     "terser-webpack-plugin": "^5.3.10",
     "tsx": "^4.7.2",
-    "typescript": "~5.4.3",
+    "typescript": "~5.4.4",
     "vite": "^5.2.8",
     "webpack": "^5.91.0",
     "webpack-bundle-analyzer": "^4.10.1",

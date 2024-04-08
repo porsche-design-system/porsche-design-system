@@ -50,7 +50,7 @@
     "globby": "^14.0.1",
     "local-web-server": "^5.3.3",
     "tsx": "^4.7.2",
-    "typescript": "~5.4.3",
+    "typescript": "~5.4.4",
     "vite": "^5.2.8",
     "vite-plugin-html": "^3.2.2",
     "vite-plugin-static-copy": "^1.0.2",

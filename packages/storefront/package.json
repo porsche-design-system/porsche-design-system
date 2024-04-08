@@ -75,7 +75,7 @@
     "sass": "^1.74.1",
     "sass-loader": "^10.5.2",
     "tsx": "^4.7.2",
-    "typescript": "~5.4.3",
+    "typescript": "~5.4.4",
     "vue-template-compiler": "^2.7.16",
     "whatwg-fetch": "^3.6.20"
   },
