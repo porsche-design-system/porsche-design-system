@@ -38,7 +38,7 @@ export class Accordion {
   /** Defines the heading used in accordion. */
   @Prop() public heading?: string;
 
-  /** Sets a headline tag, so it fits correctly within the outline of the page. */
+  /** Sets a heading tag, so it fits correctly within the outline of the page. */
   @Prop() public tag?: AccordionTag = 'h2';
 
   /** Defines if accordion is open. */

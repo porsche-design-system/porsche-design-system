@@ -148,7 +148,7 @@ export namespace Components {
          */
         "size"?: BreakpointCustomizable<AccordionSize>;
         /**
-          * Sets a headline tag, so it fits correctly within the outline of the page.
+          * Sets a heading tag, so it fits correctly within the outline of the page.
          */
         "tag"?: AccordionTag;
         /**
@@ -170,7 +170,7 @@ export namespace Components {
          */
         "heading"?: string;
         /**
-          * Heading-Tag of the inline-notification.
+          * Sets a heading tag, so it fits correctly within the outline of the page.
          */
         "headingTag"?: BannerHeadingTag;
         /**
@@ -846,7 +846,7 @@ export namespace Components {
          */
         "heading"?: string;
         /**
-          * Heading-Tag of the inline-notification.
+          * Sets a heading tag, so it fits correctly within the outline of the page.
          */
         "headingTag"?: InlineNotificationHeadingTag;
         /**
@@ -2876,7 +2876,7 @@ declare namespace LocalJSX {
          */
         "size"?: BreakpointCustomizable<AccordionSize>;
         /**
-          * Sets a headline tag, so it fits correctly within the outline of the page.
+          * Sets a heading tag, so it fits correctly within the outline of the page.
          */
         "tag"?: AccordionTag;
         /**
@@ -2898,7 +2898,7 @@ declare namespace LocalJSX {
          */
         "heading"?: string;
         /**
-          * Heading-Tag of the inline-notification.
+          * Sets a heading tag, so it fits correctly within the outline of the page.
          */
         "headingTag"?: BannerHeadingTag;
         /**
@@ -3598,7 +3598,7 @@ declare namespace LocalJSX {
          */
         "heading"?: string;
         /**
-          * Heading-Tag of the inline-notification.
+          * Sets a heading tag, so it fits correctly within the outline of the page.
          */
         "headingTag"?: InlineNotificationHeadingTag;
         /**

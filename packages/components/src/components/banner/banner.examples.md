@@ -6,7 +6,7 @@ informational and/or critical notification like some site related topics.
 Review the [notification decision tree](patterns/notifications/decision-tree) to determine which notification component
 is best for a particular scenario.
 
-<Notification heading="Attention" state="warning">
+<Notification heading="Attention" heading-tag="h2" state="warning">
   Before v3.0.0 the <strong>p-banner</strong> handled its open state internally. This is no longer the case, since v3.0.0 it is a <strong>controlled</strong> component and has to be opened with the <strong>open property</strong>.
 </Notification>
 
@@ -17,7 +17,7 @@ is best for a particular scenario.
 The `p-banner` component is positioned fixed above the page content by default. For personal adjustments, go to "Custom
 styling" section.
 
-<Notification heading="Deprecation hint" state="warning">
+<Notification heading="Deprecation hint" heading-tag="h3" state="warning">
   Following state has been deprecated and will be removed with the next major release: "neutral".
 </Notification>
 
@@ -25,22 +25,28 @@ styling" section.
   <PlaygroundSelect v-model="state" :values="states" name="state"></PlaygroundSelect>
   <br><br>
   <p-button type="button" :theme="theme" @click="isBannerStateOpen = true">Open Banner</p-button>
-  <p-banner :theme="theme" :open="isBannerStateOpen" heading="Some Heading" description="Some Description" :state="state"
+  <p-banner :theme="theme" :open="isBannerStateOpen" heading="Some Heading" heading-tag="h3" description="Some Description" :state="state"
     @dismiss="isBannerStateOpen = false"></p-banner>
 </Playground>
+
+### <A11yIcon></A11yIcon> Accessibility hints
+
+The `heading-tag` property needs to be set in order for the banner to fit into the outline of the page. If there is no
+`heading-tag` property provided, it defaults to `h5`. For instance our example banners use heading **level 3** because
+they are contained in sections titled with a **level 2** heading.
 
 ## Slotted heading and description
 
 Rich content for `heading` and `description` can be provided via named slots.
 
-<Notification heading="Deprecation hint" state="warning">
+<Notification heading="Deprecation hint" heading-tag="h3" state="warning">
   The named <code>slot="title"</code> has been deprecated and will be removed with the next major release.<br>
   Please use <code>slot="heading"</code> or the <code>heading</code> property instead.
 </Notification>
 
 <Playground :markup="slottedHeadingDescriptionMarkup" :config="config">
   <p-button type="button" :theme="theme" @click="isBannerSlottedOpen = true">Open Banner</p-button>
-  <p-banner :theme="theme" :open="isBannerSlottedOpen" :state="state" @dismiss="isBannerSlottedOpen = false">
+  <p-banner :theme="theme" :open="isBannerSlottedOpen" :state="state" heading-tag="h3" @dismiss="isBannerSlottedOpen = false">
   <span slot="heading">Some heading with a <a href="https://porsche.com">link</a></span> <span slot="description">Some
   description. You can also add inline <a href="https://porsche.com">links</a> to route to another page.</span>
   </p-banner>
@@ -50,14 +56,14 @@ Rich content for `heading` and `description` can be provided via named slots.
 
 If the **Banner** shouldn't be removable by the user, add `dismissButton` prop.
 
-<Notification heading="Deprecation hint" state="warning">
+<Notification heading="Deprecation hint" heading-tag="h3" state="warning">
   The <code>persistent</code> property has been deprecated and will be removed with the next major release.<br>
   Please use the <code>dismissButton</code> property instead.
 </Notification>
 
 <Playground :markup="dismissButtonMarkup" :config="config">
   <p-button type="button" :theme="theme" @click="isBannerDismissBtnOpen = true">Open Banner</p-button>
-  <p-banner :theme="theme" :open="isBannerDismissBtnOpen" heading="Some Heading" description="Some Description"
+  <p-banner :theme="theme" :open="isBannerDismissBtnOpen" heading="Some Heading" heading-tag="h3" description="Some Description"
     :state="state" dismiss-button="false"></p-banner>
 </Playground>
 
@@ -115,14 +121,14 @@ export default class Code extends Vue {
   }
 
   get slottedHeadingDescriptionMarkup() {
-    return `<p-banner open="false" state="${this.state}">
+    return `<p-banner open="false" state="${this.state}" heading-tag="h3">
   <span slot="heading">Some heading with a <a href="https://porsche.com">link</a></span>
   <span slot="description">Some description. You can also add inline <a href="https://porsche.com">links</a> to route to another page.</span>
 </p-banner>`
 };
     
   get dismissButtonMarkup() {
-    return `<p-banner open="false" heading="Some Heading" description="Some Description" state="${this.state}" dismiss-button="false"></p-banner>`};
+    return `<p-banner open="false" heading="Some Heading" heading-tag="h3" description="Some Description" state="${this.state}" dismiss-button="false"></p-banner>`};
 
   mounted(): void {
     const banners = document.querySelectorAll('p-banner');

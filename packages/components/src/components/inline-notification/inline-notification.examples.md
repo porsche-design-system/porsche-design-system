@@ -12,6 +12,12 @@ is best for a particular scenario.
 
 <Playground :markup="basic" :config="config"></Playground>
 
+### <A11yIcon></A11yIcon> Accessibility hints
+
+The `heading-tag` property needs to be set in order for the inline notification to fit into the outline of the page. If
+there is no `heading-tag` property provided, it defaults to `h5`. For instance our example inline notifications use
+heading **level 3** because they are contained in sections titled with a **level 2** heading.
+
 ## State
 
 <Notification heading="Deprecation hint" state="warning">
@@ -97,27 +103,27 @@ export default class Code extends Vue {
   }
 
   basic =
-`<p-inline-notification heading="${this.defaultHeading}" description="${this.defaultDescription}">
+`<p-inline-notification heading="${this.defaultHeading}" heading-tag="h3" description="${this.defaultDescription}">
 </p-inline-notification>
 <br>
 <!-- or alternatively -->
-<p-inline-notification heading="${this.defaultHeading}">
+<p-inline-notification heading="${this.defaultHeading}" heading-tag="h3">
   ${this.defaultDescription}
 </p-inline-notification>`;
 
   state = 'info';
   states = INLINE_NOTIFICATION_STATES.map(item => BANNER_STATES_DEPRECATED.includes(item) ? item + ' (deprecated)' : item);
   get stateMarkup() {
-    return `<p-inline-notification heading="${this.defaultHeading}" description="${this.defaultDescription}" state="${this.state}">
+    return `<p-inline-notification heading="${this.defaultHeading}" heading-tag="h3" description="${this.defaultDescription}" state="${this.state}">
 </p-inline-notification>`;
   }
 
   dismissButton =
-`<p-inline-notification heading="${this.defaultHeading}" description="${this.defaultDescription}" dismiss-button="false">
+`<p-inline-notification heading="${this.defaultHeading}" heading-tag="h3" description="${this.defaultDescription}" dismiss-button="false">
 </p-inline-notification>`;
 
   slottedContent =
-`<p-inline-notification>
+`<p-inline-notification heading-tag="h3">
   <span slot="heading">${this.slottedHeading}</span>
   ${this.slottedDescription}
 </p-inline-notification>`;

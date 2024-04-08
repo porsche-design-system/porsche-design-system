@@ -32,7 +32,7 @@ const propTypes: PropTypes<typeof Heading> = {
 export class Heading {
   @Element() public host!: HTMLElement;
 
-  /** Sets a custom HTML tag depending on the usage of the heading component. */
+  /** Sets a heading tag, so it fits correctly within the outline of the page. */
   @Prop() public tag?: HeadingTag;
 
   /** Size of the component. Also defines the size for specific breakpoints, like {base: "small", l: "medium"}. You always need to provide a base value when doing this. */

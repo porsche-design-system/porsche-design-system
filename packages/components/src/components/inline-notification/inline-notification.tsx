@@ -44,7 +44,7 @@ export class InlineNotification {
   /** Heading of the inline-notification. */
   @Prop() public heading?: string = '';
 
-  /** Heading-Tag of the inline-notification. */
+  /** Sets a heading tag, so it fits correctly within the outline of the page. */
   @Prop() public headingTag?: InlineNotificationHeadingTag = 'h5';
 
   /** Description of the inline-notification. */

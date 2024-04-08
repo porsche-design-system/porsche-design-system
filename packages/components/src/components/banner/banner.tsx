@@ -42,7 +42,7 @@ export class Banner {
   /** Heading of the banner. */
   @Prop() public heading?: string = '';
 
-  /** Heading-Tag of the inline-notification. */
+  /** Sets a heading tag, so it fits correctly within the outline of the page. */
   @Prop() public headingTag?: BannerHeadingTag = 'h5';
 
   /** Description of the banner. */
