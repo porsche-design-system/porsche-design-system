@@ -10,6 +10,8 @@
 
 ## Playwright
 
+Skipped `v1.43.0` for now because title in high contrast dark mode is not visible.
+
 In case it gets updated, the Porsche Design System / Playwright Docker image needs to be updated too (this might affect
 all running workflows even outside the changed branch, so this must be aligned with the other developers).
 
