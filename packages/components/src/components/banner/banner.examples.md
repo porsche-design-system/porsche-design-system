@@ -32,8 +32,8 @@ styling" section.
 ### <A11yIcon></A11yIcon> Accessibility hints
 
 The `heading-tag` property needs to be set in order for the banner to fit into the outline of the page. If there is no
-`heading-tag` property provided, it defaults to `h5`. For instance our example banners use heading **level 3** because
-they are contained in sections titled with a **level 2** heading.
+`heading-tag` property provided, it defaults to `h5`. For instance some of our example banners use heading **level 3**
+because they are contained in sections titled with a **level 2** heading.
 
 ## Slotted heading and description
 
@@ -121,8 +121,8 @@ export default class Code extends Vue {
   }
 
   get slottedHeadingDescriptionMarkup() {
-    return `<p-banner open="false" state="${this.state}" heading-tag="h3">
-  <span slot="heading">Some heading with a <a href="https://porsche.com">link</a></span>
+    return `<p-banner open="false" state="${this.state}">
+  <h3 slot="heading">Some heading with a <a href="https://porsche.com">link</a></h3>
   <span slot="description">Some description. You can also add inline <a href="https://porsche.com">links</a> to route to another page.</span>
 </p-banner>`
 };
