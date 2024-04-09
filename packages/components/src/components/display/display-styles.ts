@@ -33,8 +33,8 @@ export const getComponentCss = (
           ...hostHiddenStyles,
         }),
       },
-      '::slotted': {
-        [DISPLAY_TAGS.map((i) => `&(${i})`).join()]: addImportantToEachRule(getTypographySlottedJssStyle()),
+      [`::slotted(:is(${DISPLAY_TAGS.map((i) => `${i}`).join()}))`]: {
+        ...addImportantToEachRule(getTypographySlottedJssStyle()),
       },
     },
     root: getTypographyRootJssStyle(

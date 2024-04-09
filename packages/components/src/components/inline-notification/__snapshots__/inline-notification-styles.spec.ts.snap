@@ -15,7 +15,7 @@ exports[`getComponentCss() should return correct css for state: error, hasAction
   display: none !important;
 }
 ::slotted(:is(h1,h2,h3,h4,h5,h6)) {
-  all: inherit !important;
+  all: unset !important;
 }
 slot[name="heading"] {
   font: normal normal 600 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -74,7 +74,7 @@ exports[`getComponentCss() should return correct css for state: error, hasAction
   display: none !important;
 }
 ::slotted(:is(h1,h2,h3,h4,h5,h6)) {
-  all: inherit !important;
+  all: unset !important;
 }
 slot[name="heading"] {
   font: normal normal 600 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -133,7 +133,7 @@ exports[`getComponentCss() should return correct css for state: info, hasAction:
   display: none !important;
 }
 ::slotted(:is(h1,h2,h3,h4,h5,h6)) {
-  all: inherit !important;
+  all: unset !important;
 }
 slot[name="heading"] {
   font: normal normal 600 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -192,7 +192,7 @@ exports[`getComponentCss() should return correct css for state: info, hasAction:
   display: none !important;
 }
 ::slotted(:is(h1,h2,h3,h4,h5,h6)) {
-  all: inherit !important;
+  all: unset !important;
 }
 slot[name="heading"] {
   font: normal normal 600 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -251,7 +251,7 @@ exports[`getComponentCss() should return correct css for state: info, hasAction:
   display: none !important;
 }
 ::slotted(:is(h1,h2,h3,h4,h5,h6)) {
-  all: inherit !important;
+  all: unset !important;
 }
 slot[name="heading"] {
   font: normal normal 600 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -310,7 +310,7 @@ exports[`getComponentCss() should return correct css for state: info, hasAction:
   display: none !important;
 }
 ::slotted(:is(h1,h2,h3,h4,h5,h6)) {
-  all: inherit !important;
+  all: unset !important;
 }
 slot[name="heading"] {
   font: normal normal 600 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -369,7 +369,7 @@ exports[`getComponentCss() should return correct css for state: info, hasAction:
   display: none !important;
 }
 ::slotted(:is(h1,h2,h3,h4,h5,h6)) {
-  all: inherit !important;
+  all: unset !important;
 }
 slot[name="heading"] {
   font: normal normal 600 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -431,7 +431,7 @@ exports[`getComponentCss() should return correct css for state: info, hasAction:
   display: none !important;
 }
 ::slotted(:is(h1,h2,h3,h4,h5,h6)) {
-  all: inherit !important;
+  all: unset !important;
 }
 slot[name="heading"] {
   font: normal normal 600 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -493,7 +493,7 @@ exports[`getComponentCss() should return correct css for state: info, hasAction:
   display: none !important;
 }
 ::slotted(:is(h1,h2,h3,h4,h5,h6)) {
-  all: inherit !important;
+  all: unset !important;
 }
 slot[name="heading"] {
   font: normal normal 600 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -555,7 +555,7 @@ exports[`getComponentCss() should return correct css for state: info, hasAction:
   display: none !important;
 }
 ::slotted(:is(h1,h2,h3,h4,h5,h6)) {
-  all: inherit !important;
+  all: unset !important;
 }
 slot[name="heading"] {
   font: normal normal 600 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -617,7 +617,7 @@ exports[`getComponentCss() should return correct css for state: neutral, hasActi
   display: none !important;
 }
 ::slotted(:is(h1,h2,h3,h4,h5,h6)) {
-  all: inherit !important;
+  all: unset !important;
 }
 slot[name="heading"] {
   font: normal normal 600 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -676,7 +676,7 @@ exports[`getComponentCss() should return correct css for state: neutral, hasActi
   display: none !important;
 }
 ::slotted(:is(h1,h2,h3,h4,h5,h6)) {
-  all: inherit !important;
+  all: unset !important;
 }
 slot[name="heading"] {
   font: normal normal 600 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -735,7 +735,7 @@ exports[`getComponentCss() should return correct css for state: neutral, hasActi
   display: none !important;
 }
 ::slotted(:is(h1,h2,h3,h4,h5,h6)) {
-  all: inherit !important;
+  all: unset !important;
 }
 slot[name="heading"] {
   font: normal normal 600 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -794,7 +794,7 @@ exports[`getComponentCss() should return correct css for state: neutral, hasActi
   display: none !important;
 }
 ::slotted(:is(h1,h2,h3,h4,h5,h6)) {
-  all: inherit !important;
+  all: unset !important;
 }
 slot[name="heading"] {
   font: normal normal 600 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -853,7 +853,7 @@ exports[`getComponentCss() should return correct css for state: neutral, hasActi
   display: none !important;
 }
 ::slotted(:is(h1,h2,h3,h4,h5,h6)) {
-  all: inherit !important;
+  all: unset !important;
 }
 slot[name="heading"] {
   font: normal normal 600 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -915,7 +915,7 @@ exports[`getComponentCss() should return correct css for state: neutral, hasActi
   display: none !important;
 }
 ::slotted(:is(h1,h2,h3,h4,h5,h6)) {
-  all: inherit !important;
+  all: unset !important;
 }
 slot[name="heading"] {
   font: normal normal 600 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -977,7 +977,7 @@ exports[`getComponentCss() should return correct css for state: neutral, hasActi
   display: none !important;
 }
 ::slotted(:is(h1,h2,h3,h4,h5,h6)) {
-  all: inherit !important;
+  all: unset !important;
 }
 slot[name="heading"] {
   font: normal normal 600 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -1039,7 +1039,7 @@ exports[`getComponentCss() should return correct css for state: neutral, hasActi
   display: none !important;
 }
 ::slotted(:is(h1,h2,h3,h4,h5,h6)) {
-  all: inherit !important;
+  all: unset !important;
 }
 slot[name="heading"] {
   font: normal normal 600 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -1101,7 +1101,7 @@ exports[`getComponentCss() should return correct css for state: success, hasActi
   display: none !important;
 }
 ::slotted(:is(h1,h2,h3,h4,h5,h6)) {
-  all: inherit !important;
+  all: unset !important;
 }
 slot[name="heading"] {
   font: normal normal 600 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -1160,7 +1160,7 @@ exports[`getComponentCss() should return correct css for state: success, hasActi
   display: none !important;
 }
 ::slotted(:is(h1,h2,h3,h4,h5,h6)) {
-  all: inherit !important;
+  all: unset !important;
 }
 slot[name="heading"] {
   font: normal normal 600 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -1219,7 +1219,7 @@ exports[`getComponentCss() should return correct css for state: warning, hasActi
   display: none !important;
 }
 ::slotted(:is(h1,h2,h3,h4,h5,h6)) {
-  all: inherit !important;
+  all: unset !important;
 }
 slot[name="heading"] {
   font: normal normal 600 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -1278,7 +1278,7 @@ exports[`getComponentCss() should return correct css for state: warning, hasActi
   display: none !important;
 }
 ::slotted(:is(h1,h2,h3,h4,h5,h6)) {
-  all: inherit !important;
+  all: unset !important;
 }
 slot[name="heading"] {
   font: normal normal 600 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;

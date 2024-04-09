@@ -38,6 +38,6 @@ export const getTypographyRootJssStyle = (
 
 export const getTypographySlottedJssStyle = (): JssStyle => {
   return {
-    all: 'inherit',
+    all: 'unset',
   };
 };

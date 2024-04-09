@@ -9,7 +9,7 @@ exports[`getComponentCss() should return correct css for size: "inherit", align:
   display: none !important;
 }
 ::slotted(:is(h1,h2,h3,h4,h5,h6)) {
-  all: inherit !important;
+  all: unset !important;
 }
 .root {
   margin: 0;
@@ -36,7 +36,7 @@ exports[`getComponentCss() should return correct css for size: "large", align: c
   display: none !important;
 }
 ::slotted(:is(h1,h2,h3,h4,h5,h6)) {
-  all: inherit !important;
+  all: unset !important;
 }
 .root {
   margin: 0;
@@ -63,7 +63,7 @@ exports[`getComponentCss() should return correct css for size: "medium", align: 
   display: none !important;
 }
 ::slotted(:is(h1,h2,h3,h4,h5,h6)) {
-  all: inherit !important;
+  all: unset !important;
 }
 .root {
   margin: 0;
@@ -90,7 +90,7 @@ exports[`getComponentCss() should return correct css for size: "small", align: c
   display: none !important;
 }
 ::slotted(:is(h1,h2,h3,h4,h5,h6)) {
-  all: inherit !important;
+  all: unset !important;
 }
 .root {
   margin: 0;
@@ -117,7 +117,7 @@ exports[`getComponentCss() should return correct css for size: "x-large", align:
   display: none !important;
 }
 ::slotted(:is(h1,h2,h3,h4,h5,h6)) {
-  all: inherit !important;
+  all: unset !important;
 }
 .root {
   margin: 0;
@@ -141,7 +141,7 @@ exports[`getComponentCss() should return correct css for size: "x-large", align:
   display: none !important;
 }
 ::slotted(:is(h1,h2,h3,h4,h5,h6)) {
-  all: inherit !important;
+  all: unset !important;
 }
 .root {
   margin: 0;
@@ -165,7 +165,7 @@ exports[`getComponentCss() should return correct css for size: "x-large", align:
   display: none !important;
 }
 ::slotted(:is(h1,h2,h3,h4,h5,h6)) {
-  all: inherit !important;
+  all: unset !important;
 }
 .root {
   margin: 0;
@@ -189,7 +189,7 @@ exports[`getComponentCss() should return correct css for size: "xx-large", align
   display: none !important;
 }
 ::slotted(:is(h1,h2,h3,h4,h5,h6)) {
-  all: inherit !important;
+  all: unset !important;
 }
 .root {
   margin: 0;
@@ -213,7 +213,7 @@ exports[`getComponentCss() should return correct css for size: {"base":"small","
   display: none !important;
 }
 ::slotted(:is(h1,h2,h3,h4,h5,h6)) {
-  all: inherit !important;
+  all: unset !important;
 }
 .root {
   margin: 0;

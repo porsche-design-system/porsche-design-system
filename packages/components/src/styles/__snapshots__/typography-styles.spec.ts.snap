@@ -43,6 +43,6 @@ exports[`getTypographyRootJssStyle() should return correct css for baseTextStyle
 
 exports[`getTypographySlottedJssStyle() should return correct JssStyle 1`] = `
 {
-  "all": "inherit",
+  "all": "unset",
 }
 `;

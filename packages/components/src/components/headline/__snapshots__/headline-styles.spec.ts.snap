@@ -9,7 +9,7 @@ exports[`getComponentCss() should return correct css for size: "inherit", align:
   display: none !important;
 }
 ::slotted(h1), ::slotted(h2), ::slotted(h3), ::slotted(h4), ::slotted(h5), ::slotted(h6) {
-  all: inherit !important;
+  all: unset !important;
 }
 .root {
   margin: 0;
@@ -33,7 +33,7 @@ exports[`getComponentCss() should return correct css for size: "large", align: c
   display: none !important;
 }
 ::slotted(h1), ::slotted(h2), ::slotted(h3), ::slotted(h4), ::slotted(h5), ::slotted(h6) {
-  all: inherit !important;
+  all: unset !important;
 }
 .root {
   margin: 0;
@@ -57,7 +57,7 @@ exports[`getComponentCss() should return correct css for size: "large", align: e
   display: none !important;
 }
 ::slotted(h1), ::slotted(h2), ::slotted(h3), ::slotted(h4), ::slotted(h5), ::slotted(h6) {
-  all: inherit !important;
+  all: unset !important;
 }
 .root {
   margin: 0;
@@ -84,7 +84,7 @@ exports[`getComponentCss() should return correct css for size: "large", align: l
   display: none !important;
 }
 ::slotted(h1), ::slotted(h2), ::slotted(h3), ::slotted(h4), ::slotted(h5), ::slotted(h6) {
-  all: inherit !important;
+  all: unset !important;
 }
 .root {
   margin: 0;
@@ -108,7 +108,7 @@ exports[`getComponentCss() should return correct css for size: "large", align: r
   display: none !important;
 }
 ::slotted(h1), ::slotted(h2), ::slotted(h3), ::slotted(h4), ::slotted(h5), ::slotted(h6) {
-  all: inherit !important;
+  all: unset !important;
 }
 .root {
   margin: 0;
@@ -132,7 +132,7 @@ exports[`getComponentCss() should return correct css for size: "large", align: s
   display: none !important;
 }
 ::slotted(h1), ::slotted(h2), ::slotted(h3), ::slotted(h4), ::slotted(h5), ::slotted(h6) {
-  all: inherit !important;
+  all: unset !important;
 }
 .root {
   margin: 0;
@@ -156,7 +156,7 @@ exports[`getComponentCss() should return correct css for size: "large", align: s
   display: none !important;
 }
 ::slotted(h1), ::slotted(h2), ::slotted(h3), ::slotted(h4), ::slotted(h5), ::slotted(h6) {
-  all: inherit !important;
+  all: unset !important;
 }
 .root {
   margin: 0;
@@ -180,7 +180,7 @@ exports[`getComponentCss() should return correct css for size: "large", align: s
   display: none !important;
 }
 ::slotted(h1), ::slotted(h2), ::slotted(h3), ::slotted(h4), ::slotted(h5), ::slotted(h6) {
-  all: inherit !important;
+  all: unset !important;
 }
 .root {
   margin: 0;
@@ -207,7 +207,7 @@ exports[`getComponentCss() should return correct css for size: "large", align: s
   display: none !important;
 }
 ::slotted(h1), ::slotted(h2), ::slotted(h3), ::slotted(h4), ::slotted(h5), ::slotted(h6) {
-  all: inherit !important;
+  all: unset !important;
 }
 .root {
   margin: 0;
@@ -234,7 +234,7 @@ exports[`getComponentCss() should return correct css for size: "medium", align: 
   display: none !important;
 }
 ::slotted(h1), ::slotted(h2), ::slotted(h3), ::slotted(h4), ::slotted(h5), ::slotted(h6) {
-  all: inherit !important;
+  all: unset !important;
 }
 .root {
   margin: 0;
@@ -261,7 +261,7 @@ exports[`getComponentCss() should return correct css for size: "medium", align: 
   display: none !important;
 }
 ::slotted(h1), ::slotted(h2), ::slotted(h3), ::slotted(h4), ::slotted(h5), ::slotted(h6) {
-  all: inherit !important;
+  all: unset !important;
 }
 .root {
   margin: 0;
@@ -285,7 +285,7 @@ exports[`getComponentCss() should return correct css for size: {"base":"medium",
   display: none !important;
 }
 ::slotted(h1), ::slotted(h2), ::slotted(h3), ::slotted(h4), ::slotted(h5), ::slotted(h6) {
-  all: inherit !important;
+  all: unset !important;
 }
 .root {
   margin: 0;
