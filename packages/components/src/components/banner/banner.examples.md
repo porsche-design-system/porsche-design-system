@@ -46,8 +46,8 @@ Rich content for `heading` and `description` can be provided via named slots.
 
 <Playground :markup="slottedHeadingDescriptionMarkup" :config="config">
   <p-button type="button" :theme="theme" @click="isBannerSlottedOpen = true">Open Banner</p-button>
-  <p-banner :theme="theme" :open="isBannerSlottedOpen" :state="state" heading-tag="h3" @dismiss="isBannerSlottedOpen = false">
-  <span slot="heading">Some heading with a <a href="https://porsche.com">link</a></span> <span slot="description">Some
+  <p-banner :theme="theme" :open="isBannerSlottedOpen" :state="state" @dismiss="isBannerSlottedOpen = false">
+  <h3 slot="heading">Some heading with a <a href="https://porsche.com">link</a></h3> <span slot="description">Some
   description. You can also add inline <a href="https://porsche.com">links</a> to route to another page.</span>
   </p-banner>
 </Playground>
