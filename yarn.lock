@@ -5393,12 +5393,26 @@
     loupe "^2.3.7"
     pretty-format "^29.7.0"
 
-"@volar/language-core@2.2.0-alpha.6", "@volar/language-core@~2.2.0-alpha.6":
+"@volar/language-core@2.1.3":
+  version "2.1.3"
+  resolved "https://registry.yarnpkg.com/@volar/language-core/-/language-core-2.1.3.tgz#ac6057ec73c5fcda1fc07677bf0d7be41e6c59b1"
+  integrity sha512-F93KYZYqcYltG7NihfnLt/omMZOtrQtsh2+wj+cgx3xolopU+TZvmwlZWOjw3ObZGFj3SKBb4jJn6VSfSch6RA==
+  dependencies:
+    "@volar/source-map" "2.1.3"
+
+"@volar/language-core@~2.2.0-alpha.6":
   version "2.2.0-alpha.6"
   resolved "https://registry.yarnpkg.com/@volar/language-core/-/language-core-2.2.0-alpha.6.tgz#c9e800d6cce235b9f53d5276c92b4f9f326f57f8"
   integrity sha512-GmT28LX2w4x82uuQqNN/P94VOCsZRHBbGcGe+5bFtA2hbIbH6f8tFdMfgXFtyhbft/pj6f3xl37xe+t+nomLIA==
   dependencies:
     "@volar/source-map" "2.2.0-alpha.6"
+
+"@volar/source-map@2.1.3":
+  version "2.1.3"
+  resolved "https://registry.yarnpkg.com/@volar/source-map/-/source-map-2.1.3.tgz#8f3cb110019c45fa4cd47ad2f5fe5469bd54b9e3"
+  integrity sha512-j+R+NG/OlDgdNMttADxNuSM9Z26StT/Bjw0NgSydI05Vihngn9zvaP/xXwfWs5qQrRzbKVFxJebS2ks5m/URuA==
+  dependencies:
+    muggle-string "^0.4.0"
 
 "@volar/source-map@2.2.0-alpha.6":
   version "2.2.0-alpha.6"
@@ -5407,12 +5421,12 @@
   dependencies:
     muggle-string "^0.4.0"
 
-"@volar/typescript@~2.2.0-alpha.6":
-  version "2.2.0-alpha.6"
-  resolved "https://registry.yarnpkg.com/@volar/typescript/-/typescript-2.2.0-alpha.6.tgz#f78458a064b3fbb2126eb7d5aa69dd4a84160c81"
-  integrity sha512-wTr0jO3wVXQ9FjBbWE2iX8GgDoiHp1Nttsb+tKk5IeUUb6f1uOjyeIXuS4KfeMBpCufthRO2st2O2uatAs/UXQ==
+"@volar/typescript@2.1.3", "@volar/typescript@~2.2.0-alpha.6":
+  version "2.1.3"
+  resolved "https://registry.yarnpkg.com/@volar/typescript/-/typescript-2.1.3.tgz#bfdc901afd44c2d05697967211aa55d53fb8bf69"
+  integrity sha512-ZZqLMih4mvu2eJAW3UCFm84OM/ojYMoA/BU/W1TctT5F2nVzNJmW4jxMWmP3wQzxCbATfTa5gLb1+BSI9NBMBg==
   dependencies:
-    "@volar/language-core" "2.2.0-alpha.6"
+    "@volar/language-core" "2.1.3"
     path-browserify "^1.0.1"
 
 "@vue/babel-helper-vue-jsx-merge-props@^1.4.0":
