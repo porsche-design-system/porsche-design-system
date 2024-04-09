@@ -111,11 +111,14 @@ export class InlineNotification {
           aria-hidden="true"
         />
         <div id={bannerId} class="content" {...getContentAriaAttributes(this.state, labelId, descriptionId)}>
-          {hasHeading(this.host, this.heading) && (
-            <Heading id={labelId} class="heading">
-              {this.heading || <slot name="heading" />}
-            </Heading>
-          )}
+          {hasHeading(this.host, this.heading) &&
+            (this.heading ? (
+              <Heading id={labelId} class="heading">
+                {this.heading}
+              </Heading>
+            ) : (
+              <slot name="heading" />
+            ))}
           <p id={descriptionId} class="description">
             {this.description || <slot />}
           </p>

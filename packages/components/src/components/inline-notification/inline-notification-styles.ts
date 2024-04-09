@@ -1,7 +1,7 @@
 import type { Theme } from '../../types';
 import type { InlineNotificationState } from './inline-notification-utils';
 import { getMediaQueryMax, headingSmallStyle, textSmallStyle } from '@porsche-design-system/utilities-v2';
-import { getCss } from '../../utils';
+import { getCss, HEADING_TAGS } from '../../utils';
 import {
   addImportantToEachRule,
   colorSchemeStyles,
@@ -15,6 +15,7 @@ import {
   getNotificationRootJssStyle,
 } from './inline-notification-styles-shared';
 import { JssStyle } from 'jss';
+import { getTypographySlottedJssStyle } from '../../styles/typography-styles';
 
 const mediaQueryMaxS = getMediaQueryMax('s');
 const textStyles = (theme: Theme): JssStyle => ({
@@ -23,6 +24,11 @@ const textStyles = (theme: Theme): JssStyle => ({
   ...prefersColorSchemeDarkMediaQuery(theme, {
     color: getThemedColors('dark').primaryColor,
   }),
+});
+
+const headingStyles = (theme: Theme): JssStyle => ({
+  ...headingSmallStyle,
+  ...textStyles(theme),
 });
 
 export const getComponentCss = (
@@ -41,10 +47,15 @@ export const getComponentCss = (
           ...hostHiddenStyles,
         }),
       },
+      [`::slotted(:is(${HEADING_TAGS.map((i) => `${i}`).join()}))`]: {
+        ...addImportantToEachRule(getTypographySlottedJssStyle()),
+      },
+      'slot[name="heading"]': {
+        ...headingStyles(theme),
+      },
     },
     heading: {
-      ...headingSmallStyle,
-      ...textStyles(theme),
+      ...headingStyles(theme),
     },
     description: {
       ...textSmallStyle,

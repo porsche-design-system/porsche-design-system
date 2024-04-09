@@ -14,6 +14,14 @@ exports[`getComponentCss() should return correct css for state: error, hasAction
 :host([hidden]) {
   display: none !important;
 }
+::slotted(:is(h1,h2,h3,h4,h5,h6)) {
+  all: inherit !important;
+}
+slot[name="heading"] {
+  font: normal normal 600 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  margin: 0;
+  color: #FBFCFF;
+}
 @media(min-width:760px) {
   :host {
     grid-template-columns: auto minmax(auto, 1fr) !important;
@@ -64,6 +72,14 @@ exports[`getComponentCss() should return correct css for state: error, hasAction
 }
 :host([hidden]) {
   display: none !important;
+}
+::slotted(:is(h1,h2,h3,h4,h5,h6)) {
+  all: inherit !important;
+}
+slot[name="heading"] {
+  font: normal normal 600 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  margin: 0;
+  color: #010205;
 }
 @media(min-width:760px) {
   :host {
@@ -116,6 +132,14 @@ exports[`getComponentCss() should return correct css for state: info, hasAction:
 :host([hidden]) {
   display: none !important;
 }
+::slotted(:is(h1,h2,h3,h4,h5,h6)) {
+  all: inherit !important;
+}
+slot[name="heading"] {
+  font: normal normal 600 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  margin: 0;
+  color: #FBFCFF;
+}
 @media(min-width:760px) {
   :host {
     grid-template-columns: auto minmax(auto, 1fr) !important;
@@ -166,6 +190,14 @@ exports[`getComponentCss() should return correct css for state: info, hasAction:
 }
 :host([hidden]) {
   display: none !important;
+}
+::slotted(:is(h1,h2,h3,h4,h5,h6)) {
+  all: inherit !important;
+}
+slot[name="heading"] {
+  font: normal normal 600 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  margin: 0;
+  color: #010205;
 }
 @media(min-width:760px) {
   :host {
@@ -218,6 +250,14 @@ exports[`getComponentCss() should return correct css for state: info, hasAction:
 :host([hidden]) {
   display: none !important;
 }
+::slotted(:is(h1,h2,h3,h4,h5,h6)) {
+  all: inherit !important;
+}
+slot[name="heading"] {
+  font: normal normal 600 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  margin: 0;
+  color: #FBFCFF;
+}
 @media(min-width:760px) {
   :host {
     grid-template-columns: auto minmax(auto, 1fr) auto !important;
@@ -269,6 +309,14 @@ exports[`getComponentCss() should return correct css for state: info, hasAction:
 :host([hidden]) {
   display: none !important;
 }
+::slotted(:is(h1,h2,h3,h4,h5,h6)) {
+  all: inherit !important;
+}
+slot[name="heading"] {
+  font: normal normal 600 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  margin: 0;
+  color: #010205;
+}
 @media(min-width:760px) {
   :host {
     grid-template-columns: auto minmax(auto, 1fr) auto !important;
@@ -319,6 +367,14 @@ exports[`getComponentCss() should return correct css for state: info, hasAction:
 }
 :host([hidden]) {
   display: none !important;
+}
+::slotted(:is(h1,h2,h3,h4,h5,h6)) {
+  all: inherit !important;
+}
+slot[name="heading"] {
+  font: normal normal 600 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  margin: 0;
+  color: #FBFCFF;
 }
 @media(min-width:760px) {
   :host {
@@ -374,6 +430,14 @@ exports[`getComponentCss() should return correct css for state: info, hasAction:
 :host([hidden]) {
   display: none !important;
 }
+::slotted(:is(h1,h2,h3,h4,h5,h6)) {
+  all: inherit !important;
+}
+slot[name="heading"] {
+  font: normal normal 600 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  margin: 0;
+  color: #010205;
+}
 @media(min-width:760px) {
   :host {
     grid-template-columns: auto minmax(auto, 1fr) auto !important;
@@ -427,6 +491,14 @@ exports[`getComponentCss() should return correct css for state: info, hasAction:
 }
 :host([hidden]) {
   display: none !important;
+}
+::slotted(:is(h1,h2,h3,h4,h5,h6)) {
+  all: inherit !important;
+}
+slot[name="heading"] {
+  font: normal normal 600 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  margin: 0;
+  color: #FBFCFF;
 }
 @media(min-width:760px) {
   :host {
@@ -482,6 +554,14 @@ exports[`getComponentCss() should return correct css for state: info, hasAction:
 :host([hidden]) {
   display: none !important;
 }
+::slotted(:is(h1,h2,h3,h4,h5,h6)) {
+  all: inherit !important;
+}
+slot[name="heading"] {
+  font: normal normal 600 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  margin: 0;
+  color: #010205;
+}
 @media(min-width:760px) {
   :host {
     grid-template-columns: auto minmax(auto, 1fr) auto auto !important;
@@ -536,6 +616,14 @@ exports[`getComponentCss() should return correct css for state: neutral, hasActi
 :host([hidden]) {
   display: none !important;
 }
+::slotted(:is(h1,h2,h3,h4,h5,h6)) {
+  all: inherit !important;
+}
+slot[name="heading"] {
+  font: normal normal 600 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  margin: 0;
+  color: #FBFCFF;
+}
 @media(min-width:760px) {
   :host {
     grid-template-columns: auto minmax(auto, 1fr) !important;
@@ -586,6 +674,14 @@ exports[`getComponentCss() should return correct css for state: neutral, hasActi
 }
 :host([hidden]) {
   display: none !important;
+}
+::slotted(:is(h1,h2,h3,h4,h5,h6)) {
+  all: inherit !important;
+}
+slot[name="heading"] {
+  font: normal normal 600 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  margin: 0;
+  color: #010205;
 }
 @media(min-width:760px) {
   :host {
@@ -638,6 +734,14 @@ exports[`getComponentCss() should return correct css for state: neutral, hasActi
 :host([hidden]) {
   display: none !important;
 }
+::slotted(:is(h1,h2,h3,h4,h5,h6)) {
+  all: inherit !important;
+}
+slot[name="heading"] {
+  font: normal normal 600 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  margin: 0;
+  color: #FBFCFF;
+}
 @media(min-width:760px) {
   :host {
     grid-template-columns: auto minmax(auto, 1fr) auto !important;
@@ -689,6 +793,14 @@ exports[`getComponentCss() should return correct css for state: neutral, hasActi
 :host([hidden]) {
   display: none !important;
 }
+::slotted(:is(h1,h2,h3,h4,h5,h6)) {
+  all: inherit !important;
+}
+slot[name="heading"] {
+  font: normal normal 600 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  margin: 0;
+  color: #010205;
+}
 @media(min-width:760px) {
   :host {
     grid-template-columns: auto minmax(auto, 1fr) auto !important;
@@ -739,6 +851,14 @@ exports[`getComponentCss() should return correct css for state: neutral, hasActi
 }
 :host([hidden]) {
   display: none !important;
+}
+::slotted(:is(h1,h2,h3,h4,h5,h6)) {
+  all: inherit !important;
+}
+slot[name="heading"] {
+  font: normal normal 600 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  margin: 0;
+  color: #FBFCFF;
 }
 @media(min-width:760px) {
   :host {
@@ -794,6 +914,14 @@ exports[`getComponentCss() should return correct css for state: neutral, hasActi
 :host([hidden]) {
   display: none !important;
 }
+::slotted(:is(h1,h2,h3,h4,h5,h6)) {
+  all: inherit !important;
+}
+slot[name="heading"] {
+  font: normal normal 600 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  margin: 0;
+  color: #010205;
+}
 @media(min-width:760px) {
   :host {
     grid-template-columns: auto minmax(auto, 1fr) auto !important;
@@ -847,6 +975,14 @@ exports[`getComponentCss() should return correct css for state: neutral, hasActi
 }
 :host([hidden]) {
   display: none !important;
+}
+::slotted(:is(h1,h2,h3,h4,h5,h6)) {
+  all: inherit !important;
+}
+slot[name="heading"] {
+  font: normal normal 600 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  margin: 0;
+  color: #FBFCFF;
 }
 @media(min-width:760px) {
   :host {
@@ -902,6 +1038,14 @@ exports[`getComponentCss() should return correct css for state: neutral, hasActi
 :host([hidden]) {
   display: none !important;
 }
+::slotted(:is(h1,h2,h3,h4,h5,h6)) {
+  all: inherit !important;
+}
+slot[name="heading"] {
+  font: normal normal 600 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  margin: 0;
+  color: #010205;
+}
 @media(min-width:760px) {
   :host {
     grid-template-columns: auto minmax(auto, 1fr) auto auto !important;
@@ -956,6 +1100,14 @@ exports[`getComponentCss() should return correct css for state: success, hasActi
 :host([hidden]) {
   display: none !important;
 }
+::slotted(:is(h1,h2,h3,h4,h5,h6)) {
+  all: inherit !important;
+}
+slot[name="heading"] {
+  font: normal normal 600 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  margin: 0;
+  color: #FBFCFF;
+}
 @media(min-width:760px) {
   :host {
     grid-template-columns: auto minmax(auto, 1fr) !important;
@@ -1006,6 +1158,14 @@ exports[`getComponentCss() should return correct css for state: success, hasActi
 }
 :host([hidden]) {
   display: none !important;
+}
+::slotted(:is(h1,h2,h3,h4,h5,h6)) {
+  all: inherit !important;
+}
+slot[name="heading"] {
+  font: normal normal 600 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  margin: 0;
+  color: #010205;
 }
 @media(min-width:760px) {
   :host {
@@ -1058,6 +1218,14 @@ exports[`getComponentCss() should return correct css for state: warning, hasActi
 :host([hidden]) {
   display: none !important;
 }
+::slotted(:is(h1,h2,h3,h4,h5,h6)) {
+  all: inherit !important;
+}
+slot[name="heading"] {
+  font: normal normal 600 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  margin: 0;
+  color: #FBFCFF;
+}
 @media(min-width:760px) {
   :host {
     grid-template-columns: auto minmax(auto, 1fr) !important;
@@ -1108,6 +1276,14 @@ exports[`getComponentCss() should return correct css for state: warning, hasActi
 }
 :host([hidden]) {
   display: none !important;
+}
+::slotted(:is(h1,h2,h3,h4,h5,h6)) {
+  all: inherit !important;
+}
+slot[name="heading"] {
+  font: normal normal 600 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  margin: 0;
+  color: #010205;
 }
 @media(min-width:760px) {
   :host {

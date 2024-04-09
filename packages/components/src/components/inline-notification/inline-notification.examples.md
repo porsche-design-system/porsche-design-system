@@ -15,12 +15,12 @@ is best for a particular scenario.
 ### <A11yIcon></A11yIcon> Accessibility hints
 
 The `heading-tag` property needs to be set in order for the inline notification to fit into the outline of the page. If
-there is no `heading-tag` property provided, it defaults to `h5`. For instance our example inline notifications use
-heading **level 3** because they are contained in sections titled with a **level 2** heading.
+there is no `heading-tag` property provided, it defaults to `h5`. For instance some of our example inline notifications
+use heading **level 3** because they are contained in sections titled with a **level 2** heading.
 
 ## State
 
-<Notification heading="Deprecation hint" state="warning">
+<Notification heading="Deprecation hint" heading-tag="h3" state="warning">
   Following state has been deprecated and will be removed with the next major release: "neutral".
 </Notification>
 
@@ -32,7 +32,7 @@ heading **level 3** because they are contained in sections titled with a **level
 
 To make the `p-inline-notification` non-closable by the user, use the `dismissButton` property.
 
-<Notification heading="Deprecation hint" state="warning">
+<Notification heading="Deprecation hint" heading-tag="h3" state="warning">
   The <code>persistent</code> property has been deprecated and will be removed with the next major release.<br>
   Please use the <code>dismissButton</code> property instead.
 </Notification>
@@ -51,7 +51,7 @@ It can be used to remove the component.
   <br>
   <br>
   <div id="bannerEventsWrapper" hidden>
-    <p-inline-notification :theme="theme" :heading="defaultHeading" :description="defaultDescription"></p-inline-notification>
+    <p-inline-notification :theme="theme" :heading="defaultHeading" heading-tag="h4" :description="defaultDescription"></p-inline-notification>
   </div>
 </Playground>
 
@@ -66,6 +66,7 @@ The custom event that is emitted on action button click is called `action`.
     id="bannerAction"
     :theme="theme"
     :heading="defaultHeading"
+    heading-tag="h4"
     :description="defaultDescription"
     action-label="Retry"
     action-icon="reset"
@@ -123,8 +124,8 @@ export default class Code extends Vue {
 </p-inline-notification>`;
 
   slottedContent =
-`<p-inline-notification heading-tag="h3">
-  <span slot="heading">${this.slottedHeading}</span>
+`<p-inline-notification>
+  <h3 slot="heading">${this.slottedHeading}</h3>
   ${this.slottedDescription}
 </p-inline-notification>`;
 
