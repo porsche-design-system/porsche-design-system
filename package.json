@@ -178,6 +178,8 @@
     "prettier": "^3.2.5"
   },
   "resolutions": {
+    "**/@types/react": "18.2.65",
+    "**/@types/scheduler": "0.16.8",
     "**/react-scripts/jest": ">=29 <30",
     "**/react-scripts/jest-circus": ">=29 <30",
     "**/@vue/cli-plugin-unit-jest/jest": ">=29 <30",
