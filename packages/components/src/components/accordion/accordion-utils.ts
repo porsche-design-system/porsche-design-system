@@ -1,4 +1,4 @@
-import type { HeadingTag } from '../heading/heading-tag';
+import type { HeadingTag } from '../../types';
 
 export const ACCORDION_SIZES = ['small', 'medium'] as const;
 export type AccordionSize = (typeof ACCORDION_SIZES)[number];

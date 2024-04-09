@@ -1,4 +1,5 @@
 export * from './heading-size';
+export * from './heading-tag';
 export * from './isSizeInherit';
 export * from './text-size';
 export * from './typography-align';

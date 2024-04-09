@@ -1,8 +1,7 @@
 import type { AriaAttributes } from 'react';
-import type { IconName } from '../../types';
+import type { IconName, HeadingTag } from '../../types';
 import { BANNER_STATES } from '../banner/banner-utils';
 import type { BannerStateDeprecated } from '../banner/banner-utils';
-import type { HeadingTag } from '../heading/heading-tag';
 
 /** @deprecated */
 export type InlineNotificationStateDeprecated = BannerStateDeprecated;
