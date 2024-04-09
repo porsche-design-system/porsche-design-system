@@ -38,20 +38,6 @@ export const getTypographyRootJssStyle = (
 
 export const getTypographySlottedJssStyle = (): JssStyle => {
   return {
-    margin: 'inherit',
-    padding: 'inherit',
-    fontFamily: 'inherit',
-    fontWeight: 'inherit',
-    fontSize: 'inherit',
-    lineHeight: 'inherit',
-    fontStyle: 'inherit',
-    fontVariant: 'inherit',
-    color: 'inherit',
-    textAlign: 'inherit',
-    overflowWrap: 'inherit',
-    wordWrap: 'inherit',
-    hyphens: 'inherit',
-    whiteSpace: 'inherit',
-    letterSpacing: 'inherit',
+    all: 'inherit',
   };
 };
