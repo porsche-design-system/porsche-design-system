@@ -14,6 +14,15 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ### [Unreleased]
 
+#### Added
+
+- `Inline Notification`, `Banner`: heading hierarchy can now be customized with `headingTag` prop
+  ([#3168](https://github.com/porsche-design-system/porsche-design-system/pull/3168))
+
+#### Changed
+
+- `Accordion`: `tag` property is deprecated. Use `headingTag` property instead to specify heading hierarchy level.
+
 ### [3.15.0-rc.0] - 2024-04-05
 
 #### Changed
