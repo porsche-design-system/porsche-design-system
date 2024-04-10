@@ -71,7 +71,13 @@ test('should render without button when dismissButton prop false', async ({ page
 });
 
 test('should render correct heading tag when heading-tag property is set', async ({ page }) => {
-  await initInlineNotification(page, { headingTag: 'h2' });
+  await initInlineNotification(page);
+  expect(await getHeadingTagName(page)).toBe('H5');
+
+  const host = await getHost(page);
+  await setProperty(host, 'headingTag', 'h2');
+  await waitForStencilLifecycle(page);
+
   expect(await getHeadingTagName(page)).toBe('H2');
 });
 

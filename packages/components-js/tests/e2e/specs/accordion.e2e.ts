@@ -161,7 +161,13 @@ test('should show aria-expanded true when open and false when closed', async ({ 
 });
 
 test('should render correct heading tag when heading-tag property is set', async ({ page }) => {
-  await initAccordion(page, { headingTag: 'h5' });
+  await initAccordion(page);
+  expect(await getHeadingTagName(page)).toBe('H2');
+
+  const host = await getHost(page);
+  await setProperty(host, 'headingTag', 'h5');
+  await waitForStencilLifecycle(page);
+
   expect(await getHeadingTagName(page)).toBe('H5');
 });
 

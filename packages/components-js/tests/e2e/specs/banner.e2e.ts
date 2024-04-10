@@ -95,8 +95,14 @@ test('should not show banner by setting open prop false', async ({ page }) => {
   expect(await getElementStyle(banner, 'visibility')).toBe('hidden');
 });
 
-test('should render correct heading tag when tag property is set', async ({ page }) => {
-  await initBanner(page, { open: true, headingTag: 'h2' });
+test('should render correct heading tag when heading-tag property is set', async ({ page }) => {
+  await initBanner(page, { open: true });
+  expect(await getHeadingTagName(page)).toBe('H5');
+
+  const host = await getHost(page);
+  await setProperty(host, 'headingTag', 'h2');
+  await waitForStencilLifecycle(page);
+
   expect(await getHeadingTagName(page)).toBe('H2');
 });
 
