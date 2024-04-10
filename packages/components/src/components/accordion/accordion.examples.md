@@ -22,9 +22,9 @@ this will quickly result in a loss of context. Parent containers with a maximum 
 
 ### <A11yIcon></A11yIcon> Accessibility hints
 
-The `tag` property needs to be set in order for the accordion to fit into the outline of the page. If there is no `tag`
-property provided, it defaults to `h2`. For instance our example accordions use heading **level 3** because they are
-contained in sections titled with a **level 2** heading.
+The `heading-tag` property needs to be set in order for the accordion to fit into the outline of the page. If there is
+no `heading-tag` property provided, it defaults to `h2`. For instance some of our example accordions use heading **level
+3** because they are contained in sections titled with a **level 2** heading.
 
 ---
 
