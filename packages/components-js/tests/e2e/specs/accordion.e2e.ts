@@ -23,7 +23,7 @@ const clickHandlerScript = `
 </script>`;
 
 type InitOptions = {
-  tag?: HeadingTag;
+  headingTag?: HeadingTag;
   otherPreMarkup?: string;
   otherPostMarkup?: string;
   otherSlottedMarkup?: string;
@@ -33,7 +33,7 @@ type InitOptions = {
 
 const initAccordion = (page: Page, opts?: InitOptions) => {
   const {
-    tag = 'h2',
+    headingTag = 'h2',
     otherPreMarkup = '',
     otherPostMarkup = '',
     otherSlottedMarkup = '',
@@ -41,7 +41,7 @@ const initAccordion = (page: Page, opts?: InitOptions) => {
     isOpen = false,
   } = opts || {};
 
-  const content = `${otherPreMarkup}<p-accordion heading="Some Accordion" tag="${tag}" open="${isOpen}">
+  const content = `${otherPreMarkup}<p-accordion heading="Some Accordion" heading-tag="${headingTag}" open="${isOpen}">
 Test content Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt
 ut labore et dolore magna aliquyam erat, sed diam voluptua.${hasInput ? '<input type="text"/>' : ''}
 ${otherSlottedMarkup}
@@ -160,9 +160,9 @@ test('should show aria-expanded true when open and false when closed', async ({ 
   expect(await getAttribute(button, 'aria-expanded'), 'after click to close').toBe('false');
 });
 
-test('should render correct heading tag when tag property is set', async ({ page }) => {
-  await initAccordion(page, { tag: 'h2' });
-  expect(await getHeadingTagName(page)).toBe('H2');
+test('should render correct heading tag when heading-tag property is set', async ({ page }) => {
+  await initAccordion(page, { headingTag: 'h5' });
+  expect(await getHeadingTagName(page)).toBe('H5');
 });
 
 test.describe('events', () => {

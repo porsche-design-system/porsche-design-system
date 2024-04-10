@@ -70,7 +70,7 @@ test('should render without button when dismissButton prop false', async ({ page
   expect(el).toBeNull();
 });
 
-test('should render correct heading tag when tag property is set', async ({ page }) => {
+test('should render correct heading tag when heading-tag property is set', async ({ page }) => {
   await initInlineNotification(page, { headingTag: 'h2' });
   expect(await getHeadingTagName(page)).toBe('H2');
 });
