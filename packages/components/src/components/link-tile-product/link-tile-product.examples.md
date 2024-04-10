@@ -1,6 +1,6 @@
 <ComponentHeading name="Link Tile Product"></ComponentHeading>
 
-<Notification heading="Experimental Component" state="warning">
+<Notification heading="Experimental Component" heading-tag="h2" state="warning">
   The <code>p-link-tile-product</code> component is experimental and might be changed or removed in a future release.
 </Notification>
 
@@ -8,7 +8,7 @@ The `p-link-tile-product` is a navigational component designed to showcase a fea
 the option to "like" the product, allowing you to easily add it to the users wishlist. Additionally, you can place a
 chip at the top to signal special features about the product, such as its novelty or exclusivity.
 
-<Notification heading="Image Aspect Ratio" state="warning">
+<Notification heading="Image Aspect Ratio" heading-tag="h2" state="warning">
   The image within the component has a fixed aspect ratio of 8:9. For optimal presentation, it is recommended that the supplied image adheres to the same aspect ratio of 8:9 and includes
 a transparent background. </Notification>
 

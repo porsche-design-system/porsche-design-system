@@ -2,7 +2,7 @@
 
 `p-headline` is used to highlight and specify heading styling and hierarchy in documents.
 
-<Notification heading="Deprecation hint" state="error">
+<Notification heading="Deprecation hint" heading-tag="h2" state="error">
   This component is deprecated and will be removed with the next major release.
   Please use <a href="components/heading">p-heading</a> instead.
 </Notification>
@@ -46,7 +46,7 @@ Predefined colors associated with its theme are available but also inherit mode 
 
 ## Alignment
 
-<Notification heading="Deprecation hint" state="warning">
+<Notification heading="Deprecation hint" heading-tag="h3" state="warning">
   Following alignments have been deprecated and will be removed with the next major release: "left" and "right".
 </Notification>
 

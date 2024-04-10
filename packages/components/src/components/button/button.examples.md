@@ -25,7 +25,7 @@ Button with label only (default) and with icon only (default: "arrow-right") in 
 
 ### Tertiary (deprecated)
 
-<Notification heading="Important note" state="error">
+<Notification heading="Important note" heading-tag="h4" state="error">
   The variant `tertiary` is deprecated and will be removed with next major release.
   In case, e.g. <b>variant="tertiary"</b> is used it will automatically be mapped to variant <b>"secondary"</b>.
 </Notification>

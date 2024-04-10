@@ -6,7 +6,7 @@
 
 ## Color
 
-<Notification heading="Important note" state="error">
+<Notification heading="Important note" heading-tag="h3" state="error">
   The <b>background-default</b> color is deprecated and will be removed with next major release. Please use
   <b>background-base</b> color instead. In case, e.g. <b>color="background-default"</b> is used it will automatically be
   mapped to <b>color="background-surface"</b>.
