@@ -7,9 +7,10 @@ import {
   HEADING_TAGS,
   THEMES,
   validateProps,
+  warnIfDeprecatedPropIsUsed,
 } from '../../utils';
 import type { BreakpointCustomizable, PropTypes, Theme } from '../../types';
-import type { AccordionSize, AccordionTag, AccordionUpdateEventDetail } from './accordion-utils';
+import type { AccordionHeadingTag, AccordionSize, AccordionTag, AccordionUpdateEventDetail } from './accordion-utils';
 import { ACCORDION_SIZES } from './accordion-utils';
 import { getComponentCss } from './accordion-styles';
 
@@ -17,7 +18,8 @@ const propTypes: PropTypes<typeof Accordion> = {
   size: AllowedTypes.breakpoint<AccordionSize>(ACCORDION_SIZES),
   theme: AllowedTypes.oneOf<Theme>(THEMES),
   heading: AllowedTypes.string,
-  tag: AllowedTypes.oneOf<AccordionTag>(HEADING_TAGS),
+  headingTag: AllowedTypes.oneOf<AccordionHeadingTag>(HEADING_TAGS),
+  tag: AllowedTypes.oneOf<AccordionTag>([undefined, ...HEADING_TAGS]),
   open: AllowedTypes.boolean,
   compact: AllowedTypes.boolean,
 };
@@ -39,7 +41,12 @@ export class Accordion {
   @Prop() public heading?: string;
 
   /** Sets a heading tag, so it fits correctly within the outline of the page. */
-  @Prop() public tag?: AccordionTag = 'h2';
+  @Prop() public headingTag?: AccordionHeadingTag = 'h2';
+
+  /**
+   * @deprecated, will be removed with next major release, use `heading-tag` instead.
+   * Sets a heading tag, so it fits correctly within the outline of the page. */
+  @Prop() public tag?: AccordionTag;
 
   /** Defines if accordion is open. */
   @Prop() public open?: boolean;
@@ -61,13 +68,14 @@ export class Accordion {
 
   public render(): JSX.Element {
     validateProps(this, propTypes);
+    warnIfDeprecatedPropIsUsed<typeof Accordion>(this, 'tag', 'Please use heading-tag prop instead.');
     attachComponentCss(this.host, getComponentCss, this.size, this.compact, this.open, this.theme);
 
     const buttonId = 'accordion-control';
     const contentId = 'accordion-panel';
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
-    const Heading = this.tag;
+    const Heading = this.tag || this.headingTag;
 
     return (
       <Host>

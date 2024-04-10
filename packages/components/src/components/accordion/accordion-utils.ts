@@ -7,4 +7,7 @@ export type AccordionSize = (typeof ACCORDION_SIZES)[number];
 export type AccordionUpdateEvent = { open: boolean };
 export type AccordionUpdateEventDetail = AccordionUpdateEvent;
 
+/** @deprecated */
 export type AccordionTag = HeadingTag;
+
+export type AccordionHeadingTag = HeadingTag;

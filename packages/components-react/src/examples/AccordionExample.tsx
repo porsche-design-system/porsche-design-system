@@ -18,10 +18,10 @@ export const AccordionExamplePage = (): JSX.Element => {
 
   return (
     <>
-      <PAccordion heading="Some Heading" tag="h3" open={isOpen1} onUpdate={onUpdate1}>
+      <PAccordion heading="Some Heading" headingTag="h3" open={isOpen1} onUpdate={onUpdate1}>
         <PText>{content}</PText>
       </PAccordion>
-      <PAccordion heading="Some Heading" tag="h3" open={isOpen2} onUpdate={onUpdate2}>
+      <PAccordion heading="Some Heading" headingTag="h3" open={isOpen2} onUpdate={onUpdate2}>
         <PText>{content}</PText>
       </PAccordion>
     </>

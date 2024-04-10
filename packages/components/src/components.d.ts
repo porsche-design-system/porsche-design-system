@@ -6,7 +6,7 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { BreakpointCustomizable, ButtonAriaAttribute, ButtonType, ButtonVariant, HeadingSize, HeadingTag, IconName, LinkAriaAttribute, LinkTarget, LinkVariant, SelectedAriaAttributes, TextSize, Theme } from "./types";
-import { AccordionSize, AccordionTag, AccordionUpdateEventDetail } from "./components/accordion/accordion-utils";
+import { AccordionHeadingTag, AccordionSize, AccordionTag, AccordionUpdateEventDetail } from "./components/accordion/accordion-utils";
 import { BannerHeadingTag, BannerState, BannerWidth } from "./components/banner/banner-utils";
 import { ButtonIcon } from "./components/button/button-utils";
 import { ButtonGroupDirection } from "./components/button-group/button-group-utils";
@@ -67,7 +67,7 @@ import { ToastMessage } from "./components/toast/toast/toast-manager";
 import { ToastState } from "./components/toast/toast/toast-utils";
 import { WordmarkAriaAttribute, WordmarkSize, WordmarkTarget } from "./components/wordmark/wordmark-utils";
 export { BreakpointCustomizable, ButtonAriaAttribute, ButtonType, ButtonVariant, HeadingSize, HeadingTag, IconName, LinkAriaAttribute, LinkTarget, LinkVariant, SelectedAriaAttributes, TextSize, Theme } from "./types";
-export { AccordionSize, AccordionTag, AccordionUpdateEventDetail } from "./components/accordion/accordion-utils";
+export { AccordionHeadingTag, AccordionSize, AccordionTag, AccordionUpdateEventDetail } from "./components/accordion/accordion-utils";
 export { BannerHeadingTag, BannerState, BannerWidth } from "./components/banner/banner-utils";
 export { ButtonIcon } from "./components/button/button-utils";
 export { ButtonGroupDirection } from "./components/button-group/button-group-utils";
@@ -138,6 +138,10 @@ export namespace Components {
          */
         "heading"?: string;
         /**
+          * Sets a heading tag, so it fits correctly within the outline of the page.
+         */
+        "headingTag"?: AccordionHeadingTag;
+        /**
           * Defines if accordion is open.
          */
         "open"?: boolean;
@@ -146,7 +150,7 @@ export namespace Components {
          */
         "size"?: BreakpointCustomizable<AccordionSize>;
         /**
-          * Sets a heading tag, so it fits correctly within the outline of the page.
+          * @deprecated , will be removed with next major release, use `heading-tag` instead. Sets a heading tag, so it fits correctly within the outline of the page.
          */
         "tag"?: AccordionTag;
         /**
@@ -2858,6 +2862,10 @@ declare namespace LocalJSX {
          */
         "heading"?: string;
         /**
+          * Sets a heading tag, so it fits correctly within the outline of the page.
+         */
+        "headingTag"?: AccordionHeadingTag;
+        /**
           * @deprecated since v3.0.0, will be removed with next major release, use `update` event instead. Emitted when accordion state is changed.
          */
         "onAccordionChange"?: (event: PAccordionCustomEvent<AccordionUpdateEventDetail>) => void;
@@ -2874,7 +2882,7 @@ declare namespace LocalJSX {
          */
         "size"?: BreakpointCustomizable<AccordionSize>;
         /**
-          * Sets a heading tag, so it fits correctly within the outline of the page.
+          * @deprecated , will be removed with next major release, use `heading-tag` instead. Sets a heading tag, so it fits correctly within the outline of the page.
          */
         "tag"?: AccordionTag;
         /**
