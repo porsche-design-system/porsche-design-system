@@ -6,12 +6,21 @@ exports[`should match snapshot 1`] = `
     "allowedPropValues": {
       "compact": "boolean",
       "heading": "string",
+      "headingTag": [
+        "h1",
+        "h2",
+        "h3",
+        "h4",
+        "h5",
+        "h6",
+      ],
       "open": "boolean",
       "size": [
         "small",
         "medium",
       ],
       "tag": [
+        null,
         "h1",
         "h2",
         "h3",
@@ -30,6 +39,9 @@ exports[`should match snapshot 1`] = `
     ],
     "deprecatedEventNames": [
       "accordionChange",
+    ],
+    "deprecatedProps": [
+      "tag",
     ],
     "eventNames": [
       "accordionChange",
@@ -65,9 +77,10 @@ exports[`should match snapshot 1`] = `
     "props": {
       "compact": null,
       "heading": null,
+      "headingTag": "h2",
       "open": null,
       "size": "small",
-      "tag": "h2",
+      "tag": null,
       "theme": "light",
     },
     "propsMeta": {
@@ -82,6 +95,19 @@ exports[`should match snapshot 1`] = `
         "defaultValue": null,
         "description": "Defines the heading used in accordion.",
         "type": "string",
+      },
+      "headingTag": {
+        "allowedValues": [
+          "h1",
+          "h2",
+          "h3",
+          "h4",
+          "h5",
+          "h6",
+        ],
+        "defaultValue": "h2",
+        "description": "Sets a heading tag, so it fits correctly within the outline of the page.",
+        "type": "AccordionHeadingTag",
       },
       "open": {
         "allowedValues": "boolean",
@@ -101,6 +127,7 @@ exports[`should match snapshot 1`] = `
       },
       "tag": {
         "allowedValues": [
+          null,
           "h1",
           "h2",
           "h3",
@@ -108,8 +135,9 @@ exports[`should match snapshot 1`] = `
           "h5",
           "h6",
         ],
-        "defaultValue": "h2",
-        "description": "Sets a heading tag, so it fits correctly within the outline of the page.",
+        "defaultValue": null,
+        "description": "@deprecated, will be removed with next major release, use \`heading-tag\` instead. Sets a heading tag, so it fits correctly within the outline of the page.",
+        "isDeprecated": true,
         "type": "AccordionTag",
       },
       "theme": {
