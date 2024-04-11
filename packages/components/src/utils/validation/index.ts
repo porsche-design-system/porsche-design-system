@@ -15,6 +15,5 @@ export { AllowedTypes, validateProps } from './validateProps';
 export * from './validateVersions';
 export * from '../link-button/align-label';
 export * from '../link-button/button-type';
-export * from '../typography/heading-tag';
 export * from '../link-button/link-button-variant';
 export * from '../theme';
