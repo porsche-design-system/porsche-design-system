@@ -39,7 +39,7 @@ body:
         - Hight
         - Medium
         - Low
-      validations:
+    validations:
       required: true
   - type: input
     id: resources
