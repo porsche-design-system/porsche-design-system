@@ -12,24 +12,18 @@ import {
   setProperty,
   waitForStencilLifecycle,
 } from '../helpers';
-import type { BannerState, BannerHeadingTag } from '@porsche-design-system/components';
+import type { BannerState } from '@porsche-design-system/components';
 
 type InitOptions = {
   open: boolean;
   state?: BannerState;
   dismissButton?: boolean;
-  headingTag?: BannerHeadingTag;
 };
 
 const initBanner = (page: Page, opts: InitOptions): Promise<void> => {
-  const { open = false, state, dismissButton = true, headingTag } = opts || {};
+  const { open = false, state, dismissButton = true } = opts || {};
 
-  const attrs = [
-    `open="${open}"`,
-    state ? `state="${state}"` : '',
-    `dismiss-button="${dismissButton}"`,
-    headingTag && `heading-tag="${headingTag}"`,
-  ].join(' ');
+  const attrs = [`open="${open}"`, state ? `state="${state}"` : '', `dismiss-button="${dismissButton}"`].join(' ');
 
   return setContentWithDesignSystem(
     page,
@@ -42,10 +36,6 @@ const initBanner = (page: Page, opts: InitOptions): Promise<void> => {
 const getHost = (page: Page) => page.$('p-banner');
 const getInlineNotification = (page: Page) => page.$('p-banner p-inline-notification');
 const getCloseButton = (page: Page) => page.$('p-banner p-inline-notification p-button-pure.close');
-const getHeadingTagName = async (page: Page): Promise<string> =>
-  (await getHost(page)).evaluate(
-    (el) => el.shadowRoot.querySelector('p-inline-notification').shadowRoot.querySelector('.heading').tagName
-  );
 
 test('should forward props correctly to p-inline-notification', async ({ page }) => {
   await setContentWithDesignSystem(
@@ -93,17 +83,6 @@ test('should not show banner by setting open prop false', async ({ page }) => {
   await waitForStencilLifecycle(page);
   expect(await getElementStyle(banner, 'opacity')).toBe('0');
   expect(await getElementStyle(banner, 'visibility')).toBe('hidden');
-});
-
-test('should render correct heading tag when heading-tag property is set', async ({ page }) => {
-  await initBanner(page, { open: true });
-  expect(await getHeadingTagName(page)).toBe('H5');
-
-  const host = await getHost(page);
-  await setProperty(host, 'headingTag', 'h2');
-  await waitForStencilLifecycle(page);
-
-  expect(await getHeadingTagName(page)).toBe('H2');
 });
 
 test.describe('close', () => {

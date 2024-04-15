@@ -12,7 +12,6 @@ import {
   skipInBrowsers,
   waitForStencilLifecycle,
 } from '../helpers';
-import type { HeadingTag } from '@porsche-design-system/components';
 
 const clickHandlerScript = `
 <script>
@@ -23,7 +22,6 @@ const clickHandlerScript = `
 </script>`;
 
 type InitOptions = {
-  headingTag?: HeadingTag;
   otherPreMarkup?: string;
   otherPostMarkup?: string;
   otherSlottedMarkup?: string;
@@ -32,16 +30,9 @@ type InitOptions = {
 };
 
 const initAccordion = (page: Page, opts?: InitOptions) => {
-  const {
-    headingTag = 'h2',
-    otherPreMarkup = '',
-    otherPostMarkup = '',
-    otherSlottedMarkup = '',
-    hasInput,
-    isOpen = false,
-  } = opts || {};
+  const { otherPreMarkup = '', otherPostMarkup = '', otherSlottedMarkup = '', hasInput, isOpen = false } = opts || {};
 
-  const content = `${otherPreMarkup}<p-accordion heading="Some Accordion" heading-tag="${headingTag}" open="${isOpen}">
+  const content = `${otherPreMarkup}<p-accordion heading="Some Accordion" open="${isOpen}">
 Test content Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt
 ut labore et dolore magna aliquyam erat, sed diam voluptua.${hasInput ? '<input type="text"/>' : ''}
 ${otherSlottedMarkup}
@@ -58,8 +49,6 @@ const getBody = (page: Page) => page.$('body');
 const getCollapseVisibility = async (page: Page) => getElementStyle(await getCollapsible(page), 'visibility');
 const getCollapseGridTemplateRows = async (page: Page) =>
   getElementStyle(await getCollapsible(page), 'gridTemplateRows');
-const getHeadingTagName = async (page: Page): Promise<string> =>
-  (await getHost(page)).evaluate((el) => el.shadowRoot.querySelector('.heading').tagName);
 
 test('should set "gridTemplateRows: 1fr" and "visibility: visible" on collapsible on initial open', async ({
   page,
@@ -158,17 +147,6 @@ test('should show aria-expanded true when open and false when closed', async ({ 
   await waitForStencilLifecycle(page);
 
   expect(await getAttribute(button, 'aria-expanded'), 'after click to close').toBe('false');
-});
-
-test('should render correct heading tag when heading-tag property is set', async ({ page }) => {
-  await initAccordion(page);
-  expect(await getHeadingTagName(page)).toBe('H2');
-
-  const host = await getHost(page);
-  await setProperty(host, 'headingTag', 'h5');
-  await waitForStencilLifecycle(page);
-
-  expect(await getHeadingTagName(page)).toBe('H5');
 });
 
 test.describe('events', () => {
