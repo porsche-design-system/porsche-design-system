@@ -695,6 +695,30 @@ test.describe('sticky footer', () => {
       await expect(footer).toHaveCSS('box-shadow', expectedBoxShadow);
     });
   });
+
+  test('should show box-shadow when slot changes', async ({ page }) => {
+    await initBasicModal(page, {
+      isOpen: true,
+      hasSlottedFooter: true,
+    });
+
+    const host = await getHost(page);
+    const footer = await getFooter(page);
+    await footer.evaluate((el) => (el.style.visibility = 'hidden'));
+
+    expect(await getElementStyle(footer, 'visibility')).toBe('hidden');
+    expect(await getFooterBoxShadow(page)).toBe('none');
+
+    await host.evaluate((el) => {
+      el.innerHTML = '<div style="height: 110vh">Some Content</div>';
+    });
+    await footer.evaluate((el) => (el.style.visibility = 'visible'));
+
+    await waitForStencilLifecycle(page);
+
+    expect(await getElementStyle(footer, 'visibility')).toBe('visible');
+    expect(await getFooterBoxShadow(page)).toBe(expectedBoxShadow);
+  });
 });
 
 test.describe('lifecycle', () => {

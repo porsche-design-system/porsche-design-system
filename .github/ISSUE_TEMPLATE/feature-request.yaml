@@ -2,6 +2,7 @@ name: 🆕 Feature Request
 description: Propose new functionality that everyone can benefit from
 title: "[FEATURE] - Short description"
 labels: ["community", "to be refined"]
+projects: ["projects/14"]
 body:
   - type: markdown
     attributes:
@@ -39,7 +40,7 @@ body:
         - Hight
         - Medium
         - Low
-      validations:
+    validations:
       required: true
   - type: input
     id: resources
