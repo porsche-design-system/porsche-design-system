@@ -20,14 +20,14 @@
     "@porsche-design-system/shared": "0.0.0",
     "@types/madge": "^5.0.3",
     "@types/styled-components": "^5.1.34",
-    "change-case": "^5.4.3",
+    "change-case": "^5.4.4",
     "madge": "^6.1.0",
     "prettier": "^3.2.5",
     "react-jss": "^10.10.0",
-    "sass": "^1.72.0",
+    "sass": "^1.74.1",
     "styled-components": "^5.3.11",
-    "tsx": "^4.7.1",
-    "typescript": "~5.4.2"
+    "tsx": "^4.7.2",
+    "typescript": "~5.4.4"
   },
   "volta": {
     "extends": "../../package.json"

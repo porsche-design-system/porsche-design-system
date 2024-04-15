@@ -55,15 +55,15 @@
     "@types/jasmine": "^5.1.4",
     "concurrently": "^8.2.2",
     "globby": "^11.1.0",
-    "jest-preset-angular": "^13.1.6",
+    "jest-preset-angular": "^14.0.3",
     "karma": "~6.4.3",
     "karma-chrome-launcher": "~3.2.0",
     "karma-coverage-istanbul-reporter": "~3.0.3",
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "^2.1.0",
-    "local-web-server": "^5.3.1",
+    "local-web-server": "^5.3.3",
     "ng-packagr": "^17.3.0",
-    "typescript": "~5.4.2"
+    "typescript": "~5.4.4"
   },
   "volta": {
     "extends": "../../package.json"
