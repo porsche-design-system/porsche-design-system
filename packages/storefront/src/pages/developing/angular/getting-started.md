@@ -37,7 +37,7 @@ import { AppComponent } from './app.component';
 
 @NgModule({
   declarations: [AppComponent],
-  imports: [BrowserModule, PorscheDesignSystemModule],
+  imports: [BrowserModule, PorscheDesignSystemModule], // <-- PDS module is imported here
   providers: [],
   bootstrap: [AppComponent],
 })
@@ -66,6 +66,27 @@ Run `yarn start` or `npm start` and check if the components are displayed correc
   <code>The Porsche Design System is used without using the getInitialStyles() partial.</code><br>
   To fix this, you have to apply the <a href="partials/initial-styles">getInitialStyles() partial</a> which is mandatory since v3.7.0.
 </Notification>
+
+#### Using Standalone Components
+
+When using [Standalone Components](https://angular.io/guide/standalone-components) the `PorscheDesignSystemModule` needs
+to be included in the component itself.
+
+```ts
+// app.component.ts (standalone)
+
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { PorscheDesignSystemModule } from '@porsche-design-system/components-angular';
+
+@Component({
+  selector: 'app-root',
+  standalone: true,
+  imports: [PorscheDesignSystemModule], // <-- PDS module is imported here
+  template: `<p-heading>Welcome to Angular</p-heading>`,
+  changeDetection: ChangeDetectionStrategy.OnPush, // disable automatic change detection, https://angular.io/api/core/ChangeDetectionStrategy
+})
+export class AppComponent {}
+```
 
 ## When are Porsche Design System components initialized?
 
