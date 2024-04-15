@@ -105,11 +105,6 @@ export default class Code extends Vue {
 
   basic =
 `<p-inline-notification heading="${this.defaultHeading}" heading-tag="h3" description="${this.defaultDescription}">
-</p-inline-notification>
-<br>
-<!-- or alternatively -->
-<p-inline-notification heading="${this.defaultHeading}" heading-tag="h3">
-  ${this.defaultDescription}
 </p-inline-notification>`;
 
   state = 'info';
