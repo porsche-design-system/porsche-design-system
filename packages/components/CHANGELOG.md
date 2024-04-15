@@ -14,10 +14,19 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ### [Unreleased]
 
+### [3.15.0-rc.0] - 2024-04-05
+
+#### Changed
+
+- `Model Signature`: Enabling the use of hex colors, CSS gradients, CSS image and video masks. In addition, the size was
+  slightly adjusted. ([#3153](https://github.com/porsche-design-system/porsche-design-system/pull/3153))
+
 ### Fixed
 
 - `Modal`: Missing box-shadow on sticky footer when slotted content changes
   ([#3154](https://github.com/porsche-design-system/porsche-design-system/pull/3154))
+- `Select`: Hydration error in Next.js when using slotted `img`
+  ([#3162](https://github.com/porsche-design-system/porsche-design-system/pull/3162))
 - `Text Field Wrapper`, `Textarea Wrapper`: Dynamic changes of `showCounter` and `maxLength` are reflected. The counter
   element dynamically adjusts to changes in the input value accurately.
   ([#3084](https://github.com/porsche-design-system/porsche-design-system/pull/3084))

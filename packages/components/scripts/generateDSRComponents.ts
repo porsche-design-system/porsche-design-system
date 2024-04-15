@@ -503,10 +503,7 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
           // .replace(/(SelectDropdownDirectionInternal)/, 'type $1')
           .replace(/private searchTimeout: any\.Timeout \| number = null;/, '');
       } else if (tagName === 'p-select-option') {
-        newFileContent = newFileContent
-          // remove any jsx since options are not visible in closed select
-          .replace(/<>\s*([\s\S]*)\s*<\/>/, '<></>')
-          .replace(/this\.theme/, 'this.props.theme');
+        newFileContent = newFileContent.replace(/this\.theme/, 'this.props.theme');
       } else if (tagName === 'p-text-field-wrapper') {
         // make private like isSearch, isPassword and hasUnit work
         const rawPrivateMembers = Array.from(fileContent.matchAll(/this\.(?:is|has)[A-Z][A-Za-z]+ = .*?;/g))

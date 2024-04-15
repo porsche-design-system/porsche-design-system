@@ -3,21 +3,24 @@ import { validateCssAndMatchSnapshot } from '../../../tests/unit/helpers';
 
 describe('getComponentCss()', () => {
   it.each<Parameters<typeof getComponentCss>>([
-    ['small', 'primary', 'light'],
-    ['small', 'contrast-low', 'light'],
-    ['small', 'contrast-medium', 'light'],
-    ['small', 'contrast-high', 'light'],
-    ['small', 'inherit', 'light'],
-    ['inherit', 'primary', 'light'],
-    ['inherit', 'inherit', 'light'],
-    ['small', 'primary', 'dark'],
-    ['small', 'contrast-low', 'dark'],
-    ['small', 'contrast-medium', 'dark'],
-    ['small', 'contrast-high', 'dark'],
-    ['small', 'inherit', 'dark'],
-    ['inherit', 'primary', 'dark'],
-    ['inherit', 'inherit', 'dark'],
-  ])('should return correct css for size: %s, color: %s and theme: %s', (...args) => {
+    ['911', true, 'small', 'primary', 'light'],
+    ['cayenne', true, 'small', 'primary', 'light'],
+    ['cayenne', false, 'small', 'primary', 'light'],
+    ['cayenne', false, 'small', 'primary', 'auto'],
+    ['911', true, 'small', 'contrast-low', 'light'],
+    ['911', true, 'small', 'contrast-medium', 'light'],
+    ['911', true, 'small', 'contrast-high', 'light'],
+    ['911', true, 'small', 'inherit', 'light'],
+    ['911', true, 'inherit', 'primary', 'light'],
+    ['911', true, 'inherit', 'inherit', 'light'],
+    ['911', true, 'small', 'primary', 'dark'],
+    ['911', true, 'small', 'contrast-low', 'dark'],
+    ['911', true, 'small', 'contrast-medium', 'dark'],
+    ['911', true, 'small', 'contrast-high', 'dark'],
+    ['911', true, 'small', 'inherit', 'dark'],
+    ['911', true, 'inherit', 'primary', 'dark'],
+    ['911', true, 'inherit', 'inherit', 'dark'],
+  ])('should return correct css for model: %s, safe-zone: %s, size: %s, color: %s and theme: %s', (...args) => {
     validateCssAndMatchSnapshot(getComponentCss(...args));
   });
 });

@@ -4,13 +4,7 @@
       <!-- prettier-ignore -->
       <button type="button" v-for="(framework, index) in usedFrameworks" :key="index" @click="setFramework(index)">{{ framework }}</button>
     </p-tabs-bar>
-    <pre
-      :class="highlightedLanguage"
-      dir="ltr"
-      tabindex="0"
-      role="region"
-      aria-label="Code sample"
-    ><code v-html="highlightedMarkup"></code></pre>
+    <pre dir="ltr" tabindex="0" role="region" aria-label="Code sample"><code v-html="highlightedMarkup"></code></pre>
   </div>
 </template>
 
@@ -19,7 +13,7 @@
   import Component from 'vue-class-component';
   import { Prop } from 'vue-property-decorator';
   import type { BackgroundColor, Framework, FrameworkMarkup, PlaygroundTheme } from '@/models';
-  import { convertMarkup, getHighlightedCode, getHighlightedLanguage } from '@/utils';
+  import { convertMarkup, getHighlightedCode } from '@/utils';
   import { frameworkNameMap } from '@/utils/frameworkNameMap';
 
   @Component
@@ -59,10 +53,6 @@
         this.frameworkBeforeShared = this.framework;
       }
       this.$store.commit('setSelectedFramework', framework);
-    }
-
-    get highlightedLanguage(): string {
-      return getHighlightedLanguage(this.framework);
     }
 
     get highlightedMarkup(): string {
