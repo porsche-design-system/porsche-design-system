@@ -14,7 +14,7 @@ body:
       label: Portfolio
       description: For which Porsche Portfolio are you requesting the feature?
       options:
-        - None
+        - No Portfolio
         - Customer
         - Delivery
         - Employee
@@ -58,13 +58,10 @@ body:
       label: Business priority
       description: Select the priority depending on the urgency of related release dates or legal requirements.
       options:
-        - None
         - Urgent
         - High
         - Medium
         - Low
-    validations:
-      required: true
   - type: input
     id: resources
     attributes:
