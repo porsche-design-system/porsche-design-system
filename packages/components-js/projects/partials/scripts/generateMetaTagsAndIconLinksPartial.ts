@@ -1,6 +1,8 @@
-import { minifyHTML } from './utils';
-import { META_ICONS_MANIFEST } from '@porsche-design-system/meta-icons';
-import { CDN_BASE_PATH_META_ICONS, CDN_BASE_URL_COM, CDN_BASE_URL_CN } from '../../../../../cdn.config';
+import {minifyHTML} from './utils';
+import {META_ICONS_MANIFEST} from '@porsche-design-system/meta-icons';
+import {CDN_BASE_PATH_META_ICONS, CDN_BASE_URL_COM, CDN_BASE_URL_CN} from '../../../../../cdn.config';
+import {Cdn} from "@porsche-design-system/components-js/partials/shared";
+import {FormatWithJS} from "../src/shared";
 
 const convertToJSX = (templates: string[]): JSX.Element[] => {
   return templates.map(
@@ -14,6 +16,32 @@ const convertToJSX = (templates: string[]): JSX.Element[] => {
 
 export const generateMetaTagsAndIconLinksPartial = (): string => {
   const metaIconCDNPath = `$cdnBaseUrl/${CDN_BASE_PATH_META_ICONS}`;
+
+  const metadata = `{
+      themeColor: [
+        { media: '(prefers-color-scheme: light)', color: '#FFF' },
+        { media: '(prefers-color-scheme: dark)', color: '#0E1418' },
+      ],
+      appleWebApp: {
+        title: appTitle,
+        statusBarStyle: 'white',
+      },
+      icons: {
+        icon: [
+          {
+            url: \`\${cdnBaseUrl}/${CDN_BASE_PATH_META_ICONS}/${META_ICONS_MANIFEST.favicon.favicon}\`,
+            sizes: "any"
+          },
+          {
+            url: \`\${cdnBaseUrl}/${CDN_BASE_PATH_META_ICONS}/${META_ICONS_MANIFEST.favicon.favicon_32x32}\`,
+            sizes: '32x32',
+            type: 'image/png'
+          },
+        ],
+        apple: \`\${cdnBaseUrl}/${CDN_BASE_PATH_META_ICONS}/${META_ICONS_MANIFEST.touchIcon.appleTouchIcon_180x180}\`,
+      },
+      manifest: \`\${manifestUrl}\`,
+    }`;
 
   const metaIconLinks: string[] = [
     '<meta name="theme-color" content="#FFF" media="(prefers-color-scheme:light)" />',
@@ -33,15 +61,28 @@ export const generateMetaTagsAndIconLinksPartial = (): string => {
 
   const metaIconTemplatesJSX = convertToJSX(metaIconLinks).join('');
 
-  const types = `type GetMetaTagsAndIconLinksOptions = {
+  const types = `type Metadata = {
+  themeColor: { media: string, color: string }[];
+  appleWebApp: {
+    title: string;
+    statusBarStyle: string;
+  };
+  icons: {
+    icon: { url: string, sizes: string, type?: string }[];
+    apple: string;
+  };
+  manifest: string;
+}
+
+type GetMetaTagsAndIconLinksOptions = {
   appTitle: string;
   cdn?: Cdn;
-  format?: Format;
+  format?: FormatWithJS;
 };`;
 
   const func = `export function getMetaTagsAndIconLinks(opts: GetMetaTagsAndIconLinksOptions & { format: 'jsx' }): JSX.Element;
 export function getMetaTagsAndIconLinks(opts?: GetMetaTagsAndIconLinksOptions): string;
-export function getMetaTagsAndIconLinks(opts?: GetMetaTagsAndIconLinksOptions): string | JSX.Element {
+export function getMetaTagsAndIconLinks(opts?: GetMetaTagsAndIconLinksOptions): string | JSX.Element | Metadata {
   const { appTitle, cdn, format }: GetMetaTagsAndIconLinksOptions = {
     appTitle: '',
     cdn: 'auto',
@@ -62,9 +103,13 @@ export function getMetaTagsAndIconLinks(opts?: GetMetaTagsAndIconLinksOptions): 
 
   const metaIconTags = ${minifiedMetaIconsHTML}.map(metaIconTemplate => metaIconTemplate.replace('$appTitle', \`"\${appTitle}"\`).replace('$cdnBaseUrl', cdnBaseUrl).replace('$manifestUrl', manifestUrl));
 
-  return format === 'html'
-    ? metaIconTags.join('')
-    : <>${metaIconTemplatesJSX}</>;
+  if (format === 'html') {
+    return metaIconTags.join('');
+  } else if (format === 'jsx') {
+    return <>${metaIconTemplatesJSX}</>;
+  } else {
+    return ${metadata};
+  }
 }`;
 
   return [types, func].join('\n\n');
