@@ -18,7 +18,7 @@ import { JssStyle } from 'jss';
 import { getTypographySlottedJssStyle } from '../../styles/typography-styles';
 
 const mediaQueryMaxS = getMediaQueryMax('s');
-const textStyles = (theme: Theme): JssStyle => ({
+const getTextStyles = (theme: Theme): JssStyle => ({
   margin: 0,
   color: getThemedColors(theme).primaryColor,
   ...prefersColorSchemeDarkMediaQuery(theme, {
@@ -26,9 +26,9 @@ const textStyles = (theme: Theme): JssStyle => ({
   }),
 });
 
-const headingStyles = (theme: Theme): JssStyle => ({
+const getHeadingStyles = (theme: Theme): JssStyle => ({
   ...headingSmallStyle,
-  ...textStyles(theme),
+  ...getTextStyles(theme),
 });
 
 export const getComponentCss = (
@@ -47,19 +47,13 @@ export const getComponentCss = (
           ...hostHiddenStyles,
         }),
       },
-      [`::slotted(:is(${HEADING_TAGS.map((i) => `${i}`).join()}))`]: {
-        ...addImportantToEachRule(getTypographySlottedJssStyle()),
-      },
-      'slot[name="heading"]': {
-        ...headingStyles(theme),
-      },
+      [`::slotted(:is(${HEADING_TAGS.join()}))`]: addImportantToEachRule(getTypographySlottedJssStyle()),
+      'slot[name="heading"]': getHeadingStyles(theme),
     },
-    heading: {
-      ...headingStyles(theme),
-    },
+    heading: getHeadingStyles(theme),
     description: {
       ...textSmallStyle,
-      ...textStyles(theme),
+      ...getTextStyles(theme),
     },
     icon: getNotificationIconJssStyle(),
     content: getNotificationContentJssStyle(),
