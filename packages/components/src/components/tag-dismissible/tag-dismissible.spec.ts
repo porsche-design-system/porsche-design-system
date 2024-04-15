@@ -10,7 +10,7 @@ describe('render', () => {
 
     component.render();
 
-    expect(spy).toBeCalledWith(component, 'color', {
+    expect(spy).toHaveBeenCalledWith(component, 'color', {
       'background-default': 'background-base',
     });
   });

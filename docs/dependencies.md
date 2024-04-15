@@ -10,6 +10,8 @@
 
 ## Playwright
 
+Skipped `v1.43.0` for now because title in high contrast dark mode is not visible.
+
 In case it gets updated, the Porsche Design System / Playwright Docker image needs to be updated too (this might affect
 all running workflows even outside the changed branch, so this must be aligned with the other developers).
 
@@ -60,6 +62,22 @@ with Vue **2** and **3**.
   plugins
 - `imask` uses static class properties since v7.2.0 which can't be handled by our outdated vue 2 setup without
   additional babel plugins
+
+## @volar/typescript
+
+Is currently fixed to "2.1.3" because of typing error:
+
+```
+src/App.vue:2:3 - error TS6200: Definitions of the following identifiers conflict with those in another file: __VLS_IntrinsicElements, __VLS_Element, __VLS_GlobalComponents, __VLS_IsAny, __VLS_PickNotAny, __VLS_intrinsicElements, __VLS_SelfComponent, __VLS_WithComponent, __VLS_FillingEventArg_ParametersLength, __VLS_FillingEventArg, __VLS_FunctionalComponentProps, __VLS_AsFunctionOrAny, __VLS_UnionToIntersection, __VLS_OverloadUnionInner, __VLS_OverloadUnion, __VLS_ConstructorOverloads, __VLS_NormalizeEmits, __VLS_PrettifyGlobal
+
+2   import { onMounted, ref } from 'vue';
+    ~~~~~~
+
+  dist/vue-wrapper/esm/PorscheDesignSystemProvider.vue.d.ts:1:1
+    1 import type { Theme } from './lib/types';
+      ~~~~~~
+    Conflicts are in this file.
+```
 
 ---
 
@@ -113,3 +131,12 @@ babel plugins, this is imported via text-field-wrapper.examples.md.
 ## @types/react
 
 Is currently fixed to "18.2.65" because of typing incompatibility with JSX namespace.
+
+## @types/scheduler
+
+Is currently fixed to "0.16.8" because of typing error:
+
+```
+../../node_modules/@types/react/index.d.ts:9:53 - error TS2307: Cannot find module 'scheduler/tracing' or its corresponding type declarations.
+9 import { Interaction as SchedulerInteraction } from "scheduler/tracing";
+```

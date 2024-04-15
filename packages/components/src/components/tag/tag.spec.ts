@@ -11,7 +11,7 @@ describe('render', () => {
 
     component.render();
 
-    expect(spy).toBeCalledWith(component.host, 'a,button');
+    expect(spy).toHaveBeenCalledWith(component.host, 'a,button');
   });
 
   it('should call warnIfDeprecatedPropValueIsUsed() with correct parameters', () => {
@@ -22,7 +22,7 @@ describe('render', () => {
 
     component.render();
 
-    expect(spy).toBeCalledWith(component, 'color', {
+    expect(spy).toHaveBeenCalledWith(component, 'color', {
       'background-default': 'background-base',
       'neutral-contrast-high': 'primary',
       'notification-neutral': 'notification-info-soft',

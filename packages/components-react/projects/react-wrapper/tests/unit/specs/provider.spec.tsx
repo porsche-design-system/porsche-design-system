@@ -53,19 +53,19 @@ describe('PorscheDesignSystemProvider', () => {
   it('should call load() with default parameters once', () => {
     const spy = jest.spyOn(fromComponentsJs, 'load');
     const { rerender } = render(<PorscheDesignSystemProvider />);
-    expect(spy).toBeCalledWith({ prefix: '' });
+    expect(spy).toHaveBeenCalledWith({ prefix: '' });
 
     rerender(<PorscheDesignSystemProvider prefix="new-prefix" />);
-    expect(spy).toBeCalledTimes(1);
+    expect(spy).toHaveBeenCalledTimes(1);
   });
 
   it('should call load() with custom parameters once', () => {
     const spy = jest.spyOn(fromComponentsJs, 'load');
     const { rerender } = render(<PorscheDesignSystemProvider prefix="my-prefix" cdn="cn" />);
-    expect(spy).toBeCalledWith({ prefix: 'my-prefix', cdn: 'cn' });
+    expect(spy).toHaveBeenCalledWith({ prefix: 'my-prefix', cdn: 'cn' });
 
     rerender(<PorscheDesignSystemProvider prefix="new-prefix" cdn="cn" />);
-    expect(spy).toBeCalledTimes(1);
+    expect(spy).toHaveBeenCalledTimes(1);
   });
 
   describe('on server', () => {

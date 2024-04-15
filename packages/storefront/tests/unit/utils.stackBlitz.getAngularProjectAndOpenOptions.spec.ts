@@ -44,7 +44,7 @@ describe('replaceSharedImportsWithConstants()', () => {
 
     replaceSharedImportsWithConstants(markup, sharedImportKeys);
 
-    expect(spy).toBeCalledWith(sharedImportKeys);
+    expect(spy).toHaveBeenCalledWith(sharedImportKeys);
   });
 
   it('should call removeSharedImport() with correct parameters', () => {
@@ -54,7 +54,7 @@ describe('replaceSharedImportsWithConstants()', () => {
 
     replaceSharedImportsWithConstants(markup, sharedImportKeys);
 
-    expect(spy).toBeCalledWith(mockedReplaceValue);
+    expect(spy).toHaveBeenCalledWith(mockedReplaceValue);
   });
 
   it('should call replace() with correct parameters', () => {
@@ -97,7 +97,7 @@ describe('extendMarkupWithAppComponent()', () => {
 
     extendMarkupWithAppComponent(markup);
 
-    expect(spy).toBeCalledWith(markup, 'angular');
+    expect(spy).toHaveBeenCalledWith(markup, 'angular');
   });
 
   it('should call replace() with correct parameters', () => {
@@ -105,7 +105,7 @@ describe('extendMarkupWithAppComponent()', () => {
 
     extendMarkupWithAppComponent('Some Markup');
 
-    expect(spy).toBeCalledWith(/(\n)/g, '$1    ');
+    expect(spy).toHaveBeenCalledWith(/(\n)/g, '$1    ');
   });
 
   it('should return correct markup', () => {
@@ -198,9 +198,9 @@ describe('getAppComponentTs()', () => {
 
     getAppComponentTs('some markup', true, [], '', false);
 
-    expect(convertImportPathsSpy).toBeCalledTimes(1);
-    expect(replaceSharedImportsWithConstantsSpy).toBeCalledWith('some markup', []);
-    expect(extendMarkupWithAppComponentSpy).not.toBeCalled();
+    expect(convertImportPathsSpy).toHaveBeenCalledTimes(1);
+    expect(replaceSharedImportsWithConstantsSpy).toHaveBeenCalledWith('some markup', []);
+    expect(extendMarkupWithAppComponentSpy).not.toHaveBeenCalled();
   });
 
   it('should call convertImportPaths() + extendMarkupWithAppComponent()', () => {
@@ -216,9 +216,9 @@ describe('getAppComponentTs()', () => {
 
     getAppComponentTs('some markup', false, [], '', false);
 
-    expect(convertImportPathsSpy).toBeCalledTimes(1);
-    expect(replaceSharedImportsWithConstantsSpy).not.toBeCalled();
-    expect(extendMarkupWithAppComponentSpy).toBeCalledWith('some markup');
+    expect(convertImportPathsSpy).toHaveBeenCalledTimes(1);
+    expect(replaceSharedImportsWithConstantsSpy).not.toHaveBeenCalled();
+    expect(extendMarkupWithAppComponentSpy).toHaveBeenCalledWith('some markup');
   });
 
   it('should replace styles with styleUrls for hasInlineScss = true', () => {
@@ -322,7 +322,7 @@ describe('getDependencies()', () => {
 
     getDependencies(externalDependencies, '');
 
-    expect(spy).toBeCalledWith(externalDependencies, dependencyMap);
+    expect(spy).toHaveBeenCalledWith(externalDependencies, dependencyMap);
   });
 
   it('should return correct StackBlitzProjectDependencies with externalDependency for stable storefront release (e.g. /v2/…, /v3/…)', () => {
@@ -401,17 +401,17 @@ describe('getAngularProjectAndOpenOptions()', () => {
 
     getAngularProjectAndOpenOptions(stackBlitzFrameworkOpts);
 
-    expect(isStableStorefrontReleaseSpy).toBeCalled();
-    expect(getAppComponentTsSpy).toBeCalledWith(
+    expect(isStableStorefrontReleaseSpy).toHaveBeenCalled();
+    expect(getAppComponentTsSpy).toHaveBeenCalledWith(
       stackBlitzFrameworkOpts.markup,
       false,
       stackBlitzFrameworkOpts.sharedImportKeys,
       '',
       false
     );
-    expect(getAppModuleTsSpy).toBeCalledWith(stackBlitzFrameworkOpts.externalDependencies, '');
-    expect(getIndexHtmlSpy).toBeCalledWith(stackBlitzFrameworkOpts.dir, stackBlitzFrameworkOpts.globalStyles);
-    expect(getDependenciesSpy).toBeCalledWith(stackBlitzFrameworkOpts.externalDependencies, '');
+    expect(getAppModuleTsSpy).toHaveBeenCalledWith(stackBlitzFrameworkOpts.externalDependencies, '');
+    expect(getIndexHtmlSpy).toHaveBeenCalledWith(stackBlitzFrameworkOpts.dir, stackBlitzFrameworkOpts.globalStyles);
+    expect(getDependenciesSpy).toHaveBeenCalledWith(stackBlitzFrameworkOpts.externalDependencies, '');
   });
 
   it('should return correct StackBlitzProjectAndOpenOptions', () => {

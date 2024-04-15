@@ -12,7 +12,7 @@ describe('connectedCallback', () => {
     const spy = jest.spyOn(component, 'validateComponent' as any);
 
     component.connectedCallback();
-    expect(spy).toBeCalledWith();
+    expect(spy).toHaveBeenCalledWith();
   });
   it('should call this.observeBreakpointChange()', () => {
     const component = new StepperHorizontal();
@@ -20,7 +20,7 @@ describe('connectedCallback', () => {
     const spy = jest.spyOn(component, 'observeBreakpointChange' as any);
 
     component.connectedCallback();
-    expect(spy).toBeCalledWith();
+    expect(spy).toHaveBeenCalledWith();
   });
 });
 
@@ -31,7 +31,7 @@ describe('componentWillLoad', () => {
     const spy = jest.spyOn(component, 'validateComponent' as any);
 
     component.componentWillLoad();
-    expect(spy).toBeCalledWith();
+    expect(spy).toHaveBeenCalledWith();
   });
 });
 
@@ -49,14 +49,14 @@ describe('componentDidLoad', () => {
     const spy = jest.spyOn(stepperHorizontalUtils, 'getIndexOfStepWithStateCurrent');
 
     component.componentDidLoad();
-    expect(spy).toBeCalledWith(component['stepperHorizontalItems']);
+    expect(spy).toHaveBeenCalledWith(component['stepperHorizontalItems']);
   });
 
   it('should call this.observeBreakpointChange()', () => {
     const spy = jest.spyOn(component, 'observeBreakpointChange' as any);
 
     component.componentDidLoad();
-    expect(spy).toBeCalledWith();
+    expect(spy).toHaveBeenCalledWith();
   });
 
   it('should set correct value of this.scrollerElement.scrollToPosition', () => {
@@ -79,7 +79,7 @@ describe('render', () => {
     component.host.attachShadow({ mode: 'open' });
 
     component.render();
-    expect(spy).toBeCalledWith(component.host, component.theme);
+    expect(spy).toHaveBeenCalledWith(component.host, component.theme);
   });
 });
 
@@ -91,7 +91,7 @@ describe('componentDidUpdate', () => {
     component.host = document.createElement('p-stepper-horizontal');
 
     component.componentDidUpdate();
-    expect(spy).toBeCalledWith(component.host, expect.any(Array));
+    expect(spy).toHaveBeenCalledWith(component.host, expect.any(Array));
   });
 });
 
@@ -102,7 +102,7 @@ describe('disconnectedCallback', () => {
     component.host = document.createElement('p-stepper-horizontal');
 
     component.disconnectedCallback();
-    expect(spy).toBeCalledWith(component.host);
+    expect(spy).toHaveBeenCalledWith(component.host);
   });
 });
 
@@ -113,7 +113,7 @@ describe('this.validateComponent()', () => {
     component.host = document.createElement('p-stepper-horizontal');
 
     component['validateComponent']();
-    expect(spy).toBeCalledWith(component.host, 'p-stepper-horizontal-item');
+    expect(spy).toHaveBeenCalledWith(component.host, 'p-stepper-horizontal-item');
   });
 
   it('should call throwIfChildCountIsExceeded() with correct parameters', () => {
@@ -122,7 +122,7 @@ describe('this.validateComponent()', () => {
     component.host = document.createElement('p-stepper-horizontal');
 
     component['validateComponent']();
-    expect(spy).toBeCalledWith(component.host, 9);
+    expect(spy).toHaveBeenCalledWith(component.host, 9);
   });
 
   it('should call throwIfMultipleCurrentStates() with correct parameters', () => {
@@ -131,11 +131,12 @@ describe('this.validateComponent()', () => {
     component.host = document.createElement('p-stepper-horizontal');
 
     component['validateComponent']();
-    expect(spy).toBeCalledWith(component.host, component['stepperHorizontalItems']);
+    expect(spy).toHaveBeenCalledWith(component.host, component['stepperHorizontalItems']);
   });
 });
 
-xdescribe('this.scrollIntoView()', () => {});
+xdescribe('this.scrollIntoView()', () => {
+});
 
 describe('this.observeBreakpointChange()', () => {
   it('should not call observeBreakpointChange() with correct parameters if this.size is not breakpoint customizable', () => {
@@ -144,7 +145,7 @@ describe('this.observeBreakpointChange()', () => {
     const spy = jest.spyOn(breakpointObserverUtils, 'observeBreakpointChange');
 
     component['observeBreakpointChange']();
-    expect(spy).not.toBeCalled();
+    expect(spy).not.toHaveBeenCalled();
   });
 
   it('should call observeBreakpointChange() with correct parameters if this.size is breakpoint customizable', () => {
@@ -153,6 +154,6 @@ describe('this.observeBreakpointChange()', () => {
     const spy = jest.spyOn(breakpointObserverUtils, 'observeBreakpointChange');
 
     component['observeBreakpointChange']();
-    expect(spy).toBeCalledWith(component.host, component['scrollIntoView']);
+    expect(spy).toHaveBeenCalledWith(component.host, component['scrollIntoView']);
   });
 });

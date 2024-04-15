@@ -7,6 +7,10 @@ const nextConfig = {
         protocol: 'https',
         hostname: 'nav.porsche.com',
       },
+      {
+        protocol: 'https',
+        hostname: 'porsche-design-system.github.io',
+      },
     ],
   },
 };

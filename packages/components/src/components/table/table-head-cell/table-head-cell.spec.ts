@@ -13,8 +13,9 @@ describe('connectedCallback', () => {
 
     try {
       component.connectedCallback();
-    } catch {}
+    } catch {
+    }
 
-    expect(spy).toBeCalledWith(component.host, 'sort');
+    expect(spy).toHaveBeenCalledWith(component.host, 'sort');
   });
 });
