@@ -23,6 +23,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ### Fixed
 
+- `Modal`: Missing box-shadow on sticky footer when slotted content changes
+  ([#3154](https://github.com/porsche-design-system/porsche-design-system/pull/3154))
 - `Select`: Hydration error in Next.js when using slotted `img`
   ([#3162](https://github.com/porsche-design-system/porsche-design-system/pull/3162))
 - `Text Field Wrapper`, `Textarea Wrapper`: Dynamic changes of `showCounter` and `maxLength` are reflected. The counter

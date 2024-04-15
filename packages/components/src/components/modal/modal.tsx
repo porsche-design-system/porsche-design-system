@@ -4,6 +4,7 @@ import {
   AllowedTypes,
   attachComponentCss,
   getPrefixedTagNames,
+  getShadowRootHTMLElements,
   hasHeading,
   hasNamedSlot,
   hasPropValueChanged,
@@ -16,7 +17,7 @@ import {
   warnIfDeprecatedPropIsUsed,
 } from '../../utils';
 import type { ModalAriaAttribute, ModalBackdrop } from './modal-utils';
-import { MODAL_ARIA_ATTRIBUTES, clickStartedInScrollbarTrack } from './modal-utils';
+import { clickStartedInScrollbarTrack, MODAL_ARIA_ATTRIBUTES } from './modal-utils';
 import { footerShadowClass, getComponentCss } from './modal-styles';
 import { throttle } from 'throttle-debounce';
 import { BACKDROPS } from '../../styles';
@@ -84,6 +85,22 @@ export class Modal {
   private hasFooter: boolean;
   private footer: HTMLElement;
   private dialog: HTMLElement;
+  // eslint-disable-next-line @typescript-eslint/member-ordering
+  private onScroll = throttle(100, () => {
+    // using an intersection observer would be so much easier but very tricky with the current layout
+    // also transform scale3d has an impact on the intersection observer, causing it to trigger
+    // initially and after the transition which makes the shadow appear later
+    // using an invisible element after the dialog div would work
+    // but layout with position: fixed and flex for vertical/horizontal centering scrollable content
+    // causes tons of problems, also considering fullscreen mode, etc.
+    // see https://stackoverflow.com/questions/33454533/cant-scroll-to-top-of-flex-item-that-is-overflowing-container
+    const { scrollHeight, clientHeight, scrollTop } = this.scrollContainerEl;
+    if (scrollHeight > clientHeight) {
+      const shouldApplyShadow =
+        scrollHeight - clientHeight > scrollTop + parseInt(getComputedStyle(this.dialog).marginBottom, 10);
+      this.footer.classList.toggle(footerShadowClass, shouldApplyShadow);
+    }
+  });
 
   private get hasDismissButton(): boolean {
     return this.disableCloseButton ? false : this.dismissButton;
@@ -109,6 +126,10 @@ export class Modal {
     if (this.open) {
       this.updateFocusTrap(true);
     }
+
+    getShadowRootHTMLElements(this.host, 'slot').forEach((element) =>
+      element.addEventListener('slotchange', this.onSlotChange)
+    );
   }
 
   public componentDidRender(): void {
@@ -132,6 +153,7 @@ export class Modal {
   public render(): JSX.Element {
     validateProps(this, propTypes);
     warnIfDeprecatedPropIsUsed<typeof Modal>(this, 'disableCloseButton', 'Please use dismissButton prop instead.');
+
     this.hasHeader = hasHeading(this.host, this.heading);
     this.hasFooter = hasNamedSlot(this.host, 'footer');
     if (this.open) {
@@ -189,13 +211,15 @@ export class Modal {
               </div>
             )}
             {this.hasHeader && (
-              <div class="header">{this.heading ? <h2>{this.heading}</h2> : <slot name="heading" />}</div>
+              <div key="heading" class="header">
+                {this.heading ? <h2>{this.heading}</h2> : <slot name="heading" />}
+              </div>
             )}
             <div class="content">
-              <slot onSlotchange={this.onSlotChange} />
+              <slot />
             </div>
             {this.hasFooter && (
-              <div class="footer" ref={(el) => (this.footer = el)}>
+              <div key="footer" class="footer" ref={(el) => (this.footer = el)}>
                 <slot name="footer" />
               </div>
             )}
@@ -218,24 +242,10 @@ export class Modal {
         this.dialog.focus(); // set initial focus
       });
     }
-  };
-
-  // eslint-disable-next-line @typescript-eslint/member-ordering
-  private onScroll = throttle(100, () => {
-    // using an intersection observer would be so much easier but very tricky with the current layout
-    // also transform scale3d has an impact on the intersection observer, causing it to trigger
-    // initially and after the transition which makes the shadow appear later
-    // using an invisible element after the dialog div would work
-    // but layout with position: fixed and flex for vertical/horizontal centering scrollable content
-    // causes tons of problems, also considering fullscreen mode, etc.
-    // see https://stackoverflow.com/questions/33454533/cant-scroll-to-top-of-flex-item-that-is-overflowing-container
-    const { scrollHeight, clientHeight, scrollTop } = this.scrollContainerEl;
-    if (scrollHeight > clientHeight) {
-      const shouldApplyShadow =
-        scrollHeight - clientHeight > scrollTop + parseInt(getComputedStyle(this.dialog).marginBottom, 10);
-      this.footer.classList.toggle(footerShadowClass, shouldApplyShadow);
+    if (this.hasFooter) {
+      this.onScroll();
     }
-  });
+  };
 
   private onMouseDown = (e: MouseEvent): void => {
     if (
