@@ -14,7 +14,7 @@ type GetComponentChunkLinksOptions = {
 
   const func = `export function getComponentChunkLinks(opts: GetComponentChunkLinksOptions & { format: 'jsx' }): JSX.Element;
 export function getComponentChunkLinks(opts?: GetComponentChunkLinksOptions): string;
-export function getComponentChunkLinks(opts?: GetComponentChunkLinksOptions): string | JSX.Element {
+export function getComponentChunkLinks(opts?: GetComponentChunkLinksOptions): string | JSX.Element | PartialLink[] {
   const { components, cdn, format }: GetComponentChunkLinksOptions = {
     components: [],
     cdn: 'auto',
@@ -46,9 +46,13 @@ Please use only valid component chunk names:
 
   const linksJsx = urls.map((url, index) => <link key={index} rel="preload" href={url} as="script" {...(index === 0 && { crossOrigin: '' })} />);
 
-  return format === 'html'
-    ? linksHtml
-    : <>{linksJsx}</>;
+  if (format === 'html') {
+    return linksHtml;
+  } else if (format === 'jsx') {
+    return <>{linksJsx}</>;
+  } else {
+    return urls.map((url, index) => ({ href: url, options: { as: 'script', ...(index === 0 && { crossOrigin: '' }) } } as PartialLink))
+  }
 }`;
 
   return [types, func].join('\n\n');

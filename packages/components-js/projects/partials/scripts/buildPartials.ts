@@ -21,7 +21,37 @@ const getCdnBaseUrl = (cdn: Cdn): string => (cdn === 'cn' ? '${CDN_BASE_URL_CN}'
 const convertPropsToAttributeString = (props: { [p: string]: string }): string =>
   Object.entries(props)
     .map(([attr, val]) => \`\${attr}\${val ? '=' + val : ''}\`)
-    .join(' ');`;
+    .join(' ');
+
+type PreloadAs =
+    | "audio"
+    | "document"
+    | "embed"
+    | "fetch"
+    | "font"
+    | "image"
+    | "object"
+    | "track"
+    | "script"
+    | "style"
+    | "video"
+    | "worker";
+type PreloadOptions = {
+  as: PreloadAs;
+  crossOrigin?: "anonymous" | "use-credentials" | "" | undefined;
+  fetchPriority?: "high" | "low" | "auto" | undefined;
+  imageSizes?: string | undefined;
+  imageSrcSet?: string | undefined;
+  integrity?: string | undefined;
+  type?: string | undefined;
+  nonce?: string | undefined;
+  referrerPolicy?: ReferrerPolicy | undefined;
+}
+
+type PartialLink = {
+  href: string;
+  options?: PreloadOptions;
+}`;
 };
 
 const generatePartials = async (): Promise<void> => {

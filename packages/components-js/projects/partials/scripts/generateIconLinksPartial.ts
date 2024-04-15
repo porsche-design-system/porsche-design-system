@@ -9,14 +9,14 @@ export const generateIconLinksPartial = (): string => {
 type GetIconLinksOptions = {
   icons?: IconName[];
   cdn?: Cdn;
-  format?: Format;
+  format?: FormatWithJS;
 };`;
 
   const link = minifyHTML('<link rel="prefetch" href="${url}" as="image" type="image/svg+xml" crossorigin>');
 
   const func = `export function getIconLinks(opts: GetIconLinksOptions & { format: 'jsx' }): JSX.Element;
 export function getIconLinks(opts?: GetIconLinksOptions): string;
-export function getIconLinks(opts?: GetIconLinksOptions): string | JSX.Element {
+export function getIconLinks(opts?: GetIconLinksOptions): string | JSX.Element | PartialLink[] {
   const { icons, cdn, format }: GetIconLinksOptions = {
     icons: ['arrow-right'],
     cdn: 'auto',
@@ -45,9 +45,13 @@ Please use only valid icon names:
     .join('');
   const linksJsx = urls.map((url, index) => <link key={index} rel="prefetch" href={url} as="image" type="image/svg+xml" crossOrigin="" />);
 
-  return format === 'html'
-    ? linksHtml
-    : <>{linksJsx}</>;
+  if (format === 'html') {
+    return linksHtml;
+  } else if (format === 'jsx') {
+    return <>{linksJsx}</>;
+  } else {
+    return urls.map((url) => ({ href: url } as PartialLink))
+  }
 }`;
 
   return [types, func].join('\n\n');

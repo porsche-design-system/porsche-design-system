@@ -19,7 +19,7 @@ type GetFontLinksOptions = {
 
   const func = `export function getFontLinks(opts: GetFontLinksOptions & { format: 'jsx' }): JSX.Element;
 export function getFontLinks(opts?: GetFontLinksOptions): string;
-export function getFontLinks(opts?: GetFontLinksOptions): string | JSX.Element {
+export function getFontLinks(opts?: GetFontLinksOptions): string | JSX.Element | PartialLink[] {
   const { subset, weights, cdn, format }: GetFontLinksOptions = {
     subset: 'latin',
     weights: ['regular', 'semi-bold'],
@@ -87,9 +87,13 @@ Please use only valid font weights:
   const linksHtml = urls.map((url) => \`${linkTemplate}\`).join('');
   const linksJsx = urls.map((url, index) => <link key={index} rel="preload" href={url} as="font" type="font/woff2" crossOrigin="" />);
 
-  return format === 'html'
-    ? linksHtml
-    : <>{linksJsx}</>;
+  if (format === 'html') {
+    return linksHtml;
+  } else if (format === 'jsx') {
+    return <>{linksJsx}</>;
+  } else {
+    return urls.map((url) => ({ href: url, options: { as: 'font', type: "font/woff2", crossOrigin: "" } } as PartialLink))
+  }
 }`;
 
   return [types, func].join('\n\n');
