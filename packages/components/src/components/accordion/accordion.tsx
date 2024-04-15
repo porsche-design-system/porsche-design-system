@@ -1,4 +1,4 @@
-import { Component, Element, Event, type EventEmitter, h, Host, Prop } from '@stencil/core';
+import { Component, Element, Event, type EventEmitter, h, Prop } from '@stencil/core';
 import {
   AllowedTypes,
   attachComponentCss,
@@ -63,22 +63,13 @@ export class Accordion {
     validateProps(this, propTypes);
     attachComponentCss(this.host, getComponentCss, this.size, this.compact, this.open, this.theme);
 
-    const buttonId = 'accordion-control';
-    const contentId = 'accordion-panel';
-
     const PrefixedTagNames = getPrefixedTagNames(this.host);
     const Heading = this.tag;
 
     return (
-      <Host>
-        <Heading class="heading">
-          <button
-            id={buttonId}
-            type="button"
-            aria-expanded={this.open ? 'true' : 'false'}
-            aria-controls={contentId}
-            onClick={this.onButtonClick}
-          >
+      <details open={this.open} onToggle={this.onToggle}>
+        <summary>
+          <Heading class="heading">
             {this.heading || <slot name="heading" />}
             <span class="icon-container">
               <PrefixedTagNames.pIcon
@@ -89,18 +80,17 @@ export class Accordion {
                 aria-hidden="true"
               />
             </span>
-          </button>
-        </Heading>
-        <div id={contentId} class="collapsible" role="region" aria-labelledby={buttonId}>
-          <div>
-            <slot />
-          </div>
+          </Heading>
+        </summary>
+
+        <div class="collapsible">
+          <slot />
         </div>
-      </Host>
+      </details>
     );
   }
 
-  private onButtonClick = (): void => {
+  private onToggle = (): void => {
     this.update.emit({ open: !this.open });
     this.accordionChange.emit({ open: !this.open });
   };

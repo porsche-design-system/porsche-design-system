@@ -39,8 +39,7 @@ export const getComponentCss = (
 
   return getCss({
     '@global': {
-      ':host': {
-        display: 'block',
+      details: {
         ...addImportantToEachRule({
           ...(compact
             ? { transform: 'translate3d(0,0,0)' } // relevant for custom click-area in compact variant
@@ -55,17 +54,12 @@ export const getComponentCss = (
           ...hostHiddenStyles,
         }),
       },
-      button: {
-        display: 'flex',
+      summary: {
+        'list-style': 'none',
+        '&::-webkit-details-marker': {
+          display: 'none',
+        },
         position: 'relative',
-        justifyContent: 'space-between',
-        alignItems: 'center',
-        width: '100%',
-        textDecoration: 'none',
-        border: 0,
-        margin: 0, // Removes default button margin on safari 15
-        gap: '24px',
-        background: 'transparent',
         cursor: 'pointer',
         textAlign: 'start',
         color: primaryColor,
@@ -114,6 +108,10 @@ export const getComponentCss = (
       },
     },
     heading: {
+      display: 'flex',
+      justifyContent: 'space-between',
+      alignItems: 'center',
+      gap: '24px',
       margin: 0,
     },
     'icon-container': {
@@ -150,21 +148,21 @@ export const getComponentCss = (
               'grid-template-rows'
             )}, visibility 0s linear var(${cssVariableTransitionDuration}, ${motionDurationShort})`,
           }),
-      '& div': {
-        overflow: open ? 'visible' : 'hidden',
-        // Fix overflow issues for overlapping content (e.g. select dropdown)
-        animation: open ? `$overflow var(${cssVariableTransitionDuration},${motionDurationShort})` : 'none',
-        // Necessary to make focus outlines fully visible
-        padding: '4px',
-        margin: '-4px',
-        // Fix scrollbar issues when slotted content includes .sr-only styles (see issue #3042)
-        transform: 'translate3d(0,0,0)',
-        zIndex: 1,
-      },
+      // '& div': {
+      //   overflow: open ? 'visible' : 'hidden',
+      //   // Fix overflow issues for overlapping content (e.g. select dropdown)
+      //   animation: open ? `$overflow var(${cssVariableTransitionDuration},${motionDurationShort})` : 'none',
+      //   // Necessary to make focus outlines fully visible
+      //   padding: '4px',
+      //   margin: '-4px',
+      //   // Fix scrollbar issues when slotted content includes .sr-only styles (see issue #3042)
+      //   transform: 'translate3d(0,0,0)',
+      //   zIndex: 1,
+      // },
     },
-    '@keyframes overflow': {
-      from: { overflow: 'hidden' },
-      to: { overflow: 'hidden' },
-    },
+    // '@keyframes overflow': {
+    //   from: { overflow: 'hidden' },
+    //   to: { overflow: 'hidden' },
+    // },
   });
 };
