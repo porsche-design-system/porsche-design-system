@@ -3,11 +3,16 @@ import { test, expect } from '../../../helpers';
 import { setupScenario } from '../../../../vrt/helpers';
 import { TAG_NAMES, type TagName } from '@porsche-design-system/shared';
 import { viewportWidthXXS, viewportWidthM } from '@porsche-design-system/shared/testing/playwright.vrt';
+import { getComponentMeta } from '@porsche-design-system/component-meta';
 
 const components = (TAG_NAMES as unknown as TagName[])
   .filter((tagName) => {
     // TODO: should not needed to be maintained like this, e.g. find a logic here with matching names or use/extend getComponentMeta() accordingly
     return !/item$|-table-|-select-wrapper-|multi-select-option|select-option$/.test(tagName);
+  })
+  .filter((tagName) => {
+    const { isDeprecated } = getComponentMeta(tagName);
+    return !isDeprecated;
   })
   .map((tagName) => {
     return tagName.substring(2);
