@@ -1,9 +1,9 @@
 ---
-name: Task
-about: Create a task
+name: (Core Team Only) New Issue
+about: Create a new issue based on template
 title: ''
-labels: to be refined
-assignees: ''
+labels: ["to be refined"]
+projects: ["porsche-design-system/14"]
 
 ---
 
