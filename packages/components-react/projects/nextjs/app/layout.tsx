@@ -10,7 +10,7 @@ import {
   getMetaTagsAndIconLinks,
 } from '@porsche-design-system/components-react/partials';
 
-const { themeColor, appleWebApp, icons, manifest } = getMetaTagsAndIconLinks({
+const { themeColor, appleWebApp, icons } = getMetaTagsAndIconLinks({
   appTitle: 'Porsche Design System - NextJS',
   format: 'js',
 });
@@ -23,7 +23,6 @@ export const metadata: Metadata = {
   title: 'Porsche Design System - NextJS',
   appleWebApp,
   icons,
-  manifest,
 };
 
 export default function RootLayout({ children }: PropsWithChildren<{}>): JSX.Element {
