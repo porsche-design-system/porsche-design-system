@@ -9,10 +9,11 @@ export const generateComponentChunkLinksPartial = (): string => {
 type GetComponentChunkLinksOptions = {
   components?: ComponentChunkName[];
   cdn?: Cdn;
-  format?: Format;
+  format?: FormatWithJS;
 };`;
 
-  const func = `export function getComponentChunkLinks(opts: GetComponentChunkLinksOptions & { format: 'jsx' }): JSX.Element;
+  const func = `export function getComponentChunkLinks(opts: GetComponentChunkLinksOptions & { format: 'js' }): PartialLink[];
+export function getComponentChunkLinks(opts: GetComponentChunkLinksOptions & { format: 'jsx' }): JSX.Element;
 export function getComponentChunkLinks(opts?: GetComponentChunkLinksOptions): string;
 export function getComponentChunkLinks(opts?: GetComponentChunkLinksOptions): string | JSX.Element | PartialLink[] {
   const { components, cdn, format }: GetComponentChunkLinksOptions = {
