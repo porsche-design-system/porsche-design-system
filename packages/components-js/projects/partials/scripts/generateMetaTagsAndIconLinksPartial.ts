@@ -24,7 +24,7 @@ export const generateMetaTagsAndIconLinksPartial = (): string => {
       ],
       appleWebApp: {
         title: appTitle,
-        statusBarStyle: 'white',
+        statusBarStyle: 'default',
       },
       icons: {
         icon: [
@@ -47,7 +47,7 @@ export const generateMetaTagsAndIconLinksPartial = (): string => {
     '<meta name="theme-color" content="#FFF" media="(prefers-color-scheme:light)" />',
     '<meta name="theme-color" content="#0E1418" media="(prefers-color-scheme:dark)" />',
     '<meta name="apple-mobile-web-app-capable" content="yes" />',
-    '<meta name="apple-mobile-web-app-status-bar-style" content="white" />',
+    '<meta name="apple-mobile-web-app-status-bar-style" content="default" />',
     '<meta name="apple-mobile-web-app-title" content="$appTitle" />',
     `<meta name="msapplication-TileImage" content='${metaIconCDNPath}/${META_ICONS_MANIFEST.mstile.mstile_270x270}' />`,
     '<meta name="msapplication-TileColor" content="#FFF" />',
@@ -63,15 +63,15 @@ export const generateMetaTagsAndIconLinksPartial = (): string => {
 
   const types = `type Metadata = {
   themeColor: { media: string, color: string }[];
-  appleWebApp: {
-    title: string;
-    statusBarStyle: string;
+  appleWebApp?: {
+    title?: string;
+    statusBarStyle?: 'default' | 'black' | 'black-translucent';
   };
-  icons: {
-    icon: { url: string, sizes: string, type?: string }[];
-    apple: string;
+  icons?: {
+    icon?: { url: string | URL, sizes?: string, type?: string }[];
+    apple?: string;
   };
-  manifest: string;
+  manifest?: null | string | URL;
 }
 
 type GetMetaTagsAndIconLinksOptions = {
@@ -80,7 +80,8 @@ type GetMetaTagsAndIconLinksOptions = {
   format?: FormatWithJS;
 };`;
 
-  const func = `export function getMetaTagsAndIconLinks(opts: GetMetaTagsAndIconLinksOptions & { format: 'jsx' }): JSX.Element;
+  const func = `export function getMetaTagsAndIconLinks(opts: GetMetaTagsAndIconLinksOptions & { format: 'js' }): Metadata;
+export function getMetaTagsAndIconLinks(opts: GetMetaTagsAndIconLinksOptions & { format: 'jsx' }): JSX.Element;
 export function getMetaTagsAndIconLinks(opts?: GetMetaTagsAndIconLinksOptions): string;
 export function getMetaTagsAndIconLinks(opts?: GetMetaTagsAndIconLinksOptions): string | JSX.Element | Metadata {
   const { appTitle, cdn, format }: GetMetaTagsAndIconLinksOptions = {
