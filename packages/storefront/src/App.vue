@@ -315,6 +315,10 @@
       font-weight: $pds-font-weight-semi-bold;
     }
   }
+
+  .no-before::before {
+    display: none;
+  }
 </style>
 
 <style scoped lang="scss">
