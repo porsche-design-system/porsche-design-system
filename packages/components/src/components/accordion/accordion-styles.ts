@@ -31,12 +31,12 @@ export const getComponentCss = (
   theme: Theme,
   sticky: boolean
 ): string => {
-  const { primaryColor, contrastLowColor, backgroundColor, backgroundSurfaceColor } = getThemedColors(theme);
+  const { primaryColor, hoverColor, contrastLowColor, backgroundColor } = getThemedColors(theme);
   const {
     primaryColor: primaryColorDark,
+    hoverColor: hoverColorDark,
     contrastLowColor: contrastLowColorDark,
     backgroundColor: backgroundColorDark,
-    backgroundSurfaceColor: backgroundSurfaceColorDark,
   } = getThemedColors('dark');
   const zIndexes = ['collapsible', 'heading'];
 
@@ -88,16 +88,9 @@ export const getComponentCss = (
             '&::before': {
               content: '""',
               position: 'absolute',
-              zIndex: -1, // place below button text since the background color cannot be transparent anymore due to sticky
               borderRadius: borderRadiusSmall,
               left: '-4px',
               right: '-4px',
-              ...(sticky && {
-                backgroundColor,
-                ...prefersColorSchemeDarkMediaQuery(theme, {
-                  backgroundColor: backgroundColorDark,
-                }),
-              }),
               ...(compact
                 ? {
                     top: '2px',
@@ -114,9 +107,9 @@ export const getComponentCss = (
               transition: getTransition('background-color'),
             },
             '&:hover::before': {
-              backgroundColor: backgroundSurfaceColor,
+              backgroundColor: hoverColor,
               ...prefersColorSchemeDarkMediaQuery(theme, {
-                backgroundColor: backgroundSurfaceColorDark,
+                backgroundColor: hoverColorDark,
               }),
             },
           })
@@ -125,12 +118,15 @@ export const getComponentCss = (
       },
     },
     heading: {
-      position: 'relative',
-      zIndex: zIndexes.indexOf('heading'),
       margin: 0,
       ...(sticky && {
         position: 'sticky',
         top: 0,
+        zIndex: zIndexes.indexOf('heading'),
+        backgroundColor,
+        ...prefersColorSchemeDarkMediaQuery(theme, {
+          backgroundColor: backgroundColorDark,
+        }),
       }),
     },
     'icon-container': {
@@ -153,8 +149,10 @@ export const getComponentCss = (
         color: primaryColorDark,
       }),
       display: 'grid',
-      position: 'relative',
-      zIndex: zIndexes.indexOf('collapsible'),
+      ...(sticky && {
+        position: 'relative',
+        zIndex: zIndexes.indexOf('collapsible'),
+      }),
       ...(open
         ? {
             gridTemplateRows: '1fr',
