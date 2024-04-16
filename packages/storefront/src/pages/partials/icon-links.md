@@ -18,7 +18,7 @@ which needs to be injected into the `<head>` of your `index.html`.
 | -------- | ------------------------------------------------------------------------------------------------------------------------ | ------------------------ | -------------------- | -------- |
 | `icons`  | All icons listed in the array are loaded from the CDN.                                                                   | `({{this.iconNames}})[]` | `['arrowHeadRight']` |
 | `cdn`    | Decides from which CDN the resources are loaded.                                                                         | `'auto'                  | 'cn'`                | `'auto'` |
-| `format` | Defines the output format of the partial. By default it returns a html string, with `jsx` it returns valid jsx elements. | `'html'                  | 'jsx'`               | `'html'` |
+| `format`   | Defines the output format of the partial. By default, it returns a html string, with `jsx` it returns valid jsx elements and with `js` a javascript object. | ` 'html'   | 'jsx' |   'js' ` | ` 'html' ` |
 
 ## Examples
 

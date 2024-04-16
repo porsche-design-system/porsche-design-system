@@ -160,11 +160,100 @@ export default defineConfig({
   ],
 })`;
 
+      const nextExamples = {
+        "getMetaTagsAndIconLinks": `/* ./app/layout.tsx */
+import { Metadata } from "next";
+import { getMetaTagsAndIconLinks } from '@porsche-design-system/components-react/partials';
+
+export const metadata: Metadata = {
+  /* title, description... */
+  ...getMetaTagsAndIconLinks({ appTitle: 'TITLE_OF_YOUR_APP', format: "js" });
+}
+`,
+        "getComponentChunkLinks": `/* ./app/layout.tsx */
+import React, { ReactDOM } from 'react';
+import { getComponentChunkLinks } from '@porsche-design-system/components-react/partials';
+
+export default function RootLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
+
+getComponentChunkLinks({ components: ['button', 'marque'], format: 'js' }).forEach(
+    ({ href, options }) => ReactDOM.preload(href, options)
+);
+
+/* root layout... */
+`,
+        "getFontLinks": `/* ./app/layout.tsx */
+import React, { ReactDOM } from 'react';
+import { getFontLinks } from '@porsche-design-system/components-react/partials';
+
+export default function RootLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
+
+getFontLinks({ format: 'js' }).forEach(
+    ({ href, options }) => ReactDOM.preload(href, options)
+);
+
+/* root layout... */`,
+        "getIconLinks": `/* ./app/layout.tsx */
+import React, { ReactDOM } from 'react';
+import { getIconLinks } from '@porsche-design-system/components-react/partials';
+
+export default function RootLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
+
+getIconLinks({ format: 'js' }).forEach(ReactDOM.prefetchDNS);
+
+/* root layout... */`,
+        "getInitialStyles": `/* ./components/partials.tsx */
+"use client";
+import { useServerInsertedHTML } from "next/navigation";
+import { getInitialStyles } from "@porsche-design-system/components-react/partials";
+
+export const Partials = () => {
+    useServerInsertedHTML(() => {
+        return <>
+            {getInitialStyles({format: 'jsx'})}
+        </>
+    });
+
+    return null;
+}
+
+/* render </Partials> component in root layout */`,
+        "getFontFaceStylesheet": `/* ./components/partials.tsx */
+"use client";
+import { useServerInsertedHTML } from "next/navigation";
+import { getFontFaceStylesheet } from "@porsche-design-system/components-react/partials";
+
+export const Partials = () => {
+    useServerInsertedHTML(() => {
+        return <>
+            {getFontFaceStylesheet({format: 'jsx'})}
+        </>
+    });
+
+    return null;
+}
+
+/* render </Partials> component in root layout */`
+      };
+
       return {
         'vanilla-js': exampleJs,
         angular: exampleAngular,
         react: exampleReact,
         vue: exampleVue,
+        next: nextExamples[this.name]
       };
     }
   }
