@@ -109,7 +109,7 @@
 
 <div class="playground light" title="should render label, description and message by slotted content with error state">
   <p-textarea-wrapper state="error">
-    <span slot="label">
+    <span slot="label" id="slotted-label-1">
       <span>
         Slotted label. And some slotted and deeply nested <a href="#">anchor</a>, <b>bold</b>, <strong>strong</strong>,
         <em>emphasized</em> and <i>italic</i> text.
@@ -121,7 +121,7 @@
         <strong>strong</strong>, <em>emphasized</em> and <i>italic</i> text.
       </span>
     </span>
-    <textarea>Some value</textarea>
+    <textarea aria-labelledby="slotted-label-1">Some value</textarea>
     <span slot="message">
       <span>
         Slotted error message. And some slotted and deeply nested <a href="#">anchor</a>, <b>bold</b>,
@@ -136,7 +136,7 @@
   title="should render label, description and message by slotted content with success state"
 >
   <p-textarea-wrapper state="success">
-    <span slot="label">
+    <span slot="label" id="slotted-label-2">
       <span>
         Slotted label. And some slotted and deeply nested <a href="#">anchor</a>, <b>bold</b>, <strong>strong</strong>,
         <em>emphasized</em> and <i>italic</i> text.
@@ -148,7 +148,7 @@
         <strong>strong</strong>, <em>emphasized</em> and <i>italic</i> text.
       </span>
     </span>
-    <textarea>Some value</textarea>
+    <textarea aria-labelledby="slotted-label-2">Some value</textarea>
     <span slot="message">
       <span>
         Slotted success message. And some slotted and deeply nested <a href="#">anchor</a>, <b>bold</b>,
