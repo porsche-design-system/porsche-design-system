@@ -5,7 +5,6 @@ export type Cdn = 'auto' | 'cn';
 export type Format = 'html' | 'jsx';
 export type FormatWithJS = 'html' | 'jsx' | 'js';
 export type FormatWithCSP = Format | 'sha256';
-export type FormatWithCSPAndJS = FormatWithJS | 'sha256';
 
 const isBrowser = typeof window !== 'undefined' && typeof window.document !== 'undefined';
 export const throwIfRunInBrowser = (partialName: string): void => {
