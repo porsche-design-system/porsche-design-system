@@ -44,7 +44,9 @@ export const getComponentCss = (
     '@global': {
       ':host': {
         display: 'block',
-        position: 'relative',
+        ...(sticky && {
+          position: 'relative',
+        }),
         ...addImportantToEachRule({
           ...(compact
             ? { transform: 'translate3d(0,0,0)' } // relevant for custom click-area in compact variant
