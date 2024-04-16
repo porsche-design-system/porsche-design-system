@@ -28,18 +28,23 @@ export const getComponentCss = (
   size: BreakpointCustomizable<AccordionSize>,
   compact: boolean,
   open: boolean,
-  theme: Theme
+  theme: Theme,
+  sticky: boolean
 ): string => {
-  const { primaryColor, hoverColor, contrastLowColor } = getThemedColors(theme);
+  const { primaryColor, contrastLowColor, backgroundColor, backgroundSurfaceColor } = getThemedColors(theme);
   const {
     primaryColor: primaryColorDark,
-    hoverColor: hoverColorDark,
     contrastLowColor: contrastLowColorDark,
+    backgroundColor: backgroundColorDark,
+    backgroundSurfaceColor: backgroundSurfaceColorDark,
   } = getThemedColors('dark');
+  const zIndexes = ['collapsible', 'heading'];
 
   return getCss({
     '@global': {
-      details: {
+      ':host': {
+        display: 'block',
+        position: 'relative',
         ...addImportantToEachRule({
           ...(compact
             ? { transform: 'translate3d(0,0,0)' } // relevant for custom click-area in compact variant
@@ -54,12 +59,17 @@ export const getComponentCss = (
           ...hostHiddenStyles,
         }),
       },
-      summary: {
-        'list-style': 'none',
-        '&::-webkit-details-marker': {
-          display: 'none',
-        },
+      button: {
+        display: 'flex',
         position: 'relative',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        width: '100%',
+        textDecoration: 'none',
+        border: 0,
+        margin: 0, // Removes default button margin on safari 15
+        gap: '24px',
+        background: 'transparent',
         cursor: 'pointer',
         textAlign: 'start',
         color: primaryColor,
@@ -78,9 +88,16 @@ export const getComponentCss = (
             '&::before': {
               content: '""',
               position: 'absolute',
+              zIndex: -1, // place below button text since the background color cannot be transparent anymore due to sticky
               borderRadius: borderRadiusSmall,
               left: '-4px',
               right: '-4px',
+              ...(sticky && {
+                backgroundColor,
+                ...prefersColorSchemeDarkMediaQuery(theme, {
+                  backgroundColor: backgroundColorDark,
+                }),
+              }),
               ...(compact
                 ? {
                     top: '2px',
@@ -97,9 +114,9 @@ export const getComponentCss = (
               transition: getTransition('background-color'),
             },
             '&:hover::before': {
-              background: hoverColor,
+              backgroundColor: backgroundSurfaceColor,
               ...prefersColorSchemeDarkMediaQuery(theme, {
-                background: hoverColorDark,
+                backgroundColor: backgroundSurfaceColorDark,
               }),
             },
           })
@@ -108,11 +125,13 @@ export const getComponentCss = (
       },
     },
     heading: {
-      display: 'flex',
-      justifyContent: 'space-between',
-      alignItems: 'center',
-      gap: '24px',
+      position: 'relative',
+      zIndex: zIndexes.indexOf('heading'),
       margin: 0,
+      ...(sticky && {
+        position: 'sticky',
+        top: 0,
+      }),
     },
     'icon-container': {
       height: fontLineHeight,
@@ -134,6 +153,8 @@ export const getComponentCss = (
         color: primaryColorDark,
       }),
       display: 'grid',
+      position: 'relative',
+      zIndex: zIndexes.indexOf('collapsible'),
       ...(open
         ? {
             gridTemplateRows: '1fr',
@@ -148,21 +169,21 @@ export const getComponentCss = (
               'grid-template-rows'
             )}, visibility 0s linear var(${cssVariableTransitionDuration}, ${motionDurationShort})`,
           }),
-      // '& div': {
-      //   overflow: open ? 'visible' : 'hidden',
-      //   // Fix overflow issues for overlapping content (e.g. select dropdown)
-      //   animation: open ? `$overflow var(${cssVariableTransitionDuration},${motionDurationShort})` : 'none',
-      //   // Necessary to make focus outlines fully visible
-      //   padding: '4px',
-      //   margin: '-4px',
-      //   // Fix scrollbar issues when slotted content includes .sr-only styles (see issue #3042)
-      //   transform: 'translate3d(0,0,0)',
-      //   zIndex: 1,
-      // },
+      '& div': {
+        overflow: open ? 'visible' : 'hidden',
+        // Fix overflow issues for overlapping content (e.g. select dropdown)
+        animation: open ? `$overflow var(${cssVariableTransitionDuration},${motionDurationShort})` : 'none',
+        // Necessary to make focus outlines fully visible
+        padding: '4px',
+        margin: '-4px',
+        // Fix scrollbar issues when slotted content includes .sr-only styles (see issue #3042)
+        transform: 'translate3d(0,0,0)',
+        zIndex: 1,
+      },
     },
-    // '@keyframes overflow': {
-    //   from: { overflow: 'hidden' },
-    //   to: { overflow: 'hidden' },
-    // },
+    '@keyframes overflow': {
+      from: { overflow: 'hidden' },
+      to: { overflow: 'hidden' },
+    },
   });
 };
