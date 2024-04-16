@@ -1,8 +1,6 @@
-import {minifyHTML} from './utils';
-import {META_ICONS_MANIFEST} from '@porsche-design-system/meta-icons';
-import {CDN_BASE_PATH_META_ICONS, CDN_BASE_URL_COM, CDN_BASE_URL_CN} from '../../../../../cdn.config';
-import {Cdn} from "@porsche-design-system/components-js/partials/shared";
-import {FormatWithJS} from "../src/shared";
+import { minifyHTML } from './utils';
+import { META_ICONS_MANIFEST } from '@porsche-design-system/meta-icons';
+import { CDN_BASE_PATH_META_ICONS, CDN_BASE_URL_CN, CDN_BASE_URL_COM } from '../../../../../cdn.config';
 
 const convertToJSX = (templates: string[]): JSX.Element[] => {
   return templates.map(
