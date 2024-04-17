@@ -244,32 +244,52 @@ getIconLinks({ format: 'js', icons: ['arrow-head-right', 'plus'], cdn: 'cn' }).f
         getInitialStyles: `/* ./components/partials.tsx */
 "use client";
 import { useServerInsertedHTML } from "next/navigation";
+import { useRef } from 'react';
 import { getInitialStyles } from "@porsche-design-system/components-react/partials";
 
 export const Partials = () => {
-    useServerInsertedHTML(() => {
-        return <>
-            {getInitialStyles({ format: 'jsx' })}
-        </>
-    });
+  const isServerInserted = useRef(false);
 
-    return null;
+  useServerInsertedHTML(() => {
+    // There seems to be some strange behavior where Next calls this multiple times
+    // To ensure this is only called once we use a ref
+    if (!isServerInserted.current) {
+      isServerInserted.current = true;
+      return <>
+        {getInitialStyles({ format: 'jsx' })}
+        <!-- Alternative: force using China CDN -->
+        {getInitialStyles({ format: 'jsx', cdn: 'cn' })}
+      </>
+    }
+  });
+
+  return null;
 }
 
 /* render </Partials> component in root layout */`,
         getFontFaceStylesheet: `/* ./components/partials.tsx */
 "use client";
 import { useServerInsertedHTML } from "next/navigation";
+import { useRef } from 'react';
 import { getFontFaceStylesheet } from "@porsche-design-system/components-react/partials";
 
 export const Partials = () => {
-    useServerInsertedHTML(() => {
-        return <>
-            {getFontFaceStylesheet({ format: 'jsx' })}
-        </>
-    });
+  const isServerInserted = useRef(false);
 
-    return null;
+  useServerInsertedHTML(() => {
+    // There seems to be some strange behavior where Next calls this multiple times
+    // To ensure this is only called once we use a ref
+    if (!isServerInserted.current) {
+      isServerInserted.current = true;
+      return <>
+          {getFontFaceStylesheet({ format: 'jsx' })}
+          <!-- Alternative: force using China CDN -->
+          {getFontFaceStylesheet({ format: 'jsx', cdn: 'cn' })}
+      </>
+    }
+  });
+
+  return null;
 }
 
 /* render </Partials> component in root layout */`,
