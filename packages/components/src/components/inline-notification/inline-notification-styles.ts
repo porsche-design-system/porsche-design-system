@@ -26,7 +26,7 @@ const getTextJssStyle = (theme: Theme): JssStyle => ({
   }),
 });
 
-const getHeadingStyles = (theme: Theme): JssStyle => ({
+const getHeadingJssStyle = (theme: Theme): JssStyle => ({
   ...headingSmallStyle,
   ...getTextStyles(theme),
 });
