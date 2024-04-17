@@ -15,10 +15,13 @@ const convertToJSX = (templates: string[]): JSX.Element[] => {
 export const generateMetaTagsAndIconLinksPartial = (): string => {
   const metaIconCDNPath = `$cdnBaseUrl/${CDN_BASE_PATH_META_ICONS}`;
 
+  const themeColorLight = '#FFF';
+  const themeColorDark = '#0E1418';
+
   const metadata = `{
       themeColor: [
-        { media: '(prefers-color-scheme: light)', color: '#FFF' },
-        { media: '(prefers-color-scheme: dark)', color: '#0E1418' },
+        { media: '(prefers-color-scheme: light)', color: '${themeColorLight}' },
+        { media: '(prefers-color-scheme: dark)', color: '${themeColorDark}' },
       ],
       appleWebApp: {
         title: appTitle,
@@ -42,8 +45,8 @@ export const generateMetaTagsAndIconLinksPartial = (): string => {
     }`;
 
   const metaIconLinks: string[] = [
-    '<meta name="theme-color" content="#FFF" media="(prefers-color-scheme:light)" />',
-    '<meta name="theme-color" content="#0E1418" media="(prefers-color-scheme:dark)" />',
+    `<meta name="theme-color" content="${themeColorLight}" media="(prefers-color-scheme:light)" />`,
+    `<meta name="theme-color" content="${themeColorDark}" media="(prefers-color-scheme:dark)" />`,
     '<meta name="apple-mobile-web-app-capable" content="yes" />',
     '<meta name="apple-mobile-web-app-status-bar-style" content="default" />',
     '<meta name="apple-mobile-web-app-title" content="$appTitle" />',
