@@ -17,7 +17,7 @@ export type OpenInStackBlitzOpts = {
   porscheDesignSystemBundle: PorscheDesignSystemBundle;
   markup: string;
   dir: PlaygroundDir;
-  framework: Exclude<Framework, 'shared'>;
+  framework: Exclude<Framework, 'shared' | 'next'>;
   theme: PlaygroundTheme;
   backgroundColor: BackgroundColor;
   externalDependencies: ExternalDependency[];
@@ -42,7 +42,10 @@ export const openInStackBlitz = (opts: OpenInStackBlitzOpts): void => {
         : `body { background: ${getBackgroundColor(theme, backgroundColor)}; }`,
   };
 
-  const getProjectAndOpenOptionsMap: Record<Exclude<Framework, 'shared'>, GetStackBlitzProjectAndOpenOptions> = {
+  const getProjectAndOpenOptionsMap: Record<
+    Exclude<Framework, 'shared' | 'next'>,
+    GetStackBlitzProjectAndOpenOptions
+  > = {
     'vanilla-js': getVanillaJsProjectAndOpenOptions,
     angular: getAngularProjectAndOpenOptions,
     react: getReactProjectAndOpenOptions,
