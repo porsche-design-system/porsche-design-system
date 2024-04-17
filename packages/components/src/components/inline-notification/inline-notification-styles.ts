@@ -28,7 +28,7 @@ const getTextJssStyle = (theme: Theme): JssStyle => ({
 
 const getHeadingJssStyle = (theme: Theme): JssStyle => ({
   ...headingSmallStyle,
-  ...getTextStyles(theme),
+  ...getTextJssStyle(theme),
 });
 
 export const getComponentCss = (
@@ -48,12 +48,12 @@ export const getComponentCss = (
         }),
       },
       [`::slotted(:is(${HEADING_TAGS.join()}))`]: addImportantToEachRule(getTypographySlottedJssStyle()),
-      'slot[name="heading"]': getHeadingStyles(theme),
+      'slot[name="heading"]': getHeadingJssStyle(theme),
     },
-    heading: getHeadingStyles(theme),
+    heading: getHeadingJssStyle(theme),
     description: {
       ...textSmallStyle,
-      ...getTextStyles(theme),
+      ...getTextJssStyle(theme),
     },
     icon: getNotificationIconJssStyle(),
     content: getNotificationContentJssStyle(),
