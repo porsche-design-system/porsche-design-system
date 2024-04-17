@@ -6,4 +6,5 @@ export const frameworkNameMap: Record<Framework, string> = {
   react: 'React',
   vue: 'Vue',
   shared: 'Shared',
+  next: "Next"
 };
