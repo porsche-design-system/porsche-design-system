@@ -6,6 +6,7 @@ exports[`should call validateProps() with correct parameters via render for p-ac
   "heading": "string",
   "open": "boolean",
   "size": "breakpoint",
+  "sticky": "boolean",
   "tag": "oneOf",
   "theme": "oneOf",
 }
