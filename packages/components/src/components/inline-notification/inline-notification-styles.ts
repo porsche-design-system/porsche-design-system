@@ -18,7 +18,7 @@ import { JssStyle } from 'jss';
 import { getTypographySlottedJssStyle } from '../../styles/typography-styles';
 
 const mediaQueryMaxS = getMediaQueryMax('s');
-const getTextStyles = (theme: Theme): JssStyle => ({
+const getTextJssStyle = (theme: Theme): JssStyle => ({
   margin: 0,
   color: getThemedColors(theme).primaryColor,
   ...prefersColorSchemeDarkMediaQuery(theme, {
