@@ -3,6 +3,7 @@ import { createHash } from 'crypto';
 export type Cdn = 'auto' | 'cn';
 
 export type Format = 'html' | 'jsx';
+export type FormatWithJS = 'html' | 'jsx' | 'js';
 export type FormatWithCSP = Format | 'sha256';
 
 const isBrowser = typeof window !== 'undefined' && typeof window.document !== 'undefined';
