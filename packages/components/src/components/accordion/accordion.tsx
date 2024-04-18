@@ -77,7 +77,7 @@ export class Accordion {
 
     return (
       <Host>
-        <Heading class={{ heading: true, sticky: this.sticky }}>
+        <Heading class="heading">
           <button
             id={buttonId}
             type="button"

@@ -38,15 +38,11 @@ export const getComponentCss = (
     contrastLowColor: contrastLowColorDark,
     backgroundColor: backgroundColorDark,
   } = getThemedColors('dark');
-  const zIndexes = ['collapsible', 'heading'];
 
   return getCss({
     '@global': {
       ':host': {
         display: 'block',
-        ...(sticky && {
-          position: 'relative',
-        }),
         ...addImportantToEachRule({
           ...(compact
             ? { transform: 'translate3d(0,0,0)' } // relevant for custom click-area in compact variant
@@ -124,7 +120,7 @@ export const getComponentCss = (
       ...(sticky && {
         position: 'sticky',
         top: 0,
-        zIndex: zIndexes.indexOf('heading'),
+        zIndex: 1, // to be on top of the collapsible
         backgroundColor,
         ...prefersColorSchemeDarkMediaQuery(theme, {
           backgroundColor: backgroundColorDark,
@@ -153,7 +149,7 @@ export const getComponentCss = (
       display: 'grid',
       ...(sticky && {
         position: 'relative',
-        zIndex: zIndexes.indexOf('collapsible'),
+        zIndex: 0, // to be below the heading
       }),
       ...(open
         ? {
