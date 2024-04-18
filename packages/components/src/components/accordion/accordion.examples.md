@@ -26,6 +26,12 @@ The `tag` property needs to be set in order for the accordion to fit into the ou
 property provided, it defaults to `h2`. For instance our example accordions use heading level 3 because they are
 contained in sections titled with a level 2 heading.
 
+### Sticky headline
+
+The headline can be made sticky by adding the property `sticky` to the `p-accordion` tag.
+
+<Playground :frameworkMarkup="codeExample" :config="config" :markup="sticky"></Playground>
+
 ---
 
 ## Size
@@ -65,11 +71,10 @@ custom padding can be set on the heading slot element in `compact` variant.
 
 ---
 
-<script lang="ts">
-import Vue from 'vue';
+<script lang="ts">import Vue from 'vue';
 import Component from 'vue-class-component';
-import { getAccordionCodeSamples } from '@porsche-design-system/shared';
-import { ACCORDION_SIZES } from './accordion-utils'; 
+import {getAccordionCodeSamples} from '@porsche-design-system/shared';
+import {ACCORDION_SIZES} from './accordion-utils'; 
   
 @Component
 export default class Code extends Vue {
@@ -90,9 +95,18 @@ export default class Code extends Vue {
   ${this.content}
 </p-accordion>`;
     }
+
+  get sticky() {      
+    return `<p-accordion heading="Some Heading" tag="h3" sticky>
+  <div style="height: 200px">${this.content}</div>
+</p-accordion>
+<p-accordion heading="Some Heading" tag="h3">
+  ${this.content}
+</p-accordion>`;
+    }
   
   size = 'small';
-  sizes = [...ACCORDION_SIZES, "{ base: 'small', l: 'medium' }"];
+  sizes = [...ACCORDION_SIZES, '{ base: \'small\', l: \'medium\' }'];
   get sizeMarkup() {
     return `<p-accordion heading="Some Heading" tag="h3" size="${this.size}">
   ${this.content}
