@@ -60,7 +60,7 @@ button:focus-visible::before {
     transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   }
   button:hover::before {
-    background-color: rgba(148, 149, 152, .18);
+    background: rgba(148, 149, 152, .18);
   }
 }
 
@@ -166,7 +166,7 @@ button:focus-visible::before {
     transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   }
   button:hover::before {
-    background-color: rgba(148, 149, 152, .18);
+    background: rgba(148, 149, 152, .18);
   }
 }
 
@@ -273,7 +273,7 @@ button:focus-visible::before {
     transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   }
   button:hover::before {
-    background-color: rgba(148, 149, 152, .18);
+    background: rgba(148, 149, 152, .18);
   }
 }
 
@@ -380,7 +380,7 @@ button:focus-visible::before {
     transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   }
   button:hover::before {
-    background-color: rgba(148, 149, 152, .18);
+    background: rgba(148, 149, 152, .18);
   }
 }
 
@@ -492,7 +492,7 @@ button:focus-visible::before {
     transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   }
   button:hover::before {
-    background-color: rgba(148, 149, 152, .18);
+    background: rgba(148, 149, 152, .18);
   }
 }
 
@@ -599,7 +599,7 @@ button:focus-visible::before {
     transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   }
   button:hover::before {
-    background-color: rgba(148, 149, 152, .18);
+    background: rgba(148, 149, 152, .18);
   }
 }
 
@@ -711,7 +711,7 @@ button:focus-visible::before {
     transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   }
   button:hover::before {
-    background-color: rgba(148, 149, 152, .18);
+    background: rgba(148, 149, 152, .18);
   }
 }
 
@@ -818,7 +818,7 @@ button:focus-visible::before {
     transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   }
   button:hover::before {
-    background-color: rgba(148, 149, 152, .18);
+    background: rgba(148, 149, 152, .18);
   }
 }
 
@@ -924,7 +924,7 @@ button:focus-visible::before {
     transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   }
   button:hover::before {
-    background-color: rgba(148, 149, 152, .18);
+    background: rgba(148, 149, 152, .18);
   }
 }
 
@@ -1031,7 +1031,7 @@ button:focus-visible::before {
     transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   }
   button:hover::before {
-    background-color: rgba(148, 149, 152, .18);
+    background: rgba(148, 149, 152, .18);
   }
 }
 
@@ -1138,7 +1138,7 @@ button:focus-visible::before {
     transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   }
   button:hover::before {
-    background-color: rgba(148, 149, 152, .18);
+    background: rgba(148, 149, 152, .18);
   }
 }
 
@@ -1244,7 +1244,7 @@ button:focus-visible::before {
     transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   }
   button:hover::before {
-    background-color: rgba(148, 149, 152, .18);
+    background: rgba(148, 149, 152, .18);
   }
 }
 
@@ -1386,7 +1386,7 @@ button:focus-visible::before {
     transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   }
   button:hover::before {
-    background-color: rgba(148, 149, 152, .18);
+    background: rgba(148, 149, 152, .18);
   }
 }
 
