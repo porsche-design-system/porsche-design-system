@@ -26,11 +26,13 @@ The `tag` property needs to be set in order for the accordion to fit into the ou
 property provided, it defaults to `h2`. For instance our example accordions use heading level 3 because they are
 contained in sections titled with a level 2 heading.
 
-### Sticky headline
+---
+
+## Sticky headline
 
 The headline can be made sticky by adding the property `sticky` to the `p-accordion` tag.
 
-<Playground :frameworkMarkup="codeExample" :config="config" :markup="sticky"></Playground>
+<Playground :markup="stickyMarkup" :config="config"></Playground>
 
 ---
 
@@ -96,7 +98,7 @@ export default class Code extends Vue {
 </p-accordion>`;
     }
 
-  get sticky() {      
+  get stickyMarkup() {      
     return `<p-accordion heading="Some Heading" tag="h3" sticky>
   <div style="height: 200px">${this.content}</div>
 </p-accordion>
