@@ -109,9 +109,9 @@ export const getComponentCss = (
               transition: getTransition('background-color'),
             },
             '&:hover::before': {
-              backgroundColor: hoverColor,
+              background: hoverColor,
               ...prefersColorSchemeDarkMediaQuery(theme, {
-                backgroundColor: hoverColorDark,
+                background: hoverColorDark,
               }),
             },
           })
