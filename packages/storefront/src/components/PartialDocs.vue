@@ -176,10 +176,10 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  /* title, description... */
   appleWebApp,
   icons,
-  manifest,
+  /* Next.js currently automatically sets crossorigin="use-credentials" on the manifest link which causes cors problems */
+  /* manifest */
 };`,
         getComponentChunkLinks: `/* ./app/layout.tsx */
 import React from 'react';
