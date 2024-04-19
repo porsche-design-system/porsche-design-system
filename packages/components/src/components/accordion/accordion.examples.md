@@ -32,7 +32,19 @@ contained in sections titled with a level 2 heading.
 
 The headline can be made sticky by adding the property `sticky` to the `p-accordion` tag.
 
-<Playground :markup="stickyMarkup" :config="config"></Playground>
+### Custom styling
+
+The top value can be overwritten by CSS Custom Properties (aka CSS Variables):
+
+```scss
+// default CSS variable
+--p-accordion-position-sticky-top: 0;
+
+// overwrite with CSS variable
+p-accordion {
+  --p-accordion-position-sticky-top: 50px;
+}
+```
 
 ---
 
@@ -92,15 +104,6 @@ export default class Code extends Vue {
   get basic() {      
     return `<p-accordion heading="Some Heading" tag="h3">
   ${this.content}
-</p-accordion>
-<p-accordion heading="Some Heading" tag="h3">
-  ${this.content}
-</p-accordion>`;
-    }
-
-  get stickyMarkup() {      
-    return `<p-accordion heading="Some Heading" tag="h3" sticky>
-  <div style="height: 200px">${this.content}</div>
 </p-accordion>
 <p-accordion heading="Some Heading" tag="h3">
   ${this.content}

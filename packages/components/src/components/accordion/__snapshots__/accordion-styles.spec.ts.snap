@@ -386,7 +386,7 @@ button:focus-visible::before {
 .heading {
   margin: 0;
   position: sticky;
-  top: 0;
+  top: var(--p-accordion-position-sticky-top, 0);
   z-index: 1;
   background-color: #0E0E12;
 }
@@ -604,7 +604,7 @@ button:focus-visible::before {
 .heading {
   margin: 0;
   position: sticky;
-  top: 0;
+  top: var(--p-accordion-position-sticky-top, 0);
   z-index: 1;
   background-color: #FFF;
 }

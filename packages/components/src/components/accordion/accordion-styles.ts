@@ -38,6 +38,8 @@ export const getComponentCss = (
     contrastLowColor: contrastLowColorDark,
     backgroundColor: backgroundColorDark,
   } = getThemedColors('dark');
+  const cssVariablePositionStickyTop = '--p-accordion-position-sticky-top';
+  const positionStickyTopFallback = '0';
 
   return getCss({
     '@global': {
@@ -119,7 +121,7 @@ export const getComponentCss = (
       margin: 0,
       ...(sticky && {
         position: 'sticky',
-        top: 0,
+        top: `var(${cssVariablePositionStickyTop}, ${positionStickyTopFallback})`,
         zIndex: 1, // to be on top of the collapsible
         backgroundColor,
         ...prefersColorSchemeDarkMediaQuery(theme, {
