@@ -12,21 +12,21 @@ import { getCDNBaseURL } from '../../getCDNBaseURL';
 export const validatePartialUsage = (): void => {
   // TODO: before reactivating we need to be able to distinguish between Light DOM and/or Shadow DOM usage.
   // validateGetInitialStylesUsage();
-  validateGetFontFaceStylesheetUsage();
+  validateGetFontFaceStylesUsage();
   validateGetFontLinksUsage();
   // TODO: integration test (real world test) first, before rollout
   // validateGetLoaderScriptUsage();
   // validateGetComponentChunkLinksUsage();
 };
 
-export const validateGetFontFaceStylesheetUsage = (): void => {
+export const validateGetFontFaceStylesUsage = (): void => {
   const baseUrl = getCDNBaseURL();
   const styleUrl =
     ROLLUP_REPLACE_IS_STAGING !== 'staging' && process.env.NODE_ENV !== 'development'
       ? `${baseUrl}/styles/${baseUrl.match(/\.cn\//) ? FONT_FACE_CDN_FILE_CN : FONT_FACE_CDN_FILE_COM}`
       : 'http://localhost:3001/styles/font-face.min.css';
-  if (!document.head.querySelector(`link[href="${styleUrl}"]`)) {
-    logPartialValidationWarning('getFontFaceStylesheet');
+  if (!document.head.querySelector(`link[href="${styleUrl}"],style[data-pds-font-face-styles=""]`)) {
+    logPartialValidationWarning('getFontFaceStyles');
   }
 };
 
