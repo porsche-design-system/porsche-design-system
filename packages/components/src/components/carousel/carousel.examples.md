@@ -7,7 +7,7 @@ visible at the same time.
 Therefore, the `p-carousel`'s content has to be divided into multiple parts or slides.  
 The amount of slides visible can be specified on a per-breakpoint basis.
 
-<Notification heading="Layout hint" state="warning">
+<Notification heading="Layout hint" heading-tag="h2" state="warning">
   The component can only be used with the full viewport width. The alignment of its content can be controlled 
   by the <code>width</code> prop, which is in sync with the <b><a href="styles/grid">Porsche Grid</a></b>.<br><br>
   Therefore, the following examples only work in fullscreen after clicking the <strong>Maximize</strong> buttons.
@@ -34,7 +34,7 @@ The value can either be a static number, or a breakpoint customizable object.
 
 In case you want to have slides with different widths you can use `slidesPerPage` with a value of `auto`.
 
-<Notification heading="Attention" state="warning">
+<Notification heading="Attention" heading-tag="h3" state="warning">
  It is <strong>crucial</strong> that each slide has explicit dimensions by specifying their width via CSS.
 </Notification>
 
@@ -66,7 +66,7 @@ Next to `prev/next` buttons, a slot `controls` can be added via named slot.
 
 The heading and description can be aligned via `alignHeader`.
 
-<Notification heading="Deprecation hint" state="warning">
+<Notification heading="Deprecation hint" heading-tag="h3" state="warning">
   Following alignments have been deprecated and will be removed with the next major release: "left".
 </Notification>
 
@@ -84,7 +84,7 @@ Defines horizontal spacing which is aligned with the [Porsche Grid](styles/grid)
 
 ## Wrap Content (deprecated)
 
-<Notification heading="Important note" state="warning">
+<Notification heading="Important note" heading-tag="h3" state="warning">
   This property is deprecated and has no effect anymore. Therefor, it will be removed with the next major release.
 </Notification>
 
@@ -101,7 +101,7 @@ first/last slide.
 
 The pagination indicators underneath the slides can be removed via `pagination="false"`.
 
-<Notification heading="Deprecation hint" state="warning">
+<Notification heading="Deprecation hint" heading-tag="h3" state="warning">
   The <code>disablePagination</code> property has been deprecated and will be removed with the next major release.<br>
   Please use the <code>pagination</code> property instead.
 </Notification>
@@ -124,7 +124,7 @@ To control the `p-carousel` from the outside you can specify its `activeSlideInd
 
 Whenever the `p-carousel` slides, the `update` is emitted containing both, the `activeIndex` and `previousIndex`.
 
-<Notification heading="Deprecation hint" state="warning">
+<Notification heading="Deprecation hint" heading-tag="h3" state="warning">
   The <code>carouselChange</code> event has been deprecated and will be removed with the next major release.<br>
   Please use the <code>update</code> event instead.
 </Notification>

@@ -9,7 +9,7 @@ have a look at [Tabs Bar](components/tabs-bar) component.
 
 <TableOfContents></TableOfContents>
 
-<Notification heading="Deprecation hint" state="warning">
+<Notification heading="Deprecation hint" heading-tag="h2" state="warning">
   The <code>tabChange</code> event has been deprecated and will be removed with the next major release.<br>
   Please use the <code>update</code> event instead.
 </Notification>
@@ -31,7 +31,7 @@ Every `p-tabs-item` holds a `slot` to display content which can be individually 
 
 ## Weight
 
-<Notification heading="Deprecation hint" state="warning">
+<Notification heading="Deprecation hint" heading-tag="h3" state="warning">
   The <code>semibold</code> value has been deprecated and will be removed with the next major release.<br>
   Please use the <code>semi-bold</code> value instead.
 </Notification>
@@ -45,7 +45,7 @@ Every `p-tabs-item` holds a `slot` to display content which can be individually 
 If the amount of tabs exceeds the viewport, the component renders arrow-buttons to help with horizontal scrolling. The
 background and gradient has to align to your chosen background.
 
-<Notification heading="Deprecation hint" state="warning">
+<Notification heading="Deprecation hint" heading-tag="h3" state="warning">
   The <code>gradientColorScheme</code> property has been deprecated and will be removed with the next major release.<br>
   Please use the <code>gradientColor</code> property instead.
 </Notification>

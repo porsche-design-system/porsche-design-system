@@ -47,7 +47,7 @@ An icon can be added via the `icon` or `iconSource` property.
 
 ## Background Color (deprecated)
 
-<Notification heading="Important note" state="error">
+<Notification heading="Important note" heading-tag="h3" state="error">
   The background-color prop is deprecated and will be removed with next major release.
 </Notification>
 
@@ -63,7 +63,7 @@ property.
 Whenever the selected item changes, an `update` event gets emitted by the `p-segmented-control`.  
 Each event instance contains the newly selected value at `event.detail.value`.
 
-<Notification heading="Deprecation hint" state="warning">
+<Notification heading="Deprecation hint" heading-tag="h3" state="warning">
   The <code>segmentedControlChange</code> event has been deprecated and will be removed with the next major release.<br>
   Please use the <code>update</code> event instead.
 </Notification>

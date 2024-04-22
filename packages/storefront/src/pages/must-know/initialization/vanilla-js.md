@@ -58,7 +58,7 @@ Once the **component chunk** is loaded, the component gets initialized.
 Initialization of a component tag means that under the hood, an instance of the `Button` class is created in the
 JavaScript space.
 
-<Notification heading="Important" state="warning">
+<Notification heading="Important" heading-tag="h3" state="warning">
   It is important to understand, that for each component tag in the DOM, there is a component class instance in the JavaScript space. 
   The component tag acts as an interface, similar to an API, where you set attributes/properties or children as inputs. 
   If these change, the class instance detects these and renders the result into the component tag's Shadow DOM as an output.
@@ -187,7 +187,7 @@ getComponentChunkLinks({ components: ['button'] });
 
 Now, everything is preloaded in parallel.
 
-<Notification heading="Hint" state="warning">
+<Notification heading="Hint" heading-tag="h4" state="warning">
   Just preloading all component chunks on the page or even every chunk available should be avoided.<br>
   Instead, the most performant but also more complicated approach would be to only preload the component chunks
   (and fonts) that are located <strong>above the fold</strong> which means visible on page load without scrolling.
@@ -206,7 +206,7 @@ Therefore, the total amount of data transferred is basically the same but withou
 necessary http communication, like request and response headers. Also [componentsReady()](developing/components-ready)
 isn't part of `getLoaderScript()`.
 
-<Notification heading="Hint" state="warning">
+<Notification heading="Hint" heading-tag="h4" state="warning">
   This works and helps especially in a plain HTML and Vanilla Js setup since the <code>index.js</code> is otherwise 
   bundled by the JavaScript framework and you would end up shipping the same code twice, once bundled and once inlined
   in the <code>script</code> tag.

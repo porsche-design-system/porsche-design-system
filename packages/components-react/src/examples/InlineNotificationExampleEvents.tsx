@@ -11,7 +11,14 @@ export const InlineNotificationExampleEventsPage = (): JSX.Element => {
       <button type="button" onClick={onShow}>
         Show Inline Notification
       </button>
-      {isActive && <PInlineNotification heading="Some heading" description="Some description." onDismiss={onDismiss} />}
+      {isActive && (
+        <PInlineNotification
+          heading="Some heading"
+          headingTag="h4"
+          description="Some description."
+          onDismiss={onDismiss}
+        />
+      )}
     </>
   );
 };

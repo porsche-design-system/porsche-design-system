@@ -2,7 +2,7 @@
 
 `p-text` is used to specify paragraph styling in documents.
 
-<Notification heading="Recommendation" state="success">
+<Notification heading="Recommendation" heading-tag="h2" state="success">
   Although the component is very sophisticated, it's recommended (if possible) to use the corresponding styles / design tokens of
 the "@porsche-design-system/components-{js|angular|react|vue}/styles" sub-package for best performance since way 
 less DOM nodes are required to render. Further information can be found <a href="styles/typography">here</a>.
@@ -39,7 +39,7 @@ To provide more contextual HTML semantics you can either pass them with the `tag
 
 Predefined colors associated with its theme are available but also inherit mode can be used to define a custom color.
 
-<Notification heading="Deprecation hint" state="warning">
+<Notification heading="Deprecation hint" heading-tag="h3" state="warning">
   Following colors have been deprecated and will be removed with the next major release: "brand",
 "default", "neutral-contrast-high", "neutral-contrast-medium", "neutral-contrast-low" and "notification-neutral".
 </Notification>
@@ -52,7 +52,7 @@ Predefined colors associated with its theme are available but also inherit mode 
 
 ## Weight
 
-<Notification heading="Deprecation hint" state="warning">
+<Notification heading="Deprecation hint" heading-tag="h3" state="warning">
   Following weight definitions have been deprecated and will be removed with the next major release: "thin" 
 and "semibold".
 </Notification>
@@ -65,7 +65,7 @@ and "semibold".
 
 ## Alignment
 
-<Notification heading="Deprecation hint" state="warning">
+<Notification heading="Deprecation hint" heading-tag="h3" state="warning">
   Following alignments have been deprecated and will be removed with the next major release: "left" and "right".
 </Notification>
 

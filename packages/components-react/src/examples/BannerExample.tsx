@@ -17,7 +17,13 @@ export const BannerExamplePage = (): JSX.Element => {
       <PButton type="button" onClick={onOpen}>
         Open Banner
       </PButton>
-      <PBanner open={isBannerOpen} heading="Some Heading" description="Some Description" onDismiss={onDismiss} />
+      <PBanner
+        open={isBannerOpen}
+        heading="Some Heading"
+        headingTag="h3"
+        description="Some Description"
+        onDismiss={onDismiss}
+      />
     </>
   );
 };

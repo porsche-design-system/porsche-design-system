@@ -4,7 +4,7 @@
 
 ## Example
 
-<Notification heading="Important note" state="warning">
+<Notification heading="Important note" heading-tag="h3" state="warning">
  Safari < 16.4 isn't able to visualize a rounded focus outline, instead it will be edgy. 
 We implemented the focus style with a standard CSS outline anyway because of too many disadvantages caused by alternative integrations, e.g. with pseudo-elements. 
 <br>

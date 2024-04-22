@@ -14,7 +14,7 @@ Slotted content between the component tags won't be displayed.
 **Hint:** The component has not an implicit vertical height unless we set a container which provides it or define the
 height on the component itself.
 
-<Notification heading="Deprecation hint" state="warning">
+<Notification heading="Deprecation hint" heading-tag="h3" state="warning">
   The <code>orientation</code> property has been deprecated and will be removed with the next major release.<br>
   Please use the <code>direction</code> property instead.
 </Notification>
@@ -29,7 +29,7 @@ You can change the divider's direction by using different major breakpoints `xs`
 
 ## Colors
 
-<Notification heading="Deprecation hint" state="warning">
+<Notification heading="Deprecation hint" heading-tag="h3" state="warning">
  Following colors have been deprecated and will be removed with the next major release:
  "neutral-contrast-high", "neutral-contrast-medium" and "neutral-contrast-low".
 </Notification>

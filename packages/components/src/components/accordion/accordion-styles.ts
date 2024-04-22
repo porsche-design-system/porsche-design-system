@@ -28,14 +28,18 @@ export const getComponentCss = (
   size: BreakpointCustomizable<AccordionSize>,
   compact: boolean,
   open: boolean,
-  theme: Theme
+  theme: Theme,
+  sticky: boolean
 ): string => {
-  const { primaryColor, hoverColor, contrastLowColor } = getThemedColors(theme);
+  const { primaryColor, hoverColor, contrastLowColor, backgroundColor } = getThemedColors(theme);
   const {
     primaryColor: primaryColorDark,
     hoverColor: hoverColorDark,
     contrastLowColor: contrastLowColorDark,
+    backgroundColor: backgroundColorDark,
   } = getThemedColors('dark');
+  const cssVariablePositionStickyTop = '--p-accordion-position-sticky-top';
+  const positionStickyTopFallback = '0';
 
   return getCss({
     '@global': {
@@ -115,6 +119,15 @@ export const getComponentCss = (
     },
     heading: {
       margin: 0,
+      ...(sticky && {
+        position: 'sticky',
+        top: `var(${cssVariablePositionStickyTop}, ${positionStickyTopFallback})`,
+        zIndex: 1, // to be on top of the collapsible
+        backgroundColor,
+        ...prefersColorSchemeDarkMediaQuery(theme, {
+          backgroundColor: backgroundColorDark,
+        }),
+      }),
     },
     'icon-container': {
       height: fontLineHeight,
@@ -136,6 +149,10 @@ export const getComponentCss = (
         color: primaryColorDark,
       }),
       display: 'grid',
+      ...(sticky && {
+        position: 'relative',
+        zIndex: 0, // to be below the heading
+      }),
       ...(open
         ? {
             gridTemplateRows: '1fr',

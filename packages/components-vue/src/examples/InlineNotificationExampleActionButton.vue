@@ -11,6 +11,7 @@
 <template>
   <PInlineNotification
     :heading="'Some heading'"
+    :headingTag="'h4'"
     :description="'Some description.'"
     :actionLabel="'Retry'"
     :actionIcon="'reset'"

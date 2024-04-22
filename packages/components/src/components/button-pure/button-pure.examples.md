@@ -75,7 +75,7 @@ The settings above can also be used on different major breakpoints `xs`, `s`, `m
 
 ## Weight (deprecated)
 
-<Notification heading="Important note" state="error">
+<Notification heading="Important note" heading-tag="h3" state="error">
   The weight prop is deprecated and will be removed with next major release.
   In case, e.g. <b>weight="semibold"</b> is used it will automatically be mapped to font weight regular.
 </Notification>
@@ -104,7 +104,7 @@ link to another icon hosted somewhere else, just set the whole icon path to the 
 
 The `label` can be aligned to the `end` (default) or to the `start` of the icon.
 
-<Notification heading="Deprecation hint" state="warning">
+<Notification heading="Deprecation hint" heading-tag="h3" state="warning">
   Following alignments have been deprecated and will be removed with the next major release: "left" and "right".
 </Notification>
 
