@@ -4,8 +4,11 @@ import type { PropertiesHyphen } from 'csstype';
 import type { ThemedColors } from './';
 import { getThemedColors, prefersColorSchemeDarkMediaQuery } from './';
 import {
+  borderRadiusMedium,
+  borderRadiusSmall,
   borderWidthBase,
   frostedGlassStyle,
+  headingLargeStyle,
   motionDurationLong,
   motionDurationModerate,
   motionDurationShort,
@@ -13,11 +16,15 @@ import {
   motionEasingBase,
   motionEasingIn,
   motionEasingOut,
+  spacingFluidLarge,
+  spacingFluidSmall,
+  spacingStaticMedium,
   themeDarkBackgroundShading,
   themeLightBackgroundShading,
 } from '@porsche-design-system/utilities-v2';
-import { isThemeDark } from '../utils';
+import { buildResponsiveStyles, isThemeDark, mergeDeep, scrollShadowColor, scrollShadowColorDark } from '../utils';
 import type * as fromMotionType from '@porsche-design-system/utilities-v2/dist/esm/motion';
+import { BreakpointCustomizable } from '../types';
 
 type WithoutMotionDurationPrefix<T> = T extends `motionDuration${infer P}` ? Uncapitalize<P> : never;
 export type MotionDurationKey = WithoutMotionDurationPrefix<keyof typeof fromMotionType>;
@@ -197,4 +204,173 @@ export const getBackdropJssStyle = (
       duration
     )}, visibility 0s linear var(${cssVariableTransitionDuration}, ${isVisible ? '0s' : motionDurationMap[duration]})`,
   };
+};
+
+export const getModalDialogBackdropResetJssStyle = (): JssStyle => {
+  return {
+    position: 'fixed', // ua-style
+    inset: 0, // ua-style
+    margin: 0, // ua-style
+    padding: 0, // ua-style
+    border: 0, // ua-style
+    width: '100dvw', // ua-style
+    height: '100dvh', // ua-style
+    maxWidth: '100dvw', // ua-style
+    maxHeight: '100dvh', // ua-style
+    overflow: 'hidden auto', // ua-style - only y-axis shall be scrollable
+  };
+};
+
+export const getModalDialogBackdropTransitionJssStyle = (
+  isVisible: boolean,
+  theme: Theme,
+  backdrop: Backdrop = 'blur'
+): JssStyle => {
+  const duration: MotionDurationKey = 'long';
+  const isBackdropBlur = backdrop === 'blur';
+  const { backgroundShadingColor } = getThemedColors(theme);
+  const { backgroundShadingColor: backgroundShadingColorDark } = getThemedColors('dark');
+
+  return {
+    zIndex: 9999999, // fallback for fade out stacking until `overlay` + `allow-discrete` is supported in all browsers. It tries to mimic #top-layer positioning hierarchy.
+    visibility: 'hidden', // element shall not be tabbable with keyboard after fade out transition has finished
+    pointerEvents: 'none', // element can't be interacted with mouse
+    background: 'transparent',
+    ...(isBackdropBlur && {
+      WebkitBackdropFilter: 'blur(0px)',
+      backdropFilter: 'blur(0px)',
+    }),
+    ...(isVisible && {
+      visibility: 'inherit',
+      pointerEvents: 'auto',
+      background: backgroundShadingColor,
+      ...(isBackdropBlur && frostedGlassStyle),
+      ...prefersColorSchemeDarkMediaQuery(theme, {
+        background: backgroundShadingColorDark,
+      }),
+    }),
+    // `allow-discrete` transition for ua-style `overlay` (supported browsers only) ensures dialog is rendered on
+    // #top-layer as long as fade-in or fade-out transition/animation is running
+    transition: `${isVisible ? '' : `visibility 0s linear var(${cssVariableTransitionDuration}, ${motionDurationMap[duration]}), `}${getTransition('overlay', duration)} allow-discrete, ${getTransition('background-color', duration)}, ${getTransition(
+      '-webkit-backdrop-filter',
+      duration
+    )}, ${getTransition('backdrop-filter', duration)}`,
+    '&::backdrop': {
+      display: 'none', // we can't use it atm because it's not animatable in all browsers
+    },
+  };
+};
+
+export const getModalDialogGridJssStyle = (): JssStyle => {
+  const safeZoneStart = `${spacingFluidSmall} calc(${spacingFluidLarge} - ${spacingFluidSmall})`;
+  const safeZoneEnd = `calc(${spacingFluidLarge} - ${spacingFluidSmall}) ${spacingFluidSmall}`;
+
+  return {
+    display: 'grid',
+    gridTemplate: `${safeZoneStart} auto minmax(0, 1fr) auto ${safeZoneEnd}/${safeZoneStart} auto ${safeZoneEnd}`,
+  };
+};
+
+export const getModalDialogTransitionJssStyle = (isVisible: boolean): JssStyle => {
+  const duration = isVisible ? 'moderate' : 'short';
+  const easing = isVisible ? 'in' : 'out';
+
+  return {
+    opacity: 0,
+    transform: 'translateY(25%)',
+    ...(isVisible && {
+      opacity: 1,
+      transform: 'translateY(0)',
+    }),
+    transition: `${getTransition('opacity', duration, easing)}, ${getTransition('transform', duration, easing)}`,
+  };
+};
+
+export const getModalDialogDismissButtonJssStyle = (theme: Theme): JssStyle => {
+  const { backgroundSurfaceColor } = getThemedColors(theme);
+  const { backgroundSurfaceColor: backgroundSurfaceColorDark } = getThemedColors('dark');
+
+  return {
+    width: 'fit-content',
+    height: 'fit-content',
+    border: `2px solid ${backgroundSurfaceColor}`, // needed to enlarge button slightly without affecting the hover area (are equal now).
+    borderRadius: borderRadiusSmall,
+    background: backgroundSurfaceColor,
+    ...prefersColorSchemeDarkMediaQuery(theme, {
+      background: backgroundSurfaceColorDark,
+      borderColor: backgroundSurfaceColorDark,
+    }),
+  };
+};
+
+export const getModalDialogHeadingJssStyle = (): JssStyle => {
+  return {
+    ...headingLargeStyle,
+    margin: 0,
+  };
+};
+
+export const getModalDialogFooterJssStyle = (theme: Theme): JssStyle => {
+  const { backgroundColor } = getThemedColors(theme);
+  const { backgroundColor: backgroundColorDark } = getThemedColors('dark');
+
+  return {
+    position: 'sticky',
+    bottom: '-1px', // necessary for `IntersectionObserver` to detect if sticky element is stuck or not
+    marginBlock: `-${spacingStaticMedium}`,
+    padding: `${spacingStaticMedium} ${spacingFluidLarge}`, // with CSS subgrid the spacingFluidLarge definition wouldn't be necessary
+    background: backgroundColor,
+    ...prefersColorSchemeDarkMediaQuery(theme, {
+      background: backgroundColorDark,
+    }),
+    clipPath: 'inset(-20px 0 0 0)', // crop leaking box-shadow on left and right side
+    transition: `${getTransition('box-shadow')}`,
+    '&[data-stuck]': {
+      boxShadow: `${isThemeDark(theme) ? scrollShadowColorDark : scrollShadowColor} 0 -5px 10px`,
+      ...prefersColorSchemeDarkMediaQuery(theme, {
+        boxShadow: `${scrollShadowColorDark} 0 -5px 10px`,
+      }),
+    },
+  };
+};
+
+export const getModalDialogStretchToFullModalWidthJssStyle = (
+  hasHeader: boolean,
+  hasFooter: boolean,
+  fullscreen: BreakpointCustomizable<boolean>
+): JssStyle => {
+  const safeZone = `calc(${spacingFluidLarge} * -1)`;
+  const cssClassNameStretchToFullModalWidth = 'stretch-to-full-modal-width';
+
+  return mergeDeep(
+    {
+      [`&(.${cssClassNameStretchToFullModalWidth})`]: {
+        display: 'block',
+        margin: `0 ${safeZone}`,
+        width: `calc(100% + calc(${spacingFluidLarge} * 2))`,
+      },
+      ...(!hasHeader && {
+        [`&(.${cssClassNameStretchToFullModalWidth}:first-child)`]: {
+          marginBlockStart: safeZone,
+        },
+      }),
+      ...(!hasFooter && {
+        [`&(.${cssClassNameStretchToFullModalWidth}:last-child)`]: {
+          marginBlockEnd: safeZone,
+        },
+      }),
+    },
+    buildResponsiveStyles(fullscreen, (fullscreenValue: boolean) => ({
+      ...(!hasHeader && {
+        [`&(.${cssClassNameStretchToFullModalWidth}:first-child)`]: {
+          borderRadius: fullscreenValue ? 0 : `${borderRadiusMedium} ${borderRadiusMedium} 0 0`,
+        },
+      }),
+      ...(!hasFooter && {
+        [`&(.${cssClassNameStretchToFullModalWidth}:last-child)`]: {
+          borderRadius: fullscreenValue ? 0 : `0 0 ${borderRadiusMedium} ${borderRadiusMedium}`,
+        },
+      }),
+    }))
+  );
 };

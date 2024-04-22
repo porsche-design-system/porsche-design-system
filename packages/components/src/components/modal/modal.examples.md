@@ -159,7 +159,7 @@ like a safe zone.
 <script lang="ts">
 import Vue from 'vue';
 import Component from 'vue-class-component';
-import { stretchToFullModalWidthClassName } from './modal-styles'; 
+import { cssClassNameStretchToFullModalWidth } from './modal-styles'; 
 import { getModalCodeSamples } from '@porsche-design-system/shared'; 
 
 @Component
@@ -199,7 +199,7 @@ export default class Code extends Vue {
   }
 
   get stretchClassName(){
-    return stretchToFullModalWidthClassName; 
+    return cssClassNameStretchToFullModalWidth; 
   }
 
   width = 'minWidth';
@@ -262,7 +262,7 @@ export default class Code extends Vue {
   fullWidthContent =
     `<p-button type="button" aria="{ 'aria-haspopup': 'dialog' }">Open Modal</p-button>
 <p-modal open="false" aria="{ 'aria-label': 'Some Heading' }">
-  <img src="${require('@/assets/porsche-992-carrera-s.jpg')}" class="${stretchToFullModalWidthClassName}">  
+  <img src="${require('@/assets/porsche-992-carrera-s.jpg')}" class="${cssClassNameStretchToFullModalWidth}">  
   <p-headline tag="h2" style="padding: 1.5rem 0">Some Heading</p-headline>
   <p-text>Some Content</p-text>
 </p-modal>`;

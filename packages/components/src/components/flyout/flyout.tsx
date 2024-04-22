@@ -76,7 +76,6 @@ export class Flyout {
     // in case flyout is rendered with open prop
     if (this.open) {
       setScrollLock(true);
-
       this.setDialogVisibility(true);
     }
 
@@ -207,6 +206,11 @@ export class Flyout {
     }
   });
 
+  private onSlotChange = (): void => {
+    forceUpdate(this.host);
+    this.dismissBtn.focus();
+  };
+
   private onClickDialog = (e: MouseEvent & { target: HTMLElement }): void => {
     if (e.target.tagName === 'DIALOG') {
       // dismiss dialog when clicked on backdrop
@@ -214,21 +218,17 @@ export class Flyout {
     }
   };
 
-  private onSlotChange = (): void => {
-    forceUpdate(this.host);
-
-    this.dismissBtn.focus();
-  };
-
   private onCancelDialog = (e: Event): void => {
     // prevent closing the dialog uncontrolled by ESC (only relevant for browsers supporting <dialog/>)
     e.preventDefault();
-
     this.dismissDialog();
   };
 
+  private dismissDialog = (): void => {
+    this.dismiss.emit();
+  };
+
   private setDialogVisibility(isOpen: boolean): void {
-    // TODO: SupportsNativeDialog check
     // Only call showModal/close on dialog when state changes
     if (isOpen === true && !this.dialog.open) {
       this.dialog.showModal();
@@ -236,8 +236,4 @@ export class Flyout {
       this.dialog.close();
     }
   }
-
-  private dismissDialog = (): void => {
-    this.dismiss.emit();
-  };
 }

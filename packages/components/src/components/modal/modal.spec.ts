@@ -124,7 +124,6 @@ describe('disconnectedCallback', () => {
 
 describe('this.updateFocusTrap()', () => {
   it('should call setFocusTrap() with correct parameters for isOpen = true', () => {
-    const utilsSpy = jest.spyOn(focusTrapUtils, 'setFocusTrap');
     component['updateFocusTrap'](true);
 
     expect(utilsSpy).toHaveBeenCalledWith(
@@ -144,7 +143,6 @@ describe('this.updateFocusTrap()', () => {
   });
 
   it('should call setFocusTrap() with correct parameters for isOpen = false', () => {
-    const utilsSpy = jest.spyOn(focusTrapUtils, 'setFocusTrap');
     component['updateFocusTrap'](false);
 
     expect(utilsSpy).toHaveBeenCalledWith(

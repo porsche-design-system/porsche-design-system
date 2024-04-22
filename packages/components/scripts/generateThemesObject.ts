@@ -15,7 +15,7 @@ const lightenColorSlightly = (color: string) => tinycolor2(color).lighten(6).des
 const getStaticThemedColors = (theme: Theme): ThemedColors => {
   const {
     primary: primaryColor,
-    background: { base: backgroundColor, surface: backgroundSurfaceColor },
+    background: { base: backgroundColor, surface: backgroundSurfaceColor, shading: backgroundShadingColor },
     contrast: { low: contrastLowColor, medium: contrastMediumColor, high: contrastHighColor },
     state: { hover: hoverColor, active: activeColor, focus: focusColor, disabled: disabledColor },
     notification: {
@@ -44,6 +44,7 @@ const getStaticThemedColors = (theme: Theme): ThemedColors => {
     backgroundSurfaceColor,
     backgroundSurfaceColorDarken: darkenColor(backgroundSurfaceColor),
     backgroundSurfaceColorLighten: lightenColor(backgroundSurfaceColor),
+    backgroundShadingColor,
     contrastLowColor,
     contrastMediumColor,
     contrastHighColor,
