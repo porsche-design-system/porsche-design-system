@@ -13,7 +13,7 @@ For more information and a complete overview of all available Porsche icons, hea
 ([Porsche Icons](https://icons.porsche.com)).  
 To reference an icon just use the `name` property with a predefined icon id.
 
-<Notification heading="RTL (right-to-left) mode" state="success">
+<Notification heading="RTL (right-to-left) mode" heading-tag="h3" state="success">
   Certain icons are automatically flipped when used in RTL (right-to-left) mode. For more information and best practices on this topic, see <a href="https://rtlstyling.com/posts/rtl-styling#bidirectional-icons">RTL Styling Guide</a>.
 </Notification>
 
@@ -50,12 +50,12 @@ specific size is needed, the size can be set to `inherit` in order to specify th
 Predefined colors associated with its theme are available. Furthermore, inherit mode can be used to define a custom
 color.
 
-<Notification heading="Important note" state="success">
+<Notification heading="Important note" heading-tag="h3" state="success">
   The inherit mode works slightly different in v3 compared to the previous major release. A CSS filter (use some Online Calculator "hex to css filter") is required to
 apply custom coloring to take advantage of using an SVG embedded in an image tag for better loading performance.
 </Notification>
 
-<Notification heading="Deprecation hint" state="warning">
+<Notification heading="Deprecation hint" heading-tag="h3" state="warning">
   Following colors have been deprecated and will be removed with the next major release:
 "brand", "default", "neutral-contrast-high", "neutral-contrast-medium", "neutral-contrast-low" and "notification-neutral".
 </Notification>
@@ -79,7 +79,7 @@ sure that the custom icon serves the specific needs like size and viewbox which 
 
 ## Lazy loaded icon
 
-<Notification heading="Deprecation hint" state="warning">
+<Notification heading="Deprecation hint" heading-tag="h3" state="warning">
   Since the component is using the native 'loading="lazy"' attribute by default, this property is deprecated and has no effect anymore. Therefor, it will be removed with the next major release.
 </Notification>
 
