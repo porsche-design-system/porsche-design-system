@@ -37,7 +37,6 @@ components.forEach((component) => {
           (!isComponentThemeable(component) && theme === 'dark') || component === 'stepper-horizontal',
           'This component has no theme support and stepper-horizontal is flaky'
         );
-        test.skip(component === 'popover', 'This component test is too flaky!');
 
         await setupScenario(page, `/${component}`, viewportWidthM, {
           forceComponentTheme: isComponentThemeable(component) ? theme : undefined,
