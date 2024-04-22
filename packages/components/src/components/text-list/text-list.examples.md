@@ -7,7 +7,7 @@ you should consider the use of a data table.
 
 <TableOfContents></TableOfContents>
 
-<Notification heading="Deprecation hint" state="warning">
+<Notification heading="Deprecation hint" heading-tag="h2" state="warning">
   The <code>listType</code> and <code>orderType</code> properties have been deprecated and will be removed with the next major release.<br>
   Please use the <code>type</code> property instead.
 </Notification>

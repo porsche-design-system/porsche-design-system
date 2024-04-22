@@ -4,11 +4,11 @@ The `p-flyout-navigation` component is meant for displaying a multi-level naviga
 the page content from the start side of the screen. It is a controlled component that gives you flexible control over
 its behavior.
 
-<Notification heading="Experimental Component" state="warning">
+<Notification heading="Experimental Component" heading-tag="h2" state="warning">
   Interface of Flyout Navigation might change in the near future. In addition, animation/transition concept will change in the future. Currently, only two navigation levels are supported, but we will offer the support of more levels soon.
 </Notification>
 
-<Notification heading="Scroll-lock" state="warning">
+<Notification heading="Scroll-lock" heading-tag="h2" state="warning">
   This component sets <code>overflow: hidden</code> on the body when opened in order to prevent background scrolling.<br> 
   This doesn't work completely reliable under iOS but is the most stable solution.<br>
   Feel free to address this issue in an Open Source PR, if you can provide a better solution. <b><a href="https://github.com/porsche-design-system/porsche-design-system/blob/main/packages/components/src/utils/setScrollLock.ts">Current implementation</a></b><br>

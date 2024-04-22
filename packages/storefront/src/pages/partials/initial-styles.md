@@ -2,7 +2,7 @@
 
 **Function name:** `getInitialStyles()`
 
-<Notification heading="Attention" state="warning">
+<Notification heading="Attention" heading-tag="h2" state="warning">
 <b>This partial is required since v3.7.0</b>.<br>
 It is necessary to provide some default styles to Porsche Design System components until they are fully bootstrapped to
 prevent FOUC. In addition, normalize and component related slotted styles are provided too.
@@ -26,7 +26,7 @@ The following showcases the most common ways.
 
 <PartialDocs name="getInitialStyles" :params="params" location="head"></PartialDocs>
 
-<Notification heading="Hint" state="success">
+<Notification heading="Hint" heading-tag="h3" state="success">
   In case, micro frontends with custom prefixed Porsche Design System components are used, 
 it's possible to provide proper initial styles to all of them by defining an array of custom prefixes (see example below).
 By entering <code>document.porscheDesignSystem</code> in the browser console of your application, it's possible to find out which prefixes are used.

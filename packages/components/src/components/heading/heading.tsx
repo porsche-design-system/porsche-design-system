@@ -1,5 +1,4 @@
-import type { BreakpointCustomizable, HeadingSize, PropTypes, Theme } from '../../types';
-import type { HeadingTag } from './heading-tag';
+import type { BreakpointCustomizable, HeadingSize, HeadingTag, PropTypes, Theme } from '../../types';
 import type { HeadingAlign, HeadingAlignDeprecated, HeadingColor } from './heading-utils';
 import { getHeadingTagType, HEADING_COLORS } from './heading-utils';
 import { Component, Element, h, type JSX, Prop } from '@stencil/core';
@@ -7,14 +6,14 @@ import {
   AllowedTypes,
   attachComponentCss,
   hasPropValueChanged,
+  HEADING_SIZES,
+  HEADING_TAGS,
   THEMES,
   TYPOGRAPHY_ALIGNS,
   validateProps,
   warnIfDeprecatedPropValueIsUsed,
 } from '../../utils';
-import { HEADING_TAGS } from './heading-tag';
 import { getComponentCss } from './heading-styles';
-import { HEADING_SIZES } from '../../utils/typography/heading-size';
 
 const propTypes: PropTypes<typeof Heading> = {
   tag: AllowedTypes.oneOf<HeadingTag>([undefined, ...HEADING_TAGS]),
@@ -32,7 +31,7 @@ const propTypes: PropTypes<typeof Heading> = {
 export class Heading {
   @Element() public host!: HTMLElement;
 
-  /** Sets a custom HTML tag depending on the usage of the heading component. */
+  /** Sets a heading tag, so it fits correctly within the outline of the page. */
   @Prop() public tag?: HeadingTag;
 
   /** Size of the component. Also defines the size for specific breakpoints, like {base: "small", l: "medium"}. You always need to provide a base value when doing this. */

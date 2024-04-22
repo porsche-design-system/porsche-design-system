@@ -8,22 +8,8 @@ exports[`getComponentCss() should return correct css for size: "large", weight: 
 :host([hidden]) {
   display: none !important;
 }
-::slotted(p), ::slotted(span), ::slotted(div), ::slotted(address), ::slotted(blockquote), ::slotted(figcaption), ::slotted(cite), ::slotted(time), ::slotted(legend) {
-  margin: inherit !important;
-  padding: inherit !important;
-  font-family: inherit !important;
-  font-weight: inherit !important;
-  font-size: inherit !important;
-  line-height: inherit !important;
-  font-style: inherit !important;
-  font-variant: inherit !important;
-  color: inherit !important;
-  text-align: inherit !important;
-  overflow-wrap: inherit !important;
-  word-wrap: inherit !important;
-  hyphens: inherit !important;
-  white-space: inherit !important;
-  letter-spacing: inherit !important;
+::slotted(:is(p,span,div,address,blockquote,figcaption,cite,time,legend)) {
+  all: unset !important;
 }
 .root {
   margin: 0;
@@ -52,22 +38,8 @@ exports[`getComponentCss() should return correct css for size: "medium", weight:
 :host([hidden]) {
   display: none !important;
 }
-::slotted(p), ::slotted(span), ::slotted(div), ::slotted(address), ::slotted(blockquote), ::slotted(figcaption), ::slotted(cite), ::slotted(time), ::slotted(legend) {
-  margin: inherit !important;
-  padding: inherit !important;
-  font-family: inherit !important;
-  font-weight: inherit !important;
-  font-size: inherit !important;
-  line-height: inherit !important;
-  font-style: inherit !important;
-  font-variant: inherit !important;
-  color: inherit !important;
-  text-align: inherit !important;
-  overflow-wrap: inherit !important;
-  word-wrap: inherit !important;
-  hyphens: inherit !important;
-  white-space: inherit !important;
-  letter-spacing: inherit !important;
+::slotted(:is(p,span,div,address,blockquote,figcaption,cite,time,legend)) {
+  all: unset !important;
 }
 .root {
   margin: 0;
@@ -96,22 +68,8 @@ exports[`getComponentCss() should return correct css for size: "small", weight: 
 :host([hidden]) {
   display: none !important;
 }
-::slotted(p), ::slotted(span), ::slotted(div), ::slotted(address), ::slotted(blockquote), ::slotted(figcaption), ::slotted(cite), ::slotted(time), ::slotted(legend) {
-  margin: inherit !important;
-  padding: inherit !important;
-  font-family: inherit !important;
-  font-weight: inherit !important;
-  font-size: inherit !important;
-  line-height: inherit !important;
-  font-style: inherit !important;
-  font-variant: inherit !important;
-  color: inherit !important;
-  text-align: inherit !important;
-  overflow-wrap: inherit !important;
-  word-wrap: inherit !important;
-  hyphens: inherit !important;
-  white-space: inherit !important;
-  letter-spacing: inherit !important;
+::slotted(:is(p,span,div,address,blockquote,figcaption,cite,time,legend)) {
+  all: unset !important;
 }
 .root {
   margin: 0;
@@ -137,22 +95,8 @@ exports[`getComponentCss() should return correct css for size: "small", weight: 
 :host([hidden]) {
   display: none !important;
 }
-::slotted(p), ::slotted(span), ::slotted(div), ::slotted(address), ::slotted(blockquote), ::slotted(figcaption), ::slotted(cite), ::slotted(time), ::slotted(legend) {
-  margin: inherit !important;
-  padding: inherit !important;
-  font-family: inherit !important;
-  font-weight: inherit !important;
-  font-size: inherit !important;
-  line-height: inherit !important;
-  font-style: inherit !important;
-  font-variant: inherit !important;
-  color: inherit !important;
-  text-align: inherit !important;
-  overflow-wrap: inherit !important;
-  word-wrap: inherit !important;
-  hyphens: inherit !important;
-  white-space: inherit !important;
-  letter-spacing: inherit !important;
+::slotted(:is(p,span,div,address,blockquote,figcaption,cite,time,legend)) {
+  all: unset !important;
 }
 .root {
   margin: 0;
@@ -178,22 +122,8 @@ exports[`getComponentCss() should return correct css for size: "small", weight: 
 :host([hidden]) {
   display: none !important;
 }
-::slotted(p), ::slotted(span), ::slotted(div), ::slotted(address), ::slotted(blockquote), ::slotted(figcaption), ::slotted(cite), ::slotted(time), ::slotted(legend) {
-  margin: inherit !important;
-  padding: inherit !important;
-  font-family: inherit !important;
-  font-weight: inherit !important;
-  font-size: inherit !important;
-  line-height: inherit !important;
-  font-style: inherit !important;
-  font-variant: inherit !important;
-  color: inherit !important;
-  text-align: inherit !important;
-  overflow-wrap: inherit !important;
-  word-wrap: inherit !important;
-  hyphens: inherit !important;
-  white-space: inherit !important;
-  letter-spacing: inherit !important;
+::slotted(:is(p,span,div,address,blockquote,figcaption,cite,time,legend)) {
+  all: unset !important;
 }
 .root {
   margin: 0;
@@ -219,22 +149,8 @@ exports[`getComponentCss() should return correct css for size: {"base":"small","
 :host([hidden]) {
   display: none !important;
 }
-::slotted(p), ::slotted(span), ::slotted(div), ::slotted(address), ::slotted(blockquote), ::slotted(figcaption), ::slotted(cite), ::slotted(time), ::slotted(legend) {
-  margin: inherit !important;
-  padding: inherit !important;
-  font-family: inherit !important;
-  font-weight: inherit !important;
-  font-size: inherit !important;
-  line-height: inherit !important;
-  font-style: inherit !important;
-  font-variant: inherit !important;
-  color: inherit !important;
-  text-align: inherit !important;
-  overflow-wrap: inherit !important;
-  word-wrap: inherit !important;
-  hyphens: inherit !important;
-  white-space: inherit !important;
-  letter-spacing: inherit !important;
+::slotted(:is(p,span,div,address,blockquote,figcaption,cite,time,legend)) {
+  all: unset !important;
 }
 .root {
   margin: 0;
