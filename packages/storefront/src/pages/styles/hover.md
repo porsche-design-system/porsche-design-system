@@ -4,7 +4,7 @@
 
 ## Example
 
-<Notification heading="Important note" state="error">
+<Notification heading="Important note" heading-tag="h3" state="error">
  The <code>getHoverStyle() / pds-hover()</code> style is still experimental, interface might change.
 </Notification>
 

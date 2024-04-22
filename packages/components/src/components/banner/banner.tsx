@@ -1,6 +1,6 @@
 import { Component, Element, Event, type EventEmitter, h, type JSX, Prop, Watch } from '@stencil/core';
 import type { PropTypes, Theme } from '../../types';
-import type { BannerState, BannerStateDeprecated, BannerWidth } from './banner-utils';
+import type { BannerState, BannerHeadingTag, BannerStateDeprecated, BannerWidth } from './banner-utils';
 import { BANNER_STATES } from './banner-utils';
 import {
   AllowedTypes,
@@ -9,6 +9,7 @@ import {
   getPrefixedTagNames,
   getShadowRootHTMLElement,
   hasNamedSlot,
+  HEADING_TAGS,
   THEMES,
   validateProps,
   warnIfDeprecatedPropIsUsed,
@@ -20,6 +21,7 @@ import { getDeprecatedPropOrSlotWarningMessage } from '../../utils/log/helper';
 const propTypes: Omit<PropTypes<typeof Banner>, 'width'> = {
   open: AllowedTypes.boolean,
   heading: AllowedTypes.string,
+  headingTag: AllowedTypes.oneOf<BannerHeadingTag>(HEADING_TAGS),
   description: AllowedTypes.string,
   state: AllowedTypes.oneOf<BannerState>(BANNER_STATES),
   dismissButton: AllowedTypes.boolean,
@@ -39,6 +41,9 @@ export class Banner {
 
   /** Heading of the banner. */
   @Prop() public heading?: string = '';
+
+  /** Sets a heading tag, so it fits correctly within the outline of the page. */
+  @Prop() public headingTag?: BannerHeadingTag = 'h5';
 
   /** Description of the banner. */
   @Prop() public description?: string = '';
@@ -131,6 +136,7 @@ export class Banner {
       <PrefixedTagNames.pInlineNotification
         ref={(el) => (this.inlineNotificationElement = el)}
         heading={this.heading}
+        headingTag={this.headingTag}
         description={this.description}
         state={this.state}
         dismissButton={this.hasDismissButton}

@@ -1,6 +1,6 @@
 <ComponentHeading name="Marque"></ComponentHeading>
 
-<Notification heading="Deprecation hint" state="error">
+<Notification heading="Deprecation hint" heading-tag="h2" state="error">
   This component is deprecated and will be removed with the next major release.
 Please use <a href="components/wordmark">p-wordmark</a> instead.
 </Notification>

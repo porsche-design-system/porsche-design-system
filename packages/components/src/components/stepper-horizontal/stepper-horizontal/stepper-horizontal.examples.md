@@ -30,7 +30,7 @@ steps which cannot yet be processed at the time.
 By clicking on a previous step, the `p-stepper-horizontal` emits the `update` event, which contains the index of the
 clicked step.
 
-<Notification heading="Deprecation hint" state="warning">
+<Notification heading="Deprecation hint" heading-tag="h3" state="warning">
   The <code>stepChange</code> event has been deprecated and will be removed with the next major release.<br>
   Please use the <code>update</code> event instead.
 </Notification>

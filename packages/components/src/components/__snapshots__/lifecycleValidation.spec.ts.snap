@@ -4,6 +4,7 @@ exports[`should call validateProps() with correct parameters via render for p-ac
 {
   "compact": "boolean",
   "heading": "string",
+  "headingTag": "oneOf",
   "open": "boolean",
   "size": "breakpoint",
   "sticky": "boolean",
@@ -17,6 +18,7 @@ exports[`should call validateProps() with correct parameters via render for p-ba
   "description": "string",
   "dismissButton": "boolean",
   "heading": "string",
+  "headingTag": "oneOf",
   "open": "boolean",
   "persistent": "boolean",
   "state": "oneOf",
@@ -278,6 +280,7 @@ exports[`should call validateProps() with correct parameters via render for p-in
   "description": "string",
   "dismissButton": "boolean",
   "heading": "string",
+  "headingTag": "oneOf",
   "persistent": "boolean",
   "state": "oneOf",
   "theme": "oneOf",

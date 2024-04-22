@@ -6,6 +6,14 @@ exports[`should match snapshot 1`] = `
     "allowedPropValues": {
       "compact": "boolean",
       "heading": "string",
+      "headingTag": [
+        "h1",
+        "h2",
+        "h3",
+        "h4",
+        "h5",
+        "h6",
+      ],
       "open": "boolean",
       "size": [
         "small",
@@ -13,6 +21,7 @@ exports[`should match snapshot 1`] = `
       ],
       "sticky": "boolean",
       "tag": [
+        null,
         "h1",
         "h2",
         "h3",
@@ -31,6 +40,9 @@ exports[`should match snapshot 1`] = `
     ],
     "deprecatedEventNames": [
       "accordionChange",
+    ],
+    "deprecatedProps": [
+      "tag",
     ],
     "eventNames": [
       "accordionChange",
@@ -66,10 +78,11 @@ exports[`should match snapshot 1`] = `
     "props": {
       "compact": null,
       "heading": null,
+      "headingTag": "h2",
       "open": null,
       "size": "small",
       "sticky": null,
-      "tag": "h2",
+      "tag": null,
       "theme": "light",
     },
     "propsMeta": {
@@ -84,6 +97,19 @@ exports[`should match snapshot 1`] = `
         "defaultValue": null,
         "description": "Defines the heading used in accordion.",
         "type": "string",
+      },
+      "headingTag": {
+        "allowedValues": [
+          "h1",
+          "h2",
+          "h3",
+          "h4",
+          "h5",
+          "h6",
+        ],
+        "defaultValue": "h2",
+        "description": "Sets a heading tag, so it fits correctly within the outline of the page.",
+        "type": "AccordionHeadingTag",
       },
       "open": {
         "allowedValues": "boolean",
@@ -110,6 +136,7 @@ exports[`should match snapshot 1`] = `
       },
       "tag": {
         "allowedValues": [
+          null,
           "h1",
           "h2",
           "h3",
@@ -117,8 +144,9 @@ exports[`should match snapshot 1`] = `
           "h5",
           "h6",
         ],
-        "defaultValue": "h2",
-        "description": "Sets a headline tag, so it fits correctly within the outline of the page.",
+        "defaultValue": null,
+        "description": "@deprecated, will be removed with next major release, use \`heading-tag\` instead. Sets a heading tag, so it fits correctly within the outline of the page.",
+        "isDeprecated": true,
         "type": "AccordionTag",
       },
       "theme": {
@@ -139,6 +167,14 @@ exports[`should match snapshot 1`] = `
       "description": "string",
       "dismissButton": "boolean",
       "heading": "string",
+      "headingTag": [
+        "h1",
+        "h2",
+        "h3",
+        "h4",
+        "h5",
+        "h6",
+      ],
       "open": "boolean",
       "persistent": "boolean",
       "state": [
@@ -191,6 +227,7 @@ exports[`should match snapshot 1`] = `
       "description": "",
       "dismissButton": true,
       "heading": "",
+      "headingTag": "h5",
       "open": false,
       "persistent": null,
       "state": "info",
@@ -215,6 +252,19 @@ exports[`should match snapshot 1`] = `
         "defaultValue": "",
         "description": "Heading of the banner.",
         "type": "string",
+      },
+      "headingTag": {
+        "allowedValues": [
+          "h1",
+          "h2",
+          "h3",
+          "h4",
+          "h5",
+          "h6",
+        ],
+        "defaultValue": "h5",
+        "description": "Sets a heading tag, so it fits correctly within the outline of the page.",
+        "type": "BannerHeadingTag",
       },
       "open": {
         "allowedValues": "boolean",
@@ -2722,7 +2772,7 @@ exports[`should match snapshot 1`] = `
           "h6",
         ],
         "defaultValue": null,
-        "description": "Sets a custom HTML tag depending on the usage of the display component.",
+        "description": "Sets a heading tag, so it fits correctly within the outline of the page.",
         "type": "DisplayTag",
       },
       "theme": {
@@ -3850,7 +3900,7 @@ exports[`should match snapshot 1`] = `
           "h6",
         ],
         "defaultValue": null,
-        "description": "Sets a custom HTML tag depending on the usage of the heading component.",
+        "description": "Sets a heading tag, so it fits correctly within the outline of the page.",
         "type": "HeadingTag",
       },
       "theme": {
@@ -4795,6 +4845,14 @@ exports[`should match snapshot 1`] = `
       "description": "string",
       "dismissButton": "boolean",
       "heading": "string",
+      "headingTag": [
+        "h1",
+        "h2",
+        "h3",
+        "h4",
+        "h5",
+        "h6",
+      ],
       "persistent": "boolean",
       "state": [
         "success",
@@ -4848,6 +4906,7 @@ exports[`should match snapshot 1`] = `
       "description": "",
       "dismissButton": true,
       "heading": "",
+      "headingTag": "h5",
       "persistent": null,
       "state": "info",
       "theme": "light",
@@ -5092,6 +5151,19 @@ exports[`should match snapshot 1`] = `
         "defaultValue": "",
         "description": "Heading of the inline-notification.",
         "type": "string",
+      },
+      "headingTag": {
+        "allowedValues": [
+          "h1",
+          "h2",
+          "h3",
+          "h4",
+          "h5",
+          "h6",
+        ],
+        "defaultValue": "h5",
+        "description": "Sets a heading tag, so it fits correctly within the outline of the page.",
+        "type": "InlineNotificationHeadingTag",
       },
       "persistent": {
         "allowedValues": "boolean",
@@ -7152,7 +7224,7 @@ exports[`should match snapshot 1`] = `
           "h6",
         ],
         "defaultValue": "h2",
-        "description": "Sets a custom headline tag which wraps the heading to enhance semantics.",
+        "description": "Sets a heading tag, so it fits correctly within the outline of the page.",
         "type": "LinkTileModelSignatureHeadingTag",
       },
       "linkDirection": {

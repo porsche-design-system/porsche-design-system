@@ -7,7 +7,7 @@
   aria-labelledby="label"
   aria-describedby="description"
 >
-  <p id="description">
+  <p id="description" class="description">
     <slot> </slot>
   </p>
 </div>

@@ -7,6 +7,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     <p-inline-notification
       *ngIf="isActive"
       [heading]="'Some heading'"
+      [heading-tag]="'h4'"
       [description]="'Some description.'"
       (dismiss)="onDismiss()"
     ></p-inline-notification>

@@ -63,7 +63,7 @@ In this section you can find basic examples for the default test setups of each 
 
 Other Angular setups can be found further down.
 
-<Notification heading="Important note" state="warning">
+<Notification heading="Important note" heading-tag="h3" state="warning">
   All test environments that don't use a real browser typically run in <strong>jsdom</strong> which requires our <strong>@porsche-design-system/components-{js|angular|react|vue}/jsdom-polyfill</strong> subpackage in order to have real working Porsche Design System components.<br>
   Without it, you are just rendering "dead" component markup without any functionality.
 </Notification>

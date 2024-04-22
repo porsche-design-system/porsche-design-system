@@ -2,7 +2,7 @@
 
 `p-display` is used to highlight and specify heading styling and hierarchy in documents.
 
-<Notification heading="Recommendation" state="success">
+<Notification heading="Recommendation" heading-tag="h2" state="success">
   Although the component is very sophisticated, it's recommended (if possible) to use the corresponding styles / design tokens of
 the "@porsche-design-system/components-{js|angular|react|vue}/styles" sub-package for best performance since way 
 less DOM nodes are required to render. Further information can be found <a href="styles/typography">here</a>.
@@ -47,7 +47,7 @@ Predefined colors associated with its theme are available but also inherit mode 
 
 ## Alignment
 
-<Notification heading="Deprecation hint" state="warning">
+<Notification heading="Deprecation hint" heading-tag="h3" state="warning">
   Following alignments have been deprecated and will be removed with the next major release: "left" and "right".
 </Notification>
 
