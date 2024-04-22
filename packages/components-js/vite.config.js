@@ -25,7 +25,7 @@ const transformIndexHtmlPlugin = () => {
         // getIconLinks({ icons: [...ICON_NAMES] }),
         // '<link rel="stylesheet" href="http://localhost:3001/styles/font-face.min.css">',
         getFontFaceStyles().replace(/https:\/\/cdn\.ui\.porsche\.com\/porsche-design-system/g, 'http://localhost:3001'),
-        // getFontLinks({ weights: ['regular', 'semi-bold', 'bold'] }),
+        getFontLinks({ weights: ['regular', 'semi-bold', 'bold'] }),
         getMetaTagsAndIconLinks({ appTitle: 'Porsche Design System' }),
       ]
         .join('')
