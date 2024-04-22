@@ -2,7 +2,7 @@
 
 <TableOfContents></TableOfContents>
 
-<Notification heading="Deprecation hint" state="warning">
+<Notification heading="Deprecation hint" heading-tag="h2" state="warning">
   The <code>pageChange</code> event has been deprecated and will be removed with the next major release.<br>
   Please use the <code>update</code> event instead.
 </Notification>
@@ -16,7 +16,7 @@ To adapt the pagination to the specific viewport context, the amount of displaye
 
 ## Max Number of Page Links (deprecated)
 
-<Notification heading="Important note" state="warning">
+<Notification heading="Important note" heading-tag="h3" state="warning">
   The <code>maxNumberOfPageLinks</code> property is deprecated since v3.10.0 and has no effect anymore. Therefor, it will be removed with the next major release.
 </Notification>
 

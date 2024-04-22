@@ -53,7 +53,7 @@ proper blend mode results.
 
 ## Mask: Image
 
-<Notification heading="Experimental" state="warning">
+<Notification heading="Experimental" heading-tag="h3" state="warning">
   The following example shows what is technically possible but has not yet been approved by the Porsche Brand Guide.
 </Notification>
 
@@ -61,7 +61,7 @@ proper blend mode results.
 
 ## Mask: Video
 
-<Notification heading="Experimental" state="warning">
+<Notification heading="Experimental" heading-tag="h3" state="warning">
   The following example shows what is technically possible but has not yet been approved by the Porsche Brand Guide.
 </Notification>
 

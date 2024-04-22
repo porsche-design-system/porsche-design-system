@@ -29,7 +29,7 @@ const propTypes: PropTypes<typeof Display> = {
 export class Display {
   @Element() public host!: HTMLElement;
 
-  /** Sets a custom HTML tag depending on the usage of the display component. */
+  /** Sets a heading tag, so it fits correctly within the outline of the page. */
   @Prop() public tag?: DisplayTag;
 
   /** Size of the component. Also defines the size for specific breakpoints, like {base: "medium", l: "large"}. You always need to provide a base value when doing this. */

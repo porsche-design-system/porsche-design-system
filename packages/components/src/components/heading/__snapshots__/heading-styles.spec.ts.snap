@@ -8,22 +8,8 @@ exports[`getComponentCss() should return correct css for size: "inherit", align:
 :host([hidden]) {
   display: none !important;
 }
-::slotted(h1), ::slotted(h2), ::slotted(h3), ::slotted(h4), ::slotted(h5), ::slotted(h6) {
-  margin: inherit !important;
-  padding: inherit !important;
-  font-family: inherit !important;
-  font-weight: inherit !important;
-  font-size: inherit !important;
-  line-height: inherit !important;
-  font-style: inherit !important;
-  font-variant: inherit !important;
-  color: inherit !important;
-  text-align: inherit !important;
-  overflow-wrap: inherit !important;
-  word-wrap: inherit !important;
-  hyphens: inherit !important;
-  white-space: inherit !important;
-  letter-spacing: inherit !important;
+::slotted(:is(h1,h2,h3,h4,h5,h6)) {
+  all: unset !important;
 }
 .root {
   margin: 0;
@@ -49,22 +35,8 @@ exports[`getComponentCss() should return correct css for size: "large", align: c
 :host([hidden]) {
   display: none !important;
 }
-::slotted(h1), ::slotted(h2), ::slotted(h3), ::slotted(h4), ::slotted(h5), ::slotted(h6) {
-  margin: inherit !important;
-  padding: inherit !important;
-  font-family: inherit !important;
-  font-weight: inherit !important;
-  font-size: inherit !important;
-  line-height: inherit !important;
-  font-style: inherit !important;
-  font-variant: inherit !important;
-  color: inherit !important;
-  text-align: inherit !important;
-  overflow-wrap: inherit !important;
-  word-wrap: inherit !important;
-  hyphens: inherit !important;
-  white-space: inherit !important;
-  letter-spacing: inherit !important;
+::slotted(:is(h1,h2,h3,h4,h5,h6)) {
+  all: unset !important;
 }
 .root {
   margin: 0;
@@ -90,22 +62,8 @@ exports[`getComponentCss() should return correct css for size: "medium", align: 
 :host([hidden]) {
   display: none !important;
 }
-::slotted(h1), ::slotted(h2), ::slotted(h3), ::slotted(h4), ::slotted(h5), ::slotted(h6) {
-  margin: inherit !important;
-  padding: inherit !important;
-  font-family: inherit !important;
-  font-weight: inherit !important;
-  font-size: inherit !important;
-  line-height: inherit !important;
-  font-style: inherit !important;
-  font-variant: inherit !important;
-  color: inherit !important;
-  text-align: inherit !important;
-  overflow-wrap: inherit !important;
-  word-wrap: inherit !important;
-  hyphens: inherit !important;
-  white-space: inherit !important;
-  letter-spacing: inherit !important;
+::slotted(:is(h1,h2,h3,h4,h5,h6)) {
+  all: unset !important;
 }
 .root {
   margin: 0;
@@ -131,22 +89,8 @@ exports[`getComponentCss() should return correct css for size: "small", align: c
 :host([hidden]) {
   display: none !important;
 }
-::slotted(h1), ::slotted(h2), ::slotted(h3), ::slotted(h4), ::slotted(h5), ::slotted(h6) {
-  margin: inherit !important;
-  padding: inherit !important;
-  font-family: inherit !important;
-  font-weight: inherit !important;
-  font-size: inherit !important;
-  line-height: inherit !important;
-  font-style: inherit !important;
-  font-variant: inherit !important;
-  color: inherit !important;
-  text-align: inherit !important;
-  overflow-wrap: inherit !important;
-  word-wrap: inherit !important;
-  hyphens: inherit !important;
-  white-space: inherit !important;
-  letter-spacing: inherit !important;
+::slotted(:is(h1,h2,h3,h4,h5,h6)) {
+  all: unset !important;
 }
 .root {
   margin: 0;
@@ -172,22 +116,8 @@ exports[`getComponentCss() should return correct css for size: "x-large", align:
 :host([hidden]) {
   display: none !important;
 }
-::slotted(h1), ::slotted(h2), ::slotted(h3), ::slotted(h4), ::slotted(h5), ::slotted(h6) {
-  margin: inherit !important;
-  padding: inherit !important;
-  font-family: inherit !important;
-  font-weight: inherit !important;
-  font-size: inherit !important;
-  line-height: inherit !important;
-  font-style: inherit !important;
-  font-variant: inherit !important;
-  color: inherit !important;
-  text-align: inherit !important;
-  overflow-wrap: inherit !important;
-  word-wrap: inherit !important;
-  hyphens: inherit !important;
-  white-space: inherit !important;
-  letter-spacing: inherit !important;
+::slotted(:is(h1,h2,h3,h4,h5,h6)) {
+  all: unset !important;
 }
 .root {
   margin: 0;
@@ -210,22 +140,8 @@ exports[`getComponentCss() should return correct css for size: "x-large", align:
 :host([hidden]) {
   display: none !important;
 }
-::slotted(h1), ::slotted(h2), ::slotted(h3), ::slotted(h4), ::slotted(h5), ::slotted(h6) {
-  margin: inherit !important;
-  padding: inherit !important;
-  font-family: inherit !important;
-  font-weight: inherit !important;
-  font-size: inherit !important;
-  line-height: inherit !important;
-  font-style: inherit !important;
-  font-variant: inherit !important;
-  color: inherit !important;
-  text-align: inherit !important;
-  overflow-wrap: inherit !important;
-  word-wrap: inherit !important;
-  hyphens: inherit !important;
-  white-space: inherit !important;
-  letter-spacing: inherit !important;
+::slotted(:is(h1,h2,h3,h4,h5,h6)) {
+  all: unset !important;
 }
 .root {
   margin: 0;
@@ -248,22 +164,8 @@ exports[`getComponentCss() should return correct css for size: "x-large", align:
 :host([hidden]) {
   display: none !important;
 }
-::slotted(h1), ::slotted(h2), ::slotted(h3), ::slotted(h4), ::slotted(h5), ::slotted(h6) {
-  margin: inherit !important;
-  padding: inherit !important;
-  font-family: inherit !important;
-  font-weight: inherit !important;
-  font-size: inherit !important;
-  line-height: inherit !important;
-  font-style: inherit !important;
-  font-variant: inherit !important;
-  color: inherit !important;
-  text-align: inherit !important;
-  overflow-wrap: inherit !important;
-  word-wrap: inherit !important;
-  hyphens: inherit !important;
-  white-space: inherit !important;
-  letter-spacing: inherit !important;
+::slotted(:is(h1,h2,h3,h4,h5,h6)) {
+  all: unset !important;
 }
 .root {
   margin: 0;
@@ -286,22 +188,8 @@ exports[`getComponentCss() should return correct css for size: "xx-large", align
 :host([hidden]) {
   display: none !important;
 }
-::slotted(h1), ::slotted(h2), ::slotted(h3), ::slotted(h4), ::slotted(h5), ::slotted(h6) {
-  margin: inherit !important;
-  padding: inherit !important;
-  font-family: inherit !important;
-  font-weight: inherit !important;
-  font-size: inherit !important;
-  line-height: inherit !important;
-  font-style: inherit !important;
-  font-variant: inherit !important;
-  color: inherit !important;
-  text-align: inherit !important;
-  overflow-wrap: inherit !important;
-  word-wrap: inherit !important;
-  hyphens: inherit !important;
-  white-space: inherit !important;
-  letter-spacing: inherit !important;
+::slotted(:is(h1,h2,h3,h4,h5,h6)) {
+  all: unset !important;
 }
 .root {
   margin: 0;
@@ -324,22 +212,8 @@ exports[`getComponentCss() should return correct css for size: {"base":"small","
 :host([hidden]) {
   display: none !important;
 }
-::slotted(h1), ::slotted(h2), ::slotted(h3), ::slotted(h4), ::slotted(h5), ::slotted(h6) {
-  margin: inherit !important;
-  padding: inherit !important;
-  font-family: inherit !important;
-  font-weight: inherit !important;
-  font-size: inherit !important;
-  line-height: inherit !important;
-  font-style: inherit !important;
-  font-variant: inherit !important;
-  color: inherit !important;
-  text-align: inherit !important;
-  overflow-wrap: inherit !important;
-  word-wrap: inherit !important;
-  hyphens: inherit !important;
-  white-space: inherit !important;
-  letter-spacing: inherit !important;
+::slotted(:is(h1,h2,h3,h4,h5,h6)) {
+  all: unset !important;
 }
 .root {
   margin: 0;
