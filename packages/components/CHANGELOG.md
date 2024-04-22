@@ -16,6 +16,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 #### Added
 
+- `Accordion`: Add experimental property `sticky` for a fixed heading
+  ([#3181](https://github.com/porsche-design-system/porsche-design-system/pull/3181))
 - `Inline Notification`, `Banner`: heading hierarchy can now be customized with `headingTag` prop
   ([#3168](https://github.com/porsche-design-system/porsche-design-system/pull/3168))
 
@@ -36,10 +38,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ### [3.15.0-rc.1] - 2024-04-17
 
-#### Added 
+#### Added
 
-- Partials: `getMetaTagsAndIconLinks`, `getComponentChunkLinks`, `getIconLinks` and `getFontLinks` support new format option `js`
-  ([#3179](https://github.com/porsche-design-system/porsche-design-system/pull/3179))
+- Partials: `getMetaTagsAndIconLinks`, `getComponentChunkLinks`, `getIconLinks` and `getFontLinks` support new format
+  option `js` ([#3179](https://github.com/porsche-design-system/porsche-design-system/pull/3179))
 
 ### [3.15.0-rc.0] - 2024-04-05
 
