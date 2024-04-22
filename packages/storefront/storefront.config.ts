@@ -377,6 +377,7 @@ export const config: StorefrontConfig = {
     'Cookies Fallback Script': [() => import('@/pages/partials/cookies-fallback-script.md')],
     'Dsr Ponyfill': [() => import('@/pages/partials/dsr-ponyfill.md')],
     'Font Face Stylesheet': [() => import('@/pages/partials/font-face-stylesheet.md')],
+    'Font Face Styles': [() => import('@/pages/partials/font-face-styles.md')],
     'Font Links': [() => import('@/pages/partials/font-links.md')],
     'Icon Links': [() => import('@/pages/partials/icon-links.md')],
     'Initial Styles': [() => import('@/pages/partials/initial-styles.md')],
