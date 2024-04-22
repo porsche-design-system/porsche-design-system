@@ -112,6 +112,11 @@ export class PinCode {
     this.value = getSanitisedValue(this.host, this.value, this.length);
   }
 
+  public componentDidLoad(): void {
+    // This prevents the default input behavior on iOS when using chinese language settings (IME keyboard) since the keydown or input event prevention does not work here
+    this.inputElements.forEach((input) => input.addEventListener('beforeinput', (e) => e.preventDefault()));
+  }
+
   public componentWillUpdate(): void {
     if (this.isWithinForm) {
       syncHiddenInput(this.hiddenInput, this.name, this.value, this.disabled, this.required);
