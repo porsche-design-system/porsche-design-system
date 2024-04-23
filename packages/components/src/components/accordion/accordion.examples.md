@@ -28,6 +28,26 @@ no `heading-tag` property provided, it defaults to `h2`. For instance some of ou
 
 ---
 
+## Sticky headline
+
+The headline can be made sticky by adding the property `sticky` to the `p-accordion` tag.
+
+### Custom styling
+
+The top value can be overwritten by CSS Custom Properties (aka CSS Variables):
+
+```scss
+// default CSS variable
+--p-accordion-position-sticky-top: 0;
+
+// overwrite with CSS variable
+p-accordion {
+  --p-accordion-position-sticky-top: 50px;
+}
+```
+
+---
+
 ## Size
 
 <Playground :markup="sizeMarkup" :config="config">
@@ -65,11 +85,10 @@ custom padding can be set on the heading slot element in `compact` variant.
 
 ---
 
-<script lang="ts">
-import Vue from 'vue';
+<script lang="ts">import Vue from 'vue';
 import Component from 'vue-class-component';
-import { getAccordionCodeSamples } from '@porsche-design-system/shared';
-import { ACCORDION_SIZES } from './accordion-utils'; 
+import {getAccordionCodeSamples} from '@porsche-design-system/shared';
+import {ACCORDION_SIZES} from './accordion-utils'; 
   
 @Component
 export default class Code extends Vue {
@@ -92,7 +111,7 @@ export default class Code extends Vue {
     }
   
   size = 'small';
-  sizes = [...ACCORDION_SIZES, "{ base: 'small', l: 'medium' }"];
+  sizes = [...ACCORDION_SIZES, '{ base: \'small\', l: \'medium\' }'];
   get sizeMarkup() {
     return `<p-accordion heading="Some Heading" heading-tag="h3" size="${this.size}">
   ${this.content}

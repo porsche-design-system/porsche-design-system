@@ -19,6 +19,7 @@ exports[`should match snapshot 1`] = `
         "small",
         "medium",
       ],
+      "sticky": "boolean",
       "tag": [
         null,
         "h1",
@@ -80,6 +81,7 @@ exports[`should match snapshot 1`] = `
       "headingTag": "h2",
       "open": null,
       "size": "small",
+      "sticky": null,
       "tag": null,
       "theme": "light",
     },
@@ -124,6 +126,13 @@ exports[`should match snapshot 1`] = `
         "description": "The text size.",
         "isBreakpointCustomizable": true,
         "type": "AccordionSize",
+      },
+      "sticky": {
+        "allowedValues": "boolean",
+        "defaultValue": null,
+        "description": "@experimental Sticks the Accordion heading at the top, fixed while scrolling",
+        "isExperimental": true,
+        "type": "boolean",
       },
       "tag": {
         "allowedValues": [

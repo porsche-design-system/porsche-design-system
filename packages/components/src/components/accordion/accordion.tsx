@@ -22,6 +22,7 @@ const propTypes: PropTypes<typeof Accordion> = {
   tag: AllowedTypes.oneOf<AccordionTag>([undefined, ...HEADING_TAGS]),
   open: AllowedTypes.boolean,
   compact: AllowedTypes.boolean,
+  sticky: AllowedTypes.boolean,
 };
 
 @Component({
@@ -55,6 +56,11 @@ export class Accordion {
   @Prop() public compact?: boolean;
 
   /**
+   * @experimental Sticks the Accordion heading at the top, fixed while scrolling
+   */
+  @Prop() public sticky?: boolean;
+
+  /**
    * @deprecated since v3.0.0, will be removed with next major release, use `update` event instead.
    * Emitted when accordion state is changed. */
   @Event({ bubbles: false }) public accordionChange: EventEmitter<AccordionUpdateEventDetail>;
@@ -69,7 +75,7 @@ export class Accordion {
   public render(): JSX.Element {
     validateProps(this, propTypes);
     warnIfDeprecatedPropIsUsed<typeof Accordion>(this, 'tag', 'Please use heading-tag prop instead.');
-    attachComponentCss(this.host, getComponentCss, this.size, this.compact, this.open, this.theme);
+    attachComponentCss(this.host, getComponentCss, this.size, this.compact, this.open, this.theme, this.sticky);
 
     const buttonId = 'accordion-control';
     const contentId = 'accordion-panel';
