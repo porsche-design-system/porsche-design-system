@@ -234,6 +234,11 @@ export class PinCode {
     }
   };
 
+  // TODO: Do we need this old implementation for non digit keys?
+  // handle alphanumeric keys, allow copy/paste shortcut
+  // else if (key.length === 1 && !(e.ctrlKey || e.metaKey)) {
+  //   e.preventDefault();
+  // }
   private handeInput = (
     e: KeyboardEvent | InputEvent,
     key: string,
@@ -251,10 +256,7 @@ export class PinCode {
       this.updateValue(getConcatenatedInputValues(this.inputElements));
 
       nextElementSibling?.focus();
-    } // handle alphanumeric keys, allow copy/paste shortcut
-    // else if (key.length === 1 && !(e.ctrlKey || e.metaKey)) {
-    //   e.preventDefault();
-    // } // handle backspace and delete
+    } // handle backspace and delete
     else if (key === 'Backspace' || key === 'Delete') {
       // transfer focus backward/forward, if the input value is empty
       if (!target.value) {
