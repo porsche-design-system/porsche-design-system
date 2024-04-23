@@ -114,7 +114,27 @@ export class PinCode {
 
   public componentDidLoad(): void {
     // This prevents the default input behavior on iOS when using chinese language settings (IME keyboard) since the keydown or input event prevention does not work here
-    this.inputElements.forEach((input) => input.addEventListener('beforeinput', (e) => e.preventDefault()));
+    this.inputElements.forEach((input) =>
+      input.addEventListener(
+        'beforeinput',
+        (
+          e: InputEvent & {
+            target: HTMLInputElement & {
+              previousElementSibling: HTMLInputElement;
+              nextElementSibling: HTMLInputElement;
+            };
+          }
+        ) => {
+          // TODO: When a non digit is entered handeInput will be called here and in onKeyDown
+          // This event will only fire if an IME keyboard is used or if a non digit is pressed
+          // In case multiple numbers are entered the input event listener will take over
+          if (e.data.length === 1) {
+            e.preventDefault();
+            this.handeInput(e, e.data, e.target, e.target.previousElementSibling, e.target.nextElementSibling);
+          }
+        }
+      )
+    );
   }
 
   public componentWillUpdate(): void {
@@ -194,7 +214,7 @@ export class PinCode {
       target: HTMLInputElement;
     }
   ): void => {
-    // needed to update value on auto-complete via keyboard suggestion
+    // This event triggers on auto-complete via keyboard suggestion
     const { target } = e;
     if (target.value.length >= this.length) {
       const sanitisedValue = removeWhiteSpaces(getSanitisedValue(this.host, target.value, this.length));
@@ -208,11 +228,19 @@ export class PinCode {
       target: HTMLInputElement & { previousElementSibling: HTMLInputElement; nextElementSibling: HTMLInputElement };
     }
   ): void => {
-    const {
-      key,
-      target,
-      target: { previousElementSibling, nextElementSibling },
-    } = e;
+    // If the keycode is 229 and/or the key is "Unidentified" the event comes from an IME keyboard which will be handled by the beforeinput event
+    if (e.keyCode !== 229 || e.key !== 'Unidentified') {
+      this.handeInput(e, e.key, e.target, e.target.previousElementSibling, e.target.nextElementSibling);
+    }
+  };
+
+  private handeInput = (
+    e: KeyboardEvent | InputEvent,
+    key: string,
+    target: HTMLInputElement & { previousElementSibling: HTMLInputElement; nextElementSibling: HTMLInputElement },
+    previousElementSibling: HTMLInputElement,
+    nextElementSibling: HTMLInputElement
+  ) => {
     // prevent default for disabled or loading, but do not impede tab key
     if (isDisabledOrLoading(this.disabled, this.loading) && key !== 'Tab') {
       e.preventDefault();
@@ -224,9 +252,9 @@ export class PinCode {
 
       nextElementSibling?.focus();
     } // handle alphanumeric keys, allow copy/paste shortcut
-    else if (key.length === 1 && !(e.ctrlKey || e.metaKey)) {
-      e.preventDefault();
-    } // handle backspace and delete
+    // else if (key.length === 1 && !(e.ctrlKey || e.metaKey)) {
+    //   e.preventDefault();
+    // } // handle backspace and delete
     else if (key === 'Backspace' || key === 'Delete') {
       // transfer focus backward/forward, if the input value is empty
       if (!target.value) {
