@@ -1,6 +1,6 @@
 import { Component, Element, Event, type EventEmitter, h, type JSX, Prop, Watch } from '@stencil/core';
 import type { PropTypes, Theme } from '../../types';
-import type { BannerState, BannerHeadingTag, BannerStateDeprecated, BannerWidth } from './banner-utils';
+import type { BannerHeadingTag, BannerState, BannerStateDeprecated, BannerWidth } from './banner-utils';
 import { BANNER_STATES } from './banner-utils';
 import {
   AllowedTypes,
@@ -73,6 +73,7 @@ export class Banner {
 
   private inlineNotificationElement: HTMLPInlineNotificationElement;
   private closeBtn: HTMLElement;
+  private dialog: HTMLDialogElement;
 
   private get hasDismissButton(): boolean {
     return this.persistent ? false : this.dismissButton;
@@ -83,20 +84,15 @@ export class Banner {
     if (this.hasDismissButton) {
       if (isOpen) {
         this.closeBtn?.focus();
-        document.addEventListener('keydown', this.onKeyboardEvent);
-      } else {
-        document.removeEventListener('keydown', this.onKeyboardEvent);
       }
     }
   }
 
-  public connectedCallback(): void {
-    if (this.open && this.hasDismissButton) {
-      document.addEventListener('keydown', this.onKeyboardEvent);
-    }
-  }
-
   public componentDidLoad(): void {
+    if (this.open) {
+      this.setDialogVisibility(true);
+    }
+
     if (this.hasDismissButton) {
       // messy… optional chaining is needed in case child component is unmounted too early
       this.closeBtn = getShadowRootHTMLElement<HTMLElement>(this.inlineNotificationElement, '.close');
@@ -104,10 +100,9 @@ export class Banner {
     }
   }
 
-  public disconnectedCallback(): void {
-    if (this.hasDismissButton) {
-      document.removeEventListener('keydown', this.onKeyboardEvent);
-    }
+  public componentDidRender(): void {
+    // showModal needs to be called after render cycle to prepare visibility states of dialog in order to focus the dismiss button correctly
+    this.setDialogVisibility(this.open);
   }
 
   public render(): JSX.Element {
@@ -133,37 +128,67 @@ export class Banner {
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
     return (
-      <PrefixedTagNames.pInlineNotification
-        ref={(el) => (this.inlineNotificationElement = el)}
-        heading={this.heading}
-        headingTag={this.headingTag}
-        description={this.description}
-        state={this.state}
-        dismissButton={this.hasDismissButton}
-        theme={this.theme}
-        onDismiss={this.removeBanner}
-        aria-hidden={!this.open ? 'true' : 'false'}
+      <dialog
+        inert={this.open ? null : true} // prevents focusable elements during fade-out transition
+        tabIndex={-1} // dialog always has a dismiss button to be focused
+        ref={(ref) => (this.dialog = ref)}
+        onCancel={this.onCancelDialog}
+        onClick={this.onClickDialog}
       >
-        {hasNamedSlot(this.host, 'heading') ? (
-          <slot name="heading" slot="heading" />
-        ) : (
-          hasTitleSlot && <slot name="title" slot="heading" />
-        )}
-        {hasNamedSlot(this.host, 'description') && <slot name="description" />}
-      </PrefixedTagNames.pInlineNotification>
+        <PrefixedTagNames.pInlineNotification
+          ref={(el) => (this.inlineNotificationElement = el)}
+          heading={this.heading}
+          headingTag={this.headingTag}
+          description={this.description}
+          state={this.state}
+          dismissButton={this.hasDismissButton}
+          theme={this.theme}
+          onDismiss={this.removeBanner}
+          aria-hidden={!this.open ? 'true' : 'false'}
+        >
+          {hasNamedSlot(this.host, 'heading') ? (
+            <slot name="heading" slot="heading" />
+          ) : (
+            hasTitleSlot && <slot name="title" slot="heading" />
+          )}
+          {hasNamedSlot(this.host, 'description') && <slot name="description" />}
+        </PrefixedTagNames.pInlineNotification>
+      </dialog>
     );
   }
-
-  private onKeyboardEvent = (e: KeyboardEvent): void => {
-    if (e.key === 'Escape') {
-      this.removeBanner();
-    }
-  };
 
   private removeBanner = (e?: CustomEvent): void => {
     if (this.hasDismissButton) {
       e?.stopPropagation(); // prevent double event emission because of identical name
       this.dismiss.emit();
     }
+  };
+
+  private onClickDialog = (e: MouseEvent & { target: HTMLElement }): void => {
+    if (e.target.tagName === 'DIALOG') {
+      // dismiss dialog when clicked on backdrop
+      this.dismissDialog();
+    }
+  };
+
+  private onCancelDialog = (e: Event): void => {
+    // prevent closing the dialog uncontrolled by ESC (only relevant for browsers supporting <dialog/>)
+    e.preventDefault();
+
+    this.dismissDialog();
+  };
+
+  private setDialogVisibility(isOpen: boolean): void {
+    // TODO: SupportsNativeDialog check
+    // Only call showModal/close on dialog when state changes
+    if (isOpen === true && !this.dialog.open) {
+      this.dialog.showModal();
+    } else if (isOpen === false && this.dialog.open) {
+      this.dialog.close();
+    }
+  }
+
+  private dismissDialog = (): void => {
+    this.dismiss.emit();
   };
 }

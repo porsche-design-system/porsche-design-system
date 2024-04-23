@@ -5,8 +5,8 @@ import {
   gridExtendedOffsetBase,
   gridExtendedOffsetS,
   gridExtendedOffsetXXL,
-  motionDurationModerate,
   motionDurationLong,
+  motionDurationModerate,
   motionEasingIn,
   motionEasingOut,
 } from '@porsche-design-system/utilities-v2';
@@ -28,8 +28,7 @@ const topBottomFallback = '56px';
 export const getComponentCss = (isOpen: boolean): string => {
   return getCss({
     '@global': {
-      ':host': addImportantToEachRule({
-        position: 'fixed',
+      dialog: addImportantToEachRule({
         bottom: `var(${cssVariableBottom},${topBottomFallback})`,
         left: gridExtendedOffsetBase,
         right: gridExtendedOffsetBase,
