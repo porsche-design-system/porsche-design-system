@@ -3,7 +3,9 @@
 exports[`accessibility should expose correct accessibility tree properties in open state: Of Button 1`] = `
 {
   "expanded": true,
-
+  "focused": true,
+  "name": "Some Accordion",
+  "role": "button",
 }
 `;
 
