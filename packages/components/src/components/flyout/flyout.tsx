@@ -1,13 +1,12 @@
-import { Component, Element, Event, type EventEmitter, forceUpdate, h, type JSX, Prop, Watch } from '@stencil/core';
+import { Component, Element, Event, type EventEmitter, h, type JSX, Prop, Watch } from '@stencil/core';
 import {
   FLYOUT_ARIA_ATTRIBUTES,
   FLYOUT_POSITIONS,
-  FLYOUT_SCROLL_SHADOW_THRESHOLD,
   type FlyoutAriaAttribute,
   type FlyoutPosition,
   type FlyoutPositionDeprecated,
 } from './flyout-utils';
-import { footerShadowClass, getComponentCss, headerShadowClass } from './flyout-styles';
+import { getComponentCss } from './flyout-styles';
 import {
   AllowedTypes,
   attachComponentCss,
@@ -22,7 +21,6 @@ import {
   warnIfDeprecatedPropValueIsUsed,
 } from '../../utils';
 import type { PropTypes, SelectedAriaAttributes, Theme } from '../../types';
-import { throttle } from 'throttle-debounce';
 
 const propTypes: PropTypes<typeof Flyout> = {
   open: AllowedTypes.boolean,
@@ -54,11 +52,9 @@ export class Flyout {
   @Event({ bubbles: false }) public dismiss?: EventEmitter<void>;
 
   private dialog: HTMLDialogElement;
-  private wrapper: HTMLDivElement;
-  private dismissBtn: HTMLElement;
-  private header: HTMLElement;
-  private footer: HTMLElement;
-  private subFooter: HTMLElement;
+  private header: HTMLSlotElement;
+  private footer: HTMLSlotElement;
+  private subFooter: HTMLSlotElement;
   private hasHeader: boolean;
   private hasFooter: boolean;
   private hasSubFooter: boolean;
@@ -68,7 +64,7 @@ export class Flyout {
     setScrollLock(isOpen);
 
     if (isOpen && this.hasSubFooter) {
-      this.updateShadow();
+      // this.updateShadow();
     }
   }
 
@@ -83,6 +79,25 @@ export class Flyout {
     getShadowRootHTMLElements(this.host, 'slot').forEach((element) =>
       element.addEventListener('slotchange', this.onSlotChange)
     );
+
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          entry.target.toggleAttribute('data-stuck', !entry.isIntersecting);
+        });
+      },
+      {
+        root: this.dialog,
+        threshold: 1,
+      }
+    );
+
+    if (this.hasHeader) {
+      io.observe(this.header);
+    }
+    if (this.hasFooter) {
+      io.observe(this.footer);
+    }
   }
 
   public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
@@ -96,7 +111,7 @@ export class Flyout {
     // TODO: should this really be executed on every rerender, e.g. prop change?
     if (this.open && this.hasSubFooter) {
       // TODO: why not scroll to top when opened just like modal does?
-      this.updateShadow();
+      // this.updateShadow();
     }
   }
 
@@ -138,19 +153,15 @@ export class Flyout {
 
     return (
       <dialog
-        inert={this.open ? null : true} // prevents focusable elements during fade-out transition
+        inert={this.open ? null : true} // prevents focusable elements during fade-out transition + prevents focusable elements within nested open accordion
         tabIndex={-1} // dialog always has a dismiss button to be focused
-        ref={(ref) => (this.dialog = ref)}
+        ref={(el) => (this.dialog = el)}
         onCancel={this.onCancelDialog}
         onClick={this.onClickDialog}
         {...parseAndGetAriaAttributes(this.aria)}
       >
-        <div
-          class="wrapper"
-          ref={(ref) => (this.wrapper = ref)}
-          {...(this.hasSubFooter && { onScroll: this.updateShadow })} // if no sub-footer is used scroll shadows are done via CSS
-        >
-          <div key="header" class="header" ref={(el) => (this.header = el)}>
+        <div class="scroller">
+          <div class="flyout">
             <PrefixedTagNames.pButtonPure
               class="dismiss"
               type="button"
@@ -158,61 +169,26 @@ export class Flyout {
               icon="close"
               theme={this.theme}
               onClick={this.dismissDialog}
-              ref={(el: HTMLButtonElement) => (this.dismissBtn = el)}
             >
               Dismiss flyout
             </PrefixedTagNames.pButtonPure>
-
-            {this.hasHeader && <slot name="header" />}
-          </div>
-          <div class="content">
+            {this.hasHeader && <slot name="header" ref={(el: HTMLSlotElement) => (this.header = el)} />}
             <slot />
+            {this.hasFooter && <slot name="footer" ref={(el: HTMLSlotElement) => (this.footer = el)} />}
+            {this.hasSubFooter && <slot name="sub-footer" ref={(el: HTMLSlotElement) => (this.subFooter = el)} />}
           </div>
-          {this.hasFooter && (
-            <div key="footer" class="footer" ref={(el) => (this.footer = el)}>
-              <slot name="footer" />
-            </div>
-          )}
-          {this.hasSubFooter && (
-            <div key="sub-footer" class="sub-footer" ref={(el) => (this.subFooter = el)}>
-              <slot name="sub-footer" />
-            </div>
-          )}
         </div>
       </dialog>
     );
   }
 
-  private updateHeaderShadow = (): void => {
-    const shouldApplyShadow = this.wrapper.scrollTop > FLYOUT_SCROLL_SHADOW_THRESHOLD;
-
-    this.header.classList.toggle(headerShadowClass, shouldApplyShadow);
-  };
-
-  private updateFooterShadow = (): void => {
-    const shouldApplyShadow = this.subFooter.offsetTop > this.wrapper.clientHeight + this.wrapper.scrollTop;
-
-    this.footer.classList.toggle(footerShadowClass, shouldApplyShadow);
-  };
-
-  // eslint-disable-next-line @typescript-eslint/member-ordering
-  private updateShadow = throttle(100, () => {
-    if (this.wrapper.scrollHeight > this.wrapper.clientHeight) {
-      this.updateHeaderShadow();
-
-      if (this.hasFooter) {
-        this.updateFooterShadow();
-      }
-    }
-  });
-
   private onSlotChange = (): void => {
-    forceUpdate(this.host);
-    this.dismissBtn.focus();
+    // forceUpdate(this.host);
+    // this.dismissBtn.focus();
   };
 
   private onClickDialog = (e: MouseEvent & { target: HTMLElement }): void => {
-    if (e.target.tagName === 'DIALOG') {
+    if (e.target.className === 'scroller') {
       // dismiss dialog when clicked on backdrop
       this.dismissDialog();
     }

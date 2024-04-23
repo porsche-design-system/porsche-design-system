@@ -1,4 +1,5 @@
 import type { Theme } from '../types';
+import { BreakpointCustomizable } from '../types';
 import type { JssStyle } from 'jss';
 import type { PropertiesHyphen } from 'csstype';
 import type { ThemedColors } from './';
@@ -17,6 +18,7 @@ import {
   motionEasingIn,
   motionEasingOut,
   spacingFluidLarge,
+  spacingFluidMedium,
   spacingFluidSmall,
   spacingStaticMedium,
   themeDarkBackgroundShading,
@@ -24,7 +26,6 @@ import {
 } from '@porsche-design-system/utilities-v2';
 import { buildResponsiveStyles, isThemeDark, mergeDeep, scrollShadowColor, scrollShadowColorDark } from '../utils';
 import type * as fromMotionType from '@porsche-design-system/utilities-v2/dist/esm/motion';
-import { BreakpointCustomizable } from '../types';
 
 type WithoutMotionDurationPrefix<T> = T extends `motionDuration${infer P}` ? Uncapitalize<P> : never;
 export type MotionDurationKey = WithoutMotionDurationPrefix<keyof typeof fromMotionType>;
@@ -206,6 +207,14 @@ export const getBackdropJssStyle = (
   };
 };
 
+/*
+///////////////////////////////////////////
+///////////////////////////////////////////
+///////////////////////////////////////////
+///////////////////////////////////////////
+///////////////////////////////////////////
+*/
+
 export const getModalDialogBackdropResetJssStyle = (): JssStyle => {
   return {
     position: 'fixed', // ua-style
@@ -217,7 +226,8 @@ export const getModalDialogBackdropResetJssStyle = (): JssStyle => {
     height: '100dvh', // ua-style
     maxWidth: '100dvw', // ua-style
     maxHeight: '100dvh', // ua-style
-    overflow: 'hidden auto', // ua-style - only y-axis shall be scrollable
+    overflow: 'hidden', // ua-style
+    display: 'block', // ua-style
   };
 };
 
@@ -226,10 +236,13 @@ export const getModalDialogBackdropTransitionJssStyle = (
   theme: Theme,
   backdrop: Backdrop = 'blur'
 ): JssStyle => {
-  const duration: MotionDurationKey = 'long';
+  // const duration: MotionDurationKey = 'long';
   const isBackdropBlur = backdrop === 'blur';
   const { backgroundShadingColor } = getThemedColors(theme);
   const { backgroundShadingColor: backgroundShadingColorDark } = getThemedColors('dark');
+
+  const duration = isVisible ? 'long' : 'moderate';
+  const easing = isVisible ? 'in' : 'out';
 
   return {
     zIndex: 9999999, // fallback for fade out stacking until `overlay` + `allow-discrete` is supported in all browsers. It tries to mimic #top-layer positioning hierarchy.
@@ -251,36 +264,77 @@ export const getModalDialogBackdropTransitionJssStyle = (
     }),
     // `allow-discrete` transition for ua-style `overlay` (supported browsers only) ensures dialog is rendered on
     // #top-layer as long as fade-in or fade-out transition/animation is running
-    transition: `${isVisible ? '' : `visibility 0s linear var(${cssVariableTransitionDuration}, ${motionDurationMap[duration]}), `}${getTransition('overlay', duration)} allow-discrete, ${getTransition('background-color', duration)}, ${getTransition(
+    transition: `${isVisible ? '' : `visibility 0s linear var(${cssVariableTransitionDuration}, ${motionDurationMap[duration]}), `}${getTransition('overlay', duration, easing)} allow-discrete, ${getTransition('background-color', duration, easing)}, ${getTransition(
       '-webkit-backdrop-filter',
-      duration
-    )}, ${getTransition('backdrop-filter', duration)}`,
+      duration,
+      easing
+    )}, ${getTransition('backdrop-filter', duration, easing)}`,
     '&::backdrop': {
       display: 'none', // we can't use it atm because it's not animatable in all browsers
     },
   };
 };
 
-export const getModalDialogGridJssStyle = (): JssStyle => {
-  const safeZoneStart = `${spacingFluidSmall} calc(${spacingFluidLarge} - ${spacingFluidSmall})`;
-  const safeZoneEnd = `calc(${spacingFluidLarge} - ${spacingFluidSmall}) ${spacingFluidSmall}`;
-
+export const getModalDialogScrollerJssStyle = (
+  theme: Theme,
+  fullscreen: BreakpointCustomizable<boolean> = false
+): JssStyle => {
   return {
-    display: 'grid',
-    gridTemplate: `${safeZoneStart} auto minmax(0, 1fr) auto ${safeZoneEnd}/${safeZoneStart} auto ${safeZoneEnd}`,
+    position: 'absolute',
+    inset: 0,
+    overflow: 'hidden auto',
+    overscrollBehaviorY: 'none',
+    // ...buildResponsiveStyles(fullscreen, (fullscreenValue: boolean) =>
+    //   fullscreenValue
+    //     ? {
+    //         ...getDialogColorJssStyle(theme),
+    //       }
+    //     : {
+    //         background: 'transparent',
+    //         color: 'transparent',
+    //       }
+    // ),
   };
 };
 
-export const getModalDialogTransitionJssStyle = (isVisible: boolean): JssStyle => {
+export const getModalDialogGridJssStyle = (): JssStyle => {
+  const safeZoneInlineStart = `${spacingFluidSmall} calc(${spacingFluidMedium} - ${spacingFluidSmall})`;
+  const safeZoneInlineEnd = `calc(${spacingFluidMedium} - ${spacingFluidSmall}) ${spacingFluidSmall}`;
+  const safeZoneBlockStart = `${spacingFluidSmall} calc(${spacingFluidLarge} - ${spacingFluidSmall})`;
+  const safeZoneBlockEnd = `calc(${spacingFluidLarge} - ${spacingFluidSmall}) ${spacingFluidSmall}`;
+
+  return {
+    display: 'grid',
+    gridTemplate: `${safeZoneInlineStart} auto minmax(0, 1fr) auto ${safeZoneInlineEnd}/${safeZoneBlockStart} auto ${safeZoneBlockEnd}`,
+  };
+};
+
+export const getDialogColorJssStyle = (theme: Theme): JssStyle => {
+  const { primaryColor, backgroundColor } = getThemedColors(theme);
+  const { primaryColor: primaryColorDark, backgroundColor: backgroundColorDark } = getThemedColors('dark');
+
+  return {
+    color: primaryColor, // enables color inheritance for slots
+    background: backgroundColor,
+    ...prefersColorSchemeDarkMediaQuery(theme, {
+      color: primaryColorDark,
+      background: backgroundColorDark,
+    }),
+  };
+};
+
+export const getModalDialogTransitionJssStyle = (isVisible: boolean, slideIn: '^' | '<' | '>' = '^'): JssStyle => {
   const duration = isVisible ? 'moderate' : 'short';
   const easing = isVisible ? 'in' : 'out';
 
   return {
     opacity: 0,
-    transform: 'translateY(25%)',
+    // transition offset relies vertically on viewport (vh) because the dialog height can be infinite, while horizontally
+    // it relies on the dialog width (%) which has a max-width
+    transform: slideIn === '^' ? 'translateY(25vh)' : `translate3d(${slideIn === '<' ? '' : ''}70%,0,0)`,
     ...(isVisible && {
       opacity: 1,
-      transform: 'translateY(0)',
+      transform: slideIn === '^' ? 'translateY(0)' : 'translate3d(50%,0,0)',
     }),
     transition: `${getTransition('opacity', duration, easing)}, ${getTransition('transform', duration, easing)}`,
   };
@@ -310,25 +364,33 @@ export const getModalDialogHeadingJssStyle = (): JssStyle => {
   };
 };
 
-export const getModalDialogFooterJssStyle = (theme: Theme): JssStyle => {
+export const getModalDialogStickyAreaJssStyle = (area: 'header' | 'footer', theme: Theme): JssStyle => {
   const { backgroundColor } = getThemedColors(theme);
   const { backgroundColor: backgroundColorDark } = getThemedColors('dark');
+  const isAreaHeader = area === 'header';
+  const boxShadowDimension = `0 ${isAreaHeader ? 5 : -5}px 10px`;
 
   return {
     position: 'sticky',
-    bottom: '-1px', // necessary for `IntersectionObserver` to detect if sticky element is stuck or not
-    marginBlock: `-${spacingStaticMedium}`,
+    ...(isAreaHeader
+      ? {
+          top: '-1px', // necessary for `IntersectionObserver` to detect if sticky element is stuck or not
+        }
+      : {
+          bottom: '-1px', // necessary for `IntersectionObserver` to detect if sticky element is stuck or not
+        }),
+    marginBlock: `-${spacingStaticMedium}`, // compensate padding-block
     padding: `${spacingStaticMedium} ${spacingFluidLarge}`, // with CSS subgrid the spacingFluidLarge definition wouldn't be necessary
     background: backgroundColor,
     ...prefersColorSchemeDarkMediaQuery(theme, {
       background: backgroundColorDark,
     }),
-    clipPath: 'inset(-20px 0 0 0)', // crop leaking box-shadow on left and right side
+    clipPath: `inset(${isAreaHeader ? '0 0 -20px 0' : '-20px 0 0 0'})`, // crop leaking box-shadow on left and right side
     transition: `${getTransition('box-shadow')}`,
     '&[data-stuck]': {
-      boxShadow: `${isThemeDark(theme) ? scrollShadowColorDark : scrollShadowColor} 0 -5px 10px`,
+      boxShadow: `${isThemeDark(theme) ? scrollShadowColorDark : scrollShadowColor} ${boxShadowDimension}`,
       ...prefersColorSchemeDarkMediaQuery(theme, {
-        boxShadow: `${scrollShadowColorDark} 0 -5px 10px`,
+        boxShadow: `${scrollShadowColorDark} ${boxShadowDimension}`,
       }),
     },
   };

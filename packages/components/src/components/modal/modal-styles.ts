@@ -12,9 +12,10 @@ import {
   getModalDialogBackdropResetJssStyle,
   getModalDialogBackdropTransitionJssStyle,
   getModalDialogDismissButtonJssStyle,
-  getModalDialogFooterJssStyle,
   getModalDialogGridJssStyle,
   getModalDialogHeadingJssStyle,
+  getModalDialogScrollerJssStyle,
+  getModalDialogStickyAreaJssStyle,
   getModalDialogStretchToFullModalWidthJssStyle,
   getModalDialogTransitionJssStyle,
   getThemedColors,
@@ -25,6 +26,7 @@ import { type ModalBackdrop } from './modal-utils';
 
 const cssVariableSpacingTop = '--p-modal-spacing-top';
 const cssVariableSpacingBottom = '--p-modal-spacing-bottom';
+const headingTags = 'h1,h2,h3,h4,h5,h6';
 
 export const getComponentCss = (
   isOpen: boolean,
@@ -44,7 +46,12 @@ export const getComponentCss = (
         ...colorSchemeStyles,
         ...hostHiddenStyles,
       }),
-      '::slotted': getModalDialogStretchToFullModalWidthJssStyle(hasHeader, hasFooter, fullscreen),
+      '::slotted': {
+        ...getModalDialogStretchToFullModalWidthJssStyle(hasHeader, hasFooter, fullscreen),
+      },
+      [`::slotted(:is(${headingTags}))`]: {
+        margin: 0,
+      },
       slot: {
         display: 'block',
       },
@@ -63,7 +70,7 @@ export const getComponentCss = (
       }),
       ...(hasFooter && {
         'slot[name=footer]': {
-          ...getModalDialogFooterJssStyle(theme),
+          ...getModalDialogStickyAreaJssStyle('footer', theme),
           gridArea: '5/1/auto/-1',
           zIndex: 1, // ensures footer is above header and content but below sticky dismiss button
         },
@@ -71,10 +78,6 @@ export const getComponentCss = (
       dialog: {
         ...getModalDialogBackdropResetJssStyle(),
         ...getModalDialogBackdropTransitionJssStyle(isOpen, theme, backdrop),
-        display: 'flex', // ua-style
-        justifyContent: 'center',
-        alignItems: 'center',
-        flexWrap: 'wrap',
       },
     },
     modal: {
@@ -103,6 +106,14 @@ export const getComponentCss = (
               borderRadius: borderRadiusMedium,
             }
       ),
+    },
+    scroller: {
+      ...getModalDialogScrollerJssStyle(theme),
+      display: 'flex', // ua-style
+      justifyContent: 'center',
+      alignItems: 'center',
+      flexWrap: 'wrap',
+      // background: 'rgba(0,0,0,0.002)',
     },
     ...(hasDismissButton && {
       dismiss: {

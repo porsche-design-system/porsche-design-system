@@ -88,17 +88,20 @@ export class Modal {
   }
 
   public componentDidLoad(): void {
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          entry.target.toggleAttribute('data-stuck', !entry.isIntersecting);
+        });
+      },
+      {
+        root: this.dialog,
+        threshold: 1,
+      }
+    );
+
     if (this.hasFooter) {
-      const observer = new IntersectionObserver(
-        ([e]) => {
-          e.target.toggleAttribute('data-stuck', !e.isIntersecting);
-        },
-        {
-          root: this.dialog,
-          threshold: 1,
-        }
-      );
-      observer.observe(this.footer);
+      io.observe(this.footer);
     }
   }
 
@@ -161,36 +164,38 @@ export class Modal {
           ...parseAndGetAriaAttributes(this.aria),
         })}
       >
-        <div class="modal">
-          {this.hasDismissButton && (
-            <PrefixedTagNames.pButtonPure
-              class="dismiss"
-              type="button"
-              hideLabel
-              icon="close"
-              onClick={this.dismissDialog}
-              theme={this.theme}
-            >
-              Dismiss modal
-            </PrefixedTagNames.pButtonPure>
-          )}
-          {this.hasHeader &&
-            (this.heading ? (
-              <h2>{this.heading}</h2>
-            ) : hasNamedSlot(this.host, 'heading') ? (
-              <slot name="heading" />
-            ) : (
-              <slot name="header" />
-            ))}
-          <slot />
-          {this.hasFooter && <slot name="footer" ref={(el: HTMLSlotElement) => (this.footer = el)} />}
+        <div class="scroller">
+          <div class="modal">
+            {this.hasDismissButton && (
+              <PrefixedTagNames.pButtonPure
+                class="dismiss"
+                type="button"
+                hideLabel
+                icon="close"
+                onClick={this.dismissDialog}
+                theme={this.theme}
+              >
+                Dismiss modal
+              </PrefixedTagNames.pButtonPure>
+            )}
+            {this.hasHeader &&
+              (this.heading ? (
+                <h2>{this.heading}</h2>
+              ) : hasNamedSlot(this.host, 'heading') ? (
+                <slot name="heading" />
+              ) : (
+                <slot name="header" />
+              ))}
+            <slot />
+            {this.hasFooter && <slot name="footer" ref={(el: HTMLSlotElement) => (this.footer = el)} />}
+          </div>
         </div>
       </dialog>
     );
   }
 
   private onClickDialog = (e: MouseEvent & { target: HTMLElement }): void => {
-    if (!this.disableBackdropClick && e.target.tagName === 'DIALOG') {
+    if (!this.disableBackdropClick && e.target.className === 'scroller') {
       // dismiss dialog when clicked on backdrop
       this.dismissDialog();
     }
