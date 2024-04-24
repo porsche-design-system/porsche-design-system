@@ -6,13 +6,10 @@ import { viewportWidthXXS, viewportWidthM, themes } from '@porsche-design-system
 import { getComponentMeta } from '@porsche-design-system/component-meta';
 
 const components = (TAG_NAMES as unknown as TagName[])
+  // Filter out non-chunked and not deprecated components
   .filter((tagName) => {
-    // TODO: should not needed to be maintained like this, e.g. find a logic here with matching names or use/extend getComponentMeta() accordingly
-    return !/item$|-table-|-select-wrapper-|multi-select-option|select-option$/.test(tagName);
-  })
-  .filter((tagName) => {
-    const { isDeprecated } = getComponentMeta(tagName);
-    return !isDeprecated;
+    const { isChunked, isDeprecated } = getComponentMeta(tagName);
+    return isChunked && !isDeprecated;
   })
   .map((tagName) => {
     return tagName.substring(2);
@@ -26,8 +23,10 @@ const revertAutoFocus = async (page: Page, component: string): Promise<void> => 
   }
 };
 
+const amountOfTestableComponents = 47;
+
 test(`should have certain amount of components`, () => {
-  expect(components.length).toBe(47);
+  expect(components.length).toBe(amountOfTestableComponents);
 });
 
 components.forEach((component) => {
