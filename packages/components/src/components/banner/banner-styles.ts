@@ -11,32 +11,28 @@ import {
   motionEasingOut,
 } from '@porsche-design-system/utilities-v2';
 import { getCss } from '../../utils';
-import { BANNER_Z_INDEX } from '../../constants';
-import {
-  addImportantToEachRule,
-  colorSchemeStyles,
-  cssVariableAnimationDuration,
-  hostHiddenStyles,
-} from '../../styles';
+import { colorSchemeStyles, cssVariableAnimationDuration, hostHiddenStyles } from '../../styles';
 
 const cssVariableTop = '--p-banner-position-top';
 const cssVariableBottom = '--p-banner-position-bottom';
-const cssVariableZIndex = '--p-internal-banner-z-index';
 
 const topBottomFallback = '56px';
 
 export const getComponentCss = (isOpen: boolean): string => {
   return getCss({
     '@global': {
-      dialog: addImportantToEachRule({
+      ':host': {
+        position: 'fixed',
+        margin: '0',
+        padding: '0',
+        border: '0',
+        visibility: 'inherit',
+        outline: '0',
         bottom: `var(${cssVariableBottom},${topBottomFallback})`,
         left: gridExtendedOffsetBase,
         right: gridExtendedOffsetBase,
-        margin: 0,
-        padding: 0,
         width: 'auto',
         maxWidth: '100%', // If component is wrapped in container with maxWidth
-        zIndex: `var(${cssVariableZIndex},${BANNER_Z_INDEX})`,
         ...dropShadowHighStyle,
         borderRadius: borderRadiusSmall, // needed for rounded box-shadow
         ...(isOpen
@@ -68,7 +64,7 @@ export const getComponentCss = (isOpen: boolean): string => {
         },
         ...colorSchemeStyles,
         ...hostHiddenStyles,
-      }),
+      },
     },
   });
 };

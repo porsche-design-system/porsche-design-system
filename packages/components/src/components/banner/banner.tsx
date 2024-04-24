@@ -1,4 +1,4 @@
-import { Component, Element, Event, type EventEmitter, h, type JSX, Prop, Watch } from '@stencil/core';
+import { Component, Element, Event, type EventEmitter, h, Host, type JSX, Prop, Watch } from '@stencil/core';
 import type { PropTypes, Theme } from '../../types';
 import type { BannerHeadingTag, BannerState, BannerStateDeprecated, BannerWidth } from './banner-utils';
 import { BANNER_STATES } from './banner-utils';
@@ -34,7 +34,7 @@ const propTypes: Omit<PropTypes<typeof Banner>, 'width'> = {
   shadow: true,
 })
 export class Banner {
-  @Element() public host!: HTMLElement;
+  @Element() public host!: HTMLPPopoverElement;
 
   /** If true, the banner is open. */
   @Prop() public open: boolean = false; // eslint-disable-line @typescript-eslint/no-inferrable-types
@@ -73,7 +73,6 @@ export class Banner {
 
   private inlineNotificationElement: HTMLPInlineNotificationElement;
   private closeBtn: HTMLElement;
-  private dialog: HTMLDialogElement;
 
   private get hasDismissButton(): boolean {
     return this.persistent ? false : this.dismissButton;
@@ -81,16 +80,27 @@ export class Banner {
 
   @Watch('open')
   public openChangeHandler(isOpen: boolean): void {
+    this.host.togglePopover();
+
     if (this.hasDismissButton) {
       if (isOpen) {
         this.closeBtn?.focus();
+        document.addEventListener('keydown', this.onKeyboardEvent);
+      } else {
+        document.removeEventListener('keydown', this.onKeyboardEvent);
       }
+    }
+  }
+
+  public connectedCallback(): void {
+    if (this.open && this.hasDismissButton) {
+      document.addEventListener('keydown', this.onKeyboardEvent);
     }
   }
 
   public componentDidLoad(): void {
     if (this.open) {
-      this.setDialogVisibility(true);
+      this.host.togglePopover();
     }
 
     if (this.hasDismissButton) {
@@ -100,9 +110,10 @@ export class Banner {
     }
   }
 
-  public componentDidRender(): void {
-    // showModal needs to be called after render cycle to prepare visibility states of dialog in order to focus the dismiss button correctly
-    this.setDialogVisibility(this.open);
+  public disconnectedCallback(): void {
+    if (this.hasDismissButton) {
+      document.removeEventListener('keydown', this.onKeyboardEvent);
+    }
   }
 
   public render(): JSX.Element {
@@ -117,6 +128,7 @@ export class Banner {
       'The component is aligned with Porsche Grid "extended" by default.'
     );
     const hasTitleSlot = hasNamedSlot(this.host, 'title');
+
     if (hasTitleSlot) {
       consoleWarn(
         getDeprecatedPropOrSlotWarningMessage(this.host, 'slot="title"'),
@@ -128,13 +140,7 @@ export class Banner {
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
     return (
-      <dialog
-        inert={this.open ? null : true} // prevents focusable elements during fade-out transition
-        tabIndex={-1} // dialog always has a dismiss button to be focused
-        ref={(ref) => (this.dialog = ref)}
-        onCancel={this.onCancelDialog}
-        onClick={this.onClickDialog}
-      >
+      <Host popover>
         <PrefixedTagNames.pInlineNotification
           ref={(el) => (this.inlineNotificationElement = el)}
           heading={this.heading}
@@ -153,42 +159,22 @@ export class Banner {
           )}
           {hasNamedSlot(this.host, 'description') && <slot name="description" />}
         </PrefixedTagNames.pInlineNotification>
-      </dialog>
+      </Host>
     );
   }
 
+  private onKeyboardEvent = (e: KeyboardEvent): void => {
+    if (e.key === 'Escape') {
+      this.removeBanner();
+    }
+  };
+
   private removeBanner = (e?: CustomEvent): void => {
+    this.host.togglePopover();
+
     if (this.hasDismissButton) {
       e?.stopPropagation(); // prevent double event emission because of identical name
       this.dismiss.emit();
     }
-  };
-
-  private onClickDialog = (e: MouseEvent & { target: HTMLElement }): void => {
-    if (e.target.tagName === 'DIALOG') {
-      // dismiss dialog when clicked on backdrop
-      this.dismissDialog();
-    }
-  };
-
-  private onCancelDialog = (e: Event): void => {
-    // prevent closing the dialog uncontrolled by ESC (only relevant for browsers supporting <dialog/>)
-    e.preventDefault();
-
-    this.dismissDialog();
-  };
-
-  private setDialogVisibility(isOpen: boolean): void {
-    // TODO: SupportsNativeDialog check
-    // Only call showModal/close on dialog when state changes
-    if (isOpen === true && !this.dialog.open) {
-      this.dialog.showModal();
-    } else if (isOpen === false && this.dialog.open) {
-      this.dialog.close();
-    }
-  }
-
-  private dismissDialog = (): void => {
-    this.dismiss.emit();
   };
 }
