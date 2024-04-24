@@ -234,11 +234,6 @@ export class PinCode {
     }
   };
 
-  // TODO: Do we need this old implementation for non digit keys?
-  // handle alphanumeric keys, allow copy/paste shortcut
-  // else if (key.length === 1 && !(e.ctrlKey || e.metaKey)) {
-  //   e.preventDefault();
-  // }
   private handeInput = (
     e: KeyboardEvent | InputEvent,
     key: string,
