@@ -228,8 +228,8 @@ export class PinCode {
       target: HTMLInputElement & { previousElementSibling: HTMLInputElement; nextElementSibling: HTMLInputElement };
     }
   ): void => {
-    // If the keycode is 229 and/or the key is "Unidentified" the event comes from an IME keyboard which will be handled by the beforeinput event
-    if (e.keyCode !== 229 || e.key !== 'Unidentified') {
+    // If the keycode is 229 an IME keyboard is used which will be handled by the beforeinput event since the key will be "Unidentified" here
+    if (e.keyCode !== 229) {
       this.handeInput(e, e.key, e.target, e.target.previousElementSibling, e.target.nextElementSibling);
     }
   };
