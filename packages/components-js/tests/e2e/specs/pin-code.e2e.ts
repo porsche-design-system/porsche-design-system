@@ -545,6 +545,100 @@ test.describe('update event', () => {
 });
 
 test.describe('events', () => {
+  test.describe('onKeyDown', () => {
+    test('should type in value correctly', async ({ page }) => {
+      await initPinCode(page);
+      const host = await getHost(page);
+      const input1 = await getInput(page, 1);
+      const input2 = await getInput(page, 2);
+      const input3 = await getInput(page, 3);
+      const input4 = await getInput(page, 4);
+      await addEventListener(input1, 'focus');
+      await addEventListener(input4, 'focus');
+
+      expect((await getEventSummary(input1, 'focus')).counter).toBe(0);
+      expect((await getEventSummary(input4, 'focus')).counter).toBe(0);
+
+      await page.keyboard.press('Tab');
+
+      expect((await getEventSummary(input1, 'focus')).counter).toBe(1);
+
+      await page.keyboard.press('1');
+      await waitForStencilLifecycle(page);
+
+      expect(await getProperty(input1, 'value')).toBe('1');
+      expect(await getProperty(input2, 'value')).toBe('');
+      expect(await getProperty(input3, 'value')).toBe('');
+      expect(await getProperty(input4, 'value')).toBe('');
+      expect(await getProperty(host, 'value')).toStrictEqual('1   ');
+    });
+
+    skipInBrowsers(['firefox', 'webkit'], () => {
+      test('should type in value correctly with IME keyboard', async ({ page }) => {
+        await initPinCode(page);
+        const host = await getHost(page);
+        const input1 = await getInput(page, 1);
+        const input2 = await getInput(page, 2);
+        const input3 = await getInput(page, 3);
+        const input4 = await getInput(page, 4);
+        await addEventListener(input1, 'focus');
+        await addEventListener(input4, 'focus');
+
+        expect((await getEventSummary(input1, 'focus')).counter).toBe(0);
+        expect((await getEventSummary(input4, 'focus')).counter).toBe(0);
+
+        await page.keyboard.press('Tab');
+
+        expect((await getEventSummary(input1, 'focus')).counter).toBe(1);
+
+        const client = await page.context().newCDPSession(page);
+
+        // Simulate IME keyboard input
+        await client.send('Input.insertText', { text: '1' });
+
+        await waitForStencilLifecycle(page);
+
+        expect(await getProperty(input1, 'value')).toBe('1');
+        expect(await getProperty(input2, 'value')).toBe('');
+        expect(await getProperty(input3, 'value')).toBe('');
+        expect(await getProperty(input4, 'value')).toBe('');
+        expect(await getProperty(host, 'value')).toStrictEqual('1   ');
+      });
+    });
+
+    skipInBrowsers(['firefox', 'webkit'], () => {
+      test('should type in multiple values correctly with IME keyboard', async ({ page }) => {
+        await initPinCode(page);
+        const host = await getHost(page);
+        const input1 = await getInput(page, 1);
+        const input2 = await getInput(page, 2);
+        const input3 = await getInput(page, 3);
+        const input4 = await getInput(page, 4);
+        await addEventListener(input1, 'focus');
+        await addEventListener(input4, 'focus');
+
+        expect((await getEventSummary(input1, 'focus')).counter).toBe(0);
+        expect((await getEventSummary(input4, 'focus')).counter).toBe(0);
+
+        await page.keyboard.press('Tab');
+
+        expect((await getEventSummary(input1, 'focus')).counter).toBe(1);
+
+        const client = await page.context().newCDPSession(page);
+
+        // Simulate IME keyboard input
+        await client.send('Input.insertText', { text: '1234' });
+
+        await waitForStencilLifecycle(page);
+
+        expect(await getProperty(input1, 'value')).toBe('1');
+        expect(await getProperty(input2, 'value')).toBe('2');
+        expect(await getProperty(input3, 'value')).toBe('3');
+        expect(await getProperty(input4, 'value')).toBe('4');
+        expect(await getProperty(host, 'value')).toStrictEqual('1234');
+      });
+    });
+  });
   test.describe('onInput', () => {
     test('should spread value over input elements and focus last input element', async ({ page }) => {
       await initPinCode(page);
