@@ -4,6 +4,8 @@ import type { PinCodeLength, PinCodeState, PinCodeType, PinCodeUpdateEventDetail
 import {
   getConcatenatedInputValues,
   getSanitisedValue,
+  HTMLInputElementEventTarget,
+  IME_KEYCODE,
   initHiddenInput,
   isCurrentInput,
   isFormSubmittable,
@@ -115,25 +117,15 @@ export class PinCode {
   public componentDidLoad(): void {
     // This prevents the default input behavior on iOS when using chinese language settings (IME keyboard) since the keydown or input event prevention does not work here
     this.inputElements.forEach((input) =>
-      input.addEventListener(
-        'beforeinput',
-        (
-          e: InputEvent & {
-            target: HTMLInputElement & {
-              previousElementSibling: HTMLInputElement;
-              nextElementSibling: HTMLInputElement;
-            };
-          }
-        ) => {
-          // TODO: When a non digit is entered handeInput will be called here and in onKeyDown
-          // This event will only fire if an IME keyboard is used or if a non digit is pressed
-          // In case multiple numbers are entered the input event listener will take over
-          if (e.data.length === 1) {
-            e.preventDefault();
-            this.handeInput(e, e.data, e.target, e.target.previousElementSibling, e.target.nextElementSibling);
-          }
+      input.addEventListener('beforeinput', (e: InputEvent & HTMLInputElementEventTarget) => {
+        // TODO: When a non digit is entered handeInput will be called here and in onKeyDown
+        // This event will only fire if an IME keyboard is used or if a non digit is pressed
+        // In case multiple numbers are entered the input event listener will take over
+        if (e.data.length === 1) {
+          e.preventDefault();
+          this.handeInput(e, e.data, e.target, e.target.previousElementSibling, e.target.nextElementSibling);
         }
-      )
+      })
     );
   }
 
@@ -223,13 +215,10 @@ export class PinCode {
     }
   };
 
-  private onKeyDown = (
-    e: KeyboardEvent & {
-      target: HTMLInputElement & { previousElementSibling: HTMLInputElement; nextElementSibling: HTMLInputElement };
-    }
-  ): void => {
-    // If the keycode is 229 an IME keyboard is used which will be handled by the beforeinput event since the key will be "Unidentified" here
-    if (e.keyCode !== 229) {
+  private onKeyDown = (e: KeyboardEvent & HTMLInputElementEventTarget): void => {
+    // If an IME keyCode is returned it will be handled by the beforeinput event since the key will be "Unidentified" here
+    // The Dead/Process keys also have the IME_KEYCODE which we need to handle with a workaround
+    if (e.keyCode !== IME_KEYCODE || e.key === 'Dead' || e.key === 'Process') {
       this.handeInput(e, e.key, e.target, e.target.previousElementSibling, e.target.nextElementSibling);
     }
   };
@@ -237,21 +226,27 @@ export class PinCode {
   private handeInput = (
     e: KeyboardEvent | InputEvent,
     key: string,
-    target: HTMLInputElement & { previousElementSibling: HTMLInputElement; nextElementSibling: HTMLInputElement },
+    target: HTMLInputElement,
     previousElementSibling: HTMLInputElement,
     nextElementSibling: HTMLInputElement
   ) => {
     // prevent default for disabled or loading, but do not impede tab key
     if (isDisabledOrLoading(this.disabled, this.loading) && key !== 'Tab') {
       e.preventDefault();
-    } // if input is valid overwrite old value
+    }
+    // if input is valid overwrite old value
     else if (isInputSingleDigit(key)) {
       e.preventDefault();
       target.value = key;
       this.updateValue(getConcatenatedInputValues(this.inputElements));
 
       nextElementSibling?.focus();
-    } // handle backspace and delete
+    }
+    // handle alphanumeric keys, allow copy/paste shortcut
+    else if (key.length === 1 && 'ctrlKey' in e && !(e.ctrlKey || e.metaKey)) {
+      e.preventDefault();
+    }
+    // handle backspace and delete
     else if (key === 'Backspace' || key === 'Delete') {
       // transfer focus backward/forward, if the input value is empty
       if (!target.value) {
@@ -266,7 +261,8 @@ export class PinCode {
       }
       target.value = '';
       this.updateValue(getConcatenatedInputValues(this.inputElements));
-    } // support native submit behavior
+    }
+    // support native submit behavior
     else if (key === 'Enter') {
       if (isWithinForm && isFormSubmittable(this.host, this.form)) {
         this.form.requestSubmit();
