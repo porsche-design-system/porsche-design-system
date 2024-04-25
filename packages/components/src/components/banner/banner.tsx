@@ -80,8 +80,6 @@ export class Banner {
 
   @Watch('open')
   public openChangeHandler(isOpen: boolean): void {
-    this.host.togglePopover();
-
     if (isOpen) {
       this.host.showPopover();
 
@@ -96,15 +94,27 @@ export class Banner {
     }
   }
 
+  public connectedCallback(): void {
+    if (this.open && this.hasDismissButton) {
+      document.addEventListener('keydown', this.onKeyboardEvent);
+    }
+  }
+
   public componentDidLoad(): void {
     if (this.open) {
       this.host.showPopover();
-    }
 
+      if (this.hasDismissButton) {
+        // messy… optional chaining is needed in case child component is unmounted too early
+        this.closeBtn = getShadowRootHTMLElement<HTMLElement>(this.inlineNotificationElement, '.close');
+        this.closeBtn?.focus();
+      }
+    }
+  }
+
+  public disconnectedCallback(): void {
     if (this.hasDismissButton) {
-      // messy… optional chaining is needed in case child component is unmounted too early
-      this.closeBtn = getShadowRootHTMLElement<HTMLElement>(this.inlineNotificationElement, '.close');
-      this.closeBtn?.focus();
+      document.removeEventListener('keydown', this.onKeyboardEvent);
     }
   }
 
@@ -154,6 +164,12 @@ export class Banner {
       </Host>
     );
   }
+
+  private onKeyboardEvent = (e: KeyboardEvent): void => {
+    if (e.key === 'Escape') {
+      this.onDismiss();
+    }
+  };
 
   private onDismiss = (event?: CustomEvent): void => {
     this.host.hidePopover();
