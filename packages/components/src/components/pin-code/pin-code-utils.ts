@@ -50,7 +50,7 @@ export const warnAboutTransformedValue = (host: HTMLElement, length?: number): v
   );
 };
 
-export const isInputSingleDigit = (input: string): boolean => /^\d$/.test(input);
+export const isInputOnlyDigits = (input: string): boolean => /^[0-9]*$/.test(input);
 
 export const hasInputOnlyDigitsOrWhitespaces = (input: string): boolean => /^[\d ]+$/.test(input);
 
@@ -136,4 +136,8 @@ export const isCurrentInput = (index: number, value: string, length: number): bo
     return index === length - 1; // All inputs have a value: set current-input id on the last input element
   }
   return index === firstWhitespaceIndex; // Some value is entered: set current-input id on the first input element which does not have a value
+};
+
+export const getCurrentInput = (inputs: HTMLInputElement[]): HTMLInputElement => {
+  return inputs.find((input) => !input.value) ?? inputs.at(-1);
 };

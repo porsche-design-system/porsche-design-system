@@ -3,13 +3,13 @@ import type { BreakpointCustomizable, PropTypes, Theme } from '../../types';
 import type { PinCodeLength, PinCodeState, PinCodeType, PinCodeUpdateEventDetail } from './pin-code-utils';
 import {
   getConcatenatedInputValues,
+  getCurrentInput,
   getSanitisedValue,
-  HTMLInputElementEventTarget,
-  IME_KEYCODE,
+  type HTMLInputElementEventTarget,
   initHiddenInput,
   isCurrentInput,
   isFormSubmittable,
-  isInputSingleDigit,
+  isInputOnlyDigits,
   PIN_CODE_LENGTHS,
   PIN_CODE_TYPES,
   removeWhiteSpaces,
@@ -22,14 +22,13 @@ import {
   getClosestHTMLElement,
   getPrefixedTagNames,
   hasPropValueChanged,
-  isDisabledOrLoading,
   isWithinForm,
   THEMES,
   validateProps,
 } from '../../utils';
 import { getComponentCss } from './pin-code-styles';
 import { messageId, StateMessage } from '../common/state-message/state-message';
-import { descriptionId, labelId, Label } from '../common/label/label';
+import { descriptionId, Label, labelId } from '../common/label/label';
 import { LoadingMessage } from '../common/loading-message/loading-message';
 import { ControllerHost, InitialLoadingController } from '../../controllers';
 
@@ -115,15 +114,25 @@ export class PinCode {
   }
 
   public componentDidLoad(): void {
-    // This prevents the default input behavior on iOS when using chinese language settings (IME keyboard) since the keydown or input event prevention does not work here
+    // The beforeinput event is the only event which fires and can be prevented reliably on all keyboard types
     this.inputElements.forEach((input) =>
       input.addEventListener('beforeinput', (e: InputEvent & HTMLInputElementEventTarget) => {
-        // TODO: When a non digit is entered handeInput will be called here and in onKeyDown
-        // This event will only fire if an IME keyboard is used or if a non digit is pressed
-        // In case multiple numbers are entered the input event listener will take over
-        if (e.data.length === 1) {
+        console.log('beforeinput', e);
+        const { data } = e;
+
+        // This is equivalent to the maxLength={1} but since iOS chrome fires single input event for keyboard auto-suggest we cant use the maxLength attribute
+        const preventMultipleInput = e.inputType === 'insertText' && e.target.value.length >= 1;
+        const preventNonDigitInput = data && !isInputOnlyDigits(data);
+
+        if (preventMultipleInput || preventNonDigitInput) {
           e.preventDefault();
-          this.handeInput(e, e.data, e.target, e.target.previousElementSibling, e.target.nextElementSibling);
+        }
+        // Handle keyboard autosuggestion when all digits are sent by one input event
+        else if (data && data.length >= this.length) {
+          e.preventDefault();
+          const sanitisedValue = removeWhiteSpaces(getSanitisedValue(this.host, e.data, this.length));
+          this.updateValue(sanitisedValue);
+          this.focusFirstEmptyOrLastInput(sanitisedValue);
         }
       })
     );
@@ -133,6 +142,11 @@ export class PinCode {
     if (this.isWithinForm) {
       syncHiddenInput(this.hiddenInput, this.name, this.value, this.disabled, this.required);
     }
+  }
+
+  public componentDidRender(): void {
+    // Update the focus to the correct input element after a value was input
+    getCurrentInput(this.inputElements).focus();
   }
 
   public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
@@ -185,7 +199,7 @@ export class PinCode {
               pattern="\d*"
               inputMode="numeric" // get numeric keyboard on mobile
               value={this.value[index] === ' ' ? null : this.value[index]}
-              disabled={this.disabled}
+              disabled={this.disabled || this.loading}
               required={this.required}
               ref={(el) => this.inputElements.push(el)}
             />
@@ -206,68 +220,33 @@ export class PinCode {
       target: HTMLInputElement;
     }
   ): void => {
-    // This event triggers on auto-complete via keyboard suggestion
-    const { target } = e;
-    if (target.value.length >= this.length) {
-      const sanitisedValue = removeWhiteSpaces(getSanitisedValue(this.host, target.value, this.length));
-      this.updateValue(sanitisedValue);
-      this.focusFirstEmptyOrLastInput(sanitisedValue);
-    }
+    console.log('input', e);
+    // Validation already happened in the beforeinput event
+    // iOS keyboard suggestion calls separate input events for each digit and inputs everything in the first input. By updating our value to what has been pasted, the component will update and distribute the values to the corresponding inputs
+    this.updateValue(getSanitisedValue(this.host, getConcatenatedInputValues(this.inputElements), this.length));
   };
 
   private onKeyDown = (e: KeyboardEvent & HTMLInputElementEventTarget): void => {
-    // If an IME keyCode is returned it will be handled by the beforeinput event since the key will be "Unidentified" here
-    // The Dead/Process keys also have the IME_KEYCODE which we need to handle with a workaround
-    if (e.keyCode !== IME_KEYCODE || e.key === 'Dead' || e.key === 'Process') {
-      this.handeInput(e, e.key, e.target, e.target.previousElementSibling, e.target.nextElementSibling);
-    }
-  };
-
-  private handeInput = (
-    e: KeyboardEvent | InputEvent,
-    key: string,
-    target: HTMLInputElement,
-    previousElementSibling: HTMLInputElement,
-    nextElementSibling: HTMLInputElement
-  ) => {
-    // prevent default for disabled or loading, but do not impede tab key
-    if (isDisabledOrLoading(this.disabled, this.loading) && key !== 'Tab') {
-      e.preventDefault();
-    }
-    // if input is valid overwrite old value
-    else if (isInputSingleDigit(key)) {
-      e.preventDefault();
-      target.value = key;
-      this.updateValue(getConcatenatedInputValues(this.inputElements));
-
-      nextElementSibling?.focus();
-    }
-    // handle alphanumeric keys, allow copy/paste shortcut
-    else if (key.length === 1 && 'ctrlKey' in e && !(e.ctrlKey || e.metaKey)) {
-      e.preventDefault();
-    }
-    // handle backspace and delete
-    else if (key === 'Backspace' || key === 'Delete') {
+    const {
+      key,
+      target,
+      target: { previousElementSibling, nextElementSibling },
+    } = e;
+    if (key === 'Backspace' || key === 'Delete') {
       // transfer focus backward/forward, if the input value is empty
       if (!target.value) {
-        e.preventDefault();
         if (key === 'Backspace' && previousElementSibling) {
-          previousElementSibling.value = '';
           previousElementSibling.focus();
         } else if (key === 'Delete' && nextElementSibling) {
-          nextElementSibling.value = '';
           nextElementSibling.focus();
         }
       }
-      target.value = '';
-      this.updateValue(getConcatenatedInputValues(this.inputElements));
-    }
-    // support native submit behavior
-    else if (key === 'Enter') {
+    } else if (key === 'Enter') {
       if (isWithinForm && isFormSubmittable(this.host, this.form)) {
         this.form.requestSubmit();
       }
-    } // workaround since 'Dead' key e.g. ^¨ can not be prevented with e.preventDefault()
+    }
+    // workaround since 'Dead' key e.g. ^¨ can not be prevented with e.preventDefault()
     // workaround for ^ in firefox key: 'Process'
     else if (key === 'Dead' || key === 'Process') {
       target.blur();
@@ -276,6 +255,7 @@ export class PinCode {
   };
 
   private onPaste = (e: ClipboardEvent): void => {
+    console.log('paste', e);
     const sanitisedPastedValue = removeWhiteSpaces(
       getSanitisedValue(this.host, e.clipboardData.getData('Text'), this.length)
     );
