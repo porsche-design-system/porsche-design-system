@@ -82,37 +82,26 @@ export class Banner {
   public openChangeHandler(isOpen: boolean): void {
     this.host.togglePopover();
 
-    if (this.hasDismissButton) {
-      if (isOpen) {
-        this.closeBtn?.focus();
-        document.addEventListener('keydown', this.onKeyboardEvent);
-      } else {
-        document.removeEventListener('keydown', this.onKeyboardEvent);
-      }
-    }
-  }
-
-  public connectedCallback(): void {
-    if (this.open && this.hasDismissButton) {
-      document.addEventListener('keydown', this.onKeyboardEvent);
+    if (isOpen) {
+      window.requestAnimationFrame(() => {
+        this.host.showPopover();
+      });
+    } else {
+      window.requestAnimationFrame(() => {
+        this.host.hidePopover();
+      });
     }
   }
 
   public componentDidLoad(): void {
     if (this.open) {
-      this.host.togglePopover();
+      this.host.showPopover();
     }
 
     if (this.hasDismissButton) {
       // messy… optional chaining is needed in case child component is unmounted too early
       this.closeBtn = getShadowRootHTMLElement<HTMLElement>(this.inlineNotificationElement, '.close');
       this.closeBtn?.focus();
-    }
-  }
-
-  public disconnectedCallback(): void {
-    if (this.hasDismissButton) {
-      document.removeEventListener('keydown', this.onKeyboardEvent);
     }
   }
 
@@ -140,7 +129,7 @@ export class Banner {
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
     return (
-      <Host popover>
+      <Host popover onBeforeToggle={this.onBeforeToggle}>
         <PrefixedTagNames.pInlineNotification
           ref={(el) => (this.inlineNotificationElement = el)}
           heading={this.heading}
@@ -149,7 +138,7 @@ export class Banner {
           state={this.state}
           dismissButton={this.hasDismissButton}
           theme={this.theme}
-          onDismiss={this.removeBanner}
+          onDismiss={this.onDismiss}
           aria-hidden={!this.open ? 'true' : 'false'}
         >
           {hasNamedSlot(this.host, 'heading') ? (
@@ -163,18 +152,23 @@ export class Banner {
     );
   }
 
-  private onKeyboardEvent = (e: KeyboardEvent): void => {
-    if (e.key === 'Escape') {
-      this.removeBanner();
+  private onDismiss = (event?: CustomEvent): void => {
+    this.host.hidePopover();
+
+    if (this.hasDismissButton) {
+      event?.stopPropagation(); // prevent double event emission because of identical name
+      this.dismiss.emit();
     }
   };
 
-  private removeBanner = (e?: CustomEvent): void => {
-    this.host.togglePopover();
+  private onBeforeToggle = (event: ToggleEvent): void => {
+    const { newState, oldState } = event;
+    
+
+    this.open = newState === 'open';
 
     if (this.hasDismissButton) {
-      e?.stopPropagation(); // prevent double event emission because of identical name
-      this.dismiss.emit();
+      this.closeBtn?.focus();
     }
   };
 }

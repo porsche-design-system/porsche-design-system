@@ -35,6 +35,9 @@ export const getComponentCss = (isOpen: boolean): string => {
         maxWidth: '100%', // If component is wrapped in container with maxWidth
         ...dropShadowHighStyle,
         borderRadius: borderRadiusSmall, // needed for rounded box-shadow
+        '&:backdrop': {
+          display: 'none',
+        },
         ...(isOpen
           ? {
               opacity: 1,
