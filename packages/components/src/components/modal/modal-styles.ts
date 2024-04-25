@@ -109,11 +109,10 @@ export const getComponentCss = (
     },
     scroller: {
       ...getModalDialogScrollerJssStyle(theme),
-      display: 'flex', // ua-style
+      display: 'flex',
       justifyContent: 'center',
       alignItems: 'center',
       flexWrap: 'wrap',
-      // background: 'rgba(0,0,0,0.002)',
     },
     ...(hasDismissButton && {
       dismiss: {

@@ -77,6 +77,7 @@ export class Modal {
 
   private dialog: HTMLDialogElement;
   private footer: HTMLSlotElement;
+  private scroller: HTMLElement;
   private hasHeader: boolean;
   private hasFooter: boolean;
   private get hasDismissButton(): boolean {
@@ -90,9 +91,9 @@ export class Modal {
   public componentDidLoad(): void {
     const io = new IntersectionObserver(
       (entries) => {
-        entries.forEach((entry) => {
+        for (const entry of entries) {
           entry.target.toggleAttribute('data-stuck', !entry.isIntersecting);
-        });
+        }
       },
       {
         root: this.dialog,
@@ -116,7 +117,7 @@ export class Modal {
     // TODO: should this really be executed on every rerender, e.g. prop change?
     if (this.open) {
       // reset scroll top to zero in case content is longer than viewport height, - some timeout is needed although it shouldn't
-      this.dialog.scrollTop = 0;
+      this.scroller.scrollTop = 0;
     }
   }
 
@@ -164,7 +165,7 @@ export class Modal {
           ...parseAndGetAriaAttributes(this.aria),
         })}
       >
-        <div class="scroller">
+        <div class="scroller" ref={(el) => (this.scroller = el)}>
           <div class="modal">
             {this.hasDismissButton && (
               <PrefixedTagNames.pButtonPure

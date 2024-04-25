@@ -315,7 +315,7 @@ export const getModalDialogGridJssStyle = (): JssStyle => {
 
   return {
     display: 'grid',
-    gridTemplate: `${safeZoneInlineStart} auto minmax(0, 1fr) auto ${safeZoneInlineEnd}/${safeZoneBlockStart} auto ${safeZoneBlockEnd}`,
+    gridTemplate: `${safeZoneInlineStart} auto minmax(0, 1fr) auto auto ${safeZoneInlineEnd}/${safeZoneBlockStart} auto ${safeZoneBlockEnd}`,
   };
 };
 
@@ -343,16 +343,26 @@ export const getModalDialogTransitionJssStyle = (isVisible: boolean, slideIn: Sl
     opacity: 0,
     // transition offset relies vertically on viewport (vh) because the dialog height can be infinite, while horizontally
     // it relies on the dialog width (%) which has a max-width
-    transform: slideIn === '^' ? 'translateY(25vh)' : `translateX(${slideIn === '<' ? '' : ''}100%)`,
-    ...(isVisible && {
-      opacity: 1,
-      transform: 'initial',
-    }),
+    ...(isVisible
+      ? {
+          opacity: 1,
+          transform: 'initial',
+        }
+      : {
+          transform: slideIn === '^' ? 'translateY(25vh)' : `translateX(${slideIn === '>' ? '-' : ''}100%)`,
+          '&:dir(rtl)': {
+            transform: slideIn === '^' ? 'translateY(25vh)' : `translateX(${slideIn === '>' ? '' : '-'}100%)`,
+          },
+        }),
     transition: `${getTransition('opacity', duration, easing)}, ${getTransition('transform', duration, easing)}`,
   };
 };
 
-export const getModalDialogDismissButtonJssStyle = (theme: Theme, isOpen: boolean): JssStyle => {
+export const getModalDialogDismissButtonJssStyle = (
+  theme: Theme,
+  isOpen: boolean,
+  applyAutoFocusHack: boolean = false
+): JssStyle => {
   const { backgroundSurfaceColor } = getThemedColors(theme);
   const { backgroundSurfaceColor: backgroundSurfaceColorDark } = getThemedColors('dark');
 
@@ -366,20 +376,10 @@ export const getModalDialogDismissButtonJssStyle = (theme: Theme, isOpen: boolea
       background: backgroundSurfaceColorDark,
       borderColor: backgroundSurfaceColorDark,
     }),
-    ...(isOpen
-      ? {
-          opacity: 1,
-        }
-      : {
-          opacity: 0,
-        }),
-    // transition: `opacity var(--p-transition-duration, ${isOpen ? '.2s' : '.1s'}) cubic-bezier(0.25,0.1,0.25,1) ${isOpen ? '.4s' : ''}`,
-    transition: getTransition(
-      'opacity',
-      isOpen ? 'short' : 'short',
-      isOpen ? 'in' : 'out',
-      isOpen ? 'moderate' : undefined
-    ),
+    ...(applyAutoFocusHack && {
+      marginInlineEnd: isOpen ? 0 : '200dvw',
+      transition: `margin-inline 0s linear var(${cssVariableTransitionDuration}, ${isOpen ? '1ms' : '0s'})`,
+    }),
   };
 };
 

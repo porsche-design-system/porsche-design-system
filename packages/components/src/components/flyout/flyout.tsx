@@ -1,4 +1,4 @@
-import { Component, Element, Event, type EventEmitter, h, type JSX, Prop, Watch } from '@stencil/core';
+import { Component, Element, Event, type EventEmitter, h, type JSX, Prop } from '@stencil/core';
 import {
   FLYOUT_ARIA_ATTRIBUTES,
   FLYOUT_POSITIONS,
@@ -11,7 +11,6 @@ import {
   AllowedTypes,
   attachComponentCss,
   getPrefixedTagNames,
-  getShadowRootHTMLElements,
   hasNamedSlot,
   hasPropValueChanged,
   parseAndGetAriaAttributes,
@@ -54,37 +53,21 @@ export class Flyout {
   private dialog: HTMLDialogElement;
   private header: HTMLSlotElement;
   private footer: HTMLSlotElement;
-  private subFooter: HTMLSlotElement;
+  private scroller: HTMLElement;
   private hasHeader: boolean;
   private hasFooter: boolean;
   private hasSubFooter: boolean;
 
-  @Watch('open')
-  public openChangeHandler(isOpen: boolean): void {
-    setScrollLock(isOpen);
-
-    if (isOpen && this.hasSubFooter) {
-      // this.updateShadow();
-    }
+  public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
+    return hasPropValueChanged(newVal, oldVal);
   }
 
   public componentDidLoad(): void {
-    // in case flyout is rendered with open prop
-    if (this.open) {
-      setScrollLock(true);
-      this.setDialogVisibility(true);
-    }
-
-    // TODO: would be great to use this in jsx but that doesn't work reliable and causes focus e2e test to fail
-    getShadowRootHTMLElements(this.host, 'slot').forEach((element) =>
-      element.addEventListener('slotchange', this.onSlotChange)
-    );
-
     const io = new IntersectionObserver(
       (entries) => {
-        entries.forEach((entry) => {
+        for (const entry of entries) {
           entry.target.toggleAttribute('data-stuck', !entry.isIntersecting);
-        });
+        }
       },
       {
         root: this.dialog,
@@ -92,16 +75,29 @@ export class Flyout {
       }
     );
 
+    // TODO: ensure sheet is not getting overwritten by e.g. jss.ts
+    const sheet = new CSSStyleSheet();
+    this.host.shadowRoot.adoptedStyleSheets?.push(sheet);
+
+    const ro = new ResizeObserver((entries) => {
+      for (const entry of entries) {
+        sheet.replaceSync(
+          `:host{--p-flyout-sticky-top:${Math.floor(entry.target.getBoundingClientRect().height) - 1}px}`
+        );
+      }
+    });
+
     if (this.hasHeader) {
       io.observe(this.header);
+      ro.observe(this.header);
     }
     if (this.hasFooter) {
       io.observe(this.footer);
     }
   }
 
-  public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
-    return hasPropValueChanged(newVal, oldVal);
+  public componentWillRender(): void {
+    setScrollLock(this.open);
   }
 
   public componentDidRender(): void {
@@ -109,9 +105,9 @@ export class Flyout {
     this.setDialogVisibility(this.open);
 
     // TODO: should this really be executed on every rerender, e.g. prop change?
-    if (this.open && this.hasSubFooter) {
-      // TODO: why not scroll to top when opened just like modal does?
-      // this.updateShadow();
+    if (this.open) {
+      // reset scroll top to zero in case content is longer than viewport height, - some timeout is needed although it shouldn't
+      this.scroller.scrollTop = 0;
     }
   }
 
@@ -160,32 +156,27 @@ export class Flyout {
         onClick={this.onClickDialog}
         {...parseAndGetAriaAttributes(this.aria)}
       >
-        <PrefixedTagNames.pButtonPure
-          class="dismiss"
-          type="button"
-          hideLabel
-          icon="close"
-          theme={this.theme}
-          onClick={this.dismissDialog}
-        >
-          Dismiss flyout
-        </PrefixedTagNames.pButtonPure>
-        <div class="scroller">
+        <div class="scroller" ref={(el) => (this.scroller = el)}>
           <div class="flyout">
+            <PrefixedTagNames.pButtonPure
+              class="dismiss"
+              type="button"
+              hideLabel
+              icon="close"
+              theme={this.theme}
+              onClick={this.dismissDialog}
+            >
+              Dismiss flyout
+            </PrefixedTagNames.pButtonPure>
             {this.hasHeader && <slot name="header" ref={(el: HTMLSlotElement) => (this.header = el)} />}
             <slot />
             {this.hasFooter && <slot name="footer" ref={(el: HTMLSlotElement) => (this.footer = el)} />}
-            {this.hasSubFooter && <slot name="sub-footer" ref={(el: HTMLSlotElement) => (this.subFooter = el)} />}
+            {this.hasSubFooter && <slot name="sub-footer" />}
           </div>
         </div>
       </dialog>
     );
   }
-
-  private onSlotChange = (): void => {
-    // forceUpdate(this.host);
-    // this.dismissBtn.focus();
-  };
 
   private onClickDialog = (e: MouseEvent & { target: HTMLElement }): void => {
     if (e.target.className === 'scroller') {

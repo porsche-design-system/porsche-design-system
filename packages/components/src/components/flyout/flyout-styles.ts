@@ -80,6 +80,14 @@ export const getComponentCss = (
           zIndex: 2, // ensures footer is above header and content but below sticky dismiss button
         },
       }),
+      ...(hasSubFooter && {
+        'slot[name=sub-footer]': {
+          // ...getModalDialogStickyAreaJssStyle('footer', theme),
+          marginTop: spacingFluidMedium,
+          gridArea: '6/3',
+          zIndex: 2, // ensures footer is above header and content but below sticky dismiss button
+        },
+      }),
       dialog: {
         ...getModalDialogBackdropResetJssStyle(),
         ...getModalDialogBackdropTransitionJssStyle(isOpen, theme),
@@ -88,28 +96,25 @@ export const getComponentCss = (
     scroller: {
       ...getModalDialogScrollerJssStyle(theme),
       display: 'flex',
-      justifyContent: 'flex-end',
+      justifyContent: isPositionStart ? 'flex-start' : 'flex-end',
       alignItems: 'stretch',
       flexWrap: 'wrap',
     },
     flyout: {
       ...getDialogColorJssStyle(theme),
       ...getModalDialogGridJssStyle(),
-      ...getModalDialogTransitionJssStyle(isOpen, '<'),
+      ...getModalDialogTransitionJssStyle(isOpen, isPositionStart ? '>' : '<'),
       width: `var(${cssVariableWidth}, fit-content)`,
       minWidth: '320px',
       maxWidth: `var(${cssVariableMaxWidth}, 1180px)`,
     },
     dismiss: {
-      position: 'fixed',
-      top: spacingFluidSmall,
-      right: spacingFluidSmall,
-      ...getModalDialogDismissButtonJssStyle(theme, isOpen),
-      // gridArea: '2/1',
+      ...getModalDialogDismissButtonJssStyle(theme, isOpen, !isPositionStart),
+      gridArea: '2/4',
       zIndex: 2, // ensures dismiss button is above sticky footer, header and content
-      // position: 'sticky',
-      // top: spacingFluidSmall,
-      // justifySelf: 'flex-end',
+      position: 'sticky',
+      top: spacingFluidSmall,
+      justifySelf: 'flex-end',
     },
   });
 };
