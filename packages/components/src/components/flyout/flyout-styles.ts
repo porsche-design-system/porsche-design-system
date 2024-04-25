@@ -27,12 +27,12 @@ const headingTags = 'h1,h2,h3,h4,h5,h6';
 export const getComponentCss = (
   isOpen: boolean,
   position: FlyoutPosition,
+  hasHeader: boolean,
   hasFooter: boolean,
   hasSubFooter: boolean,
   theme: Theme
 ): string => {
   const isPositionStart = position === 'start' || position === 'left';
-  const hasHeader = true;
 
   return getCss({
     '@global': {

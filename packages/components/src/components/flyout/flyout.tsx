@@ -10,6 +10,7 @@ import { getComponentCss } from './flyout-styles';
 import {
   AllowedTypes,
   attachComponentCss,
+  getHasConstructableStylesheetSupport,
   getPrefixedTagNames,
   hasNamedSlot,
   hasPropValueChanged,
@@ -63,6 +64,24 @@ export class Flyout {
   }
 
   public componentDidLoad(): void {
+    if (getHasConstructableStylesheetSupport()) {
+      // TODO: ensure sheet is not getting overwritten by e.g. jss.ts
+      const sheet = new CSSStyleSheet();
+      this.host.shadowRoot.adoptedStyleSheets?.push(sheet);
+
+      const ro = new ResizeObserver((entries) => {
+        for (const entry of entries) {
+          sheet.replaceSync(
+            `:host{--p-flyout-sticky-top:${Math.floor(entry.target.getBoundingClientRect().height) - 1}px}`
+          );
+        }
+      });
+
+      if (this.hasHeader) {
+        ro.observe(this.header);
+      }
+    }
+
     const io = new IntersectionObserver(
       (entries) => {
         for (const entry of entries) {
@@ -75,21 +94,8 @@ export class Flyout {
       }
     );
 
-    // TODO: ensure sheet is not getting overwritten by e.g. jss.ts
-    const sheet = new CSSStyleSheet();
-    this.host.shadowRoot.adoptedStyleSheets?.push(sheet);
-
-    const ro = new ResizeObserver((entries) => {
-      for (const entry of entries) {
-        sheet.replaceSync(
-          `:host{--p-flyout-sticky-top:${Math.floor(entry.target.getBoundingClientRect().height) - 1}px}`
-        );
-      }
-    });
-
     if (this.hasHeader) {
       io.observe(this.header);
-      ro.observe(this.header);
     }
     if (this.hasFooter) {
       io.observe(this.footer);
@@ -140,6 +146,7 @@ export class Flyout {
       getComponentCss,
       this.open,
       (positionDeprecationMap[this.position] || this.position) as Exclude<FlyoutPosition, FlyoutPositionDeprecated>,
+      this.hasHeader,
       this.hasFooter,
       this.hasSubFooter,
       this.theme
