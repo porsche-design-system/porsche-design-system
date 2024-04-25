@@ -117,7 +117,7 @@ export const getComponentCss = (
     },
     ...(hasDismissButton && {
       dismiss: {
-        ...getModalDialogDismissButtonJssStyle(theme),
+        ...getModalDialogDismissButtonJssStyle(theme, isOpen),
         gridArea: '2/-3',
         zIndex: 2, // ensures dismiss button is above sticky footer, header and content
         position: 'sticky',

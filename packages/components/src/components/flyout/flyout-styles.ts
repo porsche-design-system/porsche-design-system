@@ -87,7 +87,6 @@ export const getComponentCss = (
     },
     scroller: {
       ...getModalDialogScrollerJssStyle(theme),
-      ...getModalDialogTransitionJssStyle(isOpen, '<'),
       display: 'flex',
       justifyContent: 'flex-end',
       alignItems: 'stretch',
@@ -96,17 +95,21 @@ export const getComponentCss = (
     flyout: {
       ...getDialogColorJssStyle(theme),
       ...getModalDialogGridJssStyle(),
+      ...getModalDialogTransitionJssStyle(isOpen, '<'),
       width: `var(${cssVariableWidth}, fit-content)`,
       minWidth: '320px',
       maxWidth: `var(${cssVariableMaxWidth}, 1180px)`,
     },
     dismiss: {
-      ...getModalDialogDismissButtonJssStyle(theme),
-      gridArea: '2/-3',
-      zIndex: 2, // ensures dismiss button is above sticky footer, header and content
-      position: 'sticky',
+      position: 'fixed',
       top: spacingFluidSmall,
-      justifySelf: 'flex-end',
+      right: spacingFluidSmall,
+      ...getModalDialogDismissButtonJssStyle(theme, isOpen),
+      // gridArea: '2/1',
+      zIndex: 2, // ensures dismiss button is above sticky footer, header and content
+      // position: 'sticky',
+      // top: spacingFluidSmall,
+      // justifySelf: 'flex-end',
     },
   });
 };

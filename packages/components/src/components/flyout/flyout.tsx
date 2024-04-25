@@ -160,18 +160,18 @@ export class Flyout {
         onClick={this.onClickDialog}
         {...parseAndGetAriaAttributes(this.aria)}
       >
+        <PrefixedTagNames.pButtonPure
+          class="dismiss"
+          type="button"
+          hideLabel
+          icon="close"
+          theme={this.theme}
+          onClick={this.dismissDialog}
+        >
+          Dismiss flyout
+        </PrefixedTagNames.pButtonPure>
         <div class="scroller">
           <div class="flyout">
-            <PrefixedTagNames.pButtonPure
-              class="dismiss"
-              type="button"
-              hideLabel
-              icon="close"
-              theme={this.theme}
-              onClick={this.dismissDialog}
-            >
-              Dismiss flyout
-            </PrefixedTagNames.pButtonPure>
             {this.hasHeader && <slot name="header" ref={(el: HTMLSlotElement) => (this.header = el)} />}
             <slot />
             {this.hasFooter && <slot name="footer" ref={(el: HTMLSlotElement) => (this.footer = el)} />}

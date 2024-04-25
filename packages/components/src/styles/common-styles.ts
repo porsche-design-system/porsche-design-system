@@ -246,29 +246,39 @@ export const getModalDialogBackdropTransitionJssStyle = (
 
   return {
     zIndex: 9999999, // fallback for fade out stacking until `overlay` + `allow-discrete` is supported in all browsers. It tries to mimic #top-layer positioning hierarchy.
-    visibility: 'hidden', // element shall not be tabbable with keyboard after fade out transition has finished
-    pointerEvents: 'none', // element can't be interacted with mouse
-    background: 'transparent',
-    ...(isBackdropBlur && {
-      WebkitBackdropFilter: 'blur(0px)',
-      backdropFilter: 'blur(0px)',
-    }),
-    ...(isVisible && {
-      visibility: 'inherit',
-      pointerEvents: 'auto',
-      background: backgroundShadingColor,
-      ...(isBackdropBlur && frostedGlassStyle),
-      ...prefersColorSchemeDarkMediaQuery(theme, {
-        background: backgroundShadingColorDark,
-      }),
-    }),
+    ...(isVisible
+      ? {
+          visibility: 'inherit',
+          pointerEvents: 'auto',
+          background: backgroundShadingColor,
+          ...(isBackdropBlur && frostedGlassStyle),
+          ...prefersColorSchemeDarkMediaQuery(theme, {
+            background: backgroundShadingColorDark,
+          }),
+        }
+      : {
+          visibility: 'hidden', // element shall not be tabbable with keyboard after fade out transition has finished
+          pointerEvents: 'none', // element can't be interacted with mouse
+          background: 'transparent',
+          ...(isBackdropBlur && {
+            WebkitBackdropFilter: 'blur(0px)',
+            backdropFilter: 'blur(0px)',
+          }),
+        }),
     // `allow-discrete` transition for ua-style `overlay` (supported browsers only) ensures dialog is rendered on
     // #top-layer as long as fade-in or fade-out transition/animation is running
-    transition: `${isVisible ? '' : `visibility 0s linear var(${cssVariableTransitionDuration}, ${motionDurationMap[duration]}), `}${getTransition('overlay', duration, easing)} allow-discrete, ${getTransition('background-color', duration, easing)}, ${getTransition(
+    transition: `visibility 0s linear var(${cssVariableTransitionDuration}, ${isVisible ? '0s' : motionDurationMap[duration]}), ${getTransition('background-color', duration, easing)}, ${getTransition(
       '-webkit-backdrop-filter',
       duration,
       easing
     )}, ${getTransition('backdrop-filter', duration, easing)}`,
+    '@supports (transition-behavior: allow-discrete)': {
+      transition: `visibility 0s linear var(${cssVariableTransitionDuration}, ${isVisible ? '0s' : motionDurationMap[duration]}), ${getTransition('overlay', duration, easing)} allow-discrete, ${getTransition('background-color', duration, easing)}, ${getTransition(
+        '-webkit-backdrop-filter',
+        duration,
+        easing
+      )}, ${getTransition('backdrop-filter', duration, easing)}`,
+    },
     '&::backdrop': {
       display: 'none', // we can't use it atm because it's not animatable in all browsers
     },
@@ -323,7 +333,9 @@ export const getDialogColorJssStyle = (theme: Theme): JssStyle => {
   };
 };
 
-export const getModalDialogTransitionJssStyle = (isVisible: boolean, slideIn: '^' | '<' | '>' = '^'): JssStyle => {
+type SlideIn = '^' | '<' | '>';
+
+export const getModalDialogTransitionJssStyle = (isVisible: boolean, slideIn: SlideIn = '^'): JssStyle => {
   const duration = isVisible ? 'moderate' : 'short';
   const easing = isVisible ? 'in' : 'out';
 
@@ -331,16 +343,16 @@ export const getModalDialogTransitionJssStyle = (isVisible: boolean, slideIn: '^
     opacity: 0,
     // transition offset relies vertically on viewport (vh) because the dialog height can be infinite, while horizontally
     // it relies on the dialog width (%) which has a max-width
-    transform: slideIn === '^' ? 'translateY(25vh)' : `translate3d(${slideIn === '<' ? '' : ''}70%,0,0)`,
+    transform: slideIn === '^' ? 'translateY(25vh)' : `translateX(${slideIn === '<' ? '' : ''}100%)`,
     ...(isVisible && {
       opacity: 1,
-      transform: slideIn === '^' ? 'translateY(0)' : 'translate3d(50%,0,0)',
+      transform: 'initial',
     }),
     transition: `${getTransition('opacity', duration, easing)}, ${getTransition('transform', duration, easing)}`,
   };
 };
 
-export const getModalDialogDismissButtonJssStyle = (theme: Theme): JssStyle => {
+export const getModalDialogDismissButtonJssStyle = (theme: Theme, isOpen: boolean): JssStyle => {
   const { backgroundSurfaceColor } = getThemedColors(theme);
   const { backgroundSurfaceColor: backgroundSurfaceColorDark } = getThemedColors('dark');
 
@@ -354,6 +366,20 @@ export const getModalDialogDismissButtonJssStyle = (theme: Theme): JssStyle => {
       background: backgroundSurfaceColorDark,
       borderColor: backgroundSurfaceColorDark,
     }),
+    ...(isOpen
+      ? {
+          opacity: 1,
+        }
+      : {
+          opacity: 0,
+        }),
+    // transition: `opacity var(--p-transition-duration, ${isOpen ? '.2s' : '.1s'}) cubic-bezier(0.25,0.1,0.25,1) ${isOpen ? '.4s' : ''}`,
+    transition: getTransition(
+      'opacity',
+      isOpen ? 'short' : 'short',
+      isOpen ? 'in' : 'out',
+      isOpen ? 'moderate' : undefined
+    ),
   };
 };
 
