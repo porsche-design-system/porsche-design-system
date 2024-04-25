@@ -83,13 +83,16 @@ export class Banner {
     this.host.togglePopover();
 
     if (isOpen) {
-      window.requestAnimationFrame(() => {
-        this.host.showPopover();
-      });
-    } else {
-      window.requestAnimationFrame(() => {
+      this.host.showPopover();
+
+      if (this.hasDismissButton) {
+        this.closeBtn?.focus();
+        document.addEventListener('keydown', this.onKeyboardEvent);
+      } else {
+        document.removeEventListener('keydown', this.onKeyboardEvent);
+
         this.host.hidePopover();
-      });
+      }
     }
   }
 
@@ -129,7 +132,7 @@ export class Banner {
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
     return (
-      <Host popover onBeforeToggle={this.onBeforeToggle}>
+      <Host popover="manual">
         <PrefixedTagNames.pInlineNotification
           ref={(el) => (this.inlineNotificationElement = el)}
           heading={this.heading}
@@ -158,17 +161,6 @@ export class Banner {
     if (this.hasDismissButton) {
       event?.stopPropagation(); // prevent double event emission because of identical name
       this.dismiss.emit();
-    }
-  };
-
-  private onBeforeToggle = (event: ToggleEvent): void => {
-    const { newState, oldState } = event;
-    
-
-    this.open = newState === 'open';
-
-    if (this.hasDismissButton) {
-      this.closeBtn?.focus();
     }
   };
 }
