@@ -9,6 +9,7 @@ export * from './button-link-pure-utils';
 export * from './children-observer';
 export * from './device-detection';
 export * from './detect-native-popover-case';
+export * from './dialog';
 export * from './dom';
 export * from './form';
 export * from './getCDNBaseURL';

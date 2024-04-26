@@ -3,11 +3,15 @@ import type { BreakpointCustomizable, PropTypes, SelectedAriaAttributes, Theme }
 import {
   AllowedTypes,
   attachComponentCss,
+  getIntersectionObserverStuck,
   getPrefixedTagNames,
   hasHeading,
   hasNamedSlot,
   hasPropValueChanged,
+  onCancelDialog,
+  onClickDialog,
   parseAndGetAriaAttributes,
+  setDialogVisibility,
   setScrollLock,
   THEMES,
   validateProps,
@@ -88,31 +92,20 @@ export class Modal {
     return hasPropValueChanged(newVal, oldVal);
   }
 
-  public componentDidLoad(): void {
-    const io = new IntersectionObserver(
-      (entries) => {
-        for (const { target, isIntersecting } of entries) {
-          target.toggleAttribute('data-stuck', !isIntersecting);
-        }
-      },
-      {
-        root: this.scroller,
-        threshold: 1,
-      }
-    );
-
-    if (this.hasFooter) {
-      io.observe(this.footer);
-    }
-  }
-
   public componentWillRender(): void {
     setScrollLock(this.open);
   }
 
   public componentDidRender(): void {
-    // showModal needs to be called after render cycle to prepare visibility states of dialog in order to focus the dismiss button correctly
-    this.setDialogVisibility(this.open);
+    setDialogVisibility(this.open, this.dialog, this.scroller);
+  }
+
+  public componentDidLoad(): void {
+    const io = getIntersectionObserverStuck(this.scroller);
+
+    if (this.hasFooter) {
+      io.observe(this.footer);
+    }
   }
 
   public disconnectedCallback(): void {
@@ -149,8 +142,8 @@ export class Modal {
         inert={this.open ? null : true} // prevents focusable elements during fade-out transition + prevents focusable elements within nested open accordion
         tabIndex={-1} // dialog always has a dismiss button to be focused
         ref={(el) => (this.dialog = el)}
-        onCancel={this.onCancelDialog}
-        onClick={this.onClickDialog}
+        onCancel={(e) => onCancelDialog(e, this.dismissDialog)}
+        onClick={(e) => onClickDialog(e, this.dismissDialog, this.disableBackdropClick)}
         {...parseAndGetAriaAttributes({
           'aria-modal': true,
           'aria-label': this.heading,
@@ -188,31 +181,8 @@ export class Modal {
     );
   }
 
-  private onClickDialog = (e: MouseEvent & { target: HTMLElement }): void => {
-    if (!this.disableBackdropClick && e.target.className === 'scroller') {
-      // dismiss dialog when clicked on backdrop
-      this.dismissDialog();
-    }
-  };
-
-  private onCancelDialog = (e: Event): void => {
-    // prevent closing the dialog uncontrolled by ESC
-    e.preventDefault();
-    this.dismissDialog();
-  };
-
   private dismissDialog = (): void => {
     this.dismiss.emit();
     this.close.emit();
   };
-
-  private setDialogVisibility(isOpen: boolean): void {
-    // Only call showModal/close on dialog when state changes
-    if (isOpen === true && !this.dialog.open) {
-      this.scroller.scrollTo(0, 0);
-      this.dialog.showModal();
-    } else if (isOpen === false && this.dialog.open) {
-      this.dialog.close();
-    }
-  }
 }
