@@ -52,9 +52,9 @@ export class Flyout {
   @Event({ bubbles: false }) public dismiss?: EventEmitter<void>;
 
   private dialog: HTMLDialogElement;
+  private scroller: HTMLDivElement;
   private header: HTMLSlotElement;
   private footer: HTMLSlotElement;
-  private scroller: HTMLElement;
   private hasHeader: boolean;
   private hasFooter: boolean;
   private hasSubFooter: boolean;
@@ -84,12 +84,12 @@ export class Flyout {
 
     const io = new IntersectionObserver(
       (entries) => {
-        for (const entry of entries) {
-          entry.target.toggleAttribute('data-stuck', !entry.isIntersecting);
+        for (const { target, isIntersecting } of entries) {
+          target.toggleAttribute('data-stuck', !isIntersecting);
         }
       },
       {
-        root: this.dialog,
+        root: this.scroller,
         threshold: 1,
       }
     );
@@ -109,12 +109,6 @@ export class Flyout {
   public componentDidRender(): void {
     // showModal needs to be called after render cycle to prepare visibility states of dialog in order to focus the dismiss button correctly
     this.setDialogVisibility(this.open);
-
-    // TODO: should this really be executed on every rerender, e.g. prop change?
-    if (this.open) {
-      // reset scroll top to zero in case content is longer than viewport height, - some timeout is needed although it shouldn't
-      this.scroller.scrollTop = 0;
-    }
   }
 
   public disconnectedCallback(): void {
@@ -193,7 +187,7 @@ export class Flyout {
   };
 
   private onCancelDialog = (e: Event): void => {
-    // prevent closing the dialog uncontrolled by ESC (only relevant for browsers supporting <dialog/>)
+    // prevent closing the dialog uncontrolled by ESC
     e.preventDefault();
     this.dismissDialog();
   };
@@ -205,6 +199,7 @@ export class Flyout {
   private setDialogVisibility(isOpen: boolean): void {
     // Only call showModal/close on dialog when state changes
     if (isOpen === true && !this.dialog.open) {
+      this.scroller.scrollTo(0, 0);
       this.dialog.showModal();
     } else if (isOpen === false && this.dialog.open) {
       this.dialog.close();
