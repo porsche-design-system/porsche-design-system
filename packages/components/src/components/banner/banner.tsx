@@ -80,16 +80,12 @@ export class Banner {
 
   @Watch('open')
   public openChangeHandler(isOpen: boolean): void {
-    if (isOpen) {
-      this.host.showPopover();
-
-      if (this.hasDismissButton) {
-        this.closeBtn?.focus();
+    if (this.hasDismissButton) {
+      if (isOpen) {
         document.addEventListener('keydown', this.onKeyboardEvent);
+      } else {
+        document.removeEventListener('keydown', this.onKeyboardEvent);
       }
-    } else {
-      this.onDismiss();
-      document.removeEventListener('keydown', this.onKeyboardEvent);
     }
   }
 
@@ -99,15 +95,19 @@ export class Banner {
     }
   }
 
+  public componentDidLoad(): void {
+    if (this.open) {
+      this.setBannerVisibility(true);
+    }
+  }
+
   public componentDidRender(): void {
     this.closeBtn = getShadowRootHTMLElement<HTMLElement>(this.inlineNotificationElement, '.close');
 
-    if (this.open) {
-      this.host.showPopover();
+    this.setBannerVisibility(this.open);
 
-      if (this.hasDismissButton) {
-        this.closeBtn?.focus();
-      }
+    if (this.hasDismissButton) {
+      this.closeBtn?.focus();
     }
   }
 
@@ -141,7 +141,7 @@ export class Banner {
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
     return (
-      <Host popover="manual">
+      <Host popover="manual" tabIndex={-1}>
         <PrefixedTagNames.pInlineNotification
           ref={(el) => (this.inlineNotificationElement = el)}
           heading={this.heading}
@@ -166,7 +166,7 @@ export class Banner {
 
   private onKeyboardEvent = (event: KeyboardEvent): void => {
     if (event.key === 'Escape') {
-      this.onDismiss();
+      this.dismissBanner();
     }
   };
 
@@ -176,5 +176,17 @@ export class Banner {
 
       this.dismiss.emit();
     }
+  };
+
+  private setBannerVisibility(isOpen: boolean): void {
+    if (isOpen) {
+      this.host.showPopover();
+    } else {
+      this.host.hidePopover();
+    }
+  }
+
+  private dismissBanner = (): void => {
+    this.dismiss.emit();
   };
 }
