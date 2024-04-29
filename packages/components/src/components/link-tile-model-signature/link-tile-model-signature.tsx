@@ -64,7 +64,7 @@ export class LinkTileModelSignature {
   // prettier-ignore
   @Prop() public linkDirection?: BreakpointCustomizable<LinkTileModelSignatureLinkDirection> = { base: 'column', xs: 'row' };
 
-  /** Sets a custom headline tag which wraps the heading to enhance semantics. */
+  /** Sets a heading tag, so it fits correctly within the outline of the page. */
   @Prop() public headingTag?: LinkTileModelSignatureHeadingTag = 'h2';
 
   public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {

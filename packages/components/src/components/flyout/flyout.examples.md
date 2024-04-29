@@ -9,19 +9,19 @@ Flyouts are flexible in the context and can include other components of the Pors
 It is a controlled component. This grants you flexible control over the flyout's behavior especially whether it should
 stay open after user interaction like submission of a form.
 
-<Notification heading="Important note" state="warning">
+<Notification heading="Important note" heading-tag="h2" state="warning">
   This component activates a focus trap to keep the focus within while being open.<br>
   This is achieved by detecting the first and last focusable child element after the flyout is opened.<br>
   Further DOM changes like adding or removing DOM nodes can only be detected on the first level, hence direct children of the flyout.
 </Notification>
 
-<Notification heading="Scroll-lock" state="warning">
+<Notification heading="Scroll-lock" heading-tag="h2" state="warning">
   This component sets <code>overflow: hidden</code> on the body when opened in order to prevent background scrolling.<br> 
   This doesn't work completely reliable under iOS but is the most stable solution.<br>
   Feel free to address this issue in an Open Source PR, if you can provide a better solution. <b><a href="https://github.com/porsche-design-system/porsche-design-system/blob/main/packages/components/src/utils/setScrollLock.ts">Current implementation</a></b><br>
 </Notification>
 
-<Notification heading="Recommendation" state="success">
+<Notification heading="Recommendation" heading-tag="h2" state="success">
   You should only have a single instance of this component within your application. We recommend rendering it close to the body, e.g., in your App.tsx or app.component.ts. This way you reduce the chance of having issues with its z-index and fixed positioning.
 </Notification>
 
@@ -40,7 +40,7 @@ In order to get notified when the flyout gets closed by clicking the `x` button,
 
 The size of `p-flyout` adjusts itself to the content with a predefined min/max width.
 
-<Notification heading="Deprecation hint" state="warning">
+<Notification heading="Deprecation hint" heading-tag="h3" state="warning">
   Following alignments have been deprecated and will be removed with the next major release: "left" and "right".
 </Notification>
 

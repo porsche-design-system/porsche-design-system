@@ -3,7 +3,7 @@
 The `p-crest` gives the Porsche brand a distinctive look, sets it apart from others within the overall external image
 and represents the quality of the product.
 
-<Notification heading="Usage hint" state="error">
+<Notification heading="Usage hint" heading-tag="h2" state="error">
   This component shall only be used on viewports below 480px (breakpoint "S"). Otherwise, <a href="components/wordmark">p-wordmark</a> has to be used.
 </Notification>
 

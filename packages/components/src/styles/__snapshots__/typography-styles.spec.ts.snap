@@ -43,20 +43,6 @@ exports[`getTypographyRootJssStyle() should return correct css for baseTextStyle
 
 exports[`getTypographySlottedJssStyle() should return correct JssStyle 1`] = `
 {
-  "color": "inherit",
-  "fontFamily": "inherit",
-  "fontSize": "inherit",
-  "fontStyle": "inherit",
-  "fontVariant": "inherit",
-  "fontWeight": "inherit",
-  "hyphens": "inherit",
-  "letterSpacing": "inherit",
-  "lineHeight": "inherit",
-  "margin": "inherit",
-  "overflowWrap": "inherit",
-  "padding": "inherit",
-  "textAlign": "inherit",
-  "whiteSpace": "inherit",
-  "wordWrap": "inherit",
+  "all": "unset",
 }
 `;

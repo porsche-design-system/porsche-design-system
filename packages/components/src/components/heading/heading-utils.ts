@@ -1,8 +1,11 @@
-import type { HeadingTag } from './heading-tag';
-import { HEADING_TAGS } from './heading-tag';
-import type { BreakpointCustomizable, TypographyAlign, TypographyAlignDeprecated } from '../../types';
-import { hasSpecificDirectChildTag } from '../../utils';
-import { HeadingSize } from '../../types';
+import { hasSpecificDirectChildTag, HEADING_TAGS } from '../../utils';
+import type {
+  BreakpointCustomizable,
+  TypographyAlign,
+  HeadingSize,
+  HeadingTag,
+  TypographyAlignDeprecated,
+} from '../../types';
 
 export const HEADING_COLORS = ['primary', 'inherit'] as const;
 export type HeadingColor = (typeof HEADING_COLORS)[number];

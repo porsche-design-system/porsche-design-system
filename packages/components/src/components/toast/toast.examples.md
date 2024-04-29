@@ -23,7 +23,7 @@ type ToastMessage = {
 };
 ```
 
-<Notification heading="Deprecation hint" state="warning">
+<Notification heading="Deprecation hint" heading-tag="h3" state="warning">
   Following state has been deprecated and will be removed with the next major release: "neutral".
 </Notification>
 

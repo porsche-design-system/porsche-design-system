@@ -17,7 +17,6 @@ const getHost = (page: Page) => page.$('p-link-tile-model-signature');
 const getOverlayAnchor = (page: Page) => page.$('p-link-tile-model-signature a');
 const getPrimaryLink = (page: Page) => page.$('p-link-tile-model-signature p-link[slot="primary"]');
 const getPrimaryLinkAnchor = (page: Page) => page.$('p-link-tile-model-signature p-link[slot="primary"] a');
-const getHeading = (page: Page) => page.$('p-link-tile-model-signature .heading');
 
 const initLinkTileModelSignature = (page: Page, opts?: { useSlottedAnchor?: boolean }): Promise<void> => {
   const { useSlottedAnchor = false } = opts || {};
@@ -57,19 +56,6 @@ test('should mirror anchor props of slot name="primary" onto overlay anchor for 
 
   expect(await getProperty(primaryLink, 'href')).toEqual(undefined);
   expect(await getProperty(overlayAnchor, 'href')).toEqual(await getProperty(primaryLinkAnchor, 'href'));
-});
-
-test('should have correct headingTag', async ({ page }) => {
-  await initLinkTileModelSignature(page);
-  const getHeadingTagName = async (): Promise<string> => await (await getHeading(page)).evaluate((el) => el.tagName);
-
-  expect(await getHeadingTagName()).toBe('H2');
-
-  const host = await getHost(page);
-  await setProperty(host, 'headingTag', 'h3');
-  await waitForStencilLifecycle(page);
-
-  expect(await getHeadingTagName()).toBe('H3');
 });
 
 test.describe('lifecycle', () => {

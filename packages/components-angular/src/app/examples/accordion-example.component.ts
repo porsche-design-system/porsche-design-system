@@ -4,10 +4,10 @@ import type { AccordionUpdateEventDetail } from '@porsche-design-system/componen
 @Component({
   selector: 'page-accordion-example',
   template: `
-    <p-accordion [heading]="'Some Heading'" [tag]="'h3'" [open]="isOpen1" (update)="onUpdate1($event)">
+    <p-accordion [heading]="'Some Heading'" [heading-tag]="'h3'" [open]="isOpen1" (update)="onUpdate1($event)">
       <p-text>{{ content }}</p-text>
     </p-accordion>
-    <p-accordion [heading]="'Some Heading'" [tag]="'h3'" [open]="isOpen2" (update)="onUpdate2($event)">
+    <p-accordion [heading]="'Some Heading'" [heading-tag]="'h3'" [open]="isOpen2" (update)="onUpdate2($event)">
       <p-text>{{ content }}</p-text>
     </p-accordion>
   `,

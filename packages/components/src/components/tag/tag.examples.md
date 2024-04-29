@@ -6,7 +6,7 @@
 
 ## Color
 
-<Notification heading="Deprecation hint" state="warning">
+<Notification heading="Deprecation hint" heading-tag="h3" state="warning">
   Following colors have been deprecated and will be removed with the next major release: <span v-html="colorsDeprecated"></span>.
 </Notification>
 

@@ -12,7 +12,6 @@ import {
   skipInBrowsers,
   waitForStencilLifecycle,
 } from '../helpers';
-import type { HeadingTag } from '@porsche-design-system/components';
 
 const clickHandlerScript = `
 <script>
@@ -23,7 +22,6 @@ const clickHandlerScript = `
 </script>`;
 
 type InitOptions = {
-  tag?: HeadingTag;
   otherPreMarkup?: string;
   otherPostMarkup?: string;
   otherSlottedMarkup?: string;
@@ -32,16 +30,9 @@ type InitOptions = {
 };
 
 const initAccordion = (page: Page, opts?: InitOptions) => {
-  const {
-    tag = 'h2',
-    otherPreMarkup = '',
-    otherPostMarkup = '',
-    otherSlottedMarkup = '',
-    hasInput,
-    isOpen = false,
-  } = opts || {};
+  const { otherPreMarkup = '', otherPostMarkup = '', otherSlottedMarkup = '', hasInput, isOpen = false } = opts || {};
 
-  const content = `${otherPreMarkup}<p-accordion heading="Some Accordion" tag="${tag}" open="${isOpen}">
+  const content = `${otherPreMarkup}<p-accordion heading="Some Accordion" open="${isOpen}">
 Test content Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt
 ut labore et dolore magna aliquyam erat, sed diam voluptua.${hasInput ? '<input type="text"/>' : ''}
 ${otherSlottedMarkup}
