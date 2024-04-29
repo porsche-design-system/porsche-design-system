@@ -86,11 +86,10 @@ export class Banner {
       if (this.hasDismissButton) {
         this.closeBtn?.focus();
         document.addEventListener('keydown', this.onKeyboardEvent);
-      } else {
-        document.removeEventListener('keydown', this.onKeyboardEvent);
-
-        this.host.hidePopover();
       }
+    } else {
+      this.onDismiss();
+      document.removeEventListener('keydown', this.onKeyboardEvent);
     }
   }
 
@@ -100,13 +99,13 @@ export class Banner {
     }
   }
 
-  public componentDidLoad(): void {
+  public componentDidRender(): void {
+    this.closeBtn = getShadowRootHTMLElement<HTMLElement>(this.inlineNotificationElement, '.close');
+
     if (this.open) {
       this.host.showPopover();
 
       if (this.hasDismissButton) {
-        // messy… optional chaining is needed in case child component is unmounted too early
-        this.closeBtn = getShadowRootHTMLElement<HTMLElement>(this.inlineNotificationElement, '.close');
         this.closeBtn?.focus();
       }
     }
@@ -165,17 +164,16 @@ export class Banner {
     );
   }
 
-  private onKeyboardEvent = (e: KeyboardEvent): void => {
-    if (e.key === 'Escape') {
+  private onKeyboardEvent = (event: KeyboardEvent): void => {
+    if (event.key === 'Escape') {
       this.onDismiss();
     }
   };
 
   private onDismiss = (event?: CustomEvent): void => {
-    this.host.hidePopover();
-
     if (this.hasDismissButton) {
       event?.stopPropagation(); // prevent double event emission because of identical name
+
       this.dismiss.emit();
     }
   };
