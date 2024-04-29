@@ -102,11 +102,10 @@ export class Banner {
   }
 
   public componentDidRender(): void {
-    this.closeBtn = getShadowRootHTMLElement<HTMLElement>(this.inlineNotificationElement, '.close');
-
     this.setBannerVisibility(this.open);
 
     if (this.hasDismissButton) {
+      this.closeBtn = getShadowRootHTMLElement<HTMLElement>(this.inlineNotificationElement, '.close');
       this.closeBtn?.focus();
     }
   }

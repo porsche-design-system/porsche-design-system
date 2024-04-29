@@ -28,6 +28,7 @@ export const getComponentCss = (isOpen: boolean): string => {
     '@global': {
       ':host': addImportantToEachRule({
         position: 'fixed',
+        display: 'block',
         border: '0',
         outline: '0',
         bottom: `var(${cssVariableBottom},${topBottomFallback})`,
