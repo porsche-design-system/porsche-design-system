@@ -11,7 +11,12 @@ import {
   motionEasingOut,
 } from '@porsche-design-system/utilities-v2';
 import { getCss } from '../../utils';
-import { colorSchemeStyles, cssVariableAnimationDuration, hostHiddenStyles } from '../../styles';
+import {
+  addImportantToEachRule,
+  colorSchemeStyles,
+  cssVariableAnimationDuration,
+  hostHiddenStyles,
+} from '../../styles';
 
 const cssVariableTop = '--p-banner-position-top';
 const cssVariableBottom = '--p-banner-position-bottom';
@@ -21,15 +26,15 @@ const topBottomFallback = '56px';
 export const getComponentCss = (isOpen: boolean): string => {
   return getCss({
     '@global': {
-      ':host': {
+      ':host': addImportantToEachRule({
         position: 'fixed',
-        margin: '0',
-        padding: '0',
         border: '0',
         outline: '0',
         bottom: `var(${cssVariableBottom},${topBottomFallback})`,
         left: gridExtendedOffsetBase,
         right: gridExtendedOffsetBase,
+        margin: 0,
+        padding: 0,
         width: 'auto',
         maxWidth: '100%', // If component is wrapped in container with maxWidth
         ...dropShadowHighStyle,
@@ -63,7 +68,7 @@ export const getComponentCss = (isOpen: boolean): string => {
         },
         ...colorSchemeStyles,
         ...hostHiddenStyles,
-      },
+      }),
     },
   });
 };
