@@ -3,7 +3,6 @@ import type { BreakpointCustomizable, PropTypes, Theme } from '../../types';
 import type { PinCodeLength, PinCodeState, PinCodeType, PinCodeUpdateEventDetail } from './pin-code-utils';
 import {
   getConcatenatedInputValues,
-  getCurrentInput,
   getSanitisedValue,
   type HTMLInputElementEventTarget,
   initHiddenInput,
@@ -117,22 +116,15 @@ export class PinCode {
     // The beforeinput event is the only event which fires and can be prevented reliably on all keyboard types
     this.inputElements.forEach((input) =>
       input.addEventListener('beforeinput', (e: InputEvent & HTMLInputElementEventTarget) => {
-        console.log('beforeinput', e);
         const { data } = e;
 
-        // This is equivalent to the maxLength={1} but since iOS chrome fires single input event for keyboard auto-suggest we cant use the maxLength attribute
+        // This is equivalent to maxLength={1} but since some keyboard suggestions fire a single input event we cant use the maxLength attribute
+        // This causes the keyboard suggestion to only work if input is empty
         const preventMultipleInput = e.inputType === 'insertText' && e.target.value.length >= 1;
         const preventNonDigitInput = data && !isInputOnlyDigits(data);
 
-        if (preventMultipleInput || preventNonDigitInput) {
+        if (preventMultipleInput || preventNonDigitInput || this.loading) {
           e.preventDefault();
-        }
-        // Handle keyboard autosuggestion when all digits are sent by one input event
-        else if (data && data.length >= this.length) {
-          e.preventDefault();
-          const sanitisedValue = removeWhiteSpaces(getSanitisedValue(this.host, e.data, this.length));
-          this.updateValue(sanitisedValue);
-          this.focusFirstEmptyOrLastInput(sanitisedValue);
         }
       })
     );
@@ -142,11 +134,6 @@ export class PinCode {
     if (this.isWithinForm) {
       syncHiddenInput(this.hiddenInput, this.name, this.value, this.disabled, this.required);
     }
-  }
-
-  public componentDidRender(): void {
-    // Update the focus to the correct input element after a value was input
-    getCurrentInput(this.inputElements).focus();
   }
 
   public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
@@ -199,7 +186,7 @@ export class PinCode {
               pattern="\d*"
               inputMode="numeric" // get numeric keyboard on mobile
               value={this.value[index] === ' ' ? null : this.value[index]}
-              disabled={this.disabled || this.loading}
+              disabled={this.disabled}
               required={this.required}
               ref={(el) => this.inputElements.push(el)}
             />
@@ -215,15 +202,19 @@ export class PinCode {
     );
   }
 
-  private onInput = (
-    e: InputEvent & {
-      target: HTMLInputElement;
-    }
-  ): void => {
-    console.log('input', e);
+  private onInput = (e: InputEvent & HTMLInputElementEventTarget): void => {
     // Validation already happened in the beforeinput event
-    // iOS keyboard suggestion calls separate input events for each digit and inputs everything in the first input. By updating our value to what has been pasted, the component will update and distribute the values to the corresponding inputs
-    this.updateValue(getSanitisedValue(this.host, getConcatenatedInputValues(this.inputElements), this.length));
+    const { target } = e;
+    // Android keyboard suggestion calls single input event and inputs everything in the first input. By updating our value to what has been input, the component will update and distribute the values to the corresponding inputs.
+    if (target.value.length >= this.length) {
+      const sanitisedValue = removeWhiteSpaces(getSanitisedValue(this.host, target.value, this.length));
+      this.updateValue(sanitisedValue);
+      this.focusFirstEmptyOrLastInput(sanitisedValue);
+    } else {
+      // iOS keyboard suggestion calls separate input events for each digit
+      this.updateValue(getSanitisedValue(this.host, getConcatenatedInputValues(this.inputElements), this.length));
+      e.target.nextElementSibling?.focus();
+    }
   };
 
   private onKeyDown = (e: KeyboardEvent & HTMLInputElementEventTarget): void => {
@@ -235,12 +226,17 @@ export class PinCode {
     if (key === 'Backspace' || key === 'Delete') {
       // transfer focus backward/forward, if the input value is empty
       if (!target.value) {
+        e.preventDefault();
         if (key === 'Backspace' && previousElementSibling) {
+          previousElementSibling.value = '';
           previousElementSibling.focus();
         } else if (key === 'Delete' && nextElementSibling) {
+          nextElementSibling.value = '';
           nextElementSibling.focus();
         }
       }
+      target.value = '';
+      this.updateValue(getConcatenatedInputValues(this.inputElements));
     } else if (key === 'Enter') {
       if (isWithinForm && isFormSubmittable(this.host, this.form)) {
         this.form.requestSubmit();
@@ -255,7 +251,6 @@ export class PinCode {
   };
 
   private onPaste = (e: ClipboardEvent): void => {
-    console.log('paste', e);
     const sanitisedPastedValue = removeWhiteSpaces(
       getSanitisedValue(this.host, e.clipboardData.getData('Text'), this.length)
     );
