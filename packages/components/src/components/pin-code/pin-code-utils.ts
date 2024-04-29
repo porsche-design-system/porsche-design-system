@@ -18,10 +18,6 @@ export type HTMLInputElementEventTarget = {
   target: HTMLInputElement & { previousElementSibling: HTMLInputElement; nextElementSibling: HTMLInputElement };
 };
 
-// This keyCode will be returned if an Input Method Editor (IME) is processing the key input in a keydown event
-// https://lists.w3.org/Archives/Public/www-dom/2010JulSep/att-0182/keyCode-spec.html
-export const IME_KEYCODE = 229;
-
 export const removeSlottedSelector = (styles: Styles): Styles =>
   Object.fromEntries(
     Object.entries(styles).map(([key, value]) => {
