@@ -28,6 +28,7 @@ export const getComponentCss = (isOpen: boolean): string => {
     '@global': {
       ':host': addImportantToEachRule({
         position: 'fixed',
+        zIndex: '999999', // during transition the element will be removed from top-layer immediately, resulting in other elements laying over
         display: 'block',
         border: '0',
         outline: '0',
@@ -44,12 +45,14 @@ export const getComponentCss = (isOpen: boolean): string => {
           ? {
               opacity: 1,
               visibility: 'inherit',
+              pointerEvents: 'inherit',
               transform: 'translate3d(0,0,0)',
               transition: `transform var(${cssVariableAnimationDuration}, ${motionDurationModerate}) ${motionEasingIn}, opacity var(${cssVariableAnimationDuration}, ${motionDurationModerate}) ${motionEasingIn}`,
             }
           : {
               opacity: 0,
               visibility: 'hidden',
+              pointerEvents: 'none',
               transform: `translate3d(0,calc(var(${cssVariableBottom},${topBottomFallback}) + 100%),0)`,
               '&(.hydrated),&(.ssr)': {
                 transition: `visibility 0s linear var(${cssVariableAnimationDuration}, ${motionDurationLong}), transform var(${cssVariableAnimationDuration}, ${motionDurationModerate}) ${motionEasingOut}, opacity var(${cssVariableAnimationDuration}, ${motionDurationModerate}) ${motionEasingOut}`,

@@ -95,13 +95,8 @@ export class Banner {
     }
   }
 
-  public componentDidLoad(): void {
-    if (this.open) {
-      this.setBannerVisibility(true);
-    }
-  }
-
   public componentDidRender(): void {
+    // showPopover needs to be called after render cycle to prepare visibility states of popover in order to focus the dismiss button correctly
     this.setBannerVisibility(this.open);
 
     if (this.hasDismissButton) {
