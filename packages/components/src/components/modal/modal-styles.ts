@@ -100,7 +100,7 @@ export const getComponentCss = (
               borderRadius: 0,
             }
           : {
-              minWidth: 'auto',
+              minWidth: 'clamp(276px, 22.75vw + 203px, 640px)', // 'auto', // '276px', on viewport 320px: calc(${gridColumnWidthBase} * 6 + ${gridGap} * 5)
               maxWidth: '1535.5px', // to be in sync with "Porsche Grid" on viewport >= 1920px: `calc(${gridColumnWidthXXL} * 14 + ${gridGap} * 13)`
               minHeight: 'auto',
               margin: `var(${cssVariableSpacingTop},clamp(16px, 10vh, 192px)) ${gridExtendedOffsetBase} var(${cssVariableSpacingBottom},clamp(16px, 10vh, 192px))`,

@@ -129,6 +129,7 @@ const safeZoneBlockStart = `${spacingFluidSmall} calc(${spacingFluidLarge} - ${s
 const safeZoneBlockEnd = `calc(${spacingFluidLarge} - ${spacingFluidSmall}) ${spacingFluidSmall}`;
 export const getModalDialogGridJssStyle: JssStyle = {
   display: 'grid',
+  // TODO: alignment is not correct when content height is less than scroller height
   gridTemplate: `${safeZoneInlineStart} auto minmax(0, 1fr) auto auto ${safeZoneInlineEnd}/${safeZoneBlockStart} auto ${safeZoneBlockEnd}`,
 };
 
