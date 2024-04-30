@@ -135,7 +135,7 @@ export class Banner {
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
     return (
-      <Host popover="manual" tabIndex={-1}>
+      <Host popover="manual">
         <PrefixedTagNames.pInlineNotification
           ref={(el) => (this.inlineNotificationElement = el)}
           heading={this.heading}
