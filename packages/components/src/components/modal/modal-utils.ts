@@ -1,10 +1,11 @@
-import { type Backdrop } from '../../styles';
+import { type Backdrop } from '../../styles/dialog-styles';
 
 export const MODAL_ARIA_ATTRIBUTES = ['aria-label'] as const;
 export type ModalAriaAttribute = (typeof MODAL_ARIA_ATTRIBUTES)[number];
 
 export type ModalBackdrop = Backdrop;
 
+// TODO: can be removed?
 export const clickStartedInScrollbarTrack = (host: HTMLElement, e: MouseEvent): boolean => {
   const hasScrollbars = host.scrollHeight > host.offsetHeight;
 

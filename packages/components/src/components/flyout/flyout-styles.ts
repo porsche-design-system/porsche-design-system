@@ -1,7 +1,8 @@
 import { getCss, type Theme } from '../../utils';
+import { addImportantToEachRule, colorSchemeStyles, hostHiddenStyles } from '../../styles';
+import { spacingFluidMedium, spacingFluidSmall } from '@porsche-design-system/utilities-v2';
+import { type FlyoutPosition } from './flyout-utils';
 import {
-  addImportantToEachRule,
-  colorSchemeStyles,
   getDialogColorJssStyle,
   getModalDialogBackdropResetJssStyle,
   getModalDialogBackdropTransitionJssStyle,
@@ -12,18 +13,11 @@ import {
   getModalDialogScrollerJssStyle,
   getModalDialogStickyAreaJssStyle,
   getModalDialogTransitionJssStyle,
-  hostHiddenStyles,
-} from '../../styles';
-import { spacingFluidMedium, spacingFluidSmall } from '@porsche-design-system/utilities-v2';
-import type { FlyoutPosition } from './flyout-utils';
+  headingTags,
+} from '../../styles/dialog-styles';
 
 const cssVariableWidth = '--p-flyout-width';
 const cssVariableMaxWidth = '--p-flyout-max-width';
-
-export const headerShadowClass = 'header--shadow';
-export const footerShadowClass = 'footer--shadow';
-
-const headingTags = 'h1,h2,h3,h4,h5,h6';
 
 export const getComponentCss = (
   isOpen: boolean,

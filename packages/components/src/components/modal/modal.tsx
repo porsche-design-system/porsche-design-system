@@ -21,7 +21,7 @@ import {
 import type { ModalAriaAttribute, ModalBackdrop } from './modal-utils';
 import { MODAL_ARIA_ATTRIBUTES } from './modal-utils';
 import { getComponentCss } from './modal-styles';
-import { BACKDROPS } from '../../styles';
+import { BACKDROPS } from '../../styles/dialog-styles';
 
 const propTypes: PropTypes<typeof Modal> = {
   open: AllowedTypes.boolean,

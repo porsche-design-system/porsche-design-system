@@ -9,6 +9,12 @@ import { buildResponsiveStyles, getCss } from '../../utils';
 import {
   addImportantToEachRule,
   colorSchemeStyles,
+  getThemedColors,
+  hostHiddenStyles,
+  prefersColorSchemeDarkMediaQuery,
+} from '../../styles';
+import { type ModalBackdrop } from './modal-utils';
+import {
   getModalDialogBackdropResetJssStyle,
   getModalDialogBackdropTransitionJssStyle,
   getModalDialogDismissButtonJssStyle,
@@ -19,15 +25,11 @@ import {
   getModalDialogStickyAreaJssStyle,
   getModalDialogStretchToFullModalWidthJssStyle,
   getModalDialogTransitionJssStyle,
-  getThemedColors,
-  hostHiddenStyles,
-  prefersColorSchemeDarkMediaQuery,
-} from '../../styles';
-import { type ModalBackdrop } from './modal-utils';
+  headingTags,
+} from '../../styles/dialog-styles';
 
 const cssVariableSpacingTop = '--p-modal-spacing-top';
 const cssVariableSpacingBottom = '--p-modal-spacing-bottom';
-const headingTags = 'h1,h2,h3,h4,h5,h6';
 
 export const getComponentCss = (
   isOpen: boolean,
