@@ -213,6 +213,9 @@ exports[`should match snapshot 1`] = `
     "hasObserveAttributes": false,
     "hasObserveChildren": false,
     "hasSlot": true,
+    "hostAttributes": {
+      "popover": "manual",
+    },
     "isChunked": true,
     "isDelegatingFocus": false,
     "isInternal": false,
