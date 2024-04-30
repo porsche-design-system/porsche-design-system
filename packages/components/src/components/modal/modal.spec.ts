@@ -26,7 +26,7 @@ describe('componentDidLoad', () => {
 
   beforeEach(() => {
     jest.spyOn(focusTrapUtils, 'getFirstAndLastFocusableElement').mockImplementation(() => focusableElements);
-    jest.spyOn(domUtils, 'getShadowRootHTMLElement').mockImplementation(() => document.createElement('slot'));
+    jest.spyOn(domUtils, 'getShadowRootHTMLElements').mockImplementation(() => component.host.querySelectorAll('slot'));
   });
 
   it('should call this.updateFocusTrap() with correct parameters if modal is open', () => {
@@ -42,6 +42,18 @@ describe('componentDidLoad', () => {
     component.componentDidLoad();
 
     expect(spy).not.toHaveBeenCalled();
+  });
+
+  it('should call getShadowRootHTMLElement() with correct parameters and add event listener', () => {
+    const slot = document.createElement('slot');
+    const slotSpy = jest.spyOn(slot, 'addEventListener');
+    component.host.appendChild(slot);
+    const getShadowRootHTMLElementsSpy = jest
+      .spyOn(domUtils, 'getShadowRootHTMLElements')
+      .mockReturnValueOnce(component.host.querySelectorAll('slot'));
+    component.componentDidLoad();
+    expect(getShadowRootHTMLElementsSpy).toHaveBeenCalledWith(component.host, 'slot');
+    expect(slotSpy).toHaveBeenCalledTimes(1);
   });
 });
 

@@ -71,7 +71,7 @@ type TableHeadCellSort = {
 Upon clicking a sortable `p-table-head-cell` element, the `p-table` emits an `update` event that you should subscribe
 to.
 
-<Notification heading="Deprecation hint" state="warning">
+<Notification heading="Deprecation hint" heading-tag="h4" state="warning">
   The <code>sortingChange</code> event has been deprecated and will be removed with the next major release.<br>
   Please use the <code>update</code> event instead.
 </Notification>

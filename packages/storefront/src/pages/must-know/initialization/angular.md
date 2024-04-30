@@ -40,7 +40,7 @@ From here on the exact same things happen as described at
 [Vanilla Js Preparation](must-know/initialization/vanilla-js#preparation) and
 [Vanilla Js Connect Lifecycle](must-know/initialization/vanilla-js#connect-lifecycle).
 
-<Notification heading="Important" state="warning">
+<Notification heading="Important" heading-tag="h3" state="warning">
   In any JavaScript framework, the available wrapper components' purpose is typing, rendering a web component into the DOM and 
   syncing framework props to the rendered component. Once rendered, the web component has its own lifecycle and is not aware of any framework. 
 </Notification>
@@ -115,13 +115,13 @@ getComponentChunkLinks({ components: ['button'] });
 
 Now, everything is preloaded in parallel.
 
-<Notification heading="Hint" state="warning">
+<Notification heading="Hint" heading-tag="h4" state="warning">
   Just preloading all component chunks on the page or even every chunk available should be avoided.<br>
   Instead, the most performant but also more complicated approach would be to only preload the component chunks
   (and fonts) that are located <strong>above the fold</strong> which means visible on page load without scrolling.
 </Notification>
 
-<Notification heading="Conclusion" state="warning">
+<Notification heading="Conclusion" heading-tag="h4" state="warning">
   Applying the <code>getLoaderScript()</code> partial is pointless since there is no benefit because 
   everything Porsche Design System related is loaded before or at the same time as the Angular app itself. Therefore, the DOM is empty 
   once the preloaded chunks are available.

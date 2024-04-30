@@ -46,7 +46,7 @@ Our recommendation is to go with the 2nd option.
 To make integration easy, the affected partials accept the option `{ format: 'sha256' }` in order to receive the hash
 that needs to be applied with single quotes in the CSP header/meta tag.
 
-<Notification heading="Important note" state="success">
+<Notification heading="Important note" heading-tag="h3" state="success">
   The returned string from calling a partial, e.g. <code>getInitialStyles({ format: 'sha256' })</code> is already wrapped in single quotes so it can be used directly in your policy.
 </Notification>
 

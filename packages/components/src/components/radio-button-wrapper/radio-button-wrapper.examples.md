@@ -38,7 +38,7 @@ changes while this process is performed.
 
 ## Loading
 
-<Notification heading="Attention" state="warning">
+<Notification heading="Attention" heading-tag="h3" state="warning">
   The <code>loading</code> prop is experimental and might be removed in a future release.
 </Notification>
 

@@ -55,7 +55,7 @@ The `size` property changes the font size of the description.
 
 The `weight` property changes the font weight of the description.
 
-<Notification heading="Deprecation hint" state="warning">
+<Notification heading="Deprecation hint" heading-tag="h3" state="warning">
   The <code>semibold</code> value has been deprecated and will be removed with the next major release.<br>
   Please use the <code>semi-bold</code> value instead.
 </Notification>

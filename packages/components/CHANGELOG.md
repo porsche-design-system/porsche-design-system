@@ -14,6 +14,44 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ### [Unreleased]
 
+### [3.15.0-rc.3] - 2024-04-23
+
+#### Fixed
+
+- `Pin Code`: Fixed several problems with IME keyboards
+  ([#3197](https://github.com/porsche-design-system/porsche-design-system/pull/3197))
+
+### [3.15.0-rc.2] - 2024-04-22
+
+#### Added
+
+- `Accordion`: Add experimental property `sticky` for a fixed heading
+  ([#3181](https://github.com/porsche-design-system/porsche-design-system/pull/3181))
+- `Inline Notification`, `Banner`: heading hierarchy can now be customized with `headingTag` prop
+  ([#3168](https://github.com/porsche-design-system/porsche-design-system/pull/3168))
+
+#### Changed
+
+- `Accordion`: `tag` property is deprecated. Use `headingTag` property instead to specify heading hierarchy level.
+  ([#3168](https://github.com/porsche-design-system/porsche-design-system/pull/3168))
+
+```diff
+- <p-accordion tag="h3"></p-accordion>
++ <p-accordion heading-tag="h3"></p-accordion>
+```
+
+#### Fixed
+
+- `Pin Code`: Input is entered twice in iOS
+  ([#3192](https://github.com/porsche-design-system/porsche-design-system/pull/3192))
+
+### [3.15.0-rc.1] - 2024-04-17
+
+#### Added
+
+- Partials: `getMetaTagsAndIconLinks`, `getComponentChunkLinks`, `getIconLinks` and `getFontLinks` support new format
+  option `js` ([#3179](https://github.com/porsche-design-system/porsche-design-system/pull/3179))
+
 ### [3.15.0-rc.0] - 2024-04-05
 
 #### Changed
@@ -23,6 +61,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ### Fixed
 
+- `Modal`: Missing box-shadow on sticky footer when slotted content changes
+  ([#3154](https://github.com/porsche-design-system/porsche-design-system/pull/3154))
 - `Select`: Hydration error in Next.js when using slotted `img`
   ([#3162](https://github.com/porsche-design-system/porsche-design-system/pull/3162))
 - `Text Field Wrapper`, `Textarea Wrapper`: Dynamic changes of `showCounter` and `maxLength` are reflected. The counter

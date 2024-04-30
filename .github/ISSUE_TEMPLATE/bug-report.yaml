@@ -1,7 +1,8 @@
 name: 🐞 Bug Report
 description: Create a report to help us improve
 title: "[BUG] - Short description"
-labels: ["bug", "to be refined"]
+labels: ["bug", "community", "to be refined"]
+projects: ["porsche-design-system/14"]
 body:
   - type: markdown
     attributes:

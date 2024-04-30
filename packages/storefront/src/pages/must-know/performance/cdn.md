@@ -40,7 +40,7 @@ which CDN those assets shall be loaded to get maximum performance in China.
 To achieve this, a global browser variable `PORSCHE_DESIGN_SYSTEM_CDN` was introduced which needs to be defined before
 initializing the Porsche Design System.
 
-<Notification heading="Attention" state="warning">
+<Notification heading="Attention" heading-tag="h3" state="warning">
   Usually the integrating team that is responsible for the application is in charge of configuring which cdn to use.<br>
   This means that widget teams shouldn't set it and might even override it.
 </Notification>

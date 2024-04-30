@@ -2,11 +2,34 @@ name: 🆕 Feature Request
 description: Propose new functionality that everyone can benefit from
 title: "[FEATURE] - Short description"
 labels: ["community", "to be refined"]
+projects: ["porsche-design-system/14"]
 body:
   - type: markdown
     attributes:
       value: |
         Thanks for taking the time to fill out this feature request!
+  - type: dropdown
+    id: portfolio
+    attributes:
+      label: Portfolio
+      description: For which Porsche Portfolio are you requesting the feature?
+      options:
+        - No Portfolio
+        - Customer
+        - Delivery
+        - Employee
+        - Enterprise
+        - Finance
+        - IT4All
+        - Product
+    validations:
+      required: true
+  - type: input
+    id: team
+    attributes:
+      label: ART and Team
+      description: For which ART and team (separated with slash) are you requesting the feature?
+      placeholder: e.g. BaM / Model Page
   - type: input
     id: contact
     attributes:
@@ -36,11 +59,9 @@ body:
       description: Select the priority depending on the urgency of related release dates or legal requirements.
       options:
         - Urgent
-        - Hight
+        - High
         - Medium
         - Low
-      validations:
-      required: true
   - type: input
     id: resources
     attributes:
