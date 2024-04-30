@@ -117,13 +117,13 @@
   title="should render with slotted content with error state and message"
 >
   <p-checkbox-wrapper state="error">
-    <span slot="label">
+    <span slot="label" id="slotted-label-1">
       <span>
         Slotted label. And some slotted and deeply nested <a href="#">anchor</a>, <b>bold</b>, <strong>strong</strong>,
         <em>emphasized</em> and <i>italic</i> text.
       </span>
     </span>
-    <input type="checkbox" name="some-name" />
+    <input type="checkbox" name="some-name" aria-labelledby="slotted-label-1" />
     <span slot="message">
       <span>
         Slotted error message. And some slotted and deeply nested <a href="#">anchor</a>, <b>bold</b>,
@@ -138,13 +138,13 @@
   title="should render with slotted content with success state and message"
 >
   <p-checkbox-wrapper state="success">
-    <span slot="label">
+    <span slot="label" id="slotted-label-2">
       <span>
         Slotted label. And some slotted and deeply nested <a href="#">anchor</a>, <b>bold</b>, <strong>strong</strong>,
         <em>emphasized</em> and <i>italic</i> text.
       </span>
     </span>
-    <input type="checkbox" name="some-name" />
+    <input type="checkbox" name="some-name" aria-labelledby="slotted-label-2" />
     <span slot="message">
       <span>
         Slotted success message. And some slotted and deeply nested <a href="#">anchor</a>, <b>bold</b>,
