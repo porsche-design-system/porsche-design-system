@@ -14,6 +14,23 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ### [Unreleased]
 
+#### Added
+
+- `Flyout`: Experimental CSS variable `--p-flyout-sticky-top`
+
+#### Changed
+
+- `Modal`, `Flyout`:
+  - Sticky dismiss button
+  - Aligned layout, spacing and behaviour
+  - Renders fully on `#top-layer` (stacking behaviour has changed and follows W3C standards now, see
+    https://developer.mozilla.org/en-US/docs/Glossary/Top_layer and
+    https://developer.chrome.com/blog/what-is-the-top-layer)
+
+#### Fixed
+
+- `Modal`: Uses native `<dialog />` element to resolve focus issues (focus trap)
+
 ### [3.15.0-rc.3] - 2024-04-23
 
 #### Fixed
