@@ -67,7 +67,10 @@
 </div>
 
 <div class="playground light" title="should render with custom icon">
-  <p-icon source="./assets/icon-custom-kaixin.svg" aria-label="Icon for social media platform Kaixin"></p-icon>
+  <p-icon
+    source="./assets/icon-custom-kaixin.svg"
+    aria="{ 'aria-label': 'Icon for social media platform Kaixin' }"
+  ></p-icon>
 </div>
 
 <div class="playground light overview" title="should render all available icons and apply coloring programmatically">
@@ -79,7 +82,7 @@
         const [, str] = /const ICON_NAMES = (.*);/.exec(content);
         const ICON_NAMES = eval(str);
         const markup = ICON_NAMES.map(
-          (x) => `<p-icon name="${x}" size="inherit" color="inherit" aria-label="${x} icon"></p-icon>`
+          (x) => `<p-icon name="${x}" size="inherit" color="inherit" aria="{ 'aria-label': '${x}' }"></p-icon>`
         ).join('');
         document.querySelector('.overview').innerHTML = markup;
       });

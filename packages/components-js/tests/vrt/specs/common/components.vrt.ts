@@ -6,9 +6,10 @@ import { pdfToPng } from 'pdf-to-png-converter';
 import { schemes, themes, viewportWidthM, viewportWidths } from '@porsche-design-system/shared/testing/playwright.vrt';
 
 const components = (TAG_NAMES as unknown as TagName[])
+  // Filter out non-chunked components
   .filter((tagName) => {
-    // TODO: should not needed to be maintained like this, e.g. find a logic here with matching names or use/extend getComponentMeta() accordingly
-    return !/item$|-table-|-select-wrapper-|multi-select-option|select-option$/.test(tagName);
+    const { isChunked } = getComponentMeta(tagName);
+    return isChunked;
   })
   .map((tagName) => {
     return tagName.substring(2);
