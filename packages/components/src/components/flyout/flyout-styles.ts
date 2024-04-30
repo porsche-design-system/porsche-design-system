@@ -8,7 +8,6 @@ import {
   getModalDialogBackdropTransitionJssStyle,
   getModalDialogDismissButtonJssStyle,
   getModalDialogGridJssStyle,
-  getModalDialogHeadingJssStyle,
   getModalDialogHostJssStyle,
   getModalDialogScrollerJssStyle,
   getModalDialogStickyAreaJssStyle,
@@ -34,13 +33,14 @@ export const getComponentCss = (
       ':host': {
         display: 'block',
         ...addImportantToEachRule({
-          ...getModalDialogHostJssStyle(),
+          ...getModalDialogHostJssStyle,
           ...colorSchemeStyles,
           ...hostHiddenStyles,
         }),
       },
+      // TODO: maybe we should scope this selector to heading slot only or even reset any element for any slot to margin:0?
       [`::slotted(:is(${headingTags}))`]: {
-        margin: 0,
+        margin: 0, // ua-style (relevant for e.g. <h3 slot="header"/>)
       },
       slot: {
         display: 'block',
@@ -54,15 +54,9 @@ export const getComponentCss = (
       ...(hasHeader && {
         'slot[name=header]': {
           ...getModalDialogStickyAreaJssStyle('header', theme),
-          gridArea: '3/1/auto/-1',
-          // gridArea: '2/1/4/-1',
+          gridArea: '2/1/4/-1',
           zIndex: 1, // ensures header is above content but below sticky dismiss button
         },
-        'slot[name=heading],h1,h2,h3,h4,h5,h6,.foo': {
-          gridArea: '3/3',
-          zIndex: 0, // ensures header isn't above sticky footer or dismiss button
-        },
-        'slot[name=heading],h1,h2,h3,h4,h5,h6': getModalDialogHeadingJssStyle(),
       }),
       ...(hasFooter && {
         'slot[name=footer]': {
@@ -73,14 +67,13 @@ export const getComponentCss = (
       }),
       ...(hasSubFooter && {
         'slot[name=sub-footer]': {
-          // ...getModalDialogStickyAreaJssStyle('footer', theme),
-          marginTop: spacingFluidMedium,
+          marginTop: hasFooter ? spacingFluidMedium : null,
           gridArea: '6/3',
           zIndex: 2, // ensures footer is above header and content but below sticky dismiss button
         },
       }),
       dialog: {
-        ...getModalDialogBackdropResetJssStyle(),
+        ...getModalDialogBackdropResetJssStyle,
         ...getModalDialogBackdropTransitionJssStyle(isOpen, theme),
       },
     },
@@ -92,8 +85,8 @@ export const getComponentCss = (
       flexWrap: 'wrap',
     },
     flyout: {
+      ...getModalDialogGridJssStyle,
       ...getDialogColorJssStyle(theme),
-      ...getModalDialogGridJssStyle(),
       ...getModalDialogTransitionJssStyle(isOpen, isPositionStart ? '>' : '<'),
       width: `var(${cssVariableWidth}, fit-content)`,
       minWidth: '320px',

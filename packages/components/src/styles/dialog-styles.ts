@@ -4,18 +4,17 @@ import {
   borderRadiusSmall,
   frostedGlassStyle,
   gridGap,
-  headingLargeStyle,
   spacingFluidLarge,
   spacingFluidMedium,
   spacingFluidSmall,
   spacingStaticMedium,
 } from '@porsche-design-system/utilities-v2';
 import {
-  getThemedColors,
-  prefersColorSchemeDarkMediaQuery,
   cssVariableTransitionDuration,
-  motionDurationMap,
+  getThemedColors,
   getTransition,
+  motionDurationMap,
+  prefersColorSchemeDarkMediaQuery,
 } from './';
 import {
   buildResponsiveStyles,
@@ -32,31 +31,27 @@ export type Backdrop = (typeof BACKDROPS)[number];
 
 export const headingTags = 'h1,h2,h3,h4,h5,h6';
 
-export const getModalDialogHostJssStyle = (): JssStyle => {
-  return {
-    '--pds-internal-grid-outer-column': `calc(${spacingFluidLarge} - ${gridGap})`,
-    '--pds-internal-grid-margin': `calc(${spacingFluidLarge} * -1)`,
-  };
+export const getModalDialogHostJssStyle: JssStyle = {
+  '--pds-internal-grid-outer-column': `calc(${spacingFluidLarge} - ${gridGap})`,
+  '--pds-internal-grid-margin': `calc(${spacingFluidLarge} * -1)`,
 };
 
-export const getModalDialogBackdropResetJssStyle = (): JssStyle => {
-  return {
-    position: 'fixed', // ua-style
-    inset: 0, // ua-style
-    margin: 0, // ua-style
-    padding: 0, // ua-style
-    border: 0, // ua-style
-    width: '100dvw', // ua-style
-    height: '100dvh', // ua-style
-    maxWidth: '100dvw', // ua-style
-    maxHeight: '100dvh', // ua-style
-    overflow: 'hidden', // ua-style
-    display: 'block', // ua-style
-    outline: 0, // ua-style (we always expect a focusable element to be within the dialog)
-    '&::backdrop': {
-      display: 'none', // ua-style (we can't use it atm because it's not animatable in all browsers)
-    },
-  };
+export const getModalDialogBackdropResetJssStyle: JssStyle = {
+  position: 'fixed', // ua-style
+  inset: 0, // ua-style
+  margin: 0, // ua-style
+  padding: 0, // ua-style
+  border: 0, // ua-style
+  width: '100dvw', // ua-style
+  height: '100dvh', // ua-style
+  maxWidth: '100dvw', // ua-style
+  maxHeight: '100dvh', // ua-style
+  overflow: 'hidden', // ua-style
+  display: 'block', // ua-style
+  outline: 0, // ua-style (we always expect a focusable element to be within the dialog)
+  '&::backdrop': {
+    display: 'none', // ua-style (we can't use it atm because it's not animatable in all browsers)
+  },
 };
 
 export const getModalDialogBackdropTransitionJssStyle = (
@@ -107,7 +102,7 @@ export const getModalDialogBackdropTransitionJssStyle = (
 };
 
 export const getModalDialogScrollerJssStyle = (theme: Theme): JssStyle => {
-  // ensures scrollbar color is set correctly (e.g. when scrollbar is shown on backdrop, on flyout/modal or with Auto Dark Mode)
+  // ensures scrollbar color is set correctly (e.g. when scrollbar is shown on backdrop, on flyout/modal surface or with Auto Dark Mode)
   const backgroundLight = 'rgba(255,255,255,.01)';
   const backgroundDark = 'rgba(0,0,0,.01)';
   const background: { [K in Theme]: string } = {
@@ -128,16 +123,13 @@ export const getModalDialogScrollerJssStyle = (theme: Theme): JssStyle => {
   };
 };
 
-export const getModalDialogGridJssStyle = (): JssStyle => {
-  const safeZoneInlineStart = `${spacingFluidSmall} calc(${spacingFluidMedium} - ${spacingFluidSmall})`;
-  const safeZoneInlineEnd = `calc(${spacingFluidMedium} - ${spacingFluidSmall}) ${spacingFluidSmall}`;
-  const safeZoneBlockStart = `${spacingFluidSmall} calc(${spacingFluidLarge} - ${spacingFluidSmall})`;
-  const safeZoneBlockEnd = `calc(${spacingFluidLarge} - ${spacingFluidSmall}) ${spacingFluidSmall}`;
-
-  return {
-    display: 'grid',
-    gridTemplate: `${safeZoneInlineStart} auto minmax(0, 1fr) auto auto ${safeZoneInlineEnd}/${safeZoneBlockStart} auto ${safeZoneBlockEnd}`,
-  };
+const safeZoneInlineStart = `${spacingFluidSmall} calc(${spacingFluidMedium} - ${spacingFluidSmall})`;
+const safeZoneInlineEnd = `calc(${spacingFluidMedium} - ${spacingFluidSmall}) ${spacingFluidSmall}`;
+const safeZoneBlockStart = `${spacingFluidSmall} calc(${spacingFluidLarge} - ${spacingFluidSmall})`;
+const safeZoneBlockEnd = `calc(${spacingFluidLarge} - ${spacingFluidSmall}) ${spacingFluidSmall}`;
+export const getModalDialogGridJssStyle: JssStyle = {
+  display: 'grid',
+  gridTemplate: `${safeZoneInlineStart} auto minmax(0, 1fr) auto auto ${safeZoneInlineEnd}/${safeZoneBlockStart} auto ${safeZoneBlockEnd}`,
 };
 
 export const getDialogColorJssStyle = (theme: Theme): JssStyle => {
@@ -159,7 +151,6 @@ export const getModalDialogTransitionJssStyle = (isVisible: boolean, slideIn: '^
   const easing = isVisible ? 'in' : 'out';
 
   return {
-    opacity: 0,
     // transition offset relies vertically on viewport (vh) because the dialog height can be infinite, while horizontally
     // it relies on the dialog width (%) which has a max-width
     ...(isVisible
@@ -168,6 +159,8 @@ export const getModalDialogTransitionJssStyle = (isVisible: boolean, slideIn: '^
           transform: 'initial',
         }
       : {
+          // TODO: tbd. if opacity shall be animated for flyout at all
+          opacity: 0,
           transform: slideIn === '^' ? 'translateY(25vh)' : `translateX(${slideIn === '>' ? '-' : ''}100%)`,
           '&:dir(rtl)': {
             transform: slideIn === '^' ? 'translateY(25vh)' : `translateX(${slideIn === '>' ? '' : '-'}100%)`,
@@ -195,17 +188,14 @@ export const getModalDialogDismissButtonJssStyle = (
       background: backgroundSurfaceColorDark,
       borderColor: backgroundSurfaceColorDark,
     }),
+    // we need to ensure that the dismiss button, which gets auto focused by `.showModal()`, to always be in the
+    // viewport (or off the view on the start-hand side) before the dialog transition starts otherwise the transition
+    // won't work in all cases, e.g. `dir="rtl"` and `<p-flyout position="end" />`. Because auto focus would force the
+    // dismiss button to be rendered in the viewport immediately and ignore the transition.
     ...(applyAutoFocusHack && {
       marginInlineEnd: isOpen ? 0 : '200vw',
       transition: `margin-inline 0s linear var(${cssVariableTransitionDuration}, ${isOpen ? '1ms' : '0s'})`,
     }),
-  };
-};
-
-export const getModalDialogHeadingJssStyle = (): JssStyle => {
-  return {
-    ...headingLargeStyle,
-    margin: 0,
   };
 };
 

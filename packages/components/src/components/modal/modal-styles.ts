@@ -1,25 +1,20 @@
 import {
   borderRadiusMedium,
   gridExtendedOffsetBase,
+  headingLargeStyle,
   spacingFluidMedium,
   spacingFluidSmall,
 } from '@porsche-design-system/utilities-v2';
 import { type BreakpointCustomizable, type Theme } from '../../types';
 import { buildResponsiveStyles, getCss } from '../../utils';
-import {
-  addImportantToEachRule,
-  colorSchemeStyles,
-  getThemedColors,
-  hostHiddenStyles,
-  prefersColorSchemeDarkMediaQuery,
-} from '../../styles';
+import { addImportantToEachRule, colorSchemeStyles, hostHiddenStyles } from '../../styles';
 import { type ModalBackdrop } from './modal-utils';
 import {
+  getDialogColorJssStyle,
   getModalDialogBackdropResetJssStyle,
   getModalDialogBackdropTransitionJssStyle,
   getModalDialogDismissButtonJssStyle,
   getModalDialogGridJssStyle,
-  getModalDialogHeadingJssStyle,
   getModalDialogHostJssStyle,
   getModalDialogScrollerJssStyle,
   getModalDialogStickyAreaJssStyle,
@@ -40,21 +35,17 @@ export const getComponentCss = (
   hasFooter: boolean,
   theme: Theme
 ): string => {
-  const { primaryColor, backgroundColor } = getThemedColors(theme);
-  const { primaryColor: primaryColorDark, backgroundColor: backgroundColorDark } = getThemedColors('dark');
-
   return getCss({
     '@global': {
       ':host': addImportantToEachRule({
-        ...getModalDialogHostJssStyle(),
+        ...getModalDialogHostJssStyle,
         ...colorSchemeStyles,
         ...hostHiddenStyles,
       }),
-      '::slotted': {
-        ...getModalDialogStretchToFullModalWidthJssStyle(hasHeader, hasFooter, fullscreen),
-      },
+      '::slotted': getModalDialogStretchToFullModalWidthJssStyle(hasHeader, hasFooter, fullscreen),
+      // TODO: maybe we should scope this selector to heading slot only or even reset any element for any slot to margin:0?
       [`::slotted(:is(${headingTags}))`]: {
-        margin: 0,
+        margin: 0, // ua-style (relevant for e.g. <h3 slot="header"/>)
       },
       slot: {
         display: 'block',
@@ -70,7 +61,10 @@ export const getComponentCss = (
           gridArea: '3/3',
           zIndex: 0, // ensures header isn't above sticky footer or dismiss button
         },
-        'slot[name=heading],h1,h2,h3,h4,h5,h6': getModalDialogHeadingJssStyle(),
+        'slot[name=heading],h1,h2,h3,h4,h5,h6': {
+          ...headingLargeStyle,
+          margin: 0,
+        },
       }),
       ...(hasFooter && {
         'slot[name=footer]': {
@@ -80,19 +74,22 @@ export const getComponentCss = (
         },
       }),
       dialog: {
-        ...getModalDialogBackdropResetJssStyle(),
+        ...getModalDialogBackdropResetJssStyle,
         ...getModalDialogBackdropTransitionJssStyle(isOpen, theme, backdrop),
       },
     },
+    scroller: {
+      ...getModalDialogScrollerJssStyle(theme),
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'center',
+      flexWrap: 'wrap',
+    },
     modal: {
-      ...getModalDialogGridJssStyle(),
+      ...getModalDialogGridJssStyle,
+      ...getDialogColorJssStyle(theme),
       ...getModalDialogTransitionJssStyle(isOpen),
-      color: primaryColor, // enables color inheritance for slots
-      background: backgroundColor,
-      ...prefersColorSchemeDarkMediaQuery(theme, {
-        color: primaryColorDark,
-        background: backgroundColorDark,
-      }),
+      // TODO: maybe we should deprecate the fullscreen property and force the modal to be fullscreen on mobile only
       ...buildResponsiveStyles(fullscreen, (fullscreenValue: boolean) =>
         fullscreenValue
           ? {
@@ -110,13 +107,6 @@ export const getComponentCss = (
               borderRadius: borderRadiusMedium,
             }
       ),
-    },
-    scroller: {
-      ...getModalDialogScrollerJssStyle(theme),
-      display: 'flex',
-      justifyContent: 'center',
-      alignItems: 'center',
-      flexWrap: 'wrap',
     },
     ...(hasDismissButton && {
       dismiss: {
