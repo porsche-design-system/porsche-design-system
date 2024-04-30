@@ -7,7 +7,6 @@ import {
   gridExtendedOffsetXXL,
   motionDurationLong,
   motionDurationModerate,
-  motionEasingIn,
   motionEasingOut,
 } from '@porsche-design-system/utilities-v2';
 import { getCss } from '../../utils';
@@ -15,6 +14,7 @@ import {
   addImportantToEachRule,
   colorSchemeStyles,
   cssVariableAnimationDuration,
+  getTransition,
   hostHiddenStyles,
 } from '../../styles';
 
@@ -46,7 +46,7 @@ export const getComponentCss = (isOpen: boolean): string => {
               visibility: 'inherit',
               pointerEvents: 'inherit',
               transform: 'translate3d(0,0,0)',
-              transition: `transform var(${cssVariableAnimationDuration}, ${motionDurationModerate}) ${motionEasingIn}, opacity var(${cssVariableAnimationDuration}, ${motionDurationModerate}) ${motionEasingIn}`,
+              transition: `${getTransition('transform', 'moderate', 'in')}, ${getTransition('opacity', 'moderate', 'in')}`,
             }
           : {
               opacity: 0,
@@ -54,10 +54,10 @@ export const getComponentCss = (isOpen: boolean): string => {
               pointerEvents: 'none',
               transform: `translate3d(0,calc(var(${cssVariableBottom},${topBottomFallback}) + 100%),0)`,
               '&(.hydrated),&(.ssr)': {
-                transition: `visibility 0s linear var(${cssVariableAnimationDuration}, ${motionDurationLong}), transform var(${cssVariableAnimationDuration}, ${motionDurationModerate}) ${motionEasingOut}, opacity var(${cssVariableAnimationDuration}, ${motionDurationModerate}) ${motionEasingOut}`,
+                transition: `visibility 0s linear var(${cssVariableAnimationDuration}, ${motionDurationLong}), ${getTransition('transform', 'moderate', 'out')}, ${getTransition('opacity', 'moderate', 'out')}`,
                 // during transition the element will be removed from top-layer immediately, resulting in other elements laying over (as of Mai 2024 only Chrome is fixed by this)
                 '@supports (transition-behavior: allow-discrete)': {
-                  transition: `visibility 0s linear var(${cssVariableAnimationDuration}, ${motionDurationLong}), transform var(${cssVariableAnimationDuration}, ${motionDurationModerate}) ${motionEasingOut}, opacity var(${cssVariableAnimationDuration}, ${motionDurationModerate}) ${motionEasingOut}, overlay var(${cssVariableAnimationDuration}, ${motionDurationModerate}) ${motionEasingOut} allow-discrete`,
+                  transition: `visibility 0s linear var(${cssVariableAnimationDuration}, ${motionDurationLong}), ${getTransition('transform', 'moderate', 'out')}, ${getTransition('opacity', 'moderate', 'out')}, overlay var(${cssVariableAnimationDuration}, ${motionDurationModerate}) ${motionEasingOut} allow-discrete`,
                 },
               },
             }),
