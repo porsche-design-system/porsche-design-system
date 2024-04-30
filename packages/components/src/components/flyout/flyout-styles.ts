@@ -8,12 +8,13 @@ import {
   getModalDialogDismissButtonJssStyle,
   getModalDialogGridJssStyle,
   getModalDialogHeadingJssStyle,
+  getModalDialogHostJssStyle,
   getModalDialogScrollerJssStyle,
   getModalDialogStickyAreaJssStyle,
   getModalDialogTransitionJssStyle,
   hostHiddenStyles,
 } from '../../styles';
-import { gridGap, spacingFluidLarge, spacingFluidMedium, spacingFluidSmall } from '@porsche-design-system/utilities-v2';
+import { spacingFluidMedium, spacingFluidSmall } from '@porsche-design-system/utilities-v2';
 import type { FlyoutPosition } from './flyout-utils';
 
 const cssVariableWidth = '--p-flyout-width';
@@ -39,11 +40,7 @@ export const getComponentCss = (
       ':host': {
         display: 'block',
         ...addImportantToEachRule({
-          // TODO: align with Modal
-          // needed for correct alignment of the Porsche Grid within the Flyout
-          '--pds-internal-grid-outer-column': `calc(${spacingFluidLarge} - ${gridGap})`,
-          '--pds-internal-grid-margin': `calc(${spacingFluidLarge} * -1)`,
-          // ...getBackdropJssStyle(isOpen, FLYOUT_Z_INDEX, theme),
+          ...getModalDialogHostJssStyle(),
           ...colorSchemeStyles,
           ...hostHiddenStyles,
         }),

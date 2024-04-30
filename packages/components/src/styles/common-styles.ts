@@ -9,6 +9,7 @@ import {
   borderRadiusSmall,
   borderWidthBase,
   frostedGlassStyle,
+  gridGap,
   headingLargeStyle,
   motionDurationLong,
   motionDurationModerate,
@@ -215,6 +216,13 @@ export const getBackdropJssStyle = (
 ///////////////////////////////////////////
 */
 
+export const getModalDialogHostJssStyle = (): JssStyle => {
+  return {
+    '--pds-internal-grid-outer-column': `calc(${spacingFluidLarge} - ${gridGap})`,
+    '--pds-internal-grid-margin': `calc(${spacingFluidLarge} * -1)`,
+  };
+};
+
 export const getModalDialogBackdropResetJssStyle = (): JssStyle => {
   return {
     position: 'fixed', // ua-style
@@ -228,6 +236,10 @@ export const getModalDialogBackdropResetJssStyle = (): JssStyle => {
     maxHeight: '100dvh', // ua-style
     overflow: 'hidden', // ua-style
     display: 'block', // ua-style
+    outline: 0, // ua-style (we always expect a focusable element to be within the dialog)
+    '&::backdrop': {
+      display: 'none', // ua-style (we can't use it atm because it's not animatable in all browsers)
+    },
   };
 };
 
@@ -236,13 +248,17 @@ export const getModalDialogBackdropTransitionJssStyle = (
   theme: Theme,
   backdrop: Backdrop = 'blur'
 ): JssStyle => {
-  // const duration: MotionDurationKey = 'long';
   const isBackdropBlur = backdrop === 'blur';
   const { backgroundShadingColor } = getThemedColors(theme);
   const { backgroundShadingColor: backgroundShadingColorDark } = getThemedColors('dark');
 
   const duration = isVisible ? 'long' : 'moderate';
   const easing = isVisible ? 'in' : 'out';
+  const transition = `visibility 0s linear var(${cssVariableTransitionDuration}, ${isVisible ? '0s' : motionDurationMap[duration]}), ${getTransition('background-color', duration, easing)}, ${getTransition(
+    '-webkit-backdrop-filter',
+    duration,
+    easing
+  )}, ${getTransition('backdrop-filter', duration, easing)}`;
 
   return {
     zIndex: 9999999, // fallback for fade out stacking until `overlay` + `allow-discrete` is supported in all browsers. It tries to mimic #top-layer positioning hierarchy.
@@ -265,45 +281,34 @@ export const getModalDialogBackdropTransitionJssStyle = (
             backdropFilter: 'blur(0px)',
           }),
         }),
+    transition,
     // `allow-discrete` transition for ua-style `overlay` (supported browsers only) ensures dialog is rendered on
     // #top-layer as long as fade-in or fade-out transition/animation is running
-    transition: `visibility 0s linear var(${cssVariableTransitionDuration}, ${isVisible ? '0s' : motionDurationMap[duration]}), ${getTransition('background-color', duration, easing)}, ${getTransition(
-      '-webkit-backdrop-filter',
-      duration,
-      easing
-    )}, ${getTransition('backdrop-filter', duration, easing)}`,
     '@supports (transition-behavior: allow-discrete)': {
-      transition: `visibility 0s linear var(${cssVariableTransitionDuration}, ${isVisible ? '0s' : motionDurationMap[duration]}), ${getTransition('overlay', duration, easing)} allow-discrete, ${getTransition('background-color', duration, easing)}, ${getTransition(
-        '-webkit-backdrop-filter',
-        duration,
-        easing
-      )}, ${getTransition('backdrop-filter', duration, easing)}`,
-    },
-    '&::backdrop': {
-      display: 'none', // we can't use it atm because it's not animatable in all browsers
+      transition: `${transition}, ${getTransition('overlay', duration, easing)} allow-discrete`,
     },
   };
 };
 
-export const getModalDialogScrollerJssStyle = (
-  theme: Theme,
-  fullscreen: BreakpointCustomizable<boolean> = false
-): JssStyle => {
+export const getModalDialogScrollerJssStyle = (theme: Theme): JssStyle => {
+  // ensures scrollbar color is set correctly (e.g. when scrollbar is shown on backdrop, on flyout/modal or with Auto Dark Mode)
+  const backgroundLight = 'rgba(255,255,255,.01)';
+  const backgroundDark = 'rgba(0,0,0,.01)';
+  const background: { [K in Theme]: string } = {
+    light: backgroundLight,
+    dark: backgroundDark,
+    auto: backgroundLight,
+  };
+
   return {
     position: 'absolute',
     inset: 0,
     overflow: 'hidden auto',
     overscrollBehaviorY: 'none',
-    // ...buildResponsiveStyles(fullscreen, (fullscreenValue: boolean) =>
-    //   fullscreenValue
-    //     ? {
-    //         ...getDialogColorJssStyle(theme),
-    //       }
-    //     : {
-    //         background: 'transparent',
-    //         color: 'transparent',
-    //       }
-    // ),
+    background: background[theme],
+    ...prefersColorSchemeDarkMediaQuery(theme, {
+      background: background.dark,
+    }),
   };
 };
 
@@ -333,9 +338,7 @@ export const getDialogColorJssStyle = (theme: Theme): JssStyle => {
   };
 };
 
-type SlideIn = '^' | '<' | '>';
-
-export const getModalDialogTransitionJssStyle = (isVisible: boolean, slideIn: SlideIn = '^'): JssStyle => {
+export const getModalDialogTransitionJssStyle = (isVisible: boolean, slideIn: '^' | '<' | '>' = '^'): JssStyle => {
   const duration = isVisible ? 'moderate' : 'short';
   const easing = isVisible ? 'in' : 'out';
 
@@ -377,7 +380,7 @@ export const getModalDialogDismissButtonJssStyle = (
       borderColor: backgroundSurfaceColorDark,
     }),
     ...(applyAutoFocusHack && {
-      marginInlineEnd: isOpen ? 0 : '200dvw',
+      marginInlineEnd: isOpen ? 0 : '200vw',
       transition: `margin-inline 0s linear var(${cssVariableTransitionDuration}, ${isOpen ? '1ms' : '0s'})`,
     }),
   };

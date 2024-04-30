@@ -14,6 +14,7 @@ import {
   getModalDialogDismissButtonJssStyle,
   getModalDialogGridJssStyle,
   getModalDialogHeadingJssStyle,
+  getModalDialogHostJssStyle,
   getModalDialogScrollerJssStyle,
   getModalDialogStickyAreaJssStyle,
   getModalDialogStretchToFullModalWidthJssStyle,
@@ -43,6 +44,7 @@ export const getComponentCss = (
   return getCss({
     '@global': {
       ':host': addImportantToEachRule({
+        ...getModalDialogHostJssStyle(),
         ...colorSchemeStyles,
         ...hostHiddenStyles,
       }),

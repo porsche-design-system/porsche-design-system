@@ -29,6 +29,7 @@ import type { PropTypes, SelectedAriaAttributes, Theme } from '../../types';
 const propTypes: PropTypes<typeof Flyout> = {
   open: AllowedTypes.boolean,
   position: AllowedTypes.oneOf<FlyoutPosition>(FLYOUT_POSITIONS),
+  disableBackdropClick: AllowedTypes.boolean,
   theme: AllowedTypes.oneOf<Theme>(THEMES),
   aria: AllowedTypes.aria<FlyoutAriaAttribute>(FLYOUT_ARIA_ATTRIBUTES),
 };
@@ -45,6 +46,9 @@ export class Flyout {
 
   /** The position of the flyout */
   @Prop() public position?: FlyoutPosition = 'end';
+
+  /** If true, the modal will not be closable via backdrop click. */
+  @Prop() public disableBackdropClick?: boolean = false;
 
   /** Adapts the flyout color depending on the theme. */
   @Prop() public theme?: Theme = 'light';
@@ -92,6 +96,7 @@ export class Flyout {
 
       const ro = new ResizeObserver((entries) => {
         for (const entry of entries) {
+          // "-1" because of `top: -1px` sticky hack
           sheet.replaceSync(
             `:host{--p-flyout-sticky-top:${Math.floor(entry.target.getBoundingClientRect().height) - 1}px}`
           );
@@ -147,8 +152,12 @@ export class Flyout {
         tabIndex={-1} // dialog always has a dismiss button to be focused
         ref={(el) => (this.dialog = el)}
         onCancel={(e) => onCancelDialog(e, this.dismissDialog)}
-        onClick={(e) => onClickDialog(e, this.dismissDialog)}
-        {...parseAndGetAriaAttributes(this.aria)}
+        onClick={(e) => onClickDialog(e, this.dismissDialog, this.disableBackdropClick)}
+        {...parseAndGetAriaAttributes({
+          'aria-modal': true,
+          'aria-hidden': !this.open,
+          ...parseAndGetAriaAttributes(this.aria),
+        })}
       >
         <div class="scroller" ref={(el) => (this.scroller = el)}>
           <div class="flyout">

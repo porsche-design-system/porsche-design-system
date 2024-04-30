@@ -14,7 +14,7 @@ export const onCancelDialog = (e: Event, cb: () => void): void => {
   cb();
 };
 
-export const onClickDialog = (e: MouseEvent, cb: () => void, disable: boolean = false): void => {
+export const onClickDialog = (e: MouseEvent, cb: () => void, disable: boolean): void => {
   if (!disable && (e as MouseEvent & { target: HTMLElement }).target.className === 'scroller') {
     cb(); // dismiss dialog when clicked on backdrop
   }
