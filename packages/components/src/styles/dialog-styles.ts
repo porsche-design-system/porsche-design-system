@@ -123,14 +123,15 @@ export const getModalDialogScrollerJssStyle = (theme: Theme): JssStyle => {
   };
 };
 
-const safeZoneInlineStart = `${spacingFluidSmall} calc(${spacingFluidMedium} - ${spacingFluidSmall})`;
-const safeZoneInlineEnd = `calc(${spacingFluidMedium} - ${spacingFluidSmall}) ${spacingFluidSmall}`;
+// TODO: inline / block named wrongly?
+const safeZoneInlineStart = `${spacingFluidSmall} ${spacingFluidMedium}`;
+const safeZoneInlineEnd = `${spacingFluidMedium} ${spacingFluidSmall}`;
 const safeZoneBlockStart = `${spacingFluidSmall} calc(${spacingFluidLarge} - ${spacingFluidSmall})`;
 const safeZoneBlockEnd = `calc(${spacingFluidLarge} - ${spacingFluidSmall}) ${spacingFluidSmall}`;
 export const getModalDialogGridJssStyle: JssStyle = {
   display: 'grid',
   // TODO: alignment is not correct when content height is less than scroller height
-  gridTemplate: `${safeZoneInlineStart} auto minmax(0, 1fr) auto auto ${safeZoneInlineEnd}/${safeZoneBlockStart} auto ${safeZoneBlockEnd}`,
+  gridTemplate: `${safeZoneInlineStart} repeat(4, auto) minmax(0, 1fr) ${safeZoneInlineEnd}/${safeZoneBlockStart} auto ${safeZoneBlockEnd}`,
 };
 
 export const getDialogColorJssStyle = (theme: Theme): JssStyle => {
@@ -208,19 +209,25 @@ export const getModalDialogStickyAreaJssStyle = (area: 'header' | 'footer', them
 
   return {
     position: 'sticky',
+    // necessary for `IntersectionObserver` to detect if sticky element is stuck or not.
+    // Float values (e.g. -0.1px) are not recommend because this might in slightly squeezed elements within sticky area.
     ...(isAreaHeader
       ? {
-          top: '-1px', // necessary for `IntersectionObserver` to detect if sticky element is stuck or not
+          top: '-1px',
         }
       : {
-          bottom: '-1px', // necessary for `IntersectionObserver` to detect if sticky element is stuck or not
+          bottom: '-1px',
         }),
-    marginBlock: `-${spacingStaticMedium}`, // compensate padding-block
+    marginBlock: `calc(${spacingFluidSmall} * -1)`, // compensate safe-zone
     padding: `${spacingStaticMedium} ${spacingFluidLarge}`, // with CSS subgrid the spacingFluidLarge definition wouldn't be necessary
     background: backgroundColor,
     ...prefersColorSchemeDarkMediaQuery(theme, {
       background: backgroundColorDark,
     }),
+    // ensures modal surface does not become boxy
+    borderRadius: isAreaHeader
+      ? `${borderRadiusMedium} ${borderRadiusMedium} 0 0`
+      : `0 0 ${borderRadiusMedium} ${borderRadiusMedium}`,
     clipPath: `inset(${isAreaHeader ? '0 0 -20px 0' : '-20px 0 0 0'})`, // crop leaking box-shadow on left and right side
     transition: `${getTransition('box-shadow')}`,
     '&[data-stuck]': {
