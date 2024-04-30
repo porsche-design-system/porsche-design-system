@@ -13,7 +13,7 @@ import { getCss } from '../../utils';
 import {
   addImportantToEachRule,
   colorSchemeStyles,
-  cssVariableAnimationDuration,
+  cssVariableTransitionDuration,
   getTransition,
   hostHiddenStyles,
 } from '../../styles';
@@ -55,10 +55,10 @@ export const getComponentCss = (isOpen: boolean): string => {
                 pointerEvents: 'none',
                 transform: `translate3d(0,calc(var(${cssVariableBottom},${topBottomFallback}) + 100%),0)`,
                 '&(.hydrated),&(.ssr)': {
-                  transition: `visibility 0s linear var(${cssVariableAnimationDuration}, ${motionDurationLong}), ${getTransition('transform', 'moderate', 'out')}, ${getTransition('opacity', 'moderate', 'out')}`,
+                  transition: `visibility 0s linear var(${cssVariableTransitionDuration}, ${motionDurationLong}), ${getTransition('transform', 'moderate', 'out')}, ${getTransition('opacity', 'moderate', 'out')}`,
                   // during transition the element will be removed from top-layer immediately, resulting in other elements laying over (as of Mai 2024 only Chrome is fixed by this)
                   '@supports (transition-behavior: allow-discrete)': {
-                    transition: `visibility 0s linear var(${cssVariableAnimationDuration}, ${motionDurationLong}), ${getTransition('transform', 'moderate', 'out')}, ${getTransition('opacity', 'moderate', 'out')}, overlay var(${cssVariableAnimationDuration}, ${motionDurationModerate}) ${motionEasingOut} allow-discrete`,
+                    transition: `visibility 0s linear var(${cssVariableTransitionDuration}, ${motionDurationLong}), ${getTransition('transform', 'moderate', 'out')}, ${getTransition('opacity', 'moderate', 'out')}, overlay var(${cssVariableTransitionDuration}, ${motionDurationModerate}) ${motionEasingOut} allow-discrete`,
                   },
                 },
               }),
