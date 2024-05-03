@@ -39,14 +39,18 @@ feedback and associated requirements.
 
 Please take a look at our [versioning and release strategy](must-know/versioning).
 
+## How often should I update?
+
+As part of professional software development, it's recommended to update the
+`@porsche-design-system/components-{js|react|angular|vue}` npm package (like any other npm dependency) on a regular
+basis, e.g. every 2 weeks. This is important to get the latest bug fixes, security fixes and performance improvements as
+well as ensuring a harmonic visual appearance and user experience across different Porsche applications.
+
 ## How to handle older versions?
 
-If you are still running older versions (e.g. `@porsche/ui-kit-core`–`v0` or `@porsche/ui-kit-react`–`v0`), we highly
-recommend updating to the latest Porsche Design System release if possible. If you have to stick to `v0` components
-because they do not exist in the new version, you can include both libraries in parallel.
-
-If using both libraries in parallel, only use one component of the same type, e.g. do not use `button`-component of `v0`
-and `v1` in parallel, which could cause design inconsistencies and performance issues.
+If you are still running older versions (e.g. `@porsche/ui-kit-core`–`v0`, `@porsche/ui-kit-react`–`v0`,
+`@porsche-design-system/components-{js|react|angular}@{v1|v2}`), we highly recommend updating to the latest Porsche
+Design System release if possible.
 
 ## How do I submit bug reports or feature requests and how are they handled?
 
