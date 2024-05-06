@@ -6,7 +6,7 @@ import {
   removeSlottedSelector,
   initHiddenInput,
   hasInputOnlyDigitsOrWhitespaces,
-  isInputSingleDigit,
+  isInputOnlyDigits,
   getConcatenatedInputValues,
   syncHiddenInput,
   warnAboutTransformedValue,
@@ -138,18 +138,18 @@ describe('warnAboutTransformedValue()', () => {
   });
 });
 
-describe('isInputSingleDigit()', () => {
-  it.each<[string]>([['12'], ['abc'], ['a'], ['/^'], ['^'], [null], [undefined]])(
+describe('isInputOnlyDigits()', () => {
+  it.each<[string]>([['abc'], ['a'], ['/^'], ['^'], [null], [undefined]])(
     'should return false for value: %s',
     (value) => {
-      const isSingleDigit = isInputSingleDigit(value);
+      const isSingleDigit = isInputOnlyDigits(value);
 
       expect(isSingleDigit).toBe(false);
     }
   );
 
-  it('should return true if the provided string is a single digit', () => {
-    const isSingleDigit = isInputSingleDigit('1');
+  it.each<[string]>([['1'], ['12'], ['123']])('should return true for value: %s', (value) => {
+    const isSingleDigit = isInputOnlyDigits(value);
 
     expect(isSingleDigit).toBe(true);
   });
