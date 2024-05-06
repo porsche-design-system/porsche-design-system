@@ -150,6 +150,10 @@ export namespace Components {
          */
         "size"?: BreakpointCustomizable<AccordionSize>;
         /**
+          * @experimental Sticks the Accordion heading at the top, fixed while scrolling
+         */
+        "sticky"?: boolean;
+        /**
           * @deprecated , will be removed with next major release, use `heading-tag` instead. Sets a heading tag, so it fits correctly within the outline of the page.
          */
         "tag"?: AccordionTag;
@@ -2881,6 +2885,10 @@ declare namespace LocalJSX {
           * The text size.
          */
         "size"?: BreakpointCustomizable<AccordionSize>;
+        /**
+          * @experimental Sticks the Accordion heading at the top, fixed while scrolling
+         */
+        "sticky"?: boolean;
         /**
           * @deprecated , will be removed with next major release, use `heading-tag` instead. Sets a heading tag, so it fits correctly within the outline of the page.
          */
