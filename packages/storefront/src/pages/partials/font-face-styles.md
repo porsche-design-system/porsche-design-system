@@ -1,4 +1,4 @@
-# Font Face Stylesheet
+# Font Face Styles
 
 **Function name:** `getFontFaceStyles()`
 
