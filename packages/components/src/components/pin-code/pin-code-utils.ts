@@ -14,6 +14,10 @@ export type PinCodeUpdateEventDetail = PinCodeUpdateEvent;
 
 export type PinCodeState = FormState;
 
+export type HTMLInputElementEventTarget = {
+  target: HTMLInputElement & { previousElementSibling: HTMLInputElement; nextElementSibling: HTMLInputElement };
+};
+
 export const removeSlottedSelector = (styles: Styles): Styles =>
   Object.fromEntries(
     Object.entries(styles).map(([key, value]) => {
@@ -42,7 +46,7 @@ export const warnAboutTransformedValue = (host: HTMLElement, length?: number): v
   );
 };
 
-export const isInputSingleDigit = (input: string): boolean => /^\d$/.test(input);
+export const isInputOnlyDigits = (input: string): boolean => /^[0-9]*$/.test(input);
 
 export const hasInputOnlyDigitsOrWhitespaces = (input: string): boolean => /^[\d ]+$/.test(input);
 
