@@ -14,6 +14,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ### [Unreleased]
 
+### [3.15.0-rc.4] - 2024-05-06
+
 #### Added
 
 - Partials: Added new partial `getFontFaceStyles` which returns an inline style containing all font-face definitions.  
