@@ -8,9 +8,6 @@ A few things to note:
 
 - Only digits can be entered.
 - Only one digit can be entered per input.
-- To overwrite the value of an input, it is not necessary to select or delete the text in the input. If an input is
-  focused while typing a digit, the previous value will be overwritten. This is an optimization for quickly editing the
-  inputs.
 - Pressing `Delete` or `Backspace`: If the focussed input is blank and `Delete`/`Backspace` is pressed the focus
   transfers to the next/previous input, and clears the value of the next/previous input (if any). This avoids the need
   to explicitly `Shift+Tab & Delete`/ `Tab & Backspace`.
