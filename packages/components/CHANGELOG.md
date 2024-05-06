@@ -14,6 +14,22 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ### [Unreleased]
 
+#### Added
+
+- Partials: Added new partial `getFontFaceStyles` which returns an inline style containing all font-face definitions.  
+  ([#3188](https://github.com/porsche-design-system/porsche-design-system/pull/3188))
+
+#### Changed
+
+- Partials: Partial `getFontFaceStylesheet` is deprecated and will be removed with the next major release. Use the
+  `getFontFaceStyles` partial instead, which directly returns a `<style>` tag containing all font-face definitions and
+  can be used in the same way. ([#3188](https://github.com/porsche-design-system/porsche-design-system/pull/3188))
+
+```diff
+- getFontFaceStylesheet()
++ getFontFaceStyles()
+```
+
 ### [3.15.0-rc.3] - 2024-04-23
 
 #### Fixed

@@ -4,7 +4,7 @@ import {
   logPartialValidationWarning,
   throwPartialValidationError,
   validateGetComponentChunkLinksUsage,
-  validateGetFontFaceStylesheetUsage,
+  validateGetFontFaceStylesUsage,
   validateGetFontLinksUsage,
   validateGetInitialStylesUsage,
   validateGetLoaderScriptUsage,
@@ -46,14 +46,11 @@ describe('validatePartialUsage()', () => {
     process.env = originalEnv;
   });
 
-  it('should call validateGetInitialStylesUsage(), validateGetFontFaceStylesheetUsage() and validateGetFontLinksUsage()', () => {
+  it('should call validateGetInitialStylesUsage(), validateGetFontFaceStylesUsage() and validateGetFontLinksUsage()', () => {
     const validateGetInitialStylesUsageSpy = jest
       .spyOn(validatePartialUsageUtils, 'validateGetInitialStylesUsage')
       .mockImplementation(); // mocked since it throws an exception
-    const validateGetFontFaceStylesheetUsageSpy = jest.spyOn(
-      validatePartialUsageUtils,
-      'validateGetFontFaceStylesheetUsage'
-    );
+    const validateGetFontFaceStylesUsageSpy = jest.spyOn(validatePartialUsageUtils, 'validateGetFontFaceStylesUsage');
     const validateGetFontLinksUsageSpy = jest.spyOn(validatePartialUsageUtils, 'validateGetFontLinksUsage');
     const validateGetComponentChunkLinksUsagesSpy = jest.spyOn(
       validatePartialUsageUtils,
@@ -65,7 +62,7 @@ describe('validatePartialUsage()', () => {
 
     // TODO: before reactivating we need to be able to distinguish between Light DOM and/or Shadow DOM usage.
     expect(validateGetInitialStylesUsageSpy).not.toHaveBeenCalledWith();
-    expect(validateGetFontFaceStylesheetUsageSpy).toHaveBeenCalledWith();
+    expect(validateGetFontFaceStylesUsageSpy).toHaveBeenCalledWith();
     expect(validateGetFontLinksUsageSpy).toHaveBeenCalledWith();
     // TODO: integration test (real world test) first, before rollout
     expect(validateGetComponentChunkLinksUsagesSpy).not.toHaveBeenCalled();
@@ -73,7 +70,7 @@ describe('validatePartialUsage()', () => {
   });
 });
 
-describe('validateGetFontFaceStylesheetUsage()', () => {
+describe('validateGetFontFaceStylesUsage()', () => {
   const originalEnv = process.env;
   afterEach(() => {
     process.env = originalEnv;
@@ -90,19 +87,19 @@ describe('validateGetFontFaceStylesheetUsage()', () => {
       process.env = { ...originalEnv, NODE_ENV: nodeEnv };
 
       const spy = jest.spyOn(document.head, 'querySelector');
-      validateGetFontFaceStylesheetUsage();
+      validateGetFontFaceStylesUsage();
 
       expect(spy).toHaveBeenCalledWith(
-        `link[href="https://cdn.ui.porsche.com/porsche-design-system/styles/${FONT_FACE_CDN_FILE_COM}"]`
+        `link[href="https://cdn.ui.porsche.com/porsche-design-system/styles/${FONT_FACE_CDN_FILE_COM}"],style[data-pds-font-face-styles=""]`
       );
 
       jest
         .spyOn(getCDNBaseURLUtils, 'getCDNBaseURL')
         .mockReturnValue('https://cdn.ui.porsche.cn/porsche-design-system');
-      validateGetFontFaceStylesheetUsage();
+      validateGetFontFaceStylesUsage();
 
       expect(spy).toHaveBeenCalledWith(
-        `link[href="https://cdn.ui.porsche.cn/porsche-design-system/styles/${FONT_FACE_CDN_FILE_CN}"]`
+        `link[href="https://cdn.ui.porsche.cn/porsche-design-system/styles/${FONT_FACE_CDN_FILE_CN}"],style[data-pds-font-face-styles=""]`
       );
     }
   );
@@ -120,25 +117,27 @@ describe('validateGetFontFaceStylesheetUsage()', () => {
       process.env = { ...originalEnv, NODE_ENV: nodeEnv };
 
       const spy = jest.spyOn(document.head, 'querySelector');
-      validateGetFontFaceStylesheetUsage();
+      validateGetFontFaceStylesUsage();
 
-      expect(spy).toHaveBeenCalledWith('link[href="http://localhost:3001/styles/font-face.min.css"]');
+      expect(spy).toHaveBeenCalledWith(
+        'link[href="http://localhost:3001/styles/font-face.min.css"],style[data-pds-font-face-styles=""]'
+      );
     }
   );
 
   it('should call document.head.querySelector() with correct parameters', () => {
     const spy = jest.spyOn(document.head, 'querySelector');
-    validateGetFontFaceStylesheetUsage();
+    validateGetFontFaceStylesUsage();
 
     expect(spy).toHaveBeenCalledWith(
-      `link[href="https://cdn.ui.porsche.com/porsche-design-system/styles/${FONT_FACE_CDN_FILE_COM}"]`
+      `link[href="https://cdn.ui.porsche.com/porsche-design-system/styles/${FONT_FACE_CDN_FILE_COM}"],style[data-pds-font-face-styles=""]`
     );
 
     jest.spyOn(getCDNBaseURLUtils, 'getCDNBaseURL').mockReturnValue('https://cdn.ui.porsche.cn/porsche-design-system');
-    validateGetFontFaceStylesheetUsage();
+    validateGetFontFaceStylesUsage();
 
     expect(spy).toHaveBeenCalledWith(
-      `link[href="https://cdn.ui.porsche.cn/porsche-design-system/styles/${FONT_FACE_CDN_FILE_CN}"]`
+      `link[href="https://cdn.ui.porsche.cn/porsche-design-system/styles/${FONT_FACE_CDN_FILE_CN}"],style[data-pds-font-face-styles=""]`
     );
   });
 
@@ -146,9 +145,9 @@ describe('validateGetFontFaceStylesheetUsage()', () => {
     jest.spyOn(document, 'querySelector').mockReturnValue(null);
     const spy = jest.spyOn(validatePartialUsageUtils, 'logPartialValidationWarning');
 
-    validateGetFontFaceStylesheetUsage();
+    validateGetFontFaceStylesUsage();
 
-    expect(spy).toHaveBeenCalledWith('getFontFaceStylesheet');
+    expect(spy).toHaveBeenCalledWith('getFontFaceStyles');
   });
 });
 
