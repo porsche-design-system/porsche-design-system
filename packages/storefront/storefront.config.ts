@@ -424,6 +424,8 @@ export const config: StorefrontConfig = {
   Help: {
     Support: [() => import('@/pages/help/support.md')],
     Faq: [() => import('@/pages/help/faq.md')],
+    'Feature Request': [() => import('@/pages/help/feature-request.md')],
     'Bug Report': [() => import('@/pages/help/bug-report.md')],
+    Contribution: [() => import('@/pages/help/contribution.md')],
   },
 };

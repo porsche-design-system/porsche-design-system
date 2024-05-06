@@ -31,7 +31,7 @@ StackBlitz Workflow:
 5. Please share the **Editor URL** with us in a
    [GitHub issue](https://github.com/porsche-design-system/porsche-design-system/issues/new/choose).
 
-## Github Workflow
+## GitHub Workflow
 
 Bug reports should be created here
 [GitHub issue](https://github.com/porsche-design-system/porsche-design-system/issues/new/choose).
