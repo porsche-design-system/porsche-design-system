@@ -6,6 +6,7 @@ exports[`should match snapshot 1`] = `
   "getComponentChunkLinks",
   "getCookiesFallbackScript",
   "getDSRPonyfill",
+  "getFontFaceStyles",
   "getFontFaceStylesheet",
   "getFontLinks",
   "getIconLinks",
