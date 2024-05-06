@@ -243,6 +243,7 @@
   "/partials/component-chunk-links",
   "/partials/cookies-fallback-script",
   "/partials/dsr-ponyfill",
+  "/partials/font-face-styles",
   "/partials/font-face-stylesheet",
   "/partials/font-links",
   "/partials/icon-links",
