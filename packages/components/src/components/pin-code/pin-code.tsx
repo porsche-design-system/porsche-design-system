@@ -115,16 +115,16 @@ export class PinCode {
   public componentDidLoad(): void {
     // The beforeinput event is the only event which fires and can be prevented reliably on all keyboard types
     this.inputElements.forEach((input) =>
-      input.addEventListener('beforeinput', (e: InputEvent & HTMLInputElementEventTarget) => {
-        const { data } = e;
+      input.addEventListener('beforeinput', (event: InputEvent & HTMLInputElementEventTarget) => {
+        const { data, inputType, target } = event;
 
         // This is equivalent to maxLength={1} but since some keyboard suggestions fire a single input event we cant use the maxLength attribute
         // This causes the keyboard suggestion to only work if input is empty
-        const preventMultipleInput = e.inputType === 'insertText' && e.target.value.length >= 1;
+        const preventMultipleInput = inputType === 'insertText' && target.value.length >= 1;
         const preventNonDigitInput = data && !isInputOnlyDigits(data);
 
         if (preventMultipleInput || preventNonDigitInput || this.loading) {
-          e.preventDefault();
+          event.preventDefault();
         }
       })
     );
@@ -202,9 +202,9 @@ export class PinCode {
     );
   }
 
-  private onInput = (e: InputEvent & HTMLInputElementEventTarget): void => {
+  private onInput = (event: InputEvent & HTMLInputElementEventTarget): void => {
     // Validation already happened in the beforeinput event
-    const { target } = e;
+    const { target } = event;
     // Android keyboard suggestion calls single input event and inputs everything in the first input. By updating our value to what has been input, the component will update and distribute the values to the corresponding inputs.
     if (target.value.length >= this.length) {
       const sanitisedValue = removeWhiteSpaces(getSanitisedValue(this.host, target.value, this.length));
@@ -212,21 +212,21 @@ export class PinCode {
       this.focusFirstEmptyOrLastInput(sanitisedValue);
     } else {
       // iOS keyboard suggestion calls separate input events for each digit
-      this.updateValue(getSanitisedValue(this.host, getConcatenatedInputValues(this.inputElements), this.length));
-      e.target.nextElementSibling?.focus();
+      this.updateValue(getConcatenatedInputValues(this.inputElements));
+      target.nextElementSibling?.focus();
     }
   };
 
-  private onKeyDown = (e: KeyboardEvent & HTMLInputElementEventTarget): void => {
+  private onKeyDown = (event: KeyboardEvent & HTMLInputElementEventTarget): void => {
     const {
       key,
       target,
       target: { previousElementSibling, nextElementSibling },
-    } = e;
+    } = event;
     if (key === 'Backspace' || key === 'Delete') {
       // transfer focus backward/forward, if the input value is empty
       if (!target.value) {
-        e.preventDefault();
+        event.preventDefault();
         if (key === 'Backspace' && previousElementSibling) {
           previousElementSibling.value = '';
           previousElementSibling.focus();
@@ -250,15 +250,15 @@ export class PinCode {
     }
   };
 
-  private onPaste = (e: ClipboardEvent): void => {
+  private onPaste = (event: ClipboardEvent): void => {
     const sanitisedPastedValue = removeWhiteSpaces(
-      getSanitisedValue(this.host, e.clipboardData.getData('Text'), this.length)
+      getSanitisedValue(this.host, event.clipboardData.getData('Text'), this.length)
     );
     if (sanitisedPastedValue !== this.value) {
       this.updateValue(sanitisedPastedValue);
       this.focusFirstEmptyOrLastInput(sanitisedPastedValue);
     }
-    e.preventDefault();
+    event.preventDefault();
   };
 
   private updateValue = (newValue: string): void => {
