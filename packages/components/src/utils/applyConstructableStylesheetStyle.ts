@@ -1,6 +1,5 @@
 import { Styles } from 'jss';
 import { getMinifiedCss } from '@porsche-design-system/shared';
-import { mergeDeep } from './jss';
 
 type ElementsMap = Map<string, ElementMap>;
 type ElementMap = Map<Document | ShadowRoot, boolean>;
@@ -35,9 +34,7 @@ export const applyConstructableStylesheetStyles = (
       elementMap.set(documentOrShadowRoot, true);
 
       const sheet = new CSSStyleSheet();
-      sheet.replaceSync(
-        getMinifiedCss(mergeDeep(...getStyles.map((getStyle) => getStyle(element.tagName.toLowerCase()))))
-      );
+      sheet.replaceSync(getStyles.map((getStyle) => getMinifiedCss(getStyle(element.tagName.toLowerCase()))).join(''));
       // TODO: for some reason unit test in Docker environment throws TS2339: Property 'push' does not exist on type 'readonly CSSStyleSheet[]'
       /* eslint-disable @typescript-eslint/prefer-ts-expect-error, @typescript-eslint/ban-ts-comment */
       // @ts-ignore
