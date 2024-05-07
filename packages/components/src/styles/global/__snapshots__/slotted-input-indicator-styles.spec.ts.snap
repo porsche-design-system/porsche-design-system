@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should return correct minified slotted input indicator styles for component: p-text-field-wrapper 1`] = `
+{
+  "@global": {
+    ":is(p-text-field-wrapper) input": {
+      "&::-webkit-date-and-time-value": {
+        "display": "inline-block !important",
+        "textAlign": "inherit !important",
+        "verticalAlign": "middle !important",
+      },
+      "&::-webkit-outer-spin-button, &::-webkit-inner-spin-button, &::-webkit-search-decoration, &::-webkit-search-cancel-button, &::-webkit-calendar-picker-indicator": {
+        "display": "none !important",
+      },
+    },
+  },
+}
+`;

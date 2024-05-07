@@ -1,0 +1,737 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should return correct minified slotted anchor styles for component: p-accordion 1`] = `
+{
+  "@global": {
+    ":is(p-accordion) a": {
+      "&::-moz-focus-inner": {
+        "border": "0 !important",
+      },
+      "&:focus": {
+        "outline": "0 !important",
+      },
+      "&:focus-visible": {
+        "outline": "2px solid #1A44EA !important",
+        "outlineOffset": "0 !important",
+      },
+      "@media(hover:hover)": {
+        "&:hover": {
+          "background": "rgba(148, 149, 152, .18) !important",
+        },
+      },
+      "borderRadius": "4px !important",
+      "color": "currentcolor !important",
+      "marginLeft": "-2px !important",
+      "marginRight": "-2px !important",
+      "paddingLeft": "2px !important",
+      "paddingRight": "2px !important",
+      "textDecoration": "underline !important",
+      "transition": "background var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important",
+    },
+  },
+}
+`;
+
+exports[`should return correct minified slotted anchor styles for component: p-banner 1`] = `
+{
+  "@global": {
+    ":is(p-banner) a": {
+      "&::-moz-focus-inner": {
+        "border": "0 !important",
+      },
+      "&:focus": {
+        "outline": "0 !important",
+      },
+      "&:focus-visible": {
+        "outline": "2px solid #1A44EA !important",
+        "outlineOffset": "0 !important",
+      },
+      "@media(hover:hover)": {
+        "&:hover": {
+          "background": "rgba(148, 149, 152, .18) !important",
+        },
+      },
+      "borderRadius": "4px !important",
+      "color": "currentcolor !important",
+      "marginLeft": "-2px !important",
+      "marginRight": "-2px !important",
+      "paddingLeft": "2px !important",
+      "paddingRight": "2px !important",
+      "textDecoration": "underline !important",
+      "transition": "background var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important",
+    },
+  },
+}
+`;
+
+exports[`should return correct minified slotted anchor styles for component: p-carousel 1`] = `
+{
+  "@global": {
+    ":is(p-carousel) a": {
+      "&::-moz-focus-inner": {
+        "border": "0 !important",
+      },
+      "&:focus": {
+        "outline": "0 !important",
+      },
+      "&:focus-visible": {
+        "outline": "2px solid #1A44EA !important",
+        "outlineOffset": "0 !important",
+      },
+      "@media(hover:hover)": {
+        "&:hover": {
+          "background": "rgba(148, 149, 152, .18) !important",
+        },
+      },
+      "borderRadius": "4px !important",
+      "color": "currentcolor !important",
+      "marginLeft": "-2px !important",
+      "marginRight": "-2px !important",
+      "paddingLeft": "2px !important",
+      "paddingRight": "2px !important",
+      "textDecoration": "underline !important",
+      "transition": "background var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important",
+    },
+  },
+}
+`;
+
+exports[`should return correct minified slotted anchor styles for component: p-checkbox-wrapper 1`] = `
+{
+  "@global": {
+    ":is(p-checkbox-wrapper) a": {
+      "&::-moz-focus-inner": {
+        "border": "0 !important",
+      },
+      "&:focus": {
+        "outline": "0 !important",
+      },
+      "&:focus-visible": {
+        "outline": "2px solid #1A44EA !important",
+        "outlineOffset": "0 !important",
+      },
+      "@media(hover:hover)": {
+        "&:hover": {
+          "background": "rgba(148, 149, 152, .18) !important",
+        },
+      },
+      "borderRadius": "4px !important",
+      "color": "currentcolor !important",
+      "marginLeft": "-2px !important",
+      "marginRight": "-2px !important",
+      "paddingLeft": "2px !important",
+      "paddingRight": "2px !important",
+      "textDecoration": "underline !important",
+      "transition": "background var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important",
+    },
+  },
+}
+`;
+
+exports[`should return correct minified slotted anchor styles for component: p-display 1`] = `
+{
+  "@global": {
+    ":is(p-display) a": {
+      "&::-moz-focus-inner": {
+        "border": "0 !important",
+      },
+      "&:focus": {
+        "outline": "0 !important",
+      },
+      "&:focus-visible": {
+        "outline": "2px solid #1A44EA !important",
+        "outlineOffset": "0 !important",
+      },
+      "@media(hover:hover)": {
+        "&:hover": {
+          "background": "rgba(148, 149, 152, .18) !important",
+        },
+      },
+      "borderRadius": "4px !important",
+      "color": "currentcolor !important",
+      "marginLeft": "-2px !important",
+      "marginRight": "-2px !important",
+      "paddingLeft": "2px !important",
+      "paddingRight": "2px !important",
+      "textDecoration": "underline !important",
+      "transition": "background var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important",
+    },
+  },
+}
+`;
+
+exports[`should return correct minified slotted anchor styles for component: p-flyout 1`] = `
+{
+  "@global": {
+    ":is(p-flyout) a": {
+      "&::-moz-focus-inner": {
+        "border": "0 !important",
+      },
+      "&:focus": {
+        "outline": "0 !important",
+      },
+      "&:focus-visible": {
+        "outline": "2px solid #1A44EA !important",
+        "outlineOffset": "0 !important",
+      },
+      "@media(hover:hover)": {
+        "&:hover": {
+          "background": "rgba(148, 149, 152, .18) !important",
+        },
+      },
+      "borderRadius": "4px !important",
+      "color": "currentcolor !important",
+      "marginLeft": "-2px !important",
+      "marginRight": "-2px !important",
+      "paddingLeft": "2px !important",
+      "paddingRight": "2px !important",
+      "textDecoration": "underline !important",
+      "transition": "background var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important",
+    },
+  },
+}
+`;
+
+exports[`should return correct minified slotted anchor styles for component: p-heading 1`] = `
+{
+  "@global": {
+    ":is(p-heading) a": {
+      "&::-moz-focus-inner": {
+        "border": "0 !important",
+      },
+      "&:focus": {
+        "outline": "0 !important",
+      },
+      "&:focus-visible": {
+        "outline": "2px solid #1A44EA !important",
+        "outlineOffset": "0 !important",
+      },
+      "@media(hover:hover)": {
+        "&:hover": {
+          "background": "rgba(148, 149, 152, .18) !important",
+        },
+      },
+      "borderRadius": "4px !important",
+      "color": "currentcolor !important",
+      "marginLeft": "-2px !important",
+      "marginRight": "-2px !important",
+      "paddingLeft": "2px !important",
+      "paddingRight": "2px !important",
+      "textDecoration": "underline !important",
+      "transition": "background var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important",
+    },
+  },
+}
+`;
+
+exports[`should return correct minified slotted anchor styles for component: p-headline 1`] = `
+{
+  "@global": {
+    ":is(p-headline) a": {
+      "&::-moz-focus-inner": {
+        "border": "0 !important",
+      },
+      "&:focus": {
+        "outline": "0 !important",
+      },
+      "&:focus-visible": {
+        "outline": "2px solid #1A44EA !important",
+        "outlineOffset": "0 !important",
+      },
+      "@media(hover:hover)": {
+        "&:hover": {
+          "background": "rgba(148, 149, 152, .18) !important",
+        },
+      },
+      "borderRadius": "4px !important",
+      "color": "currentcolor !important",
+      "marginLeft": "-2px !important",
+      "marginRight": "-2px !important",
+      "paddingLeft": "2px !important",
+      "paddingRight": "2px !important",
+      "textDecoration": "underline !important",
+      "transition": "background var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important",
+    },
+  },
+}
+`;
+
+exports[`should return correct minified slotted anchor styles for component: p-inline-notification 1`] = `
+{
+  "@global": {
+    ":is(p-inline-notification) a": {
+      "&::-moz-focus-inner": {
+        "border": "0 !important",
+      },
+      "&:focus": {
+        "outline": "0 !important",
+      },
+      "&:focus-visible": {
+        "outline": "2px solid #1A44EA !important",
+        "outlineOffset": "0 !important",
+      },
+      "@media(hover:hover)": {
+        "&:hover": {
+          "background": "rgba(148, 149, 152, .18) !important",
+        },
+      },
+      "borderRadius": "4px !important",
+      "color": "currentcolor !important",
+      "marginLeft": "-2px !important",
+      "marginRight": "-2px !important",
+      "paddingLeft": "2px !important",
+      "paddingRight": "2px !important",
+      "textDecoration": "underline !important",
+      "transition": "background var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important",
+    },
+  },
+}
+`;
+
+exports[`should return correct minified slotted anchor styles for component: p-modal 1`] = `
+{
+  "@global": {
+    ":is(p-modal) a": {
+      "&::-moz-focus-inner": {
+        "border": "0 !important",
+      },
+      "&:focus": {
+        "outline": "0 !important",
+      },
+      "&:focus-visible": {
+        "outline": "2px solid #1A44EA !important",
+        "outlineOffset": "0 !important",
+      },
+      "@media(hover:hover)": {
+        "&:hover": {
+          "background": "rgba(148, 149, 152, .18) !important",
+        },
+      },
+      "borderRadius": "4px !important",
+      "color": "currentcolor !important",
+      "marginLeft": "-2px !important",
+      "marginRight": "-2px !important",
+      "paddingLeft": "2px !important",
+      "paddingRight": "2px !important",
+      "textDecoration": "underline !important",
+      "transition": "background var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important",
+    },
+  },
+}
+`;
+
+exports[`should return correct minified slotted anchor styles for component: p-multi-select 1`] = `
+{
+  "@global": {
+    ":is(p-multi-select) a": {
+      "&::-moz-focus-inner": {
+        "border": "0 !important",
+      },
+      "&:focus": {
+        "outline": "0 !important",
+      },
+      "&:focus-visible": {
+        "outline": "2px solid #1A44EA !important",
+        "outlineOffset": "0 !important",
+      },
+      "@media(hover:hover)": {
+        "&:hover": {
+          "background": "rgba(148, 149, 152, .18) !important",
+        },
+      },
+      "borderRadius": "4px !important",
+      "color": "currentcolor !important",
+      "marginLeft": "-2px !important",
+      "marginRight": "-2px !important",
+      "paddingLeft": "2px !important",
+      "paddingRight": "2px !important",
+      "textDecoration": "underline !important",
+      "transition": "background var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important",
+    },
+  },
+}
+`;
+
+exports[`should return correct minified slotted anchor styles for component: p-pin-code 1`] = `
+{
+  "@global": {
+    ":is(p-pin-code) a": {
+      "&::-moz-focus-inner": {
+        "border": "0 !important",
+      },
+      "&:focus": {
+        "outline": "0 !important",
+      },
+      "&:focus-visible": {
+        "outline": "2px solid #1A44EA !important",
+        "outlineOffset": "0 !important",
+      },
+      "@media(hover:hover)": {
+        "&:hover": {
+          "background": "rgba(148, 149, 152, .18) !important",
+        },
+      },
+      "borderRadius": "4px !important",
+      "color": "currentcolor !important",
+      "marginLeft": "-2px !important",
+      "marginRight": "-2px !important",
+      "paddingLeft": "2px !important",
+      "paddingRight": "2px !important",
+      "textDecoration": "underline !important",
+      "transition": "background var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important",
+    },
+  },
+}
+`;
+
+exports[`should return correct minified slotted anchor styles for component: p-popover 1`] = `
+{
+  "@global": {
+    ":is(p-popover) a": {
+      "&::-moz-focus-inner": {
+        "border": "0 !important",
+      },
+      "&:focus": {
+        "outline": "0 !important",
+      },
+      "&:focus-visible": {
+        "outline": "2px solid #1A44EA !important",
+        "outlineOffset": "0 !important",
+      },
+      "@media(hover:hover)": {
+        "&:hover": {
+          "background": "rgba(148, 149, 152, .18) !important",
+        },
+      },
+      "borderRadius": "4px !important",
+      "color": "currentcolor !important",
+      "marginLeft": "-2px !important",
+      "marginRight": "-2px !important",
+      "paddingLeft": "2px !important",
+      "paddingRight": "2px !important",
+      "textDecoration": "underline !important",
+      "transition": "background var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important",
+    },
+  },
+}
+`;
+
+exports[`should return correct minified slotted anchor styles for component: p-radio-button-wrapper 1`] = `
+{
+  "@global": {
+    ":is(p-radio-button-wrapper) a": {
+      "&::-moz-focus-inner": {
+        "border": "0 !important",
+      },
+      "&:focus": {
+        "outline": "0 !important",
+      },
+      "&:focus-visible": {
+        "outline": "2px solid #1A44EA !important",
+        "outlineOffset": "0 !important",
+      },
+      "@media(hover:hover)": {
+        "&:hover": {
+          "background": "rgba(148, 149, 152, .18) !important",
+        },
+      },
+      "borderRadius": "4px !important",
+      "color": "currentcolor !important",
+      "marginLeft": "-2px !important",
+      "marginRight": "-2px !important",
+      "paddingLeft": "2px !important",
+      "paddingRight": "2px !important",
+      "textDecoration": "underline !important",
+      "transition": "background var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important",
+    },
+  },
+}
+`;
+
+exports[`should return correct minified slotted anchor styles for component: p-select 1`] = `
+{
+  "@global": {
+    ":is(p-select) a": {
+      "&::-moz-focus-inner": {
+        "border": "0 !important",
+      },
+      "&:focus": {
+        "outline": "0 !important",
+      },
+      "&:focus-visible": {
+        "outline": "2px solid #1A44EA !important",
+        "outlineOffset": "0 !important",
+      },
+      "@media(hover:hover)": {
+        "&:hover": {
+          "background": "rgba(148, 149, 152, .18) !important",
+        },
+      },
+      "borderRadius": "4px !important",
+      "color": "currentcolor !important",
+      "marginLeft": "-2px !important",
+      "marginRight": "-2px !important",
+      "paddingLeft": "2px !important",
+      "paddingRight": "2px !important",
+      "textDecoration": "underline !important",
+      "transition": "background var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important",
+    },
+  },
+}
+`;
+
+exports[`should return correct minified slotted anchor styles for component: p-select-wrapper 1`] = `
+{
+  "@global": {
+    ":is(p-select-wrapper) a": {
+      "&::-moz-focus-inner": {
+        "border": "0 !important",
+      },
+      "&:focus": {
+        "outline": "0 !important",
+      },
+      "&:focus-visible": {
+        "outline": "2px solid #1A44EA !important",
+        "outlineOffset": "0 !important",
+      },
+      "@media(hover:hover)": {
+        "&:hover": {
+          "background": "rgba(148, 149, 152, .18) !important",
+        },
+      },
+      "borderRadius": "4px !important",
+      "color": "currentcolor !important",
+      "marginLeft": "-2px !important",
+      "marginRight": "-2px !important",
+      "paddingLeft": "2px !important",
+      "paddingRight": "2px !important",
+      "textDecoration": "underline !important",
+      "transition": "background var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important",
+    },
+  },
+}
+`;
+
+exports[`should return correct minified slotted anchor styles for component: p-switch 1`] = `
+{
+  "@global": {
+    ":is(p-switch) a": {
+      "&::-moz-focus-inner": {
+        "border": "0 !important",
+      },
+      "&:focus": {
+        "outline": "0 !important",
+      },
+      "&:focus-visible": {
+        "outline": "2px solid #1A44EA !important",
+        "outlineOffset": "0 !important",
+      },
+      "@media(hover:hover)": {
+        "&:hover": {
+          "background": "rgba(148, 149, 152, .18) !important",
+        },
+      },
+      "borderRadius": "4px !important",
+      "color": "currentcolor !important",
+      "marginLeft": "-2px !important",
+      "marginRight": "-2px !important",
+      "paddingLeft": "2px !important",
+      "paddingRight": "2px !important",
+      "textDecoration": "underline !important",
+      "transition": "background var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important",
+    },
+  },
+}
+`;
+
+exports[`should return correct minified slotted anchor styles for component: p-table 1`] = `
+{
+  "@global": {
+    ":is(p-table) a": {
+      "&::-moz-focus-inner": {
+        "border": "0 !important",
+      },
+      "&:focus": {
+        "outline": "0 !important",
+      },
+      "&:focus-visible": {
+        "outline": "2px solid #1A44EA !important",
+        "outlineOffset": "0 !important",
+      },
+      "@media(hover:hover)": {
+        "&:hover": {
+          "background": "rgba(148, 149, 152, .18) !important",
+        },
+      },
+      "borderRadius": "4px !important",
+      "color": "currentcolor !important",
+      "marginLeft": "-2px !important",
+      "marginRight": "-2px !important",
+      "paddingLeft": "2px !important",
+      "paddingRight": "2px !important",
+      "textDecoration": "underline !important",
+      "transition": "background var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important",
+    },
+  },
+}
+`;
+
+exports[`should return correct minified slotted anchor styles for component: p-tabs 1`] = `
+{
+  "@global": {
+    ":is(p-tabs) a": {
+      "&::-moz-focus-inner": {
+        "border": "0 !important",
+      },
+      "&:focus": {
+        "outline": "0 !important",
+      },
+      "&:focus-visible": {
+        "outline": "2px solid #1A44EA !important",
+        "outlineOffset": "0 !important",
+      },
+      "@media(hover:hover)": {
+        "&:hover": {
+          "background": "rgba(148, 149, 152, .18) !important",
+        },
+      },
+      "borderRadius": "4px !important",
+      "color": "currentcolor !important",
+      "marginLeft": "-2px !important",
+      "marginRight": "-2px !important",
+      "paddingLeft": "2px !important",
+      "paddingRight": "2px !important",
+      "textDecoration": "underline !important",
+      "transition": "background var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important",
+    },
+  },
+}
+`;
+
+exports[`should return correct minified slotted anchor styles for component: p-text 1`] = `
+{
+  "@global": {
+    ":is(p-text) a": {
+      "&::-moz-focus-inner": {
+        "border": "0 !important",
+      },
+      "&:focus": {
+        "outline": "0 !important",
+      },
+      "&:focus-visible": {
+        "outline": "2px solid #1A44EA !important",
+        "outlineOffset": "0 !important",
+      },
+      "@media(hover:hover)": {
+        "&:hover": {
+          "background": "rgba(148, 149, 152, .18) !important",
+        },
+      },
+      "borderRadius": "4px !important",
+      "color": "currentcolor !important",
+      "marginLeft": "-2px !important",
+      "marginRight": "-2px !important",
+      "paddingLeft": "2px !important",
+      "paddingRight": "2px !important",
+      "textDecoration": "underline !important",
+      "transition": "background var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important",
+    },
+  },
+}
+`;
+
+exports[`should return correct minified slotted anchor styles for component: p-text-field-wrapper 1`] = `
+{
+  "@global": {
+    ":is(p-text-field-wrapper) a": {
+      "&::-moz-focus-inner": {
+        "border": "0 !important",
+      },
+      "&:focus": {
+        "outline": "0 !important",
+      },
+      "&:focus-visible": {
+        "outline": "2px solid #1A44EA !important",
+        "outlineOffset": "0 !important",
+      },
+      "@media(hover:hover)": {
+        "&:hover": {
+          "background": "rgba(148, 149, 152, .18) !important",
+        },
+      },
+      "borderRadius": "4px !important",
+      "color": "currentcolor !important",
+      "marginLeft": "-2px !important",
+      "marginRight": "-2px !important",
+      "paddingLeft": "2px !important",
+      "paddingRight": "2px !important",
+      "textDecoration": "underline !important",
+      "transition": "background var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important",
+    },
+  },
+}
+`;
+
+exports[`should return correct minified slotted anchor styles for component: p-text-list 1`] = `
+{
+  "@global": {
+    ":is(p-text-list) a": {
+      "&::-moz-focus-inner": {
+        "border": "0 !important",
+      },
+      "&:focus": {
+        "outline": "0 !important",
+      },
+      "&:focus-visible": {
+        "outline": "2px solid #1A44EA !important",
+        "outlineOffset": "0 !important",
+      },
+      "@media(hover:hover)": {
+        "&:hover": {
+          "background": "rgba(148, 149, 152, .18) !important",
+        },
+      },
+      "borderRadius": "4px !important",
+      "color": "currentcolor !important",
+      "marginLeft": "-2px !important",
+      "marginRight": "-2px !important",
+      "paddingLeft": "2px !important",
+      "paddingRight": "2px !important",
+      "textDecoration": "underline !important",
+      "transition": "background var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important",
+    },
+  },
+}
+`;
+
+exports[`should return correct minified slotted anchor styles for component: p-textarea-wrapper 1`] = `
+{
+  "@global": {
+    ":is(p-textarea-wrapper) a": {
+      "&::-moz-focus-inner": {
+        "border": "0 !important",
+      },
+      "&:focus": {
+        "outline": "0 !important",
+      },
+      "&:focus-visible": {
+        "outline": "2px solid #1A44EA !important",
+        "outlineOffset": "0 !important",
+      },
+      "@media(hover:hover)": {
+        "&:hover": {
+          "background": "rgba(148, 149, 152, .18) !important",
+        },
+      },
+      "borderRadius": "4px !important",
+      "color": "currentcolor !important",
+      "marginLeft": "-2px !important",
+      "marginRight": "-2px !important",
+      "paddingLeft": "2px !important",
+      "paddingRight": "2px !important",
+      "textDecoration": "underline !important",
+      "transition": "background var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important",
+    },
+  },
+}
+`;
