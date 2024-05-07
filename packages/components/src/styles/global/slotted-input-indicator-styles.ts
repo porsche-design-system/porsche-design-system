@@ -6,7 +6,7 @@ export const tagNamesWithSlottedInputIndicatorArray: TagName[] = ['p-text-field-
 
 export const getSlottedInputIndicatorStyles = (tagName: TagName): Styles => ({
   '@global': {
-    [`:is(${tagName}) input`]: {
+    [`${tagName} input`]: {
       // unfortunately we can´t use :is() for ::-webkit pseudo selectors in Chrome for unknown reasons
       '&::-webkit-outer-spin-button, &::-webkit-inner-spin-button, &::-webkit-search-decoration, &::-webkit-search-cancel-button, &::-webkit-calendar-picker-indicator':
         addImportantToEachRule({

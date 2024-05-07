@@ -11,7 +11,7 @@ export const tagNamesWithSlottedPictureImageArray: TagName[] = [
 
 export const getSlottedPictureImageStyles = (tagName: TagName): Styles => ({
   '@global': {
-    [`:is(${tagName}) picture img`]: addImportantToEachRule({
+    [`${tagName} picture img`]: addImportantToEachRule({
       height: '100%',
       width: '100%',
       objectFit: 'cover',

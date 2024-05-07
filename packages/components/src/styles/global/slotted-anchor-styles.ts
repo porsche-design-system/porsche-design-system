@@ -32,7 +32,7 @@ export const tagNamesWithSlottedAnchorArray: TagName[] = [
 export const getSlottedAnchorStyles = (tagName: TagName): Styles => ({
   '@global': {
     // it's important to reset following styles again for components supporting ::slotted(a) like Link, Link-Pure, Tag and Tabs-Bar,…
-    [`:is(${tagName}) a`]: addImportantToEachRule({
+    [`${tagName} a`]: addImportantToEachRule({
       textDecoration: 'underline',
       color: 'currentcolor',
       ...getHoverStyle(),

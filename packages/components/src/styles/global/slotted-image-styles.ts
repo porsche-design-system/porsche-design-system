@@ -6,7 +6,7 @@ export const tagNamesWithSlottedImageArray: TagName[] = ['p-table'];
 
 export const getSlottedImageStyles = (tagName: TagName): Styles => ({
   '@global': {
-    [`:is(${tagName}) img`]: addImportantToEachRule({
+    [`${tagName} img`]: addImportantToEachRule({
       verticalAlign: 'middle',
     }),
   },
