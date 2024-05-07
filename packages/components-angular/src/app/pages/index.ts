@@ -34,6 +34,15 @@ export * from './generated/overview-notifications.component';
 export * from './generated/overview.component';
 import { AccordionComponent } from './generated/accordion.component';
 import { BannerComponent } from './generated/banner.component';
+import { BannerBasicComponent } from './generated/banner-basic.component';
+import { BannerErrorComponent } from './generated/banner-error.component';
+import { BannerNeutralComponent } from './generated/banner-neutral.component';
+import { BannerNoDismissComponent } from './generated/banner-no-dismiss.component';
+import { BannerPersistentComponent } from './generated/banner-persistent.component';
+import { BannerPrefixedComponent } from './generated/banner-prefixed.component';
+import { BannerSlottedDescriptionHeadingComponent } from './generated/banner-slotted-description-heading.component';
+import { BannerSlottedDescriptionTitleComponent } from './generated/banner-slotted-description-title.component';
+import { BannerWarningComponent } from './generated/banner-warning.component';
 import { ButtonComponent } from './generated/button.component';
 import { ButtonGroupComponent } from './generated/button-group.component';
 import { ButtonPureComponent } from './generated/button-pure.component';
@@ -76,6 +85,7 @@ import { FlyoutNavigationPrefixedComponent } from './generated/flyout-navigation
 import { FlyoutNavigationScrolledComponent } from './generated/flyout-navigation-scrolled.component';
 import { FlyoutPositionLeftComponent } from './generated/flyout-position-left.component';
 import { FlyoutPositionStartComponent } from './generated/flyout-position-start.component';
+import { FlyoutPrefixedHeaderFooterSubfooterComponent } from './generated/flyout-prefixed-header-footer-subfooter.component';
 import { GridComponent } from './generated/grid.component';
 import { HeadingComponent } from './generated/heading.component';
 import { HeadlineComponent } from './generated/headline.component';
@@ -106,6 +116,7 @@ import { ModelSignatureComponent } from './generated/model-signature.component';
 import { MultiSelectComponent } from './generated/multi-select.component';
 import { OverviewComponent } from './generated/overview.component';
 import { OverviewNotificationsComponent } from './generated/overview-notifications.component';
+import { OverviewNotificationsToastModalBannerComponent } from './generated/overview-notifications-toast-modal-banner.component';
 import { PaginationComponent } from './generated/pagination.component';
 import { PinCodeComponent } from './generated/pin-code.component';
 import { PopoverComponent } from './generated/popover.component';
@@ -143,6 +154,15 @@ import { WordmarkComponent } from './generated/wordmark.component';
 export const generatedPages = [
   AccordionComponent,
   BannerComponent,
+  BannerBasicComponent,
+  BannerErrorComponent,
+  BannerNeutralComponent,
+  BannerNoDismissComponent,
+  BannerPersistentComponent,
+  BannerPrefixedComponent,
+  BannerSlottedDescriptionHeadingComponent,
+  BannerSlottedDescriptionTitleComponent,
+  BannerWarningComponent,
   ButtonComponent,
   ButtonGroupComponent,
   ButtonPureComponent,
@@ -185,6 +205,7 @@ export const generatedPages = [
   FlyoutNavigationScrolledComponent,
   FlyoutPositionLeftComponent,
   FlyoutPositionStartComponent,
+  FlyoutPrefixedHeaderFooterSubfooterComponent,
   GridComponent,
   HeadingComponent,
   HeadlineComponent,
@@ -215,6 +236,7 @@ export const generatedPages = [
   MultiSelectComponent,
   OverviewComponent,
   OverviewNotificationsComponent,
+  OverviewNotificationsToastModalBannerComponent,
   PaginationComponent,
   PinCodeComponent,
   PopoverComponent,
@@ -260,6 +282,51 @@ export const generatedRoutes: ExtendedRoute[] = [
     name: 'Banner',
     path: 'banner',
     component: BannerComponent,
+  },
+  {
+    name: 'Banner Basic',
+    path: 'banner-basic',
+    component: BannerBasicComponent,
+  },
+  {
+    name: 'Banner Error',
+    path: 'banner-error',
+    component: BannerErrorComponent,
+  },
+  {
+    name: 'Banner Neutral',
+    path: 'banner-neutral',
+    component: BannerNeutralComponent,
+  },
+  {
+    name: 'Banner No Dismiss',
+    path: 'banner-no-dismiss',
+    component: BannerNoDismissComponent,
+  },
+  {
+    name: 'Banner Persistent',
+    path: 'banner-persistent',
+    component: BannerPersistentComponent,
+  },
+  {
+    name: 'Banner Prefixed',
+    path: 'banner-prefixed',
+    component: BannerPrefixedComponent,
+  },
+  {
+    name: 'Banner Slotted Description Heading',
+    path: 'banner-slotted-description-heading',
+    component: BannerSlottedDescriptionHeadingComponent,
+  },
+  {
+    name: 'Banner Slotted Description Title',
+    path: 'banner-slotted-description-title',
+    component: BannerSlottedDescriptionTitleComponent,
+  },
+  {
+    name: 'Banner Warning',
+    path: 'banner-warning',
+    component: BannerWarningComponent,
   },
   {
     name: 'Button',
@@ -467,6 +534,11 @@ export const generatedRoutes: ExtendedRoute[] = [
     component: FlyoutPositionStartComponent,
   },
   {
+    name: 'Flyout Prefixed Header Footer Subfooter',
+    path: 'flyout-prefixed-header-footer-subfooter',
+    component: FlyoutPrefixedHeaderFooterSubfooterComponent,
+  },
+  {
     name: 'Grid',
     path: 'grid',
     component: GridComponent,
@@ -605,6 +677,11 @@ export const generatedRoutes: ExtendedRoute[] = [
     name: 'Multi Select',
     path: 'multi-select',
     component: MultiSelectComponent,
+  },
+  {
+    name: 'Overview Notifications Toast Modal Banner',
+    path: 'overview-notifications-toast-modal-banner',
+    component: OverviewNotificationsToastModalBannerComponent,
   },
   {
     name: 'Pagination',
