@@ -59,7 +59,7 @@ export function getInitialStyles(opts?: GetInitialStylesOptions): string | JSX.E
   const hydrationStyles = prefixedTagNames.join() + '{visibility:hidden}.hydrated,.ssr{visibility:inherit}';
 
 
-  const styles = normalizeStyles.concat(hydrationStyles, slottedStyles, siblingStyles);
+  const styles = normalizeStyles.concat(hydrationStyles);
 
   return format === 'sha256'
     ? getSha256Hash(styles)
