@@ -28,7 +28,7 @@ import {
   setRequiredPropsOfSlottedLinks,
 } from './link-tile-model-signature-utils';
 import { type JSXBase } from '@stencil/core/internal';
-import { getSlottedPictureImageStyles } from '../../styles';
+import { getSlottedPictureImageStyles } from '../../styles/global/slotted-picture-image-styles';
 
 const propTypes: PropTypes<typeof LinkTileModelSignature> = {
   model: AllowedTypes.oneOf<LinkTileModelSignatureModel>(LINK_TILE_MODEL_SIGNATURE_MODELS),

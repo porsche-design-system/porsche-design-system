@@ -25,7 +25,7 @@ import type {
 import { LINK_TILE_WEIGHTS, sharedTilePropTypes } from './link-tile-utils';
 import { Component, Element, h, Prop } from '@stencil/core';
 import { getComponentCss } from './link-tile-styles';
-import { getSlottedPictureImageStyles } from '../../styles';
+import { getSlottedPictureImageStyles } from '../../styles/global/slotted-picture-image-styles';
 
 const propTypes: PropTypes<typeof LinkTile> = {
   ...sharedTilePropTypes,

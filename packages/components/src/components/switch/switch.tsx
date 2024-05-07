@@ -17,7 +17,7 @@ import type { SwitchAlignLabel, SwitchAlignLabelDeprecated, SwitchUpdateEventDet
 import { getSwitchButtonAriaAttributes } from './switch-utils';
 import { LoadingMessage, loadingId } from '../common/loading-message/loading-message';
 import { ControllerHost, InitialLoadingController } from '../../controllers';
-import { getSlottedAnchorStyles } from '../../styles';
+import { getSlottedAnchorStyles } from '../../styles/global/slotted-anchor-styles';
 
 const propTypes: PropTypes<typeof Switch> = {
   alignLabel: AllowedTypes.breakpoint<SwitchAlignLabel>(ALIGN_LABELS),

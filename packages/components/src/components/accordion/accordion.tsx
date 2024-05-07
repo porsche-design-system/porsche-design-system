@@ -14,7 +14,7 @@ import type { BreakpointCustomizable, PropTypes, Theme } from '../../types';
 import type { AccordionHeadingTag, AccordionSize, AccordionTag, AccordionUpdateEventDetail } from './accordion-utils';
 import { ACCORDION_SIZES } from './accordion-utils';
 import { getComponentCss } from './accordion-styles';
-import { getSlottedAnchorStyles } from '../../styles';
+import { getSlottedAnchorStyles } from '../../styles/global/slotted-anchor-styles';
 
 const propTypes: PropTypes<typeof Accordion> = {
   size: AllowedTypes.breakpoint<AccordionSize>(ACCORDION_SIZES),

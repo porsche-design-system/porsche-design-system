@@ -33,7 +33,7 @@ import type {
 import { Component, Element, h, Listen, Prop } from '@stencil/core';
 import { getComponentCss } from './button-tile-styles';
 import { sharedTilePropTypes } from '../link-tile/link-tile-utils';
-import { getSlottedPictureImageStyles } from '../../styles';
+import { getSlottedPictureImageStyles } from '../../styles/global/slotted-picture-image-styles';
 
 const propTypes: PropTypes<typeof ButtonTile> = {
   ...sharedTilePropTypes,

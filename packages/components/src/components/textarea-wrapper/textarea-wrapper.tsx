@@ -22,7 +22,7 @@ import { type TextareaWrapperState } from './textarea-wrapper-utils';
 import { getComponentCss } from './textarea-wrapper-styles';
 import { StateMessage } from '../common/state-message/state-message';
 import { Label } from '../common/label/label';
-import { getSlottedAnchorStyles } from '../../styles';
+import { getSlottedAnchorStyles } from '../../styles/global/slotted-anchor-styles';
 
 const propTypes: PropTypes<typeof TextareaWrapper> = {
   label: AllowedTypes.string,

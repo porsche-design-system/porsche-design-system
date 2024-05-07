@@ -11,7 +11,7 @@ import type { PropTypes, Theme } from '../../../types';
 import type { TextListListType, TextListOrderType, TextListType } from './text-list-utils';
 import { isListTypeOrdered, LIST_TYPES, ORDER_TYPES, TEXT_LIST_TYPES } from './text-list-utils';
 import { getComponentCss } from './text-list-styles';
-import { getSlottedAnchorStyles } from '../../../styles';
+import { getSlottedAnchorStyles } from '../../../styles/global/slotted-anchor-styles';
 
 const propTypes: PropTypes<typeof TextList> = {
   listType: AllowedTypes.oneOf<TextListListType>([undefined, ...LIST_TYPES]),

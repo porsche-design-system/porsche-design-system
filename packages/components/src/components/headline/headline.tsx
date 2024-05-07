@@ -19,7 +19,7 @@ import {
   warnIfDeprecatedComponentIsUsed,
 } from '../../utils';
 import { getComponentCss } from './headline-styles';
-import { getSlottedAnchorStyles } from '../../styles';
+import { getSlottedAnchorStyles } from '../../styles/global/slotted-anchor-styles';
 
 const propTypes: Omit<PropTypes<typeof Headline>, 'variant'> = {
   // variant: AllowedTypes.string, // TODO: with all the different values this can't easily be validated

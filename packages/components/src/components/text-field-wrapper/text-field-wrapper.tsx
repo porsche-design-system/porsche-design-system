@@ -51,7 +51,8 @@ import {
   UNIT_POSITIONS,
 } from './text-field-wrapper-utils';
 import { Label } from '../common/label/label';
-import { getSlottedAnchorStyles, getSlottedInputIndicatorStyles } from '../../styles';
+import { getSlottedAnchorStyles } from '../../styles/global/slotted-anchor-styles';
+import { getSlottedInputIndicatorStyles } from '../../styles/global/slotted-input-indicator-styles';
 
 const propTypes: PropTypes<typeof TextFieldWrapper> = {
   label: AllowedTypes.string,

@@ -21,7 +21,7 @@ import {
   INLINE_NOTIFICATION_STATES,
 } from './inline-notification-utils';
 import type { InlineNotificationActionIcon, InlineNotificationHeadingTag } from './inline-notification-utils';
-import { getSlottedAnchorStyles } from '../../styles';
+import { getSlottedAnchorStyles } from '../../styles/global/slotted-anchor-styles';
 
 const propTypes: PropTypes<typeof InlineNotification> = {
   heading: AllowedTypes.string,

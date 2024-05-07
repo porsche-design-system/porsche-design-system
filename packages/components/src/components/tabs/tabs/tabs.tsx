@@ -26,7 +26,7 @@ import type {
   TabsWeight,
 } from './tabs-utils';
 import { syncTabsItemsProps } from './tabs-utils';
-import { getSlottedAnchorStyles } from '../../../styles';
+import { getSlottedAnchorStyles } from '../../../styles/global/slotted-anchor-styles';
 
 const propTypes: PropTypes<typeof Tabs> = {
   size: AllowedTypes.breakpoint<TabsSize>(TABS_BAR_SIZES),

@@ -12,7 +12,8 @@ import type { PropTypes, Theme } from '../../../types';
 import { getComponentCss } from './table-styles';
 import type { TableUpdateEventDetail } from './table-utils';
 import { SORT_EVENT_NAME, warnIfCaptionIsMissing } from './table-utils';
-import { getSlottedAnchorStyles, getSlottedImageStyles } from '../../../styles';
+import { getSlottedAnchorStyles } from '../../../styles/global/slotted-anchor-styles';
+import { getSlottedImageStyles } from '../../../styles/global/slotted-image-styles';
 
 const propTypes: PropTypes<typeof Table> = {
   caption: AllowedTypes.string,

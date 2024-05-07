@@ -19,7 +19,7 @@ import {
   type LinkTileProductTarget,
   TILE_PRODUCT_ASPECT_RATIOS,
 } from './link-tile-product-utils';
-import { getSlottedPictureImageStyles } from '../../styles';
+import { getSlottedPictureImageStyles } from '../../styles/global/slotted-picture-image-styles';
 
 const propTypes: PropTypes<typeof LinkTileProduct> = {
   heading: AllowedTypes.string,

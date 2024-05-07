@@ -31,7 +31,7 @@ import { messageId, StateMessage } from '../common/state-message/state-message';
 import { descriptionId, Label, labelId } from '../common/label/label';
 import { LoadingMessage } from '../common/loading-message/loading-message';
 import { ControllerHost, InitialLoadingController } from '../../controllers';
-import { getSlottedAnchorStyles } from '../../styles';
+import { getSlottedAnchorStyles } from '../../styles/global/slotted-anchor-styles';
 
 const propTypes: PropTypes<typeof PinCode> = {
   label: AllowedTypes.string,

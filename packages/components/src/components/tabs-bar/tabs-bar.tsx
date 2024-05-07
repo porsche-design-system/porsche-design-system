@@ -37,7 +37,7 @@ import {
 } from './tabs-bar-utils';
 import { getComponentCss, scrollerAnimatedCssClass } from './tabs-bar-styles';
 import { GRADIENT_COLOR_SCHEMES, GRADIENT_COLORS, type ScrollerDirection } from '../scroller/scroller-utils';
-import { getSiblingTabindexStyles } from '../../styles';
+import { getSiblingTabindexStyles } from '../../styles/global/sibling-tabindex-styles';
 
 const propTypes: PropTypes<typeof TabsBar> = {
   size: AllowedTypes.breakpoint<TabsBarSize>(TABS_BAR_SIZES),
