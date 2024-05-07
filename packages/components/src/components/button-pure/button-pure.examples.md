@@ -25,8 +25,7 @@ Similarly to the `p-button`, the `p-button-pure` can be used as a submit button 
 ### Without Icon
 
 The variant without icon is only recommended in the context of menus, where it is clearly evident that the component is
-clickable. If it is required in flowing text, a native button within the `p-text` component can be used.  
-See [text documentation](components/typography/text#text-with-a-link-button-and-bold-text-as-children).
+clickable or by setting the `underline` prop to provide a visual hint.
 
 **Caution:** You can't combine this with the prop `hideLabel`
 
@@ -171,7 +170,10 @@ export default class Code extends Vue {
   withoutIcon =
 `<p-button-pure icon="none">Some label</p-button-pure>
 <p-button-pure icon="none" disabled="true">Some label</p-button-pure>
-<p-button-pure icon="none" loading="true">Some label</p-button-pure>`;
+<p-button-pure icon="none" loading="true">Some label</p-button-pure><br>
+<p-button-pure icon="none" underline="true">Some label</p-button-pure>
+<p-button-pure icon="none" disabled="true" underline="true">Some label</p-button-pure>
+<p-button-pure icon="none" loading="true" underline="true">Some label</p-button-pure>`;
     
   withLabel =
 `<p-button-pure>Some label</p-button-pure>
