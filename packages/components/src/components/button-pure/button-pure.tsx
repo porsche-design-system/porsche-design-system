@@ -42,6 +42,7 @@ const propTypes: PropTypes<typeof ButtonPure> = {
   weight: AllowedTypes.oneOf<ButtonPureWeight>(TYPOGRAPHY_TEXT_WEIGHTS),
   icon: AllowedTypes.string,
   iconSource: AllowedTypes.string,
+  underline: AllowedTypes.boolean,
   active: AllowedTypes.boolean,
   hideLabel: AllowedTypes.breakpoint('boolean'),
   alignLabel: AllowedTypes.breakpoint<ButtonPureAlignLabel>(ALIGN_LABELS),
@@ -86,6 +87,9 @@ export class ButtonPure {
 
   /** A URL path to a custom icon. */
   @Prop() public iconSource?: string;
+
+  /** Shows an underline under the label. */
+  @Prop() public underline?: boolean = false;
 
   /** Display button in active state. */
   @Prop() public active?: boolean = false;
@@ -164,6 +168,7 @@ export class ButtonPure {
       this.size,
       this.hideLabel,
       this.alignLabel,
+      this.underline,
       this.theme
     );
 
