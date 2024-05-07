@@ -12,16 +12,14 @@ import { Theme } from '@porsche-design-system/utilities-v2';
 
 const component = 'banner';
 
-const scenario = async (page: Page, theme: Theme, index: number, scheme?: PrefersColorScheme): Promise<void> => {
-  index++; // zero based increasing to be able to calculate
-
+const scenario = async (page: Page, theme: Theme, scheme?: PrefersColorScheme): Promise<void> => {
   const height = 300;
   const bannerTopBase = 56;
-  const top = index === 1 ? bannerTopBase : bannerTopBase * index + height;
+  const getTop = (index: number) => (index === 1 ? bannerTopBase : (bannerTopBase + height) * index);
 
-  const markup = () => `
+  const markup = (index: number) => `
     <div style="transform: translate(0); height: ${height}px; margin: 0 -16px;">
-      <p-banner open="true" state="neutral" style="--p-banner-position-top: ${top}px">
+      <p-banner open="true" state="neutral" style="--p-banner-position-top: ${getTop(index++)}px">
         <span slot="title">
           Slotted title
           <span>
@@ -55,18 +53,18 @@ const scenario = async (page: Page, theme: Theme, index: number, scheme?: Prefer
 test.describe(component, async () => {
   test.skip(({ browserName }) => browserName !== 'chromium');
 
-  themes.forEach((theme, index) => {
+  themes.forEach((theme) => {
     test(`should have no visual regression for :hover + :focus-visible with theme ${theme}`, async ({ page }) => {
-      await scenario(page, theme, index);
+      await scenario(page, theme);
       await expect(page.locator('#app')).toHaveScreenshot(`${component}-${viewportWidthM}-states-theme-${theme}.png`);
     });
   });
 
-  schemes.forEach((scheme, index) => {
+  schemes.forEach((scheme) => {
     test(`should have no visual regression for :hover + :focus-visible with theme auto and prefers-color-scheme ${scheme}`, async ({
       page,
     }) => {
-      await scenario(page, 'auto', index, scheme);
+      await scenario(page, 'auto', scheme);
       await expect(page.locator('#app')).toHaveScreenshot(`${component}-${viewportWidthM}-states-theme-${scheme}.png`); // fixture is aliased since result has to be equal
     });
   });
