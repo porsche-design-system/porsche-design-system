@@ -12,10 +12,13 @@ import { Theme } from '@porsche-design-system/utilities-v2';
 
 const component = 'banner';
 
-const scenario = async (page: Page, theme: Theme, scheme?: PrefersColorScheme): Promise<void> => {
+const scenario = async (page: Page, theme: Theme, index: number, scheme?: PrefersColorScheme): Promise<void> => {
+  const height = 300;
+  const bannerTopBase = 56;
+
   const markup = () => `
-    <div style="transform: translate(0); height: 300px; margin: 0 -16px;">
-      <p-banner open="true" state="neutral">
+    <div style="transform: translate(0); height: ${height}px; margin: 0 -16px;">
+      <p-banner open="true" state="neutral" style="--p-banner-position-top: ${bannerTopBase * index++ + height}px">
         <span slot="title">
           Slotted title
           <span>
@@ -49,18 +52,18 @@ const scenario = async (page: Page, theme: Theme, scheme?: PrefersColorScheme): 
 test.describe(component, async () => {
   test.skip(({ browserName }) => browserName !== 'chromium');
 
-  themes.forEach((theme) => {
+  themes.forEach((theme, index) => {
     test(`should have no visual regression for :hover + :focus-visible with theme ${theme}`, async ({ page }) => {
-      await scenario(page, theme);
+      await scenario(page, theme, index);
       await expect(page.locator('#app')).toHaveScreenshot(`${component}-${viewportWidthM}-states-theme-${theme}.png`);
     });
   });
 
-  schemes.forEach((scheme) => {
+  schemes.forEach((scheme, index) => {
     test(`should have no visual regression for :hover + :focus-visible with theme auto and prefers-color-scheme ${scheme}`, async ({
       page,
     }) => {
-      await scenario(page, 'auto', scheme);
+      await scenario(page, 'auto', index, scheme);
       await expect(page.locator('#app')).toHaveScreenshot(`${component}-${viewportWidthM}-states-theme-${scheme}.png`); // fixture is aliased since result has to be equal
     });
   });
