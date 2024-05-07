@@ -13,12 +13,15 @@ import { Theme } from '@porsche-design-system/utilities-v2';
 const component = 'banner';
 
 const scenario = async (page: Page, theme: Theme, index: number, scheme?: PrefersColorScheme): Promise<void> => {
+  index++; // zero based increasing to be able to calculate
+
   const height = 300;
   const bannerTopBase = 56;
+  const top = index === 1 ? bannerTopBase : bannerTopBase * index + height;
 
   const markup = () => `
     <div style="transform: translate(0); height: ${height}px; margin: 0 -16px;">
-      <p-banner open="true" state="neutral" style="--p-banner-position-top: ${bannerTopBase * index++ + height}px">
+      <p-banner open="true" state="neutral" style="--p-banner-position-top: ${top}px">
         <span slot="title">
           Slotted title
           <span>
