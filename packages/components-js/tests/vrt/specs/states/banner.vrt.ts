@@ -13,13 +13,20 @@ import { Theme } from '@porsche-design-system/utilities-v2';
 const component = 'banner';
 
 const scenario = async (page: Page, theme: Theme, scheme?: PrefersColorScheme): Promise<void> => {
-  const height = 300;
-  const bannerTopBase = 56;
-  const getTop = (index: number) => (index === 1 ? bannerTopBase : (bannerTopBase + height) * index);
+  const getTop = (index: number) => {
+    switch (index) {
+      case 0:
+        return '100px';
+      case 1:
+        return '465px';
+      case 2:
+        return '830px';
+    }
+  };
 
   const markup = (index: number) => `
-    <div style="transform: translate(0); height: ${height}px; margin: 0 -16px;">
-      <p-banner open="true" state="neutral" style="--p-banner-position-top: ${getTop(index++)}px">
+    <div style="transform: translate(0); height: 300px; margin: 0 -16px;">
+      <p-banner open="true" state="neutral" style="--p-banner-position-top: ${getTop(index)}">
         <span slot="title">
           Slotted title
           <span>
