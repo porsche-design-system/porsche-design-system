@@ -14,7 +14,7 @@ import {
   unobserveAttributes,
   validateProps,
 } from '../../utils';
-import { applyCheckboxRadioButtonSafariRenderingFix } from '../../utils/form/applyCheckboxRadioButtonSafariRenderingFix';
+import { getCheckboxRadioButtonSafariRenderingFix } from '../../utils/form/applyCheckboxRadioButtonSafariRenderingFix';
 import { type BreakpointCustomizable, type PropTypes, type Theme } from '../../types';
 import { getComponentCss } from './checkbox-wrapper-styles';
 import { type CheckboxWrapperState } from './checkbox-wrapper-utils';
@@ -71,8 +71,7 @@ export class CheckboxWrapper {
   }
 
   public connectedCallback(): void {
-    applyConstructableStylesheetStyles(this.host, getSlottedAnchorStyles);
-    applyCheckboxRadioButtonSafariRenderingFix(this.host);
+    applyConstructableStylesheetStyles(this.host, getSlottedAnchorStyles, getCheckboxRadioButtonSafariRenderingFix);
     this.observeAttributes(); // on every reconnect
   }
 
