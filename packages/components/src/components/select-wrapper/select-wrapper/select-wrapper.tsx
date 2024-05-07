@@ -1,6 +1,7 @@
 import { Component, Element, forceUpdate, h, type JSX, Prop } from '@stencil/core';
 import {
   AllowedTypes,
+  applyConstructableStylesheetStyles,
   attachComponentCss,
   FORM_STATES,
   getOnlyChildOfKindHTMLElementOrThrow,
@@ -21,6 +22,7 @@ import { DROPDOWN_DIRECTIONS, isCustomDropdown } from './select-wrapper-utils';
 import { getComponentCss } from './select-wrapper-styles';
 import { StateMessage } from '../../common/state-message/state-message';
 import { Label } from '../../common/label/label';
+import { getSlottedAnchorStyles } from '../../../styles';
 
 const propTypes: PropTypes<typeof SelectWrapper> = {
   label: AllowedTypes.string,
@@ -73,6 +75,7 @@ export class SelectWrapper {
   private hasCustomDropdown: boolean;
 
   public connectedCallback(): void {
+    applyConstructableStylesheetStyles(this.host, getSlottedAnchorStyles);
     this.observeAttributes(); // on every reconnect
   }
 

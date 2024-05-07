@@ -1,6 +1,7 @@
 import { Component, Element, forceUpdate, h, type JSX, Prop } from '@stencil/core';
 import {
   AllowedTypes,
+  applyConstructableStylesheetStyles,
   attachComponentCss,
   FORM_STATES,
   getOnlyChildOfKindHTMLElementOrThrow,
@@ -20,6 +21,7 @@ import { StateMessage } from '../common/state-message/state-message';
 import { Label } from '../common/label/label';
 import { LoadingMessage } from '../common/loading-message/loading-message';
 import { ControllerHost, InitialLoadingController } from '../../controllers';
+import { getSlottedAnchorStyles } from '../../styles';
 
 const propTypes: PropTypes<typeof RadioButtonWrapper> = {
   label: AllowedTypes.string,
@@ -60,6 +62,7 @@ export class RadioButtonWrapper {
   private input: HTMLInputElement;
 
   public connectedCallback(): void {
+    applyConstructableStylesheetStyles(this.host, getSlottedAnchorStyles);
     applyCheckboxRadioButtonSafariRenderingFix(this.host);
     this.observeAttributes(); // on every reconnect
   }

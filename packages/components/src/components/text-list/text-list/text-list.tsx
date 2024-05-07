@@ -1,9 +1,17 @@
 import { Component, Element, h, type JSX, Prop } from '@stencil/core';
-import { AllowedTypes, attachComponentCss, THEMES, validateProps, warnIfDeprecatedPropIsUsed } from '../../../utils';
+import {
+  AllowedTypes,
+  applyConstructableStylesheetStyles,
+  attachComponentCss,
+  THEMES,
+  validateProps,
+  warnIfDeprecatedPropIsUsed,
+} from '../../../utils';
 import type { PropTypes, Theme } from '../../../types';
 import type { TextListListType, TextListOrderType, TextListType } from './text-list-utils';
 import { isListTypeOrdered, LIST_TYPES, ORDER_TYPES, TEXT_LIST_TYPES } from './text-list-utils';
 import { getComponentCss } from './text-list-styles';
+import { getSlottedAnchorStyles } from '../../../styles';
 
 const propTypes: PropTypes<typeof TextList> = {
   listType: AllowedTypes.oneOf<TextListListType>([undefined, ...LIST_TYPES]),
@@ -34,6 +42,10 @@ export class TextList {
 
   /** Adapts the text color depending on the theme. */
   @Prop() public theme?: Theme = 'light';
+
+  public connectedCallback(): void {
+    applyConstructableStylesheetStyles(this.host, getSlottedAnchorStyles);
+  }
 
   public render(): JSX.Element {
     validateProps(this, propTypes);

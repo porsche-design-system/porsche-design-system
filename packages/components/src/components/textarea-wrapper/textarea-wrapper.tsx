@@ -2,6 +2,7 @@ import { Component, Element, forceUpdate, h, type JSX, Prop, Watch } from '@sten
 import { type BreakpointCustomizable, type PropTypes, type Theme } from '../../types';
 import {
   AllowedTypes,
+  applyConstructableStylesheetStyles,
   attachComponentCss,
   FORM_STATES,
   getOnlyChildOfKindHTMLElementOrThrow,
@@ -21,6 +22,7 @@ import { type TextareaWrapperState } from './textarea-wrapper-utils';
 import { getComponentCss } from './textarea-wrapper-styles';
 import { StateMessage } from '../common/state-message/state-message';
 import { Label } from '../common/label/label';
+import { getSlottedAnchorStyles } from '../../styles';
 
 const propTypes: PropTypes<typeof TextareaWrapper> = {
   label: AllowedTypes.string,
@@ -78,6 +80,7 @@ export class TextareaWrapper {
   }
 
   public connectedCallback(): void {
+    applyConstructableStylesheetStyles(this.host, getSlottedAnchorStyles);
     this.observeAttributes(); // on every reconnect
   }
 

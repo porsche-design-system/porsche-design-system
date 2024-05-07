@@ -10,6 +10,7 @@ import {
 import { footerShadowClass, getComponentCss, headerShadowClass } from './flyout-styles';
 import {
   AllowedTypes,
+  applyConstructableStylesheetStyles,
   attachComponentCss,
   getPrefixedTagNames,
   getShadowRootHTMLElements,
@@ -23,6 +24,7 @@ import {
 } from '../../utils';
 import type { PropTypes, SelectedAriaAttributes, Theme } from '../../types';
 import { throttle } from 'throttle-debounce';
+import { getSlottedAnchorStyles } from '../../styles';
 
 const propTypes: PropTypes<typeof Flyout> = {
   open: AllowedTypes.boolean,
@@ -70,6 +72,10 @@ export class Flyout {
     if (isOpen && this.hasSubFooter) {
       this.updateShadow();
     }
+  }
+
+  public connectedCallback(): void {
+    applyConstructableStylesheetStyles(this.host, getSlottedAnchorStyles);
   }
 
   public componentDidLoad(): void {

@@ -1,5 +1,13 @@
 import type { BreakpointCustomizable, PropTypes, TextSize, Theme } from '../../types';
-import type { TextTag, TextAlign, TextAlignDeprecated, TextColor, TextColorDeprecated,TextWeight, TextWeightDeprecated } from './text-utils';
+import type {
+  TextTag,
+  TextAlign,
+  TextAlignDeprecated,
+  TextColor,
+  TextColorDeprecated,
+  TextWeight,
+  TextWeightDeprecated,
+} from './text-utils';
 import { getTextTagType, TEXT_TAGS } from './text-utils';
 import { Component, Element, h, type JSX, Prop } from '@stencil/core';
 import {
@@ -13,8 +21,10 @@ import {
   TYPOGRAPHY_ALIGNS,
   validateProps,
   warnIfDeprecatedPropValueIsUsed,
+  applyConstructableStylesheetStyles,
 } from '../../utils';
 import { getComponentCss } from './text-styles';
+import { getSlottedAnchorStyles } from '../../styles';
 
 const propTypes: PropTypes<typeof Text> = {
   tag: AllowedTypes.oneOf<TextTag>(TEXT_TAGS),
@@ -54,6 +64,9 @@ export class Text {
   /** Adapts the text color depending on the theme. Has no effect when "inherit" is set as color prop. */
   @Prop() public theme?: Theme = 'light';
 
+  public connectedCallback(): void {
+    applyConstructableStylesheetStyles(this.host, getSlottedAnchorStyles);
+  }
   public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
     return hasPropValueChanged(newVal, oldVal);
   }

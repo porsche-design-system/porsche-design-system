@@ -2,6 +2,7 @@ import type { BreakpointCustomizable, PropTypes, SelectedAriaAttributes } from '
 import type { ITileProps } from '../../utils';
 import {
   AllowedTypes,
+  applyConstructableStylesheetStyles,
   attachComponentCss,
   getPrefixedTagNames,
   hasPropValueChanged,
@@ -24,6 +25,7 @@ import type {
 import { LINK_TILE_WEIGHTS, sharedTilePropTypes } from './link-tile-utils';
 import { Component, Element, h, Prop } from '@stencil/core';
 import { getComponentCss } from './link-tile-styles';
+import { getSlottedPictureImageStyles } from '../../styles';
 
 const propTypes: PropTypes<typeof LinkTile> = {
   ...sharedTilePropTypes,
@@ -83,6 +85,10 @@ export class LinkTile implements ITileProps {
 
   /** Add ARIA attributes. */
   @Prop() public aria?: SelectedAriaAttributes<LinkTileAriaAttribute>;
+
+  public connectedCallback(): void {
+    applyConstructableStylesheetStyles(this.host, getSlottedPictureImageStyles);
+  }
 
   public componentWillLoad(): void {
     throwIfAlignTopAndNotCompact(this.host, this.align, this.compact);

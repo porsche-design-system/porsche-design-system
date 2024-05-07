@@ -4,6 +4,7 @@ import type { InlineNotificationState, InlineNotificationStateDeprecated } from 
 import { Component, Element, Event, type EventEmitter, h, Host, type JSX, Prop } from '@stencil/core';
 import {
   AllowedTypes,
+  applyConstructableStylesheetStyles,
   attachComponentCss,
   getPrefixedTagNames,
   hasHeading,
@@ -20,6 +21,7 @@ import {
   INLINE_NOTIFICATION_STATES,
 } from './inline-notification-utils';
 import type { InlineNotificationActionIcon, InlineNotificationHeadingTag } from './inline-notification-utils';
+import { getSlottedAnchorStyles } from '../../styles';
 
 const propTypes: PropTypes<typeof InlineNotification> = {
   heading: AllowedTypes.string,
@@ -81,6 +83,10 @@ export class InlineNotification {
 
   private get hasDismissButton(): boolean {
     return this.persistent ? false : this.dismissButton;
+  }
+
+  public connectedCallback(): void {
+    applyConstructableStylesheetStyles(this.host, getSlottedAnchorStyles);
   }
 
   public render(): JSX.Element {
