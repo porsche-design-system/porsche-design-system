@@ -5232,6 +5232,7 @@ exports[`manual test cases > should pass internal props correctly to p-text-fiel
   padding: 0;
   margin: 0;
   color: #010205;
+  text-decoration: none;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
@@ -5571,6 +5572,7 @@ img {
   padding: 0;
   margin: 0;
   color: #010205;
+  text-decoration: none;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
@@ -6194,6 +6196,7 @@ img {
   padding: 0;
   margin: 0;
   color: #010205;
+  text-decoration: none;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
@@ -6484,6 +6487,7 @@ exports[`should render dsr component for PButtonPure 1`] = `
   padding: 0;
   margin: 0;
   color: #010205;
+  text-decoration: none;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
@@ -7580,6 +7584,7 @@ dialog::backdrop {
   padding: 0;
   margin: 0;
   color: #010205;
+  text-decoration: none;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
@@ -7869,6 +7874,7 @@ dialog::backdrop {
   padding: 0;
   margin: 0;
   color: #010205;
+  text-decoration: none;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
@@ -8161,6 +8167,7 @@ exports[`should render dsr component for PFlyoutNavigationItem 1`] = `
   padding: 0;
   margin: 0;
   color: #010205;
+  text-decoration: none;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
@@ -8319,6 +8326,7 @@ img:dir(rtl) {
   padding: 0;
   margin: 0;
   color: #010205;
+  text-decoration: none;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
@@ -8801,6 +8809,7 @@ img {
   padding: 0;
   margin: 0;
   color: #010205;
+  text-decoration: none;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
@@ -9065,6 +9074,7 @@ exports[`should render dsr component for PLinkPure 1`] = `
   padding: 0;
   margin: 0;
   color: #010205;
+  text-decoration: none;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
@@ -9072,7 +9082,6 @@ exports[`should render dsr component for PLinkPure 1`] = `
   justify-content: flex-start;
   align-items: flex-start;
   font-size: 1rem;
-  text-decoration: none;
 }
 .root::before {
   content: "";
@@ -9975,6 +9984,7 @@ slot[name="header"] {
   padding: 0;
   margin: 0;
   color: #010205;
+  text-decoration: none;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
@@ -10329,6 +10339,7 @@ h2 {
   padding: 0;
   margin: 0;
   color: #010205;
+  text-decoration: none;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
