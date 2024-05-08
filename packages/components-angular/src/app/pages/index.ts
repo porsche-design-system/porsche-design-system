@@ -116,7 +116,7 @@ import { ModelSignatureComponent } from './generated/model-signature.component';
 import { MultiSelectComponent } from './generated/multi-select.component';
 import { OverviewComponent } from './generated/overview.component';
 import { OverviewNotificationsComponent } from './generated/overview-notifications.component';
-import { OverviewNotificationsToastModalBannerComponent } from './generated/overview-notifications-toast-modal-banner.component';
+import { OverviewNotificationsMarkupComponent } from './generated/overview-notifications-markup.component';
 import { PaginationComponent } from './generated/pagination.component';
 import { PinCodeComponent } from './generated/pin-code.component';
 import { PopoverComponent } from './generated/popover.component';
@@ -236,7 +236,7 @@ export const generatedPages = [
   MultiSelectComponent,
   OverviewComponent,
   OverviewNotificationsComponent,
-  OverviewNotificationsToastModalBannerComponent,
+  OverviewNotificationsMarkupComponent,
   PaginationComponent,
   PinCodeComponent,
   PopoverComponent,
@@ -679,9 +679,9 @@ export const generatedRoutes: ExtendedRoute[] = [
     component: MultiSelectComponent,
   },
   {
-    name: 'Overview Notifications Toast Modal Banner',
-    path: 'overview-notifications-toast-modal-banner',
-    component: OverviewNotificationsToastModalBannerComponent,
+    name: 'Overview Notifications Markup',
+    path: 'overview-notifications-markup',
+    component: OverviewNotificationsMarkupComponent,
   },
   {
     name: 'Pagination',

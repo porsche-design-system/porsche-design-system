@@ -94,7 +94,7 @@ import { ModalWithoutDismissButtonPage } from './generated/ModalWithoutDismissBu
 import { ModalWithoutHeadingPage } from './generated/ModalWithoutHeading';
 import { ModelSignaturePage } from './generated/ModelSignature';
 import { MultiSelectPage } from './generated/MultiSelect';
-import { OverviewNotificationsToastModalBannerPage } from './generated/OverviewNotificationsToastModalBanner';
+import { OverviewNotificationsMarkupPage } from './generated/OverviewNotificationsMarkup';
 import { PaginationPage } from './generated/Pagination';
 import { PinCodePage } from './generated/PinCode';
 import { PopoverPage } from './generated/Popover';
@@ -536,9 +536,9 @@ export const generatedRoutes: RouteType[] = [
     element: <MultiSelectPage />,
   },
   {
-    name: 'Overview Notifications Toast Modal Banner',
-    path: '/overview-notifications-toast-modal-banner',
-    element: <OverviewNotificationsToastModalBannerPage />,
+    name: 'Overview Notifications Markup',
+    path: '/overview-notifications-markup',
+    element: <OverviewNotificationsMarkupPage />,
   },
   {
     name: 'Pagination',

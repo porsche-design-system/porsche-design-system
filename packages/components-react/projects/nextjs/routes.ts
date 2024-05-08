@@ -336,9 +336,9 @@ const generatedRoutes = {
     "path": "/overview-notifications",
     "name": "OverviewNotifications"
   },
-  "overviewNotificationsToastModalBanner": {
-    "path": "/overview-notifications-toast-modal-banner",
-    "name": "OverviewNotificationsToastModalBanner"
+  "overviewNotificationsMarkup": {
+    "path": "/overview-notifications-markup",
+    "name": "OverviewNotificationsMarkup"
   },
   "pagination": {
     "path": "/pagination",
