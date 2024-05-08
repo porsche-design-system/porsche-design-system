@@ -43,8 +43,6 @@
     max-width: 400px;
   }
 
-  .playground--flyout,
-  .playground--banner,
   .playground--modal {
     transform: translate3d(0, 0, 0);
     height: 10rem;
@@ -54,22 +52,6 @@
 
   .playground--modal {
     height: 20rem;
-  }
-
-  .playground--banner {
-    height: 13.5rem;
-  }
-
-  .playground--flyout {
-    height: 24rem;
-    display: flex;
-    flex-direction: column;
-  }
-
-  .playground > iframe {
-    margin: 0;
-    height: 100%;
-    width: 100%;
   }
 </style>
 
@@ -86,20 +68,8 @@
     <p-display>Some Display</p-display>
   </div>
 
-  <div class="playground light playground--banner" title="should render default banner">
-    <iframe loading="eager" src="/banner-basic?iframe=true" title="fix-linter-1"></iframe>
-  </div>
-
   <div class="playground light playground--modal" title="should render default modal">
     <p-modal heading="Heading" open="true">Some Content</p-modal>
-  </div>
-
-  <div class="playground light playground--flyout" title="should render default flyout">
-    <iframe
-      loading="eager"
-      src="/flyout-header-footer-subfooter?iframe=true"
-      title="should render default flyout"
-    ></iframe>
   </div>
 
   <div class="playground light" title="should render default inline-notification">
@@ -423,24 +393,8 @@
     <my-prefix-p-display>Some Display</my-prefix-p-display>
   </div>
 
-  <div class="playground light playground--banner" title="should render default banner with custom prefix">
-    <iframe
-      loading="eager"
-      src="/banner-prefixed?iframe=true"
-      title="should render default banner with custom prefix"
-    ></iframe>
-  </div>
-
   <div class="playground light playground--modal" title="should render default modal with custom prefix">
     <my-prefix-p-modal heading="Heading" open="true">Some Content</my-prefix-p-modal>
-  </div>
-
-  <div class="playground light playground--flyout" title="should render default flyout with custom prefix">
-    <iframe
-      loading="eager"
-      src="/flyout-prefixed-header-footer-subfooter?iframe=true"
-      title="should render default flyout with custom prefix"
-    ></iframe>
   </div>
 
   <div class="playground light" title="should render default inline-notification with custom prefix">
