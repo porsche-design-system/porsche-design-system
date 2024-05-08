@@ -76,7 +76,7 @@
   },
   "devDependencies": {
     "@arethetypeswrong/core": "^0.15.1",
-    "@playwright/test": "1.42.1",
+    "@playwright/test": "1.44.0",
     "@porsche-design-system/shared": "0.0.0",
     "change-case": "^5.4.4",
     "concurrently": "^8.2.2",
