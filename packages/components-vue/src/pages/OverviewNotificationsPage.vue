@@ -1,5 +1,5 @@
-<script setup lang="ts">
-  import { PModal, PBanner } from '@porsche-design-system/components-vue';
+<script lang="ts" setup>
+  import { PModal } from '@porsche-design-system/components-vue';
   import { ToastComponent } from '../components';
 </script>
 
@@ -10,11 +10,6 @@
       <ToastComponent text="The quick brown fox jumps over the lazy dog" />
 
       <PModal :heading="'The quick brown fox jumps over the lazy dog'" :open="true">Some Content</PModal>
-
-      <PBanner :open="true">
-        <span slot="title">Default banner component</span>
-        <span slot="description">Some slotted banner description</span>
-      </PBanner>
     </div>
   </div>
   <!-- eslint-enable -->
