@@ -106,7 +106,7 @@ export class Banner {
   }
 
   public disconnectedCallback(): void {
-    if (this.hasDismissButton) {
+    if (this.open && this.hasDismissButton) {
       document.removeEventListener('keydown', this.onKeyboardEvent);
     }
   }
