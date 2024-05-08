@@ -1,7 +1,6 @@
 <script lang="ts" setup>
   import {
     PAccordion,
-    PBanner,
     PButton,
     PButtonGroup,
     PButtonPure,
@@ -83,15 +82,6 @@
       <div class="playground light" title="should render default display">
         <PDisplay>Some Display</PDisplay>
       </div>
-
-      <!-- eslint-disable vue/no-deprecated-slot-attribute -->
-      <div class="playground light playground--banner" title="should render default banner">
-        <PBanner :open="true">
-          <span slot="title">Default banner component</span>
-          <span slot="description">Some slotted banner description</span>
-        </PBanner>
-      </div>
-      <!-- eslint-enable -->
 
       <div class="playground light playground--modal" title="should render default modal">
         <PModal :heading="'Heading'" :open="true">Some Content</PModal>
