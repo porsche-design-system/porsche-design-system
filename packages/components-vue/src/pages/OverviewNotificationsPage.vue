@@ -1,6 +1,13 @@
 <script lang="ts" setup>
-  import { PModal } from '@porsche-design-system/components-vue';
+  import { componentsReady, PModal } from '@porsche-design-system/components-vue';
   import { ToastComponent } from '../components';
+
+  componentsReady().then(() => {
+    // focus is flaky on modal VRT so remove it
+    if (document.activeElement) {
+      document.activeElement.blur();
+    }
+  });
 </script>
 
 <template>
