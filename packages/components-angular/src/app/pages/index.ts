@@ -116,7 +116,6 @@ import { ModelSignatureComponent } from './generated/model-signature.component';
 import { MultiSelectComponent } from './generated/multi-select.component';
 import { OverviewComponent } from './generated/overview.component';
 import { OverviewNotificationsComponent } from './generated/overview-notifications.component';
-import { OverviewNotificationsMarkupComponent } from './generated/overview-notifications-markup.component';
 import { PaginationComponent } from './generated/pagination.component';
 import { PinCodeComponent } from './generated/pin-code.component';
 import { PopoverComponent } from './generated/popover.component';
@@ -236,7 +235,6 @@ export const generatedPages = [
   MultiSelectComponent,
   OverviewComponent,
   OverviewNotificationsComponent,
-  OverviewNotificationsMarkupComponent,
   PaginationComponent,
   PinCodeComponent,
   PopoverComponent,
@@ -677,11 +675,6 @@ export const generatedRoutes: ExtendedRoute[] = [
     name: 'Multi Select',
     path: 'multi-select',
     component: MultiSelectComponent,
-  },
-  {
-    name: 'Overview Notifications Markup',
-    path: 'overview-notifications-markup',
-    component: OverviewNotificationsMarkupComponent,
   },
   {
     name: 'Pagination',

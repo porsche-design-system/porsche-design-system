@@ -94,7 +94,6 @@ import { ModalWithoutDismissButtonPage } from './generated/ModalWithoutDismissBu
 import { ModalWithoutHeadingPage } from './generated/ModalWithoutHeading';
 import { ModelSignaturePage } from './generated/ModelSignature';
 import { MultiSelectPage } from './generated/MultiSelect';
-import { OverviewNotificationsMarkupPage } from './generated/OverviewNotificationsMarkup';
 import { PaginationPage } from './generated/Pagination';
 import { PinCodePage } from './generated/PinCode';
 import { PopoverPage } from './generated/Popover';
@@ -534,11 +533,6 @@ export const generatedRoutes: RouteType[] = [
     name: 'Multi Select',
     path: '/multi-select',
     element: <MultiSelectPage />,
-  },
-  {
-    name: 'Overview Notifications Markup',
-    path: '/overview-notifications-markup',
-    element: <OverviewNotificationsMarkupPage />,
   },
   {
     name: 'Pagination',

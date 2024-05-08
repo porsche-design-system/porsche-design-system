@@ -1,11 +1,21 @@
 <style>
-  .playground > iframe {
+  .playground > div {
     height: 300px;
     transform: translateX(0);
     border: 1px solid deeppink;
   }
 </style>
 
-<div class="playground light" title="should show banner with heading and description">
-  <iframe loading="eager" src="/overview-notifications-markup?iframe=true" title="fix-linter-1"></iframe>
+<div class="playground light" title="should render notifications in correct stacking order">
+  <div>
+    <p-toast></p-toast>
+
+    <p-modal heading="The quick brown fox jumps over the lazy dog" open="true">Some Content</p-modal>
+  </div>
 </div>
+
+<script>
+  porscheDesignSystem.componentsReady().then(() => {
+    document.querySelector('p-toast').addMessage({ text: 'The quick brown fox jumps over the lazy dog' });
+  });
+</script>

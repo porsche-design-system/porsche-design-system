@@ -336,10 +336,6 @@ const generatedRoutes = {
     "path": "/overview-notifications",
     "name": "OverviewNotifications"
   },
-  "overviewNotificationsMarkup": {
-    "path": "/overview-notifications-markup",
-    "name": "OverviewNotificationsMarkup"
-  },
   "pagination": {
     "path": "/pagination",
     "name": "Pagination"
