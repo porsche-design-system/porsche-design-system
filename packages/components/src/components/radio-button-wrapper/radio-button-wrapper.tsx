@@ -21,7 +21,6 @@ import { StateMessage } from '../common/state-message/state-message';
 import { Label } from '../common/label/label';
 import { LoadingMessage } from '../common/loading-message/loading-message';
 import { ControllerHost, InitialLoadingController } from '../../controllers';
-import { getSlottedAnchorStyles } from '../../styles/global/slotted-anchor-styles';
 
 const propTypes: PropTypes<typeof RadioButtonWrapper> = {
   label: AllowedTypes.string,
@@ -62,7 +61,7 @@ export class RadioButtonWrapper {
   private input: HTMLInputElement;
 
   public connectedCallback(): void {
-    applyConstructableStylesheetStyles(this.host, getSlottedAnchorStyles, getCheckboxRadioButtonSafariRenderingFix);
+    applyConstructableStylesheetStyles(this.host, getCheckboxRadioButtonSafariRenderingFix);
     this.observeAttributes(); // on every reconnect
   }
 
