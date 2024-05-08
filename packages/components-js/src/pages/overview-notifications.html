@@ -17,6 +17,10 @@
 <script>
   porscheDesignSystem.componentsReady().then(() => {
     document.querySelector('p-toast').addMessage({ text: 'The quick brown fox jumps over the lazy dog' });
-    document.body.focus(); // focus was flaky on modal so set it to body
+
+    // focus is flaky on modal VRT so remove it
+    if (document.activeElement) {
+      document.activeElement.blur();
+    }
   });
 </script>
