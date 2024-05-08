@@ -6,8 +6,8 @@
   },
   {
     "chunkShortName": "banner",
-    "size": 5806,
-    "gzipSize": 2332
+    "size": 5973,
+    "gzipSize": 2407
   },
   {
     "chunkShortName": "button",
@@ -76,13 +76,13 @@
   },
   {
     "chunkShortName": "flyout",
-    "size": 7537,
-    "gzipSize": 3034
+    "size": 7550,
+    "gzipSize": 3042
   },
   {
     "chunkShortName": "flyout-navigation",
-    "size": 12122,
-    "gzipSize": 4497
+    "size": 12135,
+    "gzipSize": 4505
   },
   {
     "chunkShortName": "grid",
@@ -142,7 +142,7 @@
   {
     "chunkShortName": "main",
     "size": 77230,
-    "gzipSize": 25643
+    "gzipSize": 25647
   },
   {
     "chunkShortName": "marque",
@@ -151,8 +151,8 @@
   },
   {
     "chunkShortName": "modal",
-    "size": 9843,
-    "gzipSize": 4197
+    "size": 9856,
+    "gzipSize": 4205
   },
   {
     "chunkShortName": "model-signature",
@@ -176,8 +176,8 @@
   },
   {
     "chunkShortName": "popover",
-    "size": 8720,
-    "gzipSize": 3386
+    "size": 8733,
+    "gzipSize": 3395
   },
   {
     "chunkShortName": "radio-button-wrapper",
@@ -266,8 +266,8 @@
   },
   {
     "chunkShortName": "toast",
-    "size": 7046,
-    "gzipSize": 3096
+    "size": 7059,
+    "gzipSize": 3103
   },
   {
     "chunkShortName": "wordmark",
