@@ -10,6 +10,7 @@ import {
   motionEasingOut,
 } from '@porsche-design-system/utilities-v2';
 import { getCss } from '../../utils';
+import { BANNER_Z_INDEX } from '../../constants';
 import {
   addImportantToEachRule,
   colorSchemeStyles,
@@ -20,6 +21,7 @@ import {
 
 const cssVariableTop = '--p-banner-position-top';
 const cssVariableBottom = '--p-banner-position-bottom';
+const cssVariableZIndex = '--p-internal-banner-z-index';
 
 const topBottomFallback = '56px';
 
@@ -30,8 +32,6 @@ export const getComponentCss = (isOpen: boolean): string => {
         display: 'block',
         ...addImportantToEachRule({
           position: 'fixed',
-          border: '0',
-          outline: '0',
           bottom: `var(${cssVariableBottom},${topBottomFallback})`,
           left: gridExtendedOffsetBase,
           right: gridExtendedOffsetBase,
@@ -39,8 +39,11 @@ export const getComponentCss = (isOpen: boolean): string => {
           padding: 0,
           width: 'auto',
           maxWidth: '100%', // If component is wrapped in container with maxWidth
+          zIndex: `var(${cssVariableZIndex},${BANNER_Z_INDEX})`,
           ...dropShadowHighStyle,
           borderRadius: borderRadiusSmall, // needed for rounded box-shadow
+          border: '0',
+          outline: '0',
           ...(isOpen
             ? {
                 opacity: 1,
