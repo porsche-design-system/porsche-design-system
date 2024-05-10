@@ -523,25 +523,25 @@ test.describe('keyboard and click events', () => {
     expect(await getSelectedIndex(page), 'for selected index').toBe(1);
   });
 
-  test('should close dropdown on Tab', async ({ page }) => {
-    skipInBrowsers(['firefox']);
+  skipInBrowsers(['firefox'], () => {
+    test('should close dropdown on Tab', async ({ page }) => {
+      await initSelect(page);
 
-    await initSelect(page);
+      const filterInput = await getFilterInput(page);
+      await addEventListener(filterInput, 'blur');
 
-    const filterInput = await getFilterInput(page);
-    await addEventListener(filterInput, 'blur');
+      await page.keyboard.press('Tab');
+      await page.keyboard.press('Space');
+      await waitForStencilLifecycle(page);
 
-    await page.keyboard.press('Tab');
-    await page.keyboard.press('Space');
-    await waitForStencilLifecycle(page);
+      expect(await getDropdownList(page), 'for dropdown list').toBeTruthy();
 
-    expect(await getDropdownList(page), 'for dropdown list').toBeTruthy();
+      await page.keyboard.press('Tab');
+      await waitForStencilLifecycle(page);
 
-    await page.keyboard.press('Tab');
-    await waitForStencilLifecycle(page);
-
-    expect(await getDropdownList(page), 'for dropdown list').toBeNull();
-    expect((await getEventSummary(filterInput, 'blur')).counter, 'for calls').toBe(1);
+      expect(await getDropdownList(page), 'for dropdown list').toBeNull();
+      expect((await getEventSummary(filterInput, 'blur')).counter, 'for calls').toBe(1);
+    });
   });
 
   test.describe('when select is disabled', () => {
