@@ -347,7 +347,7 @@ test.describe('focus behavior', () => {
     expect(await getActiveElementTagName(page)).toBe('P-FLYOUT-NAVIGATION');
     await expectDismissButtonToBeFocused(page);
     await page.keyboard.press('Tab');
-    expect(await getActiveElementTagName(page)).toBe('BODY');
+    expect(await getActiveElementTagName(page)).toBe('P-FLYOUT-NAVIGATION');
     await page.keyboard.press('Tab');
     expect(await getActiveElementTagName(page)).toBe('P-FLYOUT-NAVIGATION');
     await expectDismissButtonToBeFocused(page);
@@ -409,7 +409,7 @@ test.describe('focus behavior', () => {
     await page.keyboard.press('Tab');
     expect(await getActiveElementId(page)).toBe('btn-after');
     await page.keyboard.press('Tab');
-    expect(await getActiveElementTagName(page)).toBe('BODY');
+    expect(await getActiveElementTagName(page)).toBe('BUTTON');
   });
 
   test('should focus element after flyout when open accordion contains link but flyout is not open', async ({
