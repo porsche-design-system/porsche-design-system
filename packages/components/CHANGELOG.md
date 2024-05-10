@@ -14,6 +14,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ### [Unreleased]
 
+#### Added
+
+- `Button Pure`: Prop `underline` to show an underline for the label
+  ([#3212](https://github.com/porsche-design-system/porsche-design-system/pull/3212))
+  
 #### Changed
 
 - Banner: Refactor Banner to use native `popover`

@@ -27,14 +27,10 @@ export const getComponentCss = (
         size,
         hideLabel,
         alignLabel,
+        underline,
         hasSlottedAnchor,
         theme
       ),
-      {
-        root: {
-          textDecoration: underline ? 'underline' : 'none',
-        },
-      },
       hasSlottedAnchor && {
         '@global': addImportantToEachRule({
           '::slotted': {

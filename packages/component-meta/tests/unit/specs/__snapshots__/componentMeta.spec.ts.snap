@@ -1165,6 +1165,7 @@ exports[`should match snapshot 1`] = `
         "submit",
         "reset",
       ],
+      "underline": "boolean",
       "value": "string",
       "weight": [
         "regular",
@@ -1220,6 +1221,7 @@ exports[`should match snapshot 1`] = `
       "stretch": false,
       "theme": "light",
       "type": "submit",
+      "underline": false,
       "value": null,
       "weight": "regular",
     },
@@ -1540,6 +1542,12 @@ exports[`should match snapshot 1`] = `
         "defaultValue": "submit",
         "description": "Specifies the type of the button.",
         "type": "ButtonPureType",
+      },
+      "underline": {
+        "allowedValues": "boolean",
+        "defaultValue": false,
+        "description": "Shows an underline under the label.",
+        "type": "boolean",
       },
       "value": {
         "allowedValues": "string",
