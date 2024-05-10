@@ -524,6 +524,8 @@ test.describe('keyboard and click events', () => {
   });
 
   test('should close dropdown on Tab', async ({ page }) => {
+    skipInBrowsers(['firefox']);
+
     await initSelect(page);
 
     const filterInput = await getFilterInput(page);

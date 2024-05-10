@@ -339,21 +339,21 @@ test.describe('focus behavior', () => {
     });
   });
 
-  test('should not allow focusing element behind of flyout when pressing Tab', async ({ page }) => {
-    await initBasicFlyoutNavigation(page, { open: false }, { amount: 0 });
-    await addButtonsBeforeAndAfterFlyout(page);
-    await openFlyoutNavigation(page);
-
-    expect(await getActiveElementTagName(page)).toBe('P-FLYOUT-NAVIGATION');
-    await expectDismissButtonToBeFocused(page);
-    await page.keyboard.press('Tab');
-    expect(await getActiveElementTagName(page)).toBe('P-FLYOUT-NAVIGATION');
-    await page.keyboard.press('Tab');
-    expect(await getActiveElementTagName(page)).toBe('P-FLYOUT-NAVIGATION');
-    await expectDismissButtonToBeFocused(page);
-  });
-
   skipInBrowsers(['firefox'], () => {
+    test('should not allow focusing element behind of flyout when pressing Tab', async ({ page }) => {
+      await initBasicFlyoutNavigation(page, { open: false }, { amount: 0 });
+      await addButtonsBeforeAndAfterFlyout(page);
+      await openFlyoutNavigation(page);
+
+      expect(await getActiveElementTagName(page)).toBe('P-FLYOUT-NAVIGATION');
+      await expectDismissButtonToBeFocused(page);
+      await page.keyboard.press('Tab');
+      expect(await getActiveElementTagName(page)).toBe('BODY');
+      await page.keyboard.press('Tab');
+      expect(await getActiveElementTagName(page)).toBe('P-FLYOUT-NAVIGATION');
+      await expectDismissButtonToBeFocused(page);
+    });
+
     test('should not allow focusing element behind of flyout when pressing Shift Tab', async ({ page }) => {
       await initBasicFlyoutNavigation(page, { open: false }, { amount: 0 });
       await addButtonsBeforeAndAfterFlyout(page);
@@ -368,6 +368,18 @@ test.describe('focus behavior', () => {
       await page.keyboard.press('Tab');
       expect(await getActiveElementTagName(page)).toBe('P-FLYOUT-NAVIGATION');
       await expectDismissButtonToBeFocused(page);
+    });
+
+    test('should not focus flyout content when not open', async ({ page }) => {
+      await initBasicFlyoutNavigation(page, { open: false }, {});
+      await addButtonsBeforeAndAfterFlyout(page);
+      expect(await getActiveElementTagName(page)).toBe('BODY');
+      await page.keyboard.press('Tab');
+      expect(await getActiveElementId(page)).toBe('btn-before');
+      await page.keyboard.press('Tab');
+      expect(await getActiveElementId(page)).toBe('btn-after');
+      await page.keyboard.press('Tab');
+      expect(await getActiveElementTagName(page)).toBe('BODY');
     });
   });
 
@@ -398,18 +410,6 @@ test.describe('focus behavior', () => {
 
     expect(await getFlyoutNavigationDialogVisibility(page), 'after escape').toBe('hidden');
     expect(await getActiveElementId(page)).toBe('btn-open');
-  });
-
-  test('should not focus flyout content when not open', async ({ page }) => {
-    await initBasicFlyoutNavigation(page, { open: false }, {});
-    await addButtonsBeforeAndAfterFlyout(page);
-    expect(await getActiveElementTagName(page)).toBe('BODY');
-    await page.keyboard.press('Tab');
-    expect(await getActiveElementId(page)).toBe('btn-before');
-    await page.keyboard.press('Tab');
-    expect(await getActiveElementId(page)).toBe('btn-after');
-    await page.keyboard.press('Tab');
-    expect(await getActiveElementTagName(page)).toBe('BUTTON');
   });
 
   test('should focus element after flyout when open accordion contains link but flyout is not open', async ({

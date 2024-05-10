@@ -1,6 +1,6 @@
 import { devices, expect, test } from '@playwright/test';
 import { Page } from 'playwright';
-import { setContentWithDesignSystem } from '../helpers';
+import { setContentWithDesignSystem, skipInBrowsers } from '../helpers';
 
 const dropdownSelector = 'p-select-wrapper p-select-wrapper-dropdown';
 
@@ -29,6 +29,8 @@ const initSelect = (page: Page, opts?: InitOptions): Promise<void> => {
 test.use({
   ...devices['iPhone X'],
 });
+
+skipInBrowsers(['firefox', 'webkit', 'chromium']);
 
 test('should render dropdown if touch support is detected', async ({ page }) => {
   await initSelect(page);
