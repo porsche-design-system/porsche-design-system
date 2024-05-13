@@ -55,7 +55,7 @@ export const getComponentCss = (
         'slot[name=header]': {
           ...getModalDialogStickyAreaJssStyle('header', theme),
           // TODO: because header is always stuck at top, it will always show the shadow underneath
-          gridArea: '2/1/4/-1', // ensures header is stuck at top
+          gridArea: '1/1/4/-1', // ensures header is stuck at top
           zIndex: 1, // ensures header is above content but below sticky dismiss button
         },
       }),

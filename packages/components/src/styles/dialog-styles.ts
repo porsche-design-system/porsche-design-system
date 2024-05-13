@@ -209,25 +209,16 @@ export const getModalDialogStickyAreaJssStyle = (area: 'header' | 'footer', them
 
   return {
     position: 'sticky',
-    // necessary for `IntersectionObserver` to detect if sticky element is stuck or not.
-    // Float values (e.g. -0.1px) are not recommend because this might in slightly squeezed elements within sticky area.
-    ...(isAreaHeader
-      ? {
-          top: '-1px',
-        }
-      : {
-          bottom: '-1px',
-        }),
-    marginBlock: `calc(${spacingFluidSmall} * -1)`, // compensate safe-zone
+    [isAreaHeader ? 'top' : 'bottom']: '-.1px', // necessary for `IntersectionObserver` to detect if sticky element is stuck or not. Float value is used, so that sticky area isn't moved out visually by e.g. 1px when container gets scrolled.
+    transform: 'translateZ(0)', // prevents slightly squeezed elements within sticky area for some browsers caused by float value of sticky top position
     padding: `${spacingStaticMedium} ${spacingFluidLarge}`, // with CSS subgrid the spacingFluidLarge definition wouldn't be necessary
     background: backgroundColor,
     ...prefersColorSchemeDarkMediaQuery(theme, {
       background: backgroundColorDark,
     }),
-    // ensures modal surface does not become boxy
     borderRadius: isAreaHeader
       ? `${borderRadiusMedium} ${borderRadiusMedium} 0 0`
-      : `0 0 ${borderRadiusMedium} ${borderRadiusMedium}`,
+      : `0 0 ${borderRadiusMedium} ${borderRadiusMedium}`, // ensures modal surface does not become boxy
     clipPath: `inset(${isAreaHeader ? '0 0 -20px 0' : '-20px 0 0 0'})`, // crop leaking box-shadow on left and right side
     transition: `${getTransition('box-shadow')}`,
     '&[data-stuck]': {
