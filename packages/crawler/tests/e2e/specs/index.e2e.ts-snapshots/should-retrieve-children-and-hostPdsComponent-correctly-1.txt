@@ -53,6 +53,7 @@
             "size": "small",
             "weight": "regular",
             "icon": "close",
+            "underline": false,
             "active": false,
             "hideLabel": true,
             "alignLabel": "end",

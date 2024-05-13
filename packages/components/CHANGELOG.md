@@ -16,6 +16,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 #### Added
 
+- `Button Pure`: Prop `underline` to show an underline for the label
+  ([#3212](https://github.com/porsche-design-system/porsche-design-system/pull/3212))
 - Partials: Added new option `globalStyles` to `getInitialStyles` to disable global reset styles.  
   ([#3213](https://github.com/porsche-design-system/porsche-design-system/pull/3213))
 

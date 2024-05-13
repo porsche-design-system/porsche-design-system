@@ -307,6 +307,10 @@ export namespace Components {
          */
         "type"?: ButtonPureType;
         /**
+          * Shows an underline under the label.
+         */
+        "underline"?: boolean;
+        /**
           * Defines the value associated with the button's name when it's submitted with the form data. This value is passed to the server in params when the form is submitted using this button.
          */
         "value"?: string;
@@ -3046,6 +3050,10 @@ declare namespace LocalJSX {
           * Specifies the type of the button.
          */
         "type"?: ButtonPureType;
+        /**
+          * Shows an underline under the label.
+         */
+        "underline"?: boolean;
         /**
           * Defines the value associated with the button's name when it's submitted with the form data. This value is passed to the server in params when the form is submitted using this button.
          */
