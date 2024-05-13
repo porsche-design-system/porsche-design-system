@@ -11,9 +11,9 @@ const tagNames: TagName[] = TAG_NAMES.filter((tagName) => !INTERNAL_TAG_NAMES.in
 
 for (const tagName of tagNames) {
   test.describe(tagName, () => {
-    test(`should not throw error after disconnectedCallback`, async ({ page }) => {
+    test(`should not throw error after disconnectedCallback`, async ({ page, browserName }) => {
       // TODO: Banner is now using popover attribute which needs an update of Playwright so Firefox supports it (#3129)
-      test.skip(({ browserName }) => tagName === 'p-banner' && browserName === 'firefox');
+      test.skip(tagName === 'p-banner' && browserName === 'firefox');
 
       initConsoleObserver(page);
       await goto(page, ''); // start page
