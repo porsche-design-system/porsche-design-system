@@ -36,14 +36,16 @@ export const generateInitialStylesPartial = (): string => {
   const types = `type GetInitialStylesOptions = {
   prefix?: string | string[];
   format?: FormatWithCSP;
+  globalStyles?: boolean;
 };`;
 
   const initialStylesFunction = `export function getInitialStyles(opts: GetInitialStylesOptions & { format: 'jsx' }): JSX.Element;
 export function getInitialStyles(opts?: GetInitialStylesOptions): string;
 export function getInitialStyles(opts?: GetInitialStylesOptions): string | JSX.Element {
-  const { prefix, format }: GetInitialStylesOptions = {
+  const { prefix, format, globalStyles }: GetInitialStylesOptions = {
     prefix: '',
     format: 'html',
+    globalStyles: true,
     ...opts,
   };
 
@@ -59,7 +61,7 @@ export function getInitialStyles(opts?: GetInitialStylesOptions): string | JSX.E
   const hydrationStyles = prefixedTagNames.join() + '{visibility:hidden}.hydrated,.ssr{visibility:inherit}';
 
 
-  const styles = normalizeStyles.concat(hydrationStyles);
+  const styles = globalStyles ? normalizeStyles.concat(hydrationStyles) : hydrationStyles;
 
   return format === 'sha256'
     ? getSha256Hash(styles)
