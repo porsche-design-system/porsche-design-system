@@ -14,6 +14,17 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ### [Unreleased]
 
+#### Added
+
+- Partials: Added new option `globalStyles` to `getInitialStyles` to disable global reset styles.  
+  ([#3213](https://github.com/porsche-design-system/porsche-design-system/pull/3213))
+
+#### Changed
+
+- Partials: `getInitialStyles` only contain hydration visibility and global styles. All other styles are handled by
+  constructable stylesheets at component level.
+  ([#3213](https://github.com/porsche-design-system/porsche-design-system/pull/3213))
+
 ### [3.15.0-rc.4] - 2024-05-06
 
 #### Added
