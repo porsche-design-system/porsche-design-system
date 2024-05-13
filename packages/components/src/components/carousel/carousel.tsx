@@ -27,6 +27,7 @@ import { Component, Element, Event, type EventEmitter, h, Host, Prop, State, Wat
 import { Splide } from '@splidejs/splide';
 import {
   AllowedTypes,
+  applyConstructableStylesheetStyles,
   attachComponentCss,
   getCurrentMatchingBreakpointValue,
   getPrefixedTagNames,
@@ -48,6 +49,7 @@ import {
 } from '../../utils';
 import { carouselTransitionDuration, getComponentCss } from './carousel-styles';
 import { gridGap, motionEasingBase } from '@porsche-design-system/utilities-v2';
+import { getSlottedAnchorStyles } from '../../styles/global/slotted-anchor-styles';
 
 const propTypes: PropTypes<typeof Carousel> = {
   heading: AllowedTypes.string,
@@ -161,6 +163,7 @@ export class Carousel {
   }
 
   public connectedCallback(): void {
+    applyConstructableStylesheetStyles(this.host, getSlottedAnchorStyles);
     observeChildren(this.host, this.updateSlidesAndPagination);
     this.observeBreakpointChange();
 
