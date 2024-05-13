@@ -6011,12 +6011,14 @@ exports[`should render dsr component for PBanner 1`] = `
   margin: 0 !important;
   padding: 0 !important;
   width: auto !important;
+  height: auto !important;
   max-width: 100% !important;
   z-index: var(--p-internal-banner-z-index,99) !important;
   box-shadow: 0px 8px 40px rgba(0, 0, 0, 0.16) !important;
   border-radius: 4px !important;
   border: 0 !important;
   outline: 0 !important;
+  overflow: visible !important;
   opacity: 0 !important;
   visibility: hidden !important;
   pointer-events: none !important;
