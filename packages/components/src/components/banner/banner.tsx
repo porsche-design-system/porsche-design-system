@@ -105,11 +105,11 @@ export class Banner {
     }
   }
 
-  public disconnectedCallback(): void {
+  /* public disconnectedCallback(): void {
     if (this.open && this.hasDismissButton) {
       document.removeEventListener('keydown', this.onKeyboardEvent);
     }
-  }
+  }*/
 
   public render(): JSX.Element {
     validateProps(this, propTypes);
