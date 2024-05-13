@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`should return correct minified sibling tabindex styles for component: p-tabs-bar 1`] = `
+exports[`should return correct sibling tabindex styles for component: p-tabs-bar 1`] = `
 {
   "@global": {
     "p-tabs-bar": {

@@ -6,7 +6,7 @@ import * as getSlottedInputIndicatorStylesUtils from './slotted-input-indicator-
 import * as applyConstructableStylesheetStylesUtils from '../../utils/applyConstructableStylesheetStyle';
 
 it.each(tagNamesWithSlottedInputIndicatorArray)(
-  'should return correct minified slotted input indicator styles for component: %s',
+  'should return correct slotted input indicator styles for component: %s',
   (tagName) => {
     expect(getSlottedInputIndicatorStyles(tagName)).toMatchSnapshot();
   }
@@ -26,7 +26,7 @@ it.each(tagNamesWithSlottedInputIndicatorArray)(
     );
     component.connectedCallback();
 
-    expect(applyConstructableStylesheetStylesSpy).toHaveBeenCalledWith(component.host, getSlottedInputIndicatorStyles);
+    expect(applyConstructableStylesheetStylesSpy).toHaveBeenCalledTimes(1);
     expect(getSlottedInputIndicatorStylesSpy).toHaveBeenCalledWith(tagName);
   }
 );

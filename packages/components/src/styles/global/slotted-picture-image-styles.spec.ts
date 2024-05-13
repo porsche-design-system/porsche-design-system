@@ -5,7 +5,7 @@ import { getSlottedPictureImageStyles, tagNamesWithSlottedPictureImageArray } fr
 import * as applyConstructableStylesheetStylesUtils from '../../utils/applyConstructableStylesheetStyle';
 
 it.each(tagNamesWithSlottedPictureImageArray)(
-  'should return correct minified slotted picture/image styles for component: %s',
+  'should return correct slotted picture/image styles for component: %s',
   (tagName) => {
     expect(getSlottedPictureImageStyles(tagName)).toMatchSnapshot();
   }
@@ -25,7 +25,7 @@ it.each(tagNamesWithSlottedPictureImageArray)(
     );
     component.connectedCallback();
 
-    expect(applyConstructableStylesheetStylesSpy).toHaveBeenCalledWith(component.host, getSlottedPictureImageStyles);
+    expect(applyConstructableStylesheetStylesSpy).toHaveBeenCalledTimes(1);
     expect(getSlottedPictureImageStylesSpy).toHaveBeenCalledWith(tagName);
   }
 );

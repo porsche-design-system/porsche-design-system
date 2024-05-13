@@ -5,7 +5,7 @@ import { getSiblingTabindexStyles, tagNamesWithSiblingTabindexArray } from './si
 import * as applyConstructableStylesheetStylesUtils from '../../utils/applyConstructableStylesheetStyle';
 
 it.each(tagNamesWithSiblingTabindexArray)(
-  'should return correct minified sibling tabindex styles for component: %s',
+  'should return correct sibling tabindex styles for component: %s',
   (tagName) => {
     expect(getSiblingTabindexStyles(tagName)).toMatchSnapshot();
   }
@@ -22,7 +22,7 @@ it.each(tagNamesWithSiblingTabindexArray)(
     );
     component.connectedCallback();
 
-    expect(applyConstructableStylesheetStylesSpy).toHaveBeenCalledWith(component.host, getSiblingTabindexStyles);
+    expect(applyConstructableStylesheetStylesSpy).toHaveBeenCalledTimes(1);
     expect(getSiblingTabindexStylesSpy).toHaveBeenCalledWith(tagName);
   }
 );

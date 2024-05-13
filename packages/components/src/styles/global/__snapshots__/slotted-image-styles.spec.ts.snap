@@ -1,9 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`should return correct minified slotted image styles for component: p-table 1`] = `
+exports[`should return correct slotted image styles for component: p-table 1`] = `
 {
   "@global": {
-    ":is(p-table) img": {
+    "p-table img": {
       "verticalAlign": "middle !important",
     },
   },

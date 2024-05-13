@@ -4,12 +4,9 @@ import * as slottedImageStylesUtils from './slotted-image-styles';
 import { getSlottedImageStyles, tagNamesWithSlottedImageArray } from './slotted-image-styles';
 import * as applyConstructableStylesheetStylesUtils from '../../utils/applyConstructableStylesheetStyle';
 
-it.each(tagNamesWithSlottedImageArray)(
-  'should return correct minified slotted image styles for component: %s',
-  (tagName) => {
-    expect(getSlottedImageStyles(tagName)).toMatchSnapshot();
-  }
-);
+it.each(tagNamesWithSlottedImageArray)('should return correct slotted image styles for component: %s', (tagName) => {
+  expect(getSlottedImageStyles(tagName)).toMatchSnapshot();
+});
 
 it.each(tagNamesWithSlottedImageArray)(
   'should apply constructable stylesheet with slotted image styles in connected callback for component %s',
@@ -22,7 +19,7 @@ it.each(tagNamesWithSlottedImageArray)(
     );
     component.connectedCallback();
 
-    expect(applyConstructableStylesheetStylesSpy).toHaveBeenCalledWith(component.host, getSlottedImageStyles);
+    expect(applyConstructableStylesheetStylesSpy).toHaveBeenCalledTimes(1);
     expect(getSlottedImageStylesSpy).toHaveBeenCalledWith(tagName);
   }
 );

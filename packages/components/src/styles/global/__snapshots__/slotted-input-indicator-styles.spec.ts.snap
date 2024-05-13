@@ -1,9 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`should return correct minified slotted input indicator styles for component: p-text-field-wrapper 1`] = `
+exports[`should return correct slotted input indicator styles for component: p-text-field-wrapper 1`] = `
 {
   "@global": {
-    ":is(p-text-field-wrapper) input": {
+    "p-text-field-wrapper input": {
       "&::-webkit-date-and-time-value": {
         "display": "inline-block !important",
         "textAlign": "inherit !important",
