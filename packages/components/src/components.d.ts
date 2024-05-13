@@ -150,6 +150,10 @@ export namespace Components {
          */
         "size"?: BreakpointCustomizable<AccordionSize>;
         /**
+          * @experimental Sticks the Accordion heading at the top, fixed while scrolling
+         */
+        "sticky"?: boolean;
+        /**
           * @deprecated , will be removed with next major release, use `heading-tag` instead. Sets a heading tag, so it fits correctly within the outline of the page.
          */
         "tag"?: AccordionTag;
@@ -302,6 +306,10 @@ export namespace Components {
           * Specifies the type of the button.
          */
         "type"?: ButtonPureType;
+        /**
+          * Shows an underline under the label.
+         */
+        "underline"?: boolean;
         /**
           * Defines the value associated with the button's name when it's submitted with the form data. This value is passed to the server in params when the form is submitted using this button.
          */
@@ -2882,6 +2890,10 @@ declare namespace LocalJSX {
          */
         "size"?: BreakpointCustomizable<AccordionSize>;
         /**
+          * @experimental Sticks the Accordion heading at the top, fixed while scrolling
+         */
+        "sticky"?: boolean;
+        /**
           * @deprecated , will be removed with next major release, use `heading-tag` instead. Sets a heading tag, so it fits correctly within the outline of the page.
          */
         "tag"?: AccordionTag;
@@ -3038,6 +3050,10 @@ declare namespace LocalJSX {
           * Specifies the type of the button.
          */
         "type"?: ButtonPureType;
+        /**
+          * Shows an underline under the label.
+         */
+        "underline"?: boolean;
         /**
           * Defines the value associated with the button's name when it's submitted with the form data. This value is passed to the server in params when the form is submitted using this button.
          */

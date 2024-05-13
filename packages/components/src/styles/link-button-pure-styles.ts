@@ -49,6 +49,7 @@ export const getLinkButtonPureStyles = (
   size: BreakpointCustomizable<TextSize>,
   hideLabel: BreakpointCustomizable<boolean>,
   alignLabel: BreakpointCustomizable<AlignLabel>,
+  underline: boolean,
   hasSlottedAnchor: boolean,
   theme: Theme
 ): Styles => {
@@ -82,6 +83,7 @@ export const getLinkButtonPureStyles = (
       padding: 0,
       margin: 0, // Removes default button margin on safari 15
       color: isDisabledOrLoading ? disabledColor : primaryColor,
+      textDecoration: underline ? 'underline' : 'none',
       ...prefersColorSchemeDarkMediaQuery(theme, {
         color: isDisabledOrLoading ? disabledColorDark : primaryColorDark,
       }),

@@ -19,15 +19,15 @@ describe('if global styles are missing', () => {
       injectGlobalStyle();
 
       expect(spy).toHaveBeenCalledWith(
-        `link[href='https://cdn.ui.porsche.com/porsche-design-system/styles/${FONT_FACE_CDN_FILE_COM}']`
+        `link[href='https://cdn.ui.porsche.com/porsche-design-system/styles/${FONT_FACE_CDN_FILE_COM}'],style[data-pds-font-face-styles=""]`
       );
 
       jest
-      .spyOn(getCDNBaseURLUtils, 'getCDNBaseURL')
-      .mockReturnValue('https://cdn.ui.porsche.cn/porsche-design-system');
+        .spyOn(getCDNBaseURLUtils, 'getCDNBaseURL')
+        .mockReturnValue('https://cdn.ui.porsche.cn/porsche-design-system');
       injectGlobalStyle();
       expect(spy).toHaveBeenCalledWith(
-        `link[href='https://cdn.ui.porsche.cn/porsche-design-system/styles/${FONT_FACE_CDN_FILE_CN}']`
+        `link[href='https://cdn.ui.porsche.cn/porsche-design-system/styles/${FONT_FACE_CDN_FILE_CN}'],style[data-pds-font-face-styles=""]`
       );
     });
 
@@ -59,10 +59,9 @@ describe('if global styles are missing', () => {
   });
 });
 
-describe('if global styles are there', () => {
+describe('if global styles are there (link)', () => {
   beforeEach(() => {
-    document.head.innerHTML = `<link href="https://cdn.ui.porsche.com/porsche-design-system/styles/${FONT_FACE_CDN_FILE_COM}">
-<style pds-initial-styles>some styles..</style>`;
+    document.head.innerHTML = `<link href="https://cdn.ui.porsche.com/porsche-design-system/styles/${FONT_FACE_CDN_FILE_COM}">`;
   });
 
   describe('for ROLLUP_REPLACE_IS_STAGING="production"', () => {
@@ -76,7 +75,43 @@ describe('if global styles are there', () => {
       injectGlobalStyle();
 
       expect(spy).toHaveBeenCalledWith(
-        `link[href='https://cdn.ui.porsche.com/porsche-design-system/styles/${FONT_FACE_CDN_FILE_COM}']`
+        `link[href='https://cdn.ui.porsche.com/porsche-design-system/styles/${FONT_FACE_CDN_FILE_COM}'],style[data-pds-font-face-styles=""]`
+      );
+    });
+  });
+
+  describe('for ROLLUP_REPLACE_IS_STAGING="staging"', () => {
+    beforeEach(() => {
+      // @ts-ignore
+      ROLLUP_REPLACE_IS_STAGING = 'staging';
+    });
+
+    it('should not call document.head.querySelector() when ROLLUP_REPLACE_IS_STAGING="staging"', () => {
+      const spy = jest.spyOn(document.head, 'querySelector');
+      injectGlobalStyle();
+
+      expect(spy).not.toHaveBeenCalled();
+    });
+  });
+});
+
+describe('if global styles are there (inline style)', () => {
+  beforeEach(() => {
+    document.head.innerHTML = `<style data-pds-font-face-styles></style>`;
+  });
+
+  describe('for ROLLUP_REPLACE_IS_STAGING="production"', () => {
+    beforeEach(() => {
+      // @ts-ignore
+      ROLLUP_REPLACE_IS_STAGING = 'production';
+    });
+
+    it('should call document.head.querySelector() with correct parameters when ROLLUP_REPLACE_IS_STAGING is %s', () => {
+      const spy = jest.spyOn(document.head, 'querySelector');
+      injectGlobalStyle();
+
+      expect(spy).toHaveBeenCalledWith(
+        `link[href='https://cdn.ui.porsche.com/porsche-design-system/styles/${FONT_FACE_CDN_FILE_COM}'],style[data-pds-font-face-styles=""]`
       );
     });
   });

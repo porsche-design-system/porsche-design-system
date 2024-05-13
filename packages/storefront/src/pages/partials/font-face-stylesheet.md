@@ -1,11 +1,16 @@
 # Font Face Stylesheet
 
+<Notification heading="Deprecation hint" state="warning">
+  Critical CSS should be inlined in order to improve the performance of your page.<br>
+  Therefore the <code>getFontFaceStylesheet()</code> has been deprecated and will be removed with the next major release.<br>
+  Please use the <code>getFontFaceStyles()</code> partial instead.
+</Notification>
+
 **Function name:** `getFontFaceStylesheet()`
 
 If you use the Porsche Design System components we inject a stylesheet with all font-face definitions into the head of
-your application as soon as our core is loaded. Regarding which font-styles you use on your page, these fonts are
-downloaded from our CDN. This can lead (for the first time) to a decent rendering glitch of your texts. To improve
-rendering we recommend that you load the stylesheet on your own.
+your application as soon as our core is loaded. To improve loading performance we recommend that you include the link to
+the stylesheet on your own.
 
 Therefore, we provide a ready to use partial in all `@porsche-design-system/components-{js|angular|react|vue}` packages
 which needs to be injected into the `<head>` of your `index.html`.

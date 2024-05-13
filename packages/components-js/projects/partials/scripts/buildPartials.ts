@@ -2,6 +2,7 @@ import * as fs from 'fs';
 import * as path from 'path';
 import { CDN_BASE_URL_COM, CDN_BASE_URL_CN } from '../../../../../cdn.config';
 import { generateFontFaceStylesheetPartial } from './generateFontFaceStylesheetPartial';
+import { generateFontFaceStylesPartial } from './generateFontFaceStylesPartial';
 import { generateInitialStylesPartial } from './generateInitialStylesPartial';
 import { generateFontLinksPartial } from './generateFontLinksPartial';
 import { generateComponentChunkLinksPartial } from './generateComponentChunkLinksPartial';
@@ -61,6 +62,7 @@ const generatePartials = async (): Promise<void> => {
   const content = [
     generateSharedCode(),
     generateFontFaceStylesheetPartial(),
+    generateFontFaceStylesPartial(),
     generateInitialStylesPartial(),
     generateFontLinksPartial(),
     generateComponentChunkLinksPartial(),

@@ -14,6 +14,7 @@ export const getComponentCss = (
   size: BreakpointCustomizable<TextSize>,
   hideLabel: BreakpointCustomizable<boolean>,
   alignLabel: BreakpointCustomizable<AlignLabel>,
+  underline: boolean,
   theme: Theme
 ): string => {
   const hasIcon = hasVisibleIcon(icon, iconSource);
@@ -29,6 +30,7 @@ export const getComponentCss = (
         size,
         hideLabel,
         alignLabel,
+        underline,
         false,
         theme
       ),

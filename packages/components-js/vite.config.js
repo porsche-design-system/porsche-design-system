@@ -4,7 +4,7 @@ import {
   getInitialStyles,
   getMetaTagsAndIconLinks,
   getComponentChunkLinks,
-  getFontFaceStylesheet,
+  getFontFaceStyles,
   getFontLinks,
   getIconLinks,
   getLoaderScript,
@@ -23,9 +23,8 @@ const transformIndexHtmlPlugin = () => {
         getComponentChunkLinks({ components: [...COMPONENT_CHUNK_NAMES] }),
         // Icon links produce too many requests in flyout iframes page which leads to ERR_INSUFFICIENT_RESOURCES error
         // getIconLinks({ icons: [...ICON_NAMES] }),
-        // TODO: we should provide inline styles instead for getFontFaceStylesheet(), which is recommended by Lighthouse and we could replace cdn urls by localhost
-        // getFontFaceStylesheet(),
-        '<link rel="stylesheet" href="http://localhost:3001/styles/font-face.min.css">',
+        // '<link rel="stylesheet" href="http://localhost:3001/styles/font-face.min.css">',
+        getFontFaceStyles().replace(/https:\/\/cdn\.ui\.porsche\.com\/porsche-design-system/g, 'http://localhost:3001'),
         getFontLinks({ weights: ['regular', 'semi-bold', 'bold'] }),
         getMetaTagsAndIconLinks({ appTitle: 'Porsche Design System' }),
       ]
