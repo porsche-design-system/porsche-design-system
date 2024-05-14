@@ -39,7 +39,7 @@ export const supportsConstructableStylesheets = (): boolean => {
 };
 
 // determine it once
-export const hasConstructableStylesheetSupport = supportsConstructableStylesheets();
+const hasConstructableStylesheetSupport = supportsConstructableStylesheets();
 // getter for easy mocking
 export const getHasConstructableStylesheetSupport = (): boolean => hasConstructableStylesheetSupport;
 
