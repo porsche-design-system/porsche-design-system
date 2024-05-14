@@ -58,8 +58,8 @@ To be truly accessible you need to provide some more information because every t
 which points to the corresponding `id` of the `tabpanel`. The content placeholder needs the `role="tabpanel"` and the
 attribute `aria-labelledby` which points to the unique id of the corresponding tab (`aria-controls`).
 
-You must also take care of the focus handling of the tabpanel. Therefor the active tab panel must have an `tabindex="0"`
-to receive keyboard focus and the focus indicator must be styled accordingly. Use the provided
+You must also take care of the focus handling of the tabpanel. Therefore the active tab panel must have an
+`tabindex="0"` to receive keyboard focus and the focus indicator must be styled accordingly. Use the provided
 [focus style](styles/focus) like this:
 
 ```
