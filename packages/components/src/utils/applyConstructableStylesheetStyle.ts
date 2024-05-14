@@ -1,5 +1,5 @@
-import { Styles } from 'jss';
-import { getCss, hasConstructableStylesheetSupport } from './jss';
+import type { Styles } from 'jss';
+import { getCss } from './jss';
 
 type ElementsMap = Map<string, ElementMap>;
 type ElementMap = Map<Document | ShadowRoot, boolean>;
@@ -13,6 +13,14 @@ const getElementMap = (element: HTMLElement): ElementMap => {
   }
   return elementsMap.get(tagName);
 };
+
+const hasConstructableStylesheetSupport = ((): boolean => {
+  try {
+    return typeof new CSSStyleSheet().replaceSync === 'function';
+  } catch {
+    return false;
+  }
+})(); // determine it once
 
 export const applyConstructableStylesheetStyles = (
   element: HTMLElement,
