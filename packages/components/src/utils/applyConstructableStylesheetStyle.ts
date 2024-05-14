@@ -1,5 +1,5 @@
 import { Styles } from 'jss';
-import { getCss } from '@porsche-design-system/shared';
+import { getCss, supportsConstructableStylesheets } from './jss';
 
 type ElementsMap = Map<string, ElementMap>;
 type ElementMap = Map<Document | ShadowRoot, boolean>;
@@ -14,13 +14,8 @@ const getElementMap = (element: HTMLElement): ElementMap => {
   return elementsMap.get(tagName);
 };
 
-const hasConstructableStylesheetSupport = ((): boolean => {
-  try {
-    return typeof new CSSStyleSheet().replaceSync === 'function';
-  } catch {
-    return false;
-  }
-})(); // determine it once
+// determine it once
+const hasConstructableStylesheetSupport = supportsConstructableStylesheets();
 
 export const applyConstructableStylesheetStyles = (
   element: HTMLElement,
