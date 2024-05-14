@@ -26,6 +26,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 - Partials: `getInitialStyles` only contain hydration visibility and global styles. All other styles are handled by
   constructable stylesheets at component level.
   ([#3213](https://github.com/porsche-design-system/porsche-design-system/pull/3213))
+- `Table`: Removed slotted image style `verticalAlign: 'middle'`
+  ([#3213](https://github.com/porsche-design-system/porsche-design-system/pull/3213))
 
 #### Fixed
 
