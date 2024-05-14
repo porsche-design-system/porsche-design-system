@@ -286,7 +286,14 @@ export class Carousel {
     return (
       <Host>
         <div class="header">
-          {hasHeadingPropOrSlot && (this.heading ? <h2 id={headingId}>{this.heading}</h2> : <slot name="heading" />)}
+          {hasHeadingPropOrSlot &&
+            (this.heading ? (
+              <h2 id={headingId}>{this.heading}</h2>
+            ) : (
+              <div id={headingId}>
+                <slot name="heading" />
+              </div>
+            ))}
           {hasDescriptionPropOrSlot && (this.description ? <p>{this.description}</p> : <slot name="description" />)}
           {hasControlsSlot && <slot name="controls" />}
           <div class="nav">
@@ -328,7 +335,7 @@ export class Carousel {
           id="splide"
           class="splide"
           {...parseAndGetAriaAttributes({
-            'aria-label': this.heading,
+            'aria-labelledby': hasHeadingPropOrSlot && !this.aria ? headingId : undefined,
             ...parseAndGetAriaAttributes(this.aria),
           })}
           ref={(ref) => (this.container = ref)}
