@@ -7,5 +7,9 @@ import { Styles } from 'jss';
 // Checkbox/Radio-Button change is not rendered immediately if input or its label is still hovered.
 // The same bug appears on keyboard navigation.
 export const getCheckboxRadioButtonSafariRenderingFix = (tagName: TagName): Styles => ({
-  [`${tagName} > input:checked`]: { transform: 'rotateZ(0)' },
+  [`${tagName}`]: {
+    '& > input:checked': {
+      transform: 'rotateZ(0)',
+    },
+  },
 });
