@@ -101,7 +101,7 @@ export const getModalDialogBackdropTransitionJssStyle = (
   };
 };
 
-export const getModalDialogScrollerJssStyle = (theme: Theme): JssStyle => {
+export const getModalDialogScrollerJssStyle = (position: 'fullscreen' | 'start' | 'end', theme: Theme): JssStyle => {
   // ensures scrollbar color is set correctly (e.g. when scrollbar is shown on backdrop, on flyout/modal surface or with Auto Dark Mode)
   const backgroundLight = 'rgba(255,255,255,.01)';
   const backgroundDark = 'rgba(0,0,0,.01)';
@@ -113,7 +113,14 @@ export const getModalDialogScrollerJssStyle = (theme: Theme): JssStyle => {
 
   return {
     position: 'absolute',
-    inset: 0,
+    ...(position === 'fullscreen'
+      ? {
+          inset: 0,
+        }
+      : {
+          insetBlock: 0,
+          [position === 'start' ? 'insetInlineStart' : 'insetInlineEnd']: 0,
+        }),
     overflow: 'hidden auto',
     overscrollBehaviorY: 'none',
     background: background[theme],
@@ -123,15 +130,13 @@ export const getModalDialogScrollerJssStyle = (theme: Theme): JssStyle => {
   };
 };
 
-// TODO: inline / block named wrongly?
-const safeZoneInlineStart = `${spacingFluidSmall} ${spacingFluidMedium}`;
-const safeZoneInlineEnd = `${spacingFluidMedium} ${spacingFluidSmall}`;
-const safeZoneBlockStart = `${spacingFluidSmall} calc(${spacingFluidLarge} - ${spacingFluidSmall})`;
-const safeZoneBlockEnd = `calc(${spacingFluidLarge} - ${spacingFluidSmall}) ${spacingFluidSmall}`;
+const safeZoneBlockStart = `${spacingFluidSmall} ${spacingFluidMedium}`;
+const safeZoneBlockEnd = `${spacingFluidMedium} ${spacingFluidSmall}`;
+const safeZoneInlineStart = `${spacingFluidSmall} calc(${spacingFluidLarge} - ${spacingFluidSmall})`;
+const safeZoneInlineEnd = `calc(${spacingFluidLarge} - ${spacingFluidSmall}) ${spacingFluidSmall}`;
 export const getModalDialogGridJssStyle: JssStyle = {
   display: 'grid',
-  // TODO: alignment is not correct when content height is less than scroller height
-  gridTemplate: `${safeZoneInlineStart} repeat(4, auto) minmax(0, 1fr) ${safeZoneInlineEnd}/${safeZoneBlockStart} auto ${safeZoneBlockEnd}`,
+  gridTemplate: `${safeZoneBlockStart} repeat(4, auto) minmax(0, 1fr) ${safeZoneBlockEnd}/${safeZoneInlineStart} auto ${safeZoneInlineEnd}`,
 };
 
 export const getDialogColorJssStyle = (theme: Theme): JssStyle => {
@@ -212,6 +217,7 @@ export const getModalDialogStickyAreaJssStyle = (area: 'header' | 'footer', them
     [isAreaHeader ? 'top' : 'bottom']: '-.1px', // necessary for `IntersectionObserver` to detect if sticky element is stuck or not. Float value is used, so that sticky area isn't moved out visually by e.g. 1px when container gets scrolled.
     transform: 'translateZ(0)', // prevents slightly squeezed elements within sticky area for some browsers caused by float value of sticky top position
     padding: `${spacingStaticMedium} ${spacingFluidLarge}`, // with CSS subgrid the spacingFluidLarge definition wouldn't be necessary
+    marginBlock: `calc(${spacingStaticMedium} * -1)`, // TODO: better would be to use the same spacing of the dialog grid
     background: backgroundColor,
     ...prefersColorSchemeDarkMediaQuery(theme, {
       background: backgroundColorDark,

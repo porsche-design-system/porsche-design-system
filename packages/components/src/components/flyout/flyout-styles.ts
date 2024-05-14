@@ -54,9 +54,8 @@ export const getComponentCss = (
       ...(hasHeader && {
         'slot[name=header]': {
           ...getModalDialogStickyAreaJssStyle('header', theme),
-          // TODO: because header is always stuck at top, it will always show the shadow underneath
-          gridArea: '1/1/4/-1', // ensures header is stuck at top
-          zIndex: 1, // ensures header is above content but below sticky dismiss button
+          gridArea: '2/1/4/-1', // ensures header is stuck at top
+          zIndex: 3, // ensures header is above everything but below sticky dismiss button
         },
       }),
       ...(hasFooter && {
@@ -70,7 +69,7 @@ export const getComponentCss = (
         'slot[name=sub-footer]': {
           marginTop: hasFooter ? spacingFluidMedium : null,
           gridArea: '6/3',
-          zIndex: 2, // ensures footer is above header and content but below sticky dismiss button
+          zIndex: 1, // ensures footer is above header and content but below sticky dismiss button
         },
       }),
       dialog: {
@@ -79,16 +78,14 @@ export const getComponentCss = (
       },
     },
     scroller: {
-      ...getModalDialogScrollerJssStyle(theme),
+      ...getModalDialogScrollerJssStyle(isPositionStart ? 'start' : 'end', theme),
+      ...getModalDialogTransitionJssStyle(isOpen, isPositionStart ? '>' : '<'),
       display: 'flex',
-      justifyContent: isPositionStart ? 'flex-start' : 'flex-end',
-      alignItems: 'stretch',
       flexWrap: 'wrap',
     },
     flyout: {
       ...getModalDialogGridJssStyle,
       ...getDialogColorJssStyle(theme),
-      ...getModalDialogTransitionJssStyle(isOpen, isPositionStart ? '>' : '<'),
       width: `var(${cssVariableWidth}, fit-content)`,
       minWidth: '320px',
       maxWidth: `var(${cssVariableMaxWidth}, 1180px)`,
@@ -96,7 +93,7 @@ export const getComponentCss = (
     dismiss: {
       ...getModalDialogDismissButtonJssStyle(theme, isOpen, !isPositionStart),
       gridArea: '2/4',
-      zIndex: 2, // ensures dismiss button is above sticky footer, header and content
+      zIndex: 4, // ensures dismiss button is above everything
       position: 'sticky',
       top: spacingFluidSmall,
       justifySelf: 'flex-end',

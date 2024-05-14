@@ -79,7 +79,7 @@ export const getComponentCss = (
       },
     },
     scroller: {
-      ...getModalDialogScrollerJssStyle(theme),
+      ...getModalDialogScrollerJssStyle('fullscreen', theme),
       display: 'flex',
       justifyContent: 'center',
       alignItems: 'center',
