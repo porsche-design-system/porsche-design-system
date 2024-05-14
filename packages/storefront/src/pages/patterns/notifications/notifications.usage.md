@@ -76,7 +76,13 @@ not work anymore. As we are progressing with the refactoring this might already 
 
 <script lang="ts">import Vue from 'vue';
 import Component from 'vue-class-component';
-import {BANNER_Z_INDEX, FLYOUT_Z_INDEX, MODAL_Z_INDEX, POPOVER_Z_INDEX, TOAST_Z_INDEX} from '@porsche-design-system/components/src/constants';
+import {
+  BANNER_Z_INDEX,
+  FLYOUT_Z_INDEX,
+  MODAL_Z_INDEX, 
+  POPOVER_Z_INDEX,
+  TOAST_Z_INDEX
+} from '@porsche-design-system/components/src/constants';
 
 @Component
 export default class Code extends Vue {

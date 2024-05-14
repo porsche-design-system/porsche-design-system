@@ -18,6 +18,7 @@ import {
   getTransition,
   hostHiddenStyles,
 } from '../../styles';
+import { getBannerPopoverResetStyles } from '../../styles/banner-popover-reset-styles';
 
 const cssVariableTop = '--p-banner-position-top';
 const cssVariableBottom = '--p-banner-position-bottom';
@@ -31,21 +32,13 @@ export const getComponentCss = (isOpen: boolean): string => {
       ':host': {
         display: 'block',
         ...addImportantToEachRule({
-          position: 'fixed',
+          ...getBannerPopoverResetStyles(),
           bottom: `var(${cssVariableBottom},${topBottomFallback})`,
           left: gridExtendedOffsetBase,
           right: gridExtendedOffsetBase,
-          margin: 0,
-          padding: 0,
-          width: 'auto', // ua popover reset
-          height: 'auto', // ua popover reset
-          maxWidth: '100%', // If component is wrapped in container with maxWidth
           zIndex: `var(${cssVariableZIndex},${BANNER_Z_INDEX})`,
           ...dropShadowHighStyle,
           borderRadius: borderRadiusSmall, // needed for rounded box-shadow
-          border: '0', // ua popover reset
-          outline: '0', // ua popover reset
-          overflow: 'visible', // ua popover reset
           ...(isOpen
             ? {
                 opacity: 1,
