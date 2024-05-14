@@ -1,6 +1,6 @@
-import { Component, Element, Event, type EventEmitter, h, type JSX, Prop, Watch } from '@stencil/core';
+import { Component, Element, Event, type EventEmitter, h, Host, type JSX, Prop, Watch } from '@stencil/core';
 import type { PropTypes, Theme } from '../../types';
-import type { BannerState, BannerHeadingTag, BannerStateDeprecated, BannerWidth } from './banner-utils';
+import type { BannerHeadingTag, BannerState, BannerStateDeprecated, BannerWidth } from './banner-utils';
 import { BANNER_STATES } from './banner-utils';
 import {
   AllowedTypes,
@@ -34,7 +34,7 @@ const propTypes: Omit<PropTypes<typeof Banner>, 'width'> = {
   shadow: true,
 })
 export class Banner {
-  @Element() public host!: HTMLElement;
+  @Element() public host!: HTMLPPopoverElement;
 
   /** If true, the banner is open. */
   @Prop() public open: boolean = false; // eslint-disable-line @typescript-eslint/no-inferrable-types
@@ -82,7 +82,6 @@ export class Banner {
   public openChangeHandler(isOpen: boolean): void {
     if (this.hasDismissButton) {
       if (isOpen) {
-        this.closeBtn?.focus();
         document.addEventListener('keydown', this.onKeyboardEvent);
       } else {
         document.removeEventListener('keydown', this.onKeyboardEvent);
@@ -96,16 +95,18 @@ export class Banner {
     }
   }
 
-  public componentDidLoad(): void {
+  public componentDidRender(): void {
+    // showPopover needs to be called after render cycle to prepare visibility states of popover in order to focus the dismiss button correctly
+    this.setBannerVisibility(this.open);
+
     if (this.hasDismissButton) {
-      // messy… optional chaining is needed in case child component is unmounted too early
       this.closeBtn = getShadowRootHTMLElement<HTMLElement>(this.inlineNotificationElement, '.close');
       this.closeBtn?.focus();
     }
   }
 
   public disconnectedCallback(): void {
-    if (this.hasDismissButton) {
+    if (this.open && this.hasDismissButton) {
       document.removeEventListener('keydown', this.onKeyboardEvent);
     }
   }
@@ -122,6 +123,7 @@ export class Banner {
       'The component is aligned with Porsche Grid "extended" by default.'
     );
     const hasTitleSlot = hasNamedSlot(this.host, 'title');
+
     if (hasTitleSlot) {
       consoleWarn(
         getDeprecatedPropOrSlotWarningMessage(this.host, 'slot="title"'),
@@ -133,37 +135,52 @@ export class Banner {
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
     return (
-      <PrefixedTagNames.pInlineNotification
-        ref={(el) => (this.inlineNotificationElement = el)}
-        heading={this.heading}
-        headingTag={this.headingTag}
-        description={this.description}
-        state={this.state}
-        dismissButton={this.hasDismissButton}
-        theme={this.theme}
-        onDismiss={this.removeBanner}
-        aria-hidden={!this.open ? 'true' : 'false'}
-      >
-        {hasNamedSlot(this.host, 'heading') ? (
-          <slot name="heading" slot="heading" />
-        ) : (
-          hasTitleSlot && <slot name="title" slot="heading" />
-        )}
-        {hasNamedSlot(this.host, 'description') && <slot name="description" />}
-      </PrefixedTagNames.pInlineNotification>
+      <Host popover="manual">
+        <PrefixedTagNames.pInlineNotification
+          ref={(el) => (this.inlineNotificationElement = el)}
+          heading={this.heading}
+          headingTag={this.headingTag}
+          description={this.description}
+          state={this.state}
+          dismissButton={this.hasDismissButton}
+          theme={this.theme}
+          onDismiss={this.onDismiss}
+          aria-hidden={!this.open ? 'true' : 'false'}
+        >
+          {hasNamedSlot(this.host, 'heading') ? (
+            <slot name="heading" slot="heading" />
+          ) : (
+            hasTitleSlot && <slot name="title" slot="heading" />
+          )}
+          {hasNamedSlot(this.host, 'description') && <slot name="description" />}
+        </PrefixedTagNames.pInlineNotification>
+      </Host>
     );
   }
 
-  private onKeyboardEvent = (e: KeyboardEvent): void => {
-    if (e.key === 'Escape') {
-      this.removeBanner();
+  private onKeyboardEvent = (event: KeyboardEvent): void => {
+    if (event.key === 'Escape') {
+      this.dismissBanner();
     }
   };
 
-  private removeBanner = (e?: CustomEvent): void => {
+  private onDismiss = (event?: CustomEvent): void => {
     if (this.hasDismissButton) {
-      e?.stopPropagation(); // prevent double event emission because of identical name
+      event?.stopPropagation(); // prevent double event emission because of identical name
+
       this.dismiss.emit();
     }
+  };
+
+  private setBannerVisibility(isOpen: boolean): void {
+    if (isOpen) {
+      this.host.showPopover();
+    } else {
+      this.host.hidePopover();
+    }
+  }
+
+  private dismissBanner = (): void => {
+    this.dismiss.emit();
   };
 }

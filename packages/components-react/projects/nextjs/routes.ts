@@ -8,6 +8,42 @@ const generatedRoutes = {
     "path": "/banner",
     "name": "Banner"
   },
+  "bannerBasic": {
+    "path": "/banner-basic",
+    "name": "BannerBasic"
+  },
+  "bannerError": {
+    "path": "/banner-error",
+    "name": "BannerError"
+  },
+  "bannerNeutral": {
+    "path": "/banner-neutral",
+    "name": "BannerNeutral"
+  },
+  "bannerNoDismiss": {
+    "path": "/banner-no-dismiss",
+    "name": "BannerNoDismiss"
+  },
+  "bannerPersistent": {
+    "path": "/banner-persistent",
+    "name": "BannerPersistent"
+  },
+  "bannerPrefixed": {
+    "path": "/banner-prefixed",
+    "name": "BannerPrefixed"
+  },
+  "bannerSlottedDescriptionHeading": {
+    "path": "/banner-slotted-description-heading",
+    "name": "BannerSlottedDescriptionHeading"
+  },
+  "bannerSlottedDescriptionTitle": {
+    "path": "/banner-slotted-description-title",
+    "name": "BannerSlottedDescriptionTitle"
+  },
+  "bannerWarning": {
+    "path": "/banner-warning",
+    "name": "BannerWarning"
+  },
   "button": {
     "path": "/button",
     "name": "Button"
@@ -175,6 +211,10 @@ const generatedRoutes = {
   "flyoutPositionStart": {
     "path": "/flyout-position-start",
     "name": "FlyoutPositionStart"
+  },
+  "flyoutPrefixedHeaderFooterSubfooter": {
+    "path": "/flyout-prefixed-header-footer-subfooter",
+    "name": "FlyoutPrefixedHeaderFooterSubfooter"
   },
   "grid": {
     "path": "/grid",
