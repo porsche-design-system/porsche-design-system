@@ -1,5 +1,5 @@
 import { Styles } from 'jss';
-import { getCss, supportsConstructableStylesheets } from './jss';
+import { getCss, hasConstructableStylesheetSupport } from './jss';
 
 type ElementsMap = Map<string, ElementMap>;
 type ElementMap = Map<Document | ShadowRoot, boolean>;
@@ -13,9 +13,6 @@ const getElementMap = (element: HTMLElement): ElementMap => {
   }
   return elementsMap.get(tagName);
 };
-
-// determine it once
-const hasConstructableStylesheetSupport = supportsConstructableStylesheets();
 
 export const applyConstructableStylesheetStyles = (
   element: HTMLElement,
