@@ -23,7 +23,7 @@ import {
 } from '../../utils';
 import { getComponentCss } from './popover-styles';
 import type { PropTypes, SelectedAriaAttributes, Theme } from '../../types';
-import { getSlottedAnchorStyles } from '../../styles/global/slotted-anchor-styles';
+import { getSlottedAnchorStyles } from '../../styles';
 
 const propTypes: PropTypes<typeof Popover> = {
   direction: AllowedTypes.oneOf<PopoverDirection>(POPOVER_DIRECTIONS),

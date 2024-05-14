@@ -63,7 +63,7 @@ import {
 import { getComponentCss } from './multi-select-styles';
 import { messageId, StateMessage } from '../../common/state-message/state-message';
 import { descriptionId, Label, labelId } from '../../common/label/label';
-import { getSlottedAnchorStyles } from '../../../styles/global/slotted-anchor-styles';
+import { getSlottedAnchorStyles } from '../../../styles';
 
 const propTypes: PropTypes<typeof MultiSelect> = {
   label: AllowedTypes.string,

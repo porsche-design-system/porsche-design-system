@@ -49,7 +49,7 @@ import {
 } from '../../utils';
 import { carouselTransitionDuration, getComponentCss } from './carousel-styles';
 import { gridGap, motionEasingBase } from '@porsche-design-system/utilities-v2';
-import { getSlottedAnchorStyles } from '../../styles/global/slotted-anchor-styles';
+import { getSlottedAnchorStyles } from '../../styles';
 
 const propTypes: PropTypes<typeof Carousel> = {
   heading: AllowedTypes.string,

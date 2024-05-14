@@ -59,7 +59,7 @@ import {
 import { getComponentCss } from './select-styles';
 import { Label, labelId } from '../../common/label/label';
 import { messageId, StateMessage } from '../../common/state-message/state-message';
-import { getSlottedAnchorStyles } from '../../../styles/global/slotted-anchor-styles';
+import { getSlottedAnchorStyles } from '../../../styles';
 
 const propTypes: PropTypes<typeof Select> = {
   label: AllowedTypes.string,

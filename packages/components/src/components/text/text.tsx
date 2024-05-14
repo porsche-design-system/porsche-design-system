@@ -24,7 +24,7 @@ import {
   applyConstructableStylesheetStyles,
 } from '../../utils';
 import { getComponentCss } from './text-styles';
-import { getSlottedAnchorStyles } from '../../styles/global/slotted-anchor-styles';
+import { getSlottedAnchorStyles } from '../../styles';
 
 const propTypes: PropTypes<typeof Text> = {
   tag: AllowedTypes.oneOf<TextTag>(TEXT_TAGS),

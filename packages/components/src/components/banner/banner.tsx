@@ -18,7 +18,7 @@ import {
 } from '../../utils';
 import { getComponentCss } from './banner-styles';
 import { getDeprecatedPropOrSlotWarningMessage } from '../../utils/log/helper';
-import { getSlottedAnchorStyles } from '../../styles/global/slotted-anchor-styles';
+import { getSlottedAnchorStyles } from '../../styles';
 
 const propTypes: Omit<PropTypes<typeof Banner>, 'width'> = {
   open: AllowedTypes.boolean,

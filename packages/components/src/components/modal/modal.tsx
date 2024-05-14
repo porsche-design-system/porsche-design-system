@@ -22,7 +22,7 @@ import { clickStartedInScrollbarTrack, MODAL_ARIA_ATTRIBUTES } from './modal-uti
 import { footerShadowClass, getComponentCss } from './modal-styles';
 import { throttle } from 'throttle-debounce';
 import { BACKDROPS } from '../../styles';
-import { getSlottedAnchorStyles } from '../../styles/global/slotted-anchor-styles';
+import { getSlottedAnchorStyles } from '../../styles';
 
 const propTypes: PropTypes<typeof Modal> = {
   open: AllowedTypes.boolean,
