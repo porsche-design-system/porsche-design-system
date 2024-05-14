@@ -119,13 +119,6 @@ export default class Code extends Vue {
 
   basic = `<p-link-tile-product heading="Weekender" price="1.911,00 €" href="https://porsche.com">
   ${this.img}
-</p-link-tile-product>
-
-<p-link-tile-product heading="Weekender" price="1.911,00 €" href="https://porsche.com">
-  <picture>
-    <source media="(min-width:960px)" srcset="${this.imgSrcLarge}" />
-    ${this.img}
-  </picture>
 </p-link-tile-product>`;
 
   likeButton = 'false';

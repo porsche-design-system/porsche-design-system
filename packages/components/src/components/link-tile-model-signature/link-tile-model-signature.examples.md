@@ -123,15 +123,6 @@ export default class Code extends Vue {
   ${this.img}
   ${this.primaryLink}
   ${this.secondaryLink}
-</p-link-tile-model-signature>
-
-<p-link-tile-model-signature heading="Some heading">
-  <picture>
-    <source media="(min-width:400px)" srcset="${this.imgSrc}" />
-    ${this.img}
-  </picture>
-  ${this.primaryLink}
-  ${this.secondaryLink}
 </p-link-tile-model-signature>`;
 
   weight = 'semi-bold';
