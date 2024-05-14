@@ -27,6 +27,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
   constructable stylesheets at component level.
   ([#3213](https://github.com/porsche-design-system/porsche-design-system/pull/3213))
 
+#### Fixed
+
+- `aria` property now supports escaped single quotes inside JSON strings, e.g.
+  `aria="{ 'aria-label': 'You can\'t do that? yes you can!' }"`
+  ([#3217](https://github.com/porsche-design-system/porsche-design-system/pull/3217))
+
 ### [3.15.0-rc.4] - 2024-05-06
 
 #### Added
