@@ -98,5 +98,5 @@ Next font download</p-link-pure>
 To access suitable media for your projects, you can register and search for appropriate images and videos in the VM
 Media Database.
 
-<p-link-pure :theme="$store.getters.storefrontTheme" target="_blank" variant="secondary" href="https://vmmedia.porsche.de">VM
+<p-link-pure :theme="$store.getters.storefrontTheme" target="_blank" variant="secondary" href="https://vmmedia.porsche.de/prod/vmmedia/Resources.nsf">VM
 Media Database</p-link-pure>
