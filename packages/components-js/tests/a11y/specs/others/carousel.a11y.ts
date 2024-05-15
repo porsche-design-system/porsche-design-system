@@ -154,7 +154,7 @@ test('should expose correct initial ARIA attributes', async ({ page }) => {
   expect(await getAttribute(slide3, 'aria-label')).toBe('3 of 3');
 });
 
-test('should expose correct aria-label on splide element if slotted heading is set', async ({ page }) => {
+test('should expose correct aria-labelledby on splide element if slotted heading is set', async ({ page }) => {
   await initCarousel(page, { heading: false, slottedHeading: true });
   const splide = await getSplide(page);
 
@@ -162,19 +162,30 @@ test('should expose correct aria-label on splide element if slotted heading is s
 });
 
 test('should expose correct aria-label when aria prop is defined and heading is set', async ({ page }) => {
-  await initCarousel(page, { aria: "{'aria-label': 'Other heading'}" });
+  const otherHeading = 'Other heading';
+  await initCarousel(page, { aria: `{'aria-label': '${otherHeading}'}` });
   const splide = await getSplide(page);
 
   expect(await getAttribute(splide, 'aria-labelledby')).toBe(null);
-  expect(await getAttribute(splide, 'aria-label')).toBe('Other heading');
+  expect(await getAttribute(splide, 'aria-label')).toBe(otherHeading);
+});
+
+test('should expose correct aria-label when aria prop is defined and slotted heading is set', async ({ page }) => {
+  const otherHeading = 'Other heading';
+  await initCarousel(page, { slottedHeading: true, aria: `{'aria-label': '${otherHeading}'}` });
+  const splide = await getSplide(page);
+
+  expect(await getAttribute(splide, 'aria-labelledby')).toBe(null);
+  expect(await getAttribute(splide, 'aria-label')).toBe(otherHeading);
 });
 
 test('should expose correct aria-label when aria prop is defined and no heading is set', async ({ page }) => {
-  await initCarousel(page, { heading: false, aria: "{'aria-label': 'Some heading'}" });
+  const someHeading = 'Some heading';
+  await initCarousel(page, { heading: false, aria: `{'aria-label': '${someHeading}'}` });
   const splide = await getSplide(page);
 
   expect(await getAttribute(splide, 'aria-labelledby')).toBe(null);
-  expect(await getAttribute(splide, 'aria-label')).toBe('Some heading');
+  expect(await getAttribute(splide, 'aria-label')).toBe(someHeading);
 });
 
 test('should change skip-link to visible if it receives keyboard focus', async ({ page }) => {
