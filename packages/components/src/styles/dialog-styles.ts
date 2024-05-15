@@ -31,12 +31,12 @@ export type Backdrop = (typeof BACKDROPS)[number];
 
 export const headingTags = 'h1,h2,h3,h4,h5,h6';
 
-export const getDialogHostJssStyle: JssStyle = {
+export const dialogHostJssStyle: JssStyle = {
   '--pds-internal-grid-outer-column': `calc(${spacingFluidLarge} - ${gridGap})`,
   '--pds-internal-grid-margin': `calc(${spacingFluidLarge} * -1)`,
 };
 
-export const getDialogBackdropResetJssStyle: JssStyle = {
+export const dialogBackdropResetJssStyle: JssStyle = {
   position: 'fixed', // ua-style
   inset: 0, // ua-style
   margin: 0, // ua-style
@@ -101,7 +101,7 @@ export const getDialogBackdropTransitionJssStyle = (
   };
 };
 
-export const getDialogScrollerJssStyle = (position: 'fullscreen' | 'start' | 'end', theme: Theme): JssStyle => {
+export const getScrollerJssStyle = (position: 'fullscreen' | 'start' | 'end', theme: Theme): JssStyle => {
   // ensures scrollbar color is set correctly (e.g. when scrollbar is shown on backdrop, on flyout/modal surface or with Auto Dark Mode)
   const backgroundLight = 'rgba(255,255,255,.01)';
   const backgroundDark = 'rgba(0,0,0,.01)';
@@ -116,13 +116,13 @@ export const getDialogScrollerJssStyle = (position: 'fullscreen' | 'start' | 'en
     ...(position === 'fullscreen'
       ? {
           inset: 0,
+          placeItems: 'center',
         }
       : {
           insetBlock: 0,
           [position === 'start' ? 'insetInlineStart' : 'insetInlineEnd']: 0,
         }),
-    display: 'flex',
-    flexWrap: 'wrap',
+    display: 'grid',
     overflow: 'hidden auto',
     overscrollBehaviorY: 'none',
     background: background[theme],
@@ -132,7 +132,7 @@ export const getDialogScrollerJssStyle = (position: 'fullscreen' | 'start' | 'en
   };
 };
 
-export const getDialogGridJssStyle: JssStyle = {
+export const dialogGridJssStyle: JssStyle = {
   display: 'grid',
   gridTemplate: `auto/${spacingFluidSmall} auto ${spacingFluidSmall}`,
   paddingBlock: `calc(${spacingFluidSmall} + ${spacingFluidMedium})`,
@@ -178,7 +178,7 @@ export const getDialogTransitionJssStyle = (isVisible: boolean, slideIn: '^' | '
   };
 };
 
-export const getDialogDismissButtonJssStyle = (
+export const getDismissButtonJssStyle = (
   theme: Theme,
   isOpen: boolean,
   applyAutoFocusHack: boolean = false
@@ -240,6 +240,7 @@ export const getDialogStickyAreaJssStyle = (area: 'header' | 'footer', theme: Th
   };
 };
 
+// TODO: why not available to Flyout too?
 export const getModalDialogStretchToFullModalWidthJssStyle = (
   hasHeader: boolean,
   hasFooter: boolean,

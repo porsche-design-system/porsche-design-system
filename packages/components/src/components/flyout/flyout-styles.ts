@@ -4,12 +4,12 @@ import { spacingFluidMedium, spacingFluidSmall } from '@porsche-design-system/ut
 import { type FlyoutPosition } from './flyout-utils';
 import {
   getDialogColorJssStyle,
-  getDialogBackdropResetJssStyle,
+  dialogBackdropResetJssStyle,
   getDialogBackdropTransitionJssStyle,
-  getDialogDismissButtonJssStyle,
-  getDialogGridJssStyle,
-  getDialogHostJssStyle,
-  getDialogScrollerJssStyle,
+  getDismissButtonJssStyle,
+  dialogGridJssStyle,
+  dialogHostJssStyle,
+  getScrollerJssStyle,
   getDialogStickyAreaJssStyle,
   getDialogTransitionJssStyle,
 } from '../../styles/dialog-styles';
@@ -32,7 +32,7 @@ export const getComponentCss = (
       ':host': {
         display: 'block',
         ...addImportantToEachRule({
-          ...getDialogHostJssStyle,
+          ...dialogHostJssStyle,
           ...colorSchemeStyles,
           ...hostHiddenStyles,
         }),
@@ -68,23 +68,23 @@ export const getComponentCss = (
         }),
       },
       dialog: {
-        ...getDialogBackdropResetJssStyle,
+        ...dialogBackdropResetJssStyle,
         ...getDialogBackdropTransitionJssStyle(isOpen, theme),
       },
     },
     scroller: {
-      ...getDialogScrollerJssStyle(isPositionStart ? 'start' : 'end', theme),
+      ...getScrollerJssStyle(isPositionStart ? 'start' : 'end', theme),
       ...getDialogTransitionJssStyle(isOpen, isPositionStart ? '>' : '<'),
     },
     flyout: {
-      ...getDialogGridJssStyle,
+      ...dialogGridJssStyle,
       ...getDialogColorJssStyle(theme),
       width: `var(${cssVariableWidth}, fit-content)`,
       minWidth: '320px',
       maxWidth: `var(${cssVariableMaxWidth}, 1180px)`,
     },
     dismiss: {
-      ...getDialogDismissButtonJssStyle(theme, isOpen, !isPositionStart),
+      ...getDismissButtonJssStyle(theme, isOpen, !isPositionStart),
       gridArea: '1/3',
       zIndex: 4, // ensures dismiss button is above everything
       position: 'sticky',

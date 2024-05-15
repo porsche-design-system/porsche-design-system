@@ -11,12 +11,12 @@ import { addImportantToEachRule, colorSchemeStyles, hostHiddenStyles } from '../
 import { type ModalBackdrop } from './modal-utils';
 import {
   getDialogColorJssStyle,
-  getDialogBackdropResetJssStyle,
+  dialogBackdropResetJssStyle,
   getDialogBackdropTransitionJssStyle,
-  getDialogDismissButtonJssStyle,
-  getDialogGridJssStyle,
-  getDialogHostJssStyle,
-  getDialogScrollerJssStyle,
+  getDismissButtonJssStyle,
+  dialogGridJssStyle,
+  dialogHostJssStyle,
+  getScrollerJssStyle,
   getDialogStickyAreaJssStyle,
   getModalDialogStretchToFullModalWidthJssStyle,
   getDialogTransitionJssStyle,
@@ -38,35 +38,31 @@ export const getComponentCss = (
   return getCss({
     '@global': {
       ':host': addImportantToEachRule({
-        ...getDialogHostJssStyle,
+        ...dialogHostJssStyle,
         ...colorSchemeStyles,
         ...hostHiddenStyles,
       }),
       '::slotted': getModalDialogStretchToFullModalWidthJssStyle(hasHeader, hasFooter, fullscreen),
-      // TODO: maybe we should scope this selector to heading slot only or even reset any element for any slot to margin:0?
-      [`::slotted([slot="heading"]:is(${headingTags}))`]: {
-        margin: 0, // ua-style (relevant for e.g. <h3 slot="header"/>)
-      },
       slot: {
         display: 'block',
         '&:first-of-type': {
           gridRowStart: 1,
         },
         '&:not([name])': {
-          gridColumnStart: 2,
-          zIndex: 0, // ensures content isn't above sticky footer or dismiss button
+          gridColumn: '2/3',
+          zIndex: 0,
         },
         ...(hasHeader && {
           '&[name=header]': {
-            gridColumnStart: 2,
-            zIndex: 0, // ensures header isn't above sticky footer or dismiss button
+            gridColumn: '2/3',
+            zIndex: 0,
           },
         }),
         ...(hasFooter && {
           '&[name=footer]': {
             ...getDialogStickyAreaJssStyle('footer', theme),
             gridColumn: '1/-1',
-            zIndex: 1, // ensures footer is above header and content but below sticky dismiss button
+            zIndex: 1,
           },
         }),
       },
@@ -78,19 +74,20 @@ export const getComponentCss = (
           ...headingLargeStyle,
           margin: 0,
         },
+        [`::slotted([slot="heading"]:is(${headingTags}))`]: {
+          margin: 0, // ua-style (relevant for e.g. <h3 slot="header"/>)
+        },
       }),
       dialog: {
-        ...getDialogBackdropResetJssStyle,
+        ...dialogBackdropResetJssStyle,
         ...getDialogBackdropTransitionJssStyle(isOpen, theme, backdrop),
       },
     },
     scroller: {
-      ...getDialogScrollerJssStyle('fullscreen', theme),
-      justifyContent: 'center',
-      alignItems: 'center',
+      ...getScrollerJssStyle('fullscreen', theme),
     },
     modal: {
-      ...getDialogGridJssStyle,
+      ...dialogGridJssStyle,
       ...getDialogColorJssStyle(theme),
       ...getDialogTransitionJssStyle(isOpen),
       // TODO: maybe we should deprecate the fullscreen property and force the modal to be fullscreen on mobile only
@@ -114,7 +111,7 @@ export const getComponentCss = (
     },
     ...(hasDismissButton && {
       dismiss: {
-        ...getDialogDismissButtonJssStyle(theme, isOpen),
+        ...getDismissButtonJssStyle(theme, isOpen),
         gridArea: '1/3',
         zIndex: 2, // ensures dismiss button is above sticky footer, header and content
         position: 'sticky',
