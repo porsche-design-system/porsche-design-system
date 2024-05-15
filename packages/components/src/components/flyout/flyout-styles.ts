@@ -4,14 +4,14 @@ import { spacingFluidMedium, spacingFluidSmall } from '@porsche-design-system/ut
 import { type FlyoutPosition } from './flyout-utils';
 import {
   getDialogColorJssStyle,
-  getModalDialogBackdropResetJssStyle,
-  getModalDialogBackdropTransitionJssStyle,
-  getModalDialogDismissButtonJssStyle,
-  getModalDialogGridJssStyle,
-  getModalDialogHostJssStyle,
-  getModalDialogScrollerJssStyle,
-  getModalDialogStickyAreaJssStyle,
-  getModalDialogTransitionJssStyle,
+  getDialogBackdropResetJssStyle,
+  getDialogBackdropTransitionJssStyle,
+  getDialogDismissButtonJssStyle,
+  getDialogGridJssStyle,
+  getDialogHostJssStyle,
+  getDialogScrollerJssStyle,
+  getDialogStickyAreaJssStyle,
+  getDialogTransitionJssStyle,
 } from '../../styles/dialog-styles';
 
 const cssVariableWidth = '--p-flyout-width';
@@ -32,7 +32,7 @@ export const getComponentCss = (
       ':host': {
         display: 'block',
         ...addImportantToEachRule({
-          ...getModalDialogHostJssStyle,
+          ...getDialogHostJssStyle,
           ...colorSchemeStyles,
           ...hostHiddenStyles,
         }),
@@ -48,14 +48,14 @@ export const getComponentCss = (
         },
         ...(hasHeader && {
           '&[name=header]': {
-            ...getModalDialogStickyAreaJssStyle('header', theme),
+            ...getDialogStickyAreaJssStyle('header', theme),
             gridColumn: '1/-1',
             zIndex: 3,
           },
         }),
         ...(hasFooter && {
           '&[name=footer]': {
-            ...getModalDialogStickyAreaJssStyle('footer', theme),
+            ...getDialogStickyAreaJssStyle('footer', theme),
             gridColumn: '1/-1',
             zIndex: 2,
           },
@@ -68,23 +68,23 @@ export const getComponentCss = (
         }),
       },
       dialog: {
-        ...getModalDialogBackdropResetJssStyle,
-        ...getModalDialogBackdropTransitionJssStyle(isOpen, theme),
+        ...getDialogBackdropResetJssStyle,
+        ...getDialogBackdropTransitionJssStyle(isOpen, theme),
       },
     },
     scroller: {
-      ...getModalDialogScrollerJssStyle(isPositionStart ? 'start' : 'end', theme),
-      ...getModalDialogTransitionJssStyle(isOpen, isPositionStart ? '>' : '<'),
+      ...getDialogScrollerJssStyle(isPositionStart ? 'start' : 'end', theme),
+      ...getDialogTransitionJssStyle(isOpen, isPositionStart ? '>' : '<'),
     },
     flyout: {
-      ...getModalDialogGridJssStyle(),
+      ...getDialogGridJssStyle,
       ...getDialogColorJssStyle(theme),
       width: `var(${cssVariableWidth}, fit-content)`,
       minWidth: '320px',
       maxWidth: `var(${cssVariableMaxWidth}, 1180px)`,
     },
     dismiss: {
-      ...getModalDialogDismissButtonJssStyle(theme, isOpen, !isPositionStart),
+      ...getDialogDismissButtonJssStyle(theme, isOpen, !isPositionStart),
       gridArea: '1/3',
       zIndex: 4, // ensures dismiss button is above everything
       position: 'sticky',

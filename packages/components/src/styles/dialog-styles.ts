@@ -31,12 +31,12 @@ export type Backdrop = (typeof BACKDROPS)[number];
 
 export const headingTags = 'h1,h2,h3,h4,h5,h6';
 
-export const getModalDialogHostJssStyle: JssStyle = {
+export const getDialogHostJssStyle: JssStyle = {
   '--pds-internal-grid-outer-column': `calc(${spacingFluidLarge} - ${gridGap})`,
   '--pds-internal-grid-margin': `calc(${spacingFluidLarge} * -1)`,
 };
 
-export const getModalDialogBackdropResetJssStyle: JssStyle = {
+export const getDialogBackdropResetJssStyle: JssStyle = {
   position: 'fixed', // ua-style
   inset: 0, // ua-style
   margin: 0, // ua-style
@@ -54,7 +54,7 @@ export const getModalDialogBackdropResetJssStyle: JssStyle = {
   },
 };
 
-export const getModalDialogBackdropTransitionJssStyle = (
+export const getDialogBackdropTransitionJssStyle = (
   isVisible: boolean,
   theme: Theme,
   backdrop: Backdrop = 'blur'
@@ -101,7 +101,7 @@ export const getModalDialogBackdropTransitionJssStyle = (
   };
 };
 
-export const getModalDialogScrollerJssStyle = (position: 'fullscreen' | 'start' | 'end', theme: Theme): JssStyle => {
+export const getDialogScrollerJssStyle = (position: 'fullscreen' | 'start' | 'end', theme: Theme): JssStyle => {
   // ensures scrollbar color is set correctly (e.g. when scrollbar is shown on backdrop, on flyout/modal surface or with Auto Dark Mode)
   const backgroundLight = 'rgba(255,255,255,.01)';
   const backgroundDark = 'rgba(0,0,0,.01)';
@@ -132,15 +132,13 @@ export const getModalDialogScrollerJssStyle = (position: 'fullscreen' | 'start' 
   };
 };
 
-export const getModalDialogGridJssStyle = (): JssStyle => {
-  return {
-    display: 'grid',
-    gridTemplate: `auto/${spacingFluidSmall} auto ${spacingFluidSmall}`,
-    paddingBlock: `calc(${spacingFluidSmall} + ${spacingFluidMedium})`,
-    rowGap: spacingFluidMedium,
-    columnGap: `calc(${spacingFluidLarge} - ${spacingFluidSmall})`,
-    alignContent: 'flex-start',
-  };
+export const getDialogGridJssStyle: JssStyle = {
+  display: 'grid',
+  gridTemplate: `auto/${spacingFluidSmall} auto ${spacingFluidSmall}`,
+  paddingBlock: `calc(${spacingFluidSmall} + ${spacingFluidMedium})`,
+  rowGap: spacingFluidMedium,
+  columnGap: `calc(${spacingFluidLarge} - ${spacingFluidSmall})`,
+  alignContent: 'flex-start',
 };
 
 export const getDialogColorJssStyle = (theme: Theme): JssStyle => {
@@ -157,7 +155,7 @@ export const getDialogColorJssStyle = (theme: Theme): JssStyle => {
   };
 };
 
-export const getModalDialogTransitionJssStyle = (isVisible: boolean, slideIn: '^' | '<' | '>' = '^'): JssStyle => {
+export const getDialogTransitionJssStyle = (isVisible: boolean, slideIn: '^' | '<' | '>' = '^'): JssStyle => {
   const duration = isVisible ? 'moderate' : 'short';
   const easing = isVisible ? 'in' : 'out';
 
@@ -180,7 +178,7 @@ export const getModalDialogTransitionJssStyle = (isVisible: boolean, slideIn: '^
   };
 };
 
-export const getModalDialogDismissButtonJssStyle = (
+export const getDialogDismissButtonJssStyle = (
   theme: Theme,
   isOpen: boolean,
   applyAutoFocusHack: boolean = false
@@ -209,7 +207,7 @@ export const getModalDialogDismissButtonJssStyle = (
   };
 };
 
-export const getModalDialogStickyAreaJssStyle = (area: 'header' | 'footer', theme: Theme): JssStyle => {
+export const getDialogStickyAreaJssStyle = (area: 'header' | 'footer', theme: Theme): JssStyle => {
   const { backgroundColor } = getThemedColors(theme);
   const { backgroundColor: backgroundColorDark } = getThemedColors('dark');
   const isAreaHeader = area === 'header';

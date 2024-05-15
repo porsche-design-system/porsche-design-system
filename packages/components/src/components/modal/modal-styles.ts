@@ -11,15 +11,15 @@ import { addImportantToEachRule, colorSchemeStyles, hostHiddenStyles } from '../
 import { type ModalBackdrop } from './modal-utils';
 import {
   getDialogColorJssStyle,
-  getModalDialogBackdropResetJssStyle,
-  getModalDialogBackdropTransitionJssStyle,
-  getModalDialogDismissButtonJssStyle,
-  getModalDialogGridJssStyle,
-  getModalDialogHostJssStyle,
-  getModalDialogScrollerJssStyle,
-  getModalDialogStickyAreaJssStyle,
+  getDialogBackdropResetJssStyle,
+  getDialogBackdropTransitionJssStyle,
+  getDialogDismissButtonJssStyle,
+  getDialogGridJssStyle,
+  getDialogHostJssStyle,
+  getDialogScrollerJssStyle,
+  getDialogStickyAreaJssStyle,
   getModalDialogStretchToFullModalWidthJssStyle,
-  getModalDialogTransitionJssStyle,
+  getDialogTransitionJssStyle,
   headingTags,
 } from '../../styles/dialog-styles';
 
@@ -38,7 +38,7 @@ export const getComponentCss = (
   return getCss({
     '@global': {
       ':host': addImportantToEachRule({
-        ...getModalDialogHostJssStyle,
+        ...getDialogHostJssStyle,
         ...colorSchemeStyles,
         ...hostHiddenStyles,
       }),
@@ -64,7 +64,7 @@ export const getComponentCss = (
         }),
         ...(hasFooter && {
           '&[name=footer]': {
-            ...getModalDialogStickyAreaJssStyle('footer', theme),
+            ...getDialogStickyAreaJssStyle('footer', theme),
             gridColumn: '1/-1',
             zIndex: 1, // ensures footer is above header and content but below sticky dismiss button
           },
@@ -80,19 +80,19 @@ export const getComponentCss = (
         },
       }),
       dialog: {
-        ...getModalDialogBackdropResetJssStyle,
-        ...getModalDialogBackdropTransitionJssStyle(isOpen, theme, backdrop),
+        ...getDialogBackdropResetJssStyle,
+        ...getDialogBackdropTransitionJssStyle(isOpen, theme, backdrop),
       },
     },
     scroller: {
-      ...getModalDialogScrollerJssStyle('fullscreen', theme),
+      ...getDialogScrollerJssStyle('fullscreen', theme),
       justifyContent: 'center',
       alignItems: 'center',
     },
     modal: {
-      ...getModalDialogGridJssStyle(),
+      ...getDialogGridJssStyle,
       ...getDialogColorJssStyle(theme),
-      ...getModalDialogTransitionJssStyle(isOpen),
+      ...getDialogTransitionJssStyle(isOpen),
       // TODO: maybe we should deprecate the fullscreen property and force the modal to be fullscreen on mobile only
       ...buildResponsiveStyles(fullscreen, (fullscreenValue: boolean) =>
         fullscreenValue
@@ -114,7 +114,7 @@ export const getComponentCss = (
     },
     ...(hasDismissButton && {
       dismiss: {
-        ...getModalDialogDismissButtonJssStyle(theme, isOpen),
+        ...getDialogDismissButtonJssStyle(theme, isOpen),
         gridArea: '1/3',
         zIndex: 2, // ensures dismiss button is above sticky footer, header and content
         position: 'sticky',
