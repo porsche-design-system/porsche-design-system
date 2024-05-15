@@ -15,6 +15,7 @@ import {
 } from '../../styles/dialog-styles';
 
 const cssVariableWidth = '--p-flyout-width';
+const cssVariableMinWidth = '--p-flyout-min-width';
 const cssVariableMaxWidth = '--p-flyout-max-width';
 
 export const getComponentCss = (
@@ -79,9 +80,9 @@ export const getComponentCss = (
     flyout: {
       ...dialogGridJssStyle,
       ...getDialogColorJssStyle(theme),
-      width: `var(${cssVariableWidth}, fit-content)`,
-      minWidth: '320px',
-      maxWidth: `var(${cssVariableMaxWidth}, 1180px)`,
+      width: `var(${cssVariableWidth},fit-content)`,
+      minWidth: `var(${cssVariableMinWidth},320px)`,
+      maxWidth: `var(${cssVariableMaxWidth},1180px)`,
     },
     dismiss: {
       ...getDismissButtonJssStyle(theme, isOpen, !isPositionStart),

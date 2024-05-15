@@ -23,6 +23,9 @@ import {
   headingTags,
 } from '../../styles/dialog-styles';
 
+const cssVariableWidth = '--p-modal-width';
+const cssVariableMinWidth = '--p-modal-min-width';
+const cssVariableMaxWidth = '--p-modal-max-width';
 const cssVariableSpacingTop = '--p-modal-spacing-top';
 const cssVariableSpacingBottom = '--p-modal-spacing-bottom';
 
@@ -94,15 +97,17 @@ export const getComponentCss = (
       ...buildResponsiveStyles(fullscreen, (fullscreenValue: boolean) =>
         fullscreenValue
           ? {
-              minWidth: '100%',
-              maxWidth: '100%',
-              minHeight: '100%',
+              width: '100dvw',
+              minWidth: '100dvw',
+              maxWidth: '100dvw',
+              minHeight: '100dvh',
               margin: 0,
               borderRadius: 0,
             }
           : {
-              minWidth: 'clamp(276px, 22.75vw + 203px, 640px)', // 'auto', // '276px', on viewport 320px: calc(${gridColumnWidthBase} * 6 + ${gridGap} * 5)
-              maxWidth: '1535.5px', // to be in sync with "Porsche Grid" on viewport >= 1920px: `calc(${gridColumnWidthXXL} * 14 + ${gridGap} * 13)`
+              width: `var(${cssVariableWidth},fit-content)`,
+              minWidth: `var(${cssVariableMinWidth},clamp(276px, 22.75vw + 203px, 640px))`, // 'auto', // '276px', on viewport 320px: calc(${gridColumnWidthBase} * 6 + ${gridGap} * 5)
+              maxWidth: `var(${cssVariableMaxWidth},1535.5px)`, // to be in sync with "Porsche Grid" on viewport >= 1920px: `calc(${gridColumnWidthXXL} * 14 + ${gridGap} * 13)`
               minHeight: 'auto',
               margin: `var(${cssVariableSpacingTop},clamp(16px, 10vh, 192px)) ${gridExtendedOffsetBase} var(${cssVariableSpacingBottom},clamp(16px, 10vh, 192px))`,
               borderRadius: borderRadiusMedium,
