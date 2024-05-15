@@ -82,8 +82,6 @@ export class Flyout {
     // in case flyout is rendered with open prop
     if (this.open) {
       setScrollLock(true);
-
-      this.setDialogVisibility(true);
     }
 
     // TODO: would be great to use this in jsx but that doesn't work reliable and causes focus e2e test to fail

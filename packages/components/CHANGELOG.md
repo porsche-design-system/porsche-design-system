@@ -23,6 +23,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 #### Changed
 
+- Banner: Refactor Banner to use native `popover`
+  ([#3196](https://github.com/porsche-design-system/porsche-design-system/pull/3196))
 - Partials: `getInitialStyles` only contain hydration visibility and global styles. All other styles are handled by
   constructable stylesheets at component level.
   ([#3213](https://github.com/porsche-design-system/porsche-design-system/pull/3213))
