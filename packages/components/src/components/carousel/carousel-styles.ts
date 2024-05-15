@@ -57,7 +57,7 @@ const paginationWidthLarge = `calc(${paginationActiveBulletSize} + ${paginationB
   paginationVisibleBulletCount - 1
 } + ${paginationGapLarge} * ${paginationVisibleBulletCount - 1} + 2 * ${paginationInset})`; // Width for one active bullet + width of inactive bullets + spacing
 
-const selectorHeading = 'h2,::slotted([slot="heading"])';
+const selectorHeading = ':is(.heading)';
 const selectorDescription = 'p,::slotted([slot="description"])';
 const mediaQueryS = getMediaQueryMin('s');
 const mediaQueryXXL = getMediaQueryMin('xxl');
@@ -137,6 +137,9 @@ export const getComponentCss = (
             maxWidth: '56.25rem',
             margin: `0 0 ${!hasDescription ? spacingFluidMedium : 0}`,
             ...(headingSize === 'xx-large' ? headingXXLargeStyle : headingXLargeStyle),
+          },
+          ['::slotted([slot=heading])']: {
+            all: 'inherit',
           },
         }),
         // p,::slotted([slot=description])

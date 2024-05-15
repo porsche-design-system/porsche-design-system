@@ -288,9 +288,11 @@ export class Carousel {
         <div class="header">
           {hasHeadingPropOrSlot &&
             (this.heading ? (
-              <h2 id={headingId}>{this.heading}</h2>
+              <h2 class="heading" id={headingId}>
+                {this.heading}
+              </h2>
             ) : (
-              <div id={headingId}>
+              <div class="heading" id={headingId}>
                 <slot name="heading" />
               </div>
             ))}
