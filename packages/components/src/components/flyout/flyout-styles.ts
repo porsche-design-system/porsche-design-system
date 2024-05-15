@@ -12,7 +12,6 @@ import {
   getModalDialogScrollerJssStyle,
   getModalDialogStickyAreaJssStyle,
   getModalDialogTransitionJssStyle,
-  headingTags,
 } from '../../styles/dialog-styles';
 
 const cssVariableWidth = '--p-flyout-width';
@@ -38,40 +37,36 @@ export const getComponentCss = (
           ...hostHiddenStyles,
         }),
       },
-      // TODO: maybe we should scope this selector to heading slot only or even reset any element for any slot to margin:0?
-      [`::slotted(:is(${headingTags}))`]: {
-        margin: 0, // ua-style (relevant for e.g. <h3 slot="header"/>)
-      },
       slot: {
         display: 'block',
+        '&:first-of-type': {
+          gridRowStart: 1,
+        },
+        '&:not([name])': {
+          gridColumn: '2/3',
+          zIndex: 0,
+        },
+        ...(hasHeader && {
+          '&[name=header]': {
+            ...getModalDialogStickyAreaJssStyle('header', theme),
+            gridColumn: '1/-1',
+            zIndex: 3,
+          },
+        }),
+        ...(hasFooter && {
+          '&[name=footer]': {
+            ...getModalDialogStickyAreaJssStyle('footer', theme),
+            gridColumn: '1/-1',
+            zIndex: 2,
+          },
+        }),
+        ...(hasSubFooter && {
+          '&[name=sub-footer]': {
+            gridColumn: '2/3',
+            zIndex: 1,
+          },
+        }),
       },
-      'slot:not([name])': {
-        gridArea: '4/3',
-        zIndex: 0, // ensures content isn't above sticky footer or dismiss button
-        marginBlockStart: hasHeader ? spacingFluidMedium : null,
-        marginBlockEnd: hasFooter ? spacingFluidMedium : null,
-      },
-      ...(hasHeader && {
-        'slot[name=header]': {
-          ...getModalDialogStickyAreaJssStyle('header', theme),
-          gridArea: '2/1/4/-1', // ensures header is stuck at top
-          zIndex: 3, // ensures header is above everything but below sticky dismiss button
-        },
-      }),
-      ...(hasFooter && {
-        'slot[name=footer]': {
-          ...getModalDialogStickyAreaJssStyle('footer', theme),
-          gridArea: '5/1/auto/-1',
-          zIndex: 2, // ensures footer is above header and content but below sticky dismiss button
-        },
-      }),
-      ...(hasSubFooter && {
-        'slot[name=sub-footer]': {
-          marginTop: hasFooter ? spacingFluidMedium : null,
-          gridArea: '6/3',
-          zIndex: 1, // ensures footer is above header and content but below sticky dismiss button
-        },
-      }),
       dialog: {
         ...getModalDialogBackdropResetJssStyle,
         ...getModalDialogBackdropTransitionJssStyle(isOpen, theme),
@@ -80,11 +75,9 @@ export const getComponentCss = (
     scroller: {
       ...getModalDialogScrollerJssStyle(isPositionStart ? 'start' : 'end', theme),
       ...getModalDialogTransitionJssStyle(isOpen, isPositionStart ? '>' : '<'),
-      display: 'flex',
-      flexWrap: 'wrap',
     },
     flyout: {
-      ...getModalDialogGridJssStyle,
+      ...getModalDialogGridJssStyle(),
       ...getDialogColorJssStyle(theme),
       width: `var(${cssVariableWidth}, fit-content)`,
       minWidth: '320px',
@@ -92,10 +85,12 @@ export const getComponentCss = (
     },
     dismiss: {
       ...getModalDialogDismissButtonJssStyle(theme, isOpen, !isPositionStart),
-      gridArea: '2/4',
+      gridArea: '1/3',
       zIndex: 4, // ensures dismiss button is above everything
       position: 'sticky',
-      top: spacingFluidSmall,
+      insetBlockStart: spacingFluidSmall,
+      insetInlineEnd: spacingFluidSmall,
+      marginBlockStart: `calc(${spacingFluidMedium} * -1)`,
       justifySelf: 'flex-end',
     },
   });

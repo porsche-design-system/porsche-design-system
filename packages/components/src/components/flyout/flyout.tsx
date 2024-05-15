@@ -97,10 +97,7 @@ export class Flyout {
       const ro = new ResizeObserver((entries) => {
         for (const entry of entries) {
           // EXPERIMENTAL CSS variable
-          // "-1" because of `top: -1px` sticky hack
-          sheet.replaceSync(
-            `:host{--p-flyout-sticky-top:${Math.floor(entry.target.getBoundingClientRect().height) - 1}px}`
-          );
+          sheet.replaceSync(`:host{--p-flyout-sticky-top:${Math.ceil(entry.target.getBoundingClientRect().height)}px}`);
         }
       });
 

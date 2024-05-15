@@ -44,33 +44,39 @@ export const getComponentCss = (
       }),
       '::slotted': getModalDialogStretchToFullModalWidthJssStyle(hasHeader, hasFooter, fullscreen),
       // TODO: maybe we should scope this selector to heading slot only or even reset any element for any slot to margin:0?
-      [`::slotted(:is(${headingTags}))`]: {
+      [`::slotted([slot="heading"]:is(${headingTags}))`]: {
         margin: 0, // ua-style (relevant for e.g. <h3 slot="header"/>)
       },
       slot: {
         display: 'block',
-      },
-      'slot:not([name])': {
-        gridArea: '4/3',
-        zIndex: 0, // ensures content isn't above sticky footer or dismiss button
-        marginBlockStart: hasHeader ? spacingFluidMedium : null,
-        marginBlockEnd: hasFooter ? spacingFluidMedium : null,
+        '&:first-of-type': {
+          gridRowStart: 1,
+        },
+        '&:not([name])': {
+          gridColumnStart: 2,
+          zIndex: 0, // ensures content isn't above sticky footer or dismiss button
+        },
+        ...(hasHeader && {
+          '&[name=header]': {
+            gridColumnStart: 2,
+            zIndex: 0, // ensures header isn't above sticky footer or dismiss button
+          },
+        }),
+        ...(hasFooter && {
+          '&[name=footer]': {
+            ...getModalDialogStickyAreaJssStyle('footer', theme),
+            gridColumn: '1/-1',
+            zIndex: 1, // ensures footer is above header and content but below sticky dismiss button
+          },
+        }),
       },
       ...(hasHeader && {
-        'slot[name=header],slot[name=heading],h1,h2,h3,h4,h5,h6': {
-          gridArea: '3/3',
+        // TODO: we should either deprecate heading slot + pre-styled headings or implement it in flyout too
+        [`slot[name=heading],${headingTags}`]: {
+          gridColumnStart: 2,
           zIndex: 0, // ensures header isn't above sticky footer or dismiss button
-        },
-        'slot[name=heading],h1,h2,h3,h4,h5,h6': {
           ...headingLargeStyle,
           margin: 0,
-        },
-      }),
-      ...(hasFooter && {
-        'slot[name=footer]': {
-          ...getModalDialogStickyAreaJssStyle('footer', theme),
-          gridArea: '5/1/auto/-1',
-          zIndex: 1, // ensures footer is above header and content but below sticky dismiss button
         },
       }),
       dialog: {
@@ -80,13 +86,11 @@ export const getComponentCss = (
     },
     scroller: {
       ...getModalDialogScrollerJssStyle('fullscreen', theme),
-      display: 'flex',
       justifyContent: 'center',
       alignItems: 'center',
-      flexWrap: 'wrap',
     },
     modal: {
-      ...getModalDialogGridJssStyle,
+      ...getModalDialogGridJssStyle(),
       ...getDialogColorJssStyle(theme),
       ...getModalDialogTransitionJssStyle(isOpen),
       // TODO: maybe we should deprecate the fullscreen property and force the modal to be fullscreen on mobile only
@@ -111,10 +115,12 @@ export const getComponentCss = (
     ...(hasDismissButton && {
       dismiss: {
         ...getModalDialogDismissButtonJssStyle(theme, isOpen),
-        gridArea: '2/-3',
+        gridArea: '1/3',
         zIndex: 2, // ensures dismiss button is above sticky footer, header and content
         position: 'sticky',
-        top: spacingFluidSmall,
+        insetBlockStart: spacingFluidSmall,
+        marginBlockStart: `calc(${spacingFluidMedium} * -1)`,
+        marginInlineEnd: spacingFluidSmall,
         justifySelf: 'flex-end',
       },
     }),

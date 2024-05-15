@@ -121,6 +121,8 @@ export const getModalDialogScrollerJssStyle = (position: 'fullscreen' | 'start' 
           insetBlock: 0,
           [position === 'start' ? 'insetInlineStart' : 'insetInlineEnd']: 0,
         }),
+    display: 'flex',
+    flexWrap: 'wrap',
     overflow: 'hidden auto',
     overscrollBehaviorY: 'none',
     background: background[theme],
@@ -130,13 +132,15 @@ export const getModalDialogScrollerJssStyle = (position: 'fullscreen' | 'start' 
   };
 };
 
-const safeZoneBlockStart = `${spacingFluidSmall} ${spacingFluidMedium}`;
-const safeZoneBlockEnd = `${spacingFluidMedium} ${spacingFluidSmall}`;
-const safeZoneInlineStart = `${spacingFluidSmall} calc(${spacingFluidLarge} - ${spacingFluidSmall})`;
-const safeZoneInlineEnd = `calc(${spacingFluidLarge} - ${spacingFluidSmall}) ${spacingFluidSmall}`;
-export const getModalDialogGridJssStyle: JssStyle = {
-  display: 'grid',
-  gridTemplate: `${safeZoneBlockStart} repeat(4, auto) minmax(0, 1fr) ${safeZoneBlockEnd}/${safeZoneInlineStart} auto ${safeZoneInlineEnd}`,
+export const getModalDialogGridJssStyle = (): JssStyle => {
+  return {
+    display: 'grid',
+    gridTemplate: `auto/${spacingFluidSmall} auto ${spacingFluidSmall}`,
+    paddingBlock: `calc(${spacingFluidSmall} + ${spacingFluidMedium})`,
+    rowGap: spacingFluidMedium,
+    columnGap: `calc(${spacingFluidLarge} - ${spacingFluidSmall})`,
+    alignContent: 'flex-start',
+  };
 };
 
 export const getDialogColorJssStyle = (theme: Theme): JssStyle => {
@@ -166,7 +170,6 @@ export const getModalDialogTransitionJssStyle = (isVisible: boolean, slideIn: '^
           transform: 'initial',
         }
       : {
-          // TODO: tbd. if opacity shall be animated for flyout at all
           opacity: 0,
           transform: slideIn === '^' ? 'translateY(25vh)' : `translateX(${slideIn === '>' ? '-' : ''}100%)`,
           '&:dir(rtl)': {
@@ -217,7 +220,10 @@ export const getModalDialogStickyAreaJssStyle = (area: 'header' | 'footer', them
     [isAreaHeader ? 'top' : 'bottom']: '-.1px', // necessary for `IntersectionObserver` to detect if sticky element is stuck or not. Float value is used, so that sticky area isn't moved out visually by e.g. 1px when container gets scrolled.
     transform: 'translateZ(0)', // prevents slightly squeezed elements within sticky area for some browsers caused by float value of sticky top position
     padding: `${spacingStaticMedium} ${spacingFluidLarge}`, // with CSS subgrid the spacingFluidLarge definition wouldn't be necessary
-    marginBlock: `calc(${spacingStaticMedium} * -1)`, // TODO: better would be to use the same spacing of the dialog grid
+    marginBlockStart: isAreaHeader
+      ? `calc((${spacingFluidSmall} + ${spacingFluidMedium}) * -1)`
+      : `-${spacingStaticMedium}`,
+    marginBlockEnd: `calc(${spacingStaticMedium} * -1)`,
     background: backgroundColor,
     ...prefersColorSchemeDarkMediaQuery(theme, {
       background: backgroundColorDark,
