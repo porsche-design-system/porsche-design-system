@@ -10,25 +10,30 @@ import { INTERNAL_TAG_NAMES, TAG_NAMES, TagName } from '@porsche-design-system/s
 const tagNames: TagName[] = TAG_NAMES.filter((tagName) => !INTERNAL_TAG_NAMES.includes(tagName));
 
 for (const tagName of tagNames) {
-  test(`should not throw error after disconnectedCallback for ${tagName}`, async ({ page }) => {
-    initConsoleObserver(page);
-    await goto(page, ''); // start page
+  test.describe(tagName, () => {
+    test(`should not throw error after disconnectedCallback`, async ({ page, browserName }) => {
+      // TODO: Banner is now using popover attribute which needs an update of Playwright so Firefox supports it (#3129)
+      test.skip(tagName === 'p-banner' && browserName === 'firefox');
 
-    const markup = buildDefaultComponentMarkup(tagName);
+      initConsoleObserver(page);
+      await goto(page, ''); // start page
 
-    await page.evaluate(
-      ({ tagName, markup }) => {
-        document.getElementById('app').innerHTML = markup;
-        document.getElementById('app').querySelector(tagName).remove(); // remove component immediately
-      },
-      { tagName, markup }
-    );
+      const markup = buildDefaultComponentMarkup(tagName);
 
-    await sleep(100);
+      await page.evaluate(
+        ({ tagName, markup }) => {
+          document.getElementById('app').innerHTML = markup;
+          document.getElementById('app').querySelector(tagName).remove(); // remove component immediately
+        },
+        { tagName, markup }
+      );
 
-    expect(getConsoleErrorsAmount()).toBe(0);
+      await sleep(100);
 
-    await page.evaluate(() => console.error('test error'));
-    expect(getConsoleErrorsAmount()).toBe(1);
+      expect(getConsoleErrorsAmount()).toBe(0);
+
+      await page.evaluate(() => console.error('test error'));
+      expect(getConsoleErrorsAmount()).toBe(1);
+    });
   });
 }
