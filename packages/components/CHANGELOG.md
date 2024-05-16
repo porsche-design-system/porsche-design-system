@@ -14,6 +14,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ### [Unreleased]
 
+### [3.15.0-rc.5] - 2024-05-16
+
 #### Added
 
 - `Button Pure`: Prop `underline` to show an underline for the label
