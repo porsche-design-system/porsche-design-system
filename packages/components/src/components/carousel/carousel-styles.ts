@@ -138,8 +138,8 @@ export const getComponentCss = (
             ...(headingSize === 'xx-large' ? headingXXLargeStyle : headingXLargeStyle),
           },
           ['::slotted([slot=heading])']: {
+            margin: 0, // reset ua-style
             ...(headingSize === 'xx-large' ? headingXXLargeStyle : headingXLargeStyle),
-            margin: `0 0 ${!hasDescription ? spacingFluidMedium : 0}`,
           },
         }),
         // p,::slotted([slot=description])
