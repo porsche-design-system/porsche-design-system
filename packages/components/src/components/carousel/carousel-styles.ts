@@ -139,6 +139,7 @@ export const getComponentCss = (
           },
           ['::slotted([slot=heading])']: {
             ...(headingSize === 'xx-large' ? headingXXLargeStyle : headingXLargeStyle),
+            margin: `0 0 ${!hasDescription ? spacingFluidMedium : 0}`,
           },
         }),
         // p,::slotted([slot=description])
