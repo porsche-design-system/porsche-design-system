@@ -57,7 +57,7 @@ const paginationWidthLarge = `calc(${paginationActiveBulletSize} + ${paginationB
   paginationVisibleBulletCount - 1
 } + ${paginationGapLarge} * ${paginationVisibleBulletCount - 1} + 2 * ${paginationInset})`; // Width for one active bullet + width of inactive bullets + spacing
 
-const selectorHeading = 'h2,::slotted([slot="heading"])';
+const selectorHeading = '.heading';
 const selectorDescription = 'p,::slotted([slot="description"])';
 const mediaQueryS = getMediaQueryMin('s');
 const mediaQueryXXL = getMediaQueryMin('xxl');
@@ -117,7 +117,7 @@ export const getComponentCss = (
           ...getFocusJssStyle(theme, { slotted: true }),
         },
         // TODO: maybe it's better to style with slot[name="heading"] and slot[name="description"] instead, then styles would be part of shadow dom
-        // h2,::slotted([slot=heading]),p,::slotted([slot=description])
+        // .heading,p,::slotted([slot=description])
         ...((hasHeading || hasDescription) && {
           [`${selectorHeading},${selectorDescription}`]: {
             gridColumn: '1/-1',
@@ -131,11 +131,14 @@ export const getComponentCss = (
             }),
           },
         }),
-        // h2,::slotted([slot=heading])
         ...(hasHeading && {
           [selectorHeading]: {
             maxWidth: '56.25rem',
             margin: `0 0 ${!hasDescription ? spacingFluidMedium : 0}`,
+            ...(headingSize === 'xx-large' ? headingXXLargeStyle : headingXLargeStyle),
+          },
+          ['::slotted([slot=heading])']: {
+            margin: 0, // reset ua-style
             ...(headingSize === 'xx-large' ? headingXXLargeStyle : headingXLargeStyle),
           },
         }),

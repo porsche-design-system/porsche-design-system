@@ -30,6 +30,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 #### Fixed
 
+- `Carousel`: Accessible name of carousel region wrapper
+  ([#3220](https://github.com/porsche-design-system/porsche-design-system/pull/3220))
 - `aria` property now supports escaped single quotes inside JSON strings, e.g.
   `aria="{ 'aria-label': 'You can\'t do that? yes you can!' }"`
   ([#3217](https://github.com/porsche-design-system/porsche-design-system/pull/3217))
