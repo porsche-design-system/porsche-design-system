@@ -16,20 +16,30 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 #### Added
 
-- `Flyout`: Experimental CSS variable `--p-flyout-sticky-top`
+- `Flyout`:
+  - CSS variables `--p-flyout-min-width` and `--p-flyout-sticky-top` (experimental)
+    ([#3191](https://github.com/porsche-design-system/porsche-design-system/pull/3191))
+  - Prop `disableBackdropClick` ([#3191](https://github.com/porsche-design-system/porsche-design-system/pull/3191))
+- `Modal`:
+  - CSS variables `--p-modal-width`, `--p-modal-min-width` and `--p-modal-max-width`
+    ([#3191](https://github.com/porsche-design-system/porsche-design-system/pull/3191))
+  - Named slot `header` ([#3191](https://github.com/porsche-design-system/porsche-design-system/pull/3191))
 
 #### Changed
 
 - `Modal`, `Flyout`:
-  - Sticky dismiss button
-  - Aligned layout, spacing and behaviour
-  - Renders fully on `#top-layer` (stacking behaviour has changed and follows W3C standards now, see
+  - Sticky dismiss button ([#3191](https://github.com/porsche-design-system/porsche-design-system/pull/3191))
+  - Aligned layout, spacing and UX behaviour
+    ([#3191](https://github.com/porsche-design-system/porsche-design-system/pull/3191))
+  - Renders fully on `#top-layer`, stacking behaviour has changed and follows W3C standards now, see
     https://developer.mozilla.org/en-US/docs/Glossary/Top_layer and
-    https://developer.chrome.com/blog/what-is-the-top-layer)
+    https://developer.chrome.com/blog/what-is-the-top-layer
+    ([#3191](https://github.com/porsche-design-system/porsche-design-system/pull/3191))
 
 #### Fixed
 
-- `Modal`: Uses native `<dialog />` element to resolve focus issues (focus trap)
+- `Modal`: Uses native `<dialog />` element to resolve focus issues, focus trap
+  ([#3191](https://github.com/porsche-design-system/porsche-design-system/pull/3191))
 
 #### Added
 

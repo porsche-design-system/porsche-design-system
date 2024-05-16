@@ -47,7 +47,7 @@ export class Flyout {
   /** The position of the flyout */
   @Prop() public position?: FlyoutPosition = 'end';
 
-  /** If true, the modal will not be closable via backdrop click. */
+  /** If true, the flyout will not be closable via backdrop click. */
   @Prop() public disableBackdropClick?: boolean = false;
 
   /** Adapts the flyout color depending on the theme. */
