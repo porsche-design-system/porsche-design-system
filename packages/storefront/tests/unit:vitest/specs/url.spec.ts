@@ -36,7 +36,7 @@ describe('url', () => {
               expect(status).toBe(403); // 403 Forbidden
               break;
             case 'https://vmmedia.porsche.de':
-              expect(status).toBe(401); // 401 Unauthorized
+              expect([401, 403, 429]).toContain(status); // 401 Unauthorized, 403 Forbidden or 429 Too Many Requests
               break;
             case 'https://twitter.com':
               expect(status).toBe(400); // 400 Bad Request
