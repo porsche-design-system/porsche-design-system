@@ -2,11 +2,12 @@ import {
   borderRadiusMedium,
   gridExtendedOffsetBase,
   headingLargeStyle,
+  spacingFluidLarge,
   spacingFluidMedium,
   spacingFluidSmall,
 } from '@porsche-design-system/utilities-v2';
 import { type BreakpointCustomizable, type Theme } from '../../types';
-import { buildResponsiveStyles, getCss } from '../../utils';
+import { buildResponsiveStyles, getCss, mergeDeep } from '../../utils';
 import { addImportantToEachRule, colorSchemeStyles, hostHiddenStyles } from '../../styles';
 import { type ModalBackdrop } from './modal-utils';
 import {
@@ -17,7 +18,6 @@ import {
   getDialogStickyAreaJssStyle,
   getDialogTransitionJssStyle,
   getDismissButtonJssStyle,
-  getModalDialogStretchToFullModalWidthJssStyle,
   getScrollerJssStyle,
   headingTags,
 } from '../../styles/dialog-styles';
@@ -27,6 +27,10 @@ const cssVariableMinWidth = '--p-modal-min-width';
 const cssVariableMaxWidth = '--p-modal-max-width';
 const cssVariableSpacingTop = '--p-modal-spacing-top';
 const cssVariableSpacingBottom = '--p-modal-spacing-bottom';
+
+const safeZoneVertical = `calc(${spacingFluidSmall} + ${spacingFluidMedium})`;
+const safeZoneHorizontal = `${spacingFluidLarge}`;
+const cssClassNameStretchToFullModalWidth = 'stretch-to-full-modal-width';
 
 export const getComponentCss = (
   isOpen: boolean,
@@ -47,7 +51,39 @@ export const getComponentCss = (
           ...hostHiddenStyles,
         }),
       },
-      '::slotted': getModalDialogStretchToFullModalWidthJssStyle(hasHeader, hasFooter, fullscreen),
+      // TODO: why not available to Flyout too?
+      // TODO: discussable if so many styles are a good thing, since we could also expose one or two CSS variables with which a stretch to full width is possible too
+      '::slotted': mergeDeep(
+        {
+          [`&(.${cssClassNameStretchToFullModalWidth})`]: {
+            display: 'block',
+            margin: `0 calc(${safeZoneHorizontal} * -1)`,
+            width: `calc(100% + calc(${safeZoneHorizontal} * 2))`,
+          },
+          ...(!hasHeader && {
+            [`&(.${cssClassNameStretchToFullModalWidth}:first-child)`]: {
+              marginBlockStart: `calc(${safeZoneVertical} * -1)`,
+            },
+          }),
+          ...(!hasFooter && {
+            [`&(.${cssClassNameStretchToFullModalWidth}:last-child)`]: {
+              marginBlockEnd: `calc(${safeZoneVertical} * -1)`,
+            },
+          }),
+        },
+        buildResponsiveStyles(fullscreen, (fullscreenValue: boolean) => ({
+          ...(!hasHeader && {
+            [`&(.${cssClassNameStretchToFullModalWidth}:first-child)`]: {
+              borderRadius: fullscreenValue ? 0 : `${borderRadiusMedium} ${borderRadiusMedium} 0 0`,
+            },
+          }),
+          ...(!hasFooter && {
+            [`&(.${cssClassNameStretchToFullModalWidth}:last-child)`]: {
+              borderRadius: fullscreenValue ? 0 : `0 0 ${borderRadiusMedium} ${borderRadiusMedium}`,
+            },
+          }),
+        }))
+      ),
       slot: {
         display: 'block',
         '&:first-of-type': {

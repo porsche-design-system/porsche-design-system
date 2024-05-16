@@ -1,6 +1,5 @@
 import { type JssStyle } from 'jss';
 import {
-  borderRadiusMedium,
   borderRadiusSmall,
   frostedGlassStyle,
   gridGap,
@@ -16,8 +15,7 @@ import {
   motionDurationMap,
   prefersColorSchemeDarkMediaQuery,
 } from './';
-import { buildResponsiveStyles, isThemeDark, mergeDeep, type Theme } from '../utils';
-import { type BreakpointCustomizable } from '../utils/breakpoint-customizable';
+import { isThemeDark, type Theme } from '../utils';
 
 export const BACKDROPS = ['blur', 'shading'] as const;
 export type Backdrop = (typeof BACKDROPS)[number];
@@ -233,47 +231,4 @@ export const getDialogStickyAreaJssStyle = (area: 'header' | 'footer', theme: Th
       }),
     },
   };
-};
-
-// TODO: why not available to Flyout too?
-// TODO: discussable if so many styles are a good thing, since we could also expose one or two CSS variables with which a stretch to full width is possible too
-export const getModalDialogStretchToFullModalWidthJssStyle = (
-  hasHeader: boolean,
-  hasFooter: boolean,
-  fullscreen: BreakpointCustomizable<boolean>
-): JssStyle => {
-  const safeZone = `calc(${spacingFluidLarge} * -1)`;
-  const cssClassNameStretchToFullModalWidth = 'stretch-to-full-modal-width';
-
-  return mergeDeep(
-    {
-      [`&(.${cssClassNameStretchToFullModalWidth})`]: {
-        display: 'block',
-        margin: `0 ${safeZone}`,
-        width: `calc(100% + calc(${spacingFluidLarge} * 2))`,
-      },
-      ...(!hasHeader && {
-        [`&(.${cssClassNameStretchToFullModalWidth}:first-child)`]: {
-          marginBlockStart: safeZone,
-        },
-      }),
-      ...(!hasFooter && {
-        [`&(.${cssClassNameStretchToFullModalWidth}:last-child)`]: {
-          marginBlockEnd: safeZone,
-        },
-      }),
-    },
-    buildResponsiveStyles(fullscreen, (fullscreenValue: boolean) => ({
-      ...(!hasHeader && {
-        [`&(.${cssClassNameStretchToFullModalWidth}:first-child)`]: {
-          borderRadius: fullscreenValue ? 0 : `${borderRadiusMedium} ${borderRadiusMedium} 0 0`,
-        },
-      }),
-      ...(!hasFooter && {
-        [`&(.${cssClassNameStretchToFullModalWidth}:last-child)`]: {
-          borderRadius: fullscreenValue ? 0 : `0 0 ${borderRadiusMedium} ${borderRadiusMedium}`,
-        },
-      }),
-    }))
-  );
 };
