@@ -14,6 +14,7 @@ const getElementMap = (element: HTMLElement): ElementMap => {
   return elementsMap.get(tagName);
 };
 
+// TODO: Use function from ./jss (Causes bundling issues)
 const hasConstructableStylesheetSupport = ((): boolean => {
   try {
     return typeof new CSSStyleSheet().replaceSync === 'function';
