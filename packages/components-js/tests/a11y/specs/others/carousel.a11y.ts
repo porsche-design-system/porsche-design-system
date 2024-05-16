@@ -12,6 +12,8 @@ import type {
 } from '@porsche-design-system/components/dist/types/bundle';
 
 type InitOptions = {
+  heading?: boolean;
+  slottedHeading?: boolean;
   aria?: SelectedAriaAttributes<CarouselAriaAttribute>;
   slidesPerPage?: number | string;
   amountOfSlides?: number;
@@ -23,6 +25,8 @@ type InitOptions = {
 
 const initCarousel = (page: Page, opts?: InitOptions) => {
   const {
+    heading = true,
+    slottedHeading = false,
     aria,
     slidesPerPage = 1,
     amountOfSlides = 3,
@@ -42,6 +46,7 @@ const initCarousel = (page: Page, opts?: InitOptions) => {
   const focusableElementBefore = withFocusableElements ? '<a id="link-before" href="#">Link before</a>' : '';
   const focusableElementAfter = withFocusableElements ? '<a id="link-after" href="#">Link after</a>' : '';
   const attrs = [
+    heading ? `heading="Some heading"` : '',
     aria && `aria="${aria}"`,
     slidesPerPage ? `slides-per-page="${slidesPerPage}"` : '',
     rewind === false ? 'rewind="false"' : '',
@@ -49,7 +54,8 @@ const initCarousel = (page: Page, opts?: InitOptions) => {
     skipLinkTarget ? `skip-link-target="${skipLinkTarget}"` : '',
   ].join(' ');
 
-  const content = `${focusableElementBefore}<p-carousel heading="Heading" ${attrs}>
+  const content = `${focusableElementBefore}<p-carousel ${attrs}>
+  ${slottedHeading ? `<h2 slot="heading">${heading}</h2>` : ''}
   ${slides}
 </p-carousel>${focusableElementAfter}`;
 
@@ -116,7 +122,7 @@ test('should remove aria-hidden of slides on resized', async ({ page }) => {
   expect(await getAttribute(slide3, 'aria-hidden')).toBe(null);
 });
 
-test('should expose correct initial accessibility tree', async ({ page }) => {
+test('should expose correct initial ARIA attributes', async ({ page }) => {
   await initCarousel(page);
   const buttonPrev = await getButtonPrev(page);
   const buttonNext = await getButtonNext(page);
@@ -129,6 +135,8 @@ test('should expose correct initial accessibility tree', async ({ page }) => {
   // await expectA11yToMatchSnapshot(page, buttonNext, { message: 'buttonNext' });
   // expect(await getAttribute(buttonNext, 'aria-controls')).toBe('carousel-panel');
   // await expectA11yToMatchSnapshot(page, splide, { message: 'splide', interestingOnly: false });
+
+  expect(await getAttribute(splide, 'aria-labelledby')).toBe('heading');
 
   expect(await getAttribute(splideTrack, 'aria-live')).toBe('polite');
   expect(await getAttribute(splideTrack, 'aria-atomic')).toBe('true');
@@ -146,12 +154,40 @@ test('should expose correct initial accessibility tree', async ({ page }) => {
   expect(await getAttribute(slide3, 'aria-label')).toBe('3 of 3');
 });
 
-test.fixme('should expose correct initial accessibility tree when aria prop is defined', async ({ page }) => {
-  await initCarousel(page, { aria: "{'aria-label': 'Other Heading'}" });
+test('should expose correct aria-labelledby on splide element if slotted heading is set', async ({ page }) => {
+  await initCarousel(page, { heading: false, slottedHeading: true });
   const splide = await getSplide(page);
 
-  // await expectA11yToMatchSnapshot(page, splide, { message: 'splide', interestingOnly: false });
+  expect(await getAttribute(splide, 'aria-labelledby')).toBe('heading');
 });
+
+test('should expose correct aria-label when aria prop is defined and heading is set', async ({ page }) => {
+  const otherHeading = 'Other heading';
+  await initCarousel(page, { aria: `{'aria-label': '${otherHeading}'}` });
+  const splide = await getSplide(page);
+
+  expect(await getAttribute(splide, 'aria-labelledby')).toBe(null);
+  expect(await getAttribute(splide, 'aria-label')).toBe(otherHeading);
+});
+
+test('should expose correct aria-label when aria prop is defined and slotted heading is set', async ({ page }) => {
+  const otherHeading = 'Other heading';
+  await initCarousel(page, { slottedHeading: true, aria: `{'aria-label': '${otherHeading}'}` });
+  const splide = await getSplide(page);
+
+  expect(await getAttribute(splide, 'aria-labelledby')).toBe(null);
+  expect(await getAttribute(splide, 'aria-label')).toBe(otherHeading);
+});
+
+test('should expose correct aria-label when aria prop is defined and no heading is set', async ({ page }) => {
+  const someHeading = 'Some heading';
+  await initCarousel(page, { heading: false, aria: `{'aria-label': '${someHeading}'}` });
+  const splide = await getSplide(page);
+
+  expect(await getAttribute(splide, 'aria-labelledby')).toBe(null);
+  expect(await getAttribute(splide, 'aria-label')).toBe(someHeading);
+});
+
 test('should change skip-link to visible if it receives keyboard focus', async ({ page }) => {
   await initCarousel(page, { skipLinkTarget: '#link-after' });
   const host = await getHost(page);
