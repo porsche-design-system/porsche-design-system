@@ -110,9 +110,14 @@ export const getComponentCss = (
       ...(hasHeader && {
         // TODO: we should either deprecate heading slot + pre-styled headings or implement it in flyout too
         [`slot[name=heading],${headingTags}`]: {
+          gridRowStart: 1,
           gridColumn: '2/3',
           zIndex: 0, // controls layering + creates new stacking context (prevents content within to be above other dialog areas)
           ...headingLargeStyle,
+          margin: 0, // relevant for shadowed h1,h2,h3,…
+        },
+        [`:is(${headingTags}) ~ slot:first-of-type`]: {
+          gridRowStart: 'auto',
         },
         [`::slotted([slot="heading"]:is(${headingTags}))`]: {
           margin: 0, // ua-style (relevant for e.g. <h3 slot="heading"/>)
