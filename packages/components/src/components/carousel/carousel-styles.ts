@@ -117,7 +117,7 @@ export const getComponentCss = (
           ...getFocusJssStyle(theme, { slotted: true }),
         },
         // TODO: maybe it's better to style with slot[name="heading"] and slot[name="description"] instead, then styles would be part of shadow dom
-        // h2,::slotted([slot=heading]),p,::slotted([slot=description])
+        // .heading,p,::slotted([slot=description])
         ...((hasHeading || hasDescription) && {
           [`${selectorHeading},${selectorDescription}`]: {
             gridColumn: '1/-1',
@@ -131,7 +131,6 @@ export const getComponentCss = (
             }),
           },
         }),
-        // h2,::slotted([slot=heading])
         ...(hasHeading && {
           [selectorHeading]: {
             maxWidth: '56.25rem',
@@ -139,7 +138,7 @@ export const getComponentCss = (
             ...(headingSize === 'xx-large' ? headingXXLargeStyle : headingXLargeStyle),
           },
           ['::slotted([slot=heading])']: {
-            all: 'inherit',
+            ...(headingSize === 'xx-large' ? headingXXLargeStyle : headingXLargeStyle),
           },
         }),
         // p,::slotted([slot=description])

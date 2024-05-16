@@ -1041,7 +1041,7 @@ slot[name="controls"] {
   font: normal normal 600 clamp(1.42rem, 0.94vw + 1.23rem, 2.37rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
 }
 ::slotted([slot=heading]) {
-  all: inherit !important;
+  font: normal normal 600 clamp(1.42rem, 0.94vw + 1.23rem, 2.37rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
 }
 .header {
   display: grid;
@@ -1170,7 +1170,7 @@ slot[name="controls"] {
   font: normal normal 600 clamp(1.42rem, 0.94vw + 1.23rem, 2.37rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
 }
 ::slotted([slot=heading]) {
-  all: inherit !important;
+  font: normal normal 600 clamp(1.42rem, 0.94vw + 1.23rem, 2.37rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
 }
 .header {
   display: grid;
@@ -1291,7 +1291,7 @@ exports[`getComponentCss() should return correct css for hasHeading: true, hasDe
   font: normal normal 600 clamp(1.6rem, 1.56vw + 1.29rem, 3.16rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
 }
 ::slotted([slot=heading]) {
-  all: inherit !important;
+  font: normal normal 600 clamp(1.6rem, 1.56vw + 1.29rem, 3.16rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
 }
 p,::slotted([slot="description"]) {
   max-width: 34.375rem !important;
@@ -1480,7 +1480,7 @@ slot[name="controls"] {
   font: normal normal 600 clamp(1.42rem, 0.94vw + 1.23rem, 2.37rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
 }
 ::slotted([slot=heading]) {
-  all: inherit !important;
+  font: normal normal 600 clamp(1.42rem, 0.94vw + 1.23rem, 2.37rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
 }
 p,::slotted([slot="description"]) {
   max-width: 34.375rem !important;
@@ -1614,7 +1614,7 @@ slot[name="controls"] {
   font: normal normal 600 clamp(1.42rem, 0.94vw + 1.23rem, 2.37rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
 }
 ::slotted([slot=heading]) {
-  all: inherit !important;
+  font: normal normal 600 clamp(1.42rem, 0.94vw + 1.23rem, 2.37rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
 }
 p,::slotted([slot="description"]) {
   max-width: 34.375rem !important;
@@ -1825,7 +1825,7 @@ slot[name="controls"] {
   font: normal normal 600 clamp(1.42rem, 0.94vw + 1.23rem, 2.37rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
 }
 ::slotted([slot=heading]) {
-  all: inherit !important;
+  font: normal normal 600 clamp(1.42rem, 0.94vw + 1.23rem, 2.37rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
 }
 p,::slotted([slot="description"]) {
   max-width: 34.375rem !important;
@@ -2039,7 +2039,7 @@ slot[name="controls"] {
   font: normal normal 600 clamp(1.6rem, 1.56vw + 1.29rem, 3.16rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
 }
 ::slotted([slot=heading]) {
-  all: inherit !important;
+  font: normal normal 600 clamp(1.6rem, 1.56vw + 1.29rem, 3.16rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
 }
 p,::slotted([slot="description"]) {
   max-width: 34.375rem !important;
@@ -2228,7 +2228,7 @@ slot[name="controls"] {
   font: normal normal 600 clamp(1.6rem, 1.56vw + 1.29rem, 3.16rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
 }
 ::slotted([slot=heading]) {
-  all: inherit !important;
+  font: normal normal 600 clamp(1.6rem, 1.56vw + 1.29rem, 3.16rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
 }
 p,::slotted([slot="description"]) {
   max-width: 34.375rem !important;
