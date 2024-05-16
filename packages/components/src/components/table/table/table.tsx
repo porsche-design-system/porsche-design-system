@@ -1,6 +1,7 @@
 import { Component, Element, Event, type EventEmitter, h, Host, type JSX, Prop } from '@stencil/core';
 import {
   AllowedTypes,
+  applyConstructableStylesheetStyles,
   attachComponentCss,
   getPrefixedTagNames,
   hasNamedSlot,
@@ -11,6 +12,7 @@ import type { PropTypes, Theme } from '../../../types';
 import { getComponentCss } from './table-styles';
 import type { TableUpdateEventDetail } from './table-utils';
 import { SORT_EVENT_NAME, warnIfCaptionIsMissing } from './table-utils';
+import { getSlottedAnchorStyles } from '../../../styles';
 
 const propTypes: PropTypes<typeof Table> = {
   caption: AllowedTypes.string,
@@ -38,6 +40,10 @@ export class Table {
 
   /** Emitted when sorting is changed. */
   @Event({ bubbles: false }) public update: EventEmitter<TableUpdateEventDetail>;
+
+  public connectedCallback(): void {
+    applyConstructableStylesheetStyles(this.host, getSlottedAnchorStyles);
+  }
 
   public componentWillLoad(): void {
     warnIfCaptionIsMissing(this.host, this.caption);

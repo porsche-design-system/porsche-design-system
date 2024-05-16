@@ -1,6 +1,7 @@
 import { Component, Element, forceUpdate, h, type JSX, Prop } from '@stencil/core';
 import {
   AllowedTypes,
+  applyConstructableStylesheetStyles,
   attachComponentCss,
   FORM_STATES,
   getOnlyChildOfKindHTMLElementOrThrow,
@@ -12,7 +13,7 @@ import {
   unobserveAttributes,
   validateProps,
 } from '../../utils';
-import { applyCheckboxRadioButtonSafariRenderingFix } from '../../utils/form/applyCheckboxRadioButtonSafariRenderingFix';
+import { getCheckboxRadioButtonSafariRenderingFix } from '../../utils/form/applyCheckboxRadioButtonSafariRenderingFix';
 import { type BreakpointCustomizable, type PropTypes, type Theme } from '../../types';
 import { getComponentCss } from './radio-button-wrapper-styles';
 import { type RadioButtonWrapperState } from './radio-button-wrapper-utils';
@@ -20,6 +21,7 @@ import { StateMessage } from '../common/state-message/state-message';
 import { Label } from '../common/label/label';
 import { LoadingMessage } from '../common/loading-message/loading-message';
 import { ControllerHost, InitialLoadingController } from '../../controllers';
+import { getSlottedAnchorStyles } from '../../styles';
 
 const propTypes: PropTypes<typeof RadioButtonWrapper> = {
   label: AllowedTypes.string,
@@ -60,7 +62,7 @@ export class RadioButtonWrapper {
   private input: HTMLInputElement;
 
   public connectedCallback(): void {
-    applyCheckboxRadioButtonSafariRenderingFix(this.host);
+    applyConstructableStylesheetStyles(this.host, getSlottedAnchorStyles, getCheckboxRadioButtonSafariRenderingFix);
     this.observeAttributes(); // on every reconnect
   }
 

@@ -22,11 +22,20 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 - `Button Pure`: Prop `underline` to show an underline for the label
   ([#3212](https://github.com/porsche-design-system/porsche-design-system/pull/3212))
-  
+- Partials: Added new option `globalStyles` to `getInitialStyles` to disable global reset styles.  
+  ([#3213](https://github.com/porsche-design-system/porsche-design-system/pull/3213))
+
 #### Changed
 
 - Banner: Refactor Banner to use native `popover`
   ([#3196](https://github.com/porsche-design-system/porsche-design-system/pull/3196))
+- Partials: `getInitialStyles` only contain hydration visibility and global styles. All other styles are handled by
+  constructable stylesheets at component level.
+  ([#3213](https://github.com/porsche-design-system/porsche-design-system/pull/3213))
+- `Table`: Removed slotted image style `verticalAlign: 'middle'` from initialStyles
+  ([#3213](https://github.com/porsche-design-system/porsche-design-system/pull/3213))
+- `Tabs Bar`: Removed sibling tabpanel focus style from initialStyles
+  ([#3213](https://github.com/porsche-design-system/porsche-design-system/pull/3213))
 
 #### Fixed
 
@@ -99,7 +108,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 - `Model Signature`: Enabling the use of hex colors, CSS gradients, CSS image and video masks. In addition, the size was
   slightly adjusted. ([#3153](https://github.com/porsche-design-system/porsche-design-system/pull/3153))
 
-### Fixed
+#### Fixed
 
 - `Modal`: Missing box-shadow on sticky footer when slotted content changes
   ([#3154](https://github.com/porsche-design-system/porsche-design-system/pull/3154))

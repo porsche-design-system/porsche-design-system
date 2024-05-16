@@ -1,6 +1,7 @@
 import { Component, Element, Event, type EventEmitter, h, Host, Prop } from '@stencil/core';
 import {
   AllowedTypes,
+  applyConstructableStylesheetStyles,
   attachComponentCss,
   getPrefixedTagNames,
   hasPropValueChanged,
@@ -13,6 +14,7 @@ import type { BreakpointCustomizable, PropTypes, Theme } from '../../types';
 import type { AccordionHeadingTag, AccordionSize, AccordionTag, AccordionUpdateEventDetail } from './accordion-utils';
 import { ACCORDION_SIZES } from './accordion-utils';
 import { getComponentCss } from './accordion-styles';
+import { getSlottedAnchorStyles } from '../../styles';
 
 const propTypes: PropTypes<typeof Accordion> = {
   size: AllowedTypes.breakpoint<AccordionSize>(ACCORDION_SIZES),
@@ -67,6 +69,10 @@ export class Accordion {
 
   /** Emitted when accordion state is changed. */
   @Event({ bubbles: false }) public update: EventEmitter<AccordionUpdateEventDetail>;
+
+  public connectedCallback(): void {
+    applyConstructableStylesheetStyles(this.host, getSlottedAnchorStyles);
+  }
 
   public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
     return hasPropValueChanged(newVal, oldVal);

@@ -3,6 +3,7 @@ import type { BreakpointCustomizable, PropTypes, Theme } from '../../types';
 import {
   ALIGN_LABELS,
   AllowedTypes,
+  applyConstructableStylesheetStyles,
   attachComponentCss,
   getPrefixedTagNames,
   hasPropValueChanged,
@@ -16,6 +17,7 @@ import type { SwitchAlignLabel, SwitchAlignLabelDeprecated, SwitchUpdateEventDet
 import { getSwitchButtonAriaAttributes } from './switch-utils';
 import { LoadingMessage, loadingId } from '../common/loading-message/loading-message';
 import { ControllerHost, InitialLoadingController } from '../../controllers';
+import { getSlottedAnchorStyles } from '../../styles';
 
 const propTypes: PropTypes<typeof Switch> = {
   alignLabel: AllowedTypes.breakpoint<SwitchAlignLabel>(ALIGN_LABELS),
@@ -71,6 +73,10 @@ export class Switch {
     if (isDisabledOrLoading(this.disabled, this.loading)) {
       e.stopPropagation();
     }
+  }
+
+  public connectedCallback(): void {
+    applyConstructableStylesheetStyles(this.host, getSlottedAnchorStyles);
   }
 
   public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {

@@ -2,6 +2,7 @@ import { Component, Element, Event, type EventEmitter, Fragment, h, Prop } from 
 import type { BreakpointCustomizable, PropTypes, Theme } from '../../types';
 import {
   AllowedTypes,
+  applyConstructableStylesheetStyles,
   attachComponentCss,
   getPrefixedTagNames,
   hasPropValueChanged,
@@ -18,6 +19,7 @@ import {
   type LinkTileProductTarget,
   TILE_PRODUCT_ASPECT_RATIOS,
 } from './link-tile-product-utils';
+import { getSlottedPictureImageStyles } from '../../styles/global/slotted-picture-image-styles';
 
 const propTypes: PropTypes<typeof LinkTileProduct> = {
   heading: AllowedTypes.string,
@@ -76,6 +78,10 @@ export class LinkTileProduct {
 
   /** Emitted when the like button is clicked. */
   @Event({ bubbles: false }) public like: EventEmitter<LinkTileProductLikeEventDetail>;
+
+  public connectedCallback(): void {
+    applyConstructableStylesheetStyles(this.host, getSlottedPictureImageStyles);
+  }
 
   public componentWillLoad(): void {
     throwIfInvalidLinkTileProductUsage(this.host, this.href);

@@ -2,6 +2,7 @@ import { Component, Element, Event, type EventEmitter, h, Host, type JSX, Prop, 
 import type { BreakpointCustomizable, PropTypes, SelectedAriaAttributes, Theme } from '../../types';
 import {
   AllowedTypes,
+  applyConstructableStylesheetStyles,
   attachComponentCss,
   getPrefixedTagNames,
   getShadowRootHTMLElements,
@@ -21,6 +22,7 @@ import { clickStartedInScrollbarTrack, MODAL_ARIA_ATTRIBUTES } from './modal-uti
 import { footerShadowClass, getComponentCss } from './modal-styles';
 import { throttle } from 'throttle-debounce';
 import { BACKDROPS } from '../../styles';
+import { getSlottedAnchorStyles } from '../../styles';
 
 const propTypes: PropTypes<typeof Modal> = {
   open: AllowedTypes.boolean,
@@ -115,6 +117,10 @@ export class Modal {
     } else {
       this.focusedElBeforeOpen?.focus();
     }
+  }
+
+  public connectedCallback(): void {
+    applyConstructableStylesheetStyles(this.host, getSlottedAnchorStyles);
   }
 
   public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
