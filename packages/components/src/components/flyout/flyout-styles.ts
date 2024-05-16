@@ -3,15 +3,14 @@ import { addImportantToEachRule, colorSchemeStyles, hostHiddenStyles } from '../
 import { spacingFluidMedium, spacingFluidSmall } from '@porsche-design-system/utilities-v2';
 import { type FlyoutPosition } from './flyout-utils';
 import {
-  getDialogColorJssStyle,
-  dialogBackdropResetJssStyle,
-  getDialogBackdropTransitionJssStyle,
-  getDismissButtonJssStyle,
   dialogGridJssStyle,
   dialogHostJssStyle,
-  getScrollerJssStyle,
+  getDialogColorJssStyle,
+  getDialogJssStyle,
   getDialogStickyAreaJssStyle,
   getDialogTransitionJssStyle,
+  getDismissButtonJssStyle,
+  getScrollerJssStyle,
 } from '../../styles/dialog-styles';
 
 const cssVariableWidth = '--p-flyout-width';
@@ -45,42 +44,41 @@ export const getComponentCss = (
         },
         '&:not([name])': {
           gridColumn: '2/3',
-          zIndex: 0,
+          zIndex: 0, // controls layering + creates new stacking context (prevents content within to be above other dialog areas)
         },
         ...(hasHeader && {
           '&[name=header]': {
             ...getDialogStickyAreaJssStyle('header', theme),
             gridColumn: '1/-1',
-            zIndex: 3,
+            zIndex: 3, // controls layering + creates new stacking context (prevents content within to be above other dialog areas)
           },
         }),
         ...(hasFooter && {
           '&[name=footer]': {
             ...getDialogStickyAreaJssStyle('footer', theme),
             gridColumn: '1/-1',
-            zIndex: 2,
+            zIndex: 2, // controls layering + creates new stacking context (prevents content within to be above other dialog areas)
           },
         }),
         ...(hasSubFooter && {
           '&[name=sub-footer]': {
             gridColumn: '2/3',
-            zIndex: 1,
+            zIndex: 1, // controls layering + creates new stacking context (prevents content within to be above other dialog areas)
           },
         }),
       },
-      dialog: {
-        ...dialogBackdropResetJssStyle,
-        ...getDialogBackdropTransitionJssStyle(isOpen, theme),
-      },
+      dialog: getDialogJssStyle(isOpen, theme),
     },
     scroller: {
       ...getScrollerJssStyle(isPositionStart ? 'start' : 'end', theme),
+      // compared to Modal, the transition is handled on the scroller to have correct stucked behaviour (visibility of drop shadow)
+      // for sticky header area while transitioned
       ...getDialogTransitionJssStyle(isOpen, isPositionStart ? '>' : '<'),
     },
     flyout: {
       ...dialogGridJssStyle,
       ...getDialogColorJssStyle(theme),
-      width: `var(${cssVariableWidth},fit-content)`,
+      width: `var(${cssVariableWidth},auto)`,
       minWidth: `var(${cssVariableMinWidth},320px)`,
       maxWidth: `var(${cssVariableMaxWidth},1180px)`,
     },

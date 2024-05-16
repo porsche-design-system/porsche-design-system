@@ -10,16 +10,15 @@ import { buildResponsiveStyles, getCss } from '../../utils';
 import { addImportantToEachRule, colorSchemeStyles, hostHiddenStyles } from '../../styles';
 import { type ModalBackdrop } from './modal-utils';
 import {
-  getDialogColorJssStyle,
-  dialogBackdropResetJssStyle,
-  getDialogBackdropTransitionJssStyle,
-  getDismissButtonJssStyle,
   dialogGridJssStyle,
   dialogHostJssStyle,
-  getScrollerJssStyle,
+  getDialogColorJssStyle,
+  getDialogJssStyle,
   getDialogStickyAreaJssStyle,
-  getModalDialogStretchToFullModalWidthJssStyle,
   getDialogTransitionJssStyle,
+  getDismissButtonJssStyle,
+  getModalDialogStretchToFullModalWidthJssStyle,
+  getScrollerJssStyle,
   headingTags,
 } from '../../styles/dialog-styles';
 
@@ -40,11 +39,14 @@ export const getComponentCss = (
 ): string => {
   return getCss({
     '@global': {
-      ':host': addImportantToEachRule({
-        ...dialogHostJssStyle,
-        ...colorSchemeStyles,
-        ...hostHiddenStyles,
-      }),
+      ':host': {
+        display: 'block',
+        ...addImportantToEachRule({
+          ...dialogHostJssStyle,
+          ...colorSchemeStyles,
+          ...hostHiddenStyles,
+        }),
+      },
       '::slotted': getModalDialogStretchToFullModalWidthJssStyle(hasHeader, hasFooter, fullscreen),
       slot: {
         display: 'block',
@@ -53,62 +55,56 @@ export const getComponentCss = (
         },
         '&:not([name])': {
           gridColumn: '2/3',
-          zIndex: 0,
+          zIndex: 0, // controls layering + creates new stacking context (prevents content within to be above other dialog areas)
         },
         ...(hasHeader && {
           '&[name=header]': {
             gridColumn: '2/3',
-            zIndex: 0,
+            zIndex: 0, // controls layering + creates new stacking context (prevents content within to be above other dialog areas)
           },
         }),
         ...(hasFooter && {
           '&[name=footer]': {
             ...getDialogStickyAreaJssStyle('footer', theme),
             gridColumn: '1/-1',
-            zIndex: 1,
+            zIndex: 1, // controls layering + creates new stacking context (prevents content within to be above other dialog areas)
           },
         }),
       },
       ...(hasHeader && {
         // TODO: we should either deprecate heading slot + pre-styled headings or implement it in flyout too
         [`slot[name=heading],${headingTags}`]: {
-          gridColumnStart: 2,
-          zIndex: 0, // ensures header isn't above sticky footer or dismiss button
+          gridColumn: '2/3',
+          zIndex: 0, // controls layering + creates new stacking context (prevents content within to be above other dialog areas)
           ...headingLargeStyle,
-          margin: 0,
         },
         [`::slotted([slot="heading"]:is(${headingTags}))`]: {
-          margin: 0, // ua-style (relevant for e.g. <h3 slot="header"/>)
+          margin: 0, // ua-style (relevant for e.g. <h3 slot="heading"/>)
         },
       }),
-      dialog: {
-        ...dialogBackdropResetJssStyle,
-        ...getDialogBackdropTransitionJssStyle(isOpen, theme, backdrop),
-      },
+      dialog: getDialogJssStyle(isOpen, theme, backdrop),
     },
-    scroller: {
-      ...getScrollerJssStyle('fullscreen', theme),
-    },
+    scroller: getScrollerJssStyle('fullscreen', theme),
     modal: {
       ...dialogGridJssStyle,
       ...getDialogColorJssStyle(theme),
-      ...getDialogTransitionJssStyle(isOpen),
+      ...getDialogTransitionJssStyle(isOpen, '^'),
       // TODO: maybe we should deprecate the fullscreen property and force the modal to be fullscreen on mobile only
       ...buildResponsiveStyles(fullscreen, (fullscreenValue: boolean) =>
         fullscreenValue
           ? {
-              width: '100dvw',
-              minWidth: '100dvw',
-              maxWidth: '100dvw',
-              minHeight: '100dvh',
+              width: 'auto',
+              minWidth: 'auto',
+              maxWidth: 'auto',
+              placeSelf: 'stretch',
               margin: 0,
               borderRadius: 0,
             }
           : {
-              width: `var(${cssVariableWidth},fit-content)`,
+              width: `var(${cssVariableWidth},auto)`,
               minWidth: `var(${cssVariableMinWidth},clamp(276px, 22.75vw + 203px, 640px))`, // 'auto', // '276px', on viewport 320px: calc(${gridColumnWidthBase} * 6 + ${gridGap} * 5)
               maxWidth: `var(${cssVariableMaxWidth},1535.5px)`, // to be in sync with "Porsche Grid" on viewport >= 1920px: `calc(${gridColumnWidthXXL} * 14 + ${gridGap} * 13)`
-              minHeight: 'auto',
+              placeSelf: 'center',
               margin: `var(${cssVariableSpacingTop},clamp(16px, 10vh, 192px)) ${gridExtendedOffsetBase} var(${cssVariableSpacingBottom},clamp(16px, 10vh, 192px))`,
               borderRadius: borderRadiusMedium,
             }

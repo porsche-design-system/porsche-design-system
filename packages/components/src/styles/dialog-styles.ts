@@ -16,14 +16,7 @@ import {
   motionDurationMap,
   prefersColorSchemeDarkMediaQuery,
 } from './';
-import {
-  buildResponsiveStyles,
-  isThemeDark,
-  mergeDeep,
-  scrollShadowColor,
-  scrollShadowColorDark,
-  type Theme,
-} from '../utils';
+import { buildResponsiveStyles, isThemeDark, mergeDeep, type Theme } from '../utils';
 import { type BreakpointCustomizable } from '../utils/breakpoint-customizable';
 
 export const BACKDROPS = ['blur', 'shading'] as const;
@@ -36,7 +29,14 @@ export const dialogHostJssStyle: JssStyle = {
   '--pds-internal-grid-margin': `calc(${spacingFluidLarge} * -1)`,
 };
 
-export const dialogBackdropResetJssStyle: JssStyle = {
+export const getDialogJssStyle = (isVisible: boolean, theme: Theme, backdrop: Backdrop = 'blur'): JssStyle => {
+  return {
+    ...dialogBackdropResetJssStyle,
+    ...getDialogBackdropTransitionJssStyle(isVisible, theme, backdrop),
+  };
+};
+
+const dialogBackdropResetJssStyle: JssStyle = {
   position: 'fixed', // ua-style
   inset: 0, // ua-style
   margin: 0, // ua-style
@@ -54,7 +54,7 @@ export const dialogBackdropResetJssStyle: JssStyle = {
   },
 };
 
-export const getDialogBackdropTransitionJssStyle = (
+const getDialogBackdropTransitionJssStyle = (
   isVisible: boolean,
   theme: Theme,
   backdrop: Backdrop = 'blur'
@@ -65,6 +65,7 @@ export const getDialogBackdropTransitionJssStyle = (
 
   const duration = isVisible ? 'long' : 'moderate';
   const easing = isVisible ? 'in' : 'out';
+  // as soon as all browsers are supporting `allow-discrete`, visibility transition shouldn't be necessary anymore
   const transition = `visibility 0s linear var(${cssVariableTransitionDuration}, ${isVisible ? '0s' : motionDurationMap[duration]}), ${getTransition('background-color', duration, easing)}, ${getTransition(
     '-webkit-backdrop-filter',
     duration,
@@ -87,10 +88,6 @@ export const getDialogBackdropTransitionJssStyle = (
           visibility: 'hidden', // element shall not be tabbable with keyboard after fade out transition has finished
           pointerEvents: 'none', // element can't be interacted with mouse
           background: 'transparent',
-          ...(isBackdropBlur && {
-            WebkitBackdropFilter: 'blur(0px)',
-            backdropFilter: 'blur(0px)',
-          }),
         }),
     transition,
     // `allow-discrete` transition for ua-style `overlay` (supported browsers only) ensures dialog is rendered on
@@ -113,18 +110,18 @@ export const getScrollerJssStyle = (position: 'fullscreen' | 'start' | 'end', th
 
   return {
     position: 'absolute',
+    display: 'grid',
     ...(position === 'fullscreen'
       ? {
           inset: 0,
-          placeItems: 'center',
         }
       : {
           insetBlock: 0,
           [position === 'start' ? 'insetInlineStart' : 'insetInlineEnd']: 0,
         }),
-    display: 'grid',
     overflow: 'hidden auto',
     overscrollBehaviorY: 'none',
+    // TODO: check if smooth scrolling on iOS is given?
     background: background[theme],
     ...prefersColorSchemeDarkMediaQuery(theme, {
       background: background.dark,
@@ -155,7 +152,7 @@ export const getDialogColorJssStyle = (theme: Theme): JssStyle => {
   };
 };
 
-export const getDialogTransitionJssStyle = (isVisible: boolean, slideIn: '^' | '<' | '>' = '^'): JssStyle => {
+export const getDialogTransitionJssStyle = (isVisible: boolean, slideIn: '^' | '<' | '>'): JssStyle => {
   const duration = isVisible ? 'moderate' : 'short';
   const easing = isVisible ? 'in' : 'out';
 
@@ -202,7 +199,7 @@ export const getDismissButtonJssStyle = (
     // dismiss button to be rendered in the viewport immediately and ignore the transition.
     ...(applyAutoFocusHack && {
       marginInlineEnd: isOpen ? 0 : '200vw',
-      transition: `margin-inline 0s linear var(${cssVariableTransitionDuration}, ${isOpen ? '1ms' : '0s'})`,
+      transition: `margin-inline-end 0s linear var(${cssVariableTransitionDuration}, ${isOpen ? '1ms' : '0s'})`,
     }),
   };
 };
@@ -210,25 +207,23 @@ export const getDismissButtonJssStyle = (
 export const getDialogStickyAreaJssStyle = (area: 'header' | 'footer', theme: Theme): JssStyle => {
   const { backgroundColor } = getThemedColors(theme);
   const { backgroundColor: backgroundColorDark } = getThemedColors('dark');
+  const scrollShadowColor = 'rgba(204, 204, 204, 0.35)';
+  const scrollShadowColorDark = 'rgba(0, 0, 0, 0.6)';
   const isAreaHeader = area === 'header';
   const boxShadowDimension = `0 ${isAreaHeader ? 5 : -5}px 10px`;
 
   return {
     position: 'sticky',
     [isAreaHeader ? 'top' : 'bottom']: '-.1px', // necessary for `IntersectionObserver` to detect if sticky element is stuck or not. Float value is used, so that sticky area isn't moved out visually by e.g. 1px when container gets scrolled.
-    transform: 'translateZ(0)', // prevents slightly squeezed elements within sticky area for some browsers caused by float value of sticky top position
-    padding: `${spacingStaticMedium} ${spacingFluidLarge}`, // with CSS subgrid the spacingFluidLarge definition wouldn't be necessary
-    marginBlockStart: isAreaHeader
-      ? `calc((${spacingFluidSmall} + ${spacingFluidMedium}) * -1)`
-      : `-${spacingStaticMedium}`,
-    marginBlockEnd: `calc(${spacingStaticMedium} * -1)`,
+    transform: 'translateZ(0)', // prevents slightly squeezed elements within sticky area for some browsers (e.g. Firefox) caused by float value of sticky top position
+    padding: `${spacingStaticMedium} ${spacingFluidLarge}`,
+    marginBlock: `${
+      isAreaHeader ? `calc((${spacingFluidSmall} + ${spacingFluidMedium}) * -1)` : `-${spacingStaticMedium}`
+    } -${spacingStaticMedium}`,
     background: backgroundColor,
     ...prefersColorSchemeDarkMediaQuery(theme, {
       background: backgroundColorDark,
     }),
-    borderRadius: isAreaHeader
-      ? `${borderRadiusMedium} ${borderRadiusMedium} 0 0`
-      : `0 0 ${borderRadiusMedium} ${borderRadiusMedium}`, // ensures modal surface does not become boxy
     clipPath: `inset(${isAreaHeader ? '0 0 -20px 0' : '-20px 0 0 0'})`, // crop leaking box-shadow on left and right side
     transition: `${getTransition('box-shadow')}`,
     '&[data-stuck]': {
@@ -241,6 +236,7 @@ export const getDialogStickyAreaJssStyle = (area: 'header' | 'footer', theme: Th
 };
 
 // TODO: why not available to Flyout too?
+// TODO: discussable if so many styles are a good thing, since we could also expose one or two CSS variables with which a stretch to full width is possible too
 export const getModalDialogStretchToFullModalWidthJssStyle = (
   hasHeader: boolean,
   hasFooter: boolean,
