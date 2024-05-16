@@ -156,6 +156,18 @@ export const setupScenario = async (
   const finalUrl = `${url}?${searchParams.toString()}`;
   await page.goto(finalUrl);
 
+  await page.evaluate(() => {
+    // dirty fix for high-contrast-scheme-dark VRT test since ::before element was not visible anymore after updating playwright
+    document.querySelectorAll('[title]').forEach((titleElement) => {
+      const titleSpan = document.createElement('span');
+
+      titleSpan.classList.add('title');
+      titleSpan.innerText = titleElement.getAttribute('title');
+
+      titleElement.prepend(titleSpan);
+    });
+  });
+
   // we need to have the full document height containing all iframes, otherwise iframes might get loaded lazy,
   // which causes componentsReadyWithinIFrames() to never resolve
   await page.setViewportSize({
