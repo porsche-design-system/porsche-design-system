@@ -1,6 +1,6 @@
 import { expect, test } from '@playwright/test';
 import { TAG_NAMES, type TagName } from '@porsche-design-system/shared';
-import { viewportWidths } from '@porsche-design-system/shared/testing/playwright.vrt';
+import { prepareTitles, viewportWidths } from '@porsche-design-system/shared/testing/playwright.vrt';
 
 const components = (TAG_NAMES as unknown as TagName[])
   .filter((tagName) => {
@@ -26,6 +26,7 @@ components.forEach((component) => {
     viewportWidths.forEach((viewportWidth) => {
       test(`should have no visual regression for viewport ${viewportWidth}`, async ({ page }) => {
         await page.goto(`/${component}`);
+        await prepareTitles(page);
         // Remove selects in iframes
         await page.evaluate(() => {
           document.querySelectorAll('iframe').forEach((iframe) => {

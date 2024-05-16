@@ -10,7 +10,7 @@ import { getComponentMeta } from '@porsche-design-system/component-meta';
 import { type Theme } from '@porsche-design-system/utilities-v2';
 import { COMPONENT_CHUNK_NAMES } from '../../../projects/components-wrapper';
 import { ICON_NAMES } from '@porsche-design-system/assets';
-import { viewportWidthM } from '@porsche-design-system/shared/testing/playwright.vrt';
+import { viewportWidthM, prepareTitles } from '@porsche-design-system/shared/testing/playwright.vrt';
 
 const themeableTagNames = (TAG_NAMES as unknown as TagName[]).filter(
   (tagName) => getComponentMeta(tagName).isThemeable
@@ -156,17 +156,7 @@ export const setupScenario = async (
   const finalUrl = `${url}?${searchParams.toString()}`;
   await page.goto(finalUrl);
 
-  await page.evaluate(() => {
-    // dirty fix for high-contrast-scheme-dark VRT test since ::before element was not visible anymore after updating playwright
-    document.querySelectorAll('[title]').forEach((titleElement) => {
-      const titleSpan = document.createElement('span');
-
-      titleSpan.classList.add('title');
-      titleSpan.innerText = titleElement.getAttribute('title');
-
-      titleElement.prepend(titleSpan);
-    });
-  });
+  await prepareTitles(page);
 
   // we need to have the full document height containing all iframes, otherwise iframes might get loaded lazy,
   // which causes componentsReadyWithinIFrames() to never resolve

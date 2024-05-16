@@ -1,9 +1,10 @@
 import { expect, test } from '@playwright/test';
-import { viewportWidthM, viewportWidthXXL } from '@porsche-design-system/shared/testing/playwright.vrt';
+import { prepareTitles, viewportWidthM, viewportWidthXXL } from '@porsche-design-system/shared/testing/playwright.vrt';
 
 test.describe('overview', async () => {
   test(`should have no visual regression for viewport ${viewportWidthXXL}`, async ({ page }) => {
     await page.goto('/overview');
+    await prepareTitles(page);
     await page.evaluate(() => (window as any).componentsReady());
     await page.setViewportSize({
       width: viewportWidthXXL,
@@ -17,6 +18,7 @@ test.describe('overview', async () => {
 test.describe('overview notifications', async () => {
   test(`should have no visual regression for viewport ${viewportWidthM}`, async ({ page }) => {
     await page.goto('/overview-notifications');
+    await prepareTitles(page);
     await page.evaluate(() => (window as any).componentsReady());
     await page.setViewportSize({ width: viewportWidthM, height: 600 });
     await page.mouse.click(0, 0);

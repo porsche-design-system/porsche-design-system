@@ -1,4 +1,4 @@
-import { type Config } from '@playwright/test';
+import { type Config, type Page } from '@playwright/test';
 
 export const themes = ['light', 'dark'] as const;
 export const schemes = ['light', 'dark'] as const;
@@ -59,3 +59,18 @@ export const config: Config = {
   /* Folder for test artifacts such as screenshots, videos, traces, etc. */
   outputDir: '../results',
 };
+
+export function prepareTitles(page: Page): Promise<void> {
+  return page.evaluate(() => {
+    // dirty fix for high-contrast-scheme-dark VRT test since ::before element was not visible anymore after updating playwright
+    document.querySelectorAll('[title]').forEach((titleElement) => {
+      const titleSpan = document.createElement('span');
+
+      titleSpan.classList.add('title');
+      titleSpan.setAttribute('aria-hidden', 'true');
+      titleSpan.innerText = titleElement.getAttribute('title') as string;
+
+      titleElement.prepend(titleSpan);
+    });
+  });
+}
