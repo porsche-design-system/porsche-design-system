@@ -1,4 +1,4 @@
-export const getIntersectionObserverStuck = (scrollArea: HTMLElement): IntersectionObserver => {
+export const getIntersectionObserverStickyArea = (scrollArea: HTMLElement): IntersectionObserver => {
   return new IntersectionObserver(
     (entries) => {
       for (const { target, isIntersecting } of entries) {

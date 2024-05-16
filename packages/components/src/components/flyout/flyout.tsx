@@ -11,7 +11,7 @@ import {
   AllowedTypes,
   attachComponentCss,
   getHasConstructableStylesheetSupport,
-  getIntersectionObserverStuck,
+  getIntersectionObserverStickyArea,
   getPrefixedTagNames,
   hasNamedSlot,
   hasPropValueChanged,
@@ -80,7 +80,7 @@ export class Flyout {
   }
 
   public componentDidLoad(): void {
-    const io = getIntersectionObserverStuck(this.scroller);
+    const io = getIntersectionObserverStickyArea(this.scroller);
 
     if (this.hasHeader) {
       io.observe(this.header);

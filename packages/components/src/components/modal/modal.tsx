@@ -3,7 +3,7 @@ import type { BreakpointCustomizable, PropTypes, SelectedAriaAttributes, Theme }
 import {
   AllowedTypes,
   attachComponentCss,
-  getIntersectionObserverStuck,
+  getIntersectionObserverStickyArea,
   getPrefixedTagNames,
   hasHeading,
   hasNamedSlot,
@@ -101,7 +101,7 @@ export class Modal {
   }
 
   public componentDidLoad(): void {
-    const io = getIntersectionObserverStuck(this.scroller);
+    const io = getIntersectionObserverStickyArea(this.scroller);
 
     if (this.hasFooter) {
       io.observe(this.footer);
