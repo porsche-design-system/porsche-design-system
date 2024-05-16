@@ -61,6 +61,7 @@ a {
   font: 12px/16px 'Porsche Next';
   color: deeppink;
   text-align: left;
+  margin-bottom: 16px;
 }
 
 .playground:not([class*='auto-layout'])::before {
