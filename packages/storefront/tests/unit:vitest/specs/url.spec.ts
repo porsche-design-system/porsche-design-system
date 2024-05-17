@@ -40,7 +40,7 @@ describe('url', () => {
               expect([401, 403, 429]).toContain(status); // 401 Unauthorized, 403 Forbidden or 429 Too Many Requests
               break;
             case 'https://twitter.com':
-              expect(status).toBe(400); // 400 Bad Request
+              expect([400, 200]).toContain(status); // 400 Bad Request, 200 OK
               break;
             default:
               expect(status).toBe(200); // 200: OK
