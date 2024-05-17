@@ -62,14 +62,13 @@ export const config: Config = {
 
 // dirty fix for high-contrast-scheme-dark VRT test since ::before element was not visible anymore after updating playwright
 export async function prepareTitles(page: Page) {
-  const selector = '[title]';
-  const titleLocators = page.locator(selector);
+  const titleLocators = page.locator('[title]');
 
   // be sure the element is visible
   await titleLocators.first().waitFor();
 
   await page.evaluate(() => {
-    document.querySelectorAll(selector).forEach((titleElement) => {
+    document.querySelectorAll('[title]').forEach((titleElement) => {
       const titleSpan = document.createElement('span');
 
       titleSpan.classList.add('title');
