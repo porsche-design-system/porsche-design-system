@@ -18,6 +18,7 @@ which has to be injected into the `<head>` of your `index.html`.
 | -------- |-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------| --------------------------- | ------- |
 | `prefix` | Prefix will be added to the component names. It's also possible to pass multiple prefixes.                                                                                                                                                                                  | `string | string[]`         | `''`     |
 | `format` | Defines the output format of the partial. By default, it returns a html string.<br> For `jsx` it return a jsx element.<br> For `sha256` it returns a SHA-256 hash of the innerHTML to use in a [Content Security Policy (CSP)](must-know/security/content-security-policy). | `'html' | 'jsx' | 'sha256'` | `'html'` |
+| `globalStyles` | Option to include/exclude global reset/normalize styles.                                                                                                                                                                                                                    | `boolean` | `true` |
 
 ## Examples
 

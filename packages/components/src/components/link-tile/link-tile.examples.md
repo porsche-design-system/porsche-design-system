@@ -131,16 +131,6 @@ export default class Code extends Vue {
   description="Some Description"
 >
   <img src="${require('@/assets/image-grid.png')}" ${this.imgAttributes} />
-</p-link-tile>
-<p-link-tile
-  href="https://porsche.com"
-  label="Some label"
-  description="Some Description"
->
-  <picture>
-    <source media="(min-width:400px)" srcset="${require('@/assets/image-grid.png')}" />
-    <img src="${require('@/assets/image-grid-violet.png')}" ${this.imgAttributes} />
-  </picture>
 </p-link-tile>`;
 
   accessibility = `<p-link-tile

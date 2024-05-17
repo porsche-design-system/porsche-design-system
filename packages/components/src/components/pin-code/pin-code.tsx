@@ -16,6 +16,7 @@ import {
 } from './pin-code-utils';
 import {
   AllowedTypes,
+  applyConstructableStylesheetStyles,
   attachComponentCss,
   FORM_STATES,
   getClosestHTMLElement,
@@ -30,6 +31,7 @@ import { messageId, StateMessage } from '../common/state-message/state-message';
 import { descriptionId, Label, labelId } from '../common/label/label';
 import { LoadingMessage } from '../common/loading-message/loading-message';
 import { ControllerHost, InitialLoadingController } from '../../controllers';
+import { getSlottedAnchorStyles } from '../../styles';
 
 const propTypes: PropTypes<typeof PinCode> = {
   label: AllowedTypes.string,
@@ -102,6 +104,10 @@ export class PinCode {
   private isWithinForm: boolean;
   private hiddenInput: HTMLInputElement;
   private inputElements: HTMLInputElement[] = [];
+
+  public connectedCallback(): void {
+    applyConstructableStylesheetStyles(this.host, getSlottedAnchorStyles);
+  }
 
   public componentWillLoad(): void {
     this.form = getClosestHTMLElement(this.host, 'form');

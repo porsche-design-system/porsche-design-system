@@ -1,0 +1,49 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should return correct slotted picture/image styles for component: p-button-tile 1`] = `
+{
+  "@global": {
+    "p-button-tile picture img": {
+      "height": "100% !important",
+      "objectFit": "cover !important",
+      "width": "100% !important",
+    },
+  },
+}
+`;
+
+exports[`should return correct slotted picture/image styles for component: p-link-tile 1`] = `
+{
+  "@global": {
+    "p-link-tile picture img": {
+      "height": "100% !important",
+      "objectFit": "cover !important",
+      "width": "100% !important",
+    },
+  },
+}
+`;
+
+exports[`should return correct slotted picture/image styles for component: p-link-tile-model-signature 1`] = `
+{
+  "@global": {
+    "p-link-tile-model-signature picture img": {
+      "height": "100% !important",
+      "objectFit": "cover !important",
+      "width": "100% !important",
+    },
+  },
+}
+`;
+
+exports[`should return correct slotted picture/image styles for component: p-link-tile-product 1`] = `
+{
+  "@global": {
+    "p-link-tile-product picture img": {
+      "height": "100% !important",
+      "objectFit": "cover !important",
+      "width": "100% !important",
+    },
+  },
+}
+`;

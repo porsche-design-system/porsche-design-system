@@ -4,6 +4,7 @@ import type { BannerHeadingTag, BannerState, BannerStateDeprecated, BannerWidth 
 import { BANNER_STATES } from './banner-utils';
 import {
   AllowedTypes,
+  applyConstructableStylesheetStyles,
   attachComponentCss,
   consoleWarn,
   getPrefixedTagNames,
@@ -17,6 +18,7 @@ import {
 } from '../../utils';
 import { getComponentCss } from './banner-styles';
 import { getDeprecatedPropOrSlotWarningMessage } from '../../utils/log/helper';
+import { getSlottedAnchorStyles } from '../../styles';
 
 const propTypes: Omit<PropTypes<typeof Banner>, 'width'> = {
   open: AllowedTypes.boolean,
@@ -90,6 +92,7 @@ export class Banner {
   }
 
   public connectedCallback(): void {
+    applyConstructableStylesheetStyles(this.host, getSlottedAnchorStyles);
     if (this.open && this.hasDismissButton) {
       document.addEventListener('keydown', this.onKeyboardEvent);
     }

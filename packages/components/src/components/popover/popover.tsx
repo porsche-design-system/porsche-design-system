@@ -11,6 +11,7 @@ import {
 import {
   addNativePopoverScrollAndResizeListeners,
   AllowedTypes,
+  applyConstructableStylesheetStyles,
   attachComponentCss,
   detectNativePopoverCase,
   findClosestComponent,
@@ -22,6 +23,7 @@ import {
 } from '../../utils';
 import { getComponentCss } from './popover-styles';
 import type { PropTypes, SelectedAriaAttributes, Theme } from '../../types';
+import { getSlottedAnchorStyles } from '../../styles';
 
 const propTypes: PropTypes<typeof Popover> = {
   direction: AllowedTypes.oneOf<PopoverDirection>(POPOVER_DIRECTIONS),
@@ -60,6 +62,7 @@ export class Popover {
   private parentTableElement: HTMLElement;
 
   public connectedCallback(): void {
+    applyConstructableStylesheetStyles(this.host, getSlottedAnchorStyles);
     addDocumentEventListener(this);
     this.isNativePopoverCase = detectNativePopoverCase(this.host, false);
     if (this.isNativePopoverCase) {
