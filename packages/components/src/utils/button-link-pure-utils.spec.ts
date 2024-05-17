@@ -22,7 +22,7 @@ describe('warnIfParentIsPTextAndIconIsNone()', () => {
     parent.appendChild(child);
 
     warnIfParentIsPTextAndIconIsNone(child, 'none', '');
-    expect(spy).toBeCalledTimes(1);
+    expect(spy).toHaveBeenCalledTimes(1);
   });
 
   it('should not warn if iconName !== "none"', () => {
@@ -32,7 +32,7 @@ describe('warnIfParentIsPTextAndIconIsNone()', () => {
     parent.appendChild(child);
 
     warnIfParentIsPTextAndIconIsNone(child, 'highway', '');
-    expect(spy).not.toBeCalled();
+    expect(spy).not.toHaveBeenCalled();
   });
 
   it('should not warn if iconName === "none" but iconSource !== ""', () => {
@@ -42,7 +42,7 @@ describe('warnIfParentIsPTextAndIconIsNone()', () => {
     parent.appendChild(child);
 
     warnIfParentIsPTextAndIconIsNone(child, 'none', 'custom.svg');
-    expect(spy).not.toBeCalled();
+    expect(spy).not.toHaveBeenCalled();
   });
 
   it('should not warn if parent element is !== "p-text"', () => {
@@ -50,6 +50,6 @@ describe('warnIfParentIsPTextAndIconIsNone()', () => {
     const child = document.createElement('button');
 
     warnIfParentIsPTextAndIconIsNone(child, 'none', '');
-    expect(spy).not.toBeCalled();
+    expect(spy).not.toHaveBeenCalled();
   });
 });

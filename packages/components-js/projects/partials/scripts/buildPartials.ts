@@ -2,6 +2,7 @@ import * as fs from 'fs';
 import * as path from 'path';
 import { CDN_BASE_URL_COM, CDN_BASE_URL_CN } from '../../../../../cdn.config';
 import { generateFontFaceStylesheetPartial } from './generateFontFaceStylesheetPartial';
+import { generateFontFaceStylesPartial } from './generateFontFaceStylesPartial';
 import { generateInitialStylesPartial } from './generateInitialStylesPartial';
 import { generateFontLinksPartial } from './generateFontLinksPartial';
 import { generateComponentChunkLinksPartial } from './generateComponentChunkLinksPartial';
@@ -13,7 +14,7 @@ import { generateCookiesFallbackScriptPartial } from './generateCookiesFallbackS
 import { generateDSRPonyfillPartial } from './generateDSRPonyfillPartial';
 
 const generateSharedCode = (): string => {
-  return `import type { Cdn, Format, FormatWithCSP } from '../shared';
+  return `import type { Cdn, Format, FormatWithCSP, FormatWithJS } from '../shared';
 import { throwIfRunInBrowser, getSha256Hash } from '../shared';
 
 const getCdnBaseUrl = (cdn: Cdn): string => (cdn === 'cn' ? '${CDN_BASE_URL_CN}' : '${CDN_BASE_URL_COM}');
@@ -21,7 +22,37 @@ const getCdnBaseUrl = (cdn: Cdn): string => (cdn === 'cn' ? '${CDN_BASE_URL_CN}'
 const convertPropsToAttributeString = (props: { [p: string]: string }): string =>
   Object.entries(props)
     .map(([attr, val]) => \`\${attr}\${val ? '=' + val : ''}\`)
-    .join(' ');`;
+    .join(' ');
+
+type PreloadAs =
+    | "audio"
+    | "document"
+    | "embed"
+    | "fetch"
+    | "font"
+    | "image"
+    | "object"
+    | "track"
+    | "script"
+    | "style"
+    | "video"
+    | "worker";
+type PreloadOptions = {
+  as: PreloadAs;
+  crossOrigin?: "anonymous" | "use-credentials" | "" | undefined;
+  fetchPriority?: "high" | "low" | "auto" | undefined;
+  imageSizes?: string | undefined;
+  imageSrcSet?: string | undefined;
+  integrity?: string | undefined;
+  type?: string | undefined;
+  nonce?: string | undefined;
+  referrerPolicy?: ReferrerPolicy | undefined;
+}
+
+type PartialLink = {
+  href: string;
+  options?: PreloadOptions;
+}`;
 };
 
 const generatePartials = async (): Promise<void> => {
@@ -31,6 +62,7 @@ const generatePartials = async (): Promise<void> => {
   const content = [
     generateSharedCode(),
     generateFontFaceStylesheetPartial(),
+    generateFontFaceStylesPartial(),
     generateInitialStylesPartial(),
     generateFontLinksPartial(),
     generateComponentChunkLinksPartial(),

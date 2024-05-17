@@ -752,27 +752,41 @@ h2,h3,h4,h5,h6 {
               :host {
   display: inline-block;
   vertical-align: top;
-  max-width: 100% !important;
-  max-height: 36px !important;
-  width: inherit !important;
-  height: inherit !important;
+  max-width: 100%;
+  max-height: 100%;
+  width: var(--p-model-signature-width,94px);
+  height: var(--p-model-signature-height,auto);
+  mask: url(http://localhost:3001/model-signatures/911.min.b68f913216168583298ccf83f1a6b8d5.svg) no-repeat left top / contain !important;
+  aspect-ratio: 94 / 36 !important;
+  background: var(--p-model-signature-color,#FBFCFF) !important;
   color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
 }
-img {
-  display: block;
-  max-width: 100%;
-  max-height: 100%;
-  pointer-events: none;
-  filter: invert(100%) sepia(91%) saturate(38%) hue-rotate(254deg) brightness(110%) contrast(110%);
+::slotted(:is(img,video)) {
+  display: block !important;
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
 }
+img {
+  position: absolute;
+  opacity: 0;
+  width: 1px;
+  height: 1px;
+}
+@media (forced-colors: active) {
+  :host {
+    background: CanvasText !important;
+  }
+}
+
             </style>
+            <slot />
             <img
               alt="911"
-              height="36"
-              src="http://localhost:3001/model-signatures/911.min.5c462658f9d472e90a139173414e8fdd.svg"
+              src="http://localhost:3001/model-signatures/911.min.b68f913216168583298ccf83f1a6b8d5.svg"
             />
           </template>
         </p-model-signature>
@@ -1073,27 +1087,41 @@ h2,h3,h4,h5,h6 {
               :host {
   display: inline-block;
   vertical-align: top;
-  max-width: 100% !important;
-  max-height: 36px !important;
-  width: inherit !important;
-  height: inherit !important;
+  max-width: 100%;
+  max-height: 100%;
+  width: var(--p-model-signature-width,94px);
+  height: var(--p-model-signature-height,auto);
+  mask: url(http://localhost:3001/model-signatures/911.min.b68f913216168583298ccf83f1a6b8d5.svg) no-repeat left top / contain !important;
+  aspect-ratio: 94 / 36 !important;
+  background: var(--p-model-signature-color,#FBFCFF) !important;
   color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
 }
-img {
-  display: block;
-  max-width: 100%;
-  max-height: 100%;
-  pointer-events: none;
-  filter: invert(100%) sepia(91%) saturate(38%) hue-rotate(254deg) brightness(110%) contrast(110%);
+::slotted(:is(img,video)) {
+  display: block !important;
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
 }
+img {
+  position: absolute;
+  opacity: 0;
+  width: 1px;
+  height: 1px;
+}
+@media (forced-colors: active) {
+  :host {
+    background: CanvasText !important;
+  }
+}
+
             </style>
+            <slot />
             <img
               alt="911"
-              height="36"
-              src="http://localhost:3001/model-signatures/911.min.5c462658f9d472e90a139173414e8fdd.svg"
+              src="http://localhost:3001/model-signatures/911.min.b68f913216168583298ccf83f1a6b8d5.svg"
             />
           </template>
         </p-model-signature>
@@ -1430,27 +1458,41 @@ h2,h3,h4,h5,h6 {
               :host {
   display: inline-block;
   vertical-align: top;
-  max-width: 100% !important;
-  max-height: 36px !important;
-  width: inherit !important;
-  height: inherit !important;
+  max-width: 100%;
+  max-height: 100%;
+  width: var(--p-model-signature-width,94px);
+  height: var(--p-model-signature-height,auto);
+  mask: url(http://localhost:3001/model-signatures/911.min.b68f913216168583298ccf83f1a6b8d5.svg) no-repeat left top / contain !important;
+  aspect-ratio: 94 / 36 !important;
+  background: var(--p-model-signature-color,#FBFCFF) !important;
   color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
 }
-img {
-  display: block;
-  max-width: 100%;
-  max-height: 100%;
-  pointer-events: none;
-  filter: invert(100%) sepia(91%) saturate(38%) hue-rotate(254deg) brightness(110%) contrast(110%);
+::slotted(:is(img,video)) {
+  display: block !important;
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
 }
+img {
+  position: absolute;
+  opacity: 0;
+  width: 1px;
+  height: 1px;
+}
+@media (forced-colors: active) {
+  :host {
+    background: CanvasText !important;
+  }
+}
+
             </style>
+            <slot />
             <img
               alt="911"
-              height="36"
-              src="http://localhost:3001/model-signatures/911.min.5c462658f9d472e90a139173414e8fdd.svg"
+              src="http://localhost:3001/model-signatures/911.min.b68f913216168583298ccf83f1a6b8d5.svg"
             />
           </template>
         </p-model-signature>
@@ -1787,27 +1829,41 @@ h2,h3,h4,h5,h6 {
               :host {
   display: inline-block;
   vertical-align: top;
-  max-width: 100% !important;
-  max-height: 36px !important;
-  width: inherit !important;
-  height: inherit !important;
+  max-width: 100%;
+  max-height: 100%;
+  width: var(--p-model-signature-width,94px);
+  height: var(--p-model-signature-height,auto);
+  mask: url(http://localhost:3001/model-signatures/911.min.b68f913216168583298ccf83f1a6b8d5.svg) no-repeat left top / contain !important;
+  aspect-ratio: 94 / 36 !important;
+  background: var(--p-model-signature-color,#FBFCFF) !important;
   color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
 }
-img {
-  display: block;
-  max-width: 100%;
-  max-height: 100%;
-  pointer-events: none;
-  filter: invert(100%) sepia(91%) saturate(38%) hue-rotate(254deg) brightness(110%) contrast(110%);
+::slotted(:is(img,video)) {
+  display: block !important;
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
 }
+img {
+  position: absolute;
+  opacity: 0;
+  width: 1px;
+  height: 1px;
+}
+@media (forced-colors: active) {
+  :host {
+    background: CanvasText !important;
+  }
+}
+
             </style>
+            <slot />
             <img
               alt="911"
-              height="36"
-              src="http://localhost:3001/model-signatures/911.min.5c462658f9d472e90a139173414e8fdd.svg"
+              src="http://localhost:3001/model-signatures/911.min.b68f913216168583298ccf83f1a6b8d5.svg"
             />
           </template>
         </p-model-signature>
@@ -5176,6 +5232,7 @@ exports[`manual test cases > should pass internal props correctly to p-text-fiel
   padding: 0;
   margin: 0;
   color: #010205;
+  text-decoration: none;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
@@ -5515,6 +5572,7 @@ img {
   padding: 0;
   margin: 0;
   color: #010205;
+  text-decoration: none;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
@@ -5937,6 +5995,7 @@ img {
 exports[`should render dsr component for PBanner 1`] = `
 <p-banner
   class="ssr"
+  popover="manual"
 >
   <template
     shadowroot="open"
@@ -5944,24 +6003,30 @@ exports[`should render dsr component for PBanner 1`] = `
   >
     <style>
       :host {
+  display: block;
   position: fixed !important;
-  bottom: var(--p-banner-position-bottom,56px) !important;
-  left: max(22px, 10.625vw - 12px) !important;
-  right: max(22px, 10.625vw - 12px) !important;
   margin: 0 !important;
   padding: 0 !important;
   width: auto !important;
+  height: auto !important;
   max-width: 100% !important;
+  border: 0 !important;
+  outline: 0 !important;
+  overflow: visible !important;
+  bottom: var(--p-banner-position-bottom,56px) !important;
+  left: max(22px, 10.625vw - 12px) !important;
+  right: max(22px, 10.625vw - 12px) !important;
   z-index: var(--p-internal-banner-z-index,99) !important;
   box-shadow: 0px 8px 40px rgba(0, 0, 0, 0.16) !important;
   border-radius: 4px !important;
   opacity: 0 !important;
   visibility: hidden !important;
+  pointer-events: none !important;
   transform: translate3d(0,calc(var(--p-banner-position-bottom,56px) + 100%),0) !important;
   color-scheme: light dark !important;
 }
 :host(.hydrated), :host(.ssr) {
-  transition: visibility 0s linear var(--p-animation-duration, 0.6s), transform var(--p-animation-duration, 0.4s) cubic-bezier(0.4,0,0.5,1), opacity var(--p-animation-duration, 0.4s) cubic-bezier(0.4,0,0.5,1) !important;
+  transition: visibility 0s linear var(--p-transition-duration, 0.6s), transform var(--p-transition-duration, 0.4s) cubic-bezier(0.4,0,0.5,1), opacity var(--p-transition-duration, 0.4s) cubic-bezier(0.4,0,0.5,1) !important;
 }
 :host([hidden]) {
   display: none !important;
@@ -5980,6 +6045,12 @@ exports[`should render dsr component for PBanner 1`] = `
   :host {
     left: calc(max(0px, 50vw - 2560px / 2) + min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 1) !important;
     right: calc(max(0px, 50vw - 2560px / 2) + min(50vw - 880px, 400px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((min(100vw, 2560px) - min(50vw - 880px, 400px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 1) !important;
+  }
+}
+
+@supports (transition-behavior: allow-discrete) {
+  :host(.hydrated), :host(.ssr) {
+    transition: visibility 0s linear var(--p-transition-duration, 0.6s), transform var(--p-transition-duration, 0.4s) cubic-bezier(0.4,0,0.5,1), opacity var(--p-transition-duration, 0.4s) cubic-bezier(0.4,0,0.5,1), overlay var(--p-transition-duration, 0.4s) cubic-bezier(0.4,0,0.5,1) allow-discrete !important;
   }
 }
 
@@ -6006,15 +6077,11 @@ exports[`should render dsr component for PBanner 1`] = `
 :host([hidden]) {
   display: none !important;
 }
-h5 {
+::slotted(:is(h1,h2,h3,h4,h5,h6)) {
+  all: unset !important;
+}
+slot[name="heading"] {
   font: normal normal 600 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-}
-p {
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: auto;
-}
-h5,p {
   margin: 0;
   color: #010205;
 }
@@ -6024,6 +6091,18 @@ h5,p {
   }
 }
 
+.heading {
+  font: normal normal 600 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  margin: 0;
+  color: #010205;
+}
+.description {
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  margin: 0;
+  color: #010205;
+}
 .content {
   display: grid;
   gap: 4px;
@@ -6097,6 +6176,7 @@ img {
           role="status"
         >
           <p
+            class="description"
             id="description"
           >
             <slot />
@@ -6129,6 +6209,7 @@ img {
   padding: 0;
   margin: 0;
   color: #010205;
+  text-decoration: none;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
@@ -6419,6 +6500,7 @@ exports[`should render dsr component for PButtonPure 1`] = `
   padding: 0;
   margin: 0;
   color: #010205;
+  text-decoration: none;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
@@ -7189,22 +7271,8 @@ exports[`should render dsr component for PDisplay 1`] = `
 :host([hidden]) {
   display: none !important;
 }
-::slotted(h1), ::slotted(h2), ::slotted(h3), ::slotted(h4), ::slotted(h5), ::slotted(h6) {
-  margin: inherit !important;
-  padding: inherit !important;
-  font-family: inherit !important;
-  font-weight: inherit !important;
-  font-size: inherit !important;
-  line-height: inherit !important;
-  font-style: inherit !important;
-  font-variant: inherit !important;
-  color: inherit !important;
-  text-align: inherit !important;
-  overflow-wrap: inherit !important;
-  word-wrap: inherit !important;
-  hyphens: inherit !important;
-  white-space: inherit !important;
-  letter-spacing: inherit !important;
+::slotted(:is(h1,h2,h3,h4,h5,h6)) {
+  all: unset !important;
 }
 .root {
   margin: 0;
@@ -7529,6 +7597,7 @@ dialog::backdrop {
   padding: 0;
   margin: 0;
   color: #010205;
+  text-decoration: none;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
@@ -7818,6 +7887,7 @@ dialog::backdrop {
   padding: 0;
   margin: 0;
   color: #010205;
+  text-decoration: none;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
@@ -8110,6 +8180,7 @@ exports[`should render dsr component for PFlyoutNavigationItem 1`] = `
   padding: 0;
   margin: 0;
   color: #010205;
+  text-decoration: none;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
@@ -8268,6 +8339,7 @@ img:dir(rtl) {
   padding: 0;
   margin: 0;
   color: #010205;
+  text-decoration: none;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
@@ -8479,22 +8551,8 @@ exports[`should render dsr component for PHeading 1`] = `
 :host([hidden]) {
   display: none !important;
 }
-::slotted(h1), ::slotted(h2), ::slotted(h3), ::slotted(h4), ::slotted(h5), ::slotted(h6) {
-  margin: inherit !important;
-  padding: inherit !important;
-  font-family: inherit !important;
-  font-weight: inherit !important;
-  font-size: inherit !important;
-  line-height: inherit !important;
-  font-style: inherit !important;
-  font-variant: inherit !important;
-  color: inherit !important;
-  text-align: inherit !important;
-  overflow-wrap: inherit !important;
-  word-wrap: inherit !important;
-  hyphens: inherit !important;
-  white-space: inherit !important;
-  letter-spacing: inherit !important;
+::slotted(:is(h1,h2,h3,h4,h5,h6)) {
+  all: unset !important;
 }
 .root {
   margin: 0;
@@ -8535,21 +8593,7 @@ exports[`should render dsr component for PHeadline 1`] = `
   display: none !important;
 }
 ::slotted(h1), ::slotted(h2), ::slotted(h3), ::slotted(h4), ::slotted(h5), ::slotted(h6) {
-  margin: inherit !important;
-  padding: inherit !important;
-  font-family: inherit !important;
-  font-weight: inherit !important;
-  font-size: inherit !important;
-  line-height: inherit !important;
-  font-style: inherit !important;
-  font-variant: inherit !important;
-  color: inherit !important;
-  text-align: inherit !important;
-  overflow-wrap: inherit !important;
-  word-wrap: inherit !important;
-  hyphens: inherit !important;
-  white-space: inherit !important;
-  letter-spacing: inherit !important;
+  all: unset !important;
 }
 .root {
   margin: 0;
@@ -8646,15 +8690,11 @@ exports[`should render dsr component for PInlineNotification 1`] = `
 :host([hidden]) {
   display: none !important;
 }
-h5 {
+::slotted(:is(h1,h2,h3,h4,h5,h6)) {
+  all: unset !important;
+}
+slot[name="heading"] {
   font: normal normal 600 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-}
-p {
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: auto;
-}
-h5,p {
   margin: 0;
   color: #010205;
 }
@@ -8664,6 +8704,18 @@ h5,p {
   }
 }
 
+.heading {
+  font: normal normal 600 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  margin: 0;
+  color: #010205;
+}
+.description {
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  margin: 0;
+  color: #010205;
+}
 .content {
   display: grid;
   gap: 4px;
@@ -8737,6 +8789,7 @@ img {
       role="status"
     >
       <p
+        class="description"
         id="description"
       >
         <slot />
@@ -8769,6 +8822,7 @@ img {
   padding: 0;
   margin: 0;
   color: #010205;
+  text-decoration: none;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
@@ -9033,6 +9087,7 @@ exports[`should render dsr component for PLinkPure 1`] = `
   padding: 0;
   margin: 0;
   color: #010205;
+  text-decoration: none;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
@@ -9040,7 +9095,6 @@ exports[`should render dsr component for PLinkPure 1`] = `
   justify-content: flex-start;
   align-items: flex-start;
   font-size: 1rem;
-  text-decoration: none;
 }
 .root::before {
   content: "";
@@ -9587,27 +9641,41 @@ h2,h3,h4,h5,h6 {
               :host {
   display: inline-block;
   vertical-align: top;
-  max-width: 100% !important;
-  max-height: 36px !important;
-  width: inherit !important;
-  height: inherit !important;
+  max-width: 100%;
+  max-height: 100%;
+  width: var(--p-model-signature-width,94px);
+  height: var(--p-model-signature-height,auto);
+  mask: url(http://localhost:3001/model-signatures/911.min.b68f913216168583298ccf83f1a6b8d5.svg) no-repeat left top / contain !important;
+  aspect-ratio: 94 / 36 !important;
+  background: var(--p-model-signature-color,#FBFCFF) !important;
   color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
 }
-img {
-  display: block;
-  max-width: 100%;
-  max-height: 100%;
-  pointer-events: none;
-  filter: invert(100%) sepia(91%) saturate(38%) hue-rotate(254deg) brightness(110%) contrast(110%);
+::slotted(:is(img,video)) {
+  display: block !important;
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
 }
+img {
+  position: absolute;
+  opacity: 0;
+  width: 1px;
+  height: 1px;
+}
+@media (forced-colors: active) {
+  :host {
+    background: CanvasText !important;
+  }
+}
+
             </style>
+            <slot />
             <img
               alt="911"
-              height="36"
-              src="http://localhost:3001/model-signatures/911.min.5c462658f9d472e90a139173414e8fdd.svg"
+              src="http://localhost:3001/model-signatures/911.min.b68f913216168583298ccf83f1a6b8d5.svg"
             />
           </template>
         </p-model-signature>
@@ -9929,6 +9997,7 @@ slot[name="header"] {
   padding: 0;
   margin: 0;
   color: #010205;
+  text-decoration: none;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
@@ -10283,6 +10352,7 @@ h2 {
   padding: 0;
   margin: 0;
   color: #010205;
+  text-decoration: none;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
@@ -10429,29 +10499,44 @@ exports[`should render dsr component for PModelSignature 1`] = `
       :host {
   display: inline-block;
   vertical-align: top;
-  max-width: 100% !important;
-  max-height: 36px !important;
-  width: inherit !important;
-  height: inherit !important;
+  max-width: 100%;
+  max-height: 100%;
+  width: var(--p-model-signature-width,94px);
+  height: var(--p-model-signature-height,auto);
+  mask: url(http://localhost:3001/model-signatures/911.min.b68f913216168583298ccf83f1a6b8d5.svg) no-repeat left top / contain !important;
+  aspect-ratio: 94 / 36 !important;
+  background: var(--p-model-signature-color,#010205) !important;
   color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
 }
-img {
-  display: block;
-  max-width: 100%;
-  max-height: 100%;
-  pointer-events: none;
-  filter: invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%);
+::slotted(:is(img,video)) {
+  display: block !important;
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
 }
+img {
+  position: absolute;
+  opacity: 0;
+  width: 1px;
+  height: 1px;
+}
+@media (forced-colors: active) {
+  :host {
+    background: CanvasText !important;
+  }
+}
+
     </style>
+    <slot />
     <img
       alt="911"
-      height="36"
-      src="http://localhost:3001/model-signatures/911.min.5c462658f9d472e90a139173414e8fdd.svg"
+      src="http://localhost:3001/model-signatures/911.min.b68f913216168583298ccf83f1a6b8d5.svg"
     />
   </template>
+  Some child
 </p-model-signature>
 `;
 
@@ -12002,7 +12087,83 @@ img {
 exports[`should render dsr component for PSelectOption 1`] = `
 <p-select-option
   class="ssr"
-/>
+>
+  <template
+    shadowroot="open"
+    shadowrootmode="open"
+  >
+    <style>
+      :host {
+  scroll-margin: 6px !important;
+}
+:host([hidden]) {
+  display: none !important;
+}
+::slotted(img) {
+  height: calc(6px + 2.125ex) !important;
+  border-radius: 4px !important;
+}
+.option {
+  display: flex;
+  gap: 12px;
+  padding: 8px 12px;
+  flex: 1 0 calc(calc(6px + 2.125ex) + 8px * 2);
+  min-height: calc(calc(6px + 2.125ex) + 8px * 2);
+  color: #535457;
+  cursor: pointer;
+  text-align: start;
+  word-break: break-word;
+  box-sizing: border-box;
+  border-radius: 4px;
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+}
+.option[role=status] {
+  cursor: not-allowed;
+}
+.option__sr {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+}
+.option--selected {
+  cursor: default;
+  pointer-events: none;
+  background: #EEEFF2;
+}
+.option--highlighted {
+  background: #D8D8DB;
+}
+.option--highlighted, .option--selected {
+  color: #010205;
+}
+.option--disabled {
+  cursor: not-allowed;
+  color: #949598;
+}
+.option--hidden {
+  display: none;
+}
+.icon {
+  margin-inline-start: auto;
+}
+
+    </style>
+    <div
+      aria-label="Empty value"
+      aria-selected="false"
+      class="[object Object]"
+      role="option"
+    >
+      <slot />
+    </div>
+  </template>
+  Some child
+</p-select-option>
 `;
 
 exports[`should render dsr component for PSelectWrapper 1`] = `
@@ -14224,22 +14385,8 @@ exports[`should render dsr component for PText 1`] = `
 :host([hidden]) {
   display: none !important;
 }
-::slotted(p), ::slotted(span), ::slotted(div), ::slotted(address), ::slotted(blockquote), ::slotted(figcaption), ::slotted(cite), ::slotted(time), ::slotted(legend) {
-  margin: inherit !important;
-  padding: inherit !important;
-  font-family: inherit !important;
-  font-weight: inherit !important;
-  font-size: inherit !important;
-  line-height: inherit !important;
-  font-style: inherit !important;
-  font-variant: inherit !important;
-  color: inherit !important;
-  text-align: inherit !important;
-  overflow-wrap: inherit !important;
-  word-wrap: inherit !important;
-  hyphens: inherit !important;
-  white-space: inherit !important;
-  letter-spacing: inherit !important;
+::slotted(:is(p,span,div,address,blockquote,figcaption,cite,time,legend)) {
+  all: unset !important;
 }
 .root {
   margin: 0;

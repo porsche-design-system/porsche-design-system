@@ -4,9 +4,11 @@ import type { InlineNotificationState, InlineNotificationStateDeprecated } from 
 import { Component, Element, Event, type EventEmitter, h, Host, type JSX, Prop } from '@stencil/core';
 import {
   AllowedTypes,
+  applyConstructableStylesheetStyles,
   attachComponentCss,
   getPrefixedTagNames,
   hasHeading,
+  HEADING_TAGS,
   THEMES,
   validateProps,
   warnIfDeprecatedPropIsUsed,
@@ -18,10 +20,12 @@ import {
   getInlineNotificationIconName,
   INLINE_NOTIFICATION_STATES,
 } from './inline-notification-utils';
-import type { InlineNotificationActionIcon } from './inline-notification-utils';
+import type { InlineNotificationActionIcon, InlineNotificationHeadingTag } from './inline-notification-utils';
+import { getSlottedAnchorStyles } from '../../styles';
 
 const propTypes: PropTypes<typeof InlineNotification> = {
   heading: AllowedTypes.string,
+  headingTag: AllowedTypes.oneOf<InlineNotificationHeadingTag>(HEADING_TAGS),
   description: AllowedTypes.string,
   state: AllowedTypes.oneOf<InlineNotificationState>(INLINE_NOTIFICATION_STATES),
   dismissButton: AllowedTypes.boolean,
@@ -41,6 +45,9 @@ export class InlineNotification {
 
   /** Heading of the inline-notification. */
   @Prop() public heading?: string = '';
+
+  /** Sets a heading tag, so it fits correctly within the outline of the page. */
+  @Prop() public headingTag?: InlineNotificationHeadingTag = 'h5';
 
   /** Description of the inline-notification. */
   @Prop() public description?: string = '';
@@ -78,6 +85,10 @@ export class InlineNotification {
     return this.persistent ? false : this.dismissButton;
   }
 
+  public connectedCallback(): void {
+    applyConstructableStylesheetStyles(this.host, getSlottedAnchorStyles);
+  }
+
   public render(): JSX.Element {
     validateProps(this, propTypes);
     warnIfDeprecatedPropValueIsUsed<
@@ -94,6 +105,7 @@ export class InlineNotification {
     const labelId = 'label';
     const descriptionId = 'description';
     const PrefixedTagNames = getPrefixedTagNames(this.host);
+    const Heading = this.headingTag;
 
     return (
       <Host>
@@ -105,8 +117,17 @@ export class InlineNotification {
           aria-hidden="true"
         />
         <div id={bannerId} class="content" {...getContentAriaAttributes(this.state, labelId, descriptionId)}>
-          {hasHeading(this.host, this.heading) && <h5 id={labelId}>{this.heading || <slot name="heading" />}</h5>}
-          <p id={descriptionId}>{this.description || <slot />}</p>
+          {hasHeading(this.host, this.heading) &&
+            (this.heading ? (
+              <Heading id={labelId} class="heading">
+                {this.heading}
+              </Heading>
+            ) : (
+              <slot name="heading" />
+            ))}
+          <p id={descriptionId} class="description">
+            {this.description || <slot />}
+          </p>
         </div>
         {this.actionLabel && (
           <PrefixedTagNames.pButtonPure

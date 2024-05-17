@@ -23,7 +23,7 @@ describe('setFocusTrap()', () => {
     const spy = jest.spyOn(focusTrapUtils, 'getFirstAndLastFocusableElement');
     setFocusTrap(host, true, firstElementChild, closeBtn, closeFn);
 
-    expect(spy).toBeCalledWith(host, closeBtn);
+    expect(spy).toHaveBeenCalledWith(host, closeBtn);
   });
 
   it('should call setFirstAndLastFocusableElementKeydownListener()', () => {
@@ -36,7 +36,7 @@ describe('setFocusTrap()', () => {
     const spy = jest.spyOn(focusTrapUtils, 'setFirstAndLastFocusableElementKeydownListener');
     setFocusTrap(host, true, firstElementChild, closeBtn, closeFn);
 
-    expect(spy).toBeCalledWith(focusableElements);
+    expect(spy).toHaveBeenCalledWith(focusableElements);
   });
 
   describe('add event handlers', () => {
@@ -44,7 +44,7 @@ describe('setFocusTrap()', () => {
       const documentSpy = jest.spyOn(document, 'addEventListener');
       setFocusTrap(host, true, firstElementChild, closeBtn, closeFn);
 
-      expect(documentSpy).toBeCalledWith('keydown', documentKeydownListener);
+      expect(documentSpy).toHaveBeenCalledWith('keydown', documentKeydownListener);
     });
   });
 
@@ -55,8 +55,8 @@ describe('setFocusTrap()', () => {
       const documentRemoveSpy = jest.spyOn(document, 'removeEventListener');
       setFocusTrap(host, false, firstElementChild, closeBtn, closeFn);
 
-      expect(documentRemoveSpy).toBeCalledWith('keydown', documentKeydownListener);
-      expect(documentAddSpy).not.toBeCalled();
+      expect(documentRemoveSpy).toHaveBeenCalledWith('keydown', documentKeydownListener);
+      expect(documentAddSpy).not.toHaveBeenCalled();
     });
   });
 
@@ -66,7 +66,7 @@ describe('setFocusTrap()', () => {
       setFocusTrap(host, true, firstElementChild, closeBtn, closeModalMock);
 
       documentKeydownListener(new KeyboardEvent('keydown', { key: 'Escape' }));
-      expect(closeModalMock).toBeCalledWith();
+      expect(closeModalMock).toHaveBeenCalledWith();
     });
 
     it('should call preventDefault() via Tab when no focusableElements exist', () => {
@@ -75,7 +75,7 @@ describe('setFocusTrap()', () => {
       setFocusTrap(host, true, firstElementChild);
 
       documentKeydownListener(event);
-      expect(spy).toBeCalledTimes(1);
+      expect(spy).toHaveBeenCalledTimes(1);
     });
 
     it('should not call preventDefault() via Tab when focusableElements exist', () => {
@@ -84,7 +84,7 @@ describe('setFocusTrap()', () => {
       setFocusTrap(host, true, firstElementChild, closeBtn);
 
       documentKeydownListener(event);
-      expect(spy).not.toBeCalled();
+      expect(spy).not.toHaveBeenCalled();
     });
   });
 });
@@ -391,8 +391,8 @@ describe('setFirstAndLastFocusableElementKeydownListener()', () => {
     setFirstAndLastFocusableElementKeydownListener(focusableElements);
 
     const [handler1, handler2] = KEYDOWN_EVENT_HANDLER_CACHE;
-    expect(el1Spy).toBeCalledWith('keydown', handler1);
-    expect(el2Spy).toBeCalledWith('keydown', handler2);
+    expect(el1Spy).toHaveBeenCalledWith('keydown', handler1);
+    expect(el2Spy).toHaveBeenCalledWith('keydown', handler2);
     expect(FOCUSABLE_ELEMENT_CACHE).toEqual(focusableElements);
   });
 
@@ -413,8 +413,8 @@ describe('setFirstAndLastFocusableElementKeydownListener()', () => {
     const [handler1, handler2] = KEYDOWN_EVENT_HANDLER_CACHE;
     setFirstAndLastFocusableElementKeydownListener(otherElements);
 
-    expect(el1Spy).toBeCalledWith('keydown', handler1);
-    expect(el2Spy).toBeCalledWith('keydown', handler2);
+    expect(el1Spy).toHaveBeenCalledWith('keydown', handler1);
+    expect(el2Spy).toHaveBeenCalledWith('keydown', handler2);
     expect(KEYDOWN_EVENT_HANDLER_CACHE).not.toEqual([handler1, handler2]);
     expect(KEYDOWN_EVENT_HANDLER_CACHE.length).toBe(2);
   });
@@ -442,10 +442,10 @@ describe('setFirstAndLastFocusableElementKeydownListener()', () => {
       const [handler1] = KEYDOWN_EVENT_HANDLER_CACHE;
 
       handler1(new KeyboardEvent('keydown', { key: 'Tab' }));
-      expect(el2Spy).not.toBeCalled();
+      expect(el2Spy).not.toHaveBeenCalled();
 
       handler1(new KeyboardEvent('keydown', { key: 'Tab', shiftKey: true }));
-      expect(el2Spy).toBeCalledWith();
+      expect(el2Spy).toHaveBeenCalledWith();
     });
 
     it('should call focus() on 1st element when 2nd handler is invoked with Tab', () => {
@@ -454,10 +454,10 @@ describe('setFirstAndLastFocusableElementKeydownListener()', () => {
       const [, handler2] = KEYDOWN_EVENT_HANDLER_CACHE;
 
       handler2(new KeyboardEvent('keydown', { key: 'Tab', shiftKey: true }));
-      expect(el1Spy).not.toBeCalled();
+      expect(el1Spy).not.toHaveBeenCalled();
 
       handler2(new KeyboardEvent('keydown', { key: 'Tab' }));
-      expect(el1Spy).toBeCalledWith();
+      expect(el1Spy).toHaveBeenCalledWith();
     });
   });
 });

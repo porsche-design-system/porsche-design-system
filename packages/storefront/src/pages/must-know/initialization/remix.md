@@ -28,7 +28,7 @@ On the **server side** the components of the `@porsche-design-system/components-
 markup for something called <a href="https://web.dev/declarative-shadow-dom" target="_blank">Declarative Shadow DOM</a>
 which is converted into a real Shadow DOM by modern browsers without any JavaScript.
 
-<Notification heading="Hint" state="warning">
+<Notification heading="Hint" heading-tag="h4" state="warning">
     Older browsers that don't <a href="https://caniuse.com/declarative-shadow-dom" target="_blank">support Declarative
     Shadow DOM</a> won't show anything.<br>
     To solve this, the <a href="partials/dsr-ponyfill">getDSRPonyfill()</a> partial needs to be applied.
@@ -115,7 +115,7 @@ getComponentChunkLinks({ components: ['button'] });
 
 Now, everything is preloaded in parallel while the Remix app chunks takes the longest and are executed last.
 
-<Notification heading="Hint" state="warning">
+<Notification heading="Hint" heading-tag="h4" state="warning">
   Just preloading all component chunks on the page or even every chunk available should be avoided.<br>
   Instead, the most performant but also more complicated approach would be to only preload the component chunks
   (and fonts) that are located <strong>above the fold</strong> which means visible on page load without scrolling.

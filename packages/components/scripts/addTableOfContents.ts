@@ -4,7 +4,10 @@ import { globbySync } from 'globby';
 
 const addTableOfContents = (): void => {
   const rootDirectory = path.resolve(__dirname, '..');
-  const files = globbySync(path.resolve(rootDirectory, 'src/components/**/*.md'));
+  const files = globbySync([
+    path.resolve(rootDirectory, 'src/components/**/*.md'),
+    '!' + path.resolve(rootDirectory, 'src/components/**/*.docs.md'),
+  ]);
 
   files.forEach((file) => {
     const sourceFile = path.normalize(file);

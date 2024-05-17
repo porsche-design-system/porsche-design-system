@@ -32,6 +32,7 @@
   <p-link-pure active="true" icon="none"><a href="https://porsche.com">Label slotted active</a></p-link-pure>
   <p-link-pure href="https://porsche.com" active="true" hide-label="true">Label active</p-link-pure>
   <p-link-pure active="true" hide-label="true"><a href="https://porsche.com">Label slotted active</a></p-link-pure>
+  <p-link-pure href="https://porsche.com" active="true" underline="true">Label active underline</p-link-pure>
 </div>
 
 <div class="playground light auto-layout-inline" title="should render with specific icon">
@@ -120,6 +121,17 @@
   </p-link-pure>
 </div>
 
+<div class="playground light auto-layout-inline" title="should render with stretched label and underline">
+  <p-link-pure href="https://porsche.com" stretch="true" underline="true">Label stretch</p-link-pure>
+  <p-link-pure href="https://porsche.com" stretch="true" align-label="start" underline="true"
+    >Label stretch align start</p-link-pure
+  >
+  <p-link-pure stretch="true" underline="true"><a href="https://porsche.com">Label slotted stretch</a></p-link-pure>
+  <p-link-pure stretch="true" align-label="start" underline="true">
+    <a href="https://porsche.com">Label slotted stretch align start</a>
+  </p-link-pure>
+</div>
+
 <div class="playground light auto-layout-inline" title="should render with stretched label depending on viewport">
   <p-link-pure href="https://porsche.com" stretch="{ base: true, xs: false, s: true, m: false, l: true, xl: false }">
     Label stretch responsive
@@ -152,25 +164,19 @@
   </p-link-pure>
 </div>
 
-<div class="playground light" title="should render with different size">
+<div class="playground light auto-layout-block" title="should render with different size">
   <p-link-pure href="https://porsche.com" size="xx-small">Label size xx-small</p-link-pure>
   <p-link-pure size="xx-small"><a href="https://porsche.com">Label slotted size xx-small</a></p-link-pure>
-  <br />
   <p-link-pure href="https://porsche.com" size="x-small">Label size x-small</p-link-pure>
   <p-link-pure size="x-small"><a href="https://porsche.com">Label slotted size x-small</a></p-link-pure>
-  <br />
   <p-link-pure href="https://porsche.com" size="small">Label size small</p-link-pure>
   <p-link-pure size="small"><a href="https://porsche.com">Label slotted size small</a></p-link-pure>
-  <br />
   <p-link-pure href="https://porsche.com" size="medium">Label size medium</p-link-pure>
   <p-link-pure size="medium"><a href="https://porsche.com">Label slotted size medium</a></p-link-pure>
-  <br />
   <p-link-pure href="https://porsche.com" size="large">Label size large</p-link-pure>
   <p-link-pure size="large"><a href="https://porsche.com">Label slotted size large</a></p-link-pure>
-  <br />
   <p-link-pure href="https://porsche.com" size="x-large">Label size x-large</p-link-pure>
   <p-link-pure size="x-large"><a href="https://porsche.com">Label slotted size x-large</a></p-link-pure>
-  <br />
   <p-link-pure href="https://porsche.com" size="inherit" style="font-size: 48px">Label size inherit</p-link-pure>
   <p-link-pure size="inherit" style="font-size: 48px">
     <a href="https://porsche.com">Label slotted size inherit</a>
@@ -187,7 +193,7 @@
   </p-link-pure>
 </div>
 
-<div class="playground light auto-layout-inline" title="should render with no icon and size inherit">
+<div class="playground light auto-layout-block" title="should render with no icon and size inherit">
   <p-link-pure href="https://porsche.com" icon="none" size="inherit" style="font-size: 48px"
     >Label icon none size inherit</p-link-pure
   >

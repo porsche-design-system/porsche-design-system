@@ -21,16 +21,16 @@ beforeEach(() => {
 
 it('should add a script tag with the provided script source to the body', () => {
   addScript(url);
-  expect(document.body.appendChild).toBeCalledTimes(1);
+  expect(document.body.appendChild).toHaveBeenCalledTimes(1);
   const [scriptTag] = scriptTags;
   expect(scriptTag.src).toBe(url);
   dispatchOnload(0);
-  expect(spy).toBeCalledTimes(1);
+  expect(spy).toHaveBeenCalledTimes(1);
 });
 
 it('should add script', () => {
   addScript(url);
-  expect(document.body.appendChild).toBeCalledTimes(1);
+  expect(document.body.appendChild).toHaveBeenCalledTimes(1);
   dispatchOnload(0);
 });
 

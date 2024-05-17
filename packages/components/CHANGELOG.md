@@ -14,6 +14,110 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ### [Unreleased]
 
+### [3.15.0] - 2024-05-16
+
+### [3.15.0-rc.5] - 2024-05-16
+
+#### Added
+
+- `Button Pure`: Prop `underline` to show an underline for the label
+  ([#3212](https://github.com/porsche-design-system/porsche-design-system/pull/3212))
+- Partials: Added new option `globalStyles` to `getInitialStyles` to disable global reset styles.  
+  ([#3213](https://github.com/porsche-design-system/porsche-design-system/pull/3213))
+
+#### Changed
+
+- Banner: Refactor Banner to use native `popover`
+  ([#3196](https://github.com/porsche-design-system/porsche-design-system/pull/3196))
+- Partials: `getInitialStyles` only contain hydration visibility and global styles. All other styles are handled by
+  constructable stylesheets at component level.
+  ([#3213](https://github.com/porsche-design-system/porsche-design-system/pull/3213))
+- `Table`: Removed slotted image style `verticalAlign: 'middle'` from initialStyles
+  ([#3213](https://github.com/porsche-design-system/porsche-design-system/pull/3213))
+- `Tabs Bar`: Removed sibling tabpanel focus style from initialStyles
+  ([#3213](https://github.com/porsche-design-system/porsche-design-system/pull/3213))
+
+#### Fixed
+
+- `Carousel`: Accessible name of carousel region wrapper
+  ([#3220](https://github.com/porsche-design-system/porsche-design-system/pull/3220))
+- `aria` property now supports escaped single quotes inside JSON strings, e.g.
+  `aria="{ 'aria-label': 'You can\'t do that? yes you can!' }"`
+  ([#3217](https://github.com/porsche-design-system/porsche-design-system/pull/3217))
+
+### [3.15.0-rc.4] - 2024-05-06
+
+#### Added
+
+- Partials: Added new partial `getFontFaceStyles` which returns an inline style containing all font-face definitions.  
+  ([#3188](https://github.com/porsche-design-system/porsche-design-system/pull/3188))
+
+#### Changed
+
+- Partials: Partial `getFontFaceStylesheet` is deprecated and will be removed with the next major release. Use the
+  `getFontFaceStyles` partial instead, which directly returns a `<style>` tag containing all font-face definitions and
+  can be used in the same way. ([#3188](https://github.com/porsche-design-system/porsche-design-system/pull/3188))
+
+```diff
+- getFontFaceStylesheet()
++ getFontFaceStyles()
+```
+
+### [3.15.0-rc.3] - 2024-04-23
+
+#### Fixed
+
+- `Pin Code`: Fixed several problems with IME keyboards
+  ([#3197](https://github.com/porsche-design-system/porsche-design-system/pull/3197))
+
+### [3.15.0-rc.2] - 2024-04-22
+
+#### Added
+
+- `Accordion`: Add experimental property `sticky` for a fixed heading
+  ([#3181](https://github.com/porsche-design-system/porsche-design-system/pull/3181))
+- `Inline Notification`, `Banner`: heading hierarchy can now be customized with `headingTag` prop
+  ([#3168](https://github.com/porsche-design-system/porsche-design-system/pull/3168))
+
+#### Changed
+
+- `Accordion`: `tag` property is deprecated. Use `headingTag` property instead to specify heading hierarchy level.
+  ([#3168](https://github.com/porsche-design-system/porsche-design-system/pull/3168))
+
+```diff
+- <p-accordion tag="h3"></p-accordion>
++ <p-accordion heading-tag="h3"></p-accordion>
+```
+
+#### Fixed
+
+- `Pin Code`: Input is entered twice in iOS
+  ([#3192](https://github.com/porsche-design-system/porsche-design-system/pull/3192))
+
+### [3.15.0-rc.1] - 2024-04-17
+
+#### Added
+
+- Partials: `getMetaTagsAndIconLinks`, `getComponentChunkLinks`, `getIconLinks` and `getFontLinks` support new format
+  option `js` ([#3179](https://github.com/porsche-design-system/porsche-design-system/pull/3179))
+
+### [3.15.0-rc.0] - 2024-04-05
+
+#### Changed
+
+- `Model Signature`: Enabling the use of hex colors, CSS gradients, CSS image and video masks. In addition, the size was
+  slightly adjusted. ([#3153](https://github.com/porsche-design-system/porsche-design-system/pull/3153))
+
+#### Fixed
+
+- `Modal`: Missing box-shadow on sticky footer when slotted content changes
+  ([#3154](https://github.com/porsche-design-system/porsche-design-system/pull/3154))
+- `Select`: Hydration error in Next.js when using slotted `img`
+  ([#3162](https://github.com/porsche-design-system/porsche-design-system/pull/3162))
+- `Text Field Wrapper`, `Textarea Wrapper`: Dynamic changes of `showCounter` and `maxLength` are reflected. The counter
+  element dynamically adjusts to changes in the input value accurately.
+  ([#3084](https://github.com/porsche-design-system/porsche-design-system/pull/3084))
+
 ### [3.14.0] - 2024-03-25
 
 ### [3.14.0-rc.0] - 2024-03-25

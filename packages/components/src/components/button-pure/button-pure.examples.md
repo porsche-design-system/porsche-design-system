@@ -25,8 +25,7 @@ Similarly to the `p-button`, the `p-button-pure` can be used as a submit button 
 ### Without Icon
 
 The variant without icon is only recommended in the context of menus, where it is clearly evident that the component is
-clickable. If it is required in flowing text, a native button within the `p-text` component can be used.  
-See [text documentation](components/typography/text#text-with-a-link-button-and-bold-text-as-children).
+clickable or by setting the `underline` prop to provide a visual hint.
 
 **Caution:** You can't combine this with the prop `hideLabel`
 
@@ -75,7 +74,7 @@ The settings above can also be used on different major breakpoints `xs`, `s`, `m
 
 ## Weight (deprecated)
 
-<Notification heading="Important note" state="error">
+<Notification heading="Important note" heading-tag="h3" state="error">
   The weight prop is deprecated and will be removed with next major release.
   In case, e.g. <b>weight="semibold"</b> is used it will automatically be mapped to font weight regular.
 </Notification>
@@ -104,7 +103,7 @@ link to another icon hosted somewhere else, just set the whole icon path to the 
 
 The `label` can be aligned to the `end` (default) or to the `start` of the icon.
 
-<Notification heading="Deprecation hint" state="warning">
+<Notification heading="Deprecation hint" heading-tag="h3" state="warning">
   Following alignments have been deprecated and will be removed with the next major release: "left" and "right".
 </Notification>
 
@@ -171,7 +170,10 @@ export default class Code extends Vue {
   withoutIcon =
 `<p-button-pure icon="none">Some label</p-button-pure>
 <p-button-pure icon="none" disabled="true">Some label</p-button-pure>
-<p-button-pure icon="none" loading="true">Some label</p-button-pure>`;
+<p-button-pure icon="none" loading="true">Some label</p-button-pure><br>
+<p-button-pure icon="none" underline="true">Some label</p-button-pure>
+<p-button-pure icon="none" disabled="true" underline="true">Some label</p-button-pure>
+<p-button-pure icon="none" loading="true" underline="true">Some label</p-button-pure>`;
     
   withLabel =
 `<p-button-pure>Some label</p-button-pure>

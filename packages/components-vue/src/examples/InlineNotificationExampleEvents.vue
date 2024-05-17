@@ -16,6 +16,7 @@
   <PInlineNotification
     v-if="isActive"
     :heading="'Some heading'"
+    :headingTag="'h4'"
     :description="'Some description.'"
     @dismiss="onDismiss"
   ></PInlineNotification>

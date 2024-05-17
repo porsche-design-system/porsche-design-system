@@ -2,7 +2,7 @@
 
 **Function name:** `getInitialStyles()`
 
-<Notification heading="Attention" state="warning">
+<Notification heading="Attention" heading-tag="h2" state="warning">
 <b>This partial is required since v3.7.0</b>.<br>
 It is necessary to provide some default styles to Porsche Design System components until they are fully bootstrapped to
 prevent FOUC. In addition, normalize and component related slotted styles are provided too.
@@ -18,6 +18,7 @@ which has to be injected into the `<head>` of your `index.html`.
 | -------- |-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------| --------------------------- | ------- |
 | `prefix` | Prefix will be added to the component names. It's also possible to pass multiple prefixes.                                                                                                                                                                                  | `string | string[]`         | `''`     |
 | `format` | Defines the output format of the partial. By default, it returns a html string.<br> For `jsx` it return a jsx element.<br> For `sha256` it returns a SHA-256 hash of the innerHTML to use in a [Content Security Policy (CSP)](must-know/security/content-security-policy). | `'html' | 'jsx' | 'sha256'` | `'html'` |
+| `globalStyles` | Option to include/exclude global reset/normalize styles.                                                                                                                                                                                                                    | `boolean` | `true` |
 
 ## Examples
 
@@ -26,7 +27,7 @@ The following showcases the most common ways.
 
 <PartialDocs name="getInitialStyles" :params="params" location="head"></PartialDocs>
 
-<Notification heading="Hint" state="success">
+<Notification heading="Hint" heading-tag="h3" state="success">
   In case, micro frontends with custom prefixed Porsche Design System components are used, 
 it's possible to provide proper initial styles to all of them by defining an array of custom prefixes (see example below).
 By entering <code>document.porscheDesignSystem</code> in the browser console of your application, it's possible to find out which prefixes are used.

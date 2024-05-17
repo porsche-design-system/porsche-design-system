@@ -29,6 +29,7 @@ import {
 import {
   addNativePopoverScrollAndResizeListeners,
   AllowedTypes,
+  applyConstructableStylesheetStyles,
   attachComponentCss,
   detectNativePopoverCase,
   findClosestComponent,
@@ -58,6 +59,7 @@ import {
 import { getComponentCss } from './select-styles';
 import { Label, labelId } from '../../common/label/label';
 import { messageId, StateMessage } from '../../common/state-message/state-message';
+import { getSlottedAnchorStyles } from '../../../styles';
 
 const propTypes: PropTypes<typeof Select> = {
   label: AllowedTypes.string,
@@ -154,6 +156,7 @@ export class Select {
   }
 
   public connectedCallback(): void {
+    applyConstructableStylesheetStyles(this.host, getSlottedAnchorStyles);
     document.addEventListener('mousedown', this.onClickOutside, true);
     this.form = getClosestHTMLElement(this.host, 'form');
     this.isWithinForm = !!this.form;
@@ -305,7 +308,7 @@ export class Select {
     this.selectOptions.forEach((child) => throwIfElementIsNotOfKind(this.host, child, 'p-select-option'));
   };
 
-  private updateSelectedOption = (selectedOption: SelectOption) => {
+  private updateSelectedOption = (selectedOption: SelectOption): void => {
     // option can be undefined when no option is highlighted and keyboard action calls this
     if (selectedOption) {
       this.preventOptionUpdate = true; // Avoid unnecessary updating of options in value watcher

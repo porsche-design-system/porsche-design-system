@@ -9,7 +9,7 @@ performance, changing its available columns on mobile (6 content columns + 2 saf
 760px viewport width (8-narrow/12-basic/14-extended/16-wide content columns + 2 safe zone columns). It has a size range
 between 320px and 2560px, using fluid sized columns and gaps.
 
-<Notification heading="Important" state="warning">
+<Notification heading="Important" heading-tag="h3" state="warning">
   The Porsche grid has to be used on a top level and can't be nested.<br>
   Therefore, the following example only works in fullscreen after clicking the <strong>Maximize</strong> button.
 </Notification>

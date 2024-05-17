@@ -1,17 +1,20 @@
-import { Component, Element, forceUpdate, h, type JSX, Prop } from '@stencil/core';
+import { Component, Element, forceUpdate, h, type JSX, Prop, Watch } from '@stencil/core';
 import { type BreakpointCustomizable, type PropTypes, type Theme } from '../../types';
 import {
-  addInputEventListenerForCounter,
   AllowedTypes,
+  applyConstructableStylesheetStyles,
   attachComponentCss,
   FORM_STATES,
   getOnlyChildOfKindHTMLElementOrThrow,
   hasCounter,
   hasPropValueChanged,
+  inputEventListenerCurry,
   observeAttributes,
+  observeProperties,
   setAriaAttributes,
   THEMES,
   unobserveAttributes,
+  updateCounter,
   validateProps,
   warnIfDeprecatedPropIsUsed,
 } from '../../utils';
@@ -19,6 +22,7 @@ import { type TextareaWrapperState } from './textarea-wrapper-utils';
 import { getComponentCss } from './textarea-wrapper-styles';
 import { StateMessage } from '../common/state-message/state-message';
 import { Label } from '../common/label/label';
+import { getSlottedAnchorStyles } from '../../styles';
 
 const propTypes: PropTypes<typeof TextareaWrapper> = {
   label: AllowedTypes.string,
@@ -68,30 +72,33 @@ export class TextareaWrapper {
   private counterElement: HTMLSpanElement;
   private ariaElement: HTMLSpanElement;
   private hasCounter: boolean;
+  private eventListener: EventListener;
+
+  @Watch('showCounter')
+  public onShowCounterChange(): void {
+    this.updateCounterVisibility();
+  }
 
   public connectedCallback(): void {
+    applyConstructableStylesheetStyles(this.host, getSlottedAnchorStyles);
     this.observeAttributes(); // on every reconnect
   }
 
   public componentWillLoad(): void {
     this.textarea = getOnlyChildOfKindHTMLElementOrThrow(this.host, 'textarea');
     this.observeAttributes(); // once initially
-    this.hasCounter =
-      hasCounter(this.textarea) &&
-      (typeof this.showCharacterCount === 'undefined' ? this.showCounter : this.showCharacterCount);
+    this.updateCounterVisibility();
   }
 
   public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
     return hasPropValueChanged(newVal, oldVal);
   }
 
-  public componentDidLoad(): void {
-    if (this.hasCounter) {
-      addInputEventListenerForCounter(this.textarea, this.ariaElement, this.counterElement);
-    }
-  }
-
   public componentDidRender(): void {
+    if (this.hasCounter) {
+      this.addInputEventListenerForCounter(this.ariaElement, this.counterElement);
+    }
+
     /*
      * This is a workaround to improve accessibility because the textarea and the label/description/message text are placed in different DOM.
      * Referencing ID's from outside the component is impossible because the web component’s DOM is separate.
@@ -140,6 +147,33 @@ export class TextareaWrapper {
   }
 
   private observeAttributes = (): void => {
-    observeAttributes(this.textarea, ['disabled', 'readonly', 'required'], () => forceUpdate(this.host));
+    observeAttributes(this.textarea, ['disabled', 'readonly', 'required', 'maxlength'], () => {
+      forceUpdate(this.host);
+      this.updateCounterVisibility();
+    });
+  };
+
+  private updateCounterVisibility = (): void => {
+    this.hasCounter =
+      hasCounter(this.textarea) &&
+      (typeof this.showCharacterCount === 'undefined' ? this.showCounter : this.showCharacterCount);
+  };
+
+  private addInputEventListenerForCounter = (
+    characterCountElement: HTMLSpanElement,
+    counterElement?: HTMLSpanElement,
+    inputChangeCallback?: () => void
+  ): void => {
+    updateCounter(this.textarea, characterCountElement, counterElement); // Initial value
+
+    // When value changes programmatically
+    observeProperties(this.textarea, ['value'], () => {
+      updateCounter(this.textarea, characterCountElement, counterElement, inputChangeCallback);
+    });
+
+    this.eventListener = inputEventListenerCurry(characterCountElement, counterElement, inputChangeCallback);
+
+    this.textarea.removeEventListener('input', this.eventListener);
+    this.textarea.addEventListener('input', this.eventListener);
   };
 }

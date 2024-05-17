@@ -1,19 +1,32 @@
-import { Component, Element, Event, type EventEmitter, forceUpdate, h, type JSX, Prop, State } from '@stencil/core';
 import {
-  addInputEventListenerForCounter,
+  Component,
+  Element,
+  Event,
+  type EventEmitter,
+  forceUpdate,
+  h,
+  type JSX,
+  Prop,
+  State,
+  Watch,
+} from '@stencil/core';
+import {
   AllowedTypes,
+  applyConstructableStylesheetStyles,
   attachComponentCss,
   FORM_STATES,
   getOnlyChildOfKindHTMLElementOrThrow,
   getPrefixedTagNames,
   handleButtonEvent,
   hasPropValueChanged,
+  inputEventListenerCurry,
   isWithinForm,
   observeAttributes,
   observeProperties,
   setAriaAttributes,
   THEMES,
   unobserveAttributes,
+  updateCounter,
   validateProps,
   warnIfDeprecatedPropIsUsed,
 } from '../../utils';
@@ -38,6 +51,8 @@ import {
   UNIT_POSITIONS,
 } from './text-field-wrapper-utils';
 import { Label } from '../common/label/label';
+import { getSlottedAnchorStyles } from '../../styles';
+import { getSlottedInputIndicatorStyles } from '../../styles/global/slotted-input-indicator-styles';
 
 const propTypes: PropTypes<typeof TextFieldWrapper> = {
   label: AllowedTypes.string,
@@ -126,8 +141,15 @@ export class TextFieldWrapper {
   private hasCounter: boolean;
   private isCounterVisible: boolean;
   private hasUnit: boolean;
+  private eventListener: EventListener;
+
+  @Watch('showCounter')
+  public onShowCounterChange(): void {
+    this.updateCounterVisibility();
+  }
 
   public connectedCallback(): void {
+    applyConstructableStylesheetStyles(this.host, getSlottedAnchorStyles, getSlottedInputIndicatorStyles);
     this.observeAttributes(); // on every reconnect
   }
 
@@ -146,10 +168,7 @@ export class TextFieldWrapper {
     this.isTime = isType(type, 'time');
     this.isWithinForm = isWithinForm(this.host);
     this.hasAction = hasLocateAction(this.actionIcon);
-    this.hasCounter = hasCounterAndIsTypeText(this.input);
-    this.isCounterVisible =
-      this.hasCounter && (typeof this.showCharacterCount === 'undefined' ? this.showCounter : this.showCharacterCount);
-    this.hasUnit = !this.isCounterVisible && hasUnitAndIsTypeTextOrNumber(this.input, this.unit);
+    this.updateCounterVisibility();
 
     if (this.isSearch) {
       this.isClearable = !!this.input.value;
@@ -163,16 +182,7 @@ export class TextFieldWrapper {
   }
 
   public componentDidLoad(): void {
-    if (this.hasCounter) {
-      // renders innerHTML of unitOrCounterElement initially and on every input event
-      addInputEventListenerForCounter(
-        this.input,
-        this.ariaElement,
-        this.isCounterVisible && this.unitOrCounterElement,
-        this.setInputStyles
-      );
-      this.setInputStyles(); // set style initially after componentDidRender already ran with empty unitOrCounterElement
-    } else if (this.isSearch) {
+    if (this.isSearch) {
       addInputEventListenerForSearch(this.input, (hasValue) => (this.isClearable = hasValue));
     }
   }
@@ -180,6 +190,16 @@ export class TextFieldWrapper {
   public componentDidRender(): void {
     // needs to happen after render in order to have unitOrCounterElement defined
     this.setInputStyles();
+
+    if (this.isCounterVisible || this.hasCounter) {
+      // renders innerHTML of unitOrCounterElement initially and on every input event
+      this.addInputEventListenerForCounter(
+        this.ariaElement,
+        this.isCounterVisible && this.unitOrCounterElement,
+        this.setInputStyles
+      );
+      this.setInputStyles(); // set style initially after componentDidRender already ran with empty unitOrCounterElement
+    }
 
     /*
      * This is a workaround to improve accessibility because the input and the label/description/message text are placed in different DOM.
@@ -354,10 +374,38 @@ export class TextFieldWrapper {
   };
 
   private observeAttributes = (): void => {
-    observeAttributes(this.input, ['disabled', 'readonly', 'required'], () => forceUpdate(this.host));
+    observeAttributes(this.input, ['disabled', 'readonly', 'required', 'maxlength'], () => {
+      this.updateCounterVisibility();
+      forceUpdate(this.host);
+    });
+  };
+
+  private updateCounterVisibility = (): void => {
+    this.hasCounter = hasCounterAndIsTypeText(this.input);
+    this.isCounterVisible =
+      this.hasCounter && (typeof this.showCharacterCount === 'undefined' ? this.showCounter : this.showCharacterCount);
+    this.hasUnit = !this.isCounterVisible && hasUnitAndIsTypeTextOrNumber(this.input, this.unit);
   };
 
   private setInputStyles = (): void => {
     setInputStyles(this.input, this.unitOrCounterElement, this.isCounterVisible ? 'suffix' : this.unitPosition);
+  };
+
+  private addInputEventListenerForCounter = (
+    characterCountElement: HTMLSpanElement,
+    counterElement?: HTMLSpanElement,
+    inputChangeCallback?: () => void
+  ): void => {
+    updateCounter(this.input, characterCountElement, counterElement); // Initial value
+
+    // When value changes programmatically
+    observeProperties(this.input, ['value'], () => {
+      updateCounter(this.input, characterCountElement, counterElement, inputChangeCallback);
+    });
+
+    this.eventListener = inputEventListenerCurry(characterCountElement, counterElement, inputChangeCallback);
+
+    this.input.removeEventListener('input', this.eventListener);
+    this.input.addEventListener('input', this.eventListener);
   };
 }

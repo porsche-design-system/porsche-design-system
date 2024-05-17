@@ -49,7 +49,7 @@ describe('window.PDS_SKIP_FETCH = true', () => {
 
     const img = document.querySelector('p-icon').shadowRoot.querySelector('img');
 
-    expect(spy).not.toBeCalled();
+    expect(spy).not.toHaveBeenCalled();
     expect(img.src).toBe('');
   });
 });

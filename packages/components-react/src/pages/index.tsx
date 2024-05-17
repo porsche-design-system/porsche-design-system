@@ -15,6 +15,15 @@ export * from './generated/Overview';
 export * from './generated/OverviewNotifications';
 import { AccordionPage } from './generated/Accordion';
 import { BannerPage } from './generated/Banner';
+import { BannerBasicPage } from './generated/BannerBasic';
+import { BannerErrorPage } from './generated/BannerError';
+import { BannerNeutralPage } from './generated/BannerNeutral';
+import { BannerNoDismissPage } from './generated/BannerNoDismiss';
+import { BannerPersistentPage } from './generated/BannerPersistent';
+import { BannerPrefixedPage } from './generated/BannerPrefixed';
+import { BannerSlottedDescriptionHeadingPage } from './generated/BannerSlottedDescriptionHeading';
+import { BannerSlottedDescriptionTitlePage } from './generated/BannerSlottedDescriptionTitle';
+import { BannerWarningPage } from './generated/BannerWarning';
 import { ButtonPage } from './generated/Button';
 import { ButtonGroupPage } from './generated/ButtonGroup';
 import { ButtonPurePage } from './generated/ButtonPure';
@@ -56,6 +65,7 @@ import { FlyoutNavigationPrefixedPage } from './generated/FlyoutNavigationPrefix
 import { FlyoutNavigationScrolledPage } from './generated/FlyoutNavigationScrolled';
 import { FlyoutPositionLeftPage } from './generated/FlyoutPositionLeft';
 import { FlyoutPositionStartPage } from './generated/FlyoutPositionStart';
+import { FlyoutPrefixedHeaderFooterSubfooterPage } from './generated/FlyoutPrefixedHeaderFooterSubfooter';
 import { GridPage } from './generated/Grid';
 import { HeadingPage } from './generated/Heading';
 import { HeadlinePage } from './generated/Headline';
@@ -128,6 +138,51 @@ export const generatedRoutes: RouteType[] = [
     name: 'Banner',
     path: '/banner',
     element: <BannerPage />,
+  },
+  {
+    name: 'Banner Basic',
+    path: '/banner-basic',
+    element: <BannerBasicPage />,
+  },
+  {
+    name: 'Banner Error',
+    path: '/banner-error',
+    element: <BannerErrorPage />,
+  },
+  {
+    name: 'Banner Neutral',
+    path: '/banner-neutral',
+    element: <BannerNeutralPage />,
+  },
+  {
+    name: 'Banner No Dismiss',
+    path: '/banner-no-dismiss',
+    element: <BannerNoDismissPage />,
+  },
+  {
+    name: 'Banner Persistent',
+    path: '/banner-persistent',
+    element: <BannerPersistentPage />,
+  },
+  {
+    name: 'Banner Prefixed',
+    path: '/banner-prefixed',
+    element: <BannerPrefixedPage />,
+  },
+  {
+    name: 'Banner Slotted Description Heading',
+    path: '/banner-slotted-description-heading',
+    element: <BannerSlottedDescriptionHeadingPage />,
+  },
+  {
+    name: 'Banner Slotted Description Title',
+    path: '/banner-slotted-description-title',
+    element: <BannerSlottedDescriptionTitlePage />,
+  },
+  {
+    name: 'Banner Warning',
+    path: '/banner-warning',
+    element: <BannerWarningPage />,
   },
   {
     name: 'Button',
@@ -333,6 +388,11 @@ export const generatedRoutes: RouteType[] = [
     name: 'Flyout Position Start',
     path: '/flyout-position-start',
     element: <FlyoutPositionStartPage />,
+  },
+  {
+    name: 'Flyout Prefixed Header Footer Subfooter',
+    path: '/flyout-prefixed-header-footer-subfooter',
+    element: <FlyoutPrefixedHeaderFooterSubfooterPage />,
   },
   {
     name: 'Grid',

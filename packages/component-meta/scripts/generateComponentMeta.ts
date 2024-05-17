@@ -2,7 +2,7 @@ import * as fs from 'fs';
 import * as path from 'path';
 import { globbySync } from 'globby';
 import { kebabCase } from 'change-case';
-import { type TagName, TAG_NAMES, INTERNAL_TAG_NAMES } from '@porsche-design-system/shared';
+import { type TagName, TAG_NAMES, INTERNAL_TAG_NAMES, TAG_NAMES_WITH_CHUNK } from '@porsche-design-system/shared';
 import { ICONS_MANIFEST } from '@porsche-design-system/assets';
 
 const glue = '\n\n';
@@ -62,6 +62,7 @@ const generateComponentMeta = (): void => {
   isExperimental?: boolean;
   isDelegatingFocus: boolean;
   isInternal: boolean;
+  isChunked: boolean; // component is part of a chunk
   isThemeable: boolean;
   requiredParent?: TagName; // typically components with an \`-item\` suffix need the right parent in order to work
   requiredRootNode?: TagName[]; // components, that use this internal component within their shadow DOM
@@ -140,6 +141,7 @@ const generateComponentMeta = (): void => {
     isExperimental?: boolean;
     isDelegatingFocus: boolean;
     isInternal: boolean;
+    isChunked: boolean; // component is part of a chunk
     isThemeable: boolean;
     requiredParent?: TagName; // typically components with an `-item` suffix need the right parent in order to work
     requiredRootNode?: TagName[]; // components, that use this internal component within their shadow DOM
@@ -214,6 +216,7 @@ const generateComponentMeta = (): void => {
     const isExperimental = !!source.match(/\/\*\* @experimental \*\/\n@Component\({/);
     const isDelegatingFocus = source.includes('delegatesFocus: true');
     const isInternal = INTERNAL_TAG_NAMES.includes(tagName);
+    const isChunked = (TAG_NAMES_WITH_CHUNK as unknown as TagName[]).includes(tagName);
     const isThemeable = source.includes('public theme?: Theme');
     const hasSlot = source.includes('<slot');
     const hasEvent = source.includes('@Event') && source.includes('EventEmitter');
@@ -734,7 +737,7 @@ const generateComponentMeta = (): void => {
 
     // observed attributes
     let observedAttributes: ComponentMeta['observedAttributes'] = [];
-    const [, rawObservedAttributes] = /observeAttributes\([a-zA-Z.]+, (\[.+]),.+?\);/.exec(source) || [];
+    const [, rawObservedAttributes] = /observeAttributes\([a-zA-Z.]+, (\[.+])/.exec(source) || [];
     if (rawObservedAttributes) {
       observedAttributes = eval(rawObservedAttributes);
     }
@@ -744,6 +747,7 @@ const generateComponentMeta = (): void => {
       ...(isExperimental && { isExperimental }),
       isDelegatingFocus,
       isInternal,
+      isChunked,
       isThemeable,
       requiredParent,
       ...(requiredRootNodes.length && { requiredRootNode: requiredRootNodes }), // TODO: singular / plural mismatch?

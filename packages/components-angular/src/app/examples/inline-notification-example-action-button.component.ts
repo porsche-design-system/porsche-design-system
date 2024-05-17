@@ -5,6 +5,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   template: `
     <p-inline-notification
       [heading]="'Some heading'"
+      [heading-tag]="'h4'"
       [description]="'Some description.'"
       [actionLabel]="'Retry'"
       [actionIcon]="'reset'"

@@ -11,11 +11,11 @@ which needs to be injected into the `<head>` of your `index.html`.
 
 ## Supported options
 
-| Option     | Description                                                                                                              | Type     | Default     |
-| ---------- | ------------------------------------------------------------------------------------------------------------------------ | -------- | ----------- | -------- |
-| `appTitle` | **Mandatory:** Title of your app which will be reflected in the meta tag.                                                | `string` | `undefined` |
-| `cdn`      | Decides from which CDN the resources are loaded.                                                                         | `'auto'  | 'cn'`       | `'auto'` |
-| `format`   | Defines the output format of the partial. By default it returns a html string, with `jsx` it returns valid jsx elements. | `'html'  | 'jsx'`      | `'html'` |
+| Option     | Description                                                                                                                                                                                                        | Type     | Default     |
+| ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | -------- | ----------- | -------- | -------- |
+| `appTitle` | **Mandatory:** Title of your app which will be reflected in the meta tag.                                                                                                                                          | `string` | `undefined` |
+| `cdn`      | Decides from which CDN the resources are loaded.                                                                                                                                                                   | `'auto'  | 'cn'`       | `'auto'` |
+| `format`   | Defines the output format of the partial. By default, it returns a html string, with `jsx` it returns valid jsx elements. When using the <code class="no-before">js</code> option a javascript object is returned. | `'html'  | 'jsx'       | 'js'`    | `'html'` |
 
 ## Examples
 

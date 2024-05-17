@@ -3,6 +3,7 @@ import type { AriaAttributes, BreakpointCustomizable, PropTypes } from '../../ty
 import { GROUP_DIRECTIONS } from '../../styles/group-direction-styles';
 import {
   AllowedTypes,
+  applyConstructableStylesheetStyles,
   attachComponentCss,
   getNamedSlotOrThrow,
   getPrefixedTagNames,
@@ -27,6 +28,7 @@ import {
   setRequiredPropsOfSlottedLinks,
 } from './link-tile-model-signature-utils';
 import { type JSXBase } from '@stencil/core/internal';
+import { getSlottedPictureImageStyles } from '../../styles/global/slotted-picture-image-styles';
 
 const propTypes: PropTypes<typeof LinkTileModelSignature> = {
   model: AllowedTypes.oneOf<LinkTileModelSignatureModel>(LINK_TILE_MODEL_SIGNATURE_MODELS),
@@ -64,8 +66,12 @@ export class LinkTileModelSignature {
   // prettier-ignore
   @Prop() public linkDirection?: BreakpointCustomizable<LinkTileModelSignatureLinkDirection> = { base: 'column', xs: 'row' };
 
-  /** Sets a custom headline tag which wraps the heading to enhance semantics. */
+  /** Sets a heading tag, so it fits correctly within the outline of the page. */
   @Prop() public headingTag?: LinkTileModelSignatureHeadingTag = 'h2';
+
+  public connectedCallback(): void {
+    applyConstructableStylesheetStyles(this.host, getSlottedPictureImageStyles);
+  }
 
   public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
     return hasPropValueChanged(newVal, oldVal);

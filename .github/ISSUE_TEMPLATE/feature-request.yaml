@@ -1,0 +1,70 @@
+name: 🆕 Feature Request
+description: Propose new functionality that everyone can benefit from
+title: "[FEATURE] - Short description"
+labels: ["community", "to be refined"]
+projects: ["porsche-design-system/14"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to fill out this feature request!
+  - type: dropdown
+    id: portfolio
+    attributes:
+      label: Portfolio
+      description: For which Porsche Portfolio are you requesting the feature?
+      options:
+        - No Portfolio
+        - Customer
+        - Delivery
+        - Employee
+        - Enterprise
+        - Finance
+        - IT4All
+        - Product
+    validations:
+      required: true
+  - type: input
+    id: team
+    attributes:
+      label: ART and Team
+      description: For which ART and team (separated with slash) are you requesting the feature?
+      placeholder: e.g. BaM / Model Page
+  - type: input
+    id: contact
+    attributes:
+      label: Contact Details
+      description: By providing contact details, you agree that they are publicly visible and we may contact you for the purpose of further inquiries.
+      placeholder: e.g. email@example.com
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem
+      description: Give a clear description of the context and problem that the new feature should solve. Be sure to include screenshots or videos to illustrate the problem.
+      placeholder: e.g. In the context of a contact form users need the possiblity to have select multiple options for salutation. This is currently not supported with the select component.
+    validations:
+      required: true
+  - type: textarea
+    id: solution
+    attributes:
+      label: Solution ideas and examples
+      description: Describe solution ideas or examples that could to solve the problem. If possible, include screenshots, videos, designs or example links to illustrate the solution ideas.
+      placeholder: e.g. Enable multi select configuration in the select component, similar to https://react-select.com/
+    validations:
+      required: true
+  - type: dropdown
+    id: priority
+    attributes:
+      label: Business priority
+      description: Select the priority depending on the urgency of related release dates or legal requirements.
+      options:
+        - Urgent
+        - High
+        - Medium
+        - Low
+  - type: input
+    id: resources
+    attributes:
+      label: Available assisting resources
+      description: What resources do you have to assist this effort?
+      placeholder: e.g. UX Designer (4 days), Developer (4 days)

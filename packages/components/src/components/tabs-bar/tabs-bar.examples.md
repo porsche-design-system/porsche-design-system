@@ -16,7 +16,7 @@ Have a look at the [Tabs](components/tabs) component.
 It is a controlled component. This means it does not contain any internal state, and you are in full control over its
 behavior.
 
-<Notification heading="Important note" state="warning">
+<Notification heading="Important note" heading-tag="h2" state="warning">
   For documentation purpose we use <code>&lt;button&gt;</code> tags in the examples below to make them clickable without changing the route. 
   For route changes it is mandatory to use <code>&lt;a&gt;</code> tags with <code>href</code> in your application. And be aware of that it's not allowed to mix and match <code>&lt;button&gt;</code> with <code>&lt;a&gt;</code> tags as direct children in the component!
 </Notification>
@@ -32,7 +32,7 @@ change e.g. the state on tab-click or `<a>` tags, if you also have to manipulate
 In order to get notified when the active tabs change, you need to register an event listener for the `update` event
 which is emitted by `p-tabs-bar`.
 
-<Notification heading="Deprecation hint" state="warning">
+<Notification heading="Deprecation hint" heading-tag="h3" state="warning">
   The <code>tabChange</code> event has been deprecated and will be removed with the next major release.<br>
   Please use the <code>update</code> event instead.
 </Notification>
@@ -58,8 +58,15 @@ To be truly accessible you need to provide some more information because every t
 which points to the corresponding `id` of the `tabpanel`. The content placeholder needs the `role="tabpanel"` and the
 attribute `aria-labelledby` which points to the unique id of the corresponding tab (`aria-controls`).
 
-You must also take care of the focus handling of the tabpanel. Therefor the active tab panel must have an `tabindex="0"`
-to receive keyboard focus and the focus indicator must be styled accordingly.
+You must also take care of the focus handling of the tabpanel. Therefore the active tab panel must have an
+`tabindex="0"` to receive keyboard focus and the focus indicator must be styled accordingly. Use the provided
+[focus style](styles/focus) like this:
+
+```
+p-tabs-bar ~ [tabindex="0"][role="tabpanel"] {
+    @include pds-focus;
+}
+```
 
 <Playground class="playground-tabs-bar" :frameworkMarkup="codeExampleAccessibility" :markup="accessibility" :config="config"></Playground>
 
@@ -80,7 +87,7 @@ to receive keyboard focus and the focus indicator must be styled accordingly.
 
 ## Weight
 
-<Notification heading="Deprecation hint" state="warning">
+<Notification heading="Deprecation hint" heading-tag="h3" state="warning">
   The <code>semibold</code> value has been deprecated and will be removed with the next major release.<br>
   Please use the <code>semi-bold</code> value instead.
 </Notification>
@@ -94,7 +101,7 @@ to receive keyboard focus and the focus indicator must be styled accordingly.
 If the amount of tabs exceeds the viewport, the component renders arrow-buttons to help with horizontal scrolling. The
 background and gradient has to align to your chosen background.
 
-<Notification heading="Deprecation hint" state="warning">
+<Notification heading="Deprecation hint" heading-tag="h3" state="warning">
   The <code>gradientColorScheme</code> property has been deprecated and will be removed with the next major release.<br>
   Please use the <code>gradientColor</code> property instead.
 </Notification>
@@ -233,5 +240,9 @@ ${['One', 'Two', 'Three'].map(buildButton).join('\n')}
 
   :deep(div[role=tabpanel]) {
     margin-top: $pds-spacing-static-small;
+  }
+
+  :deep(p-tabs-bar ~ [tabindex="0"][role="tabpanel"]) {
+    @include pds-focus;
   }
 </style>

@@ -9,11 +9,11 @@ describe('warnIfAriaAndHeadingPropsAreUndefined()', () => {
     warnIfAriaAndHeadingPropsAreUndefined(host, false, "{'aria-label': 'OtherHeading'}");
     warnIfAriaAndHeadingPropsAreUndefined(host, true, "{'aria-label': 'OtherHeading'}");
 
-    expect(spy).not.toBeCalled();
+    expect(spy).not.toHaveBeenCalled();
 
     warnIfAriaAndHeadingPropsAreUndefined(host, false, undefined);
     warnIfAriaAndHeadingPropsAreUndefined(host, false, null);
 
-    expect(spy).toBeCalledTimes(2);
+    expect(spy).toHaveBeenCalledTimes(2);
   });
 });

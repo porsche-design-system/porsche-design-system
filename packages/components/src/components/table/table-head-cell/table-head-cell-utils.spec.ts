@@ -50,13 +50,13 @@ describe('createSortedEventInitDictDetail()', () => {
   it('should call toggleDirection() when active', () => {
     const spy = jest.spyOn(tableUtils, 'toggleDirection');
     createSortedEventInitDictDetail(activeSort);
-    expect(spy).toBeCalledWith('asc');
+    expect(spy).toHaveBeenCalledWith('asc');
   });
 
   it('should not call toggleDirection() when not active', () => {
     const spy = jest.spyOn(tableUtils, 'toggleDirection');
     createSortedEventInitDictDetail(inactiveSort);
-    expect(spy).not.toBeCalled();
+    expect(spy).not.toHaveBeenCalled();
   });
 
   it('should return correct eventInitDict when active', () => {

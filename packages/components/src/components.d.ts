@@ -5,9 +5,9 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
-import { BreakpointCustomizable, ButtonAriaAttribute, ButtonType, ButtonVariant, HeadingSize, IconName, LinkAriaAttribute, LinkTarget, LinkVariant, SelectedAriaAttributes, TextSize, Theme } from "./types";
-import { AccordionSize, AccordionTag, AccordionUpdateEventDetail } from "./components/accordion/accordion-utils";
-import { BannerState, BannerWidth } from "./components/banner/banner-utils";
+import { BreakpointCustomizable, ButtonAriaAttribute, ButtonType, ButtonVariant, HeadingSize, HeadingTag, IconName, LinkAriaAttribute, LinkTarget, LinkVariant, SelectedAriaAttributes, TextSize, Theme } from "./types";
+import { AccordionHeadingTag, AccordionSize, AccordionTag, AccordionUpdateEventDetail } from "./components/accordion/accordion-utils";
+import { BannerHeadingTag, BannerState, BannerWidth } from "./components/banner/banner-utils";
 import { ButtonIcon } from "./components/button/button-utils";
 import { ButtonGroupDirection } from "./components/button-group/button-group-utils";
 import { ButtonPureAlignLabel, ButtonPureAriaAttribute, ButtonPureIcon, ButtonPureSize, ButtonPureType, ButtonPureWeight } from "./components/button-pure/button-pure-utils";
@@ -26,11 +26,10 @@ import { FlyoutAriaAttribute, FlyoutPosition } from "./components/flyout/flyout-
 import { FlyoutNavigationAriaAttribute, FlyoutNavigationUpdateEventDetail } from "./components/flyout-navigation/flyout-navigation/flyout-navigation-utils";
 import { GridDirection, GridGutter, GridWrap } from "./components/grid/grid/grid-utils";
 import { GridItemOffset, GridItemSize } from "./components/grid/grid-item/grid-item-utils";
-import { HeadingTag } from "./components/heading/heading-tag";
 import { HeadingAlign, HeadingColor } from "./components/heading/heading-utils";
 import { HeadlineAlign, HeadlineColor, HeadlineTag, HeadlineVariant } from "./components/headline/headline-utils";
 import { IconAriaAttribute, IconColor, IconSize } from "./components/icon/icon-utils";
-import { InlineNotificationActionIcon, InlineNotificationState } from "./components/inline-notification/inline-notification-utils";
+import { InlineNotificationActionIcon, InlineNotificationHeadingTag, InlineNotificationState } from "./components/inline-notification/inline-notification-utils";
 import { LinkIcon } from "./components/link/link-utils";
 import { LinkPureAlignLabel, LinkPureAriaAttribute, LinkPureIcon, LinkPureSize, LinkPureTarget, LinkPureWeight } from "./components/link-pure/link-pure-utils";
 import { LinkSocialIcon, LinkSocialTarget } from "./components/link-social/link-social-utils";
@@ -40,7 +39,7 @@ import { LinkTileProductAspectRatio, LinkTileProductLikeEventDetail, LinkTilePro
 import { MarqueAriaAttribute, MarqueTarget, MarqueVariant } from "./components/marque/marque-utils";
 import { MarqueSize } from "./components/marque/marque-size";
 import { ModalAriaAttribute, ModalBackdrop } from "./components/modal/modal-utils";
-import { ModelSignatureColor, ModelSignatureModel, ModelSignatureSize } from "./components/model-signature/model-signature-utils";
+import { ModelSignatureColor, ModelSignatureFetchPriority, ModelSignatureModel, ModelSignatureSize } from "./components/model-signature/model-signature-utils";
 import { MultiSelectDropdownDirection, MultiSelectState, MultiSelectUpdateEventDetail } from "./components/multi-select/multi-select/multi-select-utils";
 import { PaginationInternationalization, PaginationMaxNumberOfPageLinks, PaginationUpdateEventDetail } from "./components/pagination/pagination-utils";
 import { PinCodeLength, PinCodeState, PinCodeType, PinCodeUpdateEventDetail } from "./components/pin-code/pin-code-utils";
@@ -67,9 +66,9 @@ import { TextareaWrapperState } from "./components/textarea-wrapper/textarea-wra
 import { ToastMessage } from "./components/toast/toast/toast-manager";
 import { ToastState } from "./components/toast/toast/toast-utils";
 import { WordmarkAriaAttribute, WordmarkSize, WordmarkTarget } from "./components/wordmark/wordmark-utils";
-export { BreakpointCustomizable, ButtonAriaAttribute, ButtonType, ButtonVariant, HeadingSize, IconName, LinkAriaAttribute, LinkTarget, LinkVariant, SelectedAriaAttributes, TextSize, Theme } from "./types";
-export { AccordionSize, AccordionTag, AccordionUpdateEventDetail } from "./components/accordion/accordion-utils";
-export { BannerState, BannerWidth } from "./components/banner/banner-utils";
+export { BreakpointCustomizable, ButtonAriaAttribute, ButtonType, ButtonVariant, HeadingSize, HeadingTag, IconName, LinkAriaAttribute, LinkTarget, LinkVariant, SelectedAriaAttributes, TextSize, Theme } from "./types";
+export { AccordionHeadingTag, AccordionSize, AccordionTag, AccordionUpdateEventDetail } from "./components/accordion/accordion-utils";
+export { BannerHeadingTag, BannerState, BannerWidth } from "./components/banner/banner-utils";
 export { ButtonIcon } from "./components/button/button-utils";
 export { ButtonGroupDirection } from "./components/button-group/button-group-utils";
 export { ButtonPureAlignLabel, ButtonPureAriaAttribute, ButtonPureIcon, ButtonPureSize, ButtonPureType, ButtonPureWeight } from "./components/button-pure/button-pure-utils";
@@ -88,11 +87,10 @@ export { FlyoutAriaAttribute, FlyoutPosition } from "./components/flyout/flyout-
 export { FlyoutNavigationAriaAttribute, FlyoutNavigationUpdateEventDetail } from "./components/flyout-navigation/flyout-navigation/flyout-navigation-utils";
 export { GridDirection, GridGutter, GridWrap } from "./components/grid/grid/grid-utils";
 export { GridItemOffset, GridItemSize } from "./components/grid/grid-item/grid-item-utils";
-export { HeadingTag } from "./components/heading/heading-tag";
 export { HeadingAlign, HeadingColor } from "./components/heading/heading-utils";
 export { HeadlineAlign, HeadlineColor, HeadlineTag, HeadlineVariant } from "./components/headline/headline-utils";
 export { IconAriaAttribute, IconColor, IconSize } from "./components/icon/icon-utils";
-export { InlineNotificationActionIcon, InlineNotificationState } from "./components/inline-notification/inline-notification-utils";
+export { InlineNotificationActionIcon, InlineNotificationHeadingTag, InlineNotificationState } from "./components/inline-notification/inline-notification-utils";
 export { LinkIcon } from "./components/link/link-utils";
 export { LinkPureAlignLabel, LinkPureAriaAttribute, LinkPureIcon, LinkPureSize, LinkPureTarget, LinkPureWeight } from "./components/link-pure/link-pure-utils";
 export { LinkSocialIcon, LinkSocialTarget } from "./components/link-social/link-social-utils";
@@ -102,7 +100,7 @@ export { LinkTileProductAspectRatio, LinkTileProductLikeEventDetail, LinkTilePro
 export { MarqueAriaAttribute, MarqueTarget, MarqueVariant } from "./components/marque/marque-utils";
 export { MarqueSize } from "./components/marque/marque-size";
 export { ModalAriaAttribute, ModalBackdrop } from "./components/modal/modal-utils";
-export { ModelSignatureColor, ModelSignatureModel, ModelSignatureSize } from "./components/model-signature/model-signature-utils";
+export { ModelSignatureColor, ModelSignatureFetchPriority, ModelSignatureModel, ModelSignatureSize } from "./components/model-signature/model-signature-utils";
 export { MultiSelectDropdownDirection, MultiSelectState, MultiSelectUpdateEventDetail } from "./components/multi-select/multi-select/multi-select-utils";
 export { PaginationInternationalization, PaginationMaxNumberOfPageLinks, PaginationUpdateEventDetail } from "./components/pagination/pagination-utils";
 export { PinCodeLength, PinCodeState, PinCodeType, PinCodeUpdateEventDetail } from "./components/pin-code/pin-code-utils";
@@ -140,6 +138,10 @@ export namespace Components {
          */
         "heading"?: string;
         /**
+          * Sets a heading tag, so it fits correctly within the outline of the page.
+         */
+        "headingTag"?: AccordionHeadingTag;
+        /**
           * Defines if accordion is open.
          */
         "open"?: boolean;
@@ -148,7 +150,11 @@ export namespace Components {
          */
         "size"?: BreakpointCustomizable<AccordionSize>;
         /**
-          * Sets a headline tag, so it fits correctly within the outline of the page.
+          * @experimental Sticks the Accordion heading at the top, fixed while scrolling
+         */
+        "sticky"?: boolean;
+        /**
+          * @deprecated , will be removed with next major release, use `heading-tag` instead. Sets a heading tag, so it fits correctly within the outline of the page.
          */
         "tag"?: AccordionTag;
         /**
@@ -169,6 +175,10 @@ export namespace Components {
           * Heading of the banner.
          */
         "heading"?: string;
+        /**
+          * Sets a heading tag, so it fits correctly within the outline of the page.
+         */
+        "headingTag"?: BannerHeadingTag;
         /**
           * If true, the banner is open.
          */
@@ -296,6 +306,10 @@ export namespace Components {
           * Specifies the type of the button.
          */
         "type"?: ButtonPureType;
+        /**
+          * Shows an underline under the label.
+         */
+        "underline"?: boolean;
         /**
           * Defines the value associated with the button's name when it's submitted with the form data. This value is passed to the server in params when the form is submitted using this button.
          */
@@ -508,7 +522,7 @@ export namespace Components {
          */
         "size"?: BreakpointCustomizable<DisplaySize>;
         /**
-          * Sets a custom HTML tag depending on the usage of the display component.
+          * Sets a heading tag, so it fits correctly within the outline of the page.
          */
         "tag"?: DisplayTag;
         /**
@@ -748,7 +762,7 @@ export namespace Components {
          */
         "size"?: BreakpointCustomizable<HeadingSize>;
         /**
-          * Sets a custom HTML tag depending on the usage of the heading component.
+          * Sets a heading tag, so it fits correctly within the outline of the page.
          */
         "tag"?: HeadingTag;
         /**
@@ -841,6 +855,10 @@ export namespace Components {
           * Heading of the inline-notification.
          */
         "heading"?: string;
+        /**
+          * Sets a heading tag, so it fits correctly within the outline of the page.
+         */
+        "headingTag"?: InlineNotificationHeadingTag;
         /**
           * @deprecated since v3.0.0, will be removed with next major release, use `dismissButton` instead. Defines if the inline-notification can be closed/removed by the user.
          */
@@ -1064,7 +1082,7 @@ export namespace Components {
          */
         "heading": string;
         /**
-          * Sets a custom headline tag which wraps the heading to enhance semantics.
+          * Sets a heading tag, so it fits correctly within the outline of the page.
          */
         "headingTag"?: LinkTileModelSignatureHeadingTag;
         /**
@@ -1203,11 +1221,23 @@ export namespace Components {
          */
         "color"?: ModelSignatureColor;
         /**
+          * Defines the fetch priority of the model signature. In the end it is just a recommendation to the browser, but it defines the priority on its own.
+         */
+        "fetchPriority"?: ModelSignatureFetchPriority;
+        /**
+          * Defines whether the model signature is always loaded or only loaded when it is in the viewport (this feature may not work reliably).
+         */
+        "lazy"?: boolean;
+        /**
           * Adapts the model of the component.
          */
         "model"?: ModelSignatureModel;
         /**
-          * Adapts the size of the component.
+          * When set to `true`, then all model signatures are visually aligned with each other. When set to `false` the model signature comes without any safe zone.
+         */
+        "safeZone"?: boolean;
+        /**
+          * Adapts the size of the component. When set to `inherit` a CSS `width` or `height` needs to be defined on the host but not both.
          */
         "size"?: ModelSignatureSize;
         /**
@@ -2840,6 +2870,10 @@ declare namespace LocalJSX {
          */
         "heading"?: string;
         /**
+          * Sets a heading tag, so it fits correctly within the outline of the page.
+         */
+        "headingTag"?: AccordionHeadingTag;
+        /**
           * @deprecated since v3.0.0, will be removed with next major release, use `update` event instead. Emitted when accordion state is changed.
          */
         "onAccordionChange"?: (event: PAccordionCustomEvent<AccordionUpdateEventDetail>) => void;
@@ -2856,7 +2890,11 @@ declare namespace LocalJSX {
          */
         "size"?: BreakpointCustomizable<AccordionSize>;
         /**
-          * Sets a headline tag, so it fits correctly within the outline of the page.
+          * @experimental Sticks the Accordion heading at the top, fixed while scrolling
+         */
+        "sticky"?: boolean;
+        /**
+          * @deprecated , will be removed with next major release, use `heading-tag` instead. Sets a heading tag, so it fits correctly within the outline of the page.
          */
         "tag"?: AccordionTag;
         /**
@@ -2877,6 +2915,10 @@ declare namespace LocalJSX {
           * Heading of the banner.
          */
         "heading"?: string;
+        /**
+          * Sets a heading tag, so it fits correctly within the outline of the page.
+         */
+        "headingTag"?: BannerHeadingTag;
         /**
           * Emitted when the close button is clicked.
          */
@@ -3008,6 +3050,10 @@ declare namespace LocalJSX {
           * Specifies the type of the button.
          */
         "type"?: ButtonPureType;
+        /**
+          * Shows an underline under the label.
+         */
+        "underline"?: boolean;
         /**
           * Defines the value associated with the button's name when it's submitted with the form data. This value is passed to the server in params when the form is submitted using this button.
          */
@@ -3228,7 +3274,7 @@ declare namespace LocalJSX {
          */
         "size"?: BreakpointCustomizable<DisplaySize>;
         /**
-          * Sets a custom HTML tag depending on the usage of the display component.
+          * Sets a heading tag, so it fits correctly within the outline of the page.
          */
         "tag"?: DisplayTag;
         /**
@@ -3480,7 +3526,7 @@ declare namespace LocalJSX {
          */
         "size"?: BreakpointCustomizable<HeadingSize>;
         /**
-          * Sets a custom HTML tag depending on the usage of the heading component.
+          * Sets a heading tag, so it fits correctly within the outline of the page.
          */
         "tag"?: HeadingTag;
         /**
@@ -3573,6 +3619,10 @@ declare namespace LocalJSX {
           * Heading of the inline-notification.
          */
         "heading"?: string;
+        /**
+          * Sets a heading tag, so it fits correctly within the outline of the page.
+         */
+        "headingTag"?: InlineNotificationHeadingTag;
         /**
           * Emitted when the action button is clicked.
          */
@@ -3804,7 +3854,7 @@ declare namespace LocalJSX {
          */
         "heading"?: string;
         /**
-          * Sets a custom headline tag which wraps the heading to enhance semantics.
+          * Sets a heading tag, so it fits correctly within the outline of the page.
          */
         "headingTag"?: LinkTileModelSignatureHeadingTag;
         /**
@@ -3955,11 +4005,23 @@ declare namespace LocalJSX {
          */
         "color"?: ModelSignatureColor;
         /**
+          * Defines the fetch priority of the model signature. In the end it is just a recommendation to the browser, but it defines the priority on its own.
+         */
+        "fetchPriority"?: ModelSignatureFetchPriority;
+        /**
+          * Defines whether the model signature is always loaded or only loaded when it is in the viewport (this feature may not work reliably).
+         */
+        "lazy"?: boolean;
+        /**
           * Adapts the model of the component.
          */
         "model"?: ModelSignatureModel;
         /**
-          * Adapts the size of the component.
+          * When set to `true`, then all model signatures are visually aligned with each other. When set to `false` the model signature comes without any safe zone.
+         */
+        "safeZone"?: boolean;
+        /**
+          * Adapts the size of the component. When set to `inherit` a CSS `width` or `height` needs to be defined on the host but not both.
          */
         "size"?: ModelSignatureSize;
         /**

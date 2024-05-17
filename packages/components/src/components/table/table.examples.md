@@ -71,7 +71,7 @@ type TableHeadCellSort = {
 Upon clicking a sortable `p-table-head-cell` element, the `p-table` emits an `update` event that you should subscribe
 to.
 
-<Notification heading="Deprecation hint" state="warning">
+<Notification heading="Deprecation hint" heading-tag="h4" state="warning">
   The <code>sortingChange</code> event has been deprecated and will be removed with the next major release.<br>
   Please use the <code>update</code> event instead.
 </Notification>
@@ -119,7 +119,7 @@ The appearance of a table's contents can be customized as illustrated in the fol
         <p-table-cell>
           <p-flex>
             <p-flex-item>
-              <img :src="item.imageUrl" width="80" height="45" style="margin-inline-end: 8px" alt="">
+              <img :src="item.imageUrl" width="80" height="45" style="margin-inline-end: 8px; object-fit: contain" alt="">
             </p-flex-item>
             <p-flex-item>
               <p-text :theme="theme" weight="semibold">{{ item.model }}</p-text>

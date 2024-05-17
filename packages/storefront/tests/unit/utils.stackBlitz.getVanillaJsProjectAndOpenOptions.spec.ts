@@ -68,7 +68,7 @@ describe('replaceSharedAsyncFunctionWithConstants()', () => {
 
     replaceSharedAsyncFunctionWithConstants(markup, sharedImportKeys);
 
-    expect(spy).toBeCalledWith(sharedImportKeys);
+    expect(spy).toHaveBeenCalledWith(sharedImportKeys);
   });
 
   it('should call replace() with correct parameters', () => {
@@ -80,7 +80,7 @@ describe('replaceSharedAsyncFunctionWithConstants()', () => {
     jest.spyOn(stackBlitzHelperUtils, 'getSharedImportConstants').mockReturnValue(getSharedImportConstantsMock);
 
     expect(replaceSharedAsyncFunctionWithConstants(markup, sharedImportKeys)).toBe(replaceMockValue);
-    expect(spy).toBeCalledWith(/const { .* } = await [a-zA-Z]+\(\);/, getSharedImportConstantsMock);
+    expect(spy).toHaveBeenCalledWith(/const { .* } = await [a-zA-Z]+\(\);/, getSharedImportConstantsMock);
   });
 
   it('should return unmodified markup parameter if regex does not match', () => {
@@ -96,16 +96,16 @@ describe('getIndexHtml()', () => {
 
   it('should call extendMarkupWithLoadFunction() and replaceSharedAsyncFunctionWithConstants() with correct parameters', () => {
     const getExtendMarkupWithLoadFunctionSpy = jest
-      .spyOn(getVanillaJsProjectAndOpenOptionsUtils, 'getExtendedMarkupWithLoadFunction')
-      .mockReturnValue(mockedMarkupWithLoadFunction);
+    .spyOn(getVanillaJsProjectAndOpenOptionsUtils, 'getExtendedMarkupWithLoadFunction')
+    .mockReturnValue(mockedMarkupWithLoadFunction);
     const replaceSharedAsyncFunctionWithConstantsSpy = jest
-      .spyOn(getVanillaJsProjectAndOpenOptionsUtils, 'replaceSharedAsyncFunctionWithConstants')
-      .mockReturnValue(mockedMarkup);
+    .spyOn(getVanillaJsProjectAndOpenOptionsUtils, 'replaceSharedAsyncFunctionWithConstants')
+    .mockReturnValue(mockedMarkup);
 
     getIndexHtml(mockedMarkup, 'ltr', '', [], sharedImportKeys, '');
 
-    expect(getExtendMarkupWithLoadFunctionSpy).toBeCalledWith(mockedMarkup);
-    expect(replaceSharedAsyncFunctionWithConstantsSpy).toBeCalledWith(mockedMarkupWithLoadFunction, sharedImportKeys);
+    expect(getExtendMarkupWithLoadFunctionSpy).toHaveBeenCalledWith(mockedMarkup);
+    expect(replaceSharedAsyncFunctionWithConstantsSpy).toHaveBeenCalledWith(mockedMarkupWithLoadFunction, sharedImportKeys);
   });
 
   describe('development mode or non stable storefront release (e.g. /issue/…, /release/…)', () => {
@@ -115,44 +115,44 @@ describe('getIndexHtml()', () => {
 
     it('should return correct markup without externalDependencies', () => {
       jest
-        .spyOn(getVanillaJsProjectAndOpenOptionsUtils, 'getExtendedMarkupWithLoadFunction')
-        .mockReturnValue(mockedMarkupWithLoadFunction);
+      .spyOn(getVanillaJsProjectAndOpenOptionsUtils, 'getExtendedMarkupWithLoadFunction')
+      .mockReturnValue(mockedMarkupWithLoadFunction);
       jest
-        .spyOn(getVanillaJsProjectAndOpenOptionsUtils, 'replaceSharedAsyncFunctionWithConstants')
-        .mockReturnValue(mockedMarkup);
+      .spyOn(getVanillaJsProjectAndOpenOptionsUtils, 'replaceSharedAsyncFunctionWithConstants')
+      .mockReturnValue(mockedMarkup);
 
       expect(getIndexHtml(mockedMarkup, 'ltr', mockedGlobalStyles, [], sharedImportKeys, '')).toMatchSnapshot();
     });
 
     it('should return correct markup with rtl mode', () => {
       jest
-        .spyOn(getVanillaJsProjectAndOpenOptionsUtils, 'getExtendedMarkupWithLoadFunction')
-        .mockReturnValue(mockedMarkupWithLoadFunction);
+      .spyOn(getVanillaJsProjectAndOpenOptionsUtils, 'getExtendedMarkupWithLoadFunction')
+      .mockReturnValue(mockedMarkupWithLoadFunction);
       jest
-        .spyOn(getVanillaJsProjectAndOpenOptionsUtils, 'replaceSharedAsyncFunctionWithConstants')
-        .mockReturnValue(mockedMarkup);
+      .spyOn(getVanillaJsProjectAndOpenOptionsUtils, 'replaceSharedAsyncFunctionWithConstants')
+      .mockReturnValue(mockedMarkup);
 
       expect(getIndexHtml(mockedMarkup, 'rtl', mockedGlobalStyles, [], sharedImportKeys, '')).toMatchSnapshot();
     });
 
     it('should return correct markup with externalDependencies', () => {
       jest
-        .spyOn(getVanillaJsProjectAndOpenOptionsUtils, 'getExtendedMarkupWithLoadFunction')
-        .mockReturnValue(mockedMarkupWithLoadFunction);
+      .spyOn(getVanillaJsProjectAndOpenOptionsUtils, 'getExtendedMarkupWithLoadFunction')
+      .mockReturnValue(mockedMarkupWithLoadFunction);
       jest
-        .spyOn(getVanillaJsProjectAndOpenOptionsUtils, 'replaceSharedAsyncFunctionWithConstants')
-        .mockReturnValue(mockedMarkup);
+      .spyOn(getVanillaJsProjectAndOpenOptionsUtils, 'replaceSharedAsyncFunctionWithConstants')
+      .mockReturnValue(mockedMarkup);
 
       expect(getIndexHtml(mockedMarkup, 'ltr', mockedGlobalStyles, ['imask'], sharedImportKeys, '')).toMatchSnapshot();
     });
 
     it('should return correct markup when chosen pds version for bug reporting', () => {
       jest
-        .spyOn(getVanillaJsProjectAndOpenOptionsUtils, 'getExtendedMarkupWithLoadFunction')
-        .mockReturnValue(mockedMarkupWithLoadFunction);
+      .spyOn(getVanillaJsProjectAndOpenOptionsUtils, 'getExtendedMarkupWithLoadFunction')
+      .mockReturnValue(mockedMarkupWithLoadFunction);
       jest
-        .spyOn(getVanillaJsProjectAndOpenOptionsUtils, 'replaceSharedAsyncFunctionWithConstants')
-        .mockReturnValue(mockedMarkup);
+      .spyOn(getVanillaJsProjectAndOpenOptionsUtils, 'replaceSharedAsyncFunctionWithConstants')
+      .mockReturnValue(mockedMarkup);
 
       expect(getIndexHtml(mockedMarkup, 'ltr', mockedGlobalStyles, [], sharedImportKeys, '1.2.3')).toMatchSnapshot();
     });
@@ -165,33 +165,33 @@ describe('getIndexHtml()', () => {
 
     it('should return correct markup without externalDependencies', () => {
       jest
-        .spyOn(getVanillaJsProjectAndOpenOptionsUtils, 'getExtendedMarkupWithLoadFunction')
-        .mockReturnValue(mockedMarkupWithLoadFunction);
+      .spyOn(getVanillaJsProjectAndOpenOptionsUtils, 'getExtendedMarkupWithLoadFunction')
+      .mockReturnValue(mockedMarkupWithLoadFunction);
       jest
-        .spyOn(getVanillaJsProjectAndOpenOptionsUtils, 'replaceSharedAsyncFunctionWithConstants')
-        .mockReturnValue(mockedMarkup);
+      .spyOn(getVanillaJsProjectAndOpenOptionsUtils, 'replaceSharedAsyncFunctionWithConstants')
+      .mockReturnValue(mockedMarkup);
 
       expect(getIndexHtml(mockedMarkup, 'ltr', mockedGlobalStyles, [], sharedImportKeys, '')).toMatchSnapshot();
     });
 
     it('should return correct markup with externalDependencies', () => {
       jest
-        .spyOn(getVanillaJsProjectAndOpenOptionsUtils, 'getExtendedMarkupWithLoadFunction')
-        .mockReturnValue(mockedMarkupWithLoadFunction);
+      .spyOn(getVanillaJsProjectAndOpenOptionsUtils, 'getExtendedMarkupWithLoadFunction')
+      .mockReturnValue(mockedMarkupWithLoadFunction);
       jest
-        .spyOn(getVanillaJsProjectAndOpenOptionsUtils, 'replaceSharedAsyncFunctionWithConstants')
-        .mockReturnValue(mockedMarkup);
+      .spyOn(getVanillaJsProjectAndOpenOptionsUtils, 'replaceSharedAsyncFunctionWithConstants')
+      .mockReturnValue(mockedMarkup);
 
       expect(getIndexHtml(mockedMarkup, 'ltr', mockedGlobalStyles, ['imask'], sharedImportKeys, '')).toMatchSnapshot();
     });
 
     it('should return correct markup when chosen pds version for bug reporting', () => {
       jest
-        .spyOn(getVanillaJsProjectAndOpenOptionsUtils, 'getExtendedMarkupWithLoadFunction')
-        .mockReturnValue(mockedMarkupWithLoadFunction);
+      .spyOn(getVanillaJsProjectAndOpenOptionsUtils, 'getExtendedMarkupWithLoadFunction')
+      .mockReturnValue(mockedMarkupWithLoadFunction);
       jest
-        .spyOn(getVanillaJsProjectAndOpenOptionsUtils, 'replaceSharedAsyncFunctionWithConstants')
-        .mockReturnValue(mockedMarkup);
+      .spyOn(getVanillaJsProjectAndOpenOptionsUtils, 'replaceSharedAsyncFunctionWithConstants')
+      .mockReturnValue(mockedMarkup);
 
       expect(getIndexHtml(mockedMarkup, 'ltr', mockedGlobalStyles, [], sharedImportKeys, '1.2.3')).toMatchSnapshot();
     });
@@ -235,7 +235,7 @@ describe('getDependencies()', () => {
 
     getDependencies(externalDependencies, '');
 
-    expect(spy).toBeCalledWith(externalDependencies, dependencyMap);
+    expect(spy).toHaveBeenCalledWith(externalDependencies, dependencyMap);
   });
 
   it('should return correct StackBlitzProjectDependencies with externalDependency for stable storefront release (e.g. /v2/…, /v3/…)', () => {
@@ -310,9 +310,9 @@ describe('getVanillaJsProjectAndOpenOptions()', () => {
 
     getVanillaJsProjectAndOpenOptions(stackBlitzFrameworkOpts);
 
-    expect(getIndexHtmlSpy).toBeCalledWith(markup, dir, globalStyles, externalDependencies, sharedImportKeys, '');
-    expect(getDependenciesSpy).toBeCalledWith(externalDependencies, '');
-    expect(getIndexJsSpy).toBeCalled();
+    expect(getIndexHtmlSpy).toHaveBeenCalledWith(markup, dir, globalStyles, externalDependencies, sharedImportKeys, '');
+    expect(getDependenciesSpy).toHaveBeenCalledWith(externalDependencies, '');
+    expect(getIndexJsSpy).toHaveBeenCalled();
   });
 
   it('should return correct StackBlitzProjectAndOpenOptions', () => {

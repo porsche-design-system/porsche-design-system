@@ -1,25 +1,30 @@
 import { Component, Element, Event, type EventEmitter, h, Host, Prop } from '@stencil/core';
 import {
   AllowedTypes,
+  applyConstructableStylesheetStyles,
   attachComponentCss,
   getPrefixedTagNames,
   hasPropValueChanged,
   HEADING_TAGS,
   THEMES,
   validateProps,
+  warnIfDeprecatedPropIsUsed,
 } from '../../utils';
 import type { BreakpointCustomizable, PropTypes, Theme } from '../../types';
-import type { AccordionSize, AccordionTag, AccordionUpdateEventDetail } from './accordion-utils';
+import type { AccordionHeadingTag, AccordionSize, AccordionTag, AccordionUpdateEventDetail } from './accordion-utils';
 import { ACCORDION_SIZES } from './accordion-utils';
 import { getComponentCss } from './accordion-styles';
+import { getSlottedAnchorStyles } from '../../styles';
 
 const propTypes: PropTypes<typeof Accordion> = {
   size: AllowedTypes.breakpoint<AccordionSize>(ACCORDION_SIZES),
   theme: AllowedTypes.oneOf<Theme>(THEMES),
   heading: AllowedTypes.string,
-  tag: AllowedTypes.oneOf<AccordionTag>(HEADING_TAGS),
+  headingTag: AllowedTypes.oneOf<AccordionHeadingTag>(HEADING_TAGS),
+  tag: AllowedTypes.oneOf<AccordionTag>([undefined, ...HEADING_TAGS]),
   open: AllowedTypes.boolean,
   compact: AllowedTypes.boolean,
+  sticky: AllowedTypes.boolean,
 };
 
 @Component({
@@ -38,14 +43,24 @@ export class Accordion {
   /** Defines the heading used in accordion. */
   @Prop() public heading?: string;
 
-  /** Sets a headline tag, so it fits correctly within the outline of the page. */
-  @Prop() public tag?: AccordionTag = 'h2';
+  /** Sets a heading tag, so it fits correctly within the outline of the page. */
+  @Prop() public headingTag?: AccordionHeadingTag = 'h2';
+
+  /**
+   * @deprecated, will be removed with next major release, use `heading-tag` instead.
+   * Sets a heading tag, so it fits correctly within the outline of the page. */
+  @Prop() public tag?: AccordionTag;
 
   /** Defines if accordion is open. */
   @Prop() public open?: boolean;
 
   /** Displays the Accordion as compact version with thinner border and smaller paddings. */
   @Prop() public compact?: boolean;
+
+  /**
+   * @experimental Sticks the Accordion heading at the top, fixed while scrolling
+   */
+  @Prop() public sticky?: boolean;
 
   /**
    * @deprecated since v3.0.0, will be removed with next major release, use `update` event instead.
@@ -55,19 +70,24 @@ export class Accordion {
   /** Emitted when accordion state is changed. */
   @Event({ bubbles: false }) public update: EventEmitter<AccordionUpdateEventDetail>;
 
+  public connectedCallback(): void {
+    applyConstructableStylesheetStyles(this.host, getSlottedAnchorStyles);
+  }
+
   public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
     return hasPropValueChanged(newVal, oldVal);
   }
 
   public render(): JSX.Element {
     validateProps(this, propTypes);
-    attachComponentCss(this.host, getComponentCss, this.size, this.compact, this.open, this.theme);
+    warnIfDeprecatedPropIsUsed<typeof Accordion>(this, 'tag', 'Please use heading-tag prop instead.');
+    attachComponentCss(this.host, getComponentCss, this.size, this.compact, this.open, this.theme, this.sticky);
 
     const buttonId = 'accordion-control';
     const contentId = 'accordion-panel';
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
-    const Heading = this.tag;
+    const Heading = this.tag || this.headingTag;
 
     return (
       <Host>

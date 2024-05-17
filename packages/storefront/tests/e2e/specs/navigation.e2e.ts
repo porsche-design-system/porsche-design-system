@@ -17,6 +17,17 @@ const [, rootStyles] = /(:root {[\s\S]+?})/.exec(styleOverrides) || [];
 test.beforeEach(async ({ page }) => {
   initConsoleObserver(page);
 
+  page.on('request', (request) => {
+    const url = request.url();
+    const allowedURLs = [
+      'localhost:3001',
+      'localhost:8080',
+      'https://porsche-design-system.github.io/',
+      'https://registry.npmjs.org/@porsche-design-system/components-js',
+    ];
+    expect(allowedURLs.some((allowedURL) => url.includes(allowedURL))).toBe(true);
+  });
+
   await page.goto('/');
   await injectCSSOverrides(page);
   await page.evaluate(() => (window as any).componentsReady());

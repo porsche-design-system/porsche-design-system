@@ -15,11 +15,11 @@ An in-depth optimization guide can be found at
 
 ## Supported options
 
-| Option       | Description                                                                                                                   | Type                           | Default |
-| ------------ | ----------------------------------------------------------------------------------------------------------------------------- | ------------------------------ | ------- | -------- |
-| `components` | All components listed in the array are loaded from the CDN. By default, our core is always preloaded when using this partial. | `({{this.componentChunks}})[]` | `[]`    |
-| `cdn`        | Decides from which CDN the resources are loaded.                                                                              | `'auto'                        | 'cn'`   | `'auto'` |
-| `format`     | Defines the output format of the partial. By default it returns a html string, with `jsx` it returns valid jsx elements.      | `'html'                        | 'jsx'`  | `'html'` |
+| Option       | Description                                                                                                                                                                                                        | Type                           | Default |
+| ------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------ | ------- | -------- | -------- |
+| `components` | All components listed in the array are loaded from the CDN. By default, our core is always preloaded when using this partial.                                                                                      | `({{this.componentChunks}})[]` | `[]`    |
+| `cdn`        | Decides from which CDN the resources are loaded.                                                                                                                                                                   | `'auto'                        | 'cn'`   | `'auto'` |
+| `format`     | Defines the output format of the partial. By default, it returns a html string, with `jsx` it returns valid jsx elements. When using the <code class="no-before">js</code> option a javascript object is returned. | `'html'                        | 'jsx'   | 'js'`    | `'html'` |
 
 ## Examples
 

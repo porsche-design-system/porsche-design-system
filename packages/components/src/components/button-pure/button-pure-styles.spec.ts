@@ -31,6 +31,7 @@ describe('getComponentCss()', () => {
     size: BreakpointCustomizable<TextSize>;
     hideLabel: BreakpointCustomizable<boolean>;
     alignLabel: BreakpointCustomizable<AlignLabel>;
+    underline: boolean;
     theme: Theme;
   }>([
     {
@@ -43,6 +44,7 @@ describe('getComponentCss()', () => {
       size: 'small',
       hideLabel: false,
       alignLabel: 'end',
+      underline: false,
       theme: 'light',
     },
     {
@@ -55,6 +57,7 @@ describe('getComponentCss()', () => {
       size: 'small',
       hideLabel: false,
       alignLabel: 'right',
+      underline: false,
       theme: 'light',
     },
     {
@@ -67,6 +70,7 @@ describe('getComponentCss()', () => {
       size: 'small',
       hideLabel: false,
       alignLabel: 'left',
+      underline: false,
       theme: 'light',
     },
     {
@@ -79,6 +83,7 @@ describe('getComponentCss()', () => {
       size: 'small',
       hideLabel: false,
       alignLabel: 'end',
+      underline: false,
       theme: 'light',
     },
     {
@@ -91,6 +96,7 @@ describe('getComponentCss()', () => {
       size: 'small',
       hideLabel: false,
       alignLabel: 'end',
+      underline: false,
       theme: 'light',
     },
     {
@@ -103,6 +109,7 @@ describe('getComponentCss()', () => {
       size: 'small',
       hideLabel: false,
       alignLabel: 'end',
+      underline: false,
       theme: 'light',
     },
     {
@@ -115,6 +122,7 @@ describe('getComponentCss()', () => {
       size: 'small',
       hideLabel: false,
       alignLabel: 'end',
+      underline: false,
       theme: 'light',
     },
     {
@@ -127,6 +135,7 @@ describe('getComponentCss()', () => {
       size: 'small',
       hideLabel: false,
       alignLabel: 'end',
+      underline: true,
       theme: 'dark',
     },
     {
@@ -139,6 +148,7 @@ describe('getComponentCss()', () => {
       size: 'x-large',
       hideLabel: false,
       alignLabel: 'start',
+      underline: false,
       theme: 'light',
     },
     {
@@ -151,6 +161,7 @@ describe('getComponentCss()', () => {
       size: 'x-large',
       hideLabel: false,
       alignLabel: 'start',
+      underline: false,
       theme: 'dark',
     },
     {
@@ -163,6 +174,7 @@ describe('getComponentCss()', () => {
       size: 'small',
       hideLabel: true,
       alignLabel: 'end',
+      underline: false,
       theme: 'light',
     },
     {
@@ -175,6 +187,7 @@ describe('getComponentCss()', () => {
       size: 'small',
       hideLabel: true,
       alignLabel: 'end',
+      underline: false,
       theme: 'light',
     },
     {
@@ -187,6 +200,7 @@ describe('getComponentCss()', () => {
       size: 'small',
       hideLabel: breakpointCustomizableBoolean,
       alignLabel: 'end',
+      underline: false,
       theme: 'light',
     },
     {
@@ -199,6 +213,7 @@ describe('getComponentCss()', () => {
       size: 'small',
       hideLabel: false,
       alignLabel: 'end',
+      underline: false,
       theme: 'light',
     },
     {
@@ -211,6 +226,7 @@ describe('getComponentCss()', () => {
       size: 'inherit',
       hideLabel: false,
       alignLabel: 'end',
+      underline: false,
       theme: 'light',
     },
     {
@@ -223,6 +239,7 @@ describe('getComponentCss()', () => {
       size: breakpointCustomizableSize,
       hideLabel: false,
       alignLabel: 'end',
+      underline: false,
       theme: 'light',
     },
     {
@@ -235,11 +252,24 @@ describe('getComponentCss()', () => {
       size: breakpointCustomizableSize,
       hideLabel: breakpointCustomizableBoolean,
       alignLabel: breakpointCustomizableAlignLabel,
+      underline: true,
       theme: 'light',
     },
   ])(
     'should return correct css for %j',
-    ({ icon, iconSource, active, isLoading, isDisabledOrLoading, stretch, size, hideLabel, alignLabel, theme }) => {
+    ({
+      icon,
+      iconSource,
+      active,
+      isLoading,
+      isDisabledOrLoading,
+      stretch,
+      size,
+      hideLabel,
+      alignLabel,
+      underline,
+      theme,
+    }) => {
       validateCssAndMatchSnapshot(
         getComponentCss(
           icon,
@@ -251,6 +281,7 @@ describe('getComponentCss()', () => {
           size,
           hideLabel,
           alignLabel,
+          underline,
           theme
         )
       );

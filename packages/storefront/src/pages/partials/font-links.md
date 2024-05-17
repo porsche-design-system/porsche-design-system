@@ -20,12 +20,12 @@ An in-depth optimization guide can be found at
 
 `type FontWeight = 'thin' | 'regular' | 'semi-bold' | 'bold'`
 
-| Option    | Description                                                                                                              | Type           | Default                    |
-| --------- | ------------------------------------------------------------------------------------------------------------------------ | -------------- | -------------------------- | -------- | -------- | -------- | ------- | --------- |
-| `subset`  | Defines which font subset should be loaded.                                                                              | `'latin'       | 'greek'                    | 'cyril'  | 'arabic' | 'pashto' | 'urdu'` | `'latin'` |
-| `weights` | Defines which font weights should be loaded.                                                                             | `FontWeight[]` | `['regular', 'semi-bold']` |
-| `cdn`     | Decides from which CDN the resources are loaded.                                                                         | `'auto'        | 'cn'`                      | `'auto'` |
-| `format`  | Defines the output format of the partial. By default it returns a html string, with `jsx` it returns valid jsx elements. | `'html'        | 'jsx'`                     | `'html'` |
+| Option    | Description                                                                                                                                                                                                        | Type           | Default                    |
+| --------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | -------------- | -------------------------- | -------- | -------- | -------- | ------- | --------- |
+| `subset`  | Defines which font subset should be loaded.                                                                                                                                                                        | `'latin'       | 'greek'                    | 'cyril'  | 'arabic' | 'pashto' | 'urdu'` | `'latin'` |
+| `weights` | Defines which font weights should be loaded.                                                                                                                                                                       | `FontWeight[]` | `['regular', 'semi-bold']` |
+| `cdn`     | Decides from which CDN the resources are loaded.                                                                                                                                                                   | `'auto'        | 'cn'`                      | `'auto'` |
+| `format`  | Defines the output format of the partial. By default, it returns a html string, with `jsx` it returns valid jsx elements. When using the <code class="no-before">js</code> option a javascript object is returned. | `'html'        | 'jsx'                      | 'js'`    | `'html'` |
 
 ## Examples
 

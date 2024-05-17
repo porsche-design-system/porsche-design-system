@@ -1,6 +1,9 @@
 import { MODEL_SIGNATURES_MANIFEST } from '@porsche-design-system/assets';
 import { getCDNBaseURL } from '../../utils';
 
+export const MODEL_SIGNATURE_FETCH_PRIORITY = ['low', 'high', 'auto'] as const;
+export type ModelSignatureFetchPriority = (typeof MODEL_SIGNATURE_FETCH_PRIORITY)[number];
+
 export const MODEL_SIGNATURE_SIZES = ['small', 'inherit'] as const;
 export type ModelSignatureSize = (typeof MODEL_SIGNATURE_SIZES)[number];
 
@@ -17,7 +20,5 @@ export const MODEL_SIGNATURE_COLORS = [
 export type ModelSignatureColor = (typeof MODEL_SIGNATURE_COLORS)[number];
 
 export const getSvgUrl = (model: ModelSignatureModel): string => {
-  return `${getCDNBaseURL()}/model-signatures/${MODEL_SIGNATURES_MANIFEST[model]}`;
+  return `${getCDNBaseURL()}/model-signatures/${MODEL_SIGNATURES_MANIFEST[model].src}`;
 };
-
-export const modelSignatureHeight = 36;

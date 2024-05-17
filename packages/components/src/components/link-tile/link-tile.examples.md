@@ -55,7 +55,7 @@ The `size` property changes the font size of the description.
 
 The `weight` property changes the font weight of the description.
 
-<Notification heading="Deprecation hint" state="warning">
+<Notification heading="Deprecation hint" heading-tag="h3" state="warning">
   The <code>semibold</code> value has been deprecated and will be removed with the next major release.<br>
   Please use the <code>semi-bold</code> value instead.
 </Notification>
@@ -131,16 +131,6 @@ export default class Code extends Vue {
   description="Some Description"
 >
   <img src="${require('@/assets/image-grid.png')}" ${this.imgAttributes} />
-</p-link-tile>
-<p-link-tile
-  href="https://porsche.com"
-  label="Some label"
-  description="Some Description"
->
-  <picture>
-    <source media="(min-width:400px)" srcset="${require('@/assets/image-grid.png')}" />
-    <img src="${require('@/assets/image-grid-violet.png')}" ${this.imgAttributes} />
-  </picture>
 </p-link-tile>`;
 
   accessibility = `<p-link-tile

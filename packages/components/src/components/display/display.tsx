@@ -4,6 +4,7 @@ import { DISPLAY_COLORS, DISPLAY_SIZES, DISPLAY_TAGS, getDisplayTagType } from '
 import { Component, Element, h, type JSX, Prop } from '@stencil/core';
 import {
   AllowedTypes,
+  applyConstructableStylesheetStyles,
   attachComponentCss,
   hasPropValueChanged,
   THEMES,
@@ -12,6 +13,7 @@ import {
   warnIfDeprecatedPropValueIsUsed,
 } from '../../utils';
 import { getComponentCss } from './display-styles';
+import { getSlottedAnchorStyles } from '../../styles';
 
 const propTypes: PropTypes<typeof Display> = {
   tag: AllowedTypes.oneOf<DisplayTag>([undefined, ...DISPLAY_TAGS]),
@@ -29,7 +31,7 @@ const propTypes: PropTypes<typeof Display> = {
 export class Display {
   @Element() public host!: HTMLElement;
 
-  /** Sets a custom HTML tag depending on the usage of the display component. */
+  /** Sets a heading tag, so it fits correctly within the outline of the page. */
   @Prop() public tag?: DisplayTag;
 
   /** Size of the component. Also defines the size for specific breakpoints, like {base: "medium", l: "large"}. You always need to provide a base value when doing this. */
@@ -46,6 +48,10 @@ export class Display {
 
   /** Adapts the text color depending on the theme. Has no effect when "inherit" is set as color prop. */
   @Prop() public theme?: Theme = 'light';
+
+  public connectedCallback(): void {
+    applyConstructableStylesheetStyles(this.host, getSlottedAnchorStyles);
+  }
 
   public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
     return hasPropValueChanged(newVal, oldVal);

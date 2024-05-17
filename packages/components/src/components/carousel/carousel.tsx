@@ -27,6 +27,7 @@ import { Component, Element, Event, type EventEmitter, h, Host, Prop, State, Wat
 import { Splide } from '@splidejs/splide';
 import {
   AllowedTypes,
+  applyConstructableStylesheetStyles,
   attachComponentCss,
   getCurrentMatchingBreakpointValue,
   getPrefixedTagNames,
@@ -48,6 +49,7 @@ import {
 } from '../../utils';
 import { carouselTransitionDuration, getComponentCss } from './carousel-styles';
 import { gridGap, motionEasingBase } from '@porsche-design-system/utilities-v2';
+import { getSlottedAnchorStyles } from '../../styles';
 
 const propTypes: PropTypes<typeof Carousel> = {
   heading: AllowedTypes.string,
@@ -161,6 +163,7 @@ export class Carousel {
   }
 
   public connectedCallback(): void {
+    applyConstructableStylesheetStyles(this.host, getSlottedAnchorStyles);
     observeChildren(this.host, this.updateSlidesAndPagination);
     this.observeBreakpointChange();
 
@@ -286,7 +289,16 @@ export class Carousel {
     return (
       <Host>
         <div class="header">
-          {hasHeadingPropOrSlot && (this.heading ? <h2 id={headingId}>{this.heading}</h2> : <slot name="heading" />)}
+          {hasHeadingPropOrSlot &&
+            (this.heading ? (
+              <h2 class="heading" id={headingId}>
+                {this.heading}
+              </h2>
+            ) : (
+              <div class="heading" id={headingId}>
+                <slot name="heading" />
+              </div>
+            ))}
           {hasDescriptionPropOrSlot && (this.description ? <p>{this.description}</p> : <slot name="description" />)}
           {hasControlsSlot && <slot name="controls" />}
           <div class="nav">
@@ -328,7 +340,7 @@ export class Carousel {
           id="splide"
           class="splide"
           {...parseAndGetAriaAttributes({
-            'aria-label': this.heading,
+            'aria-labelledby': hasHeadingPropOrSlot && !this.aria ? headingId : undefined,
             ...parseAndGetAriaAttributes(this.aria),
           })}
           ref={(ref) => (this.container = ref)}

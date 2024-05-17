@@ -10,6 +10,7 @@ import {
 import { footerShadowClass, getComponentCss, headerShadowClass } from './flyout-styles';
 import {
   AllowedTypes,
+  applyConstructableStylesheetStyles,
   attachComponentCss,
   getPrefixedTagNames,
   getShadowRootHTMLElements,
@@ -23,6 +24,7 @@ import {
 } from '../../utils';
 import type { PropTypes, SelectedAriaAttributes, Theme } from '../../types';
 import { throttle } from 'throttle-debounce';
+import { getSlottedAnchorStyles } from '../../styles';
 
 const propTypes: PropTypes<typeof Flyout> = {
   open: AllowedTypes.boolean,
@@ -72,12 +74,14 @@ export class Flyout {
     }
   }
 
+  public connectedCallback(): void {
+    applyConstructableStylesheetStyles(this.host, getSlottedAnchorStyles);
+  }
+
   public componentDidLoad(): void {
     // in case flyout is rendered with open prop
     if (this.open) {
       setScrollLock(true);
-
-      this.setDialogVisibility(true);
     }
 
     // TODO: would be great to use this in jsx but that doesn't work reliable and causes focus e2e test to fail
@@ -139,9 +143,6 @@ export class Flyout {
 
     return (
       <dialog
-        // ignore needed for pipeline
-        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-        /* @ts-ignore */
         inert={this.open ? null : true} // prevents focusable elements during fade-out transition
         tabIndex={-1} // dialog always has a dismiss button to be focused
         ref={(ref) => (this.dialog = ref)}

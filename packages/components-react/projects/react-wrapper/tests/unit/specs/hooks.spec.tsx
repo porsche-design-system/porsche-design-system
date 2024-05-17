@@ -72,7 +72,7 @@ describe('usePrefix()', () => {
       jest.spyOn(React, 'useContext').mockReturnValue({ prefix: '' });
       usePrefix('p-text');
 
-      expect(React.useContext).toBeCalledWith(PorscheDesignSystemContext);
+      expect(React.useContext).toHaveBeenCalledWith(PorscheDesignSystemContext);
     });
 
     it('should return prefixed tagName', () => {
@@ -83,7 +83,7 @@ describe('usePrefix()', () => {
       expect(usePrefix(tagName)).toBe(prefix + '-' + tagName);
     });
 
-    it('should throw error if useContext() returns undefined ', () => {
+    it('should throw error if useContext() returns undefined', () => {
       jest.spyOn(global.console, 'error').mockImplementation();
       jest.spyOn(React, 'useContext').mockReturnValue(undefined);
 
@@ -104,7 +104,7 @@ describe('useToastManager()', () => {
   it('should call usePrefix()', () => {
     const spy = jest.spyOn(hooks, 'usePrefix');
     useToastManager();
-    expect(spy).toBeCalledWith('p-toast');
+    expect(spy).toHaveBeenCalledWith('p-toast');
   });
 
   it('should provide addMessage()', () => {
@@ -119,7 +119,8 @@ describe('useToastManager()', () => {
       const addMessageMock = jest.fn();
       toastElement.addMessage = addMessageMock;
       document.body.appendChild(toastElement);
-      customElements.define('p-toast', class PToast extends HTMLElement {});
+      customElements.define('p-toast', class PToast extends HTMLElement {
+      });
 
       const { addMessage } = useToastManager();
       const message: ToastMessage = { text: 'Test', state: 'success' };
@@ -128,7 +129,7 @@ describe('useToastManager()', () => {
       // wait for customElements.whenDefined to be resolved
       await new Promise((resolve) => setTimeout(resolve));
 
-      expect(addMessageMock).toBeCalledWith(message);
+      expect(addMessageMock).toHaveBeenCalledWith(message);
     });
   });
 });
