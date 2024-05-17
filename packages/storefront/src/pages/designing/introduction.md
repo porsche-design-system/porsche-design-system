@@ -37,10 +37,10 @@ to collaborate with other teams and automatically receive updates to the library
 invited to join our Figma enterprise space. After the invitation, you'll find the Design System Library already
 activated in your files and your are able to directly access the Figma Library Introduction with the following link.
 
-<p-link-pure :theme="$store.getters.storefrontTheme" target="_blank" href="https://www.figma.com/design/EkdP468u4ZVuIRwalKCscb/Web-Design-System-v3?node-id=32923-48020">About
+<p-link-pure :theme="$store.getters.storefrontTheme" target="_blank" href="https://figma.com/design/EkdP468u4ZVuIRwalKCscb/Web-Design-System-v3?node-id=32923-48020">About
 the Library</p-link-pure>
 
-<p-link-pure :theme="$store.getters.storefrontTheme" target="_blank" href="https://www.figma.com/design/EkdP468u4ZVuIRwalKCscb/Web-Design-System-v3?node-id=34906-9454">Work
+<p-link-pure :theme="$store.getters.storefrontTheme" target="_blank" href="https://figma.com/design/EkdP468u4ZVuIRwalKCscb/Web-Design-System-v3?node-id=34906-9454">Work
 with Library</p-link-pure>
 
 #### External users:
@@ -49,7 +49,7 @@ If you are not employed at Porsche or a permanent member of a Porsche digital pr
 project for Porsche, you can use your own or corporate Figma space to access our public Design System Library with the
 following link.
 
-<p-link-pure :theme="$store.getters.storefrontTheme" target="_blank" href="https://www.figma.com/community/file/1363114610686223649/web-design-system-v3-1">Public
+<p-link-pure :theme="$store.getters.storefrontTheme" target="_blank" href="https://figma.com/community/file/1363114610686223649/web-design-system-v3-1">Public
 Library</p-link-pure>
 
 ## Internal On-/Offboarding:
@@ -82,7 +82,7 @@ Teams</p-link-pure>
 
 Discover what sets the Porsche identity apart and fuels our passion.
 
-<p-link-pure :theme="$store.getters.storefrontTheme" target="_blank" href="https://brand.porsche.com/">Porsche
+<p-link-pure :theme="$store.getters.storefrontTheme" target="_blank" href="https://brand.porsche.com">Porsche
 Brandguide</p-link-pure>
 
 ### Porsche Next font
