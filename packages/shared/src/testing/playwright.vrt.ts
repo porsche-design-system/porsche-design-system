@@ -60,17 +60,21 @@ export const config: Config = {
   outputDir: '../results',
 };
 
+// dirty fix for high-contrast-scheme-dark VRT test since ::before element was not visible anymore after updating playwright
 export function prepareTitles(page: Page): Promise<void> {
   return page.evaluate(() => {
-    // dirty fix for high-contrast-scheme-dark VRT test since ::before element was not visible anymore after updating playwright
-    document.querySelectorAll('[title]').forEach((titleElement) => {
-      const titleSpan = document.createElement('span');
+    return new Promise((resolve) => {
+      document.querySelectorAll('[title]').forEach((titleElement) => {
+        const titleSpan = document.createElement('span');
 
-      titleSpan.classList.add('title');
-      titleSpan.setAttribute('aria-hidden', 'true');
-      titleSpan.innerText = titleElement.getAttribute('title') as string;
+        titleSpan.classList.add('title');
+        titleSpan.setAttribute('aria-hidden', 'true');
+        titleSpan.innerText = titleElement.getAttribute('title') as string;
 
-      titleElement.prepend(titleSpan);
+        titleElement.prepend(titleSpan);
+      });
+
+      resolve();
     });
   });
 }
