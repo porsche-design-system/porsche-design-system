@@ -1,4 +1,4 @@
-import { type Config, type Page } from '@playwright/test';
+import { type Config, expect, type Page } from '@playwright/test';
 
 export const themes = ['light', 'dark'] as const;
 export const schemes = ['light', 'dark'] as const;
@@ -61,20 +61,26 @@ export const config: Config = {
 };
 
 // dirty fix for high-contrast-scheme-dark VRT test since ::before element was not visible anymore after updating playwright
-export function prepareTitles(page: Page): Promise<void> {
-  return page.evaluate(() => {
-    return new Promise((resolve) => {
-      document.querySelectorAll('[title]').forEach((titleElement) => {
-        const titleSpan = document.createElement('span');
+export async function prepareTitles(page: Page) {
+  const selector = '[title]';
+  const titleLocators = page.locator(selector);
 
-        titleSpan.classList.add('title');
-        titleSpan.setAttribute('aria-hidden', 'true');
-        titleSpan.innerText = titleElement.getAttribute('title') as string;
+  // be sure the element is visible
+  await titleLocators.first().waitFor();
 
-        titleElement.prepend(titleSpan);
-      });
+  await page.evaluate(() => {
+    document.querySelectorAll(selector).forEach((titleElement) => {
+      const titleSpan = document.createElement('span');
 
-      resolve();
+      titleSpan.classList.add('title');
+      titleSpan.setAttribute('aria-hidden', 'true');
+      titleSpan.innerText = titleElement.getAttribute('title') as string;
+
+      titleElement.prepend(titleSpan);
     });
   });
+
+  const titleSpanLocators = page.locator('.title');
+
+  expect(await titleLocators.count()).toBe(await titleSpanLocators.count());
 }
