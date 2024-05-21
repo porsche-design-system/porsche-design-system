@@ -80,10 +80,6 @@
       this.selectedPdsVersion = this.pdsVersions[0];
       this.selectedTheme = this.$store.getters.storefrontTheme;
     }
-
-    public updated(): void {
-      this.selectedTheme = this.$store.getters.storefrontTheme;
-    }
   }
 </script>
 
