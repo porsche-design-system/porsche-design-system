@@ -15,9 +15,14 @@
         <option v-for="(pdsVersion, index) in pdsVersions" :key="index" :value="pdsVersion">{{ pdsVersion }}</option>
       </select>
     </p-select-wrapper>
+    <ThemeSelect
+      :theme="selectedTheme"
+      v-on:update="(e) => (this.selectedTheme = e.detail.value)"
+      label="Choose your theme:"
+    />
 
     <CodeEditor
-      :theme="storefrontTheme"
+      :theme="selectedTheme"
       :buttonLabel="'Open template in StackBlitz'"
       :markup="markup"
       :framework="selectedFramework"
@@ -30,23 +35,28 @@
   import Vue from 'vue';
   import Component from 'vue-class-component';
   import CodeEditor from '@/components/CodeEditor.vue';
+  import ThemeSelect from '@/components/ThemeSelect.vue';
   import type { Framework } from '@/models';
   import { frameworkNameMap } from '@/utils/frameworkNameMap';
-  import { StorefrontTheme } from '@/models';
+  import { PlaygroundTheme, StorefrontTheme } from '@/models';
 
   @Component({
-    components: { CodeEditor },
+    components: { ThemeSelect, CodeEditor },
   })
   export default class OpenBugTemplateInStackBlitz extends Vue {
-    markup = '<p-text>Place your reproduction code here</p-text>';
     frameworks: Exclude<Framework, 'shared'>[] = ['vanilla-js', 'angular', 'react'];
     selectedFramework: Exclude<Framework, 'shared'> = 'vanilla-js';
     pdsVersions: string[] = [];
     selectedPdsVersion = '';
     frameworkNameMap = frameworkNameMap;
+    selectedTheme: PlaygroundTheme = 'light';
 
     public get storefrontTheme(): StorefrontTheme {
       return this.$store.getters.storefrontTheme;
+    }
+
+    get markup(): string {
+      return `<p-text theme="${this.selectedTheme}">Place your reproduction code here</p-text>`;
     }
 
     private async fetchVersions(): Promise<string[]> {
@@ -68,6 +78,11 @@
     async mounted(): Promise<void> {
       this.pdsVersions = this.getFilteredVersions(await this.fetchVersions());
       this.selectedPdsVersion = this.pdsVersions[0];
+      this.selectedTheme = this.$store.getters.storefrontTheme;
+    }
+
+    public updated(): void {
+      this.selectedTheme = this.$store.getters.storefrontTheme;
     }
   }
 </script>
