@@ -68,7 +68,7 @@
     "@vue/eslint-config-typescript": "^13.0.0",
     "@vue/test-utils": "1.2.2",
     "concurrently": "^8.2.2",
-    "eslint": "^8.57.0",
+    "eslint": "^9.3.0",
     "eslint-plugin-vue": "^9.24.0",
     "globby": "^14.0.1",
     "local-web-server": "^5.3.3",
