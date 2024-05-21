@@ -43,7 +43,11 @@ export const transformStyleAttribute = (markup: string): string =>
     const pairs = $style.split(',').map((p) => {
       const [prop, val] = p.split(':').map((x) => x.trim());
       const value = val.match(/^\d+(?:\.\d+)?$/) ? val : `'${val}'`; // numbers don't need quotes
-      return `${camelCase(prop)}: ${value}`;
+
+      // Check if the property is a custom css property
+      const property = prop.startsWith('--') ? `"${prop}"` : camelCase(prop);
+
+      return `${property}: ${value}`;
     });
 
     return ` style={{ ${pairs.join(', ')} }}`;
