@@ -10,7 +10,7 @@
 
 ## Playwright
 
-Skipped `v1.43.0` & `v1.44.0` for now because ::before elements in dark mode is not visible.
+Skipped `v1.43.0` & `v1.44.0` for now because ::before elements in dark mode are not visible on VRT screenshots.
 
 In case it gets updated, the Porsche Design System / Playwright Docker image needs to be updated too (this might affect
 all running workflows even outside the changed branch, so this must be aligned with the other developers).
