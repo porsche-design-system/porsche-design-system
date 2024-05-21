@@ -16,7 +16,7 @@
   },
   "dependencies": {
     "@porsche-design-system/components-manager-core": "0.0.0",
-    "globby": "^11.1.0",
+    "globby": "^14.0.1",
     "webpack": "^5.91.0"
   },
   "devDependencies": {
