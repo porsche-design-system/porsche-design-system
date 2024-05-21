@@ -166,7 +166,7 @@ updates:
         dependency-type: "development"
     ignore:
       - dependency-name: "imask"
-        versions: [ ">=2" ]
+        versions: [ ">=7" ]
       - dependency-name: "change-case"
         versions: [ ">=5" ]
       - dependency-name: "@types/react"
@@ -399,14 +399,12 @@ updates:
         versions: [ ">=5" ]
       - dependency-name: "sass-loader"
         versions: [ ">=11" ]
-      - dependency-name: "vmark*"
-        versions: [ ">=2" ]
-      - dependency-name: "@stackblitz/sdk"
-        versions: [ ">=2" ]
-      - dependency-name: "imask"
-        versions: [ ">=2" ]
       - dependency-name: "change-case"
         versions: [ ">=5" ]
+      - dependency-name: "@vue/test-utils"
+      - dependency-name: "imask"
+      - dependency-name: "vmark*"
+      - dependency-name: "@stackblitz/sdk"
 
   - package-ecosystem: "npm"
     directory: "/packages/utilities"
