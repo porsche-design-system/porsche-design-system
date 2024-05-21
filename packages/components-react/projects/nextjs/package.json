@@ -27,10 +27,10 @@
   },
   "devDependencies": {
     "@porsche-design-system/shared": "0.0.0",
-    "@types/react": "18.2.65",
+    "@types/react": "18.3.2",
     "@types/react-dom": "^18.2.22",
     "concurrently": "^8.2.2",
-    "eslint": "^8.57.0",
+    "eslint": "^9.3.0",
     "eslint-config-next": "^14.1.4",
     "tsx": "^4.7.2",
     "typescript": "~5.4.4"
