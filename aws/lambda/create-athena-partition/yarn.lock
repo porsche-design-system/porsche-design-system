@@ -2,10 +2,10 @@
 # yarn lockfile v1
 
 
-athena-express@^6.0.4:
-  version "6.0.4"
-  resolved "https://registry.yarnpkg.com/athena-express/-/athena-express-6.0.4.tgz#bb457dcc967686faea2138f934828a331b98c8f6"
-  integrity sha512-AtAnLuCjAFCBKyeAkmpgfUzL0NDAvaZNgpkukUrB9o5+U/+wzcrHvcKpRufC+QXJ7W/8US9bPCj8J1so0sj/fA==
+athena-express@^7.1.5:
+  version "7.1.5"
+  resolved "https://registry.yarnpkg.com/athena-express/-/athena-express-7.1.5.tgz#860d8a196b71168abe2d4e9c905327b5a08a2c9a"
+  integrity sha512-YLCaKQWyLDUjyHNH939H0eTTP/FbgZutx8vn5qzMUiAaMrS2DWaClL9g27nPMIad9QcJYdF1HIA6KfAH0c5txg==
   dependencies:
     csvtojson "^2.0.10"
 
