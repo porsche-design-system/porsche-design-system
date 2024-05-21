@@ -6,46 +6,6 @@
 version: 2
 updates:
   - package-ecosystem: "npm"
-    directory: "/aws/lambda/cloud-front-s3-logs-reorganizer"
-    schedule:
-      interval: "monthly"
-    groups:
-      production-dependencies:
-        dependency-type: "production"
-      development-dependencies:
-        dependency-type: "development"
-
-  - package-ecosystem: "npm"
-    directory: "/aws/lambda/cloud-front-storefront-redirect-to-trailing-slash"
-    schedule:
-      interval: "monthly"
-    groups:
-      production-dependencies:
-        dependency-type: "production"
-      development-dependencies:
-        dependency-type: "development"
-
-  - package-ecosystem: "npm"
-    directory: "/aws/lambda/cloud-front-storefront-rewrite-index-html"
-    schedule:
-      interval: "monthly"
-    groups:
-      production-dependencies:
-        dependency-type: "production"
-      development-dependencies:
-        dependency-type: "development"
-
-  - package-ecosystem: "npm"
-    directory: "/aws/lambda/create-athena-partition"
-    schedule:
-      interval: "monthly"
-    groups:
-      production-dependencies:
-        dependency-type: "production"
-      development-dependencies:
-        dependency-type: "development"
-
-  - package-ecosystem: "npm"
     directory: "/"
     schedule:
       interval: "monthly"
