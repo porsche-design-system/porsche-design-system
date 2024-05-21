@@ -1,8 +1,10 @@
 # Please see the documentation for all configuration options:
 # https://docs.github.com/code-security/dependabot/dependabot-version-updates/configuration-options-for-the-dependabot.yml-file
 
+# Please check docs/dependencies.md for ignore entries
+
 version: 2
-updates: 
+updates:
   - package-ecosystem: "npm"
     directory: "/aws/lambda/cloud-front-s3-logs-reorganizer"
     schedule:
@@ -162,6 +164,13 @@ updates:
         dependency-type: "production"
       development-dependencies:
         dependency-type: "development"
+    ignore:
+      - dependency-name: "imask"
+        versions: [ ">=2" ]
+      - dependency-name: "change-case"
+        versions: [ ">=5" ]
+      - dependency-name: "@types/react"
+        versions: [ ">18.2.65" ]
 
   - package-ecosystem: "npm"
     directory: "/packages/components-angular"
@@ -172,6 +181,9 @@ updates:
         dependency-type: "production"
       development-dependencies:
         dependency-type: "development"
+    ignore:
+      - dependency-name: "globby"
+        versions: [ ">=12" ]
 
   - package-ecosystem: "npm"
     directory: "/packages/components-angular/projects/angular-wrapper"
@@ -192,6 +204,9 @@ updates:
         dependency-type: "production"
       development-dependencies:
         dependency-type: "development"
+    ignore:
+      - dependency-name: "@playwright/test"
+        versions: [ "1.43", "1.44" ]
 
   - package-ecosystem: "npm"
     directory: "/packages/components-js/projects/components-manager-cli"
@@ -202,6 +217,9 @@ updates:
         dependency-type: "production"
       development-dependencies:
         dependency-type: "development"
+    ignore:
+      - dependency-name: "globby"
+        versions: [ ">=12" ]
 
   - package-ecosystem: "npm"
     directory: "/packages/components-js/projects/components-manager-core"
@@ -252,6 +270,11 @@ updates:
         dependency-type: "production"
       development-dependencies:
         dependency-type: "development"
+    ignore:
+      - dependency-name: "styled-components"
+        versions: [ ">=6" ]
+      - dependency-name: "@types/react"
+        versions: [ ">18.2.65" ]
 
   - package-ecosystem: "npm"
     directory: "/packages/components-react/projects/nextjs"
@@ -262,6 +285,9 @@ updates:
         dependency-type: "production"
       development-dependencies:
         dependency-type: "development"
+    ignore:
+      - dependency-name: "@types/react"
+        versions: [ ">18.2.65" ]
 
   - package-ecosystem: "npm"
     directory: "/packages/components-react/projects/react-ssr-wrapper"
@@ -302,6 +328,9 @@ updates:
         dependency-type: "production"
       development-dependencies:
         dependency-type: "development"
+    ignore:
+      - dependency-name: "@types/react"
+        versions: [ ">18.2.65" ]
 
   - package-ecosystem: "npm"
     directory: "/packages/components-vue"
@@ -342,6 +371,9 @@ updates:
         dependency-type: "production"
       development-dependencies:
         dependency-type: "development"
+    ignore:
+      - dependency-name: "@playwright/test"
+        versions: [ "1.43", "1.44" ]
 
   - package-ecosystem: "npm"
     directory: "/packages/storefront"
@@ -352,6 +384,29 @@ updates:
         dependency-type: "production"
       development-dependencies:
         dependency-type: "development"
+    ignore:
+      - dependency-name: "@playwright/test"
+        versions: [ "1.43", "1.44" ]
+      - dependency-name: "vue"
+        versions: [ ">=3" ]
+      - dependency-name: "vue-router"
+        versions: [ ">=4" ]
+      - dependency-name: "vue-template-compiler"
+        versions: [ ">=3" ]
+      - dependency-name: "vuex"
+        versions: [ ">=4" ]
+      - dependency-name: "@vue/*"
+        versions: [ ">=5" ]
+      - dependency-name: "sass-loader"
+        versions: [ ">=11" ]
+      - dependency-name: "vmark*"
+        versions: [ ">=2" ]
+      - dependency-name: "@stackblitz/sdk"
+        versions: [ ">=2" ]
+      - dependency-name: "imask"
+        versions: [ ">=2" ]
+      - dependency-name: "change-case"
+        versions: [ ">=5" ]
 
   - package-ecosystem: "npm"
     directory: "/packages/utilities"
@@ -362,6 +417,11 @@ updates:
         dependency-type: "production"
       development-dependencies:
         dependency-type: "development"
+    ignore:
+      - dependency-name: "styled-components"
+        versions: [ ">=6" ]
+      - dependency-name: "@types/react"
+        versions: [ ">18.2.65" ]
 
   - package-ecosystem: "npm"
     directory: "/packages/utilities/projects/utilities"
@@ -372,3 +432,6 @@ updates:
         dependency-type: "production"
       development-dependencies:
         dependency-type: "development"
+    ignore:
+      - dependency-name: "styled-components"
+        versions: [ ">=6" ]
