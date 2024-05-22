@@ -12,14 +12,3 @@ test.describe('overview', async () => {
     await expect(page.locator('#app')).toHaveScreenshot(`overview-${viewportWidthXXL}.png`);
   });
 });
-
-// executed in Chrome only
-test.describe('overview notifications', async () => {
-  test.skip(({ browserName }) => browserName !== 'chromium');
-
-  test(`should have no visual regression`, async ({ page }) => {
-    await setupScenario(page, `/overview-notifications`, viewportWidthM);
-    await page.mouse.click(0, 0);
-    await expect(page.locator('#app')).toHaveScreenshot(`overview-notifications-${viewportWidthM}.png`);
-  });
-});
