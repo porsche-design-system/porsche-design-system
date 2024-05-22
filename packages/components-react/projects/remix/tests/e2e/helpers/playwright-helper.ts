@@ -13,6 +13,6 @@ export const goto = async (page: Page, url: string) => {
   await waitForComponentsReady(page);
 };
 
-export const getAttribute = (element: ElementHandle, attribute: string): Promise<string> => {
+export const getAttribute = (element: ElementHandle, attribute: string): Promise<string | null> => {
   return element.evaluate((el: HTMLElement, attr: string) => el.getAttribute(attr), attribute);
 };
