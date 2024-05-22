@@ -8,7 +8,7 @@
     "paths": {
       "~/*": ["./app/*"]
     },
-    "types": ["vitest/globals", "node", "jest"],
+    "types": ["node"],
 
     // Remix takes care of building everything in `remix build`.
     "noEmit": true,
