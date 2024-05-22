@@ -14,7 +14,6 @@ updates:
         dependency-type: "production"
       development-dependencies:
         dependency-type: "development"
-    versioning-strategy: increase
     ignore:
       - dependency-name: "change-case"
         versions: [ ">=5" ]
