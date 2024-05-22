@@ -33,6 +33,7 @@ export const getComponentCss = (isOpen: boolean): string => {
         display: 'block',
         ...addImportantToEachRule({
           ...getBannerPopoverResetStyles(),
+          top: 'auto',
           bottom: `var(${cssVariableBottom},${topBottomFallback})`,
           left: gridExtendedOffsetBase,
           right: gridExtendedOffsetBase,
