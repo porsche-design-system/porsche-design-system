@@ -31,18 +31,18 @@
   },
   "devDependencies": {
     "@porsche-design-system/shared": "0.0.0",
-    "@remix-run/dev": "^2.8.1",
-    "@remix-run/eslint-config": "^2.8.1",
-    "@types/eslint": "^8.56.7",
-    "@types/react": "18.2.65",
-    "@types/react-dom": "^18.2.22",
+    "@remix-run/dev": "^2.9.2",
+    "@remix-run/eslint-config": "^2.9.2",
+    "@types/eslint": "^8.56.10",
+    "@types/react": "18.3.2",
+    "@types/react-dom": "^18.3.0",
     "binode": "^1.0.5",
     "concurrently": "^8.2.2",
     "cross-env": "^7.0.3",
-    "eslint": "^8.57.0",
+    "eslint": "^9.3.0",
     "eslint-config-prettier": "^9.1.0",
-    "tsx": "^4.7.2",
-    "typescript": "~5.4.4"
+    "tsx": "^4.10.5",
+    "typescript": "~5.4.5"
   },
   "eslintIgnore": [
     "/node_modules",
