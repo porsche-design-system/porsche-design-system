@@ -84,7 +84,7 @@ import { FlyoutNavigationPrefixedComponent } from './generated/flyout-navigation
 import { FlyoutNavigationScrolledComponent } from './generated/flyout-navigation-scrolled.component';
 import { FlyoutPositionLeftComponent } from './generated/flyout-position-left.component';
 import { FlyoutPositionStartComponent } from './generated/flyout-position-start.component';
-import { FlyoutPrefixedHeaderFooterSubfooterComponent } from './generated/flyout-prefixed-header-footer-subfooter.component';
+import { FlyoutPrefixedComponent } from './generated/flyout-prefixed.component';
 import { GridComponent } from './generated/grid.component';
 import { HeadingComponent } from './generated/heading.component';
 import { HeadlineComponent } from './generated/headline.component';
@@ -203,7 +203,7 @@ export const generatedPages = [
   FlyoutNavigationScrolledComponent,
   FlyoutPositionLeftComponent,
   FlyoutPositionStartComponent,
-  FlyoutPrefixedHeaderFooterSubfooterComponent,
+  FlyoutPrefixedComponent,
   GridComponent,
   HeadingComponent,
   HeadlineComponent,
@@ -531,9 +531,9 @@ export const generatedRoutes: ExtendedRoute[] = [
     component: FlyoutPositionStartComponent,
   },
   {
-    name: 'Flyout Prefixed Header Footer Subfooter',
-    path: 'flyout-prefixed-header-footer-subfooter',
-    component: FlyoutPrefixedHeaderFooterSubfooterComponent,
+    name: 'Flyout Prefixed',
+    path: 'flyout-prefixed',
+    component: FlyoutPrefixedComponent,
   },
   {
     name: 'Grid',

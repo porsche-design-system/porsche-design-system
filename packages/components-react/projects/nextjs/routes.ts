@@ -212,9 +212,9 @@ const generatedRoutes = {
     "path": "/flyout-position-start",
     "name": "FlyoutPositionStart"
   },
-  "flyoutPrefixedHeaderFooterSubfooter": {
-    "path": "/flyout-prefixed-header-footer-subfooter",
-    "name": "FlyoutPrefixedHeaderFooterSubfooter"
+  "flyoutPrefixed": {
+    "path": "/flyout-prefixed",
+    "name": "FlyoutPrefixed"
   },
   "grid": {
     "path": "/grid",
