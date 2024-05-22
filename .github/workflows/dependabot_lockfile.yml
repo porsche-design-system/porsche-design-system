@@ -1,4 +1,3 @@
-name: Update yarn.lock after Dependabot package upgrade
 on:
   push:
     branches:
@@ -6,28 +5,28 @@ on:
   pull_request:
     branches:
       - dependabot/npm_and_yarn/**
-
+name: 'Dependabot Lockfile Update'
+permissions:
+  contents: write
 jobs:
   update-yarn-lock:
     runs-on: ubuntu-latest
-    if: github.actor == 'dependabot[bot]'
-
     steps:
-      - name: Checkout code
+      - name: 'Checkout code'
         uses: actions/checkout@v3
         with:
           ref: ${{ github.head_ref }}
           token: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Setup Node.js
+      - name: 'Setup Node.js'
         uses: actions/setup-node@v3
         with:
           node-version: '20.11'
 
-      - name: Install dependencies
+      - name: 'Install dependencies'
         run: yarn install
 
-      - name: Commit yarn.lock
+      - name: 'Commit yarn.lock'
         run: |
           git config --global user.name 'dependabot[bot]'
           git config --global user.email 'dependabot[bot]@users.noreply.github.com'
