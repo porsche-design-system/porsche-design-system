@@ -1,20 +1,7 @@
 <template>
   <div class="playground">
     <div class="header">
-      <p-select-wrapper
-        v-if="mergedConfig.themeable"
-        class="select"
-        :theme="$store.getters.storefrontTheme"
-        label="Theme"
-        hide-label="true"
-      >
-        <select name="theme" v-model="selectTheme" v-on:change="switchTheme">
-          <option disabled>Select theme</option>
-          <option value="light">Light</option>
-          <option value="dark">Dark</option>
-          <option value="auto">Auto (sync with operating system)</option>
-        </select>
-      </p-select-wrapper>
+      <ThemeSelect v-if="mergedConfig.themeable" :theme="selectTheme" v-on:update="switchTheme" :hide-label="true" />
       <p-select-wrapper class="select" :theme="$store.getters.storefrontTheme" label="Direction" hide-label="true">
         <select name="dir" v-model="selectDir" v-on:change="switchDir">
           <option disabled>Select direction</option>
@@ -97,6 +84,7 @@
   import type { BackgroundColor, Framework, FrameworkMarkup, PlaygroundDir, PlaygroundTheme } from '../models';
   import type { ExternalDependency, SharedImportKey } from '../utils';
   import { getExternalDependenciesOrThrow } from '@/utils/stackblitz/helper';
+  import ThemeSelect from '@/components/ThemeSelect.vue';
 
   export type PlaygroundConfig = {
     themeable: boolean;
@@ -125,6 +113,7 @@
 
   @Component({
     components: {
+      ThemeSelect,
       CodeBlock,
       CodeEditor,
     },
