@@ -1,0 +1,36 @@
+name: Update yarn.lock after Dependabot package upgrade
+on:
+  push:
+    branches:
+      - dependabot/npm_and_yarn/**
+  pull_request:
+    branches:
+      - dependabot/npm_and_yarn/**
+
+jobs:
+  update-yarn-lock:
+    runs-on: ubuntu-latest
+    if: github.actor == 'dependabot[bot]'
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+        with:
+          ref: ${{ github.head_ref }}
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '20.11'
+
+      - name: Install dependencies
+        run: yarn install
+
+      - name: Commit yarn.lock
+        run: |
+          git config --global user.name 'dependabot[bot]'
+          git config --global user.email 'dependabot[bot]@users.noreply.github.com'
+          git add yarn.lock
+          git commit -m "[dependabot skip] chore(dependabot): Update yarn.lock file after dependency update"
+          git push
