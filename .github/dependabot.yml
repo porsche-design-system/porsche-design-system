@@ -14,6 +14,7 @@ updates:
         dependency-type: "production"
       development-dependencies:
         dependency-type: "development"
+    versioning-strategy: increase
 
   - package-ecosystem: "npm"
     directory: "/packages/assets"
@@ -24,6 +25,7 @@ updates:
         dependency-type: "production"
       development-dependencies:
         dependency-type: "development"
+    versioning-strategy: increase
 
   - package-ecosystem: "npm"
     directory: "/packages/assets/projects/crest"
@@ -34,6 +36,7 @@ updates:
         dependency-type: "production"
       development-dependencies:
         dependency-type: "development"
+    versioning-strategy: increase
 
   - package-ecosystem: "npm"
     directory: "/packages/assets/projects/fallbacks"
@@ -44,6 +47,7 @@ updates:
         dependency-type: "production"
       development-dependencies:
         dependency-type: "development"
+    versioning-strategy: increase
 
   - package-ecosystem: "npm"
     directory: "/packages/assets/projects/fonts"
@@ -54,6 +58,7 @@ updates:
         dependency-type: "production"
       development-dependencies:
         dependency-type: "development"
+    versioning-strategy: increase
 
   - package-ecosystem: "npm"
     directory: "/packages/assets/projects/icons"
@@ -64,6 +69,7 @@ updates:
         dependency-type: "production"
       development-dependencies:
         dependency-type: "development"
+    versioning-strategy: increase
 
   - package-ecosystem: "npm"
     directory: "/packages/assets/projects/marque"
@@ -74,6 +80,7 @@ updates:
         dependency-type: "production"
       development-dependencies:
         dependency-type: "development"
+    versioning-strategy: increase
 
   - package-ecosystem: "npm"
     directory: "/packages/assets/projects/meta-icons"
@@ -84,6 +91,7 @@ updates:
         dependency-type: "production"
       development-dependencies:
         dependency-type: "development"
+    versioning-strategy: increase
 
   - package-ecosystem: "npm"
     directory: "/packages/assets/projects/model-signatures"
@@ -94,6 +102,7 @@ updates:
         dependency-type: "production"
       development-dependencies:
         dependency-type: "development"
+    versioning-strategy: increase
 
   - package-ecosystem: "npm"
     directory: "/packages/assets/projects/styles"
@@ -104,6 +113,7 @@ updates:
         dependency-type: "production"
       development-dependencies:
         dependency-type: "development"
+    versioning-strategy: increase
 
   - package-ecosystem: "npm"
     directory: "/packages/component-meta"
@@ -114,6 +124,7 @@ updates:
         dependency-type: "production"
       development-dependencies:
         dependency-type: "development"
+    versioning-strategy: increase
 
   - package-ecosystem: "npm"
     directory: "/packages/components"
@@ -124,6 +135,7 @@ updates:
         dependency-type: "production"
       development-dependencies:
         dependency-type: "development"
+    versioning-strategy: increase
     ignore:
       - dependency-name: "imask"
         versions: [ ">=7" ]
@@ -141,6 +153,7 @@ updates:
         dependency-type: "production"
       development-dependencies:
         dependency-type: "development"
+    versioning-strategy: increase
     ignore:
       - dependency-name: "globby"
         versions: [ ">=12" ]
@@ -154,6 +167,7 @@ updates:
         dependency-type: "production"
       development-dependencies:
         dependency-type: "development"
+    versioning-strategy: increase
 
   - package-ecosystem: "npm"
     directory: "/packages/components-js"
@@ -164,6 +178,7 @@ updates:
         dependency-type: "production"
       development-dependencies:
         dependency-type: "development"
+    versioning-strategy: increase
     ignore:
       - dependency-name: "@playwright/test"
         versions: [ "1.43", "1.44" ]
@@ -177,6 +192,7 @@ updates:
         dependency-type: "production"
       development-dependencies:
         dependency-type: "development"
+    versioning-strategy: increase
     ignore:
       - dependency-name: "globby"
         versions: [ ">=12" ]
@@ -190,6 +206,7 @@ updates:
         dependency-type: "production"
       development-dependencies:
         dependency-type: "development"
+    versioning-strategy: increase
 
   - package-ecosystem: "npm"
     directory: "/packages/components-js/projects/components-wrapper"
@@ -200,6 +217,7 @@ updates:
         dependency-type: "production"
       development-dependencies:
         dependency-type: "development"
+    versioning-strategy: increase
 
   - package-ecosystem: "npm"
     directory: "/packages/components-js/projects/jsdom-polyfill"
@@ -210,6 +228,7 @@ updates:
         dependency-type: "production"
       development-dependencies:
         dependency-type: "development"
+    versioning-strategy: increase
 
   - package-ecosystem: "npm"
     directory: "/packages/components-js/projects/partials"
@@ -220,6 +239,7 @@ updates:
         dependency-type: "production"
       development-dependencies:
         dependency-type: "development"
+    versioning-strategy: increase
 
   - package-ecosystem: "npm"
     directory: "/packages/components-react"
@@ -230,6 +250,7 @@ updates:
         dependency-type: "production"
       development-dependencies:
         dependency-type: "development"
+    versioning-strategy: increase
     ignore:
       - dependency-name: "styled-components"
         versions: [ ">=6" ]
@@ -245,6 +266,7 @@ updates:
         dependency-type: "production"
       development-dependencies:
         dependency-type: "development"
+    versioning-strategy: increase
     ignore:
       - dependency-name: "@types/react"
         versions: [ ">18.2.65" ]
@@ -258,6 +280,7 @@ updates:
         dependency-type: "production"
       development-dependencies:
         dependency-type: "development"
+    versioning-strategy: increase
 
   - package-ecosystem: "npm"
     directory: "/packages/components-react/projects/react-wrapper"
@@ -268,6 +291,7 @@ updates:
         dependency-type: "production"
       development-dependencies:
         dependency-type: "development"
+    versioning-strategy: increase
 
   - package-ecosystem: "npm"
     directory: "/packages/components-react/projects/remix"
@@ -278,6 +302,7 @@ updates:
         dependency-type: "production"
       development-dependencies:
         dependency-type: "development"
+    versioning-strategy: increase
 
   - package-ecosystem: "npm"
     directory: "/packages/components-react/projects/uxpin-wrapper"
@@ -288,6 +313,7 @@ updates:
         dependency-type: "production"
       development-dependencies:
         dependency-type: "development"
+    versioning-strategy: increase
     ignore:
       - dependency-name: "@types/react"
         versions: [ ">18.2.65" ]
@@ -301,6 +327,7 @@ updates:
         dependency-type: "production"
       development-dependencies:
         dependency-type: "development"
+    versioning-strategy: increase
 
   - package-ecosystem: "npm"
     directory: "/packages/components-vue/projects/vue-wrapper"
@@ -311,6 +338,7 @@ updates:
         dependency-type: "production"
       development-dependencies:
         dependency-type: "development"
+    versioning-strategy: increase
 
   - package-ecosystem: "npm"
     directory: "/packages/crawler"
@@ -321,6 +349,7 @@ updates:
         dependency-type: "production"
       development-dependencies:
         dependency-type: "development"
+    versioning-strategy: increase
 
   - package-ecosystem: "npm"
     directory: "/packages/shared"
@@ -331,6 +360,7 @@ updates:
         dependency-type: "production"
       development-dependencies:
         dependency-type: "development"
+    versioning-strategy: increase
     ignore:
       - dependency-name: "@playwright/test"
         versions: [ "1.43", "1.44" ]
@@ -344,6 +374,7 @@ updates:
         dependency-type: "production"
       development-dependencies:
         dependency-type: "development"
+    versioning-strategy: increase
     ignore:
       - dependency-name: "@playwright/test"
         versions: [ "1.43", "1.44" ]
@@ -375,6 +406,7 @@ updates:
         dependency-type: "production"
       development-dependencies:
         dependency-type: "development"
+    versioning-strategy: increase
     ignore:
       - dependency-name: "styled-components"
         versions: [ ">=6" ]
@@ -390,6 +422,7 @@ updates:
         dependency-type: "production"
       development-dependencies:
         dependency-type: "development"
+    versioning-strategy: increase
     ignore:
       - dependency-name: "styled-components"
         versions: [ ">=6" ]
