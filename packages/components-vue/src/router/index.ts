@@ -96,6 +96,16 @@ export const routes: RouteType[] = [
     component: fromExamples.LinkTileProductExample,
   },
   {
+    path: '/modal',
+    name: 'Modal',
+    component: fromPages.ModalPage,
+  },
+  {
+    path: '/modal-prefixed',
+    name: 'ModalPrefixed',
+    component: fromPages.ModalPrefixedPage,
+  },
+  {
     path: '/modal-example-accessibility',
     name: 'Modal Example Accessibility',
     component: fromExamples.ModalExampleAccessibility,

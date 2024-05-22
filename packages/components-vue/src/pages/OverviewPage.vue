@@ -28,7 +28,6 @@
     PLinkTileModelSignature,
     PLinkTileProduct,
     PMarque,
-    PModal,
     PModelSignature,
     PMultiSelect,
     PMultiSelectOption,
@@ -83,8 +82,8 @@
         <PDisplay>Some Display</PDisplay>
       </div>
 
-      <div class="playground light playground--modal" title="should render default modal">
-        <PModal :heading="'Heading'" :open="true">Some Content</PModal>
+      <div class="playground light" title="should render default modal">
+        <iframe src="/modal?iframe=true" loading="eager"></iframe>
       </div>
 
       <div class="playground light" title="should render default inline-notification">
@@ -411,8 +410,8 @@
           <PDisplay>Some Display</PDisplay>
         </div>
 
-        <div class="playground light playground--modal" title="should render default modal with custom prefix">
-          <PModal :heading="'Heading'" :open="true">Some Content</PModal>
+        <div class="playground light" title="should render default modal with custom prefix">
+          <iframe src="/modal-prefixed?iframe=true" loading="eager"></iframe>
         </div>
 
         <div class="playground light" title="should render default inline-notification with custom prefix">
@@ -772,15 +771,9 @@
     max-width: 400px;
   }
 
-  .playground--banner,
-  .playground--modal {
-    transform: translate3d(0, 0, 0);
-    height: 10rem;
-    padding: 0;
-    margin: 1rem;
-  }
-
-  .playground--modal {
+  .playground > iframe {
     height: 20rem;
+    width: 100%;
+    margin-inline-start: 0;
   }
 </style>
