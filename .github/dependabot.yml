@@ -13,7 +13,7 @@ registries:
 updates:
   - package-ecosystem: "npm"
     directory: "/"
-    registries: *
+    registries: "*"
     schedule:
       interval: "monthly"
     groups:
