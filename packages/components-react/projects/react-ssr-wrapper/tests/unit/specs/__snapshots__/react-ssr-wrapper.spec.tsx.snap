@@ -6013,6 +6013,7 @@ exports[`should render dsr component for PBanner 1`] = `
   border: 0 !important;
   outline: 0 !important;
   overflow: visible !important;
+  top: auto !important;
   bottom: var(--p-banner-position-bottom,56px) !important;
   left: max(22px, 10.625vw - 12px) !important;
   right: max(22px, 10.625vw - 12px) !important;
@@ -6024,6 +6025,9 @@ exports[`should render dsr component for PBanner 1`] = `
   pointer-events: none !important;
   transform: translate3d(0,calc(var(--p-banner-position-bottom,56px) + 100%),0) !important;
   color-scheme: light dark !important;
+}
+:host::backdrop {
+  display: none !important;
 }
 :host(.hydrated), :host(.ssr) {
   transition: visibility 0s linear var(--p-transition-duration, 0.6s), transform var(--p-transition-duration, 0.4s) cubic-bezier(0.4,0,0.5,1), opacity var(--p-transition-duration, 0.4s) cubic-bezier(0.4,0,0.5,1) !important;
