@@ -136,7 +136,7 @@ export const getComponentCss = (
           ? {
               width: 'auto',
               minWidth: 'auto',
-              maxWidth: 'auto',
+              maxWidth: 'none',
               placeSelf: 'stretch',
               margin: 0,
               borderRadius: 0,
