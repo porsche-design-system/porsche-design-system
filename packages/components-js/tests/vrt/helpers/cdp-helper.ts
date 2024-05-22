@@ -1,5 +1,5 @@
 import { type Protocol } from 'devtools-protocol';
-import { type Page, type CDPSession } from '@playwright/test';
+import { type CDPSession, type Page } from '@playwright/test';
 
 type NodeId = Protocol.DOM.NodeId;
 type BackendNodeId = Protocol.DOM.BackendNodeId;
@@ -15,15 +15,15 @@ const FOCUS_HOVER_STATE = HOVER_STATE.concat(FOCUS_STATE, FOCUS_VISIBLE_STATE);
 export const PSEUDO_STATES = ['hover', 'focus', 'focus-hover'] as const;
 
 export const getPlaygroundPseudoStatesMarkup = (
-  markup: () => string,
+  markup: (index: number) => string,
   opts?: { autoLayout?: 'inline' | 'block' }
 ): string => {
   const { autoLayout = false } = opts || {};
 
-  return PSEUDO_STATES.map((state) => {
+  return PSEUDO_STATES.map((state, index) => {
     return `<div class="playground light ${state} ${
       autoLayout === 'inline' ? 'auto-layout-inline' : autoLayout === 'block' ? 'auto-layout-block' : ''
-    }" title="should render :${state}">${markup()}</div>`;
+    }" title="should render :${state}">${markup(index)}</div>`;
   }).join('\n');
 };
 

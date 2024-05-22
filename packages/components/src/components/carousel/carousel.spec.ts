@@ -57,6 +57,7 @@ afterAll(() => {
 describe('connectedCallback', () => {
   it('should call this.observeBreakpointChange()', () => {
     const component = new Carousel();
+    component.host = document.createElement('p-carousel');
     const spy = jest.spyOn(component, 'observeBreakpointChange' as any);
 
     component.connectedCallback();
@@ -66,6 +67,7 @@ describe('connectedCallback', () => {
   describe('on reconnect', () => {
     it('should call this.updateSlidesAndPagination()', () => {
       const component = new Carousel();
+      component.host = document.createElement('p-carousel');
       component['splide'] = splideMock;
       const spy = jest.spyOn(component, 'updateSlidesAndPagination' as any).mockImplementation();
 
@@ -75,6 +77,7 @@ describe('connectedCallback', () => {
 
     it('should call this.registerSplideHandlers() with correct parameters', () => {
       const component = new Carousel();
+      component.host = document.createElement('p-carousel');
       component['splide'] = splideMock;
       jest.spyOn(component, 'updateSlidesAndPagination' as any).mockImplementation();
       const spy = jest.spyOn(component, 'registerSplideHandlers' as any);

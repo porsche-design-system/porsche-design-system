@@ -8,6 +8,7 @@ import type {
 import type { ITileProps } from '../../utils';
 import {
   AllowedTypes,
+  applyConstructableStylesheetStyles,
   attachComponentCss,
   BUTTON_ARIA_ATTRIBUTES,
   BUTTON_TYPES,
@@ -32,6 +33,7 @@ import type {
 import { Component, Element, h, Listen, Prop } from '@stencil/core';
 import { getComponentCss } from './button-tile-styles';
 import { sharedTilePropTypes } from '../link-tile/link-tile-utils';
+import { getSlottedPictureImageStyles } from '../../styles/global/slotted-picture-image-styles';
 
 const propTypes: PropTypes<typeof ButtonTile> = {
   ...sharedTilePropTypes,
@@ -101,6 +103,10 @@ export class ButtonTile implements ITileProps {
     if (isDisabledOrLoading(this.disabled, this.loading)) {
       e.stopPropagation();
     }
+  }
+
+  public connectedCallback(): void {
+    applyConstructableStylesheetStyles(this.host, getSlottedPictureImageStyles);
   }
 
   public componentWillLoad(): void {

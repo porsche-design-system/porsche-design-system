@@ -1,5 +1,6 @@
 export * from './add-native-popover-scroll-and-resize-listeners';
 export * from './a11y';
+export * from './applyConstructableStylesheetStyle';
 export * from './attribute-observer';
 export { parseJSON } from './breakpoint-customizable';
 export { observeBreakpointChange, unobserveBreakpointChange } from './breakpoint-observer';

@@ -1,6 +1,7 @@
 import { Component, Element, Event, type EventEmitter, h, Host, Prop, State, Watch } from '@stencil/core';
 import {
   AllowedTypes,
+  applyConstructableStylesheetStyles,
   attachComponentCss,
   getPrefixedTagNames,
   getShadowRootHTMLElement,
@@ -25,6 +26,7 @@ import type {
   TabsWeight,
 } from './tabs-utils';
 import { syncTabsItemsProps } from './tabs-utils';
+import { getSlottedAnchorStyles } from '../../../styles';
 
 const propTypes: PropTypes<typeof Tabs> = {
   size: AllowedTypes.breakpoint<TabsSize>(TABS_BAR_SIZES),
@@ -77,6 +79,10 @@ export class Tabs {
     this.setAccessibilityAttributes();
     this.update.emit({ activeTabIndex: newValue });
     this.tabChange.emit({ activeTabIndex: newValue });
+  }
+
+  public connectedCallback(): void {
+    applyConstructableStylesheetStyles(this.host, getSlottedAnchorStyles);
   }
 
   public componentWillLoad(): void {

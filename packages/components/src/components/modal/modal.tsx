@@ -2,6 +2,7 @@ import { Component, Element, Event, type EventEmitter, h, type JSX, Prop } from 
 import type { BreakpointCustomizable, PropTypes, SelectedAriaAttributes, Theme } from '../../types';
 import {
   AllowedTypes,
+  applyConstructableStylesheetStyles,
   attachComponentCss,
   getIntersectionObserverStickyArea,
   getPrefixedTagNames,
@@ -22,6 +23,7 @@ import type { ModalAriaAttribute, ModalBackdrop } from './modal-utils';
 import { MODAL_ARIA_ATTRIBUTES } from './modal-utils';
 import { getComponentCss } from './modal-styles';
 import { BACKDROPS } from '../../styles/dialog-styles';
+import { getSlottedAnchorStyles } from '../../styles';
 
 const propTypes: PropTypes<typeof Modal> = {
   open: AllowedTypes.boolean,
@@ -90,6 +92,10 @@ export class Modal {
 
   public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
     return hasPropValueChanged(newVal, oldVal);
+  }
+
+  public connectedCallback(): void {
+    applyConstructableStylesheetStyles(this.host, getSlottedAnchorStyles);
   }
 
   public componentWillRender(): void {

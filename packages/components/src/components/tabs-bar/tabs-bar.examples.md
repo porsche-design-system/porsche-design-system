@@ -58,8 +58,15 @@ To be truly accessible you need to provide some more information because every t
 which points to the corresponding `id` of the `tabpanel`. The content placeholder needs the `role="tabpanel"` and the
 attribute `aria-labelledby` which points to the unique id of the corresponding tab (`aria-controls`).
 
-You must also take care of the focus handling of the tabpanel. Therefor the active tab panel must have an `tabindex="0"`
-to receive keyboard focus and the focus indicator must be styled accordingly.
+You must also take care of the focus handling of the tabpanel. Therefore the active tab panel must have an
+`tabindex="0"` to receive keyboard focus and the focus indicator must be styled accordingly. Use the provided
+[focus style](styles/focus) like this:
+
+```
+p-tabs-bar ~ [tabindex="0"][role="tabpanel"] {
+    @include pds-focus;
+}
+```
 
 <Playground class="playground-tabs-bar" :frameworkMarkup="codeExampleAccessibility" :markup="accessibility" :config="config"></Playground>
 
@@ -233,5 +240,9 @@ ${['One', 'Two', 'Three'].map(buildButton).join('\n')}
 
   :deep(div[role=tabpanel]) {
     margin-top: $pds-spacing-static-small;
+  }
+
+  :deep(p-tabs-bar ~ [tabindex="0"][role="tabpanel"]) {
+    @include pds-focus;
   }
 </style>
