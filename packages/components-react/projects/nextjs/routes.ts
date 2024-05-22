@@ -296,6 +296,10 @@ const generatedRoutes = {
     "path": "/modal-fullscreen-responsive",
     "name": "ModalFullscreenResponsive"
   },
+  "modalPrefixed": {
+    "path": "/modal-prefixed",
+    "name": "ModalPrefixed"
+  },
   "modalScrollable": {
     "path": "/modal-scrollable",
     "name": "ModalScrollable"
@@ -331,10 +335,6 @@ const generatedRoutes = {
   "overview": {
     "path": "/overview",
     "name": "Overview"
-  },
-  "overviewNotifications": {
-    "path": "/overview-notifications",
-    "name": "OverviewNotifications"
   },
   "pagination": {
     "path": "/pagination",

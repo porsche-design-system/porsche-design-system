@@ -12,7 +12,6 @@ export * from './Utilities';
 /* eslint-disable import/first */
 export * from './generated/CoreInitializer';
 export * from './generated/Overview';
-export * from './generated/OverviewNotifications';
 import { AccordionPage } from './generated/Accordion';
 import { BannerPage } from './generated/Banner';
 import { BannerBasicPage } from './generated/BannerBasic';
@@ -86,6 +85,7 @@ import { ModalCustomStylingPage } from './generated/ModalCustomStyling';
 import { ModalDisableCloseButtonPage } from './generated/ModalDisableCloseButton';
 import { ModalFullscreenPage } from './generated/ModalFullscreen';
 import { ModalFullscreenResponsivePage } from './generated/ModalFullscreenResponsive';
+import { ModalPrefixedPage } from './generated/ModalPrefixed';
 import { ModalScrollablePage } from './generated/ModalScrollable';
 import { ModalSlottedHeadingPage } from './generated/ModalSlottedHeading';
 import { ModalStickyFooterPage } from './generated/ModalStickyFooter';
@@ -493,6 +493,11 @@ export const generatedRoutes: RouteType[] = [
     name: 'Modal Fullscreen Responsive',
     path: '/modal-fullscreen-responsive',
     element: <ModalFullscreenResponsivePage />,
+  },
+  {
+    name: 'Modal Prefixed',
+    path: '/modal-prefixed',
+    element: <ModalPrefixedPage />,
   },
   {
     name: 'Modal Scrollable',

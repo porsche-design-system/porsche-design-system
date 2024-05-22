@@ -30,7 +30,6 @@ export * from './tabs-bar-navigation-bug';
 
 /* Auto Generated Below */
 export * from './generated/core-initializer.component';
-export * from './generated/overview-notifications.component';
 export * from './generated/overview.component';
 import { AccordionComponent } from './generated/accordion.component';
 import { BannerComponent } from './generated/banner.component';
@@ -106,6 +105,7 @@ import { ModalCustomStylingComponent } from './generated/modal-custom-styling.co
 import { ModalDisableCloseButtonComponent } from './generated/modal-disable-close-button.component';
 import { ModalFullscreenComponent } from './generated/modal-fullscreen.component';
 import { ModalFullscreenResponsiveComponent } from './generated/modal-fullscreen-responsive.component';
+import { ModalPrefixedComponent } from './generated/modal-prefixed.component';
 import { ModalScrollableComponent } from './generated/modal-scrollable.component';
 import { ModalSlottedHeadingComponent } from './generated/modal-slotted-heading.component';
 import { ModalStickyFooterComponent } from './generated/modal-sticky-footer.component';
@@ -115,7 +115,6 @@ import { ModalWithoutHeadingComponent } from './generated/modal-without-heading.
 import { ModelSignatureComponent } from './generated/model-signature.component';
 import { MultiSelectComponent } from './generated/multi-select.component';
 import { OverviewComponent } from './generated/overview.component';
-import { OverviewNotificationsComponent } from './generated/overview-notifications.component';
 import { PaginationComponent } from './generated/pagination.component';
 import { PinCodeComponent } from './generated/pin-code.component';
 import { PopoverComponent } from './generated/popover.component';
@@ -225,6 +224,7 @@ export const generatedPages = [
   ModalDisableCloseButtonComponent,
   ModalFullscreenComponent,
   ModalFullscreenResponsiveComponent,
+  ModalPrefixedComponent,
   ModalScrollableComponent,
   ModalSlottedHeadingComponent,
   ModalStickyFooterComponent,
@@ -234,7 +234,6 @@ export const generatedPages = [
   ModelSignatureComponent,
   MultiSelectComponent,
   OverviewComponent,
-  OverviewNotificationsComponent,
   PaginationComponent,
   PinCodeComponent,
   PopoverComponent,
@@ -635,6 +634,11 @@ export const generatedRoutes: ExtendedRoute[] = [
     name: 'Modal Fullscreen Responsive',
     path: 'modal-fullscreen-responsive',
     component: ModalFullscreenResponsiveComponent,
+  },
+  {
+    name: 'Modal Prefixed',
+    path: 'modal-prefixed',
+    component: ModalPrefixedComponent,
   },
   {
     name: 'Modal Scrollable',
