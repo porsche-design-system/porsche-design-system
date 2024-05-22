@@ -40,6 +40,9 @@ export const getComponentCss = (isOpen: boolean): string => {
           zIndex: `var(${cssVariableZIndex},${BANNER_Z_INDEX})`,
           ...dropShadowHighStyle,
           borderRadius: borderRadiusSmall, // needed for rounded box-shadow
+          '&::backdrop': {
+            display: 'none',
+          },
           ...(isOpen
             ? {
                 opacity: 1,
