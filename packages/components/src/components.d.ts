@@ -667,6 +667,10 @@ export namespace Components {
          */
         "aria"?: SelectedAriaAttributes<FlyoutAriaAttribute>;
         /**
+          * If true, the flyout will not be closable via backdrop click.
+         */
+        "disableBackdropClick"?: boolean;
+        /**
           * If true, the flyout is open.
          */
         "open": boolean;
@@ -3418,6 +3422,10 @@ declare namespace LocalJSX {
           * Add ARIA attributes.
          */
         "aria"?: SelectedAriaAttributes<FlyoutAriaAttribute>;
+        /**
+          * If true, the flyout will not be closable via backdrop click.
+         */
+        "disableBackdropClick"?: boolean;
         /**
           * Emitted when the component requests to be dismissed.
          */
