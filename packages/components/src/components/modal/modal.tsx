@@ -121,13 +121,14 @@ export class Modal {
   public render(): JSX.Element {
     validateProps(this, propTypes);
     warnIfDeprecatedPropIsUsed<typeof Modal>(this, 'disableCloseButton', 'Please use dismissButton prop instead.');
+
+    this.hasHeader = hasHeading(this.host, this.heading) || hasNamedSlot(this.host, 'header');
+    this.hasFooter = hasNamedSlot(this.host, 'footer');
+
     // TODO: why do we validate only when opened?
     if (this.open) {
       warnIfAriaAndHeadingPropsAreUndefined(this.host, this.hasHeader, this.aria);
     }
-
-    this.hasHeader = hasHeading(this.host, this.heading) || hasNamedSlot(this.host, 'header');
-    this.hasFooter = hasNamedSlot(this.host, 'footer');
 
     attachComponentCss(
       this.host,

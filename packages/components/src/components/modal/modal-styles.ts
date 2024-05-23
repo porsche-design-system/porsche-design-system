@@ -53,36 +53,38 @@ export const getComponentCss = (
       },
       // TODO: why not available to Flyout too?
       // TODO: discussable if so many styles are a good thing, since we could also expose one or two CSS variables with which a stretch to full width is possible too
-      '::slotted': mergeDeep(
-        {
-          [`&(.${cssClassNameStretchToFullModalWidth})`]: {
-            display: 'block',
-            margin: `0 calc(${safeZoneHorizontal} * -1)`,
-            width: `calc(100% + calc(${safeZoneHorizontal} * 2))`,
+      '::slotted': addImportantToEachRule(
+        mergeDeep(
+          {
+            [`&(.${cssClassNameStretchToFullModalWidth})`]: {
+              display: 'block',
+              margin: `0 calc(${safeZoneHorizontal} * -1)`,
+              width: `calc(100% + calc(${safeZoneHorizontal} * 2))`,
+            },
+            ...(!hasHeader && {
+              [`&(.${cssClassNameStretchToFullModalWidth}:first-child)`]: {
+                marginBlockStart: `calc(${safeZoneVertical} * -1)`,
+              },
+            }),
+            ...(!hasFooter && {
+              [`&(.${cssClassNameStretchToFullModalWidth}:last-child)`]: {
+                marginBlockEnd: `calc(${safeZoneVertical} * -1)`,
+              },
+            }),
           },
-          ...(!hasHeader && {
-            [`&(.${cssClassNameStretchToFullModalWidth}:first-child)`]: {
-              marginBlockStart: `calc(${safeZoneVertical} * -1)`,
-            },
-          }),
-          ...(!hasFooter && {
-            [`&(.${cssClassNameStretchToFullModalWidth}:last-child)`]: {
-              marginBlockEnd: `calc(${safeZoneVertical} * -1)`,
-            },
-          }),
-        },
-        buildResponsiveStyles(fullscreen, (fullscreenValue: boolean) => ({
-          ...(!hasHeader && {
-            [`&(.${cssClassNameStretchToFullModalWidth}:first-child)`]: {
-              borderRadius: fullscreenValue ? 0 : `${borderRadiusMedium} ${borderRadiusMedium} 0 0`,
-            },
-          }),
-          ...(!hasFooter && {
-            [`&(.${cssClassNameStretchToFullModalWidth}:last-child)`]: {
-              borderRadius: fullscreenValue ? 0 : `0 0 ${borderRadiusMedium} ${borderRadiusMedium}`,
-            },
-          }),
-        }))
+          buildResponsiveStyles(fullscreen, (fullscreenValue: boolean) => ({
+            ...(!hasHeader && {
+              [`&(.${cssClassNameStretchToFullModalWidth}:first-child)`]: {
+                borderRadius: fullscreenValue ? 0 : `${borderRadiusMedium} ${borderRadiusMedium} 0 0`,
+              },
+            }),
+            ...(!hasFooter && {
+              [`&(.${cssClassNameStretchToFullModalWidth}:last-child)`]: {
+                borderRadius: fullscreenValue ? 0 : `0 0 ${borderRadiusMedium} ${borderRadiusMedium}`,
+              },
+            }),
+          }))
+        )
       ),
       slot: {
         display: 'block',
