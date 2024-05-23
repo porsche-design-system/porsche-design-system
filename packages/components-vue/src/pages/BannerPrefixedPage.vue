@@ -1,5 +1,5 @@
 <script setup lang="ts">
-  import { ToastComponent } from '../components';
+  import { PBanner, PorscheDesignSystemProvider } from '@porsche-design-system/components-vue';
 </script>
 
 <template>
@@ -24,5 +24,7 @@
     <span></span>
   </div>
 
-  <ToastComponent text="Some message" />
+  <PorscheDesignSystemProvider prefix="my-prefix">
+    <PBanner description="Description" heading="Heading" open="true"></PBanner>
+  </PorscheDesignSystemProvider>
 </template>
