@@ -14,6 +14,13 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ### [Unreleased]
 
+### [3.16.0-rc.1] - 2024-05-23
+
+#### Fixed
+
+- `Banner`: Fixed banner position on smaller devices
+  ([#3307](https://github.com/porsche-design-system/porsche-design-system/pull/3307))
+
 ### [3.15.0] - 2024-05-16
 
 ### [3.15.0-rc.5] - 2024-05-16
