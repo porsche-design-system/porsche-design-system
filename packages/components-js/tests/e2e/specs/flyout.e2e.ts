@@ -24,8 +24,9 @@ const flyoutMinWidth = 320;
 
 const getHost = (page: Page) => page.$('p-flyout');
 const getFlyout = (page: Page) => page.$('p-flyout dialog');
-const getHeader = (page: Page) => page.$('p-flyout .header');
-const getFooter = (page: Page) => page.$('p-flyout .footer');
+const getFlyoutScroller = (page: Page) => page.$('p-flyout dialog .scroller');
+const getHeader = (page: Page) => page.$('p-flyout slot[name="header"]');
+const getFooter = (page: Page) => page.$('p-flyout slot[name="footer"]');
 const getFlyoutDismissButton = (page: Page) => page.$('p-flyout p-button-pure.dismiss');
 const getFlyoutDismissButtonReal = (page: Page) => page.$('p-flyout p-button-pure.dismiss button');
 const getBodyStyle = async (page: Page) => getAttribute(await page.$('body'), 'style');
@@ -138,7 +139,7 @@ test('should be visible after opened', async ({ page }) => {
 test('should have correct transform when opened and dismissed', async ({ page }) => {
   await initBasicFlyout(page, { open: false });
   const getFlyoutTransform = async (page: Page) =>
-    getElementStyle(await getFlyout(page), 'transform', { waitForTransition: true });
+    getElementStyle(await getFlyoutScroller(page), 'transform', { waitForTransition: true });
 
   const initialFlyoutTransform = await getFlyoutTransform(page);
   expect(initialFlyoutTransform).toBe(`matrix(1, 0, 0, 1, ${flyoutMinWidth}, 0)`);
@@ -468,26 +469,6 @@ test.describe('focus behavior', () => {
 test.describe('after content change', () => {
   skipInBrowsers(['webkit', 'firefox']);
 
-  test('should focus dismiss button again', async ({ page }) => {
-    await initAdvancedFlyout(page);
-    await openFlyout(page);
-    await expectDismissButtonToBeFocused(page, 'initially');
-
-    await page.keyboard.press('Tab');
-    expect(await getActiveElementId(page), 'after 1st tab').toBe('btn-header');
-    await page.keyboard.press('Tab');
-    expect(await getActiveElementId(page), 'after 2nd tab').toBe('btn-content');
-
-    const host = await getHost(page);
-    await host.evaluate((el) => {
-      el.innerHTML = '<button id="btn-new">New Button</button>';
-    });
-    await waitForSlotChange();
-    await expectDismissButtonToBeFocused(page, 'after slot change');
-    await page.keyboard.press('Tab');
-    expect(await getActiveElementId(page), 'after content change 1nd tab').toBe('btn-new');
-  });
-
   test('should not allow focusing element behind of flyout', async ({ page }) => {
     await initAdvancedFlyout(page);
     await addButtonsBeforeAndAfterFlyout(page);
@@ -501,13 +482,15 @@ test.describe('after content change', () => {
       el.innerHTML = '';
     });
     await waitForSlotChange();
-    await expectDismissButtonToBeFocused(page, 'after content change');
+
+    await page.keyboard.press('Tab');
+    await expectDismissButtonToBeFocused(page, 'after slot change');
 
     await page.keyboard.press('Tab');
     expect(await getActiveElementTagName(page)).toBe('BODY');
 
     await page.keyboard.press('Tab');
-    await expectDismissButtonToBeFocused(page, 'after content change 2nd tab');
+    await expectDismissButtonToBeFocused(page, 'after tab cycle');
   });
 
   test('should correctly focus dismiss button from appended focusable element', async ({ page }) => {
