@@ -10241,17 +10241,17 @@ exports[`should render dsr component for PModal 1`] = `
   display: none !important;
 }
 ::slotted(.stretch-to-full-modal-width) {
-  display: block;
-  margin: 0 calc(clamp(32px, 2.75vw + 23px, 76px) * -1);
-  width: calc(100% + calc(clamp(32px, 2.75vw + 23px, 76px) * 2));
+  display: block !important;
+  margin: 0 calc(clamp(32px, 2.75vw + 23px, 76px) * -1) !important;
+  width: calc(100% + calc(clamp(32px, 2.75vw + 23px, 76px) * 2)) !important;
 }
 ::slotted(.stretch-to-full-modal-width:first-child) {
-  margin-block-start: calc(calc(clamp(8px, 0.5vw + 6px, 16px) + clamp(16px, 1.25vw + 12px, 36px)) * -1);
-  border-radius: 8px 8px 0 0;
+  margin-block-start: calc(calc(clamp(8px, 0.5vw + 6px, 16px) + clamp(16px, 1.25vw + 12px, 36px)) * -1) !important;
+  border-radius: 8px 8px 0 0 !important;
 }
 ::slotted(.stretch-to-full-modal-width:last-child) {
-  margin-block-end: calc(calc(clamp(8px, 0.5vw + 6px, 16px) + clamp(16px, 1.25vw + 12px, 36px)) * -1);
-  border-radius: 0 0 8px 8px;
+  margin-block-end: calc(calc(clamp(8px, 0.5vw + 6px, 16px) + clamp(16px, 1.25vw + 12px, 36px)) * -1) !important;
+  border-radius: 0 0 8px 8px !important;
 }
 slot {
   display: block;
