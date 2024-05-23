@@ -7483,97 +7483,105 @@ exports[`should render dsr component for PFlyout 1`] = `
   display: block;
   --pds-internal-grid-outer-column: calc(clamp(32px, 2.75vw + 23px, 76px) - clamp(16px, 1.25vw + 12px, 36px)) !important;
   --pds-internal-grid-margin: calc(clamp(32px, 2.75vw + 23px, 76px) * -1) !important;
-  position: fixed !important;
-  inset: 0 !important;
-  z-index: 99998 !important;
-  background: rgba(1, 2, 5, 0.67) !important;
-  visibility: hidden !important;
-  pointer-events: none !important;
-  -webkit-backdrop-filter: blur(0px) !important;
-  backdrop-filter: blur(0px) !important;
-  opacity: 0 !important;
-  transition: opacity var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), -webkit-backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0.25,0.1,0.25,1), visibility 0s linear var(--p-transition-duration, 0.6s) !important;
   color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
 }
+slot {
+  display: block;
+}
+slot:first-of-type {
+  grid-row-start: 1;
+}
+slot:not([name]) {
+  grid-column: 2/3;
+  z-index: 0;
+}
 dialog {
   position: fixed;
-  height: 100dvh;
-  max-height: 100dvh;
+  inset: 0;
   margin: 0;
   padding: 0;
   border: 0;
-  visibility: inherit;
+  width: 100dvw;
+  height: 100dvh;
+  max-width: 100dvw;
+  max-height: 100dvh;
+  overflow: hidden;
+  display: block;
   outline: 0;
-  inset-inline: auto 0;
-  inset-block: 0 0;
-  display: flex;
-  flex-direction: column;
-  box-sizing: border-box;
-  width: var(--p-flyout-width, fit-content);
-  min-width: 320px;
-  max-width: var(--p-flyout-max-width, 1180px);
-  color: #010205;
-  background: #FFF;
-  opacity: 0;
-  transform: translate3d(100%, 0, 0);
-  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.4,0,0.5,1) var(--p-transition-duration, 0.6s), transform var(--p-transition-duration, 0.6s) cubic-bezier(0.4,0,0.5,1);
-  box-shadow: -3px 0px 30px rgba(0, 0, 0, 0.25);
+  z-index: 9999999;
+  visibility: hidden;
+  pointer-events: none;
+  background: transparent;
+  transition: visibility 0s linear var(--p-transition-duration, 0.4s), background-color var(--p-transition-duration, 0.4s) cubic-bezier(0.4,0,0.5,1), -webkit-backdrop-filter var(--p-transition-duration, 0.4s) cubic-bezier(0.4,0,0.5,1), backdrop-filter var(--p-transition-duration, 0.4s) cubic-bezier(0.4,0,0.5,1);
 }
 dialog::backdrop {
-  opacity: 0;
+  display: none;
 }
-.wrapper {
-  display: flex;
-  flex-grow: 1;
-  height: 0;
-  flex-direction: column;
+@supports (transition-behavior: allow-discrete) {
+  dialog {
+    transition: visibility 0s linear var(--p-transition-duration, 0.4s), background-color var(--p-transition-duration, 0.4s) cubic-bezier(0.4,0,0.5,1), -webkit-backdrop-filter var(--p-transition-duration, 0.4s) cubic-bezier(0.4,0,0.5,1), backdrop-filter var(--p-transition-duration, 0.4s) cubic-bezier(0.4,0,0.5,1), overlay var(--p-transition-duration, 0.4s) cubic-bezier(0.4,0,0.5,1) allow-discrete;
+  }
 }
-.header {
-  position: sticky;
-  top: 0;
-  z-index: 2;
+
+.scroller {
+  position: absolute;
   display: grid;
-  grid-template-columns: minmax(0, 1fr) clamp(32px, 2.75vw + 23px, 76px);
-  align-items: flex-start;
-  padding: 16px 0;
-  padding-inline-start: clamp(32px, 2.75vw + 23px, 76px);
-  background: #FFF;
+  inset-block: 0;
+  inset-inline-end: 0;
+  overflow: hidden auto;
+  overscroll-behavior-y: none;
+  background: rgba(255,255,255,.01);
+  opacity: 0;
+  transform: translateX(100%);
+  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.4,0,0.5,1), transform var(--p-transition-duration, 0.25s) cubic-bezier(0.4,0,0.5,1);
 }
-.header--shadow {
-  box-shadow: rgba(204, 204, 204, 0.35) 0px 5px 10px;
+.scroller:dir(rtl) {
+  transform: translateX(-100%);
+}
+.flyout {
+  display: grid;
+  grid-template: auto/clamp(8px, 0.5vw + 6px, 16px) auto clamp(8px, 0.5vw + 6px, 16px);
+  padding-block: calc(clamp(8px, 0.5vw + 6px, 16px) + clamp(16px, 1.25vw + 12px, 36px));
+  row-gap: clamp(16px, 1.25vw + 12px, 36px);
+  column-gap: calc(clamp(32px, 2.75vw + 23px, 76px) - clamp(8px, 0.5vw + 6px, 16px));
+  align-content: flex-start;
+  color: #010205;
+  background: #FFF;
+  width: var(--p-flyout-width,auto);
+  min-width: var(--p-flyout-min-width,320px);
+  max-width: var(--p-flyout-max-width,1180px);
 }
 .dismiss {
-  grid-area: 1 / 2;
-  justify-self: center;
-}
-.content {
-  padding: 16px clamp(32px, 2.75vw + 23px, 76px);
-  max-width: calc(100vw - calc(clamp(32px, 2.75vw + 23px, 76px) * 2));
-  position: relative;
-  z-index: 0;
-  background-color: #FFF;
-  overflow-y: auto;
-  -webkit-overflow-scrolling: touch;
-  background-image: linear-gradient(to top, #FFF, #FFF), linear-gradient(to top, #FFF, #FFF), linear-gradient(to top, rgba(204, 204, 204, 0.35), rgba(255, 255, 255, 0)), linear-gradient(to bottom, rgba(204, 204, 204, 0.35), rgba(255, 255, 255, 0));
-  background-position: bottom center, top center, bottom center, top center;
-  background-repeat: no-repeat;
-  background-size: 100% 20px, 100% 20px, 100% 10px, 100% 10px;
-  background-attachment: local, local, scroll, scroll;
-  overscroll-behavior-y: none;
+  width: fit-content;
+  height: fit-content;
+  border: 2px solid #EEEFF2;
+  border-radius: 4px;
+  background: #EEEFF2;
+  margin-inline-end: 200vw;
+  transition: margin-inline-end 0s linear var(--p-transition-duration, 0s);
+  grid-area: 1/3;
+  z-index: 4;
+  position: sticky;
+  inset-block-start: clamp(8px, 0.5vw + 6px, 16px);
+  inset-inline-end: clamp(8px, 0.5vw + 6px, 16px);
+  margin-block-start: calc(clamp(16px, 1.25vw + 12px, 36px) * -1);
+  justify-self: flex-end;
 }
     </style>
     <dialog
+      aria-hidden="true"
+      aria-modal="true"
       inert=""
       tabindex="-1"
     >
       <div
-        class="wrapper"
+        class="scroller"
       >
         <div
-          class="header"
+          class="flyout"
         >
           <p-button-pure
             class="dismiss ssr"
@@ -7723,10 +7731,6 @@ img {
             </template>
             Dismiss flyout
           </p-button-pure>
-        </div>
-        <div
-          class="content"
-        >
           <slot />
         </div>
       </div>
@@ -10228,107 +10232,121 @@ exports[`should render dsr component for PModal 1`] = `
   >
     <style>
       :host {
-  overflow-y: auto;
+  display: block;
+  --pds-internal-grid-outer-column: calc(clamp(32px, 2.75vw + 23px, 76px) - clamp(16px, 1.25vw + 12px, 36px)) !important;
+  --pds-internal-grid-margin: calc(clamp(32px, 2.75vw + 23px, 76px) * -1) !important;
   color-scheme: light dark !important;
-  position: fixed !important;
-  inset: 0 !important;
-  z-index: 99999 !important;
-  background: rgba(1, 2, 5, 0.67) !important;
-  visibility: hidden !important;
-  pointer-events: none !important;
-  -webkit-backdrop-filter: blur(0px) !important;
-  backdrop-filter: blur(0px) !important;
-  opacity: 0 !important;
-  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), backdrop-filter var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), -webkit-backdrop-filter var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), visibility 0s linear var(--p-transition-duration, 0.25s) !important;
 }
 :host([hidden]) {
   display: none !important;
 }
 ::slotted(.stretch-to-full-modal-width) {
-  width: calc(100% + 64px) !important;
-  margin: 0 -32px !important;
+  display: block;
+  margin: 0 calc(clamp(32px, 2.75vw + 23px, 76px) * -1);
+  width: calc(100% + calc(clamp(32px, 2.75vw + 23px, 76px) * 2));
 }
 ::slotted(.stretch-to-full-modal-width:first-child) {
-  margin-top: -2rem !important;
+  margin-block-start: calc(calc(clamp(8px, 0.5vw + 6px, 16px) + clamp(16px, 1.25vw + 12px, 36px)) * -1);
+  border-radius: 8px 8px 0 0;
 }
 ::slotted(.stretch-to-full-modal-width:last-child) {
-  margin-bottom: -32px !important;
+  margin-block-end: calc(calc(clamp(8px, 0.5vw + 6px, 16px) + clamp(16px, 1.25vw + 12px, 36px)) * -1);
+  border-radius: 0 0 8px 8px;
 }
-::slotted(.stretch-to-full-modal-width:first-child) {
-  border-radius: 8px 8px 0 0 !important;
+slot {
+  display: block;
 }
-::slotted(.stretch-to-full-modal-width:last-child) {
-  border-radius: 0 0 8px 8px !important;
+slot:first-of-type {
+  grid-row-start: 1;
 }
-h2 {
-  font: normal normal 600 clamp(1.27rem, 0.51vw + 1.16rem, 1.78rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  margin: 0;
-  color: #010205;
+slot:not([name]) {
+  grid-column: 2/3;
+  z-index: 0;
 }
-.scroll-container {
-  display: flex;
+dialog {
+  position: fixed;
   inset: 0;
-  height: 100%;
-  overflow-y: inherit;
-  align-items: center;
-  justify-content: center;
-  flex-wrap: wrap;
-}
-.root {
-  color: #010205;
-  position: relative;
-  box-sizing: border-box;
-  transform: translateY(25%);
-  opacity: 0;
-  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.4,0,0.5,1), transform var(--p-transition-duration, 0.25s) cubic-bezier(0.4,0,0.5,1);
-  padding-top: 2rem;
-  padding-bottom: 32px;
-  background: #FFF;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  width: 100dvw;
+  height: 100dvh;
+  max-width: 100dvw;
+  max-height: 100dvh;
+  overflow: hidden;
+  display: block;
   outline: 0;
-  min-width: 276px;
-  max-width: 1535.5px;
-  min-height: auto;
-  margin: var(--p-modal-spacing-top,clamp(16px, 7vh, 192px)) max(22px, 10.625vw - 12px) var(--p-modal-spacing-bottom,clamp(16px, 7vh, 192px));
-  border-radius: 8px;
+  z-index: 9999999;
+  visibility: hidden;
+  pointer-events: none;
+  background: transparent;
+  transition: visibility 0s linear var(--p-transition-duration, 0.4s), background-color var(--p-transition-duration, 0.4s) cubic-bezier(0.4,0,0.5,1), -webkit-backdrop-filter var(--p-transition-duration, 0.4s) cubic-bezier(0.4,0,0.5,1), backdrop-filter var(--p-transition-duration, 0.4s) cubic-bezier(0.4,0,0.5,1);
 }
-.content {
-  padding: 0 32px;
+dialog::backdrop {
+  display: none;
 }
-.controls {
-  position: absolute;
-  top: 8px;
-  right: 8px;
-  left: 8px;
-  display: flex;
-  justify-content: flex-end;
-  z-index: 1;
-}
-.dismiss {
-  border: 2px solid #FFF;
-  border-radius: 4px;
-  background: #FFF;
-}
-@media(min-width:1760px) {
-  .root {
-    margin: var(--p-modal-spacing-top,min(192px, 10vh)) max(22px, 10.625vw - 12px) var(--p-modal-spacing-bottom,min(192px, 10vh));
+@supports (transition-behavior: allow-discrete) {
+  dialog {
+    transition: visibility 0s linear var(--p-transition-duration, 0.4s), background-color var(--p-transition-duration, 0.4s) cubic-bezier(0.4,0,0.5,1), -webkit-backdrop-filter var(--p-transition-duration, 0.4s) cubic-bezier(0.4,0,0.5,1), backdrop-filter var(--p-transition-duration, 0.4s) cubic-bezier(0.4,0,0.5,1), overlay var(--p-transition-duration, 0.4s) cubic-bezier(0.4,0,0.5,1) allow-discrete;
   }
 }
 
-
+.scroller {
+  position: absolute;
+  display: grid;
+  inset: 0;
+  overflow: hidden auto;
+  overscroll-behavior-y: none;
+  background: rgba(255,255,255,.01);
+}
+.modal {
+  display: grid;
+  grid-template: auto/clamp(8px, 0.5vw + 6px, 16px) auto clamp(8px, 0.5vw + 6px, 16px);
+  padding-block: calc(clamp(8px, 0.5vw + 6px, 16px) + clamp(16px, 1.25vw + 12px, 36px));
+  row-gap: clamp(16px, 1.25vw + 12px, 36px);
+  column-gap: calc(clamp(32px, 2.75vw + 23px, 76px) - clamp(8px, 0.5vw + 6px, 16px));
+  align-content: flex-start;
+  color: #010205;
+  background: #FFF;
+  opacity: 0;
+  transform: translateY(25vh);
+  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.4,0,0.5,1), transform var(--p-transition-duration, 0.25s) cubic-bezier(0.4,0,0.5,1);
+  width: var(--p-modal-width,auto);
+  min-width: var(--p-modal-min-width,clamp(276px, 22.75vw + 203px, 640px));
+  max-width: var(--p-modal-max-width,1535.5px);
+  place-self: center;
+  margin: var(--p-modal-spacing-top,clamp(16px, 10vh, 192px)) max(22px, 10.625vw - 12px) var(--p-modal-spacing-bottom,clamp(16px, 10vh, 192px));
+  border-radius: 8px;
+}
+.modal:dir(rtl) {
+  transform: translateY(25vh);
+}
+.dismiss {
+  width: fit-content;
+  height: fit-content;
+  border: 2px solid #EEEFF2;
+  border-radius: 4px;
+  background: #EEEFF2;
+  grid-area: 1/3;
+  z-index: 2;
+  position: sticky;
+  inset-block-start: clamp(8px, 0.5vw + 6px, 16px);
+  margin-block-start: calc(clamp(16px, 1.25vw + 12px, 36px) * -1);
+  margin-inline-end: clamp(8px, 0.5vw + 6px, 16px);
+  justify-self: flex-end;
+}
     </style>
-    <div
-      class="scroll-container"
+    <dialog
+      aria-hidden="true"
+      aria-modal="true"
+      inert=""
+      tabindex="-1"
     >
       <div
-        aria-hidden="true"
-        aria-modal="true"
-        class="root"
-        inert=""
-        role="dialog"
-        tabindex="-1"
+        class="scroller"
       >
         <div
-          class="controls"
+          class="modal"
         >
           <p-button-pure
             class="dismiss ssr"
@@ -10478,14 +10496,10 @@ img {
             </template>
             Dismiss modal
           </p-button-pure>
-        </div>
-        <div
-          class="content"
-        >
           <slot />
         </div>
       </div>
-    </div>
+    </dialog>
   </template>
   Some child
 </p-modal>
