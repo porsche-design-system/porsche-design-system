@@ -83,7 +83,23 @@
       </div>
 
       <div class="playground light" title="should render default modal">
-        <iframe src="/modal?iframe=true" loading="eager"></iframe>
+        <iframe src="/modal-basic?iframe=true" loading="eager" title="fix-linter-1a"></iframe>
+      </div>
+
+      <div class="playground light" title="should render default flyout">
+        <iframe src="/flyout-basic?iframe=true" loading="eager" title="fix-linter-2a"></iframe>
+      </div>
+
+      <div class="playground light" title="should render default banner">
+        <iframe src="/banner-basic?iframe=true" loading="eager" title="fix-linter-3a"></iframe>
+      </div>
+
+      <div class="playground light" title="should render default toast">
+        <iframe src="/toast-basic?iframe=true" loading="eager" title="fix-linter-4a"></iframe>
+      </div>
+
+      <div class="playground light" title="should render default flyout-navigation">
+        <iframe src="/flyout-navigation-basic?iframe=true" loading="eager" title="fix-linter-5a"></iframe>
       </div>
 
       <div class="playground light" title="should render default inline-notification">
@@ -411,7 +427,23 @@
         </div>
 
         <div class="playground light" title="should render default modal with custom prefix">
-          <iframe src="/modal-prefixed?iframe=true" loading="eager"></iframe>
+          <iframe src="/modal-prefixed?iframe=true" loading="eager" title="fix-linter-1b"></iframe>
+        </div>
+
+        <div class="playground light" title="should render default flyout with custom prefix">
+          <iframe src="/flyout-prefixed?iframe=true" loading="eager" title="fix-linter-2b"></iframe>
+        </div>
+
+        <div class="playground light" title="should render default banner with custom prefix">
+          <iframe src="/banner-prefixed?iframe=true" loading="eager" title="fix-linter-3b"></iframe>
+        </div>
+
+        <div class="playground light" title="should render default toast with custom prefix">
+          <iframe src="/toast-prefixed?iframe=true" loading="eager" title="fix-linter-4b"></iframe>
+        </div>
+
+        <div class="playground light" title="should render default flyout-navigation with custom prefix">
+          <iframe src="/flyout-navigation-prefixed?iframe=true" loading="eager" title="fix-linter-5b"></iframe>
         </div>
 
         <div class="playground light" title="should render default inline-notification with custom prefix">
