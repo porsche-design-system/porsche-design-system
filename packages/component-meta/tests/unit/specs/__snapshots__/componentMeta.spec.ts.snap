@@ -3406,6 +3406,7 @@ exports[`should match snapshot 1`] = `
       "aria": {
         "aria-label": "string",
       },
+      "disableBackdropClick": "boolean",
       "open": "boolean",
       "position": [
         "start",
@@ -3453,6 +3454,7 @@ exports[`should match snapshot 1`] = `
     ],
     "props": {
       "aria": null,
+      "disableBackdropClick": false,
       "open": false,
       "position": "end",
       "theme": "light",
@@ -3466,6 +3468,12 @@ exports[`should match snapshot 1`] = `
         "description": "Add ARIA attributes.",
         "isAria": true,
         "type": "FlyoutAriaAttribute",
+      },
+      "disableBackdropClick": {
+        "allowedValues": "boolean",
+        "defaultValue": false,
+        "description": "If true, the flyout will not be closable via backdrop click.",
+        "type": "boolean",
       },
       "open": {
         "allowedValues": "boolean",
@@ -7641,6 +7649,7 @@ exports[`should match snapshot 1`] = `
     "isThemeable": true,
     "namedSlots": [
       "heading",
+      "header",
       "footer",
     ],
     "nestedComponents": [

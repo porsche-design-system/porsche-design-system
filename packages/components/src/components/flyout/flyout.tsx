@@ -98,6 +98,9 @@ export class Flyout {
     if (getHasConstructableStylesheetSupport()) {
       // It's very important to create and push the stylesheet after `attachComponentCss()` has been called, otherwise styles might replace each other.
       const sheet = new CSSStyleSheet();
+      // TODO: for some reason unit test in Docker environment throws TS2339: Property 'push' does not exist on type 'readonly CSSStyleSheet[]'
+      /* eslint-disable @typescript-eslint/prefer-ts-expect-error, @typescript-eslint/ban-ts-comment */
+      // @ts-ignore
       this.host.shadowRoot.adoptedStyleSheets.push(sheet);
 
       const ro = new ResizeObserver((entries) => {
