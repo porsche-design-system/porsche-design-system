@@ -13,47 +13,47 @@ export const routes: Route[] = [
     path: '/overview',
   },
   {
-    name: 'Accordion Layout Shift',
+    name: 'AccordionLayoutShift',
     path: '/accordion-layout-shift',
   },
   {
-    name: 'Modal Page',
+    name: 'ModalPage',
     path: '/modal-standalone',
   },
   {
-    name: 'Modal Basic',
+    name: 'ModalBasic',
     path: '/modal-basic',
   },
   {
-    name: 'Banner Basic',
+    name: 'BannerBasic',
     path: '/banner-basic',
   },
   {
-    name: 'Banner Prefixed',
+    name: 'BannerPrefixed',
     path: '/banner-prefixed',
   },
   {
-    name: 'Flyout Basic',
+    name: 'FlyoutBasic',
     path: '/flyout-basic',
   },
   {
-    name: 'Flyout Prefixed',
+    name: 'FlyoutPrefixed',
     path: '/flyout-prefixed',
   },
   {
-    name: 'Flyout Navigation Basic',
+    name: 'FlyoutNavigationBasic',
     path: '/flyout-navigation-basic',
   },
   {
-    name: 'Flyout Navigation Prefixed',
+    name: 'FlyoutNavigationPrefixed',
     path: '/flyout-navigation-prefixed',
   },
   {
-    name: 'Modal Basic',
+    name: 'ModalBasic',
     path: '/modal-basic',
   },
   {
-    name: 'Modal Prefixed',
+    name: 'ModalPrefixed',
     path: '/modal-prefixed',
   },
   {
@@ -61,11 +61,11 @@ export const routes: Route[] = [
     path: '/overview',
   },
   {
-    name: 'Toast Basic',
+    name: 'ToastBasic',
     path: '/toast-basic',
   },
   {
-    name: 'Toast Prefixed',
+    name: 'ToastPrefixed',
     path: '/toast-prefixed',
   },
 ];
