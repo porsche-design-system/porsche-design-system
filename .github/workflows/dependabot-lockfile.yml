@@ -14,22 +14,17 @@ jobs:
     steps:
       - name: 'Checkout code'
         uses: actions/checkout@v3
-        with:
-          ref: ${{ github.head_ref }}
-          token: ${{ secrets.GITHUB_TOKEN }}
-
       - name: 'Setup Node.js'
         uses: actions/setup-node@v3
         with:
           node-version: '20.11'
-
       - name: 'Install dependencies'
         run: yarn install
-
       - name: 'Commit yarn.lock'
+        env:
+          message: "chore(dependabot): Update yarn.lock file | [dependabot skip]"
         run: |
           git config --global user.name 'dependabot[bot]'
           git config --global user.email 'dependabot[bot]@users.noreply.github.com'
-          git add yarn.lock
-          git commit -m "[dependabot skip] chore(dependabot): Update yarn.lock file after dependency update"
+          git diff --quiet || (git add yarn.lock && git commit -m "$message")
           git push
