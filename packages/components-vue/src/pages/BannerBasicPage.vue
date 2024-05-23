@@ -1,5 +1,5 @@
 <script setup lang="ts">
-  import { ToastComponent } from '../components';
+  import { PBanner } from '@porsche-design-system/components-vue';
 </script>
 
 <template>
@@ -24,5 +24,5 @@
     <span></span>
   </div>
 
-  <ToastComponent text="Some message" />
+  <PBanner description="Description" heading="Heading" open="true"></PBanner>
 </template>

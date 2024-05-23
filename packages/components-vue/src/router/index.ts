@@ -31,6 +31,16 @@ export const routes: RouteType[] = [
     component: fromExamples.AccordionExample,
   },
   {
+    path: '/banner-basic',
+    name: 'BannerBasic',
+    component: fromPages.BannerBasicPage,
+  },
+  {
+    path: '/banner-prefixed',
+    name: 'BannerPrefixed',
+    component: fromPages.BannerPrefixedPage,
+  },
+  {
     path: '/button-example-form',
     name: 'Button Example Form',
     component: fromExamples.ButtonExampleForm,
@@ -49,6 +59,16 @@ export const routes: RouteType[] = [
     path: '/carousel-example-jump-to-slide',
     name: 'Carousel Example Jump to Slide',
     component: fromExamples.CarouselExampleJumpToSlide,
+  },
+  {
+    path: '/flyout-basic',
+    name: 'FlyoutBasic',
+    component: fromPages.FlyoutBasicPage,
+  },
+  {
+    path: '/flyout-prefixed',
+    name: 'FlyoutPrefixed',
+    component: fromPages.FlyoutPrefixedPage,
   },
   {
     path: '/flyout-example',
@@ -81,6 +101,16 @@ export const routes: RouteType[] = [
     component: fromExamples.FlyoutNavigationExampleCustomContent,
   },
   {
+    path: '/flyout-navigation-basic',
+    name: 'FlyoutNavigationBasic',
+    component: fromPages.FlyoutNavigationBasicPage,
+  },
+  {
+    path: '/flyout-navigation-prefixed',
+    name: 'FlyoutNavigationPrefixed',
+    component: fromPages.FlyoutNavigationPrefixedPage,
+  },
+  {
     path: '/inline-notification-example-action-button',
     name: 'Inline Notification Example Action Button',
     component: fromExamples.InlineNotificationExampleActionButton,
@@ -96,9 +126,9 @@ export const routes: RouteType[] = [
     component: fromExamples.LinkTileProductExample,
   },
   {
-    path: '/modal',
-    name: 'Modal',
-    component: fromPages.ModalPage,
+    path: '/modal-basic',
+    name: 'ModalBasic',
+    component: fromPages.ModalBasicPage,
   },
   {
     path: '/modal-prefixed',
