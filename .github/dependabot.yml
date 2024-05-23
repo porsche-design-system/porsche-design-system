@@ -4,16 +4,9 @@
 # Please check docs/dependencies.md for ignore entries
 
 version: 2
-registries:
-  npm-github:
-    type: npm-registry
-    url: https://registry.npmjs.org
-    token: ${{secrets.PORSCHE_NPM_REGISTRY_TOKEN}}
-    replaces-base: true
 updates:
   - package-ecosystem: "npm"
     directory: "/"
-    registries: "*"
     schedule:
       interval: "monthly"
     groups:
@@ -48,3 +41,4 @@ updates:
       - dependency-name: "imask"
       - dependency-name: "vmark*"
       - dependency-name: "@stackblitz/sdk"
+      - dependency-name: "@porsche-design-system*"
