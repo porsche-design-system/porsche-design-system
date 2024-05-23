@@ -6007,13 +6007,13 @@ exports[`should render dsr component for PBanner 1`] = `
   position: fixed !important;
   margin: 0 !important;
   padding: 0 !important;
+  inset: auto !important;
   width: auto !important;
   height: auto !important;
   max-width: 100% !important;
   border: 0 !important;
   outline: 0 !important;
   overflow: visible !important;
-  top: auto !important;
   bottom: var(--p-banner-position-bottom,56px) !important;
   left: max(22px, 10.625vw - 12px) !important;
   right: max(22px, 10.625vw - 12px) !important;
