@@ -116,13 +116,15 @@ $2`
     .replace(/\\/g, '\\\\') // fix \\ in generated output
     .replace(/`/g, '\\`'); // fix \` in generated output
 
+  const templateContent = convertToAngular(fileContent).replace(/(<iframe \[src]="'[^"]*)/g, '$1 | safe'); // Fix iframe loading
+
   fileContent = `${comment}
 ${imports}
 
 @Component({
   selector: 'page-${fileName}',${styles}
   template: \`
-    ${convertToAngular(fileContent)}
+    ${templateContent}
   \`,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
