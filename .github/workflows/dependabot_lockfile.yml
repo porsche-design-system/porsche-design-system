@@ -16,7 +16,7 @@ jobs:
         uses: actions/checkout@v3
         with:
           ref: ${{ github.head_ref }}
-          token: ${{ secrets.GIT_PERSONAL_ACCESS_TOKEN }}
+          token: ${{ secrets.TEST_DEPENDABOT_LOCKFILE_PUSH }}
       - name: 'Setup Node.js'
         uses: actions/setup-node@v3
         with:
