@@ -1,17 +1,8 @@
-<div class="scroll-container">
-  <div
-    class="root"
-    role="dialog"
-    aria-modal="true"
-    aria-hidden="true"
-    tabindex="-1"
-    inert=""
-  >
-    <div class="controls">
+<dialog inert="" tabindex="-1" aria-modal="true" aria-hidden="true">
+  <div class="scroller">
+    <div class="modal">
       <p-button-pure class="dismiss hydrated"> Dismiss modal</p-button-pure>
-    </div>
-    <div class="content">
       <slot> </slot>
     </div>
   </div>
-</div>
+</dialog>
