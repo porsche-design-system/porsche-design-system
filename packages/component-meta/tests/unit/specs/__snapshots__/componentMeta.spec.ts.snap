@@ -7645,7 +7645,7 @@ exports[`should match snapshot 1`] = `
     "hasSlot": true,
     "isChunked": true,
     "isDelegatingFocus": false,
-    "isInternal": false
+    "isInternal": false,
     "isThemeable": true,
     "namedSlots": [
       "heading",
