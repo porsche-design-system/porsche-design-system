@@ -11,8 +11,6 @@ permissions:
 jobs:
   update-yarn-lock:
     runs-on: ubuntu-latest
-    env:
-      DEPLOY_KEY: ${{ secrets.DEPENDABOT_SSH_DEPLOY_KEY }}
     steps:
       - name: 'Checkout code'
         uses: actions/checkout@v3
@@ -20,25 +18,19 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: '20.11'
-      - name: 'Configure Git with deploy key'
+      - name: 'Set up SSH key'
         run: |
           mkdir -p ~/.ssh
-          echo "$DEPLOY_KEY" > ~/.ssh/id_rsa
+          echo "$DEPENDABOT_SSH_DEPLOY_KEY" > ~/.ssh/id_rsa
           chmod 600 ~/.ssh/id_rsa
           ssh-keyscan github.com >> ~/.ssh/known_hosts
       - name: 'Install dependencies'
         run: yarn install
-      - name: 'Commit yarn.lock'
+      - name: 'Update yarn.lock'
         env:
           message: "chore(dependabot): Update yarn.lock file | [dependabot skip]"
         run: |
           git config --global user.name 'dependabot[bot]'
           git config --global user.email 'dependabot[bot]@users.noreply.github.com'
           git diff --quiet || (git add yarn.lock && git commit -m "$message")
-      - name: 'Extract branch name'
-        shell: bash
-        run: echo "branch=${GITHUB_HEAD_REF:-${GITHUB_REF#refs/heads/}}" >> $GITHUB_OUTPUT
-        id: extract_branch
-      - name: 'Push changes'
-        run: |
-          git push "git@github.com:dependabot[bot]/porsche-design-system/porsche-design-system.git" HEAD:${{ steps.extract_branch.outputs.branch }}
+          git push
