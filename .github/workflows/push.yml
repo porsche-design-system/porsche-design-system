@@ -6,11 +6,7 @@ on:
       - issue/*
       - housekeeping/*
       - release/*
-  workflow_run:
-    workflows:
-      - 'Dependabot Lockfile Update'
-    types:
-      - completed
+      - dependabot/**/*
 name: 'Porsche Design System'
 jobs:
   build-and-test:
