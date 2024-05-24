@@ -9,7 +9,7 @@ updates:
     directory: "/"
     versioning-strategy: widen
     schedule:
-      interval: "monthly"
+      interval: "daily"
     groups:
       production-dependencies:
         dependency-type: "production"
