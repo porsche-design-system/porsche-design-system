@@ -20,12 +20,15 @@ jobs:
           node-version: '20.11'
       - name: 'Install dependencies'
         run: yarn install
-      - name: 'Update yarn.lock'
+      - name: 'Commit yarn.lock'
         env:
           message: "chore(dependabot): Update yarn.lock file | [dependabot skip]"
-          GITHUB_TOKEN: ${{ secrets.DEPENDABOT_SSH_DEPLOY_KEY }}
         run: |
           git config --global user.name 'dependabot[bot]'
           git config --global user.email 'dependabot[bot]@users.noreply.github.com'
           git diff --quiet || (git add yarn.lock && git commit -m "$message")
+      - name: 'Push changes'
+        env:
+          SSH_DEPLOY_KEY: ${{ secrets.DEPENDABOT_SSH_DEPLOY_KEY }}
+        run: |
           git push
