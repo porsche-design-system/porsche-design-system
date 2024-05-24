@@ -5,6 +5,7 @@ export const getBannerPopoverResetStyles = (): JssStyle => {
     position: 'fixed',
     margin: 0,
     padding: 0,
+    inset: 'auto', // ua popover reset
     width: 'auto', // ua popover reset
     height: 'auto', // ua popover reset
     maxWidth: '100%', // If component is wrapped in container with maxWidth
