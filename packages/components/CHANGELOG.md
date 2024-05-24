@@ -14,6 +14,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ### [Unreleased]
 
+### [3.15.1] - 2024-05-23
+
+#### Fixed
+
+- `Banner`: Fixed position on mobile ([#3307](https://github.com/porsche-design-system/porsche-design-system/pull/3307))
+
 ### [3.15.0] - 2024-05-16
 
 ### [3.15.0-rc.5] - 2024-05-16
@@ -27,7 +33,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 #### Changed
 
-- Banner: Refactor Banner to use native `popover`
+- `Banner`: Refactor Banner to use native `popover`
   ([#3196](https://github.com/porsche-design-system/porsche-design-system/pull/3196))
 - Partials: `getInitialStyles` only contain hydration visibility and global styles. All other styles are handled by
   constructable stylesheets at component level.
