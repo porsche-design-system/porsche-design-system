@@ -7,13 +7,14 @@ export const App = (): JSX.Element => {
   const navigate = useNavigate();
   const [theme, setTheme] = useState<Theme>('light');
   const themes: Theme[] = ['light', 'dark', 'auto'];
+  const { pathname } = useLocation();
   const isWithinIFrame: boolean = window.location !== window.parent.location;
 
   return (
     <>
       {!isWithinIFrame && (
         <>
-          <select name="route" value={useLocation().pathname} onChange={(e) => navigate(e.target.value)}>
+          <select name="route" value={pathname} onChange={(e) => navigate(e.target.value)}>
             <option disabled value="/">
               Select a page
             </option>
