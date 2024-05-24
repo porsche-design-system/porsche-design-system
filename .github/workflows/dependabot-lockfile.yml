@@ -41,4 +41,4 @@ jobs:
         id: extract_branch
       - name: 'Push changes'
         run: |
-          git push git@github.com:dependabot[bot]/porsche-design-system/porsche-design-system.git HEAD:${{ steps.extract_branch.outputs.branch }}
+          git push "git@github.com:dependabot[bot]/porsche-design-system/porsche-design-system.git" HEAD:${{ steps.extract_branch.outputs.branch }}
