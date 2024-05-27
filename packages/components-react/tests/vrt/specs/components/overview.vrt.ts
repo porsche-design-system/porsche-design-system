@@ -5,6 +5,7 @@ test.describe('overview', async () => {
   test(`should have no visual regression for viewport ${viewportWidthXXL}`, async ({ page }) => {
     await page.goto('/overview');
     await page.evaluate(() => (window as any).componentsReady());
+    await page.evaluate(() => (window as any).waitForComponentsReadyWithinIFrames());
     await page.setViewportSize({
       width: viewportWidthXXL,
       height: await page.evaluate(() => document.body.clientHeight),
