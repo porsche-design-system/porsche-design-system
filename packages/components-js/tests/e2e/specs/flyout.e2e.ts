@@ -301,6 +301,18 @@ test.describe('can be dismissed', () => {
     expect((await getEventSummary(host, 'dismiss')).counter, 'after mouse up').toBe(0);
   });
 
+  skipInBrowsers(['webkit'], () => {
+    test('should not be closable via backdrop when disableBackdropClick is set', async ({ page }) => {
+      const host = await getHost(page);
+      await setProperty(host, 'disableBackdropClick', true);
+
+      await page.mouse.move(5, 5);
+      await page.mouse.down();
+
+      expect((await getEventSummary(host, 'close')).counter).toBe(0);
+    });
+  });
+
   test('should not bubble dismiss event', async ({ page }) => {
     const body = await page.$('body');
     await addEventListener(body, 'dismiss');
