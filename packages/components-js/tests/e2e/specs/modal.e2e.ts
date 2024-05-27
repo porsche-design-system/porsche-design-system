@@ -637,7 +637,9 @@ test.describe('sticky footer', () => {
     expect(await getFooterBoxShadow(page)).toBe('none');
 
     await host.evaluate((el) => {
-      el.innerHTML = '<div style="height: 110vh">Some Content</div>';
+      const content = document.createElement('div');
+      content.style.height = '100vh';
+      el.appendChild(content);
     });
     await footer.evaluate((el) => (el.style.visibility = 'visible'));
 
