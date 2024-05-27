@@ -1,4 +1,4 @@
-import { Component, Element, Event, type EventEmitter, h, type JSX, Prop } from '@stencil/core';
+import { Component, Element, Event, type EventEmitter, forceUpdate, h, type JSX, Prop } from '@stencil/core';
 import {
   FLYOUT_ARIA_ATTRIBUTES,
   FLYOUT_POSITIONS,
@@ -12,21 +12,23 @@ import {
   applyConstructableStylesheetStyles,
   attachComponentCss,
   getHasConstructableStylesheetSupport,
-  getIntersectionObserverStickyArea,
   getPrefixedTagNames,
   hasNamedSlot,
   hasPropValueChanged,
+  observeChildren,
   onCancelDialog,
   onClickDialog,
   parseAndGetAriaAttributes,
   setDialogVisibility,
   setScrollLock,
   THEMES,
+  unobserveChildren,
   validateProps,
   warnIfDeprecatedPropValueIsUsed,
 } from '../../utils';
 import type { PropTypes, SelectedAriaAttributes, Theme } from '../../types';
 import { getSlottedAnchorStyles } from '../../styles';
+import { observeStickyArea, unobserveStickyArea } from '../../utils/dialog/observer';
 
 const propTypes: PropTypes<typeof Flyout> = {
   open: AllowedTypes.boolean,
@@ -75,6 +77,10 @@ export class Flyout {
 
   public connectedCallback(): void {
     applyConstructableStylesheetStyles(this.host, getSlottedAnchorStyles);
+    // Observe dynamic slot changes
+    observeChildren(this.host, () => {
+      forceUpdate(this.host);
+    });
   }
 
   public componentWillRender(): void {
@@ -86,13 +92,11 @@ export class Flyout {
   }
 
   public componentDidLoad(): void {
-    const io = getIntersectionObserverStickyArea(this.scroller);
-
     if (this.hasHeader) {
-      io.observe(this.header);
+      observeStickyArea(this.scroller, this.header);
     }
     if (this.hasFooter) {
-      io.observe(this.footer);
+      observeStickyArea(this.scroller, this.footer);
     }
 
     if (getHasConstructableStylesheetSupport()) {
@@ -116,8 +120,20 @@ export class Flyout {
     }
   }
 
+  public componentDidUpdate(): void {
+    if (this.hasHeader) {
+      observeStickyArea(this.scroller, this.header);
+    }
+    if (this.hasFooter) {
+      observeStickyArea(this.scroller, this.footer);
+    }
+  }
+
   public disconnectedCallback(): void {
     setScrollLock(false);
+    unobserveChildren(this.host);
+    unobserveStickyArea(this.header);
+    unobserveStickyArea(this.footer);
   }
 
   public render(): JSX.Element {
@@ -159,7 +175,7 @@ export class Flyout {
         tabIndex={-1} // dialog always has a dismiss button to be focused
         ref={(el) => (this.dialog = el)}
         onCancel={(e) => onCancelDialog(e, this.dismissDialog)}
-        onClick={(e) => onClickDialog(e, this.dismissDialog, this.disableBackdropClick)}
+        onMouseDown={(e) => onClickDialog(e, this.dismissDialog, this.disableBackdropClick)}
         {...parseAndGetAriaAttributes({
           'aria-modal': true,
           'aria-hidden': !this.open,

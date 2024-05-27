@@ -1,20 +1,21 @@
-import { Component, Element, Event, type EventEmitter, h, type JSX, Prop } from '@stencil/core';
+import { Component, Element, Event, type EventEmitter, forceUpdate, h, type JSX, Prop } from '@stencil/core';
 import type { BreakpointCustomizable, PropTypes, SelectedAriaAttributes, Theme } from '../../types';
 import {
   AllowedTypes,
   applyConstructableStylesheetStyles,
   attachComponentCss,
-  getIntersectionObserverStickyArea,
   getPrefixedTagNames,
   hasHeading,
   hasNamedSlot,
   hasPropValueChanged,
+  observeChildren,
   onCancelDialog,
   onClickDialog,
   parseAndGetAriaAttributes,
   setDialogVisibility,
   setScrollLock,
   THEMES,
+  unobserveChildren,
   validateProps,
   warnIfAriaAndHeadingPropsAreUndefined,
   warnIfDeprecatedPropIsUsed,
@@ -24,6 +25,7 @@ import { MODAL_ARIA_ATTRIBUTES } from './modal-utils';
 import { getComponentCss } from './modal-styles';
 import { BACKDROPS } from '../../styles/dialog-styles';
 import { getSlottedAnchorStyles } from '../../styles';
+import { observeStickyArea, unobserveStickyArea } from '../../utils/dialog/observer';
 
 const propTypes: PropTypes<typeof Modal> = {
   open: AllowedTypes.boolean,
@@ -96,6 +98,10 @@ export class Modal {
 
   public connectedCallback(): void {
     applyConstructableStylesheetStyles(this.host, getSlottedAnchorStyles);
+    // Observe dynamic slot changes
+    observeChildren(this.host, () => {
+      forceUpdate(this.host);
+    });
   }
 
   public componentWillRender(): void {
@@ -107,15 +113,21 @@ export class Modal {
   }
 
   public componentDidLoad(): void {
-    const io = getIntersectionObserverStickyArea(this.scroller);
-
     if (this.hasFooter) {
-      io.observe(this.footer);
+      observeStickyArea(this.scroller, this.footer);
+    }
+  }
+
+  public componentDidUpdate(): void {
+    if (this.hasFooter) {
+      observeStickyArea(this.scroller, this.footer);
     }
   }
 
   public disconnectedCallback(): void {
     setScrollLock(false);
+    unobserveChildren(this.host);
+    unobserveStickyArea(this.footer);
   }
 
   public render(): JSX.Element {
@@ -150,7 +162,7 @@ export class Modal {
         tabIndex={-1} // dialog always has a dismiss button to be focused
         ref={(el) => (this.dialog = el)}
         onCancel={(e) => onCancelDialog(e, this.dismissDialog)}
-        onClick={(e) => onClickDialog(e, this.dismissDialog, this.disableBackdropClick)}
+        onMouseDown={(e) => onClickDialog(e, this.dismissDialog, this.disableBackdropClick)}
         {...parseAndGetAriaAttributes({
           'aria-modal': true,
           'aria-label': this.heading,

@@ -188,7 +188,7 @@ test.describe('can be dismissed', () => {
     expect((await getEventSummary(host, 'close')).counter, 'after mouse up').toBe(0);
   });
 
-  test.fixme('should not be dismissed if mousedown inside modal and mouseup inside backdrop', async ({ page }) => {
+  test('should not be dismissed if mousedown inside modal and mouseup inside backdrop', async ({ page }) => {
     await page.setViewportSize({ width: 800, height: 600 });
     await page.mouse.move(400, 300);
     await page.mouse.down();
@@ -692,5 +692,47 @@ test.describe('slotted heading', () => {
     expect(page.locator('p-modal h2')).toBeDefined();
     expect(await getHeading(page)).toBeNull();
     expect(page.getByText('Some Heading')).toBeDefined();
+  });
+});
+
+test.describe('after dynamic slot change', () => {
+  test('should show header when header slot is added dynamically', async ({ page }) => {
+    await initBasicModal(page);
+    const host = await getHost(page);
+    // TODO: Change provisioning function to not always define a heading
+    await setProperty(host, 'heading', undefined);
+    await waitForStencilLifecycle(page);
+
+    const headerText = 'Some slotted header content';
+
+    await expect(page.getByText(headerText)).not.toBeVisible();
+
+    await host.evaluate((el, headerText) => {
+      const header = document.createElement('div');
+      header.slot = 'header';
+      header.innerHTML = `<h2>${headerText}</h2>`;
+      el.appendChild(header);
+    }, headerText);
+
+    await waitForStencilLifecycle(page);
+
+    await expect(page.getByText(headerText)).toBeVisible();
+  });
+
+  test('should show footer with shadow when footer slot is added dynamically', async ({ page }) => {
+    await initBasicModal(page);
+    const host = await getHost(page);
+    const footerText = 'Some slotted footer content';
+
+    await expect(page.getByText(footerText)).not.toBeVisible();
+
+    await host.evaluate((el, footerText) => {
+      el.innerHTML = `<div style="height: 110vh">Some content</div><div slot="footer"><p>${footerText}</p></div>`;
+    }, footerText);
+
+    await waitForStencilLifecycle(page);
+
+    await expect(page.getByText(footerText)).toBeVisible();
+    expect(await getFooterBoxShadow(page)).toBe('rgba(204, 204, 204, 0.35) 0px -5px 10px 0px');
   });
 });

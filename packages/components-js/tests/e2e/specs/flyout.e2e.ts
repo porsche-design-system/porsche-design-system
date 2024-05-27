@@ -115,6 +115,16 @@ const expectDismissButtonToBeFocused = async (page: Page, failMessage?: string) 
   expect(await getActiveElementClassNameInShadowRoot(host), failMessage).toContain('dismiss');
 };
 
+const expectHeaderShadowToAppear = async (page: Page) => {
+  await page.waitForFunction(
+    (el) => getComputedStyle(el).boxShadow === 'rgba(204, 204, 204, 0.35) 0px 5px 10px 0px',
+    await getHeader(page)
+  );
+  expect(await getElementStyle(await getHeader(page), 'boxShadow'), 'after scroll outside threshold').toBe(
+    'rgba(204, 204, 204, 0.35) 0px 5px 10px 0px'
+  );
+};
+
 test('should render and be visible when open', async ({ page }) => {
   await initBasicFlyout(page, { open: true });
   expect(await getFlyout(page)).not.toBeNull();
@@ -171,13 +181,7 @@ test.describe('scroll shadows', () => {
 
     await scrollFlyoutTo(page, '.scroll-here');
 
-    await page.waitForFunction(
-      (el) => getComputedStyle(el).boxShadow === 'rgba(204, 204, 204, 0.35) 0px 5px 10px 0px',
-      await getHeader(page)
-    );
-    expect(await getElementStyle(header, 'boxShadow'), 'after scroll outside threshold').toBe(
-      'rgba(204, 204, 204, 0.35) 0px 5px 10px 0px'
-    );
+    await expectHeaderShadowToAppear(page);
   });
 
   test('should not have footer shadow when content is not scrollable', async ({ page }) => {
@@ -269,12 +273,7 @@ test.describe('can be dismissed', () => {
   });
 
   test('should be closable via backdrop', async ({ page }) => {
-    await page.mouse.move(5, 5);
-    await page.mouse.down();
-
-    expect((await getEventSummary(host, 'dismiss')).counter, 'after mouse down').toBe(0);
-
-    await page.mouse.up();
+    await page.mouse.click(5, 5);
 
     expect((await getEventSummary(host, 'dismiss')).counter, 'after mouse up').toBe(1);
   });
@@ -290,8 +289,7 @@ test.describe('can be dismissed', () => {
     expect((await getEventSummary(host, 'dismiss')).counter, 'after mouse up').toBe(0);
   });
 
-  // native dialog behaviour, disabled for now
-  test.skip('should not be dismissed if mousedown inside flyout and mouseup inside backdrop', async ({ page }) => {
+  test('should not be dismissed if mousedown inside flyout and mouseup inside backdrop', async ({ page }) => {
     await page.mouse.move(1800, 400);
     await page.mouse.down();
 
@@ -634,5 +632,72 @@ test.describe('lifecycle', () => {
 
     expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(3);
     expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(1);
+  });
+});
+
+test.describe('after dynamic slot change', () => {
+  test('should show header', async ({ page }) => {
+    await initBasicFlyout(
+      page,
+      { open: true },
+      {
+        content: '<div style="height: 200vh">Some Content</div>',
+        subFooter: '<div slot="sub-footer" class="scroll-here">Some Content</div>',
+      }
+    );
+    const host = await getHost(page);
+    const headerText = 'Some slotted header content';
+
+    await expect(page.getByText(headerText)).not.toBeVisible();
+
+    await host.evaluate((el, headerText) => {
+      const header = document.createElement('div');
+      header.slot = 'header';
+      header.innerHTML = `<h2>${headerText}</h2>`;
+      el.appendChild(header);
+    }, headerText);
+
+    await waitForStencilLifecycle(page);
+
+    const header = await getHeader(page);
+    await expect(page.getByText(headerText)).toBeVisible();
+    expect(await getElementStyle(header, 'boxShadow'), 'initial').toBe('none');
+
+    await scrollFlyoutTo(page, '.scroll-here');
+    await expectHeaderShadowToAppear(page);
+  });
+
+  test('should show footer with shadow', async ({ page }) => {
+    await initBasicFlyout(page);
+    const host = await getHost(page);
+    const footerText = 'Some slotted footer content';
+
+    await expect(page.getByText(footerText)).not.toBeVisible();
+
+    await host.evaluate((el, footerText) => {
+      el.innerHTML = `<div style="height: 110vh">Some content</div><div slot="footer"><p>${footerText}</p></div>`;
+    }, footerText);
+
+    await waitForStencilLifecycle(page);
+
+    await expect(page.getByText(footerText)).toBeVisible();
+    expect(await getElementStyle(await getFooter(page), 'boxShadow'), 'before scroll').toBe(
+      'rgba(204, 204, 204, 0.35) 0px -5px 10px 0px'
+    );
+  });
+
+  test('should show subfooter', async ({ page }) => {
+    await initBasicFlyout(page);
+    const host = await getHost(page);
+    const footerText = 'Some slotted sub-footer content';
+
+    await expect(page.getByText(footerText)).not.toBeVisible();
+
+    await host.evaluate((el, footerText) => {
+      el.innerHTML = `<div slot="sub-footer"><p>${footerText}</p></div>`;
+    }, footerText);
+
+    await waitForStencilLifecycle(page);
+    await expect(page.getByText(footerText)).toBeVisible();
   });
 });
