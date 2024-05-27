@@ -1,9 +1,40 @@
 <style>
   p-flyout {
-    --p-flyout-width: 50dvw;
+    --p-flyout-width: 70dvw;
     --p-flyout-min-width: auto;
     --p-flyout-max-width: none;
   }
 </style>
 
-<p-flyout open="true">Some Content</p-flyout>
+<p-flyout open="true">
+  <div slot="header">Some header</div>
+  <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 16px; align-items: flex-start">
+    <div
+      style="
+        position: sticky;
+        top: calc(var(--p-flyout-sticky-top, 0) + 16px);
+        padding: 16px;
+        background: rgba(255, 0, 0, 0.1);
+      "
+    >
+      Some sticky element within content relying on "--p-flyout-sticky-top"
+    </div>
+    <div>
+      Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
+      dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita
+      kasd gubergren<span class="scroll-into-view vertical-center">,</span> no sea takimata sanctus est Lorem ipsum
+      dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut
+      labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
+      Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+    </div>
+  </div>
+  <div slot="footer">Some footer</div>
+</p-flyout>
+
+<script>
+  porscheDesignSystem.componentsReady().then(() => {
+    document.querySelector('.scroll-into-view').scrollIntoView({
+      behavior: 'instant',
+    });
+  });
+</script>
