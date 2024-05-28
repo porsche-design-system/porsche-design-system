@@ -27,11 +27,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 #### Added
 
 - `Flyout`:
-  - CSS variables `--p-flyout-min-width` and `--p-flyout-sticky-top` (experimental)
+  - CSS variable `--p-flyout-sticky-top` (experimental)
     ([#3191](https://github.com/porsche-design-system/porsche-design-system/pull/3191))
   - Prop `disableBackdropClick` ([#3191](https://github.com/porsche-design-system/porsche-design-system/pull/3191))
 - `Modal`:
-  - CSS variables `--p-modal-width`, `--p-modal-min-width` and `--p-modal-max-width`
+  - CSS variable `--p-modal-width` (experimental)
     ([#3191](https://github.com/porsche-design-system/porsche-design-system/pull/3191))
   - Named slot `header` ([#3191](https://github.com/porsche-design-system/porsche-design-system/pull/3191))
 
