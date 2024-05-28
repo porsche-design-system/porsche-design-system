@@ -3,6 +3,12 @@ import * as setScrollLockUtils from '../../utils/setScrollLock';
 import * as domUtils from '../../utils/dom';
 import * as warnIfAriaAndHeadingPropsAreUndefined from '../../utils/log/warnIfAriaAndHeadingPropsAreUndefined';
 import * as hasHeading from '../../utils/form/hasHeading';
+import * as applyConstructableStylesheetStyleUtils from '../../utils/applyConstructableStylesheetStyle';
+import { expect } from '@jest/globals';
+import { getSlottedAnchorStyles } from '../../styles';
+import * as childrenObserverUtils from '../../utils/children-observer';
+import * as dialogUtils from '../../utils/dialog/dialog';
+import * as observerUtils from '../../utils/dialog/observer';
 
 jest.mock('../../utils/dom');
 
@@ -14,6 +20,100 @@ beforeEach(() => {
   component.host.attachShadow({ mode: 'open' });
   component['closeBtn'] = document.createElement('button');
   component['dialog'] = document.createElement('dialog');
+});
+
+describe('connectedCallback', () => {
+  it('should call applyConstructableStylesheetStyles() with correct parameters', () => {
+    const utilsSpy = jest.spyOn(applyConstructableStylesheetStyleUtils, 'applyConstructableStylesheetStyles');
+    component.open = true;
+    component.connectedCallback();
+
+    expect(utilsSpy).toHaveBeenCalledWith(component.host, getSlottedAnchorStyles);
+  });
+  it('should call observeChildren with correct parameters', () => {
+    const spy = jest.spyOn(childrenObserverUtils, 'observeChildren');
+    component.connectedCallback();
+
+    expect(spy).toHaveBeenCalledWith(component.host, expect.anything());
+  });
+});
+
+describe('componentWillRender', () => {
+  it('should call setScrollLock() with correct parameters if flyout is open', () => {
+    const utilsSpy = jest.spyOn(setScrollLockUtils, 'setScrollLock');
+    component.open = true;
+    component.componentWillRender();
+
+    expect(utilsSpy).toHaveBeenCalledWith(true);
+  });
+
+  it('should call setScrollLock() with correct parameters if flyout is not open', () => {
+    const utilsSpy = jest.spyOn(setScrollLockUtils, 'setScrollLock');
+    component.open = false;
+    component.componentWillRender();
+
+    expect(utilsSpy).toHaveBeenCalledWith(false);
+  });
+});
+
+describe('componentDidRender', () => {
+  it('should call setDialogVisibility() with correct parameters', () => {
+    const setDialogVisibilitySpy = jest.spyOn(dialogUtils, 'setDialogVisibility');
+    component.componentDidRender();
+
+    expect(setDialogVisibilitySpy).toHaveBeenCalledWith(component.open, component['dialog'], component['scroller']);
+  });
+});
+
+describe('componentDidLoad', () => {
+  it('should call observeStickyArea() with correct parameters if hasHeader is true', () => {
+    const observeStickyAreaSpy = jest.spyOn(observerUtils, 'observeStickyArea').mockReturnValueOnce();
+    component['hasHeader'] = true;
+    component.componentDidLoad();
+
+    expect(observeStickyAreaSpy).toHaveBeenCalledWith(component['scroller'], component['header']);
+  });
+  it('should not call observeStickyArea() with if hasHeader is false', () => {
+    const observeStickyAreaSpy = jest.spyOn(observerUtils, 'observeStickyArea').mockReturnValueOnce();
+    component['hasHeader'] = false;
+    component.componentDidLoad();
+
+    expect(observeStickyAreaSpy).not.toHaveBeenCalled();
+  });
+});
+
+describe('componentDidUpdate', () => {
+  it('should call observeStickyArea() with correct parameters if hasHeader is true', () => {
+    const observeStickyAreaSpy = jest.spyOn(observerUtils, 'observeStickyArea').mockReturnValueOnce();
+    component['hasHeader'] = true;
+    component.componentDidUpdate();
+
+    expect(observeStickyAreaSpy).toHaveBeenCalledWith(component['scroller'], component['header']);
+  });
+  it('should not call observeStickyArea() with if hasHeader is false', () => {
+    const observeStickyAreaSpy = jest.spyOn(observerUtils, 'observeStickyArea').mockReturnValueOnce();
+    component['hasHeader'] = false;
+    component.componentDidUpdate();
+
+    expect(observeStickyAreaSpy).not.toHaveBeenCalled();
+  });
+});
+
+describe('disconnectedCallback', () => {
+  it('should call setScrollLock() with correct parameters', () => {
+    const utilsSpy = jest.spyOn(setScrollLockUtils, 'setScrollLock');
+    component.open = true;
+    component.disconnectedCallback(); // component gets removed from dom
+
+    expect(utilsSpy).toHaveBeenCalledWith(false);
+  });
+  it('should call unobserveChildren() with correct parameters', () => {
+    const unobserveChildrenSpy = jest.spyOn(childrenObserverUtils, 'unobserveChildren');
+    component.open = true;
+    component.disconnectedCallback(); // component gets removed from dom
+
+    expect(unobserveChildrenSpy).toHaveBeenCalledWith(component.host);
+  });
 });
 
 describe('render', () => {
@@ -64,33 +164,5 @@ describe('render', () => {
     expect(hasNamedSlotSpy).toHaveBeenNthCalledWith(2, component.host, 'header');
     expect(hasNamedSlotSpy).toHaveBeenNthCalledWith(3, component.host, 'footer');
     expect(hasNamedSlotSpy).toHaveBeenCalledTimes(3);
-  });
-});
-
-describe('componentWillRender', () => {
-  it('should call setScrollLock() with correct parameters if flyout is open', () => {
-    const utilsSpy = jest.spyOn(setScrollLockUtils, 'setScrollLock');
-    component.open = true;
-    component.componentWillRender();
-
-    expect(utilsSpy).toHaveBeenCalledWith(true);
-  });
-
-  it('should call setScrollLock() with correct parameters if flyout is not open', () => {
-    const utilsSpy = jest.spyOn(setScrollLockUtils, 'setScrollLock');
-    component.open = false;
-    component.componentWillRender();
-
-    expect(utilsSpy).toHaveBeenCalledWith(false);
-  });
-});
-
-describe('disconnectedCallback', () => {
-  it('should call setScrollLock() with correct parameters', () => {
-    const utilsSpy = jest.spyOn(setScrollLockUtils, 'setScrollLock');
-    component.open = true;
-    component.disconnectedCallback(); // component gets removed from dom
-
-    expect(utilsSpy).toHaveBeenCalledWith(false);
   });
 });
