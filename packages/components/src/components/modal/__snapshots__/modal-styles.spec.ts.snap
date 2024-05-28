@@ -5,6 +5,8 @@ exports[`getComponentCss() should return correct css for open: false, backdrop: 
   display: block;
   --pds-internal-grid-outer-column: calc(clamp(32px, 2.75vw + 23px, 76px) - clamp(16px, 1.25vw + 12px, 36px)) !important;
   --pds-internal-grid-margin: calc(clamp(32px, 2.75vw + 23px, 76px) * -1) !important;
+  --pds-internal-grid-width-min: auto !important;
+  --pds-internal-grid-width-max: none !important;
   color-scheme: light dark !important;
 }
 :host([hidden]) {
@@ -111,6 +113,8 @@ exports[`getComponentCss() should return correct css for open: false, backdrop: 
   display: block;
   --pds-internal-grid-outer-column: calc(clamp(32px, 2.75vw + 23px, 76px) - clamp(16px, 1.25vw + 12px, 36px)) !important;
   --pds-internal-grid-margin: calc(clamp(32px, 2.75vw + 23px, 76px) * -1) !important;
+  --pds-internal-grid-width-min: auto !important;
+  --pds-internal-grid-width-max: none !important;
   color-scheme: light dark !important;
 }
 :host([hidden]) {
@@ -218,6 +222,8 @@ exports[`getComponentCss() should return correct css for open: false, backdrop: 
   display: block;
   --pds-internal-grid-outer-column: calc(clamp(32px, 2.75vw + 23px, 76px) - clamp(16px, 1.25vw + 12px, 36px)) !important;
   --pds-internal-grid-margin: calc(clamp(32px, 2.75vw + 23px, 76px) * -1) !important;
+  --pds-internal-grid-width-min: auto !important;
+  --pds-internal-grid-width-max: none !important;
   color-scheme: light dark !important;
 }
 :host([hidden]) {
@@ -338,6 +344,8 @@ exports[`getComponentCss() should return correct css for open: false, backdrop: 
   display: block;
   --pds-internal-grid-outer-column: calc(clamp(32px, 2.75vw + 23px, 76px) - clamp(16px, 1.25vw + 12px, 36px)) !important;
   --pds-internal-grid-margin: calc(clamp(32px, 2.75vw + 23px, 76px) * -1) !important;
+  --pds-internal-grid-width-min: auto !important;
+  --pds-internal-grid-width-max: none !important;
   color-scheme: light dark !important;
 }
 :host([hidden]) {
@@ -431,6 +439,8 @@ exports[`getComponentCss() should return correct css for open: false, backdrop: 
   display: block;
   --pds-internal-grid-outer-column: calc(clamp(32px, 2.75vw + 23px, 76px) - clamp(16px, 1.25vw + 12px, 36px)) !important;
   --pds-internal-grid-margin: calc(clamp(32px, 2.75vw + 23px, 76px) * -1) !important;
+  --pds-internal-grid-width-min: auto !important;
+  --pds-internal-grid-width-max: none !important;
   color-scheme: light dark !important;
 }
 :host([hidden]) {
@@ -537,6 +547,8 @@ exports[`getComponentCss() should return correct css for open: false, backdrop: 
   display: block;
   --pds-internal-grid-outer-column: calc(clamp(32px, 2.75vw + 23px, 76px) - clamp(16px, 1.25vw + 12px, 36px)) !important;
   --pds-internal-grid-margin: calc(clamp(32px, 2.75vw + 23px, 76px) * -1) !important;
+  --pds-internal-grid-width-min: auto !important;
+  --pds-internal-grid-width-max: none !important;
   color-scheme: light dark !important;
 }
 :host([hidden]) {
@@ -658,6 +670,8 @@ exports[`getComponentCss() should return correct css for open: false, backdrop: 
   display: block;
   --pds-internal-grid-outer-column: calc(clamp(32px, 2.75vw + 23px, 76px) - clamp(16px, 1.25vw + 12px, 36px)) !important;
   --pds-internal-grid-margin: calc(clamp(32px, 2.75vw + 23px, 76px) * -1) !important;
+  --pds-internal-grid-width-min: auto !important;
+  --pds-internal-grid-width-max: none !important;
   color-scheme: light dark !important;
 }
 :host([hidden]) {
@@ -765,6 +779,8 @@ exports[`getComponentCss() should return correct css for open: false, backdrop: 
   display: block;
   --pds-internal-grid-outer-column: calc(clamp(32px, 2.75vw + 23px, 76px) - clamp(16px, 1.25vw + 12px, 36px)) !important;
   --pds-internal-grid-margin: calc(clamp(32px, 2.75vw + 23px, 76px) * -1) !important;
+  --pds-internal-grid-width-min: auto !important;
+  --pds-internal-grid-width-max: none !important;
   color-scheme: light dark !important;
 }
 :host([hidden]) {
@@ -885,6 +901,8 @@ exports[`getComponentCss() should return correct css for open: false, backdrop: 
   display: block;
   --pds-internal-grid-outer-column: calc(clamp(32px, 2.75vw + 23px, 76px) - clamp(16px, 1.25vw + 12px, 36px)) !important;
   --pds-internal-grid-margin: calc(clamp(32px, 2.75vw + 23px, 76px) * -1) !important;
+  --pds-internal-grid-width-min: auto !important;
+  --pds-internal-grid-width-max: none !important;
   color-scheme: light dark !important;
 }
 :host([hidden]) {
@@ -992,6 +1010,8 @@ exports[`getComponentCss() should return correct css for open: false, backdrop: 
   display: block;
   --pds-internal-grid-outer-column: calc(clamp(32px, 2.75vw + 23px, 76px) - clamp(16px, 1.25vw + 12px, 36px)) !important;
   --pds-internal-grid-margin: calc(clamp(32px, 2.75vw + 23px, 76px) * -1) !important;
+  --pds-internal-grid-width-min: auto !important;
+  --pds-internal-grid-width-max: none !important;
   color-scheme: light dark !important;
 }
 :host([hidden]) {
@@ -1113,6 +1133,8 @@ exports[`getComponentCss() should return correct css for open: false, backdrop: 
   display: block;
   --pds-internal-grid-outer-column: calc(clamp(32px, 2.75vw + 23px, 76px) - clamp(16px, 1.25vw + 12px, 36px)) !important;
   --pds-internal-grid-margin: calc(clamp(32px, 2.75vw + 23px, 76px) * -1) !important;
+  --pds-internal-grid-width-min: auto !important;
+  --pds-internal-grid-width-max: none !important;
   color-scheme: light dark !important;
 }
 :host([hidden]) {
@@ -1220,6 +1242,8 @@ exports[`getComponentCss() should return correct css for open: true, backdrop: b
   display: block;
   --pds-internal-grid-outer-column: calc(clamp(32px, 2.75vw + 23px, 76px) - clamp(16px, 1.25vw + 12px, 36px)) !important;
   --pds-internal-grid-margin: calc(clamp(32px, 2.75vw + 23px, 76px) * -1) !important;
+  --pds-internal-grid-width-min: auto !important;
+  --pds-internal-grid-width-max: none !important;
   color-scheme: light dark !important;
 }
 :host([hidden]) {
@@ -1426,6 +1450,8 @@ exports[`getComponentCss() should return correct css for open: true, backdrop: b
   display: block;
   --pds-internal-grid-outer-column: calc(clamp(32px, 2.75vw + 23px, 76px) - clamp(16px, 1.25vw + 12px, 36px)) !important;
   --pds-internal-grid-margin: calc(clamp(32px, 2.75vw + 23px, 76px) * -1) !important;
+  --pds-internal-grid-width-min: auto !important;
+  --pds-internal-grid-width-max: none !important;
   color-scheme: light dark !important;
 }
 :host([hidden]) {
@@ -1529,6 +1555,8 @@ exports[`getComponentCss() should return correct css for open: true, backdrop: b
   display: block;
   --pds-internal-grid-outer-column: calc(clamp(32px, 2.75vw + 23px, 76px) - clamp(16px, 1.25vw + 12px, 36px)) !important;
   --pds-internal-grid-margin: calc(clamp(32px, 2.75vw + 23px, 76px) * -1) !important;
+  --pds-internal-grid-width-min: auto !important;
+  --pds-internal-grid-width-max: none !important;
   color-scheme: light dark !important;
 }
 :host([hidden]) {
@@ -1634,6 +1662,8 @@ exports[`getComponentCss() should return correct css for open: true, backdrop: b
   display: block;
   --pds-internal-grid-outer-column: calc(clamp(32px, 2.75vw + 23px, 76px) - clamp(16px, 1.25vw + 12px, 36px)) !important;
   --pds-internal-grid-margin: calc(clamp(32px, 2.75vw + 23px, 76px) * -1) !important;
+  --pds-internal-grid-width-min: auto !important;
+  --pds-internal-grid-width-max: none !important;
   color-scheme: light dark !important;
 }
 :host([hidden]) {
@@ -1750,6 +1780,8 @@ exports[`getComponentCss() should return correct css for open: true, backdrop: b
   display: block;
   --pds-internal-grid-outer-column: calc(clamp(32px, 2.75vw + 23px, 76px) - clamp(16px, 1.25vw + 12px, 36px)) !important;
   --pds-internal-grid-margin: calc(clamp(32px, 2.75vw + 23px, 76px) * -1) !important;
+  --pds-internal-grid-width-min: auto !important;
+  --pds-internal-grid-width-max: none !important;
   color-scheme: light dark !important;
 }
 :host([hidden]) {
@@ -1856,6 +1888,8 @@ exports[`getComponentCss() should return correct css for open: true, backdrop: b
   display: block;
   --pds-internal-grid-outer-column: calc(clamp(32px, 2.75vw + 23px, 76px) - clamp(16px, 1.25vw + 12px, 36px)) !important;
   --pds-internal-grid-margin: calc(clamp(32px, 2.75vw + 23px, 76px) * -1) !important;
+  --pds-internal-grid-width-min: auto !important;
+  --pds-internal-grid-width-max: none !important;
   color-scheme: light dark !important;
 }
 :host([hidden]) {
@@ -1975,6 +2009,8 @@ exports[`getComponentCss() should return correct css for open: true, backdrop: b
   display: block;
   --pds-internal-grid-outer-column: calc(clamp(32px, 2.75vw + 23px, 76px) - clamp(16px, 1.25vw + 12px, 36px)) !important;
   --pds-internal-grid-margin: calc(clamp(32px, 2.75vw + 23px, 76px) * -1) !important;
+  --pds-internal-grid-width-min: auto !important;
+  --pds-internal-grid-width-max: none !important;
   color-scheme: light dark !important;
 }
 :host([hidden]) {
@@ -2067,6 +2103,8 @@ exports[`getComponentCss() should return correct css for open: true, backdrop: b
   display: block;
   --pds-internal-grid-outer-column: calc(clamp(32px, 2.75vw + 23px, 76px) - clamp(16px, 1.25vw + 12px, 36px)) !important;
   --pds-internal-grid-margin: calc(clamp(32px, 2.75vw + 23px, 76px) * -1) !important;
+  --pds-internal-grid-width-min: auto !important;
+  --pds-internal-grid-width-max: none !important;
   color-scheme: light dark !important;
 }
 :host([hidden]) {
@@ -2172,6 +2210,8 @@ exports[`getComponentCss() should return correct css for open: true, backdrop: b
   display: block;
   --pds-internal-grid-outer-column: calc(clamp(32px, 2.75vw + 23px, 76px) - clamp(16px, 1.25vw + 12px, 36px)) !important;
   --pds-internal-grid-margin: calc(clamp(32px, 2.75vw + 23px, 76px) * -1) !important;
+  --pds-internal-grid-width-min: auto !important;
+  --pds-internal-grid-width-max: none !important;
   color-scheme: light dark !important;
 }
 :host([hidden]) {
@@ -2278,6 +2318,8 @@ exports[`getComponentCss() should return correct css for open: true, backdrop: b
   display: block;
   --pds-internal-grid-outer-column: calc(clamp(32px, 2.75vw + 23px, 76px) - clamp(16px, 1.25vw + 12px, 36px)) !important;
   --pds-internal-grid-margin: calc(clamp(32px, 2.75vw + 23px, 76px) * -1) !important;
+  --pds-internal-grid-width-min: auto !important;
+  --pds-internal-grid-width-max: none !important;
   color-scheme: light dark !important;
 }
 :host([hidden]) {
