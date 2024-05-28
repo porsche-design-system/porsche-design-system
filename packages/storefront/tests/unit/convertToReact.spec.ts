@@ -261,6 +261,23 @@ describe('transformStyleAttribute()', () => {
       )
     ).toBe(`<div style={{ "--some-custom-property": '60px', "--some-additional-custom-property": 1.5 }}></div>`);
   });
+
+  it('should correctly convert custom css properties with functions', () => {
+    expect(
+      transformStyleAttribute(`<div
+      style="
+        position: sticky;
+        top: calc(var(--p-flyout-sticky-top, 0) + 16px);
+        padding: 16px;
+        background: rgba(255, 0, 0, 0.1);
+      "
+    ></div>`)
+    ).toBe(
+      `<div
+      style={{ position: 'sticky', top: 'calc(var(--p-flyout-sticky-top, 0) + 16px)', padding: '16px', background: 'rgba(255, 0, 0, 0.1)' }}
+    ></div>`
+    );
+  });
 });
 
 describe('convertToReact()', () => {

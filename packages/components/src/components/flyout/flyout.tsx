@@ -28,7 +28,7 @@ import {
 } from '../../utils';
 import type { PropTypes, SelectedAriaAttributes, Theme } from '../../types';
 import { getSlottedAnchorStyles } from '../../styles';
-import { observeStickyArea, unobserveStickyArea } from '../../utils/dialog/observer';
+import { observeStickyArea } from '../../utils/dialog/observer';
 
 const propTypes: PropTypes<typeof Flyout> = {
   open: AllowedTypes.boolean,
@@ -120,6 +120,7 @@ export class Flyout {
     }
   }
 
+  // When slots change dynamically the intersection observer for the scroll shadows has to be added
   public componentDidUpdate(): void {
     if (this.hasHeader) {
       observeStickyArea(this.scroller, this.header);
@@ -132,8 +133,6 @@ export class Flyout {
   public disconnectedCallback(): void {
     setScrollLock(false);
     unobserveChildren(this.host);
-    unobserveStickyArea(this.header);
-    unobserveStickyArea(this.footer);
   }
 
   public render(): JSX.Element {

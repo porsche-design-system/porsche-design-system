@@ -1,4 +1,10 @@
 /**
+ * Map of scrollArea elements which are used as root in the corresponding IntersectionObserver instance.
+ * Used in order to create only one Intersection Observer instance per scrollArea element.
+ */
+export const scrollAreaObserverMap: Map<HTMLElement, IntersectionObserver> = new Map();
+
+/**
  * Map of observed nodes and their corresponding IntersectionObserver instances.
  */
 export const observedStickyNodesMap: Map<HTMLElement, IntersectionObserver> = new Map();
@@ -28,21 +34,15 @@ export const getIntersectionObserverStickyArea = (scrollArea: HTMLElement): Inte
  * @param {HTMLElement} stickyNode - The sticky element to observe.
  */
 export const observeStickyArea = (scrollArea: HTMLElement, stickyNode: HTMLElement): void => {
+  let observer = scrollAreaObserverMap.get(scrollArea);
+
+  if (!observer) {
+    observer = getIntersectionObserverStickyArea(scrollArea);
+    scrollAreaObserverMap.set(scrollArea, observer);
+  }
+
   if (!observedStickyNodesMap.has(stickyNode)) {
-    const observer = getIntersectionObserverStickyArea(scrollArea);
     observer.observe(stickyNode);
     observedStickyNodesMap.set(stickyNode, observer);
-  }
-};
-
-/**
- * Stops observing a sticky area.
- * @param {HTMLElement} stickyNode - The sticky element to unobserve.
- */
-export const unobserveStickyArea = (stickyNode: HTMLElement): void => {
-  const observer = observedStickyNodesMap.get(stickyNode);
-  if (observer) {
-    observer.unobserve(stickyNode);
-    observedStickyNodesMap.delete(stickyNode);
   }
 };

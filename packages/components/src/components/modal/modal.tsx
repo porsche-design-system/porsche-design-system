@@ -25,7 +25,7 @@ import { MODAL_ARIA_ATTRIBUTES } from './modal-utils';
 import { getComponentCss } from './modal-styles';
 import { BACKDROPS } from '../../styles/dialog-styles';
 import { getSlottedAnchorStyles } from '../../styles';
-import { observeStickyArea, unobserveStickyArea } from '../../utils/dialog/observer';
+import { observeStickyArea } from '../../utils/dialog/observer';
 
 const propTypes: PropTypes<typeof Modal> = {
   open: AllowedTypes.boolean,
@@ -118,6 +118,7 @@ export class Modal {
     }
   }
 
+  // When slots change dynamically the intersection observer for the scroll shadows has to be added
   public componentDidUpdate(): void {
     if (this.hasFooter) {
       observeStickyArea(this.scroller, this.footer);
@@ -127,7 +128,6 @@ export class Modal {
   public disconnectedCallback(): void {
     setScrollLock(false);
     unobserveChildren(this.host);
-    unobserveStickyArea(this.footer);
   }
 
   public render(): JSX.Element {
