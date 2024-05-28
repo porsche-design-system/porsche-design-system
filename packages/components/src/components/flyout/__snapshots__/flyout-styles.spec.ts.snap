@@ -75,7 +75,7 @@ dialog::backdrop {
   color: #010205;
   background: #FFF;
   width: var(--p-flyout-width,auto);
-  min-width: var(--p-flyout-min-width,320px);
+  min-width: 320px;
   max-width: var(--p-flyout-max-width,1180px);
 }
 .dismiss {
@@ -175,7 +175,7 @@ dialog::backdrop {
   color: #FBFCFF;
   background: #0E0E12;
   width: var(--p-flyout-width,auto);
-  min-width: var(--p-flyout-min-width,320px);
+  min-width: 320px;
   max-width: var(--p-flyout-max-width,1180px);
 }
 .dismiss {
@@ -290,7 +290,7 @@ dialog::backdrop {
   color: #FBFCFF;
   background: #0E0E12;
   width: var(--p-flyout-width,auto);
-  min-width: var(--p-flyout-min-width,320px);
+  min-width: 320px;
   max-width: var(--p-flyout-max-width,1180px);
 }
 .dismiss {
@@ -401,7 +401,7 @@ dialog::backdrop {
   color: #010205;
   background: #FFF;
   width: var(--p-flyout-width,auto);
-  min-width: var(--p-flyout-min-width,320px);
+  min-width: 320px;
   max-width: var(--p-flyout-max-width,1180px);
 }
 .dismiss {
@@ -497,7 +497,7 @@ dialog::backdrop {
   color: #010205;
   background: #FFF;
   width: var(--p-flyout-width,auto);
-  min-width: var(--p-flyout-min-width,320px);
+  min-width: 320px;
   max-width: var(--p-flyout-max-width,1180px);
 }
 .dismiss {
@@ -591,7 +591,7 @@ dialog::backdrop {
   color: #010205;
   background: #FFF;
   width: var(--p-flyout-width,auto);
-  min-width: var(--p-flyout-min-width,320px);
+  min-width: 320px;
   max-width: var(--p-flyout-max-width,1180px);
 }
 .dismiss {
@@ -687,7 +687,7 @@ dialog::backdrop {
   color: #010205;
   background: #FFF;
   width: var(--p-flyout-width,auto);
-  min-width: var(--p-flyout-min-width,320px);
+  min-width: 320px;
   max-width: var(--p-flyout-max-width,1180px);
 }
 .dismiss {
@@ -785,7 +785,7 @@ dialog::backdrop {
   color: #FBFCFF;
   background: #0E0E12;
   width: var(--p-flyout-width,auto);
-  min-width: var(--p-flyout-min-width,320px);
+  min-width: 320px;
   max-width: var(--p-flyout-max-width,1180px);
 }
 .dismiss {
@@ -898,7 +898,7 @@ dialog::backdrop {
   color: #FBFCFF;
   background: #0E0E12;
   width: var(--p-flyout-width,auto);
-  min-width: var(--p-flyout-min-width,320px);
+  min-width: 320px;
   max-width: var(--p-flyout-max-width,1180px);
 }
 .dismiss {
@@ -997,7 +997,7 @@ dialog::backdrop {
   color: #010205;
   background: #FFF;
   width: var(--p-flyout-width,auto);
-  min-width: var(--p-flyout-min-width,320px);
+  min-width: 320px;
   max-width: var(--p-flyout-max-width,1180px);
 }
 .dismiss {
@@ -1106,7 +1106,7 @@ dialog::backdrop {
   color: #FBFCFF;
   background: #0E0E12;
   width: var(--p-flyout-width,auto);
-  min-width: var(--p-flyout-min-width,320px);
+  min-width: 320px;
   max-width: var(--p-flyout-max-width,1180px);
 }
 .dismiss {
@@ -1201,7 +1201,7 @@ dialog::backdrop {
   color: #010205;
   background: #FFF;
   width: var(--p-flyout-width,auto);
-  min-width: var(--p-flyout-min-width,320px);
+  min-width: 320px;
   max-width: var(--p-flyout-max-width,1180px);
 }
 .dismiss {
@@ -1306,7 +1306,7 @@ dialog::backdrop {
   color: #010205;
   background: #FFF;
   width: var(--p-flyout-width,auto);
-  min-width: var(--p-flyout-min-width,320px);
+  min-width: 320px;
   max-width: var(--p-flyout-max-width,1180px);
 }
 .dismiss {
@@ -1430,7 +1430,7 @@ dialog::backdrop {
   color: #FBFCFF;
   background: #0E0E12;
   width: var(--p-flyout-width,auto);
-  min-width: var(--p-flyout-min-width,320px);
+  min-width: 320px;
   max-width: var(--p-flyout-max-width,1180px);
 }
 .dismiss {
@@ -1540,7 +1540,7 @@ dialog::backdrop {
   color: #010205;
   background: #FFF;
   width: var(--p-flyout-width,auto);
-  min-width: var(--p-flyout-min-width,320px);
+  min-width: 320px;
   max-width: var(--p-flyout-max-width,1180px);
 }
 .dismiss {
@@ -1654,7 +1654,7 @@ dialog::backdrop {
   color: #010205;
   background: #FFF;
   width: var(--p-flyout-width,auto);
-  min-width: var(--p-flyout-min-width,320px);
+  min-width: 320px;
   max-width: var(--p-flyout-max-width,1180px);
 }
 .dismiss {
@@ -1783,7 +1783,7 @@ dialog::backdrop {
   color: #010205;
   background: #FFF;
   width: var(--p-flyout-width,auto);
-  min-width: var(--p-flyout-min-width,320px);
+  min-width: 320px;
   max-width: var(--p-flyout-max-width,1180px);
 }
 .dismiss {
@@ -1878,7 +1878,7 @@ dialog::backdrop {
   color: #FBFCFF;
   background: #0E0E12;
   width: var(--p-flyout-width,auto);
-  min-width: var(--p-flyout-min-width,320px);
+  min-width: 320px;
   max-width: var(--p-flyout-max-width,1180px);
 }
 .dismiss {
@@ -1971,7 +1971,7 @@ dialog::backdrop {
   color: #010205;
   background: #FFF;
   width: var(--p-flyout-width,auto);
-  min-width: var(--p-flyout-min-width,320px);
+  min-width: 320px;
   max-width: var(--p-flyout-max-width,1180px);
 }
 .dismiss {
@@ -2079,7 +2079,7 @@ dialog::backdrop {
   color: #FBFCFF;
   background: #0E0E12;
   width: var(--p-flyout-width,auto);
-  min-width: var(--p-flyout-min-width,320px);
+  min-width: 320px;
   max-width: var(--p-flyout-max-width,1180px);
 }
 .dismiss {
@@ -2187,7 +2187,7 @@ dialog::backdrop {
   color: #010205;
   background: #FFF;
   width: var(--p-flyout-width,auto);
-  min-width: var(--p-flyout-min-width,320px);
+  min-width: 320px;
   max-width: var(--p-flyout-max-width,1180px);
 }
 .dismiss {
@@ -2299,7 +2299,7 @@ dialog::backdrop {
   color: #010205;
   background: #FFF;
   width: var(--p-flyout-width,auto);
-  min-width: var(--p-flyout-min-width,320px);
+  min-width: 320px;
   max-width: var(--p-flyout-max-width,1180px);
 }
 .dismiss {
