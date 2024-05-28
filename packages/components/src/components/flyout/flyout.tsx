@@ -5,13 +5,13 @@ import {
   type FlyoutAriaAttribute,
   type FlyoutPosition,
   type FlyoutPositionDeprecated,
+  handleUpdateStickyTopCssVar,
 } from './flyout-utils';
 import { getComponentCss } from './flyout-styles';
 import {
   AllowedTypes,
   applyConstructableStylesheetStyles,
   attachComponentCss,
-  getHasConstructableStylesheetSupport,
   getPrefixedTagNames,
   hasNamedSlot,
   hasPropValueChanged,
@@ -92,42 +92,11 @@ export class Flyout {
   }
 
   public componentDidLoad(): void {
-    if (this.hasHeader) {
-      observeStickyArea(this.scroller, this.header);
-    }
-    if (this.hasFooter) {
-      observeStickyArea(this.scroller, this.footer);
-    }
-
-    if (getHasConstructableStylesheetSupport()) {
-      // It's very important to create and push the stylesheet after `attachComponentCss()` has been called, otherwise styles might replace each other.
-      const sheet = new CSSStyleSheet();
-      // TODO: for some reason unit test in Docker environment throws TS2339: Property 'push' does not exist on type 'readonly CSSStyleSheet[]'
-      /* eslint-disable @typescript-eslint/prefer-ts-expect-error, @typescript-eslint/ban-ts-comment */
-      // @ts-ignore
-      this.host.shadowRoot.adoptedStyleSheets.push(sheet);
-
-      const ro = new ResizeObserver((entries) => {
-        for (const entry of entries) {
-          // EXPERIMENTAL CSS variable
-          sheet.replaceSync(`:host{--p-flyout-sticky-top:${Math.ceil(entry.target.getBoundingClientRect().height)}px}`);
-        }
-      });
-
-      if (this.hasHeader) {
-        ro.observe(this.header);
-      }
-    }
+    this.updateSlotObserver();
   }
 
-  // When slots change dynamically the intersection observer for the scroll shadows has to be added
   public componentDidUpdate(): void {
-    if (this.hasHeader) {
-      observeStickyArea(this.scroller, this.header);
-    }
-    if (this.hasFooter) {
-      observeStickyArea(this.scroller, this.footer);
-    }
+    this.updateSlotObserver();
   }
 
   public disconnectedCallback(): void {
@@ -205,5 +174,18 @@ export class Flyout {
 
   private dismissDialog = (): void => {
     this.dismiss.emit();
+  };
+
+  private updateSlotObserver = () => {
+    if (this.hasHeader) {
+      // When slots change dynamically the intersection observer for the scroll shadows has to be added
+      observeStickyArea(this.scroller, this.header);
+    }
+    if (this.hasFooter) {
+      // When slots change dynamically the intersection observer for the scroll shadows has to be added
+      observeStickyArea(this.scroller, this.footer);
+    }
+    // When header slot changes dynamically the resize observer and adopted stylesheet for the CSS custom property --p-flyout-sticky-top has to be updated
+    handleUpdateStickyTopCssVar(this.host, this.hasHeader, this.header);
   };
 }
