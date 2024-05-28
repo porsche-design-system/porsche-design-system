@@ -25,6 +25,8 @@ export const headingTags = 'h1,h2,h3,h4,h5,h6';
 export const dialogHostJssStyle: JssStyle = {
   '--pds-internal-grid-outer-column': `calc(${spacingFluidLarge} - ${gridGap})`,
   '--pds-internal-grid-margin': `calc(${spacingFluidLarge} * -1)`,
+  '--pds-internal-grid-width-min': 'auto',
+  '--pds-internal-grid-width-max': 'none',
 };
 
 export const getDialogJssStyle = (isVisible: boolean, theme: Theme, backdrop: Backdrop = 'blur'): JssStyle => {
