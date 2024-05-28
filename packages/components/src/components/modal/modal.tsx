@@ -118,9 +118,9 @@ export class Modal {
     }
   }
 
-  // When slots change dynamically the intersection observer for the scroll shadows has to be added
   public componentDidUpdate(): void {
     if (this.hasFooter) {
+      // When slots change dynamically the intersection observer for the scroll shadows has to be added
       observeStickyArea(this.scroller, this.footer);
     }
   }
