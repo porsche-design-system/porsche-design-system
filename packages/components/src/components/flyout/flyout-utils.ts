@@ -47,6 +47,9 @@ export const removeUpdateStickyTopCssVar = (host: HTMLElement, state: StickyTopC
   state.ro.disconnect(); // Remove resize observer
   const sheetIndex = host.shadowRoot.adoptedStyleSheets.indexOf(state.sheet);
   if (sheetIndex !== -1) {
+    // TODO: for some reason unit test in Docker environment throws TS2339: Property 'splice' does not exist on type 'readonly CSSStyleSheet[]'
+    /* eslint-disable @typescript-eslint/prefer-ts-expect-error, @typescript-eslint/ban-ts-comment */
+    // @ts-ignore
     host.shadowRoot.adoptedStyleSheets.splice(sheetIndex, 1);
   }
 };
