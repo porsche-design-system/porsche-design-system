@@ -23,8 +23,6 @@ import {
 } from '../../styles/dialog-styles';
 
 const cssVariableWidth = '--p-modal-width';
-const cssVariableMinWidth = '--p-modal-min-width';
-const cssVariableMaxWidth = '--p-modal-max-width';
 const cssVariableSpacingTop = '--p-modal-spacing-top'; // TODO: maybe --p-modal-spacing-block-start would be more precise?
 const cssVariableSpacingBottom = '--p-modal-spacing-bottom'; // TODO: maybe --p-modal-spacing-block-end would be more precise?
 
@@ -145,8 +143,8 @@ export const getComponentCss = (
             }
           : {
               width: `var(${cssVariableWidth},auto)`,
-              minWidth: `var(${cssVariableMinWidth},clamp(276px, 22.75vw + 203px, 640px))`, // to be in sync with "Porsche Grid" on viewport = 320px: calc(${gridColumnWidthBase} * 6 + ${gridGap} * 5)
-              maxWidth: `var(${cssVariableMaxWidth},1535.5px)`, // to be in sync with "Porsche Grid" on viewport >= 1920px: `calc(${gridColumnWidthXXL} * 14 + ${gridGap} * 13)`
+              minWidth: '276px', // to be in sync with "Porsche Grid" on viewport = 320px: calc(${gridColumnWidthBase} * 6 + ${gridGap} * 5)
+              maxWidth: '1535.5px', // to be in sync with "Porsche Grid" on viewport >= 1920px: `calc(${gridColumnWidthXXL} * 14 + ${gridGap} * 13)`
               placeSelf: 'center',
               margin: `var(${cssVariableSpacingTop},clamp(16px, 10vh, 192px)) ${gridExtendedOffsetBase} var(${cssVariableSpacingBottom},clamp(16px, 10vh, 192px))`, // horizontal margin is needed to ensure modal is placed on "Porsche Grid" when slotted content is wider than the viewport width
               borderRadius: borderRadiusMedium,

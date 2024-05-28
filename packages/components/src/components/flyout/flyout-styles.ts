@@ -14,7 +14,7 @@ import {
 } from '../../styles/dialog-styles';
 
 const cssVariableWidth = '--p-flyout-width';
-const cssVariableMinWidth = '--p-flyout-min-width';
+// TODO: we shouldn't expose --p-flyout-max-width
 const cssVariableMaxWidth = '--p-flyout-max-width';
 
 export const getComponentCss = (
@@ -79,7 +79,7 @@ export const getComponentCss = (
       ...dialogGridJssStyle,
       ...getDialogColorJssStyle(theme),
       width: `var(${cssVariableWidth},auto)`,
-      minWidth: `var(${cssVariableMinWidth},320px)`,
+      minWidth: '320px',
       maxWidth: `var(${cssVariableMaxWidth},1180px)`,
     },
     dismiss: {
