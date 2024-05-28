@@ -58,6 +58,7 @@ import { FieldsetWrapperComponent } from './generated/fieldset-wrapper.component
 import { FlexComponent } from './generated/flex.component';
 import { FlyoutComponent } from './generated/flyout.component';
 import { FlyoutBasicComponent } from './generated/flyout-basic.component';
+import { FlyoutCssVariablesComponent } from './generated/flyout-css-variables.component';
 import { FlyoutFooterComponent } from './generated/flyout-footer.component';
 import { FlyoutFooterScrollableContentComponent } from './generated/flyout-footer-scrollable-content.component';
 import { FlyoutGridComponent } from './generated/flyout-grid.component';
@@ -101,12 +102,14 @@ import { ModalComponent } from './generated/modal.component';
 import { ModalBackdropBlurComponent } from './generated/modal-backdrop-blur.component';
 import { ModalBackdropShadingComponent } from './generated/modal-backdrop-shading.component';
 import { ModalBasicComponent } from './generated/modal-basic.component';
-import { ModalCustomStylingComponent } from './generated/modal-custom-styling.component';
+import { ModalCssVariablesComponent } from './generated/modal-css-variables.component';
 import { ModalDisableCloseButtonComponent } from './generated/modal-disable-close-button.component';
 import { ModalFullscreenComponent } from './generated/modal-fullscreen.component';
 import { ModalFullscreenResponsiveComponent } from './generated/modal-fullscreen-responsive.component';
+import { ModalGridComponent } from './generated/modal-grid.component';
 import { ModalPrefixedComponent } from './generated/modal-prefixed.component';
 import { ModalScrollableComponent } from './generated/modal-scrollable.component';
+import { ModalSlottedHeaderComponent } from './generated/modal-slotted-header.component';
 import { ModalSlottedHeadingComponent } from './generated/modal-slotted-heading.component';
 import { ModalStickyFooterComponent } from './generated/modal-sticky-footer.component';
 import { ModalStretchToFullWidthComponent } from './generated/modal-stretch-to-full-width.component';
@@ -177,6 +180,7 @@ export const generatedPages = [
   FlexComponent,
   FlyoutComponent,
   FlyoutBasicComponent,
+  FlyoutCssVariablesComponent,
   FlyoutFooterComponent,
   FlyoutFooterScrollableContentComponent,
   FlyoutGridComponent,
@@ -220,12 +224,14 @@ export const generatedPages = [
   ModalBackdropBlurComponent,
   ModalBackdropShadingComponent,
   ModalBasicComponent,
-  ModalCustomStylingComponent,
+  ModalCssVariablesComponent,
   ModalDisableCloseButtonComponent,
   ModalFullscreenComponent,
   ModalFullscreenResponsiveComponent,
+  ModalGridComponent,
   ModalPrefixedComponent,
   ModalScrollableComponent,
+  ModalSlottedHeaderComponent,
   ModalSlottedHeadingComponent,
   ModalStickyFooterComponent,
   ModalStretchToFullWidthComponent,
@@ -399,6 +405,11 @@ export const generatedRoutes: ExtendedRoute[] = [
     name: 'Flyout Basic',
     path: 'flyout-basic',
     component: FlyoutBasicComponent,
+  },
+  {
+    name: 'Flyout Css Variables',
+    path: 'flyout-css-variables',
+    component: FlyoutCssVariablesComponent,
   },
   {
     name: 'Flyout Footer',
@@ -616,9 +627,9 @@ export const generatedRoutes: ExtendedRoute[] = [
     component: ModalBasicComponent,
   },
   {
-    name: 'Modal Custom Styling',
-    path: 'modal-custom-styling',
-    component: ModalCustomStylingComponent,
+    name: 'Modal Css Variables',
+    path: 'modal-css-variables',
+    component: ModalCssVariablesComponent,
   },
   {
     name: 'Modal Disable Close Button',
@@ -636,6 +647,11 @@ export const generatedRoutes: ExtendedRoute[] = [
     component: ModalFullscreenResponsiveComponent,
   },
   {
+    name: 'Modal Grid',
+    path: 'modal-grid',
+    component: ModalGridComponent,
+  },
+  {
     name: 'Modal Prefixed',
     path: 'modal-prefixed',
     component: ModalPrefixedComponent,
@@ -644,6 +660,11 @@ export const generatedRoutes: ExtendedRoute[] = [
     name: 'Modal Scrollable',
     path: 'modal-scrollable',
     component: ModalScrollableComponent,
+  },
+  {
+    name: 'Modal Slotted Header',
+    path: 'modal-slotted-header',
+    component: ModalSlottedHeaderComponent,
   },
   {
     name: 'Modal Slotted Heading',

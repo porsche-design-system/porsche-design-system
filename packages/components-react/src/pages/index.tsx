@@ -38,6 +38,7 @@ import { FieldsetWrapperPage } from './generated/FieldsetWrapper';
 import { FlexPage } from './generated/Flex';
 import { FlyoutPage } from './generated/Flyout';
 import { FlyoutBasicPage } from './generated/FlyoutBasic';
+import { FlyoutCssVariablesPage } from './generated/FlyoutCssVariables';
 import { FlyoutFooterPage } from './generated/FlyoutFooter';
 import { FlyoutFooterScrollableContentPage } from './generated/FlyoutFooterScrollableContent';
 import { FlyoutGridPage } from './generated/FlyoutGrid';
@@ -81,12 +82,14 @@ import { ModalPage } from './generated/Modal';
 import { ModalBackdropBlurPage } from './generated/ModalBackdropBlur';
 import { ModalBackdropShadingPage } from './generated/ModalBackdropShading';
 import { ModalBasicPage } from './generated/ModalBasic';
-import { ModalCustomStylingPage } from './generated/ModalCustomStyling';
+import { ModalCssVariablesPage } from './generated/ModalCssVariables';
 import { ModalDisableCloseButtonPage } from './generated/ModalDisableCloseButton';
 import { ModalFullscreenPage } from './generated/ModalFullscreen';
 import { ModalFullscreenResponsivePage } from './generated/ModalFullscreenResponsive';
+import { ModalGridPage } from './generated/ModalGrid';
 import { ModalPrefixedPage } from './generated/ModalPrefixed';
 import { ModalScrollablePage } from './generated/ModalScrollable';
+import { ModalSlottedHeaderPage } from './generated/ModalSlottedHeader';
 import { ModalSlottedHeadingPage } from './generated/ModalSlottedHeading';
 import { ModalStickyFooterPage } from './generated/ModalStickyFooter';
 import { ModalStretchToFullWidthPage } from './generated/ModalStretchToFullWidth';
@@ -258,6 +261,11 @@ export const generatedRoutes: RouteType[] = [
     name: 'Flyout Basic',
     path: '/flyout-basic',
     element: <FlyoutBasicPage />,
+  },
+  {
+    name: 'Flyout Css Variables',
+    path: '/flyout-css-variables',
+    element: <FlyoutCssVariablesPage />,
   },
   {
     name: 'Flyout Footer',
@@ -475,9 +483,9 @@ export const generatedRoutes: RouteType[] = [
     element: <ModalBasicPage />,
   },
   {
-    name: 'Modal Custom Styling',
-    path: '/modal-custom-styling',
-    element: <ModalCustomStylingPage />,
+    name: 'Modal Css Variables',
+    path: '/modal-css-variables',
+    element: <ModalCssVariablesPage />,
   },
   {
     name: 'Modal Disable Close Button',
@@ -495,6 +503,11 @@ export const generatedRoutes: RouteType[] = [
     element: <ModalFullscreenResponsivePage />,
   },
   {
+    name: 'Modal Grid',
+    path: '/modal-grid',
+    element: <ModalGridPage />,
+  },
+  {
     name: 'Modal Prefixed',
     path: '/modal-prefixed',
     element: <ModalPrefixedPage />,
@@ -503,6 +516,11 @@ export const generatedRoutes: RouteType[] = [
     name: 'Modal Scrollable',
     path: '/modal-scrollable',
     element: <ModalScrollablePage />,
+  },
+  {
+    name: 'Modal Slotted Header',
+    path: '/modal-slotted-header',
+    element: <ModalSlottedHeaderPage />,
   },
   {
     name: 'Modal Slotted Heading',

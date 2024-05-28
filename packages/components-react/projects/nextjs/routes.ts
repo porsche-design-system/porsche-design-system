@@ -108,6 +108,10 @@ const generatedRoutes = {
     "path": "/flyout-basic",
     "name": "FlyoutBasic"
   },
+  "flyoutCssVariables": {
+    "path": "/flyout-css-variables",
+    "name": "FlyoutCssVariables"
+  },
   "flyoutFooter": {
     "path": "/flyout-footer",
     "name": "FlyoutFooter"
@@ -280,9 +284,9 @@ const generatedRoutes = {
     "path": "/modal-basic",
     "name": "ModalBasic"
   },
-  "modalCustomStyling": {
-    "path": "/modal-custom-styling",
-    "name": "ModalCustomStyling"
+  "modalCssVariables": {
+    "path": "/modal-css-variables",
+    "name": "ModalCssVariables"
   },
   "modalDisableCloseButton": {
     "path": "/modal-disable-close-button",
@@ -296,6 +300,10 @@ const generatedRoutes = {
     "path": "/modal-fullscreen-responsive",
     "name": "ModalFullscreenResponsive"
   },
+  "modalGrid": {
+    "path": "/modal-grid",
+    "name": "ModalGrid"
+  },
   "modalPrefixed": {
     "path": "/modal-prefixed",
     "name": "ModalPrefixed"
@@ -303,6 +311,10 @@ const generatedRoutes = {
   "modalScrollable": {
     "path": "/modal-scrollable",
     "name": "ModalScrollable"
+  },
+  "modalSlottedHeader": {
+    "path": "/modal-slotted-header",
+    "name": "ModalSlottedHeader"
   },
   "modalSlottedHeading": {
     "path": "/modal-slotted-heading",
