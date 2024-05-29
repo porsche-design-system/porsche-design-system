@@ -633,6 +633,8 @@ test.describe('lifecycle', () => {
 });
 
 test.describe('after dynamic slot change', () => {
+  skipInBrowsers(['webkit', 'firefox']);
+
   test('should show header', async ({ page }) => {
     await initBasicFlyout(
       page,

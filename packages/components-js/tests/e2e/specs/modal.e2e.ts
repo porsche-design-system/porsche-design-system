@@ -148,6 +148,7 @@ test('should be visible after opened', async ({ page }) => {
   await initBasicModal(page, { isOpen: false });
   const host = await getHost(page);
   await setProperty(host, 'open', true);
+  await waitForStencilLifecycle(page);
 
   expect(await getModalVisibility(page)).toBe('visible');
 });
