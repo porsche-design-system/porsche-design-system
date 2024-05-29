@@ -28,7 +28,7 @@ const cssVariableSpacingBottom = '--p-modal-spacing-bottom'; // TODO: maybe --p-
 
 const safeZoneVertical = `calc(${spacingFluidSmall} + ${spacingFluidMedium})`;
 const safeZoneHorizontal = `${spacingFluidLarge}`;
-const cssClassNameStretchToFullModalWidth = 'stretch-to-full-modal-width';
+export const cssClassNameStretchToFullModalWidth = 'stretch-to-full-modal-width';
 
 export const getComponentCss = (
   isOpen: boolean,

@@ -10,48 +10,34 @@ Modals are flexible in the context and can include other components of the Porsc
 It is a controlled component. This grants you flexible control over the modal's behavior especially whether it should
 stay open after user interaction like submission of a form.
 
-<Notification heading="Important note" heading-tag="h2" state="warning">
-  This component activates a focus trap to keep the focus within while being open.<br>
-  This is achieved by detecting the first and last focusable child element after the modal is opened.<br>
-  Further DOM changes like adding or removing DOM nodes can only be detected on the first level, hence direct children of the modal.
-</Notification>
-
 <Notification heading="Scroll-lock" heading-tag="h2" state="warning">
   This component sets <code>overflow: hidden</code> on the body when opened in order to prevent background scrolling.<br> 
   This doesn't work completely reliable under iOS but is the most stable solution.<br>
   Feel free to address this issue in an Open Source PR, if you can provide a better solution. <b><a href="https://github.com/porsche-design-system/porsche-design-system/blob/main/packages/components/src/utils/setScrollLock.ts">Current implementation</a></b><br> 
 </Notification>
 
-<Notification heading="Recommendation" heading-tag="h2" state="success">
-  You should only have a single instance of this component within your application. We recommend rendering it close to the body, e.g., in your App.tsx or app.component.ts. This way you reduce the chance of having issues with its z-index and fixed positioning. 
-</Notification>
-
 <TableOfContents></TableOfContents>
 
 ## Basic
 
-It is crucial to note that `p-modal` is displayed within your DOM hierarchy as an overlay through a high `z-index`
-value. Therefore, you need to ensure any parent elements don't define a `z-index` or have a `transform` style in place.
-Otherwise, the modal might get clipped or overlapped by other elements.
+Following web standards, the component uses the native `<dialog />` element internally which ensures proper focus
+handling including a focus trap. In addition, it's rendered on the `#top-layer` which ensures the element to be on top
+of the page independent of where `p-modal` is placed in the DOM hierarchy (`z-index` is not relevant anymore and won't
+have any effect).
 
-The most important property of `p-modal` is its `open` attribute. When it is present the modal will be visible.
+The most important property of `p-modal` is its `open` property. When it's set to `true` the modal will be visible.
 
 In order to get notified when the modal gets closed by clicking the `x` button, the backdrop or by pressing the `Escape`
 key you need to register an event listener for the `dismiss` event which is emitted by `p-modal`.
+
+The size of `p-modal` adjusts itself to the content with a predefined min/max width.
 
 <Notification heading="Deprecation hint" heading-tag="h3" state="warning">
   The <code>close</code> event has been deprecated and will be removed with the next major release.<br>
   Please use the <code>dismiss</code> event instead.
 </Notification>
 
-The size of `p-modal` adjusts itself to the content with a predefined min/max width.
-
-<Playground :markup="widthMarkup" :config="config">
-  <PlaygroundSelect v-model="width" :values="widths" name="width"></PlaygroundSelect>
-</Playground>
-
-Note that `.footer` is a custom CSS class in order to responsively style the buttons which is achieved with respect to
-guidelines for [Buttons](components/button/usage).
+<Playground :frameworkMarkup="codeExampleAccessibility" :markup="widthMarkup" :config="config"></Playground>
 
 ### <A11yIcon></A11yIcon> Accessibility hints
 
@@ -219,11 +205,9 @@ export default class Code extends Vue {
   scrollable =
     `<p-button type="button" aria="{ 'aria-haspopup': 'dialog' }">Open Modal</p-button>
 <p-modal id="modal-scrollable" heading="Some Heading" open="false">
-  <p-text>Some Content</p-text>
-  <div style="height: 40vh;"></div>
-  <p-text>More Content</p-text>
-  <div style="height: 40vh;"></div>
-  <p-text>Even More Content</p-text>
+  <p-text>Some Content Begin</p-text>
+  <div style="width: 10px; height: 120vh; background: deeppink;"></div>
+  <p-text>Some Content End</p-text>
   <p-button-group class="footer">
     <p-button>Save</p-button>
     <p-button type="button" variant="secondary" icon="close">Close</p-button>
@@ -255,7 +239,9 @@ export default class Code extends Vue {
   stickyFooter =
     `<p-button type="button" aria="{ 'aria-haspopup': 'dialog' }">Open Modal</p-button>
 <p-modal heading="Some Heading" fullscreen="{ base: true, s: false }" open="false">
-  <p-text style="height: 110vh">Some Content</p-text>
+  <p-text>Some Content Begin</p-text>
+  <div style="width: 10px; height: 120vh; background: deeppink;"></div>
+  <p-text>Some Content End</p-text>
   <p-text slot="footer">Sticky footer</p-text>
 </p-modal>`;
 
