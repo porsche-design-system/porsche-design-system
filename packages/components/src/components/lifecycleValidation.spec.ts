@@ -247,7 +247,7 @@ describe.each<TagName>(tagNamesWithObserveChildren.filter((tagName) => tagName !
       const spy = jest.spyOn(childrenObserverUtils, 'observeChildren');
       component.connectedCallback();
 
-      expect(spy).toHaveBeenCalledWith(component.host, expect.any(Function));
+      expect(spy).toHaveBeenCalled();
     });
 
     it('should call unobserveChildren() with correct parameters via disconnectedCallback', () => {

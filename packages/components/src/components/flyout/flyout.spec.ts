@@ -47,7 +47,11 @@ describe('connectedCallback', () => {
     const spy = jest.spyOn(childrenObserverUtils, 'observeChildren');
     component.connectedCallback();
 
-    expect(spy).toHaveBeenCalledWith(component.host, expect.anything());
+    expect(spy).toHaveBeenCalledWith(component.host, expect.anything(), undefined, {
+      attributes: false,
+      childList: true,
+      subtree: false,
+    });
   });
 });
 
@@ -79,6 +83,11 @@ describe('componentDidRender', () => {
 });
 
 describe('componentDidLoad', () => {
+  it('should call addStickyTopCssVarStyleSheet()', () => {
+    const addStickyTopCssVarStyleSheetSpy = jest.spyOn(flyoutUtilsUtils, 'addStickyTopCssVarStyleSheet');
+    component.componentDidLoad();
+    expect(addStickyTopCssVarStyleSheetSpy).toHaveBeenCalledWith(component.host);
+  });
   it('should call updateSlotObserver()', () => {
     const updateSlotObserverSpy = jest.spyOn(component as any, 'updateSlotObserver');
     component.componentDidLoad();
@@ -166,10 +175,6 @@ describe('updateSlotObserver', () => {
 
     component['updateSlotObserver']();
 
-    expect(handleUpdateStickyTopCssVarSpy).toHaveBeenCalledWith(
-      component.host,
-      component['hasHeader'],
-      component['header']
-    );
+    expect(handleUpdateStickyTopCssVarSpy).toHaveBeenCalledWith(component['hasHeader'], component['header']);
   });
 });
