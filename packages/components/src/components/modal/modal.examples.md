@@ -37,20 +37,17 @@ The size of `p-modal` adjusts itself to the content with a predefined min/max wi
   Please use the <code>dismiss</code> event instead.
 </Notification>
 
-<Playground :frameworkMarkup="codeExampleAccessibility" :markup="widthMarkup" :config="config"></Playground>
+<Playground :frameworkMarkup="codeExampleAccessibility" :markup="codeExampleAccessibility['vanilla-js']" :config="config"></Playground>
 
 ### <A11yIcon></A11yIcon> Accessibility hints
 
 To support **keyboard navigation**, please take care of correct **focus handling** after closing the modal with `ESC` or
 `Enter` key: The trigger element (e.g. a button) which has opened the modal must **receive focus state again** after the
 Modal is closed. This is important to keep focus order consistent. You can test it out by navigation this example with
-the keyboard only.  
-To announce the correct heading for **screen reader** users, it is mandatory to set the `heading` property or provide a
-meaningful heading through **ARIA** with the `aria` property.
+the keyboard only. This behaviour is already baked into the Modal component.
 
-## Framework Implementations
-
-<Playground :frameworkMarkup="codeExampleAccessibility" :markup="widthMarkup" :config="config"></Playground>
+To announce the correct heading for **screen reader** users, it is mandatory to set a meaningful heading through
+**ARIA** with the `aria` property.
 
 ## Basic Scrollable
 

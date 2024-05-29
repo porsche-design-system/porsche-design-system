@@ -13,7 +13,7 @@ export * from './FlyoutNavigationExampleCustomContent';
 export * from './InlineNotificationExampleActionButton';
 export * from './InlineNotificationExampleEvents';
 export * from './LinkTileProductExample';
-export * from './ModalExampleAccessibility';
+export * from './ModalExample';
 export * from './MultiSelectExample';
 export * from './MultiSelectExampleControlled';
 export * from './MultiSelectExampleDynamic';

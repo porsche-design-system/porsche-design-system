@@ -1,5 +1,5 @@
 import { useCallback, useState } from 'react';
-import { PModal, PButton, PText, PButtonGroup } from '@porsche-design-system/components-react';
+import { PModal, PButton, PText, PButtonGroup, PHeading } from '@porsche-design-system/components-react';
 
 export const ModalExampleAccessibilityPage = (): JSX.Element => {
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
@@ -16,10 +16,13 @@ export const ModalExampleAccessibilityPage = (): JSX.Element => {
         Open Modal
       </PButton>
       <PModal open={isModalOpen} onDismiss={onDismiss} aria={{ 'aria-label': 'Some Heading' }}>
+        <PHeading slot="header" size="large" tag="h2">
+          Some Heading
+        </PHeading>
         <PText>Some Content</PText>
-        <PButtonGroup>
+        <PButtonGroup slot="footer">
           <PButton type="button">Save</PButton>
-          <PButton type="button" variant="tertiary" icon="close">
+          <PButton type="button" variant="tertiary" icon="close" onClick={onDismiss}>
             Close
           </PButton>
         </PButtonGroup>
