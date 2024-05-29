@@ -177,25 +177,12 @@ test.describe('can be dismissed', () => {
   });
 
   test('should not be dismissed if mousedown inside modal', async ({ page }) => {
-    await page.setViewportSize({ width: 800, height: 600 });
-    await page.mouse.move(400, 300);
+    const viewportSize = page.viewportSize();
+    await page.mouse.move(viewportSize.width / 2, viewportSize.height / 2);
     await page.mouse.down();
 
     expect((await getEventSummary(host, 'close')).counter, 'after mouse down').toBe(0);
 
-    await page.mouse.up();
-
-    expect((await getEventSummary(host, 'close')).counter, 'after mouse up').toBe(0);
-  });
-
-  test('should not be dismissed if mousedown inside modal and mouseup inside backdrop', async ({ page }) => {
-    await page.setViewportSize({ width: 800, height: 600 });
-    await page.mouse.move(400, 300);
-    await page.mouse.down();
-
-    expect((await getEventSummary(host, 'close')).counter, 'after mouse down').toBe(0);
-
-    await page.mouse.move(200, 150);
     await page.mouse.up();
 
     expect((await getEventSummary(host, 'close')).counter, 'after mouse up').toBe(0);

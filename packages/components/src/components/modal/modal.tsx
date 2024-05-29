@@ -162,7 +162,7 @@ export class Modal {
         tabIndex={-1} // dialog always has a dismiss button to be focused
         ref={(el) => (this.dialog = el)}
         onCancel={(e) => onCancelDialog(e, this.dismissDialog)}
-        onMouseDown={(e) => onClickDialog(e, this.dismissDialog, this.disableBackdropClick)}
+        onClick={(e) => onClickDialog(e, this.dismissDialog, this.disableBackdropClick)}
         {...parseAndGetAriaAttributes({
           'aria-modal': true,
           'aria-label': this.heading,

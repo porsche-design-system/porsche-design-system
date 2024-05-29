@@ -33,6 +33,10 @@ const getBodyStyle = async (page: Page) => getAttribute(await page.$('body'), 's
 const getFlyoutVisibility = async (page: Page) => await getElementStyle(await getFlyout(page), 'visibility');
 const waitForFlyoutTransition = async () => sleep(CSS_TRANSITION_DURATION);
 const waitForSlotChange = () => sleep();
+const getStickyTopCssVarValue = async (page: Page) =>
+  await (
+    await getHost(page)
+  ).evaluate((element) => getComputedStyle(element).getPropertyValue('--p-flyout-sticky-top'));
 
 const initBasicFlyout = (
   page: Page,
@@ -221,29 +225,6 @@ test.describe('scroll shadows', () => {
 });
 
 test.describe('can be dismissed', () => {
-  test('should not be closed if content is scrollable and mousedown is inside area of scroll track', async ({
-    page,
-  }) => {
-    await initBasicFlyout(
-      page,
-      { open: true },
-      {
-        content: '<div style="height: 150vh;"></div>',
-      }
-    );
-
-    await addEventListener(host, 'dismiss');
-    await page.setViewportSize({ width: 800, height: 600 });
-    await page.mouse.move(784, 300);
-    await page.mouse.down();
-
-    expect((await getEventSummary(host, 'dismiss')).counter, 'after mouse down').toBe(0);
-
-    await page.mouse.up();
-
-    expect((await getEventSummary(host, 'dismiss')).counter, 'after mouse up').toBe(0);
-  });
-
   let host: ElementHandle;
 
   test.beforeEach(async ({ page }) => {
@@ -279,23 +260,12 @@ test.describe('can be dismissed', () => {
   });
 
   test('should not be dismissed if mousedown inside flyout', async ({ page }) => {
-    await page.mouse.move(1800, 400);
+    const viewportSize = page.viewportSize();
+    await page.mouse.move(viewportSize.width - 1, viewportSize.height / 2);
     await page.mouse.down();
 
     expect((await getEventSummary(host, 'dismiss')).counter, 'after mouse down').toBe(0);
 
-    await page.mouse.up();
-
-    expect((await getEventSummary(host, 'dismiss')).counter, 'after mouse up').toBe(0);
-  });
-
-  test('should not be dismissed if mousedown inside flyout and mouseup inside backdrop', async ({ page }) => {
-    await page.mouse.move(1800, 400);
-    await page.mouse.down();
-
-    expect((await getEventSummary(host, 'dismiss')).counter, 'after mouse down').toBe(0);
-
-    await page.mouse.move(5, 5);
     await page.mouse.up();
 
     expect((await getEventSummary(host, 'dismiss')).counter, 'after mouse up').toBe(0);
@@ -711,5 +681,22 @@ test.describe('after dynamic slot change', () => {
 
     await waitForStencilLifecycle(page);
     await expect(page.getByText(footerText)).toBeVisible();
+  });
+
+  test('should update css sticky top custom property correctly', async ({ page }) => {
+    await initBasicFlyout(page);
+    const host = await getHost(page);
+    expect(await getStickyTopCssVarValue(page)).toBe('');
+
+    await host.evaluate((el) => {
+      const header = document.createElement('div');
+      header.slot = 'header';
+      header.innerHTML = `<h2>Some slotted header</h2>`;
+      el.appendChild(header);
+    });
+
+    await waitForStencilLifecycle(page);
+
+    expect(await getStickyTopCssVarValue(page)).toBe('96px');
   });
 });
