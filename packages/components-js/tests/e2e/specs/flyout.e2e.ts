@@ -113,6 +113,21 @@ const scrollFlyoutTo = async (page: Page, selector: string) =>
     await page.$(selector)
   );
 
+const addHeaderSlot = async (host: ElementHandle) => {
+  await host.evaluate((el) => {
+    const header = document.createElement('div');
+    header.slot = 'header';
+    header.innerHTML = `<h2>Some slotted header with long text in order to show different header heights</h2>`;
+    el.appendChild(header);
+  });
+};
+
+const removeHeaderSlot = async (host: ElementHandle) => {
+  await host.evaluate((el: HTMLElement) => {
+    el.querySelector('[slot="header"]').remove();
+  });
+};
+
 const expectDismissButtonToBeFocused = async (page: Page, failMessage?: string) => {
   const host = await getHost(page);
   expect(await getActiveElementTagNameInShadowRoot(host), failMessage).toBe('P-BUTTON-PURE');
@@ -683,20 +698,48 @@ test.describe('after dynamic slot change', () => {
     await expect(page.getByText(footerText)).toBeVisible();
   });
 
-  test('should update css sticky top custom property correctly', async ({ page }) => {
+  test('should update css sticky top custom property correctly if no header exists initially', async ({ page }) => {
     await initBasicFlyout(page);
     const host = await getHost(page);
-    expect(await getStickyTopCssVarValue(page)).toBe('');
+    expect(await getStickyTopCssVarValue(page)).toBe('0px');
 
-    await host.evaluate((el) => {
-      const header = document.createElement('div');
-      header.slot = 'header';
-      header.innerHTML = `<h2>Some slotted header</h2>`;
-      el.appendChild(header);
-    });
-
+    await addHeaderSlot(host);
     await waitForStencilLifecycle(page);
 
     expect(await getStickyTopCssVarValue(page)).toBe('96px');
+
+    await removeHeaderSlot(host);
+    await waitForStencilLifecycle(page);
+
+    expect(await getStickyTopCssVarValue(page)).toBe('0px');
+
+    await addHeaderSlot(host);
+    await waitForStencilLifecycle(page);
+
+    expect(await getStickyTopCssVarValue(page)).toBe('96px');
+
+    await page.setViewportSize({ width: 320, height: 500 });
+
+    expect(await getStickyTopCssVarValue(page)).toBe('168px');
+  });
+
+  test('should update css sticky top custom property correctly if header exists initially', async ({ page }) => {
+    await initAdvancedFlyout(page);
+    const host = await getHost(page);
+    expect(await getStickyTopCssVarValue(page)).toBe('57px');
+
+    await removeHeaderSlot(host);
+    await waitForStencilLifecycle(page);
+
+    expect(await getStickyTopCssVarValue(page)).toBe('0px');
+
+    await addHeaderSlot(host);
+    await waitForStencilLifecycle(page);
+
+    expect(await getStickyTopCssVarValue(page)).toBe('96px');
+
+    await page.setViewportSize({ width: 320, height: 500 });
+
+    expect(await getStickyTopCssVarValue(page)).toBe('168px');
   });
 });

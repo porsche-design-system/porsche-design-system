@@ -1,5 +1,6 @@
 import { Component, Element, Event, type EventEmitter, forceUpdate, h, type JSX, Prop } from '@stencil/core';
 import {
+  addStickyTopCssVarStyleSheet,
   FLYOUT_ARIA_ATTRIBUTES,
   FLYOUT_POSITIONS,
   type FlyoutAriaAttribute,
@@ -78,9 +79,14 @@ export class Flyout {
   public connectedCallback(): void {
     applyConstructableStylesheetStyles(this.host, getSlottedAnchorStyles);
     // Observe dynamic slot changes
-    observeChildren(this.host, () => {
-      forceUpdate(this.host);
-    });
+    observeChildren(
+      this.host,
+      () => {
+        forceUpdate(this.host);
+      },
+      undefined,
+      { subtree: false, childList: true, attributes: false }
+    );
   }
 
   public componentWillRender(): void {
@@ -92,10 +98,13 @@ export class Flyout {
   }
 
   public componentDidLoad(): void {
+    addStickyTopCssVarStyleSheet(this.host);
+    // Has to be called here instead of render to assure that the slot references are available
     this.updateSlotObserver();
   }
 
   public componentDidUpdate(): void {
+    // Has to be called here instead of render to assure that the slot references are available
     this.updateSlotObserver();
   }
 
@@ -143,6 +152,7 @@ export class Flyout {
         tabIndex={-1} // dialog always has a dismiss button to be focused
         ref={(el) => (this.dialog = el)}
         onCancel={(e) => onCancelDialog(e, this.dismissDialog)}
+        // Previously done with onMouseDown to change the click behavior (not closing when pressing mousedown on flyout and mouseup on backdrop) but changed back to native behavior
         onClick={(e) => onClickDialog(e, this.dismissDialog, this.disableBackdropClick)}
         {...parseAndGetAriaAttributes({
           'aria-modal': true,
@@ -186,6 +196,6 @@ export class Flyout {
       observeStickyArea(this.scroller, this.footer);
     }
     // When header slot changes dynamically the resize observer and adopted stylesheet for the CSS custom property --p-flyout-sticky-top has to be updated
-    handleUpdateStickyTopCssVar(this.host, this.hasHeader, this.header);
+    handleUpdateStickyTopCssVar(this.hasHeader, this.header);
   };
 }
