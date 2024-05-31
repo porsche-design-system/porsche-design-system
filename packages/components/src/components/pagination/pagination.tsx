@@ -10,7 +10,7 @@ import {
   validateProps,
   warnIfDeprecatedPropIsUsed,
 } from '../../utils';
-import type { BreakpointCustomizable, PropTypes, Theme } from '../../types';
+import type { BreakpointCustomizable, PropTypes, SelectedAriaAttributes, Theme } from '../../types';
 import type {
   PaginationInternationalization,
   PaginationMaxNumberOfPageLinks,
@@ -18,6 +18,7 @@ import type {
 } from './pagination-utils';
 import { createPaginationItems, getCurrentActivePage, getTotalPages, ItemType } from './pagination-utils';
 import { getComponentCss } from './pagination-styles';
+import { CAROUSEL_ARIA_ATTRIBUTES, CarouselAriaAttribute } from '../carousel/carousel-utils';
 
 const propTypes: Omit<PropTypes<typeof Pagination>, 'maxNumberOfPageLinks'> = {
   totalItemsCount: AllowedTypes.number,
@@ -28,6 +29,7 @@ const propTypes: Omit<PropTypes<typeof Pagination>, 'maxNumberOfPageLinks'> = {
   allyLabelPrev: AllowedTypes.string,
   allyLabelPage: AllowedTypes.string,
   allyLabelNext: AllowedTypes.string,
+  aria: AllowedTypes.aria<CarouselAriaAttribute>(CAROUSEL_ARIA_ATTRIBUTES),
   intl: AllowedTypes.shape<Required<PaginationInternationalization>>({
     root: AllowedTypes.string,
     prev: AllowedTypes.string,
@@ -82,7 +84,22 @@ export class Pagination {
    * Aria label for next page icon. */
   @Prop() public allyLabelNext?: string;
 
-  /** Override the default wordings that are used for aria-labels on the next/prev and page buttons. */
+  /** Add ARIA attributes and override the default wordings on the next/prev and page buttons */
+  @Prop() public aria?: SelectedAriaAttributes<'aria-label'> & {
+    prev: SelectedAriaAttributes<'aria-label'>;
+    next: SelectedAriaAttributes<'aria-label'>;
+    page: SelectedAriaAttributes<'aria-label'>;
+  } = {
+    'aria-label': 'Pagination',
+    prev: { 'aria-label': 'Previous page' },
+    next: { 'aria-label': 'Next page' },
+    page: { 'aria-label': 'Page {{value}}' }, // important for interpolation
+  };
+
+  /**
+   * @deprecated since v3.16.0 use `aria` instead
+   * Override the default wordings that are used for aria-labels on the next/prev and page buttons.
+   * */
   @Prop() public intl?: PaginationInternationalization = {
     root: 'Pagination',
     prev: 'Previous page',

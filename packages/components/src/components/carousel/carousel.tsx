@@ -121,10 +121,13 @@ export class Carousel {
   /** If false, the carousel will not show pagination bullets at the bottom. */
   @Prop({ mutable: true }) public pagination?: BreakpointCustomizable<boolean> = true;
 
-  /** Add ARIA attributes. */
+  /** Add ARIA attributes and override the default wordings on the next/prev buttons and pagination. */
   @Prop() public aria?: SelectedAriaAttributes<CarouselAriaAttribute>;
 
-  /** Override the default wordings that are used for aria-labels on the next/prev buttons and pagination. */
+  /**
+   * @deprecated since v3.16.0 use `aria` instead
+   * Override the default wordings that are used for aria-labels on the next/prev buttons and pagination.
+   * */
   @Prop() public intl?: CarouselInternationalization;
 
   /** Adapts the color when used on dark background. */
