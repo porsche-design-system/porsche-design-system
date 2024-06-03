@@ -1,7 +1,7 @@
 import type { Options, Splide } from '@splidejs/splide';
 import type { Breakpoint } from '@porsche-design-system/utilities-v2';
 import { breakpoint } from '@porsche-design-system/utilities-v2';
-import type { BreakpointCustomizable, HeadingSize } from '../../types';
+import type { BreakpointCustomizable, HeadingSize, SelectedAriaAttributes } from '../../types';
 import { ButtonPure } from '../button-pure/button-pure';
 import {
   bulletActiveClass,
@@ -23,9 +23,6 @@ export type CarouselAlignHeader = (typeof CAROUSEL_ALIGN_HEADERS)[number];
 
 export type CarouselHeadingSize = Extract<HeadingSize, 'x-large' | 'xx-large'>;
 
-export const CAROUSEL_ARIA_ATTRIBUTES = ['aria-label'] as const;
-export type CarouselAriaAttribute = (typeof CAROUSEL_ARIA_ATTRIBUTES)[number];
-
 // The offset value used for calculating the number of infinite bullets
 const INFINITE_BULLET_OFFSET = 2;
 // The total number of infinite bullets including the center bullet
@@ -38,6 +35,15 @@ const INFINITE_BULLET_THRESHOLD = 5;
 export type CarouselInternationalization =
   // | Partial<Pick<Options['i18n'], 'prev' | 'next' | 'first' | 'last' | 'slideLabel' | 'slide'>> | string;
   Partial<Record<'prev' | 'next' | 'first' | 'last' | 'slideLabel' | 'slide', string>> | string; // string to support attribute, gets removed via InputParser
+
+export type CarouselAriaInternationalization = SelectedAriaAttributes<'aria-label'> & {
+  prev: SelectedAriaAttributes<'aria-label'>;
+  next: SelectedAriaAttributes<'aria-label'>;
+  first: SelectedAriaAttributes<'aria-label'>;
+  last: SelectedAriaAttributes<'aria-label'>;
+  slideLabel: SelectedAriaAttributes<'aria-label'>;
+  slide: SelectedAriaAttributes<'aria-label'>;
+};
 
 /** @deprecated */
 export type CarouselUpdateEvent = { activeIndex: number; previousIndex: number };

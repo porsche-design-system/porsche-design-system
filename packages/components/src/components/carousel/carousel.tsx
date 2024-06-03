@@ -1,18 +1,15 @@
-import type { BreakpointCustomizable, PropTypes, SelectedAriaAttributes, Theme, ValidatorFunction } from '../../types';
+import type { BreakpointCustomizable, PropTypes, Theme, ValidatorFunction } from '../../types';
 import type { ButtonPure } from '../button-pure/button-pure';
-import type {
+import {
+  CAROUSEL_ALIGN_HEADERS,
+  CAROUSEL_WIDTHS,
   CarouselAlignHeader,
   CarouselAlignHeaderDeprecated,
-  CarouselAriaAttribute,
+  CarouselAriaInternationalization,
   CarouselHeadingSize,
   CarouselInternationalization,
   CarouselUpdateEventDetail,
   CarouselWidth,
-} from './carousel-utils';
-import {
-  CAROUSEL_ALIGN_HEADERS,
-  CAROUSEL_ARIA_ATTRIBUTES,
-  CAROUSEL_WIDTHS,
   getAmountOfPages,
   getSlidesAndAddAttributes,
   getSplideBreakpoints,
@@ -65,7 +62,7 @@ const propTypes: PropTypes<typeof Carousel> = {
   ]),
   disablePagination: AllowedTypes.breakpoint('boolean'),
   pagination: AllowedTypes.breakpoint('boolean'),
-  aria: AllowedTypes.aria<CarouselAriaAttribute>(CAROUSEL_ARIA_ATTRIBUTES),
+  // aria: AllowedTypes.aria<CarouselAriaAttribute>(CAROUSEL_ARIA_ATTRIBUTES),
   intl: AllowedTypes.shape<Required<CarouselInternationalization>>({
     prev: AllowedTypes.string,
     next: AllowedTypes.string,
@@ -122,7 +119,15 @@ export class Carousel {
   @Prop({ mutable: true }) public pagination?: BreakpointCustomizable<boolean> = true;
 
   /** Add ARIA attributes and override the default wordings on the next/prev buttons and pagination. */
-  @Prop() public aria?: SelectedAriaAttributes<CarouselAriaAttribute>;
+  @Prop() public aria?: CarouselAriaInternationalization = {
+    'aria-label': 'Carousel',
+    prev: { 'aria-label': 'Previous page' },
+    next: { 'aria-label': 'Next page' },
+    first: { 'aria-label': 'First page' },
+    last: { 'aria-label': 'Last page' },
+    slideLabel: { 'aria-label': 'Slide' },
+    slide: { 'aria-label': '?' },
+  };
 
   /**
    * @deprecated since v3.16.0 use `aria` instead
@@ -248,6 +253,7 @@ export class Carousel {
     );
     warnIfDeprecatedPropIsUsed<typeof Carousel>(this, 'wrapContent');
     warnIfDeprecatedPropIsUsed<typeof Carousel>(this, 'disablePagination', 'Please use pagination prop instead.');
+    warnIfDeprecatedPropIsUsed<typeof Carousel>(this, 'intl', 'Please use aria prop instead.');
     const hasHeadingPropOrSlot = hasHeading(this.host, this.heading);
     const hasDescriptionPropOrSlot = hasDescription(this.host, this.description);
     const hasControlsSlot = hasNamedSlot(this.host, 'controls');

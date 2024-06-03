@@ -8,6 +8,8 @@
  * https://github.com/ultimate-pagination/ultimate-pagination
  */
 
+import type { SelectedAriaAttributes } from '../../types';
+
 /** @deprecated */
 export const PAGINATION_NUMBER_OF_PAGE_LINKS = [5, 7] as const;
 /** @deprecated */
@@ -18,6 +20,12 @@ export type PaginationUpdateEventDetail = PaginationUpdateEvent;
 
 // TODO: first and last wording similar to carousel?
 export type PaginationInternationalization = Partial<Record<'root' | 'prev' | 'next' | 'page', string>> | string; // string to support attribute, gets removed via InputParser
+
+export type PaginationAriaInternationalization = SelectedAriaAttributes<'aria-label'> & {
+  prev: SelectedAriaAttributes<'aria-label'>;
+  next: SelectedAriaAttributes<'aria-label'>;
+  page: SelectedAriaAttributes<'aria-label'>;
+};
 
 export type PaginationOptions = {
   activePage: number;

@@ -10,15 +10,15 @@ import {
   validateProps,
   warnIfDeprecatedPropIsUsed,
 } from '../../utils';
-import type { BreakpointCustomizable, PropTypes, SelectedAriaAttributes, Theme } from '../../types';
+import type { BreakpointCustomizable, PropTypes, Theme } from '../../types';
 import type {
+  PaginationAriaInternationalization,
   PaginationInternationalization,
   PaginationMaxNumberOfPageLinks,
   PaginationUpdateEventDetail,
 } from './pagination-utils';
 import { createPaginationItems, getCurrentActivePage, getTotalPages, ItemType } from './pagination-utils';
 import { getComponentCss } from './pagination-styles';
-import { CAROUSEL_ARIA_ATTRIBUTES, CarouselAriaAttribute } from '../carousel/carousel-utils';
 
 const propTypes: Omit<PropTypes<typeof Pagination>, 'maxNumberOfPageLinks'> = {
   totalItemsCount: AllowedTypes.number,
@@ -29,7 +29,7 @@ const propTypes: Omit<PropTypes<typeof Pagination>, 'maxNumberOfPageLinks'> = {
   allyLabelPrev: AllowedTypes.string,
   allyLabelPage: AllowedTypes.string,
   allyLabelNext: AllowedTypes.string,
-  aria: AllowedTypes.aria<CarouselAriaAttribute>(CAROUSEL_ARIA_ATTRIBUTES),
+  // aria: AllowedTypes.aria<CarouselAriaAttribute>(CAROUSEL_ARIA_ATTRIBUTES),
   intl: AllowedTypes.shape<Required<PaginationInternationalization>>({
     root: AllowedTypes.string,
     prev: AllowedTypes.string,
@@ -85,11 +85,7 @@ export class Pagination {
   @Prop() public allyLabelNext?: string;
 
   /** Add ARIA attributes and override the default wordings on the next/prev and page buttons */
-  @Prop() public aria?: SelectedAriaAttributes<'aria-label'> & {
-    prev: SelectedAriaAttributes<'aria-label'>;
-    next: SelectedAriaAttributes<'aria-label'>;
-    page: SelectedAriaAttributes<'aria-label'>;
-  } = {
+  @Prop() public aria?: PaginationAriaInternationalization = {
     'aria-label': 'Pagination',
     prev: { 'aria-label': 'Previous page' },
     next: { 'aria-label': 'Next page' },
@@ -145,6 +141,7 @@ export class Pagination {
       'allyLabelPage',
       'Please use intl prop with intl.page instead.'
     );
+    warnIfDeprecatedPropIsUsed<typeof Pagination>(this, 'intl', 'Please use aria prop instead.');
 
     const pageTotal = getTotalPages(this.totalItemsCount, this.itemsPerPage);
     attachComponentCss(this.host, getComponentCss, this.activePage, pageTotal, this.showLastPage, this.theme);
