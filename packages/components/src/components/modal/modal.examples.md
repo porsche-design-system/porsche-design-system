@@ -2,10 +2,8 @@
 
 The `p-modal` is a temporary overlay to focus the user's attention on one task while interactions with the underlying
 page are blocked. It is only used as highly disruptive modal notification to present important information until
-dismissed. Or as Modal Dialog to confirm critical user actions, such as confirming an irreversible choice. It should be
-used thoughtfully and sparingly.
-
-Modals are flexible in the context and can include other components of the Porsche Design System.
+dismissed. Or as overlay to confirm critical user actions, such as confirming an irreversible choice. It should be used
+thoughtfully and sparingly.
 
 It is a controlled component. This grants you flexible control over the modal's behavior especially whether it should
 stay open after user interaction like submission of a form.
@@ -20,19 +18,19 @@ stay open after user interaction like submission of a form.
 
 ## Basic
 
-Following web standards, the component uses the native `<dialog />` element internally which ensures proper focus
-handling including a focus trap. In addition, it's rendered on the `#top-layer` which ensures the element to be on top
-of the page independent of where `p-modal` is placed in the DOM hierarchy (`z-index` is not relevant anymore and won't
-have any effect).
+Following **web standards**, the component uses the native `<dialog />` element internally which ensures proper focus
+handling including a **focus trap**. In addition, it's rendered on the `#top-layer` which ensures the element to be on
+top of the page independent of where `p-modal` is placed in the DOM hierarchy (`z-index` is not relevant anymore and
+won't have any effect).
 
-The most important property of `p-modal` is its `open` property. When it's set to `true` the modal will be visible.
-
-In order to get notified when the modal gets closed by clicking the `x` button, the backdrop or by pressing the `Escape`
+The most important property of `p-modal` is its `open` property. When it's set to `true` the modal will be visible. In
+order to get notified when the modal gets closed by clicking the `x` button, the backdrop or by pressing the `Escape`
 key you need to register an event listener for the `dismiss` event which is emitted by `p-modal`.
 
-The size of `p-modal` adjusts itself to the content with a predefined min/max width.
+The size of `p-modal` adjusts itself to the content with a predefined **min/max width** which aligns to the
+**[Porsche Grid](styles/grid)**.
 
-The modal component supports slotted elements for enhanced customization:
+#### Supported named slots:
 
 - `slot="header"`: Renders a header section above the content area with a predefined space in between.
 - `slot`: Shows the content area.
@@ -42,31 +40,25 @@ The modal component supports slotted elements for enhanced customization:
 
 ### <A11yIcon></A11yIcon> Accessibility hints
 
-To support **keyboard navigation**, please take care of correct **focus handling** after closing the modal with `ESC` or
-`Enter` key: The trigger element (e.g. a button) which has opened the modal must **receive focus state again** after the
-Modal is closed. This is important to keep focus order consistent. You can test it out by navigation this example with
-the keyboard only. This behaviour is already baked into the Modal component.
-
-To announce the correct heading for **screen reader** users, it is mandatory to set a meaningful heading through
-**ARIA** with the `aria` property.
+To provide a unique accessible name for the dialog, it's mandatory to set a meaningful label with the `aria` property.
 
 ## Dismiss Button
 
-It's possible to render the Modal without dismiss button. At the same time this also deactivates dismissing the modal by
+It's possible to render the modal without dismiss button. At the same time this also deactivates dismissing the modal by
 pressing `Escape`.
 
 <Playground :markup="dismissButtonMarkup" :config="config"></Playground>
 
 ## Disable Backdrop Click
 
-It's possible to disable closing the Modal by click on the backdrop.
+It's possible to disable closing the modal by click on the backdrop.
 
 <Playground :markup="disableBackdropClickMarkup" :config="config"></Playground>
 
 ## Backdrop
 
-By default, `blur` should be used whenever the Modal gets opened by a user interaction, e.g. a click on a button, to
-allow the user to fully concentrate on the Modal content. While `shading` should be used when the Modal gets opened
+By default, `blur` should be used whenever the modal gets opened by a user interaction, e.g. a click on a button, to
+allow the user to fully concentrate on the modal content. While `shading` should be used when the modal gets opened
 automatically, e.g. through a "Cookie Consent Dialog", so that the user still knows which page it is.
 
 <Playground :markup="backdropMarkup" :config="config">
@@ -75,7 +67,7 @@ automatically, e.g. through a "Cookie Consent Dialog", so that the user still kn
 
 ## Fullscreen
 
-The Modal supports a `fullscreen` property. Due to the size of fullscreen on desktop, it is easy to lose context for the
+The modal supports a `fullscreen` property. Due to the size of fullscreen on desktop, it is easy to lose context for the
 consumer. Furthermore, you lose helpful functionality like backdrop click. This is why fullscreen modals are recommended
 for mobile devices only.
 
@@ -85,7 +77,8 @@ Of course, any combination of the available options is possible.
 
 ## Example: Scrollable modal with sticky footer
 
-If the modal's content does not fit into the current boundaries the content becomes scrollable.
+If the modal's content does not fit into the current boundaries the content becomes scrollable and the footer area
+sticky.
 
 <Playground :markup="exampleScrollableMarkup" :config="config"></Playground>
 
@@ -112,10 +105,10 @@ following example shows the visualization of the Porsche Grid when used inside t
 
 ## Custom styling
 
-The Modal component has some values which can be overwritten by CSS Custom Properties (aka CSS Variables). This might be
+The modal component has some values which can be overwritten by CSS Custom Properties (aka CSS Variables). This might be
 useful for e.g. a "Cookie Consent Dialog" to reserve certain space when used with `backdrop: 'shading'` to always have
 the Porsche [crest](components/crest) or [wordmark](components/wordmark) visible in the background of the page. Since
-the Modal is centered within the viewport and shrinks to its content, the custom vertical spacing definition will act
+the modal is centered within the viewport and shrinks to its content, the custom vertical spacing definition will act
 like a safe zone.
 
 In addition, it's possible to make containers or elements (e.g. `div`, `img` etc.) stretch into the padding safe-zone by
