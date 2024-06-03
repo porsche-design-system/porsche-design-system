@@ -35,6 +35,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
     https://developer.mozilla.org/en-US/docs/Glossary/Top_layer and
     https://developer.chrome.com/blog/what-is-the-top-layer
     ([#3191](https://github.com/porsche-design-system/porsche-design-system/pull/3191))
+- `Modal`: `heading` prop and `slot="heading"` are deprecated. Use `slot="header"` instead.
 
 #### Fixed
 
