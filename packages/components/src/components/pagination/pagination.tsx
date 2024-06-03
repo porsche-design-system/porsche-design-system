@@ -29,7 +29,12 @@ const propTypes: Omit<PropTypes<typeof Pagination>, 'maxNumberOfPageLinks'> = {
   allyLabelPrev: AllowedTypes.string,
   allyLabelPage: AllowedTypes.string,
   allyLabelNext: AllowedTypes.string,
-  // aria: AllowedTypes.aria<CarouselAriaAttribute>(CAROUSEL_ARIA_ATTRIBUTES),
+  aria: AllowedTypes.shape<PaginationAriaInternationalization>({
+    'aria-label': AllowedTypes.string,
+    prev: AllowedTypes.string,
+    next: AllowedTypes.string,
+    page: AllowedTypes.string,
+  }),
   intl: AllowedTypes.shape<Required<PaginationInternationalization>>({
     root: AllowedTypes.string,
     prev: AllowedTypes.string,

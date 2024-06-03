@@ -23,6 +23,9 @@ export type CarouselAlignHeader = (typeof CAROUSEL_ALIGN_HEADERS)[number];
 
 export type CarouselHeadingSize = Extract<HeadingSize, 'x-large' | 'xx-large'>;
 
+export const CAROUSEL_ARIA_ATTRIBUTES = ['aria-label'] as const;
+export type CarouselAriaAttribute = (typeof CAROUSEL_ARIA_ATTRIBUTES)[number];
+
 // The offset value used for calculating the number of infinite bullets
 const INFINITE_BULLET_OFFSET = 2;
 // The total number of infinite bullets including the center bullet

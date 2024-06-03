@@ -62,7 +62,15 @@ const propTypes: PropTypes<typeof Carousel> = {
   ]),
   disablePagination: AllowedTypes.breakpoint('boolean'),
   pagination: AllowedTypes.breakpoint('boolean'),
-  // aria: AllowedTypes.aria<CarouselAriaAttribute>(CAROUSEL_ARIA_ATTRIBUTES),
+  aria: AllowedTypes.shape({
+    'aria-label': AllowedTypes.string,
+    prev: AllowedTypes.string,
+    next: AllowedTypes.string,
+    first: AllowedTypes.string,
+    last: AllowedTypes.string,
+    slideLabel: AllowedTypes.string,
+    slide: AllowedTypes.string,
+  }),
   intl: AllowedTypes.shape<Required<CarouselInternationalization>>({
     prev: AllowedTypes.string,
     next: AllowedTypes.string,
