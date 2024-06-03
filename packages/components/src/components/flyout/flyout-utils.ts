@@ -61,7 +61,7 @@ export const updateStickyTopCssVarStyleSheet = (host: HTMLElement, value: number
 export const getStickyTopResizeObserver = (host: HTMLElement): ResizeObserver => {
   return new ResizeObserver((entries) => {
     for (const entry of entries) {
-      updateStickyTopCssVarStyleSheet(host, entry.target.getBoundingClientRect().height);
+      updateStickyTopCssVarStyleSheet(host, Math.floor(entry.target.getBoundingClientRect().height));
     }
   });
 };
