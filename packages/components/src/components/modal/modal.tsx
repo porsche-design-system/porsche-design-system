@@ -99,9 +99,14 @@ export class Modal {
   public connectedCallback(): void {
     applyConstructableStylesheetStyles(this.host, getSlottedAnchorStyles);
     // Observe dynamic slot changes
-    observeChildren(this.host, () => {
-      forceUpdate(this.host);
-    });
+    observeChildren(
+      this.host,
+      () => {
+        forceUpdate(this.host);
+      },
+      undefined,
+      { subtree: false, childList: true, attributes: false }
+    );
   }
 
   public componentWillRender(): void {
