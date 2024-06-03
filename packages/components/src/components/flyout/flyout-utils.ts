@@ -1,6 +1,8 @@
 // 'left' is deprecated and will be mapped to 'start'
 // 'right' is deprecated and will be mapped to 'end'
 
+import { getHasConstructableStylesheetSupport } from '../../utils';
+
 /** @deprecated */
 export const FLYOUT_POSITIONS_DEPRECATED = ['left', 'right'] as const;
 /** @deprecated */
@@ -12,41 +14,54 @@ export type FlyoutPosition = (typeof FLYOUT_POSITIONS)[number];
 export const FLYOUT_ARIA_ATTRIBUTES = ['aria-label'] as const;
 export type FlyoutAriaAttribute = (typeof FLYOUT_ARIA_ATTRIBUTES)[number];
 
-export type StickyTopCssVarState = { ro: ResizeObserver; sheet: CSSStyleSheet } | undefined;
-export let stickyTopCssVarState: StickyTopCssVarState;
+/**
+ * Map of flyout instances and their corresponding resize observers to update the experimental css property --p-flyout-sticky-top.
+ */
+export const stickyTopCssVarResizeObserverMap = new Map<HTMLElement, ResizeObserver>();
+/**
+ * Map of flyout instances and their corresponding css stylesheets including the experimental css property --p-flyout-sticky-top.
+ */
+export const stickyTopCssVarStyleSheetMap = new Map<HTMLElement, CSSStyleSheet>();
 
-export const handleUpdateStickyTopCssVar = (host: HTMLElement, hasHeader: boolean, header: HTMLElement) => {
-  if (hasHeader && !stickyTopCssVarState) {
-    stickyTopCssVarState = addUpdateStickyTopCssVar(host, header);
-  }
-  if (!hasHeader && stickyTopCssVarState) {
-    removeUpdateStickyTopCssVar(host, stickyTopCssVarState);
-    stickyTopCssVarState = undefined;
+// Called once in didLoad for setup
+export const addStickyTopCssVarStyleSheet = (host: HTMLElement) => {
+  if (getHasConstructableStylesheetSupport()) {
+    stickyTopCssVarStyleSheetMap.set(host, new CSSStyleSheet());
+    // It's very important to create and push the stylesheet after `attachComponentCss()` has been called, otherwise styles might replace each other.
+    // TODO: for some reason unit test in Docker environment throws TS2339: Property 'push' does not exist on type 'readonly CSSStyleSheet[]'
+    /* eslint-disable @typescript-eslint/prefer-ts-expect-error, @typescript-eslint/ban-ts-comment */
+    // @ts-ignore
+    host.shadowRoot.adoptedStyleSheets.push(stickyTopCssVarStyleSheetMap.get(host));
+    updateStickyTopCssVarStyleSheet(host, 0);
   }
 };
 
-export const addUpdateStickyTopCssVar = (host: HTMLElement, header: HTMLElement): StickyTopCssVarState => {
-  const sheet = new CSSStyleSheet();
-  // TODO: for some reason unit test in Docker environment throws TS2339: Property 'push' does not exist on type 'readonly CSSStyleSheet[]'
-  /* eslint-disable @typescript-eslint/prefer-ts-expect-error, @typescript-eslint/ban-ts-comment */
-  // @ts-ignore
-  host.shadowRoot.adoptedStyleSheets.push(sheet);
+// Called whenever component updates
+export const handleUpdateStickyTopCssVar = (host: HTMLElement, hasHeader: boolean, header: HTMLElement) => {
+  if (getHasConstructableStylesheetSupport()) {
+    // Create resize observer if none exists but is needed (State changes from !hasHeader -> hasHeader or initially)
+    if (hasHeader && !stickyTopCssVarResizeObserverMap.has(host)) {
+      stickyTopCssVarResizeObserverMap.set(host, getStickyTopResizeObserver(host));
+      stickyTopCssVarResizeObserverMap.get(host).observe(header);
+    }
+    // Remove resize observer if one exists but isn't needed anymore (State changes from hasHeader -> !hasHeader)
+    else if (!hasHeader && stickyTopCssVarResizeObserverMap.has(host)) {
+      updateStickyTopCssVarStyleSheet(host, 0);
+      stickyTopCssVarResizeObserverMap.get(host).disconnect();
+      stickyTopCssVarResizeObserverMap.delete(host);
+    }
+  }
+};
 
-  const ro = new ResizeObserver((entries) => {
+export const updateStickyTopCssVarStyleSheet = (host: HTMLElement, value: number) => {
+  // EXPERIMENTAL CSS variable
+  stickyTopCssVarStyleSheetMap.get(host).replaceSync(`:host{--p-flyout-sticky-top:${value}px}`);
+};
+
+export const getStickyTopResizeObserver = (host: HTMLElement): ResizeObserver => {
+  return new ResizeObserver((entries) => {
     for (const entry of entries) {
-      // EXPERIMENTAL CSS variable
-      sheet.replaceSync(`:host{--p-flyout-sticky-top:${Math.ceil(entry.target.getBoundingClientRect().height)}px}`);
+      updateStickyTopCssVarStyleSheet(host, Math.floor(entry.target.getBoundingClientRect().height));
     }
   });
-  ro.observe(header);
-
-  return { ro, sheet };
-};
-
-export const removeUpdateStickyTopCssVar = (host: HTMLElement, state: StickyTopCssVarState): void => {
-  state.ro.disconnect(); // Remove resize observer
-  const sheetIndex = host.shadowRoot.adoptedStyleSheets.indexOf(state.sheet);
-  if (sheetIndex !== -1) {
-    host.shadowRoot.adoptedStyleSheets.splice(sheetIndex, 1);
-  }
 };

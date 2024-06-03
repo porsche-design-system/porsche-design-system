@@ -99,9 +99,14 @@ export class Modal {
   public connectedCallback(): void {
     applyConstructableStylesheetStyles(this.host, getSlottedAnchorStyles);
     // Observe dynamic slot changes
-    observeChildren(this.host, () => {
-      forceUpdate(this.host);
-    });
+    observeChildren(
+      this.host,
+      () => {
+        forceUpdate(this.host);
+      },
+      undefined,
+      { subtree: false, childList: true, attributes: false }
+    );
   }
 
   public componentWillRender(): void {
@@ -114,12 +119,14 @@ export class Modal {
 
   public componentDidLoad(): void {
     if (this.hasFooter) {
+      // Has to be called here instead of render to assure that the slot references are available
       observeStickyArea(this.scroller, this.footer);
     }
   }
 
   public componentDidUpdate(): void {
     if (this.hasFooter) {
+      // Has to be called here instead of render to assure that the slot references are available
       // When slots change dynamically the intersection observer for the scroll shadows has to be added
       observeStickyArea(this.scroller, this.footer);
     }
@@ -161,8 +168,9 @@ export class Modal {
         inert={this.open ? null : true} // prevents focusable elements during fade-out transition + prevents focusable elements within nested open accordion
         tabIndex={-1} // dialog always has a dismiss button to be focused
         ref={(el) => (this.dialog = el)}
-        onCancel={(e) => onCancelDialog(e, this.dismissDialog)}
-        onMouseDown={(e) => onClickDialog(e, this.dismissDialog, this.disableBackdropClick)}
+        onCancel={(e) => onCancelDialog(e, this.dismissDialog, !this.hasDismissButton)}
+        // Previously done with onMouseDown to change the click behavior (not closing when pressing mousedown on modal and mouseup on backdrop) but changed back to native behavior
+        onClick={(e) => onClickDialog(e, this.dismissDialog, this.disableBackdropClick)}
         {...parseAndGetAriaAttributes({
           'aria-modal': true,
           'aria-label': this.heading,

@@ -24,6 +24,7 @@ const CSS_TRANSITION_DURATION = 600;
 const getHost = (page: Page) => page.$('p-modal');
 const getScrollContainer = (page: Page) => page.$('p-modal .scroller');
 const getHeading = (page: Page) => page.$('p-modal slot[name="heading"]');
+const getHeader = (page: Page) => page.$('p-modal slot[name="header"]');
 const getModal = (page: Page) => page.$('p-modal .root');
 const getDismissButton = (page: Page) => page.$('p-modal p-button-pure.dismiss');
 const getFooter = (page: Page) => page.$('p-modal slot[name="footer"]');
@@ -38,6 +39,7 @@ const initBasicModal = (
     heading?: string;
     aria?: SelectedAriaAttributes<ModalAriaAttribute>;
     hasSlottedHeading?: boolean;
+    hasSlottedHeader?: boolean;
     hasSlottedFooter?: boolean;
     disableCloseButton?: boolean;
     markupBefore?: string;
@@ -50,6 +52,7 @@ const initBasicModal = (
     heading = 'Some Heading',
     aria,
     hasSlottedHeading,
+    hasSlottedHeader,
     hasSlottedFooter,
     disableCloseButton,
     markupBefore,
@@ -57,7 +60,7 @@ const initBasicModal = (
   } = opts || {};
 
   const attributes = [
-    !hasSlottedHeading && `heading="${heading}"`,
+    !hasSlottedHeading && !hasSlottedHeader && `heading="${heading}"`,
     isOpen && 'open',
     aria && `aria="${aria}"`,
     disableCloseButton && 'disable-close-button',
@@ -69,6 +72,7 @@ const initBasicModal = (
     page,
     `${markupBefore ? markupBefore : ''}<p-modal ${attributes}>
   ${hasSlottedHeading ? '<div slot="heading">Some Heading<a href="https://porsche.com">Some link</a></div>' : ''}
+  ${hasSlottedHeader ? '<div slot="header"><h2>Some Heading</h2><p>Some header content</p></div>' : ''}
   ${content}
   ${hasSlottedFooter ? '<div slot="footer">Some Footer</div>' : ''}
 </p-modal>${markupAfter ? markupAfter : ''}`
@@ -137,8 +141,16 @@ test('should render and be visible when open', async ({ page }) => {
 
 test('should not be visible when not open', async ({ page }) => {
   await initBasicModal(page, { isOpen: false });
-
   expect(await getModalVisibility(page)).toBe('hidden');
+});
+
+test('should be visible after opened', async ({ page }) => {
+  await initBasicModal(page, { isOpen: false });
+  const host = await getHost(page);
+  await setProperty(host, 'open', true);
+  await waitForStencilLifecycle(page);
+
+  expect(await getModalVisibility(page)).toBe('visible');
 });
 
 test.describe('can be dismissed', () => {
@@ -177,8 +189,8 @@ test.describe('can be dismissed', () => {
   });
 
   test('should not be dismissed if mousedown inside modal', async ({ page }) => {
-    await page.setViewportSize({ width: 800, height: 600 });
-    await page.mouse.move(400, 300);
+    const viewportSize = page.viewportSize();
+    await page.mouse.move(viewportSize.width / 2, viewportSize.height / 2);
     await page.mouse.down();
 
     expect((await getEventSummary(host, 'close')).counter, 'after mouse down').toBe(0);
@@ -188,26 +200,27 @@ test.describe('can be dismissed', () => {
     expect((await getEventSummary(host, 'close')).counter, 'after mouse up').toBe(0);
   });
 
-  test('should not be dismissed if mousedown inside modal and mouseup inside backdrop', async ({ page }) => {
-    await page.setViewportSize({ width: 800, height: 600 });
-    await page.mouse.move(400, 300);
-    await page.mouse.down();
+  test('should not be dismissed if disableCloseButton is set to true and ESC is pressed', async ({ page }) => {
+    const host = await getHost(page);
+    await setProperty(host, 'disableCloseButton', true);
+    await page.keyboard.press('Escape');
 
-    expect((await getEventSummary(host, 'close')).counter, 'after mouse down').toBe(0);
+    expect((await getEventSummary(host, 'close')).counter, 'after escape press').toBe(0);
+  });
 
-    await page.mouse.move(200, 150);
-    await page.mouse.up();
+  test('should not be dismissed if dismissButton is set to false and ESC is pressed', async ({ page }) => {
+    const host = await getHost(page);
+    await setProperty(host, 'dismissButton', false);
+    await page.keyboard.press('Escape');
 
-    expect((await getEventSummary(host, 'close')).counter, 'after mouse up').toBe(0);
+    expect((await getEventSummary(host, 'close')).counter, 'after escape press').toBe(0);
   });
 
   skipInBrowsers(['webkit'], () => {
     test('should not be closable via backdrop when disableBackdropClick is set', async ({ page }) => {
       const host = await getHost(page);
       await setProperty(host, 'disableBackdropClick', true);
-
-      await page.mouse.move(5, 5);
-      await page.mouse.down();
+      await page.mouse.click(5, 5);
 
       expect((await getEventSummary(host, 'close')).counter).toBe(0);
     });
@@ -675,6 +688,55 @@ test.describe('lifecycle', () => {
     expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(3);
     expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(1);
   });
+
+  test('should work without unnecessary round trips after deeply nested slot content change', async ({ page }) => {
+    await initBasicModal(page, { hasSlottedFooter: true });
+    const host = await getHost(page);
+    await waitForStencilLifecycle(page);
+    const status = await getLifecycleStatus(page);
+
+    expect(status.componentDidLoad['p-modal'], 'componentDidLoad: p-modal').toBe(1);
+    expect(status.componentDidLoad['p-button-pure'], 'componentDidLoad: p-button-pure').toBe(1); // includes p-icon
+
+    expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(3);
+    expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(0);
+
+    await host.evaluate((el) => {
+      const header = el.querySelector('[slot="footer"]');
+      header.innerHTML = `<p>Some new footer content</p>`;
+    });
+    await waitForStencilLifecycle(page);
+
+    const statusAfter = await getLifecycleStatus(page);
+
+    expect(statusAfter.componentDidUpdate['p-modal'], 'componentDidUpdate: p-modal').toBe(0);
+    expect(statusAfter.componentDidUpdate.all, 'componentDidUpdate: all').toBe(0);
+  });
+
+  test('should update when adding named slot', async ({ page }) => {
+    await initBasicModal(page);
+    const host = await getHost(page);
+    const status = await getLifecycleStatus(page);
+
+    expect(status.componentDidLoad['p-modal'], 'componentDidLoad: p-modal').toBe(1);
+    expect(status.componentDidLoad['p-button-pure'], 'componentDidLoad: p-button-pure').toBe(1); // includes p-icon
+
+    expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(3);
+    expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(0);
+
+    await host.evaluate((el) => {
+      const header = document.createElement('div');
+      header.slot = 'header';
+      header.innerHTML = `<h2>Some header content</h2>`;
+      el.appendChild(header);
+    });
+    await waitForStencilLifecycle(page);
+
+    const statusAfter = await getLifecycleStatus(page);
+
+    expect(statusAfter.componentDidUpdate['p-modal'], 'componentDidUpdate: p-modal').toBe(1);
+    expect(statusAfter.componentDidUpdate.all, 'componentDidUpdate: all').toBe(1);
+  });
 });
 
 test.describe('slotted heading', () => {
@@ -693,6 +755,26 @@ test.describe('slotted heading', () => {
 
     expect(page.locator('p-modal h2')).toBeDefined();
     expect(await getHeading(page)).toBeNull();
+    expect(page.getByText('Some Heading')).toBeDefined();
+  });
+});
+
+test.describe('slotted header', () => {
+  test('should set slotted header', async ({ page }) => {
+    await initBasicModal(page, { hasSlottedHeader: true });
+    const header = await getHeader(page);
+    expect(header).toBeDefined();
+  });
+
+  test('should overwrite slotted header when setting heading prop', async ({ page }) => {
+    await initBasicModal(page, { hasSlottedHeader: true });
+    const host = await getHost(page);
+
+    await setProperty(host, 'heading', 'Some Heading');
+    await waitForStencilLifecycle(page);
+
+    expect(page.locator('p-modal h2')).toBeDefined();
+    expect(await getHeader(page)).toBeNull();
     expect(page.getByText('Some Heading')).toBeDefined();
   });
 });

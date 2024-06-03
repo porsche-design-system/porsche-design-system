@@ -1,10 +1,13 @@
 import * as flyoutUtilsUtils from './flyout-utils';
 import {
-  addUpdateStickyTopCssVar,
+  addStickyTopCssVarStyleSheet,
+  getStickyTopResizeObserver,
   handleUpdateStickyTopCssVar,
-  removeUpdateStickyTopCssVar,
-  StickyTopCssVarState,
+  stickyTopCssVarResizeObserverMap,
+  stickyTopCssVarStyleSheetMap,
+  updateStickyTopCssVarStyleSheet,
 } from './flyout-utils';
+import * as jssUtils from './../../utils/jss';
 import { expect } from '@jest/globals';
 
 class MockResizeObserver {
@@ -17,46 +20,6 @@ class MockResizeObserver {
   disconnect() {}
 }
 
-describe('handleUpdateStickyTopCssVar()', () => {
-  const mockReturnValue: StickyTopCssVarState = { ro: new MockResizeObserver(jest.fn()), sheet: new CSSStyleSheet() };
-  let host;
-  let header;
-
-  beforeEach(() => {
-    global.ResizeObserver = MockResizeObserver;
-    host = document.createElement('div');
-    header = document.createElement('div');
-    Object.defineProperty(flyoutUtilsUtils, 'stickyTopCssVarState', { value: undefined });
-  });
-
-  it('should call addUpdateStickyTopCssVar() and set stickyTopCssVarState if header true and stickyTopCssVarState undefined', () => {
-    const addUpdateStickyTopCssVarSpy = jest
-      .spyOn(flyoutUtilsUtils, 'addUpdateStickyTopCssVar')
-      .mockReturnValueOnce(mockReturnValue);
-    const removeUpdateStickyTopCssVar = jest.spyOn(flyoutUtilsUtils, 'removeUpdateStickyTopCssVar');
-
-    handleUpdateStickyTopCssVar(host, true, header);
-
-    expect(addUpdateStickyTopCssVarSpy).toHaveBeenCalledWith(host, header);
-    expect(flyoutUtilsUtils.stickyTopCssVarState).toBe(mockReturnValue);
-    expect(removeUpdateStickyTopCssVar).not.toHaveBeenCalled();
-  });
-
-  it('should call removeUpdateStickyTopCssVar() and set stickyTopCssVarState if header false and stickyTopCssVarState truthy', () => {
-    const addUpdateStickyTopCssVarSpy = jest.spyOn(flyoutUtilsUtils, 'addUpdateStickyTopCssVar');
-    const removeUpdateStickyTopCssVar = jest
-      .spyOn(flyoutUtilsUtils, 'removeUpdateStickyTopCssVar')
-      .mockReturnValueOnce();
-    Object.defineProperty(flyoutUtilsUtils, 'stickyTopCssVarState', { value: mockReturnValue });
-
-    handleUpdateStickyTopCssVar(host, false, header);
-
-    expect(addUpdateStickyTopCssVarSpy).not.toHaveBeenCalled();
-    expect(removeUpdateStickyTopCssVar).toHaveBeenCalledWith(host, mockReturnValue);
-    expect(flyoutUtilsUtils.stickyTopCssVarState).toBeUndefined();
-  });
-});
-
 class MockHTMLElement {
   constructor() {
     this.shadowRoot = { adoptedStyleSheets: [] } as DocumentOrShadowRoot;
@@ -67,50 +30,7 @@ class MockHTMLElement {
   }
 }
 
-describe('addUpdateStickyTopCssVar()', () => {
-  let host, header;
-  const callbackMock = jest.fn();
-  let mockResizeObserver = new MockResizeObserver(callbackMock);
-
-  let stylesheetMock = {
-    replaceSync: jest.fn(),
-    insertRule: jest.fn(),
-    deleteRule: jest.fn(),
-    cssRules: [],
-  };
-
-  beforeEach(() => {
-    global.ResizeObserver = jest.fn().mockImplementation(() => {
-      return mockResizeObserver;
-    });
-
-    global.CSSStyleSheet = jest.fn().mockImplementation(() => {
-      return stylesheetMock;
-    });
-
-    host = new MockHTMLElement();
-    header = new MockHTMLElement();
-  });
-
-  it('should create new stylesheet and push it into host.shadowRoot.adoptedStyleSheets', () => {
-    const observeSpy = jest.spyOn(mockResizeObserver, 'observe');
-    addUpdateStickyTopCssVar(host, header);
-
-    expect(host.shadowRoot.adoptedStyleSheets.length).toBe(1);
-    expect(host.shadowRoot.adoptedStyleSheets[0]).toBe(stylesheetMock);
-    expect(observeSpy).toHaveBeenCalledWith(header);
-  });
-
-  it('should return an object containing ResizeObserver and CSSStyleSheet', () => {
-    const result = addUpdateStickyTopCssVar(host, header);
-    expect(result).toHaveProperty('ro');
-    expect(result).toHaveProperty('sheet');
-  });
-});
-
-describe('removeUpdateStickyTopCssVar()', () => {
-  const callbackMock = jest.fn();
-  let mockResizeObserver = new MockResizeObserver(callbackMock);
+describe('addStickyTopCssVarStyleSheet()', () => {
   let host;
   let stylesheetMock = {
     replaceSync: jest.fn(),
@@ -118,7 +38,51 @@ describe('removeUpdateStickyTopCssVar()', () => {
     deleteRule: jest.fn(),
     cssRules: [],
   } as unknown as CSSStyleSheet;
-  const mockReturnValue: StickyTopCssVarState = { ro: mockResizeObserver, sheet: stylesheetMock };
+
+  beforeEach(() => {
+    global.CSSStyleSheet = jest.fn().mockImplementation(() => {
+      return stylesheetMock;
+    });
+    host = new MockHTMLElement();
+  });
+
+  it('should not do anything if getHasConstructableStylesheetSupport() returns false', () => {
+    const getHasConstructableStylesheetSupportSpy = jest
+      .spyOn(jssUtils, 'getHasConstructableStylesheetSupport')
+      .mockReturnValueOnce(false);
+
+    addStickyTopCssVarStyleSheet(host);
+
+    expect(getHasConstructableStylesheetSupportSpy).toHaveBeenCalled();
+    expect(stickyTopCssVarStyleSheetMap.get(host)).toBeUndefined();
+  });
+
+  it('should create new stylesheet and push it into host.adoptedStyleSheets and update --flyout-sticky-top var', () => {
+    const getHasConstructableStylesheetSupportSpy = jest
+      .spyOn(jssUtils, 'getHasConstructableStylesheetSupport')
+      .mockReturnValueOnce(true);
+    const updateStickyTopCssVarStyleSheetSpy = jest.spyOn(flyoutUtilsUtils, 'updateStickyTopCssVarStyleSheet');
+
+    addStickyTopCssVarStyleSheet(host);
+
+    expect(getHasConstructableStylesheetSupportSpy).toHaveBeenCalled();
+    expect(stickyTopCssVarStyleSheetMap.get(host)).toBe(stylesheetMock);
+    expect(host.shadowRoot.adoptedStyleSheets).toStrictEqual([stylesheetMock]);
+    expect(updateStickyTopCssVarStyleSheetSpy).toHaveBeenCalledWith(host, 0);
+  });
+});
+
+describe('handleUpdateStickyTopCssVar()', () => {
+  let host;
+  const callbackMock = jest.fn();
+  let mockResizeObserver = new MockResizeObserver(callbackMock);
+  let header;
+  let stylesheetMock = {
+    replaceSync: jest.fn(),
+    insertRule: jest.fn(),
+    deleteRule: jest.fn(),
+    cssRules: [],
+  } as unknown as CSSStyleSheet;
 
   beforeEach(() => {
     global.ResizeObserver = jest.fn().mockImplementation(() => {
@@ -128,19 +92,99 @@ describe('removeUpdateStickyTopCssVar()', () => {
       return stylesheetMock;
     });
     host = new MockHTMLElement();
-    Object.defineProperty(flyoutUtilsUtils, 'stickyTopCssVarState', { value: mockReturnValue });
-    host.shadowRoot.adoptedStyleSheets.push(stylesheetMock);
+    header = new MockHTMLElement();
   });
 
-  it('should disconnect resize observer and remove stylesheet', () => {
+  it('should not do anything if getHasConstructableStylesheetSupport() returns false', () => {
+    const getHasConstructableStylesheetSupportSpy = jest
+      .spyOn(jssUtils, 'getHasConstructableStylesheetSupport')
+      .mockReturnValueOnce(false);
+    const getStickyTopResizeObserverSpy = jest.spyOn(flyoutUtilsUtils, 'getStickyTopResizeObserver');
+    const updateStickyTopCssVarStyleSheetSpy = jest.spyOn(flyoutUtilsUtils, 'updateStickyTopCssVarStyleSheet');
+
+    handleUpdateStickyTopCssVar(host, true, header);
+
+    expect(getHasConstructableStylesheetSupportSpy).toHaveBeenCalled();
+    expect(getStickyTopResizeObserverSpy).not.toHaveBeenCalled();
+    expect(updateStickyTopCssVarStyleSheetSpy).not.toHaveBeenCalled();
+  });
+
+  it('should create new resize observer and observe header if hasHeader true and resize observer undefined', () => {
+    const getHasConstructableStylesheetSupportSpy = jest
+      .spyOn(jssUtils, 'getHasConstructableStylesheetSupport')
+      .mockReturnValueOnce(true);
+    const getStickyTopResizeObserverSpy = jest
+      .spyOn(flyoutUtilsUtils, 'getStickyTopResizeObserver')
+      .mockReturnValueOnce(mockResizeObserver);
+    const observeSpy = jest.spyOn(mockResizeObserver, 'observe');
+
+    handleUpdateStickyTopCssVar(host, true, header);
+
+    expect(getHasConstructableStylesheetSupportSpy).toHaveBeenCalled();
+    expect(getStickyTopResizeObserverSpy).toHaveBeenCalled();
+    expect(observeSpy).toHaveBeenCalledWith(header);
+  });
+
+  it('should remove resize observer and reset stickyTopCssVar if hasHeader is false and resize observer exists', () => {
+    stickyTopCssVarResizeObserverMap.set(host, mockResizeObserver);
+    stickyTopCssVarStyleSheetMap.set(host, stylesheetMock);
+    const getHasConstructableStylesheetSupportSpy = jest
+      .spyOn(jssUtils, 'getHasConstructableStylesheetSupport')
+      .mockReturnValueOnce(true);
+
+    const updateStickyTopCssVarStyleSheetSpy = jest.spyOn(flyoutUtilsUtils, 'updateStickyTopCssVarStyleSheet');
     const disconnectSpy = jest.spyOn(mockResizeObserver, 'disconnect');
 
-    expect(host.shadowRoot.adoptedStyleSheets.length).toBe(1);
-    expect(host.shadowRoot.adoptedStyleSheets[0]).toBe(stylesheetMock);
+    handleUpdateStickyTopCssVar(host, false, header);
 
-    removeUpdateStickyTopCssVar(host, flyoutUtilsUtils.stickyTopCssVarState);
-
+    expect(getHasConstructableStylesheetSupportSpy).toHaveBeenCalled();
+    expect(updateStickyTopCssVarStyleSheetSpy).toHaveBeenCalledWith(host, 0);
     expect(disconnectSpy).toHaveBeenCalled();
-    expect(host.shadowRoot.adoptedStyleSheets.length).toBe(0);
+    expect(stickyTopCssVarResizeObserverMap.get(host)).toBeUndefined();
+  });
+});
+
+describe('updateStickyTopCssVarStyleSheet()', () => {
+  let host;
+  let stylesheetMock = {
+    replaceSync: jest.fn(),
+    insertRule: jest.fn(),
+    deleteRule: jest.fn(),
+    cssRules: [],
+  } as unknown as CSSStyleSheet;
+
+  beforeEach(() => {
+    host = new MockHTMLElement();
+    global.CSSStyleSheet = jest.fn().mockImplementation(() => {
+      return stylesheetMock;
+    });
+  });
+
+  it('should update stylesheet correctly', () => {
+    stickyTopCssVarStyleSheetMap.set(host, stylesheetMock);
+    const replaceSyncSpy = jest.spyOn(stylesheetMock, 'replaceSync');
+
+    updateStickyTopCssVarStyleSheet(host, 10);
+
+    expect(replaceSyncSpy).toHaveBeenCalledWith(':host{--p-flyout-sticky-top:10px}');
+  });
+});
+
+describe('getStickyTopResizeObserver()', () => {
+  let host;
+  const callbackMock = jest.fn();
+  let mockResizeObserver = new MockResizeObserver(callbackMock);
+
+  beforeEach(() => {
+    host = new MockHTMLElement();
+    global.ResizeObserver = jest.fn().mockImplementation(() => {
+      return mockResizeObserver;
+    });
+  });
+
+  it('should return new resize observer instance', () => {
+    const observer = getStickyTopResizeObserver(host);
+
+    expect(observer).toBe(mockResizeObserver);
   });
 });

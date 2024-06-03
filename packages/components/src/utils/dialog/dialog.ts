@@ -9,9 +9,11 @@ export const setDialogVisibility = (isOpen: boolean, dialog: HTMLDialogElement, 
   }
 };
 
-export const onCancelDialog = (e: Event, cb: () => void): void => {
+export const onCancelDialog = (e: Event, cb: () => void, disable = false): void => {
   e.preventDefault(); // prevent closing the dialog uncontrolled by ESC
-  cb();
+  if (!disable) {
+    cb();
+  }
 };
 
 export const onClickDialog = (e: MouseEvent, cb: () => void, disable: boolean): void => {

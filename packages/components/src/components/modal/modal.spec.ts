@@ -34,7 +34,11 @@ describe('connectedCallback', () => {
     const spy = jest.spyOn(childrenObserverUtils, 'observeChildren');
     component.connectedCallback();
 
-    expect(spy).toHaveBeenCalledWith(component.host, expect.anything());
+    expect(spy).toHaveBeenCalledWith(component.host, expect.anything(), undefined, {
+      attributes: false,
+      childList: true,
+      subtree: false,
+    });
   });
 });
 
@@ -66,16 +70,16 @@ describe('componentDidRender', () => {
 });
 
 describe('componentDidLoad', () => {
-  it('should call observeStickyArea() with correct parameters if hasHeader is true', () => {
+  it('should call observeStickyArea() with correct parameters if hasFooter is true', () => {
     const observeStickyAreaSpy = jest.spyOn(observerUtils, 'observeStickyArea').mockReturnValueOnce();
-    component['hasHeader'] = true;
+    component['hasFooter'] = true;
     component.componentDidLoad();
 
     expect(observeStickyAreaSpy).toHaveBeenCalledWith(component['scroller'], component['header']);
   });
-  it('should not call observeStickyArea() with if hasHeader is false', () => {
+  it('should not call observeStickyArea() with if hasFooter is false', () => {
     const observeStickyAreaSpy = jest.spyOn(observerUtils, 'observeStickyArea').mockReturnValueOnce();
-    component['hasHeader'] = false;
+    component['hasFooter'] = false;
     component.componentDidLoad();
 
     expect(observeStickyAreaSpy).not.toHaveBeenCalled();
@@ -83,16 +87,16 @@ describe('componentDidLoad', () => {
 });
 
 describe('componentDidUpdate', () => {
-  it('should call observeStickyArea() with correct parameters if hasHeader is true', () => {
+  it('should call observeStickyArea() with correct parameters if hasFooter is true', () => {
     const observeStickyAreaSpy = jest.spyOn(observerUtils, 'observeStickyArea').mockReturnValueOnce();
-    component['hasHeader'] = true;
+    component['hasFooter'] = true;
     component.componentDidUpdate();
 
     expect(observeStickyAreaSpy).toHaveBeenCalledWith(component['scroller'], component['header']);
   });
-  it('should not call observeStickyArea() with if hasHeader is false', () => {
+  it('should not call observeStickyArea() with if hasFooter is false', () => {
     const observeStickyAreaSpy = jest.spyOn(observerUtils, 'observeStickyArea').mockReturnValueOnce();
-    component['hasHeader'] = false;
+    component['hasFooter'] = false;
     component.componentDidUpdate();
 
     expect(observeStickyAreaSpy).not.toHaveBeenCalled();
