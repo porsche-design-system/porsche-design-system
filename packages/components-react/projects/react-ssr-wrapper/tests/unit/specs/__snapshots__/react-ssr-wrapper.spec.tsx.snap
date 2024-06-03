@@ -7483,6 +7483,8 @@ exports[`should render dsr component for PFlyout 1`] = `
   display: block;
   --pds-internal-grid-outer-column: calc(clamp(32px, 2.75vw + 23px, 76px) - clamp(16px, 1.25vw + 12px, 36px)) !important;
   --pds-internal-grid-margin: calc(clamp(32px, 2.75vw + 23px, 76px) * -1) !important;
+  --pds-internal-grid-width-min: auto !important;
+  --pds-internal-grid-width-max: none !important;
   color-scheme: light dark !important;
 }
 :host([hidden]) {
@@ -7551,7 +7553,7 @@ dialog::backdrop {
   color: #010205;
   background: #FFF;
   width: var(--p-flyout-width,auto);
-  min-width: var(--p-flyout-min-width,320px);
+  min-width: 320px;
   max-width: var(--p-flyout-max-width,1180px);
 }
 .dismiss {
@@ -10235,6 +10237,8 @@ exports[`should render dsr component for PModal 1`] = `
   display: block;
   --pds-internal-grid-outer-column: calc(clamp(32px, 2.75vw + 23px, 76px) - clamp(16px, 1.25vw + 12px, 36px)) !important;
   --pds-internal-grid-margin: calc(clamp(32px, 2.75vw + 23px, 76px) * -1) !important;
+  --pds-internal-grid-width-min: auto !important;
+  --pds-internal-grid-width-max: none !important;
   color-scheme: light dark !important;
 }
 :host([hidden]) {
@@ -10312,8 +10316,8 @@ dialog::backdrop {
   transform: translateY(25vh);
   transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.4,0,0.5,1), transform var(--p-transition-duration, 0.25s) cubic-bezier(0.4,0,0.5,1);
   width: var(--p-modal-width,auto);
-  min-width: var(--p-modal-min-width,clamp(276px, 22.75vw + 203px, 640px));
-  max-width: var(--p-modal-max-width,1535.5px);
+  min-width: 276px;
+  max-width: 1535.5px;
   place-self: center;
   margin: var(--p-modal-spacing-top,clamp(16px, 10vh, 192px)) max(22px, 10.625vw - 12px) var(--p-modal-spacing-bottom,clamp(16px, 10vh, 192px));
   border-radius: 8px;
