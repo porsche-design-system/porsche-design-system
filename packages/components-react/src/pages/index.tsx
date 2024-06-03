@@ -55,9 +55,6 @@ import { FlyoutHeaderFooterSubfooterScrolledPage } from './generated/FlyoutHeade
 import { FlyoutHeaderFooterSubfooterScrolledOverlapPage } from './generated/FlyoutHeaderFooterSubfooterScrolledOverlap';
 import { FlyoutHeaderFooterSubfooterSlottedAnchorPage } from './generated/FlyoutHeaderFooterSubfooterSlottedAnchor';
 import { FlyoutHeaderScrollableContentPage } from './generated/FlyoutHeaderScrollableContent';
-import { FlyoutMaxWidthContentPage } from './generated/FlyoutMaxWidthContent';
-import { FlyoutMaxWidthContentPositionLeftPage } from './generated/FlyoutMaxWidthContentPositionLeft';
-import { FlyoutMaxWidthContentPositionStartPage } from './generated/FlyoutMaxWidthContentPositionStart';
 import { FlyoutNavigationPage } from './generated/FlyoutNavigation';
 import { FlyoutNavigationActiveIdentifierPage } from './generated/FlyoutNavigationActiveIdentifier';
 import { FlyoutNavigationBasicPage } from './generated/FlyoutNavigationBasic';
@@ -346,21 +343,6 @@ export const generatedRoutes: RouteType[] = [
     name: 'Flyout Header Scrollable Content',
     path: '/flyout-header-scrollable-content',
     element: <FlyoutHeaderScrollableContentPage />,
-  },
-  {
-    name: 'Flyout Max Width Content',
-    path: '/flyout-max-width-content',
-    element: <FlyoutMaxWidthContentPage />,
-  },
-  {
-    name: 'Flyout Max Width Content Position Left',
-    path: '/flyout-max-width-content-position-left',
-    element: <FlyoutMaxWidthContentPositionLeftPage />,
-  },
-  {
-    name: 'Flyout Max Width Content Position Start',
-    path: '/flyout-max-width-content-position-start',
-    element: <FlyoutMaxWidthContentPositionStartPage />,
   },
   {
     name: 'Flyout Navigation',

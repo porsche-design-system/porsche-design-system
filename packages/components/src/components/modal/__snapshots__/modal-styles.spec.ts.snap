@@ -21,6 +21,9 @@ exports[`getComponentCss() should return correct css for open: false, backdrop: 
   margin-block-end: calc(calc(clamp(8px, 0.5vw + 6px, 16px) + clamp(16px, 1.25vw + 12px, 36px)) * -1) !important;
   border-radius: 0 0 8px 8px !important;
 }
+::slotted(.stretch-to-full-modal-width:first-child) {
+  border-radius: 8px 8px 0 0 !important;
+}
 slot {
   display: block;
 }
@@ -238,6 +241,9 @@ exports[`getComponentCss() should return correct css for open: false, backdrop: 
   margin-block-end: calc(calc(clamp(8px, 0.5vw + 6px, 16px) + clamp(16px, 1.25vw + 12px, 36px)) * -1) !important;
   border-radius: 0 0 8px 8px !important;
 }
+::slotted(.stretch-to-full-modal-width:first-child) {
+  border-radius: 8px 8px 0 0 !important;
+}
 slot {
   display: block;
 }
@@ -453,6 +459,9 @@ exports[`getComponentCss() should return correct css for open: false, backdrop: 
 }
 ::slotted(.stretch-to-full-modal-width:last-child) {
   margin-block-end: calc(calc(clamp(8px, 0.5vw + 6px, 16px) + clamp(16px, 1.25vw + 12px, 36px)) * -1) !important;
+  border-radius: 0 !important;
+}
+::slotted(.stretch-to-full-modal-width:first-child) {
   border-radius: 0 !important;
 }
 slot {
@@ -793,6 +802,9 @@ exports[`getComponentCss() should return correct css for open: false, backdrop: 
 }
 ::slotted(.stretch-to-full-modal-width:last-child) {
   margin-block-end: calc(calc(clamp(8px, 0.5vw + 6px, 16px) + clamp(16px, 1.25vw + 12px, 36px)) * -1) !important;
+  border-radius: 0 !important;
+}
+::slotted(.stretch-to-full-modal-width:first-child) {
   border-radius: 0 !important;
 }
 slot {
@@ -1466,6 +1478,9 @@ exports[`getComponentCss() should return correct css for open: true, backdrop: b
   margin-block-start: calc(calc(clamp(8px, 0.5vw + 6px, 16px) + clamp(16px, 1.25vw + 12px, 36px)) * -1) !important;
   border-radius: 8px 8px 0 0 !important;
 }
+::slotted(.stretch-to-full-modal-width:last-child) {
+  border-radius: 0 0 8px 8px !important;
+}
 slot {
   display: block;
 }
@@ -1571,6 +1586,9 @@ exports[`getComponentCss() should return correct css for open: true, backdrop: b
   margin-block-end: calc(calc(clamp(8px, 0.5vw + 6px, 16px) + clamp(16px, 1.25vw + 12px, 36px)) * -1) !important;
   border-radius: 0 0 8px 8px !important;
 }
+::slotted(.stretch-to-full-modal-width:first-child) {
+  border-radius: 8px 8px 0 0 !important;
+}
 slot {
   display: block;
 }
@@ -1673,6 +1691,12 @@ exports[`getComponentCss() should return correct css for open: true, backdrop: b
   display: block !important;
   margin: 0 calc(clamp(32px, 2.75vw + 23px, 76px) * -1) !important;
   width: calc(100% + calc(clamp(32px, 2.75vw + 23px, 76px) * 2)) !important;
+}
+::slotted(.stretch-to-full-modal-width:first-child) {
+  border-radius: 8px 8px 0 0 !important;
+}
+::slotted(.stretch-to-full-modal-width:last-child) {
+  border-radius: 0 0 8px 8px !important;
 }
 slot {
   display: block;
@@ -1904,6 +1928,9 @@ exports[`getComponentCss() should return correct css for open: true, backdrop: b
   margin-block-end: calc(calc(clamp(8px, 0.5vw + 6px, 16px) + clamp(16px, 1.25vw + 12px, 36px)) * -1) !important;
   border-radius: 0 0 8px 8px !important;
 }
+::slotted(.stretch-to-full-modal-width:first-child) {
+  border-radius: 8px 8px 0 0 !important;
+}
 slot {
   display: block;
 }
@@ -2119,6 +2146,9 @@ exports[`getComponentCss() should return correct css for open: true, backdrop: b
   margin-block-end: calc(calc(clamp(8px, 0.5vw + 6px, 16px) + clamp(16px, 1.25vw + 12px, 36px)) * -1) !important;
   border-radius: 0 !important;
 }
+::slotted(.stretch-to-full-modal-width:first-child) {
+  border-radius: 0 !important;
+}
 slot {
   display: block;
 }
@@ -2332,6 +2362,9 @@ exports[`getComponentCss() should return correct css for open: true, backdrop: b
 }
 ::slotted(.stretch-to-full-modal-width:last-child) {
   margin-block-end: calc(calc(clamp(8px, 0.5vw + 6px, 16px) + clamp(16px, 1.25vw + 12px, 36px)) * -1) !important;
+  border-radius: 0 !important;
+}
+::slotted(.stretch-to-full-modal-width:first-child) {
   border-radius: 0 !important;
 }
 slot {

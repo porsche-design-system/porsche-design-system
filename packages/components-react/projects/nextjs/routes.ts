@@ -176,18 +176,6 @@ const generatedRoutes = {
     "path": "/flyout-header-scrollable-content",
     "name": "FlyoutHeaderScrollableContent"
   },
-  "flyoutMaxWidthContent": {
-    "path": "/flyout-max-width-content",
-    "name": "FlyoutMaxWidthContent"
-  },
-  "flyoutMaxWidthContentPositionLeft": {
-    "path": "/flyout-max-width-content-position-left",
-    "name": "FlyoutMaxWidthContentPositionLeft"
-  },
-  "flyoutMaxWidthContentPositionStart": {
-    "path": "/flyout-max-width-content-position-start",
-    "name": "FlyoutMaxWidthContentPositionStart"
-  },
   "flyoutNavigation": {
     "path": "/flyout-navigation",
     "name": "FlyoutNavigation"

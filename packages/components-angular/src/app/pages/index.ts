@@ -75,9 +75,6 @@ import { FlyoutHeaderFooterSubfooterScrolledComponent } from './generated/flyout
 import { FlyoutHeaderFooterSubfooterScrolledOverlapComponent } from './generated/flyout-header-footer-subfooter-scrolled-overlap.component';
 import { FlyoutHeaderFooterSubfooterSlottedAnchorComponent } from './generated/flyout-header-footer-subfooter-slotted-anchor.component';
 import { FlyoutHeaderScrollableContentComponent } from './generated/flyout-header-scrollable-content.component';
-import { FlyoutMaxWidthContentComponent } from './generated/flyout-max-width-content.component';
-import { FlyoutMaxWidthContentPositionLeftComponent } from './generated/flyout-max-width-content-position-left.component';
-import { FlyoutMaxWidthContentPositionStartComponent } from './generated/flyout-max-width-content-position-start.component';
 import { FlyoutNavigationComponent } from './generated/flyout-navigation.component';
 import { FlyoutNavigationActiveIdentifierComponent } from './generated/flyout-navigation-active-identifier.component';
 import { FlyoutNavigationBasicComponent } from './generated/flyout-navigation-basic.component';
@@ -197,9 +194,6 @@ export const generatedPages = [
   FlyoutHeaderFooterSubfooterScrolledOverlapComponent,
   FlyoutHeaderFooterSubfooterSlottedAnchorComponent,
   FlyoutHeaderScrollableContentComponent,
-  FlyoutMaxWidthContentComponent,
-  FlyoutMaxWidthContentPositionLeftComponent,
-  FlyoutMaxWidthContentPositionStartComponent,
   FlyoutNavigationComponent,
   FlyoutNavigationActiveIdentifierComponent,
   FlyoutNavigationBasicComponent,
@@ -490,21 +484,6 @@ export const generatedRoutes: ExtendedRoute[] = [
     name: 'Flyout Header Scrollable Content',
     path: 'flyout-header-scrollable-content',
     component: FlyoutHeaderScrollableContentComponent,
-  },
-  {
-    name: 'Flyout Max Width Content',
-    path: 'flyout-max-width-content',
-    component: FlyoutMaxWidthContentComponent,
-  },
-  {
-    name: 'Flyout Max Width Content Position Left',
-    path: 'flyout-max-width-content-position-left',
-    component: FlyoutMaxWidthContentPositionLeftComponent,
-  },
-  {
-    name: 'Flyout Max Width Content Position Start',
-    path: 'flyout-max-width-content-position-start',
-    component: FlyoutMaxWidthContentPositionStartComponent,
   },
   {
     name: 'Flyout Navigation',
