@@ -165,8 +165,9 @@ describe('render', () => {
     component.render();
 
     expect(hasNamedSlotSpy).toHaveBeenNthCalledWith(1, component.host, 'heading');
-    expect(hasNamedSlotSpy).toHaveBeenNthCalledWith(4, component.host, 'header');
-    expect(hasNamedSlotSpy).toHaveBeenNthCalledWith(3, component.host, 'footer');
-    expect(hasNamedSlotSpy).toHaveBeenCalledTimes(3);
+    expect(hasNamedSlotSpy).toHaveBeenNthCalledWith(2, component.host, 'heading');
+    expect(hasNamedSlotSpy).toHaveBeenNthCalledWith(3, component.host, 'header');
+    expect(hasNamedSlotSpy).toHaveBeenNthCalledWith(4, component.host, 'footer');
+    expect(hasNamedSlotSpy).toHaveBeenCalledTimes(4);
   });
 });
