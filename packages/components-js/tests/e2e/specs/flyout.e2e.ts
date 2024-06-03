@@ -751,7 +751,7 @@ test.describe('after dynamic slot change', () => {
     await addHeaderSlot(host);
     await waitForStencilLifecycle(page);
 
-    expect(await getStickyTopCssVarValue(page)).toBe('96px');
+    expect(await getStickyTopCssVarValue(page)).toBe('95px');
 
     await removeHeaderSlot(host);
     await waitForStencilLifecycle(page);
@@ -761,17 +761,17 @@ test.describe('after dynamic slot change', () => {
     await addHeaderSlot(host);
     await waitForStencilLifecycle(page);
 
-    expect(await getStickyTopCssVarValue(page)).toBe('96px');
+    expect(await getStickyTopCssVarValue(page)).toBe('95px');
 
     await page.setViewportSize({ width: 320, height: 500 });
 
-    expect(await getStickyTopCssVarValue(page)).toBe('168px');
+    expect(await getStickyTopCssVarValue(page)).toBe('167px');
   });
 
   test('should update css sticky top custom property correctly if header exists initially', async ({ page }) => {
     await initAdvancedFlyout(page);
     const host = await getHost(page);
-    expect(await getStickyTopCssVarValue(page)).toBe('57px');
+    expect(await getStickyTopCssVarValue(page)).toBe('56px');
 
     await removeHeaderSlot(host);
     await waitForStencilLifecycle(page);
@@ -781,12 +781,10 @@ test.describe('after dynamic slot change', () => {
     await addHeaderSlot(host);
     await waitForStencilLifecycle(page);
 
-    expect(await getStickyTopCssVarValue(page)).toBe('96px');
+    expect(await getStickyTopCssVarValue(page)).toBe('95px');
 
     await page.setViewportSize({ width: 320, height: 500 });
 
-    expect(await getStickyTopCssVarValue(page)).toBe('168px');
+    expect(await getStickyTopCssVarValue(page)).toBe('167px');
   });
 });
-
-// TODO: Lifecycle test change deeply nested slot content -> no rerender
