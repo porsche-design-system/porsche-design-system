@@ -158,7 +158,7 @@ export const routes: ExtendedRoute[] = [
   {
     name: 'Modal Example Accessibility',
     path: 'modal-example-accessibility',
-    component: fromExamples.ModalExampleAccessibilityComponent,
+    component: fromExamples.ModalExampleComponent,
   },
   {
     name: 'Multi-Select Example',

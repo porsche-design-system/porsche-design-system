@@ -179,10 +179,10 @@ const generateCodeSamples = (): void => {
       component: 'p-modal',
       samples: [
         [
-          componentsJsPath + '/modal-example-accessibility.html',
-          componentsAngularPath + '/modal-example-accessibility.component.ts',
-          componentsReactPath + '/ModalExampleAccessibility.tsx',
-          componentsVuePath + '/ModalExampleAccessibility.vue',
+          componentsJsPath + '/modal-example.html',
+          componentsAngularPath + '/modal-example.component.ts',
+          componentsReactPath + '/ModalExample.tsx',
+          componentsVuePath + '/ModalExample.vue',
         ],
       ],
     },

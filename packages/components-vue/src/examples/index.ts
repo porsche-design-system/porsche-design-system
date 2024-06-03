@@ -12,7 +12,7 @@ export { default as FlyoutNavigationExampleCustomContent } from './FlyoutNavigat
 export { default as InlineNotificationExampleActionButton } from './InlineNotificationExampleActionButton.vue';
 export { default as InlineNotificationExampleEvents } from './InlineNotificationExampleEvents.vue';
 export { default as LinkTileProductExample } from './LinkTileProductExample.vue';
-export { default as ModalExampleAccessibility } from './ModalExampleAccessibility.vue';
+export { default as ModalExampleAccessibility } from './ModalExample.vue';
 export { default as MultiSelectExample } from './MultiSelectExample.vue';
 export { default as MultiSelectExampleControlled } from './MultiSelectExampleControlled.vue';
 export { default as MultiSelectExampleDynamic } from './MultiSelectExampleDynamic.vue';
