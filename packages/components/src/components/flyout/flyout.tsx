@@ -196,6 +196,6 @@ export class Flyout {
       observeStickyArea(this.scroller, this.footer);
     }
     // When header slot changes dynamically the resize observer and adopted stylesheet for the CSS custom property --p-flyout-sticky-top has to be updated
-    handleUpdateStickyTopCssVar(this.hasHeader, this.header);
+    handleUpdateStickyTopCssVar(this.host, this.hasHeader, this.header);
   };
 }
