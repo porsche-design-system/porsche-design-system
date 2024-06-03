@@ -34,7 +34,11 @@ describe('connectedCallback', () => {
     const spy = jest.spyOn(childrenObserverUtils, 'observeChildren');
     component.connectedCallback();
 
-    expect(spy).toHaveBeenCalledWith(component.host, expect.anything());
+    expect(spy).toHaveBeenCalledWith(component.host, expect.anything(), undefined, {
+      attributes: false,
+      childList: true,
+      subtree: false,
+    });
   });
 });
 

@@ -175,6 +175,10 @@ describe('updateSlotObserver', () => {
 
     component['updateSlotObserver']();
 
-    expect(handleUpdateStickyTopCssVarSpy).toHaveBeenCalledWith(component['hasHeader'], component['header']);
+    expect(handleUpdateStickyTopCssVarSpy).toHaveBeenCalledWith(
+      component.host,
+      component['hasHeader'],
+      component['header']
+    );
   });
 });
