@@ -196,7 +196,7 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
           .replace(/(\.\.\.rest)/, 'isWithinForm, onFormSubmit, $1') // destructure custom props
           .replace(
             // patch jsx to wrap component in form
-            /(<WebComponentTag {...props} \/>)/,
+            /<WebComponentTag \{\.\.\.props} \/>/,
             `isWithinForm ? (
       <form
         onSubmit={(e) => {
@@ -204,10 +204,12 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
           onFormSubmit && onFormSubmit();
         }}
       >
-        $1
+        {/* @ts-ignore */}
+        $&
       </form>
     ) : (
-      $1
+      // @ts-ignore
+      $&
     )`
           );
       }
