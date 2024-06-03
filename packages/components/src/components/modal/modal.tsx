@@ -4,6 +4,7 @@ import {
   AllowedTypes,
   applyConstructableStylesheetStyles,
   attachComponentCss,
+  consoleWarn,
   getPrefixedTagNames,
   hasHeading,
   hasNamedSlot,
@@ -26,6 +27,7 @@ import { getComponentCss } from './modal-styles';
 import { BACKDROPS } from '../../styles/dialog-styles';
 import { getSlottedAnchorStyles } from '../../styles';
 import { observeStickyArea } from '../../utils/dialog/observer';
+import { getDeprecatedPropOrSlotWarningMessage } from '../../utils/log/helper';
 
 const propTypes: PropTypes<typeof Modal> = {
   open: AllowedTypes.boolean,
@@ -60,7 +62,9 @@ export class Modal {
   /** If true, the modal will not be closable via backdrop click. */
   @Prop() public disableBackdropClick?: boolean = false;
 
-  /** The title of the modal */
+  /**
+   * @deprecated since v3.0.0, will be removed with next major release, use `header` slot instead
+   * The title of the modal */
   @Prop() public heading?: string;
 
   /** Defines the backdrop, 'blur' (should be used when Modal is opened by user interaction, e.g. after a click on a button) and 'shading' (should be used when Modal gets opened automatically, e.g. Cookie Consent). */
@@ -140,6 +144,14 @@ export class Modal {
   public render(): JSX.Element {
     validateProps(this, propTypes);
     warnIfDeprecatedPropIsUsed<typeof Modal>(this, 'disableCloseButton', 'Please use dismissButton prop instead.');
+    warnIfDeprecatedPropIsUsed<typeof Modal>(this, 'heading', 'Please use the slot="header" instead.');
+
+    if (hasNamedSlot(this.host, 'heading')) {
+      consoleWarn(
+        getDeprecatedPropOrSlotWarningMessage(this.host, 'slot="heading"'),
+        'Please use the slot="header" instead.'
+      );
+    }
 
     this.hasHeader = hasHeading(this.host, this.heading) || hasNamedSlot(this.host, 'header');
     this.hasFooter = hasNamedSlot(this.host, 'footer');

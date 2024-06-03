@@ -7622,6 +7622,7 @@ exports[`should match snapshot 1`] = `
     ],
     "deprecatedProps": [
       "disableCloseButton",
+      "heading",
     ],
     "eventNames": [
       "close",
@@ -7714,7 +7715,8 @@ exports[`should match snapshot 1`] = `
       "heading": {
         "allowedValues": "string",
         "defaultValue": null,
-        "description": "The title of the modal",
+        "description": "@deprecated since v3.0.0, will be removed with next major release, use \`header\` slot instead The title of the modal",
+        "isDeprecated": true,
         "type": "string",
       },
       "open": {
