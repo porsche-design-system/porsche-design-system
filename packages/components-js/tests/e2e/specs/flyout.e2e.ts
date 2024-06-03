@@ -630,6 +630,49 @@ test.describe('lifecycle', () => {
     expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(3);
     expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(1);
   });
+
+  test('should work without unnecessary round trips after deeply nested slot content change', async ({ page }) => {
+    await initBasicFlyout(page, { open: true }, { header: '<div slot="header">Some content</div>' });
+    const host = await getHost(page);
+    const status = await getLifecycleStatus(page);
+
+    expect(status.componentDidLoad['p-flyout'], 'componentDidLoad: p-flyout').toBe(1);
+    expect(status.componentDidLoad['p-button-pure'], 'componentDidLoad: p-button-pure').toBe(1); // includes p-icon
+
+    expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(3);
+    expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(0);
+
+    await host.evaluate((el) => {
+      const header = el.querySelector('[slot="header"]');
+      header.innerHTML = `<h2>Some new header content</h2>`;
+    });
+    await waitForStencilLifecycle(page);
+
+    const statusAfter = await getLifecycleStatus(page);
+
+    expect(statusAfter.componentDidUpdate['p-flyout'], 'componentDidUpdate: p-flyout').toBe(0);
+    expect(statusAfter.componentDidUpdate.all, 'componentDidUpdate: all').toBe(0);
+  });
+
+  test('should update when adding named slot', async ({ page }) => {
+    await initBasicFlyout(page);
+    const host = await getHost(page);
+    const status = await getLifecycleStatus(page);
+
+    expect(status.componentDidLoad['p-flyout'], 'componentDidLoad: p-flyout').toBe(1);
+    expect(status.componentDidLoad['p-button-pure'], 'componentDidLoad: p-button-pure').toBe(1); // includes p-icon
+
+    expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(3);
+    expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(0);
+
+    await addHeaderSlot(host);
+    await waitForStencilLifecycle(page);
+
+    const statusAfter = await getLifecycleStatus(page);
+
+    expect(statusAfter.componentDidUpdate['p-flyout'], 'componentDidUpdate: p-flyout').toBe(1);
+    expect(statusAfter.componentDidUpdate.all, 'componentDidUpdate: all').toBe(1);
+  });
 });
 
 test.describe('after dynamic slot change', () => {
@@ -745,3 +788,5 @@ test.describe('after dynamic slot change', () => {
     expect(await getStickyTopCssVarValue(page)).toBe('168px');
   });
 });
+
+// TODO: Lifecycle test change deeply nested slot content -> no rerender

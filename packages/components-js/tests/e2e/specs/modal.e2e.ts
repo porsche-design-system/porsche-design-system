@@ -60,7 +60,7 @@ const initBasicModal = (
   } = opts || {};
 
   const attributes = [
-    !hasSlottedHeading && `heading="${heading}"`,
+    !hasSlottedHeading && !hasSlottedHeader && `heading="${heading}"`,
     isOpen && 'open',
     aria && `aria="${aria}"`,
     disableCloseButton && 'disable-close-button',
@@ -687,6 +687,55 @@ test.describe('lifecycle', () => {
 
     expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(3);
     expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(1);
+  });
+
+  test('should work without unnecessary round trips after deeply nested slot content change', async ({ page }) => {
+    await initBasicModal(page, { hasSlottedFooter: true });
+    const host = await getHost(page);
+    await waitForStencilLifecycle(page);
+    const status = await getLifecycleStatus(page);
+
+    expect(status.componentDidLoad['p-modal'], 'componentDidLoad: p-modal').toBe(1);
+    expect(status.componentDidLoad['p-button-pure'], 'componentDidLoad: p-button-pure').toBe(1); // includes p-icon
+
+    expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(3);
+    expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(0);
+
+    await host.evaluate((el) => {
+      const header = el.querySelector('[slot="footer"]');
+      header.innerHTML = `<p>Some new footer content</p>`;
+    });
+    await waitForStencilLifecycle(page);
+
+    const statusAfter = await getLifecycleStatus(page);
+
+    expect(statusAfter.componentDidUpdate['p-modal'], 'componentDidUpdate: p-modal').toBe(0);
+    expect(statusAfter.componentDidUpdate.all, 'componentDidUpdate: all').toBe(0);
+  });
+
+  test('should update when adding named slot', async ({ page }) => {
+    await initBasicModal(page);
+    const host = await getHost(page);
+    const status = await getLifecycleStatus(page);
+
+    expect(status.componentDidLoad['p-modal'], 'componentDidLoad: p-modal').toBe(1);
+    expect(status.componentDidLoad['p-button-pure'], 'componentDidLoad: p-button-pure').toBe(1); // includes p-icon
+
+    expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(3);
+    expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(0);
+
+    await host.evaluate((el) => {
+      const header = document.createElement('div');
+      header.slot = 'header';
+      header.innerHTML = `<h2>Some header content</h2>`;
+      el.appendChild(header);
+    });
+    await waitForStencilLifecycle(page);
+
+    const statusAfter = await getLifecycleStatus(page);
+
+    expect(statusAfter.componentDidUpdate['p-modal'], 'componentDidUpdate: p-modal').toBe(1);
+    expect(statusAfter.componentDidUpdate.all, 'componentDidUpdate: all').toBe(1);
   });
 });
 
