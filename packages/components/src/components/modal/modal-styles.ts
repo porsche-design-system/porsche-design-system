@@ -71,16 +71,12 @@ export const getComponentCss = (
             }),
           },
           buildResponsiveStyles(fullscreen, (fullscreenValue: boolean) => ({
-            ...(!hasHeader && {
-              [`&(.${cssClassNameStretchToFullModalWidth}:first-child)`]: {
-                borderRadius: fullscreenValue ? 0 : `${borderRadiusMedium} ${borderRadiusMedium} 0 0`,
-              },
-            }),
-            ...(!hasFooter && {
-              [`&(.${cssClassNameStretchToFullModalWidth}:last-child)`]: {
-                borderRadius: fullscreenValue ? 0 : `0 0 ${borderRadiusMedium} ${borderRadiusMedium}`,
-              },
-            }),
+            [`&(.${cssClassNameStretchToFullModalWidth}:first-child)`]: {
+              borderRadius: fullscreenValue ? 0 : `${borderRadiusMedium} ${borderRadiusMedium} 0 0`,
+            },
+            [`&(.${cssClassNameStretchToFullModalWidth}:last-child)`]: {
+              borderRadius: fullscreenValue ? 0 : `0 0 ${borderRadiusMedium} ${borderRadiusMedium}`,
+            },
           }))
         )
       ),
