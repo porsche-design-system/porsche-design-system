@@ -17,8 +17,8 @@
     <PHeading slot="header" size="large" tag="h2">Some Heading</PHeading>
     <PText>Some Content</PText>
     <PButtonGroup slot="footer">
-      <PButton type="button">Save</PButton>
-      <PButton type="button" :variant="'tertiary'" :icon="'close'" @click="onDismiss">Close</PButton>
+      <PButton type="button">Accept</PButton>
+      <PButton type="button" :variant="'secondary'">Deny</PButton>
     </PButtonGroup>
   </PModal>
 </template>

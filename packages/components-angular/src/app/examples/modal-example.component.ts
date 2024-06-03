@@ -8,8 +8,8 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       <p-heading slot="header" size="large" tag="h2">Some Heading</p-heading>
       <p-text>Some Content</p-text>
       <p-button-group slot="footer">
-        <p-button type="button">Save</p-button>
-        <p-button type="button" [variant]="'tertiary'" [icon]="'close'" (click)="onDismiss()">Close</p-button>
+        <p-button type="button">Accept</p-button>
+        <p-button type="button" [variant]="'secondary'">Deny</p-button>
       </p-button-group>
     </p-modal>
   `,

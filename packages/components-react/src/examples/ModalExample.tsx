@@ -21,9 +21,9 @@ export const ModalExampleAccessibilityPage = (): JSX.Element => {
         </PHeading>
         <PText>Some Content</PText>
         <PButtonGroup slot="footer">
-          <PButton type="button">Save</PButton>
-          <PButton type="button" variant="tertiary" icon="close" onClick={onDismiss}>
-            Close
+          <PButton type="button">Accept</PButton>
+          <PButton type="button" variant="secondary">
+            Deny
           </PButton>
         </PButtonGroup>
       </PModal>

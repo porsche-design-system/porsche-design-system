@@ -4,8 +4,8 @@
   <p-heading slot="header" size="large" tag="h2">Some Heading</p-heading>
   <p-text>Some Content</p-text>
   <p-button-group slot="footer">
-    <p-button type="button">Save</p-button>
-    <p-button type="button" variant="tertiary" icon="close">Close</p-button>
+    <p-button type="button">Accept</p-button>
+    <p-button type="button" variant="secondary">Deny</p-button>
   </p-button-group>
 </p-modal>
 
@@ -15,5 +15,4 @@
     modal.open = false;
   });
   document.querySelector('p-button').addEventListener('click', () => (modal.open = true));
-  document.querySelector('p-button[icon="close"]').addEventListener('click', () => (modal.open = false));
 </script>
