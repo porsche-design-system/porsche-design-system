@@ -99,7 +99,12 @@ following example shows the visualization of the Porsche Grid when used inside t
     <div class="demo">
       <p-button type="button" aria="{ 'aria-haspopup': 'dialog' }" :theme="this.$store.getters.storefrontTheme">Open Modal</p-button>
       <p-modal open="false" aria="{ 'aria-label': 'Some Heading' }">
-        <ExampleStylesGrid :visualizeGrid="true"/> 
+        <p-heading slot="header" size="large" tag="h2">Some Heading</p-heading>
+        <ExampleStylesGrid :visualizeGrid="true"/>
+        <p-button-group slot="footer">
+          <p-button>Accept</p-button>
+          <p-button type="button" variant="secondary">Deny</p-button>
+        </p-button-group>
       </p-modal>
     </div>
   </div>
@@ -157,15 +162,8 @@ export default class Code extends Vue {
 
   registerEvents() {
     this.modals = document.querySelectorAll('p-modal');
-    
-    const buttonsOpen = document.querySelectorAll('.playground .demo > p-button');
-    buttonsOpen.forEach((btn, index) => btn.addEventListener('click', () => this.openModal(index)));
-    
-    this.modals.forEach((modal, index) => {
-      modal.addEventListener('dismiss', () => this.closeModal(index));
-      const buttons = modal.querySelectorAll('p-button');
-      buttons.forEach((btn) => btn.addEventListener('click', () => this.closeModal(index)));
-    });
+    this.modals.forEach((modal, index) => modal.addEventListener('dismiss', () => this.closeModal(index)));
+    document.querySelectorAll('.playground .demo > p-button').forEach((btn, index) => btn.addEventListener('click', () => this.openModal(index)));
   }
 
   openModal(index: number): void {
