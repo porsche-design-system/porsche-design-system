@@ -5,8 +5,6 @@ import { CarouselExampleDynamicSlidesComponent } from './carousel-example-dynami
 import { CarouselExampleEventsComponent } from './carousel-example-events.component';
 import { CarouselExampleJumpToSlideComponent } from './carousel-example-jump-to-slide.component';
 import { FlyoutExampleComponent } from './flyout-example.component';
-import { FlyoutExampleSlottedComponent } from './flyout-example-slotted.component';
-import { FlyoutExampleSlottedSecondaryComponent } from './flyout-example-slotted-secondary.component';
 import { FlyoutNavigationExampleComponent } from './flyout-navigation-example.component';
 import { FlyoutNavigationExampleActiveIdentifierComponent } from './flyout-navigation-example-active-identifier.component';
 import { FlyoutNavigationExampleCustomContentComponent } from './flyout-navigation-example-custom-content.component';
@@ -45,8 +43,6 @@ export const examples = [
   CarouselExampleEventsComponent,
   CarouselExampleJumpToSlideComponent,
   FlyoutExampleComponent,
-  FlyoutExampleSlottedComponent,
-  FlyoutExampleSlottedSecondaryComponent,
   FlyoutNavigationExampleComponent,
   FlyoutNavigationExampleActiveIdentifierComponent,
   FlyoutNavigationExampleCustomContentComponent,
@@ -85,8 +81,6 @@ export * from './carousel-example-dynamic-slides.component';
 export * from './carousel-example-events.component';
 export * from './carousel-example-jump-to-slide.component';
 export * from './flyout-example.component';
-export * from './flyout-example-slotted.component';
-export * from './flyout-example-slotted-secondary.component';
 export * from './flyout-navigation-example.component';
 export * from './flyout-navigation-example-active-identifier.component';
 export * from './flyout-navigation-example-custom-content.component';

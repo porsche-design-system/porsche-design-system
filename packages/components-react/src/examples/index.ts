@@ -5,8 +5,6 @@ export * from './CarouselExampleDynamicSlides';
 export * from './CarouselExampleEvents';
 export * from './CarouselExampleJumpToSlide';
 export * from './FlyoutExample';
-export * from './FlyoutExampleSlotted';
-export * from './FlyoutExampleSlottedSecondary';
 export * from './FlyoutNavigationExample';
 export * from './FlyoutNavigationExampleActiveIdentifier';
 export * from './FlyoutNavigationExampleCustomContent';

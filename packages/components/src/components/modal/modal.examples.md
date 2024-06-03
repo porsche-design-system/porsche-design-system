@@ -5,13 +5,13 @@ page are blocked. It is only used as highly disruptive modal notification to pre
 dismissed. Or as overlay to confirm critical user actions, such as confirming an irreversible choice. It should be used
 thoughtfully and sparingly.
 
-It is a controlled component. This grants you flexible control over the modal's behavior especially whether it should
-stay open after user interaction like submission of a form.
+It is a controlled component. This grants flexible control over the modal's behavior especially whether it should stay
+open after user interaction like submission of a form.
 
 <Notification heading="Scroll-lock" heading-tag="h2" state="warning">
   This component sets <code>overflow: hidden</code> on the body when opened in order to prevent background scrolling.<br> 
   This doesn't work completely reliable under iOS but is the most stable solution.<br>
-  Feel free to address this issue in an Open Source PR, if you can provide a better solution. <b><a href="https://github.com/porsche-design-system/porsche-design-system/blob/main/packages/components/src/utils/setScrollLock.ts">Current implementation</a></b><br> 
+  Feel free to address this issue in an Open Source PR, if you can provide a better solution. <b><a href="https://github.com/porsche-design-system/porsche-design-system/blob/main/packages/components/src/utils/setScrollLock.ts">Current implementation</a></b> 
 </Notification>
 
 <TableOfContents></TableOfContents>
@@ -32,9 +32,9 @@ The size of `p-modal` adjusts itself to the content with a predefined **min/max 
 
 #### Supported named slots:
 
-- `slot="header"`: Renders a header section above the content area with a predefined space in between.
+- `slot="header"`: Renders a header section above the content area.
 - `slot`: Shows the content area.
-- `slot="footer"`: Shows a sticky footer section, flowing under the content area when scrollable.
+- `slot="footer"`: Shows a **sticky** footer section, flowing under the content area when scrollable.
 
 <Playground :frameworkMarkup="codeSamples" :markup="codeSamples['vanilla-js']" :config="config"></Playground>
 
@@ -154,9 +154,9 @@ export default class Code extends Vue {
   }
 
   registerEvents() {
-    this.modals = document.querySelectorAll('p-modal');
+    this.modals = this.$el.querySelectorAll('.playground .demo > p-modal');
     this.modals.forEach((modal, index) => modal.addEventListener('dismiss', () => this.closeModal(index)));
-    document.querySelectorAll('.playground .demo > p-button').forEach((btn, index) => btn.addEventListener('click', () => this.openModal(index)));
+    this.$el.querySelectorAll('.playground .demo > p-button').forEach((btn, index) => btn.addEventListener('click', () => this.openModal(index)));
   }
 
   openModal(index: number): void {
