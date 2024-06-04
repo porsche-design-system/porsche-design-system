@@ -10251,11 +10251,13 @@ exports[`should render dsr component for PModal 1`] = `
 }
 ::slotted(.stretch-to-full-modal-width:first-child) {
   margin-block-start: calc(calc(clamp(8px, 0.5vw + 6px, 16px) + clamp(16px, 1.25vw + 12px, 36px)) * -1) !important;
-  border-radius: 8px 8px 0 0 !important;
+  border-top-left-radius: 8px !important;
+  border-top-right-radius: 8px !important;
 }
 ::slotted(.stretch-to-full-modal-width:last-child) {
   margin-block-end: calc(calc(clamp(8px, 0.5vw + 6px, 16px) + clamp(16px, 1.25vw + 12px, 36px)) * -1) !important;
-  border-radius: 0 0 8px 8px !important;
+  border-bottom-left-radius: 8px !important;
+  border-bottom-right-radius: 8px !important;
 }
 slot {
   display: block;
