@@ -19,10 +19,12 @@ exports[`getComponentCss() should return correct css for open: false, backdrop: 
 }
 ::slotted(.stretch-to-full-modal-width:last-child) {
   margin-block-end: calc(calc(clamp(8px, 0.5vw + 6px, 16px) + clamp(16px, 1.25vw + 12px, 36px)) * -1) !important;
-  border-radius: 0 0 8px 8px !important;
+  border-bottom-left-radius: 8px !important;
+  border-bottom-right-radius: 8px !important;
 }
 ::slotted(.stretch-to-full-modal-width:first-child) {
-  border-radius: 8px 8px 0 0 !important;
+  border-top-left-radius: 8px !important;
+  border-top-right-radius: 8px !important;
 }
 slot {
   display: block;
@@ -130,11 +132,13 @@ exports[`getComponentCss() should return correct css for open: false, backdrop: 
 }
 ::slotted(.stretch-to-full-modal-width:first-child) {
   margin-block-start: calc(calc(clamp(8px, 0.5vw + 6px, 16px) + clamp(16px, 1.25vw + 12px, 36px)) * -1) !important;
-  border-radius: 8px 8px 0 0 !important;
+  border-top-left-radius: 8px !important;
+  border-top-right-radius: 8px !important;
 }
 ::slotted(.stretch-to-full-modal-width:last-child) {
   margin-block-end: calc(calc(clamp(8px, 0.5vw + 6px, 16px) + clamp(16px, 1.25vw + 12px, 36px)) * -1) !important;
-  border-radius: 0 0 8px 8px !important;
+  border-bottom-left-radius: 8px !important;
+  border-bottom-right-radius: 8px !important;
 }
 slot {
   display: block;
@@ -239,10 +243,12 @@ exports[`getComponentCss() should return correct css for open: false, backdrop: 
 }
 ::slotted(.stretch-to-full-modal-width:last-child) {
   margin-block-end: calc(calc(clamp(8px, 0.5vw + 6px, 16px) + clamp(16px, 1.25vw + 12px, 36px)) * -1) !important;
-  border-radius: 0 0 8px 8px !important;
+  border-bottom-left-radius: 8px !important;
+  border-bottom-right-radius: 8px !important;
 }
 ::slotted(.stretch-to-full-modal-width:first-child) {
-  border-radius: 8px 8px 0 0 !important;
+  border-top-left-radius: 8px !important;
+  border-top-right-radius: 8px !important;
 }
 slot {
   display: block;
@@ -364,11 +370,13 @@ exports[`getComponentCss() should return correct css for open: false, backdrop: 
 }
 ::slotted(.stretch-to-full-modal-width:first-child) {
   margin-block-start: calc(calc(clamp(8px, 0.5vw + 6px, 16px) + clamp(16px, 1.25vw + 12px, 36px)) * -1) !important;
-  border-radius: 0 !important;
+  border-top-left-radius: 0 !important;
+  border-top-right-radius: 0 !important;
 }
 ::slotted(.stretch-to-full-modal-width:last-child) {
   margin-block-end: calc(calc(clamp(8px, 0.5vw + 6px, 16px) + clamp(16px, 1.25vw + 12px, 36px)) * -1) !important;
-  border-radius: 0 !important;
+  border-bottom-left-radius: 0 !important;
+  border-bottom-right-radius: 0 !important;
 }
 slot {
   display: block;
@@ -459,10 +467,12 @@ exports[`getComponentCss() should return correct css for open: false, backdrop: 
 }
 ::slotted(.stretch-to-full-modal-width:last-child) {
   margin-block-end: calc(calc(clamp(8px, 0.5vw + 6px, 16px) + clamp(16px, 1.25vw + 12px, 36px)) * -1) !important;
-  border-radius: 0 !important;
+  border-bottom-left-radius: 0 !important;
+  border-bottom-right-radius: 0 !important;
 }
 ::slotted(.stretch-to-full-modal-width:first-child) {
-  border-radius: 0 !important;
+  border-top-left-radius: 0 !important;
+  border-top-right-radius: 0 !important;
 }
 slot {
   display: block;
@@ -570,11 +580,13 @@ exports[`getComponentCss() should return correct css for open: false, backdrop: 
 }
 ::slotted(.stretch-to-full-modal-width:first-child) {
   margin-block-start: calc(calc(clamp(8px, 0.5vw + 6px, 16px) + clamp(16px, 1.25vw + 12px, 36px)) * -1) !important;
-  border-radius: 0 !important;
+  border-top-left-radius: 0 !important;
+  border-top-right-radius: 0 !important;
 }
 ::slotted(.stretch-to-full-modal-width:last-child) {
   margin-block-end: calc(calc(clamp(8px, 0.5vw + 6px, 16px) + clamp(16px, 1.25vw + 12px, 36px)) * -1) !important;
-  border-radius: 0 !important;
+  border-bottom-left-radius: 0 !important;
+  border-bottom-right-radius: 0 !important;
 }
 slot {
   display: block;
@@ -693,11 +705,13 @@ exports[`getComponentCss() should return correct css for open: false, backdrop: 
 }
 ::slotted(.stretch-to-full-modal-width:first-child) {
   margin-block-start: calc(calc(clamp(8px, 0.5vw + 6px, 16px) + clamp(16px, 1.25vw + 12px, 36px)) * -1) !important;
-  border-radius: 0 !important;
+  border-top-left-radius: 0 !important;
+  border-top-right-radius: 0 !important;
 }
 ::slotted(.stretch-to-full-modal-width:last-child) {
   margin-block-end: calc(calc(clamp(8px, 0.5vw + 6px, 16px) + clamp(16px, 1.25vw + 12px, 36px)) * -1) !important;
-  border-radius: 0 !important;
+  border-bottom-left-radius: 0 !important;
+  border-bottom-right-radius: 0 !important;
 }
 slot {
   display: block;
@@ -802,10 +816,12 @@ exports[`getComponentCss() should return correct css for open: false, backdrop: 
 }
 ::slotted(.stretch-to-full-modal-width:last-child) {
   margin-block-end: calc(calc(clamp(8px, 0.5vw + 6px, 16px) + clamp(16px, 1.25vw + 12px, 36px)) * -1) !important;
-  border-radius: 0 !important;
+  border-bottom-left-radius: 0 !important;
+  border-bottom-right-radius: 0 !important;
 }
 ::slotted(.stretch-to-full-modal-width:first-child) {
-  border-radius: 0 !important;
+  border-top-left-radius: 0 !important;
+  border-top-right-radius: 0 !important;
 }
 slot {
   display: block;
@@ -927,11 +943,13 @@ exports[`getComponentCss() should return correct css for open: false, backdrop: 
 }
 ::slotted(.stretch-to-full-modal-width:first-child) {
   margin-block-start: calc(calc(clamp(8px, 0.5vw + 6px, 16px) + clamp(16px, 1.25vw + 12px, 36px)) * -1) !important;
-  border-radius: 8px 8px 0 0 !important;
+  border-top-left-radius: 8px !important;
+  border-top-right-radius: 8px !important;
 }
 ::slotted(.stretch-to-full-modal-width:last-child) {
   margin-block-end: calc(calc(clamp(8px, 0.5vw + 6px, 16px) + clamp(16px, 1.25vw + 12px, 36px)) * -1) !important;
-  border-radius: 0 0 8px 8px !important;
+  border-bottom-left-radius: 8px !important;
+  border-bottom-right-radius: 8px !important;
 }
 slot {
   display: block;
@@ -1036,11 +1054,13 @@ exports[`getComponentCss() should return correct css for open: false, backdrop: 
 }
 ::slotted(.stretch-to-full-modal-width:first-child) {
   margin-block-start: calc(calc(clamp(8px, 0.5vw + 6px, 16px) + clamp(16px, 1.25vw + 12px, 36px)) * -1) !important;
-  border-radius: 0 !important;
+  border-top-left-radius: 0 !important;
+  border-top-right-radius: 0 !important;
 }
 ::slotted(.stretch-to-full-modal-width:last-child) {
   margin-block-end: calc(calc(clamp(8px, 0.5vw + 6px, 16px) + clamp(16px, 1.25vw + 12px, 36px)) * -1) !important;
-  border-radius: 0 !important;
+  border-bottom-left-radius: 0 !important;
+  border-bottom-right-radius: 0 !important;
 }
 slot {
   display: block;
@@ -1159,11 +1179,13 @@ exports[`getComponentCss() should return correct css for open: false, backdrop: 
 }
 ::slotted(.stretch-to-full-modal-width:first-child) {
   margin-block-start: calc(calc(clamp(8px, 0.5vw + 6px, 16px) + clamp(16px, 1.25vw + 12px, 36px)) * -1) !important;
-  border-radius: 0 !important;
+  border-top-left-radius: 0 !important;
+  border-top-right-radius: 0 !important;
 }
 ::slotted(.stretch-to-full-modal-width:last-child) {
   margin-block-end: calc(calc(clamp(8px, 0.5vw + 6px, 16px) + clamp(16px, 1.25vw + 12px, 36px)) * -1) !important;
-  border-radius: 0 !important;
+  border-bottom-left-radius: 0 !important;
+  border-bottom-right-radius: 0 !important;
 }
 slot {
   display: block;
@@ -1268,11 +1290,13 @@ exports[`getComponentCss() should return correct css for open: true, backdrop: b
 }
 ::slotted(.stretch-to-full-modal-width:first-child) {
   margin-block-start: calc(calc(clamp(8px, 0.5vw + 6px, 16px) + clamp(16px, 1.25vw + 12px, 36px)) * -1) !important;
-  border-radius: 0 !important;
+  border-top-left-radius: 0 !important;
+  border-top-right-radius: 0 !important;
 }
 ::slotted(.stretch-to-full-modal-width:last-child) {
   margin-block-end: calc(calc(clamp(8px, 0.5vw + 6px, 16px) + clamp(16px, 1.25vw + 12px, 36px)) * -1) !important;
-  border-radius: 0 !important;
+  border-bottom-left-radius: 0 !important;
+  border-bottom-right-radius: 0 !important;
 }
 slot {
   display: block;
@@ -1310,46 +1334,56 @@ dialog::backdrop {
 }
 @media(min-width:480px) {
   ::slotted(.stretch-to-full-modal-width:first-child) {
-    border-radius: 8px 8px 0 0 !important;
+    border-top-left-radius: 8px !important;
+    border-top-right-radius: 8px !important;
   }
   ::slotted(.stretch-to-full-modal-width:last-child) {
-    border-radius: 0 0 8px 8px !important;
+    border-bottom-left-radius: 8px !important;
+    border-bottom-right-radius: 8px !important;
   }
 }
 
 @media(min-width:760px) {
   ::slotted(.stretch-to-full-modal-width:first-child) {
-    border-radius: 0 !important;
+    border-top-left-radius: 0 !important;
+    border-top-right-radius: 0 !important;
   }
   ::slotted(.stretch-to-full-modal-width:last-child) {
-    border-radius: 0 !important;
+    border-bottom-left-radius: 0 !important;
+    border-bottom-right-radius: 0 !important;
   }
 }
 
 @media(min-width:1000px) {
   ::slotted(.stretch-to-full-modal-width:first-child) {
-    border-radius: 8px 8px 0 0 !important;
+    border-top-left-radius: 8px !important;
+    border-top-right-radius: 8px !important;
   }
   ::slotted(.stretch-to-full-modal-width:last-child) {
-    border-radius: 0 0 8px 8px !important;
+    border-bottom-left-radius: 8px !important;
+    border-bottom-right-radius: 8px !important;
   }
 }
 
 @media(min-width:1300px) {
   ::slotted(.stretch-to-full-modal-width:first-child) {
-    border-radius: 0 !important;
+    border-top-left-radius: 0 !important;
+    border-top-right-radius: 0 !important;
   }
   ::slotted(.stretch-to-full-modal-width:last-child) {
-    border-radius: 0 !important;
+    border-bottom-left-radius: 0 !important;
+    border-bottom-right-radius: 0 !important;
   }
 }
 
 @media(min-width:1760px) {
   ::slotted(.stretch-to-full-modal-width:first-child) {
-    border-radius: 8px 8px 0 0 !important;
+    border-top-left-radius: 8px !important;
+    border-top-right-radius: 8px !important;
   }
   ::slotted(.stretch-to-full-modal-width:last-child) {
-    border-radius: 0 0 8px 8px !important;
+    border-bottom-left-radius: 8px !important;
+    border-bottom-right-radius: 8px !important;
   }
 }
 
@@ -1476,10 +1510,12 @@ exports[`getComponentCss() should return correct css for open: true, backdrop: b
 }
 ::slotted(.stretch-to-full-modal-width:first-child) {
   margin-block-start: calc(calc(clamp(8px, 0.5vw + 6px, 16px) + clamp(16px, 1.25vw + 12px, 36px)) * -1) !important;
-  border-radius: 8px 8px 0 0 !important;
+  border-top-left-radius: 8px !important;
+  border-top-right-radius: 8px !important;
 }
 ::slotted(.stretch-to-full-modal-width:last-child) {
-  border-radius: 0 0 8px 8px !important;
+  border-bottom-left-radius: 8px !important;
+  border-bottom-right-radius: 8px !important;
 }
 slot {
   display: block;
@@ -1584,10 +1620,12 @@ exports[`getComponentCss() should return correct css for open: true, backdrop: b
 }
 ::slotted(.stretch-to-full-modal-width:last-child) {
   margin-block-end: calc(calc(clamp(8px, 0.5vw + 6px, 16px) + clamp(16px, 1.25vw + 12px, 36px)) * -1) !important;
-  border-radius: 0 0 8px 8px !important;
+  border-bottom-left-radius: 8px !important;
+  border-bottom-right-radius: 8px !important;
 }
 ::slotted(.stretch-to-full-modal-width:first-child) {
-  border-radius: 8px 8px 0 0 !important;
+  border-top-left-radius: 8px !important;
+  border-top-right-radius: 8px !important;
 }
 slot {
   display: block;
@@ -1693,10 +1731,12 @@ exports[`getComponentCss() should return correct css for open: true, backdrop: b
   width: calc(100% + calc(clamp(32px, 2.75vw + 23px, 76px) * 2)) !important;
 }
 ::slotted(.stretch-to-full-modal-width:first-child) {
-  border-radius: 8px 8px 0 0 !important;
+  border-top-left-radius: 8px !important;
+  border-top-right-radius: 8px !important;
 }
 ::slotted(.stretch-to-full-modal-width:last-child) {
-  border-radius: 0 0 8px 8px !important;
+  border-bottom-left-radius: 8px !important;
+  border-bottom-right-radius: 8px !important;
 }
 slot {
   display: block;
@@ -1818,11 +1858,13 @@ exports[`getComponentCss() should return correct css for open: true, backdrop: b
 }
 ::slotted(.stretch-to-full-modal-width:first-child) {
   margin-block-start: calc(calc(clamp(8px, 0.5vw + 6px, 16px) + clamp(16px, 1.25vw + 12px, 36px)) * -1) !important;
-  border-radius: 8px 8px 0 0 !important;
+  border-top-left-radius: 8px !important;
+  border-top-right-radius: 8px !important;
 }
 ::slotted(.stretch-to-full-modal-width:last-child) {
   margin-block-end: calc(calc(clamp(8px, 0.5vw + 6px, 16px) + clamp(16px, 1.25vw + 12px, 36px)) * -1) !important;
-  border-radius: 0 0 8px 8px !important;
+  border-bottom-left-radius: 8px !important;
+  border-bottom-right-radius: 8px !important;
 }
 slot {
   display: block;
@@ -1926,10 +1968,12 @@ exports[`getComponentCss() should return correct css for open: true, backdrop: b
 }
 ::slotted(.stretch-to-full-modal-width:last-child) {
   margin-block-end: calc(calc(clamp(8px, 0.5vw + 6px, 16px) + clamp(16px, 1.25vw + 12px, 36px)) * -1) !important;
-  border-radius: 0 0 8px 8px !important;
+  border-bottom-left-radius: 8px !important;
+  border-bottom-right-radius: 8px !important;
 }
 ::slotted(.stretch-to-full-modal-width:first-child) {
-  border-radius: 8px 8px 0 0 !important;
+  border-top-left-radius: 8px !important;
+  border-top-right-radius: 8px !important;
 }
 slot {
   display: block;
@@ -2050,11 +2094,13 @@ exports[`getComponentCss() should return correct css for open: true, backdrop: b
 }
 ::slotted(.stretch-to-full-modal-width:first-child) {
   margin-block-start: calc(calc(clamp(8px, 0.5vw + 6px, 16px) + clamp(16px, 1.25vw + 12px, 36px)) * -1) !important;
-  border-radius: 0 !important;
+  border-top-left-radius: 0 !important;
+  border-top-right-radius: 0 !important;
 }
 ::slotted(.stretch-to-full-modal-width:last-child) {
   margin-block-end: calc(calc(clamp(8px, 0.5vw + 6px, 16px) + clamp(16px, 1.25vw + 12px, 36px)) * -1) !important;
-  border-radius: 0 !important;
+  border-bottom-left-radius: 0 !important;
+  border-bottom-right-radius: 0 !important;
 }
 slot {
   display: block;
@@ -2144,10 +2190,12 @@ exports[`getComponentCss() should return correct css for open: true, backdrop: b
 }
 ::slotted(.stretch-to-full-modal-width:last-child) {
   margin-block-end: calc(calc(clamp(8px, 0.5vw + 6px, 16px) + clamp(16px, 1.25vw + 12px, 36px)) * -1) !important;
-  border-radius: 0 !important;
+  border-bottom-left-radius: 0 !important;
+  border-bottom-right-radius: 0 !important;
 }
 ::slotted(.stretch-to-full-modal-width:first-child) {
-  border-radius: 0 !important;
+  border-top-left-radius: 0 !important;
+  border-top-right-radius: 0 !important;
 }
 slot {
   display: block;
@@ -2254,11 +2302,13 @@ exports[`getComponentCss() should return correct css for open: true, backdrop: b
 }
 ::slotted(.stretch-to-full-modal-width:first-child) {
   margin-block-start: calc(calc(clamp(8px, 0.5vw + 6px, 16px) + clamp(16px, 1.25vw + 12px, 36px)) * -1) !important;
-  border-radius: 0 !important;
+  border-top-left-radius: 0 !important;
+  border-top-right-radius: 0 !important;
 }
 ::slotted(.stretch-to-full-modal-width:last-child) {
   margin-block-end: calc(calc(clamp(8px, 0.5vw + 6px, 16px) + clamp(16px, 1.25vw + 12px, 36px)) * -1) !important;
-  border-radius: 0 !important;
+  border-bottom-left-radius: 0 !important;
+  border-bottom-right-radius: 0 !important;
 }
 slot {
   display: block;
@@ -2362,10 +2412,12 @@ exports[`getComponentCss() should return correct css for open: true, backdrop: b
 }
 ::slotted(.stretch-to-full-modal-width:last-child) {
   margin-block-end: calc(calc(clamp(8px, 0.5vw + 6px, 16px) + clamp(16px, 1.25vw + 12px, 36px)) * -1) !important;
-  border-radius: 0 !important;
+  border-bottom-left-radius: 0 !important;
+  border-bottom-right-radius: 0 !important;
 }
 ::slotted(.stretch-to-full-modal-width:first-child) {
-  border-radius: 0 !important;
+  border-top-left-radius: 0 !important;
+  border-top-right-radius: 0 !important;
 }
 slot {
   display: block;
