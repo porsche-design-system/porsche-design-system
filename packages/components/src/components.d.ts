@@ -667,6 +667,10 @@ export namespace Components {
          */
         "aria"?: SelectedAriaAttributes<FlyoutAriaAttribute>;
         /**
+          * If true, the flyout will not be closable via backdrop click.
+         */
+        "disableBackdropClick"?: boolean;
+        /**
           * If true, the flyout is open.
          */
         "open": boolean;
@@ -1203,7 +1207,7 @@ export namespace Components {
          */
         "fullscreen"?: BreakpointCustomizable<boolean>;
         /**
-          * The title of the modal
+          * @deprecated since v3.0.0, will be removed with next major release, use `header` slot instead The title of the modal
          */
         "heading"?: string;
         /**
@@ -3419,6 +3423,10 @@ declare namespace LocalJSX {
          */
         "aria"?: SelectedAriaAttributes<FlyoutAriaAttribute>;
         /**
+          * If true, the flyout will not be closable via backdrop click.
+         */
+        "disableBackdropClick"?: boolean;
+        /**
           * Emitted when the component requests to be dismissed.
          */
         "onDismiss"?: (event: PFlyoutCustomEvent<void>) => void;
@@ -3979,7 +3987,7 @@ declare namespace LocalJSX {
          */
         "fullscreen"?: BreakpointCustomizable<boolean>;
         /**
-          * The title of the modal
+          * @deprecated since v3.0.0, will be removed with next major release, use `header` slot instead The title of the modal
          */
         "heading"?: string;
         /**

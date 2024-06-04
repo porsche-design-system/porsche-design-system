@@ -1,28 +1,33 @@
-import { Component, Element, Event, type EventEmitter, h, Host, type JSX, Prop, Watch } from '@stencil/core';
+import { Component, Element, Event, type EventEmitter, forceUpdate, h, type JSX, Prop } from '@stencil/core';
 import type { BreakpointCustomizable, PropTypes, SelectedAriaAttributes, Theme } from '../../types';
 import {
   AllowedTypes,
   applyConstructableStylesheetStyles,
   attachComponentCss,
+  consoleWarn,
   getPrefixedTagNames,
-  getShadowRootHTMLElements,
   hasHeading,
   hasNamedSlot,
   hasPropValueChanged,
+  observeChildren,
+  onCancelDialog,
+  onClickDialog,
   parseAndGetAriaAttributes,
-  setFocusTrap,
+  setDialogVisibility,
   setScrollLock,
   THEMES,
+  unobserveChildren,
   validateProps,
   warnIfAriaAndHeadingPropsAreUndefined,
   warnIfDeprecatedPropIsUsed,
 } from '../../utils';
 import type { ModalAriaAttribute, ModalBackdrop } from './modal-utils';
-import { clickStartedInScrollbarTrack, MODAL_ARIA_ATTRIBUTES } from './modal-utils';
-import { footerShadowClass, getComponentCss } from './modal-styles';
-import { throttle } from 'throttle-debounce';
-import { BACKDROPS } from '../../styles';
+import { MODAL_ARIA_ATTRIBUTES } from './modal-utils';
+import { getComponentCss } from './modal-styles';
+import { BACKDROPS } from '../../styles/dialog-styles';
 import { getSlottedAnchorStyles } from '../../styles';
+import { observeStickyArea } from '../../utils/dialog/observer';
+import { getDeprecatedPropOrSlotWarningMessage } from '../../utils/log/helper';
 
 const propTypes: PropTypes<typeof Modal> = {
   open: AllowedTypes.boolean,
@@ -57,7 +62,9 @@ export class Modal {
   /** If true, the modal will not be closable via backdrop click. */
   @Prop() public disableBackdropClick?: boolean = false;
 
-  /** The title of the modal */
+  /**
+   * @deprecated since v3.0.0, will be removed with next major release, use `header` slot instead
+   * The title of the modal */
   @Prop() public heading?: string;
 
   /** Defines the backdrop, 'blur' (should be used when Modal is opened by user interaction, e.g. after a click on a button) and 'shading' (should be used when Modal gets opened automatically, e.g. Cookie Consent). */
@@ -80,88 +87,76 @@ export class Modal {
   /** Emitted when the component requests to be dismissed. */
   @Event({ bubbles: false }) public dismiss?: EventEmitter<void>;
 
-  private scrollContainerEl: HTMLElement; // Necessary to avoid stacking background bug in safari
-  private focusedElBeforeOpen: HTMLElement;
-  private dismissBtn: HTMLElement;
+  private dialog: HTMLDialogElement;
+  private scroller: HTMLDivElement;
+  private footer: HTMLSlotElement;
   private hasHeader: boolean;
   private hasFooter: boolean;
-  private footer: HTMLElement;
-  private dialog: HTMLElement;
-  // eslint-disable-next-line @typescript-eslint/member-ordering
-  private onScroll = throttle(100, () => {
-    // using an intersection observer would be so much easier but very tricky with the current layout
-    // also transform scale3d has an impact on the intersection observer, causing it to trigger
-    // initially and after the transition which makes the shadow appear later
-    // using an invisible element after the dialog div would work
-    // but layout with position: fixed and flex for vertical/horizontal centering scrollable content
-    // causes tons of problems, also considering fullscreen mode, etc.
-    // see https://stackoverflow.com/questions/33454533/cant-scroll-to-top-of-flex-item-that-is-overflowing-container
-    const { scrollHeight, clientHeight, scrollTop } = this.scrollContainerEl;
-    if (scrollHeight > clientHeight) {
-      const shouldApplyShadow =
-        scrollHeight - clientHeight > scrollTop + parseInt(getComputedStyle(this.dialog).marginBottom, 10);
-      this.footer.classList.toggle(footerShadowClass, shouldApplyShadow);
-    }
-  });
-
   private get hasDismissButton(): boolean {
     return this.disableCloseButton ? false : this.dismissButton;
-  }
-
-  @Watch('open')
-  public openChangeHandler(isOpen: boolean): void {
-    this.updateFocusTrap(isOpen);
-
-    if (isOpen) {
-      this.focusedElBeforeOpen = document.activeElement as HTMLElement;
-    } else {
-      this.focusedElBeforeOpen?.focus();
-    }
-  }
-
-  public connectedCallback(): void {
-    applyConstructableStylesheetStyles(this.host, getSlottedAnchorStyles);
   }
 
   public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
     return hasPropValueChanged(newVal, oldVal);
   }
 
-  public componentDidLoad(): void {
-    // in case modal is rendered with open prop
-    if (this.open) {
-      this.updateFocusTrap(true);
-    }
-
-    getShadowRootHTMLElements(this.host, 'slot').forEach((element) =>
-      element.addEventListener('slotchange', this.onSlotChange)
+  public connectedCallback(): void {
+    applyConstructableStylesheetStyles(this.host, getSlottedAnchorStyles);
+    // Observe dynamic slot changes
+    observeChildren(
+      this.host,
+      () => {
+        forceUpdate(this.host);
+      },
+      undefined,
+      { subtree: false, childList: true, attributes: false }
     );
   }
 
+  public componentWillRender(): void {
+    setScrollLock(this.open);
+  }
+
   public componentDidRender(): void {
-    // TODO: should this really be executed on every rerender, e.g. prop change?
-    if (this.open) {
-      // reset scroll top to zero in case content is longer than viewport height, - some timeout is needed although it shouldn't
-      for (let i = 0; i < 4; i++) {
-        setTimeout(() => (this.scrollContainerEl.scrollTop = 0), i * 5);
-      }
-      if (this.hasFooter) {
-        this.onScroll();
-      }
-      this.dialog.focus(); // needs to happen after render
+    setDialogVisibility(this.open, this.dialog, this.scroller);
+  }
+
+  public componentDidLoad(): void {
+    if (this.hasFooter) {
+      // Has to be called here instead of render to assure that the slot references are available
+      observeStickyArea(this.scroller, this.footer);
+    }
+  }
+
+  public componentDidUpdate(): void {
+    if (this.hasFooter) {
+      // Has to be called here instead of render to assure that the slot references are available
+      // When slots change dynamically the intersection observer for the scroll shadows has to be added
+      observeStickyArea(this.scroller, this.footer);
     }
   }
 
   public disconnectedCallback(): void {
-    this.updateFocusTrap(false);
+    setScrollLock(false);
+    unobserveChildren(this.host);
   }
 
   public render(): JSX.Element {
     validateProps(this, propTypes);
     warnIfDeprecatedPropIsUsed<typeof Modal>(this, 'disableCloseButton', 'Please use dismissButton prop instead.');
+    warnIfDeprecatedPropIsUsed<typeof Modal>(this, 'heading', 'Please use the slot="header" instead.');
 
-    this.hasHeader = hasHeading(this.host, this.heading);
+    if (hasNamedSlot(this.host, 'heading')) {
+      consoleWarn(
+        getDeprecatedPropOrSlotWarningMessage(this.host, 'slot="heading"'),
+        'Please use the slot="header" instead.'
+      );
+    }
+
+    this.hasHeader = hasHeading(this.host, this.heading) || hasNamedSlot(this.host, 'header');
     this.hasFooter = hasNamedSlot(this.host, 'footer');
+
+    // TODO: why do we validate only when opened?
     if (this.open) {
       warnIfAriaAndHeadingPropsAreUndefined(this.host, this.hasHeader, this.aria);
     }
@@ -181,91 +176,52 @@ export class Modal {
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
     return (
-      <Host>
-        <div
-          class="scroll-container"
-          onScroll={this.hasFooter && this.onScroll}
-          onMouseDown={!this.disableBackdropClick && this.onMouseDown}
-          ref={(el) => (this.scrollContainerEl = el)}
-        >
-          <div
-            class="root"
-            role="dialog"
-            {...parseAndGetAriaAttributes({
-              'aria-modal': true,
-              'aria-label': this.heading,
-              'aria-hidden': !this.open,
-              ...parseAndGetAriaAttributes(this.aria),
-            })}
-            tabIndex={-1}
-            inert={this.open ? null : true} // prevents focusable elements within nested open accordion
-            ref={(el) => (this.dialog = el)}
-          >
+      <dialog
+        inert={this.open ? null : true} // prevents focusable elements during fade-out transition + prevents focusable elements within nested open accordion
+        tabIndex={-1} // dialog always has a dismiss button to be focused
+        ref={(el) => (this.dialog = el)}
+        onCancel={(e) => onCancelDialog(e, this.dismissDialog, !this.hasDismissButton)}
+        // Previously done with onMouseDown to change the click behavior (not closing when pressing mousedown on modal and mouseup on backdrop) but changed back to native behavior
+        onClick={(e) => onClickDialog(e, this.dismissDialog, this.disableBackdropClick)}
+        {...parseAndGetAriaAttributes({
+          'aria-modal': true,
+          'aria-label': this.heading,
+          'aria-hidden': !this.open,
+          ...parseAndGetAriaAttributes(this.aria),
+        })}
+      >
+        <div class="scroller" ref={(el) => (this.scroller = el)}>
+          <div class="modal">
             {this.hasDismissButton && (
-              <div class="controls">
-                <PrefixedTagNames.pButtonPure
-                  class="dismiss"
-                  type="button"
-                  ref={(el) => (this.dismissBtn = el)}
-                  hideLabel
-                  icon="close"
-                  onClick={this.dismissModal}
-                  theme={this.theme}
-                >
-                  Dismiss modal
-                </PrefixedTagNames.pButtonPure>
-              </div>
+              <PrefixedTagNames.pButtonPure
+                class="dismiss"
+                type="button"
+                hideLabel
+                icon="close"
+                onClick={this.dismissDialog}
+                theme={this.theme}
+              >
+                Dismiss modal
+              </PrefixedTagNames.pButtonPure>
             )}
-            {this.hasHeader && (
-              <div key="heading" class="header">
-                {this.heading ? <h2>{this.heading}</h2> : <slot name="heading" />}
-              </div>
-            )}
-            <div class="content">
-              <slot />
-            </div>
-            {this.hasFooter && (
-              <div key="footer" class="footer" ref={(el) => (this.footer = el)}>
-                <slot name="footer" />
-              </div>
-            )}
+            {this.hasHeader &&
+              (this.heading ? (
+                <h2>{this.heading}</h2>
+              ) : hasNamedSlot(this.host, 'heading') ? (
+                <slot name="heading" />
+              ) : (
+                <slot name="header" />
+              ))}
+            <slot />
+            {this.hasFooter && <slot name="footer" ref={(el: HTMLSlotElement) => (this.footer = el)} />}
           </div>
         </div>
-      </Host>
+      </dialog>
     );
   }
 
-  private updateFocusTrap(isOpen: boolean): void {
-    setFocusTrap(this.host, isOpen, this.dialog, !this.disableCloseButton && this.dismissBtn, this.dismissModal);
-    setScrollLock(isOpen);
-  }
-
-  private onSlotChange = (): void => {
-    if (this.open) {
-      // 1 tick delay is needed so that web components can be bootstrapped
-      setTimeout(() => {
-        this.updateFocusTrap(true);
-        this.dialog.focus(); // set initial focus
-      });
-    }
-    if (this.hasFooter) {
-      this.onScroll();
-    }
-  };
-
-  private onMouseDown = (e: MouseEvent): void => {
-    if (
-      (e.composedPath() as HTMLElement[])[0] === this.scrollContainerEl &&
-      !clickStartedInScrollbarTrack(this.scrollContainerEl, e)
-    ) {
-      this.dismissModal();
-    }
-  };
-
-  private dismissModal = (): void => {
-    if (this.hasDismissButton) {
-      this.dismiss.emit();
-      this.close.emit();
-    }
+  private dismissDialog = (): void => {
+    this.dismiss.emit();
+    this.close.emit();
   };
 }

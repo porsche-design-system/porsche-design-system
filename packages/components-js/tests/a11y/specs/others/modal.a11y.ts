@@ -3,7 +3,7 @@ import { getProperty, setContentWithDesignSystem, setProperty, waitForStencilLif
 import type { ModalAriaAttribute, SelectedAriaAttributes } from '@porsche-design-system/components/dist/types/bundle';
 
 const getHost = (page: Page) => page.$('p-modal');
-const getModal = (page: Page) => page.$('p-modal .root');
+const getModalDialog = (page: Page) => page.$('p-modal dialog');
 
 const initBasicModal = (
   page: Page,
@@ -52,14 +52,14 @@ const initBasicModal = (
 
 test('should expose correct initial accessibility tree', async ({ page }) => {
   await initBasicModal(page);
-  const modal = await getModal(page);
+  const modal = await getModalDialog(page);
 
   // await expectA11yToMatchSnapshot(page, modal, { interestingOnly: false });
 });
 
 test('should not expose accessibility tree if modal is hidden', async ({ page }) => {
   await initBasicModal(page, { isOpen: false });
-  const modal = await getModal(page);
+  const modal = await getModalDialog(page);
 
   // await expectA11yToMatchSnapshot(page, modal);
 });
@@ -73,7 +73,7 @@ const testCases: [string, SelectedAriaAttributes<ModalAriaAttribute>, string][] 
 for (const [heading, aria, expected] of testCases) {
   test(`should with props heading: ${heading} and aria: ${aria} set aria-label: ${expected}`, async ({ page }) => {
     await initBasicModal(page, { isOpen: false, heading, aria });
-    const modal = await getModal(page);
+    const modal = await getModalDialog(page);
 
     expect(await getProperty(modal, 'ariaLabel')).toBe(expected);
   });
@@ -82,7 +82,7 @@ for (const [heading, aria, expected] of testCases) {
 test('should overwrite aria-label when adding aria prop', async ({ page }) => {
   await initBasicModal(page, { isOpen: false });
   const host = await getHost(page);
-  const modal = await getModal(page);
+  const modal = await getModalDialog(page);
   await setProperty(host, 'aria', "{'aria-label': 'Other Heading'}");
   await waitForStencilLifecycle(page);
 
@@ -92,7 +92,7 @@ test('should overwrite aria-label when adding aria prop', async ({ page }) => {
 test('should overwrite aria-label with heading when setting aria prop to undefined', async ({ page }) => {
   await initBasicModal(page, { isOpen: false, heading: 'Some Heading', aria: "{'aria-label': 'Other Heading'}" });
   const host = await getHost(page);
-  const modal = await getModal(page);
+  const modal = await getModalDialog(page);
   await setProperty(host, 'aria', undefined);
   await waitForStencilLifecycle(page);
 
