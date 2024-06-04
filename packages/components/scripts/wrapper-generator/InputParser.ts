@@ -27,67 +27,6 @@ export class InputParser {
     return this._instance || (this._instance = new this());
   }
 
-  private parseInput(): void {
-    // read bundle.d.ts as the base of everything
-    const bundleDtsFileName = 'bundle.d.ts';
-    const bundleDtsFile = path.resolve(DIST_TYPES_DIR, bundleDtsFileName);
-    const bundleDtsContent = fs.readFileSync(bundleDtsFile, 'utf8');
-
-    this.sharedTypes = bundleDtsContent
-      .substr(0, bundleDtsContent.indexOf('export namespace Components'))
-      // remove unused HTMLStencilElement interface
-      .replace(/.*interface HTMLStencilElement(\s|\S)*?}\n/, '')
-      // remove unused EventEmitter interface
-      .replace(/.*interface EventEmitter(\s|\S)*?}\n/, '')
-      // remove global declaration of `const ROLLUP_REPLACE_IS_STAGING: string;`, `const ROLLUP_REPLACE_VERSION: string;` and `const ROLLUP_REPLACE_CDN_BASE_URL: string;`
-      .replace(
-        /declare global {\n\tconst ROLLUP_REPLACE_IS_STAGING: string;\n\tconst ROLLUP_REPLACE_VERSION: string;\n\tconst ROLLUP_REPLACE_CDN_BASE_URL: string;\n\t\/\/ eslint-disable-next-line @typescript-eslint\/consistent-type-definitions\n\tinterface Document {\n\t\tporscheDesignSystem: PorscheDesignSystem;\n\t}\n}\n/,
-        ''
-      )
-      // remove global declaration of `window.PORSCHE_DESIGN_SYSTEM_CDN` and `window.PORSCHE_DESIGN_SYSTEM_CDN_URL`
-      .replace(/declare global {\n\tinterface Window {[\S\s]+?}\n}/g, '')
-      // remove global declaration of `CSSStyleSheet` and `ShadowRoot`
-      .replace(/declare global {\n\tinterface CSSStyleSheet {\n.*\n\t}\n\tinterface ShadowRoot {\n.*\n\t}\n}/, '')
-      // fix consumer typing by removing string which is only necessary for stencil
-      .replace(/(export declare type BreakpointCustomizable<T> = T \| BreakpointValues<T>) \| string;/, '$1;')
-      // fix consumer typing for accessibility props with string type
-      .replace(/(export declare type SelectedAriaAttributes<T extends keyof AriaAttributes> = .*?) \| string;/, '$1;')
-      // fix consumer typing for CarouselInternationalization prop with string type
-      .replace(/(export declare type CarouselInternationalization = .*?) \| string;/, '$1;')
-      // fix consumer typing for PaginationInternationalization prop with string type
-      .replace(/(export declare type PaginationInternationalization = .*?) \| string;/, '$1;')
-      // fix consumer typing for ScrollToPosition prop with string type
-      .replace(/(export declare type ScrollToPosition = .*?) \| string;/, '$1;');
-
-    const [, rawLocalJSX] = /declare namespace LocalJSX {((?:\n|.)*}\s})/.exec(bundleDtsContent) || [];
-    this.rawLocalJSX = rawLocalJSX;
-
-    const [, rawComponents] = /export namespace Components {((?:\n|.)*)}\sdeclare global/.exec(bundleDtsContent) || [];
-    this.rawComponents = rawComponents;
-
-    let [, rawIntrinsicElements] = /interface IntrinsicElements ({(?:\n|.)*?})/.exec(rawLocalJSX) || [];
-
-    rawIntrinsicElements = rawIntrinsicElements.replace(/ (\w+);/g, " '$1',");
-    this.intrinsicElements = eval(`(${rawIntrinsicElements})`);
-
-    console.log(`Found ${Object.keys(this.intrinsicElements).length} intrinsicElements in ${bundleDtsFileName}`);
-  }
-
-  private getComponentFilePath(component: TagName): string {
-    const fileName = `${component.replace('p-', '')}.tsx`;
-    return globbySync(`${SRC_DIR}/**/${fileName}`)[0];
-  }
-
-  private getComponentSourceCode(component: TagName): string {
-    const filePath = this.getComponentFilePath(component);
-    return fs.readFileSync(filePath, 'utf8');
-  }
-
-  private getUtilsFileContentOfComponent(component: TagName, importPath: string): string {
-    const utilsFilePath = path.resolve(this.getComponentFilePath(component), '..', importPath + '.ts');
-    return fs.readFileSync(utilsFilePath, 'utf8');
-  }
-
   public getSharedTypes(): string {
     return this.sharedTypes;
   }
@@ -183,5 +122,66 @@ export class InputParser {
     }
 
     return defaultValue?.replace(/\s+/g, ' '); // multiline to single line
+  }
+
+  private parseInput(): void {
+    // read bundle.d.ts as the base of everything
+    const bundleDtsFileName = 'bundle.d.ts';
+    const bundleDtsFile = path.resolve(DIST_TYPES_DIR, bundleDtsFileName);
+    const bundleDtsContent = fs.readFileSync(bundleDtsFile, 'utf8');
+
+    this.sharedTypes = bundleDtsContent
+      .substr(0, bundleDtsContent.indexOf('export namespace Components'))
+      // remove unused HTMLStencilElement interface
+      .replace(/.*interface HTMLStencilElement(\s|\S)*?}\n/, '')
+      // remove unused EventEmitter interface
+      .replace(/.*interface EventEmitter(\s|\S)*?}\n/, '')
+      // remove global declaration of `const ROLLUP_REPLACE_IS_STAGING: string;`, `const ROLLUP_REPLACE_VERSION: string;` and `const ROLLUP_REPLACE_CDN_BASE_URL: string;`
+      .replace(
+        /declare global {\n\tconst ROLLUP_REPLACE_IS_STAGING: string;\n\tconst ROLLUP_REPLACE_VERSION: string;\n\tconst ROLLUP_REPLACE_CDN_BASE_URL: string;\n\t\/\/ eslint-disable-next-line @typescript-eslint\/consistent-type-definitions\n\tinterface Document {\n\t\tporscheDesignSystem: PorscheDesignSystem;\n\t}\n}\n/,
+        ''
+      )
+      // remove global declaration of `window.PORSCHE_DESIGN_SYSTEM_CDN` and `window.PORSCHE_DESIGN_SYSTEM_CDN_URL`
+      .replace(/declare global {\n\tinterface Window {[\S\s]+?}\n}/g, '')
+      // remove global declaration of `CSSStyleSheet` and `ShadowRoot`
+      .replace(/declare global {\n\tinterface CSSStyleSheet {\n.*\n\t}\n\tinterface ShadowRoot {\n.*\n\t}\n}/, '')
+      // fix consumer typing by removing string which is only necessary for stencil
+      .replace(/(export type BreakpointCustomizable<T> = T \| BreakpointValues<T>) \| string;/, '$1;')
+      // fix consumer typing for accessibility props with string type
+      .replace(/(export type SelectedAriaAttributes<T extends keyof AriaAttributes> = .*?) \| string;/, '$1;')
+      // fix consumer typing for CarouselInternationalization prop with string type
+      .replace(/(export type CarouselInternationalization = .*?) \| string;/, '$1;')
+      // fix consumer typing for PaginationInternationalization prop with string type
+      .replace(/(export type PaginationInternationalization = .*?) \| string;/, '$1;')
+      // fix consumer typing for ScrollToPosition prop with string type
+      .replace(/(export type ScrollToPosition = .*?) \| string;/, '$1;');
+
+    const [, rawLocalJSX] = /declare namespace LocalJSX {((?:\n|.)*}\s})/.exec(bundleDtsContent) || [];
+    this.rawLocalJSX = rawLocalJSX;
+
+    const [, rawComponents] = /export namespace Components {((?:\n|.)*)}\sdeclare global/.exec(bundleDtsContent) || [];
+    this.rawComponents = rawComponents;
+
+    let [, rawIntrinsicElements] = /interface IntrinsicElements ({(?:\n|.)*?})/.exec(rawLocalJSX) || [];
+
+    rawIntrinsicElements = rawIntrinsicElements.replace(/ (\w+);/g, " '$1',");
+    this.intrinsicElements = eval(`(${rawIntrinsicElements})`);
+
+    console.log(`Found ${Object.keys(this.intrinsicElements).length} intrinsicElements in ${bundleDtsFileName}`);
+  }
+
+  private getComponentFilePath(component: TagName): string {
+    const fileName = `${component.replace('p-', '')}.tsx`;
+    return globbySync(`${SRC_DIR}/**/${fileName}`)[0];
+  }
+
+  private getComponentSourceCode(component: TagName): string {
+    const filePath = this.getComponentFilePath(component);
+    return fs.readFileSync(filePath, 'utf8');
+  }
+
+  private getUtilsFileContentOfComponent(component: TagName, importPath: string): string {
+    const utilsFilePath = path.resolve(this.getComponentFilePath(component), '..', importPath + '.ts');
+    return fs.readFileSync(utilsFilePath, 'utf8');
   }
 }
