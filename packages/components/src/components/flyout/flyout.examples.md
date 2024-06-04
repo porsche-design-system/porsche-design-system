@@ -61,6 +61,13 @@ sticky.
 
 <Playground :markup="exampleScrollableMarkup" :config="config"></Playground>
 
+## Example: Sticky content with Custom CSS Property (Experimental)
+
+In order to display some sticky element within the flyout content you can use the experimental `--p-flyout-sticky-top`
+CSS custom property to account for the height of the header.
+
+<Playground :markup="exampleCssVariableMarkup" :config="config"></Playground>
+
 ## Example: Flyout with Porsche Grid
 
 The `p-flyout` component makes decent changes to the Porsche Grid to give support if used as slotted content. The
@@ -163,6 +170,29 @@ export default class Code extends Vue {
     <p-button type="button" variant="secondary">Cancel</p-button>
   </p-button-group>
   <p-text slot="sub-footer">Some additional Sub-Footer</p-text>
+</p-flyout>`;
+
+  exampleCssVariableMarkup = 
+  `<p-button type="button" aria="{ 'aria-haspopup': 'dialog' }">Open Flyout</p-button>
+<p-flyout>
+  <p-heading slot="header" size="large" tag="h2">Some Heading</p-heading>
+  <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 16px; align-items: flex-start">
+    <div
+      style="
+        position: sticky;
+        top: calc(var(--p-flyout-sticky-top, 0) + 16px);
+        padding: 16px;
+        background: rgba(255, 0, 0, 0.1);
+      "
+    >
+      Some sticky element within content relying on --p-flyout-sticky-top
+    </div>
+    <div>
+      <p-text>Some Content Begin</p-text>
+      <div style="width: 10px; height: 120vh; background: deeppink;"></div>
+      <p-text>Some Content End</p-text>
+    </div>  
+  </div>
 </p-flyout>`;
 
   cssVariableWidth = '80vw';
