@@ -72,10 +72,12 @@ export const getComponentCss = (
           },
           buildResponsiveStyles(fullscreen, (fullscreenValue: boolean) => ({
             [`&(.${cssClassNameStretchToFullModalWidth}:first-child)`]: {
-              borderRadius: fullscreenValue ? 0 : `${borderRadiusMedium} ${borderRadiusMedium} 0 0`,
+              borderTopLeftRadius: fullscreenValue ? 0 : borderRadiusMedium,
+              borderTopRightRadius: fullscreenValue ? 0 : borderRadiusMedium,
             },
             [`&(.${cssClassNameStretchToFullModalWidth}:last-child)`]: {
-              borderRadius: fullscreenValue ? 0 : `0 0 ${borderRadiusMedium} ${borderRadiusMedium}`,
+              borderBottomLeftRadius: fullscreenValue ? 0 : borderRadiusMedium,
+              borderBottomRightRadius: fullscreenValue ? 0 : borderRadiusMedium,
             },
           }))
         )
