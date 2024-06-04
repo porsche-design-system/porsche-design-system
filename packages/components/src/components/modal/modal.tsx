@@ -21,8 +21,7 @@ import type { ModalAriaAttribute, ModalBackdrop } from './modal-utils';
 import { clickStartedInScrollbarTrack, MODAL_ARIA_ATTRIBUTES } from './modal-utils';
 import { footerShadowClass, getComponentCss } from './modal-styles';
 import { throttle } from 'throttle-debounce';
-import { BACKDROPS } from '../../styles';
-import { getSlottedAnchorStyles } from '../../styles';
+import { BACKDROPS, getSlottedAnchorStyles } from '../../styles';
 
 const propTypes: PropTypes<typeof Modal> = {
   open: AllowedTypes.boolean,
@@ -198,6 +197,9 @@ export class Modal {
               ...parseAndGetAriaAttributes(this.aria),
             })}
             tabIndex={-1}
+            // "inert" will be known from React 19 onwards, see https://github.com/facebook/react/pull/24730
+            // eslint-disable-next-line
+            /* @ts-ignore */
             inert={this.open ? null : true} // prevents focusable elements within nested open accordion
             ref={(el) => (this.dialog = el)}
           >

@@ -143,6 +143,9 @@ export class Flyout {
 
     return (
       <dialog
+        // "inert" will be known from React 19 onwards, see https://github.com/facebook/react/pull/24730
+        // eslint-disable-next-line
+        /* @ts-ignore */
         inert={this.open ? null : true} // prevents focusable elements during fade-out transition
         tabIndex={-1} // dialog always has a dismiss button to be focused
         ref={(ref) => (this.dialog = ref)}
