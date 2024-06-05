@@ -520,6 +520,7 @@ exports[`should call validateProps() with correct parameters via render for p-se
 
 exports[`should call validateProps() with correct parameters via render for p-segmented-control-item: propTypes with ValidatorFunctions 1`] = `
 {
+  "aria": "aria",
   "disabled": "boolean",
   "icon": "string",
   "iconSource": "string",
