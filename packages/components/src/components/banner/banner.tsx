@@ -36,7 +36,7 @@ const propTypes: Omit<PropTypes<typeof Banner>, 'width'> = {
   shadow: true,
 })
 export class Banner {
-  @Element() public host!: HTMLPPopoverElement;
+  @Element() public host!: HTMLElement;
 
   /** If true, the banner is open. */
   @Prop() public open: boolean = false; // eslint-disable-line @typescript-eslint/no-inferrable-types
