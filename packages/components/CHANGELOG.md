@@ -39,6 +39,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 #### Fixed
 
+- Types: Fixed incorrectly allowed type `string` in types `BreakpointCustomizable`, `SelectedAriaAttributes`,
+  `CarouselInternationalization`, `PaginationInternationalization` and `ScrollToPosition`
 - `Modal`, `Flyout`: Dynamically react to adding/removing named slots
   ([#3191](https://github.com/porsche-design-system/porsche-design-system/pull/3191))
 - `Modal`: Uses native `<dialog />` element to resolve focus issues, focus trap
