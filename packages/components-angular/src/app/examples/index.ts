@@ -5,15 +5,13 @@ import { CarouselExampleDynamicSlidesComponent } from './carousel-example-dynami
 import { CarouselExampleEventsComponent } from './carousel-example-events.component';
 import { CarouselExampleJumpToSlideComponent } from './carousel-example-jump-to-slide.component';
 import { FlyoutExampleComponent } from './flyout-example.component';
-import { FlyoutExampleSlottedComponent } from './flyout-example-slotted.component';
-import { FlyoutExampleSlottedSecondaryComponent } from './flyout-example-slotted-secondary.component';
 import { FlyoutNavigationExampleComponent } from './flyout-navigation-example.component';
 import { FlyoutNavigationExampleActiveIdentifierComponent } from './flyout-navigation-example-active-identifier.component';
 import { FlyoutNavigationExampleCustomContentComponent } from './flyout-navigation-example-custom-content.component';
 import { InlineNotificationExampleActionButtonComponent } from './inline-notification-example-action-button.component';
 import { InlineNotificationExampleEventsComponent } from './inline-notification-example-events.component';
 import { LinkTileProductExampleComponent } from './link-tile-product-example.component';
-import { ModalExampleAccessibilityComponent } from './modal-example-accessibility.component';
+import { ModalExampleComponent } from './modal-example.component';
 import { MultiSelectExampleComponent } from './multi-select-example.component';
 import { MultiSelectExampleControlledComponent } from './multi-select-example-controlled.component';
 import { MultiSelectExampleDynamicComponent } from './multi-select-example-dynamic.component';
@@ -45,15 +43,13 @@ export const examples = [
   CarouselExampleEventsComponent,
   CarouselExampleJumpToSlideComponent,
   FlyoutExampleComponent,
-  FlyoutExampleSlottedComponent,
-  FlyoutExampleSlottedSecondaryComponent,
   FlyoutNavigationExampleComponent,
   FlyoutNavigationExampleActiveIdentifierComponent,
   FlyoutNavigationExampleCustomContentComponent,
   InlineNotificationExampleActionButtonComponent,
   InlineNotificationExampleEventsComponent,
   LinkTileProductExampleComponent,
-  ModalExampleAccessibilityComponent,
+  ModalExampleComponent,
   MultiSelectExampleComponent,
   MultiSelectExampleControlledComponent,
   MultiSelectExampleDynamicComponent,
@@ -85,15 +81,13 @@ export * from './carousel-example-dynamic-slides.component';
 export * from './carousel-example-events.component';
 export * from './carousel-example-jump-to-slide.component';
 export * from './flyout-example.component';
-export * from './flyout-example-slotted.component';
-export * from './flyout-example-slotted-secondary.component';
 export * from './flyout-navigation-example.component';
 export * from './flyout-navigation-example-active-identifier.component';
 export * from './flyout-navigation-example-custom-content.component';
 export * from './inline-notification-example-action-button.component';
 export * from './inline-notification-example-events.component';
 export * from './link-tile-product-example.component';
-export * from './modal-example-accessibility.component';
+export * from './modal-example.component';
 export * from './multi-select-example.component';
 export * from './multi-select-example-controlled.component';
 export * from './multi-select-example-dynamic.component';

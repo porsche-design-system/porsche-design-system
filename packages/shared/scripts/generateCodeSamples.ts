@@ -110,18 +110,6 @@ const generateCodeSamples = (): void => {
           componentsReactPath + '/FlyoutExample.tsx',
           componentsVuePath + '/FlyoutExample.vue',
         ],
-        [
-          componentsJsPath + '/flyout-example-slotted.html',
-          componentsAngularPath + '/flyout-example-slotted.component.ts',
-          componentsReactPath + '/FlyoutExampleSlotted.tsx',
-          componentsVuePath + '/FlyoutExampleSlotted.vue',
-        ],
-        [
-          componentsJsPath + '/flyout-example-slotted-secondary.html',
-          componentsAngularPath + '/flyout-example-slotted-secondary.component.ts',
-          componentsReactPath + '/FlyoutExampleSlottedSecondary.tsx',
-          componentsVuePath + '/FlyoutExampleSlottedSecondary.vue',
-        ],
       ],
     },
     {
@@ -179,10 +167,10 @@ const generateCodeSamples = (): void => {
       component: 'p-modal',
       samples: [
         [
-          componentsJsPath + '/modal-example-accessibility.html',
-          componentsAngularPath + '/modal-example-accessibility.component.ts',
-          componentsReactPath + '/ModalExampleAccessibility.tsx',
-          componentsVuePath + '/ModalExampleAccessibility.vue',
+          componentsJsPath + '/modal-example.html',
+          componentsAngularPath + '/modal-example.component.ts',
+          componentsReactPath + '/ModalExample.tsx',
+          componentsVuePath + '/ModalExample.vue',
         ],
       ],
     },

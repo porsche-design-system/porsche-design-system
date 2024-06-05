@@ -24,14 +24,19 @@ const flyoutMinWidth = 320;
 
 const getHost = (page: Page) => page.$('p-flyout');
 const getFlyout = (page: Page) => page.$('p-flyout dialog');
-const getHeader = (page: Page) => page.$('p-flyout .header');
-const getFooter = (page: Page) => page.$('p-flyout .footer');
+const getFlyoutScroller = (page: Page) => page.$('p-flyout dialog .scroller');
+const getHeader = (page: Page) => page.$('p-flyout slot[name="header"]');
+const getFooter = (page: Page) => page.$('p-flyout slot[name="footer"]');
 const getFlyoutDismissButton = (page: Page) => page.$('p-flyout p-button-pure.dismiss');
 const getFlyoutDismissButtonReal = (page: Page) => page.$('p-flyout p-button-pure.dismiss button');
 const getBodyStyle = async (page: Page) => getAttribute(await page.$('body'), 'style');
 const getFlyoutVisibility = async (page: Page) => await getElementStyle(await getFlyout(page), 'visibility');
 const waitForFlyoutTransition = async () => sleep(CSS_TRANSITION_DURATION);
 const waitForSlotChange = () => sleep();
+const getStickyTopCssVarValue = async (page: Page) =>
+  await (
+    await getHost(page)
+  ).evaluate((element) => getComputedStyle(element).getPropertyValue('--p-flyout-sticky-top'));
 
 const initBasicFlyout = (
   page: Page,
@@ -108,10 +113,35 @@ const scrollFlyoutTo = async (page: Page, selector: string) =>
     await page.$(selector)
   );
 
+const addHeaderSlot = async (host: ElementHandle) => {
+  await host.evaluate((el) => {
+    const header = document.createElement('div');
+    header.slot = 'header';
+    header.innerHTML = `<h2>Some slotted header with long text in order to show different header heights</h2>`;
+    el.appendChild(header);
+  });
+};
+
+const removeHeaderSlot = async (host: ElementHandle) => {
+  await host.evaluate((el: HTMLElement) => {
+    el.querySelector('[slot="header"]').remove();
+  });
+};
+
 const expectDismissButtonToBeFocused = async (page: Page, failMessage?: string) => {
   const host = await getHost(page);
   expect(await getActiveElementTagNameInShadowRoot(host), failMessage).toBe('P-BUTTON-PURE');
   expect(await getActiveElementClassNameInShadowRoot(host), failMessage).toContain('dismiss');
+};
+
+const expectHeaderShadowToAppear = async (page: Page) => {
+  await page.waitForFunction(
+    (el) => getComputedStyle(el).boxShadow === 'rgba(204, 204, 204, 0.35) 0px 5px 10px 0px',
+    await getHeader(page)
+  );
+  expect(await getElementStyle(await getHeader(page), 'boxShadow'), 'after scroll outside threshold').toBe(
+    'rgba(204, 204, 204, 0.35) 0px 5px 10px 0px'
+  );
 };
 
 test('should render and be visible when open', async ({ page }) => {
@@ -138,7 +168,7 @@ test('should be visible after opened', async ({ page }) => {
 test('should have correct transform when opened and dismissed', async ({ page }) => {
   await initBasicFlyout(page, { open: false });
   const getFlyoutTransform = async (page: Page) =>
-    getElementStyle(await getFlyout(page), 'transform', { waitForTransition: true });
+    getElementStyle(await getFlyoutScroller(page), 'transform', { waitForTransition: true });
 
   const initialFlyoutTransform = await getFlyoutTransform(page);
   expect(initialFlyoutTransform).toBe(`matrix(1, 0, 0, 1, ${flyoutMinWidth}, 0)`);
@@ -170,13 +200,7 @@ test.describe('scroll shadows', () => {
 
     await scrollFlyoutTo(page, '.scroll-here');
 
-    await page.waitForFunction(
-      (el) => getComputedStyle(el).boxShadow === 'rgba(204, 204, 204, 0.35) 0px 5px 10px 0px',
-      await getHeader(page)
-    );
-    expect(await getElementStyle(header, 'boxShadow'), 'after scroll outside threshold').toBe(
-      'rgba(204, 204, 204, 0.35) 0px 5px 10px 0px'
-    );
+    await expectHeaderShadowToAppear(page);
   });
 
   test('should not have footer shadow when content is not scrollable', async ({ page }) => {
@@ -216,29 +240,6 @@ test.describe('scroll shadows', () => {
 });
 
 test.describe('can be dismissed', () => {
-  test('should not be closed if content is scrollable and mousedown is inside area of scroll track', async ({
-    page,
-  }) => {
-    await initBasicFlyout(
-      page,
-      { open: true },
-      {
-        content: '<div style="height: 150vh;"></div>',
-      }
-    );
-
-    await addEventListener(host, 'dismiss');
-    await page.setViewportSize({ width: 800, height: 600 });
-    await page.mouse.move(784, 300);
-    await page.mouse.down();
-
-    expect((await getEventSummary(host, 'dismiss')).counter, 'after mouse down').toBe(0);
-
-    await page.mouse.up();
-
-    expect((await getEventSummary(host, 'dismiss')).counter, 'after mouse up').toBe(0);
-  });
-
   let host: ElementHandle;
 
   test.beforeEach(async ({ page }) => {
@@ -268,18 +269,14 @@ test.describe('can be dismissed', () => {
   });
 
   test('should be closable via backdrop', async ({ page }) => {
-    await page.mouse.move(5, 5);
-    await page.mouse.down();
-
-    expect((await getEventSummary(host, 'dismiss')).counter, 'after mouse down').toBe(0);
-
-    await page.mouse.up();
+    await page.mouse.click(5, 5);
 
     expect((await getEventSummary(host, 'dismiss')).counter, 'after mouse up').toBe(1);
   });
 
   test('should not be dismissed if mousedown inside flyout', async ({ page }) => {
-    await page.mouse.move(1800, 400);
+    const viewportSize = page.viewportSize();
+    await page.mouse.move(viewportSize.width - 1, viewportSize.height / 2);
     await page.mouse.down();
 
     expect((await getEventSummary(host, 'dismiss')).counter, 'after mouse down').toBe(0);
@@ -289,17 +286,16 @@ test.describe('can be dismissed', () => {
     expect((await getEventSummary(host, 'dismiss')).counter, 'after mouse up').toBe(0);
   });
 
-  // native dialog behaviour, disabled for now
-  test.skip('should not be dismissed if mousedown inside flyout and mouseup inside backdrop', async ({ page }) => {
-    await page.mouse.move(1800, 400);
-    await page.mouse.down();
+  skipInBrowsers(['webkit'], () => {
+    test('should not be closable via backdrop when disableBackdropClick is set', async ({ page }) => {
+      const host = await getHost(page);
+      await setProperty(host, 'disableBackdropClick', true);
 
-    expect((await getEventSummary(host, 'dismiss')).counter, 'after mouse down').toBe(0);
+      await page.mouse.move(5, 5);
+      await page.mouse.down();
 
-    await page.mouse.move(5, 5);
-    await page.mouse.up();
-
-    expect((await getEventSummary(host, 'dismiss')).counter, 'after mouse up').toBe(0);
+      expect((await getEventSummary(host, 'close')).counter).toBe(0);
+    });
   });
 
   test('should not bubble dismiss event', async ({ page }) => {
@@ -468,26 +464,6 @@ test.describe('focus behavior', () => {
 test.describe('after content change', () => {
   skipInBrowsers(['webkit', 'firefox']);
 
-  test('should focus dismiss button again', async ({ page }) => {
-    await initAdvancedFlyout(page);
-    await openFlyout(page);
-    await expectDismissButtonToBeFocused(page, 'initially');
-
-    await page.keyboard.press('Tab');
-    expect(await getActiveElementId(page), 'after 1st tab').toBe('btn-header');
-    await page.keyboard.press('Tab');
-    expect(await getActiveElementId(page), 'after 2nd tab').toBe('btn-content');
-
-    const host = await getHost(page);
-    await host.evaluate((el) => {
-      el.innerHTML = '<button id="btn-new">New Button</button>';
-    });
-    await waitForSlotChange();
-    await expectDismissButtonToBeFocused(page, 'after slot change');
-    await page.keyboard.press('Tab');
-    expect(await getActiveElementId(page), 'after content change 1nd tab').toBe('btn-new');
-  });
-
   test('should not allow focusing element behind of flyout', async ({ page }) => {
     await initAdvancedFlyout(page);
     await addButtonsBeforeAndAfterFlyout(page);
@@ -501,13 +477,15 @@ test.describe('after content change', () => {
       el.innerHTML = '';
     });
     await waitForSlotChange();
-    await expectDismissButtonToBeFocused(page, 'after content change');
+
+    await page.keyboard.press('Tab');
+    await expectDismissButtonToBeFocused(page, 'after slot change');
 
     await page.keyboard.press('Tab');
     expect(await getActiveElementTagName(page)).toBe('BODY');
 
     await page.keyboard.press('Tab');
-    await expectDismissButtonToBeFocused(page, 'after content change 2nd tab');
+    await expectDismissButtonToBeFocused(page, 'after tab cycle');
   });
 
   test('should correctly focus dismiss button from appended focusable element', async ({ page }) => {
@@ -651,5 +629,162 @@ test.describe('lifecycle', () => {
 
     expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(3);
     expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(1);
+  });
+
+  test('should work without unnecessary round trips after deeply nested slot content change', async ({ page }) => {
+    await initBasicFlyout(page, { open: true }, { header: '<div slot="header">Some content</div>' });
+    const host = await getHost(page);
+    const status = await getLifecycleStatus(page);
+
+    expect(status.componentDidLoad['p-flyout'], 'componentDidLoad: p-flyout').toBe(1);
+    expect(status.componentDidLoad['p-button-pure'], 'componentDidLoad: p-button-pure').toBe(1); // includes p-icon
+
+    expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(3);
+    expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(0);
+
+    await host.evaluate((el) => {
+      const header = el.querySelector('[slot="header"]');
+      header.innerHTML = `<h2>Some new header content</h2>`;
+    });
+    await waitForStencilLifecycle(page);
+
+    const statusAfter = await getLifecycleStatus(page);
+
+    expect(statusAfter.componentDidUpdate['p-flyout'], 'componentDidUpdate: p-flyout').toBe(0);
+    expect(statusAfter.componentDidUpdate.all, 'componentDidUpdate: all').toBe(0);
+  });
+
+  test('should update when adding named slot', async ({ page }) => {
+    await initBasicFlyout(page);
+    const host = await getHost(page);
+    const status = await getLifecycleStatus(page);
+
+    expect(status.componentDidLoad['p-flyout'], 'componentDidLoad: p-flyout').toBe(1);
+    expect(status.componentDidLoad['p-button-pure'], 'componentDidLoad: p-button-pure').toBe(1); // includes p-icon
+
+    expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(3);
+    expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(0);
+
+    await addHeaderSlot(host);
+    await waitForStencilLifecycle(page);
+
+    const statusAfter = await getLifecycleStatus(page);
+
+    expect(statusAfter.componentDidUpdate['p-flyout'], 'componentDidUpdate: p-flyout').toBe(1);
+    expect(statusAfter.componentDidUpdate.all, 'componentDidUpdate: all').toBe(1);
+  });
+});
+
+test.describe('after dynamic slot change', () => {
+  skipInBrowsers(['webkit', 'firefox']);
+
+  test('should show header', async ({ page }) => {
+    await initBasicFlyout(
+      page,
+      { open: true },
+      {
+        content: '<div style="height: 200vh">Some Content</div>',
+        subFooter: '<div slot="sub-footer" class="scroll-here">Some Content</div>',
+      }
+    );
+    const host = await getHost(page);
+    const headerText = 'Some slotted header content';
+
+    await expect(page.getByText(headerText)).not.toBeVisible();
+
+    await host.evaluate((el, headerText) => {
+      const header = document.createElement('div');
+      header.slot = 'header';
+      header.innerHTML = `<h2>${headerText}</h2>`;
+      el.appendChild(header);
+    }, headerText);
+
+    await waitForStencilLifecycle(page);
+
+    const header = await getHeader(page);
+    await expect(page.getByText(headerText)).toBeVisible();
+    expect(await getElementStyle(header, 'boxShadow'), 'initial').toBe('none');
+
+    await scrollFlyoutTo(page, '.scroll-here');
+    await expectHeaderShadowToAppear(page);
+  });
+
+  test('should show footer with shadow', async ({ page }) => {
+    await initBasicFlyout(page);
+    const host = await getHost(page);
+    const footerText = 'Some slotted footer content';
+
+    await expect(page.getByText(footerText)).not.toBeVisible();
+
+    await host.evaluate((el, footerText) => {
+      el.innerHTML = `<div style="height: 110vh">Some content</div><div slot="footer"><p>${footerText}</p></div>`;
+    }, footerText);
+
+    await waitForStencilLifecycle(page);
+
+    await expect(page.getByText(footerText)).toBeVisible();
+    expect(await getElementStyle(await getFooter(page), 'boxShadow'), 'before scroll').toBe(
+      'rgba(204, 204, 204, 0.35) 0px -5px 10px 0px'
+    );
+  });
+
+  test('should show subfooter', async ({ page }) => {
+    await initBasicFlyout(page);
+    const host = await getHost(page);
+    const footerText = 'Some slotted sub-footer content';
+
+    await expect(page.getByText(footerText)).not.toBeVisible();
+
+    await host.evaluate((el, footerText) => {
+      el.innerHTML = `<div slot="sub-footer"><p>${footerText}</p></div>`;
+    }, footerText);
+
+    await waitForStencilLifecycle(page);
+    await expect(page.getByText(footerText)).toBeVisible();
+  });
+
+  test('should update css sticky top custom property correctly if no header exists initially', async ({ page }) => {
+    await initBasicFlyout(page);
+    const host = await getHost(page);
+    expect(await getStickyTopCssVarValue(page)).toBe('0px');
+
+    await addHeaderSlot(host);
+    await waitForStencilLifecycle(page);
+
+    expect(await getStickyTopCssVarValue(page)).toBe('95px');
+
+    await removeHeaderSlot(host);
+    await waitForStencilLifecycle(page);
+
+    expect(await getStickyTopCssVarValue(page)).toBe('0px');
+
+    await addHeaderSlot(host);
+    await waitForStencilLifecycle(page);
+
+    expect(await getStickyTopCssVarValue(page)).toBe('95px');
+
+    await page.setViewportSize({ width: 320, height: 500 });
+
+    expect(await getStickyTopCssVarValue(page)).toBe('167px');
+  });
+
+  test('should update css sticky top custom property correctly if header exists initially', async ({ page }) => {
+    await initAdvancedFlyout(page);
+    const host = await getHost(page);
+    expect(await getStickyTopCssVarValue(page)).toBe('56px');
+
+    await removeHeaderSlot(host);
+    await waitForStencilLifecycle(page);
+
+    expect(await getStickyTopCssVarValue(page)).toBe('0px');
+
+    await addHeaderSlot(host);
+    await waitForStencilLifecycle(page);
+
+    expect(await getStickyTopCssVarValue(page)).toBe('95px');
+
+    await page.setViewportSize({ width: 320, height: 500 });
+
+    expect(await getStickyTopCssVarValue(page)).toBe('167px');
   });
 });

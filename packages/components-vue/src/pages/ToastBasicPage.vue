@@ -24,19 +24,5 @@
     <span></span>
   </div>
 
-  <div class="playground light">
-    <ToastComponent text="Some message" />
-  </div>
+  <ToastComponent text="Some message" />
 </template>
-
-<style scoped>
-  .playground {
-    height: 300px;
-    padding: 0;
-  }
-
-  .playground {
-    height: 300px;
-    padding: 0;
-  }
-</style>

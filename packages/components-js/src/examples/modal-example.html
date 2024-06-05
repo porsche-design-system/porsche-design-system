@@ -1,0 +1,16 @@
+<p-button type="button" aria="{ 'aria-haspopup': 'dialog' }">Open Modal</p-button>
+
+<p-modal open="false" aria="{ 'aria-label': 'Some Heading' }">
+  <p-heading slot="header" size="large" tag="h2">Some Heading</p-heading>
+  <p-text>Some Content</p-text>
+  <p-button-group slot="footer">
+    <p-button type="button">Accept</p-button>
+    <p-button type="button" variant="secondary">Deny</p-button>
+  </p-button-group>
+</p-modal>
+
+<script>
+  const modal = document.querySelector('p-modal');
+  modal.addEventListener('dismiss', () => (modal.open = false));
+  document.querySelector('p-button').addEventListener('click', () => (modal.open = true));
+</script>

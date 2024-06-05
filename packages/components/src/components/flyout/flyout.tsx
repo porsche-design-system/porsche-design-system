@@ -1,34 +1,40 @@
-import { Component, Element, Event, type EventEmitter, forceUpdate, h, type JSX, Prop, Watch } from '@stencil/core';
+import { Component, Element, Event, type EventEmitter, forceUpdate, h, type JSX, Prop } from '@stencil/core';
 import {
+  addStickyTopCssVarStyleSheet,
   FLYOUT_ARIA_ATTRIBUTES,
   FLYOUT_POSITIONS,
-  FLYOUT_SCROLL_SHADOW_THRESHOLD,
   type FlyoutAriaAttribute,
   type FlyoutPosition,
   type FlyoutPositionDeprecated,
+  handleUpdateStickyTopCssVar,
 } from './flyout-utils';
-import { footerShadowClass, getComponentCss, headerShadowClass } from './flyout-styles';
+import { getComponentCss } from './flyout-styles';
 import {
   AllowedTypes,
   applyConstructableStylesheetStyles,
   attachComponentCss,
   getPrefixedTagNames,
-  getShadowRootHTMLElements,
   hasNamedSlot,
   hasPropValueChanged,
+  observeChildren,
+  onCancelDialog,
+  onClickDialog,
   parseAndGetAriaAttributes,
+  setDialogVisibility,
   setScrollLock,
   THEMES,
+  unobserveChildren,
   validateProps,
   warnIfDeprecatedPropValueIsUsed,
 } from '../../utils';
 import type { PropTypes, SelectedAriaAttributes, Theme } from '../../types';
-import { throttle } from 'throttle-debounce';
 import { getSlottedAnchorStyles } from '../../styles';
+import { observeStickyArea } from '../../utils/dialog/observer';
 
 const propTypes: PropTypes<typeof Flyout> = {
   open: AllowedTypes.boolean,
   position: AllowedTypes.oneOf<FlyoutPosition>(FLYOUT_POSITIONS),
+  disableBackdropClick: AllowedTypes.boolean,
   theme: AllowedTypes.oneOf<Theme>(THEMES),
   aria: AllowedTypes.aria<FlyoutAriaAttribute>(FLYOUT_ARIA_ATTRIBUTES),
 };
@@ -46,6 +52,9 @@ export class Flyout {
   /** The position of the flyout */
   @Prop() public position?: FlyoutPosition = 'end';
 
+  /** If true, the flyout will not be closable via backdrop click. */
+  @Prop() public disableBackdropClick?: boolean = false;
+
   /** Adapts the flyout color depending on the theme. */
   @Prop() public theme?: Theme = 'light';
 
@@ -56,57 +65,52 @@ export class Flyout {
   @Event({ bubbles: false }) public dismiss?: EventEmitter<void>;
 
   private dialog: HTMLDialogElement;
-  private wrapper: HTMLDivElement;
-  private dismissBtn: HTMLElement;
-  private header: HTMLElement;
-  private footer: HTMLElement;
-  private subFooter: HTMLElement;
+  private scroller: HTMLDivElement;
+  private header: HTMLSlotElement;
+  private footer: HTMLSlotElement;
   private hasHeader: boolean;
   private hasFooter: boolean;
   private hasSubFooter: boolean;
-
-  @Watch('open')
-  public openChangeHandler(isOpen: boolean): void {
-    setScrollLock(isOpen);
-
-    if (isOpen && this.hasSubFooter) {
-      this.updateShadow();
-    }
-  }
-
-  public connectedCallback(): void {
-    applyConstructableStylesheetStyles(this.host, getSlottedAnchorStyles);
-  }
-
-  public componentDidLoad(): void {
-    // in case flyout is rendered with open prop
-    if (this.open) {
-      setScrollLock(true);
-    }
-
-    // TODO: would be great to use this in jsx but that doesn't work reliable and causes focus e2e test to fail
-    getShadowRootHTMLElements(this.host, 'slot').forEach((element) =>
-      element.addEventListener('slotchange', this.onSlotChange)
-    );
-  }
 
   public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
     return hasPropValueChanged(newVal, oldVal);
   }
 
-  public componentDidRender(): void {
-    // showModal needs to be called after render cycle to prepare visibility states of dialog in order to focus the dismiss button correctly
-    this.setDialogVisibility(this.open);
+  public connectedCallback(): void {
+    applyConstructableStylesheetStyles(this.host, getSlottedAnchorStyles);
+    // Observe dynamic slot changes
+    observeChildren(
+      this.host,
+      () => {
+        forceUpdate(this.host);
+      },
+      undefined,
+      { subtree: false, childList: true, attributes: false }
+    );
+  }
 
-    // TODO: should this really be executed on every rerender, e.g. prop change?
-    if (this.open && this.hasSubFooter) {
-      // TODO: why not scroll to top when opened just like modal does?
-      this.updateShadow();
-    }
+  public componentWillRender(): void {
+    setScrollLock(this.open);
+  }
+
+  public componentDidRender(): void {
+    setDialogVisibility(this.open, this.dialog, this.scroller);
+  }
+
+  public componentDidLoad(): void {
+    addStickyTopCssVarStyleSheet(this.host);
+    // Has to be called here instead of render to assure that the slot references are available
+    this.updateSlotObserver();
+  }
+
+  public componentDidUpdate(): void {
+    // Has to be called here instead of render to assure that the slot references are available
+    this.updateSlotObserver();
   }
 
   public disconnectedCallback(): void {
     setScrollLock(false);
+    unobserveChildren(this.host);
   }
 
   public render(): JSX.Element {
@@ -134,6 +138,7 @@ export class Flyout {
       getComponentCss,
       this.open,
       (positionDeprecationMap[this.position] || this.position) as Exclude<FlyoutPosition, FlyoutPositionDeprecated>,
+      this.hasHeader,
       this.hasFooter,
       this.hasSubFooter,
       this.theme
@@ -146,19 +151,20 @@ export class Flyout {
         // "inert" will be known from React 19 onwards, see https://github.com/facebook/react/pull/24730
         // eslint-disable-next-line
         /* @ts-ignore */
-        inert={this.open ? null : true} // prevents focusable elements during fade-out transition
+        inert={this.open ? null : true} // prevents focusable elements during fade-out transition + prevents focusable elements within nested open accordion
         tabIndex={-1} // dialog always has a dismiss button to be focused
-        ref={(ref) => (this.dialog = ref)}
-        onCancel={this.onCancelDialog}
-        onClick={this.onClickDialog}
-        {...parseAndGetAriaAttributes(this.aria)}
+        ref={(el) => (this.dialog = el)}
+        onCancel={(e) => onCancelDialog(e, this.dismissDialog)}
+        // Previously done with onMouseDown to change the click behavior (not closing when pressing mousedown on flyout and mouseup on backdrop) but changed back to native behavior
+        onClick={(e) => onClickDialog(e, this.dismissDialog, this.disableBackdropClick)}
+        {...parseAndGetAriaAttributes({
+          'aria-modal': true,
+          'aria-hidden': !this.open,
+          ...parseAndGetAriaAttributes(this.aria),
+        })}
       >
-        <div
-          class="wrapper"
-          ref={(ref) => (this.wrapper = ref)}
-          {...(this.hasSubFooter && { onScroll: this.updateShadow })} // if no sub-footer is used scroll shadows are done via CSS
-        >
-          <div key="header" class="header" ref={(el) => (this.header = el)}>
+        <div class="scroller" ref={(el) => (this.scroller = el)}>
+          <div class="flyout">
             <PrefixedTagNames.pButtonPure
               class="dismiss"
               type="button"
@@ -166,85 +172,33 @@ export class Flyout {
               icon="close"
               theme={this.theme}
               onClick={this.dismissDialog}
-              ref={(el: HTMLButtonElement) => (this.dismissBtn = el)}
             >
               Dismiss flyout
             </PrefixedTagNames.pButtonPure>
-
-            {this.hasHeader && <slot name="header" />}
-          </div>
-          <div class="content">
+            {this.hasHeader && <slot name="header" ref={(el: HTMLSlotElement) => (this.header = el)} />}
             <slot />
+            {this.hasFooter && <slot name="footer" ref={(el: HTMLSlotElement) => (this.footer = el)} />}
+            {this.hasSubFooter && <slot name="sub-footer" />}
           </div>
-          {this.hasFooter && (
-            <div key="footer" class="footer" ref={(el) => (this.footer = el)}>
-              <slot name="footer" />
-            </div>
-          )}
-          {this.hasSubFooter && (
-            <div key="sub-footer" class="sub-footer" ref={(el) => (this.subFooter = el)}>
-              <slot name="sub-footer" />
-            </div>
-          )}
         </div>
       </dialog>
     );
   }
 
-  private updateHeaderShadow = (): void => {
-    const shouldApplyShadow = this.wrapper.scrollTop > FLYOUT_SCROLL_SHADOW_THRESHOLD;
-
-    this.header.classList.toggle(headerShadowClass, shouldApplyShadow);
-  };
-
-  private updateFooterShadow = (): void => {
-    const shouldApplyShadow = this.subFooter.offsetTop > this.wrapper.clientHeight + this.wrapper.scrollTop;
-
-    this.footer.classList.toggle(footerShadowClass, shouldApplyShadow);
-  };
-
-  // eslint-disable-next-line @typescript-eslint/member-ordering
-  private updateShadow = throttle(100, () => {
-    if (this.wrapper.scrollHeight > this.wrapper.clientHeight) {
-      this.updateHeaderShadow();
-
-      if (this.hasFooter) {
-        this.updateFooterShadow();
-      }
-    }
-  });
-
-  private onClickDialog = (e: MouseEvent & { target: HTMLElement }): void => {
-    if (e.target.tagName === 'DIALOG') {
-      // dismiss dialog when clicked on backdrop
-      this.dismissDialog();
-    }
-  };
-
-  private onSlotChange = (): void => {
-    forceUpdate(this.host);
-
-    this.dismissBtn.focus();
-  };
-
-  private onCancelDialog = (e: Event): void => {
-    // prevent closing the dialog uncontrolled by ESC (only relevant for browsers supporting <dialog/>)
-    e.preventDefault();
-
-    this.dismissDialog();
-  };
-
-  private setDialogVisibility(isOpen: boolean): void {
-    // TODO: SupportsNativeDialog check
-    // Only call showModal/close on dialog when state changes
-    if (isOpen === true && !this.dialog.open) {
-      this.dialog.showModal();
-    } else if (isOpen === false && this.dialog.open) {
-      this.dialog.close();
-    }
-  }
-
   private dismissDialog = (): void => {
     this.dismiss.emit();
+  };
+
+  private updateSlotObserver = () => {
+    if (this.hasHeader) {
+      // When slots change dynamically the intersection observer for the scroll shadows has to be added
+      observeStickyArea(this.scroller, this.header);
+    }
+    if (this.hasFooter) {
+      // When slots change dynamically the intersection observer for the scroll shadows has to be added
+      observeStickyArea(this.scroller, this.footer);
+    }
+    // When header slot changes dynamically the resize observer and adopted stylesheet for the CSS custom property --p-flyout-sticky-top has to be updated
+    handleUpdateStickyTopCssVar(this.host, this.hasHeader, this.header);
   };
 }
