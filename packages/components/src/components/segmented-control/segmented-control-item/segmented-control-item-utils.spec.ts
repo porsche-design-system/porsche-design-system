@@ -4,9 +4,9 @@ import { IconColor } from '../../icon/icon-utils';
 describe('getButtonAttributes()', () => {
   it.each<Parameters<typeof getSegmentedControlItemAriaAttributes>>([
     [false, false, { 'aria-label': 'Some label' }],
-    [true, true, undefined],
+    [true, true],
     [true, false, { 'aria-label': 'Some label' }],
-    [false, true, undefined],
+    [false, true],
   ])('should return correct css for isSelected: %s and isDisabled: %s', (...args) => {
     expect(getSegmentedControlItemAriaAttributes(...args)).toMatchSnapshot();
   });

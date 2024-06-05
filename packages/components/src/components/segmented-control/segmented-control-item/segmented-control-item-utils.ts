@@ -16,7 +16,7 @@ export type SegmentedControlItemAriaAttribute = (typeof SEGMENTED_CONTROL_ITEM_A
 export const getSegmentedControlItemAriaAttributes = (
   isSelected: boolean,
   isDisabled: boolean,
-  ariaProp: SelectedAriaAttributes<SegmentedControlItemAriaAttribute>
+  ariaProp?: SelectedAriaAttributes<SegmentedControlItemAriaAttribute>
 ): AriaAttributes => ({
   ...getButtonBaseAriaAttributes(isDisabled, false),
   ...parseAndGetAriaAttributes({ 'aria-pressed': isSelected }),
