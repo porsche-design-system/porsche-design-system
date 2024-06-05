@@ -294,7 +294,7 @@ export class MultiSelect {
             <PrefixedTagNames.pButtonPure
               class="button"
               icon="close"
-              hideLabel="true"
+              hideLabel={true}
               theme={this.theme}
               onClick={this.onResetClick}
               onKeyDown={(e) => e.key === 'Tab' && (this.isOpen = false)}

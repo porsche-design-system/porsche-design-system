@@ -27,8 +27,8 @@ import { type FlyoutNavigationUpdateEventDetail } from '@porsche-design-system/c
           label="Some label"
           description="Some Description"
           weight="semi-bold"
-          compact="true"
-          aspectRatio="{base: '4:3', xs: '16:9', s: '1:1'}"
+          [compact]="true"
+          [aspectRatio]="{ base: '4:3', xs: '16:9', s: '1:1' }"
         >
           <img
             srcset="https://porsche-design-system.github.io/porsche-design-system/porsche-963@2x.webp 2x"
@@ -90,9 +90,11 @@ export class FlyoutNavigationExampleCustomContentComponent {
   onOpen(): void {
     this.isFlyoutNavigationOpen = true;
   }
+
   onDismiss(): void {
     this.isFlyoutNavigationOpen = false;
   }
+
   onUpdate(e: CustomEvent<FlyoutNavigationUpdateEventDetail>): void {
     this.flyoutNavigationActiveIdentifier = e.detail.activeIdentifier;
   }
