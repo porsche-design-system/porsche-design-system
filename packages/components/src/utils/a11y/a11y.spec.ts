@@ -44,6 +44,7 @@ describe('setAriaAttributes()', () => {
 });
 
 describe('parseAndGetAriaAttributes()', () => {
+  // prettier-ignore
   const rawAttributes = '{ aria-label: \'Some label\' }';
 
   it('should call parseJSONAttribute()', () => {
@@ -62,7 +63,9 @@ describe('parseAndGetAriaAttributes()', () => {
       'aria-label': 'Some label',
       'aria-pressed': 'true',
     },
+    // prettier-ignore
     '{\'aria-label\': \'Some label\', \'aria-pressed\': true}',
+    // prettier-ignore
     '{\'aria-label\': \'Some label\', \'aria-pressed\': \'true\'}',
   ])('should return correct aria attributes with boolean for %o', (rawAttributes) => {
     expect(parseAndGetAriaAttributes(rawAttributes)).toEqual({
@@ -75,9 +78,13 @@ describe('parseAndGetAriaAttributes()', () => {
     expect(parseAndGetAriaAttributes(rawAttributes)).toEqual(undefined);
   });
 
-  // 'p-button-tile' and 'p-link-tile' have to be excluded because parseAndGetAriaAttributes() is not applied
+  // the following components have to be excluded because parseAndGetAriaAttributes() is not applied
   const tagNamesWithAriaProp = TAG_NAMES.filter(
-    (tagName) => getComponentMeta(tagName).hasAriaProp && tagName !== 'p-button-tile' && tagName !== 'p-link-tile',
+    (tagName) =>
+      getComponentMeta(tagName).hasAriaProp &&
+      tagName !== 'p-button-tile' &&
+      tagName !== 'p-link-tile' &&
+      tagName !== 'p-segmented-control-item'
   );
 
   it.each<TagName>(tagNamesWithAriaProp)('should call parseAndGetAriaAttributes() via render for %s', (tagName) => {
@@ -97,8 +104,7 @@ describe('parseAndGetAriaAttributes()', () => {
         component.host.shadowRoot.append(document.createElement('i'));
         component['setIconContent']();
       }
-    } catch (e) {
-    }
+    } catch (e) {}
 
     expect(spy).toHaveBeenCalledWith(component['aria']);
   });
