@@ -19,7 +19,7 @@ import { getComponentCss } from './model-signature-styles';
 const propTypes: PropTypes<typeof ModelSignature> = {
   model: AllowedTypes.oneOf<ModelSignatureModel>(MODEL_SIGNATURE_MODELS),
   safeZone: AllowedTypes.boolean,
-  fetchPriorityProp: AllowedTypes.oneOf<ModelSignatureFetchPriority>(MODEL_SIGNATURE_FETCH_PRIORITY),
+  fetchPriority: AllowedTypes.oneOf<ModelSignatureFetchPriority>(MODEL_SIGNATURE_FETCH_PRIORITY),
   lazy: AllowedTypes.boolean,
   size: AllowedTypes.oneOf<ModelSignatureSize>(MODEL_SIGNATURE_SIZES),
   color: AllowedTypes.oneOf<ModelSignatureColor>(MODEL_SIGNATURE_COLORS),
@@ -40,7 +40,7 @@ export class ModelSignature {
   @Prop() public safeZone?: boolean = true;
 
   /** Defines the fetch priority of the model signature. In the end it is just a recommendation to the browser, but it defines the priority on its own. */
-  @Prop() public fetchPriorityProp?: ModelSignatureFetchPriority = 'auto';
+  @Prop() public fetchPriority?: ModelSignatureFetchPriority = 'auto';
 
   /** Defines whether the model signature is always loaded or only loaded when it is in the viewport (this feature may not work reliably). */
   @Prop() public lazy?: boolean = false;
@@ -59,14 +59,14 @@ export class ModelSignature {
     attachComponentCss(this.host, getComponentCss, this.model, this.safeZone, this.size, this.color, this.theme);
 
     const fetchPriority: Exclude<ModelSignatureFetchPriority, 'auto'> | null =
-      this.fetchPriorityProp !== 'auto' ? this.fetchPriorityProp : null;
+      this.fetchPriority !== 'auto' ? this.fetchPriority : null;
     const loading: 'lazy' | null = this.lazy === true ? 'lazy' : null;
 
     return (
       <Host>
         <slot />
         {/* @ts-expect-error although `fetchPriority` should already be supported by TSX, it's not with Stencil/TSX */}
-        <img fetchPriority={fetchPriority} loading={loading} src={getSvgUrl(this.model)} alt={this.model} />
+        <img fetchpriority={fetchPriority} loading={loading} src={getSvgUrl(this.model)} alt={this.model} />
       </Host>
     );
   }
