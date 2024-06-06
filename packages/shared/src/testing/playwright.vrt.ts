@@ -38,6 +38,20 @@ export const config: Config = {
   },
   snapshotPathTemplate: '{testDir}/__screenshots__/{arg}-{projectName}{ext}',
   use: {
+    ...(process.env.CI
+      ? {}
+      : {
+          toMatchSnapshot: {
+            maxDiffPixelRatio: 0,
+            maxDiffPixels: 0,
+            threshold: 0, // default Playwright threshold
+          },
+          toHaveScreenshot: {
+            maxDiffPixelRatio: 0,
+            maxDiffPixels: 0,
+            threshold: 0, // default Playwright threshold
+          },
+        }),
     /* Maximum time each action such as `click()` can take. Defaults to 0 (no limit). */
     actionTimeout: 0,
     /* Base URL to use in actions like `await page.goto('/')`. */

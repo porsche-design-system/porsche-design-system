@@ -4,18 +4,28 @@
 </script>
 
 <template>
+  <div class="visualize-grid">
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+
   <PorscheDesignSystemProvider prefix="my-prefix">
-    <div class="playground light">
-      <ToastComponent text="Some message" />
-    </div>
+    <ToastComponent text="Some message" />
   </PorscheDesignSystemProvider>
 </template>
-
-<style scoped>
-  .playground {
-    height: 300px;
-    padding: 0;
-    transform: translateX(0);
-    border: 1px solid deeppink;
-  }
-</style>

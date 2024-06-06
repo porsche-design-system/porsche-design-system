@@ -14,6 +14,40 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ### [Unreleased]
 
+### [3.16.0-rc.0] - 2024-06-05
+
+#### Added
+
+- `Flyout`:
+  - CSS variable `--p-flyout-sticky-top` (experimental)
+    ([#3191](https://github.com/porsche-design-system/porsche-design-system/pull/3191))
+  - Prop `disableBackdropClick` ([#3191](https://github.com/porsche-design-system/porsche-design-system/pull/3191))
+- `Modal`:
+  - CSS variable `--p-modal-width` (experimental)
+    ([#3191](https://github.com/porsche-design-system/porsche-design-system/pull/3191))
+  - Named slot `header` ([#3191](https://github.com/porsche-design-system/porsche-design-system/pull/3191))
+
+#### Changed
+
+- `Modal`, `Flyout`:
+  - Sticky dismiss button ([#3191](https://github.com/porsche-design-system/porsche-design-system/pull/3191))
+  - Aligned layout, spacing and UX behaviour
+    ([#3191](https://github.com/porsche-design-system/porsche-design-system/pull/3191))
+  - Renders fully on `#top-layer`, stacking behaviour has changed and follows W3C standards now, see
+    https://developer.mozilla.org/en-US/docs/Glossary/Top_layer and
+    https://developer.chrome.com/blog/what-is-the-top-layer
+    ([#3191](https://github.com/porsche-design-system/porsche-design-system/pull/3191))
+- `Modal`: `heading` prop and `slot="heading"` are deprecated. Use `slot="header"` instead.
+
+#### Fixed
+
+- Types: Fixed incorrectly allowed type `string` in types `BreakpointCustomizable`, `SelectedAriaAttributes`,
+  `CarouselInternationalization`, `PaginationInternationalization` and `ScrollToPosition`
+- `Modal`, `Flyout`: Dynamically react to adding/removing named slots
+  ([#3191](https://github.com/porsche-design-system/porsche-design-system/pull/3191))
+- `Modal`: Uses native `<dialog />` element to resolve focus issues, focus trap
+  ([#3191](https://github.com/porsche-design-system/porsche-design-system/pull/3191))
+
 ### [3.15.2] - 2024-05-29
 
 #### Fixed

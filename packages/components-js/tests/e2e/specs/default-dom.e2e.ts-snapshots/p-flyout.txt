@@ -1,9 +1,7 @@
-<dialog inert="" tabindex="-1">
-  <div class="wrapper">
-    <div class="header">
+<dialog inert="" tabindex="-1" aria-modal="true" aria-hidden="true">
+  <div class="scroller">
+    <div class="flyout">
       <p-button-pure class="dismiss hydrated"> Dismiss flyout</p-button-pure>
-    </div>
-    <div class="content">
       <slot> </slot>
     </div>
   </div>

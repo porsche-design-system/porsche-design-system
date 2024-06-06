@@ -34,21 +34,26 @@ const childrenObserver =
  * @param {T} node - The node to observe.
  * @param {() => void} callback - The callback function to invoke when changes occur.
  * @param {(Lowercase<K extends string ? K : string> | keyof AriaAttributes)[]} [attributes] - Optional attribute names to be monitored.
+ * @param {MutationObserverInit} options - An object providing options that describe which DOM mutations should be reported to
  * @returns {void}
  */
 export const observeChildren = <T extends HTMLElement, K = keyof T>(
   node: T,
   callback: () => void,
-  attributes?: (Lowercase<K extends string ? K : string> | keyof AriaAttributes)[]
+  // TODO: Remove attributes parameter and always use options
+  attributes?: (Lowercase<K extends string ? K : string> | keyof AriaAttributes)[],
+  options: MutationObserverInit = {
+    childList: true,
+    subtree: true,
+    characterData: true,
+  }
 ): void => {
   // node might not be defined in connectedCallback
   if (node) {
     observedNodesMap.set(node, callback);
     childrenObserver.observe(node, {
-      childList: true,
-      subtree: true,
-      characterData: true,
       attributeFilter: attributes,
+      ...options,
     });
   }
 };

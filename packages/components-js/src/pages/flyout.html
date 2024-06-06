@@ -2,10 +2,6 @@
   <iframe src="/flyout-basic?iframe=true" loading="eager" title="fix-linter-1"></iframe>
 </div>
 
-<div class="playground light" title="should show flyout (maxWidth content)">
-  <iframe src="/flyout-max-width-content?iframe=true" loading="eager" title="fix-linter-2"></iframe>
-</div>
-
 <div class="playground light" title="should show flyout with header">
   <iframe src="/flyout-header?iframe=true" loading="eager" title="fix-linter-3"></iframe>
 </div>
@@ -61,14 +57,6 @@
   <iframe src="/flyout-position-start?iframe=true" loading="eager" title="fix-linter-13"></iframe>
 </div>
 
-<div class="playground light" title="should show flyout (maxWidth content, position=left)">
-  <iframe src="/flyout-max-width-content-position-left?iframe=true" loading="eager" title="fix-linter-14"></iframe>
-</div>
-
-<div class="playground light" title="should show flyout (maxWidth content, position=start)">
-  <iframe src="/flyout-max-width-content-position-start?iframe=true" loading="eager" title="fix-linter-15"></iframe>
-</div>
-
 <div class="playground light" title="should show flyout with header, footer and subFooter (position=left)">
   <iframe
     src="/flyout-header-footer-subfooter-position-left?iframe=true"
@@ -111,10 +99,14 @@
   ></iframe>
 </div>
 
-<div
-  class="playground light"
-  title="should show flyout with grid system and custom css variables (--p-flyout-width, --p-flyout-max-width)"
->
+<div class="playground light" title="should show flyout with the porsche grid">
   <!-- skip this axe-core test because it is just needed for vrt -->
   <iframe src="/flyout-grid?iframe=true" loading="eager" title="fix-linter-22" class="skip-axe-core-test"></iframe>
+</div>
+
+<div
+  class="playground light"
+  title="should show flyout with custom css variables (--p-flyout-width, --p-flyout-max-width, --p-flyout-sticky-top)"
+>
+  <iframe src="/flyout-css-variables?iframe=true" loading="eager" title="fix-linter-23"></iframe>
 </div>

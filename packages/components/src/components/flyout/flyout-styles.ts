@@ -1,173 +1,96 @@
-import { getCss, isThemeDark, scrollShadowColor, scrollShadowColorDark, type Theme } from '../../utils';
+import { getCss, type Theme } from '../../utils';
+import { addImportantToEachRule, colorSchemeStyles, hostHiddenStyles } from '../../styles';
+import { spacingFluidMedium, spacingFluidSmall } from '@porsche-design-system/utilities-v2';
+import { type FlyoutPosition } from './flyout-utils';
 import {
-  addImportantToEachRule,
-  colorSchemeStyles,
-  getBackdropJssStyle,
-  getThemedColors,
-  getTransition,
-  hostHiddenStyles,
-  prefersColorSchemeDarkMediaQuery,
-} from '../../styles';
-import { FLYOUT_Z_INDEX } from '../../constants';
-import { gridGap, spacingFluidLarge, spacingStaticMedium } from '@porsche-design-system/utilities-v2';
-import type { FlyoutPosition } from './flyout-utils';
-import { getFlyoutDialogResetJssStyle } from '../../styles/flyout-dialog-reset-styles';
+  dialogGridJssStyle,
+  dialogHostJssStyle,
+  getDialogColorJssStyle,
+  getDialogJssStyle,
+  getDialogStickyAreaJssStyle,
+  getDialogTransitionJssStyle,
+  getDismissButtonJssStyle,
+  getScrollerJssStyle,
+} from '../../styles/dialog-styles';
 
-export const headerShadowClass = 'header--shadow';
-export const footerShadowClass = 'footer--shadow';
+const cssVariableWidth = '--p-flyout-width';
+// TODO: we shouldn't expose --p-flyout-max-width
+const cssVariableMaxWidth = '--p-flyout-max-width';
 
 export const getComponentCss = (
   isOpen: boolean,
   position: FlyoutPosition,
+  hasHeader: boolean,
   hasFooter: boolean,
   hasSubFooter: boolean,
   theme: Theme
 ): string => {
-  const { primaryColor, backgroundColor } = getThemedColors(theme);
-  const { primaryColor: primaryColorDark, backgroundColor: backgroundColorDark } = getThemedColors('dark');
-  const isPositionStart = position === 'start';
-  const contentPadding = `${spacingStaticMedium} ${spacingFluidLarge}`;
-  const isDark = isThemeDark(theme);
-  const shadowColor = isDark ? scrollShadowColorDark : scrollShadowColor;
-  const transparentColorDark = 'rgba(14, 14, 18, 0)';
-  const transparentColor = isDark ? transparentColorDark : 'rgba(255, 255, 255, 0)';
+  const isPositionStart = position === 'start' || position === 'left';
 
   return getCss({
     '@global': {
       ':host': {
         display: 'block',
         ...addImportantToEachRule({
-          // needed for correct alignment of the Porsche Grid within the Flyout
-          '--pds-internal-grid-outer-column': `calc(${spacingFluidLarge} - ${gridGap})`,
-          '--pds-internal-grid-margin': `calc(${spacingFluidLarge} * -1)`,
-          ...getBackdropJssStyle(isOpen, FLYOUT_Z_INDEX, theme),
+          ...dialogHostJssStyle,
           ...colorSchemeStyles,
           ...hostHiddenStyles,
         }),
       },
-      dialog: {
-        ...getFlyoutDialogResetJssStyle(),
-        insetInline: isPositionStart ? '0 0' : 'auto 0',
-        insetBlock: '0 0',
-        display: 'flex',
-        flexDirection: 'column',
-        boxSizing: 'border-box',
-        width: 'var(--p-flyout-width, fit-content)',
-        minWidth: '320px',
-        maxWidth: 'var(--p-flyout-max-width, 1180px)',
-        color: primaryColor, // enables color inheritance for slotted content
-        background: backgroundColor,
-        ...(isOpen
-          ? {
-              opacity: 1,
-              transform: 'initial',
-              transition: `${getTransition('opacity', 'long', 'in')}, ${getTransition('transform', 'long', 'in')}`,
-            }
-          : {
-              opacity: 0,
-              transform: `translate3d(${isPositionStart ? '-100%' : '100%'}, 0, 0)`,
-              transition: `${getTransition('opacity', 'short', 'out', 'long')}, ${getTransition(
-                'transform',
-                'long',
-                'out'
-              )}`,
-            }),
-        boxShadow: `${isPositionStart ? '3px' : '-3px'} 0px 30px rgba(0, 0, 0, 0.25)`,
-        ...prefersColorSchemeDarkMediaQuery(theme, {
-          color: primaryColorDark,
-          background: backgroundColorDark,
+      slot: {
+        display: 'block',
+        '&:first-of-type': {
+          gridRowStart: 1,
+        },
+        '&:not([name])': {
+          gridColumn: '2/3',
+          zIndex: 0, // controls layering + creates new stacking context (prevents content within to be above other dialog areas)
+        },
+        ...(hasHeader && {
+          '&[name=header]': {
+            ...getDialogStickyAreaJssStyle('header', theme),
+            gridColumn: '1/-1',
+            zIndex: 3, // controls layering + creates new stacking context (prevents content within to be above other dialog areas)
+          },
         }),
-        '&:focus-visible': {
-          outline: 'none', // ua-style reset
-        },
-        '&::backdrop': {
-          // to improve browser backwards compatibility we visually style the backdrop on the :host,
-          // although it's not on the #top-layer like it would be for modern browsers supporting ::backdrop
-          opacity: 0, // to support backdrop click for modern browsers supporting ::backdrop
-        },
+        ...(hasFooter && {
+          '&[name=footer]': {
+            ...getDialogStickyAreaJssStyle('footer', theme),
+            gridColumn: '1/-1',
+            zIndex: 2, // controls layering + creates new stacking context (prevents content within to be above other dialog areas)
+          },
+        }),
+        ...(hasSubFooter && {
+          '&[name=sub-footer]': {
+            gridColumn: '2/3',
+            zIndex: 1, // controls layering + creates new stacking context (prevents content within to be above other dialog areas)
+          },
+        }),
       },
+      dialog: getDialogJssStyle(isOpen, theme),
     },
-    wrapper: {
-      display: 'flex', // ua-style reset
-      flexGrow: 1,
-      height: 0,
-      flexDirection: 'column',
-      ...(hasSubFooter && {
-        overflowY: 'auto',
-        overscrollBehaviorY: 'none',
-      }),
+    scroller: {
+      ...getScrollerJssStyle(isPositionStart ? 'start' : 'end', theme),
+      // compared to Modal, the transition is handled on the scroller to have correct stucked behaviour (visibility of drop shadow)
+      // for sticky header area while transitioned
+      ...getDialogTransitionJssStyle(isOpen, isPositionStart ? '>' : '<'),
     },
-    header: {
-      position: 'sticky',
-      top: 0,
-      zIndex: 2,
-      display: 'grid',
-      gridTemplateColumns: `minmax(0, 1fr) ${spacingFluidLarge}`,
-      alignItems: 'flex-start',
-      padding: `${spacingStaticMedium} 0`,
-      paddingInlineStart: spacingFluidLarge,
-      background: backgroundColor,
-      ...prefersColorSchemeDarkMediaQuery(theme, {
-        background: backgroundColorDark,
-      }),
-    },
-    [headerShadowClass]: {
-      boxShadow: `${isDark ? scrollShadowColorDark : scrollShadowColor} 0px 5px 10px`,
-      ...prefersColorSchemeDarkMediaQuery(theme, {
-        boxShadow: `${scrollShadowColorDark} 0px 5px 10px`,
-      }),
+    flyout: {
+      ...dialogGridJssStyle,
+      ...getDialogColorJssStyle(theme),
+      width: `var(${cssVariableWidth},auto)`,
+      minWidth: '320px',
+      maxWidth: `var(${cssVariableMaxWidth},1180px)`,
     },
     dismiss: {
-      gridArea: '1 / 2',
-      justifySelf: 'center',
+      ...getDismissButtonJssStyle(theme, isOpen, !isPositionStart),
+      gridArea: '1/3',
+      zIndex: 4, // ensures dismiss button is above everything
+      position: 'sticky',
+      insetBlockStart: spacingFluidSmall,
+      insetInlineEnd: spacingFluidSmall,
+      marginBlockStart: `calc(${spacingFluidMedium} * -1)`,
+      justifySelf: 'flex-end',
     },
-    content: {
-      padding: contentPadding,
-      maxWidth: `calc(100vw - calc(${spacingFluidLarge} * 2))`,
-      position: 'relative',
-      zIndex: 0,
-      backgroundColor, // to ensure scrollbar coloring is optimal for light theme
-      ...prefersColorSchemeDarkMediaQuery(theme, {
-        backgroundColor: backgroundColorDark, // to ensure scrollbar coloring is optimal for dark theme
-      }),
-      // If sub-footer is used scroll shadows have to be done via JS
-      ...(!hasSubFooter && {
-        overflowY: 'auto',
-        WebkitOverflowScrolling: 'touch',
-        backgroundImage: `linear-gradient(to top, ${backgroundColor}, ${backgroundColor}), linear-gradient(to top, ${backgroundColor}, ${backgroundColor}), linear-gradient(to top, ${shadowColor}, ${transparentColor}), linear-gradient(to bottom, ${shadowColor}, ${transparentColor})`,
-        backgroundPosition: 'bottom center, top center, bottom center, top center',
-        backgroundRepeat: 'no-repeat',
-        backgroundSize: '100% 20px, 100% 20px, 100% 10px, 100% 10px',
-        backgroundAttachment: 'local, local, scroll, scroll',
-        overscrollBehaviorY: 'none',
-        ...prefersColorSchemeDarkMediaQuery(theme, {
-          backgroundImage: `linear-gradient(to top, ${backgroundColorDark}, ${backgroundColorDark}), linear-gradient(to top, ${backgroundColorDark}, ${backgroundColorDark}), linear-gradient(to top, ${scrollShadowColorDark}, ${transparentColorDark}), linear-gradient(to bottom, ${scrollShadowColorDark}, ${transparentColorDark})`,
-          backgroundColor: backgroundColorDark, // to ensure scrollbar coloring is optimal for dark theme
-        }),
-      }),
-    },
-    ...(hasFooter && {
-      footer: {
-        position: 'sticky',
-        bottom: 0,
-        zIndex: 1,
-        padding: contentPadding,
-        background: backgroundColor,
-        ...prefersColorSchemeDarkMediaQuery(theme, {
-          background: backgroundColorDark,
-        }),
-      },
-      [footerShadowClass]: {
-        boxShadow: `${isDark ? scrollShadowColorDark : scrollShadowColor} 0px -5px 10px`,
-        ...prefersColorSchemeDarkMediaQuery(theme, {
-          boxShadow: `${scrollShadowColorDark} 0px -5px 10px`,
-        }),
-      },
-    }),
-    ...(hasSubFooter && {
-      'sub-footer': {
-        padding: contentPadding,
-      },
-    }),
   });
 };

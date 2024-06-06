@@ -23,11 +23,6 @@ export const routes: ExtendedRoute[] = [
     component: fromPages.OverviewComponent,
   },
   {
-    name: 'Overview Notifications',
-    path: 'overview-notifications',
-    component: fromPages.OverviewNotificationsComponent,
-  },
-  {
     name: 'Core Initializer',
     path: 'core-initializer',
     component: fromPages.CoreInitializerComponent,
@@ -163,7 +158,7 @@ export const routes: ExtendedRoute[] = [
   {
     name: 'Modal Example Accessibility',
     path: 'modal-example-accessibility',
-    component: fromExamples.ModalExampleAccessibilityComponent,
+    component: fromExamples.ModalExampleComponent,
   },
   {
     name: 'Multi-Select Example',

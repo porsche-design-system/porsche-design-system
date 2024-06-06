@@ -203,6 +203,7 @@ exports[`should call validateProps() with correct parameters via render for p-fl
 exports[`should call validateProps() with correct parameters via render for p-flyout: propTypes with ValidatorFunctions 1`] = `
 {
   "aria": "aria",
+  "disableBackdropClick": "boolean",
   "open": "boolean",
   "position": "oneOf",
   "theme": "oneOf",
