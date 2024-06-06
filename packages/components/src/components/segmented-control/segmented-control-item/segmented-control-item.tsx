@@ -3,6 +3,7 @@ import {
   AllowedTypes,
   attachComponentCss,
   getPrefixedTagNames,
+  hasPropValueChanged,
   throwIfParentIsNotOfKind,
   throwIfPropIsUndefined,
   updateParent,
@@ -65,6 +66,10 @@ export class SegmentedControlItem {
     if (this.disabled || this.host.selected) {
       e.stopPropagation();
     }
+  }
+
+  public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
+    return hasPropValueChanged(newVal, oldVal);
   }
 
   public connectedCallback(): void {
