@@ -47,6 +47,7 @@ import {
 import { carouselTransitionDuration, getComponentCss } from './carousel-styles';
 import { gridGap, motionEasingBase } from '@porsche-design-system/utilities-v2';
 import { getSlottedAnchorStyles } from '../../styles';
+import { getIntlFromAria } from '../../utils/getIntlFromAria';
 
 const propTypes: PropTypes<typeof Carousel> = {
   heading: AllowedTypes.string,
@@ -224,7 +225,7 @@ export class Carousel {
       // TODO: this uses matchMedia internally, since we also use it, there is some redundancy
       breakpoints: getSplideBreakpoints(this.slidesPerPage as Exclude<BreakpointCustomizable<number> | 'auto', string>), // eslint-disable-line @typescript-eslint/no-redundant-type-constituents
       // https://splidejs.com/guides/i18n/#default-texts
-      i18n: parseJSONAttribute(this.intl || {}), // can only be applied initially atm
+      i18n: parseJSONAttribute(this.intl || getIntlFromAria(this.aria)), // can only be applied initially atm
     });
 
     this.registerSplideHandlers(this.splide);

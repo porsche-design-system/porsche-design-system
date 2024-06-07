@@ -174,24 +174,3 @@ export const getTotalPages = (totalItemsCount: number, itemsPerPage: number): nu
 
   return Math.ceil(totalItemsCount / itemsPerPage);
 };
-
-export const getIntlFromAria = (aria?: PaginationAriaInternationalization): PaginationInternationalization => {
-  if (!aria) {
-    return {};
-  }
-
-  const intlObj: PaginationInternationalization = {};
-  const translationKey = 'aria-label';
-
-  for (const key of Object.keys(aria)) {
-    // { 'aria-label': 'Lorem ipsum' }
-    if (key === translationKey) {
-      intlObj.root = aria[key];
-    }
-
-    // { key: { 'aria-label': 'Lorem ipsum' } }
-    intlObj[key] = aria[key][translationKey];
-  }
-
-  return intlObj;
-};

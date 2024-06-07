@@ -14,7 +14,6 @@ import type { BreakpointCustomizable, PropTypes, Theme } from '../../types';
 import {
   createPaginationItems,
   getCurrentActivePage,
-  getIntlFromAria,
   getTotalPages,
   ItemType,
   PaginationAriaInternationalization,
@@ -23,6 +22,7 @@ import {
   PaginationUpdateEventDetail,
 } from './pagination-utils';
 import { getComponentCss } from './pagination-styles';
+import { getIntlFromAria } from '../../utils/getIntlFromAria';
 
 const propTypes: Omit<PropTypes<typeof Pagination>, 'maxNumberOfPageLinks'> = {
   totalItemsCount: AllowedTypes.number,
