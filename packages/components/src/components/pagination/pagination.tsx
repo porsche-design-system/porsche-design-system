@@ -11,13 +11,17 @@ import {
   warnIfDeprecatedPropIsUsed,
 } from '../../utils';
 import type { BreakpointCustomizable, PropTypes, Theme } from '../../types';
-import type {
+import {
+  createPaginationItems,
+  getCurrentActivePage,
+  getIntlFromAria,
+  getTotalPages,
+  ItemType,
   PaginationAriaInternationalization,
   PaginationInternationalization,
   PaginationMaxNumberOfPageLinks,
   PaginationUpdateEventDetail,
 } from './pagination-utils';
-import { createPaginationItems, getCurrentActivePage, getTotalPages, ItemType } from './pagination-utils';
 import { getComponentCss } from './pagination-styles';
 
 const propTypes: Omit<PropTypes<typeof Pagination>, 'maxNumberOfPageLinks'> = {
@@ -155,7 +159,7 @@ export class Pagination {
       pageTotal,
       showLastPage: this.showLastPage,
     });
-    const parsedIntl = parseJSONAttribute(this.intl);
+    const parsedIntl = parseJSONAttribute(this.intl || getIntlFromAria(this.aria));
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
