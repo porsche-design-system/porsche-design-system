@@ -171,4 +171,8 @@ describe('getIntlFromAria', () => {
       page: 'Page {{value}}',
     });
   });
+
+  it('should return empty object when aria is undefined', () => {
+    expect(getIntlFromAria(undefined)).toEqual({});
+  });
 });
