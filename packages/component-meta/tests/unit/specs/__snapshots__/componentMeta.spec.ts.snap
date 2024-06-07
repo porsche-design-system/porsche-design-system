@@ -8903,6 +8903,9 @@ exports[`should match snapshot 1`] = `
   },
   "p-segmented-control-item": {
     "allowedPropValues": {
+      "aria": {
+        "aria-label": "string",
+      },
       "disabled": "boolean",
       "icon": [
         "",
@@ -9116,7 +9119,7 @@ exports[`should match snapshot 1`] = `
         "number",
       ],
     },
-    "hasAriaProp": false,
+    "hasAriaProp": true,
     "hasEvent": false,
     "hasObserveAttributes": false,
     "hasObserveChildren": false,
@@ -9133,6 +9136,7 @@ exports[`should match snapshot 1`] = `
       "p-icon",
     ],
     "props": {
+      "aria": null,
       "disabled": false,
       "icon": null,
       "iconSource": null,
@@ -9140,6 +9144,15 @@ exports[`should match snapshot 1`] = `
       "value": null,
     },
     "propsMeta": {
+      "aria": {
+        "allowedValues": {
+          "aria-label": "string",
+        },
+        "defaultValue": null,
+        "description": "Add ARIA attributes.",
+        "isAria": true,
+        "type": "SegmentedControlItemAriaAttribute",
+      },
       "disabled": {
         "allowedValues": "boolean",
         "defaultValue": false,
