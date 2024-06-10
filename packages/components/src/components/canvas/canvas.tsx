@@ -1,6 +1,6 @@
 import type { PropTypes } from '../../types';
 import { AllowedTypes, attachComponentCss, getPrefixedTagNames, validateProps } from '../../utils';
-import { Component, Element, EventEmitter, h, type JSX, Prop, Event, State } from '@stencil/core';
+import { Component, Element, EventEmitter, h, type JSX, Prop, Event, State, Host, Fragment } from '@stencil/core';
 import { getComponentCss } from './canvas-styles';
 import { CANVAS_SIDEBAR_WIDTHS, type CanvasSidebarWidth } from './canvas-utils';
 import { breakpointM } from '@porsche-design-system/utilities-v2';
@@ -64,75 +64,73 @@ export class Canvas {
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
     return (
-      <div class="canvas">
-        <header part="header">
-          <slot name="header" />
-        </header>
-        <main part="main">
-          <slot />
-        </main>
-        <footer part="footer">
-          <slot name="footer" />
-        </footer>
-        {this.isDesktopView ? (
-          <aside
-            part="sidebar-start"
-            // "inert" will be known from React 19 onwards, see https://github.com/facebook/react/pull/24730
-            // eslint-disable-next-line
-            /* @ts-ignore */
-            inert={this.sidebarStartOpen ? null : true}
-          >
-            <PrefixedTagNames.pButtonPure
-              class="close"
-              icon="close"
-              variant="secondary"
-              hideLabel
-              onClick={this.onCloseSidebarStart}
+      <Host>
+        <div class="canvas">
+          <header part="header">
+            <slot name="header" />
+          </header>
+          <main part="main">
+            <slot />
+          </main>
+          <footer part="footer">
+            <slot name="footer" />
+          </footer>
+          {this.isDesktopView && (
+            <Fragment>
+              <aside
+                part="sidebar-start"
+                // "inert" will be known from React 19 onwards, see https://github.com/facebook/react/pull/24730
+                // eslint-disable-next-line
+                /* @ts-ignore */
+                inert={this.sidebarStartOpen ? null : true}
+              >
+                <PrefixedTagNames.pButtonPure
+                  class="close"
+                  icon="close"
+                  variant="secondary"
+                  hideLabel
+                  onClick={this.onCloseSidebarStart}
+                >
+                  Close Sidebar
+                </PrefixedTagNames.pButtonPure>
+                <slot name="sidebar-start" />
+              </aside>
+              <aside
+                part="sidebar-end"
+                // "inert" will be known from React 19 onwards, see https://github.com/facebook/react/pull/24730
+                // eslint-disable-next-line
+                /* @ts-ignore */
+                inert={this.sidebarEndOpen ? null : true}
+              >
+                <PrefixedTagNames.pButtonPure
+                  class="close"
+                  icon="close"
+                  variant="secondary"
+                  hideLabel
+                  onClick={this.onCloseSidebarEnd}
+                >
+                  Close Sidebar
+                </PrefixedTagNames.pButtonPure>
+                <slot name="sidebar-end" />
+              </aside>
+            </Fragment>
+          )}
+        </div>
+        {!this.isDesktopView && (
+          <Fragment>
+            <PrefixedTagNames.pFlyout
+              open={this.sidebarStartOpen}
+              position="start"
+              onDismiss={this.onCloseSidebarStart}
             >
-              Close Sidebar
-            </PrefixedTagNames.pButtonPure>
-            <slot name="sidebar-start" />
-          </aside>
-        ) : (
-          <PrefixedTagNames.pFlyout
-            class="flyout"
-            open={this.sidebarStartOpen}
-            position="start"
-            onDismiss={this.onCloseSidebarStart}
-          >
-            <slot name="sidebar-start" />
-          </PrefixedTagNames.pFlyout>
+              <slot name="sidebar-start" />
+            </PrefixedTagNames.pFlyout>
+            <PrefixedTagNames.pFlyout open={this.sidebarEndOpen} position="end" onDismiss={this.onCloseSidebarEnd}>
+              <slot name="sidebar-end" />
+            </PrefixedTagNames.pFlyout>
+          </Fragment>
         )}
-        {this.isDesktopView ? (
-          <aside
-            part="sidebar-end"
-            // "inert" will be known from React 19 onwards, see https://github.com/facebook/react/pull/24730
-            // eslint-disable-next-line
-            /* @ts-ignore */
-            inert={this.sidebarEndOpen ? null : true}
-          >
-            <PrefixedTagNames.pButtonPure
-              class="close"
-              icon="close"
-              variant="secondary"
-              hideLabel
-              onClick={this.onCloseSidebarEnd}
-            >
-              Close Sidebar
-            </PrefixedTagNames.pButtonPure>
-            <slot name="sidebar-end" />
-          </aside>
-        ) : (
-          <PrefixedTagNames.pFlyout
-            class="flyout"
-            open={this.sidebarEndOpen}
-            position="end"
-            onDismiss={this.onCloseSidebarEnd}
-          >
-            <slot name="sidebar-end" />
-          </PrefixedTagNames.pFlyout>
-        )}
-      </div>
+      </Host>
     );
   }
 

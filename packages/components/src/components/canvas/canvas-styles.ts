@@ -11,7 +11,7 @@ const gridProductiveGap = gridGap.replace('36px', '24px');
 const mediaQueryDesktopView = getMediaQueryMin('m');
 const sidebarWidths: { [key in CanvasSidebarWidth]: string } = {
   medium: '320px',
-  large: '480px',
+  large: '480px', // TODO: won't work at viewport 1000px when both sidebars are opened
 };
 
 export const getComponentCss = (
@@ -62,25 +62,22 @@ export const getComponentCss = (
         gridArea: 'footer',
       },
       aside: {
+        // TODO: box-shadows or colored surface must be defined, design is missing
         position: 'relative',
         transition: getTransition('margin'),
         '&:first-of-type': {
           gridArea: 'sidebar-start',
-          [mediaQueryDesktopView]: {
-            width: `var(${cssVariableSidebarStartWidth}, ${sidebarWidths[sidebarStartWidth]})`,
-            marginInlineStart: isSidebarStartOpen
-              ? 0
-              : `calc(var(${cssVariableSidebarStartWidth}, ${sidebarWidths[sidebarStartWidth]}) * -1)`,
-          },
+          width: `var(${cssVariableSidebarStartWidth}, ${sidebarWidths[sidebarStartWidth]})`,
+          marginInlineStart: isSidebarStartOpen
+            ? 0
+            : `calc(var(${cssVariableSidebarStartWidth}, ${sidebarWidths[sidebarStartWidth]}) * -1)`,
         },
         '&:last-of-type': {
           gridArea: 'sidebar-end',
-          [mediaQueryDesktopView]: {
-            width: `var(${cssVariableSidebarEndWidth}, ${sidebarWidths[sidebarEndWidth]})`,
-            marginInlineEnd: isSidebarEndOpen
-              ? 0
-              : `calc(var(${cssVariableSidebarEndWidth}, ${sidebarWidths[sidebarEndWidth]}) * -1)`,
-          },
+          width: `var(${cssVariableSidebarEndWidth}, ${sidebarWidths[sidebarEndWidth]})`,
+          marginInlineEnd: isSidebarEndOpen
+            ? 0
+            : `calc(var(${cssVariableSidebarEndWidth}, ${sidebarWidths[sidebarEndWidth]}) * -1)`,
         },
       },
     },
@@ -96,11 +93,9 @@ export const getComponentCss = (
       },
     },
     close: {
+      // TODO: must be positioned properly, design is missing
       position: 'absolute',
       inset: `${spacingStaticXSmall} ${spacingStaticXSmall} auto auto`,
-    },
-    flyout: {
-      position: 'absolute', // ensures flyout does not reserve space within css grid
     },
   });
 };
