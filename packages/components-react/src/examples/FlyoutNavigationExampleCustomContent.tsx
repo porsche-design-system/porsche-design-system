@@ -41,7 +41,7 @@ export const FlyoutNavigationExampleCustomContentPage = (): JSX.Element => {
             label="Some label"
             description="Some Description"
             weight="semi-bold"
-            compact="true"
+            compact={true}
             aspectRatio={{ base: '4:3', xs: '16:9', s: '1:1' }}
           >
             <img

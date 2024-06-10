@@ -45,6 +45,11 @@ An icon can be added via the `icon` or `iconSource` property.
 
 <Playground :markup="withIconsMarkup" :config="config"></Playground>
 
+### <A11yIcon></A11yIcon> Accessibility hints
+
+- If an icon only is used, it is **mandatory** to also provide an accessible name (aria-label) through the `aria`
+  property.
+
 ## Background Color (deprecated)
 
 <Notification heading="Important note" heading-tag="h3" state="error">
@@ -89,7 +94,7 @@ import { SEGMENTED_CONTROL_BACKGROUND_COLORS } from './segmented-control/segment
   
 @Component
 export default class Code extends Vue {
-  config = { themeable: true };
+  config = { themeable: true, spacing: 'block' };
   eventHandlingUrl = getAnchorLink('event-handling');
 
   shirtSizeItems = `<p-segmented-control-item value="xs">XS</p-segmented-control-item>
@@ -103,6 +108,12 @@ export default class Code extends Vue {
   <p-segmented-control-item value="3">Option 3</p-segmented-control-item>
   <p-segmented-control-item value="4" disabled>Option 4</p-segmented-control-item>
   <p-segmented-control-item value="5">Option 5</p-segmented-control-item>`;
+
+  optionItemsWithoutLabel = `<p-segmented-control-item value="1"></p-segmented-control-item>
+  <p-segmented-control-item value="2"></p-segmented-control-item>
+  <p-segmented-control-item value="3"></p-segmented-control-item>
+  <p-segmented-control-item value="4" disabled></p-segmented-control-item>
+  <p-segmented-control-item value="5"></p-segmented-control-item>`;
 
   basicMarkup = `<p-segmented-control aria-label="Choose a t-shirt size">
   ${this.shirtSizeItems}
@@ -126,14 +137,22 @@ export default class Code extends Vue {
 
   get withIconsMarkup() {
     let i = 0;
+let z = 0;
     const icons = ['truck', 'car', 'bell', 'garage', require('../../assets/icon-custom-kaixin.svg')]; 
     const items = this.optionItems.replace(/value="\d"/g, (match) => {
       const attr = icons[i].includes('.svg') ? 'icon-source' : 'icon';
       return `${match} ${attr}="${icons[i++]}"`;
     });
+    const itemsWithoutLabels = this.optionItemsWithoutLabel.replace(/value="\d"/g, (match) => {
+      const attr = icons[z].includes('.svg') ? 'icon-source' : 'icon';
+      return `${match} ${attr}="${icons[z++]}" aria="{ 'aria-label': 'Some descriptive label'}"`;
+    });
 
     return `<p-segmented-control aria-label="Choose an option">
   ${items}
+</p-segmented-control>
+<p-segmented-control aria-label="Choose an option">
+  ${itemsWithoutLabels}
 </p-segmented-control>`;
   };
 

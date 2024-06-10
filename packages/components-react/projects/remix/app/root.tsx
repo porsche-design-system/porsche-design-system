@@ -10,8 +10,8 @@ export const meta: MetaFunction = () => [
   { charset: 'utf-8' },
   { title: 'Porsche Design System - Remix' },
   {
-    name: "viewport",
-    content: "width=device-width,initial-scale=1",
+    name: 'viewport',
+    content: 'width=device-width,initial-scale=1',
   },
 ];
 
@@ -27,7 +27,7 @@ export default function App(): JSX.Element {
         {HeadPartials && <HeadPartials />}
       </head>
       <body>
-        <select value={useLocation().pathname} onChange={(e) => navigate(e.target.value)}>
+        <select value={useLocation().pathname} onChange={(e) => navigate(e.target.value)} style={{ width: '200px' }}>
           <option disabled value="">
             Select a page
           </option>

@@ -3406,6 +3406,7 @@ exports[`should match snapshot 1`] = `
       "aria": {
         "aria-label": "string",
       },
+      "disableBackdropClick": "boolean",
       "open": "boolean",
       "position": [
         "start",
@@ -3437,7 +3438,7 @@ exports[`should match snapshot 1`] = `
     "hasAriaProp": true,
     "hasEvent": true,
     "hasObserveAttributes": false,
-    "hasObserveChildren": false,
+    "hasObserveChildren": true,
     "hasSlot": true,
     "isChunked": true,
     "isDelegatingFocus": false,
@@ -3453,6 +3454,7 @@ exports[`should match snapshot 1`] = `
     ],
     "props": {
       "aria": null,
+      "disableBackdropClick": false,
       "open": false,
       "position": "end",
       "theme": "light",
@@ -3466,6 +3468,12 @@ exports[`should match snapshot 1`] = `
         "description": "Add ARIA attributes.",
         "isAria": true,
         "type": "FlyoutAriaAttribute",
+      },
+      "disableBackdropClick": {
+        "allowedValues": "boolean",
+        "defaultValue": false,
+        "description": "If true, the flyout will not be closable via backdrop click.",
+        "type": "boolean",
       },
       "open": {
         "allowedValues": "boolean",
@@ -7614,6 +7622,7 @@ exports[`should match snapshot 1`] = `
     ],
     "deprecatedProps": [
       "disableCloseButton",
+      "heading",
     ],
     "eventNames": [
       "close",
@@ -7633,7 +7642,7 @@ exports[`should match snapshot 1`] = `
     "hasAriaProp": true,
     "hasEvent": true,
     "hasObserveAttributes": false,
-    "hasObserveChildren": false,
+    "hasObserveChildren": true,
     "hasSlot": true,
     "isChunked": true,
     "isDelegatingFocus": false,
@@ -7641,6 +7650,7 @@ exports[`should match snapshot 1`] = `
     "isThemeable": true,
     "namedSlots": [
       "heading",
+      "header",
       "footer",
     ],
     "nestedComponents": [
@@ -7705,7 +7715,8 @@ exports[`should match snapshot 1`] = `
       "heading": {
         "allowedValues": "string",
         "defaultValue": null,
-        "description": "The title of the modal",
+        "description": "@deprecated since v3.0.0, will be removed with next major release, use \`header\` slot instead The title of the modal",
+        "isDeprecated": true,
         "type": "string",
       },
       "open": {
@@ -8892,6 +8903,9 @@ exports[`should match snapshot 1`] = `
   },
   "p-segmented-control-item": {
     "allowedPropValues": {
+      "aria": {
+        "aria-label": "string",
+      },
       "disabled": "boolean",
       "icon": [
         "",
@@ -9105,7 +9119,7 @@ exports[`should match snapshot 1`] = `
         "number",
       ],
     },
-    "hasAriaProp": false,
+    "hasAriaProp": true,
     "hasEvent": false,
     "hasObserveAttributes": false,
     "hasObserveChildren": false,
@@ -9122,6 +9136,7 @@ exports[`should match snapshot 1`] = `
       "p-icon",
     ],
     "props": {
+      "aria": null,
       "disabled": false,
       "icon": null,
       "iconSource": null,
@@ -9129,6 +9144,15 @@ exports[`should match snapshot 1`] = `
       "value": null,
     },
     "propsMeta": {
+      "aria": {
+        "allowedValues": {
+          "aria-label": "string",
+        },
+        "defaultValue": null,
+        "description": "Add ARIA attributes.",
+        "isAria": true,
+        "type": "SegmentedControlItemAriaAttribute",
+      },
       "disabled": {
         "allowedValues": "boolean",
         "defaultValue": false,

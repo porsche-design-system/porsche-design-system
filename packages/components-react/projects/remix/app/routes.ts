@@ -13,11 +13,59 @@ export const routes: Route[] = [
     path: '/overview',
   },
   {
-    name: 'Accordion Layout Shift',
+    name: 'AccordionLayoutShift',
     path: '/accordion-layout-shift',
   },
   {
-    name: 'Modal Page',
+    name: 'ModalPage',
     path: '/modal-standalone',
+  },
+  {
+    name: 'ModalBasic',
+    path: '/modal-basic',
+  },
+  {
+    name: 'BannerBasic',
+    path: '/banner-basic',
+  },
+  {
+    name: 'BannerPrefixed',
+    path: '/banner-prefixed',
+  },
+  {
+    name: 'FlyoutBasic',
+    path: '/flyout-basic',
+  },
+  {
+    name: 'FlyoutPrefixed',
+    path: '/flyout-prefixed',
+  },
+  {
+    name: 'FlyoutNavigationBasic',
+    path: '/flyout-navigation-basic',
+  },
+  {
+    name: 'FlyoutNavigationPrefixed',
+    path: '/flyout-navigation-prefixed',
+  },
+  {
+    name: 'ModalBasic',
+    path: '/modal-basic',
+  },
+  {
+    name: 'ModalPrefixed',
+    path: '/modal-prefixed',
+  },
+  {
+    name: 'Overview',
+    path: '/overview',
+  },
+  {
+    name: 'ToastBasic',
+    path: '/toast-basic',
+  },
+  {
+    name: 'ToastPrefixed',
+    path: '/toast-prefixed',
   },
 ];

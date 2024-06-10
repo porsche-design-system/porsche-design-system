@@ -1,6 +1,13 @@
 export { default as EventsPage } from './EventsPage.vue';
 export { default as OverviewPage } from './OverviewPage.vue';
-export { default as OverviewNotificationsPage } from './OverviewNotificationsPage.vue';
+export { default as BannerBasicPage } from './BannerBasicPage.vue';
+export { default as BannerPrefixedPage } from './BannerPrefixedPage.vue';
+export { default as ModalBasicPage } from './ModalBasicPage.vue';
+export { default as ModalPrefixedPage } from './ModalPrefixedPage.vue';
+export { default as FlyoutBasicPage } from './FlyoutBasicPage.vue';
+export { default as FlyoutPrefixedPage } from './FlyoutPrefixedPage.vue';
+export { default as FlyoutNavigationBasicPage } from './FlyoutNavigationBasicPage.vue';
+export { default as FlyoutNavigationPrefixedPage } from './FlyoutNavigationPrefixedPage.vue';
 export { default as ThemeInjectionPage } from './ThemeInjectionPage.vue';
 export { default as ToastBasicPage } from './ToastBasicPage.vue';
 export { default as ToastPrefixedPage } from './ToastPrefixedPage.vue';

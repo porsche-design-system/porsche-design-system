@@ -90,13 +90,13 @@ export class FlyoutNavigation {
     return hasPropValueChanged(newVal, oldVal);
   }
 
-  public disconnectedCallback(): void {
-    setScrollLock(false);
-  }
-
   public componentDidRender(): void {
     // showModal needs to be called after render cycle to prepare visibility states of dialog in order to focus the dismiss button correctly
     this.setDialogVisibility(this.open);
+  }
+
+  public disconnectedCallback(): void {
+    setScrollLock(false);
   }
 
   public render(): JSX.Element {
@@ -109,6 +109,9 @@ export class FlyoutNavigation {
 
     return (
       <dialog
+        // "inert" will be known from React 19 onwards, see https://github.com/facebook/react/pull/24730
+        // eslint-disable-next-line
+        /* @ts-ignore */
         inert={this.open ? null : true} // prevents focusable elements during fade-out transition
         tabIndex={-1} // dialog always has a dismiss button to be focused
         ref={(ref) => (this.dialog = ref)}
@@ -157,8 +160,11 @@ export class FlyoutNavigation {
     this.dismissDialog();
   };
 
+  private dismissDialog = (): void => {
+    this.dismiss.emit();
+  };
+
   private setDialogVisibility(isOpen: boolean): void {
-    // TODO: SupportsNativeDialog check
     // Only call showModal/close on dialog when state changes
     if (isOpen === true && !this.dialog.open) {
       this.dialog.showModal();
@@ -166,8 +172,4 @@ export class FlyoutNavigation {
       this.dialog.close();
     }
   }
-
-  private dismissDialog = (): void => {
-    this.dismiss.emit();
-  };
 }

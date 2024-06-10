@@ -1,14 +1,14 @@
-import { getButtonAttributes, getIconColor } from './segmented-control-item-utils';
+import { getSegmentedControlItemAriaAttributes, getIconColor } from './segmented-control-item-utils';
 import { IconColor } from '../../icon/icon-utils';
 
 describe('getButtonAttributes()', () => {
-  it.each<Parameters<typeof getButtonAttributes>>([
-    [false, false],
+  it.each<Parameters<typeof getSegmentedControlItemAriaAttributes>>([
+    [false, false, { 'aria-label': 'Some label' }],
     [true, true],
-    [true, false],
+    [true, false, { 'aria-label': 'Some label' }],
     [false, true],
   ])('should return correct css for isSelected: %s and isDisabled: %s', (...args) => {
-    expect(getButtonAttributes(...args)).toMatchSnapshot();
+    expect(getSegmentedControlItemAriaAttributes(...args)).toMatchSnapshot();
   });
 });
 

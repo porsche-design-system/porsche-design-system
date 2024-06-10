@@ -85,8 +85,8 @@ a {
   display: grid;
   padding: 0 calc(50% - var(--pds-internal-grid-margin, 0px) - 1280px);
   grid-gap: clamp(16px, 1.25vw + 12px, 36px);
-  max-width: 2560px;
-  min-width: 320px;
+  max-width: var(--pds-internal-grid-width-max, 2560px);
+  min-width: var(--pds-internal-grid-width-min, 320px);
   box-sizing: content-box;
   grid-template-columns:
     [full-start] minmax(

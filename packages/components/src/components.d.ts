@@ -47,7 +47,7 @@ import { PopoverAriaAttribute, PopoverDirection } from "./components/popover/pop
 import { RadioButtonWrapperState } from "./components/radio-button-wrapper/radio-button-wrapper-utils";
 import { ScrollerAlignScrollIndicator, ScrollerAriaAttribute, ScrollerGradientColor, ScrollerGradientColorScheme, ScrollerScrollIndicatorPosition, ScrollerScrollToPosition } from "./components/scroller/scroller-utils";
 import { SegmentedControlBackgroundColor, SegmentedControlColumns, SegmentedControlUpdateEventDetail } from "./components/segmented-control/segmented-control/segmented-control-utils";
-import { SegmentedControlItemIcon } from "./components/segmented-control/segmented-control-item/segmented-control-item-utils";
+import { SegmentedControlItemAriaAttribute, SegmentedControlItemIcon } from "./components/segmented-control/segmented-control-item/segmented-control-item-utils";
 import { SelectDropdownDirection, SelectState, SelectUpdateEventDetail } from "./components/select/select/select-utils";
 import { SelectWrapperDropdownDirection, SelectWrapperState } from "./components/select-wrapper/select-wrapper/select-wrapper-utils";
 import { SpinnerAriaAttribute, SpinnerSize } from "./components/spinner/spinner-utils";
@@ -108,7 +108,7 @@ export { PopoverAriaAttribute, PopoverDirection } from "./components/popover/pop
 export { RadioButtonWrapperState } from "./components/radio-button-wrapper/radio-button-wrapper-utils";
 export { ScrollerAlignScrollIndicator, ScrollerAriaAttribute, ScrollerGradientColor, ScrollerGradientColorScheme, ScrollerScrollIndicatorPosition, ScrollerScrollToPosition } from "./components/scroller/scroller-utils";
 export { SegmentedControlBackgroundColor, SegmentedControlColumns, SegmentedControlUpdateEventDetail } from "./components/segmented-control/segmented-control/segmented-control-utils";
-export { SegmentedControlItemIcon } from "./components/segmented-control/segmented-control-item/segmented-control-item-utils";
+export { SegmentedControlItemAriaAttribute, SegmentedControlItemIcon } from "./components/segmented-control/segmented-control-item/segmented-control-item-utils";
 export { SelectDropdownDirection, SelectState, SelectUpdateEventDetail } from "./components/select/select/select-utils";
 export { SelectWrapperDropdownDirection, SelectWrapperState } from "./components/select-wrapper/select-wrapper/select-wrapper-utils";
 export { SpinnerAriaAttribute, SpinnerSize } from "./components/spinner/spinner-utils";
@@ -667,6 +667,10 @@ export namespace Components {
          */
         "aria"?: SelectedAriaAttributes<FlyoutAriaAttribute>;
         /**
+          * If true, the flyout will not be closable via backdrop click.
+         */
+        "disableBackdropClick"?: boolean;
+        /**
           * If true, the flyout is open.
          */
         "open": boolean;
@@ -1203,7 +1207,7 @@ export namespace Components {
          */
         "fullscreen"?: BreakpointCustomizable<boolean>;
         /**
-          * The title of the modal
+          * @deprecated since v3.0.0, will be removed with next major release, use `header` slot instead The title of the modal
          */
         "heading"?: string;
         /**
@@ -1499,6 +1503,10 @@ export namespace Components {
         "value"?: string | number;
     }
     interface PSegmentedControlItem {
+        /**
+          * Add ARIA attributes.
+         */
+        "aria"?: SelectedAriaAttributes<SegmentedControlItemAriaAttribute>;
         /**
           * Disables the button. No events will be triggered while disabled state is active.
          */
@@ -3419,6 +3427,10 @@ declare namespace LocalJSX {
          */
         "aria"?: SelectedAriaAttributes<FlyoutAriaAttribute>;
         /**
+          * If true, the flyout will not be closable via backdrop click.
+         */
+        "disableBackdropClick"?: boolean;
+        /**
           * Emitted when the component requests to be dismissed.
          */
         "onDismiss"?: (event: PFlyoutCustomEvent<void>) => void;
@@ -3979,7 +3991,7 @@ declare namespace LocalJSX {
          */
         "fullscreen"?: BreakpointCustomizable<boolean>;
         /**
-          * The title of the modal
+          * @deprecated since v3.0.0, will be removed with next major release, use `header` slot instead The title of the modal
          */
         "heading"?: string;
         /**
@@ -4307,6 +4319,10 @@ declare namespace LocalJSX {
         "value"?: string | number;
     }
     interface PSegmentedControlItem {
+        /**
+          * Add ARIA attributes.
+         */
+        "aria"?: SelectedAriaAttributes<SegmentedControlItemAriaAttribute>;
         /**
           * Disables the button. No events will be triggered while disabled state is active.
          */
