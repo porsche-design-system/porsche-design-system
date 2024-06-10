@@ -18,4 +18,6 @@ export type BaseProps = DOMAttributes<{}> &
     | 'tabIndex'
     | 'title'
     | 'translate'
+    // WAI-ARIA
+    | 'role'
   >;
