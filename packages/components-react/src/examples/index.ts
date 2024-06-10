@@ -1,6 +1,7 @@
 export * from './AccordionExample';
 export * from './BannerExample';
 export * from './ButtonExampleForm';
+export * from './CanvasExample';
 export * from './CarouselExampleDynamicSlides';
 export * from './CarouselExampleEvents';
 export * from './CarouselExampleJumpToSlide';

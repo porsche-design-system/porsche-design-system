@@ -2183,8 +2183,8 @@ declare global {
         new (): HTMLPButtonTileElement;
     };
     interface HTMLPCanvasElementEventMap {
-        "closeSidebarStart": void;
-        "closeSidebarEnd": void;
+        "dismissSidebarStart": void;
+        "dismissSidebarEnd": void;
     }
     interface HTMLPCanvasElement extends Components.PCanvas, HTMLStencilElement {
         addEventListener<K extends keyof HTMLPCanvasElementEventMap>(type: K, listener: (this: HTMLPCanvasElement, ev: PCanvasCustomEvent<HTMLPCanvasElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
@@ -3181,11 +3181,11 @@ declare namespace LocalJSX {
         /**
           * Emitted when the component requests to close the sidebar on the end side.
          */
-        "onCloseSidebarEnd"?: (event: PCanvasCustomEvent<void>) => void;
+        "onDismissSidebarEnd"?: (event: PCanvasCustomEvent<void>) => void;
         /**
           * Emitted when the component requests to close the sidebar on the start side.
          */
-        "onCloseSidebarStart"?: (event: PCanvasCustomEvent<void>) => void;
+        "onDismissSidebarStart"?: (event: PCanvasCustomEvent<void>) => void;
         /**
           * Open Sidebar on the end side
          */

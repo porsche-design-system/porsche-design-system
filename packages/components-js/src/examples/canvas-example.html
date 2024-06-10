@@ -35,8 +35,8 @@
 
 <script>
   const canvas = document.querySelector('p-canvas');
-  canvas.addEventListener('closeSidebarStart', () => (canvas.sidebarStartOpen = false));
-  canvas.addEventListener('closeSidebarEnd', () => (canvas.sidebarEndOpen = false));
+  canvas.addEventListener('dismissSidebarStart', () => (canvas.sidebarStartOpen = false));
+  canvas.addEventListener('dismissSidebarEnd', () => (canvas.sidebarEndOpen = false));
   document
     .getElementById('open-sidebar-start')
     .addEventListener('click', () => (canvas.sidebarStartOpen = !canvas.sidebarStartOpen));

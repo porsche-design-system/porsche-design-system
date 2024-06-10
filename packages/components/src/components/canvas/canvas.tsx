@@ -32,10 +32,10 @@ export class Canvas {
   @Prop() public sidebarEndWidth?: CanvasSidebarWidth = 'medium';
 
   /** Emitted when the component requests to close the sidebar on the start side. */
-  @Event({ bubbles: false }) public closeSidebarStart?: EventEmitter<void>;
+  @Event({ bubbles: false }) public dismissSidebarStart?: EventEmitter<void>;
 
   /** Emitted when the component requests to close the sidebar on the end side. */
-  @Event({ bubbles: false }) public closeSidebarEnd?: EventEmitter<void>;
+  @Event({ bubbles: false }) public dismissSidebarEnd?: EventEmitter<void>;
 
   @State() private isDesktopView = false;
 
@@ -89,7 +89,7 @@ export class Canvas {
                   icon="close"
                   variant="secondary"
                   hideLabel
-                  onClick={this.onCloseSidebarStart}
+                  onClick={this.onDismissSidebarStart}
                 >
                   Close Sidebar
                 </PrefixedTagNames.pButtonPure>
@@ -107,7 +107,7 @@ export class Canvas {
                   icon="close"
                   variant="secondary"
                   hideLabel
-                  onClick={this.onCloseSidebarEnd}
+                  onClick={this.onDismissSidebarEnd}
                 >
                   Close Sidebar
                 </PrefixedTagNames.pButtonPure>
@@ -121,11 +121,11 @@ export class Canvas {
             <PrefixedTagNames.pFlyout
               open={this.sidebarStartOpen}
               position="start"
-              onDismiss={this.onCloseSidebarStart}
+              onDismiss={this.onDismissSidebarStart}
             >
               <slot name="sidebar-start" />
             </PrefixedTagNames.pFlyout>
-            <PrefixedTagNames.pFlyout open={this.sidebarEndOpen} position="end" onDismiss={this.onCloseSidebarEnd}>
+            <PrefixedTagNames.pFlyout open={this.sidebarEndOpen} position="end" onDismiss={this.onDismissSidebarEnd}>
               <slot name="sidebar-end" />
             </PrefixedTagNames.pFlyout>
           </Fragment>
@@ -138,11 +138,11 @@ export class Canvas {
     this.isDesktopView = !!e.matches;
   };
 
-  private onCloseSidebarStart = (): void => {
-    this.closeSidebarStart.emit();
+  private onDismissSidebarStart = (): void => {
+    this.dismissSidebarStart.emit();
   };
 
-  private onCloseSidebarEnd = (): void => {
-    this.closeSidebarEnd.emit();
+  private onDismissSidebarEnd = (): void => {
+    this.dismissSidebarEnd.emit();
   };
 }
