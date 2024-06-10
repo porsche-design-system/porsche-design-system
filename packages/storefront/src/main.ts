@@ -2,6 +2,7 @@ import Vue, { VueConstructor } from 'vue';
 import App from './App.vue';
 import router from './router';
 import store from './store';
+import PlaygroundConfigurator from '@/components/PlaygroundConfigurator.vue';
 import Playground from '@/components/Playground.vue';
 import OpenBugTemplateInStackBlitz from '@/components/OpenBugTemplateInStackBlitz.vue';
 import TableOfContents from '@/components/TableOfContents.vue';
@@ -49,6 +50,7 @@ Vue.use({
     vue.component('PartialDocs', PartialDocs);
     // eslint-disable-next-line vue/multi-word-component-names
     vue.component('Notification', Notification);
+    vue.component('PlaygroundConfigurator', PlaygroundConfigurator);
     // eslint-disable-next-line vue/multi-word-component-names
     vue.component('Playground', Playground);
     vue.component('PlaygroundButton', PlaygroundButton);

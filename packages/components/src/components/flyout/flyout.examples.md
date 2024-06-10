@@ -36,7 +36,7 @@ The size of `p-flyout` adjusts itself to the content with a predefined **min/max
   for less critical content, such as legal information or FAQs, which provides further details to the user. It appears
   when scrolling to the end of the flyout or when there is available space to accommodate the content.
 
-<Playground :frameworkMarkup="codeSamples" :markup="codeSamples['vanilla-js']" :config="config"></Playground>
+<PlaygroundConfigurator :component="'p-flyout'" @markup-changed="registerEvents"></PlaygroundConfigurator>
 
 ### <A11yIcon></A11yIcon> Accessibility hints
 
@@ -107,7 +107,7 @@ The flyout component has some values which can be overwritten by CSS Custom Prop
 <script lang="ts">
 import Vue from 'vue';
 import Component from 'vue-class-component'; 
-import { getFlyoutCodeSamples } from "@porsche-design-system/shared";  
+import { getFlyoutCodeSamples, getFlyoutExamples } from "@porsche-design-system/shared";  
 import ExampleStylesGrid from '@/pages/patterns/styles/example-grid.vue';
 
 @Component({
@@ -119,6 +119,7 @@ export default class Code extends Vue {
   config = { themeable: true };
   flyouts = [];
   codeSamples = getFlyoutCodeSamples();
+  test = getFlyoutExamples('p-flyout', {}, { header: '<p-heading slot="header" size="large" tag="h2">Some Heading</p-heading>' });
 
   mounted() {
     this.registerEvents();
