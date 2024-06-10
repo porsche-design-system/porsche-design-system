@@ -1,8 +1,9 @@
 import type { PropTypes } from '../../types';
 import { AllowedTypes, attachComponentCss, getPrefixedTagNames, validateProps } from '../../utils';
-import { Component, Element, EventEmitter, h, type JSX, Prop, Event } from '@stencil/core';
+import { Component, Element, EventEmitter, h, type JSX, Prop, Event, State } from '@stencil/core';
 import { getComponentCss } from './canvas-styles';
 import { CANVAS_SIDEBAR_WIDTHS, type CanvasSidebarWidth } from './canvas-utils';
+import { breakpointM } from '@porsche-design-system/utilities-v2';
 
 const propTypes: PropTypes<typeof Canvas> = {
   sidebarLeftOpen: AllowedTypes.boolean,
@@ -36,6 +37,19 @@ export class Canvas {
   /** Emitted when the component requests to close the sidebar on the right side. */
   @Event({ bubbles: false }) public closeSidebarRight?: EventEmitter<void>;
 
+  @State() private isDesktopView = false;
+
+  private mediaQueryDesktopView = window.matchMedia(`(min-width: ${breakpointM}px)`);
+
+  public connectedCallback(): void {
+    this.handleMediaQuery(this.mediaQueryDesktopView);
+    this.mediaQueryDesktopView.addEventListener('change', this.handleMediaQuery);
+  }
+
+  public disconnectedCallback(): void {
+    this.mediaQueryDesktopView.removeEventListener('change', this.handleMediaQuery);
+  }
+
   public render(): JSX.Element {
     validateProps(this, propTypes);
     attachComponentCss(
@@ -60,45 +74,71 @@ export class Canvas {
         <footer part="footer">
           <slot name="footer" />
         </footer>
-        <aside
-          part="sidebar-left"
-          // "inert" will be known from React 19 onwards, see https://github.com/facebook/react/pull/24730
-          // eslint-disable-next-line
-          /* @ts-ignore */
-          inert={this.sidebarLeftOpen ? null : true}
-        >
-          <PrefixedTagNames.pButtonPure
-            class="close"
-            icon="close"
-            variant="secondary"
-            hideLabel
-            onClick={this.onCloseSidebarLeft}
+        {this.isDesktopView ? (
+          <aside
+            part="sidebar-left"
+            // "inert" will be known from React 19 onwards, see https://github.com/facebook/react/pull/24730
+            // eslint-disable-next-line
+            /* @ts-ignore */
+            inert={this.sidebarLeftOpen ? null : true}
           >
-            Close Sidebar
-          </PrefixedTagNames.pButtonPure>
-          <slot name="sidebar-left" />
-        </aside>
-        <aside
-          part="sidebar-right"
-          // "inert" will be known from React 19 onwards, see https://github.com/facebook/react/pull/24730
-          // eslint-disable-next-line
-          /* @ts-ignore */
-          inert={this.sidebarRightOpen ? null : true}
-        >
-          <PrefixedTagNames.pButtonPure
-            class="close"
-            icon="close"
-            variant="secondary"
-            hideLabel
-            onClick={this.onCloseSidebarRight}
+            <PrefixedTagNames.pButtonPure
+              class="close"
+              icon="close"
+              variant="secondary"
+              hideLabel
+              onClick={this.onCloseSidebarLeft}
+            >
+              Close Sidebar
+            </PrefixedTagNames.pButtonPure>
+            <slot name="sidebar-left" />
+          </aside>
+        ) : (
+          <PrefixedTagNames.pFlyout
+            class="flyout"
+            open={this.sidebarLeftOpen}
+            position="start"
+            onDismiss={this.onCloseSidebarLeft}
           >
-            Close Sidebar
-          </PrefixedTagNames.pButtonPure>
-          <slot name="sidebar-right" />
-        </aside>
+            <slot name="sidebar-left" />
+          </PrefixedTagNames.pFlyout>
+        )}
+        {this.isDesktopView ? (
+          <aside
+            part="sidebar-right"
+            // "inert" will be known from React 19 onwards, see https://github.com/facebook/react/pull/24730
+            // eslint-disable-next-line
+            /* @ts-ignore */
+            inert={this.sidebarRightOpen ? null : true}
+          >
+            <PrefixedTagNames.pButtonPure
+              class="close"
+              icon="close"
+              variant="secondary"
+              hideLabel
+              onClick={this.onCloseSidebarRight}
+            >
+              Close Sidebar
+            </PrefixedTagNames.pButtonPure>
+            <slot name="sidebar-right" />
+          </aside>
+        ) : (
+          <PrefixedTagNames.pFlyout
+            class="flyout"
+            open={this.sidebarRightOpen}
+            position="end"
+            onDismiss={this.onCloseSidebarRight}
+          >
+            <slot name="sidebar-right" />
+          </PrefixedTagNames.pFlyout>
+        )}
       </div>
     );
   }
+
+  private handleMediaQuery = (e: MediaQueryList | MediaQueryListEvent): void => {
+    this.isDesktopView = !!e.matches;
+  };
 
   private onCloseSidebarLeft = (): void => {
     this.closeSidebarLeft.emit();

@@ -1,12 +1,13 @@
 import { getCss } from '../../utils';
 import { addImportantToEachRule, colorSchemeStyles, getTransition, hostHiddenStyles } from '../../styles';
-import { getMediaQueryMin, spacingStaticXSmall } from '@porsche-design-system/utilities-v2';
+import { getMediaQueryMin, spacingStaticXSmall, gridGap } from '@porsche-design-system/utilities-v2';
 import { type CanvasSidebarWidth } from './canvas-utils';
 
 const cssVariableSidebarLeftWidth = '--p-canvas-sidebar-left-width';
 const cssVariableSidebarRightWidth = '--p-canvas-sidebar-right-width';
 
-const gridProductiveGap = 'clamp(16px, 1.25vw + 12px, 24px)';
+// TODO: maybe default grid gap would also work
+const gridProductiveGap = gridGap.replace('36px', '24px');
 const mediaQueryDesktopView = getMediaQueryMin('m');
 const sidebarWidths: { [key in CanvasSidebarWidth]: string } = {
   medium: '320px',
@@ -28,7 +29,6 @@ export const getComponentCss = (
           ...hostHiddenStyles,
         }),
       },
-
       ':is(header, main, footer, aside)': {
         padding: gridProductiveGap,
         boxSizing: 'border-box',
@@ -86,7 +86,8 @@ export const getComponentCss = (
     },
     canvas: {
       display: 'grid',
-      gridTemplateAreas: '"header" "sidebar-left" "main" "sidebar-right" "footer"',
+      gridTemplateRows: 'auto minmax(0, 1fr) auto',
+      gridTemplateAreas: '"header" "main" "footer"',
       minWidth: '320px',
       minHeight: '100dvh',
       [mediaQueryDesktopView]: {
@@ -98,6 +99,9 @@ export const getComponentCss = (
     close: {
       position: 'absolute',
       inset: `${spacingStaticXSmall} ${spacingStaticXSmall} auto auto`,
+    },
+    flyout: {
+      position: 'absolute', // ensures flyout does not reserve space within css grid
     },
   });
 };
