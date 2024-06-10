@@ -2267,7 +2267,7 @@ exports[`should match snapshot 1`] = `
         ],
         "defaultValue": "medium",
         "description": "Defines the width of the sidebar on the end side",
-        "type": "CanvasSidebarWidth",
+        "type": "CanvasSidebarEndWidth",
       },
       "sidebarStartOpen": {
         "allowedValues": "boolean",
@@ -2282,7 +2282,7 @@ exports[`should match snapshot 1`] = `
         ],
         "defaultValue": "medium",
         "description": "Defines the width of the sidebar on the start side",
-        "type": "CanvasSidebarWidth",
+        "type": "CanvasSidebarStartWidth",
       },
     },
     "styling": "jss",
