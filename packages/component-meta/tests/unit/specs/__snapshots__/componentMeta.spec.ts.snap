@@ -2198,6 +2198,94 @@ exports[`should match snapshot 1`] = `
     ],
     "styling": "jss",
   },
+  "p-canvas": {
+    "allowedPropValues": {
+      "sidebarEndOpen": "boolean",
+      "sidebarEndWidth": [
+        "medium",
+        "large",
+      ],
+      "sidebarStartOpen": "boolean",
+      "sidebarStartWidth": [
+        "medium",
+        "large",
+      ],
+    },
+    "eventNames": [
+      "dismissSidebarStart",
+      "dismissSidebarEnd",
+    ],
+    "eventsMeta": {
+      "dismissSidebarEnd": {
+        "description": "Emitted when the component requests to close the sidebar on the end side.",
+        "type": "void",
+      },
+      "dismissSidebarStart": {
+        "description": "Emitted when the component requests to close the sidebar on the start side.",
+        "type": "void",
+      },
+    },
+    "hasAriaProp": false,
+    "hasEvent": true,
+    "hasObserveAttributes": false,
+    "hasObserveChildren": false,
+    "hasSlot": true,
+    "isChunked": true,
+    "isDelegatingFocus": false,
+    "isInternal": false,
+    "isThemeable": false,
+    "namedSlots": [
+      "header",
+      "footer",
+      "sidebar-start",
+      "sidebar-end",
+      "sidebar-start",
+      "sidebar-end",
+    ],
+    "nestedComponents": [
+      "p-button-pure",
+      "p-flyout",
+    ],
+    "props": {
+      "sidebarEndOpen": false,
+      "sidebarEndWidth": "medium",
+      "sidebarStartOpen": false,
+      "sidebarStartWidth": "medium",
+    },
+    "propsMeta": {
+      "sidebarEndOpen": {
+        "allowedValues": "boolean",
+        "defaultValue": false,
+        "description": "Open Sidebar on the end side",
+        "type": "boolean",
+      },
+      "sidebarEndWidth": {
+        "allowedValues": [
+          "medium",
+          "large",
+        ],
+        "defaultValue": "medium",
+        "description": "Defines the width of the sidebar on the end side",
+        "type": "CanvasSidebarWidth",
+      },
+      "sidebarStartOpen": {
+        "allowedValues": "boolean",
+        "defaultValue": false,
+        "description": "Open Sidebar on the start side",
+        "type": "boolean",
+      },
+      "sidebarStartWidth": {
+        "allowedValues": [
+          "medium",
+          "large",
+        ],
+        "defaultValue": "medium",
+        "description": "Defines the width of the sidebar on the start side",
+        "type": "CanvasSidebarWidth",
+      },
+    },
+    "styling": "jss",
+  },
   "p-carousel": {
     "allowedPropValues": {
       "activeSlideIndex": "number",
