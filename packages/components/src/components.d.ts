@@ -386,21 +386,21 @@ export namespace Components {
     }
     interface PCanvas {
         /**
-          * Open Sidebar on left side
+          * Open Sidebar on the end side
          */
-        "sidebarLeftOpen"?: boolean;
+        "sidebarEndOpen"?: boolean;
         /**
-          * Defines the width of the sidebar on left side
+          * Defines the width of the sidebar on the end side
          */
-        "sidebarLeftWidth"?: CanvasSidebarWidth;
+        "sidebarEndWidth"?: CanvasSidebarWidth;
         /**
-          * Open Sidebar on right side
+          * Open Sidebar on the start side
          */
-        "sidebarRightOpen"?: boolean;
+        "sidebarStartOpen"?: boolean;
         /**
-          * Defines the width of the sidebar on right side
+          * Defines the width of the sidebar on the start side
          */
-        "sidebarRightWidth"?: CanvasSidebarWidth;
+        "sidebarStartWidth"?: CanvasSidebarWidth;
     }
     interface PCarousel {
         /**
@@ -2183,8 +2183,8 @@ declare global {
         new (): HTMLPButtonTileElement;
     };
     interface HTMLPCanvasElementEventMap {
-        "closeSidebarLeft": void;
-        "closeSidebarRight": void;
+        "closeSidebarStart": void;
+        "closeSidebarEnd": void;
     }
     interface HTMLPCanvasElement extends Components.PCanvas, HTMLStencilElement {
         addEventListener<K extends keyof HTMLPCanvasElementEventMap>(type: K, listener: (this: HTMLPCanvasElement, ev: PCanvasCustomEvent<HTMLPCanvasElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
@@ -3179,29 +3179,29 @@ declare namespace LocalJSX {
     }
     interface PCanvas {
         /**
-          * Emitted when the component requests to close the sidebar on the left side.
+          * Emitted when the component requests to close the sidebar on the end side.
          */
-        "onCloseSidebarLeft"?: (event: PCanvasCustomEvent<void>) => void;
+        "onCloseSidebarEnd"?: (event: PCanvasCustomEvent<void>) => void;
         /**
-          * Emitted when the component requests to close the sidebar on the right side.
+          * Emitted when the component requests to close the sidebar on the start side.
          */
-        "onCloseSidebarRight"?: (event: PCanvasCustomEvent<void>) => void;
+        "onCloseSidebarStart"?: (event: PCanvasCustomEvent<void>) => void;
         /**
-          * Open Sidebar on left side
+          * Open Sidebar on the end side
          */
-        "sidebarLeftOpen"?: boolean;
+        "sidebarEndOpen"?: boolean;
         /**
-          * Defines the width of the sidebar on left side
+          * Defines the width of the sidebar on the end side
          */
-        "sidebarLeftWidth"?: CanvasSidebarWidth;
+        "sidebarEndWidth"?: CanvasSidebarWidth;
         /**
-          * Open Sidebar on right side
+          * Open Sidebar on the start side
          */
-        "sidebarRightOpen"?: boolean;
+        "sidebarStartOpen"?: boolean;
         /**
-          * Defines the width of the sidebar on right side
+          * Defines the width of the sidebar on the start side
          */
-        "sidebarRightWidth"?: CanvasSidebarWidth;
+        "sidebarStartWidth"?: CanvasSidebarWidth;
     }
     interface PCarousel {
         /**

@@ -3,8 +3,8 @@ import { addImportantToEachRule, colorSchemeStyles, getTransition, hostHiddenSty
 import { getMediaQueryMin, spacingStaticXSmall, gridGap } from '@porsche-design-system/utilities-v2';
 import { type CanvasSidebarWidth } from './canvas-utils';
 
-const cssVariableSidebarLeftWidth = '--p-canvas-sidebar-left-width';
-const cssVariableSidebarRightWidth = '--p-canvas-sidebar-right-width';
+const cssVariableSidebarStartWidth = '--p-canvas-sidebar-start-width';
+const cssVariableSidebarEndWidth = '--p-canvas-sidebar-end-width';
 
 // TODO: maybe default grid gap would also work
 const gridProductiveGap = gridGap.replace('36px', '24px');
@@ -15,10 +15,10 @@ const sidebarWidths: { [key in CanvasSidebarWidth]: string } = {
 };
 
 export const getComponentCss = (
-  isSidebarLeftOpen: boolean,
-  sidebarLeftWidth: CanvasSidebarWidth,
-  isSidebarRightOpen: boolean,
-  sidebarRightWidth: CanvasSidebarWidth
+  isSidebarStartOpen: boolean,
+  sidebarStartWidth: CanvasSidebarWidth,
+  isSidebarEndOpen: boolean,
+  sidebarEndWidth: CanvasSidebarWidth
 ): string => {
   return getCss({
     '@global': {
@@ -65,21 +65,21 @@ export const getComponentCss = (
         position: 'relative',
         transition: getTransition('margin'),
         '&:first-of-type': {
-          gridArea: 'sidebar-left',
+          gridArea: 'sidebar-start',
           [mediaQueryDesktopView]: {
-            width: `var(${cssVariableSidebarLeftWidth}, ${sidebarWidths[sidebarLeftWidth]})`,
-            marginInlineStart: isSidebarLeftOpen
+            width: `var(${cssVariableSidebarStartWidth}, ${sidebarWidths[sidebarStartWidth]})`,
+            marginInlineStart: isSidebarStartOpen
               ? 0
-              : `calc(var(${cssVariableSidebarLeftWidth}, ${sidebarWidths[sidebarLeftWidth]}) * -1)`,
+              : `calc(var(${cssVariableSidebarStartWidth}, ${sidebarWidths[sidebarStartWidth]}) * -1)`,
           },
         },
         '&:last-of-type': {
-          gridArea: 'sidebar-right',
+          gridArea: 'sidebar-end',
           [mediaQueryDesktopView]: {
-            width: `var(${cssVariableSidebarRightWidth}, ${sidebarWidths[sidebarRightWidth]})`,
-            marginInlineEnd: isSidebarRightOpen
+            width: `var(${cssVariableSidebarEndWidth}, ${sidebarWidths[sidebarEndWidth]})`,
+            marginInlineEnd: isSidebarEndOpen
               ? 0
-              : `calc(var(${cssVariableSidebarRightWidth}, ${sidebarWidths[sidebarRightWidth]}) * -1)`,
+              : `calc(var(${cssVariableSidebarEndWidth}, ${sidebarWidths[sidebarEndWidth]}) * -1)`,
           },
         },
       },
@@ -92,8 +92,7 @@ export const getComponentCss = (
       minHeight: '100dvh',
       [mediaQueryDesktopView]: {
         gridTemplate: 'auto minmax(0, 1fr) auto / auto minmax(0, 1fr) auto',
-        gridTemplateAreas:
-          '"header header header" "sidebar-left main sidebar-right" "sidebar-left footer sidebar-right"',
+        gridTemplateAreas: '"header header header" "sidebar-start main sidebar-end" "sidebar-start footer sidebar-end"',
       },
     },
     close: {

@@ -6,10 +6,10 @@ import { CANVAS_SIDEBAR_WIDTHS, type CanvasSidebarWidth } from './canvas-utils';
 import { breakpointM } from '@porsche-design-system/utilities-v2';
 
 const propTypes: PropTypes<typeof Canvas> = {
-  sidebarLeftOpen: AllowedTypes.boolean,
-  sidebarLeftWidth: AllowedTypes.oneOf<CanvasSidebarWidth>(CANVAS_SIDEBAR_WIDTHS),
-  sidebarRightOpen: AllowedTypes.boolean,
-  sidebarRightWidth: AllowedTypes.oneOf<CanvasSidebarWidth>(CANVAS_SIDEBAR_WIDTHS),
+  sidebarStartOpen: AllowedTypes.boolean,
+  sidebarStartWidth: AllowedTypes.oneOf<CanvasSidebarWidth>(CANVAS_SIDEBAR_WIDTHS),
+  sidebarEndOpen: AllowedTypes.boolean,
+  sidebarEndWidth: AllowedTypes.oneOf<CanvasSidebarWidth>(CANVAS_SIDEBAR_WIDTHS),
 };
 
 @Component({
@@ -19,23 +19,23 @@ const propTypes: PropTypes<typeof Canvas> = {
 export class Canvas {
   @Element() public host!: HTMLElement;
 
-  /** Open Sidebar on left side */
-  @Prop() public sidebarLeftOpen?: boolean = false;
+  /** Open Sidebar on the start side */
+  @Prop() public sidebarStartOpen?: boolean = false;
 
-  /** Defines the width of the sidebar on left side */
-  @Prop() public sidebarLeftWidth?: CanvasSidebarWidth = 'medium';
+  /** Defines the width of the sidebar on the start side */
+  @Prop() public sidebarStartWidth?: CanvasSidebarWidth = 'medium';
 
-  /** Open Sidebar on right side */
-  @Prop() public sidebarRightOpen?: boolean = false;
+  /** Open Sidebar on the end side */
+  @Prop() public sidebarEndOpen?: boolean = false;
 
-  /** Defines the width of the sidebar on right side */
-  @Prop() public sidebarRightWidth?: CanvasSidebarWidth = 'medium';
+  /** Defines the width of the sidebar on the end side */
+  @Prop() public sidebarEndWidth?: CanvasSidebarWidth = 'medium';
 
-  /** Emitted when the component requests to close the sidebar on the left side. */
-  @Event({ bubbles: false }) public closeSidebarLeft?: EventEmitter<void>;
+  /** Emitted when the component requests to close the sidebar on the start side. */
+  @Event({ bubbles: false }) public closeSidebarStart?: EventEmitter<void>;
 
-  /** Emitted when the component requests to close the sidebar on the right side. */
-  @Event({ bubbles: false }) public closeSidebarRight?: EventEmitter<void>;
+  /** Emitted when the component requests to close the sidebar on the end side. */
+  @Event({ bubbles: false }) public closeSidebarEnd?: EventEmitter<void>;
 
   @State() private isDesktopView = false;
 
@@ -55,10 +55,10 @@ export class Canvas {
     attachComponentCss(
       this.host,
       getComponentCss,
-      this.sidebarLeftOpen,
-      this.sidebarLeftWidth,
-      this.sidebarRightOpen,
-      this.sidebarRightWidth
+      this.sidebarStartOpen,
+      this.sidebarStartWidth,
+      this.sidebarEndOpen,
+      this.sidebarEndWidth
     );
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
@@ -76,60 +76,60 @@ export class Canvas {
         </footer>
         {this.isDesktopView ? (
           <aside
-            part="sidebar-left"
+            part="sidebar-start"
             // "inert" will be known from React 19 onwards, see https://github.com/facebook/react/pull/24730
             // eslint-disable-next-line
             /* @ts-ignore */
-            inert={this.sidebarLeftOpen ? null : true}
+            inert={this.sidebarStartOpen ? null : true}
           >
             <PrefixedTagNames.pButtonPure
               class="close"
               icon="close"
               variant="secondary"
               hideLabel
-              onClick={this.onCloseSidebarLeft}
+              onClick={this.onCloseSidebarStart}
             >
               Close Sidebar
             </PrefixedTagNames.pButtonPure>
-            <slot name="sidebar-left" />
+            <slot name="sidebar-start" />
           </aside>
         ) : (
           <PrefixedTagNames.pFlyout
             class="flyout"
-            open={this.sidebarLeftOpen}
+            open={this.sidebarStartOpen}
             position="start"
-            onDismiss={this.onCloseSidebarLeft}
+            onDismiss={this.onCloseSidebarStart}
           >
-            <slot name="sidebar-left" />
+            <slot name="sidebar-start" />
           </PrefixedTagNames.pFlyout>
         )}
         {this.isDesktopView ? (
           <aside
-            part="sidebar-right"
+            part="sidebar-end"
             // "inert" will be known from React 19 onwards, see https://github.com/facebook/react/pull/24730
             // eslint-disable-next-line
             /* @ts-ignore */
-            inert={this.sidebarRightOpen ? null : true}
+            inert={this.sidebarEndOpen ? null : true}
           >
             <PrefixedTagNames.pButtonPure
               class="close"
               icon="close"
               variant="secondary"
               hideLabel
-              onClick={this.onCloseSidebarRight}
+              onClick={this.onCloseSidebarEnd}
             >
               Close Sidebar
             </PrefixedTagNames.pButtonPure>
-            <slot name="sidebar-right" />
+            <slot name="sidebar-end" />
           </aside>
         ) : (
           <PrefixedTagNames.pFlyout
             class="flyout"
-            open={this.sidebarRightOpen}
+            open={this.sidebarEndOpen}
             position="end"
-            onDismiss={this.onCloseSidebarRight}
+            onDismiss={this.onCloseSidebarEnd}
           >
-            <slot name="sidebar-right" />
+            <slot name="sidebar-end" />
           </PrefixedTagNames.pFlyout>
         )}
       </div>
@@ -140,11 +140,11 @@ export class Canvas {
     this.isDesktopView = !!e.matches;
   };
 
-  private onCloseSidebarLeft = (): void => {
-    this.closeSidebarLeft.emit();
+  private onCloseSidebarStart = (): void => {
+    this.closeSidebarStart.emit();
   };
 
-  private onCloseSidebarRight = (): void => {
-    this.closeSidebarRight.emit();
+  private onCloseSidebarEnd = (): void => {
+    this.closeSidebarEnd.emit();
   };
 }
