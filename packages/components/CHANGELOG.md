@@ -19,6 +19,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 - `Segmented Control`: Prop `aria` added to `Segmented Control Item` to support ARIA attributes
   ([#3327](https://github.com/porsche-design-system/porsche-design-system/pull/3327))
 
+#### Changed
+
+- React: Improve prop typings for all wrappers of `@porsche-design-system/components-react`
+  ([#3336](https://github.com/porsche-design-system/porsche-design-system/pull/3336))
+
 ### [3.16.0-rc.0] - 2024-06-05
 
 #### Added
