@@ -3,7 +3,7 @@ import { PButtonPure, PCanvas, PTag } from '@porsche-design-system/components-re
 
 export const CanvasExamplePage = (): JSX.Element => {
   const [isSidebarStartOpen, setIsSidebarStartOpen] = useState<boolean>(false);
-  const onClickSidebarStart = useCallback(() => {
+  const onToggleSidebarStart = useCallback(() => {
     setIsSidebarStartOpen((isSidebarStartOpen) => !isSidebarStartOpen);
   }, []);
   const onDismissSidebarStart = useCallback(() => {
@@ -11,7 +11,7 @@ export const CanvasExamplePage = (): JSX.Element => {
   }, []);
 
   const [isSidebarEndOpen, setIsSidebarEndOpen] = useState<boolean>(false);
-  const onClickSidebarEnd = useCallback(() => {
+  const onToggleSidebarEnd = useCallback(() => {
     setIsSidebarEndOpen((isSidebarEndOpen) => !isSidebarEndOpen);
   }, []);
   const onDismissSidebarEnd = useCallback(() => {
@@ -78,10 +78,8 @@ export const CanvasExamplePage = (): JSX.Element => {
     <>
       <style dangerouslySetInnerHTML={{ __html: style }} />
       <PCanvas
-        sidebar-start-open="false"
-        sidebar-start-width="medium"
-        sidebar-end-open="false"
-        sidebar-end-width="medium"
+        sidebarStartWidth="medium"
+        sidebarEndWidth="medium"
         onDismissSidebarStart={onDismissSidebarStart}
         sidebarStartOpen={isSidebarStartOpen}
         onDismissSidebarEnd={onDismissSidebarEnd}
@@ -89,10 +87,10 @@ export const CanvasExamplePage = (): JSX.Element => {
       >
         <div slot="header">
           <PTag color="background-base">Header</PTag>
-          <PButtonPure id="open-sidebar-start" icon="menu-lines" onClick={onClickSidebarStart}>
+          <PButtonPure icon="menu-lines" onClick={onToggleSidebarStart}>
             Toggle Sidebar Start
           </PButtonPure>
-          <PButtonPure id="open-sidebar-end" icon="menu-lines" onClick={onClickSidebarEnd}>
+          <PButtonPure icon="menu-lines" onClick={onToggleSidebarEnd}>
             Toggle Sidebar End
           </PButtonPure>
         </div>
