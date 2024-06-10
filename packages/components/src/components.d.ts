@@ -384,6 +384,9 @@ export namespace Components {
          */
         "weight"?: BreakpointCustomizable<ButtonTileWeight>;
     }
+    /**
+     * @experimental 
+     */
     interface PCanvas {
         /**
           * Open Sidebar on the end side
@@ -2186,6 +2189,9 @@ declare global {
         "dismissSidebarStart": void;
         "dismissSidebarEnd": void;
     }
+    /**
+     * @experimental 
+     */
     interface HTMLPCanvasElement extends Components.PCanvas, HTMLStencilElement {
         addEventListener<K extends keyof HTMLPCanvasElementEventMap>(type: K, listener: (this: HTMLPCanvasElement, ev: PCanvasCustomEvent<HTMLPCanvasElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
@@ -3177,6 +3183,9 @@ declare namespace LocalJSX {
          */
         "weight"?: BreakpointCustomizable<ButtonTileWeight>;
     }
+    /**
+     * @experimental 
+     */
     interface PCanvas {
         /**
           * Emitted when the component requests to close the sidebar on the end side.
@@ -5038,6 +5047,9 @@ declare module "@stencil/core" {
             "p-button-group": LocalJSX.PButtonGroup & JSXBase.HTMLAttributes<HTMLPButtonGroupElement>;
             "p-button-pure": LocalJSX.PButtonPure & JSXBase.HTMLAttributes<HTMLPButtonPureElement>;
             "p-button-tile": LocalJSX.PButtonTile & JSXBase.HTMLAttributes<HTMLPButtonTileElement>;
+            /**
+             * @experimental 
+             */
             "p-canvas": LocalJSX.PCanvas & JSXBase.HTMLAttributes<HTMLPCanvasElement>;
             "p-carousel": LocalJSX.PCarousel & JSXBase.HTMLAttributes<HTMLPCarouselElement>;
             "p-checkbox-wrapper": LocalJSX.PCheckboxWrapper & JSXBase.HTMLAttributes<HTMLPCheckboxWrapperElement>;

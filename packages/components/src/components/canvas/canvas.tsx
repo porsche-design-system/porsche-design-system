@@ -12,6 +12,7 @@ const propTypes: PropTypes<typeof Canvas> = {
   sidebarEndWidth: AllowedTypes.oneOf<CanvasSidebarWidth>(CANVAS_SIDEBAR_WIDTHS),
 };
 
+/** @experimental */
 @Component({
   tag: 'p-canvas',
   shadow: true,

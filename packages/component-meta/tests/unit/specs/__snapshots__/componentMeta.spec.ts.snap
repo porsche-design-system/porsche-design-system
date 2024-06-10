@@ -2232,6 +2232,7 @@ exports[`should match snapshot 1`] = `
     "hasSlot": true,
     "isChunked": true,
     "isDelegatingFocus": false,
+    "isExperimental": true,
     "isInternal": false,
     "isThemeable": false,
     "namedSlots": [
