@@ -1,7 +1,7 @@
 import { getCss } from '../../utils';
 import { addImportantToEachRule, colorSchemeStyles, getTransition, hostHiddenStyles } from '../../styles';
 import { getMediaQueryMin, spacingStaticXSmall, gridGap } from '@porsche-design-system/utilities-v2';
-import { type CanvasSidebarWidth } from './canvas-utils';
+import { type CanvasSidebarWidth, type CanvasSidebarStartWidth, type CanvasSidebarEndWidth } from './canvas-utils';
 
 const cssVariableSidebarStartWidth = '--p-canvas-sidebar-start-width';
 const cssVariableSidebarEndWidth = '--p-canvas-sidebar-end-width';
@@ -16,9 +16,9 @@ const sidebarWidths: { [key in CanvasSidebarWidth]: string } = {
 
 export const getComponentCss = (
   isSidebarStartOpen: boolean,
-  sidebarStartWidth: CanvasSidebarWidth,
+  sidebarStartWidth: CanvasSidebarStartWidth,
   isSidebarEndOpen: boolean,
-  sidebarEndWidth: CanvasSidebarWidth
+  sidebarEndWidth: CanvasSidebarEndWidth
 ): string => {
   return getCss({
     '@global': {

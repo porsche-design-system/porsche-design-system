@@ -2,14 +2,14 @@ import type { PropTypes } from '../../types';
 import { AllowedTypes, attachComponentCss, getPrefixedTagNames, validateProps } from '../../utils';
 import { Component, Element, EventEmitter, h, type JSX, Prop, Event, State, Host, Fragment } from '@stencil/core';
 import { getComponentCss } from './canvas-styles';
-import { CANVAS_SIDEBAR_WIDTHS, type CanvasSidebarWidth } from './canvas-utils';
+import { CANVAS_SIDEBAR_WIDTHS, type CanvasSidebarEndWidth, type CanvasSidebarStartWidth } from './canvas-utils';
 import { breakpointM } from '@porsche-design-system/utilities-v2';
 
 const propTypes: PropTypes<typeof Canvas> = {
   sidebarStartOpen: AllowedTypes.boolean,
-  sidebarStartWidth: AllowedTypes.oneOf<CanvasSidebarWidth>(CANVAS_SIDEBAR_WIDTHS),
+  sidebarStartWidth: AllowedTypes.oneOf<CanvasSidebarStartWidth>(CANVAS_SIDEBAR_WIDTHS),
   sidebarEndOpen: AllowedTypes.boolean,
-  sidebarEndWidth: AllowedTypes.oneOf<CanvasSidebarWidth>(CANVAS_SIDEBAR_WIDTHS),
+  sidebarEndWidth: AllowedTypes.oneOf<CanvasSidebarEndWidth>(CANVAS_SIDEBAR_WIDTHS),
 };
 
 /** @experimental */
@@ -24,13 +24,13 @@ export class Canvas {
   @Prop() public sidebarStartOpen?: boolean = false;
 
   /** Defines the width of the sidebar on the start side */
-  @Prop() public sidebarStartWidth?: CanvasSidebarWidth = 'medium';
+  @Prop() public sidebarStartWidth?: CanvasSidebarStartWidth = 'medium';
 
   /** Open Sidebar on the end side */
   @Prop() public sidebarEndOpen?: boolean = false;
 
   /** Defines the width of the sidebar on the end side */
-  @Prop() public sidebarEndWidth?: CanvasSidebarWidth = 'medium';
+  @Prop() public sidebarEndWidth?: CanvasSidebarEndWidth = 'medium';
 
   /** Emitted when the component requests to close the sidebar on the start side. */
   @Event({ bubbles: false }) public dismissSidebarStart?: EventEmitter<void>;

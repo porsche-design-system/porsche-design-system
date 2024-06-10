@@ -12,7 +12,7 @@ import { ButtonIcon } from "./components/button/button-utils";
 import { ButtonGroupDirection } from "./components/button-group/button-group-utils";
 import { ButtonPureAlignLabel, ButtonPureAriaAttribute, ButtonPureIcon, ButtonPureSize, ButtonPureType, ButtonPureWeight } from "./components/button-pure/button-pure-utils";
 import { ButtonTileAlign, ButtonTileAriaAttribute, ButtonTileAspectRatio, ButtonTileBackground, ButtonTileIcon, ButtonTileSize, ButtonTileType, ButtonTileWeight } from "./components/button-tile/button-tile-utils";
-import { CanvasSidebarWidth } from "./components/canvas/canvas-utils";
+import { CanvasSidebarEndWidth, CanvasSidebarStartWidth } from "./components/canvas/canvas-utils";
 import { CarouselAlignHeader, CarouselAriaAttribute, CarouselHeadingSize, CarouselInternationalization, CarouselUpdateEventDetail, CarouselWidth } from "./components/carousel/carousel-utils";
 import { CheckboxWrapperState } from "./components/checkbox-wrapper/checkbox-wrapper-utils";
 import { ContentWrapperBackgroundColor, ContentWrapperWidth } from "./components/content-wrapper/content-wrapper-utils";
@@ -74,7 +74,7 @@ export { ButtonIcon } from "./components/button/button-utils";
 export { ButtonGroupDirection } from "./components/button-group/button-group-utils";
 export { ButtonPureAlignLabel, ButtonPureAriaAttribute, ButtonPureIcon, ButtonPureSize, ButtonPureType, ButtonPureWeight } from "./components/button-pure/button-pure-utils";
 export { ButtonTileAlign, ButtonTileAriaAttribute, ButtonTileAspectRatio, ButtonTileBackground, ButtonTileIcon, ButtonTileSize, ButtonTileType, ButtonTileWeight } from "./components/button-tile/button-tile-utils";
-export { CanvasSidebarWidth } from "./components/canvas/canvas-utils";
+export { CanvasSidebarEndWidth, CanvasSidebarStartWidth } from "./components/canvas/canvas-utils";
 export { CarouselAlignHeader, CarouselAriaAttribute, CarouselHeadingSize, CarouselInternationalization, CarouselUpdateEventDetail, CarouselWidth } from "./components/carousel/carousel-utils";
 export { CheckboxWrapperState } from "./components/checkbox-wrapper/checkbox-wrapper-utils";
 export { ContentWrapperBackgroundColor, ContentWrapperWidth } from "./components/content-wrapper/content-wrapper-utils";
@@ -395,7 +395,7 @@ export namespace Components {
         /**
           * Defines the width of the sidebar on the end side
          */
-        "sidebarEndWidth"?: CanvasSidebarWidth;
+        "sidebarEndWidth"?: CanvasSidebarEndWidth;
         /**
           * Open Sidebar on the start side
          */
@@ -403,7 +403,7 @@ export namespace Components {
         /**
           * Defines the width of the sidebar on the start side
          */
-        "sidebarStartWidth"?: CanvasSidebarWidth;
+        "sidebarStartWidth"?: CanvasSidebarStartWidth;
     }
     interface PCarousel {
         /**
@@ -3202,7 +3202,7 @@ declare namespace LocalJSX {
         /**
           * Defines the width of the sidebar on the end side
          */
-        "sidebarEndWidth"?: CanvasSidebarWidth;
+        "sidebarEndWidth"?: CanvasSidebarEndWidth;
         /**
           * Open Sidebar on the start side
          */
@@ -3210,7 +3210,7 @@ declare namespace LocalJSX {
         /**
           * Defines the width of the sidebar on the start side
          */
-        "sidebarStartWidth"?: CanvasSidebarWidth;
+        "sidebarStartWidth"?: CanvasSidebarStartWidth;
     }
     interface PCarousel {
         /**
