@@ -3442,6 +3442,11 @@
   dependencies:
     "@octokit/openapi-types" "^22.0.0"
 
+"@oddbird/popover-polyfill@^0.4.3":
+  version "0.4.3"
+  resolved "https://registry.yarnpkg.com/@oddbird/popover-polyfill/-/popover-polyfill-0.4.3.tgz#310d61c8fc7ee12d8dba05cdfa8bd7e5d5a281a3"
+  integrity sha512-kBS0ZAwH8kZqFl0mV89KPK4cLYl2ZoKSfYngK4dz1eLAhKzTK0yu4LrvLdMeM7JhjWK6GxBtiY+cl1s6vR2pUg==
+
 "@one-ini/wasm@0.1.1":
   version "0.1.1"
   resolved "https://registry.yarnpkg.com/@one-ini/wasm/-/wasm-0.1.1.tgz#6013659736c9dbfccc96e8a9c2b3de317df39323"
@@ -21125,6 +21130,11 @@ requires-port@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/requires-port/-/requires-port-1.0.0.tgz#925d2601d39ac485e091cf0da5c6e694dc3dcaff"
   integrity sha512-KigOCHcocU3XODJxsu8i/j8T9tzT4adHiecwORRQ0ZZFcp7ahwXuRU1m+yuO90C5ZUyGeGfocHDI14M3L3yDAQ==
+
+resize-observer-polyfill@^1.5.1:
+  version "1.5.1"
+  resolved "https://registry.yarnpkg.com/resize-observer-polyfill/-/resize-observer-polyfill-1.5.1.tgz#0e9020dd3d21024458d4ebd27e23e40269810464"
+  integrity sha512-LwZrotdHOo12nQuZlHEmtuXdqGoOD0OhaxopaNFxWzInpEgaLWoVuAMbTzixuosCx2nEG58ngzW3vxdWoxIgdg==
 
 resolve-alpn@^1.0.0:
   version "1.2.1"

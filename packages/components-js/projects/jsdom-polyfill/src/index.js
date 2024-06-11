@@ -4,6 +4,10 @@ require('intersection-observer');
 require('matchmedia-polyfill');
 require('matchmedia-polyfill/matchMedia.addListener');
 require('scroll-behavior-polyfill');
+require('@oddbird/popover-polyfill');
+const ro = require('resize-observer-polyfill');
+
+global.ResizeObserver = ro;
 
 if (!navigator.userAgent.includes('Node.js') && !navigator.userAgent.includes('jsdom')) {
   throw new Error(
