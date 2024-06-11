@@ -63,15 +63,17 @@ const patchStencilCore = (): void => {
     }
     ${PDS_PATCH_END}\n`;
 
+    console.log(fileContent);
+
     const newFileContent = fileContent
       // inject applying snippets
       .replace(
-        /(\/\/ adding the shadow root build conditionals to minimize runtime\s+if \(supportsShadow\) {)(\s+if \(BUILD\.shadowDelegatesFocus\) {)([\s\S]+?;\n)/,
+        /(if \(supportsShadow\) {)(\s+if \(BUILD20\.shadowDelegatesFocus\) {)([\s\S]+?;\n)/,
         `$1${extractSnippet}$2${applySnippetPart1}$3${applySnippetPart2}`
       )
       // inject cleanup snippet
       .replace(
-        /\s+if \(BUILD\.hydrateServerSide\) {\s+await callRender\(hostRef, instance, elm, isInitialLoad\);/,
+        /\s+if \(BUILD12\.hydrateServerSide\) {\s+await callRender\(hostRef, instance, elm, isInitialLoad\);/,
         `${cleanupSnippet}$&`
       );
 
