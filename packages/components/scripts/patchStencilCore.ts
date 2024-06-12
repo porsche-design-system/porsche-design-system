@@ -63,8 +63,6 @@ const patchStencilCore = (): void => {
     }
     ${PDS_PATCH_END}\n`;
 
-    console.log(fileContent);
-
     const newFileContent = fileContent
       // inject applying snippets
       .replace(
