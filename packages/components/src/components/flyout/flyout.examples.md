@@ -107,7 +107,7 @@ The flyout component has some values which can be overwritten by CSS Custom Prop
 <script lang="ts">
 import Vue from 'vue';
 import Component from 'vue-class-component'; 
-import { getFlyoutCodeSamples, getFlyoutExamples } from "@porsche-design-system/shared";  
+import { getFlyoutCodeSamples } from "@porsche-design-system/shared";  
 import ExampleStylesGrid from '@/pages/patterns/styles/example-grid.vue';
 
 @Component({
@@ -119,7 +119,6 @@ export default class Code extends Vue {
   config = { themeable: true };
   flyouts = [];
   codeSamples = getFlyoutCodeSamples();
-  test = getFlyoutExamples('p-flyout', {}, { header: '<p-heading slot="header" size="large" tag="h2">Some Heading</p-heading>' });
 
   mounted() {
     this.registerEvents();

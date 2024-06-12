@@ -1,50 +1,65 @@
 <template>
   <div class="playground">
-    <div v-for="{ key, value } in propsMeta" :key="key">
-      <label :for="key">{{ key }}</label>
-      <p-select
-        :id="key"
-        :value="selectedValues[key]"
-        @update="onUpdateProps($event, key)"
-        :theme="$store.getters.storefrontTheme"
-      >
-        <p-select-option
-          v-if="value.allowedValues === 'boolean'"
-          v-for="option in ['true', 'false']"
-          :key="option"
-          :value="option"
-        >
-          {{ option }}{{ `${value.defaultValue}` === option ? ' (default)' : '' }}
-        </p-select-option>
-        <p-select-option
-          v-if="Array.isArray(value.allowedValues)"
-          v-for="option in value.allowedValues"
-          :key="option"
-          :value="option"
-        >
-          {{ option }}{{ value.defaultValue == option ? ' (default)' : '' }}
-        </p-select-option>
-        <!--        TODO: Add condition for aria-->
-      </p-select>
-    </div>
-    <p-select
-      label="Content"
+    <p-accordion
       :theme="$store.getters.storefrontTheme"
-      :value="selectedContent"
-      @update="onUpdateContent"
+      :heading="'Configure'"
+      :headingTag="'h3'"
+      :open="isConfigureAccordionOpen"
+      @update="onUpdateConfigureAccordion"
     >
-      <p-select-option v-for="{ key, value } in contents" :value="value" :key="key">{{ key }}</p-select-option>
-    </p-select>
-    <p-multi-select
-      label="Include slots"
-      :theme="$store.getters.storefrontTheme"
-      :value="selectedSlots"
-      @update="onUpdateSlots"
-    >
-      <p-multi-select-option v-for="slot in componentMeta.namedSlots" :key="slot" :value="slot">{{
-        slot
-      }}</p-multi-select-option>
-    </p-multi-select>
+      <div class="configure">
+        <div>
+          <div v-for="{ key, value } in propsMeta" :key="key">
+            <p-select
+              :id="key"
+              :label="key"
+              :value="selectedValues[key]"
+              @update="onUpdateProps($event, key)"
+              :theme="$store.getters.storefrontTheme"
+            >
+              <p-select-option
+                v-if="value.allowedValues === 'boolean'"
+                v-for="option in ['true', 'false']"
+                :key="option"
+                :value="option"
+              >
+                {{ option }}{{ `${value.defaultValue}` === option ? ' (default)' : '' }}
+              </p-select-option>
+              <p-select-option
+                v-if="Array.isArray(value.allowedValues)"
+                v-for="option in value.allowedValues"
+                :key="option"
+                :value="option"
+              >
+                {{ option }}{{ value.defaultValue == option ? ' (default)' : '' }}
+              </p-select-option>
+              <!--        TODO: Add condition for aria-->
+            </p-select>
+          </div>
+        </div>
+        <div>
+          <p-select
+            label="Content"
+            :theme="$store.getters.storefrontTheme"
+            :value="selectedContent"
+            @update="onUpdateContent"
+          >
+            <p-select-option v-for="{ key, value } in contents" :value="value" :key="key">{{ key }}</p-select-option>
+          </p-select>
+          <p-multi-select
+            label="Include slots"
+            :theme="$store.getters.storefrontTheme"
+            :value="selectedSlots"
+            @update="onUpdateSlots"
+          >
+            <p-multi-select-option v-for="slot in componentMeta.namedSlots" :key="slot" :value="slot">{{
+              slot
+            }}</p-multi-select-option>
+          </p-multi-select>
+        </div>
+      </div>
+    </p-accordion>
+
     <div
       :class="{
         example: true,
@@ -60,7 +75,8 @@
         // 'example--fullscreen': isFullWindow,
       }"
     >
-      <div class="demo" v-html="markup['vanilla-js']"></div>
+      <!--      <div class="demo" v-html="markup['vanilla-js']"></div>-->
+      <DynamicIframe :markup="markup['vanilla-js']" />
       <CodeBlock
         :class="{ 'code-block--framework': true }"
         :markup="activeFrameworkMarkup"
@@ -77,28 +93,24 @@
   import { Prop, Watch } from 'vue-property-decorator';
   import CodeBlock from '@/components/CodeBlock.vue';
   import CodeEditor from '@/components/CodeEditor.vue';
+  import DynamicIframe from '@/components/DynamicIframe.vue';
   import { TagName } from '@porsche-design-system/shared';
   import { ComponentMeta, getComponentMeta, PropMeta } from '@porsche-design-system/component-meta';
   import { BackgroundColor, Framework, FrameworkMarkup } from '@/models';
   import { getComponentSlotContent, getFlyoutExamples } from '@/utils/getComponentMarkup';
   import type { MultiSelectUpdateEventDetail, SelectUpdateEventDetail } from '@porsche-design-system/components-vue';
-  import { ExternalDependency, openInStackBlitz, SharedImportKey } from '@/utils';
-  import { getExternalDependenciesOrThrow, isStableStorefrontRelease } from '@/utils/stackblitz/helper';
-  import { PorscheDesignSystemBundle, PorscheDesignSystemBundleMap } from '@/utils/stackblitz/types';
+  import { AccordionUpdateEventDetail } from '@porsche-design-system/components';
 
   @Component({
     components: {
       CodeBlock,
       CodeEditor,
+      DynamicIframe,
     },
   })
   export default class PlaygroundConfigurator extends Vue {
     @Prop() public component!: TagName;
     @Prop({ default: 'background-base' }) public backgroundColor!: BackgroundColor;
-    @Prop({ default: () => [] }) public sharedImportKeys!: SharedImportKey[];
-    @Prop({ default: () => [] }) public externalStackBlitzDependencies!: ExternalDependency[];
-
-    getExternalDependenciesOrThrow = getExternalDependenciesOrThrow;
 
     componentMeta: ComponentMeta = {} as ComponentMeta;
     propsMeta: { key: string; value: PropMeta }[] = [];
@@ -111,6 +123,8 @@
     // Save for each slot if it should be rendered
     selectedSlots: { key: string; value: boolean }[] = [];
     markup: FrameworkMarkup = {};
+
+    isConfigureAccordionOpen: boolean = false;
 
     async created() {
       this.componentMeta = getComponentMeta(this.component);
@@ -198,56 +212,8 @@
       return this.markup[this.activeFramework];
     }
 
-    // public get sharedImportKeys(): SharedImportKey[] {
-    //   if (this.hasFrameworkMarkup && this.frameworks.includes('shared')) {
-    //     return (
-    //         (this.frameworkMarkup
-    //             .react!.match(/import { (.+) } from '@porsche-design-system\/shared';/)?.[1] // extract all imports
-    //             .match(/(?!type)\b[a-z][a-zA-Z]+/g) as SharedImportKey[]) || [] // extract constants, ignore types
-    //     );
-    //   } else {
-    //     return [];
-    //   }
-    // }
-
-    private static async porscheDesignSystemBundle(
-      framework: Exclude<Framework, 'shared'>,
-      pdsVersion?: string
-    ): Promise<PorscheDesignSystemBundle> {
-      const jsBundle = await CodeEditor.fetchPorscheDesignSystemBundle('js', pdsVersion);
-
-      switch (framework) {
-        case 'vanilla-js':
-          return jsBundle;
-        case 'angular':
-          return {
-            ...jsBundle,
-            ...(await CodeEditor.fetchPorscheDesignSystemBundle('angular', pdsVersion)),
-          };
-        case 'react':
-          return {
-            ...jsBundle,
-            ...(await CodeEditor.fetchPorscheDesignSystemBundle('react', pdsVersion)),
-          };
-        case 'vue':
-          return {
-            ...jsBundle,
-            ...(await CodeEditor.fetchPorscheDesignSystemBundle('vue', pdsVersion)),
-          };
-      }
-    }
-
-    public static async fetchPorscheDesignSystemBundle(
-      framework: keyof PorscheDesignSystemBundleMap,
-      pdsVersion?: string
-    ): Promise<PorscheDesignSystemBundle> {
-      if (!pdsVersion && !isStableStorefrontRelease() && !porscheDesignSystemBundleMap[framework]) {
-        // { cache: 'no-store' }: download a resource with cache busting, to bypass the cache completely.
-        const response = await fetch(`porsche-design-system/components-${framework}.json`, { cache: 'no-store' });
-        porscheDesignSystemBundleMap[framework] = (await response.json()) as PorscheDesignSystemBundle;
-      }
-
-      return porscheDesignSystemBundleMap[framework] || {};
+    onUpdateConfigureAccordion(e: AccordionUpdateEventDetail) {
+      this.isConfigureAccordionOpen = e.detail.open;
     }
   }
 </script>
@@ -404,5 +370,19 @@
     top: $pds-spacing-static-small;
     inset-inline-end: $pds-spacing-static-small;
     z-index: 1; // to be above certain examples
+  }
+
+  .configure {
+    display: flex;
+    gap: $pds-spacing-fluid-small;
+    flex-direction: column;
+
+    @include pds-media-query-min('xs') {
+      flex-direction: row;
+    }
+
+    div {
+      width: 100%;
+    }
   }
 </style>
