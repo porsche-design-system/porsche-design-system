@@ -15,7 +15,7 @@ To apply the polyfill, simply import it in your **setupTest.{js|ts}** file.
 
 <Notification heading="Attention" heading-tag="h2" state="warning">
     The <code>Modal</code> and <code>Flyout</code> components use the <strong>Dialog API</strong>, which isn't currently supported by jsdom (<a href="https://github.com/jsdom/jsdom/issues/3294" target="_blank">see issue</a>). 
-    Since we cannot easily provide a polyfill for this, they have to be mocked or polyfilled manually. Either by using the available polyfill package <a href="https://www.npmjs.com/package/dialog-polyfill" target="_blank">https://www.npmjs.com/package/dialog-polyfill</a> or by mocking the API.
+    Since we cannot easily provide a polyfill for this, they have to be mocked or polyfilled manually. Either by using the available polyfill package <a href="https://npmjs.com/package/dialog-polyfill" target="_blank">https://npmjs.com/package/dialog-polyfill</a> or by mocking the API.
 </Notification>
 
 ### Setup file
