@@ -148,8 +148,7 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
 
     // add spacing props to every component
     const spacings = this.spacingProps.map((x) => `${x}?: Spacing;`).join('\n  ');
-    const htmlAttributesType = this.generateHTMLAttributesType().replace(/\|/g, '\\$&');
-    props = props.replace(new RegExp(`(${htmlAttributesType} & {\n)`), `$1  ${spacings}\n`);
+    props = props.replace(/BaseProps & \{\n/, `$&  ${spacings}\n`);
 
     return props;
   }
@@ -197,7 +196,7 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
           .replace(/(\.\.\.rest)/, 'isWithinForm, onFormSubmit, $1') // destructure custom props
           .replace(
             // patch jsx to wrap component in form
-            /(<WebComponentTag {...props} \/>)/,
+            /<WebComponentTag \{\.\.\.props} \/>/,
             `isWithinForm ? (
       <form
         onSubmit={(e) => {
@@ -205,10 +204,12 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
           onFormSubmit && onFormSubmit();
         }}
       >
-        $1
+        {/* @ts-ignore */}
+        $&
       </form>
     ) : (
-      $1
+      // @ts-ignore
+      $&
     )`
           );
       }

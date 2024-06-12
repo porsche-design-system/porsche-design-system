@@ -33,6 +33,7 @@ describe('url', () => {
 
           switch (url) {
             case 'https://reddit.com':
+            case 'https://figma.com/community/file/1363114610686223649/web-design-system-v3-1':
               expect(status).toBe(403); // 403 Forbidden
               break;
             case 'https://vmmedia.porsche.de':
