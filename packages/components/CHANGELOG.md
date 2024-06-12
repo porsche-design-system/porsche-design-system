@@ -16,6 +16,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 #### Added
 
+- `jsdom-polyfill` Added polyfills for `Popover API` and `ResizeObserver`
+  ([#3334](https://github.com/porsche-design-system/porsche-design-system/pull/3334))
 - `Segmented Control`: Prop `aria` added to `Segmented Control Item` to support ARIA attributes
   ([#3327](https://github.com/porsche-design-system/porsche-design-system/pull/3327))
 
