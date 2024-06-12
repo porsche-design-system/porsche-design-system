@@ -7,7 +7,7 @@ import type { TagName } from '@porsche-design-system/shared';
 import { INTERNAL_TAG_NAMES } from '@porsche-design-system/shared';
 import { getComponentMeta } from '@porsche-design-system/component-meta';
 
-const EXCLUDED_COMPONENTS: TagName[] = ['p-toast-item', 'p-canvas'];
+const EXCLUDED_COMPONENTS: TagName[] = ['p-toast-item'];
 
 const generateDSRComponents = (): void => {
   const rootDirectory = path.resolve(__dirname, '..');
