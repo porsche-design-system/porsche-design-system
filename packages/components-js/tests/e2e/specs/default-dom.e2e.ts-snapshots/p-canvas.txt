@@ -9,15 +9,11 @@
     <slot name="footer"> </slot>
   </footer>
   <aside part="sidebar-start" inert="">
-    <p-button-pure class="close hydrated" variant="secondary">
-      Close Sidebar</p-button-pure
-    >
+    <p-button-pure class="close hydrated"> Close Sidebar</p-button-pure>
     <slot name="sidebar-start"> </slot>
   </aside>
   <aside part="sidebar-end" inert="">
-    <p-button-pure class="close hydrated" variant="secondary">
-      Close Sidebar</p-button-pure
-    >
+    <p-button-pure class="close hydrated"> Close Sidebar</p-button-pure>
     <slot name="sidebar-end"> </slot>
   </aside>
 </div>
