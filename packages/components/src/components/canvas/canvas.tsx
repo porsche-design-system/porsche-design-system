@@ -40,15 +40,13 @@ export class Canvas {
 
   @State() private isDesktopView = false;
 
-  private mediaQueryDesktopView = window.matchMedia(`(min-width: ${breakpointM}px)`);
-
   public connectedCallback(): void {
-    this.handleMediaQuery(this.mediaQueryDesktopView);
-    this.mediaQueryDesktopView.addEventListener('change', this.handleMediaQuery);
+    this.handleMediaQuery(this.mediaQueryDesktopView());
+    this.mediaQueryDesktopView().addEventListener('change', this.handleMediaQuery);
   }
 
   public disconnectedCallback(): void {
-    this.mediaQueryDesktopView.removeEventListener('change', this.handleMediaQuery);
+    this.mediaQueryDesktopView().removeEventListener('change', this.handleMediaQuery);
   }
 
   public render(): JSX.Element {
@@ -67,49 +65,52 @@ export class Canvas {
     return (
       <Host>
         <div class="canvas">
+          {/* "part" is not valid in TS */}
+          {/* eslint-disable-next-line */}
+          {/* @ts-ignore */}
           <header part="header">
             <slot name="header" />
           </header>
+          {/* "part" is not valid in TS */}
+          {/* eslint-disable-next-line */}
+          {/* @ts-ignore */}
           <main part="main">
             <slot />
           </main>
+          {/* "part" is not valid in TS */}
+          {/* eslint-disable-next-line */}
+          {/* @ts-ignore */}
           <footer part="footer">
             <slot name="footer" />
           </footer>
           {this.isDesktopView && (
             <Fragment>
               <aside
+                // "part" is not valid in TS
+                // eslint-disable-next-line
+                /* @ts-ignore */
                 part="sidebar-start"
                 // "inert" will be known from React 19 onwards, see https://github.com/facebook/react/pull/24730
                 // eslint-disable-next-line
                 /* @ts-ignore */
                 inert={this.sidebarStartOpen ? null : true}
               >
-                <PrefixedTagNames.pButtonPure
-                  class="close"
-                  icon="close"
-                  variant="secondary"
-                  hideLabel
-                  onClick={this.onDismissSidebarStart}
-                >
+                <PrefixedTagNames.pButtonPure class="close" icon="close" hideLabel onClick={this.onDismissSidebarStart}>
                   Close Sidebar
                 </PrefixedTagNames.pButtonPure>
                 <slot name="sidebar-start" />
               </aside>
               <aside
+                // "part" is not valid in TS
+                // eslint-disable-next-line
+                /* @ts-ignore */
                 part="sidebar-end"
                 // "inert" will be known from React 19 onwards, see https://github.com/facebook/react/pull/24730
                 // eslint-disable-next-line
                 /* @ts-ignore */
                 inert={this.sidebarEndOpen ? null : true}
               >
-                <PrefixedTagNames.pButtonPure
-                  class="close"
-                  icon="close"
-                  variant="secondary"
-                  hideLabel
-                  onClick={this.onDismissSidebarEnd}
-                >
+                <PrefixedTagNames.pButtonPure class="close" icon="close" hideLabel onClick={this.onDismissSidebarEnd}>
                   Close Sidebar
                 </PrefixedTagNames.pButtonPure>
                 <slot name="sidebar-end" />
@@ -134,6 +135,10 @@ export class Canvas {
       </Host>
     );
   }
+
+  private mediaQueryDesktopView = (): MediaQueryList => {
+    return window.matchMedia(`(min-width: ${breakpointM}px)`);
+  };
 
   private handleMediaQuery = (e: MediaQueryList | MediaQueryListEvent): void => {
     this.isDesktopView = !!e.matches;
