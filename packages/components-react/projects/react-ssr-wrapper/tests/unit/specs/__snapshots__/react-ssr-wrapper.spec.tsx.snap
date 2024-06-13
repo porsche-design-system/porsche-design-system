@@ -6821,6 +6821,658 @@ p {
 </p-button-tile>
 `;
 
+exports[`should render dsr component for PCanvas 1`] = `
+<p-canvas
+  class="ssr"
+>
+  <template
+    shadowroot="open"
+    shadowrootmode="open"
+  >
+    <style>
+      :host {
+  display: block;
+  color-scheme: light dark !important;
+}
+:host([hidden]) {
+  display: none !important;
+}
+:is(header, main, footer, aside) {
+  padding: clamp(16px, 1.25vw + 12px, 24px);
+  box-sizing: border-box;
+  z-index: 0;
+}
+header {
+  grid-area: header;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+main {
+  grid-area: main;
+  --pds-grid-span-full: span 6;
+  --pds-grid-span-one-half: span 3;
+  --pds-grid-span-one-third: span 2;
+  --pds-grid-span-two-thirds: span 4;
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: clamp(16px, 1.25vw + 12px, 24px);
+  align-content: flex-start;
+}
+footer {
+  grid-area: footer;
+}
+aside {
+  position: relative;
+  transition: margin var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+}
+aside:first-of-type {
+  grid-area: sidebar-start;
+  width: var(--p-canvas-sidebar-start-width, 320px);
+  margin-inline-start: calc(var(--p-canvas-sidebar-start-width, 320px) * -1);
+}
+aside:last-of-type {
+  grid-area: sidebar-end;
+  width: var(--p-canvas-sidebar-end-width, 320px);
+  margin-inline-end: calc(var(--p-canvas-sidebar-end-width, 320px) * -1);
+}
+@media(min-width:1000px) {
+  main {
+    --pds-grid-span-full: span 12;
+    --pds-grid-span-one-half: span 6;
+    --pds-grid-span-one-third: span 4;
+    --pds-grid-span-two-thirds: span 8;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+  }
+}
+
+.canvas {
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr) auto;
+  grid-template-areas: "header" "main" "footer";
+  min-width: 320px;
+  min-height: 100dvh;
+}
+.close {
+  position: absolute;
+  inset: 4px 4px auto auto;
+}
+@media(min-width:1000px) {
+  .canvas {
+    grid-template: auto minmax(0, 1fr) auto / auto minmax(0, 1fr) auto;
+    grid-template-areas: "header header header" "sidebar-start main sidebar-end" "sidebar-start footer sidebar-end";
+  }
+}
+
+    </style>
+    <div
+      class="canvas"
+    >
+      <header
+        part="header"
+      >
+        <slot
+          name="header"
+        />
+      </header>
+      <main
+        part="main"
+      >
+        <slot />
+      </main>
+      <footer
+        part="footer"
+      >
+        <slot
+          name="footer"
+        />
+      </footer>
+    </div>
+    <p-flyout
+      class="ssr"
+    >
+      <template
+        shadowroot="open"
+        shadowrootmode="open"
+      >
+        <style>
+          :host {
+  display: block;
+  --pds-internal-grid-outer-column: calc(clamp(32px, 2.75vw + 23px, 76px) - clamp(16px, 1.25vw + 12px, 36px)) !important;
+  --pds-internal-grid-margin: calc(clamp(32px, 2.75vw + 23px, 76px) * -1) !important;
+  --pds-internal-grid-width-min: auto !important;
+  --pds-internal-grid-width-max: none !important;
+  color-scheme: light dark !important;
+}
+:host([hidden]) {
+  display: none !important;
+}
+slot {
+  display: block;
+}
+slot:first-of-type {
+  grid-row-start: 1;
+}
+slot:not([name]) {
+  grid-column: 2/3;
+  z-index: 0;
+}
+dialog {
+  position: fixed;
+  inset: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  width: 100dvw;
+  height: 100dvh;
+  max-width: 100dvw;
+  max-height: 100dvh;
+  overflow: hidden;
+  display: block;
+  outline: 0;
+  z-index: 9999999;
+  visibility: hidden;
+  pointer-events: none;
+  background: transparent;
+  transition: visibility 0s linear var(--p-transition-duration, 0.4s), background-color var(--p-transition-duration, 0.4s) cubic-bezier(0.4,0,0.5,1), -webkit-backdrop-filter var(--p-transition-duration, 0.4s) cubic-bezier(0.4,0,0.5,1), backdrop-filter var(--p-transition-duration, 0.4s) cubic-bezier(0.4,0,0.5,1);
+}
+dialog::backdrop {
+  display: none;
+}
+@supports (transition-behavior: allow-discrete) {
+  dialog {
+    transition: visibility 0s linear var(--p-transition-duration, 0.4s), background-color var(--p-transition-duration, 0.4s) cubic-bezier(0.4,0,0.5,1), -webkit-backdrop-filter var(--p-transition-duration, 0.4s) cubic-bezier(0.4,0,0.5,1), backdrop-filter var(--p-transition-duration, 0.4s) cubic-bezier(0.4,0,0.5,1), overlay var(--p-transition-duration, 0.4s) cubic-bezier(0.4,0,0.5,1) allow-discrete;
+  }
+}
+
+.scroller {
+  position: absolute;
+  display: grid;
+  inset-block: 0;
+  inset-inline-start: 0;
+  overflow: hidden auto;
+  overscroll-behavior-y: none;
+  background: rgba(255,255,255,.01);
+  opacity: 0;
+  transform: translateX(-100%);
+  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.4,0,0.5,1), transform var(--p-transition-duration, 0.25s) cubic-bezier(0.4,0,0.5,1);
+}
+.scroller:dir(rtl) {
+  transform: translateX(100%);
+}
+.flyout {
+  display: grid;
+  grid-template: auto/clamp(8px, 0.5vw + 6px, 16px) auto clamp(8px, 0.5vw + 6px, 16px);
+  padding-block: calc(clamp(8px, 0.5vw + 6px, 16px) + clamp(16px, 1.25vw + 12px, 36px));
+  row-gap: clamp(16px, 1.25vw + 12px, 36px);
+  column-gap: calc(clamp(32px, 2.75vw + 23px, 76px) - clamp(8px, 0.5vw + 6px, 16px));
+  align-content: flex-start;
+  color: #010205;
+  background: #FFF;
+  width: var(--p-flyout-width,auto);
+  min-width: 320px;
+  max-width: var(--p-flyout-max-width,1180px);
+}
+.dismiss {
+  width: fit-content;
+  height: fit-content;
+  border: 2px solid #EEEFF2;
+  border-radius: 4px;
+  background: #EEEFF2;
+  grid-area: 1/3;
+  z-index: 4;
+  position: sticky;
+  inset-block-start: clamp(8px, 0.5vw + 6px, 16px);
+  inset-inline-end: clamp(8px, 0.5vw + 6px, 16px);
+  margin-block-start: calc(clamp(16px, 1.25vw + 12px, 36px) * -1);
+  justify-self: flex-end;
+}
+        </style>
+        <dialog
+          aria-hidden="true"
+          aria-modal="true"
+          inert=""
+          tabindex="-1"
+        >
+          <div
+            class="scroller"
+          >
+            <div
+              class="flyout"
+            >
+              <p-button-pure
+                class="dismiss ssr"
+              >
+                <template
+                  shadowroot="open"
+                  shadowrootdelegatesfocus="true"
+                  shadowrootmode="open"
+                >
+                  <style>
+                    :host {
+  transform: translate3d(0,0,0) !important;
+  outline: 0 !important;
+  color-scheme: light dark !important;
+  display: inline-block;
+  width: auto;
+  vertical-align: top;
+}
+:host([hidden]) {
+  display: none !important;
+}
+.root {
+  display: flex;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  color: #010205;
+  text-decoration: none;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  gap: 0;
+  justify-content: flex-start;
+  align-items: flex-start;
+  font-size: 1rem;
+  -webkit-appearance: none;
+  appearance: none;
+  background: transparent;
+  text-align: start;
+  border: 0;
+  cursor: pointer;
+}
+.root::before {
+  content: "";
+  position: absolute;
+  top: -2px;
+  bottom: -2px;
+  right: -2px;
+  left: -2px;
+  border-radius: 4px;
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+}
+.root::-moz-focus-inner {
+  border: 0;
+}
+.icon {
+  position: relative;
+  flex-shrink: 0;
+  width: calc(6px + 2.125ex);
+  height: calc(6px + 2.125ex);
+}
+.label {
+  white-space: nowrap;
+  text-indent: -999999px;
+  overflow: hidden;
+  order: 0;
+}
+.loading {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+}
+@supports (width: round(down, 1px, 1px)) {
+  .icon {
+    width: round(down, calc(6px + 2.125ex), 1px);
+    height: round(down, calc(6px + 2.125ex), 1px);
+  }
+}
+
+
+                  </style>
+                  <button
+                    class="root"
+                    type="button"
+                  >
+                    <p-icon
+                      aria-hidden="true"
+                      class="icon ssr"
+                    >
+                      <template
+                        shadowroot="open"
+                        shadowrootmode="open"
+                      >
+                        <style>
+                          :host {
+  display: inline-block;
+  vertical-align: top;
+  color-scheme: light dark !important;
+}
+:host([hidden]) {
+  display: none !important;
+}
+img {
+  display: block;
+  margin: 0;
+  padding: 0;
+  pointer-events: none;
+  filter: var(--p-internal-icon-filter,invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%));
+  -webkit-animation: rerender-light-primary 1ms;
+  width: inherit;
+  height: inherit;
+}
+@keyframes rerender-light-primary {
+  0% {
+    transform: rotateZ(0);
+  }
+  100% {
+    transform: rotateZ(0);
+  }
+}
+                        </style>
+                        <img
+                          alt=""
+                          height="24"
+                          loading="lazy"
+                          src="http://localhost:3001/icons/close.min.565f6a718b632a173b7a74eb9cb84378.svg"
+                          width="24"
+                        />
+                      </template>
+                    </p-icon>
+                    <span
+                      class="label"
+                    >
+                      <slot />
+                    </span>
+                  </button>
+                  <span
+                    class="loading"
+                    id="loading"
+                    role="status"
+                  />
+                </template>
+                Dismiss flyout
+              </p-button-pure>
+              <slot />
+            </div>
+          </div>
+        </dialog>
+      </template>
+      <slot
+        name="sidebar-start"
+      />
+    </p-flyout>
+    <p-flyout
+      class="ssr"
+    >
+      <template
+        shadowroot="open"
+        shadowrootmode="open"
+      >
+        <style>
+          :host {
+  display: block;
+  --pds-internal-grid-outer-column: calc(clamp(32px, 2.75vw + 23px, 76px) - clamp(16px, 1.25vw + 12px, 36px)) !important;
+  --pds-internal-grid-margin: calc(clamp(32px, 2.75vw + 23px, 76px) * -1) !important;
+  --pds-internal-grid-width-min: auto !important;
+  --pds-internal-grid-width-max: none !important;
+  color-scheme: light dark !important;
+}
+:host([hidden]) {
+  display: none !important;
+}
+slot {
+  display: block;
+}
+slot:first-of-type {
+  grid-row-start: 1;
+}
+slot:not([name]) {
+  grid-column: 2/3;
+  z-index: 0;
+}
+dialog {
+  position: fixed;
+  inset: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  width: 100dvw;
+  height: 100dvh;
+  max-width: 100dvw;
+  max-height: 100dvh;
+  overflow: hidden;
+  display: block;
+  outline: 0;
+  z-index: 9999999;
+  visibility: hidden;
+  pointer-events: none;
+  background: transparent;
+  transition: visibility 0s linear var(--p-transition-duration, 0.4s), background-color var(--p-transition-duration, 0.4s) cubic-bezier(0.4,0,0.5,1), -webkit-backdrop-filter var(--p-transition-duration, 0.4s) cubic-bezier(0.4,0,0.5,1), backdrop-filter var(--p-transition-duration, 0.4s) cubic-bezier(0.4,0,0.5,1);
+}
+dialog::backdrop {
+  display: none;
+}
+@supports (transition-behavior: allow-discrete) {
+  dialog {
+    transition: visibility 0s linear var(--p-transition-duration, 0.4s), background-color var(--p-transition-duration, 0.4s) cubic-bezier(0.4,0,0.5,1), -webkit-backdrop-filter var(--p-transition-duration, 0.4s) cubic-bezier(0.4,0,0.5,1), backdrop-filter var(--p-transition-duration, 0.4s) cubic-bezier(0.4,0,0.5,1), overlay var(--p-transition-duration, 0.4s) cubic-bezier(0.4,0,0.5,1) allow-discrete;
+  }
+}
+
+.scroller {
+  position: absolute;
+  display: grid;
+  inset-block: 0;
+  inset-inline-end: 0;
+  overflow: hidden auto;
+  overscroll-behavior-y: none;
+  background: rgba(255,255,255,.01);
+  opacity: 0;
+  transform: translateX(100%);
+  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.4,0,0.5,1), transform var(--p-transition-duration, 0.25s) cubic-bezier(0.4,0,0.5,1);
+}
+.scroller:dir(rtl) {
+  transform: translateX(-100%);
+}
+.flyout {
+  display: grid;
+  grid-template: auto/clamp(8px, 0.5vw + 6px, 16px) auto clamp(8px, 0.5vw + 6px, 16px);
+  padding-block: calc(clamp(8px, 0.5vw + 6px, 16px) + clamp(16px, 1.25vw + 12px, 36px));
+  row-gap: clamp(16px, 1.25vw + 12px, 36px);
+  column-gap: calc(clamp(32px, 2.75vw + 23px, 76px) - clamp(8px, 0.5vw + 6px, 16px));
+  align-content: flex-start;
+  color: #010205;
+  background: #FFF;
+  width: var(--p-flyout-width,auto);
+  min-width: 320px;
+  max-width: var(--p-flyout-max-width,1180px);
+}
+.dismiss {
+  width: fit-content;
+  height: fit-content;
+  border: 2px solid #EEEFF2;
+  border-radius: 4px;
+  background: #EEEFF2;
+  margin-inline-end: 200vw;
+  transition: margin-inline-end 0s linear var(--p-transition-duration, 0s);
+  grid-area: 1/3;
+  z-index: 4;
+  position: sticky;
+  inset-block-start: clamp(8px, 0.5vw + 6px, 16px);
+  inset-inline-end: clamp(8px, 0.5vw + 6px, 16px);
+  margin-block-start: calc(clamp(16px, 1.25vw + 12px, 36px) * -1);
+  justify-self: flex-end;
+}
+        </style>
+        <dialog
+          aria-hidden="true"
+          aria-modal="true"
+          inert=""
+          tabindex="-1"
+        >
+          <div
+            class="scroller"
+          >
+            <div
+              class="flyout"
+            >
+              <p-button-pure
+                class="dismiss ssr"
+              >
+                <template
+                  shadowroot="open"
+                  shadowrootdelegatesfocus="true"
+                  shadowrootmode="open"
+                >
+                  <style>
+                    :host {
+  transform: translate3d(0,0,0) !important;
+  outline: 0 !important;
+  color-scheme: light dark !important;
+  display: inline-block;
+  width: auto;
+  vertical-align: top;
+}
+:host([hidden]) {
+  display: none !important;
+}
+.root {
+  display: flex;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  color: #010205;
+  text-decoration: none;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  gap: 0;
+  justify-content: flex-start;
+  align-items: flex-start;
+  font-size: 1rem;
+  -webkit-appearance: none;
+  appearance: none;
+  background: transparent;
+  text-align: start;
+  border: 0;
+  cursor: pointer;
+}
+.root::before {
+  content: "";
+  position: absolute;
+  top: -2px;
+  bottom: -2px;
+  right: -2px;
+  left: -2px;
+  border-radius: 4px;
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+}
+.root::-moz-focus-inner {
+  border: 0;
+}
+.icon {
+  position: relative;
+  flex-shrink: 0;
+  width: calc(6px + 2.125ex);
+  height: calc(6px + 2.125ex);
+}
+.label {
+  white-space: nowrap;
+  text-indent: -999999px;
+  overflow: hidden;
+  order: 0;
+}
+.loading {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+}
+@supports (width: round(down, 1px, 1px)) {
+  .icon {
+    width: round(down, calc(6px + 2.125ex), 1px);
+    height: round(down, calc(6px + 2.125ex), 1px);
+  }
+}
+
+
+                  </style>
+                  <button
+                    class="root"
+                    type="button"
+                  >
+                    <p-icon
+                      aria-hidden="true"
+                      class="icon ssr"
+                    >
+                      <template
+                        shadowroot="open"
+                        shadowrootmode="open"
+                      >
+                        <style>
+                          :host {
+  display: inline-block;
+  vertical-align: top;
+  color-scheme: light dark !important;
+}
+:host([hidden]) {
+  display: none !important;
+}
+img {
+  display: block;
+  margin: 0;
+  padding: 0;
+  pointer-events: none;
+  filter: var(--p-internal-icon-filter,invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%));
+  -webkit-animation: rerender-light-primary 1ms;
+  width: inherit;
+  height: inherit;
+}
+@keyframes rerender-light-primary {
+  0% {
+    transform: rotateZ(0);
+  }
+  100% {
+    transform: rotateZ(0);
+  }
+}
+                        </style>
+                        <img
+                          alt=""
+                          height="24"
+                          loading="lazy"
+                          src="http://localhost:3001/icons/close.min.565f6a718b632a173b7a74eb9cb84378.svg"
+                          width="24"
+                        />
+                      </template>
+                    </p-icon>
+                    <span
+                      class="label"
+                    >
+                      <slot />
+                    </span>
+                  </button>
+                  <span
+                    class="loading"
+                    id="loading"
+                    role="status"
+                  />
+                </template>
+                Dismiss flyout
+              </p-button-pure>
+              <slot />
+            </div>
+          </div>
+        </dialog>
+      </template>
+      <slot
+        name="sidebar-end"
+      />
+    </p-flyout>
+  </template>
+  Some child
+</p-canvas>
+`;
+
 exports[`should render dsr component for PCarousel 1`] = `
 <p-carousel
   class="ssr"
