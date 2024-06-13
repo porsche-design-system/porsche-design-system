@@ -40,7 +40,12 @@ export const tagNameMarkup: Record<TagNameRelevant, string> = {
   'p-button-tile': `<p-button-tile label="Some label" description="Some description" aspectRatio="4:3">
     <img src="">
    </p-button-tile>`,
-  'p-canvas': `<p-canvas sidebar-start-open="false" sidebar-start-width="medium" sidebar-end-open="false" sidebar-end-width="medium"></p-canvas>`,
+  'p-canvas': `<p-canvas sidebar-start-open="false" sidebar-start-width="medium" sidebar-end-open="false" sidebar-end-width="medium">
+ <div slot="header">Some header</div>
+ <div slot="footer">Some footer</div>
+ <div slot="sidebar-start">Some sidebar start</div>
+ <div slot="sidebar-end">Some sidebar end</div>
+</p-canvas>`,
   'p-carousel': `<p-carousel heading="Some heading">
     <div>1</div>
     <div>2</div>
