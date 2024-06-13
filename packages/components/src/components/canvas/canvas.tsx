@@ -40,13 +40,15 @@ export class Canvas {
 
   @State() private isDesktopView = false;
 
+  private mediaQueryDesktopView = window.matchMedia(`(min-width: ${breakpointM}px)`);
+
   public connectedCallback(): void {
-    this.handleMediaQuery(this.mediaQueryDesktopView());
-    this.mediaQueryDesktopView().addEventListener('change', this.handleMediaQuery);
+    this.handleMediaQuery(this.mediaQueryDesktopView);
+    this.mediaQueryDesktopView.addEventListener('change', this.handleMediaQuery);
   }
 
   public disconnectedCallback(): void {
-    this.mediaQueryDesktopView().removeEventListener('change', this.handleMediaQuery);
+    this.mediaQueryDesktopView.removeEventListener('change', this.handleMediaQuery);
   }
 
   public render(): JSX.Element {
@@ -135,10 +137,6 @@ export class Canvas {
       </Host>
     );
   }
-
-  private mediaQueryDesktopView = (): MediaQueryList => {
-    return window.matchMedia(`(min-width: ${breakpointM}px)`);
-  };
 
   private handleMediaQuery = (e: MediaQueryList | MediaQueryListEvent): void => {
     this.isDesktopView = !!e.matches;
