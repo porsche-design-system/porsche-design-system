@@ -1,10 +1,7 @@
 import type { TagName } from '@porsche-design-system/shared';
 import { convertToAngular, convertToReact } from '@/utils/index';
 import { convertToVue } from '@/utils/convertToVue';
-
-type Slots = {
-  [x: string]: string | undefined;
-};
+import { Slot } from '@/utils/componentSlots';
 
 type Props = {
   [x: string]: any;
@@ -15,45 +12,7 @@ type FrameworkMarkup = {
   [key in Framework]?: string;
 };
 
-export const getComponentSlotContent = (component: TagName) => {
-  // TODO: Fix typing
-  const slotContent: { [key in TagName]: { [x: string]: string | { [x: string]: string } } } = {
-    'p-flyout': {
-      header: '<p-heading slot="header" size="large" tag="h2">Some Heading</p-heading>',
-      content: {
-        default: '<p-text>Some Content</p-text>',
-        scrollable: `<p-text>Some Content Begin</p-text>
-  <div style="width: 10px; height: 120vh; background: deeppink;"></div>
-  <p-text>Some Content End</p-text>`,
-        'sticky-content': `<div style="display: grid; grid-template-columns: 2fr 1fr; gap: 16px; align-items: flex-start">
-    <div
-      style="
-        position: sticky;
-        top: calc(var(--p-flyout-sticky-top, 0) + 16px);
-        padding: 16px;
-        background: rgba(255, 0, 0, 0.1);
-      "
-    >
-      Some sticky element within content relying on --p-flyout-sticky-top
-    </div>
-    <div>
-      <p-text theme="dark">Some Content Begin</p-text>
-      <div style="width: 10px; height: 120vh; background: deeppink;"></div>
-      <p-text theme="dark">Some Content End</p-text>
-    </div>
-  </div>`,
-      },
-      footer: `<p-button-group slot="footer">
-    <p-button type="button">Proceed</p-button>
-    <p-button type="button" variant="secondary">Cancel</p-button>
-  </p-button-group>`,
-      'sub-footer': '<p-text slot="sub-footer">Some additional Sub-Footer</p-text>',
-    },
-  };
-  return slotContent[component];
-};
-
-export const getFlyoutExamples = (component: TagName, props: Props, slots: Slots): FrameworkMarkup => {
+export const getFlyoutExamples = (component: TagName, props: Props, slots: Slot[]): FrameworkMarkup => {
   const markup = getComponentMarkup(component, props, slots);
 
   return {
@@ -140,9 +99,12 @@ export class FlyoutExampleComponent {
   return examples[framework];
 };
 
-export const getComponentMarkup = <T extends TagName>(component: T, props: Props, slots: Slots) => {
+export const getComponentMarkup = <T extends TagName>(component: T, props: Props, slots: Slot[]) => {
   return `<${component}${getHTMLAttributes(props)}>
-  ${Object.values(slots).filter(Boolean).join('\n  ')}
+  ${slots
+    .filter((s) => s.isShown)
+    .map((slot) => slot.markup)
+    .join('\n  ')}
 </${component}>`;
 };
 

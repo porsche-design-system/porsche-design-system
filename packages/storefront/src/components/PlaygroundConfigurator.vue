@@ -1,65 +1,5 @@
 <template>
   <div class="playground">
-    <p-accordion
-      :theme="$store.getters.storefrontTheme"
-      :heading="'Configure'"
-      :headingTag="'h3'"
-      :open="isConfigureAccordionOpen"
-      @update="onUpdateConfigureAccordion"
-    >
-      <div class="configure">
-        <div>
-          <div v-for="{ key, value } in propsMeta" :key="key">
-            <p-select
-              :id="key"
-              :label="key"
-              :value="selectedValues[key]"
-              @update="onUpdateProps($event, key)"
-              :theme="$store.getters.storefrontTheme"
-            >
-              <p-select-option
-                v-if="value.allowedValues === 'boolean'"
-                v-for="option in ['true', 'false']"
-                :key="option"
-                :value="option"
-              >
-                {{ option }}{{ `${value.defaultValue}` === option ? ' (default)' : '' }}
-              </p-select-option>
-              <p-select-option
-                v-if="Array.isArray(value.allowedValues)"
-                v-for="option in value.allowedValues"
-                :key="option"
-                :value="option"
-              >
-                {{ option }}{{ value.defaultValue == option ? ' (default)' : '' }}
-              </p-select-option>
-              <!--        TODO: Add condition for aria-->
-            </p-select>
-          </div>
-        </div>
-        <div>
-          <p-select
-            label="Content"
-            :theme="$store.getters.storefrontTheme"
-            :value="selectedContent"
-            @update="onUpdateContent"
-          >
-            <p-select-option v-for="{ key, value } in contents" :value="value" :key="key">{{ key }}</p-select-option>
-          </p-select>
-          <p-multi-select
-            label="Include slots"
-            :theme="$store.getters.storefrontTheme"
-            :value="selectedSlots"
-            @update="onUpdateSlots"
-          >
-            <p-multi-select-option v-for="slot in componentMeta.namedSlots" :key="slot" :value="slot">{{
-              slot
-            }}</p-multi-select-option>
-          </p-multi-select>
-        </div>
-      </div>
-    </p-accordion>
-
     <div
       :class="{
         example: true,
@@ -75,7 +15,28 @@
         // 'example--fullscreen': isFullWindow,
       }"
     >
-      <!--      <div class="demo" v-html="markup['vanilla-js']"></div>-->
+      <p-accordion
+        :theme="$store.getters.storefrontTheme"
+        :heading="'Configure'"
+        :headingTag="'h3'"
+        :open="isConfigureAccordionOpen"
+        @update="onUpdateConfigureAccordion"
+      >
+        <div class="configure">
+          <div>
+            <ConfiguratorProps :component="component" @update="onUpdateProps" />
+          </div>
+          <div>
+            <div v-for="{ name, isShown, description } in selectedSlots.filter((slot) => slot.name)" :key="name">
+              <p-checkbox-wrapper :label="name" :theme="$store.getters.storefrontTheme">
+                <input type="checkbox" :name="name" :checked="isShown" @change="toggleSelectedSlot(name)" />
+              </p-checkbox-wrapper>
+              <p-text :theme="$store.getters.storefrontTheme">{{ description }}</p-text>
+            </div>
+          </div>
+        </div>
+      </p-accordion>
+
       <DynamicIframe :markup="markup['vanilla-js']" />
       <CodeBlock
         :class="{ 'code-block--framework': true }"
@@ -90,19 +51,20 @@
 <script lang="ts">
   import Vue from 'vue';
   import Component from 'vue-class-component';
-  import { Prop, Watch } from 'vue-property-decorator';
+  import { Prop } from 'vue-property-decorator';
   import CodeBlock from '@/components/CodeBlock.vue';
   import CodeEditor from '@/components/CodeEditor.vue';
   import DynamicIframe from '@/components/DynamicIframe.vue';
   import { TagName } from '@porsche-design-system/shared';
-  import { ComponentMeta, getComponentMeta, PropMeta } from '@porsche-design-system/component-meta';
   import { BackgroundColor, Framework, FrameworkMarkup } from '@/models';
-  import { getComponentSlotContent, getFlyoutExamples } from '@/utils/getComponentMarkup';
-  import type { MultiSelectUpdateEventDetail, SelectUpdateEventDetail } from '@porsche-design-system/components-vue';
+  import { getFlyoutExamples } from '@/utils/getComponentMarkup';
   import { AccordionUpdateEventDetail } from '@porsche-design-system/components';
+  import { componentSlots, type Slot } from '@/utils/componentSlots';
+  import ConfiguratorProps from '@/components/ConfiguratorProps.vue';
 
   @Component({
     components: {
+      ConfiguratorProps,
       CodeBlock,
       CodeEditor,
       DynamicIframe,
@@ -112,94 +74,32 @@
     @Prop() public component!: TagName;
     @Prop({ default: 'background-base' }) public backgroundColor!: BackgroundColor;
 
-    componentMeta: ComponentMeta = {} as ComponentMeta;
-    propsMeta: { key: string; value: PropMeta }[] = [];
-    selectedValues: { [key: string]: any } = {};
-    appliedValues: { [key: string]: any } = {};
+    selectedProps: { [key: string]: any } = {};
+    selectedSlots: Slot[] = [];
 
-    contents: { key: string; value: string }[] = [];
-    selectedContent: string = '';
-
-    // Save for each slot if it should be rendered
-    selectedSlots: { key: string; value: boolean }[] = [];
     markup: FrameworkMarkup = {};
 
     isConfigureAccordionOpen: boolean = false;
 
-    async created() {
-      this.componentMeta = getComponentMeta(this.component);
-      this.propsMeta = Object.entries(this.componentMeta.propsMeta).map(([key, value]) => ({ key, value }));
-
-      // Initialize selected values with default values
-      this.propsMeta.forEach(({ key, value }) => {
-        if (value.allowedValues === 'boolean') {
-          this.selectedValues[key] = `${value.defaultValue}`;
-        } else {
-          this.selectedValues[key] = value.defaultValue;
-        }
-      });
-
-      const componentSlotContent = getComponentSlotContent(this.component);
-      this.contents = Object.entries(componentSlotContent.content).map(([key, value]) => ({
-        key,
-        value,
-      }));
-
-      // Set selected content to default initially
-      this.selectedContent = componentSlotContent.content.default;
-
-      // Set default content slot true initially
-      this.selectedSlots = Object.entries(componentSlotContent).map(([key, value]) => ({
-        key,
-        value: key === 'content',
-      }));
-
-      // this.appliedValues['style'] = '--p-flyout-width: 80vw; --p-flyout-max-width: 1000px;';
-
+    created() {
+      this.selectedSlots = componentSlots[this.component];
       this.updateMarkup();
     }
 
-    async updateMarkup(key?: string) {
-      // TODO: Don't apply default values?
-      // TODO: Theme has to be patched
-      if (key) {
-        this.appliedValues[key] = this.selectedValues[key];
-      }
-
-      // TODO: Theme has to be patched
-      const slotContent = getComponentSlotContent(this.component);
-      const slots = this.selectedSlots.reduce((acc, slot) => {
-        if (slot.value) {
-          if (slot.key === 'content') {
-            acc[slot.key] = this.selectedContent;
-          } else {
-            acc[slot.key] = slotContent[slot.key];
-          }
-        }
-        return acc;
-      }, {} as any);
-
-      this.markup = getFlyoutExamples('p-flyout', this.appliedValues, slots);
-      this.$nextTick(() => {
-        this.$emit('markup-changed', this.markup);
-      });
+    updateMarkup() {
+      // TODO: Patch theme into selected props
+      this.markup = getFlyoutExamples('p-flyout', this.selectedProps, this.selectedSlots);
     }
 
-    onUpdateProps(e: SelectUpdateEventDetail, key: string) {
-      this.selectedValues[key] = e.detail.value;
-      this.updateMarkup(key);
-    }
-
-    onUpdateContent(e: SelectUpdateEventDetail) {
-      this.selectedContent = e.detail.value;
+    toggleSelectedSlot(slotName: string) {
+      const slot = this.selectedSlots.find((slot) => slot.name === slotName)!;
+      slot.isShown = !slot.isShown;
       this.updateMarkup();
     }
 
-    onUpdateSlots(e: MultiSelectUpdateEventDetail) {
-      this.selectedSlots = Object.entries(getComponentSlotContent(this.component)).map(([key, value]) => ({
-        key,
-        value: key === 'content' ? true : e.detail.value.includes(key),
-      }));
+    onUpdateProps(props: { [x: string]: any }) {
+      // TODO: Directly pass props to updateMarkup and remove member var?
+      this.selectedProps = props;
       this.updateMarkup();
     }
 
@@ -209,7 +109,7 @@
 
     public get activeFrameworkMarkup(): string {
       // in case there aren't all frameworks available we use the first one as fallback
-      return this.markup[this.activeFramework];
+      return this.markup[this.activeFramework] || Object.values(this.markup)[0];
     }
 
     onUpdateConfigureAccordion(e: AccordionUpdateEventDetail) {
@@ -250,14 +150,12 @@
 
   .example {
     position: relative;
-    padding: $pds-spacing-static-large;
     overflow-x: auto;
     border: 1px solid var(--playground-border-color);
     border-radius: $pds-border-radius-large;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    gap: $pds-spacing-static-large;
     background: var(--playground-background-color);
 
     &--light,
@@ -351,6 +249,20 @@
       .demo {
         margin: 0 (-$pds-spacing-static-large);
       }
+    }
+
+    p-accordion {
+      width: 100%;
+      padding: $pds-spacing-static-medium $pds-spacing-static-large;
+    }
+
+    iframe {
+      border-top: 1px solid var(--playground-border-color);
+      border-bottom: 1px solid var(--playground-border-color);
+    }
+
+    .code-block {
+      padding: $pds-spacing-static-large;
     }
   }
 
