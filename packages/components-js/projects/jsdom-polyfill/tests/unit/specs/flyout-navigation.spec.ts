@@ -8,7 +8,7 @@ it('should have initialized shadow dom', async () => {
   document.body.innerHTML = getMarkup('p-flyout-navigation');
   expect(await componentsReady()).toBe(4);
 
-  const els = Array.from(document.body.querySelectorAll('*:not(a)'));
+  const els = Array.from(document.body.querySelectorAll('p-flyout-navigation,p-flyout-navigation-item'));
   expect(els.length).toBe(4);
   els.forEach((el) => {
     expect(el.shadowRoot).not.toBeNull();

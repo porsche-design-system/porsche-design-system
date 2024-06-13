@@ -31,8 +31,7 @@ export const tagNameMarkup: Record<TagNameRelevant, string> = {
   <span slot="heading">Some Slotted Heading</span>
   <p>Some Text</p>
 </p-accordion>`,
-  'p-banner': `<p-banner>
-    <span slot="title">Some banner title</span>
+  'p-banner': `<p-banner heading="Some heading">
     <span slot="description">Some banner description.</span>
   </p-banner>`,
   'p-button': `<p-button>Some label</p-button>`,
@@ -103,7 +102,7 @@ export const tagNameMarkup: Record<TagNameRelevant, string> = {
     <img src="" />
   </p-link-tile-product>`,
   'p-marque': `<p-marque></p-marque>`,
-  'p-modal': `<p-modal heading="Some heading" open="true"></p-modal>`,
+  'p-modal': `<p-modal open="true"><h2 slot="header">Some Heading</h2></p-modal>`,
   'p-model-signature': `<p-model-signature></p-model-signature>`,
   'p-multi-select': `<p-multi-select name="name">
     <p-multi-select-option value="a">Option A</p-multi-select-option>

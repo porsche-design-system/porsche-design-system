@@ -7,7 +7,7 @@ it('should have initialized shadow dom', async () => {
   document.body.innerHTML = getMarkup('p-tabs');
   expect(await componentsReady()).toBe(4);
 
-  const els = Array.from(document.body.querySelectorAll('*')).filter((x) => x.tagName !== 'BUTTON');
+  const els = Array.from(document.body.querySelectorAll('p-tabs,p-tabs-item'));
   expect(els.length).toBe(4);
   els.forEach((el) => {
     expect(el.shadowRoot).not.toBeNull();
