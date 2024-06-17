@@ -24,7 +24,7 @@
       >
         <div class="configure">
           <div>
-            <ConfiguratorProps :component="component" @update="onUpdateProps" />
+            <ConfiguratorProps :component-props="componentProps" @update="onUpdateProps" />
           </div>
           <div>
             <div v-for="{ name, isShown, description } in selectedSlots.filter((slot) => slot.name)" :key="name">
@@ -59,8 +59,9 @@
   import { BackgroundColor, Framework, FrameworkMarkup } from '@/models';
   import { getFlyoutExamples } from '@/utils/getComponentMarkup';
   import { AccordionUpdateEventDetail } from '@porsche-design-system/components';
-  import { componentSlots, type Slot } from '@/utils/componentSlots';
+  import { type ComponentSlots, componentSlots } from '@/utils/componentSlots';
   import ConfiguratorProps from '@/components/ConfiguratorProps.vue';
+  import { type ComponentProps, getComponentProps } from '@/utils/componentProps';
 
   @Component({
     components: {
@@ -74,21 +75,22 @@
     @Prop() public component!: TagName;
     @Prop({ default: 'background-base' }) public backgroundColor!: BackgroundColor;
 
-    selectedProps: { [key: string]: any } = {};
-    selectedSlots: Slot[] = [];
+    componentProps: ComponentProps = {};
+    selectedSlots: ComponentSlots = [];
 
     markup: FrameworkMarkup = {};
 
     isConfigureAccordionOpen: boolean = false;
 
     created() {
+      this.componentProps = getComponentProps(this.component);
       this.selectedSlots = componentSlots[this.component];
       this.updateMarkup();
     }
 
     updateMarkup() {
       // TODO: Patch theme into selected props
-      this.markup = getFlyoutExamples('p-flyout', this.selectedProps, this.selectedSlots);
+      this.markup = getFlyoutExamples('p-flyout', this.componentProps, this.selectedSlots);
     }
 
     toggleSelectedSlot(slotName: string) {
@@ -97,9 +99,12 @@
       this.updateMarkup();
     }
 
-    onUpdateProps(props: { [x: string]: any }) {
-      // TODO: Directly pass props to updateMarkup and remove member var?
-      this.selectedProps = props;
+    onUpdateProps({ key, value }: { key: keyof ComponentProps; value: any }) {
+      if (this.componentProps[key].defaultValue === value) {
+        this.componentProps[key].selectedValue = undefined;
+      } else {
+        this.componentProps[key].selectedValue = value;
+      }
       this.updateMarkup();
     }
 

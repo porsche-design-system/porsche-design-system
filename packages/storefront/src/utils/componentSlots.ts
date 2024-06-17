@@ -1,14 +1,16 @@
 import { TagName } from '@porsche-design-system/shared';
 
+export type ComponentSlots = ComponentSlot[];
+
 // TODO: Is it possible to narrow down slot names typing from componentMeta?
-export type Slot = {
+type ComponentSlot = {
   name: string;
   markup: string;
   description: string;
   isShown: boolean;
 };
 
-export const componentSlots: { [T in TagName]: Slot[] } = {
+export const componentSlots: { [T in TagName]: ComponentSlots } = {
   'p-flyout': [
     {
       name: 'header',

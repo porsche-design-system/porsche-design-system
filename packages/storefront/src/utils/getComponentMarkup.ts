@@ -1,18 +1,19 @@
 import type { TagName } from '@porsche-design-system/shared';
 import { convertToAngular, convertToReact } from '@/utils/index';
 import { convertToVue } from '@/utils/convertToVue';
-import { Slot } from '@/utils/componentSlots';
-
-type Props = {
-  [x: string]: any;
-};
+import type { ComponentSlots } from '@/utils/componentSlots';
+import type { ComponentProps } from '@/utils/componentProps';
 
 type Framework = 'angular' | 'react' | 'vue' | 'vanilla-js';
 type FrameworkMarkup = {
   [key in Framework]?: string;
 };
 
-export const getFlyoutExamples = (component: TagName, props: Props, slots: Slot[]): FrameworkMarkup => {
+export const getFlyoutExamples = (
+  component: TagName,
+  props: ComponentProps,
+  slots: ComponentSlots
+): FrameworkMarkup => {
   const markup = getComponentMarkup(component, props, slots);
 
   return {
@@ -99,7 +100,7 @@ export class FlyoutExampleComponent {
   return examples[framework];
 };
 
-export const getComponentMarkup = <T extends TagName>(component: T, props: Props, slots: Slot[]) => {
+export const getComponentMarkup = <T extends TagName>(component: T, props: ComponentProps, slots: ComponentSlots) => {
   return `<${component}${getHTMLAttributes(props)}>
   ${slots
     .filter((s) => s.isShown)
@@ -108,18 +109,18 @@ export const getComponentMarkup = <T extends TagName>(component: T, props: Props
 </${component}>`;
 };
 
-// TODO: Copied from playwright-helper
 /**
  * Get HTML attributes string from an object of properties.
  * @param props - The object containing the properties.
  * @returns The HTML attributes string.
  */
-const getHTMLAttributes = <T extends object>(props: T): string => {
+const getHTMLAttributes = (props: ComponentProps): string => {
   const attributes = Object.entries(props)
-    .filter(([, value]) => value !== undefined)
-    .map(([prop, value]) => {
+    .filter(([, prop]) => prop.selectedValue !== undefined)
+    .map(([prop, { selectedValue }]) => {
       const attributeName = prop.replace(/([a-z])([A-Z])/g, '$1-$2').toLowerCase();
-      const attributeValue = typeof value === 'object' ? JSON.stringify(value).replace(/"/g, "'") : value;
+      const attributeValue =
+        typeof selectedValue === 'object' ? JSON.stringify(selectedValue).replace(/"/g, "'") : selectedValue;
       return `${attributeName}="${attributeValue}"`;
     })
     .join(' ');
