@@ -23,6 +23,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 #### Changed
 
+- Angular: updated peer dependency to `>=17.0.0 <19.0.0`
+  ([#3346](https://github.com/porsche-design-system/porsche-design-system/pull/3346))
 - React: Improve prop typings for all wrappers of `@porsche-design-system/components-react`
   ([#3336](https://github.com/porsche-design-system/porsche-design-system/pull/3336))
 
