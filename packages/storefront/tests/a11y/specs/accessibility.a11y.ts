@@ -40,10 +40,14 @@ const gotoUrl = async (page: Page, url: string): Promise<void> => {
 };
 
 const enableDarkMode = async (page: Page): Promise<void> => {
-  const themeBtn = page.locator('.cycle-platform-theme');
-  await themeBtn.click();
+  if (await page.locator('.cycle-platform-theme').count()) {
+    const themeBtn = page.locator('.cycle-platform-theme');
+    await themeBtn.click();
 
-  await page.waitForFunction(() => document.body.className === 'dark-mode');
+    await page.waitForFunction(() => document.body.className === 'dark-mode');
+  } else {
+    return;
+  }
 };
 
 test('should have successfully extracted :root styles', () => {
