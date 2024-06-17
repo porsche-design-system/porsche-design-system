@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
-  selector: 'page-flyout-example',
+  selector: 'page-canvas-example',
   styles: [
     `
       body {
