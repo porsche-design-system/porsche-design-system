@@ -1,8 +1,8 @@
 import { type Page, test, expect } from '@playwright/test';
 import { a11yAnalyze } from '../helpers';
-import { paramCase } from 'change-case';
 import * as fs from 'fs';
 import * as path from 'path';
+import { schemes } from '@porsche-design-system/shared/testing/playwright.vrt';
 
 const getInternalUrls = (): string[] => {
   const sitemapPath = path.resolve(__dirname, '../../e2e/fixtures/sitemap.json');
@@ -40,7 +40,7 @@ const gotoUrl = async (page: Page, url: string): Promise<void> => {
 };
 
 const enableDarkMode = async (page: Page): Promise<void> => {
-  const themeBtn = await page.$('.cycle-platform-theme');
+  const themeBtn = page.locator('.cycle-platform-theme');
   await themeBtn.click();
 
   await page.waitForFunction(() => document.body.className === 'dark-mode');
@@ -75,80 +75,27 @@ test.describe('outside main element', () => {
 test.describe('within main element', () => {
   const includeSelector = 'main';
 
-  const cycleFrameworkTabs = async (page: Page, theme: string): Promise<void> => {
-    const buttons = (
-      await Promise.all([
-        // page.locator("xpath=//button[text() = 'Vanilla JS']"),
-        page.locator("xpath=//button[text() = 'Angular']"),
-        page.locator("xpath=//button[text() = 'React']"),
-        // TODO: vue is missing
-      ])
-    )
-      .map(([handle]) => handle)
-      .flat()
-      .filter(Boolean); // get rid of null values
-
-    if (buttons.length) {
-      expect(buttons.length).toBe(2);
-
-      const [vanillaJsButton] = await page.locator("//xpath=button[text() = 'Vanilla JS']");
-
-      for (const button of buttons) {
-        // pages for styles sub-package don't have vanilla js examples and angular is selected initially
-        if (vanillaJsButton) {
-          // angular and react can't be selected initially
-          expect(await button.evaluate((el: HTMLElement) => el.getAttribute('aria-selected'))).toBe('false');
-        }
-
-        await button.click();
-        await page.waitForFunction((el: HTMLElement) => el.getAttribute('aria-selected') === 'true', {}, button);
-
-        const innerText = await button.evaluate((el: HTMLElement) => el.innerText);
-        const ariaSelected = await button.evaluate((el: HTMLElement) => el.getAttribute('aria-selected'));
-
-        expect(ariaSelected).toBe('true');
-
-        await a11yAnalyze(page, theme + '-' + paramCase(innerText));
-      }
-    }
-  };
-
   // filter out files from public/assets directory
   const internalUrls = getInternalUrls().filter((url) => !url.match(/^\/assets\/.*\.\w{3,4}$/));
 
-  for (const [url, index] of internalUrls.map<[string, number]>((url, i) => [url, i])) {
-    test(`should have no accessibility issues in main element at (${index + 1}/${internalUrls.length}) "${url}"`, async ({
-      page,
-    }) => {
-      await gotoUrl(page, url);
+  schemes.forEach((scheme) => {
+    for (const [url, index] of internalUrls.map<[string, number]>((url, i) => [url, i])) {
+      test(`should have no accessibility issues in main element for scheme-${scheme} at (${index + 1}/${internalUrls.length}) "${url}"`, async ({
+        page,
+      }) => {
+        await gotoUrl(page, url);
+        await enableDarkMode(page);
 
-      await a11yAnalyze(page, { suffix: 'main-light', includeSelector }); // page in default/initial state
-      // disabled because highly redundant, instead this should be tested once for light and dark with a good code example for angular, react and vue
-      // await cycleFrameworkTabs('light');
+        // change the theme of component to dark if the option exists
+        if (scheme === 'dark' && (await page.locator('p-select[value="light"]').first().count())) {
+          const themeSwitch = page.locator('p-select[value="light"]').first();
+          await themeSwitch.click();
+          const option = themeSwitch.getByText('Dark');
+          await option.click();
+        }
 
-      // TODO: commented out test, because `darkThemeButton` doesn't exist anymore on Storefront.
-      //  Test needs to be refactored to make use of Select. In addition, we should ensure the `if()` condition
-      //  will work in also in regards of future Storefront refactorings.
-      /*const darkThemeButton = await page.locator("xpath=//button[text() = 'Dark theme']");
-
-      if (darkThemeButton) {
-        await darkThemeButton.click();
-
-        const playgroundClassName = await darkThemeButton.evaluate(
-          (el) => el.parentElement.nextElementSibling.className
-        );
-        expect(playgroundClassName).toContain('example--dark');
-
-        // reset framework to vanilla js if available
-        // const [vanillaJsButton] = await page.locator("xpath=//button[text() = 'Vanilla JS']");
-        // if (vanillaJsButton) {
-        //   await vanillaJsButton.click();
-        // }
-
-        await a11yAnalyze(page, { suffix: 'main-dark', includeSelector });
-        // disabled because highly redundant, instead this should be tested once for light and dark with a good code example for angular, react and vue
-        // await cycleFrameworkTabs('dark');
-      }*/
-    });
-  }
+        await a11yAnalyze(page, { suffix: `main-scheme-${scheme}`, includeSelector });
+      });
+    }
+  });
 });
