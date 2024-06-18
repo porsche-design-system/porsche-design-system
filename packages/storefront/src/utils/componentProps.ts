@@ -17,10 +17,11 @@ export const getComponentProps = (component: TagName): ComponentProps => {
   const componentProps: ComponentProps = {};
 
   for (const [key, value] of Object.entries(meta)) {
+    const convertedDefaultValue = value.defaultValue !== null ? String(value.defaultValue) : value.defaultValue; // Coverts boolean values to 'true' | 'false'
     componentProps[key] = {
       ...value,
-      defaultValue: value.defaultValue !== null ? String(value.defaultValue) : value.defaultValue, // Coverts boolean values to 'true' | 'false'
-      selectedValue: undefined, // TODO: Set selected value for required props
+      defaultValue: convertedDefaultValue,
+      selectedValue: convertedDefaultValue, // TODO: Set selected value for required props
     };
   }
 

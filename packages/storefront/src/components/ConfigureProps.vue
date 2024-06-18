@@ -5,7 +5,7 @@
       :key="key"
       :id="key"
       :label="key"
-      :value="componentProps[key].selectedValue === undefined ? value.defaultValue : componentProps[key].selectedValue"
+      :value="componentProps[key].selectedValue"
       @update="onUpdateProps($event, key)"
       :theme="$store.getters.storefrontTheme"
     >

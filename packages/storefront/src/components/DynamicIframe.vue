@@ -20,11 +20,19 @@
 
 <script lang="ts">
   import { Component, Prop, Vue, Watch } from 'vue-property-decorator';
+  import { getBackgroundColor } from '@/utils/stackblitz/helper';
+  import { Theme } from '@porsche-design-system/components';
 
   @Component
   export default class DynamicIframe extends Vue {
     @Prop({ type: String, default: 'about:blank' }) iframeSrc!: string;
     @Prop({ type: String, required: true }) markup!: string;
+    @Prop() theme!: Theme;
+
+    created() {
+      console.log(this.theme);
+      console.log(`body { background: ${getBackgroundColor(this.theme, 'background-base')}; }`);
+    }
 
     isFullWindow = false;
 
@@ -41,6 +49,15 @@
       const iframe = this.$refs.iframe as HTMLIFrameElement;
       if (iframe) {
         iframe.onload = () => {
+          // TODO: Share with openInStackBlitz
+          const globalStyles =
+            this.theme === 'auto'
+              ? `body { background: ${getBackgroundColor('light', 'background-base')}; }
+      @media (prefers-color-scheme: dark) {
+        body { background: ${getBackgroundColor('dark', 'background-base')}; }
+      }`
+              : `body { background: ${getBackgroundColor(this.theme, 'background-base')}; }`;
+
           if (iframe.contentWindow && iframe.contentDocument) {
             const iframeDocument = iframe.contentDocument;
             const loaderScript =
@@ -49,7 +66,11 @@
             iframeDocument.write(`
               <!DOCTYPE html>
               <html>
-                <head></head>
+                <head>
+                <style>
+                    ${globalStyles}
+                </style>
+                </head>
                 <body style="margin: 32px;">
                   <div id="app">${this.markup}</div>
                   <script data-pds-loader-script>${loaderScript}<\/script>
@@ -87,6 +108,7 @@
   .iframe {
     width: 100%;
     position: relative;
+    display: flex;
 
     iframe {
       width: 100%;

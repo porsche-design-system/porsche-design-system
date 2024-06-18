@@ -5,6 +5,7 @@ import type { ComponentSlots } from '@/utils/componentSlots';
 import type { ComponentProps } from '@/utils/componentProps';
 import { pascalCase } from 'change-case';
 
+// TODO: Use shared type
 type Framework = 'angular' | 'react' | 'vue' | 'vanilla-js';
 type FrameworkMarkup = {
   [key in Framework]: string;
@@ -19,14 +20,24 @@ export const getComponentExampleMarkup = (
   const markup = getComponentMarkup(component, props, slots);
 
   const pascalCaseComponent = pascalCase(component);
-  const componentRegex = new RegExp(`<${component}[\\S\\s]*</${component}>`);
-  const componentRegexPascalCase = new RegExp(`<${pascalCaseComponent}[\\S\\s]*</${pascalCaseComponent}>`);
+  const componentRegex = new RegExp(`(^\\s*)<${component}[\\S\\s]*</${component}>`, 'm');
+  const componentRegexPascalCase = new RegExp(`(^\\s*)<${pascalCaseComponent}[\\S\\s]*</${pascalCaseComponent}>`, 'm');
+
+  const replaceWithIndentation = (code: string, regex: RegExp, replacement: string) => {
+    return code.replace(regex, (match, p1) => {
+      const lines = replacement.trim().split('\n');
+      return [
+        p1 + lines[0], // Preserve indentation for the first line
+        ...lines.slice(1).map((line) => p1 + line), // Apply indentation for subsequent lines
+      ].join('\n');
+    });
+  };
 
   const componentExampleMarkup: FrameworkMarkup = {
     'vanilla-js': codeSamples['vanilla-js']?.replace(componentRegex, markup),
-    react: codeSamples['react']?.replace(componentRegexPascalCase, convertToReact(markup)),
-    angular: codeSamples['angular']?.replace(componentRegex, convertToAngular(markup)),
-    vue: codeSamples['vue']?.replace(componentRegexPascalCase, convertToVue(markup)),
+    react: replaceWithIndentation(codeSamples['react'], componentRegexPascalCase, convertToReact(markup)),
+    angular: replaceWithIndentation(codeSamples['angular'], componentRegex, convertToAngular(markup)),
+    vue: replaceWithIndentation(codeSamples['vue'], componentRegexPascalCase, convertToVue(markup)),
   };
 
   // Patch theme into markup if theme is set
@@ -68,7 +79,7 @@ export const getComponentMarkup = <T extends TagName>(component: T, props: Compo
  */
 const getHTMLAttributes = (props: ComponentProps): string => {
   const attributes = Object.entries(props)
-    .filter(([, prop]) => prop.selectedValue !== undefined)
+    .filter(([, prop]) => prop.selectedValue && prop.selectedValue !== prop.defaultValue)
     .map(([prop, { selectedValue }]) => {
       const attributeName = prop.replace(/([a-z])([A-Z])/g, '$1-$2').toLowerCase();
       const attributeValue =

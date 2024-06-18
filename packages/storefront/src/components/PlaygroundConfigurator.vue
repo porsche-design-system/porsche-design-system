@@ -8,7 +8,7 @@
         'example--auto': $store.getters.storefrontTheme === 'auto',
       }"
     >
-      <DynamicIframe :markup="markup['vanilla-js']" />
+      <DynamicIframe :markup="markup['vanilla-js']" :theme="componentProps['theme'].selectedValue" />
 
       <div class="configure">
         <p-accordion
@@ -198,11 +198,7 @@
     .configure {
       width: 100%;
       padding: $pds-spacing-static-medium $pds-spacing-static-large;
-    }
-
-    .iframe {
       border-top: 1px solid var(--playground-border-color);
-      border-bottom: 1px solid var(--playground-border-color);
     }
 
     .code-block {
