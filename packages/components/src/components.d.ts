@@ -12,6 +12,7 @@ import { ButtonIcon } from "./components/button/button-utils";
 import { ButtonGroupDirection } from "./components/button-group/button-group-utils";
 import { ButtonPureAlignLabel, ButtonPureAriaAttribute, ButtonPureIcon, ButtonPureSize, ButtonPureType, ButtonPureWeight } from "./components/button-pure/button-pure-utils";
 import { ButtonTileAlign, ButtonTileAriaAttribute, ButtonTileAspectRatio, ButtonTileBackground, ButtonTileIcon, ButtonTileSize, ButtonTileType, ButtonTileWeight } from "./components/button-tile/button-tile-utils";
+import { CanvasSidebarEndWidth, CanvasSidebarStartWidth } from "./components/canvas/canvas-utils";
 import { CarouselAlignHeader, CarouselAriaAttribute, CarouselHeadingSize, CarouselInternationalization, CarouselUpdateEventDetail, CarouselWidth } from "./components/carousel/carousel-utils";
 import { CheckboxWrapperState } from "./components/checkbox-wrapper/checkbox-wrapper-utils";
 import { ContentWrapperBackgroundColor, ContentWrapperWidth } from "./components/content-wrapper/content-wrapper-utils";
@@ -73,6 +74,7 @@ export { ButtonIcon } from "./components/button/button-utils";
 export { ButtonGroupDirection } from "./components/button-group/button-group-utils";
 export { ButtonPureAlignLabel, ButtonPureAriaAttribute, ButtonPureIcon, ButtonPureSize, ButtonPureType, ButtonPureWeight } from "./components/button-pure/button-pure-utils";
 export { ButtonTileAlign, ButtonTileAriaAttribute, ButtonTileAspectRatio, ButtonTileBackground, ButtonTileIcon, ButtonTileSize, ButtonTileType, ButtonTileWeight } from "./components/button-tile/button-tile-utils";
+export { CanvasSidebarEndWidth, CanvasSidebarStartWidth } from "./components/canvas/canvas-utils";
 export { CarouselAlignHeader, CarouselAriaAttribute, CarouselHeadingSize, CarouselInternationalization, CarouselUpdateEventDetail, CarouselWidth } from "./components/carousel/carousel-utils";
 export { CheckboxWrapperState } from "./components/checkbox-wrapper/checkbox-wrapper-utils";
 export { ContentWrapperBackgroundColor, ContentWrapperWidth } from "./components/content-wrapper/content-wrapper-utils";
@@ -381,6 +383,27 @@ export namespace Components {
           * Font weight of the description.
          */
         "weight"?: BreakpointCustomizable<ButtonTileWeight>;
+    }
+    /**
+     * @experimental 
+     */
+    interface PCanvas {
+        /**
+          * Open Sidebar on the end side
+         */
+        "sidebarEndOpen"?: boolean;
+        /**
+          * Defines the width of the sidebar on the end side
+         */
+        "sidebarEndWidth"?: CanvasSidebarEndWidth;
+        /**
+          * Open Sidebar on the start side
+         */
+        "sidebarStartOpen"?: boolean;
+        /**
+          * Defines the width of the sidebar on the start side
+         */
+        "sidebarStartWidth"?: CanvasSidebarStartWidth;
     }
     interface PCarousel {
         /**
@@ -2026,6 +2049,10 @@ export interface PBannerCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLPBannerElement;
 }
+export interface PCanvasCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLPCanvasElement;
+}
 export interface PCarouselCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLPCarouselElement;
@@ -2157,6 +2184,27 @@ declare global {
     var HTMLPButtonTileElement: {
         prototype: HTMLPButtonTileElement;
         new (): HTMLPButtonTileElement;
+    };
+    interface HTMLPCanvasElementEventMap {
+        "dismissSidebarStart": void;
+        "dismissSidebarEnd": void;
+    }
+    /**
+     * @experimental 
+     */
+    interface HTMLPCanvasElement extends Components.PCanvas, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLPCanvasElementEventMap>(type: K, listener: (this: HTMLPCanvasElement, ev: PCanvasCustomEvent<HTMLPCanvasElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLPCanvasElementEventMap>(type: K, listener: (this: HTMLPCanvasElement, ev: PCanvasCustomEvent<HTMLPCanvasElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLPCanvasElement: {
+        prototype: HTMLPCanvasElement;
+        new (): HTMLPCanvasElement;
     };
     interface HTMLPCarouselElementEventMap {
         "carouselChange": CarouselUpdateEventDetail;
@@ -2800,6 +2848,7 @@ declare global {
         "p-button-group": HTMLPButtonGroupElement;
         "p-button-pure": HTMLPButtonPureElement;
         "p-button-tile": HTMLPButtonTileElement;
+        "p-canvas": HTMLPCanvasElement;
         "p-carousel": HTMLPCarouselElement;
         "p-checkbox-wrapper": HTMLPCheckboxWrapperElement;
         "p-content-wrapper": HTMLPContentWrapperElement;
@@ -3133,6 +3182,35 @@ declare namespace LocalJSX {
           * Font weight of the description.
          */
         "weight"?: BreakpointCustomizable<ButtonTileWeight>;
+    }
+    /**
+     * @experimental 
+     */
+    interface PCanvas {
+        /**
+          * Emitted when the component requests to close the sidebar on the end side.
+         */
+        "onDismissSidebarEnd"?: (event: PCanvasCustomEvent<void>) => void;
+        /**
+          * Emitted when the component requests to close the sidebar on the start side.
+         */
+        "onDismissSidebarStart"?: (event: PCanvasCustomEvent<void>) => void;
+        /**
+          * Open Sidebar on the end side
+         */
+        "sidebarEndOpen"?: boolean;
+        /**
+          * Defines the width of the sidebar on the end side
+         */
+        "sidebarEndWidth"?: CanvasSidebarEndWidth;
+        /**
+          * Open Sidebar on the start side
+         */
+        "sidebarStartOpen"?: boolean;
+        /**
+          * Defines the width of the sidebar on the start side
+         */
+        "sidebarStartWidth"?: CanvasSidebarStartWidth;
     }
     interface PCarousel {
         /**
@@ -4891,6 +4969,7 @@ declare namespace LocalJSX {
         "p-button-group": PButtonGroup;
         "p-button-pure": PButtonPure;
         "p-button-tile": PButtonTile;
+        "p-canvas": PCanvas;
         "p-carousel": PCarousel;
         "p-checkbox-wrapper": PCheckboxWrapper;
         "p-content-wrapper": PContentWrapper;
@@ -4968,6 +5047,10 @@ declare module "@stencil/core" {
             "p-button-group": LocalJSX.PButtonGroup & JSXBase.HTMLAttributes<HTMLPButtonGroupElement>;
             "p-button-pure": LocalJSX.PButtonPure & JSXBase.HTMLAttributes<HTMLPButtonPureElement>;
             "p-button-tile": LocalJSX.PButtonTile & JSXBase.HTMLAttributes<HTMLPButtonTileElement>;
+            /**
+             * @experimental 
+             */
+            "p-canvas": LocalJSX.PCanvas & JSXBase.HTMLAttributes<HTMLPCanvasElement>;
             "p-carousel": LocalJSX.PCarousel & JSXBase.HTMLAttributes<HTMLPCarouselElement>;
             "p-checkbox-wrapper": LocalJSX.PCheckboxWrapper & JSXBase.HTMLAttributes<HTMLPCheckboxWrapperElement>;
             /**

@@ -1,6 +1,7 @@
 import type { TagName } from '@porsche-design-system/shared';
 
 export const WHITELISTED_TAG_NAMES = [
+  'p-canvas',
   'p-flex-item',
   'p-flyout-navigation-item',
   'p-grid-item',

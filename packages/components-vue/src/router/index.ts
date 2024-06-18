@@ -46,6 +46,11 @@ export const routes: RouteType[] = [
     component: fromExamples.ButtonExampleForm,
   },
   {
+    path: '/canvas-example',
+    name: 'Canvas Example',
+    component: fromExamples.CanvasExample,
+  },
+  {
     path: '/carousel-example-dynamic-slides',
     name: 'Carousel Example Dynamic Slides',
     component: fromExamples.CarouselExampleDynamicSlides,
@@ -74,16 +79,6 @@ export const routes: RouteType[] = [
     path: '/flyout-example',
     name: 'Flyout Example',
     component: fromExamples.FlyoutExample,
-  },
-  {
-    path: '/flyout-example-slotted',
-    name: 'Flyout Example Slotted',
-    component: fromExamples.FlyoutExampleSlotted,
-  },
-  {
-    path: '/flyout-example-slotted-secondary',
-    name: 'Flyout Example Slotted Secondary',
-    component: fromExamples.FlyoutExampleSlottedSecondary,
   },
   {
     path: '/flyout-navigation-example',
