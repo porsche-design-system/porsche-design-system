@@ -34,6 +34,9 @@ describe('url', () => {
           switch (url) {
             case 'https://reddit.com':
             case 'https://figma.com/community/file/1363114610686223649/web-design-system-v3-1':
+            case 'https://figma.com/design/EkdP468u4ZVuIRwalKCscb/Web-Design-System-v3?node-id=32923-48020':
+            case 'https://figma.com/design/EkdP468u4ZVuIRwalKCscb/Web-Design-System-v3?node-id=34906-9454':
+            case 'https://figma.com/file/EkdP468u4ZVuIRwalKCscb/Design-System-v3?type=design&node-id=105-146':
               expect(status).toBe(403); // 403 Forbidden
               break;
             case 'https://vmmedia.porsche.de':
