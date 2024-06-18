@@ -89,6 +89,15 @@ exports[`should call validateProps() with correct parameters via render for p-bu
 }
 `;
 
+exports[`should call validateProps() with correct parameters via render for p-canvas: propTypes with ValidatorFunctions 1`] = `
+{
+  "sidebarEndOpen": "boolean",
+  "sidebarEndWidth": "oneOf",
+  "sidebarStartOpen": "boolean",
+  "sidebarStartWidth": "oneOf",
+}
+`;
+
 exports[`should call validateProps() with correct parameters via render for p-carousel: propTypes with ValidatorFunctions 1`] = `
 {
   "activeSlideIndex": "number",
@@ -520,6 +529,7 @@ exports[`should call validateProps() with correct parameters via render for p-se
 
 exports[`should call validateProps() with correct parameters via render for p-segmented-control-item: propTypes with ValidatorFunctions 1`] = `
 {
+  "aria": "aria",
   "disabled": "boolean",
   "icon": "string",
   "iconSource": "string",

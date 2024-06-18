@@ -1,0 +1,102 @@
+<p-canvas sidebar-start-open="false" sidebar-start-width="medium" sidebar-end-open="false" sidebar-end-width="medium">
+  <div slot="header">
+    <p-tag color="background-base">Header</p-tag>
+    <p-button-pure id="open-sidebar-start" icon="menu-lines">Toggle Sidebar Start</p-button-pure>
+    <p-button-pure id="open-sidebar-end" icon="menu-lines">Toggle Sidebar End</p-button-pure>
+  </div>
+
+  <div class="module">
+    <div class="tile tile--full">Full</div>
+  </div>
+  <div class="module">
+    <div class="tile tile--one-half">One Half</div>
+    <div class="tile tile--one-half">One Half</div>
+  </div>
+  <div class="module">
+    <div class="tile tile--one-third">One Third</div>
+    <div class="tile tile--one-third">One Third</div>
+    <div class="tile tile--one-third">One Third</div>
+  </div>
+  <div class="module">
+    <div class="tile tile--one-third">One Third</div>
+    <div class="tile tile--two-thirds">Two Thirds</div>
+  </div>
+
+  <div slot="footer">
+    <p-tag color="background-base">Footer</p-tag>
+  </div>
+  <div slot="sidebar-start">
+    <p-tag color="background-base">Sidebar</p-tag>
+  </div>
+  <div slot="sidebar-end">
+    <p-tag color="background-base">Sidebar</p-tag>
+  </div>
+</p-canvas>
+
+<script>
+  const canvas = document.querySelector('p-canvas');
+  canvas.addEventListener('dismissSidebarStart', () => (canvas.sidebarStartOpen = false));
+  canvas.addEventListener('dismissSidebarEnd', () => (canvas.sidebarEndOpen = false));
+  document
+    .getElementById('open-sidebar-start')
+    .addEventListener('click', () => (canvas.sidebarStartOpen = !canvas.sidebarStartOpen));
+  document
+    .getElementById('open-sidebar-end')
+    .addEventListener('click', () => (canvas.sidebarEndOpen = !canvas.sidebarEndOpen));
+</script>
+
+<style>
+  body {
+    overflow-x: hidden;
+  }
+
+  p-canvas::part(header) {
+    background: #d1fbc6;
+  }
+
+  p-canvas::part(main) {
+    background: #bed0ff;
+  }
+
+  p-canvas::part(footer) {
+    background: #f7c6fb;
+  }
+
+  p-canvas::part(sidebar-start) {
+    background: #ffbebe;
+  }
+
+  p-canvas::part(sidebar-end) {
+    background: #ffbebe;
+  }
+
+  .module {
+    display: grid;
+    grid-template-columns: subgrid;
+    grid-column: 1 / -1;
+  }
+
+  .tile {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+    background: #fff;
+  }
+
+  .tile--full {
+    grid-column: var(--pds-grid-span-full);
+  }
+
+  .tile--one-half {
+    grid-column: var(--pds-grid-span-one-half);
+  }
+
+  .tile--one-third {
+    grid-column: var(--pds-grid-span-one-third);
+  }
+
+  .tile--two-thirds {
+    grid-column: var(--pds-grid-span-two-thirds);
+  }
+</style>

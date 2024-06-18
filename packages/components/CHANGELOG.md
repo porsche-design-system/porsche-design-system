@@ -14,6 +14,24 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ### [Unreleased]
 
+### [3.16.0-rc.1] - 2024-06-18
+
+#### Added
+
+- `jsdom-polyfill` Added polyfills for `Popover API` and `ResizeObserver`
+  ([#3334](https://github.com/porsche-design-system/porsche-design-system/pull/3334))
+- `Segmented Control`: Prop `aria` added to `Segmented Control Item` to support ARIA attributes
+  ([#3327](https://github.com/porsche-design-system/porsche-design-system/pull/3327))
+
+#### Changed
+
+- Angular: updated peer dependency to `>=17.0.0 <19.0.0`
+  ([#3346](https://github.com/porsche-design-system/porsche-design-system/pull/3346))
+- React: Improve prop typings for all wrappers of `@porsche-design-system/components-react`
+  ([#3336](https://github.com/porsche-design-system/porsche-design-system/pull/3336))
+
+### [3.16.0-rc.0] - 2024-06-05
+
 #### Added
 
 - `Flyout`:
@@ -39,6 +57,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 #### Fixed
 
+- Types: Fixed incorrectly allowed type `string` in types `BreakpointCustomizable`, `SelectedAriaAttributes`,
+  `CarouselInternationalization`, `PaginationInternationalization` and `ScrollToPosition`
 - `Modal`, `Flyout`: Dynamically react to adding/removing named slots
   ([#3191](https://github.com/porsche-design-system/porsche-design-system/pull/3191))
 - `Modal`: Uses native `<dialog />` element to resolve focus issues, focus trap

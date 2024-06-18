@@ -79,6 +79,17 @@ const generateCodeSamples = (): void => {
       ],
     },
     {
+      component: 'p-canvas',
+      samples: [
+        [
+          componentsJsPath + '/canvas-example.html',
+          componentsAngularPath + '/canvas-example.component.ts',
+          componentsReactPath + '/CanvasExample.tsx',
+          componentsVuePath + '/CanvasExample.vue',
+        ],
+      ],
+    },
+    {
       component: 'p-carousel',
       samples: [
         [

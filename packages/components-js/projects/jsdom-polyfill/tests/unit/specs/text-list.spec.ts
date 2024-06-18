@@ -5,7 +5,7 @@ it('should have initialized shadow dom', async () => {
   document.body.innerHTML = getMarkup('p-text-list');
   expect(await componentsReady()).toBe(2);
 
-  const els = document.body.querySelectorAll('*');
+  const els = document.body.querySelectorAll('p-text-list,p-text-list-item');
   expect(els.length).toBe(2);
   els.forEach((el) => {
     expect(el.shadowRoot).not.toBeNull();
