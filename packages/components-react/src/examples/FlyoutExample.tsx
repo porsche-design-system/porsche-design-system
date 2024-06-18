@@ -13,7 +13,7 @@ export const FlyoutExamplePage = (): JSX.Element => {
   return (
     <>
       <PButton type="button" aria={{ 'aria-haspopup': 'dialog' }} onClick={onOpen}>
-        Open Modal
+        Open Flyout
       </PButton>
       <PFlyout open={isFlyoutOpen} onDismiss={onDismiss} aria={{ 'aria-label': 'Some Heading' }}>
         <PHeading slot="header" size="large" tag="h2">

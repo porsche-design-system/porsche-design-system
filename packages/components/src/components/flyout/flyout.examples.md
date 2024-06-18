@@ -36,7 +36,7 @@ The size of `p-flyout` adjusts itself to the content with a predefined **min/max
   for less critical content, such as legal information or FAQs, which provides further details to the user. It appears
   when scrolling to the end of the flyout or when there is available space to accommodate the content.
 
-<PlaygroundConfigurator :component="'p-flyout'"></PlaygroundConfigurator>
+<PlaygroundConfigurator :component="'p-flyout'" :code-samples="codeSamples"></PlaygroundConfigurator>
 
 ### <A11yIcon></A11yIcon> Accessibility hints
 

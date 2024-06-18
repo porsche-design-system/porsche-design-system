@@ -6,38 +6,31 @@
         'example--light': $store.getters.storefrontTheme === 'light',
         'example--dark': $store.getters.storefrontTheme === 'dark',
         'example--auto': $store.getters.storefrontTheme === 'auto',
-        // 'example--surface': mergedConfig.backgroundColor === 'background-surface',
-        // 'example--height-fixed': mergedConfig.height === 'fixed',
-        // 'example--spacing-inline': mergedConfig.spacing === 'inline',
-        // 'example--spacing-block': mergedConfig.spacing === 'block',
-        // 'example--spacing-block-small': mergedConfig.spacing === 'block-small',
-        // 'example--overflow-x-visible': mergedConfig.overflowX === 'visible',
-        // 'example--fullscreen': isFullWindow,
       }"
     >
-      <p-accordion
-        :theme="$store.getters.storefrontTheme"
-        :heading="'Configure'"
-        :headingTag="'h3'"
-        :open="isConfigureAccordionOpen"
-        @update="onUpdateConfigureAccordion"
-      >
-        <div class="configure">
-          <div>
-            <ConfiguratorProps :component-props="componentProps" @update="onUpdateProps" />
-          </div>
-          <div>
-            <div v-for="{ name, isShown, description } in selectedSlots.filter((slot) => slot.name)" :key="name">
-              <p-checkbox-wrapper :label="name" :theme="$store.getters.storefrontTheme">
-                <input type="checkbox" :name="name" :checked="isShown" @change="toggleSelectedSlot(name)" />
-              </p-checkbox-wrapper>
-              <p-text :theme="$store.getters.storefrontTheme">{{ description }}</p-text>
-            </div>
-          </div>
-        </div>
-      </p-accordion>
-
       <DynamicIframe :markup="markup['vanilla-js']" />
+
+      <div class="configure">
+        <p-accordion
+          :theme="$store.getters.storefrontTheme"
+          :heading="'Props'"
+          :headingTag="'h3'"
+          :open="isPropsAccordionOpen"
+          @update="onUpdatePropsAccordion"
+        >
+          <ConfigureProps :component-props="componentProps" @update="onUpdateProps" />
+        </p-accordion>
+        <p-accordion
+          :theme="$store.getters.storefrontTheme"
+          :heading="'Slots'"
+          :headingTag="'h3'"
+          :open="isSlotsAccordionOpen"
+          @update="onUpdateSlotsAccordion"
+        >
+          <ConfigureSlots :component-slots="componentSlots" @update="onUpdateSlots" />
+        </p-accordion>
+      </div>
+
       <CodeBlock
         :class="{ 'code-block--framework': true }"
         :markup="activeFrameworkMarkup"
@@ -57,15 +50,17 @@
   import DynamicIframe from '@/components/DynamicIframe.vue';
   import { TagName } from '@porsche-design-system/shared';
   import { BackgroundColor, Framework, FrameworkMarkup } from '@/models';
-  import { getFlyoutExamples } from '@/utils/getComponentMarkup';
+  import { getComponentExampleMarkup } from '@/utils/getComponentMarkup';
   import { AccordionUpdateEventDetail } from '@porsche-design-system/components';
   import { type ComponentSlots, componentSlots } from '@/utils/componentSlots';
-  import ConfiguratorProps from '@/components/ConfiguratorProps.vue';
   import { type ComponentProps, getComponentProps } from '@/utils/componentProps';
+  import ConfigureProps from '@/components/ConfigureProps.vue';
+  import ConfigureSlots from '@/components/ConfigureSlots.vue';
 
   @Component({
     components: {
-      ConfiguratorProps,
+      ConfigureProps,
+      ConfigureSlots,
       CodeBlock,
       CodeEditor,
       DynamicIframe,
@@ -73,30 +68,25 @@
   })
   export default class PlaygroundConfigurator extends Vue {
     @Prop() public component!: TagName;
+    @Prop() public codeSamples!: FrameworkMarkup;
     @Prop({ default: 'background-base' }) public backgroundColor!: BackgroundColor;
 
     componentProps: ComponentProps = {};
-    selectedSlots: ComponentSlots = [];
+    componentSlots: ComponentSlots = [];
 
     markup: FrameworkMarkup = {};
 
-    isConfigureAccordionOpen: boolean = false;
+    isPropsAccordionOpen: boolean = false;
+    isSlotsAccordionOpen: boolean = false;
 
     created() {
       this.componentProps = getComponentProps(this.component);
-      this.selectedSlots = componentSlots[this.component];
+      this.componentSlots = componentSlots[this.component];
       this.updateMarkup();
     }
 
     updateMarkup() {
-      // TODO: Patch theme into selected props
-      this.markup = getFlyoutExamples('p-flyout', this.componentProps, this.selectedSlots);
-    }
-
-    toggleSelectedSlot(slotName: string) {
-      const slot = this.selectedSlots.find((slot) => slot.name === slotName)!;
-      slot.isShown = !slot.isShown;
-      this.updateMarkup();
+      this.markup = getComponentExampleMarkup('p-flyout', this.codeSamples, this.componentProps, this.componentSlots);
     }
 
     onUpdateProps({ key, value }: { key: keyof ComponentProps; value: any }) {
@@ -105,6 +95,12 @@
       } else {
         this.componentProps[key].selectedValue = value;
       }
+      this.updateMarkup();
+    }
+
+    onUpdateSlots(key: keyof ComponentSlots) {
+      const slot = this.componentSlots.find((slot) => slot.name === key)!;
+      slot.isShown = !slot.isShown;
       this.updateMarkup();
     }
 
@@ -117,8 +113,11 @@
       return this.markup[this.activeFramework] || Object.values(this.markup)[0];
     }
 
-    onUpdateConfigureAccordion(e: AccordionUpdateEventDetail) {
-      this.isConfigureAccordionOpen = e.detail.open;
+    onUpdatePropsAccordion(e: AccordionUpdateEventDetail) {
+      this.isPropsAccordionOpen = e.detail.open;
+    }
+    onUpdateSlotsAccordion(e: AccordionUpdateEventDetail) {
+      this.isSlotsAccordionOpen = e.detail.open;
     }
   }
 </script>
@@ -196,78 +195,18 @@
       }
     }
 
-    &--overflow-x-visible {
-      overflow-x: visible;
-    }
-
-    // Child Layout "height"
-    &--height-fixed .demo {
-      :deep(> *) {
-        height: 11.25rem;
-      }
-    }
-
-    // Child layout "spacing"
-    &--spacing-block .demo,
-    &--spacing-inline .demo {
-      &::before {
-        content: '';
-        display: block;
-        margin-top: -$pds-spacing-static-medium;
-      }
-
-      :deep(> *) {
-        margin-top: $pds-spacing-static-medium;
-      }
-    }
-
-    &--spacing-inline .demo {
-      :deep(> *) {
-        &:not(:last-child) {
-          margin-inline-end: $pds-spacing-static-medium;
-        }
-      }
-    }
-
-    &--spacing-block-small .demo {
-      &::before {
-        content: '';
-        display: block;
-        margin-top: -$pds-spacing-static-small;
-      }
-
-      :deep(> *) {
-        margin-top: $pds-spacing-static-small;
-      }
-    }
-
-    &--fullscreen {
-      position: fixed;
-      inset: 0;
-      overflow: auto;
-      z-index: 999;
-      margin: 0;
-      padding-top: 0;
-      border: 0;
-      border-radius: 0;
-
-      .demo {
-        margin: 0 (-$pds-spacing-static-large);
-      }
-    }
-
-    p-accordion {
+    .configure {
       width: 100%;
       padding: $pds-spacing-static-medium $pds-spacing-static-large;
     }
 
-    iframe {
+    .iframe {
       border-top: 1px solid var(--playground-border-color);
       border-bottom: 1px solid var(--playground-border-color);
     }
 
     .code-block {
-      padding: $pds-spacing-static-large;
+      padding: 0 $pds-spacing-static-large $pds-spacing-static-large;
     }
   }
 
@@ -282,21 +221,10 @@
     }
   }
 
-  .btn-fullscreen {
-    position: absolute;
-    top: $pds-spacing-static-small;
-    inset-inline-end: $pds-spacing-static-small;
-    z-index: 1; // to be above certain examples
-  }
-
   .configure {
     display: flex;
-    gap: $pds-spacing-fluid-small;
     flex-direction: column;
-
-    @include pds-media-query-min('xs') {
-      flex-direction: row;
-    }
+    gap: $pds-spacing-fluid-small;
 
     div {
       width: 100%;

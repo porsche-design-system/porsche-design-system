@@ -1,104 +1,56 @@
 import type { TagName } from '@porsche-design-system/shared';
-import { convertToAngular, convertToReact } from '@/utils/index';
+import { convertToAngular, convertToReact, patchThemeIntoMarkup } from '@/utils/index';
 import { convertToVue } from '@/utils/convertToVue';
 import type { ComponentSlots } from '@/utils/componentSlots';
 import type { ComponentProps } from '@/utils/componentProps';
+import { pascalCase } from 'change-case';
 
 type Framework = 'angular' | 'react' | 'vue' | 'vanilla-js';
 type FrameworkMarkup = {
-  [key in Framework]?: string;
+  [key in Framework]: string;
 };
 
-export const getFlyoutExamples = (
+export const getComponentExampleMarkup = (
   component: TagName,
+  codeSamples: FrameworkMarkup,
   props: ComponentProps,
   slots: ComponentSlots
 ): FrameworkMarkup => {
   const markup = getComponentMarkup(component, props, slots);
 
-  return {
-    'vanilla-js': getFlyoutExampleMarkup(markup, 'vanilla-js'),
-    react: getFlyoutExampleMarkup(convertToReact(markup), 'react'),
-    angular: getFlyoutExampleMarkup(convertToAngular(markup), 'angular'),
-    vue: getFlyoutExampleMarkup(convertToVue(markup), 'vue'),
+  const pascalCaseComponent = pascalCase(component);
+  const componentRegex = new RegExp(`<${component}[\\S\\s]*</${component}>`);
+  const componentRegexPascalCase = new RegExp(`<${pascalCaseComponent}[\\S\\s]*</${pascalCaseComponent}>`);
+
+  const componentExampleMarkup: FrameworkMarkup = {
+    'vanilla-js': codeSamples['vanilla-js']?.replace(componentRegex, markup),
+    react: codeSamples['react']?.replace(componentRegexPascalCase, convertToReact(markup)),
+    angular: codeSamples['angular']?.replace(componentRegex, convertToAngular(markup)),
+    vue: codeSamples['vue']?.replace(componentRegexPascalCase, convertToVue(markup)),
   };
+
+  // Patch theme into markup if theme is set
+  if (props['theme'].selectedValue) {
+    (Object.keys(componentExampleMarkup) as Framework[]).forEach((key) => {
+      componentExampleMarkup[key] = patchThemeIntoMarkup(componentExampleMarkup[key], props['theme'].selectedValue);
+    });
+  }
+
+  return componentExampleMarkup;
 };
 
-export const getFlyoutExampleMarkup = (markup: string, framework: Framework) => {
-  const examples: FrameworkMarkup = {
-    'vanilla-js': `
-<p-button theme="dark" type="button" aria="{ 'aria-haspopup': 'dialog' }">Open Flyout</p-button>
-
-${markup}
-
-<script>
-  const flyout = document.querySelector('p-flyout');
-  flyout.addEventListener('dismiss', () => {
-    flyout.open = false;
-  });
-  document.querySelector('p-button').addEventListener('click', () => {
-    flyout.open = true;
-  });
-</script>
-  `,
-    react: `import { useCallback, useState } from 'react';
-import { PButton, PText, PFlyout, PHeading, PButtonGroup } from '@porsche-design-system/components-react';
-
-export const FlyoutExamplePage = (): JSX.Element => {
-  const [isFlyoutOpen, setIsFlyoutOpen] = useState<boolean>(false);
-  const onOpen = useCallback(() => {
-    setIsFlyoutOpen(true);
-  }, []);
-  const onDismiss = useCallback(() => {
-    setIsFlyoutOpen(false);
-  }, []);
-
-  return (
-    <>
-        ${markup}
-    </>
-  );
-};`,
-    angular: `import { ChangeDetectionStrategy, Component } from '@angular/core';
-
-@Component({
-  selector: 'page-flyout-example',
-  template: \`
-    ${markup}
-  \`,
-  changeDetection: ChangeDetectionStrategy.OnPush,
-})
-export class FlyoutExampleComponent {
-  isFlyoutOpen = false;
-
-  onOpen() {
-    this.isFlyoutOpen = true;
-  }
-  onDismiss() {
-    this.isFlyoutOpen = false;
-  }
-}`,
-    vue: `<script setup lang="ts">
-  import { PFlyout, PButton, PHeading, PText, PButtonGroup } from '@porsche-design-system/components-vue';
-  import { ref } from 'vue';
-
-  const isFlyoutOpen = ref(false);
-  const onOpen = (): void => {
-    isFlyoutOpen.value = true;
-  };
-  const onDismiss = (): void => {
-    isFlyoutOpen.value = false;
-  };
-</script>
-
-<template>
-  <PButton theme="dark" type="button" :aria="{ 'aria-haspopup': 'dialog' }" @click="onOpen">Open Flyout</PButton>
-  ${markup}
-</template>`,
-  };
-
-  return examples[framework];
-};
+// function extractSlots(markup: string) {
+//   const regex = /(<[^\/][\S\s]*?slot="([a-zA-Z-]+)"[\S\s]*?<\/.*?>)/g;
+//   const slots = {};
+//   let match;
+//
+//   while ((match = regex.exec(markup)) !== null) {
+//     const [fullMatch, , slotName] = match;
+//     slots[slotName] = fullMatch;
+//   }
+//
+//   return slots;
+// }
 
 export const getComponentMarkup = <T extends TagName>(component: T, props: ComponentProps, slots: ComponentSlots) => {
   return `<${component}${getHTMLAttributes(props)}>

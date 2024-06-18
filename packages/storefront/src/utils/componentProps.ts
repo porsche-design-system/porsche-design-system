@@ -1,7 +1,7 @@
 import { getComponentMeta } from '@porsche-design-system/component-meta';
 import { TagName } from '@porsche-design-system/shared';
 import type { PropMeta } from '@porsche-design-system/component-meta/src';
-import ConfiguratorProps from '@/components/ConfiguratorProps.vue';
+import ConfiguratorProps from '@/components/ConfigureProps.vue';
 
 export type ComponentProps = {
   [propName: string]: ComponentProp;
