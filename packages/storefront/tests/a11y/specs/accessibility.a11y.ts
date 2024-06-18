@@ -1,8 +1,10 @@
-import { type Page, test, expect } from '@playwright/test';
-import { a11yAnalyze } from '../helpers';
+import { type Page } from '@playwright/test';
+import { test, expect } from '../helpers';
 import * as fs from 'fs';
 import * as path from 'path';
 import { schemes } from '@porsche-design-system/shared/testing/playwright.vrt';
+
+const console = require('console'); // workaround for nicer logs
 
 const getInternalUrls = (): string[] => {
   const sitemapPath = path.resolve(__dirname, '../../e2e/fixtures/sitemap.json');
@@ -58,21 +60,49 @@ test('should have successfully extracted :root styles', () => {
 
 test.describe('outside main element', () => {
   const excludeSelector = 'main';
+  schemes.forEach((scheme) => {
+    const enableDarkModeScheme = (page: Page) => {
+      if (scheme === 'dark') {
+        return enableDarkMode(page);
+      }
+    };
 
-  test('should have no accessibility issues on front page', async ({ page }) => {
-    await gotoUrl(page, '/');
-    await a11yAnalyze(page, { suffix: 'light', excludeSelector });
+    test(`should have no accessibility issues on front page for scheme ${scheme}`, async ({
+      page,
+      makeAxeBuilder,
+    }, testInfo) => {
+      await gotoUrl(page, '/');
 
-    await enableDarkMode(page);
-    await a11yAnalyze(page, { suffix: 'dark', excludeSelector });
-  });
+      await enableDarkModeScheme(page);
 
-  test('should have no accessibility issues on changelog page', async ({ page }) => {
-    await gotoUrl(page, '/news/changelog'); // to have open accordion in sidebar
-    await a11yAnalyze(page, { suffix: 'light', excludeSelector });
+      const accessibilityScanResults = await makeAxeBuilder().exclude(excludeSelector).analyze();
 
-    await enableDarkMode(page);
-    await a11yAnalyze(page, { suffix: 'dark', excludeSelector });
+      await testInfo.attach(`a11y-scan-results-changelog-${scheme}`, {
+        body: JSON.stringify(accessibilityScanResults.violations, null, 2),
+        contentType: 'application/json',
+      });
+
+      expect(accessibilityScanResults.violations.length).toBe(0);
+    });
+
+    // NEW TEST
+    test(`should have no accessibility issues on changelog page for scheme ${scheme}`, async ({
+      page,
+      makeAxeBuilder,
+    }, testInfo) => {
+      await gotoUrl(page, '/news/changelog'); // to have open accordion in sidebar
+
+      await enableDarkModeScheme(page);
+
+      const accessibilityScanResults = await makeAxeBuilder().exclude(excludeSelector).analyze();
+
+      await testInfo.attach(`a11y-scan-results-changelog-${scheme}`, {
+        body: JSON.stringify(accessibilityScanResults.violations, null, 2),
+        contentType: 'application/json',
+      });
+
+      expect(accessibilityScanResults.violations.length).toBe(0);
+    });
   });
 });
 
@@ -86,19 +116,32 @@ test.describe('within main element', () => {
     for (const [url, index] of internalUrls.map<[string, number]>((url, i) => [url, i])) {
       test(`should have no accessibility issues in main element for scheme-${scheme} at (${index + 1}/${internalUrls.length}) "${url}"`, async ({
         page,
-      }) => {
+        makeAxeBuilder,
+      }, testInfo) => {
         await gotoUrl(page, url);
-        await enableDarkMode(page);
 
         // change the theme of component to dark if the option exists
-        if (scheme === 'dark' && (await page.locator('p-select[value="light"]').first().count())) {
-          const themeSwitch = page.locator('p-select[value="light"]').first();
-          await themeSwitch.click();
-          const option = themeSwitch.getByText('Dark');
-          await option.click();
+        if (scheme === 'dark') {
+          await enableDarkMode(page);
+          // change the theme of component to dark if the option exists
+          if (await page.locator('p-select[value="light"]').first().count()) {
+            const themeSwitch = page.locator('p-select[value="light"]').first();
+            await themeSwitch.click();
+            const option = themeSwitch.getByText('Dark');
+            await option.click();
+          }
         }
 
-        await a11yAnalyze(page, { suffix: `main-scheme-${scheme}`, includeSelector });
+        const accessibilityScanResults = await makeAxeBuilder().exclude(includeSelector).analyze();
+
+        await testInfo.attach(`a11y-scan-results-main-${scheme}`, {
+          body: JSON.stringify(accessibilityScanResults.violations, null, 2),
+          contentType: 'application/json',
+        });
+
+        console.log(accessibilityScanResults.violations);
+
+        expect(accessibilityScanResults.violations.length).toBe(0);
       });
     }
   });
