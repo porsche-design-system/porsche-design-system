@@ -58,63 +58,13 @@ test('should have successfully extracted :root styles', () => {
   expect(rootStyles).toContain('--p-animation-duration: 0s');
 });
 
-test.describe('outside main element', () => {
-  const excludeSelector = 'main';
-  schemes.forEach((scheme) => {
-    const enableDarkModeScheme = (page: Page) => {
-      if (scheme === 'dark') {
-        return enableDarkMode(page);
-      }
-    };
-
-    test(`should have no accessibility issues on front page for scheme ${scheme}`, async ({
-      page,
-      makeAxeBuilder,
-    }, testInfo) => {
-      await gotoUrl(page, '/');
-
-      await enableDarkModeScheme(page);
-
-      const accessibilityScanResults = await makeAxeBuilder().exclude(excludeSelector).analyze();
-
-      await testInfo.attach(`a11y-scan-results-changelog-${scheme}`, {
-        body: JSON.stringify(accessibilityScanResults.violations, null, 2),
-        contentType: 'application/json',
-      });
-
-      expect(accessibilityScanResults.violations.length).toBe(0);
-    });
-
-    // NEW TEST
-    test(`should have no accessibility issues on changelog page for scheme ${scheme}`, async ({
-      page,
-      makeAxeBuilder,
-    }, testInfo) => {
-      await gotoUrl(page, '/news/changelog'); // to have open accordion in sidebar
-
-      await enableDarkModeScheme(page);
-
-      const accessibilityScanResults = await makeAxeBuilder().exclude(excludeSelector).analyze();
-
-      await testInfo.attach(`a11y-scan-results-changelog-${scheme}`, {
-        body: JSON.stringify(accessibilityScanResults.violations, null, 2),
-        contentType: 'application/json',
-      });
-
-      expect(accessibilityScanResults.violations.length).toBe(0);
-    });
-  });
-});
-
-test.describe('within main element', () => {
-  const includeSelector = 'main';
-
+test.describe('storefront pages', () => {
   // filter out files from public/assets directory
   const internalUrls = getInternalUrls().filter((url) => !url.match(/^\/assets\/.*\.\w{3,4}$/));
 
   schemes.forEach((scheme) => {
     for (const [url, index] of internalUrls.map<[string, number]>((url, i) => [url, i])) {
-      test(`should have no accessibility issues in main element for scheme-${scheme} at (${index + 1}/${internalUrls.length}) "${url}"`, async ({
+      test(`should have no accessibility issues for scheme-${scheme} at (${index + 1}/${internalUrls.length}) "${url}"`, async ({
         page,
         makeAxeBuilder,
       }, testInfo) => {
@@ -132,7 +82,7 @@ test.describe('within main element', () => {
           }
         }
 
-        const accessibilityScanResults = await makeAxeBuilder().exclude(includeSelector).analyze();
+        const accessibilityScanResults = await makeAxeBuilder().analyze();
 
         await testInfo.attach(`a11y-scan-results-main-${scheme}`, {
           body: JSON.stringify(accessibilityScanResults.violations, null, 2),
