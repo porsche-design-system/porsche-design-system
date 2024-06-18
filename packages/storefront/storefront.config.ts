@@ -84,6 +84,10 @@ export const config: StorefrontConfig = {
       Usage: [() => import('@/../../components/src/components/button-tile/button-tile.usage.md')],
       Props: [() => import('@/../../components/src/components/button-tile/button-tile.props.md')],
     },
+    Canvas: {
+      Examples: [() => import('@/../../components/src/components/canvas/canvas.examples.md')],
+      Props: [() => import('@/../../components/src/components/canvas/canvas.props.md')],
+    },
     Carousel: {
       Examples: [() => import('@/../../components/src/components/carousel/carousel.examples.md')],
       Usage: [() => import('@/../../components/src/components/carousel/carousel.usage.md')],
