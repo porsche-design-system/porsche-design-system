@@ -1,7 +1,7 @@
-<p-button type="button" aria="{ 'aria-haspopup': 'dialog' }">Open Flyout Navigation</p-button>
+<p-button type="button" aria="{ 'aria-haspopup': 'dialog' }">Open Flyout Multilevel</p-button>
 
-<p-flyout-navigation active-identifier="item-1">
-  <p-flyout-navigation-item identifier="item-1" label="Some Label">
+<p-flyout-multilevel active-identifier="item-1">
+  <p-flyout-multilevel-item identifier="item-1" label="Some Label">
     <p-link-tile
       href="#"
       label="Some label"
@@ -28,8 +28,8 @@
     <a href="#some-anchor">Some anchor</a>
     <a href="#some-anchor">Some anchor</a>
     <a href="#some-anchor">Some anchor</a>
-  </p-flyout-navigation-item>
-  <p-flyout-navigation-item identifier="item-2" label="Some Label">
+  </p-flyout-multilevel-item>
+  <p-flyout-multilevel-item identifier="item-2" label="Some Label">
     <h3>Some heading</h3>
     <a href="#some-anchor">Some anchor</a>
     <a href="#some-anchor">Some anchor</a>
@@ -38,26 +38,26 @@
     <h3>Some heading</h3>
     <a href="#some-anchor">Some anchor</a>
     <a href="#some-anchor">Some anchor</a>
-  </p-flyout-navigation-item>
-  <p-flyout-navigation-item identifier="item-3" label="Some Label">
+  </p-flyout-multilevel-item>
+  <p-flyout-multilevel-item identifier="item-3" label="Some Label">
     <h3>Some heading</h3>
     <a href="#some-anchor">Some anchor</a>
     <a href="#some-anchor">Some anchor</a>
     <h3>Some heading</h3>
     <a href="#some-anchor">Some anchor</a>
     <a href="#some-anchor">Some anchor</a>
-  </p-flyout-navigation-item>
-  <p-flyout-navigation-item identifier="item-4" label="Some Label">
+  </p-flyout-multilevel-item>
+  <p-flyout-multilevel-item identifier="item-4" label="Some Label">
     <h3>Some heading</h3>
     <a href="#some-anchor">Some anchor</a>
     <a href="#some-anchor">Some anchor</a>
     <a href="#some-anchor">Some anchor</a>
-  </p-flyout-navigation-item>
-  <p-flyout-navigation-item identifier="item-5" label="Some Label">
+  </p-flyout-multilevel-item>
+  <p-flyout-multilevel-item identifier="item-5" label="Some Label">
     <h3>Some heading</h3>
     <a href="#some-anchor">Some anchor</a>
     <a href="#some-anchor">Some anchor</a>
-  </p-flyout-navigation-item>
+  </p-flyout-multilevel-item>
   <p-link-pure
     size="medium"
     href="#"
@@ -65,17 +65,17 @@
     style="padding: clamp(8px, 0.5vw + 6px, 16px); margin: 0 calc(clamp(8px, 0.5vw + 6px, 16px) * -1)"
     >Some external anchor</p-link-pure
   >
-</p-flyout-navigation>
+</p-flyout-multilevel>
 
 <script>
-  const flyoutNavigation = document.querySelector('p-flyout-navigation');
+  const flyoutMultilevel = document.querySelector('p-flyout-multilevel');
   document.querySelector('p-button').addEventListener('click', () => {
-    flyoutNavigation.open = true;
+    flyoutMultilevel.open = true;
   });
-  flyoutNavigation.addEventListener('dismiss', () => {
-    flyoutNavigation.open = false;
+  flyoutMultilevel.addEventListener('dismiss', () => {
+    flyoutMultilevel.open = false;
   });
-  flyoutNavigation.addEventListener('update', (e) => {
-    flyoutNavigation.activeIdentifier = e.detail.activeIdentifier;
+  flyoutMultilevel.addEventListener('update', (e) => {
+    flyoutMultilevel.activeIdentifier = e.detail.activeIdentifier;
   });
 </script>
