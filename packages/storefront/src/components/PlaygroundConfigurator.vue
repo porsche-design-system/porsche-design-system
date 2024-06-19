@@ -1,18 +1,22 @@
 <template>
   <div class="playground">
+    <div class="header">
+      <ThemeSelect :theme="theme" @update="switchTheme" :hide-label="true" />
+      <DirSelect :dir="dir" @update="switchDir" />
+    </div>
     <div
       :class="{
         example: true,
-        'example--light': $store.getters.storefrontTheme === 'light',
-        'example--dark': $store.getters.storefrontTheme === 'dark',
-        'example--auto': $store.getters.storefrontTheme === 'auto',
+        'example--light': theme === 'light',
+        'example--dark': theme === 'dark',
+        'example--auto': theme === 'auto',
       }"
     >
-      <DynamicIframe :markup="markup['vanilla-js']" :theme="componentProps['theme'].selectedValue" />
+      <DynamicIframe :markup="markup['vanilla-js']" :theme="theme" :dir="dir" />
 
       <div class="configure">
         <p-accordion
-          :theme="$store.getters.storefrontTheme"
+          :theme="theme"
           :heading="'Props'"
           :headingTag="'h3'"
           :open="isPropsAccordionOpen"
@@ -21,7 +25,7 @@
           <ConfigureProps :component-props="componentProps" @update="onUpdateProps" />
         </p-accordion>
         <p-accordion
-          :theme="$store.getters.storefrontTheme"
+          :theme="theme"
           :heading="'Slots'"
           :headingTag="'h3'"
           :open="isSlotsAccordionOpen"
@@ -35,7 +39,7 @@
         :class="{ 'code-block--framework': true }"
         :markup="activeFrameworkMarkup"
         :convert-markup="false"
-        :theme="$store.getters.storefrontTheme"
+        :theme="theme"
       ></CodeBlock>
     </div>
   </div>
@@ -49,16 +53,20 @@
   import CodeEditor from '@/components/CodeEditor.vue';
   import DynamicIframe from '@/components/DynamicIframe.vue';
   import { TagName } from '@porsche-design-system/shared';
-  import { BackgroundColor, Framework, FrameworkMarkup } from '@/models';
+  import { BackgroundColor, Framework, FrameworkMarkup, PlaygroundDir, PlaygroundTheme } from '@/models';
   import { getComponentExampleMarkup } from '@/utils/getComponentMarkup';
   import { AccordionUpdateEventDetail } from '@porsche-design-system/components';
   import { type ComponentSlots, componentSlots } from '@/utils/componentSlots';
   import { type ComponentProps, getComponentProps } from '@/utils/componentProps';
   import ConfigureProps from '@/components/ConfigureProps.vue';
   import ConfigureSlots from '@/components/ConfigureSlots.vue';
+  import ThemeSelect from '@/components/ThemeSelect.vue';
+  import DirSelect from '@/components/DirSelect.vue';
 
   @Component({
     components: {
+      DirSelect,
+      ThemeSelect,
       ConfigureProps,
       ConfigureSlots,
       CodeBlock,
@@ -82,6 +90,7 @@
     created() {
       this.componentProps = getComponentProps(this.component);
       this.componentSlots = componentSlots[this.component];
+      this.componentProps['theme'].selectedValue = this.theme;
       this.updateMarkup();
     }
 
@@ -104,6 +113,23 @@
       this.updateMarkup();
     }
 
+    onUpdatePropsAccordion(e: AccordionUpdateEventDetail) {
+      this.isPropsAccordionOpen = e.detail.open;
+    }
+    onUpdateSlotsAccordion(e: AccordionUpdateEventDetail) {
+      this.isSlotsAccordionOpen = e.detail.open;
+    }
+
+    public switchTheme(e: Event): void {
+      this.$store.commit('setPlaygroundTheme', (e.target as HTMLInputElement).value);
+      this.componentProps['theme'].selectedValue = (e.target as HTMLInputElement).value;
+      this.updateMarkup();
+    }
+
+    public switchDir = (e: Event): void => {
+      this.$store.commit('setPlaygroundDir', (e.target as HTMLInputElement).value);
+    };
+
     public get activeFramework(): Framework {
       return this.$store.getters.selectedFramework;
     }
@@ -113,11 +139,12 @@
       return this.markup[this.activeFramework] || Object.values(this.markup)[0];
     }
 
-    onUpdatePropsAccordion(e: AccordionUpdateEventDetail) {
-      this.isPropsAccordionOpen = e.detail.open;
+    public get theme(): PlaygroundTheme {
+      return this.$store.getters.playgroundTheme || 'light';
     }
-    onUpdateSlotsAccordion(e: AccordionUpdateEventDetail) {
-      this.isSlotsAccordionOpen = e.detail.open;
+
+    public get dir(): PlaygroundDir {
+      return this.$store.getters.playgroundDir || 'ltr';
     }
   }
 </script>

@@ -21,15 +21,17 @@
 <script lang="ts">
   import { Component, Prop, Vue, Watch } from 'vue-property-decorator';
   import { getBackgroundColor } from '@/utils/stackblitz/helper';
-  import { Theme } from '@porsche-design-system/components';
+  import type { Theme } from '@porsche-design-system/components';
   import { getComponentExamplePage } from '@/utils/configurator';
   import { spacingStaticLarge } from '@porsche-design-system/utilities-v2';
+  import type { PlaygroundDir } from '@/models';
 
   @Component
   export default class DynamicIframe extends Vue {
     @Prop({ type: String, default: 'about:blank' }) iframeSrc!: string;
     @Prop({ type: String, required: true }) markup!: string;
     @Prop() theme!: Theme;
+    @Prop() dir!: PlaygroundDir;
 
     isFullWindow = false;
 
@@ -39,6 +41,11 @@
 
     @Watch('markup')
     onMarkupChanged() {
+      this.injectMarkup();
+    }
+
+    @Watch('dir')
+    onDirChanged() {
       this.injectMarkup();
     }
 
@@ -58,7 +65,7 @@
           if (iframe.contentWindow && iframe.contentDocument) {
             const iframeDocument = iframe.contentDocument;
             iframeDocument.open();
-            iframeDocument.write(getComponentExamplePage(this.markup, 'ltr', globalStyles));
+            iframeDocument.write(getComponentExamplePage(this.markup, this.dir, globalStyles));
             iframeDocument.close();
           }
         };

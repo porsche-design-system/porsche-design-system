@@ -79,7 +79,7 @@ export const getComponentMarkup = <T extends TagName>(component: T, props: Compo
  */
 const getHTMLAttributes = (props: ComponentProps): string => {
   const attributes = Object.entries(props)
-    .filter(([, prop]) => prop.selectedValue && prop.selectedValue !== prop.defaultValue)
+    .filter(([, prop]) => prop.selectedValue && prop.selectedValue !== prop.defaultValue && prop.type !== 'Theme')
     .map(([prop, { selectedValue }]) => {
       const attributeName = prop.replace(/([a-z])([A-Z])/g, '$1-$2').toLowerCase();
       const attributeValue =
