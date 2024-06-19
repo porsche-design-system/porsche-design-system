@@ -13,7 +13,6 @@
       }"
     >
       <DynamicIframe :markup="markup['vanilla-js']" :theme="theme" :dir="dir" />
-
       <div class="configure">
         <p-accordion
           :theme="theme"
@@ -25,6 +24,7 @@
           <ConfigureProps :component-props="componentProps" @update="onUpdateProps" />
         </p-accordion>
         <p-accordion
+          v-if="componentSlots.length > 1"
           :theme="theme"
           :heading="'Slots'"
           :headingTag="'h3'"
@@ -95,15 +95,16 @@
     }
 
     updateMarkup() {
-      this.markup = getComponentExampleMarkup('p-flyout', this.codeSamples, this.componentProps, this.componentSlots);
+      this.markup = getComponentExampleMarkup(
+        this.component,
+        this.codeSamples,
+        this.componentProps,
+        this.componentSlots
+      );
     }
 
     onUpdateProps({ key, value }: { key: keyof ComponentProps; value: any }) {
-      if (this.componentProps[key].defaultValue === value) {
-        this.componentProps[key].selectedValue = undefined;
-      } else {
-        this.componentProps[key].selectedValue = value;
-      }
+      this.componentProps[key].selectedValue = value;
       this.updateMarkup();
     }
 
@@ -152,10 +153,6 @@
 <style scoped lang="scss">
   @use '@porsche-design-system/components-js/styles' as *;
   @import '../styles/internal.variables';
-
-  :deep > #stackblitz-embed {
-    height: 600px;
-  }
 
   .playground {
     display: flex;
