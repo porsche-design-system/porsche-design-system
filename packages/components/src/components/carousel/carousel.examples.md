@@ -352,7 +352,15 @@ skip = `<p-carousel heading="${this.basicHeading}" skip-link-target="components/
     flex-direction: column;
     background: #00b0f4;
     height: 150px;
+    color: $pds-theme-light-primary;
   }
+
+   :deep(.example--light p-carousel div:is([slot="controls"])) {
+     color: $pds-theme-light-primary;
+   }
+  :deep(.example--dark p-carousel div:is([slot="controls"])) {
+     color: $pds-theme-dark-primary;
+   }
 
   :deep(p-carousel) {
     margin-bottom: $pds-spacing-fluid-medium;
