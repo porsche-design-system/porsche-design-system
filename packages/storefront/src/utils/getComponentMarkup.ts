@@ -34,7 +34,7 @@ export const getComponentExampleMarkup = (
   };
 
   const componentExampleMarkup: FrameworkMarkup = {
-    'vanilla-js': codeSamples['vanilla-js']?.replace(componentRegex, markup),
+    'vanilla-js': replaceWithIndentation(codeSamples['vanilla-js'], componentRegex, markup),
     react: replaceWithIndentation(codeSamples['react'], componentRegexPascalCase, convertToReact(markup)),
     angular: replaceWithIndentation(codeSamples['angular'], componentRegex, convertToAngular(markup)),
     vue: replaceWithIndentation(codeSamples['vue'], componentRegexPascalCase, convertToVue(markup)),
@@ -50,19 +50,6 @@ export const getComponentExampleMarkup = (
   return componentExampleMarkup;
 };
 
-// function extractSlots(markup: string) {
-//   const regex = /(<[^\/][\S\s]*?slot="([a-zA-Z-]+)"[\S\s]*?<\/.*?>)/g;
-//   const slots = {};
-//   let match;
-//
-//   while ((match = regex.exec(markup)) !== null) {
-//     const [fullMatch, , slotName] = match;
-//     slots[slotName] = fullMatch;
-//   }
-//
-//   return slots;
-// }
-
 export const getComponentMarkup = <T extends TagName>(component: T, props: ComponentProps, slots: ComponentSlots) => {
   return `<${component}${getHTMLAttributes(props)}>
   ${slots
@@ -74,6 +61,9 @@ export const getComponentMarkup = <T extends TagName>(component: T, props: Compo
 
 /**
  * Get HTML attributes string from an object of properties.
+ *
+ * Only selectedValues which are not equal to the defaultValue will be returned.
+ * Prop of type 'Theme' will be excluded.
  * @param props - The object containing the properties.
  * @returns The HTML attributes string.
  */
