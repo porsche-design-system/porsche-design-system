@@ -70,7 +70,6 @@ test.describe('storefront pages', () => {
       }, testInfo) => {
         await gotoUrl(page, url);
 
-        // change the theme of component to dark if the option exists
         if (scheme === 'dark') {
           await enableDarkMode(page);
           // change the theme of component to dark if the option exists
