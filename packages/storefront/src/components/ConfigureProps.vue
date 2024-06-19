@@ -1,7 +1,7 @@
 <template>
   <div class="configurator--props">
     <p-select
-      v-for="[key, value] in Object.entries(componentProps).filter(([key, value]) => !value.isAria)"
+      v-for="[key, value] in Object.entries(componentProps).filter(([key, value]) => !value.isAria && key !== 'theme')"
       :key="key"
       :id="key"
       :label="key"
