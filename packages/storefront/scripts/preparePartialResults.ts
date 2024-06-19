@@ -10,11 +10,13 @@ import * as path from 'path';
 const preparePartialResults = (): void => {
   const metaTagsAndIconLinksDemo = getMetaTagsAndIconLinks({ appTitle: 'TITLE_OF_YOUR_APP' });
   const initialStyles = getInitialStyles();
+  const loaderScript = getLoaderScript();
 
   const content = `/* Auto Generated File */
 
 export const metaTagsAndIconLinksDemo = ${JSON.stringify(metaTagsAndIconLinksDemo)};
 export const initialStyles = ${JSON.stringify(initialStyles)};
+export const loaderScript = ${JSON.stringify(loaderScript)};
 `;
 
   const targetFolder = '../src/lib';
