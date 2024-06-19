@@ -75,11 +75,11 @@ import { FlyoutHeaderFooterSubfooterScrolledComponent } from './generated/flyout
 import { FlyoutHeaderFooterSubfooterScrolledOverlapComponent } from './generated/flyout-header-footer-subfooter-scrolled-overlap.component';
 import { FlyoutHeaderFooterSubfooterSlottedAnchorComponent } from './generated/flyout-header-footer-subfooter-slotted-anchor.component';
 import { FlyoutHeaderScrollableContentComponent } from './generated/flyout-header-scrollable-content.component';
-import { FlyoutNavigationComponent } from './generated/flyout-navigation.component';
-import { FlyoutNavigationActiveIdentifierComponent } from './generated/flyout-navigation-active-identifier.component';
-import { FlyoutNavigationBasicComponent } from './generated/flyout-navigation-basic.component';
-import { FlyoutNavigationPrefixedComponent } from './generated/flyout-navigation-prefixed.component';
-import { FlyoutNavigationScrolledComponent } from './generated/flyout-navigation-scrolled.component';
+import { FlyoutMultilevelComponent } from './generated/flyout-multilevel.component';
+import { FlyoutMultilevelActiveIdentifierComponent } from './generated/flyout-multilevel-active-identifier.component';
+import { FlyoutMultilevelBasicComponent } from './generated/flyout-multilevel-basic.component';
+import { FlyoutMultilevelPrefixedComponent } from './generated/flyout-multilevel-prefixed.component';
+import { FlyoutMultilevelScrolledComponent } from './generated/flyout-multilevel-scrolled.component';
 import { FlyoutPositionLeftComponent } from './generated/flyout-position-left.component';
 import { FlyoutPositionStartComponent } from './generated/flyout-position-start.component';
 import { FlyoutPrefixedComponent } from './generated/flyout-prefixed.component';
@@ -194,11 +194,11 @@ export const generatedPages = [
   FlyoutHeaderFooterSubfooterScrolledOverlapComponent,
   FlyoutHeaderFooterSubfooterSlottedAnchorComponent,
   FlyoutHeaderScrollableContentComponent,
-  FlyoutNavigationComponent,
-  FlyoutNavigationActiveIdentifierComponent,
-  FlyoutNavigationBasicComponent,
-  FlyoutNavigationPrefixedComponent,
-  FlyoutNavigationScrolledComponent,
+  FlyoutMultilevelComponent,
+  FlyoutMultilevelActiveIdentifierComponent,
+  FlyoutMultilevelBasicComponent,
+  FlyoutMultilevelPrefixedComponent,
+  FlyoutMultilevelScrolledComponent,
   FlyoutPositionLeftComponent,
   FlyoutPositionStartComponent,
   FlyoutPrefixedComponent,
@@ -486,29 +486,29 @@ export const generatedRoutes: ExtendedRoute[] = [
     component: FlyoutHeaderScrollableContentComponent,
   },
   {
-    name: 'Flyout Navigation',
-    path: 'flyout-navigation',
-    component: FlyoutNavigationComponent,
+    name: 'Flyout Multilevel',
+    path: 'flyout-multilevel',
+    component: FlyoutMultilevelComponent,
   },
   {
-    name: 'Flyout Navigation Active Identifier',
-    path: 'flyout-navigation-active-identifier',
-    component: FlyoutNavigationActiveIdentifierComponent,
+    name: 'Flyout Multilevel Active Identifier',
+    path: 'flyout-multilevel-active-identifier',
+    component: FlyoutMultilevelActiveIdentifierComponent,
   },
   {
-    name: 'Flyout Navigation Basic',
-    path: 'flyout-navigation-basic',
-    component: FlyoutNavigationBasicComponent,
+    name: 'Flyout Multilevel Basic',
+    path: 'flyout-multilevel-basic',
+    component: FlyoutMultilevelBasicComponent,
   },
   {
-    name: 'Flyout Navigation Prefixed',
-    path: 'flyout-navigation-prefixed',
-    component: FlyoutNavigationPrefixedComponent,
+    name: 'Flyout Multilevel Prefixed',
+    path: 'flyout-multilevel-prefixed',
+    component: FlyoutMultilevelPrefixedComponent,
   },
   {
-    name: 'Flyout Navigation Scrolled',
-    path: 'flyout-navigation-scrolled',
-    component: FlyoutNavigationScrolledComponent,
+    name: 'Flyout Multilevel Scrolled',
+    path: 'flyout-multilevel-scrolled',
+    component: FlyoutMultilevelScrolledComponent,
   },
   {
     name: 'Flyout Position Left',

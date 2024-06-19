@@ -1,17 +1,17 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { type FlyoutNavigationUpdateEventDetail } from '@porsche-design-system/components-angular';
+import { type FlyoutMultilevelUpdateEventDetail } from '@porsche-design-system/components-angular';
 
 @Component({
   selector: 'page-flyout-navigation-example',
   template: `
-    <p-button type="button" [aria]="{ 'aria-haspopup': 'dialog' }" (click)="onOpen()">Open Flyout Navigation</p-button>
-    <p-flyout-navigation
-      [open]="isFlyoutNavigationOpen"
-      [activeIdentifier]="flyoutNavigationActiveIdentifier"
+    <p-button type="button" [aria]="{ 'aria-haspopup': 'dialog' }" (click)="onOpen()">Open Flyout Multilevel</p-button>
+    <p-flyout-multilevel
+      [open]="isFlyoutMultilevelOpen"
+      [activeIdentifier]="flyoutMultilevelActiveIdentifier"
       (dismiss)="onDismiss()"
       (update)="onUpdate($event)"
     >
-      <p-flyout-navigation-item identifier="item-1" label="Some Label">
+      <p-flyout-multilevel-item identifier="item-1" label="Some Label">
         <h3>Some heading</h3>
         <a href="#some-anchor">Some anchor</a>
         <a href="#some-anchor">Some anchor</a>
@@ -22,8 +22,8 @@ import { type FlyoutNavigationUpdateEventDetail } from '@porsche-design-system/c
         <a href="#some-anchor">Some anchor</a>
         <a href="#some-anchor">Some anchor</a>
         <a href="#some-anchor">Some anchor</a>
-      </p-flyout-navigation-item>
-      <p-flyout-navigation-item identifier="item-2" label="Some Label">
+      </p-flyout-multilevel-item>
+      <p-flyout-multilevel-item identifier="item-2" label="Some Label">
         <h3>Some heading</h3>
         <a href="#some-anchor">Some anchor</a>
         <a href="#some-anchor">Some anchor</a>
@@ -32,41 +32,41 @@ import { type FlyoutNavigationUpdateEventDetail } from '@porsche-design-system/c
         <h3>Some heading</h3>
         <a href="#some-anchor">Some anchor</a>
         <a href="#some-anchor">Some anchor</a>
-      </p-flyout-navigation-item>
-      <p-flyout-navigation-item identifier="item-3" label="Some Label">
+      </p-flyout-multilevel-item>
+      <p-flyout-multilevel-item identifier="item-3" label="Some Label">
         <h3>Some heading</h3>
         <a href="#some-anchor">Some anchor</a>
         <a href="#some-anchor">Some anchor</a>
         <h3>Some heading</h3>
         <a href="#some-anchor">Some anchor</a>
         <a href="#some-anchor">Some anchor</a>
-      </p-flyout-navigation-item>
-      <p-flyout-navigation-item identifier="item-4" label="Some Label">
+      </p-flyout-multilevel-item>
+      <p-flyout-multilevel-item identifier="item-4" label="Some Label">
         <h3>Some heading</h3>
         <a href="#some-anchor">Some anchor</a>
         <a href="#some-anchor">Some anchor</a>
         <a href="#some-anchor">Some anchor</a>
-      </p-flyout-navigation-item>
-      <p-flyout-navigation-item identifier="item-5" label="Some Label">
+      </p-flyout-multilevel-item>
+      <p-flyout-multilevel-item identifier="item-5" label="Some Label">
         <h3>Some heading</h3>
         <a href="#some-anchor">Some anchor</a>
         <a href="#some-anchor">Some anchor</a>
-      </p-flyout-navigation-item>
-    </p-flyout-navigation>
+      </p-flyout-multilevel-item>
+    </p-flyout-multilevel>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class FlyoutNavigationExampleComponent {
-  isFlyoutNavigationOpen = false;
-  flyoutNavigationActiveIdentifier: string | undefined = undefined;
+export class FlyoutMultilevelExampleComponent {
+  isFlyoutMultilevelOpen = false;
+  flyoutMultilevelActiveIdentifier: string | undefined = undefined;
 
   onOpen(): void {
-    this.isFlyoutNavigationOpen = true;
+    this.isFlyoutMultilevelOpen = true;
   }
   onDismiss(): void {
-    this.isFlyoutNavigationOpen = false;
+    this.isFlyoutMultilevelOpen = false;
   }
-  onUpdate(e: CustomEvent<FlyoutNavigationUpdateEventDetail>): void {
-    this.flyoutNavigationActiveIdentifier = e.detail.activeIdentifier;
+  onUpdate(e: CustomEvent<FlyoutMultilevelUpdateEventDetail>): void {
+    this.flyoutMultilevelActiveIdentifier = e.detail.activeIdentifier;
   }
 }
