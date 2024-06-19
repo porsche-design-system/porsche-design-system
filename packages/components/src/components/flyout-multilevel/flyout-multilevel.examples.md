@@ -1,11 +1,11 @@
-<ComponentHeading name="Flyout Navigation"></ComponentHeading>
+<ComponentHeading name="Flyout Multilevel"></ComponentHeading>
 
-The `p-flyout-navigation` component is meant for displaying a multi-level navigation structure in a flyout that overlays
-the page content from the start side of the screen. It is a controlled component that gives you flexible control over
-its behavior.
+The `p-flyout-multilevel` component is meant for displaying a multilevel structure in a flyout that overlays the page
+content from the start side of the screen. It is a controlled component that gives you flexible control over its
+behavior.
 
 <Notification heading="Experimental Component" heading-tag="h2" state="warning">
-  Interface of Flyout Navigation might change in the near future. In addition, animation/transition concept will change in the future. Currently, only two navigation levels are supported, but we will offer the support of more levels soon.
+  Interface of Flyout Multilevel might change in the near future. In addition, animation/transition concept will change in the future. Currently, only two multilevel levels are supported, but we will offer the support of more levels soon.
 </Notification>
 
 <Notification heading="Scroll-lock" heading-tag="h2" state="warning">
@@ -18,29 +18,29 @@ its behavior.
 
 ## Basic
 
-The basic concept of the component is to have a button that opens the `p-navigation-flyout` and a basic 2-level
-navigation structure. The **1st level** is generated out of custom `p-flyout-navigation-item` components which generates
+The basic concept of the component is to have a button that opens the `p-flyout-multilevel` and a basic 2-level
+multilevel structure. The **1st level** is generated out of custom `p-flyout-multilevel-item` components which generates
 a list of toggle buttons to navigate the 2nd level. These items can be filled with slotted anchor links as children
-which then represent the **2nd level** of the navigation and are styled automatically by the component.
+which then represent the **2nd level** of the multilevel and are styled automatically by the component.
 
 The most important property of p-flyout is its `open` property. When it is set to `true` the flyout will be visible.
 
-In order to get notified when the `p-navigation-flyout` gets closed by clicking the x button, you need to register an
-event listener for the dismiss event which is emitted by `p-navigation-flyout`.
+In order to get notified when the `p-flyout-multilevel` gets closed by clicking the x button, you need to register an
+event listener for the dismiss event which is emitted by `p-flyout-multilevel`.
 
 <Playground :frameworkMarkup="codeExample" :markup="codeExample['vanilla-js']" :config="config"></Playground>
 
 ## Active identifier
 
-The `p-navigation-flyout` can be initialized with an `active-identifier` property. This identifier is used to open the
-flyout with the corresponding **2nd level** navigation item expanded. The `active-identifier` must match a value of the
-`identifier` property of the `p-flyout-navigation-item` component.
+The `p-flyout-multilevel` can be initialized with an `active-identifier` property. This identifier is used to open the
+flyout with the corresponding **2nd level** multilevel item expanded. The `active-identifier` must match a value of the
+`identifier` property of the `p-flyout-multilevel-item` component.
 
 <Playground :frameworkMarkup="codeExampleActiveIdentifier" :markup="codeExampleActiveIdentifier['vanilla-js']" :config="config"></Playground>
 
 ### <A11yIcon></A11yIcon> Accessibility hints
 
-Always take care that you expose the current state of the navigation to the user. This can be done by using the
+Always take care that you expose the current state of the multilevel to the user. This can be done by using the
 `aria-current="page"` attribute on the corresponding anchor element. And this also causes automatic styling of this
 anchor.
 
@@ -59,15 +59,15 @@ child besides the already supported tags.
 <script lang="ts">
 import Vue from 'vue';
 import Component from 'vue-class-component'; 
-import { getFlyoutNavigationCodeSamples } from "@porsche-design-system/shared"; 
+import { getFlyoutMultilevelCodeSamples } from "@porsche-design-system/shared"; 
 
 @Component()
 export default class Code extends Vue {
   config = { themeable: true };
-  flyoutNavigations = [];
-  codeExample = getFlyoutNavigationCodeSamples('default');
-  codeExampleActiveIdentifier = getFlyoutNavigationCodeSamples('example-active-identifier'); 
-  codeExampleCustomContent = getFlyoutNavigationCodeSamples('example-custom-content');
+  flyoutMultilevels = [];
+  codeExample = getFlyoutMultilevelCodeSamples('default');
+  codeExampleActiveIdentifier = getFlyoutMultilevelCodeSamples('example-active-identifier'); 
+  codeExampleCustomContent = getFlyoutMultilevelCodeSamples('example-custom-content');
   
   mounted() {
     this.registerEvents();
@@ -79,12 +79,12 @@ export default class Code extends Vue {
   }
 
   registerEvents() {
-    this.flyoutNavigations = document.querySelectorAll('.playground .demo p-flyout-navigation');
+    this.flyoutMultilevels = document.querySelectorAll('.playground .demo p-flyout-multilevel');
     
     const buttonsOpen = document.querySelectorAll('.playground .demo > p-button');
     buttonsOpen.forEach((btn, index) => btn.addEventListener('click', () => this.openFlyout(index)));
     
-    this.flyoutNavigations.forEach((flyout, index) => {
+    this.flyoutMultilevels.forEach((flyout, index) => {
       flyout.addEventListener('dismiss', () => this.closeFlyout(index));
       flyout.addEventListener('update', (e) => {
         flyout.activeIdentifier = e.detail.activeIdentifier;
@@ -93,11 +93,11 @@ export default class Code extends Vue {
   }
     
   openFlyout(index: number): void {
-    this.flyoutNavigations[index].open = true;
+    this.flyoutMultilevels[index].open = true;
   }
 
   closeFlyout(index: number): void {
-    this.flyoutNavigations[index].open = false;
+    this.flyoutMultilevels[index].open = false;
   }
 }
 </script>

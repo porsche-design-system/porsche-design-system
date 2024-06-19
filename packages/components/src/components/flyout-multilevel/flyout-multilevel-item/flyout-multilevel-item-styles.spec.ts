@@ -1,4 +1,4 @@
-import { getComponentCss } from './flyout-navigation-item-styles';
+import { getComponentCss } from './flyout-multilevel-item-styles';
 
 describe('getComponentCss()', () => {
   it.each<Parameters<typeof getComponentCss>>([

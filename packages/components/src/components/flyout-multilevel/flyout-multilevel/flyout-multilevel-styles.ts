@@ -22,8 +22,8 @@ import {
 import { FLYOUT_Z_INDEX } from '../../../constants';
 import { getFlyoutDialogResetJssStyle } from '../../../styles/flyout-dialog-reset-styles';
 
-export const cssVariableVisibility = '--p-internal-flyout-navigation-visibility';
-export const cssVariableVisibilityTransitionDuration = '--p-internal-flyout-navigation-visibility-transition-duration';
+export const cssVariableVisibility = '--p-internal-flyout-multilevel-visibility';
+export const cssVariableVisibilityTransitionDuration = '--p-internal-flyout-multilevel-visibility-transition-duration';
 
 export const frostedGlassHeaderHeight = '4rem';
 const frostedGlassBackgroundColorLight = 'rgba(255, 255, 255, 0.79)';
@@ -95,7 +95,7 @@ export const getComponentCss = (
     scroller: {
       gridArea: '1/1',
       overflow: 'auto',
-      // cssVariableVisibility ensures secondary scroller is not tabbable when whole flyout-navigation is closed
+      // cssVariableVisibility ensures secondary scroller is not tabbable when whole flyout-multilevel is closed
       // on mobile we need to decide if secondary scroller needs to be visible or not, on desktop it's not necessary but also doesn't harm
       visibility: `var(${cssVariableVisibility},${isSecondaryScrollerVisible ? 'hidden' : 'inherit'})`,
       transition: `${getTransition(

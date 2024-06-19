@@ -1,13 +1,13 @@
 import { Component, Element, Event, type EventEmitter, h, type JSX, Prop, State, Watch } from '@stencil/core';
 import {
-  FLYOUT_NAVIGATION_ARIA_ATTRIBUTES,
-  type FlyoutNavigationAriaAttribute,
-  type FlyoutNavigationUpdateEventDetail,
+  FLYOUT_MULTILEVEL_ARIA_ATTRIBUTES,
+  type FlyoutMultilevelAriaAttribute,
+  type FlyoutMultilevelUpdateEventDetail,
   INTERNAL_UPDATE_EVENT_NAME,
-  syncFlyoutNavigationItemsProps,
+  syncFlyoutMultilevelItemsProps,
   validateActiveIdentifier,
-} from './flyout-navigation-utils';
-import { getComponentCss } from './flyout-navigation-styles';
+} from './flyout-multilevel-utils';
+import { getComponentCss } from './flyout-multilevel-styles';
 import {
   AllowedTypes,
   attachComponentCss,
@@ -22,41 +22,41 @@ import {
 } from '../../../utils';
 import { type PropTypes, type SelectedAriaAttributes, type Theme } from '../../../types';
 
-const propTypes: PropTypes<typeof FlyoutNavigation> = {
+const propTypes: PropTypes<typeof FlyoutMultilevel> = {
   activeIdentifier: AllowedTypes.string,
   open: AllowedTypes.boolean,
   theme: AllowedTypes.oneOf<Theme>(THEMES),
-  aria: AllowedTypes.aria<FlyoutNavigationAriaAttribute>(FLYOUT_NAVIGATION_ARIA_ATTRIBUTES),
+  aria: AllowedTypes.aria<FlyoutMultilevelAriaAttribute>(FLYOUT_MULTILEVEL_ARIA_ATTRIBUTES),
 };
 
 /** @experimental */
 @Component({
-  tag: 'p-flyout-navigation',
+  tag: 'p-flyout-multilevel',
   shadow: true,
 })
-export class FlyoutNavigation {
+export class FlyoutMultilevel {
   @Element() public host!: HTMLElement;
 
   // TODO: shouldn't open prop be changed internally too?
-  /** If true, the flyout-navigation is visualized as opened. */
+  /** If true, the flyout-multilevel is visualized as opened. */
   @Prop() public open?: boolean = false;
 
-  /** Defines which flyout-navigation-item to be visualized as opened. */
+  /** Defines which flyout-multilevel-item to be visualized as opened. */
   @Prop() public activeIdentifier?: string | undefined;
 
-  /** Adapts the flyout-navigation color depending on the theme. */
+  /** Adapts the flyout-multilevel color depending on the theme. */
   @Prop() public theme?: Theme = 'light';
 
   /** Add ARIA attributes. */
-  @Prop() public aria?: SelectedAriaAttributes<FlyoutNavigationAriaAttribute>;
+  @Prop() public aria?: SelectedAriaAttributes<FlyoutMultilevelAriaAttribute>;
 
   /** Emitted when the component requests to be dismissed. */
   @Event({ bubbles: false }) public dismiss?: EventEmitter<void>;
 
   /** Emitted when activeIdentifier is changed. */
-  @Event({ bubbles: false }) public update?: EventEmitter<FlyoutNavigationUpdateEventDetail>;
+  @Event({ bubbles: false }) public update?: EventEmitter<FlyoutMultilevelUpdateEventDetail>;
 
-  @State() private flyoutNavigationItemElements: HTMLPFlyoutNavigationItemElement[] = [];
+  @State() private flyoutMultilevelItemElements: HTMLPFlyoutMultilevelItemElement[] = [];
 
   private dialog: HTMLDialogElement;
 
@@ -66,11 +66,11 @@ export class FlyoutNavigation {
   }
 
   public componentWillLoad(): void {
-    this.defineFlyoutNavigationItemElements();
+    this.defineFlyoutMultilevelItemElements();
 
     this.host.shadowRoot.addEventListener(
       INTERNAL_UPDATE_EVENT_NAME,
-      (e: CustomEvent<FlyoutNavigationUpdateEventDetail>) => {
+      (e: CustomEvent<FlyoutMultilevelUpdateEventDetail>) => {
         e.stopPropagation(); // prevents internal event from bubbling further
         const activeIdentifier = e.detail.activeIdentifier;
         this.update.emit({ activeIdentifier });
@@ -83,7 +83,7 @@ export class FlyoutNavigation {
       setScrollLock(true);
       this.setDialogVisibility(true);
     }
-    getShadowRootHTMLElement(this.host, 'slot').addEventListener('slotchange', this.defineFlyoutNavigationItemElements);
+    getShadowRootHTMLElement(this.host, 'slot').addEventListener('slotchange', this.defineFlyoutMultilevelItemElements);
   }
 
   public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
@@ -101,9 +101,9 @@ export class FlyoutNavigation {
 
   public render(): JSX.Element {
     validateProps(this, propTypes);
-    validateActiveIdentifier(this, this.flyoutNavigationItemElements, this.activeIdentifier);
+    validateActiveIdentifier(this, this.flyoutMultilevelItemElements, this.activeIdentifier);
     attachComponentCss(this.host, getComponentCss, this.open, !!this.activeIdentifier, this.theme);
-    syncFlyoutNavigationItemsProps(this.flyoutNavigationItemElements, this.activeIdentifier, this.theme);
+    syncFlyoutMultilevelItemsProps(this.flyoutMultilevelItemElements, this.activeIdentifier, this.theme);
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
@@ -140,11 +140,11 @@ export class FlyoutNavigation {
     );
   }
 
-  private defineFlyoutNavigationItemElements = (): void => {
-    this.flyoutNavigationItemElements = getDirectChildHTMLElementOfKind(
+  private defineFlyoutMultilevelItemElements = (): void => {
+    this.flyoutMultilevelItemElements = getDirectChildHTMLElementOfKind(
       this.host,
-      'p-flyout-navigation-item'
-    ) as HTMLPFlyoutNavigationItemElement[];
+      'p-flyout-multilevel-item'
+    ) as HTMLPFlyoutMultilevelItemElement[];
   };
 
   private onClickDialog = (e: MouseEvent & { target: HTMLElement }): void => {

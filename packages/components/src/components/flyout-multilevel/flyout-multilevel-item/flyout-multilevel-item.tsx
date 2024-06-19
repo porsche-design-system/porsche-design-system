@@ -1,5 +1,5 @@
 import { Component, Element, h, Host, type JSX, Prop } from '@stencil/core';
-import { getComponentCss } from './flyout-navigation-item-styles';
+import { getComponentCss } from './flyout-multilevel-item-styles';
 import {
   AllowedTypes,
   attachComponentCss,
@@ -9,40 +9,40 @@ import {
 } from '../../../utils';
 import { type PropTypes, type Theme } from '../../../types';
 import {
-  type FlyoutNavigationUpdateEventDetail,
+  type FlyoutMultilevelUpdateEventDetail,
   INTERNAL_UPDATE_EVENT_NAME,
-} from '../flyout-navigation/flyout-navigation-utils';
-import { type FlyoutNavigationItemInternalHTMLProps } from './flyout-navigation-item-utils';
+} from '../flyout-multilevel/flyout-multilevel-utils';
+import { type FlyoutMultilevelItemInternalHTMLProps } from './flyout-multilevel-item-utils';
 
-const propTypes: PropTypes<typeof FlyoutNavigationItem> = {
+const propTypes: PropTypes<typeof FlyoutMultilevelItem> = {
   identifier: AllowedTypes.string,
   label: AllowedTypes.string,
 };
 
 /** @experimental */
 @Component({
-  tag: 'p-flyout-navigation-item',
+  tag: 'p-flyout-multilevel-item',
   shadow: true,
 })
-export class FlyoutNavigationItem {
-  @Element() public host!: HTMLElement & FlyoutNavigationItemInternalHTMLProps;
+export class FlyoutMultilevelItem {
+  @Element() public host!: HTMLElement & FlyoutMultilevelItemInternalHTMLProps;
 
   /** Label of the item. */
   @Prop() public label?: string;
 
-  /** Unique identifier which controls if this item should be shown when the active-identifier on the flyout-navigation is set to this value. */
+  /** Unique identifier which controls if this item should be shown when the active-identifier on the flyout-multilevel is set to this value. */
   @Prop() public identifier: string;
 
   private get theme(): Theme {
-    return this.host.theme || 'light'; // default as fallback (internal private prop is controlled by flyout-navigation)
+    return this.host.theme || 'light'; // default as fallback (internal private prop is controlled by flyout-multilevel)
   }
 
   private get open(): boolean {
-    return this.host.open || false; // default as fallback (internal private prop is controlled by flyout-navigation)
+    return this.host.open || false; // default as fallback (internal private prop is controlled by flyout-multilevel)
   }
 
   public connectedCallback(): void {
-    throwIfParentIsNotOfKind(this.host, 'p-flyout-navigation');
+    throwIfParentIsNotOfKind(this.host, 'p-flyout-multilevel');
   }
 
   public render(): JSX.Element {
@@ -98,10 +98,10 @@ export class FlyoutNavigationItem {
 
   private onClickButton = (activeIdentifier: string | undefined): void => {
     this.host.dispatchEvent(
-      new CustomEvent<FlyoutNavigationUpdateEventDetail>(INTERNAL_UPDATE_EVENT_NAME, {
+      new CustomEvent<FlyoutMultilevelUpdateEventDetail>(INTERNAL_UPDATE_EVENT_NAME, {
         bubbles: true,
         detail: { activeIdentifier },
-      } as CustomEventInit<FlyoutNavigationUpdateEventDetail>)
+      } as CustomEventInit<FlyoutMultilevelUpdateEventDetail>)
     );
   };
 }

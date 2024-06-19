@@ -34,7 +34,7 @@ import {
   getContentJssStyle,
   mediaQueryEnhancedView,
   scrollerWidthEnhancedView,
-} from '../flyout-navigation/flyout-navigation-styles';
+} from '../flyout-multilevel/flyout-multilevel-styles';
 
 const frostedGlassBackgroundColorLight = 'rgba(238, 239, 242, 0.79)';
 const frostedGlassBackgroundColorDark = 'rgba(33, 34, 37, 0.79)';
@@ -137,13 +137,13 @@ export const getComponentCss = (isSecondaryScrollerVisible: boolean, theme: Them
     scroller: {
       position: 'fixed',
       inset: 0,
-      // "cssVariableTransitionDuration" ensures closing animation of secondary scroller is given when whole flyout-navigation gets closed
-      // "cssVariableVisibility" ensures secondary scroller is not tabbable when whole flyout-navigation is closed
+      // "cssVariableTransitionDuration" ensures closing animation of secondary scroller is given when whole flyout-multilevel gets closed
+      // "cssVariableVisibility" ensures secondary scroller is not tabbable when whole flyout-multilevel is closed
       ...(isSecondaryScrollerVisible
         ? {
             zIndex: 2,
             transform: 'translate3d(0, 0, 0)',
-            // TODO: Should be visibility: inherit to allow overwriting but currently not possible since it would inherit from the scroller of the p-flyout-navigation itself, which is hidden on mobile
+            // TODO: Should be visibility: inherit to allow overwriting but currently not possible since it would inherit from the scroller of the p-flyout-multilevel itself, which is hidden on mobile
             visibility: `var(${cssVariableVisibility},visible)`,
             transition: `${getTransition(
               'transform',

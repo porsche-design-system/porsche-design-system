@@ -1,26 +1,26 @@
 import { consoleError, getTagNameWithoutPrefix } from '../../../utils';
-import { type FlyoutNavigationItemInternalHTMLProps } from '../flyout-navigation-item/flyout-navigation-item-utils';
+import { type FlyoutMultilevelItemInternalHTMLProps } from '../flyout-multilevel-item/flyout-multilevel-item-utils';
 import { forceUpdate } from '@stencil/core';
 import { type Class, type Theme } from '../../../types';
 
-export const FLYOUT_NAVIGATION_ARIA_ATTRIBUTES = ['aria-label'] as const;
-export type FlyoutNavigationAriaAttribute = (typeof FLYOUT_NAVIGATION_ARIA_ATTRIBUTES)[number];
+export const FLYOUT_MULTILEVEL_ARIA_ATTRIBUTES = ['aria-label'] as const;
+export type FlyoutMultilevelAriaAttribute = (typeof FLYOUT_MULTILEVEL_ARIA_ATTRIBUTES)[number];
 
 export const INTERNAL_UPDATE_EVENT_NAME = 'internalUpdate';
 
-export type FlyoutNavigationUpdate = {
+export type FlyoutMultilevelUpdate = {
   activeIdentifier: string;
 };
 /** @deprecated */
-export type FlyoutNavigationUpdateEvent = FlyoutNavigationUpdate;
-export type FlyoutNavigationUpdateEventDetail = FlyoutNavigationUpdateEvent; // to have consistent event types
+export type FlyoutMultilevelUpdateEvent = FlyoutMultilevelUpdate;
+export type FlyoutMultilevelUpdateEventDetail = FlyoutMultilevelUpdateEvent; // to have consistent event types
 
-export const syncFlyoutNavigationItemsProps = (
-  items: HTMLPFlyoutNavigationItemElement[],
+export const syncFlyoutMultilevelItemsProps = (
+  items: HTMLPFlyoutMultilevelItemElement[],
   activeIdentifier: string,
   theme: Theme
 ): void => {
-  items.forEach((item: HTMLPFlyoutNavigationItemElement & FlyoutNavigationItemInternalHTMLProps) => {
+  items.forEach((item: HTMLPFlyoutMultilevelItemElement & FlyoutMultilevelItemInternalHTMLProps) => {
     item.theme = theme;
     item.open = item.identifier === activeIdentifier;
     forceUpdate(item);
@@ -29,7 +29,7 @@ export const syncFlyoutNavigationItemsProps = (
 
 export const validateActiveIdentifier = <T extends Class<any>>(
   instance: InstanceType<T>,
-  items: HTMLPFlyoutNavigationItemElement[],
+  items: HTMLPFlyoutMultilevelItemElement[],
   activeIdentifier: string | undefined
 ): void => {
   if (activeIdentifier !== undefined) {

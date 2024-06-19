@@ -1,12 +1,12 @@
-import type { FlyoutNavigationItemInternalHTMLProps } from '../flyout-navigation-item/flyout-navigation-item-utils';
+import type { FlyoutMultilevelItemInternalHTMLProps } from '../flyout-multilevel-item/flyout-multilevel-item-utils';
 import type { Theme } from '../../../types';
-import { syncFlyoutNavigationItemsProps, validateActiveIdentifier } from './flyout-navigation-utils';
+import { syncFlyoutMultilevelItemsProps, validateActiveIdentifier } from './flyout-multilevel-utils';
 import * as stencilCore from '@stencil/core';
 import * as loggerUtils from '../../../utils/log/logger';
 
 const createChild = (
   identifier: string = undefined
-): HTMLPFlyoutNavigationItemElement & FlyoutNavigationItemInternalHTMLProps => {
+): HTMLPFlyoutMultilevelItemElement & FlyoutMultilevelItemInternalHTMLProps => {
   const el = document.createElement('div') as any;
   el.identifier = identifier;
   return el;
@@ -14,7 +14,7 @@ const createChild = (
 const theme: Theme = 'dark';
 const identifier = 'some-id';
 
-describe('syncFlyoutNavigationItemsProps()', () => {
+describe('syncFlyoutMultilevelItemsProps()', () => {
   it('should set theme property on every item', () => {
     const child1 = createChild();
     const child2 = createChild();
@@ -23,7 +23,7 @@ describe('syncFlyoutNavigationItemsProps()', () => {
     expect(child1.theme).toBeUndefined();
     expect(child2.theme).toBeUndefined();
 
-    syncFlyoutNavigationItemsProps(children, undefined, theme);
+    syncFlyoutMultilevelItemsProps(children, undefined, theme);
 
     expect(child1.theme).toBe(theme);
     expect(child2.theme).toBe(theme);
@@ -37,7 +37,7 @@ describe('syncFlyoutNavigationItemsProps()', () => {
     expect(child1.open).toBeUndefined();
     expect(child2.open).toBeUndefined();
 
-    syncFlyoutNavigationItemsProps(children, identifier, theme);
+    syncFlyoutMultilevelItemsProps(children, identifier, theme);
 
     expect(child1.open).toBe(true);
     expect(child2.open).toBe(false);
@@ -50,7 +50,7 @@ describe('syncFlyoutNavigationItemsProps()', () => {
 
     const spy = jest.spyOn(stencilCore, 'forceUpdate');
 
-    syncFlyoutNavigationItemsProps(children, undefined, theme);
+    syncFlyoutMultilevelItemsProps(children, undefined, theme);
 
     expect(spy).toHaveBeenCalledTimes(2);
     expect(spy.mock.calls[0][0]).toEqual(child1); // toHaveBeenNthCalledWith doesn't work
@@ -58,15 +58,15 @@ describe('syncFlyoutNavigationItemsProps()', () => {
   });
 });
 
-const errorMessage = `Invalid value '${identifier}' supplied to p-flyout-navigation for property 'activeIdentifier' because reference is not present.`;
-const errorMessageMultiple = `Found multiple matching items for value '${identifier}' supplied to p-flyout-navigation:`;
+const errorMessage = `Invalid value '${identifier}' supplied to p-flyout-multilevel for property 'activeIdentifier' because reference is not present.`;
+const errorMessageMultiple = `Found multiple matching items for value '${identifier}' supplied to p-flyout-multilevel:`;
 
 class SomeInstance {
-  host = document.createElement('p-flyout-navigation');
+  host = document.createElement('p-flyout-multilevel');
 }
 
 describe('validateActiveIdentifier()', () => {
-  it('should not call consoleError() util when activeIdentifier of flyout-navigation is undefined', () => {
+  it('should not call consoleError() util when activeIdentifier of flyout-multilevel is undefined', () => {
     const instance = new SomeInstance();
     const items = [createChild(), createChild()];
 
@@ -75,7 +75,7 @@ describe('validateActiveIdentifier()', () => {
     expect(spy).not.toHaveBeenCalled();
   });
 
-  it('should not call consoleError() util when activeIdentifier of flyout-navigation matches identifier of a flyout-navigation-item', () => {
+  it('should not call consoleError() util when activeIdentifier of flyout-multilevel matches identifier of a flyout-multilevel-item', () => {
     const instance = new SomeInstance();
     const items = [createChild(identifier), createChild()];
 
@@ -84,7 +84,7 @@ describe('validateActiveIdentifier()', () => {
     expect(spy).not.toHaveBeenCalled();
   });
 
-  it('should call consoleError() util when activeIdentifier of flyout-navigation matches no identifier of a flyout-navigation-item', () => {
+  it('should call consoleError() util when activeIdentifier of flyout-multilevel matches no identifier of a flyout-multilevel-item', () => {
     const instance = new SomeInstance();
     const items = [createChild(), createChild()];
 
@@ -93,7 +93,7 @@ describe('validateActiveIdentifier()', () => {
     expect(spy).toHaveBeenCalledWith(errorMessage);
   });
 
-  it("should call consoleError() util when activeIdentifier of flyout-navigation matches multiple identifier of flyout-navigation-item's", () => {
+  it("should call consoleError() util when activeIdentifier of flyout-multilevel matches multiple identifier of flyout-multilevel-item's", () => {
     const instance = new SomeInstance();
     const items = [createChild(identifier), createChild(identifier)];
 

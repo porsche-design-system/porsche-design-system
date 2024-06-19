@@ -1,4 +1,4 @@
-<ComponentHeading name="Flyout Navigation"></ComponentHeading>
+<ComponentHeading name="Flyout Multilevel"></ComponentHeading>
 
 <TableOfContents></TableOfContents>
 
@@ -9,12 +9,12 @@ component in various situations.
 
 ### Do:
 
-- Use Flyout-Navigation for navigation purposes.
-- Use Flyout-Navigation for navigation on desktop & mobile.
-- Use a button-pure with a burger icon as the main trigger for the Flyout-Navigation component.
+- Use Flyout-Multilevel for multilevel purposes.
+- Use Flyout-Multilevel for multilevel on desktop & mobile.
+- Use a button-pure with a burger icon as the main trigger for the Flyout-Multilevel component.
 - Use additional interaction items to trigger component.
-- Use a navigation hierarchy that matches the two-layer capability of the component.
-- Use the first layer for navigation targets or categories for link lists.
+- Use a multilevel hierarchy that matches the two-layer capability of the component.
+- Use the first layer for multilevel targets or categories for link lists.
 - Use the second layer only if necessary.
 - Use section headings on the second layer for a group of links.
 - Use link-tile on the second layer for important links.
