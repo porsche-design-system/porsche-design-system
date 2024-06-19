@@ -1,4 +1,5 @@
 import { TagName } from '@porsche-design-system/shared';
+import { getComponentMeta } from '@porsche-design-system/component-meta';
 
 export type ComponentSlots = ComponentSlot[];
 
@@ -10,6 +11,7 @@ type ComponentSlot = {
   isShown: boolean;
 };
 
+// TODO: Extract this from code example?
 export const componentSlots: { [T in TagName]: ComponentSlots } = {
   'p-flyout': [
     {
@@ -41,4 +43,39 @@ export const componentSlots: { [T in TagName]: ComponentSlots } = {
       isShown: false,
     },
   ],
+  'p-multi-select': [
+    {
+      name: '',
+      markup: `<p-multi-select-option value="a">Option A</p-multi-select-option>
+  <p-multi-select-option value="b">Option B</p-multi-select-option>
+  <p-multi-select-option value="c">Option C</p-multi-select-option>
+  <p-multi-select-option value="d">Option D</p-multi-select-option>
+  <p-multi-select-option value="e">Option E</p-multi-select-option>
+  <p-multi-select-option value="f">Option F</p-multi-select-option>`,
+      description: '',
+      isShown: true,
+    },
+  ],
 };
+
+// Extracts slot markup from sample code
+function extractSlots(markup: string, component: TagName): ComponentSlots {
+  const meta = getComponentMeta(component);
+  const regex = /<([a-zA-Z-]+)[^>]*?\sslot="([a-zA-Z-]+)"[^>]*?>[\s\S]*?<\/\1>/g;
+  const slots: ComponentSlots = [];
+  let match;
+
+  while ((match = regex.exec(markup)) !== null) {
+    console.log(match);
+    const [fullMatch, , slotName] = match;
+    slots.push({ name: slotName, markup: fullMatch, description: '', isShown: true });
+  }
+
+  meta.namedSlots?.forEach((slot) => {
+    if (!slots.find((s) => s.name === slot)) {
+      throw new Error(`Slot "${slot}" is missing in example code of ${component}`);
+    }
+  });
+
+  return slots;
+}

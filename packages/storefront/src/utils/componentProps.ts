@@ -21,15 +21,23 @@ export const getComponentProps = (component: TagName): ComponentProps => {
     componentProps[key] = {
       ...value,
       defaultValue: convertedDefaultValue,
-      selectedValue: convertedDefaultValue, // TODO: Set selected value for required props
+      selectedValue: componentDefaultProps[component][key]
+        ? componentDefaultProps[component][key]
+        : convertedDefaultValue, // TODO: Set selected value for required props
     };
   }
 
   return componentProps;
 };
 
+// TODO: Define this in code example?
 // All required props which don't have a default value in componentMeta must be defined a value here
-const componentProps = {
+const componentDefaultProps = {
+  'p-multi-select': {
+    name: 'options',
+    label: 'Some label',
+    description: 'Some description',
+  },
   'p-link-tile': {
     href: 'https://porsche.com',
     label: 'Some label',
