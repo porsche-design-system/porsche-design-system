@@ -1,15 +1,8 @@
 <template>
   <div class="playground">
     <div class="header">
-      <ThemeSelect v-if="mergedConfig.themeable" :theme="selectTheme" v-on:update="switchTheme" :hide-label="true" />
-      <p-select-wrapper class="select" :theme="$store.getters.storefrontTheme" label="Direction" hide-label="true">
-        <select name="dir" v-model="selectDir" v-on:change="switchDir">
-          <option disabled>Select direction</option>
-          <option value="ltr">LTR (left-to-right)</option>
-          <option value="rtl">RTL (right-to-left)</option>
-          <option value="auto">Auto</option>
-        </select>
-      </p-select-wrapper>
+      <ThemeSelect v-if="mergedConfig.themeable" :theme="selectTheme" @update="switchTheme" :hide-label="true" />
+      <DirSelect :dir="selectDir" @update="switchDir" />
     </div>
     <div
       :class="{
@@ -85,6 +78,7 @@
   import type { ExternalDependency, SharedImportKey } from '../utils';
   import { getExternalDependenciesOrThrow } from '@/utils/stackblitz/helper';
   import ThemeSelect from '@/components/ThemeSelect.vue';
+  import DirSelect from '@/components/DirSelect.vue';
 
   export type PlaygroundConfig = {
     themeable: boolean;
@@ -113,6 +107,7 @@
 
   @Component({
     components: {
+      DirSelect,
       ThemeSelect,
       CodeBlock,
       CodeEditor,
