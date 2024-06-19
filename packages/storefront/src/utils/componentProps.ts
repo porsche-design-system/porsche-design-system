@@ -21,7 +21,7 @@ export const getComponentProps = (component: TagName): ComponentProps => {
     componentProps[key] = {
       ...value,
       defaultValue: convertedDefaultValue,
-      selectedValue: componentDefaultProps[component][key]
+      selectedValue: componentDefaultProps[component]?.[key]
         ? componentDefaultProps[component][key]
         : convertedDefaultValue, // TODO: Set selected value for required props
     };

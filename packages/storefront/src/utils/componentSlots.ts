@@ -43,6 +43,27 @@ export const componentSlots: { [T in TagName]: ComponentSlots } = {
       isShown: false,
     },
   ],
+  'p-link-tile-model-signature': [
+    {
+      name: '',
+      markup:
+        '<img src="https://porsche-design-system.github.io/porsche-design-system/dessert.jpg" width="3000" height="2000" alt="Some alt text" />',
+      description: '',
+      isShown: true,
+    },
+    {
+      name: 'primary',
+      markup: '<p-link slot="primary" href="https://porsche.com/#primary">Primary label</p-link>',
+      description: '',
+      isShown: true,
+    },
+    {
+      name: 'secondary',
+      markup: '<p-link slot="secondary" href="https://porsche.com/#secondary">Secondary label</p-link>',
+      description: '',
+      isShown: true,
+    },
+  ],
   'p-multi-select': [
     {
       name: '',

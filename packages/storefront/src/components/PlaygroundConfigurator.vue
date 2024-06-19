@@ -76,7 +76,7 @@
   })
   export default class PlaygroundConfigurator extends Vue {
     @Prop() public component!: TagName;
-    @Prop() public codeSamples!: FrameworkMarkup;
+    @Prop() public codeSamples?: FrameworkMarkup;
     @Prop({ default: 'background-base' }) public backgroundColor!: BackgroundColor;
 
     componentProps: ComponentProps = {};
@@ -90,16 +90,18 @@
     created() {
       this.componentProps = getComponentProps(this.component);
       this.componentSlots = componentSlots[this.component];
-      this.componentProps['theme'].selectedValue = this.theme;
+      if (this.componentProps['theme']) {
+        this.componentProps['theme'].selectedValue = this.theme;
+      }
       this.updateMarkup();
     }
 
     updateMarkup() {
       this.markup = getComponentExampleMarkup(
         this.component,
-        this.codeSamples,
         this.componentProps,
-        this.componentSlots
+        this.componentSlots,
+        this.codeSamples
       );
     }
 

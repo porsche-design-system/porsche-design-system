@@ -13,9 +13,9 @@ type FrameworkMarkup = {
 
 export const getComponentExampleMarkup = (
   component: TagName,
-  codeSamples: FrameworkMarkup,
   props: ComponentProps,
-  slots: ComponentSlots
+  slots: ComponentSlots,
+  codeSamples?: FrameworkMarkup
 ): FrameworkMarkup => {
   const markup = getComponentMarkup(component, props, slots);
 
@@ -27,21 +27,26 @@ export const getComponentExampleMarkup = (
     return code.replace(regex, (match, p1) => {
       const lines = replacement.trim().split('\n');
       return [
-        p1 + lines[0], // Preserve indentation for the first line
-        ...lines.slice(1).map((line) => p1 + line), // Apply indentation for subsequent lines
+        ...lines.map((line) => (p1 !== '\n' ? p1 + line : line)), // Apply indentation for subsequent lines
       ].join('\n');
     });
   };
 
   const componentExampleMarkup: FrameworkMarkup = {
-    'vanilla-js': replaceWithIndentation(codeSamples['vanilla-js'], componentRegex, markup),
-    react: replaceWithIndentation(codeSamples['react'], componentRegexPascalCase, convertToReact(markup)),
-    angular: replaceWithIndentation(codeSamples['angular'], componentRegex, convertToAngular(markup)),
-    vue: replaceWithIndentation(codeSamples['vue'], componentRegexPascalCase, convertToVue(markup)),
+    'vanilla-js': codeSamples ? replaceWithIndentation(codeSamples['vanilla-js'], componentRegex, markup) : markup,
+    react: codeSamples
+      ? replaceWithIndentation(codeSamples['react'], componentRegexPascalCase, convertToReact(markup))
+      : convertToReact(markup),
+    angular: codeSamples
+      ? replaceWithIndentation(codeSamples['angular'], componentRegex, convertToAngular(markup))
+      : convertToAngular(markup),
+    vue: codeSamples
+      ? replaceWithIndentation(codeSamples['vue'], componentRegexPascalCase, convertToVue(markup))
+      : convertToVue(markup),
   };
 
   // Patch theme into markup if theme is set
-  if (props['theme'].selectedValue) {
+  if (props['theme'] && props['theme'].selectedValue) {
     (Object.keys(componentExampleMarkup) as Framework[]).forEach((key) => {
       componentExampleMarkup[key] = patchThemeIntoMarkup(componentExampleMarkup[key], props['theme'].selectedValue);
     });
