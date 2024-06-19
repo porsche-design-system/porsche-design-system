@@ -1,5 +1,7 @@
 import {
   getBrowserSupportFallbackScript,
+  getFontFaceStyles,
+  getFontLinks,
   getInitialStyles,
   getLoaderScript,
   getMetaTagsAndIconLinks,
@@ -10,12 +12,16 @@ import * as path from 'path';
 const preparePartialResults = (): void => {
   const metaTagsAndIconLinksDemo = getMetaTagsAndIconLinks({ appTitle: 'TITLE_OF_YOUR_APP' });
   const initialStyles = getInitialStyles();
+  const fontFaceStyles = getFontFaceStyles();
+  const fontLinks = getFontLinks({ weights: ['regular', 'semi-bold', 'bold'] });
   const loaderScript = getLoaderScript();
 
   const content = `/* Auto Generated File */
 
 export const metaTagsAndIconLinksDemo = ${JSON.stringify(metaTagsAndIconLinksDemo)};
 export const initialStyles = ${JSON.stringify(initialStyles)};
+export const fontFaceStyles = ${JSON.stringify(fontFaceStyles)};
+export const fontLinks = ${JSON.stringify(fontLinks)};
 export const loaderScript = ${JSON.stringify(loaderScript)};
 `;
 

@@ -1,5 +1,5 @@
 import { PlaygroundDir } from '@/models';
-import { initialStyles, loaderScript } from '@/lib/partialResults';
+import { fontFaceStyles, fontLinks, initialStyles, loaderScript, metaTagsAndIconLinksDemo } from '@/lib/partialResults';
 
 export const getComponentExamplePage = (markup: string, dir: PlaygroundDir, globalStyles: string): string => {
   return `<!doctype html>
@@ -7,7 +7,10 @@ export const getComponentExamplePage = (markup: string, dir: PlaygroundDir, glob
   <head>
     <meta charset="utf-8" />
     <title>Porsche Design System</title>
+    ${metaTagsAndIconLinksDemo}
+    ${fontLinks}
     ${initialStyles}
+    ${fontFaceStyles}
     <style>
       html, body { margin: 0; padding: 0; }
       ${globalStyles}
