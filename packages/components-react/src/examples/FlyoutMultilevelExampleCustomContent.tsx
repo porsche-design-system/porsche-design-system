@@ -1,41 +1,41 @@
 import { useCallback, useState } from 'react';
 import {
-  type FlyoutNavigationUpdateEventDetail,
+  type FlyoutMultilevelUpdateEventDetail,
   PButton,
-  PFlyoutNavigation,
-  PFlyoutNavigationItem,
+  PFlyoutMultilevel,
+  PFlyoutMultilevelItem,
   PLinkPure,
   PLinkTile,
 } from '@porsche-design-system/components-react';
 import { spacingFluidSmall } from '@porsche-design-system/components-react/styles';
 
-export const FlyoutNavigationExampleCustomContentPage = (): JSX.Element => {
-  const [isFlyoutNavigationOpen, setIsFlyoutNavigationOpen] = useState<boolean>(false);
-  const [flyoutNavigationActiveIdentifier, setFlyoutNavigationActiveIdentifier] = useState<string>('item-1');
+export const FlyoutMultilevelExampleCustomContentPage = (): JSX.Element => {
+  const [isFlyoutMultilevelOpen, setIsFlyoutMultilevelOpen] = useState<boolean>(false);
+  const [flyoutMultilevelActiveIdentifier, setFlyoutMultilevelActiveIdentifier] = useState<string>('item-1');
   const onOpen = useCallback(() => {
-    setIsFlyoutNavigationOpen(true);
+    setIsFlyoutMultilevelOpen(true);
   }, []);
   const onDismiss = useCallback(() => {
-    setIsFlyoutNavigationOpen(false);
+    setIsFlyoutMultilevelOpen(false);
   }, []);
   const onUpdate = useCallback(
-    (e: CustomEvent<FlyoutNavigationUpdateEventDetail>) =>
-      setFlyoutNavigationActiveIdentifier(e.detail.activeIdentifier),
+    (e: CustomEvent<FlyoutMultilevelUpdateEventDetail>) =>
+      setFlyoutMultilevelActiveIdentifier(e.detail.activeIdentifier),
     []
   );
 
   return (
     <>
       <PButton type="button" aria={{ 'aria-haspopup': 'dialog' }} onClick={onOpen}>
-        Open Flyout Navigation
+        Open Flyout Multilevel
       </PButton>
-      <PFlyoutNavigation
-        open={isFlyoutNavigationOpen}
-        activeIdentifier={flyoutNavigationActiveIdentifier}
+      <PFlyoutMultilevel
+        open={isFlyoutMultilevelOpen}
+        activeIdentifier={flyoutMultilevelActiveIdentifier}
         onDismiss={onDismiss}
         onUpdate={onUpdate}
       >
-        <PFlyoutNavigationItem identifier="item-1" label="Some Label">
+        <PFlyoutMultilevelItem identifier="item-1" label="Some Label">
           <PLinkTile
             href="#"
             label="Some label"
@@ -64,8 +64,8 @@ export const FlyoutNavigationExampleCustomContentPage = (): JSX.Element => {
           <a href="#some-anchor">Some anchor</a>
           <a href="#some-anchor">Some anchor</a>
           <a href="#some-anchor">Some anchor</a>
-        </PFlyoutNavigationItem>
-        <PFlyoutNavigationItem identifier="item-2" label="Some Label">
+        </PFlyoutMultilevelItem>
+        <PFlyoutMultilevelItem identifier="item-2" label="Some Label">
           <h3>Some heading</h3>
           <a href="#some-anchor">Some anchor</a>
           <a href="#some-anchor">Some anchor</a>
@@ -74,26 +74,26 @@ export const FlyoutNavigationExampleCustomContentPage = (): JSX.Element => {
           <h3>Some heading</h3>
           <a href="#some-anchor">Some anchor</a>
           <a href="#some-anchor">Some anchor</a>
-        </PFlyoutNavigationItem>
-        <PFlyoutNavigationItem identifier="item-3" label="Some Label">
+        </PFlyoutMultilevelItem>
+        <PFlyoutMultilevelItem identifier="item-3" label="Some Label">
           <h3>Some heading</h3>
           <a href="#some-anchor">Some anchor</a>
           <a href="#some-anchor">Some anchor</a>
           <h3>Some heading</h3>
           <a href="#some-anchor">Some anchor</a>
           <a href="#some-anchor">Some anchor</a>
-        </PFlyoutNavigationItem>
-        <PFlyoutNavigationItem identifier="item-4" label="Some Label">
+        </PFlyoutMultilevelItem>
+        <PFlyoutMultilevelItem identifier="item-4" label="Some Label">
           <h3>Some heading</h3>
           <a href="#some-anchor">Some anchor</a>
           <a href="#some-anchor">Some anchor</a>
           <a href="#some-anchor">Some anchor</a>
-        </PFlyoutNavigationItem>
-        <PFlyoutNavigationItem identifier="item-5" label="Some Label">
+        </PFlyoutMultilevelItem>
+        <PFlyoutMultilevelItem identifier="item-5" label="Some Label">
           <h3>Some heading</h3>
           <a href="#some-anchor">Some anchor</a>
           <a href="#some-anchor">Some anchor</a>
-        </PFlyoutNavigationItem>
+        </PFlyoutMultilevelItem>
         <PLinkPure
           size="medium"
           href="#"
@@ -102,7 +102,7 @@ export const FlyoutNavigationExampleCustomContentPage = (): JSX.Element => {
         >
           Some external anchor
         </PLinkPure>
-      </PFlyoutNavigation>
+      </PFlyoutMultilevel>
     </>
   );
 };
