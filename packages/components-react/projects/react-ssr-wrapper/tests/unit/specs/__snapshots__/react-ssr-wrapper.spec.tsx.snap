@@ -8394,8 +8394,8 @@ img {
 </p-flyout>
 `;
 
-exports[`should render dsr component for PFlyoutNavigation 1`] = `
-<p-flyout-navigation
+exports[`should render dsr component for PFlyoutMultilevel 1`] = `
+<p-flyout-multilevel
   class="ssr"
 >
   <template
@@ -8405,8 +8405,8 @@ exports[`should render dsr component for PFlyoutNavigation 1`] = `
     <style>
       :host {
   display: block;
-  --p-internal-flyout-navigation-visibility: hidden !important;
-  --p-internal-flyout-navigation-visibility-transition-duration: 0.6s !important;
+  --p-internal-flyout-multilevel-visibility: hidden !important;
+  --p-internal-flyout-multilevel-visibility-transition-duration: 0.6s !important;
   position: fixed !important;
   inset: 0 !important;
   z-index: 99998 !important;
@@ -8457,7 +8457,7 @@ dialog::backdrop {
 .scroller {
   grid-area: 1/1;
   overflow: auto;
-  visibility: var(--p-internal-flyout-navigation-visibility,inherit);
+  visibility: var(--p-internal-flyout-multilevel-visibility,inherit);
   transition: left var(--p-transition-duration, 0.6s) cubic-bezier(0.4,0,0.5,1), visibility 0s linear var(--p-transition-duration, 0.6s);
   background-color: #FFF;
 }
@@ -8684,11 +8684,11 @@ img {
     </dialog>
   </template>
   Some child
-</p-flyout-navigation>
+</p-flyout-multilevel>
 `;
 
-exports[`should render dsr component for PFlyoutNavigationItem 1`] = `
-<p-flyout-navigation-item
+exports[`should render dsr component for PFlyoutMultilevelItem 1`] = `
+<p-flyout-multilevel-item
   class="ssr"
 >
   <template
@@ -8750,8 +8750,8 @@ exports[`should render dsr component for PFlyoutNavigationItem 1`] = `
   inset: 0;
   z-index: 1;
   transform: translate3d(100%, 0, 0);
-  visibility: var(--p-internal-flyout-navigation-visibility,hidden);
-  transition: transform var(--p-transition-duration, 0.6s) cubic-bezier(0.4,0,0.5,1), visibility 0s linear var(--p-transition-duration,var(--p-internal-flyout-navigation-visibility-transition-duration,0.6s));
+  visibility: var(--p-internal-flyout-multilevel-visibility,hidden);
+  transition: transform var(--p-transition-duration, 0.6s) cubic-bezier(0.4,0,0.5,1), visibility 0s linear var(--p-transition-duration,var(--p-internal-flyout-multilevel-visibility-transition-duration,0.6s));
   width: 100vw;
   box-sizing: border-box;
   overflow: auto;
@@ -8806,7 +8806,7 @@ exports[`should render dsr component for PFlyoutNavigationItem 1`] = `
     inset-inline-start: calc(clamp(338px, 10.52vw + 258px, 460px) - 1px);
     width: clamp(338px, 10.52vw + 258px, 460px);
     transform: initial !important;
-    transition: visibility 0s linear var(--p-transition-duration,var(--p-internal-flyout-navigation-visibility-transition-duration,0s));
+    transition: visibility 0s linear var(--p-transition-duration,var(--p-internal-flyout-multilevel-visibility-transition-duration,0s));
   }
   .header {
     display: none;
@@ -9138,7 +9138,7 @@ img:dir(rtl) {
     </div>
   </template>
   Some child
-</p-flyout-navigation-item>
+</p-flyout-multilevel-item>
 `;
 
 exports[`should render dsr component for PGrid 1`] = `

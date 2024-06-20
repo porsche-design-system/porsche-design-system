@@ -13,8 +13,8 @@ node_modules
 /app/routes/banner-prefixed.tsx
 /app/routes/flyout-basic.tsx
 /app/routes/flyout-prefixed.tsx
-/app/routes/flyout-navigation-basic.tsx
-/app/routes/flyout-navigation-prefixed.tsx
+/app/routes/flyout-multilevel-basic.tsx
+/app/routes/flyout-multilevel-prefixed.tsx
 /app/routes/modal-basic.tsx
 /app/routes/modal-prefixed.tsx
 /app/routes/overview.tsx
