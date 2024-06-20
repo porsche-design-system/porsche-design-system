@@ -140,13 +140,13 @@ export const config: StorefrontConfig = {
       Props: [() => import('@/../../components/src/components/flyout/flyout.props.md')],
     },
     'Flyout Multilevel': {
-      Examples: [() => import('../components/src/components/flyout-multilevel/flyout-multilevel.examples.md')],
-      Usage: [() => import('../components/src/components/flyout-multilevel/flyout-multilevel.usage.md')],
+      Examples: [() => import('@/../../components/src/components/flyout-multilevel/flyout-multilevel.examples.md')],
+      Usage: [() => import('@/../../components/src/components/flyout-multilevel/flyout-multilevel.usage.md')],
       Props: [
         // prettier-ignore
-        () => import('../components/src/components/flyout-multilevel/flyout-multilevel/flyout-multilevel.props.md'),
+        () => import('@/../../components/src/components/flyout-multilevel/flyout-multilevel/flyout-multilevel.props.md'),
         // prettier-ignore
-        () => import('../components/src/components/flyout-multilevel/flyout-multilevel-item/flyout-multilevel-item.props.md'),
+        () => import('@/../../components/src/components/flyout-multilevel/flyout-multilevel-item/flyout-multilevel-item.props.md'),
       ],
     },
     Grid: {
