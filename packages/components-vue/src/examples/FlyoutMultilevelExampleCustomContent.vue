@@ -1,36 +1,36 @@
 <script setup lang="ts">
   import {
-    PFlyoutNavigation,
-    PFlyoutNavigationItem,
+    PFlyoutMultilevel,
+    PFlyoutMultilevelItem,
     PLinkTile,
     PLinkPure,
     PButton,
-    type FlyoutNavigationUpdateEventDetail,
+    type FlyoutMultilevelUpdateEventDetail,
   } from '@porsche-design-system/components-vue';
   import { ref } from 'vue';
 
-  const isFlyoutNavigationOpen = ref(false);
-  const flyoutNavigationActiveIdentifier = ref('item-1');
+  const isFlyoutMultilevelOpen = ref(false);
+  const flyoutMultilevelActiveIdentifier = ref('item-1');
   const onOpen = (): void => {
-    isFlyoutNavigationOpen.value = true;
+    isFlyoutMultilevelOpen.value = true;
   };
   const onDismiss = (): void => {
-    isFlyoutNavigationOpen.value = false;
+    isFlyoutMultilevelOpen.value = false;
   };
-  const onUpdate = (e: FlyoutNavigationUpdateEventDetail): void => {
-    flyoutNavigationActiveIdentifier.value = e.activeIdentifier;
+  const onUpdate = (e: FlyoutMultilevelUpdateEventDetail): void => {
+    flyoutMultilevelActiveIdentifier.value = e.activeIdentifier;
   };
 </script>
 
 <template>
-  <PButton type="button" :aria="{ 'aria-haspopup': 'dialog' }" @click="onOpen">Open Flyout Navigation</PButton>
-  <PFlyoutNavigation
-    :open="isFlyoutNavigationOpen"
-    :active-identifier="flyoutNavigationActiveIdentifier"
+  <PButton type="button" :aria="{ 'aria-haspopup': 'dialog' }" @click="onOpen">Open Flyout Multilevel</PButton>
+  <PFlyoutMultilevel
+    :open="isFlyoutMultilevelOpen"
+    :active-identifier="flyoutMultilevelActiveIdentifier"
     @dismiss="onDismiss"
     @update="onUpdate"
   >
-    <PFlyoutNavigationItem identifier="item-1" label="Some Label">
+    <PFlyoutMultilevelItem identifier="item-1" label="Some Label">
       <PLinkTile
         href="#"
         label="Some label"
@@ -57,8 +57,8 @@
       <a href="#some-anchor">Some anchor</a>
       <a href="#some-anchor">Some anchor</a>
       <a href="#some-anchor">Some anchor</a>
-    </PFlyoutNavigationItem>
-    <PFlyoutNavigationItem identifier="item-2" label="Some Label">
+    </PFlyoutMultilevelItem>
+    <PFlyoutMultilevelItem identifier="item-2" label="Some Label">
       <h3>Some heading</h3>
       <a href="#some-anchor">Some anchor</a>
       <a href="#some-anchor">Some anchor</a>
@@ -67,28 +67,28 @@
       <h3>Some heading</h3>
       <a href="#some-anchor">Some anchor</a>
       <a href="#some-anchor">Some anchor</a>
-    </PFlyoutNavigationItem>
-    <PFlyoutNavigationItem identifier="item-3" label="Some Label">
+    </PFlyoutMultilevelItem>
+    <PFlyoutMultilevelItem identifier="item-3" label="Some Label">
       <h3>Some heading</h3>
       <a href="#some-anchor">Some anchor</a>
       <a href="#some-anchor">Some anchor</a>
       <h3>Some heading</h3>
       <a href="#some-anchor">Some anchor</a>
       <a href="#some-anchor">Some anchor</a>
-    </PFlyoutNavigationItem>
-    <PFlyoutNavigationItem identifier="item-4" label="Some Label">
+    </PFlyoutMultilevelItem>
+    <PFlyoutMultilevelItem identifier="item-4" label="Some Label">
       <h3>Some heading</h3>
       <a href="#some-anchor">Some anchor</a>
       <a href="#some-anchor">Some anchor</a>
       <a href="#some-anchor">Some anchor</a>
-    </PFlyoutNavigationItem>
-    <PFlyoutNavigationItem identifier="item-5" label="Some Label">
+    </PFlyoutMultilevelItem>
+    <PFlyoutMultilevelItem identifier="item-5" label="Some Label">
       <h3>Some heading</h3>
       <a href="#some-anchor">Some anchor</a>
       <a href="#some-anchor">Some anchor</a>
-    </PFlyoutNavigationItem>
+    </PFlyoutMultilevelItem>
     <PLinkPure size="medium" href="#" icon="external">Some external anchor</PLinkPure>
-  </PFlyoutNavigation>
+  </PFlyoutMultilevel>
 </template>
 
 <style lang="scss" scoped>
