@@ -242,14 +242,4 @@
       max-height: 40rem;
     }
   }
-
-  .configure {
-    display: flex;
-    flex-direction: column;
-    gap: $pds-spacing-fluid-small;
-
-    div {
-      width: 100%;
-    }
-  }
 </style>
