@@ -27,4 +27,13 @@
 
 <style scoped lang="scss">
   @use '@porsche-design-system/components-js/styles' as *;
+
+  .configure-slots {
+    display: flex;
+    flex-direction: column;
+    gap: $pds-spacing-static-medium;
+    & > div p-checkbox-wrapper {
+      margin-bottom: $pds-spacing-static-small;
+    }
+  }
 </style>
