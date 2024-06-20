@@ -5,10 +5,10 @@ import { expect } from '@playwright/test';
 import { getByRoleShadowed } from '@porsche-design-system/components-js/testing';
 
 it('should have initialized shadow dom', async () => {
-  document.body.innerHTML = getMarkup('p-flyout-navigation');
+  document.body.innerHTML = getMarkup('p-flyout-multilevel');
   expect(await componentsReady()).toBe(4);
 
-  const els = Array.from(document.body.querySelectorAll('p-flyout-navigation,p-flyout-navigation-item'));
+  const els = Array.from(document.body.querySelectorAll('p-flyout-multilevel,p-flyout-multilevel-item'));
   expect(els.length).toBe(4);
   els.forEach((el) => {
     expect(el.shadowRoot).not.toBeNull();
@@ -18,7 +18,7 @@ it('should have initialized shadow dom', async () => {
 
 it('should have working events', async () => {
   document.body.innerHTML =
-    getMarkup('p-flyout-navigation') +
+    getMarkup('p-flyout-multilevel') +
     `<div id="debug"><span id="active-identifier">Active Identifier: <span>undefined</span>;</span><span id="update-event">Update Event Counter: <span>0</span>;</span><span id="dismiss-event">Dismiss Event Counter: <span>0</span>;</span></div>`;
   await componentsReady();
 

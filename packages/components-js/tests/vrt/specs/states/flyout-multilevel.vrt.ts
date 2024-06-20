@@ -10,7 +10,7 @@ import {
 } from '../../helpers';
 import { type Theme } from '@porsche-design-system/utilities-v2';
 
-const component = 'flyout-navigation';
+const component = 'flyout-multilevel';
 
 const scenario = async (
   page: Page,
@@ -20,13 +20,13 @@ const scenario = async (
 ): Promise<void> => {
   const markup = `
 <div class="playground light ${pseudoState}" title="should render :${pseudoState}" style="height: 10rem;">
-  <p-flyout-navigation open="true" active-identifier="item-2">
-    <p-flyout-navigation-item identifier="item-1" label="Some Label"></p-flyout-navigation-item>
-    <p-flyout-navigation-item identifier="item-2" label="Some Label">
+  <p-flyout-multilevel open="true" active-identifier="item-2">
+    <p-flyout-multilevel-item identifier="item-1" label="Some Label"></p-flyout-multilevel-item>
+    <p-flyout-multilevel-item identifier="item-2" label="Some Label">
       <a href="#some-anchor">Some anchor</a>
       <a href="#some-anchor">Some anchor</a>
-    </p-flyout-navigation-item>
-  </p-flyout-navigation>
+    </p-flyout-multilevel-item>
+  </p-flyout-multilevel>
 </div>`;
 
   await setContentWithDesignSystem(page, markup, {
@@ -35,17 +35,17 @@ const scenario = async (
   });
 
   if (pseudoState === 'hover') {
-    await forceHoverState(page, 'p-flyout-navigation >>> p-button-pure >>> button');
-    await forceHoverState(page, 'p-flyout-navigation-item >>> p-button-pure >>> button');
-    await forceHoverState(page, 'p-flyout-navigation-item a');
+    await forceHoverState(page, 'p-flyout-multilevel >>> p-button-pure >>> button');
+    await forceHoverState(page, 'p-flyout-multilevel-item >>> p-button-pure >>> button');
+    await forceHoverState(page, 'p-flyout-multilevel-item a');
   } else if (pseudoState === 'focus') {
-    await forceFocusVisibleState(page, 'p-flyout-navigation >>> p-button-pure >>> button');
-    await forceFocusVisibleState(page, 'p-flyout-navigation-item >>> p-button-pure >>> button');
-    await forceFocusVisibleState(page, 'p-flyout-navigation-item a');
+    await forceFocusVisibleState(page, 'p-flyout-multilevel >>> p-button-pure >>> button');
+    await forceFocusVisibleState(page, 'p-flyout-multilevel-item >>> p-button-pure >>> button');
+    await forceFocusVisibleState(page, 'p-flyout-multilevel-item a');
   } else if (pseudoState === 'focus-hover') {
-    await forceFocusHoverState(page, 'p-flyout-navigation >>> p-button-pure >>> button');
-    await forceFocusHoverState(page, 'p-flyout-navigation-item >>> p-button-pure >>> button');
-    await forceFocusHoverState(page, 'p-flyout-navigation-item a');
+    await forceFocusHoverState(page, 'p-flyout-multilevel >>> p-button-pure >>> button');
+    await forceFocusHoverState(page, 'p-flyout-multilevel-item >>> p-button-pure >>> button');
+    await forceFocusHoverState(page, 'p-flyout-multilevel-item a');
   }
 };
 
