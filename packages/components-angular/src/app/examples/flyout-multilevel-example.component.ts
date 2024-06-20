@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { type FlyoutMultilevelUpdateEventDetail } from '@porsche-design-system/components-angular';
 
 @Component({
-  selector: 'page-flyout-navigation-example',
+  selector: 'page-flyout-multilevel-example',
   template: `
     <p-button type="button" [aria]="{ 'aria-haspopup': 'dialog' }" (click)="onOpen()">Open Flyout Multilevel</p-button>
     <p-flyout-multilevel
