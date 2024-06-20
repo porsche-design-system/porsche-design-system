@@ -3,8 +3,8 @@
 exports[`getComponentCss() should return correct css for isPrimaryScrollerVisible: false, isSecondaryScrollerVisible: false and theme: auto 1`] = `
 ":host {
   display: block;
-  --p-internal-flyout-navigation-visibility: hidden !important;
-  --p-internal-flyout-navigation-visibility-transition-duration: 0.6s !important;
+  --p-internal-flyout-multilevel-visibility: hidden !important;
+  --p-internal-flyout-multilevel-visibility-transition-duration: 0.6s !important;
   position: fixed !important;
   inset: 0 !important;
   z-index: 99998 !important;
@@ -61,7 +61,7 @@ dialog::backdrop {
 .scroller {
   grid-area: 1/1;
   overflow: auto;
-  visibility: var(--p-internal-flyout-navigation-visibility,inherit);
+  visibility: var(--p-internal-flyout-multilevel-visibility,inherit);
   transition: left var(--p-transition-duration, 0.6s) cubic-bezier(0.4,0,0.5,1), visibility 0s linear var(--p-transition-duration, 0.6s);
   background-color: #FFF;
 }
@@ -133,8 +133,8 @@ dialog::backdrop {
 exports[`getComponentCss() should return correct css for isPrimaryScrollerVisible: false, isSecondaryScrollerVisible: false and theme: dark 1`] = `
 ":host {
   display: block;
-  --p-internal-flyout-navigation-visibility: hidden !important;
-  --p-internal-flyout-navigation-visibility-transition-duration: 0.6s !important;
+  --p-internal-flyout-multilevel-visibility: hidden !important;
+  --p-internal-flyout-multilevel-visibility-transition-duration: 0.6s !important;
   position: fixed !important;
   inset: 0 !important;
   z-index: 99998 !important;
@@ -185,7 +185,7 @@ dialog::backdrop {
 .scroller {
   grid-area: 1/1;
   overflow: auto;
-  visibility: var(--p-internal-flyout-navigation-visibility,inherit);
+  visibility: var(--p-internal-flyout-multilevel-visibility,inherit);
   transition: left var(--p-transition-duration, 0.6s) cubic-bezier(0.4,0,0.5,1), visibility 0s linear var(--p-transition-duration, 0.6s);
   background-color: #0E0E12;
 }
@@ -248,8 +248,8 @@ dialog::backdrop {
 exports[`getComponentCss() should return correct css for isPrimaryScrollerVisible: false, isSecondaryScrollerVisible: false and theme: light 1`] = `
 ":host {
   display: block;
-  --p-internal-flyout-navigation-visibility: hidden !important;
-  --p-internal-flyout-navigation-visibility-transition-duration: 0.6s !important;
+  --p-internal-flyout-multilevel-visibility: hidden !important;
+  --p-internal-flyout-multilevel-visibility-transition-duration: 0.6s !important;
   position: fixed !important;
   inset: 0 !important;
   z-index: 99998 !important;
@@ -300,7 +300,7 @@ dialog::backdrop {
 .scroller {
   grid-area: 1/1;
   overflow: auto;
-  visibility: var(--p-internal-flyout-navigation-visibility,inherit);
+  visibility: var(--p-internal-flyout-multilevel-visibility,inherit);
   transition: left var(--p-transition-duration, 0.6s) cubic-bezier(0.4,0,0.5,1), visibility 0s linear var(--p-transition-duration, 0.6s);
   background-color: #FFF;
 }
@@ -416,7 +416,7 @@ dialog::backdrop {
 .scroller {
   grid-area: 1/1;
   overflow: auto;
-  visibility: var(--p-internal-flyout-navigation-visibility,inherit);
+  visibility: var(--p-internal-flyout-multilevel-visibility,inherit);
   transition: left var(--p-transition-duration, 0.6s) cubic-bezier(0.4,0,0.5,1), visibility 0s linear var(--p-transition-duration, 0s);
   background-color: #FFF;
 }
@@ -535,7 +535,7 @@ dialog::backdrop {
 .scroller {
   grid-area: 1/1;
   overflow: auto;
-  visibility: var(--p-internal-flyout-navigation-visibility,inherit);
+  visibility: var(--p-internal-flyout-multilevel-visibility,inherit);
   transition: left var(--p-transition-duration, 0.6s) cubic-bezier(0.4,0,0.5,1), visibility 0s linear var(--p-transition-duration, 0s);
   background-color: #0E0E12;
 }
@@ -645,7 +645,7 @@ dialog::backdrop {
 .scroller {
   grid-area: 1/1;
   overflow: auto;
-  visibility: var(--p-internal-flyout-navigation-visibility,inherit);
+  visibility: var(--p-internal-flyout-multilevel-visibility,inherit);
   transition: left var(--p-transition-duration, 0.6s) cubic-bezier(0.4,0,0.5,1), visibility 0s linear var(--p-transition-duration, 0s);
   background-color: #FFF;
 }
@@ -761,7 +761,7 @@ dialog::backdrop {
 .scroller {
   grid-area: 1/1;
   overflow: auto;
-  visibility: var(--p-internal-flyout-navigation-visibility,hidden);
+  visibility: var(--p-internal-flyout-multilevel-visibility,hidden);
   transition: left var(--p-transition-duration, 0.6s) cubic-bezier(0,0,0.2,1), visibility 0s linear var(--p-transition-duration, 0.6s);
   background-color: #FFF;
 }
@@ -880,7 +880,7 @@ dialog::backdrop {
 .scroller {
   grid-area: 1/1;
   overflow: auto;
-  visibility: var(--p-internal-flyout-navigation-visibility,hidden);
+  visibility: var(--p-internal-flyout-multilevel-visibility,hidden);
   transition: left var(--p-transition-duration, 0.6s) cubic-bezier(0,0,0.2,1), visibility 0s linear var(--p-transition-duration, 0.6s);
   background-color: #0E0E12;
 }
@@ -990,7 +990,7 @@ dialog::backdrop {
 .scroller {
   grid-area: 1/1;
   overflow: auto;
-  visibility: var(--p-internal-flyout-navigation-visibility,hidden);
+  visibility: var(--p-internal-flyout-multilevel-visibility,hidden);
   transition: left var(--p-transition-duration, 0.6s) cubic-bezier(0,0,0.2,1), visibility 0s linear var(--p-transition-duration, 0.6s);
   background-color: #FFF;
 }

@@ -91,8 +91,8 @@ exports[`getComponentCss() should return correct css for isSecondaryScrollerVisi
   inset: 0;
   z-index: 1;
   transform: translate3d(100%, 0, 0);
-  visibility: var(--p-internal-flyout-navigation-visibility,hidden);
-  transition: transform var(--p-transition-duration, 0.6s) cubic-bezier(0.4,0,0.5,1), visibility 0s linear var(--p-transition-duration,var(--p-internal-flyout-navigation-visibility-transition-duration,0.6s));
+  visibility: var(--p-internal-flyout-multilevel-visibility,hidden);
+  transition: transform var(--p-transition-duration, 0.6s) cubic-bezier(0.4,0,0.5,1), visibility 0s linear var(--p-transition-duration,var(--p-internal-flyout-multilevel-visibility-transition-duration,0.6s));
   width: 100vw;
   box-sizing: border-box;
   overflow: auto;
@@ -147,7 +147,7 @@ exports[`getComponentCss() should return correct css for isSecondaryScrollerVisi
     inset-inline-start: calc(clamp(338px, 10.52vw + 258px, 460px) - 1px);
     width: clamp(338px, 10.52vw + 258px, 460px);
     transform: initial !important;
-    transition: visibility 0s linear var(--p-transition-duration,var(--p-internal-flyout-navigation-visibility-transition-duration,0s));
+    transition: visibility 0s linear var(--p-transition-duration,var(--p-internal-flyout-multilevel-visibility-transition-duration,0s));
   }
   .header {
     display: none;
@@ -238,8 +238,8 @@ exports[`getComponentCss() should return correct css for isSecondaryScrollerVisi
   inset: 0;
   z-index: 1;
   transform: translate3d(100%, 0, 0);
-  visibility: var(--p-internal-flyout-navigation-visibility,hidden);
-  transition: transform var(--p-transition-duration, 0.6s) cubic-bezier(0.4,0,0.5,1), visibility 0s linear var(--p-transition-duration,var(--p-internal-flyout-navigation-visibility-transition-duration,0.6s));
+  visibility: var(--p-internal-flyout-multilevel-visibility,hidden);
+  transition: transform var(--p-transition-duration, 0.6s) cubic-bezier(0.4,0,0.5,1), visibility 0s linear var(--p-transition-duration,var(--p-internal-flyout-multilevel-visibility-transition-duration,0.6s));
   width: 100vw;
   box-sizing: border-box;
   overflow: auto;
@@ -294,7 +294,7 @@ exports[`getComponentCss() should return correct css for isSecondaryScrollerVisi
     inset-inline-start: calc(clamp(338px, 10.52vw + 258px, 460px) - 1px);
     width: clamp(338px, 10.52vw + 258px, 460px);
     transform: initial !important;
-    transition: visibility 0s linear var(--p-transition-duration,var(--p-internal-flyout-navigation-visibility-transition-duration,0s));
+    transition: visibility 0s linear var(--p-transition-duration,var(--p-internal-flyout-multilevel-visibility-transition-duration,0s));
   }
   .header {
     display: none;
@@ -373,8 +373,8 @@ exports[`getComponentCss() should return correct css for isSecondaryScrollerVisi
   inset: 0;
   z-index: 1;
   transform: translate3d(100%, 0, 0);
-  visibility: var(--p-internal-flyout-navigation-visibility,hidden);
-  transition: transform var(--p-transition-duration, 0.6s) cubic-bezier(0.4,0,0.5,1), visibility 0s linear var(--p-transition-duration,var(--p-internal-flyout-navigation-visibility-transition-duration,0.6s));
+  visibility: var(--p-internal-flyout-multilevel-visibility,hidden);
+  transition: transform var(--p-transition-duration, 0.6s) cubic-bezier(0.4,0,0.5,1), visibility 0s linear var(--p-transition-duration,var(--p-internal-flyout-multilevel-visibility-transition-duration,0.6s));
   width: 100vw;
   box-sizing: border-box;
   overflow: auto;
@@ -429,7 +429,7 @@ exports[`getComponentCss() should return correct css for isSecondaryScrollerVisi
     inset-inline-start: calc(clamp(338px, 10.52vw + 258px, 460px) - 1px);
     width: clamp(338px, 10.52vw + 258px, 460px);
     transform: initial !important;
-    transition: visibility 0s linear var(--p-transition-duration,var(--p-internal-flyout-navigation-visibility-transition-duration,0s));
+    transition: visibility 0s linear var(--p-transition-duration,var(--p-internal-flyout-multilevel-visibility-transition-duration,0s));
   }
   .header {
     display: none;
@@ -532,8 +532,8 @@ exports[`getComponentCss() should return correct css for isSecondaryScrollerVisi
   inset: 0;
   z-index: 2;
   transform: translate3d(0, 0, 0);
-  visibility: var(--p-internal-flyout-navigation-visibility,visible);
-  transition: transform var(--p-transition-duration, 0.6s) cubic-bezier(0,0,0.2,1), visibility 0s linear var(--p-transition-duration,var(--p-internal-flyout-navigation-visibility-transition-duration,0s));
+  visibility: var(--p-internal-flyout-multilevel-visibility,visible);
+  transition: transform var(--p-transition-duration, 0.6s) cubic-bezier(0,0,0.2,1), visibility 0s linear var(--p-transition-duration,var(--p-internal-flyout-multilevel-visibility-transition-duration,0s));
   width: 100vw;
   box-sizing: border-box;
   overflow: auto;
@@ -585,7 +585,7 @@ exports[`getComponentCss() should return correct css for isSecondaryScrollerVisi
     inset-inline-start: calc(clamp(338px, 10.52vw + 258px, 460px) - 1px);
     width: clamp(338px, 10.52vw + 258px, 460px);
     transform: initial !important;
-    transition: visibility 0s linear var(--p-transition-duration,var(--p-internal-flyout-navigation-visibility-transition-duration,0s));
+    transition: visibility 0s linear var(--p-transition-duration,var(--p-internal-flyout-multilevel-visibility-transition-duration,0s));
   }
   .header {
     display: none;
@@ -677,8 +677,8 @@ exports[`getComponentCss() should return correct css for isSecondaryScrollerVisi
   inset: 0;
   z-index: 2;
   transform: translate3d(0, 0, 0);
-  visibility: var(--p-internal-flyout-navigation-visibility,visible);
-  transition: transform var(--p-transition-duration, 0.6s) cubic-bezier(0,0,0.2,1), visibility 0s linear var(--p-transition-duration,var(--p-internal-flyout-navigation-visibility-transition-duration,0s));
+  visibility: var(--p-internal-flyout-multilevel-visibility,visible);
+  transition: transform var(--p-transition-duration, 0.6s) cubic-bezier(0,0,0.2,1), visibility 0s linear var(--p-transition-duration,var(--p-internal-flyout-multilevel-visibility-transition-duration,0s));
   width: 100vw;
   box-sizing: border-box;
   overflow: auto;
@@ -730,7 +730,7 @@ exports[`getComponentCss() should return correct css for isSecondaryScrollerVisi
     inset-inline-start: calc(clamp(338px, 10.52vw + 258px, 460px) - 1px);
     width: clamp(338px, 10.52vw + 258px, 460px);
     transform: initial !important;
-    transition: visibility 0s linear var(--p-transition-duration,var(--p-internal-flyout-navigation-visibility-transition-duration,0s));
+    transition: visibility 0s linear var(--p-transition-duration,var(--p-internal-flyout-multilevel-visibility-transition-duration,0s));
   }
   .header {
     display: none;
@@ -810,8 +810,8 @@ exports[`getComponentCss() should return correct css for isSecondaryScrollerVisi
   inset: 0;
   z-index: 2;
   transform: translate3d(0, 0, 0);
-  visibility: var(--p-internal-flyout-navigation-visibility,visible);
-  transition: transform var(--p-transition-duration, 0.6s) cubic-bezier(0,0,0.2,1), visibility 0s linear var(--p-transition-duration,var(--p-internal-flyout-navigation-visibility-transition-duration,0s));
+  visibility: var(--p-internal-flyout-multilevel-visibility,visible);
+  transition: transform var(--p-transition-duration, 0.6s) cubic-bezier(0,0,0.2,1), visibility 0s linear var(--p-transition-duration,var(--p-internal-flyout-multilevel-visibility-transition-duration,0s));
   width: 100vw;
   box-sizing: border-box;
   overflow: auto;
@@ -863,7 +863,7 @@ exports[`getComponentCss() should return correct css for isSecondaryScrollerVisi
     inset-inline-start: calc(clamp(338px, 10.52vw + 258px, 460px) - 1px);
     width: clamp(338px, 10.52vw + 258px, 460px);
     transform: initial !important;
-    transition: visibility 0s linear var(--p-transition-duration,var(--p-internal-flyout-navigation-visibility-transition-duration,0s));
+    transition: visibility 0s linear var(--p-transition-duration,var(--p-internal-flyout-multilevel-visibility-transition-duration,0s));
   }
   .header {
     display: none;
