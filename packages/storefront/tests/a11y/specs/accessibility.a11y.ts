@@ -42,10 +42,9 @@ const gotoUrl = async (page: Page, url: string): Promise<void> => {
 };
 
 const enableDarkMode = async (page: Page): Promise<void> => {
-  if (await page.locator('.cycle-platform-theme').count()) {
-    const themeBtn = page.locator('.cycle-platform-theme');
+  const themeBtn = page.locator('.cycle-platform-theme');
+  if (await themeBtn.count()) {
     await themeBtn.click();
-
     await page.waitForFunction(() => document.body.className === 'dark-mode');
   } else {
     return;
@@ -72,8 +71,10 @@ test.describe('storefront pages', () => {
 
         if (scheme === 'dark') {
           await enableDarkMode(page);
+          const hasThemeSwitch = await page.locator('p-select[value="light"]').first().count();
+
           // change the theme of component to dark if the option exists
-          if (await page.locator('p-select[value="light"]').first().count()) {
+          if (hasThemeSwitch) {
             const themeSwitch = page.locator('p-select[value="light"]').first();
             await themeSwitch.click();
             const option = themeSwitch.getByText('Dark');
