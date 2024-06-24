@@ -41,6 +41,13 @@
         :convert-markup="false"
         :theme="theme"
       ></CodeBlock>
+      <CodeEditor
+        :markup="activeFrameworkMarkup"
+        :theme="theme"
+        :dir="dir"
+        :framework="activeFramework"
+        :backgroundColor="backgroundColor"
+      ></CodeEditor>
     </div>
   </div>
 </template>
@@ -227,7 +234,8 @@
       border-top: 1px solid var(--playground-border-color);
     }
 
-    .code-block {
+    .code-block,
+    p-button {
       padding: 0 $pds-spacing-static-large $pds-spacing-static-large;
     }
   }
