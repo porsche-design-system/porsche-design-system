@@ -38,9 +38,33 @@ const componentDefaultProps = {
     label: 'Some label',
     description: 'Some description',
   },
+  'p-link-tile-model-signature': {
+    heading: 'Some heading',
+    description: 'Some description',
+  },
   'p-link-tile': {
     href: 'https://porsche.com',
     label: 'Some label',
     description: 'Some Description',
   },
+};
+
+// TODO: Could be used to extract default attributes instead of defining them manually again
+export const extractAttributes = (tagName: TagName, markup: string) => {
+  // Regular expression to match the specified tag and its attributes
+  const tagRegex = new RegExp(`<${tagName}\\s+([^>]+)>`, 'i');
+  // Regular expression to match attribute key-value pairs within the tag
+  const attributeRegex = /(\w+)="([^"]+)"/g;
+  const attributes = [];
+
+  const match = tagRegex.exec(markup);
+  if (match && match[1]) {
+    const attributesString = match[1];
+    let attrMatch;
+    while ((attrMatch = attributeRegex.exec(attributesString)) !== null) {
+      attributes.push([attrMatch[1], attrMatch[2]]);
+    }
+  }
+
+  return attributes;
 };
