@@ -4,6 +4,7 @@ import { convertToVue } from '@/utils/convertToVue';
 import type { ComponentSlots } from '@/utils/componentSlots';
 import type { ComponentProps } from '@/utils/componentProps';
 import { pascalCase } from 'change-case';
+import { adjustReactMarkup } from '@/utils/configurator/adjustReactMarkup';
 
 // TODO: Use shared type
 type Framework = 'angular' | 'react' | 'vue' | 'vanilla-js';
@@ -15,7 +16,7 @@ export const getComponentExampleMarkup = (
   component: TagName,
   props: ComponentProps,
   slots: ComponentSlots,
-  codeSamples?: FrameworkMarkup
+  codeSamples: FrameworkMarkup
 ): FrameworkMarkup => {
   const markup = getComponentMarkup(component, props, slots);
 
@@ -23,20 +24,9 @@ export const getComponentExampleMarkup = (
   const componentRegex = new RegExp(`(^\\s*)<${component}[\\S\\s]*</${component}>`, 'm');
   const componentRegexPascalCase = new RegExp(`(^\\s*)<${pascalCaseComponent}[\\S\\s]*</${pascalCaseComponent}>`, 'm');
 
-  const replaceWithIndentation = (code: string, regex: RegExp, replacement: string) => {
-    return code.replace(regex, (match, p1) => {
-      const lines = replacement.trim().split('\n');
-      return [
-        ...lines.map((line) => (p1 !== '\n' ? p1 + line : line)), // Apply indentation for subsequent lines
-      ].join('\n');
-    });
-  };
-
   const componentExampleMarkup: FrameworkMarkup = {
     'vanilla-js': codeSamples ? replaceWithIndentation(codeSamples['vanilla-js'], componentRegex, markup) : markup,
-    react: codeSamples
-      ? replaceWithIndentation(codeSamples['react'], componentRegexPascalCase, convertToReact(markup))
-      : convertToReact(markup),
+    react: adjustReactMarkup(pascalCaseComponent, codeSamples['react'], props, slots),
     angular: codeSamples
       ? replaceWithIndentation(codeSamples['angular'], componentRegex, convertToAngular(markup))
       : convertToAngular(markup),
@@ -53,6 +43,15 @@ export const getComponentExampleMarkup = (
   }
 
   return componentExampleMarkup;
+};
+
+export const replaceWithIndentation = (code: string, regex: RegExp, replacement: string) => {
+  return code.replace(regex, (match, p1) => {
+    const lines = replacement.trim().split('\n');
+    return [
+      ...lines.map((line) => (p1 !== '\n' ? p1 + line : line)), // Apply indentation for subsequent lines
+    ].join('\n');
+  });
 };
 
 export const getComponentMarkup = <T extends TagName>(component: T, props: ComponentProps, slots: ComponentSlots) => {
