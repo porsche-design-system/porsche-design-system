@@ -358,7 +358,7 @@ skip = `<p-carousel heading="${this.basicHeading}" skip-link-target="components/
    :deep(.example--light p-carousel div[slot="controls"]) {
      color: $pds-theme-light-primary;
    }
-  :deep(.example--dark p-carousel div:is([slot="controls"])) {
+  :deep(.example--dark p-carousel div[slot="controls"]) {
      color: $pds-theme-dark-primary;
    }
 
