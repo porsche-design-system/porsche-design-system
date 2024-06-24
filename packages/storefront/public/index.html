@@ -14,11 +14,11 @@
     <meta name="viewport" content="width=device-width,initial-scale=1.0" />
     <% if (process.env.NODE_ENV === 'production') { %>
     <!-- CSP_PLACEHOLDER -->
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self' https://cdn.ui.porsche.com; style-src 'self' 'unsafe-inline' https://cdn.ui.porsche.com; script-src 'self' https://cdn.ui.porsche.com 'sha256-o1YBp+4/4cuy7UuZvBl/N//QDN6oad3ehkQCr9v7FFE=' 'sha256-/f45uykjCRaxV+Iz/3G2fq+nuheiRU7ezD1aqqF+uno='; img-src 'self' https://cdn.ui.porsche.com https://porsche-design-system.github.io data:; connect-src 'self' https://*.algolia.net https://*.algolianet.com https://registry.npmjs.org/@porsche-design-system/components-js" />
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' https://cdn.ui.porsche.com; style-src 'self' 'unsafe-inline' https://cdn.ui.porsche.com; script-src 'self' https://cdn.ui.porsche.com 'sha256-EtmIfM6J8L+P9rmrf3JfrDJCEA0udv6wpcuMVRr6gQE=' 'sha256-/f45uykjCRaxV+Iz/3G2fq+nuheiRU7ezD1aqqF+uno='; img-src 'self' https://cdn.ui.porsche.com https://porsche-design-system.github.io data:; media-src 'self' https://porsche-design-system.github.io; connect-src 'self' https://*.algolia.net https://*.algolianet.com https://registry.npmjs.org/@porsche-design-system/components-js" />
 
     <!-- prettier-ignore -->
     <%= require('@porsche-design-system/components-js/partials').getFontLinks({ weights: ['regular', 'semi-bold', 'bold'] }) %>
-    <%= require('@porsche-design-system/components-js/partials').getFontFaceStylesheet() %>
+    <%= require('@porsche-design-system/components-js/partials').getFontFaceStyles() %>
     <%= require('@porsche-design-system/components-js/partials').getComponentChunkLinks({ components: ['accordion', 'divider', 'button-pure', 'link', 'link-pure', 'wordmark', 'icon', 'text', 'headline', 'grid', 'flex' ] }) %>
     <%= require('@porsche-design-system/components-js/partials').getMetaTagsAndIconLinks({ appTitle: 'Porsche Design System' }) %>
     <%= require('@porsche-design-system/components-js/partials').getIconLinks({ icons: ['plus', 'arrow-right', 'minus' ] }) %>
