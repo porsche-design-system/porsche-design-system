@@ -39,6 +39,12 @@ const propTypes: PropTypes<typeof Flyout> = {
   aria: AllowedTypes.aria<FlyoutAriaAttribute>(FLYOUT_ARIA_ATTRIBUTES),
 };
 
+/**
+ * @slot header - Renders a sticky header section above the content area.
+ * @slot - Default slot for the main content.
+ * @slot footer - Shows a sticky footer section, flowing under the content area when scrollable.
+ * @slot sub-footer - Shows a sub-footer section to display additional information below the footer. This slot is ideal for less critical content, such as legal information or FAQs, which provides further details to the user. It appears when scrolling to the end of the flyout or when there is available space to accommodate the content.
+ */
 @Component({
   tag: 'p-flyout',
   shadow: true,
