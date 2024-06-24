@@ -145,7 +145,7 @@ export const getHiddenTextJssStyle = (isHidden = true, isShownJssStyle?: JssStyl
       };
 };
 
-// TODO: migrate flyout-navigation to use shared backdrop of dialog-styles.ts
+// TODO: migrate flyout-multilevel to use shared backdrop of dialog-styles.ts
 /**
  * Generates JSS styles for a frosted glass background.
  * @param {boolean} isVisible - Determines if the frosted glass effect is visible.

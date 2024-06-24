@@ -24,7 +24,7 @@ import { FieldsetWrapperLabelSize, FieldsetWrapperState } from "./components/fie
 import { FlexAlignContent, FlexAlignItems, FlexDirection, FlexInline, FlexJustifyContent, FlexWrap } from "./components/flex/flex/flex-utils";
 import { FlexItemAlignSelf, FlexItemFlex, FlexItemGrow, FlexItemOffset, FlexItemShrink, FlexItemWidth } from "./components/flex/flex-item/flex-item-utils";
 import { FlyoutAriaAttribute, FlyoutPosition } from "./components/flyout/flyout-utils";
-import { FlyoutNavigationAriaAttribute, FlyoutNavigationUpdateEventDetail } from "./components/flyout-navigation/flyout-navigation/flyout-navigation-utils";
+import { FlyoutMultilevelAriaAttribute, FlyoutMultilevelUpdateEventDetail } from "./components/flyout-multilevel/flyout-multilevel/flyout-multilevel-utils";
 import { GridDirection, GridGutter, GridWrap } from "./components/grid/grid/grid-utils";
 import { GridItemOffset, GridItemSize } from "./components/grid/grid-item/grid-item-utils";
 import { HeadingAlign, HeadingColor } from "./components/heading/heading-utils";
@@ -86,7 +86,7 @@ export { FieldsetWrapperLabelSize, FieldsetWrapperState } from "./components/fie
 export { FlexAlignContent, FlexAlignItems, FlexDirection, FlexInline, FlexJustifyContent, FlexWrap } from "./components/flex/flex/flex-utils";
 export { FlexItemAlignSelf, FlexItemFlex, FlexItemGrow, FlexItemOffset, FlexItemShrink, FlexItemWidth } from "./components/flex/flex-item/flex-item-utils";
 export { FlyoutAriaAttribute, FlyoutPosition } from "./components/flyout/flyout-utils";
-export { FlyoutNavigationAriaAttribute, FlyoutNavigationUpdateEventDetail } from "./components/flyout-navigation/flyout-navigation/flyout-navigation-utils";
+export { FlyoutMultilevelAriaAttribute, FlyoutMultilevelUpdateEventDetail } from "./components/flyout-multilevel/flyout-multilevel/flyout-multilevel-utils";
 export { GridDirection, GridGutter, GridWrap } from "./components/grid/grid/grid-utils";
 export { GridItemOffset, GridItemSize } from "./components/grid/grid-item/grid-item-utils";
 export { HeadingAlign, HeadingColor } from "./components/heading/heading-utils";
@@ -709,30 +709,30 @@ export namespace Components {
     /**
      * @experimental 
      */
-    interface PFlyoutNavigation {
+    interface PFlyoutMultilevel {
         /**
-          * Defines which flyout-navigation-item to be visualized as opened.
+          * Defines which flyout-multilevel-item to be visualized as opened.
          */
         "activeIdentifier"?: string | undefined;
         /**
           * Add ARIA attributes.
          */
-        "aria"?: SelectedAriaAttributes<FlyoutNavigationAriaAttribute>;
+        "aria"?: SelectedAriaAttributes<FlyoutMultilevelAriaAttribute>;
         /**
-          * If true, the flyout-navigation is visualized as opened.
+          * If true, the flyout-multilevel is visualized as opened.
          */
         "open"?: boolean;
         /**
-          * Adapts the flyout-navigation color depending on the theme.
+          * Adapts the flyout-multilevel color depending on the theme.
          */
         "theme"?: Theme;
     }
     /**
      * @experimental 
      */
-    interface PFlyoutNavigationItem {
+    interface PFlyoutMultilevelItem {
         /**
-          * Unique identifier which controls if this item should be shown when the active-identifier on the flyout-navigation is set to this value.
+          * Unique identifier which controls if this item should be shown when the active-identifier on the flyout-multilevel is set to this value.
          */
         "identifier": string;
         /**
@@ -2061,9 +2061,9 @@ export interface PFlyoutCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLPFlyoutElement;
 }
-export interface PFlyoutNavigationCustomEvent<T> extends CustomEvent<T> {
+export interface PFlyoutMultilevelCustomEvent<T> extends CustomEvent<T> {
     detail: T;
-    target: HTMLPFlyoutNavigationElement;
+    target: HTMLPFlyoutMultilevelElement;
 }
 export interface PInlineNotificationCustomEvent<T> extends CustomEvent<T> {
     detail: T;
@@ -2307,35 +2307,35 @@ declare global {
         prototype: HTMLPFlyoutElement;
         new (): HTMLPFlyoutElement;
     };
-    interface HTMLPFlyoutNavigationElementEventMap {
+    interface HTMLPFlyoutMultilevelElementEventMap {
         "dismiss": void;
-        "update": FlyoutNavigationUpdateEventDetail;
+        "update": FlyoutMultilevelUpdateEventDetail;
     }
     /**
      * @experimental 
      */
-    interface HTMLPFlyoutNavigationElement extends Components.PFlyoutNavigation, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLPFlyoutNavigationElementEventMap>(type: K, listener: (this: HTMLPFlyoutNavigationElement, ev: PFlyoutNavigationCustomEvent<HTMLPFlyoutNavigationElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+    interface HTMLPFlyoutMultilevelElement extends Components.PFlyoutMultilevel, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLPFlyoutMultilevelElementEventMap>(type: K, listener: (this: HTMLPFlyoutMultilevelElement, ev: PFlyoutMultilevelCustomEvent<HTMLPFlyoutMultilevelElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLPFlyoutNavigationElementEventMap>(type: K, listener: (this: HTMLPFlyoutNavigationElement, ev: PFlyoutNavigationCustomEvent<HTMLPFlyoutNavigationElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLPFlyoutMultilevelElementEventMap>(type: K, listener: (this: HTMLPFlyoutMultilevelElement, ev: PFlyoutMultilevelCustomEvent<HTMLPFlyoutMultilevelElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
         removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
         removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
         removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
-    var HTMLPFlyoutNavigationElement: {
-        prototype: HTMLPFlyoutNavigationElement;
-        new (): HTMLPFlyoutNavigationElement;
+    var HTMLPFlyoutMultilevelElement: {
+        prototype: HTMLPFlyoutMultilevelElement;
+        new (): HTMLPFlyoutMultilevelElement;
     };
     /**
      * @experimental 
      */
-    interface HTMLPFlyoutNavigationItemElement extends Components.PFlyoutNavigationItem, HTMLStencilElement {
+    interface HTMLPFlyoutMultilevelItemElement extends Components.PFlyoutMultilevelItem, HTMLStencilElement {
     }
-    var HTMLPFlyoutNavigationItemElement: {
-        prototype: HTMLPFlyoutNavigationItemElement;
-        new (): HTMLPFlyoutNavigationItemElement;
+    var HTMLPFlyoutMultilevelItemElement: {
+        prototype: HTMLPFlyoutMultilevelItemElement;
+        new (): HTMLPFlyoutMultilevelItemElement;
     };
     /**
      * @deprecated since v3.0.0, will be removed with next major release. Use native CSS Grid instead.
@@ -2860,8 +2860,8 @@ declare global {
         "p-flex": HTMLPFlexElement;
         "p-flex-item": HTMLPFlexItemElement;
         "p-flyout": HTMLPFlyoutElement;
-        "p-flyout-navigation": HTMLPFlyoutNavigationElement;
-        "p-flyout-navigation-item": HTMLPFlyoutNavigationItemElement;
+        "p-flyout-multilevel": HTMLPFlyoutMultilevelElement;
+        "p-flyout-multilevel-item": HTMLPFlyoutMultilevelItemElement;
         "p-grid": HTMLPGridElement;
         "p-grid-item": HTMLPGridItemElement;
         "p-heading": HTMLPHeadingElement;
@@ -3528,38 +3528,38 @@ declare namespace LocalJSX {
     /**
      * @experimental 
      */
-    interface PFlyoutNavigation {
+    interface PFlyoutMultilevel {
         /**
-          * Defines which flyout-navigation-item to be visualized as opened.
+          * Defines which flyout-multilevel-item to be visualized as opened.
          */
         "activeIdentifier"?: string | undefined;
         /**
           * Add ARIA attributes.
          */
-        "aria"?: SelectedAriaAttributes<FlyoutNavigationAriaAttribute>;
+        "aria"?: SelectedAriaAttributes<FlyoutMultilevelAriaAttribute>;
         /**
           * Emitted when the component requests to be dismissed.
          */
-        "onDismiss"?: (event: PFlyoutNavigationCustomEvent<void>) => void;
+        "onDismiss"?: (event: PFlyoutMultilevelCustomEvent<void>) => void;
         /**
           * Emitted when activeIdentifier is changed.
          */
-        "onUpdate"?: (event: PFlyoutNavigationCustomEvent<FlyoutNavigationUpdateEventDetail>) => void;
+        "onUpdate"?: (event: PFlyoutMultilevelCustomEvent<FlyoutMultilevelUpdateEventDetail>) => void;
         /**
-          * If true, the flyout-navigation is visualized as opened.
+          * If true, the flyout-multilevel is visualized as opened.
          */
         "open"?: boolean;
         /**
-          * Adapts the flyout-navigation color depending on the theme.
+          * Adapts the flyout-multilevel color depending on the theme.
          */
         "theme"?: Theme;
     }
     /**
      * @experimental 
      */
-    interface PFlyoutNavigationItem {
+    interface PFlyoutMultilevelItem {
         /**
-          * Unique identifier which controls if this item should be shown when the active-identifier on the flyout-navigation is set to this value.
+          * Unique identifier which controls if this item should be shown when the active-identifier on the flyout-multilevel is set to this value.
          */
         "identifier"?: string;
         /**
@@ -4981,8 +4981,8 @@ declare namespace LocalJSX {
         "p-flex": PFlex;
         "p-flex-item": PFlexItem;
         "p-flyout": PFlyout;
-        "p-flyout-navigation": PFlyoutNavigation;
-        "p-flyout-navigation-item": PFlyoutNavigationItem;
+        "p-flyout-multilevel": PFlyoutMultilevel;
+        "p-flyout-multilevel-item": PFlyoutMultilevelItem;
         "p-grid": PGrid;
         "p-grid-item": PGridItem;
         "p-heading": PHeading;
@@ -5077,11 +5077,11 @@ declare module "@stencil/core" {
             /**
              * @experimental 
              */
-            "p-flyout-navigation": LocalJSX.PFlyoutNavigation & JSXBase.HTMLAttributes<HTMLPFlyoutNavigationElement>;
+            "p-flyout-multilevel": LocalJSX.PFlyoutMultilevel & JSXBase.HTMLAttributes<HTMLPFlyoutMultilevelElement>;
             /**
              * @experimental 
              */
-            "p-flyout-navigation-item": LocalJSX.PFlyoutNavigationItem & JSXBase.HTMLAttributes<HTMLPFlyoutNavigationItemElement>;
+            "p-flyout-multilevel-item": LocalJSX.PFlyoutMultilevelItem & JSXBase.HTMLAttributes<HTMLPFlyoutMultilevelItemElement>;
             /**
              * @deprecated since v3.0.0, will be removed with next major release. Use native CSS Grid instead.
              */
