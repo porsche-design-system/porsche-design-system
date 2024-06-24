@@ -71,11 +71,10 @@ test.describe('storefront pages', () => {
 
         if (scheme === 'dark') {
           await enableDarkMode(page);
-          const hasThemeSwitch = await page.locator('p-select[value="light"]').first().count();
+          const themeSwitch = page.locator('p-select[value="light"]').first();
 
           // change the theme of component to dark if the option exists
-          if (hasThemeSwitch) {
-            const themeSwitch = page.locator('p-select[value="light"]').first();
+          if (await themeSwitch.count()) {
             await themeSwitch.click();
             const option = themeSwitch.getByText('Dark');
             await option.click();
