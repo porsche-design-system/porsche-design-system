@@ -16,7 +16,7 @@ It is required to have two `p-link` components as named slots, `slot="primary"` 
 The `heading` property is required, too. It is used as a teaser with a more detailed description of where the link leads
 to.
 
-<Playground :markup="basic" :config="config"></Playground>
+<PlaygroundConfigurator :component="'p-link-tile-model-signature'"></PlaygroundConfigurator>
 
 ### <A11yIcon></A11yIcon> Accessibility hints
 

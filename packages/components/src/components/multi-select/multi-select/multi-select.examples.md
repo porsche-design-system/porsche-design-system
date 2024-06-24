@@ -19,7 +19,7 @@ using the value property on the `p-multi-select` component ([More Info](componen
 Options don't have a selected attribute or property. If an option should be visible but not selectable, it can be
 disabled by using the `disabled` attribute.
 
-<Playground :markup="basic()" :config="config"></Playground>
+<PlaygroundConfigurator :component="'p-multi-select'" :code-samples="formExample"></PlaygroundConfigurator>
 
 ## Form
 
