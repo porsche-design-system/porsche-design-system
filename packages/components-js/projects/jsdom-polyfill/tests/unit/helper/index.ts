@@ -3,7 +3,7 @@ import type { TagName } from '@porsche-design-system/shared';
 export const WHITELISTED_TAG_NAMES = [
   'p-canvas',
   'p-flex-item',
-  'p-flyout-navigation-item',
+  'p-flyout-multilevel-item',
   'p-grid-item',
   'p-multi-select-option',
   'p-select-option',
@@ -62,17 +62,17 @@ export const tagNameMarkup: Record<TagNameRelevant, string> = {
   'p-flyout': `
     <p-flyout></p-flyout>
   `,
-  'p-flyout-navigation': `<p-flyout-navigation>
-    <p-flyout-navigation-item identifier="identifier-1" label="Button 1">
+  'p-flyout-multilevel': `<p-flyout-multilevel>
+    <p-flyout-multilevel-item identifier="identifier-1" label="Button 1">
       <a href="#some-anchor-1">Some anchor</a>
-    </p-flyout-navigation-item>
-    <p-flyout-navigation-item identifier="identifier-2" label="Button 2">
+    </p-flyout-multilevel-item>
+    <p-flyout-multilevel-item identifier="identifier-2" label="Button 2">
       <a href="#some-anchor-2">Some anchor</a>
-    </p-flyout-navigation-item>
-    <p-flyout-navigation-item identifier="identifier-3" label="Button 3">
+    </p-flyout-multilevel-item>
+    <p-flyout-multilevel-item identifier="identifier-3" label="Button 3">
       <a href="#some-anchor-3">Some anchor</a>
-    </p-flyout-navigation-item>
-</p-flyout-navigation>`,
+    </p-flyout-multilevel-item>
+</p-flyout-multilevel>`,
   'p-grid': `<p-grid>
     <p-grid-item size="6"></p-grid-item>
     <p-grid-item size="6"></p-grid-item>

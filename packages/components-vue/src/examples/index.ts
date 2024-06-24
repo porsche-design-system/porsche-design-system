@@ -5,9 +5,9 @@ export { default as CarouselExampleDynamicSlides } from './CarouselExampleDynami
 export { default as CarouselExampleEvents } from './CarouselExampleEvents.vue';
 export { default as CarouselExampleJumpToSlide } from './CarouselExampleJumpToSlide.vue';
 export { default as FlyoutExample } from './FlyoutExample.vue';
-export { default as FlyoutNavigationExample } from './FlyoutNavigationExample.vue';
-export { default as FlyoutNavigationExampleActiveIdentifier } from './FlyoutNavigationExampleActiveIdentifier.vue';
-export { default as FlyoutNavigationExampleCustomContent } from './FlyoutNavigationExampleCustomContent.vue';
+export { default as FlyoutMultilevelExample } from './FlyoutMultilevelExample.vue';
+export { default as FlyoutMultilevelExampleActiveIdentifier } from './FlyoutMultilevelExampleActiveIdentifier.vue';
+export { default as FlyoutMultilevelExampleCustomContent } from './FlyoutMultilevelExampleCustomContent.vue';
 export { default as InlineNotificationExampleActionButton } from './InlineNotificationExampleActionButton.vue';
 export { default as InlineNotificationExampleEvents } from './InlineNotificationExampleEvents.vue';
 export { default as LinkTileProductExample } from './LinkTileProductExample.vue';
