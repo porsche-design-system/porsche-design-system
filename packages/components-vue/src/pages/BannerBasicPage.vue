@@ -24,5 +24,5 @@
     <span></span>
   </div>
 
-  <PBanner description="Description" heading="Heading" open="true"></PBanner>
+  <PBanner description="Description" heading="Heading" :open="true"></PBanner>
 </template>

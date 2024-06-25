@@ -3,5 +3,5 @@
 </script>
 
 <template>
-  <PModal heading="Heading" open="true">Some Content</PModal>
+  <PModal heading="Heading" :open="true">Some Content</PModal>
 </template>

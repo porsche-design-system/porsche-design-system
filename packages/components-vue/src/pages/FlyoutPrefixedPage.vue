@@ -4,6 +4,6 @@
 
 <template>
   <PorscheDesignSystemProvider prefix="my-prefix">
-    <PFlyout open="true">Some Content</PFlyout>
+    <PFlyout :open="true">Some Content</PFlyout>
   </PorscheDesignSystemProvider>
 </template>

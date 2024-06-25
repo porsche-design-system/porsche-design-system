@@ -3,5 +3,5 @@
 </script>
 
 <template>
-  <PFlyout open="true">Some Content</PFlyout>
+  <PFlyout :open="true">Some Content</PFlyout>
 </template>
