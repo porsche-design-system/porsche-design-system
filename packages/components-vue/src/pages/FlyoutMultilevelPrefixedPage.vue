@@ -8,7 +8,7 @@
 
 <template>
   <PorscheDesignSystemProvider prefix="my-prefix">
-    <PFlyoutMultilevel open="true">
+    <PFlyoutMultilevel :open="true">
       <PFlyoutMultilevelItem identifier="item-1" label="Some Label">
         <a href="#some-anchor">Some anchor</a>
         <a href="#some-anchor">Some anchor</a>
