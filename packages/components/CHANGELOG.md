@@ -18,6 +18,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 - `Flyout Navigation`, `Flyout Navigation Item`: renamed (experimental) component to `Flyout Multilevel` and
   `Flyout Multilevel Item` ([#3351](https://github.com/porsche-design-system/porsche-design-system/pull/3351))
+- `Toast`: Renders fully on `#top-layer`, stacking behaviour has changed and follows W3C standards now, see
+  https://developer.mozilla.org/en-US/docs/Glossary/Top_layer and
+  https://developer.chrome.com/blog/what-is-the-top-layer
+  ([#3356](https://github.com/porsche-design-system/porsche-design-system/pull/3356))
 
 ```diff
 - <p-flyout-navigation><p-flyout-navigation-item></p-flyout-navigation-item></p-flyout-navigation>
