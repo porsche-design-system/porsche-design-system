@@ -45,6 +45,10 @@ export class ToastItem {
     throwIfRootNodeIsNotOneOfKind(this.host, ['p-toast']);
   }
 
+  public componentDidRender(): void {
+    this.host.showPopover();
+  }
+
   public render(): JSX.Element {
     validateProps(this, propTypes);
     warnIfDeprecatedPropValueIsUsed<typeof ToastItem, ToastStateDeprecated, ToastState>(this, 'state', {
@@ -56,7 +60,7 @@ export class ToastItem {
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
     return (
-      <Host>
+      <Host popover="manual">
         <PrefixedTagNames.pIcon
           class="icon"
           name={getInlineNotificationIconName(this.state)}
@@ -64,7 +68,7 @@ export class ToastItem {
           theme={this.theme}
           aria-hidden="true"
         />
-        <p id={toastId} class="content" role="status" aria-live="polite" innerHTML={this.text}></p>
+        <p id={toastId} class="content" innerHTML={this.text}></p>
         <PrefixedTagNames.pButtonPure
           theme={this.theme}
           class="close"
