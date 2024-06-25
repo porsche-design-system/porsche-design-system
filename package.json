@@ -158,6 +158,7 @@
     "test:vrt:storefront": "yarn --cwd ./packages/storefront test:vrt",
     "test:smoke:components-js": "yarn --cwd ./packages/components-js test:smoke",
     "test:smoke:components-react": "yarn --cwd ./packages/components-react test:smoke",
+    "test:smoke:components-vue": "yarn --cwd ./packages/components-vue test:smoke",
     "updateAlgolia": "yarn --cwd ./packages/storefront updateAlgolia",
     "clean": "yarn clean:node_modules && yarn clean:build",
     "clean:node_modules": "find . -name 'node_modules' -type d -prune -print -exec rm -rf '{}' \\;",
