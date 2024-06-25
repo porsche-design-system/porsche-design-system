@@ -15,6 +15,7 @@ export const getComponentCss = (state: ToastState, theme: Theme): string => {
       ':host': {
         display: 'grid',
         opacity: 0, // needed to prevent flickering on initial render
+        maxWidth: 'inherit',
         ...addImportantToEachRule({
           margin: 0, // ua popover reset
           inset: 'inherit', // ua popover reset
