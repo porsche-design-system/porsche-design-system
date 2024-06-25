@@ -54,7 +54,7 @@
     "vite": "^5.2.8",
     "vite-plugin-html": "^3.2.2",
     "vite-plugin-static-copy": "^1.0.2",
-    "vue-tsc": "^2.0.6"
+    "vue-tsc": "^2.0.22"
   },
   "volta": {
     "extends": "../../package.json"
