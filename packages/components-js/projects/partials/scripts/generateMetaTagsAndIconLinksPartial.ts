@@ -45,6 +45,7 @@ export const generateMetaTagsAndIconLinksPartial = (): string => {
     }`;
 
   const metaIconLinks: string[] = [
+    `<meta property="og:image" content='${metaIconCDNPath}/${META_ICONS_MANIFEST.openGraph.ogImage}' />`,
     `<meta name="theme-color" content="${themeColorLight}" media="(prefers-color-scheme:light)" />`,
     `<meta name="theme-color" content="${themeColorDark}" media="(prefers-color-scheme:dark)" />`,
     '<meta name="apple-mobile-web-app-capable" content="yes" />',
