@@ -15410,8 +15410,8 @@ exports[`should render dsr component for PTextareaWrapper 1`] = `
 exports[`should render dsr component for PToast 1`] = `
 <p-toast
   aria-live="polite"
-  aria-role="status"
   class="ssr"
+  role="status"
 >
   <template
     shadowroot="open"
@@ -15419,9 +15419,11 @@ exports[`should render dsr component for PToast 1`] = `
   >
     <style>
       :host {
+  position: fixed !important;
   inset-inline: max(22px, 10.625vw - 12px) !important;
   --p-internal-toast-position-bottom: var(--p-toast-position-bottom, 56px) !important;
   bottom: var(--p-internal-toast-position-bottom) !important;
+  z-index: 999999 !important;
   color-scheme: light dark !important;
 }
     </style>
