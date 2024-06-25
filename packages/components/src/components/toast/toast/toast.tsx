@@ -55,7 +55,7 @@ export class Toast {
     const toast = toastManager.getToast();
 
     return (
-      <Host aria-role="status" aria-live="polite">
+      <Host role="status" aria-live="polite">
         {toast && (
           <PrefixedTagNames.pToastItem {...toast} theme={this.theme} ref={(el) => (this.toastItemElement = el)} />
         )}
