@@ -14,6 +14,7 @@ import {
   cssVariableAnimationDuration,
   hostHiddenStyles,
 } from '../../../styles';
+import { TOAST_Z_INDEX } from '../../../constants';
 
 const cssVariablePositionBottom = '--p-toast-position-bottom'; // CSS custom property exposed as public interface
 const cssVariablePositionBottomInternal = '--p-internal-toast-position-bottom';
@@ -50,11 +51,13 @@ export const getComponentCss = (): string => {
   return getCss({
     '@global': {
       ':host': addImportantToEachRule({
+        position: 'fixed', // fallback for older browsers without native `popover` support
         insetInline: gridExtendedOffsetBase,
         // Needs a not overridable internal css variable to cover default position depending on viewport size and to handle animation properly.
         // In addition, a public css variable can be passed to overwrite the default position.
         [cssVariablePositionBottomInternal]: `var(${cssVariablePositionBottom}, 56px)`,
         bottom: `var(${cssVariablePositionBottomInternal})`,
+        zIndex: TOAST_Z_INDEX, // fallback for older browsers without native `popover` support
         [getMediaQueryMin('s')]: {
           insetInline: '64px auto',
           maxWidth: 'min(42rem, calc(100vw - 64px * 2))',

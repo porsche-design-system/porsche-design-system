@@ -6,6 +6,7 @@ import type { PropTypes, Theme } from '../../../types';
 import {
   AllowedTypes,
   attachComponentCss,
+  getHasNativePopoverSupport,
   getPrefixedTagNames,
   THEMES,
   throwIfRootNodeIsNotOneOfKind,
@@ -46,7 +47,9 @@ export class ToastItem {
   }
 
   public componentDidRender(): void {
-    this.host.showPopover();
+    if (getHasNativePopoverSupport()) {
+      this.host.showPopover();
+    }
   }
 
   public render(): JSX.Element {
