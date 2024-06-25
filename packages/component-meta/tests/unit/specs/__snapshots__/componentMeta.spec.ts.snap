@@ -12022,7 +12022,7 @@ exports[`should match snapshot 1`] = `
     "hasSlot": false,
     "hostAttributes": {
       "aria-live": "polite",
-      "aria-role": "status",
+      "role": "status",
     },
     "isChunked": true,
     "isDelegatingFocus": false,
