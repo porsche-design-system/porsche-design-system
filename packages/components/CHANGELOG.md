@@ -24,6 +24,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 + <p-flyout-multilevel><p-flyout-multilevel-item></p-flyout-multilevel-item></p-flyout-multilevel>
 ```
 
+#### Fixed
+
+- Types: `@porsche-design-system/components-vue` typings are not exposed
+  ([#3355](https://github.com/porsche-design-system/porsche-design-system/pull/3355))
+
 ### [3.16.0-rc.1] - 2024-06-18
 
 #### Added
