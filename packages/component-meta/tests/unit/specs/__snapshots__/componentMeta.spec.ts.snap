@@ -12020,6 +12020,10 @@ exports[`should match snapshot 1`] = `
     "hasObserveAttributes": false,
     "hasObserveChildren": false,
     "hasSlot": false,
+    "hostAttributes": {
+      "aria-live": "polite",
+      "aria-role": "status",
+    },
     "isChunked": true,
     "isDelegatingFocus": false,
     "isInternal": false,
@@ -12059,6 +12063,9 @@ exports[`should match snapshot 1`] = `
     "hasObserveAttributes": false,
     "hasObserveChildren": false,
     "hasSlot": false,
+    "hostAttributes": {
+      "popover": "manual",
+    },
     "isChunked": false,
     "isDelegatingFocus": false,
     "isInternal": true,
