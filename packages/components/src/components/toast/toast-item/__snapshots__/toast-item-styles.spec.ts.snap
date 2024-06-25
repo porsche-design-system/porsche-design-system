@@ -3,6 +3,14 @@
 exports[`getComponentCss() should return correct css for state: info and theme: dark 1`] = `
 ":host {
   display: grid;
+  opacity: 0;
+  margin: 0 !important;
+  inset: inherit !important;
+  border: 0 !important;
+  outline: 0 !important;
+  overflow: visible !important;
+  width: auto !important;
+  height: auto !important;
   grid-template-columns: minmax(auto, 1fr) auto;
   gap: 16px;
   place-items: start;
@@ -10,6 +18,9 @@ exports[`getComponentCss() should return correct css for state: info and theme: 
   background: #04294E;
   border-radius: 4px;
   box-shadow: 0px 8px 40px rgba(0, 0, 0, 0.16);
+}
+:host::backdrop {
+  display: none;
 }
 p {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -46,6 +57,14 @@ p {
 exports[`getComponentCss() should return correct css for state: info and theme: light 1`] = `
 ":host {
   display: grid;
+  opacity: 0;
+  margin: 0 !important;
+  inset: inherit !important;
+  border: 0 !important;
+  outline: 0 !important;
+  overflow: visible !important;
+  width: auto !important;
+  height: auto !important;
   grid-template-columns: minmax(auto, 1fr) auto;
   gap: 16px;
   place-items: start;
@@ -53,6 +72,9 @@ exports[`getComponentCss() should return correct css for state: info and theme: 
   background: #D3E1FF;
   border-radius: 4px;
   box-shadow: 0px 8px 40px rgba(0, 0, 0, 0.16);
+}
+:host::backdrop {
+  display: none;
 }
 p {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -89,6 +111,14 @@ p {
 exports[`getComponentCss() should return correct css for state: neutral and theme: dark 1`] = `
 ":host {
   display: grid;
+  opacity: 0;
+  margin: 0 !important;
+  inset: inherit !important;
+  border: 0 !important;
+  outline: 0 !important;
+  overflow: visible !important;
+  width: auto !important;
+  height: auto !important;
   grid-template-columns: minmax(auto, 1fr) auto;
   gap: 16px;
   place-items: start;
@@ -96,6 +126,9 @@ exports[`getComponentCss() should return correct css for state: neutral and them
   background: #04294E;
   border-radius: 4px;
   box-shadow: 0px 8px 40px rgba(0, 0, 0, 0.16);
+}
+:host::backdrop {
+  display: none;
 }
 p {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -132,6 +165,14 @@ p {
 exports[`getComponentCss() should return correct css for state: neutral and theme: light 1`] = `
 ":host {
   display: grid;
+  opacity: 0;
+  margin: 0 !important;
+  inset: inherit !important;
+  border: 0 !important;
+  outline: 0 !important;
+  overflow: visible !important;
+  width: auto !important;
+  height: auto !important;
   grid-template-columns: minmax(auto, 1fr) auto;
   gap: 16px;
   place-items: start;
@@ -139,6 +180,9 @@ exports[`getComponentCss() should return correct css for state: neutral and them
   background: #D3E1FF;
   border-radius: 4px;
   box-shadow: 0px 8px 40px rgba(0, 0, 0, 0.16);
+}
+:host::backdrop {
+  display: none;
 }
 p {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -175,6 +219,14 @@ p {
 exports[`getComponentCss() should return correct css for state: success and theme: dark 1`] = `
 ":host {
   display: grid;
+  opacity: 0;
+  margin: 0 !important;
+  inset: inherit !important;
+  border: 0 !important;
+  outline: 0 !important;
+  overflow: visible !important;
+  width: auto !important;
+  height: auto !important;
   grid-template-columns: minmax(auto, 1fr) auto;
   gap: 16px;
   place-items: start;
@@ -182,6 +234,9 @@ exports[`getComponentCss() should return correct css for state: success and them
   background: #003320;
   border-radius: 4px;
   box-shadow: 0px 8px 40px rgba(0, 0, 0, 0.16);
+}
+:host::backdrop {
+  display: none;
 }
 p {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -218,6 +273,14 @@ p {
 exports[`getComponentCss() should return correct css for state: success and theme: light 1`] = `
 ":host {
   display: grid;
+  opacity: 0;
+  margin: 0 !important;
+  inset: inherit !important;
+  border: 0 !important;
+  outline: 0 !important;
+  overflow: visible !important;
+  width: auto !important;
+  height: auto !important;
   grid-template-columns: minmax(auto, 1fr) auto;
   gap: 16px;
   place-items: start;
@@ -225,6 +288,9 @@ exports[`getComponentCss() should return correct css for state: success and them
   background: #E4FFEC;
   border-radius: 4px;
   box-shadow: 0px 8px 40px rgba(0, 0, 0, 0.16);
+}
+:host::backdrop {
+  display: none;
 }
 p {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
