@@ -142,6 +142,11 @@ jobs:
         with:
           entrypoint: run-test-smoke
           args: --components-react
+      - name: 'Smoke Test Components Vue'
+        uses: ./.github/actions/docker-run-playwright
+        with:
+          entrypoint: run-test-smoke
+          args: --components-vue
   release-components-uxpin:
     name: 'Release Components UXPin'
     needs:
