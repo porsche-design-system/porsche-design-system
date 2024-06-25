@@ -196,6 +196,7 @@ _Note: `./docker.sh run-install` and `yarn` should be executed after every pull.
 
 - `./docker.sh run-test-smoke --components-js` (smoke tests for the native web components)
 - `./docker.sh run-test-smoke --components-react` (smoke tests for the React components based on web components)
+- `./docker.sh run-test-smoke --components-vue` (smoke tests for the Vue components based on web components)
 
 ---
 
