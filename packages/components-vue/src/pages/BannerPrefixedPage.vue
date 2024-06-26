@@ -25,6 +25,6 @@
   </div>
 
   <PorscheDesignSystemProvider prefix="my-prefix">
-    <PBanner description="Description" heading="Heading" open="true"></PBanner>
+    <PBanner description="Description" heading="Heading" :open="true"></PBanner>
   </PorscheDesignSystemProvider>
 </template>
