@@ -14,6 +14,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ### [Unreleased]
 
+#### Added
+
+- Partials: Added default `og:image` meta tag which can be disabled by the `ogImage` option to the
+  `getMetaTagsAndIconLinks` partial. ([#3357](https://github.com/porsche-design-system/porsche-design-system/pull/3357))
+
 #### Changed
 
 - `Flyout Navigation`, `Flyout Navigation Item`: renamed (experimental) component to `Flyout Multilevel` and
