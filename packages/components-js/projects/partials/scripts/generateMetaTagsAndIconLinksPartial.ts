@@ -42,10 +42,14 @@ export const generateMetaTagsAndIconLinksPartial = (): string => {
         apple: \`\${cdnBaseUrl}/${CDN_BASE_PATH_META_ICONS}/${META_ICONS_MANIFEST.touchIcon.appleTouchIcon_180x180}\`,
       },
       manifest: \`\${manifestUrl}\`,
+      openGraph: {
+        image: {
+          url: \`\${cdnBaseUrl}/${CDN_BASE_PATH_META_ICONS}/${META_ICONS_MANIFEST.openGraph.ogImage}\`,
+        }
+      }
     }`;
 
   const metaIconLinks: string[] = [
-    `<meta property="og:image" content='${metaIconCDNPath}/${META_ICONS_MANIFEST.openGraph.ogImage}' />`,
     `<meta name="theme-color" content="${themeColorLight}" media="(prefers-color-scheme:light)" />`,
     `<meta name="theme-color" content="${themeColorDark}" media="(prefers-color-scheme:dark)" />`,
     '<meta name="apple-mobile-web-app-capable" content="yes" />',
@@ -59,9 +63,12 @@ export const generateMetaTagsAndIconLinksPartial = (): string => {
     `<link rel="manifest" href="$manifestUrl" />`,
   ];
 
+  const ogImageMeta = `<meta property="og:image" content='${metaIconCDNPath}/${META_ICONS_MANIFEST.openGraph.ogImage}' />`;
+  const minifiedOgImageMeta = JSON.stringify(minifyHTML(ogImageMeta));
   const minifiedMetaIconsHTML = JSON.stringify(metaIconLinks.map((template) => minifyHTML(template)));
 
-  const metaIconTemplatesJSX = convertToJSX(metaIconLinks).join('');
+  const metaIconTemplatesJSX = convertToJSX(metaIconLinks);
+  const ogImageMetaJSX = convertToJSX([ogImageMeta]).join('');
 
   const types = `type Metadata = {
   themeColor: { media: string, color: string }[];
@@ -74,22 +81,29 @@ export const generateMetaTagsAndIconLinksPartial = (): string => {
     apple?: string;
   };
   manifest?: null | string | URL;
+  openGraph: {
+    image: {
+      url: string;
+    };
+  }
 }
 
 type GetMetaTagsAndIconLinksOptions = {
   appTitle: string;
   cdn?: Cdn;
   format?: FormatWithJS;
+  ogImage?: boolean;
 };`;
 
   const func = `export function getMetaTagsAndIconLinks(opts: GetMetaTagsAndIconLinksOptions & { format: 'js' }): Metadata;
 export function getMetaTagsAndIconLinks(opts: GetMetaTagsAndIconLinksOptions & { format: 'jsx' }): JSX.Element;
 export function getMetaTagsAndIconLinks(opts?: GetMetaTagsAndIconLinksOptions): string;
 export function getMetaTagsAndIconLinks(opts?: GetMetaTagsAndIconLinksOptions): string | JSX.Element | Metadata {
-  const { appTitle, cdn, format }: GetMetaTagsAndIconLinksOptions = {
+  const { appTitle, cdn, format, ogImage }: GetMetaTagsAndIconLinksOptions = {
     appTitle: '',
     cdn: 'auto',
     format: 'html',
+    ogImage: true,
     ...opts,
   };
 
@@ -104,12 +118,19 @@ export function getMetaTagsAndIconLinks(opts?: GetMetaTagsAndIconLinksOptions): 
   const manifestUrlCn = '${CDN_BASE_URL_CN}/${CDN_BASE_PATH_META_ICONS}/${META_ICONS_MANIFEST.webManifest.cn}';
   const manifestUrl = cdn === 'auto' ? manifestUrlCom : manifestUrlCn;
 
-  const metaIconTags = ${minifiedMetaIconsHTML}.map(metaIconTemplate => metaIconTemplate.replace('$appTitle', \`"\${appTitle}"\`).replace('$cdnBaseUrl', cdnBaseUrl).replace('$manifestUrl', manifestUrl));
+  const metaIconTags = ${minifiedMetaIconsHTML};
+  const metaIconTagsJSX = [${metaIconTemplatesJSX}];
+
+  if (ogImage) {
+    metaIconTags.unshift(${minifiedOgImageMeta});
+    metaIconTagsJSX.unshift(${ogImageMetaJSX});
+  }
+  const meta = metaIconTags.map(metaIconTemplate => metaIconTemplate.replace('$appTitle', \`"\${appTitle}"\`).replace('$cdnBaseUrl', cdnBaseUrl).replace('$manifestUrl', manifestUrl));
 
   if (format === 'html') {
-    return metaIconTags.join('');
+    return meta.join('');
   } else if (format === 'jsx') {
-    return <>${metaIconTemplatesJSX}</>;
+    return <>{metaIconTagsJSX.map((jsx) => jsx)}</>;
   } else {
     return ${metadata};
   }
