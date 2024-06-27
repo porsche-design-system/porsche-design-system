@@ -14,7 +14,9 @@ const component = 'toast-item';
 
 const scenario = async (page: Page, theme: Theme, scheme?: PrefersColorScheme): Promise<void> => {
   const markup = () => `
-    <p-toast-item text="Some message"></p-toast-item>`;
+    <div style="transform: translate(0); height: 100px; margin: 0 -16px;">
+    <p-toast-item text="Some message" style="opacity: 1;"></p-toast-item>
+</div>`;
 
   await setContentWithDesignSystem(page, getPlaygroundPseudoStatesMarkup(markup), {
     forceComponentTheme: theme,
