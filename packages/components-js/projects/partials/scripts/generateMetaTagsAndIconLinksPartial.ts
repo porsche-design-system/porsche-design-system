@@ -18,8 +18,6 @@ export const generateMetaTagsAndIconLinksPartial = (): string => {
   const themeColorLight = '#FFF';
   const themeColorDark = '#0E1418';
 
-  const ogImageAlt = 'Porsche Wordmark';
-
   const metadata = `{
       themeColor: [
         { media: '(prefers-color-scheme: light)', color: '${themeColorLight}' },
