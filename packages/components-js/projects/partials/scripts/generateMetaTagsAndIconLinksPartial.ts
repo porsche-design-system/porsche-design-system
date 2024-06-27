@@ -63,12 +63,20 @@ export const generateMetaTagsAndIconLinksPartial = (): string => {
     `<link rel="manifest" href="$manifestUrl" />`,
   ];
 
-  const ogImageMeta = `<meta property="og:image" content='${metaIconCDNPath}/${META_ICONS_MANIFEST.openGraph.ogImage}' />`;
-  const minifiedOgImageMeta = JSON.stringify(minifyHTML(ogImageMeta));
+  const ogImageMeta = [
+    `<meta property="og:title" content="$appTitle" />`,
+    `<meta property="og:image" content='${metaIconCDNPath}/${META_ICONS_MANIFEST.openGraph.ogImage}' />`,
+    `<meta property="og:image:alt" content="Porsche Wordmark" />`,
+    `<meta name="twitter:title" content="$appTitle" />`,
+    `<meta name="twitter:card" content="summary_large_image" />`,
+    `<meta name="twitter:image" content='${metaIconCDNPath}/${META_ICONS_MANIFEST.openGraph.ogImage}' />`,
+    `<meta name="twitter:image:alt" content="Porsche Wordmark" />`,
+  ];
+  const minifiedOgImageMeta = JSON.stringify(ogImageMeta.map((template) => minifyHTML(template)));
   const minifiedMetaIconsHTML = JSON.stringify(metaIconLinks.map((template) => minifyHTML(template)));
 
   const metaIconTemplatesJSX = convertToJSX(metaIconLinks);
-  const ogImageMetaJSX = convertToJSX([ogImageMeta]).join('');
+  const ogImageMetaJSX = convertToJSX(ogImageMeta);
 
   const types = `type Metadata = {
   themeColor: { media: string, color: string }[];
@@ -118,12 +126,12 @@ export function getMetaTagsAndIconLinks(opts?: GetMetaTagsAndIconLinksOptions): 
   const manifestUrlCn = '${CDN_BASE_URL_CN}/${CDN_BASE_PATH_META_ICONS}/${META_ICONS_MANIFEST.webManifest.cn}';
   const manifestUrl = cdn === 'auto' ? manifestUrlCom : manifestUrlCn;
 
-  const metaIconTags = ${minifiedMetaIconsHTML};
-  const metaIconTagsJSX = [${metaIconTemplatesJSX}];
+  let metaIconTags = ${minifiedMetaIconsHTML};
+  let metaIconTagsJSX = [${metaIconTemplatesJSX}];
 
   if (ogImage) {
-    metaIconTags.unshift(${minifiedOgImageMeta});
-    metaIconTagsJSX.unshift(${ogImageMetaJSX});
+    metaIconTags = ${minifiedOgImageMeta}.concat(metaIconTags);
+    metaIconTagsJSX = [${ogImageMetaJSX}].concat(metaIconTagsJSX);
   }
   const meta = metaIconTags.map(metaIconTemplate => metaIconTemplate.replace('$appTitle', \`"\${appTitle}"\`).replace('$cdnBaseUrl', cdnBaseUrl).replace('$manifestUrl', manifestUrl));
 
