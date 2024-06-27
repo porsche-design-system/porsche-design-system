@@ -136,7 +136,7 @@ export function getMetaTagsAndIconLinks(opts?: GetMetaTagsAndIconLinksOptions): 
   if (format === 'html') {
     return meta.join('');
   } else if (format === 'jsx') {
-    return <>{metaIconTagsJSX.map((jsx) => jsx)}</>;
+    return <>{...metaIconTagsJSX}</>;
   } else {
     return ${metadata};
   }
