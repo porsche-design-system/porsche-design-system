@@ -47,10 +47,6 @@ export const generateMetaTagsAndIconLinksPartial = (): string => {
       openGraph: {
         image: {
           url: \`\${cdnBaseUrl}/${CDN_BASE_PATH_META_ICONS}/${META_ICONS_MANIFEST.openGraph.ogImage}\`,
-          type: 'image/png',
-          width: 1200,
-          height: 630,
-          alt: '${ogImageAlt}',
         }
       }
     }`;
@@ -72,11 +68,9 @@ export const generateMetaTagsAndIconLinksPartial = (): string => {
   const ogImageMeta = [
     `<meta property="og:title" content="$appTitle" />`,
     `<meta property="og:image" content='${metaIconCDNPath}/${META_ICONS_MANIFEST.openGraph.ogImage}' />`,
-    `<meta property="og:image:alt" content="${ogImageAlt}" />`,
     `<meta name="twitter:title" content="$appTitle" />`,
     `<meta name="twitter:card" content="summary_large_image" />`,
     `<meta name="twitter:image" content='${metaIconCDNPath}/${META_ICONS_MANIFEST.openGraph.ogImage}' />`,
-    `<meta name="twitter:image:alt" content="${ogImageAlt}" />`,
   ];
   const minifiedOgImageMeta = JSON.stringify(ogImageMeta.map((template) => minifyHTML(template)));
   const minifiedMetaIconsHTML = JSON.stringify(metaIconLinks.map((template) => minifyHTML(template)));
@@ -98,10 +92,6 @@ export const generateMetaTagsAndIconLinksPartial = (): string => {
   openGraph: {
     image: {
       url: string;
-      type: string;
-      width: number;
-      height: number;
-      alt: string;
     };
   }
 }
