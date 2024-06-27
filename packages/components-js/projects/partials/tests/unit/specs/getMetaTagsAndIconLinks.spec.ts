@@ -117,6 +117,10 @@ describe('format: js', () => {
       openGraph: {
         image: {
           url: expect.stringMatching(`^${baseHrefCom}\/og-image\.${hash}\.png$`),
+          type: 'image/png',
+          width: 1200,
+          height: 630,
+          alt: 'Porsche Wordmark',
         },
       },
     };
@@ -153,6 +157,10 @@ describe('format: js', () => {
       openGraph: {
         image: {
           url: expect.stringMatching(`^${baseHrefCn}\/og-image\.${hash}\.png$`),
+          type: 'image/png',
+          width: 1200,
+          height: 630,
+          alt: 'Porsche Wordmark',
         },
       },
     };
