@@ -1,4 +1,4 @@
-import { type Page } from '@playwright/test';
+import { Locator, type Page } from '@playwright/test';
 import { test, expect } from '../helpers';
 import * as fs from 'fs';
 import * as path from 'path';
@@ -41,14 +41,9 @@ const gotoUrl = async (page: Page, url: string): Promise<void> => {
   );
 };
 
-const enableDarkMode = async (page: Page): Promise<void> => {
-  const themeBtn = page.locator('.cycle-platform-theme');
-  if (await themeBtn.count()) {
-    await themeBtn.click();
-    await page.waitForFunction(() => document.body.className === 'dark-mode');
-  } else {
-    return;
-  }
+const enableDarkMode = async (page: Page, themeBtn: Locator): Promise<void> => {
+  await themeBtn.click();
+  await page.waitForFunction(() => document.body.className === 'dark-mode');
 };
 
 test('should have successfully extracted :root styles', () => {
@@ -70,7 +65,12 @@ test.describe('storefront pages', () => {
         await gotoUrl(page, url);
 
         if (scheme === 'dark') {
-          await enableDarkMode(page);
+          const themeBtn = page.locator('.cycle-platform-theme');
+          if ((await themeBtn.count()) === 0) {
+            console.log('No theme switcher found, skipping dark mode test');
+            return;
+          }
+          await enableDarkMode(page, themeBtn);
           const themeSwitch = page.locator('p-select[value="light"]').first();
 
           // change the theme of component to dark if the option exists
@@ -78,6 +78,8 @@ test.describe('storefront pages', () => {
             await themeSwitch.click();
             const option = themeSwitch.getByText('Dark');
             await option.click();
+            const example = page.locator('.example--dark').first();
+            await expect(example).toHaveCount(1);
           }
         }
 
