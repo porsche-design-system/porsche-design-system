@@ -18,7 +18,7 @@ jobs:
       - name: 'Setup and install'
         uses: ./.github/actions/setup-and-install
         with:
-          github-token: ${{ secrets.github-token }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
       - name: 'Production Builds'
         uses: ./.github/actions/docker-run-playwright
         with:
