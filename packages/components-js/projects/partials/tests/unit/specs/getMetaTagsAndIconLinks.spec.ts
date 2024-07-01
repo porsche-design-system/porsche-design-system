@@ -17,13 +17,29 @@ describe('format: html', () => {
   it('should return meta tags and icon links', () => {
     const result = getMetaTagsAndIconLinks({ appTitle: 'Porsche UX' });
     const regex = new RegExp(
-      `^<meta name=theme-color content=#FFF media=\\(prefers-color-scheme:light\\)><meta name=theme-color content=#0E1418 media=\\(prefers-color-scheme:dark\\)><meta name=apple-mobile-web-app-capable content=yes><meta name=apple-mobile-web-app-status-bar-style content=default><meta name=apple-mobile-web-app-title content="Porsche UX"><meta name=msapplication-TileImage content=${baseHrefCom}\/mstile-270x270\\.${hash}\\.png><meta name=msapplication-TileColor content=#FFF><link rel=icon sizes=any href=${baseHrefCom}\/favicon\\.${hash}\\.ico><link rel=icon type=image\/png sizes=32x32 href=${baseHrefCom}\/favicon-32x32\\.${hash}\\.png><link rel=apple-touch-icon href=${baseHrefCom}\/apple-touch-icon-180x180\\.${hash}\\.png><link rel=manifest href=${baseHrefCom}\/manifest\\.${hash}\\.webmanifest>$`
+      `^<meta property=og:title content="Porsche UX"><meta property=og:image content=${baseHrefCom}\/og-image\\.${hash}\\.png><meta name=twitter:title content="Porsche UX"><meta name=twitter:card content=summary_large_image><meta name=twitter:image content=${baseHrefCom}\/og-image\\.${hash}\\.png><meta name=theme-color content=#FFF media=\\(prefers-color-scheme:light\\)><meta name=theme-color content=#0E1418 media=\\(prefers-color-scheme:dark\\)><meta name=apple-mobile-web-app-capable content=yes><meta name=apple-mobile-web-app-status-bar-style content=default><meta name=apple-mobile-web-app-title content="Porsche UX"><meta name=msapplication-TileImage content=${baseHrefCom}\/mstile-270x270\\.${hash}\\.png><meta name=msapplication-TileColor content=#FFF><link rel=icon sizes=any href=${baseHrefCom}\/favicon\\.${hash}\\.ico><link rel=icon type=image\/png sizes=32x32 href=${baseHrefCom}\/favicon-32x32\\.${hash}\\.png><link rel=apple-touch-icon href=${baseHrefCom}\/apple-touch-icon-180x180\\.${hash}\\.png><link rel=manifest href=${baseHrefCom}\/manifest\\.${hash}\\.webmanifest>$`
     );
     expect(result).toMatch(regex);
   });
 
   it('should return meta tags and icon links for china cdn', () => {
     const result = getMetaTagsAndIconLinks({ appTitle: 'Porsche UX', cdn: 'cn' });
+    const regex = new RegExp(
+      `^<meta property=og:title content="Porsche UX"><meta property=og:image content=${baseHrefCn}\/og-image\\.${hash}\\.png><meta name=twitter:title content="Porsche UX"><meta name=twitter:card content=summary_large_image><meta name=twitter:image content=${baseHrefCn}\/og-image\\.${hash}\\.png><meta name=theme-color content=#FFF media=\\(prefers-color-scheme:light\\)><meta name=theme-color content=#0E1418 media=\\(prefers-color-scheme:dark\\)><meta name=apple-mobile-web-app-capable content=yes><meta name=apple-mobile-web-app-status-bar-style content=default><meta name=apple-mobile-web-app-title content="Porsche UX"><meta name=msapplication-TileImage content=${baseHrefCn}\/mstile-270x270\\.${hash}\\.png><meta name=msapplication-TileColor content=#FFF><link rel=icon sizes=any href=${baseHrefCn}\/favicon\\.${hash}\\.ico><link rel=icon type=image\/png sizes=32x32 href=${baseHrefCn}\/favicon-32x32\\.${hash}\\.png><link rel=apple-touch-icon href=${baseHrefCn}\/apple-touch-icon-180x180\\.${hash}\\.png><link rel=manifest href=${baseHrefCn}\/manifest\\.cn\\.${hash}\\.webmanifest>$`
+    );
+    expect(result).toMatch(regex);
+  });
+
+  it('should return meta tags and icon links without og:image', () => {
+    const result = getMetaTagsAndIconLinks({ appTitle: 'Porsche UX', ogImage: false });
+    const regex = new RegExp(
+      `^<meta name=theme-color content=#FFF media=\\(prefers-color-scheme:light\\)><meta name=theme-color content=#0E1418 media=\\(prefers-color-scheme:dark\\)><meta name=apple-mobile-web-app-capable content=yes><meta name=apple-mobile-web-app-status-bar-style content=default><meta name=apple-mobile-web-app-title content="Porsche UX"><meta name=msapplication-TileImage content=${baseHrefCom}\/mstile-270x270\\.${hash}\\.png><meta name=msapplication-TileColor content=#FFF><link rel=icon sizes=any href=${baseHrefCom}\/favicon\\.${hash}\\.ico><link rel=icon type=image\/png sizes=32x32 href=${baseHrefCom}\/favicon-32x32\\.${hash}\\.png><link rel=apple-touch-icon href=${baseHrefCom}\/apple-touch-icon-180x180\\.${hash}\\.png><link rel=manifest href=${baseHrefCom}\/manifest\\.${hash}\\.webmanifest>$`
+    );
+    expect(result).toMatch(regex);
+  });
+
+  it('should return meta tags and icon links for china cdn without og:image', () => {
+    const result = getMetaTagsAndIconLinks({ appTitle: 'Porsche UX', cdn: 'cn', ogImage: false });
     const regex = new RegExp(
       `^<meta name=theme-color content=#FFF media=\\(prefers-color-scheme:light\\)><meta name=theme-color content=#0E1418 media=\\(prefers-color-scheme:dark\\)><meta name=apple-mobile-web-app-capable content=yes><meta name=apple-mobile-web-app-status-bar-style content=default><meta name=apple-mobile-web-app-title content="Porsche UX"><meta name=msapplication-TileImage content=${baseHrefCn}\/mstile-270x270\\.${hash}\\.png><meta name=msapplication-TileColor content=#FFF><link rel=icon sizes=any href=${baseHrefCn}\/favicon\\.${hash}\\.ico><link rel=icon type=image\/png sizes=32x32 href=${baseHrefCn}\/favicon-32x32\\.${hash}\\.png><link rel=apple-touch-icon href=${baseHrefCn}\/apple-touch-icon-180x180\\.${hash}\\.png><link rel=manifest href=${baseHrefCn}\/manifest\\.cn\\.${hash}\\.webmanifest>$`
     );
@@ -35,13 +51,34 @@ describe('format: jsx', () => {
   it('should return meta tags and icon links', () => {
     const result = getMetaTagsAndIconLinks({ format: 'jsx', appTitle: 'Porsche UX Platform' });
     const regex = new RegExp(
-      `^<meta name="theme-color" content="#FFF" media="\\(prefers-color-scheme:light\\)"/><meta name="theme-color" content="#0E1418" media="\\(prefers-color-scheme:dark\\)"/><meta name="apple-mobile-web-app-capable" content="yes"/><meta name="apple-mobile-web-app-status-bar-style" content="default"/><meta name="apple-mobile-web-app-title" content="Porsche UX Platform"/><meta name="msapplication-TileImage" content="${baseHrefCom}\/mstile-270x270\\.${hash}\\.png"/><meta name="msapplication-TileColor" content="#FFF"/><link rel="icon" sizes="any" href="${baseHrefCom}\/favicon\\.${hash}\\.ico"/><link rel="icon" type="image\/png" sizes="32x32" href="${baseHrefCom}\/favicon-32x32\\.${hash}\\.png"/><link rel="apple-touch-icon" href="${baseHrefCom}\/apple-touch-icon-180x180\\.${hash}\\.png"/><link rel="manifest" href="${baseHrefCom}\/manifest\\.${hash}\\.webmanifest"/>$`
+      `^<meta property="og:title" content="Porsche UX Platform"/><meta property="og:image" content="${baseHrefCom}\/og-image\\.${hash}\\.png"/><meta name="twitter:title" content="Porsche UX Platform"/><meta name="twitter:card" content="summary_large_image"/><meta name="twitter:image" content="${baseHrefCom}\/og-image\\.${hash}\\.png"/><meta name="theme-color" content="#FFF" media="\\(prefers-color-scheme:light\\)"/><meta name="theme-color" content="#0E1418" media="\\(prefers-color-scheme:dark\\)"/><meta name="apple-mobile-web-app-capable" content="yes"/><meta name="apple-mobile-web-app-status-bar-style" content="default"/><meta name="apple-mobile-web-app-title" content="Porsche UX Platform"/><meta name="msapplication-TileImage" content="${baseHrefCom}\/mstile-270x270\\.${hash}\\.png"/><meta name="msapplication-TileColor" content="#FFF"/><link rel="icon" sizes="any" href="${baseHrefCom}\/favicon\\.${hash}\\.ico"/><link rel="icon" type="image\/png" sizes="32x32" href="${baseHrefCom}\/favicon-32x32\\.${hash}\\.png"/><link rel="apple-touch-icon" href="${baseHrefCom}\/apple-touch-icon-180x180\\.${hash}\\.png"/><link rel="manifest" href="${baseHrefCom}\/manifest\\.${hash}\\.webmanifest"/>$`
     );
     expect(renderToString(result)).toMatch(regex);
   });
 
   it('should return meta tags and icon links for china cdn', () => {
     const result = getMetaTagsAndIconLinks({ format: 'jsx', appTitle: 'Porsche UX Platform', cdn: 'cn' });
+    const regex = new RegExp(
+      `^<meta property="og:title" content="Porsche UX Platform"/><meta property="og:image" content="${baseHrefCn}\/og-image\\.${hash}\\.png"/><meta name="twitter:title" content="Porsche UX Platform"/><meta name="twitter:card" content="summary_large_image"/><meta name="twitter:image" content="${baseHrefCn}\/og-image\\.${hash}\\.png"/><meta name="theme-color" content="#FFF" media="\\(prefers-color-scheme:light\\)"/><meta name="theme-color" content="#0E1418" media="\\(prefers-color-scheme:dark\\)"/><meta name="apple-mobile-web-app-capable" content="yes"/><meta name="apple-mobile-web-app-status-bar-style" content="default"/><meta name="apple-mobile-web-app-title" content="Porsche UX Platform"/><meta name="msapplication-TileImage" content="${baseHrefCn}\/mstile-270x270\\.${hash}\\.png"/><meta name="msapplication-TileColor" content="#FFF"/><link rel="icon" sizes="any" href="${baseHrefCn}\/favicon\\.${hash}\\.ico"/><link rel="icon" type="image\/png" sizes="32x32" href="${baseHrefCn}\/favicon-32x32\\.${hash}\\.png"/><link rel="apple-touch-icon" href="${baseHrefCn}\/apple-touch-icon-180x180\\.${hash}\\.png"/><link rel="manifest" href="${baseHrefCn}\/manifest\\.cn\\.${hash}\\.webmanifest"/>$`
+    );
+    expect(renderToString(result)).toMatch(regex);
+  });
+
+  it('should return meta tags and icon links without og:image', () => {
+    const result = getMetaTagsAndIconLinks({ format: 'jsx', appTitle: 'Porsche UX Platform', ogImage: false });
+    const regex = new RegExp(
+      `^<meta name="theme-color" content="#FFF" media="\\(prefers-color-scheme:light\\)"/><meta name="theme-color" content="#0E1418" media="\\(prefers-color-scheme:dark\\)"/><meta name="apple-mobile-web-app-capable" content="yes"/><meta name="apple-mobile-web-app-status-bar-style" content="default"/><meta name="apple-mobile-web-app-title" content="Porsche UX Platform"/><meta name="msapplication-TileImage" content="${baseHrefCom}\/mstile-270x270\\.${hash}\\.png"/><meta name="msapplication-TileColor" content="#FFF"/><link rel="icon" sizes="any" href="${baseHrefCom}\/favicon\\.${hash}\\.ico"/><link rel="icon" type="image\/png" sizes="32x32" href="${baseHrefCom}\/favicon-32x32\\.${hash}\\.png"/><link rel="apple-touch-icon" href="${baseHrefCom}\/apple-touch-icon-180x180\\.${hash}\\.png"/><link rel="manifest" href="${baseHrefCom}\/manifest\\.${hash}\\.webmanifest"/>$`
+    );
+    expect(renderToString(result)).toMatch(regex);
+  });
+
+  it('should return meta tags and icon links for china cdn without og:image', () => {
+    const result = getMetaTagsAndIconLinks({
+      format: 'jsx',
+      appTitle: 'Porsche UX Platform',
+      cdn: 'cn',
+      ogImage: false,
+    });
     const regex = new RegExp(
       `^<meta name="theme-color" content="#FFF" media="\\(prefers-color-scheme:light\\)"/><meta name="theme-color" content="#0E1418" media="\\(prefers-color-scheme:dark\\)"/><meta name="apple-mobile-web-app-capable" content="yes"/><meta name="apple-mobile-web-app-status-bar-style" content="default"/><meta name="apple-mobile-web-app-title" content="Porsche UX Platform"/><meta name="msapplication-TileImage" content="${baseHrefCn}\/mstile-270x270\\.${hash}\\.png"/><meta name="msapplication-TileColor" content="#FFF"/><link rel="icon" sizes="any" href="${baseHrefCn}\/favicon\\.${hash}\\.ico"/><link rel="icon" type="image\/png" sizes="32x32" href="${baseHrefCn}\/favicon-32x32\\.${hash}\\.png"/><link rel="apple-touch-icon" href="${baseHrefCn}\/apple-touch-icon-180x180\\.${hash}\\.png"/><link rel="manifest" href="${baseHrefCn}\/manifest\\.cn\\.${hash}\\.webmanifest"/>$`
     );
@@ -77,8 +114,13 @@ describe('format: js', () => {
         apple: expect.stringMatching(`^${baseHrefCom}\/apple-touch-icon-180x180\.${hash}\.png$`),
       },
       manifest: expect.stringMatching(`^${baseHrefCom}\/manifest\.${hash}\.webmanifest$`),
+      openGraph: {
+        image: {
+          url: expect.stringMatching(`^${baseHrefCom}\/og-image\.${hash}\.png$`),
+        },
+      },
     };
-    expect(result).toMatchObject(expected);
+    expect(result).toEqual(expected);
   });
 
   it('should return meta tags and icon links for china cdn', () => {
@@ -108,7 +150,12 @@ describe('format: js', () => {
         apple: expect.stringMatching(`^${baseHrefCn}\/apple-touch-icon-180x180\.${hash}\.png$`),
       },
       manifest: expect.stringMatching(`^${baseHrefCn}\/manifest\.cn\.${hash}\.webmanifest$`),
+      openGraph: {
+        image: {
+          url: expect.stringMatching(`^${baseHrefCn}\/og-image\.${hash}\.png$`),
+        },
+      },
     };
-    expect(result).toMatchObject(expected);
+    expect(result).toEqual(expected);
   });
 });
