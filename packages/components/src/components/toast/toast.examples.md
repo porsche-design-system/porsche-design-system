@@ -1,9 +1,9 @@
 <ComponentHeading name="Toast"></ComponentHeading>
 
 The `p-toast` component manages both the queue and display of toast messages.  
-Therefore, you can only have a single instance of this component within in your application. We recommend rendering it
-close to the `body`, e.g., in your `App.tsx` or `app.component.ts`. This way you reduce the chance of having issues with
-its z-index and fixed positioning.
+Therefore, you can only have a single instance of this component within in your application and its messages are
+rendered on the `#top-layer` which ensures the element to be on top of the page, independent of where `p-toast` is
+placed in the DOM hierarchy (z-index is not relevant anymore and won't have any effect).
 
 Review the [notification decision tree](patterns/notifications/decision-tree) to determine which notification component
 is best for a particular scenario.

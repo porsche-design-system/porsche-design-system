@@ -15409,7 +15409,9 @@ exports[`should render dsr component for PTextareaWrapper 1`] = `
 
 exports[`should render dsr component for PToast 1`] = `
 <p-toast
+  aria-live="polite"
   class="ssr"
+  role="status"
 >
   <template
     shadowroot="open"
