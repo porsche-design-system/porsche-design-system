@@ -71,7 +71,7 @@ export class ToastItem {
           theme={this.theme}
           aria-hidden="true"
         />
-        <p id={toastId} class="content" innerHTML={this.text}></p>
+        <p id={toastId} innerHTML={this.text}></p>
         <PrefixedTagNames.pButtonPure
           theme={this.theme}
           class="close"
