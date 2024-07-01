@@ -2,8 +2,8 @@
 
 exports[`getComponentCss() should return correct css for state: info and theme: dark 1`] = `
 ":host {
+  display: grid;
   opacity: 0;
-  display: grid !important;
   max-width: inherit !important;
   box-sizing: border-box !important;
   margin: 0 !important;
@@ -53,8 +53,8 @@ p {
 
 exports[`getComponentCss() should return correct css for state: info and theme: light 1`] = `
 ":host {
+  display: grid;
   opacity: 0;
-  display: grid !important;
   max-width: inherit !important;
   box-sizing: border-box !important;
   margin: 0 !important;
@@ -104,8 +104,8 @@ p {
 
 exports[`getComponentCss() should return correct css for state: neutral and theme: dark 1`] = `
 ":host {
+  display: grid;
   opacity: 0;
-  display: grid !important;
   max-width: inherit !important;
   box-sizing: border-box !important;
   margin: 0 !important;
@@ -155,8 +155,8 @@ p {
 
 exports[`getComponentCss() should return correct css for state: neutral and theme: light 1`] = `
 ":host {
+  display: grid;
   opacity: 0;
-  display: grid !important;
   max-width: inherit !important;
   box-sizing: border-box !important;
   margin: 0 !important;
@@ -206,8 +206,8 @@ p {
 
 exports[`getComponentCss() should return correct css for state: success and theme: dark 1`] = `
 ":host {
+  display: grid;
   opacity: 0;
-  display: grid !important;
   max-width: inherit !important;
   box-sizing: border-box !important;
   margin: 0 !important;
@@ -257,8 +257,8 @@ p {
 
 exports[`getComponentCss() should return correct css for state: success and theme: light 1`] = `
 ":host {
+  display: grid;
   opacity: 0;
-  display: grid !important;
   max-width: inherit !important;
   box-sizing: border-box !important;
   margin: 0 !important;
