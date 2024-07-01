@@ -29,6 +29,9 @@ const propTypes: PropTypes<typeof FlyoutMultilevel> = {
   aria: AllowedTypes.aria<FlyoutMultilevelAriaAttribute>(FLYOUT_MULTILEVEL_ARIA_ATTRIBUTES),
 };
 
+/** @slot {"name": "", "description": "Default slot to render p-flyout-multilevel items", "isRequired": false, "allowedTagNames": ['p-flyout-multilevel-item'], hasAltProp: false } **/
+/** @controlled {"prop": "open", "event": "dismiss"} */
+/** @controlled {"prop": "activeIdentifier", "event": "update"} */
 /** @experimental */
 @Component({
   tag: 'p-flyout-multilevel',

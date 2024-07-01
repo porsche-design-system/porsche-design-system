@@ -3,6 +3,8 @@ import * as path from 'path';
 import replace from '@rollup/plugin-replace';
 import type { TagName } from '@porsche-design-system/shared';
 import { version } from './package.json';
+import { JsonDocs, JsonDocsTag } from '@stencil/core/internal';
+import fs from 'fs';
 
 /**
  * TODO: Remove this workaround
@@ -61,6 +63,85 @@ export const config: Config = {
           dest: 'favicon.ico',
         },
       ],
+    },
+    {
+      type: 'docs-custom',
+      generator: (docs: JsonDocs) => {
+        type ComponentMeta = {
+          tag: TagName;
+          props: PropMeta[];
+          slots: SlotMeta[];
+          controlledState: ControlledStateMeta[];
+        };
+
+        type PropMeta = {
+          name: string;
+          description?: string;
+          type: string;
+          defaultValue: boolean | number | string | object | null;
+          allowedValues?: 'boolean' | 'number' | 'string' | object | string[] | number[];
+          deprecatedValues?: string[];
+          isRequired?: boolean;
+          isDeprecated?: boolean;
+          isExperimental?: boolean;
+          isBreakpointCustomizable?: boolean;
+          isAria?: boolean;
+          isArray?: boolean;
+        };
+
+        type SlotMeta = {
+          name: string; // Name of the slot. Empty name corresponds to the default slot.
+          description: string;
+          isRequired?: boolean; // Specifies if the slot is required. If undefined the slot is not required.
+          allowedTagNames?: (TagName & HTMLElement)[]; // Specifies which tagNames are allowed to be used. If undefined all tags are allowed.
+          hasAltProp?: boolean; // Specifies if the slot has an equal name prop which can be used instead.
+        };
+
+        /**
+         * Describes a property whose state is likely to be externally controlled and updated via a specific event.
+         */
+        type ControlledStateMeta = {
+          prop: string;
+          event: string;
+        };
+
+        const componentMeta: ComponentMeta[] = [];
+
+        docs.components.forEach((component) => {
+          const meta: ComponentMeta = {
+            tag: component.tag as TagName,
+            props: component.props.map((prop) => ({
+              name: prop.name,
+              description: prop.docs || prop.docsTags[0]?.text,
+              type: prop.complexType.original,
+              defaultValue: prop.default,
+              // TODO: Does not work for breakpointCustomizable, boolean
+              allowedValues: prop.values.map((value) => value.value),
+              // TODO: Implement
+              deprecatedValues: [],
+              isRequired: prop.required,
+              isDeprecated: !!prop.deprecation,
+              isExperimental: prop.docsTags[0]?.name === 'experimental',
+              isBreakpointCustomizable: prop.complexType.original.includes('BreakpointCustomizable'),
+              isAria: prop.name === 'aria',
+              isArray: prop.type.includes('[]'),
+            })),
+            slots: component.docsTags.filter((doc) => doc.name === 'slot').map((doc) => JSON.parse(doc.text)),
+            controlledState: component.docsTags
+              .filter((doc) => doc.name === 'controlled')
+              .map((doc) => JSON.parse(doc.text)),
+          };
+          componentMeta.push(meta);
+        });
+
+        const targetFileName = 'meta.json';
+        const targetFile = path.resolve('.', targetFileName);
+        fs.writeFileSync(targetFile, JSON.stringify(docs));
+
+        const targetFileNameMeta = 'meta.ts';
+        const targetFileMeta = path.resolve('.', targetFileNameMeta);
+        fs.writeFileSync(targetFileMeta, JSON.stringify(componentMeta));
+      },
     },
   ],
   bundles,
