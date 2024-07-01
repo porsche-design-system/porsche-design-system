@@ -9,6 +9,10 @@ const addDeprecatedAnnotations = (): void => {
   const distDir = path.resolve(__dirname, '../dist/vue-wrapper/esm/lib/components');
   const typingFilePaths = globbySync(`${distDir}/*.vue.d.ts`);
 
+  if (typingFilePaths.length === 0) {
+    throw new Error('No type definition files found!');
+  }
+
   let count = 0;
   typingFilePaths.forEach((filePath) => {
     const tagName = ('p-' + kebabCase(path.basename(filePath).replace(/Wrapper\.vue\.d\.ts$/, ''))) as TagName;

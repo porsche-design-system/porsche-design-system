@@ -89,6 +89,15 @@ exports[`should call validateProps() with correct parameters via render for p-bu
 }
 `;
 
+exports[`should call validateProps() with correct parameters via render for p-canvas: propTypes with ValidatorFunctions 1`] = `
+{
+  "sidebarEndOpen": "boolean",
+  "sidebarEndWidth": "oneOf",
+  "sidebarStartOpen": "boolean",
+  "sidebarStartWidth": "oneOf",
+}
+`;
+
 exports[`should call validateProps() with correct parameters via render for p-carousel: propTypes with ValidatorFunctions 1`] = `
 {
   "activeSlideIndex": "number",
@@ -210,7 +219,7 @@ exports[`should call validateProps() with correct parameters via render for p-fl
 }
 `;
 
-exports[`should call validateProps() with correct parameters via render for p-flyout-navigation: propTypes with ValidatorFunctions 1`] = `
+exports[`should call validateProps() with correct parameters via render for p-flyout-multilevel: propTypes with ValidatorFunctions 1`] = `
 {
   "activeIdentifier": "string",
   "aria": "aria",
@@ -219,7 +228,7 @@ exports[`should call validateProps() with correct parameters via render for p-fl
 }
 `;
 
-exports[`should call validateProps() with correct parameters via render for p-flyout-navigation-item: propTypes with ValidatorFunctions 1`] = `
+exports[`should call validateProps() with correct parameters via render for p-flyout-multilevel-item: propTypes with ValidatorFunctions 1`] = `
 {
   "identifier": "string",
   "label": "string",

@@ -79,6 +79,17 @@ const generateCodeSamples = (): void => {
       ],
     },
     {
+      component: 'p-canvas',
+      samples: [
+        [
+          componentsJsPath + '/canvas-example.html',
+          componentsAngularPath + '/canvas-example.component.ts',
+          componentsReactPath + '/CanvasExample.tsx',
+          componentsVuePath + '/CanvasExample.vue',
+        ],
+      ],
+    },
+    {
       component: 'p-carousel',
       samples: [
         [
@@ -113,25 +124,25 @@ const generateCodeSamples = (): void => {
       ],
     },
     {
-      component: 'p-flyout-navigation',
+      component: 'p-flyout-multilevel',
       samples: [
         [
-          componentsJsPath + '/flyout-navigation-example.html',
-          componentsAngularPath + '/flyout-navigation-example.component.ts',
-          componentsReactPath + '/FlyoutNavigationExample.tsx',
-          componentsVuePath + '/FlyoutNavigationExample.vue',
+          componentsJsPath + '/flyout-multilevel-example.html',
+          componentsAngularPath + '/flyout-multilevel-example.component.ts',
+          componentsReactPath + '/FlyoutMultilevelExample.tsx',
+          componentsVuePath + '/FlyoutMultilevelExample.vue',
         ],
         [
-          componentsJsPath + '/flyout-navigation-example-active-identifier.html',
-          componentsAngularPath + '/flyout-navigation-example-active-identifier.component.ts',
-          componentsReactPath + '/FlyoutNavigationExampleActiveIdentifier.tsx',
-          componentsVuePath + '/FlyoutNavigationExampleActiveIdentifier.vue',
+          componentsJsPath + '/flyout-multilevel-example-active-identifier.html',
+          componentsAngularPath + '/flyout-multilevel-example-active-identifier.component.ts',
+          componentsReactPath + '/FlyoutMultilevelExampleActiveIdentifier.tsx',
+          componentsVuePath + '/FlyoutMultilevelExampleActiveIdentifier.vue',
         ],
         [
-          componentsJsPath + '/flyout-navigation-example-custom-content.html',
-          componentsAngularPath + '/flyout-navigation-example-custom-content.component.ts',
-          componentsReactPath + '/FlyoutNavigationExampleCustomContent.tsx',
-          componentsVuePath + '/FlyoutNavigationExampleCustomContent.vue',
+          componentsJsPath + '/flyout-multilevel-example-custom-content.html',
+          componentsAngularPath + '/flyout-multilevel-example-custom-content.component.ts',
+          componentsReactPath + '/FlyoutMultilevelExampleCustomContent.tsx',
+          componentsVuePath + '/FlyoutMultilevelExampleCustomContent.vue',
         ],
       ],
     },

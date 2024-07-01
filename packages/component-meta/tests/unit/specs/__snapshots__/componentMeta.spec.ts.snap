@@ -2198,6 +2198,95 @@ exports[`should match snapshot 1`] = `
     ],
     "styling": "jss",
   },
+  "p-canvas": {
+    "allowedPropValues": {
+      "sidebarEndOpen": "boolean",
+      "sidebarEndWidth": [
+        "medium",
+        "large",
+      ],
+      "sidebarStartOpen": "boolean",
+      "sidebarStartWidth": [
+        "medium",
+        "large",
+      ],
+    },
+    "eventNames": [
+      "dismissSidebarStart",
+      "dismissSidebarEnd",
+    ],
+    "eventsMeta": {
+      "dismissSidebarEnd": {
+        "description": "Emitted when the component requests to close the sidebar on the end side.",
+        "type": "void",
+      },
+      "dismissSidebarStart": {
+        "description": "Emitted when the component requests to close the sidebar on the start side.",
+        "type": "void",
+      },
+    },
+    "hasAriaProp": false,
+    "hasEvent": true,
+    "hasObserveAttributes": false,
+    "hasObserveChildren": false,
+    "hasSlot": true,
+    "isChunked": true,
+    "isDelegatingFocus": false,
+    "isExperimental": true,
+    "isInternal": false,
+    "isThemeable": false,
+    "namedSlots": [
+      "header",
+      "footer",
+      "sidebar-start",
+      "sidebar-end",
+      "sidebar-start",
+      "sidebar-end",
+    ],
+    "nestedComponents": [
+      "p-button-pure",
+      "p-flyout",
+    ],
+    "props": {
+      "sidebarEndOpen": false,
+      "sidebarEndWidth": "medium",
+      "sidebarStartOpen": false,
+      "sidebarStartWidth": "medium",
+    },
+    "propsMeta": {
+      "sidebarEndOpen": {
+        "allowedValues": "boolean",
+        "defaultValue": false,
+        "description": "Open Sidebar on the end side",
+        "type": "boolean",
+      },
+      "sidebarEndWidth": {
+        "allowedValues": [
+          "medium",
+          "large",
+        ],
+        "defaultValue": "medium",
+        "description": "Defines the width of the sidebar on the end side",
+        "type": "CanvasSidebarEndWidth",
+      },
+      "sidebarStartOpen": {
+        "allowedValues": "boolean",
+        "defaultValue": false,
+        "description": "Open Sidebar on the start side",
+        "type": "boolean",
+      },
+      "sidebarStartWidth": {
+        "allowedValues": [
+          "medium",
+          "large",
+        ],
+        "defaultValue": "medium",
+        "description": "Defines the width of the sidebar on the start side",
+        "type": "CanvasSidebarStartWidth",
+      },
+    },
+    "styling": "jss",
+  },
   "p-carousel": {
     "allowedPropValues": {
       "activeSlideIndex": "number",
@@ -3513,7 +3602,7 @@ exports[`should match snapshot 1`] = `
     ],
     "styling": "jss",
   },
-  "p-flyout-navigation": {
+  "p-flyout-multilevel": {
     "allowedPropValues": {
       "activeIdentifier": "string",
       "aria": {
@@ -3537,7 +3626,7 @@ exports[`should match snapshot 1`] = `
       },
       "update": {
         "description": "Emitted when activeIdentifier is changed.",
-        "type": "FlyoutNavigationUpdateEventDetail",
+        "type": "FlyoutMultilevelUpdateEventDetail",
         "typeDetail": "{ activeIdentifier: string }",
       },
     },
@@ -3564,7 +3653,7 @@ exports[`should match snapshot 1`] = `
       "activeIdentifier": {
         "allowedValues": "string",
         "defaultValue": null,
-        "description": "Defines which flyout-navigation-item to be visualized as opened.",
+        "description": "Defines which flyout-multilevel-item to be visualized as opened.",
         "type": "string | undefined",
       },
       "aria": {
@@ -3574,12 +3663,12 @@ exports[`should match snapshot 1`] = `
         "defaultValue": null,
         "description": "Add ARIA attributes.",
         "isAria": true,
-        "type": "FlyoutNavigationAriaAttribute",
+        "type": "FlyoutMultilevelAriaAttribute",
       },
       "open": {
         "allowedValues": "boolean",
         "defaultValue": false,
-        "description": "If true, the flyout-navigation is visualized as opened.",
+        "description": "If true, the flyout-multilevel is visualized as opened.",
         "type": "boolean",
       },
       "theme": {
@@ -3589,13 +3678,13 @@ exports[`should match snapshot 1`] = `
           "auto",
         ],
         "defaultValue": "light",
-        "description": "Adapts the flyout-navigation color depending on the theme.",
+        "description": "Adapts the flyout-multilevel color depending on the theme.",
         "type": "Theme",
       },
     },
     "styling": "jss",
   },
-  "p-flyout-navigation-item": {
+  "p-flyout-multilevel-item": {
     "allowedPropValues": {
       "identifier": "string",
       "label": "string",
@@ -3621,7 +3710,7 @@ exports[`should match snapshot 1`] = `
       "identifier": {
         "allowedValues": "string",
         "defaultValue": null,
-        "description": "Unique identifier which controls if this item should be shown when the active-identifier on the flyout-navigation is set to this value.",
+        "description": "Unique identifier which controls if this item should be shown when the active-identifier on the flyout-multilevel is set to this value.",
         "isRequired": true,
         "type": "string",
       },
@@ -3632,7 +3721,7 @@ exports[`should match snapshot 1`] = `
         "type": "string",
       },
     },
-    "requiredParent": "p-flyout-navigation",
+    "requiredParent": "p-flyout-multilevel",
     "requiredProps": [
       "identifier",
     ],

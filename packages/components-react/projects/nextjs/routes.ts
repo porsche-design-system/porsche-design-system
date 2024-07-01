@@ -176,25 +176,25 @@ const generatedRoutes = {
     "path": "/flyout-header-scrollable-content",
     "name": "FlyoutHeaderScrollableContent"
   },
-  "flyoutNavigation": {
-    "path": "/flyout-navigation",
-    "name": "FlyoutNavigation"
+  "flyoutMultilevel": {
+    "path": "/flyout-multilevel",
+    "name": "FlyoutMultilevel"
   },
-  "flyoutNavigationActiveIdentifier": {
-    "path": "/flyout-navigation-active-identifier",
-    "name": "FlyoutNavigationActiveIdentifier"
+  "flyoutMultilevelActiveIdentifier": {
+    "path": "/flyout-multilevel-active-identifier",
+    "name": "FlyoutMultilevelActiveIdentifier"
   },
-  "flyoutNavigationBasic": {
-    "path": "/flyout-navigation-basic",
-    "name": "FlyoutNavigationBasic"
+  "flyoutMultilevelBasic": {
+    "path": "/flyout-multilevel-basic",
+    "name": "FlyoutMultilevelBasic"
   },
-  "flyoutNavigationPrefixed": {
-    "path": "/flyout-navigation-prefixed",
-    "name": "FlyoutNavigationPrefixed"
+  "flyoutMultilevelPrefixed": {
+    "path": "/flyout-multilevel-prefixed",
+    "name": "FlyoutMultilevelPrefixed"
   },
-  "flyoutNavigationScrolled": {
-    "path": "/flyout-navigation-scrolled",
-    "name": "FlyoutNavigationScrolled"
+  "flyoutMultilevelScrolled": {
+    "path": "/flyout-multilevel-scrolled",
+    "name": "FlyoutMultilevelScrolled"
   },
   "flyoutPositionLeft": {
     "path": "/flyout-position-left",

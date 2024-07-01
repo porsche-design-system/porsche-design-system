@@ -49,6 +49,7 @@ const generateDSRComponents = (): void => {
         .replace(/\n  public componentDidRender\(\): void {[\s\S]+?\n  }\n/g, '')
         .replace(/\n  public disconnectedCallback\(\): void {[\s\S]+?\n  }\n/g, '')
         .replace(/\n  public componentShouldUpdate\([\s\S]+?\n  }\n/g, '')
+        .replace(/private(.*?)window.matchMedia(.*?);/g, '')
         .replace(/\n  private (?!get).+(\n.+)*?\{[\s\S]+?\n  };?\n/g, '') // private methods without getters
         .replace(/\nconst propTypes[\s\S]*?};\n/g, '') // temporary
         .replace(/\s+validateProps\(this, propTypes\);/, '')
@@ -553,11 +554,11 @@ $&`
           );
       } else if (tagName === 'p-pin-code') {
         newFileContent = newFileContent.replace(/value={/, 'defaultValue={'); // fix warning about read-only field
-      } else if (tagName === 'p-flyout-navigation') {
+      } else if (tagName === 'p-flyout-multilevel') {
         newFileContent = newFileContent
           .replace(/validateActiveIdentifier\(.*\);/g, '')
           .replace(/(inert=\{this\.props\.open \? null : )true(})/, "$1''$2"); // transform true to empty string '';
-      } else if (tagName === 'p-flyout-navigation-item') {
+      } else if (tagName === 'p-flyout-multilevel-item') {
         newFileContent = newFileContent
           .replace(/: Theme/g, ': any')
           .replace(/this\.props\.theme(?! \|\|)/g, 'this.theme')

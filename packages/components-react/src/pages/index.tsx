@@ -55,11 +55,11 @@ import { FlyoutHeaderFooterSubfooterScrolledPage } from './generated/FlyoutHeade
 import { FlyoutHeaderFooterSubfooterScrolledOverlapPage } from './generated/FlyoutHeaderFooterSubfooterScrolledOverlap';
 import { FlyoutHeaderFooterSubfooterSlottedAnchorPage } from './generated/FlyoutHeaderFooterSubfooterSlottedAnchor';
 import { FlyoutHeaderScrollableContentPage } from './generated/FlyoutHeaderScrollableContent';
-import { FlyoutNavigationPage } from './generated/FlyoutNavigation';
-import { FlyoutNavigationActiveIdentifierPage } from './generated/FlyoutNavigationActiveIdentifier';
-import { FlyoutNavigationBasicPage } from './generated/FlyoutNavigationBasic';
-import { FlyoutNavigationPrefixedPage } from './generated/FlyoutNavigationPrefixed';
-import { FlyoutNavigationScrolledPage } from './generated/FlyoutNavigationScrolled';
+import { FlyoutMultilevelPage } from './generated/FlyoutMultilevel';
+import { FlyoutMultilevelActiveIdentifierPage } from './generated/FlyoutMultilevelActiveIdentifier';
+import { FlyoutMultilevelBasicPage } from './generated/FlyoutMultilevelBasic';
+import { FlyoutMultilevelPrefixedPage } from './generated/FlyoutMultilevelPrefixed';
+import { FlyoutMultilevelScrolledPage } from './generated/FlyoutMultilevelScrolled';
 import { FlyoutPositionLeftPage } from './generated/FlyoutPositionLeft';
 import { FlyoutPositionStartPage } from './generated/FlyoutPositionStart';
 import { FlyoutPrefixedPage } from './generated/FlyoutPrefixed';
@@ -345,29 +345,29 @@ export const generatedRoutes: RouteType[] = [
     element: <FlyoutHeaderScrollableContentPage />,
   },
   {
-    name: 'Flyout Navigation',
-    path: '/flyout-navigation',
-    element: <FlyoutNavigationPage />,
+    name: 'Flyout Multilevel',
+    path: '/flyout-multilevel',
+    element: <FlyoutMultilevelPage />,
   },
   {
-    name: 'Flyout Navigation Active Identifier',
-    path: '/flyout-navigation-active-identifier',
-    element: <FlyoutNavigationActiveIdentifierPage />,
+    name: 'Flyout Multilevel Active Identifier',
+    path: '/flyout-multilevel-active-identifier',
+    element: <FlyoutMultilevelActiveIdentifierPage />,
   },
   {
-    name: 'Flyout Navigation Basic',
-    path: '/flyout-navigation-basic',
-    element: <FlyoutNavigationBasicPage />,
+    name: 'Flyout Multilevel Basic',
+    path: '/flyout-multilevel-basic',
+    element: <FlyoutMultilevelBasicPage />,
   },
   {
-    name: 'Flyout Navigation Prefixed',
-    path: '/flyout-navigation-prefixed',
-    element: <FlyoutNavigationPrefixedPage />,
+    name: 'Flyout Multilevel Prefixed',
+    path: '/flyout-multilevel-prefixed',
+    element: <FlyoutMultilevelPrefixedPage />,
   },
   {
-    name: 'Flyout Navigation Scrolled',
-    path: '/flyout-navigation-scrolled',
-    element: <FlyoutNavigationScrolledPage />,
+    name: 'Flyout Multilevel Scrolled',
+    path: '/flyout-multilevel-scrolled',
+    element: <FlyoutMultilevelScrolledPage />,
   },
   {
     name: 'Flyout Position Left',

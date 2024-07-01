@@ -12,9 +12,11 @@
     "clean:build": "rm -rf ../../dist/jsdom-polyfill"
   },
   "dependencies": {
+    "@oddbird/popover-polyfill": "^0.4.3",
     "construct-style-sheets-polyfill": "^3.1.0",
     "intersection-observer": "^0.12.2",
     "matchmedia-polyfill": "^0.3.2",
+    "resize-observer-polyfill": "^1.5.1",
     "scroll-behavior-polyfill": "^2.0.13",
     "whatwg-fetch": "^3.6.20"
   },

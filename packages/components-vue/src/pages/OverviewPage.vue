@@ -98,8 +98,8 @@
         <iframe src="/toast-basic?iframe=true" loading="eager" title="fix-linter-4a"></iframe>
       </div>
 
-      <div class="playground light" title="should render default flyout-navigation">
-        <iframe src="/flyout-navigation-basic?iframe=true" loading="eager" title="fix-linter-5a"></iframe>
+      <div class="playground light" title="should render default flyout-multilevel">
+        <iframe src="/flyout-multilevel-basic?iframe=true" loading="eager" title="fix-linter-5a"></iframe>
       </div>
 
       <div class="playground light" title="should render default inline-notification">
@@ -442,8 +442,8 @@
           <iframe src="/toast-prefixed?iframe=true" loading="eager" title="fix-linter-4b"></iframe>
         </div>
 
-        <div class="playground light" title="should render default flyout-navigation with custom prefix">
-          <iframe src="/flyout-navigation-prefixed?iframe=true" loading="eager" title="fix-linter-5b"></iframe>
+        <div class="playground light" title="should render default flyout-multilevel with custom prefix">
+          <iframe src="/flyout-multilevel-prefixed?iframe=true" loading="eager" title="fix-linter-5b"></iframe>
         </div>
 
         <div class="playground light" title="should render default inline-notification with custom prefix">

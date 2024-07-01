@@ -16,8 +16,40 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 #### Added
 
+- Partials: Added default `og:image` and related meta tags to the `getMetaTagsAndIconLinks` partial. Can be disabled by
+  setting the `ogImage` option to `false`.
+  ([#3357](https://github.com/porsche-design-system/porsche-design-system/pull/3357))
+
+#### Changed
+
+- `Flyout Navigation`, `Flyout Navigation Item`: renamed (experimental) component to `Flyout Multilevel` and
+  `Flyout Multilevel Item` ([#3351](https://github.com/porsche-design-system/porsche-design-system/pull/3351))
+
+```diff
+- <p-flyout-navigation><p-flyout-navigation-item></p-flyout-navigation-item></p-flyout-navigation>
++ <p-flyout-multilevel><p-flyout-multilevel-item></p-flyout-multilevel-item></p-flyout-multilevel>
+```
+
+#### Fixed
+
+- Types: `@porsche-design-system/components-vue` typings are not exposed
+  ([#3355](https://github.com/porsche-design-system/porsche-design-system/pull/3355))
+
+### [3.16.0-rc.1] - 2024-06-18
+
+#### Added
+
+- `jsdom-polyfill` Added polyfills for `Popover API` and `ResizeObserver`
+  ([#3334](https://github.com/porsche-design-system/porsche-design-system/pull/3334))
 - `Segmented Control`: Prop `aria` added to `Segmented Control Item` to support ARIA attributes
   ([#3327](https://github.com/porsche-design-system/porsche-design-system/pull/3327))
+
+#### Changed
+
+- Angular: updated peer dependency to `>=17.0.0 <19.0.0`
+  ([#3346](https://github.com/porsche-design-system/porsche-design-system/pull/3346))
+- React: Improve prop typings for all wrappers of `@porsche-design-system/components-react`
+  ([#3336](https://github.com/porsche-design-system/porsche-design-system/pull/3336))
 
 ### [3.16.0-rc.0] - 2024-06-05
 

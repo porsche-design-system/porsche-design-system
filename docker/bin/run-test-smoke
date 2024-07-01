@@ -5,7 +5,8 @@ set -o pipefail
 
 if
   [[ "--components-js" == "${1}" ]] ||
-  [[ "--components-react" == "${1}" ]];
+  [[ "--components-react" == "${1}" ]] ||
+  [[ "--components-vue" == "${1}" ]];
 then
   if [ "$CI" != true ]; then
     yarn test:smoke:${1:2}
