@@ -12,31 +12,13 @@ jobs:
     env:
       OSO_PROJECT_NAME: porsche_design_system
       OSO_AWS_ECR_REGISTRY: 936427553375.dkr.ecr.eu-central-1.amazonaws.com
-      PDS_DOCKER_IMAGE: ghcr.io/porsche-design-system/porsche-design-system/playwright:v1.42.1-focal-2
     steps:
       - name: 'Checkout'
         uses: actions/checkout@v4
-      - name: 'Clear action cache'
-        uses: ./.github/actions/clear-action-cache
-      - name: 'Cache node_modules'
-        uses: actions/cache@v4
-        id: cache
+      - name: 'Setup and install'
+        uses: ./.github/actions/setup-and-install
         with:
-          path: '**/node_modules'
-          key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
-      - name: 'Login to GitHub Container Registry'
-        uses: docker/login-action@v3
-        with:
-          registry: ghcr.io
-          username: ${{ github.actor }}
-          password: ${{ secrets.GITHUB_TOKEN }}
-      - name: 'Pull Docker Image'
-        run: docker pull ${{ env.PDS_DOCKER_IMAGE }}
-      - name: 'Install'
-        if: steps.cache.outputs.cache-hit != 'true'
-        uses: ./.github/actions/docker-run-playwright
-        with:
-          entrypoint: run-install
+          github-token: ${{ secrets.github-token }}
       - name: 'Production Builds'
         uses: ./.github/actions/docker-run-playwright
         with:
