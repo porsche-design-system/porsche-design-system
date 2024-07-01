@@ -2,10 +2,10 @@
 
 exports[`getComponentCss() should return correct css for state: info and theme: dark 1`] = `
 ":host {
-  display: grid;
   opacity: 0;
-  max-width: inherit;
-  box-sizing: border-box;
+  display: grid !important;
+  max-width: inherit !important;
+  box-sizing: border-box !important;
   margin: 0 !important;
   inset: inherit !important;
   border: 0 !important;
@@ -30,20 +30,15 @@ p {
   hyphens: auto;
   margin: 0;
   color: #FBFCFF;
-}
-@media(min-width:760px) {
-  :host {
-    grid-template-columns: auto minmax(auto, 1fr) auto;
-  }
-}
-
-.content {
   display: grid;
   gap: 4px;
   max-width: 50rem;
 }
 @media(min-width:760px) {
-  .content {
+  :host {
+    grid-template-columns: auto minmax(auto, 1fr) auto;
+  }
+  p {
     margin-left: -8px;
   }
 }
@@ -58,10 +53,10 @@ p {
 
 exports[`getComponentCss() should return correct css for state: info and theme: light 1`] = `
 ":host {
-  display: grid;
   opacity: 0;
-  max-width: inherit;
-  box-sizing: border-box;
+  display: grid !important;
+  max-width: inherit !important;
+  box-sizing: border-box !important;
   margin: 0 !important;
   inset: inherit !important;
   border: 0 !important;
@@ -86,20 +81,15 @@ p {
   hyphens: auto;
   margin: 0;
   color: #010205;
-}
-@media(min-width:760px) {
-  :host {
-    grid-template-columns: auto minmax(auto, 1fr) auto;
-  }
-}
-
-.content {
   display: grid;
   gap: 4px;
   max-width: 50rem;
 }
 @media(min-width:760px) {
-  .content {
+  :host {
+    grid-template-columns: auto minmax(auto, 1fr) auto;
+  }
+  p {
     margin-left: -8px;
   }
 }
@@ -114,10 +104,10 @@ p {
 
 exports[`getComponentCss() should return correct css for state: neutral and theme: dark 1`] = `
 ":host {
-  display: grid;
   opacity: 0;
-  max-width: inherit;
-  box-sizing: border-box;
+  display: grid !important;
+  max-width: inherit !important;
+  box-sizing: border-box !important;
   margin: 0 !important;
   inset: inherit !important;
   border: 0 !important;
@@ -142,20 +132,15 @@ p {
   hyphens: auto;
   margin: 0;
   color: #FBFCFF;
-}
-@media(min-width:760px) {
-  :host {
-    grid-template-columns: auto minmax(auto, 1fr) auto;
-  }
-}
-
-.content {
   display: grid;
   gap: 4px;
   max-width: 50rem;
 }
 @media(min-width:760px) {
-  .content {
+  :host {
+    grid-template-columns: auto minmax(auto, 1fr) auto;
+  }
+  p {
     margin-left: -8px;
   }
 }
@@ -170,10 +155,10 @@ p {
 
 exports[`getComponentCss() should return correct css for state: neutral and theme: light 1`] = `
 ":host {
-  display: grid;
   opacity: 0;
-  max-width: inherit;
-  box-sizing: border-box;
+  display: grid !important;
+  max-width: inherit !important;
+  box-sizing: border-box !important;
   margin: 0 !important;
   inset: inherit !important;
   border: 0 !important;
@@ -198,20 +183,15 @@ p {
   hyphens: auto;
   margin: 0;
   color: #010205;
-}
-@media(min-width:760px) {
-  :host {
-    grid-template-columns: auto minmax(auto, 1fr) auto;
-  }
-}
-
-.content {
   display: grid;
   gap: 4px;
   max-width: 50rem;
 }
 @media(min-width:760px) {
-  .content {
+  :host {
+    grid-template-columns: auto minmax(auto, 1fr) auto;
+  }
+  p {
     margin-left: -8px;
   }
 }
@@ -226,10 +206,10 @@ p {
 
 exports[`getComponentCss() should return correct css for state: success and theme: dark 1`] = `
 ":host {
-  display: grid;
   opacity: 0;
-  max-width: inherit;
-  box-sizing: border-box;
+  display: grid !important;
+  max-width: inherit !important;
+  box-sizing: border-box !important;
   margin: 0 !important;
   inset: inherit !important;
   border: 0 !important;
@@ -254,20 +234,15 @@ p {
   hyphens: auto;
   margin: 0;
   color: #FBFCFF;
-}
-@media(min-width:760px) {
-  :host {
-    grid-template-columns: auto minmax(auto, 1fr) auto;
-  }
-}
-
-.content {
   display: grid;
   gap: 4px;
   max-width: 50rem;
 }
 @media(min-width:760px) {
-  .content {
+  :host {
+    grid-template-columns: auto minmax(auto, 1fr) auto;
+  }
+  p {
     margin-left: -8px;
   }
 }
@@ -282,10 +257,10 @@ p {
 
 exports[`getComponentCss() should return correct css for state: success and theme: light 1`] = `
 ":host {
-  display: grid;
   opacity: 0;
-  max-width: inherit;
-  box-sizing: border-box;
+  display: grid !important;
+  max-width: inherit !important;
+  box-sizing: border-box !important;
   margin: 0 !important;
   inset: inherit !important;
   border: 0 !important;
@@ -310,20 +285,15 @@ p {
   hyphens: auto;
   margin: 0;
   color: #010205;
-}
-@media(min-width:760px) {
-  :host {
-    grid-template-columns: auto minmax(auto, 1fr) auto;
-  }
-}
-
-.content {
   display: grid;
   gap: 4px;
   max-width: 50rem;
 }
 @media(min-width:760px) {
-  .content {
+  :host {
+    grid-template-columns: auto minmax(auto, 1fr) auto;
+  }
+  p {
     margin-left: -8px;
   }
 }

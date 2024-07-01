@@ -13,11 +13,11 @@ export const getComponentCss = (state: ToastState, theme: Theme): string => {
   return getCss({
     '@global': {
       ':host': {
-        display: 'grid',
         opacity: 0, // needed to prevent flickering on initial render
-        maxWidth: 'inherit',
-        boxSizing: 'border-box',
         ...addImportantToEachRule({
+          display: 'grid',
+          maxWidth: 'inherit',
+          boxSizing: 'border-box',
           margin: 0, // ua popover reset
           inset: 'inherit', // ua popover reset
           border: '0', // ua popover reset
@@ -39,9 +39,9 @@ export const getComponentCss = (state: ToastState, theme: Theme): string => {
         ...prefersColorSchemeDarkMediaQuery(theme, {
           color: getThemedColors('dark').primaryColor,
         }),
+        ...getNotificationContentJssStyle(),
       },
     },
     icon: getNotificationIconJssStyle(),
-    content: getNotificationContentJssStyle(),
   });
 };
