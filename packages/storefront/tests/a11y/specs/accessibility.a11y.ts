@@ -66,10 +66,8 @@ test.describe('storefront pages', () => {
 
         if (scheme === 'dark') {
           const themeBtn = page.locator('.cycle-platform-theme');
-test.skip((await themeBtn.count()) === 0, 'No theme switcher found, skipping dark mode test');
-            console.log('No theme switcher found, skipping dark mode test');
-            return;
-          }
+          test.skip((await themeBtn.count()) === 0, 'No theme switcher found, skipping dark mode test');
+
           await enableDarkMode(page, themeBtn);
           const themeSwitch = page.locator('p-select[value="light"]').first();
 
