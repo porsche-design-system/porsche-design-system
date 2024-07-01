@@ -66,7 +66,7 @@ test.describe('storefront pages', () => {
 
         if (scheme === 'dark') {
           const themeBtn = page.locator('.cycle-platform-theme');
-          if ((await themeBtn.count()) === 0) {
+test.skip((await themeBtn.count()) === 0, 'No theme switcher found, skipping dark mode test');
             console.log('No theme switcher found, skipping dark mode test');
             return;
           }
