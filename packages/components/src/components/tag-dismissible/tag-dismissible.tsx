@@ -25,6 +25,9 @@ const propTypes: PropTypes<typeof TagDismissible> = {
   aria: AllowedTypes.aria<TagDismissibleAriaAttribute>(TAG_DISMISSIBLE_ARIA_ATTRIBUTES),
 };
 
+/**
+ * @slot {"name": "", "description": "Default slot for the tag content." }
+ */
 @Component({
   tag: 'p-tag-dismissible',
   shadow: { delegatesFocus: true },

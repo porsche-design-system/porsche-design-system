@@ -37,6 +37,9 @@ const propTypes: PropTypes<typeof Tabs> = {
   activeTabIndex: AllowedTypes.number,
 };
 
+/**
+ * @slot {"name": "", "description": "Default slot for the `p-tabs-item` tags." }
+ */
 @Component({
   tag: 'p-tabs',
   shadow: true,

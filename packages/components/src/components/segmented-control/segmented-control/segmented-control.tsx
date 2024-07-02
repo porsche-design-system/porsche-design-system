@@ -36,6 +36,9 @@ const propTypes: PropTypes<typeof SegmentedControl> = {
   columns: AllowedTypes.breakpoint<SegmentedControlColumns>(SEGMENTED_CONTROL_COLUMNS),
 };
 
+/**
+ * @slot {"name": "", "description": "Default slot for the `p-segmented-control-item` tags." }
+ */
 @Component({
   tag: 'p-segmented-control',
   shadow: true,

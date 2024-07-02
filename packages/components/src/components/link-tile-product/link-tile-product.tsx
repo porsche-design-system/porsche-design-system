@@ -35,7 +35,11 @@ const propTypes: PropTypes<typeof LinkTileProduct> = {
   theme: AllowedTypes.oneOf<Theme>(THEMES),
 };
 
-/** @experimental */
+/**
+ * @slot {"name": "", "description": "Default slot for the img or picture tag." }
+ *
+ * @experimental
+ */
 @Component({
   tag: 'p-link-tile-product',
   shadow: { delegatesFocus: true },

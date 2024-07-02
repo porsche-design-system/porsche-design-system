@@ -40,6 +40,11 @@ const propTypes: PropTypes<typeof LinkTileModelSignature> = {
   headingTag: AllowedTypes.oneOf<LinkTileModelSignatureHeadingTag>(LINK_TILE_MODEL_SIGNATURE_HEADING_TAGS),
 };
 
+/**
+ * @slot {"name": "", "description": "Default slot for the img or picture tag." }
+ * @slot {"name": "primary", "description": "Renders the primary link. Has to be a p-link tag." }
+ * @slot {"name": "secondary", "description": "Renders the secondary link. Has to be a p-link tag." }
+ */
 @Component({
   tag: 'p-link-tile-model-signature',
   shadow: true,
