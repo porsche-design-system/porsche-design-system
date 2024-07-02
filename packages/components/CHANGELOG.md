@@ -14,6 +14,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ### [Unreleased]
 
+### [3.16.0-rc.2] - 2024-07-02
+
 #### Added
 
 - Partials: Added default `og:image` and related meta tags to the `getMetaTagsAndIconLinks` partial. Can be disabled by
