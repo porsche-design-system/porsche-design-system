@@ -548,3 +548,72 @@
     <div>Slide 3</div>
   </p-carousel>
 </div>
+
+<div
+  class="playground light"
+  title="should render carousel without prev/next buttons / pagination and left aligned heading, description and slotted controls when slidesPerPage=3 but only 2 slides are rendered"
+>
+  <p-carousel heading="Less slides then slides per page" description="Some description" slides-per-page="3">
+    <p-tabs-bar slot="controls" active-tab-index="0">
+      <button type="button">Tab One</button>
+      <button type="button">Tab Two</button>
+      <button type="button">Tab Three</button>
+    </p-tabs-bar>
+    <div>Slide 1</div>
+    <div>Slide 2</div>
+  </p-carousel>
+</div>
+
+<div
+  class="playground light"
+  title="should render carousel without prev/next buttons / pagination and centered heading, description and slotted controls when slidesPerPage=3 and only 2 slides are rendered"
+>
+  <p-carousel
+    heading="Less slides then slides per page (centered)"
+    description="Some description"
+    slides-per-page="3"
+    align-header="center"
+  >
+    <p-tabs-bar slot="controls" active-tab-index="0">
+      <button type="button">Tab One</button>
+      <button type="button">Tab Two</button>
+      <button type="button">Tab Three</button>
+    </p-tabs-bar>
+    <div>Slide 1</div>
+    <div>Slide 2</div>
+  </p-carousel>
+</div>
+
+<div
+  class="playground light"
+  title="should render carousel without prev/next buttons / pagination and left aligned slotted heading, description and controls when slidesPerPage=3 but only 2 slides are rendered"
+>
+  <p-carousel slides-per-page="3">
+    <h2 slot="heading">Less slides then slides per page (slotted)</h2>
+    <p slot="description">Some slotted description</p>
+    <p-tabs-bar slot="controls" active-tab-index="0">
+      <button type="button">Tab One</button>
+      <button type="button">Tab Two</button>
+      <button type="button">Tab Three</button>
+    </p-tabs-bar>
+    <div>Slide 1</div>
+    <div>Slide 2</div>
+  </p-carousel>
+</div>
+
+<div
+  class="playground light"
+  title="should render carousel without prev/next buttons / pagination and centered slotted heading, description and controls when slidesPerPage=3 and only 2 slides are rendered"
+>
+  <p-carousel slides-per-page="3" align-header="center">
+    <h2 slot="heading">Less slides then slides per page (slotted and centered)</h2>
+    <p slot="description">Some slotted description</p>
+    <p-tabs-bar slot="controls" active-tab-index="0">
+      <button type="button">Tab One</button>
+      <button type="button">Tab Two</button>
+      <button type="button">Tab Three</button>
+    </p-tabs-bar>
+    <div>Slide 1</div>
+    <div>Slide 2</div>
+  </p-carousel>
+</div>

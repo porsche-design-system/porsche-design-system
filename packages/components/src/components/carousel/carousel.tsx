@@ -271,7 +271,8 @@ export class Carousel {
         CarouselAlignHeader,
         CarouselAlignHeaderDeprecated
       >,
-      this.theme
+      this.theme,
+      this.hasNavigation
     );
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
