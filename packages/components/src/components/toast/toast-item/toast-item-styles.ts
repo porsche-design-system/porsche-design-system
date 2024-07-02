@@ -7,15 +7,30 @@ import {
   getNotificationRootJssStyle,
 } from '../../inline-notification/inline-notification-styles-shared';
 import { dropShadowHighStyle, textSmallStyle } from '@porsche-design-system/utilities-v2';
-import { getThemedColors, prefersColorSchemeDarkMediaQuery } from '../../../styles';
+import { addImportantToEachRule, getThemedColors, prefersColorSchemeDarkMediaQuery } from '../../../styles';
 
 export const getComponentCss = (state: ToastState, theme: Theme): string => {
   return getCss({
     '@global': {
       ':host': {
         display: 'grid',
+        opacity: 0, // needed to prevent flickering on initial render
+        ...addImportantToEachRule({
+          maxWidth: 'inherit',
+          boxSizing: 'border-box',
+          margin: 0, // ua popover reset
+          inset: 'inherit', // ua popover reset
+          border: '0', // ua popover reset
+          outline: '0', // ua popover reset
+          overflow: 'visible', // ua popover reset
+          width: 'auto', // ua popover reset
+          height: 'auto', // ua popover reset
+        }),
         ...getNotificationRootJssStyle(state, false, true, theme),
         ...dropShadowHighStyle,
+        '&::backdrop': {
+          display: 'none',
+        },
       },
       p: {
         ...textSmallStyle,
@@ -24,9 +39,9 @@ export const getComponentCss = (state: ToastState, theme: Theme): string => {
         ...prefersColorSchemeDarkMediaQuery(theme, {
           color: getThemedColors('dark').primaryColor,
         }),
+        ...getNotificationContentJssStyle(),
       },
     },
     icon: getNotificationIconJssStyle(),
-    content: getNotificationContentJssStyle(),
   });
 };

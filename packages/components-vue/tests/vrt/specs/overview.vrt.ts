@@ -12,12 +12,3 @@ test.describe('overview', async () => {
     await expect(page.locator('#app')).toHaveScreenshot(`overview-${viewportWidthXXL}.png`);
   });
 });
-
-test.describe('overview notifications', async () => {
-  test(`should have no visual regression for viewport ${viewportWidthM}`, async ({ page }) => {
-    await page.goto('/overview-notifications');
-    await page.setViewportSize({ width: viewportWidthM, height: 600 });
-    await page.mouse.click(0, 0);
-    await expect(page.locator('#app')).toHaveScreenshot(`overview-notifications-${viewportWidthM}.png`);
-  });
-});

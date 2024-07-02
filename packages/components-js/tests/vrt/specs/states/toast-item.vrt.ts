@@ -13,8 +13,23 @@ import { type Theme } from '@porsche-design-system/utilities-v2';
 const component = 'toast-item';
 
 const scenario = async (page: Page, theme: Theme, scheme?: PrefersColorScheme): Promise<void> => {
-  const markup = () => `
-    <p-toast-item text="Some message"></p-toast-item>`;
+  const getTop = (index: number) => {
+    switch (index) {
+      case 0:
+        return '50px';
+      case 1:
+        return '175px';
+      case 2:
+        return '300px';
+    }
+  };
+  const markup = (index: number) => `
+<div style="height: 60px;">
+    <!-- toast item needs overwriting styles to render correctly -->
+    <div style="position: fixed; top: ${getTop(index)}; left: 16px">
+      <p-toast-item text="Some message" style="opacity: 1;"></p-toast-item>
+    </div>
+</div>`;
 
   await setContentWithDesignSystem(page, getPlaygroundPseudoStatesMarkup(markup), {
     forceComponentTheme: theme,

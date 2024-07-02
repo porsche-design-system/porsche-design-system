@@ -79,6 +79,17 @@ const generateCodeSamples = (): void => {
       ],
     },
     {
+      component: 'p-canvas',
+      samples: [
+        [
+          componentsJsPath + '/canvas-example.html',
+          componentsAngularPath + '/canvas-example.component.ts',
+          componentsReactPath + '/CanvasExample.tsx',
+          componentsVuePath + '/CanvasExample.vue',
+        ],
+      ],
+    },
+    {
       component: 'p-carousel',
       samples: [
         [
@@ -110,40 +121,28 @@ const generateCodeSamples = (): void => {
           componentsReactPath + '/FlyoutExample.tsx',
           componentsVuePath + '/FlyoutExample.vue',
         ],
-        [
-          componentsJsPath + '/flyout-example-slotted.html',
-          componentsAngularPath + '/flyout-example-slotted.component.ts',
-          componentsReactPath + '/FlyoutExampleSlotted.tsx',
-          componentsVuePath + '/FlyoutExampleSlotted.vue',
-        ],
-        [
-          componentsJsPath + '/flyout-example-slotted-secondary.html',
-          componentsAngularPath + '/flyout-example-slotted-secondary.component.ts',
-          componentsReactPath + '/FlyoutExampleSlottedSecondary.tsx',
-          componentsVuePath + '/FlyoutExampleSlottedSecondary.vue',
-        ],
       ],
     },
     {
-      component: 'p-flyout-navigation',
+      component: 'p-flyout-multilevel',
       samples: [
         [
-          componentsJsPath + '/flyout-navigation-example.html',
-          componentsAngularPath + '/flyout-navigation-example.component.ts',
-          componentsReactPath + '/FlyoutNavigationExample.tsx',
-          componentsVuePath + '/FlyoutNavigationExample.vue',
+          componentsJsPath + '/flyout-multilevel-example.html',
+          componentsAngularPath + '/flyout-multilevel-example.component.ts',
+          componentsReactPath + '/FlyoutMultilevelExample.tsx',
+          componentsVuePath + '/FlyoutMultilevelExample.vue',
         ],
         [
-          componentsJsPath + '/flyout-navigation-example-active-identifier.html',
-          componentsAngularPath + '/flyout-navigation-example-active-identifier.component.ts',
-          componentsReactPath + '/FlyoutNavigationExampleActiveIdentifier.tsx',
-          componentsVuePath + '/FlyoutNavigationExampleActiveIdentifier.vue',
+          componentsJsPath + '/flyout-multilevel-example-active-identifier.html',
+          componentsAngularPath + '/flyout-multilevel-example-active-identifier.component.ts',
+          componentsReactPath + '/FlyoutMultilevelExampleActiveIdentifier.tsx',
+          componentsVuePath + '/FlyoutMultilevelExampleActiveIdentifier.vue',
         ],
         [
-          componentsJsPath + '/flyout-navigation-example-custom-content.html',
-          componentsAngularPath + '/flyout-navigation-example-custom-content.component.ts',
-          componentsReactPath + '/FlyoutNavigationExampleCustomContent.tsx',
-          componentsVuePath + '/FlyoutNavigationExampleCustomContent.vue',
+          componentsJsPath + '/flyout-multilevel-example-custom-content.html',
+          componentsAngularPath + '/flyout-multilevel-example-custom-content.component.ts',
+          componentsReactPath + '/FlyoutMultilevelExampleCustomContent.tsx',
+          componentsVuePath + '/FlyoutMultilevelExampleCustomContent.vue',
         ],
       ],
     },
@@ -179,10 +178,10 @@ const generateCodeSamples = (): void => {
       component: 'p-modal',
       samples: [
         [
-          componentsJsPath + '/modal-example-accessibility.html',
-          componentsAngularPath + '/modal-example-accessibility.component.ts',
-          componentsReactPath + '/ModalExampleAccessibility.tsx',
-          componentsVuePath + '/ModalExampleAccessibility.vue',
+          componentsJsPath + '/modal-example.html',
+          componentsAngularPath + '/modal-example.component.ts',
+          componentsReactPath + '/ModalExample.tsx',
+          componentsVuePath + '/ModalExample.vue',
         ],
       ],
     },

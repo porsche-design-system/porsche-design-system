@@ -3,7 +3,7 @@ import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { IMaskModule } from 'angular-imask';
 import { PorscheDesignSystemModule } from '@porsche-design-system/components-angular';
-import { AppComponent } from './app.component';
+import { AppComponent, SafePipe } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import * as fromComponents from './components';
 import * as fromExamples from './examples';
@@ -13,6 +13,7 @@ import * as fromStyles from './styles';
 @NgModule({
   declarations: [
     AppComponent,
+    SafePipe,
     ...fromComponents.components,
     ...fromExamples.examples,
     ...fromPages.generatedPages,

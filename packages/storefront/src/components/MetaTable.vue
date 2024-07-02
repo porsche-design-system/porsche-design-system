@@ -130,7 +130,7 @@
   @import '../styles/shared.styles';
 
   :deep(.deprecated) {
-    color: #d5001c;
+    color: var(--theme-notification-error);
     text-transform: uppercase;
   }
 

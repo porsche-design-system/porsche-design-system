@@ -2198,6 +2198,95 @@ exports[`should match snapshot 1`] = `
     ],
     "styling": "jss",
   },
+  "p-canvas": {
+    "allowedPropValues": {
+      "sidebarEndOpen": "boolean",
+      "sidebarEndWidth": [
+        "medium",
+        "large",
+      ],
+      "sidebarStartOpen": "boolean",
+      "sidebarStartWidth": [
+        "medium",
+        "large",
+      ],
+    },
+    "eventNames": [
+      "dismissSidebarStart",
+      "dismissSidebarEnd",
+    ],
+    "eventsMeta": {
+      "dismissSidebarEnd": {
+        "description": "Emitted when the component requests to close the sidebar on the end side.",
+        "type": "void",
+      },
+      "dismissSidebarStart": {
+        "description": "Emitted when the component requests to close the sidebar on the start side.",
+        "type": "void",
+      },
+    },
+    "hasAriaProp": false,
+    "hasEvent": true,
+    "hasObserveAttributes": false,
+    "hasObserveChildren": false,
+    "hasSlot": true,
+    "isChunked": true,
+    "isDelegatingFocus": false,
+    "isExperimental": true,
+    "isInternal": false,
+    "isThemeable": false,
+    "namedSlots": [
+      "header",
+      "footer",
+      "sidebar-start",
+      "sidebar-end",
+      "sidebar-start",
+      "sidebar-end",
+    ],
+    "nestedComponents": [
+      "p-button-pure",
+      "p-flyout",
+    ],
+    "props": {
+      "sidebarEndOpen": false,
+      "sidebarEndWidth": "medium",
+      "sidebarStartOpen": false,
+      "sidebarStartWidth": "medium",
+    },
+    "propsMeta": {
+      "sidebarEndOpen": {
+        "allowedValues": "boolean",
+        "defaultValue": false,
+        "description": "Open Sidebar on the end side",
+        "type": "boolean",
+      },
+      "sidebarEndWidth": {
+        "allowedValues": [
+          "medium",
+          "large",
+        ],
+        "defaultValue": "medium",
+        "description": "Defines the width of the sidebar on the end side",
+        "type": "CanvasSidebarEndWidth",
+      },
+      "sidebarStartOpen": {
+        "allowedValues": "boolean",
+        "defaultValue": false,
+        "description": "Open Sidebar on the start side",
+        "type": "boolean",
+      },
+      "sidebarStartWidth": {
+        "allowedValues": [
+          "medium",
+          "large",
+        ],
+        "defaultValue": "medium",
+        "description": "Defines the width of the sidebar on the start side",
+        "type": "CanvasSidebarStartWidth",
+      },
+    },
+    "styling": "jss",
+  },
   "p-carousel": {
     "allowedPropValues": {
       "activeSlideIndex": "number",
@@ -3406,6 +3495,7 @@ exports[`should match snapshot 1`] = `
       "aria": {
         "aria-label": "string",
       },
+      "disableBackdropClick": "boolean",
       "open": "boolean",
       "position": [
         "start",
@@ -3437,7 +3527,7 @@ exports[`should match snapshot 1`] = `
     "hasAriaProp": true,
     "hasEvent": true,
     "hasObserveAttributes": false,
-    "hasObserveChildren": false,
+    "hasObserveChildren": true,
     "hasSlot": true,
     "isChunked": true,
     "isDelegatingFocus": false,
@@ -3453,6 +3543,7 @@ exports[`should match snapshot 1`] = `
     ],
     "props": {
       "aria": null,
+      "disableBackdropClick": false,
       "open": false,
       "position": "end",
       "theme": "light",
@@ -3466,6 +3557,12 @@ exports[`should match snapshot 1`] = `
         "description": "Add ARIA attributes.",
         "isAria": true,
         "type": "FlyoutAriaAttribute",
+      },
+      "disableBackdropClick": {
+        "allowedValues": "boolean",
+        "defaultValue": false,
+        "description": "If true, the flyout will not be closable via backdrop click.",
+        "type": "boolean",
       },
       "open": {
         "allowedValues": "boolean",
@@ -3505,7 +3602,7 @@ exports[`should match snapshot 1`] = `
     ],
     "styling": "jss",
   },
-  "p-flyout-navigation": {
+  "p-flyout-multilevel": {
     "allowedPropValues": {
       "activeIdentifier": "string",
       "aria": {
@@ -3529,7 +3626,7 @@ exports[`should match snapshot 1`] = `
       },
       "update": {
         "description": "Emitted when activeIdentifier is changed.",
-        "type": "FlyoutNavigationUpdateEventDetail",
+        "type": "FlyoutMultilevelUpdateEventDetail",
         "typeDetail": "{ activeIdentifier: string }",
       },
     },
@@ -3556,7 +3653,7 @@ exports[`should match snapshot 1`] = `
       "activeIdentifier": {
         "allowedValues": "string",
         "defaultValue": null,
-        "description": "Defines which flyout-navigation-item to be visualized as opened.",
+        "description": "Defines which flyout-multilevel-item to be visualized as opened.",
         "type": "string | undefined",
       },
       "aria": {
@@ -3566,12 +3663,12 @@ exports[`should match snapshot 1`] = `
         "defaultValue": null,
         "description": "Add ARIA attributes.",
         "isAria": true,
-        "type": "FlyoutNavigationAriaAttribute",
+        "type": "FlyoutMultilevelAriaAttribute",
       },
       "open": {
         "allowedValues": "boolean",
         "defaultValue": false,
-        "description": "If true, the flyout-navigation is visualized as opened.",
+        "description": "If true, the flyout-multilevel is visualized as opened.",
         "type": "boolean",
       },
       "theme": {
@@ -3581,13 +3678,13 @@ exports[`should match snapshot 1`] = `
           "auto",
         ],
         "defaultValue": "light",
-        "description": "Adapts the flyout-navigation color depending on the theme.",
+        "description": "Adapts the flyout-multilevel color depending on the theme.",
         "type": "Theme",
       },
     },
     "styling": "jss",
   },
-  "p-flyout-navigation-item": {
+  "p-flyout-multilevel-item": {
     "allowedPropValues": {
       "identifier": "string",
       "label": "string",
@@ -3613,7 +3710,7 @@ exports[`should match snapshot 1`] = `
       "identifier": {
         "allowedValues": "string",
         "defaultValue": null,
-        "description": "Unique identifier which controls if this item should be shown when the active-identifier on the flyout-navigation is set to this value.",
+        "description": "Unique identifier which controls if this item should be shown when the active-identifier on the flyout-multilevel is set to this value.",
         "isRequired": true,
         "type": "string",
       },
@@ -3624,7 +3721,7 @@ exports[`should match snapshot 1`] = `
         "type": "string",
       },
     },
-    "requiredParent": "p-flyout-navigation",
+    "requiredParent": "p-flyout-multilevel",
     "requiredProps": [
       "identifier",
     ],
@@ -7614,6 +7711,7 @@ exports[`should match snapshot 1`] = `
     ],
     "deprecatedProps": [
       "disableCloseButton",
+      "heading",
     ],
     "eventNames": [
       "close",
@@ -7633,7 +7731,7 @@ exports[`should match snapshot 1`] = `
     "hasAriaProp": true,
     "hasEvent": true,
     "hasObserveAttributes": false,
-    "hasObserveChildren": false,
+    "hasObserveChildren": true,
     "hasSlot": true,
     "isChunked": true,
     "isDelegatingFocus": false,
@@ -7641,6 +7739,7 @@ exports[`should match snapshot 1`] = `
     "isThemeable": true,
     "namedSlots": [
       "heading",
+      "header",
       "footer",
     ],
     "nestedComponents": [
@@ -7705,7 +7804,8 @@ exports[`should match snapshot 1`] = `
       "heading": {
         "allowedValues": "string",
         "defaultValue": null,
-        "description": "The title of the modal",
+        "description": "@deprecated since v3.0.0, will be removed with next major release, use \`header\` slot instead The title of the modal",
+        "isDeprecated": true,
         "type": "string",
       },
       "open": {
@@ -8892,6 +8992,9 @@ exports[`should match snapshot 1`] = `
   },
   "p-segmented-control-item": {
     "allowedPropValues": {
+      "aria": {
+        "aria-label": "string",
+      },
       "disabled": "boolean",
       "icon": [
         "",
@@ -9105,7 +9208,7 @@ exports[`should match snapshot 1`] = `
         "number",
       ],
     },
-    "hasAriaProp": false,
+    "hasAriaProp": true,
     "hasEvent": false,
     "hasObserveAttributes": false,
     "hasObserveChildren": false,
@@ -9122,6 +9225,7 @@ exports[`should match snapshot 1`] = `
       "p-icon",
     ],
     "props": {
+      "aria": null,
       "disabled": false,
       "icon": null,
       "iconSource": null,
@@ -9129,6 +9233,15 @@ exports[`should match snapshot 1`] = `
       "value": null,
     },
     "propsMeta": {
+      "aria": {
+        "allowedValues": {
+          "aria-label": "string",
+        },
+        "defaultValue": null,
+        "description": "Add ARIA attributes.",
+        "isAria": true,
+        "type": "SegmentedControlItemAriaAttribute",
+      },
       "disabled": {
         "allowedValues": "boolean",
         "defaultValue": false,
@@ -11907,6 +12020,10 @@ exports[`should match snapshot 1`] = `
     "hasObserveAttributes": false,
     "hasObserveChildren": false,
     "hasSlot": false,
+    "hostAttributes": {
+      "aria-live": "polite",
+      "role": "status",
+    },
     "isChunked": true,
     "isDelegatingFocus": false,
     "isInternal": false,
@@ -11946,6 +12063,9 @@ exports[`should match snapshot 1`] = `
     "hasObserveAttributes": false,
     "hasObserveChildren": false,
     "hasSlot": false,
+    "hostAttributes": {
+      "popover": "manual",
+    },
     "isChunked": false,
     "isDelegatingFocus": false,
     "isInternal": true,

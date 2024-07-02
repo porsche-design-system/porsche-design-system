@@ -1,259 +1,164 @@
-import type { JssStyle } from 'jss';
-import type { GetJssStyleFunction, Theme } from '../../utils';
-import {
-  buildResponsiveStyles,
-  getCss,
-  isHighContrastMode,
-  isThemeDark,
-  mergeDeep,
-  parseJSON,
-  scrollShadowColor,
-  scrollShadowColorDark,
-} from '../../utils';
-import type { Breakpoint } from '@porsche-design-system/utilities-v2';
 import {
   borderRadiusMedium,
-  borderWidthBase,
-  breakpoints,
-  getMediaQueryMin,
   gridExtendedOffsetBase,
   headingLargeStyle,
+  spacingFluidLarge,
+  spacingFluidMedium,
+  spacingFluidSmall,
 } from '@porsche-design-system/utilities-v2';
-import type { BreakpointCustomizable } from '../../types';
-import {
-  addImportantToEachRule,
-  colorSchemeStyles,
-  getBackdropJssStyle,
-  getThemedColors,
-  getTransition,
-  hostHiddenStyles,
-  hoverMediaQuery,
-  prefersColorSchemeDarkMediaQuery,
-} from '../../styles';
-import { MODAL_Z_INDEX } from '../../constants';
+import { type BreakpointCustomizable, type Theme } from '../../types';
+import { buildResponsiveStyles, getCss, mergeDeep } from '../../utils';
+import { addImportantToEachRule, colorSchemeStyles, hostHiddenStyles } from '../../styles';
 import { type ModalBackdrop } from './modal-utils';
+import {
+  dialogGridJssStyle,
+  dialogHostJssStyle,
+  getDialogColorJssStyle,
+  getDialogJssStyle,
+  getDialogStickyAreaJssStyle,
+  getDialogTransitionJssStyle,
+  getDismissButtonJssStyle,
+  getScrollerJssStyle,
+  headingTags,
+} from '../../styles/dialog-styles';
 
-const cssVariableSpacingTop = '--p-modal-spacing-top';
-const cssVariableSpacingBottom = '--p-modal-spacing-bottom';
+const cssVariableWidth = '--p-modal-width';
+const cssVariableSpacingTop = '--p-modal-spacing-top'; // TODO: maybe --p-modal-spacing-block-start would be more precise?
+const cssVariableSpacingBottom = '--p-modal-spacing-bottom'; // TODO: maybe --p-modal-spacing-block-end would be more precise?
 
-const mediaQueryXl = getMediaQueryMin('xl');
-const { primaryColor: darkThemePrimaryColor, contrastHighColor: darkThemeContrastHighColor } = getThemedColors('dark');
-
-export const stretchToFullModalWidthClassName = 'stretch-to-full-modal-width';
-
-const marginTopBottomFallback = 'clamp(16px, 7vh, 192px)';
-const marginTopBottomXlandXxlFallback = 'min(192px, 10vh)';
-export const footerShadowClass = 'footer--shadow';
-
-export const getFullscreenJssStyles: GetJssStyleFunction = (fullscreen: boolean): JssStyle => {
-  return fullscreen
-    ? {
-        minWidth: '100%',
-        maxWidth: 'none',
-        minHeight: '100%',
-        margin: 0,
-        borderRadius: 0,
-      }
-    : {
-        minWidth: '276px', // on viewport 320px: calc(${gridColumnWidthBase} * 6 + ${gridGap} * 5)
-        maxWidth: '1535.5px', // on viewport 1920px: `calc(${gridColumnWidthXXL} * 14 + ${gridGap} * 13)`
-        minHeight: 'auto',
-        margin: `var(${cssVariableSpacingTop},${marginTopBottomFallback}) ${gridExtendedOffsetBase} var(${cssVariableSpacingBottom},${marginTopBottomFallback})`,
-        borderRadius: borderRadiusMedium,
-      };
-};
-
-export const isFullscreenForXl = (fullscreen: BreakpointCustomizable<boolean>): boolean => {
-  const fullscreenParsed = parseJSON(fullscreen);
-
-  if (typeof fullscreenParsed === 'boolean') {
-    return fullscreenParsed;
-  } else {
-    const entries = Object.entries(fullscreenParsed) as [Breakpoint, boolean][];
-    const [lastTrueBreakpoint] = entries.filter(([, val]) => val).pop() || [];
-    const [lastFalseBreakpoint] = entries.filter(([, val]) => !val).pop() || [];
-
-    return breakpoints.indexOf(lastTrueBreakpoint) > breakpoints.indexOf(lastFalseBreakpoint);
-  }
-};
-
-const getSlottedJssStyle = (marginValue: number, hasHeader: boolean, hasDismissButton: boolean): JssStyle => {
-  const marginPx = `${-marginValue}px`;
-  return {
-    [`&(.${stretchToFullModalWidthClassName})`]: {
-      width: `calc(100% + ${marginValue * 2}px)`,
-      margin: `0 ${marginPx}`,
-    },
-    ...(!hasHeader && {
-      [`&(.${stretchToFullModalWidthClassName}:first-child)`]: {
-        marginTop: hasDismissButton ? `${-marginValue / 16}rem` : marginPx,
-      },
-    }),
-    [`&(.${stretchToFullModalWidthClassName}:last-child)`]: {
-      marginBottom: marginPx,
-    },
-  };
-};
+const safeZoneVertical = `calc(${spacingFluidSmall} + ${spacingFluidMedium})`;
+const safeZoneHorizontal = `${spacingFluidLarge}`;
+export const cssClassNameStretchToFullModalWidth = 'stretch-to-full-modal-width';
 
 export const getComponentCss = (
   isOpen: boolean,
   backdrop: ModalBackdrop,
-  isFullscreen: BreakpointCustomizable<boolean>,
+  fullscreen: BreakpointCustomizable<boolean>,
   hasDismissButton: boolean,
   hasHeader: boolean,
   hasFooter: boolean,
   theme: Theme
 ): string => {
-  const { primaryColor, backgroundColor } = getThemedColors(theme);
-  const { primaryColor: primaryColorDark, backgroundColor: backgroundColorDark } = getThemedColors('dark');
-  const isFullscreenForXlAndXxl = isFullscreenForXl(isFullscreen);
-  const duration = isOpen ? 'moderate' : 'short';
-  const easing = isOpen ? 'in' : 'out';
-  const contentPadding = '32px';
-
   return getCss({
     '@global': {
       ':host': {
-        overflowY: 'auto', // overrideable
+        display: 'block',
         ...addImportantToEachRule({
+          ...dialogHostJssStyle,
           ...colorSchemeStyles,
           ...hostHiddenStyles,
-          ...getBackdropJssStyle(isOpen, MODAL_Z_INDEX, theme, duration, backdrop),
         }),
       },
+      // TODO: why not available to Flyout too?
+      // TODO: discussable if so many styles are a good thing, since we could also expose one or two CSS variables with which a stretch to full width is possible too
       '::slotted': addImportantToEachRule(
         mergeDeep(
-          getSlottedJssStyle(32, hasHeader, hasDismissButton),
-          buildResponsiveStyles(isFullscreen, (fullscreenValue: boolean) => ({
-            [`&(.${stretchToFullModalWidthClassName}`]: {
-              '&:first-child)': {
-                borderRadius: fullscreenValue ? 0 : '8px 8px 0 0',
+          {
+            [`&(.${cssClassNameStretchToFullModalWidth})`]: {
+              display: 'block',
+              margin: `0 calc(${safeZoneHorizontal} * -1)`,
+              width: `calc(100% + calc(${safeZoneHorizontal} * 2))`,
+            },
+            ...(!hasHeader && {
+              [`&(.${cssClassNameStretchToFullModalWidth}:first-child)`]: {
+                marginBlockStart: `calc(${safeZoneVertical} * -1)`,
               },
-              '&:last-child)': {
-                borderRadius: fullscreenValue ? 0 : '0 0 8px 8px',
+            }),
+            ...(!hasFooter && {
+              [`&(.${cssClassNameStretchToFullModalWidth}:last-child)`]: {
+                marginBlockEnd: `calc(${safeZoneVertical} * -1)`,
               },
+            }),
+          },
+          buildResponsiveStyles(fullscreen, (fullscreenValue: boolean) => ({
+            [`&(.${cssClassNameStretchToFullModalWidth}:first-child)`]: {
+              borderTopLeftRadius: fullscreenValue ? 0 : borderRadiusMedium,
+              borderTopRightRadius: fullscreenValue ? 0 : borderRadiusMedium,
+            },
+            [`&(.${cssClassNameStretchToFullModalWidth}:last-child)`]: {
+              borderBottomLeftRadius: fullscreenValue ? 0 : borderRadiusMedium,
+              borderBottomRightRadius: fullscreenValue ? 0 : borderRadiusMedium,
             },
           }))
         )
       ),
-      h2: {
-        ...headingLargeStyle,
-        margin: 0,
-        color: primaryColor,
-        ...prefersColorSchemeDarkMediaQuery(theme, {
-          color: primaryColorDark,
-        }),
-      },
-    },
-    'scroll-container': {
-      display: 'flex',
-      inset: 0, // TODO: is this still needed?
-      height: '100%',
-      overflowY: 'inherit',
-      alignItems: 'center',
-      justifyContent: 'center',
-      flexWrap: 'wrap',
-    },
-    root: mergeDeep(
-      {
-        color: primaryColor, // enables color inheritance for slotted content
-        position: 'relative',
-        boxSizing: 'border-box',
-        transform: isOpen ? 'translateY(0%)' : 'translateY(25%)',
-        opacity: isOpen ? 1 : 0,
-        transition: `${getTransition('opacity', duration, easing)}, ${getTransition('transform', duration, easing)}`,
-        paddingTop: hasDismissButton ? '2rem' : contentPadding, // rem value needed to prevent overlapping of close button and contents in scaling mode
-        ...(!hasFooter && { paddingBottom: contentPadding }),
-        background: backgroundColor,
-        outline: isHighContrastMode ? '1px solid transparent' : 0,
-        // TODO: getFocusJssStyle() can't be re-used atm, but as soon as component is refactored to `<dialog />` then no
-        //  focus should be necessary at all because focus is auto forwarded to dismiss button.
-        // ::after to be above sticky footer without z-index games
-        '&:focus::after': {
-          content: '""',
-          position: 'fixed',
-          border: `${borderWidthBase} solid`,
-          pointerEvents: 'none', // fix text selection in focus state
-          ...buildResponsiveStyles(isFullscreen, (fullscreenValue: boolean) => ({
-            borderRadius: fullscreenValue ? 0 : '12px',
-            borderColor: fullscreenValue ? primaryColor : darkThemePrimaryColor,
-            inset: fullscreenValue ? 0 : '-4px',
-            ...prefersColorSchemeDarkMediaQuery(theme, {
-              borderColor: darkThemePrimaryColor,
-            }),
-          })),
+      slot: {
+        display: 'block',
+        '&:first-of-type': {
+          gridRowStart: 1,
         },
-        '&:not(:focus-visible)::before': {
-          border: 0,
+        '&:not([name])': {
+          gridColumn: '2/3',
+          zIndex: 0, // controls layering + creates new stacking context (prevents content within to be above other dialog areas)
         },
-        [mediaQueryXl]: {
-          margin: isFullscreenForXlAndXxl
-            ? 0
-            : `var(${cssVariableSpacingTop},${marginTopBottomXlandXxlFallback}) ${gridExtendedOffsetBase} var(${cssVariableSpacingBottom},${marginTopBottomXlandXxlFallback})`,
-        },
-        ...prefersColorSchemeDarkMediaQuery(theme, {
-          color: primaryColorDark,
-          background: backgroundColorDark,
-        }),
-      },
-      buildResponsiveStyles(isFullscreen, getFullscreenJssStyles) as any // potentially needs to be merged with mediaQueryXl
-    ),
-    ...(hasHeader && {
-      header: {
-        padding: `0 ${contentPadding} 8px`,
-      },
-    }),
-    content: {
-      ...(hasFooter && {
-        position: 'relative', // to make sure content isn't above sticky footer, but might affect consumer's absolute positioning
-        zIndex: 0,
-      }),
-      padding: `0 ${contentPadding}`,
-    },
-    ...(hasFooter && {
-      footer: {
-        position: 'sticky',
-        background: backgroundColor,
-        padding: contentPadding,
-        bottom: 0,
-        borderBottomLeftRadius: borderRadiusMedium,
-        borderBottomRightRadius: borderRadiusMedium,
-        ...prefersColorSchemeDarkMediaQuery(theme, {
-          background: backgroundColorDark,
-        }),
-      },
-      [footerShadowClass]: {
-        boxShadow: `${isThemeDark(theme) ? scrollShadowColorDark : scrollShadowColor} 0 -5px 10px`,
-        clipPath: 'inset(-20px 0 0 0)', // crop leaking box-shadow on left and right side
-        ...prefersColorSchemeDarkMediaQuery(theme, {
-          boxShadow: `${scrollShadowColorDark} 0 -5px 10px`,
-        }),
-      },
-    }),
-    ...(hasDismissButton && {
-      controls: {
-        position: 'absolute',
-        top: '8px',
-        right: '8px',
-        left: '8px',
-        display: 'flex',
-        justifyContent: 'flex-end',
-        zIndex: 1, // To assure controls are on top when using stretchToFullModalWidthClassName and transformed slotted content
-      },
-      dismiss: {
-        border: `2px solid ${backgroundColor}`, // needed to enlarge button slightly without affecting the hover area (are equal now).
-        borderRadius: '4px',
-        background: backgroundColor,
-        ...hoverMediaQuery({
-          '&:hover': {
-            background: darkThemeContrastHighColor,
-            borderColor: darkThemeContrastHighColor,
+        ...(hasHeader && {
+          '&[name=header]': {
+            gridColumn: '2/3',
+            zIndex: 0, // controls layering + creates new stacking context (prevents content within to be above other dialog areas)
           },
         }),
-        ...prefersColorSchemeDarkMediaQuery(theme, {
-          background: backgroundColorDark,
-          borderColor: backgroundColorDark,
+        ...(hasFooter && {
+          '&[name=footer]': {
+            ...getDialogStickyAreaJssStyle('footer', theme),
+            gridColumn: '1/-1',
+            zIndex: 1, // controls layering + creates new stacking context (prevents content within to be above other dialog areas)
+          },
         }),
+      },
+      ...(hasHeader && {
+        // TODO: we should either deprecate heading slot + pre-styled headings or implement it in flyout too
+        [`slot[name=heading],${headingTags}`]: {
+          gridRowStart: 1,
+          gridColumn: '2/3',
+          zIndex: 0, // controls layering + creates new stacking context (prevents content within to be above other dialog areas)
+          ...headingLargeStyle,
+          margin: 0, // relevant for shadowed h1,h2,h3,…
+        },
+        [`:is(${headingTags}) ~ slot:first-of-type`]: {
+          gridRowStart: 'auto',
+        },
+        [`::slotted([slot="heading"]:is(${headingTags}))`]: {
+          margin: 0, // ua-style (relevant for e.g. <h3 slot="heading"/>)
+        },
+      }),
+      dialog: getDialogJssStyle(isOpen, theme, backdrop),
+    },
+    scroller: getScrollerJssStyle('fullscreen', theme),
+    modal: {
+      ...dialogGridJssStyle,
+      ...getDialogColorJssStyle(theme),
+      ...getDialogTransitionJssStyle(isOpen, '^'),
+      // TODO: maybe we should deprecate the fullscreen property and force the modal to be fullscreen on mobile only
+      ...buildResponsiveStyles(fullscreen, (fullscreenValue: boolean) =>
+        fullscreenValue
+          ? {
+              width: 'auto',
+              minWidth: 'auto',
+              maxWidth: 'none',
+              placeSelf: 'stretch',
+              margin: 0,
+              borderRadius: 0,
+            }
+          : {
+              width: `var(${cssVariableWidth},auto)`,
+              minWidth: '276px', // to be in sync with "Porsche Grid" on viewport = 320px: calc(${gridColumnWidthBase} * 6 + ${gridGap} * 5)
+              maxWidth: '1535.5px', // to be in sync with "Porsche Grid" on viewport >= 1920px: `calc(${gridColumnWidthXXL} * 14 + ${gridGap} * 13)`
+              placeSelf: 'center',
+              margin: `var(${cssVariableSpacingTop},clamp(16px, 10vh, 192px)) ${gridExtendedOffsetBase} var(${cssVariableSpacingBottom},clamp(16px, 10vh, 192px))`, // horizontal margin is needed to ensure modal is placed on "Porsche Grid" when slotted content is wider than the viewport width
+              borderRadius: borderRadiusMedium,
+            }
+      ),
+    },
+    ...(hasDismissButton && {
+      dismiss: {
+        ...getDismissButtonJssStyle(theme, isOpen),
+        gridArea: '1/3',
+        zIndex: 2, // ensures dismiss button is above sticky footer, header and content
+        position: 'sticky',
+        insetBlockStart: spacingFluidSmall,
+        marginBlockStart: `calc(${spacingFluidMedium} * -1)`,
+        marginInlineEnd: spacingFluidSmall,
+        justifySelf: 'flex-end',
       },
     }),
   });

@@ -1,8 +1,9 @@
 import type { TagName } from '@porsche-design-system/shared';
 
 export const WHITELISTED_TAG_NAMES = [
+  'p-canvas',
   'p-flex-item',
-  'p-flyout-navigation-item',
+  'p-flyout-multilevel-item',
   'p-grid-item',
   'p-multi-select-option',
   'p-select-option',
@@ -31,8 +32,7 @@ export const tagNameMarkup: Record<TagNameRelevant, string> = {
   <span slot="heading">Some Slotted Heading</span>
   <p>Some Text</p>
 </p-accordion>`,
-  'p-banner': `<p-banner>
-    <span slot="title">Some banner title</span>
+  'p-banner': `<p-banner heading="Some heading">
     <span slot="description">Some banner description.</span>
   </p-banner>`,
   'p-button': `<p-button>Some label</p-button>`,
@@ -62,17 +62,17 @@ export const tagNameMarkup: Record<TagNameRelevant, string> = {
   'p-flyout': `
     <p-flyout></p-flyout>
   `,
-  'p-flyout-navigation': `<p-flyout-navigation>
-    <p-flyout-navigation-item identifier="identifier-1" label="Button 1">
+  'p-flyout-multilevel': `<p-flyout-multilevel>
+    <p-flyout-multilevel-item identifier="identifier-1" label="Button 1">
       <a href="#some-anchor-1">Some anchor</a>
-    </p-flyout-navigation-item>
-    <p-flyout-navigation-item identifier="identifier-2" label="Button 2">
+    </p-flyout-multilevel-item>
+    <p-flyout-multilevel-item identifier="identifier-2" label="Button 2">
       <a href="#some-anchor-2">Some anchor</a>
-    </p-flyout-navigation-item>
-    <p-flyout-navigation-item identifier="identifier-3" label="Button 3">
+    </p-flyout-multilevel-item>
+    <p-flyout-multilevel-item identifier="identifier-3" label="Button 3">
       <a href="#some-anchor-3">Some anchor</a>
-    </p-flyout-navigation-item>
-</p-flyout-navigation>`,
+    </p-flyout-multilevel-item>
+</p-flyout-multilevel>`,
   'p-grid': `<p-grid>
     <p-grid-item size="6"></p-grid-item>
     <p-grid-item size="6"></p-grid-item>
@@ -102,7 +102,7 @@ export const tagNameMarkup: Record<TagNameRelevant, string> = {
     <img src="" />
   </p-link-tile-product>`,
   'p-marque': `<p-marque></p-marque>`,
-  'p-modal': `<p-modal heading="Some heading" open="true"></p-modal>`,
+  'p-modal': `<p-modal open="true"><h2 slot="header">Some Heading</h2></p-modal>`,
   'p-model-signature': `<p-model-signature></p-model-signature>`,
   'p-multi-select': `<p-multi-select name="name">
     <p-multi-select-option value="a">Option A</p-multi-select-option>

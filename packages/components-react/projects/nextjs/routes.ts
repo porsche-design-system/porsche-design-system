@@ -108,6 +108,10 @@ const generatedRoutes = {
     "path": "/flyout-basic",
     "name": "FlyoutBasic"
   },
+  "flyoutCssVariables": {
+    "path": "/flyout-css-variables",
+    "name": "FlyoutCssVariables"
+  },
   "flyoutFooter": {
     "path": "/flyout-footer",
     "name": "FlyoutFooter"
@@ -172,37 +176,25 @@ const generatedRoutes = {
     "path": "/flyout-header-scrollable-content",
     "name": "FlyoutHeaderScrollableContent"
   },
-  "flyoutMaxWidthContent": {
-    "path": "/flyout-max-width-content",
-    "name": "FlyoutMaxWidthContent"
+  "flyoutMultilevel": {
+    "path": "/flyout-multilevel",
+    "name": "FlyoutMultilevel"
   },
-  "flyoutMaxWidthContentPositionLeft": {
-    "path": "/flyout-max-width-content-position-left",
-    "name": "FlyoutMaxWidthContentPositionLeft"
+  "flyoutMultilevelActiveIdentifier": {
+    "path": "/flyout-multilevel-active-identifier",
+    "name": "FlyoutMultilevelActiveIdentifier"
   },
-  "flyoutMaxWidthContentPositionStart": {
-    "path": "/flyout-max-width-content-position-start",
-    "name": "FlyoutMaxWidthContentPositionStart"
+  "flyoutMultilevelBasic": {
+    "path": "/flyout-multilevel-basic",
+    "name": "FlyoutMultilevelBasic"
   },
-  "flyoutNavigation": {
-    "path": "/flyout-navigation",
-    "name": "FlyoutNavigation"
+  "flyoutMultilevelPrefixed": {
+    "path": "/flyout-multilevel-prefixed",
+    "name": "FlyoutMultilevelPrefixed"
   },
-  "flyoutNavigationActiveIdentifier": {
-    "path": "/flyout-navigation-active-identifier",
-    "name": "FlyoutNavigationActiveIdentifier"
-  },
-  "flyoutNavigationBasic": {
-    "path": "/flyout-navigation-basic",
-    "name": "FlyoutNavigationBasic"
-  },
-  "flyoutNavigationPrefixed": {
-    "path": "/flyout-navigation-prefixed",
-    "name": "FlyoutNavigationPrefixed"
-  },
-  "flyoutNavigationScrolled": {
-    "path": "/flyout-navigation-scrolled",
-    "name": "FlyoutNavigationScrolled"
+  "flyoutMultilevelScrolled": {
+    "path": "/flyout-multilevel-scrolled",
+    "name": "FlyoutMultilevelScrolled"
   },
   "flyoutPositionLeft": {
     "path": "/flyout-position-left",
@@ -212,9 +204,9 @@ const generatedRoutes = {
     "path": "/flyout-position-start",
     "name": "FlyoutPositionStart"
   },
-  "flyoutPrefixedHeaderFooterSubfooter": {
-    "path": "/flyout-prefixed-header-footer-subfooter",
-    "name": "FlyoutPrefixedHeaderFooterSubfooter"
+  "flyoutPrefixed": {
+    "path": "/flyout-prefixed",
+    "name": "FlyoutPrefixed"
   },
   "grid": {
     "path": "/grid",
@@ -280,9 +272,9 @@ const generatedRoutes = {
     "path": "/modal-basic",
     "name": "ModalBasic"
   },
-  "modalCustomStyling": {
-    "path": "/modal-custom-styling",
-    "name": "ModalCustomStyling"
+  "modalCssVariables": {
+    "path": "/modal-css-variables",
+    "name": "ModalCssVariables"
   },
   "modalDisableCloseButton": {
     "path": "/modal-disable-close-button",
@@ -296,9 +288,21 @@ const generatedRoutes = {
     "path": "/modal-fullscreen-responsive",
     "name": "ModalFullscreenResponsive"
   },
+  "modalGrid": {
+    "path": "/modal-grid",
+    "name": "ModalGrid"
+  },
+  "modalPrefixed": {
+    "path": "/modal-prefixed",
+    "name": "ModalPrefixed"
+  },
   "modalScrollable": {
     "path": "/modal-scrollable",
     "name": "ModalScrollable"
+  },
+  "modalSlottedHeader": {
+    "path": "/modal-slotted-header",
+    "name": "ModalSlottedHeader"
   },
   "modalSlottedHeading": {
     "path": "/modal-slotted-heading",
@@ -331,10 +335,6 @@ const generatedRoutes = {
   "overview": {
     "path": "/overview",
     "name": "Overview"
-  },
-  "overviewNotifications": {
-    "path": "/overview-notifications",
-    "name": "OverviewNotifications"
   },
   "pagination": {
     "path": "/pagination",

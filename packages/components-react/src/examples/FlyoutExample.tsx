@@ -1,5 +1,5 @@
 import { useCallback, useState } from 'react';
-import { PButton, PText, PFlyout } from '@porsche-design-system/components-react';
+import { PButton, PText, PFlyout, PHeading, PButtonGroup } from '@porsche-design-system/components-react';
 
 export const FlyoutExamplePage = (): JSX.Element => {
   const [isFlyoutOpen, setIsFlyoutOpen] = useState<boolean>(false);
@@ -13,10 +13,20 @@ export const FlyoutExamplePage = (): JSX.Element => {
   return (
     <>
       <PButton type="button" aria={{ 'aria-haspopup': 'dialog' }} onClick={onOpen}>
-        Open Flyout
+        Open Modal
       </PButton>
-      <PFlyout open={isFlyoutOpen} position="end" onDismiss={onDismiss}>
-        <PText>Some content that dynamically scales the width of the flyout.</PText>
+      <PFlyout open={isFlyoutOpen} onDismiss={onDismiss} aria={{ 'aria-label': 'Some Heading' }}>
+        <PHeading slot="header" size="large" tag="h2">
+          Some Heading
+        </PHeading>
+        <PText>Some Content</PText>
+        <PButtonGroup slot="footer">
+          <PButton type="button">Proceed</PButton>
+          <PButton type="button" variant="secondary">
+            Cancel
+          </PButton>
+        </PButtonGroup>
+        <PText slot="sub-footer">Some Content</PText>
       </PFlyout>
     </>
   );

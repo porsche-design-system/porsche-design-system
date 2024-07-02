@@ -31,9 +31,24 @@ export const routes: RouteType[] = [
     component: fromExamples.AccordionExample,
   },
   {
+    path: '/banner-basic',
+    name: 'BannerBasic',
+    component: fromPages.BannerBasicPage,
+  },
+  {
+    path: '/banner-prefixed',
+    name: 'BannerPrefixed',
+    component: fromPages.BannerPrefixedPage,
+  },
+  {
     path: '/button-example-form',
     name: 'Button Example Form',
     component: fromExamples.ButtonExampleForm,
+  },
+  {
+    path: '/canvas-example',
+    name: 'Canvas Example',
+    component: fromExamples.CanvasExample,
   },
   {
     path: '/carousel-example-dynamic-slides',
@@ -51,34 +66,44 @@ export const routes: RouteType[] = [
     component: fromExamples.CarouselExampleJumpToSlide,
   },
   {
+    path: '/flyout-basic',
+    name: 'FlyoutBasic',
+    component: fromPages.FlyoutBasicPage,
+  },
+  {
+    path: '/flyout-prefixed',
+    name: 'FlyoutPrefixed',
+    component: fromPages.FlyoutPrefixedPage,
+  },
+  {
     path: '/flyout-example',
     name: 'Flyout Example',
     component: fromExamples.FlyoutExample,
   },
   {
-    path: '/flyout-example-slotted',
-    name: 'Flyout Example Slotted',
-    component: fromExamples.FlyoutExampleSlotted,
+    path: '/flyout-multilevel-example',
+    name: 'Flyout Multilevel Example',
+    component: fromExamples.FlyoutMultilevelExample,
   },
   {
-    path: '/flyout-example-slotted-secondary',
-    name: 'Flyout Example Slotted Secondary',
-    component: fromExamples.FlyoutExampleSlottedSecondary,
+    path: '/flyout-multilevel-example-active-identifier',
+    name: 'Flyout Multilevel Example Active Identifier',
+    component: fromExamples.FlyoutMultilevelExampleActiveIdentifier,
   },
   {
-    path: '/flyout-navigation-example',
-    name: 'Flyout Navigation Example',
-    component: fromExamples.FlyoutNavigationExample,
+    path: '/flyout-multilevel-example-custom-content',
+    name: 'Flyout Multilevel Example Custom Content',
+    component: fromExamples.FlyoutMultilevelExampleCustomContent,
   },
   {
-    path: '/flyout-navigation-example-active-identifier',
-    name: 'Flyout Navigation Example Active Identifier',
-    component: fromExamples.FlyoutNavigationExampleActiveIdentifier,
+    path: '/flyout-multilevel-basic',
+    name: 'FlyoutMultilevelBasic',
+    component: fromPages.FlyoutMultilevelBasicPage,
   },
   {
-    path: '/flyout-navigation-example-custom-content',
-    name: 'Flyout Navigation Example Custom Content',
-    component: fromExamples.FlyoutNavigationExampleCustomContent,
+    path: '/flyout-multilevel-prefixed',
+    name: 'FlyoutMultilevelPrefixed',
+    component: fromPages.FlyoutMultilevelPrefixedPage,
   },
   {
     path: '/inline-notification-example-action-button',
@@ -94,6 +119,16 @@ export const routes: RouteType[] = [
     path: '/link-tile-product-example',
     name: 'Link Tile Product Example',
     component: fromExamples.LinkTileProductExample,
+  },
+  {
+    path: '/modal-basic',
+    name: 'ModalBasic',
+    component: fromPages.ModalBasicPage,
+  },
+  {
+    path: '/modal-prefixed',
+    name: 'ModalPrefixed',
+    component: fromPages.ModalPrefixedPage,
   },
   {
     path: '/modal-example-accessibility',

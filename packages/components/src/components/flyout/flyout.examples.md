@@ -1,92 +1,90 @@
 <ComponentHeading name="Flyout"></ComponentHeading>
 
-The `p-flyout` component, also known as a drawer, is a controlled component that overlays from the left or right side of
-the screen. It is commonly used as a temporary workspace that allows users to complete tasks without navigating to a new
-page or as a mobile navigation.
+The `p-flyout` is a overlay from the left or right side of the screen. It is commonly used as a temporary workspace that
+allows users to complete tasks without navigating to a new page or as a mobile navigation.
 
-Flyouts are flexible in the context and can include other components of the Porsche Design System.
-
-It is a controlled component. This grants you flexible control over the flyout's behavior especially whether it should
-stay open after user interaction like submission of a form.
-
-<Notification heading="Important note" heading-tag="h2" state="warning">
-  This component activates a focus trap to keep the focus within while being open.<br>
-  This is achieved by detecting the first and last focusable child element after the flyout is opened.<br>
-  Further DOM changes like adding or removing DOM nodes can only be detected on the first level, hence direct children of the flyout.
-</Notification>
+It is a controlled component. This grants flexible control over the flyout's behavior especially whether it should stay
+open after user interaction like submission of a form.
 
 <Notification heading="Scroll-lock" heading-tag="h2" state="warning">
   This component sets <code>overflow: hidden</code> on the body when opened in order to prevent background scrolling.<br> 
   This doesn't work completely reliable under iOS but is the most stable solution.<br>
-  Feel free to address this issue in an Open Source PR, if you can provide a better solution. <b><a href="https://github.com/porsche-design-system/porsche-design-system/blob/main/packages/components/src/utils/setScrollLock.ts">Current implementation</a></b><br>
-</Notification>
-
-<Notification heading="Recommendation" heading-tag="h2" state="success">
-  You should only have a single instance of this component within your application. We recommend rendering it close to the body, e.g., in your App.tsx or app.component.ts. This way you reduce the chance of having issues with its z-index and fixed positioning.
+  Feel free to address this issue in an Open Source PR, if you can provide a better solution. <b><a href="https://github.com/porsche-design-system/porsche-design-system/blob/main/packages/components/src/utils/setScrollLock.ts">Current implementation</a></b>
 </Notification>
 
 <TableOfContents></TableOfContents>
 
 ## Basic
 
-It is crucial to note that `p-flyout` is displayed within your DOM hierarchy as an overlay through a high `z-index`
-value. Therefore, you need to ensure any parent elements don't define a `z-index` or have a `transform` style in place.
-Otherwise, the flyout might get clipped or overlapped by other elements.
+Following **web standards**, the component uses the native `<dialog />` element internally which ensures proper focus
+handling including a **focus trap**. In addition, it's rendered on the `#top-layer` which ensures the element to be on
+top of the page independent of where `p-flyout` is placed in the DOM hierarchy (`z-index` is not relevant anymore and
+won't have any effect).
 
-The most important property of `p-flyout` is its `open` attribute. When it is present the flyout will be visible.
+The most important property of `p-flyout` is its `open` property. When it's set to `true` the flyout will be visible. In
+order to get notified when the flyout gets closed by clicking the `x` button, the backdrop or by pressing the `Escape`
+key you need to register an event listener for the `dismiss` event which is emitted by `p-flyout`.
 
-In order to get notified when the flyout gets closed by clicking the `x` button, the backdrop or by pressing the
-`Escape` key you need to register an event listener for the `dismiss` event which is emitted by `p-flyout`.
+The size of `p-flyout` adjusts itself to the content with a predefined **min/max width**.
 
-The size of `p-flyout` adjusts itself to the content with a predefined min/max width.
+#### Supported named slots:
 
-<Notification heading="Deprecation hint" heading-tag="h3" state="warning">
-  Following alignments have been deprecated and will be removed with the next major release: "left" and "right".
-</Notification>
+- `slot="header"`: Renders a **sticky** header section above the content area.
+- `slot`: Shows the content area.
+- `slot="footer"`: Shows a **sticky** footer section, flowing under the content area when scrollable.
+- `slot="sub-footer"`: Shows a sub-footer section to display additional information below the footer. This slot is ideal
+  for less critical content, such as legal information or FAQs, which provides further details to the user. It appears
+  when scrolling to the end of the flyout or when there is available space to accommodate the content.
 
-<Playground :frameworkMarkup="basicSample" :markup="basicSample['vanilla-js']" :config="config">
+<Playground :frameworkMarkup="codeSamples" :markup="codeSamples['vanilla-js']" :config="config"></Playground>
+
+### <A11yIcon></A11yIcon> Accessibility hints
+
+To provide a unique accessible name for the dialog, it's mandatory to set a meaningful label with the `aria` property.
+
+## Disable Backdrop Click
+
+It's possible to disable closing the flyout by click on the backdrop.
+
+<Playground :markup="disableBackdropClickMarkup" :config="config"></Playground>
+
+## Position
+
+<Playground :markup="positionMarkup" :config="config">
   <PlaygroundSelect v-model="position" :values="positions" name="position"></PlaygroundSelect>
 </Playground>
 
-## Slotted header/footer/content
+## Example: Scrollable footer with sticky footer and sub footer
 
-The flyout component supports slotted elements for enhanced customization:
+If the flyout's content does not fit into the current boundaries the content becomes scrollable and the footer area
+sticky.
 
-Display a sticky `header` at the top of the flyout. When used the dismiss button will be within the header.
+<Playground :markup="exampleScrollableMarkup" :config="config"></Playground>
 
-Show a sticky `footer` at the bottom of the flyout, flowing under the main content when scrollable or when there is
-extra space.
+## Example: Sticky content with Custom CSS Property (Experimental)
 
-You can use the `sub-footer` slot to display additional information below the footer. This slot is ideal for less
-critical content, such as legal information or FAQs, which provides further details to the user. It appears when
-scrolling to the end of the flyout or when there is available space to accommodate the content.
+In order to display some sticky element within the flyout content you can use the experimental `--p-flyout-sticky-top`
+CSS custom property to account for the height of the header.
 
-Make sure to set the `aria` property with a descriptive `aria-label` value when using slotted heading.
+<Playground :markup="exampleCssVariableMarkup" :config="config"></Playground>
 
-<Playground :frameworkMarkup="codeExampleSlotted" :markup="slottedSample['vanilla-js']" :config="config">
-  <PlaygroundSelect v-model="scrollable" :values="scrollables" name="scrollable"></PlaygroundSelect>
-  <PlaygroundSelect v-model="subFooter" :values="subFooters" name="sub-footer"></PlaygroundSelect>
-</Playground>
+## Example: Flyout with Porsche Grid
 
-## Flyout with slotted Grid
-
-The `p-flyout` component makes decent changes to the Porsche Design System grid to give support if used as slotted
-content. The following example shows the visualization of the grid if used inside the flyout component:
+The `p-flyout` component makes decent changes to the Porsche Grid to give support if used as slotted content. The
+following example shows the visualization of the Porsche Grid when used inside the flyout component:
 
 <template>
   <div class="playground">
     <div class="demo">
-      <p-button class="flyout-grid-example" type="button" aria="{ 'aria-haspopup': 'dialog' }" :theme="this.$store.getters.storefrontTheme">Open Flyout</p-button>
-      <p-flyout id="flyout-grid" open="false" aria="{ 'aria-label': 'Sticky Heading' }">
-        <div slot="header">
-          <p-heading tag="h5" size="large">Sticky Heading</p-heading> 
-          <p-text size="small">Sticky header text</p-text>
-        </div>
-        <ExampleStylesGrid :visualizeGrid="false"/> 
-        <div slot="footer">
-          <p-button>Footer Button</p-button>
-        </div>
-        <div slot="sub-footer">Some Sub Footer Content</div>
+      <p-button type="button" aria="{ 'aria-haspopup': 'dialog' }" :theme="this.$store.getters.storefrontTheme">Open Flyout</p-button>
+      <p-flyout open="false" aria="{ 'aria-label': 'Some Heading' }">
+        <p-heading slot="header" size="large" tag="h2">Some Heading</p-heading>
+        <ExampleStylesGrid :visualizeGrid="true"/>
+        <p-button-group slot="footer">
+          <p-button>Proceed</p-button>
+          <p-button type="button" variant="secondary">Cancel</p-button>
+        </p-button-group>
+        <p-text slot="sub-footer">Some additional Sub-Footer</p-text>
       </p-flyout>
     </div>
   </div>
@@ -94,23 +92,23 @@ content. The following example shows the visualization of the grid if used insid
 
 ## Custom styling
 
-The `p-flyout` component has a default of `max-width: 1180px` and `width: auto`. These values can be overwritten by CSS
-Custom Properties (aka CSS Variables):
+The flyout component has some values which can be overwritten by CSS Custom Properties (aka CSS Variables).
 
 ```scss
-// overwrite with CSS variables
-p-flyout {
-  --p-flyout-width: 80%;
-  --p-flyout-max-width: 200px;
-}
+--p-flyout-width: 80vw;
+--p-flyout-max-width: 1000px;
 ```
+
+<Playground :markup="customStylingMarkup" :config="config">
+  <PlaygroundInput type="text" v-model="cssVariableWidth" name="Width"></PlaygroundInput>
+  <PlaygroundInput type="text" v-model="cssVariableMaxWidth" name="MaxWidth"></PlaygroundInput>
+</Playground>
 
 <script lang="ts">
 import Vue from 'vue';
 import Component from 'vue-class-component'; 
 import { getFlyoutCodeSamples } from "@porsche-design-system/shared";  
 import ExampleStylesGrid from '@/pages/patterns/styles/example-grid.vue';
-import { FLYOUT_POSITIONS, FLYOUT_POSITIONS_DEPRECATED } from './flyout-utils';
 
 @Component({
   components: {
@@ -118,13 +116,9 @@ import { FLYOUT_POSITIONS, FLYOUT_POSITIONS_DEPRECATED } from './flyout-utils';
   },
 })
 export default class Code extends Vue {
-  config = { themeable: true, overflowX: 'visible' };
+  config = { themeable: true };
   flyouts = [];
-  codeExample = getFlyoutCodeSamples('default');
-  codeExampleSlotted = getFlyoutCodeSamples('example-slotted'); 
-  codeExampleSlottedSecondary = getFlyoutCodeSamples('example-slotted-secondary');
-
-  blindtext = 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.'
+  codeSamples = getFlyoutCodeSamples();
 
   mounted() {
     this.registerEvents();
@@ -136,40 +130,11 @@ export default class Code extends Vue {
   }
 
   registerEvents() {
-    this.flyouts = this.$el.querySelectorAll('.playground .demo p-flyout');
-    
-    const buttonsOpen = this.$el.querySelectorAll('.playground .demo > p-button');
-    buttonsOpen.forEach((btn, index) => btn.addEventListener('click', () => this.openFlyout(index)));
-    
-    this.flyouts.forEach((flyout, index) => {
-      flyout.addEventListener('dismiss', () => this.closeFlyout(index));
-    });
+    this.flyouts = this.$el.querySelectorAll('.playground .demo > p-flyout');
+    this.flyouts.forEach((flyout, index) => flyout.addEventListener('dismiss', () => this.closeFlyout(index)));
+    this.$el.querySelectorAll('.playground .demo > p-button').forEach((btn, index) => btn.addEventListener('click', () => this.openFlyout(index)));
   }
 
-    position = 'end';
-    positions = FLYOUT_POSITIONS.map(item => FLYOUT_POSITIONS_DEPRECATED.includes(item) ? item + ' (deprecated)' : item);
-    get basicSample() {
-      Object.entries(this.codeExample).forEach(([key, value]) => {
-        this.codeExample[key] = value.replace(/(position]?=[{'"]+)(?:start|end|left|right)(["'}]+)/, `$1${this.position}$2`);
-      });
-
-      return this.codeExample;
-    }
-    
-    scrollable = 'true';
-    scrollables = ['true', 'false'];
-    subFooter = 'true';
-    subFooters = ['true', 'false'];
-    get slottedSample() {
-      const content = '<div slot="sub-footer">Some Sub Footer Content</div>';
-      Object.entries(this.codeExampleSlotted)
-            .forEach(([key, value]) => 
-                this.codeExampleSlotted[key] = value
-                  .replace(/100vh|initial/, this.scrollable === 'true' ? '100vh' : 'initial')
-                  .replace(/(\s*<div slot="sub-footer">Some Sub Footer Content<\/div>)?(\s*)(<\/p-flyout>|<\/PFlyout>)/, this.subFooter === 'true' ? `$2\t${content}$2$3` : '$2$3'));
-      return this.codeExampleSlotted;
-    }
-    
   openFlyout(index: number): void {
     this.flyouts[index].open = true;
   }
@@ -178,5 +143,66 @@ export default class Code extends Vue {
     this.flyouts[index].open = false;
   }
 
+  disableBackdropClickMarkup =
+      `<p-button type="button" aria="{ 'aria-haspopup': 'dialog' }">Open Flyout</p-button>
+  <p-flyout disable-backdrop-click="true" open="false" aria="{ 'aria-label': 'Some Heading' }">
+    <p-text>Some Content</p-text>
+  </p-flyout>`;
+
+  positions = ['start', 'end'];
+  position = 'end';
+  get positionMarkup() { 
+    return `<p-button type="button" aria="{ 'aria-haspopup': 'dialog' }">Open Flyout</p-button>
+<p-flyout position="${this.position}" aria="{ 'aria-label': 'Some Heading' }" open="false">
+  <p-text>Some Content</p-text>
+</p-flyout>`;
+  }
+
+  exampleScrollableMarkup =
+    `<p-button type="button" aria="{ 'aria-haspopup': 'dialog' }">Open Flyout</p-button>
+<p-flyout open="false" aria="{ 'aria-label': 'Some Heading' }">
+  <p-heading slot="header" size="large" tag="h2">Some Heading</p-heading>
+  <p-text>Some Content Begin</p-text>
+  <div style="width: 10px; height: 120vh; background: deeppink;"></div>
+  <p-text>Some Content End</p-text>
+  <p-button-group slot="footer">
+    <p-button type="button">Proceed</p-button>
+    <p-button type="button" variant="secondary">Cancel</p-button>
+  </p-button-group>
+  <p-text slot="sub-footer">Some additional Sub-Footer</p-text>
+</p-flyout>`;
+
+  exampleCssVariableMarkup = 
+  `<p-button type="button" aria="{ 'aria-haspopup': 'dialog' }">Open Flyout</p-button>
+<p-flyout>
+  <p-heading slot="header" size="large" tag="h2">Some Heading</p-heading>
+  <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 16px; align-items: flex-start">
+    <div
+      style="
+        position: sticky;
+        top: calc(var(--p-flyout-sticky-top, 0) + 16px);
+        padding: 16px;
+        background: rgba(255, 0, 0, 0.1);
+      "
+    >
+      Some sticky element within content relying on --p-flyout-sticky-top
+    </div>
+    <div>
+      <p-text>Some Content Begin</p-text>
+      <div style="width: 10px; height: 120vh; background: deeppink;"></div>
+      <p-text>Some Content End</p-text>
+    </div>  
+  </div>
+</p-flyout>`;
+
+  cssVariableWidth = '80vw';
+  cssVariableMaxWidth = '1000px';
+
+  get customStylingMarkup() {
+    return `<p-button type="button" aria="{ 'aria-haspopup': 'dialog' }">Open Flyout</p-button>
+<p-flyout open="false" aria="{ 'aria-label': 'Some Heading' }" style="--p-flyout-width: ${this.cssVariableWidth}; --p-flyout-max-width: ${this.cssVariableMaxWidth};">
+  <p-text>Some content</p-text>
+</p-flyout>`;
+  }
 }
 </script>

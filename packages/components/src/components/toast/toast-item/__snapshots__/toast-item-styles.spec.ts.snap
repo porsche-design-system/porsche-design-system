@@ -3,6 +3,16 @@
 exports[`getComponentCss() should return correct css for state: info and theme: dark 1`] = `
 ":host {
   display: grid;
+  opacity: 0;
+  max-width: inherit !important;
+  box-sizing: border-box !important;
+  margin: 0 !important;
+  inset: inherit !important;
+  border: 0 !important;
+  outline: 0 !important;
+  overflow: visible !important;
+  width: auto !important;
+  height: auto !important;
   grid-template-columns: minmax(auto, 1fr) auto;
   gap: 16px;
   place-items: start;
@@ -11,26 +21,24 @@ exports[`getComponentCss() should return correct css for state: info and theme: 
   border-radius: 4px;
   box-shadow: 0px 8px 40px rgba(0, 0, 0, 0.16);
 }
+:host::backdrop {
+  display: none;
+}
 p {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
   margin: 0;
   color: #FBFCFF;
-}
-@media(min-width:760px) {
-  :host {
-    grid-template-columns: auto minmax(auto, 1fr) auto;
-  }
-}
-
-.content {
   display: grid;
   gap: 4px;
   max-width: 50rem;
 }
 @media(min-width:760px) {
-  .content {
+  :host {
+    grid-template-columns: auto minmax(auto, 1fr) auto;
+  }
+  p {
     margin-left: -8px;
   }
 }
@@ -46,6 +54,16 @@ p {
 exports[`getComponentCss() should return correct css for state: info and theme: light 1`] = `
 ":host {
   display: grid;
+  opacity: 0;
+  max-width: inherit !important;
+  box-sizing: border-box !important;
+  margin: 0 !important;
+  inset: inherit !important;
+  border: 0 !important;
+  outline: 0 !important;
+  overflow: visible !important;
+  width: auto !important;
+  height: auto !important;
   grid-template-columns: minmax(auto, 1fr) auto;
   gap: 16px;
   place-items: start;
@@ -54,26 +72,24 @@ exports[`getComponentCss() should return correct css for state: info and theme: 
   border-radius: 4px;
   box-shadow: 0px 8px 40px rgba(0, 0, 0, 0.16);
 }
+:host::backdrop {
+  display: none;
+}
 p {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
   margin: 0;
   color: #010205;
-}
-@media(min-width:760px) {
-  :host {
-    grid-template-columns: auto minmax(auto, 1fr) auto;
-  }
-}
-
-.content {
   display: grid;
   gap: 4px;
   max-width: 50rem;
 }
 @media(min-width:760px) {
-  .content {
+  :host {
+    grid-template-columns: auto minmax(auto, 1fr) auto;
+  }
+  p {
     margin-left: -8px;
   }
 }
@@ -89,6 +105,16 @@ p {
 exports[`getComponentCss() should return correct css for state: neutral and theme: dark 1`] = `
 ":host {
   display: grid;
+  opacity: 0;
+  max-width: inherit !important;
+  box-sizing: border-box !important;
+  margin: 0 !important;
+  inset: inherit !important;
+  border: 0 !important;
+  outline: 0 !important;
+  overflow: visible !important;
+  width: auto !important;
+  height: auto !important;
   grid-template-columns: minmax(auto, 1fr) auto;
   gap: 16px;
   place-items: start;
@@ -97,26 +123,24 @@ exports[`getComponentCss() should return correct css for state: neutral and them
   border-radius: 4px;
   box-shadow: 0px 8px 40px rgba(0, 0, 0, 0.16);
 }
+:host::backdrop {
+  display: none;
+}
 p {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
   margin: 0;
   color: #FBFCFF;
-}
-@media(min-width:760px) {
-  :host {
-    grid-template-columns: auto minmax(auto, 1fr) auto;
-  }
-}
-
-.content {
   display: grid;
   gap: 4px;
   max-width: 50rem;
 }
 @media(min-width:760px) {
-  .content {
+  :host {
+    grid-template-columns: auto minmax(auto, 1fr) auto;
+  }
+  p {
     margin-left: -8px;
   }
 }
@@ -132,6 +156,16 @@ p {
 exports[`getComponentCss() should return correct css for state: neutral and theme: light 1`] = `
 ":host {
   display: grid;
+  opacity: 0;
+  max-width: inherit !important;
+  box-sizing: border-box !important;
+  margin: 0 !important;
+  inset: inherit !important;
+  border: 0 !important;
+  outline: 0 !important;
+  overflow: visible !important;
+  width: auto !important;
+  height: auto !important;
   grid-template-columns: minmax(auto, 1fr) auto;
   gap: 16px;
   place-items: start;
@@ -140,26 +174,24 @@ exports[`getComponentCss() should return correct css for state: neutral and them
   border-radius: 4px;
   box-shadow: 0px 8px 40px rgba(0, 0, 0, 0.16);
 }
+:host::backdrop {
+  display: none;
+}
 p {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
   margin: 0;
   color: #010205;
-}
-@media(min-width:760px) {
-  :host {
-    grid-template-columns: auto minmax(auto, 1fr) auto;
-  }
-}
-
-.content {
   display: grid;
   gap: 4px;
   max-width: 50rem;
 }
 @media(min-width:760px) {
-  .content {
+  :host {
+    grid-template-columns: auto minmax(auto, 1fr) auto;
+  }
+  p {
     margin-left: -8px;
   }
 }
@@ -175,6 +207,16 @@ p {
 exports[`getComponentCss() should return correct css for state: success and theme: dark 1`] = `
 ":host {
   display: grid;
+  opacity: 0;
+  max-width: inherit !important;
+  box-sizing: border-box !important;
+  margin: 0 !important;
+  inset: inherit !important;
+  border: 0 !important;
+  outline: 0 !important;
+  overflow: visible !important;
+  width: auto !important;
+  height: auto !important;
   grid-template-columns: minmax(auto, 1fr) auto;
   gap: 16px;
   place-items: start;
@@ -183,26 +225,24 @@ exports[`getComponentCss() should return correct css for state: success and them
   border-radius: 4px;
   box-shadow: 0px 8px 40px rgba(0, 0, 0, 0.16);
 }
+:host::backdrop {
+  display: none;
+}
 p {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
   margin: 0;
   color: #FBFCFF;
-}
-@media(min-width:760px) {
-  :host {
-    grid-template-columns: auto minmax(auto, 1fr) auto;
-  }
-}
-
-.content {
   display: grid;
   gap: 4px;
   max-width: 50rem;
 }
 @media(min-width:760px) {
-  .content {
+  :host {
+    grid-template-columns: auto minmax(auto, 1fr) auto;
+  }
+  p {
     margin-left: -8px;
   }
 }
@@ -218,6 +258,16 @@ p {
 exports[`getComponentCss() should return correct css for state: success and theme: light 1`] = `
 ":host {
   display: grid;
+  opacity: 0;
+  max-width: inherit !important;
+  box-sizing: border-box !important;
+  margin: 0 !important;
+  inset: inherit !important;
+  border: 0 !important;
+  outline: 0 !important;
+  overflow: visible !important;
+  width: auto !important;
+  height: auto !important;
   grid-template-columns: minmax(auto, 1fr) auto;
   gap: 16px;
   place-items: start;
@@ -226,26 +276,24 @@ exports[`getComponentCss() should return correct css for state: success and them
   border-radius: 4px;
   box-shadow: 0px 8px 40px rgba(0, 0, 0, 0.16);
 }
+:host::backdrop {
+  display: none;
+}
 p {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
   margin: 0;
   color: #010205;
-}
-@media(min-width:760px) {
-  :host {
-    grid-template-columns: auto minmax(auto, 1fr) auto;
-  }
-}
-
-.content {
   display: grid;
   gap: 4px;
   max-width: 50rem;
 }
 @media(min-width:760px) {
-  .content {
+  :host {
+    grid-template-columns: auto minmax(auto, 1fr) auto;
+  }
+  p {
     margin-left: -8px;
   }
 }

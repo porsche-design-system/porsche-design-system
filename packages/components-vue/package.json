@@ -18,15 +18,17 @@
     "build:subPackages:typings:styles": "tsc projects/vue-wrapper/src/styles/index.ts --declaration --emitDeclarationOnly --declarationDir dist/vue-wrapper/styles/esm --types node",
     "build-app": "vue-tsc --noEmit --project tsconfig.app.json && vite build -c vite.config.app.mts",
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore --ignore-pattern **/tests/* ",
-    "test": "yarn test:unit && yarn test:e2e && yarn test:vrt",
+    "test": "yarn test:unit && yarn test:e2e && yarn test:vrt && yarn test:smoke",
     "test:unit": "yarn test:unit:vue-wrapper",
     "test:unit:vue-wrapper": "jest --colors -c projects/vue-wrapper/tests/unit/config/jest.config.js",
     "test:e2e": "yarn build-app && playwright test --config=tests/e2e/config/playwright.config.ts",
     "test:vrt": "playwright test --config=tests/vrt/config/playwright.config.ts",
+    "test:smoke": "yarn test:smoke:vue-wrapper",
+    "test:smoke:vue-wrapper": "vitest --config projects/vue-wrapper/tests/smoke/config/vitest.config.ts",
     "clean:build": "rm -rf ./dist"
   },
   "dependencies": {
-    "@porsche-design-system/components-vue": "3.15.2",
+    "@porsche-design-system/components-vue": "3.16.0",
     "vue": "^3.4.21",
     "vue-imask": "^7.5.0",
     "vue-router": "^4.3.0"
@@ -54,7 +56,7 @@
     "vite": "^5.2.8",
     "vite-plugin-html": "^3.2.2",
     "vite-plugin-static-copy": "^1.0.2",
-    "vue-tsc": "^2.0.6"
+    "vue-tsc": "^2.0.22"
   },
   "volta": {
     "extends": "../../package.json"

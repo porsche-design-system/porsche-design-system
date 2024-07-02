@@ -14,6 +14,85 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ### [Unreleased]
 
+### [3.16.0] - 2024-07-02
+
+### [3.16.0-rc.2] - 2024-07-02
+
+#### Added
+
+- Partials: Added default `og:image` and related meta tags to the `getMetaTagsAndIconLinks` partial. Can be disabled by
+  setting the `ogImage` option to `false`.
+  ([#3357](https://github.com/porsche-design-system/porsche-design-system/pull/3357))
+
+#### Changed
+
+- `Flyout Navigation`, `Flyout Navigation Item`: renamed (experimental) component to `Flyout Multilevel` and
+  `Flyout Multilevel Item` ([#3351](https://github.com/porsche-design-system/porsche-design-system/pull/3351))
+- `Toast`: Renders fully on `#top-layer`, stacking behaviour has changed and follows W3C standards now, see
+  https://developer.mozilla.org/en-US/docs/Glossary/Top_layer and
+  https://developer.chrome.com/blog/what-is-the-top-layer
+  ([#3356](https://github.com/porsche-design-system/porsche-design-system/pull/3356))
+
+```diff
+- <p-flyout-navigation><p-flyout-navigation-item></p-flyout-navigation-item></p-flyout-navigation>
++ <p-flyout-multilevel><p-flyout-multilevel-item></p-flyout-multilevel-item></p-flyout-multilevel>
+```
+
+#### Fixed
+
+- Types: `@porsche-design-system/components-vue` typings are not exposed
+  ([#3355](https://github.com/porsche-design-system/porsche-design-system/pull/3355))
+
+### [3.16.0-rc.1] - 2024-06-18
+
+#### Added
+
+- `jsdom-polyfill` Added polyfills for `Popover API` and `ResizeObserver`
+  ([#3334](https://github.com/porsche-design-system/porsche-design-system/pull/3334))
+- `Segmented Control`: Prop `aria` added to `Segmented Control Item` to support ARIA attributes
+  ([#3327](https://github.com/porsche-design-system/porsche-design-system/pull/3327))
+
+#### Changed
+
+- Angular: updated peer dependency to `>=17.0.0 <19.0.0`
+  ([#3346](https://github.com/porsche-design-system/porsche-design-system/pull/3346))
+- React: Improve prop typings for all wrappers of `@porsche-design-system/components-react`
+  ([#3336](https://github.com/porsche-design-system/porsche-design-system/pull/3336))
+
+### [3.16.0-rc.0] - 2024-06-05
+
+#### Added
+
+- `Flyout`:
+  - CSS variable `--p-flyout-sticky-top` (experimental)
+    ([#3191](https://github.com/porsche-design-system/porsche-design-system/pull/3191))
+  - Prop `disableBackdropClick` ([#3191](https://github.com/porsche-design-system/porsche-design-system/pull/3191))
+- `Modal`:
+  - CSS variable `--p-modal-width` (experimental)
+    ([#3191](https://github.com/porsche-design-system/porsche-design-system/pull/3191))
+  - Named slot `header` ([#3191](https://github.com/porsche-design-system/porsche-design-system/pull/3191))
+
+#### Changed
+
+- `Modal`, `Flyout`:
+  - Sticky dismiss button ([#3191](https://github.com/porsche-design-system/porsche-design-system/pull/3191))
+  - Aligned layout, spacing and UX behaviour
+    ([#3191](https://github.com/porsche-design-system/porsche-design-system/pull/3191))
+  - Renders fully on `#top-layer`, stacking behaviour has changed and follows W3C standards now, see
+    https://developer.mozilla.org/en-US/docs/Glossary/Top_layer and
+    https://developer.chrome.com/blog/what-is-the-top-layer
+    ([#3191](https://github.com/porsche-design-system/porsche-design-system/pull/3191))
+- `Modal`: `heading` prop and `slot="heading"` are deprecated. Use `slot="header"` instead.
+
+#### Fixed
+
+- Types: Fixed incorrectly allowed type `string` in types `BreakpointCustomizable`, `SelectedAriaAttributes`,
+  `CarouselInternationalization`, `PaginationInternationalization` and `ScrollToPosition`
+- `Modal`, `Flyout`: Dynamically react to adding/removing named slots
+  ([#3191](https://github.com/porsche-design-system/porsche-design-system/pull/3191))
+- `Modal`: Uses native `<dialog />` element to resolve focus issues, focus trap
+  ([#3191](https://github.com/porsche-design-system/porsche-design-system/pull/3191))
+
 ### [3.15.2] - 2024-05-29
 
 #### Fixed

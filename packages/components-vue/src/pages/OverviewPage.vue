@@ -28,7 +28,6 @@
     PLinkTileModelSignature,
     PLinkTileProduct,
     PMarque,
-    PModal,
     PModelSignature,
     PMultiSelect,
     PMultiSelectOption,
@@ -83,8 +82,24 @@
         <PDisplay>Some Display</PDisplay>
       </div>
 
-      <div class="playground light playground--modal" title="should render default modal">
-        <PModal :heading="'Heading'" :open="true">Some Content</PModal>
+      <div class="playground light" title="should render default modal">
+        <iframe src="/modal-basic?iframe=true" loading="eager" title="fix-linter-1a"></iframe>
+      </div>
+
+      <div class="playground light" title="should render default flyout">
+        <iframe src="/flyout-basic?iframe=true" loading="eager" title="fix-linter-2a"></iframe>
+      </div>
+
+      <div class="playground light" title="should render default banner">
+        <iframe src="/banner-basic?iframe=true" loading="eager" title="fix-linter-3a"></iframe>
+      </div>
+
+      <div class="playground light" title="should render default toast">
+        <iframe src="/toast-basic?iframe=true" loading="eager" title="fix-linter-4a"></iframe>
+      </div>
+
+      <div class="playground light" title="should render default flyout-multilevel">
+        <iframe src="/flyout-multilevel-basic?iframe=true" loading="eager" title="fix-linter-5a"></iframe>
       </div>
 
       <div class="playground light" title="should render default inline-notification">
@@ -411,8 +426,24 @@
           <PDisplay>Some Display</PDisplay>
         </div>
 
-        <div class="playground light playground--modal" title="should render default modal with custom prefix">
-          <PModal :heading="'Heading'" :open="true">Some Content</PModal>
+        <div class="playground light" title="should render default modal with custom prefix">
+          <iframe src="/modal-prefixed?iframe=true" loading="eager" title="fix-linter-1b"></iframe>
+        </div>
+
+        <div class="playground light" title="should render default flyout with custom prefix">
+          <iframe src="/flyout-prefixed?iframe=true" loading="eager" title="fix-linter-2b"></iframe>
+        </div>
+
+        <div class="playground light" title="should render default banner with custom prefix">
+          <iframe src="/banner-prefixed?iframe=true" loading="eager" title="fix-linter-3b"></iframe>
+        </div>
+
+        <div class="playground light" title="should render default toast with custom prefix">
+          <iframe src="/toast-prefixed?iframe=true" loading="eager" title="fix-linter-4b"></iframe>
+        </div>
+
+        <div class="playground light" title="should render default flyout-multilevel with custom prefix">
+          <iframe src="/flyout-multilevel-prefixed?iframe=true" loading="eager" title="fix-linter-5b"></iframe>
         </div>
 
         <div class="playground light" title="should render default inline-notification with custom prefix">
@@ -772,15 +803,9 @@
     max-width: 400px;
   }
 
-  .playground--banner,
-  .playground--modal {
-    transform: translate3d(0, 0, 0);
-    height: 10rem;
-    padding: 0;
-    margin: 1rem;
-  }
-
-  .playground--modal {
+  .playground > iframe {
     height: 20rem;
+    width: 100%;
+    margin-inline-start: 0;
   }
 </style>

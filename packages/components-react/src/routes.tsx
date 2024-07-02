@@ -28,11 +28,6 @@ export const routes: RouteType[] = [
     element: <fromPages.OverviewPage />,
   },
   {
-    name: 'Overview Notifications',
-    path: '/overview-notifications',
-    element: <fromPages.OverviewNotificationsPage />,
-  },
-  {
     name: 'Core Initializer',
     path: '/core-initializer',
     element: <fromPages.CoreInitializerPage />,
@@ -87,6 +82,11 @@ export const routes: RouteType[] = [
     element: <fromExamples.ButtonExampleFormPage />,
   },
   {
+    name: 'Canvas Example',
+    path: '/canvas-example',
+    element: <fromExamples.CanvasExamplePage />,
+  },
+  {
     name: 'Carousel Example Dynamic Slides',
     path: '/carousel-example-dynamic-slides',
     element: <fromExamples.CarouselExampleDynamicSlidesPage />,
@@ -107,19 +107,19 @@ export const routes: RouteType[] = [
     element: <fromExamples.FlyoutExamplePage />,
   },
   {
-    name: 'Flyout Navigation Example',
-    path: '/flyout-navigation-example',
-    element: <fromExamples.FlyoutNavigationExamplePage />,
+    name: 'Flyout Multilevel Example',
+    path: '/flyout-multilevel-example',
+    element: <fromExamples.FlyoutMultilevelExamplePage />,
   },
   {
-    name: 'Flyout Navigation Example Active Identifier',
-    path: '/flyout-navigation-example-active-identifier',
-    element: <fromExamples.FlyoutNavigationExampleActiveIdentifierPage />,
+    name: 'Flyout Multilevel Example Active Identifier',
+    path: '/flyout-multilevel-example-active-identifier',
+    element: <fromExamples.FlyoutMultilevelExampleActiveIdentifierPage />,
   },
   {
-    name: 'Flyout Navigation Example Custom Content',
-    path: '/flyout-navigation-example-custom-content',
-    element: <fromExamples.FlyoutNavigationExampleCustomContentPage />,
+    name: 'Flyout Multilevel Example Custom Content',
+    path: '/flyout-multilevel-example-custom-content',
+    element: <fromExamples.FlyoutMultilevelExampleCustomContentPage />,
   },
   {
     name: 'Inline Notification Example Action Button',
