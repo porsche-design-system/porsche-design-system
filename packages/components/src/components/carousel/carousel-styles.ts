@@ -82,7 +82,8 @@ export const getComponentCss = (
   hasPagination: BreakpointCustomizable<boolean>,
   isInfinitePagination: boolean,
   alignHeader: CarouselAlignHeader,
-  theme: Theme
+  theme: Theme,
+  hasNavigation: boolean
 ): string => {
   const { primaryColor, contrastMediumColor } = getThemedColors(theme);
   const { primaryColor: primaryColorDark, contrastMediumColor: contrastMediumColorDark } = getThemedColors('dark');
@@ -107,6 +108,9 @@ export const getComponentCss = (
           gridColumnStart: 1,
           gridRowStart: 3,
           alignSelf: 'center', // ensures vertical alignment to prev/next buttons
+          ...(alignHeader === 'center' && {
+            justifySelf: 'center',
+          }),
         },
       }),
       ...addImportantToEachRule({
@@ -157,8 +161,8 @@ export const getComponentCss = (
       padding: `0 ${spacingMap[width].base}`,
       [mediaQueryS]: {
         gridTemplateColumns: 'minmax(0px, 1fr) auto',
-        columnGap: spacingStaticMedium,
         padding: `0 ${spacingMap[width].s}`,
+        ...(hasNavigation && { columnGap: spacingStaticMedium }),
       },
       [mediaQueryXXL]: {
         padding: `0 ${spacingMap[width].xxl}`,
@@ -214,10 +218,18 @@ export const getComponentCss = (
         ...backfaceVisibilityJssStyle,
         display: 'flex',
       },
+      ...(alignHeader === 'center' && {
+        '&:not(.is-overflow) .splide__list': {
+          justifyContent: 'center',
+        },
+      }),
       '&__slide': {
         ...backfaceVisibilityJssStyle,
         flexShrink: 0,
         transform: 'translateZ(0)', // fixes mobile safari flickering, https://github.com/nolimits4web/swiper/issues/3527#issuecomment-609088939
+        '&:last-child': {
+          margin: '0 !important',
+        },
       },
       '&__sr': getHiddenTextJssStyle(), // appears in the DOM when sliding
     },
