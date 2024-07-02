@@ -18,6 +18,7 @@ describe.each<TagName>(
         'p-table-head-cell',
         'p-table-head-row',
         'p-table-row',
+        'p-carousel', // Skip for now because of dynamic slot <slot name={`slide-${i}`} />
       ].includes(x)
   )
 )('%s', (tagName) => {
@@ -34,7 +35,7 @@ describe.each<TagName>(
       );
 
       const namedSlots = Array.from(
-        sourceFileContent.matchAll(/<slot\s*(?:name="([^"]*)")?.*?\/>/g),
+        sourceFileContent.matchAll(/<slot\s*(?:name=["{]([^"}]*)["}])?/g),
         ([, slotName]) => {
           if (slotName) {
             return slotName.match(/^[a-z]+[A-Z][a-z]+/)
@@ -47,7 +48,9 @@ describe.each<TagName>(
       );
 
       // Filter out duplicates (if same slots are defined more than once e.g. p-canvas for mobile/desktop view) and internal slots
-      const namedSlotsUnique = [...new Set(namedSlots)].filter((slot) => !slot.includes('internal'));
+      const namedSlotsUnique = [...new Set(namedSlots)].filter(
+        (slot) => !slot.includes('internal') && !slot.includes('INTERNAL')
+      );
 
       if (sourceFileContent.includes('<Label')) {
         namedSlotsUnique.push('label');
