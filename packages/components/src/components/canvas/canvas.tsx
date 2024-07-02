@@ -12,7 +12,15 @@ const propTypes: PropTypes<typeof Canvas> = {
   sidebarEndWidth: AllowedTypes.oneOf<CanvasSidebarEndWidth>(CANVAS_SIDEBAR_WIDTHS),
 };
 
-/** @experimental */
+/**
+ * @slot {"name": "header", "description": "Renders a **sticky** header section above the content area." }
+ * @slot {"name": "", "description": "Default slot for the main content" }
+ * @slot {"name": "footer", "description": "Shows a footer section, flowing under the content area when scrollable." }
+ * @slot {"name": "sidebar-start", "description": "Shows a sidebar area on the **start** side (**left** in **LTR** mode / **right** in **RTL** mode). On mobile view it transforms into a flyout." }
+ * @slot {"name": "sidebar-end", "description": "Shows a sidebar area on the **end** side (**right** in **LTR** mode / **left** in **RTL** mode). On mobile view it transforms into a flyout." }
+ *
+ * @experimental
+ */
 @Component({
   tag: 'p-canvas',
   shadow: true,

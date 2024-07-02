@@ -26,6 +26,9 @@ const propTypes: PropTypes<typeof Heading> = {
   theme: AllowedTypes.oneOf<Theme>(THEMES),
 };
 
+/**
+ * @slot {"name": "", "description": "Default slot to render the heading." }
+ */
 @Component({
   tag: 'p-heading',
   shadow: true,

@@ -15,7 +15,10 @@ const propTypes: PropTypes<typeof ContentWrapper> = {
   theme: AllowedTypes.oneOf<Theme>(THEMES),
 };
 
-/** @deprecated since v3.0.0, will be removed with next major release. Use native CSS Grid instead. */
+/**
+ * @slot {"name": "", "description": "Default slot for main content." }
+ * @deprecated since v3.0.0, will be removed with next major release. Use native CSS Grid instead.
+ */
 @Component({
   tag: 'p-content-wrapper',
   shadow: true,

@@ -4,6 +4,7 @@ import { globbySync } from 'globby';
 import { kebabCase } from 'change-case';
 import { type TagName, TAG_NAMES, INTERNAL_TAG_NAMES, TAG_NAMES_WITH_CHUNK } from '@porsche-design-system/shared';
 import { ICONS_MANIFEST } from '@porsche-design-system/assets';
+import type { ComponentsMeta, ComponentMeta } from '../src/types/component-meta';
 
 const glue = '\n\n';
 
@@ -33,165 +34,9 @@ const getEvaluablePropTypeString = (propTypes: string): string => {
 };
 
 const generateComponentMeta = (): void => {
-  const imports = `import type { TagName } from '@porsche-design-system/shared';`;
-
   // TODO: flag if top level / root component or even topLevelParentTagName
-  const types = [
-    `export type PropMeta = {
-  description?: string;
-  type: string;
-  defaultValue: boolean | number | string | object | null;
-  allowedValues?: 'boolean' | 'number' | 'string' | object | string[] | number[];
-  deprecatedValues?: string[];
-  isRequired?: boolean;
-  isDeprecated?: boolean;
-  isExperimental?: boolean;
-  isBreakpointCustomizable?: boolean;
-  isAria?: boolean;
-  isArray?: boolean;
-};`,
-    `export type EventMeta = {
-  description?: string;
-  type: string;
-  typeDetail?: string;
-  isDeprecated?: boolean;
-};`,
-    `export type ComponentMeta = {
-  isDeprecated?: boolean;
-  deprecationMessage?: string;
-  isExperimental?: boolean;
-  isDelegatingFocus: boolean;
-  isInternal: boolean;
-  isChunked: boolean; // component is part of a chunk
-  isThemeable: boolean;
-  requiredParent?: TagName; // typically components with an \`-item\` suffix need the right parent in order to work
-  requiredRootNode?: TagName[]; // components, that use this internal component within their shadow DOM
-  requiredChild?: string; // direct and only child of kind
-  requiredChildSelector?: string; // might contain multiple selectors separated by comma
-  nestedComponents?: TagName[]; // array of other pds components
-  propsMeta?: { [propName: string]: PropMeta }; // new format
-  /** @deprecated use \`propsMeta\` instead */
-  props?: {
-    [propName: string]: boolean | number | string | object | null; // value is the prop's default value
-  };
-  /** @deprecated use \`propsMeta\` instead */
-  requiredProps?: string[]; // array of props that are mandatory
-  /** @deprecated use \`propsMeta\` instead */
-  deprecatedProps?: string[]; // array of props that are deprecated
-  /** @deprecated use \`propsMeta\` instead */
-  breakpointCustomizableProps?: string[]; // array of props that are breakpointCustomizable
-  /** @deprecated use \`propsMeta\` instead */
-  arrayProps?: string[]; // array of props that are of type array
-  /** @deprecated use \`propsMeta\` instead */
-  allowedPropValues?: {
-    [propName: string]: 'boolean' | 'number' | 'string' | object | string[] | number[];
-  };
-  /** @deprecated use \`propsMeta\` instead */
-  deprecatedPropValues?: {
-    [propName: string]: string[]; // array of values of a prop that are deprecated
-  };
-  internalProps?: {
-    [propName: string]: boolean | number | string | object | null; // value is the prop's default value
-  };
-  hostAttributes?: {
-    [attrName: string]: string;
-  };
-  hasSlot: boolean;
-  namedSlots?: string[]; // array of named slots
-  requiredNamedSlots?: { slotName: string; tagName: TagName }[]; // array of objects for each named slot with specific component tag
-  eventsMeta?: { [eventName: string]: EventMeta }; // new format
-  hasEvent: boolean;
-  /** @deprecated use \`eventsMeta\` instead */
-  eventNames?: string[];
-  /** @deprecated use \`eventsMeta\` instead */
-  deprecatedEventNames?: string[]; // array of event names
-  hasAriaProp: boolean;
-  hasObserveAttributes: boolean;
-  observedAttributes?: string[];
-  hasObserveChildren: boolean;
-  styling: 'jss' | 'scss' | 'hybrid';
-};`,
-    `type ComponentsMeta = Record<TagName, ComponentMeta>;`,
-  ].join(glue);
-
-  type PropMeta = {
-    description?: string;
-    type: string;
-    defaultValue: boolean | number | string | object | null;
-    allowedValues?: 'boolean' | 'number' | 'string' | object | string[] | number[];
-    deprecatedValues?: string[];
-    isRequired?: boolean;
-    isDeprecated?: boolean;
-    isExperimental?: boolean;
-    isBreakpointCustomizable?: boolean;
-    isAria?: boolean;
-    isArray?: boolean;
-  };
-
-  type EventMeta = {
-    description?: string;
-    type: string;
-    typeDetail?: string;
-    isDeprecated?: boolean;
-  };
-
-  type ComponentMeta = {
-    isDeprecated?: boolean;
-    deprecationMessage?: string;
-    isExperimental?: boolean;
-    isDelegatingFocus: boolean;
-    isInternal: boolean;
-    isChunked: boolean; // component is part of a chunk
-    isThemeable: boolean;
-    requiredParent?: TagName; // typically components with an `-item` suffix need the right parent in order to work
-    requiredRootNode?: TagName[]; // components, that use this internal component within their shadow DOM
-    requiredChild?: string; // direct and only child of kind
-    requiredChildSelector?: string; // might contain multiple selectors separated by comma
-    nestedComponents?: TagName[]; // array of other pds components
-    propsMeta?: { [propName: string]: PropMeta }; // new format
-    /** @deprecated use `propsMeta` instead */
-    props?: {
-      [propName: string]: boolean | number | string | object | null; // value is the prop's default value
-    };
-    /** @deprecated use `propsMeta` instead */
-    requiredProps?: string[]; // array of props that are mandatory
-    /** @deprecated use `propsMeta` instead */
-    deprecatedProps?: string[]; // array of props that are deprecated
-    /** @deprecated use `propsMeta` instead */
-    breakpointCustomizableProps?: string[]; // array of props that are breakpointCustomizable
-    /** @deprecated use `propsMeta` instead */
-    arrayProps?: string[]; // array of props that are of type array
-    /** @deprecated use `propsMeta` instead */
-    allowedPropValues?: {
-      [propName: string]: 'boolean' | 'number' | 'string' | object | string[] | number[];
-    };
-    /** @deprecated use `propsMeta` instead */
-    deprecatedPropValues?: {
-      [propName: string]: string[]; // array of values of a prop that are deprecated
-    };
-    internalProps?: {
-      [propName: string]: boolean | number | string | object | null; // value is the prop's default value
-    };
-    hostAttributes?: {
-      [attrName: string]: string;
-    };
-    hasSlot: boolean;
-    namedSlots?: string[]; // array of named slots
-    requiredNamedSlots?: { slotName: string; tagName: TagName }[]; // array of objects for each named slot with specific component tag
-    eventsMeta?: { [eventName: string]: EventMeta }; // new format
-    hasEvent: boolean;
-    /** @deprecated use `eventsMeta` instead */
-    eventNames?: string[];
-    /** @deprecated use `eventsMeta` instead */
-    deprecatedEventNames?: string[]; // array of event names
-    hasAriaProp: boolean;
-    hasObserveAttributes: boolean;
-    observedAttributes?: string[];
-    hasObserveChildren: boolean;
-    styling: 'jss' | 'scss' | 'hybrid';
-  };
-
-  type ComponentsMeta = Record<TagName, ComponentMeta>;
+  const typesPath = path.resolve('./src/types/component-meta.d.ts');
+  const types = fs.readFileSync(typesPath, 'utf8');
 
   const componentSourceCode: Record<TagName, string> = componentFileNames.reduce(
     (result, filePath) => {
@@ -210,15 +55,14 @@ const generateComponentMeta = (): void => {
   const meta: ComponentsMeta = TAG_NAMES.reduce((result, tagName) => {
     const source = componentSourceCode[tagName];
 
-    const [deprecated, rawDeprecationMessage] = /\/\*\* @deprecated (.*)\*\/\n@Component\({/.exec(source) || [];
+    const [deprecated, rawDeprecationMessage] = /@deprecated (.*)[\s\S]*?@Component/.exec(source) || [];
     const isDeprecated = !!deprecated;
     const deprecationMessage = rawDeprecationMessage?.trim();
-    const isExperimental = !!source.match(/\/\*\* @experimental \*\/\n@Component\({/);
+    const isExperimental = !!source.match(/@experimental[\s\S]*?@Component/);
     const isDelegatingFocus = source.includes('delegatesFocus: true');
     const isInternal = INTERNAL_TAG_NAMES.includes(tagName);
     const isChunked = (TAG_NAMES_WITH_CHUNK as unknown as TagName[]).includes(tagName);
     const isThemeable = source.includes('public theme?: Theme');
-    const hasSlot = source.includes('<slot');
     const hasEvent = source.includes('@Event') && source.includes('EventEmitter');
     const hasAriaProp = source.includes('public aria?: SelectedAriaAttributes');
     const hasObserveAttributes = source.includes('observeAttributes(this.'); // this should be safe enough, but would miss a local variable as first parameter
@@ -616,39 +460,6 @@ const generateComponentMeta = (): void => {
         .reduce((result, [attr, val]) => ({ ...result, [attr]: val }), {} as ComponentMeta['hostAttributes']);
     }
 
-    // named slots
-    const namedSlots = Array.from(source.matchAll(/<slot name=["{]((?!internal-)[A-Za-z-]+?)["}]/g)).map(
-      ([, slotName]) =>
-        slotName.match(/^[a-z]+[A-Z][a-z]+/)
-          ? slotName.replace(/slot/i, '').toLowerCase() // <slot name={slotHeading} /> let's hope its name matches the value
-          : slotName // <slot name="heading" />
-    );
-
-    if (source.includes('<Label')) {
-      namedSlots.push('label');
-    }
-    if (/<Label[\s\S]+?description/.test(source)) {
-      namedSlots.push('description');
-    }
-    if (source.includes('<StateMessage')) {
-      namedSlots.push('message');
-    }
-
-    // required named slots
-    const requiredNamedSlots: ComponentMeta['requiredNamedSlots'] = Array.from(
-      source.matchAll(/const ([a-zA-Z]+) = getNamedSlotOrThrow\(this\.host, '([a-zA-Z]+)'\)/g)
-    ).map(([, constName, slotName]) => {
-      if (!namedSlots.includes(slotName)) {
-        throw new Error(`Extracted slotName '${slotName}' is not included in namedSlots: ${namedSlots.join(', ')}`);
-      }
-
-      const [, tagName] = (new RegExp(`throwIfElementIsNotOfKind\\(this\\.host, ${constName}, '([a-zA-Z-]+)'\\)`).exec(
-        source
-      ) || []) as unknown as [string, TagName];
-
-      return { slotName, tagName };
-    });
-
     const deprecatedEventNames: ComponentMeta['deprecatedEventNames'] = [];
 
     // events
@@ -742,6 +553,8 @@ const generateComponentMeta = (): void => {
       observedAttributes = eval(rawObservedAttributes);
     }
 
+    const { hasSlot, namedSlots, requiredNamedSlots } = extractSlotInformation(source);
+
     result[tagName] = {
       ...(isDeprecated && { isDeprecated, deprecationMessage }),
       ...(isExperimental && { isExperimental }),
@@ -785,7 +598,7 @@ const generateComponentMeta = (): void => {
     `export const getComponentMeta = (component: TagName): ComponentMeta => componentMeta[component];`,
   ].join(glue);
 
-  const content = [imports, types, functions].join(glue);
+  const content = [types, functions].join(glue);
 
   const targetDirectory = path.normalize('./src/lib');
   fs.mkdirSync(path.resolve(targetDirectory), { recursive: true });
@@ -795,6 +608,31 @@ const generateComponentMeta = (): void => {
   fs.writeFileSync(targetFile, content);
 
   console.log(`Generated ${targetFileName}`);
+};
+
+const extractSlotInformation = (
+  source: string
+): {
+  hasSlot: boolean;
+  namedSlots?: string[];
+  requiredNamedSlots?: { slotName: string; tagName: TagName }[];
+} => {
+  type SlotMeta = {
+    name: string; // Name of the slot. Empty name corresponds to the default slot.
+    description: string;
+    isRequired?: boolean; // Specifies if the slot is required. If undefined the slot is not required.
+    allowedTagNames?: (TagName & HTMLElement)[]; // Specifies which tagNames are allowed to be used. If undefined all tags are allowed.
+    hasAltProp?: boolean; // Specifies if the slot has an equal name prop which can be used instead.
+    isDeprecated?: boolean;
+  };
+  const slots: SlotMeta[] = Array.from(source.matchAll(/@slot\s*({.*})/g)).map(([, slotInfo]) => JSON.parse(slotInfo));
+  return {
+    hasSlot: !!slots,
+    namedSlots: slots.filter((slot) => slot.name).map((slot) => slot.name),
+    requiredNamedSlots: slots
+      .filter((slot) => slot.isRequired)
+      .map((slot) => ({ slotName: slot.name, tagName: slot.allowedTagNames[0] })),
+  };
 };
 
 generateComponentMeta();

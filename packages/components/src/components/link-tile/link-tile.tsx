@@ -37,6 +37,9 @@ const propTypes: PropTypes<typeof LinkTile> = {
   aria: AllowedTypes.aria<LinkTileAriaAttribute>(LINK_ARIA_ATTRIBUTES),
 };
 
+/**
+ * @slot {"name": "", "description": "Default slot for the img or picture tag." }
+ */
 @Component({
   tag: 'p-link-tile',
   shadow: { delegatesFocus: true },

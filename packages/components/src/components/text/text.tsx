@@ -36,6 +36,9 @@ const propTypes: PropTypes<typeof Text> = {
   theme: AllowedTypes.oneOf<Theme>(THEMES),
 };
 
+/**
+ * @slot {"name": "", "description": "Default slot for the text to render." }
+ */
 @Component({
   tag: 'p-text',
   shadow: true,

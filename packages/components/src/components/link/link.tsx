@@ -38,6 +38,9 @@ const propTypes: PropTypes<typeof Link> = {
   aria: AllowedTypes.aria<LinkAriaAttribute>(LINK_ARIA_ATTRIBUTES),
 };
 
+/**
+ * @slot {"name": "", "description": "Default slot to render the link label." }
+ */
 @Component({
   tag: 'p-link',
   shadow: { delegatesFocus: true },

@@ -16,6 +16,9 @@ const propTypes: PropTypes<typeof MultiSelectOption> = {
   disabled: AllowedTypes.boolean,
 };
 
+/**
+ * @slot {"name": "", "description": "Default slot for the option text." }
+ */
 @Component({
   tag: 'p-multi-select-option',
   shadow: true,

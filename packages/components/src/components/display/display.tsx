@@ -24,6 +24,9 @@ const propTypes: PropTypes<typeof Display> = {
   theme: AllowedTypes.oneOf<Theme>(THEMES),
 };
 
+/**
+ * @slot {"name": "", "description": "Default slot for the display text." }
+ */
 @Component({
   tag: 'p-display',
   shadow: true,

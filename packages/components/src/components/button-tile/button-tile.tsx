@@ -46,6 +46,9 @@ const propTypes: PropTypes<typeof ButtonTile> = {
   aria: AllowedTypes.aria<ButtonAriaAttribute>(BUTTON_ARIA_ATTRIBUTES),
 };
 
+/**
+ * @slot {"name": "", "description": "Default slot for the img or picture tag." }
+ */
 @Component({
   tag: 'p-button-tile',
   shadow: { delegatesFocus: true },

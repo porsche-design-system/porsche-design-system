@@ -41,6 +41,14 @@ const propTypes: PropTypes<typeof Modal> = {
   theme: AllowedTypes.oneOf<Theme>(THEMES),
 };
 
+/**
+ * @slot {"name": "heading", "description": "Renders a heading section above the content area.", "isDeprecated": true }
+ * @slot {"name": "header", "description": "Renders a header section above the content area." }
+ * @slot {"name": "", "description": "Default slot for the main content." }
+ * @slot {"name": "footer", "description": "Shows a sticky footer section, flowing under the content area when scrollable." }
+ *
+ * @controlled {"prop": "open", "event": "dismiss"}
+ */
 @Component({
   tag: 'p-modal',
   shadow: true,

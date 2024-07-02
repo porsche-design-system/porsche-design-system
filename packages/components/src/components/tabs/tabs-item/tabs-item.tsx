@@ -14,6 +14,9 @@ const propTypes: PropTypes<typeof TabsItem> = {
   label: AllowedTypes.string,
 };
 
+/**
+ * @slot {"name": "", "description": "Default slot for the tab content." }
+ */
 @Component({
   tag: 'p-tabs-item',
   shadow: true,

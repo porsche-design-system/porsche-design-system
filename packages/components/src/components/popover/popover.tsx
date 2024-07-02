@@ -32,6 +32,9 @@ const propTypes: PropTypes<typeof Popover> = {
   theme: AllowedTypes.oneOf<Theme>(THEMES),
 };
 
+/**
+ * @slot {"name": "", "description": "Default slot for the popover content." }
+ */
 @Component({
   tag: 'p-popover',
   shadow: true, // delegatesFocus: true prevents text selection inside

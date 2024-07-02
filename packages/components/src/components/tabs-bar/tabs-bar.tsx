@@ -46,6 +46,9 @@ const propTypes: PropTypes<typeof TabsBar> = {
   activeTabIndex: AllowedTypes.number,
 };
 
+/**
+ * @slot {"name": "", "description": "Default slot for the `button` or `a` tags which will be rendered as tabs." }
+ */
 @Component({
   tag: 'p-tabs-bar',
   shadow: true,

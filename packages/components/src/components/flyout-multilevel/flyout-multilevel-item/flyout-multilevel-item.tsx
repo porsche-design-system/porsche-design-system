@@ -19,7 +19,11 @@ const propTypes: PropTypes<typeof FlyoutMultilevelItem> = {
   label: AllowedTypes.string,
 };
 
-/** @experimental */
+/**
+ * @slot {"name": "", "description": "Default slot for the main content." }
+ *
+ * @experimental
+ */
 @Component({
   tag: 'p-flyout-multilevel-item',
   shadow: true,
