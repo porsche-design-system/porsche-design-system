@@ -16,7 +16,6 @@ slot[name="controls"] {
   grid-column-start: 1;
   grid-row-start: 3;
   align-self: center;
-  justify-self: center;
 }
 ::slotted(*) {
   border-radius: var(--p-carousel-border-radius, 12px) !important;
@@ -362,7 +361,6 @@ slot[name="controls"] {
   grid-column-start: 1;
   grid-row-start: 3;
   align-self: center;
-  justify-self: center;
 }
 ::slotted(*) {
   border-radius: var(--p-carousel-border-radius, 12px) !important;
@@ -808,7 +806,6 @@ slot[name="controls"] {
   grid-column-start: 1;
   grid-row-start: 3;
   align-self: center;
-  justify-self: center;
 }
 ::slotted(*) {
   border-radius: var(--p-carousel-border-radius, 12px) !important;
@@ -1178,7 +1175,6 @@ slot[name="controls"] {
   grid-column-start: 1;
   grid-row-start: 3;
   align-self: center;
-  justify-self: center;
 }
 ::slotted(*) {
   border-radius: var(--p-carousel-border-radius, 12px) !important;
@@ -1500,7 +1496,6 @@ slot[name="controls"] {
   grid-column-start: 1;
   grid-row-start: 3;
   align-self: center;
-  justify-self: center;
 }
 ::slotted(*) {
   border-radius: var(--p-carousel-border-radius, 12px) !important;
@@ -2267,7 +2262,6 @@ slot[name="controls"] {
   grid-column-start: 1;
   grid-row-start: 3;
   align-self: center;
-  justify-self: center;
 }
 ::slotted(*) {
   border-radius: var(--p-carousel-border-radius, 12px) !important;
