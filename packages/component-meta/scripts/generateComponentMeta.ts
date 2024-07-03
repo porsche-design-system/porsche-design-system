@@ -4,7 +4,7 @@ import { globbySync } from 'globby';
 import { kebabCase } from 'change-case';
 import { type TagName, TAG_NAMES, INTERNAL_TAG_NAMES, TAG_NAMES_WITH_CHUNK } from '@porsche-design-system/shared';
 import { ICONS_MANIFEST } from '@porsche-design-system/assets';
-import type { ComponentsMeta, ComponentMeta } from '../src/types/component-meta';
+import type { ComponentsMeta, ComponentMeta, PropMeta } from '../src/types/component-meta';
 
 const glue = '\n\n';
 
@@ -116,82 +116,62 @@ const generateComponentMeta = (): void => {
       ...(source.match(/<StateMessage/) ? ['p-icon' as TagName] : []),
     ].filter((x, idx, arr) => arr.findIndex((t) => t === x) === idx); // remove duplicates;
 
-    const deprecatedProps: ComponentMeta['deprecatedProps'] = [];
-
-    const arrayProps: ComponentMeta['arrayProps'] = [];
-
     // props
     const propsMeta: ComponentMeta['propsMeta'] = {};
 
-    const props: ComponentMeta['props'] = Array.from(
+    Array.from(
       source.matchAll(/(  \/\*\*[\s\S]+?)?@Prop\(.*\) public ([a-zA-Z]+)\??(?:(?:: (.+?))| )(?:=[^>]\s*([\s\S]+?))?;/g)
-    ).reduce(
-      (result, [, jsdoc, propName, propType, propValue]) => {
-        let cleanedValue: boolean | number | string | object =
-          propValue === 'true'
-            ? true
-            : propValue === 'false'
-              ? false
-              : // undefined values get lost in JSON.stringify, but null is allowed
-                propValue
-                  ?.replace(/^['"](.*)['"]$/, '$1') // propValue is a string and might contain a string wrapped in quotes since it is extracted like this
-                  .replace(/\s+/g, ' ') // remove new lines and multiple spaces
-                  .replace(/,( })/, '$1') ?? null; // remove trailing comma in original multiline objects
+    ).forEach(([, jsdoc, propName, propType, propValue]) => {
+      let cleanedValue: boolean | number | string | object =
+        propValue === 'true'
+          ? true
+          : propValue === 'false'
+            ? false
+            : // undefined values get lost in JSON.stringify, but null is allowed
+              propValue
+                ?.replace(/^['"](.*)['"]$/, '$1') // propValue is a string and might contain a string wrapped in quotes since it is extracted like this
+                .replace(/\s+/g, ' ') // remove new lines and multiple spaces
+                .replace(/,( })/, '$1') ?? null; // remove trailing comma in original multiline objects
 
-        if (typeof cleanedValue === 'string') {
-          if (cleanedValue.match(/^\d+$/) && !propValue.match(/^['"]\d+['"]$/)) {
-            // parse numbers
-            cleanedValue = parseInt(cleanedValue);
-          } else if (cleanedValue.match(/^{.+}$/)) {
-            // parse objects
-            cleanedValue = eval(`(${cleanedValue})`);
-          } else if (cleanedValue.match(/\[.*]/g)) {
-            // parse arrays
-            if (cleanedValue !== '[]') {
-              // TODO: Support non empty array values
-              throw new Error(`Expected an empty array '[]' for prop '${propName}', but found '${propValue}'`);
-            }
-            arrayProps.push(propName);
-            cleanedValue = [];
+      if (typeof cleanedValue === 'string') {
+        if (cleanedValue.match(/^\d+$/) && !propValue.match(/^['"]\d+['"]$/)) {
+          // parse numbers
+          cleanedValue = parseInt(cleanedValue);
+        } else if (cleanedValue.match(/^{.+}$/)) {
+          // parse objects
+          cleanedValue = eval(`(${cleanedValue})`);
+        } else if (cleanedValue.match(/\[.*]/g)) {
+          // parse arrays
+          if (cleanedValue !== '[]') {
+            // TODO: Support non empty array values
+            throw new Error(`Expected an empty array '[]' for prop '${propName}', but found '${propValue}'`);
           }
+          cleanedValue = [];
         }
+      }
 
-        if (jsdoc?.match(/@deprecated/)) {
-          deprecatedProps.push(propName);
-        }
-
-        // new format
-        propsMeta[propName] = {
-          description: jsdoc
-            ?.replace(/\/\*\*/, '')
-            .replace(/\*\/\n/, '')
-            .replace(/\s+\*/g, '')
-            .replace(/\/\/ prettier-ignore/g, '')
-            .trim(),
-          type: propType.replace(/(?:BreakpointCustomizable|SelectedAriaAttributes)<(.+?)>/, '$1').trim(), // contains trailing space
-          defaultValue: cleanedValue,
-          ...(jsdoc?.match(/@deprecated/) && { isDeprecated: true }),
-          ...(jsdoc?.match(/@experimental/) && { isExperimental: true }),
-          ...(propType.match(/SelectedAriaAttributes/) && { isAria: true }),
-          ...(Array.isArray(cleanedValue) && { isArray: true }),
-        };
-
-        return {
-          ...result,
-          [propName]: cleanedValue,
-        };
-      },
-      {} as ComponentMeta['props']
-    );
+      // new format
+      propsMeta[propName] = {
+        description: jsdoc
+          ?.replace(/\/\*\*/, '')
+          .replace(/\*\/\n/, '')
+          .replace(/\s+\*/g, '')
+          .replace(/\/\/ prettier-ignore/g, '')
+          .trim(),
+        type: propType.replace(/(?:BreakpointCustomizable|SelectedAriaAttributes)<(.+?)>/, '$1').trim(), // contains trailing space
+        defaultValue: cleanedValue,
+        ...(jsdoc?.match(/@deprecated/) && { isDeprecated: true }),
+        ...(jsdoc?.match(/@experimental/) && { isExperimental: true }),
+        ...(propType.match(/SelectedAriaAttributes/) && { isAria: true }),
+        ...(Array.isArray(cleanedValue) && { isArray: true }),
+      };
+    });
 
     // required props
-    const requiredProps: ComponentMeta['requiredProps'] = Array.from(
+    Array.from(
       // similar regex as above without optional ? modifier
       source.matchAll(/@Prop\(.*\) public ([a-zA-Z]+)(?:(?:: (.+?))| )(?:=[^>]\s*([\s\S]+?))?;/g)
-    ).map(([, propName]) => propName);
-
-    // new format
-    requiredProps.forEach((propName) => (propsMeta[propName].isRequired = true));
+    ).forEach(([, propName]) => (propsMeta[propName].isRequired = true));
 
     let [, rawPropTypes] = /const [a-z][a-zA-Z]+: (?:Omit<)?PropTypes<.+?> = ({[\s\S]+?});/.exec(source) || [];
 
@@ -236,13 +216,15 @@ const generateComponentMeta = (): void => {
     const propTypes = eval(`(${rawPropTypes})`) as Record<string, string>;
 
     // breakpointCustomizableProps
-    const breakpointCustomizableProps: ComponentMeta['breakpointCustomizableProps'] = [];
+    const breakpointCustomizableProps: string[] = [];
 
     // deprecatedPropValues
-    const deprecatedPropValues: ComponentMeta['deprecatedPropValues'] = {};
+    const deprecatedPropValues: {
+      [propName: string]: string[]; // array of values of a prop that are deprecated
+    } = {};
 
     // allowedPropValues
-    const allowedPropValues: ComponentMeta['allowedPropValues'] =
+    const allowedPropValues: { [propName: string]: PropMeta['allowedValues'] } =
       isInternal || !propTypes
         ? {} // internal components or ones without propTypes validation don't matter
         : Object.entries(propTypes).reduce(
@@ -391,7 +373,7 @@ const generateComponentMeta = (): void => {
               }
               return result;
             },
-            {} as ComponentMeta['allowedPropValues']
+            {} as { [propName: string]: PropMeta['allowedValues'] }
           );
 
     // custom workaround for variant prop of p-headline which isn't validated because of complexity
@@ -460,91 +442,85 @@ const generateComponentMeta = (): void => {
         .reduce((result, [attr, val]) => ({ ...result, [attr]: val }), {} as ComponentMeta['hostAttributes']);
     }
 
-    const deprecatedEventNames: ComponentMeta['deprecatedEventNames'] = [];
-
     // events
     const eventsMeta: ComponentMeta['eventsMeta'] = {};
 
-    const eventNames = Array.from(
-      source.matchAll(/(  \/\*\*(?:.*\n){0,3})?.+?([A-Za-z]+)\??: EventEmitter<(.+)>/g)
-    ).map(([, jsdoc, eventName, eventType]) => {
-      if (jsdoc?.match(/@deprecated/)) {
-        deprecatedEventNames.push(eventName);
-      }
+    Array.from(source.matchAll(/(  \/\*\*(?:.*\n){0,3})?.+?([A-Za-z]+)\??: EventEmitter<(.+)>/g)).forEach(
+      ([, jsdoc, eventName, eventType]) => {
+        let typeDetail: string;
+        if (eventType !== 'void') {
+          // let's find the file where the type is defined
+          const [, relativeEventTypePath] =
+            source.match(new RegExp(`import [\\s\\S]+?${eventType}[\\s\\S]+?from '([\\s\\S]+?)';`)) || [];
+          const componentSourceFilePath = getComponentFilePath(tagName);
+          const eventTypePath = path.resolve(componentSourceFilePath, `../${relativeEventTypePath}.ts`);
+          const eventTypeFileContent = fs.readFileSync(eventTypePath, 'utf8');
 
-      let typeDetail: string;
-      if (eventType !== 'void') {
-        // let's find the file where the type is defined
-        const [, relativeEventTypePath] =
-          source.match(new RegExp(`import [\\s\\S]+?${eventType}[\\s\\S]+?from '([\\s\\S]+?)';`)) || [];
-        const componentSourceFilePath = getComponentFilePath(tagName);
-        const eventTypePath = path.resolve(componentSourceFilePath, `../${relativeEventTypePath}.ts`);
-        const eventTypeFileContent = fs.readFileSync(eventTypePath, 'utf8');
+          // type can be an alias of another type
+          const [, eventTypeAlias] =
+            eventTypeFileContent.match(new RegExp(`type ${eventType} = ([A-Z][a-z][A-Za-z]+);`)) || [];
+          let [, eventTypeDetail] =
+            eventTypeFileContent.match(new RegExp(`type ${eventTypeAlias || eventType} = ({[\\s\\S]+?});\\n`)) || [];
 
-        // type can be an alias of another type
-        const [, eventTypeAlias] =
-          eventTypeFileContent.match(new RegExp(`type ${eventType} = ([A-Z][a-z][A-Za-z]+);`)) || [];
-        let [, eventTypeDetail] =
-          eventTypeFileContent.match(new RegExp(`type ${eventTypeAlias || eventType} = ({[\\s\\S]+?});\\n`)) || [];
-
-        if (eventTypeDetail) {
-          typeDetail = eventTypeDetail;
-        } else {
-          // check if the type is defined locally
-          let eventAliasTypeDetail: string;
-          let [, eventAliasTypeAlias] =
-            eventTypeFileContent.match(new RegExp(`type ${eventTypeAlias} = ([A-Z][a-z][A-Za-z]+);`)) || [];
-
-          if (
-            eventAliasTypeAlias &&
-            eventTypeFileContent.match(new RegExp(`type ${eventAliasTypeAlias} = ({[\\s\\S]+?});\\n`))
-          ) {
-            // type has local alias
-            eventAliasTypeDetail = eventTypeFileContent.match(
-              new RegExp(`type ${eventAliasTypeAlias} = ({[\\s\\S]+?});\\n`)
-            )[1];
+          if (eventTypeDetail) {
+            typeDetail = eventTypeDetail;
           } else {
-            // check if type or imported from somewhere else
-            const [, relativeAliasTypePath] =
-              eventTypeFileContent.match(
-                new RegExp(`import [\\s\\S]+?${eventAliasTypeAlias}[\\s\\S]+?from '([\\s\\S]+?)';`)
-              ) || [];
-            const eventAliasTypePath = path.resolve(eventTypePath, `../${relativeAliasTypePath}.ts`);
-            const eventAliasTypeFileContent = fs.readFileSync(eventAliasTypePath, 'utf8');
+            // check if the type is defined locally
+            let eventAliasTypeDetail: string;
+            let [, eventAliasTypeAlias] =
+              eventTypeFileContent.match(new RegExp(`type ${eventTypeAlias} = ([A-Z][a-z][A-Za-z]+);`)) || [];
 
-            eventAliasTypeDetail = eventAliasTypeFileContent.match(
-              new RegExp(`type ${eventAliasTypeAlias || eventTypeAlias} = ({[\\s\\S]+?});\\n`)
-            )?.[1];
+            if (
+              eventAliasTypeAlias &&
+              eventTypeFileContent.match(new RegExp(`type ${eventAliasTypeAlias} = ({[\\s\\S]+?});\\n`))
+            ) {
+              // type has local alias
+              eventAliasTypeDetail = eventTypeFileContent.match(
+                new RegExp(`type ${eventAliasTypeAlias} = ({[\\s\\S]+?});\\n`)
+              )[1];
+            } else {
+              // check if type or imported from somewhere else
+              const [, relativeAliasTypePath] =
+                eventTypeFileContent.match(
+                  new RegExp(`import [\\s\\S]+?${eventAliasTypeAlias}[\\s\\S]+?from '([\\s\\S]+?)';`)
+                ) || [];
+              const eventAliasTypePath = path.resolve(eventTypePath, `../${relativeAliasTypePath}.ts`);
+              const eventAliasTypeFileContent = fs.readFileSync(eventAliasTypePath, 'utf8');
 
-            if (!eventAliasTypeDetail) {
-              throw new Error(
-                `Couldn't find alias ${eventTypeAlias} for ${eventType} in ${eventAliasTypePath}, perhaps it is another alias which isn't supported, yet.`
-              );
+              eventAliasTypeDetail = eventAliasTypeFileContent.match(
+                new RegExp(`type ${eventAliasTypeAlias || eventTypeAlias} = ({[\\s\\S]+?});\\n`)
+              )?.[1];
+
+              if (!eventAliasTypeDetail) {
+                throw new Error(
+                  `Couldn't find alias ${eventTypeAlias} for ${eventType} in ${eventAliasTypePath}, perhaps it is another alias which isn't supported, yet.`
+                );
+              }
             }
+
+            typeDetail = eventAliasTypeDetail;
           }
 
-          typeDetail = eventAliasTypeDetail;
+          typeDetail = typeDetail
+            .replace(/ \/\/.+/g, '') // remove comments
+            .replace(/\s+/g, ' ') // multi line to single line
+            .replace(/; }/, ' }'); // remove last semi colon
         }
 
-        typeDetail = typeDetail
-          .replace(/ \/\/.+/g, '') // remove comments
-          .replace(/\s+/g, ' ') // multi line to single line
-          .replace(/; }/, ' }'); // remove last semi colon
+        eventsMeta[eventName] = {
+          description: jsdoc
+            ?.replace(/\/\*\*/, '')
+            .replace(/\*\/\n/, '')
+            .replace(/\s+\*/g, '')
+            .trim(),
+          type: eventType,
+          ...(typeDetail && { typeDetail }),
+          ...(jsdoc?.match(/@deprecated/) && { isDeprecated: true }),
+        };
+
+        return eventName;
       }
-
-      eventsMeta[eventName] = {
-        description: jsdoc
-          ?.replace(/\/\*\*/, '')
-          .replace(/\*\/\n/, '')
-          .replace(/\s+\*/g, '')
-          .trim(),
-        type: eventType,
-        ...(typeDetail && { typeDetail }),
-        ...(jsdoc?.match(/@deprecated/) && { isDeprecated: true }),
-      };
-
-      return eventName;
-    });
+    );
 
     // observed attributes
     let observedAttributes: ComponentMeta['observedAttributes'] = [];
@@ -568,13 +544,6 @@ const generateComponentMeta = (): void => {
       requiredChildSelector,
       ...(nestedComponents.length && { nestedComponents }),
       ...(Object.keys(propsMeta).length && { propsMeta }), // new format
-      ...(Object.keys(props).length && { props }),
-      ...(requiredProps.length && { requiredProps }),
-      ...(deprecatedProps.length && { deprecatedProps }),
-      ...(Object.keys(allowedPropValues).length && { allowedPropValues }),
-      ...(Object.keys(deprecatedPropValues).length && { deprecatedPropValues }),
-      ...(breakpointCustomizableProps.length && { breakpointCustomizableProps }),
-      ...(arrayProps.length && { arrayProps }),
       ...(Object.keys(internalProps).length && { internalProps }),
       ...(Object.keys(hostAttributes).length && { hostAttributes }),
       hasSlot,
@@ -582,8 +551,6 @@ const generateComponentMeta = (): void => {
       ...(requiredNamedSlots.length && { requiredNamedSlots }),
       ...(Object.keys(eventsMeta).length && { eventsMeta }), // new format
       hasEvent,
-      ...(eventNames.length && { eventNames }),
-      ...(deprecatedEventNames.length && { deprecatedEventNames }),
       hasAriaProp,
       hasObserveAttributes,
       ...(observedAttributes.length && { observedAttributes }),

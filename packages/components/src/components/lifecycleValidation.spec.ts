@@ -18,21 +18,21 @@ const tagNamesWithJss = TAG_NAMES.filter((tagName) => getComponentMeta(tagName).
 const tagNamesWithObserveAttributes = TAG_NAMES.filter((tagName) => getComponentMeta(tagName).hasObserveAttributes);
 const tagNamesWithObserveChildren = TAG_NAMES.filter((tagName) => getComponentMeta(tagName).hasObserveChildren);
 const tagNamesPublicWithProps = TAG_NAMES.filter(
-  (tagName) => !getComponentMeta(tagName).isInternal && getComponentMeta(tagName).props
+  (tagName) => !getComponentMeta(tagName).isInternal && getComponentMeta(tagName).propsMeta
 );
 const tagNamesPublicWithoutProps = TAG_NAMES.filter(
-  (tagName) => !getComponentMeta(tagName).isInternal && !getComponentMeta(tagName).props
+  (tagName) => !getComponentMeta(tagName).isInternal && !getComponentMeta(tagName).propsMeta
 );
 const tagNamesWithPropsOfTypeObject = TAG_NAMES.filter((tagName) => {
-  return (
-    (getComponentMeta(tagName).breakpointCustomizableProps &&
-      getComponentMeta(tagName).breakpointCustomizableProps.length > 0) ||
-    (getComponentMeta(tagName).allowedPropValues &&
-      Object.values(getComponentMeta(tagName).allowedPropValues).some(
-        // Check for Array types to exclude e.g. theme = ['light', 'dark'] -> might cause an issue in the future if a prop would accept array values.
-        (prop) => typeof prop === 'object' && !Array.isArray(prop)
-      ))
-  );
+  const propsMetaEntries = Object.entries(getComponentMeta(tagName).propsMeta);
+  const breakpointCustomizableProps = propsMetaEntries.filter(([, value]) => value.isBreakpointCustomizable);
+  const hasPropsOfTypeObject = propsMetaEntries
+    .map(([, value]) => value.allowedValues)
+    .some(
+      (prop) => typeof prop === 'object' && !Array.isArray(prop) // Check for Array types to exclude e.g. theme = ['light', 'dark'] -> might cause an issue in the future if a prop would accept array values.
+    );
+
+  return breakpointCustomizableProps.length > 0 || hasPropsOfTypeObject;
 });
 
 // TODO: group tests by component instead of by feature?
@@ -120,7 +120,7 @@ it.each<TagName>(tagNamesPublicWithProps)(
 
     // it would be possible to exclude a prop from propTypes via Omit<...>
     // to get confidence that isn't the case, we check against components meta which contains all props
-    const propTypesStructure = Object.keys(getComponentMeta(tagName).props || {}).reduce(
+    const propTypesStructure = Object.keys(getComponentMeta(tagName).propsMeta || {}).reduce(
       (prev, prop) => ({ ...prev, [prop]: expect.any(Function) }),
       {} as Record<string, any>
     );

@@ -35,26 +35,6 @@ export type ComponentMeta = {
   requiredChildSelector?: string; // might contain multiple selectors separated by comma
   nestedComponents?: TagName[]; // array of other pds components
   propsMeta?: { [propName: string]: PropMeta }; // new format
-  /** @deprecated use `propsMeta` instead */
-  props?: {
-    [propName: string]: boolean | number | string | object | null; // value is the prop's default value
-  };
-  /** @deprecated use `propsMeta` instead */
-  requiredProps?: string[]; // array of props that are mandatory
-  /** @deprecated use `propsMeta` instead */
-  deprecatedProps?: string[]; // array of props that are deprecated
-  /** @deprecated use `propsMeta` instead */
-  breakpointCustomizableProps?: string[]; // array of props that are breakpointCustomizable
-  /** @deprecated use `propsMeta` instead */
-  arrayProps?: string[]; // array of props that are of type array
-  /** @deprecated use `propsMeta` instead */
-  allowedPropValues?: {
-    [propName: string]: 'boolean' | 'number' | 'string' | object | string[] | number[];
-  };
-  /** @deprecated use `propsMeta` instead */
-  deprecatedPropValues?: {
-    [propName: string]: string[]; // array of values of a prop that are deprecated
-  };
   internalProps?: {
     [propName: string]: boolean | number | string | object | null; // value is the prop's default value
   };
@@ -66,10 +46,6 @@ export type ComponentMeta = {
   requiredNamedSlots?: { slotName: string; tagName: TagName }[]; // array of objects for each named slot with specific component tag
   eventsMeta?: { [eventName: string]: EventMeta }; // new format
   hasEvent: boolean;
-  /** @deprecated use `eventsMeta` instead */
-  eventNames?: string[];
-  /** @deprecated use `eventsMeta` instead */
-  deprecatedEventNames?: string[]; // array of event names
   hasAriaProp: boolean;
   hasObserveAttributes: boolean;
   observedAttributes?: string[];

@@ -2,7 +2,7 @@ import type { TagName } from '@porsche-design-system/shared';
 import { getComponentMeta } from '@porsche-design-system/component-meta';
 
 export const addParentAndSetRequiredProps = (tagName: TagName, component: any): void => {
-  const { requiredParent, requiredChild, requiredProps, props, hasEvent, eventNames, requiredNamedSlots } =
+  const { requiredParent, requiredChild, propsMeta, hasEvent, eventsMeta, requiredNamedSlots } =
     getComponentMeta(tagName);
 
   if (requiredParent) {
@@ -35,14 +35,18 @@ export const addParentAndSetRequiredProps = (tagName: TagName, component: any): 
     });
   }
 
+  const requiredProps = Object.entries(propsMeta)
+    .filter(([, value]) => value.isRequired)
+    .map(([key]) => key);
+
   if (requiredProps) {
     requiredProps.forEach((prop) => {
-      component[prop] = props[prop] ?? 'some value';
+      component[prop] = propsMeta[prop].defaultValue ?? 'some value';
     });
   }
 
   if (hasEvent) {
-    eventNames.forEach((event) => {
+    Object.keys(eventsMeta).forEach((event) => {
       component[event] = jest.fn();
     });
   }

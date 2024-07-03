@@ -36,8 +36,8 @@ const getPrettyComponentName = (tagName: TagName): string => {
 };
 
 const tagNamesWithProps = TAG_NAMES.filter((tagName) => {
-  const { props, isInternal } = getComponentMeta(tagName);
-  return props && !isInternal; // get rid of p-toast-item and p-select-wrapper-dropdown
+  const { propsMeta, isInternal } = getComponentMeta(tagName);
+  return propsMeta && !isInternal; // get rid of p-toast-item and p-select-wrapper-dropdown
 });
 
 it.each<TagName>(tagNamesWithProps)('should contain props page for %s', (tagName) => {
