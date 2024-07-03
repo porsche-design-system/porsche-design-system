@@ -3,8 +3,6 @@ import * as path from 'path';
 import replace from '@rollup/plugin-replace';
 import type { TagName } from '@porsche-design-system/shared';
 import { version } from './package.json';
-import { JsonDocs, JsonDocsTag } from '@stencil/core/internal';
-import fs from 'fs';
 
 /**
  * TODO: Remove this workaround
