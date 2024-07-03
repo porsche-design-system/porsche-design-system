@@ -208,6 +208,7 @@ export class Carousel {
       breakpoints: getSplideBreakpoints(this.slidesPerPage as Exclude<BreakpointCustomizable<number> | 'auto', string>), // eslint-disable-line @typescript-eslint/no-redundant-type-constituents
       // https://splidejs.com/guides/i18n/#default-texts
       i18n: parseJSONAttribute(this.intl || {}), // can only be applied initially atm
+      direction: this.getRtlDirection() ? 'rtl' : 'ltr',
     });
 
     this.registerSplideHandlers(this.splide);
@@ -440,4 +441,9 @@ export class Carousel {
       ['aria-hidden']
     );
   }
+
+  private getRtlDirection = (): boolean =>
+    // @ts-expect-error "textInfo" is not supported in Firefox and not part of the types.
+    // See https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/Locale/getTextInfo
+    new Intl.Locale(document.documentElement.lang).textInfo?.direction === 'rtl' || !!this.host.closest('[dir="rtl"]');
 }
