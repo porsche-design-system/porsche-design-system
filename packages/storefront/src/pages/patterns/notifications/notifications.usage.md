@@ -35,8 +35,8 @@ not work anymore. As we are progressing with the refactoring this might already 
 
 | Component                                                                                                                         | z-index                         |
 | --------------------------------------------------------------------------------------------------------------------------------- | ------------------------------- |
-| Toast                                                                                                                             | {{zIndexes.toast}}              |
-| Modal                                                                                                                             | {{zIndexes.modal}}              |
+| Toast                                                                                                                             | {{zIndexes.toast}} / top-layer  |
+| Modal                                                                                                                             | {{zIndexes.modal}} / top-layer  |
 | Flyout                                                                                                                            | {{zIndexes.flyout}} / top-layer |
 | Popover <p-popover :theme="this.$store.getters.storefrontTheme" ref="popover">Start the live demo to see it in action</p-popover> | {{zIndexes.popover}}            |
 | Banner                                                                                                                            | {{zIndexes.banner}} / top-layer |

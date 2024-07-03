@@ -474,5 +474,6 @@
     background: #00b0f4;
     height: 100px;
     border-radius: $pds-border-radius-small;
+    color: $pds-theme-light-primary;
   }
 </style>
