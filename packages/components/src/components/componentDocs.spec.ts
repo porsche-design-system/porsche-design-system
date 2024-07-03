@@ -12,12 +12,6 @@ describe.each<TagName>(
   TAG_NAMES.filter(
     (x) =>
       ![
-        'p-table-body',
-        'p-table-cell',
-        'p-table-head',
-        'p-table-head-cell',
-        'p-table-head-row',
-        'p-table-row',
         'p-carousel', // Skip for now because of dynamic slot <slot name={`slide-${i}`} />
       ].includes(x)
   )
