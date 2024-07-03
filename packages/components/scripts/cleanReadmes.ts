@@ -86,7 +86,7 @@ const replaceEventsTable =
 const replaceSlotsTable =
   (componentName: string): ((str: string) => string) =>
   (str: string): string =>
-    str.replace(/(### Slots\n+)(?:\|.+\n)+\n?/, '');
+    str.replace(/(###? Slots\n+)(?:\|.+\n)+\n?/, '');
 
 const cleanReadmes = (): void => {
   const files = globbySync('./src/components/**/readme.md');
