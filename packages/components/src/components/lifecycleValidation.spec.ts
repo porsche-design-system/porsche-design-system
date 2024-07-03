@@ -24,14 +24,15 @@ const tagNamesPublicWithoutProps = TAG_NAMES.filter(
   (tagName) => !getComponentMeta(tagName).isInternal && !getComponentMeta(tagName).propsMeta
 );
 const tagNamesWithPropsOfTypeObject = TAG_NAMES.filter((tagName) => {
-  const propsMetaEntries = Object.entries(getComponentMeta(tagName).propsMeta);
+  const { propsMeta } = getComponentMeta(tagName);
+  if (!propsMeta) return false;
+  const propsMetaEntries = Object.entries(propsMeta);
   const breakpointCustomizableProps = propsMetaEntries.filter(([, value]) => value.isBreakpointCustomizable);
   const hasPropsOfTypeObject = propsMetaEntries
     .map(([, value]) => value.allowedValues)
     .some(
       (prop) => typeof prop === 'object' && !Array.isArray(prop) // Check for Array types to exclude e.g. theme = ['light', 'dark'] -> might cause an issue in the future if a prop would accept array values.
     );
-
   return breakpointCustomizableProps.length > 0 || hasPropsOfTypeObject;
 });
 
