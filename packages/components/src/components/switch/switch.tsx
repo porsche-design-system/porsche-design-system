@@ -31,6 +31,8 @@ const propTypes: PropTypes<typeof Switch> = {
 
 /**
  * @slot {"name": "", "description": "Default slot for the label." }
+ *
+ * @controlled {"prop": "checked", "event": "update"}
  */
 @Component({
   tag: 'p-switch',
