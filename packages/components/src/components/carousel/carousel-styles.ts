@@ -228,8 +228,8 @@ export const getComponentCss = (
         ...backfaceVisibilityJssStyle,
         flexShrink: 0,
         transform: 'translateZ(0)', // fixes mobile safari flickering, https://github.com/nolimits4web/swiper/issues/3527#issuecomment-609088939
-        '&:last-child': {
-          margin: '0 !important',
+        '&:not(:last-child)': {
+          marginInlineEnd: gridGap,
         },
       },
       '&__sr': getHiddenTextJssStyle(), // appears in the DOM when sliding

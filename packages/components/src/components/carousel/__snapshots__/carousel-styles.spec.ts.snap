@@ -77,8 +77,8 @@ slot[name="controls"] {
   clip: rect(0,0,0,0);
   white-space: nowrap;
 }
-.splide__slide:last-child {
-  margin: 0 !important;
+.splide__slide:not(:last-child) {
+  margin-inline-end: clamp(16px, 1.25vw + 12px, 36px);
 }
 .splide__track--draggable {
   cursor: grab;
@@ -248,8 +248,8 @@ slot[name="controls"] {
   clip: rect(0,0,0,0);
   white-space: nowrap;
 }
-.splide__slide:last-child {
-  margin: 0 !important;
+.splide__slide:not(:last-child) {
+  margin-inline-end: clamp(16px, 1.25vw + 12px, 36px);
 }
 .splide__track--draggable {
   cursor: grab;
@@ -422,8 +422,8 @@ slot[name="controls"] {
   clip: rect(0,0,0,0);
   white-space: nowrap;
 }
-.splide__slide:last-child {
-  margin: 0 !important;
+.splide__slide:not(:last-child) {
+  margin-inline-end: clamp(16px, 1.25vw + 12px, 36px);
 }
 .splide__track--draggable {
   cursor: grab;
@@ -617,8 +617,8 @@ slot[name="controls"] {
   clip: rect(0,0,0,0);
   white-space: nowrap;
 }
-.splide__slide:last-child {
-  margin: 0 !important;
+.splide__slide:not(:last-child) {
+  margin-inline-end: clamp(16px, 1.25vw + 12px, 36px);
 }
 .splide__track--draggable {
   cursor: grab;
@@ -746,8 +746,8 @@ p,::slotted([slot="description"]) {
   clip: rect(0,0,0,0);
   white-space: nowrap;
 }
-.splide__slide:last-child {
-  margin: 0 !important;
+.splide__slide:not(:last-child) {
+  margin-inline-end: clamp(16px, 1.25vw + 12px, 36px);
 }
 .splide__track--draggable {
   cursor: grab;
@@ -880,8 +880,8 @@ p,::slotted([slot="description"]) {
   clip: rect(0,0,0,0);
   white-space: nowrap;
 }
-.splide__slide:last-child {
-  margin: 0 !important;
+.splide__slide:not(:last-child) {
+  margin-inline-end: clamp(16px, 1.25vw + 12px, 36px);
 }
 .splide__track--draggable {
   cursor: grab;
@@ -1115,8 +1115,8 @@ slot[name="controls"] {
   clip: rect(0,0,0,0);
   white-space: nowrap;
 }
-.splide__slide:last-child {
-  margin: 0 !important;
+.splide__slide:not(:last-child) {
+  margin-inline-end: clamp(16px, 1.25vw + 12px, 36px);
 }
 .splide__track--draggable {
   cursor: grab;
@@ -1251,8 +1251,8 @@ slot[name="controls"] {
   clip: rect(0,0,0,0);
   white-space: nowrap;
 }
-.splide__slide:last-child {
-  margin: 0 !important;
+.splide__slide:not(:last-child) {
+  margin-inline-end: clamp(16px, 1.25vw + 12px, 36px);
 }
 .splide__track--draggable {
   cursor: grab;
@@ -1383,8 +1383,8 @@ p,::slotted([slot="description"]) {
   clip: rect(0,0,0,0);
   white-space: nowrap;
 }
-.splide__slide:last-child {
-  margin: 0 !important;
+.splide__slide:not(:last-child) {
+  margin-inline-end: clamp(16px, 1.25vw + 12px, 36px);
 }
 .splide__track--draggable {
   cursor: grab;
@@ -1579,8 +1579,8 @@ p,::slotted([slot="description"]) {
   clip: rect(0,0,0,0);
   white-space: nowrap;
 }
-.splide__slide:last-child {
-  margin: 0 !important;
+.splide__slide:not(:last-child) {
+  margin-inline-end: clamp(16px, 1.25vw + 12px, 36px);
 }
 .splide__track--draggable {
   cursor: grab;
@@ -1717,8 +1717,8 @@ p,::slotted([slot="description"]) {
   clip: rect(0,0,0,0);
   white-space: nowrap;
 }
-.splide__slide:last-child {
-  margin: 0 !important;
+.splide__slide:not(:last-child) {
+  margin-inline-end: clamp(16px, 1.25vw + 12px, 36px);
 }
 .splide__track--draggable {
   cursor: grab;
@@ -1932,8 +1932,8 @@ p,::slotted([slot="description"]) {
   clip: rect(0,0,0,0);
   white-space: nowrap;
 }
-.splide__slide:last-child {
-  margin: 0 !important;
+.splide__slide:not(:last-child) {
+  margin-inline-end: clamp(16px, 1.25vw + 12px, 36px);
 }
 .splide__track--draggable {
   cursor: grab;
@@ -2150,8 +2150,8 @@ p,::slotted([slot="description"]) {
   clip: rect(0,0,0,0);
   white-space: nowrap;
 }
-.splide__slide:last-child {
-  margin: 0 !important;
+.splide__slide:not(:last-child) {
+  margin-inline-end: clamp(16px, 1.25vw + 12px, 36px);
 }
 .splide__track--draggable {
   cursor: grab;
@@ -2345,8 +2345,8 @@ p,::slotted([slot="description"]) {
   clip: rect(0,0,0,0);
   white-space: nowrap;
 }
-.splide__slide:last-child {
-  margin: 0 !important;
+.splide__slide:not(:last-child) {
+  margin-inline-end: clamp(16px, 1.25vw + 12px, 36px);
 }
 .splide__track--draggable {
   cursor: grab;
