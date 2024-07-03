@@ -55,7 +55,7 @@ export class SegmentedControl {
   @Prop() public theme?: Theme = 'light';
 
   /** Sets the initial value of the segmented-control. */
-  @Prop() public value?: string | number;
+  @Prop({ mutable: true }) public value?: string | number;
 
   /** Sets the amount of columns. */
   @Prop() public columns?: BreakpointCustomizable<SegmentedControlColumns> = 'auto';
