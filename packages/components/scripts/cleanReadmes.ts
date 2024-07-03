@@ -82,6 +82,12 @@ const replaceEventsTable =
       `$1<MetaTable component="p-${componentName}" type="events"></MetaTable>\n`
     );
 
+// TODO: Add slots API
+const replaceSlotsTable =
+  (componentName: string): ((str: string) => string) =>
+  (str: string): string =>
+    str.replace(/(### Slots\n+)(?:\|.+\n)+\n?/, '');
+
 const cleanReadmes = (): void => {
   const files = globbySync('./src/components/**/readme.md');
   for (const file of files) {
@@ -97,6 +103,7 @@ const cleanReadmes = (): void => {
       adjustHeadlines,
       replacePropsTable(componentName), // vue component visualizing componentMeta
       replaceEventsTable(componentName), // vue component visualizing componentMeta
+      replaceSlotsTable(componentName),
     ].reduce((previousResult, fn) => fn(previousResult), sourceFileContent);
 
     // use this for easy debugging
