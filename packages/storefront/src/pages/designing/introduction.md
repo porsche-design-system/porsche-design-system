@@ -49,7 +49,7 @@ If you are not employed at Porsche or a permanent member of a Porsche digital pr
 project for Porsche, you can use your own or corporate Figma space to access our public Design System Library with the
 following link.
 
-<p-link-pure :theme="$store.getters.storefrontTheme" target="_blank" href="https://figma.com/community/file/1363114610686223649/web-design-system-v3-1">Public
+<p-link-pure :theme="$store.getters.storefrontTheme" target="_blank" href="https://www.figma.com/@porsche">Public
 Library</p-link-pure>
 
 ## Internal On-/Offboarding:
