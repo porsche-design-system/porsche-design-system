@@ -7,6 +7,9 @@ const propTypes: PropTypes<typeof TableCell> = {
   multiline: AllowedTypes.boolean,
 };
 
+/**
+ * @slot {"name": "", "description": "Default slot for the table cell content." }
+ */
 @Component({
   tag: 'p-table-cell',
   shadow: true,

@@ -21,7 +21,7 @@ const propTypes: PropTypes<typeof Table> = {
 
 /**
  * @slot {"name": "caption", "description": "Shows a caption that describes the content of the table." }
- * @slot {"name": "", "description": "Default slot for the table tags." }
+ * @slot {"name": "", "description": "Default slot for the table content." }
  */
 @Component({
   tag: 'p-table',
