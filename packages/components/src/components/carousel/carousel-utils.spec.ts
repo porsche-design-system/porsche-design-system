@@ -3,6 +3,7 @@ import {
   getAmountOfPages,
   getSlidesAndAddAttributes,
   getSplideBreakpoints,
+  hasRtlDirection,
   isFirstPage,
   isLastPage,
   renderPagination,
@@ -466,5 +467,17 @@ describe('updatePagination()', () => {
     expect(el.children[5].outerHTML).toBe(bulletInfiniteMarkup);
     expect(el.children[4].outerHTML).toBe(bulletMarkup);
     expect(el.children[3].outerHTML).toBe(bulletActiveMarkup);
+  });
+});
+
+describe('hasRtlDirection()', () => {
+  it('should return language direction', () => {
+    const wrapper = document.createElement('div');
+    const host = document.createElement('p-carousel');
+    wrapper.append(host);
+    expect(hasRtlDirection('ar', host)).toBe(true);
+
+    wrapper.setAttribute('dir', 'rtl');
+    expect(hasRtlDirection('en', host)).toBe(true);
   });
 });

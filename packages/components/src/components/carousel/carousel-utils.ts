@@ -189,3 +189,11 @@ export const updatePagination = (paginationEl: HTMLElement, amountOfPages: numbe
     }
   }
 };
+
+export const hasRtlDirection = (lang: string, el: HTMLElement): boolean => {
+  return el.closest('[dir="rtl"]')
+    ? true
+    : // @ts-expect-error "textInfo" is not supported in Firefox and not part of the types.
+      // See https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/Locale/getTextInfo
+      new Intl.Locale(lang).textInfo?.direction === 'rtl';
+};
