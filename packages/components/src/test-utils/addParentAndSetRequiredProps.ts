@@ -2,8 +2,14 @@ import type { TagName } from '@porsche-design-system/shared';
 import { getComponentMeta } from '@porsche-design-system/component-meta';
 
 export const addParentAndSetRequiredProps = (tagName: TagName, component: any): void => {
-  const { requiredParent, requiredChild, propsMeta, hasEvent, eventsMeta, requiredNamedSlots } =
-    getComponentMeta(tagName);
+  const {
+    requiredParent,
+    requiredChild,
+    propsMeta = {},
+    hasEvent,
+    eventsMeta,
+    requiredNamedSlots,
+  } = getComponentMeta(tagName);
 
   if (requiredParent) {
     const parent = document.createElement(requiredParent);
