@@ -19,6 +19,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 - `Carousel`: support for centering slides if `alignHeader` prop is set to `center` and amount of slides is less than
   `slidesPerPage` ([#3372](https://github.com/porsche-design-system/porsche-design-system/pull/3372))
 
+### [3.16.0] - 2024-07-02
+
 ### [3.16.0-rc.2] - 2024-07-02
 
 #### Added
