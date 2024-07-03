@@ -58,9 +58,6 @@ slot[name="controls"] {
   -webkit-backface-visibility: hidden;
   display: flex;
 }
-.splide:not(.is-overflow) .splide__list {
-  justify-content: center;
-}
 .splide__slide {
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
@@ -77,8 +74,11 @@ slot[name="controls"] {
   clip: rect(0,0,0,0);
   white-space: nowrap;
 }
-.splide__slide:not(:last-child) {
-  margin-inline-end: clamp(16px, 1.25vw + 12px, 36px);
+.splide:not(.is-overflow) .splide__list {
+  justify-content: center;
+}
+.splide:not(.is-overflow) .splide__slide:last-child {
+  margin-right: 0 !important;
 }
 .splide__track--draggable {
   cursor: grab;
@@ -248,9 +248,6 @@ slot[name="controls"] {
   clip: rect(0,0,0,0);
   white-space: nowrap;
 }
-.splide__slide:not(:last-child) {
-  margin-inline-end: clamp(16px, 1.25vw + 12px, 36px);
-}
 .splide__track--draggable {
   cursor: grab;
   user-select: none;
@@ -403,9 +400,6 @@ slot[name="controls"] {
   -webkit-backface-visibility: hidden;
   display: flex;
 }
-.splide:not(.is-overflow) .splide__list {
-  justify-content: center;
-}
 .splide__slide {
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
@@ -422,8 +416,11 @@ slot[name="controls"] {
   clip: rect(0,0,0,0);
   white-space: nowrap;
 }
-.splide__slide:not(:last-child) {
-  margin-inline-end: clamp(16px, 1.25vw + 12px, 36px);
+.splide:not(.is-overflow) .splide__list {
+  justify-content: center;
+}
+.splide:not(.is-overflow) .splide__slide:last-child {
+  margin-right: 0 !important;
 }
 .splide__track--draggable {
   cursor: grab;
@@ -617,9 +614,6 @@ slot[name="controls"] {
   clip: rect(0,0,0,0);
   white-space: nowrap;
 }
-.splide__slide:not(:last-child) {
-  margin-inline-end: clamp(16px, 1.25vw + 12px, 36px);
-}
 .splide__track--draggable {
   cursor: grab;
   user-select: none;
@@ -746,9 +740,6 @@ p,::slotted([slot="description"]) {
   clip: rect(0,0,0,0);
   white-space: nowrap;
 }
-.splide__slide:not(:last-child) {
-  margin-inline-end: clamp(16px, 1.25vw + 12px, 36px);
-}
 .splide__track--draggable {
   cursor: grab;
   user-select: none;
@@ -861,9 +852,6 @@ p,::slotted([slot="description"]) {
   -webkit-backface-visibility: hidden;
   display: flex;
 }
-.splide:not(.is-overflow) .splide__list {
-  justify-content: center;
-}
 .splide__slide {
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
@@ -880,8 +868,11 @@ p,::slotted([slot="description"]) {
   clip: rect(0,0,0,0);
   white-space: nowrap;
 }
-.splide__slide:not(:last-child) {
-  margin-inline-end: clamp(16px, 1.25vw + 12px, 36px);
+.splide:not(.is-overflow) .splide__list {
+  justify-content: center;
+}
+.splide:not(.is-overflow) .splide__slide:last-child {
+  margin-right: 0 !important;
 }
 .splide__track--draggable {
   cursor: grab;
@@ -1115,9 +1106,6 @@ slot[name="controls"] {
   clip: rect(0,0,0,0);
   white-space: nowrap;
 }
-.splide__slide:not(:last-child) {
-  margin-inline-end: clamp(16px, 1.25vw + 12px, 36px);
-}
 .splide__track--draggable {
   cursor: grab;
   user-select: none;
@@ -1232,9 +1220,6 @@ slot[name="controls"] {
   -webkit-backface-visibility: hidden;
   display: flex;
 }
-.splide:not(.is-overflow) .splide__list {
-  justify-content: center;
-}
 .splide__slide {
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
@@ -1251,8 +1236,11 @@ slot[name="controls"] {
   clip: rect(0,0,0,0);
   white-space: nowrap;
 }
-.splide__slide:not(:last-child) {
-  margin-inline-end: clamp(16px, 1.25vw + 12px, 36px);
+.splide:not(.is-overflow) .splide__list {
+  justify-content: center;
+}
+.splide:not(.is-overflow) .splide__slide:last-child {
+  margin-right: 0 !important;
 }
 .splide__track--draggable {
   cursor: grab;
@@ -1382,9 +1370,6 @@ p,::slotted([slot="description"]) {
   overflow: hidden;
   clip: rect(0,0,0,0);
   white-space: nowrap;
-}
-.splide__slide:not(:last-child) {
-  margin-inline-end: clamp(16px, 1.25vw + 12px, 36px);
 }
 .splide__track--draggable {
   cursor: grab;
@@ -1560,9 +1545,6 @@ p,::slotted([slot="description"]) {
   -webkit-backface-visibility: hidden;
   display: flex;
 }
-.splide:not(.is-overflow) .splide__list {
-  justify-content: center;
-}
 .splide__slide {
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
@@ -1579,8 +1561,11 @@ p,::slotted([slot="description"]) {
   clip: rect(0,0,0,0);
   white-space: nowrap;
 }
-.splide__slide:not(:last-child) {
-  margin-inline-end: clamp(16px, 1.25vw + 12px, 36px);
+.splide:not(.is-overflow) .splide__list {
+  justify-content: center;
+}
+.splide:not(.is-overflow) .splide__slide:last-child {
+  margin-right: 0 !important;
 }
 .splide__track--draggable {
   cursor: grab;
@@ -1716,9 +1701,6 @@ p,::slotted([slot="description"]) {
   overflow: hidden;
   clip: rect(0,0,0,0);
   white-space: nowrap;
-}
-.splide__slide:not(:last-child) {
-  margin-inline-end: clamp(16px, 1.25vw + 12px, 36px);
 }
 .splide__track--draggable {
   cursor: grab;
@@ -1931,9 +1913,6 @@ p,::slotted([slot="description"]) {
   overflow: hidden;
   clip: rect(0,0,0,0);
   white-space: nowrap;
-}
-.splide__slide:not(:last-child) {
-  margin-inline-end: clamp(16px, 1.25vw + 12px, 36px);
 }
 .splide__track--draggable {
   cursor: grab;
@@ -2150,9 +2129,6 @@ p,::slotted([slot="description"]) {
   clip: rect(0,0,0,0);
   white-space: nowrap;
 }
-.splide__slide:not(:last-child) {
-  margin-inline-end: clamp(16px, 1.25vw + 12px, 36px);
-}
 .splide__track--draggable {
   cursor: grab;
   user-select: none;
@@ -2326,9 +2302,6 @@ p,::slotted([slot="description"]) {
   -webkit-backface-visibility: hidden;
   display: flex;
 }
-.splide:not(.is-overflow) .splide__list {
-  justify-content: center;
-}
 .splide__slide {
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
@@ -2345,8 +2318,11 @@ p,::slotted([slot="description"]) {
   clip: rect(0,0,0,0);
   white-space: nowrap;
 }
-.splide__slide:not(:last-child) {
-  margin-inline-end: clamp(16px, 1.25vw + 12px, 36px);
+.splide:not(.is-overflow) .splide__list {
+  justify-content: center;
+}
+.splide:not(.is-overflow) .splide__slide:last-child {
+  margin-right: 0 !important;
 }
 .splide__track--draggable {
   cursor: grab;

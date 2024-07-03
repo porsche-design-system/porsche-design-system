@@ -219,20 +219,20 @@ export const getComponentCss = (
         ...backfaceVisibilityJssStyle,
         display: 'flex',
       },
-      ...(alignHeader === 'center' && {
-        '&:not(.is-overflow) .splide__list': {
-          justifyContent: 'center',
-        },
-      }),
       '&__slide': {
         ...backfaceVisibilityJssStyle,
         flexShrink: 0,
         transform: 'translateZ(0)', // fixes mobile safari flickering, https://github.com/nolimits4web/swiper/issues/3527#issuecomment-609088939
-        '&:not(:last-child)': {
-          marginInlineEnd: gridGap,
-        },
       },
       '&__sr': getHiddenTextJssStyle(), // appears in the DOM when sliding
+      ...(alignHeader === 'center' && {
+        '&:not(.is-overflow) .splide__list': {
+          justifyContent: 'center',
+        },
+        '&:not(.is-overflow) .splide__slide:last-child': {
+          marginRight: '0 !important',
+        },
+      }),
     },
     ...(hasPagination && {
       'pagination-container': {
