@@ -40,8 +40,7 @@ volta install yarn
 4. Create an `.env` file within **project root directory** (never push this file to Git because it will contain secrets
    – by default it's ignored by `.gitignore`)
 5. Make sure that Docker app is running
-6. Create a personal access token with the scopes `delete:packages`, `read:packages`, `write:packages`, `repo` at
-   <https://github.com/settings/tokens>
+6. Create a personal access token with the scope `repo` at <https://github.com/settings/tokens>
 7. Add the personal access token to the `.env` file in following format `GITHUB_PERSONAL_ACCESS_TOKEN=YOUR_TOKEN`
 8. Login to the GitHub docker registry via
    `grep GITHUB_PERSONAL_ACCESS_TOKEN .env | cut -d '=' -f2 | docker login https://ghcr.io -u YOUR_USERNAME --password-stdin`
