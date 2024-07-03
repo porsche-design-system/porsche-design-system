@@ -553,7 +553,7 @@ const generateComponentMeta = (): void => {
       observedAttributes = eval(rawObservedAttributes);
     }
 
-    const { hasSlot, namedSlots, requiredNamedSlots } = extractSlotInformation(tagName);
+    const { hasSlot, namedSlots, requiredNamedSlots } = extractSlotInformation(source);
 
     result[tagName] = {
       ...(isDeprecated && { isDeprecated, deprecationMessage }),
