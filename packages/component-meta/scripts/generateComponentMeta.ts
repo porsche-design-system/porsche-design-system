@@ -55,7 +55,7 @@ const generateComponentMeta = (): void => {
   const meta: ComponentsMeta = TAG_NAMES.reduce((result, tagName) => {
     const source = componentSourceCode[tagName];
 
-    const [deprecated, rawDeprecationMessage] = /@deprecated (.*)[\s\S]*?@Component/.exec(source) || [];
+    const [deprecated, rawDeprecationMessage] = /@deprecated ([^*]*)[\s\S]*?@Component/.exec(source) || [];
     const isDeprecated = !!deprecated;
     const deprecationMessage = rawDeprecationMessage?.trim();
     const isExperimental = !!source.match(/@experimental[\s\S]*?@Component/);
@@ -553,7 +553,7 @@ const generateComponentMeta = (): void => {
       observedAttributes = eval(rawObservedAttributes);
     }
 
-    const { hasSlot, namedSlots, requiredNamedSlots } = extractSlotInformation(source);
+    const { hasSlot, namedSlots, requiredNamedSlots } = extractSlotInformation(tagName);
 
     result[tagName] = {
       ...(isDeprecated && { isDeprecated, deprecationMessage }),
@@ -627,7 +627,7 @@ const extractSlotInformation = (
   };
   const slots: SlotMeta[] = Array.from(source.matchAll(/@slot\s*({.*})/g)).map(([, slotInfo]) => JSON.parse(slotInfo));
   return {
-    hasSlot: !!slots,
+    hasSlot: slots.length > 0,
     namedSlots: slots.filter((slot) => slot.name).map((slot) => slot.name),
     requiredNamedSlots: slots
       .filter((slot) => slot.isRequired)

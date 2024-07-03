@@ -2240,8 +2240,6 @@ exports[`should match snapshot 1`] = `
       "footer",
       "sidebar-start",
       "sidebar-end",
-      "sidebar-start",
-      "sidebar-end",
     ],
     "nestedComponents": [
       "p-button-pure",
