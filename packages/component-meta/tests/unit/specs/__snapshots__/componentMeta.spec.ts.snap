@@ -106,6 +106,14 @@ exports[`should match snapshot 1`] = `
         "type": "Theme",
       },
     },
+    "slotsMeta": {
+      "": {
+        "description": "Default slot for the main content",
+      },
+      "heading": {
+        "description": "Defines the heading used in the accordion. Can be used alternatively to the heading prop. Please **refrain** from using any other than text content as slotted markup.",
+      },
+    },
     "styling": "jss",
   },
   "p-banner": {
@@ -210,6 +218,20 @@ exports[`should match snapshot 1`] = `
         "description": "Has no effect anymore @deprecated since v3.0.0, will be removed with next major release",
         "isDeprecated": true,
         "type": "BannerWidth",
+      },
+    },
+    "slotsMeta": {
+      "description": {
+        "description": "Defines the description used in the banner. Can be used alternatively to the description prop. Can be used for rich content.",
+        "hasAltProp": true,
+      },
+      "heading": {
+        "description": "Defines the heading used in the banner. Can be used alternatively to the heading prop. Can be used for rich content.",
+        "hasAltProp": true,
+      },
+      "title": {
+        "description": "Defines the title used in the banner. Can be used alternatively to the heading prop. Can be used for rich content.",
+        "hasAltProp": true,
       },
     },
     "styling": "jss",
@@ -519,6 +541,11 @@ exports[`should match snapshot 1`] = `
         "type": "ButtonVariant",
       },
     },
+    "slotsMeta": {
+      "": {
+        "description": "Default slot for the button label.",
+      },
+    },
     "styling": "jss",
   },
   "p-button-group": {
@@ -544,6 +571,11 @@ exports[`should match snapshot 1`] = `
         "description": "Defines the direction of the main and cross axis. The default is ’{base: ‘column’, xs: ‘row’}' showing buttons vertically stacked on mobile viewports and side-by-side in a horizontal row from breakpoint ‘xs’. You always need to provide a base value when using breakpoints.",
         "isBreakpointCustomizable": true,
         "type": "ButtonGroupDirection",
+      },
+    },
+    "slotsMeta": {
+      "": {
+        "description": "Default slot for the buttons to group.",
       },
     },
     "styling": "jss",
@@ -910,6 +942,11 @@ exports[`should match snapshot 1`] = `
         "type": "ButtonPureWeight",
       },
     },
+    "slotsMeta": {
+      "": {
+        "description": "Default slot for the button label.",
+      },
+    },
     "styling": "jss",
   },
   "p-button-tile": {
@@ -1257,6 +1294,11 @@ exports[`should match snapshot 1`] = `
         "type": "ButtonTileWeight",
       },
     },
+    "slotsMeta": {
+      "": {
+        "description": "Default slot for the img or picture tag.",
+      },
+    },
     "styling": "jss",
   },
   "p-canvas": {
@@ -1320,6 +1362,23 @@ exports[`should match snapshot 1`] = `
         "defaultValue": "medium",
         "description": "Defines the width of the sidebar on the start side",
         "type": "CanvasSidebarStartWidth",
+      },
+    },
+    "slotsMeta": {
+      "": {
+        "description": "Default slot for the main content",
+      },
+      "footer": {
+        "description": "Shows a footer section, flowing under the content area when scrollable.",
+      },
+      "header": {
+        "description": "Renders a **sticky** header section above the content area.",
+      },
+      "sidebar-end": {
+        "description": "Shows a sidebar area on the **end** side (**right** in **LTR** mode / **left** in **RTL** mode). On mobile view it transforms into a flyout.",
+      },
+      "sidebar-start": {
+        "description": "Shows a sidebar area on the **start** side (**left** in **LTR** mode / **right** in **RTL** mode). On mobile view it transforms into a flyout.",
       },
     },
     "styling": "jss",
@@ -1483,6 +1542,20 @@ exports[`should match snapshot 1`] = `
         "type": "boolean",
       },
     },
+    "slotsMeta": {
+      "": {
+        "description": "Default slot for the carousel slides.",
+      },
+      "controls": {
+        "description": "Shows a sidebar area on the **start** side (**left** in **LTR** mode / **right** in **RTL** mode). On mobile view it transforms into a flyout.",
+      },
+      "description": {
+        "description": "Shows a footer section, flowing under the content area when scrollable.",
+      },
+      "heading": {
+        "description": "Renders a heading above the carousel.",
+      },
+    },
     "styling": "jss",
   },
   "p-checkbox-wrapper": {
@@ -1557,6 +1630,17 @@ exports[`should match snapshot 1`] = `
     },
     "requiredChild": "input type=checkbox",
     "requiredChildSelector": "input[type=checkbox]",
+    "slotsMeta": {
+      "": {
+        "description": "Default slot for the input.",
+      },
+      "label": {
+        "description": "Shows a label. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed.",
+      },
+      "message": {
+        "description": "Shows a state message. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed.",
+      },
+    },
     "styling": "jss",
   },
   "p-content-wrapper": {
@@ -1604,6 +1688,11 @@ exports[`should match snapshot 1`] = `
         "defaultValue": "extended",
         "description": "Defines the outer spacings between the content area and the left and right screen sides, as well as centering its content and setting a max-width.",
         "type": "ContentWrapperWidth",
+      },
+    },
+    "slotsMeta": {
+      "": {
+        "description": "Default slot for main content.",
       },
     },
     "styling": "jss",
@@ -1727,6 +1816,11 @@ exports[`should match snapshot 1`] = `
         "defaultValue": "light",
         "description": "Adapts the text color depending on the theme. Has no effect when "inherit" is set as color prop.",
         "type": "Theme",
+      },
+    },
+    "slotsMeta": {
+      "": {
+        "description": "Default slot for the display text.",
       },
     },
     "styling": "jss",
@@ -1861,6 +1955,17 @@ exports[`should match snapshot 1`] = `
         "type": "Theme",
       },
     },
+    "slotsMeta": {
+      "": {
+        "description": "Default slot for the main content.",
+      },
+      "label": {
+        "description": "Shows a label. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed.",
+      },
+      "message": {
+        "description": "Shows a state message. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed.",
+      },
+    },
     "styling": "jss",
   },
   "p-fieldset-wrapper": {
@@ -1929,6 +2034,17 @@ exports[`should match snapshot 1`] = `
         "defaultValue": "light",
         "description": "Adapts color depending on theme.",
         "type": "Theme",
+      },
+    },
+    "slotsMeta": {
+      "": {
+        "description": "Default slot for the main content.",
+      },
+      "label": {
+        "description": "Shows a label. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed.",
+      },
+      "message": {
+        "description": "Shows a state message. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed.",
       },
     },
     "styling": "jss",
@@ -2017,6 +2133,11 @@ exports[`should match snapshot 1`] = `
         "description": "Handles wrapping behaviour of elements.",
         "isBreakpointCustomizable": true,
         "type": "FlexWrap",
+      },
+    },
+    "slotsMeta": {
+      "": {
+        "description": "Default slot for the flex items.",
       },
     },
     "styling": "jss",
@@ -2111,6 +2232,11 @@ exports[`should match snapshot 1`] = `
       },
     },
     "requiredParent": "p-flex",
+    "slotsMeta": {
+      "": {
+        "description": "Default slot for the main content.",
+      },
+    },
     "styling": "jss",
   },
   "p-flyout": {
@@ -2186,6 +2312,20 @@ exports[`should match snapshot 1`] = `
         "type": "Theme",
       },
     },
+    "slotsMeta": {
+      "": {
+        "description": "Default slot for the main content.",
+      },
+      "footer": {
+        "description": "Shows a sticky footer section, flowing under the content area when scrollable.",
+      },
+      "header": {
+        "description": "Renders a sticky header section above the content area.",
+      },
+      "sub-footer": {
+        "description": "Shows a sub-footer section to display additional information below the footer. This slot is ideal for less critical content, such as legal information or FAQs, which provides further details to the user. It appears when scrolling to the end of the flyout or when there is available space to accommodate the content.",
+      },
+    },
     "styling": "jss",
   },
   "p-flyout-multilevel": {
@@ -2246,6 +2386,11 @@ exports[`should match snapshot 1`] = `
         "type": "Theme",
       },
     },
+    "slotsMeta": {
+      "": {
+        "description": "Default slot to render p-flyout-multilevel items.",
+      },
+    },
     "styling": "jss",
   },
   "p-flyout-multilevel-item": {
@@ -2278,6 +2423,11 @@ exports[`should match snapshot 1`] = `
       },
     },
     "requiredParent": "p-flyout-multilevel",
+    "slotsMeta": {
+      "": {
+        "description": "Default slot for the main content.",
+      },
+    },
     "styling": "jss",
   },
   "p-grid": {
@@ -2330,6 +2480,11 @@ exports[`should match snapshot 1`] = `
         "description": "Handles wrapping behaviour of elements.",
         "isBreakpointCustomizable": true,
         "type": "GridWrap",
+      },
+    },
+    "slotsMeta": {
+      "": {
+        "description": "Default slot to render p-grid-item tags.",
       },
     },
     "styling": "jss",
@@ -2389,6 +2544,11 @@ exports[`should match snapshot 1`] = `
       },
     },
     "requiredParent": "p-grid",
+    "slotsMeta": {
+      "": {
+        "description": "Default slot to render the content.",
+      },
+    },
     "styling": "jss",
   },
   "p-heading": {
@@ -2470,6 +2630,11 @@ exports[`should match snapshot 1`] = `
         "defaultValue": "light",
         "description": "Adapts the text color depending on the theme. Has no effect when "inherit" is set as color prop.",
         "type": "Theme",
+      },
+    },
+    "slotsMeta": {
+      "": {
+        "description": "Default slot to render the heading.",
       },
     },
     "styling": "jss",
@@ -2563,6 +2728,11 @@ exports[`should match snapshot 1`] = `
         "description": "Predefined style of the headline.",
         "isBreakpointCustomizable": true,
         "type": "HeadlineVariant",
+      },
+    },
+    "slotsMeta": {
+      "": {
+        "description": "Default slot to render the headline.",
       },
     },
     "styling": "jss",
@@ -3178,6 +3348,14 @@ exports[`should match snapshot 1`] = `
         "type": "Theme",
       },
     },
+    "slotsMeta": {
+      "": {
+        "description": "Default slot to render a description. Can be used to render rich markup.",
+      },
+      "heading": {
+        "description": "Shows a heading. Can be used to render rich markup.",
+      },
+    },
     "styling": "jss",
   },
   "p-link": {
@@ -3476,6 +3654,11 @@ exports[`should match snapshot 1`] = `
         "defaultValue": "primary",
         "description": "The style variant of the link.",
         "type": "LinkVariant",
+      },
+    },
+    "slotsMeta": {
+      "": {
+        "description": "Default slot to render the link label.",
       },
     },
     "styling": "jss",
@@ -3835,6 +4018,11 @@ exports[`should match snapshot 1`] = `
         "type": "LinkPureWeight",
       },
     },
+    "slotsMeta": {
+      "": {
+        "description": "Default slot to render the link label.",
+      },
+    },
     "styling": "jss",
   },
   "p-link-social": {
@@ -4111,6 +4299,11 @@ exports[`should match snapshot 1`] = `
         "type": "Theme",
       },
     },
+    "slotsMeta": {
+      "": {
+        "description": "Default slot to render the link label.",
+      },
+    },
     "styling": "jss",
   },
   "p-link-tile": {
@@ -4253,6 +4446,11 @@ exports[`should match snapshot 1`] = `
         "type": "LinkTileWeight",
       },
     },
+    "slotsMeta": {
+      "": {
+        "description": "Default slot for the img or picture tag.",
+      },
+    },
     "styling": "jss",
   },
   "p-link-tile-model-signature": {
@@ -4362,6 +4560,25 @@ exports[`should match snapshot 1`] = `
         "tagName": "p-link",
       },
     ],
+    "slotsMeta": {
+      "": {
+        "description": "Default slot for the img or picture tag.",
+      },
+      "primary": {
+        "allowedTagNames": [
+          "p-link",
+        ],
+        "description": "Renders the primary link. Has to be a p-link tag.",
+        "isRequired": true,
+      },
+      "secondary": {
+        "allowedTagNames": [
+          "p-link",
+        ],
+        "description": "Renders the secondary link. Has to be a p-link tag.",
+        "isRequired": true,
+      },
+    },
     "styling": "jss",
   },
   "p-link-tile-product": {
@@ -4471,6 +4688,17 @@ exports[`should match snapshot 1`] = `
         "defaultValue": "light",
         "description": "Adapts the link-tile-product color depending on the theme.",
         "type": "Theme",
+      },
+    },
+    "slotsMeta": {
+      "": {
+        "description": "Default slot for the img or picture tag.",
+      },
+      "anchor": {
+        "description": "Slotted anchor link which can be used instead of the \`href\` prop. Ensure the named slot is directly on the anchor element, without nesting.",
+      },
+      "header": {
+        "description": "Shows special features about the product like novelty or exclusivity. Although you can pass in anything, it is recommended to use the \`p-tag\` component.",
       },
     },
     "styling": "jss",
@@ -4643,6 +4871,21 @@ exports[`should match snapshot 1`] = `
         "type": "Theme",
       },
     },
+    "slotsMeta": {
+      "": {
+        "description": "Default slot for the main content.",
+      },
+      "footer": {
+        "description": "Shows a sticky footer section, flowing under the content area when scrollable.",
+      },
+      "header": {
+        "description": "Renders a header section above the content area.",
+      },
+      "heading": {
+        "description": "Renders a heading section above the content area.",
+        "isDeprecated": true,
+      },
+    },
     "styling": "jss",
   },
   "p-model-signature": {
@@ -4725,6 +4968,11 @@ exports[`should match snapshot 1`] = `
         "defaultValue": "light",
         "description": "Adapts color depending on theme.",
         "type": "Theme",
+      },
+    },
+    "slotsMeta": {
+      "": {
+        "description": "Default slot for an img or video tag when using the model-signature as a mask.",
       },
     },
     "styling": "jss",
@@ -4838,6 +5086,20 @@ exports[`should match snapshot 1`] = `
         "type": "string[]",
       },
     },
+    "slotsMeta": {
+      "": {
+        "description": "Default slot for the p-multi-select-option tags.",
+      },
+      "description": {
+        "description": "Shows a description. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed.",
+      },
+      "label": {
+        "description": "Shows a label. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed.",
+      },
+      "message": {
+        "description": "Shows a state message. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed.",
+      },
+    },
     "styling": "jss",
   },
   "p-multi-select-option": {
@@ -4869,6 +5131,11 @@ exports[`should match snapshot 1`] = `
       },
     },
     "requiredParent": "p-multi-select",
+    "slotsMeta": {
+      "": {
+        "description": "Default slot for the option text.",
+      },
+    },
     "styling": "jss",
   },
   "p-pagination": {
@@ -5112,6 +5379,17 @@ exports[`should match snapshot 1`] = `
         "type": "string",
       },
     },
+    "slotsMeta": {
+      "description": {
+        "description": "Shows a description. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed.",
+      },
+      "label": {
+        "description": "Shows a label. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed.",
+      },
+      "message": {
+        "description": "Shows a state message. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed.",
+      },
+    },
     "styling": "jss",
   },
   "p-popover": {
@@ -5163,6 +5441,11 @@ exports[`should match snapshot 1`] = `
         "defaultValue": "light",
         "description": "Adapts the popover color depending on the theme.",
         "type": "Theme",
+      },
+    },
+    "slotsMeta": {
+      "": {
+        "description": "Default slot for the popover content.",
       },
     },
     "styling": "jss",
@@ -5239,6 +5522,17 @@ exports[`should match snapshot 1`] = `
     },
     "requiredChild": "input type=radio",
     "requiredChildSelector": "input[type=radio]",
+    "slotsMeta": {
+      "": {
+        "description": "Default slot for the input.",
+      },
+      "label": {
+        "description": "Shows a label. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed.",
+      },
+      "message": {
+        "description": "Shows a state message. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed.",
+      },
+    },
     "styling": "jss",
   },
   "p-scroller": {
@@ -5328,6 +5622,11 @@ exports[`should match snapshot 1`] = `
         "defaultValue": "light",
         "description": "Adapts the color when used on dark background.",
         "type": "Theme",
+      },
+    },
+    "slotsMeta": {
+      "": {
+        "description": "Default slot for the scroller content.",
       },
     },
     "styling": "jss",
@@ -5422,6 +5721,11 @@ exports[`should match snapshot 1`] = `
         "defaultValue": null,
         "description": "Sets the initial value of the segmented-control.",
         "type": "string | number",
+      },
+    },
+    "slotsMeta": {
+      "": {
+        "description": "Default slot for the \`p-segmented-control-item\` tags.",
       },
     },
     "styling": "jss",
@@ -5693,6 +5997,11 @@ exports[`should match snapshot 1`] = `
       },
     },
     "requiredParent": "p-segmented-control",
+    "slotsMeta": {
+      "": {
+        "description": "Default slot for the content.",
+      },
+    },
     "styling": "jss",
   },
   "p-select": {
@@ -5802,6 +6111,20 @@ exports[`should match snapshot 1`] = `
         "type": "string",
       },
     },
+    "slotsMeta": {
+      "": {
+        "description": "Default slot for the \`p-select-option\` tags.",
+      },
+      "description": {
+        "description": "Shows a description. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed.",
+      },
+      "label": {
+        "description": "Shows a label. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed.",
+      },
+      "message": {
+        "description": "Shows a state message. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed.",
+      },
+    },
     "styling": "jss",
   },
   "p-select-option": {
@@ -5832,6 +6155,11 @@ exports[`should match snapshot 1`] = `
       },
     },
     "requiredParent": "p-select",
+    "slotsMeta": {
+      "": {
+        "description": "Default slot for the option content.",
+      },
+    },
     "styling": "jss",
   },
   "p-select-wrapper": {
@@ -5928,6 +6256,20 @@ exports[`should match snapshot 1`] = `
     },
     "requiredChild": "select",
     "requiredChildSelector": "select",
+    "slotsMeta": {
+      "": {
+        "description": "Default slot for the \`select\` tag.",
+      },
+      "description": {
+        "description": "Shows a description. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed.",
+      },
+      "label": {
+        "description": "Shows a label. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed.",
+      },
+      "message": {
+        "description": "Shows a state message. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed.",
+      },
+    },
     "styling": "jss",
   },
   "p-select-wrapper-dropdown": {
@@ -6092,6 +6434,11 @@ exports[`should match snapshot 1`] = `
         "type": "Theme",
       },
     },
+    "slotsMeta": {
+      "": {
+        "description": "Default slot for the \`p-stepper-horizontal-item\` tags.",
+      },
+    },
     "styling": "jss",
   },
   "p-stepper-horizontal-item": {
@@ -6133,6 +6480,11 @@ exports[`should match snapshot 1`] = `
       },
     },
     "requiredParent": "p-stepper-horizontal",
+    "slotsMeta": {
+      "": {
+        "description": "Default slot for the content.",
+      },
+    },
     "styling": "jss",
   },
   "p-switch": {
@@ -6221,6 +6573,11 @@ exports[`should match snapshot 1`] = `
         "type": "Theme",
       },
     },
+    "slotsMeta": {
+      "": {
+        "description": "Default slot for the label.",
+      },
+    },
     "styling": "jss",
   },
   "p-table": {
@@ -6270,6 +6627,14 @@ exports[`should match snapshot 1`] = `
         "type": "Theme",
       },
     },
+    "slotsMeta": {
+      "": {
+        "description": "Default slot for the table content.",
+      },
+      "caption": {
+        "description": "Shows a caption that describes the content of the table.",
+      },
+    },
     "styling": "jss",
   },
   "p-table-body": {
@@ -6286,6 +6651,11 @@ exports[`should match snapshot 1`] = `
     "isInternal": false,
     "isThemeable": false,
     "requiredParent": "p-table",
+    "slotsMeta": {
+      "": {
+        "description": "Default slot for the table body content.",
+      },
+    },
     "styling": "jss",
   },
   "p-table-cell": {
@@ -6310,6 +6680,11 @@ exports[`should match snapshot 1`] = `
       },
     },
     "requiredParent": "p-table-row",
+    "slotsMeta": {
+      "": {
+        "description": "Default slot for the table cell content.",
+      },
+    },
     "styling": "jss",
   },
   "p-table-head": {
@@ -6326,6 +6701,11 @@ exports[`should match snapshot 1`] = `
     "isInternal": false,
     "isThemeable": false,
     "requiredParent": "p-table",
+    "slotsMeta": {
+      "": {
+        "description": "Default slot for the table head content.",
+      },
+    },
     "styling": "jss",
   },
   "p-table-head-cell": {
@@ -6375,6 +6755,11 @@ exports[`should match snapshot 1`] = `
       },
     },
     "requiredParent": "p-table-head-row",
+    "slotsMeta": {
+      "": {
+        "description": "Default slot for the table head cell content.",
+      },
+    },
     "styling": "jss",
   },
   "p-table-head-row": {
@@ -6391,6 +6776,11 @@ exports[`should match snapshot 1`] = `
     "isInternal": false,
     "isThemeable": false,
     "requiredParent": "p-table-head",
+    "slotsMeta": {
+      "": {
+        "description": "Default slot for the table head row content.",
+      },
+    },
     "styling": "jss",
   },
   "p-table-row": {
@@ -6407,6 +6797,11 @@ exports[`should match snapshot 1`] = `
     "isInternal": false,
     "isThemeable": false,
     "requiredParent": "p-table-body",
+    "slotsMeta": {
+      "": {
+        "description": "Default slot for the table row content.",
+      },
+    },
     "styling": "jss",
   },
   "p-tabs": {
@@ -6494,6 +6889,11 @@ exports[`should match snapshot 1`] = `
         ],
         "description": "The text weight.",
         "type": "TabsWeight",
+      },
+    },
+    "slotsMeta": {
+      "": {
+        "description": "Default slot for the \`p-tabs-item\` tags.",
       },
     },
     "styling": "jss",
@@ -6585,6 +6985,11 @@ exports[`should match snapshot 1`] = `
         "type": "TabsBarWeight",
       },
     },
+    "slotsMeta": {
+      "": {
+        "description": "Default slot for the \`button\` or \`a\` tags which will be rendered as tabs.",
+      },
+    },
     "styling": "jss",
   },
   "p-tabs-item": {
@@ -6610,6 +7015,11 @@ exports[`should match snapshot 1`] = `
       },
     },
     "requiredParent": "p-tabs",
+    "slotsMeta": {
+      "": {
+        "description": "Default slot for the tab content.",
+      },
+    },
     "styling": "jss",
   },
   "p-tag": {
@@ -6881,6 +7291,11 @@ exports[`should match snapshot 1`] = `
         "type": "Theme",
       },
     },
+    "slotsMeta": {
+      "": {
+        "description": "Default slot for the tag content.",
+      },
+    },
     "styling": "jss",
   },
   "p-tag-dismissible": {
@@ -6934,6 +7349,11 @@ exports[`should match snapshot 1`] = `
         "defaultValue": "light",
         "description": "Adapts the color when used on dark background.",
         "type": "Theme",
+      },
+    },
+    "slotsMeta": {
+      "": {
+        "description": "Default slot for the tag content.",
       },
     },
     "styling": "jss",
@@ -7057,6 +7477,11 @@ exports[`should match snapshot 1`] = `
         ],
         "description": "The weight of the text.",
         "type": "TextWeight",
+      },
+    },
+    "slotsMeta": {
+      "": {
+        "description": "Default slot for the text to render.",
       },
     },
     "styling": "jss",
@@ -7197,6 +7622,20 @@ exports[`should match snapshot 1`] = `
     },
     "requiredChild": "input type=text",
     "requiredChildSelector": "input[type=text],input[type=number],input[type=email],input[type=tel],input[type=search],input[type=url],input[type=date],input[type=time],input[type=month],input[type=week],input[type=password]",
+    "slotsMeta": {
+      "": {
+        "description": "Default slot for the input.",
+      },
+      "description": {
+        "description": "Shows a description. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed.",
+      },
+      "label": {
+        "description": "Shows a label. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed.",
+      },
+      "message": {
+        "description": "Shows a state message. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed.",
+      },
+    },
     "styling": "jss",
   },
   "p-text-list": {
@@ -7253,6 +7692,11 @@ exports[`should match snapshot 1`] = `
         "type": "TextListType",
       },
     },
+    "slotsMeta": {
+      "": {
+        "description": "Default slot for the \`p-text-list-item\` tags or nested \`p-text-list\` tags.",
+      },
+    },
     "styling": "jss",
   },
   "p-text-list-item": {
@@ -7269,6 +7713,11 @@ exports[`should match snapshot 1`] = `
     "isInternal": false,
     "isThemeable": false,
     "requiredParent": "p-text-list",
+    "slotsMeta": {
+      "": {
+        "description": "Default slot for the content.",
+      },
+    },
     "styling": "jss",
   },
   "p-textarea-wrapper": {
@@ -7357,6 +7806,20 @@ exports[`should match snapshot 1`] = `
     },
     "requiredChild": "textarea",
     "requiredChildSelector": "textarea",
+    "slotsMeta": {
+      "": {
+        "description": "Default slot for the textarea.",
+      },
+      "description": {
+        "description": "Shows a description. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed.",
+      },
+      "label": {
+        "description": "Shows a label. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed.",
+      },
+      "message": {
+        "description": "Shows a state message. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed.",
+      },
+    },
     "styling": "jss",
   },
   "p-toast": {
