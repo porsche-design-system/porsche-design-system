@@ -21,7 +21,7 @@
   import Component from 'vue-class-component';
   import { INTERNAL_TAG_NAMES, TAG_NAMES } from '@porsche-design-system/shared';
   import type { TagName } from '@porsche-design-system/shared';
-  import { getComponentMeta } from '@porsche-design-system/component-meta';
+  import { EventMeta, getComponentMeta, PropMeta } from '@porsche-design-system/component-meta';
   import type { ComponentMeta } from '@porsche-design-system/component-meta';
   import { type StorefrontTheme } from '@/models';
 
@@ -45,7 +45,91 @@
     }
 
     get body(): string {
-      const rowKeys: (keyof ComponentMeta)[] = [
+      const formatRow = (rowKey: string, tagNames: TagName[]): string => {
+        const cells = tagNames.map((tagName) => formatCell(tagName, rowKey)).join('');
+        return `<p-table-row>
+    <p-table-cell>${rowKey}</p-table-cell>
+    ${cells}
+  </p-table-row>`;
+      };
+
+      const formatCell = (tagName: TagName, rowKey: string): string => {
+        const meta = getComponentMeta(tagName);
+
+        let value = rowKey in meta ? meta[rowKey as keyof ComponentMeta] : undefined;
+
+        if (rowKey === 'props') {
+          value = formatProps(meta.propsMeta);
+        } else if (rowKey === 'eventNames') {
+          value = formatEvents(meta.eventsMeta);
+        } else if (rowKey === 'requiredProps') {
+          value = formatRequiredProps(meta.propsMeta);
+        }
+        const cellContent = formatCellContent(value, rowKey);
+        return `<p-table-cell>${cellContent}</p-table-cell>`;
+      };
+
+      const formatProps = (propsMeta: ComponentMeta['propsMeta']): string[] =>
+        Object.entries(propsMeta ?? {}).map(([propName, meta]) => {
+          const propFlags = getPropFlags(meta);
+          const formattedAllowedValues = formatAllowedValues(meta.allowedValues, !!meta.isDeprecated);
+          return (
+            `<span class="prop">${propName}${propFlags}</span>` +
+            (formattedAllowedValues ? `<div style="display: none;">${formattedAllowedValues}</div>` : '')
+          );
+        });
+
+      const getPropFlags = <
+        T extends { isDeprecated?: boolean; isBreakpointCustomizable?: boolean; isExperimental?: boolean },
+      >(
+        meta: T
+      ): string =>
+        [meta.isDeprecated && ' 🚫', meta.isBreakpointCustomizable && ' 🛠️', meta.isExperimental && ' 🧪️']
+          .filter(Boolean)
+          .join('');
+
+      const formatAllowedValues = (allowedValues: PropMeta['allowedValues'], isDeprecated: boolean): string => {
+        if (Array.isArray(allowedValues)) {
+          return allowedValues
+            .map((value) => (value === null ? 'undefined' : value))
+            .map((value) => (isDeprecated ? value + ' 🚫' : value))
+            .map((value) => `– ${value}`)
+            .join('<br>');
+        } else if (typeof allowedValues === 'object') {
+          return Object.entries(allowedValues)
+            .map(([key, val]) => {
+              if (Array.isArray(val)) {
+                val = val.map((v) => (v === null ? 'undefined' : v)).join(' | ');
+              }
+              return `- ${key}: ${val}`;
+            })
+            .join('<br>');
+        }
+        return `- ${allowedValues}`;
+      };
+
+      const formatEvents = (eventsMeta: ComponentMeta['eventsMeta']): string[] =>
+        Object.entries(eventsMeta ?? {}).map(([eventName, value]) => `${eventName}${getPropFlags(value)}`);
+
+      const formatRequiredProps = (propsMeta: ComponentMeta['propsMeta']): string =>
+        Object.entries(propsMeta ?? {})
+          .filter(([, { isRequired }]) => isRequired)
+          .map(([propName]) => `<code>${propName}</code>`)
+          .join('<br>');
+
+      const formatCellContent = (value: any, rowKey: string): string => {
+        if (!value) return '';
+        if (value === true) return '✅';
+        if (Array.isArray(value)) {
+          return value
+            .sort()
+            .map((val) => (rowKey === 'nestedComponents' ? val : `<code>${val}</code>`))
+            .join('<br>');
+        }
+        return value;
+      };
+
+      const rowKeys = [
         'isDelegatingFocus',
         'isThemeable',
         'props',
@@ -55,99 +139,7 @@
         'nestedComponents',
       ];
 
-      const content = rowKeys
-        .map((rowKey) => {
-          const cells = tagNames
-            .map((tagName) => {
-              const meta = getComponentMeta(tagName);
-              let value = meta[rowKey];
-
-              // here we need to do some mapping, all other rowKeys can be used as they are
-              if (value && (rowKey === 'props' || rowKey === 'eventNames' || rowKey === 'requiredProps')) {
-                const {
-                  propsMeta = {}, // new format
-                  eventsMeta = {}, // new format
-                } = meta;
-
-                if (rowKey === 'props') {
-                  const propNames = Object.keys(propsMeta);
-                  value = propNames.map((propName) => {
-                    const { allowedValues, isBreakpointCustomizable, isDeprecated, isExperimental } =
-                      propsMeta[propName];
-                    let formattedAllowedValues: string;
-
-                    if (Array.isArray(allowedValues)) {
-                      // props that support certain values validated with oneOf
-                      formattedAllowedValues = allowedValues
-                        .map((allowedValue) => (allowedValue === null ? 'undefined' : allowedValue))
-                        .map((allowedValue) => (isDeprecated ? allowedValue + ' 🚫' : allowedValue))
-                        .map((allowedValue) => `– ${allowedValue}`)
-                        .join('<br>');
-                    } else if (typeof allowedValues === 'object') {
-                      // props that take objects like aria, intl and sort
-                      formattedAllowedValues = Object.entries(allowedValues)
-                        .map(([key, val]) => {
-                          // nested scenario like in p-table-head-cell
-                          if (Array.isArray(val)) {
-                            val = val.map((v) => (v === null ? 'undefined' : v)).join(' | ');
-                          }
-                          return `- ${key}: ${val}`;
-                        })
-                        .join('<br>');
-                    } else {
-                      // just string, boolean or number
-                      formattedAllowedValues = `- ${allowedValues}`;
-                    }
-
-                    const propFlags = [
-                      isDeprecated && ' 🚫',
-                      isBreakpointCustomizable && ' 🛠️',
-                      isExperimental && ' 🧪️',
-                    ]
-                      .filter(Boolean)
-                      .join('');
-
-                    return (
-                      `<span class="prop">${propName}${propFlags}</span>` +
-                      (formattedAllowedValues ? `<div style="display: none;">${formattedAllowedValues}</div>` : '')
-                    );
-                  });
-                } else if (rowKey === 'eventNames') {
-                  const eventNames = Object.keys(eventsMeta);
-                  value = eventNames.map((eventName) => {
-                    const { isDeprecated } = eventsMeta[eventName];
-                    return `${eventName}${isDeprecated ? ' 🚫' : ''}`;
-                  });
-                } else if (rowKey === 'requiredProps') {
-                  value = Object.entries(propsMeta)
-                    .map(([propName, { isRequired }]) => isRequired && `<code>${propName}</code>`)
-                    .filter(Boolean)
-                    .join('<br>');
-                }
-              }
-
-              let cellContent = value
-                ? Array.isArray(value)
-                  ? value
-                      .sort()
-                      .map((val) => (rowKey === 'nestedComponents' ? val : `<code>${val}</code>`))
-                      .join('<br>')
-                  : value
-                : '';
-              cellContent = cellContent === true ? '✅' : cellContent;
-
-              return `<p-table-cell>${cellContent}</p-table-cell>`;
-            })
-            .join('');
-
-          return `<p-table-row>
-    <p-table-cell>${rowKey}</p-table-cell>
-    ${cells}
-  </p-table-row>`;
-        })
-        .join('');
-
-      return content;
+      return rowKeys.map((rowKey) => formatRow(rowKey, tagNames)).join('');
     }
 
     onClick({ target }: Event & { target: HTMLElement & { nextSibling: HTMLElement } }) {
