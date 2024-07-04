@@ -21,7 +21,7 @@ export type EventMeta = {
   isDeprecated?: boolean;
 };
 
-type SlotMeta = {
+export type SlotMeta = {
   description?: string;
   isRequired?: boolean; // Specifies if the slot is required. If undefined the slot is not required.
   allowedTagNames?: (TagName | keyof HTMLElementTagNameMap)[]; // Specifies which tagNames are allowed to be used. If undefined all tags are allowed.
