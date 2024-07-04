@@ -7,7 +7,7 @@ It can be used to overlay background images or enhance cards and teasers to be m
 
 ## Models
 
-The `model` prop's default is `{{ meta.props.model }}`.
+The `model` prop's default is `{{ meta.propsMeta.model }}`.
 
 <Playground :markup="modelMarkup" :config="config">
   <PlaygroundSelect v-model="model" :values="models" name="model"></PlaygroundSelect>
@@ -15,7 +15,7 @@ The `model` prop's default is `{{ meta.props.model }}`.
 
 ## Safe Zone
 
-The `safe-zone` prop's default is `{{ meta.props.safeZone }}`, which ensures a visual balance across all model
+The `safe-zone` prop's default is `{{ meta.propsMeta.safeZone }}`, which ensures a visual balance across all model
 signatures. This is most likely the best option when the model signatures are used in combination or within tiles next
 to each other. When `false` is set as value, the model signatures come without any safe zone which is probably preferred
 when the element is positioned independently.
@@ -26,7 +26,7 @@ when the element is positioned independently.
 
 ## Colors
 
-The `color` prop's default is `{{ meta.props.color }}`.
+The `color` prop's default is `{{ meta.propsMeta.color }}`.
 
 <Playground :markup="colorMarkup" :config="config">
   <PlaygroundSelect v-model="color" :values="colors" name="color"></PlaygroundSelect>
@@ -34,7 +34,7 @@ The `color` prop's default is `{{ meta.props.color }}`.
 
 ## Sizes
 
-The `size` prop's default is `{{ meta.props.size }}`.
+The `size` prop's default is `{{ meta.propsMeta.size }}`.
 
 <Playground :markup="sizeMarkup" :config="config">
   <PlaygroundSelect v-model="size" :values="sizes" name="size"></PlaygroundSelect>
@@ -91,7 +91,7 @@ export default class Code extends Vue {
 
   meta = getComponentMeta('p-model-signature');
 
-  model: ModelSignatureModel = this.meta.props.model;
+  model: ModelSignatureModel = this.meta.propsMeta.model;
   models = MODEL_SIGNATURE_MODELS;
   get modelMarkup() {
     return `<p-model-signature model="${this.model}"></p-model-signature>`;
@@ -105,13 +105,13 @@ export default class Code extends Vue {
 </div>`).join('\n');
   }
 
-  size: ModelSignatureSize = this.meta.props.size;
+  size: ModelSignatureSize = this.meta.propsMeta.size;
   sizes = MODEL_SIGNATURE_SIZES.filter(x => x !== 'inherit');
   get sizeMarkup() {
     return `<p-model-signature size="${this.size}"></p-model-signature>`;
   }
 
-  color: ModelSignatureColor = this.meta.props.color;
+  color: ModelSignatureColor = this.meta.propsMeta.color;
   colors = MODEL_SIGNATURE_COLORS.filter(x => x !== 'inherit');
   get colorMarkup() {
     return `<p-model-signature color="${this.color}"></p-model-signature>`;
