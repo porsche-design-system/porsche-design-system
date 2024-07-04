@@ -32,7 +32,11 @@ export const App = (): JSX.Element => {
       )}
 
       <div id="app">
-        <PorscheDesignSystemProvider cdn="auto" theme={theme}>
+        <PorscheDesignSystemProvider
+          cdn="auto"
+          theme={theme}
+          components={{ PInlineNotification: { wordings: { dismiss: 'Avvisa meddelande' } } }}
+        >
           <Routes>
             {routes
               .filter((route) => !route.isDisabled)

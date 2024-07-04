@@ -12,6 +12,11 @@ export type InlineNotificationState = (typeof INLINE_NOTIFICATION_STATES)[number
 export type InlineNotificationActionIcon = IconName;
 export type InlineNotificationHeadingTag = HeadingTag;
 
+export const fallbackWordings = {
+  dismiss: 'Close notification',
+};
+export type InlineNotificationWordings = typeof fallbackWordings | string;
+
 export const getInlineNotificationIconName = (state: InlineNotificationState): IconName => {
   const stateToIconMap: Record<InlineNotificationState, IconName> = {
     neutral: 'information-filled', // deprecated
