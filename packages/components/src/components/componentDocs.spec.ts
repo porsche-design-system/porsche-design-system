@@ -4,6 +4,7 @@ import * as fs from 'fs';
 import * as path from 'path';
 import * as globby from 'globby-legacy';
 import { expect } from '@jest/globals';
+import { ComponentMeta } from '@porsche-design-system/component-meta';
 
 const componentsDir = path.resolve(__dirname);
 const sourceFilePaths = globby.sync(`${componentsDir}/**/*.tsx`).sort();
@@ -69,5 +70,30 @@ describe.each<TagName>(
     });
   }
 
-  // TODO: Add @controlled validation
+  const hasControlledAnnotation = sourceFileContent.includes('@controlled');
+
+  if (hasControlledAnnotation) {
+    describe('controlled', () => {
+      const controlledDocs: ComponentMeta['controlledMeta'] = Array.from(
+        sourceFileContent.matchAll(/@controlled\s*({.*})/g)
+      ).map(([, controlledInfo]) => JSON.parse(controlledInfo));
+      const props = Array.from(sourceFileContent.matchAll(/@Prop\(.*\) public ([a-zA-Z]+)/g)).map(
+        ([, propName]) => propName
+      );
+      const events = Array.from(sourceFileContent.matchAll(/@Event\(.*\) public ([a-zA-Z]+)/g)).map(
+        ([, eventName]) => eventName
+      );
+
+      it('should have controlled docs including only valid props and event names.', () => {
+        controlledDocs.forEach((controlledDoc) => {
+          controlledDoc.props.forEach((prop) => {
+            expect(props).toContain(prop);
+          });
+          expect(events).toContain(controlledDoc.event);
+        });
+      });
+    });
+
+    // TODO: Add @controlled type validation
+  }
 });
