@@ -25,9 +25,6 @@ exports[`should match snapshot 1`] = `
     "isDelegatingFocus": false,
     "isInternal": false,
     "isThemeable": true,
-    "namedSlots": [
-      "heading",
-    ],
     "nestedComponents": [
       "p-icon",
     ],
@@ -135,11 +132,6 @@ exports[`should match snapshot 1`] = `
     "isDelegatingFocus": false,
     "isInternal": false,
     "isThemeable": true,
-    "namedSlots": [
-      "heading",
-      "title",
-      "description",
-    ],
     "nestedComponents": [
       "p-inline-notification",
     ],
@@ -1322,12 +1314,6 @@ exports[`should match snapshot 1`] = `
     "isExperimental": true,
     "isInternal": false,
     "isThemeable": false,
-    "namedSlots": [
-      "header",
-      "footer",
-      "sidebar-start",
-      "sidebar-end",
-    ],
     "nestedComponents": [
       "p-button-pure",
       "p-flyout",
@@ -1406,11 +1392,6 @@ exports[`should match snapshot 1`] = `
     "isDelegatingFocus": false,
     "isInternal": false,
     "isThemeable": true,
-    "namedSlots": [
-      "heading",
-      "description",
-      "controls",
-    ],
     "nestedComponents": [
       "p-link-pure",
       "p-button-pure",
@@ -1568,10 +1549,6 @@ exports[`should match snapshot 1`] = `
     "isDelegatingFocus": false,
     "isInternal": false,
     "isThemeable": true,
-    "namedSlots": [
-      "label",
-      "message",
-    ],
     "nestedComponents": [
       "p-spinner",
       "p-icon",
@@ -1899,10 +1876,6 @@ exports[`should match snapshot 1`] = `
     "isDelegatingFocus": false,
     "isInternal": false,
     "isThemeable": true,
-    "namedSlots": [
-      "label",
-      "message",
-    ],
     "nestedComponents": [
       "p-icon",
     ],
@@ -1980,10 +1953,6 @@ exports[`should match snapshot 1`] = `
     "isDeprecated": true,
     "isInternal": false,
     "isThemeable": true,
-    "namedSlots": [
-      "label",
-      "message",
-    ],
     "nestedComponents": [
       "p-icon",
     ],
@@ -2255,11 +2224,6 @@ exports[`should match snapshot 1`] = `
     "isDelegatingFocus": false,
     "isInternal": false,
     "isThemeable": true,
-    "namedSlots": [
-      "header",
-      "footer",
-      "sub-footer",
-    ],
     "nestedComponents": [
       "p-button-pure",
     ],
@@ -3057,9 +3021,6 @@ exports[`should match snapshot 1`] = `
     "isDelegatingFocus": false,
     "isInternal": false,
     "isThemeable": true,
-    "namedSlots": [
-      "heading",
-    ],
     "nestedComponents": [
       "p-icon",
       "p-button-pure",
@@ -4463,10 +4424,6 @@ exports[`should match snapshot 1`] = `
     "isDelegatingFocus": false,
     "isInternal": false,
     "isThemeable": false,
-    "namedSlots": [
-      "primary",
-      "secondary",
-    ],
     "nestedComponents": [
       "p-model-signature",
     ],
@@ -4550,16 +4507,6 @@ exports[`should match snapshot 1`] = `
         "type": "LinkTileModelSignatureWeight",
       },
     },
-    "requiredNamedSlots": [
-      {
-        "slotName": "primary",
-        "tagName": "p-link",
-      },
-      {
-        "slotName": "secondary",
-        "tagName": "p-link",
-      },
-    ],
     "slotsMeta": {
       "": {
         "description": "Default slot for the img or picture tag.",
@@ -4599,10 +4546,6 @@ exports[`should match snapshot 1`] = `
     "isExperimental": true,
     "isInternal": false,
     "isThemeable": true,
-    "namedSlots": [
-      "anchor",
-      "header",
-    ],
     "nestedComponents": [
       "p-button-pure",
     ],
@@ -4793,11 +4736,6 @@ exports[`should match snapshot 1`] = `
     "isDelegatingFocus": false,
     "isInternal": false,
     "isThemeable": true,
-    "namedSlots": [
-      "heading",
-      "header",
-      "footer",
-    ],
     "nestedComponents": [
       "p-button-pure",
     ],
@@ -4994,11 +4932,6 @@ exports[`should match snapshot 1`] = `
     "isDelegatingFocus": false,
     "isInternal": false,
     "isThemeable": true,
-    "namedSlots": [
-      "label",
-      "description",
-      "message",
-    ],
     "nestedComponents": [
       "p-icon",
       "p-button-pure",
@@ -5271,11 +5204,6 @@ exports[`should match snapshot 1`] = `
     "isDelegatingFocus": false,
     "isInternal": false,
     "isThemeable": true,
-    "namedSlots": [
-      "label",
-      "description",
-      "message",
-    ],
     "nestedComponents": [
       "p-spinner",
       "p-icon",
@@ -5460,10 +5388,6 @@ exports[`should match snapshot 1`] = `
     "isDelegatingFocus": false,
     "isInternal": false,
     "isThemeable": true,
-    "namedSlots": [
-      "label",
-      "message",
-    ],
     "nestedComponents": [
       "p-spinner",
       "p-icon",
@@ -6021,11 +5945,6 @@ exports[`should match snapshot 1`] = `
     "isDelegatingFocus": false,
     "isInternal": false,
     "isThemeable": true,
-    "namedSlots": [
-      "label",
-      "description",
-      "message",
-    ],
     "nestedComponents": [
       "p-icon",
     ],
@@ -6172,11 +6091,6 @@ exports[`should match snapshot 1`] = `
     "isDelegatingFocus": false,
     "isInternal": false,
     "isThemeable": true,
-    "namedSlots": [
-      "label",
-      "description",
-      "message",
-    ],
     "nestedComponents": [
       "p-icon",
       "p-select-wrapper-dropdown",
@@ -6603,9 +6517,6 @@ exports[`should match snapshot 1`] = `
     "isDelegatingFocus": false,
     "isInternal": false,
     "isThemeable": true,
-    "namedSlots": [
-      "caption",
-    ],
     "nestedComponents": [
       "p-scroller",
     ],
@@ -7502,11 +7413,6 @@ exports[`should match snapshot 1`] = `
     "isDelegatingFocus": false,
     "isInternal": false,
     "isThemeable": true,
-    "namedSlots": [
-      "label",
-      "description",
-      "message",
-    ],
     "nestedComponents": [
       "p-button-pure",
       "p-icon",
@@ -7730,11 +7636,6 @@ exports[`should match snapshot 1`] = `
     "isDelegatingFocus": false,
     "isInternal": false,
     "isThemeable": true,
-    "namedSlots": [
-      "label",
-      "description",
-      "message",
-    ],
     "nestedComponents": [
       "p-icon",
     ],
