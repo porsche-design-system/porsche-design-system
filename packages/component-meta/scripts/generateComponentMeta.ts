@@ -581,9 +581,9 @@ const generateComponentMeta = (): void => {
 const extractSlotInformation = (
   source: string
 ): {
-  hasSlot: boolean;
-  namedSlots?: string[];
-  requiredNamedSlots?: { slotName: string; tagName: TagName | HTMLElement }[];
+  hasSlot: ComponentMeta['hasSlot'];
+  namedSlots?: ComponentMeta['namedSlots'];
+  requiredNamedSlots?: ComponentMeta['requiredNamedSlots'];
   slotsMeta: ComponentMeta['slotsMeta'];
 } => {
   type DocumentedSlotMeta = {
