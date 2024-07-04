@@ -50,10 +50,6 @@ export type ComponentMeta = {
     [attrName: string]: string;
   };
   hasSlot: boolean;
-  /** @deprectated */
-  namedSlots?: string[]; // array of named slots
-  /** @deprectated */
-  requiredNamedSlots?: { slotName: string; tagName: TagName | keyof HTMLElementTagNameMap }[]; // array of objects for each named slot with specific component tag
   /** Each object key corresponds a slot. '' empty string corresponds to the default slot. Be aware that this is a falsy value in js when working with the keys! */
   slotsMeta?: { [slotName: string]: SlotMeta };
   eventsMeta?: { [eventName: string]: EventMeta }; // new format

@@ -529,7 +529,7 @@ const generateComponentMeta = (): void => {
       observedAttributes = eval(rawObservedAttributes);
     }
 
-    const { hasSlot, namedSlots, requiredNamedSlots, slotsMeta } = extractSlotInformation(source);
+    const { hasSlot, slotsMeta } = extractSlotInformation(source);
 
     result[tagName] = {
       ...(isDeprecated && { isDeprecated, deprecationMessage }),
@@ -547,8 +547,6 @@ const generateComponentMeta = (): void => {
       ...(Object.keys(internalProps).length && { internalProps }),
       ...(Object.keys(hostAttributes).length && { hostAttributes }),
       hasSlot,
-      ...(namedSlots.length && { namedSlots }),
-      ...(requiredNamedSlots.length && { requiredNamedSlots }),
       ...(Object.keys(slotsMeta).length && { slotsMeta }), // new format
       ...(Object.keys(eventsMeta).length && { eventsMeta }), // new format
       hasEvent,
@@ -582,8 +580,6 @@ const extractSlotInformation = (
   source: string
 ): {
   hasSlot: ComponentMeta['hasSlot'];
-  namedSlots?: ComponentMeta['namedSlots'];
-  requiredNamedSlots?: ComponentMeta['requiredNamedSlots'];
   slotsMeta: ComponentMeta['slotsMeta'];
 } => {
   type DocumentedSlotMeta = {
@@ -602,10 +598,6 @@ const extractSlotInformation = (
 
   return {
     hasSlot: slots.length > 0,
-    namedSlots: slots.filter((slot) => slot.name).map((slot) => slot.name),
-    requiredNamedSlots: slots
-      .filter((slot) => slot.isRequired)
-      .map((slot) => ({ slotName: slot.name, tagName: slot.allowedTagNames[0] })),
     slotsMeta,
   };
 };
