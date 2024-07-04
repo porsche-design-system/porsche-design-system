@@ -91,7 +91,7 @@ export default class Code extends Vue {
 
   meta = getComponentMeta('p-model-signature');
 
-  model: ModelSignatureModel = this.meta.propsMeta.model;
+  model: ModelSignatureModel = this.meta.propsMeta.model.defaultValue;
   models = MODEL_SIGNATURE_MODELS;
   get modelMarkup() {
     return `<p-model-signature model="${this.model}"></p-model-signature>`;
@@ -105,13 +105,13 @@ export default class Code extends Vue {
 </div>`).join('\n');
   }
 
-  size: ModelSignatureSize = this.meta.propsMeta.size;
+  size: ModelSignatureSize = this.meta.propsMeta.size.defaultValue;
   sizes = MODEL_SIGNATURE_SIZES.filter(x => x !== 'inherit');
   get sizeMarkup() {
     return `<p-model-signature size="${this.size}"></p-model-signature>`;
   }
 
-  color: ModelSignatureColor = this.meta.propsMeta.color;
+  color: ModelSignatureColor = this.meta.propsMeta.color.defaultValue;
   colors = MODEL_SIGNATURE_COLORS.filter(x => x !== 'inherit');
   get colorMarkup() {
     return `<p-model-signature color="${this.color}"></p-model-signature>`;
