@@ -21,6 +21,10 @@ export type EventMeta = {
   isDeprecated?: boolean;
 };
 
+/**
+ * @slot Annotation specified in `<component>.tsx`. Documented type includes a `name: string` field which is transformed into key of `slotsMeta`.
+ * Metadata defining the relevant slot information in a component.
+ */
 export type SlotMeta = {
   description?: string;
   isRequired?: boolean; // Specifies if the slot is required. If undefined the slot is not required.
@@ -29,7 +33,10 @@ export type SlotMeta = {
   isDeprecated?: boolean;
 };
 
-/** Metadata defining a relationship between an event and one or more controlled properties in a component. */
+/**
+ * @controlled Annotation specified in `<component>.tsx`.
+ * Metadata defining a relationship between an event and one or more controlled properties in a component.
+ */
 export type ControlledMeta = {
   props: string[]; // Names of props that represent the controlled state(s) of the component.
   event: string; // Event name that triggers updates to the controlled props.
