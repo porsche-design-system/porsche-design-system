@@ -50,7 +50,7 @@ export type ComponentMeta = {
     [attrName: string]: string;
   };
   hasSlot: boolean;
-  /** Each object key corresponds a slot. '' empty string corresponds to the default slot. Be aware that this is a falsy value in js when working with the keys! */
+  /** Each object key corresponds to a slot. Empty strings as key corresponds to the default slot. Be aware that this is a falsy value in js when working with the keys! */
   slotsMeta?: { [slotName: string]: SlotMeta };
   eventsMeta?: { [eventName: string]: EventMeta }; // new format
   hasEvent: boolean;
