@@ -4,7 +4,7 @@ import * as fromComponents from '../../../src/lib/components';
 import { PorscheDesignSystemProvider } from '../../../src/provider';
 import * as minifyCssUtils from '../../../src/minifyCss';
 import { TAG_NAMES, type TagName } from '@porsche-design-system/shared';
-import { getComponentMeta } from '@porsche-design-system/component-meta';
+import { type SlotMeta, getComponentMeta } from '@porsche-design-system/component-meta';
 import { kebabCase, pascalCase } from 'change-case';
 import Link from 'next/link';
 import { vi } from 'vitest';
@@ -30,36 +30,37 @@ it.each(Object.keys(fromComponents))('should render dsr component for %s', (comp
         .reduce((res, [key, val]) => ({ ...res, [key]: val }), {})
     : null;
 
-  const requiredNamedSlots = slotsMeta
-    ? Object.entries(slotsMeta)
-        .filter(([, value]) => value.isRequired)
-        .map(([key, value]) => ({ slotName: key, tagName: value.allowedTagNames[0] }))
-    : undefined;
+  const requiredNamedSlots = Object.entries(slotsMeta ?? {})
+    .filter(([, value]) => value.isRequired)
+    .map(([key, value]) => ({ slotName: key, tagName: value.allowedTagNames[0] }));
+
+  const renderNamedSlots = (slots: { slotName: string; tagName: SlotMeta['allowedTagNames'][number] }[]) =>
+    slots.map(({ slotName, tagName }) => {
+      const Component = fromComponents[pascalCase(tagName)];
+      return (
+        <Component key={slotName} slot={slotName} href={tagName.includes('link') ? '#' : undefined}>
+          Some label
+        </Component>
+      );
+    });
+
+  const renderChildren = () => {
+    if (requiredChild) {
+      return <RequiredChildTag {...requiredChildProps} />;
+    } else if (tagName === 'p-carousel') {
+      return <div>Some child</div>;
+    } else if (requiredNamedSlots.length > 0) {
+      return renderNamedSlots(requiredNamedSlots);
+    } else {
+      return 'Some child';
+    }
+  };
 
   // dangerouslySetInnerHTML would obviously be easier than converting to jsx
   // but this does not work since our wrappers internally set children on the server side.
   // together with `...rest` which would contain dangerouslySetInnerHTML, we would have both
   // and this is not allowed and throws an exception
-  const props = hasSlot
-    ? {
-        children: requiredChild ? (
-          <RequiredChildTag {...requiredChildProps} />
-        ) : tagName === 'p-carousel' ? ( // we need an actual DOM node here
-          <div>Some child</div>
-        ) : requiredNamedSlots ? (
-          requiredNamedSlots.map(({ slotName, tagName }) => {
-            const Component = fromComponents[pascalCase(tagName)];
-            return (
-              <Component key={slotName} slot={slotName} href={tagName.includes('link') ? '#' : undefined}>
-                Some label
-              </Component>
-            );
-          })
-        ) : (
-          'Some child'
-        ),
-      }
-    : null;
+  const props = hasSlot ? { children: renderChildren() } : null;
 
   const consoleSpy = vi.spyOn(console, 'error');
   const { container } = render(
