@@ -30,9 +30,11 @@ it.each(Object.keys(fromComponents))('should render dsr component for %s', (comp
         .reduce((res, [key, val]) => ({ ...res, [key]: val }), {})
     : null;
 
-  const requiredNamedSlots = Object.entries(slotsMeta ?? {})
-    .filter(([, value]) => value.isRequired)
-    .map(([key, value]) => ({ slotName: key, tagName: value.allowedTagNames[0] }));
+  const requiredNamedSlots = slotsMeta
+    ? Object.entries(slotsMeta)
+        .filter(([, value]) => value.isRequired)
+        .map(([key, value]) => ({ slotName: key, tagName: value.allowedTagNames[0] }))
+    : undefined;
 
   // dangerouslySetInnerHTML would obviously be easier than converting to jsx
   // but this does not work since our wrappers internally set children on the server side.
