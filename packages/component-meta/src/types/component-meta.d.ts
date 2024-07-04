@@ -21,6 +21,14 @@ export type EventMeta = {
   isDeprecated?: boolean;
 };
 
+type SlotMeta = {
+  description?: string;
+  isRequired?: boolean; // Specifies if the slot is required. If undefined the slot is not required.
+  allowedTagNames?: (TagName | HTMLElement)[]; // Specifies which tagNames are allowed to be used. If undefined all tags are allowed.
+  hasAltProp?: boolean; // Specifies if the slot has an equal name prop which can be used instead.
+  isDeprecated?: boolean;
+};
+
 export type ComponentMeta = {
   isDeprecated?: boolean;
   deprecationMessage?: string;
@@ -42,8 +50,12 @@ export type ComponentMeta = {
     [attrName: string]: string;
   };
   hasSlot: boolean;
+  /** @deprectated */
   namedSlots?: string[]; // array of named slots
-  requiredNamedSlots?: { slotName: string; tagName: TagName }[]; // array of objects for each named slot with specific component tag
+  /** @deprectated */
+  requiredNamedSlots?: { slotName: string; tagName: TagName | HTMLElement }[]; // array of objects for each named slot with specific component tag
+  /** Each object key corresponds a slot. '' empty string corresponds to the default slot. Be aware that this is a falsy value in js when working with the keys! */
+  slotsMeta?: { [slotName: string]: SlotMeta };
   eventsMeta?: { [eventName: string]: EventMeta }; // new format
   hasEvent: boolean;
   hasAriaProp: boolean;

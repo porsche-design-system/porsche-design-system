@@ -4,7 +4,7 @@ import { globbySync } from 'globby';
 import { kebabCase } from 'change-case';
 import { type TagName, TAG_NAMES, INTERNAL_TAG_NAMES, TAG_NAMES_WITH_CHUNK } from '@porsche-design-system/shared';
 import { ICONS_MANIFEST } from '@porsche-design-system/assets';
-import type { ComponentsMeta, ComponentMeta, PropMeta } from '../src/types/component-meta';
+import type { ComponentsMeta, ComponentMeta, PropMeta, SlotMeta } from '../src/types/component-meta';
 
 const glue = '\n\n';
 
@@ -529,7 +529,7 @@ const generateComponentMeta = (): void => {
       observedAttributes = eval(rawObservedAttributes);
     }
 
-    const { hasSlot, namedSlots, requiredNamedSlots } = extractSlotInformation(source);
+    const { hasSlot, namedSlots, requiredNamedSlots, slotsMeta } = extractSlotInformation(source);
 
     result[tagName] = {
       ...(isDeprecated && { isDeprecated, deprecationMessage }),
@@ -549,6 +549,7 @@ const generateComponentMeta = (): void => {
       hasSlot,
       ...(namedSlots.length && { namedSlots }),
       ...(requiredNamedSlots.length && { requiredNamedSlots }),
+      ...(Object.keys(slotsMeta).length && { slotsMeta }), // new format
       ...(Object.keys(eventsMeta).length && { eventsMeta }), // new format
       hasEvent,
       hasAriaProp,
@@ -582,23 +583,30 @@ const extractSlotInformation = (
 ): {
   hasSlot: boolean;
   namedSlots?: string[];
-  requiredNamedSlots?: { slotName: string; tagName: TagName }[];
+  requiredNamedSlots?: { slotName: string; tagName: TagName | HTMLElement }[];
+  slotsMeta: ComponentMeta['slotsMeta'];
 } => {
-  type SlotMeta = {
+  type DocumentedSlotMeta = {
     name: string; // Name of the slot. Empty name corresponds to the default slot.
-    description: string;
-    isRequired?: boolean; // Specifies if the slot is required. If undefined the slot is not required.
-    allowedTagNames?: (TagName & HTMLElement)[]; // Specifies which tagNames are allowed to be used. If undefined all tags are allowed.
-    hasAltProp?: boolean; // Specifies if the slot has an equal name prop which can be used instead.
-    isDeprecated?: boolean;
-  };
-  const slots: SlotMeta[] = Array.from(source.matchAll(/@slot\s*({.*})/g)).map(([, slotInfo]) => JSON.parse(slotInfo));
+  } & SlotMeta;
+  const slots: DocumentedSlotMeta[] = Array.from(source.matchAll(/@slot\s*({.*})/g)).map(([, slotInfo]) =>
+    JSON.parse(slotInfo)
+  );
+
+  // Convert into slotMeta format
+  const slotsMeta: ComponentMeta['slotsMeta'] = slots.reduce((acc, obj) => {
+    const { name, ...rest } = obj;
+    acc[name] = rest;
+    return acc;
+  }, {});
+
   return {
     hasSlot: slots.length > 0,
     namedSlots: slots.filter((slot) => slot.name).map((slot) => slot.name),
     requiredNamedSlots: slots
       .filter((slot) => slot.isRequired)
       .map((slot) => ({ slotName: slot.name, tagName: slot.allowedTagNames[0] })),
+    slotsMeta,
   };
 };
 
