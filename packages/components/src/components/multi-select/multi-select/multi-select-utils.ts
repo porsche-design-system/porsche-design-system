@@ -8,6 +8,13 @@ export type MultiSelectState = FormState;
 export type MultiSelectDropdownDirection = SelectComponentsDropdownDirection;
 export type MultiSelectOption = HTMLPMultiSelectOptionElement & MultiSelectOptionInternalHTMLProps;
 
+export const fallbackWordings = {
+  optionsSelected: 'options selected',
+  resetSelection: 'Reset selection',
+  noResultsFound: 'No results found',
+};
+export type MultiSelectWordings = typeof fallbackWordings | string;
+
 /** @deprecated */
 export type MultiSelectUpdateEvent = {
   name: string;

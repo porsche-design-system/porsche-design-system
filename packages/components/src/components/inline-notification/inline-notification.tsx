@@ -1,6 +1,18 @@
 import type { PropTypes, Theme } from '../../types';
 import type { IconColor } from '../icon/icon-utils';
-import type { InlineNotificationState, InlineNotificationStateDeprecated } from './inline-notification-utils';
+import type {
+  InlineNotificationActionIcon,
+  InlineNotificationHeadingTag,
+  InlineNotificationState,
+  InlineNotificationStateDeprecated,
+  InlineNotificationWordings,
+} from './inline-notification-utils';
+import {
+  fallbackWordings,
+  getContentAriaAttributes,
+  getInlineNotificationIconName,
+  INLINE_NOTIFICATION_STATES,
+} from './inline-notification-utils';
 import { Component, Element, Event, type EventEmitter, h, Host, type JSX, Prop } from '@stencil/core';
 import {
   AllowedTypes,
@@ -16,17 +28,10 @@ import {
   warnIfDeprecatedPropValueIsUsed,
 } from '../../utils';
 import { getComponentCss } from './inline-notification-styles';
-import {
-  fallbackWordings,
-  getContentAriaAttributes,
-  getInlineNotificationIconName,
-  INLINE_NOTIFICATION_STATES,
-} from './inline-notification-utils';
-import type { InlineNotificationActionIcon, InlineNotificationWordings, InlineNotificationHeadingTag } from './inline-notification-utils';
 import { getSlottedAnchorStyles } from '../../styles';
 
-// TODO: wordings prop should not be omitted, but generateComponentMeta can't handle it currently
-const propTypes: Omit<PropTypes<typeof InlineNotification>, 'wordings'> = {
+// TODO: generateComponentMeta can't handle wordings prop currently
+const propTypes: PropTypes<typeof InlineNotification> = {
   heading: AllowedTypes.string,
   headingTag: AllowedTypes.oneOf<InlineNotificationHeadingTag>(HEADING_TAGS),
   description: AllowedTypes.string,
@@ -37,7 +42,7 @@ const propTypes: Omit<PropTypes<typeof InlineNotification>, 'wordings'> = {
   actionLoading: AllowedTypes.boolean,
   actionIcon: AllowedTypes.string, // TODO: we could use AllowedTypes.oneOf<IconName>(Object.keys(ICONS_MANIFEST) as IconName[]) but then main chunk will increase
   theme: AllowedTypes.oneOf<Theme>(THEMES),
-  // wordings: AllowedTypes.shape<InlineNotificationWordings>({ dismiss: AllowedTypes.string }),
+  wordings: AllowedTypes.shape<InlineNotificationWordings>(typeof fallbackWordings),
 };
 
 @Component({
