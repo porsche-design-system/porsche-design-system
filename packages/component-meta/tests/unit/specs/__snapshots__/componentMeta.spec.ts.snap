@@ -3,6 +3,14 @@
 exports[`should match snapshot 1`] = `
 {
   "p-accordion": {
+    "controlledMeta": [
+      {
+        "event": "update",
+        "props": [
+          "open",
+        ],
+      },
+    ],
     "eventsMeta": {
       "accordionChange": {
         "description": "@deprecated since v3.0.0, will be removed with next major release, use \`update\` event instead. Emitted when accordion state is changed.",
@@ -114,6 +122,14 @@ exports[`should match snapshot 1`] = `
     "styling": "jss",
   },
   "p-banner": {
+    "controlledMeta": [
+      {
+        "event": "dismiss",
+        "props": [
+          "open",
+        ],
+      },
+    ],
     "eventsMeta": {
       "dismiss": {
         "description": "Emitted when the close button is clicked.",
@@ -1294,6 +1310,20 @@ exports[`should match snapshot 1`] = `
     "styling": "jss",
   },
   "p-canvas": {
+    "controlledMeta": [
+      {
+        "event": "dismissSidebarStart",
+        "props": [
+          "sidebarStartOpen",
+        ],
+      },
+      {
+        "event": "dismissSidebarEnd",
+        "props": [
+          "sidebarEndOpen",
+        ],
+      },
+    ],
     "eventsMeta": {
       "dismissSidebarEnd": {
         "description": "Emitted when the component requests to close the sidebar on the end side.",
@@ -1370,6 +1400,15 @@ exports[`should match snapshot 1`] = `
     "styling": "jss",
   },
   "p-carousel": {
+    "controlledMeta": [
+      {
+        "event": "update",
+        "isInternallyMutated": true,
+        "props": [
+          "activeSlideIndex",
+        ],
+      },
+    ],
     "eventsMeta": {
       "carouselChange": {
         "description": "@deprecated since v3.0.0, will be removed with next major release, use \`update\` event instead. Emitted when carousel's content slides.",
@@ -2209,6 +2248,14 @@ exports[`should match snapshot 1`] = `
     "styling": "jss",
   },
   "p-flyout": {
+    "controlledMeta": [
+      {
+        "event": "dismiss",
+        "props": [
+          "open",
+        ],
+      },
+    ],
     "eventsMeta": {
       "dismiss": {
         "description": "Emitted when the component requests to be dismissed.",
@@ -2293,6 +2340,20 @@ exports[`should match snapshot 1`] = `
     "styling": "jss",
   },
   "p-flyout-multilevel": {
+    "controlledMeta": [
+      {
+        "event": "dismiss",
+        "props": [
+          "open",
+        ],
+      },
+      {
+        "event": "update",
+        "props": [
+          "activeIdentifier",
+        ],
+      },
+    ],
     "eventsMeta": {
       "dismiss": {
         "description": "Emitted when the component requests to be dismissed.",
@@ -4529,6 +4590,14 @@ exports[`should match snapshot 1`] = `
     "styling": "jss",
   },
   "p-link-tile-product": {
+    "controlledMeta": [
+      {
+        "event": "like",
+        "props": [
+          "liked",
+        ],
+      },
+    ],
     "eventsMeta": {
       "like": {
         "description": "Emitted when the like button is clicked.",
@@ -4716,6 +4785,14 @@ exports[`should match snapshot 1`] = `
     "styling": "jss",
   },
   "p-modal": {
+    "controlledMeta": [
+      {
+        "event": "dismiss",
+        "props": [
+          "open",
+        ],
+      },
+    ],
     "eventsMeta": {
       "close": {
         "description": "@deprecated since v3.0.0, will be removed with next major release, use \`dismiss\` event instead. Emitted when the component requests to be dismissed.",
@@ -4916,6 +4993,15 @@ exports[`should match snapshot 1`] = `
     "styling": "jss",
   },
   "p-multi-select": {
+    "controlledMeta": [
+      {
+        "event": "update",
+        "isInternallyMutated": true,
+        "props": [
+          "value",
+        ],
+      },
+    ],
     "eventsMeta": {
       "update": {
         "description": "Emitted when the selection is changed.",
@@ -5072,6 +5158,15 @@ exports[`should match snapshot 1`] = `
     "styling": "jss",
   },
   "p-pagination": {
+    "controlledMeta": [
+      {
+        "event": "update",
+        "isInternallyMutated": true,
+        "props": [
+          "activePage",
+        ],
+      },
+    ],
     "eventsMeta": {
       "pageChange": {
         "description": "@deprecated since v3.0.0, will be removed with next major release, use \`update\` event instead. Emitted when the page changes.",
@@ -5188,6 +5283,15 @@ exports[`should match snapshot 1`] = `
     "styling": "jss",
   },
   "p-pin-code": {
+    "controlledMeta": [
+      {
+        "event": "update",
+        "isInternallyMutated": true,
+        "props": [
+          "value",
+        ],
+      },
+    ],
     "eventsMeta": {
       "update": {
         "description": "Emitted when selected element changes.",
@@ -5556,6 +5660,15 @@ exports[`should match snapshot 1`] = `
     "styling": "jss",
   },
   "p-segmented-control": {
+    "controlledMeta": [
+      {
+        "event": "update",
+        "isInternallyMutated": true,
+        "props": [
+          "value",
+        ],
+      },
+    ],
     "eventsMeta": {
       "segmentedControlChange": {
         "description": "@deprecated since v3.0.0, will be removed with next major release, use \`update\` event instead. Emitted when selected element changes.",
@@ -5929,6 +6042,15 @@ exports[`should match snapshot 1`] = `
     "styling": "jss",
   },
   "p-select": {
+    "controlledMeta": [
+      {
+        "event": "update",
+        "isInternallyMutated": true,
+        "props": [
+          "value",
+        ],
+      },
+    ],
     "eventsMeta": {
       "update": {
         "description": "Emitted when the selection is changed.",
@@ -6402,6 +6524,14 @@ exports[`should match snapshot 1`] = `
     "styling": "jss",
   },
   "p-switch": {
+    "controlledMeta": [
+      {
+        "event": "update",
+        "props": [
+          "checked",
+        ],
+      },
+    ],
     "eventsMeta": {
       "switchChange": {
         "description": "@deprecated since v3.0.0, will be removed with next major release, use \`update\` event instead. Emitted when checked status is changed.",
@@ -6716,6 +6846,15 @@ exports[`should match snapshot 1`] = `
     "styling": "jss",
   },
   "p-tabs": {
+    "controlledMeta": [
+      {
+        "event": "update",
+        "isInternallyMutated": true,
+        "props": [
+          "activeTabIndex",
+        ],
+      },
+    ],
     "eventsMeta": {
       "tabChange": {
         "description": "@deprecated since v3.0.0, will be removed with next major release, use \`update\` event instead. Emitted when active tab is changed.",
@@ -6810,6 +6949,14 @@ exports[`should match snapshot 1`] = `
     "styling": "jss",
   },
   "p-tabs-bar": {
+    "controlledMeta": [
+      {
+        "event": "update",
+        "props": [
+          "activeTabIndex",
+        ],
+      },
+    ],
     "eventsMeta": {
       "tabChange": {
         "description": "@deprecated since v3.0.0, will be removed with next major release, use \`update\` event instead. Emitted when active tab is changed.",
