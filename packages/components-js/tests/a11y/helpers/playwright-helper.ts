@@ -354,11 +354,14 @@ export const buildDefaultComponentMarkup = (tagName: TagName): string => {
   const {
     requiredChild,
     requiredParent,
-    requiredNamedSlots,
     propsMeta, // new format
+    slotsMeta,
   } = getComponentMeta(tagName);
 
-  const buildChildMarkup = (requiredChild: string, requiredNamedSlots: ComponentMeta['requiredNamedSlots']): string => {
+  const buildChildMarkup = (
+    requiredChild: string,
+    requiredNamedSlots: { slotName: string; tagName: TagName | keyof HTMLElementTagNameMap }[]
+  ): string => {
     if (requiredChild) {
       return requiredChild.startsWith('input') ? `<${requiredChild} />` : `<${requiredChild}></${requiredChild}>`;
     } else if (requiredNamedSlots) {
@@ -393,6 +396,10 @@ export const buildDefaultComponentMarkup = (tagName: TagName): string => {
         .filter(Boolean)
         .join()
     : '';
+
+  const requiredNamedSlots = Object.entries(slotsMeta ?? {})
+    .filter(([, value]) => value.isRequired)
+    .map(([key, value]) => ({ slotName: key, tagName: value.allowedTagNames[0] }));
 
   const componentMarkup = `<${tagName}${attributes}>${buildChildMarkup(
     requiredChild,

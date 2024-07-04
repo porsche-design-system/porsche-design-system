@@ -18,7 +18,7 @@ it.each(Object.keys(fromComponents))('should render dsr component for %s', (comp
   vi.spyOn(minifyCssUtils, 'minifyCss').mockImplementation((css) => css);
 
   // default children
-  const { requiredChild, hasSlot, requiredNamedSlots } =
+  const { requiredChild, hasSlot, slotsMeta } =
     tagName === 'p-tabs'
       ? { ...componentMeta, requiredChild: 'p-tabs-item label=TabItem' } // TODO: validation for this is missing and therefore componentMeta doesn't contain it
       : componentMeta;
@@ -29,6 +29,10 @@ it.each(Object.keys(fromComponents))('should render dsr component for %s', (comp
         .map((pair) => pair.split('='))
         .reduce((res, [key, val]) => ({ ...res, [key]: val }), {})
     : null;
+
+  const requiredNamedSlots = Object.entries(slotsMeta ?? {})
+    .filter(([, value]) => value.isRequired)
+    .map(([key, value]) => ({ slotName: key, tagName: value.allowedTagNames[0] }));
 
   // dangerouslySetInnerHTML would obviously be easier than converting to jsx
   // but this does not work since our wrappers internally set children on the server side.
