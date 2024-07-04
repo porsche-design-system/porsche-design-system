@@ -29,6 +29,13 @@ export type SlotMeta = {
   isDeprecated?: boolean;
 };
 
+/** Metadata defining a relationship between an event and one or more controlled properties in a component. */
+export type ControlledMeta = {
+  props: string[]; // Names of props that represent the controlled state(s) of the component.
+  event: string; // Event name that triggers updates to the controlled props.
+  isInternallyMutated?: boolean; // Flag indicating whether the controlled props are internally mutated. If true, the component can update its controlled props internally without relying on the external event.
+};
+
 export type ComponentMeta = {
   isDeprecated?: boolean;
   deprecationMessage?: string;
@@ -54,6 +61,7 @@ export type ComponentMeta = {
   slotsMeta?: { [slotName: string]: SlotMeta };
   eventsMeta?: { [eventName: string]: EventMeta }; // new format
   hasEvent: boolean;
+  controlledMeta?: ControlledMeta[];
   hasAriaProp: boolean;
   hasObserveAttributes: boolean;
   observedAttributes?: string[];

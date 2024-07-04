@@ -64,6 +64,10 @@ describe.each<TagName>(
         const nonExistentDocumentedSlots = documentedSlots.filter((slot) => !namedSlotsUnique.includes(slot));
         expect(nonExistentDocumentedSlots).toHaveLength(0);
       });
+
+      // TODO: Add @slot type validation
     });
   }
+
+  // TODO: Add @controlled validation
 });

@@ -2,9 +2,9 @@ import * as fs from 'fs';
 import * as path from 'path';
 import { globbySync } from 'globby';
 import { kebabCase } from 'change-case';
-import { type TagName, TAG_NAMES, INTERNAL_TAG_NAMES, TAG_NAMES_WITH_CHUNK } from '@porsche-design-system/shared';
+import { INTERNAL_TAG_NAMES, TAG_NAMES, TAG_NAMES_WITH_CHUNK, type TagName } from '@porsche-design-system/shared';
 import { ICONS_MANIFEST } from '@porsche-design-system/assets';
-import type { ComponentsMeta, ComponentMeta, PropMeta, SlotMeta } from '../src/types/component-meta';
+import type { ComponentMeta, ComponentsMeta, PropMeta, SlotMeta } from '../src/types/component-meta';
 
 const glue = '\n\n';
 
@@ -531,6 +531,8 @@ const generateComponentMeta = (): void => {
 
     const { hasSlot, slotsMeta } = extractSlotInformation(source);
 
+    const controlledMeta = extractControlledInformation(source);
+
     result[tagName] = {
       ...(isDeprecated && { isDeprecated, deprecationMessage }),
       ...(isExperimental && { isExperimental }),
@@ -550,6 +552,7 @@ const generateComponentMeta = (): void => {
       ...(Object.keys(slotsMeta).length && { slotsMeta }), // new format
       ...(Object.keys(eventsMeta).length && { eventsMeta }), // new format
       hasEvent,
+      ...(controlledMeta.length && { controlledMeta }),
       hasAriaProp,
       hasObserveAttributes,
       ...(observedAttributes.length && { observedAttributes }),
@@ -601,5 +604,8 @@ const extractSlotInformation = (
     slotsMeta,
   };
 };
+
+const extractControlledInformation = (source: string): ComponentMeta['controlledMeta'] =>
+  Array.from(source.matchAll(/@controlled\s*({.*})/g)).map(([, controlledInfo]) => JSON.parse(controlledInfo));
 
 generateComponentMeta();
