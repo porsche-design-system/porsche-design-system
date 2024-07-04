@@ -71,7 +71,7 @@
 
       const formatProps = (propsMeta: ComponentMeta['propsMeta']): string[] =>
         Object.entries(propsMeta ?? {}).map(([propName, meta]) => {
-          const propFlags = getPropFlags(meta);
+          const propFlags = getFlags(meta);
           const formattedAllowedValues = formatAllowedValues(meta.allowedValues, !!meta.isDeprecated);
           return (
             `<span class="prop">${propName}${propFlags}</span>` +
@@ -79,7 +79,7 @@
           );
         });
 
-      const getPropFlags = <
+      const getFlags = <
         T extends { isDeprecated?: boolean; isBreakpointCustomizable?: boolean; isExperimental?: boolean },
       >(
         meta: T
@@ -109,7 +109,7 @@
       };
 
       const formatEvents = (eventsMeta: ComponentMeta['eventsMeta']): string[] =>
-        Object.entries(eventsMeta ?? {}).map(([eventName, value]) => `${eventName}${getPropFlags(value)}`);
+        Object.entries(eventsMeta ?? {}).map(([eventName, value]) => `${eventName}${getFlags(value)}`);
 
       const formatRequiredProps = (propsMeta: ComponentMeta['propsMeta']): string =>
         Object.entries(propsMeta ?? {})
