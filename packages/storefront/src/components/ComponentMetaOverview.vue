@@ -19,10 +19,10 @@
 <script lang="ts">
   import Vue from 'vue';
   import Component from 'vue-class-component';
-  import { INTERNAL_TAG_NAMES, TAG_NAMES } from '@porsche-design-system/shared';
   import type { TagName } from '@porsche-design-system/shared';
-  import { EventMeta, getComponentMeta, PropMeta } from '@porsche-design-system/component-meta';
+  import { INTERNAL_TAG_NAMES, TAG_NAMES } from '@porsche-design-system/shared';
   import type { ComponentMeta } from '@porsche-design-system/component-meta';
+  import { getComponentMeta, PropMeta } from '@porsche-design-system/component-meta';
   import { type StorefrontTheme } from '@/models';
 
   const tagNames = TAG_NAMES.filter((x) => !INTERNAL_TAG_NAMES.includes(x));
@@ -117,7 +117,10 @@
           .map(([propName]) => `<code>${propName}</code>`)
           .join('<br>');
 
-      const formatCellContent = (value: any, rowKey: string): string => {
+      const formatCellContent = (
+        value: boolean | string | string[] | TagName[] | undefined,
+        rowKey: string
+      ): string => {
         if (!value) return '';
         if (value === true) return '✅';
         if (Array.isArray(value)) {
