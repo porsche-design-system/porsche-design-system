@@ -673,7 +673,7 @@ slot[name="controls"] {
   outline: 2px solid #1A44EA !important;
   outline-offset: 2px !important;
 }
-h2,::slotted([slot="heading"]),p,::slotted([slot="description"]) {
+.heading,p,::slotted([slot="description"]) {
   grid-column: 1/-1 !important;
   color: #010205 !important;
 }
@@ -799,7 +799,7 @@ slot[name="controls"] {
   outline: 2px solid #1A44EA !important;
   outline-offset: 2px !important;
 }
-h2,::slotted([slot="heading"]),p,::slotted([slot="description"]) {
+.heading,p,::slotted([slot="description"]) {
   grid-column: 1/-1 !important;
   color: #010205 !important;
   text-align: center !important;
@@ -1031,13 +1031,17 @@ slot[name="controls"] {
   outline: 2px solid #1A44EA !important;
   outline-offset: 2px !important;
 }
-h2,::slotted([slot="heading"]),p,::slotted([slot="description"]) {
+.heading,p,::slotted([slot="description"]) {
   grid-column: 1/-1 !important;
   color: #010205 !important;
 }
-h2,::slotted([slot="heading"]) {
+.heading {
   max-width: 56.25rem !important;
   margin: 0 0 clamp(16px, 1.25vw + 12px, 36px) !important;
+  font: normal normal 600 clamp(1.42rem, 0.94vw + 1.23rem, 2.37rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+}
+::slotted([slot=heading]) {
+  margin: 0 !important;
   font: normal normal 600 clamp(1.42rem, 0.94vw + 1.23rem, 2.37rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
 }
 .header {
@@ -1155,15 +1159,19 @@ slot[name="controls"] {
   outline: 2px solid #1A44EA !important;
   outline-offset: 2px !important;
 }
-h2,::slotted([slot="heading"]),p,::slotted([slot="description"]) {
+.heading,p,::slotted([slot="description"]) {
   grid-column: 1/-1 !important;
   color: #010205 !important;
   text-align: center !important;
   justify-self: center !important;
 }
-h2,::slotted([slot="heading"]) {
+.heading {
   max-width: 56.25rem !important;
   margin: 0 0 clamp(16px, 1.25vw + 12px, 36px) !important;
+  font: normal normal 600 clamp(1.42rem, 0.94vw + 1.23rem, 2.37rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+}
+::slotted([slot=heading]) {
+  margin: 0 !important;
   font: normal normal 600 clamp(1.42rem, 0.94vw + 1.23rem, 2.37rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
 }
 .header {
@@ -1275,13 +1283,17 @@ exports[`getComponentCss() should return correct css for hasHeading: true, hasDe
   outline: 2px solid #1A44EA !important;
   outline-offset: 2px !important;
 }
-h2,::slotted([slot="heading"]),p,::slotted([slot="description"]) {
+.heading,p,::slotted([slot="description"]) {
   grid-column: 1/-1 !important;
   color: #010205 !important;
 }
-h2,::slotted([slot="heading"]) {
+.heading {
   max-width: 56.25rem !important;
   margin: 0 0 0 !important;
+  font: normal normal 600 clamp(1.6rem, 1.56vw + 1.29rem, 3.16rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+}
+::slotted([slot=heading]) {
+  margin: 0 !important;
   font: normal normal 600 clamp(1.6rem, 1.56vw + 1.29rem, 3.16rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
 }
 p,::slotted([slot="description"]) {
@@ -1459,15 +1471,19 @@ slot[name="controls"] {
   outline: 2px solid #1A44EA !important;
   outline-offset: 2px !important;
 }
-h2,::slotted([slot="heading"]),p,::slotted([slot="description"]) {
+.heading,p,::slotted([slot="description"]) {
   grid-column: 1/-1 !important;
   color: #010205 !important;
   text-align: center !important;
   justify-self: center !important;
 }
-h2,::slotted([slot="heading"]) {
+.heading {
   max-width: 56.25rem !important;
   margin: 0 0 0 !important;
+  font: normal normal 600 clamp(1.42rem, 0.94vw + 1.23rem, 2.37rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+}
+::slotted([slot=heading]) {
+  margin: 0 !important;
   font: normal normal 600 clamp(1.42rem, 0.94vw + 1.23rem, 2.37rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
 }
 p,::slotted([slot="description"]) {
@@ -1592,13 +1608,17 @@ slot[name="controls"] {
   outline: 2px solid #1A44EA !important;
   outline-offset: 2px !important;
 }
-h2,::slotted([slot="heading"]),p,::slotted([slot="description"]) {
+.heading,p,::slotted([slot="description"]) {
   grid-column: 1/-1 !important;
   color: #FBFCFF !important;
 }
-h2,::slotted([slot="heading"]) {
+.heading {
   max-width: 56.25rem !important;
   margin: 0 0 0 !important;
+  font: normal normal 600 clamp(1.42rem, 0.94vw + 1.23rem, 2.37rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+}
+::slotted([slot=heading]) {
+  margin: 0 !important;
   font: normal normal 600 clamp(1.42rem, 0.94vw + 1.23rem, 2.37rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
 }
 p,::slotted([slot="description"]) {
@@ -1800,13 +1820,17 @@ slot[name="controls"] {
   outline: 2px solid #1A44EA !important;
   outline-offset: 2px !important;
 }
-h2,::slotted([slot="heading"]),p,::slotted([slot="description"]) {
+.heading,p,::slotted([slot="description"]) {
   grid-column: 1/-1 !important;
   color: #010205 !important;
 }
-h2,::slotted([slot="heading"]) {
+.heading {
   max-width: 56.25rem !important;
   margin: 0 0 0 !important;
+  font: normal normal 600 clamp(1.42rem, 0.94vw + 1.23rem, 2.37rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+}
+::slotted([slot=heading]) {
+  margin: 0 !important;
   font: normal normal 600 clamp(1.42rem, 0.94vw + 1.23rem, 2.37rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
 }
 p,::slotted([slot="description"]) {
@@ -2011,13 +2035,17 @@ slot[name="controls"] {
   outline: 2px solid #1A44EA !important;
   outline-offset: 2px !important;
 }
-h2,::slotted([slot="heading"]),p,::slotted([slot="description"]) {
+.heading,p,::slotted([slot="description"]) {
   grid-column: 1/-1 !important;
   color: #010205 !important;
 }
-h2,::slotted([slot="heading"]) {
+.heading {
   max-width: 56.25rem !important;
   margin: 0 0 0 !important;
+  font: normal normal 600 clamp(1.6rem, 1.56vw + 1.29rem, 3.16rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+}
+::slotted([slot=heading]) {
+  margin: 0 !important;
   font: normal normal 600 clamp(1.6rem, 1.56vw + 1.29rem, 3.16rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
 }
 p,::slotted([slot="description"]) {
@@ -2195,15 +2223,19 @@ slot[name="controls"] {
   outline: 2px solid #1A44EA !important;
   outline-offset: 2px !important;
 }
-h2,::slotted([slot="heading"]),p,::slotted([slot="description"]) {
+.heading,p,::slotted([slot="description"]) {
   grid-column: 1/-1 !important;
   color: #010205 !important;
   text-align: center !important;
   justify-self: center !important;
 }
-h2,::slotted([slot="heading"]) {
+.heading {
   max-width: 56.25rem !important;
   margin: 0 0 0 !important;
+  font: normal normal 600 clamp(1.6rem, 1.56vw + 1.29rem, 3.16rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
+}
+::slotted([slot=heading]) {
+  margin: 0 !important;
   font: normal normal 600 clamp(1.6rem, 1.56vw + 1.29rem, 3.16rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
 }
 p,::slotted([slot="description"]) {

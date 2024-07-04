@@ -36,7 +36,7 @@
     "@angular/platform-browser": "^17.3.0",
     "@angular/platform-browser-dynamic": "^17.3.0",
     "@angular/router": "^17.3.0",
-    "@porsche-design-system/components-angular": "3.15.0-rc.4",
+    "@porsche-design-system/components-angular": "3.16.0",
     "angular-imask": "^6.6.3",
     "change-case": "^5.4.3",
     "imask": "^7.5.0",
@@ -51,7 +51,7 @@
     "@angular/compiler-cli": "^17.3.0",
     "@angular/language-service": "^17.3.0",
     "@porsche-design-system/assets": "5.0.2",
-    "@testing-library/angular": "^15.2.0",
+    "@testing-library/angular": "^16.0.0",
     "@types/jasmine": "^5.1.4",
     "concurrently": "^8.2.2",
     "globby": "^11.1.0",
@@ -62,7 +62,7 @@
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "^2.1.0",
     "local-web-server": "^5.3.3",
-    "ng-packagr": "^17.3.0",
+    "ng-packagr": "^18.0.0",
     "typescript": "~5.4.4"
   },
   "volta": {

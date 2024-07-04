@@ -36,14 +36,16 @@ export const transformToSelfClosingTags = (markup: string): string =>
 
 export const transformStyleAttribute = (markup: string): string =>
   markup.replace(/\sstyle="([\s\S]*?)"/g, (_, $style: string) => {
-    $style = $style
-      .replace(/;/g, ',') // transform semi colons to comma
-      .replace(/,\s*$/g, ''); // remove last comma
+    $style = $style.replace(/;\s*$/g, ''); // remove last semicolon
 
-    const pairs = $style.split(',').map((p) => {
+    const pairs = $style.split(';').map((p) => {
       const [prop, val] = p.split(':').map((x) => x.trim());
       const value = val.match(/^\d+(?:\.\d+)?$/) ? val : `'${val}'`; // numbers don't need quotes
-      return `${camelCase(prop)}: ${value}`;
+
+      // Check if the property is a custom css property
+      const property = prop.startsWith('--') ? `"${prop}"` : camelCase(prop);
+
+      return `${property}: ${value}`;
     });
 
     return ` style={{ ${pairs.join(', ')} }}`;

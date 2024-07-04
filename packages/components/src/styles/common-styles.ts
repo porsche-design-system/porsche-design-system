@@ -24,7 +24,7 @@ export type MotionDurationKey = WithoutMotionDurationPrefix<keyof typeof fromMot
 type WithoutMotionEasingPrefix<T> = T extends `motionEasing${infer P}` ? Uncapitalize<P> : never;
 export type MotionEasingKey = WithoutMotionEasingPrefix<keyof typeof fromMotionType>;
 
-const motionDurationMap: Record<MotionDurationKey, string> = {
+export const motionDurationMap: Record<MotionDurationKey, string> = {
   short: motionDurationShort,
   moderate: motionDurationModerate,
   long: motionDurationLong,
@@ -145,11 +145,7 @@ export const getHiddenTextJssStyle = (isHidden = true, isShownJssStyle?: JssStyl
       };
 };
 
-export const BACKDROPS = ['blur', 'shading'] as const;
-export type Backdrop = (typeof BACKDROPS)[number];
-
-// TODO: there should be a shared style util for modal, flyout and flyout-navigation instead of having this code in the
-//  main bundle. Or don't share it at all, in case same transition concept isn't ideal to be shared from an UI point of view.
+// TODO: migrate flyout-multilevel to use shared backdrop of dialog-styles.ts
 /**
  * Generates JSS styles for a frosted glass background.
  * @param {boolean} isVisible - Determines if the frosted glass effect is visible.
@@ -163,8 +159,7 @@ export const getBackdropJssStyle = (
   isVisible: boolean,
   zIndex: number,
   theme: Theme,
-  duration: MotionDurationKey = 'long',
-  backdrop: Backdrop = 'blur'
+  duration: MotionDurationKey = 'long'
 ): JssStyle => {
   return {
     position: 'fixed',
@@ -179,17 +174,14 @@ export const getBackdropJssStyle = (
       ? {
           visibility: 'inherit',
           pointerEvents: 'auto',
-          ...(backdrop === 'blur' && frostedGlassStyle),
+          ...frostedGlassStyle,
           opacity: 1,
         }
       : {
           visibility: 'hidden', // element shall not be tabbable after fade out transition has finished
           pointerEvents: 'none',
-          ...(backdrop === 'blur' && {
-            // TODO: is `blur(0px)` necessary at all?
-            WebkitBackdropFilter: 'blur(0px)',
-            backdropFilter: 'blur(0px)',
-          }),
+          WebkitBackdropFilter: 'blur(0px)',
+          backdropFilter: 'blur(0px)',
           opacity: 0,
         }),
     transition: `${getTransition('opacity', duration)}, ${getTransition('backdrop-filter', duration)}, ${getTransition(

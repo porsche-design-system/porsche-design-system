@@ -3,14 +3,20 @@ import {
   AllowedTypes,
   attachComponentCss,
   getPrefixedTagNames,
+  hasPropValueChanged,
   throwIfParentIsNotOfKind,
   throwIfPropIsUndefined,
   updateParent,
   validateProps,
 } from '../../../utils';
 import { getComponentCss } from './segmented-control-item-styles';
-import { getButtonAttributes, getIconColor } from './segmented-control-item-utils';
-import type { PropTypes, ValidatorFunction } from '../../../types';
+import {
+  getSegmentedControlItemAriaAttributes,
+  getIconColor,
+  SEGMENTED_CONTROL_ITEM_ARIA_ATTRIBUTES,
+  type SegmentedControlItemAriaAttribute,
+} from './segmented-control-item-utils';
+import type { PropTypes, ValidatorFunction, SelectedAriaAttributes } from '../../../types';
 import type { SegmentedControlItemIcon, SegmentedControlItemInternalHTMLProps } from './segmented-control-item-utils';
 
 const propTypes: PropTypes<typeof SegmentedControlItem> = {
@@ -19,6 +25,7 @@ const propTypes: PropTypes<typeof SegmentedControlItem> = {
   label: AllowedTypes.string,
   icon: AllowedTypes.string,
   iconSource: AllowedTypes.string,
+  aria: AllowedTypes.aria<SegmentedControlItemAriaAttribute>(SEGMENTED_CONTROL_ITEM_ARIA_ATTRIBUTES),
 };
 
 @Component({
@@ -43,6 +50,9 @@ export class SegmentedControlItem {
   /** A URL path to a custom icon. */
   @Prop() public iconSource?: string;
 
+  /** Add ARIA attributes. */
+  @Prop() public aria?: SelectedAriaAttributes<SegmentedControlItemAriaAttribute>;
+
   @Watch('label')
   @Watch('icon')
   @Watch('iconSource')
@@ -56,6 +66,10 @@ export class SegmentedControlItem {
     if (this.disabled || this.host.selected) {
       e.stopPropagation();
     }
+  }
+
+  public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
+    return hasPropValueChanged(newVal, oldVal);
   }
 
   public connectedCallback(): void {
@@ -82,7 +96,7 @@ export class SegmentedControlItem {
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
     return (
-      <button type="button" {...getButtonAttributes(this.host.selected, this.disabled)}>
+      <button type="button" {...getSegmentedControlItemAriaAttributes(this.host.selected, this.disabled, this.aria)}>
         {this.label && <span>{this.label}</span>}
         {hasIcon && (
           <PrefixedTagNames.pIcon

@@ -14,10 +14,128 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ### [Unreleased]
 
+### [3.16.0] - 2024-07-02
+
+### [3.16.0-rc.2] - 2024-07-02
+
+#### Added
+
+- Partials: Added default `og:image` and related meta tags to the `getMetaTagsAndIconLinks` partial. Can be disabled by
+  setting the `ogImage` option to `false`.
+  ([#3357](https://github.com/porsche-design-system/porsche-design-system/pull/3357))
+
+#### Changed
+
+- `Flyout Navigation`, `Flyout Navigation Item`: renamed (experimental) component to `Flyout Multilevel` and
+  `Flyout Multilevel Item` ([#3351](https://github.com/porsche-design-system/porsche-design-system/pull/3351))
+- `Toast`: Renders fully on `#top-layer`, stacking behaviour has changed and follows W3C standards now, see
+  https://developer.mozilla.org/en-US/docs/Glossary/Top_layer and
+  https://developer.chrome.com/blog/what-is-the-top-layer
+  ([#3356](https://github.com/porsche-design-system/porsche-design-system/pull/3356))
+
+```diff
+- <p-flyout-navigation><p-flyout-navigation-item></p-flyout-navigation-item></p-flyout-navigation>
++ <p-flyout-multilevel><p-flyout-multilevel-item></p-flyout-multilevel-item></p-flyout-multilevel>
+```
+
+#### Fixed
+
+- Types: `@porsche-design-system/components-vue` typings are not exposed
+  ([#3355](https://github.com/porsche-design-system/porsche-design-system/pull/3355))
+
+### [3.16.0-rc.1] - 2024-06-18
+
+#### Added
+
+- `jsdom-polyfill` Added polyfills for `Popover API` and `ResizeObserver`
+  ([#3334](https://github.com/porsche-design-system/porsche-design-system/pull/3334))
+- `Segmented Control`: Prop `aria` added to `Segmented Control Item` to support ARIA attributes
+  ([#3327](https://github.com/porsche-design-system/porsche-design-system/pull/3327))
+
+#### Changed
+
+- Angular: updated peer dependency to `>=17.0.0 <19.0.0`
+  ([#3346](https://github.com/porsche-design-system/porsche-design-system/pull/3346))
+- React: Improve prop typings for all wrappers of `@porsche-design-system/components-react`
+  ([#3336](https://github.com/porsche-design-system/porsche-design-system/pull/3336))
+
+### [3.16.0-rc.0] - 2024-06-05
+
+#### Added
+
+- `Flyout`:
+  - CSS variable `--p-flyout-sticky-top` (experimental)
+    ([#3191](https://github.com/porsche-design-system/porsche-design-system/pull/3191))
+  - Prop `disableBackdropClick` ([#3191](https://github.com/porsche-design-system/porsche-design-system/pull/3191))
+- `Modal`:
+  - CSS variable `--p-modal-width` (experimental)
+    ([#3191](https://github.com/porsche-design-system/porsche-design-system/pull/3191))
+  - Named slot `header` ([#3191](https://github.com/porsche-design-system/porsche-design-system/pull/3191))
+
+#### Changed
+
+- `Modal`, `Flyout`:
+  - Sticky dismiss button ([#3191](https://github.com/porsche-design-system/porsche-design-system/pull/3191))
+  - Aligned layout, spacing and UX behaviour
+    ([#3191](https://github.com/porsche-design-system/porsche-design-system/pull/3191))
+  - Renders fully on `#top-layer`, stacking behaviour has changed and follows W3C standards now, see
+    https://developer.mozilla.org/en-US/docs/Glossary/Top_layer and
+    https://developer.chrome.com/blog/what-is-the-top-layer
+    ([#3191](https://github.com/porsche-design-system/porsche-design-system/pull/3191))
+- `Modal`: `heading` prop and `slot="heading"` are deprecated. Use `slot="header"` instead.
+
+#### Fixed
+
+- Types: Fixed incorrectly allowed type `string` in types `BreakpointCustomizable`, `SelectedAriaAttributes`,
+  `CarouselInternationalization`, `PaginationInternationalization` and `ScrollToPosition`
+- `Modal`, `Flyout`: Dynamically react to adding/removing named slots
+  ([#3191](https://github.com/porsche-design-system/porsche-design-system/pull/3191))
+- `Modal`: Uses native `<dialog />` element to resolve focus issues, focus trap
+  ([#3191](https://github.com/porsche-design-system/porsche-design-system/pull/3191))
+
+### [3.15.2] - 2024-05-29
+
+#### Fixed
+
+- `aria`: Refactor `parseJSONAttribute` to support Safari < 16.4  
+  ([#3314](https://github.com/porsche-design-system/porsche-design-system/pull/3314))
+
+### [3.15.1] - 2024-05-23
+
+#### Fixed
+
+- `Banner`: Fixed position on mobile ([#3307](https://github.com/porsche-design-system/porsche-design-system/pull/3307))
+
+### [3.15.0] - 2024-05-16
+
+### [3.15.0-rc.5] - 2024-05-16
+
 #### Added
 
 - `Button Pure`: Prop `underline` to show an underline for the label
   ([#3212](https://github.com/porsche-design-system/porsche-design-system/pull/3212))
+- Partials: Added new option `globalStyles` to `getInitialStyles` to disable global reset styles.  
+  ([#3213](https://github.com/porsche-design-system/porsche-design-system/pull/3213))
+
+#### Changed
+
+- `Banner`: Refactor Banner to use native `popover`
+  ([#3196](https://github.com/porsche-design-system/porsche-design-system/pull/3196))
+- Partials: `getInitialStyles` only contain hydration visibility and global styles. All other styles are handled by
+  constructable stylesheets at component level.
+  ([#3213](https://github.com/porsche-design-system/porsche-design-system/pull/3213))
+- `Table`: Removed slotted image style `verticalAlign: 'middle'` from initialStyles
+  ([#3213](https://github.com/porsche-design-system/porsche-design-system/pull/3213))
+- `Tabs Bar`: Removed sibling tabpanel focus style from initialStyles
+  ([#3213](https://github.com/porsche-design-system/porsche-design-system/pull/3213))
+
+#### Fixed
+
+- `Carousel`: Accessible name of carousel region wrapper
+  ([#3220](https://github.com/porsche-design-system/porsche-design-system/pull/3220))
+- `aria` property now supports escaped single quotes inside JSON strings, e.g.
+  `aria="{ 'aria-label': 'You can\'t do that? yes you can!' }"`
+  ([#3217](https://github.com/porsche-design-system/porsche-design-system/pull/3217))
 
 ### [3.15.0-rc.4] - 2024-05-06
 
@@ -82,7 +200,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 - `Model Signature`: Enabling the use of hex colors, CSS gradients, CSS image and video masks. In addition, the size was
   slightly adjusted. ([#3153](https://github.com/porsche-design-system/porsche-design-system/pull/3153))
 
-### Fixed
+#### Fixed
 
 - `Modal`: Missing box-shadow on sticky footer when slotted content changes
   ([#3154](https://github.com/porsche-design-system/porsche-design-system/pull/3154))

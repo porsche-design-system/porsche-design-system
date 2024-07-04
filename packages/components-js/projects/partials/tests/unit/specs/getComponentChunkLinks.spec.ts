@@ -16,12 +16,12 @@ describe('validation', () => {
   it('should throw error on invalid components parameter', () => {
     expect(() => getComponentChunkLinks({ components: ['some-invalid-component'] as any[] }))
       .toThrowErrorMatchingInlineSnapshot(`
-[Error: [Porsche Design System] The following supplied component chunk names are invalid:
-  some-invalid-component
+        [Error: [Porsche Design System] The following supplied component chunk names are invalid:
+          some-invalid-component
 
-Please use only valid component chunk names:
-  accordion, banner, button-group, button-pure, button-tile, button, carousel, checkbox-wrapper, content-wrapper, crest, display, divider, fieldset-wrapper, fieldset, flex, flyout-navigation, flyout, grid, heading, headline, icon, inline-notification, link-pure, link-social, link-tile-model-signature, link-tile-product, link-tile, link, marque, modal, model-signature, multi-select, pagination, pin-code, popover, radio-button-wrapper, scroller, segmented-control, select-wrapper, select, spinner, stepper-horizontal, switch, table, tabs-bar, tabs, tag-dismissible, tag, text-field-wrapper, text-list, text, textarea-wrapper, toast, wordmark]
-`);
+        Please use only valid component chunk names:
+          accordion, banner, button-group, button-pure, button-tile, button, canvas, carousel, checkbox-wrapper, content-wrapper, crest, display, divider, fieldset-wrapper, fieldset, flex, flyout-multilevel, flyout, grid, heading, headline, icon, inline-notification, link-pure, link-social, link-tile-model-signature, link-tile-product, link-tile, link, marque, modal, model-signature, multi-select, pagination, pin-code, popover, radio-button-wrapper, scroller, segmented-control, select-wrapper, select, spinner, stepper-horizontal, switch, table, tabs-bar, tabs, tag-dismissible, tag, text-field-wrapper, text-list, text, textarea-wrapper, toast, wordmark]
+      `);
   });
 });
 

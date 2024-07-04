@@ -1,19 +1,18 @@
 import { AccordionExampleComponent } from './accordion-example.component';
 import { BannerExampleComponent } from './banner-example.component';
 import { ButtonExampleFormComponent } from './button-example-form.component';
+import { CanvasExampleComponent } from './canvas-example.component';
 import { CarouselExampleDynamicSlidesComponent } from './carousel-example-dynamic-slides.component';
 import { CarouselExampleEventsComponent } from './carousel-example-events.component';
 import { CarouselExampleJumpToSlideComponent } from './carousel-example-jump-to-slide.component';
 import { FlyoutExampleComponent } from './flyout-example.component';
-import { FlyoutExampleSlottedComponent } from './flyout-example-slotted.component';
-import { FlyoutExampleSlottedSecondaryComponent } from './flyout-example-slotted-secondary.component';
-import { FlyoutNavigationExampleComponent } from './flyout-navigation-example.component';
-import { FlyoutNavigationExampleActiveIdentifierComponent } from './flyout-navigation-example-active-identifier.component';
-import { FlyoutNavigationExampleCustomContentComponent } from './flyout-navigation-example-custom-content.component';
+import { FlyoutMultilevelExampleComponent } from './flyout-multilevel-example.component';
+import { FlyoutMultilevelExampleActiveIdentifierComponent } from './flyout-multilevel-example-active-identifier.component';
+import { FlyoutMultilevelExampleCustomContentComponent } from './flyout-multilevel-example-custom-content.component';
 import { InlineNotificationExampleActionButtonComponent } from './inline-notification-example-action-button.component';
 import { InlineNotificationExampleEventsComponent } from './inline-notification-example-events.component';
 import { LinkTileProductExampleComponent } from './link-tile-product-example.component';
-import { ModalExampleAccessibilityComponent } from './modal-example-accessibility.component';
+import { ModalExampleComponent } from './modal-example.component';
 import { MultiSelectExampleComponent } from './multi-select-example.component';
 import { MultiSelectExampleControlledComponent } from './multi-select-example-controlled.component';
 import { MultiSelectExampleDynamicComponent } from './multi-select-example-dynamic.component';
@@ -41,19 +40,18 @@ export const examples = [
   AccordionExampleComponent,
   BannerExampleComponent,
   ButtonExampleFormComponent,
+  CanvasExampleComponent,
   CarouselExampleDynamicSlidesComponent,
   CarouselExampleEventsComponent,
   CarouselExampleJumpToSlideComponent,
   FlyoutExampleComponent,
-  FlyoutExampleSlottedComponent,
-  FlyoutExampleSlottedSecondaryComponent,
-  FlyoutNavigationExampleComponent,
-  FlyoutNavigationExampleActiveIdentifierComponent,
-  FlyoutNavigationExampleCustomContentComponent,
+  FlyoutMultilevelExampleComponent,
+  FlyoutMultilevelExampleActiveIdentifierComponent,
+  FlyoutMultilevelExampleCustomContentComponent,
   InlineNotificationExampleActionButtonComponent,
   InlineNotificationExampleEventsComponent,
   LinkTileProductExampleComponent,
-  ModalExampleAccessibilityComponent,
+  ModalExampleComponent,
   MultiSelectExampleComponent,
   MultiSelectExampleControlledComponent,
   MultiSelectExampleDynamicComponent,
@@ -81,19 +79,18 @@ export const examples = [
 export * from './accordion-example.component';
 export * from './banner-example.component';
 export * from './button-example-form.component';
+export * from './canvas-example.component';
 export * from './carousel-example-dynamic-slides.component';
 export * from './carousel-example-events.component';
 export * from './carousel-example-jump-to-slide.component';
 export * from './flyout-example.component';
-export * from './flyout-example-slotted.component';
-export * from './flyout-example-slotted-secondary.component';
-export * from './flyout-navigation-example.component';
-export * from './flyout-navigation-example-active-identifier.component';
-export * from './flyout-navigation-example-custom-content.component';
+export * from './flyout-multilevel-example.component';
+export * from './flyout-multilevel-example-active-identifier.component';
+export * from './flyout-multilevel-example-custom-content.component';
 export * from './inline-notification-example-action-button.component';
 export * from './inline-notification-example-events.component';
 export * from './link-tile-product-example.component';
-export * from './modal-example-accessibility.component';
+export * from './modal-example.component';
 export * from './multi-select-example.component';
 export * from './multi-select-example-controlled.component';
 export * from './multi-select-example-dynamic.component';

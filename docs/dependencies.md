@@ -1,5 +1,8 @@
 # Dependencies
 
+We are using Dependabot to manage our dependencies. Every note about not updatable dependencies in this document is also
+reflected in the configuration file under `.github/dependabot.yml` and must be kept in sync!
+
 ## Overview of Framework Versions
 
 |         | Monorepo | Sample Integrations    |
@@ -10,7 +13,7 @@
 
 ## Playwright
 
-Skipped `v1.43.0` for now because title in high contrast dark mode is not visible.
+Skipped `v1.43.0` & `v1.44.0` for now because ::before elements in dark mode are not visible on VRT screenshots.
 
 In case it gets updated, the Porsche Design System / Playwright Docker image needs to be updated too (this might affect
 all running workflows even outside the changed branch, so this must be aligned with the other developers).
@@ -34,7 +37,7 @@ all running workflows even outside the changed branch, so this must be aligned w
     directory of the repository accordingly
 11. Commit and push the changes to a Git branch
 
-## Vue
+## Vue (storefront)
 
 All Vue related dependencies can't be updated at the moment because `vue-property-decorator` and `vue-class-component`
 aren't Vue **3** compatible. In addition `sass-loader` can't be updated because it needs at least Webpack 5 but Vue **
@@ -63,22 +66,6 @@ with Vue **2** and **3**.
 - `imask` uses static class properties since v7.2.0 which can't be handled by our outdated vue 2 setup without
   additional babel plugins
 
-## @volar/typescript
-
-Is currently fixed to "2.1.3" because of typing error:
-
-```
-src/App.vue:2:3 - error TS6200: Definitions of the following identifiers conflict with those in another file: __VLS_IntrinsicElements, __VLS_Element, __VLS_GlobalComponents, __VLS_IsAny, __VLS_PickNotAny, __VLS_intrinsicElements, __VLS_SelfComponent, __VLS_WithComponent, __VLS_FillingEventArg_ParametersLength, __VLS_FillingEventArg, __VLS_FunctionalComponentProps, __VLS_AsFunctionOrAny, __VLS_UnionToIntersection, __VLS_OverloadUnionInner, __VLS_OverloadUnion, __VLS_ConstructorOverloads, __VLS_NormalizeEmits, __VLS_PrettifyGlobal
-
-2   import { onMounted, ref } from 'vue';
-    ~~~~~~
-
-  dist/vue-wrapper/esm/PorscheDesignSystemProvider.vue.d.ts:1:1
-    1 import type { Theme } from './lib/types';
-      ~~~~~~
-    Conflicts are in this file.
-```
-
 ---
 
 ## Styled Components
@@ -94,7 +81,7 @@ Those issues were not resolved in `6.1.8`, yet.
 
 ---
 
-## Globby
+## Globby (components-angular/components-manager-cli)
 
 `globby` decided to provide just a modern _ESM_ build with their latest npm package. Unfortunately there's no stable way
 of using it with Jest / Angular Karma.
@@ -108,7 +95,7 @@ of using it with Jest / Angular Karma.
 
 ---
 
-## Change Case
+## Change Case (components/storefront)
 
 Since v5.0.0 `change-case` decided to provide just a modern _ESM_ build with their latest npm package. Unfortunately
 there's no stable way of using it with Node or TS-Node.
@@ -119,7 +106,7 @@ there's no stable way of using it with Node or TS-Node.
 
 ---
 
-## iMask
+## iMask (components/storefront)
 
 Since v7.2.0 `imask` uses static class properties which can't be handled by our outdated vue 2 setup without additional
 babel plugins, this is imported via text-field-wrapper.examples.md.

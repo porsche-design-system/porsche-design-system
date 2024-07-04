@@ -30,13 +30,16 @@ the Decision Tree</p-link>
 
 ## z-index in descending order
 
-| Component                                                                                                                         | z-index              |
-| --------------------------------------------------------------------------------------------------------------------------------- | -------------------- |
-| Toast                                                                                                                             | {{zIndexes.toast}}   |
-| Modal                                                                                                                             | {{zIndexes.modal}}   |
-| Flyout                                                                                                                            | {{zIndexes.flyout}}  |
-| Popover <p-popover :theme="this.$store.getters.storefrontTheme" ref="popover">Start the live demo to see it in action</p-popover> | {{zIndexes.popover}} |
-| Banner                                                                                                                            | {{zIndexes.banner}}  |
+**Important: In the future, all elements will be rendered on the browsers top-layer so a manual ordering of z-index will
+not work anymore. As we are progressing with the refactoring this might already be the case for some components.**
+
+| Component                                                                                                                         | z-index                         |
+| --------------------------------------------------------------------------------------------------------------------------------- | ------------------------------- |
+| Toast                                                                                                                             | {{zIndexes.toast}} / top-layer  |
+| Modal                                                                                                                             | {{zIndexes.modal}} / top-layer  |
+| Flyout                                                                                                                            | {{zIndexes.flyout}} / top-layer |
+| Popover <p-popover :theme="this.$store.getters.storefrontTheme" ref="popover">Start the live demo to see it in action</p-popover> | {{zIndexes.popover}}            |
+| Banner                                                                                                                            | {{zIndexes.banner}} / top-layer |
 
 <p-button :theme="this.$store.getters.storefrontTheme" v-on:click="startDemo()">Start Live Demo</p-button>
 
@@ -71,8 +74,7 @@ the Decision Tree</p-link>
   Norman Group, 1994)
 - [Web Content Accessibility Guidelines](https://w3.org/WAI/standards-guidelines/wcag)
 
-<script lang="ts">
-import Vue from 'vue';
+<script lang="ts">import Vue from 'vue';
 import Component from 'vue-class-component';
 import {
   BANNER_Z_INDEX,

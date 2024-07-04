@@ -16,6 +16,7 @@ import {
   _cssVariableGridBasicSpanTwoThirds,
   _cssVariableGridExtendedSpanOneHalf,
   _cssVariableGridMargin,
+  _cssVariableGridWidthMin,
   _cssVariableGridNarrowSpanOneHalf,
   _cssVariableGridOuterColumn,
   _cssVariableGridSafeZone,
@@ -24,11 +25,12 @@ import {
   _gridSafeZoneXXL,
   _gridWidthMax,
   _gridWidthMin,
+  _cssVariableGridWidthMax,
 } from './gridShared';
 
 // _cssVariableGridOuterColumn is needed in case behaviour needs to be adjusted like when used in Flyout or Modal
-const outerColumn = `minmax(0, var(${_cssVariableGridOuterColumn}, calc(var(${_cssVariableGridSafeZone}) - ${gridGap})))`;
-const column = 'minmax(0, 1fr)';
+const outerColumn = `minmax(0,var(${_cssVariableGridOuterColumn},calc(var(${_cssVariableGridSafeZone}) - ${gridGap})))`;
+const column = 'minmax(0,1fr)';
 const getColumns = (repeat: number): string => (repeat > 1 ? `repeat(${repeat}, ${column})` : column);
 const getColumnSpan = (span: number): string => `span ${span}`;
 const getGridTemplateColumns = (layout: 'mobile' | 'desktop'): string =>
@@ -56,11 +58,11 @@ export const gridStyle = {
   display: 'grid',
   gridGap,
   gridTemplateColumns: getGridTemplateColumns('mobile'),
-  minWidth: _gridWidthMin,
-  maxWidth: _gridWidthMax,
-  // _cssVariableGridMargin is needed in case behaviour needs to be adjusted like when used in Flyout or Modal
-  margin: `0 var(${_cssVariableGridMargin}, 0)`,
-  padding: `0 calc(50% - var(${_cssVariableGridMargin}, 0px) - ${_gridWidthMax} / 2)`,
+  // _cssVariableGridWidthMin, _cssVariableGridWidthMax and _cssVariableGridMargin is needed in case behaviour needs to be adjusted like when used in Flyout or Modal
+  minWidth: `var(${_cssVariableGridWidthMin},${_gridWidthMin})`,
+  maxWidth: `var(${_cssVariableGridWidthMax},${_gridWidthMax})`,
+  margin: `0 var(${_cssVariableGridMargin},0)`,
+  padding: `0 calc(50% - var(${_cssVariableGridMargin},0px) - ${_gridWidthMax} / 2)`,
   boxSizing: 'content-box',
   [getMediaQueryMin('s')]: {
     [_cssVariableGridSafeZone]: _gridSafeZoneS,

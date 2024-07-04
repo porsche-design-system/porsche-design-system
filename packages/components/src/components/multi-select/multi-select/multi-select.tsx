@@ -27,6 +27,7 @@ import type { BreakpointCustomizable, PropTypes, Theme } from '../../../types';
 import {
   addNativePopoverScrollAndResizeListeners,
   AllowedTypes,
+  applyConstructableStylesheetStyles,
   attachComponentCss,
   detectNativePopoverCase,
   findClosestComponent,
@@ -62,6 +63,7 @@ import {
 import { getComponentCss } from './multi-select-styles';
 import { messageId, StateMessage } from '../../common/state-message/state-message';
 import { descriptionId, Label, labelId } from '../../common/label/label';
+import { getSlottedAnchorStyles } from '../../../styles';
 
 const propTypes: PropTypes<typeof MultiSelect> = {
   label: AllowedTypes.string,
@@ -165,6 +167,7 @@ export class MultiSelect {
   }
 
   public connectedCallback(): void {
+    applyConstructableStylesheetStyles(this.host, getSlottedAnchorStyles);
     document.addEventListener('mousedown', this.onClickOutside, true);
     this.form = getClosestHTMLElement(this.host, 'form');
     this.isWithinForm = !!this.form;
@@ -291,7 +294,7 @@ export class MultiSelect {
             <PrefixedTagNames.pButtonPure
               class="button"
               icon="close"
-              hideLabel="true"
+              hideLabel={true}
               theme={this.theme}
               onClick={this.onResetClick}
               onKeyDown={(e) => e.key === 'Tab' && (this.isOpen = false)}

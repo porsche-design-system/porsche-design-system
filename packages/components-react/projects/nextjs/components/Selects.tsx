@@ -16,7 +16,12 @@ export const Selects = ({ theme, setTheme }: Props): JSX.Element => {
 
   return (
     <>
-      <select name="route" value={usePathname()!} onChange={(e) => router.push(e.target.value)}>
+      <select
+        name="route"
+        value={usePathname()!}
+        onChange={(e) => router.push(e.target.value)}
+        style={{ width: '200px' }}
+      >
         <option disabled value="">
           Select a page
         </option>

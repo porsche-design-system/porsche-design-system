@@ -73,6 +73,7 @@ exports[`getIndexHtml() should return correct markup with styles 1`] = `
       p-button-group,
       p-button-pure,
       p-button-tile,
+      p-canvas,
       p-carousel,
       p-checkbox-wrapper,
       p-content-wrapper,
@@ -84,8 +85,8 @@ exports[`getIndexHtml() should return correct markup with styles 1`] = `
       p-flex,
       p-flex-item,
       p-flyout,
-      p-flyout-navigation,
-      p-flyout-navigation-item,
+      p-flyout-multilevel,
+      p-flyout-multilevel-item,
       p-grid,
       p-grid-item,
       p-heading,
@@ -142,77 +143,6 @@ exports[`getIndexHtml() should return correct markup with styles 1`] = `
       .hydrated,
       .ssr {
         visibility: inherit
-      }
-
-      :is(p-accordion, p-banner, p-carousel, p-checkbox-wrapper, p-display, p-flyout, p-heading, p-headline, p-inline-notification, p-modal, p-multi-select, p-pin-code, p-popover, p-radio-button-wrapper, p-select, p-select-wrapper, p-switch, p-table, p-tabs, p-text, p-text-field-wrapper, p-text-list, p-textarea-wrapper) a {
-        color: currentcolor !important;
-        transition: background var(--p-transition-duration, 0.25s) cubic-bezier(0.25, 0.1, 0.25, 1) !important;
-        margin-left: -2px !important;
-        margin-right: -2px !important;
-        padding-left: 2px !important;
-        border-radius: 4px !important;
-        padding-right: 2px !important;
-        text-decoration: underline !important
-      }
-
-      :is(p-accordion, p-banner, p-carousel, p-checkbox-wrapper, p-display, p-flyout, p-heading, p-headline, p-inline-notification, p-modal, p-multi-select, p-pin-code, p-popover, p-radio-button-wrapper, p-select, p-select-wrapper, p-switch, p-table, p-tabs, p-text, p-text-field-wrapper, p-text-list, p-textarea-wrapper) a::-moz-focus-inner {
-        border: 0 !important
-      }
-
-      :is(p-accordion, p-banner, p-carousel, p-checkbox-wrapper, p-display, p-flyout, p-heading, p-headline, p-inline-notification, p-modal, p-multi-select, p-pin-code, p-popover, p-radio-button-wrapper, p-select, p-select-wrapper, p-switch, p-table, p-tabs, p-text, p-text-field-wrapper, p-text-list, p-textarea-wrapper) a:focus {
-        outline: 0 !important
-      }
-
-      :is(p-accordion, p-banner, p-carousel, p-checkbox-wrapper, p-display, p-flyout, p-heading, p-headline, p-inline-notification, p-modal, p-multi-select, p-pin-code, p-popover, p-radio-button-wrapper, p-select, p-select-wrapper, p-switch, p-table, p-tabs, p-text, p-text-field-wrapper, p-text-list, p-textarea-wrapper) a:focus-visible {
-        outline: 2px solid #1A44EA !important;
-        outline-offset: 0 !important
-      }
-
-      :is(p-text-field-wrapper) input::-webkit-outer-spin-button,
-      :is(p-text-field-wrapper) input::-webkit-inner-spin-button,
-      :is(p-text-field-wrapper) input::-webkit-search-decoration,
-      :is(p-text-field-wrapper) input::-webkit-search-cancel-button,
-      :is(p-text-field-wrapper) input::-webkit-calendar-picker-indicator {
-        display: none !important
-      }
-
-      :is(p-text-field-wrapper) input::-webkit-date-and-time-value {
-        display: inline-block !important;
-        text-align: inherit !important;
-        vertical-align: middle !important
-      }
-
-      :is(p-table) img {
-        vertical-align: middle !important
-      }
-
-      :is(p-button-tile, p-link-tile, p-link-tile-model-signature, p-link-tile-product) picture img {
-        width: 100% !important;
-        height: 100% !important;
-        object-fit: cover !important
-      }
-
-      @media(hover:hover) {
-        :is(p-accordion, p-banner, p-carousel, p-checkbox-wrapper, p-display, p-flyout, p-heading, p-headline, p-inline-notification, p-modal, p-multi-select, p-pin-code, p-popover, p-radio-button-wrapper, p-select, p-select-wrapper, p-switch, p-table, p-tabs, p-text, p-text-field-wrapper, p-text-list, p-textarea-wrapper) a:hover {
-          background: rgba(148, 149, 152, .18) !important
-        }
-      }
-
-      p-tabs-bar~[tabindex="0"][role="tabpanel"] {
-        border-radius: 1px !important
-      }
-
-      p-tabs-bar~[tabindex="0"][role="tabpanel"]::-moz-focus-inner {
-        border: 0 !important
-      }
-
-      p-tabs-bar~[tabindex="0"][role="tabpanel"]:focus {
-        outline: 0 !important
-      }
-
-      p-tabs-bar~[tabindex="0"][role="tabpanel"]:focus-visible {
-        outline: 2px solid #1A44EA !important;
-        outline-offset: 2px !important
       }
     </style>
 
@@ -281,6 +211,7 @@ exports[`getIndexHtml() should return correct markup with styles and rtl mode 1`
       p-button-group,
       p-button-pure,
       p-button-tile,
+      p-canvas,
       p-carousel,
       p-checkbox-wrapper,
       p-content-wrapper,
@@ -292,8 +223,8 @@ exports[`getIndexHtml() should return correct markup with styles and rtl mode 1`
       p-flex,
       p-flex-item,
       p-flyout,
-      p-flyout-navigation,
-      p-flyout-navigation-item,
+      p-flyout-multilevel,
+      p-flyout-multilevel-item,
       p-grid,
       p-grid-item,
       p-heading,
@@ -350,77 +281,6 @@ exports[`getIndexHtml() should return correct markup with styles and rtl mode 1`
       .hydrated,
       .ssr {
         visibility: inherit
-      }
-
-      :is(p-accordion, p-banner, p-carousel, p-checkbox-wrapper, p-display, p-flyout, p-heading, p-headline, p-inline-notification, p-modal, p-multi-select, p-pin-code, p-popover, p-radio-button-wrapper, p-select, p-select-wrapper, p-switch, p-table, p-tabs, p-text, p-text-field-wrapper, p-text-list, p-textarea-wrapper) a {
-        color: currentcolor !important;
-        transition: background var(--p-transition-duration, 0.25s) cubic-bezier(0.25, 0.1, 0.25, 1) !important;
-        margin-left: -2px !important;
-        margin-right: -2px !important;
-        padding-left: 2px !important;
-        border-radius: 4px !important;
-        padding-right: 2px !important;
-        text-decoration: underline !important
-      }
-
-      :is(p-accordion, p-banner, p-carousel, p-checkbox-wrapper, p-display, p-flyout, p-heading, p-headline, p-inline-notification, p-modal, p-multi-select, p-pin-code, p-popover, p-radio-button-wrapper, p-select, p-select-wrapper, p-switch, p-table, p-tabs, p-text, p-text-field-wrapper, p-text-list, p-textarea-wrapper) a::-moz-focus-inner {
-        border: 0 !important
-      }
-
-      :is(p-accordion, p-banner, p-carousel, p-checkbox-wrapper, p-display, p-flyout, p-heading, p-headline, p-inline-notification, p-modal, p-multi-select, p-pin-code, p-popover, p-radio-button-wrapper, p-select, p-select-wrapper, p-switch, p-table, p-tabs, p-text, p-text-field-wrapper, p-text-list, p-textarea-wrapper) a:focus {
-        outline: 0 !important
-      }
-
-      :is(p-accordion, p-banner, p-carousel, p-checkbox-wrapper, p-display, p-flyout, p-heading, p-headline, p-inline-notification, p-modal, p-multi-select, p-pin-code, p-popover, p-radio-button-wrapper, p-select, p-select-wrapper, p-switch, p-table, p-tabs, p-text, p-text-field-wrapper, p-text-list, p-textarea-wrapper) a:focus-visible {
-        outline: 2px solid #1A44EA !important;
-        outline-offset: 0 !important
-      }
-
-      :is(p-text-field-wrapper) input::-webkit-outer-spin-button,
-      :is(p-text-field-wrapper) input::-webkit-inner-spin-button,
-      :is(p-text-field-wrapper) input::-webkit-search-decoration,
-      :is(p-text-field-wrapper) input::-webkit-search-cancel-button,
-      :is(p-text-field-wrapper) input::-webkit-calendar-picker-indicator {
-        display: none !important
-      }
-
-      :is(p-text-field-wrapper) input::-webkit-date-and-time-value {
-        display: inline-block !important;
-        text-align: inherit !important;
-        vertical-align: middle !important
-      }
-
-      :is(p-table) img {
-        vertical-align: middle !important
-      }
-
-      :is(p-button-tile, p-link-tile, p-link-tile-model-signature, p-link-tile-product) picture img {
-        width: 100% !important;
-        height: 100% !important;
-        object-fit: cover !important
-      }
-
-      @media(hover:hover) {
-        :is(p-accordion, p-banner, p-carousel, p-checkbox-wrapper, p-display, p-flyout, p-heading, p-headline, p-inline-notification, p-modal, p-multi-select, p-pin-code, p-popover, p-radio-button-wrapper, p-select, p-select-wrapper, p-switch, p-table, p-tabs, p-text, p-text-field-wrapper, p-text-list, p-textarea-wrapper) a:hover {
-          background: rgba(148, 149, 152, .18) !important
-        }
-      }
-
-      p-tabs-bar~[tabindex="0"][role="tabpanel"] {
-        border-radius: 1px !important
-      }
-
-      p-tabs-bar~[tabindex="0"][role="tabpanel"]::-moz-focus-inner {
-        border: 0 !important
-      }
-
-      p-tabs-bar~[tabindex="0"][role="tabpanel"]:focus {
-        outline: 0 !important
-      }
-
-      p-tabs-bar~[tabindex="0"][role="tabpanel"]:focus-visible {
-        outline: 2px solid #1A44EA !important;
-        outline-offset: 2px !important
       }
     </style>
 

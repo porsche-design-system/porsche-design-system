@@ -1,5 +1,6 @@
 export * from './add-native-popover-scroll-and-resize-listeners';
 export * from './a11y';
+export * from './applyConstructableStylesheetStyle';
 export * from './attribute-observer';
 export { parseJSON } from './breakpoint-customizable';
 export { observeBreakpointChange, unobserveBreakpointChange } from './breakpoint-observer';
@@ -9,8 +10,8 @@ export * from './button-link-pure-utils';
 export * from './children-observer';
 export * from './device-detection';
 export * from './detect-native-popover-case';
+export * from './dialog';
 export * from './dom';
-export * from './focusTrap';
 export * from './form';
 export * from './getCDNBaseURL';
 export * from './inject-global-style'; // to trick bundling and avoid separate jss chunk 🤷
@@ -23,7 +24,6 @@ export * from './link-button/link-target';
 export * from './link-button-tile/link-button-tile-utils';
 export * from './tile/tile-utils';
 export * from './log';
-export * from './modal-flyout-utils';
 export { paramCaseToCamelCase } from './paramCaseToCamelCase';
 export * from './property-observer';
 export * from './scroller-popover-utils';

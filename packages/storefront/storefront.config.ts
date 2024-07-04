@@ -84,6 +84,10 @@ export const config: StorefrontConfig = {
       Usage: [() => import('@/../../components/src/components/button-tile/button-tile.usage.md')],
       Props: [() => import('@/../../components/src/components/button-tile/button-tile.props.md')],
     },
+    Canvas: {
+      Examples: [() => import('@/../../components/src/components/canvas/canvas.examples.md')],
+      Props: [() => import('@/../../components/src/components/canvas/canvas.props.md')],
+    },
     Carousel: {
       Examples: [() => import('@/../../components/src/components/carousel/carousel.examples.md')],
       Usage: [() => import('@/../../components/src/components/carousel/carousel.usage.md')],
@@ -135,14 +139,14 @@ export const config: StorefrontConfig = {
       Usage: [() => import('@/../../components/src/components/flyout/flyout.usage.md')],
       Props: [() => import('@/../../components/src/components/flyout/flyout.props.md')],
     },
-    'Flyout Navigation': {
-      Examples: [() => import('@/../../components/src/components/flyout-navigation/flyout-navigation.examples.md')],
-      Usage: [() => import('@/../../components/src/components/flyout-navigation/flyout-navigation.usage.md')],
+    'Flyout Multilevel': {
+      Examples: [() => import('@/../../components/src/components/flyout-multilevel/flyout-multilevel.examples.md')],
+      Usage: [() => import('@/../../components/src/components/flyout-multilevel/flyout-multilevel.usage.md')],
       Props: [
         // prettier-ignore
-        () => import('@/../../components/src/components/flyout-navigation/flyout-navigation/flyout-navigation.props.md'),
+        () => import('@/../../components/src/components/flyout-multilevel/flyout-multilevel/flyout-multilevel.props.md'),
         // prettier-ignore
-        () => import('@/../../components/src/components/flyout-navigation/flyout-navigation-item/flyout-navigation-item.props.md'),
+        () => import('@/../../components/src/components/flyout-multilevel/flyout-multilevel-item/flyout-multilevel-item.props.md'),
       ],
     },
     Grid: {

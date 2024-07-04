@@ -19,11 +19,12 @@ export class ReactWrapperGenerator extends AbstractWrapperGenerator {
     const reactImports = [
       'type ForwardedRef',
       'forwardRef',
-      'type HTMLAttributes',
       ...(this.inputParser.canHaveChildren(component) ? ['type PropsWithChildren'] : []),
       'useRef',
     ].sort();
     const importsFromReact = `import { ${reactImports.join(', ')} } from 'react';`;
+
+    const importsFromBaseProps = `import type { BaseProps } from '../../BaseProps';`;
 
     const hooksImports = [
       ...(hasRegularProps ? ['useBrowserLayoutEffect'] : []),
@@ -41,7 +42,14 @@ export class ReactWrapperGenerator extends AbstractWrapperGenerator {
       ? `import type { ${nonPrimitiveTypes.join(', ')} } from '../types';`
       : '';
 
-    return ["'use client';\n", importsFromReact, importsFromHooks, importsFromUtils, importsFromTypes]
+    return [
+      "'use client';\n",
+      importsFromReact,
+      importsFromBaseProps,
+      importsFromHooks,
+      importsFromUtils,
+      importsFromTypes,
+    ]
       .filter(Boolean)
       .join('\n');
   }
@@ -49,9 +57,8 @@ export class ReactWrapperGenerator extends AbstractWrapperGenerator {
   public generateProps(component: TagName, rawComponentInterface: string): string {
     const genericType = this.inputParser.hasGeneric(component) ? '<T>' : '';
     const propsName = this.generatePropsName(component) + genericType;
-    const htmlAttributesType = this.generateHTMLAttributesType();
 
-    return `export type ${propsName} = ${htmlAttributesType} & ${rawComponentInterface};`;
+    return `export type ${propsName} = BaseProps & ${rawComponentInterface};`;
   }
 
   public generateComponent(component: TagName, extendedProps: ExtendedProp[]): string {
@@ -125,17 +132,10 @@ export class ReactWrapperGenerator extends AbstractWrapperGenerator {
   ): JSX.Element => {
     ${[componentHooks, componentEffects, componentProps].filter(Boolean).join('\n\n    ')}
 
+    // @ts-ignore
     return <WebComponentTag {...props} />;
   }
 );`;
-  }
-
-  // Return the `HTMLAttribute` type to be used in the intersection of the component type,
-  // omitting HTML attributes that are overridden by the component
-  protected generateHTMLAttributesType(): string {
-    const overriddenPropNames = ['color'];
-    const omitted = overriddenPropNames.map((propName) => `'${propName}'`).join(' | ');
-    return `Omit<HTMLAttributes<{}>, ${omitted}>`;
   }
 
   private generatePropsName(component: TagName): string {

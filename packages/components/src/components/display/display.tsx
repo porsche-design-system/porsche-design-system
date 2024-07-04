@@ -4,6 +4,7 @@ import { DISPLAY_COLORS, DISPLAY_SIZES, DISPLAY_TAGS, getDisplayTagType } from '
 import { Component, Element, h, type JSX, Prop } from '@stencil/core';
 import {
   AllowedTypes,
+  applyConstructableStylesheetStyles,
   attachComponentCss,
   hasPropValueChanged,
   THEMES,
@@ -12,6 +13,7 @@ import {
   warnIfDeprecatedPropValueIsUsed,
 } from '../../utils';
 import { getComponentCss } from './display-styles';
+import { getSlottedAnchorStyles } from '../../styles';
 
 const propTypes: PropTypes<typeof Display> = {
   tag: AllowedTypes.oneOf<DisplayTag>([undefined, ...DISPLAY_TAGS]),
@@ -46,6 +48,10 @@ export class Display {
 
   /** Adapts the text color depending on the theme. Has no effect when "inherit" is set as color prop. */
   @Prop() public theme?: Theme = 'light';
+
+  public connectedCallback(): void {
+    applyConstructableStylesheetStyles(this.host, getSlottedAnchorStyles);
+  }
 
   public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
     return hasPropValueChanged(newVal, oldVal);
