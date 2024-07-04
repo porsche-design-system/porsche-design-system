@@ -7104,6 +7104,7 @@ dialog::backdrop {
   height: calc(6px + 2.125ex);
 }
 .label {
+  z-index: 1;
   white-space: nowrap;
   text-indent: -999999px;
   overflow: hidden;
@@ -7375,6 +7376,7 @@ dialog::backdrop {
   height: calc(6px + 2.125ex);
 }
 .label {
+  z-index: 1;
   white-space: nowrap;
   text-indent: -999999px;
   overflow: hidden;
