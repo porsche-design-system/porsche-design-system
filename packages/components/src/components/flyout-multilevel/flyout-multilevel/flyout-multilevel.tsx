@@ -32,8 +32,8 @@ const propTypes: PropTypes<typeof FlyoutMultilevel> = {
 /**
  * @slot {"name": "", "description": "Default slot to render p-flyout-multilevel items." }
  *
- * @controlled {"prop": "open", "event": "dismiss"}
- * @controlled {"prop": "activeIdentifier", "event": "update"}
+ * @controlled {"props": ["open"], "event": "dismiss"}
+ * @controlled {"props": ["activeIdentifier"], "event": "update"}
  *
  * @experimental
  */

@@ -19,8 +19,8 @@ const propTypes: PropTypes<typeof Canvas> = {
  * @slot {"name": "sidebar-start", "description": "Shows a sidebar area on the **start** side (**left** in **LTR** mode / **right** in **RTL** mode). On mobile view it transforms into a flyout." }
  * @slot {"name": "sidebar-end", "description": "Shows a sidebar area on the **end** side (**right** in **LTR** mode / **left** in **RTL** mode). On mobile view it transforms into a flyout." }
  *
- * @controlled {"prop": "sidebarStartOpen", "event": "dismissSidebarStart"}
- * @controlled {"prop": "sidebarEndOpen", "event": "dismissSidebarEnd"}
+ * @controlled {"props": ["sidebarStartOpen"], "event": "dismissSidebarStart"}
+ * @controlled {"props": ["sidebarEndOpen"], "event": "dismissSidebarEnd"}
  *
  * @experimental
  */

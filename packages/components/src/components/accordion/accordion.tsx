@@ -31,7 +31,7 @@ const propTypes: PropTypes<typeof Accordion> = {
  * @slot {"name": "heading", "description": "Defines the heading used in the accordion. Can be used alternatively to the heading prop. Please **refrain** from using any other than text content as slotted markup." }
  * @slot {"name": "", "description": "Default slot for the main content" }
  *
- * @controlled {"prop": "open", "event": "update"}
+ * @controlled {"props": ["open"], "event": "update"}
  */
 @Component({
   tag: 'p-accordion',

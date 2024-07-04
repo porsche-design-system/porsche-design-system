@@ -47,7 +47,7 @@ const propTypes: PropTypes<typeof Modal> = {
  * @slot {"name": "", "description": "Default slot for the main content." }
  * @slot {"name": "footer", "description": "Shows a sticky footer section, flowing under the content area when scrollable." }
  *
- * @controlled {"prop": "open", "event": "dismiss"}
+ * @controlled {"props": ["open"], "event": "dismiss"}
  */
 @Component({
   tag: 'p-modal',

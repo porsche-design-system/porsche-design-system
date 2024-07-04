@@ -38,6 +38,8 @@ const propTypes: PropTypes<typeof SegmentedControl> = {
 
 /**
  * @slot {"name": "", "description": "Default slot for the `p-segmented-control-item` tags." }
+ *
+ * @controlled { "props": ["value"], "event": "update", "isInternallyMutated": true }
  */
 @Component({
   tag: 'p-segmented-control',

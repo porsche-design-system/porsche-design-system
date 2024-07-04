@@ -40,7 +40,7 @@ const propTypes: PropTypes<typeof LinkTileProduct> = {
  * @slot {"name": "header", "description": "Shows special features about the product like novelty or exclusivity. Although you can pass in anything, it is recommended to use the `p-tag` component." }
  * @slot {"name": "", "description": "Default slot for the img or picture tag." }
  *
- * @controlled {"prop": "liked", "event": "like"}
+ * @controlled {"props": ["liked"], "event": "like"}
  *
  * @experimental
  */

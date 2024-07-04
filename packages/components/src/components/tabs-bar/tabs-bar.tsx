@@ -49,7 +49,7 @@ const propTypes: PropTypes<typeof TabsBar> = {
 /**
  * @slot {"name": "", "description": "Default slot for the `button` or `a` tags which will be rendered as tabs." }
  *
- * @controlled {"prop": "activeTabIndex", "event": "update"}
+ * @controlled {"props": ["activeTabIndex"], "event": "update"}
  */
 @Component({
   tag: 'p-tabs-bar',
