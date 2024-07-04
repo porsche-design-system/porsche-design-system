@@ -365,7 +365,7 @@ export const buildDefaultComponentMarkup = (tagName: TagName): string => {
   ): string => {
     if (requiredChild) {
       return requiredChild.startsWith('input') ? `<${requiredChild} />` : `<${requiredChild}></${requiredChild}>`;
-    } else if (requiredNamedSlots.length > 0) {
+    } else if (requiredNamedSlots) {
       return requiredNamedSlots
         .map(
           ({ slotName, tagName }) =>
