@@ -350,6 +350,7 @@ export const goto = async (page: Page, url: string) => {
   await waitForComponentsReady(page);
 };
 
+// TODO: Replace with component provisioning function
 export const buildDefaultComponentMarkup = (tagName: TagName): string => {
   const {
     requiredChild,
@@ -364,7 +365,7 @@ export const buildDefaultComponentMarkup = (tagName: TagName): string => {
   ): string => {
     if (requiredChild) {
       return requiredChild.startsWith('input') ? `<${requiredChild} />` : `<${requiredChild}></${requiredChild}>`;
-    } else if (requiredNamedSlots) {
+    } else if (requiredNamedSlots.length > 0) {
       return requiredNamedSlots
         .map(
           ({ slotName, tagName }) =>
@@ -397,9 +398,11 @@ export const buildDefaultComponentMarkup = (tagName: TagName): string => {
         .join()
     : '';
 
-  const requiredNamedSlots = Object.entries(slotsMeta ?? {})
-    .filter(([, value]) => value.isRequired)
-    .map(([key, value]) => ({ slotName: key, tagName: value.allowedTagNames[0] }));
+  const requiredNamedSlots = slotsMeta
+    ? Object.entries(slotsMeta)
+        .filter(([, value]) => value.isRequired)
+        .map(([key, value]) => ({ slotName: key, tagName: value.allowedTagNames[0] }))
+    : undefined;
 
   const componentMarkup = `<${tagName}${attributes}>${buildChildMarkup(
     requiredChild,
