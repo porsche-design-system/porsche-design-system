@@ -5267,6 +5267,7 @@ exports[`manual test cases > should pass internal props correctly to p-text-fiel
   height: calc(6px + 2.125ex);
 }
 .label {
+  z-index: 1;
   white-space: nowrap;
   text-indent: -999999px;
   overflow: hidden;
@@ -5607,6 +5608,7 @@ img {
   height: calc(6px + 2.125ex);
 }
 .label {
+  z-index: 1;
   white-space: nowrap;
   text-indent: -999999px;
   overflow: hidden;
@@ -6231,6 +6233,7 @@ img {
   height: calc(6px + 2.125ex);
 }
 .label {
+  z-index: 1;
   white-space: nowrap;
   text-indent: -999999px;
   overflow: hidden;
@@ -6522,9 +6525,9 @@ exports[`should render dsr component for PButtonPure 1`] = `
   height: calc(6px + 2.125ex);
 }
 .label {
+  z-index: 1;
   white-space: inherit;
   text-indent: 0;
-  z-index: 1;
   overflow: visible;
   order: 0;
 }
@@ -7619,6 +7622,7 @@ dialog::backdrop {
   height: calc(6px + 2.125ex);
 }
 .label {
+  z-index: 1;
   white-space: nowrap;
   text-indent: -999999px;
   overflow: hidden;
@@ -7909,6 +7913,7 @@ dialog::backdrop {
   height: calc(6px + 2.125ex);
 }
 .label {
+  z-index: 1;
   white-space: nowrap;
   text-indent: -999999px;
   overflow: hidden;
@@ -8202,9 +8207,9 @@ exports[`should render dsr component for PFlyoutNavigationItem 1`] = `
   height: calc(6px + 2.125ex);
 }
 .label {
+  z-index: 1;
   white-space: inherit;
   text-indent: 0;
-  z-index: 1;
   overflow: visible;
   order: -1;
 }
@@ -8361,6 +8366,7 @@ img:dir(rtl) {
   height: calc(6px + 2.125ex);
 }
 .label {
+  z-index: 1;
   white-space: nowrap;
   text-indent: -999999px;
   overflow: hidden;
@@ -8844,6 +8850,7 @@ img {
   height: calc(6px + 2.125ex);
 }
 .label {
+  z-index: 1;
   white-space: nowrap;
   text-indent: -999999px;
   overflow: hidden;
@@ -9100,9 +9107,9 @@ exports[`should render dsr component for PLinkPure 1`] = `
   height: calc(6px + 2.125ex);
 }
 .label {
+  z-index: 1;
   white-space: inherit;
   text-indent: 0;
-  z-index: 1;
   overflow: visible;
   order: 0;
 }
@@ -10019,6 +10026,7 @@ slot[name="header"] {
   height: calc(6px + 2.125ex);
 }
 .label {
+  z-index: 1;
   white-space: nowrap;
   text-indent: -999999px;
   overflow: hidden;
@@ -10374,6 +10382,7 @@ h2 {
   height: calc(6px + 2.125ex);
 }
 .label {
+  z-index: 1;
   white-space: nowrap;
   text-indent: -999999px;
   overflow: hidden;
