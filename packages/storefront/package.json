@@ -55,8 +55,6 @@
     "yup": "^1.4.0"
   },
   "devDependencies": {
-    "@axe-core/playwright": "^4.9.1",
-    "@playwright/test": "1.42.1",
     "@types/prismjs": "^1.26.3",
     "@typescript-eslint/eslint-plugin": "^7.5.0",
     "@typescript-eslint/parser": "^7.5.0",
@@ -71,12 +69,9 @@
     "concurrently": "^8.2.2",
     "eslint": "^8.57.0",
     "eslint-plugin-vue": "^9.24.0",
-    "globby": "^14.0.1",
     "local-web-server": "^5.3.3",
     "sass": "^1.74.1",
     "sass-loader": "^10.5.2",
-    "tsx": "^4.7.2",
-    "typescript": "~5.4.4",
     "vue-template-compiler": "^2.7.16",
     "whatwg-fetch": "^3.6.20"
   },

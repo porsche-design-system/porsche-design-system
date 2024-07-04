@@ -39,12 +39,9 @@
   "devDependencies": {
     "@porsche-design-system/shared": "0.0.0",
     "@types/html-minifier": "^4.0.5",
-    "change-case": "^5.4.4",
     "html-minifier": "^4.0.0",
     "http-server": "^14.1.1",
-    "tslib": "^2.6.2",
-    "tsx": "^4.7.2",
-    "typescript": "~5.4.4"
+    "tslib": "^2.6.2"
   },
   "volta": {
     "extends": "../../../../package.json"
