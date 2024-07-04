@@ -21,6 +21,9 @@
     "test:unit": "jest --colors -c tests/unit/config/jest.config.js",
     "clean:build": "rm -rf ./src/lib && rm -rf ./dist"
   },
+  "dependencies": {
+    "@porsche-design-system/component-meta": "0.0.0"
+  },
   "devDependencies": {
     "@octokit/core": "^6.1.1",
     "@types/madge": "^5.0.3",
