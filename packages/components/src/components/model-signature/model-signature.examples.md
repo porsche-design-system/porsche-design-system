@@ -7,7 +7,7 @@ It can be used to overlay background images or enhance cards and teasers to be m
 
 ## Models
 
-The `model` prop's default is `{{ meta.propsMeta.model }}`.
+The `model` prop's default is `{{ meta.propsMeta.model.defaultValue }}`.
 
 <Playground :markup="modelMarkup" :config="config">
   <PlaygroundSelect v-model="model" :values="models" name="model"></PlaygroundSelect>
@@ -15,10 +15,10 @@ The `model` prop's default is `{{ meta.propsMeta.model }}`.
 
 ## Safe Zone
 
-The `safe-zone` prop's default is `{{ meta.propsMeta.safeZone }}`, which ensures a visual balance across all model
-signatures. This is most likely the best option when the model signatures are used in combination or within tiles next
-to each other. When `false` is set as value, the model signatures come without any safe zone which is probably preferred
-when the element is positioned independently.
+The `safe-zone` prop's default is `{{ meta.propsMeta.safeZone.defaultValue }}`, which ensures a visual balance across
+all model signatures. This is most likely the best option when the model signatures are used in combination or within
+tiles next to each other. When `false` is set as value, the model signatures come without any safe zone which is
+probably preferred when the element is positioned independently.
 
 <Playground :markup="safeZoneMarkup" :config="config">
   <PlaygroundSelect v-model="safeZone" :values="safeZones" name="safe-zone"></PlaygroundSelect>
@@ -26,7 +26,7 @@ when the element is positioned independently.
 
 ## Colors
 
-The `color` prop's default is `{{ meta.propsMeta.color }}`.
+The `color` prop's default is `{{ meta.propsMeta.color.defaultValue }}`.
 
 <Playground :markup="colorMarkup" :config="config">
   <PlaygroundSelect v-model="color" :values="colors" name="color"></PlaygroundSelect>
@@ -34,7 +34,7 @@ The `color` prop's default is `{{ meta.propsMeta.color }}`.
 
 ## Sizes
 
-The `size` prop's default is `{{ meta.propsMeta.size }}`.
+The `size` prop's default is `{{ meta.propsMeta.size.defaultValue }}`.
 
 <Playground :markup="sizeMarkup" :config="config">
   <PlaygroundSelect v-model="size" :values="sizes" name="size"></PlaygroundSelect>
