@@ -61,10 +61,7 @@
     "@porsche-design-system/shared": "0.0.0",
     "@types/http-server": "^0.12.4",
     "@types/madge": "^5.0.3",
-    "http-server": "^14.1.1",
-    "madge": "^7.0.0",
-    "tsx": "^4.7.2",
-    "typescript": "~5.4.4"
+    "http-server": "^14.1.1"
   },
   "bin": {
     "serve-cdn": "./bin/serve-cdn.js"
