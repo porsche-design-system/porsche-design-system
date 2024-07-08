@@ -22,6 +22,7 @@
     "clean:build": "rm -rf ./src/lib && rm -rf ./dist"
   },
   "dependencies": {
+    "change-case": "^5.4.4",
     "jss": "^10.10.0",
     "jss-plugin-sort-css-media-queries": "^1.0.1-beta.0",
     "jss-preset-default": "^10.10.0"
@@ -40,7 +41,6 @@
     "@types/madge": "^5.0.3",
     "@types/node": "^20.12.4",
     "@vitest/ui": "^1.4.0",
-    "change-case": "^5.4.4",
     "globby": "^14.0.1",
     "jest": "^29.7.0",
     "jest-environment-jsdom": "^29.7.0",

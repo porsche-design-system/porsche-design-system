@@ -33,11 +33,9 @@
     "@webcomponents/template-shadowroot": "^0.2.1"
   },
   "devDependencies": {
+    "@porsche-design-system/shared": "0.0.0",
     "@types/html-minifier": "^4.0.5",
-    "html-minifier": "^4.0.0",
-    "tslib": "^2.6.2",
-    "tsx": "^4.10.5",
-    "typescript": "~5.4.5"
+    "html-minifier": "^4.0.0"
   },
   "volta": {
     "extends": "../../../../package.json"
