@@ -50,11 +50,6 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 - Types: `@porsche-design-system/components-vue` typings are not exposed
   ([#3355](https://github.com/porsche-design-system/porsche-design-system/pull/3355))
-- `Link Pure`: broken with `alignLabel="start"`, hidden label & nested anchor
-  ([#3379](https://github.com/porsche-design-system/porsche-design-system/pull/3379))
-- conditionally rendered `PTextFieldWrapper showCounter={false}` throws
-  `TypeError: Cannot read properties of undefined (reading 'type')`
-  ([#3383](https://github.com/porsche-design-system/porsche-design-system/pull/3383))
 
 ### [3.16.0-rc.1] - 2024-06-18
 
