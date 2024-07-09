@@ -38,7 +38,6 @@
     "@angular/router": "^17.3.0",
     "@porsche-design-system/components-angular": "3.16.0",
     "angular-imask": "^6.6.3",
-    "change-case": "^5.4.3",
     "imask": "^7.5.0",
     "rxjs": "^7.8.1",
     "tslib": "^2.6.2",
@@ -65,6 +64,7 @@
     "ng-packagr": "^18.0.0"
   },
   "peerDependencies": {
+    "change-case": "*",
     "typescript": "*"
   },
   "volta": {

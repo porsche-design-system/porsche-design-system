@@ -175,6 +175,9 @@
     "clean:storefront:build": "yarn --cwd ./packages/storefront clean:build",
     "clean:utilities:build": "yarn --cwd ./packages/utilities clean:build"
   },
+  "dependencies": {
+    "change-case": "^5.4.4"
+  },
   "devDependencies": {
     "@porsche-design-system/prettier-config": "^1.0.1",
     "globby": "^14.0.1",

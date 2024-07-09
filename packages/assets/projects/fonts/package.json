@@ -23,12 +23,12 @@
     "clean:build": "rm -rf ./index.ts && rm -rf ./dist"
   },
   "devDependencies": {
-    "change-case": "^5.4.4",
-    "tsx": "^4.10.5",
-    "typescript": "~5.4.5"
+    "tsx": "^4.10.5"
   },
   "peerDependencies": {
-    "globby": "*"
+    "change-case": "*",
+    "globby": "*",
+    "typescript": "*"
   },
   "files": [
     "dist/"

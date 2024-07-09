@@ -78,7 +78,6 @@
     "@arethetypeswrong/core": "^0.15.1",
     "@playwright/test": "1.42.1",
     "@porsche-design-system/shared": "0.0.0",
-    "change-case": "^5.4.4",
     "concurrently": "^8.2.2",
     "devtools-protocol": "^0.0.1304228",
     "jsdom": "^24.0.0",
@@ -94,6 +93,7 @@
     "webpack-cli": "^5.1.4"
   },
   "peerDependencies": {
+    "change-case": "*",
     "globby": "*",
     "typescript": "*"
   },
