@@ -27,12 +27,12 @@
     "@porsche-design-system/shared": "0.0.0",
     "@types/js-yaml": "^4.0.9",
     "js-yaml": "^4.1.0",
-    "svgo": "^3.2.0",
-    "tsx": "^4.7.2"
+    "svgo": "^3.2.0"
   },
   "peerDependencies": {
     "change-case": "*",
     "globby": "*",
+    "tsx": "*",
     "typescript": "*"
   },
   "files": [

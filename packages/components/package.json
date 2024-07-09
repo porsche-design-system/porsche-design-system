@@ -65,8 +65,7 @@
     "globby-legacy": "npm:globby@^11.0.4",
     "imask": "7.1.3",
     "latest-change-case": "npm:change-case@^5.4.3",
-    "tinycolor2": "^1.6.0",
-    "tsx": "^4.7.2"
+    "tinycolor2": "^1.6.0"
   },
   "peerDependencies": {
     "@rollup/plugin-replace": "*",
@@ -74,6 +73,7 @@
     "jss": "*",
     "jss-plugin-sort-css-media-queries": "*",
     "jss-preset-default": "*",
+    "tsx": "*",
     "typescript": "*"
   },
   "main": "dist/index.cjs.js",

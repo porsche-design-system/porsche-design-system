@@ -22,12 +22,10 @@
     "build:lib:esm": "tsc --build tsconfig.lib.esm.json",
     "clean:build": "rm -rf ./index.ts && rm -rf ./dist"
   },
-  "devDependencies": {
-    "tsx": "^4.10.5"
-  },
   "peerDependencies": {
     "change-case": "*",
     "globby": "*",
+    "tsx": "*",
     "typescript": "*"
   },
   "files": [

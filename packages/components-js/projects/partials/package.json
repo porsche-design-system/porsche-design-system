@@ -35,9 +35,11 @@
   "devDependencies": {
     "@types/html-minifier": "^4.0.5",
     "html-minifier": "^4.0.0",
-    "tslib": "^2.6.2",
-    "tsx": "^4.10.5",
-    "typescript": "~5.4.5"
+    "tslib": "^2.6.2"
+  },
+  "peerDependencies": {
+    "tsx": "*",
+    "typescript": "*"
   },
   "volta": {
     "extends": "../../../../package.json"

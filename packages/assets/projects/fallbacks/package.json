@@ -41,12 +41,12 @@
     "@types/html-minifier": "^4.0.5",
     "html-minifier": "^4.0.0",
     "http-server": "^14.1.1",
-    "tslib": "^2.6.2",
-    "tsx": "^4.7.2"
+    "tslib": "^2.6.2"
   },
   "peerDependencies": {
     "@playwright/test": "*",
     "change-case": "*",
+    "tsx": "*",
     "typescript": "*"
   },
   "volta": {
