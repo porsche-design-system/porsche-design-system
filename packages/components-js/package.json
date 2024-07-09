@@ -81,7 +81,6 @@
     "jsdom": "^24.0.0",
     "local-web-server": "^5.3.3",
     "mime": "^4.0.1",
-    "pdf-to-png-converter": "^3.2.0",
     "terser-webpack-plugin": "^5.3.10",
     "webpack-bundle-analyzer": "^4.10.1",
     "webpack-cli": "^5.1.4"

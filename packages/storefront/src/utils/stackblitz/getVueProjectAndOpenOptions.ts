@@ -138,7 +138,7 @@ export const getDevDependencies = (): StackBlitzProjectDependencies => {
     '@vitejs/plugin-vue': devDependencies['@vitejs/plugin-vue'],
     '@vitejs/plugin-vue-jsx': devDependencies['@vitejs/plugin-vue-jsx'],
     typescript: devDependenciesRoot['typescript'],
-    vite: devDependencies['vite'],
+    vite: devDependenciesRoot['vite'],
     'vue-tsc': devDependencies['vue-tsc'],
   };
 };
