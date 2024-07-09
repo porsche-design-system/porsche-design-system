@@ -145,7 +145,9 @@ export class TextFieldWrapper {
 
   @Watch('showCounter')
   public onShowCounterChange(): void {
-    this.updateCounterVisibility();
+    if (this.input) {
+      this.updateCounterVisibility();
+    }
   }
 
   public connectedCallback(): void {

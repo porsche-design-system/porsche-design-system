@@ -76,7 +76,9 @@ export class TextareaWrapper {
 
   @Watch('showCounter')
   public onShowCounterChange(): void {
-    this.updateCounterVisibility();
+    if (this.textarea) {
+      this.updateCounterVisibility();
+    }
   }
 
   public connectedCallback(): void {
