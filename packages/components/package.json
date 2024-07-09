@@ -52,7 +52,6 @@
     "throttle-debounce": "^5.0.0"
   },
   "devDependencies": {
-    "@rollup/plugin-replace": "^5.0.5",
     "@types/react": "18.2.65",
     "@types/throttle-debounce": "^5.0.2",
     "@types/tinycolor2": "^1.4.6",
@@ -73,6 +72,7 @@
     "tsx": "^4.7.2"
   },
   "peerDependencies": {
+    "@rollup/plugin-replace": "*",
     "globby": "*",
     "typescript": "*"
   },

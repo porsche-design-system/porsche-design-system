@@ -23,11 +23,6 @@
   },
   "dependencies": {
     "@porsche-design-system/component-meta": "0.0.0",
-    "@rollup/plugin-commonjs": "^25.0.7",
-    "@rollup/plugin-json": "^6.1.0",
-    "@rollup/plugin-node-resolve": "^15.2.3",
-    "@rollup/plugin-replace": "^5.0.5",
-    "@rollup/plugin-typescript": "^11.1.6",
     "@types/jest": "^29.5.12",
     "@types/jest-expect-message": "^1.1.0",
     "@types/node": "^20.12.4",
@@ -37,14 +32,6 @@
     "jss": "^10.10.0",
     "jss-plugin-sort-css-media-queries": "^1.0.1-beta.0",
     "jss-preset-default": "^10.10.0",
-    "rollup": "^4.14.1",
-    "rollup-plugin-bin": "^1.0.0",
-    "rollup-plugin-copy": "^3.5.0",
-    "rollup-plugin-generate-package-json": "^3.2.0",
-    "rollup-plugin-modify": "^3.0.0",
-    "rollup-plugin-preserve-directives": "^0.4.0",
-    "rollup-plugin-preserve-shebang": "^1.0.1",
-    "rollup-plugin-terser": "^7.0.2",
     "ts-jest": "^29.1.2",
     "vitest": "^1.4.0"
   },
@@ -56,8 +43,21 @@
     "tsx": "^4.7.2"
   },
   "peerDependencies": {
+    "@rollup/plugin-commonjs": "*",
+    "@rollup/plugin-json": "*",
+    "@rollup/plugin-node-resolve": "*",
+    "@rollup/plugin-replace": "*",
+    "@rollup/plugin-typescript": "*",
     "change-case": "*",
     "globby": "*",
+    "rollup": "*",
+    "rollup-plugin-bin": "*",
+    "rollup-plugin-copy": "*",
+    "rollup-plugin-generate-package-json": "*",
+    "rollup-plugin-modify": "*",
+    "rollup-plugin-preserve-directives": "*",
+    "rollup-plugin-preserve-shebang": "*",
+    "rollup-plugin-terser": "*",
     "typescript": "*"
   },
   "volta": {
