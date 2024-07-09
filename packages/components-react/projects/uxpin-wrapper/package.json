@@ -24,8 +24,10 @@
     "@types/react": "18.2.65",
     "@uxpin/merge-cli": "3.4.3",
     "babel-loader": "^9.1.3",
-    "typescript": "~5.4.4",
     "webpack": "^5.91.0"
+  },
+  "peerDependencies": {
+    "typescript": "*"
   },
   "volta": {
     "extends": "../../../../package.json"

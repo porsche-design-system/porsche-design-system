@@ -24,9 +24,11 @@
   },
   "devDependencies": {
     "change-case": "^5.4.4",
-    "globby": "^14.0.1",
     "tsx": "^4.10.5",
     "typescript": "~5.4.5"
+  },
+  "peerDependencies": {
+    "globby": "*"
   },
   "files": [
     "dist/"

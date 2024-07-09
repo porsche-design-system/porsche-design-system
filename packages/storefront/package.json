@@ -71,14 +71,16 @@
     "concurrently": "^8.2.2",
     "eslint": "^8.57.0",
     "eslint-plugin-vue": "^9.24.0",
-    "globby": "^14.0.1",
     "local-web-server": "^5.3.3",
     "sass": "^1.74.1",
     "sass-loader": "^10.5.2",
     "tsx": "^4.7.2",
-    "typescript": "~5.4.4",
     "vue-template-compiler": "^2.7.16",
     "whatwg-fetch": "^3.6.20"
+  },
+  "peerDependencies": {
+    "globby": "*",
+    "typescript": "*"
   },
   "scope": "@porsche-design-system",
   "volta": {

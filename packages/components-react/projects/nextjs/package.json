@@ -31,8 +31,10 @@
     "concurrently": "^8.2.2",
     "eslint": "^8.57.0",
     "eslint-config-next": "^14.1.4",
-    "tsx": "^4.7.2",
-    "typescript": "~5.4.4"
+    "tsx": "^4.7.2"
+  },
+  "peerDependencies": {
+    "typescript": "*"
   },
   "eslintConfig": {
     "extends": [

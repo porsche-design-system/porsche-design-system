@@ -62,8 +62,10 @@
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "^2.1.0",
     "local-web-server": "^5.3.3",
-    "ng-packagr": "^18.0.0",
-    "typescript": "~5.4.4"
+    "ng-packagr": "^18.0.0"
+  },
+  "peerDependencies": {
+    "typescript": "*"
   },
   "volta": {
     "extends": "../../package.json"

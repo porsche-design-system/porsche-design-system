@@ -26,8 +26,10 @@
     "react-jss": "^10.10.0",
     "sass": "^1.74.1",
     "styled-components": "^5.3.11",
-    "tsx": "^4.7.2",
-    "typescript": "~5.4.4"
+    "tsx": "^4.7.2"
+  },
+  "peerDependencies": {
+    "typescript": "*"
   },
   "volta": {
     "extends": "../../package.json"

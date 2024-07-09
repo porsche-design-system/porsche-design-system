@@ -53,10 +53,12 @@
     "@playwright/test": "1.42.1",
     "@types/madge": "^5.0.3",
     "change-case": "^5.4.4",
-    "globby": "^14.0.1",
     "madge": "^6.1.0",
-    "tsx": "^4.7.2",
-    "typescript": "~5.4.4"
+    "tsx": "^4.7.2"
+  },
+  "peerDependencies": {
+    "globby": "*",
+    "typescript": "*"
   },
   "volta": {
     "extends": "../../package.json"
