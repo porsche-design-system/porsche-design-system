@@ -196,7 +196,6 @@
     "@types/node": "^20.12.4",
     "@vitest/ui": "^1.4.0",
     "concurrently": "^8.2.2",
-    "eslint": "^8.57.0",
     "globby": "^14.0.1",
     "jest": "^29.7.0",
     "jest-environment-jsdom": "^29.7.0",

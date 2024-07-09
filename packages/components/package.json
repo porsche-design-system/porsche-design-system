@@ -57,6 +57,7 @@
     "change-case": "^4.1.2",
     "construct-style-sheets-polyfill": "^3.1.0",
     "dts-bundle-generator": "^9.3.1",
+    "eslint": "^8.57.0",
     "eslint-plugin-fp": "^2.3.0",
     "eslint-plugin-prefer-arrow": "^1.2.3",
     "eslint-plugin-react": "^7.34.1",
@@ -68,7 +69,6 @@
   "peerDependencies": {
     "@rollup/plugin-replace": "*",
     "concurrently": "*",
-    "eslint": "*",
     "globby": "*",
     "jss": "*",
     "jss-plugin-sort-css-media-queries": "*",
