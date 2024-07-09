@@ -12,11 +12,9 @@
     "test:unit": "jest",
     "clean:build": "rm -rf ./dist"
   },
-  "devDependencies": {
-    "jest": "^29.7.0",
-    "ts-jest": "^29.1.2"
-  },
   "peerDependencies": {
+    "jest": "*",
+    "ts-jest": "*",
     "typescript": "*"
   },
   "volta": {
