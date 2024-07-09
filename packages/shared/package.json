@@ -25,7 +25,7 @@
     "@porsche-design-system/component-meta": "0.0.0"
   },
   "devDependencies": {
-    "@octokit/core": "^6.1.1"
+    "@octokit/core": "^6.1.2"
   },
   "peerDependencies": {
     "@rollup/plugin-commonjs": "*",
