@@ -77,25 +77,25 @@
   "devDependencies": {
     "@arethetypeswrong/core": "^0.15.1",
     "@porsche-design-system/shared": "0.0.0",
-    "concurrently": "^8.2.2",
     "devtools-protocol": "^0.0.1304228",
     "jsdom": "^24.0.0",
     "local-web-server": "^5.3.3",
     "mime": "^4.0.1",
     "pdf-to-png-converter": "^3.2.0",
-    "sass": "^1.74.1",
     "terser-webpack-plugin": "^5.3.10",
-    "vite": "^5.2.8",
-    "webpack": "^5.91.0",
     "webpack-bundle-analyzer": "^4.10.1",
     "webpack-cli": "^5.1.4"
   },
   "peerDependencies": {
     "@playwright/test": "*",
     "change-case": "*",
+    "concurrently": "*",
     "globby": "*",
+    "sass": "*",
     "tsx": "*",
-    "typescript": "*"
+    "typescript": "*",
+    "webpack": "*",
+    "vite": "*"
   },
   "volta": {
     "extends": "../../package.json"
