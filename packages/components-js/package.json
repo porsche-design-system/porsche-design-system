@@ -76,7 +76,6 @@
   },
   "devDependencies": {
     "@arethetypeswrong/core": "^0.15.1",
-    "@playwright/test": "1.42.1",
     "@porsche-design-system/shared": "0.0.0",
     "concurrently": "^8.2.2",
     "devtools-protocol": "^0.0.1304228",
@@ -93,6 +92,7 @@
     "webpack-cli": "^5.1.4"
   },
   "peerDependencies": {
+    "@playwright/test": "*",
     "change-case": "*",
     "globby": "*",
     "typescript": "*"

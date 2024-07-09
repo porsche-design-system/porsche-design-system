@@ -37,7 +37,6 @@
   },
   "devDependencies": {
     "@octokit/core": "^6.1.1",
-    "@playwright/test": "1.42.1",
     "@types/madge": "^5.0.3",
     "madge": "^6.1.0",
     "tsx": "^4.7.2"

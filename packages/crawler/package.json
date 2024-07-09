@@ -21,6 +21,7 @@
     "tsx": "^4.7.2"
   },
   "peerDependencies": {
+    "@playwright/test": "*",
     "typescript": "*"
   },
   "volta": {

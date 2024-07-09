@@ -64,6 +64,7 @@
     "ng-packagr": "^18.0.0"
   },
   "peerDependencies": {
+    "@playwright/test": "*",
     "change-case": "*",
     "typescript": "*"
   },

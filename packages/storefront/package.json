@@ -56,7 +56,6 @@
   },
   "devDependencies": {
     "@axe-core/playwright": "^4.9.1",
-    "@playwright/test": "1.42.1",
     "@types/prismjs": "^1.26.3",
     "@typescript-eslint/eslint-plugin": "^7.5.0",
     "@typescript-eslint/parser": "^7.5.0",
@@ -79,6 +78,7 @@
     "whatwg-fetch": "^3.6.20"
   },
   "peerDependencies": {
+    "@playwright/test": "*",
     "globby": "*",
     "typescript": "*"
   },
