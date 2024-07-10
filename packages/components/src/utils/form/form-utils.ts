@@ -1,6 +1,6 @@
 import { debounce } from 'throttle-debounce';
 
-export const hasCounter = (el: HTMLTextAreaElement | HTMLInputElement): boolean => el.maxLength >= 0;
+export const hasCounter = (el: HTMLTextAreaElement | HTMLInputElement | undefined): boolean => el && el.maxLength >= 0;
 
 // https://javascript.info/currying-partials
 export const inputEventListenerCurry = (
