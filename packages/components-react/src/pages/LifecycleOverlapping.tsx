@@ -10,7 +10,7 @@ export const LifecycleOverlappingPage = (): JSX.Element => {
   };
 
   return (
-    <div>
+    <>
       <button onClick={() => setIsActive(!isActive)}>Set Active</button>
       <PTextFieldWrapper {...props}>
         <input type="text" />
@@ -28,6 +28,6 @@ export const LifecycleOverlappingPage = (): JSX.Element => {
           <textarea />
         </PTextareaWrapper>
       )}
-    </div>
+    </>
   );
 };
