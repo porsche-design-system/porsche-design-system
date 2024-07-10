@@ -12891,6 +12891,7 @@ exports[`should render dsr component for PSelectWrapper 1`] = `
   cursor: pointer !important;
   padding: 8px 16px !important;
   padding-inline-end: calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 1) !important;
+  border-color: transparent !important;
 }
 ::slotted(select:disabled) {
   cursor: not-allowed !important;
@@ -13018,6 +13019,49 @@ img {
             />
           </template>
         </p-icon>
+        <p-select-wrapper-dropdown
+          class="dropdown ssr"
+        >
+          <template
+            shadowroot="open"
+            shadowrootmode="open"
+          >
+            <style>
+              :host {
+  display: block;
+  position: relative;
+}
+button {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background: transparent;
+  border: 2px solid #6B6D70;
+  border-radius: 4px;
+  outline: 0;
+  cursor: pointer;
+  transition: border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+}
+button:disabled {
+  cursor: not-allowed;
+  border-color: #949598;
+}
+
+.sr-text {
+  display: none;
+}
+            </style>
+            <button
+              id="value"
+              part="select-wrapper-dropdown"
+              role="combobox"
+              type="button"
+            />
+          </template>
+        </p-select-wrapper-dropdown>
       </div>
     </div>
   </template>
