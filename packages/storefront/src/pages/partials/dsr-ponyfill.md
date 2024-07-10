@@ -7,7 +7,7 @@ platform API called [Declarative Shadow DOM (DSR)](https://web.dev/declarative-s
 [browser support](https://caniuse.com/?search=declarative%20shadow%20dom) is already good but major browsers like Safari
 and Firefox aren't supporting it yet.
 
-Therefor, we provide a partial in `@porsche-design-system/components-react` package based on
+Therefore, we provide a partial in `@porsche-design-system/components-react` package based on
 [@webcomponents/template-shadowroot](https://npmjs.com/package/@webcomponents/template-shadowroot) which needs to be
 injected before the closing `</body>` of your `index.html`.
 
