@@ -1,5 +1,2 @@
 <slot> </slot>
-<img
-  src="http://localhost:3001/model-signatures/911.min.b68f913216168583298ccf83f1a6b8d5.svg"
-  alt="911"
-/>
+<img src="http://localhost:3001/model-signatures/911.b68f913.svg" alt="911" />
