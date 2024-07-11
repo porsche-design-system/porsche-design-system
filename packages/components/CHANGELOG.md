@@ -17,6 +17,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 #### Changed
 
 - `Icon`: All icons are up-to-date with the One UI look
+- Shorten asset filenames
 
 #### Fixed
 
