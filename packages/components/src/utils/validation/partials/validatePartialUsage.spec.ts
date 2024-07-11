@@ -157,7 +157,7 @@ describe('validateGetFontLinksUsage()', () => {
 
     validateGetFontLinksUsage();
 
-    expect(spy).toHaveBeenCalledWith('link[rel=preload][as=font][href*=porsche-next-w-la-regular]');
+    expect(spy).toHaveBeenCalledWith('link[rel=preload][as=font][href*=porsche-next]');
   });
 
   it('should call logPartialValidationWarning() with correct parameters', () => {
