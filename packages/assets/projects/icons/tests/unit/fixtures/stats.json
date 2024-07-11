@@ -112,7 +112,7 @@
   { "name": "logo-telegram", "size": 277, "gzipSize": 219 },
   { "name": "logo-tiktok", "size": 359, "gzipSize": 248 },
   { "name": "logo-tumblr", "size": 529, "gzipSize": 331 },
-  { "name": "logo-twitter", "size": 587, "gzipSize": 347 },
+  { "name": "logo-twitter", "size": 202, "gzipSize": 180 },
   { "name": "logo-viber", "size": 801, "gzipSize": 452 },
   { "name": "logo-vk", "size": 659, "gzipSize": 397 },
   { "name": "logo-wechat", "size": 694, "gzipSize": 368 },
