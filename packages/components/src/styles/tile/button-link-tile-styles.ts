@@ -39,6 +39,8 @@ export const getButtonLinkTileStyles = (
         margin: 0,
         ...textLargeStyle,
         hyphens: 'inherit',
+        overflowWrap: 'anywhere',
+        wordBreak: 'keep-all',
         ...mergeDeep(
           buildResponsiveStyles(size, (s: TileSize) => sizeMap[s]),
           buildResponsiveStyles(weight, (w: TileWeight | LinkTileWeight) => ({
