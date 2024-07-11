@@ -205,7 +205,7 @@ export const setContentWithDesignSystem = async (
     getIconLinks({ icons: [...ICON_NAMES] }),
     // TODO: we should provide inline styles instead for getFontFaceStylesheet(), which is recommended by Lighthouse and we could replace cdn urls by localhost
     // getFontFaceStylesheet(),
-    '<link rel="stylesheet" href="http://localhost:3001/styles/font-face.min.css">',
+    '<link rel="stylesheet" href="http://localhost:3001/styles/font-face.css">',
     getFontLinks({ weights: ['regular', 'semi-bold', 'bold'] }),
   ]
     .join('')

@@ -24,14 +24,14 @@ export const validateGetFontFaceStylesUsage = (): void => {
   const styleUrl =
     ROLLUP_REPLACE_IS_STAGING !== 'staging' && process.env.NODE_ENV !== 'development'
       ? `${baseUrl}/styles/${baseUrl.match(/\.cn\//) ? FONT_FACE_CDN_FILE_CN : FONT_FACE_CDN_FILE_COM}`
-      : 'http://localhost:3001/styles/font-face.min.css';
+      : 'http://localhost:3001/styles/font-face.css';
   if (!document.head.querySelector(`link[href="${styleUrl}"],style[data-pds-font-face-styles=""]`)) {
     logPartialValidationWarning('getFontFaceStyles');
   }
 };
 
 export const validateGetFontLinksUsage = (): void => {
-  if (!document.head.querySelector('link[rel=preload][as=font][href*=porsche-next-w-la-regular]')) {
+  if (!document.head.querySelector('link[rel=preload][as=font][href*=porsche-next]')) {
     logPartialValidationWarning('getFontLinks');
   }
 };
