@@ -2,9 +2,9 @@ import { getCookiesFallbackScript } from '../../../src';
 import { renderToString } from 'react-dom/server';
 
 const scriptCom =
-  /^<script>.*https:\/\/cdn\.ui\.porsche\.com\/porsche-design-system\/fallbacks\/cookies\.[a-z0-9]{32}\.js.*<\/script>$/;
+  /^<script>.*https:\/\/cdn\.ui\.porsche\.com\/porsche-design-system\/fallbacks\/cookies\.[a-z0-9]{7}\.js.*<\/script>$/;
 const scriptCn =
-  /^<script>.*https:\/\/cdn\.ui\.porsche\.cn\/porsche-design-system\/fallbacks\/cookies\.[a-z0-9]{32}\.js.*<\/script>$/;
+  /^<script>.*https:\/\/cdn\.ui\.porsche\.cn\/porsche-design-system\/fallbacks\/cookies\.[a-z0-9]{7}\.js.*<\/script>$/;
 
 describe('format: html', () => {
   it('should return script with cdn url', () => {
