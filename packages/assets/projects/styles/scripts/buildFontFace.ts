@@ -6,7 +6,7 @@ import { CDN_BASE_PATH_STYLES } from '../../../../../cdn.config';
 import { getMinifiedPorscheNextFontFaceCss } from './fontFaceStyles';
 
 const toHash = (str: string): string => {
-  return crypto.createHash('md5').update(str, 'utf8').digest('hex');
+  return crypto.createHash('md5').update(str, 'utf8').digest('hex').substring(0, 7);
 };
 
 const buildFontFaceStylesheet = (opts: GetMinifiedPorscheNextFontFaceCssOptions): string => {
@@ -15,7 +15,7 @@ const buildFontFaceStylesheet = (opts: GetMinifiedPorscheNextFontFaceCssOptions)
   const suffix = cdn === 'cn' ? '.cn' : '';
   const hash = cdn !== 'localhost' ? `.${toHash(style)}` : '';
   const targetDirectory = './dist/styles';
-  const targetFilename = `font-face.min${suffix}${hash}.css`;
+  const targetFilename = `font-face${suffix}${hash}.css`;
   const targetPath = path.normalize(`${targetDirectory}/${targetFilename}`);
 
   fs.mkdirSync(path.resolve(targetDirectory), { recursive: true });

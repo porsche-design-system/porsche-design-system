@@ -16,7 +16,7 @@ type Manifest = {
   };
 };
 
-const toHash = (str: string): string => crypto.createHash('md5').update(str, 'utf8').digest('hex');
+const toHash = (str: string): string => crypto.createHash('md5').update(str, 'utf8').digest('hex').substring(0, 7);
 
 const checkIntegrity = (manifest: Manifest): void => {
   for (const [name, size] of Object.entries(manifest)) {
@@ -64,7 +64,7 @@ const createManifestAndCopyMarque = (): void => {
     const hash = toHash(marque);
     const [name, size, resolution] = path.basename(sourcePath, ext).split(/[.@]/g);
     const extension = ext.slice(1);
-    const filename = `${kebabCase(name)}.${kebabCase(size)}.min.${hash}@${kebabCase(resolution)}.${extension}`;
+    const filename = `${kebabCase(name)}.${kebabCase(size)}.${hash}@${kebabCase(resolution)}.${extension}`;
     const targetPath = path.normalize(`./dist/marque/${filename}`);
 
     const nameKey = camelCase(name);
