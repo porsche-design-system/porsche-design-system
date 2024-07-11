@@ -51,10 +51,10 @@ const deleteRetryDirectories = (source: string): void => {
     });
 };
 
-const path = 'tests/vrt/results';
-if (fs.existsSync(path)) {
-  deleteRetryDirectories(path);
-  walk(path, (error: any): void => {
+const dir = 'tests/vrt/results';
+if (fs.existsSync(dir)) {
+  deleteRetryDirectories(dir);
+  walk(dir, (error: any): void => {
     if (error) {
       throw error;
     }
