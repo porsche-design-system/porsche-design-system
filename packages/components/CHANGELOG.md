@@ -21,6 +21,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 - `PTextFieldWrapper`, `PTextareaWrapper`: conditionally rendered component throws
   `TypeError: Cannot read properties of undefined (reading 'type')`
   ([#3383](https://github.com/porsche-design-system/porsche-design-system/pull/3383))
+- `LinkTile`: broken word-break & hyphens Safari
+  ([#3397](https://github.com/porsche-design-system/porsche-design-system/pull/3397))
 
 ### [3.16.0] - 2024-07-02
 
