@@ -9,7 +9,7 @@ type Manifest = {
   [name: string]: string;
 };
 
-const toHash = (str: string): string => crypto.createHash('md5').update(str, 'utf8').digest('hex');
+const toHash = (str: string): string => crypto.createHash('md5').update(str, 'utf8').digest('hex').substring(0, 7);
 
 const createManifestAndCopyFonts = (files: string[]): void => {
   fs.rmSync(path.resolve('./dist'), { force: true, recursive: true });
@@ -23,7 +23,7 @@ const createManifestAndCopyFonts = (files: string[]): void => {
     const name = path.basename(sourcePath, ext);
     const font = fs.readFileSync(sourcePath, { encoding: 'binary' });
     const hash = toHash(font);
-    const filename = `${kebabCase(name)}.min.${hash}${ext}`;
+    const filename = `${kebabCase(name)}.${hash}${ext}`;
     const targetPath = path.normalize(`./dist/fonts/${filename}`);
 
     const nameKey = camelCase(name);
