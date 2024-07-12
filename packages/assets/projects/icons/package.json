@@ -26,14 +26,16 @@
   "devDependencies": {
     "@porsche-design-system/shared": "0.0.0",
     "@types/js-yaml": "^4.0.9",
-    "js-yaml": "^4.1.0",
-    "svgo": "^3.2.0"
+    "js-yaml": "^4.1.0"
   },
   "peerDependencies": {
     "change-case": "*",
     "globby": "*",
+    "svgo": "*",
+    "tsup": "*",
     "tsx": "*",
-    "typescript": "*"
+    "typescript": "*",
+    "vitest": "*"
   },
   "files": [
     "dist/"
