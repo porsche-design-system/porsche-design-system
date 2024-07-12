@@ -6,7 +6,7 @@ import { kebabCase } from 'change-case';
 import { optimize, type Config } from 'svgo';
 import { config } from '../svgo.config';
 import { CDN_BASE_PATH_ICONS } from '../../../../../cdn.config';
-import * as gzipSize from 'gzip-size';
+import { gzipSizeSync } from 'gzip-size';
 import { format } from 'prettier';
 
 type Manifest = {
@@ -53,7 +53,7 @@ const createManifestAndOptimizeIcons = async (files: string[], config: Config): 
     stats.push({
       name: svgRawName,
       size: Buffer.byteLength(svgOptimizedData),
-      gzipSize: gzipSize.sync(svgOptimizedData),
+      gzipSize: gzipSizeSync(svgOptimizedData),
     });
 
     const svgRawSize = fs.statSync(svgRawPath).size;
