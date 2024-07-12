@@ -1,7 +1,7 @@
 import * as fs from 'fs';
 import * as path from 'path';
 import * as crypto from 'crypto';
-import { optimize, Config } from 'svgo';
+import { optimize, type Config } from 'svgo';
 import { globbySync } from 'globby';
 import { kebabCase } from 'change-case';
 import { CDN_BASE_PATH_ICONS } from '../../../../../cdn.config';
