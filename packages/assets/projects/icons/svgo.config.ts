@@ -1,7 +1,6 @@
-/**
- * @type {import('svgo').Config}
- */
-module.exports = {
+import { type Config } from 'svgo';
+
+export const config: Config = {
   multipass: true,
   floatPrecision: 2,
   plugins: [

@@ -1,9 +1,10 @@
 import * as fs from 'fs';
 import * as path from 'path';
 import * as crypto from 'crypto';
-import { optimize, type Config } from 'svgo';
 import { globbySync } from 'globby';
 import { kebabCase } from 'change-case';
+import { optimize, type Config } from 'svgo';
+import { config } from '../svgo.config';
 import { CDN_BASE_PATH_ICONS } from '../../../../../cdn.config';
 import * as gzipSize from 'gzip-size';
 import { format } from 'prettier';
@@ -93,13 +94,7 @@ export type IconName = typeof ICON_NAMES[number];
   console.log('Created icons manifest.');
 };
 
-const generate = async (): Promise<void> => {
-  const files = globbySync('./src/**/*.svg').sort();
-  const config: Config = require('../svgo.config.js');
-
-  await createManifestAndOptimizeIcons(files, config);
-};
-
 (async (): Promise<void> => {
-  await generate();
+  const files = globbySync('./src/**/*.svg').sort();
+  await createManifestAndOptimizeIcons(files, config);
 })();
