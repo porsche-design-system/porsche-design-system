@@ -1,9 +1,1 @@
-{
-  "extends": "@porsche-design-system/shared/tsconfig.json",
-  "compilerOptions": {
-    "module": "CommonJS",
-    "moduleResolution": "node",
-    "verbatimModuleSyntax": false,
-    "types": ["node", "jest"]
-  }
-}
+{}

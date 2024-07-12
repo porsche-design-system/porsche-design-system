@@ -2,24 +2,32 @@
   "name": "@porsche-design-system/icons",
   "version": "0.0.0",
   "private": true,
-  "scope": "@porsche-design-system",
-  "main": "dist/index.js",
-  "module": "dist/esm/index.js",
-  "types": "dist/types/index.d.ts",
-  "author": "Dr. Ing. h.c. F. Porsche AG",
   "license": "UNLICENSED",
-  "description": "Porsche Icons",
-  "keywords": [
-    "porsche",
-    "icons"
+  "scope": "@porsche-design-system",
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/index.d.mts",
+        "default": "./dist/index.mjs"
+      },
+      "require": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      }
+    }
+  },
+  "types": "./dist/index.d.ts",
+  "files": [
+    "./dist/"
   ],
-  "homepage": "https://icons.porsche.com",
+  "author": "Dr. Ing. h.c. F. Porsche AG",
+  "homepage": "https://designsystem.porsche.com",
   "scripts": {
     "build": "yarn clean:build && yarn build:icons && yarn build:lib",
     "build:icons": "tsx scripts/build.ts",
-    "build:lib": "yarn build:lib:cjs && yarn build:lib:esm",
-    "build:lib:cjs": "tsc --build tsconfig.lib.cjs.json",
-    "build:lib:esm": "tsc --build tsconfig.lib.esm.json",
+    "build:lib": "tsup index.ts --format esm,cjs --dts",
     "test:unit": "vitest --config tests/unit/config/vitest.config.ts",
     "clean:build": "rm -rf ./index.ts && rm -rf ./dist"
   },
@@ -37,9 +45,6 @@
     "typescript": "*",
     "vitest": "*"
   },
-  "files": [
-    "dist/"
-  ],
   "volta": {
     "extends": "../../../../package.json"
   }
