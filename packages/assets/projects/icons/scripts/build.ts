@@ -13,7 +13,7 @@ type Manifest = {
 };
 type IconsMap = Manifest;
 
-const toHash = (str: string): string => crypto.createHash('md5').update(str, 'utf8').digest('hex');
+const toHash = (str: string): string => crypto.createHash('md5').update(str, 'utf8').digest('hex').substring(0, 7);
 
 type Stats = { name: string; size: number; gzipSize: number };
 const stats: Stats[] = [];
@@ -33,7 +33,7 @@ const createManifestAndOptimizeIcons = async (files: string[], config: Config): 
     const svgRawData = fs.readFileSync(svgRawPath, 'utf8');
     const svgOptimizedData = optimize(svgRawData, config).data;
     const svgOptimizedHash = toHash(svgOptimizedData);
-    const svgOptimizedFilename = `${svgRawName}.min.${svgOptimizedHash}.svg`;
+    const svgOptimizedFilename = `${svgRawName}.${svgOptimizedHash}.svg`;
     const svgOptimizedPath = path.normalize(`./dist/icons/${svgOptimizedFilename}`);
 
     if (svgRawName !== kebabCase(svgRawName)) {

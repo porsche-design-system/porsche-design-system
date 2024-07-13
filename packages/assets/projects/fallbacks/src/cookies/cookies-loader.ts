@@ -2,6 +2,6 @@ import { hasCookiesEnabled } from './cookies-utils';
 
 if (!hasCookiesEnabled()) {
   const script = document.createElement('script');
-  script.src = 'cookies.min.js';
+  script.src = 'cookies.js';
   document.body.appendChild(script);
 }

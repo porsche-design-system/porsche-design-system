@@ -16,7 +16,7 @@ export default [
     input: `${inputDir}/browser-support/browser-support-loader.ts`,
     output: {
       ...outputConfig,
-      file: `${outputDir}/browser-support-loader.min.js`,
+      file: `${outputDir}/browser-support-loader.js`,
     },
     plugins: [typescript(), terser()],
   },
@@ -25,7 +25,7 @@ export default [
     output: {
       ...outputConfig,
       format: 'esm',
-      file: `${outputDir}/browser-support.min.js`,
+      file: `${outputDir}/browser-support.js`,
     },
     plugins: [typescript(), terser()],
   },
@@ -33,7 +33,7 @@ export default [
     input: `${inputDir}/cookies/cookies-loader.ts`,
     output: {
       ...outputConfig,
-      file: `${outputDir}/cookies-loader.min.js`,
+      file: `${outputDir}/cookies-loader.js`,
     },
     plugins: [typescript(), terser()],
   },
@@ -42,7 +42,7 @@ export default [
     output: {
       ...outputConfig,
       format: 'esm',
-      file: `${outputDir}/cookies.min.js`,
+      file: `${outputDir}/cookies.js`,
     },
     plugins: [typescript(), terser()],
   },
