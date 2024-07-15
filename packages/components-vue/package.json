@@ -39,8 +39,8 @@
     "@rushstack/eslint-patch": "^1.10.3",
     "@testing-library/vue": "^8.1.0",
     "@tsconfig/node18": "^18.2.4",
-    "@vitejs/plugin-vue": "^5.0.4",
-    "@vitejs/plugin-vue-jsx": "^3.1.0",
+    "@vitejs/plugin-vue": "^5.0.5",
+    "@vitejs/plugin-vue-jsx": "^4.0.0",
     "@vue/eslint-config-prettier": "^9.0.0",
     "@vue/eslint-config-typescript": "^13.0.0",
     "@vue/tsconfig": "0.4.0",
@@ -49,7 +49,7 @@
     "eslint-plugin-vue": "^9.24.0",
     "local-web-server": "^5.3.3",
     "vite-plugin-html": "^3.2.2",
-    "vite-plugin-static-copy": "^1.0.2",
+    "vite-plugin-static-copy": "^1.0.6",
     "vue-tsc": "^2.0.22"
   },
   "peerDependencies": {
