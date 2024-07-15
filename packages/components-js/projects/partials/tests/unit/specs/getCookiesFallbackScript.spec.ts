@@ -2,9 +2,9 @@ import { getCookiesFallbackScript } from '../../../src';
 import { renderToString } from 'react-dom/server';
 
 const scriptCom =
-  /^<script>.*https:\/\/cdn\.ui\.porsche\.com\/porsche-design-system\/fallbacks\/cookies\.[a-z0-9]{32}\.js.*<\/script>$/;
+  /^<script>.*https:\/\/cdn\.ui\.porsche\.com\/porsche-design-system\/fallbacks\/cookies\.[a-z0-9]{7}\.js.*<\/script>$/;
 const scriptCn =
-  /^<script>.*https:\/\/cdn\.ui\.porsche\.cn\/porsche-design-system\/fallbacks\/cookies\.[a-z0-9]{32}\.js.*<\/script>$/;
+  /^<script>.*https:\/\/cdn\.ui\.porsche\.cn\/porsche-design-system\/fallbacks\/cookies\.[a-z0-9]{7}\.js.*<\/script>$/;
 
 describe('format: html', () => {
   it('should return script with cdn url', () => {
@@ -33,11 +33,11 @@ describe('format: jsx', () => {
 describe('format: sha256', () => {
   it('should return hash for script with cdn url', () => {
     const result = getCookiesFallbackScript({ format: 'sha256' });
-    expect(result).toMatchInlineSnapshot(`"'sha256-gSQIJ3OeSozDzQi29grrL2wUS3PAOBOHaK+E/MORwtw='"`);
+    expect(result).toMatchInlineSnapshot(`"'sha256-LDsGO12ksOJAhATpdybNJjMVCVpsv8PT35cyv+dPrIw='"`);
   });
 
   it('should return hash for script with china cdn url', () => {
     const result = getCookiesFallbackScript({ cdn: 'cn', format: 'sha256' });
-    expect(result).toMatchInlineSnapshot(`"'sha256-URnRtiOZOPTrwf9MxFW09cC4KuRucGzX66wdm21l/HQ='"`);
+    expect(result).toMatchInlineSnapshot(`"'sha256-aEaPRDffe5Mh9LnxLmN4XTrSdMGN/Wmh/r/ioa6+usw='"`);
   });
 });

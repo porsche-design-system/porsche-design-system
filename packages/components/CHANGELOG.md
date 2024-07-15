@@ -14,6 +14,19 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ### [Unreleased]
 
+#### Changed
+
+- `Icon`: All icons are up-to-date with the One UI look
+- Shorten asset filenames
+
+#### Fixed
+
+- `Link Pure`: Broken with `alignLabel="start"`, hidden label & nested anchor
+  ([#3379](https://github.com/porsche-design-system/porsche-design-system/pull/3379))
+- `PTextFieldWrapper`, `PTextareaWrapper`: Conditionally rendered component throws
+  `TypeError: Cannot read properties of undefined (reading 'type')`
+  ([#3383](https://github.com/porsche-design-system/porsche-design-system/pull/3383))
+
 ### [3.16.0] - 2024-07-02
 
 ### [3.16.0-rc.2] - 2024-07-02
@@ -26,7 +39,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 #### Changed
 
-- `Flyout Navigation`, `Flyout Navigation Item`: renamed (experimental) component to `Flyout Multilevel` and
+- `Flyout Navigation`, `Flyout Navigation Item`: Renamed (experimental) component to `Flyout Multilevel` and
   `Flyout Multilevel Item` ([#3351](https://github.com/porsche-design-system/porsche-design-system/pull/3351))
 - `Toast`: Renders fully on `#top-layer`, stacking behaviour has changed and follows W3C standards now, see
   https://developer.mozilla.org/en-US/docs/Glossary/Top_layer and
@@ -789,8 +802,6 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
   ([#2630](https://github.com/porsche-design-system/porsche-design-system/pull/2630))
 - `Carousel`: Removed `overflow:hidden` of slide items
   ([#2645](https://github.com/porsche-design-system/porsche-design-system/pull/2645))
-- `Link Pure`: broken with `alignLabel="start"`, hidden label & nested anchor
-  ([#3379](https://github.com/porsche-design-system/porsche-design-system/pull/3379))
 
 #### Changed
 

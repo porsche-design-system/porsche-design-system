@@ -1,4 +1,5 @@
 import { devDependencies, dependencies } from '../../../../components-vue/package.json';
+import { devDependencies as devDependenciesRoot } from '../../../../../package.json';
 import {
   convertImportPaths,
   getExternalDependencies,
@@ -136,8 +137,8 @@ export const getDevDependencies = (): StackBlitzProjectDependencies => {
   return {
     '@vitejs/plugin-vue': devDependencies['@vitejs/plugin-vue'],
     '@vitejs/plugin-vue-jsx': devDependencies['@vitejs/plugin-vue-jsx'],
-    typescript: devDependencies['typescript'],
-    vite: devDependencies['vite'],
+    typescript: devDependenciesRoot['typescript'],
+    vite: devDependenciesRoot['vite'],
     'vue-tsc': devDependencies['vue-tsc'],
   };
 };

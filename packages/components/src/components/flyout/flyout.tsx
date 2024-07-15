@@ -197,7 +197,7 @@ export class Flyout {
     this.dismiss.emit();
   };
 
-  private updateSlotObserver = () => {
+  private updateSlotObserver = (): void => {
     if (this.hasHeader) {
       // When slots change dynamically the intersection observer for the scroll shadows has to be added
       observeStickyArea(this.scroller, this.header);

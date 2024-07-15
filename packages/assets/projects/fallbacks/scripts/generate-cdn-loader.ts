@@ -22,18 +22,18 @@ const createFreshDirectory = (dir: string): void => {
 };
 
 const toHash = (str: string): string => {
-  return crypto.createHash('md5').update(str, 'utf8').digest('hex');
+  return crypto.createHash('md5').update(str, 'utf8').digest('hex').substring(0, 7);
 };
 
 const generateCdnLoader = (fallback: Fallbacks): void => {
-  const fileContentOverlay = fs.readFileSync(`${inputDir}/${fallback}.min.js`, 'utf8');
+  const fileContentOverlay = fs.readFileSync(`${inputDir}/${fallback}.js`, 'utf8');
   const contentHashOverlay = toHash(fileContentOverlay);
   const targetFileNameOverlay = `${fallback}.${contentHashOverlay}.js`;
   const targetFilePathOverlay = `${outputDirFallbacks}/${targetFileNameOverlay}`;
   const targetCdnFilePathOverlay = `${cdnPathBasePath}/${targetFileNameOverlay}`;
 
-  const fileContentLoader = fs.readFileSync(`${inputDir}/${fallback}-loader.min.js`, 'utf8');
-  const newFileContentLoader = fileContentLoader.replace(`${fallback}.min.js`, targetCdnFilePathOverlay);
+  const fileContentLoader = fs.readFileSync(`${inputDir}/${fallback}-loader.js`, 'utf8');
+  const newFileContentLoader = fileContentLoader.replace(`${fallback}.js`, targetCdnFilePathOverlay);
   const targetFilePathLoader = `${outputDirLoader}/${fallback}.js`;
 
   manifest = {
