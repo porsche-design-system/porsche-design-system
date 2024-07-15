@@ -183,7 +183,7 @@
   },
   "devDependencies": {
     "@axe-core/playwright": "^4.9.1",
-    "@playwright/test": "1.42.1",
+    "@playwright/test": "1.45.1",
     "@porsche-design-system/prettier-config": "^1.0.1",
     "@rollup/plugin-commonjs": "^25.0.7",
     "@rollup/plugin-json": "^6.1.0",
