@@ -2,36 +2,45 @@
   "name": "@porsche-design-system/model-signatures",
   "version": "0.0.0",
   "private": true,
-  "scope": "@porsche-design-system",
-  "main": "dist/index.js",
-  "module": "dist/esm/index.js",
-  "types": "dist/types/index.d.ts",
-  "author": "Dr. Ing. h.c. F. Porsche AG",
   "license": "UNLICENSED",
-  "description": "Porsche Model Signatures",
-  "keywords": [
-    "porsche",
-    "model signatures"
+  "scope": "@porsche-design-system",
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/index.d.mts",
+        "default": "./dist/index.mjs"
+      },
+      "require": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      }
+    }
+  },
+  "types": "./dist/index.d.ts",
+  "files": [
+    "./dist/"
   ],
+  "author": "Dr. Ing. h.c. F. Porsche AG",
   "homepage": "https://designsystem.porsche.com",
   "scripts": {
-    "build": "yarn clean:build && yarn build:model-sigatures && yarn build:lib",
-    "build:model-sigatures": "tsx scripts/build.ts",
-    "build:lib": "yarn build:lib:cjs && yarn build:lib:esm",
-    "build:lib:cjs": "tsc --build tsconfig.lib.cjs.json",
-    "build:lib:esm": "tsc --build tsconfig.lib.esm.json",
+    "build": "yarn clean:build && yarn build:model-signatures && yarn build:lib",
+    "build:model-signatures": "tsx scripts/build.ts",
+    "build:lib": "tsup index.ts --format esm,cjs --dts",
     "clean:build": "rm -rf ./index.ts && rm -rf ./dist"
+  },
+  "devDependencies": {
+    "@porsche-design-system/shared": "0.0.0"
   },
   "peerDependencies": {
     "change-case": "*",
     "globby": "*",
     "svgo": "*",
+    "tsup": "*",
     "tsx": "*",
     "typescript": "*"
   },
-  "files": [
-    "dist/"
-  ],
   "volta": {
     "extends": "../../../../package.json"
   }
