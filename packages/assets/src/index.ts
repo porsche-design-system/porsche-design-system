@@ -12,7 +12,7 @@ import {
   CDN_BASE_PATH as FONT_FACE_CDN_BASE_PATH,
   FONT_FACE_CDN_FILE_COM,
   FONT_FACE_CDN_FILE_CN,
-} from '@porsche-design-system/styles';
+} from '@porsche-design-system/font-face';
 
 // reexports are needed in order to build standalone typings
 export {

@@ -27,7 +27,6 @@ runs:
           ./packages/icons/dist
           ./packages/model-signatures/dist
           ./packages/shared/dist
-          ./packages/utilities/projects/styles/dist
           ./packages/utilities/projects/utilities/dist
         key: ${{ runner.os }}-${{ github.sha }} # cache is only used for current commit
     - name: 'Build Core Dependencies'
@@ -72,6 +71,5 @@ runs:
           ./packages/model-signatures/dist
           ./packages/icons/dist
           ./packages/shared/dist
-          ./packages/utilities/projects/styles/dist
           ./packages/utilities/projects/utilities/dist
         key: ${{ steps.cache-builds-restore.outputs.cache-primary-key }} # linked to restore key
