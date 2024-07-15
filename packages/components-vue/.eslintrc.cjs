@@ -12,4 +12,15 @@ module.exports = {
   parserOptions: {
     ecmaVersion: 'latest',
   },
+  files: [
+    "**/*.vue",
+    "**/*.js",
+    "**/*.jsx",
+    "**/*.cjs",
+    "**/*.mjs",
+    "**/*.ts",
+    "**/*.tsx",
+    "**/*.cts",
+    "**/*.mts"
+  ]
 };
