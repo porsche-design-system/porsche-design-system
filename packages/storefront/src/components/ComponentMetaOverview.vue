@@ -44,6 +44,7 @@
         .join('');
     }
 
+    // TODO: Refactor
     get body(): string {
       const formatRow = (rowKey: string, tagNames: TagName[]): string => {
         const cells = tagNames.map((tagName) => formatCell(tagName, rowKey)).join('');
