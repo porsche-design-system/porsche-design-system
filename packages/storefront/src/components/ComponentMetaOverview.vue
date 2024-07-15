@@ -69,8 +69,9 @@
         return `<p-table-cell>${cellContent}</p-table-cell>`;
       };
 
-      const formatProps = (propsMeta: ComponentMeta['propsMeta']): string[] =>
-        Object.entries(propsMeta ?? {}).map(([propName, meta]) => {
+      const formatProps = (propsMeta: ComponentMeta['propsMeta']): string[] | undefined =>
+        propsMeta &&
+        Object.entries(propsMeta).map(([propName, meta]) => {
           const propFlags = getFlags(meta);
           const formattedAllowedValues = formatAllowedValues(meta.allowedValues, !!meta.isDeprecated);
           return (
@@ -108,11 +109,12 @@
         return `- ${allowedValues}`;
       };
 
-      const formatEvents = (eventsMeta: ComponentMeta['eventsMeta']): string[] =>
-        Object.entries(eventsMeta ?? {}).map(([eventName, value]) => `${eventName}${getFlags(value)}`);
+      const formatEvents = (eventsMeta: ComponentMeta['eventsMeta']): string[] | undefined =>
+        eventsMeta && Object.entries(eventsMeta).map(([eventName, value]) => `${eventName}${getFlags(value)}`);
 
-      const formatRequiredProps = (propsMeta: ComponentMeta['propsMeta']): string =>
-        Object.entries(propsMeta ?? {})
+      const formatRequiredProps = (propsMeta: ComponentMeta['propsMeta']): string | undefined =>
+        propsMeta &&
+        Object.entries(propsMeta)
           .filter(([, { isRequired }]) => isRequired)
           .map(([propName]) => `<code>${propName}</code>`)
           .join('<br>');
