@@ -17,7 +17,7 @@ export const getUnusedTagNames = (tagNamesWithPropertiesAggregated: TagNamesAggr
   );
 
 export const getUnusedProperties = (propertiesAggregated: PropertiesAggregated, tagName: TagName): string[] =>
-  Object.keys(getComponentMeta(tagName).props || {}).filter((property) => !propertiesAggregated[property]);
+  Object.keys(getComponentMeta(tagName).propsMeta || {}).filter((property) => !propertiesAggregated[property]);
 
 export const incrementPropertyValues = (
   propValuesAggregated: PropertyValuesAggregated,

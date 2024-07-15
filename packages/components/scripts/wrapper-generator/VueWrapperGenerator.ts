@@ -44,7 +44,7 @@ ${[importsFromVue, importsFromUtils, importsFromTypes].filter(Boolean).join('\n'
       .filter((x) => !x.match(/ {2}on[A-Z][a-z]+.+/))
       .join(';\n');
 
-    return getComponentMeta(component).props ? `type ${propsName} = {${componentInterfaceWithoutEventProps}};` : '';
+    return getComponentMeta(component).propsMeta ? `type ${propsName} = {${componentInterfaceWithoutEventProps}};` : '';
   }
 
   public generateComponent(component: TagName, extendedProps: ExtendedProp[]): string {

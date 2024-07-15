@@ -2,6 +2,9 @@ import { Component, Element, h, Host, type JSX } from '@stencil/core';
 import { attachComponentCss, throwIfParentIsNotOfKind } from '../../../utils';
 import { getComponentCss } from './table-head-row-styles';
 
+/**
+ * @slot {"name": "", "description": "Default slot for the table head row content." }
+ */
 @Component({
   tag: 'p-table-head-row',
   shadow: true,

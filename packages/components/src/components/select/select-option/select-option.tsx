@@ -18,6 +18,9 @@ const propTypes: PropTypes<typeof SelectOption> = {
   disabled: AllowedTypes.boolean,
 };
 
+/**
+ * @slot {"name": "", "description": "Default slot for the option content." }
+ */
 @Component({
   tag: 'p-select-option',
   shadow: true,

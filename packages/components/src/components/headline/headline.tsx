@@ -30,7 +30,11 @@ const propTypes: Omit<PropTypes<typeof Headline>, 'variant'> = {
   theme: AllowedTypes.oneOf<Theme>(THEMES),
 };
 
-/** @deprecated since v3.0.0, will be removed with next major release. Please use "p-heading" instead. */
+/**
+ * @slot {"name": "", "description": "Default slot to render the headline." }
+ *
+ * @deprecated since v3.0.0, will be removed with next major release. Please use "p-heading" instead.
+ */
 @Component({
   tag: 'p-headline',
   shadow: true,

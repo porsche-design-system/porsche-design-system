@@ -20,6 +20,9 @@ const propTypes: PropTypes<typeof TextList> = {
   theme: AllowedTypes.oneOf<Theme>(THEMES),
 };
 
+/**
+ * @slot {"name": "", "description": "Default slot for the `p-text-list-item` tags or nested `p-text-list` tags." }
+ */
 @Component({
   tag: 'p-text-list',
   shadow: true,

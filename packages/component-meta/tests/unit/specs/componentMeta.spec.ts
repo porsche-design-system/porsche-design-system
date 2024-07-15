@@ -5,7 +5,7 @@ it('should match snapshot', () => {
 });
 
 it('should not contain comments', () => {
-  expect(JSON.stringify(componentMeta)).not.toMatch(/\/\//);
+  expect(JSON.stringify(componentMeta)).not.toMatch(/[^:]\/\//); // Allow urls e.g. https://www...
   expect(JSON.stringify(componentMeta)).not.toMatch(/\/\*/);
 });
 

@@ -51,6 +51,9 @@ const propTypes: PropTypes<typeof Scroller> = {
   aria: AllowedTypes.aria<ScrollerAriaAttribute>(SCROLLER_ARIA_ATTRIBUTES),
 };
 
+/**
+ * @slot {"name": "", "description": "Default slot for the scroller content." }
+ */
 @Component({
   tag: 'p-scroller',
   shadow: true,

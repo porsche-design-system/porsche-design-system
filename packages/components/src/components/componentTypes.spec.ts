@@ -14,8 +14,9 @@ describe.each<TagName>(TAG_NAMES.filter((x) => !INTERNAL_TAG_NAMES.includes(x)))
   const sourceFilePath = sourceFilePaths.find((item) => item.endsWith(`/${componentName}.tsx`));
   const sourceFileContent = fs.readFileSync(sourceFilePath, 'utf8');
 
-  const { props = {}, eventNames = [] } = getComponentMeta(tagName);
-  const relevantProps = Object.keys(props);
+  const { propsMeta = {}, eventsMeta = {} } = getComponentMeta(tagName);
+  const relevantProps = Object.keys(propsMeta);
+  const eventNames = Object.keys(eventsMeta);
 
   if (relevantProps.length) {
     describe('props', () => {
