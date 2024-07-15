@@ -64,6 +64,8 @@
           value = formatEvents(meta.eventsMeta);
         } else if (rowKey === 'requiredProps') {
           value = formatRequiredProps(meta.propsMeta);
+        } else if (rowKey === 'namedSlots') {
+          value = formatNamedSlots(meta.slotsMeta);
         }
         const cellContent = formatCellContent(value, rowKey);
         return `<p-table-cell>${cellContent}</p-table-cell>`;
@@ -117,6 +119,13 @@
         Object.entries(propsMeta)
           .filter(([, { isRequired }]) => isRequired)
           .map(([propName]) => `<code>${propName}</code>`)
+          .join('<br>');
+
+      const formatNamedSlots = (slotsMeta: ComponentMeta['slotsMeta']): string | undefined =>
+        slotsMeta &&
+        Object.entries(slotsMeta)
+          .filter(([slotName]) => slotName) // Filter out default slot with empty key ''
+          .map(([slotName]) => `<code>${slotName}</code>`)
           .join('<br>');
 
       const formatCellContent = (
