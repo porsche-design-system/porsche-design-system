@@ -37,7 +37,7 @@
     "@porsche-design-system/assets": "5.0.2",
     "@porsche-design-system/shared": "0.0.0",
     "@rushstack/eslint-patch": "^1.10.1",
-    "@testing-library/vue": "^8.0.3",
+    "@testing-library/vue": "^8.1.0",
     "@tsconfig/node18": "^18.2.4",
     "@vitejs/plugin-vue": "^5.0.4",
     "@vitejs/plugin-vue-jsx": "^3.1.0",

@@ -50,7 +50,7 @@
     "@angular/compiler-cli": "^18.1.0",
     "@angular/language-service": "^18.1.0",
     "@porsche-design-system/assets": "5.0.2",
-    "@testing-library/angular": "^16.0.0",
+    "@testing-library/angular": "^17.0.0",
     "@types/jasmine": "^5.1.4",
     "globby": "^11.1.0",
     "jest-preset-angular": "^14.1.1",
