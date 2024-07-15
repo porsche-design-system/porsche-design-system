@@ -5,11 +5,11 @@ reflected in the configuration file under `.github/dependabot.yml` and must be k
 
 ## Overview of Framework Versions
 
-|         | Monorepo | Sample Integrations    |
-| ------- | -------- | ---------------------- |
-| Angular | 17.3.0   | 17.1.1                 |
-| React   | 18.2.0   | 18.2.0                 |
-| Next.js | 14.1.3   | 13.4.19 (React 18.2.0) |
+|         | Monorepo | Sample Integrations   |
+| ------- | -------- | --------------------- |
+| Angular | 17.3.0   | 17.1.1                |
+| React   | 18.2.0   | 18.2.0                |
+| Next.js | 14.1.3   | 14.2.3 (React 18.3.1) |
 
 ## Playwright
 
