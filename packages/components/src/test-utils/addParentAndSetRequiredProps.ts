@@ -21,9 +21,9 @@ export const addParentAndSetRequiredProps = (tagName: TagName, component: any): 
     component[childTagName] = child;
   }
 
-  const requiredNamedSlots = Object.entries(slotsMeta ?? {}).filter(([, value]) => value.isRequired);
+  const requiredNamedSlots = slotsMeta && Object.entries(slotsMeta).filter(([, value]) => value.isRequired);
 
-  if (requiredNamedSlots.length > 0) {
+  if (requiredNamedSlots && requiredNamedSlots.length > 0) {
     requiredNamedSlots.forEach(([slotName, value]) => {
       const child = document.createElement(value.allowedTagNames[0]);
       child.slot = slotName;
@@ -36,11 +36,11 @@ export const addParentAndSetRequiredProps = (tagName: TagName, component: any): 
     });
   }
 
-  const requiredProps = propsMeta
-    ? Object.entries(propsMeta)
-        .filter(([, value]) => value.isRequired)
-        .map(([key]) => key)
-    : undefined;
+  const requiredProps =
+    propsMeta &&
+    Object.entries(propsMeta)
+      .filter(([, value]) => value.isRequired)
+      .map(([key]) => key);
 
   if (requiredProps) {
     requiredProps.forEach((prop) => {

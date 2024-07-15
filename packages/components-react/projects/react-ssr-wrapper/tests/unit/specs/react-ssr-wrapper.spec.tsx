@@ -30,9 +30,11 @@ it.each(Object.keys(fromComponents))('should render dsr component for %s', (comp
         .reduce((res, [key, val]) => ({ ...res, [key]: val }), {})
     : null;
 
-  const requiredNamedSlots = Object.entries(slotsMeta ?? {})
-    .filter(([, value]) => value.isRequired)
-    .map(([key, value]) => ({ slotName: key, tagName: value.allowedTagNames[0] }));
+  const requiredNamedSlots =
+    slotsMeta &&
+    Object.entries(slotsMeta)
+      .filter(([, value]) => value.isRequired)
+      .map(([key, value]) => ({ slotName: key, tagName: value.allowedTagNames[0] }));
 
   const renderNamedSlots = (slots: { slotName: string; tagName: SlotMeta['allowedTagNames'][number] }[]) =>
     slots.map(({ slotName, tagName }) => {
@@ -49,7 +51,7 @@ it.each(Object.keys(fromComponents))('should render dsr component for %s', (comp
       return <RequiredChildTag {...requiredChildProps} />;
     } else if (tagName === 'p-carousel') {
       return <div>Some child</div>;
-    } else if (requiredNamedSlots.length > 0) {
+    } else if (requiredNamedSlots && requiredNamedSlots.length > 0) {
       return renderNamedSlots(requiredNamedSlots);
     } else {
       return 'Some child';
