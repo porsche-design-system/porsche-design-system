@@ -31,7 +31,7 @@ describe('if global styles are missing', () => {
       );
     });
 
-    it('should inject font-face.min.css', () => {
+    it('should inject font-face.css', () => {
       const selector = `link[href='https://cdn.ui.porsche.com/porsche-design-system/styles/${FONT_FACE_CDN_FILE_COM}']`;
       expect(document.head.querySelector(selector)).toBeNull();
       injectGlobalStyle();

@@ -4,7 +4,7 @@ import { kebabCase } from 'change-case';
 import { renderToString } from 'react-dom/server';
 import { vi } from 'vitest';
 
-const hash = '[a-z0-9]{32}';
+const hash = '[a-z0-9]{7}';
 const baseHrefCom = 'https:\\/\\/cdn\\.ui\\.porsche\\.com\\/porsche-design-system\\/icons';
 const baseHrefCn = 'https:\\/\\/cdn\\.ui\\.porsche\\.cn\\/porsche-design-system\\/icons';
 
@@ -26,7 +26,7 @@ describe('format: html', () => {
   it('should return default link', () => {
     const result = getIconLinks();
     const regex = new RegExp(
-      `^<link rel=prefetch href=${baseHrefCom}/arrow-right\\.min\\.${hash}\\.svg as=image type=image/svg\\+xml crossorigin>$`
+      `^<link rel=prefetch href=${baseHrefCom}/arrow-right\\.${hash}\\.svg as=image type=image/svg\\+xml crossorigin>$`
     );
     expect(result).toMatch(regex);
   });
@@ -34,7 +34,7 @@ describe('format: html', () => {
   it('should return default link for china cdn', () => {
     const result = getIconLinks({ cdn: 'cn' });
     const regex = new RegExp(
-      `^<link rel=prefetch href=${baseHrefCn}/arrow-right\\.min\\.${hash}\\.svg as=image type=image/svg\\+xml crossorigin>$`
+      `^<link rel=prefetch href=${baseHrefCn}/arrow-right\\.${hash}\\.svg as=image type=image/svg\\+xml crossorigin>$`
     );
     expect(result).toMatch(regex);
   });
@@ -42,7 +42,7 @@ describe('format: html', () => {
   it('should return multiple links', () => {
     const result = getIconLinks({ icons: ['truck', 'volume-up', 'mobile'] });
     const regex = new RegExp(
-      `^<link rel=prefetch href=${baseHrefCom}/truck\\.min\\.${hash}\\.svg as=image type=image/svg\\+xml crossorigin><link rel=prefetch href=${baseHrefCom}/volume-up\\.min\\.${hash}\\.svg as=image type=image/svg\\+xml crossorigin><link rel=prefetch href=${baseHrefCom}/mobile\\.min\\.${hash}\\.svg as=image type=image/svg\\+xml crossorigin>$`
+      `^<link rel=prefetch href=${baseHrefCom}/truck\\.${hash}\\.svg as=image type=image/svg\\+xml crossorigin><link rel=prefetch href=${baseHrefCom}/volume-up\\.${hash}\\.svg as=image type=image/svg\\+xml crossorigin><link rel=prefetch href=${baseHrefCom}/mobile\\.${hash}\\.svg as=image type=image/svg\\+xml crossorigin>$`
     );
 
     expect(result).toMatch(regex);
@@ -54,7 +54,7 @@ describe('format: html', () => {
       const regex = new RegExp(
         `^<link rel=prefetch href=${baseHrefCom}/${kebabCase(
           iconName
-        )}.min.${hash}.svg as=image type=image/svg\\+xml crossorigin>$`
+        )}.${hash}.svg as=image type=image/svg\\+xml crossorigin>$`
       );
       expect(result).toMatch(regex);
     });
@@ -65,7 +65,7 @@ describe('format: jsx', () => {
   it('should return default link', () => {
     const result = getIconLinks({ format: 'jsx' });
     const regex = new RegExp(
-      `^<link rel="prefetch" href="${baseHrefCom}/arrow-right\\.min\\.${hash}\\.svg" as="image" type="image/svg\\+xml" crossorigin=""/>$`
+      `^<link rel="prefetch" href="${baseHrefCom}/arrow-right\\.${hash}\\.svg" as="image" type="image/svg\\+xml" crossorigin=""/>$`
     );
     expect(renderToString(result)).toMatch(regex);
   });
@@ -73,7 +73,7 @@ describe('format: jsx', () => {
   it('should return default link for china cdn', () => {
     const result = getIconLinks({ format: 'jsx', cdn: 'cn' });
     const regex = new RegExp(
-      `^<link rel="prefetch" href="${baseHrefCn}/arrow-right\\.min\\.${hash}\\.svg" as="image" type="image/svg\\+xml" crossorigin=""/>$`
+      `^<link rel="prefetch" href="${baseHrefCn}/arrow-right\\.${hash}\\.svg" as="image" type="image/svg\\+xml" crossorigin=""/>$`
     );
     expect(renderToString(result)).toMatch(regex);
   });
@@ -81,7 +81,7 @@ describe('format: jsx', () => {
   it('should return multiple links', () => {
     const result = getIconLinks({ format: 'jsx', icons: ['truck', 'volume-up', 'mobile'] });
     const regex = new RegExp(
-      `^<link rel="prefetch" href="${baseHrefCom}/truck\\.min\\.${hash}\\.svg" as="image" type="image/svg\\+xml" crossorigin=""/><link rel="prefetch" href="${baseHrefCom}/volume-up\\.min\\.${hash}\\.svg" as="image" type="image/svg\\+xml" crossorigin=""/><link rel="prefetch" href="${baseHrefCom}/mobile\\.min\\.${hash}.svg" as="image" type="image/svg\\+xml" crossorigin=""/>$`
+      `^<link rel="prefetch" href="${baseHrefCom}/truck\\.${hash}\\.svg" as="image" type="image/svg\\+xml" crossorigin=""/><link rel="prefetch" href="${baseHrefCom}/volume-up\\.${hash}\\.svg" as="image" type="image/svg\\+xml" crossorigin=""/><link rel="prefetch" href="${baseHrefCom}/mobile\\.${hash}.svg" as="image" type="image/svg\\+xml" crossorigin=""/>$`
     );
     expect(renderToString(result)).toMatch(regex);
   });
@@ -92,7 +92,7 @@ describe('format: jsx', () => {
       const regex = new RegExp(
         `^<link rel="prefetch" href="${baseHrefCom}/${kebabCase(
           iconName
-        )}\\.min\\.${hash}\\.svg" as="image" type="image/svg\\+xml" crossorigin=""/>$`
+        )}\\.${hash}\\.svg" as="image" type="image/svg\\+xml" crossorigin=""/>$`
       );
       expect(renderToString(result)).toMatch(regex);
     });

@@ -9,7 +9,7 @@ export function getDirectChildHTMLElements<E extends Element = Element>(element:
 export function getDirectChildHTMLElements(element: HTMLElement, selector: string): any {
   // querySelector(All) doesn't work with :scope pseudo class and comma separator in jsdom, yet
   // https://github.com/jsdom/jsdom/issues/3141
-  // therefore we got a workaround so it works nicely when consumed from jsdom-polyfill package
+  // therefore we got a workaround, so it works nicely when consumed from jsdom-polyfill package
   return transformSelectorToDirectChildSelector(selector)
     .split(',')
     .map((sel) => getHTMLElements(element, sel))
