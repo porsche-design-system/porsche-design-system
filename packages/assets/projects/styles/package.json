@@ -4,17 +4,32 @@
   "private": true,
   "license": "UNLICENSED",
   "scope": "@porsche-design-system",
-  "main": "dist/cjs/index.cjs",
-  "module": "dist/esm/index.mjs",
-  "types": "dist/esm/index.d.ts",
-  "sideEffects": false,
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/index.d.mts",
+        "default": "./dist/index.mjs"
+      },
+      "require": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      }
+    }
+  },
+  "types": "./dist/index.d.ts",
+  "files": [
+    "./dist/"
+  ],
+  "author": "Dr. Ing. h.c. F. Porsche AG",
+  "homepage": "https://designsystem.porsche.com",
   "scripts": {
-    "build": "yarn clean:build && yarn build:fontFace && yarn build:bundle",
-    "build:fontFace": "tsx scripts/buildFontFace.ts",
-    "build:bundle": "rollup -c rollup.config.js --bundleConfigAsCjs",
-    "test": "yarn test:unit",
+    "build": "yarn clean:build && yarn build:font-face && yarn build:lib",
+    "build:font-face": "tsx scripts/buildFontFace.ts",
+    "build:lib": "tsup index.ts --format esm,cjs --dts",
     "test:unit": "vitest --config tests/unit/config/vitest.config.ts",
-    "clean:build": "rm -rf ./dist && rm -rf ./src"
+    "clean:build": "rm -rf ./index.ts && rm -rf ./dist"
   },
   "devDependencies": {
     "@porsche-design-system/fonts": "0.0.0",
@@ -23,7 +38,7 @@
   "peerDependencies": {
     "change-case": "*",
     "jss": "*",
-    "jss-preset-default": "*",
+    "tsup": "*",
     "tsx": "*",
     "typescript": "*"
   },
