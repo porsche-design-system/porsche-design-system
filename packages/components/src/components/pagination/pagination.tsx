@@ -37,6 +37,9 @@ const propTypes: Omit<PropTypes<typeof Pagination>, 'maxNumberOfPageLinks'> = {
   theme: AllowedTypes.oneOf<Theme>(THEMES),
 };
 
+/**
+ * @controlled { "props": ["activePage"], "event": "update", "isInternallyMutated": true }
+ */
 @Component({
   tag: 'p-pagination',
   shadow: { delegatesFocus: true },

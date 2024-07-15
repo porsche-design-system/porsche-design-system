@@ -26,6 +26,9 @@ const propTypes: PropTypes<typeof ModelSignature> = {
   theme: AllowedTypes.oneOf<Theme>(THEMES),
 };
 
+/**
+ * @slot {"name": "", "description": "Default slot for an img or video tag when using the model-signature as a mask." }
+ */
 @Component({
   tag: 'p-model-signature',
   shadow: true,

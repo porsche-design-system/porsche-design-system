@@ -24,6 +24,9 @@ const propTypes: PropTypes<typeof TableHeadCell> = {
   multiline: AllowedTypes.boolean,
 };
 
+/**
+ * @slot {"name": "", "description": "Default slot for the table head cell content." }
+ */
 @Component({
   tag: 'p-table-head-cell',
   shadow: true,
