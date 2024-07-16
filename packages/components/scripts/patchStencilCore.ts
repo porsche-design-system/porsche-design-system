@@ -29,6 +29,8 @@ const patchStencilCore = (): void => {
   const pdsPatchStartRegEx = new RegExp(`(${PDS_PATCH_START})`, 'g');
   const getPatchMarkerCount = (script: string): number => (script.match(pdsPatchStartRegEx) || []).length;
 
+  console.log(fileContent);
+
   if (getPatchMarkerCount(fileContent) === 0) {
     // no markers found, patch stencil core
     const extractSnippet = `
@@ -66,12 +68,12 @@ const patchStencilCore = (): void => {
     const newFileContent = fileContent
       // inject applying snippets
       .replace(
-        /(if \(supportsShadow\) {)(\s+if \(BUILD20\.shadowDelegatesFocus\) {)([\s\S]+?;\n)/,
+        /(if \(supportsShadow\) {)(\s+if \(!self\.shadowRoot\) {\s+if \(BUILD[0-9]{2}\.shadowDelegatesFocus\) {)([\s\S]+?;\n)/,
         `$1${extractSnippet}$2${applySnippetPart1}$3${applySnippetPart2}`
       )
       // inject cleanup snippet
       .replace(
-        /\s+if \(BUILD12\.hydrateServerSide\) {\s+await callRender\(hostRef, instance, elm, isInitialLoad\);/,
+        /\s+if \(BUILD[0-9]{2}\.hydrateServerSide\) {\s+await callRender\(hostRef, instance, elm, isInitialLoad\);/,
         `${cleanupSnippet}$&`
       );
 
