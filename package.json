@@ -211,7 +211,7 @@
     "rollup-plugin-terser": "^7.0.2",
     "sass": "^1.77.8",
     "ts-jest": "^29.2.2",
-    "tsx": "^4.7.2",
+    "tsx": "^4.16.2",
     "typescript": "~5.4.5",
     "vite": "^5.3.3",
     "vitest": "^2.0.3",
