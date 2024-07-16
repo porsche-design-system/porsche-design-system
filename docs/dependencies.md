@@ -115,9 +115,7 @@ babel plugins, this is imported via text-field-wrapper.examples.md.
 
 - `imask`
 
-## @types/react
-
-Is currently fixed to "18.2.65" because of typing incompatibility with JSX namespace.
+---
 
 ## @types/scheduler
 
@@ -134,3 +132,11 @@ Is currently fixed to "0.16.8" because of typing error:
 
 Currently fixed because to 2.0.22 because resolution dependency uses an alpha version which causes problems in
 generating typings.
+
+---
+
+## eslint
+
+In order to migrate to v9 all configs have to be adjusted to the new
+[flat config](https://eslint.org/docs/latest/use/migrate-to-9.0.0#-new-default-config-format-eslintconfigjs). Some
+plugins are not yet migrated, see related [issue](https://github.com/eslint/eslint/issues/18391).
