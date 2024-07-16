@@ -29,6 +29,11 @@ const propTypes: PropTypes<typeof Switch> = {
   theme: AllowedTypes.oneOf<Theme>(THEMES),
 };
 
+/**
+ * @slot {"name": "", "description": "Default slot for the label." }
+ *
+ * @controlled {"props": ["checked"], "event": "update"}
+ */
 @Component({
   tag: 'p-switch',
   shadow: { delegatesFocus: true },

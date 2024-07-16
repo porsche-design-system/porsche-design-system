@@ -2,6 +2,9 @@ import { Component, Element, h, Host, type JSX } from '@stencil/core';
 import { attachComponentCss, throwIfParentIsNotOfKind } from '../../../utils';
 import { getComponentCss } from './text-list-item-styles';
 
+/**
+ * @slot {"name": "", "description": "Default slot for the content." }
+ */
 @Component({
   tag: 'p-text-list-item',
   shadow: true,

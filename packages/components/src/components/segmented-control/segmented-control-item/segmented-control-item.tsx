@@ -28,6 +28,9 @@ const propTypes: PropTypes<typeof SegmentedControlItem> = {
   aria: AllowedTypes.aria<SegmentedControlItemAriaAttribute>(SEGMENTED_CONTROL_ITEM_ARIA_ATTRIBUTES),
 };
 
+/**
+ * @slot {"name": "", "description": "Default slot for the content." }
+ */
 @Component({
   tag: 'p-segmented-control-item',
   shadow: { delegatesFocus: true },

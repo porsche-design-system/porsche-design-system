@@ -34,7 +34,10 @@ const propTypes: PropTypes<typeof Flex> = {
   alignContent: AllowedTypes.breakpoint<FlexAlignContent>(FLEX_ALIGN_CONTENTS),
 };
 
-/** @deprecated since v3.0.0, will be removed with next major release. Use native CSS Flex instead. */
+/**
+ * @slot {"name": "", "description": "Default slot for the flex items." }
+ * @deprecated since v3.0.0, will be removed with next major release. Use native CSS Flex instead.
+ */
 @Component({
   tag: 'p-flex',
   shadow: true,

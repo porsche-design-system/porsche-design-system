@@ -20,6 +20,9 @@ const propTypes: PropTypes<typeof Tag> = {
   iconSource: AllowedTypes.string,
 };
 
+/**
+ * @slot {"name": "", "description": "Default slot for the tag content." }
+ */
 @Component({
   tag: 'p-tag',
   shadow: true,

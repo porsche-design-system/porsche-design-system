@@ -31,6 +31,13 @@ const propTypes: Omit<PropTypes<typeof Banner>, 'width'> = {
   theme: AllowedTypes.oneOf<Theme>(THEMES),
 };
 
+/**
+ * @slot {"name": "heading", "description": "Defines the heading used in the banner. Can be used alternatively to the heading prop. Can be used for rich content.", "hasAltProp": true }
+ * @slot {"name": "title", "description": "Defines the title used in the banner. Can be used alternatively to the heading prop. Can be used for rich content.", "hasAltProp": true }
+ * @slot {"name": "description", "description": "Defines the description used in the banner. Can be used alternatively to the description prop. Can be used for rich content.", "hasAltProp": true }
+ *
+ * @controlled {"props": ["open"], "event": "dismiss"}
+ */
 @Component({
   tag: 'p-banner',
   shadow: true,
