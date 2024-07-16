@@ -41,7 +41,7 @@
     "@types/html-minifier": "^4.0.5",
     "html-minifier": "^4.0.0",
     "http-server": "^14.1.1",
-    "tslib": "^2.6.2"
+    "tslib": "^2.6.3"
   },
   "peerDependencies": {
     "@playwright/test": "*",
