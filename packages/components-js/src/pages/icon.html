@@ -79,7 +79,8 @@
     fetch('assets/icons.js')
       .then((res) => res.text())
       .then((content) => {
-        const [, str] = /const ICON_NAMES = (.*);/.exec(content);
+        console.log(content);
+        const [, str] = /var ICON_NAMES = (.*);/.exec(content);
         const ICON_NAMES = eval(str);
         const markup = ICON_NAMES.map(
           (x) => `<p-icon name="${x}" size="inherit" color="inherit" aria="{ 'aria-label': '${x}' }"></p-icon>`
