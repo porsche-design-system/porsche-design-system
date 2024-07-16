@@ -23,7 +23,7 @@
     "clean:build": "rm -rf ./index.ts && rm -rf ./dist"
   },
   "devDependencies": {
-    "svgo": "^3.2.0"
+    "svgo": "^3.3.2"
   },
   "peerDependencies": {
     "change-case": "*",
