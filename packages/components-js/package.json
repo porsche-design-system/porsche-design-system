@@ -86,7 +86,7 @@
     "@arethetypeswrong/core": "^0.15.1",
     "@porsche-design-system/shared": "0.0.0",
     "devtools-protocol": "^0.0.1304228",
-    "jsdom": "^24.0.0",
+    "jsdom": "^24.1.0",
     "local-web-server": "^5.3.3",
     "mime": "^4.0.4",
     "terser-webpack-plugin": "^5.3.10",
