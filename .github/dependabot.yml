@@ -18,8 +18,6 @@ updates:
     ignore:
       - dependency-name: "change-case"
         versions: [ ">=5" ]
-      - dependency-name: "@types/react"
-        versions: [ ">18.2.65" ]
       - dependency-name: "globby"
         versions: [ ">=12" ]
       - dependency-name: "styled-components"
