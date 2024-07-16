@@ -40,8 +40,8 @@
     "angular-imask": "^6.6.3",
     "imask": "^7.5.0",
     "rxjs": "^7.8.1",
-    "tslib": "^2.6.2",
-    "zone.js": "~0.14.4"
+    "tslib": "^2.6.3",
+    "zone.js": "~0.14.7"
   },
   "devDependencies": {
     "@angular-builders/custom-webpack": "^18.0.0",
