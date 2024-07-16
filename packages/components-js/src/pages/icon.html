@@ -79,7 +79,6 @@
     fetch('assets/icons.js')
       .then((res) => res.text())
       .then((content) => {
-        console.log(content);
         const [, str] = /var ICON_NAMES = (.*);/.exec(content);
         const ICON_NAMES = eval(str);
         const markup = ICON_NAMES.map(
