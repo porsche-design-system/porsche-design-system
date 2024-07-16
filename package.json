@@ -215,7 +215,7 @@
     "typescript": "~5.5.3",
     "vite": "^5.3.3",
     "vitest": "^2.0.3",
-    "webpack": "^5.93.0"
+    "webpack": "5.91.0"
   },
   "resolutions": {
     "**/@types/scheduler": "0.16.8",
