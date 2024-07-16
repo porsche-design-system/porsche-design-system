@@ -13,7 +13,7 @@
     "build:subPackages:lib": "yarn rollup -c ./projects/vue-wrapper/rollup.config.js --bundleConfigAsCjs",
     "build:subPackages:typings": "yarn build:subPackages:typings:jsdom-polyfill && yarn build:subPackages:typings:partials && yarn build:subPackages:typings:testing && yarn build:subPackages:typings:styles",
     "build:subPackages:typings:jsdom-polyfill": "tsc projects/vue-wrapper/src/jsdom-polyfill/index.ts --declaration --emitDeclarationOnly --declarationDir dist/vue-wrapper/jsdom-polyfill --types node",
-    "build:subPackages:typings:partials": "tsc projects/vue-wrapper/src/partials/index.ts --declaration --emitDeclarationOnly --declarationDir dist/vue-wrapper/partials --types node",
+    "build:subPackages:typings:partials": "tsc projects/vue-wrapper/src/partials/index.ts --declaration --emitDeclarationOnly --declarationDir dist/vue-wrapper/partials --types node --skipLibCheck true",
     "build:subPackages:typings:testing": "tsc projects/vue-wrapper/src/testing/index.ts --declaration --emitDeclarationOnly --declarationDir dist/vue-wrapper/testing --types node",
     "build:subPackages:typings:styles": "tsc projects/vue-wrapper/src/styles/index.ts --declaration --emitDeclarationOnly --declarationDir dist/vue-wrapper/styles/esm --types node",
     "build-app": "vue-tsc --noEmit --project tsconfig.app.json && vite build -c vite.config.app.mts",
