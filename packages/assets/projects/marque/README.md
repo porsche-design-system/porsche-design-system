@@ -1,9 +1,13 @@
-# Porsche Design System - Marque
+# `@porsche-design-system/marque`
+
+Copies marque in multiple resolutions, creates a manifest and private npm package (esm,cjs + types).
 
 ## Build
 
-Copy marque in multiple resolutions and create a manifest.
+- `yarn build`
+  - `yarn build:marque` (copies marque in multiple resolutions and creates a manifest)
+  - `yarn build:lib` (bundles library)
 
-```
-yarn build
-```
+## Clean
+
+- `yarn clean:build` (removes all auto generated files created by `yarn build`)

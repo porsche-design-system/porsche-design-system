@@ -1,5 +1,5 @@
 {
-  "name": "@porsche-design-system/marque",
+  "name": "@porsche-design-system/font-face",
   "version": "0.0.0",
   "private": true,
   "license": "UNLICENSED",
@@ -25,17 +25,19 @@
   "author": "Dr. Ing. h.c. F. Porsche AG",
   "homepage": "https://designsystem.porsche.com",
   "scripts": {
-    "build": "yarn clean:build && yarn build:marque && yarn build:lib",
-    "build:marque": "tsx scripts/build.ts",
+    "build": "yarn clean:build && yarn build:font-face && yarn build:lib",
+    "build:font-face": "tsx scripts/buildFontFace.ts",
     "build:lib": "tsup index.ts --format esm,cjs --dts",
+    "test:unit": "vitest --config tests/unit/config/vitest.config.ts",
     "clean:build": "rm -rf ./index.ts && rm -rf ./dist"
   },
   "devDependencies": {
+    "@porsche-design-system/fonts": "0.0.0",
     "@porsche-design-system/shared": "0.0.0"
   },
   "peerDependencies": {
     "change-case": "*",
-    "globby": "*",
+    "jss": "*",
     "tsup": "*",
     "tsx": "*",
     "typescript": "*"
