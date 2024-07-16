@@ -55,7 +55,7 @@
     "yup": "^1.4.0"
   },
   "devDependencies": {
-    "@types/prismjs": "^1.26.3",
+    "@types/prismjs": "^1.26.4",
     "@typescript-eslint/eslint-plugin": "^7.5.0",
     "@typescript-eslint/parser": "^7.5.0",
     "@vue/cli-plugin-babel": "^4.5.19",
