@@ -215,7 +215,7 @@
     "typescript": "~5.4.5",
     "vite": "^5.3.3",
     "vitest": "^2.0.3",
-    "webpack": "^5.91.0"
+    "webpack": "^5.93.0"
   },
   "resolutions": {
     "**/@types/react": "18.2.65",
