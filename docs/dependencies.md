@@ -127,3 +127,10 @@ Is currently fixed to "0.16.8" because of typing error:
 ../../node_modules/@types/react/index.d.ts:9:53 - error TS2307: Cannot find module 'scheduler/tracing' or its corresponding type declarations.
 9 import { Interaction as SchedulerInteraction } from "scheduler/tracing";
 ```
+
+---
+
+## vue-tsc (@porsche-design-system/vue)
+
+Currently fixed because to 2.0.22 because resolution dependency uses an alpha version which causes problems in
+generating typings.
