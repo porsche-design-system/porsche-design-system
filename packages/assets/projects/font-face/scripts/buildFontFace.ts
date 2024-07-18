@@ -33,10 +33,8 @@ export const FONT_FACE_CDN_FILE_COM = '${cdnFontFacePathCom}';
 export const FONT_FACE_CDN_FILE_CN = '${cdnFontFacePathCn}';
 `;
 
-  const targetDirectory = './src';
-  const targetPath = path.normalize(`${targetDirectory}/index.ts`);
+  const targetPath = path.normalize('./index.ts');
 
-  fs.mkdirSync(path.resolve(targetDirectory), { recursive: true });
   fs.writeFileSync(targetPath, content);
 };
 

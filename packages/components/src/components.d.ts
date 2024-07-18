@@ -131,7 +131,7 @@ export { ToastState } from "./components/toast/toast/toast-utils";
 export { WordmarkAriaAttribute, WordmarkSize, WordmarkTarget } from "./components/wordmark/wordmark-utils";
 export namespace Components {
     /**
-     * @controlled {"prop": "open", "event": "update"}
+     * @controlled {"props": ["open"], "event": "update"}
      */
     interface PAccordion {
         /**
@@ -168,7 +168,7 @@ export namespace Components {
         "theme"?: Theme;
     }
     /**
-     * @controlled {"prop": "open", "event": "dismiss"}
+     * @controlled {"props": ["open"], "event": "dismiss"}
      */
     interface PBanner {
         /**
@@ -391,8 +391,8 @@ export namespace Components {
         "weight"?: BreakpointCustomizable<ButtonTileWeight>;
     }
     /**
-     * @controlled {"prop": "sidebarStartOpen", "event": "dismissSidebarStart"}
-     * @controlled {"prop": "sidebarEndOpen", "event": "dismissSidebarEnd"}
+     * @controlled {"props": ["sidebarStartOpen"], "event": "dismissSidebarStart"}
+     * @controlled {"props": ["sidebarEndOpen"], "event": "dismissSidebarEnd"}
      * @experimental 
      */
     interface PCanvas {
@@ -413,6 +413,9 @@ export namespace Components {
          */
         "sidebarStartWidth"?: CanvasSidebarStartWidth;
     }
+    /**
+     * @controlled { "props": ["activeSlideIndex"], "event": "update", "isInternallyMutated": true }
+     */
     interface PCarousel {
         /**
           * Defines which slide to be active (zero-based numbering).
@@ -693,7 +696,7 @@ export namespace Components {
         "width"?: BreakpointCustomizable<FlexItemWidth>;
     }
     /**
-     * @controlled {"prop": "open", "event": "dismiss"}
+     * @controlled {"props": ["open"], "event": "dismiss"}
      */
     interface PFlyout {
         /**
@@ -718,8 +721,8 @@ export namespace Components {
         "theme"?: Theme;
     }
     /**
-     * @controlled {"prop": "open", "event": "dismiss"}
-     * @controlled {"prop": "activeIdentifier", "event": "update"}
+     * @controlled {"props": ["open"], "event": "dismiss"}
+     * @controlled {"props": ["activeIdentifier"], "event": "update"}
      * @experimental 
      */
     interface PFlyoutMultilevel {
@@ -1139,7 +1142,7 @@ export namespace Components {
         "weight"?: BreakpointCustomizable<LinkTileModelSignatureWeight>;
     }
     /**
-     * @controlled {"prop": "liked", "event": "like"}
+     * @controlled {"props": ["liked"], "event": "like"}
      * @experimental 
      */
     interface PLinkTileProduct {
@@ -1218,7 +1221,7 @@ export namespace Components {
         "variant"?: MarqueVariant;
     }
     /**
-     * @controlled {"prop": "open", "event": "dismiss"}
+     * @controlled {"props": ["open"], "event": "dismiss"}
      */
     interface PModal {
         /**
@@ -1289,6 +1292,9 @@ export namespace Components {
          */
         "theme"?: Theme;
     }
+    /**
+     * @controlled { "props": ["value"], "event": "update", "isInternallyMutated": true }
+     */
     interface PMultiSelect {
         /**
           * The description text.
@@ -1345,6 +1351,9 @@ export namespace Components {
          */
         "value": string;
     }
+    /**
+     * @controlled { "props": ["activePage"], "event": "update", "isInternallyMutated": true }
+     */
     interface PPagination {
         /**
           * Index of the currently active page.
@@ -1392,6 +1401,9 @@ export namespace Components {
          */
         "totalItemsCount": number;
     }
+    /**
+     * @controlled { "props": ["value"], "event": "update", "isInternallyMutated": true }
+     */
     interface PPinCode {
         /**
           * The description text.
@@ -1524,6 +1536,9 @@ export namespace Components {
          */
         "theme"?: Theme;
     }
+    /**
+     * @controlled { "props": ["value"], "event": "update", "isInternallyMutated": true }
+     */
     interface PSegmentedControl {
         /**
           * @deprecated since v3.0.0, will be removed with next major release. Background color variations
@@ -1568,6 +1583,9 @@ export namespace Components {
          */
         "value": string | number;
     }
+    /**
+     * @controlled { "props": ["value"], "event": "update", "isInternallyMutated": true }
+     */
     interface PSelect {
         /**
           * The description text.
@@ -1711,7 +1729,7 @@ export namespace Components {
         "state"?: StepperHorizontalItemState;
     }
     /**
-     * @controlled {"prop": "checked", "event": "update"}
+     * @controlled {"props": ["checked"], "event": "update"}
      */
     interface PSwitch {
         /**
@@ -1781,6 +1799,9 @@ export namespace Components {
     }
     interface PTableRow {
     }
+    /**
+     * @controlled { "props": ["activeTabIndex"], "event": "update", "isInternallyMutated": true }
+     */
     interface PTabs {
         /**
           * Defines which tab to be visualized as selected (zero-based numbering).
@@ -1808,7 +1829,7 @@ export namespace Components {
         "weight"?: TabsWeight;
     }
     /**
-     * @controlled {"prop": "activeTabIndex", "event": "update"}
+     * @controlled {"props": ["activeTabIndex"], "event": "update"}
      */
     interface PTabsBar {
         /**
@@ -2154,7 +2175,7 @@ declare global {
         "update": AccordionUpdateEventDetail;
     }
     /**
-     * @controlled {"prop": "open", "event": "update"}
+     * @controlled {"props": ["open"], "event": "update"}
      */
     interface HTMLPAccordionElement extends Components.PAccordion, HTMLStencilElement {
         addEventListener<K extends keyof HTMLPAccordionElementEventMap>(type: K, listener: (this: HTMLPAccordionElement, ev: PAccordionCustomEvent<HTMLPAccordionElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
@@ -2174,7 +2195,7 @@ declare global {
         "dismiss": void;
     }
     /**
-     * @controlled {"prop": "open", "event": "dismiss"}
+     * @controlled {"props": ["open"], "event": "dismiss"}
      */
     interface HTMLPBannerElement extends Components.PBanner, HTMLStencilElement {
         addEventListener<K extends keyof HTMLPBannerElementEventMap>(type: K, listener: (this: HTMLPBannerElement, ev: PBannerCustomEvent<HTMLPBannerElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
@@ -2219,8 +2240,8 @@ declare global {
         "dismissSidebarEnd": void;
     }
     /**
-     * @controlled {"prop": "sidebarStartOpen", "event": "dismissSidebarStart"}
-     * @controlled {"prop": "sidebarEndOpen", "event": "dismissSidebarEnd"}
+     * @controlled {"props": ["sidebarStartOpen"], "event": "dismissSidebarStart"}
+     * @controlled {"props": ["sidebarEndOpen"], "event": "dismissSidebarEnd"}
      * @experimental 
      */
     interface HTMLPCanvasElement extends Components.PCanvas, HTMLStencilElement {
@@ -2241,6 +2262,9 @@ declare global {
         "carouselChange": CarouselUpdateEventDetail;
         "update": CarouselUpdateEventDetail;
     }
+    /**
+     * @controlled { "props": ["activeSlideIndex"], "event": "update", "isInternallyMutated": true }
+     */
     interface HTMLPCarouselElement extends Components.PCarousel, HTMLStencilElement {
         addEventListener<K extends keyof HTMLPCarouselElementEventMap>(type: K, listener: (this: HTMLPCarouselElement, ev: PCarouselCustomEvent<HTMLPCarouselElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
@@ -2325,7 +2349,7 @@ declare global {
         "dismiss": void;
     }
     /**
-     * @controlled {"prop": "open", "event": "dismiss"}
+     * @controlled {"props": ["open"], "event": "dismiss"}
      */
     interface HTMLPFlyoutElement extends Components.PFlyout, HTMLStencilElement {
         addEventListener<K extends keyof HTMLPFlyoutElementEventMap>(type: K, listener: (this: HTMLPFlyoutElement, ev: PFlyoutCustomEvent<HTMLPFlyoutElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
@@ -2346,8 +2370,8 @@ declare global {
         "update": FlyoutMultilevelUpdateEventDetail;
     }
     /**
-     * @controlled {"prop": "open", "event": "dismiss"}
-     * @controlled {"prop": "activeIdentifier", "event": "update"}
+     * @controlled {"props": ["open"], "event": "dismiss"}
+     * @controlled {"props": ["activeIdentifier"], "event": "update"}
      * @experimental 
      */
     interface HTMLPFlyoutMultilevelElement extends Components.PFlyoutMultilevel, HTMLStencilElement {
@@ -2467,7 +2491,7 @@ declare global {
         "like": LinkTileProductLikeEventDetail;
     }
     /**
-     * @controlled {"prop": "liked", "event": "like"}
+     * @controlled {"props": ["liked"], "event": "like"}
      * @experimental 
      */
     interface HTMLPLinkTileProductElement extends Components.PLinkTileProduct, HTMLStencilElement {
@@ -2498,7 +2522,7 @@ declare global {
         "dismiss": void;
     }
     /**
-     * @controlled {"prop": "open", "event": "dismiss"}
+     * @controlled {"props": ["open"], "event": "dismiss"}
      */
     interface HTMLPModalElement extends Components.PModal, HTMLStencilElement {
         addEventListener<K extends keyof HTMLPModalElementEventMap>(type: K, listener: (this: HTMLPModalElement, ev: PModalCustomEvent<HTMLPModalElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
@@ -2523,6 +2547,9 @@ declare global {
     interface HTMLPMultiSelectElementEventMap {
         "update": MultiSelectUpdateEventDetail;
     }
+    /**
+     * @controlled { "props": ["value"], "event": "update", "isInternallyMutated": true }
+     */
     interface HTMLPMultiSelectElement extends Components.PMultiSelect, HTMLStencilElement {
         addEventListener<K extends keyof HTMLPMultiSelectElementEventMap>(type: K, listener: (this: HTMLPMultiSelectElement, ev: PMultiSelectCustomEvent<HTMLPMultiSelectElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
@@ -2547,6 +2574,9 @@ declare global {
         "pageChange": PaginationUpdateEventDetail;
         "update": PaginationUpdateEventDetail;
     }
+    /**
+     * @controlled { "props": ["activePage"], "event": "update", "isInternallyMutated": true }
+     */
     interface HTMLPPaginationElement extends Components.PPagination, HTMLStencilElement {
         addEventListener<K extends keyof HTMLPPaginationElementEventMap>(type: K, listener: (this: HTMLPPaginationElement, ev: PPaginationCustomEvent<HTMLPPaginationElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
@@ -2564,6 +2594,9 @@ declare global {
     interface HTMLPPinCodeElementEventMap {
         "update": PinCodeUpdateEventDetail;
     }
+    /**
+     * @controlled { "props": ["value"], "event": "update", "isInternallyMutated": true }
+     */
     interface HTMLPPinCodeElement extends Components.PPinCode, HTMLStencilElement {
         addEventListener<K extends keyof HTMLPPinCodeElementEventMap>(type: K, listener: (this: HTMLPPinCodeElement, ev: PPinCodeCustomEvent<HTMLPPinCodeElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
@@ -2600,6 +2633,9 @@ declare global {
         "segmentedControlChange": SegmentedControlUpdateEventDetail;
         "update": SegmentedControlUpdateEventDetail;
     }
+    /**
+     * @controlled { "props": ["value"], "event": "update", "isInternallyMutated": true }
+     */
     interface HTMLPSegmentedControlElement extends Components.PSegmentedControl, HTMLStencilElement {
         addEventListener<K extends keyof HTMLPSegmentedControlElementEventMap>(type: K, listener: (this: HTMLPSegmentedControlElement, ev: PSegmentedControlCustomEvent<HTMLPSegmentedControlElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
@@ -2623,6 +2659,9 @@ declare global {
     interface HTMLPSelectElementEventMap {
         "update": SelectUpdateEventDetail;
     }
+    /**
+     * @controlled { "props": ["value"], "event": "update", "isInternallyMutated": true }
+     */
     interface HTMLPSelectElement extends Components.PSelect, HTMLStencilElement {
         addEventListener<K extends keyof HTMLPSelectElementEventMap>(type: K, listener: (this: HTMLPSelectElement, ev: PSelectCustomEvent<HTMLPSelectElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
@@ -2690,7 +2729,7 @@ declare global {
         "update": SwitchUpdateEventDetail;
     }
     /**
-     * @controlled {"prop": "checked", "event": "update"}
+     * @controlled {"props": ["checked"], "event": "update"}
      */
     interface HTMLPSwitchElement extends Components.PSwitch, HTMLStencilElement {
         addEventListener<K extends keyof HTMLPSwitchElementEventMap>(type: K, listener: (this: HTMLPSwitchElement, ev: PSwitchCustomEvent<HTMLPSwitchElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
@@ -2764,6 +2803,9 @@ declare global {
         "tabChange": TabsUpdateEventDetail;
         "update": TabsUpdateEventDetail;
     }
+    /**
+     * @controlled { "props": ["activeTabIndex"], "event": "update", "isInternallyMutated": true }
+     */
     interface HTMLPTabsElement extends Components.PTabs, HTMLStencilElement {
         addEventListener<K extends keyof HTMLPTabsElementEventMap>(type: K, listener: (this: HTMLPTabsElement, ev: PTabsCustomEvent<HTMLPTabsElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
@@ -2783,7 +2825,7 @@ declare global {
         "update": TabsBarUpdateEventDetail;
     }
     /**
-     * @controlled {"prop": "activeTabIndex", "event": "update"}
+     * @controlled {"props": ["activeTabIndex"], "event": "update"}
      */
     interface HTMLPTabsBarElement extends Components.PTabsBar, HTMLStencilElement {
         addEventListener<K extends keyof HTMLPTabsBarElementEventMap>(type: K, listener: (this: HTMLPTabsBarElement, ev: PTabsBarCustomEvent<HTMLPTabsBarElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
@@ -2964,7 +3006,7 @@ declare global {
 }
 declare namespace LocalJSX {
     /**
-     * @controlled {"prop": "open", "event": "update"}
+     * @controlled {"props": ["open"], "event": "update"}
      */
     interface PAccordion {
         /**
@@ -3009,7 +3051,7 @@ declare namespace LocalJSX {
         "theme"?: Theme;
     }
     /**
-     * @controlled {"prop": "open", "event": "dismiss"}
+     * @controlled {"props": ["open"], "event": "dismiss"}
      */
     interface PBanner {
         /**
@@ -3236,8 +3278,8 @@ declare namespace LocalJSX {
         "weight"?: BreakpointCustomizable<ButtonTileWeight>;
     }
     /**
-     * @controlled {"prop": "sidebarStartOpen", "event": "dismissSidebarStart"}
-     * @controlled {"prop": "sidebarEndOpen", "event": "dismissSidebarEnd"}
+     * @controlled {"props": ["sidebarStartOpen"], "event": "dismissSidebarStart"}
+     * @controlled {"props": ["sidebarEndOpen"], "event": "dismissSidebarEnd"}
      * @experimental 
      */
     interface PCanvas {
@@ -3266,6 +3308,9 @@ declare namespace LocalJSX {
          */
         "sidebarStartWidth"?: CanvasSidebarStartWidth;
     }
+    /**
+     * @controlled { "props": ["activeSlideIndex"], "event": "update", "isInternallyMutated": true }
+     */
     interface PCarousel {
         /**
           * Defines which slide to be active (zero-based numbering).
@@ -3554,7 +3599,7 @@ declare namespace LocalJSX {
         "width"?: BreakpointCustomizable<FlexItemWidth>;
     }
     /**
-     * @controlled {"prop": "open", "event": "dismiss"}
+     * @controlled {"props": ["open"], "event": "dismiss"}
      */
     interface PFlyout {
         /**
@@ -3583,8 +3628,8 @@ declare namespace LocalJSX {
         "theme"?: Theme;
     }
     /**
-     * @controlled {"prop": "open", "event": "dismiss"}
-     * @controlled {"prop": "activeIdentifier", "event": "update"}
+     * @controlled {"props": ["open"], "event": "dismiss"}
+     * @controlled {"props": ["activeIdentifier"], "event": "update"}
      * @experimental 
      */
     interface PFlyoutMultilevel {
@@ -4020,7 +4065,7 @@ declare namespace LocalJSX {
         "weight"?: BreakpointCustomizable<LinkTileModelSignatureWeight>;
     }
     /**
-     * @controlled {"prop": "liked", "event": "like"}
+     * @controlled {"props": ["liked"], "event": "like"}
      * @experimental 
      */
     interface PLinkTileProduct {
@@ -4103,7 +4148,7 @@ declare namespace LocalJSX {
         "variant"?: MarqueVariant;
     }
     /**
-     * @controlled {"prop": "open", "event": "dismiss"}
+     * @controlled {"props": ["open"], "event": "dismiss"}
      */
     interface PModal {
         /**
@@ -4182,6 +4227,9 @@ declare namespace LocalJSX {
          */
         "theme"?: Theme;
     }
+    /**
+     * @controlled { "props": ["value"], "event": "update", "isInternallyMutated": true }
+     */
     interface PMultiSelect {
         /**
           * The description text.
@@ -4242,6 +4290,9 @@ declare namespace LocalJSX {
          */
         "value"?: string;
     }
+    /**
+     * @controlled { "props": ["activePage"], "event": "update", "isInternallyMutated": true }
+     */
     interface PPagination {
         /**
           * Index of the currently active page.
@@ -4297,6 +4348,9 @@ declare namespace LocalJSX {
          */
         "totalItemsCount"?: number;
     }
+    /**
+     * @controlled { "props": ["value"], "event": "update", "isInternallyMutated": true }
+     */
     interface PPinCode {
         /**
           * The description text.
@@ -4433,6 +4487,9 @@ declare namespace LocalJSX {
          */
         "theme"?: Theme;
     }
+    /**
+     * @controlled { "props": ["value"], "event": "update", "isInternallyMutated": true }
+     */
     interface PSegmentedControl {
         /**
           * @deprecated since v3.0.0, will be removed with next major release. Background color variations
@@ -4485,6 +4542,9 @@ declare namespace LocalJSX {
          */
         "value"?: string | number;
     }
+    /**
+     * @controlled { "props": ["value"], "event": "update", "isInternallyMutated": true }
+     */
     interface PSelect {
         /**
           * The description text.
@@ -4640,7 +4700,7 @@ declare namespace LocalJSX {
         "state"?: StepperHorizontalItemState;
     }
     /**
-     * @controlled {"prop": "checked", "event": "update"}
+     * @controlled {"props": ["checked"], "event": "update"}
      */
     interface PSwitch {
         /**
@@ -4726,6 +4786,9 @@ declare namespace LocalJSX {
     }
     interface PTableRow {
     }
+    /**
+     * @controlled { "props": ["activeTabIndex"], "event": "update", "isInternallyMutated": true }
+     */
     interface PTabs {
         /**
           * Defines which tab to be visualized as selected (zero-based numbering).
@@ -4761,7 +4824,7 @@ declare namespace LocalJSX {
         "weight"?: TabsWeight;
     }
     /**
-     * @controlled {"prop": "activeTabIndex", "event": "update"}
+     * @controlled {"props": ["activeTabIndex"], "event": "update"}
      */
     interface PTabsBar {
         /**
@@ -5111,11 +5174,11 @@ declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
             /**
-             * @controlled {"prop": "open", "event": "update"}
+             * @controlled {"props": ["open"], "event": "update"}
              */
             "p-accordion": LocalJSX.PAccordion & JSXBase.HTMLAttributes<HTMLPAccordionElement>;
             /**
-             * @controlled {"prop": "open", "event": "dismiss"}
+             * @controlled {"props": ["open"], "event": "dismiss"}
              */
             "p-banner": LocalJSX.PBanner & JSXBase.HTMLAttributes<HTMLPBannerElement>;
             "p-button": LocalJSX.PButton & JSXBase.HTMLAttributes<HTMLPButtonElement>;
@@ -5123,11 +5186,14 @@ declare module "@stencil/core" {
             "p-button-pure": LocalJSX.PButtonPure & JSXBase.HTMLAttributes<HTMLPButtonPureElement>;
             "p-button-tile": LocalJSX.PButtonTile & JSXBase.HTMLAttributes<HTMLPButtonTileElement>;
             /**
-             * @controlled {"prop": "sidebarStartOpen", "event": "dismissSidebarStart"}
-             * @controlled {"prop": "sidebarEndOpen", "event": "dismissSidebarEnd"}
+             * @controlled {"props": ["sidebarStartOpen"], "event": "dismissSidebarStart"}
+             * @controlled {"props": ["sidebarEndOpen"], "event": "dismissSidebarEnd"}
              * @experimental 
              */
             "p-canvas": LocalJSX.PCanvas & JSXBase.HTMLAttributes<HTMLPCanvasElement>;
+            /**
+             * @controlled { "props": ["activeSlideIndex"], "event": "update", "isInternallyMutated": true }
+             */
             "p-carousel": LocalJSX.PCarousel & JSXBase.HTMLAttributes<HTMLPCarouselElement>;
             "p-checkbox-wrapper": LocalJSX.PCheckboxWrapper & JSXBase.HTMLAttributes<HTMLPCheckboxWrapperElement>;
             /**
@@ -5151,12 +5217,12 @@ declare module "@stencil/core" {
              */
             "p-flex-item": LocalJSX.PFlexItem & JSXBase.HTMLAttributes<HTMLPFlexItemElement>;
             /**
-             * @controlled {"prop": "open", "event": "dismiss"}
+             * @controlled {"props": ["open"], "event": "dismiss"}
              */
             "p-flyout": LocalJSX.PFlyout & JSXBase.HTMLAttributes<HTMLPFlyoutElement>;
             /**
-             * @controlled {"prop": "open", "event": "dismiss"}
-             * @controlled {"prop": "activeIdentifier", "event": "update"}
+             * @controlled {"props": ["open"], "event": "dismiss"}
+             * @controlled {"props": ["activeIdentifier"], "event": "update"}
              * @experimental 
              */
             "p-flyout-multilevel": LocalJSX.PFlyoutMultilevel & JSXBase.HTMLAttributes<HTMLPFlyoutMultilevelElement>;
@@ -5188,7 +5254,7 @@ declare module "@stencil/core" {
             "p-link-tile": LocalJSX.PLinkTile & JSXBase.HTMLAttributes<HTMLPLinkTileElement>;
             "p-link-tile-model-signature": LocalJSX.PLinkTileModelSignature & JSXBase.HTMLAttributes<HTMLPLinkTileModelSignatureElement>;
             /**
-             * @controlled {"prop": "liked", "event": "like"}
+             * @controlled {"props": ["liked"], "event": "like"}
              * @experimental 
              */
             "p-link-tile-product": LocalJSX.PLinkTileProduct & JSXBase.HTMLAttributes<HTMLPLinkTileProductElement>;
@@ -5197,19 +5263,34 @@ declare module "@stencil/core" {
              */
             "p-marque": LocalJSX.PMarque & JSXBase.HTMLAttributes<HTMLPMarqueElement>;
             /**
-             * @controlled {"prop": "open", "event": "dismiss"}
+             * @controlled {"props": ["open"], "event": "dismiss"}
              */
             "p-modal": LocalJSX.PModal & JSXBase.HTMLAttributes<HTMLPModalElement>;
             "p-model-signature": LocalJSX.PModelSignature & JSXBase.HTMLAttributes<HTMLPModelSignatureElement>;
+            /**
+             * @controlled { "props": ["value"], "event": "update", "isInternallyMutated": true }
+             */
             "p-multi-select": LocalJSX.PMultiSelect & JSXBase.HTMLAttributes<HTMLPMultiSelectElement>;
             "p-multi-select-option": LocalJSX.PMultiSelectOption & JSXBase.HTMLAttributes<HTMLPMultiSelectOptionElement>;
+            /**
+             * @controlled { "props": ["activePage"], "event": "update", "isInternallyMutated": true }
+             */
             "p-pagination": LocalJSX.PPagination & JSXBase.HTMLAttributes<HTMLPPaginationElement>;
+            /**
+             * @controlled { "props": ["value"], "event": "update", "isInternallyMutated": true }
+             */
             "p-pin-code": LocalJSX.PPinCode & JSXBase.HTMLAttributes<HTMLPPinCodeElement>;
             "p-popover": LocalJSX.PPopover & JSXBase.HTMLAttributes<HTMLPPopoverElement>;
             "p-radio-button-wrapper": LocalJSX.PRadioButtonWrapper & JSXBase.HTMLAttributes<HTMLPRadioButtonWrapperElement>;
             "p-scroller": LocalJSX.PScroller & JSXBase.HTMLAttributes<HTMLPScrollerElement>;
+            /**
+             * @controlled { "props": ["value"], "event": "update", "isInternallyMutated": true }
+             */
             "p-segmented-control": LocalJSX.PSegmentedControl & JSXBase.HTMLAttributes<HTMLPSegmentedControlElement>;
             "p-segmented-control-item": LocalJSX.PSegmentedControlItem & JSXBase.HTMLAttributes<HTMLPSegmentedControlItemElement>;
+            /**
+             * @controlled { "props": ["value"], "event": "update", "isInternallyMutated": true }
+             */
             "p-select": LocalJSX.PSelect & JSXBase.HTMLAttributes<HTMLPSelectElement>;
             "p-select-option": LocalJSX.PSelectOption & JSXBase.HTMLAttributes<HTMLPSelectOptionElement>;
             "p-select-wrapper": LocalJSX.PSelectWrapper & JSXBase.HTMLAttributes<HTMLPSelectWrapperElement>;
@@ -5218,7 +5299,7 @@ declare module "@stencil/core" {
             "p-stepper-horizontal": LocalJSX.PStepperHorizontal & JSXBase.HTMLAttributes<HTMLPStepperHorizontalElement>;
             "p-stepper-horizontal-item": LocalJSX.PStepperHorizontalItem & JSXBase.HTMLAttributes<HTMLPStepperHorizontalItemElement>;
             /**
-             * @controlled {"prop": "checked", "event": "update"}
+             * @controlled {"props": ["checked"], "event": "update"}
              */
             "p-switch": LocalJSX.PSwitch & JSXBase.HTMLAttributes<HTMLPSwitchElement>;
             "p-table": LocalJSX.PTable & JSXBase.HTMLAttributes<HTMLPTableElement>;
@@ -5228,9 +5309,12 @@ declare module "@stencil/core" {
             "p-table-head-cell": LocalJSX.PTableHeadCell & JSXBase.HTMLAttributes<HTMLPTableHeadCellElement>;
             "p-table-head-row": LocalJSX.PTableHeadRow & JSXBase.HTMLAttributes<HTMLPTableHeadRowElement>;
             "p-table-row": LocalJSX.PTableRow & JSXBase.HTMLAttributes<HTMLPTableRowElement>;
+            /**
+             * @controlled { "props": ["activeTabIndex"], "event": "update", "isInternallyMutated": true }
+             */
             "p-tabs": LocalJSX.PTabs & JSXBase.HTMLAttributes<HTMLPTabsElement>;
             /**
-             * @controlled {"prop": "activeTabIndex", "event": "update"}
+             * @controlled {"props": ["activeTabIndex"], "event": "update"}
              */
             "p-tabs-bar": LocalJSX.PTabsBar & JSXBase.HTMLAttributes<HTMLPTabsBarElement>;
             "p-tabs-item": LocalJSX.PTabsItem & JSXBase.HTMLAttributes<HTMLPTabsItemElement>;

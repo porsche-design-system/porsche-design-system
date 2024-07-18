@@ -3,9 +3,9 @@ import * as path from 'path';
 import * as crypto from 'crypto';
 import { globbySync } from 'globby';
 import { kebabCase } from 'change-case';
-import { optimize, Config } from 'svgo';
-import { CDN_BASE_PATH_MODEL_SIGNATURES } from '../../../../../cdn.config';
+import { optimize, type Config } from 'svgo';
 import { config } from '../svgo.config';
+import { CDN_BASE_PATH_MODEL_SIGNATURES } from '../../../../../cdn.config';
 
 type Manifest = {
   [name: string]: {

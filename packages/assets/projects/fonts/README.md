@@ -1,9 +1,13 @@
-# Porsche Design System - Fonts
+# `@porsche-design-system/fonts`
+
+Copies font files, creates a manifest and private npm package (esm,cjs + types).
 
 ## Build
 
-Copy font files with content-based hash and create a manifest.
+- `yarn build`
+  - `yarn build:fonts` (copies font files and creates a manifest)
+  - `yarn build:lib` (bundles library)
 
-```
-yarn build
-```
+## Clean
+
+- `yarn clean:build` (removes all auto generated files created by `yarn build`)
