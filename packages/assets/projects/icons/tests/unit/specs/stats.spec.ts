@@ -1,3 +1,4 @@
+import { describe, test, expect, afterAll } from 'vitest';
 import * as statsFixture from './../fixtures/stats.json';
 import * as statsResult from './../results/stats.json';
 import { logStatsDiffAsTable, type StatsDiff } from '../helpers/log';

@@ -47,6 +47,9 @@ const propTypes: PropTypes<typeof LinkPure> = {
   aria: AllowedTypes.aria<LinkPureAriaAttribute>(LINK_ARIA_ATTRIBUTES),
 };
 
+/**
+ * @slot {"name": "", "description": "Default slot to render the link label." }
+ */
 @Component({
   tag: 'p-link-pure',
   shadow: { delegatesFocus: true },

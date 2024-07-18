@@ -1,14 +1,18 @@
-# Porsche Design System - Model Signatures
+# `@porsche-design-system/model-signatures`
+
+Optimizes SVG model signatures, creates a manifest and private npm package (esm,cjs + types).
 
 The assets in the `./src` directory contain the unmodified originals, while SVGO optimizes those during the build
-process. The original **Model Signatures** are created without safe zone, a varying width (integer, not decimal numbers)
-and a height of `24px`-`25px` (without descenders) or `35px`-`36px` (with descenders). The height range can be used to
+process. The original model signatures are created without safe zone, a varying width (integer, not decimal numbers) and
+a height of `24px`-`25px` (without descenders) or `35px`-`36px` (with descenders). The height range can be used to
 create a visual balance between the signatures while the max-height has to be `36px`.
 
 ## Build
 
-Copy model signature assets and create a manifest.
+- `yarn build`
+  - `yarn build:model-signatures` (optimizes SVG model signatures with `svgo` and creates a manifest)
+  - `yarn build:lib` (bundles library)
 
-```
-yarn build
-```
+## Clean
+
+- `yarn clean:build` (removes all auto generated files created by `yarn build`)

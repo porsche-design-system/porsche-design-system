@@ -30,6 +30,9 @@ const propTypes: PropTypes<typeof StepperHorizontal> = {
   theme: AllowedTypes.oneOf<Theme>(THEMES),
 };
 
+/**
+ * @slot {"name": "", "description": "Default slot for the `p-stepper-horizontal-item` tags." }
+ */
 @Component({
   tag: 'p-stepper-horizontal',
   shadow: true,

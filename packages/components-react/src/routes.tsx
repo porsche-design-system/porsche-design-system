@@ -43,6 +43,11 @@ export const routes: RouteType[] = [
     element: <fromPages.EventsPage />,
   },
   {
+    name: 'Lifecycle Overlapping',
+    path: '/lifecycle-overlapping',
+    element: <fromPages.LifecycleOverlappingPage />,
+  },
+  {
     name: 'Modal Focus Cycle',
     path: '/modal-focus-cycle',
     element: <fromPages.ModalFocusCyclePage />,

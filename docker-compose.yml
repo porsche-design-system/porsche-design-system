@@ -2,7 +2,7 @@ version: "3.5"
 
 services:
   design-system:
-    image: ghcr.io/porsche-design-system/porsche-design-system/playwright:v1.42.1-focal-2
+    image: ghcr.io/porsche-design-system/porsche-design-system/playwright:v1.42.1-focal-4
     working_dir: /opt/porsche-design-system-app
     user: "${RUN_UID}:${RUN_GID}"
     ports:
@@ -43,7 +43,7 @@ services:
       - assets-marque-node-modules:/opt/porsche-design-system-app/packages/assets/projects/marque/node_modules
       - assets-meta-icons-node-modules:/opt/porsche-design-system-app/packages/assets/projects/meta-icons/node_modules
       - assets-model-signatures-node-modules:/opt/porsche-design-system-app/packages/assets/projects/model-signatures/node_modules
-      - assets-styles-node-modules:/opt/porsche-design-system-app/packages/assets/projects/styles/node_modules
+      - assets-font-face-node-modules:/opt/porsche-design-system-app/packages/assets/projects/font-face/node_modules
       - component-meta-node-modules:/opt/porsche-design-system-app/packages/component-meta/node_modules
       - components-node-modules:/opt/porsche-design-system-app/packages/components/node_modules
       - components-js-node-modules:/opt/porsche-design-system-app/packages/components-js/node_modules
@@ -64,7 +64,7 @@ services:
       - utilities-node-modules:/opt/porsche-design-system-app/packages/utilities/node_modules
       - utilities-utilities-node-modules:/opt/porsche-design-system-app/packages/utilities/projects/utilities/node_modules
   change-volume-owner:
-    image: ghcr.io/porsche-design-system/porsche-design-system/playwright:v1.42.1-focal-2
+    image: ghcr.io/porsche-design-system/porsche-design-system/playwright:v1.42.1-focal-4
     volumes:
       - home:/opt/porsche-design-system-volumes/home
       - monorepo-node-modules:/opt/porsche-design-system-volumes/root-node_modules
@@ -76,7 +76,7 @@ services:
       - assets-marque-node-modules:/opt/porsche-design-system-volumes/assets-marque-node_modules
       - assets-meta-icons-node-modules:/opt/porsche-design-system-volumes/assets-meta-icons-node_modules
       - assets-model-signatures-node-modules:/opt/porsche-design-system-volumes/assets-model-signatures-node_modules
-      - assets-styles-node-modules:/opt/porsche-design-system-volumes/assets-styles-node_modules
+      - assets-font-face-node-modules:/opt/porsche-design-system-volumes/assets-font-face-node_modules
       - component-meta-node-modules:/opt/porsche-design-system-volumes/component-meta-node_modules
       - components-node-modules:/opt/porsche-design-system-volumes/components-node_modules
       - components-js-node-modules:/opt/porsche-design-system-volumes/components-js-node_modules
@@ -109,7 +109,7 @@ volumes:
   assets-marque-node-modules:
   assets-meta-icons-node-modules:
   assets-model-signatures-node-modules:
-  assets-styles-node-modules:
+  assets-font-face-node-modules:
   component-meta-node-modules:
   components-node-modules:
   components-angular-node-modules:

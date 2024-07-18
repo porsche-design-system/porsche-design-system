@@ -18,12 +18,14 @@
     "clean:build": "rm -rf ./src/lib && rm -rf ./dist"
   },
   "devDependencies": {
-    "@porsche-design-system/shared": "0.0.0",
-    "change-case": "^5.4.4",
-    "globby": "^14.0.1",
-    "tsx": "^4.7.2",
-    "typescript": "~5.4.4",
-    "vitest": "^1.4.0"
+    "@porsche-design-system/shared": "0.0.0"
+  },
+  "peerDependencies": {
+    "change-case": "*",
+    "globby": "*",
+    "tsx": "*",
+    "typescript": "*",
+    "vitest": "*"
   },
   "volta": {
     "extends": "../../package.json"

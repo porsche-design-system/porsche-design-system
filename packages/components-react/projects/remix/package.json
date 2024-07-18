@@ -37,12 +37,14 @@
     "@types/react": "18.2.65",
     "@types/react-dom": "^18.2.22",
     "binode": "^1.0.5",
-    "concurrently": "^8.2.2",
     "cross-env": "^7.0.3",
     "eslint": "^8.57.0",
-    "eslint-config-prettier": "^9.1.0",
-    "tsx": "^4.7.2",
-    "typescript": "~5.4.4"
+    "eslint-config-prettier": "^9.1.0"
+  },
+  "peerDependencies": {
+    "concurrently": "*",
+    "tsx": "*",
+    "typescript": "*"
   },
   "eslintIgnore": [
     "/node_modules",

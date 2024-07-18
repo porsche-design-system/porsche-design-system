@@ -42,6 +42,9 @@ const propTypes: PropTypes<typeof Button> = {
   aria: AllowedTypes.aria<ButtonAriaAttribute>(BUTTON_ARIA_ATTRIBUTES),
 };
 
+/**
+ * @slot {"name": "", "description": "Default slot for the button label." }
+ */
 @Component({
   tag: 'p-button',
   shadow: { delegatesFocus: true },

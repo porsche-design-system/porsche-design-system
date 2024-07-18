@@ -13,7 +13,7 @@ type MetaIconsManifest = {
   };
 };
 
-const toHash = (str: string): string => crypto.createHash('md5').update(str, 'utf8').digest('hex');
+const toHash = (str: string): string => crypto.createHash('md5').update(str, 'utf8').digest('hex').substring(0, 7);
 
 const generateWebManifestAndExtendIconManifest = (metaIconsManifest: MetaIconsManifest): MetaIconsManifest => {
   const iconPaths = Object.values(metaIconsManifest)

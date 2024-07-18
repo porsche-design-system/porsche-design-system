@@ -1,11 +1,12 @@
 import * as fs from 'fs';
 import * as path from 'path';
 import * as crypto from 'crypto';
-import { optimize, Config } from 'svgo';
 import { globbySync } from 'globby';
 import { kebabCase } from 'change-case';
+import { optimize, type Config } from 'svgo';
+import { config } from '../svgo.config';
 import { CDN_BASE_PATH_ICONS } from '../../../../../cdn.config';
-import * as gzipSize from 'gzip-size';
+import { gzipSizeSync } from 'gzip-size';
 import { format } from 'prettier';
 
 type Manifest = {
@@ -13,7 +14,7 @@ type Manifest = {
 };
 type IconsMap = Manifest;
 
-const toHash = (str: string): string => crypto.createHash('md5').update(str, 'utf8').digest('hex');
+const toHash = (str: string): string => crypto.createHash('md5').update(str, 'utf8').digest('hex').substring(0, 7);
 
 type Stats = { name: string; size: number; gzipSize: number };
 const stats: Stats[] = [];
@@ -33,7 +34,7 @@ const createManifestAndOptimizeIcons = async (files: string[], config: Config): 
     const svgRawData = fs.readFileSync(svgRawPath, 'utf8');
     const svgOptimizedData = optimize(svgRawData, config).data;
     const svgOptimizedHash = toHash(svgOptimizedData);
-    const svgOptimizedFilename = `${svgRawName}.min.${svgOptimizedHash}.svg`;
+    const svgOptimizedFilename = `${svgRawName}.${svgOptimizedHash}.svg`;
     const svgOptimizedPath = path.normalize(`./dist/icons/${svgOptimizedFilename}`);
 
     if (svgRawName !== kebabCase(svgRawName)) {
@@ -52,7 +53,7 @@ const createManifestAndOptimizeIcons = async (files: string[], config: Config): 
     stats.push({
       name: svgRawName,
       size: Buffer.byteLength(svgOptimizedData),
-      gzipSize: gzipSize.sync(svgOptimizedData),
+      gzipSize: gzipSizeSync(svgOptimizedData),
     });
 
     const svgRawSize = fs.statSync(svgRawPath).size;
@@ -93,13 +94,7 @@ export type IconName = typeof ICON_NAMES[number];
   console.log('Created icons manifest.');
 };
 
-const generate = async (): Promise<void> => {
-  const files = globbySync('./src/**/*.svg').sort();
-  const config: Config = require('../svgo.config.js');
-
-  await createManifestAndOptimizeIcons(files, config);
-};
-
 (async (): Promise<void> => {
-  await generate();
+  const files = globbySync('./src/**/*.svg').sort();
+  await createManifestAndOptimizeIcons(files, config);
 })();

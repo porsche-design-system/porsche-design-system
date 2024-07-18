@@ -49,7 +49,7 @@ export const setContentWithDesignSystem = async (page: Page, content: string, op
       <head>
         <base href="http://localhost:8575"> <!-- NOTE: we need a base tag so that document.baseURI returns something else than "about:blank" -->
         <script type="text/javascript" src="http://localhost:8575/index.js"></script>
-        <link rel="stylesheet" href="http://localhost:3001/styles/font-face.min.css">
+        <link rel="stylesheet" href="http://localhost:3001/styles/font-face.css">
         <link rel="stylesheet" href="assets/styles.css">
         ${getInitialStyles()}
         ${options.injectIntoHead}
@@ -354,14 +354,17 @@ export const buildDefaultComponentMarkup = (tagName: TagName): string => {
   const {
     requiredChild,
     requiredParent,
-    requiredNamedSlots,
     propsMeta, // new format
+    slotsMeta,
   } = getComponentMeta(tagName);
 
-  const buildChildMarkup = (requiredChild: string, requiredNamedSlots: ComponentMeta['requiredNamedSlots']): string => {
+  const buildChildMarkup = (
+    requiredChild: string,
+    requiredNamedSlots: { slotName: string; tagName: TagName | keyof HTMLElementTagNameMap }[]
+  ): string => {
     if (requiredChild) {
       return requiredChild.startsWith('input') ? `<${requiredChild} />` : `<${requiredChild}></${requiredChild}>`;
-    } else if (requiredNamedSlots) {
+    } else if (requiredNamedSlots && requiredNamedSlots.length > 0) {
       return requiredNamedSlots
         .map(
           ({ slotName, tagName }) =>
@@ -393,6 +396,12 @@ export const buildDefaultComponentMarkup = (tagName: TagName): string => {
         .filter(Boolean)
         .join()
     : '';
+
+  const requiredNamedSlots =
+    slotsMeta &&
+    Object.entries(slotsMeta)
+      .filter(([, value]) => value.isRequired)
+      .map(([key, value]) => ({ slotName: key, tagName: value.allowedTagNames[0] }));
 
   const componentMarkup = `<${tagName}${attributes}>${buildChildMarkup(
     requiredChild,
