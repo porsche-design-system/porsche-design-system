@@ -38,11 +38,11 @@ jobs:
         with:
           entrypoint: run-test-unit
           args: --assets:icons
-      - name: 'Unit Test Styles'
+      - name: 'Unit Test Font Face'
         uses: ./.github/actions/docker-run-playwright
         with:
           entrypoint: run-test-unit
-          args: --assets:styles
+          args: --assets:font-face
       - name: 'VRT Test Fallbacks'
         uses: ./.github/actions/docker-run-playwright
         with:

@@ -13,7 +13,7 @@ const cdnPathPackageMap = {
     marque: '@porsche-design-system/marque',
     'meta-icons': '@porsche-design-system/meta-icons',
     'model-signatures': '@porsche-design-system/model-signatures',
-    styles: '@porsche-design-system/styles',
+    styles: '@porsche-design-system/font-face',
   }),
 };
 
