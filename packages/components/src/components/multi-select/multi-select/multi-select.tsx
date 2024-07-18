@@ -1,5 +1,5 @@
-import type { MultiSelectDropdownDirection, MultiSelectState } from './multi-select-utils';
 import {
+  fallbackWordings,
   getDropdownDirection,
   getHighlightedOption,
   getHighlightedOptionIndex,
@@ -9,8 +9,11 @@ import {
   hasFilterOptionResults,
   initNativeMultiSelect,
   INTERNAL_MULTI_SELECT_SLOT,
+  MultiSelectDropdownDirection,
   type MultiSelectOption,
+  MultiSelectState,
   type MultiSelectUpdateEventDetail,
+  MultiSelectWordings,
   resetFilteredOptions,
   resetHighlightedOptions,
   resetSelectedOptions,
@@ -45,6 +48,7 @@ import {
   type SelectDropdownDirectionInternal,
   THEMES,
   throwIfElementIsNotOfKind,
+  translate,
   validateProps,
 } from '../../../utils';
 import {
@@ -65,6 +69,7 @@ import { messageId, StateMessage } from '../../common/state-message/state-messag
 import { descriptionId, Label, labelId } from '../../common/label/label';
 import { getSlottedAnchorStyles } from '../../../styles';
 
+// TODO: generateComponentMeta can't handle wordings prop currently
 const propTypes: PropTypes<typeof MultiSelect> = {
   label: AllowedTypes.string,
   description: AllowedTypes.string,
@@ -77,6 +82,7 @@ const propTypes: PropTypes<typeof MultiSelect> = {
   required: AllowedTypes.boolean,
   dropdownDirection: AllowedTypes.oneOf<MultiSelectDropdownDirection>(SELECT_DROPDOWN_DIRECTIONS),
   theme: AllowedTypes.oneOf<Theme>(THEMES),
+  wordings: AllowedTypes.shape<MultiSelectWordings>(typeof fallbackWordings),
 };
 
 /**
@@ -126,6 +132,8 @@ export class MultiSelect {
 
   /** Adapts the select color depending on the theme. */
   @Prop() public theme?: Theme = 'light';
+
+  @Prop() public wordings?: MultiSelectWordings;
 
   /** Emitted when the selection is changed. */
   @Event({ bubbles: false }) public update: EventEmitter<MultiSelectUpdateEventDetail>;
@@ -267,7 +275,8 @@ export class MultiSelect {
         {/* in case, sr-only text is not placed here then the clear button is not able to focus the input for unknown reasons */}
         {this.currentValue.length > 0 && (
           <span id={optionsSelectedId} class="sr-only">
-            {getSelectedOptions(this.multiSelectOptions).length} options selected
+            {getSelectedOptions(this.multiSelectOptions).length}{' '}
+            {translate('optionsSelected', this.wordings, fallbackWordings)}
           </span>
         )}
         <div class={{ wrapper: true, disabled: this.disabled }} ref={(el) => (this.inputContainer = el)}>
@@ -308,7 +317,7 @@ export class MultiSelect {
               onKeyDown={(e) => e.key === 'Tab' && (this.isOpen = false)}
               disabled={this.disabled}
             >
-              Reset selection
+              {translate('resetSelection', this.wordings, fallbackWordings)}
             </PrefixedTagNames.pButtonPure>
           )}
 
@@ -331,7 +340,7 @@ export class MultiSelect {
               {!this.hasFilterResults && (
                 <div class="no-results" aria-live="polite" role="status">
                   <span aria-hidden="true">---</span>
-                  <span class="sr-only">No results found</span>
+                  <span class="sr-only">{translate('noResultsFound', this.wordings, fallbackWordings)}</span>
                 </div>
               )}
               <slot />

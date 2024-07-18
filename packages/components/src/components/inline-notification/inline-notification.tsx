@@ -1,6 +1,18 @@
 import type { PropTypes, Theme } from '../../types';
 import type { IconColor } from '../icon/icon-utils';
-import type { InlineNotificationState, InlineNotificationStateDeprecated } from './inline-notification-utils';
+import type {
+  InlineNotificationActionIcon,
+  InlineNotificationHeadingTag,
+  InlineNotificationState,
+  InlineNotificationStateDeprecated,
+  InlineNotificationWordings,
+} from './inline-notification-utils';
+import {
+  fallbackWordings,
+  getContentAriaAttributes,
+  getInlineNotificationIconName,
+  INLINE_NOTIFICATION_STATES,
+} from './inline-notification-utils';
 import { Component, Element, Event, type EventEmitter, h, Host, type JSX, Prop } from '@stencil/core';
 import {
   AllowedTypes,
@@ -10,19 +22,15 @@ import {
   hasHeading,
   HEADING_TAGS,
   THEMES,
+  translate,
   validateProps,
   warnIfDeprecatedPropIsUsed,
   warnIfDeprecatedPropValueIsUsed,
 } from '../../utils';
 import { getComponentCss } from './inline-notification-styles';
-import {
-  getContentAriaAttributes,
-  getInlineNotificationIconName,
-  INLINE_NOTIFICATION_STATES,
-} from './inline-notification-utils';
-import type { InlineNotificationActionIcon, InlineNotificationHeadingTag } from './inline-notification-utils';
 import { getSlottedAnchorStyles } from '../../styles';
 
+// TODO: generateComponentMeta can't handle wordings prop currently
 const propTypes: PropTypes<typeof InlineNotification> = {
   heading: AllowedTypes.string,
   headingTag: AllowedTypes.oneOf<InlineNotificationHeadingTag>(HEADING_TAGS),
@@ -34,6 +42,7 @@ const propTypes: PropTypes<typeof InlineNotification> = {
   actionLoading: AllowedTypes.boolean,
   actionIcon: AllowedTypes.string, // TODO: we could use AllowedTypes.oneOf<IconName>(Object.keys(ICONS_MANIFEST) as IconName[]) but then main chunk will increase
   theme: AllowedTypes.oneOf<Theme>(THEMES),
+  wordings: AllowedTypes.shape<InlineNotificationWordings>(typeof fallbackWordings),
 };
 
 /**
@@ -78,6 +87,8 @@ export class InlineNotification {
 
   /** Adapts the inline-notification color depending on the theme. */
   @Prop() public theme?: Theme = 'light';
+
+  @Prop() public wordings?: InlineNotificationWordings;
 
   /** Emitted when the close button is clicked. */
   @Event({ bubbles: false }) public dismiss?: EventEmitter<void>;
@@ -154,7 +165,7 @@ export class InlineNotification {
             aria-controls={bannerId}
             onClick={this.dismiss.emit}
           >
-            Close notification
+            {translate('dismiss', this.wordings, fallbackWordings)}
           </PrefixedTagNames.pButtonPure>
         )}
       </Host>

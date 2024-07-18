@@ -2338,6 +2338,9 @@ exports[`should match snapshot 1`] = `
       },
     },
     "styling": "jss",
+    "wordings": [
+      "Dismiss flyout",
+    ],
   },
   "p-flyout-multilevel": {
     "controlledMeta": [
@@ -2417,6 +2420,9 @@ exports[`should match snapshot 1`] = `
       },
     },
     "styling": "jss",
+    "wordings": [
+      "Dismiss flyout",
+    ],
   },
   "p-flyout-multilevel-item": {
     "hasAriaProp": false,
@@ -2454,6 +2460,9 @@ exports[`should match snapshot 1`] = `
       },
     },
     "styling": "jss",
+    "wordings": [
+      "Back",
+    ],
   },
   "p-grid": {
     "deprecationMessage": "since v3.0.0, will be removed with next major release. Use native CSS Grid instead.",
@@ -3379,6 +3388,9 @@ exports[`should match snapshot 1`] = `
       },
     },
     "styling": "jss",
+    "wordings": [
+      "Close notification",
+    ],
   },
   "p-link": {
     "hasAriaProp": true,
@@ -4902,6 +4914,9 @@ exports[`should match snapshot 1`] = `
       },
     },
     "styling": "jss",
+    "wordings": [
+      "Dismiss modal",
+    ],
   },
   "p-model-signature": {
     "hasAriaProp": false,
@@ -5120,6 +5135,10 @@ exports[`should match snapshot 1`] = `
       },
     },
     "styling": "jss",
+    "wordings": [
+      "Reset selection",
+      "No results found",
+    ],
   },
   "p-multi-select-option": {
     "hasAriaProp": false,
@@ -5481,6 +5500,9 @@ exports[`should match snapshot 1`] = `
       },
     },
     "styling": "jss",
+    "wordings": [
+      "More information",
+    ],
   },
   "p-radio-button-wrapper": {
     "hasAriaProp": false,
@@ -6376,6 +6398,9 @@ exports[`should match snapshot 1`] = `
       "p-select-wrapper",
     ],
     "styling": "jss",
+    "wordings": [
+      "No results found",
+    ],
   },
   "p-spinner": {
     "hasAriaProp": true,
@@ -7690,6 +7715,12 @@ exports[`should match snapshot 1`] = `
       },
     },
     "styling": "jss",
+    "wordings": [
+      "Toggle password visibility",
+      "Search",
+      "Clear field",
+      "Locate me",
+    ],
   },
   "p-text-list": {
     "hasAriaProp": false,
@@ -7945,6 +7976,9 @@ exports[`should match snapshot 1`] = `
       "p-toast",
     ],
     "styling": "jss",
+    "wordings": [
+      "Close notification message",
+    ],
   },
   "p-wordmark": {
     "hasAriaProp": true,
@@ -8006,6 +8040,9 @@ exports[`should match snapshot 1`] = `
       },
     },
     "styling": "jss",
+    "wordings": [
+      "Porsche",
+    ],
   },
 }
 `;

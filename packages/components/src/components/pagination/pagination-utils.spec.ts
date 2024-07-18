@@ -1,8 +1,8 @@
 import {
   createPaginationItems,
-  getTotalPages,
-  getCurrentActivePage,
   createRange,
+  getCurrentActivePage,
+  getTotalPages,
   ItemType,
   type PaginationItem,
 } from './pagination-utils';

@@ -1,7 +1,7 @@
 import type { Options, Splide } from '@splidejs/splide';
 import type { Breakpoint } from '@porsche-design-system/utilities-v2';
 import { breakpoint } from '@porsche-design-system/utilities-v2';
-import type { BreakpointCustomizable, HeadingSize } from '../../types';
+import type { BreakpointCustomizable, HeadingSize, SelectedAriaAttributes } from '../../types';
 import { ButtonPure } from '../button-pure/button-pure';
 import {
   bulletActiveClass,
@@ -38,6 +38,15 @@ const INFINITE_BULLET_THRESHOLD = 5;
 export type CarouselInternationalization =
   // | Partial<Pick<Options['i18n'], 'prev' | 'next' | 'first' | 'last' | 'slideLabel' | 'slide'>> | string;
   Partial<Record<'prev' | 'next' | 'first' | 'last' | 'slideLabel' | 'slide', string>> | string; // string to support attribute, gets removed via InputParser
+
+export type CarouselAriaInternationalization = SelectedAriaAttributes<'aria-label'> & {
+  prev: SelectedAriaAttributes<'aria-label'>;
+  next: SelectedAriaAttributes<'aria-label'>;
+  first: SelectedAriaAttributes<'aria-label'>;
+  last: SelectedAriaAttributes<'aria-label'>;
+  slideLabel: SelectedAriaAttributes<'aria-label'>;
+  slide: SelectedAriaAttributes<'aria-label'>;
+};
 
 /** @deprecated */
 export type CarouselUpdateEvent = { activeIndex: number; previousIndex: number };

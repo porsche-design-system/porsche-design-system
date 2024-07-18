@@ -11,13 +11,18 @@ import {
   warnIfDeprecatedPropIsUsed,
 } from '../../utils';
 import type { BreakpointCustomizable, PropTypes, Theme } from '../../types';
-import type {
+import {
+  createPaginationItems,
+  getCurrentActivePage,
+  getTotalPages,
+  ItemType,
+  PaginationAriaInternationalization,
   PaginationInternationalization,
   PaginationMaxNumberOfPageLinks,
   PaginationUpdateEventDetail,
 } from './pagination-utils';
-import { createPaginationItems, getCurrentActivePage, getTotalPages, ItemType } from './pagination-utils';
 import { getComponentCss } from './pagination-styles';
+import { getIntlFromAria } from '../../utils/getIntlFromAria';
 
 const propTypes: Omit<PropTypes<typeof Pagination>, 'maxNumberOfPageLinks'> = {
   totalItemsCount: AllowedTypes.number,
@@ -28,6 +33,12 @@ const propTypes: Omit<PropTypes<typeof Pagination>, 'maxNumberOfPageLinks'> = {
   allyLabelPrev: AllowedTypes.string,
   allyLabelPage: AllowedTypes.string,
   allyLabelNext: AllowedTypes.string,
+  aria: AllowedTypes.shape<PaginationAriaInternationalization>({
+    'aria-label': AllowedTypes.string,
+    prev: AllowedTypes.string,
+    next: AllowedTypes.string,
+    page: AllowedTypes.string,
+  }),
   intl: AllowedTypes.shape<Required<PaginationInternationalization>>({
     root: AllowedTypes.string,
     prev: AllowedTypes.string,
@@ -85,7 +96,18 @@ export class Pagination {
    * Aria label for next page icon. */
   @Prop() public allyLabelNext?: string;
 
-  /** Override the default wordings that are used for aria-labels on the next/prev and page buttons. */
+  /** Add ARIA attributes and override the default wordings on the next/prev and page buttons */
+  @Prop() public aria?: PaginationAriaInternationalization = {
+    'aria-label': 'Pagination',
+    prev: { 'aria-label': 'Previous page' },
+    next: { 'aria-label': 'Next page' },
+    page: { 'aria-label': 'Page {{value}}' }, // important for interpolation
+  };
+
+  /**
+   * @deprecated since v3.16.0 use `aria` instead
+   * Override the default wordings that are used for aria-labels on the next/prev and page buttons.
+   * */
   @Prop() public intl?: PaginationInternationalization = {
     root: 'Pagination',
     prev: 'Previous page',
@@ -131,6 +153,7 @@ export class Pagination {
       'allyLabelPage',
       'Please use intl prop with intl.page instead.'
     );
+    warnIfDeprecatedPropIsUsed<typeof Pagination>(this, 'intl', 'Please use aria prop instead.');
 
     const pageTotal = getTotalPages(this.totalItemsCount, this.itemsPerPage);
     attachComponentCss(this.host, getComponentCss, this.activePage, pageTotal, this.showLastPage, this.theme);
@@ -139,7 +162,7 @@ export class Pagination {
       pageTotal,
       showLastPage: this.showLastPage,
     });
-    const parsedIntl = parseJSONAttribute(this.intl);
+    const parsedIntl = parseJSONAttribute(this.intl || getIntlFromAria(this.aria));
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 

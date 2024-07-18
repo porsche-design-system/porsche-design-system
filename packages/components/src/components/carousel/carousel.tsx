@@ -1,18 +1,15 @@
-import type { BreakpointCustomizable, PropTypes, SelectedAriaAttributes, Theme, ValidatorFunction } from '../../types';
+import type { BreakpointCustomizable, PropTypes, Theme, ValidatorFunction } from '../../types';
 import type { ButtonPure } from '../button-pure/button-pure';
-import type {
+import {
+  CAROUSEL_ALIGN_HEADERS,
+  CAROUSEL_WIDTHS,
   CarouselAlignHeader,
   CarouselAlignHeaderDeprecated,
-  CarouselAriaAttribute,
+  CarouselAriaInternationalization,
   CarouselHeadingSize,
   CarouselInternationalization,
   CarouselUpdateEventDetail,
   CarouselWidth,
-} from './carousel-utils';
-import {
-  CAROUSEL_ALIGN_HEADERS,
-  CAROUSEL_ARIA_ATTRIBUTES,
-  CAROUSEL_WIDTHS,
   getAmountOfPages,
   getSlidesAndAddAttributes,
   getSplideBreakpoints,
@@ -50,6 +47,7 @@ import {
 import { carouselTransitionDuration, getComponentCss } from './carousel-styles';
 import { gridGap, motionEasingBase } from '@porsche-design-system/utilities-v2';
 import { getSlottedAnchorStyles } from '../../styles';
+import { getIntlFromAria } from '../../utils/getIntlFromAria';
 
 const propTypes: PropTypes<typeof Carousel> = {
   heading: AllowedTypes.string,
@@ -65,7 +63,15 @@ const propTypes: PropTypes<typeof Carousel> = {
   ]),
   disablePagination: AllowedTypes.breakpoint('boolean'),
   pagination: AllowedTypes.breakpoint('boolean'),
-  aria: AllowedTypes.aria<CarouselAriaAttribute>(CAROUSEL_ARIA_ATTRIBUTES),
+  aria: AllowedTypes.shape({
+    'aria-label': AllowedTypes.string,
+    prev: AllowedTypes.string,
+    next: AllowedTypes.string,
+    first: AllowedTypes.string,
+    last: AllowedTypes.string,
+    slideLabel: AllowedTypes.string,
+    slide: AllowedTypes.string,
+  }),
   intl: AllowedTypes.shape<Required<CarouselInternationalization>>({
     prev: AllowedTypes.string,
     next: AllowedTypes.string,
@@ -129,10 +135,21 @@ export class Carousel {
   /** If false, the carousel will not show pagination bullets at the bottom. */
   @Prop({ mutable: true }) public pagination?: BreakpointCustomizable<boolean> = true;
 
-  /** Add ARIA attributes. */
-  @Prop() public aria?: SelectedAriaAttributes<CarouselAriaAttribute>;
+  /** Add ARIA attributes and override the default wordings on the next/prev buttons and pagination. */
+  @Prop() public aria?: CarouselAriaInternationalization = {
+    'aria-label': 'Carousel',
+    prev: { 'aria-label': 'Previous page' },
+    next: { 'aria-label': 'Next page' },
+    first: { 'aria-label': 'First page' },
+    last: { 'aria-label': 'Last page' },
+    slideLabel: { 'aria-label': 'Slide' },
+    slide: { 'aria-label': '?' },
+  };
 
-  /** Override the default wordings that are used for aria-labels on the next/prev buttons and pagination. */
+  /**
+   * @deprecated since v3.16.0 use `aria` instead
+   * Override the default wordings that are used for aria-labels on the next/prev buttons and pagination.
+   * */
   @Prop() public intl?: CarouselInternationalization;
 
   /** Adapts the color when used on dark background. */
@@ -216,7 +233,7 @@ export class Carousel {
       // TODO: this uses matchMedia internally, since we also use it, there is some redundancy
       breakpoints: getSplideBreakpoints(this.slidesPerPage as Exclude<BreakpointCustomizable<number> | 'auto', string>), // eslint-disable-line @typescript-eslint/no-redundant-type-constituents
       // https://splidejs.com/guides/i18n/#default-texts
-      i18n: parseJSONAttribute(this.intl || {}), // can only be applied initially atm
+      i18n: parseJSONAttribute(this.intl || getIntlFromAria(this.aria)), // can only be applied initially atm
     });
 
     this.registerSplideHandlers(this.splide);
@@ -253,6 +270,7 @@ export class Carousel {
     );
     warnIfDeprecatedPropIsUsed<typeof Carousel>(this, 'wrapContent');
     warnIfDeprecatedPropIsUsed<typeof Carousel>(this, 'disablePagination', 'Please use pagination prop instead.');
+    warnIfDeprecatedPropIsUsed<typeof Carousel>(this, 'intl', 'Please use aria prop instead.');
     const hasHeadingPropOrSlot = hasHeading(this.host, this.heading);
     const hasDescriptionPropOrSlot = hasDescription(this.host, this.description);
     const hasControlsSlot = hasNamedSlot(this.host, 'controls');
