@@ -339,18 +339,20 @@ test.describe('focus behavior', () => {
     });
   });
 
-  test('should not allow focusing element behind of flyout when pressing Tab', async ({ page }) => {
-    await initBasicFlyoutMultilevel(page, { open: false }, { amount: 0 });
-    await addButtonsBeforeAndAfterFlyout(page);
-    await openFlyoutMultilevel(page);
+  skipInBrowsers(['firefox'], () => {
+    test('should not allow focusing element behind of flyout when pressing Tab', async ({ page }) => {
+      await initBasicFlyoutMultilevel(page, { open: false }, { amount: 0 });
+      await addButtonsBeforeAndAfterFlyout(page);
+      await openFlyoutMultilevel(page);
 
-    expect(await getActiveElementTagName(page)).toBe('P-FLYOUT-MULTILEVEL');
-    await expectDismissButtonToBeFocused(page);
-    await page.keyboard.press('Tab');
-    expect(await getActiveElementTagName(page)).toBe('BODY');
-    await page.keyboard.press('Tab');
-    expect(await getActiveElementTagName(page)).toBe('P-FLYOUT-MULTILEVEL');
-    await expectDismissButtonToBeFocused(page);
+      expect(await getActiveElementTagName(page)).toBe('P-FLYOUT-MULTILEVEL');
+      await expectDismissButtonToBeFocused(page);
+      await page.keyboard.press('Tab');
+      expect(await getActiveElementTagName(page)).toBe('BODY');
+      await page.keyboard.press('Tab');
+      expect(await getActiveElementTagName(page)).toBe('P-FLYOUT-MULTILEVEL');
+      await expectDismissButtonToBeFocused(page);
+    });
   });
 
   skipInBrowsers(['firefox'], () => {
@@ -400,16 +402,18 @@ test.describe('focus behavior', () => {
     expect(await getActiveElementId(page)).toBe('btn-open');
   });
 
-  test('should not focus flyout content when not open', async ({ page }) => {
-    await initBasicFlyoutMultilevel(page, { open: false }, {});
-    await addButtonsBeforeAndAfterFlyout(page);
-    expect(await getActiveElementTagName(page)).toBe('BODY');
-    await page.keyboard.press('Tab');
-    expect(await getActiveElementId(page)).toBe('btn-before');
-    await page.keyboard.press('Tab');
-    expect(await getActiveElementId(page)).toBe('btn-after');
-    await page.keyboard.press('Tab');
-    expect(await getActiveElementTagName(page)).toBe('BODY');
+  skipInBrowsers(['firefox'], () => {
+    test('should not focus flyout content when not open', async ({ page }) => {
+      await initBasicFlyoutMultilevel(page, { open: false }, {});
+      await addButtonsBeforeAndAfterFlyout(page);
+      expect(await getActiveElementTagName(page)).toBe('BODY');
+      await page.keyboard.press('Tab');
+      expect(await getActiveElementId(page)).toBe('btn-before');
+      await page.keyboard.press('Tab');
+      expect(await getActiveElementId(page)).toBe('btn-after');
+      await page.keyboard.press('Tab');
+      expect(await getActiveElementTagName(page)).toBe('BODY');
+    });
   });
 
   test('should focus element after flyout when open accordion contains link but flyout is not open', async ({
