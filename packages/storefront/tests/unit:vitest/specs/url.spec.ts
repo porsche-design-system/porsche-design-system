@@ -33,7 +33,7 @@ describe('url', () => {
 
           switch (url) {
             case 'https://reddit.com':
-            case 'https://www.figma.com/@porsche':
+            case 'https://figma.com/@porsche':
             case 'https://figma.com/design/EkdP468u4ZVuIRwalKCscb/Web-Design-System-v3?node-id=32923-48020':
             case 'https://figma.com/design/EkdP468u4ZVuIRwalKCscb/Web-Design-System-v3?node-id=34906-9454':
             case 'https://figma.com/file/EkdP468u4ZVuIRwalKCscb/Design-System-v3?type=design&node-id=105-146':
