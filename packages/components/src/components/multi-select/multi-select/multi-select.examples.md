@@ -84,6 +84,12 @@ represent the selected option values.
   <PlaygroundButton name="Remove last option" @click="amountOfOptions--"></PlaygroundButton>
 </Playground>
 
+## With optgroups
+
+<Playground :markup="withOptgroups" :config="config"></Playground>
+
+---
+
 ## Within table
 
 When a `p-multi-select` is used within the `p-table` component the dropdown will automatically switch to a native
@@ -146,6 +152,24 @@ export default class Code extends Vue {
   setMultiSelectValue() {
     this.$refs.multiSelect.value = this.valueInput.split(',')
   }
+
+  withOptgroups = `
+    <p-multi-select name="options" label="Some Label" value="a">
+      <p-optgroup label="Some optgroup label 1">
+        <p-multi-select-option value="a">Option A</p-multi-select-option>
+        <p-multi-select-option value="b">Option B</p-multi-select-option>
+        <p-multi-select-option value="c">Option C</p-multi-select-option>
+        <p-multi-select-option value="d">Option D</p-multi-select-option>
+        <p-multi-select-option value="e">Option E</p-multi-select-option>
+        <p-multi-select-option value="f">Option F</p-multi-select-option>
+      </p-optgroup>
+      <p-optgroup label="Some optgroup label 2">
+        <p-multi-select-option value="g">Option G</p-multi-select-option>
+        <p-multi-select-option value="h">Option H</p-multi-select-option>
+        <p-multi-select-option value="i">Option I</p-multi-select-option>
+      </p-optgroup>
+    </p-multi-select>
+  `;
  
   selectedValuesControlled = 'Selected values: none';
   updateControlledExample(e) {
