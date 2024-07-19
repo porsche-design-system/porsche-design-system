@@ -17,9 +17,10 @@
     "@porsche-design-system/components-js": "3.16.0",
     "@porsche-design-system/shared": "0.0.0"
   },
-  "devDependencies": {
-    "tsx": "^4.7.2",
-    "typescript": "~5.4.4"
+  "peerDependencies": {
+    "@playwright/test": "*",
+    "tsx": "*",
+    "typescript": "*"
   },
   "volta": {
     "extends": "../../package.json"

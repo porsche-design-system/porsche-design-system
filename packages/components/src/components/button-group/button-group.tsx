@@ -9,6 +9,9 @@ const propTypes: PropTypes<typeof ButtonGroup> = {
   direction: AllowedTypes.breakpoint<ButtonGroupDirection>(GROUP_DIRECTIONS),
 };
 
+/**
+ * @slot {"name": "", "description": "Default slot for the buttons to group." }
+ */
 @Component({
   tag: 'p-button-group',
   shadow: true,

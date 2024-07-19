@@ -34,31 +34,31 @@ export function getFontLinks(opts?: GetFontLinksOptions): string | JSX.Element |
   const cdnBaseUrl = getCdnBaseUrl(cdn);
   const fonts: Record<FontSubset, Partial<Record<FontWeight, string>>> = {
     latin: {
-      regular: '${FONTS_MANIFEST.porscheNextWLaRegular}',
-      'semi-bold': '${FONTS_MANIFEST.porscheNextWLaSemiBold}',
-      bold: '${FONTS_MANIFEST.porscheNextWLaBold}',
+      regular: '${FONTS_MANIFEST.porscheNextLatinRegular}',
+      'semi-bold': '${FONTS_MANIFEST.porscheNextLatinSemiBold}',
+      bold: '${FONTS_MANIFEST.porscheNextLatinBold}',
     },
     greek: {
-      regular: '${FONTS_MANIFEST.porscheNextWGrRegular}',
-      'semi-bold': '${FONTS_MANIFEST.porscheNextWGrSemiBold}',
-      bold: '${FONTS_MANIFEST.porscheNextWGrBold}',
+      regular: '${FONTS_MANIFEST.porscheNextGreekRegular}',
+      'semi-bold': '${FONTS_MANIFEST.porscheNextGreekSemiBold}',
+      bold: '${FONTS_MANIFEST.porscheNextGreekBold}',
     },
     cyril: {
-      regular: '${FONTS_MANIFEST.porscheNextWCyRegular}',
-      'semi-bold': '${FONTS_MANIFEST.porscheNextWCySemiBold}',
-      bold: '${FONTS_MANIFEST.porscheNextWCyBold}',
+      regular: '${FONTS_MANIFEST.porscheNextCyrilRegular}',
+      'semi-bold': '${FONTS_MANIFEST.porscheNextCyrilSemiBold}',
+      bold: '${FONTS_MANIFEST.porscheNextCyrilBold}',
     },
     arabic: {
-      regular: '${FONTS_MANIFEST.porscheNextWArRegular}',
-      bold: '${FONTS_MANIFEST.porscheNextWArBold}',
+      regular: '${FONTS_MANIFEST.porscheNextArabicRegular}',
+      bold: '${FONTS_MANIFEST.porscheNextArabicBold}',
     },
     pashto: {
-      regular: '${FONTS_MANIFEST.porscheNextWPaRegular}',
-      bold: '${FONTS_MANIFEST.porscheNextWPaBold}',
+      regular: '${FONTS_MANIFEST.porscheNextPashtoRegular}',
+      bold: '${FONTS_MANIFEST.porscheNextPashtoBold}',
     },
     urdu: {
-      regular: '${FONTS_MANIFEST.porscheNextWUrRegular}',
-      bold: '${FONTS_MANIFEST.porscheNextWUrBold}',
+      regular: '${FONTS_MANIFEST.porscheNextUrduRegular}',
+      bold: '${FONTS_MANIFEST.porscheNextUrduBold}',
     },
   };
 

@@ -1,7 +1,6 @@
 import { buildIconUrl, isUrl } from './icon-utils';
 
-const DEFAULT_ICON_URL =
-  'https://cdn.ui.porsche.com/porsche-design-system/icons/arrow-right.min.c5cbce45d98d6d1178cc72ea8bfbfa10.svg';
+const DEFAULT_ICON_URL = 'https://cdn.ui.porsche.com/porsche-design-system/icons/arrow-right.872716b.svg';
 
 describe('buildIconUrl()', () => {
   it('should return cdn url for icon name', () => {

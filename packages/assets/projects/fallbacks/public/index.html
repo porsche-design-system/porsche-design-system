@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="utf-8" />
@@ -24,14 +24,14 @@
       document.querySelectorAll('button').forEach((button) => {
         button.addEventListener('click', (event) => {
           const script = document.createElement('script');
-          script.src = `${event.target.id}.min.js`;
+          script.src = `${event.target.id}.js`;
           document.body.appendChild(script);
         });
       });
     </script>
 
     <!-- Manual browser testing incl. feature detection, e.g. IE11 -->
-    <script src="browser-support-loader.min.js"></script>
-    <script src="cookies-loader.min.js"></script>
+    <script src="browser-support-loader.js"></script>
+    <script src="cookies-loader.js"></script>
   </body>
 </html>

@@ -32,7 +32,6 @@ const getVisibilityJssStyle: GetJssStyleFunction = (hideLabel: boolean): JssStyl
     : {
         whiteSpace: 'inherit',
         textIndent: 0,
-        zIndex: 1, // fix Firefox bug on :hover (#2583)
         overflow: 'visible',
       };
 };
@@ -146,6 +145,7 @@ export const getLinkButtonPureStyles = (
             },
           },
           label: mergeDeep(
+            { zIndex: '1'}, // fix Firefox bug on :hover (#2583) & pure-link with nested anchor & hidden label (#3349)
             buildResponsiveStyles(hideLabel, getVisibilityJssStyle),
             buildResponsiveStyles(alignLabel, (alignLabelValue: AlignLabel) => ({
               // TODO: we should remove 'left' here and map the value in the component class already to 'start' but might be difficult due to breakpoint customizable prop value

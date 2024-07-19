@@ -36,6 +36,10 @@ const propTypes: PropTypes<typeof InlineNotification> = {
   theme: AllowedTypes.oneOf<Theme>(THEMES),
 };
 
+/**
+ * @slot {"name": "heading", "description": "Shows a heading. Can be used to render rich markup." }
+ * @slot {"name": "", "description": "Default slot to render a description. Can be used to render rich markup." }
+ */
 @Component({
   tag: 'p-inline-notification',
   shadow: true,

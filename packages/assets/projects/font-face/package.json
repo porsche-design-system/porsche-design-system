@@ -1,0 +1,48 @@
+{
+  "name": "@porsche-design-system/font-face",
+  "version": "0.0.0",
+  "private": true,
+  "license": "UNLICENSED",
+  "scope": "@porsche-design-system",
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/index.d.mts",
+        "default": "./dist/index.mjs"
+      },
+      "require": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      }
+    }
+  },
+  "types": "./dist/index.d.ts",
+  "files": [
+    "./dist/"
+  ],
+  "author": "Dr. Ing. h.c. F. Porsche AG",
+  "homepage": "https://designsystem.porsche.com",
+  "scripts": {
+    "build": "yarn clean:build && yarn build:font-face && yarn build:lib",
+    "build:font-face": "tsx scripts/buildFontFace.ts",
+    "build:lib": "tsup index.ts --format esm,cjs --dts",
+    "test:unit": "vitest --config tests/unit/config/vitest.config.ts",
+    "clean:build": "rm -rf ./index.ts && rm -rf ./dist"
+  },
+  "devDependencies": {
+    "@porsche-design-system/fonts": "0.0.0",
+    "@porsche-design-system/shared": "0.0.0"
+  },
+  "peerDependencies": {
+    "change-case": "*",
+    "jss": "*",
+    "tsup": "*",
+    "tsx": "*",
+    "typescript": "*"
+  },
+  "volta": {
+    "extends": "../../../../package.json"
+  }
+}

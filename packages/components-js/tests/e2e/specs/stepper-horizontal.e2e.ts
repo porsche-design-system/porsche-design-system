@@ -93,7 +93,7 @@ test.describe('validation', () => {
   });
 
   test('should throw error if a second current state is defined', async ({ page }) => {
-    await initConsoleObserver(page);
+    initConsoleObserver(page);
 
     await initStepperHorizontal(page);
     const [, item2] = await getStepItems(page);
@@ -107,8 +107,8 @@ test.describe('validation', () => {
   test('should not throw error if an items state previous to the current one is set as current and the current one is set to undefined', async ({
     page,
   }) => {
-    await initPageErrorObserver(page);
-    await initConsoleObserver(page);
+    initPageErrorObserver(page);
+    initConsoleObserver(page);
 
     await initStepperHorizontal(page, { currentStep: 3 });
     const host = await getHost(page);

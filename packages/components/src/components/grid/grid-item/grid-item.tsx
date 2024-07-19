@@ -18,7 +18,11 @@ const propTypes: PropTypes<typeof GridItem> = {
   offset: AllowedTypes.breakpoint<GridItemOffset>(GRID_ITEM_OFFSETS),
 };
 
-/** @deprecated since v3.0.0, will be removed with next major release. Use native CSS Grid instead. */
+/**
+ * @slot {"name": "", "description": "Default slot to render the content." }
+ *
+ * @deprecated since v3.0.0, will be removed with next major release. Use native CSS Grid instead.
+ */
 @Component({
   tag: 'p-grid-item',
   shadow: true,
