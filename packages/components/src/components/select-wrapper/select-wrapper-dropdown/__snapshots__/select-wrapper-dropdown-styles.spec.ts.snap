@@ -681,13 +681,13 @@ ul {
   clip: rect(0,0,0,0);
   white-space: nowrap;
 }
+.option--highlighted {
+  background: #D8D8DB;
+}
 .option--selected {
   cursor: default;
   pointer-events: none;
   background: #EEEFF2;
-}
-.option--highlighted {
-  background: #D8D8DB;
 }
 .option--highlighted, .option--selected {
   color: #010205;
@@ -699,17 +699,21 @@ ul {
 .option--hidden {
   display: none;
 }
+.option--indent {
+  padding-left: 24px;
+}
 .optgroup {
-  color: #6B6D70;
+  color: #010205;
   display: block;
   padding: 3px 14px;
+  font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
   font-weight: 600;
+}
+.optgroup--hidden {
+  display: none;
 }
 .optgroup:not(:first-child) {
   margin-top: 8px;
-}
-.optgroup~.option {
-  padding-left: 24px;
 }
 @media(hover:hover) {
   .option:not([aria-disabled]):not(.option--disabled):not([role=status]):hover {
@@ -825,13 +829,13 @@ ul {
   clip: rect(0,0,0,0);
   white-space: nowrap;
 }
+.option--highlighted {
+  background: #D8D8DB;
+}
 .option--selected {
   cursor: default;
   pointer-events: none;
   background: #EEEFF2;
-}
-.option--highlighted {
-  background: #D8D8DB;
 }
 .option--highlighted, .option--selected {
   color: #010205;
@@ -843,17 +847,21 @@ ul {
 .option--hidden {
   display: none;
 }
+.option--indent {
+  padding-left: 24px;
+}
 .optgroup {
-  color: #6B6D70;
+  color: #010205;
   display: block;
   padding: 3px 14px;
+  font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
   font-weight: 600;
+}
+.optgroup--hidden {
+  display: none;
 }
 .optgroup:not(:first-child) {
   margin-top: 8px;
-}
-.optgroup~.option {
-  padding-left: 24px;
 }
 @media(hover:hover) {
   .option:not([aria-disabled]):not(.option--disabled):not([role=status]):hover {
@@ -991,13 +999,13 @@ ul {
   clip: rect(0,0,0,0);
   white-space: nowrap;
 }
+.option--highlighted {
+  background: #D8D8DB;
+}
 .option--selected {
   cursor: default;
   pointer-events: none;
   background: #EEEFF2;
-}
-.option--highlighted {
-  background: #D8D8DB;
 }
 .option--highlighted, .option--selected {
   color: #010205;
@@ -1009,17 +1017,21 @@ ul {
 .option--hidden {
   display: none;
 }
+.option--indent {
+  padding-left: 24px;
+}
 .optgroup {
-  color: #6B6D70;
+  color: #010205;
   display: block;
   padding: 3px 14px;
+  font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
   font-weight: 600;
+}
+.optgroup--hidden {
+  display: none;
 }
 .optgroup:not(:first-child) {
   margin-top: 8px;
-}
-.optgroup~.option {
-  padding-left: 24px;
 }
 @media(hover:hover) {
   .option:not([aria-disabled]):not(.option--disabled):not([role=status]):hover {
@@ -1123,13 +1135,13 @@ ul {
   clip: rect(0,0,0,0);
   white-space: nowrap;
 }
+.option--highlighted {
+  background: #D8D8DB;
+}
 .option--selected {
   cursor: default;
   pointer-events: none;
   background: #EEEFF2;
-}
-.option--highlighted {
-  background: #D8D8DB;
 }
 .option--highlighted, .option--selected {
   color: #010205;
@@ -1141,17 +1153,21 @@ ul {
 .option--hidden {
   display: none;
 }
+.option--indent {
+  padding-left: 24px;
+}
 .optgroup {
-  color: #6B6D70;
+  color: #010205;
   display: block;
   padding: 3px 14px;
+  font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
   font-weight: 600;
+}
+.optgroup--hidden {
+  display: none;
 }
 .optgroup:not(:first-child) {
   margin-top: 8px;
-}
-.optgroup~.option {
-  padding-left: 24px;
 }
 @media(hover:hover) {
   .option:not([aria-disabled]):not(.option--disabled):not([role=status]):hover {
@@ -1289,13 +1305,13 @@ ul {
   clip: rect(0,0,0,0);
   white-space: nowrap;
 }
+.option--highlighted {
+  background: #D8D8DB;
+}
 .option--selected {
   cursor: default;
   pointer-events: none;
   background: #EEEFF2;
-}
-.option--highlighted {
-  background: #D8D8DB;
 }
 .option--highlighted, .option--selected {
   color: #010205;
@@ -1307,17 +1323,21 @@ ul {
 .option--hidden {
   display: none;
 }
+.option--indent {
+  padding-left: 24px;
+}
 .optgroup {
-  color: #6B6D70;
+  color: #010205;
   display: block;
   padding: 3px 14px;
+  font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
   font-weight: 600;
+}
+.optgroup--hidden {
+  display: none;
 }
 .optgroup:not(:first-child) {
   margin-top: 8px;
-}
-.optgroup~.option {
-  padding-left: 24px;
 }
 @media(hover:hover) {
   .option:not([aria-disabled]):not(.option--disabled):not([role=status]):hover {
@@ -1637,13 +1657,13 @@ ul {
   clip: rect(0,0,0,0);
   white-space: nowrap;
 }
+.option--highlighted {
+  background: #D8D8DB;
+}
 .option--selected {
   cursor: default;
   pointer-events: none;
   background: #EEEFF2;
-}
-.option--highlighted {
-  background: #D8D8DB;
 }
 .option--highlighted, .option--selected {
   color: #010205;
@@ -1655,17 +1675,21 @@ ul {
 .option--hidden {
   display: none;
 }
+.option--indent {
+  padding-left: 24px;
+}
 .optgroup {
-  color: #6B6D70;
+  color: #010205;
   display: block;
   padding: 3px 14px;
+  font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
   font-weight: 600;
+}
+.optgroup--hidden {
+  display: none;
 }
 .optgroup:not(:first-child) {
   margin-top: 8px;
-}
-.optgroup~.option {
-  padding-left: 24px;
 }
 @media(hover:hover) {
   .option:not([aria-disabled]):not(.option--disabled):not([role=status]):hover {
@@ -1781,13 +1805,13 @@ ul {
   clip: rect(0,0,0,0);
   white-space: nowrap;
 }
+.option--highlighted {
+  background: #D8D8DB;
+}
 .option--selected {
   cursor: default;
   pointer-events: none;
   background: #EEEFF2;
-}
-.option--highlighted {
-  background: #D8D8DB;
 }
 .option--highlighted, .option--selected {
   color: #010205;
@@ -1799,17 +1823,21 @@ ul {
 .option--hidden {
   display: none;
 }
+.option--indent {
+  padding-left: 24px;
+}
 .optgroup {
-  color: #6B6D70;
+  color: #010205;
   display: block;
   padding: 3px 14px;
+  font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
   font-weight: 600;
+}
+.optgroup--hidden {
+  display: none;
 }
 .optgroup:not(:first-child) {
   margin-top: 8px;
-}
-.optgroup~.option {
-  padding-left: 24px;
 }
 @media(hover:hover) {
   .option:not([aria-disabled]):not(.option--disabled):not([role=status]):hover {
@@ -1947,13 +1975,13 @@ ul {
   clip: rect(0,0,0,0);
   white-space: nowrap;
 }
+.option--highlighted {
+  background: #D8D8DB;
+}
 .option--selected {
   cursor: default;
   pointer-events: none;
   background: #EEEFF2;
-}
-.option--highlighted {
-  background: #D8D8DB;
 }
 .option--highlighted, .option--selected {
   color: #010205;
@@ -1965,17 +1993,21 @@ ul {
 .option--hidden {
   display: none;
 }
+.option--indent {
+  padding-left: 24px;
+}
 .optgroup {
-  color: #6B6D70;
+  color: #010205;
   display: block;
   padding: 3px 14px;
+  font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
   font-weight: 600;
+}
+.optgroup--hidden {
+  display: none;
 }
 .optgroup:not(:first-child) {
   margin-top: 8px;
-}
-.optgroup~.option {
-  padding-left: 24px;
 }
 @media(hover:hover) {
   .option:not([aria-disabled]):not(.option--disabled):not([role=status]):hover {
@@ -2079,13 +2111,13 @@ ul {
   clip: rect(0,0,0,0);
   white-space: nowrap;
 }
+.option--highlighted {
+  background: #D8D8DB;
+}
 .option--selected {
   cursor: default;
   pointer-events: none;
   background: #EEEFF2;
-}
-.option--highlighted {
-  background: #D8D8DB;
 }
 .option--highlighted, .option--selected {
   color: #010205;
@@ -2097,17 +2129,21 @@ ul {
 .option--hidden {
   display: none;
 }
+.option--indent {
+  padding-left: 24px;
+}
 .optgroup {
-  color: #6B6D70;
+  color: #010205;
   display: block;
   padding: 3px 14px;
+  font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
   font-weight: 600;
+}
+.optgroup--hidden {
+  display: none;
 }
 .optgroup:not(:first-child) {
   margin-top: 8px;
-}
-.optgroup~.option {
-  padding-left: 24px;
 }
 @media(hover:hover) {
   .option:not([aria-disabled]):not(.option--disabled):not([role=status]):hover {
@@ -2245,13 +2281,13 @@ ul {
   clip: rect(0,0,0,0);
   white-space: nowrap;
 }
+.option--highlighted {
+  background: #D8D8DB;
+}
 .option--selected {
   cursor: default;
   pointer-events: none;
   background: #EEEFF2;
-}
-.option--highlighted {
-  background: #D8D8DB;
 }
 .option--highlighted, .option--selected {
   color: #010205;
@@ -2263,17 +2299,21 @@ ul {
 .option--hidden {
   display: none;
 }
+.option--indent {
+  padding-left: 24px;
+}
 .optgroup {
-  color: #6B6D70;
+  color: #010205;
   display: block;
   padding: 3px 14px;
+  font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
   font-weight: 600;
+}
+.optgroup--hidden {
+  display: none;
 }
 .optgroup:not(:first-child) {
   margin-top: 8px;
-}
-.optgroup~.option {
-  padding-left: 24px;
 }
 @media(hover:hover) {
   .option:not([aria-disabled]):not(.option--disabled):not([role=status]):hover {
@@ -3901,13 +3941,13 @@ exports[`getListStyles() should return correct css for direction: down and theme
   clip: rect(0,0,0,0);
   white-space: nowrap;
 }
+.option--highlighted {
+  background: #404044;
+}
 .option--selected {
   cursor: default;
   pointer-events: none;
   background: #212225;
-}
-.option--highlighted {
-  background: #404044;
 }
 .option--highlighted, .option--selected {
   color: #FBFCFF;
@@ -3919,17 +3959,21 @@ exports[`getListStyles() should return correct css for direction: down and theme
 .option--hidden {
   display: none;
 }
+.option--indent {
+  padding-left: 24px;
+}
 .optgroup {
-  color: #88898C;
+  color: #FBFCFF;
   display: block;
   padding: 3px 14px;
+  font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
   font-weight: 600;
+}
+.optgroup--hidden {
+  display: none;
 }
 .optgroup:not(:first-child) {
   margin-top: 8px;
-}
-.optgroup~.option {
-  padding-left: 24px;
 }
 @media(hover:hover) {
   .option:not([aria-disabled]):not(.option--disabled):not([role=status]):hover {
@@ -3997,13 +4041,13 @@ exports[`getListStyles() should return correct css for direction: down and theme
   clip: rect(0,0,0,0);
   white-space: nowrap;
 }
+.option--highlighted {
+  background: #D8D8DB;
+}
 .option--selected {
   cursor: default;
   pointer-events: none;
   background: #EEEFF2;
-}
-.option--highlighted {
-  background: #D8D8DB;
 }
 .option--highlighted, .option--selected {
   color: #010205;
@@ -4015,17 +4059,21 @@ exports[`getListStyles() should return correct css for direction: down and theme
 .option--hidden {
   display: none;
 }
+.option--indent {
+  padding-left: 24px;
+}
 .optgroup {
-  color: #6B6D70;
+  color: #010205;
   display: block;
   padding: 3px 14px;
+  font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
   font-weight: 600;
+}
+.optgroup--hidden {
+  display: none;
 }
 .optgroup:not(:first-child) {
   margin-top: 8px;
-}
-.optgroup~.option {
-  padding-left: 24px;
 }
 @media(hover:hover) {
   .option:not([aria-disabled]):not(.option--disabled):not([role=status]):hover {
@@ -4093,13 +4141,13 @@ exports[`getListStyles() should return correct css for direction: up and theme: 
   clip: rect(0,0,0,0);
   white-space: nowrap;
 }
+.option--highlighted {
+  background: #404044;
+}
 .option--selected {
   cursor: default;
   pointer-events: none;
   background: #212225;
-}
-.option--highlighted {
-  background: #404044;
 }
 .option--highlighted, .option--selected {
   color: #FBFCFF;
@@ -4111,17 +4159,21 @@ exports[`getListStyles() should return correct css for direction: up and theme: 
 .option--hidden {
   display: none;
 }
+.option--indent {
+  padding-left: 24px;
+}
 .optgroup {
-  color: #88898C;
+  color: #FBFCFF;
   display: block;
   padding: 3px 14px;
+  font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
   font-weight: 600;
+}
+.optgroup--hidden {
+  display: none;
 }
 .optgroup:not(:first-child) {
   margin-top: 8px;
-}
-.optgroup~.option {
-  padding-left: 24px;
 }
 @media(hover:hover) {
   .option:not([aria-disabled]):not(.option--disabled):not([role=status]):hover {
@@ -4189,13 +4241,13 @@ exports[`getListStyles() should return correct css for direction: up and theme: 
   clip: rect(0,0,0,0);
   white-space: nowrap;
 }
+.option--highlighted {
+  background: #D8D8DB;
+}
 .option--selected {
   cursor: default;
   pointer-events: none;
   background: #EEEFF2;
-}
-.option--highlighted {
-  background: #D8D8DB;
 }
 .option--highlighted, .option--selected {
   color: #010205;
@@ -4207,17 +4259,21 @@ exports[`getListStyles() should return correct css for direction: up and theme: 
 .option--hidden {
   display: none;
 }
+.option--indent {
+  padding-left: 24px;
+}
 .optgroup {
-  color: #6B6D70;
+  color: #010205;
   display: block;
   padding: 3px 14px;
+  font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
   font-weight: 600;
+}
+.optgroup--hidden {
+  display: none;
 }
 .optgroup:not(:first-child) {
   margin-top: 8px;
-}
-.optgroup~.option {
-  padding-left: 24px;
 }
 @media(hover:hover) {
   .option:not([aria-disabled]):not(.option--disabled):not([role=status]):hover {

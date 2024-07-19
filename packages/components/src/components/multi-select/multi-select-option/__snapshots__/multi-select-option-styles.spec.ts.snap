@@ -12,6 +12,7 @@ exports[`getComponentCss() should return correct css for theme: dark 1`] = `
   justify-content: space-between;
   gap: 12px;
   padding: 8px 12px;
+  padding-left: var(--p-internal-multi-select-option-padding-left, 12px);
   flex: 1 0 calc(calc(6px + 2.125ex) + 8px * 2);
   color: #AFB0B3;
   cursor: pointer;
@@ -74,6 +75,7 @@ exports[`getComponentCss() should return correct css for theme: light 1`] = `
   justify-content: space-between;
   gap: 12px;
   padding: 8px 12px;
+  padding-left: var(--p-internal-multi-select-option-padding-left, 12px);
   flex: 1 0 calc(calc(6px + 2.125ex) + 8px * 2);
   color: #535457;
   cursor: pointer;
