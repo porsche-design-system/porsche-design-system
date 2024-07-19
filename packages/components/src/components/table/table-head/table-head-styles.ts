@@ -1,6 +1,6 @@
 import { getCss } from '../../../utils';
 import { addImportantToEachRule, hostHiddenStyles } from '../../../styles';
-import { fontLineHeight, fontSizeTextXSmall, fontWeightSemiBold } from '@porsche-design-system/utilities-v2';
+import { fontLineHeight, fontSizeTextXSmall, fontWeightSemiBold } from '@porsche-design-system/styles';
 
 export const getComponentCss = (): string => {
   return getCss({

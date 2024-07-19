@@ -9,7 +9,7 @@ import {
   fontSizeTextXSmall,
   fontSizeTextXXSmall,
   textSmallStyle,
-} from '@porsche-design-system/utilities-v2';
+} from '@porsche-design-system/styles';
 import { getTypographyRootJssStyle, getTypographySlottedJssStyle } from '../../styles/typography-styles';
 import { getFontWeight } from '../../styles/font-weight-styles';
 import { TEXT_TAGS } from './text-utils';

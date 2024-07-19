@@ -1,8 +1,8 @@
-import type { Theme } from '@porsche-design-system/utilities-v2';
+import type { Theme } from '@porsche-design-system/styles';
 import type { ThemedColors } from '../src/styles';
 import * as path from 'path';
 import * as fs from 'fs';
-import { themeLight, themeDark } from '@porsche-design-system/utilities-v2';
+import { themeLight, themeDark } from '@porsche-design-system/styles';
 import tinycolor2 from 'tinycolor2';
 import { pascalCase } from 'latest-change-case';
 

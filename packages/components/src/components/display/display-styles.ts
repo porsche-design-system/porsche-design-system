@@ -8,7 +8,7 @@ import {
   fontSizeDisplayLarge,
   fontSizeDisplayMedium,
   fontSizeDisplaySmall,
-} from '@porsche-design-system/utilities-v2';
+} from '@porsche-design-system/styles';
 import { getTypographyRootJssStyle, getTypographySlottedJssStyle } from '../../styles/typography-styles';
 
 const sizeMap: { [key in Exclude<DisplaySize, 'inherit'>]: string } = {

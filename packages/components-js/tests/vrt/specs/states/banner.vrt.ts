@@ -8,7 +8,7 @@ import {
   type PrefersColorScheme,
   setContentWithDesignSystem,
 } from '../../helpers';
-import { Theme } from '@porsche-design-system/utilities-v2';
+import { Theme } from '@porsche-design-system/styles';
 
 const component = 'banner';
 

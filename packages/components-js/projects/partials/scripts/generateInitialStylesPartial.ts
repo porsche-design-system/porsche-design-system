@@ -1,7 +1,7 @@
 import type { Styles } from 'jss';
 import { getMinifiedCss, INTERNAL_TAG_NAMES, TAG_NAMES } from '@porsche-design-system/shared';
 import { joinArrayElementsToString } from './utils';
-import { fontFamily, fontHyphenationStyle, fontLineHeight, fontWeight } from '@porsche-design-system/utilities-v2';
+import { fontFamily, fontHyphenationStyle, fontLineHeight, fontWeight } from '@porsche-design-system/styles';
 
 const tagNames = joinArrayElementsToString(TAG_NAMES.filter((x) => !INTERNAL_TAG_NAMES.includes(x)));
 

@@ -1,5 +1,5 @@
 import type { Theme } from '../../../types';
-import { textSmallStyle, spacingFluidMedium } from '@porsche-design-system/utilities-v2';
+import { textSmallStyle, spacingFluidMedium } from '@porsche-design-system/styles';
 import { getCss, isThemeDark, isHighContrastMode } from '../../../utils';
 import {
   addImportantToEachRule,

@@ -8,7 +8,7 @@ import {
   ITEM_PADDING,
   LABEL_FONT,
 } from '../segmented-control-item/segmented-control-item-styles';
-import { borderWidthBase, fontFamily } from '@porsche-design-system/utilities-v2';
+import { borderWidthBase, fontFamily } from '@porsche-design-system/styles';
 import { forceUpdate } from '@stencil/core';
 import { hasDocument } from '../../../utils';
 

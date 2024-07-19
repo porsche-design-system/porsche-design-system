@@ -8,7 +8,7 @@ import {
   motionDurationShort,
   motionEasingBase,
   textSmallStyle,
-} from '@porsche-design-system/utilities-v2';
+} from '@porsche-design-system/styles';
 import { getCss, isHighContrastMode, isThemeDark } from '../../utils';
 import {
   addImportantToEachRule,
