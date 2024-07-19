@@ -39,6 +39,7 @@ type GenerateOptionMapsOptions = {
   hiddenIndex?: number;
   initiallyHiddenIndex?: number;
   title?: string;
+  showOptgroup?: boolean;
 };
 
 export const generateOptionMaps = (props?: GenerateOptionMapsOptions): OptionMap[] => {
@@ -50,6 +51,7 @@ export const generateOptionMaps = (props?: GenerateOptionMapsOptions): OptionMap
     hiddenIndex,
     initiallyHiddenIndex,
     title,
+    showOptgroup,
   } = props || {};
 
   return Array.from(Array(amount)).map<OptionMap>((_, idx) => ({
@@ -61,6 +63,7 @@ export const generateOptionMaps = (props?: GenerateOptionMapsOptions): OptionMap
     ...(hiddenIndex === idx && { hidden: true }),
     ...(initiallyHiddenIndex === idx && { initiallyHidden: true }),
     title,
+    showOptgroup,
   }));
 };
 
@@ -77,6 +80,7 @@ const getIndexOfSelectedOption = (options: OptionMap[]): number => options.findI
 const getIndexOfHighlightedOption = (options: OptionMap[]): number => options.findIndex((item) => item.highlighted);
 const getIndexOfHiddenOption = (options: OptionMap[]): number => options.findIndex((item) => item.hidden);
 const getVisibleOptionsAmount = (options: OptionMap[]): number => options.filter((item) => !item.hidden).length;
+const getFirstInOptgroupAmount = (options: OptionMap[]): number => options.filter((item) => item.showOptgroup).length;
 
 describe('getOptionsElements()', () => {
   it("should return a select's option elements", () => {
@@ -129,11 +133,23 @@ describe('getOptionMaps()', () => {
   const amount = 1;
 
   it.each<[HTMLOptionElement[], OptionMap[]]>([
-    [generateHTMLOptionElements({ text }), generateOptionMaps({ amount })],
-    [generateHTMLOptionElements({ text, selected: true }), generateOptionMaps({ amount, selectedIndex: 0 })],
-    [generateHTMLOptionElements({ text, disabled: true }), generateOptionMaps({ amount, disabledIndex: 0 })],
-    [generateHTMLOptionElements({ text, hidden: true }), generateOptionMaps({ amount, initiallyHiddenIndex: 0 })],
-    [generateHTMLOptionElements({ text, isGrouped: true }), generateOptionMaps({ amount, title: 'Optgroup Label' })],
+    [generateHTMLOptionElements({ text }), generateOptionMaps({ amount, showOptgroup: false })],
+    [
+      generateHTMLOptionElements({ text, selected: true }),
+      generateOptionMaps({ amount, selectedIndex: 0, showOptgroup: false }),
+    ],
+    [
+      generateHTMLOptionElements({ text, disabled: true }),
+      generateOptionMaps({ amount, disabledIndex: 0, showOptgroup: false }),
+    ],
+    [
+      generateHTMLOptionElements({ text, hidden: true }),
+      generateOptionMaps({ amount, initiallyHiddenIndex: 0, showOptgroup: false }),
+    ],
+    [
+      generateHTMLOptionElements({ text, isGrouped: true }),
+      generateOptionMaps({ amount, title: 'Optgroup Label', showOptgroup: true }),
+    ],
   ])('should correctly transform HTMLOptionElements to OptionMaps', (optionElements, optionMaps) => {
     expect(getOptionMaps(optionElements)).toEqual(optionMaps);
   });
@@ -269,18 +285,22 @@ describe('getMatchingOptionMaps()', () => {
 });
 
 describe('setFilteredOptionMaps()', () => {
-  it.each<[string, number]>([
-    ['Invalid Value', 0],
-    ['First Value', 1],
-    ['Value', 4],
-    ['value', 4],
-    ['ir', 2],
-    ['st Val', 1],
-  ])('should for searchString %s return %s visible options', (searchString, expected) => {
-    const options = mapValuesToBeBetterFilterable(generateOptionMaps());
-    const result = setFilteredOptionMaps(options, searchString);
-    expect(getVisibleOptionsAmount(result)).toBe(expected);
-  });
+  it.each<[string, number, number]>([
+    ['Invalid Value', 0, 0],
+    ['First Value', 1, 1],
+    ['Value', 4, 1],
+    ['value', 4, 1],
+    ['ir', 2, 1],
+    ['st Val', 1, 1],
+  ])(
+    'should for searchString %s return %s visible options',
+    (searchString, expectedVisibleOptions, expectedVisibleOptgroups) => {
+      const options = mapValuesToBeBetterFilterable(generateOptionMaps({ title: 'Optgroup Label' }));
+      const result = setFilteredOptionMaps(options, searchString);
+      expect(getVisibleOptionsAmount(result)).toBe(expectedVisibleOptions);
+      expect(getFirstInOptgroupAmount(result)).toBe(expectedVisibleOptgroups);
+    }
+  );
 });
 
 describe('resetFilteredOptionMaps()', () => {

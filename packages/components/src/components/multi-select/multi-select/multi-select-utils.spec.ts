@@ -10,6 +10,7 @@ import {
   getUsableOptions,
   hasFilterOptionResults,
   initNativeMultiSelect,
+  type MultiSelectOptgroup,
   type MultiSelectOption,
   resetFilteredOptions,
   resetHighlightedOptions,
@@ -38,6 +39,14 @@ type GenerateMultiSelectOptionsParams = {
   hiddenIndex?: number;
 };
 
+type GenerateMultiSelectOptgroupParams = {
+  amount: number;
+  disabledIndex?: number;
+  hiddenIndex?: number;
+};
+
+type Writeable<T> = { -readonly [P in keyof T]: T[P] };
+
 export const generateMultiSelectOptions = (
   { amount, selectedIndices = [], highlightedIndex, disabledIndex, hiddenIndex }: GenerateMultiSelectOptionsParams = {
     amount: 3,
@@ -55,6 +64,22 @@ export const generateMultiSelectOptions = (
         disabled: disabledIndex === idx,
         hidden: hiddenIndex === idx,
       }) as MultiSelectOption
+  );
+};
+
+export const generateMultiSelectOptgroups = (
+  { amount, disabledIndex, hiddenIndex }: GenerateMultiSelectOptgroupParams = {
+    amount: 3,
+  }
+): MultiSelectOptgroup[] => {
+  return Array.from(
+    Array(amount),
+    (_, idx) =>
+      ({
+        label: `Label ${idx}`,
+        disabled: disabledIndex === idx,
+        hidden: hiddenIndex === idx,
+      }) as MultiSelectOptgroup
   );
 };
 
@@ -166,22 +191,37 @@ describe('updateNativeOptions()', () => {
 describe('updateOptionsFilterState()', () => {
   it('should update hidden option prop depending on search string', () => {
     const options = generateMultiSelectOptions();
+    const optgroups = generateMultiSelectOptgroups();
+
+    optgroups.forEach(
+      (optgroup) => ((optgroup as Writeable<HTMLPOptgroupElement>).children = options as unknown as HTMLCollection)
+    );
+
     const searchString1 = 'Option 3';
-    updateOptionsFilterState(searchString1, options);
+    updateOptionsFilterState(searchString1, options, optgroups);
+
     options.forEach((option) => {
       expect(option.hidden).toBeTruthy();
     });
 
+    optgroups.forEach((optgroup) => {
+      expect(optgroup.hidden).toBeTruthy();
+    });
+
     const searchString2 = 'Option 2';
-    updateOptionsFilterState(searchString2, options);
+    updateOptionsFilterState(searchString2, options, optgroups);
     expect(options[0].hidden).toBeTruthy();
     expect(options[1].hidden).toBeTruthy();
     expect(options[2].hidden).toBeFalsy();
 
     const searchString3 = 'Option';
-    updateOptionsFilterState(searchString3, options);
+    updateOptionsFilterState(searchString3, options, optgroups);
     options.forEach((option) => {
       expect(option.hidden).toBeFalsy();
+    });
+
+    optgroups.forEach((optgroup) => {
+      expect(optgroup.hidden).toBeFalsy();
     });
   });
 });
@@ -201,15 +241,26 @@ describe('hasFilterOptionResults()', () => {
 describe('resetFilteredOptions()', () => {
   it('should reset all options to not be hidden', () => {
     const options = generateMultiSelectOptions();
-    resetFilteredOptions(options);
+    const optgroups = generateMultiSelectOptgroups();
+
+    resetFilteredOptions(options, optgroups);
     options.forEach((option) => {
       expect(option.hidden).toBeFalsy();
     });
+    optgroups.forEach((option) => {
+      expect(option.hidden).toBeFalsy();
+    });
+
     options[0].hidden = true;
     options[1].hidden = true;
-    resetFilteredOptions(options);
+    optgroups[0].hidden = true;
+    optgroups[1].hidden = true;
+    resetFilteredOptions(options, optgroups);
     options.forEach((option) => {
       expect(option.hidden).toBeFalsy();
+    });
+    optgroups.forEach((optgroup) => {
+      expect(optgroup.hidden).toBeFalsy();
     });
   });
 });

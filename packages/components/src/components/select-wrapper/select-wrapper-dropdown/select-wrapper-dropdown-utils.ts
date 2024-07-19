@@ -27,6 +27,7 @@ export type OptionMap = {
   selected: boolean;
   highlighted: boolean;
   title?: string; // for optgroup
+  showOptgroup?: boolean; // for optgroup
 };
 
 export const getOptionsElements = (select: HTMLSelectElement): HTMLOptionElement[] => Array.from(select.options);
@@ -41,8 +42,8 @@ export const getOptionMaps = (options: HTMLOptionElement[]): OptionMap[] =>
       initiallyHidden: hasAttribute(item, 'hidden'),
       selected,
       highlighted: selected,
-      ...(getTagName(parentElement) === 'optgroup' &&
-        previousElementSibling === null && { title: (parentElement as HTMLOptGroupElement).label }),
+      ...(getTagName(parentElement) === 'optgroup' && { title: (parentElement as HTMLOptGroupElement).label }),
+      showOptgroup: getTagName(parentElement) === 'optgroup' && previousElementSibling == null,
     };
     return option;
   });
@@ -111,9 +112,17 @@ export const setHighlightedFirstMatchingOptionMaps = (options: OptionMap[], key:
 
 export const setFilteredOptionMaps = (options: OptionMap[], searchString: string): OptionMap[] => {
   const lowerCaseSearchString = searchString.toLowerCase();
+  const matchedItems = options.filter(
+    (item) => item.title && !item.initiallyHidden && item.value.toLowerCase().includes(lowerCaseSearchString)
+  );
+  const firstInOptgroup = matchedItems.filter(
+    (value, index, self) => index === self.findIndex((v) => v.title === value.title)
+  );
+
   return options.map((item) => ({
     ...item,
     hidden: !item.initiallyHidden && !item.value.toLowerCase().includes(lowerCaseSearchString),
+    showOptgroup: firstInOptgroup.indexOf(item) !== -1,
   }));
 };
 

@@ -49,6 +49,7 @@ import {
   hasMessage,
   hasPropValueChanged,
   isClickOutside,
+  isElementOfKind,
   SELECT_DROPDOWN_DIRECTIONS,
   SELECT_SEARCH_TIMEOUT,
   setNextSelectOptionHighlighted,
@@ -310,7 +311,17 @@ export class Select {
   };
 
   private updateOptions = (): void => {
-    this.selectOptions = Array.from(this.host.children).filter(
+    const processedChildElements = Array.from(this.host.children)
+      .map((el: HTMLElement) => {
+        if (!isElementOfKind(el, 'p-select-option')) {
+          throwIfElementIsNotOfKind(this.host, el, 'p-optgroup');
+          return Array.from(el.children);
+        }
+        return el;
+      })
+      .flat();
+
+    this.selectOptions = processedChildElements.filter(
       (el) => el.tagName !== 'SELECT' && el.slot !== 'label' && el.slot !== 'description' && el.slot !== 'message'
     ) as HTMLPMultiSelectOptionElement[];
     this.selectOptions.forEach((child) => throwIfElementIsNotOfKind(this.host, child, 'p-select-option'));

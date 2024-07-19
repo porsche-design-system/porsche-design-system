@@ -7,6 +7,7 @@ import { forceUpdate } from '@stencil/core';
 export type MultiSelectState = FormState;
 export type MultiSelectDropdownDirection = SelectComponentsDropdownDirection;
 export type MultiSelectOption = HTMLPMultiSelectOptionElement & MultiSelectOptionInternalHTMLProps;
+export type MultiSelectOptgroup = HTMLPOptgroupElement;
 
 /** @deprecated */
 export type MultiSelectUpdateEvent = {
@@ -61,15 +62,21 @@ export const updateNativeOptions = (nativeSelect: HTMLSelectElement, multiSelect
     .join('');
 };
 
-export const updateOptionsFilterState = (searchString: string, options: MultiSelectOption[]): void => {
+export const updateOptionsFilterState = (searchString: string, options: MultiSelectOption[], optGroups: MultiSelectOptgroup[]): void => {
   options.forEach((option) => (option.hidden = !option.textContent.toLowerCase().includes(searchString.toLowerCase())));
+
+  optGroups.forEach( optgroup => {
+    optgroup.hidden = !Array.from(optgroup.children).some( child => !(child as HTMLPMultiSelectOptionElement).hidden);
+  });
 };
 
 export const hasFilterOptionResults = (options: MultiSelectOption[]): boolean =>
   options.some((option) => !option.hidden);
 
-export const resetFilteredOptions = (options: MultiSelectOption[]): void =>
+export const resetFilteredOptions = (options: MultiSelectOption[], optGroups: MultiSelectOptgroup[]): void => {
   options.forEach((option) => (option.hidden = false));
+  optGroups.forEach((optgroup) => (optgroup.hidden = false));
+};
 
 export const getSelectedOptions = (options: MultiSelectOption[]): MultiSelectOption[] =>
   options.filter((option) => option.selected);

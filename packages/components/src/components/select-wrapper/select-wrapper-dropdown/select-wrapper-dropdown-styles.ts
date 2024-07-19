@@ -17,6 +17,7 @@ import {
   fontWeightSemiBold,
   spacingStaticSmall,
   textSmallStyle,
+  fontSizeTextXSmall
 } from '@porsche-design-system/utilities-v2';
 
 import { getNoResultsOptionJssStyle, OPTION_HEIGHT } from '../../../styles/option-styles';
@@ -308,18 +309,18 @@ export const getListStyles = (direction: DropdownDirectionInternal, theme: Theme
           }),
         },
       }),
+      '&--highlighted': {
+        background: contrastLowColor,
+        ...prefersColorSchemeDarkMediaQuery(theme, {
+          background: contrastLowColorDark,
+        }),
+      },
       '&--selected': {
         cursor: 'default',
         pointerEvents: 'none',
         background: backgroundSurfaceColor,
         ...prefersColorSchemeDarkMediaQuery(theme, {
           background: backgroundSurfaceColorDark,
-        }),
-      },
-      '&--highlighted': {
-        background: contrastLowColor,
-        ...prefersColorSchemeDarkMediaQuery(theme, {
-          background: contrastLowColorDark,
         }),
       },
       '&--highlighted, &--selected': {
@@ -338,20 +339,24 @@ export const getListStyles = (direction: DropdownDirectionInternal, theme: Theme
       '&--hidden': {
         display: 'none',
       },
+      '&--indent': {
+        paddingLeft: '24px',
+      },
     },
     optgroup: {
-      color: contrastMediumColor,
+      '&--hidden': {
+        display: 'none',
+      },
+      color: primaryColor,
       display: 'block',
       padding: '3px 14px',
+      fontSize: fontSizeTextXSmall,
       fontWeight: fontWeightSemiBold,
       ...prefersColorSchemeDarkMediaQuery(theme, {
-        color: contrastMediumColorDark,
+        color: primaryColorDark,
       }),
       '&:not(:first-child)': {
         marginTop: spacingStaticSmall,
-      },
-      '&~$option': {
-        paddingLeft: '24px',
       },
     },
   };

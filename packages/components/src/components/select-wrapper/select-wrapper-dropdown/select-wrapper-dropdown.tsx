@@ -235,10 +235,17 @@ export class SelectWrapperDropdown {
                   </li>
                 ) : (
                   this.optionMaps.map((option, index) => {
-                    const { value, disabled, hidden, initiallyHidden, selected, highlighted, title } = option;
+                    const { value, disabled, hidden, initiallyHidden, selected, highlighted, title, showOptgroup } =
+                      option;
                     return [
-                      title && (
-                        <span class="optgroup" role="presentation">
+                      showOptgroup && (
+                        <span
+                          class={{
+                            optgroup: true,
+                            'optgroup--hidden': hidden || initiallyHidden,
+                          }}
+                          role="presentation"
+                        >
                           {title}
                         </span>
                       ),
@@ -251,6 +258,7 @@ export class SelectWrapperDropdown {
                           'option--highlighted': highlighted,
                           'option--disabled': disabled,
                           'option--hidden': hidden || initiallyHidden,
+                          'option--indent': !!title,
                         }}
                         onClick={!selected && !disabled ? () => this.setOptionSelected(index) : undefined}
                         {...getOptionAriaAttributes(selected, disabled, hidden, !!value)}

@@ -1,4 +1,4 @@
-import type { MultiSelectDropdownDirection, MultiSelectState } from './multi-select-utils';
+import type { MultiSelectDropdownDirection, MultiSelectOptgroup, MultiSelectState } from './multi-select-utils';
 import {
   getDropdownDirection,
   getHighlightedOption,
@@ -41,6 +41,7 @@ import {
   handleButtonEvent,
   hasPropValueChanged,
   isClickOutside,
+  isElementOfKind,
   SELECT_DROPDOWN_DIRECTIONS,
   type SelectDropdownDirectionInternal,
   THEMES,
@@ -136,6 +137,7 @@ export class MultiSelect {
 
   private nativeSelect: HTMLSelectElement;
   private multiSelectOptions: MultiSelectOption[] = [];
+  private multiSelectOptgroups: MultiSelectOptgroup[] = [];
   private inputContainer: HTMLDivElement;
   private inputElement: HTMLInputElement;
   private listElement: HTMLDivElement;
@@ -359,7 +361,21 @@ export class MultiSelect {
   };
 
   private updateOptions = (): void => {
-    this.multiSelectOptions = Array.from(this.host.children).filter(
+    const processedChildElements = Array.from(this.host.children)
+      .map((el: HTMLElement) => {
+        if (!isElementOfKind(el, 'p-multi-select-option')) {
+          throwIfElementIsNotOfKind(this.host, el, 'p-optgroup');
+          return Array.from(el.children);
+        }
+        return el;
+      })
+      .flat();
+
+    this.multiSelectOptgroups = Array.from(this.host.children).filter((el: HTMLElement) =>
+      isElementOfKind(el, 'p-optgroup')
+    ) as HTMLPOptgroupElement[];
+
+    this.multiSelectOptions = processedChildElements.filter(
       (el) => el.tagName !== 'SELECT' && el.slot !== 'label' && el.slot !== 'description' && el.slot !== 'message'
     ) as HTMLPMultiSelectOptionElement[];
     this.multiSelectOptions.forEach((child) => throwIfElementIsNotOfKind(this.host, child, 'p-multi-select-option'));
@@ -369,7 +385,11 @@ export class MultiSelect {
     if (e.target.value.startsWith(' ')) {
       this.resetFilter();
     } else {
-      updateOptionsFilterState((e.target as HTMLInputElement).value, this.multiSelectOptions);
+      updateOptionsFilterState(
+        (e.target as HTMLInputElement).value,
+        this.multiSelectOptions,
+        this.multiSelectOptgroups
+      );
       this.hasFilterResults = hasFilterOptionResults(this.multiSelectOptions);
     }
     // in case input is focused via tab instead of click
@@ -400,7 +420,7 @@ export class MultiSelect {
 
   private resetFilter = (): void => {
     this.inputElement.value = '';
-    resetFilteredOptions(this.multiSelectOptions);
+    resetFilteredOptions(this.multiSelectOptions, this.multiSelectOptgroups);
   };
 
   private onInputKeyDown = (e: KeyboardEvent): void => {
