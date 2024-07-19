@@ -1,5 +1,5 @@
 import type { TagName } from '@porsche-design-system/shared';
-import { getComponentMeta } from '@porsche-design-system/component-meta';
+import { ComponentMeta, getComponentMeta, PropMeta } from '@porsche-design-system/component-meta';
 import { ReactWrapperGenerator } from './ReactWrapperGenerator';
 import type { ExtendedProp } from './DataStructureBuilder';
 import type { AdditionalFile } from './AbstractWrapperGenerator';
@@ -525,8 +525,8 @@ export default (
     formComponentName: FormComponentName,
     extraProps: PresetsProps
   ): AdditionalFile {
-    const { props } = getComponentMeta(wrapperTagName);
-    const defaultProps = cleanComponentMetaProps(props);
+    const { propsMeta } = getComponentMeta(wrapperTagName);
+    const defaultProps = cleanComponentMetaProps(propsMeta);
 
     const stringifiedProps = getStringifiedProps({
       uxpId: kebabCase(formComponentName),
@@ -606,8 +606,8 @@ function wrapAttributeWithDelimiter(attribute: string | number | boolean | strin
   }
 }
 
-function cleanComponentMetaProps(props: ReturnType<typeof getComponentMeta>['props']): PresetsProps {
+function cleanComponentMetaProps(props: ComponentMeta['propsMeta']): PresetsProps {
   return Object.entries(props || {}).reduce((result, [prop, value]) => {
-    return value !== null ? { ...result, [prop]: value } : result; // filter out `null` values that trigger errors in UXPin editor
+    return value.defaultValue !== null ? { ...result, [prop]: value.defaultValue } : result; // filter out `null` values that trigger errors in UXPin editor
   }, {} as PresetsProps);
 }

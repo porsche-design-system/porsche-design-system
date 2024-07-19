@@ -26,6 +26,9 @@ const propTypes: PropTypes<typeof StepperHorizontalItem> = {
   disabled: AllowedTypes.boolean,
 };
 
+/**
+ * @slot {"name": "", "description": "Default slot for the content." }
+ */
 @Component({
   tag: 'p-stepper-horizontal-item',
   shadow: { delegatesFocus: true },

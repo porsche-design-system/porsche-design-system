@@ -1,9 +1,13 @@
-# Porsche Design System - Meta Icons
+# `@porsche-design-system/meta-icons`
+
+Copies favicon and touch icons in multiple resolutions, creates a manifest and private npm package (esm,cjs + types).
 
 ## Build
 
-Copy favicon and touch icons in multiple resolutions and create a manifest.
+- `yarn build`
+  - `yarn build:meta-icons` (copies favicon and touch icons in multiple resolutions and creates a manifest)
+  - `yarn build:lib` (bundles library)
 
-```
-yarn build
-```
+## Clean
+
+- `yarn clean:build` (removes all auto generated files created by `yarn build`)
