@@ -82,7 +82,7 @@ const themeLight = {
   infoColor: '#2762EC',
   infoSoftColor: '#D3E1FF',
   infoSoftColorDarken: '#C2D1F1',
-  infoSoftColorLighten: '#F4F7FD',
+  infoSoftColorLighten: '#F4F7FD'
 };
 
 const themeDark = {
@@ -123,17 +123,16 @@ const themeDark = {
   infoColor: '#178BFF',
   infoSoftColor: '#04294E',
   infoSoftColorDarken: '#0C1A27',
-  infoSoftColorLighten: '#1A3856',
+  infoSoftColorLighten: '#1A3856'
 };
 
 const themeAuto = {
-  ...themeLight,
-};
+  ...themeLight,};
 
 const themes = {
-  light: themeLight,
-  dark: themeDark,
-  auto: themeAuto,
+  'light': themeLight,
+  'dark': themeDark,
+  'auto': themeAuto
 };
 /* Auto Generated End */
 
