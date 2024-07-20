@@ -266,6 +266,73 @@
 
 <div
   class="playground light"
+  title="should render opened and with optgroups"
+  style="padding-bottom: calc(1rem + 450px)"
+>
+  <p-multi-select name="options" value="a" label="Opened with optgroups" dropdown-direction="down" class="open">
+    <p-optgroup label="Some optgroup label 1">
+      <p-multi-select-option value="a">Option A</p-multi-select-option>
+      <p-multi-select-option value="b">Option B</p-multi-select-option>
+      <p-multi-select-option value="c">Option C</p-multi-select-option>
+    </p-optgroup>
+    <p-optgroup label="Some optgroup label 2">
+      <p-multi-select-option value="d">Option D</p-multi-select-option>
+      <p-multi-select-option value="e">Option E</p-multi-select-option>
+      <p-multi-select-option value="f">Option F</p-multi-select-option>
+    </p-optgroup>
+  </p-multi-select>
+</div>
+
+<div
+  class="playground light"
+  title="should render opened and with optgroup in disabled state"
+  style="padding-bottom: calc(1rem + 450px)"
+>
+  <p-multi-select
+    name="options"
+    value="a"
+    label="Opened with optgroup in disabled state"
+    dropdown-direction="down"
+    class="open"
+  >
+    <p-optgroup label="Some optgroup label 1">
+      <p-multi-select-option value="a">Option A</p-multi-select-option>
+      <p-multi-select-option value="b">Option B</p-multi-select-option>
+      <p-multi-select-option value="c">Option C</p-multi-select-option>
+    </p-optgroup>
+    <p-optgroup label="Some optgroup label 2" disabled>
+      <p-multi-select-option value="d">Option D</p-multi-select-option>
+      <p-multi-select-option value="e">Option E</p-multi-select-option>
+      <p-multi-select-option value="f">Option F</p-multi-select-option>
+    </p-optgroup>
+  </p-multi-select>
+</div>
+
+<div
+  class="playground light"
+  title="should render opened and with options within and outside optgroup"
+  style="padding-bottom: calc(1rem + 450px)"
+>
+  <p-multi-select
+    name="options"
+    value="a"
+    label="Opened with options within and outside optgroup"
+    dropdown-direction="down"
+    class="open"
+  >
+    <p-optgroup label="Some optgroup label 1">
+      <p-multi-select-option value="a">Option A</p-multi-select-option>
+      <p-multi-select-option value="b">Option B</p-multi-select-option>
+      <p-multi-select-option value="c">Option C</p-multi-select-option>
+    </p-optgroup>
+    <p-multi-select-option value="d">Option D</p-multi-select-option>
+    <p-multi-select-option value="e">Option E</p-multi-select-option>
+    <p-multi-select-option value="f">Option F</p-multi-select-option>
+  </p-multi-select>
+</div>
+
+<div
+  class="playground light"
   title="should render opened and with multiple selected options and highlighted"
   style="padding-bottom: calc(1rem + 450px)"
 >

@@ -171,7 +171,6 @@ export default class Code extends Vue {
   requiredExample = getSelectCodeSamples('example-required');
   dynamicExample = getSelectCodeSamples('example-dynamic');
   controlledExample = getSelectCodeSamples('example-controlled');
-  optgroupsExample = getSelectCodeSamples('example-optgroups'); 
 
   basic() {
     return `<p-select name="options" label="Some Label" description="Some description" value="a" required>
