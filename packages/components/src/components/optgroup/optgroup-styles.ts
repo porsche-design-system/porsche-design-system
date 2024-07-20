@@ -1,6 +1,12 @@
 import type { Theme } from '../../types';
 import { getCss } from '../../utils';
-import { addImportantToEachRule, getThemedColors, prefersColorSchemeDarkMediaQuery } from '../../styles';
+import {
+  addImportantToEachRule,
+  colorSchemeStyles,
+  getThemedColors,
+  hostHiddenStyles,
+  prefersColorSchemeDarkMediaQuery,
+} from '../../styles';
 import { fontSizeTextXSmall, fontWeightSemiBold, spacingStaticSmall } from '@porsche-design-system/utilities-v2';
 import type { Styles } from 'jss';
 import { cssVariableSelectPaddingLeft } from '../select/select-option/select-option-styles';
@@ -8,12 +14,16 @@ import { cssVariableMultiSelectPaddingLeft } from '../multi-select/multi-select-
 
 export const getComponentCss = (isDisabled: boolean, theme: Theme): string =>
   getCss({
-    '@global': addImportantToEachRule({
+    '@global': {
+      ':host': addImportantToEachRule({
+        ...colorSchemeStyles,
+        ...hostHiddenStyles,
+      }),
       '::slotted(*)': {
         [cssVariableSelectPaddingLeft]: '24px',
         [cssVariableMultiSelectPaddingLeft]: '24px',
       },
-    }),
+    },
     ...getOptgroupStyles(isDisabled, theme),
   });
 

@@ -5,7 +5,7 @@ export const addParentAndSetRequiredProps = (tagName: TagName, component: any): 
   const { requiredParent, requiredChild, propsMeta = {}, hasEvent, eventsMeta, slotsMeta } = getComponentMeta(tagName);
 
   if (requiredParent) {
-    const parent = document.createElement(requiredParent);
+    const parent = document.createElement(Array.isArray(requiredParent) ? requiredParent[0] : requiredParent);
     parent.append(component.host as HTMLElement);
   }
 
@@ -21,6 +21,7 @@ export const addParentAndSetRequiredProps = (tagName: TagName, component: any): 
     component[childTagName] = child;
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
   const requiredNamedSlots = slotsMeta && Object.entries(slotsMeta).filter(([, value]) => value.isRequired);
 
   if (requiredNamedSlots && requiredNamedSlots.length > 0) {

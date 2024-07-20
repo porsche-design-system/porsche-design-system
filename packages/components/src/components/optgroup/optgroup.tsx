@@ -10,6 +10,9 @@ const propTypes: PropTypes<typeof Optgroup> = {
   disabled: AllowedTypes.boolean,
 };
 
+/**
+ * @slot {"name": "", "description": "Default slot for the optgroup content." }
+ */
 @Component({
   tag: 'p-optgroup',
   shadow: true,
