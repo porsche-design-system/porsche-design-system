@@ -7,7 +7,7 @@ import {
   spacingFluidMedium,
   spacingFluidSmall,
   spacingStaticMedium,
-} from '@porsche-design-system/utilities-v2';
+} from '@porsche-design-system/styles';
 import {
   cssVariableTransitionDuration,
   getThemedColors,

@@ -7,7 +7,7 @@ import {
 } from '@porsche-design-system/components-js/partials';
 import { TAG_NAMES, type TagName } from '@porsche-design-system/shared';
 import { getComponentMeta } from '@porsche-design-system/component-meta';
-import { type Theme } from '@porsche-design-system/utilities-v2';
+import { type Theme } from '@porsche-design-system/styles';
 import { COMPONENT_CHUNK_NAMES } from '../../../projects/components-wrapper';
 import { ICON_NAMES } from '@porsche-design-system/assets';
 import { viewportWidthM } from '@porsche-design-system/shared/testing/playwright.vrt';

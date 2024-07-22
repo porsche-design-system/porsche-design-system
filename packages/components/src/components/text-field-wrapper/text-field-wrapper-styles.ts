@@ -21,7 +21,7 @@ import {
   getUnitCounterJssStyle,
 } from '../../styles/form-styles';
 import { getFunctionalComponentStateMessageStyles } from '../common/state-message/state-message-styles';
-import { borderWidthBase, spacingStaticXSmall } from '@porsche-design-system/utilities-v2';
+import { borderWidthBase, spacingStaticXSmall } from '@porsche-design-system/styles';
 import { getFunctionalComponentLabelStyles } from '../common/label/label-styles';
 
 export const cssVariableInputPaddingStart = '--p-internal-text-field-input-padding-start';

@@ -1,6 +1,6 @@
 import type { Options, Splide } from '@splidejs/splide';
-import type { Breakpoint } from '@porsche-design-system/utilities-v2';
-import { breakpoint } from '@porsche-design-system/utilities-v2';
+import type { Breakpoint } from '@porsche-design-system/styles';
+import { breakpoint } from '@porsche-design-system/styles';
 import type { BreakpointCustomizable, HeadingSize } from '../../types';
 import { ButtonPure } from '../button-pure/button-pure';
 import {

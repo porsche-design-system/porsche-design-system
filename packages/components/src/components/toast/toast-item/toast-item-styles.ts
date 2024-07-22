@@ -6,7 +6,7 @@ import {
   getNotificationIconJssStyle,
   getNotificationRootJssStyle,
 } from '../../inline-notification/inline-notification-styles-shared';
-import { dropShadowHighStyle, textSmallStyle } from '@porsche-design-system/utilities-v2';
+import { dropShadowHighStyle, textSmallStyle } from '@porsche-design-system/styles';
 import { addImportantToEachRule, getThemedColors, prefersColorSchemeDarkMediaQuery } from '../../../styles';
 
 export const getComponentCss = (state: ToastState, theme: Theme): string => {

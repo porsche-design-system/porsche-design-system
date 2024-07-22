@@ -115,15 +115,15 @@ module.exports = {
           },
           {
             name: '@porsche-design-system/utilities',
-            message: 'Please use @porsche-design-system/utilities-v2 instead since the one used is not performant.',
+            message: 'Please use @porsche-design-system/styles instead since the one used is not performant.',
           },
           {
-            name: '@porsche-design-system/utilities-v2',
+            name: '@porsche-design-system/styles',
             importNames: ['color'],
             message: 'Please use getThemedColors() instead.',
           },
           {
-            name: '@porsche-design-system/utilities-v2',
+            name: '@porsche-design-system/styles',
             importNames: [
               'border',
               'borderRadius',

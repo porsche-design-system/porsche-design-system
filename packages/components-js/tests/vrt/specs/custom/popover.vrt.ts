@@ -1,6 +1,6 @@
 import { expect, type Page, test } from '@playwright/test';
 import { openAllPopover, setContentWithDesignSystem, setNativePopoversToAllowMultipleOpen } from '../../helpers';
-import { type Theme } from '@porsche-design-system/utilities-v2';
+import { type Theme } from '@porsche-design-system/styles';
 import { themes, viewportWidthXL } from '@porsche-design-system/shared/testing/playwright.vrt';
 
 const component = 'popover';

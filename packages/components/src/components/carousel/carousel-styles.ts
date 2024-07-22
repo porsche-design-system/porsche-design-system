@@ -31,7 +31,7 @@ import {
   spacingStaticSmall,
   spacingStaticXSmall,
   textSmallStyle,
-} from '@porsche-design-system/utilities-v2';
+} from '@porsche-design-system/styles';
 import type { JssStyle } from 'jss';
 
 const cssVariablePrevNextFilter = '--p-carousel-prev-next-filter';

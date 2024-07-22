@@ -9,7 +9,7 @@ import {
   fontSizeHeadingXLarge,
   fontSizeHeadingXXLarge,
   headingXXLargeStyle,
-} from '@porsche-design-system/utilities-v2';
+} from '@porsche-design-system/styles';
 import { getTypographySlottedJssStyle, getTypographyRootJssStyle } from '../../styles/typography-styles';
 
 export const sizeMap: { [key in Exclude<HeadingSize, 'inherit'>]: string } = {

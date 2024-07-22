@@ -1,6 +1,6 @@
 import type { MarqueSize } from './marque-size';
 import type { JssStyle } from 'jss';
-import { getMediaQueryMin } from '@porsche-design-system/utilities-v2';
+import { getMediaQueryMin } from '@porsche-design-system/styles';
 import { getCss } from '../../utils';
 import { addImportantToEachRule, colorSchemeStyles, getFocusJssStyle, hostHiddenStyles } from '../../styles';
 

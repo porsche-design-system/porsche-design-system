@@ -26,7 +26,7 @@ import {
   spacingStaticXSmall,
   textSmallStyle,
   type Theme,
-} from '@porsche-design-system/utilities-v2';
+} from '@porsche-design-system/styles';
 import {
   cssVariableVisibility,
   cssVariableVisibilityTransitionDuration,

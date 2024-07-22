@@ -2,7 +2,7 @@ import type { GridItemOffset, GridItemSize } from './grid-item-utils';
 import type { BreakpointCustomizable } from '../../../types';
 import { buildResponsiveStyles, getCss, mergeDeep } from '../../../utils';
 import { addImportantToEachRule, hostHiddenStyles } from '../../../styles';
-import { gridGap } from '@porsche-design-system/utilities-v2';
+import { gridGap } from '@porsche-design-system/styles';
 
 const gutter = `calc(${gridGap} / 2)`;
 const gridItemWidths = [

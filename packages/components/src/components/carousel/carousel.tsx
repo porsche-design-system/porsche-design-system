@@ -49,7 +49,7 @@ import {
   warnIfDeprecatedPropValueIsUsed,
 } from '../../utils';
 import { carouselTransitionDuration, getComponentCss } from './carousel-styles';
-import { gridGap, motionEasingBase } from '@porsche-design-system/utilities-v2';
+import { gridGap, motionEasingBase } from '@porsche-design-system/styles';
 import { getSlottedAnchorStyles } from '../../styles';
 
 const propTypes: PropTypes<typeof Carousel> = {
