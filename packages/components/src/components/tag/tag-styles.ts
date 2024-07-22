@@ -1,4 +1,9 @@
-import { borderRadiusSmall, frostedGlassStyle, textXSmallStyle } from '@porsche-design-system/styles';
+import {
+  borderRadiusSmall,
+  frostedGlassStyle,
+  spacingStaticXSmall,
+  textXSmallStyle,
+} from '@porsche-design-system/styles';
 import { type Theme } from '../../types';
 import { getCss, isHighContrastMode } from '../../utils';
 import {
@@ -13,7 +18,7 @@ import {
   prefersColorSchemeDarkMediaQuery,
 } from '../../styles';
 import { getThemedBackgroundColor } from './tag-shared-utils';
-import { type TagColor, type TagColorDeprecated, getThemedBackgroundHoverColor } from './tag-utils';
+import { getThemedBackgroundHoverColor, type TagColor, type TagColorDeprecated } from './tag-utils';
 
 export const getColors = (
   tagColor: Exclude<TagColor, TagColorDeprecated>,
@@ -35,6 +40,7 @@ export const getColors = (
 
 export const getComponentCss = (
   tagColor: Exclude<TagColor, TagColorDeprecated>,
+  compact: boolean,
   isFocusable: boolean,
   hasIcon: boolean,
   theme: Theme
@@ -62,7 +68,7 @@ export const getComponentCss = (
         position: 'relative', // necessary as relative anchor to ensure click area of optional slotted focusable element is in sync
         display: 'flex',
         gap: '2px',
-        padding: '4px 9px',
+        padding: compact ? '1px 6px' : `${spacingStaticXSmall} 9px`,
         borderRadius: borderRadiusSmall,
         font: textXSmallStyle.font,
         color: textColor,

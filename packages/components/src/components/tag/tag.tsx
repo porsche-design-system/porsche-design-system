@@ -18,6 +18,7 @@ const propTypes: PropTypes<typeof Tag> = {
   color: AllowedTypes.oneOf<TagColor>(TAG_COLORS),
   icon: AllowedTypes.string, // TODO: we could use AllowedTypes.oneOf<IconName>(Object.keys(ICONS_MANIFEST) as IconName[]) but then main chunk will increase
   iconSource: AllowedTypes.string,
+  compact: AllowedTypes.boolean,
 };
 
 /**
@@ -42,6 +43,9 @@ export class Tag {
   /** A URL path to a custom icon. */
   @Prop() public iconSource?: string;
 
+  /** Displays as compact version. */
+  @Prop() public compact?: boolean;
+
   public render(): JSX.Element {
     validateProps(this, propTypes);
     const hasIcon = !!(this.icon || this.iconSource);
@@ -58,6 +62,7 @@ export class Tag {
       this.host,
       getComponentCss,
       (deprecationMap[this.color] || this.color) as Exclude<TagColor, TagColorDeprecated>,
+      this.compact,
       !!getDirectChildHTMLElement(this.host, 'a,button'),
       hasIcon,
       this.theme
