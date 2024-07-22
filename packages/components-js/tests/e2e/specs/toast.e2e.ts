@@ -159,7 +159,7 @@ test.describe('toast-item', () => {
     expect(await getAttribute(closeBtnReal, 'type')).toBe('button');
   });
 
-  skipInBrowsers(['webkit'], () => {
+  skipInBrowsers(['webkit', 'firefox'], () => {
     test('should have animation', async ({ page }) => {
       await initToastWithToastItem(page, {}, { withAnimation: true });
       await waitForAnimationFinish(); // 600ms

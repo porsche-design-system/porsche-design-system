@@ -5,15 +5,13 @@ reflected in the configuration file under `.github/dependabot.yml` and must be k
 
 ## Overview of Framework Versions
 
-|         | Monorepo | Sample Integrations    |
-| ------- | -------- | ---------------------- |
-| Angular | 17.3.0   | 17.1.1                 |
-| React   | 18.2.0   | 18.2.0                 |
-| Next.js | 14.1.3   | 13.4.19 (React 18.2.0) |
+|         | Monorepo | Sample Integrations   |
+| ------- | -------- | --------------------- |
+| Angular | 18.1.0   | 17.1.1                |
+| React   | 18.3.1   | 18.2.0                |
+| Next.js | 14.2.5   | 14.2.3 (React 18.3.1) |
 
 ## Playwright
-
-Skipped `v1.43.0` & `v1.44.0` for now because ::before elements in dark mode are not visible on VRT screenshots.
 
 In case it gets updated, the Porsche Design System / Playwright Docker image needs to be updated too (this might affect
 all running workflows even outside the changed branch, so this must be aligned with the other developers).
@@ -115,9 +113,7 @@ babel plugins, this is imported via text-field-wrapper.examples.md.
 
 - `imask`
 
-## @types/react
-
-Is currently fixed to "18.2.65" because of typing incompatibility with JSX namespace.
+---
 
 ## @types/scheduler
 
@@ -126,4 +122,31 @@ Is currently fixed to "0.16.8" because of typing error:
 ```
 ../../node_modules/@types/react/index.d.ts:9:53 - error TS2307: Cannot find module 'scheduler/tracing' or its corresponding type declarations.
 9 import { Interaction as SchedulerInteraction } from "scheduler/tracing";
+```
+
+---
+
+## vue-tsc (@porsche-design-system/vue)
+
+Currently fixed because to 2.0.22 because resolution dependency uses an alpha version which causes problems in
+generating typings.
+
+---
+
+## eslint
+
+In order to migrate to v9 all configs have to be adjusted to the new
+[flat config](https://eslint.org/docs/latest/use/migrate-to-9.0.0#-new-default-config-format-eslintconfigjs). Some
+plugins are not yet migrated, see related [issue](https://github.com/eslint/eslint/issues/18391).
+
+---
+
+## webpack
+
+Currently fixed to 5.91.0 because of Error when publishing UXPin lib:
+
+```
+ERROR: ERROR in designsystemlibrary.js
+designsystemlibrary.js from Terser plugin
+"i" is redeclared [designsystemlibrary.js:5109,8]
 ```
