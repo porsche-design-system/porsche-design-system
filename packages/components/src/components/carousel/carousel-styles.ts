@@ -230,7 +230,7 @@ export const getComponentCss = (
           justifyContent: 'center',
         },
         '&:not(.is-overflow) .splide__slide:last-child': {
-          marginRight: '0 !important',
+          marginInlineEnd: addImportantToRule('0'),
         },
       }),
     },
