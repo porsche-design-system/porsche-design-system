@@ -51,6 +51,7 @@ export const getComponentCss = (
     '@global': {
       ':host': {
         display: 'inline-flex',
+        verticalAlign: 'top', // TODO: should we set this CSS style at all?
         whiteSpace: 'nowrap', // TODO: should either be exposed by a controlled CSS variable or a component prop or whitelist as supported custom styles
         ...addImportantToEachRule({
           ...colorSchemeStyles,
