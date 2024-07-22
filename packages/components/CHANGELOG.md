@@ -17,7 +17,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 #### Added
 
 - `Tag`:
-  - Extended `color` prop with `background-frosted`
+  - Prop `compact` ([#3411](https://github.com/porsche-design-system/porsche-design-system/pull/3411))
+  - Prop `color` extended by value `background-frosted`
     ([#3411](https://github.com/porsche-design-system/porsche-design-system/pull/3411))
 - Styles: `theme{Light|Dark}BackgroundFrosted` and `$pds-theme-{light|dark}-background-frosted` color
   ([#3409](https://github.com/porsche-design-system/porsche-design-system/pull/3409))
