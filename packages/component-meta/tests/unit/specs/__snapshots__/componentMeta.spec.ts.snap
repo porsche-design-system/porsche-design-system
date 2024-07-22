@@ -7099,6 +7099,7 @@ exports[`should match snapshot 1`] = `
           "background-base",
           "background-surface",
           "background-default",
+          "background-frosted",
           "primary",
           "notification-info-soft",
           "notification-warning-soft",
