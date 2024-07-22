@@ -1,5 +1,5 @@
 import type { ConsoleMessage, ElementHandle, Page } from 'playwright';
-import { expect } from '@playwright/test';
+import { expect, Locator } from '@playwright/test';
 import { waitForComponentsReady } from './stencil';
 import type { TagName } from '@porsche-design-system/shared';
 import type { ComponentMeta } from '@porsche-design-system/component-meta';
@@ -164,7 +164,8 @@ export const removeAttribute = async (element: ElementHandle<HTMLElement | SVGEl
   await element.evaluate((el, key) => el.removeAttribute(key), key);
 };
 
-export const getProperty = async <T>(element: ElementHandle<HTMLElement | SVGElement>, prop: string): Promise<T> => {
+// TODO: fix typing
+export const getProperty = async <T>(element: ElementHandle<T> | Locator, prop: string): Promise<keyof T> => {
   return element.evaluate((el, prop: string) => el[prop], prop);
 };
 
