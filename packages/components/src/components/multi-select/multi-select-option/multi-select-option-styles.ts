@@ -10,7 +10,7 @@ import {
   hoverMediaQuery,
   prefersColorSchemeDarkMediaQuery,
 } from '../../../styles';
-import { borderRadiusSmall, fontLineHeight, spacingStaticSmall } from '@porsche-design-system/utilities-v2';
+import { borderRadiusSmall, fontLineHeight, spacingStaticSmall } from '@porsche-design-system/styles';
 
 export const getComponentCss = (theme: Theme): string => {
   const { primaryColor, contrastHighColor, backgroundSurfaceColor, disabledColor, contrastLowColor } =

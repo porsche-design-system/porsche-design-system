@@ -22,7 +22,7 @@ import {
   motionDurationShort,
   spacingStaticSmall,
   textSmallStyle,
-} from '@porsche-design-system/utilities-v2';
+} from '@porsche-design-system/styles';
 
 export const getComponentCss = (
   size: BreakpointCustomizable<AccordionSize>,

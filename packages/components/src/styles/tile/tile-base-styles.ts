@@ -3,7 +3,7 @@ import type { BreakpointCustomizable } from '../../types';
 import type { TileAspectRatio } from '../../utils';
 import { buildResponsiveStyles } from '../../utils';
 import { addImportantToEachRule, colorSchemeStyles, getTransition, hostHiddenStyles, hoverMediaQuery } from '../';
-import { borderRadiusLarge, spacingStaticMedium } from '@porsche-design-system/utilities-v2';
+import { borderRadiusLarge, spacingStaticMedium } from '@porsche-design-system/styles';
 import { getThemedTypographyColor } from '../text-icon-styles';
 
 const aspectRatioPaddingMap: Record<TileAspectRatio, string> = {

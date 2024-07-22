@@ -2,7 +2,7 @@ import * as path from 'path';
 import * as fs from 'fs';
 import { globbySync } from 'globby';
 import { kebabCase, pascalCase } from 'latest-change-case';
-import { breakpoint } from '@porsche-design-system/utilities-v2';
+import { breakpoint } from '@porsche-design-system/styles';
 import type { TagName } from '@porsche-design-system/shared';
 import { INTERNAL_TAG_NAMES } from '@porsche-design-system/shared';
 import { getComponentMeta } from '@porsche-design-system/component-meta';

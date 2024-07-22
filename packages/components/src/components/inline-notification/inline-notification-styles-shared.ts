@@ -8,7 +8,7 @@ import {
   spacingStaticMedium,
   spacingStaticSmall,
   spacingStaticXSmall,
-} from '@porsche-design-system/utilities-v2';
+} from '@porsche-design-system/styles';
 import { getThemedColors, prefersColorSchemeDarkMediaQuery } from '../../styles';
 import { isHighContrastMode } from '../../utils';
 

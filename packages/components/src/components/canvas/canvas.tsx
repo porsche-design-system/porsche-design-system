@@ -3,7 +3,7 @@ import { AllowedTypes, attachComponentCss, getPrefixedTagNames, validateProps } 
 import { Component, Element, EventEmitter, h, type JSX, Prop, Event, State, Host, Fragment } from '@stencil/core';
 import { getComponentCss } from './canvas-styles';
 import { CANVAS_SIDEBAR_WIDTHS, type CanvasSidebarEndWidth, type CanvasSidebarStartWidth } from './canvas-utils';
-import { breakpointM } from '@porsche-design-system/utilities-v2';
+import { breakpointM } from '@porsche-design-system/styles';
 
 const propTypes: PropTypes<typeof Canvas> = {
   sidebarStartOpen: AllowedTypes.boolean,
