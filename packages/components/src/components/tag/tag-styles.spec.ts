@@ -46,25 +46,25 @@ describe('getColors()', () => {
 
 describe('getComponentCss()', () => {
   it.each<Parameters<typeof getComponentCss>>([
-    ['background-base', true, true, 'light'],
-    ['background-base', false, true, 'light'],
-    ['primary', true, true, 'light'],
-    ['notification-success-soft', true, true, 'light'],
-    ['notification-warning-soft', true, true, 'light'],
-    ['notification-error-soft', true, true, 'light'],
-    ['notification-info-soft', true, true, 'light'],
-    ['background-surface', true, true, 'light'],
-    ['background-frosted', true, true, 'light'],
-    ['background-base', true, true, 'dark'],
-    ['background-base', false, true, 'dark'],
-    ['primary', true, true, 'dark'],
-    ['notification-success-soft', true, true, 'dark'],
-    ['notification-warning-soft', true, true, 'dark'],
-    ['notification-error-soft', true, true, 'dark'],
-    ['notification-info-soft', true, true, 'dark'],
-    ['background-surface', true, true, 'dark'],
-    ['background-frosted', true, true, 'dark'],
-  ])('should return correct css for color: %s, isFocusable: %s, hasIcon: %s and theme: %s', (...args) => {
+    ['background-base', false, true, true, 'light'],
+    ['background-base', false, false, true, 'light'],
+    ['primary', false, true, true, 'light'],
+    ['notification-success-soft', false, true, true, 'light'],
+    ['notification-warning-soft', false, true, true, 'light'],
+    ['notification-error-soft', false, true, true, 'light'],
+    ['notification-info-soft', false, true, true, 'light'],
+    ['background-surface', false, true, true, 'light'],
+    ['background-frosted', false, true, true, 'light'],
+    ['background-base', false, true, true, 'dark'],
+    ['background-base', false, false, true, 'dark'],
+    ['primary', false, true, true, 'dark'],
+    ['notification-success-soft', false, true, true, 'dark'],
+    ['notification-warning-soft', false, true, true, 'dark'],
+    ['notification-error-soft', false, true, true, 'dark'],
+    ['notification-info-soft', false, true, true, 'dark'],
+    ['background-surface', false, true, true, 'dark'],
+    ['background-frosted', false, true, true, 'dark'],
+  ])('should return correct css for color: %s, compact: %s, isFocusable: %s, hasIcon: %s and theme: %s', (...args) => {
     validateCssAndMatchSnapshot(getComponentCss(...args));
   });
 });
