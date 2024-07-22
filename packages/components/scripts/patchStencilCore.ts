@@ -29,8 +29,6 @@ const patchStencilCore = (): void => {
   const pdsPatchStartRegEx = new RegExp(`(${PDS_PATCH_START})`, 'g');
   const getPatchMarkerCount = (script: string): number => (script.match(pdsPatchStartRegEx) || []).length;
 
-  console.log(fileContent);
-
   if (getPatchMarkerCount(fileContent) === 0) {
     // no markers found, patch stencil core
     const extractSnippet = `
