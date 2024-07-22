@@ -48,6 +48,8 @@ describe('getComponentCss()', () => {
   it.each<Parameters<typeof getComponentCss>>([
     ['background-base', false, true, true, 'light'],
     ['background-base', false, false, true, 'light'],
+    ['background-base', true, false, true, 'light'],
+    ['background-base', true, false, false, 'light'],
     ['primary', false, true, true, 'light'],
     ['notification-success-soft', false, true, true, 'light'],
     ['notification-warning-soft', false, true, true, 'light'],
