@@ -20,7 +20,7 @@ import {
   setLastOptionHighlighted,
   setNextOptionHighlighted,
   setSelectedOptions,
-  syncMultiSelectOptionProps,
+  syncMultiSelectChildrenProps,
   syncNativeMultiSelect,
   updateHighlightedOption,
   updateNativeOptions,
@@ -83,13 +83,13 @@ export const generateMultiSelectOptgroups = (
   );
 };
 
-describe('syncMultiSelectOptionProps', () => {
+describe('syncMultiSelectChildrenProps', () => {
   it('should update theme and force update for mismatched options', () => {
     const options = generateMultiSelectOptions();
     options[0].theme = 'light';
     options[1].theme = 'dark';
 
-    syncMultiSelectOptionProps(options, 'dark');
+    syncMultiSelectChildrenProps(options, 'dark');
 
     options.forEach((option) => {
       expect(option.theme).toBe('dark');
