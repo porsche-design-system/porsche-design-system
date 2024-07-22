@@ -147,7 +147,7 @@
   {
     "chunkShortName": "main",
     "size": 79475,
-    "gzipSize": 26523
+    "gzipSize": 26526
   },
   {
     "chunkShortName": "marque",
@@ -241,42 +241,42 @@
   },
   {
     "chunkShortName": "tag",
-    "size": 5723,
-    "gzipSize": 2377
+    "size": 5354,
+    "gzipSize": 2250
   },
   {
     "chunkShortName": "tag-dismissible",
     "size": 4078,
-    "gzipSize": 1905
+    "gzipSize": 1903
   },
   {
     "chunkShortName": "text",
     "size": 5932,
-    "gzipSize": 2517
+    "gzipSize": 2516
   },
   {
     "chunkShortName": "text-field-wrapper",
     "size": 17330,
-    "gzipSize": 6603
+    "gzipSize": 6600
   },
   {
     "chunkShortName": "text-list",
     "size": 4824,
-    "gzipSize": 2161
+    "gzipSize": 2160
   },
   {
     "chunkShortName": "textarea-wrapper",
     "size": 11498,
-    "gzipSize": 4560
+    "gzipSize": 4557
   },
   {
     "chunkShortName": "toast",
     "size": 7321,
-    "gzipSize": 3217
+    "gzipSize": 3218
   },
   {
     "chunkShortName": "wordmark",
     "size": 3024,
-    "gzipSize": 1528
+    "gzipSize": 1530
   }
 ]
