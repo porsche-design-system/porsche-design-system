@@ -112,7 +112,7 @@ export const getComponentCss = (
     ...(hasIcon && {
       icon: {
         marginInlineStart: '-2px', // compensate white space of svg icon and optimize visual alignment
-        filter: tagColor === 'primary' ? 'invert(1)' : null,
+        filter: !isHighContrastMode && tagColor === 'primary' ? 'invert(1)' : null,
       },
     }),
   });
