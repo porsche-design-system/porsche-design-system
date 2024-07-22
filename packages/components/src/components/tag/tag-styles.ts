@@ -12,7 +12,7 @@ import {
   prefersColorSchemeDarkMediaQuery,
   type ThemedColors,
 } from '../../styles';
-import { borderRadiusSmall, textXSmallStyle } from '@porsche-design-system/styles';
+import { borderRadiusSmall, frostedGlassStyle, textXSmallStyle } from '@porsche-design-system/styles';
 import type { TagColor, TagColorDeprecated } from './tag-utils';
 import { getThemedBackgroundHoverColor } from './tag-utils';
 import type { Theme } from '../../types';
@@ -49,6 +49,7 @@ export const getComponentCss = (
     backgroundColor: backgroundColorDark,
     backgroundHoverColor: backgroundHoverColorDark,
   } = getColors(themedColorsDark, tagColor, 'dark');
+  const isBackgroundFrosted = tagColor === 'background-frosted';
 
   return getCss({
     '@global': {
@@ -69,6 +70,7 @@ export const getComponentCss = (
         padding: '4px 9px',
         borderRadius: borderRadiusSmall,
         background: backgroundColor,
+        ...(isBackgroundFrosted && frostedGlassStyle),
         color: primaryColor,
         font: textXSmallStyle.font,
         ...(isHighContrastMode && {
