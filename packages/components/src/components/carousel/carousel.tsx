@@ -16,7 +16,7 @@ import {
   getAmountOfPages,
   getSlidesAndAddAttributes,
   getSplideBreakpoints,
-  hasRtlDirection,
+  getLangDirection,
   isInfinitePagination,
   renderPagination,
   slideNext,
@@ -218,7 +218,7 @@ export class Carousel {
       breakpoints: getSplideBreakpoints(this.slidesPerPage as Exclude<BreakpointCustomizable<number> | 'auto', string>), // eslint-disable-line @typescript-eslint/no-redundant-type-constituents
       // https://splidejs.com/guides/i18n/#default-texts
       i18n: parseJSONAttribute(this.intl || {}), // can only be applied initially atm
-      direction: hasRtlDirection(document.documentElement.lang, this.host) ? 'rtl' : 'ltr',
+      direction: getLangDirection(this.host),
     });
 
     this.registerSplideHandlers(this.splide);

@@ -45,6 +45,8 @@ export type CarouselUpdateEventDetail = CarouselUpdateEvent;
 
 export type SplideBreakpoints = Options['breakpoints'];
 
+export type CarouselLanguageDirection = Extract<Options['direction'], 'ltr' | 'rtl'>;
+
 export const getSplideBreakpoints = (
   perPage: Exclude<BreakpointCustomizable<number>, string> | 'auto'
 ): SplideBreakpoints => {
@@ -190,10 +192,17 @@ export const updatePagination = (paginationEl: HTMLElement, amountOfPages: numbe
   }
 };
 
-export const hasRtlDirection = (lang: string, el: HTMLElement): boolean => {
-  return el.closest('[dir="rtl"]')
-    ? true
-    : // @ts-expect-error "textInfo" is not supported in Firefox and not part of the types.
-      // See https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/Locale/getTextInfo
-      new Intl.Locale(lang).textInfo?.direction === 'rtl';
+export const getLangDirection = (el: HTMLElement): CarouselLanguageDirection => {
+  const dirAttribute = el.closest('[dir]')?.getAttribute('dir');
+  if (dirAttribute) {
+    return dirAttribute as CarouselLanguageDirection;
+  }
+
+  const lang = document.documentElement.lang;
+  if (lang && lang !== 'unknown') {
+    // @ts-expect-error "textInfo" is not supported in Firefox and not part of the types.
+    return new Intl.Locale(lang).textInfo?.direction || 'ltr';
+  }
+
+  return 'ltr';
 };
