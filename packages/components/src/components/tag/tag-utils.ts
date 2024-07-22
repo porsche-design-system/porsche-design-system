@@ -5,10 +5,6 @@ import { changeColor, isThemeDark } from '../../utils';
 
 export type TagIcon = IconName;
 
-export const getThemeForIcon = (color: TagColor, theme: Theme): Theme => {
-  return color === 'neutral-contrast-high' || color === 'primary' ? (isThemeDark(theme) ? 'light' : 'dark') : theme;
-};
-
 /** @deprecated */
 export const TAG_COLORS_DEPRECATED = [
   'neutral-contrast-high', // 'notification-contrast-high' is deprecated (replaced with 'primary')

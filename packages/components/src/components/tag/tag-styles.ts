@@ -1,36 +1,33 @@
+import { borderRadiusSmall, frostedGlassStyle, textXSmallStyle } from '@porsche-design-system/styles';
+import { type Theme } from '../../types';
 import { getCss, isHighContrastMode } from '../../utils';
 import {
   addImportantToEachRule,
   colorSchemeStyles,
   getFocusJssStyle,
   getInvertedThemedColors,
-  getResetInitialStylesForSlottedAnchor,
   getThemedColors,
   getTransition,
   hostHiddenStyles,
   hoverMediaQuery,
   prefersColorSchemeDarkMediaQuery,
-  type ThemedColors,
 } from '../../styles';
-import { borderRadiusSmall, frostedGlassStyle, textXSmallStyle } from '@porsche-design-system/styles';
-import type { TagColor, TagColorDeprecated } from './tag-utils';
-import { getThemedBackgroundHoverColor } from './tag-utils';
-import type { Theme } from '../../types';
 import { getThemedBackgroundColor } from './tag-shared-utils';
+import { type TagColor, type TagColorDeprecated, getThemedBackgroundHoverColor } from './tag-utils';
 
 export const getColors = (
-  themedColors: ThemedColors,
   tagColor: Exclude<TagColor, TagColorDeprecated>,
   theme: Theme
 ): {
-  primaryColor: string;
+  textColor: string;
   backgroundColor: string;
   backgroundHoverColor: string;
 } => {
+  const themedColors = getThemedColors(theme);
   const { primaryColor } = tagColor === 'primary' ? getInvertedThemedColors(theme) : themedColors;
 
   return {
-    primaryColor,
+    textColor: primaryColor,
     backgroundColor: getThemedBackgroundColor(tagColor, themedColors),
     backgroundHoverColor: getThemedBackgroundHoverColor(tagColor, themedColors, theme),
   };
@@ -39,46 +36,43 @@ export const getColors = (
 export const getComponentCss = (
   tagColor: Exclude<TagColor, TagColorDeprecated>,
   isFocusable: boolean,
+  hasIcon: boolean,
   theme: Theme
 ): string => {
-  const themedColors = getThemedColors(theme);
-  const themedColorsDark = getThemedColors('dark');
-  const { primaryColor, backgroundColor, backgroundHoverColor } = getColors(themedColors, tagColor, theme);
+  const { textColor, backgroundColor, backgroundHoverColor } = getColors(tagColor, theme);
   const {
-    primaryColor: primaryColorDark,
+    textColor: textColorDark,
     backgroundColor: backgroundColorDark,
     backgroundHoverColor: backgroundHoverColorDark,
-  } = getColors(themedColorsDark, tagColor, 'dark');
+  } = getColors(tagColor, 'dark');
   const isBackgroundFrosted = tagColor === 'background-frosted';
 
   return getCss({
     '@global': {
       ':host': {
         display: 'inline-flex',
-        verticalAlign: 'top',
-        whiteSpace: 'nowrap',
+        whiteSpace: 'nowrap', // TODO: should either be exposed by a controlled CSS variable or a component prop or whitelist as supported custom styles
         ...addImportantToEachRule({
           ...colorSchemeStyles,
           ...hostHiddenStyles,
         }),
       },
       span: {
+        position: 'relative', // necessary as relative anchor to ensure click area of optional slotted focusable element is in sync
         display: 'flex',
         gap: '2px',
-        alignItems: 'center',
-        position: 'relative',
         padding: '4px 9px',
         borderRadius: borderRadiusSmall,
+        font: textXSmallStyle.font,
+        color: textColor,
         background: backgroundColor,
         ...(isBackgroundFrosted && frostedGlassStyle),
-        color: primaryColor,
-        font: textXSmallStyle.font,
         ...(isHighContrastMode && {
           outline: '1px solid transparent',
         }),
         ...prefersColorSchemeDarkMediaQuery(theme, {
+          color: textColorDark,
           background: backgroundColorDark,
-          color: primaryColorDark,
         }),
         ...(isFocusable &&
           hoverMediaQuery({
@@ -92,40 +86,33 @@ export const getComponentCss = (
           })),
       },
       '::slotted': addImportantToEachRule({
-        '&(a),&(button)': {
-          ...getResetInitialStylesForSlottedAnchor,
-          display: 'inline',
-          position: 'static',
-          textDecoration: 'underline',
-          cursor: 'pointer',
-          font: 'inherit',
-          color: 'inherit',
-          WebkitAppearance: 'none', // iOS safari
-          appearance: 'none',
-          border: 0,
-          textAlign: 'start',
-        },
-        '&(a)::before,&(button)::before': {
-          content: '""',
-          position: 'absolute',
-          inset: 0,
-          borderRadius: '4px',
-        },
-        ...getFocusJssStyle(theme, { slotted: 'a', pseudo: true }),
-        ...getFocusJssStyle(theme, { slotted: 'button', pseudo: true }),
+        ...(isFocusable && {
+          '&(a),&(button)': {
+            all: 'unset', // resets any ua-style + custom style set in light dom
+            textDecoration: 'underline',
+            cursor: 'pointer',
+            font: 'inherit',
+            color: 'inherit',
+          },
+          '&(a)::before,&(button)::before': {
+            content: '""',
+            position: 'absolute',
+            inset: 0,
+            borderRadius: '4px',
+          },
+          ...getFocusJssStyle(theme, { slotted: 'a', pseudo: true }),
+          ...getFocusJssStyle(theme, { slotted: 'button', pseudo: true }),
+        }),
         '&(br)': {
           display: 'none',
         },
       }),
     },
-    icon: {
-      marginInlineStart: '-2px', // compensate white space of svg icon and optimize visual alignment
-      alignSelf: 'flex-start',
-      ...(['neutral-contrast-high', 'primary'].includes(tagColor) && {
-        ...prefersColorSchemeDarkMediaQuery(theme, {
-          filter: 'invert(1)',
-        }),
-      }),
-    },
+    ...(hasIcon && {
+      icon: {
+        marginInlineStart: '-2px', // compensate white space of svg icon and optimize visual alignment
+        filter: tagColor === 'primary' ? 'invert(1)' : null,
+      },
+    }),
   });
 };

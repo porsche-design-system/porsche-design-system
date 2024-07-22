@@ -1,6 +1,6 @@
 import { Component, Element, h, type JSX, Prop } from '@stencil/core';
 import type { TagColor, TagColorDeprecated, TagIcon } from './tag-utils';
-import { getThemeForIcon, TAG_COLORS } from './tag-utils';
+import { TAG_COLORS } from './tag-utils';
 import {
   AllowedTypes,
   attachComponentCss,
@@ -44,6 +44,7 @@ export class Tag {
 
   public render(): JSX.Element {
     validateProps(this, propTypes);
+    const hasIcon = !!(this.icon || this.iconSource);
     const deprecationMap: Record<TagColorDeprecated, Exclude<TagColor, TagColorDeprecated>> = {
       'background-default': 'background-base',
       'neutral-contrast-high': 'primary',
@@ -58,27 +59,25 @@ export class Tag {
       getComponentCss,
       (deprecationMap[this.color] || this.color) as Exclude<TagColor, TagColorDeprecated>,
       !!getDirectChildHTMLElement(this.host, 'a,button'),
+      hasIcon,
       this.theme
     );
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
     return (
       <span>
-        {(this.icon || this.iconSource) && (
+        {hasIcon && (
           <PrefixedTagNames.pIcon
             class="icon"
             name={this.icon}
             source={this.iconSource}
             color="primary"
             size="x-small"
-            theme={getThemeForIcon(this.color, this.theme)}
+            theme={this.theme}
             aria-hidden="true"
           />
         )}
-        {/* to trick leading inline-block / inline-flex space character */}
-        <div class="label">
-          <slot />
-        </div>
+        <slot />
       </span>
     );
   }
