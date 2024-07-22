@@ -4,7 +4,7 @@ exports[`getColors() should return correct colors for tagColor: background-base 
 {
   "backgroundColor": "#0E0E12",
   "backgroundHoverColor": "#292934",
-  "primaryColor": "#FBFCFF",
+  "textColor": "#FBFCFF",
 }
 `;
 
@@ -12,7 +12,7 @@ exports[`getColors() should return correct colors for tagColor: background-base 
 {
   "backgroundColor": "#FFF",
   "backgroundHoverColor": "#E0E0E0",
-  "primaryColor": "#010205",
+  "textColor": "#010205",
 }
 `;
 
@@ -20,7 +20,7 @@ exports[`getColors() should return correct colors for tagColor: primary and them
 {
   "backgroundColor": "#FBFCFF",
   "backgroundHoverColor": "#CECFD1",
-  "primaryColor": "#010205",
+  "textColor": "#010205",
 }
 `;
 
@@ -28,11 +28,11 @@ exports[`getColors() should return correct colors for tagColor: primary and them
 {
   "backgroundColor": "#010205",
   "backgroundHoverColor": "#535457",
-  "primaryColor": "#FBFCFF",
+  "textColor": "#FBFCFF",
 }
 `;
 
-exports[`getComponentCss() should return correct css for color: background-base, isFocusable: false and theme: dark 1`] = `
+exports[`getComponentCss() should return correct css for color: background-base, isFocusable: false, hasIcon: true and theme: dark 1`] = `
 ":host {
   display: inline-flex;
   vertical-align: top;
@@ -43,32 +43,21 @@ exports[`getComponentCss() should return correct css for color: background-base,
   display: none !important;
 }
 span {
+  position: relative;
   display: flex;
   gap: 2px;
-  align-items: center;
-  position: relative;
   padding: 4px 9px;
   border-radius: 4px;
-  background: #0E0E12;
-  color: #FBFCFF;
   font: normal normal 400 clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  color: #FBFCFF;
+  background: #0E0E12;
 }
 ::slotted(a), ::slotted(button) {
-  margin: 0 !important;
-  padding: 0 !important;
-  outline: 0 !important;
-  border-radius: 0 !important;
-  background: transparent !important;
-  display: inline !important;
-  position: static !important;
+  all: unset !important;
   text-decoration: underline !important;
   cursor: pointer !important;
   font: inherit !important;
   color: inherit !important;
-  -webkit-appearance: none !important;
-  appearance: none !important;
-  border: 0 !important;
-  text-align: start !important;
 }
 ::slotted(a)::before, ::slotted(button)::before {
   content: "" !important;
@@ -107,11 +96,10 @@ span {
 }
 .icon {
   margin-inline-start: -2px;
-  align-self: flex-start;
 }"
 `;
 
-exports[`getComponentCss() should return correct css for color: background-base, isFocusable: false and theme: light 1`] = `
+exports[`getComponentCss() should return correct css for color: background-base, isFocusable: false, hasIcon: true and theme: light 1`] = `
 ":host {
   display: inline-flex;
   vertical-align: top;
@@ -122,32 +110,21 @@ exports[`getComponentCss() should return correct css for color: background-base,
   display: none !important;
 }
 span {
+  position: relative;
   display: flex;
   gap: 2px;
-  align-items: center;
-  position: relative;
   padding: 4px 9px;
   border-radius: 4px;
-  background: #FFF;
+  font: normal normal 400 clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   color: #010205;
-  font: normal normal 400 clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  background: #FFF;
 }
 ::slotted(a), ::slotted(button) {
-  margin: 0 !important;
-  padding: 0 !important;
-  outline: 0 !important;
-  border-radius: 0 !important;
-  background: transparent !important;
-  display: inline !important;
-  position: static !important;
+  all: unset !important;
   text-decoration: underline !important;
   cursor: pointer !important;
   font: inherit !important;
   color: inherit !important;
-  -webkit-appearance: none !important;
-  appearance: none !important;
-  border: 0 !important;
-  text-align: start !important;
 }
 ::slotted(a)::before, ::slotted(button)::before {
   content: "" !important;
@@ -186,11 +163,10 @@ span {
 }
 .icon {
   margin-inline-start: -2px;
-  align-self: flex-start;
 }"
 `;
 
-exports[`getComponentCss() should return correct css for color: background-base, isFocusable: true and theme: dark 1`] = `
+exports[`getComponentCss() should return correct css for color: background-base, isFocusable: true, hasIcon: true and theme: dark 1`] = `
 ":host {
   display: inline-flex;
   vertical-align: top;
@@ -201,32 +177,21 @@ exports[`getComponentCss() should return correct css for color: background-base,
   display: none !important;
 }
 span {
+  position: relative;
   display: flex;
   gap: 2px;
-  align-items: center;
-  position: relative;
   padding: 4px 9px;
   border-radius: 4px;
-  background: #0E0E12;
-  color: #FBFCFF;
   font: normal normal 400 clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  color: #FBFCFF;
+  background: #0E0E12;
 }
 ::slotted(a), ::slotted(button) {
-  margin: 0 !important;
-  padding: 0 !important;
-  outline: 0 !important;
-  border-radius: 0 !important;
-  background: transparent !important;
-  display: inline !important;
-  position: static !important;
+  all: unset !important;
   text-decoration: underline !important;
   cursor: pointer !important;
   font: inherit !important;
   color: inherit !important;
-  -webkit-appearance: none !important;
-  appearance: none !important;
-  border: 0 !important;
-  text-align: start !important;
 }
 ::slotted(a)::before, ::slotted(button)::before {
   content: "" !important;
@@ -274,11 +239,10 @@ span {
 
 .icon {
   margin-inline-start: -2px;
-  align-self: flex-start;
 }"
 `;
 
-exports[`getComponentCss() should return correct css for color: background-base, isFocusable: true and theme: light 1`] = `
+exports[`getComponentCss() should return correct css for color: background-base, isFocusable: true, hasIcon: true and theme: light 1`] = `
 ":host {
   display: inline-flex;
   vertical-align: top;
@@ -289,32 +253,21 @@ exports[`getComponentCss() should return correct css for color: background-base,
   display: none !important;
 }
 span {
+  position: relative;
   display: flex;
   gap: 2px;
-  align-items: center;
-  position: relative;
   padding: 4px 9px;
   border-radius: 4px;
-  background: #FFF;
-  color: #010205;
   font: normal normal 400 clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  color: #010205;
+  background: #FFF;
 }
 ::slotted(a), ::slotted(button) {
-  margin: 0 !important;
-  padding: 0 !important;
-  outline: 0 !important;
-  border-radius: 0 !important;
-  background: transparent !important;
-  display: inline !important;
-  position: static !important;
+  all: unset !important;
   text-decoration: underline !important;
   cursor: pointer !important;
   font: inherit !important;
   color: inherit !important;
-  -webkit-appearance: none !important;
-  appearance: none !important;
-  border: 0 !important;
-  text-align: start !important;
 }
 ::slotted(a)::before, ::slotted(button)::before {
   content: "" !important;
@@ -362,11 +315,10 @@ span {
 
 .icon {
   margin-inline-start: -2px;
-  align-self: flex-start;
 }"
 `;
 
-exports[`getComponentCss() should return correct css for color: background-frosted, isFocusable: true and theme: dark 1`] = `
+exports[`getComponentCss() should return correct css for color: background-frosted, isFocusable: true, hasIcon: true and theme: dark 1`] = `
 ":host {
   display: inline-flex;
   vertical-align: top;
@@ -377,34 +329,23 @@ exports[`getComponentCss() should return correct css for color: background-frost
   display: none !important;
 }
 span {
+  position: relative;
   display: flex;
   gap: 2px;
-  align-items: center;
-  position: relative;
   padding: 4px 9px;
   border-radius: 4px;
+  font: normal normal 400 clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  color: #FBFCFF;
   background: hsl(240 3% 26%/35%);
   -webkit-backdrop-filter: blur(32px);
   backdrop-filter: blur(32px);
-  color: #FBFCFF;
-  font: normal normal 400 clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
 }
 ::slotted(a), ::slotted(button) {
-  margin: 0 !important;
-  padding: 0 !important;
-  outline: 0 !important;
-  border-radius: 0 !important;
-  background: transparent !important;
-  display: inline !important;
-  position: static !important;
+  all: unset !important;
   text-decoration: underline !important;
   cursor: pointer !important;
   font: inherit !important;
   color: inherit !important;
-  -webkit-appearance: none !important;
-  appearance: none !important;
-  border: 0 !important;
-  text-align: start !important;
 }
 ::slotted(a)::before, ::slotted(button)::before {
   content: "" !important;
@@ -452,11 +393,10 @@ span {
 
 .icon {
   margin-inline-start: -2px;
-  align-self: flex-start;
 }"
 `;
 
-exports[`getComponentCss() should return correct css for color: background-frosted, isFocusable: true and theme: light 1`] = `
+exports[`getComponentCss() should return correct css for color: background-frosted, isFocusable: true, hasIcon: true and theme: light 1`] = `
 ":host {
   display: inline-flex;
   vertical-align: top;
@@ -467,34 +407,23 @@ exports[`getComponentCss() should return correct css for color: background-frost
   display: none !important;
 }
 span {
+  position: relative;
   display: flex;
   gap: 2px;
-  align-items: center;
-  position: relative;
   padding: 4px 9px;
   border-radius: 4px;
+  font: normal normal 400 clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  color: #010205;
   background: hsl(240 4% 85%/35%);
   -webkit-backdrop-filter: blur(32px);
   backdrop-filter: blur(32px);
-  color: #010205;
-  font: normal normal 400 clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
 }
 ::slotted(a), ::slotted(button) {
-  margin: 0 !important;
-  padding: 0 !important;
-  outline: 0 !important;
-  border-radius: 0 !important;
-  background: transparent !important;
-  display: inline !important;
-  position: static !important;
+  all: unset !important;
   text-decoration: underline !important;
   cursor: pointer !important;
   font: inherit !important;
   color: inherit !important;
-  -webkit-appearance: none !important;
-  appearance: none !important;
-  border: 0 !important;
-  text-align: start !important;
 }
 ::slotted(a)::before, ::slotted(button)::before {
   content: "" !important;
@@ -542,11 +471,10 @@ span {
 
 .icon {
   margin-inline-start: -2px;
-  align-self: flex-start;
 }"
 `;
 
-exports[`getComponentCss() should return correct css for color: background-surface, isFocusable: true and theme: dark 1`] = `
+exports[`getComponentCss() should return correct css for color: background-surface, isFocusable: true, hasIcon: true and theme: dark 1`] = `
 ":host {
   display: inline-flex;
   vertical-align: top;
@@ -557,32 +485,21 @@ exports[`getComponentCss() should return correct css for color: background-surfa
   display: none !important;
 }
 span {
+  position: relative;
   display: flex;
   gap: 2px;
-  align-items: center;
-  position: relative;
   padding: 4px 9px;
   border-radius: 4px;
-  background: #212225;
-  color: #FBFCFF;
   font: normal normal 400 clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  color: #FBFCFF;
+  background: #212225;
 }
 ::slotted(a), ::slotted(button) {
-  margin: 0 !important;
-  padding: 0 !important;
-  outline: 0 !important;
-  border-radius: 0 !important;
-  background: transparent !important;
-  display: inline !important;
-  position: static !important;
+  all: unset !important;
   text-decoration: underline !important;
   cursor: pointer !important;
   font: inherit !important;
   color: inherit !important;
-  -webkit-appearance: none !important;
-  appearance: none !important;
-  border: 0 !important;
-  text-align: start !important;
 }
 ::slotted(a)::before, ::slotted(button)::before {
   content: "" !important;
@@ -630,11 +547,10 @@ span {
 
 .icon {
   margin-inline-start: -2px;
-  align-self: flex-start;
 }"
 `;
 
-exports[`getComponentCss() should return correct css for color: background-surface, isFocusable: true and theme: light 1`] = `
+exports[`getComponentCss() should return correct css for color: background-surface, isFocusable: true, hasIcon: true and theme: light 1`] = `
 ":host {
   display: inline-flex;
   vertical-align: top;
@@ -645,32 +561,21 @@ exports[`getComponentCss() should return correct css for color: background-surfa
   display: none !important;
 }
 span {
+  position: relative;
   display: flex;
   gap: 2px;
-  align-items: center;
-  position: relative;
   padding: 4px 9px;
   border-radius: 4px;
-  background: #EEEFF2;
-  color: #010205;
   font: normal normal 400 clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  color: #010205;
+  background: #EEEFF2;
 }
 ::slotted(a), ::slotted(button) {
-  margin: 0 !important;
-  padding: 0 !important;
-  outline: 0 !important;
-  border-radius: 0 !important;
-  background: transparent !important;
-  display: inline !important;
-  position: static !important;
+  all: unset !important;
   text-decoration: underline !important;
   cursor: pointer !important;
   font: inherit !important;
   color: inherit !important;
-  -webkit-appearance: none !important;
-  appearance: none !important;
-  border: 0 !important;
-  text-align: start !important;
 }
 ::slotted(a)::before, ::slotted(button)::before {
   content: "" !important;
@@ -718,11 +623,10 @@ span {
 
 .icon {
   margin-inline-start: -2px;
-  align-self: flex-start;
 }"
 `;
 
-exports[`getComponentCss() should return correct css for color: notification-error-soft, isFocusable: true and theme: dark 1`] = `
+exports[`getComponentCss() should return correct css for color: notification-error-soft, isFocusable: true, hasIcon: true and theme: dark 1`] = `
 ":host {
   display: inline-flex;
   vertical-align: top;
@@ -733,32 +637,21 @@ exports[`getComponentCss() should return correct css for color: notification-err
   display: none !important;
 }
 span {
+  position: relative;
   display: flex;
   gap: 2px;
-  align-items: center;
-  position: relative;
   padding: 4px 9px;
   border-radius: 4px;
-  background: #3A0F0F;
-  color: #FBFCFF;
   font: normal normal 400 clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  color: #FBFCFF;
+  background: #3A0F0F;
 }
 ::slotted(a), ::slotted(button) {
-  margin: 0 !important;
-  padding: 0 !important;
-  outline: 0 !important;
-  border-radius: 0 !important;
-  background: transparent !important;
-  display: inline !important;
-  position: static !important;
+  all: unset !important;
   text-decoration: underline !important;
   cursor: pointer !important;
   font: inherit !important;
   color: inherit !important;
-  -webkit-appearance: none !important;
-  appearance: none !important;
-  border: 0 !important;
-  text-align: start !important;
 }
 ::slotted(a)::before, ::slotted(button)::before {
   content: "" !important;
@@ -806,11 +699,10 @@ span {
 
 .icon {
   margin-inline-start: -2px;
-  align-self: flex-start;
 }"
 `;
 
-exports[`getComponentCss() should return correct css for color: notification-error-soft, isFocusable: true and theme: light 1`] = `
+exports[`getComponentCss() should return correct css for color: notification-error-soft, isFocusable: true, hasIcon: true and theme: light 1`] = `
 ":host {
   display: inline-flex;
   vertical-align: top;
@@ -821,32 +713,21 @@ exports[`getComponentCss() should return correct css for color: notification-err
   display: none !important;
 }
 span {
+  position: relative;
   display: flex;
   gap: 2px;
-  align-items: center;
-  position: relative;
   padding: 4px 9px;
   border-radius: 4px;
-  background: #FFE2E4;
-  color: #010205;
   font: normal normal 400 clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  color: #010205;
+  background: #FFE2E4;
 }
 ::slotted(a), ::slotted(button) {
-  margin: 0 !important;
-  padding: 0 !important;
-  outline: 0 !important;
-  border-radius: 0 !important;
-  background: transparent !important;
-  display: inline !important;
-  position: static !important;
+  all: unset !important;
   text-decoration: underline !important;
   cursor: pointer !important;
   font: inherit !important;
   color: inherit !important;
-  -webkit-appearance: none !important;
-  appearance: none !important;
-  border: 0 !important;
-  text-align: start !important;
 }
 ::slotted(a)::before, ::slotted(button)::before {
   content: "" !important;
@@ -894,11 +775,10 @@ span {
 
 .icon {
   margin-inline-start: -2px;
-  align-self: flex-start;
 }"
 `;
 
-exports[`getComponentCss() should return correct css for color: notification-info-soft, isFocusable: true and theme: dark 1`] = `
+exports[`getComponentCss() should return correct css for color: notification-info-soft, isFocusable: true, hasIcon: true and theme: dark 1`] = `
 ":host {
   display: inline-flex;
   vertical-align: top;
@@ -909,32 +789,21 @@ exports[`getComponentCss() should return correct css for color: notification-inf
   display: none !important;
 }
 span {
+  position: relative;
   display: flex;
   gap: 2px;
-  align-items: center;
-  position: relative;
   padding: 4px 9px;
   border-radius: 4px;
-  background: #04294E;
-  color: #FBFCFF;
   font: normal normal 400 clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  color: #FBFCFF;
+  background: #04294E;
 }
 ::slotted(a), ::slotted(button) {
-  margin: 0 !important;
-  padding: 0 !important;
-  outline: 0 !important;
-  border-radius: 0 !important;
-  background: transparent !important;
-  display: inline !important;
-  position: static !important;
+  all: unset !important;
   text-decoration: underline !important;
   cursor: pointer !important;
   font: inherit !important;
   color: inherit !important;
-  -webkit-appearance: none !important;
-  appearance: none !important;
-  border: 0 !important;
-  text-align: start !important;
 }
 ::slotted(a)::before, ::slotted(button)::before {
   content: "" !important;
@@ -982,11 +851,10 @@ span {
 
 .icon {
   margin-inline-start: -2px;
-  align-self: flex-start;
 }"
 `;
 
-exports[`getComponentCss() should return correct css for color: notification-info-soft, isFocusable: true and theme: light 1`] = `
+exports[`getComponentCss() should return correct css for color: notification-info-soft, isFocusable: true, hasIcon: true and theme: light 1`] = `
 ":host {
   display: inline-flex;
   vertical-align: top;
@@ -997,32 +865,21 @@ exports[`getComponentCss() should return correct css for color: notification-inf
   display: none !important;
 }
 span {
+  position: relative;
   display: flex;
   gap: 2px;
-  align-items: center;
-  position: relative;
   padding: 4px 9px;
   border-radius: 4px;
-  background: #D3E1FF;
-  color: #010205;
   font: normal normal 400 clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  color: #010205;
+  background: #D3E1FF;
 }
 ::slotted(a), ::slotted(button) {
-  margin: 0 !important;
-  padding: 0 !important;
-  outline: 0 !important;
-  border-radius: 0 !important;
-  background: transparent !important;
-  display: inline !important;
-  position: static !important;
+  all: unset !important;
   text-decoration: underline !important;
   cursor: pointer !important;
   font: inherit !important;
   color: inherit !important;
-  -webkit-appearance: none !important;
-  appearance: none !important;
-  border: 0 !important;
-  text-align: start !important;
 }
 ::slotted(a)::before, ::slotted(button)::before {
   content: "" !important;
@@ -1070,11 +927,10 @@ span {
 
 .icon {
   margin-inline-start: -2px;
-  align-self: flex-start;
 }"
 `;
 
-exports[`getComponentCss() should return correct css for color: notification-success-soft, isFocusable: true and theme: dark 1`] = `
+exports[`getComponentCss() should return correct css for color: notification-success-soft, isFocusable: true, hasIcon: true and theme: dark 1`] = `
 ":host {
   display: inline-flex;
   vertical-align: top;
@@ -1085,32 +941,21 @@ exports[`getComponentCss() should return correct css for color: notification-suc
   display: none !important;
 }
 span {
+  position: relative;
   display: flex;
   gap: 2px;
-  align-items: center;
-  position: relative;
   padding: 4px 9px;
   border-radius: 4px;
-  background: #003320;
-  color: #FBFCFF;
   font: normal normal 400 clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  color: #FBFCFF;
+  background: #003320;
 }
 ::slotted(a), ::slotted(button) {
-  margin: 0 !important;
-  padding: 0 !important;
-  outline: 0 !important;
-  border-radius: 0 !important;
-  background: transparent !important;
-  display: inline !important;
-  position: static !important;
+  all: unset !important;
   text-decoration: underline !important;
   cursor: pointer !important;
   font: inherit !important;
   color: inherit !important;
-  -webkit-appearance: none !important;
-  appearance: none !important;
-  border: 0 !important;
-  text-align: start !important;
 }
 ::slotted(a)::before, ::slotted(button)::before {
   content: "" !important;
@@ -1158,11 +1003,10 @@ span {
 
 .icon {
   margin-inline-start: -2px;
-  align-self: flex-start;
 }"
 `;
 
-exports[`getComponentCss() should return correct css for color: notification-success-soft, isFocusable: true and theme: light 1`] = `
+exports[`getComponentCss() should return correct css for color: notification-success-soft, isFocusable: true, hasIcon: true and theme: light 1`] = `
 ":host {
   display: inline-flex;
   vertical-align: top;
@@ -1173,32 +1017,21 @@ exports[`getComponentCss() should return correct css for color: notification-suc
   display: none !important;
 }
 span {
+  position: relative;
   display: flex;
   gap: 2px;
-  align-items: center;
-  position: relative;
   padding: 4px 9px;
   border-radius: 4px;
-  background: #E4FFEC;
-  color: #010205;
   font: normal normal 400 clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  color: #010205;
+  background: #E4FFEC;
 }
 ::slotted(a), ::slotted(button) {
-  margin: 0 !important;
-  padding: 0 !important;
-  outline: 0 !important;
-  border-radius: 0 !important;
-  background: transparent !important;
-  display: inline !important;
-  position: static !important;
+  all: unset !important;
   text-decoration: underline !important;
   cursor: pointer !important;
   font: inherit !important;
   color: inherit !important;
-  -webkit-appearance: none !important;
-  appearance: none !important;
-  border: 0 !important;
-  text-align: start !important;
 }
 ::slotted(a)::before, ::slotted(button)::before {
   content: "" !important;
@@ -1246,11 +1079,10 @@ span {
 
 .icon {
   margin-inline-start: -2px;
-  align-self: flex-start;
 }"
 `;
 
-exports[`getComponentCss() should return correct css for color: notification-warning-soft, isFocusable: true and theme: dark 1`] = `
+exports[`getComponentCss() should return correct css for color: notification-warning-soft, isFocusable: true, hasIcon: true and theme: dark 1`] = `
 ":host {
   display: inline-flex;
   vertical-align: top;
@@ -1261,32 +1093,21 @@ exports[`getComponentCss() should return correct css for color: notification-war
   display: none !important;
 }
 span {
+  position: relative;
   display: flex;
   gap: 2px;
-  align-items: center;
-  position: relative;
   padding: 4px 9px;
   border-radius: 4px;
-  background: #362B0A;
-  color: #FBFCFF;
   font: normal normal 400 clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  color: #FBFCFF;
+  background: #362B0A;
 }
 ::slotted(a), ::slotted(button) {
-  margin: 0 !important;
-  padding: 0 !important;
-  outline: 0 !important;
-  border-radius: 0 !important;
-  background: transparent !important;
-  display: inline !important;
-  position: static !important;
+  all: unset !important;
   text-decoration: underline !important;
   cursor: pointer !important;
   font: inherit !important;
   color: inherit !important;
-  -webkit-appearance: none !important;
-  appearance: none !important;
-  border: 0 !important;
-  text-align: start !important;
 }
 ::slotted(a)::before, ::slotted(button)::before {
   content: "" !important;
@@ -1334,11 +1155,10 @@ span {
 
 .icon {
   margin-inline-start: -2px;
-  align-self: flex-start;
 }"
 `;
 
-exports[`getComponentCss() should return correct css for color: notification-warning-soft, isFocusable: true and theme: light 1`] = `
+exports[`getComponentCss() should return correct css for color: notification-warning-soft, isFocusable: true, hasIcon: true and theme: light 1`] = `
 ":host {
   display: inline-flex;
   vertical-align: top;
@@ -1349,32 +1169,21 @@ exports[`getComponentCss() should return correct css for color: notification-war
   display: none !important;
 }
 span {
+  position: relative;
   display: flex;
   gap: 2px;
-  align-items: center;
-  position: relative;
   padding: 4px 9px;
   border-radius: 4px;
-  background: #FFF4D2;
-  color: #010205;
   font: normal normal 400 clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  color: #010205;
+  background: #FFF4D2;
 }
 ::slotted(a), ::slotted(button) {
-  margin: 0 !important;
-  padding: 0 !important;
-  outline: 0 !important;
-  border-radius: 0 !important;
-  background: transparent !important;
-  display: inline !important;
-  position: static !important;
+  all: unset !important;
   text-decoration: underline !important;
   cursor: pointer !important;
   font: inherit !important;
   color: inherit !important;
-  -webkit-appearance: none !important;
-  appearance: none !important;
-  border: 0 !important;
-  text-align: start !important;
 }
 ::slotted(a)::before, ::slotted(button)::before {
   content: "" !important;
@@ -1422,11 +1231,10 @@ span {
 
 .icon {
   margin-inline-start: -2px;
-  align-self: flex-start;
 }"
 `;
 
-exports[`getComponentCss() should return correct css for color: primary, isFocusable: true and theme: dark 1`] = `
+exports[`getComponentCss() should return correct css for color: primary, isFocusable: true, hasIcon: true and theme: dark 1`] = `
 ":host {
   display: inline-flex;
   vertical-align: top;
@@ -1437,32 +1245,21 @@ exports[`getComponentCss() should return correct css for color: primary, isFocus
   display: none !important;
 }
 span {
+  position: relative;
   display: flex;
   gap: 2px;
-  align-items: center;
-  position: relative;
   padding: 4px 9px;
   border-radius: 4px;
-  background: #FBFCFF;
-  color: #010205;
   font: normal normal 400 clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  color: #010205;
+  background: #FBFCFF;
 }
 ::slotted(a), ::slotted(button) {
-  margin: 0 !important;
-  padding: 0 !important;
-  outline: 0 !important;
-  border-radius: 0 !important;
-  background: transparent !important;
-  display: inline !important;
-  position: static !important;
+  all: unset !important;
   text-decoration: underline !important;
   cursor: pointer !important;
   font: inherit !important;
   color: inherit !important;
-  -webkit-appearance: none !important;
-  appearance: none !important;
-  border: 0 !important;
-  text-align: start !important;
 }
 ::slotted(a)::before, ::slotted(button)::before {
   content: "" !important;
@@ -1510,11 +1307,11 @@ span {
 
 .icon {
   margin-inline-start: -2px;
-  align-self: flex-start;
+  filter: invert(1);
 }"
 `;
 
-exports[`getComponentCss() should return correct css for color: primary, isFocusable: true and theme: light 1`] = `
+exports[`getComponentCss() should return correct css for color: primary, isFocusable: true, hasIcon: true and theme: light 1`] = `
 ":host {
   display: inline-flex;
   vertical-align: top;
@@ -1525,32 +1322,21 @@ exports[`getComponentCss() should return correct css for color: primary, isFocus
   display: none !important;
 }
 span {
+  position: relative;
   display: flex;
   gap: 2px;
-  align-items: center;
-  position: relative;
   padding: 4px 9px;
   border-radius: 4px;
-  background: #010205;
-  color: #FBFCFF;
   font: normal normal 400 clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  color: #FBFCFF;
+  background: #010205;
 }
 ::slotted(a), ::slotted(button) {
-  margin: 0 !important;
-  padding: 0 !important;
-  outline: 0 !important;
-  border-radius: 0 !important;
-  background: transparent !important;
-  display: inline !important;
-  position: static !important;
+  all: unset !important;
   text-decoration: underline !important;
   cursor: pointer !important;
   font: inherit !important;
   color: inherit !important;
-  -webkit-appearance: none !important;
-  appearance: none !important;
-  border: 0 !important;
-  text-align: start !important;
 }
 ::slotted(a)::before, ::slotted(button)::before {
   content: "" !important;
@@ -1598,6 +1384,6 @@ span {
 
 .icon {
   margin-inline-start: -2px;
-  align-self: flex-start;
+  filter: invert(1);
 }"
 `;
