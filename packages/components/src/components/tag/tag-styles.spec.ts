@@ -55,6 +55,7 @@ describe('getComponentCss()', () => {
     ['notification-error-soft', true, 'light'],
     ['notification-info-soft', true, 'light'],
     ['background-surface', true, 'light'],
+    ['background-frosted', true, 'light'],
     ['background-base', true, 'dark'],
     ['background-base', false, 'dark'],
     ['primary', true, 'dark'],
@@ -63,6 +64,7 @@ describe('getComponentCss()', () => {
     ['notification-error-soft', true, 'dark'],
     ['notification-info-soft', true, 'dark'],
     ['background-surface', true, 'dark'],
+    ['background-frosted', true, 'dark'],
   ])('should return correct css for color: %s, isFocusable: %s and theme: %s', (...args) => {
     validateCssAndMatchSnapshot(getComponentCss(...args));
   });

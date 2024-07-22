@@ -366,6 +366,186 @@ span {
 }"
 `;
 
+exports[`getComponentCss() should return correct css for color: background-frosted, isFocusable: true and theme: dark 1`] = `
+":host {
+  display: inline-flex;
+  vertical-align: top;
+  white-space: nowrap;
+  color-scheme: light dark !important;
+}
+:host([hidden]) {
+  display: none !important;
+}
+span {
+  display: flex;
+  gap: 2px;
+  align-items: center;
+  position: relative;
+  padding: 4px 9px;
+  border-radius: 4px;
+  background: hsl(240 3% 26%/35%);
+  -webkit-backdrop-filter: blur(32px);
+  backdrop-filter: blur(32px);
+  color: #FBFCFF;
+  font: normal normal 400 clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+}
+::slotted(a), ::slotted(button) {
+  margin: 0 !important;
+  padding: 0 !important;
+  outline: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  display: inline !important;
+  position: static !important;
+  text-decoration: underline !important;
+  cursor: pointer !important;
+  font: inherit !important;
+  color: inherit !important;
+  -webkit-appearance: none !important;
+  appearance: none !important;
+  border: 0 !important;
+  text-align: start !important;
+}
+::slotted(a)::before, ::slotted(button)::before {
+  content: "" !important;
+  position: absolute !important;
+  inset: 0 !important;
+  border-radius: 4px !important;
+}
+::slotted(a::-moz-focus-inner) {
+  border: 0 !important;
+}
+::slotted(a:focus) {
+  outline: 0 !important;
+}
+::slotted(a:focus-visible) {
+  outline: 0 !important;
+}
+::slotted(a:focus-visible)::before {
+  outline: 2px solid #1A44EA !important;
+  outline-offset: 2px !important;
+}
+::slotted(button::-moz-focus-inner) {
+  border: 0 !important;
+}
+::slotted(button:focus) {
+  outline: 0 !important;
+}
+::slotted(button:focus-visible) {
+  outline: 0 !important;
+}
+::slotted(button:focus-visible)::before {
+  outline: 2px solid #1A44EA !important;
+  outline-offset: 2px !important;
+}
+::slotted(br) {
+  display: none !important;
+}
+@media(hover:hover) {
+  span {
+    transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  }
+  span:hover {
+    background: hsl(240 3% 36%/35%);
+  }
+}
+
+.icon {
+  margin-inline-start: -2px;
+  align-self: flex-start;
+}"
+`;
+
+exports[`getComponentCss() should return correct css for color: background-frosted, isFocusable: true and theme: light 1`] = `
+":host {
+  display: inline-flex;
+  vertical-align: top;
+  white-space: nowrap;
+  color-scheme: light dark !important;
+}
+:host([hidden]) {
+  display: none !important;
+}
+span {
+  display: flex;
+  gap: 2px;
+  align-items: center;
+  position: relative;
+  padding: 4px 9px;
+  border-radius: 4px;
+  background: hsl(240 4% 85%/35%);
+  -webkit-backdrop-filter: blur(32px);
+  backdrop-filter: blur(32px);
+  color: #010205;
+  font: normal normal 400 clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+}
+::slotted(a), ::slotted(button) {
+  margin: 0 !important;
+  padding: 0 !important;
+  outline: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  display: inline !important;
+  position: static !important;
+  text-decoration: underline !important;
+  cursor: pointer !important;
+  font: inherit !important;
+  color: inherit !important;
+  -webkit-appearance: none !important;
+  appearance: none !important;
+  border: 0 !important;
+  text-align: start !important;
+}
+::slotted(a)::before, ::slotted(button)::before {
+  content: "" !important;
+  position: absolute !important;
+  inset: 0 !important;
+  border-radius: 4px !important;
+}
+::slotted(a::-moz-focus-inner) {
+  border: 0 !important;
+}
+::slotted(a:focus) {
+  outline: 0 !important;
+}
+::slotted(a:focus-visible) {
+  outline: 0 !important;
+}
+::slotted(a:focus-visible)::before {
+  outline: 2px solid #1A44EA !important;
+  outline-offset: 2px !important;
+}
+::slotted(button::-moz-focus-inner) {
+  border: 0 !important;
+}
+::slotted(button:focus) {
+  outline: 0 !important;
+}
+::slotted(button:focus-visible) {
+  outline: 0 !important;
+}
+::slotted(button:focus-visible)::before {
+  outline: 2px solid #1A44EA !important;
+  outline-offset: 2px !important;
+}
+::slotted(br) {
+  display: none !important;
+}
+@media(hover:hover) {
+  span {
+    transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  }
+  span:hover {
+    background: hsl(240 4% 75%/35%);
+  }
+}
+
+.icon {
+  margin-inline-start: -2px;
+  align-self: flex-start;
+}"
+`;
+
 exports[`getComponentCss() should return correct css for color: background-surface, isFocusable: true and theme: dark 1`] = `
 ":host {
   display: inline-flex;
