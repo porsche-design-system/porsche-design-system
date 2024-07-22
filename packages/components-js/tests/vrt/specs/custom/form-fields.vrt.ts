@@ -8,7 +8,7 @@ import {
   getValueOfForAttribute,
   setContentWithDesignSystem,
 } from '../../helpers';
-import { type Theme } from '@porsche-design-system/utilities-v2';
+import { type Theme } from '@porsche-design-system/styles';
 import { type TagName } from '@porsche-design-system/shared';
 import { themes, viewportWidthXXL } from '@porsche-design-system/shared/testing/playwright.vrt';
 

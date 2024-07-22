@@ -9,12 +9,7 @@ import {
   hoverMediaQuery,
   prefersColorSchemeDarkMediaQuery,
 } from '../../../styles';
-import {
-  borderRadiusSmall,
-  borderWidthBase,
-  textSmallStyle,
-  textXSmallStyle,
-} from '@porsche-design-system/utilities-v2';
+import { borderRadiusSmall, borderWidthBase, textSmallStyle, textXSmallStyle } from '@porsche-design-system/styles';
 import type { Theme } from '../../../types';
 
 export const ITEM_PADDING = '17px';

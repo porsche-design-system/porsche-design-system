@@ -11,7 +11,7 @@ import {
   getMediaQueryMax,
   spacingStaticSmall,
   spacingStaticXSmall,
-} from '@porsche-design-system/utilities-v2';
+} from '@porsche-design-system/styles';
 import { getFunctionalComponentLabelStyles } from '../common/label/label-styles';
 import { getFunctionalComponentLoadingMessageStyles } from '../common/loading-message/loading-message-styles';
 

@@ -9,7 +9,7 @@ import {
   hostHiddenStyles,
   prefersColorSchemeDarkMediaQuery,
 } from '../../../styles';
-import { spacingStaticMedium, spacingStaticXSmall, textSmallStyle } from '@porsche-design-system/utilities-v2';
+import { spacingStaticMedium, spacingStaticXSmall, textSmallStyle } from '@porsche-design-system/styles';
 
 export const cssVariablePaddingTop = '--p-internal-text-list-padding-top';
 export const cssVariablePaddingBottom = '--p-internal-text-list-padding-bottom';

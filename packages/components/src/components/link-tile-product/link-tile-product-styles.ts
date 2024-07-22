@@ -21,7 +21,7 @@ import {
   spacingFluidXSmall,
   textXSmallStyle,
   textXXSmallStyle,
-} from '@porsche-design-system/utilities-v2';
+} from '@porsche-design-system/styles';
 import { type BreakpointCustomizable } from '../../utils/breakpoint-customizable';
 import { anchorSlot, headerSlot, type LinkTileProductAspectRatio } from './link-tile-product-utils';
 import { type JssStyle } from 'jss';

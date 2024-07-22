@@ -1,5 +1,5 @@
 import { FONTS_MANIFEST } from '@porsche-design-system/fonts';
-import { fontWeight } from '@porsche-design-system/utilities-v2';
+import { fontWeight } from '@porsche-design-system/styles';
 import { CDN_BASE_PATH_FONTS, CDN_BASE_URL_COM, CDN_BASE_URL_CN } from '../../../../../cdn.config';
 import { camelCase } from 'change-case';
 

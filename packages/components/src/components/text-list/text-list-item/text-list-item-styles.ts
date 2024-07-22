@@ -1,6 +1,6 @@
 import { getCss } from '../../../utils';
 import { addImportantToEachRule, hostHiddenStyles } from '../../../styles';
-import { spacingStaticMedium } from '@porsche-design-system/utilities-v2';
+import { spacingStaticMedium } from '@porsche-design-system/styles';
 import {
   cssVariableUnorderedPseudoContent,
   cssVariableOrderedGridColumn,

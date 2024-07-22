@@ -20,7 +20,7 @@ import {
   fontSizeTextSmall,
   spacingStaticSmall,
   spacingStaticXSmall,
-} from '@porsche-design-system/utilities-v2';
+} from '@porsche-design-system/styles';
 import { getFunctionalComponentLabelStyles } from '../common/label/label-styles';
 import { getFunctionalComponentStateMessageStyles } from '../common/state-message/state-message-styles';
 import { getFunctionalComponentLoadingMessageStyles } from '../common/loading-message/loading-message-styles';

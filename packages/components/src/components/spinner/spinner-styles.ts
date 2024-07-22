@@ -12,7 +12,7 @@ import {
   hostHiddenStyles,
   prefersColorSchemeDarkMediaQuery,
 } from '../../styles';
-import { motionDurationVeryLong } from '@porsche-design-system/utilities-v2';
+import { motionDurationVeryLong } from '@porsche-design-system/styles';
 
 const sizeSmall = '48px';
 const sizeMedium = '72px';
