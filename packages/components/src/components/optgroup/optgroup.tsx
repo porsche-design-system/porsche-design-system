@@ -1,5 +1,5 @@
 import type { PropTypes } from '../../types';
-import { SelectOptgroupInternalHTMLProps, updateOptionsDisabled } from './optgroup-utils';
+import { OptgroupInternalHTMLProps, updateOptionsDisabled } from './optgroup-utils';
 
 import { Component, Element, h, Host, type JSX, Prop, Watch } from '@stencil/core';
 import { AllowedTypes, attachComponentCss, throwIfParentIsNotOfKind, validateProps } from '../../utils';
@@ -18,7 +18,7 @@ const propTypes: PropTypes<typeof Optgroup> = {
   shadow: true,
 })
 export class Optgroup {
-  @Element() public host!: HTMLElement & SelectOptgroupInternalHTMLProps;
+  @Element() public host!: HTMLElement & OptgroupInternalHTMLProps;
 
   /** The optgroup label. */
   @Prop() public label?: string;
@@ -47,7 +47,7 @@ export class Optgroup {
     return (
       <Host>
         <div
-          /* todo role="group" ? */
+          /* TODO: role="group" ? */
           role="presentation"
           class={{
             optgroup: true,

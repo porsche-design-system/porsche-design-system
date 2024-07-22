@@ -1,6 +1,6 @@
 import type { Theme } from '../../types';
 
-export type SelectOptgroupInternalHTMLProps = {
+export type OptgroupInternalHTMLProps = {
   /** Optgroup theme (synchronized from p-select | p-multi-select) **/
   theme?: Theme;
 };

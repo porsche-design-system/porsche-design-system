@@ -3,11 +3,12 @@ import type { SelectComponentsDropdownDirection, SelectDropdownDirectionInternal
 import { consoleWarn, determineDropdownDirection, setAttribute, setAttributes } from '../../../utils';
 import type { MultiSelectOptionInternalHTMLProps } from '../multi-select-option/multi-select-option-utils';
 import { forceUpdate } from '@stencil/core';
+import {OptgroupInternalHTMLProps} from '../../optgroup/optgroup-utils';
 
 export type MultiSelectState = FormState;
 export type MultiSelectDropdownDirection = SelectComponentsDropdownDirection;
 export type MultiSelectOption = HTMLPMultiSelectOptionElement & MultiSelectOptionInternalHTMLProps;
-export type MultiSelectOptgroup = HTMLPOptgroupElement;
+export type MultiSelectOptgroup = HTMLPOptgroupElement & OptgroupInternalHTMLProps;
 
 /** @deprecated */
 export type MultiSelectUpdateEvent = {
@@ -18,12 +19,13 @@ export type MultiSelectUpdateEventDetail = MultiSelectUpdateEvent;
 
 export const INTERNAL_MULTI_SELECT_SLOT = 'internal-select';
 
-export const syncMultiSelectOptionProps = (options: MultiSelectOption[], theme: Theme): void => {
-  options
-    .filter((option) => option.theme !== theme)
-    .forEach((option) => {
-      option.theme = theme;
-      forceUpdate(option);
+// TODO: share between select & multi-select
+export const syncMultiSelectChildrenProps = (children: (MultiSelectOption | MultiSelectOptgroup)[], theme: Theme): void => {
+  children
+    .filter((child) => child.theme !== theme)
+    .forEach((child) => {
+      child.theme = theme;
+      forceUpdate(child);
     });
 };
 

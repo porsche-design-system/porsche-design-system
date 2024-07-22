@@ -12,10 +12,12 @@ import {
 } from '../../../utils';
 import type { SelectOptionInternalHTMLProps } from '../select-option/select-option-utils';
 import { forceUpdate } from '@stencil/core';
+import { OptgroupInternalHTMLProps } from '../../optgroup/optgroup-utils';
 
 export type SelectState = FormState;
 export type SelectOption = HTMLPSelectOptionElement & SelectOptionInternalHTMLProps;
 export type SelectDropdownDirection = SelectComponentsDropdownDirection;
+export type SelectOptgroup = HTMLPOptgroupElement & OptgroupInternalHTMLProps;
 
 export type SelectUpdateEventDetail = {
   name: string;
@@ -24,12 +26,13 @@ export type SelectUpdateEventDetail = {
 
 export const INTERNAL_SELECT_SLOT = 'internal-select';
 
-export const syncSelectOptionProps = (options: SelectOption[], theme: Theme): void => {
-  options
-    .filter((option) => option.theme !== theme)
-    .forEach((option) => {
-      option.theme = theme;
-      forceUpdate(option);
+// TODO: share between select & multi-select
+export const syncSelectChildrenProps = (children: (SelectOption | SelectOptgroup)[], theme: Theme): void => {
+  children
+    .filter((child) => child.theme !== theme)
+    .forEach((child) => {
+      child.theme = theme;
+      forceUpdate(child);
     });
 };
 

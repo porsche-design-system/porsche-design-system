@@ -1,3 +1,4 @@
+// TODO: add test case to verify theme syncing
 import type { Page } from 'playwright';
 import { expect, test } from '@playwright/test';
 import type { Components } from '@porsche-design-system/components/src/components';

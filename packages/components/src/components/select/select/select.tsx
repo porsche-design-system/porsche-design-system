@@ -1,5 +1,11 @@
 import type { BreakpointCustomizable, PropTypes, Theme } from '../../../types';
-import type { SelectOption, SelectState, SelectUpdateEventDetail, SelectDropdownDirection } from './select-utils';
+import {
+  SelectOption,
+  SelectState,
+  SelectUpdateEventDetail,
+  SelectDropdownDirection,
+  SelectOptgroup,
+} from './select-utils';
 import {
   getSelectDropdownDirection,
   getSelectedOptionString,
@@ -8,7 +14,7 @@ import {
   INTERNAL_SELECT_SLOT,
   setSelectedOption,
   syncNativeSelect,
-  syncSelectOptionProps,
+  syncSelectChildrenProps,
   updateNativeSelectOption,
   updateSelectOptions,
 } from './select-utils';
@@ -135,6 +141,7 @@ export class Select {
   private combobox: HTMLButtonElement;
   private listElement: HTMLDivElement;
   private selectOptions: SelectOption[] = [];
+  private selectOptgroups: SelectOptgroup[] = [];
   private form: HTMLFormElement;
   private isWithinForm: boolean;
   private preventOptionUpdate = false; // Used to prevent value watcher from updating options when options are already updated
@@ -224,7 +231,7 @@ export class Select {
       this.isNativePopoverCase,
       this.theme
     );
-    syncSelectOptionProps(this.selectOptions, this.theme);
+    syncSelectChildrenProps([...this.selectOptions, ...this.selectOptgroups], this.theme);
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
     const buttonId = 'value';
@@ -320,6 +327,10 @@ export class Select {
         return el;
       })
       .flat();
+
+    this.selectOptgroups = Array.from(this.host.children).filter((el: HTMLElement) =>
+      isElementOfKind(el, 'p-optgroup')
+    ) as HTMLPOptgroupElement[];
 
     this.selectOptions = processedChildElements.filter(
       (el) => el.tagName !== 'SELECT' && el.slot !== 'label' && el.slot !== 'description' && el.slot !== 'message'

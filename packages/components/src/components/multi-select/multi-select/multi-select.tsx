@@ -17,7 +17,7 @@ import {
   setFirstOptionHighlighted,
   setLastOptionHighlighted,
   setSelectedOptions,
-  syncMultiSelectOptionProps,
+  syncMultiSelectChildrenProps,
   syncNativeMultiSelect,
   updateHighlightedOption,
   updateNativeOptions,
@@ -248,7 +248,7 @@ export class MultiSelect {
       this.isNativePopoverCase,
       this.theme
     );
-    syncMultiSelectOptionProps(this.multiSelectOptions, this.theme);
+    syncMultiSelectChildrenProps([...this.multiSelectOptions, ...this.multiSelectOptgroups], this.theme);
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
     const optionsSelectedId = 'options-selected';

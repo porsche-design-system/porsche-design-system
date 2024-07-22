@@ -38,16 +38,14 @@ export const getOptgroupStyles = (isDisabled: boolean, theme: Theme): Styles => 
       gap: spacingStaticSmall,
     },
     label: {
+      color: primaryColor,
+      ...prefersColorSchemeDarkMediaQuery(theme, {
+        color: primaryColorDark,
+      }),
       ...(isDisabled && {
         color: disabledColor,
         ...prefersColorSchemeDarkMediaQuery(theme, {
           color: disabledColorDark,
-        }),
-      }),
-      ...(!isDisabled && {
-        color: primaryColor,
-        ...prefersColorSchemeDarkMediaQuery(theme, {
-          color: primaryColorDark,
         }),
       }),
       display: 'block',
