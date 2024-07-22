@@ -3,7 +3,7 @@ import {
   getAmountOfPages,
   getSlidesAndAddAttributes,
   getSplideBreakpoints,
-  hasRtlDirection,
+  getLangDirection,
   isFirstPage,
   isLastPage,
   renderPagination,
@@ -470,14 +470,14 @@ describe('updatePagination()', () => {
   });
 });
 
-describe('hasRtlDirection()', () => {
+describe('getLangDirection()', () => {
   it('should return language direction', () => {
     const wrapper = document.createElement('div');
     const host = document.createElement('p-carousel');
     wrapper.append(host);
-    expect(hasRtlDirection('ar', host)).toBe(true);
+    expect(getLangDirection(host)).toBe('ltr');
 
     wrapper.setAttribute('dir', 'rtl');
-    expect(hasRtlDirection('en', host)).toBe(true);
+    expect(getLangDirection(host)).toBe('rtl');
   });
 });
