@@ -15,7 +15,7 @@ import {
   fontLineHeight,
   fontWeightRegular,
   spacingStaticSmall,
-} from '@porsche-design-system/utilities-v2';
+} from '@porsche-design-system/styles';
 import type { Styles } from 'jss';
 
 export const cssVariableSelectPaddingLeft = '--p-internal-select-option-padding-left';

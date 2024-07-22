@@ -10,7 +10,7 @@ import {
   hoverMediaQuery,
   prefersColorSchemeDarkMediaQuery,
 } from '../../../styles';
-import { borderRadiusSmall, fontLineHeight, spacingStaticSmall } from '@porsche-design-system/utilities-v2';
+import { borderRadiusSmall, fontLineHeight, spacingStaticSmall } from '@porsche-design-system/styles';
 export const cssVariableMultiSelectPaddingLeft = '--p-internal-multi-select-option-padding-left';
 
 export const getComponentCss = (theme: Theme): string => {

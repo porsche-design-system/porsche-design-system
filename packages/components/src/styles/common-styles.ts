@@ -15,9 +15,9 @@ import {
   motionEasingOut,
   themeDarkBackgroundShading,
   themeLightBackgroundShading,
-} from '@porsche-design-system/utilities-v2';
+} from '@porsche-design-system/styles';
 import { isThemeDark } from '../utils';
-import type * as fromMotionType from '@porsche-design-system/utilities-v2/dist/esm/motion';
+import type * as fromMotionType from '@porsche-design-system/styles/dist/esm/motion';
 
 type WithoutMotionDurationPrefix<T> = T extends `motionDuration${infer P}` ? Uncapitalize<P> : never;
 export type MotionDurationKey = WithoutMotionDurationPrefix<keyof typeof fromMotionType>;

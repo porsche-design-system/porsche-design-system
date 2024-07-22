@@ -5,7 +5,7 @@ import {
   spacingFluidLarge,
   spacingFluidMedium,
   spacingFluidSmall,
-} from '@porsche-design-system/utilities-v2';
+} from '@porsche-design-system/styles';
 import { type BreakpointCustomizable, type Theme } from '../../types';
 import { buildResponsiveStyles, getCss, mergeDeep } from '../../utils';
 import { addImportantToEachRule, colorSchemeStyles, hostHiddenStyles } from '../../styles';

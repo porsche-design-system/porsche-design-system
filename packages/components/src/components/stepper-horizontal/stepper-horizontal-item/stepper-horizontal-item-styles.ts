@@ -15,7 +15,7 @@ import {
   frostedGlassStyle,
   spacingFluidXSmall,
   textSmallStyle,
-} from '@porsche-design-system/utilities-v2';
+} from '@porsche-design-system/styles';
 import { getCss } from '../../../utils';
 import type { Theme } from '../../../types';
 import type { StepperHorizontalItemState } from './stepper-horizontal-item-utils';

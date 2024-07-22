@@ -9,7 +9,7 @@ import {
   hostHiddenStyles,
   prefersColorSchemeDarkMediaQuery,
 } from '../../styles';
-import { headingSmallStyle, headingMediumStyle, spacingStaticMedium } from '@porsche-design-system/utilities-v2';
+import { headingSmallStyle, headingMediumStyle, spacingStaticMedium } from '@porsche-design-system/styles';
 import { getFunctionalComponentRequiredStyles } from '../common/required/required-styles';
 import { getFunctionalComponentStateMessageStyles } from '../common/state-message/state-message-styles';
 

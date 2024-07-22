@@ -5,7 +5,7 @@ import {
   motionDurationModerate,
   motionEasingIn,
   motionEasingOut,
-} from '@porsche-design-system/utilities-v2';
+} from '@porsche-design-system/styles';
 import { getCss } from '../../../utils';
 import {
   addImportantToEachRule,

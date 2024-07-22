@@ -11,7 +11,7 @@ import {
 } from '../../styles';
 import { getCss, isHighContrastMode } from '../../utils';
 import type { TagDismissibleColor, TagDismissibleColorDeprecated } from './tag-dismissible-utils';
-import { borderRadiusSmall, fontSizeTextXSmall, textSmallStyle } from '@porsche-design-system/utilities-v2';
+import { borderRadiusSmall, fontSizeTextXSmall, textSmallStyle } from '@porsche-design-system/styles';
 import { getThemedBackgroundColor } from '../tag/tag-shared-utils';
 import type { Theme } from '../../types';
 

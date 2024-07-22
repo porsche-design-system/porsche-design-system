@@ -1,4 +1,4 @@
-import type { Theme } from '@porsche-design-system/utilities-v2';
+import type { Theme } from '@porsche-design-system/styles';
 
 export const isThemeAuto = (theme: Theme): boolean => {
   return theme === 'auto';

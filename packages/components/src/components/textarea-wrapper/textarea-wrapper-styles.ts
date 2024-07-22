@@ -14,7 +14,7 @@ import {
   spacingStaticLarge,
   spacingStaticXSmall,
   textSmallStyle,
-} from '@porsche-design-system/utilities-v2';
+} from '@porsche-design-system/styles';
 import { getFunctionalComponentLabelStyles } from '../common/label/label-styles';
 
 export const getComponentCss = (

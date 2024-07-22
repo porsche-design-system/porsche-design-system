@@ -1,4 +1,4 @@
-import type { Theme } from '@porsche-design-system/utilities-v2';
+import type { Theme } from '@porsche-design-system/styles';
 import type { TypographyTextColor, TypographyTextColorDeprecated } from '../types';
 import type { HeadingColor } from '../components/heading/heading-utils';
 import type { HeadlineColor } from '../components/headline/headline-utils';

@@ -7,7 +7,7 @@ import {
   getTransition,
   prefersColorSchemeDarkMediaQuery,
 } from '../../../styles';
-import { fontSizeTextXSmall, spacingStaticXSmall, textSmallStyle } from '@porsche-design-system/utilities-v2';
+import { fontSizeTextXSmall, spacingStaticXSmall, textSmallStyle } from '@porsche-design-system/styles';
 import { getFunctionalComponentRequiredStyles } from '../required/required-styles';
 
 export const getFunctionalComponentLabelStyles = (
