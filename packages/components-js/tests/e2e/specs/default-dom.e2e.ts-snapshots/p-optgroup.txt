@@ -1,0 +1,4 @@
+<div role="presentation" class="optgroup" aria-label="Empty value">
+  <span class="label"> </span>
+  <slot> </slot>
+</div>
