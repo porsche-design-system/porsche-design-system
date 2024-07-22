@@ -72,8 +72,21 @@ const generateComponentMeta = (): void => {
     const styling = usesScss && usesJss ? 'hybrid' : usesJss ? 'jss' : 'scss';
 
     // required parent
-    const [, requiredParent] =
-      (/throwIfParentIsNotOfKind\(.+'([a-z-]+)'\)/.exec(source) as unknown as [string, TagName]) || [];
+    const [, singleMatch, arrayMatch] =
+    (/throwIfParentIsNotOfKind\(.+, '([^']+)'\)|throwIfParentIsNotOfKind\(.+, \[([^\]]+)]\)/
+      .exec(source) as unknown as [string, string?, string?]) || [];
+
+    const parseRequiredParent = (singleMatch, arrayMatch) => {
+      if (singleMatch) return singleMatch;
+
+      if (arrayMatch) {
+        return arrayMatch.split(',').map(tag => tag.trim().replace(/^'|'$/g, ''));
+      }
+
+      return undefined;
+    };
+
+    const requiredParent = parseRequiredParent(singleMatch, arrayMatch);
 
     // required root nodes
     let [, requiredRootNodes] =
