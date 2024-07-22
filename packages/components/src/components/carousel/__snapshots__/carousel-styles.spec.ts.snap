@@ -78,7 +78,7 @@ slot[name="controls"] {
   justify-content: center;
 }
 .splide:not(.is-overflow) .splide__slide:last-child {
-  margin-right: 0 !important;
+  margin-inline-end: 0 !important;
 }
 .splide__track--draggable {
   cursor: grab;
@@ -420,7 +420,7 @@ slot[name="controls"] {
   justify-content: center;
 }
 .splide:not(.is-overflow) .splide__slide:last-child {
-  margin-right: 0 !important;
+  margin-inline-end: 0 !important;
 }
 .splide__track--draggable {
   cursor: grab;
@@ -872,7 +872,7 @@ p,::slotted([slot="description"]) {
   justify-content: center;
 }
 .splide:not(.is-overflow) .splide__slide:last-child {
-  margin-right: 0 !important;
+  margin-inline-end: 0 !important;
 }
 .splide__track--draggable {
   cursor: grab;
@@ -1240,7 +1240,7 @@ slot[name="controls"] {
   justify-content: center;
 }
 .splide:not(.is-overflow) .splide__slide:last-child {
-  margin-right: 0 !important;
+  margin-inline-end: 0 !important;
 }
 .splide__track--draggable {
   cursor: grab;
@@ -1565,7 +1565,7 @@ p,::slotted([slot="description"]) {
   justify-content: center;
 }
 .splide:not(.is-overflow) .splide__slide:last-child {
-  margin-right: 0 !important;
+  margin-inline-end: 0 !important;
 }
 .splide__track--draggable {
   cursor: grab;
@@ -2322,7 +2322,7 @@ p,::slotted([slot="description"]) {
   justify-content: center;
 }
 .splide:not(.is-overflow) .splide__slide:last-child {
-  margin-right: 0 !important;
+  margin-inline-end: 0 !important;
 }
 .splide__track--draggable {
   cursor: grab;
