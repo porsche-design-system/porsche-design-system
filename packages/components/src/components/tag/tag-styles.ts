@@ -87,23 +87,21 @@ export const getComponentCss = (
           })),
       },
       '::slotted': addImportantToEachRule({
-        ...(isFocusable && {
-          '&(a),&(button)': {
-            all: 'unset', // resets any ua-style + custom style set in light dom
-            textDecoration: 'underline',
-            cursor: 'pointer',
-            font: 'inherit',
-            color: 'inherit',
-          },
-          '&(a)::before,&(button)::before': {
-            content: '""',
-            position: 'absolute',
-            inset: 0,
-            borderRadius: '4px',
-          },
-          ...getFocusJssStyle(theme, { slotted: 'a', pseudo: true }),
-          ...getFocusJssStyle(theme, { slotted: 'button', pseudo: true }),
-        }),
+        '&(a),&(button)': {
+          all: 'unset', // resets any ua-style + custom style set in light dom
+          textDecoration: 'underline',
+          cursor: 'pointer',
+          font: 'inherit',
+          color: 'inherit',
+        },
+        '&(a)::before,&(button)::before': {
+          content: '""',
+          position: 'absolute',
+          inset: 0,
+          borderRadius: '4px',
+        },
+        ...getFocusJssStyle(theme, { slotted: 'a', pseudo: true }),
+        ...getFocusJssStyle(theme, { slotted: 'button', pseudo: true }),
         '&(br)': {
           display: 'none',
         },
