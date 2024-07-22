@@ -44,7 +44,7 @@ export class Tag {
   @Prop() public iconSource?: string;
 
   /** Displays as compact version. */
-  @Prop() public compact?: boolean;
+  @Prop() public compact?: boolean = false;
 
   public render(): JSX.Element {
     validateProps(this, propTypes);
