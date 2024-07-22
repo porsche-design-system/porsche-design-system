@@ -318,7 +318,15 @@ export class Select {
   };
 
   private updateOptions = (): void => {
-    const processedChildElements = Array.from(this.host.children)
+    const children = Array.from(this.host.children).filter(
+      (el) => el.tagName !== 'SELECT' && el.slot !== 'label' && el.slot !== 'description' && el.slot !== 'message'
+    );
+
+    this.selectOptgroups = children.filter((el: HTMLElement) =>
+      isElementOfKind(el, 'p-optgroup')
+    ) as HTMLPOptgroupElement[];
+
+    this.selectOptions = children
       .map((el: HTMLElement) => {
         if (!isElementOfKind(el, 'p-select-option')) {
           throwIfElementIsNotOfKind(this.host, el, 'p-optgroup');
@@ -326,15 +334,8 @@ export class Select {
         }
         return el;
       })
-      .flat();
+      .flat() as HTMLPMultiSelectOptionElement[];
 
-    this.selectOptgroups = Array.from(this.host.children).filter((el: HTMLElement) =>
-      isElementOfKind(el, 'p-optgroup')
-    ) as HTMLPOptgroupElement[];
-
-    this.selectOptions = processedChildElements.filter(
-      (el) => el.tagName !== 'SELECT' && el.slot !== 'label' && el.slot !== 'description' && el.slot !== 'message'
-    ) as HTMLPMultiSelectOptionElement[];
     this.selectOptions.forEach((child) => throwIfElementIsNotOfKind(this.host, child, 'p-select-option'));
   };
 
