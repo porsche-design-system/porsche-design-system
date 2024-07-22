@@ -7,7 +7,7 @@ import {
   hostHiddenStyles,
   prefersColorSchemeDarkMediaQuery,
 } from '../../styles';
-import { fontSizeTextXSmall, fontWeightSemiBold, spacingStaticSmall } from '@porsche-design-system/utilities-v2';
+import { fontSizeTextXSmall, fontWeightSemiBold, spacingStaticSmall } from '@porsche-design-system/styles';
 import type { Styles } from 'jss';
 import { cssVariableSelectPaddingLeft } from '../select/select-option/select-option-styles';
 import { cssVariableMultiSelectPaddingLeft } from '../multi-select/multi-select-option/multi-select-option-styles';
