@@ -6,7 +6,7 @@ import {
   fontSizeTextLarge,
   fontSizeTextXLarge,
   fontSizeTextXXSmall,
-} from '@porsche-design-system/utilities-v2';
+} from '@porsche-design-system/styles';
 
 const fontSizeTextMap: { [textSize in TextSize]: string } = {
   'xx-small': fontSizeTextXXSmall,

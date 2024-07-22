@@ -39,6 +39,7 @@ JavaScript styles can be imported by
 - `themeDarkBackgroundBase`
 - `themeDarkBackgroundSurface`
 - `themeDarkBackgroundShading`
+- `themeDarkBackgroundFrosted`
 - `themeDarkContrastLow`
 - `themeDarkContrastMedium`
 - `themeDarkContrastHigh`
@@ -59,6 +60,7 @@ JavaScript styles can be imported by
 - `themeLightBackgroundBase`
 - `themeLightBackgroundSurface`
 - `themeLightBackgroundShading`
+- `themeLightBackgroundFrosted`
 - `themeLightContrastLow`
 - `themeLightContrastMedium`
 - `themeLightContrastHigh`
@@ -85,6 +87,7 @@ SCSS styles can be imported by `@use '@porsche-design-system/components-{js|angu
 - `$pds-theme-light-background-base`
 - `$pds-theme-light-background-surface`
 - `$pds-theme-light-background-shading`
+- `$pds-theme-light-background-frosted`
 - `$pds-theme-light-contrast-low`
 - `$pds-theme-light-contrast-medium`
 - `$pds-theme-light-contrast-high`
@@ -104,6 +107,7 @@ SCSS styles can be imported by `@use '@porsche-design-system/components-{js|angu
 - `$pds-theme-dark-background-base`
 - `$pds-theme-dark-background-surface`
 - `$pds-theme-dark-background-shading`
+- `$pds-theme-dark-background-frosted`
 - `$pds-theme-dark-contrast-low`
 - `$pds-theme-dark-contrast-medium`
 - `$pds-theme-dark-contrast-high`

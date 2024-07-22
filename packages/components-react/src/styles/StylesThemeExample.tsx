@@ -5,8 +5,9 @@ import {
   headingMediumStyle,
   spacingFluidMedium,
   themeDarkBackgroundBase,
-  themeDarkBackgroundShading,
   themeDarkBackgroundSurface,
+  themeDarkBackgroundShading,
+  themeDarkBackgroundFrosted,
   themeDarkContrastHigh,
   themeDarkContrastLow,
   themeDarkContrastMedium,
@@ -24,8 +25,9 @@ import {
   themeDarkStateFocus,
   themeDarkStateHover,
   themeLightBackgroundBase,
-  themeLightBackgroundShading,
   themeLightBackgroundSurface,
+  themeLightBackgroundShading,
+  themeLightBackgroundFrosted,
   themeLightContrastHigh,
   themeLightContrastLow,
   themeLightContrastMedium,
@@ -108,6 +110,11 @@ const ThemeLightBackgroundSurface = styled.div({
 const ThemeLightBackgroundShading = styled.div({
   ...getTileStyle,
   background: themeLightBackgroundShading,
+});
+
+const ThemeLightBackgroundFrosted = styled.div({
+  ...getTileStyle,
+  background: themeLightBackgroundFrosted,
 });
 
 const ThemeLightContrastLow = styled.div({
@@ -206,6 +213,11 @@ const ThemeDarkBackgroundShading = styled.div({
   background: themeDarkBackgroundShading,
 });
 
+const ThemeDarkBackgroundFrosted = styled.div({
+  ...getTileStyle,
+  background: themeDarkBackgroundFrosted,
+});
+
 const ThemeDarkContrastLow = styled.div({
   ...getTileStyle,
   background: themeDarkContrastLow,
@@ -290,6 +302,7 @@ export const StylesThemeExample = (): JSX.Element => {
         <ThemeLightBackgroundBase />
         <ThemeLightBackgroundSurface />
         <ThemeLightBackgroundShading />
+        <ThemeLightBackgroundFrosted />
         <ThemeLightContrastLow />
         <ThemeLightContrastMedium />
         <ThemeLightContrastHigh />
@@ -312,6 +325,7 @@ export const StylesThemeExample = (): JSX.Element => {
         <ThemeDarkBackgroundBase />
         <ThemeDarkBackgroundSurface />
         <ThemeDarkBackgroundShading />
+        <ThemeDarkBackgroundFrosted />
         <ThemeDarkContrastLow />
         <ThemeDarkContrastMedium />
         <ThemeDarkContrastHigh />

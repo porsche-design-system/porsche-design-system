@@ -18,7 +18,7 @@ import {
   fontSizeTextXSmall,
   fontSizeTextXXSmall,
   headingXXLargeStyle,
-} from '@porsche-design-system/utilities-v2';
+} from '@porsche-design-system/styles';
 import { getTypographyRootJssStyle, getTypographySlottedJssStyle } from '../../styles/typography-styles';
 
 const headlineSizeMap: Record<Exclude<HeadlineVariantType, 'large-title'>, string> = {

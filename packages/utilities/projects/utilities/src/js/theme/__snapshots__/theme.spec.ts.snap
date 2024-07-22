@@ -5,6 +5,7 @@ exports[`should contain correct values for theme 1`] = `
   "dark": {
     "background": {
       "base": "#0E0E12",
+      "frosted": "hsl(240 3% 26%/35%)",
       "shading": "rgba(38, 38, 41, 0.67)",
       "surface": "#212225",
     },
@@ -34,6 +35,7 @@ exports[`should contain correct values for theme 1`] = `
   "light": {
     "background": {
       "base": "#FFF",
+      "frosted": "hsl(240 4% 85%/35%)",
       "shading": "rgba(1, 2, 5, 0.67)",
       "surface": "#EEEFF2",
     },
@@ -67,6 +69,7 @@ exports[`should contain correct values for themeDark 1`] = `
 {
   "background": {
     "base": "#0E0E12",
+    "frosted": "hsl(240 3% 26%/35%)",
     "shading": "rgba(38, 38, 41, 0.67)",
     "surface": "#212225",
   },
@@ -96,6 +99,8 @@ exports[`should contain correct values for themeDark 1`] = `
 `;
 
 exports[`should contain correct values for themeDarkBackgroundBase 1`] = `"#0E0E12"`;
+
+exports[`should contain correct values for themeDarkBackgroundFrosted 1`] = `"hsl(240 3% 26%/35%)"`;
 
 exports[`should contain correct values for themeDarkBackgroundShading 1`] = `"rgba(38, 38, 41, 0.67)"`;
 
@@ -137,6 +142,7 @@ exports[`should contain correct values for themeLight 1`] = `
 {
   "background": {
     "base": "#FFF",
+    "frosted": "hsl(240 4% 85%/35%)",
     "shading": "rgba(1, 2, 5, 0.67)",
     "surface": "#EEEFF2",
   },
@@ -166,6 +172,8 @@ exports[`should contain correct values for themeLight 1`] = `
 `;
 
 exports[`should contain correct values for themeLightBackgroundBase 1`] = `"#FFF"`;
+
+exports[`should contain correct values for themeLightBackgroundFrosted 1`] = `"hsl(240 4% 85%/35%)"`;
 
 exports[`should contain correct values for themeLightBackgroundShading 1`] = `"rgba(1, 2, 5, 0.67)"`;
 

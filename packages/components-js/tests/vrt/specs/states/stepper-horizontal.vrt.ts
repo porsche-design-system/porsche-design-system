@@ -8,7 +8,7 @@ import {
   type PrefersColorScheme,
   setContentWithDesignSystem,
 } from '../../helpers';
-import { type Theme } from '@porsche-design-system/utilities-v2';
+import { type Theme } from '@porsche-design-system/styles';
 
 const component = 'stepper-horizontal';
 

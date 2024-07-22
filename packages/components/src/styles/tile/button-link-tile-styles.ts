@@ -10,7 +10,7 @@ import {
   spacingFluidLarge,
   spacingFluidMedium,
   textLargeStyle,
-} from '@porsche-design-system/utilities-v2';
+} from '@porsche-design-system/styles';
 import { getFontWeight } from '../font-weight-styles';
 import { getTileBaseStyles } from './tile-base-styles';
 import { getThemedColors } from '../colors';

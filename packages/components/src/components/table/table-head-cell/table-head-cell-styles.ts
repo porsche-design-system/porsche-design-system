@@ -14,7 +14,7 @@ import {
   frostedGlassStyle,
   spacingFluidSmall,
   spacingStaticXSmall,
-} from '@porsche-design-system/utilities-v2';
+} from '@porsche-design-system/styles';
 import { isDirectionAsc, isSortable } from './table-head-cell-utils';
 import { cssVariableTableHeadCellIconFilter } from '../table/table-styles';
 

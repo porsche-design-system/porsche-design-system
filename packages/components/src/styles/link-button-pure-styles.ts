@@ -18,7 +18,7 @@ import {
   frostedGlassStyle,
   spacingStaticXSmall,
   textSmallStyle,
-} from '@porsche-design-system/utilities-v2';
+} from '@porsche-design-system/styles';
 import { getFontSizeText } from './font-size-text-styles';
 
 // Needed for slotted anchor and hidden label, which then enlarges the hidden label to equal host size and indents the text to be visually hidden.
@@ -145,7 +145,7 @@ export const getLinkButtonPureStyles = (
             },
           },
           label: mergeDeep(
-            { zIndex: '1'}, // fix Firefox bug on :hover (#2583) & pure-link with nested anchor & hidden label (#3349)
+            { zIndex: '1' }, // fix Firefox bug on :hover (#2583) & pure-link with nested anchor & hidden label (#3349)
             buildResponsiveStyles(hideLabel, getVisibilityJssStyle),
             buildResponsiveStyles(alignLabel, (alignLabelValue: AlignLabel) => ({
               // TODO: we should remove 'left' here and map the value in the component class already to 'start' but might be difficult due to breakpoint customizable prop value

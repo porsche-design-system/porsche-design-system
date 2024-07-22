@@ -1,7 +1,7 @@
 import { expect, test } from '@playwright/test';
 import { viewportWidthM } from '@porsche-design-system/shared/testing/playwright.vrt';
 
-const style = 'styles-spacing';
+const style = 'styles-theme';
 
 test.describe(style, async () => {
   test(`should have no visual regression for viewport ${viewportWidthM}`, async ({ page }) => {

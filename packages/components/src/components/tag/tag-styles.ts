@@ -12,7 +12,7 @@ import {
   prefersColorSchemeDarkMediaQuery,
   type ThemedColors,
 } from '../../styles';
-import { borderRadiusSmall, textXSmallStyle } from '@porsche-design-system/utilities-v2';
+import { borderRadiusSmall, textXSmallStyle } from '@porsche-design-system/styles';
 import type { TagColor, TagColorDeprecated } from './tag-utils';
 import { getThemedBackgroundHoverColor } from './tag-utils';
 import type { Theme } from '../../types';

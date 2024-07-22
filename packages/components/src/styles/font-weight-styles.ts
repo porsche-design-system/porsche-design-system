@@ -1,5 +1,5 @@
 import type { TypographyTextWeight, TypographyTextWeightDeprecated } from '../types';
-import { fontWeightRegular, fontWeightSemiBold, fontWeightBold } from '@porsche-design-system/utilities-v2';
+import { fontWeightRegular, fontWeightSemiBold, fontWeightBold } from '@porsche-design-system/styles';
 
 const fontWeightMap: Record<Exclude<TypographyTextWeight, TypographyTextWeightDeprecated>, number> = {
   regular: fontWeightRegular,

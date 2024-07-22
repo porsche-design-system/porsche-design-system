@@ -2,7 +2,7 @@ import type { GridDirection, GridWrap } from './grid-utils';
 import { buildResponsiveStyles, getCss, mergeDeep } from '../../../utils';
 import { addImportantToEachRule, colorSchemeStyles, hostHiddenStyles } from '../../../styles';
 import type { BreakpointCustomizable } from '../../../types';
-import { gridGap } from '@porsche-design-system/utilities-v2';
+import { gridGap } from '@porsche-design-system/styles';
 
 const gutter = `calc(${gridGap} / -2)`;
 

@@ -9,7 +9,7 @@ import {
   hoverMediaQuery,
   prefersColorSchemeDarkMediaQuery,
 } from '.';
-import { borderWidthBase, fontFamily, fontLineHeight, fontSizeTextSmall } from '@porsche-design-system/utilities-v2';
+import { borderWidthBase, fontFamily, fontLineHeight, fontSizeTextSmall } from '@porsche-design-system/styles';
 import { type FormState } from '../utils/form/form-state';
 import { getThemedFormStateColors } from './form-state-color-styles';
 

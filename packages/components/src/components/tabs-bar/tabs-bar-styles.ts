@@ -24,7 +24,7 @@ import {
   motionDurationModerate,
   spacingStaticMedium,
   textSmallStyle,
-} from '@porsche-design-system/utilities-v2';
+} from '@porsche-design-system/styles';
 import type { JssStyle } from 'jss';
 
 export const scrollerAnimatedCssClass = 'scroller--animated';

@@ -18,7 +18,7 @@ import {
   spacingFluidSmall,
   spacingFluidXSmall,
   spacingStaticSmall,
-} from '@porsche-design-system/utilities-v2';
+} from '@porsche-design-system/styles';
 import { FLYOUT_Z_INDEX } from '../../../constants';
 import { getFlyoutDialogResetJssStyle } from '../../../styles/flyout-dialog-reset-styles';
 

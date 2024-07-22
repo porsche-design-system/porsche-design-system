@@ -43,7 +43,7 @@
     "@porsche-design-system/marque": "0.0.0",
     "@porsche-design-system/model-signatures": "0.0.0",
     "@porsche-design-system/shared": "0.0.0",
-    "@porsche-design-system/utilities-v2": "0.0.0",
+    "@porsche-design-system/styles": "0.0.0",
     "@splidejs/splide": "^4.1.4",
     "@stencil/core": "~4.19.2",
     "throttle-debounce": "^5.0.2"

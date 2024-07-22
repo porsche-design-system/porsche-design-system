@@ -1,6 +1,6 @@
 import type { IconName } from '../../types';
 import { hasCounter, hasDocument, throwException } from '../../utils';
-import { borderWidthBase } from '@porsche-design-system/utilities-v2';
+import { borderWidthBase } from '@porsche-design-system/styles';
 import { cssVariableInputPaddingStart, cssVariableInputPaddingEnd } from './text-field-wrapper-styles';
 import type { FormState } from '../../utils/form/form-state';
 

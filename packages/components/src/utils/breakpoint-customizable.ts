@@ -1,4 +1,4 @@
-import type { Breakpoint } from '@porsche-design-system/utilities-v2';
+import type { Breakpoint } from '@porsche-design-system/styles';
 
 export type BreakpointValues<T> = {
   [key in Breakpoint]?: T;
