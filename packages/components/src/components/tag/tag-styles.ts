@@ -77,13 +77,13 @@ export const getComponentCss = (
         ...(isHighContrastMode && {
           outline: '1px solid transparent',
         }),
+        transition: `${getTransition('color')}, ${getTransition('background-color')}, ${getTransition('backdrop-filter')}`, // transition style should always be applied to have a smooth color change in case color prop gets updated during runtime
         ...prefersColorSchemeDarkMediaQuery(theme, {
           color: textColorDark,
           background: backgroundColorDark,
         }),
         ...(isFocusable &&
           hoverMediaQuery({
-            transition: getTransition('background-color'),
             '&:hover': {
               background: backgroundHoverColor,
               ...prefersColorSchemeDarkMediaQuery(theme, {
