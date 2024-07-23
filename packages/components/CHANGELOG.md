@@ -18,13 +18,13 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 - Styles: `theme{Light|Dark}BackgroundFrosted` and `$pds-theme-{light|dark}-background-frosted` color
   ([#3409](https://github.com/porsche-design-system/porsche-design-system/pull/3409))
-- `Carousel`: Slides and `controls` slot are centered if `alignHeader` prop is set to `center` and amount of slides is less than
-  `slidesPerPage` ([#3372](https://github.com/porsche-design-system/porsche-design-system/pull/3372))
 
 #### Changed
 
 - `Icon`: All icons are up-to-date with the One UI look
 - Shorten asset filenames
+- `Carousel`: Slides and `controls` slot are centered if `alignHeader` prop is set to `center` and amount of slides is
+  less than `slidesPerPage` ([#3372](https://github.com/porsche-design-system/porsche-design-system/pull/3372))
 
 #### Fixed
 
