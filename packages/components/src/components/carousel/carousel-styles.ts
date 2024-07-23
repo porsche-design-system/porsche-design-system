@@ -108,7 +108,7 @@ export const getComponentCss = (
           gridColumnStart: 1,
           gridRowStart: 3,
           alignSelf: 'center', // ensures vertical alignment to prev/next buttons
-          ...(alignHeader === 'center' &&
+          ...(isHeaderAlignCenter &&
             !hasNavigation && {
               justifySelf: 'center',
             }),
