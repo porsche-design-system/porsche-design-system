@@ -1869,6 +1869,10 @@ export namespace Components {
          */
         "color"?: TagColor;
         /**
+          * Displays as compact version.
+         */
+        "compact"?: boolean;
+        /**
           * The icon shown.
          */
         "icon"?: TagIcon;
@@ -4871,6 +4875,10 @@ declare namespace LocalJSX {
           * Background color variations depending on theme property.
          */
         "color"?: TagColor;
+        /**
+          * Displays as compact version.
+         */
+        "compact"?: boolean;
         /**
           * The icon shown.
          */
