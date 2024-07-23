@@ -5,7 +5,7 @@ import { getComponentMeta } from '@porsche-design-system/component-meta';
 import { schemes, themes, viewportWidthM, viewportWidths } from '@porsche-design-system/shared/testing/playwright.vrt';
 
 const components = (TAG_NAMES as unknown as TagName[])
-  .filter((tagName) => tagName !== 'p-canvas') // TODO: remove filter as soon as component becomes stable
+  .filter((tagName) => !['p-canvas', 'p-optgroup'].includes(tagName)) // TODO: remove filter as soon as component becomes stable
   // Filter out non-chunked components
   .filter((tagName) => {
     const { isChunked } = getComponentMeta(tagName);
