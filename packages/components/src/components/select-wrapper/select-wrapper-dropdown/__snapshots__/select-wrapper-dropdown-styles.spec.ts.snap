@@ -712,6 +712,9 @@ ul {
 .optgroup--hidden {
   display: none;
 }
+.optgroup--disabled {
+  color: #949598;
+}
 .optgroup:not(:first-child) {
   margin-top: 8px;
 }
@@ -859,6 +862,9 @@ ul {
 }
 .optgroup--hidden {
   display: none;
+}
+.optgroup--disabled {
+  color: #949598;
 }
 .optgroup:not(:first-child) {
   margin-top: 8px;
@@ -1030,6 +1036,9 @@ ul {
 .optgroup--hidden {
   display: none;
 }
+.optgroup--disabled {
+  color: #949598;
+}
 .optgroup:not(:first-child) {
   margin-top: 8px;
 }
@@ -1165,6 +1174,9 @@ ul {
 }
 .optgroup--hidden {
   display: none;
+}
+.optgroup--disabled {
+  color: #949598;
 }
 .optgroup:not(:first-child) {
   margin-top: 8px;
@@ -1335,6 +1347,9 @@ ul {
 }
 .optgroup--hidden {
   display: none;
+}
+.optgroup--disabled {
+  color: #949598;
 }
 .optgroup:not(:first-child) {
   margin-top: 8px;
@@ -1688,6 +1703,9 @@ ul {
 .optgroup--hidden {
   display: none;
 }
+.optgroup--disabled {
+  color: #949598;
+}
 .optgroup:not(:first-child) {
   margin-top: 8px;
 }
@@ -1835,6 +1853,9 @@ ul {
 }
 .optgroup--hidden {
   display: none;
+}
+.optgroup--disabled {
+  color: #949598;
 }
 .optgroup:not(:first-child) {
   margin-top: 8px;
@@ -2006,6 +2027,9 @@ ul {
 .optgroup--hidden {
   display: none;
 }
+.optgroup--disabled {
+  color: #949598;
+}
 .optgroup:not(:first-child) {
   margin-top: 8px;
 }
@@ -2141,6 +2165,9 @@ ul {
 }
 .optgroup--hidden {
   display: none;
+}
+.optgroup--disabled {
+  color: #949598;
 }
 .optgroup:not(:first-child) {
   margin-top: 8px;
@@ -2311,6 +2338,9 @@ ul {
 }
 .optgroup--hidden {
   display: none;
+}
+.optgroup--disabled {
+  color: #949598;
 }
 .optgroup:not(:first-child) {
   margin-top: 8px;
@@ -3972,6 +4002,9 @@ exports[`getListStyles() should return correct css for direction: down and theme
 .optgroup--hidden {
   display: none;
 }
+.optgroup--disabled {
+  color: #7E7F82;
+}
 .optgroup:not(:first-child) {
   margin-top: 8px;
 }
@@ -4071,6 +4104,9 @@ exports[`getListStyles() should return correct css for direction: down and theme
 }
 .optgroup--hidden {
   display: none;
+}
+.optgroup--disabled {
+  color: #949598;
 }
 .optgroup:not(:first-child) {
   margin-top: 8px;
@@ -4172,6 +4208,9 @@ exports[`getListStyles() should return correct css for direction: up and theme: 
 .optgroup--hidden {
   display: none;
 }
+.optgroup--disabled {
+  color: #7E7F82;
+}
 .optgroup:not(:first-child) {
   margin-top: 8px;
 }
@@ -4271,6 +4310,9 @@ exports[`getListStyles() should return correct css for direction: up and theme: 
 }
 .optgroup--hidden {
   display: none;
+}
+.optgroup--disabled {
+  color: #949598;
 }
 .optgroup:not(:first-child) {
   margin-top: 8px;

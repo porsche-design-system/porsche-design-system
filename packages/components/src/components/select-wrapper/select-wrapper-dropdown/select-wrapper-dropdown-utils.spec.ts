@@ -12,6 +12,7 @@ import {
   getSelectedOptionMapIndex,
   getValidOptions,
   hasFilterResults,
+  OptgroupOptionMap,
   OptionMap,
   resetFilteredOptionMaps,
   resetHighlightedToSelectedOptionMaps,
@@ -40,6 +41,7 @@ type GenerateOptionMapsOptions = {
   initiallyHiddenIndex?: number;
   title?: string;
   showOptgroup?: boolean;
+  optgroupOptions?: OptgroupOptionMap;
 };
 
 export const generateOptionMaps = (props?: GenerateOptionMapsOptions): OptionMap[] => {
@@ -52,6 +54,7 @@ export const generateOptionMaps = (props?: GenerateOptionMapsOptions): OptionMap
     initiallyHiddenIndex,
     title,
     showOptgroup,
+    optgroupOptions,
   } = props || {};
 
   return Array.from(Array(amount)).map<OptionMap>((_, idx) => ({
@@ -64,6 +67,7 @@ export const generateOptionMaps = (props?: GenerateOptionMapsOptions): OptionMap
     ...(initiallyHiddenIndex === idx && { initiallyHidden: true }),
     title,
     showOptgroup,
+    optgroupOptions,
   }));
 };
 
@@ -133,22 +137,45 @@ describe('getOptionMaps()', () => {
   const amount = 1;
 
   it.each<[HTMLOptionElement[], OptionMap[]]>([
-    [generateHTMLOptionElements({ text }), generateOptionMaps({ amount, showOptgroup: false })],
+    [
+      generateHTMLOptionElements({ text }),
+      generateOptionMaps({ amount, showOptgroup: false, optgroupOptions: { disabled: false, hidden: false } }),
+    ],
     [
       generateHTMLOptionElements({ text, selected: true }),
-      generateOptionMaps({ amount, selectedIndex: 0, showOptgroup: false }),
+      generateOptionMaps({
+        amount,
+        selectedIndex: 0,
+        showOptgroup: false,
+        optgroupOptions: { disabled: false, hidden: false },
+      }),
     ],
     [
       generateHTMLOptionElements({ text, disabled: true }),
-      generateOptionMaps({ amount, disabledIndex: 0, showOptgroup: false }),
+      generateOptionMaps({
+        amount,
+        disabledIndex: 0,
+        showOptgroup: false,
+        optgroupOptions: { disabled: false, hidden: false },
+      }),
     ],
     [
       generateHTMLOptionElements({ text, hidden: true }),
-      generateOptionMaps({ amount, initiallyHiddenIndex: 0, showOptgroup: false }),
+      generateOptionMaps({
+        amount,
+        initiallyHiddenIndex: 0,
+        showOptgroup: false,
+        optgroupOptions: { disabled: false, hidden: false },
+      }),
     ],
     [
       generateHTMLOptionElements({ text, isGrouped: true }),
-      generateOptionMaps({ amount, title: 'Optgroup Label', showOptgroup: true }),
+      generateOptionMaps({
+        amount,
+        title: 'Optgroup Label',
+        showOptgroup: true,
+        optgroupOptions: { disabled: false, hidden: false },
+      }),
     ],
   ])('should correctly transform HTMLOptionElements to OptionMaps', (optionElements, optionMaps) => {
     expect(getOptionMaps(optionElements)).toEqual(optionMaps);
