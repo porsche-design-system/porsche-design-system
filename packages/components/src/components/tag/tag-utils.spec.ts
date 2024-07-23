@@ -1,19 +1,6 @@
-import { getThemedBackgroundHoverColor, getThemeForIcon, TagColor, TagColorDeprecated } from './tag-utils';
+import { getThemedBackgroundHoverColor, TagColor, TagColorDeprecated } from './tag-utils';
 import type { Theme } from '../../types';
 import { getThemedColors } from '../../styles';
-
-describe('getThemeForIcon()', () => {
-  it.each<[Parameters<typeof getThemeForIcon>[0], Parameters<typeof getThemeForIcon>[1], Theme]>([
-    ['neutral-contrast-high', 'light', 'dark'],
-    ['neutral-contrast-high', 'dark', 'light'],
-    ['primary', 'light', 'dark'],
-    ['primary', 'dark', 'light'],
-    ['background-base', 'light', 'light'],
-    ['background-base', 'dark', 'dark'],
-  ])('should return correct theme for color: %s and theme: %s', (color, theme, result) => {
-    expect(getThemeForIcon(color, theme)).toBe(result);
-  });
-});
 
 const colorsWithThemeCombinations: [Exclude<TagColor, TagColorDeprecated>, Theme, boolean][] = [
   ['primary', 'light', false],

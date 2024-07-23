@@ -14,7 +14,7 @@ describe('getColors()', () => {
     const getThemedBackgroundHoverColorSpy = jest.spyOn(tagUtils, 'getThemedBackgroundHoverColor');
 
     const themedColors = getThemedColors('light');
-    getColors(themedColors, 'background-surface', 'light');
+    getColors('background-surface', 'light');
 
     expect(getInvertedThemedColorsSpy).not.toHaveBeenCalled();
     expect(getThemedBackgroundColorSpy).toHaveBeenCalledWith('background-surface', themedColors);
@@ -27,7 +27,7 @@ describe('getColors()', () => {
     const getThemedBackgroundHoverColorSpy = jest.spyOn(tagUtils, 'getThemedBackgroundHoverColor');
 
     const themedColors = getThemedColors('light');
-    getColors(themedColors, 'primary', 'light');
+    getColors('primary', 'light');
 
     expect(getInvertedThemedColorsSpy).toHaveBeenCalledWith('light');
     expect(getThemedBackgroundColorSpy).toHaveBeenCalledWith('primary', themedColors);
@@ -40,30 +40,33 @@ describe('getColors()', () => {
     ['primary', 'dark'],
     ['background-base', 'dark'],
   ])('should return correct colors for tagColor: %s and theme: %s', (tagColor, theme) => {
-    const themedColors = getThemedColors(theme);
-    expect(getColors(themedColors, tagColor, theme)).toMatchSnapshot();
+    expect(getColors(tagColor, theme)).toMatchSnapshot();
   });
 });
 
 describe('getComponentCss()', () => {
   it.each<Parameters<typeof getComponentCss>>([
-    ['background-base', true, 'light'],
-    ['background-base', false, 'light'],
-    ['primary', true, 'light'],
-    ['notification-success-soft', true, 'light'],
-    ['notification-warning-soft', true, 'light'],
-    ['notification-error-soft', true, 'light'],
-    ['notification-info-soft', true, 'light'],
-    ['background-surface', true, 'light'],
-    ['background-base', true, 'dark'],
-    ['background-base', false, 'dark'],
-    ['primary', true, 'dark'],
-    ['notification-success-soft', true, 'dark'],
-    ['notification-warning-soft', true, 'dark'],
-    ['notification-error-soft', true, 'dark'],
-    ['notification-info-soft', true, 'dark'],
-    ['background-surface', true, 'dark'],
-  ])('should return correct css for color: %s, isFocusable: %s and theme: %s', (...args) => {
+    ['background-base', false, true, true, 'light'],
+    ['background-base', false, false, true, 'light'],
+    ['background-base', true, false, true, 'light'],
+    ['background-base', true, false, false, 'light'],
+    ['primary', false, true, true, 'light'],
+    ['notification-success-soft', false, true, true, 'light'],
+    ['notification-warning-soft', false, true, true, 'light'],
+    ['notification-error-soft', false, true, true, 'light'],
+    ['notification-info-soft', false, true, true, 'light'],
+    ['background-surface', false, true, true, 'light'],
+    ['background-frosted', false, true, true, 'light'],
+    ['background-base', false, true, true, 'dark'],
+    ['background-base', false, false, true, 'dark'],
+    ['primary', false, true, true, 'dark'],
+    ['notification-success-soft', false, true, true, 'dark'],
+    ['notification-warning-soft', false, true, true, 'dark'],
+    ['notification-error-soft', false, true, true, 'dark'],
+    ['notification-info-soft', false, true, true, 'dark'],
+    ['background-surface', false, true, true, 'dark'],
+    ['background-frosted', false, true, true, 'dark'],
+  ])('should return correct css for color: %s, compact: %s, isFocusable: %s, hasIcon: %s and theme: %s', (...args) => {
     validateCssAndMatchSnapshot(getComponentCss(...args));
   });
 });

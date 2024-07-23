@@ -668,6 +668,7 @@ exports[`should call validateProps() with correct parameters via render for p-ta
 exports[`should call validateProps() with correct parameters via render for p-tag: propTypes with ValidatorFunctions 1`] = `
 {
   "color": "oneOf",
+  "compact": "boolean",
   "icon": "string",
   "iconSource": "string",
   "theme": "oneOf",
