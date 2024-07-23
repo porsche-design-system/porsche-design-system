@@ -57,7 +57,7 @@ export class Optgroup {
           aria-hidden={hidden ? 'true' : null}
           aria-label={!!this.label ? null : 'Empty value'}
         >
-          <span class={{ label: true }}>{this.label}</span>
+          <span class="label">{this.label}</span>
           <slot />
         </div>
       </Host>
