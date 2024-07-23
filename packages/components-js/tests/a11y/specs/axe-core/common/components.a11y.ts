@@ -23,7 +23,7 @@ const revertAutoFocus = async (page: Page, component: string): Promise<void> => 
   }
 };
 
-const amountOfTestableComponents = 48;
+const amountOfTestableComponents = 49;
 
 test(`should have certain amount of components`, () => {
   expect(components.length).toBe(amountOfTestableComponents);
@@ -55,6 +55,8 @@ components.forEach((component) => {
               body: JSON.stringify(accessibilityScanResults.violations, null, 2),
               contentType: 'application/json',
             });
+
+            console.log('accessibilityScanResults.violations', accessibilityScanResults.violations);
 
             expect(accessibilityScanResults.violations.length).toBe(0);
           });
