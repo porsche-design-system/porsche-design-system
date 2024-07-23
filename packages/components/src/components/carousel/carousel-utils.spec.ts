@@ -471,13 +471,27 @@ describe('updatePagination()', () => {
 });
 
 describe('getLangDirection()', () => {
-  it('should return language direction', () => {
+  it('should return correct fallback language direction of "ltr"', () => {
     const wrapper = document.createElement('div');
     const host = document.createElement('p-carousel');
     wrapper.append(host);
     expect(getLangDirection(host)).toBe('ltr');
+  });
 
+  it('should return correct language direction if wrapper has dir="rtl"', () => {
+    const wrapper = document.createElement('div');
+    const host = document.createElement('p-carousel');
+    wrapper.append(host);
     wrapper.setAttribute('dir', 'rtl');
+    expect(getLangDirection(host)).toBe('rtl');
+  });
+
+  it('should return correct language direction if document has rtl lang attribute', () => {
+    const wrapper = document.createElement('div');
+    const host = document.createElement('p-carousel');
+    wrapper.append(host);
+
+    document.documentElement.lang = 'ar';
     expect(getLangDirection(host)).toBe('rtl');
   });
 });
