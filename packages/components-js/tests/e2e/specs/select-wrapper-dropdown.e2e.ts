@@ -101,7 +101,6 @@ const initSelect = (page: Page, opts?: InitOptions): Promise<void> => {
     includeOptgroups = false,
   } = opts || {};
 
-  // TODO: wtf?
   const options = [...'abc', ...(amount === 5 ? 'de' : '')].map((x, idx) => {
     const attrs = [
       disabledIndex === idx ? 'disabled' : '',

@@ -31,8 +31,14 @@ export type OptionMap = {
   initiallyHidden: boolean;
   selected: boolean;
   highlighted: boolean;
-  title?: string; // for optgroup
-  showOptgroup?: boolean; // for optgroup
+  /*
+    The properties `title`, `showOptgroup`, and `optgroupOptions` are required
+    to replicate the hierarchical structure of options within <optgroup>
+    while rendering them as a flat list.
+    TODO: Improve by preserving the original hierarchical structure.
+  */
+  title?: string;
+  showOptgroup?: boolean;
   optgroupOptions?: OptgroupOptionMap;
 };
 
