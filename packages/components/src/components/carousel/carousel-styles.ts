@@ -225,7 +225,7 @@ export const getComponentCss = (
         transform: 'translateZ(0)', // fixes mobile safari flickering, https://github.com/nolimits4web/swiper/issues/3527#issuecomment-609088939
       },
       '&__sr': getHiddenTextJssStyle(), // appears in the DOM when sliding
-      ...(alignHeader === 'center' && {
+      ...(isHeaderAlignCenter && {
         '&:not(.is-overflow) .splide__list': {
           justifyContent: 'center',
         },
