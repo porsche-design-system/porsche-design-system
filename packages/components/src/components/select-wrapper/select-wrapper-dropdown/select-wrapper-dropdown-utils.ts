@@ -55,7 +55,6 @@ export const getOptionMaps = (options: HTMLOptionElement[]): OptionMap[] =>
         disabled: hasAttribute(parentElement, 'disabled'),
       },
     };
-    console.log('getOptionMaps', option);
     return option;
   });
 
