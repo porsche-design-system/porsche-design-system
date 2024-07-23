@@ -25,9 +25,9 @@ export const bundles: { components: TagName[] }[] = [
   { components: ['p-flex', 'p-flex-item'] },
   { components: ['p-flyout-multilevel', 'p-flyout-multilevel-item'] },
   { components: ['p-grid', 'p-grid-item'] },
-  { components: ['p-multi-select', 'p-multi-select-option', 'p-optgroup'] },
+  { components: ['p-multi-select', 'p-multi-select-option'] },
   { components: ['p-segmented-control', 'p-segmented-control-item'] },
-  { components: ['p-select', 'p-select-option', 'p-optgroup'] },
+  { components: ['p-select', 'p-select-option'] },
   { components: ['p-select-wrapper', 'p-select-wrapper-dropdown'] },
   { components: ['p-stepper-horizontal', 'p-stepper-horizontal-item'] },
   {
