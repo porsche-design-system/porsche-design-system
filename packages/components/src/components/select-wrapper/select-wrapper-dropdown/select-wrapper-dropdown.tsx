@@ -235,14 +235,25 @@ export class SelectWrapperDropdown {
                   </li>
                 ) : (
                   this.optionMaps.map((option, index) => {
-                    const { value, disabled, hidden, initiallyHidden, selected, highlighted, title, showOptgroup } =
-                      option;
+                    const {
+                      value,
+                      disabled,
+                      hidden,
+                      initiallyHidden,
+                      selected,
+                      highlighted,
+                      title,
+                      showOptgroup,
+                      optgroupOptions,
+                    } = option;
+
                     return [
                       showOptgroup && (
                         <span
                           class={{
                             optgroup: true,
-                            'optgroup--hidden': hidden || initiallyHidden,
+                            'optgroup--hidden': optgroupOptions.hidden,
+                            'optgroup--disabled': optgroupOptions.disabled,
                           }}
                           role="presentation"
                         >

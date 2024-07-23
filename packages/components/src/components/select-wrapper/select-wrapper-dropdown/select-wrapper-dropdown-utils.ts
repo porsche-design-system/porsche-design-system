@@ -19,6 +19,11 @@ export const handleScroll = (ul: HTMLElement, highlightedIndex: number): void =>
   }
 };
 
+export type OptgroupOptionMap = {
+  hidden: boolean;
+  disabled: boolean;
+};
+
 export type OptionMap = {
   value: string;
   disabled: boolean;
@@ -28,6 +33,7 @@ export type OptionMap = {
   highlighted: boolean;
   title?: string; // for optgroup
   showOptgroup?: boolean; // for optgroup
+  optgroupOptions?: OptgroupOptionMap;
 };
 
 export const getOptionsElements = (select: HTMLSelectElement): HTMLOptionElement[] => Array.from(select.options);
@@ -37,14 +43,19 @@ export const getOptionMaps = (options: HTMLOptionElement[]): OptionMap[] =>
     const { selected, parentElement, previousElementSibling } = item;
     const option: OptionMap = {
       value: item.text,
-      disabled: hasAttribute(item, 'disabled'),
+      disabled: hasAttribute(item, 'disabled') || hasAttribute(parentElement, 'disabled'),
       hidden: false,
-      initiallyHidden: hasAttribute(item, 'hidden'),
+      initiallyHidden: hasAttribute(item, 'hidden') || hasAttribute(parentElement, 'hidden'),
       selected,
       highlighted: selected,
       ...(getTagName(parentElement) === 'optgroup' && { title: (parentElement as HTMLOptGroupElement).label }),
       showOptgroup: getTagName(parentElement) === 'optgroup' && previousElementSibling == null,
+      optgroupOptions: {
+        hidden: hasAttribute(parentElement, 'hidden'),
+        disabled: hasAttribute(parentElement, 'disabled'),
+      },
     };
+    console.log('getOptionMaps', option);
     return option;
   });
 

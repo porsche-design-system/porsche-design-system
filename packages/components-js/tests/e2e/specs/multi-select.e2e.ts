@@ -1291,13 +1291,37 @@ test.describe('optgroups', () => {
     for (const child of children) {
       await expect(await getProperty(child, 'disabled')).toBeFalsy();
     }
-    await page.locator('p-optgroup[label="b"]').evaluate((element) => (element.disabled = true));
+    await optgroup.evaluate((element) => (element.disabled = true));
     await waitForStencilLifecycle(page);
 
     await expect(await getProperty(optgroup, 'disabled')).toBeTruthy();
 
     for (const child of children) {
       await expect(await getProperty(child, 'disabled')).toBeTruthy();
+    }
+  });
+
+  test('should hide all options inside hidden optgroup', async ({ page }) => {
+    await initMultiSelect(page, { options: { includeOptgroups: true } });
+
+    const inputElement = await getInput(page);
+    await inputElement.click();
+    await waitForStencilLifecycle(page);
+
+    const optgroup = page.locator('p-optgroup[label="b"]');
+    await expect(optgroup).toBeVisible();
+    const children = await optgroup.locator('p-multi-select-option').all();
+
+    for (const child of children) {
+      await expect(child).toBeVisible();
+    }
+    await optgroup.evaluate((element) => (element.hidden = true));
+    await waitForStencilLifecycle(page);
+
+    await expect(optgroup).not.toBeVisible();
+
+    for (const child of children) {
+      await expect(child).not.toBeVisible();
     }
   });
 });

@@ -17,7 +17,7 @@ import {
   fontWeightSemiBold,
   spacingStaticSmall,
   textSmallStyle,
-  fontSizeTextXSmall
+  fontSizeTextXSmall,
 } from '@porsche-design-system/styles';
 
 import { getNoResultsOptionJssStyle, OPTION_HEIGHT } from '../../../styles/option-styles';
@@ -346,6 +346,12 @@ export const getListStyles = (direction: DropdownDirectionInternal, theme: Theme
     optgroup: {
       '&--hidden': {
         display: 'none',
+      },
+      '&--disabled': {
+        color: disabledColor,
+        ...prefersColorSchemeDarkMediaQuery(theme, {
+          color: disabledColorDark,
+        }),
       },
       color: primaryColor,
       display: 'block',

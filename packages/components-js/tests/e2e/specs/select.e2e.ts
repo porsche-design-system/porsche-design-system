@@ -229,6 +229,7 @@ type InitOptions = {
     isWithinForm?: boolean;
     markupBefore?: string;
     markupAfter?: string;
+    includeOptgroups?: boolean;
   };
 };
 
@@ -240,13 +241,15 @@ const initSelect = (page: Page, opt?: InitOptions): Promise<void> => {
     isWithinForm = true,
     markupBefore = '',
     markupAfter = '',
+    includeOptgroups = false,
   } = options || {};
   const { label = '', description = '', message = '' } = slots || {};
 
   const selectOptions = values
     .map((x, idx) => {
       const attrs = [disabledIndices.includes(idx) ? 'disabled' : ''].join(' ');
-      return `<p-select-option ${x ? `value="${x}"` : ''} ${attrs}>${x}</p-select-option>`;
+      const option = `<p-select-option ${x ? `value="${x}"` : ''} ${attrs}>${x}</p-select-option>`;
+      return includeOptgroups ? `<p-optgroup label="${x}">${option}</p-optgroup>` : option;
     })
     .join('\n');
 
@@ -1424,5 +1427,55 @@ test.describe('lifecycle', () => {
       expect(status2.componentDidUpdate['p-select'], 'componentDidUpdate: p-select').toBe(3); // Keyboard actions cause update in order to update sr highlighted option text
       expect(status2.componentDidUpdate.all, 'componentDidUpdate: all').toBe(5);
     });
+  });
+});
+
+test.describe('optgroups', () => {
+  test('should disable all options inside disabled optgroup', async ({ page }) => {
+    await initSelect(page, { options: { includeOptgroups: true } });
+
+    const buttonElement = await getButton(page);
+    await buttonElement.click();
+    await waitForStencilLifecycle(page);
+
+    const optgroup = page.locator('p-optgroup[label="b"]');
+    await expect(await getProperty(optgroup, 'disabled')).toBeFalsy();
+    const children = await optgroup.locator('p-select-option').all();
+
+    for (const child of children) {
+      await expect(await getProperty(child, 'disabled')).toBeFalsy();
+    }
+    await optgroup.evaluate((element) => (element.disabled = true));
+    await waitForStencilLifecycle(page);
+
+    await expect(await getProperty(optgroup, 'disabled')).toBeTruthy();
+
+    for (const child of children) {
+      await expect(await getProperty(child, 'disabled')).toBeTruthy();
+    }
+  });
+
+  test('should hide all options inside hidden optgroup', async ({ page }) => {
+    await initSelect(page, { options: { includeOptgroups: true } });
+
+    const buttonElement = await getButton(page);
+    await buttonElement.click();
+    await waitForStencilLifecycle(page);
+
+    const optgroup = page.locator('p-optgroup[label="b"]');
+    await expect(optgroup).toBeVisible();
+    const children = await optgroup.locator('p-select-option').all();
+
+    for (const child of children) {
+      await expect(child).toBeVisible();
+    }
+    await optgroup.evaluate((element) => (element.hidden = true));
+    await waitForStencilLifecycle(page);
+
+    await expect(optgroup).not.toBeVisible();
+
+    for (const child of children) {
+      await expect(child).not.toBeVisible();
+    }
   });
 });
