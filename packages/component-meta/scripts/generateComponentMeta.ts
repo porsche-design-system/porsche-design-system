@@ -75,7 +75,7 @@ const generateComponentMeta = (): void => {
     const [, singleMatch, arrayMatch] =
       (/throwIfParentIsNotOfKind\(.+, '([^']+)'\)|throwIfParentIsNotOfKind\(.+, \[([^\]]+)]\)/.exec(
         source
-      ) as unknown as [string, TagName?, TagName?]) || [];
+      ) as unknown as [string, TagName?, string?]) || [];
 
     const parseRequiredParent = (singleMatch: TagName, arrayMatch: string) => {
       if (singleMatch) return singleMatch;
