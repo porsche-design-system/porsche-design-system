@@ -237,22 +237,21 @@ export default class Code extends Vue {
     this.$refs.select.value = this.valueInput
   }
 
-  withOptgroups = `
-    <p-select name="options" label="Some Label" value="a">
-      <p-optgroup label="Some optgroup label 1">
-        <p-select-option value="a">Option A</p-select-option>
-        <p-select-option value="b">Option B</p-select-option>
-        <p-select-option value="c">Option C</p-select-option>
-        <p-select-option value="d">Option D</p-select-option>
-        <p-select-option value="e">Option E</p-select-option>
-        <p-select-option value="f">Option F</p-select-option>
-      </p-optgroup>
-      <p-optgroup label="Some optgroup label 2">
-        <p-select-option value="g">Option G</p-select-option>
-        <p-select-option value="h">Option H</p-select-option>
-        <p-select-option value="i">Option I</p-select-option>
-      </p-optgroup>
-    </p-select>
+  withOptgroups = `<p-select name="options" label="Some Label" value="a">
+  <p-optgroup label="Some optgroup label 1">
+    <p-select-option value="a">Option A</p-select-option>
+    <p-select-option value="b">Option B</p-select-option>
+    <p-select-option value="c">Option C</p-select-option>
+    <p-select-option value="d">Option D</p-select-option>
+    <p-select-option value="e">Option E</p-select-option>
+    <p-select-option value="f">Option F</p-select-option>
+  </p-optgroup>
+  <p-optgroup label="Some optgroup label 2">
+    <p-select-option value="g">Option G</p-select-option>
+    <p-select-option value="h">Option H</p-select-option>
+    <p-select-option value="i">Option I</p-select-option>
+  </p-optgroup>
+</p-select>
   `;
  
   selectedValueControlled = 'Selected value: none';
