@@ -21,7 +21,6 @@ export const addParentAndSetRequiredProps = (tagName: TagName, component: any): 
     component[childTagName] = child;
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
   const requiredNamedSlots = slotsMeta && Object.entries(slotsMeta).filter(([, value]) => value.isRequired);
 
   if (requiredNamedSlots && requiredNamedSlots.length > 0) {
