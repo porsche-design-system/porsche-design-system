@@ -320,7 +320,7 @@ describe('setFilteredOptionMaps()', () => {
     ['ir', 2, 1],
     ['st Val', 1, 1],
   ])(
-    'should for searchString %s return %s visible options',
+    'should for searchString %s return %s visible options and %s visible optgroups',
     (searchString, expectedVisibleOptions, expectedVisibleOptgroups) => {
       const options = mapValuesToBeBetterFilterable(generateOptionMaps({ title: 'Optgroup Label' }));
       const result = setFilteredOptionMaps(options, searchString);
