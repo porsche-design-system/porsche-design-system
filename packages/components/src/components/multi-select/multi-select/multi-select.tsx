@@ -46,6 +46,7 @@ import {
   type SelectDropdownDirectionInternal,
   THEMES,
   throwIfElementIsNotOfKind,
+  throwIfElementIsNotOfKinds,
   validateProps,
 } from '../../../utils';
 import {
@@ -361,25 +362,25 @@ export class MultiSelect {
   };
 
   private updateOptions = (): void => {
-    const children = Array.from(this.host.children).filter(
-      (el) => el.tagName !== 'SELECT' && el.slot !== 'label' && el.slot !== 'description' && el.slot !== 'message'
-    );
+    this.multiSelectOptions = [];
+    this.multiSelectOptgroups = [];
 
-    this.multiSelectOptgroups = children.filter((el: HTMLElement) =>
-      isElementOfKind(el, 'p-optgroup')
-    ) as HTMLPOptgroupElement[];
-
-    this.multiSelectOptions = children
-      .map((el: HTMLElement) => {
-        if (!isElementOfKind(el, 'p-multi-select-option')) {
-          throwIfElementIsNotOfKind(this.host, el, 'p-optgroup');
-          return Array.from(el.children);
+    Array.from(this.host.children)
+      .filter(
+        (el) => el.tagName !== 'SELECT' && el.slot !== 'label' && el.slot !== 'description' && el.slot !== 'message'
+      )
+      .forEach((child: HTMLElement) => {
+        throwIfElementIsNotOfKinds(this.host, child, ['p-multi-select-option', 'p-optgroup']);
+        if (isElementOfKind(child, 'p-multi-select-option')) {
+          this.multiSelectOptions.push(child as MultiSelectOption);
+        } else if (isElementOfKind(child, 'p-optgroup')) {
+          this.multiSelectOptgroups.push(child as MultiSelectOptgroup);
+          Array.from(child.children).forEach((optGroupChild: HTMLElement) => {
+            throwIfElementIsNotOfKind(child, optGroupChild, 'p-multi-select-option');
+            this.multiSelectOptions.push(optGroupChild as MultiSelectOption);
+          });
         }
-        return el;
-      })
-      .flat() as HTMLPMultiSelectOptionElement[];
-
-    this.multiSelectOptions.forEach((child) => throwIfElementIsNotOfKind(this.host, child, 'p-multi-select-option'));
+      });
   };
 
   private onInputChange = (e: InputEvent & { target: HTMLInputElement }): void => {
