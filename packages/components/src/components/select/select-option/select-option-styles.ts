@@ -57,11 +57,9 @@ export const getOptionStyles = (theme: Theme): Styles => {
     option: {
       fontWeight: fontWeightRegular,
       display: 'flex',
-      // justifyContent: 'space-between', // TODO: Commenented out
       gap: '12px',
       padding: `${spacingStaticSmall} 12px`,
       paddingLeft: `var(${cssVariableSelectPaddingLeft}, 12px)`,
-      // marginBottom: '8px',
       flex: `1 0 calc(${fontLineHeight} + ${spacingStaticSmall} * 2)`,
       minHeight: `calc(${fontLineHeight} + ${spacingStaticSmall} * 2)`, // TODO: Added this line to preserve height for empty option
       color: contrastHighColor,
