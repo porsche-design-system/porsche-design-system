@@ -1430,6 +1430,31 @@ test.describe('lifecycle', () => {
   });
 });
 
+test.describe('theme', () => {
+  test('should sync theme for children', async ({ page }) => {
+    await initSelect(page, { options: { includeOptgroups: true } });
+
+    const select = await getHost(page);
+
+    const buttonElement = await getButton(page);
+    await buttonElement.click();
+    await waitForStencilLifecycle(page);
+
+    const optgroups = await page.locator('p-optgroup').all();
+    const options = await page.locator('p-select-option').all();
+
+    for (const child of [...optgroups, ...options]) {
+      expect(await getProperty(child, 'theme')).toBe('light');
+    }
+    await setProperty(select, 'theme', 'dark');
+    await waitForStencilLifecycle(page);
+
+    for (const child of [...optgroups, ...options]) {
+      expect(await getProperty(child, 'theme')).toBe('dark');
+    }
+  });
+});
+
 test.describe('optgroups', () => {
   test('should disable all options inside disabled optgroup', async ({ page }) => {
     await initSelect(page, { options: { includeOptgroups: true } });

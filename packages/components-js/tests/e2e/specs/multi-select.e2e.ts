@@ -1,6 +1,5 @@
-// TODO: add test case to verify theme syncing
 import type { Page } from 'playwright';
-import { ElementHandle, expect, test } from '@playwright/test';
+import { type ElementHandle, expect, test } from '@playwright/test';
 import type { Components } from '@porsche-design-system/components/src/components';
 import {
   addEventListener,
@@ -1252,6 +1251,31 @@ test.describe('lifecycle', () => {
     expect(status2.componentDidUpdate['p-multi-select-option'], 'componentDidUpdate: p-multi-select-option').toBe(0);
     expect(status2.componentDidUpdate['p-multi-select'], 'componentDidUpdate: p-multi-select').toBe(1);
     expect(status2.componentDidUpdate.all, 'componentDidUpdate: all').toBe(1);
+  });
+});
+
+test.describe('theme', () => {
+  test('should sync theme for children', async ({ page }) => {
+    await initMultiSelect(page, { options: { includeOptgroups: true } });
+
+    const multiSelect = await getHost(page);
+
+    const inputElement = await getInput(page);
+    await inputElement.click();
+    await waitForStencilLifecycle(page);
+
+    const optgroups = await page.locator('p-optgroup').all();
+    const options = await page.locator('p-multi-select-option').all();
+
+    for (const child of [...optgroups, ...options]) {
+      expect(await getProperty(child, 'theme')).toBe('light');
+    }
+    await setProperty(multiSelect, 'theme', 'dark');
+    await waitForStencilLifecycle(page);
+
+    for (const child of [...optgroups, ...options]) {
+      expect(await getProperty(child, 'theme')).toBe('dark');
+    }
   });
 });
 
