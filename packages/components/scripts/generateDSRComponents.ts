@@ -491,7 +491,7 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
           .replace(/this\.theme/, 'this.props.theme');
       } else if (tagName === 'p-optgroup') {
         newFileContent = newFileContent
-          // remove any jsx since optgroups are not visible in closed multi-select
+          // remove any jsx since optgroups are not visible in closed multi-select | select
           .replace(/<>\s*([\s\S]*)\s*<\/>/, '<></>');
       } else if (tagName === 'p-select') {
         newFileContent = newFileContent
