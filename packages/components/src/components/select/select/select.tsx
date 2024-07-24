@@ -1,17 +1,15 @@
 import type { BreakpointCustomizable, PropTypes, Theme } from '../../../types';
 import {
-  SelectOption,
-  SelectState,
-  SelectUpdateEventDetail,
-  SelectDropdownDirection,
-  SelectOptgroup,
-} from './select-utils';
-import {
   getSelectDropdownDirection,
   getSelectedOptionString,
   getSrHighlightedOptionText,
   initNativeSelect,
   INTERNAL_SELECT_SLOT,
+  SelectDropdownDirection,
+  SelectOptgroup,
+  SelectOption,
+  SelectState,
+  SelectUpdateEventDetail,
   setSelectedOption,
   syncNativeSelect,
   syncSelectChildrenProps,
@@ -318,25 +316,26 @@ export class Select {
   };
 
   private updateOptions = (): void => {
-    const children = Array.from(this.host.children).filter(
-      (el) => el.tagName !== 'SELECT' && el.slot !== 'label' && el.slot !== 'description' && el.slot !== 'message'
-    );
+    this.selectOptions = [];
+    this.selectOptgroups = [];
 
-    this.selectOptgroups = children.filter((el: HTMLElement) =>
-      isElementOfKind(el, 'p-optgroup')
-    ) as HTMLPOptgroupElement[];
+    Array.from(this.host.children)
+      .filter(
+        (el) => el.tagName !== 'SELECT' && el.slot !== 'label' && el.slot !== 'description' && el.slot !== 'message'
+      )
+      .forEach((child: HTMLElement) => {
+        throwIfElementIsNotOfKind(this.host, child, ['p-select-option', 'p-optgroup']);
 
-    this.selectOptions = children
-      .map((el: HTMLElement) => {
-        if (!isElementOfKind(el, 'p-select-option')) {
-          throwIfElementIsNotOfKind(this.host, el, 'p-optgroup');
-          return Array.from(el.children);
+        if (isElementOfKind(child, 'p-select-option')) {
+          this.selectOptions.push(child as SelectOption);
+        } else if (isElementOfKind(child, 'p-optgroup')) {
+          this.selectOptgroups.push(child as SelectOptgroup);
+          Array.from(child.children).forEach((optGroupChild: HTMLElement) => {
+            throwIfElementIsNotOfKind(child, optGroupChild, 'p-select-option');
+            this.selectOptions.push(optGroupChild as SelectOption);
+          });
         }
-        return el;
-      })
-      .flat() as HTMLPMultiSelectOptionElement[];
-
-    this.selectOptions.forEach((child) => throwIfElementIsNotOfKind(this.host, child, 'p-select-option'));
+      });
   };
 
   private updateSelectedOption = (selectedOption: SelectOption): void => {

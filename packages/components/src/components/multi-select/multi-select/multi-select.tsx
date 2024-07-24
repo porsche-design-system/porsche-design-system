@@ -46,7 +46,6 @@ import {
   type SelectDropdownDirectionInternal,
   THEMES,
   throwIfElementIsNotOfKind,
-  throwIfElementIsNotOfKinds,
   validateProps,
 } from '../../../utils';
 import {
@@ -370,7 +369,8 @@ export class MultiSelect {
         (el) => el.tagName !== 'SELECT' && el.slot !== 'label' && el.slot !== 'description' && el.slot !== 'message'
       )
       .forEach((child: HTMLElement) => {
-        throwIfElementIsNotOfKinds(this.host, child, ['p-multi-select-option', 'p-optgroup']);
+        throwIfElementIsNotOfKind(this.host, child, ['p-multi-select-option', 'p-optgroup']);
+
         if (isElementOfKind(child, 'p-multi-select-option')) {
           this.multiSelectOptions.push(child as MultiSelectOption);
         } else if (isElementOfKind(child, 'p-optgroup')) {
