@@ -22,6 +22,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
     ([#3411](https://github.com/porsche-design-system/porsche-design-system/pull/3411))
 - Styles: `theme{Light|Dark}BackgroundFrosted` and `$pds-theme-{light|dark}-background-frosted` color
   ([#3409](https://github.com/porsche-design-system/porsche-design-system/pull/3409))
+- `Select`, `Multi-Select`: Add `p-optgroup` component
+  ([#3410](https://github.com/porsche-design-system/porsche-design-system/pull/3410))
 
 #### Changed
 
@@ -35,6 +37,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 - `PTextFieldWrapper`, `PTextareaWrapper`: Conditionally rendered component throws
   `TypeError: Cannot read properties of undefined (reading 'type')`
   ([#3383](https://github.com/porsche-design-system/porsche-design-system/pull/3383))
+- `Select-Wrapper`: Fixed `optgroup` styling and behavior
+  ([#3410](https://github.com/porsche-design-system/porsche-design-system/pull/3410))
 
 ### [3.16.0] - 2024-07-02
 
