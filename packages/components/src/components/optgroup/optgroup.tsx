@@ -47,17 +47,18 @@ export class Optgroup {
     return (
       <Host>
         <div
-          /* TODO: role="group" ? */
-          role="presentation"
+          role="group"
           class={{
             optgroup: true,
             'optgroup--disabled': this.disabled,
           }}
           aria-disabled={this.disabled ? 'true' : null}
           aria-hidden={hidden ? 'true' : null}
-          aria-label={!!this.label ? null : 'Empty value'}
+          aria-labelledby="label"
         >
-          <span class="label">{this.label}</span>
+          <span class="label" role="presentation" id="label">
+            {this.label}
+          </span>
           <slot />
         </div>
       </Host>
