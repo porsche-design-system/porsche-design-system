@@ -8,6 +8,7 @@ export const getThemedBackgroundColor = (
   const colorMap: Record<Exclude<TagColor, TagColorDeprecated>, string> = {
     'background-base': themedColors.backgroundColor,
     'background-surface': themedColors.backgroundSurfaceColor,
+    'background-frosted': themedColors.backgroundFrostedColor,
     primary: themedColors.primaryColor,
     'notification-info-soft': themedColors.infoSoftColor,
     'notification-warning-soft': themedColors.warningSoftColor,
