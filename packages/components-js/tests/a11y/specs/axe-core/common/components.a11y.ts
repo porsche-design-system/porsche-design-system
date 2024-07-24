@@ -56,8 +56,6 @@ components.forEach((component) => {
               contentType: 'application/json',
             });
 
-            console.log('accessibilityScanResults.violations', accessibilityScanResults.violations);
-
             expect(accessibilityScanResults.violations.length).toBe(0);
           });
         });
