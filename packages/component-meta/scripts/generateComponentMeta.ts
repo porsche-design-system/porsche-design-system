@@ -73,17 +73,16 @@ const generateComponentMeta = (): void => {
 
     // required parent
     const [, singleMatch, arrayMatch] =
-    (/throwIfParentIsNotOfKind\(.+, '([^']+)'\)|throwIfParentIsNotOfKind\(.+, \[([^\]]+)]\)/
-      .exec(source) as unknown as [string, string?, string?]) || [];
+      (/throwIfParentIsNotOfKind\(.+, '([^']+)'\)|throwIfParentIsNotOfKind\(.+, \[([^\]]+)]\)/.exec(
+        source
+      ) as unknown as [string, TagName?, TagName?]) || [];
 
-    const parseRequiredParent = (singleMatch, arrayMatch) => {
+    const parseRequiredParent = (singleMatch: TagName, arrayMatch: string) => {
       if (singleMatch) return singleMatch;
 
       if (arrayMatch) {
-        return arrayMatch.split(',').map(tag => tag.trim().replace(/^'|'$/g, ''));
+        return arrayMatch.split(',').map((tag) => tag.trim().replace(/^'|'$/g, '')) as TagName[];
       }
-
-      return undefined;
     };
 
     const requiredParent = parseRequiredParent(singleMatch, arrayMatch);
@@ -141,10 +140,10 @@ const generateComponentMeta = (): void => {
           : propValue === 'false'
             ? false
             : // undefined values get lost in JSON.stringify, but null is allowed
-              propValue
+              (propValue
                 ?.replace(/^['"](.*)['"]$/, '$1') // propValue is a string and might contain a string wrapped in quotes since it is extracted like this
                 .replace(/\s+/g, ' ') // remove new lines and multiple spaces
-                .replace(/,( })/, '$1') ?? null; // remove trailing comma in original multiline objects
+                .replace(/,( })/, '$1') ?? null); // remove trailing comma in original multiline objects
 
       if (typeof cleanedValue === 'string') {
         if (cleanedValue.match(/^\d+$/) && !propValue.match(/^['"]\d+['"]$/)) {
