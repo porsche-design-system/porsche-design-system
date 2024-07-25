@@ -38,7 +38,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
   ([#3383](https://github.com/porsche-design-system/porsche-design-system/pull/3383))
 - `LinkTile`: Broken word-break & hyphens Safari
   ([#3397](https://github.com/porsche-design-system/porsche-design-system/pull/3397))
-- `Select-Wrapper`: Fixed `optgroup` styling and behavior
+- `Select-Wrapper`: `optgroup` styling and behavior
   ([#3410](https://github.com/porsche-design-system/porsche-design-system/pull/3410))
 
 ### [3.16.0] - 2024-07-02
