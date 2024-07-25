@@ -340,7 +340,7 @@ export const getListStyles = (direction: DropdownDirectionInternal, theme: Theme
         display: 'none',
       },
       '&--indent': {
-        paddingLeft: '24px',
+        paddingLeft: '28px',
       },
     },
     optgroup: {
@@ -355,15 +355,12 @@ export const getListStyles = (direction: DropdownDirectionInternal, theme: Theme
       },
       color: primaryColor,
       display: 'block',
-      padding: '3px 14px',
+      padding: `${spacingStaticSmall} 12px`,
       fontSize: fontSizeTextXSmall,
       fontWeight: fontWeightSemiBold,
       ...prefersColorSchemeDarkMediaQuery(theme, {
         color: primaryColorDark,
       }),
-      '&:not(:first-child)': {
-        marginTop: spacingStaticSmall,
-      },
     },
   };
 };
