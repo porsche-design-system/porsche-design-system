@@ -1,8 +1,7 @@
 import type { ConsoleMessage, ElementHandle, Page } from 'playwright';
-import { expect } from '@playwright/test';
+import { expect, type Locator } from '@playwright/test';
 import { waitForComponentsReady } from './stencil';
 import type { TagName } from '@porsche-design-system/shared';
-import type { ComponentMeta } from '@porsche-design-system/component-meta';
 import { getComponentMeta } from '@porsche-design-system/component-meta';
 import { format } from 'prettier';
 import { getInitialStyles } from '@porsche-design-system/components-js/partials';
@@ -164,7 +163,7 @@ export const removeAttribute = async (element: ElementHandle<HTMLElement | SVGEl
   await element.evaluate((el, key) => el.removeAttribute(key), key);
 };
 
-export const getProperty = async <T>(element: ElementHandle<HTMLElement | SVGElement>, prop: string): Promise<T> => {
+export const getProperty = async <T>(element: ElementHandle<T> | Locator, prop: string): Promise<keyof T> => {
   return element.evaluate((el, prop: string) => el[prop], prop);
 };
 
@@ -377,10 +376,11 @@ export const buildDefaultComponentMarkup = (tagName: TagName): string => {
     }
   };
 
-  const buildParentMarkup = (markup: string, requiredParent: TagName): string => {
-    if (requiredParent) {
-      const markupWithParent = `<${requiredParent}>${markup}</${requiredParent}>`;
-      return buildParentMarkup(markupWithParent, getComponentMeta(requiredParent).requiredParent);
+  const buildParentMarkup = (markup: string, requiredParent: TagName | TagName[]): string => {
+    const firstRequiredParent = Array.isArray(requiredParent) ? requiredParent[0] : requiredParent;
+    if (firstRequiredParent) {
+      const markupWithParent = `<${firstRequiredParent}>${markup}</${firstRequiredParent}>`;
+      return buildParentMarkup(markupWithParent, getComponentMeta(firstRequiredParent).requiredParent);
     } else {
       return markup;
     }
@@ -435,11 +435,11 @@ export const expectToSkipFocusOnComponent = async (page: Page, component: Elemen
 };
 
 export const getScrollLeft = (element: ElementHandle<HTMLElement | SVGElement>): Promise<number> =>
-  getProperty<number>(element, 'scrollLeft');
+  getProperty(element, 'scrollLeft') as unknown as Promise<number>;
 export const getOffsetLeft = (element: ElementHandle<HTMLElement | SVGElement>): Promise<number> =>
-  getProperty<number>(element, 'offsetLeft');
+  getProperty(element, 'offsetLeft') as unknown as Promise<number>;
 export const getOffsetWidth = (element: ElementHandle<HTMLElement | SVGElement>): Promise<number> =>
-  getProperty<number>(element, 'offsetWidth');
+  getProperty(element, 'offsetWidth') as unknown as Promise<number>;
 
 /**
  * Get HTML attributes string from an object of properties.

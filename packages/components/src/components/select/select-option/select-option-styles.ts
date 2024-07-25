@@ -10,8 +10,15 @@ import {
   hoverMediaQuery,
   prefersColorSchemeDarkMediaQuery,
 } from '../../../styles';
-import { borderRadiusSmall, fontLineHeight, spacingStaticSmall } from '@porsche-design-system/styles';
+import {
+  borderRadiusSmall,
+  fontLineHeight,
+  fontWeightRegular,
+  spacingStaticSmall,
+} from '@porsche-design-system/styles';
 import type { Styles } from 'jss';
+
+export const cssVariableSelectPaddingInlineStart = '--p-internal-select-option-padding-left';
 
 // TODO: Enforce order of slotted text, img
 export const getComponentCss = (theme: Theme): string => {
@@ -48,10 +55,11 @@ export const getOptionStyles = (theme: Theme): Styles => {
 
   return {
     option: {
+      fontWeight: fontWeightRegular,
       display: 'flex',
-      // justifyContent: 'space-between', // TODO: Commenented out
       gap: '12px',
       padding: `${spacingStaticSmall} 12px`,
+      paddingInlineStart: `var(${cssVariableSelectPaddingInlineStart}, 12px)`,
       flex: `1 0 calc(${fontLineHeight} + ${spacingStaticSmall} * 2)`,
       minHeight: `calc(${fontLineHeight} + ${spacingStaticSmall} * 2)`, // TODO: Added this line to preserve height for empty option
       color: contrastHighColor,

@@ -6,6 +6,7 @@ export const WHITELISTED_TAG_NAMES = [
   'p-flyout-multilevel-item',
   'p-grid-item',
   'p-multi-select-option',
+  'p-optgroup',
   'p-select-option',
   'p-stepper-horizontal-item',
   'p-tabs-item',
