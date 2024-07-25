@@ -77,13 +77,11 @@ export const getComponentCss = (
       },
       '::slotted': addImportantToEachRule({
         '&(picture)': {
-          all: 'unset',
           display: 'block',
           width: '100%',
           height: '100%',
         },
         '&(img)': {
-          all: 'unset',
           display: 'block',
           width: '100%',
           height: '100%',
@@ -114,7 +112,6 @@ export const getComponentCss = (
       },
     },
     root: {
-      position: 'relative',
       ...buildResponsiveStyles(aspectRatio, (aspectRatioValue: TileAspectRatio) => ({
         aspectRatio: aspectRatioValue.replace(':', '/'), // mapping of the deprecated aspect-ratio with ':'
       })),

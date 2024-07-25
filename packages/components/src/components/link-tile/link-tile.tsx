@@ -95,8 +95,11 @@ export class LinkTile implements ITileProps {
     return hasPropValueChanged(newVal, oldVal);
   }
 
-  public render(): JSX.Element {
+  public componentWillRender(): void {
     this.compact = parseJSON(this.compact) as any; // parsing the value just once per lifecycle
+  }
+
+  public render(): JSX.Element {
     validateProps(this, propTypes);
     attachComponentCss(
       this.host,
