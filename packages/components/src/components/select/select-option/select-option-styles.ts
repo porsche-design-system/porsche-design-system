@@ -18,7 +18,7 @@ import {
 } from '@porsche-design-system/styles';
 import type { Styles } from 'jss';
 
-export const cssVariableSelectPaddingLeft = '--p-internal-select-option-padding-left';
+export const cssVariableSelectPaddingInlineStart = '--p-internal-select-option-padding-left';
 
 // TODO: Enforce order of slotted text, img
 export const getComponentCss = (theme: Theme): string => {
@@ -59,7 +59,7 @@ export const getOptionStyles = (theme: Theme): Styles => {
       display: 'flex',
       gap: '12px',
       padding: `${spacingStaticSmall} 12px`,
-      paddingLeft: `var(${cssVariableSelectPaddingLeft}, 12px)`,
+      paddingInlineStart: `var(${cssVariableSelectPaddingInlineStart}, 12px)`,
       flex: `1 0 calc(${fontLineHeight} + ${spacingStaticSmall} * 2)`,
       minHeight: `calc(${fontLineHeight} + ${spacingStaticSmall} * 2)`, // TODO: Added this line to preserve height for empty option
       color: contrastHighColor,

@@ -136,8 +136,8 @@
   },
   {
     "chunkShortName": "link-tile-model-signature",
-    "size": 7117,
-    "gzipSize": 3147
+    "size": 7186,
+    "gzipSize": 3183
   },
   {
     "chunkShortName": "link-tile-product",
@@ -147,7 +147,7 @@
   {
     "chunkShortName": "main",
     "size": 80110,
-    "gzipSize": 26748
+    "gzipSize": 26750
   },
   {
     "chunkShortName": "marque",
@@ -166,13 +166,13 @@
   },
   {
     "chunkShortName": "multi-select",
-    "size": 26495,
-    "gzipSize": 9245
+    "size": 26637,
+    "gzipSize": 9280
   },
   {
     "chunkShortName": "optgroup",
-    "size": 5673,
-    "gzipSize": 2115
+    "size": 5690,
+    "gzipSize": 2121
   },
   {
     "chunkShortName": "pagination",
@@ -206,13 +206,13 @@
   },
   {
     "chunkShortName": "select",
-    "size": 25605,
-    "gzipSize": 9012
+    "size": 25731,
+    "gzipSize": 9055
   },
   {
     "chunkShortName": "select-wrapper",
-    "size": 27327,
-    "gzipSize": 9218
+    "size": 27292,
+    "gzipSize": 9194
   },
   {
     "chunkShortName": "spinner",

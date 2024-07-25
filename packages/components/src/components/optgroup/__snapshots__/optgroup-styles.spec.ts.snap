@@ -8,8 +8,8 @@ exports[`getComponentCss() should return correct css for theme: false 1`] = `
   display: none !important;
 }
 ::slotted(*) {
-  --p-internal-select-option-padding-left: 24px;
-  --p-internal-multi-select-option-padding-left: 24px;
+  --p-internal-select-option-padding-left: 28px;
+  --p-internal-multi-select-option-padding-left: 28px;
 }
 .optgroup {
   display: flex;
@@ -19,7 +19,7 @@ exports[`getComponentCss() should return correct css for theme: false 1`] = `
 .label {
   color: #010205;
   display: block;
-  padding: 3px 14px;
+  padding: 8px 12px;
   font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
   font-weight: 600;
 }"
@@ -33,8 +33,8 @@ exports[`getComponentCss() should return correct css for theme: false 2`] = `
   display: none !important;
 }
 ::slotted(*) {
-  --p-internal-select-option-padding-left: 24px;
-  --p-internal-multi-select-option-padding-left: 24px;
+  --p-internal-select-option-padding-left: 28px;
+  --p-internal-multi-select-option-padding-left: 28px;
 }
 .optgroup {
   display: flex;
@@ -44,7 +44,7 @@ exports[`getComponentCss() should return correct css for theme: false 2`] = `
 .label {
   color: #FBFCFF;
   display: block;
-  padding: 3px 14px;
+  padding: 8px 12px;
   font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
   font-weight: 600;
 }"
@@ -58,8 +58,8 @@ exports[`getComponentCss() should return correct css for theme: true 1`] = `
   display: none !important;
 }
 ::slotted(*) {
-  --p-internal-select-option-padding-left: 24px;
-  --p-internal-multi-select-option-padding-left: 24px;
+  --p-internal-select-option-padding-left: 28px;
+  --p-internal-multi-select-option-padding-left: 28px;
 }
 .optgroup {
   display: flex;
@@ -69,7 +69,7 @@ exports[`getComponentCss() should return correct css for theme: true 1`] = `
 .label {
   color: #949598;
   display: block;
-  padding: 3px 14px;
+  padding: 8px 12px;
   font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
   font-weight: 600;
 }"
@@ -83,8 +83,8 @@ exports[`getComponentCss() should return correct css for theme: true 2`] = `
   display: none !important;
 }
 ::slotted(*) {
-  --p-internal-select-option-padding-left: 24px;
-  --p-internal-multi-select-option-padding-left: 24px;
+  --p-internal-select-option-padding-left: 28px;
+  --p-internal-multi-select-option-padding-left: 28px;
 }
 .optgroup {
   display: flex;
@@ -94,7 +94,7 @@ exports[`getComponentCss() should return correct css for theme: true 2`] = `
 .label {
   color: #7E7F82;
   display: block;
-  padding: 3px 14px;
+  padding: 8px 12px;
   font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
   font-weight: 600;
 }"

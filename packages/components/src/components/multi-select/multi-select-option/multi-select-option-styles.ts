@@ -11,7 +11,7 @@ import {
   prefersColorSchemeDarkMediaQuery,
 } from '../../../styles';
 import { borderRadiusSmall, fontLineHeight, spacingStaticSmall } from '@porsche-design-system/styles';
-export const cssVariableMultiSelectPaddingLeft = '--p-internal-multi-select-option-padding-left';
+export const cssVariableMultiSelectPaddingInlineStart = '--p-internal-multi-select-option-padding-left';
 
 export const getComponentCss = (theme: Theme): string => {
   const { primaryColor, contrastHighColor, backgroundSurfaceColor, disabledColor, contrastLowColor } =
@@ -37,7 +37,7 @@ export const getComponentCss = (theme: Theme): string => {
       justifyContent: 'space-between',
       gap: '12px',
       padding: `${spacingStaticSmall} 12px`,
-      paddingLeft: `var(${cssVariableMultiSelectPaddingLeft}, 12px)`,
+      paddingInlineStart: `var(${cssVariableMultiSelectPaddingInlineStart}, 12px)`,
       flex: `1 0 calc(${fontLineHeight} + ${spacingStaticSmall} * 2)`,
       color: contrastHighColor,
       ...prefersColorSchemeDarkMediaQuery(theme, {
