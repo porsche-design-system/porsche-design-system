@@ -22,7 +22,7 @@ import {
   warnIfDeprecatedPropIsUsed,
 } from '../../utils';
 import type { ModalAriaAttribute, ModalBackdrop } from './modal-utils';
-import { MODAL_ARIA_ATTRIBUTES } from './modal-utils';
+import { MODAL_ARIA_ATTRIBUTES, type ModalTransitionEventDetail } from './modal-utils';
 import { getComponentCss } from './modal-styles';
 import { BACKDROPS } from '../../styles/dialog-styles';
 import { getSlottedAnchorStyles } from '../../styles';
@@ -94,6 +94,9 @@ export class Modal {
 
   /** Emitted when the component requests to be dismissed. */
   @Event({ bubbles: false }) public dismiss?: EventEmitter<void>;
+
+  /** Emitted when the native ontransitionstart or ontransitionend event is fired from the dialog element. */
+  @Event({ bubbles: false }) public transition?: EventEmitter<ModalTransitionEventDetail>;
 
   private dialog: HTMLDialogElement;
   private scroller: HTMLDivElement;
@@ -194,6 +197,8 @@ export class Modal {
         onCancel={(e) => onCancelDialog(e, this.dismissDialog, !this.hasDismissButton)}
         // Previously done with onMouseDown to change the click behavior (not closing when pressing mousedown on modal and mouseup on backdrop) but changed back to native behavior
         onClick={(e) => onClickDialog(e, this.dismissDialog, this.disableBackdropClick)}
+        onTransitionStart={(e) => this.transition.emit(e)}
+        onTransitionEnd={(e) => this.transition.emit(e)}
         {...parseAndGetAriaAttributes({
           'aria-modal': true,
           'aria-label': this.heading,

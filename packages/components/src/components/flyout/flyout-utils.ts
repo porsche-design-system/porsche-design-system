@@ -14,6 +14,8 @@ export type FlyoutPosition = (typeof FLYOUT_POSITIONS)[number];
 export const FLYOUT_ARIA_ATTRIBUTES = ['aria-label'] as const;
 export type FlyoutAriaAttribute = (typeof FLYOUT_ARIA_ATTRIBUTES)[number];
 
+export type FlyoutTransitionEventDetail = TransitionEvent;
+
 /**
  * Map of flyout instances and their corresponding resize observers to update the experimental css property --p-flyout-sticky-top.
  */

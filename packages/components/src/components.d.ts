@@ -23,7 +23,7 @@ import { FieldsetLabelSize, FieldsetState } from "./components/fieldset/fieldset
 import { FieldsetWrapperLabelSize, FieldsetWrapperState } from "./components/fieldset-wrapper/fieldset-wrapper-utils";
 import { FlexAlignContent, FlexAlignItems, FlexDirection, FlexInline, FlexJustifyContent, FlexWrap } from "./components/flex/flex/flex-utils";
 import { FlexItemAlignSelf, FlexItemFlex, FlexItemGrow, FlexItemOffset, FlexItemShrink, FlexItemWidth } from "./components/flex/flex-item/flex-item-utils";
-import { FlyoutAriaAttribute, FlyoutPosition } from "./components/flyout/flyout-utils";
+import { FlyoutAriaAttribute, FlyoutPosition, FlyoutTransitionEventDetail } from "./components/flyout/flyout-utils";
 import { FlyoutMultilevelAriaAttribute, FlyoutMultilevelUpdateEventDetail } from "./components/flyout-multilevel/flyout-multilevel/flyout-multilevel-utils";
 import { GridDirection, GridGutter, GridWrap } from "./components/grid/grid/grid-utils";
 import { GridItemOffset, GridItemSize } from "./components/grid/grid-item/grid-item-utils";
@@ -39,7 +39,7 @@ import { LinkTileModelSignatureAspectRatio, LinkTileModelSignatureHeadingTag, Li
 import { LinkTileProductAspectRatio, LinkTileProductLikeEventDetail, LinkTileProductTarget } from "./components/link-tile-product/link-tile-product-utils";
 import { MarqueAriaAttribute, MarqueTarget, MarqueVariant } from "./components/marque/marque-utils";
 import { MarqueSize } from "./components/marque/marque-size";
-import { ModalAriaAttribute, ModalBackdrop } from "./components/modal/modal-utils";
+import { ModalAriaAttribute, ModalBackdrop, ModalTransitionEventDetail } from "./components/modal/modal-utils";
 import { ModelSignatureColor, ModelSignatureFetchPriority, ModelSignatureModel, ModelSignatureSize } from "./components/model-signature/model-signature-utils";
 import { MultiSelectDropdownDirection, MultiSelectState, MultiSelectUpdateEventDetail } from "./components/multi-select/multi-select/multi-select-utils";
 import { PaginationInternationalization, PaginationMaxNumberOfPageLinks, PaginationUpdateEventDetail } from "./components/pagination/pagination-utils";
@@ -85,7 +85,7 @@ export { FieldsetLabelSize, FieldsetState } from "./components/fieldset/fieldset
 export { FieldsetWrapperLabelSize, FieldsetWrapperState } from "./components/fieldset-wrapper/fieldset-wrapper-utils";
 export { FlexAlignContent, FlexAlignItems, FlexDirection, FlexInline, FlexJustifyContent, FlexWrap } from "./components/flex/flex/flex-utils";
 export { FlexItemAlignSelf, FlexItemFlex, FlexItemGrow, FlexItemOffset, FlexItemShrink, FlexItemWidth } from "./components/flex/flex-item/flex-item-utils";
-export { FlyoutAriaAttribute, FlyoutPosition } from "./components/flyout/flyout-utils";
+export { FlyoutAriaAttribute, FlyoutPosition, FlyoutTransitionEventDetail } from "./components/flyout/flyout-utils";
 export { FlyoutMultilevelAriaAttribute, FlyoutMultilevelUpdateEventDetail } from "./components/flyout-multilevel/flyout-multilevel/flyout-multilevel-utils";
 export { GridDirection, GridGutter, GridWrap } from "./components/grid/grid/grid-utils";
 export { GridItemOffset, GridItemSize } from "./components/grid/grid-item/grid-item-utils";
@@ -101,7 +101,7 @@ export { LinkTileModelSignatureAspectRatio, LinkTileModelSignatureHeadingTag, Li
 export { LinkTileProductAspectRatio, LinkTileProductLikeEventDetail, LinkTileProductTarget } from "./components/link-tile-product/link-tile-product-utils";
 export { MarqueAriaAttribute, MarqueTarget, MarqueVariant } from "./components/marque/marque-utils";
 export { MarqueSize } from "./components/marque/marque-size";
-export { ModalAriaAttribute, ModalBackdrop } from "./components/modal/modal-utils";
+export { ModalAriaAttribute, ModalBackdrop, ModalTransitionEventDetail } from "./components/modal/modal-utils";
 export { ModelSignatureColor, ModelSignatureFetchPriority, ModelSignatureModel, ModelSignatureSize } from "./components/model-signature/model-signature-utils";
 export { MultiSelectDropdownDirection, MultiSelectState, MultiSelectUpdateEventDetail } from "./components/multi-select/multi-select/multi-select-utils";
 export { PaginationInternationalization, PaginationMaxNumberOfPageLinks, PaginationUpdateEventDetail } from "./components/pagination/pagination-utils";
@@ -2361,6 +2361,7 @@ declare global {
     };
     interface HTMLPFlyoutElementEventMap {
         "dismiss": void;
+        "transition": FlyoutTransitionEventDetail;
     }
     /**
      * @controlled {"props": ["open"], "event": "dismiss"}
@@ -2534,6 +2535,7 @@ declare global {
     interface HTMLPModalElementEventMap {
         "close": void;
         "dismiss": void;
+        "transition": ModalTransitionEventDetail;
     }
     /**
      * @controlled {"props": ["open"], "event": "dismiss"}
@@ -3636,6 +3638,10 @@ declare namespace LocalJSX {
          */
         "onDismiss"?: (event: PFlyoutCustomEvent<void>) => void;
         /**
+          * Emitted when the native ontransitionstart or ontransitionend event is fired from the dialog element.
+         */
+        "onTransition"?: (event: PFlyoutCustomEvent<FlyoutTransitionEventDetail>) => void;
+        /**
           * If true, the flyout is open.
          */
         "open"?: boolean;
@@ -4209,6 +4215,10 @@ declare namespace LocalJSX {
           * Emitted when the component requests to be dismissed.
          */
         "onDismiss"?: (event: PModalCustomEvent<void>) => void;
+        /**
+          * Emitted when the native ontransitionstart or ontransitionend event is fired from the dialog element.
+         */
+        "onTransition"?: (event: PModalCustomEvent<ModalTransitionEventDetail>) => void;
         /**
           * If true, the modal is open.
          */

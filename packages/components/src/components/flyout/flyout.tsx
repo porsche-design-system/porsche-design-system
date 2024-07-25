@@ -6,6 +6,7 @@ import {
   type FlyoutAriaAttribute,
   type FlyoutPosition,
   type FlyoutPositionDeprecated,
+  type FlyoutTransitionEventDetail,
   handleUpdateStickyTopCssVar,
 } from './flyout-utils';
 import { getComponentCss } from './flyout-styles';
@@ -71,6 +72,9 @@ export class Flyout {
 
   /** Emitted when the component requests to be dismissed. */
   @Event({ bubbles: false }) public dismiss?: EventEmitter<void>;
+
+  /** Emitted when the native ontransitionstart or ontransitionend event is fired from the dialog element. */
+  @Event({ bubbles: false }) public transition?: EventEmitter<FlyoutTransitionEventDetail>;
 
   private dialog: HTMLDialogElement;
   private scroller: HTMLDivElement;
@@ -165,6 +169,8 @@ export class Flyout {
         onCancel={(e) => onCancelDialog(e, this.dismissDialog)}
         // Previously done with onMouseDown to change the click behavior (not closing when pressing mousedown on flyout and mouseup on backdrop) but changed back to native behavior
         onClick={(e) => onClickDialog(e, this.dismissDialog, this.disableBackdropClick)}
+        onTransitionStart={(e) => this.transition.emit(e)}
+        onTransitionEnd={(e) => this.transition.emit(e)}
         {...parseAndGetAriaAttributes({
           'aria-modal': true,
           'aria-hidden': !this.open,
