@@ -232,14 +232,14 @@ export class Select {
     syncSelectChildrenProps([...this.selectOptions, ...this.selectOptgroups], this.theme);
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
-    const buttonId = 'value';
     const dropdownId = 'list';
     const descriptionId = this.description ? 'description' : undefined;
     const selectMessageId = hasMessage(this.host, this.message, this.state) ? messageId : undefined;
+    const initialStatusId = 'initial-status';
     const ariaDescribedBy =
       descriptionId && selectMessageId
-        ? `${descriptionId} ${selectMessageId}`
-        : descriptionId || selectMessageId || undefined;
+        ? `${descriptionId} ${selectMessageId} ${initialStatusId}`
+        : `${descriptionId || selectMessageId || undefined} ${initialStatusId}`;
 
     return (
       <div class="root">
@@ -247,19 +247,16 @@ export class Select {
           host={this.host}
           label={this.label}
           description={this.description}
-          htmlFor={buttonId}
           isRequired={this.required}
           isDisabled={this.disabled}
         />
-        <span class="sr-only">
-          {getSelectedOptionString(this.selectOptions) || 'No option'} selected, {this.selectOptions.length} options in
-          total
+        <span class="sr-only" id={initialStatusId}>
+          {`${!getSelectedOptionString(this.selectOptions) ? 'No option selected. ' : ''} ${this.selectOptions.length} options in total.`}
         </span>
         <div class={{ wrapper: true, disabled: this.disabled }} ref={(el) => (this.comboboxContainer = el)}>
           <button
             type="button"
             role="combobox"
-            id={buttonId}
             {...getComboboxAriaAttributes(this.isOpen, this.required, labelId, ariaDescribedBy, dropdownId)}
             disabled={this.disabled}
             onClick={this.onComboClick}
