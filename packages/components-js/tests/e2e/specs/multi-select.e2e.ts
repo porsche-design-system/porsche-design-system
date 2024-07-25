@@ -1280,6 +1280,37 @@ test.describe('theme', () => {
 });
 
 test.describe('optgroups', () => {
+  test('should persist disabled state for options inside optgroup', async ({ page }) => {
+    await initMultiSelect(page, { options: { includeOptgroups: true, disabledIndex: 1 } });
+
+    const inputElement = await getInput(page);
+    await inputElement.click();
+    await waitForStencilLifecycle(page);
+
+    const optgroup = page.locator('p-optgroup[label="b"]');
+    await expect(await getProperty(optgroup, 'disabled')).toBeFalsy();
+    const children = await optgroup.locator('p-multi-select-option').all();
+
+    for (const child of children) {
+      await expect(await getProperty(child, 'disabled')).toBeTruthy();
+    }
+    await optgroup.evaluate((element) => (element.disabled = true));
+    await waitForStencilLifecycle(page);
+
+    await expect(await getProperty(optgroup, 'disabled')).toBeTruthy();
+
+    for (const child of children) {
+      await expect(await getProperty(child, 'disabled')).toBeTruthy();
+    }
+
+    await optgroup.evaluate((element) => (element.disabled = false));
+    await waitForStencilLifecycle(page);
+
+    for (const child of children) {
+      await expect(await getProperty(child, 'disabled')).toBeTruthy();
+    }
+  });
+
   test('should only display optgroups of filtered options', async ({ page }) => {
     await initMultiSelect(page, { options: { includeOptgroups: true } });
 
