@@ -8,7 +8,7 @@ import {
   getHighContrastColors,
   getResetInitialStylesForSlottedAnchor,
 } from '../../styles';
-import { borderRadiusSmall } from '@porsche-design-system/utilities-v2';
+import { borderRadiusSmall } from '@porsche-design-system/styles';
 
 export const getComponentCss = (
   icon: LinkButtonIconName,

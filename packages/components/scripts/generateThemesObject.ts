@@ -1,8 +1,8 @@
-import type { Theme } from '@porsche-design-system/utilities-v2';
+import type { Theme } from '@porsche-design-system/styles';
 import type { ThemedColors } from '../src/styles';
 import * as path from 'path';
 import * as fs from 'fs';
-import { themeLight, themeDark } from '@porsche-design-system/utilities-v2';
+import { themeLight, themeDark } from '@porsche-design-system/styles';
 import tinycolor2 from 'tinycolor2';
 import { pascalCase } from 'latest-change-case';
 
@@ -15,7 +15,12 @@ const lightenColorSlightly = (color: string) => tinycolor2(color).lighten(6).des
 const getStaticThemedColors = (theme: Theme): ThemedColors => {
   const {
     primary: primaryColor,
-    background: { base: backgroundColor, surface: backgroundSurfaceColor, shading: backgroundShadingColor },
+    background: {
+      base: backgroundColor,
+      surface: backgroundSurfaceColor,
+      shading: backgroundShadingColor,
+      frosted: backgroundFrostedColor,
+    },
     contrast: { low: contrastLowColor, medium: contrastMediumColor, high: contrastHighColor },
     state: { hover: hoverColor, active: activeColor, focus: focusColor, disabled: disabledColor },
     notification: {
@@ -45,6 +50,7 @@ const getStaticThemedColors = (theme: Theme): ThemedColors => {
     backgroundSurfaceColorDarken: darkenColor(backgroundSurfaceColor),
     backgroundSurfaceColorLighten: lightenColor(backgroundSurfaceColor),
     backgroundShadingColor,
+    backgroundFrostedColor,
     contrastLowColor,
     contrastMediumColor,
     contrastHighColor,

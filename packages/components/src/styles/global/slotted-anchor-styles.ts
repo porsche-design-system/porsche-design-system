@@ -1,6 +1,6 @@
 import { TagName } from '@porsche-design-system/shared';
 import { addImportantToEachRule, getFocusJssStyle } from '../common-styles';
-import { getHoverStyle } from '@porsche-design-system/utilities-v2';
+import { getHoverStyle } from '@porsche-design-system/styles';
 import { Styles } from 'jss';
 
 export const tagNamesWithSlottedAnchorArray: TagName[] = [

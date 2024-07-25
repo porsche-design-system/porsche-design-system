@@ -3,6 +3,7 @@ import { themeLightPrimary } from './themeLightPrimary';
 import { themeLightBackgroundBase } from './themeLightBackgroundBase';
 import { themeLightBackgroundSurface } from './themeLightBackgroundSurface';
 import { themeLightBackgroundShading } from './themeLightBackgroundShading';
+import { themeLightBackgroundFrosted } from './themeLightBackgroundFrosted';
 import { themeLightContrastLow } from './themeLightContrastLow';
 import { themeLightContrastMedium } from './themeLightContrastMedium';
 import { themeLightContrastHigh } from './themeLightContrastHigh';
@@ -25,6 +26,7 @@ export const themeLight: ThemeColorSet = {
     base: themeLightBackgroundBase,
     surface: themeLightBackgroundSurface,
     shading: themeLightBackgroundShading,
+    frosted: themeLightBackgroundFrosted,
   },
   contrast: {
     low: themeLightContrastLow,

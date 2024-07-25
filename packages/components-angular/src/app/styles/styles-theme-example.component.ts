@@ -60,6 +60,9 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       .theme-light-background-shading {
         background: $pds-theme-light-background-shading;
       }
+      .theme-light-background-frosted {
+        background: $pds-theme-light-background-frosted;
+      }
       .theme-light-contrast-low {
         background: $pds-theme-light-contrast-low;
       }
@@ -119,6 +122,9 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       .theme-dark-background-shading {
         background: $pds-theme-dark-background-shading;
       }
+      .theme-dark-background-frosted {
+        background: $pds-theme-dark-background-frosted;
+      }
       .theme-dark-contrast-low {
         background: $pds-theme-dark-contrast-low;
       }
@@ -173,6 +179,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       <div class="theme-light-background-base tile"></div>
       <div class="theme-light-background-surface tile"></div>
       <div class="theme-light-background-shading tile"></div>
+      <div class="theme-light-background-frosted tile"></div>
       <div class="theme-light-contrast-low tile"></div>
       <div class="theme-light-contrast-medium tile"></div>
       <div class="theme-light-contrast-high tile"></div>
@@ -195,6 +202,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       <div class="theme-dark-background-base tile"></div>
       <div class="theme-dark-background-surface tile"></div>
       <div class="theme-dark-background-shading tile"></div>
+      <div class="theme-dark-background-frosted tile"></div>
       <div class="theme-dark-contrast-low tile"></div>
       <div class="theme-dark-contrast-medium tile"></div>
       <div class="theme-dark-contrast-high tile"></div>

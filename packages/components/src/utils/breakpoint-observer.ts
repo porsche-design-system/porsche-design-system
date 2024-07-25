@@ -1,4 +1,4 @@
-import { breakpoint } from '@porsche-design-system/utilities-v2';
+import { breakpoint } from '@porsche-design-system/styles';
 import { hasWindow } from './has-window';
 
 export const mediaQueries = Object.values(breakpoint).map((v) => `(min-width:${v}px)`);

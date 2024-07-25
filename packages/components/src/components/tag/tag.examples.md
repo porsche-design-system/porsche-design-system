@@ -54,6 +54,12 @@ to.
 
 <Playground :markup="linkAccessibility" :config="config"></Playground>
 
+## Compact
+
+By setting `compact` to `true` you can have a more compact tag with reduced spacings.
+
+<Playground :markup="compactMarkup" :config="config"></Playground>
+
 ## Multiline
 
 The contents of the `p-tag` component are rendered with `white-space: nowrap` by default. If multiline rendering is
@@ -101,7 +107,22 @@ export default class Code extends Vue {
   linkAccessibility = `<p-tag icon="car">
   <a href="https://porsche.com" aria-label="More information about used cars">Used cars</a>
 </p-tag>`;
-
+ 
+  compactMarkup = `<p-tag compact="true">Some label</p-tag>
+<p-tag compact="true" icon="car">Some label</p-tag>
+<p-tag compact="true" icon="car">
+  <a href="#">Some anchor</a>
+</p-tag>
+<p-tag compact="true">
+  <a href="#">Some anchor</a>
+</p-tag>
+<p-tag compact="true" icon="car">
+  <button>Some button</button>
+</p-tag>
+<p-tag compact="true">
+  <button>Some button</button>
+</p-tag>`;
+  
   textWrap = `<div style="width: 100px"><p-tag color="notification-success-soft" style="white-space: normal">Some label with longer text wrapped in a narrow container</p-tag></div>`;
 }
 </script>

@@ -1,4 +1,4 @@
-import type { Theme } from '@porsche-design-system/utilities-v2';
+import type { Theme } from '@porsche-design-system/styles';
 import { isThemeDark, isHighContrastMode } from '../utils';
 
 type ThemedColor =
@@ -11,6 +11,7 @@ type ThemedColor =
   | 'backgroundSurfaceColorDarken'
   | 'backgroundSurfaceColorLighten'
   | 'backgroundShadingColor'
+  | 'backgroundFrostedColor'
   | 'contrastLowColor'
   | 'contrastMediumColor'
   | 'contrastHighColor'
@@ -53,6 +54,7 @@ const themeLight = {
   backgroundSurfaceColorDarken: '#CBCED7',
   backgroundSurfaceColorLighten: '#FFFFFF',
   backgroundShadingColor: 'rgba(1, 2, 5, 0.67)',
+  backgroundFrostedColor: 'hsl(240 4% 85%/35%)',
   contrastLowColor: '#D8D8DB',
   contrastMediumColor: '#6B6D70',
   contrastHighColor: '#535457',
@@ -93,6 +95,7 @@ const themeDark = {
   backgroundSurfaceColorDarken: '#040405',
   backgroundSurfaceColorLighten: '#3E4045',
   backgroundShadingColor: 'rgba(38, 38, 41, 0.67)',
+  backgroundFrostedColor: 'hsl(240 3% 26%/35%)',
   contrastLowColor: '#404044',
   contrastMediumColor: '#88898C',
   contrastHighColor: '#AFB0B3',

@@ -8,7 +8,7 @@ import {
   motionDurationLong,
   motionDurationModerate,
   motionEasingOut,
-} from '@porsche-design-system/utilities-v2';
+} from '@porsche-design-system/styles';
 import { getCss } from '../../utils';
 import { BANNER_Z_INDEX } from '../../constants';
 import {

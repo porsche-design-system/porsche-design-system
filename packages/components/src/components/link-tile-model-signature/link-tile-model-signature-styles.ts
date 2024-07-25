@@ -9,7 +9,7 @@ import {
   spacingFluidSmall,
   textLargeStyle,
   textSmallStyle,
-} from '@porsche-design-system/utilities-v2';
+} from '@porsche-design-system/styles';
 import { getGroupDirectionJssStyles } from '../../styles/group-direction-styles';
 import { getTileBaseStyles } from '../../styles/tile/tile-base-styles';
 import type { BreakpointCustomizable } from '../../types';

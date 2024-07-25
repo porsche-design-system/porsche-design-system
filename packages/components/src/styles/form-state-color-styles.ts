@@ -1,5 +1,5 @@
 import { getThemedColors } from './';
-import type { Theme } from '@porsche-design-system/utilities-v2';
+import type { Theme } from '@porsche-design-system/styles';
 import type { FormState } from '../utils/form/form-state';
 
 type ThemedFormStateColors = {
