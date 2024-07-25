@@ -129,6 +129,12 @@ option value.
 
 ---
 
+## With optgroups
+
+<Playground :markup="withOptgroups" :config="config"></Playground>
+
+---
+
 ## Within table
 
 When a `p-select` is used within the `p-table` component the dropdown will automatically switch to a native popover
@@ -147,6 +153,7 @@ import type { Theme } from '@/models';
 export default class Code extends Vue {
   config = { themeable: true, overflowX: 'visible' };
 
+
   get theme(): Theme {
     return this.$store.getters.playgroundTheme;
   }
@@ -163,7 +170,7 @@ export default class Code extends Vue {
   formExample = getSelectCodeSamples('default');
   requiredExample = getSelectCodeSamples('example-required');
   dynamicExample = getSelectCodeSamples('example-dynamic');
-  controlledExample = getSelectCodeSamples('example-controlled'); 
+  controlledExample = getSelectCodeSamples('example-controlled');
 
   basic() {
     return `<p-select name="options" label="Some Label" description="Some description" value="a" required>
@@ -229,12 +236,28 @@ export default class Code extends Vue {
   setSelectValue() {
     this.$refs.select.value = this.valueInput
   }
+
+  withOptgroups = `<p-select name="options" label="Some Label" value="a">
+  <p-optgroup label="Some optgroup label 1">
+    <p-select-option value="a">Option A</p-select-option>
+    <p-select-option value="b">Option B</p-select-option>
+    <p-select-option value="c">Option C</p-select-option>
+    <p-select-option value="d">Option D</p-select-option>
+    <p-select-option value="e">Option E</p-select-option>
+    <p-select-option value="f">Option F</p-select-option>
+  </p-optgroup>
+  <p-optgroup label="Some optgroup label 2">
+    <p-select-option value="g">Option G</p-select-option>
+    <p-select-option value="h">Option H</p-select-option>
+    <p-select-option value="i">Option I</p-select-option>
+  </p-optgroup>
+</p-select>
+  `;
  
   selectedValueControlled = 'Selected value: none';
   updateControlledExample(e) {
   console.log(e);
     this.selectedValueControlled = `Selected value: ${e.target.value || 'none'}`;
   }
-
 }
 </script>

@@ -1,14 +1,18 @@
 import type { BreakpointCustomizable, PropTypes, Theme } from '../../../types';
-import type { SelectOption, SelectState, SelectUpdateEventDetail, SelectDropdownDirection } from './select-utils';
 import {
   getSelectDropdownDirection,
   getSelectedOptionString,
   getSrHighlightedOptionText,
   initNativeSelect,
   INTERNAL_SELECT_SLOT,
+  SelectDropdownDirection,
+  SelectOptgroup,
+  SelectOption,
+  SelectState,
+  SelectUpdateEventDetail,
   setSelectedOption,
   syncNativeSelect,
-  syncSelectOptionProps,
+  syncSelectChildrenProps,
   updateNativeSelectOption,
   updateSelectOptions,
 } from './select-utils';
@@ -49,6 +53,7 @@ import {
   hasMessage,
   hasPropValueChanged,
   isClickOutside,
+  isElementOfKind,
   SELECT_DROPDOWN_DIRECTIONS,
   SELECT_SEARCH_TIMEOUT,
   setNextSelectOptionHighlighted,
@@ -134,6 +139,7 @@ export class Select {
   private combobox: HTMLButtonElement;
   private listElement: HTMLDivElement;
   private selectOptions: SelectOption[] = [];
+  private selectOptgroups: SelectOptgroup[] = [];
   private form: HTMLFormElement;
   private isWithinForm: boolean;
   private preventOptionUpdate = false; // Used to prevent value watcher from updating options when options are already updated
@@ -223,7 +229,7 @@ export class Select {
       this.isNativePopoverCase,
       this.theme
     );
-    syncSelectOptionProps(this.selectOptions, this.theme);
+    syncSelectChildrenProps([...this.selectOptions, ...this.selectOptgroups], this.theme);
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
     const buttonId = 'value';
@@ -310,10 +316,26 @@ export class Select {
   };
 
   private updateOptions = (): void => {
-    this.selectOptions = Array.from(this.host.children).filter(
-      (el) => el.tagName !== 'SELECT' && el.slot !== 'label' && el.slot !== 'description' && el.slot !== 'message'
-    ) as HTMLPMultiSelectOptionElement[];
-    this.selectOptions.forEach((child) => throwIfElementIsNotOfKind(this.host, child, 'p-select-option'));
+    this.selectOptions = [];
+    this.selectOptgroups = [];
+
+    Array.from(this.host.children)
+      .filter(
+        (el) => el.tagName !== 'SELECT' && el.slot !== 'label' && el.slot !== 'description' && el.slot !== 'message'
+      )
+      .forEach((child: HTMLElement) => {
+        throwIfElementIsNotOfKind(this.host, child, ['p-select-option', 'p-optgroup']);
+
+        if (isElementOfKind(child, 'p-select-option')) {
+          this.selectOptions.push(child as SelectOption);
+        } else if (isElementOfKind(child, 'p-optgroup')) {
+          this.selectOptgroups.push(child as SelectOptgroup);
+          Array.from(child.children).forEach((optGroupChild: HTMLElement) => {
+            throwIfElementIsNotOfKind(child, optGroupChild, 'p-select-option');
+            this.selectOptions.push(optGroupChild as SelectOption);
+          });
+        }
+      });
   };
 
   private updateSelectedOption = (selectedOption: SelectOption): void => {

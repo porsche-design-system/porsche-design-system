@@ -11496,6 +11496,12 @@ exports[`should render dsr component for PMultiSelectOption 1`] = `
 />
 `;
 
+exports[`should render dsr component for POptgroup 1`] = `
+<p-optgroup
+  class="ssr"
+/>
+`;
+
 exports[`should render dsr component for PPagination 1`] = `
 <p-pagination
   class="ssr"
@@ -12620,7 +12626,7 @@ button:disabled {
   right: 0;
   top: 100%;
   box-sizing: border-box;
-  max-height: 450px;
+  max-height: 416px;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
   background: #FFF;
@@ -12793,9 +12799,11 @@ exports[`should render dsr component for PSelectOption 1`] = `
   border-radius: 4px !important;
 }
 .option {
+  font-weight: 400;
   display: flex;
   gap: 12px;
   padding: 8px 12px;
+  padding-inline-start: var(--p-internal-select-option-padding-left, 12px);
   flex: 1 0 calc(calc(6px + 2.125ex) + 8px * 2);
   min-height: calc(calc(6px + 2.125ex) + 8px * 2);
   color: #535457;

@@ -13,6 +13,7 @@ export * from './hasAttribute';
 export * from './hasNamedSlot';
 export * from './hasSpecificDirectChildTag';
 export * from './isDisabledOrLoading';
+export * from './isElementOfKind';
 export * from './isParentOfKind';
 export * from './isShadowRootParentOfKind';
 export * from './findClosestComponent';

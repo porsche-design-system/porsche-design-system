@@ -57,20 +57,39 @@ const getAmountOfHiddenDropdownOptions = async (page: Page) =>
     hiddenClass
   );
 
+const getAmountOfVisibleSelectOptgroups = async (page: Page): Promise<number> =>
+  (
+    await page
+      .locator('span[role="presentation"]')
+      .evaluateAll((elements) => elements.filter((element) => !element.hidden))
+  ).length;
+
+const getAmountOfVisibleSelectOptions = async (page: Page): Promise<number> =>
+  (await page.getByRole('option').evaluateAll((elements) => elements.filter((element) => !element.hidden))).length;
+
 type InitOptions = {
   amount?: 3 | 5;
   isNative?: boolean;
   markupBefore?: string;
   disabledIndex?: number;
   selectedIndex?: number;
+  includeOptgroups?: boolean;
 };
 
 const initSelect = (page: Page, opts?: InitOptions): Promise<void> => {
-  const { amount = 3, isNative = false, markupBefore = '', disabledIndex, selectedIndex } = opts || {};
+  const {
+    amount = 3,
+    isNative = false,
+    markupBefore = '',
+    disabledIndex,
+    selectedIndex,
+    includeOptgroups = false,
+  } = opts || {};
 
   const options = [...'abc', ...(amount === 5 ? 'de' : '')].map((x, idx) => {
     const attrs = [disabledIndex === idx ? 'disabled' : '', selectedIndex === idx ? 'selected' : ''].join(' ');
-    return `<option value="${x}" ${attrs}>Option ${x.toUpperCase()}</option>`;
+    const option = `<option value="${x}" ${attrs}>Option ${x.toUpperCase()}</option>`;
+    return includeOptgroups ? `<optgroup label="${x}">${option}</optgroup>` : option;
   });
 
   return setContentWithDesignSystem(
@@ -614,5 +633,27 @@ test.describe('lifecycle', () => {
     expect(status.componentDidUpdate.all, '2nd componentDidUpdate: all').toBe(2);
 
     expect(status.componentDidLoad.all, '2nd componentDidLoad: all').toBe(4);
+  });
+});
+
+test.describe('optgroups', () => {
+  test('should only display optgroups of filtered options', async ({ page }) => {
+    await initSelect(page, { includeOptgroups: true });
+
+    const filterInput = await getFilterInput(page);
+    await filterInput.click();
+    await waitForStencilLifecycle(page);
+    expect(await getAmountOfVisibleSelectOptgroups(page), 'amount of shown optgroups').toBe(3);
+
+    await filterInput.type('b');
+    await waitForStencilLifecycle(page);
+
+    expect(await getAmountOfVisibleSelectOptgroups(page), 'amount of shown optgroups').toBe(1);
+    expect(await getAmountOfVisibleSelectOptions(page), 'amount of shown options').toBe(1);
+
+    const optgroup = page.locator('span[role="presentation"]').getByText('b');
+    const child = await page.getByRole('option').getByText('b');
+    await expect(child).toBeVisible();
+    await expect(optgroup).toBeVisible();
   });
 });
