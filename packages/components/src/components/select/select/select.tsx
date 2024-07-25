@@ -236,10 +236,7 @@ export class Select {
     const descriptionId = this.description ? 'description' : undefined;
     const selectMessageId = hasMessage(this.host, this.message, this.state) ? messageId : undefined;
     const initialStatusId = 'initial-status';
-    const ariaDescribedBy =
-      descriptionId && selectMessageId
-        ? `${descriptionId} ${selectMessageId} ${initialStatusId}`
-        : `${descriptionId || selectMessageId || undefined} ${initialStatusId}`;
+    const ariaDescribedBy = [descriptionId, selectMessageId, initialStatusId].filter(Boolean).join(' ');
 
     return (
       <div class="root">
