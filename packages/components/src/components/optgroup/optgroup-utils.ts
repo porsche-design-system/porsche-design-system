@@ -7,6 +7,7 @@ export type OptgroupInternalHTMLProps = {
 
 export const updateOptionsDisabled = (host: HTMLElement, disabled: boolean): void => {
   Array.from(host.children).forEach(
-    (child) => ((child as HTMLPMultiSelectOptionElement | HTMLPSelectOptionElement).disabled = disabled)
+    (child: HTMLPMultiSelectOptionElement | HTMLPSelectOptionElement) =>
+      (child.disabled = disabled ? true : child.disabled)
   );
 };
