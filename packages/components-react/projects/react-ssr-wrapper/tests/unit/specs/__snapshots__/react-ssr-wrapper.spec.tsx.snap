@@ -12701,6 +12701,7 @@ button:disabled {
       >
         <button
           aria-controls="list"
+          aria-describedby="initial-status"
           aria-expanded="false"
           aria-haspopup="listbox"
           aria-labelledby="label"
