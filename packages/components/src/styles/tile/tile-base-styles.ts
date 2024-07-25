@@ -12,6 +12,11 @@ const aspectRatioPaddingMap: Record<TileAspectRatio, string> = {
   '3:4': '133.33%',
   '16:9': '56.25%',
   '9:16': '177.75%',
+  '1/1': '100%',
+  '4/3': '75%',
+  '3/4': '133.33%',
+  '16/9': '56.25%',
+  '9/16': '177.75%',
 };
 
 export const getTileBaseStyles = (

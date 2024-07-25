@@ -4,6 +4,7 @@ import { buildResponsiveStyles, isThemeDark, mergeDeep } from '../../utils';
 import type { LinkTileWeight } from '../../components/link-tile/link-tile-utils';
 import type { BreakpointCustomizable } from '../../types';
 import {
+  fontSizeTextLarge,
   fontSizeTextMedium,
   gradientToBottomStyle,
   gradientToTopStyle,
@@ -18,6 +19,8 @@ import { getThemedColors } from '../colors';
 const sizeMap: Record<TileSize, { fontSize: string }> = {
   inherit: { fontSize: 'inherit' },
   default: { fontSize: fontSizeTextMedium },
+  medium: { fontSize: fontSizeTextMedium },
+  large: { fontSize: fontSizeTextLarge },
 };
 
 export const getButtonLinkTileStyles = (

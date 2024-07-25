@@ -8,24 +8,22 @@ import {
   hasPropValueChanged,
   LINK_ARIA_ATTRIBUTES,
   parseJSON,
-  throwIfAlignTopAndNotCompact,
   validateProps,
-  warnIfDeprecatedPropValueIsUsed,
 } from '../../utils';
-import type {
-  LinkTileAlign,
-  LinkTileAriaAttribute,
-  LinkTileAspectRatio,
-  LinkTileBackground,
-  LinkTileSize,
-  LinkTileTarget,
-  LinkTileWeight,
-  LinkTileWeightDeprecated,
+import {
+  LINK_TILE_WEIGHTS,
+  type LinkTileAlign,
+  type LinkTileAriaAttribute,
+  type LinkTileAspectRatio,
+  type LinkTileBackground,
+  type LinkTileSize,
+  type LinkTileTarget,
+  type LinkTileWeight,
+  sharedTilePropTypes,
 } from './link-tile-utils';
-import { LINK_TILE_WEIGHTS, sharedTilePropTypes } from './link-tile-utils';
 import { Component, Element, h, Prop } from '@stencil/core';
 import { getComponentCss } from './link-tile-styles';
-import { getSlottedPictureImageStyles } from '../../styles/global/slotted-picture-image-styles';
+import { getSlottedPictureImageStyles } from '../../styles';
 
 const propTypes: PropTypes<typeof LinkTile> = {
   ...sharedTilePropTypes,
@@ -48,7 +46,7 @@ export class LinkTile implements ITileProps {
   @Element() public host!: HTMLElement;
 
   /** Font size of the description. */
-  @Prop() public size?: BreakpointCustomizable<LinkTileSize> = 'default';
+  @Prop() public size?: BreakpointCustomizable<LinkTileSize> = 'medium';
 
   /** Font weight of the description. */
   @Prop() public weight?: BreakpointCustomizable<LinkTileWeight> = 'semi-bold';
@@ -57,7 +55,7 @@ export class LinkTile implements ITileProps {
   @Prop() public background?: LinkTileBackground = 'dark';
 
   /** Aspect ratio of the link-tile. */
-  @Prop() public aspectRatio?: BreakpointCustomizable<LinkTileAspectRatio> = '4:3';
+  @Prop() public aspectRatio?: BreakpointCustomizable<LinkTileAspectRatio> = '4/3';
 
   /** Label of the <a />. */
   @Prop() public label: string;
@@ -93,10 +91,6 @@ export class LinkTile implements ITileProps {
     applyConstructableStylesheetStyles(this.host, getSlottedPictureImageStyles);
   }
 
-  public componentWillLoad(): void {
-    throwIfAlignTopAndNotCompact(this.host, this.align, this.compact);
-  }
-
   public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
     return hasPropValueChanged(newVal, oldVal);
   }
@@ -104,9 +98,6 @@ export class LinkTile implements ITileProps {
   public render(): JSX.Element {
     this.compact = parseJSON(this.compact) as any; // parsing the value just once per lifecycle
     validateProps(this, propTypes);
-    warnIfDeprecatedPropValueIsUsed<typeof LinkTile, LinkTileWeightDeprecated, LinkTileWeight>(this, 'weight', {
-      semibold: 'semi-bold',
-    });
     attachComponentCss(
       this.host,
       getComponentCss,
@@ -155,11 +146,12 @@ export class LinkTile implements ITileProps {
 
     return (
       <div class="root">
-        <div class="image-container">
+        <a {...sharedLinkProps} tabIndex={-1} aria-hidden="true" />
+        <slot name="header" />
+        <div class="media">
           <slot />
         </div>
-        <div class="content">
-          <a {...sharedLinkProps} class="link-overlay" tabIndex={-1} aria-hidden="true" />
+        <div class="footer">
           <p>{this.description}</p>
           {typeof this.compact === 'boolean' ? (this.compact ? linkPure : link) : [linkPure, link]}
         </div>
