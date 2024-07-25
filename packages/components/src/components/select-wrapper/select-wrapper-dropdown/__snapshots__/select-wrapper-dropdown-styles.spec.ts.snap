@@ -700,12 +700,12 @@ ul {
   display: none;
 }
 .option--indent {
-  padding-left: 24px;
+  padding-left: 28px;
 }
 .optgroup {
   color: #010205;
   display: block;
-  padding: 3px 14px;
+  padding: 8px 12px;
   font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
   font-weight: 600;
 }
@@ -714,9 +714,6 @@ ul {
 }
 .optgroup--disabled {
   color: #949598;
-}
-.optgroup:not(:first-child) {
-  margin-top: 8px;
 }
 @media(hover:hover) {
   .option:not([aria-disabled]):not(.option--disabled):not([role=status]):hover {
@@ -851,12 +848,12 @@ ul {
   display: none;
 }
 .option--indent {
-  padding-left: 24px;
+  padding-left: 28px;
 }
 .optgroup {
   color: #010205;
   display: block;
-  padding: 3px 14px;
+  padding: 8px 12px;
   font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
   font-weight: 600;
 }
@@ -865,9 +862,6 @@ ul {
 }
 .optgroup--disabled {
   color: #949598;
-}
-.optgroup:not(:first-child) {
-  margin-top: 8px;
 }
 @media(hover:hover) {
   .option:not([aria-disabled]):not(.option--disabled):not([role=status]):hover {
@@ -1024,12 +1018,12 @@ ul {
   display: none;
 }
 .option--indent {
-  padding-left: 24px;
+  padding-left: 28px;
 }
 .optgroup {
   color: #010205;
   display: block;
-  padding: 3px 14px;
+  padding: 8px 12px;
   font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
   font-weight: 600;
 }
@@ -1038,9 +1032,6 @@ ul {
 }
 .optgroup--disabled {
   color: #949598;
-}
-.optgroup:not(:first-child) {
-  margin-top: 8px;
 }
 @media(hover:hover) {
   .option:not([aria-disabled]):not(.option--disabled):not([role=status]):hover {
@@ -1163,12 +1154,12 @@ ul {
   display: none;
 }
 .option--indent {
-  padding-left: 24px;
+  padding-left: 28px;
 }
 .optgroup {
   color: #010205;
   display: block;
-  padding: 3px 14px;
+  padding: 8px 12px;
   font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
   font-weight: 600;
 }
@@ -1177,9 +1168,6 @@ ul {
 }
 .optgroup--disabled {
   color: #949598;
-}
-.optgroup:not(:first-child) {
-  margin-top: 8px;
 }
 @media(hover:hover) {
   .option:not([aria-disabled]):not(.option--disabled):not([role=status]):hover {
@@ -1336,12 +1324,12 @@ ul {
   display: none;
 }
 .option--indent {
-  padding-left: 24px;
+  padding-left: 28px;
 }
 .optgroup {
   color: #010205;
   display: block;
-  padding: 3px 14px;
+  padding: 8px 12px;
   font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
   font-weight: 600;
 }
@@ -1350,9 +1338,6 @@ ul {
 }
 .optgroup--disabled {
   color: #949598;
-}
-.optgroup:not(:first-child) {
-  margin-top: 8px;
 }
 @media(hover:hover) {
   .option:not([aria-disabled]):not(.option--disabled):not([role=status]):hover {
@@ -1691,12 +1676,12 @@ ul {
   display: none;
 }
 .option--indent {
-  padding-left: 24px;
+  padding-left: 28px;
 }
 .optgroup {
   color: #010205;
   display: block;
-  padding: 3px 14px;
+  padding: 8px 12px;
   font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
   font-weight: 600;
 }
@@ -1705,9 +1690,6 @@ ul {
 }
 .optgroup--disabled {
   color: #949598;
-}
-.optgroup:not(:first-child) {
-  margin-top: 8px;
 }
 @media(hover:hover) {
   .option:not([aria-disabled]):not(.option--disabled):not([role=status]):hover {
@@ -1842,12 +1824,12 @@ ul {
   display: none;
 }
 .option--indent {
-  padding-left: 24px;
+  padding-left: 28px;
 }
 .optgroup {
   color: #010205;
   display: block;
-  padding: 3px 14px;
+  padding: 8px 12px;
   font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
   font-weight: 600;
 }
@@ -1856,9 +1838,6 @@ ul {
 }
 .optgroup--disabled {
   color: #949598;
-}
-.optgroup:not(:first-child) {
-  margin-top: 8px;
 }
 @media(hover:hover) {
   .option:not([aria-disabled]):not(.option--disabled):not([role=status]):hover {
@@ -2015,12 +1994,12 @@ ul {
   display: none;
 }
 .option--indent {
-  padding-left: 24px;
+  padding-left: 28px;
 }
 .optgroup {
   color: #010205;
   display: block;
-  padding: 3px 14px;
+  padding: 8px 12px;
   font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
   font-weight: 600;
 }
@@ -2029,9 +2008,6 @@ ul {
 }
 .optgroup--disabled {
   color: #949598;
-}
-.optgroup:not(:first-child) {
-  margin-top: 8px;
 }
 @media(hover:hover) {
   .option:not([aria-disabled]):not(.option--disabled):not([role=status]):hover {
@@ -2154,12 +2130,12 @@ ul {
   display: none;
 }
 .option--indent {
-  padding-left: 24px;
+  padding-left: 28px;
 }
 .optgroup {
   color: #010205;
   display: block;
-  padding: 3px 14px;
+  padding: 8px 12px;
   font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
   font-weight: 600;
 }
@@ -2168,9 +2144,6 @@ ul {
 }
 .optgroup--disabled {
   color: #949598;
-}
-.optgroup:not(:first-child) {
-  margin-top: 8px;
 }
 @media(hover:hover) {
   .option:not([aria-disabled]):not(.option--disabled):not([role=status]):hover {
@@ -2327,12 +2300,12 @@ ul {
   display: none;
 }
 .option--indent {
-  padding-left: 24px;
+  padding-left: 28px;
 }
 .optgroup {
   color: #010205;
   display: block;
-  padding: 3px 14px;
+  padding: 8px 12px;
   font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
   font-weight: 600;
 }
@@ -2341,9 +2314,6 @@ ul {
 }
 .optgroup--disabled {
   color: #949598;
-}
-.optgroup:not(:first-child) {
-  margin-top: 8px;
 }
 @media(hover:hover) {
   .option:not([aria-disabled]):not(.option--disabled):not([role=status]):hover {
@@ -3990,12 +3960,12 @@ exports[`getListStyles() should return correct css for direction: down and theme
   display: none;
 }
 .option--indent {
-  padding-left: 24px;
+  padding-left: 28px;
 }
 .optgroup {
   color: #FBFCFF;
   display: block;
-  padding: 3px 14px;
+  padding: 8px 12px;
   font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
   font-weight: 600;
 }
@@ -4004,9 +3974,6 @@ exports[`getListStyles() should return correct css for direction: down and theme
 }
 .optgroup--disabled {
   color: #7E7F82;
-}
-.optgroup:not(:first-child) {
-  margin-top: 8px;
 }
 @media(hover:hover) {
   .option:not([aria-disabled]):not(.option--disabled):not([role=status]):hover {
@@ -4093,12 +4060,12 @@ exports[`getListStyles() should return correct css for direction: down and theme
   display: none;
 }
 .option--indent {
-  padding-left: 24px;
+  padding-left: 28px;
 }
 .optgroup {
   color: #010205;
   display: block;
-  padding: 3px 14px;
+  padding: 8px 12px;
   font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
   font-weight: 600;
 }
@@ -4107,9 +4074,6 @@ exports[`getListStyles() should return correct css for direction: down and theme
 }
 .optgroup--disabled {
   color: #949598;
-}
-.optgroup:not(:first-child) {
-  margin-top: 8px;
 }
 @media(hover:hover) {
   .option:not([aria-disabled]):not(.option--disabled):not([role=status]):hover {
@@ -4196,12 +4160,12 @@ exports[`getListStyles() should return correct css for direction: up and theme: 
   display: none;
 }
 .option--indent {
-  padding-left: 24px;
+  padding-left: 28px;
 }
 .optgroup {
   color: #FBFCFF;
   display: block;
-  padding: 3px 14px;
+  padding: 8px 12px;
   font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
   font-weight: 600;
 }
@@ -4210,9 +4174,6 @@ exports[`getListStyles() should return correct css for direction: up and theme: 
 }
 .optgroup--disabled {
   color: #7E7F82;
-}
-.optgroup:not(:first-child) {
-  margin-top: 8px;
 }
 @media(hover:hover) {
   .option:not([aria-disabled]):not(.option--disabled):not([role=status]):hover {
@@ -4299,12 +4260,12 @@ exports[`getListStyles() should return correct css for direction: up and theme: 
   display: none;
 }
 .option--indent {
-  padding-left: 24px;
+  padding-left: 28px;
 }
 .optgroup {
   color: #010205;
   display: block;
-  padding: 3px 14px;
+  padding: 8px 12px;
   font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
   font-weight: 600;
 }
@@ -4313,9 +4274,6 @@ exports[`getListStyles() should return correct css for direction: up and theme: 
 }
 .optgroup--disabled {
   color: #949598;
-}
-.optgroup:not(:first-child) {
-  margin-top: 8px;
 }
 @media(hover:hover) {
   .option:not([aria-disabled]):not(.option--disabled):not([role=status]):hover {
