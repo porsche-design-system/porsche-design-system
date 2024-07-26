@@ -141,7 +141,10 @@ export const getShadowRoot = async (
 
 const containsCapitalChar = (key: string): boolean => /[A-Z]/.test(key);
 
-export const getAttribute = (element: ElementHandle<HTMLElement | SVGElement>, attribute: string): Promise<string> => {
+export const getAttribute = (
+  element: ElementHandle<HTMLElement | SVGElement> | Locator,
+  attribute: string
+): Promise<string> => {
   return element.evaluate((el, attr: string) => el.getAttribute(attr), attribute);
 };
 
@@ -168,7 +171,7 @@ export const getProperty = async <T>(element: ElementHandle<T> | Locator, prop: 
 };
 
 export const setProperty = async <T>(
-  element: ElementHandle<HTMLElement | SVGElement>,
+  element: ElementHandle<HTMLElement | SVGElement> | Locator,
   key: string,
   value: string | boolean | number | T
 ): Promise<void> => {
@@ -180,7 +183,7 @@ export const getCssClasses = async (element: ElementHandle<HTMLElement | SVGElem
 };
 
 export const getActiveElementTagNameInShadowRoot = async (
-  element: ElementHandle<HTMLElement | SVGElement>
+  element: ElementHandle<HTMLElement | SVGElement> | Locator
 ): Promise<string> => {
   return element.evaluate((el) => {
     try {
@@ -244,7 +247,7 @@ type GetElementStyleOptions = {
 };
 
 export const getElementStyle = (
-  element: ElementHandle<HTMLElement | SVGElement>,
+  element: ElementHandle<HTMLElement | SVGElement> | Locator,
   property: keyof CSSStyleDeclaration,
   opts?: GetElementStyleOptions
 ): Promise<string> => {
@@ -285,7 +288,7 @@ export const getElementInnerText = (element: ElementHandle): Promise<string> =>
 export const getElementPositions = (page: Page, element: ElementHandle<HTMLElement | SVGElement>): Promise<DOMRect> =>
   page.evaluate((element) => element.getBoundingClientRect(), element);
 
-export const reattachElementHandle = (handle: ElementHandle<HTMLElement | SVGElement>): Promise<void> => {
+export const reattachElementHandle = (handle: ElementHandle<HTMLElement | SVGElement> | Locator): Promise<void> => {
   return handle.evaluate((el) => {
     el.remove();
     document.body.appendChild(el);

@@ -1,5 +1,5 @@
 import type { ElementHandle, Page } from 'playwright';
-import { expect, test } from '@playwright/test';
+import { expect, Locator, test } from '@playwright/test';
 import {
   addEventListener,
   getAttribute,
@@ -28,13 +28,12 @@ const initTabs = (page: Page, opts?: { amount?: number; activeTabIndex?: number 
   return setContentWithDesignSystem(page, content);
 };
 
-const getHost = (page: Page) => page.$('p-tabs');
-const getAllTabsItems = (page: Page) => page.$$('p-tabs-item');
-const getTabsBar = (page: Page) => page.$('p-tabs p-tabs-bar');
-const getAllTabs = async (page: Page) => (await getTabsBar(page)).$$('button[role="tab"]');
-const getHiddenAttribute = (element: ElementHandle<HTMLElement | SVGElement>) => getAttribute(element, 'hidden');
-const isHidden = async (element: ElementHandle<HTMLElement | SVGElement>): Promise<boolean> =>
-  (await getHiddenAttribute(element)) === '';
+const getHost = (page: Page) => page.locator('p-tabs');
+const getAllTabsItems = (page: Page) => page.locator('p-tabs-item').all();
+const getTabsBar = (page: Page) => page.locator('p-tabs p-tabs-bar').first();
+const getAllTabs = async (page: Page) => getTabsBar(page).locator('button[role="tab"]').all();
+const getHiddenAttribute = (locator: Locator) => getAttribute(locator, 'hidden');
+const isHidden = async (locator: Locator): Promise<boolean> => (await getHiddenAttribute(locator)) === '';
 
 test('should render', async ({ page }) => {
   await initTabs(page);
