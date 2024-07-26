@@ -7,7 +7,6 @@ import {
   getPrefixedTagNames,
   hasPropValueChanged,
   LINK_ARIA_ATTRIBUTES,
-  parseJSON,
   validateProps,
 } from '../../utils';
 import {
@@ -70,7 +69,7 @@ export class LinkTile implements ITileProps {
   @Prop() public gradient?: boolean = true;
 
   /** Displays the link-tile as compact version with description and link icon only. */
-  @Prop({ mutable: true }) public compact?: BreakpointCustomizable<boolean> = false;
+  @Prop() public compact?: BreakpointCustomizable<boolean> = false;
 
   /** href of the `<a>`. */
   @Prop() public href: string;
@@ -95,10 +94,6 @@ export class LinkTile implements ITileProps {
     return hasPropValueChanged(newVal, oldVal);
   }
 
-  public componentWillRender(): void {
-    this.compact = parseJSON(this.compact) as any; // parsing the value just once per lifecycle
-  }
-
   public render(): JSX.Element {
     validateProps(this, propTypes);
     attachComponentCss(
@@ -106,7 +101,7 @@ export class LinkTile implements ITileProps {
       getComponentCss,
       this.aspectRatio,
       this.size,
-      this.weight, // potentially breakpoint customizable, so we can't easily access the deprecation map
+      this.weight,
       this.background,
       this.align,
       this.compact,

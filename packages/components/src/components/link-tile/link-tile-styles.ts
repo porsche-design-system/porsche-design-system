@@ -20,8 +20,6 @@ import {
 } from '../../styles';
 import {
   borderRadiusLarge,
-  fontSizeTextLarge,
-  fontSizeTextMedium,
   gradientToBottomStyle,
   gradientToTopStyle,
   spacingFluidLarge,
@@ -32,14 +30,7 @@ import {
 import { type BreakpointCustomizable } from '../../utils/breakpoint-customizable';
 import { type LinkTileWeight } from './link-tile-utils';
 import { getFontWeight } from '../../styles/font-weight-styles';
-import { getThemedTypographyColor } from '../../styles/text-icon-styles';
-
-const sizeMap: Record<TileSize, string> = {
-  inherit: 'inherit',
-  default: fontSizeTextMedium,
-  medium: fontSizeTextMedium,
-  large: fontSizeTextLarge,
-};
+import { getFontSizeText } from '../../styles/font-size-text-styles';
 
 export const getComponentCss = (
   aspectRatio: BreakpointCustomizable<TileAspectRatio>,
@@ -57,7 +48,7 @@ export const getComponentCss = (
     '@global': {
       ':host': {
         display: 'flex', // stretches the tile when used in grid or flex context in case tile content overflows the available size which results through aspect ratio
-        hyphens: 'auto', // TODO: should we expose a CSS variable instead?
+        hyphens: 'auto', // TODO: shouldn't we expose a CSS variable instead?
         ...addImportantToEachRule({
           ...colorSchemeStyles,
           ...hostHiddenStyles,
@@ -75,18 +66,13 @@ export const getComponentCss = (
           zIndex: 3,
         },
       },
-      '::slotted': addImportantToEachRule({
-        '&(picture)': {
-          display: 'block',
-          width: '100%',
-          height: '100%',
-        },
-        '&(img)': {
-          display: 'block',
-          width: '100%',
-          height: '100%',
-          objectFit: 'cover',
-        },
+      '::slotted(:is(img,picture))': addImportantToEachRule({
+        display: 'block',
+        width: '100%',
+        height: '100%',
+      }),
+      '::slotted(img)': addImportantToEachRule({
+        objectFit: 'cover',
       }),
       a: {
         gridArea: '1/1/-1 /-1',
@@ -100,7 +86,7 @@ export const getComponentCss = (
         hyphens: 'inherit',
         ...mergeDeep(
           buildResponsiveStyles(size, (sizeValue: TileSize) => ({
-            fontSize: sizeMap[sizeValue], // mapping of the deprecated size 'default'
+            fontSize: getFontSizeText(sizeValue === 'default' ? 'medium' : sizeValue), // mapping of the deprecated size 'default'
           })),
           buildResponsiveStyles(weight, (weightValue: TileWeight | LinkTileWeight) => ({
             fontWeight: getFontWeight(weightValue === 'semibold' ? 'semi-bold' : weightValue), // mapping of the deprecated weight 'semibold'
@@ -118,7 +104,6 @@ export const getComponentCss = (
       width: '100%', // necessary for Chrome in case tile content overflows in grid or flex context
       display: 'grid',
       gridTemplate: `${spacingFluidMedium} auto minmax(0px, 1fr) auto ${spacingFluidMedium}/${spacingFluidMedium} auto ${spacingFluidMedium}`,
-      color: getThemedTypographyColor('dark', 'primary'), // TODO: why?
       ...(hasGradient &&
         isThemeDark(background) && {
           '&::after': {
@@ -149,7 +134,7 @@ export const getComponentCss = (
     media: {
       gridArea: '1/1/-1 /-1',
       zIndex: 1,
-      overflow: 'hidden',
+      overflow: 'hidden', // relevant for scaling of nested image
       borderRadius: borderRadiusLarge,
     },
     footer: {
@@ -169,16 +154,17 @@ export const getComponentCss = (
             }
       ),
     },
-    // TODO: maybe we can solve this in a smarter way?
-    'link-or-button-pure': buildResponsiveStyles(compact, (compactValue: boolean) => ({
-      display: compactValue ? 'inline-block' : 'none',
+    'link-or-button-pure': {
       zIndex: 5,
-    })),
+      ...buildResponsiveStyles(compact, (compactValue: boolean) => ({
+        display: compactValue ? 'inline-block' : 'none',
+      })),
+    },
     'link-or-button': {
       minHeight: '54px', // prevent content shift
       zIndex: 5,
-      ...buildResponsiveStyles(compact, (isCompact: boolean) => ({
-        display: isCompact ? 'none' : 'inline-block',
+      ...buildResponsiveStyles(compact, (compactValue: boolean) => ({
+        display: compactValue ? 'none' : 'inline-block',
       })),
     },
   });
