@@ -11,17 +11,17 @@ test('should correctly set activeTabIndex on p-tabs-bar', async ({ page }) => {
   expect(await getHeadingText()).toBe('Bug Page 1');
 
   const [, link2] = await page.$$('a');
-  await Promise.all([page.waitForNavigation(), link2.click()]);
+  await Promise.all([page.waitForURL(page.url()), link2.click()]);
   expect(await getTabsBarActiveTabIndex()).toBe(1);
   expect(await getHeadingText()).toBe('Bug Page 2');
 
   const [, , link3] = await page.$$('a');
-  await Promise.all([page.waitForNavigation(), link3.click()]);
+  await Promise.all([page.waitForURL(page.url()), link3.click()]);
   expect(await getTabsBarActiveTabIndex()).toBe(2);
   expect(await getHeadingText()).toBe('Bug Page 3');
 
   const [link1] = await page.$$('a');
-  await Promise.all([page.waitForNavigation(), link1.click()]);
+  await Promise.all([page.waitForURL(page.url()), link1.click()]);
   expect(await getTabsBarActiveTabIndex()).toBe(0);
   expect(await getHeadingText()).toBe('Bug Page 1');
 });
