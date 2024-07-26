@@ -125,7 +125,7 @@ for (const [path, category, page, tab, isFirst] of sitemap) {
     expect(await isLinkActive(linkPureElement), 'sidebar link should not be active initially').toBe(false);
 
     // NOTE: very flaky and potential timeout here 🤷‍
-    await Promise.all([browserPage.waitForNavigation(), linkPureElement.click()]);
+    await Promise.all([browserPage.waitForURL(browserPage.url()), linkPureElement.click()]);
 
     // wait for p-heading and p-tabs-bar to be ready
     const mainElementHandle = await browserPage.$('main');
@@ -154,7 +154,7 @@ for (const [path, category, page, tab, isFirst] of sitemap) {
         expect(isTabElementActiveInitially, 'should not have tab active initially').toBe(false);
         // we need to switch tabs, e.g. to "Usage" or "Props" for components
 
-        await Promise.all([browserPage.waitForNavigation(), tabElement.click()]);
+        await Promise.all([browserPage.waitForURL(browserPage.url()), tabElement.click()]);
 
         expect(await isTabActive(tabElement), 'should have tab active after click').toBe(true);
         expect(await isLinkActive(linkPureElement), 'sidebar link should still be active after click').toBe(true);
