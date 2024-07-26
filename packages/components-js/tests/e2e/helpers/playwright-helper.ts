@@ -178,7 +178,7 @@ export const setProperty = async <T>(
   await element.evaluate((el, { key, value }) => (el[key] = value), { key, value } as any);
 };
 
-export const getCssClasses = async (element: ElementHandle<HTMLElement | SVGElement>): Promise<string> => {
+export const getCssClasses = async (element: ElementHandle<HTMLElement | SVGElement> | Locator): Promise<string> => {
   return Object.values(await getProperty(element, 'classList')).join(' ');
 };
 
@@ -197,7 +197,7 @@ export const getActiveElementTagNameInShadowRoot = async (
 };
 
 export const getActiveElementClassNameInShadowRoot = (
-  element: ElementHandle<HTMLElement | SVGElement>
+  element: ElementHandle<HTMLElement | SVGElement> | Locator
 ): Promise<string> => {
   return element.evaluate((el) => {
     try {
@@ -303,7 +303,7 @@ export const enableBrowserLogging = (page: Page): void => {
 
 export const waitForInputTransition = (page: Page): Promise<void> => new Promise((resolve) => setTimeout(resolve, 250));
 
-export const hasFocus = (element: ElementHandle<HTMLElement | SVGElement>): Promise<boolean> =>
+export const hasFocus = (element: ElementHandle<HTMLElement | SVGElement> | Locator): Promise<boolean> =>
   element.evaluate((el) => document.activeElement === el);
 
 const consoleMessages: ConsoleMessage[] = [];

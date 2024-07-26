@@ -1,5 +1,5 @@
 import type { Page } from 'playwright';
-import { expect, test } from '@playwright/test';
+import { expect, Locator, test } from '@playwright/test';
 import type { Components } from '@porsche-design-system/components/src/components';
 import {
   addEventListener,
@@ -19,69 +19,73 @@ import {
 } from '../helpers';
 import type { SelectOption } from '@porsche-design-system/components/src/components/select/select/select-utils';
 
-const getHost = (page: Page) => page.$('p-select');
-const getSelectValue = async (page: Page): Promise<string> => await getProperty(await getHost(page), 'value');
-const getButton = (page: Page) => page.$('p-select button');
-const getButtonText = async (page: Page): Promise<string> => getProperty(await getButton(page), 'textContent');
-const getDropdown = (page: Page) => page.$('p-select .listbox');
-const getDropdownDisplay = async (page: Page): Promise<string> =>
-  await getElementStyle(await getDropdown(page), 'display');
-const getSelectOption = (page: Page, n: number) => page.$(`p-select p-select-option:nth-child(${n + 1})`); // First one is native select
+const getHost = (page: Page) => page.locator('p-select');
+const getSelectValue = async (page: Page): Promise<string | number> => await getProperty(getHost(page), 'value');
+const getButton = (page: Page) => page.locator('p-select button').first();
+const getButtonText = async (page: Page): Promise<string | number> => getProperty(getButton(page), 'textContent');
+const getDropdown = (page: Page) => page.locator('p-select .listbox');
+const getDropdownDisplay = async (page: Page): Promise<string> => await getElementStyle(getDropdown(page), 'display');
+const getSelectOption = (page: Page, n: number) => page.locator(`p-select p-select-option:nth-child(${n + 1})`); // First one is native select
 const getSelectedSelectOptionProperty = async <K extends keyof SelectOption>(
   page: Page,
   property: K
 ): Promise<SelectOption[K]> =>
-  await page.$$eval(
-    'p-select p-select-option',
-    (options, property) =>
-      ((options.find((option: SelectOption) => option.selected) as SelectOption)?.[property] as SelectOption[K]) ??
-      undefined,
-    property
-  );
+  await page
+    .locator('p-select p-select-option')
+    .evaluateAll(
+      (options, property) =>
+        ((options.find((option: SelectOption) => option.selected) as SelectOption)?.[property] as SelectOption[K]) ??
+        undefined,
+      property
+    );
 
 const getHighlightedSelectOptionProperty = async <K extends keyof SelectOption>(
   page: Page,
   property: K
 ): Promise<SelectOption[K] | undefined> =>
-  await page.$$eval(
-    'p-select p-select-option',
-    (options, property) =>
-      ((options.find((option: SelectOption) => option.highlighted) as SelectOption)?.[property] as SelectOption[K]) ??
-      undefined,
-    property
-  );
+  await page
+    .locator('p-select p-select-option')
+    .evaluateAll(
+      (options, property) =>
+        ((options.find((option: SelectOption) => option.highlighted) as SelectOption)?.[property] as SelectOption[K]) ??
+        undefined,
+      property
+    );
 
 const getSelectedOptionIndex = async (page: Page): Promise<number> =>
-  await page.$$eval('p-select p-select-option', (options: SelectOption[]) =>
-    options.indexOf(options.find((option: SelectOption) => option.selected))
-  );
+  await page
+    .locator('p-select p-select-option')
+    .evaluateAll((options: SelectOption[]) => options.indexOf(options.find((option: SelectOption) => option.selected)));
 const getHighlightedOptionIndex = async (page: Page): Promise<number> =>
-  await page.$$eval('p-select p-select-option', (options: SelectOption[]) =>
-    options.filter((option) => !option.hidden).indexOf(options.find((option: SelectOption) => option.highlighted))
-  );
-const getNativeSelect = (page: Page) => page.$('p-select select');
-const getNativeSelectValue = async (page: Page): Promise<string> =>
-  await getProperty(await getNativeSelect(page), 'value');
-const getNativeSelectInnerHTML = (page: Page) => page.$eval('p-select select', (el) => el.innerHTML);
-const getLabel = (page: Page) => page.$('p-select label');
+  await page
+    .locator('p-select p-select-option')
+    .evaluateAll((options: SelectOption[]) =>
+      options.filter((option) => !option.hidden).indexOf(options.find((option: SelectOption) => option.highlighted))
+    );
+const getNativeSelect = (page: Page) => page.locator('p-select select');
+const getNativeSelectValue = async (page: Page): Promise<string | number> =>
+  await getProperty(getNativeSelect(page), 'value');
+const getNativeSelectInnerHTML = (page: Page) => page.locator('p-select select').evaluate((el) => el.innerHTML);
+const getLabel = (page: Page) => page.locator('p-select label');
 
-const setValue = async (page: Page, value: string) =>
-  await page.evaluate(({ el, value }) => ((el as HTMLPSelectElement).value = value), {
-    el: await getHost(page),
-    value,
-  });
+const setValue = async (page: Page, value: string) => {
+  const host: Locator = getHost(page);
+  await host.evaluate((el, value) => {
+    (el as HTMLPSelectElement).value = value;
+  }, value);
+};
 
 // TODO: Test adding hidden, disabled option?
 const addOption = async (page: Page, value: string, textContent?: string) => {
-  await page.evaluate(
-    ({ el, value, textContent }) => {
+  const host = getHost(page);
+  await host.evaluate(
+    (el, { value, textContent }) => {
       const option: any = document.createElement('p-select-option');
       option.value = value;
       option.textContent = textContent;
       el.append(option);
     },
     {
-      el: await getHost(page),
       value,
       textContent: textContent ? textContent : value,
     }
@@ -89,7 +93,8 @@ const addOption = async (page: Page, value: string, textContent?: string) => {
 };
 
 const removeLastOption = async (page: Page) => {
-  await page.evaluate((el) => el.lastElementChild.remove(), await getHost(page));
+  const host = getHost(page);
+  await host.evaluate((el) => (el as HTMLPSelectElement).lastElementChild.remove());
 };
 
 const testValues = [
@@ -267,7 +272,7 @@ const initSelect = (page: Page, opt?: InitOptions): Promise<void> => {
 
 test('should render', async ({ page }) => {
   await initSelect(page);
-  const buttonElement = await getButton(page);
+  const buttonElement = getButton(page);
 
   expect(await getDropdownDisplay(page)).toBe('none');
 
@@ -280,23 +285,23 @@ test('should render', async ({ page }) => {
 test.describe('native select', () => {
   test('should be rendered', async ({ page }) => {
     await initSelect(page);
-    const nativeSelectElement = await getNativeSelect(page);
-    expect(nativeSelectElement).not.toBeNull();
+    const nativeSelectElement = getNativeSelect(page);
+    await expect(nativeSelectElement).not.toHaveCount(0);
     expect(await nativeSelectElement.evaluate((el: HTMLSelectElement) => el.selectedOptions.length)).toBe(0);
   });
 
   test('should not be visible', async ({ page }) => {
     await initSelect(page);
-    const nativeSelectElement = await getNativeSelect(page);
+    const nativeSelectElement = getNativeSelect(page);
     expect(await getElementStyle(nativeSelectElement, 'opacity')).toBe('0');
   });
 
   test('props should be in sync', async ({ page }) => {
     await initSelect(page);
-    const nativeSelectElement = await getNativeSelect(page);
+    const nativeSelectElement = getNativeSelect(page);
     expect(await getAttribute(nativeSelectElement, 'name')).toBe('options');
 
-    const host = await getHost(page);
+    const host = getHost(page);
     await setProperty(host, 'required', true);
     await setProperty(host, 'disabled', true);
 
@@ -319,11 +324,11 @@ test.describe('native select', () => {
     expect(await getNativeSelectValue(page), 'initial').toBe('');
     expect(await getNativeSelectInnerHTML(page), 'initial').toBe('');
 
-    const buttonElement = await getButton(page);
+    const buttonElement = getButton(page);
     await buttonElement.click();
     await waitForStencilLifecycle(page);
 
-    await (await getSelectOption(page, 1)).click();
+    await getSelectOption(page, 1).click();
     await waitForStencilLifecycle(page);
 
     expect(await getNativeSelectValue(page), 'after first option selected').toBe('a');
@@ -334,7 +339,7 @@ test.describe('native select', () => {
     await buttonElement.click();
     await waitForStencilLifecycle(page);
 
-    await (await getSelectOption(page, 2)).click();
+    getSelectOption(page, 2).click();
     await waitForStencilLifecycle(page);
 
     expect(await getNativeSelectValue(page), 'after second option selected').toBe('b');
@@ -348,11 +353,11 @@ test.describe('native select', () => {
     expect(await getNativeSelectValue(page), 'initial').toBe('a');
     expect(await getNativeSelectInnerHTML(page), 'initial').toBe('<option value="a" selected=""></option>');
 
-    const buttonElement = await getButton(page);
+    const buttonElement = getButton(page);
     await buttonElement.click();
     await waitForStencilLifecycle(page);
 
-    await (await getSelectOption(page, 1)).click();
+    getSelectOption(page, 1).click();
     await waitForStencilLifecycle(page);
 
     expect(await getNativeSelectValue(page), 'after deselection').toBe('');
@@ -419,8 +424,8 @@ test.describe('native select', () => {
         isWithinForm: false,
       },
     });
-    const nativeSelectElement = await getNativeSelect(page);
-    expect(nativeSelectElement).toBeNull();
+    const nativeSelectElement = getNativeSelect(page);
+    await expect(nativeSelectElement).toHaveCount(0);
   });
 });
 
@@ -428,16 +433,16 @@ test.describe('native select', () => {
 test.describe('Update Event', () => {
   test('should emit update event with correct details when option is selected by click', async ({ page }) => {
     await initSelect(page);
-    const host = await getHost(page);
+    const host = getHost(page);
     await addEventListener(host, 'update');
 
-    const buttonElement = await getButton(page);
+    const buttonElement = getButton(page);
     await buttonElement.click();
     await waitForStencilLifecycle(page);
 
     expect((await getEventSummary(host, 'update')).counter, 'before option select').toBe(0);
 
-    const option = await getSelectOption(page, 1);
+    const option = getSelectOption(page, 1);
     await option.click();
     await waitForStencilLifecycle(page);
 
@@ -463,7 +468,7 @@ test.describe('Update Event', () => {
   skipInBrowsers(['webkit'], () => {
     test('should emit update event with correct details when option is selected by keyboard', async ({ page }) => {
       await initSelect(page);
-      const host = await getHost(page);
+      const host = getHost(page);
       await addEventListener(host, 'update');
 
       await page.keyboard.press('Tab');
@@ -501,8 +506,8 @@ test.describe('outside click', () => {
   test('should show dropdown if input is clicked and hide via outside click', async ({ page }) => {
     await initSelect(page, { options: { markupBefore: '<p-text>Some Text</p-text>' } });
 
-    const buttonElement = await getButton(page);
-    const text = await page.$('p-text');
+    const buttonElement = getButton(page);
+    const text = page.locator('p-text');
     expect(await getDropdownDisplay(page)).toBe('none');
 
     await buttonElement.click();
@@ -532,8 +537,8 @@ test.describe('focus', () => {
   test('should focus button when label text is clicked', async ({ page }) => {
     await initSelect(page, { props: { name: 'options', label: 'Some Label' } });
 
-    const labelText = await getLabel(page);
-    const buttonElement = await getButton(page);
+    const labelText = getLabel(page);
+    const buttonElement = getButton(page);
     await addEventListener(buttonElement, 'focus');
 
     expect((await getEventSummary(buttonElement, 'focus')).counter, 'before focus').toBe(0);
@@ -545,7 +550,7 @@ test.describe('focus', () => {
   test('should focus button when tab key is pressed', async ({ page }) => {
     await initSelect(page);
 
-    const buttonElement = await getButton(page);
+    const buttonElement = getButton(page);
     await addEventListener(buttonElement, 'focus');
 
     expect((await getEventSummary(buttonElement, 'focus')).counter).toBe(0);
@@ -557,7 +562,7 @@ test.describe('focus', () => {
   test('should close dropdown on tab and focus next element', async ({ page }) => {
     await initSelect(page, { options: { markupAfter: '<p-button>Some button</p-button>' } });
     const button = await page.$('p-button');
-    const comboboxEl = await getButton(page);
+    const comboboxEl = getButton(page);
     await addEventListener(comboboxEl, 'focus');
     await addEventListener(button, 'focus');
 
@@ -593,7 +598,7 @@ test.describe('keyboard behavior', () => {
     let buttonElement;
     test.beforeEach(async ({ page }) => {
       await initSelect(page);
-      buttonElement = await getButton(page);
+      buttonElement = getButton(page);
       await addEventListener(buttonElement, 'focus');
 
       expect((await getEventSummary(buttonElement, 'focus')).counter, 'initial focus').toBe(0);
@@ -683,9 +688,9 @@ test.describe('keyboard behavior', () => {
     let buttonAfter;
     test.beforeEach(async ({ page }) => {
       await initSelect(page, { options: { values: testValues, markupAfter: '<p-button>Button</p-button>' } });
-      buttonAfter = await page.$('p-button');
+      buttonAfter = page.locator('p-button');
       await addEventListener(buttonAfter, 'focus');
-      buttonElement = await getButton(page);
+      buttonElement = getButton(page);
       await addEventListener(buttonElement, 'focus');
 
       expect((await getEventSummary(buttonElement, 'focus')).counter, 'initial focus').toBe(0);
@@ -716,7 +721,7 @@ test.describe('keyboard behavior', () => {
       expect(await getHighlightedOptionIndex(page)).toBe(0); // Highlighted options stays highlighted even after closing of the dropdown
       expect((await getEventSummary(buttonElement, 'focus')).counter, 'button focus after pressing Enter').toBe(1);
       expect(await getActiveElementTagName(page)).toBe('P-SELECT');
-      expect(await getActiveElementTagNameInShadowRoot(await getHost(page))).toBe('BUTTON');
+      expect(await getActiveElementTagNameInShadowRoot(getHost(page))).toBe('BUTTON');
     });
     // Sets the value to the content of the focused option in the listbox.
     // Closes the listbox.
@@ -737,7 +742,7 @@ test.describe('keyboard behavior', () => {
       expect(await getHighlightedOptionIndex(page)).toBe(0); // Highlighted options stays highlighted even after closing of the dropdown
       expect((await getEventSummary(buttonElement, 'focus')).counter, 'button focus after pressing Space').toBe(1);
       expect(await getActiveElementTagName(page)).toBe('P-SELECT');
-      expect(await getActiveElementTagNameInShadowRoot(await getHost(page))).toBe('BUTTON');
+      expect(await getActiveElementTagNameInShadowRoot(getHost(page))).toBe('BUTTON');
     });
     // Sets the value to the content of the focused option in the listbox.
     // Closes the listbox.
@@ -780,7 +785,7 @@ test.describe('keyboard behavior', () => {
       expect(await getDropdownDisplay(page), 'initial').toBe('none');
       expect((await getEventSummary(buttonElement, 'focus')).counter, 'button focus after pressing Tab').toBe(1);
       expect(await getActiveElementTagName(page)).toBe('P-SELECT');
-      expect(await getActiveElementTagNameInShadowRoot(await getHost(page))).toBe('BUTTON');
+      expect(await getActiveElementTagNameInShadowRoot(getHost(page))).toBe('BUTTON');
     });
     // Moves visual focus to the next option.
     // If visual focus is on the last option, visual focus does not move.
@@ -944,9 +949,9 @@ test.describe('keyboard behavior', () => {
   });
   test('should skip disabled option when pressing ArrowUp/ArrowDown', async ({ page }) => {
     await initSelect(page, { options: { disabledIndices: [0, 1, 3, 5], values: ['a', 'b', 'c', 'd', 'e', 'f'] } });
-    const buttonElement = await getButton(page);
+    const buttonElement = getButton(page);
 
-    expect(await getProperty(await getSelectOption(page, 2), 'disabled'), 'disabled option').toBe(true);
+    expect(await getProperty(getSelectOption(page, 2), 'disabled'), 'disabled option').toBe(true);
 
     await buttonElement.press('ArrowDown');
     await waitForStencilLifecycle(page);
@@ -984,7 +989,7 @@ test.describe('selection', () => {
   test('should add valid selection on Enter', async ({ page }) => {
     await initSelect(page);
 
-    const buttonElement = await getButton(page);
+    const buttonElement = getButton(page);
 
     await buttonElement.type('B');
     await waitForStencilLifecycle(page);
@@ -1026,7 +1031,7 @@ test.describe('selection', () => {
   test('should add valid selection on Space', async ({ page }) => {
     await initSelect(page);
 
-    const buttonElement = await getButton(page);
+    const buttonElement = getButton(page);
 
     await buttonElement.type('B');
     await waitForStencilLifecycle(page);
@@ -1068,7 +1073,7 @@ test.describe('selection', () => {
   test('should add valid selection on Tab', async ({ page }) => {
     await initSelect(page);
 
-    const buttonElement = await getButton(page);
+    const buttonElement = getButton(page);
 
     await buttonElement.type('B');
     await waitForStencilLifecycle(page);
@@ -1110,7 +1115,7 @@ test.describe('selection', () => {
   test('should reset selection on enter empty selection', async ({ page }) => {
     await initSelect(page, { options: { values: ['', 'a', 'b', 'c'] } });
 
-    const buttonElement = await getButton(page);
+    const buttonElement = getButton(page);
 
     await buttonElement.type('B');
     await waitForStencilLifecycle(page);
@@ -1146,14 +1151,14 @@ test.describe('selection', () => {
 
   test('should add valid selection on Click', async ({ page }) => {
     await initSelect(page);
-    const buttonElement = await getButton(page);
+    const buttonElement = getButton(page);
 
     await buttonElement.click(); // Open dropdown
     await waitForStencilLifecycle(page);
 
     expect(await getHighlightedOptionIndex(page)).toBe(-1); // No option highlighted
 
-    const option = await getSelectOption(page, 1);
+    const option = getSelectOption(page, 1);
     await option.click();
     await waitForStencilLifecycle(page);
 
@@ -1171,7 +1176,7 @@ test.describe('selection', () => {
     // TODO: Do we want to set highlight on the option when selecting with click
     expect(await getHighlightedOptionIndex(page)).toBe(-1); // No option highlighted
 
-    const option2 = await getSelectOption(page, 3);
+    const option2 = getSelectOption(page, 3);
     await option2.click();
     await waitForStencilLifecycle(page);
 
@@ -1186,12 +1191,12 @@ test.describe('selection', () => {
 
   test('should not select disabled option on Click', async ({ page }) => {
     await initSelect(page, { options: { disabledIndices: [0] } });
-    const buttonElement = await getButton(page);
+    const buttonElement = getButton(page);
 
     await buttonElement.click(); // Open dropdown
     await waitForStencilLifecycle(page);
 
-    const option = await getSelectOption(page, 1);
+    const option = getSelectOption(page, 1);
     await option.click();
     await waitForStencilLifecycle(page);
 
@@ -1246,7 +1251,7 @@ test.describe('selection', () => {
 test.describe('click events', () => {
   test('should open dropdown on mouseclick and close dropdown on 2nd click', async ({ page }) => {
     await initSelect(page);
-    const buttonElement = await getButton(page);
+    const buttonElement = getButton(page);
 
     await buttonElement.click();
     await waitForStencilLifecycle(page);
@@ -1264,7 +1269,7 @@ test.describe('click events', () => {
   test.describe('disabled', () => {
     test('should have not-allowed cursor', async ({ page }) => {
       await initSelect(page, { props: { name: 'options', disabled: true } });
-      expect(await getElementStyle(await getButton(page), 'cursor')).toBe('not-allowed');
+      expect(await getElementStyle(getButton(page), 'cursor')).toBe('not-allowed');
     });
 
     skipInBrowsers(['webkit'], () => {
@@ -1273,7 +1278,7 @@ test.describe('click events', () => {
           props: { name: 'options', disabled: true },
           options: { markupAfter: '<p-button>Button</p-button>' },
         });
-        const button = await page.$('p-button');
+        const button = page.locator('p-button');
 
         await addEventListener(button, 'focus');
         expect((await getEventSummary(button, 'focus')).counter, 'before focus').toBe(0);
@@ -1315,12 +1320,11 @@ test.describe('slots', () => {
     expect(await getSelectedSelectOptionProperty(page, 'value'), 'initial').toEqual('c');
     expect(await getButtonText(page)).toBe('c');
 
-    await page.evaluate(
-      (el) => {
-        el.lastElementChild.remove();
-      },
-      await getHost(page)
-    );
+    const host: Locator = getHost(page);
+    await host.evaluate((el) => {
+      (el as HTMLPMultiSelectElement).lastElementChild.remove();
+    });
+
     await waitForStencilLifecycle(page);
 
     expect(await getNativeSelectValue(page), 'after option selected removed').toBe('');
@@ -1334,7 +1338,7 @@ test.describe('slots', () => {
 test.describe('lifecycle', () => {
   test('should work without unnecessary round trips on init', async ({ page }) => {
     await initSelect(page);
-    const buttonElement = await getButton(page);
+    const buttonElement = getButton(page);
     const status1 = await getLifecycleStatus(page);
 
     expect(status1.componentDidLoad['p-select'], 'componentDidLoad: p-select').toBe(1);
@@ -1353,7 +1357,7 @@ test.describe('lifecycle', () => {
 
   test('should work without unnecessary round trips when selecting option', async ({ page }) => {
     await initSelect(page);
-    const buttonElement = await getButton(page);
+    const buttonElement = getButton(page);
 
     await buttonElement.click();
     await waitForStencilLifecycle(page);
@@ -1366,7 +1370,7 @@ test.describe('lifecycle', () => {
     expect(status1.componentDidLoad.all, 'componentDidLoad: all').toBe(5);
     expect(status1.componentDidUpdate.all, 'componentDidUpdate: all').toBe(1);
 
-    const option1 = await getSelectOption(page, 1);
+    const option1 = getSelectOption(page, 1);
     await option1.click();
     await waitForStencilLifecycle(page);
 
@@ -1379,7 +1383,7 @@ test.describe('lifecycle', () => {
 
   test('should work without unnecessary round trips on selection change by click', async ({ page }) => {
     await initSelect(page, { props: { name: 'options', value: 'a' } });
-    const buttonElement = await getButton(page);
+    const buttonElement = getButton(page);
 
     await buttonElement.click();
     await waitForStencilLifecycle(page);
@@ -1392,7 +1396,7 @@ test.describe('lifecycle', () => {
     expect(status1.componentDidLoad.all, 'componentDidLoad: all').toBe(6);
     expect(status1.componentDidUpdate.all, 'componentDidUpdate: all').toBe(1);
 
-    const option1 = await getSelectOption(page, 2);
+    const option1 = getSelectOption(page, 2);
     await option1.click();
     await waitForStencilLifecycle(page);
 
@@ -1405,7 +1409,7 @@ test.describe('lifecycle', () => {
   skipInBrowsers(['webkit'], () => {
     test('should work without unnecessary round trips on selection change by keyboard', async ({ page }) => {
       await initSelect(page, { props: { name: 'options', value: 'a' } });
-      const buttonElement = await getButton(page);
+      const buttonElement = getButton(page);
 
       await buttonElement.press('Space'); // Open dropdown
       await waitForStencilLifecycle(page);
@@ -1434,9 +1438,9 @@ test.describe('theme', () => {
   test('should sync theme for children', async ({ page }) => {
     await initSelect(page, { options: { includeOptgroups: true } });
 
-    const select = await getHost(page);
+    const select = getHost(page);
 
-    const buttonElement = await getButton(page);
+    const buttonElement = getButton(page);
     await buttonElement.click();
     await waitForStencilLifecycle(page);
 
@@ -1459,7 +1463,7 @@ test.describe('optgroups', () => {
   test('should persist disabled state for options inside optgroup', async ({ page }) => {
     await initSelect(page, { options: { includeOptgroups: true, disabledIndices: [1] } });
 
-    const buttonElement = await getButton(page);
+    const buttonElement = getButton(page);
     await buttonElement.click();
     await waitForStencilLifecycle(page);
 
@@ -1490,7 +1494,7 @@ test.describe('optgroups', () => {
   test('should disable all options inside disabled optgroup', async ({ page }) => {
     await initSelect(page, { options: { includeOptgroups: true } });
 
-    const buttonElement = await getButton(page);
+    const buttonElement = getButton(page);
     await buttonElement.click();
     await waitForStencilLifecycle(page);
 
@@ -1514,7 +1518,7 @@ test.describe('optgroups', () => {
   test('should hide all options inside hidden optgroup', async ({ page }) => {
     await initSelect(page, { options: { includeOptgroups: true } });
 
-    const buttonElement = await getButton(page);
+    const buttonElement = getButton(page);
     await buttonElement.click();
     await waitForStencilLifecycle(page);
 

@@ -1,4 +1,4 @@
-import type { Page, ElementHandle } from '@playwright/test';
+import type { Page, ElementHandle, Locator } from '@playwright/test';
 
 export const supportsDeclarativeShadowDOM = async (page: Page): Promise<boolean> => {
   return page.evaluate(
@@ -17,7 +17,7 @@ export const waitForStencilLifecycle = async (page: Page): Promise<void> => {
 };
 
 export const setProperty = async <T>(
-  element: ElementHandle,
+  element: ElementHandle | Locator,
   key: string,
   value: string | boolean | number | T
 ): Promise<void> => {

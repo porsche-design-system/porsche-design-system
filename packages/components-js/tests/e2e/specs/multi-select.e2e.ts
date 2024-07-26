@@ -28,7 +28,7 @@ const getDropdown = (page: Page) => page.locator('p-multi-select .listbox');
 const getDropdownDisplay = async (page: Page): Promise<string> => await getElementStyle(getDropdown(page), 'display');
 const getShadowDropdownOption = (page: Page, n: number) => page.locator(`p-multi-select .listbox div:nth-child(${n})`);
 const getMultiSelectOption = (page: Page, n: number) =>
-  page.locator(`p-multi-select p-multi-select-option:nth-child(${n + 1})`).first(); // First one is native select
+  page.locator(`p-multi-select p-multi-select-option:nth-child(${n + 1})`); // First one is native select
 const getMultiSelectOptions = (page: Page): Promise<ElementHandle<HTMLElement>[] | Locator[]> =>
   page.locator('p-multi-select p-multi-select-option').all();
 const getAmountOfVisibleMultiSelectOptions = async (page: Page): Promise<number> =>

@@ -1,5 +1,5 @@
 import type { ElementHandle, Page } from 'playwright';
-import { expect, test } from '@playwright/test';
+import { expect, Locator, test } from '@playwright/test';
 import {
   addEventListener,
   getCssClasses,
@@ -33,9 +33,9 @@ const initBanner = (page: Page, opts: InitOptions): Promise<void> => {
   );
 };
 
-const getHost = (page: Page) => page.$('p-banner');
-const getInlineNotification = (page: Page) => page.$('p-banner p-inline-notification');
-const getCloseButton = (page: Page) => page.$('p-banner p-inline-notification p-button-pure.close');
+const getHost = (page: Page) => page.locator('p-banner');
+const getInlineNotification = (page: Page) => page.locator('p-banner p-inline-notification');
+const getCloseButton = (page: Page) => page.locator('p-banner p-inline-notification p-button-pure.close');
 
 test('should forward props correctly to p-inline-notification', async ({ page }) => {
   await setContentWithDesignSystem(
@@ -47,7 +47,7 @@ test('should forward props correctly to p-inline-notification', async ({ page })
     </p-banner>`
   );
 
-  const inlineNotification = await getInlineNotification(page);
+  const inlineNotification = getInlineNotification(page);
   expect(await getProperty(inlineNotification, 'state')).toBe('error');
   expect(await getProperty(inlineNotification, 'dismissButton')).toBe(false);
   expect(await getProperty(inlineNotification, 'theme')).toBe('dark');
@@ -55,21 +55,21 @@ test('should forward props correctly to p-inline-notification', async ({ page })
 
 test('should not show banner by default', async ({ page }) => {
   await initBanner(page, { open: false });
-  const banner = await getHost(page);
+  const banner = getHost(page);
   expect(await getElementStyle(banner, 'opacity')).toBe('0');
   expect(await getElementStyle(banner, 'visibility')).toBe('hidden');
 });
 
 test('should show banner when prop open is true', async ({ page }) => {
   await initBanner(page, { open: true });
-  const banner = await getHost(page);
+  const banner = getHost(page);
   expect(await getElementStyle(banner, 'opacity')).toBe('1');
   expect(await getElementStyle(banner, 'visibility')).toBe('visible');
 });
 
 test('should show banner when setting open prop true ', async ({ page }) => {
   await initBanner(page, { open: false });
-  const banner = await getHost(page);
+  const banner = getHost(page);
   await setProperty(banner, 'open', true);
   await waitForStencilLifecycle(page);
   expect(await getElementStyle(banner, 'opacity')).toBe('1');
@@ -78,7 +78,7 @@ test('should show banner when setting open prop true ', async ({ page }) => {
 
 test('should not show banner by setting open prop false', async ({ page }) => {
   await initBanner(page, { open: true });
-  const banner = await getHost(page);
+  const banner = getHost(page);
   await setProperty(banner, 'open', false);
   await waitForStencilLifecycle(page);
   expect(await getElementStyle(banner, 'opacity')).toBe('0');
@@ -86,7 +86,9 @@ test('should not show banner by setting open prop false', async ({ page }) => {
 });
 
 test.describe('close', () => {
-  const getComputedElementHandleStyles = async (elHandle: ElementHandle<Element>): Promise<CSSStyleDeclaration> => {
+  const getComputedElementHandleStyles = async (
+    elHandle: ElementHandle<Element> | Locator
+  ): Promise<CSSStyleDeclaration> => {
     return elHandle.evaluate((el: Element): CSSStyleDeclaration => {
       return getComputedStyle(el);
     });
@@ -94,13 +96,13 @@ test.describe('close', () => {
 
   test('should not show dismiss button when dismissButton prop is set false', async ({ page }) => {
     await initBanner(page, { open: true, dismissButton: false });
-    const banner = await getHost(page);
-    expect(await getCloseButton(page)).toBeNull();
+    const banner = getHost(page);
+    await expect(getCloseButton(page)).toHaveCount(0);
   });
 
   test('should emit dismiss event by pressing ESC key', async ({ page }) => {
     await initBanner(page, { open: true });
-    const host = await getHost(page);
+    const host = getHost(page);
     await addEventListener(host, 'dismiss');
     await page.keyboard.press('Escape');
     expect((await getEventSummary(host, 'dismiss')).counter).toBe(1);
@@ -108,7 +110,7 @@ test.describe('close', () => {
 
   test('should not emit dismiss event by pressing ESC key when banner is not open', async ({ page }) => {
     await initBanner(page, { open: false });
-    const host = await getHost(page);
+    const host = getHost(page);
     await addEventListener(host, 'dismiss');
     await page.keyboard.press('Escape');
     expect((await getEventSummary(host, 'dismiss')).counter).toBe(0);
@@ -116,7 +118,7 @@ test.describe('close', () => {
 
   test('should not emit dismiss event by pressing ESC key when dismissButton is set false', async ({ page }) => {
     await initBanner(page, { open: true, dismissButton: false });
-    const host = await getHost(page);
+    const host = getHost(page);
     await addEventListener(host, 'dismiss');
     await page.keyboard.press('Escape');
     expect((await getEventSummary(host, 'dismiss')).counter).toBe(0);
@@ -124,16 +126,16 @@ test.describe('close', () => {
 
   test('should emit dismiss by click on close button', async ({ page }) => {
     await initBanner(page, { open: true });
-    const host = await getHost(page);
+    const host = getHost(page);
     await addEventListener(host, 'dismiss');
-    const closeButton = await getCloseButton(page);
+    const closeButton = getCloseButton(page);
     await closeButton.click();
     expect((await getEventSummary(host, 'dismiss')).counter).toBe(1);
   });
 
   test('should remove and re-attach keydown event listener', async ({ page }) => {
     await initBanner(page, { open: true });
-    const host = await getHost(page);
+    const host = getHost(page);
     await addEventListener(host, 'dismiss');
     expect((await getEventSummary(host, 'dismiss')).counter).toBe(0);
     await reattachElementHandle(host);
@@ -155,9 +157,9 @@ test.describe('close', () => {
       </p-banner>`
     );
 
-    const banner1 = await page.$('#banner1');
-    const banner2 = await page.$('#banner2');
-    const closeButtonBanner2 = await page.$('#banner2 p-inline-notification p-button-pure');
+    const banner1 = page.locator('#banner1');
+    const banner2 = page.locator('#banner2');
+    const closeButtonBanner2 = page.locator('#banner2 p-inline-notification p-button-pure');
 
     const classListBanner1 = await getCssClasses(banner1);
     const classListBanner2 = await getCssClasses(banner2);
@@ -193,7 +195,7 @@ test.describe('lifecycle', () => {
 
   test('should work without unnecessary round trips after state change', async ({ page }) => {
     await initBanner(page, { state: 'error', open: true });
-    const host = await getHost(page);
+    const host = getHost(page);
 
     await setProperty(host, 'state', 'warning');
     await waitForStencilLifecycle(page);

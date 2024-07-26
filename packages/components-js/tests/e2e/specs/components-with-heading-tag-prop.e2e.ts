@@ -13,7 +13,7 @@ for (const tagName of tagNamesWithHeadingTagProp) {
     const getHeadingTagName = (page: Page): Promise<string> => page.locator('.heading').evaluate((el) => el.tagName);
     const getHeadingCount = (page: Page): Promise<number> => page.locator('.heading').count();
 
-    const host = (page: Page) => page.$(tagName);
+    const host = (page: Page) => page.locator(tagName);
 
     test('should render correct heading tag when heading-tag property is set', async ({ page }) => {
       const markup = buildDefaultComponentMarkup(tagName).replace(/>/, ' heading="Some heading" heading-tag="h3">');
@@ -21,7 +21,7 @@ for (const tagName of tagNamesWithHeadingTagProp) {
 
       expect(await getHeadingTagName(page)).toMatch(/H[1-6]/);
 
-      await setProperty(await host(page), 'heading-tag', 'h3');
+      await setProperty(host(page), 'heading-tag', 'h3');
 
       expect(await getHeadingTagName(page)).toBe('H3');
     });

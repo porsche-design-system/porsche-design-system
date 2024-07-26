@@ -1,5 +1,5 @@
 import type { ElementHandle, Page } from 'playwright';
-import { expect, test } from '@playwright/test';
+import { expect, Locator, test } from '@playwright/test';
 import {
   addEventListener,
   getActiveElementClassNameInShadowRoot,
@@ -22,21 +22,19 @@ import { Components } from '@porsche-design-system/components';
 const CSS_TRANSITION_DURATION = 600;
 const flyoutMinWidth = 320;
 
-const getHost = (page: Page) => page.$('p-flyout');
-const getFlyout = (page: Page) => page.$('p-flyout dialog');
-const getFlyoutScroller = (page: Page) => page.$('p-flyout dialog .scroller');
-const getHeader = (page: Page) => page.$('p-flyout slot[name="header"]');
-const getFooter = (page: Page) => page.$('p-flyout slot[name="footer"]');
-const getFlyoutDismissButton = (page: Page) => page.$('p-flyout p-button-pure.dismiss');
-const getFlyoutDismissButtonReal = (page: Page) => page.$('p-flyout p-button-pure.dismiss button');
-const getBodyStyle = async (page: Page) => getAttribute(await page.$('body'), 'style');
-const getFlyoutVisibility = async (page: Page) => await getElementStyle(await getFlyout(page), 'visibility');
+const getHost = (page: Page) => page.locator('p-flyout');
+const getFlyout = (page: Page) => page.locator('p-flyout dialog');
+const getFlyoutScroller = (page: Page) => page.locator('p-flyout dialog .scroller');
+const getHeader = (page: Page) => page.locator('p-flyout slot[name="header"]');
+const getFooter = (page: Page) => page.locator('p-flyout slot[name="footer"]');
+const getFlyoutDismissButton = (page: Page) => page.locator('p-flyout p-button-pure.dismiss');
+const getFlyoutDismissButtonReal = (page: Page) => page.locator('p-flyout p-button-pure.dismiss button');
+const getBodyStyle = async (page: Page) => getAttribute(page.locator('body'), 'style');
+const getFlyoutVisibility = async (page: Page) => await getElementStyle(getFlyout(page), 'visibility');
 const waitForFlyoutTransition = async () => sleep(CSS_TRANSITION_DURATION);
 const waitForSlotChange = () => sleep();
 const getStickyTopCssVarValue = async (page: Page) =>
-  await (
-    await getHost(page)
-  ).evaluate((element) => getComputedStyle(element).getPropertyValue('--p-flyout-sticky-top'));
+  getHost(page).evaluate((element) => getComputedStyle(element).getPropertyValue('--p-flyout-sticky-top'));
 
 const initBasicFlyout = (
   page: Page,
@@ -83,12 +81,12 @@ const initAdvancedFlyout = async (page: Page) => {
 };
 
 const openFlyout = async (page: Page) => {
-  await setProperty(await getHost(page), 'open', true);
+  await setProperty(getHost(page), 'open', true);
   await waitForStencilLifecycle(page);
 };
 
 const dismissFlyout = async (page: Page) => {
-  await setProperty(await getHost(page), 'open', false);
+  await setProperty(getHost(page), 'open', false);
   await waitForStencilLifecycle(page);
 };
 
@@ -105,15 +103,19 @@ const addButtonsBeforeAndAfterFlyout = (page: Page) =>
     document.body.append(buttonAfter);
   });
 
-const scrollFlyoutTo = async (page: Page, selector: string) =>
-  await page.evaluate(
-    (el) => {
+const scrollFlyoutTo = async (page: Page, selector: string) => {
+  const locator = page.locator(selector);
+  const elementHandle = await locator.elementHandle();
+  if (elementHandle) {
+    await page.evaluate((el) => {
       el.scrollIntoView();
-    },
-    await page.$(selector)
-  );
+    }, elementHandle);
+  } else {
+    throw new Error(`Element with selector "${selector}" not found.`);
+  }
+};
 
-const addHeaderSlot = async (host: ElementHandle) => {
+const addHeaderSlot = async (host: Locator) => {
   await host.evaluate((el) => {
     const header = document.createElement('div');
     header.slot = 'header';
@@ -122,31 +124,32 @@ const addHeaderSlot = async (host: ElementHandle) => {
   });
 };
 
-const removeHeaderSlot = async (host: ElementHandle) => {
+const removeHeaderSlot = async (host: Locator) => {
   await host.evaluate((el: HTMLElement) => {
     el.querySelector('[slot="header"]').remove();
   });
 };
 
 const expectDismissButtonToBeFocused = async (page: Page, failMessage?: string) => {
-  const host = await getHost(page);
+  const host = getHost(page);
   expect(await getActiveElementTagNameInShadowRoot(host), failMessage).toBe('P-BUTTON-PURE');
   expect(await getActiveElementClassNameInShadowRoot(host), failMessage).toContain('dismiss');
 };
 
 const expectHeaderShadowToAppear = async (page: Page) => {
+  const headerLocator = getHeader(page);
   await page.waitForFunction(
     (el) => getComputedStyle(el).boxShadow === 'rgba(204, 204, 204, 0.35) 0px 5px 10px 0px',
-    await getHeader(page)
+    await headerLocator.evaluateHandle((el) => el)
   );
-  expect(await getElementStyle(await getHeader(page), 'boxShadow'), 'after scroll outside threshold').toBe(
+  expect(await getElementStyle(getHeader(page), 'boxShadow'), 'after scroll outside threshold').toBe(
     'rgba(204, 204, 204, 0.35) 0px 5px 10px 0px'
   );
 };
 
 test('should render and be visible when open', async ({ page }) => {
   await initBasicFlyout(page, { open: true });
-  expect(await getFlyout(page)).not.toBeNull();
+  expect(getFlyout(page)).not.toBeNull();
   expect(await getFlyoutVisibility(page)).toBe('visible');
 });
 
@@ -157,7 +160,7 @@ test('should not be visible when not open', async ({ page }) => {
 
 test('should be visible after opened', async ({ page }) => {
   await initBasicFlyout(page, { open: false });
-  const host = await getHost(page);
+  const host = getHost(page);
   await setProperty(host, 'open', true);
 
   await waitForFlyoutTransition();
@@ -168,7 +171,7 @@ test('should be visible after opened', async ({ page }) => {
 test('should have correct transform when opened and dismissed', async ({ page }) => {
   await initBasicFlyout(page, { open: false });
   const getFlyoutTransform = async (page: Page) =>
-    getElementStyle(await getFlyoutScroller(page), 'transform', { waitForTransition: true });
+    getElementStyle(getFlyoutScroller(page), 'transform', { waitForTransition: true });
 
   const initialFlyoutTransform = await getFlyoutTransform(page);
   expect(initialFlyoutTransform).toBe(`matrix(1, 0, 0, 1, ${flyoutMinWidth}, 0)`);
@@ -212,7 +215,7 @@ test.describe('scroll shadows', () => {
         content: '<div>Some Content</div>',
       }
     );
-    const footer = await getFooter(page);
+    const footer = getFooter(page);
     expect(await getElementStyle(footer, 'boxShadow')).toBe('none');
   });
 
@@ -227,13 +230,18 @@ test.describe('scroll shadows', () => {
           subFooter: '<div slot="sub-footer">Sub Footer Content<span class="scroll-here"></span></div>',
         }
       );
-      const footer = await getFooter(page);
+      const footer = getFooter(page);
       expect(await getElementStyle(footer, 'boxShadow'), 'before scroll').toBe(
         'rgba(204, 204, 204, 0.35) 0px -5px 10px 0px'
       );
 
       await scrollFlyoutTo(page, '.scroll-here');
-      await page.waitForFunction((el) => getComputedStyle(el).boxShadow === 'none', footer);
+
+      await page.waitForFunction(
+        (el) => getComputedStyle(el).boxShadow === 'none',
+        await footer.evaluateHandle((el) => el)
+      );
+
       expect(await getElementStyle(footer, 'boxShadow'), 'after scroll').toBe('none');
     });
   });
@@ -244,7 +252,7 @@ test.describe('can be dismissed', () => {
 
   test.beforeEach(async ({ page }) => {
     await initBasicFlyout(page);
-    host = await getHost(page);
+    host = getHost(page);
     await addEventListener(host, 'dismiss');
   });
 
@@ -288,7 +296,7 @@ test.describe('can be dismissed', () => {
 
   skipInBrowsers(['webkit'], () => {
     test('should not be closable via backdrop when disableBackdropClick is set', async ({ page }) => {
-      const host = await getHost(page);
+      const host = getHost(page);
       await setProperty(host, 'disableBackdropClick', true);
 
       await page.mouse.move(5, 5);
@@ -299,7 +307,7 @@ test.describe('can be dismissed', () => {
   });
 
   test('should not bubble dismiss event', async ({ page }) => {
-    const body = await page.$('body');
+    const body = await page.locator('body');
     await addEventListener(body, 'dismiss');
     await page.mouse.move(5, 5);
     await page.mouse.down();
@@ -423,7 +431,7 @@ test.describe('focus behavior', () => {
     expect(await getFlyoutVisibility(page), 'initial').toBe('hidden');
     expect(await getActiveElementTagName(page)).toBe('BODY');
 
-    await (await page.$('#btn-open')).click();
+    await (await page.locator('#btn-open')).click();
     await waitForStencilLifecycle(page);
 
     expect(await getFlyoutVisibility(page)).toBe('visible');
@@ -472,7 +480,7 @@ test.describe('after content change', () => {
     await page.keyboard.press('Tab');
     expect(await getActiveElementId(page), 'after 1st tab').toBe('btn-header');
 
-    const host = await getHost(page);
+    const host = getHost(page);
     await host.evaluate((el) => {
       el.innerHTML = '';
     });
@@ -492,7 +500,7 @@ test.describe('after content change', () => {
     await initAdvancedFlyout(page);
     await openFlyout(page);
 
-    const host = await getHost(page);
+    const host = getHost(page);
     await host.evaluate((el) => {
       const button = document.createElement('button');
       button.innerText = 'New Button';
@@ -566,7 +574,7 @@ test.describe('can be controlled via keyboard', () => {
 test('should open flyout at scroll top position zero when its content is scrollable', async ({ page }) => {
   await initBasicFlyout(page, { open: true }, { content: '<div style="height: 150vh;"></div>' });
 
-  const host = await getHost(page);
+  const host = getHost(page);
   const hostScrollTop = await host.evaluate((el) => el.scrollTop);
 
   expect(hostScrollTop).toBe(0);
@@ -582,7 +590,7 @@ test.describe('scroll lock', () => {
     await openFlyout(page);
     expect(await getBodyStyle(page)).toBe(bodyLockedStyle);
 
-    await setProperty(await getHost(page), 'open', false);
+    await setProperty(getHost(page), 'open', false);
     await waitForStencilLifecycle(page);
     expect(await getBodyStyle(page)).toBe('');
   });
@@ -619,7 +627,7 @@ test.describe('lifecycle', () => {
 
   test('should work without unnecessary round trips after state change', async ({ page }) => {
     await initBasicFlyout(page);
-    const host = await getHost(page);
+    const host = getHost(page);
 
     await setProperty(host, 'open', false);
     await waitForStencilLifecycle(page);
@@ -633,7 +641,7 @@ test.describe('lifecycle', () => {
 
   test('should work without unnecessary round trips after deeply nested slot content change', async ({ page }) => {
     await initBasicFlyout(page, { open: true }, { header: '<div slot="header">Some content</div>' });
-    const host = await getHost(page);
+    const host = getHost(page);
     const status = await getLifecycleStatus(page);
 
     expect(status.componentDidLoad['p-flyout'], 'componentDidLoad: p-flyout').toBe(1);
@@ -656,7 +664,7 @@ test.describe('lifecycle', () => {
 
   test('should update when adding named slot', async ({ page }) => {
     await initBasicFlyout(page);
-    const host = await getHost(page);
+    const host = getHost(page);
     const status = await getLifecycleStatus(page);
 
     expect(status.componentDidLoad['p-flyout'], 'componentDidLoad: p-flyout').toBe(1);
@@ -687,7 +695,7 @@ test.describe('after dynamic slot change', () => {
         subFooter: '<div slot="sub-footer" class="scroll-here">Some Content</div>',
       }
     );
-    const host = await getHost(page);
+    const host = getHost(page);
     const headerText = 'Some slotted header content';
 
     await expect(page.getByText(headerText)).not.toBeVisible();
@@ -711,7 +719,7 @@ test.describe('after dynamic slot change', () => {
 
   test('should show footer with shadow', async ({ page }) => {
     await initBasicFlyout(page);
-    const host = await getHost(page);
+    const host = getHost(page);
     const footerText = 'Some slotted footer content';
 
     await expect(page.getByText(footerText)).not.toBeVisible();
@@ -723,14 +731,14 @@ test.describe('after dynamic slot change', () => {
     await waitForStencilLifecycle(page);
 
     await expect(page.getByText(footerText)).toBeVisible();
-    expect(await getElementStyle(await getFooter(page), 'boxShadow'), 'before scroll').toBe(
+    expect(await getElementStyle(getFooter(page), 'boxShadow'), 'before scroll').toBe(
       'rgba(204, 204, 204, 0.35) 0px -5px 10px 0px'
     );
   });
 
   test('should show subfooter', async ({ page }) => {
     await initBasicFlyout(page);
-    const host = await getHost(page);
+    const host = getHost(page);
     const footerText = 'Some slotted sub-footer content';
 
     await expect(page.getByText(footerText)).not.toBeVisible();
@@ -745,7 +753,7 @@ test.describe('after dynamic slot change', () => {
 
   test('should update css sticky top custom property correctly if no header exists initially', async ({ page }) => {
     await initBasicFlyout(page);
-    const host = await getHost(page);
+    const host = getHost(page);
     expect(await getStickyTopCssVarValue(page)).toBe('0px');
 
     await addHeaderSlot(host);
@@ -770,7 +778,7 @@ test.describe('after dynamic slot change', () => {
 
   test('should update css sticky top custom property correctly if header exists initially', async ({ page }) => {
     await initAdvancedFlyout(page);
-    const host = await getHost(page);
+    const host = getHost(page);
     expect(await getStickyTopCssVarValue(page)).toBe('56px');
 
     await removeHeaderSlot(host);

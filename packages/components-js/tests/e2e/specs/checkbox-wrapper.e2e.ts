@@ -1,5 +1,5 @@
 import type { ElementHandle, Page } from 'playwright';
-import { expect, test } from '@playwright/test';
+import { expect, Locator, test } from '@playwright/test';
 import {
   addEventListener,
   getActiveElementTagName,
@@ -16,21 +16,21 @@ import {
 } from '../helpers';
 import type { FormState } from '@porsche-design-system/components';
 
-const getHost = (page: Page) => page.$('p-checkbox-wrapper');
-const getInput = (page: Page) => page.$('p-checkbox-wrapper input[type="checkbox"]');
-const getWrapper = (page: Page) => page.$('p-checkbox-wrapper .wrapper');
-const getLabel = (page: Page) => page.$('p-checkbox-wrapper label');
-const getMessage = (page: Page) => page.$('p-checkbox-wrapper .message');
+const getHost = (page: Page) => page.locator('p-checkbox-wrapper');
+const getInput = (page: Page) => page.locator('p-checkbox-wrapper input[type="checkbox"]');
+const getWrapper = (page: Page) => page.locator('p-checkbox-wrapper .wrapper');
+const getLabel = (page: Page) => page.locator('p-checkbox-wrapper label');
+const getMessage = (page: Page) => page.locator('p-checkbox-wrapper .message');
 
-const setIndeterminate = async (element: ElementHandle, value: boolean) => {
-  await setProperty(element, 'indeterminate', value);
+const setIndeterminate = async (locator: Locator, value: boolean) => {
+  await setProperty(locator, 'indeterminate', value);
 };
 
-const setChecked = async (element: ElementHandle, value: boolean) => {
-  await setProperty(element, 'checked', value);
+const setChecked = async (locator: Locator, value: boolean) => {
+  await setProperty(locator, 'checked', value);
 };
 
-const getBackgroundImage = (input: ElementHandle<HTMLElement>) => getElementStyle(input, 'backgroundImage');
+const getBackgroundImage = (input: ElementHandle<HTMLElement> | Locator) => getElementStyle(input, 'backgroundImage');
 const backgroundURL = 'url("data:image';
 
 type InitOptions = {
@@ -74,31 +74,31 @@ const initCheckbox = (page: Page, opts?: InitOptions): Promise<void> => {
 
 test('should add/remove message text with message if state changes programmatically', async ({ page }) => {
   await initCheckbox(page);
-  const host = await getHost(page);
-  expect(await getMessage(page), 'initially').toBeNull();
+  const host = getHost(page);
+  await expect(getMessage(page), 'initially').toHaveCount(0);
 
   await setProperty(host, 'state', 'error');
   await setProperty(host, 'message', 'Some error message');
   await waitForStencilLifecycle(page);
 
-  expect(await getMessage(page), 'when state = error').toBeDefined();
+  expect(getMessage(page), 'when state = error').toBeDefined();
 
   await setProperty(host, 'state', 'success');
   await setProperty(host, 'message', 'Some success message');
   await waitForStencilLifecycle(page);
 
-  expect(await getMessage(page), 'when state = success').toBeDefined();
+  expect(getMessage(page), 'when state = success').toBeDefined();
 
   await setProperty(host, 'state', 'none');
   await setProperty(host, 'message', '');
   await waitForStencilLifecycle(page);
 
-  expect(await getMessage(page), 'when state = none').toBeNull();
+  await expect(getMessage(page), 'when state = none').toHaveCount(0);
 });
 
 test('should toggle checkbox when input is clicked', async ({ page }) => {
   await initCheckbox(page);
-  const input = await getInput(page);
+  const input = getInput(page);
 
   expect(await getBackgroundImage(input)).toBe('none');
 
@@ -117,8 +117,8 @@ test('should toggle checkbox when input is clicked', async ({ page }) => {
 
 test('should not toggle checkbox on click in loading state', async ({ page }) => {
   await initCheckbox(page, { loading: true });
-  const host = await getHost(page);
-  const input = await getInput(page);
+  const host = getHost(page);
+  const input = getInput(page);
   await addEventListener(host, 'click');
   await addEventListener(input, 'change');
 
@@ -145,8 +145,8 @@ test('should not toggle checkbox on click in loading state', async ({ page }) =>
 
 test('should not toggle checkbox when pressed space in focus in loading state', async ({ page }) => {
   await initCheckbox(page, { loading: true });
-  const host = await getHost(page);
-  const input = await getInput(page);
+  const host = getHost(page);
+  const input = getInput(page);
   await addEventListener(input, 'change');
 
   await input.focus();
@@ -165,8 +165,8 @@ test('should not toggle checkbox when pressed space in focus in loading state', 
 skipInBrowsers(['firefox', 'webkit'], () => {
   test('should keep focus if state switches to loading', async ({ page }) => {
     await initCheckbox(page);
-    const input = await getInput(page);
-    const host = await getHost(page);
+    const input = getInput(page);
+    const host = getHost(page);
 
     expect(await hasFocus(input)).toBe(false);
     await page.keyboard.press('Tab');
@@ -187,7 +187,7 @@ skipInBrowsers(['firefox', 'webkit'], () => {
 test('should toggle checkbox when label text is clicked and not set input as active element', async ({ page }) => {
   await initCheckbox(page);
   const label = await getLabel(page);
-  const input = await getInput(page);
+  const input = getInput(page);
   const isInputChecked = (): Promise<boolean> => getProperty(input, 'checked');
 
   expect(await isInputChecked()).toBe(false);
@@ -208,7 +208,7 @@ test('should toggle checkbox when label text is clicked and not set input as act
 
 test('should check/uncheck checkbox when checkbox attribute is changed programmatically', async ({ page }) => {
   await initCheckbox(page);
-  const input = await getInput(page);
+  const input = getInput(page);
 
   expect(await getBackgroundImage(input)).toBe('none');
 
@@ -221,7 +221,7 @@ test('should check/uncheck checkbox when checkbox attribute is changed programma
 
 test('should check/uncheck checkbox when checkbox property is changed programmatically', async ({ page }) => {
   await initCheckbox(page);
-  const input = await getInput(page);
+  const input = getInput(page);
 
   expect(await getBackgroundImage(input)).toBe('none');
 
@@ -235,8 +235,8 @@ test('should check/uncheck checkbox when checkbox property is changed programmat
 skipInBrowsers(['firefox', 'webkit'], () => {
   test('should disable checkbox when disabled property is set programmatically', async ({ page }) => {
     await initCheckbox(page);
-    const host = await getHost(page);
-    const input = await getInput(page);
+    const host = getHost(page);
+    const input = getInput(page);
     const wrapper = await getWrapper(page);
 
     const getWrapperCursor = () => getElementStyle(wrapper, 'cursor');
@@ -275,7 +275,7 @@ test.describe('indeterminate state', () => {
 
   test('should show indeterminate state when checkbox is set to indeterminate', async ({ page }) => {
     await initCheckbox(page);
-    const input = await getInput(page);
+    const input = getInput(page);
 
     expect(await getBackgroundImage(input)).toBe('none');
 
@@ -288,7 +288,7 @@ test.describe('indeterminate state', () => {
 
   test('should remove indeterminate state when checkbox value is changed by the user', async ({ page }) => {
     await initCheckbox(page);
-    const input = await getInput(page);
+    const input = getInput(page);
 
     await setIndeterminate(input, true);
     const indeterminateImage = await getBackgroundImage(input);
@@ -309,7 +309,7 @@ test.describe('indeterminate state', () => {
 
   test('should keep indeterminate state when checkbox value is changed programmatically', async ({ page }) => {
     await initCheckbox(page);
-    const input = await getInput(page);
+    const input = getInput(page);
 
     await setIndeterminate(input, true);
     expect(await getBackgroundImage(input)).toContain(backgroundURL);
@@ -336,7 +336,7 @@ test.describe('lifecycle', () => {
 
   test('should work without unnecessary round trips after state change', async ({ page }) => {
     await initCheckbox(page, { useSlottedMessage: true, useSlottedLabel: true, state: 'error' });
-    const input = await getInput(page);
+    const input = getInput(page);
 
     await input.click();
     await waitForStencilLifecycle(page);

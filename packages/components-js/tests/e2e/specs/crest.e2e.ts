@@ -37,8 +37,8 @@ const setContentWithLink = (page: Page) =>
     </div>`
   );
 
-const getHost = (page: Page) => page.$('p-crest');
-const getLink = (page: Page) => page.$('p-crest a');
+const getHost = (page: Page) => page.locator('p-crest');
+const getLink = (page: Page) => page.locator('p-crest a');
 test.describe('on default screen', () => {
   const viewport = { width: 1299, height: 300 };
 
@@ -65,21 +65,21 @@ test.describe('with link', () => {
   test('should render <a> tag when href prop is defined', async ({ page }) => {
     await setContent(page);
 
-    const host = await getHost(page);
+    const host = getHost(page);
 
-    expect(await getLink(page)).toBe(null);
+    await expect(getLink(page)).toHaveCount(0);
 
     await setProperty(host, 'href', '#some-link');
     await waitForStencilLifecycle(page);
-    expect(await getLink(page)).not.toBe(null);
+    expect(getLink(page)).not.toBe(null);
   });
 
   test('should dispatch correct click events', async ({ page }) => {
     await setContentWithLink(page);
 
-    const wrapper = await page.$('div');
-    const host = await getHost(page);
-    const link = await getLink(page);
+    const wrapper = page.locator('div');
+    const host = getHost(page);
+    const link = getLink(page);
 
     await addEventListener(wrapper, 'click');
 
@@ -106,9 +106,9 @@ test.describe('with link', () => {
       </div>`
       );
 
-      const crest = await getHost(page);
-      const before = await page.$('#before');
-      const after = await page.$('#after');
+      const crest = getHost(page);
+      const before = page.locator('#before');
+      const after = page.locator('#after');
 
       await addEventListener(before, 'focus');
       await addEventListener(crest, 'focus');
@@ -188,8 +188,8 @@ test.describe('with link', () => {
 
     const crestHasFocus = () => page.evaluate(() => document.activeElement === document.querySelector('p-crest'));
 
-    const crest = await getHost(page);
-    const before = await page.$('#before');
+    const crest = getHost(page);
+    const before = page.locator('#before');
 
     await before.focus();
     expect(await crestHasFocus()).toBe(false);
