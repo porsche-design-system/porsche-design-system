@@ -163,7 +163,7 @@ test.describe('within form', () => {
     const host = await getHost(page);
     await host.click();
 
-    await page.waitForNavigation();
+    await page.waitForURL(page.url());
     // Since the data in only available via the event submitter it is easier to test it by checking the request params
     expect(page.url()).toContain(`?${name}=${value}`);
   });
