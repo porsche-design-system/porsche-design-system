@@ -1,7 +1,7 @@
-import { type ElementHandle, test, expect } from '@playwright/test';
+import { test, expect, type Locator } from '@playwright/test';
 import { getConsoleErrorsAmount, goto, initConsoleObserver, selectNode } from '../helpers';
 
-const getCounterValue = async (el: ElementHandle): Promise<string> => {
+const getCounterValue = async (el: Locator): Promise<string> => {
   return el.evaluate((element: Element) => element.innerHTML);
 };
 
