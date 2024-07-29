@@ -825,6 +825,7 @@ img {
         </h2>
         <div
           class="link-group"
+          role="group"
         >
           <slot
             name="primary"
@@ -1176,6 +1177,7 @@ img {
         </h2>
         <div
           class="link-group"
+          role="group"
         >
           <slot
             name="primary"
@@ -1563,6 +1565,7 @@ img {
         </h2>
         <div
           class="link-group"
+          role="group"
         >
           <slot
             name="primary"
@@ -1950,6 +1953,7 @@ img {
         </h2>
         <div
           class="link-group"
+          role="group"
         >
           <slot
             name="primary"
@@ -10490,6 +10494,7 @@ img {
         <h2 />
         <div
           class="link-group"
+          role="group"
         >
           <slot
             name="primary"
