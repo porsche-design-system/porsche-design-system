@@ -1,14 +1,14 @@
-import { type ConsoleMessage, type ElementHandle, type Page } from '@playwright/test';
+import { type ConsoleMessage, type Locator, type Page } from '@playwright/test';
 import { waitForComponentsReady } from './stencil';
 
-export const getElementProp = (el: ElementHandle, prop: string): Promise<string> =>
+export const getElementProp = (el: Locator, prop: string): Promise<string> =>
   el.evaluate((el, prop: string) => el[prop], prop);
 
-export const getOuterHTML = (el: ElementHandle): Promise<string> => el.evaluate((el) => el.outerHTML);
+export const getOuterHTML = (el: Locator): Promise<string> => el.evaluate((el) => el.outerHTML);
 
 export const goto = async (page: Page, url: string): Promise<void> => {
   await page.goto(url);
-  await page.locator('html.hydrated').waitFor();
+  page.locator('html.hydrated').waitFor();
   await waitForComponentsReady(page);
 };
 
