@@ -16,6 +16,7 @@ export const getComponentCss = (
   variant: LinkVariant,
   hideLabel: BreakpointCustomizable<boolean>,
   hasSlottedAnchor: boolean,
+  compact: boolean,
   theme: Theme
 ): string => {
   const { linkColor } = getHighContrastColors();
@@ -23,7 +24,7 @@ export const getComponentCss = (
 
   return getCss(
     mergeDeep(
-      getLinkButtonStyles(icon, iconSource, variant, hideLabel, false, hasSlottedAnchor, theme),
+      getLinkButtonStyles(icon, iconSource, variant, hideLabel, false, hasSlottedAnchor, compact, theme),
       {
         label: {
           clip: addImportantToRule('unset'), // to overrule breakpoint customizable hide-label style

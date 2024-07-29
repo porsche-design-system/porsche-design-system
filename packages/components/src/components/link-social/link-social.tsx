@@ -18,10 +18,11 @@ const propTypes: PropTypes<typeof LinkSocial> = {
   icon: AllowedTypes.string,
   iconSource: AllowedTypes.string,
   href: AllowedTypes.string,
-  theme: AllowedTypes.oneOf<Theme>(THEMES),
   target: AllowedTypes.string,
   rel: AllowedTypes.string,
   hideLabel: AllowedTypes.breakpoint('boolean'),
+  compact: AllowedTypes.boolean,
+  theme: AllowedTypes.oneOf<Theme>(THEMES),
 };
 
 /**
@@ -45,9 +46,6 @@ export class LinkSocial {
   /** When providing an url then the component will be rendered as `<a>`. */
   @Prop() public href?: string;
 
-  /** Adapts the link color when used on dark background. */
-  @Prop() public theme?: Theme = 'light';
-
   /** Target attribute where the link should be opened. */
   @Prop() public target?: LinkSocialTarget = '_self';
 
@@ -56,6 +54,12 @@ export class LinkSocial {
 
   /** Show or hide label. */
   @Prop() public hideLabel?: BreakpointCustomizable<boolean> = false;
+
+  /** Displays as compact version. */
+  @Prop() public compact?: boolean = false;
+
+  /** Adapts the link color when used on dark background. */
+  @Prop() public theme?: Theme = 'light';
 
   public componentWillLoad(): void {
     throwIfInvalidLinkUsage(this.host, this.href);
@@ -77,6 +81,7 @@ export class LinkSocial {
       'primary',
       this.hideLabel,
       !this.href,
+      this.compact,
       this.theme
     );
 

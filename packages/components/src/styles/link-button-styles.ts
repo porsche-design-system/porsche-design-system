@@ -1,5 +1,5 @@
 import type { Styles } from 'jss';
-import { buildResponsiveStyles, hasVisibleIcon, isHighContrastMode } from '../utils';
+import { buildResponsiveStyles, darken, hasVisibleIcon, isHighContrastMode, lighten } from '../utils';
 import type { BreakpointCustomizable, LinkButtonIconName, LinkButtonVariant, Theme } from '../types';
 import {
   addImportantToEachRule,
@@ -33,7 +33,8 @@ type Colors = {
 };
 
 const getVariantColors = (variant: LinkButtonVariant, theme: Theme): Colors => {
-  const { primaryColor, contrastHighColor, contrastMediumColor, hoverColor } = getThemedColors(theme);
+  const { primaryColor, contrastHighColor, contrastMediumColor, hoverColor, backgroundFrostedColor } =
+    getThemedColors(theme);
   const { canvasColor } = getHighContrastColors();
 
   const colors: {
@@ -53,6 +54,13 @@ const getVariantColors = (variant: LinkButtonVariant, theme: Theme): Colors => {
       backgroundColor: isHighContrastMode ? canvasColor : 'transparent',
       backgroundColorHover: hoverColor,
     },
+    ghost: {
+      textColor: primaryColor,
+      borderColor: backgroundFrostedColor,
+      borderColorHover: theme === 'dark' ? lighten(backgroundFrostedColor) : darken(backgroundFrostedColor),
+      backgroundColor: backgroundFrostedColor,
+      backgroundColorHover: theme === 'dark' ? lighten(backgroundFrostedColor) : darken(backgroundFrostedColor),
+    },
   };
 
   return colors[variant === 'tertiary' ? 'secondary' : variant];
@@ -65,6 +73,7 @@ export const getLinkButtonStyles = (
   hideLabel: BreakpointCustomizable<boolean>,
   isDisabledOrLoading: boolean,
   hasSlottedAnchor: boolean,
+  compact: boolean,
   theme: Theme
 ): Styles => {
   const isPrimary = variant === 'primary';
@@ -100,8 +109,8 @@ export const getLinkButtonStyles = (
       alignItems: 'flex-start',
       justifyContent: 'center',
       width: '100%',
-      minWidth: '54px', // ensure space is already reserved until icon component is loaded (ssr)
-      minHeight: '54px', // ensure space is already reserved until icon component is loaded (ssr)
+      minWidth: compact ? '36px' : '54px', // ensure space is already reserved until icon component is loaded (ssr)
+      minHeight: compact ? '36px' : '54px', // ensure space is already reserved until icon component is loaded (ssr)
       boxSizing: 'border-box',
       textAlign: 'start',
       WebkitAppearance: 'none', // iOS safari
@@ -111,11 +120,12 @@ export const getLinkButtonStyles = (
       borderRadius: borderRadiusSmall,
       transform: 'translate3d(0,0,0)', // creates new stacking context (for slotted anchor + focus)
       backgroundColor,
+      ...(compact && { backgroundClip: 'padding-box', ...frostedGlassStyle }), // background color overlays border-color otherwise
       color: textColor,
       ...textSmallStyle,
       transition: `${getTransition('background-color')}, ${getTransition('border-color')}, ${getTransition('color')}`,
       ...buildResponsiveStyles(hideLabel, (hideLabelValue: boolean) => ({
-        padding: hideLabelValue ? '13px' : '13px 26px',
+        padding: compact ? (hideLabelValue ? '6px' : '6px 12px') : hideLabelValue ? '13px' : '13px 26px',
         gap: hideLabelValue ? 0 : spacingStaticSmall,
       })),
       ...(!hasSlottedAnchor && getFocusJssStyle(theme)),
