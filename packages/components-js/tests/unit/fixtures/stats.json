@@ -81,8 +81,8 @@
   },
   {
     "chunkShortName": "flyout",
-    "size": 9607,
-    "gzipSize": 4032
+    "size": 9753,
+    "gzipSize": 4080
   },
   {
     "chunkShortName": "flyout-multilevel",
@@ -147,7 +147,7 @@
   {
     "chunkShortName": "main",
     "size": 80110,
-    "gzipSize": 26749
+    "gzipSize": 26750
   },
   {
     "chunkShortName": "marque",
@@ -156,8 +156,8 @@
   },
   {
     "chunkShortName": "modal",
-    "size": 11426,
-    "gzipSize": 4574
+    "size": 11572,
+    "gzipSize": 4617
   },
   {
     "chunkShortName": "model-signature",
