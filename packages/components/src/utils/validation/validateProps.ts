@@ -63,7 +63,7 @@ export const isValueNotOfType = (propValue: any, propType: string): boolean => {
   return propValue !== undefined && typeof propValue !== propType;
 };
 
-export const validateValueOfType = (propName: string, propValue: any, propType: string): ValidationError => {
+export const validateValueOfType = (propName: string, propValue: any, propType: string): ValidationError | void => {
   if (isValueNotOfType(propValue, propType)) {
     return { propName, propValue, propType };
   }
