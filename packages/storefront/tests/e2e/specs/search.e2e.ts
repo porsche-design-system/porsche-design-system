@@ -21,7 +21,7 @@ test.beforeEach(async ({ page }) => {
   });
 });
 
-const getHitsWrapper = (page: Page) => page.locator('.spacer');
+const getHitsWrapper = (page: Page) => page.locator('.spacer').first();
 const getAmountOfAlgoliaHits = (page: Page): Promise<number> =>
   page.evaluate(() => document.querySelectorAll('.ais-Hits-item').length);
 const waitForResultsToBeGone = (page: Page) => page.waitForFunction(() => !document.querySelector('.ais-Hits-item'));
@@ -39,7 +39,7 @@ const sendAlgoliaRequest = async (page: Page) =>
 test.describe('search', () => {
   test('should not display hits initially', async ({ page }) => {
     const amount = await getAmountOfAlgoliaHits(page);
-    const hitsWrapper = await getHitsWrapper(page);
+    const hitsWrapper = getHitsWrapper(page);
 
     expect(await getElementStyle(hitsWrapper, 'display')).toBe('none');
     expect(amount).toBe(0);
@@ -47,7 +47,7 @@ test.describe('search', () => {
 
   test('should display 4 hits after typing "button"', async ({ page }) => {
     await sendAlgoliaRequest(page);
-    const hitsWrapper = await getHitsWrapper(page);
+    const hitsWrapper = getHitsWrapper(page);
     const amount = await getAmountOfAlgoliaHits(page);
 
     expect(await getElementStyle(hitsWrapper, 'display')).toBe('block');
@@ -56,20 +56,20 @@ test.describe('search', () => {
 
   test('should hide hits after clicking on a result', async ({ page }) => {
     await sendAlgoliaRequest(page);
-    const [linkElement] = page.locator(`xpath=//header//a[contains(., 'Button')]`).all();
+    const [linkElement] = await page.locator(`xpath=//header//a[contains(., 'Button')]`).all();
     await linkElement.click();
-    const hitsWrapper = await getHitsWrapper(page);
+    const hitsWrapper = getHitsWrapper(page);
 
     expect(await getElementStyle(hitsWrapper, 'display')).toBe('none');
   });
 
   test('should show hits after navigation and click on search input focus', async ({ page }) => {
     await sendAlgoliaRequest(page);
-    const [linkElement] = page.locator(`xpath=//header//a[contains(., 'Button')]`).all();
+    const [linkElement] = await page.locator(`xpath=//header//a[contains(., 'Button')]`).all();
     await linkElement.click();
 
     await page.focus(searchInputSelector);
-    const hitsWrapper = await getHitsWrapper(page);
+    const hitsWrapper = getHitsWrapper(page);
 
     expect(await getElementStyle(hitsWrapper, 'display')).toBe('block');
   });
@@ -82,7 +82,7 @@ test.describe('search', () => {
     }
 
     await waitForResultsToBeGone(page);
-    const hitsWrapper = await getHitsWrapper(page);
+    const hitsWrapper = getHitsWrapper(page);
     const amount = await getAmountOfAlgoliaHits(page);
 
     expect(await getElementStyle(hitsWrapper, 'display')).toBe('none');
@@ -95,7 +95,7 @@ test.describe('search', () => {
     await page.keyboard.press('Escape');
 
     await waitForResultsToBeGone(page);
-    const hitsWrapper = await getHitsWrapper(page);
+    const hitsWrapper = getHitsWrapper(page);
     const amount = await getAmountOfAlgoliaHits(page);
 
     expect(await getElementStyle(hitsWrapper, 'display')).toBe('none');
@@ -108,7 +108,7 @@ test.describe('search', () => {
     await page.keyboard.press('Escape');
 
     await waitForResultsToBeGone(page);
-    const hitsWrapper = await getHitsWrapper(page);
+    const hitsWrapper = getHitsWrapper(page);
     const amount = await getAmountOfAlgoliaHits(page);
 
     await page.focus(searchInputSelector);
