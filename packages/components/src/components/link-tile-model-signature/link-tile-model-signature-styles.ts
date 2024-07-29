@@ -1,12 +1,4 @@
-import {
-  buildResponsiveStyles,
-  getCss,
-  isThemeDark,
-  type TileAlign,
-  type TileAspectRatio,
-  type TileBackground,
-  type TileWeight,
-} from '../../utils';
+import { buildResponsiveStyles, getCss, type TileAspectRatio, type TileWeight } from '../../utils';
 import {
   addImportantToEachRule,
   colorSchemeStyles,
@@ -18,7 +10,6 @@ import {
 } from '../../styles';
 import {
   borderRadiusLarge,
-  gradientToBottomStyle,
   gradientToTopStyle,
   spacingFluidLarge,
   spacingFluidMedium,
@@ -38,16 +29,9 @@ import { getGroupDirectionJssStyles } from '../../styles/group-direction-styles'
 export const getComponentCss = (
   aspectRatio: BreakpointCustomizable<TileAspectRatio>,
   weight: BreakpointCustomizable<TileWeight>, // to get deprecated semibold typed
-  background: TileBackground,
-  align: TileAlign,
-  compact: BreakpointCustomizable<boolean>,
-  hasGradient: boolean,
-  isDisabled?: boolean,
   direction?: BreakpointCustomizable<LinkTileModelSignatureLinkDirection>,
   hasDescription?: boolean
 ): string => {
-  const isTopAligned = align === 'top';
-
   return getCss({
     '@global': {
       ':host': {
@@ -59,17 +43,11 @@ export const getComponentCss = (
         }),
       },
       slot: {
-        display: 'block',
         '&:not([name])': {
+          display: 'block',
           width: '100%',
           height: '100%',
           transition: getTransition('transform', 'moderate'),
-        },
-        '&[name="primary"]': {
-          zIndex: 5,
-        },
-        '&[name="secondary"]': {
-          zIndex: 5,
         },
       },
       '::slotted(:is(img,picture))': addImportantToEachRule({
@@ -112,40 +90,26 @@ export const getComponentCss = (
       width: '100%', // necessary for Chrome in case tile content overflows in grid or flex context
       display: 'grid',
       gridTemplate: `${spacingFluidMedium} auto minmax(0px, 1fr) auto ${spacingFluidMedium}/${spacingFluidMedium} minmax(0px, 1fr) ${spacingFluidMedium}`,
-      ...(hasGradient &&
-        isThemeDark(background) && {
-          '&::after': {
-            content: '""',
-            zIndex: 2,
-            ...(isTopAligned
-              ? {
-                  gridArea: '1/1/3/-1',
-                  ...gradientToBottomStyle,
-                  marginBottom: `calc(${spacingFluidLarge} * -1)`, // to increase the gradient area without reserving additional layout space
-                  borderStartStartRadius: borderRadiusLarge,
-                  borderStartEndRadius: borderRadiusLarge,
-                }
-              : {
-                  gridArea: '4/1/6/-1',
-                  ...gradientToTopStyle,
-                  marginTop: `calc(${spacingFluidLarge} * -1)`, // to increase the gradient area without reserving additional layout space
-                  borderEndStartRadius: borderRadiusLarge,
-                  borderEndEndRadius: borderRadiusLarge,
-                }),
-            ...forcedColorsMediaQuery({
-              background: 'rgba(0,0,0,0.7)',
-            }),
-          },
+      '&::after': {
+        content: '""',
+        zIndex: 2,
+        gridArea: '4/1/6/-1',
+        ...gradientToTopStyle,
+        marginTop: `calc(${spacingFluidLarge} * -1)`, // to increase the gradient area without reserving additional layout space
+        borderEndStartRadius: borderRadiusLarge,
+        borderEndEndRadius: borderRadiusLarge,
+        ...forcedColorsMediaQuery({
+          background: 'rgba(0,0,0,0.7)',
         }),
-      ...(!isDisabled &&
-        hoverMediaQuery({
-          '&:hover slot:not([name])': {
-            transform: 'scale3d(1.05,1.05,1.05)',
-          },
-        })),
+      },
+      ...hoverMediaQuery({
+        '&:hover slot:not([name])': {
+          transform: 'scale3d(1.05,1.05,1.05)',
+        },
+      }),
     },
     header: {
-      gridArea: `${isTopAligned ? 4 : 2}/2`,
+      gridArea: '2/2',
       zIndex: 3,
       display: 'flex',
       flexDirection: 'column',
@@ -158,23 +122,15 @@ export const getComponentCss = (
       borderRadius: borderRadiusLarge,
     },
     footer: {
-      gridArea: `${isTopAligned ? 2 : 4}/2`,
+      gridArea: '4/2',
       display: 'flex',
       gap: spacingStaticMedium,
       justifyContent: 'space-between',
-      ...buildResponsiveStyles(compact, (compactValue: boolean) =>
-        compactValue
-          ? {
-              alignItems: 'center',
-              flexDirection: 'row',
-            }
-          : {
-              alignItems: 'flex-start',
-              flexDirection: 'column',
-            }
-      ),
+      alignItems: 'flex-start',
+      flexDirection: 'column',
     },
     'link-group': {
+      zIndex: 5,
       display: 'flex',
       width: '100%',
       gap: spacingFluidSmall,
