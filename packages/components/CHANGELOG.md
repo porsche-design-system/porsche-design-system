@@ -30,7 +30,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 #### Changed
 
 - `Link Tile`, `Link Tile Model Signature`, `Button Tile`:
-  - Layout behaviour is able to break out of its aspect ratio in case content overflows to be a11y compliant
+  - Layout behaviour is able to break out of its aspect ratio in case content overflows to be a11y compliant and/or to
+    improve visual alignment in CSS Grid context
     ([#3419](https://github.com/porsche-design-system/porsche-design-system/pull/3419))
   - Values `1:1 | 4:3 | 3:4 | 16:9 | 9:16` of prop `aspect-ratio` are deprecated and mapped to new values
     `1/1 | 4/3 | 3/4 | 16/9 | 9/16` to be aligned with CSS spec
