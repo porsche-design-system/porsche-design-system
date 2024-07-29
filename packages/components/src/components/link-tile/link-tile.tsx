@@ -35,6 +35,7 @@ const propTypes: PropTypes<typeof LinkTile> = {
 };
 
 /**
+ * @slot {"name": "header", "description": "Renders a header section above the content area." }
  * @slot {"name": "", "description": "Default slot for the img or picture tag." }
  */
 @Component({
