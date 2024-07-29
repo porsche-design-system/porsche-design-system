@@ -14,6 +14,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ### [Unreleased]
 
+### [3.17.0-rc.0] - 2024-07-29
+
 #### Added
 
 - `Link Tile`, `Link Tile Model Signature`, `Button Tile`:
