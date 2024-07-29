@@ -788,3 +788,33 @@ test.describe('after dynamic slot change', () => {
     expect(await getStickyTopCssVarValue(page)).toBe('167px');
   });
 });
+
+test.describe('events', () => {
+  skipInBrowsers(['firefox']);
+  test('should expose ontransitionstart event', async ({ page }) => {
+    await initBasicFlyout(page, { open: false });
+    const host = await getHost(page);
+    await waitForStencilLifecycle(page);
+    await addEventListener(host, 'transition');
+
+    expect((await getEventSummary(host, 'transition')).counter).toBe(0);
+
+    await openFlyout(page);
+
+    // Transition for each property will be fired separately (overlay, box-shadow, opacity, backdrop-filter, background-color, transform, margin-right)
+    expect((await getEventSummary(host, 'transition')).counter).toBe(7);
+  });
+  test('should expose ontransitionend event', async ({ page }) => {
+    await initBasicFlyout(page, { open: true });
+    const host = await getHost(page);
+    await waitForStencilLifecycle(page);
+    await addEventListener(host, 'transition');
+
+    expect((await getEventSummary(host, 'transition')).counter).toBe(0);
+
+    await dismissFlyout(page);
+
+    // Transition for each property will be fired separately (overlay, box-shadow, opacity, backdrop-filter, background-color)
+    expect((await getEventSummary(host, 'transition')).counter).toBe(5);
+  });
+});
