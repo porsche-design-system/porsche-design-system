@@ -1,4 +1,4 @@
-import { type ElementHandle, expect, test } from '@playwright/test';
+import { expect, type Locator, test } from '@playwright/test';
 import { goto } from '../helpers';
 import { getProperty } from '../../../../components-js/tests/a11y/helpers';
 
@@ -14,8 +14,9 @@ test('should focus correct element', async ({ page }) => {
   const getActiveElementTagName = () => page.evaluate(() => document.activeElement.tagName);
   const getActiveElementId = () => page.evaluate(() => document.activeElement.id);
 
-  const waitForFocus = async (el: ElementHandle<Element>) => {
-    return await host.evaluateHandle((el) => el.shadowRoot.activeElement);
+  const waitForFocus = async (el: Locator) => {
+    await host.evaluateHandle((el) => el.shadowRoot.activeElement);
+    return el;
   };
 
   const expectDismissButtonToBeFocused = async (failMessage: string) => {
