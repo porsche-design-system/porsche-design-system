@@ -1,5 +1,5 @@
 import type { Page } from 'playwright';
-import { type ElementHandle, expect, Locator, test } from '@playwright/test';
+import { expect, type Locator, test } from '@playwright/test';
 import type { Components } from '@porsche-design-system/components/src/components';
 import {
   addEventListener,
@@ -29,14 +29,13 @@ const getDropdownDisplay = async (page: Page): Promise<string> => await getEleme
 const getShadowDropdownOption = (page: Page, n: number) => page.locator(`p-multi-select .listbox div:nth-child(${n})`);
 const getMultiSelectOption = (page: Page, n: number) =>
   page.locator(`p-multi-select p-multi-select-option:nth-child(${n + 1})`); // First one is native select
-const getMultiSelectOptions = (page: Page): Promise<ElementHandle<HTMLElement>[] | Locator[]> =>
+const getMultiSelectOptions = (page: Page): Promise<Locator[]> =>
   page.locator('p-multi-select p-multi-select-option').all();
 const getAmountOfVisibleMultiSelectOptions = async (page: Page): Promise<number> =>
-  (await page.locator('p-multi-select-option').evaluateAll((elements) => elements.filter((element) => !element.hidden)))
-    .length;
+  page.locator('p-multi-select-option').evaluateAll((elements) => elements.filter((element) => !element.hidden)).length;
 
 const getAmountOfVisibleMultiSelectOptgroups = async (page: Page): Promise<number> =>
-  (await page.locator('p-optgroup').evaluateAll((elements) => elements.filter((element) => !element.hidden))).length;
+  page.locator('p-optgroup').evaluateAll((elements) => elements.filter((element) => !element.hidden)).length;
 
 const getSelectedMultiSelectOptionProperty = async <K extends keyof MultiSelectOption>(
   page: Page,
@@ -1270,8 +1269,8 @@ test.describe('theme', () => {
     await inputElement.click();
     await waitForStencilLifecycle(page);
 
-    const optgroups = await page.locator('p-optgroup').all();
-    const options = await page.locator('p-multi-select-option').all();
+    const optgroups = page.locator('p-optgroup').all();
+    const options = page.locator('p-multi-select-option').all();
 
     for (const child of [...optgroups, ...options]) {
       expect(await getProperty(child, 'theme')).toBe('light');

@@ -1,5 +1,4 @@
-import type { ElementHandle, Page } from 'playwright';
-import { expect, Locator, test } from '@playwright/test';
+import { expect, type Locator, test, type Page } from '@playwright/test';
 import {
   addEventListener,
   getActiveElementTagName,
@@ -30,7 +29,7 @@ const setChecked = async (locator: Locator, value: boolean) => {
   await setProperty(locator, 'checked', value);
 };
 
-const getBackgroundImage = (input: ElementHandle<HTMLElement> | Locator) => getElementStyle(input, 'backgroundImage');
+const getBackgroundImage = (input: Locator) => getElementStyle(input, 'backgroundImage');
 const backgroundURL = 'url("data:image';
 
 type InitOptions = {

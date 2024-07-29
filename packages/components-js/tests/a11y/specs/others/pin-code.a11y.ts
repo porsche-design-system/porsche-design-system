@@ -8,9 +8,9 @@ import {
 } from '../../helpers';
 import { Components } from '@porsche-design-system/components';
 
-const getHost = (page: Page) => page.$('p-pin-code');
-const getCurrentInput = (page: Page) => page.$('p-pin-code #current-input');
-const getMessage = (page: Page) => page.$('p-pin-code .message');
+const getHost = (page: Page) => page.locator('p-pin-code');
+const getCurrentInput = (page: Page) => page.locator('p-pin-code #current-input');
+const getMessage = (page: Page) => page.locator('p-pin-code .message');
 
 type InitOptions = {
   props?: Components.PPinCode;
@@ -100,7 +100,7 @@ test.fixme('should expose correct accessibility tree in required state', async (
 
 test.fixme('should add/remove accessibility tree if state changes programmatically', async ({ page }) => {
   await initPinCode(page, { props: { label: 'Some label' } });
-  const host = await getHost(page);
+  const host = getHost(page);
 
   await setProperty(host, 'state', 'error');
   await setProperty(host, 'message', 'Some error message.');

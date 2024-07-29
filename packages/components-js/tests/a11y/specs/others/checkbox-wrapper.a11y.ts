@@ -2,10 +2,10 @@ import { type Page, test, expect } from '@playwright/test';
 import { setContentWithDesignSystem, setProperty, waitForStencilLifecycle } from '../../helpers';
 import type { FormState } from '@porsche-design-system/components/dist/types/bundle';
 
-const getHost = (page: Page) => page.$('p-checkbox-wrapper');
-const getRoot = (page: Page) => page.$('p-checkbox-wrapper .root');
-const getInput = (page: Page) => page.$('p-checkbox-wrapper input[type="checkbox"]');
-const getMessage = (page: Page) => page.$('p-checkbox-wrapper .message');
+const getHost = (page: Page) => page.locator('p-checkbox-wrapper');
+const getRoot = (page: Page) => page.locator('p-checkbox-wrapper .root');
+const getInput = (page: Page) => page.locator('p-checkbox-wrapper input[type="checkbox"]');
+const getMessage = (page: Page) => page.locator('p-checkbox-wrapper .message');
 
 type InitOptions = {
   label?: string;
@@ -61,8 +61,8 @@ test.fixme('should expose correct accessibility tree properties in error state',
         <input type="checkbox" name="some-name" />
       </p-checkbox-wrapper>`
   );
-  const input = await getInput(page);
-  const message = await getMessage(page);
+  const input = getInput(page);
+  const message = getMessage(page);
 
   // await expectA11yToMatchSnapshot(page, input, { message: 'Of Input' });
   // await expectA11yToMatchSnapshot(page, message, { message: 'Of Message', interestingOnly: false });
@@ -77,14 +77,14 @@ test.fixme('should add/remove accessibility tree properties if state changes pro
       </p-checkbox-wrapper>`
   );
 
-  const host = await getHost(page);
+  const host = getHost(page);
 
   await setProperty(host, 'state', 'error');
   await setProperty(host, 'message', 'Some error message.');
   await waitForStencilLifecycle(page);
 
-  const input = await getInput(page);
-  const message = await getMessage(page);
+  const input = getInput(page);
+  const message = getMessage(page);
 
   // await expectA11yToMatchSnapshot(page, input, { message: 'Of Input when state = error' });
   // await expectA11yToMatchSnapshot(page, message, {
@@ -111,7 +111,7 @@ test.fixme('should add/remove accessibility tree properties if state changes pro
 
 test.fixme('should expose correct accessibility tree when loading=true', async ({ page }) => {
   await initCheckbox(page, { loading: true });
-  const root = await getRoot(page);
+  const root = getRoot(page);
 
   // await expectA11yToMatchSnapshot(page, root, { interestingOnly: false });
 });

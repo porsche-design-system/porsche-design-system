@@ -8,10 +8,10 @@ import {
   waitForStencilLifecycle,
 } from '../helpers';
 
-const getHost = (page: Page) => page.$('p-table');
-const getFirstTableHeadCell = (page: Page) => page.$('p-table-head-cell:nth-child(1)');
+const getHost = (page: Page) => page.locator('p-table');
+const getFirstTableHeadCell = (page: Page) => page.locator('p-table-head-cell:nth-child(1)');
 
-const getFirstTableHeadCellButton = (page: Page) => page.$('p-table-head-cell:nth-child(1) button');
+const getFirstTableHeadCellButton = (page: Page) => page.locator('p-table-head-cell:nth-child(1) button');
 
 type InitOptions = {
   columnAmount?: number;
@@ -61,14 +61,14 @@ test.describe('sorting', () => {
     await initTable(page, { isSortable: true });
     const firstTableHeadCell = await getFirstTableHeadCell(page);
 
-    expect(await getFirstTableHeadCellButton(page)).not.toBeNull();
+    await expect(getFirstTableHeadCellButton(page)).not.toHaveCount(0);
 
     await firstTableHeadCell.evaluate((el) => {
       (el as any).sort = { some: 'object' };
     });
     await waitForStencilLifecycle(page);
 
-    expect(await getFirstTableHeadCellButton(page)).toBeNull();
+    await expect(getFirstTableHeadCellButton(page)).toHaveCount(0);
   });
 });
 
@@ -76,10 +76,10 @@ test.describe('events', () => {
   test('should emit event on sorting change', async ({ page }) => {
     await initTable(page, { isSortable: true });
 
-    const host = await getHost(page);
+    const host = getHost(page);
     await addEventListener(host, 'sortingChange');
 
-    const firstTableHeadCellButton = await getFirstTableHeadCellButton(page);
+    const firstTableHeadCellButton = getFirstTableHeadCellButton(page);
     await firstTableHeadCellButton.click();
     expect((await getEventSummary(host, 'sortingChange')).counter).toBe(1);
 
@@ -90,20 +90,20 @@ test.describe('events', () => {
   test('should not have clickable button when column is not sortable', async ({ page }) => {
     await initTable(page, { isSortable: false });
 
-    const firstTableHeadCellPButtonPure = await getFirstTableHeadCellButton(page);
-    expect(firstTableHeadCellPButtonPure).toBeNull();
+    const firstTableHeadCellPButtonPure = getFirstTableHeadCellButton(page);
+    await expect(firstTableHeadCellPButtonPure).toHaveCount(0);
   });
 
   test('should emit both sortingChange and update event', async ({ page }) => {
     await initTable(page, { isSortable: true });
-    const host = await getHost(page);
+    const host = getHost(page);
 
     await addEventListener(host, 'sortingChange');
     await addEventListener(host, 'update');
     expect((await getEventSummary(host, 'sortingChange')).counter).toBe(0);
     expect((await getEventSummary(host, 'update')).counter).toBe(0);
 
-    const firstTableHeadCellButton = await getFirstTableHeadCellButton(page);
+    const firstTableHeadCellButton = getFirstTableHeadCellButton(page);
     await firstTableHeadCellButton.click();
     expect((await getEventSummary(host, 'sortingChange')).counter).toBe(1);
     expect((await getEventSummary(host, 'update')).counter).toBe(1);
@@ -136,7 +136,7 @@ test.describe('lifecycle', () => {
     expect(initialStatus.componentDidLoad.all, 'initial componentDidLoad: all').toBe(30);
     expect(initialStatus.componentDidUpdate.all, 'initial componentDidUpdate: all').toBe(0);
 
-    const host = await getHost(page);
+    const host = getHost(page);
     await host.evaluate((host) => {
       host.querySelectorAll('p-table-head-cell').forEach((el, i) => {
         (el as any).sort = { id: i, active: i === 0, direction: 'asc' };

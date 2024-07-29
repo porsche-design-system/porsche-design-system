@@ -2,8 +2,8 @@ import { type Page, test, expect } from '@playwright/test';
 import { getProperty, setContentWithDesignSystem, setProperty, waitForStencilLifecycle } from '../../helpers';
 import type { ModalAriaAttribute, SelectedAriaAttributes } from '@porsche-design-system/components/dist/types/bundle';
 
-const getHost = (page: Page) => page.$('p-modal');
-const getModalDialog = (page: Page) => page.$('p-modal dialog');
+const getHost = (page: Page) => page.locator('p-modal');
+const getModalDialog = (page: Page) => page.locator('p-modal dialog');
 
 const initBasicModal = (
   page: Page,
@@ -81,7 +81,7 @@ for (const [heading, aria, expected] of testCases) {
 
 test('should overwrite aria-label when adding aria prop', async ({ page }) => {
   await initBasicModal(page, { isOpen: false });
-  const host = await getHost(page);
+  const host = getHost(page);
   const modal = await getModalDialog(page);
   await setProperty(host, 'aria', "{'aria-label': 'Other Heading'}");
   await waitForStencilLifecycle(page);
@@ -91,7 +91,7 @@ test('should overwrite aria-label when adding aria prop', async ({ page }) => {
 
 test('should overwrite aria-label with heading when setting aria prop to undefined', async ({ page }) => {
   await initBasicModal(page, { isOpen: false, heading: 'Some Heading', aria: "{'aria-label': 'Other Heading'}" });
-  const host = await getHost(page);
+  const host = getHost(page);
   const modal = await getModalDialog(page);
   await setProperty(host, 'aria', undefined);
   await waitForStencilLifecycle(page);

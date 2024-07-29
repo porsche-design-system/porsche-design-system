@@ -59,15 +59,15 @@ ${otherMarkup}
   return setContentWithDesignSystem(page, isWrapped ? `<div style="width: 300px">${content}</div>` : content);
 };
 
-const getHost = (page: Page) => page.$('p-tabs-bar');
-const getAllButtons = (page: Page) => page.$$('button[role="tab"]');
-const getScrollArea = (page: Page) => page.$('p-tabs-bar p-scroller .scroll-area');
-const getBar = (page: Page) => page.$('p-tabs-bar .bar');
-const getGradientNext = (page: Page) => page.$('p-tabs-bar p-scroller .action-next');
+const getHost = (page: Page) => page.locator('p-tabs-bar');
+const getAllButtons = (page: Page) => page.locator('button[role="tab"]').all();
+const getScrollArea = (page: Page) => page.locator('p-tabs-bar p-scroller .scroll-area');
+const getBar = (page: Page) => page.locator('p-tabs-bar .bar');
+const getGradientNext = (page: Page) => page.locator('p-tabs-bar p-scroller .action-next');
 
 const getPrevNextButton = async (page: Page) => {
-  const prevButton = await page.$('p-tabs-bar p-scroller .action-prev button');
-  const nextButton = await page.$('p-tabs-bar p-scroller .action-next button');
+  const prevButton = page.locator('p-tabs-bar p-scroller .action-prev button');
+  const nextButton = page.locator('p-tabs-bar p-scroller .action-next button');
   return { prevButton, nextButton };
 };
 
@@ -112,8 +112,8 @@ test('should work with nested or translated markup', async ({ page }) => {
 
   await setContentWithDesignSystem(page, content);
 
-  const host = await getHost(page);
-  const [innerTab1, innerTab2, innerTab3] = await page.$$('button > font > font');
+  const host = getHost(page);
+  const [innerTab1, innerTab2, innerTab3] = await page.locator('button > font > font').all();
 
   await addEventListener(host, 'update');
   expect(await getProperty(host, 'activeTabIndex')).toBe(0);
@@ -438,7 +438,7 @@ test.describe('when wrapped', () => {
 test.describe('events', () => {
   test('should trigger event on button click', async ({ page }) => {
     await initTabsBar(page, { amount: 3, activeTabIndex: 1 });
-    const host = await getHost(page);
+    const host = getHost(page);
     const [firstButton, secondButton, thirdButton] = await getAllButtons(page);
     await addEventListener(host, 'tabChange');
 
@@ -493,7 +493,7 @@ test.describe('events', () => {
 
   test('should emit both tabChange and update event', async ({ page }) => {
     await initTabsBar(page);
-    const host = await getHost(page);
+    const host = getHost(page);
 
     await addEventListener(host, 'tabChange');
     await addEventListener(host, 'update');
@@ -569,7 +569,7 @@ test.describe('lifecycle', () => {
 
   test('should work without unnecessary round trips on prop change', async ({ page }) => {
     await initTabsBar(page, { amount: 3, tag: 'button' });
-    const host = await getHost(page);
+    const host = getHost(page);
 
     await setProperty(host, 'activeTabIndex', 2);
     await waitForStencilLifecycle(page);

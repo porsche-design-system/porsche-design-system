@@ -147,7 +147,7 @@ const scenario = async (page: Page, theme: Theme, scheme?: PrefersColorScheme): 
   });
 
   // let's toggle some password fields
-  const textFieldWrappers = await page.$$('.toggle-password');
+  const textFieldWrappers = await page.locator('.toggle-password').all();
   await Promise.all(
     textFieldWrappers.map(
       async (item) =>

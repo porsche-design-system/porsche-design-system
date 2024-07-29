@@ -1,13 +1,13 @@
 import { setContentWithDesignSystem, setProperty, waitForStencilLifecycle } from '../../helpers';
 import { type Page, test, expect } from '@playwright/test';
 
-const getHost = (page: Page) => page.$('p-select-wrapper');
+const getHost = (page: Page) => page.locator('p-select-wrapper');
 
 const dropdownSelector = 'p-select-wrapper p-select-wrapper-dropdown';
 const filterInputSelector = `${dropdownSelector} input`;
 
-const getDropdownList = (page: Page) => page.$(`${dropdownSelector} [role="listbox"]`);
-const getFilterInput = (page: Page) => page.$(filterInputSelector);
+const getDropdownList = (page: Page) => page.locator(`${dropdownSelector} [role="listbox"]`);
+const getFilterInput = (page: Page) => page.locator(filterInputSelector);
 
 type InitOptions = {
   amount?: 3 | 5;
@@ -56,7 +56,7 @@ test.fixme('should expose correct accessibility tree of option list if filter va
 
 test.fixme('should expose correct accessibility tree if description is set', async ({ page }) => {
   await initSelect(page);
-  const host = await getHost(page);
+  const host = getHost(page);
   await setProperty(host, 'description', 'Some description');
   await waitForStencilLifecycle(page);
   const filterInput = await getFilterInput(page);
@@ -66,7 +66,7 @@ test.fixme('should expose correct accessibility tree if description is set', asy
 
 test.fixme('should expose correct accessibility tree in error state', async ({ page }) => {
   await initSelect(page);
-  const host = await getHost(page);
+  const host = getHost(page);
   await setProperty(host, 'state', 'error');
   await setProperty(host, 'message', 'Some error message');
   await waitForStencilLifecycle(page);

@@ -1,10 +1,10 @@
 import { setContentWithDesignSystem, setProperty, waitForStencilLifecycle } from '../../helpers';
 import { type Page, test, expect } from '@playwright/test';
 
-const getHost = (page: Page) => page.$('p-link-pure');
-const getLink = (page: Page) => page.$('p-link-pure a');
-const getIcon = (page: Page) => page.$('p-link-pure p-icon svg');
-const getSpan = (page: Page) => page.$('p-link-pure span');
+const getHost = (page: Page) => page.locator('p-link-pure');
+const getLink = (page: Page) => page.locator('p-link-pure a');
+const getIcon = (page: Page) => page.locator('p-link-pure p-icon svg');
+const getSpan = (page: Page) => page.locator('p-link-pure span');
 
 const initLinkPure = (page: Page, opts?: { useSlottedAnchor?: boolean; withSubline?: boolean }): Promise<void> => {
   const { useSlottedAnchor = false, withSubline = false } = opts || {};
@@ -23,7 +23,7 @@ const initLinkPure = (page: Page, opts?: { useSlottedAnchor?: boolean; withSubli
 
 test.fixme('should expose correct initial accessibility tree properties', async ({ page }) => {
   await initLinkPure(page);
-  const link = await getLink(page);
+  const link = getLink(page);
   const icon = await getIcon(page);
 
   // await expectA11yToMatchSnapshot(page, link);
@@ -32,8 +32,8 @@ test.fixme('should expose correct initial accessibility tree properties', async 
 
 test.fixme('should expose correct accessibility tree if label is hidden', async ({ page }) => {
   await initLinkPure(page);
-  const host = await getHost(page);
-  const link = await getLink(page);
+  const host = getHost(page);
+  const link = getLink(page);
   await setProperty(host, 'hide-label', 'true');
   await waitForStencilLifecycle(page);
 
@@ -42,7 +42,7 @@ test.fixme('should expose correct accessibility tree if label is hidden', async 
 
 test.fixme('should expose correct accessibility tree description if subline property is set', async ({ page }) => {
   await initLinkPure(page, { withSubline: true });
-  const link = await getLink(page);
+  const link = getLink(page);
 
   // await expectA11yToMatchSnapshot(page, link);
 });
@@ -60,8 +60,8 @@ test('should not expose accessibility tree description with slotted anchor and s
 
 test.fixme('should expose correct accessibility tree if accessibility properties are set', async ({ page }) => {
   await initLinkPure(page);
-  const host = await getHost(page);
-  const link = await getLink(page);
+  const host = getHost(page);
+  const link = getLink(page);
 
   await setProperty(host, 'aria', {
     'aria-label': 'Some more detailed label',

@@ -1,7 +1,7 @@
 import { setContentWithDesignSystem } from '../../helpers';
 import { type Page, test, expect } from '@playwright/test';
 
-const getRoot = (page: Page) => page.$('p-link-tile-model-signature .root');
+const getRoot = (page: Page) => page.locator('p-link-tile-model-signature .root');
 
 const initLinkTileModelSignature = (page: Page, opts?: { useSlottedAnchor?: boolean }): Promise<void> => {
   const { useSlottedAnchor = false } = opts || {};

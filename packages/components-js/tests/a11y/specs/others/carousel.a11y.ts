@@ -62,18 +62,18 @@ const initCarousel = (page: Page, opts?: InitOptions) => {
   return setContentWithDesignSystem(page, content);
 };
 
-const getHost = (page: Page) => page.$('p-carousel');
-const getSkipLinkHost = (page: Page) => page.$('p-carousel .skip-link');
-const getSplide = (page: Page) => page.$('p-carousel .splide');
-const getSplideTrack = (page: Page) => page.$('p-carousel .splide__track');
-const getSlides = (page: Page) => page.$$('p-carousel .splide .splide__slide');
-const getButtonPrev = (page: Page) => page.$('p-carousel p-button-pure:first-of-type button');
-const getButtonNext = (page: Page) => page.$('p-carousel p-button-pure:last-of-type button');
+const getHost = (page: Page) => page.locator('p-carousel');
+const getSkipLinkHost = (page: Page) => page.locator('p-carousel .skip-link');
+const getSplide = (page: Page) => page.locator('p-carousel .splide');
+const getSplideTrack = (page: Page) => page.locator('p-carousel .splide__track');
+const getSlides = (page: Page) => page.locator('p-carousel .splide .splide__slide').all();
+const getButtonPrev = (page: Page) => page.locator('p-carousel p-button-pure:first-of-type button');
+const getButtonNext = (page: Page) => page.locator('p-carousel p-button-pure:last-of-type button');
 
 test('should update prev/next buttons aria-labels on slide change', async ({ page }) => {
   await initCarousel(page, { amountOfSlides: 2 });
-  const buttonPrev = await getButtonPrev(page);
-  const buttonNext = await getButtonNext(page);
+  const buttonPrev = getButtonPrev(page);
+  const buttonNext = getButtonNext(page);
 
   expect(await getAttribute(buttonPrev, 'aria-label')).toBe('Go to last slide');
   expect(await getAttribute(buttonNext, 'aria-label')).toBe('Next slide');
@@ -97,7 +97,7 @@ test('should update prev/next buttons aria-labels on slide change', async ({ pag
 test('should remove aria-hidden of slides on ready and after slide moved', async ({ page }) => {
   await initCarousel(page);
   const [slide1, slide2, slide3] = await getSlides(page);
-  const buttonNext = await getButtonNext(page);
+  const buttonNext = getButtonNext(page);
 
   expect(await getAttribute(slide1, 'aria-hidden')).toBe(null);
   expect(await getAttribute(slide2, 'aria-hidden')).toBe(null);
@@ -124,10 +124,10 @@ test('should remove aria-hidden of slides on resized', async ({ page }) => {
 
 test('should expose correct initial ARIA attributes', async ({ page }) => {
   await initCarousel(page);
-  const buttonPrev = await getButtonPrev(page);
-  const buttonNext = await getButtonNext(page);
-  const splide = await getSplide(page);
-  const splideTrack = await getSplideTrack(page);
+  const buttonPrev = getButtonPrev(page);
+  const buttonNext = getButtonNext(page);
+  const splide = getSplide(page);
+  const splideTrack = getSplideTrack(page);
   const [slide1, slide2, slide3] = await getSlides(page);
 
   // await expectA11yToMatchSnapshot(page, buttonPrev, { message: 'buttonPrev' });
@@ -173,7 +173,7 @@ test('should expose correct aria-label when aria prop is defined and heading is 
 test('should expose correct aria-label when aria prop is defined and slotted heading is set', async ({ page }) => {
   const otherHeading = 'Other heading';
   await initCarousel(page, { slottedHeading: true, aria: `{'aria-label': '${otherHeading}'}` });
-  const splide = await getSplide(page);
+  const splide = getSplide(page);
 
   expect(await getAttribute(splide, 'aria-labelledby')).toBe(null);
   expect(await getAttribute(splide, 'aria-label')).toBe(otherHeading);
@@ -182,7 +182,7 @@ test('should expose correct aria-label when aria prop is defined and slotted hea
 test('should expose correct aria-label when aria prop is defined and no heading is set', async ({ page }) => {
   const someHeading = 'Some heading';
   await initCarousel(page, { heading: false, aria: `{'aria-label': '${someHeading}'}` });
-  const splide = await getSplide(page);
+  const splide = getSplide(page);
 
   expect(await getAttribute(splide, 'aria-labelledby')).toBe(null);
   expect(await getAttribute(splide, 'aria-label')).toBe(someHeading);
@@ -190,8 +190,8 @@ test('should expose correct aria-label when aria prop is defined and no heading 
 
 test('should change skip-link to visible if it receives keyboard focus', async ({ page }) => {
   await initCarousel(page, { skipLinkTarget: '#link-after' });
-  const host = await getHost(page);
-  const skipLinkHost = await getSkipLinkHost(page);
+  const host = getHost(page);
+  const skipLinkHost = getSkipLinkHost(page);
 
   expect(await getElementStyle(skipLinkHost, 'opacity')).toBe('0');
 

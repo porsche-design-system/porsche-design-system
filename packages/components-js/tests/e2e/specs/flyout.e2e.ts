@@ -1,5 +1,4 @@
-import type { ElementHandle, Page } from 'playwright';
-import { expect, Locator, test } from '@playwright/test';
+import { expect, type Locator, test, type Page } from '@playwright/test';
 import {
   addEventListener,
   getActiveElementClassNameInShadowRoot,
@@ -248,7 +247,7 @@ test.describe('scroll shadows', () => {
 });
 
 test.describe('can be dismissed', () => {
-  let host: ElementHandle;
+  let host: Locator;
 
   test.beforeEach(async ({ page }) => {
     await initBasicFlyout(page);
@@ -307,7 +306,7 @@ test.describe('can be dismissed', () => {
   });
 
   test('should not bubble dismiss event', async ({ page }) => {
-    const body = await page.locator('body');
+    const body = page.locator('body');
     await addEventListener(body, 'dismiss');
     await page.mouse.move(5, 5);
     await page.mouse.down();
@@ -431,7 +430,7 @@ test.describe('focus behavior', () => {
     expect(await getFlyoutVisibility(page), 'initial').toBe('hidden');
     expect(await getActiveElementTagName(page)).toBe('BODY');
 
-    await (await page.locator('#btn-open')).click();
+    page.locator('#btn-open').click();
     await waitForStencilLifecycle(page);
 
     expect(await getFlyoutVisibility(page)).toBe('visible');

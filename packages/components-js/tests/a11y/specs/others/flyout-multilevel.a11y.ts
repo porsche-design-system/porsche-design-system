@@ -8,9 +8,9 @@ import {
 import { type Page, test, expect } from '@playwright/test';
 import type { Components } from '@porsche-design-system/components';
 
-const getHost = (page: Page) => page.$('p-flyout-multilevel');
-const getFlyoutMultilevelDialog = (page: Page) => page.$('p-flyout-multilevel dialog');
-const getFlyoutMultilevelContent = (page: Page) => page.$('p-flyout-multilevel .content');
+const getHost = (page: Page) => page.locator('p-flyout-multilevel');
+const getFlyoutMultilevelDialog = (page: Page) => page.locator('p-flyout-multilevel dialog');
+const getFlyoutMultilevelContent = (page: Page) => page.locator('p-flyout-multilevel .content');
 
 const initBasicFlyoutMultilevel = (
   page: Page,
@@ -64,7 +64,7 @@ test.fixme('should not expose accessibility tree if flyout is hidden', async ({ 
 
 test('should overwrite aria-label when adding aria prop', async ({ page }) => {
   await initBasicFlyoutMultilevel(page, { open: false, aria: "{'aria-label': 'Some Heading'}" });
-  const host = await getHost(page);
+  const host = getHost(page);
   const flyoutMultilevelContent = await getFlyoutMultilevelContent(page);
   expect(await getProperty(flyoutMultilevelContent, 'ariaLabel')).toBe('Some Heading');
 

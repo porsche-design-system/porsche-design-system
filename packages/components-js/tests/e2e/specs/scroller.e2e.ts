@@ -41,17 +41,17 @@ const initScroller = (page: Page, opts?: InitOptions) => {
   return setContentWithDesignSystem(page, isWrapped ? `<div style="width: 200px">${content}</div>` : content);
 };
 
-const getHost = (page: Page) => page.$('p-scroller');
-const getAllButtons = (page: Page) => page.$$('button');
-const getScrollArea = (page: Page) => page.$('p-scroller .scroll-area');
+const getHost = (page: Page) => page.locator('p-scroller');
+const getAllButtons = (page: Page) => page.locator('button').all();
+const getScrollArea = (page: Page) => page.locator('p-scroller .scroll-area');
 const getActionContainers = async (page: Page) => {
-  const actionPrev = await page.$('p-scroller .action-prev');
-  const actionNext = await page.$('p-scroller .action-next');
+  const actionPrev = page.locator('p-scroller .action-prev');
+  const actionNext = page.locator('p-scroller .action-next');
   return { actionPrev, actionNext };
 };
 const getPrevNextButton = async (page: Page) => {
-  const prevButton = await page.$('p-scroller .action-prev button');
-  const nextButton = await page.$('p-scroller .action-next button');
+  const prevButton = page.locator('p-scroller .action-prev button');
+  const nextButton = page.locator('p-scroller .action-next button');
   return { prevButton, nextButton };
 };
 const getScrollLeft = (element: ElementHandle<HTMLElement | SVGElement>) => getProperty(element, 'scrollLeft');
@@ -286,7 +286,7 @@ test.describe('lifecycle', () => {
 
   test('should work without unnecessary round trips on prop change', async ({ page }) => {
     await initScroller(page, { amount: 3, tag: 'button' });
-    const host = await getHost(page);
+    const host = getHost(page);
 
     await setProperty(host, 'theme', 'dark');
     await waitForStencilLifecycle(page);

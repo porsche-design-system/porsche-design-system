@@ -1,14 +1,14 @@
 import { type Page, test, expect } from '@playwright/test';
 import { getAttribute, setContentWithDesignSystem, setProperty, waitForStencilLifecycle } from '../../helpers';
 
-const getHost = (page: Page) => page.$('p-table');
-const getTable = (page: Page) => page.$('p-table .table');
-const getFirstTableHeadCell = (page: Page) => page.$('p-table-head-cell:nth-child(1)');
+const getHost = (page: Page) => page.locator('p-table');
+const getTable = (page: Page) => page.locator('p-table .table');
+const getFirstTableHeadCell = (page: Page) => page.locator('p-table-head-cell:nth-child(1)');
 
-const getFirstTableHeadCellButton = (page: Page) => page.$('p-table-head-cell:nth-child(1) button');
-const getSecondTableHeadCell = (page: Page) => page.$('p-table-head-cell:nth-child(2)');
-const getThirdTableHeadCell = (page: Page) => page.$('p-table-head-cell:nth-child(3)');
-const getCaption = (page: Page) => page.$('p-table .caption');
+const getFirstTableHeadCellButton = (page: Page) => page.locator('p-table-head-cell:nth-child(1) button');
+const getSecondTableHeadCell = (page: Page) => page.locator('p-table-head-cell:nth-child(2)');
+const getThirdTableHeadCell = (page: Page) => page.locator('p-table-head-cell:nth-child(3)');
+const getCaption = (page: Page) => page.locator('p-table .caption');
 
 type InitOptions = {
   columnAmount?: number;
@@ -66,7 +66,7 @@ test('should set correct accessibility tree and aria-attribute for caption prope
   // hint: accessibility tree snapshot not useful due to lack of support of table-role in interestingOnly mode.
   await initTable(page);
 
-  const host = await getHost(page);
+  const host = getHost(page);
   const table = await getTable(page);
   expect(await getAttribute(table, 'aria-label'), 'initial aria-label').toBeNull();
   expect(await getAttribute(table, 'aria-labelledby'), 'initial aria-labelledby').toBeNull();
@@ -96,7 +96,7 @@ test('should set correct accessibility tree and aria-attribute for slotted capti
 test('should set correct aria-sort value when sortable', async ({ page }) => {
   await initTable(page, { isSortable: true });
 
-  const host = await getHost(page);
+  const host = getHost(page);
   const firstTableHeadCell = await getFirstTableHeadCell(page);
   const secondTableHeadCell = await getSecondTableHeadCell(page);
   const thirdTableHeadCell = await getThirdTableHeadCell(page);

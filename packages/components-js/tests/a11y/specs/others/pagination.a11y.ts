@@ -1,10 +1,10 @@
 import { type Page, test, expect } from '@playwright/test';
 import { getAttribute, setContentWithDesignSystem, setProperty, waitForStencilLifecycle } from '../../helpers';
 
-const getHost = (page: Page) => page.$('p-pagination');
-const getNextButton = (page: Page) => page.$('p-pagination li:last-child span');
-const getNav = (page: Page) => page.$('p-pagination nav');
-const getPaginationItems = async (page: Page) => (await (await getNav(page)).$$('span:not(.ellipsis)')).slice(1, -1); // without prev and next
+const getHost = (page: Page) => page.locator('p-pagination');
+const getNextButton = (page: Page) => page.locator('p-pagination li:last-child span');
+const getNav = (page: Page) => page.locator('p-pagination nav');
+const getPaginationItems = async (page: Page) => (await getNav(page).locator('span:not(.ellipsis)').all()).slice(1, -1); // without prev and next
 
 const initPagination = (page: Page, opts?: { activePage?: number }) => {
   const { activePage = 1 } = opts || {};
@@ -27,7 +27,7 @@ test.fixme(
   async ({ page }) => {
     await initPagination(page, { activePage: 20 });
 
-    const host = await getHost(page);
+    const host = getHost(page);
     // await expectA11yToMatchSnapshot(page, await getNextButton(), { message: 'If disabled' });
 
     await setProperty(host, 'activePage', 15);
@@ -40,7 +40,7 @@ test.fixme(
 test('should have aria-current = page if selected', async ({ page }) => {
   await initPagination(page);
 
-  const host = await getHost(page);
+  const host = getHost(page);
   const [firstPageItem] = await getPaginationItems(page);
 
   expect(await getAttribute(firstPageItem, 'aria-current')).toBe('page');

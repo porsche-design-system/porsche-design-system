@@ -2,9 +2,9 @@ import { setContentWithDesignSystem, setProperty, waitForStencilLifecycle } from
 import { type Page, test, expect } from '@playwright/test';
 import type { FormState } from '@porsche-design-system/components/dist/types/bundle';
 
-const getHost = (page: Page) => page.$('p-select-wrapper');
-const getSelect = (page: Page) => page.$('p-select-wrapper select');
-const getMessage = (page: Page) => page.$('p-select-wrapper .message');
+const getHost = (page: Page) => page.locator('p-select-wrapper');
+const getSelect = (page: Page) => page.locator('p-select-wrapper select');
+const getMessage = (page: Page) => page.locator('p-select-wrapper .message');
 
 type InitOptions = {
   useSlottedLabel?: boolean;
@@ -59,7 +59,7 @@ test.fixme('should expose correct initial accessibility tree', async ({ page }) 
 
 test.fixme('should update accessibility tree with message text if state changes programmatically', async ({ page }) => {
   await initSelect(page);
-  const host = await getHost(page);
+  const host = getHost(page);
 
   await setProperty(host, 'state', 'error');
   await setProperty(host, 'message', 'Some error message.');

@@ -1,5 +1,4 @@
-import type { Page } from 'playwright';
-import { ElementHandle, expect, test } from '@playwright/test';
+import { expect, type Locator, test, type Page } from '@playwright/test';
 import {
   addEventListener,
   getAttribute,
@@ -15,12 +14,12 @@ import {
 } from '../helpers';
 import { Components } from '@porsche-design-system/components';
 
-const getHost = (page: Page) => page.$('p-pin-code');
-const getLabel = (page: Page) => page.$('p-pin-code label');
-const getCurrentInput = (page: Page) => page.$('p-pin-code #current-input');
-const getHiddenInput = (page: Page) => page.$('p-pin-code input[slot="internal-input"]');
-const getInput = (page: Page, n: number) => page.$(`p-pin-code .wrapper input:nth-child(${n})`);
-const getActiveElementsAriaLabelInShadowRoot = (page: Page, element: ElementHandle<HTMLElement>): Promise<string> => {
+const getHost = (page: Page) => page.locator('p-pin-code');
+const getLabel = (page: Page) => page.locator('p-pin-code label');
+const getCurrentInput = (page: Page) => page.locator('p-pin-code #current-input');
+const getHiddenInput = (page: Page) => page.locator('p-pin-code input[slot="internal-input"]');
+const getInput = (page: Page, n: number) => page.locator(`p-pin-code .wrapper input:nth-child(${n})`);
+const getActiveElementsAriaLabelInShadowRoot = (page: Page, element: Locator): Promise<string> => {
   return element.evaluate((el) => el.shadowRoot.activeElement.ariaLabel);
 };
 
@@ -58,7 +57,7 @@ test.describe('label', () => {
   test('should focus input with id="current-input" when label text is clicked', async ({ page }) => {
     await initPinCode(page, { props: { label: 'Some label' } });
     const label = await getLabel(page);
-    const input = await getCurrentInput(page);
+    const input = getCurrentInput(page);
 
     await addEventListener(input, 'focus');
     expect((await getEventSummary(input, 'focus')).counter).toBe(0);
@@ -73,7 +72,7 @@ test.describe('render', () => {
   for (const length of [1, 2, 3, 4, 5, 6] as (1 | 2 | 3 | 4 | 5 | 6)[]) {
     test(`should render correct amount of inputs with length=${length}`, async ({ page }) => {
       await initPinCode(page, { props: { length } });
-      const host = await getHost(page);
+      const host = getHost(page);
       const amountOfInputs = await host.evaluate((el) => Array.from(el.shadowRoot.querySelectorAll('input')).length);
       expect(amountOfInputs).toBe(length);
     });
@@ -84,22 +83,22 @@ test.describe('within form', () => {
   test.describe('hidden input', () => {
     test('should be rendered', async ({ page }) => {
       await initPinCode(page, { options: { isWithinForm: true } });
-      const hiddenInput = await getHiddenInput(page);
+      const hiddenInput = getHiddenInput(page);
 
       expect(hiddenInput).not.toBeNull();
     });
 
     test('should not be visible', async ({ page }) => {
       await initPinCode(page, { options: { isWithinForm: true } });
-      const hiddenInput = await getHiddenInput(page);
+      const hiddenInput = getHiddenInput(page);
 
       expect(await getElementStyle(hiddenInput, 'opacity')).toBe('0');
     });
 
     test('should sync with name, value, disabled and required props', async ({ page }) => {
       await initPinCode(page, { options: { isWithinForm: true } });
-      const host = await getHost(page);
-      const hiddenInput = await getHiddenInput(page);
+      const host = getHost(page);
+      const hiddenInput = getHiddenInput(page);
 
       expect(await getProperty(hiddenInput, 'name')).toBe('name');
       expect(await getAttribute(hiddenInput, 'value')).toBe('');
@@ -123,9 +122,9 @@ test.describe('within form', () => {
     page,
   }) => {
     await initPinCode(page, { options: { isWithinForm: true } });
-    const host = await getHost(page);
-    const input = await getCurrentInput(page);
-    const form = await page.$('form');
+    const host = getHost(page);
+    const input = getCurrentInput(page);
+    const form = page.locator('form');
     await addEventListener(form, 'submit');
     await setProperty(host, 'value', '1234');
 
@@ -146,9 +145,9 @@ test.describe('within form', () => {
     page,
   }) => {
     await initPinCode(page, { options: { isWithinForm: true, markupAfter: '<input type="hidden"/>' } });
-    const host = await getHost(page);
-    const input = await getCurrentInput(page);
-    const form = await page.$('form');
+    const host = getHost(page);
+    const input = getCurrentInput(page);
+    const form = page.locator('form');
     await addEventListener(form, 'submit');
     await setProperty(host, 'value', '1234');
 
@@ -167,9 +166,9 @@ test.describe('within form', () => {
 
   test('should submit on key Enter if form does contain another input type=submit', async ({ page }) => {
     await initPinCode(page, { options: { isWithinForm: true, markupAfter: '<input type="submit"/>' } });
-    const host = await getHost(page);
-    const input = await getCurrentInput(page);
-    const form = await page.$('form');
+    const host = getHost(page);
+    const input = getCurrentInput(page);
+    const form = page.locator('form');
     await addEventListener(form, 'submit');
     await setProperty(host, 'value', '1234');
 
@@ -192,9 +191,9 @@ test.describe('within form', () => {
     await initPinCode(page, {
       options: { isWithinForm: true, markupAfter: '<input/><button type="submit">Some Button</button>' },
     });
-    const host = await getHost(page);
-    const input = await getCurrentInput(page);
-    const form = await page.$('form');
+    const host = getHost(page);
+    const input = getCurrentInput(page);
+    const form = page.locator('form');
     await addEventListener(form, 'submit');
     await setProperty(host, 'value', '1234');
 
@@ -217,9 +216,9 @@ test.describe('within form', () => {
     await initPinCode(page, {
       options: { isWithinForm: true, markupAfter: '<input/><input type="submit" />' },
     });
-    const host = await getHost(page);
-    const input = await getCurrentInput(page);
-    const form = await page.$('form');
+    const host = getHost(page);
+    const input = getCurrentInput(page);
+    const form = page.locator('form');
     await addEventListener(form, 'submit');
     await setProperty(host, 'value', '1234');
 
@@ -245,9 +244,9 @@ test.describe('within form', () => {
         markupAfter: '<input /><p-button type="submit">Some Button</p-button>',
       },
     });
-    const host = await getHost(page);
-    const input = await getCurrentInput(page);
-    const form = await page.$('form');
+    const host = getHost(page);
+    const input = getCurrentInput(page);
+    const form = page.locator('form');
     await addEventListener(form, 'submit');
     await setProperty(host, 'value', '1234');
 
@@ -273,9 +272,9 @@ test.describe('within form', () => {
         markupAfter: '<input /><p-button-pure type="submit">Some Button</p-button-pure>',
       },
     });
-    const host = await getHost(page);
-    const input = await getCurrentInput(page);
-    const form = await page.$('form');
+    const host = getHost(page);
+    const input = getCurrentInput(page);
+    const form = page.locator('form');
     await addEventListener(form, 'submit');
     await setProperty(host, 'value', '1234');
 
@@ -302,9 +301,9 @@ test.describe('within form', () => {
         markupAfter: '<input /><p-button type="submit">Some submit Button</p-button>',
       },
     });
-    const host = await getHost(page);
-    const input = await getCurrentInput(page);
-    const form = await page.$('form');
+    const host = getHost(page);
+    const input = getCurrentInput(page);
+    const form = page.locator('form');
     await addEventListener(form, 'submit');
     await setProperty(host, 'value', '1234');
 
@@ -325,9 +324,9 @@ test.describe('within form', () => {
     page,
   }) => {
     await initPinCode(page, { options: { isWithinForm: true, markupAfter: '<input />' } });
-    const host = await getHost(page);
-    const input = await getCurrentInput(page);
-    const form = await page.$('form');
+    const host = getHost(page);
+    const input = getCurrentInput(page);
+    const form = page.locator('form');
     await addEventListener(form, 'submit');
     await setProperty(host, 'value', '1234');
 
@@ -344,16 +343,16 @@ test.describe('within form', () => {
 test.describe('update event', () => {
   test('should not render hidden input', async ({ page }) => {
     await initPinCode(page);
-    const hiddenInput = await getHiddenInput(page);
+    const hiddenInput = getHiddenInput(page);
 
-    expect(hiddenInput).toBeNull();
+    await expect(hiddenInput).toHaveCount(0);
   });
 
   test('should emit update event on valid input and focus next input if there is one', async ({ page }) => {
     await initPinCode(page);
-    const host = await getHost(page);
+    const host = getHost(page);
     await addEventListener(host, 'update');
-    const currentInput = await getCurrentInput(page);
+    const currentInput = getCurrentInput(page);
 
     await currentInput.click();
     await waitForStencilLifecycle(page);
@@ -437,9 +436,9 @@ test.describe('update event', () => {
   // (alphanumeric, "Dead" (e.g. ^¨), "Process" (e.g.^ in firefox)
   test('should not emit update event on not valid input', async ({ page }) => {
     await initPinCode(page);
-    const host = await getHost(page);
+    const host = getHost(page);
     await addEventListener(host, 'update');
-    const input = await getCurrentInput(page);
+    const input = getCurrentInput(page);
 
     await input.click();
     await waitForStencilLifecycle(page);
@@ -463,10 +462,10 @@ test.describe('update event', () => {
 
   test('should emit update event on backspace and focus correct input element', async ({ page }) => {
     await initPinCode(page);
-    const host = await getHost(page);
+    const host = getHost(page);
     await setProperty(host, 'value', '1234');
     await addEventListener(host, 'update');
-    const input4 = await getInput(page, 4);
+    const input4 = getInput(page, 4);
 
     await input4.click();
     await waitForStencilLifecycle(page);
@@ -504,10 +503,10 @@ test.describe('update event', () => {
 
   test('should emit update event on delete and focus correct input element', async ({ page }) => {
     await initPinCode(page);
-    const host = await getHost(page);
+    const host = getHost(page);
     await setProperty(host, 'value', '1234');
     await addEventListener(host, 'update');
-    const input1 = await getInput(page, 1);
+    const input1 = getInput(page, 1);
 
     await input1.click();
     await waitForStencilLifecycle(page);
@@ -549,11 +548,11 @@ test.describe('events', () => {
   test.describe('onInput', () => {
     test('should spread value over input elements and focus last input element', async ({ page }) => {
       await initPinCode(page);
-      const host = await getHost(page);
-      const input1 = await getInput(page, 1);
-      const input2 = await getInput(page, 2);
-      const input3 = await getInput(page, 3);
-      const input4 = await getInput(page, 4);
+      const host = getHost(page);
+      const input1 = getInput(page, 1);
+      const input2 = getInput(page, 2);
+      const input3 = getInput(page, 3);
+      const input4 = getInput(page, 4);
       await addEventListener(input4, 'focus');
 
       expect((await getEventSummary(input4, 'focus')).counter).toBe(0);
@@ -573,11 +572,11 @@ test.describe('events', () => {
       page,
     }) => {
       await initPinCode(page);
-      const host = await getHost(page);
-      const input1 = await getInput(page, 1);
-      const input2 = await getInput(page, 2);
-      const input3 = await getInput(page, 3);
-      const input4 = await getInput(page, 4);
+      const host = getHost(page);
+      const input1 = getInput(page, 1);
+      const input2 = getInput(page, 2);
+      const input3 = getInput(page, 3);
+      const input4 = getInput(page, 4);
       await addEventListener(input4, 'focus');
 
       expect((await getEventSummary(input4, 'focus')).counter).toBe(0);
@@ -597,11 +596,11 @@ test.describe('events', () => {
       page,
     }) => {
       await initPinCode(page);
-      const host = await getHost(page);
-      const input1 = await getInput(page, 1);
-      const input2 = await getInput(page, 2);
-      const input3 = await getInput(page, 3);
-      const input4 = await getInput(page, 4);
+      const host = getHost(page);
+      const input1 = getInput(page, 1);
+      const input2 = getInput(page, 2);
+      const input3 = getInput(page, 3);
+      const input4 = getInput(page, 4);
       await addEventListener(input4, 'focus');
 
       expect((await getEventSummary(input4, 'focus')).counter).toBe(0);
@@ -621,11 +620,11 @@ test.describe('events', () => {
       page,
     }) => {
       await initPinCode(page);
-      const host = await getHost(page);
-      const input1 = await getInput(page, 1);
-      const input2 = await getInput(page, 2);
-      const input3 = await getInput(page, 3);
-      const input4 = await getInput(page, 4);
+      const host = getHost(page);
+      const input1 = getInput(page, 1);
+      const input2 = getInput(page, 2);
+      const input3 = getInput(page, 3);
+      const input4 = getInput(page, 4);
       await addEventListener(input4, 'focus');
 
       expect((await getEventSummary(input4, 'focus')).counter).toBe(0);
@@ -645,11 +644,11 @@ test.describe('events', () => {
       page,
     }) => {
       await initPinCode(page);
-      const host = await getHost(page);
-      const input1 = await getInput(page, 1);
-      const input2 = await getInput(page, 2);
-      const input3 = await getInput(page, 3);
-      const input4 = await getInput(page, 4);
+      const host = getHost(page);
+      const input1 = getInput(page, 1);
+      const input2 = getInput(page, 2);
+      const input3 = getInput(page, 3);
+      const input4 = getInput(page, 4);
       await addEventListener(input4, 'focus');
 
       expect((await getEventSummary(input4, 'focus')).counter).toBe(0);
@@ -669,11 +668,11 @@ test.describe('events', () => {
       page,
     }) => {
       await initPinCode(page);
-      const host = await getHost(page);
-      const input1 = await getInput(page, 1);
-      const input2 = await getInput(page, 2);
-      const input3 = await getInput(page, 3);
-      const input4 = await getInput(page, 4);
+      const host = getHost(page);
+      const input1 = getInput(page, 1);
+      const input2 = getInput(page, 2);
+      const input3 = getInput(page, 3);
+      const input4 = getInput(page, 4);
       await addEventListener(input4, 'focus');
 
       expect((await getEventSummary(input4, 'focus')).counter).toBe(0);
@@ -692,11 +691,11 @@ test.describe('events', () => {
     skipInBrowsers(['firefox', 'webkit'], () => {
       test('should type in value correctly with IME keyboard', async ({ page }) => {
         await initPinCode(page);
-        const host = await getHost(page);
-        const input1 = await getInput(page, 1);
-        const input2 = await getInput(page, 2);
-        const input3 = await getInput(page, 3);
-        const input4 = await getInput(page, 4);
+        const host = getHost(page);
+        const input1 = getInput(page, 1);
+        const input2 = getInput(page, 2);
+        const input3 = getInput(page, 3);
+        const input4 = getInput(page, 4);
         await addEventListener(input1, 'focus');
         await addEventListener(input4, 'focus');
 
@@ -726,11 +725,11 @@ test.describe('events', () => {
       // This simulates the Android keyboard suggestion behavior where all digits are input by a single input event
       test('should input multiple values correctly when input as one input event', async ({ page }) => {
         await initPinCode(page);
-        const host = await getHost(page);
-        const input1 = await getInput(page, 1);
-        const input2 = await getInput(page, 2);
-        const input3 = await getInput(page, 3);
-        const input4 = await getInput(page, 4);
+        const host = getHost(page);
+        const input1 = getInput(page, 1);
+        const input2 = getInput(page, 2);
+        const input3 = getInput(page, 3);
+        const input4 = getInput(page, 4);
         await addEventListener(input1, 'focus');
         await addEventListener(input4, 'focus');
 
@@ -760,11 +759,11 @@ test.describe('events', () => {
   skipInBrowsers(['firefox'], () => {
     test('onPaste', async ({ page }) => {
       await initPinCode(page);
-      const host = await getHost(page);
-      const input1 = await getInput(page, 1);
-      const input2 = await getInput(page, 2);
-      const input3 = await getInput(page, 3);
-      const input4 = await getInput(page, 4);
+      const host = getHost(page);
+      const input1 = getInput(page, 1);
+      const input2 = getInput(page, 2);
+      const input3 = getInput(page, 3);
+      const input4 = getInput(page, 4);
       await addEventListener(input1, 'paste');
 
       await input1.focus();
@@ -792,7 +791,7 @@ test.describe('events', () => {
 test.describe('disabled state', () => {
   test('should have not-allowed cursor', async ({ page }) => {
     await initPinCode(page, { props: { disabled: true } });
-    const input = await getCurrentInput(page);
+    const input = getCurrentInput(page);
 
     expect(await getElementStyle(input, 'cursor')).toBe('not-allowed');
   });
@@ -803,7 +802,7 @@ test.describe('disabled state', () => {
         props: { disabled: true },
         options: { markupAfter: '<p-button>Some Button</p-button>' },
       });
-      const button = await page.$('p-button');
+      const button = page.locator('p-button');
       await addEventListener(button, 'focus');
 
       expect((await getEventSummary(button, 'focus')).counter, 'before focus').toBe(0);
@@ -817,14 +816,14 @@ test.describe('disabled state', () => {
 test.describe('loading state', () => {
   test('should have not-allowed cursor', async ({ page }) => {
     await initPinCode(page, { props: { loading: true } });
-    const input = await getCurrentInput(page);
+    const input = getCurrentInput(page);
 
     expect(await getElementStyle(input, 'cursor')).toBe('not-allowed');
   });
 
   test('should be focusable but input can not be changed', async ({ page }) => {
     await initPinCode(page, { props: { loading: true } });
-    const input = await getCurrentInput(page);
+    const input = getCurrentInput(page);
     await addEventListener(input, 'focus');
 
     expect(await getProperty(input, 'value')).toBe('');
@@ -843,8 +842,8 @@ test.describe('loading state', () => {
         props: { loading: true },
         options: { markupAfter: '<p-button>Some Button</p-button>' },
       });
-      const host = await getHost(page);
-      const button = await page.$('p-button');
+      const host = getHost(page);
+      const button = page.locator('p-button');
       await addEventListener(button, 'focus');
 
       await page.keyboard.press('Tab');
@@ -878,7 +877,7 @@ test.describe('lifecycle', () => {
 
   test('should work without unnecessary round trips after prop change', async ({ page }) => {
     await initPinCode(page);
-    const host = await getHost(page);
+    const host = getHost(page);
 
     await setProperty(host, 'label', 'Some Label');
     await waitForStencilLifecycle(page);

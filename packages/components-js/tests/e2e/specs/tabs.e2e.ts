@@ -78,7 +78,7 @@ test('should render updated tabs when tab label is changed', async ({ page }) =>
 
 test('should respect changes to activeTabIndex', async ({ page }) => {
   await initTabs(page);
-  const host = await getHost(page);
+  const host = getHost(page);
   const [firstTabsItem, secondTabsItem, thirdTabsItem] = await getAllTabsItems(page);
 
   const setActiveTabIndex = async (index: number) => {
@@ -212,7 +212,7 @@ test.describe('text selection', () => {
 test.describe('events', () => {
   test('should trigger tabChange event on tab click', async ({ page }) => {
     await initTabs(page, { activeTabIndex: 1 }); // start with other index than first
-    const host = await getHost(page);
+    const host = getHost(page);
     const [firstButton, secondButton, thirdButton] = await getAllTabs(page);
     await addEventListener(host, 'tabChange');
 
@@ -271,7 +271,7 @@ test.describe('events', () => {
 
   test('should emit both tabChange and update event', async ({ page }) => {
     await initTabs(page);
-    const host = await getHost(page);
+    const host = getHost(page);
 
     await addEventListener(host, 'tabChange');
     await addEventListener(host, 'update');
@@ -331,7 +331,7 @@ test.describe('lifecycle', () => {
 
   test('should work without unnecessary round trips on prop change', async ({ page }) => {
     await initTabs(page, { amount: 3 });
-    const host = await getHost(page);
+    const host = getHost(page);
 
     await setProperty(host, 'activeTabIndex', '2');
     await waitForStencilLifecycle(page);

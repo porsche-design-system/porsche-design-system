@@ -149,7 +149,7 @@ export const getAttribute = (
 };
 
 export const setAttribute = async (
-  element: ElementHandle<HTMLElement | SVGElement>,
+  element: ElementHandle<HTMLElement | SVGElement> | Locator,
   key: string,
   value: string
 ): Promise<void> => {
@@ -159,7 +159,10 @@ export const setAttribute = async (
   await element.evaluate((el, { key, value }) => el.setAttribute(key, value), { key, value });
 };
 
-export const removeAttribute = async (element: ElementHandle<HTMLElement | SVGElement>, key: string): Promise<void> => {
+export const removeAttribute = async (
+  element: ElementHandle<HTMLElement | SVGElement> | Locator,
+  key: string
+): Promise<void> => {
   if (containsCapitalChar(key)) {
     console.warn(`removeAttribute: '${key}' contains a capital character which is most likely wrong`);
   }
@@ -269,7 +272,7 @@ export const getElementStyle = (
 };
 
 export const getElementIndex = (
-  element: ElementHandle<HTMLElement | SVGElement | ShadowRoot>,
+  element: ElementHandle<HTMLElement | SVGElement | ShadowRoot> | Locator,
   selector: string
 ): Promise<number> => {
   return element.evaluate(async (el, selector: string): Promise<number> => {
@@ -282,11 +285,19 @@ export const getElementIndex = (
   }, selector);
 };
 
-export const getElementInnerText = (element: ElementHandle): Promise<string> =>
+export const getElementInnerText = (element: ElementHandle | Locator): Promise<string> =>
   element.evaluate((el) => (el as HTMLElement).innerText);
 
-export const getElementPositions = (page: Page, element: ElementHandle<HTMLElement | SVGElement>): Promise<DOMRect> =>
-  page.evaluate((element) => element.getBoundingClientRect(), element);
+export const getElementPositions = async (
+  page: Page,
+  element: ElementHandle<HTMLElement | SVGElement> | Locator
+): Promise<DOMRect> => {
+  // TODO: Remove ElementHandle
+  // If the element is a Locator, resolve it to an ElementHandle
+  const resolvedElement = 'evaluateHandle' in element ? await element.evaluateHandle((el) => el) : element;
+
+  return page.evaluate((el: HTMLElement | SVGElement) => el.getBoundingClientRect(), resolvedElement);
+};
 
 export const reattachElementHandle = (handle: ElementHandle<HTMLElement | SVGElement> | Locator): Promise<void> => {
   return handle.evaluate((el) => {
@@ -423,7 +434,11 @@ export const expectShadowDomToMatchSnapshot = async (host: ElementHandle<HTMLEle
   expect(prettyHtml).toMatchSnapshot();
 };
 
-export const expectToSkipFocusOnComponent = async (page: Page, component: ElementHandle, before: ElementHandle) => {
+export const expectToSkipFocusOnComponent = async (
+  page: Page,
+  component: ElementHandle | Locator,
+  before: ElementHandle | Locator
+) => {
   await before.focus();
 
   await page.keyboard.press('Tab');
@@ -437,12 +452,12 @@ export const expectToSkipFocusOnComponent = async (page: Page, component: Elemen
   expect(await getActiveElementId(page)).toBe('before');
 };
 
-export const getScrollLeft = (element: ElementHandle<HTMLElement | SVGElement>): Promise<number> =>
-  getProperty(element, 'scrollLeft') as unknown as Promise<number>;
-export const getOffsetLeft = (element: ElementHandle<HTMLElement | SVGElement>): Promise<number> =>
-  getProperty(element, 'offsetLeft') as unknown as Promise<number>;
-export const getOffsetWidth = (element: ElementHandle<HTMLElement | SVGElement>): Promise<number> =>
-  getProperty(element, 'offsetWidth') as unknown as Promise<number>;
+export const getScrollLeft = (locator: Locator): Promise<number> =>
+  getProperty(locator, 'scrollLeft') as unknown as Promise<number>;
+export const getOffsetLeft = (locator: Locator): Promise<number> =>
+  getProperty(locator, 'offsetLeft') as unknown as Promise<number>;
+export const getOffsetWidth = (locator: Locator): Promise<number> =>
+  getProperty(locator, 'offsetWidth') as unknown as Promise<number>;
 
 /**
  * Get HTML attributes string from an object of properties.
@@ -473,7 +488,10 @@ export const getOldLoaderScriptForPrefixes = (prefixes: string[]): string => {
 // Fix Playwright timeout error when clicking element in shadowRoot
 // https://github.com/microsoft/playwright/issues/12298
 // Error: intercepts pointer events
-export const clickElementPosition = async (page: Page, el: ElementHandle<SVGElement | HTMLElement>): Promise<void> => {
+export const clickElementPosition = async (
+  page: Page,
+  el: ElementHandle<SVGElement | HTMLElement> | Locator
+): Promise<void> => {
   const { x, y, width, height } = await getElementPositions(page, el);
   await page.mouse.click(x + width / 2, y + height / 2);
 };
@@ -481,7 +499,10 @@ export const clickElementPosition = async (page: Page, el: ElementHandle<SVGElem
 // Fix Playwright timeout error when hovering element in shadowRoot
 // https://github.com/microsoft/playwright/issues/12298
 // Error: intercepts pointer events
-export const hoverElementPosition = async (page: Page, el: ElementHandle<SVGElement | HTMLElement>): Promise<void> => {
+export const hoverElementPosition = async (
+  page: Page,
+  el: ElementHandle<SVGElement | HTMLElement> | Locator
+): Promise<void> => {
   const { x, y, width, height } = await getElementPositions(page, el);
   await page.mouse.move(x + width / 2, y + height / 2);
 };

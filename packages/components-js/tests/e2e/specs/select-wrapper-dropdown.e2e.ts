@@ -20,10 +20,10 @@ import {
   waitForStencilLifecycle,
 } from '../helpers';
 
-const getHost = (page: Page) => page.$('p-select-wrapper');
-const getSelect = (page: Page) => page.$('p-select-wrapper select');
-const getSelectOptgroup = (page: Page) => page.$('p-select-wrapper select optgroup');
-const getSelectIcon = (page: Page) => page.$('p-select-wrapper .icon');
+const getHost = (page: Page) => page.locator('p-select-wrapper');
+const getSelect = (page: Page) => page.locator('p-select-wrapper select');
+const getSelectOptgroup = (page: Page) => page.locator('p-select-wrapper select optgroup');
+const getSelectIcon = (page: Page) => page.locator('p-select-wrapper .icon');
 
 const dropdownSelector = 'p-select-wrapper p-select-wrapper-dropdown';
 const highlightedClass = 'option--highlighted';
@@ -32,46 +32,44 @@ const disabledClass = 'option--disabled';
 const hiddenClass = 'option--hidden';
 const disabledOptgroupClass = 'optgroup--disabled';
 
-const getDropdown = (page: Page) => page.$(dropdownSelector);
-const getDropdownCombobox = (page: Page) => page.$(`${dropdownSelector} [role="combobox"]`);
-const getDropdownList = (page: Page) => page.$(`${dropdownSelector} [role="listbox"]`);
-const getDropdownOption1 = (page: Page) => page.$(`${dropdownSelector} .option:nth-child(1)`);
-const getDropdownOption2 = (page: Page) => page.$(`${dropdownSelector} .option:nth-child(2)`);
-const getDropdownOption4 = (page: Page) => page.$(`${dropdownSelector} .option:nth-child(4)`);
-const getDisabledDropdownOption = (page: Page) => page.$(`${dropdownSelector} .${disabledClass}`);
-const getDropdownOptgroup = (page: Page) => page.$(`${dropdownSelector} .optgroup`);
-const getDropdownCheckmarkIcon = (page: Page) => page.$(`${dropdownSelector} .icon`);
+const getDropdown = (page: Page) => page.locator(dropdownSelector);
+const getDropdownCombobox = (page: Page) => page.locator(`${dropdownSelector} [role="combobox"]`);
+const getDropdownList = (page: Page) => page.locator(`${dropdownSelector} [role="listbox"]`);
+const getDropdownOption1 = (page: Page) => page.locator(`${dropdownSelector} .option:nth-child(1)`);
+const getDropdownOption2 = (page: Page) => page.locator(`${dropdownSelector} .option:nth-child(2)`);
+const getDropdownOption4 = (page: Page) => page.locator(`${dropdownSelector} .option:nth-child(4)`);
+const getDisabledDropdownOption = (page: Page) => page.locator(`${dropdownSelector} .${disabledClass}`);
+const getDropdownOptgroup = (page: Page) => page.locator(`${dropdownSelector} .optgroup`);
+const getDropdownCheckmarkIcon = (page: Page) => page.locator(`${dropdownSelector} .icon`);
 
 const getComboboxAriaActiveDescendant = async (page: Page) =>
-  getAttribute(await getDropdownCombobox(page), 'aria-activedescendant');
+  getAttribute(getDropdownCombobox(page), 'aria-activedescendant');
 
-const getDropdownOpacity = async (page: Page) => getElementStyle(await getDropdownList(page), 'opacity');
+const getDropdownOpacity = async (page: Page) => getElementStyle(getDropdownList(page), 'opacity');
 const selectHasFocus = (page: Page) => page.evaluate(() => document.activeElement === document.querySelector('select'));
-const getSelectedIndex = async (page: Page) => getProperty(await getSelect(page), 'selectedIndex');
+const getSelectedIndex = async (page: Page) => getProperty(getSelect(page), 'selectedIndex');
 const getDisabledDropdownOptionIndex = async (page: Page) =>
-  getElementIndex(await getDropdownList(page), `.${disabledClass}`);
+  getElementIndex(getDropdownList(page), `.${disabledClass}`);
 const getSelectedDropdownOptionIndex = async (page: Page) =>
-  getElementIndex(await getDropdownList(page), `.${selectedClass}`);
-const getHiddenDropdownOptionIndex = async (page: Page) =>
-  getElementIndex(await getDropdownList(page), `.${hiddenClass}`);
+  getElementIndex(getDropdownList(page), `.${selectedClass}`);
+const getHiddenDropdownOptionIndex = async (page: Page) => getElementIndex(getDropdownList(page), `.${hiddenClass}`);
 const getHighlightedDropdownOptionIndex = async (page: Page) =>
-  getElementIndex(await getDropdownList(page), `.${highlightedClass}`);
+  getElementIndex(getDropdownList(page), `.${highlightedClass}`);
 const getAriaSelectedTrueDropdownOptionIndex = async (page: Page) =>
-  getElementIndex(await getDropdownList(page), '[aria-selected=true]');
+  getElementIndex(getDropdownList(page), '[aria-selected=true]');
 const getAriaDisabledTrueDropdownOptionIndex = async (page: Page) =>
-  getElementIndex(await getDropdownList(page), '[aria-disabled=true]');
+  getElementIndex(getDropdownList(page), '[aria-disabled=true]');
 
-const getAmountOfOptions = async (page: Page) => (await getSelect(page)).evaluate((el) => el.childElementCount);
-const getAmountOfDropdownOptions = async (page: Page) =>
-  (await getDropdownList(page)).evaluate((el) => el.childElementCount);
+const getAmountOfOptions = async (page: Page) => getSelect(page).evaluate((el) => el.childElementCount);
+const getAmountOfDropdownOptions = async (page: Page) => getDropdownList(page).evaluate((el) => el.childElementCount);
 
 const getAmountOfOptgroups = async (page: Page) =>
-  (await getSelect(page)).evaluate((el) => el.querySelectorAll('optgroup').length);
+  getSelect(page).evaluate((el) => el.querySelectorAll('optgroup').length);
 const getAmountOfDropdownOptgroups = async (page: Page) =>
-  (await getDropdownList(page)).evaluate((el) => el.querySelectorAll('.optgroup').length);
+  getDropdownList(page).evaluate((el) => el.querySelectorAll('.optgroup').length);
 
 const openSelect = async (page: Page) => {
-  const host = await getHost(page);
+  const host = getHost(page);
   await host.click();
   await waitForStencilLifecycle(page);
 };
@@ -140,7 +138,7 @@ test('should render', async ({ page }) => {
 
   const disabledDropdownOption = await getDisabledDropdownOption(page);
 
-  expect(disabledDropdownOption).not.toBeNull();
+  await expect(disabledDropdownOption).not.toHaveCount(0);
   expect(await getAriaSelectedTrueDropdownOptionIndex(page)).toBe(0);
   expect(await getAriaDisabledTrueDropdownOptionIndex(page)).toBe(1);
 });
@@ -165,10 +163,10 @@ test('should render with optgroups', async ({ page }) => {
 
   await openSelect(page);
 
-  const dropdownList = await getDropdownList(page);
-  const dropdownOptgroup = await getDropdownOptgroup(page);
+  const dropdownList = getDropdownList(page);
+  const dropdownOptgroup = getDropdownOptgroup(page);
 
-  expect(dropdownOptgroup).not.toBeNull();
+  await expect(dropdownOptgroup).not.toHaveCount(0);
   expect(await getElementIndex(dropdownList, '[aria-selected=true]')).toBe(1);
   expect(await getAmountOfDropdownOptgroups(page)).toEqual(await getAmountOfOptgroups(page));
 });
@@ -191,22 +189,22 @@ test('should render with a mix of options and optgroup', async ({ page }) => {
 
   await openSelect(page);
 
-  const dropdownOptgroup = await getDropdownOptgroup(page);
+  const dropdownOptgroup = getDropdownOptgroup(page);
 
-  expect(dropdownOptgroup).not.toBeNull();
+  await expect(dropdownOptgroup).not.toHaveCount(0);
   expect(await getAmountOfDropdownOptgroups(page)).toEqual(await getAmountOfOptgroups(page));
 });
 
 test('should not render if native prop is set to true', async ({ page }) => {
   await initSelect(page, { isNative: true });
 
-  const dropdown = await getDropdown(page);
-  expect(dropdown).toBeNull();
+  const dropdown = getDropdown(page);
+  await expect(dropdown).toHaveCount(0);
 });
 
 test('should disable select when disabled programmatically', async ({ page }) => {
   await initSelect(page);
-  const select = await getSelect(page);
+  const select = getSelect(page);
   const getSelectCursorStyle = () => getElementStyle(select, 'cursor');
 
   expect(await getSelectCursorStyle(), 'initially').toBe('pointer');
@@ -224,49 +222,49 @@ test('should disable select when disabled programmatically', async ({ page }) =>
 
 test('should not render dropdown when select is disabled programmatically', async ({ page }) => {
   await initSelect(page);
-  const select = await getSelect(page);
+  const select = getSelect(page);
 
-  expect(await getDropdown(page), 'initially').toBeTruthy();
+  expect(getDropdown(page), 'initially').toBeTruthy();
 
   await setProperty(select, 'disabled', true);
   await waitForStencilLifecycle(page);
 
-  expect(await getDropdown(page), 'when disabled = true').toBeNull();
+  await expect(getDropdown(page), 'when disabled = true').toHaveCount(0);
 
   await setProperty(select, 'disabled', false);
   await waitForStencilLifecycle(page);
 
-  expect(await getDropdown(page), 'when disabled = false').toBeTruthy();
+  expect(getDropdown(page), 'when disabled = false').toBeTruthy();
 });
 
 test('should be visible if select is clicked and hidden again when clicked outside', async ({ page }) => {
   await initSelect(page, { markupBefore: '<p-text>Some text</p-text>' });
 
-  const host = await getHost(page);
-  const text = await page.$('p-text');
+  const host = getHost(page);
+  const text = page.locator('p-text');
 
-  expect(await getDropdownList(page)).toBeNull();
+  await expect(getDropdownList(page)).toHaveCount(0);
 
   await host.click();
   await waitForStencilLifecycle(page);
-  expect(await getDropdownList(page)).toBeTruthy();
+  expect(getDropdownList(page)).toBeTruthy();
 
   await text.click();
   await waitForStencilLifecycle(page);
-  expect(await getDropdownList(page)).toBeNull();
+  await expect(getDropdownList(page)).toHaveCount(0);
 
   await host.click();
   await waitForStencilLifecycle(page);
-  expect(await getDropdownList(page)).toBeTruthy();
+  expect(getDropdownList(page)).toBeTruthy();
 
   await host.click();
   await waitForStencilLifecycle(page);
-  expect(await getDropdownList(page)).toBeNull();
+  await expect(getDropdownList(page)).toHaveCount(0);
 });
 
 test('should add custom option if added to native select programmatically', async ({ page }) => {
   await initSelect(page);
-  const select = await getSelect(page);
+  const select = getSelect(page);
   await openSelect(page);
 
   expect(await getAmountOfDropdownOptions(page)).toEqual(await getAmountOfOptions(page));
@@ -285,7 +283,7 @@ test('should add custom option if added to native select programmatically', asyn
 
 test('should observe selected property changes of native option if added programmatically', async ({ page }) => {
   await initSelect(page);
-  const select = await getSelect(page);
+  const select = getSelect(page);
   await openSelect(page);
 
   await select.evaluate((el: HTMLSelectElement) => {
@@ -306,10 +304,10 @@ test('should add/remove disabled state to custom option item if added/removed pr
   page,
 }) => {
   await initSelect(page, { disabledIndex: 1 });
-  const select = await getSelect(page);
+  const select = getSelect(page);
   await openSelect(page);
   const dropdownOption1 = await getDropdownOption1(page);
-  const dropdownOption2 = await getDropdownOption2(page);
+  const dropdownOption2 = getDropdownOption2(page);
 
   expect(await getCssClasses(dropdownOption1)).not.toContain(disabledClass);
   expect(await getCssClasses(dropdownOption2)).toContain(disabledClass);
@@ -328,10 +326,10 @@ test('should add/remove disabled state to custom option item if added/removed at
   page,
 }) => {
   await initSelect(page, { disabledIndex: 1 });
-  const select = await getSelect(page);
+  const select = getSelect(page);
   await openSelect(page);
   const dropdownOption1 = await getDropdownOption1(page);
-  const dropdownOption2 = await getDropdownOption2(page);
+  const dropdownOption2 = getDropdownOption2(page);
 
   expect(await getCssClasses(dropdownOption1)).not.toContain(disabledClass);
   expect(await getCssClasses(dropdownOption2)).toContain(disabledClass);
@@ -350,10 +348,10 @@ test('should synchronize custom option and native select if selected property is
   page,
 }) => {
   await initSelect(page);
-  const select = await getSelect(page);
+  const select = getSelect(page);
   await openSelect(page);
   const dropdownOption1 = await getDropdownOption1(page);
-  const dropdownOption2 = await getDropdownOption2(page);
+  const dropdownOption2 = getDropdownOption2(page);
 
   expect(await getCssClasses(dropdownOption1)).toContain(selectedClass);
   expect(await getCssClasses(dropdownOption2)).not.toContain(selectedClass);
@@ -371,10 +369,10 @@ test('should synchronize custom option and native select if selected attribute i
   page,
 }) => {
   await initSelect(page);
-  const select = await getSelect(page);
+  const select = getSelect(page);
   await openSelect(page);
   const dropdownOption1 = await getDropdownOption1(page);
-  const dropdownOption2 = await getDropdownOption2(page);
+  const dropdownOption2 = getDropdownOption2(page);
 
   expect(await getCssClasses(dropdownOption1)).toContain(selectedClass);
   expect(await getCssClasses(dropdownOption2)).not.toContain(selectedClass);
@@ -392,10 +390,10 @@ test('should synchronize custom option and native select if selected value prope
   page,
 }) => {
   await initSelect(page);
-  const select = await getSelect(page);
+  const select = getSelect(page);
   await openSelect(page);
   const dropdownOption1 = await getDropdownOption1(page);
-  const dropdownOption2 = await getDropdownOption2(page);
+  const dropdownOption2 = getDropdownOption2(page);
 
   expect(await getCssClasses(dropdownOption1)).toContain(selectedClass);
   expect(await getSelectedDropdownOptionIndex(page)).toBe(0);
@@ -412,10 +410,10 @@ test('should synchronize custom option and native select if selectedIndex proper
   page,
 }) => {
   await initSelect(page);
-  const select = await getSelect(page);
+  const select = getSelect(page);
   await openSelect(page);
   const dropdownOption1 = await getDropdownOption1(page);
-  const dropdownOption2 = await getDropdownOption2(page);
+  const dropdownOption2 = getDropdownOption2(page);
 
   expect(await getCssClasses(dropdownOption1)).toContain(selectedClass);
   expect(await getSelectedDropdownOptionIndex(page)).toBe(0);
@@ -430,10 +428,10 @@ test('should synchronize custom option and native select if selectedIndex proper
 
 test('should add selected state to custom option item if selected property of option is set', async ({ page }) => {
   await initSelect(page);
-  const select = await getSelect(page);
+  const select = getSelect(page);
   await openSelect(page);
   const dropdownOption1 = await getDropdownOption1(page);
-  const dropdownOption2 = await getDropdownOption2(page);
+  const dropdownOption2 = getDropdownOption2(page);
 
   expect(await getCssClasses(dropdownOption1)).toContain(selectedClass);
   expect(await getSelectedDropdownOptionIndex(page)).toBe(0);
@@ -450,9 +448,9 @@ test('should hide/show custom option item if hidden attribute is added/removed t
   page,
 }) => {
   await initSelect(page);
-  const select = await getSelect(page);
+  const select = getSelect(page);
   await openSelect(page);
-  const dropdownOption2 = await getDropdownOption2(page);
+  const dropdownOption2 = getDropdownOption2(page);
 
   await select.evaluate((el: HTMLSelectElement) => (el.options[1].hidden = true));
   await waitForStencilLifecycle(page);
@@ -502,7 +500,7 @@ skipInBrowsers(['firefox', 'webkit'], () => {
     </p-select-wrapper>`
     );
 
-    const dropdownCombobox = await getDropdownCombobox(page);
+    const dropdownCombobox = getDropdownCombobox(page);
     await dropdownCombobox.click();
     await waitForStencilLifecycle(page);
 
@@ -521,7 +519,7 @@ skipInBrowsers(['firefox', 'webkit'], () => {
 test('should not set checkmark icon if option is both selected and disabled', async ({ page }) => {
   await initSelect(page, { disabledIndex: 0, selectedIndex: 0 });
 
-  expect(await getDropdownCheckmarkIcon(page)).toBeNull();
+  await expect(getDropdownCheckmarkIcon(page)).toHaveCount(0);
 });
 
 test.describe('hover state', () => {
@@ -530,7 +528,7 @@ test.describe('hover state', () => {
     await initSelect(page);
     await page.mouse.move(0, 300); // avoid potential hover initially
 
-    const dropdownCombobox = await getDropdownCombobox(page);
+    const dropdownCombobox = getDropdownCombobox(page);
     const initialStyle = await getElementStyle(dropdownCombobox, 'borderColor');
     expect(initialStyle).toBe('rgb(107, 109, 112)');
 
@@ -546,22 +544,22 @@ test.describe('dropdown position', () => {
   test('should set direction to up', async ({ page }) => {
     await initSelect(page, { dropdownDirection: 'up' });
 
-    const dropdownCombobox = await getDropdownCombobox(page);
+    const dropdownCombobox = getDropdownCombobox(page);
     await dropdownCombobox.click();
     await waitForStencilLifecycle(page);
 
-    const dropdownStyle = await getElementStyle(await getDropdownList(page), 'borderBottom');
+    const dropdownStyle = await getElementStyle(getDropdownList(page), 'borderBottom');
     expect(dropdownStyle).toBe(expectedDropdownStyle);
   });
 
   test('should set direction to down', async ({ page }) => {
     await initSelect(page, { dropdownDirection: 'down' });
 
-    const dropdownCombobox = await getDropdownCombobox(page);
+    const dropdownCombobox = getDropdownCombobox(page);
     await dropdownCombobox.click();
     await waitForStencilLifecycle(page);
 
-    const dropdownStyle = await getElementStyle(await getDropdownList(page), 'borderTop');
+    const dropdownStyle = await getElementStyle(getDropdownList(page), 'borderTop');
     expect(dropdownStyle).toBe(expectedDropdownStyle);
   });
 
@@ -572,11 +570,11 @@ test.describe('dropdown position', () => {
     });
     await initSelect(page, { amount: 5, markupBefore: '<div style="height: 550px;"></div>' });
 
-    const dropdownCombobox = await getDropdownCombobox(page);
+    const dropdownCombobox = getDropdownCombobox(page);
     await dropdownCombobox.click();
     await waitForStencilLifecycle(page);
 
-    const dropdownStyle = await getElementStyle(await getDropdownList(page), 'borderBottom');
+    const dropdownStyle = await getElementStyle(getDropdownList(page), 'borderBottom');
     expect(dropdownStyle).toBe(expectedDropdownStyle);
   });
 });
@@ -584,25 +582,25 @@ test.describe('dropdown position', () => {
 test.describe('keyboard and click events', () => {
   test('should highlight first position on initial arrow down', async ({ page }) => {
     await initSelect(page);
-    const select = await getSelect(page);
-    const host = await getHost(page);
+    const select = getSelect(page);
+    const host = getHost(page);
 
     await addEventListener(select, 'change');
 
-    expect(await getDropdownList(page), 'initially').toBeNull();
+    await expect(getDropdownList(page), 'initially').toHaveCount(0);
 
     await page.keyboard.press('Tab');
     await page.keyboard.press('ArrowDown'); //this just opens the dropdown
     await waitForStencilLifecycle(page);
 
-    expect(await getDropdownList(page), 'after ArrowDown').toBeTruthy();
+    expect(getDropdownList(page), 'after ArrowDown').toBeTruthy();
     expect(await getHighlightedDropdownOptionIndex(page), 'for highlighted custom option').toBe(0);
     expect(await getSelectedIndex(page), 'for selected custom option').toBe(0);
 
     await page.keyboard.press('Enter');
     await waitForStencilLifecycle(page);
 
-    expect(await getDropdownList(page), 'after Enter').toBeNull();
+    await expect(getDropdownList(page), 'after Enter').toHaveCount(0);
     expect(await getSelectedIndex(page), 'for selected index').toBe(0);
 
     expect((await getEventSummary(select, 'change')).counter, 'for calls').toBe(0);
@@ -642,7 +640,7 @@ test.describe('keyboard and click events', () => {
     page,
   }) => {
     await initSelect(page, { amount: 5, disabledIndex: 1 });
-    const select = await getSelect(page);
+    const select = getSelect(page);
     await addEventListener(select, 'change');
 
     await page.keyboard.press('Tab');
@@ -672,31 +670,31 @@ test.describe('keyboard and click events', () => {
 
   test('should open select with space bar', async ({ page }) => {
     await initSelect(page);
-    const select = await getSelect(page);
+    const select = getSelect(page);
 
     await addEventListener(select, 'change');
 
     await page.keyboard.press('Tab');
-    expect(await getDropdownList(page), 'for dropdown list after tab').toBeNull();
+    await expect(getDropdownList(page), 'for dropdown list after tab').toHaveCount(0);
 
     await page.keyboard.press('Space');
     await waitForStencilLifecycle(page);
-    expect(await getDropdownList(page), 'for dropdown list after space').toBeTruthy();
+    expect(getDropdownList(page), 'for dropdown list after space').toBeTruthy();
     expect((await getEventSummary(select, 'change')).counter, 'for calls').toBe(0);
   });
 
   test('should select correct option with space bar', async ({ page }) => {
     await initSelect(page);
-    const select = await getSelect(page);
+    const select = getSelect(page);
 
     await addEventListener(select, 'change');
 
     await page.keyboard.press('Tab');
-    expect(await getDropdownList(page), 'for dropdown list after tab').toBeNull();
+    await expect(getDropdownList(page), 'for dropdown list after tab').toHaveCount(0);
 
     await page.keyboard.press('Space');
     await waitForStencilLifecycle(page);
-    expect(await getDropdownList(page), 'for dropdown list after space').toBeTruthy();
+    expect(getDropdownList(page), 'for dropdown list after space').toBeTruthy();
 
     await page.keyboard.press('ArrowDown');
     await waitForStencilLifecycle(page);
@@ -716,7 +714,7 @@ test.describe('keyboard and click events', () => {
       await page.keyboard.press('PageDown');
       await waitForStencilLifecycle(page);
 
-      expect(await getDropdownList(page), 'for dropdown list after page down').toBeNull();
+      await expect(getDropdownList(page), 'for dropdown list after page down').toHaveCount(0);
       expect(await getSelectedIndex(page), 'for selected index').toBe(0);
     });
 
@@ -727,7 +725,7 @@ test.describe('keyboard and click events', () => {
       await page.keyboard.press('PageUp');
       await waitForStencilLifecycle(page);
 
-      expect(await getDropdownList(page), 'for dropdown list after page up').toBeNull();
+      await expect(getDropdownList(page), 'for dropdown list after page up').toHaveCount(0);
       expect(await getSelectedIndex(page), 'for selected index').toBe(0);
     });
   });
@@ -749,7 +747,7 @@ test.describe('keyboard and click events', () => {
       await page.keyboard.press('Space');
       await waitForStencilLifecycle(page);
 
-      expect(await getDropdownList(page), 'for dropdown list after space').toBeNull();
+      await expect(getDropdownList(page), 'for dropdown list after space').toHaveCount(0);
       expect(await getSelectedIndex(page), 'for selected index').toBe(2);
     });
 
@@ -769,7 +767,7 @@ test.describe('keyboard and click events', () => {
       await page.keyboard.press('Space');
       await waitForStencilLifecycle(page);
 
-      expect(await getDropdownList(page), 'for dropdown list after space').toBeNull();
+      await expect(getDropdownList(page), 'for dropdown list after space').toHaveCount(0);
       expect(await getSelectedIndex(page), 'for selected index').toBe(0);
     });
 
@@ -788,7 +786,7 @@ test.describe('keyboard and click events', () => {
       await waitForStencilLifecycle(page);
 
       expect(await getSelectedIndex(page), 'for selected index').toBe(0);
-      expect(await getDropdownList(page), 'for dropdown list').toBeNull();
+      await expect(getDropdownList(page), 'for dropdown list').toHaveCount(0);
     });
 
     test('should highlight first matching option via keyboard search', async ({ page }) => {
@@ -810,23 +808,23 @@ test.describe('keyboard and click events', () => {
   test('should open/close select on mouseclick', async ({ page }) => {
     await initSelect(page);
 
-    const host = await getHost(page);
+    const host = getHost(page);
     await host.click();
     await waitForStencilLifecycle(page);
 
-    expect(await getDropdownList(page), 'after 1st click').toBeTruthy();
+    expect(getDropdownList(page), 'after 1st click').toBeTruthy();
     expect(await getHighlightedDropdownOptionIndex(page), 'for highlighted custom option  after 1st click').toBe(0);
 
     await host.click();
     await waitForStencilLifecycle(page);
 
-    expect(await getDropdownList(page), 'after 2nd click').toBeNull();
+    await expect(getDropdownList(page), 'after 2nd click').toHaveCount(0);
   });
 
   test('should open/close select on icon click', async ({ page }) => {
     await initSelect(page);
 
-    const icon = await getSelectIcon(page);
+    const icon = getSelectIcon(page);
     const clickIcon = async () => {
       const { top, bottom, left, right } = await getElementPositions(page, icon);
       // click center of where icon is located
@@ -836,28 +834,28 @@ test.describe('keyboard and click events', () => {
 
     await clickIcon();
 
-    expect(await getDropdownList(page), 'after 1st click').toBeTruthy();
+    expect(getDropdownList(page), 'after 1st click').toBeTruthy();
     expect(await getHighlightedDropdownOptionIndex(page), 'for highlighted custom option after 1st click').toBe(0);
 
     await clickIcon();
 
-    expect(await getDropdownList(page), 'after 2nd click').toBeNull();
+    await expect(getDropdownList(page), 'after 2nd click').toHaveCount(0);
   });
 
   test('should select second option on mouseclick', async ({ page }) => {
     await initSelect(page);
-    const host = await getHost(page);
+    const host = getHost(page);
 
     await host.click();
     await waitForStencilLifecycle(page);
-    expect(await getDropdownList(page), 'after open').toBeTruthy();
+    expect(getDropdownList(page), 'after open').toBeTruthy();
 
-    const dropdownOption2 = await getDropdownOption2(page);
+    const dropdownOption2 = getDropdownOption2(page);
 
     await dropdownOption2.click();
     await waitForStencilLifecycle(page);
 
-    expect(await getDropdownList(page), 'after option click').toBeNull();
+    await expect(getDropdownList(page), 'after option click').toHaveCount(0);
     expect(await getSelectedIndex(page), 'for selected index').toBe(1);
   });
 
@@ -890,15 +888,15 @@ test.describe('keyboard and click events', () => {
         <${customElementName}></${customElementName}>`
     );
 
-    const host = await page.$(`${customElementName} p-select-wrapper`);
+    const host = page.locator(`${customElementName} p-select-wrapper`);
     await host.click();
     await waitForStencilLifecycle(page);
 
     const nestedDropdownSelector = `${customElementName} ${dropdownSelector}`;
-    const dropdownOption2 = await page.$(`${nestedDropdownSelector} .option:nth-child(2)`);
+    const dropdownOption2 = page.locator(`${nestedDropdownSelector} .option:nth-child(2)`);
     const dropdownOption2BoundingBox = await dropdownOption2.boundingBox();
 
-    const dropdownInCustomElement = await getShadowRoot(await page.$(nestedDropdownSelector));
+    const dropdownInCustomElement = await getShadowRoot(page.locator(nestedDropdownSelector));
     const getSelectedOptionInCustomElement = () => getElementIndex(dropdownInCustomElement, `.${selectedClass}`);
 
     expect(await getSelectedOptionInCustomElement(), 'initially').toBe(0);
@@ -908,7 +906,7 @@ test.describe('keyboard and click events', () => {
     await waitForStencilLifecycle(page);
 
     expect(
-      await getProperty(await page.$(`${customElementName} p-select-wrapper select`), 'selectedIndex'),
+      await getProperty(page.locator(`${customElementName} p-select-wrapper select`), 'selectedIndex'),
       'after click'
     ).toBe(1);
   });
@@ -920,23 +918,23 @@ test.describe('keyboard and click events', () => {
     await page.keyboard.press('Space');
     await waitForStencilLifecycle(page);
 
-    expect(await getDropdownList(page), 'after space').toBeTruthy();
+    expect(getDropdownList(page), 'after space').toBeTruthy();
 
     await page.keyboard.press('Tab');
     await waitForStencilLifecycle(page);
 
-    expect(await getDropdownList(page), 'after tab').toBeNull();
+    await expect(getDropdownList(page), 'after tab').toHaveCount(0);
     expect(await selectHasFocus(page)).toBe(false);
   });
 
   test('should remove and re-attach events', async ({ page }) => {
     await initSelect(page);
 
-    const host = await getHost(page);
+    const host = getHost(page);
     await host.click();
     await waitForStencilLifecycle(page);
-    const dropdownCombobox = await getDropdownCombobox(page);
-    const dropdownList = await getDropdownList(page);
+    const dropdownCombobox = getDropdownCombobox(page);
+    const dropdownList = getDropdownList(page);
 
     await addEventListener(dropdownCombobox, 'mousedown');
     await addEventListener(dropdownCombobox, 'keydown');
@@ -988,7 +986,7 @@ test.describe('lifecycle', () => {
     await initSelect(page);
     await openSelect(page);
 
-    const dropdownOption2 = await getDropdownOption2(page);
+    const dropdownOption2 = getDropdownOption2(page);
 
     await waitForStencilLifecycle(page);
     const status1 = await getLifecycleStatus(page);
@@ -1033,7 +1031,7 @@ test.describe('optgroups', () => {
 
     await expect(child).not.toHaveClass(disabledClassRegex);
 
-    await page.locator('optgroup[label="b"]').evaluate((element) => (element.disabled = true));
+    page.locator('optgroup[label="b"]').evaluate((element) => (element.disabled = true));
     await waitForStencilLifecycle(page);
 
     await expect(optgroup).toHaveClass(disabledOptgroupClassRegex);
@@ -1052,7 +1050,7 @@ test.describe('optgroups', () => {
 
     await expect(child).toBeVisible();
 
-    await page.locator('optgroup[label="b"]').evaluate((element) => (element.hidden = true));
+    page.locator('optgroup[label="b"]').evaluate((element) => (element.hidden = true));
     await waitForStencilLifecycle(page);
 
     await expect(optgroup).not.toBeVisible();

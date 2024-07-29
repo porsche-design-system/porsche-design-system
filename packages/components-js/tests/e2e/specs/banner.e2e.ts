@@ -1,5 +1,4 @@
-import type { ElementHandle, Page } from 'playwright';
-import { expect, Locator, test } from '@playwright/test';
+import { expect, type Locator, test, Page } from '@playwright/test';
 import {
   addEventListener,
   getCssClasses,
@@ -86,9 +85,7 @@ test('should not show banner by setting open prop false', async ({ page }) => {
 });
 
 test.describe('close', () => {
-  const getComputedElementHandleStyles = async (
-    elHandle: ElementHandle<Element> | Locator
-  ): Promise<CSSStyleDeclaration> => {
+  const getComputedElementHandleStyles = async (elHandle: Locator): Promise<CSSStyleDeclaration> => {
     return elHandle.evaluate((el: Element): CSSStyleDeclaration => {
       return getComputedStyle(el);
     });

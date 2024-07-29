@@ -1,5 +1,5 @@
 import type { ElementHandle, Page } from 'playwright';
-import { expect, test } from '@playwright/test';
+import { expect, Locator, test } from '@playwright/test';
 import {
   addEventListener,
   getActiveElementId,
@@ -28,9 +28,9 @@ const setContentWithLink = (page: Page) =>
     </div>`
   );
 
-const getHost = (page: Page) => page.$('p-marque');
-const getSource = (page: Page): Promise<ElementHandle<HTMLElement | SVGElement>> => page.$('p-marque source');
-const getLink = (page: Page) => page.$('p-marque a');
+const getHost = (page: Page) => page.locator('p-marque');
+const getSource = (page: Page): Locator => page.locator('p-marque source').first();
+const getLink = (page: Page) => page.locator('p-marque a');
 
 const getImageRequest = (page: Page) =>
   page.waitForRequest((request) => request.url().endsWith('.png') || request.url().endsWith('.webp'));
@@ -53,7 +53,7 @@ test.describe('with trademark', () => {
     test('should request correct image for 1x resolution', async ({ page }) => {
       const imgRequest1 = getImageRequest(page);
       await setContentWithTrademark(page);
-      const host = await getHost(page);
+      const host = getHost(page);
 
       const imgUrl1 = (await imgRequest1).url();
       expect(imgUrl1).toContain(fileNameSmall);
@@ -78,7 +78,7 @@ test.describe('with trademark', () => {
       test('should request correct image for 2x resolution', async ({ page }) => {
         const imgRequest1 = getImageRequest(page);
         await setContentWithTrademark(page);
-        const host = await getHost(page);
+        const host = getHost(page);
 
         const imgUrl1 = (await imgRequest1).url();
         expect(imgUrl1).toContain(fileNameSmall);
@@ -102,7 +102,7 @@ test.describe('with trademark', () => {
       test('should request correct image for 3x resolution', async ({ page }) => {
         const imgRequest1 = getImageRequest(page);
         await setContentWithTrademark(page);
-        const host = await getHost(page);
+        const host = getHost(page);
 
         const imgUrl1 = (await imgRequest1).url();
         expect(imgUrl1).toContain(fileNameSmall);
@@ -130,25 +130,25 @@ test.describe('with trademark', () => {
 
     test('should set correct srcSet', async ({ page }) => {
       await setContentWithTrademark(page);
-      const host = await getHost(page);
+      const host = getHost(page);
 
-      expect(await getProperty(await getSource(page), 'srcset'), 'initial size').toContain(fileNameMedium);
+      expect(await getProperty(getSource(page), 'srcset'), 'initial size').toContain(fileNameMedium);
 
       const imgRequest1 = getImageRequest(page);
       await setProperty(host, 'size', 'small');
       await imgRequest1;
-      expect(await getProperty(await getSource(page), 'srcset'), 'size after first change').toContain(fileNameSmall);
+      expect(await getProperty(getSource(page), 'srcset'), 'size after first change').toContain(fileNameSmall);
 
       const imgRequest2 = getImageRequest(page);
       await setProperty(host, 'size', 'medium');
       await imgRequest2;
-      expect(await getProperty(await getSource(page), 'srcset'), 'size after second change').toContain(fileNameMedium);
+      expect(await getProperty(getSource(page), 'srcset'), 'size after second change').toContain(fileNameMedium);
     });
 
     test('should request correct image for 1x resolution', async ({ page }) => {
       const imgRequest1 = getImageRequest(page);
       await setContentWithTrademark(page);
-      const host = await getHost(page);
+      const host = getHost(page);
 
       const imgUrl1 = (await imgRequest1).url();
       expect(imgUrl1, 'initial request size').toContain(fileNameMedium);
@@ -172,7 +172,7 @@ test.describe('with trademark', () => {
       test('should request correct image for 2x resolution', async ({ page }) => {
         const imgRequest1 = getImageRequest(page);
         await setContentWithTrademark(page);
-        const host = await getHost(page);
+        const host = getHost(page);
 
         const imgUrl1 = (await imgRequest1).url();
         expect(imgUrl1, 'initial request size').toContain(fileNameMedium);
@@ -197,7 +197,7 @@ test.describe('with trademark', () => {
       test('should request correct image for 3x resolution', async ({ page }) => {
         const imgRequest1 = getImageRequest(page);
         await setContentWithTrademark(page);
-        const host = await getHost(page);
+        const host = getHost(page);
 
         const imgUrl1 = (await imgRequest1).url();
         expect(imgUrl1, 'initial request size').toContain(fileNameMedium);
@@ -231,7 +231,7 @@ test.describe('without trademark', () => {
     test('should request correct image for 1x resolution', async ({ page }) => {
       const imgRequest1 = getImageRequest(page);
       await setContentWithoutTrademark(page);
-      const host = await getHost(page);
+      const host = getHost(page);
 
       const imgUrl1 = (await imgRequest1).url();
       expect(imgUrl1).toContain(fileNameSmall);
@@ -255,7 +255,7 @@ test.describe('without trademark', () => {
       test('should request correct image for 2x resolution', async ({ page }) => {
         const imgRequest1 = getImageRequest(page);
         await setContentWithoutTrademark(page);
-        const host = await getHost(page);
+        const host = getHost(page);
 
         const imgUrl1 = (await imgRequest1).url();
         expect(imgUrl1).toContain(fileNameSmall);
@@ -280,7 +280,7 @@ test.describe('without trademark', () => {
       test('should request correct image for 3x resolution', async ({ page }) => {
         const imgRequest1 = getImageRequest(page);
         await setContentWithoutTrademark(page);
-        const host = await getHost(page);
+        const host = getHost(page);
 
         const imgUrl1 = (await imgRequest1).url();
         expect(imgUrl1).toContain(fileNameSmall);
@@ -308,25 +308,25 @@ test.describe('without trademark', () => {
 
     test('should set correct srcSet', async ({ page }) => {
       await setContentWithoutTrademark(page);
-      const host = await getHost(page);
+      const host = getHost(page);
 
-      expect(await getProperty(await getSource(page), 'srcset'), 'initial size').toContain(fileNameMedium);
+      expect(await getProperty(getSource(page), 'srcset'), 'initial size').toContain(fileNameMedium);
 
       const imgRequest1 = getImageRequest(page);
       await setProperty(host, 'size', 'small');
       await imgRequest1;
-      expect(await getProperty(await getSource(page), 'srcset'), 'size after first change').toContain(fileNameSmall);
+      expect(await getProperty(getSource(page), 'srcset'), 'size after first change').toContain(fileNameSmall);
 
       const imgRequest2 = getImageRequest(page);
       await setProperty(host, 'size', 'medium');
       await imgRequest2;
-      expect(await getProperty(await getSource(page), 'srcset'), 'size after second change').toContain(fileNameMedium);
+      expect(await getProperty(getSource(page), 'srcset'), 'size after second change').toContain(fileNameMedium);
     });
 
     test('should request correct image for 1x resolution', async ({ page }) => {
       const imgRequest1 = getImageRequest(page);
       await setContentWithoutTrademark(page);
-      const host = await getHost(page);
+      const host = getHost(page);
 
       const imgUrl1 = (await imgRequest1).url();
       expect(imgUrl1, 'initial request size').toContain(fileNameMedium);
@@ -350,7 +350,7 @@ test.describe('without trademark', () => {
       test('should request correct image for 2x resolution', async ({ page }) => {
         const imgRequest1 = getImageRequest(page);
         await setContentWithoutTrademark(page);
-        const host = await getHost(page);
+        const host = getHost(page);
 
         const imgUrl1 = (await imgRequest1).url();
         expect(imgUrl1, 'initial request size').toContain(fileNameMedium);
@@ -375,7 +375,7 @@ test.describe('without trademark', () => {
       test('should request correct image for 3x resolution', async ({ page }) => {
         const imgRequest1 = getImageRequest(page);
         await setContentWithoutTrademark(page);
-        const host = await getHost(page);
+        const host = getHost(page);
 
         const imgUrl1 = (await imgRequest1).url();
         expect(imgUrl1, 'initial request size').toContain(fileNameMedium);
@@ -401,21 +401,21 @@ test.describe('with link', () => {
   test('should render <a> tag when href prop is defined', async ({ page }) => {
     await setContentWithTrademark(page);
 
-    const host = await getHost(page);
+    const host = getHost(page);
 
-    expect(await getLink(page)).toBe(null);
+    await expect(getLink(page)).toHaveCount(0);
 
     await setProperty(host, 'href', '#some-link');
     await waitForStencilLifecycle(page);
-    expect(await getLink(page)).not.toBe(null);
+    await expect(getLink(page)).not.toHaveCount(0);
   });
 
   test('should dispatch correct click events', async ({ page }) => {
     await setContentWithLink(page);
 
-    const wrapper = await page.$('div');
-    const host = await getHost(page);
-    const link = await getLink(page);
+    const wrapper = page.locator('div');
+    const host = getHost(page);
+    const link = getLink(page);
 
     await addEventListener(wrapper, 'click');
 
@@ -440,9 +440,9 @@ test.describe('with link', () => {
       </div>`
     );
 
-    const marque = await getHost(page);
-    const before = await page.$('#before');
-    const after = await page.$('#after');
+    const marque = getHost(page);
+    const before = page.locator('#before');
+    const after = page.locator('#after');
 
     await addEventListener(before, 'focus');
     await addEventListener(marque, 'focus');
@@ -521,8 +521,8 @@ test.describe('with link', () => {
 
     const marqueHasFocus = () => page.evaluate(() => document.activeElement === document.querySelector('p-marque'));
 
-    const marque = await getHost(page);
-    const before = await page.$('#before');
+    const marque = getHost(page);
+    const before = page.locator('#before');
 
     await before.focus();
     expect(await marqueHasFocus()).toBe(false);

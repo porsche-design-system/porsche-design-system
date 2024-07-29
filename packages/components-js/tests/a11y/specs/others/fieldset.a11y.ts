@@ -12,8 +12,8 @@ const initFieldset = async (page: Page, opts?: InitOptions) => {
   await setContentWithDesignSystem(page, `<p-fieldset state="${state}" message="Some Message"></p-fieldset>`);
 };
 
-const getHost = (page: Page) => page.$('p-fieldset');
-const getFieldset = (page: Page) => page.$('p-fieldset fieldset');
+const getHost = (page: Page) => page.locator('p-fieldset');
+const getFieldset = (page: Page) => page.locator('p-fieldset fieldset');
 
 test.fixme('should expose correct initial accessibility tree', async ({ page }) => {
   await initFieldset(page);
@@ -33,7 +33,7 @@ test.fixme(
   'should expose correct accessibility tree property if error state added programmatically',
   async ({ page }) => {
     await initFieldset(page);
-    const host = await getHost(page);
+    const host = getHost(page);
 
     await setProperty(host, 'state', 'error');
     await waitForStencilLifecycle(page);

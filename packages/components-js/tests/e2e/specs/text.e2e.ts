@@ -20,8 +20,8 @@ const initText = (page: Page): Promise<void> => {
   );
 };
 
-const getHost = (page: Page) => page.$('p-text');
-const getParagraph = (page: Page) => page.$('p-text p');
+const getHost = (page: Page) => page.locator('p-text');
+const getParagraph = (page: Page) => page.locator('p-text p');
 
 test.describe('lifecycle', () => {
   test('should work without unnecessary round trips on init', async ({ page }) => {
@@ -36,7 +36,7 @@ test.describe('lifecycle', () => {
 
   test('should work without unnecessary round trips after state change', async ({ page }) => {
     await initText(page);
-    const host = await getHost(page);
+    const host = getHost(page);
 
     await setProperty(host, 'weight', 'semibold');
     await waitForStencilLifecycle(page);
@@ -48,7 +48,7 @@ test.describe('lifecycle', () => {
 
   test('should have a theme prop defined at any time without any unnecessary round trips', async ({ page }) => {
     await initText(page);
-    const host = await getHost(page);
+    const host = getHost(page);
 
     expect(await getProperty(host, 'theme')).toBe('light');
 

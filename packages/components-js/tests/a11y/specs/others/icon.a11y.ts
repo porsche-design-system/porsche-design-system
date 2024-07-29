@@ -17,7 +17,7 @@ const initIcon = async (page: Page, opts?: InitOptions): Promise<void> => {
   await setContentWithDesignSystem(page, content);
 };
 
-const getIconImg = async (page: Page) => page.$('p-icon img');
+const getIconImg = async (page: Page) => page.locator('p-icon img');
 
 test.fixme('should expose correct initial accessibility tree properties', async ({ page }) => {
   await initIcon(page);

@@ -118,9 +118,9 @@ const scenario = async (page: Page, theme: Theme, scheme?: PrefersColorScheme): 
     prefersColorScheme: scheme,
   });
 
-  await page.$$eval('.value p-multi-select', async (selects) =>
-    selects.forEach((select: any) => (select.value = ['a']))
-  );
+  await page
+    .locator('.value p-multi-select')
+    .evaluateAll(async (selects) => selects.forEach((select: any) => (select.value = ['a'])));
 
   await forceHoverState(page, '.hover p-multi-select >>> input');
   await forceHoverState(page, '.hover p-multi-select span a');

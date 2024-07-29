@@ -561,7 +561,7 @@ test.describe('focus', () => {
 
   test('should close dropdown on tab and focus next element', async ({ page }) => {
     await initSelect(page, { options: { markupAfter: '<p-button>Some button</p-button>' } });
-    const button = await page.$('p-button');
+    const button = page.locator('p-button');
     const comboboxEl = getButton(page);
     await addEventListener(comboboxEl, 'focus');
     await addEventListener(button, 'focus');

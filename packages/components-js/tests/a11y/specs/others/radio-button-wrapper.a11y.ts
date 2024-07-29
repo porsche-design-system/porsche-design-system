@@ -2,10 +2,10 @@ import { getActiveElementId, setContentWithDesignSystem, setProperty, waitForSte
 import { type Page, test, expect } from '@playwright/test';
 import type { FormState } from '@porsche-design-system/components/dist/types/bundle';
 
-const getHost = (page: Page) => page.$('p-radio-button-wrapper');
-const getRoot = (page: Page) => page.$('p-radio-button-wrapper .root');
-const getInput = (page: Page) => page.$('p-radio-button-wrapper input');
-const getMessage = (page: Page) => page.$('p-radio-button-wrapper .message');
+const getHost = (page: Page) => page.locator('p-radio-button-wrapper');
+const getRoot = (page: Page) => page.locator('p-radio-button-wrapper .root');
+const getInput = (page: Page) => page.locator('p-radio-button-wrapper input');
+const getMessage = (page: Page) => page.locator('p-radio-button-wrapper .message');
 
 type InitOptions = {
   useSlottedLabel?: boolean;
@@ -64,7 +64,7 @@ test.fixme('should expose correct accessibility tree properties in error state',
 test.fixme('should add/remove accessibility tree properties if state changes programmatically', async ({ page }) => {
   await initRadioButton(page);
 
-  const host = await getHost(page);
+  const host = getHost(page);
 
   await setProperty(host, 'state', 'error');
   await setProperty(host, 'message', 'Some error message.');

@@ -29,8 +29,8 @@ const initStepperHorizontal = (page: Page, opts?: InitOptions) => {
   return setContentWithDesignSystem(page, isWrapped ? `<div style="width: 300px">${content}</div>` : content);
 };
 
-const getHost = (page: Page) => page.$('p-stepper-horizontal');
-const getStepItems = (page: Page) => page.$$('p-stepper-horizontal-item');
+const getHost = (page: Page) => page.locator('p-stepper-horizontal');
+const getStepItems = (page: Page) => page.locator('p-stepper-horizontal-item').all();
 const getButtons = async (page: Page) =>
   Promise.all(
     (await getStepItems(page)).map(async (x) =>
@@ -40,7 +40,7 @@ const getButtons = async (page: Page) =>
 
 test('should expose correct initial accessibility tree of stepper-horizontal', async ({ page }) => {
   await initStepperHorizontal(page, { amount: 3 });
-  const host = await getHost(page);
+  const host = getHost(page);
   const [button1, button2] = await getButtons(page);
 
   // await expectA11yToMatchSnapshot(page, host, { interestingOnly: false });

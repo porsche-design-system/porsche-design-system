@@ -63,16 +63,16 @@ const initStepperHorizontal = (page: Page, opts?: InitOptions) => {
   return setContentWithDesignSystem(page, isWrapped ? `<div style="width: 300px">${content}</div>` : content);
 };
 
-const getHost = (page: Page) => page.$('p-stepper-horizontal');
-const getStepItems = (page: Page) => page.$$('p-stepper-horizontal-item');
+const getHost = (page: Page) => page.locator('p-stepper-horizontal');
+const getStepItems = (page: Page) => page.locator('p-stepper-horizontal-item').all();
 const getButtons = async (page: Page) =>
   Promise.all(
     (await getStepItems(page)).map(async (x) =>
       (await x.evaluateHandle((x) => x.shadowRoot.querySelector('button'))).asElement()
     )
   );
-const getScrollArea = (page: Page) => page.$('p-stepper-horizontal p-scroller .scroll-area');
-const getGradientNext = (page: Page) => page.$('p-stepper-horizontal p-scroller .action-next');
+const getScrollArea = (page: Page) => page.locator('p-stepper-horizontal p-scroller .scroll-area');
+const getGradientNext = (page: Page) => page.locator('p-stepper-horizontal p-scroller .action-next');
 
 test.describe('validation', () => {
   test('should throw error if an item with current state is added while another exists', async ({ page }) => {
@@ -81,7 +81,7 @@ test.describe('validation', () => {
     await initStepperHorizontal(page);
     expect(getPageThrownErrorsAmount()).toBe(0);
 
-    const host = await getHost(page);
+    const host = getHost(page);
     await host.evaluate((host: HTMLElement) => {
       const newStepperHorizontalItem = document.createElement('p-stepper-horizontal-item') as any;
       newStepperHorizontalItem.state = 'current';
@@ -111,7 +111,7 @@ test.describe('validation', () => {
     initConsoleObserver(page);
 
     await initStepperHorizontal(page, { currentStep: 3 });
-    const host = await getHost(page);
+    const host = getHost(page);
 
     await host.evaluate((host: HTMLElement) => {
       const stepperItemElements = Array.from(host.children) as any;
@@ -130,8 +130,8 @@ test.describe('scrolling', () => {
     await initStepperHorizontal(page, { amount: 9, currentStep: 3, isWrapped: true });
     const [, , , step4] = await getStepItems(page);
     const step4Offset = await getOffsetLeft(step4);
-    const gradientWidth = await getOffsetWidth(await getGradientNext(page));
-    const scrollArea = await getScrollArea(page);
+    const gradientWidth = await getOffsetWidth(getGradientNext(page));
+    const scrollArea = getScrollArea(page);
     const scrollDistance = step4Offset - gradientWidth + FOCUS_PADDING;
 
     expect(await getScrollLeft(scrollArea)).toEqual(scrollDistance);
@@ -156,9 +156,9 @@ test.describe('scrolling', () => {
     );
 
     const [, , , item4, item5] = await getStepItems(page);
-    const gradient = await getGradientNext(page);
+    const gradient = getGradientNext(page);
     const gradientWidth = await getOffsetWidth(gradient);
-    const scrollArea = await getScrollArea(page);
+    const scrollArea = getScrollArea(page);
     const scrollAreaWidth = await getOffsetWidth(scrollArea);
 
     expect(await getScrollLeft(scrollArea)).toEqual(0);
@@ -185,9 +185,9 @@ test.describe('scrolling', () => {
     await initStepperHorizontal(page, { amount: 9, isWrapped: true });
 
     const [item1, , , item4, item5] = await getStepItems(page);
-    const gradient = await getGradientNext(page);
+    const gradient = getGradientNext(page);
     const gradientWidth = await getOffsetWidth(gradient);
-    const scrollArea = await getScrollArea(page);
+    const scrollArea = getScrollArea(page);
     const scrollAreaWidth = await getOffsetWidth(scrollArea);
 
     await setProperty(item1, 'state', 'complete');
@@ -212,7 +212,7 @@ test.describe('scrolling', () => {
 
   test('should scroll to correct position if one item is removed', async ({ page }) => {
     await initStepperHorizontal(page, { amount: 9, currentStep: 4, isWrapped: true });
-    const host = await getHost(page);
+    const host = getHost(page);
     const [, , , , item5] = await getStepItems(page);
 
     await host.evaluate((host) => {
@@ -221,9 +221,9 @@ test.describe('scrolling', () => {
     await waitForStencilLifecycle(page);
     await sleep(CSS_ANIMATION_DURATION);
 
-    const gradient = await getGradientNext(page);
+    const gradient = getGradientNext(page);
     const gradientWidth = await getOffsetWidth(gradient);
-    const scrollArea = await getScrollArea(page);
+    const scrollArea = getScrollArea(page);
     const scrollAreaWidth = await getOffsetWidth(scrollArea);
 
     const item5Offset = await getOffsetLeft(item5);
@@ -236,7 +236,7 @@ test.describe('scrolling', () => {
   skipInBrowsers(['firefox', 'webkit'], () => {
     test('should scroll to correct position if newly added item is set to current', async ({ page }) => {
       await initStepperHorizontal(page, { amount: 5, currentStep: 0, isWrapped: true });
-      const host = await getHost(page);
+      const host = getHost(page);
 
       await host.evaluate((host) => {
         const newStepperHorizontalItem = document.createElement('p-stepper-horizontal-item');
@@ -248,7 +248,7 @@ test.describe('scrolling', () => {
 
       const [item1, , , , , item6] = await getStepItems(page);
 
-      const scrollArea = await getScrollArea(page);
+      const scrollArea = getScrollArea(page);
       const scrollAreaWidth = await getOffsetWidth(scrollArea);
 
       await setProperty(item1, 'state', 'complete');
@@ -267,7 +267,7 @@ test.describe('scrolling', () => {
 test.describe('events', () => {
   test('should trigger event on step click', async ({ page }) => {
     await initStepperHorizontal(page, { currentStep: 2 });
-    const host = await getHost(page);
+    const host = getHost(page);
     const [item1, item2] = await getStepItems(page);
 
     await addEventListener(host, 'stepChange');
@@ -284,7 +284,7 @@ test.describe('events', () => {
 
   test('should not trigger event when clicked in between steps', async ({ page }) => {
     await initStepperHorizontal(page, { currentStep: 2 });
-    const host = await getHost(page);
+    const host = getHost(page);
     const [item1] = await getStepItems(page);
 
     await addEventListener(host, 'stepChange');
@@ -300,7 +300,7 @@ test.describe('events', () => {
 
   test('should not trigger event if click on current', async ({ page }) => {
     await initStepperHorizontal(page, { currentStep: 2 });
-    const host = await getHost(page);
+    const host = getHost(page);
     const [item1, , item3] = await getStepItems(page);
 
     await addEventListener(host, 'stepChange');
@@ -314,7 +314,7 @@ test.describe('events', () => {
 
   test('should not trigger event if item is disabled', async ({ page }) => {
     await initStepperHorizontal(page, { currentStep: 2 });
-    const host = await getHost(page);
+    const host = getHost(page);
     const [item1, item2] = await getStepItems(page);
 
     await setProperty(item2, 'disabled', true);
@@ -331,7 +331,7 @@ test.describe('events', () => {
 
   test('should not trigger event if item without state', async ({ page }) => {
     await initStepperHorizontal(page, { currentStep: 1 });
-    const host = await getHost(page);
+    const host = getHost(page);
     const [item1, , item3] = await getStepItems(page);
 
     await addEventListener(host, 'stepChange');
@@ -345,7 +345,7 @@ test.describe('events', () => {
 
   test('should emit both stepChange and update event', async ({ page }) => {
     await initStepperHorizontal(page, { currentStep: 2 });
-    const host = await getHost(page);
+    const host = getHost(page);
 
     await addEventListener(host, 'stepChange');
     await addEventListener(host, 'update');
@@ -388,7 +388,7 @@ test.describe('lifecycle', () => {
 
   test('should work without unnecessary round trips on prop change', async ({ page }) => {
     await initStepperHorizontal(page, { currentStep: 0 });
-    const host = await getHost(page);
+    const host = getHost(page);
 
     await host.evaluate((host: HTMLElement) => {
       const stepperItemElements = Array.from(host.children) as any;

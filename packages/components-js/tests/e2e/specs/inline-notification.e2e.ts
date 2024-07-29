@@ -43,35 +43,35 @@ const initInlineNotification = (
   );
 };
 
-const getHost = (page: Page) => page.$('p-inline-notification');
-const getCloseButton = (page: Page) => page.$('p-inline-notification p-button-pure.close');
-const getActionButton = (page: Page) => page.$('p-inline-notification p-button-pure.action');
+const getHost = (page: Page) => page.locator('p-inline-notification');
+const getCloseButton = (page: Page) => page.locator('p-inline-notification p-button-pure.close');
+const getActionButton = (page: Page) => page.locator('p-inline-notification p-button-pure.action');
 
 test('should render close button with type of "button"', async ({ page }) => {
   await initInlineNotification(page);
-  const closeBtnReal = await page.$('p-inline-notification p-button-pure button');
+  const closeBtnReal = page.locator('p-inline-notification p-button-pure button');
   expect(await getAttribute(closeBtnReal, 'type')).toBe('button');
 });
 
 test('should render without button when persistent prop true', async ({ page }) => {
   await initInlineNotification(page, { persistent: true });
-  const el = await getCloseButton(page);
-  expect(el).toBeNull();
+  const el = getCloseButton(page);
+  await expect(el).toHaveCount(0);
 });
 
 test('should render without button when dismissButton prop false', async ({ page }) => {
   await initInlineNotification(page, { dismissButton: false });
-  console.log(await getProperty(await getHost(page), 'dismissButton'));
-  const el = await getCloseButton(page);
-  expect(el).toBeNull();
+  console.log(await getProperty(getHost(page), 'dismissButton'));
+  const el = getCloseButton(page);
+  await expect(el).toHaveCount(0);
 });
 
 test.describe('close button', () => {
   test('should emit custom event by click on close button', async ({ page }) => {
     await initInlineNotification(page);
 
-    const host = await getHost(page);
-    const closeButton = await getCloseButton(page);
+    const host = getHost(page);
+    const closeButton = getCloseButton(page);
     await addEventListener(host, 'dismiss');
 
     await closeButton.click();
@@ -81,8 +81,8 @@ test.describe('close button', () => {
   test('should remove and re-attach event', async ({ page }) => {
     await initInlineNotification(page);
 
-    const host = await getHost(page);
-    const closeButton = await getCloseButton(page);
+    const host = getHost(page);
+    const closeButton = getCloseButton(page);
     await addEventListener(host, 'dismiss');
 
     // Remove and re-attach component to check if events are duplicated / fire at all
@@ -97,8 +97,8 @@ test.describe('action button', () => {
   test('should emit custom event by click on action button', async ({ page }) => {
     await initInlineNotification(page, { actionLabel: 'Retry' });
 
-    const host = await getHost(page);
-    const actionButton = await getActionButton(page);
+    const host = getHost(page);
+    const actionButton = getActionButton(page);
     await addEventListener(host, 'action');
 
     await actionButton.click();
@@ -121,7 +121,7 @@ test.describe('lifecycle', () => {
 
   test('should work without unnecessary round trips after state change', async ({ page }) => {
     await initInlineNotification(page, { state: 'error' });
-    const host = await getHost(page);
+    const host = getHost(page);
 
     await setProperty(host, 'state', 'warning');
     await waitForStencilLifecycle(page);

@@ -7,16 +7,16 @@ import {
 } from '../../helpers';
 import { type Page, test, expect } from '@playwright/test';
 
-const getHost = (page: Page) => page.$('p-select-wrapper');
+const getHost = (page: Page) => page.locator('p-select-wrapper');
 
 const dropdownSelector = 'p-select-wrapper p-select-wrapper-dropdown';
 const selectedClass = 'option--selected';
 
-const getDropdown = (page: Page) => page.$(dropdownSelector);
-const getDropdownCombobox = (page: Page) => page.$(`${dropdownSelector} [role="combobox"]`);
-const getDropdownOption1 = (page: Page) => page.$(`${dropdownSelector} .option:nth-child(1)`);
-const getDropdownOption2 = (page: Page) => page.$(`${dropdownSelector} .option:nth-child(2)`);
-const getSelectedDropdownOption = (page: Page) => page.$(`${dropdownSelector} .${selectedClass}`);
+const getDropdown = (page: Page) => page.locator(dropdownSelector);
+const getDropdownCombobox = (page: Page) => page.locator(`${dropdownSelector} [role="combobox"]`);
+const getDropdownOption1 = (page: Page) => page.locator(`${dropdownSelector} .option:nth-child(1)`);
+const getDropdownOption2 = (page: Page) => page.locator(`${dropdownSelector} .option:nth-child(2)`);
+const getSelectedDropdownOption = (page: Page) => page.locator(`${dropdownSelector} .${selectedClass}`);
 
 const getComboboxAriaActiveDescendant = async (page: Page) =>
   getAttribute(await getDropdownCombobox(page), 'aria-activedescendant');
@@ -89,7 +89,7 @@ test.fixme('should expose correct initial accessibility tree', async ({ page }) 
 
 test.fixme('should expose correct initial accessibility tree in open state', async ({ page }) => {
   await initSelect(page, { disabledIndex: 1 });
-  const host = await getHost(page);
+  const host = getHost(page);
   const dropdownCombobox = await getDropdownCombobox(page);
   const dropdown = await getDropdown(page);
 
@@ -117,7 +117,7 @@ test('should expose correct accessibility tree if rendered with optgroups in ope
       </p-select-wrapper>`
   );
 
-  const host = await getHost(page);
+  const host = getHost(page);
   const dropdown = await getDropdown(page);
 
   await host.click();
@@ -129,7 +129,7 @@ test('should expose correct accessibility tree if rendered with optgroups in ope
 test.fixme('should expose correct accessibility tree if open/closed', async ({ page }) => {
   await initSelect(page);
 
-  const host = await getHost(page);
+  const host = getHost(page);
   const dropdownCombobox = await getDropdownCombobox(page);
 
   // await expectA11yToMatchSnapshot(page, dropdownCombobox, { ...opts, message: 'Initially' });
@@ -145,7 +145,7 @@ test.fixme(
   async ({ page }) => {
     await initSelect(page);
 
-    const host = await getHost(page);
+    const host = getHost(page);
     await host.click();
     await waitForStencilLifecycle(page);
 
@@ -182,7 +182,7 @@ test.fixme(
 
 test.fixme('should expose correct accessibility tree if description is set', async ({ page }) => {
   await initSelect(page);
-  const host = await getHost(page);
+  const host = getHost(page);
   await setProperty(host, 'description', 'Some description');
   await host.click();
   await waitForStencilLifecycle(page);
@@ -193,7 +193,7 @@ test.fixme('should expose correct accessibility tree if description is set', asy
 
 test.fixme('should expose correct accessibility tree in error state', async ({ page }) => {
   await initSelect(page);
-  const host = await getHost(page);
+  const host = getHost(page);
   await setProperty(host, 'state', 'error');
   await setProperty(host, 'message', 'Some error message');
   await host.click();

@@ -331,8 +331,8 @@ test('should not have pagination and prev/next buttons when there is only one pa
   page,
 }) => {
   await initCarousel(page, { slidesPerPage: 3 });
-  const buttonPrev = await page.locator('p-carousel p-button-pure:first-of-type');
-  const buttonNext = await page.locator('p-carousel p-button-pure:last-of-type');
+  const buttonPrev = page.locator('p-carousel p-button-pure:first-of-type');
+  const buttonNext = page.locator('p-carousel p-button-pure:last-of-type');
   const pagination = getPagination(page);
 
   await expect(buttonPrev).toHaveCount(0);
@@ -512,8 +512,8 @@ test.describe('adding/removing slides', () => {
     await waitForStencilLifecycle(page);
     expect((await getSlides(page)).length).toBe(1);
 
-    const buttonPrev2 = await page.locator('p-carousel p-button-pure:first-of-type');
-    const buttonNext2 = await page.locator('p-carousel p-button-pure:last-of-type');
+    const buttonPrev2 = page.locator('p-carousel p-button-pure:first-of-type');
+    const buttonNext2 = page.locator('p-carousel p-button-pure:last-of-type');
     await expect(buttonPrev2).toHaveCount(0);
     await expect(buttonNext2).toHaveCount(0);
   });

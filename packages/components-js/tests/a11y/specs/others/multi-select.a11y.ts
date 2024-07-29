@@ -2,10 +2,10 @@ import { type Page, test, expect } from '@playwright/test';
 import type { Components } from '@porsche-design-system/components/src/components';
 import { getHTMLAttributes, setContentWithDesignSystem, setProperty, waitForStencilLifecycle } from '../../helpers';
 
-const getHost = (page: Page) => page.$('p-multi-select');
-const getInput = (page: Page) => page.$('p-multi-select input');
-const getDropdown = (page: Page) => page.$('p-multi-select .listbox');
-const getAssertiveText = (page: Page) => page.$('span[aria-live="assertive"]');
+const getHost = (page: Page) => page.locator('p-multi-select');
+const getInput = (page: Page) => page.locator('p-multi-select input');
+const getDropdown = (page: Page) => page.locator('p-multi-select .listbox');
+const getAssertiveText = (page: Page) => page.locator('span[aria-live="assertive"]');
 
 type InitOptions = {
   props?: Components.PMultiSelect;
@@ -97,7 +97,7 @@ test.fixme('should expose correct accessibility tree if option is selected', asy
 
 test.fixme('should expose correct accessibility tree if description is set', async ({ page }) => {
   await initMultiSelect(page);
-  const host = await getHost(page);
+  const host = getHost(page);
   await setProperty(host, 'description', 'Some description');
   await waitForStencilLifecycle(page);
   const inputElement = await getInput(page);
@@ -107,7 +107,7 @@ test.fixme('should expose correct accessibility tree if description is set', asy
 
 test.fixme('should expose correct accessibility tree in error state', async ({ page }) => {
   await initMultiSelect(page);
-  const host = await getHost(page);
+  const host = getHost(page);
   await setProperty(host, 'state', 'error');
   await setProperty(host, 'message', 'Some error message');
   await waitForStencilLifecycle(page);

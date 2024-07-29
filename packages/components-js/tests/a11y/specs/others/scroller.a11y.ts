@@ -29,12 +29,12 @@ const initScroller = (page: Page, opts?: InitOptions) => {
   return setContentWithDesignSystem(page, isWrapped ? `<div style="width: 200px">${content}</div>` : content);
 };
 
-const getHost = (page: Page) => page.$('p-scroller');
-const getScrollWrapper = (page: Page) => page.$('p-scroller .scroll-wrapper');
+const getHost = (page: Page) => page.locator('p-scroller');
+const getScrollWrapper = (page: Page) => page.locator('p-scroller .scroll-wrapper');
 
 test.fixme('should expose correct initial accessibility tree if aria prop is set', async ({ page }) => {
   await initScroller(page, { amount: 3 });
-  const host = await getHost(page);
+  const host = getHost(page);
   await setProperty(host, 'aria', {
     role: 'tablist',
   });

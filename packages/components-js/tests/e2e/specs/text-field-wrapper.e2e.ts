@@ -1,4 +1,4 @@
-import type { ElementHandle, Page } from 'playwright';
+import type { Locator, Page } from 'playwright';
 import { expect, test } from '@playwright/test';
 import {
   addEventListener,
@@ -20,17 +20,17 @@ import {
 } from '../helpers';
 import type { FormState } from '@porsche-design-system/components';
 
-const getHost = (page: Page) => page.$('p-text-field-wrapper');
-const getInput = (page: Page) => page.$('input');
-const getLabel = (page: Page) => page.$('p-text-field-wrapper label');
-const getLabelSrText = (page: Page) => page.$('p-text-field-wrapper label .sr-only');
-const getCounterOrUnit = (page: Page) => page.$('p-text-field-wrapper .unit-counter');
-const getToggleOrClearButtonHost = (page: Page) => page.$('p-text-field-wrapper p-button-pure');
-const getToggleOrClearButton = (page: Page) => page.$('p-text-field-wrapper p-button-pure button');
-const getLocateActionButton = (page: Page) => page.$('p-text-field-wrapper p-button-pure + p-button-pure button');
-const getSubmitButtonHost = (page: Page) => page.$('p-text-field-wrapper p-button-pure');
-const getSubmitButton = (page: Page) => page.$('p-text-field-wrapper p-button-pure button');
-const getIconName = (icon: ElementHandle) => getProperty(icon, 'icon');
+const getHost = (page: Page) => page.locator('p-text-field-wrapper');
+const getInput = (page: Page) => page.locator('input');
+const getLabel = (page: Page) => page.locator('p-text-field-wrapper label');
+const getLabelSrText = (page: Page) => page.locator('p-text-field-wrapper label .sr-only');
+const getCounterOrUnit = (page: Page) => page.locator('p-text-field-wrapper .unit-counter');
+const getToggleOrClearButtonHost = (page: Page) => page.locator('p-text-field-wrapper p-button-pure');
+const getToggleOrClearButton = (page: Page) => page.locator('p-text-field-wrapper p-button-pure button');
+const getLocateActionButton = (page: Page) => page.locator('p-text-field-wrapper p-button-pure + p-button-pure button');
+const getSubmitButtonHost = (page: Page) => page.locator('p-text-field-wrapper p-button-pure').first();
+const getSubmitButton = (page: Page) => page.locator('p-text-field-wrapper p-button-pure button').first();
+const getIconName = (icon: Locator) => getProperty(icon, 'icon');
 
 type InitOptions = {
   useSlottedLabel?: boolean;
@@ -93,7 +93,7 @@ test.describe('input type="password"', () => {
     test.skip();
     test('should disable input when input is disabled programmatically', async ({ page }) => {
       await initTextField(page, { type: 'password', hasLabel: true });
-      const input = await getInput(page);
+      const input = getInput(page);
 
       const initialCursor = await getElementStyle(input, 'cursor');
       const initialBorderColor = await getElementStyle(input, 'borderColor');
@@ -114,8 +114,8 @@ test.describe('input type="password"', () => {
 
   test('should toggle icon when password visibility button is clicked', async ({ page }) => {
     await initTextField(page, { type: 'password', hasLabel: true });
-    const button = await getToggleOrClearButton(page);
-    const buttonHost = await getToggleOrClearButtonHost(page);
+    const button = getToggleOrClearButton(page);
+    const buttonHost = getToggleOrClearButtonHost(page);
 
     expect(await getIconName(buttonHost)).toBe('view');
 
@@ -132,8 +132,8 @@ test.describe('input type="password"', () => {
 
   test('should toggle password visibility and focus input correctly', async ({ page }) => {
     await initTextField(page, { type: 'password', hasLabel: true });
-    const button = await getToggleOrClearButton(page);
-    const input = await getInput(page);
+    const button = getToggleOrClearButton(page);
+    const input = getInput(page);
 
     await addEventListener(input, 'focus');
 
@@ -160,7 +160,7 @@ test.describe('input type="search"', () => {
     skipInBrowsers(['firefox', 'webkit'], () => {
       test('should emit input events for input without text-field-wrapper', async ({ page }) => {
         await setContentWithDesignSystem(page, '<input type="search" style="width: 100px; height: 50px">');
-        const input = await getInput(page);
+        const input = getInput(page);
 
         await addEventListener(input, 'input');
         await input.focus();
@@ -183,7 +183,7 @@ test.describe('input type="search"', () => {
 
     test('should emit input events for input with text-field-wrapper', async ({ page }) => {
       await initTextField(page, { type: 'search' });
-      const input = await getInput(page);
+      const input = getInput(page);
 
       await addEventListener(input, 'input');
       await input.focus();
@@ -197,7 +197,7 @@ test.describe('input type="search"', () => {
       expect((await getEventSummary(input, 'input')).counter).toBe(1);
 
       await setProperty(input, 'value', 'value');
-      const button = await getToggleOrClearButton(page);
+      const button = getToggleOrClearButton(page);
       await button.click();
       expect(await getProperty(input, 'value')).toBe('');
       expect((await getEventSummary(input, 'input')).counter).toBe(2);
@@ -205,7 +205,7 @@ test.describe('input type="search"', () => {
 
     test('should emit action event when action button is clicked', async ({ page }) => {
       await initTextField(page, { type: 'search', hasLocateAction: true });
-      const host = await getHost(page);
+      const host = getHost(page);
       const button = await getLocateActionButton(page);
 
       await addEventListener(host, 'action');
@@ -217,13 +217,13 @@ test.describe('input type="search"', () => {
 
   test.describe('clear functionality', () => {
     const isClearButtonVisible = async (page: Page): Promise<boolean> => {
-      const clearButton = await getToggleOrClearButtonHost(page);
+      const clearButton = getToggleOrClearButtonHost(page);
       return !(await getProperty(clearButton, 'hidden'));
     };
 
     test('should show clear button on keyboard typed input.value', async ({ page }) => {
       await initTextField(page, { type: 'search' });
-      const input = await getInput(page);
+      const input = getInput(page);
 
       expect(await isClearButtonVisible(page)).toBe(false);
 
@@ -236,7 +236,7 @@ test.describe('input type="search"', () => {
 
     test('should show clear button on programmatically set input.value', async ({ page }) => {
       await initTextField(page, { type: 'search' });
-      const input = await getInput(page);
+      const input = getInput(page);
 
       expect(await isClearButtonVisible(page)).toBe(false);
       await setProperty(input, 'value', 'value');
@@ -247,7 +247,7 @@ test.describe('input type="search"', () => {
 
     test('should reset input value on keydown Escape', async ({ page }) => {
       await initTextField(page, { type: 'search' });
-      const input = await getInput(page);
+      const input = getInput(page);
       await input.focus();
       await page.keyboard.type('search-term');
       await waitForStencilLifecycle(page);
@@ -263,8 +263,8 @@ test.describe('input type="search"', () => {
 
     test('should reset input value on clear-button click', async ({ page }) => {
       await initTextField(page, { type: 'search' });
-      const input = await getInput(page);
-      const clearButton = await getToggleOrClearButton(page);
+      const input = getInput(page);
+      const clearButton = getToggleOrClearButton(page);
       await input.focus();
       await page.keyboard.type('search-term');
       await waitForStencilLifecycle(page);
@@ -284,8 +284,8 @@ test.describe('input type="search"', () => {
 
     test('should disable submit button when input is set to disabled programmatically', async ({ page }) => {
       await initTextField(page, { type: 'search', isWrappedInForm: true });
-      const input = await getInput(page);
-      const buttonHost = await getSubmitButtonHost(page);
+      const input = getInput(page);
+      const buttonHost = getSubmitButtonHost(page);
 
       expect(await isButtonDisabled(buttonHost)).toBe(false);
 
@@ -302,8 +302,8 @@ test.describe('input type="search"', () => {
 
     test('should disable submit button when input is set to readonly programmatically', async ({ page }) => {
       await initTextField(page, { type: 'search', isWrappedInForm: true });
-      const input = await getInput(page);
-      const buttonHost = await getSubmitButtonHost(page);
+      const input = getInput(page);
+      const buttonHost = getSubmitButtonHost(page);
 
       expect(await isButtonDisabled(buttonHost)).toBe(false);
 
@@ -320,9 +320,9 @@ test.describe('input type="search"', () => {
 
     test('should submit parent form on search button click', async ({ page }) => {
       await initTextField(page, { type: 'search', isWrappedInForm: true });
-      const searchButton = await getSubmitButton(page);
+      const searchButton = getSubmitButton(page);
 
-      const form = await page.$('form');
+      const form = page.locator('form');
       await addEventListener(form, 'submit');
 
       await searchButton.click();
@@ -334,7 +334,7 @@ test.describe('input type="search"', () => {
   skipInBrowsers(['firefox'], () => {
     test('should have "-webkit-appearance: none" on "::-webkit-search-decoration"', async ({ page }) => {
       await initTextField(page, { type: 'search' });
-      const input = await getInput(page);
+      const input = getInput(page);
 
       expect(await getElementStyle(input, 'webkitAppearance', { pseudo: '::-webkit-search-decoration' })).toBe('none');
     });
@@ -344,8 +344,8 @@ test.describe('input type="search"', () => {
 test.describe('focus state', () => {
   test('should focus input when label text is clicked', async ({ page }) => {
     await initTextField(page, { hasLabel: true });
-    const label = await getLabel(page);
-    const input = await getInput(page);
+    const label = getLabel(page);
+    const input = getInput(page);
 
     await addEventListener(input, 'focus');
     expect((await getEventSummary(input, 'focus')).counter).toBe(0);
@@ -356,8 +356,8 @@ test.describe('focus state', () => {
 
   test('should focus input when unit element is clicked', async ({ page }) => {
     await initTextField(page, { type: 'number', hasUnit: true });
-    const unitElement = await getCounterOrUnit(page);
-    const input = await getInput(page);
+    const unitElement = getCounterOrUnit(page);
+    const input = getInput(page);
 
     await addEventListener(input, 'focus');
     expect((await getEventSummary(input, 'focus')).counter).toBe(0);
@@ -369,8 +369,8 @@ test.describe('focus state', () => {
 
   test('should focus input when counter text is clicked', async ({ page }) => {
     await initTextField(page, { maxLength: 20 });
-    const counter = await getCounterOrUnit(page);
-    const input = await getInput(page);
+    const counter = getCounterOrUnit(page);
+    const input = getInput(page);
 
     await addEventListener(input, 'focus');
     expect((await getEventSummary(input, 'focus')).counter).toBe(0);
@@ -383,15 +383,15 @@ test.describe('focus state', () => {
 
 test.describe('hover state', () => {
   skipInBrowsers(['firefox', 'webkit']);
-  const getBorderColor = (element: ElementHandle<HTMLElement>) => getElementStyle(element, 'borderColor');
+  const getBorderColor = (locator: Locator) => getElementStyle(locator, 'borderColor');
   const defaultBorderColor = 'rgb(107, 109, 112)';
   const hoverBorderColor = 'rgb(1, 2, 5)';
 
   test('should show hover state on input when label is hovered', async ({ page }) => {
     await initTextField(page, { hasLabel: true });
     await page.mouse.move(0, 300); // avoid potential hover initially
-    const label = await getLabel(page);
-    const input = await getInput(page);
+    const label = getLabel(page);
+    const input = getInput(page);
 
     expect(await getBorderColor(input)).toBe(defaultBorderColor);
 
@@ -408,8 +408,8 @@ test.describe('hover state', () => {
   test('should show hover state on input when unit/counter is hovered', async ({ page }) => {
     await initTextField(page, { maxLength: 20 });
     await page.mouse.move(0, 300); // avoid potential hover initially
-    const counter = await getCounterOrUnit(page);
-    const input = await getInput(page);
+    const counter = getCounterOrUnit(page);
+    const input = getInput(page);
 
     expect(await getBorderColor(input)).toBe(defaultBorderColor);
 
@@ -427,13 +427,13 @@ test.describe('hover state', () => {
 test.describe('showCounter', () => {
   test('should display correct counter when typing', async ({ page }) => {
     await initTextField(page, { maxLength: 20 });
-    const counter = await getCounterOrUnit(page);
-    const input = await getInput(page);
+    const counter = getCounterOrUnit(page);
+    const input = getInput(page);
 
     expect(await getElementInnerText(counter)).toBe('0/20');
-    await input.type('h');
+    await input.fill('h');
     expect(await getElementInnerText(counter)).toBe('1/20');
-    await input.type('ello');
+    await input.fill('hello');
     expect(await getElementInnerText(counter)).toBe('5/20');
     await input.press('Backspace');
     expect(await getElementInnerText(counter)).toBe('4/20');
@@ -446,8 +446,8 @@ test.describe('showCounter', () => {
 
   test('should display correct counter when dynamically changing input value', async ({ page }) => {
     await initTextField(page, { maxLength: 20 });
-    const counter = await getCounterOrUnit(page);
-    const input = await getInput(page);
+    const counter = getCounterOrUnit(page);
+    const input = getInput(page);
     const text1 = 'test string';
     const text2 = 'test test string';
 
@@ -464,13 +464,13 @@ test.describe('showCounter', () => {
 
   test('should render counter when showCounter is dynamically changed', async ({ page }) => {
     await initTextField(page, { maxLength: 20 });
-    const host = await getHost(page);
+    const host = getHost(page);
     await expect(page.getByText('0/20')).toBeVisible();
 
     await setProperty(host, 'showCounter', false);
     await waitForStencilLifecycle(page);
 
-    expect(await getCounterOrUnit(page)).toBeNull();
+    await expect(getCounterOrUnit(page)).toHaveCount(0);
 
     await setProperty(host, 'showCounter', true);
     await waitForStencilLifecycle(page);
@@ -480,33 +480,33 @@ test.describe('showCounter', () => {
 
   test('should render counter when maxlength is changed dynamically', async ({ page }) => {
     await initTextField(page);
-    const input = await getInput(page);
+    const input = getInput(page);
 
     await expect(page.getByText('0/20')).toBeHidden();
-    expect(await getLabelSrText(page)).toBeNull();
+    await expect(getLabelSrText(page)).toHaveCount(0);
 
     await setAttribute(input, 'maxlength', '20');
 
     await expect(page.getByText('0/20')).toBeVisible();
-    expect(await getLabelSrText(page)).toBeDefined();
+    expect(getLabelSrText(page)).toBeDefined();
 
     await removeAttribute(input, 'maxlength');
 
     await expect(page.getByText('0/20')).toBeHidden();
-    expect(await getLabelSrText(page)).toBeNull();
+    await expect(getLabelSrText(page)).toHaveCount(0);
   });
 
   test('should not render counter when showCounter=false and maxlength is changed dynamically', async ({ page }) => {
     await initTextField(page, { showCounter: false });
-    const input = await getInput(page);
+    const input = getInput(page);
 
     await expect(page.getByText('0/20')).toBeHidden();
-    expect(await getLabelSrText(page)).toBeNull();
+    await expect(getLabelSrText(page)).toHaveCount(0);
 
     await setAttribute(input, 'maxlength', '20');
 
     await expect(page.getByText('0/20')).toBeHidden();
-    expect(await getLabelSrText(page)).toBeNull();
+    await expect(getLabelSrText(page)).toHaveCount(0);
   });
 });
 
@@ -531,7 +531,7 @@ test.describe('lifecycle', () => {
 
   test('should work without unnecessary round trips after prop change', async ({ page }) => {
     await initTextField(page);
-    const host = await getHost(page);
+    const host = getHost(page);
 
     await setProperty(host, 'label', 'Some Label');
     await waitForStencilLifecycle(page);

@@ -22,7 +22,7 @@ const initTextList = (page: Page): Promise<void> => {
 
 test.fixme('should expose correct initial accessibility tree', async ({ page }) => {
   await initTextList(page);
-  const getList = (page: Page) => page.$('p-text-list [role="list"]');
+  const getList = (page: Page) => page.locator('p-text-list [role="list"]');
 
   // await expectA11yToMatchSnapshot(page, await getList(), { interestingOnly: false });
 });

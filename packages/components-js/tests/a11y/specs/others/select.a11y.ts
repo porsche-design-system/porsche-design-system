@@ -2,8 +2,8 @@ import { type Page, test, expect } from '@playwright/test';
 import type { Components } from '@porsche-design-system/components/src/components';
 import { getHTMLAttributes, setContentWithDesignSystem, setProperty, waitForStencilLifecycle } from '../../helpers';
 
-const getHost = (page: Page) => page.$('p-select');
-const getButton = (page: Page) => page.$('p-select button');
+const getHost = (page: Page) => page.locator('p-select');
+const getButton = (page: Page) => page.locator('p-select button');
 
 type InitOptions = {
   props?: Components.PSelect;
@@ -83,7 +83,7 @@ test.fixme('should expose correct accessibility tree if option is selected', asy
 
 test.fixme('should expose correct accessibility tree if description is set', async ({ page }) => {
   await initSelect(page);
-  const host = await getHost(page);
+  const host = getHost(page);
   await setProperty(host, 'description', 'Some description');
   await waitForStencilLifecycle(page);
   const buttonElement = await getButton(page);
@@ -93,7 +93,7 @@ test.fixme('should expose correct accessibility tree if description is set', asy
 
 test.fixme('should expose correct accessibility tree in error state', async ({ page }) => {
   await initSelect(page);
-  const host = await getHost(page);
+  const host = getHost(page);
   await setProperty(host, 'state', 'error');
   await setProperty(host, 'message', 'Some error message');
   await waitForStencilLifecycle(page);

@@ -2,9 +2,9 @@ import { setContentWithDesignSystem, setProperty, waitForStencilLifecycle } from
 import { type Page, test, expect } from '@playwright/test';
 import type { FormState } from '@porsche-design-system/components/dist/types/bundle';
 
-const getHost = (page: Page) => page.$('p-textarea-wrapper');
-const getTextarea = (page: Page) => page.$('p-textarea-wrapper textarea');
-const getMessage = (page: Page) => page.$('p-textarea-wrapper .message');
+const getHost = (page: Page) => page.locator('p-textarea-wrapper');
+const getTextarea = (page: Page) => page.locator('p-textarea-wrapper textarea');
+const getMessage = (page: Page) => page.locator('p-textarea-wrapper .message');
 
 type InitOptions = {
   useSlottedLabel?: boolean;
@@ -46,7 +46,7 @@ const initTextarea = (page: Page, opts?: InitOptions): Promise<void> => {
 
 test.fixme('should expose correct initial accessibility tree', async ({ page }) => {
   await initTextarea(page, { hasLabel: true });
-  const textarea = await getTextarea(page);
+  const textarea = getTextarea(page);
 
   // await expectA11yToMatchSnapshot(page, textarea);
 });
@@ -59,7 +59,7 @@ test.fixme('should expose correct accessibility tree with description text', asy
           <textarea name="some-name"></textarea>
         </p-textarea-wrapper>`
   );
-  const textarea = await getTextarea(page);
+  const textarea = getTextarea(page);
 
   // await expectA11yToMatchSnapshot(page, textarea);
 });
@@ -72,8 +72,8 @@ test.fixme('should expose correct accessibility tree properties in error state',
           <textarea name="some-name"></textarea>
         </p-textarea-wrapper>\``
   );
-  const textarea = await getTextarea(page);
-  const message = await getMessage(page);
+  const textarea = getTextarea(page);
+  const message = getMessage(page);
 
   // await expectA11yToMatchSnapshot(page, textarea, { message: 'Of Textarea' });
   // await expectA11yToMatchSnapshot(page, message, { message: 'Of Message', interestingOnly: false });
@@ -82,14 +82,14 @@ test.fixme('should expose correct accessibility tree properties in error state',
 test.fixme('should add/remove accessibility tree properties if state changes programmatically', async ({ page }) => {
   await initTextarea(page, { hasLabel: true });
 
-  const host = await getHost(page);
+  const host = getHost(page);
 
   await setProperty(host, 'state', 'error');
   await setProperty(host, 'message', 'Some error message.');
   await waitForStencilLifecycle(page);
 
-  const textarea = await getTextarea(page);
-  const message = await getMessage(page);
+  const textarea = getTextarea(page);
+  const message = getMessage(page);
 
   // await expectA11yToMatchSnapshot(page, textarea, { message: 'Of Textarea when state = error' });
   // await expectA11yToMatchSnapshot(page, message, {

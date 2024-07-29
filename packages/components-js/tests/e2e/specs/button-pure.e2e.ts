@@ -1,5 +1,4 @@
-import type { ElementHandle, Page } from 'playwright';
-import { expect, Locator, test } from '@playwright/test';
+import { expect, type Locator, test, type Page } from '@playwright/test';
 import {
   addEventListener,
   ClickableTests,

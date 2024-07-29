@@ -8,14 +8,14 @@ import {
 import { type Page, test, expect } from '@playwright/test';
 import { Components } from '@porsche-design-system/components';
 
-const getHost = (page: Page) => page.$('p-flyout');
-const getFlyout = (page: Page) => page.$('p-flyout dialog');
-const getHeader = (page: Page) => page.$('p-flyout .header');
-const getHeaderSlottedContent = (page: Page) => page.$('[slot="header"]');
-const getFooter = (page: Page) => page.$('p-flyout .footer');
-const getFooterSlottedContent = (page: Page) => page.$('[slot="footer"]');
-const getSubFooter = (page: Page) => page.$('p-flyout .sub-footer');
-const getSubFooterSlottedContent = (page: Page) => page.$('[slot="sub-footer"]');
+const getHost = (page: Page) => page.locator('p-flyout');
+const getFlyout = (page: Page) => page.locator('p-flyout dialog');
+const getHeader = (page: Page) => page.locator('p-flyout .header');
+const getHeaderSlottedContent = (page: Page) => page.locator('[slot="header"]');
+const getFooter = (page: Page) => page.locator('p-flyout .footer');
+const getFooterSlottedContent = (page: Page) => page.locator('[slot="footer"]');
+const getSubFooter = (page: Page) => page.locator('p-flyout .sub-footer');
+const getSubFooterSlottedContent = (page: Page) => page.locator('[slot="sub-footer"]');
 
 const initBasicFlyout = (
   page: Page,
@@ -99,7 +99,7 @@ test.fixme('should not expose accessibility tree if flyout is hidden', async ({ 
 
 test('should overwrite aria-label when adding aria prop', async ({ page }) => {
   await initBasicFlyout(page, { open: false, aria: "{'aria-label': 'Some Heading'}" });
-  const host = await getHost(page);
+  const host = getHost(page);
   const flyout = await getFlyout(page);
   await setProperty(host, 'aria', "{'aria-label': 'Other Heading'}");
   await waitForStencilLifecycle(page);

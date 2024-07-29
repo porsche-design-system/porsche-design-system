@@ -13,9 +13,9 @@ import {
   waitForStencilLifecycle,
 } from '../helpers';
 
-const getHost = (page: Page) => page.$('p-switch');
-const getButton = (page: Page) => page.$('p-switch button');
-const getLabel = (page: Page) => page.$('p-switch label');
+const getHost = (page: Page) => page.locator('p-switch');
+const getButton = (page: Page) => page.locator('p-switch button');
+const getLabel = (page: Page) => page.locator('p-switch label');
 
 const clickHandlerScript = `
 <script>
@@ -42,7 +42,7 @@ const initSwitch = (page: Page, opts?: InitOptions): Promise<void> => {
 test.describe('label', () => {
   test('should check/uncheck switch on click', async ({ page }) => {
     await initSwitch(page, { otherMarkup: clickHandlerScript });
-    const host = await getHost(page);
+    const host = getHost(page);
     const label = await getLabel(page);
 
     expect(await getProperty(host, 'checked')).toBeFalsy();
@@ -58,7 +58,7 @@ test.describe('events', () => {
   test('should trigger event on click', async ({ page }) => {
     await initSwitch(page);
 
-    const host = await getHost(page);
+    const host = getHost(page);
     const button = await getButton(page);
     await addEventListener(host, 'switchChange');
 
@@ -71,7 +71,7 @@ test.describe('events', () => {
   test('should not trigger event on click if switch is disabled', async ({ page }) => {
     await initSwitch(page, { isDisabled: true });
 
-    const host = await getHost(page);
+    const host = getHost(page);
     const button = await getButton(page);
     await addEventListener(host, 'switchChange');
 
@@ -84,7 +84,7 @@ test.describe('events', () => {
   test('should not trigger event on click if switch is loading', async ({ page }) => {
     await initSwitch(page, { isLoading: true });
 
-    const host = await getHost(page);
+    const host = getHost(page);
     const button = await getButton(page);
     await addEventListener(host, 'switchChange');
 
@@ -98,7 +98,7 @@ test.describe('events', () => {
   test('should dispatch correct click events', async ({ page }) => {
     await setContentWithDesignSystem(page, `<div><p-switch id="hostElement">Some label</p-switch></div>`);
 
-    const wrapper = await page.$('div');
+    const wrapper = page.locator('div');
     const button = await getButton(page);
     const label = await getLabel(page);
     await addEventListener(wrapper, 'click');
@@ -124,9 +124,9 @@ test.describe('events', () => {
 </div>`
       );
 
-      const host = await getHost(page);
-      const before = await page.$('#before');
-      const after = await page.$('#after');
+      const host = getHost(page);
+      const before = page.locator('#before');
+      const after = page.locator('#after');
 
       await addEventListener(before, 'focus');
       await addEventListener(host, 'focus');
@@ -203,8 +203,8 @@ test.describe('events', () => {
 </div>`
     );
 
-    const host = await getHost(page);
-    const before = await page.$('#before');
+    const host = getHost(page);
+    const before = page.locator('#before');
     await before.focus();
     expect(await hasFocus(host)).toBe(false);
     await host.focus();
@@ -219,7 +219,7 @@ test.describe('events', () => {
 
   test('should emit both switchChange and update event', async ({ page }) => {
     await initSwitch(page);
-    const host = await getHost(page);
+    const host = getHost(page);
 
     await addEventListener(host, 'switchChange');
     await addEventListener(host, 'update');
@@ -238,7 +238,7 @@ test.describe('focus', () => {
   test('should keep focus if state switches to loading', async ({ page }) => {
     await initSwitch(page);
 
-    const host = await getHost(page);
+    const host = getHost(page);
     expect(await hasFocus(host)).toBe(false);
 
     await page.keyboard.press('Tab');
@@ -281,7 +281,7 @@ test.describe('lifecycle', () => {
 
   test('should work without unnecessary round trips on prop change', async ({ page }) => {
     await initSwitch(page);
-    const host = await getHost(page);
+    const host = getHost(page);
 
     await setProperty(host, 'checked', true);
     await waitForStencilLifecycle(page);
