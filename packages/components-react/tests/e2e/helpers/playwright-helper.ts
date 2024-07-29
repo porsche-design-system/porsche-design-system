@@ -5,7 +5,7 @@ export const getOuterHTML = (el: ElementHandle): Promise<string> => el.evaluate(
 
 export const goto = async (page: Page, url: string): Promise<void> => {
   await page.goto(url);
-  await page.locator('html.hydrated').waitFor();
+  page.locator('html.hydrated').waitFor();
   await waitForComponentsReady(page);
 };
 
