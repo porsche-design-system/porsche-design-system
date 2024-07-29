@@ -1,5 +1,5 @@
 import { test, expect, type Locator } from '@playwright/test';
-import { getConsoleErrorsAmount, goto, initConsoleObserver, selectNode } from '../helpers';
+import { getConsoleErrorsAmount, goto, initConsoleObserver } from '../helpers';
 
 const getCounterValue = async (el: Locator): Promise<string> => {
   return el.evaluate((element: Element) => element.innerHTML);
@@ -9,9 +9,9 @@ test.describe('pagination', () => {
   test('should emit events once', async ({ page }) => {
     await goto(page, 'events');
 
-    const nav = await selectNode(page, 'p-pagination >>> nav');
-    const paginationUpdateEventCounter = await selectNode(page, 'p-pagination + p');
-    const [, secondBtn, thirdBtn, fourthBtn] = (await nav.$$('span:not(.ellipsis)')).slice(1, -1); // without prev and next
+    const nav = page.getByRole('navigation');
+    const paginationUpdateEventCounter = page.locator('p-pagination + p');
+    const [, secondBtn, thirdBtn, fourthBtn] = (await nav.locator('span:not(.ellipsis)').all()).slice(1, -1); // without prev and next
 
     await secondBtn.click();
     expect(await getCounterValue(paginationUpdateEventCounter)).toBe('1');
@@ -28,9 +28,9 @@ test.describe('tabs-bar', () => {
   test('should emit events once', async ({ page }) => {
     await goto(page, 'events');
 
-    const tabsBar = await selectNode(page, 'p-tabs-bar');
-    const tabsBarUpdateEventCounter = await selectNode(page, 'p-tabs-bar + p');
-    const [firstBtn, secondBtn, thirdBtn] = await tabsBar.$$('button');
+    const tabsBar = page.locator('p-tabs-bar');
+    const tabsBarUpdateEventCounter = page.locator('p-tabs-bar + p');
+    const [firstBtn, secondBtn, thirdBtn] = await tabsBar.locator('button').all();
 
     await secondBtn.click();
 
@@ -48,7 +48,7 @@ test.describe('tabs-bar', () => {
     await goto(page, 'overview'); // to load component chunk
 
     // navigate via select, otherwise we would have a reload
-    const select = await selectNode(page, 'select');
+    const select = page.locator('select').first();
     await select.click();
     await page.keyboard.type('Events');
     await page.keyboard.press('Enter');
@@ -63,9 +63,9 @@ test.describe('tabs', () => {
   test('should emit events once', async ({ page }) => {
     await goto(page, 'events');
 
-    const tabsBar = await selectNode(page, 'p-tabs >>> p-tabs-bar');
-    const tabsUpdateEventCounter = await selectNode(page, 'p-tabs + p');
-    const [firstBtn, secondBtn, thirdBtn] = await tabsBar.$$('button');
+    const tabsBar = page.locator('p-tabs >>> p-tabs-bar');
+    const tabsUpdateEventCounter = page.locator('p-tabs + p');
+    const [firstBtn, secondBtn, thirdBtn] = await tabsBar.locator('button').all();
 
     await secondBtn.click();
     expect(await getCounterValue(tabsUpdateEventCounter)).toBe('1');
@@ -82,8 +82,8 @@ test.describe('text-field-wrapper type="search"', () => {
   test('should have working clear functionality', async ({ page }) => {
     await goto(page, 'events');
 
-    const input = await selectNode(page, 'p-text-field-wrapper > input[type=search]');
-    const inputValue = await selectNode(page, 'p-text-field-wrapper + p');
+    const input = page.locator('p-text-field-wrapper > input[type=search]');
+    const inputValue = page.locator('p-text-field-wrapper + p');
 
     await input.focus();
     await page.keyboard.type('hello');
@@ -101,8 +101,8 @@ test.describe('switch', () => {
   test('should emit events once', async ({ page }) => {
     await goto(page, 'events');
 
-    const switchBtn = await selectNode(page, 'p-switch >>> button');
-    const switchUpdateEventCounter = await selectNode(page, 'p-switch + p');
+    const switchBtn = page.locator('p-switch button');
+    const switchUpdateEventCounter = page.locator('p-switch + p');
 
     await switchBtn.click();
     expect(await getCounterValue(switchUpdateEventCounter)).toBe('1');
@@ -120,9 +120,9 @@ test.describe('banner', () => {
     await goto(page, 'events');
 
     const banner = page.locator('p-banner');
-    const bannerOpenBtn = await selectNode(page, 'p-banner ~ button');
-    const bannerCloseBtn = await selectNode(page, 'p-banner >>> p-inline-notification >>> p-button-pure.close');
-    const bannerDismissEventCounter = await selectNode(page, 'p-banner + p');
+    const bannerOpenBtn = page.locator('p-banner ~ button');
+    const bannerCloseBtn = page.locator('p-banner p-inline-notification p-button-pure.close');
+    const bannerDismissEventCounter = page.locator('p-banner + p');
 
     await bannerOpenBtn.click();
     await expect(banner).toBeVisible();
@@ -148,9 +148,9 @@ test.describe('modal', () => {
   test('should emit events once', async ({ page }) => {
     await goto(page, 'events');
 
-    const modalOpenBtn = await selectNode(page, 'p-modal ~ button');
-    const modalCloseBtn = await selectNode(page, 'p-modal >>> p-button-pure >>> button');
-    const modalDismissEventCounter = await selectNode(page, 'p-modal + p');
+    const modalOpenBtn = page.locator('p-modal ~ button');
+    const modalCloseBtn = page.locator('p-modal p-button-pure button');
+    const modalDismissEventCounter = page.locator('p-modal + p');
 
     await modalOpenBtn.click();
     // await waitForComponentsReady(page);
@@ -182,8 +182,8 @@ test.describe('table', () => {
   test('should emit events once', async ({ page }) => {
     await goto(page, 'events');
 
-    const tableHeadBtn = await selectNode(page, 'p-table-head-cell >>> button');
-    const tableUpdateEventCounter = await selectNode(page, 'p-table + p');
+    const tableHeadBtn = page.locator('p-table-head-cell button');
+    const tableUpdateEventCounter = page.locator('p-table + p');
 
     await tableHeadBtn.click();
     expect(await getCounterValue(tableUpdateEventCounter)).toBe('1');
@@ -200,8 +200,8 @@ test.describe('accordion', () => {
   test('should emit events once', async ({ page }) => {
     await goto(page, 'events');
 
-    const accordionButton = await selectNode(page, 'p-accordion >>> button');
-    const accordionUpdateEventCounter = await selectNode(page, 'p-accordion + p');
+    const accordionButton = page.locator('p-accordion button');
+    const accordionUpdateEventCounter = page.locator('p-accordion + p');
 
     await accordionButton.click();
 
@@ -219,8 +219,8 @@ test.describe('carousel', () => {
   test('should emit events once', async ({ page }) => {
     await goto(page, 'events');
 
-    const prevButton = await selectNode(page, 'p-carousel >>> p-button-pure');
-    const carouselUpdateEventCounter = await selectNode(page, 'p-carousel + p');
+    const prevButton = page.locator('p-carousel p-button-pure').first();
+    const carouselUpdateEventCounter = page.locator('p-carousel + p');
 
     await prevButton.click();
     expect(await getCounterValue(carouselUpdateEventCounter)).toBe('1');
