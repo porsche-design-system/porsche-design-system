@@ -275,7 +275,7 @@ test('should add custom option if added to native select programmatically', asyn
   });
   await waitForStencilLifecycle(page);
 
-  const dropdownOption1Text = await getProperty(await getDropdownOption1(page), 'innerHTML');
+  const dropdownOption1Text = await getProperty(getDropdownOption1(page), 'innerHTML');
   expect(dropdownOption1Text).toContain('Test');
   expect(await getAmountOfDropdownOptions(page)).toEqual(await getAmountOfOptions(page));
 });
@@ -305,7 +305,7 @@ test('should add/remove disabled state to custom option item if added/removed pr
   await initSelect(page, { disabledIndex: 1 });
   const select = getSelect(page);
   await openSelect(page);
-  const dropdownOption1 = await getDropdownOption1(page);
+  const dropdownOption1 = getDropdownOption1(page);
   const dropdownOption2 = getDropdownOption2(page);
 
   expect(await getCssClasses(dropdownOption1)).not.toContain(disabledClass);
@@ -327,7 +327,7 @@ test('should add/remove disabled state to custom option item if added/removed at
   await initSelect(page, { disabledIndex: 1 });
   const select = getSelect(page);
   await openSelect(page);
-  const dropdownOption1 = await getDropdownOption1(page);
+  const dropdownOption1 = getDropdownOption1(page);
   const dropdownOption2 = getDropdownOption2(page);
 
   expect(await getCssClasses(dropdownOption1)).not.toContain(disabledClass);
@@ -349,7 +349,7 @@ test('should synchronize custom option and native select if selected property is
   await initSelect(page);
   const select = getSelect(page);
   await openSelect(page);
-  const dropdownOption1 = await getDropdownOption1(page);
+  const dropdownOption1 = getDropdownOption1(page);
   const dropdownOption2 = getDropdownOption2(page);
 
   expect(await getCssClasses(dropdownOption1)).toContain(selectedClass);
@@ -370,7 +370,7 @@ test('should synchronize custom option and native select if selected attribute i
   await initSelect(page);
   const select = getSelect(page);
   await openSelect(page);
-  const dropdownOption1 = await getDropdownOption1(page);
+  const dropdownOption1 = getDropdownOption1(page);
   const dropdownOption2 = getDropdownOption2(page);
 
   expect(await getCssClasses(dropdownOption1)).toContain(selectedClass);
@@ -391,7 +391,7 @@ test('should synchronize custom option and native select if selected value prope
   await initSelect(page);
   const select = getSelect(page);
   await openSelect(page);
-  const dropdownOption1 = await getDropdownOption1(page);
+  const dropdownOption1 = getDropdownOption1(page);
   const dropdownOption2 = getDropdownOption2(page);
 
   expect(await getCssClasses(dropdownOption1)).toContain(selectedClass);
@@ -411,7 +411,7 @@ test('should synchronize custom option and native select if selectedIndex proper
   await initSelect(page);
   const select = getSelect(page);
   await openSelect(page);
-  const dropdownOption1 = await getDropdownOption1(page);
+  const dropdownOption1 = getDropdownOption1(page);
   const dropdownOption2 = getDropdownOption2(page);
 
   expect(await getCssClasses(dropdownOption1)).toContain(selectedClass);
@@ -429,7 +429,7 @@ test('should add selected state to custom option item if selected property of op
   await initSelect(page);
   const select = getSelect(page);
   await openSelect(page);
-  const dropdownOption1 = await getDropdownOption1(page);
+  const dropdownOption1 = getDropdownOption1(page);
   const dropdownOption2 = getDropdownOption2(page);
 
   expect(await getCssClasses(dropdownOption1)).toContain(selectedClass);
@@ -466,7 +466,7 @@ test('should hide/show custom option item if hidden attribute is added/removed t
 test('should not render initial hidden option fields', async ({ page }) => {
   await initSelect(page, { hiddenIndex: 0 });
   await openSelect(page);
-  const dropdownOption1 = await getDropdownOption1(page);
+  const dropdownOption1 = getDropdownOption1(page);
   expect(await getCssClasses(dropdownOption1)).toContain(hiddenClass);
 });
 
@@ -1026,7 +1026,7 @@ test.describe('optgroups', () => {
 
     const optgroup = page.locator('span[role="presentation"]').getByText('b');
     await expect(optgroup).not.toHaveClass(disabledOptgroupClassRegex);
-    const child = await page.getByRole('option').getByText('b');
+    const child = page.getByRole('option').getByText('b');
 
     await expect(child).not.toHaveClass(disabledClassRegex);
 
@@ -1045,7 +1045,7 @@ test.describe('optgroups', () => {
 
     const optgroup = page.locator('span[role="presentation"]').getByText('b');
     await expect(optgroup).toBeVisible();
-    const child = await page.getByRole('option').getByText('b');
+    const child = page.getByRole('option').getByText('b');
 
     await expect(child).toBeVisible();
 

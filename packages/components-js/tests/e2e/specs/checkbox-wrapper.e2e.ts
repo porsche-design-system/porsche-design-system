@@ -185,7 +185,7 @@ skipInBrowsers(['firefox', 'webkit'], () => {
 
 test('should toggle checkbox when label text is clicked and not set input as active element', async ({ page }) => {
   await initCheckbox(page);
-  const label = await getLabel(page);
+  const label = getLabel(page);
   const input = getInput(page);
   const isInputChecked = (): Promise<boolean> => getProperty(input, 'checked');
 
@@ -236,7 +236,7 @@ skipInBrowsers(['firefox', 'webkit'], () => {
     await initCheckbox(page);
     const host = getHost(page);
     const input = getInput(page);
-    const wrapper = await getWrapper(page);
+    const wrapper = getWrapper(page);
 
     const getWrapperCursor = () => getElementStyle(wrapper, 'cursor');
     const getInputCursor = () => getElementStyle(input, 'cursor');

@@ -104,7 +104,7 @@ const expectDismissButtonToBeFocused = async (page: Page, failMessage?: string) 
 
 test('should render and be visible when open', async ({ page }) => {
   await initBasicFlyoutMultilevel(page, { open: true });
-  expect(await getFlyoutMultilevelDialog(page)).not.toBeNull();
+  expect(getFlyoutMultilevelDialog(page)).not.toBeNull();
   expect(await getFlyoutMultilevelDialogVisibility(page)).toBe('visible');
 });
 
@@ -135,7 +135,7 @@ test.describe('update event', () => {
   test('should be emitted when clicking on a navigation-item', async ({ page }) => {
     expect((await getEventSummary(host, 'update')).counter, 'before activeIdentifier change').toBe(0);
 
-    getFlyoutMultilevelItem(page, 'item-1').click();
+    await getFlyoutMultilevelItem(page, 'item-1').click();
     await waitForStencilLifecycle(page);
 
     expect((await getEventSummary(host, 'update')).counter, 'after activeIdentifier change').toBe(1);
@@ -188,7 +188,7 @@ test.describe('update event', () => {
     expect((await getEventSummary(host, 'update')).counter).toBe(0);
     expect((await getEventSummary(body, 'update')).counter).toBe(0);
 
-    getFlyoutMultilevelItem(page, 'item-1').click();
+    await getFlyoutMultilevelItem(page, 'item-1').click();
     await waitForStencilLifecycle(page);
 
     expect((await getEventSummary(host, 'update')).counter).toBe(1);
@@ -531,7 +531,7 @@ test.describe('second level', () => {
       expect(await getFlyoutMultilevelItemScrollerVisibility(page, 'item-1')).toBe('hidden');
       expect(await getFlyoutMultilevelItemScrollerVisibility(page, 'item-2')).toBe('hidden');
       expect(await getFlyoutMultilevelItemScrollerVisibility(page, 'item-3')).toBe('hidden');
-      expect(getFlyoutMultilevelItem(page, 'item-4')).toHaveCount(0);
+      await expect(getFlyoutMultilevelItem(page, 'item-4')).toHaveCount(0);
 
       await host.evaluate((el) => {
         const newItem = document.createElement('p-flyout-multilevel-item');
@@ -571,7 +571,7 @@ test.describe('second level', () => {
 
     expect(await getFlyoutMultilevelItemScrollerVisibility(page, 'item-1')).toBe('hidden');
     expect(await getFlyoutMultilevelItemScrollerVisibility(page, 'item-2')).toBe('hidden');
-    expect(getFlyoutMultilevelItem(page, 'item-3')).toHaveCount(0);
+    await expect(getFlyoutMultilevelItem(page, 'item-3')).toHaveCount(0);
   });
 
   skipInBrowsers(['webkit'], () => {

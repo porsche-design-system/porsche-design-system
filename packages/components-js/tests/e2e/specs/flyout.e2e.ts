@@ -197,7 +197,7 @@ test.describe('scroll shadows', () => {
         subFooter: '<div slot="sub-footer" class="scroll-here">Some Content</div>',
       }
     );
-    const header = await getHeader(page);
+    const header = getHeader(page);
     expect(await getElementStyle(header, 'boxShadow'), 'initial').toBe('none');
 
     await scrollFlyoutTo(page, '.scroll-here');
@@ -256,8 +256,8 @@ test.describe('can be dismissed', () => {
   });
 
   test('should be closable via x button', async ({ page }) => {
-    const dismissBtn = await getFlyoutDismissButton(page);
-    const dismissBtnReal = await getFlyoutDismissButtonReal(page);
+    const dismissBtn = getFlyoutDismissButton(page);
+    const dismissBtnReal = getFlyoutDismissButtonReal(page);
     expect(dismissBtn).not.toBeNull();
 
     expect(await getAttribute(dismissBtnReal, 'type')).toBe('button');
@@ -708,7 +708,7 @@ test.describe('after dynamic slot change', () => {
 
     await waitForStencilLifecycle(page);
 
-    const header = await getHeader(page);
+    const header = getHeader(page);
     await expect(page.getByText(headerText)).toBeVisible();
     expect(await getElementStyle(header, 'boxShadow'), 'initial').toBe('none');
 

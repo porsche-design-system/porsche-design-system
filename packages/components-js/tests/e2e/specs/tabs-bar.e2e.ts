@@ -72,8 +72,8 @@ const getPrevNextButton = async (page: Page) => {
 
 const getScrollDistance = (page: Page, scrollAreaWidth: number): number =>
   Math.round(scrollAreaWidth * SCROLL_PERCENTAGE);
-const getBarVisibility = async (page: Page): Promise<string> => getElementStyle(await getBar(page), 'visibility');
-const getBarWidth = async (page: Page): Promise<string> => getElementStyle(await getBar(page), 'width');
+const getBarVisibility = async (page: Page): Promise<string> => getElementStyle(getBar(page), 'visibility');
+const getBarWidth = async (page: Page): Promise<string> => getElementStyle(getBar(page), 'width');
 
 const clickElement = async (page: Page, el: Locator) => {
   await el.click();
@@ -139,7 +139,7 @@ test.describe('slotted content changes', () => {
   skipInBrowsers(['webkit', 'firefox'], () => {
     test('should adjust bar style when new tab element is added and clicked', async ({ page }) => {
       await initTabsBar(page, { amount: 1, activeTabIndex: 0 });
-      const bar = await getBar(page);
+      const bar = getBar(page);
 
       // add a new button
       await page.evaluate(() => {
@@ -163,7 +163,7 @@ test.describe('slotted content changes', () => {
 
   test('should reset tabindex and bar styles when active tab on last position is removed', async ({ page }) => {
     await initTabsBar(page, { amount: 3, activeTabIndex: 2 });
-    const bar = await getBar(page);
+    const bar = getBar(page);
     const [firstButton] = await getAllButtons(page);
 
     await page.evaluate(() => {
@@ -226,8 +226,8 @@ test.describe('active index position', () => {
     await initTabsBar(page, { activeTabIndex: 3, isWrapped: true });
     const allButtons = await getAllButtons(page);
     const selectedButtonOffset = await getOffsetLeft(allButtons[3]);
-    const gradientWidth = await getOffsetWidth(await getGradientNext(page));
-    const scrollArea = await getScrollArea(page);
+    const gradientWidth = await getOffsetWidth(getGradientNext(page));
+    const scrollArea = getScrollArea(page);
     const scrollDistance = +selectedButtonOffset - +gradientWidth + FOCUS_PADDING;
 
     await waitForStencilLifecycle(page);
@@ -238,9 +238,9 @@ test.describe('active index position', () => {
   test('should scroll to correct position on tab click', async ({ page }) => {
     await initTabsBar(page, { isWrapped: true, activeTabIndex: 0 });
     const [, , , button4, button5] = await getAllButtons(page);
-    const gradient = await getGradientNext(page);
+    const gradient = getGradientNext(page);
     const gradientWidth = await getOffsetWidth(gradient);
-    const scrollArea = await getScrollArea(page);
+    const scrollArea = getScrollArea(page);
     const scrollAreaWidth = await getOffsetWidth(scrollArea);
 
     expect(await getScrollLeft(scrollArea)).toEqual(0);
@@ -264,11 +264,11 @@ test.describe('active index position', () => {
       const { prevButton } = await getPrevNextButton(page);
       const allButtons = await getAllButtons(page);
       const button3 = allButtons[2];
-      const scrollArea = await getScrollArea(page);
+      const scrollArea = getScrollArea(page);
       const scrollAreaWidth = await getOffsetWidth(scrollArea);
-      const scrollDistance = await getScrollDistance(page, +scrollAreaWidth);
+      const scrollDistance = getScrollDistance(page, +scrollAreaWidth);
 
-      const gradient = await getGradientNext(page);
+      const gradient = getGradientNext(page);
       const gradientWidth = await getOffsetWidth(gradient);
 
       await clickElement(page, button3);
@@ -295,10 +295,10 @@ test.describe('active index position', () => {
       const allButtons = await getAllButtons(page);
       const button7 = allButtons[6];
 
-      const scrollArea = await getScrollArea(page);
+      const scrollArea = getScrollArea(page);
       const scrollAreaWidth: number = await getOffsetWidth(scrollArea);
 
-      const gradient = await getGradientNext(page);
+      const gradient = getGradientNext(page);
       const gradientWidth = await getOffsetWidth(gradient);
 
       await clickElement(page, button7);
@@ -328,7 +328,7 @@ test.describe('bar', () => {
   test('should have same offsetLeft on bar and active tab', async ({ page }) => {
     await initTabsBar(page, { amount: 6, activeTabIndex: 0, isWrapped: true });
     const [firstButton, , thirdButton] = await getAllButtons(page);
-    const bar = await getBar(page);
+    const bar = getBar(page);
 
     await clickElement(page, thirdButton);
     const thirdButtonPosition = await getElementPositions(page, thirdButton);
@@ -354,7 +354,7 @@ test.describe('bar', () => {
       size: "{ base: 'small', xs: 'medium', s: 'small', m: 'medium', l: 'small', xl: 'medium' }",
     });
     const [firstButton, , thirdButton] = await getAllButtons(page);
-    const bar = await getBar(page);
+    const bar = getBar(page);
 
     await clickElement(page, thirdButton);
     const thirdButtonPosition = await getElementPositions(page, thirdButton);
@@ -379,7 +379,7 @@ test.describe('bar', () => {
 test.describe('when not wrapped', () => {
   test('should set correct bar width when no activeTabIndex is set initially', async ({ page }) => {
     await initTabsBar(page, { amount: 3 });
-    const bar = await getBar(page);
+    const bar = getBar(page);
 
     expect(await getOffsetWidth(bar)).toBe(0);
   });
@@ -387,7 +387,7 @@ test.describe('when not wrapped', () => {
   test('should set correct bar width for activeTabIndex=0', async ({ page }) => {
     await initTabsBar(page, { amount: 3, activeTabIndex: 1 });
     const [firstButton] = await getAllButtons(page);
-    const bar = await getBar(page);
+    const bar = getBar(page);
 
     await firstButton.click();
 
@@ -397,7 +397,7 @@ test.describe('when not wrapped', () => {
   test('should set correct bar width for activeTabIndex=last', async ({ page }) => {
     await initTabsBar(page, { amount: 3, activeTabIndex: 1 });
     const [lastButton] = (await getAllButtons(page)).slice(-1);
-    const bar = await getBar(page);
+    const bar = getBar(page);
 
     await lastButton.click();
 
@@ -408,7 +408,7 @@ test.describe('when not wrapped', () => {
 test.describe('when wrapped', () => {
   test('should set correct bar width when no activeTabIndex is set initially', async ({ page }) => {
     await initTabsBar(page, { isWrapped: true });
-    const bar = await getBar(page);
+    const bar = getBar(page);
 
     expect(await getOffsetWidth(bar)).toBe(0);
   });
@@ -416,7 +416,7 @@ test.describe('when wrapped', () => {
   test('should set correct bar width for activeTabIndex=0', async ({ page }) => {
     await initTabsBar(page, { isWrapped: true, activeTabIndex: 1 });
     const [firstButton] = await getAllButtons(page);
-    const bar = await getBar(page);
+    const bar = getBar(page);
 
     await firstButton.click();
 
@@ -426,7 +426,7 @@ test.describe('when wrapped', () => {
   test('should set correct bar width for activeTabIndex=last', async ({ page }) => {
     await initTabsBar(page, { isWrapped: true, activeTabIndex: 1 });
     const [lastButton] = (await getAllButtons(page)).slice(-1);
-    const bar = await getBar(page);
+    const bar = getBar(page);
 
     await lastButton.click();
 

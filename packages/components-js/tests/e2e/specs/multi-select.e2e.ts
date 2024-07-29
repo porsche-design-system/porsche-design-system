@@ -1224,7 +1224,7 @@ test.describe('lifecycle', () => {
     expect(status1.componentDidLoad.all, 'componentDidLoad: all').toBe(8);
     expect(status1.componentDidUpdate.all, 'componentDidUpdate: all').toBe(1);
 
-    const option1 = await getMultiSelectOption(page, 1);
+    const option1 = getMultiSelectOption(page, 1);
     await option1.click();
     await waitForStencilLifecycle(page);
 

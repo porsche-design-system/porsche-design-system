@@ -45,7 +45,7 @@ test.describe('like button', () => {
   test('should update like button icon on like prop change', async ({ page }) => {
     await initLinkTileProduct(page);
     const host = getHost(page);
-    const likeButton = await getLikeButton(page);
+    const likeButton = getLikeButton(page);
     expect(likeButton).toBeDefined();
     expect(await getProperty(host, 'liked')).toBe(false);
     expect(await getProperty(likeButton, 'icon')).toBe('heart');
@@ -62,7 +62,7 @@ test.describe('like button', () => {
     await addEventListener(host, 'like');
 
     expect((await getEventSummary(host, 'like')).counter, 'before like click').toBe(0);
-    const likeButton = await getLikeButton(page);
+    const likeButton = getLikeButton(page);
     expect(likeButton).toBeDefined();
     expect(await getProperty(host, 'liked')).toBe(false);
     expect(await getProperty(likeButton, 'icon')).toBe('heart');

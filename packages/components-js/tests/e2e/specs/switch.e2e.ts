@@ -43,7 +43,7 @@ test.describe('label', () => {
   test('should check/uncheck switch on click', async ({ page }) => {
     await initSwitch(page, { otherMarkup: clickHandlerScript });
     const host = getHost(page);
-    const label = await getLabel(page);
+    const label = getLabel(page);
 
     expect(await getProperty(host, 'checked')).toBeFalsy();
 
@@ -59,7 +59,7 @@ test.describe('events', () => {
     await initSwitch(page);
 
     const host = getHost(page);
-    const button = await getButton(page);
+    const button = getButton(page);
     await addEventListener(host, 'switchChange');
 
     await button.click();
@@ -72,7 +72,7 @@ test.describe('events', () => {
     await initSwitch(page, { isDisabled: true });
 
     const host = getHost(page);
-    const button = await getButton(page);
+    const button = getButton(page);
     await addEventListener(host, 'switchChange');
 
     await button.click({ force: true });
@@ -85,7 +85,7 @@ test.describe('events', () => {
     await initSwitch(page, { isLoading: true });
 
     const host = getHost(page);
-    const button = await getButton(page);
+    const button = getButton(page);
     await addEventListener(host, 'switchChange');
 
     await button.click({ force: true });
@@ -99,8 +99,8 @@ test.describe('events', () => {
     await setContentWithDesignSystem(page, `<div><p-switch id="hostElement">Some label</p-switch></div>`);
 
     const wrapper = page.locator('div');
-    const button = await getButton(page);
-    const label = await getLabel(page);
+    const button = getButton(page);
+    const label = getLabel(page);
     await addEventListener(wrapper, 'click');
 
     await button.click();
@@ -223,7 +223,7 @@ test.describe('events', () => {
     expect((await getEventSummary(host, 'switchChange')).counter).toBe(0);
     expect((await getEventSummary(host, 'update')).counter).toBe(0);
 
-    const button = await getButton(page);
+    const button = getButton(page);
     await button.click();
     expect((await getEventSummary(host, 'switchChange')).counter).toBe(1);
     expect((await getEventSummary(host, 'update')).counter).toBe(1);

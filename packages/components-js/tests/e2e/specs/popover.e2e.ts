@@ -22,7 +22,7 @@ const getPopover = (page: Page) => page.locator('p-popover .popover');
 const getButton = (page: Page) => page.locator('p-popover button').first();
 const getTableScroller = (page: Page) => page.locator('p-table p-scroller .scroll-area');
 const isNativePopoverOpen = async (page: Page): Promise<boolean> =>
-  (await getSpacer(page)).evaluate((el) => el.matches(':popover-open'));
+  getSpacer(page).evaluate((el) => el.matches(':popover-open'));
 
 const togglePopover = async (page: Page): Promise<void> => {
   const button = getButton(page);
@@ -366,7 +366,7 @@ test.describe('native', () => {
     await initPopover(page);
     await togglePopover(page);
     const button = getButton(page);
-    const spacer = await getSpacer(page);
+    const spacer = getSpacer(page);
 
     expect(await getAttribute(button, 'popoverTarget')).toBe(null);
     expect(await getProperty(spacer, 'popover')).toBe(null);
@@ -375,7 +375,7 @@ test.describe('native', () => {
   test('should render native popover when used within table', async ({ page }) => {
     await initPopoverWithinTable(page);
     const button = getButton(page);
-    const spacer = await getSpacer(page);
+    const spacer = getSpacer(page);
 
     expect(await getAttribute(button, 'popoverTarget')).toBe(await getProperty(spacer, 'id'));
     expect(await getProperty(spacer, 'popover')).toBe('auto');
@@ -395,9 +395,7 @@ test.describe('native', () => {
     expect(await isNativePopoverOpen(page)).toBe(true);
 
     // Simulate a scroll event on the table
-    await (
-      await getTableScroller(page)
-    ).evaluate((el) => {
+    await getTableScroller(page).evaluate((el) => {
       el.dispatchEvent(new Event('scroll'));
     });
 

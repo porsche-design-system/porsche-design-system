@@ -59,7 +59,7 @@ ${script}`
 test.describe('sorting', () => {
   test('should not render sorting button if invalid sort options are provided', async ({ page }) => {
     await initTable(page, { isSortable: true });
-    const firstTableHeadCell = await getFirstTableHeadCell(page);
+    const firstTableHeadCell = getFirstTableHeadCell(page);
 
     await expect(getFirstTableHeadCellButton(page)).not.toHaveCount(0);
 

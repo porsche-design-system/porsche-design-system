@@ -104,7 +104,7 @@ const dismissModal = async (page: Page) => {
   await waitForStencilLifecycle(page);
 };
 
-const getModalVisibility = async (page: Page) => await getElementStyle(await getModal(page), 'visibility');
+const getModalVisibility = async (page: Page) => await getElementStyle(getModal(page), 'visibility');
 
 const addButtonsBeforeAndAfterModal = (page: Page) =>
   page.evaluate(() => {
@@ -134,7 +134,7 @@ const waitForSlotChange = () => new Promise((resolve) => setTimeout(resolve));
 
 test('should render and be visible when open', async ({ page }) => {
   await initBasicModal(page);
-  expect(await getModal(page)).not.toBeNull();
+  expect(getModal(page)).not.toBeNull();
   expect(await getModalVisibility(page)).toBe('visible');
 });
 

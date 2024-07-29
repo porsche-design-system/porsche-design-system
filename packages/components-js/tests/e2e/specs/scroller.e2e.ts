@@ -78,7 +78,7 @@ test.describe('scrolling', () => {
   test('should have correct initial scroll position when scrollToPosition is set', async ({ page }) => {
     await initScroller(page, { isWrapped: true, scrollToPosition: { scrollPosition: 50 } });
 
-    expect(await getScrollLeft(await getScrollArea(page))).toBe(50);
+    expect(await getScrollLeft(getScrollArea(page))).toBe(50);
   });
 });
 
@@ -102,9 +102,9 @@ test.describe('next/prev buttons', () => {
   test('should scroll by 20% on button prev/next click', async ({ page }) => {
     await initScroller(page, { isWrapped: true });
     const { prevButton, nextButton } = await getPrevNextButton(page);
-    const scrollArea = await getScrollArea(page);
+    const scrollArea = getScrollArea(page);
     const scrollAreaWidth = await getOffsetWidth(scrollArea);
-    const scrollDistance = await getScrollDistance(page, +scrollAreaWidth);
+    const scrollDistance = getScrollDistance(page, +scrollAreaWidth);
 
     expect(await getScrollLeft(scrollArea)).toEqual(0);
 
@@ -125,7 +125,7 @@ test.describe('next/prev buttons', () => {
     await initScroller(page, { amount: 6, isWrapped: true });
     const [firstButton] = await getAllButtons(page);
     const { nextButton } = await getPrevNextButton(page);
-    const scrollArea = await getScrollArea(page);
+    const scrollArea = getScrollArea(page);
 
     expect(await getScrollLeft(scrollArea)).toEqual(0);
 

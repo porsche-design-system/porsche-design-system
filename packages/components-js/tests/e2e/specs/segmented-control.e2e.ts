@@ -26,7 +26,7 @@ const getAllItemButtons = async (page: Page) =>
     )
   );
 
-const getFirstItemOffsetWidth = async (page: Page): Promise<number> => getOffsetWidth(await getFirstItemHost(page));
+const getFirstItemOffsetWidth = async (page: Page): Promise<number> => getOffsetWidth(getFirstItemHost(page));
 
 const initSegmentedControl = (page: Page, opts?: { amount?: number; value?: number }): Promise<void> => {
   const { amount = 1, value } = opts || {};
@@ -44,7 +44,7 @@ const initSegmentedControl = (page: Page, opts?: { amount?: number; value?: numb
 test.describe('width calculation', () => {
   test('should recalculate width on items when longest content is removed', async ({ page }) => {
     await initSegmentedControl(page, { amount: 6 });
-    const secondItemHost = await getSecondItemHost(page);
+    const secondItemHost = getSecondItemHost(page);
 
     // Extend content of second item
     await secondItemHost.evaluate((el) => (el.innerHTML = 'Option 2 longer'));
@@ -76,7 +76,7 @@ test.describe('width calculation', () => {
 
   test('should recalculate width on items when content changes', async ({ page }) => {
     await initSegmentedControl(page, { amount: 6 });
-    const firstItemHost = await getFirstItemHost(page);
+    const firstItemHost = getFirstItemHost(page);
 
     const initialItemWidth = await getFirstItemOffsetWidth(page);
 
@@ -90,7 +90,7 @@ test.describe('width calculation', () => {
 
   test('should recalculate width on items on label change', async ({ page }) => {
     await initSegmentedControl(page, { amount: 6 });
-    const firstItemHost = await getFirstItemHost(page);
+    const firstItemHost = getFirstItemHost(page);
 
     await setProperty(firstItemHost, 'label', 'Some super long Label to extend the width');
     await waitForStencilLifecycle(page);
@@ -105,7 +105,7 @@ test.describe('width calculation', () => {
 
   test('should recalculate width on items when icon is added', async ({ page }) => {
     await initSegmentedControl(page, { amount: 6 });
-    const secondItemHost = await getSecondItemHost(page);
+    const secondItemHost = getSecondItemHost(page);
 
     const initialItemWidth = await getFirstItemOffsetWidth(page);
 
@@ -117,7 +117,7 @@ test.describe('width calculation', () => {
 
   test('should recalculate width on items when icon is removed', async ({ page }) => {
     await initSegmentedControl(page, { amount: 6 });
-    const secondItemHost = await getSecondItemHost(page);
+    const secondItemHost = getSecondItemHost(page);
 
     await setProperty(secondItemHost, 'icon', 'truck');
     await waitForStencilLifecycle(page);
@@ -152,7 +152,7 @@ test.describe('events', () => {
   test('should not trigger event if item is disabled', async ({ page }) => {
     await initSegmentedControl(page, { amount: 2 });
     const host = getHost(page);
-    const secondItemHost = await getSecondItemHost(page);
+    const secondItemHost = getSecondItemHost(page);
     const [, button2] = await getAllItemButtons(page);
 
     await addEventListener(host, 'segmentedControlChange');
@@ -167,7 +167,7 @@ test.describe('events', () => {
   test('should not trigger event if item is selected', async ({ page }) => {
     await initSegmentedControl(page, { value: 1 });
     const host = getHost(page);
-    const firstItemHost = await getFirstItemHost(page);
+    const firstItemHost = getFirstItemHost(page);
     const button = await getFirstItemButton(page);
 
     await addEventListener(host, 'segmentedControlChange');
@@ -187,7 +187,7 @@ test.describe('events', () => {
     expect((await getEventSummary(host, 'segmentedControlChange')).counter).toBe(0);
     expect((await getEventSummary(host, 'update')).counter).toBe(0);
 
-    const firstItemHost = await getFirstItemHost(page);
+    const firstItemHost = getFirstItemHost(page);
     await firstItemHost.click();
     expect((await getEventSummary(host, 'segmentedControlChange')).counter).toBe(1);
     expect((await getEventSummary(host, 'update')).counter).toBe(1);
@@ -206,8 +206,8 @@ test.describe('keyboard', () => {
 </p-segmented-control>
 <a href="#">Some Link</a>`
     );
-    const firstItemHost = await getFirstItemHost(page);
-    const secondItemHost = await getSecondItemHost(page);
+    const firstItemHost = getFirstItemHost(page);
+    const secondItemHost = getSecondItemHost(page);
     const [firstAnchor, secondAnchor] = await page.locator('a').all();
 
     expect(await hasFocus(page.locator('body'))).toBe(true);

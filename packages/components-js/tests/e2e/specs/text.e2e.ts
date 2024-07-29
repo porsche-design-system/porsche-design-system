@@ -77,7 +77,7 @@ skipInBrowsers(['firefox', 'webkit'], () => {
       Some message
     </p-text>`
     );
-    const paragraph = await getParagraph(page);
+    const paragraph = getParagraph(page);
     const webkitTextSizeAdjustStyle = await getElementStyle(paragraph, 'webkitTextSizeAdjust' as any);
 
     // when webkitTextSizeAdjust is set to "none", it defaults to 100%

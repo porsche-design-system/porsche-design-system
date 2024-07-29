@@ -56,7 +56,7 @@ const initPinCode = (page: Page, opts?: InitOptions) => {
 test.describe('label', () => {
   test('should focus input with id="current-input" when label text is clicked', async ({ page }) => {
     await initPinCode(page, { props: { label: 'Some label' } });
-    const label = await getLabel(page);
+    const label = getLabel(page);
     const input = getCurrentInput(page);
 
     await addEventListener(input, 'focus');
