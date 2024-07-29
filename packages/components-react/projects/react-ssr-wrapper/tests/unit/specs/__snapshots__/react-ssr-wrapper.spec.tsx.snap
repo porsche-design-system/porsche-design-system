@@ -7581,7 +7581,6 @@ exports[`should render dsr component for PCarousel 1`] = `
 @media(min-width:760px) {
   .header {
     grid-template-columns: minmax(0px, 1fr) auto;
-    column-gap: 16px;
     padding: 0 calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2);
   }
   .nav {

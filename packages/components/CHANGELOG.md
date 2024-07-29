@@ -31,6 +31,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 - `Icon`: All icons are up-to-date with the One UI look
 - Shorten asset filenames
+- `Carousel`: Slides and `controls` slot are centered if `alignHeader` prop is set to `center` and amount of slides is
+  less than `slidesPerPage` ([#3372](https://github.com/porsche-design-system/porsche-design-system/pull/3372))
 
 #### Fixed
 

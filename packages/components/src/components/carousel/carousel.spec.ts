@@ -33,6 +33,12 @@ const getContainerEl = (): HTMLElement => {
   return container;
 };
 
+const getHostEl = (): HTMLElement => {
+  const host = document.createElement('p-carousel');
+  host.attachShadow({ mode: 'open' });
+  return host;
+};
+
 let originalMatchMedia: typeof window.matchMedia;
 beforeAll(() => {
   originalMatchMedia = window.matchMedia;
@@ -125,6 +131,7 @@ describe('componentDidLoad', () => {
     jest.spyOn(splideModule, 'Splide').mockReturnValue(splideMock);
     const spy = jest.spyOn(carouselUtils, 'getSplideBreakpoints');
     const component = new Carousel();
+    component.host = getHostEl();
     component['container'] = getContainerEl(); // ref to actual container element
     component.slidesPerPage = 3;
 
@@ -136,6 +143,7 @@ describe('componentDidLoad', () => {
     jest.spyOn(splideModule, 'Splide').mockReturnValue(splideMock);
     const spy = jest.spyOn(jsonUtils, 'parseJSONAttribute');
     const component = new Carousel();
+    component.host = getHostEl();
     component['container'] = getContainerEl(); // ref to actual container element
     component.intl = { first: 'first' };
 
@@ -147,6 +155,7 @@ describe('componentDidLoad', () => {
     const spy = jest.spyOn(splideModule, 'Splide').mockReturnValue(splideMock);
 
     const component = new Carousel();
+    component.host = getHostEl();
     component['container'] = getContainerEl(); // ref to actual container element
     expect(component['splide']).toBeUndefined();
 
@@ -160,6 +169,7 @@ describe('componentDidLoad', () => {
     const spy = jest.spyOn(splideModule, 'Splide').mockReturnValue(splideMock);
 
     const component = new Carousel();
+    component.host = getHostEl();
     component['container'] = getContainerEl(); // ref to actual container element
     component.slidesPerPage = 'auto';
     expect(component['splide']).toBeUndefined();
@@ -173,6 +183,7 @@ describe('componentDidLoad', () => {
   it('should call this.registerSplideHandlers() with correct parameters', () => {
     jest.spyOn(splideModule, 'Splide').mockReturnValue(splideMock);
     const component = new Carousel();
+    component.host = getHostEl();
     component['container'] = getContainerEl(); // ref to actual container element
     const spy = jest.spyOn(component, 'registerSplideHandlers' as any);
 
