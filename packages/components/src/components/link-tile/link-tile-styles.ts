@@ -147,11 +147,12 @@ export const getComponentCss = (
       gridArea: `${isTopAligned ? 2 : 4}/2`,
       display: 'flex',
       gap: spacingStaticMedium,
+      justifyContent: 'space-between',
       ...buildResponsiveStyles(compact, (compactValue: boolean) =>
         compactValue
           ? {
               alignItems: 'center',
-              justifyContent: 'space-between',
+              flexDirection: 'row',
             }
           : {
               alignItems: 'flex-start',
