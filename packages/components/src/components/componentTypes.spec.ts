@@ -58,11 +58,24 @@ describe.each<TagName>(TAG_NAMES.filter((x) => !INTERNAL_TAG_NAMES.includes(x)))
           sourceFileContent.match(new RegExp(`@Event\\(.*?\\) public ${eventName}\\??: EventEmitter<([a-zA-Z]+)>`)) ||
           [];
 
-        // TODO: Refactor test/event names to allow events with custom types to be called other than update
-        if (type === 'void' || type === 'LinkTileProductLikeEventDetail') {
+        // Skip @deprecated events since naming pattern doesn't apply there
+        if (
+          [
+            'accordionChange',
+            'carouselChange',
+            'stepChange',
+            'segmentedControlChange',
+            'switchChange',
+            'sortingChange',
+            'tabChange',
+            'pageChange',
+          ].includes(eventName) ||
+          type === 'void' ||
+          type === 'LinkTileProductLikeEventDetail'
+        ) {
           expect(true).toBe(true);
         } else {
-          expect(type).toMatch(new RegExp(`^${pascalCase(`${componentName}UpdateEventDetail`)}$`));
+          expect(type).toMatch(new RegExp(`^${pascalCase(componentName)}${pascalCase(eventName)}EventDetail$`));
         }
       });
     });

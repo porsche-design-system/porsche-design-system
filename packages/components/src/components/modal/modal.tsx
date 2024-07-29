@@ -22,12 +22,17 @@ import {
   warnIfDeprecatedPropIsUsed,
 } from '../../utils';
 import type { ModalAriaAttribute, ModalBackdrop } from './modal-utils';
-import { MODAL_ARIA_ATTRIBUTES } from './modal-utils';
+import {
+  MODAL_ARIA_ATTRIBUTES,
+  type ModalMotionVisibleEndEventDetail,
+  type ModalMotionHiddenEndEventDetail,
+} from './modal-utils';
 import { getComponentCss } from './modal-styles';
 import { BACKDROPS } from '../../styles/dialog-styles';
 import { getSlottedAnchorStyles } from '../../styles';
 import { observeStickyArea } from '../../utils/dialog/observer';
 import { getDeprecatedPropOrSlotWarningMessage } from '../../utils/log/helper';
+import { onTransitionEnd } from '../../utils/dialog/dialog';
 
 const propTypes: PropTypes<typeof Modal> = {
   open: AllowedTypes.boolean,
@@ -94,6 +99,12 @@ export class Modal {
 
   /** Emitted when the component requests to be dismissed. */
   @Event({ bubbles: false }) public dismiss?: EventEmitter<void>;
+
+  /** Emitted when the modal is opened and the transition is finished. */
+  @Event({ bubbles: false }) public motionVisibleEnd?: EventEmitter<ModalMotionVisibleEndEventDetail>;
+
+  /** Emitted when the modal is closed and the transition is finished. */
+  @Event({ bubbles: false }) public motionHiddenEnd?: EventEmitter<ModalMotionHiddenEndEventDetail>;
 
   private dialog: HTMLDialogElement;
   private scroller: HTMLDivElement;
@@ -194,6 +205,7 @@ export class Modal {
         onCancel={(e) => onCancelDialog(e, this.dismissDialog, !this.hasDismissButton)}
         // Previously done with onMouseDown to change the click behavior (not closing when pressing mousedown on modal and mouseup on backdrop) but changed back to native behavior
         onClick={(e) => onClickDialog(e, this.dismissDialog, this.disableBackdropClick)}
+        onTransitionEnd={(e) => onTransitionEnd(e, this.open, this.motionVisibleEnd, this.motionHiddenEnd)}
         {...parseAndGetAriaAttributes({
           'aria-modal': true,
           'aria-label': this.heading,
