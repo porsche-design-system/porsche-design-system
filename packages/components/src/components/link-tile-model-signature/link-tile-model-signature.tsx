@@ -98,7 +98,7 @@ export class LinkTileModelSignature {
       getComponentCss,
       this.aspectRatio,
       this.weight,
-      'light',
+      'dark',
       'bottom',
       false,
       true,
