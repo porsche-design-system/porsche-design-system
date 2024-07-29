@@ -22,12 +22,17 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
     ([#3411](https://github.com/porsche-design-system/porsche-design-system/pull/3411))
 - Styles: `theme{Light|Dark}BackgroundFrosted` and `$pds-theme-{light|dark}-background-frosted` color
   ([#3409](https://github.com/porsche-design-system/porsche-design-system/pull/3409))
-- `Optgroup`: Usable in combination with `Select` and `Multi Select` ([#3410](https://github.com/porsche-design-system/porsche-design-system/pull/3410))
+- `Optgroup`: Usable in combination with `Select` and `Multi Select`
+  ([#3410](https://github.com/porsche-design-system/porsche-design-system/pull/3410))
+- `Flyout`, `Modal`: Add custom events `motionVisibleEnd` and `motionHiddenEnd` to notify when opening and closing
+  transitions are complete ([#3418](https://github.com/porsche-design-system/porsche-design-system/pull/3418))
 
 #### Changed
 
 - `Icon`: All icons are up-to-date with the One UI look
 - Shorten asset filenames
+- `Carousel`: Slides and `controls` slot are centered if `alignHeader` prop is set to `center` and amount of slides is
+  less than `slidesPerPage` ([#3372](https://github.com/porsche-design-system/porsche-design-system/pull/3372))
 
 #### Fixed
 

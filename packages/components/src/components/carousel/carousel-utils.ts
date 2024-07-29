@@ -45,6 +45,8 @@ export type CarouselUpdateEventDetail = CarouselUpdateEvent;
 
 export type SplideBreakpoints = Options['breakpoints'];
 
+export type CarouselLanguageDirection = Extract<Options['direction'], 'ltr' | 'rtl'>;
+
 export const getSplideBreakpoints = (
   perPage: Exclude<BreakpointCustomizable<number>, string> | 'auto'
 ): SplideBreakpoints => {
@@ -188,4 +190,19 @@ export const updatePagination = (paginationEl: HTMLElement, amountOfPages: numbe
       updateBulletState(paginationEl, amountOfPages, newIndex);
     }
   }
+};
+
+export const getLangDirection = (el: HTMLElement): CarouselLanguageDirection => {
+  const dirAttribute = el.closest('[dir]')?.getAttribute('dir');
+  if (dirAttribute) {
+    return dirAttribute as CarouselLanguageDirection;
+  }
+
+  const lang = document.documentElement.lang;
+  if (lang && lang !== 'unknown') {
+    // @ts-expect-error "textInfo" is not supported in Firefox and not part of the types.
+    return new Intl.Locale(lang).textInfo?.direction || 'ltr';
+  }
+
+  return 'ltr';
 };

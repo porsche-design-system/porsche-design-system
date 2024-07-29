@@ -238,10 +238,8 @@ export class Select {
     const dropdownId = 'list';
     const descriptionId = this.description ? 'description' : undefined;
     const selectMessageId = hasMessage(this.host, this.message, this.state) ? messageId : undefined;
-    const ariaDescribedBy =
-      descriptionId && selectMessageId
-        ? `${descriptionId} ${selectMessageId}`
-        : descriptionId || selectMessageId || undefined;
+    const initialStatusId = 'initial-status';
+    const ariaDescribedBy = [descriptionId, selectMessageId, initialStatusId].filter(Boolean).join(' ');
 
     return (
       <div class="root">
@@ -253,9 +251,8 @@ export class Select {
           isRequired={this.required}
           isDisabled={this.disabled}
         />
-        <span class="sr-only">
-          {getSelectedOptionString(this.selectOptions) || 'No option'} selected, {this.selectOptions.length} options in
-          total
+        <span class="sr-only" id={initialStatusId}>
+          {`${!getSelectedOptionString(this.selectOptions) ? 'No option selected. ' : ''} ${this.selectOptions.length} options in total.`}
         </span>
         <div class={{ wrapper: true, disabled: this.disabled }} ref={(el) => (this.comboboxContainer = el)}>
           <button

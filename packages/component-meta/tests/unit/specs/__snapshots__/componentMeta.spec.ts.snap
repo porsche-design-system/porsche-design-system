@@ -2261,6 +2261,16 @@ exports[`should match snapshot 1`] = `
         "description": "Emitted when the component requests to be dismissed.",
         "type": "void",
       },
+      "motionHiddenEnd": {
+        "description": "Emitted when the flyout is closed and the transition is finished.",
+        "type": "FlyoutMotionHiddenEndEventDetail",
+        "typeDetail": "TransitionEvent",
+      },
+      "motionVisibleEnd": {
+        "description": "Emitted when the flyout is opened and the transition is finished.",
+        "type": "FlyoutMotionVisibleEndEventDetail",
+        "typeDetail": "TransitionEvent",
+      },
     },
     "hasAriaProp": true,
     "hasEvent": true,
@@ -4802,6 +4812,16 @@ exports[`should match snapshot 1`] = `
       "dismiss": {
         "description": "Emitted when the component requests to be dismissed.",
         "type": "void",
+      },
+      "motionHiddenEnd": {
+        "description": "Emitted when the modal is closed and the transition is finished.",
+        "type": "ModalMotionHiddenEndEventDetail",
+        "typeDetail": "TransitionEvent",
+      },
+      "motionVisibleEnd": {
+        "description": "Emitted when the modal is opened and the transition is finished.",
+        "type": "ModalMotionVisibleEndEventDetail",
+        "typeDetail": "TransitionEvent",
       },
     },
     "hasAriaProp": true,
