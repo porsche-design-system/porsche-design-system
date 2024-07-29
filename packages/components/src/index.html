@@ -105,7 +105,452 @@
       </select>
     </header>
 
-    <main></main>
+    <main>
+      <style>
+        .tile-group-flex {
+          display: flex;
+          gap: 16px;
+          margin: 16px;
+        }
+
+        .tile-group-flex p-link-tile {
+          min-height: 300px;
+        }
+
+        .tile-group-grid {
+          display: grid;
+          grid-template-columns: repeat(4, minmax(0, 1fr));
+          gap: 16px;
+          margin: 16px;
+        }
+
+        .tile-group-pcom {
+          display: grid;
+          grid-template-columns: repeat(3, minmax(0, 1fr));
+          gap: 16px;
+          margin: 16px;
+        }
+
+        .tile-group-pcom p-link-tile {
+          height: 100%;
+        }
+      </style>
+
+      <p-link-tile
+        aspect-ratio="1:1"
+        style="width: 20vw; height: auto"
+        href="#"
+        label="Some Label"
+        description="Default"
+      >
+        <p-tag slot="header" color="background-frosted" compact="true">4/3</p-tag>
+        <img
+          srcset="https://porsche-design-system.github.io/porsche-design-system/porsche-963@2x.webp 2x"
+          src="https://porsche-design-system.github.io/porsche-design-system/porsche-963.webp"
+          width="636"
+          height="847"
+          alt="Porsche 963"
+        />
+      </p-link-tile>
+
+      <!--<div class="tile-group-pcom">
+        <div>
+          <p-link-tile aspect-ratio="4:3" href="#" label="Some Label" description="Default">
+            <p-tag slot="header" color="background-frosted" compact="true">4/3</p-tag>
+            <img
+              srcset="https://porsche-design-system.github.io/porsche-design-system/porsche-963@2x.webp 2x"
+              src="https://porsche-design-system.github.io/porsche-design-system/porsche-963.webp"
+              width="636"
+              height="847"
+              alt="Porsche 963"
+            />
+          </p-link-tile>
+        </div>
+        <div>
+          <p-link-tile aspect-ratio="4:3" href="#" label="Some Label" description="Default">
+            <p-tag slot="header" color="background-frosted" compact="true">4/3</p-tag>
+            <img
+              srcset="https://porsche-design-system.github.io/porsche-design-system/porsche-963@2x.webp 2x"
+              src="https://porsche-design-system.github.io/porsche-design-system/porsche-963.webp"
+              width="636"
+              height="847"
+              alt="Porsche 963"
+            />
+          </p-link-tile>
+        </div>
+        <div>
+          <p-link-tile aspect-ratio="4:3" href="#" label="Some Label" description="Default">
+            <p-tag slot="header" color="background-frosted" compact="true">4/3</p-tag>
+            <img
+              srcset="https://porsche-design-system.github.io/porsche-design-system/porsche-963@2x.webp 2x"
+              src="https://porsche-design-system.github.io/porsche-design-system/porsche-963.webp"
+              width="636"
+              height="847"
+              alt="Porsche 963"
+            />
+          </p-link-tile>
+        </div>
+      </div>-->
+
+      <hr />
+
+      <div class="tile-group-flex">
+        <p-link-tile
+          compact="true"
+          align="top"
+          gradient="false"
+          aspect-ratio="1:1"
+          size="medium"
+          href="#"
+          label="Some Label"
+          description="Default"
+        >
+          <p-tag slot="header" color="background-frosted" compact="true">1/1</p-tag>
+          <source
+            srcset="https://porsche-design-system.github.io/porsche-design-system/porsche-963.webp"
+            media="(orientation: portrait)"
+          />
+          <img
+            srcset="https://porsche-design-system.github.io/porsche-design-system/porsche-963@2x.webp 2x"
+            src="https://porsche-design-system.github.io/porsche-design-system/porsche-963.webp"
+            width="636"
+            height="847"
+            alt="Porsche 963"
+          />
+        </p-link-tile>
+
+        <p-link-tile aspect-ratio="4:3" size="medium" href="#" label="Some Label" description="Default">
+          <p-tag slot="header" color="background-frosted" compact="true">4/3</p-tag>
+          <picture>
+            <img
+              srcset="https://porsche-design-system.github.io/porsche-design-system/porsche-963@2x.webp 2x"
+              src="https://porsche-design-system.github.io/porsche-design-system/porsche-963.webp"
+              width="636"
+              height="847"
+              alt="Porsche 963"
+            />
+          </picture>
+        </p-link-tile>
+        <p-link-tile aspect-ratio="1:1" size="medium" href="#" label="Some Label" description="Default">
+          <p-tag slot="header" color="background-frosted" compact="true">1/1</p-tag>
+          <img
+            srcset="https://porsche-design-system.github.io/porsche-design-system/porsche-963@2x.webp 2x"
+            src="https://porsche-design-system.github.io/porsche-design-system/porsche-963.webp"
+            width="636"
+            height="847"
+            alt="Porsche 963"
+          />
+        </p-link-tile>
+        <!--<p-link-tile aspect-ratio="4:3" size="large" href="#" label="Some Label" description="Default">
+          <p-tag slot="header" color="background-frosted" compact="true">4/3</p-tag>
+          <img
+            srcset="https://porsche-design-system.github.io/porsche-design-system/porsche-963@2x.webp 2x"
+            src="https://porsche-design-system.github.io/porsche-design-system/porsche-963.webp"
+            width="636"
+            height="847"
+            alt="Porsche 963"
+          />
+        </p-link-tile>-->
+        <!--<p-link-tile
+          aspect-ratio="4:3"
+          size="large"
+          href="#"
+          label="Some Label"
+          description="Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet."
+        >
+          <p-tag slot="header" color="background-frosted" compact="true">4/3</p-tag>
+          <img
+            srcset="https://porsche-design-system.github.io/porsche-design-system/porsche-963@2x.webp 2x"
+            src="https://porsche-design-system.github.io/porsche-design-system/porsche-963.webp"
+            width="636"
+            height="847"
+            alt="Porsche 963"
+          />
+        </p-link-tile>-->
+      </div>
+
+      <div class="tile-group-grid">
+        <p-link-tile aspect-ratio="4:3" href="#" label="Some Label" description="Default">
+          <p-tag slot="header" color="background-frosted" compact="true">4/3</p-tag>
+          <img
+            srcset="https://porsche-design-system.github.io/porsche-design-system/porsche-963@2x.webp 2x"
+            src="https://porsche-design-system.github.io/porsche-design-system/porsche-963.webp"
+            width="636"
+            height="847"
+            alt="Porsche 963"
+          />
+        </p-link-tile>
+        <p-link-tile href="#" label="Some Label" description="Default">
+          <p-tag slot="header" color="background-frosted" compact="true">4/3</p-tag>
+          <img
+            srcset="https://porsche-design-system.github.io/porsche-design-system/porsche-963@2x.webp 2x"
+            src="https://porsche-design-system.github.io/porsche-design-system/porsche-963.webp"
+            width="636"
+            height="847"
+            alt="Porsche 963"
+          />
+        </p-link-tile>
+        <p-link-tile href="#" label="Some Label" description="Default">
+          <p-tag slot="header" color="background-frosted" compact="true">4/3</p-tag>
+          <img
+            srcset="https://porsche-design-system.github.io/porsche-design-system/porsche-963@2x.webp 2x"
+            src="https://porsche-design-system.github.io/porsche-design-system/porsche-963.webp"
+            width="636"
+            height="847"
+            alt="Porsche 963"
+          />
+        </p-link-tile>
+        <p-link-tile href="#" label="Some Label" description="Default">
+          <p-tag slot="header" color="background-frosted" compact="true">4/3</p-tag>
+          <img
+            srcset="https://porsche-design-system.github.io/porsche-design-system/porsche-963@2x.webp 2x"
+            src="https://porsche-design-system.github.io/porsche-design-system/porsche-963.webp"
+            width="636"
+            height="847"
+            alt="Porsche 963"
+          />
+        </p-link-tile>
+        <p-link-tile aspect-ratio="1:1" href="#" label="Some Label" description="Default">
+          <p-tag slot="header" color="background-frosted" compact="true">1/1</p-tag>
+          <img
+            srcset="https://porsche-design-system.github.io/porsche-design-system/porsche-963@2x.webp 2x"
+            src="https://porsche-design-system.github.io/porsche-design-system/porsche-963.webp"
+            width="636"
+            height="847"
+            alt="Porsche 963"
+          />
+        </p-link-tile>
+      </div>
+
+      <div class="tile-group-grid">
+        <p-link-tile href="#" label="Some Label" description="Default">
+          <p-tag slot="header" color="background-frosted" compact="true">4/3</p-tag>
+          <img
+            srcset="https://porsche-design-system.github.io/porsche-design-system/porsche-963@2x.webp 2x"
+            src="https://porsche-design-system.github.io/porsche-design-system/porsche-963.webp"
+            width="636"
+            height="847"
+            alt="Porsche 963"
+          />
+        </p-link-tile>
+        <p-link-tile
+          href="#"
+          label="Some Label"
+          description="Default Default Default Default Default Default Default Default Default Default Default Default Default Default Default Default Default Default Default Default Default Default Default Default Default Default Default Default Default Default Default Default "
+        >
+          <p-tag slot="header" color="background-frosted" compact="true">4/3</p-tag>
+          <img
+            srcset="https://porsche-design-system.github.io/porsche-design-system/porsche-963@2x.webp 2x"
+            src="https://porsche-design-system.github.io/porsche-design-system/porsche-963.webp"
+            width="636"
+            height="847"
+            alt="Porsche 963"
+          />
+        </p-link-tile>
+        <p-link-tile href="#" label="Some Label" description="Default">
+          <p-tag slot="header" color="background-frosted" compact="true">4/3</p-tag>
+          <img
+            srcset="https://porsche-design-system.github.io/porsche-design-system/porsche-963@2x.webp 2x"
+            src="https://porsche-design-system.github.io/porsche-design-system/porsche-963.webp"
+            width="636"
+            height="847"
+            alt="Porsche 963"
+          />
+        </p-link-tile>
+        <p-link-tile href="#" label="Some Label" description="Default">
+          <p-tag slot="header" color="background-frosted" compact="true">4/3</p-tag>
+          <img
+            srcset="https://porsche-design-system.github.io/porsche-design-system/porsche-963@2x.webp 2x"
+            src="https://porsche-design-system.github.io/porsche-design-system/porsche-963.webp"
+            width="636"
+            height="847"
+            alt="Porsche 963"
+          />
+        </p-link-tile>
+        <p-link-tile href="#" label="Some Label" description="Default">
+          <p-tag slot="header" color="background-frosted" compact="true">4/3</p-tag>
+          <img
+            srcset="https://porsche-design-system.github.io/porsche-design-system/porsche-963@2x.webp 2x"
+            src="https://porsche-design-system.github.io/porsche-design-system/porsche-963.webp"
+            width="636"
+            height="847"
+            alt="Porsche 963"
+          />
+        </p-link-tile>
+        <p-link-tile aspect-ratio="1:1" href="#" label="Some Label" description="Default">
+          <p-tag slot="header" color="background-frosted" compact="true">1/1</p-tag>
+          <img
+            srcset="https://porsche-design-system.github.io/porsche-design-system/porsche-963@2x.webp 2x"
+            src="https://porsche-design-system.github.io/porsche-design-system/porsche-963.webp"
+            width="636"
+            height="847"
+            alt="Porsche 963"
+          />
+        </p-link-tile>
+        <p-link-tile href="#" label="Some Label" description="Default">
+          <p-tag slot="header" color="background-frosted" compact="true">4/3</p-tag>
+          <img
+            srcset="https://porsche-design-system.github.io/porsche-design-system/porsche-963@2x.webp 2x"
+            src="https://porsche-design-system.github.io/porsche-design-system/porsche-963.webp"
+            width="636"
+            height="847"
+            alt="Porsche 963"
+          />
+        </p-link-tile>
+        <p-link-tile href="#" label="Some Label" description="Default">
+          <p-tag slot="header" color="background-frosted" compact="true">4/3</p-tag>
+          <img
+            srcset="https://porsche-design-system.github.io/porsche-design-system/porsche-963@2x.webp 2x"
+            src="https://porsche-design-system.github.io/porsche-design-system/porsche-963.webp"
+            width="636"
+            height="847"
+            alt="Porsche 963"
+          />
+        </p-link-tile>
+        <p-link-tile href="#" label="Some Label" description="Default">
+          <p-tag slot="header" color="background-frosted" compact="true">4/3</p-tag>
+          <img
+            srcset="https://porsche-design-system.github.io/porsche-design-system/porsche-963@2x.webp 2x"
+            src="https://porsche-design-system.github.io/porsche-design-system/porsche-963.webp"
+            width="636"
+            height="847"
+            alt="Porsche 963"
+          />
+        </p-link-tile>
+        <p-link-tile aspect-ratio="16:9" href="#" label="Some Label" description="Default">
+          <p-tag slot="header" color="background-frosted" compact="true">16/9</p-tag>
+          <img
+            srcset="https://porsche-design-system.github.io/porsche-design-system/porsche-963@2x.webp 2x"
+            src="https://porsche-design-system.github.io/porsche-design-system/porsche-963.webp"
+            width="636"
+            height="847"
+            alt="Porsche 963"
+          />
+        </p-link-tile>
+        <p-link-tile aspect-ratio="16:9" href="#" label="Some Label" description="Default">
+          <p-tag slot="header" color="background-frosted" compact="true">16/9</p-tag>
+          <img
+            srcset="https://porsche-design-system.github.io/porsche-design-system/porsche-963@2x.webp 2x"
+            src="https://porsche-design-system.github.io/porsche-design-system/porsche-963.webp"
+            width="636"
+            height="847"
+            alt="Porsche 963"
+          />
+        </p-link-tile>
+        <p-link-tile aspect-ratio="16:9" href="#" label="Some Label" description="Default">
+          <p-tag slot="header" color="background-frosted" compact="true">16/9</p-tag>
+          <img
+            srcset="https://porsche-design-system.github.io/porsche-design-system/porsche-963@2x.webp 2x"
+            src="https://porsche-design-system.github.io/porsche-design-system/porsche-963.webp"
+            width="636"
+            height="847"
+            alt="Porsche 963"
+          />
+        </p-link-tile>
+        <p-link-tile aspect-ratio="16:9" href="#" label="Some Label" description="Default">
+          <p-tag slot="header" color="background-frosted" compact="true">16/9</p-tag>
+          <img
+            srcset="https://porsche-design-system.github.io/porsche-design-system/porsche-963@2x.webp 2x"
+            src="https://porsche-design-system.github.io/porsche-design-system/porsche-963.webp"
+            width="636"
+            height="847"
+            alt="Porsche 963"
+          />
+        </p-link-tile>
+      </div>
+
+      <!--<div class="tile-group">
+        <article>
+          <div class="header">
+            <p-tag slot="header" color="background-frosted" compact="true">Boxster</p-tag>
+            <p-heading>Huhu</p-heading>
+          </div>
+          <div class="image"></div>
+          <div class="footer">
+            <p-heading>Hallo Welt Hallo Welt Hallo Welt Hallo Welt Hallo Welt</p-heading>
+            <p-button>Some label</p-button>
+          </div>
+        </article>
+        <article>
+          <div class="header">
+            <p-tag slot="header" color="background-frosted" compact="true">Boxster</p-tag>
+          </div>
+          <div class="image"></div>
+          <div class="footer">
+            <p-heading>Hallo Welt </p-heading>
+            <p-button>Some label</p-button>
+          </div>
+        </article>
+        <article>
+          <div class="header">
+            <p-tag slot="header" color="background-frosted" compact="true">Boxster</p-tag>
+          </div>
+          <div class="image"></div>
+          <div class="footer">
+            <p-heading>Hallo Welt </p-heading>
+            <p-button>Some label</p-button>
+          </div>
+        </article>
+        <article>
+          <div class="header">
+            <p-tag slot="header" color="background-frosted" compact="true">Boxster</p-tag>
+          </div>
+          <div class="image"></div>
+          <div class="footer">
+            <p-heading>Hallo Welt </p-heading>
+            <p-button>Some label</p-button>
+          </div>
+        </article>
+        <article>
+          <div class="header">
+            <p-tag slot="header" color="background-frosted" compact="true">Boxster</p-tag>
+          </div>
+          <div class="image"></div>
+          <div class="footer">
+            <p-heading>Hallo Welt </p-heading>
+            <p-button>Some label</p-button>
+          </div>
+        </article>
+        <article>
+          <div class="header">
+            <p-tag slot="header" color="background-frosted" compact="true">Boxster</p-tag>
+          </div>
+          <div class="image"></div>
+          <div class="footer">
+            <p-heading>Hallo Welt </p-heading>
+            <p-button>Some label</p-button>
+          </div>
+        </article>
+      </div>-->
+
+      <!--<div class="playground light auto-layout-inline">
+        <p-link-tile href="#" label="Some Label" description="Default Default Default Default Default Default Default">
+          <p-tag slot="header" color="background-frosted" compact="true">Boxster</p-tag>
+          <img
+            srcset="https://porsche-design-system.github.io/porsche-design-system/porsche-963@2x.webp 2x"
+            src="https://porsche-design-system.github.io/porsche-design-system/porsche-963.webp"
+            width="636"
+            height="847"
+            alt="Porsche 963"
+          />
+        </p-link-tile>
+
+        <p-link-tile-model-signature
+          heading="Default Default Default Default Default Default Default Default Default Default Default Default"
+        >
+          <p-tag slot="header" color="background-frosted" compact="true">Boxster</p-tag>
+          <img
+            srcset="https://porsche-design-system.github.io/porsche-design-system/porsche-963@2x.webp 2x"
+            src="https://porsche-design-system.github.io/porsche-design-system/porsche-963.webp"
+            width="636"
+            height="847"
+            alt="Porsche 963"
+          />
+          <p-link slot="primary" href="#primary">Some label</p-link>
+          <p-link slot="secondary" href="#secondary">Some label</p-link>
+        </p-link-tile-model-signature>
+      </div>-->
+    </main>
 
     <script>
       <!-- START: keep this snippet to log component lifecycle events -->
