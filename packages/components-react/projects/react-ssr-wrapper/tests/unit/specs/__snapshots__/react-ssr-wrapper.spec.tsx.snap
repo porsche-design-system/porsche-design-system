@@ -645,75 +645,92 @@ exports[`manual test cases > should pass internal props correctly to p-link-tile
   >
     <style>
       :host {
-  display: block;
+  display: flex;
   hyphens: auto;
   color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
 }
-::slotted(picture) {
-  position: absolute !important;
-  inset: 0 !important;
-}
-::slotted(img) {
-  height: 100% !important;
-  width: 100% !important;
-  object-fit: cover !important;
-}
-h2,h3,h4,h5,h6 {
-  margin: 0 !important;
-}
-.root {
-  position: relative;
-  overflow: hidden;
-  transform: translate3d(0,0,0);
-  border-radius: 12px;
-  color: #FBFCFF;
-  padding-top: 133.33%;
-}
-.image-container {
-  position: absolute;
-  inset: 0;
+slot:not([name]) {
+  display: block;
+  width: 100%;
+  height: 100%;
   transition: transform var(--p-transition-duration, 0.4s) cubic-bezier(0.25,0.1,0.25,1);
 }
-.content {
-  position: absolute;
-  left: 0;
-  right: 0;
-  display: flex;
-  justify-items: start;
-  gap: 16px;
-  border-radius: 12px;
-  flex-direction: column;
-  bottom: 0;
-  padding: clamp(32px, 2.75vw + 23px, 76px) clamp(16px, 1.25vw + 12px, 36px) clamp(16px, 1.25vw + 12px, 36px);
-  background: linear-gradient(to top, rgba(31,31,31,0.9) 0%,rgba(31,31,31,0.9) 20%,rgba(31,31,31,0.852589) 26.67%,rgba(32,32,32,0.768225) 33.33%,rgba(33,33,33,0.668116) 40%,rgba(34,34,34,0.557309) 46.67%,rgba(35,35,35,0.442691) 53.33%,rgba(36,36,36,0.331884) 60%,rgba(37,37,37,0.231775) 66.67%,rgba(38,38,38,0.147411) 73.33%,rgba(39,39,39,0.0816599) 80%,rgba(39,39,39,0.03551) 86.67%,rgba(39,39,39,0.0086472) 93.33%,rgba(39,39,39,0) 100%);;
+slot[name=primary] {
+  pointer-events: auto;
 }
-.signature {
-  position: absolute;
-  top: clamp(16px, 1.25vw + 12px, 36px);
-  left: clamp(16px, 1.25vw + 12px, 36px);
-  right: clamp(16px, 1.25vw + 12px, 36px);
-  display: flex;
+slot[name=secondary] {
+  pointer-events: auto;
 }
-.heading {
+::slotted(:is(img,picture)) {
+  display: block !important;
+  width: 100% !important;
+  height: 100% !important;
+}
+::slotted(img) {
+  object-fit: cover !important;
+}
+a {
+  grid-area: 1/1/-1 /-1;
+  z-index: 4;
+  outline: 0;
+}
+h1,h2,h3,h4,h5,h6 {
   margin: 0;
+  z-index: 3;
+  max-width: 34.375rem;
   font: normal normal 400 clamp(1.27rem, 0.51vw + 1.16rem, 1.78rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: inherit;
+  color: #FBFCFF;
   font-weight: 600;
 }
+.root {
+  aspect-ratio: 3/4;
+  width: 100%;
+  display: grid;
+  grid-template: clamp(16px, 1.25vw + 12px, 36px) auto minmax(0px, 1fr) auto clamp(16px, 1.25vw + 12px, 36px)/clamp(16px, 1.25vw + 12px, 36px) minmax(0px, 1fr) clamp(16px, 1.25vw + 12px, 36px);
+}
+.root::after {
+  content: "";
+  z-index: 2;
+  grid-area: 4/1/6/-1;
+  background: linear-gradient(to top, rgba(31,31,31,0.9) 0%,rgba(31,31,31,0.9) 20%,rgba(31,31,31,0.852589) 26.67%,rgba(32,32,32,0.768225) 33.33%,rgba(33,33,33,0.668116) 40%,rgba(34,34,34,0.557309) 46.67%,rgba(35,35,35,0.442691) 53.33%,rgba(36,36,36,0.331884) 60%,rgba(37,37,37,0.231775) 66.67%,rgba(38,38,38,0.147411) 73.33%,rgba(39,39,39,0.0816599) 80%,rgba(39,39,39,0.03551) 86.67%,rgba(39,39,39,0.0086472) 93.33%,rgba(39,39,39,0) 100%);;
+  margin-top: calc(clamp(32px, 2.75vw + 23px, 76px) * -1);
+  border-end-start-radius: 12px;
+  border-end-end-radius: 12px;
+}
+.header {
+  grid-area: 2/2;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(8px, 0.5vw + 6px, 16px);
+}
+.media {
+  grid-area: 1/1/-1 /-1;
+  z-index: 1;
+  overflow: hidden;
+  border-radius: 12px;
+}
+.footer {
+  grid-area: 4/2;
+  display: flex;
+  gap: 16px;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-direction: column;
+}
 .link-group {
+  z-index: 5;
   display: flex;
   width: 100%;
+  pointer-events: none;
   gap: clamp(8px, 0.5vw + 6px, 16px);
   flex-flow: column nowrap;
   align-items: stretch;
-}
-.link-overlay {
-  position: fixed;
-  inset: 0;
 }
 @media(min-width:480px) {
   .link-group {
@@ -723,7 +740,7 @@ h2,h3,h4,h5,h6 {
 }
 
 @media (forced-colors: active) {
-  .content {
+  .root::after {
     background: rgba(0,0,0,0.7);
   }
 }
@@ -733,13 +750,14 @@ h2,h3,h4,h5,h6 {
     <div
       class="root"
     >
+      <a
+        aria-hidden="true"
+        href="#primary"
+        tabindex="-1"
+        target="_self"
+      />
       <div
-        class="image-container"
-      >
-        <slot />
-      </div>
-      <div
-        class="signature"
+        class="header"
       >
         <p-model-signature
           class="ssr"
@@ -757,7 +775,7 @@ h2,h3,h4,h5,h6 {
   width: var(--p-model-signature-width,94px);
   height: var(--p-model-signature-height,auto);
   mask: url(http://localhost:3001/model-signatures/911.b68f913.svg) no-repeat left top / contain !important;
-  aspect-ratio: 94 / 36 !important;
+  aspect-ratio: 94 / 25 !important;
   background: var(--p-model-signature-color,#FBFCFF) !important;
   color-scheme: light dark !important;
 }
@@ -790,25 +808,23 @@ img {
             />
           </template>
         </p-model-signature>
+        <slot
+          name="header"
+        />
       </div>
       <div
-        class="content"
+        class="media"
       >
-        <a
-          aria-hidden="true"
-          class="link-overlay"
-          href="#primary"
-          tabindex="-1"
-          target="_self"
-        />
-        <h2
-          class="heading"
-        >
+        <slot />
+      </div>
+      <div
+        class="footer"
+      >
+        <h2>
           Some heading
         </h2>
         <div
           class="link-group"
-          role="group"
         >
           <slot
             name="primary"
@@ -980,75 +996,92 @@ exports[`manual test cases > should pass internal props correctly to p-link-tile
   >
     <style>
       :host {
-  display: block;
+  display: flex;
   hyphens: auto;
   color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
 }
-::slotted(picture) {
-  position: absolute !important;
-  inset: 0 !important;
-}
-::slotted(img) {
-  height: 100% !important;
-  width: 100% !important;
-  object-fit: cover !important;
-}
-h2,h3,h4,h5,h6 {
-  margin: 0 !important;
-}
-.root {
-  position: relative;
-  overflow: hidden;
-  transform: translate3d(0,0,0);
-  border-radius: 12px;
-  color: #FBFCFF;
-  padding-top: 133.33%;
-}
-.image-container {
-  position: absolute;
-  inset: 0;
+slot:not([name]) {
+  display: block;
+  width: 100%;
+  height: 100%;
   transition: transform var(--p-transition-duration, 0.4s) cubic-bezier(0.25,0.1,0.25,1);
 }
-.content {
-  position: absolute;
-  left: 0;
-  right: 0;
-  display: flex;
-  justify-items: start;
-  gap: 16px;
-  border-radius: 12px;
-  flex-direction: column;
-  bottom: 0;
-  padding: clamp(32px, 2.75vw + 23px, 76px) clamp(16px, 1.25vw + 12px, 36px) clamp(16px, 1.25vw + 12px, 36px);
-  background: linear-gradient(to top, rgba(31,31,31,0.9) 0%,rgba(31,31,31,0.9) 20%,rgba(31,31,31,0.852589) 26.67%,rgba(32,32,32,0.768225) 33.33%,rgba(33,33,33,0.668116) 40%,rgba(34,34,34,0.557309) 46.67%,rgba(35,35,35,0.442691) 53.33%,rgba(36,36,36,0.331884) 60%,rgba(37,37,37,0.231775) 66.67%,rgba(38,38,38,0.147411) 73.33%,rgba(39,39,39,0.0816599) 80%,rgba(39,39,39,0.03551) 86.67%,rgba(39,39,39,0.0086472) 93.33%,rgba(39,39,39,0) 100%);;
+slot[name=primary] {
+  pointer-events: auto;
 }
-.signature {
-  position: absolute;
-  top: clamp(16px, 1.25vw + 12px, 36px);
-  left: clamp(16px, 1.25vw + 12px, 36px);
-  right: clamp(16px, 1.25vw + 12px, 36px);
-  display: flex;
+slot[name=secondary] {
+  pointer-events: auto;
 }
-.heading {
+::slotted(:is(img,picture)) {
+  display: block !important;
+  width: 100% !important;
+  height: 100% !important;
+}
+::slotted(img) {
+  object-fit: cover !important;
+}
+a {
+  grid-area: 1/1/-1 /-1;
+  z-index: 4;
+  outline: 0;
+}
+h1,h2,h3,h4,h5,h6 {
   margin: 0;
+  z-index: 3;
+  max-width: 34.375rem;
   font: normal normal 400 clamp(1.27rem, 0.51vw + 1.16rem, 1.78rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: inherit;
+  color: #FBFCFF;
   font-weight: 600;
 }
+.root {
+  aspect-ratio: 3/4;
+  width: 100%;
+  display: grid;
+  grid-template: clamp(16px, 1.25vw + 12px, 36px) auto minmax(0px, 1fr) auto clamp(16px, 1.25vw + 12px, 36px)/clamp(16px, 1.25vw + 12px, 36px) minmax(0px, 1fr) clamp(16px, 1.25vw + 12px, 36px);
+}
+.root::after {
+  content: "";
+  z-index: 2;
+  grid-area: 4/1/6/-1;
+  background: linear-gradient(to top, rgba(31,31,31,0.9) 0%,rgba(31,31,31,0.9) 20%,rgba(31,31,31,0.852589) 26.67%,rgba(32,32,32,0.768225) 33.33%,rgba(33,33,33,0.668116) 40%,rgba(34,34,34,0.557309) 46.67%,rgba(35,35,35,0.442691) 53.33%,rgba(36,36,36,0.331884) 60%,rgba(37,37,37,0.231775) 66.67%,rgba(38,38,38,0.147411) 73.33%,rgba(39,39,39,0.0816599) 80%,rgba(39,39,39,0.03551) 86.67%,rgba(39,39,39,0.0086472) 93.33%,rgba(39,39,39,0) 100%);;
+  margin-top: calc(clamp(32px, 2.75vw + 23px, 76px) * -1);
+  border-end-start-radius: 12px;
+  border-end-end-radius: 12px;
+}
+.header {
+  grid-area: 2/2;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(8px, 0.5vw + 6px, 16px);
+}
+.media {
+  grid-area: 1/1/-1 /-1;
+  z-index: 1;
+  overflow: hidden;
+  border-radius: 12px;
+}
+.footer {
+  grid-area: 4/2;
+  display: flex;
+  gap: 16px;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-direction: column;
+}
 .link-group {
+  z-index: 5;
   display: flex;
   width: 100%;
+  pointer-events: none;
   gap: clamp(8px, 0.5vw + 6px, 16px);
   flex-flow: column nowrap;
   align-items: stretch;
-}
-.link-overlay {
-  position: fixed;
-  inset: 0;
 }
 @media(min-width:480px) {
   .link-group {
@@ -1058,7 +1091,7 @@ h2,h3,h4,h5,h6 {
 }
 
 @media (forced-colors: active) {
-  .content {
+  .root::after {
     background: rgba(0,0,0,0.7);
   }
 }
@@ -1068,13 +1101,14 @@ h2,h3,h4,h5,h6 {
     <div
       class="root"
     >
+      <a
+        aria-hidden="true"
+        href="#primary-slotted"
+        tabindex="-1"
+        target="_self"
+      />
       <div
-        class="image-container"
-      >
-        <slot />
-      </div>
-      <div
-        class="signature"
+        class="header"
       >
         <p-model-signature
           class="ssr"
@@ -1092,7 +1126,7 @@ h2,h3,h4,h5,h6 {
   width: var(--p-model-signature-width,94px);
   height: var(--p-model-signature-height,auto);
   mask: url(http://localhost:3001/model-signatures/911.b68f913.svg) no-repeat left top / contain !important;
-  aspect-ratio: 94 / 36 !important;
+  aspect-ratio: 94 / 25 !important;
   background: var(--p-model-signature-color,#FBFCFF) !important;
   color-scheme: light dark !important;
 }
@@ -1125,25 +1159,23 @@ img {
             />
           </template>
         </p-model-signature>
+        <slot
+          name="header"
+        />
       </div>
       <div
-        class="content"
+        class="media"
       >
-        <a
-          aria-hidden="true"
-          class="link-overlay"
-          href="#primary-slotted"
-          tabindex="-1"
-          target="_self"
-        />
-        <h2
-          class="heading"
-        >
+        <slot />
+      </div>
+      <div
+        class="footer"
+      >
+        <h2>
           Some heading
         </h2>
         <div
           class="link-group"
-          role="group"
         >
           <slot
             name="primary"
@@ -1351,75 +1383,92 @@ exports[`manual test cases > should pass internal props correctly to p-link-tile
   >
     <style>
       :host {
-  display: block;
+  display: flex;
   hyphens: auto;
   color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
 }
-::slotted(picture) {
-  position: absolute !important;
-  inset: 0 !important;
-}
-::slotted(img) {
-  height: 100% !important;
-  width: 100% !important;
-  object-fit: cover !important;
-}
-h2,h3,h4,h5,h6 {
-  margin: 0 !important;
-}
-.root {
-  position: relative;
-  overflow: hidden;
-  transform: translate3d(0,0,0);
-  border-radius: 12px;
-  color: #FBFCFF;
-  padding-top: 133.33%;
-}
-.image-container {
-  position: absolute;
-  inset: 0;
+slot:not([name]) {
+  display: block;
+  width: 100%;
+  height: 100%;
   transition: transform var(--p-transition-duration, 0.4s) cubic-bezier(0.25,0.1,0.25,1);
 }
-.content {
-  position: absolute;
-  left: 0;
-  right: 0;
-  display: flex;
-  justify-items: start;
-  gap: 16px;
-  border-radius: 12px;
-  flex-direction: column;
-  bottom: 0;
-  padding: clamp(32px, 2.75vw + 23px, 76px) clamp(16px, 1.25vw + 12px, 36px) clamp(16px, 1.25vw + 12px, 36px);
-  background: linear-gradient(to top, rgba(31,31,31,0.9) 0%,rgba(31,31,31,0.9) 20%,rgba(31,31,31,0.852589) 26.67%,rgba(32,32,32,0.768225) 33.33%,rgba(33,33,33,0.668116) 40%,rgba(34,34,34,0.557309) 46.67%,rgba(35,35,35,0.442691) 53.33%,rgba(36,36,36,0.331884) 60%,rgba(37,37,37,0.231775) 66.67%,rgba(38,38,38,0.147411) 73.33%,rgba(39,39,39,0.0816599) 80%,rgba(39,39,39,0.03551) 86.67%,rgba(39,39,39,0.0086472) 93.33%,rgba(39,39,39,0) 100%);;
+slot[name=primary] {
+  pointer-events: auto;
 }
-.signature {
-  position: absolute;
-  top: clamp(16px, 1.25vw + 12px, 36px);
-  left: clamp(16px, 1.25vw + 12px, 36px);
-  right: clamp(16px, 1.25vw + 12px, 36px);
-  display: flex;
+slot[name=secondary] {
+  pointer-events: auto;
 }
-.heading {
+::slotted(:is(img,picture)) {
+  display: block !important;
+  width: 100% !important;
+  height: 100% !important;
+}
+::slotted(img) {
+  object-fit: cover !important;
+}
+a {
+  grid-area: 1/1/-1 /-1;
+  z-index: 4;
+  outline: 0;
+}
+h1,h2,h3,h4,h5,h6 {
   margin: 0;
+  z-index: 3;
+  max-width: 34.375rem;
   font: normal normal 400 clamp(1.27rem, 0.51vw + 1.16rem, 1.78rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: inherit;
+  color: #FBFCFF;
   font-weight: 600;
 }
+.root {
+  aspect-ratio: 3/4;
+  width: 100%;
+  display: grid;
+  grid-template: clamp(16px, 1.25vw + 12px, 36px) auto minmax(0px, 1fr) auto clamp(16px, 1.25vw + 12px, 36px)/clamp(16px, 1.25vw + 12px, 36px) minmax(0px, 1fr) clamp(16px, 1.25vw + 12px, 36px);
+}
+.root::after {
+  content: "";
+  z-index: 2;
+  grid-area: 4/1/6/-1;
+  background: linear-gradient(to top, rgba(31,31,31,0.9) 0%,rgba(31,31,31,0.9) 20%,rgba(31,31,31,0.852589) 26.67%,rgba(32,32,32,0.768225) 33.33%,rgba(33,33,33,0.668116) 40%,rgba(34,34,34,0.557309) 46.67%,rgba(35,35,35,0.442691) 53.33%,rgba(36,36,36,0.331884) 60%,rgba(37,37,37,0.231775) 66.67%,rgba(38,38,38,0.147411) 73.33%,rgba(39,39,39,0.0816599) 80%,rgba(39,39,39,0.03551) 86.67%,rgba(39,39,39,0.0086472) 93.33%,rgba(39,39,39,0) 100%);;
+  margin-top: calc(clamp(32px, 2.75vw + 23px, 76px) * -1);
+  border-end-start-radius: 12px;
+  border-end-end-radius: 12px;
+}
+.header {
+  grid-area: 2/2;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(8px, 0.5vw + 6px, 16px);
+}
+.media {
+  grid-area: 1/1/-1 /-1;
+  z-index: 1;
+  overflow: hidden;
+  border-radius: 12px;
+}
+.footer {
+  grid-area: 4/2;
+  display: flex;
+  gap: 16px;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-direction: column;
+}
 .link-group {
+  z-index: 5;
   display: flex;
   width: 100%;
+  pointer-events: none;
   gap: clamp(8px, 0.5vw + 6px, 16px);
   flex-flow: column nowrap;
   align-items: stretch;
-}
-.link-overlay {
-  position: fixed;
-  inset: 0;
 }
 @media(min-width:480px) {
   .link-group {
@@ -1429,7 +1478,7 @@ h2,h3,h4,h5,h6 {
 }
 
 @media (forced-colors: active) {
-  .content {
+  .root::after {
     background: rgba(0,0,0,0.7);
   }
 }
@@ -1439,13 +1488,14 @@ h2,h3,h4,h5,h6 {
     <div
       class="root"
     >
+      <a
+        aria-hidden="true"
+        href="#primary-framework"
+        tabindex="-1"
+        target="_self"
+      />
       <div
-        class="image-container"
-      >
-        <slot />
-      </div>
-      <div
-        class="signature"
+        class="header"
       >
         <p-model-signature
           class="ssr"
@@ -1463,7 +1513,7 @@ h2,h3,h4,h5,h6 {
   width: var(--p-model-signature-width,94px);
   height: var(--p-model-signature-height,auto);
   mask: url(http://localhost:3001/model-signatures/911.b68f913.svg) no-repeat left top / contain !important;
-  aspect-ratio: 94 / 36 !important;
+  aspect-ratio: 94 / 25 !important;
   background: var(--p-model-signature-color,#FBFCFF) !important;
   color-scheme: light dark !important;
 }
@@ -1496,25 +1546,23 @@ img {
             />
           </template>
         </p-model-signature>
+        <slot
+          name="header"
+        />
       </div>
       <div
-        class="content"
+        class="media"
       >
-        <a
-          aria-hidden="true"
-          class="link-overlay"
-          href="#primary-framework"
-          tabindex="-1"
-          target="_self"
-        />
-        <h2
-          class="heading"
-        >
+        <slot />
+      </div>
+      <div
+        class="footer"
+      >
+        <h2>
           Some heading
         </h2>
         <div
           class="link-group"
-          role="group"
         >
           <slot
             name="primary"
@@ -1722,75 +1770,92 @@ exports[`manual test cases > should pass internal props correctly to p-link-tile
   >
     <style>
       :host {
-  display: block;
+  display: flex;
   hyphens: auto;
   color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
 }
-::slotted(picture) {
-  position: absolute !important;
-  inset: 0 !important;
-}
-::slotted(img) {
-  height: 100% !important;
-  width: 100% !important;
-  object-fit: cover !important;
-}
-h2,h3,h4,h5,h6 {
-  margin: 0 !important;
-}
-.root {
-  position: relative;
-  overflow: hidden;
-  transform: translate3d(0,0,0);
-  border-radius: 12px;
-  color: #FBFCFF;
-  padding-top: 133.33%;
-}
-.image-container {
-  position: absolute;
-  inset: 0;
+slot:not([name]) {
+  display: block;
+  width: 100%;
+  height: 100%;
   transition: transform var(--p-transition-duration, 0.4s) cubic-bezier(0.25,0.1,0.25,1);
 }
-.content {
-  position: absolute;
-  left: 0;
-  right: 0;
-  display: flex;
-  justify-items: start;
-  gap: 16px;
-  border-radius: 12px;
-  flex-direction: column;
-  bottom: 0;
-  padding: clamp(32px, 2.75vw + 23px, 76px) clamp(16px, 1.25vw + 12px, 36px) clamp(16px, 1.25vw + 12px, 36px);
-  background: linear-gradient(to top, rgba(31,31,31,0.9) 0%,rgba(31,31,31,0.9) 20%,rgba(31,31,31,0.852589) 26.67%,rgba(32,32,32,0.768225) 33.33%,rgba(33,33,33,0.668116) 40%,rgba(34,34,34,0.557309) 46.67%,rgba(35,35,35,0.442691) 53.33%,rgba(36,36,36,0.331884) 60%,rgba(37,37,37,0.231775) 66.67%,rgba(38,38,38,0.147411) 73.33%,rgba(39,39,39,0.0816599) 80%,rgba(39,39,39,0.03551) 86.67%,rgba(39,39,39,0.0086472) 93.33%,rgba(39,39,39,0) 100%);;
+slot[name=primary] {
+  pointer-events: auto;
 }
-.signature {
-  position: absolute;
-  top: clamp(16px, 1.25vw + 12px, 36px);
-  left: clamp(16px, 1.25vw + 12px, 36px);
-  right: clamp(16px, 1.25vw + 12px, 36px);
-  display: flex;
+slot[name=secondary] {
+  pointer-events: auto;
 }
-.heading {
+::slotted(:is(img,picture)) {
+  display: block !important;
+  width: 100% !important;
+  height: 100% !important;
+}
+::slotted(img) {
+  object-fit: cover !important;
+}
+a {
+  grid-area: 1/1/-1 /-1;
+  z-index: 4;
+  outline: 0;
+}
+h1,h2,h3,h4,h5,h6 {
   margin: 0;
+  z-index: 3;
+  max-width: 34.375rem;
   font: normal normal 400 clamp(1.27rem, 0.51vw + 1.16rem, 1.78rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: inherit;
+  color: #FBFCFF;
   font-weight: 600;
 }
+.root {
+  aspect-ratio: 3/4;
+  width: 100%;
+  display: grid;
+  grid-template: clamp(16px, 1.25vw + 12px, 36px) auto minmax(0px, 1fr) auto clamp(16px, 1.25vw + 12px, 36px)/clamp(16px, 1.25vw + 12px, 36px) minmax(0px, 1fr) clamp(16px, 1.25vw + 12px, 36px);
+}
+.root::after {
+  content: "";
+  z-index: 2;
+  grid-area: 4/1/6/-1;
+  background: linear-gradient(to top, rgba(31,31,31,0.9) 0%,rgba(31,31,31,0.9) 20%,rgba(31,31,31,0.852589) 26.67%,rgba(32,32,32,0.768225) 33.33%,rgba(33,33,33,0.668116) 40%,rgba(34,34,34,0.557309) 46.67%,rgba(35,35,35,0.442691) 53.33%,rgba(36,36,36,0.331884) 60%,rgba(37,37,37,0.231775) 66.67%,rgba(38,38,38,0.147411) 73.33%,rgba(39,39,39,0.0816599) 80%,rgba(39,39,39,0.03551) 86.67%,rgba(39,39,39,0.0086472) 93.33%,rgba(39,39,39,0) 100%);;
+  margin-top: calc(clamp(32px, 2.75vw + 23px, 76px) * -1);
+  border-end-start-radius: 12px;
+  border-end-end-radius: 12px;
+}
+.header {
+  grid-area: 2/2;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(8px, 0.5vw + 6px, 16px);
+}
+.media {
+  grid-area: 1/1/-1 /-1;
+  z-index: 1;
+  overflow: hidden;
+  border-radius: 12px;
+}
+.footer {
+  grid-area: 4/2;
+  display: flex;
+  gap: 16px;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-direction: column;
+}
 .link-group {
+  z-index: 5;
   display: flex;
   width: 100%;
+  pointer-events: none;
   gap: clamp(8px, 0.5vw + 6px, 16px);
   flex-flow: column nowrap;
   align-items: stretch;
-}
-.link-overlay {
-  position: fixed;
-  inset: 0;
 }
 @media(min-width:480px) {
   .link-group {
@@ -1800,7 +1865,7 @@ h2,h3,h4,h5,h6 {
 }
 
 @media (forced-colors: active) {
-  .content {
+  .root::after {
     background: rgba(0,0,0,0.7);
   }
 }
@@ -1810,13 +1875,14 @@ h2,h3,h4,h5,h6 {
     <div
       class="root"
     >
+      <a
+        aria-hidden="true"
+        href="#primary-slotted"
+        tabindex="-1"
+        target="_self"
+      />
       <div
-        class="image-container"
-      >
-        <slot />
-      </div>
-      <div
-        class="signature"
+        class="header"
       >
         <p-model-signature
           class="ssr"
@@ -1834,7 +1900,7 @@ h2,h3,h4,h5,h6 {
   width: var(--p-model-signature-width,94px);
   height: var(--p-model-signature-height,auto);
   mask: url(http://localhost:3001/model-signatures/911.b68f913.svg) no-repeat left top / contain !important;
-  aspect-ratio: 94 / 36 !important;
+  aspect-ratio: 94 / 25 !important;
   background: var(--p-model-signature-color,#FBFCFF) !important;
   color-scheme: light dark !important;
 }
@@ -1867,25 +1933,23 @@ img {
             />
           </template>
         </p-model-signature>
+        <slot
+          name="header"
+        />
       </div>
       <div
-        class="content"
+        class="media"
       >
-        <a
-          aria-hidden="true"
-          class="link-overlay"
-          href="#primary-slotted"
-          tabindex="-1"
-          target="_self"
-        />
-        <h2
-          class="heading"
-        >
+        <slot />
+      </div>
+      <div
+        class="footer"
+      >
+        <h2>
           Some heading
         </h2>
         <div
           class="link-group"
-          role="group"
         >
           <slot
             name="primary"
@@ -6646,69 +6710,90 @@ exports[`should render dsr component for PButtonTile 1`] = `
   >
     <style>
       :host {
-  display: block;
+  display: flex;
   hyphens: auto;
   color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
 }
-::slotted(picture) {
-  position: absolute !important;
-  inset: 0 !important;
+slot {
+  display: block;
+}
+slot:not([name]) {
+  width: 100%;
+  height: 100%;
+  transition: transform var(--p-transition-duration, 0.4s) cubic-bezier(0.25,0.1,0.25,1);
+}
+slot[name="header"] {
+  grid-area: 2/2;
+  z-index: 3;
+}
+::slotted(:is(img,picture)) {
+  display: block !important;
+  width: 100% !important;
+  height: 100% !important;
 }
 ::slotted(img) {
-  height: 100% !important;
-  width: 100% !important;
   object-fit: cover !important;
 }
+a {
+  grid-area: 1/1/-1 /-1;
+  z-index: 4;
+  outline: 0;
+}
 p {
-  max-width: 34.375rem;
-  margin: 0;
-  font: normal normal 400 clamp(1.27rem, 0.51vw + 1.16rem, 1.78rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font: normal normal 400 clamp(1.13rem, 0.21vw + 1.08rem, 1.33rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: inherit;
+  z-index: 3;
+  margin: 0;
+  max-width: 34.375rem;
   font-size: clamp(1.13rem, 0.21vw + 1.08rem, 1.33rem);
   font-weight: 600;
   color: #FBFCFF;
 }
 .root {
-  position: relative;
-  overflow: hidden;
-  transform: translate3d(0,0,0);
-  border-radius: 12px;
-  color: #FBFCFF;
-  padding-top: 75%;
+  aspect-ratio: 4/3;
   cursor: pointer;
-}
-.image-container {
-  position: absolute;
-  inset: 0;
-  transition: transform var(--p-transition-duration, 0.4s) cubic-bezier(0.25,0.1,0.25,1);
-}
-.content {
-  position: absolute;
-  left: 0;
-  right: 0;
+  width: 100%;
   display: grid;
-  justify-items: start;
-  gap: 16px;
-  border-radius: 12px;
-  bottom: 0;
-  padding: clamp(32px, 2.75vw + 23px, 76px) clamp(16px, 1.25vw + 12px, 36px) clamp(16px, 1.25vw + 12px, 36px);
+  grid-template: clamp(16px, 1.25vw + 12px, 36px) auto minmax(0px, 1fr) auto clamp(16px, 1.25vw + 12px, 36px)/clamp(16px, 1.25vw + 12px, 36px) minmax(0px, 1fr) clamp(16px, 1.25vw + 12px, 36px);
+}
+.root::after {
+  content: "";
+  z-index: 2;
+  grid-area: 4/1/6/-1;
   background: linear-gradient(to top, rgba(31,31,31,0.9) 0%,rgba(31,31,31,0.9) 20%,rgba(31,31,31,0.852589) 26.67%,rgba(32,32,32,0.768225) 33.33%,rgba(33,33,33,0.668116) 40%,rgba(34,34,34,0.557309) 46.67%,rgba(35,35,35,0.442691) 53.33%,rgba(36,36,36,0.331884) 60%,rgba(37,37,37,0.231775) 66.67%,rgba(38,38,38,0.147411) 73.33%,rgba(39,39,39,0.0816599) 80%,rgba(39,39,39,0.03551) 86.67%,rgba(39,39,39,0.0086472) 93.33%,rgba(39,39,39,0) 100%);;
-  grid-template-rows: auto auto;
-  grid-template-columns: auto;
+  margin-top: calc(clamp(32px, 2.75vw + 23px, 76px) * -1);
+  border-end-start-radius: 12px;
+  border-end-end-radius: 12px;
+}
+.media {
+  grid-area: 1/1/-1 /-1;
+  z-index: 1;
+  overflow: hidden;
+  border-radius: 12px;
+}
+.footer {
+  grid-area: 4/2;
+  display: flex;
+  gap: 16px;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-direction: column;
 }
 .link-or-button-pure {
+  z-index: 5;
   display: none;
 }
 .link-or-button {
   min-height: 54px;
+  z-index: 5;
   display: inline-block;
 }
 @media (forced-colors: active) {
-  .content {
+  .root::after {
     background: rgba(0,0,0,0.7);
   }
 }
@@ -6718,13 +6803,16 @@ p {
     <div
       class="root"
     >
+      <slot
+        name="header"
+      />
       <div
-        class="image-container"
+        class="media"
       >
         <slot />
       </div>
       <div
-        class="content"
+        class="footer"
       >
         <p />
         <p-button
@@ -10014,72 +10102,89 @@ exports[`should render dsr component for PLinkTile 1`] = `
   >
     <style>
       :host {
-  display: block;
+  display: flex;
   hyphens: auto;
   color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
 }
-::slotted(picture) {
-  position: absolute !important;
-  inset: 0 !important;
+slot {
+  display: block;
+}
+slot:not([name]) {
+  width: 100%;
+  height: 100%;
+  transition: transform var(--p-transition-duration, 0.4s) cubic-bezier(0.25,0.1,0.25,1);
+}
+slot[name="header"] {
+  grid-area: 2/2;
+  z-index: 3;
+}
+::slotted(:is(img,picture)) {
+  display: block !important;
+  width: 100% !important;
+  height: 100% !important;
 }
 ::slotted(img) {
-  height: 100% !important;
-  width: 100% !important;
   object-fit: cover !important;
 }
+a {
+  grid-area: 1/1/-1 /-1;
+  z-index: 4;
+  outline: 0;
+}
 p {
-  max-width: 34.375rem;
-  margin: 0;
-  font: normal normal 400 clamp(1.27rem, 0.51vw + 1.16rem, 1.78rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font: normal normal 400 clamp(1.13rem, 0.21vw + 1.08rem, 1.33rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: inherit;
+  z-index: 3;
+  margin: 0;
+  max-width: 34.375rem;
   font-size: clamp(1.13rem, 0.21vw + 1.08rem, 1.33rem);
   font-weight: 600;
   color: #FBFCFF;
 }
 .root {
-  position: relative;
-  overflow: hidden;
-  transform: translate3d(0,0,0);
-  border-radius: 12px;
-  color: #FBFCFF;
-  padding-top: 75%;
-}
-.image-container {
-  position: absolute;
-  inset: 0;
-  transition: transform var(--p-transition-duration, 0.4s) cubic-bezier(0.25,0.1,0.25,1);
-}
-.content {
-  position: absolute;
-  left: 0;
-  right: 0;
+  aspect-ratio: 4/3;
+  width: 100%;
   display: grid;
-  justify-items: start;
-  gap: 16px;
-  border-radius: 12px;
-  bottom: 0;
-  padding: clamp(32px, 2.75vw + 23px, 76px) clamp(16px, 1.25vw + 12px, 36px) clamp(16px, 1.25vw + 12px, 36px);
+  grid-template: clamp(16px, 1.25vw + 12px, 36px) auto minmax(0px, 1fr) auto clamp(16px, 1.25vw + 12px, 36px)/clamp(16px, 1.25vw + 12px, 36px) minmax(0px, 1fr) clamp(16px, 1.25vw + 12px, 36px);
+}
+.root::after {
+  content: "";
+  z-index: 2;
+  grid-area: 4/1/6/-1;
   background: linear-gradient(to top, rgba(31,31,31,0.9) 0%,rgba(31,31,31,0.9) 20%,rgba(31,31,31,0.852589) 26.67%,rgba(32,32,32,0.768225) 33.33%,rgba(33,33,33,0.668116) 40%,rgba(34,34,34,0.557309) 46.67%,rgba(35,35,35,0.442691) 53.33%,rgba(36,36,36,0.331884) 60%,rgba(37,37,37,0.231775) 66.67%,rgba(38,38,38,0.147411) 73.33%,rgba(39,39,39,0.0816599) 80%,rgba(39,39,39,0.03551) 86.67%,rgba(39,39,39,0.0086472) 93.33%,rgba(39,39,39,0) 100%);;
-  grid-template-rows: auto auto;
-  grid-template-columns: auto;
+  margin-top: calc(clamp(32px, 2.75vw + 23px, 76px) * -1);
+  border-end-start-radius: 12px;
+  border-end-end-radius: 12px;
+}
+.media {
+  grid-area: 1/1/-1 /-1;
+  z-index: 1;
+  overflow: hidden;
+  border-radius: 12px;
+}
+.footer {
+  grid-area: 4/2;
+  display: flex;
+  gap: 16px;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-direction: column;
 }
 .link-or-button-pure {
+  z-index: 5;
   display: none;
 }
 .link-or-button {
   min-height: 54px;
+  z-index: 5;
   display: inline-block;
 }
-.link-overlay {
-  position: fixed;
-  inset: 0;
-}
 @media (forced-colors: active) {
-  .content {
+  .root::after {
     background: rgba(0,0,0,0.7);
   }
 }
@@ -10089,20 +10194,22 @@ p {
     <div
       class="root"
     >
+      <a
+        aria-hidden="true"
+        tabindex="-1"
+        target="_self"
+      />
+      <slot
+        name="header"
+      />
       <div
-        class="image-container"
+        class="media"
       >
         <slot />
       </div>
       <div
-        class="content"
+        class="footer"
       >
-        <a
-          aria-hidden="true"
-          class="link-overlay"
-          tabindex="-1"
-          target="_self"
-        />
         <p />
         <p-link
           class="link-or-button ssr"
@@ -10205,75 +10312,92 @@ exports[`should render dsr component for PLinkTileModelSignature 1`] = `
   >
     <style>
       :host {
-  display: block;
+  display: flex;
   hyphens: auto;
   color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
 }
-::slotted(picture) {
-  position: absolute !important;
-  inset: 0 !important;
-}
-::slotted(img) {
-  height: 100% !important;
-  width: 100% !important;
-  object-fit: cover !important;
-}
-h2,h3,h4,h5,h6 {
-  margin: 0 !important;
-}
-.root {
-  position: relative;
-  overflow: hidden;
-  transform: translate3d(0,0,0);
-  border-radius: 12px;
-  color: #FBFCFF;
-  padding-top: 133.33%;
-}
-.image-container {
-  position: absolute;
-  inset: 0;
+slot:not([name]) {
+  display: block;
+  width: 100%;
+  height: 100%;
   transition: transform var(--p-transition-duration, 0.4s) cubic-bezier(0.25,0.1,0.25,1);
 }
-.content {
-  position: absolute;
-  left: 0;
-  right: 0;
-  display: flex;
-  justify-items: start;
-  gap: 16px;
-  border-radius: 12px;
-  flex-direction: column;
-  bottom: 0;
-  padding: clamp(32px, 2.75vw + 23px, 76px) clamp(16px, 1.25vw + 12px, 36px) clamp(16px, 1.25vw + 12px, 36px);
-  background: linear-gradient(to top, rgba(31,31,31,0.9) 0%,rgba(31,31,31,0.9) 20%,rgba(31,31,31,0.852589) 26.67%,rgba(32,32,32,0.768225) 33.33%,rgba(33,33,33,0.668116) 40%,rgba(34,34,34,0.557309) 46.67%,rgba(35,35,35,0.442691) 53.33%,rgba(36,36,36,0.331884) 60%,rgba(37,37,37,0.231775) 66.67%,rgba(38,38,38,0.147411) 73.33%,rgba(39,39,39,0.0816599) 80%,rgba(39,39,39,0.03551) 86.67%,rgba(39,39,39,0.0086472) 93.33%,rgba(39,39,39,0) 100%);;
+slot[name=primary] {
+  pointer-events: auto;
 }
-.signature {
-  position: absolute;
-  top: clamp(16px, 1.25vw + 12px, 36px);
-  left: clamp(16px, 1.25vw + 12px, 36px);
-  right: clamp(16px, 1.25vw + 12px, 36px);
-  display: flex;
+slot[name=secondary] {
+  pointer-events: auto;
 }
-.heading {
+::slotted(:is(img,picture)) {
+  display: block !important;
+  width: 100% !important;
+  height: 100% !important;
+}
+::slotted(img) {
+  object-fit: cover !important;
+}
+a {
+  grid-area: 1/1/-1 /-1;
+  z-index: 4;
+  outline: 0;
+}
+h1,h2,h3,h4,h5,h6 {
   margin: 0;
+  z-index: 3;
+  max-width: 34.375rem;
   font: normal normal 400 clamp(1.27rem, 0.51vw + 1.16rem, 1.78rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: inherit;
+  color: #FBFCFF;
   font-weight: 600;
 }
+.root {
+  aspect-ratio: 3/4;
+  width: 100%;
+  display: grid;
+  grid-template: clamp(16px, 1.25vw + 12px, 36px) auto minmax(0px, 1fr) auto clamp(16px, 1.25vw + 12px, 36px)/clamp(16px, 1.25vw + 12px, 36px) minmax(0px, 1fr) clamp(16px, 1.25vw + 12px, 36px);
+}
+.root::after {
+  content: "";
+  z-index: 2;
+  grid-area: 4/1/6/-1;
+  background: linear-gradient(to top, rgba(31,31,31,0.9) 0%,rgba(31,31,31,0.9) 20%,rgba(31,31,31,0.852589) 26.67%,rgba(32,32,32,0.768225) 33.33%,rgba(33,33,33,0.668116) 40%,rgba(34,34,34,0.557309) 46.67%,rgba(35,35,35,0.442691) 53.33%,rgba(36,36,36,0.331884) 60%,rgba(37,37,37,0.231775) 66.67%,rgba(38,38,38,0.147411) 73.33%,rgba(39,39,39,0.0816599) 80%,rgba(39,39,39,0.03551) 86.67%,rgba(39,39,39,0.0086472) 93.33%,rgba(39,39,39,0) 100%);;
+  margin-top: calc(clamp(32px, 2.75vw + 23px, 76px) * -1);
+  border-end-start-radius: 12px;
+  border-end-end-radius: 12px;
+}
+.header {
+  grid-area: 2/2;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(8px, 0.5vw + 6px, 16px);
+}
+.media {
+  grid-area: 1/1/-1 /-1;
+  z-index: 1;
+  overflow: hidden;
+  border-radius: 12px;
+}
+.footer {
+  grid-area: 4/2;
+  display: flex;
+  gap: 16px;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-direction: column;
+}
 .link-group {
+  z-index: 5;
   display: flex;
   width: 100%;
+  pointer-events: none;
   gap: clamp(8px, 0.5vw + 6px, 16px);
   flex-flow: column nowrap;
   align-items: stretch;
-}
-.link-overlay {
-  position: fixed;
-  inset: 0;
 }
 @media(min-width:480px) {
   .link-group {
@@ -10283,7 +10407,7 @@ h2,h3,h4,h5,h6 {
 }
 
 @media (forced-colors: active) {
-  .content {
+  .root::after {
     background: rgba(0,0,0,0.7);
   }
 }
@@ -10293,13 +10417,14 @@ h2,h3,h4,h5,h6 {
     <div
       class="root"
     >
+      <a
+        aria-hidden="true"
+        href="#"
+        tabindex="-1"
+        target="_self"
+      />
       <div
-        class="image-container"
-      >
-        <slot />
-      </div>
-      <div
-        class="signature"
+        class="header"
       >
         <p-model-signature
           class="ssr"
@@ -10317,7 +10442,7 @@ h2,h3,h4,h5,h6 {
   width: var(--p-model-signature-width,94px);
   height: var(--p-model-signature-height,auto);
   mask: url(http://localhost:3001/model-signatures/911.b68f913.svg) no-repeat left top / contain !important;
-  aspect-ratio: 94 / 36 !important;
+  aspect-ratio: 94 / 25 !important;
   background: var(--p-model-signature-color,#FBFCFF) !important;
   color-scheme: light dark !important;
 }
@@ -10350,23 +10475,21 @@ img {
             />
           </template>
         </p-model-signature>
+        <slot
+          name="header"
+        />
       </div>
       <div
-        class="content"
+        class="media"
       >
-        <a
-          aria-hidden="true"
-          class="link-overlay"
-          href="#"
-          tabindex="-1"
-          target="_self"
-        />
-        <h2
-          class="heading"
-        />
+        <slot />
+      </div>
+      <div
+        class="footer"
+      >
+        <h2 />
         <div
           class="link-group"
-          role="group"
         >
           <slot
             name="primary"
@@ -14928,6 +15051,7 @@ span {
   font: normal normal 400 clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   color: #010205;
   background: #EEEFF2;
+  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), backdrop-filter var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 ::slotted(a), ::slotted(button) {
   all: unset !important;
