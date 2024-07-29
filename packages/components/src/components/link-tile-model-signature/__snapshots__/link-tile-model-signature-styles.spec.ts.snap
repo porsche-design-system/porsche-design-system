@@ -2,84 +2,101 @@
 
 exports[`getComponentCss() should return correct css for aspectRatio: "1:1", weight: "regular", linkDirection: "column" and hasDescription: false 1`] = `
 ":host {
-  display: block;
+  display: flex;
   hyphens: auto;
   color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
 }
-::slotted(picture) {
-  position: absolute !important;
-  inset: 0 !important;
-}
-::slotted(img) {
-  height: 100% !important;
-  width: 100% !important;
-  object-fit: cover !important;
-}
-h2,h3,h4,h5,h6 {
-  margin: 0 !important;
-}
-.root {
-  position: relative;
-  overflow: hidden;
-  transform: translate3d(0,0,0);
-  border-radius: 12px;
-  color: #FBFCFF;
-  padding-top: 100%;
-}
-.image-container {
-  position: absolute;
-  inset: 0;
+slot:not([name]) {
+  display: block;
+  width: 100%;
+  height: 100%;
   transition: transform var(--p-transition-duration, 0.4s) cubic-bezier(0.25,0.1,0.25,1);
 }
-.content {
-  position: absolute;
-  left: 0;
-  right: 0;
-  display: flex;
-  justify-items: start;
-  gap: 16px;
-  border-radius: 12px;
-  flex-direction: column;
-  bottom: 0;
-  padding: clamp(32px, 2.75vw + 23px, 76px) clamp(16px, 1.25vw + 12px, 36px) clamp(16px, 1.25vw + 12px, 36px);
-  background: linear-gradient(to top, rgba(31,31,31,0.9) 0%,rgba(31,31,31,0.9) 20%,rgba(31,31,31,0.852589) 26.67%,rgba(32,32,32,0.768225) 33.33%,rgba(33,33,33,0.668116) 40%,rgba(34,34,34,0.557309) 46.67%,rgba(35,35,35,0.442691) 53.33%,rgba(36,36,36,0.331884) 60%,rgba(37,37,37,0.231775) 66.67%,rgba(38,38,38,0.147411) 73.33%,rgba(39,39,39,0.0816599) 80%,rgba(39,39,39,0.03551) 86.67%,rgba(39,39,39,0.0086472) 93.33%,rgba(39,39,39,0) 100%);;
+slot[name=primary] {
+  pointer-events: auto;
 }
-.signature {
-  position: absolute;
-  top: clamp(16px, 1.25vw + 12px, 36px);
-  left: clamp(16px, 1.25vw + 12px, 36px);
-  right: clamp(16px, 1.25vw + 12px, 36px);
-  display: flex;
+slot[name=secondary] {
+  pointer-events: auto;
 }
-.heading {
+::slotted(:is(img,picture)) {
+  display: block !important;
+  width: 100% !important;
+  height: 100% !important;
+}
+::slotted(img) {
+  object-fit: cover !important;
+}
+a {
+  grid-area: 1/1/-1 /-1;
+  z-index: 4;
+  outline: 0;
+}
+h1,h2,h3,h4,h5,h6 {
   margin: 0;
+  z-index: 3;
+  max-width: 34.375rem;
   font: normal normal 400 clamp(1.27rem, 0.51vw + 1.16rem, 1.78rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: inherit;
+  color: #FBFCFF;
   font-weight: 400;
 }
+.root {
+  aspect-ratio: 1/1;
+  width: 100%;
+  display: grid;
+  grid-template: clamp(16px, 1.25vw + 12px, 36px) auto minmax(0px, 1fr) auto clamp(16px, 1.25vw + 12px, 36px)/clamp(16px, 1.25vw + 12px, 36px) minmax(0px, 1fr) clamp(16px, 1.25vw + 12px, 36px);
+}
+.root::after {
+  content: "";
+  z-index: 2;
+  grid-area: 4/1/6/-1;
+  background: linear-gradient(to top, rgba(31,31,31,0.9) 0%,rgba(31,31,31,0.9) 20%,rgba(31,31,31,0.852589) 26.67%,rgba(32,32,32,0.768225) 33.33%,rgba(33,33,33,0.668116) 40%,rgba(34,34,34,0.557309) 46.67%,rgba(35,35,35,0.442691) 53.33%,rgba(36,36,36,0.331884) 60%,rgba(37,37,37,0.231775) 66.67%,rgba(38,38,38,0.147411) 73.33%,rgba(39,39,39,0.0816599) 80%,rgba(39,39,39,0.03551) 86.67%,rgba(39,39,39,0.0086472) 93.33%,rgba(39,39,39,0) 100%);;
+  margin-top: calc(clamp(32px, 2.75vw + 23px, 76px) * -1);
+  border-end-start-radius: 12px;
+  border-end-end-radius: 12px;
+}
+.header {
+  grid-area: 2/2;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(8px, 0.5vw + 6px, 16px);
+}
+.media {
+  grid-area: 1/1/-1 /-1;
+  z-index: 1;
+  overflow: hidden;
+  border-radius: 12px;
+}
+.footer {
+  grid-area: 4/2;
+  display: flex;
+  gap: 16px;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-direction: column;
+}
 .link-group {
+  z-index: 5;
   display: flex;
   width: 100%;
+  pointer-events: none;
   gap: clamp(8px, 0.5vw + 6px, 16px);
   flex-flow: column nowrap;
   align-items: stretch;
 }
-.link-overlay {
-  position: fixed;
-  inset: 0;
-}
 @media (forced-colors: active) {
-  .content {
+  .root::after {
     background: rgba(0,0,0,0.7);
   }
 }
 
 @media(hover:hover) {
-  .root:hover .image-container {
+  .root:hover slot:not([name]) {
     transform: scale3d(1.05,1.05,1.05);
   }
 }
@@ -88,90 +105,110 @@ h2,h3,h4,h5,h6 {
 
 exports[`getComponentCss() should return correct css for aspectRatio: "3:4", weight: "semi-bold", linkDirection: "row" and hasDescription: true 1`] = `
 ":host {
-  display: block;
+  display: flex;
   hyphens: auto;
   color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
 }
-::slotted(picture) {
-  position: absolute !important;
-  inset: 0 !important;
-}
-::slotted(img) {
-  height: 100% !important;
-  width: 100% !important;
-  object-fit: cover !important;
-}
-h2,h3,h4,h5,h6 {
-  margin: 0 !important;
-}
-.root {
-  position: relative;
-  overflow: hidden;
-  transform: translate3d(0,0,0);
-  border-radius: 12px;
-  color: #FBFCFF;
-  padding-top: 133.33%;
-}
-.image-container {
-  position: absolute;
-  inset: 0;
+slot:not([name]) {
+  display: block;
+  width: 100%;
+  height: 100%;
   transition: transform var(--p-transition-duration, 0.4s) cubic-bezier(0.25,0.1,0.25,1);
 }
-.content {
-  position: absolute;
-  left: 0;
-  right: 0;
-  display: flex;
-  justify-items: start;
-  gap: 16px;
-  border-radius: 12px;
-  flex-direction: column;
-  bottom: 0;
-  padding: clamp(32px, 2.75vw + 23px, 76px) clamp(16px, 1.25vw + 12px, 36px) clamp(16px, 1.25vw + 12px, 36px);
-  background: linear-gradient(to top, rgba(31,31,31,0.9) 0%,rgba(31,31,31,0.9) 20%,rgba(31,31,31,0.852589) 26.67%,rgba(32,32,32,0.768225) 33.33%,rgba(33,33,33,0.668116) 40%,rgba(34,34,34,0.557309) 46.67%,rgba(35,35,35,0.442691) 53.33%,rgba(36,36,36,0.331884) 60%,rgba(37,37,37,0.231775) 66.67%,rgba(38,38,38,0.147411) 73.33%,rgba(39,39,39,0.0816599) 80%,rgba(39,39,39,0.03551) 86.67%,rgba(39,39,39,0.0086472) 93.33%,rgba(39,39,39,0) 100%);;
+slot[name=primary] {
+  pointer-events: auto;
 }
-.signature {
-  position: absolute;
-  top: clamp(16px, 1.25vw + 12px, 36px);
-  left: clamp(16px, 1.25vw + 12px, 36px);
-  right: clamp(16px, 1.25vw + 12px, 36px);
-  display: flex;
+slot[name=secondary] {
+  pointer-events: auto;
 }
-.heading {
+::slotted(:is(img,picture)) {
+  display: block !important;
+  width: 100% !important;
+  height: 100% !important;
+}
+::slotted(img) {
+  object-fit: cover !important;
+}
+a {
+  grid-area: 1/1/-1 /-1;
+  z-index: 4;
+  outline: 0;
+}
+h1,h2,h3,h4,h5,h6 {
   margin: 0;
+  z-index: 3;
+  max-width: 34.375rem;
   font: normal normal 400 clamp(1.27rem, 0.51vw + 1.16rem, 1.78rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: inherit;
+  color: #FBFCFF;
   font-weight: 600;
 }
-.description {
+p {
   margin: -12px 0 0 ;
+  z-index: 3;
+  max-width: 34.375rem;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: inherit;
+  color: #FBFCFF;
+}
+.root {
+  aspect-ratio: 3/4;
+  width: 100%;
+  display: grid;
+  grid-template: clamp(16px, 1.25vw + 12px, 36px) auto minmax(0px, 1fr) auto clamp(16px, 1.25vw + 12px, 36px)/clamp(16px, 1.25vw + 12px, 36px) minmax(0px, 1fr) clamp(16px, 1.25vw + 12px, 36px);
+}
+.root::after {
+  content: "";
+  z-index: 2;
+  grid-area: 4/1/6/-1;
+  background: linear-gradient(to top, rgba(31,31,31,0.9) 0%,rgba(31,31,31,0.9) 20%,rgba(31,31,31,0.852589) 26.67%,rgba(32,32,32,0.768225) 33.33%,rgba(33,33,33,0.668116) 40%,rgba(34,34,34,0.557309) 46.67%,rgba(35,35,35,0.442691) 53.33%,rgba(36,36,36,0.331884) 60%,rgba(37,37,37,0.231775) 66.67%,rgba(38,38,38,0.147411) 73.33%,rgba(39,39,39,0.0816599) 80%,rgba(39,39,39,0.03551) 86.67%,rgba(39,39,39,0.0086472) 93.33%,rgba(39,39,39,0) 100%);;
+  margin-top: calc(clamp(32px, 2.75vw + 23px, 76px) * -1);
+  border-end-start-radius: 12px;
+  border-end-end-radius: 12px;
+}
+.header {
+  grid-area: 2/2;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(8px, 0.5vw + 6px, 16px);
+}
+.media {
+  grid-area: 1/1/-1 /-1;
+  z-index: 1;
+  overflow: hidden;
+  border-radius: 12px;
+}
+.footer {
+  grid-area: 4/2;
+  display: flex;
+  gap: 16px;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-direction: column;
 }
 .link-group {
+  z-index: 5;
   display: flex;
   width: 100%;
+  pointer-events: none;
   gap: clamp(8px, 0.5vw + 6px, 16px);
   flex-flow: row wrap;
   align-items: center;
 }
-.link-overlay {
-  position: fixed;
-  inset: 0;
-}
 @media (forced-colors: active) {
-  .content {
+  .root::after {
     background: rgba(0,0,0,0.7);
   }
 }
 
 @media(hover:hover) {
-  .root:hover .image-container {
+  .root:hover slot:not([name]) {
     transform: scale3d(1.05,1.05,1.05);
   }
 }
@@ -180,90 +217,110 @@ h2,h3,h4,h5,h6 {
 
 exports[`getComponentCss() should return correct css for aspectRatio: "4:3", weight: "semi-bold", linkDirection: "row" and hasDescription: true 1`] = `
 ":host {
-  display: block;
+  display: flex;
   hyphens: auto;
   color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
 }
-::slotted(picture) {
-  position: absolute !important;
-  inset: 0 !important;
-}
-::slotted(img) {
-  height: 100% !important;
-  width: 100% !important;
-  object-fit: cover !important;
-}
-h2,h3,h4,h5,h6 {
-  margin: 0 !important;
-}
-.root {
-  position: relative;
-  overflow: hidden;
-  transform: translate3d(0,0,0);
-  border-radius: 12px;
-  color: #FBFCFF;
-  padding-top: 75%;
-}
-.image-container {
-  position: absolute;
-  inset: 0;
+slot:not([name]) {
+  display: block;
+  width: 100%;
+  height: 100%;
   transition: transform var(--p-transition-duration, 0.4s) cubic-bezier(0.25,0.1,0.25,1);
 }
-.content {
-  position: absolute;
-  left: 0;
-  right: 0;
-  display: flex;
-  justify-items: start;
-  gap: 16px;
-  border-radius: 12px;
-  flex-direction: column;
-  bottom: 0;
-  padding: clamp(32px, 2.75vw + 23px, 76px) clamp(16px, 1.25vw + 12px, 36px) clamp(16px, 1.25vw + 12px, 36px);
-  background: linear-gradient(to top, rgba(31,31,31,0.9) 0%,rgba(31,31,31,0.9) 20%,rgba(31,31,31,0.852589) 26.67%,rgba(32,32,32,0.768225) 33.33%,rgba(33,33,33,0.668116) 40%,rgba(34,34,34,0.557309) 46.67%,rgba(35,35,35,0.442691) 53.33%,rgba(36,36,36,0.331884) 60%,rgba(37,37,37,0.231775) 66.67%,rgba(38,38,38,0.147411) 73.33%,rgba(39,39,39,0.0816599) 80%,rgba(39,39,39,0.03551) 86.67%,rgba(39,39,39,0.0086472) 93.33%,rgba(39,39,39,0) 100%);;
+slot[name=primary] {
+  pointer-events: auto;
 }
-.signature {
-  position: absolute;
-  top: clamp(16px, 1.25vw + 12px, 36px);
-  left: clamp(16px, 1.25vw + 12px, 36px);
-  right: clamp(16px, 1.25vw + 12px, 36px);
-  display: flex;
+slot[name=secondary] {
+  pointer-events: auto;
 }
-.heading {
+::slotted(:is(img,picture)) {
+  display: block !important;
+  width: 100% !important;
+  height: 100% !important;
+}
+::slotted(img) {
+  object-fit: cover !important;
+}
+a {
+  grid-area: 1/1/-1 /-1;
+  z-index: 4;
+  outline: 0;
+}
+h1,h2,h3,h4,h5,h6 {
   margin: 0;
+  z-index: 3;
+  max-width: 34.375rem;
   font: normal normal 400 clamp(1.27rem, 0.51vw + 1.16rem, 1.78rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: inherit;
+  color: #FBFCFF;
   font-weight: 600;
 }
-.description {
+p {
   margin: -12px 0 0 ;
+  z-index: 3;
+  max-width: 34.375rem;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: inherit;
+  color: #FBFCFF;
+}
+.root {
+  aspect-ratio: 4/3;
+  width: 100%;
+  display: grid;
+  grid-template: clamp(16px, 1.25vw + 12px, 36px) auto minmax(0px, 1fr) auto clamp(16px, 1.25vw + 12px, 36px)/clamp(16px, 1.25vw + 12px, 36px) minmax(0px, 1fr) clamp(16px, 1.25vw + 12px, 36px);
+}
+.root::after {
+  content: "";
+  z-index: 2;
+  grid-area: 4/1/6/-1;
+  background: linear-gradient(to top, rgba(31,31,31,0.9) 0%,rgba(31,31,31,0.9) 20%,rgba(31,31,31,0.852589) 26.67%,rgba(32,32,32,0.768225) 33.33%,rgba(33,33,33,0.668116) 40%,rgba(34,34,34,0.557309) 46.67%,rgba(35,35,35,0.442691) 53.33%,rgba(36,36,36,0.331884) 60%,rgba(37,37,37,0.231775) 66.67%,rgba(38,38,38,0.147411) 73.33%,rgba(39,39,39,0.0816599) 80%,rgba(39,39,39,0.03551) 86.67%,rgba(39,39,39,0.0086472) 93.33%,rgba(39,39,39,0) 100%);;
+  margin-top: calc(clamp(32px, 2.75vw + 23px, 76px) * -1);
+  border-end-start-radius: 12px;
+  border-end-end-radius: 12px;
+}
+.header {
+  grid-area: 2/2;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(8px, 0.5vw + 6px, 16px);
+}
+.media {
+  grid-area: 1/1/-1 /-1;
+  z-index: 1;
+  overflow: hidden;
+  border-radius: 12px;
+}
+.footer {
+  grid-area: 4/2;
+  display: flex;
+  gap: 16px;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-direction: column;
 }
 .link-group {
+  z-index: 5;
   display: flex;
   width: 100%;
+  pointer-events: none;
   gap: clamp(8px, 0.5vw + 6px, 16px);
   flex-flow: row wrap;
   align-items: center;
 }
-.link-overlay {
-  position: fixed;
-  inset: 0;
-}
 @media (forced-colors: active) {
-  .content {
+  .root::after {
     background: rgba(0,0,0,0.7);
   }
 }
 
 @media(hover:hover) {
-  .root:hover .image-container {
+  .root:hover slot:not([name]) {
     transform: scale3d(1.05,1.05,1.05);
   }
 }
@@ -272,84 +329,101 @@ h2,h3,h4,h5,h6 {
 
 exports[`getComponentCss() should return correct css for aspectRatio: "9:16", weight: "semi-bold", linkDirection: "row" and hasDescription: false 1`] = `
 ":host {
-  display: block;
+  display: flex;
   hyphens: auto;
   color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
 }
-::slotted(picture) {
-  position: absolute !important;
-  inset: 0 !important;
-}
-::slotted(img) {
-  height: 100% !important;
-  width: 100% !important;
-  object-fit: cover !important;
-}
-h2,h3,h4,h5,h6 {
-  margin: 0 !important;
-}
-.root {
-  position: relative;
-  overflow: hidden;
-  transform: translate3d(0,0,0);
-  border-radius: 12px;
-  color: #FBFCFF;
-  padding-top: 177.75%;
-}
-.image-container {
-  position: absolute;
-  inset: 0;
+slot:not([name]) {
+  display: block;
+  width: 100%;
+  height: 100%;
   transition: transform var(--p-transition-duration, 0.4s) cubic-bezier(0.25,0.1,0.25,1);
 }
-.content {
-  position: absolute;
-  left: 0;
-  right: 0;
-  display: flex;
-  justify-items: start;
-  gap: 16px;
-  border-radius: 12px;
-  flex-direction: column;
-  bottom: 0;
-  padding: clamp(32px, 2.75vw + 23px, 76px) clamp(16px, 1.25vw + 12px, 36px) clamp(16px, 1.25vw + 12px, 36px);
-  background: linear-gradient(to top, rgba(31,31,31,0.9) 0%,rgba(31,31,31,0.9) 20%,rgba(31,31,31,0.852589) 26.67%,rgba(32,32,32,0.768225) 33.33%,rgba(33,33,33,0.668116) 40%,rgba(34,34,34,0.557309) 46.67%,rgba(35,35,35,0.442691) 53.33%,rgba(36,36,36,0.331884) 60%,rgba(37,37,37,0.231775) 66.67%,rgba(38,38,38,0.147411) 73.33%,rgba(39,39,39,0.0816599) 80%,rgba(39,39,39,0.03551) 86.67%,rgba(39,39,39,0.0086472) 93.33%,rgba(39,39,39,0) 100%);;
+slot[name=primary] {
+  pointer-events: auto;
 }
-.signature {
-  position: absolute;
-  top: clamp(16px, 1.25vw + 12px, 36px);
-  left: clamp(16px, 1.25vw + 12px, 36px);
-  right: clamp(16px, 1.25vw + 12px, 36px);
-  display: flex;
+slot[name=secondary] {
+  pointer-events: auto;
 }
-.heading {
+::slotted(:is(img,picture)) {
+  display: block !important;
+  width: 100% !important;
+  height: 100% !important;
+}
+::slotted(img) {
+  object-fit: cover !important;
+}
+a {
+  grid-area: 1/1/-1 /-1;
+  z-index: 4;
+  outline: 0;
+}
+h1,h2,h3,h4,h5,h6 {
   margin: 0;
+  z-index: 3;
+  max-width: 34.375rem;
   font: normal normal 400 clamp(1.27rem, 0.51vw + 1.16rem, 1.78rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: inherit;
+  color: #FBFCFF;
   font-weight: 600;
 }
+.root {
+  aspect-ratio: 9/16;
+  width: 100%;
+  display: grid;
+  grid-template: clamp(16px, 1.25vw + 12px, 36px) auto minmax(0px, 1fr) auto clamp(16px, 1.25vw + 12px, 36px)/clamp(16px, 1.25vw + 12px, 36px) minmax(0px, 1fr) clamp(16px, 1.25vw + 12px, 36px);
+}
+.root::after {
+  content: "";
+  z-index: 2;
+  grid-area: 4/1/6/-1;
+  background: linear-gradient(to top, rgba(31,31,31,0.9) 0%,rgba(31,31,31,0.9) 20%,rgba(31,31,31,0.852589) 26.67%,rgba(32,32,32,0.768225) 33.33%,rgba(33,33,33,0.668116) 40%,rgba(34,34,34,0.557309) 46.67%,rgba(35,35,35,0.442691) 53.33%,rgba(36,36,36,0.331884) 60%,rgba(37,37,37,0.231775) 66.67%,rgba(38,38,38,0.147411) 73.33%,rgba(39,39,39,0.0816599) 80%,rgba(39,39,39,0.03551) 86.67%,rgba(39,39,39,0.0086472) 93.33%,rgba(39,39,39,0) 100%);;
+  margin-top: calc(clamp(32px, 2.75vw + 23px, 76px) * -1);
+  border-end-start-radius: 12px;
+  border-end-end-radius: 12px;
+}
+.header {
+  grid-area: 2/2;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(8px, 0.5vw + 6px, 16px);
+}
+.media {
+  grid-area: 1/1/-1 /-1;
+  z-index: 1;
+  overflow: hidden;
+  border-radius: 12px;
+}
+.footer {
+  grid-area: 4/2;
+  display: flex;
+  gap: 16px;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-direction: column;
+}
 .link-group {
+  z-index: 5;
   display: flex;
   width: 100%;
+  pointer-events: none;
   gap: clamp(8px, 0.5vw + 6px, 16px);
   flex-flow: row wrap;
   align-items: center;
 }
-.link-overlay {
-  position: fixed;
-  inset: 0;
-}
 @media (forced-colors: active) {
-  .content {
+  .root::after {
     background: rgba(0,0,0,0.7);
   }
 }
 
 @media(hover:hover) {
-  .root:hover .image-container {
+  .root:hover slot:not([name]) {
     transform: scale3d(1.05,1.05,1.05);
   }
 }
@@ -358,90 +432,110 @@ h2,h3,h4,h5,h6 {
 
 exports[`getComponentCss() should return correct css for aspectRatio: "16:9", weight: "regular", linkDirection: "column" and hasDescription: true 1`] = `
 ":host {
-  display: block;
+  display: flex;
   hyphens: auto;
   color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
 }
-::slotted(picture) {
-  position: absolute !important;
-  inset: 0 !important;
-}
-::slotted(img) {
-  height: 100% !important;
-  width: 100% !important;
-  object-fit: cover !important;
-}
-h2,h3,h4,h5,h6 {
-  margin: 0 !important;
-}
-.root {
-  position: relative;
-  overflow: hidden;
-  transform: translate3d(0,0,0);
-  border-radius: 12px;
-  color: #FBFCFF;
-  padding-top: 56.25%;
-}
-.image-container {
-  position: absolute;
-  inset: 0;
+slot:not([name]) {
+  display: block;
+  width: 100%;
+  height: 100%;
   transition: transform var(--p-transition-duration, 0.4s) cubic-bezier(0.25,0.1,0.25,1);
 }
-.content {
-  position: absolute;
-  left: 0;
-  right: 0;
-  display: flex;
-  justify-items: start;
-  gap: 16px;
-  border-radius: 12px;
-  flex-direction: column;
-  bottom: 0;
-  padding: clamp(32px, 2.75vw + 23px, 76px) clamp(16px, 1.25vw + 12px, 36px) clamp(16px, 1.25vw + 12px, 36px);
-  background: linear-gradient(to top, rgba(31,31,31,0.9) 0%,rgba(31,31,31,0.9) 20%,rgba(31,31,31,0.852589) 26.67%,rgba(32,32,32,0.768225) 33.33%,rgba(33,33,33,0.668116) 40%,rgba(34,34,34,0.557309) 46.67%,rgba(35,35,35,0.442691) 53.33%,rgba(36,36,36,0.331884) 60%,rgba(37,37,37,0.231775) 66.67%,rgba(38,38,38,0.147411) 73.33%,rgba(39,39,39,0.0816599) 80%,rgba(39,39,39,0.03551) 86.67%,rgba(39,39,39,0.0086472) 93.33%,rgba(39,39,39,0) 100%);;
+slot[name=primary] {
+  pointer-events: auto;
 }
-.signature {
-  position: absolute;
-  top: clamp(16px, 1.25vw + 12px, 36px);
-  left: clamp(16px, 1.25vw + 12px, 36px);
-  right: clamp(16px, 1.25vw + 12px, 36px);
-  display: flex;
+slot[name=secondary] {
+  pointer-events: auto;
 }
-.heading {
+::slotted(:is(img,picture)) {
+  display: block !important;
+  width: 100% !important;
+  height: 100% !important;
+}
+::slotted(img) {
+  object-fit: cover !important;
+}
+a {
+  grid-area: 1/1/-1 /-1;
+  z-index: 4;
+  outline: 0;
+}
+h1,h2,h3,h4,h5,h6 {
   margin: 0;
+  z-index: 3;
+  max-width: 34.375rem;
   font: normal normal 400 clamp(1.27rem, 0.51vw + 1.16rem, 1.78rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: inherit;
+  color: #FBFCFF;
   font-weight: 400;
 }
-.description {
+p {
   margin: -12px 0 0 ;
+  z-index: 3;
+  max-width: 34.375rem;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: inherit;
+  color: #FBFCFF;
+}
+.root {
+  aspect-ratio: 16/9;
+  width: 100%;
+  display: grid;
+  grid-template: clamp(16px, 1.25vw + 12px, 36px) auto minmax(0px, 1fr) auto clamp(16px, 1.25vw + 12px, 36px)/clamp(16px, 1.25vw + 12px, 36px) minmax(0px, 1fr) clamp(16px, 1.25vw + 12px, 36px);
+}
+.root::after {
+  content: "";
+  z-index: 2;
+  grid-area: 4/1/6/-1;
+  background: linear-gradient(to top, rgba(31,31,31,0.9) 0%,rgba(31,31,31,0.9) 20%,rgba(31,31,31,0.852589) 26.67%,rgba(32,32,32,0.768225) 33.33%,rgba(33,33,33,0.668116) 40%,rgba(34,34,34,0.557309) 46.67%,rgba(35,35,35,0.442691) 53.33%,rgba(36,36,36,0.331884) 60%,rgba(37,37,37,0.231775) 66.67%,rgba(38,38,38,0.147411) 73.33%,rgba(39,39,39,0.0816599) 80%,rgba(39,39,39,0.03551) 86.67%,rgba(39,39,39,0.0086472) 93.33%,rgba(39,39,39,0) 100%);;
+  margin-top: calc(clamp(32px, 2.75vw + 23px, 76px) * -1);
+  border-end-start-radius: 12px;
+  border-end-end-radius: 12px;
+}
+.header {
+  grid-area: 2/2;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(8px, 0.5vw + 6px, 16px);
+}
+.media {
+  grid-area: 1/1/-1 /-1;
+  z-index: 1;
+  overflow: hidden;
+  border-radius: 12px;
+}
+.footer {
+  grid-area: 4/2;
+  display: flex;
+  gap: 16px;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-direction: column;
 }
 .link-group {
+  z-index: 5;
   display: flex;
   width: 100%;
+  pointer-events: none;
   gap: clamp(8px, 0.5vw + 6px, 16px);
   flex-flow: column nowrap;
   align-items: stretch;
 }
-.link-overlay {
-  position: fixed;
-  inset: 0;
-}
 @media (forced-colors: active) {
-  .content {
+  .root::after {
     background: rgba(0,0,0,0.7);
   }
 }
 
 @media(hover:hover) {
-  .root:hover .image-container {
+  .root:hover slot:not([name]) {
     transform: scale3d(1.05,1.05,1.05);
   }
 }
@@ -450,88 +544,135 @@ h2,h3,h4,h5,h6 {
 
 exports[`getComponentCss() should return correct css for aspectRatio: {"base":"1:1","xs":"4:3","s":"3:4","m":"16:9","l":"9:16","xl":"1:1"}, weight: {"base":"semi-bold","xs":"regular","s":"semi-bold","m":"regular","l":"semi-bold","xl":"regular"}, linkDirection: {"base":"column","xs":"row","s":"column","m":"row","l":"column","xl":"row"} and hasDescription: true 1`] = `
 ":host {
-  display: block;
+  display: flex;
   hyphens: auto;
   color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
 }
-::slotted(picture) {
-  position: absolute !important;
-  inset: 0 !important;
-}
-::slotted(img) {
-  height: 100% !important;
-  width: 100% !important;
-  object-fit: cover !important;
-}
-h2,h3,h4,h5,h6 {
-  margin: 0 !important;
-}
-.root {
-  position: relative;
-  overflow: hidden;
-  transform: translate3d(0,0,0);
-  border-radius: 12px;
-  color: #FBFCFF;
-  padding-top: 100%;
-}
-.image-container {
-  position: absolute;
-  inset: 0;
+slot:not([name]) {
+  display: block;
+  width: 100%;
+  height: 100%;
   transition: transform var(--p-transition-duration, 0.4s) cubic-bezier(0.25,0.1,0.25,1);
 }
-.content {
-  position: absolute;
-  left: 0;
-  right: 0;
-  display: flex;
-  justify-items: start;
-  gap: 16px;
-  border-radius: 12px;
-  flex-direction: column;
-  bottom: 0;
-  padding: clamp(32px, 2.75vw + 23px, 76px) clamp(16px, 1.25vw + 12px, 36px) clamp(16px, 1.25vw + 12px, 36px);
-  background: linear-gradient(to top, rgba(31,31,31,0.9) 0%,rgba(31,31,31,0.9) 20%,rgba(31,31,31,0.852589) 26.67%,rgba(32,32,32,0.768225) 33.33%,rgba(33,33,33,0.668116) 40%,rgba(34,34,34,0.557309) 46.67%,rgba(35,35,35,0.442691) 53.33%,rgba(36,36,36,0.331884) 60%,rgba(37,37,37,0.231775) 66.67%,rgba(38,38,38,0.147411) 73.33%,rgba(39,39,39,0.0816599) 80%,rgba(39,39,39,0.03551) 86.67%,rgba(39,39,39,0.0086472) 93.33%,rgba(39,39,39,0) 100%);;
+slot[name=primary] {
+  pointer-events: auto;
 }
-.signature {
-  position: absolute;
-  top: clamp(16px, 1.25vw + 12px, 36px);
-  left: clamp(16px, 1.25vw + 12px, 36px);
-  right: clamp(16px, 1.25vw + 12px, 36px);
-  display: flex;
+slot[name=secondary] {
+  pointer-events: auto;
 }
-.heading {
+::slotted(:is(img,picture)) {
+  display: block !important;
+  width: 100% !important;
+  height: 100% !important;
+}
+::slotted(img) {
+  object-fit: cover !important;
+}
+a {
+  grid-area: 1/1/-1 /-1;
+  z-index: 4;
+  outline: 0;
+}
+h1,h2,h3,h4,h5,h6 {
   margin: 0;
+  z-index: 3;
+  max-width: 34.375rem;
   font: normal normal 400 clamp(1.27rem, 0.51vw + 1.16rem, 1.78rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: inherit;
+  color: #FBFCFF;
   font-weight: 600;
 }
-.description {
+p {
   margin: -12px 0 0 ;
+  z-index: 3;
+  max-width: 34.375rem;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: inherit;
+  color: #FBFCFF;
+}
+@media(min-width:480px) {
+  h1,h2,h3,h4,h5,h6 {
+    font-weight: 400;
+  }
+}
+
+@media(min-width:760px) {
+  h1,h2,h3,h4,h5,h6 {
+    font-weight: 600;
+  }
+}
+
+@media(min-width:1000px) {
+  h1,h2,h3,h4,h5,h6 {
+    font-weight: 400;
+  }
+}
+
+@media(min-width:1300px) {
+  h1,h2,h3,h4,h5,h6 {
+    font-weight: 600;
+  }
+}
+
+@media(min-width:1760px) {
+  h1,h2,h3,h4,h5,h6 {
+    font-weight: 400;
+  }
+}
+
+.root {
+  aspect-ratio: 1/1;
+  width: 100%;
+  display: grid;
+  grid-template: clamp(16px, 1.25vw + 12px, 36px) auto minmax(0px, 1fr) auto clamp(16px, 1.25vw + 12px, 36px)/clamp(16px, 1.25vw + 12px, 36px) minmax(0px, 1fr) clamp(16px, 1.25vw + 12px, 36px);
+}
+.root::after {
+  content: "";
+  z-index: 2;
+  grid-area: 4/1/6/-1;
+  background: linear-gradient(to top, rgba(31,31,31,0.9) 0%,rgba(31,31,31,0.9) 20%,rgba(31,31,31,0.852589) 26.67%,rgba(32,32,32,0.768225) 33.33%,rgba(33,33,33,0.668116) 40%,rgba(34,34,34,0.557309) 46.67%,rgba(35,35,35,0.442691) 53.33%,rgba(36,36,36,0.331884) 60%,rgba(37,37,37,0.231775) 66.67%,rgba(38,38,38,0.147411) 73.33%,rgba(39,39,39,0.0816599) 80%,rgba(39,39,39,0.03551) 86.67%,rgba(39,39,39,0.0086472) 93.33%,rgba(39,39,39,0) 100%);;
+  margin-top: calc(clamp(32px, 2.75vw + 23px, 76px) * -1);
+  border-end-start-radius: 12px;
+  border-end-end-radius: 12px;
+}
+.header {
+  grid-area: 2/2;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(8px, 0.5vw + 6px, 16px);
+}
+.media {
+  grid-area: 1/1/-1 /-1;
+  z-index: 1;
+  overflow: hidden;
+  border-radius: 12px;
+}
+.footer {
+  grid-area: 4/2;
+  display: flex;
+  gap: 16px;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-direction: column;
 }
 .link-group {
+  z-index: 5;
   display: flex;
   width: 100%;
+  pointer-events: none;
   gap: clamp(8px, 0.5vw + 6px, 16px);
   flex-flow: column nowrap;
   align-items: stretch;
 }
-.link-overlay {
-  position: fixed;
-  inset: 0;
-}
 @media(min-width:480px) {
   .root {
-    padding-top: 75%;
-  }
-  .heading {
-    font-weight: 400;
+    aspect-ratio: 4/3;
   }
   .link-group {
     flex-flow: row wrap;
@@ -541,10 +682,7 @@ h2,h3,h4,h5,h6 {
 
 @media(min-width:760px) {
   .root {
-    padding-top: 133.33%;
-  }
-  .heading {
-    font-weight: 600;
+    aspect-ratio: 3/4;
   }
   .link-group {
     flex-flow: column nowrap;
@@ -554,10 +692,7 @@ h2,h3,h4,h5,h6 {
 
 @media(min-width:1000px) {
   .root {
-    padding-top: 56.25%;
-  }
-  .heading {
-    font-weight: 400;
+    aspect-ratio: 16/9;
   }
   .link-group {
     flex-flow: row wrap;
@@ -567,10 +702,7 @@ h2,h3,h4,h5,h6 {
 
 @media(min-width:1300px) {
   .root {
-    padding-top: 177.75%;
-  }
-  .heading {
-    font-weight: 600;
+    aspect-ratio: 9/16;
   }
   .link-group {
     flex-flow: column nowrap;
@@ -580,10 +712,7 @@ h2,h3,h4,h5,h6 {
 
 @media(min-width:1760px) {
   .root {
-    padding-top: 100%;
-  }
-  .heading {
-    font-weight: 400;
+    aspect-ratio: 1/1;
   }
   .link-group {
     flex-flow: row wrap;
@@ -592,13 +721,13 @@ h2,h3,h4,h5,h6 {
 }
 
 @media (forced-colors: active) {
-  .content {
+  .root::after {
     background: rgba(0,0,0,0.7);
   }
 }
 
 @media(hover:hover) {
-  .root:hover .image-container {
+  .root:hover slot:not([name]) {
     transform: scale3d(1.05,1.05,1.05);
   }
 }
