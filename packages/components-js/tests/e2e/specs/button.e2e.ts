@@ -150,7 +150,6 @@ test.describe('within form', () => {
     expect((await getEventSummary(form, 'submit')).counter).toBe(0);
   });
 
-  // TODO: fix flakiness
   test("should submit parent form on click if it's type submit and pass name with value as param", async ({ page }) => {
     const name = 'name';
     const value = 'Value';
@@ -160,12 +159,15 @@ test.describe('within form', () => {
       <p-button type="submit" name="${name}" value="${value}">Some label</p-button>
     </form>`
     );
+
     const host = getHost(page);
     await host.click();
 
-    await page.waitForURL(page.url());
+    const urlPart = `?${name}=${value}`;
+
+    await page.waitForURL(`**/*${urlPart}`);
     // Since the data in only available via the event submitter it is easier to test it by checking the request params
-    expect(page.url()).toContain(`?${name}=${value}`);
+    expect(page.url()).toContain(urlPart);
   });
 });
 
