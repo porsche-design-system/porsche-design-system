@@ -13,6 +13,7 @@ import {
 import {
   addImportantToEachRule,
   colorSchemeStyles,
+  forcedColorsMediaQuery,
   getThemedColors,
   getTransition,
   hostHiddenStyles,
@@ -124,6 +125,9 @@ export const getComponentCss = (
                   borderEndStartRadius: borderRadiusLarge,
                   borderEndEndRadius: borderRadiusLarge,
                 }),
+            ...forcedColorsMediaQuery({
+              background: 'rgba(0,0,0,0.7)',
+            }),
           },
         }),
       ...(!isDisabled &&
