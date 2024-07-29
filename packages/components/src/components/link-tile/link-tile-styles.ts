@@ -78,6 +78,7 @@ export const getComponentCss = (
       a: {
         gridArea: '1/1/-1 /-1',
         zIndex: 4,
+        outline: 0, // reset focus style since this element is used to improve mouse interaction only
       },
       p: {
         ...textMediumStyle,
