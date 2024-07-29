@@ -18,7 +18,7 @@ export type ClickableTests = {
 }[];
 
 // TODO: fix typing
-type Options = any & {
+export type Options = any & {
   enableLogging?: boolean;
   injectIntoHead?: string;
   withoutLoadCall?: boolean;
