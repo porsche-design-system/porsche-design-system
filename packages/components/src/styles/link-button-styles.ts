@@ -120,7 +120,8 @@ export const getLinkButtonStyles = (
       borderRadius: borderRadiusSmall,
       transform: 'translate3d(0,0,0)', // creates new stacking context (for slotted anchor + focus)
       backgroundColor,
-      ...(compact && { backgroundClip: 'padding-box', ...frostedGlassStyle }), // background color overlays border-color otherwise
+      ...(variant === 'ghost' && { backgroundClip: 'padding-box' }),
+      ...(compact && { ...frostedGlassStyle }), // background color overlays border-color otherwise
       color: textColor,
       ...textSmallStyle,
       transition: `${getTransition('background-color')}, ${getTransition('border-color')}, ${getTransition('color')}`,
