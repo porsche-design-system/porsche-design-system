@@ -16,10 +16,11 @@ import {
   skipInBrowsers,
   sleep,
   waitForStencilLifecycle,
+  type Options,
 } from '../helpers';
 import type { ModalAriaAttribute, SelectedAriaAttributes } from '@porsche-design-system/components';
 
-const CSS_TRANSITION_DURATION = 600;
+const CSS_TRANSITION_DURATION = 600; // Corresponds to motionDurationLong
 
 const getHost = (page: Page) => page.$('p-modal');
 const getScrollContainer = (page: Page) => page.$('p-modal .scroller');
@@ -30,6 +31,7 @@ const getDismissButton = (page: Page) => page.$('p-modal p-button-pure.dismiss')
 const getFooter = (page: Page) => page.$('p-modal slot[name="footer"]');
 const getFooterBoxShadow = async (page: Page): Promise<string> => getElementStyle(await getFooter(page), 'boxShadow');
 const getBodyStyle = async (page: Page) => getAttribute(await page.$('body'), 'style');
+const waitForModalTransition = async () => sleep(CSS_TRANSITION_DURATION);
 
 const initBasicModal = (
   page: Page,
@@ -44,7 +46,8 @@ const initBasicModal = (
     disableCloseButton?: boolean;
     markupBefore?: string;
     markupAfter?: string;
-  }
+  },
+  options?: Options
 ): Promise<void> => {
   const {
     isOpen = true,
@@ -75,7 +78,8 @@ const initBasicModal = (
   ${hasSlottedHeader ? '<div slot="header"><h2>Some Heading</h2><p>Some header content</p></div>' : ''}
   ${content}
   ${hasSlottedFooter ? '<div slot="footer">Some Footer</div>' : ''}
-</p-modal>${markupAfter ? markupAfter : ''}`
+</p-modal>${markupAfter ? markupAfter : ''}`,
+    options
   );
 };
 
@@ -818,5 +822,49 @@ test.describe('after dynamic slot change', () => {
 
     await expect(page.getByText(footerText)).toBeVisible();
     expect(await getFooterBoxShadow(page)).toBe('rgba(204, 204, 204, 0.35) 0px -5px 10px 0px');
+  });
+});
+
+test.describe('events', () => {
+  skipInBrowsers(['firefox', 'webkit']);
+  test('should call motionVisibleEnd event when opening transition is finished', async ({ page }) => {
+    await initBasicModal(
+      page,
+      { isOpen: false },
+      { injectIntoHead: '<style>:root { --p-transition-duration: unset; }</style>' }
+    );
+    const host = await getHost(page);
+    await waitForStencilLifecycle(page);
+    await addEventListener(host, 'motionVisibleEnd');
+    await addEventListener(host, 'motionHiddenEnd');
+
+    expect((await getEventSummary(host, 'motionVisibleEnd')).counter).toBe(0);
+    expect((await getEventSummary(host, 'motionHiddenEnd')).counter).toBe(0);
+
+    await openModal(page);
+    await waitForModalTransition();
+
+    expect((await getEventSummary(host, 'motionVisibleEnd')).counter).toBe(1);
+    expect((await getEventSummary(host, 'motionHiddenEnd')).counter).toBe(0);
+  });
+  test('should call motionHiddenEnd event when closing transition is finished', async ({ page }) => {
+    await initBasicModal(
+      page,
+      { isOpen: true },
+      { injectIntoHead: '<style>:root { --p-transition-duration: unset; }</style>' }
+    );
+    const host = await getHost(page);
+    await waitForStencilLifecycle(page);
+    await addEventListener(host, 'motionVisibleEnd');
+    await addEventListener(host, 'motionHiddenEnd');
+
+    expect((await getEventSummary(host, 'motionVisibleEnd')).counter).toBe(0);
+    expect((await getEventSummary(host, 'motionHiddenEnd')).counter).toBe(0);
+
+    await dismissModal(page);
+    await waitForModalTransition();
+
+    expect((await getEventSummary(host, 'motionVisibleEnd')).counter).toBe(0);
+    expect((await getEventSummary(host, 'motionHiddenEnd')).counter).toBe(1);
   });
 });
