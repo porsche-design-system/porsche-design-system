@@ -826,7 +826,7 @@ test.describe('after dynamic slot change', () => {
 
 test.describe('events', () => {
   skipInBrowsers(['firefox', 'webkit']);
-  test('should expose ontransitionstart event', async ({ page }) => {
+  test('should call motionVisibleEnd event when opening transition is finished', async ({ page }) => {
     await initBasicModal(
       page,
       { isOpen: false },
@@ -834,16 +834,15 @@ test.describe('events', () => {
     );
     const host = await getHost(page);
     await waitForStencilLifecycle(page);
-    await addEventListener(host, 'transition');
+    await addEventListener(host, 'motionVisibleEnd');
 
-    expect((await getEventSummary(host, 'transition')).counter).toBe(0);
+    expect((await getEventSummary(host, 'motionVisibleEnd')).counter).toBe(0);
 
     await openModal(page);
 
-    // Transition for each property will be fired separately (overlay, box-shadow, opacity, backdrop-filter, background-color)
-    expect((await getEventSummary(host, 'transition')).counter).toBe(5);
+    expect((await getEventSummary(host, 'motionVisibleEnd')).counter).toBe(1);
   });
-  test('should expose ontransitionend event', async ({ page }) => {
+  test('should call motionHiddenEnd event when closing transition is finished', async ({ page }) => {
     await initBasicModal(
       page,
       { isOpen: true },
@@ -851,13 +850,12 @@ test.describe('events', () => {
     );
     const host = await getHost(page);
     await waitForStencilLifecycle(page);
-    await addEventListener(host, 'transition');
+    await addEventListener(host, 'motionHiddenEnd');
 
-    expect((await getEventSummary(host, 'transition')).counter).toBe(0);
+    expect((await getEventSummary(host, 'motionHiddenEnd')).counter).toBe(0);
 
     await dismissModal(page);
 
-    // Transition for each property will be fired separately (overlay, box-shadow, opacity, backdrop-filter, background-color)
-    expect((await getEventSummary(host, 'transition')).counter).toBe(5);
+    expect((await getEventSummary(host, 'motionHiddenEnd')).counter).toBe(1);
   });
 });

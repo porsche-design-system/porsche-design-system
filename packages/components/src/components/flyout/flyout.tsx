@@ -6,7 +6,8 @@ import {
   type FlyoutAriaAttribute,
   type FlyoutPosition,
   type FlyoutPositionDeprecated,
-  type FlyoutTransitionEventDetail,
+  type FlyoutMotionVisibleEndEventDetail,
+  type FlyoutMotionHiddenEndEventDetail,
   handleUpdateStickyTopCssVar,
 } from './flyout-utils';
 import { getComponentCss } from './flyout-styles';
@@ -31,6 +32,7 @@ import {
 import type { PropTypes, SelectedAriaAttributes, Theme } from '../../types';
 import { getSlottedAnchorStyles } from '../../styles';
 import { observeStickyArea } from '../../utils/dialog/observer';
+import { onTransitionEnd } from '../../utils/dialog/dialog';
 
 const propTypes: PropTypes<typeof Flyout> = {
   open: AllowedTypes.boolean,
@@ -73,8 +75,11 @@ export class Flyout {
   /** Emitted when the component requests to be dismissed. */
   @Event({ bubbles: false }) public dismiss?: EventEmitter<void>;
 
-  /** Emitted when the native ontransitionstart or ontransitionend event is fired from the dialog element. */
-  @Event({ bubbles: false }) public transition?: EventEmitter<FlyoutTransitionEventDetail>;
+  /** Emitted when the flyout is opened and the transition is finished. */
+  @Event({ bubbles: false }) public motionVisibleEnd?: EventEmitter<FlyoutMotionVisibleEndEventDetail>;
+
+  /** Emitted when the flyout is closed and the transition is finished. */
+  @Event({ bubbles: false }) public motionHiddenEnd?: EventEmitter<FlyoutMotionHiddenEndEventDetail>;
 
   private dialog: HTMLDialogElement;
   private scroller: HTMLDivElement;
@@ -169,8 +174,7 @@ export class Flyout {
         onCancel={(e) => onCancelDialog(e, this.dismissDialog)}
         // Previously done with onMouseDown to change the click behavior (not closing when pressing mousedown on flyout and mouseup on backdrop) but changed back to native behavior
         onClick={(e) => onClickDialog(e, this.dismissDialog, this.disableBackdropClick)}
-        onTransitionStart={(e) => this.transition.emit(e)}
-        onTransitionEnd={(e) => this.transition.emit(e)}
+        onTransitionEnd={(e) => onTransitionEnd(e, this.open, this.motionVisibleEnd, this.motionHiddenEnd)}
         {...parseAndGetAriaAttributes({
           'aria-modal': true,
           'aria-hidden': !this.open,

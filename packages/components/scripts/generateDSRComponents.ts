@@ -323,14 +323,14 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
           .replace(/(inert=\{this\.props\.open \? null : )true(})/, "$1''$2") // transform true to empty string ''
           .replace(/onScroll=\{hasFooter && this\.props\.onScroll}/, '')
           .replace(/if\s\(.*[^}]*}/, '') // Remove deprecation warning check
-          .replace(/\s*onTransition(Start|End)={\(e\) => this.props.transition.emit\(e\)}/g, '');
+          .replace(/onTransitionEnd={[^}]*}\s*/, '');
       } else if (tagName === 'p-flyout') {
         newFileContent = newFileContent
           .replace(/this\.props\.(hasHeader|hasFooter|hasSubFooter)/g, '$1')
           .replace(/(?:hasHeader|hasFooter|hasSubFooter) =/g, 'const $&')
           .replace(/\n.*\/\/ eslint-disable-next-line @typescript-eslint\/member-ordering/g, '')
           .replace(/(inert=\{this\.props\.open \? null : )true(})/, "$1''$2") // transform true to empty string ''
-          .replace(/\s*onTransition(Start|End)={\(e\) => this.props.transition.emit\(e\)}/g, '');
+          .replace(/onTransitionEnd={[^}]*}\s*/, '');
       } else if (tagName === 'p-radio-button-wrapper') {
         newFileContent = newFileContent.replace(
           /&& !(typeof otherChildren\[0] === 'object' && 'props' in otherChildren\[0]) && (otherChildren\[0]\?\.props\.checked)/g,

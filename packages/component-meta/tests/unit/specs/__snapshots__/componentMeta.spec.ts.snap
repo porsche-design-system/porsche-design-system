@@ -2261,9 +2261,14 @@ exports[`should match snapshot 1`] = `
         "description": "Emitted when the component requests to be dismissed.",
         "type": "void",
       },
-      "transition": {
-        "description": "Emitted when the native ontransitionstart or ontransitionend event is fired from the dialog element.",
-        "type": "FlyoutTransitionEventDetail",
+      "motionHiddenEnd": {
+        "description": "Emitted when the flyout is closed and the transition is finished.",
+        "type": "FlyoutMotionHiddenEndEventDetail",
+        "typeDetail": "TransitionEvent",
+      },
+      "motionVisibleEnd": {
+        "description": "Emitted when the flyout is opened and the transition is finished.",
+        "type": "FlyoutMotionVisibleEndEventDetail",
         "typeDetail": "TransitionEvent",
       },
     },
@@ -4808,9 +4813,14 @@ exports[`should match snapshot 1`] = `
         "description": "Emitted when the component requests to be dismissed.",
         "type": "void",
       },
-      "transition": {
-        "description": "Emitted when the native ontransitionstart or ontransitionend event is fired from the dialog element.",
-        "type": "ModalTransitionEventDetail",
+      "motionHiddenEnd": {
+        "description": "Emitted when the modal is closed and the transition is finished.",
+        "type": "ModalMotionHiddenEndEventDetail",
+        "typeDetail": "TransitionEvent",
+      },
+      "motionVisibleEnd": {
+        "description": "Emitted when the modal is opened and the transition is finished.",
+        "type": "ModalMotionVisibleEndEventDetail",
         "typeDetail": "TransitionEvent",
       },
     },

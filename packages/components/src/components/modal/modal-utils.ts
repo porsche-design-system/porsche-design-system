@@ -5,4 +5,5 @@ export type ModalAriaAttribute = (typeof MODAL_ARIA_ATTRIBUTES)[number];
 
 export type ModalBackdrop = Backdrop;
 
-export type ModalTransitionEventDetail = TransitionEvent;
+export type ModalMotionVisibleEndEventDetail = TransitionEvent;
+export type ModalMotionHiddenEndEventDetail = TransitionEvent;

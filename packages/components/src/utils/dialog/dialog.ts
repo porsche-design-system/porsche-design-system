@@ -1,3 +1,5 @@
+import { EventEmitter } from '@stencil/core';
+
 export const setDialogVisibility = (isOpen: boolean, dialog: HTMLDialogElement, scrollArea: HTMLElement): void => {
   // `.showModal()` / `.close()` shall only be called when state changes and after render cycle has finished
   // (e.g. in `componentDidRender()`) to prepare visibility states of dialog in order to focus the dismiss button correctly
@@ -23,5 +25,17 @@ export const onClickDialog = (e: MouseEvent, cb: () => void, disable: boolean): 
       (e as MouseEvent & { target: HTMLElement }).target.tagName === 'DIALOG')
   ) {
     cb(); // dismiss dialog when clicked on backdrop
+  }
+};
+
+export const onTransitionEnd = (
+  nativeEvent: TransitionEvent,
+  isOpen: boolean,
+  motionVisibleEndEvent: EventEmitter,
+  motionHiddenEndEvent: EventEmitter
+) => {
+  // Use property which has the longest duration
+  if (nativeEvent.propertyName === 'background-color') {
+    isOpen ? motionVisibleEndEvent.emit(nativeEvent) : motionHiddenEndEvent.emit(nativeEvent);
   }
 };
