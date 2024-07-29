@@ -33,7 +33,7 @@ export class MultiSelectOption {
   @Prop() public disabled?: boolean = false;
 
   public connectedCallback(): void {
-    throwIfParentIsNotOfKind(this.host, 'p-multi-select');
+    throwIfParentIsNotOfKind(this.host, ['p-multi-select', 'p-optgroup']);
   }
 
   public render(): JSX.Element {

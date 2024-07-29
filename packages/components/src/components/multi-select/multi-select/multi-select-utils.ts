@@ -3,10 +3,12 @@ import type { SelectComponentsDropdownDirection, SelectDropdownDirectionInternal
 import { consoleWarn, determineDropdownDirection, setAttribute, setAttributes } from '../../../utils';
 import type { MultiSelectOptionInternalHTMLProps } from '../multi-select-option/multi-select-option-utils';
 import { forceUpdate } from '@stencil/core';
+import type { OptgroupInternalHTMLProps } from '../../optgroup/optgroup-utils';
 
 export type MultiSelectState = FormState;
 export type MultiSelectDropdownDirection = SelectComponentsDropdownDirection;
 export type MultiSelectOption = HTMLPMultiSelectOptionElement & MultiSelectOptionInternalHTMLProps;
+export type MultiSelectOptgroup = HTMLPOptgroupElement & OptgroupInternalHTMLProps;
 
 /** @deprecated */
 export type MultiSelectUpdateEvent = {
@@ -17,12 +19,16 @@ export type MultiSelectUpdateEventDetail = MultiSelectUpdateEvent;
 
 export const INTERNAL_MULTI_SELECT_SLOT = 'internal-select';
 
-export const syncMultiSelectOptionProps = (options: MultiSelectOption[], theme: Theme): void => {
-  options
-    .filter((option) => option.theme !== theme)
-    .forEach((option) => {
-      option.theme = theme;
-      forceUpdate(option);
+// TODO: share between select & multi-select
+export const syncMultiSelectChildrenProps = (
+  children: (MultiSelectOption | MultiSelectOptgroup)[],
+  theme: Theme
+): void => {
+  children
+    .filter((child) => child.theme !== theme)
+    .forEach((child) => {
+      child.theme = theme;
+      forceUpdate(child);
     });
 };
 
@@ -61,15 +67,25 @@ export const updateNativeOptions = (nativeSelect: HTMLSelectElement, multiSelect
     .join('');
 };
 
-export const updateOptionsFilterState = (searchString: string, options: MultiSelectOption[]): void => {
+export const updateOptionsFilterState = (
+  searchString: string,
+  options: MultiSelectOption[],
+  optGroups: MultiSelectOptgroup[]
+): void => {
   options.forEach((option) => (option.hidden = !option.textContent.toLowerCase().includes(searchString.toLowerCase())));
+
+  optGroups.forEach((optgroup) => {
+    optgroup.hidden = !Array.from(optgroup.children).some((child) => !(child as HTMLPMultiSelectOptionElement).hidden);
+  });
 };
 
 export const hasFilterOptionResults = (options: MultiSelectOption[]): boolean =>
   options.some((option) => !option.hidden);
 
-export const resetFilteredOptions = (options: MultiSelectOption[]): void =>
+export const resetFilteredOptions = (options: MultiSelectOption[], optGroups: MultiSelectOptgroup[]): void => {
   options.forEach((option) => (option.hidden = false));
+  optGroups.forEach((optgroup) => (optgroup.hidden = false));
+};
 
 export const getSelectedOptions = (options: MultiSelectOption[]): MultiSelectOption[] =>
   options.filter((option) => option.selected);

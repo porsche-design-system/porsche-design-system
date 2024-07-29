@@ -5149,10 +5149,48 @@ exports[`should match snapshot 1`] = `
         "type": "string",
       },
     },
-    "requiredParent": "p-multi-select",
+    "requiredParent": [
+      "p-multi-select",
+      "p-optgroup",
+    ],
     "slotsMeta": {
       "": {
         "description": "Default slot for the option text.",
+      },
+    },
+    "styling": "jss",
+  },
+  "p-optgroup": {
+    "hasAriaProp": false,
+    "hasEvent": false,
+    "hasObserveAttributes": false,
+    "hasObserveChildren": false,
+    "hasSlot": true,
+    "isChunked": true,
+    "isDelegatingFocus": false,
+    "isInternal": false,
+    "isThemeable": false,
+    "propsMeta": {
+      "disabled": {
+        "allowedValues": "boolean",
+        "defaultValue": false,
+        "description": "Disables the optgroup.",
+        "type": "boolean",
+      },
+      "label": {
+        "allowedValues": "string",
+        "defaultValue": null,
+        "description": "The optgroup label.",
+        "type": "string",
+      },
+    },
+    "requiredParent": [
+      "p-select",
+      "p-multi-select",
+    ],
+    "slotsMeta": {
+      "": {
+        "description": "Default slot for the optgroup content.",
       },
     },
     "styling": "jss",
@@ -6195,7 +6233,10 @@ exports[`should match snapshot 1`] = `
         "type": "string",
       },
     },
-    "requiredParent": "p-select",
+    "requiredParent": [
+      "p-select",
+      "p-optgroup",
+    ],
     "slotsMeta": {
       "": {
         "description": "Default slot for the option content.",
@@ -7099,6 +7140,7 @@ exports[`should match snapshot 1`] = `
           "background-base",
           "background-surface",
           "background-default",
+          "background-frosted",
           "primary",
           "notification-info-soft",
           "notification-warning-soft",
@@ -7121,6 +7163,12 @@ exports[`should match snapshot 1`] = `
         ],
         "description": "Background color variations depending on theme property.",
         "type": "TagColor",
+      },
+      "compact": {
+        "allowedValues": "boolean",
+        "defaultValue": false,
+        "description": "Displays as compact version.",
+        "type": "boolean",
       },
       "icon": {
         "allowedValues": [

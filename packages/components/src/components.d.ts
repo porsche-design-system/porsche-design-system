@@ -1351,6 +1351,16 @@ export namespace Components {
          */
         "value": string;
     }
+    interface POptgroup {
+        /**
+          * Disables the optgroup.
+         */
+        "disabled"?: boolean;
+        /**
+          * The optgroup label.
+         */
+        "label"?: string;
+    }
     /**
      * @controlled { "props": ["activePage"], "event": "update", "isInternallyMutated": true }
      */
@@ -1868,6 +1878,10 @@ export namespace Components {
           * Background color variations depending on theme property.
          */
         "color"?: TagColor;
+        /**
+          * Displays as compact version.
+         */
+        "compact"?: boolean;
         /**
           * The icon shown.
          */
@@ -2570,6 +2584,12 @@ declare global {
         prototype: HTMLPMultiSelectOptionElement;
         new (): HTMLPMultiSelectOptionElement;
     };
+    interface HTMLPOptgroupElement extends Components.POptgroup, HTMLStencilElement {
+    }
+    var HTMLPOptgroupElement: {
+        prototype: HTMLPOptgroupElement;
+        new (): HTMLPOptgroupElement;
+    };
     interface HTMLPPaginationElementEventMap {
         "pageChange": PaginationUpdateEventDetail;
         "update": PaginationUpdateEventDetail;
@@ -2967,6 +2987,7 @@ declare global {
         "p-model-signature": HTMLPModelSignatureElement;
         "p-multi-select": HTMLPMultiSelectElement;
         "p-multi-select-option": HTMLPMultiSelectOptionElement;
+        "p-optgroup": HTMLPOptgroupElement;
         "p-pagination": HTMLPPaginationElement;
         "p-pin-code": HTMLPPinCodeElement;
         "p-popover": HTMLPPopoverElement;
@@ -4290,6 +4311,16 @@ declare namespace LocalJSX {
          */
         "value"?: string;
     }
+    interface POptgroup {
+        /**
+          * Disables the optgroup.
+         */
+        "disabled"?: boolean;
+        /**
+          * The optgroup label.
+         */
+        "label"?: string;
+    }
     /**
      * @controlled { "props": ["activePage"], "event": "update", "isInternallyMutated": true }
      */
@@ -4872,6 +4903,10 @@ declare namespace LocalJSX {
          */
         "color"?: TagColor;
         /**
+          * Displays as compact version.
+         */
+        "compact"?: boolean;
+        /**
           * The icon shown.
          */
         "icon"?: TagIcon;
@@ -5132,6 +5167,7 @@ declare namespace LocalJSX {
         "p-model-signature": PModelSignature;
         "p-multi-select": PMultiSelect;
         "p-multi-select-option": PMultiSelectOption;
+        "p-optgroup": POptgroup;
         "p-pagination": PPagination;
         "p-pin-code": PPinCode;
         "p-popover": PPopover;
@@ -5272,6 +5308,7 @@ declare module "@stencil/core" {
              */
             "p-multi-select": LocalJSX.PMultiSelect & JSXBase.HTMLAttributes<HTMLPMultiSelectElement>;
             "p-multi-select-option": LocalJSX.PMultiSelectOption & JSXBase.HTMLAttributes<HTMLPMultiSelectOptionElement>;
+            "p-optgroup": LocalJSX.POptgroup & JSXBase.HTMLAttributes<HTMLPOptgroupElement>;
             /**
              * @controlled { "props": ["activePage"], "event": "update", "isInternallyMutated": true }
              */

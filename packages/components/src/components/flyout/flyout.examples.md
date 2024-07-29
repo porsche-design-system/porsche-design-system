@@ -145,9 +145,9 @@ export default class Code extends Vue {
 
   disableBackdropClickMarkup =
       `<p-button type="button" aria="{ 'aria-haspopup': 'dialog' }">Open Flyout</p-button>
-  <p-flyout disable-backdrop-click="true" open="false" aria="{ 'aria-label': 'Some Heading' }">
-    <p-text>Some Content</p-text>
-  </p-flyout>`;
+<p-flyout disable-backdrop-click="true" open="false" aria="{ 'aria-label': 'Some Heading' }">
+  <p-text>Some Content</p-text>
+</p-flyout>`;
 
   positions = ['start', 'end'];
   position = 'end';

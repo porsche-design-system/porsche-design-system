@@ -16,13 +16,20 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 #### Added
 
+- `Tag`:
+  - Prop `compact` ([#3411](https://github.com/porsche-design-system/porsche-design-system/pull/3411))
+  - Prop `color` extended by value `background-frosted`
+    ([#3411](https://github.com/porsche-design-system/porsche-design-system/pull/3411))
 - Styles: `theme{Light|Dark}BackgroundFrosted` and `$pds-theme-{light|dark}-background-frosted` color
   ([#3409](https://github.com/porsche-design-system/porsche-design-system/pull/3409))
+- `Optgroup`: Usable in combination with `Select` and `Multi Select` ([#3410](https://github.com/porsche-design-system/porsche-design-system/pull/3410))
 
 #### Changed
 
 - `Icon`: All icons are up-to-date with the One UI look
 - Shorten asset filenames
+- `Carousel`: Slides and `controls` slot are centered if `alignHeader` prop is set to `center` and amount of slides is
+  less than `slidesPerPage` ([#3372](https://github.com/porsche-design-system/porsche-design-system/pull/3372))
 
 #### Fixed
 
@@ -31,6 +38,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 - `PTextFieldWrapper`, `PTextareaWrapper`: Conditionally rendered component throws
   `TypeError: Cannot read properties of undefined (reading 'type')`
   ([#3383](https://github.com/porsche-design-system/porsche-design-system/pull/3383))
+- `LinkTile`: Broken word-break & hyphens Safari
+  ([#3397](https://github.com/porsche-design-system/porsche-design-system/pull/3397))
+- `Select-Wrapper`: `optgroup` styling and behavior
+  ([#3410](https://github.com/porsche-design-system/porsche-design-system/pull/3410))
 
 ### [3.16.0] - 2024-07-02
 

@@ -30,7 +30,6 @@ const initSelect = (page: Page, opts?: InitOptions): Promise<void> => {
     beginUnique,
   } = opts || {};
 
-  // TODO: wtf?
   const options = [...'abc', ...(amount === 5 ? 'de' : '')].map((x, idx) => {
     const attrs = [
       disabledIndex === idx ? 'disabled' : '',
