@@ -17,7 +17,7 @@ for (const [url, index] of internalUrls.map<[string, number]>((url, i) => [url, 
       (window as unknown as Window & { componentsReady: () => Promise<number> }).componentsReady()
     );
 
-    const components = await page.locator(componentsWithThemeAutoSelector);
+    const components = page.locator(componentsWithThemeAutoSelector);
 
     // TODO: "The use of ElementHandle is discouraged, use Locator objects and web-first assertions instead.", see: https://playwright.dev/docs/api/class-elementhandle
     for (const component of await components.elementHandles()) {
