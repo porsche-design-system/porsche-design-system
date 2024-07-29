@@ -105,7 +105,7 @@ export const getComponentCss = (
       })),
       width: '100%', // necessary for Chrome in case tile content overflows in grid or flex context
       display: 'grid',
-      gridTemplate: `${spacingFluidMedium} auto minmax(0px, 1fr) auto ${spacingFluidMedium}/${spacingFluidMedium} auto ${spacingFluidMedium}`,
+      gridTemplate: `${spacingFluidMedium} auto minmax(0px, 1fr) auto ${spacingFluidMedium}/${spacingFluidMedium} minmax(0px, 1fr) ${spacingFluidMedium}`,
       ...(hasGradient &&
         isThemeDark(background) && {
           '&::after': {
