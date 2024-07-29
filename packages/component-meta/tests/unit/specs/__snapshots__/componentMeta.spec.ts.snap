@@ -2261,6 +2261,11 @@ exports[`should match snapshot 1`] = `
         "description": "Emitted when the component requests to be dismissed.",
         "type": "void",
       },
+      "transition": {
+        "description": "Emitted when the native ontransitionstart or ontransitionend event is fired from the dialog element.",
+        "type": "FlyoutTransitionEventDetail",
+        "typeDetail": "TransitionEvent",
+      },
     },
     "hasAriaProp": true,
     "hasEvent": true,
@@ -4802,6 +4807,11 @@ exports[`should match snapshot 1`] = `
       "dismiss": {
         "description": "Emitted when the component requests to be dismissed.",
         "type": "void",
+      },
+      "transition": {
+        "description": "Emitted when the native ontransitionstart or ontransitionend event is fired from the dialog element.",
+        "type": "ModalTransitionEventDetail",
+        "typeDetail": "TransitionEvent",
       },
     },
     "hasAriaProp": true,
