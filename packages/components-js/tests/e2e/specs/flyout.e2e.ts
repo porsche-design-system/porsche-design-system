@@ -20,7 +20,7 @@ import {
 } from '../helpers';
 import { Components } from '@porsche-design-system/components';
 
-const CSS_TRANSITION_DURATION = 600;
+const CSS_TRANSITION_DURATION = 600; // Corresponds to motionDurationLong
 const flyoutMinWidth = 320;
 
 const getHost = (page: Page) => page.$('p-flyout');
@@ -808,12 +808,16 @@ test.describe('events', () => {
     const host = await getHost(page);
     await waitForStencilLifecycle(page);
     await addEventListener(host, 'motionVisibleEnd');
+    await addEventListener(host, 'motionHiddenEnd');
 
     expect((await getEventSummary(host, 'motionVisibleEnd')).counter).toBe(0);
+    expect((await getEventSummary(host, 'motionHiddenEnd')).counter).toBe(0);
 
     await openFlyout(page);
+    await waitForFlyoutTransition();
 
     expect((await getEventSummary(host, 'motionVisibleEnd')).counter).toBe(1);
+    expect((await getEventSummary(host, 'motionHiddenEnd')).counter).toBe(0);
   });
   test('should call motionHiddenEnd event when closing transition is finished', async ({ page }) => {
     await initBasicFlyout(
@@ -825,12 +829,16 @@ test.describe('events', () => {
     );
     const host = await getHost(page);
     await waitForStencilLifecycle(page);
+    await addEventListener(host, 'motionVisibleEnd');
     await addEventListener(host, 'motionHiddenEnd');
 
+    expect((await getEventSummary(host, 'motionVisibleEnd')).counter).toBe(0);
     expect((await getEventSummary(host, 'motionHiddenEnd')).counter).toBe(0);
 
     await dismissFlyout(page);
+    await waitForFlyoutTransition();
 
+    expect((await getEventSummary(host, 'motionVisibleEnd')).counter).toBe(0);
     expect((await getEventSummary(host, 'motionHiddenEnd')).counter).toBe(1);
   });
 });

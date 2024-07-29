@@ -20,7 +20,7 @@ import {
 } from '../helpers';
 import type { ModalAriaAttribute, SelectedAriaAttributes } from '@porsche-design-system/components';
 
-const CSS_TRANSITION_DURATION = 600;
+const CSS_TRANSITION_DURATION = 600; // Corresponds to motionDurationLong
 
 const getHost = (page: Page) => page.$('p-modal');
 const getScrollContainer = (page: Page) => page.$('p-modal .scroller');
@@ -31,6 +31,7 @@ const getDismissButton = (page: Page) => page.$('p-modal p-button-pure.dismiss')
 const getFooter = (page: Page) => page.$('p-modal slot[name="footer"]');
 const getFooterBoxShadow = async (page: Page): Promise<string> => getElementStyle(await getFooter(page), 'boxShadow');
 const getBodyStyle = async (page: Page) => getAttribute(await page.$('body'), 'style');
+const waitForModalTransition = async () => sleep(CSS_TRANSITION_DURATION);
 
 const initBasicModal = (
   page: Page,
@@ -835,12 +836,16 @@ test.describe('events', () => {
     const host = await getHost(page);
     await waitForStencilLifecycle(page);
     await addEventListener(host, 'motionVisibleEnd');
+    await addEventListener(host, 'motionHiddenEnd');
 
     expect((await getEventSummary(host, 'motionVisibleEnd')).counter).toBe(0);
+    expect((await getEventSummary(host, 'motionHiddenEnd')).counter).toBe(0);
 
     await openModal(page);
+    await waitForModalTransition();
 
     expect((await getEventSummary(host, 'motionVisibleEnd')).counter).toBe(1);
+    expect((await getEventSummary(host, 'motionHiddenEnd')).counter).toBe(0);
   });
   test('should call motionHiddenEnd event when closing transition is finished', async ({ page }) => {
     await initBasicModal(
@@ -850,12 +855,16 @@ test.describe('events', () => {
     );
     const host = await getHost(page);
     await waitForStencilLifecycle(page);
+    await addEventListener(host, 'motionVisibleEnd');
     await addEventListener(host, 'motionHiddenEnd');
 
+    expect((await getEventSummary(host, 'motionVisibleEnd')).counter).toBe(0);
     expect((await getEventSummary(host, 'motionHiddenEnd')).counter).toBe(0);
 
     await dismissModal(page);
+    await waitForModalTransition();
 
+    expect((await getEventSummary(host, 'motionVisibleEnd')).counter).toBe(0);
     expect((await getEventSummary(host, 'motionHiddenEnd')).counter).toBe(1);
   });
 });
