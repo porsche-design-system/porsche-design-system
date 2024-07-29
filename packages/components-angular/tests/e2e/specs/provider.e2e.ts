@@ -6,7 +6,7 @@ test('should provide global theme correctly to 4th p-button', async ({ page }) =
   await goto(page, 'theme-injection');
 
   const [button1, button2, button3, button4Initial] = await page.locator('p-button').all();
-  const getTheme = (handle: Locator): Promise<Theme> => handle.evaluate((el) => (el as any).theme);
+  const getTheme = (locator: Locator): Promise<Theme> => locator.evaluate((el) => (el as any).theme);
   expect(await getTheme(button1)).toBe('light');
   expect(await getTheme(button2)).toBe('dark');
   expect(await getTheme(button3)).toBe('light');

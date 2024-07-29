@@ -1,9 +1,9 @@
-import { type ElementHandle, test, expect } from '@playwright/test';
+import { test, expect, type Locator } from '@playwright/test';
 import { getConsoleErrorsAmount, goto, initConsoleObserver, waitForComponentsReady } from '../helpers';
 
-const getCounterValue = async (el: ElementHandle): Promise<string> => {
-  return el.evaluate((element: Element & { prevInnerHtml: string }) => {
-    element.prevInnerHtml = element.innerHTML;
+const getCounterValue = async (el: Locator): Promise<string> => {
+  return el.evaluate((element) => {
+    (element as unknown as Element & { prevInnerHtml: string }).prevInnerHtml = element.innerHTML;
     return element.innerHTML;
   });
 };
@@ -50,7 +50,7 @@ test.describe('tabs-bar', () => {
     await goto(page, 'tabs-bar'); // to load component chunk
 
     // navigate via select, otherwise we would have a reload
-    const select = page.locator('select');
+    const select = page.locator('select').first();
     await select.click();
     await page.keyboard.type('Events');
     await page.keyboard.press('Enter');
