@@ -1,4 +1,5 @@
-import { determineDropdownDirection, SelectComponentsDropdownDirection } from './';
+import type { SelectComponentsDropdownDirection } from './';
+import { determineDropdownDirection } from './';
 
 export const getNativePopoverDropdownPosition = (
   positionReference: HTMLElement,

@@ -23,7 +23,7 @@ import {
   SEGMENTED_CONTROL_COLUMNS,
   syncSegmentedControlItemsProps,
 } from './segmented-control-utils';
-import { SegmentedControlItem } from '../segmented-control-item/segmented-control-item';
+import type { SegmentedControlItem } from '../segmented-control-item/segmented-control-item';
 import { getClickedItem } from '../../../utils/dom/getClickedItem';
 
 const propTypes: PropTypes<typeof SegmentedControl> = {

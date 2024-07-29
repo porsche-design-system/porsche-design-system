@@ -1,5 +1,6 @@
 import type { PropTypes } from '../../types';
-import { OptgroupInternalHTMLProps, updateOptionsDisabled } from './optgroup-utils';
+import type { OptgroupInternalHTMLProps} from './optgroup-utils';
+import { updateOptionsDisabled } from './optgroup-utils';
 
 import { Component, Element, h, Host, type JSX, Prop, Watch } from '@stencil/core';
 import { AllowedTypes, attachComponentCss, throwIfParentIsNotOfKind, validateProps } from '../../utils';

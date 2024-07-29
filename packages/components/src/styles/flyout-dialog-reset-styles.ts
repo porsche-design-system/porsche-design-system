@@ -1,4 +1,4 @@
-import { JssStyle } from 'jss';
+import type { JssStyle } from 'jss';
 
 export const getFlyoutDialogResetJssStyle = (): JssStyle => {
   return {

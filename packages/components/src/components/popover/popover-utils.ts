@@ -1,4 +1,4 @@
-import { Popover } from './popover';
+import type { Popover } from './popover';
 import { attachComponentCss, isClickOutside } from '../../utils';
 import { getComponentCss } from './popover-styles';
 import type { Theme } from '../../types';

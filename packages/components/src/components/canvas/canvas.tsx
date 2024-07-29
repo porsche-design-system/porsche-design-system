@@ -1,6 +1,7 @@
 import type { PropTypes } from '../../types';
 import { AllowedTypes, attachComponentCss, getPrefixedTagNames, validateProps } from '../../utils';
-import { Component, Element, EventEmitter, h, type JSX, Prop, Event, State, Host, Fragment } from '@stencil/core';
+import type { EventEmitter} from '@stencil/core';
+import { Component, Element, h, type JSX, Prop, Event, State, Host, Fragment } from '@stencil/core';
 import { getComponentCss } from './canvas-styles';
 import { CANVAS_SIDEBAR_WIDTHS, type CanvasSidebarEndWidth, type CanvasSidebarStartWidth } from './canvas-utils';
 import { breakpointM } from '@porsche-design-system/styles';

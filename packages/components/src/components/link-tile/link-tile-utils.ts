@@ -2,8 +2,8 @@ import { TILE_WEIGHTS, AllowedTypes, TILE_SIZES, TILE_ASPECT_RATIOS, TILE_ALIGNS
 import type { LinkAriaAttribute, TileAlign, TileAspectRatio, TileSize, TileBackground } from '../../utils';
 import type { LinkTarget } from '../../utils/link-button/link-target';
 import type { PropTypes } from '../../utils/validation/validateProps';
-import { ButtonTile } from '../button-tile/button-tile';
-import { LinkTile } from './link-tile';
+import type { ButtonTile } from '../button-tile/button-tile';
+import type { LinkTile } from './link-tile';
 
 /** @deprecated */
 export type LinkTileWeightDeprecated = 'semibold';

@@ -1,4 +1,4 @@
-import { THEMES } from '../theme';
+import type { THEMES } from '../theme';
 
 export const TILE_ASPECT_RATIOS = ['1:1', '4:3', '3:4', '16:9', '9:16'] as const;
 export type TileAspectRatio = (typeof TILE_ASPECT_RATIOS)[number];
