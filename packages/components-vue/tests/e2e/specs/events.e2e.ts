@@ -119,7 +119,7 @@ test.describe('banner', () => {
   test('should emit events once', async ({ page }) => {
     await goto(page, 'events');
 
-    const banner = await page.locator('p-banner');
+    const banner = page.locator('p-banner');
     const bannerOpenBtn = await selectNode(page, 'p-banner ~ button');
     const bannerCloseBtn = await selectNode(page, 'p-banner >>> p-inline-notification >>> p-button-pure.close');
     const bannerDismissEventCounter = await selectNode(page, 'p-banner + p');

@@ -1,4 +1,4 @@
-import { type ConsoleMessage, type ElementHandle, type Page } from '@playwright/test';
+import { type ConsoleMessage, type ElementHandle, Locator, type Page } from '@playwright/test';
 import { waitForComponentsReady } from './stencil';
 
 export const selectNode = async (page: Page, selector: string): Promise<ElementHandle> => {
@@ -15,11 +15,11 @@ export const selectNode = async (page: Page, selector: string): Promise<ElementH
   ).asElement() as ElementHandle;
 };
 
-export const getOuterHTML = (el: ElementHandle): Promise<string> => el.evaluate((el) => el.outerHTML);
+export const getOuterHTML = (el: Locator): Promise<string> => el.evaluate((el) => el.outerHTML);
 
 export const goto = async (page: Page, url: string): Promise<void> => {
   await page.goto(url);
-  await page.locator('html.hydrated').waitFor();
+  page.locator('html.hydrated').waitFor();
   await waitForComponentsReady(page);
 
   // it looks like vue event binding is a bit unreliable and happens after onMounted
