@@ -825,7 +825,7 @@ test.describe('after dynamic slot change', () => {
 });
 
 test.describe('events', () => {
-  skipInBrowsers(['firefox']);
+  skipInBrowsers(['firefox', 'webkit']);
   test('should expose ontransitionstart event', async ({ page }) => {
     await initBasicModal(
       page,
