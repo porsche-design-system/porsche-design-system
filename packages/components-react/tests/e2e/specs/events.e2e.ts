@@ -220,7 +220,7 @@ test.describe('carousel', () => {
   test('should emit events once', async ({ page }) => {
     await goto(page, 'events');
 
-    const goToLastSlideButton = page.locator('p-carousel').getByRole('button', { name: 'Go to last slide' }); // await selectNode(page, 'p-carousel >>> p-button-pure:first-of-type >>> button');
+    const goToLastSlideButton = page.locator('p-carousel').getByRole('button', { name: 'Go to last slide' });
     const prevSlideButton = page.locator('p-carousel').getByRole('button', { name: 'Previous slide' });
     const carouselUpdateEventCounter = page.locator('p-carousel + p');
 
