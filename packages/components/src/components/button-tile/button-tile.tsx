@@ -15,8 +15,6 @@ import {
   getPrefixedTagNames,
   hasPropValueChanged,
   isDisabledOrLoading,
-  parseJSON,
-  throwIfAlignTopAndNotCompact,
   TILE_WEIGHTS,
   validateProps,
 } from '../../utils';
@@ -112,16 +110,11 @@ export class ButtonTile implements ITileProps {
     applyConstructableStylesheetStyles(this.host, getSlottedPictureImageStyles);
   }
 
-  public componentWillLoad(): void {
-    throwIfAlignTopAndNotCompact(this.host, this.align, this.compact);
-  }
-
   public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
     return hasPropValueChanged(newVal, oldVal);
   }
 
   public render(): JSX.Element {
-    this.compact = parseJSON(this.compact) as any; // parsing the value just once per lifecycle
     validateProps(this, propTypes);
     attachComponentCss(
       this.host,
@@ -169,10 +162,11 @@ export class ButtonTile implements ITileProps {
 
     return (
       <div class="root">
-        <div class="image-container">
+        <slot name="header" />
+        <div class="media">
           <slot />
         </div>
-        <div class="content">
+        <div class="footer">
           <p>{this.description}</p>
           {typeof this.compact === 'boolean' ? (this.compact ? buttonPure : button) : [buttonPure, button]}
         </div>
