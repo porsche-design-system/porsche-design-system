@@ -118,7 +118,7 @@ language.
 import Vue from 'vue';
 import Component from 'vue-class-component';
 import { LINK_TILE_WEIGHTS } from './link-tile-utils';
-import { THEMES, TILE_ALIGNS, TILE_ASPECT_RATIOS, TILE_SIZES } from '../../utils'; 
+import { THEMES, TILE_ALIGNS, TILE_ASPECT_RATIOS, TILE_ASPECT_RATIOS_DEPRECATED, TILE_SIZES, TILE_SIZES_DEPRECATED } from '../../utils'; 
 
 @Component
 export default class Code extends Vue {
@@ -142,15 +142,15 @@ export default class Code extends Vue {
   <img src="${require('@/assets/image-grid.png')}" ${this.imgAttributes} />
 </p-link-tile>`;
 
-  aspectRatio = '4:3';
-  aspectRatios = [...TILE_ASPECT_RATIOS, "{ base: '3:4', s: '1:1', m: '16:9' }"];
+  aspectRatio = '4/3';
+  aspectRatios = [...TILE_ASPECT_RATIOS.map(item => TILE_ASPECT_RATIOS_DEPRECATED.includes(item) ? item + ' (deprecated)' : item), "{ base: '3/4', s: '1/1', m: '16/9' }"];
   get aspectRatioMarkup() {
     return`<p-link-tile href="#" label="Some Label" description="Some Description" aspect-ratio="${this.aspectRatio}">
   <img src="${require('@/assets/image-grid.png')}" ${this.imgAttributes} />
 </p-link-tile>`}
 
-  size = 'default';
-  sizes = [...TILE_SIZES, "{ base: 'inherit', m: 'default' }"];
+  size = 'medium';
+  sizes = [...TILE_SIZES.map(item => TILE_SIZES_DEPRECATED.includes(item) ? item + ' (deprecated)' : item), "{ base: 'inherit', m: 'medium' }"];
   get sizeMarkup() {
     return`<p-link-tile href="#" label="Some Label" description="Some Description" size="${this.size}" style="font-size: 40px;">
   <img src="${require('@/assets/image-grid.png')}" ${this.imgAttributes} />

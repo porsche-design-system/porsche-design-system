@@ -107,7 +107,7 @@ linkEl.addEventListener('click', (event) => {
 <script lang="ts">
 import Vue from 'vue';
 import Component from 'vue-class-component';
-import { TILE_WEIGHTS, TILE_ASPECT_RATIOS } from '../../utils'; 
+import { TILE_WEIGHTS, TILE_ASPECT_RATIOS, TILE_ASPECT_RATIOS_DEPRECATED } from '../../utils'; 
 import { MODEL_SIGNATURE_MODELS } from '../model-signature/model-signature-utils'; 
 import { GROUP_DIRECTIONS } from '../../styles/group-direction-styles'; 
 
@@ -152,8 +152,8 @@ export default class Code extends Vue {
 </p-link-tile-model-signature>`;
   };
 
-  aspectRatio = '3:4';
-  aspectRatios = [...TILE_ASPECT_RATIOS, "{ base: '3:4', m: '9:16' }"];
+  aspectRatio = '3/4';
+  aspectRatios = [...TILE_ASPECT_RATIOS.map(item => TILE_ASPECT_RATIOS_DEPRECATED.includes(item) ? item + ' (deprecated)' : item), "{ base: '3/4', m: '9/16' }"];
   get aspectRatioMarkup() {
     return`<p-link-tile-model-signature heading="Some Heading" aspect-ratio="${this.aspectRatio}">
   ${this.img}
