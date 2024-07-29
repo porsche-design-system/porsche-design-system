@@ -2,7 +2,7 @@
 
 exports[`getComponentCss() should return correct css for isDisabledOrLoading: false, aspectRatio: "4:3", size: "default", weight: "semi-bold", background: dark, align: bottom, isCompact: false, hasGradient: true and isDisabled: false 1`] = `
 ":host {
-  display: flex;
+  display: block;
   hyphens: auto;
   color-scheme: light dark !important;
 }
@@ -49,6 +49,7 @@ p {
   aspect-ratio: 4/3;
   cursor: pointer;
   width: 100%;
+  height: 100%;
   display: grid;
   grid-template: clamp(16px, 1.25vw + 12px, 36px) auto minmax(0px, 1fr) auto clamp(16px, 1.25vw + 12px, 36px)/clamp(16px, 1.25vw + 12px, 36px) minmax(0px, 1fr) clamp(16px, 1.25vw + 12px, 36px);
 }
@@ -100,7 +101,7 @@ p {
 
 exports[`getComponentCss() should return correct css for isDisabledOrLoading: false, aspectRatio: "9:16", size: "default", weight: "semi-bold", background: dark, align: bottom, isCompact: false, hasGradient: false and isDisabled: false 1`] = `
 ":host {
-  display: flex;
+  display: block;
   hyphens: auto;
   color-scheme: light dark !important;
 }
@@ -147,6 +148,7 @@ p {
   aspect-ratio: 9/16;
   cursor: pointer;
   width: 100%;
+  height: 100%;
   display: grid;
   grid-template: clamp(16px, 1.25vw + 12px, 36px) auto minmax(0px, 1fr) auto clamp(16px, 1.25vw + 12px, 36px)/clamp(16px, 1.25vw + 12px, 36px) minmax(0px, 1fr) clamp(16px, 1.25vw + 12px, 36px);
 }
@@ -183,7 +185,7 @@ p {
 
 exports[`getComponentCss() should return correct css for isDisabledOrLoading: false, aspectRatio: "16:9", size: "inherit", weight: "regular", background: light, align: top, isCompact: true, hasGradient: false and isDisabled: true 1`] = `
 ":host {
-  display: flex;
+  display: block;
   hyphens: auto;
   color-scheme: light dark !important;
 }
@@ -230,6 +232,7 @@ p {
   aspect-ratio: 16/9;
   cursor: pointer;
   width: 100%;
+  height: 100%;
   display: grid;
   grid-template: clamp(16px, 1.25vw + 12px, 36px) auto minmax(0px, 1fr) auto clamp(16px, 1.25vw + 12px, 36px)/clamp(16px, 1.25vw + 12px, 36px) minmax(0px, 1fr) clamp(16px, 1.25vw + 12px, 36px);
 }
@@ -260,7 +263,7 @@ p {
 
 exports[`getComponentCss() should return correct css for isDisabledOrLoading: false, aspectRatio: {"base":"1:1","xs":"4:3","s":"3:4","m":"16:9","l":"9:16","xl":"1:1"}, size: {"base":"inherit","xs":"default","s":"inherit","m":"default","l":"inherit","xl":"default"}, weight: {"base":"semi-bold","xs":"regular","s":"semi-bold","m":"regular","l":"semi-bold","xl":"regular"}, background: light, align: top, isCompact: {"base":true,"xs":false,"s":true,"m":false,"l":true,"xl":false}, hasGradient: true and isDisabled: false 1`] = `
 ":host {
-  display: flex;
+  display: block;
   hyphens: auto;
   color-scheme: light dark !important;
 }
@@ -342,6 +345,7 @@ p {
   aspect-ratio: 1/1;
   cursor: pointer;
   width: 100%;
+  height: 100%;
   display: grid;
   grid-template: clamp(16px, 1.25vw + 12px, 36px) auto minmax(0px, 1fr) auto clamp(16px, 1.25vw + 12px, 36px)/clamp(16px, 1.25vw + 12px, 36px) minmax(0px, 1fr) clamp(16px, 1.25vw + 12px, 36px);
 }
@@ -458,7 +462,7 @@ p {
 
 exports[`getComponentCss() should return correct css for isDisabledOrLoading: true, aspectRatio: "1:1", size: "inherit", weight: "regular", background: light, align: bottom, isCompact: false, hasGradient: true and isDisabled: true 1`] = `
 ":host {
-  display: flex;
+  display: block;
   hyphens: auto;
   color-scheme: light dark !important;
 }
@@ -505,6 +509,7 @@ p {
   aspect-ratio: 1/1;
   cursor: not-allowed;
   width: 100%;
+  height: 100%;
   display: grid;
   grid-template: clamp(16px, 1.25vw + 12px, 36px) auto minmax(0px, 1fr) auto clamp(16px, 1.25vw + 12px, 36px)/clamp(16px, 1.25vw + 12px, 36px) minmax(0px, 1fr) clamp(16px, 1.25vw + 12px, 36px);
 }
@@ -535,7 +540,7 @@ p {
 
 exports[`getComponentCss() should return correct css for isDisabledOrLoading: true, aspectRatio: "3:4", size: "default", weight: "semi-bold", background: dark, align: top, isCompact: false, hasGradient: true and isDisabled: false 1`] = `
 ":host {
-  display: flex;
+  display: block;
   hyphens: auto;
   color-scheme: light dark !important;
 }
@@ -582,6 +587,7 @@ p {
   aspect-ratio: 3/4;
   cursor: not-allowed;
   width: 100%;
+  height: 100%;
   display: grid;
   grid-template: clamp(16px, 1.25vw + 12px, 36px) auto minmax(0px, 1fr) auto clamp(16px, 1.25vw + 12px, 36px)/clamp(16px, 1.25vw + 12px, 36px) minmax(0px, 1fr) clamp(16px, 1.25vw + 12px, 36px);
 }
