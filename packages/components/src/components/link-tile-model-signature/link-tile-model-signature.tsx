@@ -102,8 +102,7 @@ export class LinkTileModelSignature {
       !!this.description
     );
 
-    const overlayLinkProps: JSXBase.AnchorHTMLAttributes<HTMLAnchorElement> & AriaAttributes & { class: string } = {
-      class: 'link-overlay',
+    const overlayLinkProps: JSXBase.AnchorHTMLAttributes<HTMLAnchorElement> & AriaAttributes = {
       href: linkEl.href,
       target: linkEl.target || '_self',
       download: linkEl.download,
