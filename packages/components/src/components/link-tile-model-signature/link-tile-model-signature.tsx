@@ -127,7 +127,7 @@ export class LinkTileModelSignature {
         <div class="footer">
           <this.headingTag>{this.heading}</this.headingTag>
           {this.description && <p>{this.description}</p>}
-          <div class="link-group">
+          <div class="link-group" role="group">
             <slot name="primary" />
             <slot name="secondary" />
           </div>
