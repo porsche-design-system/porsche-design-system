@@ -1,5 +1,5 @@
 import type { ConsoleMessage, Page } from 'playwright';
-import { ElementHandle, expect, type Locator } from '@playwright/test';
+import { expect, type Locator } from '@playwright/test';
 import { waitForComponentsReady } from './stencil';
 import type { TagName } from '@porsche-design-system/shared';
 import { getComponentMeta } from '@porsche-design-system/component-meta';
@@ -130,10 +130,6 @@ export const setContentWithDesignSystem = async (page: Page, content: string, op
   if (!options.withoutWaitForComponentsReady) {
     await waitForComponentsReady(page);
   }
-};
-
-export const getShadowRoot = async (element: Locator): Promise<ElementHandle<ShadowRoot>> => {
-  return (await element.evaluateHandle((el) => el.shadowRoot)).asElement();
 };
 
 const containsCapitalChar = (key: string): boolean => /[A-Z]/.test(key);

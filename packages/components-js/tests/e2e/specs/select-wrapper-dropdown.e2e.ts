@@ -11,7 +11,6 @@ import {
   getLifecycleStatus,
   getPageThrownErrorsAmount,
   getProperty,
-  getShadowRoot,
   initPageErrorObserver,
   reattachElement,
   setContentWithDesignSystem,
@@ -896,7 +895,7 @@ test.describe('keyboard and click events', () => {
     const dropdownOption2 = page.locator(`${nestedDropdownSelector} .option:nth-child(2)`);
     const dropdownOption2BoundingBox = await dropdownOption2.boundingBox();
 
-    const dropdownInCustomElement = await getShadowRoot(page.locator(nestedDropdownSelector));
+    const dropdownInCustomElement = page.locator(nestedDropdownSelector);
     const getSelectedOptionInCustomElement = () => getElementIndex(dropdownInCustomElement, `.${selectedClass}`);
 
     expect(await getSelectedOptionInCustomElement(), 'initially').toBe(0);

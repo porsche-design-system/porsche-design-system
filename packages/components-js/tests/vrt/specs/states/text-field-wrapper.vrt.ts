@@ -148,14 +148,7 @@ const scenario = async (page: Page, theme: Theme, scheme?: PrefersColorScheme): 
 
   // let's toggle some password fields
   const textFieldWrappers = await page.locator('.toggle-password').all();
-  await Promise.all(
-    textFieldWrappers.map(
-      async (item) =>
-        (await item.evaluateHandle((el) => el.shadowRoot.querySelector('p-button-pure'))).evaluate((el: HTMLElement) =>
-          el.click()
-        ) // js element.click() instead ElementHandle.click() to workaround element off screen issue
-    )
-  );
+  await Promise.all(textFieldWrappers.map(async (item) => await item.locator('p-button-pure').click()));
 
   // get rid of focus from last .toggle-password input
   await page.mouse.click(0, 0);
