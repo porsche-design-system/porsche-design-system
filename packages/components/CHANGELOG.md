@@ -38,13 +38,15 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 - `Link Pure`: Broken with `alignLabel="start"`, hidden label & nested anchor
   ([#3379](https://github.com/porsche-design-system/porsche-design-system/pull/3379))
-- `PTextFieldWrapper`, `PTextareaWrapper`: Conditionally rendered component throws
+- `Textfield Wrapper`, `Textarea Wrapper`: Conditionally rendered component throws
   `TypeError: Cannot read properties of undefined (reading 'type')`
   ([#3383](https://github.com/porsche-design-system/porsche-design-system/pull/3383))
-- `LinkTile`: Broken word-break & hyphens Safari
+- `Link Tile`: Broken word-break & hyphens Safari
   ([#3397](https://github.com/porsche-design-system/porsche-design-system/pull/3397))
-- `Select-Wrapper`: `optgroup` styling and behavior
+- `Select Wrapper`: `optgroup` styling and behavior
   ([#3410](https://github.com/porsche-design-system/porsche-design-system/pull/3410))
+- `Tabs Bar`: fixed tabindex issue when `Tabs Bar` is rendered with the `Scroller` component
+  ([#3421](https://github.com/porsche-design-system/porsche-design-system/pull/3421))
 
 ### [3.16.0] - 2024-07-02
 
