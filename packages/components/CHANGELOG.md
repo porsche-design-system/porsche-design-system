@@ -25,6 +25,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 - `Optgroup`: Usable in combination with `Select` and `Multi Select`
   ([#3410](https://github.com/porsche-design-system/porsche-design-system/pull/3410))
 - `Flyout`, `Modal`: Expose native transition events of dialog with `transition` event
+  ([#3418](https://github.com/porsche-design-system/porsche-design-system/pull/3418))
 
 #### Changed
 
