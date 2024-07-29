@@ -21,7 +21,7 @@ test.beforeEach(async ({ page }) => {
   });
 });
 
-const getHitsWrapper = (page: Page) => page.$('.spacer');
+const getHitsWrapper = (page: Page) => page.locator('.spacer');
 const getAmountOfAlgoliaHits = (page: Page): Promise<number> =>
   page.evaluate(() => document.querySelectorAll('.ais-Hits-item').length);
 const waitForResultsToBeGone = (page: Page) => page.waitForFunction(() => !document.querySelector('.ais-Hits-item'));
@@ -56,7 +56,7 @@ test.describe('search', () => {
 
   test('should hide hits after clicking on a result', async ({ page }) => {
     await sendAlgoliaRequest(page);
-    const [linkElement] = await page.locator(`xpath=//header//a[contains(., 'Button')]`).all();
+    const [linkElement] = page.locator(`xpath=//header//a[contains(., 'Button')]`).all();
     await linkElement.click();
     const hitsWrapper = await getHitsWrapper(page);
 
@@ -65,7 +65,7 @@ test.describe('search', () => {
 
   test('should show hits after navigation and click on search input focus', async ({ page }) => {
     await sendAlgoliaRequest(page);
-    const [linkElement] = await page.locator(`xpath=//header//a[contains(., 'Button')]`).all();
+    const [linkElement] = page.locator(`xpath=//header//a[contains(., 'Button')]`).all();
     await linkElement.click();
 
     await page.focus(searchInputSelector);

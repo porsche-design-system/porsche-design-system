@@ -1,4 +1,4 @@
-import { type ConsoleMessage, type ElementHandle, type Page } from '@playwright/test';
+import { type ConsoleMessage, type Locator, type Page } from '@playwright/test';
 
 const consoleMessages: ConsoleMessage[] = [];
 
@@ -14,9 +14,9 @@ export const initConsoleObserver = (page: Page): void => {
 };
 export const getConsoleErrorsAmount = () => consoleMessages.length;
 
-export const getElementInnerText = (element: ElementHandle): Promise<string> =>
+export const getElementInnerText = (element: Locator): Promise<string> =>
   element.evaluate((el) => (el as HTMLElement).innerText);
 
-export const getProperty = async <T>(element: ElementHandle, prop: string): Promise<T> => {
+export const getProperty = async <T>(element: Locator, prop: string): Promise<T> => {
   return element.evaluate((el, prop: string) => el[prop], prop);
 };

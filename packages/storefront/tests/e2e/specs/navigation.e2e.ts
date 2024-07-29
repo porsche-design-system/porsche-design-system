@@ -128,7 +128,7 @@ for (const [path, category, page, tab, isFirst] of sitemap) {
     await Promise.all([browserPage.waitForURL(browserPage.url()), linkPureElement.click()]);
 
     // wait for p-heading and p-tabs-bar to be ready
-    const mainElementHandle = await browserPage.$('main');
+    const mainElementHandle = browserPage.locator('main');
     await mainElementHandle.evaluate((el) => (window as any).componentsReady(el));
 
     await waitForHeading(browserPage);
