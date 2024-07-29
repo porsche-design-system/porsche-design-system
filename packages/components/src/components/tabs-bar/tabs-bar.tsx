@@ -243,18 +243,6 @@ export class TabsBar {
         upcomingFocusedTabIndex = this.tabElements.length - 1;
         break;
 
-      // the slotted buttons have a different tabbing sequence in chrome and safari and it appears that on hitting
-      // tab the first slotted one with tabindex=0 becomes focused instead of the one after,
-      // therefor the 'Tab' case needs to be handled
-      case 'Tab':
-        const { target } = e;
-        const { tabIndex } = target;
-        target.tabIndex = null;
-        setTimeout(() => {
-          target.tabIndex = tabIndex;
-        });
-        return;
-
       default:
         return;
     }
