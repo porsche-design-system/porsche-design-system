@@ -16,10 +16,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 #### Added
 
-- `Link Tile`, `Button Tile`:
+- `Link Tile`, `Link Tile Model Signature`, `Button Tile`:
   - Named slot `header` ([#3419](https://github.com/porsche-design-system/porsche-design-system/pull/3419))
-  - Prop `size` extended by value `large`
-    ([#3419](https://github.com/porsche-design-system/porsche-design-system/pull/3419))
+- `Link Tile`, `Button Tile`: Prop `size` extended by value `large`
+  ([#3419](https://github.com/porsche-design-system/porsche-design-system/pull/3419))
 - `Tag`:
   - Prop `compact` ([#3411](https://github.com/porsche-design-system/porsche-design-system/pull/3411))
   - Prop `color` extended by value `background-frosted`
@@ -29,14 +29,15 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 #### Changed
 
-- `Link Tile`, `Button Tile`:
+- `Link Tile`, `Link Tile Model Signature`, `Button Tile`:
   - Layout behaviour is able to break out of its aspect ratio in case content overflows to be a11y compliant
     ([#3419](https://github.com/porsche-design-system/porsche-design-system/pull/3419))
   - Values `1:1 | 4:3 | 3:4 | 16:9 | 9:16` of prop `aspect-ratio` are deprecated and mapped to new values
     `1/1 | 4/3 | 3/4 | 16/9 | 9/16` to be aligned with CSS spec
     ([#3419](https://github.com/porsche-design-system/porsche-design-system/pull/3419))
-  - Value `default` of prop `size` are deprecated and mapped to new value `medium` to be in sync with typography sizing
-    definition ([#3419](https://github.com/porsche-design-system/porsche-design-system/pull/3419))
+- `Link Tile`, `Button Tile`: Value `default` of prop `size` are deprecated and mapped to new value `medium` to be in
+  sync with typography sizing definition
+  ([#3419](https://github.com/porsche-design-system/porsche-design-system/pull/3419))
 - `Icon`: All icons are up-to-date with the One UI look
 - Shorten asset filenames
 
