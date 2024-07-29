@@ -105,8 +105,8 @@ export class LinkTileModelSignature {
     const overlayLinkProps: JSXBase.AnchorHTMLAttributes<HTMLAnchorElement> & AriaAttributes = {
       href: linkEl.href,
       target: linkEl.target || '_self',
-      download: linkEl.download,
-      rel: linkEl.rel,
+      download: linkEl.download || null,
+      rel: linkEl.rel || null,
       tabIndex: -1,
       'aria-hidden': 'true',
     };

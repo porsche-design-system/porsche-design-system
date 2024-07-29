@@ -49,6 +49,12 @@ export const getComponentCss = (
           height: '100%',
           transition: getTransition('transform', 'moderate'),
         },
+        '&[name=primary]': {
+          pointerEvents: 'auto',
+        },
+        '&[name=secondary]': {
+          pointerEvents: 'auto',
+        },
       },
       '::slotted(:is(img,picture))': addImportantToEachRule({
         display: 'block',
@@ -133,6 +139,7 @@ export const getComponentCss = (
       zIndex: 5,
       display: 'flex',
       width: '100%',
+      pointerEvents: 'none',
       gap: spacingFluidSmall,
       ...buildResponsiveStyles(direction, getGroupDirectionJssStyles),
     },
