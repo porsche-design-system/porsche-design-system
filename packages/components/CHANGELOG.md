@@ -16,7 +16,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 #### Added
 
-- `Link Tile`:
+- `Link Tile`, `Button Tile`:
   - Named slot `header` ([#3419](https://github.com/porsche-design-system/porsche-design-system/pull/3419))
   - Prop `size` extended by value `large`
     ([#3419](https://github.com/porsche-design-system/porsche-design-system/pull/3419))
@@ -29,7 +29,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 #### Changed
 
-- `Link Tile`:
+- `Link Tile`, `Button Tile`:
   - Layout behaviour is able to break out of its aspect ratio in case content overflows to be a11y compliant
     ([#3419](https://github.com/porsche-design-system/porsche-design-system/pull/3419))
   - Values `1:1 | 4:3 | 3:4 | 16:9 | 9:16` of prop `aspect-ratio` are deprecated and mapped to new values
