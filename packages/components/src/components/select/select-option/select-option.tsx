@@ -35,7 +35,7 @@ export class SelectOption {
   @Prop() public disabled?: boolean = false;
 
   public connectedCallback(): void {
-    throwIfParentIsNotOfKind(this.host, 'p-select');
+    throwIfParentIsNotOfKind(this.host, ['p-select', 'p-optgroup']);
   }
 
   public render(): JSX.Element {

@@ -452,6 +452,13 @@ exports[`should call validateProps() with correct parameters via render for p-mu
 }
 `;
 
+exports[`should call validateProps() with correct parameters via render for p-optgroup: propTypes with ValidatorFunctions 1`] = `
+{
+  "disabled": "boolean",
+  "label": "string",
+}
+`;
+
 exports[`should call validateProps() with correct parameters via render for p-pagination: propTypes with ValidatorFunctions 1`] = `
 {
   "activePage": "number",

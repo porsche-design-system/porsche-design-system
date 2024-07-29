@@ -22,6 +22,7 @@ import {
 
 const getHost = (page: Page) => page.$('p-select-wrapper');
 const getSelect = (page: Page) => page.$('p-select-wrapper select');
+const getSelectOptgroup = (page: Page) => page.$('p-select-wrapper select optgroup');
 const getSelectIcon = (page: Page) => page.$('p-select-wrapper .icon');
 
 const dropdownSelector = 'p-select-wrapper p-select-wrapper-dropdown';
@@ -29,6 +30,7 @@ const highlightedClass = 'option--highlighted';
 const selectedClass = 'option--selected';
 const disabledClass = 'option--disabled';
 const hiddenClass = 'option--hidden';
+const disabledOptgroupClass = 'optgroup--disabled';
 
 const getDropdown = (page: Page) => page.$(dropdownSelector);
 const getDropdownCombobox = (page: Page) => page.$(`${dropdownSelector} [role="combobox"]`);
@@ -83,6 +85,7 @@ type InitOptions = {
   selectedIndex?: number;
   hiddenIndex?: number;
   beginUnique?: boolean;
+  includeOptgroups?: boolean;
 };
 
 const initSelect = (page: Page, opts?: InitOptions): Promise<void> => {
@@ -95,9 +98,9 @@ const initSelect = (page: Page, opts?: InitOptions): Promise<void> => {
     selectedIndex,
     hiddenIndex,
     beginUnique,
+    includeOptgroups = false,
   } = opts || {};
 
-  // TODO: wtf?
   const options = [...'abc', ...(amount === 5 ? 'de' : '')].map((x, idx) => {
     const attrs = [
       disabledIndex === idx ? 'disabled' : '',
@@ -106,7 +109,8 @@ const initSelect = (page: Page, opts?: InitOptions): Promise<void> => {
     ].join(' ');
 
     const val = x.toUpperCase();
-    return `<option value="${x}" ${attrs}>${beginUnique ? `${val} Option` : `Option ${val}`}</option>`;
+    const option = `<option value="${x}" ${attrs}>${beginUnique ? `${val} Option` : `Option ${val}`}</option>`;
+    return includeOptgroups ? `<optgroup label="${x}">${option}</optgroup>` : option;
   });
 
   const attrs = [
@@ -1010,5 +1014,48 @@ test.describe('lifecycle', () => {
 
     expect(status2.componentDidLoad.all, '2nd componentDidLoad: all').toBe(4);
     expect(status2.componentDidUpdate.all, '2nd componentDidUpdate: all').toBe(2);
+  });
+});
+
+test.describe('optgroups', () => {
+  test('should disable all options inside disabled optgroup', async ({ page }) => {
+    await initSelect(page, { includeOptgroups: true });
+
+    await openSelect(page);
+    await waitForStencilLifecycle(page);
+
+    const disabledOptgroupClassRegex = new RegExp(disabledOptgroupClass);
+    const disabledClassRegex = new RegExp(disabledClass);
+
+    const optgroup = page.locator('span[role="presentation"]').getByText('b');
+    await expect(optgroup).not.toHaveClass(disabledOptgroupClassRegex);
+    const child = await page.getByRole('option').getByText('b');
+
+    await expect(child).not.toHaveClass(disabledClassRegex);
+
+    await page.locator('optgroup[label="b"]').evaluate((element) => (element.disabled = true));
+    await waitForStencilLifecycle(page);
+
+    await expect(optgroup).toHaveClass(disabledOptgroupClassRegex);
+    await expect(child).toHaveClass(disabledClassRegex);
+  });
+
+  test('should hide all options inside hidden optgroup', async ({ page }) => {
+    await initSelect(page, { includeOptgroups: true });
+
+    await openSelect(page);
+    await waitForStencilLifecycle(page);
+
+    const optgroup = page.locator('span[role="presentation"]').getByText('b');
+    await expect(optgroup).toBeVisible();
+    const child = await page.getByRole('option').getByText('b');
+
+    await expect(child).toBeVisible();
+
+    await page.locator('optgroup[label="b"]').evaluate((element) => (element.hidden = true));
+    await waitForStencilLifecycle(page);
+
+    await expect(optgroup).not.toBeVisible();
+    await expect(child).not.toBeVisible();
   });
 });

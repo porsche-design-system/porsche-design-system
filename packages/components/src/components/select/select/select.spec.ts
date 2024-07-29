@@ -102,8 +102,8 @@ describe('disconnectedCallback', () => {
 });
 
 describe('render', () => {
-  it('should call syncSelectOptionProps() with correct parameters', () => {
-    const spy = jest.spyOn(selectUtils, 'syncSelectOptionProps');
+  it('should call syncSelectChildrenProps() with correct parameters', () => {
+    const spy = jest.spyOn(selectUtils, 'syncSelectChildrenProps');
     const component = initComponent();
     component.render();
     expect(spy).toHaveBeenCalledWith(component['selectOptions'], component.theme);

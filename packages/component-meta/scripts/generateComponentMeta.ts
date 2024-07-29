@@ -72,8 +72,20 @@ const generateComponentMeta = (): void => {
     const styling = usesScss && usesJss ? 'hybrid' : usesJss ? 'jss' : 'scss';
 
     // required parent
-    const [, requiredParent] =
-      (/throwIfParentIsNotOfKind\(.+'([a-z-]+)'\)/.exec(source) as unknown as [string, TagName]) || [];
+    const [, singleMatch, arrayMatch] =
+      (/throwIfParentIsNotOfKind\(.+, '([^']+)'\)|throwIfParentIsNotOfKind\(.+, \[([^\]]+)]\)/.exec(
+        source
+      ) as unknown as [string, TagName?, string?]) || [];
+
+    const parseRequiredParent = (singleMatch: TagName, arrayMatch: string) => {
+      if (singleMatch) return singleMatch;
+
+      if (arrayMatch) {
+        return arrayMatch.split(',').map((tag) => tag.trim().replace(/^'|'$/g, '')) as TagName[];
+      }
+    };
+
+    const requiredParent = parseRequiredParent(singleMatch, arrayMatch);
 
     // required root nodes
     let [, requiredRootNodes] =
@@ -128,10 +140,10 @@ const generateComponentMeta = (): void => {
           : propValue === 'false'
             ? false
             : // undefined values get lost in JSON.stringify, but null is allowed
-              propValue
+              (propValue
                 ?.replace(/^['"](.*)['"]$/, '$1') // propValue is a string and might contain a string wrapped in quotes since it is extracted like this
                 .replace(/\s+/g, ' ') // remove new lines and multiple spaces
-                .replace(/,( })/, '$1') ?? null; // remove trailing comma in original multiline objects
+                .replace(/,( })/, '$1') ?? null); // remove trailing comma in original multiline objects
 
       if (typeof cleanedValue === 'string') {
         if (cleanedValue.match(/^\d+$/) && !propValue.match(/^['"]\d+['"]$/)) {
@@ -462,7 +474,10 @@ const generateComponentMeta = (): void => {
           let [, eventTypeDetail] =
             eventTypeFileContent.match(new RegExp(`type ${eventTypeAlias || eventType} = ({[\\s\\S]+?});\\n`)) || [];
 
-          if (eventTypeDetail) {
+          // Standard lib types don't need to be resolved
+          if (['TransitionEvent'].includes(eventTypeAlias)) {
+            typeDetail = eventTypeAlias;
+          } else if (eventTypeDetail) {
             typeDetail = eventTypeDetail;
           } else {
             // check if the type is defined locally

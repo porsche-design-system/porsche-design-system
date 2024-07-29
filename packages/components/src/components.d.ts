@@ -23,7 +23,7 @@ import { FieldsetLabelSize, FieldsetState } from "./components/fieldset/fieldset
 import { FieldsetWrapperLabelSize, FieldsetWrapperState } from "./components/fieldset-wrapper/fieldset-wrapper-utils";
 import { FlexAlignContent, FlexAlignItems, FlexDirection, FlexInline, FlexJustifyContent, FlexWrap } from "./components/flex/flex/flex-utils";
 import { FlexItemAlignSelf, FlexItemFlex, FlexItemGrow, FlexItemOffset, FlexItemShrink, FlexItemWidth } from "./components/flex/flex-item/flex-item-utils";
-import { FlyoutAriaAttribute, FlyoutPosition } from "./components/flyout/flyout-utils";
+import { FlyoutAriaAttribute, FlyoutMotionHiddenEndEventDetail, FlyoutMotionVisibleEndEventDetail, FlyoutPosition } from "./components/flyout/flyout-utils";
 import { FlyoutMultilevelAriaAttribute, FlyoutMultilevelUpdateEventDetail } from "./components/flyout-multilevel/flyout-multilevel/flyout-multilevel-utils";
 import { GridDirection, GridGutter, GridWrap } from "./components/grid/grid/grid-utils";
 import { GridItemOffset, GridItemSize } from "./components/grid/grid-item/grid-item-utils";
@@ -39,7 +39,7 @@ import { LinkTileModelSignatureAspectRatio, LinkTileModelSignatureHeadingTag, Li
 import { LinkTileProductAspectRatio, LinkTileProductLikeEventDetail, LinkTileProductTarget } from "./components/link-tile-product/link-tile-product-utils";
 import { MarqueAriaAttribute, MarqueTarget, MarqueVariant } from "./components/marque/marque-utils";
 import { MarqueSize } from "./components/marque/marque-size";
-import { ModalAriaAttribute, ModalBackdrop } from "./components/modal/modal-utils";
+import { ModalAriaAttribute, ModalBackdrop, ModalMotionHiddenEndEventDetail, ModalMotionVisibleEndEventDetail } from "./components/modal/modal-utils";
 import { ModelSignatureColor, ModelSignatureFetchPriority, ModelSignatureModel, ModelSignatureSize } from "./components/model-signature/model-signature-utils";
 import { MultiSelectDropdownDirection, MultiSelectState, MultiSelectUpdateEventDetail } from "./components/multi-select/multi-select/multi-select-utils";
 import { PaginationInternationalization, PaginationMaxNumberOfPageLinks, PaginationUpdateEventDetail } from "./components/pagination/pagination-utils";
@@ -85,7 +85,7 @@ export { FieldsetLabelSize, FieldsetState } from "./components/fieldset/fieldset
 export { FieldsetWrapperLabelSize, FieldsetWrapperState } from "./components/fieldset-wrapper/fieldset-wrapper-utils";
 export { FlexAlignContent, FlexAlignItems, FlexDirection, FlexInline, FlexJustifyContent, FlexWrap } from "./components/flex/flex/flex-utils";
 export { FlexItemAlignSelf, FlexItemFlex, FlexItemGrow, FlexItemOffset, FlexItemShrink, FlexItemWidth } from "./components/flex/flex-item/flex-item-utils";
-export { FlyoutAriaAttribute, FlyoutPosition } from "./components/flyout/flyout-utils";
+export { FlyoutAriaAttribute, FlyoutMotionHiddenEndEventDetail, FlyoutMotionVisibleEndEventDetail, FlyoutPosition } from "./components/flyout/flyout-utils";
 export { FlyoutMultilevelAriaAttribute, FlyoutMultilevelUpdateEventDetail } from "./components/flyout-multilevel/flyout-multilevel/flyout-multilevel-utils";
 export { GridDirection, GridGutter, GridWrap } from "./components/grid/grid/grid-utils";
 export { GridItemOffset, GridItemSize } from "./components/grid/grid-item/grid-item-utils";
@@ -101,7 +101,7 @@ export { LinkTileModelSignatureAspectRatio, LinkTileModelSignatureHeadingTag, Li
 export { LinkTileProductAspectRatio, LinkTileProductLikeEventDetail, LinkTileProductTarget } from "./components/link-tile-product/link-tile-product-utils";
 export { MarqueAriaAttribute, MarqueTarget, MarqueVariant } from "./components/marque/marque-utils";
 export { MarqueSize } from "./components/marque/marque-size";
-export { ModalAriaAttribute, ModalBackdrop } from "./components/modal/modal-utils";
+export { ModalAriaAttribute, ModalBackdrop, ModalMotionHiddenEndEventDetail, ModalMotionVisibleEndEventDetail } from "./components/modal/modal-utils";
 export { ModelSignatureColor, ModelSignatureFetchPriority, ModelSignatureModel, ModelSignatureSize } from "./components/model-signature/model-signature-utils";
 export { MultiSelectDropdownDirection, MultiSelectState, MultiSelectUpdateEventDetail } from "./components/multi-select/multi-select/multi-select-utils";
 export { PaginationInternationalization, PaginationMaxNumberOfPageLinks, PaginationUpdateEventDetail } from "./components/pagination/pagination-utils";
@@ -1351,6 +1351,16 @@ export namespace Components {
          */
         "value": string;
     }
+    interface POptgroup {
+        /**
+          * Disables the optgroup.
+         */
+        "disabled"?: boolean;
+        /**
+          * The optgroup label.
+         */
+        "label"?: string;
+    }
     /**
      * @controlled { "props": ["activePage"], "event": "update", "isInternallyMutated": true }
      */
@@ -2351,6 +2361,8 @@ declare global {
     };
     interface HTMLPFlyoutElementEventMap {
         "dismiss": void;
+        "motionVisibleEnd": FlyoutMotionVisibleEndEventDetail;
+        "motionHiddenEnd": FlyoutMotionHiddenEndEventDetail;
     }
     /**
      * @controlled {"props": ["open"], "event": "dismiss"}
@@ -2524,6 +2536,8 @@ declare global {
     interface HTMLPModalElementEventMap {
         "close": void;
         "dismiss": void;
+        "motionVisibleEnd": ModalMotionVisibleEndEventDetail;
+        "motionHiddenEnd": ModalMotionHiddenEndEventDetail;
     }
     /**
      * @controlled {"props": ["open"], "event": "dismiss"}
@@ -2573,6 +2587,12 @@ declare global {
     var HTMLPMultiSelectOptionElement: {
         prototype: HTMLPMultiSelectOptionElement;
         new (): HTMLPMultiSelectOptionElement;
+    };
+    interface HTMLPOptgroupElement extends Components.POptgroup, HTMLStencilElement {
+    }
+    var HTMLPOptgroupElement: {
+        prototype: HTMLPOptgroupElement;
+        new (): HTMLPOptgroupElement;
     };
     interface HTMLPPaginationElementEventMap {
         "pageChange": PaginationUpdateEventDetail;
@@ -2971,6 +2991,7 @@ declare global {
         "p-model-signature": HTMLPModelSignatureElement;
         "p-multi-select": HTMLPMultiSelectElement;
         "p-multi-select-option": HTMLPMultiSelectOptionElement;
+        "p-optgroup": HTMLPOptgroupElement;
         "p-pagination": HTMLPPaginationElement;
         "p-pin-code": HTMLPPinCodeElement;
         "p-popover": HTMLPPopoverElement;
@@ -3619,6 +3640,14 @@ declare namespace LocalJSX {
          */
         "onDismiss"?: (event: PFlyoutCustomEvent<void>) => void;
         /**
+          * Emitted when the flyout is closed and the transition is finished.
+         */
+        "onMotionHiddenEnd"?: (event: PFlyoutCustomEvent<FlyoutMotionHiddenEndEventDetail>) => void;
+        /**
+          * Emitted when the flyout is opened and the transition is finished.
+         */
+        "onMotionVisibleEnd"?: (event: PFlyoutCustomEvent<FlyoutMotionVisibleEndEventDetail>) => void;
+        /**
           * If true, the flyout is open.
          */
         "open"?: boolean;
@@ -4193,6 +4222,14 @@ declare namespace LocalJSX {
          */
         "onDismiss"?: (event: PModalCustomEvent<void>) => void;
         /**
+          * Emitted when the modal is closed and the transition is finished.
+         */
+        "onMotionHiddenEnd"?: (event: PModalCustomEvent<ModalMotionHiddenEndEventDetail>) => void;
+        /**
+          * Emitted when the modal is opened and the transition is finished.
+         */
+        "onMotionVisibleEnd"?: (event: PModalCustomEvent<ModalMotionVisibleEndEventDetail>) => void;
+        /**
           * If true, the modal is open.
          */
         "open"?: boolean;
@@ -4293,6 +4330,16 @@ declare namespace LocalJSX {
           * The option value.
          */
         "value"?: string;
+    }
+    interface POptgroup {
+        /**
+          * Disables the optgroup.
+         */
+        "disabled"?: boolean;
+        /**
+          * The optgroup label.
+         */
+        "label"?: string;
     }
     /**
      * @controlled { "props": ["activePage"], "event": "update", "isInternallyMutated": true }
@@ -5140,6 +5187,7 @@ declare namespace LocalJSX {
         "p-model-signature": PModelSignature;
         "p-multi-select": PMultiSelect;
         "p-multi-select-option": PMultiSelectOption;
+        "p-optgroup": POptgroup;
         "p-pagination": PPagination;
         "p-pin-code": PPinCode;
         "p-popover": PPopover;
@@ -5280,6 +5328,7 @@ declare module "@stencil/core" {
              */
             "p-multi-select": LocalJSX.PMultiSelect & JSXBase.HTMLAttributes<HTMLPMultiSelectElement>;
             "p-multi-select-option": LocalJSX.PMultiSelectOption & JSXBase.HTMLAttributes<HTMLPMultiSelectOptionElement>;
+            "p-optgroup": LocalJSX.POptgroup & JSXBase.HTMLAttributes<HTMLPOptgroupElement>;
             /**
              * @controlled { "props": ["activePage"], "event": "update", "isInternallyMutated": true }
              */

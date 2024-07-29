@@ -51,7 +51,7 @@ export type ComponentMeta = {
   isInternal: boolean;
   isChunked: boolean; // component is part of a chunk
   isThemeable: boolean;
-  requiredParent?: TagName; // typically components with an `-item` suffix need the right parent in order to work
+  requiredParent?: TagName | TagName[]; // typically components with an `-item` suffix need the right parent in order to work
   requiredRootNode?: TagName[]; // components, that use this internal component within their shadow DOM
   requiredChild?: string; // direct and only child of kind
   requiredChildSelector?: string; // might contain multiple selectors separated by comma

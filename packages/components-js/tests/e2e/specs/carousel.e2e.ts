@@ -30,6 +30,7 @@ type InitOptions = {
   rewind?: boolean;
   activeSlideIndex?: number;
   skipLinkTarget?: string;
+  dir?: 'ltr' | 'rtl';
 };
 
 const initCarousel = (page: Page, opts?: InitOptions) => {
@@ -41,6 +42,7 @@ const initCarousel = (page: Page, opts?: InitOptions) => {
     rewind = true,
     activeSlideIndex,
     skipLinkTarget,
+    dir = 'ltr',
   } = opts || {};
 
   const slides = Array.from(Array(amountOfSlides))
@@ -58,6 +60,7 @@ const initCarousel = (page: Page, opts?: InitOptions) => {
     rewind === false ? 'rewind="false"' : '',
     activeSlideIndex ? `active-slide-index="${activeSlideIndex}"` : '',
     skipLinkTarget ? `skip-link-target="${skipLinkTarget}"` : '',
+    dir ? `dir="${dir}"` : '',
   ].join(' ');
 
   const content = `${focusableElementBefore}<p-carousel heading="Heading" ${attrs}>
@@ -68,6 +71,7 @@ const initCarousel = (page: Page, opts?: InitOptions) => {
 };
 
 const getHost = (page: Page) => page.$('p-carousel');
+const getSplide = (page: Page) => page.locator('#splide');
 const getSlottedSlides = async (page: Page) => (await page.$('p-carousel')).$$('[slot^="slide-"]');
 const getSplideTrack = (page: Page) => page.$('p-carousel .splide__track');
 const getSlides = async (page: Page) => page.getByRole('group').all();
@@ -1049,5 +1053,69 @@ test.describe('lifecycle', () => {
     expect(status.componentDidUpdate['p-button-pure'], 'componentDidUpdate: p-button-pure').toBe(3);
     expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(3);
     expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(5);
+  });
+});
+
+test.describe('rtl mode', () => {
+  test('should render with rtl mode enabled', async ({ page }) => {
+    await initCarousel(page, { dir: 'rtl' });
+    const splide = getSplide(page);
+    await expect(splide).toHaveClass(/splide--rtl/);
+  });
+
+  test('should move slides on prev button clicks', async ({ page }) => {
+    await initCarousel(page, { dir: 'rtl' });
+    const buttonPrev = await getButtonPrev(page);
+    const [slide1, slide2, slide3] = await getSlides(page);
+
+    await isElementCompletelyInViewport(slide1);
+    await isElementNotInViewport(slide2);
+    await isElementNotInViewport(slide3);
+
+    await buttonPrev.click();
+    await waitForSlideToBeActive(slide3);
+    await isElementNotInViewport(slide1);
+    await isElementNotInViewport(slide2);
+    await isElementCompletelyInViewport(slide3);
+
+    await buttonPrev.click();
+    await waitForSlideToBeActive(slide2);
+    await isElementNotInViewport(slide1);
+    await isElementCompletelyInViewport(slide2);
+    await isElementNotInViewport(slide3);
+
+    await buttonPrev.click();
+    await waitForSlideToBeActive(slide1);
+    await isElementCompletelyInViewport(slide1);
+    await isElementNotInViewport(slide2);
+    await isElementNotInViewport(slide3);
+  });
+
+  test('should move slides on next button clicks', async ({ page }) => {
+    await initCarousel(page, { dir: 'rtl' });
+    const buttonNext = await getButtonNext(page);
+    const [slide1, slide2, slide3] = await getSlides(page);
+
+    await isElementCompletelyInViewport(slide1);
+    await isElementNotInViewport(slide2);
+    await isElementNotInViewport(slide3);
+
+    await buttonNext.click();
+    await waitForSlideToBeActive(slide2);
+    await isElementNotInViewport(slide1);
+    await isElementCompletelyInViewport(slide2);
+    await isElementNotInViewport(slide3);
+
+    await buttonNext.click();
+    await waitForSlideToBeActive(slide3);
+    await isElementNotInViewport(slide1);
+    await isElementNotInViewport(slide2);
+    await isElementCompletelyInViewport(slide3);
+
+    await buttonNext.click();
+    await waitForSlideToBeActive(slide1);
+    await isElementCompletelyInViewport(slide1);
+    await isElementNotInViewport(slide2);
+    await isElementNotInViewport(slide3);
   });
 });

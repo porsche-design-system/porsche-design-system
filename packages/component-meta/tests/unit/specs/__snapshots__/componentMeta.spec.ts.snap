@@ -2281,6 +2281,16 @@ exports[`should match snapshot 1`] = `
         "description": "Emitted when the component requests to be dismissed.",
         "type": "void",
       },
+      "motionHiddenEnd": {
+        "description": "Emitted when the flyout is closed and the transition is finished.",
+        "type": "FlyoutMotionHiddenEndEventDetail",
+        "typeDetail": "TransitionEvent",
+      },
+      "motionVisibleEnd": {
+        "description": "Emitted when the flyout is opened and the transition is finished.",
+        "type": "FlyoutMotionVisibleEndEventDetail",
+        "typeDetail": "TransitionEvent",
+      },
     },
     "hasAriaProp": true,
     "hasEvent": true,
@@ -4858,6 +4868,16 @@ exports[`should match snapshot 1`] = `
         "description": "Emitted when the component requests to be dismissed.",
         "type": "void",
       },
+      "motionHiddenEnd": {
+        "description": "Emitted when the modal is closed and the transition is finished.",
+        "type": "ModalMotionHiddenEndEventDetail",
+        "typeDetail": "TransitionEvent",
+      },
+      "motionVisibleEnd": {
+        "description": "Emitted when the modal is opened and the transition is finished.",
+        "type": "ModalMotionVisibleEndEventDetail",
+        "typeDetail": "TransitionEvent",
+      },
     },
     "hasAriaProp": true,
     "hasEvent": true,
@@ -5204,10 +5224,48 @@ exports[`should match snapshot 1`] = `
         "type": "string",
       },
     },
-    "requiredParent": "p-multi-select",
+    "requiredParent": [
+      "p-multi-select",
+      "p-optgroup",
+    ],
     "slotsMeta": {
       "": {
         "description": "Default slot for the option text.",
+      },
+    },
+    "styling": "jss",
+  },
+  "p-optgroup": {
+    "hasAriaProp": false,
+    "hasEvent": false,
+    "hasObserveAttributes": false,
+    "hasObserveChildren": false,
+    "hasSlot": true,
+    "isChunked": true,
+    "isDelegatingFocus": false,
+    "isInternal": false,
+    "isThemeable": false,
+    "propsMeta": {
+      "disabled": {
+        "allowedValues": "boolean",
+        "defaultValue": false,
+        "description": "Disables the optgroup.",
+        "type": "boolean",
+      },
+      "label": {
+        "allowedValues": "string",
+        "defaultValue": null,
+        "description": "The optgroup label.",
+        "type": "string",
+      },
+    },
+    "requiredParent": [
+      "p-select",
+      "p-multi-select",
+    ],
+    "slotsMeta": {
+      "": {
+        "description": "Default slot for the optgroup content.",
       },
     },
     "styling": "jss",
@@ -6250,7 +6308,10 @@ exports[`should match snapshot 1`] = `
         "type": "string",
       },
     },
-    "requiredParent": "p-select",
+    "requiredParent": [
+      "p-select",
+      "p-optgroup",
+    ],
     "slotsMeta": {
       "": {
         "description": "Default slot for the option content.",

@@ -61,8 +61,8 @@ describe('componentDidLoad', () => {
     const slot = document.createElement('slot');
     const slotSpy = jest.spyOn(slot, 'addEventListener');
     const getShadowRootHTMLElementSpy = jest
-    .spyOn(getShadowRootHTMLElementUtils, 'getShadowRootHTMLElement')
-    .mockReturnValueOnce(slot);
+      .spyOn(getShadowRootHTMLElementUtils, 'getShadowRootHTMLElement')
+      .mockReturnValueOnce(slot);
     component.componentDidLoad();
     expect(getShadowRootHTMLElementSpy).toHaveBeenCalledWith(component.host, 'slot');
     expect(slotSpy).toHaveBeenCalledTimes(1);
@@ -98,8 +98,8 @@ describe('disconnectedCallback', () => {
 });
 
 describe('render', () => {
-  it('should call syncMultiSelectOptionProps() with correct parameters', () => {
-    const spy = jest.spyOn(multiSelectUtils, 'syncMultiSelectOptionProps');
+  it('should call syncMultiSelectChildrenProps() with correct parameters', () => {
+    const spy = jest.spyOn(multiSelectUtils, 'syncMultiSelectChildrenProps');
     const component = initComponent();
     component.render();
     expect(spy).toHaveBeenCalledWith(component['multiSelectOptions'], component.theme);

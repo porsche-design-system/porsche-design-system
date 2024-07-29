@@ -8,7 +8,7 @@ import {
   type SelectOption,
   setSelectedOption,
   syncNativeSelect,
-  syncSelectOptionProps,
+  syncSelectChildrenProps,
   updateNativeSelectOption,
   updateSelectOptions,
 } from './select-utils';
@@ -57,13 +57,13 @@ export const generateOptions = (
   );
 };
 
-describe('syncSelectOptionProps', () => {
+describe('syncSelectChildrenProps', () => {
   it('should update theme and force update for mismatched options', () => {
     const options = generateOptions();
     options[0].theme = 'light';
     options[1].theme = 'dark';
 
-    syncSelectOptionProps(options, 'dark');
+    syncSelectChildrenProps(options, 'dark');
 
     options.forEach((option) => {
       expect(option.theme).toBe('dark');
