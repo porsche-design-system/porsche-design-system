@@ -16,6 +16,7 @@ import {
   skipInBrowsers,
   sleep,
   waitForStencilLifecycle,
+  type Options,
 } from '../helpers';
 import type { ModalAriaAttribute, SelectedAriaAttributes } from '@porsche-design-system/components';
 
@@ -44,7 +45,8 @@ const initBasicModal = (
     disableCloseButton?: boolean;
     markupBefore?: string;
     markupAfter?: string;
-  }
+  },
+  options?: Options
 ): Promise<void> => {
   const {
     isOpen = true,
@@ -75,7 +77,8 @@ const initBasicModal = (
   ${hasSlottedHeader ? '<div slot="header"><h2>Some Heading</h2><p>Some header content</p></div>' : ''}
   ${content}
   ${hasSlottedFooter ? '<div slot="footer">Some Footer</div>' : ''}
-</p-modal>${markupAfter ? markupAfter : ''}`
+</p-modal>${markupAfter ? markupAfter : ''}`,
+    options
   );
 };
 
@@ -824,7 +827,11 @@ test.describe('after dynamic slot change', () => {
 test.describe('events', () => {
   skipInBrowsers(['firefox']);
   test('should expose ontransitionstart event', async ({ page }) => {
-    await initBasicModal(page, { isOpen: false });
+    await initBasicModal(
+      page,
+      { isOpen: false },
+      { injectIntoHead: '<style>:root { --p-transition-duration: unset; }</style>' }
+    );
     const host = await getHost(page);
     await waitForStencilLifecycle(page);
     await addEventListener(host, 'transition');
@@ -837,7 +844,11 @@ test.describe('events', () => {
     expect((await getEventSummary(host, 'transition')).counter).toBe(5);
   });
   test('should expose ontransitionend event', async ({ page }) => {
-    await initBasicModal(page, { isOpen: true });
+    await initBasicModal(
+      page,
+      { isOpen: true },
+      { injectIntoHead: '<style>:root { --p-transition-duration: unset; }</style>' }
+    );
     const host = await getHost(page);
     await waitForStencilLifecycle(page);
     await addEventListener(host, 'transition');

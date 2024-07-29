@@ -16,6 +16,7 @@ import {
   skipInBrowsers,
   sleep,
   waitForStencilLifecycle,
+  type Options,
 } from '../helpers';
 import { Components } from '@porsche-design-system/components';
 
@@ -52,7 +53,8 @@ const initBasicFlyout = (
   other?: {
     markupBefore?: string;
     markupAfter?: string;
-  }
+  },
+  options?: Options
 ): Promise<void> => {
   const { header = '', content = '<p>Some Content</p>', footer = '', subFooter = '' } = flyoutSlots || {};
   const { markupBefore = '', markupAfter = '' } = other || {};
@@ -62,7 +64,11 @@ const initBasicFlyout = (
   ${[header, content, footer, subFooter].filter(Boolean).join('\n  ')}
 </p-flyout>`;
 
-  return setContentWithDesignSystem(page, [markupBefore, flyoutMarkup, markupAfter].filter(Boolean).join('\n'));
+  return setContentWithDesignSystem(
+    page,
+    [markupBefore, flyoutMarkup, markupAfter].filter(Boolean).join('\n'),
+    options
+  );
 };
 
 const initAdvancedFlyout = async (page: Page) => {
@@ -792,7 +798,13 @@ test.describe('after dynamic slot change', () => {
 test.describe('events', () => {
   skipInBrowsers(['firefox']);
   test('should expose ontransitionstart event', async ({ page }) => {
-    await initBasicFlyout(page, { open: false });
+    await initBasicFlyout(
+      page,
+      { open: false },
+      {},
+      {},
+      { injectIntoHead: '<style>:root { --p-transition-duration: unset; }</style>' }
+    );
     const host = await getHost(page);
     await waitForStencilLifecycle(page);
     await addEventListener(host, 'transition');
@@ -805,7 +817,13 @@ test.describe('events', () => {
     expect((await getEventSummary(host, 'transition')).counter).toBe(7);
   });
   test('should expose ontransitionend event', async ({ page }) => {
-    await initBasicFlyout(page, { open: true });
+    await initBasicFlyout(
+      page,
+      { open: true },
+      {},
+      {},
+      { injectIntoHead: '<style>:root { --p-transition-duration: unset; }</style>' }
+    );
     const host = await getHost(page);
     await waitForStencilLifecycle(page);
     await addEventListener(host, 'transition');
