@@ -48,7 +48,7 @@ export const getComponentCss = (
   return getCss({
     '@global': {
       ':host': {
-        display: 'flex', // stretches the tile when used in grid or flex context in case tile content overflows the available size which results through aspect ratio
+        display: 'block', // `display: flex` would be more ideal, but doesn't work in Safari in all cases
         hyphens: 'auto', // TODO: shouldn't we expose a CSS variable instead?
         ...addImportantToEachRule({
           ...colorSchemeStyles,
@@ -103,7 +103,8 @@ export const getComponentCss = (
       ...buildResponsiveStyles(aspectRatio, (aspectRatioValue: TileAspectRatio) => ({
         aspectRatio: aspectRatioValue.replace(':', '/'), // mapping of the deprecated aspect-ratio with ':'
       })),
-      width: '100%', // necessary for Chrome in case tile content overflows in grid or flex context
+      width: '100%', // necessary in case tile content overflows in grid or flex context
+      height: '100%', // necessary in case tile content overflows in grid or flex context
       display: 'grid',
       gridTemplate: `${spacingFluidMedium} auto minmax(0px, 1fr) auto ${spacingFluidMedium}/${spacingFluidMedium} minmax(0px, 1fr) ${spacingFluidMedium}`,
       ...(hasGradient &&
