@@ -10,12 +10,16 @@ information within one container. In case you want the user to execute an action
 
 ## Basic
 
-An `img` or `picture` tag has to be provided in the slot of the `p-link-tile` component.
+An `img` or `picture` tag has to be provided as default slot.
 
 Additionally, the properties `href`, `description` and `label` are required. The `description` property is used as a
 teaser with a more detailed description of the link and where it leads to.
 
 The `label` property is used to describe the anchor.
+
+#### Supported named slots:
+
+- `slot="header"`: Renders a header section above the content area.
 
 <Playground :markup="basic" :config="config"></Playground>
 
@@ -130,6 +134,7 @@ export default class Code extends Vue {
   label="Some label"
   description="Some Description"
 >
+  <p-tag slot="header" color="background-frosted" compact="true">Some tag</p-tag>
   <img src="${require('@/assets/image-grid.png')}" ${this.imgAttributes} />
 </p-link-tile>`;
 

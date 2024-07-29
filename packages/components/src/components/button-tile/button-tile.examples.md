@@ -10,12 +10,16 @@ The `p-button-tile` is an interactive component that displays a provided image t
 
 ## Basic
 
-An `img` or `picture` tag has to be provided in the slot of the `p-button-tile` component.
+An `img` or `picture` tag has to be provided as default slot.
 
 Additionally, the properties `description` and `label` are required. The `description` property is used as a teaser with
 a more detailed description of the button and its action.
 
 The `label` property is used to describe the button.
+
+#### Supported named slots:
+
+- `slot="header"`: Renders a header section above the content area.
 
 <Playground :markup="basic" :config="config"></Playground>
 
@@ -122,6 +126,7 @@ export default class Code extends Vue {
   label="Some label"
   description="Some Description"
 >
+  <p-tag slot="header" color="background-frosted" compact="true">Some tag</p-tag>
   <img src="${require('@/assets/image-grid.png')}" ${this.imgAttributes} />
 </p-button-tile>`;
 

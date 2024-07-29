@@ -10,11 +10,15 @@ shows one of the model signatures at the top.
 
 ## Basic
 
-An `img` or `picture` element has to be available as a child of the `p-link-tile-model-signature` component.
+An `img` or `picture` tag has to be provided as default slot.
 
 It is required to have two `p-link` components as named slots, `slot="primary"` and `slot="secondary"`.  
 The `heading` property is required, too. It is used as a teaser with a more detailed description of where the link leads
 to.
+
+#### Supported named slots:
+
+- `slot="header"`: Renders a header section above the content area but underneath the model signature.
 
 <Playground :markup="basic" :config="config"></Playground>
 
@@ -120,6 +124,7 @@ export default class Code extends Vue {
   secondaryLink = '<p-link slot="secondary" href="https://porsche.com/#secondary">Secondary label</p-link>';
 
   basic = `<p-link-tile-model-signature heading="Some heading">
+  <p-tag slot="header" color="background-frosted" compact="true">Some tag</p-tag>
   ${this.img}
   ${this.primaryLink}
   ${this.secondaryLink}
