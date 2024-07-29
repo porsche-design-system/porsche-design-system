@@ -112,6 +112,20 @@ language.
   <PlaygroundSelect v-model="hyphen" :values="hyphens" name="hyphens"></PlaygroundSelect>
 </Playground>
 
+## UI behaviour
+
+The component is able to break out of its aspect ratio in case content overflows to be accessibility compliant (see
+first row in example).
+
+Additionally, the component is able to align to the highest CSS Grid child independent of the aspect ratio when used in
+CSS Grid context (see second row in example).
+
+<Notification heading="Browser Support Limitation" heading-tag="h3" state="warning">
+  Currently, Safari is able to align the height per CSS Grid row as long as the content does not overflow.
+</Notification>
+
+<Playground :markup="gridMarkup"></Playground>
+
 <script lang="ts">
 import Vue from 'vue';
 import Component from 'vue-class-component';
@@ -120,41 +134,41 @@ import { THEMES, TILE_ALIGNS, TILE_ASPECT_RATIOS, TILE_ASPECT_RATIOS_DEPRECATED,
 @Component
 export default class Code extends Vue {
   config = { spacing: 'inline' };
-  imgAttributes = 'width="3000" height="2000" alt="Some alt text"';
+  imgAttributes = 'alt="Some alt text"';
 
   basic = `<p-button-tile
   label="Some label"
   description="Some Description"
 >
   <p-tag slot="header" color="background-frosted" compact="true">Some tag</p-tag>
-  <img src="${require('@/assets/image-grid.png')}" ${this.imgAttributes} />
+  <img src="${require('@/assets/lights.jpg')}" ${this.imgAttributes} />
 </p-button-tile>`;
 
   state = 'disabled';
   states = ['disabled', 'loading'];
   get stateMarkup() {
     return`<p-button-tile label="Some Label" description="Some Description" ${this.state}>
-  <img src="${require('@/assets/image-grid.png')}" ${this.imgAttributes} />
+  <img src="${require('@/assets/lights.jpg')}" ${this.imgAttributes} />
 </p-button-tile>
 <p-button-tile label="Some Label" description="Some Description" size="${this.size}" compact="true" ${this.state}>
-  <img src="${require('@/assets/image-grid.png')}" ${this.imgAttributes} />
+  <img src="${require('@/assets/lights.jpg')}" ${this.imgAttributes} />
 </p-button-tile>`}
 
-  aspectRatio = '4/3';
+  aspectRatio = '1/1';
   aspectRatios = [...TILE_ASPECT_RATIOS.map(item => TILE_ASPECT_RATIOS_DEPRECATED.includes(item) ? item + ' (deprecated)' : item), "{ base: '3/4', s: '1/1', m: '16/9' }"];
   get aspectRatioMarkup() {
     return`<p-button-tile label="Some Label" description="Some Description" aspect-ratio="${this.aspectRatio}">
-  <img src="${require('@/assets/image-grid.png')}" ${this.imgAttributes} />
+  <img src="${require('@/assets/lights.jpg')}" ${this.imgAttributes} />
 </p-button-tile>`}
 
-  size = 'medium';
+  size = 'large';
   sizes = [...TILE_SIZES.map(item => TILE_SIZES_DEPRECATED.includes(item) ? item + ' (deprecated)' : item), "{ base: 'inherit', m: 'medium' }"];
   get sizeMarkup() {
     return`<p-button-tile label="Some Label" description="Some Description" size="${this.size}" style="font-size: 40px;">
-  <img src="${require('@/assets/image-grid.png')}" ${this.imgAttributes} />
+  <img src="${require('@/assets/lights.jpg')}" ${this.imgAttributes} />
 </p-button-tile>
 <p-button-tile label="Some Label" description="Some Description" size="${this.size}" compact="true" style="font-size: 40px;">
-  <img src="${require('@/assets/image-grid.png')}" ${this.imgAttributes} />
+  <img src="${require('@/assets/lights.jpg')}" ${this.imgAttributes} />
 </p-button-tile>`
   }
 
@@ -162,10 +176,10 @@ export default class Code extends Vue {
   weights = [...TILE_WEIGHTS, "{ base: 'semi-bold', m: 'regular' }"];
   get weightMarkup() {
     return`<p-button-tile label="Some Label" description="Some Description" weight="${this.weight}">
-  <img src="${require('@/assets/image-grid.png')}" ${this.imgAttributes} />
+  <img src="${require('@/assets/lights.jpg')}" ${this.imgAttributes} />
 </p-button-tile>
 <p-button-tile label="Some Label" description="Some Description" weight="${this.weight}" compact="true">
-  <img src="${require('@/assets/image-grid.png')}" ${this.imgAttributes} />
+  <img src="${require('@/assets/lights.jpg')}" ${this.imgAttributes} />
 </p-button-tile>`
   }
 
@@ -177,7 +191,7 @@ export default class Code extends Vue {
   description="Some Description"
   gradient="${this.gradient}"
 >
-  <img src="${require('@/assets/image-grid-split.png')}" ${this.imgAttributes} />
+  <img src="${require('@/assets/lights.jpg')}" ${this.imgAttributes} />
 </p-button-tile>
 <p-button-tile
   label="Some label"
@@ -185,7 +199,7 @@ export default class Code extends Vue {
   compact="true"
   gradient="${this.gradient}"
 >
-  <img src="${require('@/assets/image-grid-split.png')}" ${this.imgAttributes} />
+  <img src="${require('@/assets/lights.jpg')}" ${this.imgAttributes} />
 </p-button-tile>`};
 
   background = 'light';
@@ -207,7 +221,7 @@ export default class Code extends Vue {
   <img src="${require('@/assets/image-grid-split-light.png')}" ${this.imgAttributes} />
 </p-button-tile>`};
 
-  compact = false;
+  compact = true;
   compacts = [false, true, "{ base: true, m: false }"];
   get compactMarkup() {
     return `<p-button-tile
@@ -215,7 +229,7 @@ export default class Code extends Vue {
   description="Some Description"
   compact="${this.compact}"
 >
-  <img src="${require('@/assets/image-grid.png')}" ${this.imgAttributes} />
+  <img src="${require('@/assets/lights.jpg')}" ${this.imgAttributes} />
 </p-button-tile>`};
 
   align = 'top';
@@ -227,7 +241,7 @@ export default class Code extends Vue {
   compact="true"
   align="${this.align}"
 >
-  <img src="${require('@/assets/image-grid.png')}" ${this.imgAttributes} />
+  <img src="${require('@/assets/lights.jpg')}" ${this.imgAttributes} />
 </p-button-tile>`};
 
   hyphen = 'manual';
@@ -240,14 +254,58 @@ export default class Code extends Vue {
   size="inherit" 
   style="${this.hyphen !== 'auto' ? 'hyphens: ' + this.hyphen + '; ' : ''}font-size: 45px;"
 >
-  <img src="${require('@/assets/image-grid.png')}" ${this.imgAttributes} />
+  <img src="${require('@/assets/lights.jpg')}" ${this.imgAttributes} />
 </p-button-tile>`};
 
+  get gridMarkup() {
+    return `<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px;">
+  <p-button-tile
+    aspect-ratio="4/3"
+    label="Some Label"
+    size="large"
+    description="Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum."
+  >
+    <p-tag slot="header" color="background-frosted" compact="true">4/3</p-tag>
+    <img
+      src="${require('@/assets/lights.jpg')}"
+      ${this.imgAttributes}
+    />
+  </p-button-tile>
+  <p-button-tile aspect-ratio="4/3" label="Some Label" description="Some description">
+    <p-tag slot="header" color="background-frosted" compact="true">4/3</p-tag>
+    <img
+      src="${require('@/assets/lights.jpg')}"
+      ${this.imgAttributes}
+    />
+  </p-button-tile>
+  <p-button-tile aspect-ratio="1/1" label="Some Label" description="Some description">
+    <p-tag slot="header" color="background-frosted" compact="true">1/1</p-tag>
+    <img
+      src="${require('@/assets/lights.jpg')}"
+      ${this.imgAttributes}
+    />
+  </p-button-tile>
+  <p-button-tile aspect-ratio="9/16" label="Some Label" description="Some description">
+    <p-tag slot="header" color="background-frosted" compact="true">9/16</p-tag>
+    <img
+      src="${require('@/assets/lights.jpg')}"
+      ${this.imgAttributes}
+    />
+  </p-button-tile>
+  <p-button-tile aspect-ratio="1/1" label="Some Label" description="Some description">
+    <p-tag slot="header" color="background-frosted" compact="true">1/1</p-tag>
+    <img
+      src="${require('@/assets/lights.jpg')}"
+      ${this.imgAttributes}
+    />
+  </p-button-tile>
+</div>`};
 }
+
 </script>
 
 <style scoped lang="scss">
-  :deep(p-button-tile) {
+  :deep(.demo > p-button-tile) {
     max-width: 400px;
   }
 </style>
