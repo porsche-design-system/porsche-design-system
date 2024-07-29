@@ -1,5 +1,4 @@
-import type { ElementHandle, Page } from 'playwright';
-import { expect, test } from '@playwright/test';
+import { expect, type Locator, test, type Page } from '@playwright/test';
 import {
   CSS_ANIMATION_DURATION,
   getAttribute,
@@ -54,13 +53,13 @@ const getPrevNextButton = async (page: Page) => {
   const nextButton = page.locator('p-scroller .action-next button');
   return { prevButton, nextButton };
 };
-const getScrollLeft = (element: ElementHandle<HTMLElement | SVGElement>) => getProperty(element, 'scrollLeft');
-const getOffsetWidth = (element: ElementHandle<HTMLElement | SVGElement>) => getProperty(element, 'offsetWidth');
+const getScrollLeft = (element: Locator) => getProperty(element, 'scrollLeft');
+const getOffsetWidth = (element: Locator) => getProperty(element, 'offsetWidth');
 
 const getScrollDistance = (page: Page, scrollAreaWidth: number): number =>
   Math.round(scrollAreaWidth * SCROLL_PERCENTAGE);
 
-const clickElement = async (page: Page, el: ElementHandle) => {
+const clickElement = async (page: Page, el: Locator) => {
   await el.click();
   await waitForStencilLifecycle(page);
   await sleep(CSS_ANIMATION_DURATION);
@@ -236,7 +235,7 @@ test.describe('next/prev buttons', () => {
       );
     };
 
-    // There seems to be an rounding issue that causes the element inside scroller to exceed the scroll container,
+    // There seems to be a rounding issue that causes the element inside scroller to exceed the scroll container,
     // therefore the trigger gets pushed outside and the gradient is always shown.
     // To ensure the element exceeds the width of the wrapping div we need to assign static width values.
     const steps = Array.from(Array(10)).map((_, index) => parseFloat(`150.${index}`));

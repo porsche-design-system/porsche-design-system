@@ -280,7 +280,7 @@ test.describe('input type="search"', () => {
   });
 
   test.describe('within form', () => {
-    const isButtonDisabled = (handle: ElementHandle) => getProperty(handle, 'disabled');
+    const isButtonDisabled = (locator: Locator) => getProperty(locator, 'disabled');
 
     test('should disable submit button when input is set to disabled programmatically', async ({ page }) => {
       await initTextField(page, { type: 'search', isWrappedInForm: true });

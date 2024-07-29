@@ -1,5 +1,4 @@
-import type { ElementHandle, Page } from 'playwright';
-import { expect, Locator, test } from '@playwright/test';
+import { expect, type Locator, test, type Page } from '@playwright/test';
 import {
   addEventListener,
   getActiveElementId,
@@ -10,7 +9,7 @@ import {
   getEventSummary,
   getLifecycleStatus,
   goto,
-  reattachElementHandle,
+  reattachElement,
   setContentWithDesignSystem,
   setProperty,
   skipInBrowsers,
@@ -267,7 +266,7 @@ test('should have working pagination and prev/next buttons after reconnect', asy
   const buttonNext = getButtonNext(page);
   const [slide1, slide2, slide3] = await getSlides(page);
 
-  await reattachElementHandle(host);
+  await reattachElement(host);
   // different refs after reconnect, so we have to select them here
   const [bullet1, bullet2, bullet3] = await getPaginationBullets(page);
 
@@ -393,7 +392,7 @@ test('should navigate to slide when infinite pagination is clicked', async ({ pa
 });
 
 test.describe('adding/removing slides', () => {
-  const addSlide = (host: ElementHandle | Locator): Promise<void> => {
+  const addSlide = (host: Locator): Promise<void> => {
     return host.evaluate((host) => {
       const el = document.createElement('div');
       el.innerText = `Slide ${host.children.length + 1}`;
@@ -401,7 +400,7 @@ test.describe('adding/removing slides', () => {
     });
   };
 
-  const removeSlide = async (host: ElementHandle | Locator): Promise<void> => {
+  const removeSlide = async (host: Locator): Promise<void> => {
     return host.evaluate((host) => {
       host.children[host.children.length - 1].remove();
     });
@@ -742,7 +741,7 @@ test.describe('events', () => {
 
     await addEventListener(host, 'carouselChange');
 
-    await reattachElementHandle(host);
+    await reattachElement(host);
     expect((await getEventSummary(host, 'carouselChange')).counter).toBe(0);
 
     await nextButton.click();

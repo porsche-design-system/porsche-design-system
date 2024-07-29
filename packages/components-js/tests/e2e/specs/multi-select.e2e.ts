@@ -31,11 +31,13 @@ const getMultiSelectOption = (page: Page, n: number) =>
   page.locator(`p-multi-select p-multi-select-option:nth-child(${n + 1})`); // First one is native select
 const getMultiSelectOptions = (page: Page): Promise<Locator[]> =>
   page.locator('p-multi-select p-multi-select-option').all();
-const getAmountOfVisibleMultiSelectOptions = async (page: Page): Promise<number> =>
-  page.locator('p-multi-select-option').evaluateAll((elements) => elements.filter((element) => !element.hidden)).length;
+const getAmountOfVisibleMultiSelectOptions = async (page: Page): Promise<(SVGElement | HTMLElement)[]> =>
+  page
+    .locator('p-multi-select-option')
+    .evaluateAll((elements) => elements.filter((element: HTMLElement) => !element.hidden));
 
-const getAmountOfVisibleMultiSelectOptgroups = async (page: Page): Promise<number> =>
-  page.locator('p-optgroup').evaluateAll((elements) => elements.filter((element) => !element.hidden)).length;
+const getAmountOfVisibleMultiSelectOptgroups = async (page: Page): Promise<(SVGElement | HTMLElement)[]> =>
+  page.locator('p-optgroup').evaluateAll((elements) => elements.filter((element: HTMLElement) => !element.hidden));
 
 const getSelectedMultiSelectOptionProperty = async <K extends keyof MultiSelectOption>(
   page: Page,
@@ -449,13 +451,13 @@ test.describe('outside click', () => {
     await waitForStencilLifecycle(page);
 
     expect((await getMultiSelectOptions(page)).length, 'initial').toBe(3);
-    expect(await getAmountOfVisibleMultiSelectOptions(page)).toBe(3);
+    expect((await getAmountOfVisibleMultiSelectOptions(page)).length).toBe(3);
 
     await inputElement.fill('A');
     await waitForStencilLifecycle(page);
 
     expect(await getInputValue(page)).toBe('A');
-    expect(await getAmountOfVisibleMultiSelectOptions(page), 'after input').toBe(1);
+    expect((await getAmountOfVisibleMultiSelectOptions(page)).length, 'after input').toBe(1);
 
     await text.click();
     await waitForStencilLifecycle(page);
@@ -466,7 +468,7 @@ test.describe('outside click', () => {
     await waitForStencilLifecycle(page);
 
     expect((await getMultiSelectOptions(page)).length, 'after outside click').toBe(3);
-    expect(await getAmountOfVisibleMultiSelectOptions(page), 'after outside click').toBe(3);
+    expect((await getAmountOfVisibleMultiSelectOptions(page)).length, 'after outside click').toBe(3);
   });
 });
 
@@ -611,7 +613,7 @@ test.describe('filter', () => {
     await waitForStencilLifecycle(page);
 
     expect(await getDropdownDisplay(page), 'after typing').toBe('flex');
-    expect(await getAmountOfVisibleMultiSelectOptions(page), 'amount of shown options').toBe(1);
+    expect((await getAmountOfVisibleMultiSelectOptions(page)).length, 'amount of shown options').toBe(1);
 
     await page.keyboard.press('ArrowDown');
     await waitForStencilLifecycle(page);
@@ -638,7 +640,7 @@ test.describe('filter', () => {
     const dropdownOption1 = getShadowDropdownOption(page, 1);
     const dropdownOption1Value = await getProperty(dropdownOption1, 'textContent');
 
-    expect(await getAmountOfVisibleMultiSelectOptions(page)).toBe(0);
+    expect((await getAmountOfVisibleMultiSelectOptions(page)).length).toBe(0);
     expect(dropdownOption1Value).toBe('---No results found');
   });
 });
@@ -1269,8 +1271,8 @@ test.describe('theme', () => {
     await inputElement.click();
     await waitForStencilLifecycle(page);
 
-    const optgroups = page.locator('p-optgroup').all();
-    const options = page.locator('p-multi-select-option').all();
+    const optgroups = await page.locator('p-optgroup').all();
+    const options = await page.locator('p-multi-select-option').all();
 
     for (const child of [...optgroups, ...options]) {
       expect(await getProperty(child, 'theme')).toBe('light');
@@ -1322,13 +1324,13 @@ test.describe('optgroups', () => {
     const inputElement = getInput(page);
     await inputElement.click();
     await waitForStencilLifecycle(page);
-    expect(await getAmountOfVisibleMultiSelectOptgroups(page), 'amount of shown optgroups').toBe(3);
+    expect((await getAmountOfVisibleMultiSelectOptgroups(page)).length, 'amount of shown optgroups').toBe(3);
 
     await inputElement.fill('b');
     await waitForStencilLifecycle(page);
 
-    expect(await getAmountOfVisibleMultiSelectOptgroups(page), 'amount of shown optgroups').toBe(1);
-    expect(await getAmountOfVisibleMultiSelectOptions(page), 'amount of shown options').toBe(1);
+    expect((await getAmountOfVisibleMultiSelectOptgroups(page)).length, 'amount of shown optgroups').toBe(1);
+    expect((await getAmountOfVisibleMultiSelectOptions(page)).length, 'amount of shown options').toBe(1);
 
     const visibleOptgroup = page.locator('p-optgroup[label="b"]');
     await expect(visibleOptgroup.locator('p-multi-select-option').getByText('b')).toBeVisible();

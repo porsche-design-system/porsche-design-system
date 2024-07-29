@@ -1,5 +1,4 @@
-import type { ElementHandle, Page } from 'playwright';
-import { Locator } from '@playwright/test';
+import type { Locator, Page } from '@playwright/test';
 
 type SerializedTarget = {
   nodeName: string;
@@ -10,8 +9,8 @@ type SerializedTarget = {
   id: string;
 };
 
-export const addEventListener = (handle: ElementHandle | Locator, eventName: string): Promise<void> => {
-  return handle.evaluate((el, evtName) => {
+export const addEventListener = (locator: Locator, eventName: string): Promise<void> => {
+  return locator.evaluate((el, evtName) => {
     const counterKey = `${evtName}Counter`;
     const detailsKey = `${evtName}Details`;
     const targetsKey = `${evtName}Targets`;
@@ -34,10 +33,10 @@ export const addEventListener = (handle: ElementHandle | Locator, eventName: str
 };
 
 export const getEventSummary = (
-  handle: ElementHandle | Locator,
+  locator: Locator,
   eventName: string
 ): Promise<{ counter: number; details: any[]; targets: SerializedTarget[] }> => {
-  return handle.evaluate((el, evtName) => {
+  return locator.evaluate((el, evtName) => {
     const counterKey = `${evtName}Counter`;
     const detailsKey = `${evtName}Details`;
     const targetsKey = `${evtName}Targets`;

@@ -209,11 +209,8 @@ test.describe('events', () => {
     expect(await hasFocus(host)).toBe(false);
     await host.focus();
     expect(await hasFocus(host)).toBe(true);
-    // Cant use ElementHandle 'host' because .blur() is not available
-    await page.evaluate(() => {
-      const switchElement = document.querySelector('p-switch') as HTMLElement;
-      switchElement.blur();
-    });
+    const switchElement = page.locator('p-switch');
+    await switchElement.blur();
     expect(await hasFocus(host)).toBe(false);
   });
 

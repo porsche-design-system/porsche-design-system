@@ -13,7 +13,7 @@ import {
   getScrollLeft,
   initConsoleObserver,
   initPageErrorObserver,
-  reattachElementHandle,
+  reattachElement,
   setContentWithDesignSystem,
   setProperty,
   skipInBrowsers,
@@ -273,7 +273,7 @@ test.describe('events', () => {
     await addEventListener(host, 'stepChange');
 
     // Remove and re-attach component to check if events are duplicated / fire at all
-    await reattachElementHandle(host);
+    await reattachElement(host);
 
     await item1.click();
     expect((await getEventSummary(host, 'stepChange')).counter).toBe(1);

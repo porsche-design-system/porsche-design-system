@@ -1,5 +1,4 @@
-import type { ElementHandle, Page } from 'playwright';
-import { expect, Locator, test } from '@playwright/test';
+import { expect, Locator, test, type Page } from '@playwright/test';
 import {
   addEventListener,
   getAttribute,
@@ -8,7 +7,7 @@ import {
   getLifecycleStatus,
   getProperty,
   initConsoleObserver,
-  reattachElementHandle,
+  reattachElement,
   setContentWithDesignSystem,
   setProperty,
   sleep,
@@ -217,7 +216,7 @@ test.describe('events', () => {
     await addEventListener(host, 'tabChange');
 
     // Remove and re-attach component to check if events are duplicated / fire at all
-    await reattachElementHandle(host);
+    await reattachElement(host);
 
     await firstButton.click();
     expect((await getEventSummary(host, 'tabChange')).counter).toBe(1);

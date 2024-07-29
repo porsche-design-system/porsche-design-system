@@ -7,7 +7,7 @@ import {
   getOffsetWidth,
   getProperty,
   hasFocus,
-  reattachElementHandle,
+  reattachElement,
   setContentWithDesignSystem,
   setProperty,
   skipInBrowsers,
@@ -140,7 +140,7 @@ test.describe('events', () => {
     await addEventListener(host, 'segmentedControlChange');
 
     // Remove and re-attach component to check if events are duplicated / fire at all
-    await reattachElementHandle(host);
+    await reattachElement(host);
 
     await button2.click();
     expect((await getEventSummary(host, 'segmentedControlChange')).counter).toBe(1);

@@ -13,7 +13,7 @@ import {
   getProperty,
   getShadowRoot,
   initPageErrorObserver,
-  reattachElementHandle,
+  reattachElement,
   setContentWithDesignSystem,
   setProperty,
   skipInBrowsers,
@@ -941,7 +941,7 @@ test.describe('keyboard and click events', () => {
     await addEventListener(dropdownList, 'keydown');
 
     // Remove and re-attach component to check if events are duplicated / fire at all
-    await reattachElementHandle(host);
+    await reattachElement(host);
 
     await dropdownCombobox.click();
     await waitForStencilLifecycle(page);

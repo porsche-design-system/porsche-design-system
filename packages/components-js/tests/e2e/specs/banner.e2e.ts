@@ -6,7 +6,7 @@ import {
   getEventSummary,
   getLifecycleStatus,
   getProperty,
-  reattachElementHandle,
+  reattachElement,
   setContentWithDesignSystem,
   setProperty,
   waitForStencilLifecycle,
@@ -85,7 +85,7 @@ test('should not show banner by setting open prop false', async ({ page }) => {
 });
 
 test.describe('close', () => {
-  const getComputedElementHandleStyles = async (elHandle: Locator): Promise<CSSStyleDeclaration> => {
+  const getComputedElementStyles = async (elHandle: Locator): Promise<CSSStyleDeclaration> => {
     return elHandle.evaluate((el: Element): CSSStyleDeclaration => {
       return getComputedStyle(el);
     });
@@ -135,7 +135,7 @@ test.describe('close', () => {
     const host = getHost(page);
     await addEventListener(host, 'dismiss');
     expect((await getEventSummary(host, 'dismiss')).counter).toBe(0);
-    await reattachElementHandle(host);
+    await reattachElement(host);
     await page.keyboard.press('Escape');
     expect((await getEventSummary(host, 'dismiss')).counter).toBe(1);
   });
@@ -160,8 +160,8 @@ test.describe('close', () => {
 
     const classListBanner1 = await getCssClasses(banner1);
     const classListBanner2 = await getCssClasses(banner2);
-    const banner1Styles = await getComputedElementHandleStyles(banner1);
-    const banner2Styles = await getComputedElementHandleStyles(banner2);
+    const banner1Styles = await getComputedElementStyles(banner1);
+    const banner2Styles = await getComputedElementStyles(banner2);
 
     expect(classListBanner1).toEqual(classListBanner2);
     expect(banner1Styles).toEqual(banner2Styles);
@@ -169,7 +169,7 @@ test.describe('close', () => {
     await closeButtonBanner2.click();
 
     const classListBanner1AfterClick = await getCssClasses(banner1);
-    const banner1StylesAfterClick = await getComputedElementHandleStyles(banner1);
+    const banner1StylesAfterClick = await getComputedElementStyles(banner1);
 
     expect(classListBanner1).toEqual(classListBanner1AfterClick);
     expect(banner1Styles).toEqual(banner1StylesAfterClick);

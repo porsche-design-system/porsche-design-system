@@ -6,7 +6,7 @@ import {
   getEventSummary,
   getLifecycleStatus,
   getProperty,
-  reattachElementHandle,
+  reattachElement,
   setContentWithDesignSystem,
   setProperty,
   waitForStencilLifecycle,
@@ -86,7 +86,7 @@ test.describe('close button', () => {
     await addEventListener(host, 'dismiss');
 
     // Remove and re-attach component to check if events are duplicated / fire at all
-    await reattachElementHandle(host);
+    await reattachElement(host);
 
     await closeButton.click();
     expect((await getEventSummary(host, 'dismiss')).counter).toBe(1);

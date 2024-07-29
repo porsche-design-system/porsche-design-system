@@ -1,5 +1,4 @@
-import type { ElementHandle, Page } from 'playwright';
-import { expect, test } from '@playwright/test';
+import { expect, test, type Page, Locator } from '@playwright/test';
 import {
   addEventListener,
   CSS_ANIMATION_DURATION,
@@ -15,7 +14,7 @@ import {
   getProperty,
   getScrollLeft,
   initConsoleObserver,
-  reattachElementHandle,
+  reattachElement,
   SCROLL_PERCENTAGE,
   setContentWithDesignSystem,
   setProperty,
@@ -76,7 +75,7 @@ const getScrollDistance = (page: Page, scrollAreaWidth: number): number =>
 const getBarVisibility = async (page: Page): Promise<string> => getElementStyle(await getBar(page), 'visibility');
 const getBarWidth = async (page: Page): Promise<string> => getElementStyle(await getBar(page), 'width');
 
-const clickElement = async (page: Page, el: ElementHandle) => {
+const clickElement = async (page: Page, el: Locator) => {
   await el.click();
   await waitForStencilLifecycle(page);
   await waitForAnimation();
@@ -443,7 +442,7 @@ test.describe('events', () => {
     await addEventListener(host, 'tabChange');
 
     // Remove and re-attach component to check if events are duplicated / fire at all
-    await reattachElementHandle(host);
+    await reattachElement(host);
 
     await firstButton.click();
     expect((await getEventSummary(host, 'tabChange')).counter).toBe(1);
