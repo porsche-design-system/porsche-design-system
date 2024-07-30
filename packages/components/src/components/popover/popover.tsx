@@ -67,7 +67,7 @@ export class Popover {
   public connectedCallback(): void {
     applyConstructableStylesheetStyles(this.host, getSlottedAnchorStyles);
     addDocumentEventListener(this);
-    this.isNativePopoverCase = detectNativePopoverCase(this.host, false);
+    this.isNativePopoverCase = !!detectNativePopoverCase(this.host, false);
     if (this.isNativePopoverCase) {
       this.parentTableElement = findClosestComponent(this.host, 'pTable');
     }
@@ -137,7 +137,7 @@ export class Popover {
     }
   };
 
-  private onToggle = (e): void => {
+  private onToggle = (e: { newState: string }): void => {
     if (e.newState === 'open') {
       forceUpdate(this.host); // Necessary to update popover styles since opening of native popover doesn't trigger rerender
     }

@@ -4,7 +4,8 @@ import type {
   SelectOptgroup,
   SelectOption,
   SelectState,
-  SelectUpdateEventDetail} from './select-utils';
+  SelectUpdateEventDetail,
+} from './select-utils';
 import {
   getSelectDropdownDirection,
   getSelectedOptionString,
@@ -18,20 +19,8 @@ import {
   updateSelectOptions,
 } from './select-utils';
 
-import type {
-  EventEmitter} from '@stencil/core';
-import {
-  Component,
-  Element,
-  Event,
-  forceUpdate,
-  h,
-  type JSX,
-  Listen,
-  Prop,
-  State,
-  Watch,
-} from '@stencil/core';
+import type { EventEmitter } from '@stencil/core';
+import { Component, Element, Event, forceUpdate, h, type JSX, Listen, Prop, State, Watch } from '@stencil/core';
 import {
   addNativePopoverScrollAndResizeListeners,
   AllowedTypes,
@@ -176,7 +165,7 @@ export class Select {
     document.addEventListener('mousedown', this.onClickOutside, true);
     this.form = getClosestHTMLElement(this.host, 'form');
     this.isWithinForm = !!this.form;
-    this.isNativePopoverCase = detectNativePopoverCase(this.host, false);
+    this.isNativePopoverCase = !!detectNativePopoverCase(this.host, false);
     if (this.isNativePopoverCase) {
       this.parentTableElement = findClosestComponent(this.host, 'pTable');
     }

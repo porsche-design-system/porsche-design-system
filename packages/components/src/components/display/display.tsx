@@ -15,6 +15,8 @@ import {
 import { getComponentCss } from './display-styles';
 import { getSlottedAnchorStyles } from '../../styles';
 
+type AlignDeprecationMapType = Record<DisplayAlignDeprecated, Exclude<DisplayAlign, DisplayAlignDeprecated>>;
+
 const propTypes: PropTypes<typeof Display> = {
   tag: AllowedTypes.oneOf<DisplayTag>([undefined, ...DISPLAY_TAGS]),
   size: AllowedTypes.breakpoint<DisplaySize>(DISPLAY_SIZES),
@@ -63,7 +65,7 @@ export class Display {
   public render(): JSX.Element {
     validateProps(this, propTypes);
 
-    const alignDeprecationMap: Record<DisplayAlignDeprecated, Exclude<DisplayAlign, DisplayAlignDeprecated>> = {
+    const alignDeprecationMap: AlignDeprecationMapType = {
       left: 'start',
       right: 'end',
     };
@@ -77,7 +79,10 @@ export class Display {
       this.host,
       getComponentCss,
       this.size,
-      (alignDeprecationMap[this.align] || this.align) as Exclude<DisplayAlign, DisplayAlignDeprecated>,
+      (alignDeprecationMap[this.align as keyof AlignDeprecationMapType] || this.align) as Exclude<
+        DisplayAlign,
+        DisplayAlignDeprecated
+      >,
       this.color,
       this.ellipsis,
       this.theme

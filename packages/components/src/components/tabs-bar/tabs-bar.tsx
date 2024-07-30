@@ -37,6 +37,8 @@ import {
 import { getComponentCss, scrollerAnimatedCssClass } from './tabs-bar-styles';
 import { GRADIENT_COLOR_SCHEMES, GRADIENT_COLORS, type ScrollerDirection } from '../scroller/scroller-utils';
 
+type DeprecationMapType = Record<TabsBarWeightDeprecated, Exclude<TabsBarWeight, TabsBarWeightDeprecated>>;
+
 const propTypes: PropTypes<typeof TabsBar> = {
   size: AllowedTypes.breakpoint<TabsBarSize>(TABS_BAR_SIZES),
   weight: AllowedTypes.oneOf<TabsBarWeight>(TABS_BAR_WEIGHTS),
@@ -147,7 +149,7 @@ export class TabsBar {
   public render(): JSX.Element {
     validateProps(this, propTypes);
     warnIfDeprecatedPropIsUsed<typeof TabsBar>(this, 'gradientColorScheme', 'Please use gradientColor prop instead.');
-    const deprecationMap: Record<TabsBarWeightDeprecated, Exclude<TabsBarWeight, TabsBarWeightDeprecated>> = {
+    const deprecationMap: DeprecationMapType = {
       semibold: 'semi-bold',
     };
     warnIfDeprecatedPropValueIsUsed<typeof TabsBar, TabsBarWeightDeprecated, TabsBarWeight>(
@@ -159,7 +161,10 @@ export class TabsBar {
       this.host,
       getComponentCss,
       this.size,
-      (deprecationMap[this.weight] || this.weight) as Exclude<TabsBarWeight, TabsBarWeightDeprecated>,
+      (deprecationMap[this.weight as keyof DeprecationMapType] || this.weight) as Exclude<
+        TabsBarWeight,
+        TabsBarWeightDeprecated
+      >,
       this.theme
     );
     this.setAccessibilityAttributes();
@@ -174,7 +179,7 @@ export class TabsBar {
         gradientColorScheme={this.gradientColorScheme}
         gradientColor={this.gradientColor}
         alignScrollIndicator="top"
-        ref={(el) => (this.scrollerElement = el)}
+        ref={(el: HTMLPScrollerElement) => (this.scrollerElement = el)}
         onClick={this.onClick}
         onKeyDown={this.onKeydown}
       >

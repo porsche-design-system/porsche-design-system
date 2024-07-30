@@ -14,11 +14,13 @@ export type MarqueFormat = 'png' | 'webp';
 export type MarqueTarget = LinkTarget;
 
 export const getInnerManifest = (variant?: MarqueVariant, trademark?: boolean): InnerManifest =>
-  MARQUES_MANIFEST[variant === '75-years' ? 'porscheMarque75' : `porscheMarque${trademark ? 'Trademark' : ''}`];
+  MARQUES_MANIFEST[
+    variant === '75-years' ? 'porscheMarque75' : (`porscheMarque${trademark ? 'Trademark' : ''}` as keyof unknown)
+  ];
 
 export const buildSrcSet = (innerManifest: InnerManifest, size: MarqueSize, format: MarqueFormat): string =>
   // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
-  Object.entries(innerManifest[size])
+  Object.entries(innerManifest[size as keyof InnerManifest])
     .map(([resolution, fileName]) => `${getCDNBaseURL()}/marque/${fileName[format]} ${resolution}`)
     .join();
 

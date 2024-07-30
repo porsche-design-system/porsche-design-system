@@ -30,6 +30,8 @@ const propTypes: Omit<PropTypes<typeof Headline>, 'variant'> = {
   theme: AllowedTypes.oneOf<Theme>(THEMES),
 };
 
+type AlignDeprecationMapType = Record<HeadlineAlignDeprecated, Exclude<HeadlineAlign, HeadlineAlignDeprecated>>;
+
 /**
  * @slot {"name": "", "description": "Default slot to render the headline." }
  *
@@ -79,7 +81,10 @@ export class Headline {
       this.host,
       getComponentCss,
       this.variant,
-      (alignDeprecationMap[this.align] || this.align) as Exclude<HeadlineAlign, HeadlineAlignDeprecated>,
+      (alignDeprecationMap[this.align as keyof AlignDeprecationMapType] || this.align) as Exclude<
+        HeadlineAlign,
+        HeadlineAlignDeprecated
+      >,
       this.color,
       this.ellipsis,
       this.theme

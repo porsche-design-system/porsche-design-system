@@ -147,7 +147,7 @@ export class Banner {
     return (
       <Host popover="manual">
         <PrefixedTagNames.pInlineNotification
-          ref={(el) => (this.inlineNotificationElement = el)}
+          ref={(el: HTMLPInlineNotificationElement) => (this.inlineNotificationElement = el)}
           heading={this.heading}
           headingTag={this.headingTag}
           description={this.description}

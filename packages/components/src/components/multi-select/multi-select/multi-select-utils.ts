@@ -163,7 +163,10 @@ export const resetSelectedOptions = (options: MultiSelectOption[]): void =>
     }
   });
 
-export const getNewOptionIndex = (options: MultiSelectOption[], direction: SelectDropdownDirectionInternal): number => {
+export const getNewOptionIndex = (
+  options: MultiSelectOption[],
+  direction: SelectDropdownDirectionInternal
+): number | void => {
   const validItems = getUsableOptions(options);
   const validMax = validItems.length - 1;
   if (validMax < 0) {
@@ -185,7 +188,9 @@ export const updateHighlightedOption = (
   direction: SelectDropdownDirectionInternal
 ): void => {
   const newIndex = getNewOptionIndex(options, direction);
-  setNextOptionHighlighted(host, options, newIndex);
+  if (newIndex) {
+    setNextOptionHighlighted(host, options, newIndex);
+  }
 };
 
 /**

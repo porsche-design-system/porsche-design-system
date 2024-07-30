@@ -125,7 +125,7 @@ export class Tabs {
           gradientColor={this.gradientColor}
           activeTabIndex={this.activeTabIndex}
           onUpdate={this.onTabsBarUpdate}
-          onTabChange={(e) => e.stopPropagation()} // prevent double event emission because of identical name
+          onTabChange={(e: Event) => e.stopPropagation()} // prevent double event emission because of identical name
         >
           {this.tabsItemElements.map((tab, index) => (
             <button key={index} type="button">

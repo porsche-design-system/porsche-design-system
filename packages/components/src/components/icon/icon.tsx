@@ -23,6 +23,8 @@ import type { IconName, PropTypes, SelectedAriaAttributes, Theme } from '../../t
 import { getComponentCss } from './icon-styles';
 import { ICONS_MANIFEST } from '@porsche-design-system/assets';
 
+type DeprecationMapType = Record<IconColorDeprecated, Exclude<IconColor, IconColorDeprecated>>;
+
 const propTypes: PropTypes<typeof Icon> = {
   name: AllowedTypes.oneOf<IconName>(Object.keys(ICONS_MANIFEST) as IconName[]),
   source: AllowedTypes.string,
@@ -71,7 +73,7 @@ export class Icon {
   public render(): JSX.Element {
     validateProps(this, propTypes);
     warnIfDeprecatedPropIsUsed<typeof Icon>(this, 'lazy');
-    const deprecationMap: Record<IconColorDeprecated, Exclude<IconColor, IconColorDeprecated>> = {
+    const deprecationMap: DeprecationMapType = {
       brand: 'primary',
       default: 'primary',
       'neutral-contrast-low': 'contrast-low',
@@ -85,7 +87,7 @@ export class Icon {
       getComponentCss,
       this.name,
       this.source,
-      (deprecationMap[this.color] || this.color) as Exclude<IconColor, IconColorDeprecated>,
+      (deprecationMap[this.color as keyof DeprecationMapType] || this.color) as Exclude<IconColor, IconColorDeprecated>,
       this.size,
       this.theme
     );
@@ -96,6 +98,7 @@ export class Icon {
         width={24} // improve bootstrapping behaviour
         height={24} // improve bootstrapping behaviour
         loading="lazy"
+        // @ts-ignore
         alt={parseAndGetAriaAttributes(this.aria)?.['aria-label'] ?? ''}
       />
     );

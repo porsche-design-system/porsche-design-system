@@ -106,6 +106,7 @@ export const getAriaStructure = <T>(allowedAriaAttributes: readonly T[]): string
 
 export const getShapeStructure = <T>(shapeStructure: { [key in keyof T]: ValidatorFunction }): string => {
   return formatObjectOutput(
+    // @ts-ignore
     Object.keys(shapeStructure).reduce((prev, key) => ({ ...prev, [key]: shapeStructure[key].name }), {})
   ).replace(/"/g, ''); // remove double quotes
 };
@@ -122,6 +123,7 @@ export const isBreakpointCustomizableValueInvalid = <T>(
 type AllowedTypeKey = 'string' | 'number' | 'boolean';
 
 // TODO: maybe dissolve object structure and have standalone utils
+
 export const AllowedTypes: {
   [key in AllowedTypeKey]: ValidatorFunction;
 } & {
@@ -131,18 +133,23 @@ export const AllowedTypes: {
   breakpoint: ValidatorFunctionBreakpointCustomizableCreator;
   shape: ValidatorFunctionShapeCreator;
 } = {
+  // @ts-ignore
   // eslint-disable-next-line id-blacklist
   string: (...args) => validateValueOfType(...args, 'string'),
+  // @ts-ignore
   // eslint-disable-next-line id-blacklist
   number: (...args) => validateValueOfType(...args, 'number'),
+  // @ts-ignore
   // eslint-disable-next-line id-blacklist
   boolean: (...args) => validateValueOfType(...args, 'boolean'),
   array: (allowedType: ValidatorFunction): ValidatorFunction =>
+    // @ts-ignore
     // eslint-disable-next-line prefer-arrow/prefer-arrow-functions
     function array(propName, propValue) {
       return isValidArray(propName, propValue, allowedType);
     },
   oneOf: <T>(allowedValuesOrValidatorFunctions: T[]): ValidatorFunction =>
+    // @ts-ignore
     // eslint-disable-next-line prefer-arrow/prefer-arrow-functions
     function oneOf(propName, propValue) {
       // use first item to determine if we've got primitive types or validator functions
@@ -163,6 +170,7 @@ export const AllowedTypes: {
       }
     },
   breakpoint: (allowedValues): ValidatorFunction =>
+    // @ts-ignore
     // eslint-disable-next-line prefer-arrow/prefer-arrow-functions
     function breakpoint(propName, propValue) {
       // TODO: do parseJSON once in the component, currently it is happening multiple times in a single lifecycle
@@ -193,6 +201,7 @@ export const AllowedTypes: {
       }
     },
   aria: <T = keyof AriaAttributes>(allowedAriaAttributes: readonly T[]): ValidatorFunction =>
+    // @ts-ignore
     // eslint-disable-next-line prefer-arrow/prefer-arrow-functions
     function aria(propName, propValue) {
       const ariaAttributes = parseJSONAttribute<AriaAttributes>(propValue as string);
@@ -208,6 +217,7 @@ export const AllowedTypes: {
       }
     },
   shape: <T>(shapeStructure: { [key in keyof T]: ValidatorFunction }): ValidatorFunction =>
+    // @ts-ignore
     // eslint-disable-next-line prefer-arrow/prefer-arrow-functions
     function shape(propName, propValue) {
       if (propValue) {
@@ -257,7 +267,7 @@ export const validateProps = <T extends Class<any>>(instance: InstanceType<T>, p
  * @param {ValidatorFunction} validator - The validator function that checks each array item.
  * @returns {ValidationError | undefined} The first encountered validation error object, or undefined if the array is valid.
  */
-export const isValidArray = (propName: string, arr: any, validator: ValidatorFunction): ValidationError => {
+export const isValidArray = (propName: string, arr: any, validator: ValidatorFunction): ValidationError | void => {
   const validationError = Array.isArray(arr)
     ? validator(
         propName,

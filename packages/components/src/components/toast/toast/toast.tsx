@@ -57,7 +57,11 @@ export class Toast {
     return (
       <Host role="status" aria-live="polite">
         {toast && (
-          <PrefixedTagNames.pToastItem {...toast} theme={this.theme} ref={(el) => (this.toastItemElement = el)} />
+          <PrefixedTagNames.pToastItem
+            {...toast}
+            theme={this.theme}
+            ref={(el: HTMLPToastItemElement) => (this.toastItemElement = el)}
+          />
         )}
       </Host>
     );

@@ -1,6 +1,6 @@
 import { hasWindow } from './has-window';
 
-export const isTouchDevice = (): boolean => {
+export const isTouchDevice = (): boolean | void => {
   if (!hasWindow) {
     return;
   }

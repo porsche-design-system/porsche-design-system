@@ -190,7 +190,7 @@ export class Scroller {
         <div class={scrollAreaClass} ref={(el) => (this.scrollAreaElement = el)}>
           <div
             class="scroll-wrapper"
-            role={parseAndGetAriaAttributes(this.aria)?.role || null}
+            role={(parseAndGetAriaAttributes(this.aria) as any)?.role || null}
             tabIndex={isScrollable(this.isPrevHidden, this.isNextHidden) ? 0 : null}
           >
             <slot />

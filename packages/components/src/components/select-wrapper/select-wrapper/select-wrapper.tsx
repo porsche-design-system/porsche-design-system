@@ -151,7 +151,7 @@ export class SelectWrapper {
             theme={this.theme}
             color={disabled ? 'state-disabled' : 'primary'}
             aria-hidden="true"
-            ref={(el) => (this.iconElement = el)}
+            ref={(el: HTMLElement) => (this.iconElement = el)}
           />
           {this.hasCustomDropdown && !disabled && (
             <PrefixedTagNames.pSelectWrapperDropdown

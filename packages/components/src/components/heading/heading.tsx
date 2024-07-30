@@ -17,6 +17,8 @@ import {
 import { getComponentCss } from './heading-styles';
 import { getSlottedAnchorStyles } from '../../styles';
 
+type AlignDeprecationMapType = Record<HeadingAlignDeprecated, Exclude<HeadingAlign, HeadingAlignDeprecated>>;
+
 const propTypes: PropTypes<typeof Heading> = {
   tag: AllowedTypes.oneOf<HeadingTag>([undefined, ...HEADING_TAGS]),
   size: AllowedTypes.breakpoint<HeadingSize>(HEADING_SIZES),
@@ -65,7 +67,7 @@ export class Heading {
   public render(): JSX.Element {
     validateProps(this, propTypes);
 
-    const alignDeprecationMap: Record<HeadingAlignDeprecated, Exclude<HeadingAlign, HeadingAlignDeprecated>> = {
+    const alignDeprecationMap: AlignDeprecationMapType = {
       left: 'start',
       right: 'end',
     };
@@ -79,7 +81,10 @@ export class Heading {
       this.host,
       getComponentCss,
       this.size,
-      (alignDeprecationMap[this.align] || this.align) as Exclude<HeadingAlign, HeadingAlignDeprecated>,
+      (alignDeprecationMap[this.align as keyof AlignDeprecationMapType] || this.align) as Exclude<
+        HeadingAlign,
+        HeadingAlignDeprecated
+      >,
       this.color,
       this.ellipsis,
       this.theme

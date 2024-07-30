@@ -110,7 +110,7 @@ export const getMatchingOptionMaps = (options: OptionMap[], searchString: string
   return lowerCaseSearchString && options.filter((item) => item.value.toLowerCase() === lowerCaseSearchString);
 };
 
-export const getFirstMatchingOptionMapIndex = (options: OptionMap[], key: string): number => {
+export const getFirstMatchingOptionMapIndex = (options: OptionMap[], key: string): number | void => {
   // TODO: what about other characters?
   if ([...'abcdefghijklmnopqrstuvwxyzäöüß1234567890'].includes(key)) {
     const lowerCaseSearchString = key.toLowerCase();
@@ -123,7 +123,9 @@ export const getFirstMatchingOptionMapIndex = (options: OptionMap[], key: string
 
 export const setHighlightedFirstMatchingOptionMaps = (options: OptionMap[], key: string): OptionMap[] => {
   const targetIndex = getFirstMatchingOptionMapIndex(options, key);
-  return targetIndex >= 0 ? options.map((item, idx) => ({ ...item, highlighted: idx === targetIndex })) : options;
+  return targetIndex && targetIndex >= 0
+    ? options.map((item, idx) => ({ ...item, highlighted: idx === targetIndex }))
+    : options;
 };
 
 export const setFilteredOptionMaps = (options: OptionMap[], searchString: string): OptionMap[] => {
@@ -151,7 +153,7 @@ export const resetFilteredOptionMaps = (options: OptionMap[]): OptionMap[] =>
 export const hasFilterResults = (options: OptionMap[]): boolean =>
   options.some((item) => !item.hidden && !item.initiallyHidden);
 
-export const getNewOptionMapIndex = (options: OptionMap[], direction: DropdownDirectionInternal): number => {
+export const getNewOptionMapIndex = (options: OptionMap[], direction: DropdownDirectionInternal): number | void => {
   const validItems = getValidOptions(options);
   const validMax = validItems.length - 1;
   // prob. needs to be <= 0

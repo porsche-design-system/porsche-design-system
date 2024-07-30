@@ -118,7 +118,7 @@ export class StepperHorizontal {
           aria={{ role: 'list' }}
           theme={this.theme}
           onClick={this.onClickScroller}
-          ref={(el) => (this.scrollerElement = el)}
+          ref={(el: HTMLPScrollerElement) => (this.scrollerElement = el)}
         >
           <slot />
         </PrefixedTagNames.pScroller>

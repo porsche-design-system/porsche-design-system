@@ -52,6 +52,11 @@ import { carouselTransitionDuration, getComponentCss } from './carousel-styles';
 import { gridGap, motionEasingBase } from '@porsche-design-system/styles';
 import { getSlottedAnchorStyles } from '../../styles';
 
+type AlignHeaderDeprecationMapType = Record<
+  CarouselAlignHeaderDeprecated,
+  Exclude<CarouselAlignHeader, CarouselAlignHeaderDeprecated>
+>;
+
 const propTypes: PropTypes<typeof Carousel> = {
   heading: AllowedTypes.string,
   headingSize: AllowedTypes.oneOf<CarouselHeadingSize>(['x-large', 'xx-large']),
@@ -242,10 +247,7 @@ export class Carousel {
 
   public render(): JSX.Element {
     validateProps(this, propTypes);
-    const alignHeaderDeprecationMap: Record<
-      CarouselAlignHeaderDeprecated,
-      Exclude<CarouselAlignHeader, CarouselAlignHeaderDeprecated>
-    > = {
+    const alignHeaderDeprecationMap: AlignHeaderDeprecationMapType = {
       left: 'start',
     };
     warnIfDeprecatedPropValueIsUsed<typeof Carousel, CarouselAlignHeaderDeprecated, CarouselAlignHeader>(
@@ -277,10 +279,8 @@ export class Carousel {
           : !this.disablePagination
         : this.pagination,
       isInfinitePagination(this.amountOfPages),
-      (alignHeaderDeprecationMap[this.alignHeader] || this.alignHeader) as Exclude<
-        CarouselAlignHeader,
-        CarouselAlignHeaderDeprecated
-      >,
+      (alignHeaderDeprecationMap[this.alignHeader as keyof AlignHeaderDeprecationMapType] ||
+        this.alignHeader) as Exclude<CarouselAlignHeader, CarouselAlignHeaderDeprecated>,
       this.theme,
       this.hasNavigation
     );
@@ -331,7 +331,7 @@ export class Carousel {
               <PrefixedTagNames.pButtonPure
                 {...btnProps}
                 icon="arrow-left"
-                ref={(ref) => (this.btnPrev = ref)}
+                ref={(ref: ButtonPure) => (this.btnPrev = ref)}
                 onClick={() => slidePrev(this.splide, this.amountOfPages)}
               />
             )}
@@ -339,7 +339,7 @@ export class Carousel {
               <PrefixedTagNames.pButtonPure
                 {...btnProps}
                 icon="arrow-right"
-                ref={(ref) => (this.btnNext = ref)}
+                ref={(ref: ButtonPure) => (this.btnNext = ref)}
                 onClick={() => slideNext(this.splide, this.amountOfPages)}
                 onKeyDown={this.onNextKeyDown}
               />
@@ -375,7 +375,7 @@ export class Carousel {
           </div>
         )}
       </Host>
-    );
+    ) as JSX.Element;
   }
 
   private registerSplideHandlers(splide: Splide): void {
