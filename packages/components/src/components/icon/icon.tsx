@@ -98,7 +98,7 @@ export class Icon {
         width={24} // improve bootstrapping behaviour
         height={24} // improve bootstrapping behaviour
         loading="lazy"
-        // @ts-expect-error
+        // @ts-expect-error: Type "aria-label" can't be used to index type AriaAttributes
         alt={parseAndGetAriaAttributes(this.aria)?.['aria-label'] ?? ''}
       />
     );

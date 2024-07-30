@@ -107,8 +107,10 @@ export const getAriaStructure = <T>(allowedAriaAttributes: readonly T[]): string
 
 export const getShapeStructure = <T>(shapeStructure: { [key in keyof T]: ValidatorFunction }): string => {
   return formatObjectOutput(
-    // @ts-expect-error
-    Object.keys(shapeStructure).reduce((prev, key) => ({ ...prev, [key]: shapeStructure[key].name }), {})
+    Object.keys(shapeStructure).reduce(
+      (prev, key) => ({ ...prev, [key]: shapeStructure[key as keyof { [key in keyof T]: ValidatorFunction }].name }),
+      {}
+    )
   ).replace(/"/g, ''); // remove double quotes
 };
 
@@ -134,23 +136,23 @@ export const AllowedTypes: {
   breakpoint: ValidatorFunctionBreakpointCustomizableCreator;
   shape: ValidatorFunctionShapeCreator;
 } = {
-  // @ts-ignore
+  // @ts-expect-error: Type void is not assignable to type ValidationError
   // eslint-disable-next-line id-blacklist
   string: (...args) => validateValueOfType(...args, 'string'),
-  // @ts-ignore
+  // @ts-expect-error: Type void is not assignable to type ValidationError
   // eslint-disable-next-line id-blacklist
   number: (...args) => validateValueOfType(...args, 'number'),
-  // @ts-expect-error
+  // @ts-expect-error: Type void is not assignable to type ValidationError
   // eslint-disable-next-line id-blacklist
   boolean: (...args) => validateValueOfType(...args, 'boolean'),
   array: (allowedType: ValidatorFunction): ValidatorFunction =>
-    // @ts-expect-error
+    // @ts-expect-error: Type void is not assignable to type ValidationError
     // eslint-disable-next-line prefer-arrow/prefer-arrow-functions
     function array(propName, propValue) {
       return isValidArray(propName, propValue, allowedType);
     },
   oneOf: <T>(allowedValuesOrValidatorFunctions: T[]): ValidatorFunction =>
-    // @ts-expect-error
+    // @ts-expect-error: Not all code paths return a value
     // eslint-disable-next-line prefer-arrow/prefer-arrow-functions
     function oneOf(propName, propValue) {
       // use first item to determine if we've got primitive types or validator functions
@@ -171,7 +173,7 @@ export const AllowedTypes: {
       }
     },
   breakpoint: (allowedValues): ValidatorFunction =>
-    // @ts-ignore
+    // @ts-expect-error: Not all code paths return a value
     // eslint-disable-next-line prefer-arrow/prefer-arrow-functions
     function breakpoint(propName, propValue) {
       // TODO: do parseJSON once in the component, currently it is happening multiple times in a single lifecycle
@@ -202,7 +204,7 @@ export const AllowedTypes: {
       }
     },
   aria: <T = keyof AriaAttributes>(allowedAriaAttributes: readonly T[]): ValidatorFunction =>
-    // @ts-ignore
+    // @ts-expect-error: Not all code paths return a value
     // eslint-disable-next-line prefer-arrow/prefer-arrow-functions
     function aria(propName, propValue) {
       const ariaAttributes = parseJSONAttribute<AriaAttributes>(propValue as string);
@@ -218,7 +220,7 @@ export const AllowedTypes: {
       }
     },
   shape: <T>(shapeStructure: { [key in keyof T]: ValidatorFunction }): ValidatorFunction =>
-    // @ts-ignore
+    // @ts-expect-error: Not all code paths return a value
     // eslint-disable-next-line prefer-arrow/prefer-arrow-functions
     function shape(propName, propValue) {
       if (propValue) {

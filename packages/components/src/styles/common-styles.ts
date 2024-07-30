@@ -59,7 +59,7 @@ export const addImportantToEachRule = (input: JssStyle): JssStyle => {
     (result, [key, value]) =>
       value === null
         ? result
-        : // @ts-expect-error
+        : // @ts-expect-error: Type string can't be used to index type JssStyle
           ((result[key] =
             typeof value === 'object' ? addImportantToEachRule(value as JssStyle) : addImportantToRule(value)),
           result),

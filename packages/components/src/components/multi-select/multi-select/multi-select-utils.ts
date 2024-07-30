@@ -188,7 +188,7 @@ export const updateHighlightedOption = (
   direction: SelectDropdownDirectionInternal
 ): void => {
   const newIndex = getNewOptionIndex(options, direction);
-  // @ts-expect-error
+  // @ts-expect-error: Type number | void is not assignable to parameter of type number
   setNextOptionHighlighted(host, options, newIndex);
 };
 
