@@ -82,7 +82,7 @@
   {
     "chunkShortName": "flyout",
     "size": 9753,
-    "gzipSize": 4080
+    "gzipSize": 4082
   },
   {
     "chunkShortName": "flyout-multilevel",
@@ -157,7 +157,7 @@
   {
     "chunkShortName": "modal",
     "size": 11572,
-    "gzipSize": 4617
+    "gzipSize": 4618
   },
   {
     "chunkShortName": "model-signature",
@@ -241,8 +241,8 @@
   },
   {
     "chunkShortName": "tabs-bar",
-    "size": 10610,
-    "gzipSize": 4222
+    "size": 10506,
+    "gzipSize": 4175
   },
   {
     "chunkShortName": "tag",

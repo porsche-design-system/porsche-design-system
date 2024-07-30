@@ -135,6 +135,30 @@ test('should work with nested or translated markup', async ({ page }) => {
   expect((await getEventSummary(host, 'update')).counter).toBe(3);
 });
 
+test('correct position of tabindex and aria-selected attributes if changed programmatically', async ({ page }) => {
+  await initTabsBar(page, { amount: 3, activeTabIndex: 0 });
+  const [firstButton, secondButton, thirdButton] = await getAllButtons(page);
+  expect(await getAttribute(firstButton, 'tabindex')).toBe('0');
+  expect(await getAttribute(firstButton, 'aria-selected')).toBe('true');
+  expect(await getAttribute(secondButton, 'tabindex')).toBe('-1');
+  expect(await getAttribute(secondButton, 'aria-selected')).toBe('false');
+  expect(await getAttribute(thirdButton, 'tabindex')).toBe('-1');
+  expect(await getAttribute(thirdButton, 'aria-selected')).toBe('false');
+
+  // change active-tab-index prop
+  await page.evaluate(() => {
+    const tabsBar = document.querySelector('p-tabs-bar');
+    tabsBar.activeTabIndex = 2;
+  });
+
+  expect(await getAttribute(firstButton, 'tabindex')).toBe('-1');
+  expect(await getAttribute(firstButton, 'aria-selected')).toBe('false');
+  expect(await getAttribute(secondButton, 'tabindex')).toBe('-1');
+  expect(await getAttribute(secondButton, 'aria-selected')).toBe('false');
+  expect(await getAttribute(thirdButton, 'tabindex')).toBe('0');
+  expect(await getAttribute(thirdButton, 'aria-selected')).toBe('true');
+});
+
 test.describe('slotted content changes', () => {
   // TODO: Different values in pipeline than locally
   skipInBrowsers(['webkit', 'firefox'], () => {
