@@ -24,7 +24,7 @@ const initLinkPure = (page: Page, opts?: { useSlottedAnchor?: boolean; withSubli
 test.fixme('should expose correct initial accessibility tree properties', async ({ page }) => {
   await initLinkPure(page);
   const link = getLink(page);
-  const icon = await getIcon(page);
+  const icon = getIcon(page);
 
   // await expectA11yToMatchSnapshot(page, link);
   // await expectA11yToMatchSnapshot(page, icon, { interestingOnly: false });
@@ -49,7 +49,7 @@ test.fixme('should expose correct accessibility tree description if subline prop
 
 test('should not expose accessibility tree description with slotted anchor and subline', async ({ page }) => {
   await initLinkPure(page, { useSlottedAnchor: true, withSubline: true });
-  const span = await getSpan(page);
+  const span = getSpan(page);
 
   const snapshot = await page.accessibility.snapshot({
     root: span,

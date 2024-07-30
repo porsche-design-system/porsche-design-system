@@ -5,7 +5,6 @@ const getHost = (page: Page) => page.locator('p-table');
 const getTable = (page: Page) => page.locator('p-table .table');
 const getFirstTableHeadCell = (page: Page) => page.locator('p-table-head-cell:nth-child(1)');
 
-const getFirstTableHeadCellButton = (page: Page) => page.locator('p-table-head-cell:nth-child(1) button');
 const getSecondTableHeadCell = (page: Page) => page.locator('p-table-head-cell:nth-child(2)');
 const getThirdTableHeadCell = (page: Page) => page.locator('p-table-head-cell:nth-child(3)');
 const getCaption = (page: Page) => page.locator('p-table .caption');
@@ -55,8 +54,8 @@ ${script}`
 
 test('should expose correct initial accessibility tree', async ({ page }) => {
   await initTable(page);
-  const table = await getTable(page);
-  const firstTableHeadCell = await getFirstTableHeadCell(page);
+  const table = getTable(page);
+  const firstTableHeadCell = getFirstTableHeadCell(page);
 
   // await expectA11yToMatchSnapshot(page, table, { interestingOnly: false });
   expect(await getAttribute(firstTableHeadCell, 'scope'), 'firstTableHeadCell scope').toBe('col'); // scope can't be detected by the accessibility tree
@@ -67,7 +66,7 @@ test('should set correct accessibility tree and aria-attribute for caption prope
   await initTable(page);
 
   const host = getHost(page);
-  const table = await getTable(page);
+  const table = getTable(page);
   expect(await getAttribute(table, 'aria-label'), 'initial aria-label').toBeNull();
   expect(await getAttribute(table, 'aria-labelledby'), 'initial aria-labelledby').toBeNull();
 
@@ -77,19 +76,19 @@ test('should set correct accessibility tree and aria-attribute for caption prope
   expect(await getAttribute(table, 'aria-label'), 'final aria-label').toBe('Some caption');
   expect(await getAttribute(table, 'aria-labelledby'), 'final aria-labelledby').toBeNull();
 
-  const caption = await getCaption(page);
-  expect(caption, 'slotted caption').toBeNull();
+  const caption = getCaption(page);
+  await expect(caption, 'slotted caption').toHaveCount(0);
 });
 
 test('should set correct accessibility tree and aria-attribute for slotted caption', async ({ page }) => {
   // hint: accessibility tree snapshot not useful due to lack of support of table-role in interestingOnly mode.
   await initTable(page, { hasSlottedCaption: true });
-  const table = await getTable(page);
+  const table = getTable(page);
 
   expect(await getAttribute(table, 'aria-label'), 'initial aria-label').toBeNull();
   expect(await getAttribute(table, 'aria-labelledby'), 'initial aria-labelledby').toBe('caption');
 
-  const caption = await getCaption(page);
+  const caption = getCaption(page);
   expect(await getAttribute(caption, 'id'), 'caption id').toBe('caption');
 });
 
@@ -97,9 +96,9 @@ test('should set correct aria-sort value when sortable', async ({ page }) => {
   await initTable(page, { isSortable: true });
 
   const host = getHost(page);
-  const firstTableHeadCell = await getFirstTableHeadCell(page);
-  const secondTableHeadCell = await getSecondTableHeadCell(page);
-  const thirdTableHeadCell = await getThirdTableHeadCell(page);
+  const firstTableHeadCell = getFirstTableHeadCell(page);
+  const secondTableHeadCell = getSecondTableHeadCell(page);
+  const thirdTableHeadCell = getThirdTableHeadCell(page);
 
   expect(await getAttribute(firstTableHeadCell, 'aria-sort'), '1st cell initially').toBe('ascending');
   expect(await getAttribute(secondTableHeadCell, 'aria-sort'), '2nd cell initially').toBeNull();
@@ -131,9 +130,9 @@ test('should set correct aria-sort value when sortable', async ({ page }) => {
 test('should set correct aria-sort value when not sortable', async ({ page }) => {
   await initTable(page, { isSortable: false });
 
-  const firstTableHeadCell = await getFirstTableHeadCell(page);
-  const secondTableHeadCell = await getSecondTableHeadCell(page);
-  const thirdTableHeadCell = await getThirdTableHeadCell(page);
+  const firstTableHeadCell = getFirstTableHeadCell(page);
+  const secondTableHeadCell = getSecondTableHeadCell(page);
+  const thirdTableHeadCell = getThirdTableHeadCell(page);
 
   expect(await getAttribute(firstTableHeadCell, 'aria-sort'), '1st cell').toBeNull();
   expect(await getAttribute(secondTableHeadCell, 'aria-sort'), '2nd cell').toBeNull();
