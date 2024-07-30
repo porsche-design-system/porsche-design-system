@@ -776,7 +776,7 @@ h1,h2,h3,h4,h5,h6 {
   width: var(--p-model-signature-width,94px);
   height: var(--p-model-signature-height,auto);
   mask: url(http://localhost:3001/model-signatures/911.b68f913.svg) no-repeat left top / contain !important;
-  aspect-ratio: 94 / 25 !important;
+  aspect-ratio: 94 / 36 !important;
   background: var(--p-model-signature-color,#FBFCFF) !important;
   color-scheme: light dark !important;
 }
@@ -1129,7 +1129,7 @@ h1,h2,h3,h4,h5,h6 {
   width: var(--p-model-signature-width,94px);
   height: var(--p-model-signature-height,auto);
   mask: url(http://localhost:3001/model-signatures/911.b68f913.svg) no-repeat left top / contain !important;
-  aspect-ratio: 94 / 25 !important;
+  aspect-ratio: 94 / 36 !important;
   background: var(--p-model-signature-color,#FBFCFF) !important;
   color-scheme: light dark !important;
 }
@@ -1518,7 +1518,7 @@ h1,h2,h3,h4,h5,h6 {
   width: var(--p-model-signature-width,94px);
   height: var(--p-model-signature-height,auto);
   mask: url(http://localhost:3001/model-signatures/911.b68f913.svg) no-repeat left top / contain !important;
-  aspect-ratio: 94 / 25 !important;
+  aspect-ratio: 94 / 36 !important;
   background: var(--p-model-signature-color,#FBFCFF) !important;
   color-scheme: light dark !important;
 }
@@ -1907,7 +1907,7 @@ h1,h2,h3,h4,h5,h6 {
   width: var(--p-model-signature-width,94px);
   height: var(--p-model-signature-height,auto);
   mask: url(http://localhost:3001/model-signatures/911.b68f913.svg) no-repeat left top / contain !important;
-  aspect-ratio: 94 / 25 !important;
+  aspect-ratio: 94 / 36 !important;
   background: var(--p-model-signature-color,#FBFCFF) !important;
   color-scheme: light dark !important;
 }
@@ -10452,7 +10452,7 @@ h1,h2,h3,h4,h5,h6 {
   width: var(--p-model-signature-width,94px);
   height: var(--p-model-signature-height,auto);
   mask: url(http://localhost:3001/model-signatures/911.b68f913.svg) no-repeat left top / contain !important;
-  aspect-ratio: 94 / 25 !important;
+  aspect-ratio: 94 / 36 !important;
   background: var(--p-model-signature-color,#FBFCFF) !important;
   color-scheme: light dark !important;
 }
