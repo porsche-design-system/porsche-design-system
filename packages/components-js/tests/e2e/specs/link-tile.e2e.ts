@@ -12,7 +12,7 @@ const initLinkTile = (page: Page, opts?: { compact?: boolean }): Promise<void> =
 
   return setContentWithDesignSystem(
     page,
-    `<p-link-tile href="#" label="Some label" description="Some description" compact="${compact}" >
+    `<p-link-tile href="#" label="Some label" description="Some description" ${compact ? 'compact=' + compact + '' : ''}>
   <img src="${imgSrc}" alt="Some image label"/>
 </p-link-tile>`
   );
@@ -34,10 +34,11 @@ test.describe('lifecycle', () => {
     const status = await getLifecycleStatus(page);
 
     expect(status.componentDidLoad['p-link-tile'], 'componentDidLoad: p-link-tile').toBe(1);
+    expect(status.componentDidLoad['p-link-pure'], 'componentDidLoad: p-link').toBe(1);
     expect(status.componentDidLoad['p-link-pure'], 'componentDidLoad: p-link-pure').toBe(1);
     expect(status.componentDidLoad['p-icon'], 'componentDidLoad: p-icon').toBe(1);
 
-    expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(3);
+    expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(4);
     expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(0);
   });
 

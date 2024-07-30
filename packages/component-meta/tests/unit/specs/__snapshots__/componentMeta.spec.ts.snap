@@ -995,13 +995,25 @@ exports[`should match snapshot 1`] = `
       },
       "aspectRatio": {
         "allowedValues": [
+          "1/1",
+          "4/3",
+          "3/4",
+          "16/9",
+          "9/16",
           "1:1",
           "4:3",
           "3:4",
           "16:9",
           "9:16",
         ],
-        "defaultValue": "4:3",
+        "defaultValue": "4/3",
+        "deprecatedValues": [
+          "1:1",
+          "4:3",
+          "3:4",
+          "16:9",
+          "9:16",
+        ],
         "description": "Aspect ratio of the button-tile.",
         "isBreakpointCustomizable": true,
         "type": "ButtonTileAspectRatio",
@@ -1273,10 +1285,15 @@ exports[`should match snapshot 1`] = `
       },
       "size": {
         "allowedValues": [
-          "default",
+          "medium",
+          "large",
           "inherit",
+          "default",
         ],
-        "defaultValue": "default",
+        "defaultValue": "medium",
+        "deprecatedValues": [
+          "default",
+        ],
         "description": "Font size of the description.",
         "isBreakpointCustomizable": true,
         "type": "ButtonTileSize",
@@ -1305,6 +1322,9 @@ exports[`should match snapshot 1`] = `
     "slotsMeta": {
       "": {
         "description": "Default slot for the img or picture tag.",
+      },
+      "header": {
+        "description": "Renders a header section above the content area.",
       },
     },
     "styling": "jss",
@@ -4374,13 +4394,25 @@ exports[`should match snapshot 1`] = `
       },
       "aspectRatio": {
         "allowedValues": [
+          "1/1",
+          "4/3",
+          "3/4",
+          "16/9",
+          "9/16",
           "1:1",
           "4:3",
           "3:4",
           "16:9",
           "9:16",
         ],
-        "defaultValue": "4:3",
+        "defaultValue": "4/3",
+        "deprecatedValues": [
+          "1:1",
+          "4:3",
+          "3:4",
+          "16:9",
+          "9:16",
+        ],
         "description": "Aspect ratio of the link-tile.",
         "isBreakpointCustomizable": true,
         "type": "LinkTileAspectRatio",
@@ -4443,10 +4475,15 @@ exports[`should match snapshot 1`] = `
       },
       "size": {
         "allowedValues": [
-          "default",
+          "medium",
+          "large",
           "inherit",
+          "default",
         ],
-        "defaultValue": "default",
+        "defaultValue": "medium",
+        "deprecatedValues": [
+          "default",
+        ],
         "description": "Font size of the description.",
         "isBreakpointCustomizable": true,
         "type": "LinkTileSize",
@@ -4482,6 +4519,9 @@ exports[`should match snapshot 1`] = `
       "": {
         "description": "Default slot for the img or picture tag.",
       },
+      "header": {
+        "description": "Renders a header section above the content area.",
+      },
     },
     "styling": "jss",
   },
@@ -4501,13 +4541,25 @@ exports[`should match snapshot 1`] = `
     "propsMeta": {
       "aspectRatio": {
         "allowedValues": [
+          "1/1",
+          "4/3",
+          "3/4",
+          "16/9",
+          "9/16",
           "1:1",
           "4:3",
           "3:4",
           "16:9",
           "9:16",
         ],
-        "defaultValue": "3:4",
+        "defaultValue": "3/4",
+        "deprecatedValues": [
+          "1:1",
+          "4:3",
+          "3:4",
+          "16:9",
+          "9:16",
+        ],
         "description": "Aspect ratio of the link-tile-model-signature.",
         "isBreakpointCustomizable": true,
         "type": "LinkTileModelSignatureAspectRatio",
@@ -4581,6 +4633,9 @@ exports[`should match snapshot 1`] = `
     "slotsMeta": {
       "": {
         "description": "Default slot for the img or picture tag.",
+      },
+      "header": {
+        "description": "Renders a header section above the content area.",
       },
       "primary": {
         "allowedTagNames": [
