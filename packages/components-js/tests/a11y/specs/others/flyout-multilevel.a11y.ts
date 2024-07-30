@@ -10,7 +10,7 @@ import type { Components } from '@porsche-design-system/components';
 
 const getHost = (page: Page) => page.locator('p-flyout-multilevel');
 const getFlyoutMultilevelDialog = (page: Page) => page.locator('p-flyout-multilevel dialog');
-const getFlyoutMultilevelContent = (page: Page) => page.locator('p-flyout-multilevel .content');
+const getFlyoutMultilevelContent = (page: Page) => page.locator('p-flyout-multilevel .content').first();
 
 const initBasicFlyoutMultilevel = (
   page: Page,
@@ -50,14 +50,14 @@ const initBasicFlyoutMultilevel = (
 
 test.fixme('should expose correct initial accessibility tree', async ({ page }) => {
   await initBasicFlyoutMultilevel(page, { open: true });
-  const flyout = await getFlyoutMultilevelDialog(page);
+  const flyout = getFlyoutMultilevelDialog(page);
 
   // await expectA11yToMatchSnapshot(page, flyout, { interestingOnly: false });
 });
 
 test.fixme('should not expose accessibility tree if flyout is hidden', async ({ page }) => {
   await initBasicFlyoutMultilevel(page, { open: false });
-  const flyout = await getFlyoutMultilevelDialog(page);
+  const flyout = getFlyoutMultilevelDialog(page);
 
   // await expectA11yToMatchSnapshot(page, flyout);
 });
@@ -65,7 +65,7 @@ test.fixme('should not expose accessibility tree if flyout is hidden', async ({ 
 test('should overwrite aria-label when adding aria prop', async ({ page }) => {
   await initBasicFlyoutMultilevel(page, { open: false, aria: "{'aria-label': 'Some Heading'}" });
   const host = getHost(page);
-  const flyoutMultilevelContent = await getFlyoutMultilevelContent(page);
+  const flyoutMultilevelContent = getFlyoutMultilevelContent(page);
   expect(await getProperty(flyoutMultilevelContent, 'ariaLabel')).toBe('Some Heading');
 
   await setProperty(host, 'aria', "{'aria-label': 'Other Heading'}");

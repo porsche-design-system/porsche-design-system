@@ -4,7 +4,7 @@ import { type Page, test, expect } from '@playwright/test';
 const getHost = (page: Page) => page.locator('p-link-pure');
 const getLink = (page: Page) => page.locator('p-link-pure a');
 const getIcon = (page: Page) => page.locator('p-link-pure p-icon svg');
-const getSpan = (page: Page) => page.locator('p-link-pure span');
+const getSpan = (page: Page) => page.locator('p-link-pure span').first();
 
 const initLinkPure = (page: Page, opts?: { useSlottedAnchor?: boolean; withSubline?: boolean }): Promise<void> => {
   const { useSlottedAnchor = false, withSubline = false } = opts || {};
