@@ -9,7 +9,7 @@ export const waitForComponentsReady = (page: Page): Promise<number> => {
 
 export const goto = async (page: Page, url: string) => {
   await page.goto(url);
-  page.locator('html.hydrated').waitFor();
+  await page.locator('html.hydrated').waitFor();
   await waitForComponentsReady(page);
 };
 
