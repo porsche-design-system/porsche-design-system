@@ -52,7 +52,7 @@ test('should not expose accessibility tree description with slotted anchor and s
   const span = getSpan(page);
 
   const snapshot = await page.accessibility.snapshot({
-    root: span,
+    root: await span.elementHandle(),
   });
 
   expect(snapshot).toBeNull();
