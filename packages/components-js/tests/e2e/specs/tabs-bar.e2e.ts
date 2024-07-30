@@ -151,6 +151,8 @@ test('correct position of tabindex and aria-selected attributes if changed progr
     tabsBar.activeTabIndex = 2;
   });
 
+  await waitForStencilLifecycle(page);
+
   expect(await getAttribute(firstButton, 'tabindex')).toBe('-1');
   expect(await getAttribute(firstButton, 'aria-selected')).toBe('false');
   expect(await getAttribute(secondButton, 'tabindex')).toBe('-1');
