@@ -97,7 +97,7 @@ export const getPopoverMargin = (
   spacer: HTMLDivElement,
   popover: HTMLDivElement,
   direction: PopoverDirection
-  // @ts-ignore
+  // @ts-expect-error
 ): string => {
   const { clientWidth, clientHeight } = getDocumentHeightWidthWithoutSafeZone();
   const spacerRect = spacer.getBoundingClientRect();

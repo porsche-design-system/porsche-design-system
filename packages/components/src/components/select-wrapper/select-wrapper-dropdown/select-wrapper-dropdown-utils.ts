@@ -158,7 +158,7 @@ export const getNewOptionMapIndex = (options: OptionMap[], direction: DropdownDi
   const validMax = validItems.length - 1;
   // prob. needs to be <= 0
   if (validMax < 0) {
-    // @ts-ignore
+    // @ts-expect-error
     return;
   }
 

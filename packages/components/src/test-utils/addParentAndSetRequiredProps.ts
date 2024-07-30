@@ -14,7 +14,7 @@ export const addParentAndSetRequiredProps = (tagName: TagName, component: any): 
     const child = document.createElement(childTagName);
     if (childAttribute) {
       const [childAttributeName, childAttributeValue] = childAttribute.replace(/"/g, '').split('=');
-      // @ts-ignore
+      // @ts-expect-error
       child[childAttributeName] = childAttributeValue;
     }
 

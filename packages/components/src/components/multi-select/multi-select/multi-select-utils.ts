@@ -188,7 +188,7 @@ export const updateHighlightedOption = (
   direction: SelectDropdownDirectionInternal
 ): void => {
   const newIndex = getNewOptionIndex(options, direction);
-  // @ts-ignore
+  // @ts-expect-error
   setNextOptionHighlighted(host, options, newIndex);
 };
 

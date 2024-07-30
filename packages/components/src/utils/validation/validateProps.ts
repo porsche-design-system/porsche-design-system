@@ -37,6 +37,7 @@ export const formatObjectOutput = (value: any): string => {
 
 export const formatArrayOutput = <T>(value: T[] | readonly T[]): string => {
   return (
+    // eslint-disable-next-line @typescript-eslint/no-base-to-string
     JSON.stringify(value.map((x) => (x === undefined ? `${x}` : x))) // wrap undefined in quotes to not convert it to null
       .replace(/'/g, '') // remove single quotes
       // eslint-disable-next-line @typescript-eslint/quotes
@@ -106,7 +107,7 @@ export const getAriaStructure = <T>(allowedAriaAttributes: readonly T[]): string
 
 export const getShapeStructure = <T>(shapeStructure: { [key in keyof T]: ValidatorFunction }): string => {
   return formatObjectOutput(
-    // @ts-ignore
+    // @ts-expect-error
     Object.keys(shapeStructure).reduce((prev, key) => ({ ...prev, [key]: shapeStructure[key].name }), {})
   ).replace(/"/g, ''); // remove double quotes
 };
@@ -139,17 +140,17 @@ export const AllowedTypes: {
   // @ts-ignore
   // eslint-disable-next-line id-blacklist
   number: (...args) => validateValueOfType(...args, 'number'),
-  // @ts-ignore
+  // @ts-expect-error
   // eslint-disable-next-line id-blacklist
   boolean: (...args) => validateValueOfType(...args, 'boolean'),
   array: (allowedType: ValidatorFunction): ValidatorFunction =>
-    // @ts-ignore
+    // @ts-expect-error
     // eslint-disable-next-line prefer-arrow/prefer-arrow-functions
     function array(propName, propValue) {
       return isValidArray(propName, propValue, allowedType);
     },
   oneOf: <T>(allowedValuesOrValidatorFunctions: T[]): ValidatorFunction =>
-    // @ts-ignore
+    // @ts-expect-error
     // eslint-disable-next-line prefer-arrow/prefer-arrow-functions
     function oneOf(propName, propValue) {
       // use first item to determine if we've got primitive types or validator functions

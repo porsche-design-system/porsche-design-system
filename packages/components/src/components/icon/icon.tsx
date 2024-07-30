@@ -98,7 +98,7 @@ export class Icon {
         width={24} // improve bootstrapping behaviour
         height={24} // improve bootstrapping behaviour
         loading="lazy"
-        // @ts-ignore
+        // @ts-expect-error
         alt={parseAndGetAriaAttributes(this.aria)?.['aria-label'] ?? ''}
       />
     );

@@ -1,4 +1,4 @@
-import { EventEmitter } from '@stencil/core';
+import type { EventEmitter } from '@stencil/core';
 
 export const setDialogVisibility = (isOpen: boolean, dialog: HTMLDialogElement, scrollArea: HTMLElement): void => {
   // `.showModal()` / `.close()` shall only be called when state changes and after render cycle has finished

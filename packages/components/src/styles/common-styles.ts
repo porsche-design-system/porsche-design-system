@@ -59,7 +59,7 @@ export const addImportantToEachRule = (input: JssStyle): JssStyle => {
     (result, [key, value]) =>
       value === null
         ? result
-        : // @ts-ignore
+        : // @ts-expect-error
           ((result[key] =
             typeof value === 'object' ? addImportantToEachRule(value as JssStyle) : addImportantToRule(value)),
           result),
