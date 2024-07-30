@@ -58,11 +58,11 @@ test.describe('Form Wrapper with slotted input', () => {
     initConsoleObserver(page);
     await goto(page, 'form-wrapper-binding');
 
-    page.locator('select[name="route"]').selectOption('overview');
+    await page.locator('select[name="route"]').selectOption('overview');
     await waitForComponentsReady(page);
 
     // back and forth navigation seems to be necessary to reproduce a bug
-    page.locator('select[name="route"]').selectOption('form-wrapper-binding');
+    await page.locator('select[name="route"]').selectOption('form-wrapper-binding');
 
     expect(getConsoleErrorsAmount()).toBe(0);
 
