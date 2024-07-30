@@ -91,7 +91,7 @@ Additionally, the component is able to align to the highest CSS Grid child indep
 CSS Grid context (see second row in example).
 
 <Notification heading="Browser Support Limitation" heading-tag="h3" state="warning">
-  Currently, Safari is able to align the height per CSS Grid row as long as the content does not overflow.
+  Currently, Safari is only able to align the height per CSS Grid row as long as the content does not overflow.
 </Notification>
 
 <Playground :markup="gridMarkup"></Playground>
@@ -138,7 +138,7 @@ export default class Code extends Vue {
   secondaryLink = '<p-link slot="secondary" href="https://porsche.com/#secondary">Secondary label</p-link>';
 
   basic = `<p-link-tile-model-signature heading="Some heading">
-  <p-tag slot="header" color="background-frosted" compact="true">Some tag</p-tag>
+  <p-tag slot="header" theme="dark" color="background-frosted" compact="true">Some tag</p-tag>
   ${this.img}
   ${this.primaryLink}
   ${this.secondaryLink}
@@ -210,31 +210,31 @@ export default class Code extends Vue {
     aspect-ratio="4/3"
     heading="Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua."
   >
-    <p-tag slot="header" color="background-frosted" compact="true">4/3</p-tag>
+    <p-tag slot="header" theme="dark" color="background-frosted" compact="true">4/3</p-tag>
     ${this.img}
     ${this.primaryLink}
     ${this.secondaryLink}
   </p-link-tile-model-signature>
   <p-link-tile-model-signature aspect-ratio="4/3" heading="Some description">
-    <p-tag slot="header" color="background-frosted" compact="true">4/3</p-tag>
+    <p-tag slot="header" theme="dark" color="background-frosted" compact="true">4/3</p-tag>
     ${this.img}
     ${this.primaryLink}
     ${this.secondaryLink}
   </p-link-tile-model-signature>
   <p-link-tile-model-signature aspect-ratio="1/1" heading="Some description">
-    <p-tag slot="header" color="background-frosted" compact="true">1/1</p-tag>
+    <p-tag slot="header" theme="dark" color="background-frosted" compact="true">1/1</p-tag>
     ${this.img}
     ${this.primaryLink}
     ${this.secondaryLink}
   </p-link-tile-model-signature>
   <p-link-tile-model-signature aspect-ratio="9/16" heading="Some description">
-    <p-tag slot="header" color="background-frosted" compact="true">9/16</p-tag>
+    <p-tag slot="header" theme="dark" color="background-frosted" compact="true">9/16</p-tag>
     ${this.img}
     ${this.primaryLink}
     ${this.secondaryLink}
   </p-link-tile-model-signature>
   <p-link-tile-model-signature aspect-ratio="1/1" heading="Some description">
-    <p-tag slot="header" color="background-frosted" compact="true">1/1</p-tag>
+    <p-tag slot="header" theme="dark" color="background-frosted" compact="true">1/1</p-tag>
     ${this.img}
     ${this.primaryLink}
     ${this.secondaryLink}

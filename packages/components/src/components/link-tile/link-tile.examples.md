@@ -122,7 +122,7 @@ Additionally, the component is able to align to the highest CSS Grid child indep
 CSS Grid context (see second row in example).
 
 <Notification heading="Browser Support Limitation" heading-tag="h3" state="warning">
-  Currently, Safari is able to align the height per CSS Grid row as long as the content does not overflow.
+  Currently, Safari is only able to align the height per CSS Grid row as long as the content does not overflow.
 </Notification>
 
 <Playground :markup="gridMarkup"></Playground>
@@ -143,7 +143,7 @@ export default class Code extends Vue {
   label="Some label"
   description="Some Description"
 >
-  <p-tag slot="header" color="background-frosted" compact="true">Some tag</p-tag>
+  <p-tag slot="header" theme="dark" color="background-frosted" compact="true">Some tag</p-tag>
   <img src="${require('@/assets/lights.jpg')}" ${this.imgAttributes} />
 </p-link-tile>`;
 
@@ -275,35 +275,35 @@ export default class Code extends Vue {
     size="large"
     description="Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum."
   >
-    <p-tag slot="header" color="background-frosted" compact="true">4/3</p-tag>
+    <p-tag slot="header" theme="dark" color="background-frosted" compact="true">4/3</p-tag>
     <img
       src="${require('@/assets/lights.jpg')}"
       ${this.imgAttributes}
     />
   </p-link-tile>
   <p-link-tile aspect-ratio="4/3" href="#" label="Some Label" description="Some description">
-    <p-tag slot="header" color="background-frosted" compact="true">4/3</p-tag>
+    <p-tag slot="header" theme="dark" color="background-frosted" compact="true">4/3</p-tag>
     <img
       src="${require('@/assets/lights.jpg')}"
       ${this.imgAttributes}
     />
   </p-link-tile>
   <p-link-tile aspect-ratio="1/1" href="#" label="Some Label" description="Some description">
-    <p-tag slot="header" color="background-frosted" compact="true">1/1</p-tag>
+    <p-tag slot="header" theme="dark" color="background-frosted" compact="true">1/1</p-tag>
     <img
       src="${require('@/assets/lights.jpg')}"
       ${this.imgAttributes}
     />
   </p-link-tile>
   <p-link-tile aspect-ratio="9/16" href="#" label="Some Label" description="Some description">
-    <p-tag slot="header" color="background-frosted" compact="true">9/16</p-tag>
+    <p-tag slot="header" theme="dark" color="background-frosted" compact="true">9/16</p-tag>
     <img
       src="${require('@/assets/lights.jpg')}"
       ${this.imgAttributes}
     />
   </p-link-tile>
   <p-link-tile aspect-ratio="1/1" href="#" label="Some Label" description="Some description">
-    <p-tag slot="header" color="background-frosted" compact="true">1/1</p-tag>
+    <p-tag slot="header" theme="dark" color="background-frosted" compact="true">1/1</p-tag>
     <img
       src="${require('@/assets/lights.jpg')}"
       ${this.imgAttributes}

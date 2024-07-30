@@ -118,7 +118,7 @@ export class LinkTileModelSignature {
       <div class="root">
         <a {...overlayLinkProps} />
         <div class="header">
-          <PrefixedTagNames.pModelSignature theme="dark" model={this.model} safeZone={false} />
+          <PrefixedTagNames.pModelSignature theme="dark" model={this.model} />
           <slot name="header" />
         </div>
         <div class="media">
