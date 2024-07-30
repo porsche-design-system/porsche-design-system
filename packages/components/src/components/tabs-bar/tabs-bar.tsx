@@ -190,7 +190,7 @@ export class TabsBar {
       const attrs = this.areTabsButtons
         ? {
             role: 'tab',
-            tabindex: isCurrent || 0 === index ? '0' : '-1',
+            tabindex: this.internalTabIndex ? (isCurrent ? '0' : '-1') : index === 0 ? '0' : '-1',
             'aria-selected': isCurrent ? 'true' : 'false',
           }
         : {
@@ -223,6 +223,7 @@ export class TabsBar {
   private onKeydown = (e: KeyboardEvent & { target: HTMLElement }): void => {
     let upcomingFocusedTabIndex: number;
     const focusedTabIndex = this.hasPTabsParent ? this.internalTabIndex || 0 : getFocusedTabIndex(this.tabElements);
+    const { target } = e;
 
     switch (e.key) {
       case 'ArrowLeft':
@@ -243,6 +244,19 @@ export class TabsBar {
         upcomingFocusedTabIndex = this.tabElements.length - 1;
         break;
 
+      // the slotted buttons have a different tabbing sequence in chrome and safari and it appears that on hitting
+      // tab the first slotted one with tabindex=0 becomes focused instead of the one after,
+      // therefor the 'Tab' case needs to be handled
+      case 'Tab':
+        if (target.matches('button')) {
+          const { tabIndex } = target;
+          target.tabIndex = null;
+          setTimeout(() => {
+            target.tabIndex = tabIndex;
+          });
+        }
+        return;
+
       default:
         return;
     }
@@ -250,9 +264,13 @@ export class TabsBar {
     if (this.hasPTabsParent) {
       this.onTabClick(upcomingFocusedTabIndex);
     }
-    this.tabElements[upcomingFocusedTabIndex].focus();
-
-    e.preventDefault();
+    if (target.matches('button')) {
+      this.tabElements[upcomingFocusedTabIndex].focus();
+    }
+    // disable default behavior only for buttons and links but not for scrollable container
+    if (target.matches('button,a')) {
+      e.preventDefault();
+    }
   };
 
   private scrollActiveTabIntoView = (isSmooth = true): void => {
