@@ -43,6 +43,7 @@ export const useEventCallback = (
   eventName: string,
   eventHandler: (e: Event) => void
 ): void => {
+  // @ts-expect-error
   useEffect(() => {
     const { current } = ref;
     if (current && eventHandler) {
