@@ -167,6 +167,7 @@ test.describe('toast-item', () => {
       const animationIn = await getElementStyle(toastItem, 'animation');
 
       expect(animationIn, 'for animationIn').toBe('0.6s cubic-bezier(0, 0, 0.2, 1) 0s 1 normal forwards running in');
+      await expect(toastItem).toHaveCount(1);
 
       // toast stay open for a total of 1000ms, we need to hit the middle of closing animation
       await waitForAnimationFinish();
@@ -175,11 +176,7 @@ test.describe('toast-item', () => {
       expect(animationOut, 'for animationOut').toBe(
         '0.4s cubic-bezier(0.4, 0, 0.5, 1) 0s 1 normal forwards running out'
       );
-
-      await waitForAnimationFinish(); // wait another 600ms to be sure animation has finished
-      const animationClear = await getElementStyle(toastItem, 'animation');
-
-      expect(animationClear, 'for animationClear').toBe('');
+      await expect(toastItem).toHaveCount(0);
     });
   });
 });
