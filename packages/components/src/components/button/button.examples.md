@@ -60,6 +60,14 @@ component.
 
 ---
 
+## Compact
+
+By setting `compact` to `true` you can have a more compact button with reduced spacings.
+
+<Playground :markup="compact" :config="config"></Playground>
+
+---
+
 ## Button with specific icon
 
 If an icon needs to be implemented, just set another predefined icon. Per default, all icons are fetched from the
@@ -154,6 +162,10 @@ export default class Code extends Vue {
 
   accessibility = 
 `<p-button aria="{ 'aria-label': 'Some more descriptive label' }">Some label</p-button>`;
+
+  compact = `<p-button compact="true">Some label</p-button>
+<p-button compact="true" variant="secondary">Some label</p-button>
+<p-button compact="true" variant="ghost">Some label</p-button>`;
 
   icon =
 `<p-button icon="delete">Some label</p-button>

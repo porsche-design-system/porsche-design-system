@@ -61,6 +61,14 @@ component.
 
 ---
 
+## Compact
+
+By setting `compact` to `true` you can have a more compact link with reduced spacings.
+
+<Playground :markup="compact" :config="config"></Playground>
+
+---
+
 ## Framework routing (anchor nesting)
 
 To support custom anchor tags (e.g. framework specific routing) you can provide them as a **slotted element** of the
@@ -117,6 +125,10 @@ export default class Code extends Vue {
 `<p-link>
   <a href="https://porsche.com">Some label</a>
 </p-link>`;
+
+  compact = `<p-link compact="true" href="https://porsche.com">Some label</p-link>
+<p-link compact="true" variant="secondary" href="https://porsche.com">Some label</p-link>
+<p-link compact="true" variant="ghost" href="https://porsche.com">Some label</p-link>`;
 
   icon =
 `<p-link href="https://porsche.com" icon="phone">Some label</p-link>
