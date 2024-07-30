@@ -73,7 +73,7 @@ export class Headline {
   public render(): JSX.Element {
     validateProps(this, propTypes);
     warnIfDeprecatedComponentIsUsed(this.host, 'Please use new p-heading component instead.');
-    const alignDeprecationMap: Record<HeadlineAlignDeprecated, Exclude<HeadlineAlign, HeadlineAlignDeprecated>> = {
+    const alignDeprecationMap: AlignDeprecationMapType = {
       left: 'start',
       right: 'end',
     };

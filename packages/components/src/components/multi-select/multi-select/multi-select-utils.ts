@@ -188,9 +188,8 @@ export const updateHighlightedOption = (
   direction: SelectDropdownDirectionInternal
 ): void => {
   const newIndex = getNewOptionIndex(options, direction);
-  if (newIndex) {
-    setNextOptionHighlighted(host, options, newIndex);
-  }
+  // @ts-ignore
+  setNextOptionHighlighted(host, options, newIndex);
 };
 
 /**

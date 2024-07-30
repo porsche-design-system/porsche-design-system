@@ -26,10 +26,7 @@ export const updatePopoverStyles = (
     attachComponentCss(host, getComponentCss, direction, isNative, theme);
   }
   // Set margin via inline style to make attachComponentCss cacheable
-  const margin = getPopoverMargin(spacer, popover, direction);
-  if (margin) {
-    popover.style.margin = margin;
-  }
+  popover.style.margin = getPopoverMargin(spacer, popover, direction);
 };
 
 export const updateNativePopoverStyles = (nativePopover: HTMLElement, nativeButton: HTMLButtonElement): void => {
@@ -100,7 +97,8 @@ export const getPopoverMargin = (
   spacer: HTMLDivElement,
   popover: HTMLDivElement,
   direction: PopoverDirection
-): string | void => {
+  // @ts-ignore
+): string => {
   const { clientWidth, clientHeight } = getDocumentHeightWidthWithoutSafeZone();
   const spacerRect = spacer.getBoundingClientRect();
   const popoverRect = popover.getBoundingClientRect();

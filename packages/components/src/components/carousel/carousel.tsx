@@ -375,7 +375,7 @@ export class Carousel {
           </div>
         )}
       </Host>
-    ) as JSX.Element;
+    );
   }
 
   private registerSplideHandlers(splide: Splide): void {

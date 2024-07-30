@@ -419,9 +419,7 @@ export class SelectWrapperDropdown {
   private cycleDropdown(direction: DropdownDirectionInternal): void {
     if (this.isOpen) {
       const newIndex = getNewOptionMapIndex(this.optionMaps, direction);
-      if (newIndex) {
-        this.optionMaps = setHighlightedOptionMaps(this.optionMaps, newIndex);
-      }
+      this.optionMaps = setHighlightedOptionMaps(this.optionMaps, newIndex);
     }
     this.setDropdownVisibility('show');
   }

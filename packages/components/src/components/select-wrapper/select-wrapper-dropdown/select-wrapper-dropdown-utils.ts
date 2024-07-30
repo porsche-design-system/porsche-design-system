@@ -153,11 +153,12 @@ export const resetFilteredOptionMaps = (options: OptionMap[]): OptionMap[] =>
 export const hasFilterResults = (options: OptionMap[]): boolean =>
   options.some((item) => !item.hidden && !item.initiallyHidden);
 
-export const getNewOptionMapIndex = (options: OptionMap[], direction: DropdownDirectionInternal): number | void => {
+export const getNewOptionMapIndex = (options: OptionMap[], direction: DropdownDirectionInternal): number => {
   const validItems = getValidOptions(options);
   const validMax = validItems.length - 1;
   // prob. needs to be <= 0
   if (validMax < 0) {
+    // @ts-ignore
     return;
   }
 
