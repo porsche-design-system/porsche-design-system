@@ -14,9 +14,6 @@ export const initConsoleObserver = (page: Page): void => {
 };
 export const getConsoleErrorsAmount = () => consoleMessages.length;
 
-export const getElementInnerText = (element: Locator): Promise<string> =>
-  element.evaluate((el) => (el as HTMLElement).innerText);
-
 export const getProperty = async <T>(element: Locator, prop: string): Promise<T> => {
   return element.evaluate((el, prop: string) => el[prop], prop);
 };

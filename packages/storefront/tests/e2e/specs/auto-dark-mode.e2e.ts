@@ -17,9 +17,9 @@ for (const [url, index] of internalUrls.map<[string, number]>((url, i) => [url, 
       (window as unknown as Window & { componentsReady: () => Promise<number> }).componentsReady()
     );
 
-    const components = page.locator(componentsWithThemeAutoSelector).all();
+    const components = await page.locator(componentsWithThemeAutoSelector).all();
 
-    for (const component of await components) {
+    for (const component of components) {
       expect(
         await getProperty(component, `theme`),
         `"${await getProperty(component, 'tagName')}" didn't use theme="auto"`
