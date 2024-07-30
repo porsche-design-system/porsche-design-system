@@ -54,7 +54,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 + <p-link-tile-model-signature aspect-ratio="1/1 | 4/3 | 3/4 | 16/9 | 9/16"></p-link-tile-model-signature>
 ```
 
-- `Link Tile`, `Button Tile`: Value `default` of prop `size` are deprecated and mapped to new value `medium` to be in
+- `Link Tile`, `Button Tile`: Value `default` of prop `size` is deprecated and mapped to new value `medium` to be in
   sync with typography sizing definition
   ([#3419](https://github.com/porsche-design-system/porsche-design-system/pull/3419))
 
