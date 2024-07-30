@@ -1,16 +1,10 @@
 <div class="root">
-  <div class="image-container">
+  <a href="value" target="_self" tabindex="-1" aria-hidden="true"> </a>
+  <slot name="header"> </slot>
+  <div class="media">
     <slot> </slot>
   </div>
-  <div class="content">
-    <a
-      href="value"
-      target="_self"
-      class="link-overlay"
-      tabindex="-1"
-      aria-hidden="true"
-    >
-    </a>
+  <div class="footer">
     <p>value</p>
     <p-link class="link-or-button hydrated"> value</p-link>
   </div>

@@ -1,12 +1,20 @@
-import { TILE_WEIGHTS, AllowedTypes, TILE_SIZES, TILE_ASPECT_RATIOS, TILE_ALIGNS, THEMES } from '../../utils';
-import type { LinkAriaAttribute, TileAlign, TileAspectRatio, TileSize, TileBackground } from '../../utils';
-import type { LinkTarget } from '../../utils/link-button/link-target';
-import type { PropTypes } from '../../utils/validation/validateProps';
-import { ButtonTile } from '../button-tile/button-tile';
-import { LinkTile } from './link-tile';
-
-/** @deprecated */
-export type LinkTileWeightDeprecated = 'semibold';
+import {
+  type LinkAriaAttribute,
+  type TileAlign,
+  type TileAspectRatio,
+  type TileBackground,
+  type TileSize,
+  type LinkTarget,
+  AllowedTypes,
+  THEMES,
+  TILE_ALIGNS,
+  TILE_ASPECT_RATIOS,
+  TILE_SIZES,
+  TILE_WEIGHTS,
+} from '../../utils';
+import { type PropTypes } from '../../utils/validation/validateProps';
+import { type ButtonTile } from '../button-tile/button-tile';
+import { type LinkTile } from './link-tile';
 
 export type LinkTileTarget = LinkTarget;
 export type LinkTileAriaAttribute = LinkAriaAttribute;
@@ -14,7 +22,9 @@ export type LinkTileAspectRatio = TileAspectRatio;
 export type LinkTileSize = TileSize;
 export type LinkTileBackground = TileBackground;
 export type LinkTileAlign = TileAlign;
-export const LINK_TILE_WEIGHTS = [...TILE_WEIGHTS, 'semibold'] as const;
+/** @deprecated */
+export const LINK_TILE_WEIGHTS_DEPRECATED = ['semibold'] as const;
+export const LINK_TILE_WEIGHTS = [...TILE_WEIGHTS, ...LINK_TILE_WEIGHTS_DEPRECATED] as const;
 export type LinkTileWeight = (typeof LINK_TILE_WEIGHTS)[number];
 
 type CommonButtonAndLinkTileProps = {

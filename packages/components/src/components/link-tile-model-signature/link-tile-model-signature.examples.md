@@ -10,11 +10,15 @@ shows one of the model signatures at the top.
 
 ## Basic
 
-An `img` or `picture` element has to be available as a child of the `p-link-tile-model-signature` component.
+An `img` or `picture` tag has to be provided as default slot.
 
 It is required to have two `p-link` components as named slots, `slot="primary"` and `slot="secondary"`.  
 The `heading` property is required, too. It is used as a teaser with a more detailed description of where the link leads
 to.
+
+#### Supported named slots:
+
+- `slot="header"`: Renders a header section above the content area but underneath the model signature.
 
 <Playground :markup="basic" :config="config"></Playground>
 
@@ -78,6 +82,20 @@ language.
   <PlaygroundSelect v-model="hyphen" :values="hyphens" name="hyphens"></PlaygroundSelect>
 </Playground>
 
+## UI behaviour
+
+The component is able to break out of its aspect ratio in case content overflows to be accessibility compliant (see
+first row in example).
+
+Additionally, the component is able to align to the highest CSS Grid child independent of the aspect ratio when used in
+CSS Grid context (see second row in example).
+
+<Notification heading="Browser Support Limitation" heading-tag="h3" state="warning">
+  Currently, Safari is only able to align the height per CSS Grid row as long as the content does not overflow.
+</Notification>
+
+<Playground :markup="gridMarkup"></Playground>
+
 ## Framework Routing
 
 While the `p-link-tile-model-signature` supports slotted `a` links within its required `p-link` children, clicking
@@ -107,19 +125,20 @@ linkEl.addEventListener('click', (event) => {
 <script lang="ts">
 import Vue from 'vue';
 import Component from 'vue-class-component';
-import { TILE_WEIGHTS, TILE_ASPECT_RATIOS } from '../../utils'; 
+import { TILE_WEIGHTS, TILE_ASPECT_RATIOS, TILE_ASPECT_RATIOS_DEPRECATED } from '../../utils'; 
 import { MODEL_SIGNATURE_MODELS } from '../model-signature/model-signature-utils'; 
 import { GROUP_DIRECTIONS } from '../../styles/group-direction-styles'; 
 
 @Component
 export default class Code extends Vue {
   config = { spacing: 'block' };
-  imgSrc = require('@/assets/image-grid.png');
-  img = `<img src="${this.imgSrc}" width="3000" height="2000" alt="Some alt text" />`;
+  imgSrc = require('@/assets/lights.jpg');
+  img = `<img src="${this.imgSrc}" alt="Some alt text" />`;
   primaryLink = '<p-link slot="primary" href="https://porsche.com/#primary">Primary label</p-link>';
   secondaryLink = '<p-link slot="secondary" href="https://porsche.com/#secondary">Secondary label</p-link>';
 
   basic = `<p-link-tile-model-signature heading="Some heading">
+  <p-tag slot="header" theme="dark" color="background-frosted" compact="true">Some tag</p-tag>
   ${this.img}
   ${this.primaryLink}
   ${this.secondaryLink}
@@ -142,7 +161,7 @@ export default class Code extends Vue {
 </p-link-tile-model-signature>`;
 
 
-  linkDirection = 'row';
+  linkDirection = 'column';
   linkDirections = [...GROUP_DIRECTIONS, "{ base: 'row', m: 'column' }"];
   get linkDirectionMarkup() {
     return`<p-link-tile-model-signature heading="Some heading" link-direction="${this.linkDirection}">
@@ -152,8 +171,8 @@ export default class Code extends Vue {
 </p-link-tile-model-signature>`;
   };
 
-  aspectRatio = '3:4';
-  aspectRatios = [...TILE_ASPECT_RATIOS, "{ base: '3:4', m: '9:16' }"];
+  aspectRatio = '1/1';
+  aspectRatios = [...TILE_ASPECT_RATIOS.map(item => TILE_ASPECT_RATIOS_DEPRECATED.includes(item) ? item + ' (deprecated)' : item), "{ base: '3/4', m: '9/16' }"];
   get aspectRatioMarkup() {
     return`<p-link-tile-model-signature heading="Some Heading" aspect-ratio="${this.aspectRatio}">
   ${this.img}
@@ -162,7 +181,7 @@ export default class Code extends Vue {
 </p-link-tile-model-signature>`;
   };
 
-  model = '911';
+  model = 'macan';
   models = MODEL_SIGNATURE_MODELS;
   get modelMarkup() {
     return`<p-link-tile-model-signature heading="Some Heading" model="${this.model}">
@@ -185,6 +204,43 @@ export default class Code extends Vue {
   ${this.secondaryLink}
 </p-link-tile-model-signature>`};
 
+ get gridMarkup() {
+    return `<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px;">
+  <p-link-tile-model-signature
+    aspect-ratio="4/3"
+    heading="Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua."
+  >
+    <p-tag slot="header" theme="dark" color="background-frosted" compact="true">4/3</p-tag>
+    ${this.img}
+    ${this.primaryLink}
+    ${this.secondaryLink}
+  </p-link-tile-model-signature>
+  <p-link-tile-model-signature aspect-ratio="4/3" heading="Some description">
+    <p-tag slot="header" theme="dark" color="background-frosted" compact="true">4/3</p-tag>
+    ${this.img}
+    ${this.primaryLink}
+    ${this.secondaryLink}
+  </p-link-tile-model-signature>
+  <p-link-tile-model-signature aspect-ratio="1/1" heading="Some description">
+    <p-tag slot="header" theme="dark" color="background-frosted" compact="true">1/1</p-tag>
+    ${this.img}
+    ${this.primaryLink}
+    ${this.secondaryLink}
+  </p-link-tile-model-signature>
+  <p-link-tile-model-signature aspect-ratio="9/16" heading="Some description">
+    <p-tag slot="header" theme="dark" color="background-frosted" compact="true">9/16</p-tag>
+    ${this.img}
+    ${this.primaryLink}
+    ${this.secondaryLink}
+  </p-link-tile-model-signature>
+  <p-link-tile-model-signature aspect-ratio="1/1" heading="Some description">
+    <p-tag slot="header" theme="dark" color="background-frosted" compact="true">1/1</p-tag>
+    ${this.img}
+    ${this.primaryLink}
+    ${this.secondaryLink}
+  </p-link-tile-model-signature>
+</div>`};
+
   clickedHref = '';
   onClick(event){
     event.preventDefault();
@@ -195,7 +251,7 @@ export default class Code extends Vue {
 </script>
 
 <style scoped lang="scss">
-  :deep(p-link-tile-model-signature) {
+  :deep(.demo > p-link-tile-model-signature) {
     max-width: 400px;
   }
 </style>
