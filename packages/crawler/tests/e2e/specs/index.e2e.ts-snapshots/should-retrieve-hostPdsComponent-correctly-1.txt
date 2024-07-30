@@ -10,6 +10,7 @@
             "variant": "primary",
             "icon": "none",
             "hideLabel": false,
+            "compact": false,
             "theme": "light"
           },
           "children": "Test button",
