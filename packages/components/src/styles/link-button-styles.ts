@@ -15,6 +15,7 @@ import {
 } from './';
 import {
   borderRadiusSmall,
+  borderWidth,
   fontLineHeight,
   frostedGlassStyle,
   spacingStaticSmall,
@@ -74,6 +75,7 @@ export const getLinkButtonStyles = (
   isDisabledOrLoading: boolean,
   hasSlottedAnchor: boolean,
   compact: boolean,
+  cssVariablePadding: string,
   theme: Theme
 ): Styles => {
   const isPrimary = variant === 'primary';
@@ -92,6 +94,11 @@ export const getLinkButtonStyles = (
   const { focusColor } = getThemedColors(theme);
   const hasIcon = hasVisibleIcon(icon, iconSource) || hideLabel;
 
+  const paddingBlock = compact ? '4px' : '13px';
+  const paddingInline = compact ? '12px' : '26px';
+
+  const minSizeHideLabel = `calc(${fontLineHeight} + ${paddingBlock} + ${borderWidth.base})`;
+
   return {
     '@global': {
       ':host': {
@@ -109,24 +116,27 @@ export const getLinkButtonStyles = (
       alignItems: 'flex-start',
       justifyContent: 'center',
       width: '100%',
-      minWidth: compact ? '36px' : '54px', // ensure space is already reserved until icon component is loaded (ssr)
-      minHeight: compact ? '36px' : '54px', // ensure space is already reserved until icon component is loaded (ssr)
+      ...(hideLabel && {
+        minWidth: minSizeHideLabel, // ensure space is already reserved until icon component is loaded (ssr)
+        minHeight: minSizeHideLabel, // ensure space is already reserved until icon component is loaded (ssr)
+      }),
       boxSizing: 'border-box',
       textAlign: 'start',
       WebkitAppearance: 'none', // iOS safari
       appearance: 'none',
       textDecoration: 'none',
-      border: `2px solid ${borderColor}`,
+      border: `${borderWidth.base} solid ${borderColor}`,
       borderRadius: borderRadiusSmall,
       transform: 'translate3d(0,0,0)', // creates new stacking context (for slotted anchor + focus)
       backgroundColor,
-      ...(variant === 'ghost' && { backgroundClip: 'padding-box' }),
-      ...(compact && { ...frostedGlassStyle }), // background color overlays border-color otherwise
+      ...(variant === 'ghost' && { ...frostedGlassStyle, backgroundClip: 'padding-box' }), // background color overlays border-color otherwise
       color: textColor,
       ...textSmallStyle,
       transition: `${getTransition('background-color')}, ${getTransition('border-color')}, ${getTransition('color')}`,
       ...buildResponsiveStyles(hideLabel, (hideLabelValue: boolean) => ({
-        padding: compact ? (hideLabelValue ? '6px' : '6px 12px') : hideLabelValue ? '13px' : '13px 26px',
+        padding: hideLabelValue
+          ? `var(${cssVariablePadding},${paddingBlock})`
+          : `var(${cssVariablePadding},${paddingBlock} ${paddingInline})`,
         gap: hideLabelValue ? 0 : spacingStaticSmall,
       })),
       ...(!hasSlottedAnchor && getFocusJssStyle(theme)),
