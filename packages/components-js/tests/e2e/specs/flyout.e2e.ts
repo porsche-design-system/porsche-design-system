@@ -812,7 +812,7 @@ test.describe('events', () => {
       {},
       { injectIntoHead: '<style>:root { --p-transition-duration: unset; }</style>' }
     );
-    const host = await getHost(page);
+    const host = getHost(page);
     await waitForStencilLifecycle(page);
     await addEventListener(host, 'motionVisibleEnd');
     await addEventListener(host, 'motionHiddenEnd');
@@ -834,7 +834,7 @@ test.describe('events', () => {
       {},
       { injectIntoHead: '<style>:root { --p-transition-duration: unset; }</style>' }
     );
-    const host = await getHost(page);
+    const host = getHost(page);
     await waitForStencilLifecycle(page);
     await addEventListener(host, 'motionVisibleEnd');
     await addEventListener(host, 'motionHiddenEnd');
