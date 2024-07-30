@@ -32,6 +32,10 @@ Link with label only (default) and with icon only (default: "arrow-right").
 
 <Playground :markup="buttons('tertiary')" :config="config"></Playground>
 
+### Ghost
+
+<Playground :markup="buttons('ghost')" :config="config"></Playground>
+
 ### Responsive
 
 <Playground :markup="responsive" :config="config"></Playground>

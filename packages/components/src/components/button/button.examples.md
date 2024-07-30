@@ -32,6 +32,10 @@ Button with label only (default) and with icon only (default: "arrow-right") in 
 
 <Playground :markup="tertiary" :config="config"></Playground>
 
+### Ghost
+
+<Playground :markup="ghost" :config="config"></Playground>
+
 ### Responsive
 
 <Playground :markup="responsive" :config="config"></Playground>
@@ -134,6 +138,15 @@ export default class Code extends Vue {
 <p-button variant="tertiary" hide-label="true" icon="arrow-right">Some label</p-button>
 <p-button variant="tertiary" hide-label="true" icon="arrow-right" loading>Some label</p-button>
 <p-button variant="tertiary" hide-label="true" icon="arrow-right" disabled>Some label</p-button>`;
+
+  ghost = 
+`<p-button variant="ghost">Some label</p-button>
+<p-button variant="ghost" loading="true">Some label</p-button>
+<p-button variant="ghost" disabled="true">Some label</p-button>
+<br>
+<p-button variant="ghost" hide-label="true" icon="arrow-right">Some label</p-button>
+<p-button variant="ghost" hide-label="true" icon="arrow-right" loading>Some label</p-button>
+<p-button variant="ghost" hide-label="true" icon="arrow-right" disabled>Some label</p-button>`;
 
   responsive =
 `<p-button variant="primary" hide-label="{ base: true, s: false }" icon="arrow-right">Some label</p-button>
