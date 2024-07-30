@@ -41,7 +41,7 @@ const initRadioButton = (page: Page, opts?: InitOptions): Promise<void> => {
 
 test.fixme('should expose correct initial accessibility tree', async ({ page }) => {
   await initRadioButton(page);
-  const input = await getInput(page);
+  const input = getInput(page);
 
   // await expectA11yToMatchSnapshot(page, input);
 });
@@ -54,8 +54,8 @@ test.fixme('should expose correct accessibility tree properties in error state',
         <input type="radio" name="some-name" />
       </p-radio-button-wrapper>`
   );
-  const input = await getInput(page);
-  const message = await getMessage(page);
+  const input = getInput(page);
+  const message = getMessage(page);
 
   // await expectA11yToMatchSnapshot(page, input, { message: 'Of Input' });
   // await expectA11yToMatchSnapshot(page, message, { message: 'Of Message', interestingOnly: false });
@@ -70,8 +70,8 @@ test.fixme('should add/remove accessibility tree properties if state changes pro
   await setProperty(host, 'message', 'Some error message.');
   await waitForStencilLifecycle(page);
 
-  const input = await getInput(page);
-  const message = await getMessage(page);
+  const input = getInput(page);
+  const message = getMessage(page);
 
   // await expectA11yToMatchSnapshot(page, input, { message: 'Of Input when state = error' });
   // await expectA11yToMatchSnapshot(page, message, {
@@ -130,7 +130,7 @@ test(`should keep focus on radio buttons when using keyboard navigation `, async
 
 test.fixme('should expose correct accessibility tree when loading=true', async ({ page }) => {
   await initRadioButton(page, { loading: true });
-  const root = await getRoot(page);
+  const root = getRoot(page);
 
   // await expectA11yToMatchSnapshot(page, root, { interestingOnly: false });
 });

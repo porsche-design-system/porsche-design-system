@@ -38,18 +38,18 @@ const initSelect = (page: Page, opts?: InitOptions): Promise<void> => {
 
 test.fixme('should expose correct initial accessibility tree and aria properties of filter', async ({ page }) => {
   await initSelect(page, { disabledIndex: 1 });
-  const filter = await getFilterInput(page);
+  const filter = getFilterInput(page);
 
   // await expectA11yToMatchSnapshot(page, filter, { interestingOnly: false });
 });
 
 test.fixme('should expose correct accessibility tree of option list if filter value has no match', async ({ page }) => {
   await initSelect(page);
-  const filterInput = await getFilterInput(page);
-  await filterInput.type('d');
+  const filterInput = getFilterInput(page);
+  await filterInput.fill('d');
   await waitForStencilLifecycle(page);
 
-  const dropDown = await getDropdownList(page);
+  const dropDown = getDropdownList(page);
 
   // await expectA11yToMatchSnapshot(page, dropDown, { interestingOnly: false });
 });
@@ -59,7 +59,7 @@ test.fixme('should expose correct accessibility tree if description is set', asy
   const host = getHost(page);
   await setProperty(host, 'description', 'Some description');
   await waitForStencilLifecycle(page);
-  const filterInput = await getFilterInput(page);
+  const filterInput = getFilterInput(page);
 
   // await expectA11yToMatchSnapshot(page, filterInput);
 });
@@ -70,7 +70,7 @@ test.fixme('should expose correct accessibility tree in error state', async ({ p
   await setProperty(host, 'state', 'error');
   await setProperty(host, 'message', 'Some error message');
   await waitForStencilLifecycle(page);
-  const filterInput = await getFilterInput(page);
+  const filterInput = getFilterInput(page);
 
   // await expectA11yToMatchSnapshot(page, filterInput);
 });

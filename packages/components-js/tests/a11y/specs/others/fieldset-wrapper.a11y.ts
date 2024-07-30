@@ -21,14 +21,14 @@ const getMessage = (page: Page) => page.locator('p-fieldset-wrapper .message');
 
 test.fixme('should expose correct initial accessibility tree', async ({ page }) => {
   await initFieldset(page);
-  const fieldset = await getFieldset(page);
+  const fieldset = getFieldset(page);
 
   // await expectA11yToMatchSnapshot(page, fieldset, { interestingOnly: false });
 });
 
 test.fixme('should expose correct accessibility tree property in error state', async ({ page }) => {
   await initFieldset(page, { state: 'error' });
-  const fieldset = await getFieldset(page);
+  const fieldset = getFieldset(page);
 
   // await expectA11yToMatchSnapshot(page, fieldset, { interestingOnly: false });
 });
@@ -42,7 +42,7 @@ test.fixme(
     await setProperty(host, 'state', 'error');
     await waitForStencilLifecycle(page);
 
-    const fieldset = await getFieldset(page);
+    const fieldset = getFieldset(page);
 
     // await expectA11yToMatchSnapshot(page, fieldset, { interestingOnly: false });
   }

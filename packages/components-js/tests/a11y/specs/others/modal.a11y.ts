@@ -52,14 +52,14 @@ const initBasicModal = (
 
 test('should expose correct initial accessibility tree', async ({ page }) => {
   await initBasicModal(page);
-  const modal = await getModalDialog(page);
+  const modal = getModalDialog(page);
 
   // await expectA11yToMatchSnapshot(page, modal, { interestingOnly: false });
 });
 
 test('should not expose accessibility tree if modal is hidden', async ({ page }) => {
   await initBasicModal(page, { isOpen: false });
-  const modal = await getModalDialog(page);
+  const modal = getModalDialog(page);
 
   // await expectA11yToMatchSnapshot(page, modal);
 });
@@ -82,7 +82,7 @@ for (const [heading, aria, expected] of testCases) {
 test('should overwrite aria-label when adding aria prop', async ({ page }) => {
   await initBasicModal(page, { isOpen: false });
   const host = getHost(page);
-  const modal = await getModalDialog(page);
+  const modal = getModalDialog(page);
   await setProperty(host, 'aria', "{'aria-label': 'Other Heading'}");
   await waitForStencilLifecycle(page);
 
@@ -92,7 +92,7 @@ test('should overwrite aria-label when adding aria prop', async ({ page }) => {
 test('should overwrite aria-label with heading when setting aria prop to undefined', async ({ page }) => {
   await initBasicModal(page, { isOpen: false, heading: 'Some Heading', aria: "{'aria-label': 'Other Heading'}" });
   const host = getHost(page);
-  const modal = await getModalDialog(page);
+  const modal = getModalDialog(page);
   await setProperty(host, 'aria', undefined);
   await waitForStencilLifecycle(page);
 

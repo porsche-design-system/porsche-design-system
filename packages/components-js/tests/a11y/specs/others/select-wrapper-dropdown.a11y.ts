@@ -80,8 +80,8 @@ const opts: ExpectToMatchSnapshotOptions = {
 
 test.fixme('should expose correct initial accessibility tree', async ({ page }) => {
   await initSelect(page);
-  const dropdownCombobox = await getDropdownCombobox(page);
-  const dropdown = await getDropdown(page);
+  const dropdownCombobox = getDropdownCombobox(page);
+  const dropdown = getDropdown(page);
 
   // await expectA11yToMatchSnapshot(page, dropdownCombobox, { ...opts, interestingOnly: false });
   // await expectA11yToMatchSnapshot(page, dropdown, { ...opts, interestingOnly: true });
@@ -90,8 +90,8 @@ test.fixme('should expose correct initial accessibility tree', async ({ page }) 
 test.fixme('should expose correct initial accessibility tree in open state', async ({ page }) => {
   await initSelect(page, { disabledIndex: 1 });
   const host = getHost(page);
-  const dropdownCombobox = await getDropdownCombobox(page);
-  const dropdown = await getDropdown(page);
+  const dropdownCombobox = getDropdownCombobox(page);
+  const dropdown = getDropdown(page);
 
   await host.click();
   await waitForStencilLifecycle(page);
@@ -118,7 +118,7 @@ test('should expose correct accessibility tree if rendered with optgroups in ope
   );
 
   const host = getHost(page);
-  const dropdown = await getDropdown(page);
+  const dropdown = getDropdown(page);
 
   await host.click();
   await waitForStencilLifecycle(page);
@@ -130,7 +130,7 @@ test.fixme('should expose correct accessibility tree if open/closed', async ({ p
   await initSelect(page);
 
   const host = getHost(page);
-  const dropdownCombobox = await getDropdownCombobox(page);
+  const dropdownCombobox = getDropdownCombobox(page);
 
   // await expectA11yToMatchSnapshot(page, dropdownCombobox, { ...opts, message: 'Initially' });
 
@@ -149,8 +149,8 @@ test.fixme(
     await host.click();
     await waitForStencilLifecycle(page);
 
-    const dropdownOption1 = await getDropdownOption1(page);
-    const dropdownOption2 = await getDropdownOption2(page);
+    const dropdownOption1 = getDropdownOption1(page);
+    const dropdownOption2 = getDropdownOption2(page);
     // await expectA11yToMatchSnapshot(page, dropdownOption1, {
     //   ...opts,
     //   message: 'Initially option A',
@@ -186,7 +186,7 @@ test.fixme('should expose correct accessibility tree if description is set', asy
   await setProperty(host, 'description', 'Some description');
   await host.click();
   await waitForStencilLifecycle(page);
-  const dropdownCombobox = await getDropdownCombobox(page);
+  const dropdownCombobox = getDropdownCombobox(page);
 
   // await expectA11yToMatchSnapshot(page, dropdownCombobox, opts);
 });
@@ -198,7 +198,7 @@ test.fixme('should expose correct accessibility tree in error state', async ({ p
   await setProperty(host, 'message', 'Some error message');
   await host.click();
   await waitForStencilLifecycle(page);
-  const dropdownCombobox = await getDropdownCombobox(page);
+  const dropdownCombobox = getDropdownCombobox(page);
 
   // await expectA11yToMatchSnapshot(page, dropdownCombobox, opts);
 });

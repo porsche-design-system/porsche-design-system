@@ -23,7 +23,7 @@ const getImageRequest = (page: Page) =>
 
 test.fixme('should expose correct initial accessibility tree', async ({ page }) => {
   await setContentWithTrademark(page);
-  const image = await getImage(page);
+  const image = getImage(page);
 
   // await expectA11yToMatchSnapshot(page, image);
 });

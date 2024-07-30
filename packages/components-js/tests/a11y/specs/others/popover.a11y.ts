@@ -6,7 +6,7 @@ const getHost = (page: Page) => page.locator('p-popover');
 const getButton = (page: Page) => page.locator('p-popover button');
 
 const togglePopover = async (page: Page): Promise<void> => {
-  const button = await getButton(page);
+  const button = getButton(page);
   await button.click();
   await waitForStencilLifecycle(page);
 };

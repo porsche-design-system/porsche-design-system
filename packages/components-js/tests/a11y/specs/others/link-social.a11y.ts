@@ -22,7 +22,7 @@ const getIcon = (page: Page) => page.locator('p-link-social p-icon svg');
 test.fixme('should expose correct initial accessibility tree properties', async ({ page }) => {
   await initLinkSocial(page);
   const link = getLink(page);
-  const icon = await getIcon(page);
+  const icon = getIcon(page);
 
   // await expectA11yToMatchSnapshot(page, link);
   // await expectA11yToMatchSnapshot(page, icon, { interestingOnly: false });

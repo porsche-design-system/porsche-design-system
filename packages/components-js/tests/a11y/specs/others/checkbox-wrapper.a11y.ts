@@ -48,7 +48,7 @@ const initCheckbox = (page: Page, opts?: InitOptions): Promise<void> => {
 
 test.fixme('should expose correct initial accessibility tree', async ({ page }) => {
   await initCheckbox(page);
-  const input = await getInput(page);
+  const input = getInput(page);
 
   // await expectA11yToMatchSnapshot(page, input);
 });

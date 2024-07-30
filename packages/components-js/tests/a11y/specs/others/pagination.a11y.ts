@@ -17,7 +17,7 @@ const initPagination = (page: Page, opts?: { activePage?: number }) => {
 
 test.fixme('should expose correct initial accessibility tree', async ({ page }) => {
   await initPagination(page);
-  const navigation = await getNav(page);
+  const navigation = getNav(page);
 
   // await expectA11yToMatchSnapshot(page, navigation, { interestingOnly: false });
 });

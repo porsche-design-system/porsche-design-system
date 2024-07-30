@@ -53,14 +53,14 @@ const initSelect = (page: Page, opt?: InitOptions): Promise<void> => {
 
 test.fixme('should expose correct initial accessibility tree and aria properties of button', async ({ page }) => {
   await initSelect(page, { options: { disabledIndices: [1] } });
-  const buttonElement = await getButton(page);
+  const buttonElement = getButton(page);
 
   // await expectA11yToMatchSnapshot(page, buttonElement, { interestingOnly: false });
 });
 
 test.fixme('should expose correct accessibility tree if option is highlighted', async ({ page }) => {
   await initSelect(page);
-  const buttonElement = await getButton(page);
+  const buttonElement = getButton(page);
 
   await buttonElement.press('Space');
   await buttonElement.press('ArrowDown');
@@ -71,7 +71,7 @@ test.fixme('should expose correct accessibility tree if option is highlighted', 
 
 test.fixme('should expose correct accessibility tree if option is selected', async ({ page }) => {
   await initSelect(page);
-  const buttonElement = await getButton(page);
+  const buttonElement = getButton(page);
 
   await buttonElement.press('Space');
   await buttonElement.press('ArrowDown');
@@ -86,7 +86,7 @@ test.fixme('should expose correct accessibility tree if description is set', asy
   const host = getHost(page);
   await setProperty(host, 'description', 'Some description');
   await waitForStencilLifecycle(page);
-  const buttonElement = await getButton(page);
+  const buttonElement = getButton(page);
 
   // await expectA11yToMatchSnapshot(page, buttonElement);
 });
@@ -97,7 +97,7 @@ test.fixme('should expose correct accessibility tree in error state', async ({ p
   await setProperty(host, 'state', 'error');
   await setProperty(host, 'message', 'Some error message');
   await waitForStencilLifecycle(page);
-  const buttonElement = await getButton(page);
+  const buttonElement = getButton(page);
 
   // await expectA11yToMatchSnapshot(page, buttonElement);
 });

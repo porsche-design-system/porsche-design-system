@@ -231,7 +231,7 @@ test.fixme('should render correct accessibility tree if activeTabIndex is remove
 
 test.fixme('should render correct accessibility tree on scrollArea click', async ({ page }) => {
   await initTabsBar(page, { amount: 4, activeTabIndex: 3 });
-  const scrollArea = await getScrollArea(page);
+  const scrollArea = getScrollArea(page);
 
   // await expectA11yToMatchSnapshot(page, await getTabList(), {
   //   message: 'Before click',

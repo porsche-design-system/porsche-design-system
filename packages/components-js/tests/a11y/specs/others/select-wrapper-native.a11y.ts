@@ -52,7 +52,7 @@ const initSelect = (page: Page, opts?: InitOptions): Promise<void> => {
 
 test.fixme('should expose correct initial accessibility tree', async ({ page }) => {
   await initSelect(page);
-  const select = await getSelect(page);
+  const select = getSelect(page);
 
   // await expectA11yToMatchSnapshot(page, select);
 });
@@ -65,8 +65,8 @@ test.fixme('should update accessibility tree with message text if state changes 
   await setProperty(host, 'message', 'Some error message.');
   await waitForStencilLifecycle(page);
 
-  const select = await getSelect(page);
-  const message = await getMessage(page);
+  const select = getSelect(page);
+  const message = getMessage(page);
 
   // await expectA11yToMatchSnapshot(page, select, { message: 'Of Select when state = error' });
   // await expectA11yToMatchSnapshot(page, message, {

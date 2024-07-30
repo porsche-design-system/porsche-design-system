@@ -156,7 +156,7 @@ test('should expose correct initial ARIA attributes', async ({ page }) => {
 
 test('should expose correct aria-labelledby on splide element if slotted heading is set', async ({ page }) => {
   await initCarousel(page, { heading: false, slottedHeading: true });
-  const splide = await getSplide(page);
+  const splide = getSplide(page);
 
   expect(await getAttribute(splide, 'aria-labelledby')).toBe('heading');
 });
@@ -164,7 +164,7 @@ test('should expose correct aria-labelledby on splide element if slotted heading
 test('should expose correct aria-label when aria prop is defined and heading is set', async ({ page }) => {
   const otherHeading = 'Other heading';
   await initCarousel(page, { aria: `{'aria-label': '${otherHeading}'}` });
-  const splide = await getSplide(page);
+  const splide = getSplide(page);
 
   expect(await getAttribute(splide, 'aria-labelledby')).toBe(null);
   expect(await getAttribute(splide, 'aria-label')).toBe(otherHeading);

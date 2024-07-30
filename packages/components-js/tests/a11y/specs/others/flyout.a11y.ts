@@ -67,15 +67,15 @@ test.describe('slotted', () => {
     //   `"<h1>Sticky Heading</h1><p>Sticky header text</p>"`
     // );
 
-    const footer = await getFooter(page);
-    const footerSlottedContent = await getFooterSlottedContent(page);
+    const footer = getFooter(page);
+    const footerSlottedContent = getFooterSlottedContent(page);
     // expect(await getProperty(footer, 'innerHTML')).toMatchInlineSnapshot(`"<slot name="footer"></slot>"`);
     // expect(await getProperty(footerSlottedContent, 'innerHTML')).toMatchInlineSnapshot(
     //   `"<button>Footer Button</button>"`
     // );
 
-    const subFooter = await getSubFooter(page);
-    const subFooterSlottedContent = await getSubFooterSlottedContent(page);
+    const subFooter = getSubFooter(page);
+    const subFooterSlottedContent = getSubFooterSlottedContent(page);
     // expect(await getProperty(subFooter, 'innerHTML')).toMatchInlineSnapshot(`"<slot name="sub-footer"></slot>"`);
     // expect(await getProperty(subFooterSlottedContent, 'innerHTML')).toMatchInlineSnapshot(
     //   `"<p>Sub Footer Content</p>"`
@@ -85,14 +85,14 @@ test.describe('slotted', () => {
 
 test.fixme('should expose correct initial accessibility tree', async ({ page }) => {
   await initBasicFlyout(page);
-  const flyout = await getFlyout(page);
+  const flyout = getFlyout(page);
 
   // await expectA11yToMatchSnapshot(page, flyout, { interestingOnly: false });
 });
 
 test.fixme('should not expose accessibility tree if flyout is hidden', async ({ page }) => {
   await initBasicFlyout(page, { open: false });
-  const flyout = await getFlyout(page);
+  const flyout = getFlyout(page);
 
   // await expectA11yToMatchSnapshot(page, flyout);
 });
@@ -100,7 +100,7 @@ test.fixme('should not expose accessibility tree if flyout is hidden', async ({ 
 test('should overwrite aria-label when adding aria prop', async ({ page }) => {
   await initBasicFlyout(page, { open: false, aria: "{'aria-label': 'Some Heading'}" });
   const host = getHost(page);
-  const flyout = await getFlyout(page);
+  const flyout = getFlyout(page);
   await setProperty(host, 'aria', "{'aria-label': 'Other Heading'}");
   await waitForStencilLifecycle(page);
 

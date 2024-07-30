@@ -10,7 +10,7 @@ const getSpinner = (page: Page) => page.locator('p-spinner .root');
 
 test.fixme('should expose correct initial accessibility tree', async ({ page }) => {
   await initSpinner(page);
-  const spinner = await getSpinner(page);
+  const spinner = getSpinner(page);
 
   // await expectA11yToMatchSnapshot(page, spinner, { interestingOnly: false });
 });
@@ -18,7 +18,7 @@ test.fixme('should expose correct initial accessibility tree', async ({ page }) 
 test.fixme('should expose correct accessibility tree if accessibility properties are set', async ({ page }) => {
   await initSpinner(page);
   const host = getHost(page);
-  const spinner = await getSpinner(page);
+  const spinner = getSpinner(page);
 
   await setProperty(host, 'aria', {
     'aria-label': 'Loading page content',

@@ -48,14 +48,14 @@ const opts: ExpectToMatchSnapshotOptions = {
 
 test.fixme('should expose correct initial accessibility tree', async ({ page }) => {
   await initPinCode(page, { props: { label: 'Some label' } });
-  const input = await getCurrentInput(page);
+  const input = getCurrentInput(page);
 
   // await expectA11yToMatchSnapshot(page, input, opts);
 });
 
 test.fixme('should expose correct accessibility tree with description text', async ({ page }) => {
   await initPinCode(page, { props: { label: 'Some label', description: 'Some description' } });
-  const input = await getCurrentInput(page);
+  const input = getCurrentInput(page);
 
   // await expectA11yToMatchSnapshot(page, input, opts);
 });
@@ -64,8 +64,8 @@ test.fixme('should expose correct accessibility tree in error state', async ({ p
   await initPinCode(page, {
     props: { label: 'Some label', description: 'Some description', state: 'error', message: 'Some error message' },
   });
-  const input = await getCurrentInput(page);
-  const message = await getMessage(page);
+  const input = getCurrentInput(page);
+  const message = getMessage(page);
 
   // await expectA11yToMatchSnapshot(page, input, { ...opts, message: 'Of Input' });
   // await expectA11yToMatchSnapshot(page, message, { ...opts, message: 'Of Message', interestingOnly: false });
@@ -75,7 +75,7 @@ test.fixme('should expose correct accessibility tree in disabled state', async (
   await initPinCode(page, {
     props: { label: 'Some label', description: 'Some description', disabled: true },
   });
-  const input = await getCurrentInput(page);
+  const input = getCurrentInput(page);
 
   // await expectA11yToMatchSnapshot(page, input, opts);
 });
@@ -84,7 +84,7 @@ test.fixme('should expose correct accessibility tree in loading state', async ({
   await initPinCode(page, {
     props: { label: 'Some label', description: 'Some description', loading: true },
   });
-  const input = await getCurrentInput(page);
+  const input = getCurrentInput(page);
 
   // await expectA11yToMatchSnapshot(page, input, opts);
 });
@@ -93,7 +93,7 @@ test.fixme('should expose correct accessibility tree in required state', async (
   await initPinCode(page, {
     props: { label: 'Some label', description: 'Some description', required: true },
   });
-  const input = await getCurrentInput(page);
+  const input = getCurrentInput(page);
 
   // await expectA11yToMatchSnapshot(page, input, opts);
 });
@@ -106,8 +106,8 @@ test.fixme('should add/remove accessibility tree if state changes programmatical
   await setProperty(host, 'message', 'Some error message.');
   await waitForStencilLifecycle(page);
 
-  const input = await getCurrentInput(page);
-  const message = await getMessage(page);
+  const input = getCurrentInput(page);
+  const message = getMessage(page);
 
   // await expectA11yToMatchSnapshot(page, input, { ...opts, message: 'Of Input when state = error' });
   // await expectA11yToMatchSnapshot(page, message, {

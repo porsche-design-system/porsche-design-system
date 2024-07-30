@@ -47,7 +47,7 @@ const getToastItemMessage = (page: Page) => page.locator('p-toast p-toast-item p
 
 test('should expose correct accessibility tree properties', async ({ page }) => {
   await initToastWithToastItem(page);
-  const toastItemMessage = await getToastItemMessage(page);
+  const toastItemMessage = getToastItemMessage(page);
 
   expect(await getAttribute(toastItemMessage, 'aria-live')).toBeDefined();
   // await expectA11yToMatchSnapshot(page, toastItemMessage, {

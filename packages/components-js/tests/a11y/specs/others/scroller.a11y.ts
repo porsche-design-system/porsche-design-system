@@ -46,7 +46,7 @@ test('should have correct tabindex on scroll-wrapper if scroller is scrollable a
   page,
 }) => {
   await initScroller(page, { isWrapped: true, tag: 'span' });
-  const scrollWrapper = await getScrollWrapper(page);
+  const scrollWrapper = getScrollWrapper(page);
 
   expect(await getAttribute(scrollWrapper, 'tabindex')).toBe('0');
 });
@@ -55,7 +55,7 @@ test('should have correct tabindex on scroll-wrapper if scroller is scrollable a
   page,
 }) => {
   await initScroller(page, { isWrapped: true });
-  const scrollWrapper = await getScrollWrapper(page);
+  const scrollWrapper = getScrollWrapper(page);
 
   expect(await getAttribute(scrollWrapper, 'tabindex')).toBe('0');
 });
