@@ -15,8 +15,6 @@ import {
   getPrefixedTagNames,
   hasPropValueChanged,
   isDisabledOrLoading,
-  parseJSON,
-  throwIfAlignTopAndNotCompact,
   TILE_WEIGHTS,
   validateProps,
 } from '../../utils';
@@ -33,7 +31,7 @@ import type {
 import { Component, Element, h, Listen, Prop } from '@stencil/core';
 import { getComponentCss } from './button-tile-styles';
 import { sharedTilePropTypes } from '../link-tile/link-tile-utils';
-import { getSlottedPictureImageStyles } from '../../styles/global/slotted-picture-image-styles';
+import { getSlottedPictureImageStyles } from '../../styles';
 
 const propTypes: PropTypes<typeof ButtonTile> = {
   ...sharedTilePropTypes,
@@ -47,6 +45,7 @@ const propTypes: PropTypes<typeof ButtonTile> = {
 };
 
 /**
+ * @slot {"name": "header", "description": "Renders a header section above the content area." }
  * @slot {"name": "", "description": "Default slot for the img or picture tag." }
  */
 @Component({
@@ -57,7 +56,7 @@ export class ButtonTile implements ITileProps {
   @Element() public host!: HTMLElement;
 
   /** Font size of the description. */
-  @Prop() public size?: BreakpointCustomizable<ButtonTileSize> = 'default';
+  @Prop() public size?: BreakpointCustomizable<ButtonTileSize> = 'medium';
 
   /** Font weight of the description. */
   @Prop() public weight?: BreakpointCustomizable<ButtonTileWeight> = 'semi-bold';
@@ -66,7 +65,7 @@ export class ButtonTile implements ITileProps {
   @Prop() public background?: ButtonTileBackground = 'dark';
 
   /** Aspect ratio of the button-tile. */
-  @Prop() public aspectRatio?: BreakpointCustomizable<ButtonTileAspectRatio> = '4:3';
+  @Prop() public aspectRatio?: BreakpointCustomizable<ButtonTileAspectRatio> = '4/3';
 
   /** Label of the button. */
   @Prop() public label: string;
@@ -81,7 +80,7 @@ export class ButtonTile implements ITileProps {
   @Prop() public gradient?: boolean = true;
 
   /** Displays the button-tile as compact version with description and button icon only. */
-  @Prop({ mutable: true }) public compact?: BreakpointCustomizable<boolean> = false;
+  @Prop() public compact?: BreakpointCustomizable<boolean> = false;
 
   /** Specifies the type of the button. */
   @Prop() public type?: ButtonTileType = 'submit';
@@ -112,16 +111,11 @@ export class ButtonTile implements ITileProps {
     applyConstructableStylesheetStyles(this.host, getSlottedPictureImageStyles);
   }
 
-  public componentWillLoad(): void {
-    throwIfAlignTopAndNotCompact(this.host, this.align, this.compact);
-  }
-
   public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
     return hasPropValueChanged(newVal, oldVal);
   }
 
   public render(): JSX.Element {
-    this.compact = parseJSON(this.compact) as any; // parsing the value just once per lifecycle
     validateProps(this, propTypes);
     attachComponentCss(
       this.host,
@@ -169,10 +163,11 @@ export class ButtonTile implements ITileProps {
 
     return (
       <div class="root">
-        <div class="image-container">
+        <slot name="header" />
+        <div class="media">
           <slot />
         </div>
-        <div class="content">
+        <div class="footer">
           <p>{this.description}</p>
           {typeof this.compact === 'boolean' ? (this.compact ? buttonPure : button) : [buttonPure, button]}
         </div>

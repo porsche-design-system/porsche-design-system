@@ -28,7 +28,7 @@ import {
   setRequiredPropsOfSlottedLinks,
 } from './link-tile-model-signature-utils';
 import { type JSXBase } from '@stencil/core/internal';
-import { getSlottedPictureImageStyles } from '../../styles/global/slotted-picture-image-styles';
+import { getSlottedPictureImageStyles } from '../../styles';
 
 const propTypes: PropTypes<typeof LinkTileModelSignature> = {
   model: AllowedTypes.oneOf<LinkTileModelSignatureModel>(LINK_TILE_MODEL_SIGNATURE_MODELS),
@@ -41,6 +41,7 @@ const propTypes: PropTypes<typeof LinkTileModelSignature> = {
 };
 
 /**
+ * @slot {"name": "header", "description": "Renders a header section above the content area." }
  * @slot {"name": "", "description": "Default slot for the img or picture tag." }
  * @slot {"name": "primary", "description": "Renders the primary link. Has to be a p-link tag.", "isRequired": true, "allowedTagNames": ["p-link"] }
  * @slot {"name": "secondary", "description": "Renders the secondary link. Has to be a p-link tag.", "isRequired": true, "allowedTagNames": ["p-link"] }
@@ -59,7 +60,7 @@ export class LinkTileModelSignature {
   @Prop() public weight?: BreakpointCustomizable<LinkTileModelSignatureWeight> = 'semi-bold';
 
   /** Aspect ratio of the link-tile-model-signature. */
-  @Prop() public aspectRatio?: BreakpointCustomizable<LinkTileModelSignatureAspectRatio> = '3:4';
+  @Prop() public aspectRatio?: BreakpointCustomizable<LinkTileModelSignatureAspectRatio> = '3/4';
 
   /** Heading text. */
   @Prop() public heading: string;
@@ -102,12 +103,11 @@ export class LinkTileModelSignature {
       !!this.description
     );
 
-    const overlayLinkProps: JSXBase.AnchorHTMLAttributes<HTMLAnchorElement> & AriaAttributes & { class: string } = {
-      class: 'link-overlay',
+    const overlayLinkProps: JSXBase.AnchorHTMLAttributes<HTMLAnchorElement> & AriaAttributes = {
       href: linkEl.href,
       target: linkEl.target || '_self',
-      download: linkEl.download,
-      rel: linkEl.rel,
+      download: linkEl.download || null,
+      rel: linkEl.rel || null,
       tabIndex: -1,
       'aria-hidden': 'true',
     };
@@ -116,16 +116,17 @@ export class LinkTileModelSignature {
 
     return (
       <div class="root">
-        <div class="image-container">
+        <a {...overlayLinkProps} />
+        <div class="header">
+          <PrefixedTagNames.pModelSignature theme="dark" model={this.model} />
+          <slot name="header" />
+        </div>
+        <div class="media">
           <slot />
         </div>
-        <div class="signature">
-          <PrefixedTagNames.pModelSignature theme="dark" model={this.model} />
-        </div>
-        <div class="content">
-          <a {...overlayLinkProps} />
-          <this.headingTag class="heading">{this.heading}</this.headingTag>
-          {this.description && <p class="description">{this.description}</p>}
+        <div class="footer">
+          <this.headingTag>{this.heading}</this.headingTag>
+          {this.description && <p>{this.description}</p>}
           <div class="link-group" role="group">
             <slot name="primary" />
             <slot name="secondary" />
