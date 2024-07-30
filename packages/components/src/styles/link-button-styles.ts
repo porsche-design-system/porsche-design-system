@@ -97,7 +97,7 @@ export const getLinkButtonStyles = (
   const paddingBlock = compact ? '4px' : '13px';
   const paddingInline = compact ? '12px' : '26px';
 
-  const minSizeHideLabel = `calc(${fontLineHeight} + ${paddingBlock} + ${borderWidth.base})`;
+  const minSizeHideLabel = `calc(${fontLineHeight} + var(${cssVariablePadding},${paddingBlock}) + ${borderWidth.base})`;
 
   return {
     '@global': {
