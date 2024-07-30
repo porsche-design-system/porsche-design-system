@@ -11,8 +11,8 @@
   },
   {
     "chunkShortName": "button",
-    "size": 9021,
-    "gzipSize": 3493
+    "size": 9641,
+    "gzipSize": 3695
   },
   {
     "chunkShortName": "button-group",
@@ -82,7 +82,7 @@
   {
     "chunkShortName": "flyout",
     "size": 9753,
-    "gzipSize": 4080
+    "gzipSize": 4082
   },
   {
     "chunkShortName": "flyout-multilevel",
@@ -116,8 +116,8 @@
   },
   {
     "chunkShortName": "link",
-    "size": 6252,
-    "gzipSize": 2693
+    "size": 6783,
+    "gzipSize": 2903
   },
   {
     "chunkShortName": "link-pure",
@@ -126,8 +126,8 @@
   },
   {
     "chunkShortName": "link-social",
-    "size": 6028,
-    "gzipSize": 2640
+    "size": 6551,
+    "gzipSize": 2853
   },
   {
     "chunkShortName": "link-tile",
@@ -146,8 +146,8 @@
   },
   {
     "chunkShortName": "main",
-    "size": 80110,
-    "gzipSize": 26750
+    "size": 80152,
+    "gzipSize": 26749
   },
   {
     "chunkShortName": "marque",
@@ -157,7 +157,7 @@
   {
     "chunkShortName": "modal",
     "size": 11572,
-    "gzipSize": 4617
+    "gzipSize": 4618
   },
   {
     "chunkShortName": "model-signature",
@@ -246,8 +246,8 @@
   },
   {
     "chunkShortName": "tag",
-    "size": 5560,
-    "gzipSize": 2314
+    "size": 5627,
+    "gzipSize": 2333
   },
   {
     "chunkShortName": "tag-dismissible",
