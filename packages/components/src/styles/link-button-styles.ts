@@ -152,10 +152,8 @@ export const getLinkButtonStyles = (
     label: buildResponsiveStyles(hideLabel, getHiddenTextJssStyle),
     ...(hasIcon && {
       icon: {
-        width: fontLineHeight,
-        height: fontLineHeight,
-        minWidth: '24px', // ensure space is already reserved until icon component is loaded (ssr)
-        minHeight: '24px', // ensure space is already reserved until icon component is loaded (ssr)
+        width: fontLineHeight, // ensure space is already reserved until icon component is loaded (ssr)
+        height: fontLineHeight, // ensure space is already reserved until icon component is loaded (ssr)
         ...buildResponsiveStyles(hideLabel, (hideLabelValue: boolean) => ({
           marginInlineStart: hideLabelValue ? 0 : compact ? '-6px' : '-8px', // compensate white space of svg icon and optimize visual alignment
         })),
