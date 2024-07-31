@@ -61,8 +61,6 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
 .icon {
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
-  min-width: 24px;
-  min-height: 24px;
   margin-inline-start: -8px;
   transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
@@ -148,8 +146,6 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
 .icon {
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
-  min-width: 24px;
-  min-height: 24px;
   margin-inline-start: -8px;
   transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
@@ -235,8 +231,6 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
 .icon {
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
-  min-width: 24px;
-  min-height: 24px;
   margin-inline-start: -6px;
   transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
@@ -320,8 +314,6 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
 .icon {
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
-  min-width: 24px;
-  min-height: 24px;
   margin-inline-start: 0;
   transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
@@ -495,8 +487,6 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
 .icon {
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
-  min-width: 24px;
-  min-height: 24px;
   margin-inline-start: -8px;
   transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   filter: invert(1);
@@ -578,8 +568,6 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
 .icon {
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
-  min-width: 24px;
-  min-height: 24px;
   margin-inline-start: -8px;
   transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   filter: invert(1);
@@ -661,8 +649,6 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
 .icon {
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
-  min-width: 24px;
-  min-height: 24px;
   margin-inline-start: -8px;
   transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   filter: invert(1);
@@ -744,8 +730,6 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
 .icon {
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
-  min-width: 24px;
-  min-height: 24px;
   margin-inline-start: -6px;
   transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   filter: invert(1);
@@ -829,8 +813,6 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
 .icon {
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
-  min-width: 24px;
-  min-height: 24px;
   margin-inline-start: -8px;
   transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   filter: invert(1);
@@ -917,8 +899,6 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
 .icon {
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
-  min-width: 24px;
-  min-height: 24px;
   margin-inline-start: -8px;
   transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
@@ -992,8 +972,6 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
 .icon {
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
-  min-width: 24px;
-  min-height: 24px;
   margin-inline-start: -8px;
   transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
@@ -1076,8 +1054,6 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
 .icon {
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
-  min-width: 24px;
-  min-height: 24px;
   margin-inline-start: -8px;
   transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
@@ -1160,8 +1136,6 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
 .icon {
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
-  min-width: 24px;
-  min-height: 24px;
   margin-inline-start: -8px;
   transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
@@ -1244,8 +1218,6 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
 .icon {
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
-  min-width: 24px;
-  min-height: 24px;
   margin-inline-start: -8px;
   transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }

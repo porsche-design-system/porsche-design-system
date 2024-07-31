@@ -77,8 +77,6 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
 .icon {
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
-  min-width: 24px;
-  min-height: 24px;
   margin-inline-start: -8px;
 }
 @media(hover:hover) {
@@ -169,8 +167,6 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
 .icon {
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
-  min-width: 24px;
-  min-height: 24px;
   margin-inline-start: -8px;
 }
 @media(hover:hover) {
@@ -261,8 +257,6 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
 .icon {
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
-  min-width: 24px;
-  min-height: 24px;
   margin-inline-start: -6px;
 }
 @media(hover:hover) {
@@ -331,8 +325,6 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
 .icon {
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
-  min-width: 24px;
-  min-height: 24px;
   margin-inline-start: 0;
   filter: invert(1);
 }
@@ -500,8 +492,6 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
 .icon {
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
-  min-width: 24px;
-  min-height: 24px;
   margin-inline-start: -8px;
   filter: invert(1);
 }
@@ -588,8 +578,6 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
 .icon {
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
-  min-width: 24px;
-  min-height: 24px;
   margin-inline-start: -8px;
   filter: invert(1);
 }
@@ -676,8 +664,6 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
 .icon {
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
-  min-width: 24px;
-  min-height: 24px;
   margin-inline-start: -8px;
   filter: invert(1);
 }
@@ -764,8 +750,6 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
 .icon {
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
-  min-width: 24px;
-  min-height: 24px;
   margin-inline-start: -6px;
   filter: invert(1);
 }
@@ -852,8 +836,6 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
 .icon {
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
-  min-width: 24px;
-  min-height: 24px;
   margin-inline-start: -8px;
 }
 @media(hover:hover) {
@@ -941,8 +923,6 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
 .icon {
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
-  min-width: 24px;
-  min-height: 24px;
   margin-inline-start: -8px;
 }
 @media(hover:hover) {
@@ -1030,8 +1010,6 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
 .icon {
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
-  min-width: 24px;
-  min-height: 24px;
   margin-inline-start: -8px;
 }
 @media(hover:hover) {
@@ -1119,8 +1097,6 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
 .icon {
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
-  min-width: 24px;
-  min-height: 24px;
   margin-inline-start: -8px;
 }
 @media(hover:hover) {
