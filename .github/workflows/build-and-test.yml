@@ -852,7 +852,7 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: storefront-build
-          path: ./gh-pages/issue/3380
+          path: ./gh-pages/issue/3381
       - name: 'Setup Pages'
         uses: actions/configure-pages@v5
       - name: 'Upload artifact'
