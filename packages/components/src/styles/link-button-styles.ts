@@ -75,7 +75,6 @@ export const getLinkButtonStyles = (
   isDisabledOrLoading: boolean,
   hasSlottedAnchor: boolean,
   compact: boolean,
-  cssVariablePadding: string,
   theme: Theme
 ): Styles => {
   const isPrimary = variant === 'primary';
@@ -134,10 +133,8 @@ export const getLinkButtonStyles = (
       ...textSmallStyle,
       transition: `${getTransition('background-color')}, ${getTransition('border-color')}, ${getTransition('color')}`,
       ...buildResponsiveStyles(hideLabel, (hideLabelValue: boolean) => ({
-        padding: hideLabelValue
-          ? `var(${cssVariablePadding},${paddingBlock})`
-          : `var(${cssVariablePadding},${paddingBlock} ${paddingInline})`,
-        gap: hideLabelValue ? 0 : spacingStaticSmall,
+        padding: hideLabelValue ? paddingBlock : `${paddingBlock} ${paddingInline}`,
+        gap: hideLabelValue ? 0 : compact ? '6px' : spacingStaticSmall,
       })),
       ...(!hasSlottedAnchor && getFocusJssStyle(theme)),
       ...(!isDisabledOrLoading &&
@@ -164,7 +161,7 @@ export const getLinkButtonStyles = (
         width: fontLineHeight,
         height: fontLineHeight,
         ...buildResponsiveStyles(hideLabel, (hideLabelValue: boolean) => ({
-          marginInlineStart: hideLabelValue ? 0 : '-8px', // compensate white space of svg icon and optimize visual alignment
+          marginInlineStart: hideLabelValue ? 0 : compact ? '-6px' : '-8px', // compensate white space of svg icon and optimize visual alignment
         })),
       },
     }),
