@@ -832,6 +832,13 @@ jobs:
         with:
           name: storefront-build
           path: ./packages/storefront/dist
+      - name: 'Restore Build Artifact'
+        uses: actions/download-artifact@v4
+        with:
+          name: storefront-build
+          path: ./gh-pages/issue/3380
+      - name: Display structure of downloaded files
+        run: ls -R
   utilities:
     name: 'Utilities'
     runs-on: ubuntu-latest
