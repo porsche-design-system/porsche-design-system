@@ -14,6 +14,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ### [Unreleased]
 
+#### Fixed
+
+- `Tabs Bar`: fixed tabindex issue when `Tabs Bar` is rendered with the `Scroller` component
+  ([#3421](https://github.com/porsche-design-system/porsche-design-system/pull/3421))
+
 ### [3.17.0-rc.0] - 2024-07-29
 
 #### Added
@@ -82,8 +87,6 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
   ([#3397](https://github.com/porsche-design-system/porsche-design-system/pull/3397))
 - `Select Wrapper`: `optgroup` styling and behavior
   ([#3410](https://github.com/porsche-design-system/porsche-design-system/pull/3410))
-- `Tabs Bar`: fixed tabindex issue when `Tabs Bar` is rendered with the `Scroller` component
-  ([#3421](https://github.com/porsche-design-system/porsche-design-system/pull/3421))
 
 ### [3.16.0] - 2024-07-02
 
