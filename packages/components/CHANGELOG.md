@@ -14,6 +14,15 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ### [Unreleased]
 
+### [3.17.0-rc.1] - 2024-07-31
+
+#### Added
+
+- `Button`, `Link`:
+  - Prop `variant` extended by value `ghost`
+    ([#3423](https://github.com/porsche-design-system/porsche-design-system/pull/3423))
+  - Prop `compact` ([#3423](https://github.com/porsche-design-system/porsche-design-system/pull/3423))
+
 ### [3.17.0-rc.0] - 2024-07-29
 
 #### Added
@@ -32,10 +41,6 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
   ([#3410](https://github.com/porsche-design-system/porsche-design-system/pull/3410))
 - `Flyout`, `Modal`: Add custom events `motionVisibleEnd` and `motionHiddenEnd` to notify when opening and closing
   transitions are complete ([#3418](https://github.com/porsche-design-system/porsche-design-system/pull/3418))
-- `Button`, `Link`:
-  - Prop `variant` extended by value `ghost`
-    ([#3423](https://github.com/porsche-design-system/porsche-design-system/pull/3423))
-  - Prop `compact` ([#3423](https://github.com/porsche-design-system/porsche-design-system/pull/3423))
 
 #### Changed
 
