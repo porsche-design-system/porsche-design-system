@@ -1,8 +1,9 @@
 <div class="root">
-  <div class="image-container">
+  <slot name="header"> </slot>
+  <div class="media">
     <slot> </slot>
   </div>
-  <div class="content">
+  <div class="footer">
     <p>value</p>
     <p-button class="link-or-button hydrated"> value</p-button>
   </div>

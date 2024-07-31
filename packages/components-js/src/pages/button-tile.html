@@ -3,6 +3,18 @@
     width: 100%;
     max-width: 300px;
   }
+
+  .tile-group-grid {
+    display: grid;
+    max-width: 60rem;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+  }
+
+  .tile-group-grid p-button-tile {
+    width: auto;
+    max-width: none;
+  }
 </style>
 
 <div class="playground light auto-layout-inline" title="should render default button-tile">
@@ -16,8 +28,44 @@
   </p-button-tile>
 </div>
 
+<div class="playground light auto-layout-inline" title="should render with slotted header">
+  <p-button-tile label="Some Label" description="Some description">
+    <div slot="header">Some Header</div>
+    <img
+      src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyAQMAAAAk8RryAAAABlBMVEUAAAD2vP9xXLiUAAAAAXRSTlMAQObYZgAAABxJREFUGNNjYOBgYGBhYKAZ/R8MDsD4Q5amkz8ASp4PtTYYQZIAAAAASUVORK5CYII="
+      width="50"
+      height="50"
+      alt="Some alt text"
+    />
+  </p-button-tile>
+</div>
+
 <div class="playground light auto-layout-inline" style="font-size: 24px" title="should render different sizes">
-  <p-button-tile label="Some label" description="Size inherit" size="inherit">
+  <p-button-tile label="Some label" description="medium" size="medium">
+    <img
+      src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyAQMAAAAk8RryAAAABlBMVEUAAAD2vP9xXLiUAAAAAXRSTlMAQObYZgAAABxJREFUGNNjYOBgYGBhYKAZ/R8MDsD4Q5amkz8ASp4PtTYYQZIAAAAASUVORK5CYII="
+      width="50"
+      height="50"
+      alt="Some alt text"
+    />
+  </p-button-tile>
+  <p-button-tile label="Some label" description="default" size="medium">
+    <img
+      src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyAQMAAAAk8RryAAAABlBMVEUAAAD2vP9xXLiUAAAAAXRSTlMAQObYZgAAABxJREFUGNNjYOBgYGBhYKAZ/R8MDsD4Q5amkz8ASp4PtTYYQZIAAAAASUVORK5CYII="
+      width="50"
+      height="50"
+      alt="Some alt text"
+    />
+  </p-button-tile>
+  <p-button-tile label="Some label" description="large" size="large">
+    <img
+      src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyAQMAAAAk8RryAAAABlBMVEUAAAD2vP9xXLiUAAAAAXRSTlMAQObYZgAAABxJREFUGNNjYOBgYGBhYKAZ/R8MDsD4Q5amkz8ASp4PtTYYQZIAAAAASUVORK5CYII="
+      width="50"
+      height="50"
+      alt="Some alt text"
+    />
+  </p-button-tile>
+  <p-button-tile label="Some label" description="inherit" size="inherit">
     <img
       src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyAQMAAAAk8RryAAAABlBMVEUAAAD2vP9xXLiUAAAAAXRSTlMAQObYZgAAABxJREFUGNNjYOBgYGBhYKAZ/R8MDsD4Q5amkz8ASp4PtTYYQZIAAAAASUVORK5CYII="
       width="50"
@@ -28,7 +76,7 @@
   <p-button-tile
     label="Some label"
     description="Size responsive"
-    size="{ base: 'default', xs: 'inherit', s: 'default', m: 'inherit', l: 'default', xl: 'inherit' }"
+    size="{ base: 'medium', xs: 'inherit', s: 'medium', m: 'inherit', l: 'medium', xl: 'inherit' }"
   >
     <img
       src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyAQMAAAAk8RryAAAABlBMVEUAAAD2vP9xXLiUAAAAAXRSTlMAQObYZgAAABxJREFUGNNjYOBgYGBhYKAZ/R8MDsD4Q5amkz8ASp4PtTYYQZIAAAAASUVORK5CYII="
@@ -40,7 +88,15 @@
 </div>
 
 <div class="playground light auto-layout-inline" title="should render different weights">
-  <p-button-tile label="Some label" description="Weight regular" weight="regular">
+  <p-button-tile label="Some label" description="regular" weight="regular">
+    <img
+      src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyAQMAAAAk8RryAAAABlBMVEUAAAD2vP9xXLiUAAAAAXRSTlMAQObYZgAAABxJREFUGNNjYOBgYGBhYKAZ/R8MDsD4Q5amkz8ASp4PtTYYQZIAAAAASUVORK5CYII="
+      width="50"
+      height="50"
+      alt="Some alt text"
+    />
+  </p-button-tile>
+  <p-button-tile label="Some label" description="semi-bold" weight="semi-bold">
     <img
       src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyAQMAAAAk8RryAAAABlBMVEUAAAD2vP9xXLiUAAAAAXRSTlMAQObYZgAAABxJREFUGNNjYOBgYGBhYKAZ/R8MDsD4Q5amkz8ASp4PtTYYQZIAAAAASUVORK5CYII="
       width="50"
@@ -74,7 +130,7 @@
 </div>
 
 <div class="playground light auto-layout-inline" title="should render different aspect ratios">
-  <p-button-tile label="Some label" description="Aspect ratio 16:9" aspect-ratio="16:9">
+  <p-button-tile label="Some label" description="16/9" aspect-ratio="16/9">
     <img
       src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyAQMAAAAk8RryAAAABlBMVEUAAAD2vP9xXLiUAAAAAXRSTlMAQObYZgAAABxJREFUGNNjYOBgYGBhYKAZ/R8MDsD4Q5amkz8ASp4PtTYYQZIAAAAASUVORK5CYII="
       width="50"
@@ -82,7 +138,7 @@
       alt="Some alt text"
     />
   </p-button-tile>
-  <p-button-tile label="Some label" description="Aspect ratio 1:1" aspect-ratio="1:1">
+  <p-button-tile label="Some label" description="16:9" aspect-ratio="16:9">
     <img
       src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyAQMAAAAk8RryAAAABlBMVEUAAAD2vP9xXLiUAAAAAXRSTlMAQObYZgAAABxJREFUGNNjYOBgYGBhYKAZ/R8MDsD4Q5amkz8ASp4PtTYYQZIAAAAASUVORK5CYII="
       width="50"
@@ -90,7 +146,7 @@
       alt="Some alt text"
     />
   </p-button-tile>
-  <p-button-tile label="Some label" description="Aspect ratio 3:4" aspect-ratio="3:4">
+  <p-button-tile label="Some label" description="1/1" aspect-ratio="1/1">
     <img
       src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyAQMAAAAk8RryAAAABlBMVEUAAAD2vP9xXLiUAAAAAXRSTlMAQObYZgAAABxJREFUGNNjYOBgYGBhYKAZ/R8MDsD4Q5amkz8ASp4PtTYYQZIAAAAASUVORK5CYII="
       width="50"
@@ -98,7 +154,39 @@
       alt="Some alt text"
     />
   </p-button-tile>
-  <p-button-tile label="Some label" description="Aspect ratio 9:16" aspect-ratio="9:16">
+  <p-button-tile label="Some label" description="1:1" aspect-ratio="1:1">
+    <img
+      src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyAQMAAAAk8RryAAAABlBMVEUAAAD2vP9xXLiUAAAAAXRSTlMAQObYZgAAABxJREFUGNNjYOBgYGBhYKAZ/R8MDsD4Q5amkz8ASp4PtTYYQZIAAAAASUVORK5CYII="
+      width="50"
+      height="50"
+      alt="Some alt text"
+    />
+  </p-button-tile>
+  <p-button-tile label="Some label" description="3/4" aspect-ratio="3/4">
+    <img
+      src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyAQMAAAAk8RryAAAABlBMVEUAAAD2vP9xXLiUAAAAAXRSTlMAQObYZgAAABxJREFUGNNjYOBgYGBhYKAZ/R8MDsD4Q5amkz8ASp4PtTYYQZIAAAAASUVORK5CYII="
+      width="50"
+      height="50"
+      alt="Some alt text"
+    />
+  </p-button-tile>
+  <p-button-tile label="Some label" description="3:4" aspect-ratio="3:4">
+    <img
+      src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyAQMAAAAk8RryAAAABlBMVEUAAAD2vP9xXLiUAAAAAXRSTlMAQObYZgAAABxJREFUGNNjYOBgYGBhYKAZ/R8MDsD4Q5amkz8ASp4PtTYYQZIAAAAASUVORK5CYII="
+      width="50"
+      height="50"
+      alt="Some alt text"
+    />
+  </p-button-tile>
+  <p-button-tile label="Some label" description="9/16" aspect-ratio="9/16">
+    <img
+      src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyAQMAAAAk8RryAAAABlBMVEUAAAD2vP9xXLiUAAAAAXRSTlMAQObYZgAAABxJREFUGNNjYOBgYGBhYKAZ/R8MDsD4Q5amkz8ASp4PtTYYQZIAAAAASUVORK5CYII="
+      width="50"
+      height="50"
+      alt="Some alt text"
+    />
+  </p-button-tile>
+  <p-button-tile label="Some label" description="9:16" aspect-ratio="9:16">
     <img
       src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyAQMAAAAk8RryAAAABlBMVEUAAAD2vP9xXLiUAAAAAXRSTlMAQObYZgAAABxJREFUGNNjYOBgYGBhYKAZ/R8MDsD4Q5amkz8ASp4PtTYYQZIAAAAASUVORK5CYII="
       width="50"
@@ -109,7 +197,7 @@
   <p-button-tile
     label="Some label"
     description="Aspect ratio responsive"
-    aspect-ratio="{ base: '16:9', xs: '1:1', s: '3:4', m: '9:16', l: '4:3', xl: '16:9'}"
+    aspect-ratio="{ base: '16/9', xs: '1/1', s: '3/4', m: '9/16', l: '4/3', xl: '16/9'}"
   >
     <img
       src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyAQMAAAAk8RryAAAABlBMVEUAAAD2vP9xXLiUAAAAAXRSTlMAQObYZgAAABxJREFUGNNjYOBgYGBhYKAZ/R8MDsD4Q5amkz8ASp4PtTYYQZIAAAAASUVORK5CYII="
@@ -180,26 +268,6 @@
       alt="Some alt text"
     />
   </p-button-tile>
-  <p-button-tile label="Some super long label which causes line breaks in the button" description="Some description">
-    <img
-      src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAgAAAAIAAQMAAADOtka5AAAAA1BMVEX///+nxBvIAAAANklEQVR42u3BAQEAAACCIP+vbkhAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAB8G4IAAAFjdVCkAAAAAElFTkSuQmCC"
-      width="50"
-      height="50"
-      alt="Some alt text"
-    />
-  </p-button-tile>
-  <p-button-tile
-    label="Some label"
-    description="Some long text on white background to overflow the box. Some long text on white background  to overflow the box. Some long text on white background  to overflow the box."
-    compact="true"
-  >
-    <img
-      src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAgAAAAIAAQMAAADOtka5AAAAA1BMVEX///+nxBvIAAAANklEQVR42u3BAQEAAACCIP+vbkhAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAB8G4IAAAFjdVCkAAAAAElFTkSuQmCC"
-      width="50"
-      height="50"
-      alt="Some alt text"
-    />
-  </p-button-tile>
 </div>
 
 <div
@@ -220,17 +288,77 @@
 
 <div class="playground light" title="should render with max width description text">
   <p-button-tile
+    style="max-width: 50rem"
+    aspect-ratio="16:9"
     label="Some label"
     description="Some long text on white background to show how it renders on wide tiles. Some long text on white background to show how it renders on wide tiles. Some long text on white background to show how it renders on wide tiles."
     compact="true"
   >
     <img
-      src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAgAAAAIAAQMAAADOtka5AAAAA1BMVEX///+nxBvIAAAANklEQVR42u3BAQEAAACCIP+vbkhAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAB8G4IAAAFjdVCkAAAAAElFTkSuQmCC"
+      src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyAQMAAAAk8RryAAAABlBMVEUAAAD2vP9xXLiUAAAAAXRSTlMAQObYZgAAABxJREFUGNNjYOBgYGBhYKAZ/R8MDsD4Q5amkz8ASp4PtTYYQZIAAAAASUVORK5CYII="
       width="50"
       height="50"
       alt="Some alt text"
     />
   </p-button-tile>
+</div>
+
+<div
+  class="playground light"
+  title="should render within grid context and break out of aspect-ratio in case content overflows or to align with the highest grid item per row"
+>
+  <div class="tile-group-grid">
+    <p-button-tile
+      aspect-ratio="1/1"
+      label="Some Label"
+      size="large"
+      description="Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua."
+    >
+      <p-tag slot="header" color="background-frosted" compact="true">1/1</p-tag>
+      <img
+        src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyAQMAAAAk8RryAAAABlBMVEUAAAD2vP9xXLiUAAAAAXRSTlMAQObYZgAAABxJREFUGNNjYOBgYGBhYKAZ/R8MDsD4Q5amkz8ASp4PtTYYQZIAAAAASUVORK5CYII="
+        width="50"
+        height="50"
+        alt="Some alt text"
+      />
+    </p-button-tile>
+    <p-button-tile aspect-ratio="1/1" label="Some Label" description="Some description">
+      <p-tag slot="header" color="background-frosted" compact="true">1/1</p-tag>
+      <img
+        src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyAQMAAAAk8RryAAAABlBMVEUAAAD2vP9xXLiUAAAAAXRSTlMAQObYZgAAABxJREFUGNNjYOBgYGBhYKAZ/R8MDsD4Q5amkz8ASp4PtTYYQZIAAAAASUVORK5CYII="
+        width="50"
+        height="50"
+        alt="Some alt text"
+      />
+    </p-button-tile>
+    <p-button-tile aspect-ratio="1/1" label="Some Label" description="Some description">
+      <p-tag slot="header" color="background-frosted" compact="true">1/1</p-tag>
+      <img
+        src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyAQMAAAAk8RryAAAABlBMVEUAAAD2vP9xXLiUAAAAAXRSTlMAQObYZgAAABxJREFUGNNjYOBgYGBhYKAZ/R8MDsD4Q5amkz8ASp4PtTYYQZIAAAAASUVORK5CYII="
+        width="50"
+        height="50"
+        alt="Some alt text"
+      />
+    </p-button-tile>
+    <p-button-tile aspect-ratio="9/16" label="Some Label" description="Some description">
+      <p-tag slot="header" color="background-frosted" compact="true">9/16</p-tag>
+      <img
+        src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyAQMAAAAk8RryAAAABlBMVEUAAAD2vP9xXLiUAAAAAXRSTlMAQObYZgAAABxJREFUGNNjYOBgYGBhYKAZ/R8MDsD4Q5amkz8ASp4PtTYYQZIAAAAASUVORK5CYII="
+        width="50"
+        height="50"
+        alt="Some alt text"
+      />
+    </p-button-tile>
+    <p-button-tile aspect-ratio="1/1" label="Some Label" description="Some description">
+      <p-tag slot="header" color="background-frosted" compact="true">1/1</p-tag>
+      <img
+        src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyAQMAAAAk8RryAAAABlBMVEUAAAD2vP9xXLiUAAAAAXRSTlMAQObYZgAAABxJREFUGNNjYOBgYGBhYKAZ/R8MDsD4Q5amkz8ASp4PtTYYQZIAAAAASUVORK5CYII="
+        width="50"
+        height="50"
+        alt="Some alt text"
+      />
+    </p-button-tile>
+  </div>
 </div>
 
 <div class="playground light auto-layout-inline" title="should render disabled button-tile">

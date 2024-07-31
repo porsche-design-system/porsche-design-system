@@ -116,7 +116,9 @@ $2`
     .replace(/\\/g, '\\\\') // fix \\ in generated output
     .replace(/`/g, '\\`'); // fix \` in generated output
 
-  const templateContent = convertToAngular(fileContent).replace(/(<iframe \[src]="'[^"]*)/g, '$1 | safe'); // Fix iframe loading
+  const templateContent = convertToAngular(fileContent)
+    .replace('[heading]="718"', '[heading]="\'718\'"') // fix "Type 'number' is not assignable to type 'string'"
+    .replace(/(<iframe \[src]="'[^"]*)/g, '$1 | safe'); // Fix iframe loading
 
   fileContent = `${comment}
 ${imports}

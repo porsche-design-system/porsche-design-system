@@ -51,6 +51,7 @@ span {
   font: normal normal 400 clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   color: #FBFCFF;
   background: #0E0E12;
+  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), backdrop-filter var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 ::slotted(a), ::slotted(button) {
   all: unset !important;
@@ -118,6 +119,7 @@ span {
   font: normal normal 400 clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   color: #010205;
   background: #FFF;
+  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), backdrop-filter var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 ::slotted(a), ::slotted(button) {
   all: unset !important;
@@ -185,6 +187,7 @@ span {
   font: normal normal 400 clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   color: #FBFCFF;
   background: #0E0E12;
+  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), backdrop-filter var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 ::slotted(a), ::slotted(button) {
   all: unset !important;
@@ -229,9 +232,6 @@ span {
   display: none !important;
 }
 @media(hover:hover) {
-  span {
-    transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  }
   span:hover {
     background: #292934;
   }
@@ -261,6 +261,7 @@ span {
   font: normal normal 400 clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   color: #010205;
   background: #FFF;
+  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), backdrop-filter var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 ::slotted(a), ::slotted(button) {
   all: unset !important;
@@ -305,9 +306,6 @@ span {
   display: none !important;
 }
 @media(hover:hover) {
-  span {
-    transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  }
   span:hover {
     background: #E0E0E0;
   }
@@ -337,6 +335,7 @@ span {
   font: normal normal 400 clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   color: #010205;
   background: #FFF;
+  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), backdrop-filter var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 ::slotted(a), ::slotted(button) {
   all: unset !important;
@@ -401,6 +400,7 @@ span {
   font: normal normal 400 clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   color: #010205;
   background: #FFF;
+  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), backdrop-filter var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 ::slotted(a), ::slotted(button) {
   all: unset !important;
@@ -470,6 +470,7 @@ span {
   background: hsl(240 3% 26%/35%);
   -webkit-backdrop-filter: blur(32px);
   backdrop-filter: blur(32px);
+  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), backdrop-filter var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 ::slotted(a), ::slotted(button) {
   all: unset !important;
@@ -514,9 +515,6 @@ span {
   display: none !important;
 }
 @media(hover:hover) {
-  span {
-    transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  }
   span:hover {
     background: hsl(240 3% 36%/35%);
   }
@@ -548,6 +546,7 @@ span {
   background: hsl(240 4% 85%/35%);
   -webkit-backdrop-filter: blur(32px);
   backdrop-filter: blur(32px);
+  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), backdrop-filter var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 ::slotted(a), ::slotted(button) {
   all: unset !important;
@@ -592,9 +591,6 @@ span {
   display: none !important;
 }
 @media(hover:hover) {
-  span {
-    transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  }
   span:hover {
     background: hsl(240 4% 75%/35%);
   }
@@ -624,6 +620,7 @@ span {
   font: normal normal 400 clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   color: #FBFCFF;
   background: #212225;
+  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), backdrop-filter var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 ::slotted(a), ::slotted(button) {
   all: unset !important;
@@ -668,9 +665,6 @@ span {
   display: none !important;
 }
 @media(hover:hover) {
-  span {
-    transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  }
   span:hover {
     background: #3E4045;
   }
@@ -700,6 +694,7 @@ span {
   font: normal normal 400 clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   color: #010205;
   background: #EEEFF2;
+  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), backdrop-filter var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 ::slotted(a), ::slotted(button) {
   all: unset !important;
@@ -744,9 +739,6 @@ span {
   display: none !important;
 }
 @media(hover:hover) {
-  span {
-    transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  }
   span:hover {
     background: #CBCED7;
   }
@@ -776,6 +768,7 @@ span {
   font: normal normal 400 clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   color: #FBFCFF;
   background: #3A0F0F;
+  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), backdrop-filter var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 ::slotted(a), ::slotted(button) {
   all: unset !important;
@@ -820,9 +813,6 @@ span {
   display: none !important;
 }
 @media(hover:hover) {
-  span {
-    transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  }
   span:hover {
     background: #3F2828;
   }
@@ -852,6 +842,7 @@ span {
   font: normal normal 400 clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   color: #010205;
   background: #FFE2E4;
+  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), backdrop-filter var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 ::slotted(a), ::slotted(button) {
   all: unset !important;
@@ -896,9 +887,6 @@ span {
   display: none !important;
 }
 @media(hover:hover) {
-  span {
-    transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  }
   span:hover {
     background: #F4CED1;
   }
@@ -928,6 +916,7 @@ span {
   font: normal normal 400 clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   color: #FBFCFF;
   background: #04294E;
+  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), backdrop-filter var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 ::slotted(a), ::slotted(button) {
   all: unset !important;
@@ -972,9 +961,6 @@ span {
   display: none !important;
 }
 @media(hover:hover) {
-  span {
-    transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  }
   span:hover {
     background: #1A3856;
   }
@@ -1004,6 +990,7 @@ span {
   font: normal normal 400 clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   color: #010205;
   background: #D3E1FF;
+  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), backdrop-filter var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 ::slotted(a), ::slotted(button) {
   all: unset !important;
@@ -1048,9 +1035,6 @@ span {
   display: none !important;
 }
 @media(hover:hover) {
-  span {
-    transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  }
   span:hover {
     background: #C2D1F1;
   }
@@ -1080,6 +1064,7 @@ span {
   font: normal normal 400 clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   color: #FBFCFF;
   background: #003320;
+  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), backdrop-filter var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 ::slotted(a), ::slotted(button) {
   all: unset !important;
@@ -1124,9 +1109,6 @@ span {
   display: none !important;
 }
 @media(hover:hover) {
-  span {
-    transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  }
   span:hover {
     background: #0F432F;
   }
@@ -1156,6 +1138,7 @@ span {
   font: normal normal 400 clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   color: #010205;
   background: #E4FFEC;
+  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), backdrop-filter var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 ::slotted(a), ::slotted(button) {
   all: unset !important;
@@ -1200,9 +1183,6 @@ span {
   display: none !important;
 }
 @media(hover:hover) {
-  span {
-    transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  }
   span:hover {
     background: #D0F4DB;
   }
@@ -1232,6 +1212,7 @@ span {
   font: normal normal 400 clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   color: #FBFCFF;
   background: #362B0A;
+  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), backdrop-filter var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 ::slotted(a), ::slotted(button) {
   all: unset !important;
@@ -1276,9 +1257,6 @@ span {
   display: none !important;
 }
 @media(hover:hover) {
-  span {
-    transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  }
   span:hover {
     background: #3E3720;
   }
@@ -1308,6 +1286,7 @@ span {
   font: normal normal 400 clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   color: #010205;
   background: #FFF4D2;
+  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), backdrop-filter var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 ::slotted(a), ::slotted(button) {
   all: unset !important;
@@ -1352,9 +1331,6 @@ span {
   display: none !important;
 }
 @media(hover:hover) {
-  span {
-    transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  }
   span:hover {
     background: #F1E5C1;
   }
@@ -1384,6 +1360,7 @@ span {
   font: normal normal 400 clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   color: #010205;
   background: #FBFCFF;
+  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), backdrop-filter var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 ::slotted(a), ::slotted(button) {
   all: unset !important;
@@ -1428,9 +1405,6 @@ span {
   display: none !important;
 }
 @media(hover:hover) {
-  span {
-    transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  }
   span:hover {
     background: #CECFD1;
   }
@@ -1461,6 +1435,7 @@ span {
   font: normal normal 400 clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   color: #FBFCFF;
   background: #010205;
+  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), backdrop-filter var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 ::slotted(a), ::slotted(button) {
   all: unset !important;
@@ -1505,9 +1480,6 @@ span {
   display: none !important;
 }
 @media(hover:hover) {
-  span {
-    transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  }
   span:hover {
     background: #535457;
   }

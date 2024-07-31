@@ -10,8 +10,9 @@ const tagNamesWithHeadingTagProp: TagName[] = TAG_NAMES.filter(
 
 for (const tagName of tagNamesWithHeadingTagProp) {
   test.describe(tagName, () => {
-    const getHeadingTagName = (page: Page): Promise<string> => page.locator('.heading').evaluate((el) => el.tagName);
-    const getHeadingCount = (page: Page): Promise<number> => page.locator('.heading').count();
+    const getHeadingTagName = (page: Page): Promise<string> =>
+      page.locator('h1,h2,h3,h4,h5,h6').evaluate((el) => el.tagName);
+    const getHeadingCount = (page: Page): Promise<number> => page.locator('h1,h2,h3,h4,h5,h6').count();
 
     const host = (page: Page) => page.$(tagName);
 
@@ -27,10 +28,10 @@ for (const tagName of tagNamesWithHeadingTagProp) {
     });
 
     if (tagName !== 'p-accordion' && tagName !== 'p-link-tile-model-signature') {
-      test('should not render a heading tag inside of the component when slotted heading is set', async ({ page }) => {
+      test('should not render multiple heading tags when slotted heading is set', async ({ page }) => {
         const markup = buildDefaultComponentMarkup(tagName).replace(/>/, ' ><h3 slot="heading">Some heading</h3>');
         await setContentWithDesignSystem(page, markup);
-        expect(await getHeadingCount(page)).toEqual(0);
+        expect(await getHeadingCount(page)).toEqual(1);
       });
     }
   });
