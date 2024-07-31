@@ -548,10 +548,13 @@ exports[`should match snapshot 1`] = `
         "allowedValues": [
           "primary",
           "secondary",
-          "tertiary",
           "ghost",
+          "tertiary",
         ],
         "defaultValue": "primary",
+        "deprecatedValues": [
+          "tertiary",
+        ],
         "description": "The style variant of the button.",
         "type": "ButtonVariant",
       },
@@ -3714,10 +3717,13 @@ exports[`should match snapshot 1`] = `
         "allowedValues": [
           "primary",
           "secondary",
-          "tertiary",
           "ghost",
+          "tertiary",
         ],
         "defaultValue": "primary",
+        "deprecatedValues": [
+          "tertiary",
+        ],
         "description": "The style variant of the link.",
         "type": "LinkVariant",
       },
