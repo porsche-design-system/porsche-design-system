@@ -77,12 +77,14 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
 .icon {
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
+  min-width: 24px;
+  min-height: 24px;
   margin-inline-start: -8px;
 }
 @media(hover:hover) {
   .root:hover {
-    background-color: hsl(240 4% 75%/35%);
-    border-color: hsl(240 4% 75%/35%);
+    background-color: hsl(240 4% 70%/35%);
+    border-color: hsl(240 4% 70%/35%);
     -webkit-backdrop-filter: blur(32px);
     backdrop-filter: blur(32px);
   }
@@ -167,12 +169,14 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
 .icon {
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
+  min-width: 24px;
+  min-height: 24px;
   margin-inline-start: -8px;
 }
 @media(hover:hover) {
   .root:hover {
-    background-color: hsl(240 3% 36%/35%);
-    border-color: hsl(240 3% 36%/35%);
+    background-color: hsl(240 3% 41%/35%);
+    border-color: hsl(240 3% 41%/35%);
     -webkit-backdrop-filter: blur(32px);
     backdrop-filter: blur(32px);
   }
@@ -257,12 +261,14 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
 .icon {
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
+  min-width: 24px;
+  min-height: 24px;
   margin-inline-start: -6px;
 }
 @media(hover:hover) {
   .root:hover {
-    background-color: hsl(240 3% 36%/35%);
-    border-color: hsl(240 3% 36%/35%);
+    background-color: hsl(240 3% 41%/35%);
+    border-color: hsl(240 3% 41%/35%);
     -webkit-backdrop-filter: blur(32px);
     backdrop-filter: blur(32px);
   }
@@ -285,8 +291,6 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
   align-items: flex-start;
   justify-content: center;
   width: 100%;
-  min-width: calc(calc(6px + 2.125ex) + 13px + 2px);
-  min-height: calc(calc(6px + 2.125ex) + 13px + 2px);
   box-sizing: border-box;
   text-align: start;
   -webkit-appearance: none;
@@ -327,6 +331,8 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
 .icon {
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
+  min-width: 24px;
+  min-height: 24px;
   margin-inline-start: 0;
   filter: invert(1);
 }
@@ -494,6 +500,8 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
 .icon {
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
+  min-width: 24px;
+  min-height: 24px;
   margin-inline-start: -8px;
   filter: invert(1);
 }
@@ -580,6 +588,8 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
 .icon {
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
+  min-width: 24px;
+  min-height: 24px;
   margin-inline-start: -8px;
   filter: invert(1);
 }
@@ -666,6 +676,8 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
 .icon {
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
+  min-width: 24px;
+  min-height: 24px;
   margin-inline-start: -8px;
   filter: invert(1);
 }
@@ -752,6 +764,8 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
 .icon {
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
+  min-width: 24px;
+  min-height: 24px;
   margin-inline-start: -6px;
   filter: invert(1);
 }
@@ -838,6 +852,8 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
 .icon {
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
+  min-width: 24px;
+  min-height: 24px;
   margin-inline-start: -8px;
 }
 @media(hover:hover) {
@@ -925,6 +941,8 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
 .icon {
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
+  min-width: 24px;
+  min-height: 24px;
   margin-inline-start: -8px;
 }
 @media(hover:hover) {
@@ -1012,6 +1030,8 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
 .icon {
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
+  min-width: 24px;
+  min-height: 24px;
   margin-inline-start: -8px;
 }
 @media(hover:hover) {
@@ -1099,6 +1119,8 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
 .icon {
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
+  min-width: 24px;
+  min-height: 24px;
   margin-inline-start: -8px;
 }
 @media(hover:hover) {
