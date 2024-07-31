@@ -137,6 +137,7 @@ test('should work with nested or translated markup', async ({ page }) => {
 
 test('correct position of tabindex and aria-selected attributes if changed programmatically', async ({ page }) => {
   await initTabsBar(page, { amount: 3, activeTabIndex: 0 });
+  const host = await getHost(page);
   const [firstButton, secondButton, thirdButton] = await getAllButtons(page);
   expect(await getAttribute(firstButton, 'tabindex')).toBe('0');
   expect(await getAttribute(firstButton, 'aria-selected')).toBe('true');
@@ -146,10 +147,7 @@ test('correct position of tabindex and aria-selected attributes if changed progr
   expect(await getAttribute(thirdButton, 'aria-selected')).toBe('false');
 
   // change active-tab-index prop
-  await page.evaluate(() => {
-    const tabsBar = document.querySelector('p-tabs-bar');
-    tabsBar.activeTabIndex = 2;
-  });
+  await setProperty(host, 'activeTabIndex', 2);
 
   await waitForStencilLifecycle(page);
 
