@@ -1,9 +1,9 @@
 export const lighten = (hsl: string): string => {
-  return changeColor(hsl, 10);
+  return changeColor(hsl, 15);
 };
 
 export const darken = (hsl: string): string => {
-  return changeColor(hsl, -10);
+  return changeColor(hsl, -15);
 };
 
 const changeColor = (hsl: string, lightness: number): string => {
