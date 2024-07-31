@@ -15,7 +15,7 @@ import {
 } from './';
 import {
   borderRadiusSmall,
-  borderWidth,
+  borderWidthBase,
   fontLineHeight,
   frostedGlassStyle,
   spacingStaticSmall,
@@ -96,7 +96,7 @@ export const getLinkButtonStyles = (
   const paddingBlock = compact ? '4px' : '13px';
   const paddingInline = compact ? '12px' : '26px';
 
-  const minSizeHideLabel = `calc(${fontLineHeight} + ${paddingBlock} + ${borderWidth.base})`;
+  const minSizeHideLabel = `calc(${fontLineHeight} + ${paddingBlock} + ${borderWidthBase})`;
 
   return {
     '@global': {
@@ -124,7 +124,7 @@ export const getLinkButtonStyles = (
       WebkitAppearance: 'none', // iOS safari
       appearance: 'none',
       textDecoration: 'none',
-      border: `${borderWidth.base} solid ${borderColor}`,
+      border: `${borderWidthBase} solid ${borderColor}`,
       borderRadius: borderRadiusSmall,
       transform: 'translate3d(0,0,0)', // creates new stacking context (for slotted anchor + focus)
       backgroundColor,
