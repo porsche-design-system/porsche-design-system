@@ -96,8 +96,6 @@ export const getLinkButtonStyles = (
   const paddingBlock = compact ? '4px' : '13px';
   const paddingInline = compact ? '12px' : '26px';
 
-  const minSizeHideLabel = `calc(${fontLineHeight} + ${paddingBlock} * 2 + ${borderWidthBase} * 2)`;
-
   return {
     '@global': {
       ':host': {
@@ -115,10 +113,6 @@ export const getLinkButtonStyles = (
       alignItems: 'flex-start',
       justifyContent: 'center',
       width: '100%',
-      ...(hideLabel && {
-        minWidth: minSizeHideLabel, // ensure space is already reserved until icon component is loaded (ssr)
-        minHeight: minSizeHideLabel, // ensure space is already reserved until icon component is loaded (ssr)
-      }),
       boxSizing: 'border-box',
       textAlign: 'start',
       WebkitAppearance: 'none', // iOS safari
@@ -160,6 +154,8 @@ export const getLinkButtonStyles = (
       icon: {
         width: fontLineHeight,
         height: fontLineHeight,
+        minWidth: '24px', // ensure space is already reserved until icon component is loaded (ssr)
+        minHeight: '24px', // ensure space is already reserved until icon component is loaded (ssr)
         ...buildResponsiveStyles(hideLabel, (hideLabelValue: boolean) => ({
           marginInlineStart: hideLabelValue ? 0 : compact ? '-6px' : '-8px', // compensate white space of svg icon and optimize visual alignment
         })),
