@@ -19,6 +19,11 @@ export const handleScroll = (ul: HTMLElement, highlightedIndex: number): void =>
   }
 };
 
+export type OptgroupOptionMap = {
+  hidden: boolean;
+  disabled: boolean;
+};
+
 export type OptionMap = {
   value: string;
   disabled: boolean;
@@ -26,7 +31,15 @@ export type OptionMap = {
   initiallyHidden: boolean;
   selected: boolean;
   highlighted: boolean;
-  title?: string; // for optgroup
+  /*
+    The properties `title`, `showOptgroup`, and `optgroupOptions` are required
+    to replicate the hierarchical structure of options within <optgroup>
+    while rendering them as a flat list.
+    TODO: Improve by preserving the original hierarchical structure.
+  */
+  title?: string;
+  showOptgroup?: boolean;
+  optgroupOptions?: OptgroupOptionMap;
 };
 
 export const getOptionsElements = (select: HTMLSelectElement): HTMLOptionElement[] => Array.from(select.options);
@@ -36,13 +49,17 @@ export const getOptionMaps = (options: HTMLOptionElement[]): OptionMap[] =>
     const { selected, parentElement, previousElementSibling } = item;
     const option: OptionMap = {
       value: item.text,
-      disabled: hasAttribute(item, 'disabled'),
+      disabled: hasAttribute(item, 'disabled') || hasAttribute(parentElement, 'disabled'),
       hidden: false,
-      initiallyHidden: hasAttribute(item, 'hidden'),
+      initiallyHidden: hasAttribute(item, 'hidden') || hasAttribute(parentElement, 'hidden'),
       selected,
       highlighted: selected,
-      ...(getTagName(parentElement) === 'optgroup' &&
-        previousElementSibling === null && { title: (parentElement as HTMLOptGroupElement).label }),
+      ...(getTagName(parentElement) === 'optgroup' && { title: (parentElement as HTMLOptGroupElement).label }),
+      showOptgroup: getTagName(parentElement) === 'optgroup' && previousElementSibling == null,
+      optgroupOptions: {
+        hidden: hasAttribute(parentElement, 'hidden'),
+        disabled: hasAttribute(parentElement, 'disabled'),
+      },
     };
     return option;
   });
@@ -111,9 +128,17 @@ export const setHighlightedFirstMatchingOptionMaps = (options: OptionMap[], key:
 
 export const setFilteredOptionMaps = (options: OptionMap[], searchString: string): OptionMap[] => {
   const lowerCaseSearchString = searchString.toLowerCase();
+  const matchedItems = options.filter(
+    (item) => item.title && !item.initiallyHidden && item.value.toLowerCase().includes(lowerCaseSearchString)
+  );
+  const firstInOptgroup = matchedItems.filter(
+    (value, index, self) => index === self.findIndex((v) => v.title === value.title)
+  );
+
   return options.map((item) => ({
     ...item,
     hidden: !item.initiallyHidden && !item.value.toLowerCase().includes(lowerCaseSearchString),
+    showOptgroup: firstInOptgroup.indexOf(item) !== -1,
   }));
 };
 

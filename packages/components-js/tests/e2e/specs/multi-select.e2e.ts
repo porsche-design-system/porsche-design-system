@@ -1,5 +1,5 @@
 import type { Page } from 'playwright';
-import { expect, test } from '@playwright/test';
+import { type ElementHandle, expect, test } from '@playwright/test';
 import type { Components } from '@porsche-design-system/components/src/components';
 import {
   addEventListener,
@@ -31,12 +31,15 @@ const getDropdownDisplay = async (page: Page): Promise<string> =>
 const getShadowDropdownOption = (page: Page, n: number) => page.$(`p-multi-select .listbox div:nth-child(${n})`);
 const getMultiSelectOption = (page: Page, n: number) =>
   page.$(`p-multi-select p-multi-select-option:nth-child(${n + 1})`); // First one is native select
-const getMultiSelectOptions = (page: Page) => page.$$('p-multi-select p-multi-select-option');
+const getMultiSelectOptions = (page: Page): Promise<ElementHandle<HTMLElement>[]> =>
+  page.$$('p-multi-select p-multi-select-option');
 const getAmountOfVisibleMultiSelectOptions = async (page: Page): Promise<number> =>
-  await page.$$eval(
-    'p-multi-select p-multi-select-option',
-    (options) => options.filter((option: HTMLElement) => !option.hidden).length
-  );
+  (await page.locator('p-multi-select-option').evaluateAll((elements) => elements.filter((element) => !element.hidden)))
+    .length;
+
+const getAmountOfVisibleMultiSelectOptgroups = async (page: Page): Promise<number> =>
+  (await page.locator('p-optgroup').evaluateAll((elements) => elements.filter((element) => !element.hidden))).length;
+
 const getSelectedMultiSelectOptionProperty = async <K extends keyof MultiSelectOption>(
   page: Page,
   property: K
@@ -103,18 +106,27 @@ type InitOptions = {
     isWithinForm?: boolean;
     markupBefore?: string;
     markupAfter?: string;
+    includeOptgroups?: boolean;
   };
 };
 
 const initMultiSelect = (page: Page, opt?: InitOptions): Promise<void> => {
   const { props = { name: 'name' }, slots, options } = opt || {};
-  const { amount = 3, disabledIndex, isWithinForm = true, markupBefore = '', markupAfter = '' } = options || {};
+  const {
+    amount = 3,
+    disabledIndex,
+    isWithinForm = true,
+    markupBefore = '',
+    markupAfter = '',
+    includeOptgroups = false,
+  } = options || {};
   const { label = '', description = '', message = '' } = slots || {};
 
   const selectOptions = [...'abc', ...(amount === 5 ? 'de' : '')]
     .map((x, idx) => {
       const attrs = [disabledIndex === idx ? 'disabled' : ''].join(' ');
-      return `<p-multi-select-option value="${x}" ${attrs}>Option ${x.toUpperCase()}</p-multi-select-option>`;
+      const option = `<p-multi-select-option value="${x}" ${attrs}>Option ${x.toUpperCase()}</p-multi-select-option>`;
+      return includeOptgroups ? `<p-optgroup label="${x}">${option}</p-optgroup>` : option;
     })
     .join('\n');
 
@@ -1239,5 +1251,132 @@ test.describe('lifecycle', () => {
     expect(status2.componentDidUpdate['p-multi-select-option'], 'componentDidUpdate: p-multi-select-option').toBe(0);
     expect(status2.componentDidUpdate['p-multi-select'], 'componentDidUpdate: p-multi-select').toBe(1);
     expect(status2.componentDidUpdate.all, 'componentDidUpdate: all').toBe(1);
+  });
+});
+
+test.describe('theme', () => {
+  test('should sync theme for children', async ({ page }) => {
+    await initMultiSelect(page, { options: { includeOptgroups: true } });
+
+    const multiSelect = await getHost(page);
+
+    const inputElement = await getInput(page);
+    await inputElement.click();
+    await waitForStencilLifecycle(page);
+
+    const optgroups = await page.locator('p-optgroup').all();
+    const options = await page.locator('p-multi-select-option').all();
+
+    for (const child of [...optgroups, ...options]) {
+      expect(await getProperty(child, 'theme')).toBe('light');
+    }
+    await setProperty(multiSelect, 'theme', 'dark');
+    await waitForStencilLifecycle(page);
+
+    for (const child of [...optgroups, ...options]) {
+      expect(await getProperty(child, 'theme')).toBe('dark');
+    }
+  });
+});
+
+test.describe('optgroups', () => {
+  test('should persist disabled state for options inside optgroup', async ({ page }) => {
+    await initMultiSelect(page, { options: { includeOptgroups: true, disabledIndex: 1 } });
+
+    const inputElement = await getInput(page);
+    await inputElement.click();
+    await waitForStencilLifecycle(page);
+
+    const optgroup = page.locator('p-optgroup[label="b"]');
+    await expect(await getProperty(optgroup, 'disabled')).toBeFalsy();
+    const children = await optgroup.locator('p-multi-select-option').all();
+
+    for (const child of children) {
+      await expect(await getProperty(child, 'disabled')).toBeTruthy();
+    }
+    await optgroup.evaluate((element) => (element.disabled = true));
+    await waitForStencilLifecycle(page);
+
+    await expect(await getProperty(optgroup, 'disabled')).toBeTruthy();
+
+    for (const child of children) {
+      await expect(await getProperty(child, 'disabled')).toBeTruthy();
+    }
+
+    await optgroup.evaluate((element) => (element.disabled = false));
+    await waitForStencilLifecycle(page);
+
+    for (const child of children) {
+      await expect(await getProperty(child, 'disabled')).toBeTruthy();
+    }
+  });
+
+  test('should only display optgroups of filtered options', async ({ page }) => {
+    await initMultiSelect(page, { options: { includeOptgroups: true } });
+
+    const inputElement = await getInput(page);
+    await inputElement.click();
+    await waitForStencilLifecycle(page);
+    expect(await getAmountOfVisibleMultiSelectOptgroups(page), 'amount of shown optgroups').toBe(3);
+
+    await inputElement.type('b');
+    await waitForStencilLifecycle(page);
+
+    expect(await getAmountOfVisibleMultiSelectOptgroups(page), 'amount of shown optgroups').toBe(1);
+    expect(await getAmountOfVisibleMultiSelectOptions(page), 'amount of shown options').toBe(1);
+
+    const visibleOptgroup = page.locator('p-optgroup[label="b"]');
+    await expect(visibleOptgroup.locator('p-multi-select-option').getByText('b')).toBeVisible();
+    await expect(page.locator('p-optgroup[label="a"]')).not.toBeVisible();
+    await expect(visibleOptgroup).toBeVisible();
+    await expect(page.locator('p-optgroup[label="c"]')).not.toBeVisible();
+  });
+
+  test('should disable all options inside disabled optgroup', async ({ page }) => {
+    await initMultiSelect(page, { options: { includeOptgroups: true } });
+
+    const inputElement = await getInput(page);
+    await inputElement.click();
+    await waitForStencilLifecycle(page);
+
+    const optgroup = page.locator('p-optgroup[label="b"]');
+    await expect(await getProperty(optgroup, 'disabled')).toBeFalsy();
+    const children = await optgroup.locator('p-multi-select-option').all();
+
+    for (const child of children) {
+      await expect(await getProperty(child, 'disabled')).toBeFalsy();
+    }
+    await optgroup.evaluate((element) => (element.disabled = true));
+    await waitForStencilLifecycle(page);
+
+    await expect(await getProperty(optgroup, 'disabled')).toBeTruthy();
+
+    for (const child of children) {
+      await expect(await getProperty(child, 'disabled')).toBeTruthy();
+    }
+  });
+
+  test('should hide all options inside hidden optgroup', async ({ page }) => {
+    await initMultiSelect(page, { options: { includeOptgroups: true } });
+
+    const inputElement = await getInput(page);
+    await inputElement.click();
+    await waitForStencilLifecycle(page);
+
+    const optgroup = page.locator('p-optgroup[label="b"]');
+    await expect(optgroup).toBeVisible();
+    const children = await optgroup.locator('p-multi-select-option').all();
+
+    for (const child of children) {
+      await expect(child).toBeVisible();
+    }
+    await optgroup.evaluate((element) => (element.hidden = true));
+    await waitForStencilLifecycle(page);
+
+    await expect(optgroup).not.toBeVisible();
+
+    for (const child of children) {
+      await expect(child).not.toBeVisible();
+    }
   });
 });

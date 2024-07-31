@@ -18,7 +18,8 @@ const cleanedComponentConfig = rawComponentConfig
   .replace(/,(\s+[}\]])/g, '$1'); // remove trailing commas
 const componentConfig = JSON.parse(cleanedComponentConfig);
 
-const getTopLevelParentTagName = (tagName: TagName): TagName => {
+const getTopLevelParentTagName = (tagNameOrNames: TagName | TagName[]): TagName => {
+  const tagName = Array.isArray(tagNameOrNames) ? tagNameOrNames[0] : tagNameOrNames;
   const meta = getComponentMeta(tagName);
   // TODO: simplify once componentMeta contains all requiredParent or even topLevelParentTagName
   const requiredParent =
@@ -36,8 +37,8 @@ const getPrettyComponentName = (tagName: TagName): string => {
 };
 
 const tagNamesWithProps = TAG_NAMES.filter((tagName) => {
-  const { props, isInternal } = getComponentMeta(tagName);
-  return props && !isInternal; // get rid of p-toast-item and p-select-wrapper-dropdown
+  const { propsMeta, isInternal } = getComponentMeta(tagName);
+  return propsMeta && !isInternal && tagName !== 'p-optgroup'; // get rid of p-toast-item and p-select-wrapper-dropdown
 });
 
 it.each<TagName>(tagNamesWithProps)('should contain props page for %s', (tagName) => {
@@ -54,9 +55,12 @@ it.each<TagName>(tagNamesWithProps)('should contain props page for %s', (tagName
   // TODO: simplify once componentMeta contains all requiredParent or even topLevelParentTagName
   const hasOrIsChildComponent =
     !!requiredParent ||
-    TAG_NAMES.some(
-      (tag) => getComponentMeta(tag).requiredParent === tagName || tagName.match(/-item|-option|-dropdown$/)
-    ) ||
+    TAG_NAMES.some((tag) => {
+      const parent = getComponentMeta(tag).requiredParent;
+      return Array.isArray(parent)
+        ? parent.includes(tagName)
+        : parent === tagName || tagName.match(/-item|-option|-dropdown$/);
+    }) ||
     TAG_NAMES.filter((tag) => tag !== tagName).some(
       (tag) => tag.match(/-item|-option|-dropdown$/) && tag.match(new RegExp(`^${tagName}-[a-z]+$`))
     );

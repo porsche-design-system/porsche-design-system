@@ -18,6 +18,9 @@ const propTypes: PropTypes<typeof SelectOption> = {
   disabled: AllowedTypes.boolean,
 };
 
+/**
+ * @slot {"name": "", "description": "Default slot for the option content." }
+ */
 @Component({
   tag: 'p-select-option',
   shadow: true,
@@ -32,7 +35,7 @@ export class SelectOption {
   @Prop() public disabled?: boolean = false;
 
   public connectedCallback(): void {
-    throwIfParentIsNotOfKind(this.host, 'p-select');
+    throwIfParentIsNotOfKind(this.host, ['p-select', 'p-optgroup']);
   }
 
   public render(): JSX.Element {

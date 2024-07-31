@@ -1,5 +1,5 @@
 import { hasCookiesEnabled } from './cookies-utils';
-import { vi, MockInstance } from 'vitest';
+import { vi, type MockInstance } from 'vitest';
 
 describe('hasCookiesEnabled()', () => {
   let cookieEnabledGetter: MockInstance;

@@ -14,6 +14,9 @@ export type FlyoutPosition = (typeof FLYOUT_POSITIONS)[number];
 export const FLYOUT_ARIA_ATTRIBUTES = ['aria-label'] as const;
 export type FlyoutAriaAttribute = (typeof FLYOUT_ARIA_ATTRIBUTES)[number];
 
+export type FlyoutMotionVisibleEndEventDetail = TransitionEvent;
+export type FlyoutMotionHiddenEndEventDetail = TransitionEvent;
+
 /**
  * Map of flyout instances and their corresponding resize observers to update the experimental css property --p-flyout-sticky-top.
  */
@@ -24,7 +27,7 @@ export const stickyTopCssVarResizeObserverMap = new Map<HTMLElement, ResizeObser
 export const stickyTopCssVarStyleSheetMap = new Map<HTMLElement, CSSStyleSheet>();
 
 // Called once in didLoad for setup
-export const addStickyTopCssVarStyleSheet = (host: HTMLElement) => {
+export const addStickyTopCssVarStyleSheet = (host: HTMLElement): void => {
   if (getHasConstructableStylesheetSupport()) {
     stickyTopCssVarStyleSheetMap.set(host, new CSSStyleSheet());
     // It's very important to create and push the stylesheet after `attachComponentCss()` has been called, otherwise styles might replace each other.
@@ -37,7 +40,7 @@ export const addStickyTopCssVarStyleSheet = (host: HTMLElement) => {
 };
 
 // Called whenever component updates
-export const handleUpdateStickyTopCssVar = (host: HTMLElement, hasHeader: boolean, header: HTMLElement) => {
+export const handleUpdateStickyTopCssVar = (host: HTMLElement, hasHeader: boolean, header: HTMLElement): void => {
   if (getHasConstructableStylesheetSupport()) {
     // Create resize observer if none exists but is needed (State changes from !hasHeader -> hasHeader or initially)
     if (hasHeader && !stickyTopCssVarResizeObserverMap.has(host)) {
@@ -53,7 +56,7 @@ export const handleUpdateStickyTopCssVar = (host: HTMLElement, hasHeader: boolea
   }
 };
 
-export const updateStickyTopCssVarStyleSheet = (host: HTMLElement, value: number) => {
+export const updateStickyTopCssVarStyleSheet = (host: HTMLElement, value: number): void => {
   // EXPERIMENTAL CSS variable
   stickyTopCssVarStyleSheetMap.get(host).replaceSync(`:host{--p-flyout-sticky-top:${value}px}`);
 };

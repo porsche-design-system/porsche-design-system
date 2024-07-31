@@ -1,8 +1,7 @@
 import type { ConsoleMessage, ElementHandle, Page } from 'playwright';
-import { expect } from '@playwright/test';
+import { expect, type Locator } from '@playwright/test';
 import { waitForComponentsReady } from './stencil';
 import type { TagName } from '@porsche-design-system/shared';
-import type { ComponentMeta } from '@porsche-design-system/component-meta';
 import { getComponentMeta } from '@porsche-design-system/component-meta';
 import { format } from 'prettier';
 import { getInitialStyles } from '@porsche-design-system/components-js/partials';
@@ -19,7 +18,7 @@ export type ClickableTests = {
 }[];
 
 // TODO: fix typing
-type Options = any & {
+export type Options = any & {
   enableLogging?: boolean;
   injectIntoHead?: string;
   withoutLoadCall?: boolean;
@@ -49,7 +48,7 @@ export const setContentWithDesignSystem = async (page: Page, content: string, op
       <head>
         <base href="http://localhost:8575"> <!-- NOTE: we need a base tag so that document.baseURI returns something else than "about:blank" -->
         <script type="text/javascript" src="http://localhost:8575/index.js"></script>
-        <link rel="stylesheet" href="http://localhost:3001/styles/font-face.min.css">
+        <link rel="stylesheet" href="http://localhost:3001/styles/font-face.css">
         <link rel="stylesheet" href="assets/styles.css">
         ${getInitialStyles()}
         ${options.injectIntoHead}
@@ -164,7 +163,7 @@ export const removeAttribute = async (element: ElementHandle<HTMLElement | SVGEl
   await element.evaluate((el, key) => el.removeAttribute(key), key);
 };
 
-export const getProperty = async <T>(element: ElementHandle<HTMLElement | SVGElement>, prop: string): Promise<T> => {
+export const getProperty = async <T>(element: ElementHandle<T> | Locator, prop: string): Promise<keyof T> => {
   return element.evaluate((el, prop: string) => el[prop], prop);
 };
 
@@ -350,18 +349,22 @@ export const goto = async (page: Page, url: string) => {
   await waitForComponentsReady(page);
 };
 
+// TODO: Replace with component provisioning function
 export const buildDefaultComponentMarkup = (tagName: TagName): string => {
   const {
     requiredChild,
     requiredParent,
-    requiredNamedSlots,
     propsMeta, // new format
+    slotsMeta,
   } = getComponentMeta(tagName);
 
-  const buildChildMarkup = (requiredChild: string, requiredNamedSlots: ComponentMeta['requiredNamedSlots']): string => {
+  const buildChildMarkup = (
+    requiredChild: string,
+    requiredNamedSlots: { slotName: string; tagName: TagName | keyof HTMLElementTagNameMap }[]
+  ): string => {
     if (requiredChild) {
       return requiredChild.startsWith('input') ? `<${requiredChild} />` : `<${requiredChild}></${requiredChild}>`;
-    } else if (requiredNamedSlots) {
+    } else if (requiredNamedSlots && requiredNamedSlots.length > 0) {
       return requiredNamedSlots
         .map(
           ({ slotName, tagName }) =>
@@ -373,10 +376,11 @@ export const buildDefaultComponentMarkup = (tagName: TagName): string => {
     }
   };
 
-  const buildParentMarkup = (markup: string, requiredParent: TagName): string => {
-    if (requiredParent) {
-      const markupWithParent = `<${requiredParent}>${markup}</${requiredParent}>`;
-      return buildParentMarkup(markupWithParent, getComponentMeta(requiredParent).requiredParent);
+  const buildParentMarkup = (markup: string, requiredParent: TagName | TagName[]): string => {
+    const firstRequiredParent = Array.isArray(requiredParent) ? requiredParent[0] : requiredParent;
+    if (firstRequiredParent) {
+      const markupWithParent = `<${firstRequiredParent}>${markup}</${firstRequiredParent}>`;
+      return buildParentMarkup(markupWithParent, getComponentMeta(firstRequiredParent).requiredParent);
     } else {
       return markup;
     }
@@ -393,6 +397,12 @@ export const buildDefaultComponentMarkup = (tagName: TagName): string => {
         .filter(Boolean)
         .join()
     : '';
+
+  const requiredNamedSlots =
+    slotsMeta &&
+    Object.entries(slotsMeta)
+      .filter(([, value]) => value.isRequired)
+      .map(([key, value]) => ({ slotName: key, tagName: value.allowedTagNames[0] }));
 
   const componentMarkup = `<${tagName}${attributes}>${buildChildMarkup(
     requiredChild,
@@ -425,11 +435,11 @@ export const expectToSkipFocusOnComponent = async (page: Page, component: Elemen
 };
 
 export const getScrollLeft = (element: ElementHandle<HTMLElement | SVGElement>): Promise<number> =>
-  getProperty<number>(element, 'scrollLeft');
+  getProperty(element, 'scrollLeft') as unknown as Promise<number>;
 export const getOffsetLeft = (element: ElementHandle<HTMLElement | SVGElement>): Promise<number> =>
-  getProperty<number>(element, 'offsetLeft');
+  getProperty(element, 'offsetLeft') as unknown as Promise<number>;
 export const getOffsetWidth = (element: ElementHandle<HTMLElement | SVGElement>): Promise<number> =>
-  getProperty<number>(element, 'offsetWidth');
+  getProperty(element, 'offsetWidth') as unknown as Promise<number>;
 
 /**
  * Get HTML attributes string from an object of properties.

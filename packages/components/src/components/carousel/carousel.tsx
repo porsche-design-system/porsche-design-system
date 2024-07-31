@@ -16,6 +16,7 @@ import {
   getAmountOfPages,
   getSlidesAndAddAttributes,
   getSplideBreakpoints,
+  getLangDirection,
   isInfinitePagination,
   renderPagination,
   slideNext,
@@ -48,7 +49,7 @@ import {
   warnIfDeprecatedPropValueIsUsed,
 } from '../../utils';
 import { carouselTransitionDuration, getComponentCss } from './carousel-styles';
-import { gridGap, motionEasingBase } from '@porsche-design-system/utilities-v2';
+import { gridGap, motionEasingBase } from '@porsche-design-system/styles';
 import { getSlottedAnchorStyles } from '../../styles';
 
 const propTypes: PropTypes<typeof Carousel> = {
@@ -79,6 +80,14 @@ const propTypes: PropTypes<typeof Carousel> = {
   skipLinkTarget: AllowedTypes.string,
 };
 
+/**
+ * @slot {"name": "heading", "description": "Renders a heading above the carousel." }
+ * @slot {"name": "description", "description": "Shows a footer section, flowing under the content area when scrollable." }
+ * @slot {"name": "controls", "description": "Shows a sidebar area on the **start** side (**left** in **LTR** mode / **right** in **RTL** mode). On mobile view it transforms into a flyout." }
+ * @slot {"name": "", "description": "Default slot for the carousel slides." }
+ *
+ * @controlled { "props": ["activeSlideIndex"], "event": "update", "isInternallyMutated": true }
+ */
 @Component({
   tag: 'p-carousel',
   shadow: true,
@@ -209,6 +218,7 @@ export class Carousel {
       breakpoints: getSplideBreakpoints(this.slidesPerPage as Exclude<BreakpointCustomizable<number> | 'auto', string>), // eslint-disable-line @typescript-eslint/no-redundant-type-constituents
       // https://splidejs.com/guides/i18n/#default-texts
       i18n: parseJSONAttribute(this.intl || {}), // can only be applied initially atm
+      direction: getLangDirection(this.host),
     });
 
     this.registerSplideHandlers(this.splide);
@@ -271,7 +281,8 @@ export class Carousel {
         CarouselAlignHeader,
         CarouselAlignHeaderDeprecated
       >,
-      this.theme
+      this.theme,
+      this.hasNavigation
     );
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);

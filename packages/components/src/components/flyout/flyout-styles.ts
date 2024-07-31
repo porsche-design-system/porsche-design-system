@@ -1,6 +1,6 @@
 import { getCss, type Theme } from '../../utils';
 import { addImportantToEachRule, colorSchemeStyles, hostHiddenStyles } from '../../styles';
-import { spacingFluidMedium, spacingFluidSmall } from '@porsche-design-system/utilities-v2';
+import { spacingFluidMedium, spacingFluidSmall } from '@porsche-design-system/styles';
 import { type FlyoutPosition } from './flyout-utils';
 import {
   dialogGridJssStyle,

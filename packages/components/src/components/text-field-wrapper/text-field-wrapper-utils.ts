@@ -1,6 +1,6 @@
 import type { IconName } from '../../types';
 import { hasCounter, hasDocument, throwException } from '../../utils';
-import { borderWidthBase } from '@porsche-design-system/utilities-v2';
+import { borderWidthBase } from '@porsche-design-system/styles';
 import { cssVariableInputPaddingStart, cssVariableInputPaddingEnd } from './text-field-wrapper-styles';
 import type { FormState } from '../../utils/form/form-state';
 
@@ -10,9 +10,10 @@ export type TextFieldWrapperUnitPosition = (typeof UNIT_POSITIONS)[number];
 export type TextFieldWrapperActionIcon = Extract<IconName, 'locate'>;
 export type TextFieldWrapperState = FormState;
 
-export const hasCounterAndIsTypeText = (el: HTMLInputElement): boolean => isType(el.type, 'text') && hasCounter(el);
-export const hasUnitAndIsTypeTextOrNumber = ({ type }: HTMLInputElement, unit: string): boolean => {
-  return !!unit && (isType(type, 'text') || isType(type, 'number'));
+export const hasCounterAndIsTypeText = (el: HTMLInputElement | undefined): boolean =>
+  el && isType(el.type, 'text') && hasCounter(el);
+export const hasUnitAndIsTypeTextOrNumber = (el: HTMLInputElement | undefined, unit: string): boolean => {
+  return el && !!unit && (isType(el.type, 'text') || isType(el.type, 'number'));
 };
 
 export const isType = (inputType: string, typeToValidate: string): boolean => inputType === typeToValidate;

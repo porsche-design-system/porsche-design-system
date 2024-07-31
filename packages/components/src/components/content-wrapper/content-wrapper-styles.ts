@@ -7,7 +7,7 @@ import {
   gridNarrowOffset,
   gridBasicOffset,
   gridExtendedOffset,
-} from '@porsche-design-system/utilities-v2';
+} from '@porsche-design-system/styles';
 
 const widthMap: { [key in Exclude<ContentWrapperWidth, 'full' | 'fluid'>]: { base: string; s: string; xxl: string } } =
   {

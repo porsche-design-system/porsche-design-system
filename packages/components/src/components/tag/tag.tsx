@@ -1,6 +1,6 @@
 import { Component, Element, h, type JSX, Prop } from '@stencil/core';
 import type { TagColor, TagColorDeprecated, TagIcon } from './tag-utils';
-import { getThemeForIcon, TAG_COLORS } from './tag-utils';
+import { TAG_COLORS } from './tag-utils';
 import {
   AllowedTypes,
   attachComponentCss,
@@ -18,8 +18,12 @@ const propTypes: PropTypes<typeof Tag> = {
   color: AllowedTypes.oneOf<TagColor>(TAG_COLORS),
   icon: AllowedTypes.string, // TODO: we could use AllowedTypes.oneOf<IconName>(Object.keys(ICONS_MANIFEST) as IconName[]) but then main chunk will increase
   iconSource: AllowedTypes.string,
+  compact: AllowedTypes.boolean,
 };
 
+/**
+ * @slot {"name": "", "description": "Default slot for the tag content." }
+ */
 @Component({
   tag: 'p-tag',
   shadow: true,
@@ -39,8 +43,12 @@ export class Tag {
   /** A URL path to a custom icon. */
   @Prop() public iconSource?: string;
 
+  /** Displays as compact version. */
+  @Prop() public compact?: boolean = false;
+
   public render(): JSX.Element {
     validateProps(this, propTypes);
+    const hasIcon = !!(this.icon || this.iconSource);
     const deprecationMap: Record<TagColorDeprecated, Exclude<TagColor, TagColorDeprecated>> = {
       'background-default': 'background-base',
       'neutral-contrast-high': 'primary',
@@ -54,28 +62,27 @@ export class Tag {
       this.host,
       getComponentCss,
       (deprecationMap[this.color] || this.color) as Exclude<TagColor, TagColorDeprecated>,
+      this.compact,
       !!getDirectChildHTMLElement(this.host, 'a,button'),
+      hasIcon,
       this.theme
     );
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
     return (
       <span>
-        {(this.icon || this.iconSource) && (
+        {hasIcon && (
           <PrefixedTagNames.pIcon
             class="icon"
             name={this.icon}
             source={this.iconSource}
             color="primary"
             size="x-small"
-            theme={getThemeForIcon(this.color, this.theme)}
+            theme={this.theme}
             aria-hidden="true"
           />
         )}
-        {/* to trick leading inline-block / inline-flex space character */}
-        <div class="label">
-          <slot />
-        </div>
+        <slot />
       </span>
     );
   }

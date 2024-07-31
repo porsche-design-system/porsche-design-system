@@ -17,7 +17,8 @@ import {
   fontWeightSemiBold,
   spacingStaticSmall,
   textSmallStyle,
-} from '@porsche-design-system/utilities-v2';
+  fontSizeTextXSmall,
+} from '@porsche-design-system/styles';
 
 import { getNoResultsOptionJssStyle, OPTION_HEIGHT } from '../../../styles/option-styles';
 import { getThemedFormStateColors } from '../../../styles/form-state-color-styles';
@@ -308,18 +309,18 @@ export const getListStyles = (direction: DropdownDirectionInternal, theme: Theme
           }),
         },
       }),
+      '&--highlighted': {
+        background: contrastLowColor,
+        ...prefersColorSchemeDarkMediaQuery(theme, {
+          background: contrastLowColorDark,
+        }),
+      },
       '&--selected': {
         cursor: 'default',
         pointerEvents: 'none',
         background: backgroundSurfaceColor,
         ...prefersColorSchemeDarkMediaQuery(theme, {
           background: backgroundSurfaceColorDark,
-        }),
-      },
-      '&--highlighted': {
-        background: contrastLowColor,
-        ...prefersColorSchemeDarkMediaQuery(theme, {
-          background: contrastLowColorDark,
         }),
       },
       '&--highlighted, &--selected': {
@@ -338,21 +339,28 @@ export const getListStyles = (direction: DropdownDirectionInternal, theme: Theme
       '&--hidden': {
         display: 'none',
       },
+      '&--indent': {
+        paddingLeft: '28px',
+      },
     },
     optgroup: {
-      color: contrastMediumColor,
+      '&--hidden': {
+        display: 'none',
+      },
+      '&--disabled': {
+        color: disabledColor,
+        ...prefersColorSchemeDarkMediaQuery(theme, {
+          color: disabledColorDark,
+        }),
+      },
+      color: primaryColor,
       display: 'block',
-      padding: '3px 14px',
+      padding: `${spacingStaticSmall} 12px`,
+      fontSize: fontSizeTextXSmall,
       fontWeight: fontWeightSemiBold,
       ...prefersColorSchemeDarkMediaQuery(theme, {
-        color: contrastMediumColorDark,
+        color: primaryColorDark,
       }),
-      '&:not(:first-child)': {
-        marginTop: spacingStaticSmall,
-      },
-      '&~$option': {
-        paddingLeft: '24px',
-      },
     },
   };
 };

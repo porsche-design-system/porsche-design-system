@@ -3,9 +3,9 @@ import * as path from 'path';
 import * as crypto from 'crypto';
 import { globbySync } from 'globby';
 import { kebabCase } from 'change-case';
-import { optimize, Config } from 'svgo';
-import { CDN_BASE_PATH_MODEL_SIGNATURES } from '../../../../../cdn.config';
+import { optimize, type Config } from 'svgo';
 import { config } from '../svgo.config';
+import { CDN_BASE_PATH_MODEL_SIGNATURES } from '../../../../../cdn.config';
 
 type Manifest = {
   [name: string]: {
@@ -15,7 +15,7 @@ type Manifest = {
   };
 };
 
-const toHash = (str: string): string => crypto.createHash('md5').update(str, 'utf8').digest('hex');
+const toHash = (str: string): string => crypto.createHash('md5').update(str, 'utf8').digest('hex').substring(0, 7);
 
 const getSVGDimensions = (svg: string): { width: number; height: number } => {
   const [, width, height] = /<svg.+viewBox=["']\d+\s+\d+\s+(\d+)\s+(\d+)["']/.exec(svg) || [];
@@ -37,7 +37,7 @@ const createManifestAndCopyAssets = (files: string[], config: Config): void => {
     const svgRawData = fs.readFileSync(svgRawPath, 'utf8');
     const svgOptimizedData = optimize(svgRawData, config).data;
     const svgOptimizedHash = toHash(svgOptimizedData);
-    const svgOptimizedFilename = `${kebabCase(svgRawName)}.min.${svgOptimizedHash}.svg`;
+    const svgOptimizedFilename = `${kebabCase(svgRawName)}.${svgOptimizedHash}.svg`;
     const svgOptimizedPath = path.normalize(`./dist/model-signatures/${svgOptimizedFilename}`);
     const { width, height } = getSVGDimensions(svgOptimizedData);
 

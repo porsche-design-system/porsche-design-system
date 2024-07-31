@@ -19,7 +19,7 @@ import {
   frostedGlassStyle,
   spacingStaticSmall,
   textSmallStyle,
-} from '@porsche-design-system/utilities-v2';
+} from '@porsche-design-system/styles';
 
 const { primaryColor: darkThemePrimaryColor } = getThemedColors('dark');
 const { primaryColor: lightThemePrimaryColor } = getThemedColors('light');

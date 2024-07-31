@@ -21,7 +21,7 @@ import {
   spacingStaticSmall,
   spacingStaticXSmall,
   textSmallStyle,
-} from '@porsche-design-system/utilities-v2';
+} from '@porsche-design-system/styles';
 
 const mediaQueryMinS = getMediaQueryMin('s');
 const mediaQueryMaxS = getMediaQueryMax('s');

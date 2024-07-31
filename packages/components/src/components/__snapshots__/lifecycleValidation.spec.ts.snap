@@ -452,6 +452,13 @@ exports[`should call validateProps() with correct parameters via render for p-mu
 }
 `;
 
+exports[`should call validateProps() with correct parameters via render for p-optgroup: propTypes with ValidatorFunctions 1`] = `
+{
+  "disabled": "boolean",
+  "label": "string",
+}
+`;
+
 exports[`should call validateProps() with correct parameters via render for p-pagination: propTypes with ValidatorFunctions 1`] = `
 {
   "activePage": "number",
@@ -661,6 +668,7 @@ exports[`should call validateProps() with correct parameters via render for p-ta
 exports[`should call validateProps() with correct parameters via render for p-tag: propTypes with ValidatorFunctions 1`] = `
 {
   "color": "oneOf",
+  "compact": "boolean",
   "icon": "string",
   "iconSource": "string",
   "theme": "oneOf",

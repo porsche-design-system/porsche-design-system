@@ -17,7 +17,7 @@ import {
   fontLineHeight,
   frostedGlassStyle,
   textSmallStyle,
-} from '@porsche-design-system/utilities-v2';
+} from '@porsche-design-system/styles';
 
 const gradientColorLight: Record<ScrollerGradientColor, string> = {
   'background-base': '255,255,255',

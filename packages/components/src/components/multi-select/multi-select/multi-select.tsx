@@ -1,4 +1,4 @@
-import type { MultiSelectDropdownDirection, MultiSelectState } from './multi-select-utils';
+import type { MultiSelectDropdownDirection, MultiSelectOptgroup, MultiSelectState } from './multi-select-utils';
 import {
   getDropdownDirection,
   getHighlightedOption,
@@ -17,7 +17,7 @@ import {
   setFirstOptionHighlighted,
   setLastOptionHighlighted,
   setSelectedOptions,
-  syncMultiSelectOptionProps,
+  syncMultiSelectChildrenProps,
   syncNativeMultiSelect,
   updateHighlightedOption,
   updateNativeOptions,
@@ -41,6 +41,7 @@ import {
   handleButtonEvent,
   hasPropValueChanged,
   isClickOutside,
+  isElementOfKind,
   SELECT_DROPDOWN_DIRECTIONS,
   type SelectDropdownDirectionInternal,
   THEMES,
@@ -79,6 +80,14 @@ const propTypes: PropTypes<typeof MultiSelect> = {
   theme: AllowedTypes.oneOf<Theme>(THEMES),
 };
 
+/**
+ * @slot {"name": "label", "description": "Shows a label. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed." }
+ * @slot {"name": "description", "description": "Shows a description. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed." }
+ * @slot {"name": "", "description": "Default slot for the p-multi-select-option tags." }
+ * @slot {"name": "message", "description": "Shows a state message. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed." }
+ *
+ * @controlled { "props": ["value"], "event": "update", "isInternallyMutated": true }
+ */
 @Component({
   tag: 'p-multi-select',
   shadow: true,
@@ -128,6 +137,7 @@ export class MultiSelect {
 
   private nativeSelect: HTMLSelectElement;
   private multiSelectOptions: MultiSelectOption[] = [];
+  private multiSelectOptgroups: MultiSelectOptgroup[] = [];
   private inputContainer: HTMLDivElement;
   private inputElement: HTMLInputElement;
   private listElement: HTMLDivElement;
@@ -238,7 +248,7 @@ export class MultiSelect {
       this.isNativePopoverCase,
       this.theme
     );
-    syncMultiSelectOptionProps(this.multiSelectOptions, this.theme);
+    syncMultiSelectChildrenProps([...this.multiSelectOptions, ...this.multiSelectOptgroups], this.theme);
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
     const optionsSelectedId = 'options-selected';
@@ -351,17 +361,37 @@ export class MultiSelect {
   };
 
   private updateOptions = (): void => {
-    this.multiSelectOptions = Array.from(this.host.children).filter(
-      (el) => el.tagName !== 'SELECT' && el.slot !== 'label' && el.slot !== 'description' && el.slot !== 'message'
-    ) as HTMLPMultiSelectOptionElement[];
-    this.multiSelectOptions.forEach((child) => throwIfElementIsNotOfKind(this.host, child, 'p-multi-select-option'));
+    this.multiSelectOptions = [];
+    this.multiSelectOptgroups = [];
+
+    Array.from(this.host.children)
+      .filter(
+        (el) => el.tagName !== 'SELECT' && el.slot !== 'label' && el.slot !== 'description' && el.slot !== 'message'
+      )
+      .forEach((child: HTMLElement) => {
+        throwIfElementIsNotOfKind(this.host, child, ['p-multi-select-option', 'p-optgroup']);
+
+        if (isElementOfKind(child, 'p-multi-select-option')) {
+          this.multiSelectOptions.push(child as MultiSelectOption);
+        } else if (isElementOfKind(child, 'p-optgroup')) {
+          this.multiSelectOptgroups.push(child as MultiSelectOptgroup);
+          Array.from(child.children).forEach((optGroupChild: HTMLElement) => {
+            throwIfElementIsNotOfKind(child, optGroupChild, 'p-multi-select-option');
+            this.multiSelectOptions.push(optGroupChild as MultiSelectOption);
+          });
+        }
+      });
   };
 
   private onInputChange = (e: InputEvent & { target: HTMLInputElement }): void => {
     if (e.target.value.startsWith(' ')) {
       this.resetFilter();
     } else {
-      updateOptionsFilterState((e.target as HTMLInputElement).value, this.multiSelectOptions);
+      updateOptionsFilterState(
+        (e.target as HTMLInputElement).value,
+        this.multiSelectOptions,
+        this.multiSelectOptgroups
+      );
       this.hasFilterResults = hasFilterOptionResults(this.multiSelectOptions);
     }
     // in case input is focused via tab instead of click
@@ -392,7 +422,7 @@ export class MultiSelect {
 
   private resetFilter = (): void => {
     this.inputElement.value = '';
-    resetFilteredOptions(this.multiSelectOptions);
+    resetFilteredOptions(this.multiSelectOptions, this.multiSelectOptgroups);
   };
 
   private onInputKeyDown = (e: KeyboardEvent): void => {

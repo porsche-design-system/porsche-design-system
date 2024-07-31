@@ -14,6 +14,75 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ### [Unreleased]
 
+### [3.17.0-rc.0] - 2024-07-29
+
+#### Added
+
+- `Link Tile`, `Link Tile Model Signature`, `Button Tile`:
+  - Named slot `header` ([#3419](https://github.com/porsche-design-system/porsche-design-system/pull/3419))
+- `Link Tile`, `Button Tile`: Prop `size` extended by value `large`
+  ([#3419](https://github.com/porsche-design-system/porsche-design-system/pull/3419))
+- `Tag`:
+  - Prop `compact` ([#3411](https://github.com/porsche-design-system/porsche-design-system/pull/3411))
+  - Prop `color` extended by value `background-frosted`
+    ([#3411](https://github.com/porsche-design-system/porsche-design-system/pull/3411))
+- Styles: `theme{Light|Dark}BackgroundFrosted` and `$pds-theme-{light|dark}-background-frosted` color
+  ([#3409](https://github.com/porsche-design-system/porsche-design-system/pull/3409))
+- `Optgroup`: Usable in combination with `Select` and `Multi Select`
+  ([#3410](https://github.com/porsche-design-system/porsche-design-system/pull/3410))
+- `Flyout`, `Modal`: Add custom events `motionVisibleEnd` and `motionHiddenEnd` to notify when opening and closing
+  transitions are complete ([#3418](https://github.com/porsche-design-system/porsche-design-system/pull/3418))
+
+#### Changed
+
+- `Link Tile`, `Link Tile Model Signature`, `Button Tile`:
+  - Layout behaviour is able to break out of its aspect ratio in case content overflows to be a11y compliant and/or to
+    improve visual alignment in CSS Grid context
+    ([#3419](https://github.com/porsche-design-system/porsche-design-system/pull/3419))
+  - Values `1:1 | 4:3 | 3:4 | 16:9 | 9:16` of prop `aspect-ratio` are deprecated and mapped to new values
+    `1/1 | 4/3 | 3/4 | 16/9 | 9/16` to be aligned with CSS spec
+    ([#3419](https://github.com/porsche-design-system/porsche-design-system/pull/3419))
+
+```diff
+- <p-link-tile aspect-ratio="1:1 | 4:3 | 3:4 | 16:9 | 9:16"></p-link-tile>
++ <p-link-tile aspect-ratio="1/1 | 4/3 | 3/4 | 16/9 | 9/16"></p-link-tile>
+
+- <p-button-tile aspect-ratio="1:1 | 4:3 | 3:4 | 16:9 | 9:16"></p-button-tile>
++ <p-button-tile aspect-ratio="1/1 | 4/3 | 3/4 | 16/9 | 9/16"></p-button-tile>
+
+- <p-link-tile-model-signature aspect-ratio="1:1 | 4:3 | 3:4 | 16:9 | 9:16"></p-link-tile-model-signature>
++ <p-link-tile-model-signature aspect-ratio="1/1 | 4/3 | 3/4 | 16/9 | 9/16"></p-link-tile-model-signature>
+```
+
+- `Link Tile`, `Button Tile`: Value `default` of prop `size` is deprecated and mapped to new value `medium` to be in
+  sync with typography sizing definition
+  ([#3419](https://github.com/porsche-design-system/porsche-design-system/pull/3419))
+
+```diff
+- <p-link-tile size="default"></p-link-tile>
++ <p-link-tile size="medium"></p-link-tile>
+
+- <p-button-tile size="default"></p-button-tile>
++ <p-button-tile size="medium"></p-button-tile>
+```
+
+- `Icon`: All icons are up-to-date with the One UI look
+- Shorten asset filenames
+- `Carousel`: Slides and `controls` slot are centered if `alignHeader` prop is set to `center` and amount of slides is
+  less than `slidesPerPage` ([#3372](https://github.com/porsche-design-system/porsche-design-system/pull/3372))
+
+#### Fixed
+
+- `Link Pure`: Broken with `alignLabel="start"`, hidden label & nested anchor
+  ([#3379](https://github.com/porsche-design-system/porsche-design-system/pull/3379))
+- `PTextFieldWrapper`, `PTextareaWrapper`: Conditionally rendered component throws
+  `TypeError: Cannot read properties of undefined (reading 'type')`
+  ([#3383](https://github.com/porsche-design-system/porsche-design-system/pull/3383))
+- `LinkTile`: Broken word-break & hyphens Safari
+  ([#3397](https://github.com/porsche-design-system/porsche-design-system/pull/3397))
+- `Select-Wrapper`: `optgroup` styling and behavior
+  ([#3410](https://github.com/porsche-design-system/porsche-design-system/pull/3410))
+
 ### [3.16.0] - 2024-07-02
 
 ### [3.16.0-rc.2] - 2024-07-02
@@ -26,7 +95,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 #### Changed
 
-- `Flyout Navigation`, `Flyout Navigation Item`: renamed (experimental) component to `Flyout Multilevel` and
+- `Flyout Navigation`, `Flyout Navigation Item`: Renamed (experimental) component to `Flyout Multilevel` and
   `Flyout Multilevel Item` ([#3351](https://github.com/porsche-design-system/porsche-design-system/pull/3351))
 - `Toast`: Renders fully on `#top-layer`, stacking behaviour has changed and follows W3C standards now, see
   https://developer.mozilla.org/en-US/docs/Glossary/Top_layer and

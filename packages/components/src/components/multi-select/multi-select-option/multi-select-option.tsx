@@ -16,6 +16,9 @@ const propTypes: PropTypes<typeof MultiSelectOption> = {
   disabled: AllowedTypes.boolean,
 };
 
+/**
+ * @slot {"name": "", "description": "Default slot for the option text." }
+ */
 @Component({
   tag: 'p-multi-select-option',
   shadow: true,
@@ -30,7 +33,7 @@ export class MultiSelectOption {
   @Prop() public disabled?: boolean = false;
 
   public connectedCallback(): void {
-    throwIfParentIsNotOfKind(this.host, 'p-multi-select');
+    throwIfParentIsNotOfKind(this.host, ['p-multi-select', 'p-optgroup']);
   }
 
   public render(): JSX.Element {

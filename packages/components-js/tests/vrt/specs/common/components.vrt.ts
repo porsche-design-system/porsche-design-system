@@ -2,11 +2,10 @@ import { expect, type Page, test } from '@playwright/test';
 import { setupScenario } from '../../helpers';
 import { TAG_NAMES, type TagName } from '@porsche-design-system/shared';
 import { getComponentMeta } from '@porsche-design-system/component-meta';
-import { pdfToPng } from 'pdf-to-png-converter';
 import { schemes, themes, viewportWidthM, viewportWidths } from '@porsche-design-system/shared/testing/playwright.vrt';
 
 const components = (TAG_NAMES as unknown as TagName[])
-  .filter((tagName) => tagName !== 'p-canvas') // TODO: remove filter as soon as component becomes stable
+  .filter((tagName) => !['p-canvas', 'p-optgroup'].includes(tagName)) // TODO: remove filter as soon as component becomes stable
   // Filter out non-chunked components
   .filter((tagName) => {
     const { isChunked } = getComponentMeta(tagName);
@@ -119,6 +118,7 @@ components.forEach((component) => {
       });
 
       // print view
+      /*
       themes.forEach((theme) => {
         test(`should have no visual regression for printed pdf with theme ${theme}`, async ({ page }) => {
           const flakyPrintComponents = [
@@ -161,10 +161,14 @@ components.forEach((component) => {
           // https://mozilla.github.io/pdf.js/web/viewer.html?file=${baseURL}/assets/pdf/${component}.pdf
           // so for now we convert the pdf to png and compare it via toMatchSnapshot()
 
+          // TODO: don't use `pdfToPng` provided by `pdf-to-png-converter` since it relies on `canvas` which can cause
+          //  issues executing jsdom tests in parallel. In addition, `pdf-to-png-converter` is not a very commonly used
+          //  npm package. Maybe we should re-think our testing strategy for print view.
           const [img] = await pdfToPng(pdfBuffer);
           expect(img.content).toMatchSnapshot(`${component}-print-theme-${theme}.png`);
         });
       });
+      */
     });
   }
 });

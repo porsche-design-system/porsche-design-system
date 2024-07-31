@@ -94,6 +94,7 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   height: calc(6px + 2.125ex);
 }
 .label {
+  z-index: 1;
   white-space: nowrap;
   text-indent: -999999px;
   overflow: hidden;
@@ -120,7 +121,6 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   .label {
     white-space: inherit;
     text-indent: 0;
-    z-index: 1;
     overflow: visible;
     order: 0;
   }
@@ -159,7 +159,6 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   .label {
     white-space: inherit;
     text-indent: 0;
-    z-index: 1;
     overflow: visible;
     order: 0;
   }
@@ -198,7 +197,6 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   .label {
     white-space: inherit;
     text-indent: 0;
-    z-index: 1;
     overflow: visible;
     order: 0;
   }
@@ -271,6 +269,7 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   height: calc(6px + 2.125ex);
 }
 .label {
+  z-index: 1;
   white-space: nowrap;
   text-indent: -999999px;
   overflow: hidden;
@@ -294,7 +293,6 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   .label {
     white-space: inherit;
     text-indent: 0;
-    z-index: 1;
     overflow: visible;
   }
 }
@@ -325,7 +323,6 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   .label {
     white-space: inherit;
     text-indent: 0;
-    z-index: 1;
     overflow: visible;
   }
 }
@@ -356,7 +353,6 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   .label {
     white-space: inherit;
     text-indent: 0;
-    z-index: 1;
     overflow: visible;
   }
 }
@@ -428,9 +424,9 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   height: calc(6px + 2.125ex);
 }
 .label {
+  z-index: 1;
   white-space: inherit;
   text-indent: 0;
-  z-index: 1;
   overflow: visible;
   order: 0;
 }
@@ -508,9 +504,9 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   height: calc(6px + 2.125ex);
 }
 .label {
+  z-index: 1;
   white-space: inherit;
   text-indent: 0;
-  z-index: 1;
   overflow: visible;
   order: 0;
 }
@@ -605,9 +601,9 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   height: calc(6px + 2.125ex);
 }
 .label {
+  z-index: 1;
   white-space: inherit;
   text-indent: 0;
-  z-index: 1;
   overflow: visible;
   order: 0;
 }
@@ -685,9 +681,9 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   height: calc(6px + 2.125ex);
 }
 .label {
+  z-index: 1;
   white-space: inherit;
   text-indent: 0;
-  z-index: 1;
   overflow: visible;
   order: 0;
 }
@@ -765,9 +761,9 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   height: calc(6px + 2.125ex);
 }
 .label {
+  z-index: 1;
   white-space: inherit;
   text-indent: 0;
-  z-index: 1;
   overflow: visible;
   order: -1;
 }
@@ -845,9 +841,9 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   height: calc(6px + 2.125ex);
 }
 .label {
+  z-index: 1;
   white-space: inherit;
   text-indent: 0;
-  z-index: 1;
   overflow: visible;
   order: 0;
 }
@@ -925,6 +921,7 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   height: calc(6px + 2.125ex);
 }
 .label {
+  z-index: 1;
   white-space: nowrap;
   text-indent: -999999px;
   overflow: hidden;
@@ -1004,6 +1001,7 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   height: calc(6px + 2.125ex);
 }
 .label {
+  z-index: 1;
   white-space: nowrap;
   text-indent: -999999px;
   overflow: hidden;
@@ -1100,6 +1098,7 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   height: calc(6px + 2.125ex);
 }
 .label {
+  z-index: 1;
   white-space: nowrap;
   text-indent: -999999px;
   overflow: hidden;
@@ -1181,9 +1180,9 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   height: calc(6px + 2.125ex);
 }
 .label {
+  z-index: 1;
   white-space: inherit;
   text-indent: 0;
-  z-index: 1;
   overflow: visible;
   order: -1;
 }
@@ -1263,9 +1262,9 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
   height: calc(6px + 2.125ex);
 }
 .label {
+  z-index: 1;
   white-space: inherit;
   text-indent: 0;
-  z-index: 1;
   overflow: visible;
   order: -1;
 }

@@ -1,6 +1,6 @@
 import { getCss } from '../../../utils';
 import { addImportantToEachRule, hostHiddenStyles } from '../../../styles';
-import { spacingFluidSmall } from '@porsche-design-system/utilities-v2';
+import { spacingFluidSmall } from '@porsche-design-system/styles';
 
 export const getComponentCss = (multiline: boolean): string => {
   return getCss({

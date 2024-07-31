@@ -120,7 +120,7 @@ describe('validateGetFontFaceStylesUsage()', () => {
       validateGetFontFaceStylesUsage();
 
       expect(spy).toHaveBeenCalledWith(
-        'link[href="http://localhost:3001/styles/font-face.min.css"],style[data-pds-font-face-styles=""]'
+        'link[href="http://localhost:3001/styles/font-face.css"],style[data-pds-font-face-styles=""]'
       );
     }
   );
@@ -157,7 +157,7 @@ describe('validateGetFontLinksUsage()', () => {
 
     validateGetFontLinksUsage();
 
-    expect(spy).toHaveBeenCalledWith('link[rel=preload][as=font][href*=porsche-next-w-la-regular]');
+    expect(spy).toHaveBeenCalledWith('link[rel=preload][as=font][href*=porsche-next]');
   });
 
   it('should call logPartialValidationWarning() with correct parameters', () => {

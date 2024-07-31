@@ -12,7 +12,7 @@ import {
   hoverMediaQuery,
   prefersColorSchemeDarkMediaQuery,
 } from '../../styles';
-import { borderWidthBase, spacingStaticSmall, textSmallStyle } from '@porsche-design-system/utilities-v2';
+import { borderWidthBase, spacingStaticSmall, textSmallStyle } from '@porsche-design-system/styles';
 import { getFunctionalComponentLoadingMessageStyles } from '../common/loading-message/loading-message-styles';
 
 const getColors = (

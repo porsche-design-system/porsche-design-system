@@ -11,7 +11,7 @@ import {
   validateProps,
   warnIfDeprecatedComponentIsUsed,
 } from '../../utils';
-import { breakpoint } from '@porsche-design-system/utilities-v2';
+import { breakpoint } from '@porsche-design-system/styles';
 import { getComponentCss } from './marque-styles';
 import type { MarqueSize } from './marque-size';
 import { MARQUE_SIZES } from './marque-size';

@@ -2,7 +2,7 @@ import * as path from 'path';
 import * as fs from 'fs';
 import { globbySync } from 'globby';
 import { kebabCase, pascalCase } from 'latest-change-case';
-import { breakpoint } from '@porsche-design-system/utilities-v2';
+import { breakpoint } from '@porsche-design-system/styles';
 import type { TagName } from '@porsche-design-system/shared';
 import { INTERNAL_TAG_NAMES } from '@porsche-design-system/shared';
 import { getComponentMeta } from '@porsche-design-system/component-meta';
@@ -322,13 +322,15 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
           .replace(/\n.*\/\/ eslint-disable-next-line @typescript-eslint\/member-ordering/g, '')
           .replace(/(inert=\{this\.props\.open \? null : )true(})/, "$1''$2") // transform true to empty string ''
           .replace(/onScroll=\{hasFooter && this\.props\.onScroll}/, '')
-          .replace(/if\s\(.*[^}]*}/, ''); // Remove deprecation warning check
+          .replace(/if\s\(.*[^}]*}/, '') // Remove deprecation warning check
+          .replace(/onTransitionEnd={[^}]*}\s*/, '');
       } else if (tagName === 'p-flyout') {
         newFileContent = newFileContent
           .replace(/this\.props\.(hasHeader|hasFooter|hasSubFooter)/g, '$1')
           .replace(/(?:hasHeader|hasFooter|hasSubFooter) =/g, 'const $&')
           .replace(/\n.*\/\/ eslint-disable-next-line @typescript-eslint\/member-ordering/g, '')
-          .replace(/(inert=\{this\.props\.open \? null : )true(})/, "$1''$2"); // transform true to empty string ''
+          .replace(/(inert=\{this\.props\.open \? null : )true(})/, "$1''$2") // transform true to empty string ''
+          .replace(/onTransitionEnd={[^}]*}\s*/, '');
       } else if (tagName === 'p-radio-button-wrapper') {
         newFileContent = newFileContent.replace(
           /&& !(typeof otherChildren\[0] === 'object' && 'props' in otherChildren\[0]) && (otherChildren\[0]\?\.props\.checked)/g,
@@ -489,6 +491,10 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
           // remove any jsx since options are not visible in closed multi-select
           .replace(/<>\s*([\s\S]*)\s*<\/>/, '<></>')
           .replace(/this\.theme/, 'this.props.theme');
+      } else if (tagName === 'p-optgroup') {
+        newFileContent = newFileContent
+          // remove any jsx since optgroups are not visible in closed multi-select | select
+          .replace(/<>\s*([\s\S]*)\s*<\/>/, '<></>');
       } else if (tagName === 'p-select') {
         newFileContent = newFileContent
           // replace wrapper className

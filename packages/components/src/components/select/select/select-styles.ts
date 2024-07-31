@@ -25,7 +25,7 @@ import {
   spacingStaticSmall,
   spacingStaticXSmall,
   textSmallStyle,
-} from '@porsche-design-system/utilities-v2';
+} from '@porsche-design-system/styles';
 import type { JssStyle } from 'jss';
 import type { FormState } from '../../../utils/form/form-state';
 import { getThemedFormStateColors } from '../../../styles/form-state-color-styles';
@@ -33,7 +33,7 @@ import { getPlaceholderJssStyle } from '../../../styles/placeholder';
 import { getFunctionalComponentLabelStyles } from '../../common/label/label-styles';
 import { getFunctionalComponentStateMessageStyles } from '../../common/state-message/state-message-styles';
 import { getPopoverResetJssStyle } from '../../../styles/popover-reset-styles';
-import { MULTI_SELECT_OPTION_HEIGHT } from '../../../styles/option-styles';
+import { OPTION_HEIGHT } from '../../../styles/option-styles';
 import { INTERNAL_SELECT_SLOT } from './select-utils';
 
 export const getComponentCss = (
@@ -225,7 +225,7 @@ const getListStyles = (isOpen: boolean, direction: SelectDropdownDirectionIntern
     right: 0,
     [isDirectionDown ? 'top' : 'bottom']: '100%',
     boxSizing: 'border-box',
-    maxHeight: `${8.5 * (MULTI_SELECT_OPTION_HEIGHT + 8) + 6 + 2}px`, // 8.5 options * option height + 8px gap + additional spacing (6px = padding, 2px = border)
+    maxHeight: `${8.5 * (OPTION_HEIGHT + 8) + 6 + 2}px`, // 8.5 options * option height + 8px gap + additional spacing (6px = padding, 2px = border)
     overflowY: 'auto',
     WebkitOverflowScrolling: 'touch',
     background: backgroundColor,

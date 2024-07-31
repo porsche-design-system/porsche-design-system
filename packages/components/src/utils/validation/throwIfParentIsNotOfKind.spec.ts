@@ -6,6 +6,7 @@ it('should throw error if parent tag does not match', () => {
   parent.appendChild(child);
 
   expect(() => throwIfParentIsNotOfKind(child, 'p-grid')).toThrow();
+  expect(() => throwIfParentIsNotOfKind(child, ['p-grid', 'p-accordion'])).toThrow();
 });
 
 it('should not throw error if parent tag matches', () => {
@@ -14,6 +15,7 @@ it('should not throw error if parent tag matches', () => {
   parent.appendChild(child);
 
   expect(() => throwIfParentIsNotOfKind(child, 'p-grid')).not.toThrow();
+  expect(() => throwIfParentIsNotOfKind(child, ['p-grid', 'p-accordion'])).not.toThrow();
 });
 
 it('should not throw error if prefixed parent tag matches', () => {
@@ -22,4 +24,5 @@ it('should not throw error if prefixed parent tag matches', () => {
   parent.appendChild(child);
 
   expect(() => throwIfParentIsNotOfKind(child, 'p-grid')).not.toThrow();
+  expect(() => throwIfParentIsNotOfKind(child, ['p-grid', 'p-accordion'])).not.toThrow();
 });

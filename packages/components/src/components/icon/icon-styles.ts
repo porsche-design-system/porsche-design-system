@@ -9,7 +9,7 @@ import {
   fontSizeTextXLarge,
   fontSizeTextXSmall,
   fontSizeTextXXSmall,
-} from '@porsche-design-system/utilities-v2';
+} from '@porsche-design-system/styles';
 import {
   addImportantToEachRule,
   hostHiddenStyles,

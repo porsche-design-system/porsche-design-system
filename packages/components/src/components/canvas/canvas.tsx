@@ -3,7 +3,7 @@ import { AllowedTypes, attachComponentCss, getPrefixedTagNames, validateProps } 
 import { Component, Element, EventEmitter, h, type JSX, Prop, Event, State, Host, Fragment } from '@stencil/core';
 import { getComponentCss } from './canvas-styles';
 import { CANVAS_SIDEBAR_WIDTHS, type CanvasSidebarEndWidth, type CanvasSidebarStartWidth } from './canvas-utils';
-import { breakpointM } from '@porsche-design-system/utilities-v2';
+import { breakpointM } from '@porsche-design-system/styles';
 
 const propTypes: PropTypes<typeof Canvas> = {
   sidebarStartOpen: AllowedTypes.boolean,
@@ -12,7 +12,18 @@ const propTypes: PropTypes<typeof Canvas> = {
   sidebarEndWidth: AllowedTypes.oneOf<CanvasSidebarEndWidth>(CANVAS_SIDEBAR_WIDTHS),
 };
 
-/** @experimental */
+/**
+ * @slot {"name": "header", "description": "Renders a **sticky** header section above the content area." }
+ * @slot {"name": "", "description": "Default slot for the main content" }
+ * @slot {"name": "footer", "description": "Shows a footer section, flowing under the content area when scrollable." }
+ * @slot {"name": "sidebar-start", "description": "Shows a sidebar area on the **start** side (**left** in **LTR** mode / **right** in **RTL** mode). On mobile view it transforms into a flyout." }
+ * @slot {"name": "sidebar-end", "description": "Shows a sidebar area on the **end** side (**right** in **LTR** mode / **left** in **RTL** mode). On mobile view it transforms into a flyout." }
+ *
+ * @controlled {"props": ["sidebarStartOpen"], "event": "dismissSidebarStart"}
+ * @controlled {"props": ["sidebarEndOpen"], "event": "dismissSidebarEnd"}
+ *
+ * @experimental
+ */
 @Component({
   tag: 'p-canvas',
   shadow: true,

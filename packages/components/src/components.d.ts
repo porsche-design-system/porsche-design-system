@@ -23,7 +23,7 @@ import { FieldsetLabelSize, FieldsetState } from "./components/fieldset/fieldset
 import { FieldsetWrapperLabelSize, FieldsetWrapperState } from "./components/fieldset-wrapper/fieldset-wrapper-utils";
 import { FlexAlignContent, FlexAlignItems, FlexDirection, FlexInline, FlexJustifyContent, FlexWrap } from "./components/flex/flex/flex-utils";
 import { FlexItemAlignSelf, FlexItemFlex, FlexItemGrow, FlexItemOffset, FlexItemShrink, FlexItemWidth } from "./components/flex/flex-item/flex-item-utils";
-import { FlyoutAriaAttribute, FlyoutPosition } from "./components/flyout/flyout-utils";
+import { FlyoutAriaAttribute, FlyoutMotionHiddenEndEventDetail, FlyoutMotionVisibleEndEventDetail, FlyoutPosition } from "./components/flyout/flyout-utils";
 import { FlyoutMultilevelAriaAttribute, FlyoutMultilevelUpdateEventDetail } from "./components/flyout-multilevel/flyout-multilevel/flyout-multilevel-utils";
 import { GridDirection, GridGutter, GridWrap } from "./components/grid/grid/grid-utils";
 import { GridItemOffset, GridItemSize } from "./components/grid/grid-item/grid-item-utils";
@@ -39,7 +39,7 @@ import { LinkTileModelSignatureAspectRatio, LinkTileModelSignatureHeadingTag, Li
 import { LinkTileProductAspectRatio, LinkTileProductLikeEventDetail, LinkTileProductTarget } from "./components/link-tile-product/link-tile-product-utils";
 import { MarqueAriaAttribute, MarqueTarget, MarqueVariant } from "./components/marque/marque-utils";
 import { MarqueSize } from "./components/marque/marque-size";
-import { ModalAriaAttribute, ModalBackdrop } from "./components/modal/modal-utils";
+import { ModalAriaAttribute, ModalBackdrop, ModalMotionHiddenEndEventDetail, ModalMotionVisibleEndEventDetail } from "./components/modal/modal-utils";
 import { ModelSignatureColor, ModelSignatureFetchPriority, ModelSignatureModel, ModelSignatureSize } from "./components/model-signature/model-signature-utils";
 import { MultiSelectDropdownDirection, MultiSelectState, MultiSelectUpdateEventDetail } from "./components/multi-select/multi-select/multi-select-utils";
 import { PaginationInternationalization, PaginationMaxNumberOfPageLinks, PaginationUpdateEventDetail } from "./components/pagination/pagination-utils";
@@ -85,7 +85,7 @@ export { FieldsetLabelSize, FieldsetState } from "./components/fieldset/fieldset
 export { FieldsetWrapperLabelSize, FieldsetWrapperState } from "./components/fieldset-wrapper/fieldset-wrapper-utils";
 export { FlexAlignContent, FlexAlignItems, FlexDirection, FlexInline, FlexJustifyContent, FlexWrap } from "./components/flex/flex/flex-utils";
 export { FlexItemAlignSelf, FlexItemFlex, FlexItemGrow, FlexItemOffset, FlexItemShrink, FlexItemWidth } from "./components/flex/flex-item/flex-item-utils";
-export { FlyoutAriaAttribute, FlyoutPosition } from "./components/flyout/flyout-utils";
+export { FlyoutAriaAttribute, FlyoutMotionHiddenEndEventDetail, FlyoutMotionVisibleEndEventDetail, FlyoutPosition } from "./components/flyout/flyout-utils";
 export { FlyoutMultilevelAriaAttribute, FlyoutMultilevelUpdateEventDetail } from "./components/flyout-multilevel/flyout-multilevel/flyout-multilevel-utils";
 export { GridDirection, GridGutter, GridWrap } from "./components/grid/grid/grid-utils";
 export { GridItemOffset, GridItemSize } from "./components/grid/grid-item/grid-item-utils";
@@ -101,7 +101,7 @@ export { LinkTileModelSignatureAspectRatio, LinkTileModelSignatureHeadingTag, Li
 export { LinkTileProductAspectRatio, LinkTileProductLikeEventDetail, LinkTileProductTarget } from "./components/link-tile-product/link-tile-product-utils";
 export { MarqueAriaAttribute, MarqueTarget, MarqueVariant } from "./components/marque/marque-utils";
 export { MarqueSize } from "./components/marque/marque-size";
-export { ModalAriaAttribute, ModalBackdrop } from "./components/modal/modal-utils";
+export { ModalAriaAttribute, ModalBackdrop, ModalMotionHiddenEndEventDetail, ModalMotionVisibleEndEventDetail } from "./components/modal/modal-utils";
 export { ModelSignatureColor, ModelSignatureFetchPriority, ModelSignatureModel, ModelSignatureSize } from "./components/model-signature/model-signature-utils";
 export { MultiSelectDropdownDirection, MultiSelectState, MultiSelectUpdateEventDetail } from "./components/multi-select/multi-select/multi-select-utils";
 export { PaginationInternationalization, PaginationMaxNumberOfPageLinks, PaginationUpdateEventDetail } from "./components/pagination/pagination-utils";
@@ -130,6 +130,9 @@ export { ToastMessage } from "./components/toast/toast/toast-manager";
 export { ToastState } from "./components/toast/toast/toast-utils";
 export { WordmarkAriaAttribute, WordmarkSize, WordmarkTarget } from "./components/wordmark/wordmark-utils";
 export namespace Components {
+    /**
+     * @controlled {"props": ["open"], "event": "update"}
+     */
     interface PAccordion {
         /**
           * Displays the Accordion as compact version with thinner border and smaller paddings.
@@ -164,6 +167,9 @@ export namespace Components {
          */
         "theme"?: Theme;
     }
+    /**
+     * @controlled {"props": ["open"], "event": "dismiss"}
+     */
     interface PBanner {
         /**
           * Description of the banner.
@@ -385,6 +391,8 @@ export namespace Components {
         "weight"?: BreakpointCustomizable<ButtonTileWeight>;
     }
     /**
+     * @controlled {"props": ["sidebarStartOpen"], "event": "dismissSidebarStart"}
+     * @controlled {"props": ["sidebarEndOpen"], "event": "dismissSidebarEnd"}
      * @experimental 
      */
     interface PCanvas {
@@ -405,6 +413,9 @@ export namespace Components {
          */
         "sidebarStartWidth"?: CanvasSidebarStartWidth;
     }
+    /**
+     * @controlled { "props": ["activeSlideIndex"], "event": "update", "isInternallyMutated": true }
+     */
     interface PCarousel {
         /**
           * Defines which slide to be active (zero-based numbering).
@@ -684,6 +695,9 @@ export namespace Components {
          */
         "width"?: BreakpointCustomizable<FlexItemWidth>;
     }
+    /**
+     * @controlled {"props": ["open"], "event": "dismiss"}
+     */
     interface PFlyout {
         /**
           * Add ARIA attributes.
@@ -707,6 +721,8 @@ export namespace Components {
         "theme"?: Theme;
     }
     /**
+     * @controlled {"props": ["open"], "event": "dismiss"}
+     * @controlled {"props": ["activeIdentifier"], "event": "update"}
      * @experimental 
      */
     interface PFlyoutMultilevel {
@@ -1126,6 +1142,7 @@ export namespace Components {
         "weight"?: BreakpointCustomizable<LinkTileModelSignatureWeight>;
     }
     /**
+     * @controlled {"props": ["liked"], "event": "like"}
      * @experimental 
      */
     interface PLinkTileProduct {
@@ -1203,6 +1220,9 @@ export namespace Components {
          */
         "variant"?: MarqueVariant;
     }
+    /**
+     * @controlled {"props": ["open"], "event": "dismiss"}
+     */
     interface PModal {
         /**
           * Add ARIA attributes.
@@ -1272,6 +1292,9 @@ export namespace Components {
          */
         "theme"?: Theme;
     }
+    /**
+     * @controlled { "props": ["value"], "event": "update", "isInternallyMutated": true }
+     */
     interface PMultiSelect {
         /**
           * The description text.
@@ -1328,6 +1351,19 @@ export namespace Components {
          */
         "value": string;
     }
+    interface POptgroup {
+        /**
+          * Disables the optgroup.
+         */
+        "disabled"?: boolean;
+        /**
+          * The optgroup label.
+         */
+        "label"?: string;
+    }
+    /**
+     * @controlled { "props": ["activePage"], "event": "update", "isInternallyMutated": true }
+     */
     interface PPagination {
         /**
           * Index of the currently active page.
@@ -1375,6 +1411,9 @@ export namespace Components {
          */
         "totalItemsCount": number;
     }
+    /**
+     * @controlled { "props": ["value"], "event": "update", "isInternallyMutated": true }
+     */
     interface PPinCode {
         /**
           * The description text.
@@ -1507,6 +1546,9 @@ export namespace Components {
          */
         "theme"?: Theme;
     }
+    /**
+     * @controlled { "props": ["value"], "event": "update", "isInternallyMutated": true }
+     */
     interface PSegmentedControl {
         /**
           * @deprecated since v3.0.0, will be removed with next major release. Background color variations
@@ -1551,6 +1593,9 @@ export namespace Components {
          */
         "value": string | number;
     }
+    /**
+     * @controlled { "props": ["value"], "event": "update", "isInternallyMutated": true }
+     */
     interface PSelect {
         /**
           * The description text.
@@ -1693,6 +1738,9 @@ export namespace Components {
          */
         "state"?: StepperHorizontalItemState;
     }
+    /**
+     * @controlled {"props": ["checked"], "event": "update"}
+     */
     interface PSwitch {
         /**
           * Aligns the label.
@@ -1761,6 +1809,9 @@ export namespace Components {
     }
     interface PTableRow {
     }
+    /**
+     * @controlled { "props": ["activeTabIndex"], "event": "update", "isInternallyMutated": true }
+     */
     interface PTabs {
         /**
           * Defines which tab to be visualized as selected (zero-based numbering).
@@ -1787,6 +1838,9 @@ export namespace Components {
          */
         "weight"?: TabsWeight;
     }
+    /**
+     * @controlled {"props": ["activeTabIndex"], "event": "update"}
+     */
     interface PTabsBar {
         /**
           * Defines which tab to be visualized as selected (zero-based numbering), undefined if none should be selected.
@@ -1824,6 +1878,10 @@ export namespace Components {
           * Background color variations depending on theme property.
          */
         "color"?: TagColor;
+        /**
+          * Displays as compact version.
+         */
+        "compact"?: boolean;
         /**
           * The icon shown.
          */
@@ -2130,6 +2188,9 @@ declare global {
         "accordionChange": AccordionUpdateEventDetail;
         "update": AccordionUpdateEventDetail;
     }
+    /**
+     * @controlled {"props": ["open"], "event": "update"}
+     */
     interface HTMLPAccordionElement extends Components.PAccordion, HTMLStencilElement {
         addEventListener<K extends keyof HTMLPAccordionElementEventMap>(type: K, listener: (this: HTMLPAccordionElement, ev: PAccordionCustomEvent<HTMLPAccordionElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
@@ -2147,6 +2208,9 @@ declare global {
     interface HTMLPBannerElementEventMap {
         "dismiss": void;
     }
+    /**
+     * @controlled {"props": ["open"], "event": "dismiss"}
+     */
     interface HTMLPBannerElement extends Components.PBanner, HTMLStencilElement {
         addEventListener<K extends keyof HTMLPBannerElementEventMap>(type: K, listener: (this: HTMLPBannerElement, ev: PBannerCustomEvent<HTMLPBannerElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
@@ -2190,6 +2254,8 @@ declare global {
         "dismissSidebarEnd": void;
     }
     /**
+     * @controlled {"props": ["sidebarStartOpen"], "event": "dismissSidebarStart"}
+     * @controlled {"props": ["sidebarEndOpen"], "event": "dismissSidebarEnd"}
      * @experimental 
      */
     interface HTMLPCanvasElement extends Components.PCanvas, HTMLStencilElement {
@@ -2210,6 +2276,9 @@ declare global {
         "carouselChange": CarouselUpdateEventDetail;
         "update": CarouselUpdateEventDetail;
     }
+    /**
+     * @controlled { "props": ["activeSlideIndex"], "event": "update", "isInternallyMutated": true }
+     */
     interface HTMLPCarouselElement extends Components.PCarousel, HTMLStencilElement {
         addEventListener<K extends keyof HTMLPCarouselElementEventMap>(type: K, listener: (this: HTMLPCarouselElement, ev: PCarouselCustomEvent<HTMLPCarouselElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
@@ -2292,7 +2361,12 @@ declare global {
     };
     interface HTMLPFlyoutElementEventMap {
         "dismiss": void;
+        "motionVisibleEnd": FlyoutMotionVisibleEndEventDetail;
+        "motionHiddenEnd": FlyoutMotionHiddenEndEventDetail;
     }
+    /**
+     * @controlled {"props": ["open"], "event": "dismiss"}
+     */
     interface HTMLPFlyoutElement extends Components.PFlyout, HTMLStencilElement {
         addEventListener<K extends keyof HTMLPFlyoutElementEventMap>(type: K, listener: (this: HTMLPFlyoutElement, ev: PFlyoutCustomEvent<HTMLPFlyoutElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
@@ -2312,6 +2386,8 @@ declare global {
         "update": FlyoutMultilevelUpdateEventDetail;
     }
     /**
+     * @controlled {"props": ["open"], "event": "dismiss"}
+     * @controlled {"props": ["activeIdentifier"], "event": "update"}
      * @experimental 
      */
     interface HTMLPFlyoutMultilevelElement extends Components.PFlyoutMultilevel, HTMLStencilElement {
@@ -2431,6 +2507,7 @@ declare global {
         "like": LinkTileProductLikeEventDetail;
     }
     /**
+     * @controlled {"props": ["liked"], "event": "like"}
      * @experimental 
      */
     interface HTMLPLinkTileProductElement extends Components.PLinkTileProduct, HTMLStencilElement {
@@ -2459,7 +2536,12 @@ declare global {
     interface HTMLPModalElementEventMap {
         "close": void;
         "dismiss": void;
+        "motionVisibleEnd": ModalMotionVisibleEndEventDetail;
+        "motionHiddenEnd": ModalMotionHiddenEndEventDetail;
     }
+    /**
+     * @controlled {"props": ["open"], "event": "dismiss"}
+     */
     interface HTMLPModalElement extends Components.PModal, HTMLStencilElement {
         addEventListener<K extends keyof HTMLPModalElementEventMap>(type: K, listener: (this: HTMLPModalElement, ev: PModalCustomEvent<HTMLPModalElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
@@ -2483,6 +2565,9 @@ declare global {
     interface HTMLPMultiSelectElementEventMap {
         "update": MultiSelectUpdateEventDetail;
     }
+    /**
+     * @controlled { "props": ["value"], "event": "update", "isInternallyMutated": true }
+     */
     interface HTMLPMultiSelectElement extends Components.PMultiSelect, HTMLStencilElement {
         addEventListener<K extends keyof HTMLPMultiSelectElementEventMap>(type: K, listener: (this: HTMLPMultiSelectElement, ev: PMultiSelectCustomEvent<HTMLPMultiSelectElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
@@ -2503,10 +2588,19 @@ declare global {
         prototype: HTMLPMultiSelectOptionElement;
         new (): HTMLPMultiSelectOptionElement;
     };
+    interface HTMLPOptgroupElement extends Components.POptgroup, HTMLStencilElement {
+    }
+    var HTMLPOptgroupElement: {
+        prototype: HTMLPOptgroupElement;
+        new (): HTMLPOptgroupElement;
+    };
     interface HTMLPPaginationElementEventMap {
         "pageChange": PaginationUpdateEventDetail;
         "update": PaginationUpdateEventDetail;
     }
+    /**
+     * @controlled { "props": ["activePage"], "event": "update", "isInternallyMutated": true }
+     */
     interface HTMLPPaginationElement extends Components.PPagination, HTMLStencilElement {
         addEventListener<K extends keyof HTMLPPaginationElementEventMap>(type: K, listener: (this: HTMLPPaginationElement, ev: PPaginationCustomEvent<HTMLPPaginationElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
@@ -2524,6 +2618,9 @@ declare global {
     interface HTMLPPinCodeElementEventMap {
         "update": PinCodeUpdateEventDetail;
     }
+    /**
+     * @controlled { "props": ["value"], "event": "update", "isInternallyMutated": true }
+     */
     interface HTMLPPinCodeElement extends Components.PPinCode, HTMLStencilElement {
         addEventListener<K extends keyof HTMLPPinCodeElementEventMap>(type: K, listener: (this: HTMLPPinCodeElement, ev: PPinCodeCustomEvent<HTMLPPinCodeElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
@@ -2560,6 +2657,9 @@ declare global {
         "segmentedControlChange": SegmentedControlUpdateEventDetail;
         "update": SegmentedControlUpdateEventDetail;
     }
+    /**
+     * @controlled { "props": ["value"], "event": "update", "isInternallyMutated": true }
+     */
     interface HTMLPSegmentedControlElement extends Components.PSegmentedControl, HTMLStencilElement {
         addEventListener<K extends keyof HTMLPSegmentedControlElementEventMap>(type: K, listener: (this: HTMLPSegmentedControlElement, ev: PSegmentedControlCustomEvent<HTMLPSegmentedControlElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
@@ -2583,6 +2683,9 @@ declare global {
     interface HTMLPSelectElementEventMap {
         "update": SelectUpdateEventDetail;
     }
+    /**
+     * @controlled { "props": ["value"], "event": "update", "isInternallyMutated": true }
+     */
     interface HTMLPSelectElement extends Components.PSelect, HTMLStencilElement {
         addEventListener<K extends keyof HTMLPSelectElementEventMap>(type: K, listener: (this: HTMLPSelectElement, ev: PSelectCustomEvent<HTMLPSelectElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
@@ -2649,6 +2752,9 @@ declare global {
         "switchChange": SwitchUpdateEventDetail;
         "update": SwitchUpdateEventDetail;
     }
+    /**
+     * @controlled {"props": ["checked"], "event": "update"}
+     */
     interface HTMLPSwitchElement extends Components.PSwitch, HTMLStencilElement {
         addEventListener<K extends keyof HTMLPSwitchElementEventMap>(type: K, listener: (this: HTMLPSwitchElement, ev: PSwitchCustomEvent<HTMLPSwitchElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
@@ -2721,6 +2827,9 @@ declare global {
         "tabChange": TabsUpdateEventDetail;
         "update": TabsUpdateEventDetail;
     }
+    /**
+     * @controlled { "props": ["activeTabIndex"], "event": "update", "isInternallyMutated": true }
+     */
     interface HTMLPTabsElement extends Components.PTabs, HTMLStencilElement {
         addEventListener<K extends keyof HTMLPTabsElementEventMap>(type: K, listener: (this: HTMLPTabsElement, ev: PTabsCustomEvent<HTMLPTabsElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
@@ -2739,6 +2848,9 @@ declare global {
         "tabChange": TabsBarUpdateEventDetail;
         "update": TabsBarUpdateEventDetail;
     }
+    /**
+     * @controlled {"props": ["activeTabIndex"], "event": "update"}
+     */
     interface HTMLPTabsBarElement extends Components.PTabsBar, HTMLStencilElement {
         addEventListener<K extends keyof HTMLPTabsBarElementEventMap>(type: K, listener: (this: HTMLPTabsBarElement, ev: PTabsBarCustomEvent<HTMLPTabsBarElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
@@ -2879,6 +2991,7 @@ declare global {
         "p-model-signature": HTMLPModelSignatureElement;
         "p-multi-select": HTMLPMultiSelectElement;
         "p-multi-select-option": HTMLPMultiSelectOptionElement;
+        "p-optgroup": HTMLPOptgroupElement;
         "p-pagination": HTMLPPaginationElement;
         "p-pin-code": HTMLPPinCodeElement;
         "p-popover": HTMLPPopoverElement;
@@ -2917,6 +3030,9 @@ declare global {
     }
 }
 declare namespace LocalJSX {
+    /**
+     * @controlled {"props": ["open"], "event": "update"}
+     */
     interface PAccordion {
         /**
           * Displays the Accordion as compact version with thinner border and smaller paddings.
@@ -2959,6 +3075,9 @@ declare namespace LocalJSX {
          */
         "theme"?: Theme;
     }
+    /**
+     * @controlled {"props": ["open"], "event": "dismiss"}
+     */
     interface PBanner {
         /**
           * Description of the banner.
@@ -3184,6 +3303,8 @@ declare namespace LocalJSX {
         "weight"?: BreakpointCustomizable<ButtonTileWeight>;
     }
     /**
+     * @controlled {"props": ["sidebarStartOpen"], "event": "dismissSidebarStart"}
+     * @controlled {"props": ["sidebarEndOpen"], "event": "dismissSidebarEnd"}
      * @experimental 
      */
     interface PCanvas {
@@ -3212,6 +3333,9 @@ declare namespace LocalJSX {
          */
         "sidebarStartWidth"?: CanvasSidebarStartWidth;
     }
+    /**
+     * @controlled { "props": ["activeSlideIndex"], "event": "update", "isInternallyMutated": true }
+     */
     interface PCarousel {
         /**
           * Defines which slide to be active (zero-based numbering).
@@ -3499,6 +3623,9 @@ declare namespace LocalJSX {
          */
         "width"?: BreakpointCustomizable<FlexItemWidth>;
     }
+    /**
+     * @controlled {"props": ["open"], "event": "dismiss"}
+     */
     interface PFlyout {
         /**
           * Add ARIA attributes.
@@ -3513,6 +3640,14 @@ declare namespace LocalJSX {
          */
         "onDismiss"?: (event: PFlyoutCustomEvent<void>) => void;
         /**
+          * Emitted when the flyout is closed and the transition is finished.
+         */
+        "onMotionHiddenEnd"?: (event: PFlyoutCustomEvent<FlyoutMotionHiddenEndEventDetail>) => void;
+        /**
+          * Emitted when the flyout is opened and the transition is finished.
+         */
+        "onMotionVisibleEnd"?: (event: PFlyoutCustomEvent<FlyoutMotionVisibleEndEventDetail>) => void;
+        /**
           * If true, the flyout is open.
          */
         "open"?: boolean;
@@ -3526,6 +3661,8 @@ declare namespace LocalJSX {
         "theme"?: Theme;
     }
     /**
+     * @controlled {"props": ["open"], "event": "dismiss"}
+     * @controlled {"props": ["activeIdentifier"], "event": "update"}
      * @experimental 
      */
     interface PFlyoutMultilevel {
@@ -3961,6 +4098,7 @@ declare namespace LocalJSX {
         "weight"?: BreakpointCustomizable<LinkTileModelSignatureWeight>;
     }
     /**
+     * @controlled {"props": ["liked"], "event": "like"}
      * @experimental 
      */
     interface PLinkTileProduct {
@@ -4042,6 +4180,9 @@ declare namespace LocalJSX {
          */
         "variant"?: MarqueVariant;
     }
+    /**
+     * @controlled {"props": ["open"], "event": "dismiss"}
+     */
     interface PModal {
         /**
           * Add ARIA attributes.
@@ -4081,6 +4222,14 @@ declare namespace LocalJSX {
          */
         "onDismiss"?: (event: PModalCustomEvent<void>) => void;
         /**
+          * Emitted when the modal is closed and the transition is finished.
+         */
+        "onMotionHiddenEnd"?: (event: PModalCustomEvent<ModalMotionHiddenEndEventDetail>) => void;
+        /**
+          * Emitted when the modal is opened and the transition is finished.
+         */
+        "onMotionVisibleEnd"?: (event: PModalCustomEvent<ModalMotionVisibleEndEventDetail>) => void;
+        /**
           * If true, the modal is open.
          */
         "open"?: boolean;
@@ -4119,6 +4268,9 @@ declare namespace LocalJSX {
          */
         "theme"?: Theme;
     }
+    /**
+     * @controlled { "props": ["value"], "event": "update", "isInternallyMutated": true }
+     */
     interface PMultiSelect {
         /**
           * The description text.
@@ -4179,6 +4331,19 @@ declare namespace LocalJSX {
          */
         "value"?: string;
     }
+    interface POptgroup {
+        /**
+          * Disables the optgroup.
+         */
+        "disabled"?: boolean;
+        /**
+          * The optgroup label.
+         */
+        "label"?: string;
+    }
+    /**
+     * @controlled { "props": ["activePage"], "event": "update", "isInternallyMutated": true }
+     */
     interface PPagination {
         /**
           * Index of the currently active page.
@@ -4234,6 +4399,9 @@ declare namespace LocalJSX {
          */
         "totalItemsCount"?: number;
     }
+    /**
+     * @controlled { "props": ["value"], "event": "update", "isInternallyMutated": true }
+     */
     interface PPinCode {
         /**
           * The description text.
@@ -4370,6 +4538,9 @@ declare namespace LocalJSX {
          */
         "theme"?: Theme;
     }
+    /**
+     * @controlled { "props": ["value"], "event": "update", "isInternallyMutated": true }
+     */
     interface PSegmentedControl {
         /**
           * @deprecated since v3.0.0, will be removed with next major release. Background color variations
@@ -4422,6 +4593,9 @@ declare namespace LocalJSX {
          */
         "value"?: string | number;
     }
+    /**
+     * @controlled { "props": ["value"], "event": "update", "isInternallyMutated": true }
+     */
     interface PSelect {
         /**
           * The description text.
@@ -4576,6 +4750,9 @@ declare namespace LocalJSX {
          */
         "state"?: StepperHorizontalItemState;
     }
+    /**
+     * @controlled {"props": ["checked"], "event": "update"}
+     */
     interface PSwitch {
         /**
           * Aligns the label.
@@ -4660,6 +4837,9 @@ declare namespace LocalJSX {
     }
     interface PTableRow {
     }
+    /**
+     * @controlled { "props": ["activeTabIndex"], "event": "update", "isInternallyMutated": true }
+     */
     interface PTabs {
         /**
           * Defines which tab to be visualized as selected (zero-based numbering).
@@ -4694,6 +4874,9 @@ declare namespace LocalJSX {
          */
         "weight"?: TabsWeight;
     }
+    /**
+     * @controlled {"props": ["activeTabIndex"], "event": "update"}
+     */
     interface PTabsBar {
         /**
           * Defines which tab to be visualized as selected (zero-based numbering), undefined if none should be selected.
@@ -4739,6 +4922,10 @@ declare namespace LocalJSX {
           * Background color variations depending on theme property.
          */
         "color"?: TagColor;
+        /**
+          * Displays as compact version.
+         */
+        "compact"?: boolean;
         /**
           * The icon shown.
          */
@@ -5000,6 +5187,7 @@ declare namespace LocalJSX {
         "p-model-signature": PModelSignature;
         "p-multi-select": PMultiSelect;
         "p-multi-select-option": PMultiSelectOption;
+        "p-optgroup": POptgroup;
         "p-pagination": PPagination;
         "p-pin-code": PPinCode;
         "p-popover": PPopover;
@@ -5041,16 +5229,27 @@ export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
+            /**
+             * @controlled {"props": ["open"], "event": "update"}
+             */
             "p-accordion": LocalJSX.PAccordion & JSXBase.HTMLAttributes<HTMLPAccordionElement>;
+            /**
+             * @controlled {"props": ["open"], "event": "dismiss"}
+             */
             "p-banner": LocalJSX.PBanner & JSXBase.HTMLAttributes<HTMLPBannerElement>;
             "p-button": LocalJSX.PButton & JSXBase.HTMLAttributes<HTMLPButtonElement>;
             "p-button-group": LocalJSX.PButtonGroup & JSXBase.HTMLAttributes<HTMLPButtonGroupElement>;
             "p-button-pure": LocalJSX.PButtonPure & JSXBase.HTMLAttributes<HTMLPButtonPureElement>;
             "p-button-tile": LocalJSX.PButtonTile & JSXBase.HTMLAttributes<HTMLPButtonTileElement>;
             /**
+             * @controlled {"props": ["sidebarStartOpen"], "event": "dismissSidebarStart"}
+             * @controlled {"props": ["sidebarEndOpen"], "event": "dismissSidebarEnd"}
              * @experimental 
              */
             "p-canvas": LocalJSX.PCanvas & JSXBase.HTMLAttributes<HTMLPCanvasElement>;
+            /**
+             * @controlled { "props": ["activeSlideIndex"], "event": "update", "isInternallyMutated": true }
+             */
             "p-carousel": LocalJSX.PCarousel & JSXBase.HTMLAttributes<HTMLPCarouselElement>;
             "p-checkbox-wrapper": LocalJSX.PCheckboxWrapper & JSXBase.HTMLAttributes<HTMLPCheckboxWrapperElement>;
             /**
@@ -5073,8 +5272,13 @@ declare module "@stencil/core" {
              * @deprecated since v3.0.0, will be removed with next major release. Use native CSS Flex instead.
              */
             "p-flex-item": LocalJSX.PFlexItem & JSXBase.HTMLAttributes<HTMLPFlexItemElement>;
+            /**
+             * @controlled {"props": ["open"], "event": "dismiss"}
+             */
             "p-flyout": LocalJSX.PFlyout & JSXBase.HTMLAttributes<HTMLPFlyoutElement>;
             /**
+             * @controlled {"props": ["open"], "event": "dismiss"}
+             * @controlled {"props": ["activeIdentifier"], "event": "update"}
              * @experimental 
              */
             "p-flyout-multilevel": LocalJSX.PFlyoutMultilevel & JSXBase.HTMLAttributes<HTMLPFlyoutMultilevelElement>;
@@ -5106,6 +5310,7 @@ declare module "@stencil/core" {
             "p-link-tile": LocalJSX.PLinkTile & JSXBase.HTMLAttributes<HTMLPLinkTileElement>;
             "p-link-tile-model-signature": LocalJSX.PLinkTileModelSignature & JSXBase.HTMLAttributes<HTMLPLinkTileModelSignatureElement>;
             /**
+             * @controlled {"props": ["liked"], "event": "like"}
              * @experimental 
              */
             "p-link-tile-product": LocalJSX.PLinkTileProduct & JSXBase.HTMLAttributes<HTMLPLinkTileProductElement>;
@@ -5113,17 +5318,36 @@ declare module "@stencil/core" {
              * @deprecated since v3.0.0, will be removed with next major release. Please use "p-wordmark" instead.
              */
             "p-marque": LocalJSX.PMarque & JSXBase.HTMLAttributes<HTMLPMarqueElement>;
+            /**
+             * @controlled {"props": ["open"], "event": "dismiss"}
+             */
             "p-modal": LocalJSX.PModal & JSXBase.HTMLAttributes<HTMLPModalElement>;
             "p-model-signature": LocalJSX.PModelSignature & JSXBase.HTMLAttributes<HTMLPModelSignatureElement>;
+            /**
+             * @controlled { "props": ["value"], "event": "update", "isInternallyMutated": true }
+             */
             "p-multi-select": LocalJSX.PMultiSelect & JSXBase.HTMLAttributes<HTMLPMultiSelectElement>;
             "p-multi-select-option": LocalJSX.PMultiSelectOption & JSXBase.HTMLAttributes<HTMLPMultiSelectOptionElement>;
+            "p-optgroup": LocalJSX.POptgroup & JSXBase.HTMLAttributes<HTMLPOptgroupElement>;
+            /**
+             * @controlled { "props": ["activePage"], "event": "update", "isInternallyMutated": true }
+             */
             "p-pagination": LocalJSX.PPagination & JSXBase.HTMLAttributes<HTMLPPaginationElement>;
+            /**
+             * @controlled { "props": ["value"], "event": "update", "isInternallyMutated": true }
+             */
             "p-pin-code": LocalJSX.PPinCode & JSXBase.HTMLAttributes<HTMLPPinCodeElement>;
             "p-popover": LocalJSX.PPopover & JSXBase.HTMLAttributes<HTMLPPopoverElement>;
             "p-radio-button-wrapper": LocalJSX.PRadioButtonWrapper & JSXBase.HTMLAttributes<HTMLPRadioButtonWrapperElement>;
             "p-scroller": LocalJSX.PScroller & JSXBase.HTMLAttributes<HTMLPScrollerElement>;
+            /**
+             * @controlled { "props": ["value"], "event": "update", "isInternallyMutated": true }
+             */
             "p-segmented-control": LocalJSX.PSegmentedControl & JSXBase.HTMLAttributes<HTMLPSegmentedControlElement>;
             "p-segmented-control-item": LocalJSX.PSegmentedControlItem & JSXBase.HTMLAttributes<HTMLPSegmentedControlItemElement>;
+            /**
+             * @controlled { "props": ["value"], "event": "update", "isInternallyMutated": true }
+             */
             "p-select": LocalJSX.PSelect & JSXBase.HTMLAttributes<HTMLPSelectElement>;
             "p-select-option": LocalJSX.PSelectOption & JSXBase.HTMLAttributes<HTMLPSelectOptionElement>;
             "p-select-wrapper": LocalJSX.PSelectWrapper & JSXBase.HTMLAttributes<HTMLPSelectWrapperElement>;
@@ -5131,6 +5355,9 @@ declare module "@stencil/core" {
             "p-spinner": LocalJSX.PSpinner & JSXBase.HTMLAttributes<HTMLPSpinnerElement>;
             "p-stepper-horizontal": LocalJSX.PStepperHorizontal & JSXBase.HTMLAttributes<HTMLPStepperHorizontalElement>;
             "p-stepper-horizontal-item": LocalJSX.PStepperHorizontalItem & JSXBase.HTMLAttributes<HTMLPStepperHorizontalItemElement>;
+            /**
+             * @controlled {"props": ["checked"], "event": "update"}
+             */
             "p-switch": LocalJSX.PSwitch & JSXBase.HTMLAttributes<HTMLPSwitchElement>;
             "p-table": LocalJSX.PTable & JSXBase.HTMLAttributes<HTMLPTableElement>;
             "p-table-body": LocalJSX.PTableBody & JSXBase.HTMLAttributes<HTMLPTableBodyElement>;
@@ -5139,7 +5366,13 @@ declare module "@stencil/core" {
             "p-table-head-cell": LocalJSX.PTableHeadCell & JSXBase.HTMLAttributes<HTMLPTableHeadCellElement>;
             "p-table-head-row": LocalJSX.PTableHeadRow & JSXBase.HTMLAttributes<HTMLPTableHeadRowElement>;
             "p-table-row": LocalJSX.PTableRow & JSXBase.HTMLAttributes<HTMLPTableRowElement>;
+            /**
+             * @controlled { "props": ["activeTabIndex"], "event": "update", "isInternallyMutated": true }
+             */
             "p-tabs": LocalJSX.PTabs & JSXBase.HTMLAttributes<HTMLPTabsElement>;
+            /**
+             * @controlled {"props": ["activeTabIndex"], "event": "update"}
+             */
             "p-tabs-bar": LocalJSX.PTabsBar & JSXBase.HTMLAttributes<HTMLPTabsBarElement>;
             "p-tabs-item": LocalJSX.PTabsItem & JSXBase.HTMLAttributes<HTMLPTabsItemElement>;
             "p-tag": LocalJSX.PTag & JSXBase.HTMLAttributes<HTMLPTagElement>;

@@ -6,6 +6,8 @@ import {
   type FlyoutAriaAttribute,
   type FlyoutPosition,
   type FlyoutPositionDeprecated,
+  type FlyoutMotionVisibleEndEventDetail,
+  type FlyoutMotionHiddenEndEventDetail,
   handleUpdateStickyTopCssVar,
 } from './flyout-utils';
 import { getComponentCss } from './flyout-styles';
@@ -30,6 +32,7 @@ import {
 import type { PropTypes, SelectedAriaAttributes, Theme } from '../../types';
 import { getSlottedAnchorStyles } from '../../styles';
 import { observeStickyArea } from '../../utils/dialog/observer';
+import { onTransitionEnd } from '../../utils/dialog/dialog';
 
 const propTypes: PropTypes<typeof Flyout> = {
   open: AllowedTypes.boolean,
@@ -39,6 +42,14 @@ const propTypes: PropTypes<typeof Flyout> = {
   aria: AllowedTypes.aria<FlyoutAriaAttribute>(FLYOUT_ARIA_ATTRIBUTES),
 };
 
+/**
+ * @slot {"name": "header", "description": "Renders a sticky header section above the content area." }
+ * @slot {"name": "", "description": "Default slot for the main content." }
+ * @slot {"name": "footer", "description": "Shows a sticky footer section, flowing under the content area when scrollable." }
+ * @slot {"name": "sub-footer", "description": "Shows a sub-footer section to display additional information below the footer. This slot is ideal for less critical content, such as legal information or FAQs, which provides further details to the user. It appears when scrolling to the end of the flyout or when there is available space to accommodate the content." }
+ *
+ * @controlled {"props": ["open"], "event": "dismiss"}
+ */
 @Component({
   tag: 'p-flyout',
   shadow: true,
@@ -63,6 +74,12 @@ export class Flyout {
 
   /** Emitted when the component requests to be dismissed. */
   @Event({ bubbles: false }) public dismiss?: EventEmitter<void>;
+
+  /** Emitted when the flyout is opened and the transition is finished. */
+  @Event({ bubbles: false }) public motionVisibleEnd?: EventEmitter<FlyoutMotionVisibleEndEventDetail>;
+
+  /** Emitted when the flyout is closed and the transition is finished. */
+  @Event({ bubbles: false }) public motionHiddenEnd?: EventEmitter<FlyoutMotionHiddenEndEventDetail>;
 
   private dialog: HTMLDialogElement;
   private scroller: HTMLDivElement;
@@ -157,6 +174,7 @@ export class Flyout {
         onCancel={(e) => onCancelDialog(e, this.dismissDialog)}
         // Previously done with onMouseDown to change the click behavior (not closing when pressing mousedown on flyout and mouseup on backdrop) but changed back to native behavior
         onClick={(e) => onClickDialog(e, this.dismissDialog, this.disableBackdropClick)}
+        onTransitionEnd={(e) => onTransitionEnd(e, this.open, this.motionVisibleEnd, this.motionHiddenEnd)}
         {...parseAndGetAriaAttributes({
           'aria-modal': true,
           'aria-hidden': !this.open,
@@ -189,7 +207,7 @@ export class Flyout {
     this.dismiss.emit();
   };
 
-  private updateSlotObserver = () => {
+  private updateSlotObserver = (): void => {
     if (this.hasHeader) {
       // When slots change dynamically the intersection observer for the scroll shadows has to be added
       observeStickyArea(this.scroller, this.header);

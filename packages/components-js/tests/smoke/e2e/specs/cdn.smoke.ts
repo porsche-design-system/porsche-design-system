@@ -43,10 +43,10 @@ test.beforeEach(async ({ page }) => {
 test.describe('bootstrapping with .com and .cn domains', () => {
   const assetPaths = {
     components: 'components/porsche-design-system.v',
-    styles: 'styles/font-face.min.',
-    icons: 'icons/arrow-right.min.',
-    fonts: 'fonts/porsche-next-w-la-regular.min.',
-    crest: 'crest/porsche-crest.min.',
+    styles: 'styles/font-face.',
+    icons: 'icons/arrow-right.',
+    fonts: 'fonts/porsche-next-latin-regular.',
+    crest: 'crest/porsche-crest.',
   } as const;
 
   const content = `

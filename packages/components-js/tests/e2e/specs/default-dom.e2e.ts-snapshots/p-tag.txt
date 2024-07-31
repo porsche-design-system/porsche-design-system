@@ -1,5 +1,3 @@
 <span>
-  <div class="label">
-    <slot> </slot>
-  </div>
+  <slot> </slot>
 </span>

@@ -652,68 +652,86 @@ exports[`manual test cases > should pass internal props correctly to p-link-tile
 :host([hidden]) {
   display: none !important;
 }
-::slotted(picture) {
-  position: absolute !important;
-  inset: 0 !important;
-}
-::slotted(img) {
-  height: 100% !important;
-  width: 100% !important;
-  object-fit: cover !important;
-}
-h2,h3,h4,h5,h6 {
-  margin: 0 !important;
-}
-.root {
-  position: relative;
-  overflow: hidden;
-  transform: translate3d(0,0,0);
-  border-radius: 12px;
-  color: #FBFCFF;
-  padding-top: 133.33%;
-}
-.image-container {
-  position: absolute;
-  inset: 0;
+slot:not([name]) {
+  display: block;
+  width: 100%;
+  height: 100%;
   transition: transform var(--p-transition-duration, 0.4s) cubic-bezier(0.25,0.1,0.25,1);
 }
-.content {
-  position: absolute;
-  left: 0;
-  right: 0;
-  display: flex;
-  justify-items: start;
-  gap: 16px;
-  border-radius: 12px;
-  flex-direction: column;
-  bottom: 0;
-  padding: clamp(32px, 2.75vw + 23px, 76px) clamp(16px, 1.25vw + 12px, 36px) clamp(16px, 1.25vw + 12px, 36px);
-  background: linear-gradient(to top, rgba(31,31,31,0.9) 0%,rgba(31,31,31,0.9) 20%,rgba(31,31,31,0.852589) 26.67%,rgba(32,32,32,0.768225) 33.33%,rgba(33,33,33,0.668116) 40%,rgba(34,34,34,0.557309) 46.67%,rgba(35,35,35,0.442691) 53.33%,rgba(36,36,36,0.331884) 60%,rgba(37,37,37,0.231775) 66.67%,rgba(38,38,38,0.147411) 73.33%,rgba(39,39,39,0.0816599) 80%,rgba(39,39,39,0.03551) 86.67%,rgba(39,39,39,0.0086472) 93.33%,rgba(39,39,39,0) 100%);;
+slot[name=primary] {
+  pointer-events: auto;
 }
-.signature {
-  position: absolute;
-  top: clamp(16px, 1.25vw + 12px, 36px);
-  left: clamp(16px, 1.25vw + 12px, 36px);
-  right: clamp(16px, 1.25vw + 12px, 36px);
-  display: flex;
+slot[name=secondary] {
+  pointer-events: auto;
 }
-.heading {
+::slotted(:is(img,picture)) {
+  display: block !important;
+  width: 100% !important;
+  height: 100% !important;
+}
+::slotted(img) {
+  object-fit: cover !important;
+}
+a {
+  grid-area: 1/1/-1 /-1;
+  z-index: 4;
+  outline: 0;
+}
+h1,h2,h3,h4,h5,h6 {
   margin: 0;
+  z-index: 3;
+  max-width: 34.375rem;
   font: normal normal 400 clamp(1.27rem, 0.51vw + 1.16rem, 1.78rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: inherit;
+  color: #FBFCFF;
   font-weight: 600;
 }
+.root {
+  aspect-ratio: 3/4;
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template: clamp(16px, 1.25vw + 12px, 36px) auto minmax(0px, 1fr) auto clamp(16px, 1.25vw + 12px, 36px)/clamp(16px, 1.25vw + 12px, 36px) minmax(0px, 1fr) clamp(16px, 1.25vw + 12px, 36px);
+}
+.root::after {
+  content: "";
+  z-index: 2;
+  grid-area: 4/1/6/-1;
+  background: linear-gradient(to top, rgba(31,31,31,0.9) 0%,rgba(31,31,31,0.9) 20%,rgba(31,31,31,0.852589) 26.67%,rgba(32,32,32,0.768225) 33.33%,rgba(33,33,33,0.668116) 40%,rgba(34,34,34,0.557309) 46.67%,rgba(35,35,35,0.442691) 53.33%,rgba(36,36,36,0.331884) 60%,rgba(37,37,37,0.231775) 66.67%,rgba(38,38,38,0.147411) 73.33%,rgba(39,39,39,0.0816599) 80%,rgba(39,39,39,0.03551) 86.67%,rgba(39,39,39,0.0086472) 93.33%,rgba(39,39,39,0) 100%);;
+  margin-top: calc(clamp(32px, 2.75vw + 23px, 76px) * -1);
+  border-end-start-radius: 12px;
+  border-end-end-radius: 12px;
+}
+.header {
+  grid-area: 2/2;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(8px, 0.5vw + 6px, 16px);
+}
+.media {
+  grid-area: 1/1/-1 /-1;
+  z-index: 1;
+  overflow: hidden;
+  border-radius: 12px;
+}
+.footer {
+  grid-area: 4/2;
+  display: flex;
+  gap: 16px;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-direction: column;
+}
 .link-group {
+  z-index: 5;
   display: flex;
   width: 100%;
+  pointer-events: none;
   gap: clamp(8px, 0.5vw + 6px, 16px);
   flex-flow: column nowrap;
   align-items: stretch;
-}
-.link-overlay {
-  position: fixed;
-  inset: 0;
 }
 @media(min-width:480px) {
   .link-group {
@@ -723,7 +741,7 @@ h2,h3,h4,h5,h6 {
 }
 
 @media (forced-colors: active) {
-  .content {
+  .root::after {
     background: rgba(0,0,0,0.7);
   }
 }
@@ -733,13 +751,14 @@ h2,h3,h4,h5,h6 {
     <div
       class="root"
     >
+      <a
+        aria-hidden="true"
+        href="#primary"
+        tabindex="-1"
+        target="_self"
+      />
       <div
-        class="image-container"
-      >
-        <slot />
-      </div>
-      <div
-        class="signature"
+        class="header"
       >
         <p-model-signature
           class="ssr"
@@ -756,7 +775,7 @@ h2,h3,h4,h5,h6 {
   max-height: 100%;
   width: var(--p-model-signature-width,94px);
   height: var(--p-model-signature-height,auto);
-  mask: url(http://localhost:3001/model-signatures/911.min.b68f913216168583298ccf83f1a6b8d5.svg) no-repeat left top / contain !important;
+  mask: url(http://localhost:3001/model-signatures/911.b68f913.svg) no-repeat left top / contain !important;
   aspect-ratio: 94 / 36 !important;
   background: var(--p-model-signature-color,#FBFCFF) !important;
   color-scheme: light dark !important;
@@ -786,24 +805,23 @@ img {
             <slot />
             <img
               alt="911"
-              src="http://localhost:3001/model-signatures/911.min.b68f913216168583298ccf83f1a6b8d5.svg"
+              src="http://localhost:3001/model-signatures/911.b68f913.svg"
             />
           </template>
         </p-model-signature>
+        <slot
+          name="header"
+        />
       </div>
       <div
-        class="content"
+        class="media"
       >
-        <a
-          aria-hidden="true"
-          class="link-overlay"
-          href="#primary"
-          tabindex="-1"
-          target="_self"
-        />
-        <h2
-          class="heading"
-        >
+        <slot />
+      </div>
+      <div
+        class="footer"
+      >
+        <h2>
           Some heading
         </h2>
         <div
@@ -987,68 +1005,86 @@ exports[`manual test cases > should pass internal props correctly to p-link-tile
 :host([hidden]) {
   display: none !important;
 }
-::slotted(picture) {
-  position: absolute !important;
-  inset: 0 !important;
-}
-::slotted(img) {
-  height: 100% !important;
-  width: 100% !important;
-  object-fit: cover !important;
-}
-h2,h3,h4,h5,h6 {
-  margin: 0 !important;
-}
-.root {
-  position: relative;
-  overflow: hidden;
-  transform: translate3d(0,0,0);
-  border-radius: 12px;
-  color: #FBFCFF;
-  padding-top: 133.33%;
-}
-.image-container {
-  position: absolute;
-  inset: 0;
+slot:not([name]) {
+  display: block;
+  width: 100%;
+  height: 100%;
   transition: transform var(--p-transition-duration, 0.4s) cubic-bezier(0.25,0.1,0.25,1);
 }
-.content {
-  position: absolute;
-  left: 0;
-  right: 0;
-  display: flex;
-  justify-items: start;
-  gap: 16px;
-  border-radius: 12px;
-  flex-direction: column;
-  bottom: 0;
-  padding: clamp(32px, 2.75vw + 23px, 76px) clamp(16px, 1.25vw + 12px, 36px) clamp(16px, 1.25vw + 12px, 36px);
-  background: linear-gradient(to top, rgba(31,31,31,0.9) 0%,rgba(31,31,31,0.9) 20%,rgba(31,31,31,0.852589) 26.67%,rgba(32,32,32,0.768225) 33.33%,rgba(33,33,33,0.668116) 40%,rgba(34,34,34,0.557309) 46.67%,rgba(35,35,35,0.442691) 53.33%,rgba(36,36,36,0.331884) 60%,rgba(37,37,37,0.231775) 66.67%,rgba(38,38,38,0.147411) 73.33%,rgba(39,39,39,0.0816599) 80%,rgba(39,39,39,0.03551) 86.67%,rgba(39,39,39,0.0086472) 93.33%,rgba(39,39,39,0) 100%);;
+slot[name=primary] {
+  pointer-events: auto;
 }
-.signature {
-  position: absolute;
-  top: clamp(16px, 1.25vw + 12px, 36px);
-  left: clamp(16px, 1.25vw + 12px, 36px);
-  right: clamp(16px, 1.25vw + 12px, 36px);
-  display: flex;
+slot[name=secondary] {
+  pointer-events: auto;
 }
-.heading {
+::slotted(:is(img,picture)) {
+  display: block !important;
+  width: 100% !important;
+  height: 100% !important;
+}
+::slotted(img) {
+  object-fit: cover !important;
+}
+a {
+  grid-area: 1/1/-1 /-1;
+  z-index: 4;
+  outline: 0;
+}
+h1,h2,h3,h4,h5,h6 {
   margin: 0;
+  z-index: 3;
+  max-width: 34.375rem;
   font: normal normal 400 clamp(1.27rem, 0.51vw + 1.16rem, 1.78rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: inherit;
+  color: #FBFCFF;
   font-weight: 600;
 }
+.root {
+  aspect-ratio: 3/4;
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template: clamp(16px, 1.25vw + 12px, 36px) auto minmax(0px, 1fr) auto clamp(16px, 1.25vw + 12px, 36px)/clamp(16px, 1.25vw + 12px, 36px) minmax(0px, 1fr) clamp(16px, 1.25vw + 12px, 36px);
+}
+.root::after {
+  content: "";
+  z-index: 2;
+  grid-area: 4/1/6/-1;
+  background: linear-gradient(to top, rgba(31,31,31,0.9) 0%,rgba(31,31,31,0.9) 20%,rgba(31,31,31,0.852589) 26.67%,rgba(32,32,32,0.768225) 33.33%,rgba(33,33,33,0.668116) 40%,rgba(34,34,34,0.557309) 46.67%,rgba(35,35,35,0.442691) 53.33%,rgba(36,36,36,0.331884) 60%,rgba(37,37,37,0.231775) 66.67%,rgba(38,38,38,0.147411) 73.33%,rgba(39,39,39,0.0816599) 80%,rgba(39,39,39,0.03551) 86.67%,rgba(39,39,39,0.0086472) 93.33%,rgba(39,39,39,0) 100%);;
+  margin-top: calc(clamp(32px, 2.75vw + 23px, 76px) * -1);
+  border-end-start-radius: 12px;
+  border-end-end-radius: 12px;
+}
+.header {
+  grid-area: 2/2;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(8px, 0.5vw + 6px, 16px);
+}
+.media {
+  grid-area: 1/1/-1 /-1;
+  z-index: 1;
+  overflow: hidden;
+  border-radius: 12px;
+}
+.footer {
+  grid-area: 4/2;
+  display: flex;
+  gap: 16px;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-direction: column;
+}
 .link-group {
+  z-index: 5;
   display: flex;
   width: 100%;
+  pointer-events: none;
   gap: clamp(8px, 0.5vw + 6px, 16px);
   flex-flow: column nowrap;
   align-items: stretch;
-}
-.link-overlay {
-  position: fixed;
-  inset: 0;
 }
 @media(min-width:480px) {
   .link-group {
@@ -1058,7 +1094,7 @@ h2,h3,h4,h5,h6 {
 }
 
 @media (forced-colors: active) {
-  .content {
+  .root::after {
     background: rgba(0,0,0,0.7);
   }
 }
@@ -1068,13 +1104,14 @@ h2,h3,h4,h5,h6 {
     <div
       class="root"
     >
+      <a
+        aria-hidden="true"
+        href="#primary-slotted"
+        tabindex="-1"
+        target="_self"
+      />
       <div
-        class="image-container"
-      >
-        <slot />
-      </div>
-      <div
-        class="signature"
+        class="header"
       >
         <p-model-signature
           class="ssr"
@@ -1091,7 +1128,7 @@ h2,h3,h4,h5,h6 {
   max-height: 100%;
   width: var(--p-model-signature-width,94px);
   height: var(--p-model-signature-height,auto);
-  mask: url(http://localhost:3001/model-signatures/911.min.b68f913216168583298ccf83f1a6b8d5.svg) no-repeat left top / contain !important;
+  mask: url(http://localhost:3001/model-signatures/911.b68f913.svg) no-repeat left top / contain !important;
   aspect-ratio: 94 / 36 !important;
   background: var(--p-model-signature-color,#FBFCFF) !important;
   color-scheme: light dark !important;
@@ -1121,24 +1158,23 @@ img {
             <slot />
             <img
               alt="911"
-              src="http://localhost:3001/model-signatures/911.min.b68f913216168583298ccf83f1a6b8d5.svg"
+              src="http://localhost:3001/model-signatures/911.b68f913.svg"
             />
           </template>
         </p-model-signature>
+        <slot
+          name="header"
+        />
       </div>
       <div
-        class="content"
+        class="media"
       >
-        <a
-          aria-hidden="true"
-          class="link-overlay"
-          href="#primary-slotted"
-          tabindex="-1"
-          target="_self"
-        />
-        <h2
-          class="heading"
-        >
+        <slot />
+      </div>
+      <div
+        class="footer"
+      >
+        <h2>
           Some heading
         </h2>
         <div
@@ -1358,68 +1394,86 @@ exports[`manual test cases > should pass internal props correctly to p-link-tile
 :host([hidden]) {
   display: none !important;
 }
-::slotted(picture) {
-  position: absolute !important;
-  inset: 0 !important;
-}
-::slotted(img) {
-  height: 100% !important;
-  width: 100% !important;
-  object-fit: cover !important;
-}
-h2,h3,h4,h5,h6 {
-  margin: 0 !important;
-}
-.root {
-  position: relative;
-  overflow: hidden;
-  transform: translate3d(0,0,0);
-  border-radius: 12px;
-  color: #FBFCFF;
-  padding-top: 133.33%;
-}
-.image-container {
-  position: absolute;
-  inset: 0;
+slot:not([name]) {
+  display: block;
+  width: 100%;
+  height: 100%;
   transition: transform var(--p-transition-duration, 0.4s) cubic-bezier(0.25,0.1,0.25,1);
 }
-.content {
-  position: absolute;
-  left: 0;
-  right: 0;
-  display: flex;
-  justify-items: start;
-  gap: 16px;
-  border-radius: 12px;
-  flex-direction: column;
-  bottom: 0;
-  padding: clamp(32px, 2.75vw + 23px, 76px) clamp(16px, 1.25vw + 12px, 36px) clamp(16px, 1.25vw + 12px, 36px);
-  background: linear-gradient(to top, rgba(31,31,31,0.9) 0%,rgba(31,31,31,0.9) 20%,rgba(31,31,31,0.852589) 26.67%,rgba(32,32,32,0.768225) 33.33%,rgba(33,33,33,0.668116) 40%,rgba(34,34,34,0.557309) 46.67%,rgba(35,35,35,0.442691) 53.33%,rgba(36,36,36,0.331884) 60%,rgba(37,37,37,0.231775) 66.67%,rgba(38,38,38,0.147411) 73.33%,rgba(39,39,39,0.0816599) 80%,rgba(39,39,39,0.03551) 86.67%,rgba(39,39,39,0.0086472) 93.33%,rgba(39,39,39,0) 100%);;
+slot[name=primary] {
+  pointer-events: auto;
 }
-.signature {
-  position: absolute;
-  top: clamp(16px, 1.25vw + 12px, 36px);
-  left: clamp(16px, 1.25vw + 12px, 36px);
-  right: clamp(16px, 1.25vw + 12px, 36px);
-  display: flex;
+slot[name=secondary] {
+  pointer-events: auto;
 }
-.heading {
+::slotted(:is(img,picture)) {
+  display: block !important;
+  width: 100% !important;
+  height: 100% !important;
+}
+::slotted(img) {
+  object-fit: cover !important;
+}
+a {
+  grid-area: 1/1/-1 /-1;
+  z-index: 4;
+  outline: 0;
+}
+h1,h2,h3,h4,h5,h6 {
   margin: 0;
+  z-index: 3;
+  max-width: 34.375rem;
   font: normal normal 400 clamp(1.27rem, 0.51vw + 1.16rem, 1.78rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: inherit;
+  color: #FBFCFF;
   font-weight: 600;
 }
+.root {
+  aspect-ratio: 3/4;
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template: clamp(16px, 1.25vw + 12px, 36px) auto minmax(0px, 1fr) auto clamp(16px, 1.25vw + 12px, 36px)/clamp(16px, 1.25vw + 12px, 36px) minmax(0px, 1fr) clamp(16px, 1.25vw + 12px, 36px);
+}
+.root::after {
+  content: "";
+  z-index: 2;
+  grid-area: 4/1/6/-1;
+  background: linear-gradient(to top, rgba(31,31,31,0.9) 0%,rgba(31,31,31,0.9) 20%,rgba(31,31,31,0.852589) 26.67%,rgba(32,32,32,0.768225) 33.33%,rgba(33,33,33,0.668116) 40%,rgba(34,34,34,0.557309) 46.67%,rgba(35,35,35,0.442691) 53.33%,rgba(36,36,36,0.331884) 60%,rgba(37,37,37,0.231775) 66.67%,rgba(38,38,38,0.147411) 73.33%,rgba(39,39,39,0.0816599) 80%,rgba(39,39,39,0.03551) 86.67%,rgba(39,39,39,0.0086472) 93.33%,rgba(39,39,39,0) 100%);;
+  margin-top: calc(clamp(32px, 2.75vw + 23px, 76px) * -1);
+  border-end-start-radius: 12px;
+  border-end-end-radius: 12px;
+}
+.header {
+  grid-area: 2/2;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(8px, 0.5vw + 6px, 16px);
+}
+.media {
+  grid-area: 1/1/-1 /-1;
+  z-index: 1;
+  overflow: hidden;
+  border-radius: 12px;
+}
+.footer {
+  grid-area: 4/2;
+  display: flex;
+  gap: 16px;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-direction: column;
+}
 .link-group {
+  z-index: 5;
   display: flex;
   width: 100%;
+  pointer-events: none;
   gap: clamp(8px, 0.5vw + 6px, 16px);
   flex-flow: column nowrap;
   align-items: stretch;
-}
-.link-overlay {
-  position: fixed;
-  inset: 0;
 }
 @media(min-width:480px) {
   .link-group {
@@ -1429,7 +1483,7 @@ h2,h3,h4,h5,h6 {
 }
 
 @media (forced-colors: active) {
-  .content {
+  .root::after {
     background: rgba(0,0,0,0.7);
   }
 }
@@ -1439,13 +1493,14 @@ h2,h3,h4,h5,h6 {
     <div
       class="root"
     >
+      <a
+        aria-hidden="true"
+        href="#primary-framework"
+        tabindex="-1"
+        target="_self"
+      />
       <div
-        class="image-container"
-      >
-        <slot />
-      </div>
-      <div
-        class="signature"
+        class="header"
       >
         <p-model-signature
           class="ssr"
@@ -1462,7 +1517,7 @@ h2,h3,h4,h5,h6 {
   max-height: 100%;
   width: var(--p-model-signature-width,94px);
   height: var(--p-model-signature-height,auto);
-  mask: url(http://localhost:3001/model-signatures/911.min.b68f913216168583298ccf83f1a6b8d5.svg) no-repeat left top / contain !important;
+  mask: url(http://localhost:3001/model-signatures/911.b68f913.svg) no-repeat left top / contain !important;
   aspect-ratio: 94 / 36 !important;
   background: var(--p-model-signature-color,#FBFCFF) !important;
   color-scheme: light dark !important;
@@ -1492,24 +1547,23 @@ img {
             <slot />
             <img
               alt="911"
-              src="http://localhost:3001/model-signatures/911.min.b68f913216168583298ccf83f1a6b8d5.svg"
+              src="http://localhost:3001/model-signatures/911.b68f913.svg"
             />
           </template>
         </p-model-signature>
+        <slot
+          name="header"
+        />
       </div>
       <div
-        class="content"
+        class="media"
       >
-        <a
-          aria-hidden="true"
-          class="link-overlay"
-          href="#primary-framework"
-          tabindex="-1"
-          target="_self"
-        />
-        <h2
-          class="heading"
-        >
+        <slot />
+      </div>
+      <div
+        class="footer"
+      >
+        <h2>
           Some heading
         </h2>
         <div
@@ -1729,68 +1783,86 @@ exports[`manual test cases > should pass internal props correctly to p-link-tile
 :host([hidden]) {
   display: none !important;
 }
-::slotted(picture) {
-  position: absolute !important;
-  inset: 0 !important;
-}
-::slotted(img) {
-  height: 100% !important;
-  width: 100% !important;
-  object-fit: cover !important;
-}
-h2,h3,h4,h5,h6 {
-  margin: 0 !important;
-}
-.root {
-  position: relative;
-  overflow: hidden;
-  transform: translate3d(0,0,0);
-  border-radius: 12px;
-  color: #FBFCFF;
-  padding-top: 133.33%;
-}
-.image-container {
-  position: absolute;
-  inset: 0;
+slot:not([name]) {
+  display: block;
+  width: 100%;
+  height: 100%;
   transition: transform var(--p-transition-duration, 0.4s) cubic-bezier(0.25,0.1,0.25,1);
 }
-.content {
-  position: absolute;
-  left: 0;
-  right: 0;
-  display: flex;
-  justify-items: start;
-  gap: 16px;
-  border-radius: 12px;
-  flex-direction: column;
-  bottom: 0;
-  padding: clamp(32px, 2.75vw + 23px, 76px) clamp(16px, 1.25vw + 12px, 36px) clamp(16px, 1.25vw + 12px, 36px);
-  background: linear-gradient(to top, rgba(31,31,31,0.9) 0%,rgba(31,31,31,0.9) 20%,rgba(31,31,31,0.852589) 26.67%,rgba(32,32,32,0.768225) 33.33%,rgba(33,33,33,0.668116) 40%,rgba(34,34,34,0.557309) 46.67%,rgba(35,35,35,0.442691) 53.33%,rgba(36,36,36,0.331884) 60%,rgba(37,37,37,0.231775) 66.67%,rgba(38,38,38,0.147411) 73.33%,rgba(39,39,39,0.0816599) 80%,rgba(39,39,39,0.03551) 86.67%,rgba(39,39,39,0.0086472) 93.33%,rgba(39,39,39,0) 100%);;
+slot[name=primary] {
+  pointer-events: auto;
 }
-.signature {
-  position: absolute;
-  top: clamp(16px, 1.25vw + 12px, 36px);
-  left: clamp(16px, 1.25vw + 12px, 36px);
-  right: clamp(16px, 1.25vw + 12px, 36px);
-  display: flex;
+slot[name=secondary] {
+  pointer-events: auto;
 }
-.heading {
+::slotted(:is(img,picture)) {
+  display: block !important;
+  width: 100% !important;
+  height: 100% !important;
+}
+::slotted(img) {
+  object-fit: cover !important;
+}
+a {
+  grid-area: 1/1/-1 /-1;
+  z-index: 4;
+  outline: 0;
+}
+h1,h2,h3,h4,h5,h6 {
   margin: 0;
+  z-index: 3;
+  max-width: 34.375rem;
   font: normal normal 400 clamp(1.27rem, 0.51vw + 1.16rem, 1.78rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: inherit;
+  color: #FBFCFF;
   font-weight: 600;
 }
+.root {
+  aspect-ratio: 3/4;
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template: clamp(16px, 1.25vw + 12px, 36px) auto minmax(0px, 1fr) auto clamp(16px, 1.25vw + 12px, 36px)/clamp(16px, 1.25vw + 12px, 36px) minmax(0px, 1fr) clamp(16px, 1.25vw + 12px, 36px);
+}
+.root::after {
+  content: "";
+  z-index: 2;
+  grid-area: 4/1/6/-1;
+  background: linear-gradient(to top, rgba(31,31,31,0.9) 0%,rgba(31,31,31,0.9) 20%,rgba(31,31,31,0.852589) 26.67%,rgba(32,32,32,0.768225) 33.33%,rgba(33,33,33,0.668116) 40%,rgba(34,34,34,0.557309) 46.67%,rgba(35,35,35,0.442691) 53.33%,rgba(36,36,36,0.331884) 60%,rgba(37,37,37,0.231775) 66.67%,rgba(38,38,38,0.147411) 73.33%,rgba(39,39,39,0.0816599) 80%,rgba(39,39,39,0.03551) 86.67%,rgba(39,39,39,0.0086472) 93.33%,rgba(39,39,39,0) 100%);;
+  margin-top: calc(clamp(32px, 2.75vw + 23px, 76px) * -1);
+  border-end-start-radius: 12px;
+  border-end-end-radius: 12px;
+}
+.header {
+  grid-area: 2/2;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(8px, 0.5vw + 6px, 16px);
+}
+.media {
+  grid-area: 1/1/-1 /-1;
+  z-index: 1;
+  overflow: hidden;
+  border-radius: 12px;
+}
+.footer {
+  grid-area: 4/2;
+  display: flex;
+  gap: 16px;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-direction: column;
+}
 .link-group {
+  z-index: 5;
   display: flex;
   width: 100%;
+  pointer-events: none;
   gap: clamp(8px, 0.5vw + 6px, 16px);
   flex-flow: column nowrap;
   align-items: stretch;
-}
-.link-overlay {
-  position: fixed;
-  inset: 0;
 }
 @media(min-width:480px) {
   .link-group {
@@ -1800,7 +1872,7 @@ h2,h3,h4,h5,h6 {
 }
 
 @media (forced-colors: active) {
-  .content {
+  .root::after {
     background: rgba(0,0,0,0.7);
   }
 }
@@ -1810,13 +1882,14 @@ h2,h3,h4,h5,h6 {
     <div
       class="root"
     >
+      <a
+        aria-hidden="true"
+        href="#primary-slotted"
+        tabindex="-1"
+        target="_self"
+      />
       <div
-        class="image-container"
-      >
-        <slot />
-      </div>
-      <div
-        class="signature"
+        class="header"
       >
         <p-model-signature
           class="ssr"
@@ -1833,7 +1906,7 @@ h2,h3,h4,h5,h6 {
   max-height: 100%;
   width: var(--p-model-signature-width,94px);
   height: var(--p-model-signature-height,auto);
-  mask: url(http://localhost:3001/model-signatures/911.min.b68f913216168583298ccf83f1a6b8d5.svg) no-repeat left top / contain !important;
+  mask: url(http://localhost:3001/model-signatures/911.b68f913.svg) no-repeat left top / contain !important;
   aspect-ratio: 94 / 36 !important;
   background: var(--p-model-signature-color,#FBFCFF) !important;
   color-scheme: light dark !important;
@@ -1863,24 +1936,23 @@ img {
             <slot />
             <img
               alt="911"
-              src="http://localhost:3001/model-signatures/911.min.b68f913216168583298ccf83f1a6b8d5.svg"
+              src="http://localhost:3001/model-signatures/911.b68f913.svg"
             />
           </template>
         </p-model-signature>
+        <slot
+          name="header"
+        />
       </div>
       <div
-        class="content"
+        class="media"
       >
-        <a
-          aria-hidden="true"
-          class="link-overlay"
-          href="#primary-slotted"
-          tabindex="-1"
-          target="_self"
-        />
-        <h2
-          class="heading"
-        >
+        <slot />
+      </div>
+      <div
+        class="footer"
+      >
+        <h2>
           Some heading
         </h2>
         <div
@@ -2305,7 +2377,7 @@ img {
               alt=""
               height="24"
               loading="lazy"
-              src="http://localhost:3001/icons/arrow-head-down.min.31c010019ab8911fed67bef461ce8b40.svg"
+              src="http://localhost:3001/icons/arrow-head-down.1e3cbb8.svg"
               width="24"
             />
           </template>
@@ -3209,7 +3281,7 @@ img {
               alt=""
               height="24"
               loading="lazy"
-              src="http://localhost:3001/icons/arrow-head-down.min.31c010019ab8911fed67bef461ce8b40.svg"
+              src="http://localhost:3001/icons/arrow-head-down.1e3cbb8.svg"
               width="24"
             />
           </template>
@@ -3490,7 +3562,7 @@ img {
               alt=""
               height="24"
               loading="lazy"
-              src="http://localhost:3001/icons/arrow-head-down.min.31c010019ab8911fed67bef461ce8b40.svg"
+              src="http://localhost:3001/icons/arrow-head-down.1e3cbb8.svg"
               width="24"
             />
           </template>
@@ -3747,7 +3819,7 @@ img:dir(rtl) {
                     alt=""
                     height="24"
                     loading="lazy"
-                    src="http://localhost:3001/icons/arrow-head-left.min.4723607b9add50ee55a343bdf26ff315.svg"
+                    src="http://localhost:3001/icons/arrow-head-left.cf1395d.svg"
                     width="24"
                   />
                 </template>
@@ -3806,7 +3878,7 @@ img:dir(rtl) {
                     alt=""
                     height="24"
                     loading="lazy"
-                    src="http://localhost:3001/icons/arrow-head-right.min.c2b5cd82e92920af36c9be86dc321999.svg"
+                    src="http://localhost:3001/icons/arrow-head-right.304b330.svg"
                     width="24"
                   />
                 </template>
@@ -4286,7 +4358,7 @@ img:dir(rtl) {
                     alt=""
                     height="24"
                     loading="lazy"
-                    src="http://localhost:3001/icons/arrow-head-left.min.4723607b9add50ee55a343bdf26ff315.svg"
+                    src="http://localhost:3001/icons/arrow-head-left.cf1395d.svg"
                     width="24"
                   />
                 </template>
@@ -4345,7 +4417,7 @@ img:dir(rtl) {
                     alt=""
                     height="24"
                     loading="lazy"
-                    src="http://localhost:3001/icons/arrow-head-right.min.c2b5cd82e92920af36c9be86dc321999.svg"
+                    src="http://localhost:3001/icons/arrow-head-right.304b330.svg"
                     width="24"
                   />
                 </template>
@@ -4676,7 +4748,7 @@ img:dir(rtl) {
                         alt=""
                         height="24"
                         loading="lazy"
-                        src="http://localhost:3001/icons/arrow-head-left.min.4723607b9add50ee55a343bdf26ff315.svg"
+                        src="http://localhost:3001/icons/arrow-head-left.cf1395d.svg"
                         width="24"
                       />
                     </template>
@@ -4735,7 +4807,7 @@ img:dir(rtl) {
                         alt=""
                         height="24"
                         loading="lazy"
-                        src="http://localhost:3001/icons/arrow-head-right.min.c2b5cd82e92920af36c9be86dc321999.svg"
+                        src="http://localhost:3001/icons/arrow-head-right.304b330.svg"
                         width="24"
                       />
                     </template>
@@ -5267,6 +5339,7 @@ exports[`manual test cases > should pass internal props correctly to p-text-fiel
   height: calc(6px + 2.125ex);
 }
 .label {
+  z-index: 1;
   white-space: nowrap;
   text-indent: -999999px;
   overflow: hidden;
@@ -5336,7 +5409,7 @@ img {
                     alt=""
                     height="24"
                     loading="lazy"
-                    src="http://localhost:3001/icons/view.min.78e4839028a721c3efcd47dfdbc8e4bf.svg"
+                    src="http://localhost:3001/icons/view.5b4d7f6.svg"
                     width="24"
                   />
                 </template>
@@ -5539,7 +5612,7 @@ img {
               alt=""
               height="24"
               loading="lazy"
-              src="http://localhost:3001/icons/search.min.1a2481bb5b7acefdb7f69d34d5b2887a.svg"
+              src="http://localhost:3001/icons/search.3f0f1ce.svg"
               width="24"
             />
           </template>
@@ -5607,6 +5680,7 @@ img {
   height: calc(6px + 2.125ex);
 }
 .label {
+  z-index: 1;
   white-space: nowrap;
   text-indent: -999999px;
   overflow: hidden;
@@ -5675,7 +5749,7 @@ img {
                     alt=""
                     height="24"
                     loading="lazy"
-                    src="http://localhost:3001/icons/close.min.565f6a718b632a173b7a74eb9cb84378.svg"
+                    src="http://localhost:3001/icons/close.eec3c5d.svg"
                     width="24"
                   />
                 </template>
@@ -5969,7 +6043,7 @@ img {
                 alt=""
                 height="24"
                 loading="lazy"
-                src="http://localhost:3001/icons/plus.min.3fbdce4b03fe2c2d1ae489f0dd916f7b.svg"
+                src="http://localhost:3001/icons/plus.319993e.svg"
                 width="24"
               />
             </template>
@@ -6166,7 +6240,7 @@ img {
               alt=""
               height="24"
               loading="lazy"
-              src="http://localhost:3001/icons/information-filled.min.d9ff41c99234ae53e794900a355268de.svg"
+              src="http://localhost:3001/icons/information-filled.8f08911.svg"
               width="24"
             />
           </template>
@@ -6248,6 +6322,7 @@ img {
   height: calc(6px + 2.125ex);
 }
 .label {
+  z-index: 1;
   white-space: nowrap;
   text-indent: -999999px;
   overflow: hidden;
@@ -6316,7 +6391,7 @@ img {
                     alt=""
                     height="24"
                     loading="lazy"
-                    src="http://localhost:3001/icons/close.min.565f6a718b632a173b7a74eb9cb84378.svg"
+                    src="http://localhost:3001/icons/close.eec3c5d.svg"
                     width="24"
                   />
                 </template>
@@ -6539,9 +6614,9 @@ exports[`should render dsr component for PButtonPure 1`] = `
   height: calc(6px + 2.125ex);
 }
 .label {
+  z-index: 1;
   white-space: inherit;
   text-indent: 0;
-  z-index: 1;
   overflow: visible;
   order: 0;
 }
@@ -6611,7 +6686,7 @@ img:dir(rtl) {
             alt=""
             height="24"
             loading="lazy"
-            src="http://localhost:3001/icons/arrow-right.min.c5cbce45d98d6d1178cc72ea8bfbfa10.svg"
+            src="http://localhost:3001/icons/arrow-right.872716b.svg"
             width="24"
           />
         </template>
@@ -6650,62 +6725,84 @@ exports[`should render dsr component for PButtonTile 1`] = `
 :host([hidden]) {
   display: none !important;
 }
-::slotted(picture) {
-  position: absolute !important;
-  inset: 0 !important;
+slot {
+  display: block;
+}
+slot:not([name]) {
+  width: 100%;
+  height: 100%;
+  transition: transform var(--p-transition-duration, 0.4s) cubic-bezier(0.25,0.1,0.25,1);
+}
+slot[name="header"] {
+  grid-area: 2/2;
+  z-index: 3;
+}
+::slotted(:is(img,picture)) {
+  display: block !important;
+  width: 100% !important;
+  height: 100% !important;
 }
 ::slotted(img) {
-  height: 100% !important;
-  width: 100% !important;
   object-fit: cover !important;
 }
+a {
+  grid-area: 1/1/-1 /-1;
+  z-index: 4;
+  outline: 0;
+}
 p {
-  max-width: 34.375rem;
-  margin: 0;
-  font: normal normal 400 clamp(1.27rem, 0.51vw + 1.16rem, 1.78rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font: normal normal 400 clamp(1.13rem, 0.21vw + 1.08rem, 1.33rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: inherit;
+  z-index: 3;
+  margin: 0;
+  max-width: 34.375rem;
   font-size: clamp(1.13rem, 0.21vw + 1.08rem, 1.33rem);
   font-weight: 600;
   color: #FBFCFF;
 }
 .root {
-  position: relative;
-  overflow: hidden;
-  transform: translate3d(0,0,0);
-  border-radius: 12px;
-  color: #FBFCFF;
-  padding-top: 75%;
+  aspect-ratio: 4/3;
   cursor: pointer;
-}
-.image-container {
-  position: absolute;
-  inset: 0;
-  transition: transform var(--p-transition-duration, 0.4s) cubic-bezier(0.25,0.1,0.25,1);
-}
-.content {
-  position: absolute;
-  left: 0;
-  right: 0;
+  width: 100%;
+  height: 100%;
   display: grid;
-  justify-items: start;
-  gap: 16px;
-  border-radius: 12px;
-  bottom: 0;
-  padding: clamp(32px, 2.75vw + 23px, 76px) clamp(16px, 1.25vw + 12px, 36px) clamp(16px, 1.25vw + 12px, 36px);
+  grid-template: clamp(16px, 1.25vw + 12px, 36px) auto minmax(0px, 1fr) auto clamp(16px, 1.25vw + 12px, 36px)/clamp(16px, 1.25vw + 12px, 36px) minmax(0px, 1fr) clamp(16px, 1.25vw + 12px, 36px);
+}
+.root::after {
+  content: "";
+  z-index: 2;
+  grid-area: 4/1/6/-1;
   background: linear-gradient(to top, rgba(31,31,31,0.9) 0%,rgba(31,31,31,0.9) 20%,rgba(31,31,31,0.852589) 26.67%,rgba(32,32,32,0.768225) 33.33%,rgba(33,33,33,0.668116) 40%,rgba(34,34,34,0.557309) 46.67%,rgba(35,35,35,0.442691) 53.33%,rgba(36,36,36,0.331884) 60%,rgba(37,37,37,0.231775) 66.67%,rgba(38,38,38,0.147411) 73.33%,rgba(39,39,39,0.0816599) 80%,rgba(39,39,39,0.03551) 86.67%,rgba(39,39,39,0.0086472) 93.33%,rgba(39,39,39,0) 100%);;
-  grid-template-rows: auto auto;
-  grid-template-columns: auto;
+  margin-top: calc(clamp(32px, 2.75vw + 23px, 76px) * -1);
+  border-end-start-radius: 12px;
+  border-end-end-radius: 12px;
+}
+.media {
+  grid-area: 1/1/-1 /-1;
+  z-index: 1;
+  overflow: hidden;
+  border-radius: 12px;
+}
+.footer {
+  grid-area: 4/2;
+  display: flex;
+  gap: 16px;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-direction: column;
 }
 .link-or-button-pure {
+  z-index: 5;
   display: none;
 }
 .link-or-button {
   min-height: 54px;
+  z-index: 5;
   display: inline-block;
 }
 @media (forced-colors: active) {
-  .content {
+  .root::after {
     background: rgba(0,0,0,0.7);
   }
 }
@@ -6715,13 +6812,16 @@ p {
     <div
       class="root"
     >
+      <slot
+        name="header"
+      />
       <div
-        class="image-container"
+        class="media"
       >
         <slot />
       </div>
       <div
-        class="content"
+        class="footer"
       >
         <p />
         <p-button
@@ -7101,6 +7201,7 @@ dialog::backdrop {
   height: calc(6px + 2.125ex);
 }
 .label {
+  z-index: 1;
   white-space: nowrap;
   text-indent: -999999px;
   overflow: hidden;
@@ -7169,7 +7270,7 @@ img {
                           alt=""
                           height="24"
                           loading="lazy"
-                          src="http://localhost:3001/icons/close.min.565f6a718b632a173b7a74eb9cb84378.svg"
+                          src="http://localhost:3001/icons/close.eec3c5d.svg"
                           width="24"
                         />
                       </template>
@@ -7372,6 +7473,7 @@ dialog::backdrop {
   height: calc(6px + 2.125ex);
 }
 .label {
+  z-index: 1;
   white-space: nowrap;
   text-indent: -999999px;
   overflow: hidden;
@@ -7440,7 +7542,7 @@ img {
                           alt=""
                           height="24"
                           loading="lazy"
-                          src="http://localhost:3001/icons/close.min.565f6a718b632a173b7a74eb9cb84378.svg"
+                          src="http://localhost:3001/icons/close.eec3c5d.svg"
                           width="24"
                         />
                       </template>
@@ -7575,7 +7677,6 @@ exports[`should render dsr component for PCarousel 1`] = `
 @media(min-width:760px) {
   .header {
     grid-template-columns: minmax(0px, 1fr) auto;
-    column-gap: 16px;
     padding: 0 calc(calc(5vw - 16px) + (clamp(16px, 1.25vw + 12px, 36px) + calc((100vw - calc(5vw - 16px) * 2 - clamp(16px, 1.25vw + 12px, 36px) * 15) / 16)) * 2);
   }
   .nav {
@@ -7893,17 +7994,17 @@ img {
     </style>
     <picture>
       <source
-        srcset="http://localhost:3001/crest/porsche-crest.min.0d0cc89ae5ee57c4c15bd0dbbcbfe5d0@1x.webp 1x,http://localhost:3001/crest/porsche-crest.min.2245c45e99be5a46b4b56e73c43d5c63@2x.webp 2x,http://localhost:3001/crest/porsche-crest.min.19b429278b158b5cb5aa6ce80751e3fe@3x.webp 3x"
+        srcset="http://localhost:3001/crest/porsche-crest.0d0cc89@1x.webp 1x,http://localhost:3001/crest/porsche-crest.2245c45@2x.webp 2x,http://localhost:3001/crest/porsche-crest.19b4292@3x.webp 3x"
         type="image/webp"
       />
       <source
-        srcset="http://localhost:3001/crest/porsche-crest.min.d76137cf8cf94822b7aedb534ba88418@1x.png 1x,http://localhost:3001/crest/porsche-crest.min.8a292fbd35a5155789ddd011585e05c4@2x.png 2x,http://localhost:3001/crest/porsche-crest.min.18d6f02003b0829bac939fade88fd4e6@3x.png 3x"
+        srcset="http://localhost:3001/crest/porsche-crest.d76137c@1x.png 1x,http://localhost:3001/crest/porsche-crest.8a292fb@2x.png 2x,http://localhost:3001/crest/porsche-crest.18d6f02@3x.png 3x"
         type="image/png"
       />
       <img
         alt="Porsche"
         height="40"
-        src="http://localhost:3001/crest/porsche-crest.min.8a292fbd35a5155789ddd011585e05c4@2x.png"
+        src="http://localhost:3001/crest/porsche-crest.8a292fb@2x.png"
         width="30"
       />
     </picture>
@@ -8298,6 +8399,7 @@ dialog::backdrop {
   height: calc(6px + 2.125ex);
 }
 .label {
+  z-index: 1;
   white-space: nowrap;
   text-indent: -999999px;
   overflow: hidden;
@@ -8366,7 +8468,7 @@ img {
                       alt=""
                       height="24"
                       loading="lazy"
-                      src="http://localhost:3001/icons/close.min.565f6a718b632a173b7a74eb9cb84378.svg"
+                      src="http://localhost:3001/icons/close.eec3c5d.svg"
                       width="24"
                     />
                   </template>
@@ -8584,6 +8686,7 @@ dialog::backdrop {
   height: calc(6px + 2.125ex);
 }
 .label {
+  z-index: 1;
   white-space: nowrap;
   text-indent: -999999px;
   overflow: hidden;
@@ -8652,7 +8755,7 @@ img {
                     alt=""
                     height="24"
                     loading="lazy"
-                    src="http://localhost:3001/icons/close.min.565f6a718b632a173b7a74eb9cb84378.svg"
+                    src="http://localhost:3001/icons/close.eec3c5d.svg"
                     width="24"
                   />
                 </template>
@@ -8877,9 +8980,9 @@ exports[`should render dsr component for PFlyoutMultilevelItem 1`] = `
   height: calc(6px + 2.125ex);
 }
 .label {
+  z-index: 1;
   white-space: inherit;
   text-indent: 0;
-  z-index: 1;
   overflow: visible;
   order: -1;
 }
@@ -8950,7 +9053,7 @@ img:dir(rtl) {
                 alt=""
                 height="24"
                 loading="lazy"
-                src="http://localhost:3001/icons/arrow-head-right.min.c2b5cd82e92920af36c9be86dc321999.svg"
+                src="http://localhost:3001/icons/arrow-head-right.304b330.svg"
                 width="24"
               />
             </template>
@@ -9036,6 +9139,7 @@ img:dir(rtl) {
   height: calc(6px + 2.125ex);
 }
 .label {
+  z-index: 1;
   white-space: nowrap;
   text-indent: -999999px;
   overflow: hidden;
@@ -9107,7 +9211,7 @@ img:dir(rtl) {
                     alt=""
                     height="24"
                     loading="lazy"
-                    src="http://localhost:3001/icons/arrow-head-left.min.4723607b9add50ee55a343bdf26ff315.svg"
+                    src="http://localhost:3001/icons/arrow-head-left.cf1395d.svg"
                     width="24"
                   />
                 </template>
@@ -9323,7 +9427,7 @@ img:dir(rtl) {
       alt=""
       height="24"
       loading="lazy"
-      src="http://localhost:3001/icons/arrow-right.min.c5cbce45d98d6d1178cc72ea8bfbfa10.svg"
+      src="http://localhost:3001/icons/arrow-right.872716b.svg"
       width="24"
     />
   </template>
@@ -9437,7 +9541,7 @@ img {
           alt=""
           height="24"
           loading="lazy"
-          src="http://localhost:3001/icons/information-filled.min.d9ff41c99234ae53e794900a355268de.svg"
+          src="http://localhost:3001/icons/information-filled.8f08911.svg"
           width="24"
         />
       </template>
@@ -9519,6 +9623,7 @@ img {
   height: calc(6px + 2.125ex);
 }
 .label {
+  z-index: 1;
   white-space: nowrap;
   text-indent: -999999px;
   overflow: hidden;
@@ -9587,7 +9692,7 @@ img {
                 alt=""
                 height="24"
                 loading="lazy"
-                src="http://localhost:3001/icons/close.min.565f6a718b632a173b7a74eb9cb84378.svg"
+                src="http://localhost:3001/icons/close.eec3c5d.svg"
                 width="24"
               />
             </template>
@@ -9775,9 +9880,9 @@ exports[`should render dsr component for PLinkPure 1`] = `
   height: calc(6px + 2.125ex);
 }
 .label {
+  z-index: 1;
   white-space: inherit;
   text-indent: 0;
-  z-index: 1;
   overflow: visible;
   order: 0;
 }
@@ -9836,7 +9941,7 @@ img:dir(rtl) {
             alt=""
             height="24"
             loading="lazy"
-            src="http://localhost:3001/icons/arrow-right.min.c5cbce45d98d6d1178cc72ea8bfbfa10.svg"
+            src="http://localhost:3001/icons/arrow-right.872716b.svg"
             width="24"
           />
         </template>
@@ -9978,7 +10083,7 @@ img:dir(rtl) {
             alt=""
             height="24"
             loading="lazy"
-            src="http://localhost:3001/icons/arrow-right.min.c5cbce45d98d6d1178cc72ea8bfbfa10.svg"
+            src="http://localhost:3001/icons/arrow-right.872716b.svg"
             width="24"
           />
         </template>
@@ -10012,65 +10117,83 @@ exports[`should render dsr component for PLinkTile 1`] = `
 :host([hidden]) {
   display: none !important;
 }
-::slotted(picture) {
-  position: absolute !important;
-  inset: 0 !important;
+slot {
+  display: block;
+}
+slot:not([name]) {
+  width: 100%;
+  height: 100%;
+  transition: transform var(--p-transition-duration, 0.4s) cubic-bezier(0.25,0.1,0.25,1);
+}
+slot[name="header"] {
+  grid-area: 2/2;
+  z-index: 3;
+}
+::slotted(:is(img,picture)) {
+  display: block !important;
+  width: 100% !important;
+  height: 100% !important;
 }
 ::slotted(img) {
-  height: 100% !important;
-  width: 100% !important;
   object-fit: cover !important;
 }
+a {
+  grid-area: 1/1/-1 /-1;
+  z-index: 4;
+  outline: 0;
+}
 p {
-  max-width: 34.375rem;
-  margin: 0;
-  font: normal normal 400 clamp(1.27rem, 0.51vw + 1.16rem, 1.78rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  font: normal normal 400 clamp(1.13rem, 0.21vw + 1.08rem, 1.33rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: inherit;
+  z-index: 3;
+  margin: 0;
+  max-width: 34.375rem;
   font-size: clamp(1.13rem, 0.21vw + 1.08rem, 1.33rem);
   font-weight: 600;
   color: #FBFCFF;
 }
 .root {
-  position: relative;
-  overflow: hidden;
-  transform: translate3d(0,0,0);
-  border-radius: 12px;
-  color: #FBFCFF;
-  padding-top: 75%;
-}
-.image-container {
-  position: absolute;
-  inset: 0;
-  transition: transform var(--p-transition-duration, 0.4s) cubic-bezier(0.25,0.1,0.25,1);
-}
-.content {
-  position: absolute;
-  left: 0;
-  right: 0;
+  aspect-ratio: 4/3;
+  width: 100%;
+  height: 100%;
   display: grid;
-  justify-items: start;
-  gap: 16px;
-  border-radius: 12px;
-  bottom: 0;
-  padding: clamp(32px, 2.75vw + 23px, 76px) clamp(16px, 1.25vw + 12px, 36px) clamp(16px, 1.25vw + 12px, 36px);
+  grid-template: clamp(16px, 1.25vw + 12px, 36px) auto minmax(0px, 1fr) auto clamp(16px, 1.25vw + 12px, 36px)/clamp(16px, 1.25vw + 12px, 36px) minmax(0px, 1fr) clamp(16px, 1.25vw + 12px, 36px);
+}
+.root::after {
+  content: "";
+  z-index: 2;
+  grid-area: 4/1/6/-1;
   background: linear-gradient(to top, rgba(31,31,31,0.9) 0%,rgba(31,31,31,0.9) 20%,rgba(31,31,31,0.852589) 26.67%,rgba(32,32,32,0.768225) 33.33%,rgba(33,33,33,0.668116) 40%,rgba(34,34,34,0.557309) 46.67%,rgba(35,35,35,0.442691) 53.33%,rgba(36,36,36,0.331884) 60%,rgba(37,37,37,0.231775) 66.67%,rgba(38,38,38,0.147411) 73.33%,rgba(39,39,39,0.0816599) 80%,rgba(39,39,39,0.03551) 86.67%,rgba(39,39,39,0.0086472) 93.33%,rgba(39,39,39,0) 100%);;
-  grid-template-rows: auto auto;
-  grid-template-columns: auto;
+  margin-top: calc(clamp(32px, 2.75vw + 23px, 76px) * -1);
+  border-end-start-radius: 12px;
+  border-end-end-radius: 12px;
+}
+.media {
+  grid-area: 1/1/-1 /-1;
+  z-index: 1;
+  overflow: hidden;
+  border-radius: 12px;
+}
+.footer {
+  grid-area: 4/2;
+  display: flex;
+  gap: 16px;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-direction: column;
 }
 .link-or-button-pure {
+  z-index: 5;
   display: none;
 }
 .link-or-button {
   min-height: 54px;
+  z-index: 5;
   display: inline-block;
 }
-.link-overlay {
-  position: fixed;
-  inset: 0;
-}
 @media (forced-colors: active) {
-  .content {
+  .root::after {
     background: rgba(0,0,0,0.7);
   }
 }
@@ -10080,20 +10203,22 @@ p {
     <div
       class="root"
     >
+      <a
+        aria-hidden="true"
+        tabindex="-1"
+        target="_self"
+      />
+      <slot
+        name="header"
+      />
       <div
-        class="image-container"
+        class="media"
       >
         <slot />
       </div>
       <div
-        class="content"
+        class="footer"
       >
-        <a
-          aria-hidden="true"
-          class="link-overlay"
-          tabindex="-1"
-          target="_self"
-        />
         <p />
         <p-link
           class="link-or-button ssr"
@@ -10203,68 +10328,86 @@ exports[`should render dsr component for PLinkTileModelSignature 1`] = `
 :host([hidden]) {
   display: none !important;
 }
-::slotted(picture) {
-  position: absolute !important;
-  inset: 0 !important;
-}
-::slotted(img) {
-  height: 100% !important;
-  width: 100% !important;
-  object-fit: cover !important;
-}
-h2,h3,h4,h5,h6 {
-  margin: 0 !important;
-}
-.root {
-  position: relative;
-  overflow: hidden;
-  transform: translate3d(0,0,0);
-  border-radius: 12px;
-  color: #FBFCFF;
-  padding-top: 133.33%;
-}
-.image-container {
-  position: absolute;
-  inset: 0;
+slot:not([name]) {
+  display: block;
+  width: 100%;
+  height: 100%;
   transition: transform var(--p-transition-duration, 0.4s) cubic-bezier(0.25,0.1,0.25,1);
 }
-.content {
-  position: absolute;
-  left: 0;
-  right: 0;
-  display: flex;
-  justify-items: start;
-  gap: 16px;
-  border-radius: 12px;
-  flex-direction: column;
-  bottom: 0;
-  padding: clamp(32px, 2.75vw + 23px, 76px) clamp(16px, 1.25vw + 12px, 36px) clamp(16px, 1.25vw + 12px, 36px);
-  background: linear-gradient(to top, rgba(31,31,31,0.9) 0%,rgba(31,31,31,0.9) 20%,rgba(31,31,31,0.852589) 26.67%,rgba(32,32,32,0.768225) 33.33%,rgba(33,33,33,0.668116) 40%,rgba(34,34,34,0.557309) 46.67%,rgba(35,35,35,0.442691) 53.33%,rgba(36,36,36,0.331884) 60%,rgba(37,37,37,0.231775) 66.67%,rgba(38,38,38,0.147411) 73.33%,rgba(39,39,39,0.0816599) 80%,rgba(39,39,39,0.03551) 86.67%,rgba(39,39,39,0.0086472) 93.33%,rgba(39,39,39,0) 100%);;
+slot[name=primary] {
+  pointer-events: auto;
 }
-.signature {
-  position: absolute;
-  top: clamp(16px, 1.25vw + 12px, 36px);
-  left: clamp(16px, 1.25vw + 12px, 36px);
-  right: clamp(16px, 1.25vw + 12px, 36px);
-  display: flex;
+slot[name=secondary] {
+  pointer-events: auto;
 }
-.heading {
+::slotted(:is(img,picture)) {
+  display: block !important;
+  width: 100% !important;
+  height: 100% !important;
+}
+::slotted(img) {
+  object-fit: cover !important;
+}
+a {
+  grid-area: 1/1/-1 /-1;
+  z-index: 4;
+  outline: 0;
+}
+h1,h2,h3,h4,h5,h6 {
   margin: 0;
+  z-index: 3;
+  max-width: 34.375rem;
   font: normal normal 400 clamp(1.27rem, 0.51vw + 1.16rem, 1.78rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: inherit;
+  color: #FBFCFF;
   font-weight: 600;
 }
+.root {
+  aspect-ratio: 3/4;
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template: clamp(16px, 1.25vw + 12px, 36px) auto minmax(0px, 1fr) auto clamp(16px, 1.25vw + 12px, 36px)/clamp(16px, 1.25vw + 12px, 36px) minmax(0px, 1fr) clamp(16px, 1.25vw + 12px, 36px);
+}
+.root::after {
+  content: "";
+  z-index: 2;
+  grid-area: 4/1/6/-1;
+  background: linear-gradient(to top, rgba(31,31,31,0.9) 0%,rgba(31,31,31,0.9) 20%,rgba(31,31,31,0.852589) 26.67%,rgba(32,32,32,0.768225) 33.33%,rgba(33,33,33,0.668116) 40%,rgba(34,34,34,0.557309) 46.67%,rgba(35,35,35,0.442691) 53.33%,rgba(36,36,36,0.331884) 60%,rgba(37,37,37,0.231775) 66.67%,rgba(38,38,38,0.147411) 73.33%,rgba(39,39,39,0.0816599) 80%,rgba(39,39,39,0.03551) 86.67%,rgba(39,39,39,0.0086472) 93.33%,rgba(39,39,39,0) 100%);;
+  margin-top: calc(clamp(32px, 2.75vw + 23px, 76px) * -1);
+  border-end-start-radius: 12px;
+  border-end-end-radius: 12px;
+}
+.header {
+  grid-area: 2/2;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(8px, 0.5vw + 6px, 16px);
+}
+.media {
+  grid-area: 1/1/-1 /-1;
+  z-index: 1;
+  overflow: hidden;
+  border-radius: 12px;
+}
+.footer {
+  grid-area: 4/2;
+  display: flex;
+  gap: 16px;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-direction: column;
+}
 .link-group {
+  z-index: 5;
   display: flex;
   width: 100%;
+  pointer-events: none;
   gap: clamp(8px, 0.5vw + 6px, 16px);
   flex-flow: column nowrap;
   align-items: stretch;
-}
-.link-overlay {
-  position: fixed;
-  inset: 0;
 }
 @media(min-width:480px) {
   .link-group {
@@ -10274,7 +10417,7 @@ h2,h3,h4,h5,h6 {
 }
 
 @media (forced-colors: active) {
-  .content {
+  .root::after {
     background: rgba(0,0,0,0.7);
   }
 }
@@ -10284,13 +10427,14 @@ h2,h3,h4,h5,h6 {
     <div
       class="root"
     >
+      <a
+        aria-hidden="true"
+        href="#"
+        tabindex="-1"
+        target="_self"
+      />
       <div
-        class="image-container"
-      >
-        <slot />
-      </div>
-      <div
-        class="signature"
+        class="header"
       >
         <p-model-signature
           class="ssr"
@@ -10307,7 +10451,7 @@ h2,h3,h4,h5,h6 {
   max-height: 100%;
   width: var(--p-model-signature-width,94px);
   height: var(--p-model-signature-height,auto);
-  mask: url(http://localhost:3001/model-signatures/911.min.b68f913216168583298ccf83f1a6b8d5.svg) no-repeat left top / contain !important;
+  mask: url(http://localhost:3001/model-signatures/911.b68f913.svg) no-repeat left top / contain !important;
   aspect-ratio: 94 / 36 !important;
   background: var(--p-model-signature-color,#FBFCFF) !important;
   color-scheme: light dark !important;
@@ -10337,24 +10481,23 @@ img {
             <slot />
             <img
               alt="911"
-              src="http://localhost:3001/model-signatures/911.min.b68f913216168583298ccf83f1a6b8d5.svg"
+              src="http://localhost:3001/model-signatures/911.b68f913.svg"
             />
           </template>
         </p-model-signature>
+        <slot
+          name="header"
+        />
       </div>
       <div
-        class="content"
+        class="media"
       >
-        <a
-          aria-hidden="true"
-          class="link-overlay"
-          href="#"
-          tabindex="-1"
-          target="_self"
-        />
-        <h2
-          class="heading"
-        />
+        <slot />
+      </div>
+      <div
+        class="footer"
+      >
+        <h2 />
         <div
           class="link-group"
           role="group"
@@ -10694,6 +10837,7 @@ slot[name="header"] {
   height: calc(6px + 2.125ex);
 }
 .label {
+  z-index: 1;
   white-space: nowrap;
   text-indent: -999999px;
   overflow: hidden;
@@ -10762,7 +10906,7 @@ img {
                     alt=""
                     height="24"
                     loading="lazy"
-                    src="http://localhost:3001/icons/heart.min.9bf1c860a0e4c38cf85d1e82b19ba483.svg"
+                    src="http://localhost:3001/icons/heart.9a5962e.svg"
                     width="24"
                   />
                 </template>
@@ -10851,25 +10995,25 @@ img {
     <picture>
       <source
         media="(min-width: 1300px)"
-        srcset="http://localhost:3001/marque/porsche-marque-trademark.medium.min.5c6af9aa7946fea34f60c8f8c95d0188@1x.webp 1x,http://localhost:3001/marque/porsche-marque-trademark.medium.min.fff6e9b91481cc5b1fc6c9b62987ccaf@2x.webp 2x,http://localhost:3001/marque/porsche-marque-trademark.medium.min.f67092ff6b5f4ecb4add73d6ae153db0@3x.webp 3x"
+        srcset="http://localhost:3001/marque/porsche-marque-trademark.medium.5c6af9a@1x.webp 1x,http://localhost:3001/marque/porsche-marque-trademark.medium.fff6e9b@2x.webp 2x,http://localhost:3001/marque/porsche-marque-trademark.medium.f67092f@3x.webp 3x"
         type="image/webp"
       />
       <source
         media="(min-width: 1300px)"
-        srcset="http://localhost:3001/marque/porsche-marque-trademark.medium.min.da075315857e239ff46bf4c150648ff0@1x.png 1x,http://localhost:3001/marque/porsche-marque-trademark.medium.min.aa801f42028b1c385a5e26ae115da598@2x.png 2x,http://localhost:3001/marque/porsche-marque-trademark.medium.min.824818d15eaf445f50e0a2391613f214@3x.png 3x"
+        srcset="http://localhost:3001/marque/porsche-marque-trademark.medium.da07531@1x.png 1x,http://localhost:3001/marque/porsche-marque-trademark.medium.aa801f4@2x.png 2x,http://localhost:3001/marque/porsche-marque-trademark.medium.824818d@3x.png 3x"
         type="image/png"
       />
       <source
-        srcset="http://localhost:3001/marque/porsche-marque-trademark.small.min.783639706bead66b2d56e3b8b64bd61f@1x.webp 1x,http://localhost:3001/marque/porsche-marque-trademark.small.min.760a57efa93d4e7e16e26128ec7ead46@2x.webp 2x,http://localhost:3001/marque/porsche-marque-trademark.small.min.1726036a7829347e1e24d1eb54fc0d64@3x.webp 3x"
+        srcset="http://localhost:3001/marque/porsche-marque-trademark.small.7836397@1x.webp 1x,http://localhost:3001/marque/porsche-marque-trademark.small.760a57e@2x.webp 2x,http://localhost:3001/marque/porsche-marque-trademark.small.1726036@3x.webp 3x"
         type="image/webp"
       />
       <source
-        srcset="http://localhost:3001/marque/porsche-marque-trademark.small.min.020244b41a29323e2a7932a264514cdf@1x.png 1x,http://localhost:3001/marque/porsche-marque-trademark.small.min.92184fae44511ceda8320443c17110b1@2x.png 2x,http://localhost:3001/marque/porsche-marque-trademark.small.min.fd545cea4298f5d797246d5805711646@3x.png 3x"
+        srcset="http://localhost:3001/marque/porsche-marque-trademark.small.020244b@1x.png 1x,http://localhost:3001/marque/porsche-marque-trademark.small.92184fa@2x.png 2x,http://localhost:3001/marque/porsche-marque-trademark.small.fd545ce@3x.png 3x"
         type="image/png"
       />
       <img
         alt="Porsche"
-        src="http://localhost:3001/marque/porsche-marque-trademark.medium.min.aa801f42028b1c385a5e26ae115da598@2x.png"
+        src="http://localhost:3001/marque/porsche-marque-trademark.medium.aa801f4@2x.png"
       />
     </picture>
   </template>
@@ -11067,6 +11211,7 @@ dialog::backdrop {
   height: calc(6px + 2.125ex);
 }
 .label {
+  z-index: 1;
   white-space: nowrap;
   text-indent: -999999px;
   overflow: hidden;
@@ -11135,7 +11280,7 @@ img {
                       alt=""
                       height="24"
                       loading="lazy"
-                      src="http://localhost:3001/icons/close.min.565f6a718b632a173b7a74eb9cb84378.svg"
+                      src="http://localhost:3001/icons/close.eec3c5d.svg"
                       width="24"
                     />
                   </template>
@@ -11179,7 +11324,7 @@ exports[`should render dsr component for PModelSignature 1`] = `
   max-height: 100%;
   width: var(--p-model-signature-width,94px);
   height: var(--p-model-signature-height,auto);
-  mask: url(http://localhost:3001/model-signatures/911.min.b68f913216168583298ccf83f1a6b8d5.svg) no-repeat left top / contain !important;
+  mask: url(http://localhost:3001/model-signatures/911.b68f913.svg) no-repeat left top / contain !important;
   aspect-ratio: 94 / 36 !important;
   background: var(--p-model-signature-color,#010205) !important;
   color-scheme: light dark !important;
@@ -11209,7 +11354,7 @@ img {
     <slot />
     <img
       alt="911"
-      src="http://localhost:3001/model-signatures/911.min.b68f913216168583298ccf83f1a6b8d5.svg"
+      src="http://localhost:3001/model-signatures/911.b68f913.svg"
     />
   </template>
   Some child
@@ -11435,7 +11580,7 @@ img {
               alt=""
               height="24"
               loading="lazy"
-              src="http://localhost:3001/icons/arrow-head-down.min.31c010019ab8911fed67bef461ce8b40.svg"
+              src="http://localhost:3001/icons/arrow-head-down.1e3cbb8.svg"
               width="24"
             />
           </template>
@@ -11479,6 +11624,12 @@ img {
 
 exports[`should render dsr component for PMultiSelectOption 1`] = `
 <p-multi-select-option
+  class="ssr"
+/>
+`;
+
+exports[`should render dsr component for POptgroup 1`] = `
+<p-optgroup
   class="ssr"
 />
 `;
@@ -11628,7 +11779,7 @@ img:dir(rtl) {
                   alt=""
                   height="24"
                   loading="lazy"
-                  src="http://localhost:3001/icons/arrow-left.min.06c8246bf60d457bc3f2ff8866053de2.svg"
+                  src="http://localhost:3001/icons/arrow-left.e03c25b.svg"
                   width="24"
                 />
               </template>
@@ -11699,7 +11850,7 @@ img:dir(rtl) {
                   alt=""
                   height="24"
                   loading="lazy"
-                  src="http://localhost:3001/icons/arrow-right.min.c5cbce45d98d6d1178cc72ea8bfbfa10.svg"
+                  src="http://localhost:3001/icons/arrow-right.872716b.svg"
                   width="24"
                 />
               </template>
@@ -12037,7 +12188,7 @@ img {
             alt=""
             height="24"
             loading="lazy"
-            src="http://localhost:3001/icons/information.min.da41162c49566b753b7162fc6b88adb9.svg"
+            src="http://localhost:3001/icons/information.da41162.svg"
             width="24"
           />
         </template>
@@ -12373,7 +12524,7 @@ img:dir(rtl) {
                 alt=""
                 height="24"
                 loading="lazy"
-                src="http://localhost:3001/icons/arrow-head-left.min.4723607b9add50ee55a343bdf26ff315.svg"
+                src="http://localhost:3001/icons/arrow-head-left.cf1395d.svg"
                 width="24"
               />
             </template>
@@ -12432,7 +12583,7 @@ img:dir(rtl) {
                 alt=""
                 height="24"
                 loading="lazy"
-                src="http://localhost:3001/icons/arrow-head-right.min.c2b5cd82e92920af36c9be86dc321999.svg"
+                src="http://localhost:3001/icons/arrow-head-right.304b330.svg"
                 width="24"
               />
             </template>
@@ -12607,7 +12758,7 @@ button:disabled {
   right: 0;
   top: 100%;
   box-sizing: border-box;
-  max-height: 450px;
+  max-height: 416px;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
   background: #FFF;
@@ -12682,6 +12833,7 @@ button:disabled {
       >
         <button
           aria-controls="list"
+          aria-describedby="initial-status"
           aria-expanded="false"
           aria-haspopup="listbox"
           aria-labelledby="label"
@@ -12731,7 +12883,7 @@ img {
               alt=""
               height="24"
               loading="lazy"
-              src="http://localhost:3001/icons/arrow-head-down.min.31c010019ab8911fed67bef461ce8b40.svg"
+              src="http://localhost:3001/icons/arrow-head-down.1e3cbb8.svg"
               width="24"
             />
           </template>
@@ -12780,9 +12932,11 @@ exports[`should render dsr component for PSelectOption 1`] = `
   border-radius: 4px !important;
 }
 .option {
+  font-weight: 400;
   display: flex;
   gap: 12px;
   padding: 8px 12px;
+  padding-inline-start: var(--p-internal-select-option-padding-left, 12px);
   flex: 1 0 calc(calc(6px + 2.125ex) + 8px * 2);
   min-height: calc(calc(6px + 2.125ex) + 8px * 2);
   color: #535457;
@@ -12880,6 +13034,7 @@ exports[`should render dsr component for PSelectWrapper 1`] = `
   cursor: pointer !important;
   padding: 8px 16px !important;
   padding-inline-end: calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 1) !important;
+  border-color: transparent !important;
 }
 ::slotted(select:disabled) {
   cursor: not-allowed !important;
@@ -13002,11 +13157,54 @@ img {
               alt=""
               height="24"
               loading="lazy"
-              src="http://localhost:3001/icons/arrow-head-down.min.31c010019ab8911fed67bef461ce8b40.svg"
+              src="http://localhost:3001/icons/arrow-head-down.1e3cbb8.svg"
               width="24"
             />
           </template>
         </p-icon>
+        <p-select-wrapper-dropdown
+          class="dropdown ssr"
+        >
+          <template
+            shadowroot="open"
+            shadowrootmode="open"
+          >
+            <style>
+              :host {
+  display: block;
+  position: relative;
+}
+button {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background: transparent;
+  border: 2px solid #6B6D70;
+  border-radius: 4px;
+  outline: 0;
+  cursor: pointer;
+  transition: border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+}
+button:disabled {
+  cursor: not-allowed;
+  border-color: #949598;
+}
+
+.sr-text {
+  display: none;
+}
+            </style>
+            <button
+              id="value"
+              part="select-wrapper-dropdown"
+              role="combobox"
+              type="button"
+            />
+          </template>
+        </p-select-wrapper-dropdown>
       </div>
     </div>
   </template>
@@ -13326,7 +13524,7 @@ img:dir(rtl) {
                     alt=""
                     height="24"
                     loading="lazy"
-                    src="http://localhost:3001/icons/arrow-head-left.min.4723607b9add50ee55a343bdf26ff315.svg"
+                    src="http://localhost:3001/icons/arrow-head-left.cf1395d.svg"
                     width="24"
                   />
                 </template>
@@ -13385,7 +13583,7 @@ img:dir(rtl) {
                     alt=""
                     height="24"
                     loading="lazy"
-                    src="http://localhost:3001/icons/arrow-head-right.min.c2b5cd82e92920af36c9be86dc321999.svg"
+                    src="http://localhost:3001/icons/arrow-head-right.304b330.svg"
                     width="24"
                   />
                 </template>
@@ -13829,7 +14027,7 @@ img:dir(rtl) {
                     alt=""
                     height="24"
                     loading="lazy"
-                    src="http://localhost:3001/icons/arrow-head-left.min.4723607b9add50ee55a343bdf26ff315.svg"
+                    src="http://localhost:3001/icons/arrow-head-left.cf1395d.svg"
                     width="24"
                   />
                 </template>
@@ -13888,7 +14086,7 @@ img:dir(rtl) {
                     alt=""
                     height="24"
                     loading="lazy"
-                    src="http://localhost:3001/icons/arrow-head-right.min.c2b5cd82e92920af36c9be86dc321999.svg"
+                    src="http://localhost:3001/icons/arrow-head-right.304b330.svg"
                     width="24"
                   />
                 </template>
@@ -14366,7 +14564,7 @@ img:dir(rtl) {
                         alt=""
                         height="24"
                         loading="lazy"
-                        src="http://localhost:3001/icons/arrow-head-left.min.4723607b9add50ee55a343bdf26ff315.svg"
+                        src="http://localhost:3001/icons/arrow-head-left.cf1395d.svg"
                         width="24"
                       />
                     </template>
@@ -14425,7 +14623,7 @@ img:dir(rtl) {
                         alt=""
                         height="24"
                         loading="lazy"
-                        src="http://localhost:3001/icons/arrow-head-right.min.c2b5cd82e92920af36c9be86dc321999.svg"
+                        src="http://localhost:3001/icons/arrow-head-right.304b330.svg"
                         width="24"
                       />
                     </template>
@@ -14741,7 +14939,7 @@ img:dir(rtl) {
                     alt=""
                     height="24"
                     loading="lazy"
-                    src="http://localhost:3001/icons/arrow-head-left.min.4723607b9add50ee55a343bdf26ff315.svg"
+                    src="http://localhost:3001/icons/arrow-head-left.cf1395d.svg"
                     width="24"
                   />
                 </template>
@@ -14800,7 +14998,7 @@ img:dir(rtl) {
                     alt=""
                     height="24"
                     loading="lazy"
-                    src="http://localhost:3001/icons/arrow-head-right.min.c2b5cd82e92920af36c9be86dc321999.svg"
+                    src="http://localhost:3001/icons/arrow-head-right.304b330.svg"
                     width="24"
                   />
                 </template>
@@ -14865,32 +15063,22 @@ exports[`should render dsr component for PTag 1`] = `
   display: none !important;
 }
 span {
+  position: relative;
   display: flex;
   gap: 2px;
-  align-items: center;
-  position: relative;
   padding: 4px 9px;
   border-radius: 4px;
-  background: #EEEFF2;
-  color: #010205;
   font: normal normal 400 clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem)/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  color: #010205;
+  background: #EEEFF2;
+  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), backdrop-filter var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 ::slotted(a), ::slotted(button) {
-  margin: 0 !important;
-  padding: 0 !important;
-  outline: 0 !important;
-  border-radius: 0 !important;
-  background: transparent !important;
-  display: inline !important;
-  position: static !important;
+  all: unset !important;
   text-decoration: underline !important;
   cursor: pointer !important;
   font: inherit !important;
   color: inherit !important;
-  -webkit-appearance: none !important;
-  appearance: none !important;
-  border: 0 !important;
-  text-align: start !important;
 }
 ::slotted(a)::before, ::slotted(button)::before {
   content: "" !important;
@@ -14907,17 +15095,9 @@ span {
 ::slotted(br) {
   display: none !important;
 }
-.icon {
-  margin-inline-start: -2px;
-  align-self: flex-start;
-}
     </style>
     <span>
-      <div
-        class="label"
-      >
-        <slot />
-      </div>
+      <slot />
     </span>
   </template>
   Some child
@@ -15034,7 +15214,7 @@ img {
             alt=""
             height="24"
             loading="lazy"
-            src="http://localhost:3001/icons/close.min.565f6a718b632a173b7a74eb9cb84378.svg"
+            src="http://localhost:3001/icons/close.eec3c5d.svg"
             width="24"
           />
         </template>
