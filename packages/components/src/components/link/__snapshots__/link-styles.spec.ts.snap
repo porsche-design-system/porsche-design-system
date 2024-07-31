@@ -44,8 +44,6 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
   align-items: flex-start;
   justify-content: center;
   width: 100%;
-  min-width: 54px;
-  min-height: 54px;
   box-sizing: border-box;
   text-align: start;
   -webkit-appearance: none;
@@ -55,6 +53,8 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
   border-radius: 4px;
   transform: translate3d(0,0,0);
   background-color: hsl(240 4% 85%/35%);
+  -webkit-backdrop-filter: blur(32px);
+  backdrop-filter: blur(32px);
   background-clip: padding-box;
   color: #010205;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -134,8 +134,6 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
   align-items: flex-start;
   justify-content: center;
   width: 100%;
-  min-width: 54px;
-  min-height: 54px;
   box-sizing: border-box;
   text-align: start;
   -webkit-appearance: none;
@@ -145,6 +143,8 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
   border-radius: 4px;
   transform: translate3d(0,0,0);
   background-color: hsl(240 3% 26%/35%);
+  -webkit-backdrop-filter: blur(32px);
+  backdrop-filter: blur(32px);
   background-clip: padding-box;
   color: #FBFCFF;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -224,8 +224,6 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
   align-items: flex-start;
   justify-content: center;
   width: 100%;
-  min-width: 36px;
-  min-height: 36px;
   box-sizing: border-box;
   text-align: start;
   -webkit-appearance: none;
@@ -235,16 +233,16 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
   border-radius: 4px;
   transform: translate3d(0,0,0);
   background-color: hsl(240 3% 26%/35%);
-  background-clip: padding-box;
   -webkit-backdrop-filter: blur(32px);
   backdrop-filter: blur(32px);
+  background-clip: padding-box;
   color: #FBFCFF;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  padding: 6px 12px;
-  gap: 8px;
+  padding: 4px 12px;
+  gap: 6px;
 }
 .label {
   position: static;
@@ -259,7 +257,7 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
 .icon {
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
-  margin-inline-start: -8px;
+  margin-inline-start: -6px;
 }
 @media(hover:hover) {
   .root:hover {
@@ -287,8 +285,8 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
   align-items: flex-start;
   justify-content: center;
   width: 100%;
-  min-width: 54px;
-  min-height: 54px;
+  min-width: calc(calc(6px + 2.125ex) + 13px + 2px);
+  min-height: calc(calc(6px + 2.125ex) + 13px + 2px);
   box-sizing: border-box;
   text-align: start;
   -webkit-appearance: none;
@@ -456,8 +454,6 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
   align-items: flex-start;
   justify-content: center;
   width: 100%;
-  min-width: 54px;
-  min-height: 54px;
   box-sizing: border-box;
   text-align: start;
   -webkit-appearance: none;
@@ -554,8 +550,6 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
   align-items: flex-start;
   justify-content: center;
   width: 100%;
-  min-width: 54px;
-  min-height: 54px;
   box-sizing: border-box;
   text-align: start;
   -webkit-appearance: none;
@@ -642,8 +636,6 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
   align-items: flex-start;
   justify-content: center;
   width: 100%;
-  min-width: 54px;
-  min-height: 54px;
   box-sizing: border-box;
   text-align: start;
   -webkit-appearance: none;
@@ -730,8 +722,6 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
   align-items: flex-start;
   justify-content: center;
   width: 100%;
-  min-width: 36px;
-  min-height: 36px;
   box-sizing: border-box;
   text-align: start;
   -webkit-appearance: none;
@@ -741,15 +731,13 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
   border-radius: 4px;
   transform: translate3d(0,0,0);
   background-color: #010205;
-  -webkit-backdrop-filter: blur(32px);
-  backdrop-filter: blur(32px);
   color: #FBFCFF;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  padding: 6px 12px;
-  gap: 8px;
+  padding: 4px 12px;
+  gap: 6px;
 }
 .label {
   position: static;
@@ -764,7 +752,7 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
 .icon {
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
-  margin-inline-start: -8px;
+  margin-inline-start: -6px;
   filter: invert(1);
 }
 @media(hover:hover) {
@@ -820,8 +808,6 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
   align-items: flex-start;
   justify-content: center;
   width: 100%;
-  min-width: 54px;
-  min-height: 54px;
   box-sizing: border-box;
   text-align: start;
   -webkit-appearance: none;
@@ -909,8 +895,6 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
   align-items: flex-start;
   justify-content: center;
   width: 100%;
-  min-width: 54px;
-  min-height: 54px;
   box-sizing: border-box;
   text-align: start;
   -webkit-appearance: none;
@@ -998,8 +982,6 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
   align-items: flex-start;
   justify-content: center;
   width: 100%;
-  min-width: 54px;
-  min-height: 54px;
   box-sizing: border-box;
   text-align: start;
   -webkit-appearance: none;
@@ -1087,8 +1069,6 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
   align-items: flex-start;
   justify-content: center;
   width: 100%;
-  min-width: 54px;
-  min-height: 54px;
   box-sizing: border-box;
   text-align: start;
   -webkit-appearance: none;
@@ -1176,8 +1156,6 @@ exports[`getComponentCss() should return correct css for icon: none, iconSource:
   align-items: flex-start;
   justify-content: center;
   width: 100%;
-  min-width: 54px;
-  min-height: 54px;
   box-sizing: border-box;
   text-align: start;
   -webkit-appearance: none;
