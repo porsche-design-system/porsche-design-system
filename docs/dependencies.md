@@ -7,9 +7,9 @@ reflected in the configuration file under `.github/dependabot.yml` and must be k
 
 |         | Monorepo | Sample Integrations   |
 | ------- | -------- | --------------------- |
-| Angular | 18.1.0   | 17.1.1                |
-| React   | 18.3.1   | 18.2.0                |
-| Next.js | 14.2.5   | 14.2.3 (React 18.3.1) |
+| Angular | 18.1.0   | 18.1.3                |
+| React   | 18.3.1   | 18.3.1                |
+| Next.js | 14.2.5   | 14.2.5 (React 18.3.1) |
 
 ## Playwright
 

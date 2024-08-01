@@ -31,6 +31,7 @@ export const getComponentCss = (theme: Theme): string => {
       '::slotted(img)': {
         height: fontLineHeight,
         borderRadius: borderRadiusSmall,
+        width: 'auto',
       },
     }),
     ...getOptionStyles(theme),
