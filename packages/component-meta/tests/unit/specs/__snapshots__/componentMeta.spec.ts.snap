@@ -271,6 +271,12 @@ exports[`should match snapshot 1`] = `
         "isAria": true,
         "type": "ButtonAriaAttribute",
       },
+      "compact": {
+        "allowedValues": "boolean",
+        "defaultValue": false,
+        "description": "Displays as compact version.",
+        "type": "boolean",
+      },
       "disabled": {
         "allowedValues": "boolean",
         "defaultValue": false,
@@ -542,9 +548,13 @@ exports[`should match snapshot 1`] = `
         "allowedValues": [
           "primary",
           "secondary",
+          "ghost",
           "tertiary",
         ],
         "defaultValue": "primary",
+        "deprecatedValues": [
+          "tertiary",
+        ],
         "description": "The style variant of the button.",
         "type": "ButtonVariant",
       },
@@ -3434,6 +3444,12 @@ exports[`should match snapshot 1`] = `
         "isAria": true,
         "type": "LinkAriaAttribute",
       },
+      "compact": {
+        "allowedValues": "boolean",
+        "defaultValue": false,
+        "description": "Displays as compact version.",
+        "type": "boolean",
+      },
       "download": {
         "allowedValues": "string",
         "defaultValue": null,
@@ -3701,9 +3717,13 @@ exports[`should match snapshot 1`] = `
         "allowedValues": [
           "primary",
           "secondary",
+          "ghost",
           "tertiary",
         ],
         "defaultValue": "primary",
+        "deprecatedValues": [
+          "tertiary",
+        ],
         "description": "The style variant of the link.",
         "type": "LinkVariant",
       },
@@ -4093,6 +4113,12 @@ exports[`should match snapshot 1`] = `
       "p-icon",
     ],
     "propsMeta": {
+      "compact": {
+        "allowedValues": "boolean",
+        "defaultValue": false,
+        "description": "Displays as compact version.",
+        "type": "boolean",
+      },
       "hideLabel": {
         "allowedValues": "boolean",
         "defaultValue": false,

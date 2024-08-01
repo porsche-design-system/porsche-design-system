@@ -862,8 +862,6 @@ img {
   align-items: flex-start;
   justify-content: center;
   width: 100%;
-  min-width: 54px;
-  min-height: 54px;
   box-sizing: border-box;
   text-align: start;
   -webkit-appearance: none;
@@ -937,8 +935,6 @@ img {
   align-items: flex-start;
   justify-content: center;
   width: 100%;
-  min-width: 54px;
-  min-height: 54px;
   box-sizing: border-box;
   text-align: start;
   -webkit-appearance: none;
@@ -1234,8 +1230,6 @@ img {
   align-items: flex-start;
   justify-content: center;
   width: 100%;
-  min-width: 54px;
-  min-height: 54px;
   box-sizing: border-box;
   text-align: start;
   -webkit-appearance: none;
@@ -1327,8 +1321,6 @@ img {
   align-items: flex-start;
   justify-content: center;
   width: 100%;
-  min-width: 54px;
-  min-height: 54px;
   box-sizing: border-box;
   text-align: start;
   -webkit-appearance: none;
@@ -1623,8 +1615,6 @@ img {
   align-items: flex-start;
   justify-content: center;
   width: 100%;
-  min-width: 54px;
-  min-height: 54px;
   box-sizing: border-box;
   text-align: start;
   -webkit-appearance: none;
@@ -1716,8 +1706,6 @@ img {
   align-items: flex-start;
   justify-content: center;
   width: 100%;
-  min-width: 54px;
-  min-height: 54px;
   box-sizing: border-box;
   text-align: start;
   -webkit-appearance: none;
@@ -2012,8 +2000,6 @@ img {
   align-items: flex-start;
   justify-content: center;
   width: 100%;
-  min-width: 54px;
-  min-height: 54px;
   box-sizing: border-box;
   text-align: start;
   -webkit-appearance: none;
@@ -2108,8 +2094,6 @@ img {
   align-items: flex-start;
   justify-content: center;
   width: 100%;
-  min-width: 54px;
-  min-height: 54px;
   box-sizing: border-box;
   text-align: start;
   -webkit-appearance: none;
@@ -6441,8 +6425,6 @@ exports[`should render dsr component for PButton 1`] = `
   align-items: flex-start;
   justify-content: center;
   width: 100%;
-  min-width: 54px;
-  min-height: 54px;
   box-sizing: border-box;
   text-align: start;
   -webkit-appearance: none;
@@ -6847,8 +6829,6 @@ p {
   align-items: flex-start;
   justify-content: center;
   width: 100%;
-  min-width: 54px;
-  min-height: 54px;
   box-sizing: border-box;
   text-align: start;
   -webkit-appearance: none;
@@ -9759,8 +9739,6 @@ exports[`should render dsr component for PLink 1`] = `
   align-items: flex-start;
   justify-content: center;
   width: 100%;
-  min-width: 54px;
-  min-height: 54px;
   box-sizing: border-box;
   text-align: start;
   -webkit-appearance: none;
@@ -10000,8 +9978,6 @@ exports[`should render dsr component for PLinkSocial 1`] = `
   align-items: flex-start;
   justify-content: center;
   width: 100%;
-  min-width: 54px;
-  min-height: 54px;
   box-sizing: border-box;
   text-align: start;
   -webkit-appearance: none;
@@ -10262,8 +10238,6 @@ p {
   align-items: flex-start;
   justify-content: center;
   width: 100%;
-  min-width: 54px;
-  min-height: 54px;
   box-sizing: border-box;
   text-align: start;
   -webkit-appearance: none;
@@ -10536,8 +10510,6 @@ img {
   align-items: flex-start;
   justify-content: center;
   width: 100%;
-  min-width: 54px;
-  min-height: 54px;
   box-sizing: border-box;
   text-align: start;
   -webkit-appearance: none;
@@ -10611,8 +10583,6 @@ img {
   align-items: flex-start;
   justify-content: center;
   width: 100%;
-  min-width: 54px;
-  min-height: 54px;
   box-sizing: border-box;
   text-align: start;
   -webkit-appearance: none;
@@ -11631,7 +11601,50 @@ exports[`should render dsr component for PMultiSelectOption 1`] = `
 exports[`should render dsr component for POptgroup 1`] = `
 <p-optgroup
   class="ssr"
-/>
+>
+  <template
+    shadowroot="open"
+    shadowrootmode="open"
+  >
+    <style>
+      :host {
+  color-scheme: light dark !important;
+}
+:host([hidden]) {
+  display: none !important;
+}
+::slotted(*) {
+  --p-internal-select-option-padding-left: 28px;
+  --p-internal-multi-select-option-padding-left: 28px;
+}
+.optgroup {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.label {
+  color: #010205;
+  display: block;
+  padding: 8px 12px;
+  font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
+  font-weight: 600;
+}
+    </style>
+    <div
+      aria-labelledby="label"
+      class="optgroup"
+      role="group"
+    >
+      <span
+        class="label"
+        id="label"
+        role="presentation"
+      />
+      <slot />
+    </div>
+  </template>
+  Some child
+</p-optgroup>
 `;
 
 exports[`should render dsr component for PPagination 1`] = `
@@ -12930,6 +12943,7 @@ exports[`should render dsr component for PSelectOption 1`] = `
 ::slotted(img) {
   height: calc(6px + 2.125ex) !important;
   border-radius: 4px !important;
+  width: auto !important;
 }
 .option {
   font-weight: 400;

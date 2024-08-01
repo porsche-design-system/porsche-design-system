@@ -215,6 +215,10 @@ export namespace Components {
          */
         "aria"?: SelectedAriaAttributes<ButtonAriaAttribute>;
         /**
+          * Displays as compact version.
+         */
+        "compact"?: boolean;
+        /**
           * Disables the button. No events will be triggered while disabled state is active.
          */
         "disabled"?: boolean;
@@ -921,6 +925,10 @@ export namespace Components {
          */
         "aria"?: SelectedAriaAttributes<LinkAriaAttribute>;
         /**
+          * Displays as compact version.
+         */
+        "compact"?: boolean;
+        /**
           * Special download attribute to open native browser download dialog if target url points to a downloadable file.
          */
         "download"?: string;
@@ -1024,6 +1032,10 @@ export namespace Components {
      * @deprecated since v3.0.0, will be removed with next major release. Use `p-link` with corresponding social icon instead.
      */
     interface PLinkSocial {
+        /**
+          * Displays as compact version.
+         */
+        "compact"?: boolean;
         /**
           * Show or hide label.
          */
@@ -3127,6 +3139,10 @@ declare namespace LocalJSX {
          */
         "aria"?: SelectedAriaAttributes<ButtonAriaAttribute>;
         /**
+          * Displays as compact version.
+         */
+        "compact"?: boolean;
+        /**
           * Disables the button. No events will be triggered while disabled state is active.
          */
         "disabled"?: boolean;
@@ -3877,6 +3893,10 @@ declare namespace LocalJSX {
          */
         "aria"?: SelectedAriaAttributes<LinkAriaAttribute>;
         /**
+          * Displays as compact version.
+         */
+        "compact"?: boolean;
+        /**
           * Special download attribute to open native browser download dialog if target url points to a downloadable file.
          */
         "download"?: string;
@@ -3980,6 +4000,10 @@ declare namespace LocalJSX {
      * @deprecated since v3.0.0, will be removed with next major release. Use `p-link` with corresponding social icon instead.
      */
     interface PLinkSocial {
+        /**
+          * Displays as compact version.
+         */
+        "compact"?: boolean;
         /**
           * Show or hide label.
          */
