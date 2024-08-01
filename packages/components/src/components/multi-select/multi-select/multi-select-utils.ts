@@ -166,11 +166,11 @@ export const resetSelectedOptions = (options: MultiSelectOption[]): void =>
 export const getNewOptionIndex = (
   options: MultiSelectOption[],
   direction: SelectDropdownDirectionInternal
-): number | void => {
+): number | undefined => {
   const validItems = getUsableOptions(options);
   const validMax = validItems.length - 1;
   if (validMax < 0) {
-    return;
+    return undefined;
   }
   const oldIndex = getHighlightedOptionIndex(validItems);
   let newIndex = oldIndex;
@@ -188,8 +188,9 @@ export const updateHighlightedOption = (
   direction: SelectDropdownDirectionInternal
 ): void => {
   const newIndex = getNewOptionIndex(options, direction);
-  // @ts-expect-error: Type number | void is not assignable to parameter of type number
-  setNextOptionHighlighted(host, options, newIndex);
+  if (!isNaN(newIndex)) {
+    setNextOptionHighlighted(host, options, newIndex);
+  }
 };
 
 /**

@@ -64,10 +64,15 @@ export const isValueNotOfType = (propValue: any, propType: string): boolean => {
   return propValue !== undefined && typeof propValue !== propType;
 };
 
-export const validateValueOfType = (propName: string, propValue: any, propType: string): ValidationError | void => {
+export const validateValueOfType = (
+  propName: string,
+  propValue: any,
+  propType: string
+): ValidationError | undefined => {
   if (isValueNotOfType(propValue, propType)) {
     return { propName, propValue, propType };
   }
+  return undefined;
 };
 
 const breakpointCustomizableTemplate =
@@ -136,13 +141,10 @@ export const AllowedTypes: {
   breakpoint: ValidatorFunctionBreakpointCustomizableCreator;
   shape: ValidatorFunctionShapeCreator;
 } = {
-  // @ts-expect-error: Type void is not assignable to type ValidationError
   // eslint-disable-next-line id-blacklist
   string: (...args) => validateValueOfType(...args, 'string'),
-  // @ts-expect-error: Type void is not assignable to type ValidationError
   // eslint-disable-next-line id-blacklist
   number: (...args) => validateValueOfType(...args, 'number'),
-  // @ts-expect-error: Type void is not assignable to type ValidationError
   // eslint-disable-next-line id-blacklist
   boolean: (...args) => validateValueOfType(...args, 'boolean'),
   array: (allowedType: ValidatorFunction): ValidatorFunction =>

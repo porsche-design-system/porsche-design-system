@@ -93,7 +93,7 @@ export class SelectWrapperDropdown {
       // therefore we do it here via attribute
       ['hidden', 'disabled', 'selected']
     );
-    this.isNativePopoverCase = !!detectNativePopoverCase(this.host, true);
+    this.isNativePopoverCase = detectNativePopoverCase(this.host, true);
     if (this.isNativePopoverCase) {
       this.parentTableElement = findClosestComponent(
         (this.host.getRootNode() as ShadowRoot).host as HTMLElement,

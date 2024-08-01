@@ -67,7 +67,7 @@ export class Popover {
   public connectedCallback(): void {
     applyConstructableStylesheetStyles(this.host, getSlottedAnchorStyles);
     addDocumentEventListener(this);
-    this.isNativePopoverCase = !!detectNativePopoverCase(this.host, false);
+    this.isNativePopoverCase = detectNativePopoverCase(this.host, false);
     if (this.isNativePopoverCase) {
       this.parentTableElement = findClosestComponent(this.host, 'pTable');
     }

@@ -165,7 +165,7 @@ export class Select {
     document.addEventListener('mousedown', this.onClickOutside, true);
     this.form = getClosestHTMLElement(this.host, 'form');
     this.isWithinForm = !!this.form;
-    this.isNativePopoverCase = !!detectNativePopoverCase(this.host, false);
+    this.isNativePopoverCase = detectNativePopoverCase(this.host, false);
     if (this.isNativePopoverCase) {
       this.parentTableElement = findClosestComponent(this.host, 'pTable');
     }
