@@ -1,5 +1,4 @@
-import type { ThemedColors } from './';
-import { getThemedColors } from './';
+import { type ThemedColors, getThemedColors } from './';
 import type { Theme } from '@porsche-design-system/styles';
 import type { FormState } from '../utils/form/form-state';
 

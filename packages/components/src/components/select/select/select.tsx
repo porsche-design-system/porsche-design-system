@@ -1,12 +1,10 @@
 import type { BreakpointCustomizable, PropTypes, Theme } from '../../../types';
-import type {
-  SelectDropdownDirection,
-  SelectOptgroup,
-  SelectOption,
-  SelectState,
-  SelectUpdateEventDetail,
-} from './select-utils';
 import {
+  type SelectDropdownDirection,
+  type SelectOptgroup,
+  type SelectOption,
+  type SelectState,
+  type SelectUpdateEventDetail,
   getSelectDropdownDirection,
   getSelectedOptionString,
   getSrHighlightedOptionText,
@@ -19,8 +17,19 @@ import {
   updateSelectOptions,
 } from './select-utils';
 
-import type { EventEmitter } from '@stencil/core';
-import { Component, Element, Event, forceUpdate, h, type JSX, Listen, Prop, State, Watch } from '@stencil/core';
+import {
+  type EventEmitter,
+  type JSX,
+  Component,
+  Element,
+  Event,
+  forceUpdate,
+  h,
+  Listen,
+  Prop,
+  State,
+  Watch,
+} from '@stencil/core';
 import {
   addNativePopoverScrollAndResizeListeners,
   AllowedTypes,

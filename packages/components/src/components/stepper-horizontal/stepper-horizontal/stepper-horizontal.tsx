@@ -16,8 +16,9 @@ import {
   validateProps,
 } from '../../../utils';
 import { getComponentCss } from './stepper-horizontal-styles';
-import type { StepperHorizontalSize, StepperHorizontalUpdateEventDetail } from './stepper-horizontal-utils';
 import {
+  type StepperHorizontalSize,
+  type StepperHorizontalUpdateEventDetail,
   getIndexOfStepWithStateCurrent,
   STEPPER_HORIZONTAL_SIZES,
   syncStepperHorizontalItemsProps,

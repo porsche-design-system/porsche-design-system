@@ -1,6 +1,7 @@
 import { Component, Element, forceUpdate, h, Host, type JSX, Prop, State } from '@stencil/core';
-import type { PopoverAriaAttribute, PopoverDirection } from './popover-utils';
 import {
+  type PopoverAriaAttribute,
+  type PopoverDirection,
   addDocumentEventListener,
   POPOVER_ARIA_ATTRIBUTES,
   POPOVER_DIRECTIONS,

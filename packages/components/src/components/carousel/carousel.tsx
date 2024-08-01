@@ -1,15 +1,12 @@
 import type { BreakpointCustomizable, PropTypes, SelectedAriaAttributes, Theme, ValidatorFunction } from '../../types';
-import type { ButtonPure } from '../button-pure/button-pure';
-import type {
-  CarouselAlignHeader,
-  CarouselAlignHeaderDeprecated,
-  CarouselAriaAttribute,
-  CarouselHeadingSize,
-  CarouselInternationalization,
-  CarouselUpdateEventDetail,
-  CarouselWidth,
-} from './carousel-utils';
 import {
+  type CarouselAlignHeader,
+  type CarouselAlignHeaderDeprecated,
+  type CarouselAriaAttribute,
+  type CarouselHeadingSize,
+  type CarouselInternationalization,
+  type CarouselUpdateEventDetail,
+  type CarouselWidth,
   CAROUSEL_ALIGN_HEADERS,
   CAROUSEL_ARIA_ATTRIBUTES,
   CAROUSEL_WIDTHS,

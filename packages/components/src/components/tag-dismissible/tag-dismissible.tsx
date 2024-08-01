@@ -10,12 +10,13 @@ import {
   warnIfDeprecatedPropValueIsUsed,
 } from '../../utils';
 import { getComponentCss } from './tag-dismissible-styles';
-import type {
-  TagDismissibleAriaAttribute,
-  TagDismissibleColor,
-  TagDismissibleColorDeprecated,
+import {
+  type TagDismissibleAriaAttribute,
+  type TagDismissibleColor,
+  type TagDismissibleColorDeprecated,
+  TAG_DISMISSIBLE_ARIA_ATTRIBUTES,
+  TAG_DISMISSIBLE_COLORS,
 } from './tag-dismissible-utils';
-import { TAG_DISMISSIBLE_ARIA_ATTRIBUTES, TAG_DISMISSIBLE_COLORS } from './tag-dismissible-utils';
 import type { PropTypes, SelectedAriaAttributes, Theme } from '../../types';
 
 type DeprecationMapType = Record<

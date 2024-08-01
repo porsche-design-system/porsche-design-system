@@ -1,12 +1,14 @@
 import type { PropTypes, Theme } from '../../types';
-import type {
-  HeadlineAlign,
-  HeadlineAlignDeprecated,
-  HeadlineColor,
-  HeadlineTag,
-  HeadlineVariant,
+import {
+  type HeadlineAlign,
+  type HeadlineAlignDeprecated,
+  type HeadlineColor,
+  type HeadlineTag,
+  type HeadlineVariant,
+  getHeadlineTagType,
+  HEADLINE_COLORS,
+  HEADLINE_TAGS,
 } from './headline-utils';
-import { getHeadlineTagType, HEADLINE_COLORS, HEADLINE_TAGS } from './headline-utils';
 import { Component, Element, h, type JSX, Prop } from '@stencil/core';
 import {
   AllowedTypes,

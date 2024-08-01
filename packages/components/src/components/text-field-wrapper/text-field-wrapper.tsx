@@ -33,12 +33,10 @@ import {
 import type { BreakpointCustomizable, PropTypes, Theme } from '../../types';
 import { getComponentCss } from './text-field-wrapper-styles';
 import { StateMessage } from '../common/state-message/state-message';
-import type {
-  TextFieldWrapperActionIcon,
-  TextFieldWrapperState,
-  TextFieldWrapperUnitPosition,
-} from './text-field-wrapper-utils';
 import {
+  type TextFieldWrapperActionIcon,
+  type TextFieldWrapperState,
+  type TextFieldWrapperUnitPosition,
   addInputEventListenerForSearch,
   dispatchInputEvent,
   hasCounterAndIsTypeText,

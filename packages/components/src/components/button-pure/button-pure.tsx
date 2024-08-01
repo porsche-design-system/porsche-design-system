@@ -18,16 +18,17 @@ import {
 } from '../../utils';
 import type { BreakpointCustomizable, PropTypes, SelectedAriaAttributes, Theme } from '../../types';
 import { Component, Element, h, Host, type JSX, Listen, Prop } from '@stencil/core';
-import type {
-  ButtonPureAlignLabel,
-  ButtonPureAlignLabelDeprecated,
-  ButtonPureAriaAttribute,
-  ButtonPureIcon,
-  ButtonPureSize,
-  ButtonPureType,
-  ButtonPureWeight,
+import {
+  type ButtonPureAlignLabel,
+  type ButtonPureAlignLabelDeprecated,
+  type ButtonPureAriaAttribute,
+  type ButtonPureIcon,
+  type ButtonPureSize,
+  type ButtonPureType,
+  type ButtonPureWeight,
+  getButtonPureAriaAttributes,
+  warnIfIsLoadingAndIconIsNone,
 } from './button-pure-utils';
-import { getButtonPureAriaAttributes, warnIfIsLoadingAndIconIsNone } from './button-pure-utils';
 import { getComponentCss } from './button-pure-styles';
 import { LoadingMessage, loadingId } from '../common/loading-message/loading-message';
 import { ControllerHost, InitialLoadingController } from '../../controllers';

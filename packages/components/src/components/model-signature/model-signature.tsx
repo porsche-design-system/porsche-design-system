@@ -1,13 +1,11 @@
 import { Component, Element, h, Host, type JSX, Prop } from '@stencil/core';
 import { AllowedTypes, attachComponentCss, THEMES, validateProps } from '../../utils';
 import type { PropTypes, Theme } from '../../types';
-import type {
-  ModelSignatureColor,
-  ModelSignatureFetchPriority,
-  ModelSignatureModel,
-  ModelSignatureSize,
-} from './model-signature-utils';
 import {
+  type ModelSignatureColor,
+  type ModelSignatureFetchPriority,
+  type ModelSignatureModel,
+  type ModelSignatureSize,
   getSvgUrl,
   MODEL_SIGNATURE_COLORS,
   MODEL_SIGNATURE_FETCH_PRIORITY,

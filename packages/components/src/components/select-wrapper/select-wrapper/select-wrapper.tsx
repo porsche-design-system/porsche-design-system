@@ -17,8 +17,12 @@ import {
   validateProps,
 } from '../../../utils';
 import type { BreakpointCustomizable, PropTypes, Theme } from '../../../types';
-import type { SelectWrapperDropdownDirection, SelectWrapperState } from './select-wrapper-utils';
-import { DROPDOWN_DIRECTIONS, isCustomDropdown } from './select-wrapper-utils';
+import {
+  type SelectWrapperDropdownDirection,
+  type SelectWrapperState,
+  DROPDOWN_DIRECTIONS,
+  isCustomDropdown,
+} from './select-wrapper-utils';
 import { getComponentCss } from './select-wrapper-styles';
 import { StateMessage } from '../../common/state-message/state-message';
 import { Label } from '../../common/label/label';

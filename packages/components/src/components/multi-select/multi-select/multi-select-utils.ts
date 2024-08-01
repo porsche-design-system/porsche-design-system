@@ -1,6 +1,13 @@
 import type { FormState } from '../../../utils/form/form-state';
-import type { SelectComponentsDropdownDirection, SelectDropdownDirectionInternal, Theme } from '../../../utils';
-import { consoleWarn, determineDropdownDirection, setAttribute, setAttributes } from '../../../utils';
+import {
+  type SelectComponentsDropdownDirection,
+  type SelectDropdownDirectionInternal,
+  type Theme,
+  consoleWarn,
+  determineDropdownDirection,
+  setAttribute,
+  setAttributes,
+} from '../../../utils';
 import type { MultiSelectOptionInternalHTMLProps } from '../multi-select-option/multi-select-option-utils';
 import { forceUpdate } from '@stencil/core';
 import type { OptgroupInternalHTMLProps } from '../../optgroup/optgroup-utils';
@@ -188,7 +195,7 @@ export const updateHighlightedOption = (
   direction: SelectDropdownDirectionInternal
 ): void => {
   const newIndex = getNewOptionIndex(options, direction);
-  if (!isNaN(newIndex)) {
+  if (newIndex !== undefined) {
     setNextOptionHighlighted(host, options, newIndex);
   }
 };

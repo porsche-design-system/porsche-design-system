@@ -12,12 +12,10 @@ import {
 } from '../../../utils';
 import type { PropTypes, Theme, ValidatorFunction, BreakpointCustomizable } from '../../../types';
 import { getComponentCss } from './segmented-control-styles';
-import type {
-  SegmentedControlBackgroundColor,
-  SegmentedControlColumns,
-  SegmentedControlUpdateEventDetail,
-} from './segmented-control-utils';
 import {
+  type SegmentedControlBackgroundColor,
+  type SegmentedControlColumns,
+  type SegmentedControlUpdateEventDetail,
   getItemMaxWidth,
   SEGMENTED_CONTROL_BACKGROUND_COLORS,
   SEGMENTED_CONTROL_COLUMNS,

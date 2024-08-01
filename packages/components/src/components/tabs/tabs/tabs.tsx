@@ -18,14 +18,14 @@ import type { BreakpointCustomizable, PropTypes, Theme } from '../../../types';
 import { type TabsBarUpdateEventDetail, TABS_BAR_SIZES, TABS_BAR_WEIGHTS } from '../../tabs-bar/tabs-bar-utils';
 import { getComponentCss } from './tabs-styles';
 import { GRADIENT_COLOR_SCHEMES, GRADIENT_COLORS } from '../../scroller/scroller-utils';
-import type {
-  TabsGradientColor,
-  TabsGradientColorScheme,
-  TabsSize,
-  TabsUpdateEventDetail,
-  TabsWeight,
+import {
+  type TabsGradientColor,
+  type TabsGradientColorScheme,
+  type TabsSize,
+  type TabsUpdateEventDetail,
+  type TabsWeight,
+  syncTabsItemsProps,
 } from './tabs-utils';
-import { syncTabsItemsProps } from './tabs-utils';
 import { getSlottedAnchorStyles } from '../../../styles';
 
 const propTypes: PropTypes<typeof Tabs> = {

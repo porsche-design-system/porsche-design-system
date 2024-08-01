@@ -1,6 +1,5 @@
 import { Component, Element, h, type JSX, Prop } from '@stencil/core';
-import type { TagColor, TagColorDeprecated, TagIcon } from './tag-utils';
-import { TAG_COLORS } from './tag-utils';
+import { type TagColor, type TagColorDeprecated, type TagIcon, TAG_COLORS } from './tag-utils';
 import {
   AllowedTypes,
   attachComponentCss,

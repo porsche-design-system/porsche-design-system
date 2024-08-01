@@ -9,8 +9,14 @@ import {
   warnIfDeprecatedPropValueIsUsed,
 } from '../../utils';
 import type { BreakpointCustomizable, PropTypes, Theme } from '../../types';
-import type { DividerColor, DividerColorDeprecated, DividerDirection, DividerOrientation } from './divider-utils';
-import { DIVIDER_COLORS, DIVIDER_DIRECTIONS } from './divider-utils';
+import {
+  type DividerColor,
+  type DividerColorDeprecated,
+  type DividerDirection,
+  type DividerOrientation,
+  DIVIDER_COLORS,
+  DIVIDER_DIRECTIONS,
+} from './divider-utils';
 import { getComponentCss } from './divider-styles';
 
 type DeprecationMapType = Record<DividerColorDeprecated, Exclude<DividerColor, DividerColorDeprecated>>;

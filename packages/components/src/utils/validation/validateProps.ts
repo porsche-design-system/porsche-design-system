@@ -1,8 +1,6 @@
-import type { Breakpoint } from '@porsche-design-system/styles';
+import { type Breakpoint, breakpoints } from '@porsche-design-system/styles';
 import type { AriaAttributes, Class, FunctionPropertyNames } from '../../types';
-import type { BreakpointValues } from '../breakpoint-customizable';
-import { parseJSON } from '../breakpoint-customizable';
-import { breakpoints } from '@porsche-design-system/styles';
+import { type BreakpointValues, parseJSON } from '../breakpoint-customizable';
 import { parseJSONAttribute } from '../json';
 import { consoleError, getTagNameWithoutPrefix } from '..';
 
@@ -148,7 +146,6 @@ export const AllowedTypes: {
   // eslint-disable-next-line id-blacklist
   boolean: (...args) => validateValueOfType(...args, 'boolean'),
   array: (allowedType: ValidatorFunction): ValidatorFunction =>
-    // @ts-expect-error: Type void is not assignable to type ValidationError
     // eslint-disable-next-line prefer-arrow/prefer-arrow-functions
     function array(propName, propValue) {
       return isValidArray(propName, propValue, allowedType);
@@ -272,7 +269,7 @@ export const validateProps = <T extends Class<any>>(instance: InstanceType<T>, p
  * @param {ValidatorFunction} validator - The validator function that checks each array item.
  * @returns {ValidationError | undefined} The first encountered validation error object, or undefined if the array is valid.
  */
-export const isValidArray = (propName: string, arr: any, validator: ValidatorFunction): ValidationError | void => {
+export const isValidArray = (propName: string, arr: any, validator: ValidatorFunction): ValidationError => {
   const validationError = Array.isArray(arr)
     ? validator(
         propName,
@@ -287,4 +284,5 @@ export const isValidArray = (propName: string, arr: any, validator: ValidatorFun
   if (validationError) {
     return { ...validationError, propType: `${validationError.propType}[]` };
   }
+  return undefined;
 };

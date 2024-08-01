@@ -5,8 +5,8 @@ import type {
   PropTypes,
   SelectedAriaAttributes,
 } from '../../types';
-import type { ITileProps } from '../../utils';
 import {
+  type ITileProps,
   AllowedTypes,
   applyConstructableStylesheetStyles,
   attachComponentCss,

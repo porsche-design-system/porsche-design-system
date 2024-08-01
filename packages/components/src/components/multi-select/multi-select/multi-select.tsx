@@ -1,5 +1,9 @@
-import type { MultiSelectDropdownDirection, MultiSelectOptgroup, MultiSelectState } from './multi-select-utils';
 import {
+  type MultiSelectDropdownDirection,
+  type MultiSelectOptgroup,
+  type MultiSelectState,
+  type MultiSelectOption,
+  type MultiSelectUpdateEventDetail,
   getDropdownDirection,
   getHighlightedOption,
   getHighlightedOptionIndex,
@@ -9,8 +13,6 @@ import {
   hasFilterOptionResults,
   initNativeMultiSelect,
   INTERNAL_MULTI_SELECT_SLOT,
-  type MultiSelectOption,
-  type MultiSelectUpdateEventDetail,
   resetFilteredOptions,
   resetHighlightedOptions,
   resetSelectedOptions,

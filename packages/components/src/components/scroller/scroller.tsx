@@ -16,16 +16,14 @@ import {
 } from '../../utils';
 import { getComponentCss } from './scroller-styles';
 import type { PropTypes, SelectedAriaAttributes, Theme } from '../../types';
-import type {
-  ScrollerAlignScrollIndicator,
-  ScrollerDirection,
-  ScrollerGradientColor,
-  ScrollerGradientColorScheme,
-  ScrollerScrollIndicatorPosition,
-  ScrollerScrollToPosition,
-  ScrollerAriaAttribute,
-} from './scroller-utils';
 import {
+  type ScrollerAlignScrollIndicator,
+  type ScrollerDirection,
+  type ScrollerGradientColor,
+  type ScrollerGradientColorScheme,
+  type ScrollerScrollIndicatorPosition,
+  type ScrollerScrollToPosition,
+  type ScrollerAriaAttribute,
   getScrollPositionAfterPrevNextClick,
   GRADIENT_COLORS,
   GRADIENT_COLOR_SCHEMES,

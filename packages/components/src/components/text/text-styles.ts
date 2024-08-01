@@ -12,8 +12,14 @@ import {
 } from '@porsche-design-system/styles';
 import { getTypographyRootJssStyle, getTypographySlottedJssStyle } from '../../styles/typography-styles';
 import { getFontWeight } from '../../styles/font-weight-styles';
-import { TEXT_TAGS } from './text-utils';
-import type { TextAlign, TextColor, TextColorDeprecated, TextWeight, TextWeightDeprecated } from './text-utils';
+import {
+  type TextAlign,
+  type TextColor,
+  type TextColorDeprecated,
+  type TextWeight,
+  type TextWeightDeprecated,
+  TEXT_TAGS,
+} from './text-utils';
 
 const sizeMap: Record<Exclude<TextSize, 'inherit'>, string> = {
   'xx-small': fontSizeTextXXSmall,

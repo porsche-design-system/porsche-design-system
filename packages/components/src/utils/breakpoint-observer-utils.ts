@@ -1,8 +1,6 @@
-import type { Breakpoint } from '@porsche-design-system/styles';
+import { type Breakpoint, breakpoint, breakpoints } from '@porsche-design-system/styles';
 import type { BreakpointCustomizable } from './breakpoint-customizable';
-import { breakpoint } from '@porsche-design-system/styles';
 import { mediaQueryLists } from './breakpoint-observer';
-import { breakpoints } from '@porsche-design-system/styles';
 
 export const flippedBreakpoint = Object.entries(breakpoint).reduce(
   (result, [key, val]) => ({ ...result, [`${val}px`]: key }),

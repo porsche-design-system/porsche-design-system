@@ -1,8 +1,7 @@
 import type { Theme } from '../types';
 import type { JssStyle } from 'jss';
 import type { PropertiesHyphen } from 'csstype';
-import type { ThemedColors } from './';
-import { getThemedColors, prefersColorSchemeDarkMediaQuery } from './';
+import { type ThemedColors, getThemedColors, prefersColorSchemeDarkMediaQuery } from './';
 import {
   borderWidthBase,
   frostedGlassStyle,

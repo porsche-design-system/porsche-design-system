@@ -1,6 +1,11 @@
 import type { BreakpointCustomizable, HeadingSize, HeadingTag, PropTypes, Theme } from '../../types';
-import type { HeadingAlign, HeadingAlignDeprecated, HeadingColor } from './heading-utils';
-import { getHeadingTagType, HEADING_COLORS } from './heading-utils';
+import {
+  type HeadingAlign,
+  type HeadingAlignDeprecated,
+  type HeadingColor,
+  getHeadingTagType,
+  HEADING_COLORS,
+} from './heading-utils';
 import { Component, Element, h, type JSX, Prop } from '@stencil/core';
 import {
   AllowedTypes,

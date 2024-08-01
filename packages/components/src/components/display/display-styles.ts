@@ -1,6 +1,5 @@
 import type { BreakpointCustomizable, Theme } from '../../types';
-import type { DisplayAlign, DisplayColor, DisplaySize } from './display-utils';
-import { DISPLAY_TAGS } from './display-utils';
+import { type DisplayAlign, type DisplayColor, type DisplaySize, DISPLAY_TAGS } from './display-utils';
 import { buildResponsiveStyles, getCss } from '../../utils';
 import { addImportantToEachRule, colorSchemeStyles, hostHiddenStyles } from '../../styles';
 import {

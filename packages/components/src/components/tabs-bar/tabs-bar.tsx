@@ -18,15 +18,13 @@ import {
   warnIfDeprecatedPropValueIsUsed,
 } from '../../utils';
 import type { BreakpointCustomizable, PropTypes, Theme } from '../../types';
-import type {
-  TabsBarGradientColor,
-  TabsBarGradientColorScheme,
-  TabsBarSize,
-  TabsBarUpdateEventDetail,
-  TabsBarWeight,
-  TabsBarWeightDeprecated,
-} from './tabs-bar-utils';
 import {
+  type TabsBarGradientColor,
+  type TabsBarGradientColorScheme,
+  type TabsBarSize,
+  type TabsBarUpdateEventDetail,
+  type TabsBarWeight,
+  type TabsBarWeightDeprecated,
   getFocusedTabIndex,
   getPrevNextTabIndex,
   sanitizeActiveTabIndex,

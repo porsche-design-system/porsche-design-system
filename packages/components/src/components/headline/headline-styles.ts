@@ -1,7 +1,13 @@
 import type { JssStyle } from 'jss';
 import type { TextSize, Theme } from '../../types';
-import type { HeadlineAlign, HeadlineColor, HeadlineVariant, HeadlineVariantType } from './headline-utils';
-import { HEADLINE_TAGS, isValidVariantType } from './headline-utils';
+import {
+  type HeadlineAlign,
+  type HeadlineColor,
+  type HeadlineVariant,
+  type HeadlineVariantType,
+  HEADLINE_TAGS,
+  isValidVariantType,
+} from './headline-utils';
 import { buildResponsiveStyles, getCss } from '../../utils';
 import { addImportantToEachRule, colorSchemeStyles, hostHiddenStyles } from '../../styles';
 import {

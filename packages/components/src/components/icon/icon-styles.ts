@@ -1,4 +1,4 @@
-import type { TextSize, Theme } from '../../types';
+import type { TextSize, Theme, IconName } from '../../types';
 import { getCss, isThemeDark, isHighContrastMode } from '../../utils';
 import {
   fontFamily,
@@ -38,7 +38,6 @@ import {
   filterLightNotificationWarning,
   filterLightPrimary,
 } from '../../styles/color-filters';
-import type { IconName } from '../../types';
 
 const sizeMap: Record<Exclude<TextSize, 'inherit'>, string> = {
   'xx-small': fontSizeTextXXSmall,
