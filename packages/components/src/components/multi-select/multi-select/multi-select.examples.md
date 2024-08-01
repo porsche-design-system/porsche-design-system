@@ -153,7 +153,7 @@ export default class Code extends Vue {
     this.$refs.multiSelect.value = this.valueInput.split(',')
   }
 
-  withOptgroups = `<p-multi-select name="options" label="Some Label" value="a">
+  withOptgroups = `<p-multi-select name="options" label="Some Label">
   <p-optgroup label="Some optgroup label 1">
     <p-multi-select-option value="a">Option A</p-multi-select-option>
     <p-multi-select-option value="b">Option B</p-multi-select-option>
