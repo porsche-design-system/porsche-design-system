@@ -35,9 +35,10 @@ const propTypes: PropTypes<typeof Button> = {
   disabled: AllowedTypes.boolean,
   loading: AllowedTypes.boolean,
   icon: AllowedTypes.string,
-  theme: AllowedTypes.oneOf<Theme>(THEMES),
   iconSource: AllowedTypes.string,
   hideLabel: AllowedTypes.breakpoint('boolean'),
+  compact: AllowedTypes.boolean,
+  theme: AllowedTypes.oneOf<Theme>(THEMES),
   aria: AllowedTypes.aria<ButtonAriaAttribute>(BUTTON_ARIA_ATTRIBUTES),
 };
 
@@ -77,6 +78,9 @@ export class Button {
 
   /** Show or hide label. For better accessibility it is recommended to show the label. */
   @Prop() public hideLabel?: BreakpointCustomizable<boolean> = false;
+
+  /** Displays as compact version. */
+  @Prop() public compact?: boolean = false;
 
   /** Adapts the button color depending on the theme. */
   @Prop() public theme?: Theme = 'light';
@@ -119,6 +123,7 @@ export class Button {
       this.hideLabel,
       this.disabled,
       this.loading,
+      this.compact,
       this.theme
     );
 

@@ -516,7 +516,7 @@ span {
 }
 @media(hover:hover) {
   span:hover {
-    background: hsl(240 3% 36%/35%);
+    background: hsl(240 3% 41%/35%);
   }
 }
 
@@ -592,7 +592,7 @@ span {
 }
 @media(hover:hover) {
   span:hover {
-    background: hsl(240 4% 75%/35%);
+    background: hsl(240 4% 70%/35%);
   }
 }
 

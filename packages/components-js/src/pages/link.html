@@ -69,6 +69,23 @@
   <p-link variant="tertiary" hide-label="true" icon="arrow-right"><a href="https://porsche.com">Some label</a></p-link>
 </div>
 
+<div class="playground light auto-layout-inline" title="should render ghost with label only">
+  <p-link variant="ghost" href="https://porsche.com">Some label</p-link>
+  <p-link variant="ghost"><a href="https://porsche.com">Some label</a></p-link>
+</div>
+
+<div class="playground light auto-layout-inline" title="should render ghost with label and icon">
+  <p-link variant="ghost" href="https://porsche.com" icon="arrow-right">Some label</p-link>
+  <p-link variant="ghost" icon="arrow-right"><a href="https://porsche.com">Some label</a></p-link>
+</div>
+
+<div class="playground light auto-layout-inline" title="should render ghost without label">
+  <p-link variant="ghost" href="https://porsche.com" hide-label="true" icon="arrow-right">Some label</p-link>
+  <p-link variant="ghost" hide-label="true" icon="arrow-right">
+    <a href="https://porsche.com">Some label</a>
+  </p-link>
+</div>
+
 <div class="playground light auto-layout-inline" title="should render primary with responsive label">
   <p-link
     variant="primary"
@@ -98,11 +115,23 @@
   <p-link style="width: 15rem" icon="arrow-right">
     <a href="https://porsche.com">Lorem ipsum dolor sit amet, consetetur sadipscing</a>
   </p-link>
+  <p-link compact="true" style="width: 15rem" icon="arrow-right" href="https://porsche.com"
+    >Lorem ipsum dolor sit amet, consetetur sadipscing
+  </p-link>
+  <p-link compact="true" style="width: 15rem" icon="arrow-right">
+    <a href="https://porsche.com">Lorem ipsum dolor sit amet, consetetur sadipscing</a>
+  </p-link>
 </div>
 
 <div class="playground light auto-layout-inline" title="should render with multiline label without icon">
   <p-link style="width: 15rem" href="https://porsche.com">Lorem ipsum dolor sit amet, consetetur sadipscing</p-link>
   <p-link style="width: 15rem">
+    <a href="https://porsche.com">Lorem ipsum dolor sit amet, consetetur sadipscing</a>
+  </p-link>
+  <p-link compact="true" style="width: 15rem" href="https://porsche.com"
+    >Lorem ipsum dolor sit amet, consetetur sadipscing</p-link
+  >
+  <p-link compact="true" style="width: 15rem">
     <a href="https://porsche.com">Lorem ipsum dolor sit amet, consetetur sadipscing</a>
   </p-link>
 </div>
@@ -117,5 +146,24 @@
   </p-link>
   <p-link variant="primary" hide-label="true" icon="arrow-right" style="width: 100%"
     ><a href="https://porsche.com">Some label</a></p-link
+  >
+  <p-link compact="true" variant="primary" icon="arrow-right" href="https://porsche.com" style="width: 100%"
+    >Some label</p-link
+  >
+  <p-link compact="true" variant="primary" icon="arrow-right" style="width: 100%"
+    ><a href="https://porsche.com">Some label</a></p-link
+  >
+</div>
+
+<div class="playground light auto-layout-inline" title="should render link in compact mode">
+  <p-link compact="true" href="https://porsche.com">Some label</p-link>
+  <p-link compact="true"><a href="https://porsche.com">Some label</a></p-link>
+  <p-link compact="true" href="https://porsche.com" variant="secondary">Some label</p-link>
+  <p-link compact="true" href="https://porsche.com" variant="ghost">Some label</p-link>
+  <p-link compact="true" href="https://porsche.com" icon="delete">Some label</p-link>
+  <p-link compact="true" href="https://porsche.com" icon-source="./assets/icon-custom-kaixin.svg">Some label</p-link>
+  <p-link compact="true" href="https://porsche.com" hide-label="true" icon="delete">Some label</p-link>
+  <p-link compact="true" href="https://porsche.com" hide-label="true" icon-source="./assets/icon-custom-kaixin.svg"
+    >Some label</p-link
   >
 </div>

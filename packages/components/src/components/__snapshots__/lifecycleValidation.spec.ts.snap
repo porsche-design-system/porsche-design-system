@@ -29,6 +29,7 @@ exports[`should call validateProps() with correct parameters via render for p-ba
 exports[`should call validateProps() with correct parameters via render for p-button: propTypes with ValidatorFunctions 1`] = `
 {
   "aria": "aria",
+  "compact": "boolean",
   "disabled": "boolean",
   "hideLabel": "breakpoint",
   "icon": "string",
@@ -301,6 +302,7 @@ exports[`should call validateProps() with correct parameters via render for p-in
 exports[`should call validateProps() with correct parameters via render for p-link: propTypes with ValidatorFunctions 1`] = `
 {
   "aria": "aria",
+  "compact": "boolean",
   "download": "string",
   "hideLabel": "breakpoint",
   "href": "string",
@@ -335,6 +337,7 @@ exports[`should call validateProps() with correct parameters via render for p-li
 
 exports[`should call validateProps() with correct parameters via render for p-link-social: propTypes with ValidatorFunctions 1`] = `
 {
+  "compact": "boolean",
   "hideLabel": "breakpoint",
   "href": "string",
   "icon": "string",

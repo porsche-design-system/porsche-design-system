@@ -11,7 +11,8 @@ type Colors = {
   backgroundColor: string;
 };
 const getDisabledColors = (variant: LinkButtonVariant, loading: boolean, theme: Theme): Colors => {
-  const { contrastMediumColor, contrastHighColor, disabledColor, hoverColor } = getThemedColors(theme);
+  const { contrastMediumColor, contrastHighColor, disabledColor, hoverColor, backgroundFrostedColor } =
+    getThemedColors(theme);
   const { canvasColor } = getHighContrastColors();
 
   const colors: {
@@ -27,6 +28,11 @@ const getDisabledColors = (variant: LinkButtonVariant, loading: boolean, theme: 
       borderColor: isHighContrastMode ? disabledColor : loading ? contrastMediumColor : disabledColor,
       backgroundColor: isHighContrastMode ? canvasColor : loading ? hoverColor : 'transparent',
     },
+    ghost: {
+      textColor: disabledColor,
+      borderColor: isHighContrastMode ? disabledColor : loading ? backgroundFrostedColor : backgroundFrostedColor,
+      backgroundColor: isHighContrastMode ? canvasColor : loading ? backgroundFrostedColor : backgroundFrostedColor,
+    },
   };
 
   return colors[variant === 'tertiary' ? 'secondary' : variant];
@@ -39,6 +45,7 @@ export const getComponentCss = (
   hideLabel: BreakpointCustomizable<boolean>,
   disabled: boolean,
   loading: boolean,
+  compact: boolean,
   theme: Theme
 ): string => {
   const disabledOrLoading = isDisabledOrLoading(disabled, loading);
@@ -51,7 +58,7 @@ export const getComponentCss = (
   const isPrimary = variant === 'primary';
 
   return getCss(
-    mergeDeep(getLinkButtonStyles(icon, iconSource, variant, hideLabel, disabledOrLoading, false, theme), {
+    mergeDeep(getLinkButtonStyles(icon, iconSource, variant, hideLabel, disabledOrLoading, false, compact, theme), {
       root: {
         cursor: disabledOrLoading ? 'not-allowed' : 'pointer',
         ...(disabledOrLoading && {
