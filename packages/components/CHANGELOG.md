@@ -14,6 +14,15 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ### [Unreleased]
 
+### [3.17.0-rc.1] - 2024-07-31
+
+#### Added
+
+- `Button`, `Link`:
+  - Prop `variant` extended by value `ghost`
+    ([#3423](https://github.com/porsche-design-system/porsche-design-system/pull/3423))
+  - Prop `compact` ([#3423](https://github.com/porsche-design-system/porsche-design-system/pull/3423))
+
 #### Fixed
 
 - `Tabs Bar`: fixed tabindex issue when `Tabs Bar` is rendered with the `Scroller` component

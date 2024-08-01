@@ -17,17 +17,19 @@ const scenario = async (page: Page, theme: Theme, scheme?: PrefersColorScheme): 
     <p-button variant="primary">Primary</p-button>
     <p-button variant="secondary">Secondary</p-button>
     <p-button variant="tertiary">Tertiary</p-button>
+    <p-button variant="ghost">Ghost</p-button>
     <p-button variant="primary" icon="arrow-right">Primary with icon</p-button>
     <p-button variant="secondary" icon="arrow-right">Secondary with icon</p-button>
     <p-button variant="tertiary" icon="arrow-right">Tertiary with icon</p-button>
-    <p-button variant="secondary" icon="arrow-right">Secondary with icon</p-button>
-    <p-button variant="tertiary" icon="arrow-right">Tertiary with icon</p-button>
+    <p-button variant="ghost" icon="arrow-right">Ghost with icon</p-button>
     <p-button variant="primary" hide-label="true" icon="arrow-right">Primary with icon only</p-button>
     <p-button variant="secondary" hide-label="true" icon="arrow-right">Secondary with icon only</p-button>
     <p-button variant="tertiary" hide-label="true" icon="arrow-right">Tertiary with icon only</p-button>
+    <p-button variant="ghost" hide-label="true" icon="arrow-right">Ghost with icon only</p-button>
     <p-button variant="primary" loading>Loading Primary</p-button>
     <p-button variant="secondary" loading>Loading Secondary</p-button>
-    <p-button variant="tertiary" loading>Loading Tertiary</p-button>`;
+    <p-button variant="tertiary" loading>Loading Tertiary</p-button>
+    <p-button variant="ghost" loading>Loading Ghost</p-button>`;
 
   await setContentWithDesignSystem(page, getPlaygroundPseudoStatesMarkup(markup, { autoLayout: 'inline' }), {
     forceComponentTheme: theme,

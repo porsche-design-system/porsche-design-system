@@ -32,6 +32,10 @@ Link with label only (default) and with icon only (default: "arrow-right").
 
 <Playground :markup="buttons('tertiary')" :config="config"></Playground>
 
+### Ghost
+
+<Playground :markup="buttons('ghost')" :config="config"></Playground>
+
 ### Responsive
 
 <Playground :markup="responsive" :config="config"></Playground>
@@ -54,6 +58,14 @@ component.
 - In general, preventing opening new windows by default with (`target="_blank"`) is a good choice. Let users choose by
   themselves how to open links. However, if you choose to implement `target="_blank"`, make sure to provide additional
   information with ARIA label, e.g.: `aria-label="Porsche Taycan model page (opens in new window)"`
+
+---
+
+## Compact
+
+By setting `compact` to `true` you can have a more compact link with reduced spacings.
+
+<Playground :markup="compact" :config="config"></Playground>
 
 ---
 
@@ -113,6 +125,10 @@ export default class Code extends Vue {
 `<p-link>
   <a href="https://porsche.com">Some label</a>
 </p-link>`;
+
+  compact = `<p-link compact="true" href="https://porsche.com">Some label</p-link>
+<p-link compact="true" variant="secondary" href="https://porsche.com">Some label</p-link>
+<p-link compact="true" variant="ghost" href="https://porsche.com">Some label</p-link>`;
 
   icon =
 `<p-link href="https://porsche.com" icon="phone">Some label</p-link>

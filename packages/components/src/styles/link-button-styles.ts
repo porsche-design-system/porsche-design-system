@@ -1,5 +1,5 @@
 import type { Styles } from 'jss';
-import { buildResponsiveStyles, hasVisibleIcon, isHighContrastMode } from '../utils';
+import { buildResponsiveStyles, darken, hasVisibleIcon, isHighContrastMode, lighten } from '../utils';
 import type { BreakpointCustomizable, LinkButtonIconName, LinkButtonVariant, Theme } from '../types';
 import {
   addImportantToEachRule,
@@ -15,6 +15,7 @@ import {
 } from './';
 import {
   borderRadiusSmall,
+  borderWidthBase,
   fontLineHeight,
   frostedGlassStyle,
   spacingStaticSmall,
@@ -33,7 +34,8 @@ type Colors = {
 };
 
 const getVariantColors = (variant: LinkButtonVariant, theme: Theme): Colors => {
-  const { primaryColor, contrastHighColor, contrastMediumColor, hoverColor } = getThemedColors(theme);
+  const { primaryColor, contrastHighColor, contrastMediumColor, hoverColor, backgroundFrostedColor } =
+    getThemedColors(theme);
   const { canvasColor } = getHighContrastColors();
 
   const colors: {
@@ -53,6 +55,13 @@ const getVariantColors = (variant: LinkButtonVariant, theme: Theme): Colors => {
       backgroundColor: isHighContrastMode ? canvasColor : 'transparent',
       backgroundColorHover: hoverColor,
     },
+    ghost: {
+      textColor: primaryColor,
+      borderColor: backgroundFrostedColor,
+      borderColorHover: theme === 'dark' ? lighten(backgroundFrostedColor) : darken(backgroundFrostedColor),
+      backgroundColor: backgroundFrostedColor,
+      backgroundColorHover: theme === 'dark' ? lighten(backgroundFrostedColor) : darken(backgroundFrostedColor),
+    },
   };
 
   return colors[variant === 'tertiary' ? 'secondary' : variant];
@@ -65,6 +74,7 @@ export const getLinkButtonStyles = (
   hideLabel: BreakpointCustomizable<boolean>,
   isDisabledOrLoading: boolean,
   hasSlottedAnchor: boolean,
+  compact: boolean,
   theme: Theme
 ): Styles => {
   const isPrimary = variant === 'primary';
@@ -83,6 +93,9 @@ export const getLinkButtonStyles = (
   const { focusColor } = getThemedColors(theme);
   const hasIcon = hasVisibleIcon(icon, iconSource) || hideLabel;
 
+  const paddingBlock = compact ? '4px' : '13px';
+  const paddingInline = compact ? '12px' : '26px';
+
   return {
     '@global': {
       ':host': {
@@ -100,23 +113,22 @@ export const getLinkButtonStyles = (
       alignItems: 'flex-start',
       justifyContent: 'center',
       width: '100%',
-      minWidth: '54px', // ensure space is already reserved until icon component is loaded (ssr)
-      minHeight: '54px', // ensure space is already reserved until icon component is loaded (ssr)
       boxSizing: 'border-box',
       textAlign: 'start',
       WebkitAppearance: 'none', // iOS safari
       appearance: 'none',
       textDecoration: 'none',
-      border: `2px solid ${borderColor}`,
+      border: `${borderWidthBase} solid ${borderColor}`,
       borderRadius: borderRadiusSmall,
       transform: 'translate3d(0,0,0)', // creates new stacking context (for slotted anchor + focus)
       backgroundColor,
+      ...(variant === 'ghost' && { ...frostedGlassStyle, backgroundClip: 'padding-box' }), // background color overlays border-color otherwise
       color: textColor,
       ...textSmallStyle,
       transition: `${getTransition('background-color')}, ${getTransition('border-color')}, ${getTransition('color')}`,
       ...buildResponsiveStyles(hideLabel, (hideLabelValue: boolean) => ({
-        padding: hideLabelValue ? '13px' : '13px 26px',
-        gap: hideLabelValue ? 0 : spacingStaticSmall,
+        padding: hideLabelValue ? paddingBlock : `${paddingBlock} ${paddingInline}`,
+        gap: hideLabelValue ? 0 : compact ? '6px' : spacingStaticSmall,
       })),
       ...(!hasSlottedAnchor && getFocusJssStyle(theme)),
       ...(!isDisabledOrLoading &&
@@ -140,10 +152,10 @@ export const getLinkButtonStyles = (
     label: buildResponsiveStyles(hideLabel, getHiddenTextJssStyle),
     ...(hasIcon && {
       icon: {
-        width: fontLineHeight,
-        height: fontLineHeight,
+        width: fontLineHeight, // ensure space is already reserved until icon component is loaded (ssr)
+        height: fontLineHeight, // ensure space is already reserved until icon component is loaded (ssr)
         ...buildResponsiveStyles(hideLabel, (hideLabelValue: boolean) => ({
-          marginInlineStart: hideLabelValue ? 0 : '-8px', // compensate white space of svg icon and optimize visual alignment
+          marginInlineStart: hideLabelValue ? 0 : compact ? '-6px' : '-8px', // compensate white space of svg icon and optimize visual alignment
         })),
       },
     }),

@@ -50,6 +50,18 @@ const scenario = async (page: Page, theme: Theme, scheme?: PrefersColorScheme): 
     <p-link variant="tertiary" hide-label="true" icon="arrow-right" href="#">Tertiary</p-link>
     <p-link variant="tertiary" hide-label="true" icon="arrow-right">
       <a href="#">Slotted Tertiary</a>
+    </p-link>
+    <p-link variant="ghost" href="#">Ghost</p-link>
+    <p-link variant="ghost">
+      <a href="#">Slotted Ghost</a>
+    </p-link>
+    <p-link variant="ghost" href="#" icon="arrow-right">Ghost with icon</p-link>
+    <p-link variant="ghost" icon="arrow-right">
+      <a href="#">Slotted Ghost with icon</a>
+    </p-link>
+    <p-link variant="ghost" hide-label="true" icon="arrow-right" href="#">Ghost</p-link>
+    <p-link variant="ghost" hide-label="true" icon="arrow-right">
+      <a href="#">Slotted Ghost</a>
     </p-link>`;
 
   await setContentWithDesignSystem(page, getPlaygroundPseudoStatesMarkup(markup, { autoLayout: 'inline' }), {

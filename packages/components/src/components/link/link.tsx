@@ -30,11 +30,12 @@ const propTypes: PropTypes<typeof Link> = {
   icon: AllowedTypes.string,
   iconSource: AllowedTypes.string,
   href: AllowedTypes.string,
-  theme: AllowedTypes.oneOf<Theme>(THEMES),
   target: AllowedTypes.string,
   download: AllowedTypes.string,
   rel: AllowedTypes.string,
   hideLabel: AllowedTypes.breakpoint('boolean'),
+  compact: AllowedTypes.boolean,
+  theme: AllowedTypes.oneOf<Theme>(THEMES),
   aria: AllowedTypes.aria<LinkAriaAttribute>(LINK_ARIA_ATTRIBUTES),
 };
 
@@ -60,9 +61,6 @@ export class Link {
   /** When providing an url then the component will be rendered as `<a>`. */
   @Prop() public href?: string;
 
-  /** Adapts the link color when used on dark background. */
-  @Prop() public theme?: Theme = 'light';
-
   /** Target attribute where the link should be opened. */
   @Prop() public target?: LinkTarget = '_self';
 
@@ -74,6 +72,12 @@ export class Link {
 
   /** Show or hide label. For better accessibility it is recommended to show the label. */
   @Prop() public hideLabel?: BreakpointCustomizable<boolean> = false;
+
+  /** Displays as compact version. */
+  @Prop() public compact?: boolean = false;
+
+  /** Adapts the link color when used on dark background. */
+  @Prop() public theme?: Theme = 'light';
 
   /** Add ARIA attributes. */
   @Prop() public aria?: SelectedAriaAttributes<LinkAriaAttribute>;
@@ -100,6 +104,7 @@ export class Link {
       this.variant,
       this.hideLabel,
       !this.href,
+      this.compact,
       this.theme
     );
 

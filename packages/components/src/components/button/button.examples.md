@@ -32,6 +32,10 @@ Button with label only (default) and with icon only (default: "arrow-right") in 
 
 <Playground :markup="tertiary" :config="config"></Playground>
 
+### Ghost
+
+<Playground :markup="ghost" :config="config"></Playground>
+
 ### Responsive
 
 <Playground :markup="responsive" :config="config"></Playground>
@@ -53,6 +57,14 @@ component.
 - In general, you should **prevent** using the `disabled="true"` state. Disabled elements are not reachable (focusable)
   anymore and can be missed by screen reader users. They can be confusing for sighted users as well by not pointing out
   why these elements are disabled.
+
+---
+
+## Compact
+
+By setting `compact` to `true` you can have a more compact button with reduced spacings.
+
+<Playground :markup="compact" :config="config"></Playground>
 
 ---
 
@@ -135,12 +147,25 @@ export default class Code extends Vue {
 <p-button variant="tertiary" hide-label="true" icon="arrow-right" loading>Some label</p-button>
 <p-button variant="tertiary" hide-label="true" icon="arrow-right" disabled>Some label</p-button>`;
 
+  ghost = 
+`<p-button variant="ghost">Some label</p-button>
+<p-button variant="ghost" loading="true">Some label</p-button>
+<p-button variant="ghost" disabled="true">Some label</p-button>
+<br>
+<p-button variant="ghost" hide-label="true" icon="arrow-right">Some label</p-button>
+<p-button variant="ghost" hide-label="true" icon="arrow-right" loading>Some label</p-button>
+<p-button variant="ghost" hide-label="true" icon="arrow-right" disabled>Some label</p-button>`;
+
   responsive =
 `<p-button variant="primary" hide-label="{ base: true, s: false }" icon="arrow-right">Some label</p-button>
 <p-button variant="secondary" hide-label="{ base: true, m: false }" icon="arrow-right">Some label</p-button>`;
 
   accessibility = 
 `<p-button aria="{ 'aria-label': 'Some more descriptive label' }">Some label</p-button>`;
+
+  compact = `<p-button compact="true">Some label</p-button>
+<p-button compact="true" variant="secondary">Some label</p-button>
+<p-button compact="true" variant="ghost">Some label</p-button>`;
 
   icon =
 `<p-button icon="delete">Some label</p-button>
