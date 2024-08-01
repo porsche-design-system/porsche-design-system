@@ -4,6 +4,15 @@ on:
       github-token:
         description: 'github token for container registry'
         required: true
+      gh-deploy-key-pages:
+        description: 'github deploy key for github pages'
+        required: true
+      algolia-app-id:
+        description: 'algolia app id'
+        required: true
+      algolia-api-key:
+        description: 'algolia api key'
+        required: true
 name: 'Build and Test'
 env:
   PDS_PLAYWRIGHT_DOCKER_IMAGE: ghcr.io/porsche-design-system/porsche-design-system/playwright:v1.42.1-focal-3-test
@@ -836,32 +845,27 @@ jobs:
     name: 'Deploy to GH Pages'
     needs:
       - production-builds
-    # Grant GITHUB_TOKEN the permissions required to make a Pages deployment
-    permissions:
-      pages: write # to deploy to Pages
-      id-token: write # to verify the deployment originates from an appropriate source
-    # Deploy to the github-pages environment
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
       - name: 'Checkout'
         uses: actions/checkout@v4
+      - name: 'Setup and install'
+        uses: ./.github/actions/setup-and-install
+        with:
+          github-token: ${{ secrets.github-token }}
       - name: 'Restore Build Artifact'
         uses: actions/download-artifact@v4
         with:
           name: storefront-build
-          path: ./gh-pages/issue/3381
-      - name: 'Setup Pages'
-        uses: actions/configure-pages@v5
-      - name: 'Upload artifact'
-        uses: actions/upload-pages-artifact@v3
+          path: ./packages/storefront/dist
+      - name: 'Deploy'
+        uses: ./.github/actions/docker-run-playwright
+        env:
+          ALGOLIA_APP_ID: ${{ secrets.algolia-app-id }}
+          ALGOLIA_API_KEY: ${{ secrets.algolia-api-key }}
+          GH_DEPLOY_KEY_PAGES: ${{ secrets.gh-deploy-key-pages }}
         with:
-          path: './gh-pages'
-      - name: 'Deploy to GitHub Pages'
-        id: deployment
-        uses: actions/deploy-pages@v4
+          entrypoint: run-deploy-storefront-gh-pages
   utilities:
     name: 'Utilities'
     runs-on: ubuntu-latest

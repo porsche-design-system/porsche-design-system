@@ -14,6 +14,9 @@ jobs:
     uses: ./.github/workflows/build-and-test.yml
     secrets:
       github-token: ${{ secrets.GITHUB_TOKEN }}
+      gh-deploy-key-pages: ${{ secrets.GH_DEPLOY_KEY_PAGES }}
+      algolia-app-id: ${{ secrets.ALGOLIA_APP_ID }}
+      algolia-api-key: ${{ secrets.ALGOLIA_API_KEY }}
   deploy-and-release:
     name: 'Deploy and Release'
     uses: ./.github/workflows/deploy-and-release.yml
@@ -21,6 +24,7 @@ jobs:
       - build-and-test
     secrets:
       github-token: ${{ secrets.GITHUB_TOKEN }}
+      gh-deploy-key-pages: ${{ secrets.GH_DEPLOY_KEY_PAGES }}
       porsche-npm-registry-token: ${{ secrets.PORSCHE_NPM_REGISTRY_TOKEN }}
       npmjs-registry-token: ${{ secrets.NPMJS_REGISTRY_TOKEN }}
       cdn-user: ${{ secrets.CDN_USER }}
