@@ -10,6 +10,7 @@ exports[`getComponentCss() should return correct css for theme: dark 1`] = `
 ::slotted(img) {
   height: calc(6px + 2.125ex) !important;
   border-radius: 4px !important;
+  width: auto !important;
 }
 .option {
   font-weight: 400;
@@ -80,6 +81,7 @@ exports[`getComponentCss() should return correct css for theme: light 1`] = `
 ::slotted(img) {
   height: calc(6px + 2.125ex) !important;
   border-radius: 4px !important;
+  width: auto !important;
 }
 .option {
   font-weight: 400;

@@ -18,8 +18,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 #### Fixed
 
-`Optgoup`: hydration error in Next.js SSR context
-([#3432](https://github.com/porsche-design-system/porsche-design-system/pull/3432))
+- `Optgoup`: hydration error in Next.js SSR context
+  ([#3432](https://github.com/porsche-design-system/porsche-design-system/pull/3432))
+- `Select`: ensure slotted image width
+  ([#3432](https://github.com/porsche-design-system/porsche-design-system/pull/3432))
 
 ### [3.17.0-rc.1] - 2024-07-31
 
