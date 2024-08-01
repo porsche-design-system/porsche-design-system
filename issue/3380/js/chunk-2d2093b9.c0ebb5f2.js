@@ -1,0 +1,2 @@
+(window["webpackJsonp"]=window["webpackJsonp"]||[]).push([["chunk-2d2093b9"],{a7d1:function(t,n,a){"use strict";a.r(n);var e=function(){var t=this,n=t._self._c;return n("div",{staticClass:"vmark"},[n("ComponentHeading",{attrs:{name:"Radio Button Wrapper"}}),n("TableOfContents"),n("h2",[t._v("Properties")]),n("MetaTable",{attrs:{component:"p-radio-button-wrapper",type:"props"}})],1)},o=[],r=a("2877"),p={},s=Object(r["a"])(p,e,o,!1,null,null,null);n["default"]=s.exports}}]);
+//# sourceMappingURL=chunk-2d2093b9.c0ebb5f2.js.map
