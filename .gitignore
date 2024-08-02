@@ -1,31 +1,3 @@
-# Logs
-logs
-*.log
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-lerna-debug.log*
-
-# Dependency directories
-node_modules
-
-# Cache
-.aws-sam
-.npm
-.eslintcache
-
-# Jest coverage report
-coverage
-
-# Yarn Integrity file
-.yarn-integrity
-
-# temporary files
-cdn.config.js
-
-# dotenv environment variables file
-.env
-
 # Mac OS
 .DS_Store
 
@@ -44,6 +16,3 @@ Thumbs.db
 !.vscode/tasks.json
 !.vscode/launch.json
 !.vscode/extensions.json
-
-# OSS Review Toolkit
-ort/
