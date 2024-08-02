@@ -47,6 +47,3 @@ Thumbs.db
 
 # OSS Review Toolkit
 ort/
-
-# Used in CI to prepare artifact to be deployed at GH Pages with GH Actions (actions/deploy-pages)
-gh-pages/
