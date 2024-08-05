@@ -25,7 +25,7 @@ test.describe('without prefix', () => {
     await goto(page, 'core-initializer');
     await page.waitForFunction(() => document.querySelectorAll('p-text-field-wrapper').length === 2);
 
-    const [component1, component2] = await page.$$('p-text-field-wrapper');
+    const [component1, component2] = await page.locator('p-text-field-wrapper').all();
 
     const component1HTML = await getOuterHTML(component1);
     const component2HTML = await getOuterHTML(component2);
@@ -46,7 +46,7 @@ test.describe('with prefix', () => {
   test('should initialize angular component', async ({ page }) => {
     await goto(page, 'core-initializer-prefixed');
 
-    const prefixedComponent = await page.$(prefixedSelector);
+    const prefixedComponent = page.locator(prefixedSelector);
 
     expect(await getElementProp(prefixedComponent, 'description')).toBe('Some Description');
     expect(await getElementProp(prefixedComponent, 'label')).toBe('Some Label');

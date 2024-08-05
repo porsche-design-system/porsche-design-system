@@ -26,7 +26,7 @@ test('should initialize component deterministically', async ({ page }) => {
   await goto(page, 'core-initializer');
   await page.waitForFunction(() => document.querySelectorAll('p-text-field-wrapper').length === 2);
 
-  const [component1, component2] = await page.$$('p-text-field-wrapper');
+  const [component1, component2] = await page.locator('p-text-field-wrapper').all();
 
   const component1HTML = await getOuterHTML(component1);
   const component2HTML = await getOuterHTML(component2);

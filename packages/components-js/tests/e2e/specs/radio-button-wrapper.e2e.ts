@@ -1,5 +1,4 @@
-import type { ElementHandle, Page } from 'playwright';
-import { expect, test } from '@playwright/test';
+import { expect, type Locator, test, type Page } from '@playwright/test';
 import {
   addEventListener,
   clickElementPosition,
@@ -17,11 +16,11 @@ import {
 } from '../helpers';
 import type { FormState } from '@porsche-design-system/components';
 
-const getHost = (page: Page) => page.$('p-radio-button-wrapper');
-const getInput = (page: Page) => page.$('p-radio-button-wrapper input');
-const getWrapper = (page: Page) => page.$('p-radio-button-wrapper .wrapper');
-const getMessage = (page: Page) => page.$('p-radio-button-wrapper .message');
-const getBackgroundStyle = (element: ElementHandle<HTMLElement | SVGElement>) => getElementStyle(element, 'background');
+const getHost = (page: Page) => page.locator('p-radio-button-wrapper');
+const getInput = (page: Page) => page.locator('p-radio-button-wrapper input');
+const getWrapper = (page: Page) => page.locator('p-radio-button-wrapper .wrapper');
+const getMessage = (page: Page) => page.locator('p-radio-button-wrapper .message');
+const getBackgroundStyle = (element: Locator) => getElementStyle(element, 'background');
 
 type InitOptions = {
   useSlottedLabel?: boolean;
@@ -65,27 +64,27 @@ test('should add/remove message text if state changes programmatically', async (
     </p-radio-button-wrapper>`
   );
 
-  const host = await getHost(page);
+  const host = getHost(page);
 
-  expect(await getMessage(page), 'initially').toBeNull();
+  await expect(getMessage(page), 'initially').toHaveCount(0);
 
   await setProperty(host, 'state', 'error');
   await setProperty(host, 'message', 'Some error message');
   await waitForStencilLifecycle(page);
 
-  expect(await getMessage(page), 'when state = error').toBeDefined();
+  expect(getMessage(page), 'when state = error').toBeDefined();
 
   await setProperty(host, 'state', 'success');
   await setProperty(host, 'message', 'Some success message');
   await waitForStencilLifecycle(page);
 
-  expect(await getMessage(page), 'when state = success').toBeDefined();
+  expect(getMessage(page), 'when state = success').toBeDefined();
 
   await setProperty(host, 'state', 'none');
   await setProperty(host, 'message', '');
   await waitForStencilLifecycle(page);
 
-  expect(await getMessage(page), 'when state = none').toBeNull();
+  await expect(getMessage(page), 'when state = none').toHaveCount(0);
 });
 
 skipInBrowsers(['firefox', 'webkit'], () => {
@@ -98,9 +97,9 @@ skipInBrowsers(['firefox', 'webkit'], () => {
     </p-radio-button-wrapper>`
     );
 
-    const host = await getHost(page);
-    const input = await getInput(page);
-    const wrapper = await getWrapper(page);
+    const host = getHost(page);
+    const input = getInput(page);
+    const wrapper = getWrapper(page);
 
     const getWrapperCursor = () => getElementStyle(wrapper, 'cursor');
     const getInputCursor = () => getElementStyle(input, 'cursor');
@@ -146,8 +145,8 @@ test.describe('checked state', () => {
       </p-radio-button-wrapper>`
     );
 
-    const input1 = await page.$('#radio-1 > input[type="radio"]');
-    const input2 = await page.$('#radio-2 > input[type="radio"]');
+    const input1 = page.locator('#radio-1 > input[type="radio"]');
+    const input2 = page.locator('#radio-2 > input[type="radio"]');
 
     const initialStyleInput1 = await getBackgroundStyle(input1);
     const initialStyleInput2 = await getBackgroundStyle(input2);
@@ -179,10 +178,10 @@ test.describe('checked state', () => {
       </p-radio-button-wrapper>`
     );
 
-    const input1 = await page.$('#radio-1 > input[type="radio"]');
-    const input2 = await page.$('#radio-2 > input[type="radio"]');
-    const label1 = await page.$('#radio-1 label');
-    const label2 = await page.$('#radio-2 label');
+    const input1 = page.locator('#radio-1 > input[type="radio"]');
+    const input2 = page.locator('#radio-2 > input[type="radio"]');
+    const label1 = page.locator('#radio-1 label');
+    const label2 = page.locator('#radio-2 label');
     const initialStyleInput1 = await getBackgroundStyle(input1);
     const initialStyleInput2 = await getBackgroundStyle(input2);
 
@@ -217,8 +216,8 @@ test.describe('checked state', () => {
       </p-radio-button-wrapper>`
     );
 
-    const input1 = await page.$('#radio-1 > input');
-    const input2 = await page.$('#radio-2 > input');
+    const input1 = page.locator('#radio-1 > input');
+    const input2 = page.locator('#radio-2 > input');
     const initialStyleInput1 = await getBackgroundStyle(input1);
     const initialStyleInput2 = await getBackgroundStyle(input2);
 
@@ -248,8 +247,8 @@ test.describe('checked state', () => {
         <input type="radio" name="some-name" checked />
       </p-radio-button-wrapper>`
     );
-    const host1 = await page.$('#radio-1');
-    const input1 = await page.$('#radio-1 > input');
+    const host1 = page.locator('#radio-1');
+    const input1 = page.locator('#radio-1 > input');
     await addEventListener(host1, 'click');
     await addEventListener(input1, 'change');
 
@@ -261,7 +260,7 @@ test.describe('checked state', () => {
     await page.mouse.click(coords.x + coords.width - 1, coords.y + coords.height - 1); // click the bottom right corner
     await page.mouse.click(coords.x + 1, coords.y + coords.height / 2); // click the left center
     await page.mouse.click(coords.x + coords.width - 1, coords.y + coords.height / 2); // click the right center
-    await page.mouse.click(coords.x + coords.width / 2, coords.y + coords.height / 2); // click the center center
+    await page.mouse.click(coords.x + coords.width / 2, coords.y + coords.height / 2); // click the center
 
     expect((await getEventSummary(host1, 'click')).counter).toBe(8);
     expect((await getEventSummary(input1, 'change')).counter).toBe(0);
@@ -286,8 +285,8 @@ test.describe('checked state', () => {
         <input type="radio" name="some-name" />
       </p-radio-button-wrapper>`
       );
-      const host1 = await page.$('#radio-1');
-      const input1 = await page.$('#radio-1 > input');
+      const host1 = page.locator('#radio-1');
+      const input1 = page.locator('#radio-1 > input');
 
       expect(await hasFocus(input1)).toBe(false);
       await page.keyboard.press('Tab');
@@ -318,8 +317,8 @@ test('should check radio-button when checked property is changed programmaticall
     </p-radio-button-wrapper>`
   );
 
-  const input1 = await page.$('#radio-1 > input');
-  const input2 = await page.$('#radio-2 > input');
+  const input1 = page.locator('#radio-1 > input');
+  const input2 = page.locator('#radio-2 > input');
   const initialStyleInput1 = await getBackgroundStyle(input1);
   const initialStyleInput2 = await getBackgroundStyle(input2);
 
@@ -352,7 +351,7 @@ test.describe('lifecycle', () => {
 
   test('should work without unnecessary round trips after state change', async ({ page }) => {
     await initRadioButton(page, { useSlottedMessage: true, useSlottedLabel: true, state: 'error' });
-    const input = await getInput(page);
+    const input = getInput(page);
 
     await input.click();
     await waitForStencilLifecycle(page);

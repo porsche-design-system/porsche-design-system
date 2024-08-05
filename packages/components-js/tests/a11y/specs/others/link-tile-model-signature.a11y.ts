@@ -1,7 +1,7 @@
 import { setContentWithDesignSystem } from '../../helpers';
 import { type Page, test, expect } from '@playwright/test';
 
-const getRoot = (page: Page) => page.$('p-link-tile-model-signature .root');
+const getRoot = (page: Page) => page.locator('p-link-tile-model-signature .root');
 
 const initLinkTileModelSignature = (page: Page, opts?: { useSlottedAnchor?: boolean }): Promise<void> => {
   const { useSlottedAnchor = false } = opts || {};
@@ -21,7 +21,7 @@ const initLinkTileModelSignature = (page: Page, opts?: { useSlottedAnchor?: bool
 
 test.fixme('should expose correct initial accessibility tree properties', async ({ page }) => {
   await initLinkTileModelSignature(page);
-  const root = await getRoot(page);
+  const root = getRoot(page);
 
   // await expectA11yToMatchSnapshot(page, root, { interestingOnly: false });
 });

@@ -1,14 +1,15 @@
 import type { BreakpointCustomizable, PropTypes, TextSize, Theme } from '../../types';
-import type {
-  TextTag,
-  TextAlign,
-  TextAlignDeprecated,
-  TextColor,
-  TextColorDeprecated,
-  TextWeight,
-  TextWeightDeprecated,
+import {
+  type TextTag,
+  type TextAlign,
+  type TextAlignDeprecated,
+  type TextColor,
+  type TextColorDeprecated,
+  type TextWeight,
+  type TextWeightDeprecated,
+  getTextTagType,
+  TEXT_TAGS,
 } from './text-utils';
-import { getTextTagType, TEXT_TAGS } from './text-utils';
 import { Component, Element, h, type JSX, Prop } from '@stencil/core';
 import {
   AllowedTypes,
@@ -25,6 +26,10 @@ import {
 } from '../../utils';
 import { getComponentCss } from './text-styles';
 import { getSlottedAnchorStyles } from '../../styles';
+
+type WeightDeprecationMapType = Record<TextWeightDeprecated, Exclude<TextWeight, TextWeightDeprecated>>;
+type AlignDeprecationMapType = Record<TextAlignDeprecated, Exclude<TextAlign, TextAlignDeprecated>>;
+type ColorDeprecationMapType = Record<TextColorDeprecated, Exclude<TextColor, TextColorDeprecated>>;
 
 const propTypes: PropTypes<typeof Text> = {
   tag: AllowedTypes.oneOf<TextTag>(TEXT_TAGS),
@@ -76,7 +81,7 @@ export class Text {
 
   public render(): JSX.Element {
     validateProps(this, propTypes);
-    const colorDeprecationMap: Record<TextColorDeprecated, Exclude<TextColor, TextColorDeprecated>> = {
+    const colorDeprecationMap: ColorDeprecationMapType = {
       brand: 'primary',
       default: 'primary',
       'neutral-contrast-low': 'contrast-low',
@@ -85,7 +90,7 @@ export class Text {
       'notification-neutral': 'notification-info',
     };
     warnIfDeprecatedPropValueIsUsed<typeof Text, TextColorDeprecated, TextColor>(this, 'color', colorDeprecationMap);
-    const weightDeprecationMap: Record<TextWeightDeprecated, Exclude<TextWeight, TextWeightDeprecated>> = {
+    const weightDeprecationMap: WeightDeprecationMapType = {
       thin: 'regular',
       semibold: 'semi-bold',
     };
@@ -94,7 +99,7 @@ export class Text {
       'weight',
       weightDeprecationMap
     );
-    const alignDeprecationMap: Record<TextAlignDeprecated, Exclude<TextAlign, TextAlignDeprecated>> = {
+    const alignDeprecationMap: AlignDeprecationMapType = {
       left: 'start',
       right: 'end',
     };
@@ -103,9 +108,18 @@ export class Text {
       this.host,
       getComponentCss,
       this.size,
-      (weightDeprecationMap[this.weight] || this.weight) as Exclude<TextWeight, TextWeightDeprecated>,
-      (alignDeprecationMap[this.align] || this.align) as Exclude<TextAlign, TextAlignDeprecated>,
-      (colorDeprecationMap[this.color] || this.color) as Exclude<TextColor, TextColorDeprecated>,
+      (weightDeprecationMap[this.weight as keyof WeightDeprecationMapType] || this.weight) as Exclude<
+        TextWeight,
+        TextWeightDeprecated
+      >,
+      (alignDeprecationMap[this.align as keyof AlignDeprecationMapType] || this.align) as Exclude<
+        TextAlign,
+        TextAlignDeprecated
+      >,
+      (colorDeprecationMap[this.color as keyof ColorDeprecationMapType] || this.color) as Exclude<
+        TextColor,
+        TextColorDeprecated
+      >,
       this.ellipsis,
       this.theme
     );

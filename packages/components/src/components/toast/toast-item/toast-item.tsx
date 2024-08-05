@@ -1,6 +1,5 @@
 import { Component, Element, Event, type EventEmitter, h, Host, type JSX, Prop } from '@stencil/core';
-import type { ToastState, ToastStateDeprecated } from '../toast/toast-utils';
-import { TOAST_STATES } from '../toast/toast-utils';
+import { type ToastState, type ToastStateDeprecated, TOAST_STATES } from '../toast/toast-utils';
 import type { IconColor } from '../../icon/icon-utils';
 import type { PropTypes, Theme } from '../../../types';
 import {

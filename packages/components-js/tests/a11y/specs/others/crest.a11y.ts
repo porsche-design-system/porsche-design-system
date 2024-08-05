@@ -11,21 +11,21 @@ const setContentWithLink = (page: Page) =>
     </div>`
   );
 
-const getHost = (page: Page) => page.$('p-crest');
-const getLink = (page: Page) => page.$('p-crest a');
-const getImage = (page: Page) => page.$('p-crest img');
+const getHost = (page: Page) => page.locator('p-crest');
+const getLink = (page: Page) => page.locator('p-crest a');
+const getImage = (page: Page) => page.locator('p-crest img');
 
 test.fixme('should expose correct initial accessibility tree', async ({ page }) => {
   await setContent(page);
-  const image = await getImage(page);
+  const image = getImage(page);
 
   // await expectA11yToMatchSnapshot(page, image);
 });
 
 test.fixme('should expose correct accessibility tree if accessibility properties are set', async ({ page }) => {
   await setContentWithLink(page);
-  const host = await getHost(page);
-  const link = await getLink(page);
+  const host = getHost(page);
+  const link = getLink(page);
 
   await setProperty(host, 'aria', {
     'aria-label': 'Some more detailed label',

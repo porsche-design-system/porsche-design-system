@@ -21,7 +21,7 @@ export const observeProperties = <T extends HTMLElement>(node: T, props: (keyof 
           get() {
             return get.call(this);
           },
-          set(val) {
+          set(val: any) {
             set.call(this, val);
             callback();
           },

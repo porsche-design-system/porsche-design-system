@@ -34,6 +34,8 @@ import { getSlottedAnchorStyles } from '../../styles';
 import { observeStickyArea } from '../../utils/dialog/observer';
 import { onTransitionEnd } from '../../utils/dialog/dialog';
 
+type PositionDeprecationMapType = Record<FlyoutPositionDeprecated, Exclude<FlyoutPosition, FlyoutPositionDeprecated>>;
+
 const propTypes: PropTypes<typeof Flyout> = {
   open: AllowedTypes.boolean,
   position: AllowedTypes.oneOf<FlyoutPosition>(FLYOUT_POSITIONS),
@@ -133,10 +135,7 @@ export class Flyout {
   public render(): JSX.Element {
     validateProps(this, propTypes);
 
-    const positionDeprecationMap: Record<
-      FlyoutPositionDeprecated,
-      Exclude<FlyoutPosition, FlyoutPositionDeprecated>
-    > = {
+    const positionDeprecationMap: PositionDeprecationMapType = {
       left: 'start',
       right: 'end',
     };
@@ -154,7 +153,10 @@ export class Flyout {
       this.host,
       getComponentCss,
       this.open,
-      (positionDeprecationMap[this.position] || this.position) as Exclude<FlyoutPosition, FlyoutPositionDeprecated>,
+      (positionDeprecationMap[this.position as keyof PositionDeprecationMapType] || this.position) as Exclude<
+        FlyoutPosition,
+        FlyoutPositionDeprecated
+      >,
       this.hasHeader,
       this.hasFooter,
       this.hasSubFooter,

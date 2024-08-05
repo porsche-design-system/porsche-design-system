@@ -1,5 +1,5 @@
 import type { PropTypes, SelectedAriaAttributes, Theme } from '../../types';
-import type { WordmarkSize, WordmarkTarget, WordmarkAriaAttribute } from './wordmark-utils';
+import { type WordmarkSize, type WordmarkTarget, type WordmarkAriaAttribute, WORDMARK_SIZES } from './wordmark-utils';
 import { Component, Element, h, Host, type JSX, Prop } from '@stencil/core';
 import {
   AllowedTypes,
@@ -10,7 +10,6 @@ import {
   THEMES,
   hasPropValueChanged,
 } from '../../utils';
-import { WORDMARK_SIZES } from './wordmark-utils';
 import { getComponentCss } from './wordmark-styles';
 
 const propTypes: PropTypes<typeof Wordmark> = {

@@ -15,7 +15,7 @@ const initTagDismissible = (page: Page, props?: InitOpts) => {
   return setContentWithDesignSystem(page, content);
 };
 
-const getHost = (page: Page) => page.$('p-tag-dismissible');
+const getHost = (page: Page) => page.locator('p-tag-dismissible');
 
 test.describe('focus', () => {
   test('should provide functionality to focus & blur the custom element', async ({ page }) => {
@@ -26,10 +26,10 @@ test.describe('focus', () => {
       <p-tag-dismissible>Some Tag</p-tag-dismissible>`
     );
 
-    const host = await getHost(page);
+    const host = getHost(page);
     const hostHasFocus = () => host.evaluate((el) => document.activeElement === el);
 
-    const before = await page.$('#before');
+    const before = page.locator('#before');
     await before.focus();
     expect(await hostHasFocus()).toBe(false);
     await host.focus();
@@ -53,7 +53,7 @@ test.describe('lifecycle', () => {
 
   test('should work without unnecessary round trips on prop change', async ({ page }) => {
     await initTagDismissible(page, { withLabel: true });
-    const host = await getHost(page);
+    const host = getHost(page);
 
     await setProperty(host, 'label', 'Another label');
     await waitForStencilLifecycle(page);

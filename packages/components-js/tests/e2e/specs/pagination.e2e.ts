@@ -10,9 +10,9 @@ import {
   sleep,
 } from '../helpers';
 
-const getHost = (page: Page) => page.$('p-pagination');
-const getNav = (page: Page) => page.$('p-pagination nav');
-const getPaginationItems = async (page: Page) => (await (await getNav(page)).$$('span:not(.ellipsis)')).slice(1, -1); // without prev and next
+const getHost = (page: Page) => page.locator('p-pagination');
+const getNav = (page: Page) => page.locator('p-pagination nav');
+const getPaginationItems = async (page: Page) => (await getNav(page).locator('span:not(.ellipsis)').all()).slice(1, -1); // without prev and next
 
 const initPagination = (page: Page, opts?: { activePage?: number }) => {
   const { activePage = 1 } = opts || {};
@@ -45,7 +45,7 @@ test('should have no errors if disconnected before fully loaded', async ({ page 
 test.describe('events', () => {
   test('should emit both pageChange and update event', async ({ page }) => {
     await initPagination(page);
-    const host = await getHost(page);
+    const host = getHost(page);
 
     await addEventListener(host, 'pageChange');
     await addEventListener(host, 'update');

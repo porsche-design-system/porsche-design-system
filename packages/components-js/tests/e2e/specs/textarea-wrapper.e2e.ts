@@ -1,5 +1,4 @@
-import type { ElementHandle, Page } from 'playwright';
-import { expect, test } from '@playwright/test';
+import { expect, type Locator, test, type Page } from '@playwright/test';
 import {
   addEventListener,
   clickElementPosition,
@@ -16,10 +15,10 @@ import {
 } from '../helpers';
 import type { FormState } from '@porsche-design-system/components';
 
-const getHost = (page: Page) => page.$('p-textarea-wrapper');
-const getTextarea = (page: Page) => page.$('p-textarea-wrapper textarea');
-const getLabel = (page: Page) => page.$('p-textarea-wrapper label');
-const getCounter = (page: Page) => page.$('p-textarea-wrapper .counter');
+const getHost = (page: Page) => page.locator('p-textarea-wrapper');
+const getTextarea = (page: Page) => page.locator('p-textarea-wrapper textarea');
+const getLabel = (page: Page) => page.locator('p-textarea-wrapper label');
+const getCounter = (page: Page) => page.locator('p-textarea-wrapper .counter');
 
 type InitOptions = {
   useSlottedLabel?: boolean;
@@ -61,8 +60,8 @@ const initTextarea = (page: Page, opts?: InitOptions): Promise<void> => {
 
 test('should focus textarea when label is clicked', async ({ page }) => {
   await initTextarea(page, { hasLabel: true });
-  const label = await getLabel(page);
-  const textarea = await getTextarea(page);
+  const label = getLabel(page);
+  const textarea = getTextarea(page);
 
   await addEventListener(textarea, 'focus');
   expect((await getEventSummary(textarea, 'focus')).counter).toBe(0);
@@ -75,8 +74,8 @@ test('should focus textarea when label is clicked', async ({ page }) => {
 skipInBrowsers(['webkit'], () => {
   test('should focus textarea when counter text is clicked', async ({ page }) => {
     await initTextarea(page, { maxLength: 160 });
-    const counter = await getCounter(page);
-    const textarea = await getTextarea(page);
+    const counter = getCounter(page);
+    const textarea = getTextarea(page);
 
     await addEventListener(textarea, 'focus');
     expect((await getEventSummary(textarea, 'focus')).counter).toBe(0);
@@ -89,13 +88,13 @@ skipInBrowsers(['webkit'], () => {
 
 test('should display correct counter when typing', async ({ page }) => {
   await initTextarea(page, { maxLength: 160 });
-  const counter = await getCounter(page);
-  const textarea = await getTextarea(page);
+  const counter = getCounter(page);
+  const textarea = getTextarea(page);
 
   expect(await getElementInnerText(counter)).toBe('0/160');
-  await textarea.type('h');
+  await textarea.fill('h');
   expect(await getElementInnerText(counter)).toBe('1/160');
-  await textarea.type('ello');
+  await textarea.fill('hello');
   expect(await getElementInnerText(counter)).toBe('5/160');
   await textarea.press('Backspace');
   expect(await getElementInnerText(counter)).toBe('4/160');
@@ -108,26 +107,26 @@ test('should display correct counter when typing', async ({ page }) => {
 
 test('should render characterCountElement when maxlength is set', async ({ page }) => {
   await initTextarea(page);
-  const textarea = await getTextarea(page);
+  const textarea = getTextarea(page);
 
-  expect(await page.$('p-textarea-wrapper label .sr-only')).toBeNull();
+  await expect(page.locator('p-textarea-wrapper label .sr-only')).toHaveCount(0);
 
   await setAttribute(textarea, 'maxlength', '20');
 
-  expect(await page.$('p-textarea-wrapper label .sr-only')).toBeDefined();
+  expect(page.locator('p-textarea-wrapper label .sr-only')).toBeDefined();
 });
 
 test.describe('hover state', () => {
   skipInBrowsers(['firefox', 'webkit']);
-  const getBorderColor = (element: ElementHandle<HTMLElement | SVGElement>) => getElementStyle(element, 'borderColor');
+  const getBorderColor = (element: Locator) => getElementStyle(element, 'borderColor');
   const defaultBorderColor = 'rgb(107, 109, 112)';
   const hoverBorderColor = 'rgb(1, 2, 5)';
 
   test('should show hover state on input when label is hovered', async ({ page }) => {
     await initTextarea(page, { hasLabel: true });
     await page.mouse.move(0, 300); // avoid potential hover initially
-    const label = await getLabel(page);
-    const textarea = await getTextarea(page);
+    const label = getLabel(page);
+    const textarea = getTextarea(page);
 
     const initialStyle = await getBorderColor(textarea);
     expect(initialStyle).toBe(defaultBorderColor);
@@ -145,8 +144,8 @@ test.describe('hover state', () => {
   test('should show hover state on textarea when counter is hovered', async ({ page }) => {
     await initTextarea(page, { maxLength: 160 });
     await page.mouse.move(0, 300); // avoid potential hover initially
-    const counter = await getCounter(page);
-    const textarea = await getTextarea(page);
+    const counter = getCounter(page);
+    const textarea = getTextarea(page);
 
     const initialStyle = await getBorderColor(textarea);
     expect(initialStyle).toBe(defaultBorderColor);
@@ -186,7 +185,7 @@ test.describe('lifecycle', () => {
       useSlottedDescription: true,
       state: 'error',
     });
-    const host = await getHost(page);
+    const host = getHost(page);
     await setProperty(host, 'state', 'none');
     await waitForStencilLifecycle(page);
     const status = await getLifecycleStatus(page);

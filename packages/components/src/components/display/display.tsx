@@ -1,6 +1,15 @@
 import type { BreakpointCustomizable, PropTypes, Theme } from '../../types';
-import type { DisplayAlign, DisplayAlignDeprecated, DisplayColor, DisplaySize, DisplayTag } from './display-utils';
-import { DISPLAY_COLORS, DISPLAY_SIZES, DISPLAY_TAGS, getDisplayTagType } from './display-utils';
+import {
+  type DisplayAlign,
+  type DisplayAlignDeprecated,
+  type DisplayColor,
+  type DisplaySize,
+  type DisplayTag,
+  DISPLAY_COLORS,
+  DISPLAY_SIZES,
+  DISPLAY_TAGS,
+  getDisplayTagType,
+} from './display-utils';
 import { Component, Element, h, type JSX, Prop } from '@stencil/core';
 import {
   AllowedTypes,
@@ -14,6 +23,8 @@ import {
 } from '../../utils';
 import { getComponentCss } from './display-styles';
 import { getSlottedAnchorStyles } from '../../styles';
+
+type AlignDeprecationMapType = Record<DisplayAlignDeprecated, Exclude<DisplayAlign, DisplayAlignDeprecated>>;
 
 const propTypes: PropTypes<typeof Display> = {
   tag: AllowedTypes.oneOf<DisplayTag>([undefined, ...DISPLAY_TAGS]),
@@ -63,7 +74,7 @@ export class Display {
   public render(): JSX.Element {
     validateProps(this, propTypes);
 
-    const alignDeprecationMap: Record<DisplayAlignDeprecated, Exclude<DisplayAlign, DisplayAlignDeprecated>> = {
+    const alignDeprecationMap: AlignDeprecationMapType = {
       left: 'start',
       right: 'end',
     };
@@ -77,7 +88,10 @@ export class Display {
       this.host,
       getComponentCss,
       this.size,
-      (alignDeprecationMap[this.align] || this.align) as Exclude<DisplayAlign, DisplayAlignDeprecated>,
+      (alignDeprecationMap[this.align as keyof AlignDeprecationMapType] || this.align) as Exclude<
+        DisplayAlign,
+        DisplayAlignDeprecated
+      >,
       this.color,
       this.ellipsis,
       this.theme

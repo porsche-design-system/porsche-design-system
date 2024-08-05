@@ -1,6 +1,5 @@
 import { Component, Element, h, type JSX, Prop } from '@stencil/core';
-import type { TagColor, TagColorDeprecated, TagIcon } from './tag-utils';
-import { TAG_COLORS } from './tag-utils';
+import { type TagColor, type TagColorDeprecated, type TagIcon, TAG_COLORS } from './tag-utils';
 import {
   AllowedTypes,
   attachComponentCss,
@@ -12,6 +11,8 @@ import {
 } from '../../utils';
 import { getComponentCss } from './tag-styles';
 import type { PropTypes, Theme } from '../../types';
+
+type DeprecationMapType = Record<TagColorDeprecated, Exclude<TagColor, TagColorDeprecated>>;
 
 const propTypes: PropTypes<typeof Tag> = {
   theme: AllowedTypes.oneOf<Theme>(THEMES),
@@ -49,7 +50,7 @@ export class Tag {
   public render(): JSX.Element {
     validateProps(this, propTypes);
     const hasIcon = !!(this.icon || this.iconSource);
-    const deprecationMap: Record<TagColorDeprecated, Exclude<TagColor, TagColorDeprecated>> = {
+    const deprecationMap: DeprecationMapType = {
       'background-default': 'background-base',
       'neutral-contrast-high': 'primary',
       'notification-neutral': 'notification-info-soft',
@@ -61,7 +62,7 @@ export class Tag {
     attachComponentCss(
       this.host,
       getComponentCss,
-      (deprecationMap[this.color] || this.color) as Exclude<TagColor, TagColorDeprecated>,
+      (deprecationMap[this.color as keyof DeprecationMapType] || this.color) as Exclude<TagColor, TagColorDeprecated>,
       this.compact,
       !!getDirectChildHTMLElement(this.host, 'a,button'),
       hasIcon,

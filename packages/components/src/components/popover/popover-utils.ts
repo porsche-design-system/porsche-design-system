@@ -1,4 +1,4 @@
-import { Popover } from './popover';
+import type { Popover } from './popover';
 import { attachComponentCss, isClickOutside } from '../../utils';
 import { getComponentCss } from './popover-styles';
 import type { Theme } from '../../types';
@@ -97,6 +97,7 @@ export const getPopoverMargin = (
   spacer: HTMLDivElement,
   popover: HTMLDivElement,
   direction: PopoverDirection
+  // @ts-expect-error: Not all code paths return a value
 ): string => {
   const { clientWidth, clientHeight } = getDocumentHeightWidthWithoutSafeZone();
   const spacerRect = spacer.getBoundingClientRect();

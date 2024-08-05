@@ -10,7 +10,7 @@ export const hasPropValueChanged = (newVal: unknown, oldVal: unknown): boolean =
     // currently this does not take care of nested objects
     return !(
       Object.keys(newVal).length === Object.keys(oldVal).length &&
-      Object.entries(newVal as Record<string, any>).every(([key1, val1]) => val1 === oldVal[key1])
+      Object.entries(newVal as Record<string, any>).every(([key1, val1]) => val1 === oldVal[key1 as keyof unknown])
     );
   }
 };

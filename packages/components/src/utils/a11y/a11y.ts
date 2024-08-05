@@ -23,7 +23,7 @@ export const setAriaAttributes = (el: HTMLElement, opts: SetAriaAttributesOption
   }
 };
 
-export const parseAndGetAriaAttributes = (rawAttributes: AriaAttributes | string): AriaAttributes => {
+export const parseAndGetAriaAttributes = (rawAttributes: AriaAttributes | string): AriaAttributes | undefined => {
   if (rawAttributes) {
     return Object.fromEntries(
       Object.entries(parseJSONAttribute(rawAttributes)).map(([key, val]) => [
@@ -33,6 +33,7 @@ export const parseAndGetAriaAttributes = (rawAttributes: AriaAttributes | string
       ])
     );
   }
+  return undefined;
 };
 
 export const isHighContrastMode = hasWindow && window.matchMedia?.('(forced-colors: active)').matches;

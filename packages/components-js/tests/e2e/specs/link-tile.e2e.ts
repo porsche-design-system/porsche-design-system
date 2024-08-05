@@ -2,7 +2,7 @@ import type { Page } from 'playwright';
 import { expect, test } from '@playwright/test';
 import { getLifecycleStatus, setContentWithDesignSystem, setProperty, waitForStencilLifecycle } from '../helpers';
 
-const getHost = (page: Page) => page.$('p-link-tile');
+const getHost = (page: Page) => page.locator('p-link-tile');
 
 const imgSrc =
   'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyAQMAAAAk8RryAAAABlBMVEUAAAD2vP9xXLiUAAAAAXRSTlMAQObYZgAAABxJREFUGNNjYOBgYGBhYKAZ/R8MDsD4Q5amkz8ASp4PtTYYQZIAAAAASUVORK5CYII=';
@@ -62,7 +62,7 @@ test.describe('lifecycle', () => {
 
   test('should work without unnecessary round trips on prop change', async ({ page }) => {
     await initLinkTile(page);
-    const host = await getHost(page);
+    const host = getHost(page);
 
     await setProperty(host, 'compact', 'true');
     await waitForStencilLifecycle(page);

@@ -2,8 +2,8 @@ import { getHTMLAttributes, setContentWithDesignSystem } from '../../helpers';
 import { type Page, test, expect } from '@playwright/test';
 import type { Components } from '@porsche-design-system/components/src/components';
 
-const getRoot = (page: Page) => page.$('p-link-tile-product .root');
-const getWrapper = (page: Page) => page.$('p-link-tile-product .wrapper');
+const getRoot = (page: Page) => page.locator('p-link-tile-product .root');
+const getWrapper = (page: Page) => page.locator('p-link-tile-product .wrapper');
 
 type InitOptions = {
   props?: Components.PLinkTileProduct;
@@ -29,7 +29,7 @@ const initLinkTileProduct = (page: Page, opt?: InitOptions): Promise<void> => {
 
 test.fixme('should expose correct initial accessibility tree properties', async ({ page }) => {
   await initLinkTileProduct(page);
-  const root = await getRoot(page);
+  const root = getRoot(page);
 
   // await expectA11yToMatchSnapshot(page, root, { interestingOnly: false });
 });
@@ -38,7 +38,7 @@ test.fixme('should expose correct accessibility tree properties when price origi
   await initLinkTileProduct(page, {
     props: { heading: 'Some product name', price: '718,00 €', priceOriginal: '911,00 €' },
   });
-  const wrapper = await getWrapper(page);
+  const wrapper = getWrapper(page);
 
   // await expectA11yToMatchSnapshot(page, wrapper, { interestingOnly: false });
 });

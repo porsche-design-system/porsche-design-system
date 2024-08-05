@@ -1,6 +1,7 @@
 import type { TagName } from '@porsche-design-system/shared';
-import {getPrefixedTagNames, getTagName, paramCaseToCamelCase, throwException} from '..';
+import { getPrefixedTagNames, getTagName, paramCaseToCamelCase, throwException } from '..';
 import { isParentOfKind } from '../dom';
+import type { PrefixedTagNames } from '../tag-name';
 
 export const throwIfParentIsNotOfKind = (element: HTMLElement, tagNameOrNames: TagName | TagName[]): void => {
   if (element.parentElement) {
@@ -9,7 +10,7 @@ export const throwIfParentIsNotOfKind = (element: HTMLElement, tagNameOrNames: T
 
     if (!matches) {
       const allowedTagNames = tagNamesArray
-        .map((tagName) => getPrefixedTagNames(element)[paramCaseToCamelCase(tagName)])
+        .map((tagName) => getPrefixedTagNames(element)[paramCaseToCamelCase(tagName) as keyof PrefixedTagNames])
         .join(' | ');
       const actualTagName = getTagName(element.parentElement);
       throwException(

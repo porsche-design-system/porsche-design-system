@@ -1,8 +1,8 @@
 import { setContentWithDesignSystem, setProperty, waitForStencilLifecycle } from '../../helpers';
 import { type Page, test, expect } from '@playwright/test';
 
-const getHost = (page: Page) => page.$('p-link');
-const getLink = (page: Page) => page.$('p-link a');
+const getHost = (page: Page) => page.locator('p-link');
+const getLink = (page: Page) => page.locator('p-link a');
 
 const initLink = (page: Page, opts?: { useSlottedAnchor?: boolean }): Promise<void> => {
   const { useSlottedAnchor = false } = opts || {};
@@ -20,15 +20,15 @@ const initLink = (page: Page, opts?: { useSlottedAnchor?: boolean }): Promise<vo
 
 test.fixme('should expose correct initial accessibility tree properties', async ({ page }) => {
   await initLink(page);
-  const link = await getLink(page);
+  const link = getLink(page);
 
   // await expectA11yToMatchSnapshot(page, link);
 });
 
 test.fixme('should expose correct accessibility tree if accessibility properties are set', async ({ page }) => {
   await initLink(page);
-  const host = await getHost(page);
-  const link = await getLink(page);
+  const host = getHost(page);
+  const link = getLink(page);
 
   await setProperty(host, 'aria', {
     'aria-label': 'Some more detailed label',
@@ -39,8 +39,8 @@ test.fixme('should expose correct accessibility tree if accessibility properties
 
 test.fixme('should expose correct accessibility tree if label is hidden', async ({ page }) => {
   await initLink(page);
-  const host = await getHost(page);
-  const link = await getLink(page);
+  const host = getHost(page);
+  const link = getLink(page);
 
   await setProperty(host, 'hide-label', 'true');
   await waitForStencilLifecycle(page);

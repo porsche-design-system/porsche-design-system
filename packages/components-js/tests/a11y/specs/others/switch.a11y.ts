@@ -17,7 +17,7 @@ const initSwitch = (page: Page, opts?: InitOptions): Promise<void> => {
 
 test.fixme('should expose correct initial accessibility tree', async ({ page }) => {
   await initSwitch(page);
-  const label = (page: Page) => page.$('p-switch label');
+  const label = (page: Page) => page.locator('p-switch label');
 
   // await expectA11yToMatchSnapshot(page, await label(), { interestingOnly: false });
 });

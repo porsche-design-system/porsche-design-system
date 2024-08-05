@@ -15,8 +15,8 @@ const initTag = (page: Page, props?: InitOpts) => {
   return setContentWithDesignSystem(page, content);
 };
 
-const getHost = (page: Page) => page.$('p-tag');
-const getSpan = (page: Page) => page.$('p-tag span');
+const getHost = (page: Page) => page.locator('p-tag');
+const getSpan = (page: Page) => page.locator('p-tag span');
 
 test.describe('lifecycle', () => {
   test('should work without unnecessary round trips on init', async ({ page }) => {
@@ -31,7 +31,7 @@ test.describe('lifecycle', () => {
 
   test('should work without unnecessary round trips on prop change', async ({ page }) => {
     await initTag(page, { withIcon: true });
-    const host = await getHost(page);
+    const host = getHost(page);
 
     await setProperty(host, 'icon', 'highway');
     await waitForStencilLifecycle(page);

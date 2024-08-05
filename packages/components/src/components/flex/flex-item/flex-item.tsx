@@ -1,11 +1,17 @@
 import { type JSX, Component, Prop, h, Element } from '@stencil/core';
-import type {
-  FlexItemAlignSelf,
-  FlexItemFlex,
-  FlexItemGrow,
-  FlexItemOffset,
-  FlexItemShrink,
-  FlexItemWidth,
+import {
+  type FlexItemAlignSelf,
+  type FlexItemFlex,
+  type FlexItemGrow,
+  type FlexItemOffset,
+  type FlexItemShrink,
+  type FlexItemWidth,
+  FLEX_ITEM_ALIGN_SELFS,
+  FLEX_ITEM_FLEXS,
+  FLEX_ITEM_GROWS,
+  FLEX_ITEM_OFFSETS,
+  FLEX_ITEM_SHRINKS,
+  FLEX_ITEM_WIDTHS,
 } from './flex-item-utils';
 import { getComponentCss } from './flex-item-styles';
 import {
@@ -17,14 +23,6 @@ import {
   warnIfDeprecatedComponentIsUsed,
 } from '../../../utils';
 import type { BreakpointCustomizable, PropTypes } from '../../../types';
-import {
-  FLEX_ITEM_ALIGN_SELFS,
-  FLEX_ITEM_FLEXS,
-  FLEX_ITEM_GROWS,
-  FLEX_ITEM_OFFSETS,
-  FLEX_ITEM_SHRINKS,
-  FLEX_ITEM_WIDTHS,
-} from './flex-item-utils';
 import { deprecatedFlexComponentMessage } from '../flex/flex-utils';
 
 const propTypes: PropTypes<typeof FlexItem> = {
