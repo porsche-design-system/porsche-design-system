@@ -1,7 +1,7 @@
 import type { Theme } from '../types';
 import type { JssStyle } from 'jss';
 import type { PropertiesHyphen } from 'csstype';
-import { type ThemedColors, getThemedColors, prefersColorSchemeDarkMediaQuery } from './';
+import { getThemedColors, prefersColorSchemeDarkMediaQuery, type ThemedColors } from './';
 import {
   borderWidthBase,
   frostedGlassStyle,
@@ -17,6 +17,7 @@ import {
 } from '@porsche-design-system/styles';
 import { isThemeDark } from '../utils';
 import type * as fromMotionType from '@porsche-design-system/styles/dist/esm/motion';
+import { cssVariableInternalButtonScaling } from '../components/button/button-styles';
 
 type WithoutMotionDurationPrefix<T> = T extends `motionDuration${infer P}` ? Uncapitalize<P> : never;
 export type MotionDurationKey = WithoutMotionDurationPrefix<keyof typeof fromMotionType>;
@@ -35,6 +36,10 @@ export const motionEasingMap: Record<MotionEasingKey | 'linear', string> = {
   in: motionEasingIn,
   out: motionEasingOut,
   linear: 'linear',
+};
+
+export const dismissButtonJssStyle: JssStyle = {
+  [`${cssVariableInternalButtonScaling}`]: '0px',
 };
 
 export const cssVariableTransitionDuration = '--p-transition-duration';

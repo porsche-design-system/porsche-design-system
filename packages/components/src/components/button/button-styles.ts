@@ -5,7 +5,7 @@ import { getFunctionalComponentLoadingMessageStyles } from '../common/loading-me
 import { fontLineHeight, frostedGlassStyle } from '@porsche-design-system/styles';
 import { getHighContrastColors, getThemedColors, getTransition, prefersColorSchemeDarkMediaQuery } from '../../styles';
 
-const cssVariableInternalButtonScaling = '--p-internal-button-scaling';
+export const cssVariableInternalButtonScaling = '--p-internal-button-scaling';
 
 type Colors = {
   textColor: string;

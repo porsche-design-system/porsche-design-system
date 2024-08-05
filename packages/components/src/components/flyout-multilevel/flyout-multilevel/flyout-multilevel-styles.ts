@@ -4,6 +4,7 @@ import {
   addImportantToEachRule,
   colorSchemeStyles,
   cssVariableTransitionDuration,
+  dismissButtonJssStyle,
   getBackdropJssStyle,
   getThemedColors,
   getTransition,
@@ -160,7 +161,7 @@ export const getComponentCss = (
       },
     },
     dismiss: {
-      padding: spacingFluidSmall,
+      ...dismissButtonJssStyle,
       [mediaQueryEnhancedView]: {
         '--p-internal-icon-filter': 'invert(1)',
         margin: spacingFluidSmall,

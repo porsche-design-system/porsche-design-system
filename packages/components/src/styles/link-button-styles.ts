@@ -106,6 +106,7 @@ export const getLinkButtonStyles = (
         ...addImportantToEachRule({
           verticalAlign: 'top',
           outline: 0, // custom element is able to delegate the focus
+          borderRadius: borderRadiusSmall,
           ...colorSchemeStyles,
           ...hostHiddenStyles,
         }),
