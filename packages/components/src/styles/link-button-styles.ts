@@ -75,6 +75,7 @@ export const getLinkButtonStyles = (
   isDisabledOrLoading: boolean,
   hasSlottedAnchor: boolean,
   compact: boolean,
+  cssVariableInternalScaling: string,
   theme: Theme
 ): Styles => {
   const isPrimary = variant === 'primary';
@@ -93,8 +94,10 @@ export const getLinkButtonStyles = (
   const { focusColor } = getThemedColors(theme);
   const hasIcon = hasVisibleIcon(icon, iconSource) || hideLabel;
 
-  const paddingBlock = compact ? '4px' : '13px';
-  const paddingInline = compact ? '12px' : '26px';
+  const paddingBlock = `var(${cssVariableInternalScaling}, ${compact ? '4px' : '13px'})`;
+  const paddingInline = `var(${cssVariableInternalScaling}, ${compact ? '12px' : '26px'})`;
+  const gap = `var(${cssVariableInternalScaling}, ${compact ? '6px' : spacingStaticSmall})`;
+  const iconMarginInlineStart = `var(${cssVariableInternalScaling}, ${compact ? '-6px' : '-8px'})`;
 
   return {
     '@global': {
@@ -128,7 +131,7 @@ export const getLinkButtonStyles = (
       transition: `${getTransition('background-color')}, ${getTransition('border-color')}, ${getTransition('color')}`,
       ...buildResponsiveStyles(hideLabel, (hideLabelValue: boolean) => ({
         padding: hideLabelValue ? paddingBlock : `${paddingBlock} ${paddingInline}`,
-        gap: hideLabelValue ? 0 : compact ? '6px' : spacingStaticSmall,
+        gap: hideLabelValue ? 0 : gap,
       })),
       ...(!hasSlottedAnchor && getFocusJssStyle(theme)),
       ...(!isDisabledOrLoading &&
@@ -155,7 +158,7 @@ export const getLinkButtonStyles = (
         width: fontLineHeight, // ensure space is already reserved until icon component is loaded (ssr)
         height: fontLineHeight, // ensure space is already reserved until icon component is loaded (ssr)
         ...buildResponsiveStyles(hideLabel, (hideLabelValue: boolean) => ({
-          marginInlineStart: hideLabelValue ? 0 : compact ? '-6px' : '-8px', // compensate white space of svg icon and optimize visual alignment
+          marginInlineStart: hideLabelValue ? 0 : iconMarginInlineStart, // compensate white space of svg icon and optimize visual alignment
         })),
       },
     }),

@@ -10,6 +10,8 @@ import {
 } from '../../styles';
 import { borderRadiusSmall } from '@porsche-design-system/styles';
 
+const cssVariableInternalLinkScaling = '--p-internal-link-scaling';
+
 export const getComponentCss = (
   icon: LinkButtonIconName,
   iconSource: string,
@@ -24,7 +26,17 @@ export const getComponentCss = (
 
   return getCss(
     mergeDeep(
-      getLinkButtonStyles(icon, iconSource, variant, hideLabel, false, hasSlottedAnchor, compact, theme),
+      getLinkButtonStyles(
+        icon,
+        iconSource,
+        variant,
+        hideLabel,
+        false,
+        hasSlottedAnchor,
+        compact,
+        cssVariableInternalLinkScaling,
+        theme
+      ),
       {
         label: {
           clip: addImportantToRule('unset'), // to overrule breakpoint customizable hide-label style
