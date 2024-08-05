@@ -9,8 +9,7 @@ import {
   validateProps,
 } from '../../utils';
 import type { PropTypes, Theme } from '../../types';
-import type { FieldsetLabelSize, FieldsetState } from './fieldset-utils';
-import { FIELDSET_LABEL_SIZES } from './fieldset-utils';
+import { type FieldsetLabelSize, type FieldsetState, FIELDSET_LABEL_SIZES } from './fieldset-utils';
 import { getComponentCss } from './fieldset-styles';
 import { messageId, StateMessage } from '../common/state-message/state-message';
 import { Required } from '../common/required/required';

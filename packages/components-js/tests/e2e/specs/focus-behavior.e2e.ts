@@ -34,8 +34,8 @@ ${component}
 <a href="#" id="after">after</a>`
     );
 
-    const host = await page.$(tagName);
-    const before = await page.$('#before');
+    const host = page.locator(tagName);
+    const before = page.locator('#before');
 
     await expectToSkipFocusOnComponent(page, host, before);
   });
@@ -46,7 +46,7 @@ ${component}
       wrapInRequiredParentIfNeeded(`<${tagName}${href}${state}${value}>Some label</${tagName}>`)
     );
 
-    const host = await page.$(tagName);
+    const host = page.locator(tagName);
     const elTagName = await host.evaluate((el) => el.tagName);
 
     await page.keyboard.press('Tab');

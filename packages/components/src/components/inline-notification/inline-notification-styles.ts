@@ -14,7 +14,7 @@ import {
   getNotificationIconJssStyle,
   getNotificationRootJssStyle,
 } from './inline-notification-styles-shared';
-import { JssStyle } from 'jss';
+import type { JssStyle } from 'jss';
 import { getTypographySlottedJssStyle } from '../../styles/typography-styles';
 
 const mediaQueryMaxS = getMediaQueryMax('s');

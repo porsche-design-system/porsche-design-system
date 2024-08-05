@@ -32,11 +32,11 @@ const fetchWorkflowRunIds = async (page: number): Promise<{ totalCount: number; 
     }
   );
 
-  return { totalCount: data.total_count, workflowRunIds: data.workflow_runs.map((run) => run.id) };
+  return { totalCount: data.total_count, workflowRunIds: data.workflow_runs.map((run: { id: number }) => run.id) };
 };
 
 const fetchAllWorkflowRunIds = async (): Promise<number[]> => {
-  let results = [];
+  let results: number[] = [];
 
   let currentPage = 1;
   let totalPages = 5;

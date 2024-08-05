@@ -6,6 +6,14 @@ import { INTERNAL_TAG_NAMES, TAG_NAMES, TAG_NAMES_WITH_CHUNK, type TagName } fro
 import { ICONS_MANIFEST } from '@porsche-design-system/assets';
 import type { ComponentMeta, ComponentsMeta, PropMeta, SlotMeta } from '../src/types/component-meta';
 
+declare namespace NodeJS {
+  interface Global {
+    ROLLUP_REPLACE_IS_STAGING: string;
+  }
+}
+
+declare const global: NodeJS.Global;
+
 const glue = '\n\n';
 
 global.ROLLUP_REPLACE_IS_STAGING = 'staging';
@@ -77,15 +85,16 @@ const generateComponentMeta = (): void => {
         source
       ) as unknown as [string, TagName?, string?]) || [];
 
-    const parseRequiredParent = (singleMatch: TagName, arrayMatch: string) => {
+    const parseRequiredParent = (singleMatch: TagName, arrayMatch: string): TagName | TagName[] => {
       if (singleMatch) return singleMatch;
 
       if (arrayMatch) {
         return arrayMatch.split(',').map((tag) => tag.trim().replace(/^'|'$/g, '')) as TagName[];
       }
+      return undefined;
     };
 
-    const requiredParent = parseRequiredParent(singleMatch, arrayMatch);
+    const requiredParent: TagName | TagName[] = parseRequiredParent(singleMatch, arrayMatch);
 
     // required root nodes
     let [, requiredRootNodes] =
@@ -608,7 +617,7 @@ const extractSlotInformation = (
   );
 
   // Convert into slotMeta format
-  const slotsMeta: ComponentMeta['slotsMeta'] = slots.reduce((acc, obj) => {
+  const slotsMeta: ComponentMeta['slotsMeta'] = slots.reduce<ComponentMeta['slotsMeta']>((acc, obj) => {
     const { name, ...rest } = obj;
     acc[name] = rest;
     return acc;

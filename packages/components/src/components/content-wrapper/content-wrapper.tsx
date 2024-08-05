@@ -1,8 +1,9 @@
 import { Component, Element, h, type JSX, Prop } from '@stencil/core';
 import { AllowedTypes, attachComponentCss, THEMES, validateProps, warnIfDeprecatedComponentIsUsed } from '../../utils';
 import type { PropTypes, Theme } from '../../types';
-import type { ContentWrapperBackgroundColor, ContentWrapperWidth } from './content-wrapper-utils';
 import {
+  type ContentWrapperBackgroundColor,
+  type ContentWrapperWidth,
   CONTENT_WRAPPER_BACKGROUND_COLORS,
   CONTENT_WRAPPER_WIDTHS,
   deprecatedContentWrapperComponentMessage,

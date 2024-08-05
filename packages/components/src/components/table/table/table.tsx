@@ -10,8 +10,7 @@ import {
 } from '../../../utils';
 import type { PropTypes, Theme } from '../../../types';
 import { getComponentCss } from './table-styles';
-import type { TableUpdateEventDetail } from './table-utils';
-import { SORT_EVENT_NAME, warnIfCaptionIsMissing } from './table-utils';
+import { type TableUpdateEventDetail, SORT_EVENT_NAME, warnIfCaptionIsMissing } from './table-utils';
 import { getSlottedAnchorStyles } from '../../../styles';
 
 const propTypes: PropTypes<typeof Table> = {

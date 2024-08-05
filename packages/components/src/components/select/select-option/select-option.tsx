@@ -1,6 +1,5 @@
 import type { PropTypes } from '../../../types';
-import type { SelectOptionInternalHTMLProps } from './select-option-utils';
-import { validateSelectOption } from './select-option-utils';
+import { type SelectOptionInternalHTMLProps, validateSelectOption } from './select-option-utils';
 
 import { Component, Element, h, Host, type JSX, Prop } from '@stencil/core';
 import {

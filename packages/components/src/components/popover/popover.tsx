@@ -1,6 +1,7 @@
 import { Component, Element, forceUpdate, h, Host, type JSX, Prop, State } from '@stencil/core';
-import type { PopoverAriaAttribute, PopoverDirection } from './popover-utils';
 import {
+  type PopoverAriaAttribute,
+  type PopoverDirection,
   addDocumentEventListener,
   POPOVER_ARIA_ATTRIBUTES,
   POPOVER_DIRECTIONS,
@@ -137,7 +138,7 @@ export class Popover {
     }
   };
 
-  private onToggle = (e): void => {
+  private onToggle = (e: { newState: string }): void => {
     if (e.newState === 'open') {
       forceUpdate(this.host); // Necessary to update popover styles since opening of native popover doesn't trigger rerender
     }

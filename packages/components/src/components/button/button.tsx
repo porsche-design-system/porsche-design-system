@@ -22,8 +22,7 @@ import {
   validateProps,
 } from '../../utils';
 import { Component, Element, h, Host, type JSX, Listen, Prop } from '@stencil/core';
-import { getButtonAriaAttributes } from './button-utils';
-import type { ButtonIcon } from './button-utils';
+import { getButtonAriaAttributes ,type  ButtonIcon } from './button-utils';
 import { getComponentCss } from './button-styles';
 import { loadingId, LoadingMessage } from '../common/loading-message/loading-message';
 import { ControllerHost, InitialLoadingController } from '../../controllers';

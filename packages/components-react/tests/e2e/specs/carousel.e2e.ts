@@ -5,9 +5,9 @@ test('should not cause new lifecycle when nothing on the component changes', asy
   await goto(page, 'carousel-example-events');
   expect(await waitForComponentsReady(page)).toBe(2); // p-carousel and p-text
 
-  const goToLastSlideButton = page.getByRole('button', { name: 'Go to last slide' }); // await selectNode(page, 'p-carousel >>> p-button-pure:first-of-type >>> button');
-  const prevSlideButton = page.getByRole('button', { name: 'Previous slide' }); // await selectNode(page, 'p-carousel >>> p-button-pure:first-of-type >>> button');
-  const nextSlideButton = page.getByRole('button', { name: 'Next slide' }); // await selectNode(page, 'p-carousel >>> p-button-pure:last-of-type >>> button');
+  const goToLastSlideButton = page.getByRole('button', { name: 'Go to last slide' });
+  const prevSlideButton = page.getByRole('button', { name: 'Previous slide' });
+  const nextSlideButton = page.getByRole('button', { name: 'Next slide' });
 
   await expect(goToLastSlideButton).toBeVisible();
   await expect(prevSlideButton).toBeHidden();

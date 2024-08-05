@@ -1,15 +1,12 @@
 import type { BreakpointCustomizable, PropTypes, SelectedAriaAttributes, Theme, ValidatorFunction } from '../../types';
-import type { ButtonPure } from '../button-pure/button-pure';
-import type {
-  CarouselAlignHeader,
-  CarouselAlignHeaderDeprecated,
-  CarouselAriaAttribute,
-  CarouselHeadingSize,
-  CarouselInternationalization,
-  CarouselUpdateEventDetail,
-  CarouselWidth,
-} from './carousel-utils';
 import {
+  type CarouselAlignHeader,
+  type CarouselAlignHeaderDeprecated,
+  type CarouselAriaAttribute,
+  type CarouselHeadingSize,
+  type CarouselInternationalization,
+  type CarouselUpdateEventDetail,
+  type CarouselWidth,
   CAROUSEL_ALIGN_HEADERS,
   CAROUSEL_ARIA_ATTRIBUTES,
   CAROUSEL_WIDTHS,
@@ -51,6 +48,11 @@ import {
 import { carouselTransitionDuration, getComponentCss } from './carousel-styles';
 import { gridGap, motionEasingBase } from '@porsche-design-system/styles';
 import { getSlottedAnchorStyles } from '../../styles';
+
+type AlignHeaderDeprecationMapType = Record<
+  CarouselAlignHeaderDeprecated,
+  Exclude<CarouselAlignHeader, CarouselAlignHeaderDeprecated>
+>;
 
 const propTypes: PropTypes<typeof Carousel> = {
   heading: AllowedTypes.string,
@@ -157,8 +159,8 @@ export class Carousel {
 
   private splide: Splide;
   private container: HTMLElement;
-  private btnPrev: ButtonPure;
-  private btnNext: ButtonPure;
+  private btnPrev: HTMLPButtonPureElement;
+  private btnNext: HTMLPButtonPureElement;
   private paginationEl: HTMLElement;
   private slides: HTMLElement[] = [];
 
@@ -242,10 +244,7 @@ export class Carousel {
 
   public render(): JSX.Element {
     validateProps(this, propTypes);
-    const alignHeaderDeprecationMap: Record<
-      CarouselAlignHeaderDeprecated,
-      Exclude<CarouselAlignHeader, CarouselAlignHeaderDeprecated>
-    > = {
+    const alignHeaderDeprecationMap: AlignHeaderDeprecationMapType = {
       left: 'start',
     };
     warnIfDeprecatedPropValueIsUsed<typeof Carousel, CarouselAlignHeaderDeprecated, CarouselAlignHeader>(
@@ -277,10 +276,8 @@ export class Carousel {
           : !this.disablePagination
         : this.pagination,
       isInfinitePagination(this.amountOfPages),
-      (alignHeaderDeprecationMap[this.alignHeader] || this.alignHeader) as Exclude<
-        CarouselAlignHeader,
-        CarouselAlignHeaderDeprecated
-      >,
+      (alignHeaderDeprecationMap[this.alignHeader as keyof AlignHeaderDeprecationMapType] ||
+        this.alignHeader) as Exclude<CarouselAlignHeader, CarouselAlignHeaderDeprecated>,
       this.theme,
       this.hasNavigation
     );
@@ -331,7 +328,7 @@ export class Carousel {
               <PrefixedTagNames.pButtonPure
                 {...btnProps}
                 icon="arrow-left"
-                ref={(ref) => (this.btnPrev = ref)}
+                ref={(ref: HTMLPButtonPureElement) => (this.btnPrev = ref)}
                 onClick={() => slidePrev(this.splide, this.amountOfPages)}
               />
             )}
@@ -339,7 +336,7 @@ export class Carousel {
               <PrefixedTagNames.pButtonPure
                 {...btnProps}
                 icon="arrow-right"
-                ref={(ref) => (this.btnNext = ref)}
+                ref={(ref: HTMLPButtonPureElement) => (this.btnNext = ref)}
                 onClick={() => slideNext(this.splide, this.amountOfPages)}
                 onKeyDown={this.onNextKeyDown}
               />

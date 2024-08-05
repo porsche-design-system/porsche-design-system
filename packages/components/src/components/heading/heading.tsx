@@ -1,6 +1,11 @@
 import type { BreakpointCustomizable, HeadingSize, HeadingTag, PropTypes, Theme } from '../../types';
-import type { HeadingAlign, HeadingAlignDeprecated, HeadingColor } from './heading-utils';
-import { getHeadingTagType, HEADING_COLORS } from './heading-utils';
+import {
+  type HeadingAlign,
+  type HeadingAlignDeprecated,
+  type HeadingColor,
+  getHeadingTagType,
+  HEADING_COLORS,
+} from './heading-utils';
 import { Component, Element, h, type JSX, Prop } from '@stencil/core';
 import {
   AllowedTypes,
@@ -16,6 +21,8 @@ import {
 } from '../../utils';
 import { getComponentCss } from './heading-styles';
 import { getSlottedAnchorStyles } from '../../styles';
+
+type AlignDeprecationMapType = Record<HeadingAlignDeprecated, Exclude<HeadingAlign, HeadingAlignDeprecated>>;
 
 const propTypes: PropTypes<typeof Heading> = {
   tag: AllowedTypes.oneOf<HeadingTag>([undefined, ...HEADING_TAGS]),
@@ -65,7 +72,7 @@ export class Heading {
   public render(): JSX.Element {
     validateProps(this, propTypes);
 
-    const alignDeprecationMap: Record<HeadingAlignDeprecated, Exclude<HeadingAlign, HeadingAlignDeprecated>> = {
+    const alignDeprecationMap: AlignDeprecationMapType = {
       left: 'start',
       right: 'end',
     };
@@ -79,7 +86,10 @@ export class Heading {
       this.host,
       getComponentCss,
       this.size,
-      (alignDeprecationMap[this.align] || this.align) as Exclude<HeadingAlign, HeadingAlignDeprecated>,
+      (alignDeprecationMap[this.align as keyof AlignDeprecationMapType] || this.align) as Exclude<
+        HeadingAlign,
+        HeadingAlignDeprecated
+      >,
       this.color,
       this.ellipsis,
       this.theme

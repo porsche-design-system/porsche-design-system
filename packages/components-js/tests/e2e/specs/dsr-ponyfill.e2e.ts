@@ -1,4 +1,4 @@
-import type { ElementHandle, Page } from '@playwright/test';
+import type { Locator, Page } from '@playwright/test';
 import { expect, test } from '@playwright/test';
 import { getDSRPonyfill, getInitialStyles } from '@porsche-design-system/components-js/partials';
 import { setProperty, supportsDeclarativeShadowDOM, waitForComponentsReady, waitForStencilLifecycle } from '../utils';
@@ -42,20 +42,20 @@ export const setPageWithContent = async (page: Page): Promise<void> => {
   );
 };
 
-const getButtons = (page: Page): Promise<[ElementHandle<HTMLElement>, ElementHandle<HTMLElement>]> => {
-  return page.$$('p-button') as Promise<[ElementHandle<HTMLElement>, ElementHandle<HTMLElement>]>;
+const getButtons = (page: Page): Promise<[Locator, Locator]> => {
+  return page.locator('p-button').all() as Promise<[Locator, Locator]>;
 };
 
-const hasTemplateTag = (handle: ElementHandle<HTMLElement>): Promise<boolean> => {
-  return handle.evaluate((el) => !!el.querySelector('template'));
+const hasTemplateTag = (locator: Locator): Promise<boolean> => {
+  return locator.evaluate((el) => !!el.querySelector('template'));
 };
 
-const hasShadowRoot = (handle: ElementHandle<HTMLElement>): Promise<boolean> => {
-  return handle.evaluate((el) => !!el.shadowRoot);
+const hasShadowRoot = (locator: Locator): Promise<boolean> => {
+  return locator.evaluate((el) => !!el.shadowRoot);
 };
 
-const getComputedColor = (handle: ElementHandle<HTMLElement>): Promise<string> => {
-  return handle.evaluate((el) => {
+const getComputedColor = (locator: Locator): Promise<string> => {
+  return locator.evaluate((el) => {
     const buttonEl = el.shadowRoot?.querySelector('button');
     return buttonEl ? getComputedStyle(buttonEl).color : '';
   });

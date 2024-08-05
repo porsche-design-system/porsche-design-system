@@ -17,8 +17,12 @@ import {
   validateProps,
 } from '../../../utils';
 import type { BreakpointCustomizable, PropTypes, Theme } from '../../../types';
-import type { SelectWrapperDropdownDirection, SelectWrapperState } from './select-wrapper-utils';
-import { DROPDOWN_DIRECTIONS, isCustomDropdown } from './select-wrapper-utils';
+import {
+  type SelectWrapperDropdownDirection,
+  type SelectWrapperState,
+  DROPDOWN_DIRECTIONS,
+  isCustomDropdown,
+} from './select-wrapper-utils';
 import { getComponentCss } from './select-wrapper-styles';
 import { StateMessage } from '../../common/state-message/state-message';
 import { Label } from '../../common/label/label';
@@ -151,7 +155,7 @@ export class SelectWrapper {
             theme={this.theme}
             color={disabled ? 'state-disabled' : 'primary'}
             aria-hidden="true"
-            ref={(el) => (this.iconElement = el)}
+            ref={(el: HTMLElement) => (this.iconElement = el)}
           />
           {this.hasCustomDropdown && !disabled && (
             <PrefixedTagNames.pSelectWrapperDropdown

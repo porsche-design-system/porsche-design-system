@@ -1,6 +1,6 @@
-import { TagName } from '@porsche-design-system/shared';
+import type { TagName } from '@porsche-design-system/shared';
 import { addImportantToEachRule } from '../common-styles';
-import { Styles } from 'jss';
+import type { Styles } from 'jss';
 
 export const tagNamesWithSlottedPictureImageArray: TagName[] = [
   'p-button-tile',

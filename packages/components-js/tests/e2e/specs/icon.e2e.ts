@@ -20,7 +20,7 @@ const initIcon = async (page: Page, opts?: InitOptions): Promise<void> => {
   await setContentWithDesignSystem(page, content);
 };
 
-const getHost = async (page: Page) => page.$('p-icon');
+const getHost = (page: Page) => page.locator('p-icon');
 
 test.describe('lifecycle', () => {
   for (const opts of initOptions) {
@@ -36,7 +36,7 @@ test.describe('lifecycle', () => {
 
     test('should work without unnecessary round trips after state change', async ({ page }) => {
       await initIcon(page, { ...opts, name: 'highway' });
-      const host = await getHost(page);
+      const host = getHost(page);
 
       await setProperty(host, 'name', 'car');
       await waitForStencilLifecycle(page);

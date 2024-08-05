@@ -13,10 +13,10 @@ import {
   waitForStencilLifecycle,
 } from '../helpers';
 
-const getHost = (page: Page) => page.$('p-link-tile-model-signature');
-const getOverlayAnchor = (page: Page) => page.$('p-link-tile-model-signature a');
-const getPrimaryLink = (page: Page) => page.$('p-link-tile-model-signature p-link[slot="primary"]');
-const getPrimaryLinkAnchor = (page: Page) => page.$('p-link-tile-model-signature p-link[slot="primary"] a');
+const getHost = (page: Page) => page.locator('p-link-tile-model-signature');
+const getOverlayAnchor = (page: Page) => page.locator('p-link-tile-model-signature a').first();
+const getPrimaryLink = (page: Page) => page.locator('p-link-tile-model-signature p-link[slot="primary"]');
+const getPrimaryLinkAnchor = (page: Page) => page.locator('p-link-tile-model-signature p-link[slot="primary"] a');
 
 const initLinkTileModelSignature = (page: Page, opts?: { useSlottedAnchor?: boolean }): Promise<void> => {
   const { useSlottedAnchor = false } = opts || {};
@@ -39,8 +39,8 @@ test('should mirror anchor props of slot name="primary" onto overlay anchor for 
 }) => {
   await initLinkTileModelSignature(page);
 
-  const primaryLink = await getPrimaryLink(page);
-  const overlayAnchor = await getOverlayAnchor(page);
+  const primaryLink = getPrimaryLink(page);
+  const overlayAnchor = getOverlayAnchor(page);
 
   expect(await getProperty(overlayAnchor, 'href')).toEqual(await getProperty(primaryLink, 'href'));
 });
@@ -50,9 +50,9 @@ test('should mirror anchor props of slot name="primary" onto overlay anchor for 
 }) => {
   await initLinkTileModelSignature(page, { useSlottedAnchor: true });
 
-  const primaryLink = await getPrimaryLink(page);
-  const primaryLinkAnchor = await getPrimaryLinkAnchor(page);
-  const overlayAnchor = await getOverlayAnchor(page);
+  const primaryLink = getPrimaryLink(page);
+  const primaryLinkAnchor = getPrimaryLinkAnchor(page);
+  const overlayAnchor = getOverlayAnchor(page);
 
   expect(await getProperty(primaryLink, 'href')).toEqual(undefined);
   expect(await getProperty(overlayAnchor, 'href')).toEqual(await getProperty(primaryLinkAnchor, 'href'));
@@ -76,7 +76,7 @@ test.describe('lifecycle', () => {
 
   test('should work without unnecessary round trips on prop change', async ({ page }) => {
     await initLinkTileModelSignature(page);
-    const host = await getHost(page);
+    const host = getHost(page);
 
     await setProperty(host, 'model', 'taycan');
     await waitForStencilLifecycle(page);
@@ -111,7 +111,7 @@ test.describe('lifecycle', () => {
       });
 
       await initLinkTileModelSignature(page);
-      const overlayAnchor = await getOverlayAnchor(page);
+      const overlayAnchor = getOverlayAnchor(page);
 
       expect(await getAttribute(overlayAnchor, 'target')).toEqual('_self');
       expect(resUrls.at(-1)).toContain(linkReqMatcher);

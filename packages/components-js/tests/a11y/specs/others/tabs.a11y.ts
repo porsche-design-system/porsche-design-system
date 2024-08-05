@@ -1,4 +1,4 @@
-import { type ElementHandle, type Page, test, expect } from '@playwright/test';
+import { type Page, test, expect, type Locator } from '@playwright/test';
 import {
   CSS_ANIMATION_DURATION,
   getAttribute,
@@ -20,12 +20,10 @@ const initTabs = (page: Page, opts?: { amount?: number; activeTabIndex?: number 
   return setContentWithDesignSystem(page, content);
 };
 
-const getHost = (page: Page) => page.$('p-tabs');
-const getAllTabsItems = (page: Page) => page.$$('p-tabs-item');
-const getTabsBar = (page: Page) => page.$('p-tabs p-tabs-bar');
-const getHiddenAttribute = (element: ElementHandle<SVGElement | HTMLElement>) => getAttribute(element, 'hidden');
-const isHidden = async (element: ElementHandle<SVGElement | HTMLElement>): Promise<boolean> =>
-  (await getHiddenAttribute(element)) === '';
+const getHost = (page: Page) => page.locator('p-tabs');
+const getAllTabsItems = (page: Page) => page.locator('p-tabs-item').all();
+const getHiddenAttribute = (element: Locator) => getAttribute(element, 'hidden');
+const isHidden = async (element: Locator): Promise<boolean> => (await getHiddenAttribute(element)) === '';
 
 test.describe('keyboard', () => {
   test('should display correct tabs-item on keyboard arrow press', async ({ page }) => {
@@ -48,7 +46,7 @@ test.describe('keyboard', () => {
 
   test('should render correct focusedTab on arrow-key press', async ({ page }) => {
     await initTabs(page, { activeTabIndex: 2 });
-    const host = await getHost(page);
+    const host = getHost(page);
     await removeAttribute(host, 'active-tab-index');
     await waitForStencilLifecycle(page);
     await new Promise((resolve) => setTimeout(resolve, CSS_ANIMATION_DURATION));
@@ -76,7 +74,7 @@ test.describe('keyboard', () => {
 
 test.fixme('should expose correct initial accessibility tree of tabpanel', async ({ page }) => {
   await initTabs(page);
-  const tabpanel = (page: Page) => page.$('p-tabs > [role="tabpanel"]');
+  const tabpanel = (page: Page) => page.locator('p-tabs > [role="tabpanel"]');
 
   // await expectA11yToMatchSnapshot(page, await tabpanel(), { interestingOnly: false });
 });

@@ -1,7 +1,7 @@
-import { TagName } from '@porsche-design-system/shared';
+import type { TagName } from '@porsche-design-system/shared';
 import { addImportantToEachRule, getFocusJssStyle } from '../common-styles';
 import { getHoverStyle } from '@porsche-design-system/styles';
-import { Styles } from 'jss';
+import type { Styles } from 'jss';
 
 export const tagNamesWithSlottedAnchorArray: TagName[] = [
   'p-accordion',

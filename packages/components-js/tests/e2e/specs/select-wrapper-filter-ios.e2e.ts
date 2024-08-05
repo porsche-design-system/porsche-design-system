@@ -4,7 +4,7 @@ import { setContentWithDesignSystem } from '../helpers';
 
 const dropdownSelector = 'p-select-wrapper p-select-wrapper-dropdown';
 
-const getDropdown = (page: Page) => page.$(dropdownSelector);
+const getDropdown = (page: Page) => page.locator(dropdownSelector);
 
 // TODO: Create a shared init fn for select-wrapper filter
 const initSelect = (page: Page, opts?: InitOptions): Promise<void> => {

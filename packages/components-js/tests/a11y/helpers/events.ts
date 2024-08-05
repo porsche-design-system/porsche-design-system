@@ -1,4 +1,4 @@
-import type { ElementHandle, Page } from 'playwright';
+import type { Locator } from '@playwright/test';
 
 type SerializedTarget = {
   nodeName: string;
@@ -9,8 +9,8 @@ type SerializedTarget = {
   id: string;
 };
 
-export const addEventListener = (handle: ElementHandle, eventName: string): Promise<void> => {
-  return handle.evaluate((el, evtName) => {
+export const addEventListener = (locator: Locator, eventName: string): Promise<void> => {
+  return locator.evaluate((el, evtName) => {
     const counterKey = `${evtName}Counter`;
     const detailsKey = `${evtName}Details`;
     const targetsKey = `${evtName}Targets`;
@@ -30,25 +30,4 @@ export const addEventListener = (handle: ElementHandle, eventName: string): Prom
       el[targetsKey] = [...(el[targetsKey] || []), serializedTarget];
     });
   }, eventName);
-};
-
-export const getEventSummary = (
-  handle: ElementHandle,
-  eventName: string
-): Promise<{ counter: number; details: any[]; targets: SerializedTarget[] }> => {
-  return handle.evaluate((el, evtName) => {
-    const counterKey = `${evtName}Counter`;
-    const detailsKey = `${evtName}Details`;
-    const targetsKey = `${evtName}Targets`;
-
-    return {
-      counter: el[counterKey] || 0,
-      details: el[detailsKey] || [],
-      targets: el[targetsKey] || [],
-    };
-  }, eventName);
-};
-
-export const waitForImproveButtonHandlingForCustomElement = async (page: Page): Promise<void> => {
-  await page.waitForFunction(() => !document.querySelector('form button'));
 };

@@ -16,16 +16,14 @@ import {
 } from '../../utils';
 import { getComponentCss } from './scroller-styles';
 import type { PropTypes, SelectedAriaAttributes, Theme } from '../../types';
-import type {
-  ScrollerAlignScrollIndicator,
-  ScrollerDirection,
-  ScrollerGradientColor,
-  ScrollerGradientColorScheme,
-  ScrollerScrollIndicatorPosition,
-  ScrollerScrollToPosition,
-  ScrollerAriaAttribute,
-} from './scroller-utils';
 import {
+  type ScrollerAlignScrollIndicator,
+  type ScrollerDirection,
+  type ScrollerGradientColor,
+  type ScrollerGradientColorScheme,
+  type ScrollerScrollIndicatorPosition,
+  type ScrollerScrollToPosition,
+  type ScrollerAriaAttribute,
   getScrollPositionAfterPrevNextClick,
   GRADIENT_COLORS,
   GRADIENT_COLOR_SCHEMES,
@@ -190,7 +188,7 @@ export class Scroller {
         <div class={scrollAreaClass} ref={(el) => (this.scrollAreaElement = el)}>
           <div
             class="scroll-wrapper"
-            role={parseAndGetAriaAttributes(this.aria)?.role || null}
+            role={(parseAndGetAriaAttributes(this.aria) as any)?.role || null}
             tabIndex={isScrollable(this.isPrevHidden, this.isNextHidden) ? 0 : null}
           >
             <slot />

@@ -1,5 +1,4 @@
-import type { HTMLElementOrShadowRoot } from '../dom';
-import { hasNamedSlot } from '../dom';
+import { type HTMLElementOrShadowRoot, hasNamedSlot } from '../dom';
 
 export const hasHeading = (element: HTMLElementOrShadowRoot, heading: string): boolean => {
   return !!heading || hasNamedSlot(element, 'heading');

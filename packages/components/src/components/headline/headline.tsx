@@ -1,12 +1,14 @@
 import type { PropTypes, Theme } from '../../types';
-import type {
-  HeadlineAlign,
-  HeadlineAlignDeprecated,
-  HeadlineColor,
-  HeadlineTag,
-  HeadlineVariant,
+import {
+  type HeadlineAlign,
+  type HeadlineAlignDeprecated,
+  type HeadlineColor,
+  type HeadlineTag,
+  type HeadlineVariant,
+  getHeadlineTagType,
+  HEADLINE_COLORS,
+  HEADLINE_TAGS,
 } from './headline-utils';
-import { getHeadlineTagType, HEADLINE_COLORS, HEADLINE_TAGS } from './headline-utils';
 import { Component, Element, h, type JSX, Prop } from '@stencil/core';
 import {
   AllowedTypes,
@@ -29,6 +31,8 @@ const propTypes: Omit<PropTypes<typeof Headline>, 'variant'> = {
   ellipsis: AllowedTypes.boolean,
   theme: AllowedTypes.oneOf<Theme>(THEMES),
 };
+
+type AlignDeprecationMapType = Record<HeadlineAlignDeprecated, Exclude<HeadlineAlign, HeadlineAlignDeprecated>>;
 
 /**
  * @slot {"name": "", "description": "Default slot to render the headline." }
@@ -71,7 +75,7 @@ export class Headline {
   public render(): JSX.Element {
     validateProps(this, propTypes);
     warnIfDeprecatedComponentIsUsed(this.host, 'Please use new p-heading component instead.');
-    const alignDeprecationMap: Record<HeadlineAlignDeprecated, Exclude<HeadlineAlign, HeadlineAlignDeprecated>> = {
+    const alignDeprecationMap: AlignDeprecationMapType = {
       left: 'start',
       right: 'end',
     };
@@ -79,7 +83,10 @@ export class Headline {
       this.host,
       getComponentCss,
       this.variant,
-      (alignDeprecationMap[this.align] || this.align) as Exclude<HeadlineAlign, HeadlineAlignDeprecated>,
+      (alignDeprecationMap[this.align as keyof AlignDeprecationMapType] || this.align) as Exclude<
+        HeadlineAlign,
+        HeadlineAlignDeprecated
+      >,
       this.color,
       this.ellipsis,
       this.theme

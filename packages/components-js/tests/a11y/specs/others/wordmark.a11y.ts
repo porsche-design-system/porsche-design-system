@@ -1,8 +1,8 @@
 import { type Page, test, expect } from '@playwright/test';
 import { setContentWithDesignSystem, setProperty, waitForStencilLifecycle } from '../../helpers';
 
-const getHost = (page: Page) => page.$('p-wordmark');
-const getLink = (page: Page) => page.$('p-wordmark a');
+const getHost = (page: Page) => page.locator('p-wordmark');
+const getLink = (page: Page) => page.locator('p-wordmark a');
 
 const initWordmark = (
   page: Page,
@@ -32,13 +32,13 @@ const initWordmark = (
 
 test.fixme('should expose correct initial accessibility tree', async ({ page }) => {
   await initWordmark(page);
-  // await expectA11yToMatchSnapshot(page, await getHost(), { interestingOnly: false });
+  // await expectA11yToMatchSnapshot(page, getHost(), { interestingOnly: false });
 });
 
 test.fixme('should expose correct accessibility tree if accessibility properties are set', async ({ page }) => {
   await initWordmark(page, { hasHref: true });
-  const host = await getHost(page);
-  const link = await getLink(page);
+  const host = getHost(page);
+  const link = getLink(page);
 
   await setProperty(host, 'aria', {
     'aria-label': 'Some more detailed label',

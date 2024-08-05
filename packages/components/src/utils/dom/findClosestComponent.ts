@@ -1,4 +1,4 @@
-import { getPrefixedTagNames, PrefixedTagNames } from '../tag-name';
+import { type PrefixedTagNames, getPrefixedTagNames } from '../tag-name';
 
 /**
  * Checks if the given host element is within a specific component based on the component's tag name.

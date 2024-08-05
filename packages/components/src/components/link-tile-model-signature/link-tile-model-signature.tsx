@@ -14,14 +14,12 @@ import {
   validateProps,
 } from '../../utils';
 import { getComponentCss } from './link-tile-model-signature-styles';
-import type {
-  LinkTileModelSignatureAspectRatio,
-  LinkTileModelSignatureHeadingTag,
-  LinkTileModelSignatureLinkDirection,
-  LinkTileModelSignatureModel,
-  LinkTileModelSignatureWeight,
-} from './link-tile-model-signature-utils';
 import {
+  type LinkTileModelSignatureAspectRatio,
+  type LinkTileModelSignatureHeadingTag,
+  type LinkTileModelSignatureLinkDirection,
+  type LinkTileModelSignatureModel,
+  type LinkTileModelSignatureWeight,
   getLinkOrSlottedAnchorElement,
   LINK_TILE_MODEL_SIGNATURE_HEADING_TAGS,
   LINK_TILE_MODEL_SIGNATURE_MODELS,

@@ -16,8 +16,9 @@ import {
   validateProps,
 } from '../../../utils';
 import { getComponentCss } from './stepper-horizontal-styles';
-import type { StepperHorizontalSize, StepperHorizontalUpdateEventDetail } from './stepper-horizontal-utils';
 import {
+  type StepperHorizontalSize,
+  type StepperHorizontalUpdateEventDetail,
   getIndexOfStepWithStateCurrent,
   STEPPER_HORIZONTAL_SIZES,
   syncStepperHorizontalItemsProps,
@@ -118,7 +119,7 @@ export class StepperHorizontal {
           aria={{ role: 'list' }}
           theme={this.theme}
           onClick={this.onClickScroller}
-          ref={(el) => (this.scrollerElement = el)}
+          ref={(el: HTMLPScrollerElement) => (this.scrollerElement = el)}
         >
           <slot />
         </PrefixedTagNames.pScroller>
