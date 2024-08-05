@@ -18,7 +18,6 @@ import {
   borderWidthBase,
   fontLineHeight,
   frostedGlassStyle,
-  spacingStaticSmall,
   textSmallStyle,
 } from '@porsche-design-system/styles';
 
@@ -95,8 +94,8 @@ export const getLinkButtonStyles = (
   const hasIcon = hasVisibleIcon(icon, iconSource) || hideLabel;
 
   const defaultScaling = compact ? 'calc(4 / 13)' : 1;
-  const defaultScalingFactor = '13px';
-  const scalingRatios = {
+  const scalingBaseValue = '13px';
+  const scalingFactors = {
     paddingBlock: 1,
     paddingInline: 2,
     gap: 0.615,
@@ -105,10 +104,10 @@ export const getLinkButtonStyles = (
 
   const scalingVar = `var(${cssVariableInternalScaling}, ${defaultScaling})`;
 
-  const paddingBlock = `calc(${scalingVar} * ${defaultScalingFactor} * ${scalingRatios.paddingBlock})`;
-  const paddingInline = `calc(${scalingVar} * ${defaultScalingFactor} * ${scalingRatios.paddingInline})`;
-  const gap = `calc(${scalingVar} * ${defaultScalingFactor} * ${scalingRatios.gap})`;
-  const iconMarginInlineStart = `calc(${scalingVar} * ${defaultScalingFactor} * ${scalingRatios.iconMarginInlineStart})`;
+  const paddingBlock = `calc(${scalingVar} * ${scalingBaseValue} * ${scalingFactors.paddingBlock})`;
+  const paddingInline = `calc(${scalingVar} * ${scalingBaseValue} * ${scalingFactors.paddingInline})`;
+  const gap = `calc(${scalingVar} * ${scalingBaseValue} * ${scalingFactors.gap})`;
+  const iconMarginInlineStart = `calc(${scalingVar} * ${scalingBaseValue} * ${scalingFactors.iconMarginInlineStart})`;
 
   return {
     '@global': {
