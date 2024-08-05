@@ -94,10 +94,21 @@ export const getLinkButtonStyles = (
   const { focusColor } = getThemedColors(theme);
   const hasIcon = hasVisibleIcon(icon, iconSource) || hideLabel;
 
-  const paddingBlock = `var(${cssVariableInternalScaling}, ${compact ? '4px' : '13px'})`;
-  const paddingInline = `var(${cssVariableInternalScaling}, ${compact ? '12px' : '26px'})`;
-  const gap = `var(${cssVariableInternalScaling}, ${compact ? '6px' : spacingStaticSmall})`;
-  const iconMarginInlineStart = `var(${cssVariableInternalScaling}, ${compact ? '-6px' : '-8px'})`;
+  const defaultScaling = compact ? 'calc(4 / 13)' : 1;
+  const defaultScalingFactor = '13px';
+  const scalingRatios = {
+    paddingBlock: 1,
+    paddingInline: 2,
+    gap: 0.615,
+    iconMarginInlineStart: -0.615,
+  };
+
+  const scalingVar = `var(${cssVariableInternalScaling}, ${defaultScaling})`;
+
+  const paddingBlock = `calc(${scalingVar} * ${defaultScalingFactor} * ${scalingRatios.paddingBlock})`;
+  const paddingInline = `calc(${scalingVar} * ${defaultScalingFactor} * ${scalingRatios.paddingInline})`;
+  const gap = `calc(${scalingVar} * ${defaultScalingFactor} * ${scalingRatios.gap})`;
+  const iconMarginInlineStart = `calc(${scalingVar} * ${defaultScalingFactor} * ${scalingRatios.iconMarginInlineStart})`;
 
   return {
     '@global': {
