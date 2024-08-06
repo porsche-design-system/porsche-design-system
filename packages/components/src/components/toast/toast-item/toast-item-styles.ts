@@ -51,6 +51,9 @@ export const getComponentCss = (state: ToastState, theme: Theme): string => {
     close: {
       ...dismissButtonJssStyle,
       mixBlendMode: isThemeDark(theme) ? 'plus-lighter' : 'multiply',
+      ...prefersColorSchemeDarkMediaQuery(theme, {
+        mixBlendMode: 'plus-lighter',
+      }),
       ...frostedGlassStyle, // Fixes safari rendering issue of border when applying mix-blend-mode
     },
   });
