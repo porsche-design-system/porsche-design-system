@@ -12,7 +12,7 @@ export const warnIfDeprecatedPropIsUsed = <C extends Class<any>>(
     consoleWarn(
       getDeprecatedPropOrSlotWarningMessage(instance.host as HTMLElement, prop as string),
       additionalText || '',
-      instance.host
+      instance.host as HTMLElement
     );
   }
 };
