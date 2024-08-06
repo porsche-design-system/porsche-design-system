@@ -2312,7 +2312,7 @@ exports[`should match snapshot 1`] = `
     "isInternal": false,
     "isThemeable": true,
     "nestedComponents": [
-      "p-button-pure",
+      "p-button",
     ],
     "propsMeta": {
       "aria": {
@@ -2416,7 +2416,7 @@ exports[`should match snapshot 1`] = `
     "isInternal": false,
     "isThemeable": true,
     "nestedComponents": [
-      "p-button-pure",
+      "p-button",
     ],
     "propsMeta": {
       "activeIdentifier": {
@@ -3125,6 +3125,7 @@ exports[`should match snapshot 1`] = `
     "nestedComponents": [
       "p-icon",
       "p-button-pure",
+      "p-button",
     ],
     "propsMeta": {
       "actionIcon": {
@@ -4915,7 +4916,7 @@ exports[`should match snapshot 1`] = `
     "isInternal": false,
     "isThemeable": true,
     "nestedComponents": [
-      "p-button-pure",
+      "p-button",
     ],
     "propsMeta": {
       "aria": {
@@ -5713,7 +5714,7 @@ exports[`should match snapshot 1`] = `
     "isInternal": false,
     "isThemeable": true,
     "nestedComponents": [
-      "p-icon",
+      "p-button",
     ],
     "propsMeta": {
       "alignScrollIndicator": {
@@ -8071,7 +8072,7 @@ exports[`should match snapshot 1`] = `
     "isThemeable": true,
     "nestedComponents": [
       "p-icon",
-      "p-button-pure",
+      "p-button",
     ],
     "propsMeta": {
       "state": {
