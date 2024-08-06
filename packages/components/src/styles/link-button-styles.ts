@@ -104,8 +104,8 @@ export const getLinkButtonStyles = (
 
   const scalingVar = `var(${cssVariableInternalScaling}, ${defaultScaling})`;
 
-  const paddingBlock = `calc(${scalingVar} * ${scalingBaseValue} * ${scalingFactors.paddingBlock})`;
-  const paddingInline = `max(calc(${scalingVar} * ${scalingBaseValue} * ${scalingFactors.paddingInline}), 4px)`;
+  const paddingBlock = `calc(${scalingVar} * ${scalingBaseValue} * ${scalingFactors.paddingBlock} ${variant === 'ghost' ? `+ ${borderWidthBase}` : ''})`; // Compensate for missing border in ghost variant (Fixes border backdrop-filter blur rendering issue in safari)
+  const paddingInline = `max(calc(${scalingVar} * ${scalingBaseValue} * ${scalingFactors.paddingInline} ${variant === 'ghost' ? `+ ${borderWidthBase}` : ''}), ${variant === 'ghost' ? '6px' : '4px'})`; // Compensate for missing border in ghost variant (Fixes border backdrop-filter blur rendering issue in safari)
   const gap = `clamp(2px, calc(${scalingVar} * ${scalingBaseValue} * ${scalingFactors.gap}), 16px)`;
   const iconMarginInlineStart = `clamp(-16px, calc(${scalingVar} * ${scalingBaseValue} * ${scalingFactors.iconMarginInlineStart}), -2px)`;
 
@@ -132,11 +132,12 @@ export const getLinkButtonStyles = (
       WebkitAppearance: 'none', // iOS safari
       appearance: 'none',
       textDecoration: 'none',
-      border: `${borderWidthBase} solid ${borderColor}`,
+      ...(variant === 'ghost'
+        ? { ...frostedGlassStyle, border: 'none' }
+        : { border: `${borderWidthBase} solid ${borderColor}` }),
       borderRadius: borderRadiusSmall,
       transform: 'translate3d(0,0,0)', // creates new stacking context (for slotted anchor + focus)
       backgroundColor,
-      ...(variant === 'ghost' && { ...frostedGlassStyle, backgroundClip: 'padding-box' }), // background color overlays border-color otherwise
       color: textColor,
       ...textSmallStyle,
       transition: `${getTransition('background-color')}, ${getTransition('border-color')}, ${getTransition('color')}`,
