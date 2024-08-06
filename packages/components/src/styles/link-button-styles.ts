@@ -94,20 +94,20 @@ export const getLinkButtonStyles = (
   const hasIcon = hasVisibleIcon(icon, iconSource) || hideLabel;
 
   const defaultScaling = compact ? 'calc(4 / 13)' : 1;
-  const scalingBaseValue = '13px';
+  const scalingBaseValue = '1px';
   const scalingFactors = {
-    paddingBlock: 1,
-    paddingInline: 2,
-    gap: 0.615,
-    iconMarginInlineStart: -0.615,
+    paddingBlock: 13,
+    paddingInline: 26,
+    gap: 8,
+    iconMarginInlineStart: -8,
   };
 
   const scalingVar = `var(${cssVariableInternalScaling}, ${defaultScaling})`;
 
   const paddingBlock = `calc(${scalingVar} * ${scalingBaseValue} * ${scalingFactors.paddingBlock})`;
-  const paddingInline = `calc(${scalingVar} * ${scalingBaseValue} * ${scalingFactors.paddingInline})`;
-  const gap = `calc(${scalingVar} * ${scalingBaseValue} * ${scalingFactors.gap})`;
-  const iconMarginInlineStart = `calc(${scalingVar} * ${scalingBaseValue} * ${scalingFactors.iconMarginInlineStart})`;
+  const paddingInline = `max(calc(${scalingVar} * ${scalingBaseValue} * ${scalingFactors.paddingInline}), 4px)`;
+  const gap = `clamp(2px, calc(${scalingVar} * ${scalingBaseValue} * ${scalingFactors.gap}), 16px)`;
+  const iconMarginInlineStart = `clamp(-16px, calc(${scalingVar} * ${scalingBaseValue} * ${scalingFactors.iconMarginInlineStart}), -2px)`;
 
   return {
     '@global': {
