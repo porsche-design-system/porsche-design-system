@@ -11,7 +11,8 @@ export const warnIfDeprecatedPropIsUsed = <C extends Class<any>>(
   if (propValue !== undefined && propValue !== null) {
     consoleWarn(
       getDeprecatedPropOrSlotWarningMessage(instance.host as HTMLElement, prop as string),
-      additionalText || ''
+      additionalText || '',
+      instance.host
     );
   }
 };
