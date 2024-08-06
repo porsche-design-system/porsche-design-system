@@ -124,7 +124,7 @@ export const getComponentCss = (
         background: `linear-gradient(to right, ${getGradient('dark', gradientColor)} 100%)`,
       }),
       visibility: isPrevHidden ? 'hidden' : 'inherit',
-      '& button': {
+      '& .action-button': {
         marginLeft: '8px',
         // hide buttons on mobile (actually devices not supporting hover)
         ...hoverMediaQuery({
@@ -141,7 +141,7 @@ export const getComponentCss = (
         background: `linear-gradient(to left, ${getGradient('dark', gradientColor)} 100%)`,
       }),
       visibility: isNextHidden ? 'hidden' : 'inherit',
-      '& button': {
+      '& .action-button': {
         marginRight: '8px',
         // hide buttons on mobile (actually devices not supporting hover)
         ...hoverMediaQuery({
