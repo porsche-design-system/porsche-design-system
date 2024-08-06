@@ -120,7 +120,7 @@ exports[`getComponentCss() should return correct css for isSecondaryScrollerVisi
 }
 .back {
   justify-self: flex-start;
-  padding: clamp(8px, 0.5vw + 6px, 16px);
+  padding: 3px;
   margin-inline-start: calc(clamp(8px, 0.5vw + 6px, 16px) * -1);
 }
 .heading {
@@ -267,7 +267,7 @@ exports[`getComponentCss() should return correct css for isSecondaryScrollerVisi
 }
 .back {
   justify-self: flex-start;
-  padding: clamp(8px, 0.5vw + 6px, 16px);
+  padding: 3px;
   margin-inline-start: calc(clamp(8px, 0.5vw + 6px, 16px) * -1);
 }
 .heading {
@@ -402,7 +402,7 @@ exports[`getComponentCss() should return correct css for isSecondaryScrollerVisi
 }
 .back {
   justify-self: flex-start;
-  padding: clamp(8px, 0.5vw + 6px, 16px);
+  padding: 3px;
   margin-inline-start: calc(clamp(8px, 0.5vw + 6px, 16px) * -1);
 }
 .heading {
@@ -558,7 +558,7 @@ exports[`getComponentCss() should return correct css for isSecondaryScrollerVisi
 }
 .back {
   justify-self: flex-start;
-  padding: clamp(8px, 0.5vw + 6px, 16px);
+  padding: 3px;
   margin-inline-start: calc(clamp(8px, 0.5vw + 6px, 16px) * -1);
 }
 .heading {
@@ -703,7 +703,7 @@ exports[`getComponentCss() should return correct css for isSecondaryScrollerVisi
 }
 .back {
   justify-self: flex-start;
-  padding: clamp(8px, 0.5vw + 6px, 16px);
+  padding: 3px;
   margin-inline-start: calc(clamp(8px, 0.5vw + 6px, 16px) * -1);
 }
 .heading {
@@ -836,7 +836,7 @@ exports[`getComponentCss() should return correct css for isSecondaryScrollerVisi
 }
 .back {
   justify-self: flex-start;
-  padding: clamp(8px, 0.5vw + 6px, 16px);
+  padding: 3px;
   margin-inline-start: calc(clamp(8px, 0.5vw + 6px, 16px) * -1);
 }
 .heading {

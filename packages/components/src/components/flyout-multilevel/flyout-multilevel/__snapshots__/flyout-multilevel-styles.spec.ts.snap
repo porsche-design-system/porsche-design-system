@@ -88,13 +88,10 @@ dialog::backdrop {
   grid-area: 1/1;
   align-self: flex-start;
   justify-self: flex-end;
-  margin-inline-end: calc(clamp(32px, 2.75vw + 23px, 76px) - clamp(8px, 0.5vw + 6px, 16px));
+  margin-inline-end: calc(clamp(32px, 2.75vw + 23px, 76px) - clamp(8px, 0.5vw + 6px, 16px) - 4px);
   height: 4rem;
   display: flex;
   align-items: center;
-}
-.dismiss {
-  padding: clamp(8px, 0.5vw + 6px, 16px);
 }
 @media(min-width:760px) {
   .scroller {
@@ -212,13 +209,10 @@ dialog::backdrop {
   grid-area: 1/1;
   align-self: flex-start;
   justify-self: flex-end;
-  margin-inline-end: calc(clamp(32px, 2.75vw + 23px, 76px) - clamp(8px, 0.5vw + 6px, 16px));
+  margin-inline-end: calc(clamp(32px, 2.75vw + 23px, 76px) - clamp(8px, 0.5vw + 6px, 16px) - 4px);
   height: 4rem;
   display: flex;
   align-items: center;
-}
-.dismiss {
-  padding: clamp(8px, 0.5vw + 6px, 16px);
 }
 @media(min-width:760px) {
   .scroller {
@@ -327,13 +321,10 @@ dialog::backdrop {
   grid-area: 1/1;
   align-self: flex-start;
   justify-self: flex-end;
-  margin-inline-end: calc(clamp(32px, 2.75vw + 23px, 76px) - clamp(8px, 0.5vw + 6px, 16px));
+  margin-inline-end: calc(clamp(32px, 2.75vw + 23px, 76px) - clamp(8px, 0.5vw + 6px, 16px) - 4px);
   height: 4rem;
   display: flex;
   align-items: center;
-}
-.dismiss {
-  padding: clamp(8px, 0.5vw + 6px, 16px);
 }
 @media(min-width:760px) {
   .scroller {
@@ -443,13 +434,10 @@ dialog::backdrop {
   grid-area: 1/1;
   align-self: flex-start;
   justify-self: flex-end;
-  margin-inline-end: calc(clamp(32px, 2.75vw + 23px, 76px) - clamp(8px, 0.5vw + 6px, 16px));
+  margin-inline-end: calc(clamp(32px, 2.75vw + 23px, 76px) - clamp(8px, 0.5vw + 6px, 16px) - 4px);
   height: 4rem;
   display: flex;
   align-items: center;
-}
-.dismiss {
-  padding: clamp(8px, 0.5vw + 6px, 16px);
 }
 @media(min-width:760px) {
   .scroller {
@@ -562,13 +550,10 @@ dialog::backdrop {
   grid-area: 1/1;
   align-self: flex-start;
   justify-self: flex-end;
-  margin-inline-end: calc(clamp(32px, 2.75vw + 23px, 76px) - clamp(8px, 0.5vw + 6px, 16px));
+  margin-inline-end: calc(clamp(32px, 2.75vw + 23px, 76px) - clamp(8px, 0.5vw + 6px, 16px) - 4px);
   height: 4rem;
   display: flex;
   align-items: center;
-}
-.dismiss {
-  padding: clamp(8px, 0.5vw + 6px, 16px);
 }
 @media(min-width:760px) {
   .scroller {
@@ -672,13 +657,10 @@ dialog::backdrop {
   grid-area: 1/1;
   align-self: flex-start;
   justify-self: flex-end;
-  margin-inline-end: calc(clamp(32px, 2.75vw + 23px, 76px) - clamp(8px, 0.5vw + 6px, 16px));
+  margin-inline-end: calc(clamp(32px, 2.75vw + 23px, 76px) - clamp(8px, 0.5vw + 6px, 16px) - 4px);
   height: 4rem;
   display: flex;
   align-items: center;
-}
-.dismiss {
-  padding: clamp(8px, 0.5vw + 6px, 16px);
 }
 @media(min-width:760px) {
   .scroller {
@@ -788,13 +770,10 @@ dialog::backdrop {
   grid-area: 1/1;
   align-self: flex-start;
   justify-self: flex-end;
-  margin-inline-end: calc(clamp(32px, 2.75vw + 23px, 76px) - clamp(8px, 0.5vw + 6px, 16px));
+  margin-inline-end: calc(clamp(32px, 2.75vw + 23px, 76px) - clamp(8px, 0.5vw + 6px, 16px) - 4px);
   height: 4rem;
   display: flex;
   align-items: center;
-}
-.dismiss {
-  padding: clamp(8px, 0.5vw + 6px, 16px);
 }
 @media(min-width:760px) {
   .scroller {
@@ -907,13 +886,10 @@ dialog::backdrop {
   grid-area: 1/1;
   align-self: flex-start;
   justify-self: flex-end;
-  margin-inline-end: calc(clamp(32px, 2.75vw + 23px, 76px) - clamp(8px, 0.5vw + 6px, 16px));
+  margin-inline-end: calc(clamp(32px, 2.75vw + 23px, 76px) - clamp(8px, 0.5vw + 6px, 16px) - 4px);
   height: 4rem;
   display: flex;
   align-items: center;
-}
-.dismiss {
-  padding: clamp(8px, 0.5vw + 6px, 16px);
 }
 @media(min-width:760px) {
   .scroller {
@@ -1017,13 +993,10 @@ dialog::backdrop {
   grid-area: 1/1;
   align-self: flex-start;
   justify-self: flex-end;
-  margin-inline-end: calc(clamp(32px, 2.75vw + 23px, 76px) - clamp(8px, 0.5vw + 6px, 16px));
+  margin-inline-end: calc(clamp(32px, 2.75vw + 23px, 76px) - clamp(8px, 0.5vw + 6px, 16px) - 4px);
   height: 4rem;
   display: flex;
   align-items: center;
-}
-.dismiss {
-  padding: clamp(8px, 0.5vw + 6px, 16px);
 }
 @media(min-width:760px) {
   .scroller {

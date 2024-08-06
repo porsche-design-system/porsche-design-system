@@ -5,6 +5,7 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
   display: inline-block;
   vertical-align: top !important;
   outline: 0 !important;
+  border-radius: 4px !important;
   color-scheme: light dark !important;
 }
 :host([hidden]) {
@@ -32,8 +33,8 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
   overflow-wrap: break-word;
   hyphens: auto;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  padding: 13px 26px;
-  gap: 8px;
+  padding: calc(var(--p-internal-button-scaling, 1) * 1px * 13) max(calc(var(--p-internal-button-scaling, 1) * 1px * 26), 4px);
+  gap: clamp(2px, calc(var(--p-internal-button-scaling, 1) * 1px * 8), 16px);
   cursor: pointer;
   margin: 0;
 }
@@ -61,7 +62,7 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
 .icon {
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
-  margin-inline-start: -8px;
+  margin-inline-start: clamp(-16px, calc(var(--p-internal-button-scaling, 1) * 1px * -8), -2px);
   transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 .loading {
@@ -90,6 +91,7 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
   display: inline-block;
   vertical-align: top !important;
   outline: 0 !important;
+  border-radius: 4px !important;
   color-scheme: light dark !important;
 }
 :host([hidden]) {
@@ -117,8 +119,8 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
   overflow-wrap: break-word;
   hyphens: auto;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  padding: 13px 26px;
-  gap: 8px;
+  padding: calc(var(--p-internal-button-scaling, 1) * 1px * 13) max(calc(var(--p-internal-button-scaling, 1) * 1px * 26), 4px);
+  gap: clamp(2px, calc(var(--p-internal-button-scaling, 1) * 1px * 8), 16px);
   cursor: pointer;
   margin: 0;
 }
@@ -146,7 +148,7 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
 .icon {
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
-  margin-inline-start: -8px;
+  margin-inline-start: clamp(-16px, calc(var(--p-internal-button-scaling, 1) * 1px * -8), -2px);
   transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 .loading {
@@ -175,6 +177,7 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
   display: inline-block;
   vertical-align: top !important;
   outline: 0 !important;
+  border-radius: 4px !important;
   color-scheme: light dark !important;
 }
 :host([hidden]) {
@@ -202,8 +205,8 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
   overflow-wrap: break-word;
   hyphens: auto;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  padding: 4px 12px;
-  gap: 6px;
+  padding: calc(var(--p-internal-button-scaling, calc(4 / 13)) * 1px * 13) max(calc(var(--p-internal-button-scaling, calc(4 / 13)) * 1px * 26), 4px);
+  gap: clamp(2px, calc(var(--p-internal-button-scaling, calc(4 / 13)) * 1px * 8), 16px);
   cursor: pointer;
   margin: 0;
 }
@@ -231,7 +234,7 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
 .icon {
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
-  margin-inline-start: -6px;
+  margin-inline-start: clamp(-16px, calc(var(--p-internal-button-scaling, calc(4 / 13)) * 1px * -8), -2px);
   transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 .loading {
@@ -260,6 +263,7 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
   display: inline-block;
   vertical-align: top !important;
   outline: 0 !important;
+  border-radius: 4px !important;
   color-scheme: light dark !important;
 }
 :host([hidden]) {
@@ -284,7 +288,7 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
   overflow-wrap: break-word;
   hyphens: auto;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  padding: 13px;
+  padding: calc(var(--p-internal-button-scaling, 1) * 1px * 13);
   gap: 0;
   cursor: not-allowed;
   border-color: #7E7F82;
@@ -329,8 +333,8 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
 }
 @media(min-width:480px) {
   .root {
-    padding: 13px 26px;
-    gap: 8px;
+    padding: calc(var(--p-internal-button-scaling, 1) * 1px * 13) max(calc(var(--p-internal-button-scaling, 1) * 1px * 26), 4px);
+    gap: clamp(2px, calc(var(--p-internal-button-scaling, 1) * 1px * 8), 16px);
   }
   .label {
     position: static;
@@ -343,13 +347,13 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
     white-space: normal;
   }
   .icon {
-    margin-inline-start: -8px;
+    margin-inline-start: clamp(-16px, calc(var(--p-internal-button-scaling, 1) * 1px * -8), -2px);
   }
 }
 
 @media(min-width:760px) {
   .root {
-    padding: 13px;
+    padding: calc(var(--p-internal-button-scaling, 1) * 1px * 13);
     gap: 0;
   }
   .label {
@@ -369,8 +373,8 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
 
 @media(min-width:1000px) {
   .root {
-    padding: 13px 26px;
-    gap: 8px;
+    padding: calc(var(--p-internal-button-scaling, 1) * 1px * 13) max(calc(var(--p-internal-button-scaling, 1) * 1px * 26), 4px);
+    gap: clamp(2px, calc(var(--p-internal-button-scaling, 1) * 1px * 8), 16px);
   }
   .label {
     position: static;
@@ -383,13 +387,13 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
     white-space: normal;
   }
   .icon {
-    margin-inline-start: -8px;
+    margin-inline-start: clamp(-16px, calc(var(--p-internal-button-scaling, 1) * 1px * -8), -2px);
   }
 }
 
 @media(min-width:1300px) {
   .root {
-    padding: 13px;
+    padding: calc(var(--p-internal-button-scaling, 1) * 1px * 13);
     gap: 0;
   }
   .label {
@@ -409,8 +413,8 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
 
 @media(min-width:1760px) {
   .root {
-    padding: 13px 26px;
-    gap: 8px;
+    padding: calc(var(--p-internal-button-scaling, 1) * 1px * 13) max(calc(var(--p-internal-button-scaling, 1) * 1px * 26), 4px);
+    gap: clamp(2px, calc(var(--p-internal-button-scaling, 1) * 1px * 8), 16px);
   }
   .label {
     position: static;
@@ -423,7 +427,7 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
     white-space: normal;
   }
   .icon {
-    margin-inline-start: -8px;
+    margin-inline-start: clamp(-16px, calc(var(--p-internal-button-scaling, 1) * 1px * -8), -2px);
   }
 }
 "
@@ -434,6 +438,7 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
   display: inline-block;
   vertical-align: top !important;
   outline: 0 !important;
+  border-radius: 4px !important;
   color-scheme: light dark !important;
 }
 :host([hidden]) {
@@ -458,8 +463,8 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
   overflow-wrap: break-word;
   hyphens: auto;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  padding: 13px 26px;
-  gap: 8px;
+  padding: calc(var(--p-internal-button-scaling, 1) * 1px * 13) max(calc(var(--p-internal-button-scaling, 1) * 1px * 26), 4px);
+  gap: clamp(2px, calc(var(--p-internal-button-scaling, 1) * 1px * 8), 16px);
   cursor: pointer;
   margin: 0;
 }
@@ -487,7 +492,7 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
 .icon {
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
-  margin-inline-start: -8px;
+  margin-inline-start: clamp(-16px, calc(var(--p-internal-button-scaling, 1) * 1px * -8), -2px);
   transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   filter: invert(1);
 }
@@ -515,6 +520,7 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
   display: inline-block;
   vertical-align: top !important;
   outline: 0 !important;
+  border-radius: 4px !important;
   color-scheme: light dark !important;
 }
 :host([hidden]) {
@@ -539,8 +545,8 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
   overflow-wrap: break-word;
   hyphens: auto;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  padding: 13px 26px;
-  gap: 8px;
+  padding: calc(var(--p-internal-button-scaling, 1) * 1px * 13) max(calc(var(--p-internal-button-scaling, 1) * 1px * 26), 4px);
+  gap: clamp(2px, calc(var(--p-internal-button-scaling, 1) * 1px * 8), 16px);
   cursor: pointer;
   margin: 0;
 }
@@ -568,7 +574,7 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
 .icon {
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
-  margin-inline-start: -8px;
+  margin-inline-start: clamp(-16px, calc(var(--p-internal-button-scaling, 1) * 1px * -8), -2px);
   transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   filter: invert(1);
 }
@@ -596,6 +602,7 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
   display: inline-block;
   vertical-align: top !important;
   outline: 0 !important;
+  border-radius: 4px !important;
   color-scheme: light dark !important;
 }
 :host([hidden]) {
@@ -620,8 +627,8 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
   overflow-wrap: break-word;
   hyphens: auto;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  padding: 13px 26px;
-  gap: 8px;
+  padding: calc(var(--p-internal-button-scaling, 1) * 1px * 13) max(calc(var(--p-internal-button-scaling, 1) * 1px * 26), 4px);
+  gap: clamp(2px, calc(var(--p-internal-button-scaling, 1) * 1px * 8), 16px);
   cursor: pointer;
   margin: 0;
 }
@@ -649,7 +656,7 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
 .icon {
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
-  margin-inline-start: -8px;
+  margin-inline-start: clamp(-16px, calc(var(--p-internal-button-scaling, 1) * 1px * -8), -2px);
   transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   filter: invert(1);
 }
@@ -677,6 +684,7 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
   display: inline-block;
   vertical-align: top !important;
   outline: 0 !important;
+  border-radius: 4px !important;
   color-scheme: light dark !important;
 }
 :host([hidden]) {
@@ -701,8 +709,8 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
   overflow-wrap: break-word;
   hyphens: auto;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  padding: 4px 12px;
-  gap: 6px;
+  padding: calc(var(--p-internal-button-scaling, calc(4 / 13)) * 1px * 13) max(calc(var(--p-internal-button-scaling, calc(4 / 13)) * 1px * 26), 4px);
+  gap: clamp(2px, calc(var(--p-internal-button-scaling, calc(4 / 13)) * 1px * 8), 16px);
   cursor: pointer;
   margin: 0;
 }
@@ -730,7 +738,7 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
 .icon {
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
-  margin-inline-start: -6px;
+  margin-inline-start: clamp(-16px, calc(var(--p-internal-button-scaling, calc(4 / 13)) * 1px * -8), -2px);
   transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   filter: invert(1);
 }
@@ -758,6 +766,7 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
   display: inline-block;
   vertical-align: top !important;
   outline: 0 !important;
+  border-radius: 4px !important;
   color-scheme: light dark !important;
 }
 :host([hidden]) {
@@ -782,8 +791,8 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
   overflow-wrap: break-word;
   hyphens: auto;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  padding: 13px 26px;
-  gap: 8px;
+  padding: calc(var(--p-internal-button-scaling, 1) * 1px * 13) max(calc(var(--p-internal-button-scaling, 1) * 1px * 26), 4px);
+  gap: clamp(2px, calc(var(--p-internal-button-scaling, 1) * 1px * 8), 16px);
   cursor: not-allowed;
   border-color: #535457;
   margin: 0;
@@ -813,7 +822,7 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
 .icon {
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
-  margin-inline-start: -8px;
+  margin-inline-start: clamp(-16px, calc(var(--p-internal-button-scaling, 1) * 1px * -8), -2px);
   transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   filter: invert(1);
   opacity: 0;
@@ -845,6 +854,7 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
   display: inline-block;
   vertical-align: top !important;
   outline: 0 !important;
+  border-radius: 4px !important;
   color-scheme: light dark !important;
 }
 :host([hidden]) {
@@ -869,8 +879,8 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
   overflow-wrap: break-word;
   hyphens: auto;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  padding: 13px 26px;
-  gap: 8px;
+  padding: calc(var(--p-internal-button-scaling, 1) * 1px * 13) max(calc(var(--p-internal-button-scaling, 1) * 1px * 26), 4px);
+  gap: clamp(2px, calc(var(--p-internal-button-scaling, 1) * 1px * 8), 16px);
   cursor: not-allowed;
   border-color: #949598;
   margin: 0;
@@ -899,7 +909,7 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
 .icon {
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
-  margin-inline-start: -8px;
+  margin-inline-start: clamp(-16px, calc(var(--p-internal-button-scaling, 1) * 1px * -8), -2px);
   transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 .loading {
@@ -919,6 +929,7 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
   display: inline-block;
   vertical-align: top !important;
   outline: 0 !important;
+  border-radius: 4px !important;
   color-scheme: light dark !important;
 }
 :host([hidden]) {
@@ -943,8 +954,8 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
   overflow-wrap: break-word;
   hyphens: auto;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  padding: 13px 26px;
-  gap: 8px;
+  padding: calc(var(--p-internal-button-scaling, 1) * 1px * 13) max(calc(var(--p-internal-button-scaling, 1) * 1px * 26), 4px);
+  gap: clamp(2px, calc(var(--p-internal-button-scaling, 1) * 1px * 8), 16px);
   cursor: pointer;
   margin: 0;
 }
@@ -972,7 +983,7 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
 .icon {
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
-  margin-inline-start: -8px;
+  margin-inline-start: clamp(-16px, calc(var(--p-internal-button-scaling, 1) * 1px * -8), -2px);
   transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 .loading {
@@ -1001,6 +1012,7 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
   display: inline-block;
   vertical-align: top !important;
   outline: 0 !important;
+  border-radius: 4px !important;
   color-scheme: light dark !important;
 }
 :host([hidden]) {
@@ -1025,8 +1037,8 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
   overflow-wrap: break-word;
   hyphens: auto;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  padding: 13px 26px;
-  gap: 8px;
+  padding: calc(var(--p-internal-button-scaling, 1) * 1px * 13) max(calc(var(--p-internal-button-scaling, 1) * 1px * 26), 4px);
+  gap: clamp(2px, calc(var(--p-internal-button-scaling, 1) * 1px * 8), 16px);
   cursor: pointer;
   margin: 0;
 }
@@ -1054,7 +1066,7 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
 .icon {
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
-  margin-inline-start: -8px;
+  margin-inline-start: clamp(-16px, calc(var(--p-internal-button-scaling, 1) * 1px * -8), -2px);
   transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 .loading {
@@ -1083,6 +1095,7 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
   display: inline-block;
   vertical-align: top !important;
   outline: 0 !important;
+  border-radius: 4px !important;
   color-scheme: light dark !important;
 }
 :host([hidden]) {
@@ -1107,8 +1120,8 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
   overflow-wrap: break-word;
   hyphens: auto;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  padding: 13px 26px;
-  gap: 8px;
+  padding: calc(var(--p-internal-button-scaling, 1) * 1px * 13) max(calc(var(--p-internal-button-scaling, 1) * 1px * 26), 4px);
+  gap: clamp(2px, calc(var(--p-internal-button-scaling, 1) * 1px * 8), 16px);
   cursor: pointer;
   margin: 0;
 }
@@ -1136,7 +1149,7 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
 .icon {
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
-  margin-inline-start: -8px;
+  margin-inline-start: clamp(-16px, calc(var(--p-internal-button-scaling, 1) * 1px * -8), -2px);
   transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 .loading {
@@ -1165,6 +1178,7 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
   display: inline-block;
   vertical-align: top !important;
   outline: 0 !important;
+  border-radius: 4px !important;
   color-scheme: light dark !important;
 }
 :host([hidden]) {
@@ -1189,8 +1203,8 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
   overflow-wrap: break-word;
   hyphens: auto;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  padding: 13px 26px;
-  gap: 8px;
+  padding: calc(var(--p-internal-button-scaling, 1) * 1px * 13) max(calc(var(--p-internal-button-scaling, 1) * 1px * 26), 4px);
+  gap: clamp(2px, calc(var(--p-internal-button-scaling, 1) * 1px * 8), 16px);
   cursor: pointer;
   margin: 0;
 }
@@ -1218,7 +1232,7 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
 .icon {
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
-  margin-inline-start: -8px;
+  margin-inline-start: clamp(-16px, calc(var(--p-internal-button-scaling, 1) * 1px * -8), -2px);
   transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 .loading {
@@ -1247,6 +1261,7 @@ exports[`getComponentCss() should return correct css for icon: none, iconSource:
   display: inline-block;
   vertical-align: top !important;
   outline: 0 !important;
+  border-radius: 4px !important;
   color-scheme: light dark !important;
 }
 :host([hidden]) {
@@ -1271,8 +1286,8 @@ exports[`getComponentCss() should return correct css for icon: none, iconSource:
   overflow-wrap: break-word;
   hyphens: auto;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  padding: 13px 26px;
-  gap: 8px;
+  padding: calc(var(--p-internal-button-scaling, 1) * 1px * 13) max(calc(var(--p-internal-button-scaling, 1) * 1px * 26), 4px);
+  gap: clamp(2px, calc(var(--p-internal-button-scaling, 1) * 1px * 8), 16px);
   cursor: not-allowed;
   border-color: #535457;
   margin: 0;
