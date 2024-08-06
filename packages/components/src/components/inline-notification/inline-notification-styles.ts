@@ -1,12 +1,6 @@
 import type { Theme } from '../../types';
 import type { InlineNotificationState } from './inline-notification-utils';
-import {
-  borderWidthBase,
-  frostedGlassStyle,
-  getMediaQueryMax,
-  headingSmallStyle,
-  textSmallStyle,
-} from '@porsche-design-system/styles';
+import { borderWidthBase, getMediaQueryMax, headingSmallStyle, textSmallStyle } from '@porsche-design-system/styles';
 import { getCss, HEADING_TAGS, isThemeDark } from '../../utils';
 import {
   addImportantToEachRule,

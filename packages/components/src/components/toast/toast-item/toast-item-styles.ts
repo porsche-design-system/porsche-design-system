@@ -6,7 +6,7 @@ import {
   getNotificationIconJssStyle,
   getNotificationRootJssStyle,
 } from '../../inline-notification/inline-notification-styles-shared';
-import { dropShadowHighStyle, frostedGlassStyle, textSmallStyle } from '@porsche-design-system/styles';
+import { dropShadowHighStyle, textSmallStyle } from '@porsche-design-system/styles';
 import {
   addImportantToEachRule,
   dismissButtonJssStyle,
