@@ -14,6 +14,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ### [Unreleased]
 
+#### Fixed
+
+- `Button`, `Link`: Safari rendering issue of `backdrop-filter` on border in variant `ghost`
+  ([#3435](https://github.com/porsche-design-system/porsche-design-system/pull/3435))
+
 #### Changed
 
 - `Banner`, `Flyout`, `Flyout Multilevel`, `Inline Notification`, `Modal`, `Scroller`, `Toast`: dismiss button style
