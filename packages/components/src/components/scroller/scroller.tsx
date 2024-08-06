@@ -174,7 +174,6 @@ export class Scroller {
             type="button"
             tabIndex={-1}
             onClick={() => this.scrollOnPrevNextClick(direction)}
-            aria-hidden="true"
             theme={this.theme}
           >
             {direction}
