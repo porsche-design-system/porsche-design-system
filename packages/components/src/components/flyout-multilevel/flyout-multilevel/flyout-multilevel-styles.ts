@@ -4,7 +4,6 @@ import {
   addImportantToEachRule,
   colorSchemeStyles,
   cssVariableTransitionDuration,
-  dismissButtonJssStyle,
   getBackdropJssStyle,
   getThemedColors,
   getTransition,
