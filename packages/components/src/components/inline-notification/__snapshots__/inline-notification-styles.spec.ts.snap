@@ -46,7 +46,7 @@ slot[name="heading"] {
   max-width: 50rem;
 }
 .close {
-  --p-internal-button-scaling: 0px;
+  --p-internal-button-scaling: 0;
   mix-blend-mode: plus-lighter;
   -webkit-backdrop-filter: blur(32px);
   backdrop-filter: blur(32px);
@@ -111,7 +111,7 @@ slot[name="heading"] {
   max-width: 50rem;
 }
 .close {
-  --p-internal-button-scaling: 0px;
+  --p-internal-button-scaling: 0;
   mix-blend-mode: multiply;
   -webkit-backdrop-filter: blur(32px);
   backdrop-filter: blur(32px);
@@ -176,7 +176,7 @@ slot[name="heading"] {
   max-width: 50rem;
 }
 .close {
-  --p-internal-button-scaling: 0px;
+  --p-internal-button-scaling: 0;
   mix-blend-mode: plus-lighter;
   -webkit-backdrop-filter: blur(32px);
   backdrop-filter: blur(32px);
@@ -241,7 +241,7 @@ slot[name="heading"] {
   max-width: 50rem;
 }
 .close {
-  --p-internal-button-scaling: 0px;
+  --p-internal-button-scaling: 0;
   mix-blend-mode: multiply;
   -webkit-backdrop-filter: blur(32px);
   backdrop-filter: blur(32px);
@@ -306,7 +306,7 @@ slot[name="heading"] {
   max-width: 50rem;
 }
 .close {
-  --p-internal-button-scaling: 0px;
+  --p-internal-button-scaling: 0;
   mix-blend-mode: plus-lighter;
   -webkit-backdrop-filter: blur(32px);
   backdrop-filter: blur(32px);
@@ -371,7 +371,7 @@ slot[name="heading"] {
   max-width: 50rem;
 }
 .close {
-  --p-internal-button-scaling: 0px;
+  --p-internal-button-scaling: 0;
   mix-blend-mode: multiply;
   -webkit-backdrop-filter: blur(32px);
   backdrop-filter: blur(32px);
@@ -439,7 +439,7 @@ slot[name="heading"] {
   margin-top: 2px;
 }
 .close {
-  --p-internal-button-scaling: 0px;
+  --p-internal-button-scaling: 0;
   mix-blend-mode: plus-lighter;
   -webkit-backdrop-filter: blur(32px);
   backdrop-filter: blur(32px);
@@ -510,7 +510,7 @@ slot[name="heading"] {
   margin-top: 2px;
 }
 .close {
-  --p-internal-button-scaling: 0px;
+  --p-internal-button-scaling: 0;
   mix-blend-mode: multiply;
   -webkit-backdrop-filter: blur(32px);
   backdrop-filter: blur(32px);
@@ -581,7 +581,7 @@ slot[name="heading"] {
   margin-top: 2px;
 }
 .close {
-  --p-internal-button-scaling: 0px;
+  --p-internal-button-scaling: 0;
   mix-blend-mode: plus-lighter;
   -webkit-backdrop-filter: blur(32px);
   backdrop-filter: blur(32px);
@@ -652,7 +652,7 @@ slot[name="heading"] {
   margin-top: 2px;
 }
 .close {
-  --p-internal-button-scaling: 0px;
+  --p-internal-button-scaling: 0;
   mix-blend-mode: multiply;
   -webkit-backdrop-filter: blur(32px);
   backdrop-filter: blur(32px);
@@ -720,7 +720,7 @@ slot[name="heading"] {
   max-width: 50rem;
 }
 .close {
-  --p-internal-button-scaling: 0px;
+  --p-internal-button-scaling: 0;
   mix-blend-mode: plus-lighter;
   -webkit-backdrop-filter: blur(32px);
   backdrop-filter: blur(32px);
@@ -785,7 +785,7 @@ slot[name="heading"] {
   max-width: 50rem;
 }
 .close {
-  --p-internal-button-scaling: 0px;
+  --p-internal-button-scaling: 0;
   mix-blend-mode: multiply;
   -webkit-backdrop-filter: blur(32px);
   backdrop-filter: blur(32px);
@@ -850,7 +850,7 @@ slot[name="heading"] {
   max-width: 50rem;
 }
 .close {
-  --p-internal-button-scaling: 0px;
+  --p-internal-button-scaling: 0;
   mix-blend-mode: plus-lighter;
   -webkit-backdrop-filter: blur(32px);
   backdrop-filter: blur(32px);
@@ -915,7 +915,7 @@ slot[name="heading"] {
   max-width: 50rem;
 }
 .close {
-  --p-internal-button-scaling: 0px;
+  --p-internal-button-scaling: 0;
   mix-blend-mode: multiply;
   -webkit-backdrop-filter: blur(32px);
   backdrop-filter: blur(32px);
@@ -983,7 +983,7 @@ slot[name="heading"] {
   margin-top: 2px;
 }
 .close {
-  --p-internal-button-scaling: 0px;
+  --p-internal-button-scaling: 0;
   mix-blend-mode: plus-lighter;
   -webkit-backdrop-filter: blur(32px);
   backdrop-filter: blur(32px);
@@ -1054,7 +1054,7 @@ slot[name="heading"] {
   margin-top: 2px;
 }
 .close {
-  --p-internal-button-scaling: 0px;
+  --p-internal-button-scaling: 0;
   mix-blend-mode: multiply;
   -webkit-backdrop-filter: blur(32px);
   backdrop-filter: blur(32px);
@@ -1125,7 +1125,7 @@ slot[name="heading"] {
   margin-top: 2px;
 }
 .close {
-  --p-internal-button-scaling: 0px;
+  --p-internal-button-scaling: 0;
   mix-blend-mode: plus-lighter;
   -webkit-backdrop-filter: blur(32px);
   backdrop-filter: blur(32px);
@@ -1196,7 +1196,7 @@ slot[name="heading"] {
   margin-top: 2px;
 }
 .close {
-  --p-internal-button-scaling: 0px;
+  --p-internal-button-scaling: 0;
   mix-blend-mode: multiply;
   -webkit-backdrop-filter: blur(32px);
   backdrop-filter: blur(32px);
@@ -1264,7 +1264,7 @@ slot[name="heading"] {
   max-width: 50rem;
 }
 .close {
-  --p-internal-button-scaling: 0px;
+  --p-internal-button-scaling: 0;
   mix-blend-mode: plus-lighter;
   -webkit-backdrop-filter: blur(32px);
   backdrop-filter: blur(32px);
@@ -1329,7 +1329,7 @@ slot[name="heading"] {
   max-width: 50rem;
 }
 .close {
-  --p-internal-button-scaling: 0px;
+  --p-internal-button-scaling: 0;
   mix-blend-mode: multiply;
   -webkit-backdrop-filter: blur(32px);
   backdrop-filter: blur(32px);
@@ -1394,7 +1394,7 @@ slot[name="heading"] {
   max-width: 50rem;
 }
 .close {
-  --p-internal-button-scaling: 0px;
+  --p-internal-button-scaling: 0;
   mix-blend-mode: plus-lighter;
   -webkit-backdrop-filter: blur(32px);
   backdrop-filter: blur(32px);
@@ -1459,7 +1459,7 @@ slot[name="heading"] {
   max-width: 50rem;
 }
 .close {
-  --p-internal-button-scaling: 0px;
+  --p-internal-button-scaling: 0;
   mix-blend-mode: multiply;
   -webkit-backdrop-filter: blur(32px);
   backdrop-filter: blur(32px);

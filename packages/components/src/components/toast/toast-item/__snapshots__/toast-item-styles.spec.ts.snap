@@ -44,7 +44,7 @@ p {
 }
 
 .close {
-  --p-internal-button-scaling: 0px;
+  --p-internal-button-scaling: 0;
   mix-blend-mode: plus-lighter;
   -webkit-backdrop-filter: blur(32px);
   backdrop-filter: blur(32px);
@@ -101,7 +101,7 @@ p {
 }
 
 .close {
-  --p-internal-button-scaling: 0px;
+  --p-internal-button-scaling: 0;
   mix-blend-mode: multiply;
   -webkit-backdrop-filter: blur(32px);
   backdrop-filter: blur(32px);
@@ -158,7 +158,7 @@ p {
 }
 
 .close {
-  --p-internal-button-scaling: 0px;
+  --p-internal-button-scaling: 0;
   mix-blend-mode: plus-lighter;
   -webkit-backdrop-filter: blur(32px);
   backdrop-filter: blur(32px);
@@ -215,7 +215,7 @@ p {
 }
 
 .close {
-  --p-internal-button-scaling: 0px;
+  --p-internal-button-scaling: 0;
   mix-blend-mode: multiply;
   -webkit-backdrop-filter: blur(32px);
   backdrop-filter: blur(32px);
@@ -272,7 +272,7 @@ p {
 }
 
 .close {
-  --p-internal-button-scaling: 0px;
+  --p-internal-button-scaling: 0;
   mix-blend-mode: plus-lighter;
   -webkit-backdrop-filter: blur(32px);
   backdrop-filter: blur(32px);
@@ -329,7 +329,7 @@ p {
 }
 
 .close {
-  --p-internal-button-scaling: 0px;
+  --p-internal-button-scaling: 0;
   mix-blend-mode: multiply;
   -webkit-backdrop-filter: blur(32px);
   backdrop-filter: blur(32px);
