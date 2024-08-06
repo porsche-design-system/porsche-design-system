@@ -1,6 +1,12 @@
 import type { Theme } from '../../types';
 import type { InlineNotificationState } from './inline-notification-utils';
-import { borderWidthBase, getMediaQueryMax, headingSmallStyle, textSmallStyle } from '@porsche-design-system/styles';
+import {
+  borderWidthBase,
+  frostedGlassStyle,
+  getMediaQueryMax,
+  headingSmallStyle,
+  textSmallStyle,
+} from '@porsche-design-system/styles';
 import { getCss, HEADING_TAGS, isThemeDark } from '../../utils';
 import {
   addImportantToEachRule,
@@ -69,6 +75,7 @@ export const getComponentCss = (
     close: {
       ...dismissButtonJssStyle,
       mixBlendMode: isThemeDark(theme) ? 'plus-lighter' : 'multiply',
+      ...frostedGlassStyle, // Fixes safari rendering issue of border when applying mix-blend-mode
     },
   });
 };

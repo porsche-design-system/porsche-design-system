@@ -6,7 +6,7 @@ import {
   getNotificationIconJssStyle,
   getNotificationRootJssStyle,
 } from '../../inline-notification/inline-notification-styles-shared';
-import { dropShadowHighStyle, textSmallStyle } from '@porsche-design-system/styles';
+import { dropShadowHighStyle, frostedGlassStyle, textSmallStyle } from '@porsche-design-system/styles';
 import {
   addImportantToEachRule,
   dismissButtonJssStyle,
@@ -51,6 +51,7 @@ export const getComponentCss = (state: ToastState, theme: Theme): string => {
     close: {
       ...dismissButtonJssStyle,
       mixBlendMode: isThemeDark(theme) ? 'plus-lighter' : 'multiply',
+      ...frostedGlassStyle, // Fixes safari rendering issue of border when applying mix-blend-mode
     },
   });
 };
