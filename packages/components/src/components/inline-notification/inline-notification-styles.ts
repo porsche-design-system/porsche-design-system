@@ -78,7 +78,6 @@ export const getComponentCss = (
       ...prefersColorSchemeDarkMediaQuery(theme, {
         mixBlendMode: 'plus-lighter',
       }),
-      ...frostedGlassStyle, // Fixes safari rendering issue of border when applying mix-blend-mode
     },
   });
 };
