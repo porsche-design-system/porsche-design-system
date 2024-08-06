@@ -129,7 +129,7 @@ export class FlyoutMultilevel {
           <PrefixedTagNames.pButton
             class="dismiss"
             variant="ghost"
-            compact="true"
+            compact={true}
             type="button"
             icon="close"
             hideLabel={true}

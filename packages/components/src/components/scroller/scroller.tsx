@@ -167,9 +167,8 @@ export class Scroller {
         <div key={direction} class={direction === 'next' ? 'action-next' : 'action-prev'}>
           <PrefixedTagNames.pButton
             class="action-button"
-            compact="true"
             variant="ghost"
-            hide-label="true"
+            hide-label={true}
             icon={direction === 'next' ? 'arrow-head-right' : 'arrow-head-left'}
             type="button"
             tabIndex={-1}
