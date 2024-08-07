@@ -24,7 +24,7 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
 ::slotted(a)::before {
   content: "" !important;
   position: fixed !important;
-  inset: -2px !important;
+  inset: 0px !important;
   border-radius: 4px !important;
 }
 ::slotted(a::-moz-focus-inner) {
@@ -114,7 +114,7 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
 ::slotted(a)::before {
   content: "" !important;
   position: fixed !important;
-  inset: -2px !important;
+  inset: 0px !important;
   border-radius: 4px !important;
 }
 ::slotted(a::-moz-focus-inner) {
@@ -204,7 +204,7 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
 ::slotted(a)::before {
   content: "" !important;
   position: fixed !important;
-  inset: -2px !important;
+  inset: 0px !important;
   border-radius: 4px !important;
 }
 ::slotted(a::-moz-focus-inner) {
