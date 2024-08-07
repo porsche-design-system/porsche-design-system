@@ -1,9 +1,9 @@
 import { type BreakpointCustomizable, type Theme } from '../../types';
 import { type FormState } from '../../utils/form/form-state';
 
-import { getComponentCss as getComponentCssCommon } from '../../styles/textarea-styles';
+import { getTextareaStyles } from '../../styles/textarea-styles';
+import { getCss } from '../../utils';
 
-// TODO: Remove workaround for generateDSRComponents.ts
 export const getComponentCss = (
   isDisabled: boolean,
   hideLabel: BreakpointCustomizable<boolean>,
@@ -11,5 +11,5 @@ export const getComponentCss = (
   hasCounter: boolean,
   theme: Theme
 ): string => {
-  return getComponentCssCommon(isDisabled, hideLabel, state, hasCounter, theme);
+  return getCss(getTextareaStyles(isDisabled, hideLabel, state, hasCounter, theme));
 };

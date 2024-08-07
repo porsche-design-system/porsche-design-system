@@ -124,7 +124,7 @@ export class Textarea {
   @Prop() public readOnly?: boolean = false;
 
   /** The textarea value. */
-  @Prop({ mutable: true }) public value?: string;
+  @Prop({ mutable: true }) public value?: string = '';
 
   /** Emitted when textarea value is changed. */
   @Event({ bubbles: false }) public update: EventEmitter<TextareaUpdateEventDetail>;

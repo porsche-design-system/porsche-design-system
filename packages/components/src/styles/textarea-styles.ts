@@ -1,6 +1,6 @@
 import { type Styles } from 'jss';
 import { type BreakpointCustomizable, type Theme } from '../types';
-import { getCss, mergeDeep } from '../utils';
+import { mergeDeep } from '../utils';
 import { addImportantToEachRule, colorSchemeStyles, getHiddenTextJssStyle, hostHiddenStyles } from '../styles';
 import {
   formElementPaddingHorizontal,
@@ -17,14 +17,14 @@ import {
 } from '@porsche-design-system/styles';
 import { getFunctionalComponentLabelStyles } from '../components/common/label/label-styles';
 
-export const getComponentCss = (
+export const getTextareaStyles = (
   isDisabled: boolean,
   hideLabel: BreakpointCustomizable<boolean>,
   state: FormState,
   hasCounter: boolean,
   theme: Theme
-): string => {
-  return getCss({
+): Styles => {
+  return {
     '@global': {
       ':host': {
         display: 'block',
@@ -77,5 +77,5 @@ export const getComponentCss = (
     ...getFunctionalComponentLabelStyles(isDisabled, hideLabel, theme),
     // .message
     ...getFunctionalComponentStateMessageStyles(theme, state),
-  });
+  };
 };
