@@ -29,14 +29,14 @@ export const initNativeTextarea = (
   value: string,
   dirName: string
 ): HTMLTextAreaElement => {
-  const nativeSelect = document.createElement('textarea');
-  setAttributes(nativeSelect, {
+  const nativeTextarea = document.createElement('textarea');
+  setAttributes(nativeTextarea, {
     'aria-hidden': 'true',
     tabindex: '-1',
     slot: INTERNAL_TEXTAREA_SLOT,
   });
-  syncNativeSelect(
-    nativeSelect,
+  syncNativeTextarea(
+    nativeTextarea,
     name,
     disabled,
     required,
@@ -51,12 +51,12 @@ export const initNativeTextarea = (
     value,
     dirName
   );
-  host.prepend(nativeSelect);
-  return nativeSelect;
+  host.prepend(nativeTextarea);
+  return nativeTextarea;
 };
 
-export const syncNativeSelect = (
-  nativeSelect: HTMLTextAreaElement,
+export const syncNativeTextarea = (
+  nativeTextarea: HTMLTextAreaElement,
   name: string,
   disabled: boolean,
   required: boolean,
@@ -71,19 +71,19 @@ export const syncNativeSelect = (
   value: string,
   dirName: string
 ): void => {
-  nativeSelect.value = value;
-  setAttribute(nativeSelect, 'name', name);
-  setAttribute(nativeSelect, 'placeholder', placeholder);
-  setAttribute(nativeSelect, 'maxlength', maxLength ? maxLength.toString() : null);
-  setAttribute(nativeSelect, 'minlength', minLength ? minLength.toString() : null);
-  setAttribute(nativeSelect, 'autocomplete', autoComplete ?? null);
-  setAttribute(nativeSelect, 'dirname', dirName);
-  setAttribute(nativeSelect, 'wrap', wrap);
-  nativeSelect.toggleAttribute('disabled', disabled);
-  nativeSelect.toggleAttribute('required', required);
-  nativeSelect.toggleAttribute('readonly', readOnly);
-  nativeSelect.toggleAttribute('autofocus', autoFocus);
-  nativeSelect.toggleAttribute('spellcheck', spellCheck);
+  nativeTextarea.value = value;
+  setAttribute(nativeTextarea, 'name', name);
+  setAttribute(nativeTextarea, 'placeholder', placeholder);
+  setAttribute(nativeTextarea, 'maxlength', maxLength ? maxLength.toString() : null);
+  setAttribute(nativeTextarea, 'minlength', minLength ? minLength.toString() : null);
+  setAttribute(nativeTextarea, 'autocomplete', autoComplete ?? null);
+  setAttribute(nativeTextarea, 'dirname', dirName);
+  setAttribute(nativeTextarea, 'wrap', wrap);
+  nativeTextarea.toggleAttribute('disabled', disabled);
+  nativeTextarea.toggleAttribute('required', required);
+  nativeTextarea.toggleAttribute('readonly', readOnly);
+  nativeTextarea.toggleAttribute('autofocus', autoFocus);
+  nativeTextarea.toggleAttribute('spellcheck', spellCheck);
 };
 
 // https://javascript.info/currying-partials

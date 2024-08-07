@@ -29,7 +29,7 @@ import {
 import { StateMessage } from '../common/state-message/state-message';
 import { Label } from '../common/label/label';
 import { getSlottedAnchorStyles } from '../../styles';
-import { getComponentCss } from '../../styles/textarea-styles';
+import { getComponentCss } from './textarea-styles';
 
 const propTypes: PropTypes<typeof Textarea> = {
   label: AllowedTypes.string,
@@ -147,7 +147,6 @@ export class Textarea {
   }
 
   public componentWillLoad(): void {
-    // this.textarea = getOnlyChildOfKindHTMLElementOrThrow(this.host, 'textarea');
     this.nativeTextarea = initNativeTextarea(
       this.host,
       this.name,
