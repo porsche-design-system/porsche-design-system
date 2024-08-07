@@ -149,7 +149,7 @@ export const getComponentCss = (
       gridArea: '1/1',
       alignSelf: 'flex-start',
       justifySelf: 'flex-end',
-      marginInlineEnd: `calc(${spacingFluidLarge} - ${spacingFluidSmall} - 4px)`, // compensate p-button-pure custom padding + offsetHorizontal
+      marginInlineEnd: `calc(${spacingFluidLarge} - ${spacingFluidSmall})`,
       height: frostedGlassHeaderHeight,
       display: 'flex',
       alignItems: 'center',
@@ -160,6 +160,7 @@ export const getComponentCss = (
       },
     },
     dismiss: {
+      padding: spacingFluidSmall,
       [mediaQueryEnhancedView]: {
         '--p-internal-icon-filter': 'invert(1)',
         margin: spacingFluidSmall,

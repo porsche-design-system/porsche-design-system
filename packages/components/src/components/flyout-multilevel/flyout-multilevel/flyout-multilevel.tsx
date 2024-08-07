@@ -126,18 +126,17 @@ export class FlyoutMultilevel {
         onClick={this.onClickDialog}
       >
         <div class="header">
-          <PrefixedTagNames.pButton
+          <PrefixedTagNames.pButtonPure
             class="dismiss"
-            variant="ghost"
-            compact={true}
             type="button"
+            size="medium"
             icon="close"
             hideLabel={true}
             theme={this.theme}
             onClick={this.dismissDialog}
           >
             Dismiss flyout
-          </PrefixedTagNames.pButton>
+          </PrefixedTagNames.pButtonPure>
         </div>
         <div class="scroller">
           <nav class="content" {...parseAndGetAriaAttributes(this.aria)}>
