@@ -68,7 +68,7 @@ export const getComponentCss = (
             '&(a)::before': {
               content: '""',
               position: 'fixed',
-              inset: '-2px',
+              inset: variant === 'ghost' ? '0px' : '-2px', // Variant ghost has no border to compensate
               borderRadius: borderRadiusSmall,
             },
             ...getFocusJssStyle(theme, { slotted: 'a', pseudo: true }),
