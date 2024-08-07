@@ -63,6 +63,7 @@ import { TagDismissibleAriaAttribute, TagDismissibleColor } from "./components/t
 import { TextAlign, TextColor, TextTag, TextWeight } from "./components/text/text-utils";
 import { TextFieldWrapperActionIcon, TextFieldWrapperState, TextFieldWrapperUnitPosition } from "./components/text-field-wrapper/text-field-wrapper-utils";
 import { TextListListType, TextListOrderType, TextListType } from "./components/text-list/text-list/text-list-utils";
+import { AutoFillType, TextareaState, TextareaUpdateEventDetail, TextareaWrapType } from "./components/textarea/textarea-utils";
 import { TextareaWrapperState } from "./components/textarea-wrapper/textarea-wrapper-utils";
 import { ToastMessage } from "./components/toast/toast/toast-manager";
 import { ToastState } from "./components/toast/toast/toast-utils";
@@ -125,6 +126,7 @@ export { TagDismissibleAriaAttribute, TagDismissibleColor } from "./components/t
 export { TextAlign, TextColor, TextTag, TextWeight } from "./components/text/text-utils";
 export { TextFieldWrapperActionIcon, TextFieldWrapperState, TextFieldWrapperUnitPosition } from "./components/text-field-wrapper/text-field-wrapper-utils";
 export { TextListListType, TextListOrderType, TextListType } from "./components/text-list/text-list/text-list-utils";
+export { AutoFillType, TextareaState, TextareaUpdateEventDetail, TextareaWrapType } from "./components/textarea/textarea-utils";
 export { TextareaWrapperState } from "./components/textarea-wrapper/textarea-wrapper-utils";
 export { ToastMessage } from "./components/toast/toast/toast-manager";
 export { ToastState } from "./components/toast/toast/toast-utils";
@@ -2033,6 +2035,88 @@ export namespace Components {
     }
     interface PTextListItem {
     }
+    interface PTextarea {
+        /**
+          * Specifies whether the input can be autofilled by the browser
+         */
+        "autoComplete"?: AutoFillType;
+        /**
+          * Enables automatic focus when the component is rendered
+         */
+        "autoFocus"?: boolean;
+        /**
+          * The description text.
+         */
+        "description"?: string;
+        /**
+          * Indicates the text directionality of the element
+         */
+        "dirName"?: string;
+        /**
+          * Marks the textarea as disabled.
+         */
+        "disabled"?: boolean;
+        /**
+          * Show or hide label. For better accessibility it is recommended to show the label.
+         */
+        "hideLabel"?: BreakpointCustomizable<boolean>;
+        /**
+          * The label text.
+         */
+        "label"?: string;
+        /**
+          * The max length of the textarea.
+         */
+        "maxLength"?: number;
+        /**
+          * The message styled depending on validation state.
+         */
+        "message"?: string;
+        /**
+          * The min length of the textarea.
+         */
+        "minLength"?: number;
+        /**
+          * The name of the textarea.
+         */
+        "name": string;
+        /**
+          * The placeholder text.
+         */
+        "placeholder"?: string;
+        /**
+          * Specifies whether the textarea should be read-only.
+         */
+        "readOnly"?: boolean;
+        /**
+          * Marks the textarea as required.
+         */
+        "required"?: boolean;
+        /**
+          * Show or hide max character count.
+         */
+        "showCounter"?: boolean;
+        /**
+          * Specifies whether the input should have its spelling and grammar checked
+         */
+        "spellCheck"?: boolean;
+        /**
+          * The validation state.
+         */
+        "state"?: TextareaState;
+        /**
+          * Adapts the color depending on the theme.
+         */
+        "theme"?: Theme;
+        /**
+          * The textarea value.
+         */
+        "value"?: string;
+        /**
+          * Handles wrapping behaviour of elements.
+         */
+        "wrap"?: TextareaWrapType;
+    }
     interface PTextareaWrapper {
         /**
           * The description text.
@@ -2190,6 +2274,10 @@ export interface PTabsBarCustomEvent<T> extends CustomEvent<T> {
 export interface PTextFieldWrapperCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLPTextFieldWrapperElement;
+}
+export interface PTextareaCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLPTextareaElement;
 }
 export interface PToastItemCustomEvent<T> extends CustomEvent<T> {
     detail: T;
@@ -2930,6 +3018,23 @@ declare global {
         prototype: HTMLPTextListItemElement;
         new (): HTMLPTextListItemElement;
     };
+    interface HTMLPTextareaElementEventMap {
+        "update": TextareaUpdateEventDetail;
+    }
+    interface HTMLPTextareaElement extends Components.PTextarea, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLPTextareaElementEventMap>(type: K, listener: (this: HTMLPTextareaElement, ev: PTextareaCustomEvent<HTMLPTextareaElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLPTextareaElementEventMap>(type: K, listener: (this: HTMLPTextareaElement, ev: PTextareaCustomEvent<HTMLPTextareaElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLPTextareaElement: {
+        prototype: HTMLPTextareaElement;
+        new (): HTMLPTextareaElement;
+    };
     interface HTMLPTextareaWrapperElement extends Components.PTextareaWrapper, HTMLStencilElement {
     }
     var HTMLPTextareaWrapperElement: {
@@ -3035,6 +3140,7 @@ declare global {
         "p-text-field-wrapper": HTMLPTextFieldWrapperElement;
         "p-text-list": HTMLPTextListElement;
         "p-text-list-item": HTMLPTextListItemElement;
+        "p-textarea": HTMLPTextareaElement;
         "p-textarea-wrapper": HTMLPTextareaWrapperElement;
         "p-toast": HTMLPToastElement;
         "p-toast-item": HTMLPToastItemElement;
@@ -5093,6 +5199,92 @@ declare namespace LocalJSX {
     }
     interface PTextListItem {
     }
+    interface PTextarea {
+        /**
+          * Specifies whether the input can be autofilled by the browser
+         */
+        "autoComplete"?: AutoFillType;
+        /**
+          * Enables automatic focus when the component is rendered
+         */
+        "autoFocus"?: boolean;
+        /**
+          * The description text.
+         */
+        "description"?: string;
+        /**
+          * Indicates the text directionality of the element
+         */
+        "dirName"?: string;
+        /**
+          * Marks the textarea as disabled.
+         */
+        "disabled"?: boolean;
+        /**
+          * Show or hide label. For better accessibility it is recommended to show the label.
+         */
+        "hideLabel"?: BreakpointCustomizable<boolean>;
+        /**
+          * The label text.
+         */
+        "label"?: string;
+        /**
+          * The max length of the textarea.
+         */
+        "maxLength"?: number;
+        /**
+          * The message styled depending on validation state.
+         */
+        "message"?: string;
+        /**
+          * The min length of the textarea.
+         */
+        "minLength"?: number;
+        /**
+          * The name of the textarea.
+         */
+        "name"?: string;
+        /**
+          * Emitted when textarea value is changed.
+         */
+        "onUpdate"?: (event: PTextareaCustomEvent<TextareaUpdateEventDetail>) => void;
+        /**
+          * The placeholder text.
+         */
+        "placeholder"?: string;
+        /**
+          * Specifies whether the textarea should be read-only.
+         */
+        "readOnly"?: boolean;
+        /**
+          * Marks the textarea as required.
+         */
+        "required"?: boolean;
+        /**
+          * Show or hide max character count.
+         */
+        "showCounter"?: boolean;
+        /**
+          * Specifies whether the input should have its spelling and grammar checked
+         */
+        "spellCheck"?: boolean;
+        /**
+          * The validation state.
+         */
+        "state"?: TextareaState;
+        /**
+          * Adapts the color depending on the theme.
+         */
+        "theme"?: Theme;
+        /**
+          * The textarea value.
+         */
+        "value"?: string;
+        /**
+          * Handles wrapping behaviour of elements.
+         */
+        "wrap"?: TextareaWrapType;
+    }
     interface PTextareaWrapper {
         /**
           * The description text.
@@ -5243,6 +5435,7 @@ declare namespace LocalJSX {
         "p-text-field-wrapper": PTextFieldWrapper;
         "p-text-list": PTextList;
         "p-text-list-item": PTextListItem;
+        "p-textarea": PTextarea;
         "p-textarea-wrapper": PTextareaWrapper;
         "p-toast": PToast;
         "p-toast-item": PToastItem;
@@ -5405,6 +5598,7 @@ declare module "@stencil/core" {
             "p-text-field-wrapper": LocalJSX.PTextFieldWrapper & JSXBase.HTMLAttributes<HTMLPTextFieldWrapperElement>;
             "p-text-list": LocalJSX.PTextList & JSXBase.HTMLAttributes<HTMLPTextListElement>;
             "p-text-list-item": LocalJSX.PTextListItem & JSXBase.HTMLAttributes<HTMLPTextListItemElement>;
+            "p-textarea": LocalJSX.PTextarea & JSXBase.HTMLAttributes<HTMLPTextareaElement>;
             "p-textarea-wrapper": LocalJSX.PTextareaWrapper & JSXBase.HTMLAttributes<HTMLPTextareaWrapperElement>;
             "p-toast": LocalJSX.PToast & JSXBase.HTMLAttributes<HTMLPToastElement>;
             "p-toast-item": LocalJSX.PToastItem & JSXBase.HTMLAttributes<HTMLPToastItemElement>;
