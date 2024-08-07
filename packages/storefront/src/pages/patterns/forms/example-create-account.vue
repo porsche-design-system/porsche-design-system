@@ -14,37 +14,32 @@
         <form novalidate @submit.prevent="onSubmit">
           <p-flex direction="{ base: 'column', m: 'row' }" class="form-grid-item-container">
             <p-flex-item width="{base: 'full', m: 'one-third'}" class="form-grid-item">
-              <p-select-wrapper
+              <p-select
                 :theme="storefrontTheme"
                 label="Salutation"
                 v-bind:message="bag.errors.salutation"
                 v-bind:state="getState('salutation')"
+                v-on:update="onCustomSelectUpdate"
+                v-on:blur="onFieldBlur"
+                :ref="validateFieldName('salutation')"
+                v-bind:name="validateFieldName('salutation')"
+                required
               >
-                <select
-                  :ref="validateFieldName('salutation')"
-                  v-bind:name="validateFieldName('salutation')"
-                  v-model="bag.data.salutation"
-                  v-on:change="onFieldBlur"
-                  required
-                >
-                  <option value hidden></option>
-                  <option value="Mr.">Mr.</option>
-                  <option value="Mrs.">Mrs.</option>
-                </select>
-              </p-select-wrapper>
+                <p-select-option value hidden></p-select-option>
+                <p-select-option value="Mr.">Mr.</p-select-option>
+                <p-select-option value="Mrs.">Mrs.</p-select-option>
+              </p-select>
             </p-flex-item>
             <p-flex-item
               width="{base: 'full', m: 'one-third'}"
               class="form-row-spacing form-row-spacing--zero-m form-grid-item"
             >
-              <p-select-wrapper :theme="storefrontTheme" label="Title">
-                <select v-bind:name="validateFieldName('title')" v-model="bag.data.title">
-                  <option value></option>
-                  <option value="option 1">Dr.</option>
-                  <option value="option 2">Prof.</option>
-                  <option value="option 3">Prof. Dr.</option>
-                </select>
-              </p-select-wrapper>
+              <p-select :theme="storefrontTheme" label="Title" v-bind:name="validateFieldName('title')">
+                <p-select-option value></p-select-option>
+                <p-select-option value="Dr.">Dr.</p-select-option>
+                <p-select-option value="Prof.">Prof.</p-select-option>
+                <p-select-option value="Prof. Dr.">Prof. Dr.</p-select-option>
+              </p-select>
             </p-flex-item>
           </p-flex>
           <p-flex direction="{ base: 'column', m: 'row' }" class="form-row-spacing form-grid-item-container">
@@ -218,6 +213,10 @@
 
     onFieldBlur({ target }: FocusEvent & { target: HTMLInputElement }): void {
       validateField(target.name as keyof FormModel, this.bag);
+    }
+    onCustomSelectUpdate({ target }: CustomEvent & { target: HTMLElement }): void {
+      this.bag.data.salutation = (target as HTMLSelectElement).value;
+      validateField((target as HTMLSelectElement).name as keyof FormModel, this.bag);
     }
 
     async onSubmit(): Promise<void> {
