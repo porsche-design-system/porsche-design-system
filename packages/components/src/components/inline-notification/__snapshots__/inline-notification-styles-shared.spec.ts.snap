@@ -7,6 +7,7 @@ exports[`getNotificationContentJssStyle() should return correct JssStyle 1`] = `
   },
   "display": "grid",
   "gap": "4px",
+  "marginTop": "2px",
   "maxWidth": "50rem",
 }
 `;
@@ -16,6 +17,7 @@ exports[`getNotificationIconJssStyle() should return correct JssStyle 1`] = `
   "@media(max-width:759px)": {
     "display": "none",
   },
+  "marginTop": "2px",
 }
 `;
 

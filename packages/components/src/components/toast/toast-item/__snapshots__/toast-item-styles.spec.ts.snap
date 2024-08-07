@@ -33,6 +33,7 @@ p {
   display: grid;
   gap: 4px;
   max-width: 50rem;
+  margin-top: 2px;
 }
 @media(min-width:760px) {
   :host {
@@ -43,9 +44,13 @@ p {
   }
 }
 
+.icon {
+  margin-top: 2px;
+}
 .close {
   --p-internal-button-scaling: 0;
   mix-blend-mode: plus-lighter;
+  isolation: isolate;
 }
 @media(max-width:759px) {
   .icon {
@@ -88,6 +93,7 @@ p {
   display: grid;
   gap: 4px;
   max-width: 50rem;
+  margin-top: 2px;
 }
 @media(min-width:760px) {
   :host {
@@ -98,9 +104,13 @@ p {
   }
 }
 
+.icon {
+  margin-top: 2px;
+}
 .close {
   --p-internal-button-scaling: 0;
   mix-blend-mode: multiply;
+  isolation: isolate;
 }
 @media(max-width:759px) {
   .icon {
@@ -143,6 +153,7 @@ p {
   display: grid;
   gap: 4px;
   max-width: 50rem;
+  margin-top: 2px;
 }
 @media(min-width:760px) {
   :host {
@@ -153,9 +164,13 @@ p {
   }
 }
 
+.icon {
+  margin-top: 2px;
+}
 .close {
   --p-internal-button-scaling: 0;
   mix-blend-mode: plus-lighter;
+  isolation: isolate;
 }
 @media(max-width:759px) {
   .icon {
@@ -198,6 +213,7 @@ p {
   display: grid;
   gap: 4px;
   max-width: 50rem;
+  margin-top: 2px;
 }
 @media(min-width:760px) {
   :host {
@@ -208,9 +224,13 @@ p {
   }
 }
 
+.icon {
+  margin-top: 2px;
+}
 .close {
   --p-internal-button-scaling: 0;
   mix-blend-mode: multiply;
+  isolation: isolate;
 }
 @media(max-width:759px) {
   .icon {
@@ -253,6 +273,7 @@ p {
   display: grid;
   gap: 4px;
   max-width: 50rem;
+  margin-top: 2px;
 }
 @media(min-width:760px) {
   :host {
@@ -263,9 +284,13 @@ p {
   }
 }
 
+.icon {
+  margin-top: 2px;
+}
 .close {
   --p-internal-button-scaling: 0;
   mix-blend-mode: plus-lighter;
+  isolation: isolate;
 }
 @media(max-width:759px) {
   .icon {
@@ -308,6 +333,7 @@ p {
   display: grid;
   gap: 4px;
   max-width: 50rem;
+  margin-top: 2px;
 }
 @media(min-width:760px) {
   :host {
@@ -318,9 +344,13 @@ p {
   }
 }
 
+.icon {
+  margin-top: 2px;
+}
 .close {
   --p-internal-button-scaling: 0;
   mix-blend-mode: multiply;
+  isolation: isolate;
 }
 @media(max-width:759px) {
   .icon {
