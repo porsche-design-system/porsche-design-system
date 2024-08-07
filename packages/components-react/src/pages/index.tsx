@@ -112,6 +112,7 @@ import { TabsBarPage } from './generated/TabsBar';
 import { TagPage } from './generated/Tag';
 import { TagDismissiblePage } from './generated/TagDismissible';
 import { TextPage } from './generated/Text';
+import { TextareaPage } from './generated/Textarea';
 import { TextareaWrapperPage } from './generated/TextareaWrapper';
 import { TextFieldWrapperPage } from './generated/TextFieldWrapper';
 import { TextListPage } from './generated/TextList';
@@ -634,6 +635,11 @@ export const generatedRoutes: RouteType[] = [
     name: 'Text List',
     path: '/text-list',
     element: <TextListPage />,
+  },
+  {
+    name: 'Textarea',
+    path: '/textarea',
+    element: <TextareaPage />,
   },
   {
     name: 'Textarea Wrapper',
