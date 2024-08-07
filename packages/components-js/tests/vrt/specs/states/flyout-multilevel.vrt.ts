@@ -35,15 +35,15 @@ const scenario = async (
   });
 
   if (pseudoState === 'hover') {
-    await forceHoverState(page, 'p-flyout-multilevel >>> p-button-pure >>> button');
+    await forceHoverState(page, 'p-flyout-multilevel >>> p-button >>> button');
     await forceHoverState(page, 'p-flyout-multilevel-item >>> p-button-pure >>> button');
     await forceHoverState(page, 'p-flyout-multilevel-item a');
   } else if (pseudoState === 'focus') {
-    await forceFocusVisibleState(page, 'p-flyout-multilevel >>> p-button-pure >>> button');
+    await forceFocusVisibleState(page, 'p-flyout-multilevel >>> p-button >>> button');
     await forceFocusVisibleState(page, 'p-flyout-multilevel-item >>> p-button-pure >>> button');
     await forceFocusVisibleState(page, 'p-flyout-multilevel-item a');
   } else if (pseudoState === 'focus-hover') {
-    await forceFocusHoverState(page, 'p-flyout-multilevel >>> p-button-pure >>> button');
+    await forceFocusHoverState(page, 'p-flyout-multilevel >>> p-button >>> button');
     await forceFocusHoverState(page, 'p-flyout-multilevel-item >>> p-button-pure >>> button');
     await forceFocusHoverState(page, 'p-flyout-multilevel-item a');
   }

@@ -299,6 +299,6 @@ test.describe('lifecycle', () => {
     expect(status.componentDidLoad['p-button'], 'componentDidLoad: p-button').toBe(2);
 
     expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(5);
-    expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(3);
+    expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(5);
   });
 });
