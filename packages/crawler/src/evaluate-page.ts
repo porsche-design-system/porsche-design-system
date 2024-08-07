@@ -1,5 +1,5 @@
 import { type Locator, type Page } from '@playwright/test';
-import { TagName } from '@porsche-design-system/shared';
+import type { TagName } from '@porsche-design-system/shared';
 import { ConsumedTagNamesForVersionsAndPrefixes, Properties, TagNameData } from './types';
 import { getPdsTagNamesWithPropertyNames } from './helpers/convert-data-helper';
 

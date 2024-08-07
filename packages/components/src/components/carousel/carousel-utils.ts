@@ -1,8 +1,6 @@
 import type { Options, Splide } from '@splidejs/splide';
-import type { Breakpoint } from '@porsche-design-system/styles';
-import { breakpoint } from '@porsche-design-system/styles';
+import { type Breakpoint, breakpoint } from '@porsche-design-system/styles';
 import type { BreakpointCustomizable, HeadingSize } from '../../types';
-import { ButtonPure } from '../button-pure/button-pure';
 import {
   bulletActiveClass,
   bulletClass,
@@ -98,7 +96,11 @@ export const slideNext = (splide: Splide, amountOfPages: number): void => {
   splide.go(isLastPage(splide, amountOfPages) ? 0 : '>');
 };
 
-export const updatePrevNextButtons = (btnPrev: ButtonPure, btnNext: ButtonPure, splide: Splide): void => {
+export const updatePrevNextButtons = (
+  btnPrev: HTMLPButtonPureElement,
+  btnNext: HTMLPButtonPureElement,
+  splide: Splide
+): void => {
   const { i18n, rewind } = splide.options;
   const isFirst = isFirstPage(splide);
   btnPrev.disabled = isFirst && !rewind;

@@ -1,8 +1,6 @@
-import type { Breakpoint } from '@porsche-design-system/styles';
+import { type Breakpoint, breakpoint, breakpoints } from '@porsche-design-system/styles';
 import type { BreakpointCustomizable } from './breakpoint-customizable';
-import { breakpoint } from '@porsche-design-system/styles';
 import { mediaQueryLists } from './breakpoint-observer';
-import { breakpoints } from '@porsche-design-system/styles';
 
 export const flippedBreakpoint = Object.entries(breakpoint).reduce(
   (result, [key, val]) => ({ ...result, [`${val}px`]: key }),
@@ -22,11 +20,11 @@ export const getCurrentMatchingBreakpointValue = <T>(data: BreakpointCustomizabl
   if (typeof data === 'object') {
     const currentBreakpoint = getCurrentBreakpointKey();
 
-    const result = data[currentBreakpoint];
+    const result = data[currentBreakpoint as keyof BreakpointCustomizable<T>];
     if (result) {
       return result;
     } else {
-      const valuesArray = breakpoints.map((bp) => data[bp]);
+      const valuesArray = breakpoints.map((bp) => data[bp as keyof BreakpointCustomizable<T>]);
       // fill gaps with value from preceding breakpoint
       valuesArray.forEach((val, i, arr) => {
         if (val === undefined) {

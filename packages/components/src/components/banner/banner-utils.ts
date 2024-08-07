@@ -1,4 +1,4 @@
-import { InlineNotificationHeadingTag } from '../inline-notification/inline-notification-utils';
+import type { InlineNotificationHeadingTag } from '../inline-notification/inline-notification-utils';
 
 /** @deprecated */
 export const BANNER_STATES_DEPRECATED = ['neutral'] as const;

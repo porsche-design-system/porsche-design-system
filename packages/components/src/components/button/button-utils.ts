@@ -1,6 +1,5 @@
 import type { AriaAttributes, LinkButtonIconName, SelectedAriaAttributes } from '../../types';
-import type { ButtonAriaAttribute } from '../../utils';
-import { getButtonBaseAriaAttributes, parseAndGetAriaAttributes } from '../../utils';
+import { type ButtonAriaAttribute, getButtonBaseAriaAttributes, parseAndGetAriaAttributes } from '../../utils';
 
 export type ButtonIcon = LinkButtonIconName;
 

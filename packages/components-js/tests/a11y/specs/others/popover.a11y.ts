@@ -2,11 +2,11 @@ import { setContentWithDesignSystem, setProperty, waitForStencilLifecycle } from
 import type { PopoverDirection } from '@porsche-design-system/components/dist/types/bundle';
 import { type Page, test, expect } from '@playwright/test';
 
-const getHost = (page: Page) => page.$('p-popover');
-const getButton = (page: Page) => page.$('p-popover button');
+const getHost = (page: Page) => page.locator('p-popover');
+const getButton = (page: Page) => page.locator('p-popover button');
 
 const togglePopover = async (page: Page): Promise<void> => {
-  const button = await getButton(page);
+  const button = getButton(page);
   await button.click();
   await waitForStencilLifecycle(page);
 };
@@ -44,7 +44,7 @@ test.fixme('should expose correct initial accessibility tree properties', async 
 
 test.fixme('should expose correct accessibility tree when aria property is changed', async ({ page }) => {
   await initPopover(page);
-  const host = await getHost(page);
+  const host = getHost(page);
 
   await setProperty(host, 'aria', {
     'aria-label': 'Some more detailed label',

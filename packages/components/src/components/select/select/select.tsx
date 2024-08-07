@@ -1,15 +1,15 @@
 import type { BreakpointCustomizable, PropTypes, Theme } from '../../../types';
 import {
-  getSelectDropdownDirection,
-  getSelectedOptionString,
-  getSrHighlightedOptionText,
-  initNativeSelect,
-  INTERNAL_SELECT_SLOT,
   type SelectDropdownDirection,
   type SelectOptgroup,
   type SelectOption,
   type SelectState,
   type SelectUpdateEventDetail,
+  getSelectDropdownDirection,
+  getSelectedOptionString,
+  getSrHighlightedOptionText,
+  initNativeSelect,
+  INTERNAL_SELECT_SLOT,
   setSelectedOption,
   syncNativeSelect,
   syncSelectChildrenProps,
@@ -18,13 +18,13 @@ import {
 } from './select-utils';
 
 import {
+  type EventEmitter,
+  type JSX,
   Component,
   Element,
   Event,
-  EventEmitter,
   forceUpdate,
   h,
-  type JSX,
   Listen,
   Prop,
   State,

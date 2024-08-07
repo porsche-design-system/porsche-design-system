@@ -12,10 +12,10 @@ import {
 } from '../helpers';
 import type { FormState } from '@porsche-design-system/components';
 
-const getHost = (page: Page) => page.$('p-select-wrapper');
-const getSelect = (page: Page) => page.$('p-select-wrapper select');
-const getMessage = (page: Page) => page.$('p-select-wrapper .message');
-const getLabel = (page: Page) => page.$('p-select-wrapper label');
+const getHost = (page: Page) => page.locator('p-select-wrapper');
+const getSelect = (page: Page) => page.locator('p-select-wrapper select');
+const getMessage = (page: Page) => page.locator('p-select-wrapper .message');
+const getLabel = (page: Page) => page.locator('p-select-wrapper label');
 
 type InitOptions = {
   useSlottedLabel?: boolean;
@@ -65,32 +65,32 @@ test('should add/remove message text and update aria-label attribute with messag
   page,
 }) => {
   await initSelect(page);
-  const host = await getHost(page);
+  const host = getHost(page);
 
-  expect(await getMessage(page), 'initially').toBeNull();
+  await expect(getMessage(page), 'initially').toHaveCount(0);
 
   await setProperty(host, 'state', 'error');
   await setProperty(host, 'message', 'Some error message');
   await waitForStencilLifecycle(page);
 
-  expect(await getMessage(page), 'when state = error').toBeDefined();
+  expect(getMessage(page), 'when state = error').toBeDefined();
 
   await setProperty(host, 'state', 'success');
   await setProperty(host, 'message', 'Some success message');
   await waitForStencilLifecycle(page);
 
-  expect(await getMessage(page), 'when state = success').toBeDefined();
+  expect(getMessage(page), 'when state = success').toBeDefined();
 
   await setProperty(host, 'state', 'none');
   await setProperty(host, 'message', '');
   await waitForStencilLifecycle(page);
 
-  expect(await getMessage(page), 'when state = none').toBeNull();
+  await expect(getMessage(page), 'when state = none').toHaveCount(0);
 });
 
 test('should disable select when select is disabled programmatically', async ({ page }) => {
   await initSelect(page);
-  const select = await getSelect(page);
+  const select = getSelect(page);
 
   const getSelectCursorStyle = () => getElementStyle(select, 'cursor');
 
@@ -110,10 +110,10 @@ test('should disable select when select is disabled programmatically', async ({ 
 test.describe('focus state', () => {
   test('should focus select when label text is clicked', async ({ page }) => {
     await initSelect(page);
-    const select = await getSelect(page);
+    const select = getSelect(page);
     const hasSelectFocus = () => hasFocus(select);
 
-    const labelText = await getLabel(page);
+    const labelText = getLabel(page);
     expect(await hasSelectFocus()).toBe(false);
 
     await labelText.click();
@@ -127,8 +127,8 @@ test.describe('hover state', () => {
     await initSelect(page);
     await page.mouse.move(0, 300); // avoid potential hover initially
 
-    const select = await getSelect(page);
-    const label = await getLabel(page);
+    const select = getSelect(page);
+    const label = getLabel(page);
     const initialStyle = await getElementStyle(select, 'borderColor');
     expect(initialStyle).toBe('rgb(107, 109, 112)');
 
@@ -152,8 +152,8 @@ test.describe('lifecycle', () => {
 
   test('should work without unnecessary round trips when opened', async ({ page }) => {
     await initSelect(page);
-    const select = await getSelect(page);
-    const [, secondOption] = await select.$$('option');
+    const select = getSelect(page);
+    const [, secondOption] = await select.locator('option').all();
 
     expect(await getProperty(select, 'value')).toBe('a');
 

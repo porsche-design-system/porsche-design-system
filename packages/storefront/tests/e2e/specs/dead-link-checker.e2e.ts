@@ -5,7 +5,7 @@ const console = require('console'); // workaround for nicer logs
 
 // TODO: move validateMarkdownLinks() test into unit test `url.spec.ts`
 const validateMarkdownLinks = async (page: Page): Promise<void> => {
-  const markdownLinks = await page.$$('.markdown [href]');
+  const markdownLinks = await page.locator('.markdown [href]').all();
   const markdownHrefs: string[] = await Promise.all(
     markdownLinks.map((link) => link.evaluate((el) => el.getAttribute('href')))
   );
@@ -20,7 +20,7 @@ const validateMarkdownLinks = async (page: Page): Promise<void> => {
 const getHeadline = async (page: Page): Promise<string> => {
   const selector = '.vmark > h1';
   await page.waitForSelector(selector), { visible: true };
-  return page.$eval(selector, (el) => el.innerHTML);
+  return page.locator(selector).evaluate((el) => el.innerHTML);
 };
 
 const internalUrls = getInternalUrls();

@@ -13,8 +13,12 @@ import {
   warnIfDeprecatedPropValueIsUsed,
 } from '../../utils';
 import { getComponentCss } from './switch-styles';
-import type { SwitchAlignLabel, SwitchAlignLabelDeprecated, SwitchUpdateEventDetail } from './switch-utils';
-import { getSwitchButtonAriaAttributes } from './switch-utils';
+import {
+  type SwitchAlignLabel,
+  type SwitchAlignLabelDeprecated,
+  type SwitchUpdateEventDetail,
+  getSwitchButtonAriaAttributes,
+} from './switch-utils';
 import { LoadingMessage, loadingId } from '../common/loading-message/loading-message';
 import { ControllerHost, InitialLoadingController } from '../../controllers';
 import { getSlottedAnchorStyles } from '../../styles';

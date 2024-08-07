@@ -10,8 +10,12 @@ import {
   validateProps,
 } from '../../../utils';
 import { createSortedEventInitDictDetail, getAriaSort, isSortable } from './table-head-cell-utils';
-import type { Direction, TableUpdateEventDetail, TableHeadCellSort } from '../table/table-utils';
-import { SORT_EVENT_NAME } from '../table/table-utils';
+import {
+  type Direction,
+  type TableUpdateEventDetail,
+  type TableHeadCellSort,
+  SORT_EVENT_NAME,
+} from '../table/table-utils';
 import { getComponentCss } from './table-head-cell-styles';
 
 const propTypes: PropTypes<typeof TableHeadCell> = {

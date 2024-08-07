@@ -15,20 +15,20 @@ const initFieldset = async (page: Page, opts?: InitOptions) => {
   );
 };
 
-const getHost = (page: Page) => page.$('p-fieldset-wrapper');
-const getFieldset = (page: Page) => page.$('p-fieldset-wrapper fieldset');
-const getMessage = (page: Page) => page.$('p-fieldset-wrapper .message');
+const getHost = (page: Page) => page.locator('p-fieldset-wrapper');
+const getFieldset = (page: Page) => page.locator('p-fieldset-wrapper fieldset');
+const getMessage = (page: Page) => page.locator('p-fieldset-wrapper .message');
 
 test.fixme('should expose correct initial accessibility tree', async ({ page }) => {
   await initFieldset(page);
-  const fieldset = await getFieldset(page);
+  const fieldset = getFieldset(page);
 
   // await expectA11yToMatchSnapshot(page, fieldset, { interestingOnly: false });
 });
 
 test.fixme('should expose correct accessibility tree property in error state', async ({ page }) => {
   await initFieldset(page, { state: 'error' });
-  const fieldset = await getFieldset(page);
+  const fieldset = getFieldset(page);
 
   // await expectA11yToMatchSnapshot(page, fieldset, { interestingOnly: false });
 });
@@ -37,12 +37,12 @@ test.fixme(
   'should expose correct accessibility tree property if error state added programmatically',
   async ({ page }) => {
     await initFieldset(page);
-    const host = await getHost(page);
+    const host = getHost(page);
 
     await setProperty(host, 'state', 'error');
     await waitForStencilLifecycle(page);
 
-    const fieldset = await getFieldset(page);
+    const fieldset = getFieldset(page);
 
     // await expectA11yToMatchSnapshot(page, fieldset, { interestingOnly: false });
   }

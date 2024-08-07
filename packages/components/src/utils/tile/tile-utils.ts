@@ -1,4 +1,4 @@
-import { THEMES } from '../theme';
+import type { THEMES } from '../theme';
 
 /** @deprecated */
 export const TILE_ASPECT_RATIOS_DEPRECATED = ['1:1', '4:3', '3:4', '16:9', '9:16'] as const;

@@ -15,7 +15,7 @@ module.exports = {
     project: 'tsconfig.json',
     sourceType: 'module',
   },
-  plugins: ['@typescript-eslint', 'prefer-arrow', 'react', 'fp'],
+  plugins: ['@typescript-eslint', 'prefer-arrow', 'react', 'fp', 'import'],
   rules: {
     '@typescript-eslint/adjacent-overload-signatures': 'error',
     '@typescript-eslint/array-type': 'error',
@@ -28,6 +28,7 @@ module.exports = {
     '@typescript-eslint/restrict-template-expressions': 'off',
     '@typescript-eslint/no-floating-promises': 'off',
     '@typescript-eslint/consistent-type-assertions': 'error',
+    '@typescript-eslint/consistent-type-imports': 'error',
     '@typescript-eslint/consistent-type-definitions': ['error', 'type'],
     '@typescript-eslint/explicit-function-return-type': [
       'warn',
@@ -95,6 +96,7 @@ module.exports = {
     'guard-for-in': 'error',
     'id-blacklist': ['error', 'any', 'Number', 'number', 'String', 'string', 'Boolean', 'boolean', 'Undefined'],
     'id-match': 'error',
+    'import/no-duplicates': ['error', { 'prefer-inline': true }],
     'import/no-extraneous-dependencies': 'off',
     'import/order': 'off',
     'no-restricted-imports': [

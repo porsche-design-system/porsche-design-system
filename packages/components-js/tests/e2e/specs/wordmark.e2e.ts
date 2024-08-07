@@ -12,8 +12,8 @@ import {
   waitForStencilLifecycle,
 } from '../helpers';
 
-const getHost = (page: Page) => page.$('p-wordmark');
-const getLink = (page: Page) => page.$('p-wordmark a');
+const getHost = (page: Page) => page.locator('p-wordmark');
+const getLink = (page: Page) => page.locator('p-wordmark a');
 
 const initWordmark = (
   page: Page,
@@ -44,22 +44,22 @@ const initWordmark = (
 test.describe('with link', () => {
   test('should render <a> tag when href prop is defined', async ({ page }) => {
     await initWordmark(page);
-    const host = await getHost(page);
+    const host = getHost(page);
 
-    expect(await getLink(page)).toBe(null);
+    await expect(getLink(page)).toHaveCount(0);
 
     await setProperty(host, 'href', '#some-link');
     await waitForStencilLifecycle(page);
 
-    expect(await getLink(page)).not.toBe(null);
+    await expect(getLink(page)).not.toHaveCount(0);
   });
 
   test('should dispatch correct click events', async ({ page }) => {
     await initWordmark(page, { hasHref: true, isWrapped: true });
 
-    const wrapper = await page.$('div');
-    const host = await getHost(page);
-    const link = await getLink(page);
+    const wrapper = page.locator('div');
+    const host = getHost(page);
+    const link = getLink(page);
 
     await addEventListener(wrapper, 'click');
 
@@ -82,9 +82,9 @@ test.describe('with link', () => {
         hasFocusableElementAfter: true,
       });
 
-      const host = await getHost(page);
-      const before = await page.$('#before');
-      const after = await page.$('#after');
+      const host = getHost(page);
+      const before = page.locator('#before');
+      const after = page.locator('#after');
 
       await addEventListener(before, 'focus');
       await addEventListener(host, 'focus');
@@ -161,8 +161,8 @@ test.describe('with link', () => {
 
   test('should provide methods to focus & blur the element', async ({ page }) => {
     await initWordmark(page, { hasHref: true, isWrapped: true, hasFocusableElementBefore: true });
-    const host = await getHost(page);
-    const before = await page.$('#before');
+    const host = getHost(page);
+    const before = page.locator('#before');
     const wordmarkHasFocus = () => page.evaluate(() => document.activeElement === document.querySelector('p-wordmark'));
 
     await before.focus();

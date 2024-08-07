@@ -1,6 +1,5 @@
 import { isParentOfKind } from '../dom';
-import type { HTMLElementWithRequiredProp } from './isRequired';
-import { isRequired } from './isRequired';
+import { type HTMLElementWithRequiredProp, isRequired } from './isRequired';
 
 export const isParentFieldsetRequired = (element: HTMLElement): boolean => {
   return (

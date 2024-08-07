@@ -2,10 +2,10 @@ import { setContentWithDesignSystem, setProperty, waitForStencilLifecycle } from
 import { type Page, test, expect } from '@playwright/test';
 import type { FormState } from '@porsche-design-system/components/dist/types/bundle';
 
-const getHost = (page: Page) => page.$('p-text-field-wrapper');
-const getInput = (page: Page) => page.$('input');
-const getToggleOrClearButton = (page: Page) => page.$('p-text-field-wrapper p-button-pure button');
-const getMessage = (page: Page) => page.$('p-text-field-wrapper .message');
+const getHost = (page: Page) => page.locator('p-text-field-wrapper');
+const getInput = (page: Page) => page.locator('input');
+const getToggleOrClearButton = (page: Page) => page.locator('p-text-field-wrapper p-button-pure button');
+const getMessage = (page: Page) => page.locator('p-text-field-wrapper .message');
 
 type InitOptions = {
   useSlottedLabel?: boolean;
@@ -62,7 +62,7 @@ const initTextField = (page: Page, opts?: InitOptions): Promise<void> => {
 
 test.fixme('should expose correct initial accessibility tree', async ({ page }) => {
   await initTextField(page, { hasLabel: true });
-  const input = await getInput(page);
+  const input = getInput(page);
 
   // await expectA11yToMatchSnapshot(page, input);
 });
@@ -75,7 +75,7 @@ test.fixme('should expose correct accessibility tree with description text', asy
         <input type="text">
       </p-text-field-wrapper>`
   );
-  const input = await getInput(page);
+  const input = getInput(page);
 
   // await expectA11yToMatchSnapshot(page, input);
 });
@@ -88,8 +88,8 @@ test.fixme('should expose correct accessibility tree properties in error state',
           <input type="text">
         </p-text-field-wrapper>`
   );
-  const input = await getInput(page);
-  const message = await getMessage(page);
+  const input = getInput(page);
+  const message = getMessage(page);
 
   // await expectA11yToMatchSnapshot(page, input, { message: 'Of Input' });
   // await expectA11yToMatchSnapshot(page, message, { message: 'Of Message', interestingOnly: false });
@@ -98,14 +98,14 @@ test.fixme('should expose correct accessibility tree properties in error state',
 test.fixme('should add/remove accessibility tree properties if state changes programmatically', async ({ page }) => {
   await initTextField(page, { hasLabel: true });
 
-  const host = await getHost(page);
+  const host = getHost(page);
 
   await setProperty(host, 'state', 'error');
   await setProperty(host, 'message', 'Some error message.');
   await waitForStencilLifecycle(page);
 
-  const input = await getInput(page);
-  const message = await getMessage(page);
+  const input = getInput(page);
+  const message = getMessage(page);
 
   // await expectA11yToMatchSnapshot(page, input, { message: 'Of Input when state = error' });
   // await expectA11yToMatchSnapshot(page, message, {
@@ -132,7 +132,7 @@ test.fixme('should add/remove accessibility tree properties if state changes pro
 
 test.fixme('should expose correct accessibility tree when password visibility button is clicked', async ({ page }) => {
   await initTextField(page, { type: 'password', hasLabel: true });
-  const button = await getToggleOrClearButton(page);
+  const button = getToggleOrClearButton(page);
 
   // await expectA11yToMatchSnapshot(page, button, { message: 'Initially' });
 
@@ -149,12 +149,12 @@ test.fixme('should expose correct accessibility tree when password visibility bu
 
 test.fixme('should expose correct accessibility tree for input type=search with value', async ({ page }) => {
   await initTextField(page, { type: 'search', hasLabel: true });
-  const host = await getHost(page);
-  const input = await getInput(page);
+  const host = getHost(page);
+  const input = getInput(page);
 
   await setProperty(input, 'value', 'value');
   await waitForStencilLifecycle(page);
 
-  const button = await getToggleOrClearButton(page);
+  const button = getToggleOrClearButton(page);
   // await expectA11yToMatchSnapshot(page, host, { interestingOnly: false });
 });

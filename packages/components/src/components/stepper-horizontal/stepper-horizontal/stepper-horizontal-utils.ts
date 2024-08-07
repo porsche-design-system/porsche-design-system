@@ -1,7 +1,7 @@
 import { getTagNameWithoutPrefix, throwException } from '../../../utils';
 import type { Theme } from '../../../types';
 import type { StepperHorizontalItemInternalHTMLProps } from '../stepper-horizontal-item/stepper-horizontal-item-utils';
-import { StepperHorizontalItem } from '../stepper-horizontal-item/stepper-horizontal-item';
+import type { StepperHorizontalItem } from '../stepper-horizontal-item/stepper-horizontal-item';
 import { forceUpdate } from '@stencil/core';
 
 export const STEPPER_HORIZONTAL_SIZES = ['small', 'medium'] as const;

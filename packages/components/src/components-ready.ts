@@ -1,4 +1,5 @@
 import type { HostElement } from '@stencil/core/internal';
+import type { PorscheDesignSystem } from './types';
 
 type PromiseResolve = (amount: number) => void;
 
@@ -30,10 +31,10 @@ export const componentsReady = (el: HTMLElement = document.body): Promise<number
 const isDocumentReady = (): boolean => document.readyState === 'complete';
 
 const isDesignSystemReady = (): Promise<void> => {
-  if (document.porscheDesignSystem?.[ROLLUP_REPLACE_VERSION]?.isReady) {
-    return document.porscheDesignSystem[ROLLUP_REPLACE_VERSION].isReady();
+  if ((document.porscheDesignSystem?.[ROLLUP_REPLACE_VERSION as keyof PorscheDesignSystem] as any)?.isReady) {
+    return (document.porscheDesignSystem[ROLLUP_REPLACE_VERSION as keyof PorscheDesignSystem] as any).isReady();
   } else {
-    // we are to early and the design system isn't initialized, yet
+    // we are too early and the design system isn't initialized, yet
     // so we create a proxy to detect when the relevant version is set on document.porscheDesignSystem
     // and then wait for its isReady() promise to resolve
     // this can happen in tests
@@ -42,7 +43,7 @@ const isDesignSystemReady = (): Promise<void> => {
 
     const proxyHandler = {
       // eslint-disable-next-line prefer-arrow/prefer-arrow-functions
-      set(_, prop, value: { isReady: () => Promise<void> }) {
+      set(_: any, prop: string, value: { isReady: () => Promise<void> }) {
         if (prop === ROLLUP_REPLACE_VERSION) {
           value.isReady().then(promiseResolve);
         }

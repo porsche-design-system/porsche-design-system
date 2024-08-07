@@ -110,7 +110,7 @@ export const getMatchingOptionMaps = (options: OptionMap[], searchString: string
   return lowerCaseSearchString && options.filter((item) => item.value.toLowerCase() === lowerCaseSearchString);
 };
 
-export const getFirstMatchingOptionMapIndex = (options: OptionMap[], key: string): number => {
+export const getFirstMatchingOptionMapIndex = (options: OptionMap[], key: string): number | undefined => {
   // TODO: what about other characters?
   if ([...'abcdefghijklmnopqrstuvwxyzäöüß1234567890'].includes(key)) {
     const lowerCaseSearchString = key.toLowerCase();
@@ -119,11 +119,14 @@ export const getFirstMatchingOptionMapIndex = (options: OptionMap[], key: string
     // jump to last item if no match is found
     return firstMatchingIndex >= 0 ? firstMatchingIndex : options.length - 1;
   }
+  return undefined;
 };
 
 export const setHighlightedFirstMatchingOptionMaps = (options: OptionMap[], key: string): OptionMap[] => {
   const targetIndex = getFirstMatchingOptionMapIndex(options, key);
-  return targetIndex >= 0 ? options.map((item, idx) => ({ ...item, highlighted: idx === targetIndex })) : options;
+  return targetIndex && targetIndex >= 0
+    ? options.map((item, idx) => ({ ...item, highlighted: idx === targetIndex }))
+    : options;
 };
 
 export const setFilteredOptionMaps = (options: OptionMap[], searchString: string): OptionMap[] => {
@@ -156,6 +159,7 @@ export const getNewOptionMapIndex = (options: OptionMap[], direction: DropdownDi
   const validMax = validItems.length - 1;
   // prob. needs to be <= 0
   if (validMax < 0) {
+    // @ts-expect-error: Not all code paths return a value
     return;
   }
 

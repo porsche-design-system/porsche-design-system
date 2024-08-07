@@ -4,7 +4,7 @@ import { setContentWithDesignSystem } from '../helpers';
 
 const dropdownSelector = 'p-select-wrapper p-select-wrapper-dropdown';
 
-const getDropdown = (page: Page) => page.$(dropdownSelector);
+const getDropdown = (page: Page) => page.locator(dropdownSelector);
 
 type InitOptions = {
   amount?: 3 | 5;
@@ -66,13 +66,13 @@ test.use({
 test('should not render dropdown if touch support is detected', async ({ page }) => {
   await initSelect(page);
 
-  const dropdown = await getDropdown(page);
-  expect(dropdown).toBeNull();
+  const dropdown = getDropdown(page);
+  await expect(dropdown).toHaveCount(0);
 });
 
 test('should not render dropdown if touch support is detected and native is set to false', async ({ page }) => {
   await initSelect(page, { isNative: false });
 
-  const dropdown = await getDropdown(page);
-  expect(dropdown).toBeNull();
+  const dropdown = getDropdown(page);
+  await expect(dropdown).toHaveCount(0);
 });

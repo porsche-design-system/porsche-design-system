@@ -1,5 +1,4 @@
-import type { ElementHandle, Page } from 'playwright';
-import { expect, test } from '@playwright/test';
+import { expect, type Locator, test, type Page } from '@playwright/test';
 import {
   CSS_ANIMATION_DURATION,
   getAttribute,
@@ -41,26 +40,26 @@ const initScroller = (page: Page, opts?: InitOptions) => {
   return setContentWithDesignSystem(page, isWrapped ? `<div style="width: 200px">${content}</div>` : content);
 };
 
-const getHost = (page: Page) => page.$('p-scroller');
-const getAllButtons = (page: Page) => page.$$('button');
-const getScrollArea = (page: Page) => page.$('p-scroller .scroll-area');
+const getHost = (page: Page) => page.locator('p-scroller');
+const getAllButtons = (page: Page) => page.locator('button').all();
+const getScrollArea = (page: Page) => page.locator('p-scroller .scroll-area');
 const getActionContainers = async (page: Page) => {
-  const actionPrev = await page.$('p-scroller .action-prev');
-  const actionNext = await page.$('p-scroller .action-next');
+  const actionPrev = page.locator('p-scroller .action-prev');
+  const actionNext = page.locator('p-scroller .action-next');
   return { actionPrev, actionNext };
 };
 const getPrevNextButton = async (page: Page) => {
-  const prevButton = await page.$('p-scroller .action-prev button');
-  const nextButton = await page.$('p-scroller .action-next button');
+  const prevButton = page.locator('p-scroller .action-prev button');
+  const nextButton = page.locator('p-scroller .action-next button');
   return { prevButton, nextButton };
 };
-const getScrollLeft = (element: ElementHandle<HTMLElement | SVGElement>) => getProperty(element, 'scrollLeft');
-const getOffsetWidth = (element: ElementHandle<HTMLElement | SVGElement>) => getProperty(element, 'offsetWidth');
+const getScrollLeft = (element: Locator) => getProperty(element, 'scrollLeft');
+const getOffsetWidth = (element: Locator) => getProperty(element, 'offsetWidth');
 
 const getScrollDistance = (page: Page, scrollAreaWidth: number): number =>
   Math.round(scrollAreaWidth * SCROLL_PERCENTAGE);
 
-const clickElement = async (page: Page, el: ElementHandle) => {
+const clickElement = async (page: Page, el: Locator) => {
   await el.click();
   await waitForStencilLifecycle(page);
   await sleep(CSS_ANIMATION_DURATION);
@@ -79,7 +78,7 @@ test.describe('scrolling', () => {
   test('should have correct initial scroll position when scrollToPosition is set', async ({ page }) => {
     await initScroller(page, { isWrapped: true, scrollToPosition: { scrollPosition: 50 } });
 
-    expect(await getScrollLeft(await getScrollArea(page))).toBe(50);
+    expect(await getScrollLeft(getScrollArea(page))).toBe(50);
   });
 });
 
@@ -103,9 +102,9 @@ test.describe('next/prev buttons', () => {
   test('should scroll by 20% on button prev/next click', async ({ page }) => {
     await initScroller(page, { isWrapped: true });
     const { prevButton, nextButton } = await getPrevNextButton(page);
-    const scrollArea = await getScrollArea(page);
+    const scrollArea = getScrollArea(page);
     const scrollAreaWidth = await getOffsetWidth(scrollArea);
-    const scrollDistance = await getScrollDistance(page, +scrollAreaWidth);
+    const scrollDistance = getScrollDistance(page, +scrollAreaWidth);
 
     expect(await getScrollLeft(scrollArea)).toEqual(0);
 
@@ -126,7 +125,7 @@ test.describe('next/prev buttons', () => {
     await initScroller(page, { amount: 6, isWrapped: true });
     const [firstButton] = await getAllButtons(page);
     const { nextButton } = await getPrevNextButton(page);
-    const scrollArea = await getScrollArea(page);
+    const scrollArea = getScrollArea(page);
 
     expect(await getScrollLeft(scrollArea)).toEqual(0);
 
@@ -236,7 +235,7 @@ test.describe('next/prev buttons', () => {
       );
     };
 
-    // There seems to be an rounding issue that causes the element inside scroller to exceed the scroll container,
+    // There seems to be a rounding issue that causes the element inside scroller to exceed the scroll container,
     // therefore the trigger gets pushed outside and the gradient is always shown.
     // To ensure the element exceeds the width of the wrapping div we need to assign static width values.
     const steps = Array.from(Array(10)).map((_, index) => parseFloat(`150.${index}`));
@@ -286,7 +285,7 @@ test.describe('lifecycle', () => {
 
   test('should work without unnecessary round trips on prop change', async ({ page }) => {
     await initScroller(page, { amount: 3, tag: 'button' });
-    const host = await getHost(page);
+    const host = getHost(page);
 
     await setProperty(host, 'theme', 'dark');
     await waitForStencilLifecycle(page);

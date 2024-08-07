@@ -1,4 +1,4 @@
-import { JssStyle } from 'jss';
+import type { JssStyle } from 'jss';
 
 // Used for elements that must overflow `overflow:hidden` containers, are positioned absolute and wrapped within a native `popover` element.
 export const getPopoverResetJssStyle = (): JssStyle => {

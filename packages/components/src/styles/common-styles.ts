@@ -1,8 +1,7 @@
 import type { Theme } from '../types';
 import type { JssStyle } from 'jss';
 import type { PropertiesHyphen } from 'csstype';
-import type { ThemedColors } from './';
-import { getThemedColors, prefersColorSchemeDarkMediaQuery } from './';
+import { type ThemedColors, getThemedColors, prefersColorSchemeDarkMediaQuery } from './';
 import {
   borderWidthBase,
   frostedGlassStyle,
@@ -59,7 +58,8 @@ export const addImportantToEachRule = (input: JssStyle): JssStyle => {
     (result, [key, value]) =>
       value === null
         ? result
-        : ((result[key] =
+        : // @ts-expect-error: Type string can't be used to index type JssStyle
+          ((result[key] =
             typeof value === 'object' ? addImportantToEachRule(value as JssStyle) : addImportantToRule(value)),
           result),
     {} as JssStyle

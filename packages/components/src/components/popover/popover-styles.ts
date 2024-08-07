@@ -1,5 +1,4 @@
-import type { PopoverDirection } from './popover-utils';
-import { safeZonePx } from './popover-utils';
+import { type PopoverDirection, safeZonePx } from './popover-utils';
 import type { JssStyle } from 'jss';
 import {
   borderRadiusSmall,

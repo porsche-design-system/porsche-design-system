@@ -1,4 +1,4 @@
-import { getThemedColors } from './';
+import { type ThemedColors, getThemedColors } from './';
 import type { Theme } from '@porsche-design-system/styles';
 import type { FormState } from '../utils/form/form-state';
 
@@ -10,7 +10,7 @@ type ThemedFormStateColors = {
 export const getThemedFormStateColors = (theme: Theme, state: FormState): ThemedFormStateColors => {
   const themedColors = getThemedColors(theme);
   return {
-    formStateColor: themedColors[`${state}Color`],
-    formStateHoverColor: themedColors[`${state}ColorDarken`],
+    formStateColor: themedColors[`${state}Color` as keyof ThemedColors],
+    formStateHoverColor: themedColors[`${state}ColorDarken` as keyof ThemedColors],
   };
 };

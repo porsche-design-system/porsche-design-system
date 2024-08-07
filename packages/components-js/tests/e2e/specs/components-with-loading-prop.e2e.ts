@@ -1,5 +1,5 @@
-import type { ElementHandle, Page } from 'playwright';
-import { expect, test } from '@playwright/test';
+import type { Page } from 'playwright';
+import { expect, Locator, test } from '@playwright/test';
 import { TAG_NAMES, type TagName } from '@porsche-design-system/shared';
 import { getComponentMeta } from '@porsche-design-system/component-meta';
 import {
@@ -13,12 +13,12 @@ const tagNamesWithLoadingProp: TagName[] = TAG_NAMES.filter((tagName) => getComp
 
 for (const tagName of tagNamesWithLoadingProp) {
   test.describe(tagName, () => {
-    const getLoadingStatus = async (page: Page): Promise<ElementHandle> => {
+    const getLoadingStatus = async (page: Page): Promise<Locator> => {
       const [nestedComponentWithLoadingProp] = tagNamesWithLoadingProp.filter((tagNameWithLoadingProp) =>
         getComponentMeta(tagName).nestedComponents?.includes(tagNameWithLoadingProp)
       );
 
-      return await page.$(
+      return page.locator(
         nestedComponentWithLoadingProp
           ? `${tagName} ${nestedComponentWithLoadingProp} .loading` // e.g. for p-button-tile
           : `${tagName} .loading`
@@ -41,7 +41,7 @@ for (const tagName of tagNamesWithLoadingProp) {
       test('should render loading finished message when loading is set to false', async ({ page }) => {
         await setContentWithDesignSystem(page, markup);
 
-        const host = await page.$(tagName);
+        const host = page.locator(tagName);
         await setProperty(host, 'loading', false);
         await waitForStencilLifecycle(page);
 
@@ -61,7 +61,7 @@ for (const tagName of tagNamesWithLoadingProp) {
       test('should render loading message when loading is set to true', async ({ page }) => {
         await setContentWithDesignSystem(page, markup);
 
-        const host = await page.$(tagName);
+        const host = page.locator(tagName);
         await setProperty(host, 'loading', true);
         await waitForStencilLifecycle(page);
 
@@ -71,7 +71,7 @@ for (const tagName of tagNamesWithLoadingProp) {
       test('should render loading finished message when loading is set to true, then to false', async ({ page }) => {
         await setContentWithDesignSystem(page, markup);
 
-        const host = await page.$(tagName);
+        const host = page.locator(tagName);
         await setProperty(host, 'loading', true);
         await waitForStencilLifecycle(page);
 

@@ -9,9 +9,17 @@ import {
   warnIfDeprecatedPropValueIsUsed,
 } from '../../utils';
 import type { BreakpointCustomizable, PropTypes, Theme } from '../../types';
-import type { DividerColor, DividerColorDeprecated, DividerDirection, DividerOrientation } from './divider-utils';
-import { DIVIDER_COLORS, DIVIDER_DIRECTIONS } from './divider-utils';
+import {
+  type DividerColor,
+  type DividerColorDeprecated,
+  type DividerDirection,
+  type DividerOrientation,
+  DIVIDER_COLORS,
+  DIVIDER_DIRECTIONS,
+} from './divider-utils';
 import { getComponentCss } from './divider-styles';
+
+type DeprecationMapType = Record<DividerColorDeprecated, Exclude<DividerColor, DividerColorDeprecated>>;
 
 const propTypes: PropTypes<typeof Divider> = {
   color: AllowedTypes.oneOf<DividerColor>(DIVIDER_COLORS),
@@ -47,7 +55,7 @@ export class Divider {
 
   public render(): JSX.Element {
     validateProps(this, propTypes);
-    const deprecationMap: Record<DividerColorDeprecated, Exclude<DividerColor, DividerColorDeprecated>> = {
+    const deprecationMap: DeprecationMapType = {
       'neutral-contrast-low': 'contrast-low',
       'neutral-contrast-medium': 'contrast-medium',
       'neutral-contrast-high': 'contrast-high',
@@ -61,7 +69,10 @@ export class Divider {
     attachComponentCss(
       this.host,
       getComponentCss,
-      (deprecationMap[this.color] || this.color) as Exclude<DividerColor, DividerColorDeprecated>,
+      (deprecationMap[this.color as keyof DeprecationMapType] || this.color) as Exclude<
+        DividerColor,
+        DividerColorDeprecated
+      >,
       this.orientation || this.direction,
       this.theme
     );

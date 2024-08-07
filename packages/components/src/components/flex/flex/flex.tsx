@@ -1,13 +1,11 @@
 import { Component, Element, h, type JSX, Prop } from '@stencil/core';
-import type {
-  FlexAlignContent,
-  FlexAlignItems,
-  FlexDirection,
-  FlexInline,
-  FlexJustifyContent,
-  FlexWrap,
-} from './flex-utils';
 import {
+  type FlexAlignContent,
+  type FlexAlignItems,
+  type FlexDirection,
+  type FlexInline,
+  type FlexJustifyContent,
+  type FlexWrap,
   deprecatedFlexComponentMessage,
   FLEX_ALIGN_CONTENTS,
   FLEX_ALIGN_ITEMS,

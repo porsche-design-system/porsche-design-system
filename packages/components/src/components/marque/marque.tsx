@@ -1,6 +1,13 @@
 import type { PropTypes, SelectedAriaAttributes } from '../../types';
-import type { MarqueAriaAttribute, MarqueVariant, MarqueTarget } from './marque-utils';
-import { buildImgSrc, buildSrcSet, getInnerManifest, MARQUE_VARIANTS } from './marque-utils';
+import {
+  type MarqueAriaAttribute,
+  type MarqueVariant,
+  type MarqueTarget,
+  buildImgSrc,
+  buildSrcSet,
+  getInnerManifest,
+  MARQUE_VARIANTS,
+} from './marque-utils';
 import { Component, Element, h, Host, type JSX, Prop } from '@stencil/core';
 import {
   AllowedTypes,
@@ -13,8 +20,7 @@ import {
 } from '../../utils';
 import { breakpoint } from '@porsche-design-system/styles';
 import { getComponentCss } from './marque-styles';
-import type { MarqueSize } from './marque-size';
-import { MARQUE_SIZES } from './marque-size';
+import { type MarqueSize, MARQUE_SIZES } from './marque-size';
 
 const propTypes: PropTypes<typeof Marque> = {
   trademark: AllowedTypes.boolean,

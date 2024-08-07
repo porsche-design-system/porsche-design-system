@@ -1,6 +1,5 @@
 import type { TagName } from '@porsche-design-system/shared';
-import type { ClassType } from './tag-names-constructor-map';
-import { TAG_NAMES_CONSTRUCTOR_MAP } from './tag-names-constructor-map';
+import { type ClassType, TAG_NAMES_CONSTRUCTOR_MAP } from './tag-names-constructor-map';
 
 export const componentFactory = (tagName: TagName): ClassType => {
   const component = new TAG_NAMES_CONSTRUCTOR_MAP[tagName]();

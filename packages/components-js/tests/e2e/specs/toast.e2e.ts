@@ -65,39 +65,39 @@ const waitForToastTimeout = async (page: Page): Promise<void> => {
 
 const waitForAnimationFinish = () => sleep(ANIMATION_DURATION);
 
-const getHost = (page: Page) => page.$('p-toast');
-const getToastItem = (page: Page) => page.$('p-toast p-toast-item');
-const getCloseButton = (page: Page) => page.$('p-toast p-toast-item p-button-pure');
+const getHost = (page: Page) => page.locator('p-toast');
+const getToastItem = (page: Page) => page.locator('p-toast p-toast-item');
+const getCloseButton = (page: Page) => page.locator('p-toast p-toast-item p-button-pure');
 
 for (const state of TOAST_STATES) {
   test(`should forward state: ${state} to p-toast-item`, async ({ page }) => {
     await initToastWithToastItem(page, { state });
 
-    const toastItem = await getToastItem(page);
+    const toastItem = getToastItem(page);
     expect(await getProperty(toastItem, 'state')).toBe(state);
   });
 }
 test('should close toast-item via close button click', async ({ page }) => {
   await initToastWithToastItem(page);
 
-  expect(await getToastItem(page)).toBeDefined();
+  expect(getToastItem(page)).toBeDefined();
 
-  const closeButton = await getCloseButton(page);
+  const closeButton = getCloseButton(page);
   await closeButton.click();
   await waitForAnimationFinish();
   await waitForStencilLifecycle(page);
 
-  expect(await getToastItem(page)).toBeNull();
+  await expect(getToastItem(page)).toHaveCount(0);
 });
 
 test(`should automatically close toast-item after ${TOAST_TIMEOUT_DURATION_OVERRIDE} seconds`, async ({ page }) => {
   await initToastWithToastItem(page);
 
-  expect(await getToastItem(page)).toBeDefined();
+  expect(getToastItem(page)).toBeDefined();
 
   await waitForToastTimeout(page);
 
-  expect(await getToastItem(page)).toBeNull();
+  await expect(getToastItem(page)).toHaveCount(0);
 });
 
 test('should always show the latest toast message and clear queue immediately if a new message was added', async ({
@@ -107,11 +107,11 @@ test('should always show the latest toast message and clear queue immediately if
   await addMessage(page, { text: '2' });
   await waitForAnimationFinish();
 
-  expect(await getProperty(await getToastItem(page), 'text')).toBe('2');
+  expect(await getProperty(getToastItem(page), 'text')).toBe('2');
 
   await addMessage(page, { text: '3' });
   await waitForAnimationFinish();
-  expect(await getProperty(await getToastItem(page), 'text')).toBe('3');
+  expect(await getProperty(getToastItem(page), 'text')).toBe('3');
 });
 
 test.describe('lifecycle', () => {
@@ -141,7 +141,7 @@ test.describe('lifecycle', () => {
   test('should not update on theme prop change', async ({ page }) => {
     await initToast(page);
 
-    const host = await getHost(page);
+    const host = getHost(page);
     await setProperty(host, 'theme', 'dark');
     await waitForStencilLifecycle(page);
     const status = await getLifecycleStatus(page);
@@ -155,7 +155,7 @@ test.describe('lifecycle', () => {
 test.describe('toast-item', () => {
   test('should render close button with type of "button"', async ({ page }) => {
     await initToastWithToastItem(page);
-    const closeBtnReal = await page.$('p-toast p-toast-item p-button-pure button');
+    const closeBtnReal = page.locator('p-toast p-toast-item p-button-pure button');
     expect(await getAttribute(closeBtnReal, 'type')).toBe('button');
   });
 
@@ -163,10 +163,11 @@ test.describe('toast-item', () => {
     test('should have animation', async ({ page }) => {
       await initToastWithToastItem(page, {}, { withAnimation: true });
       await waitForAnimationFinish(); // 600ms
-      const toastItem = await getToastItem(page);
+      const toastItem = getToastItem(page);
       const animationIn = await getElementStyle(toastItem, 'animation');
 
       expect(animationIn, 'for animationIn').toBe('0.6s cubic-bezier(0, 0, 0.2, 1) 0s 1 normal forwards running in');
+      await expect(toastItem).toHaveCount(1);
 
       // toast stay open for a total of 1000ms, we need to hit the middle of closing animation
       await waitForAnimationFinish();
@@ -175,11 +176,7 @@ test.describe('toast-item', () => {
       expect(animationOut, 'for animationOut').toBe(
         '0.4s cubic-bezier(0.4, 0, 0.5, 1) 0s 1 normal forwards running out'
       );
-
-      await waitForAnimationFinish(); // wait another 600ms to be sure animation has finished
-      const animationClear = await getElementStyle(toastItem, 'animation');
-
-      expect(animationClear, 'for animationClear').toBe('');
+      await expect(toastItem).toHaveCount(0);
     });
   });
 });

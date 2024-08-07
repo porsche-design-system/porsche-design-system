@@ -1,8 +1,8 @@
 import { hasWindow } from './has-window';
 
-export const isTouchDevice = (): boolean => {
+export const isTouchDevice = (): boolean | undefined => {
   if (!hasWindow) {
-    return;
+    return undefined;
   }
   return !!('ontouchstart' in window || window.navigator.maxTouchPoints > 0);
 };

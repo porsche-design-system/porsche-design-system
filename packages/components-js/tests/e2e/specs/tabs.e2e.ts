@@ -1,5 +1,4 @@
-import type { ElementHandle, Page } from 'playwright';
-import { expect, test } from '@playwright/test';
+import { expect, Locator, test, type Page } from '@playwright/test';
 import {
   addEventListener,
   getAttribute,
@@ -8,7 +7,7 @@ import {
   getLifecycleStatus,
   getProperty,
   initConsoleObserver,
-  reattachElementHandle,
+  reattachElement,
   setContentWithDesignSystem,
   setProperty,
   sleep,
@@ -28,13 +27,12 @@ const initTabs = (page: Page, opts?: { amount?: number; activeTabIndex?: number 
   return setContentWithDesignSystem(page, content);
 };
 
-const getHost = (page: Page) => page.$('p-tabs');
-const getAllTabsItems = (page: Page) => page.$$('p-tabs-item');
-const getTabsBar = (page: Page) => page.$('p-tabs p-tabs-bar');
-const getAllTabs = async (page: Page) => (await getTabsBar(page)).$$('button[role="tab"]');
-const getHiddenAttribute = (element: ElementHandle<HTMLElement | SVGElement>) => getAttribute(element, 'hidden');
-const isHidden = async (element: ElementHandle<HTMLElement | SVGElement>): Promise<boolean> =>
-  (await getHiddenAttribute(element)) === '';
+const getHost = (page: Page) => page.locator('p-tabs');
+const getAllTabsItems = (page: Page) => page.locator('p-tabs-item').all();
+const getTabsBar = (page: Page) => page.locator('p-tabs p-tabs-bar').first();
+const getAllTabs = async (page: Page) => getTabsBar(page).locator('button[role="tab"]').all();
+const getHiddenAttribute = (locator: Locator) => getAttribute(locator, 'hidden');
+const isHidden = async (locator: Locator): Promise<boolean> => (await getHiddenAttribute(locator)) === '';
 
 test('should render', async ({ page }) => {
   await initTabs(page);
@@ -79,7 +77,7 @@ test('should render updated tabs when tab label is changed', async ({ page }) =>
 
 test('should respect changes to activeTabIndex', async ({ page }) => {
   await initTabs(page);
-  const host = await getHost(page);
+  const host = getHost(page);
   const [firstTabsItem, secondTabsItem, thirdTabsItem] = await getAllTabsItems(page);
 
   const setActiveTabIndex = async (index: number) => {
@@ -213,12 +211,12 @@ test.describe('text selection', () => {
 test.describe('events', () => {
   test('should trigger tabChange event on tab click', async ({ page }) => {
     await initTabs(page, { activeTabIndex: 1 }); // start with other index than first
-    const host = await getHost(page);
+    const host = getHost(page);
     const [firstButton, secondButton, thirdButton] = await getAllTabs(page);
     await addEventListener(host, 'tabChange');
 
     // Remove and re-attach component to check if events are duplicated / fire at all
-    await reattachElementHandle(host);
+    await reattachElement(host);
 
     await firstButton.click();
     expect((await getEventSummary(host, 'tabChange')).counter).toBe(1);
@@ -272,7 +270,7 @@ test.describe('events', () => {
 
   test('should emit both tabChange and update event', async ({ page }) => {
     await initTabs(page);
-    const host = await getHost(page);
+    const host = getHost(page);
 
     await addEventListener(host, 'tabChange');
     await addEventListener(host, 'update');
@@ -332,7 +330,7 @@ test.describe('lifecycle', () => {
 
   test('should work without unnecessary round trips on prop change', async ({ page }) => {
     await initTabs(page, { amount: 3 });
-    const host = await getHost(page);
+    const host = getHost(page);
 
     await setProperty(host, 'activeTabIndex', '2');
     await waitForStencilLifecycle(page);

@@ -1,9 +1,8 @@
-import type { ConsoleMessage, ElementHandle, Page } from 'playwright';
+import type { ConsoleMessage, Page } from 'playwright';
 import { expect, type Locator } from '@playwright/test';
 import { waitForComponentsReady } from './stencil';
 import type { TagName } from '@porsche-design-system/shared';
 import { getComponentMeta } from '@porsche-design-system/component-meta';
-import { format } from 'prettier';
 import { getInitialStyles } from '@porsche-design-system/components-js/partials';
 
 // TODO: temporary workaround, because of https://github.com/microsoft/playwright/issues/17075
@@ -133,55 +132,43 @@ export const setContentWithDesignSystem = async (page: Page, content: string, op
   }
 };
 
-export const getShadowRoot = async (
-  element: ElementHandle<HTMLElement | SVGElement>
-): Promise<ElementHandle<ShadowRoot>> => {
-  return (await element.evaluateHandle((el) => el.shadowRoot)).asElement();
-};
-
 const containsCapitalChar = (key: string): boolean => /[A-Z]/.test(key);
 
-export const getAttribute = (element: ElementHandle<HTMLElement | SVGElement>, attribute: string): Promise<string> => {
+export const getAttribute = (element: Locator, attribute: string): Promise<string> => {
   return element.evaluate((el, attr: string) => el.getAttribute(attr), attribute);
 };
 
-export const setAttribute = async (
-  element: ElementHandle<HTMLElement | SVGElement>,
-  key: string,
-  value: string
-): Promise<void> => {
+export const setAttribute = async (element: Locator, key: string, value: string): Promise<void> => {
   if (containsCapitalChar(key)) {
     console.warn(`setAttribute: '${key}' contains a capital character which is most likely wrong`);
   }
   await element.evaluate((el, { key, value }) => el.setAttribute(key, value), { key, value });
 };
 
-export const removeAttribute = async (element: ElementHandle<HTMLElement | SVGElement>, key: string): Promise<void> => {
+export const removeAttribute = async (element: Locator, key: string): Promise<void> => {
   if (containsCapitalChar(key)) {
     console.warn(`removeAttribute: '${key}' contains a capital character which is most likely wrong`);
   }
   await element.evaluate((el, key) => el.removeAttribute(key), key);
 };
 
-export const getProperty = async <T>(element: ElementHandle<T> | Locator, prop: string): Promise<keyof T> => {
+export const getProperty = async <T>(element: Locator, prop: string): Promise<keyof T> => {
   return element.evaluate((el, prop: string) => el[prop], prop);
 };
 
 export const setProperty = async <T>(
-  element: ElementHandle<HTMLElement | SVGElement>,
+  element: Locator,
   key: string,
   value: string | boolean | number | T
 ): Promise<void> => {
   await element.evaluate((el, { key, value }) => (el[key] = value), { key, value } as any);
 };
 
-export const getCssClasses = async (element: ElementHandle<HTMLElement | SVGElement>): Promise<string> => {
+export const getCssClasses = async (element: Locator): Promise<string> => {
   return Object.values(await getProperty(element, 'classList')).join(' ');
 };
 
-export const getActiveElementTagNameInShadowRoot = async (
-  element: ElementHandle<HTMLElement | SVGElement>
-): Promise<string> => {
+export const getActiveElementTagNameInShadowRoot = async (element: Locator): Promise<string> => {
   return element.evaluate((el) => {
     try {
       return el.shadowRoot.activeElement.tagName;
@@ -193,9 +180,7 @@ export const getActiveElementTagNameInShadowRoot = async (
   });
 };
 
-export const getActiveElementClassNameInShadowRoot = (
-  element: ElementHandle<HTMLElement | SVGElement>
-): Promise<string> => {
+export const getActiveElementClassNameInShadowRoot = (element: Locator): Promise<string> => {
   return element.evaluate((el) => {
     try {
       return el.shadowRoot.activeElement.className;
@@ -244,7 +229,7 @@ type GetElementStyleOptions = {
 };
 
 export const getElementStyle = (
-  element: ElementHandle<HTMLElement | SVGElement>,
+  element: Locator,
   property: keyof CSSStyleDeclaration,
   opts?: GetElementStyleOptions
 ): Promise<string> => {
@@ -265,10 +250,7 @@ export const getElementStyle = (
   );
 };
 
-export const getElementIndex = (
-  element: ElementHandle<HTMLElement | SVGElement | ShadowRoot>,
-  selector: string
-): Promise<number> => {
+export const getElementIndex = (element: Locator, selector: string): Promise<number> => {
   return element.evaluate(async (el, selector: string): Promise<number> => {
     let option: ChildNode = el.querySelector(selector);
     let pos = 0;
@@ -279,14 +261,16 @@ export const getElementIndex = (
   }, selector);
 };
 
-export const getElementInnerText = (element: ElementHandle): Promise<string> =>
+export const getElementInnerText = (element: Locator): Promise<string> =>
   element.evaluate((el) => (el as HTMLElement).innerText);
 
-export const getElementPositions = (page: Page, element: ElementHandle<HTMLElement | SVGElement>): Promise<DOMRect> =>
-  page.evaluate((element) => element.getBoundingClientRect(), element);
+export const getElementPositions = async (page: Page, element: Locator): Promise<DOMRect> => {
+  const elementHandle = await element.elementHandle();
+  return page.evaluate((el) => el.getBoundingClientRect(), elementHandle);
+};
 
-export const reattachElementHandle = (handle: ElementHandle<HTMLElement | SVGElement>): Promise<void> => {
-  return handle.evaluate((el) => {
+export const reattachElement = (locator: Locator): Promise<void> => {
+  return locator.evaluate((el) => {
     el.remove();
     document.body.appendChild(el);
   });
@@ -300,8 +284,7 @@ export const enableBrowserLogging = (page: Page): void => {
 
 export const waitForInputTransition = (page: Page): Promise<void> => new Promise((resolve) => setTimeout(resolve, 250));
 
-export const hasFocus = (element: ElementHandle<HTMLElement | SVGElement>): Promise<boolean> =>
-  element.evaluate((el) => document.activeElement === el);
+export const hasFocus = (element: Locator): Promise<boolean> => element.evaluate((el) => document.activeElement === el);
 
 const consoleMessages: ConsoleMessage[] = [];
 
@@ -412,15 +395,7 @@ export const buildDefaultComponentMarkup = (tagName: TagName): string => {
   return buildParentMarkup(componentMarkup, requiredParent);
 };
 
-export const expectShadowDomToMatchSnapshot = async (host: ElementHandle<HTMLElement | SVGElement>): Promise<void> => {
-  const html = await host.evaluate((el) => el.shadowRoot.innerHTML);
-  const prettyHtml = await format(html.replace(/>/g, '>\n'), { parser: 'html' });
-
-  expect(prettyHtml).not.toContain('[object Object]');
-  expect(prettyHtml).toMatchSnapshot();
-};
-
-export const expectToSkipFocusOnComponent = async (page: Page, component: ElementHandle, before: ElementHandle) => {
+export const expectToSkipFocusOnComponent = async (page: Page, component: Locator, before: Locator) => {
   await before.focus();
 
   await page.keyboard.press('Tab');
@@ -434,12 +409,12 @@ export const expectToSkipFocusOnComponent = async (page: Page, component: Elemen
   expect(await getActiveElementId(page)).toBe('before');
 };
 
-export const getScrollLeft = (element: ElementHandle<HTMLElement | SVGElement>): Promise<number> =>
-  getProperty(element, 'scrollLeft') as unknown as Promise<number>;
-export const getOffsetLeft = (element: ElementHandle<HTMLElement | SVGElement>): Promise<number> =>
-  getProperty(element, 'offsetLeft') as unknown as Promise<number>;
-export const getOffsetWidth = (element: ElementHandle<HTMLElement | SVGElement>): Promise<number> =>
-  getProperty(element, 'offsetWidth') as unknown as Promise<number>;
+export const getScrollLeft = (locator: Locator): Promise<number> =>
+  getProperty(locator, 'scrollLeft') as unknown as Promise<number>;
+export const getOffsetLeft = (locator: Locator): Promise<number> =>
+  getProperty(locator, 'offsetLeft') as unknown as Promise<number>;
+export const getOffsetWidth = (locator: Locator): Promise<number> =>
+  getProperty(locator, 'offsetWidth') as unknown as Promise<number>;
 
 /**
  * Get HTML attributes string from an object of properties.
@@ -470,7 +445,7 @@ export const getOldLoaderScriptForPrefixes = (prefixes: string[]): string => {
 // Fix Playwright timeout error when clicking element in shadowRoot
 // https://github.com/microsoft/playwright/issues/12298
 // Error: intercepts pointer events
-export const clickElementPosition = async (page: Page, el: ElementHandle<SVGElement | HTMLElement>): Promise<void> => {
+export const clickElementPosition = async (page: Page, el: Locator): Promise<void> => {
   const { x, y, width, height } = await getElementPositions(page, el);
   await page.mouse.click(x + width / 2, y + height / 2);
 };
@@ -478,7 +453,7 @@ export const clickElementPosition = async (page: Page, el: ElementHandle<SVGElem
 // Fix Playwright timeout error when hovering element in shadowRoot
 // https://github.com/microsoft/playwright/issues/12298
 // Error: intercepts pointer events
-export const hoverElementPosition = async (page: Page, el: ElementHandle<SVGElement | HTMLElement>): Promise<void> => {
+export const hoverElementPosition = async (page: Page, el: Locator): Promise<void> => {
   const { x, y, width, height } = await getElementPositions(page, el);
   await page.mouse.move(x + width / 2, y + height / 2);
 };

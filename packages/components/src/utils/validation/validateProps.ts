@@ -1,8 +1,6 @@
-import type { Breakpoint } from '@porsche-design-system/styles';
+import { type Breakpoint, breakpoints } from '@porsche-design-system/styles';
 import type { AriaAttributes, Class, FunctionPropertyNames } from '../../types';
-import type { BreakpointValues } from '../breakpoint-customizable';
-import { parseJSON } from '../breakpoint-customizable';
-import { breakpoints } from '@porsche-design-system/styles';
+import { type BreakpointValues, parseJSON } from '../breakpoint-customizable';
 import { parseJSONAttribute } from '../json';
 import { consoleError, getTagNameWithoutPrefix } from '..';
 
@@ -37,6 +35,7 @@ export const formatObjectOutput = (value: any): string => {
 
 export const formatArrayOutput = <T>(value: T[] | readonly T[]): string => {
   return (
+    // eslint-disable-next-line @typescript-eslint/no-base-to-string
     JSON.stringify(value.map((x) => (x === undefined ? `${x}` : x))) // wrap undefined in quotes to not convert it to null
       .replace(/'/g, '') // remove single quotes
       // eslint-disable-next-line @typescript-eslint/quotes
@@ -63,10 +62,15 @@ export const isValueNotOfType = (propValue: any, propType: string): boolean => {
   return propValue !== undefined && typeof propValue !== propType;
 };
 
-export const validateValueOfType = (propName: string, propValue: any, propType: string): ValidationError => {
+export const validateValueOfType = (
+  propName: string,
+  propValue: any,
+  propType: string
+): ValidationError | undefined => {
   if (isValueNotOfType(propValue, propType)) {
     return { propName, propValue, propType };
   }
+  return undefined;
 };
 
 const breakpointCustomizableTemplate =
@@ -106,7 +110,10 @@ export const getAriaStructure = <T>(allowedAriaAttributes: readonly T[]): string
 
 export const getShapeStructure = <T>(shapeStructure: { [key in keyof T]: ValidatorFunction }): string => {
   return formatObjectOutput(
-    Object.keys(shapeStructure).reduce((prev, key) => ({ ...prev, [key]: shapeStructure[key].name }), {})
+    Object.keys(shapeStructure).reduce(
+      (prev, key) => ({ ...prev, [key]: shapeStructure[key as keyof { [key in keyof T]: ValidatorFunction }].name }),
+      {}
+    )
   ).replace(/"/g, ''); // remove double quotes
 };
 
@@ -122,6 +129,7 @@ export const isBreakpointCustomizableValueInvalid = <T>(
 type AllowedTypeKey = 'string' | 'number' | 'boolean';
 
 // TODO: maybe dissolve object structure and have standalone utils
+
 export const AllowedTypes: {
   [key in AllowedTypeKey]: ValidatorFunction;
 } & {
@@ -143,6 +151,7 @@ export const AllowedTypes: {
       return isValidArray(propName, propValue, allowedType);
     },
   oneOf: <T>(allowedValuesOrValidatorFunctions: T[]): ValidatorFunction =>
+    // @ts-expect-error: Not all code paths return a value
     // eslint-disable-next-line prefer-arrow/prefer-arrow-functions
     function oneOf(propName, propValue) {
       // use first item to determine if we've got primitive types or validator functions
@@ -163,6 +172,7 @@ export const AllowedTypes: {
       }
     },
   breakpoint: (allowedValues): ValidatorFunction =>
+    // @ts-expect-error: Not all code paths return a value
     // eslint-disable-next-line prefer-arrow/prefer-arrow-functions
     function breakpoint(propName, propValue) {
       // TODO: do parseJSON once in the component, currently it is happening multiple times in a single lifecycle
@@ -193,6 +203,7 @@ export const AllowedTypes: {
       }
     },
   aria: <T = keyof AriaAttributes>(allowedAriaAttributes: readonly T[]): ValidatorFunction =>
+    // @ts-expect-error: Not all code paths return a value
     // eslint-disable-next-line prefer-arrow/prefer-arrow-functions
     function aria(propName, propValue) {
       const ariaAttributes = parseJSONAttribute<AriaAttributes>(propValue as string);
@@ -208,6 +219,7 @@ export const AllowedTypes: {
       }
     },
   shape: <T>(shapeStructure: { [key in keyof T]: ValidatorFunction }): ValidatorFunction =>
+    // @ts-expect-error: Not all code paths return a value
     // eslint-disable-next-line prefer-arrow/prefer-arrow-functions
     function shape(propName, propValue) {
       if (propValue) {
@@ -272,4 +284,5 @@ export const isValidArray = (propName: string, arr: any, validator: ValidatorFun
   if (validationError) {
     return { ...validationError, propType: `${validationError.propType}[]` };
   }
+  return undefined;
 };

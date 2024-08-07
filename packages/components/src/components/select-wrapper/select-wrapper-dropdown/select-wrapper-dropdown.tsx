@@ -23,8 +23,9 @@ import type {
   SelectWrapperDropdownDirection,
   SelectWrapperState,
 } from '../select-wrapper/select-wrapper-utils';
-import type { DropdownInteractionType, OptionMap } from './select-wrapper-dropdown-utils';
 import {
+  type DropdownInteractionType,
+  type OptionMap,
   getAmountOfVisibleOptionsAndOptgroups,
   getDropdownVisibility,
   getHighlightedOptionMapIndex,
