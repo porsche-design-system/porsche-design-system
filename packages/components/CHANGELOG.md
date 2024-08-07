@@ -22,7 +22,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 #### Changed
 
 - `Button`, `Link`: spacings adjusted for `compact` mode
-- `Banner`, `Flyout`, `Flyout Multilevel`, `Inline Notification`, `Modal`, `Scroller`, `Toast`: dismiss button style
+- `Banner`, `Flyout`, `Flyout Multilevel`, `Inline Notification`, `Modal`, `Scroller`, `Toast`: button style
   ([#3435](https://github.com/porsche-design-system/porsche-design-system/pull/3435))
 
 ### [3.17.0] - 2024-08-01
