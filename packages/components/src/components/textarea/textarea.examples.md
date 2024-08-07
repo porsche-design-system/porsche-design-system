@@ -1,13 +1,12 @@
-<ComponentHeading name="Textarea Wrapper"></ComponentHeading>
+<ComponentHeading name="Textarea"></ComponentHeading>
 
-The `p-textarea-wrapper` component is a styling wrapper for the native HTML `<textarea>` form element. Don't use a
-Textarea component if you want to allow users to enter shorter responses that are no longer than a single line, such as
-a phone number or name. In this case, you should use the Text Field component.
+The `p-textarea` component is a multi-line text input control. Don't use a Textarea component if you want to allow users
+to enter shorter responses that are no longer than a single line, such as a phone number or name. In this case, you
+should use the Text Field component.
 
-A `label` is a caption which informs the user what information a particular form field is asking for. The
-`p-textarea-wrapper` component can be used with or without a label, but it's recommended to keep the label visible for
-better accessibility whenever possible. When used without a label, it's best practice to provide a descriptive label
-text for screen readers.
+A `label` is a caption which informs the user what information a particular form field is asking for. The `p-textarea`
+component can be used with or without a label, but it's recommended to keep the label visible for better accessibility
+whenever possible. When used without a label, it's best practice to provide a descriptive label text for screen readers.
 
 While a `placeholder` is optional but recommended to be set whenever bits of example content or hints shall be shown to
 give the user visual cues to fill out the form.
@@ -35,6 +34,26 @@ of the label text and is technically connected with the `hide-label` property.
 
 <Playground :markup="disabled" :config="config"></Playground>
 
+## AutoFocus
+
+<Playground :markup="autoFocus" :config="config"></Playground>
+
+## DirName
+
+<Playground :markup="dirName" :config="config"></Playground>
+
+## AutoComplete
+
+<Playground :markup="autoComplete" :config="config"></Playground>
+
+## SpellCheck
+
+<Playground :markup="spellCheck" :config="config"></Playground>
+
+## Wrap
+
+<Playground :markup="wrap" :config="config"></Playground>
+
 ### <A11yIcon></A11yIcon> Accessibility hints
 
 In general, you should **prevent** using the `disabled="true"` state. Disabled elements are not reachable (focusable)
@@ -42,25 +61,20 @@ anymore and can be missed by screen reader users. They can be confusing for sigh
 why these elements are disabled. A good practice when to use the disabled state is during **form submission** to prevent
 changes while this process is performed.
 
-## Read only
+## ReadOnly
 
-<Playground :markup="readonly" :config="config"></Playground>
+<Playground :markup="readOnly" :config="config"></Playground>
 
 ## Counter
 
-If the `maxlength` attribute is present on the `textarea` element, a counter will be displayed in the corner.  
+If the `maxlength` attribute is present on the `p-textarea` element, a counter will be displayed in the corner.  
 To hide it you can set `showCounter` to `false`.
-
-<Notification heading="Deprecation hint" heading-tag="h3" state="warning">
-  The <code>showCharacterCount</code> property has been deprecated and will be removed with the next major release.<br>
-  Please use the <code>showCounter</code> property instead.
-</Notification>
 
 <Playground :markup="counter" :config="config"></Playground>
 
 ## Validation states
 
-The `p-textarea-wrapper` component supports the visualisation of inline validation.
+The `p-textarea` component supports the visualisation of inline validation.
 
 <Playground :markup="stateMarkup" :config="config">
   <PlaygroundSelect v-model="state" :values="states" name="state"></PlaygroundSelect>
@@ -99,56 +113,52 @@ export default class Code extends Vue {
   hideLabel = false;
   hideLabels = [false, true, '{ base: true, l: false }'];
   get hideLabelMarkup() {
-    return `<p-textarea-wrapper label="Some label" hide-label="${this.hideLabel}">
-  <textarea name="some-name"></textarea>
-</p-textarea-wrapper>
-<p-textarea-wrapper label="Some label" hide-label="${this.hideLabel}">
-  <textarea name="some-name" placeholder="Some placeholder"></textarea>
-</p-textarea-wrapper>`;
+    return `<p-textarea name="some-name" label="Some label" hide-label="${this.hideLabel}"></p-textarea>
+<p-textarea name="some-name" label="Some label" placeholder="Some placeholder" hide-label="${this.hideLabel}"></p-textarea>`;
   }
 
   withDescriptionText =
-`<p-textarea-wrapper label="Some label" description="Some description">
-  <textarea name="some-name"></textarea>
-</p-textarea-wrapper>`;
+`<p-textarea name="some-name" label="Some label" description="Some description"></p-textarea>`;
 
   required =
-`<p-textarea-wrapper label="Some label">
-  <textarea name="some-name" required>Some value</textarea>
-</p-textarea-wrapper>`;
+`<p-textarea name="some-name" label="Some label" value="Some value" required></p-textarea>`;
 
   disabled =
-`<p-textarea-wrapper label="Some label">
-  <textarea name="some-name" disabled>Some value</textarea>
-</p-textarea-wrapper>`;
+`<p-textarea name="some-name" label="Some label" value="Some value" disabled></p-textarea>`;
 
-  readonly =
-`<p-textarea-wrapper label="Some label">
-  <textarea name="some-name" readonly>Some value</textarea>
-</p-textarea-wrapper>`;
+  autoFocus =
+`<p-textarea auto-focus="true" name="some-name" label="Some label" value="Some value"></p-textarea>`;
+
+  dirName =
+`<p-textarea dir-name="comment-direction" name="some-name" label="Some label" value="Some value"></p-textarea>`;
+
+  autoComplete =
+`<p-textarea auto-complete="true" name="some-name" label="Some label" value="Some value"></p-textarea>`;
+
+  spellCheck =
+`<p-textarea spell-check="true" name="some-name" label="Some label" value="Some value"></p-textarea>`;
+
+  wrap =
+`<p-textarea wrap="hard" name="some-name" label="Some label" value="Some value"></p-textarea>`;
+
+  readOnly =
+`<p-textarea name="some-name" label="Some label" value="Some value" read-only></p-textarea>`;
 
   counter =
-`<p-textarea-wrapper label="Some label">
-  <textarea name="some-name" maxlength="200">Some value</textarea>
-</p-textarea-wrapper>
-<p-textarea-wrapper label="Some label" show-counter="false">
-  <textarea name="some-name" maxlength="200">Some value</textarea>
-</p-textarea-wrapper>`;
+`<p-textarea name="some-name" label="Some label" value="Some value" max-length="200"></p-textarea>
+<p-textarea name="some-name" label="Some label" value="Some value" max-length="200" show-counter="false"></p-textarea>`;
 
   state = 'error';
   states = FORM_STATES;
   get stateMarkup() {
     const attr = `message="${this.state !== 'none' ? `Some ${this.state} validation message.` : ''}"`;
-    return `<p-textarea-wrapper label="Some label" state="${this.state}" ${attr}>
-  <textarea aria-invalid="${this.state === 'error'}" name="some-name">Some value</textarea>
-</p-textarea-wrapper>`;
+    return `<p-textarea aria-invalid="${this.state === 'error'}" name="some-name" label="Some label" value="Some value" state="${this.state}" ${attr}></p-textarea>`;
     }
     
-  slots = `<p-textarea-wrapper state="error">
+  slots = `<p-textarea name="some-name" aria-labelledby="some-label-id" aria-describedby="some-description-id some-message-id" state="error">
   <span slot="label" id="some-label-id">Some label with a <a href="https://designsystem.porsche.com">link</a>.</span>
   <span slot="description" id="some-description-id">Some description with a <a href="https://designsystem.porsche.com">link</a>.</span>
-  <textarea name="some-name" aria-labelledby="some-label-id" aria-describedby="some-description-id some-message-id"></textarea>
   <span slot="message" id="some-message-id">Some error message with a <a href="https://designsystem.porsche.com">link</a>.</span>
-</p-textarea-wrapper>`;
+</p-textarea>`;
 }
 </script>

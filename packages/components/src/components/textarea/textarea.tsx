@@ -208,7 +208,6 @@ export class Textarea {
           isDisabled={disabled}
           formElement={this.nativeTextarea}
         />
-        d
         <div class="wrapper">
           <slot name={INTERNAL_TEXTAREA_SLOT} />
           {this.hasCounter && <span class="counter" aria-hidden="true" ref={(el) => (this.counterElement = el)} />}
