@@ -207,7 +207,7 @@ export const getComponentCss = (isSecondaryScrollerVisible: boolean, theme: Them
     },
     back: {
       justifySelf: 'flex-start',
-      padding: '3px', // Same width/height as p-button in compact mode
+      padding: spacingFluidSmall,
       marginInlineStart: `calc(${spacingFluidSmall} * -1)`,
     },
     heading: {
