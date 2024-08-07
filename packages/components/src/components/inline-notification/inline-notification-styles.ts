@@ -69,7 +69,6 @@ export const getComponentCss = (
     close: {
       ...dismissButtonJssStyle,
       mixBlendMode: isThemeDark(theme) ? 'plus-lighter' : 'multiply',
-      isolation: 'isolate',
       ...prefersColorSchemeDarkMediaQuery(theme, {
         mixBlendMode: 'plus-lighter',
       }),
