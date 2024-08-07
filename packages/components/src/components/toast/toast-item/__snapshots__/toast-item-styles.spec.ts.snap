@@ -46,8 +46,6 @@ p {
 .close {
   --p-internal-button-scaling: 0;
   mix-blend-mode: plus-lighter;
-  -webkit-backdrop-filter: blur(32px);
-  backdrop-filter: blur(32px);
 }
 @media(max-width:759px) {
   .icon {
@@ -103,8 +101,6 @@ p {
 .close {
   --p-internal-button-scaling: 0;
   mix-blend-mode: multiply;
-  -webkit-backdrop-filter: blur(32px);
-  backdrop-filter: blur(32px);
 }
 @media(max-width:759px) {
   .icon {
@@ -160,8 +156,6 @@ p {
 .close {
   --p-internal-button-scaling: 0;
   mix-blend-mode: plus-lighter;
-  -webkit-backdrop-filter: blur(32px);
-  backdrop-filter: blur(32px);
 }
 @media(max-width:759px) {
   .icon {
@@ -217,8 +211,6 @@ p {
 .close {
   --p-internal-button-scaling: 0;
   mix-blend-mode: multiply;
-  -webkit-backdrop-filter: blur(32px);
-  backdrop-filter: blur(32px);
 }
 @media(max-width:759px) {
   .icon {
@@ -274,8 +266,6 @@ p {
 .close {
   --p-internal-button-scaling: 0;
   mix-blend-mode: plus-lighter;
-  -webkit-backdrop-filter: blur(32px);
-  backdrop-filter: blur(32px);
 }
 @media(max-width:759px) {
   .icon {
@@ -331,8 +321,6 @@ p {
 .close {
   --p-internal-button-scaling: 0;
   mix-blend-mode: multiply;
-  -webkit-backdrop-filter: blur(32px);
-  backdrop-filter: blur(32px);
 }
 @media(max-width:759px) {
   .icon {
