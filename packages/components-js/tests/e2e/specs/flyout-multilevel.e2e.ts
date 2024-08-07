@@ -24,7 +24,7 @@ const CSS_TRANSITION_DURATION = 600;
 
 const getHost = (page: Page) => page.locator('p-flyout-multilevel');
 const getFlyoutMultilevelDialog = (page: Page) => page.locator('p-flyout-multilevel dialog');
-const getFlyoutMultilevelDismissButton = (page: Page) => page.locator('p-flyout-multilevel .dismiss');
+const getFlyoutMultilevelDismissButton = (page: Page) => page.locator('p-flyout-multilevel p-button-pure.dismiss');
 const getFlyoutMultilevelDialogVisibility = async (page: Page) =>
   await getElementStyle(getFlyoutMultilevelDialog(page), 'visibility');
 const getFlyoutMultilevelItem = (page: Page, identifier: string) =>
@@ -98,7 +98,7 @@ const addButtonsBeforeAndAfterFlyout = (page: Page) =>
 
 const expectDismissButtonToBeFocused = async (page: Page, failMessage?: string) => {
   const host = getHost(page);
-  expect(await getActiveElementTagNameInShadowRoot(host), failMessage).toBe('P-BUTTON');
+  expect(await getActiveElementTagNameInShadowRoot(host), failMessage).toBe('P-BUTTON-PURE');
   expect(await getActiveElementClassNameInShadowRoot(host), failMessage).toContain('dismiss');
 };
 
@@ -604,7 +604,7 @@ test.describe('lifecycle', () => {
 
     expect(status.componentDidLoad['p-flyout-multilevel'], 'componentDidLoad: p-flyout-multilevel').toBe(1);
     expect(status.componentDidLoad['p-flyout-multilevel-item'], 'componentDidLoad: p-flyout-multilevel-item').toBe(3);
-    expect(status.componentDidLoad['p-button'], 'componentDidLoad: p-button').toBe(7); // 3 item buttons + 3 back buttons + 1 dismiss button
+    expect(status.componentDidLoad['p-button-pure'], 'componentDidLoad: p-button-pure').toBe(7); // 3 item buttons + 3 back buttons + 1 dismiss button
     expect(status.componentDidLoad['p-icon'], 'componentDidLoad: p-icon').toBe(7);
 
     expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(18);
@@ -629,7 +629,7 @@ test.describe('lifecycle', () => {
       statusAfter.componentDidUpdate['p-flyout-multilevel-item'],
       'componentDidUpdate: p-flyout-multilevel-item'
     ).toBe(3);
-    expect(statusAfter.componentDidUpdate['p-button'], 'componentDidUpdate: p-button').toBe(1);
+    expect(statusAfter.componentDidUpdate['p-button-pure'], 'componentDidUpdate: p-button-pure').toBe(1);
     expect(statusAfter.componentDidUpdate.all, 'componentDidUpdate: all').toBe(5);
   });
 
