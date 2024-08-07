@@ -368,8 +368,9 @@ test.describe('lifecycle', () => {
     expect(status.componentDidLoad['p-stepper-horizontal-item'], 'componentDidLoad: p-stepper-horizontal-item').toBe(3);
     expect(status.componentDidLoad['p-scroller'], 'componentDidLoad: p-scroller').toBe(1);
     expect(status.componentDidLoad['p-icon'], 'componentDidLoad: p-icon').toBe(2);
+    expect(status.componentDidLoad['p-button'], 'componentDidLoad: p-button').toBe(2);
 
-    expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(7);
+    expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(9);
     expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(0);
   });
 
@@ -381,8 +382,9 @@ test.describe('lifecycle', () => {
     expect(status.componentDidLoad['p-stepper-horizontal-item'], 'componentDidLoad: p-stepper-horizontal-item').toBe(3);
     expect(status.componentDidLoad['p-scroller'], 'componentDidLoad: p-scroller').toBe(1);
     expect(status.componentDidLoad['p-icon'], 'componentDidLoad: p-icon').toBe(4);
+    expect(status.componentDidLoad['p-button'], 'componentDidLoad: p-button').toBe(2);
 
-    expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(9);
+    expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(11);
     expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(0);
   });
 
@@ -405,7 +407,7 @@ test.describe('lifecycle', () => {
     ).toBe(3);
     expect(status.componentDidUpdate['p-scroller'], 'componentDidUpdate: p-scroller').toBe(0);
 
-    expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(8);
+    expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(10);
     expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(4);
   });
 });
