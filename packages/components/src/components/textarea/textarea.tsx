@@ -1,14 +1,12 @@
-import { Component, Element, forceUpdate, h, type JSX, Prop, Watch } from '@stencil/core';
+import { Component, Element, Event, type EventEmitter, forceUpdate, h, type JSX, Prop, Watch } from '@stencil/core';
 import { type BreakpointCustomizable, type PropTypes, type Theme } from '../../types';
 import {
   AllowedTypes,
   applyConstructableStylesheetStyles,
   attachComponentCss,
   FORM_STATES,
-  // getOnlyChildOfKindHTMLElementOrThrow,
   hasCounter,
   hasPropValueChanged,
-  inputEventListenerCurry,
   observeAttributes,
   observeProperties,
   setAriaAttributes,
@@ -18,19 +16,20 @@ import {
   validateProps,
 } from '../../utils';
 import {
+  type TextareaUpdateEventDetail,
   AUTO_FILL,
   type AutoFillType,
   initNativeTextarea,
   INTERNAL_TEXTAREA_SLOT,
   TEXTAREA_WRAPS,
+  textareaInputEventListenerCurry,
   type TextareaState,
   type TextareaWrapType,
 } from './textarea-utils';
-import { getComponentCss } from './textarea-styles';
 import { StateMessage } from '../common/state-message/state-message';
 import { Label } from '../common/label/label';
 import { getSlottedAnchorStyles } from '../../styles';
-// import type { GridWrap } from '../grid/grid/grid-utils';
+import { getComponentCss } from '../../styles/textarea-styles';
 
 const propTypes: PropTypes<typeof Textarea> = {
   label: AllowedTypes.string,
@@ -40,12 +39,11 @@ const propTypes: PropTypes<typeof Textarea> = {
   hideLabel: AllowedTypes.breakpoint('boolean'),
   showCounter: AllowedTypes.boolean,
   theme: AllowedTypes.oneOf<Theme>(THEMES),
-  /** NEW START */
   placeholder: AllowedTypes.string,
   required: AllowedTypes.boolean,
   disabled: AllowedTypes.boolean,
   autoFocus: AllowedTypes.boolean,
-  // loading: AllowedTypes.boolean,
+  dirName: AllowedTypes.string,
   readOnly: AllowedTypes.boolean,
   name: AllowedTypes.string,
   value: AllowedTypes.string,
@@ -54,13 +52,11 @@ const propTypes: PropTypes<typeof Textarea> = {
   wrap: AllowedTypes.oneOf<TextareaWrapType>(TEXTAREA_WRAPS),
   spellCheck: AllowedTypes.boolean,
   autoComplete: AllowedTypes.oneOf<AutoFillType>(AUTO_FILL),
-  /** NEW END */
 };
 
 /**
  * @slot {"name": "label", "description": "Shows a label. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed." }
  * @slot {"name": "description", "description": "Shows a description. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed." }
- * @slot {"name": "", "description": "Default slot for the textarea." }
  * @slot {"name": "message", "description": "Shows a state message. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed." }
  */
 @Component({
@@ -68,64 +64,6 @@ const propTypes: PropTypes<typeof Textarea> = {
   shadow: true,
 })
 export class Textarea {
-  /*
-  # Name:
-p-textarea
-
-# Props:
-value?: string = ''; // mutable? or as alternative use a text node like it's the case natively
-readonly: boolean = false; // or readOnly?
-dirname: string = undefined; // or dirName?
-form: string;
-loading: boolean = false; // experimental prop, check if real use cases exist before implementing
-
-# Events:
-update(CustomEvent< {name: string; value: string;}>)
-
-  /** NEW START */
-  /** The placeholder text. */
-  @Prop() public placeholder?: string = '';
-
-  /** Marks the textarea as required. */
-  @Prop() public required?: boolean = false;
-
-  /** Marks the textarea as disabled. */
-  @Prop() public disabled?: boolean = false;
-
-  /** TODO */
-  /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLElement/autofocus) */
-  @Prop() public autoFocus?: boolean = false;
-
-  /** The name of the textarea. */
-  @Prop() public name: string;
-
-  /** The max length of the textarea. */
-  @Prop() public maxLength?: number;
-
-  /** The min length of the textarea. */
-  @Prop() public minLength?: number;
-
-  /** TODO */
-  /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLTextAreaElement/autocomplete) */
-  @Prop() public autoComplete?: AutoFillType = '';
-
-  /** TODO */
-  /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLElement/spellcheck) */
-  @Prop() public spellCheck?: boolean;
-
-  /** Handles wrapping behaviour of elements. */
-  @Prop() public wrap?: TextareaWrapType = 'off';
-
-  /** TODO */
-  // @Prop() public loading?: boolean = false;
-
-  /** TODO */
-  @Prop() public readOnly?: boolean = false;
-
-  /** The textarea value. */
-  @Prop({ mutable: true }) public value?: string;
-
-  /** NEW END */
   @Element() public host!: HTMLElement;
 
   /** The label text. */
@@ -149,13 +87,53 @@ update(CustomEvent< {name: string; value: string;}>)
   /** Adapts the color depending on the theme. */
   @Prop() public theme?: Theme = 'light';
 
-  private textarea: HTMLTextAreaElement;
-  // private nativeTextarea: HTMLTextAreaElement;
+  /** The placeholder text. */
+  @Prop() public placeholder?: string = '';
+
+  /** Marks the textarea as required. */
+  @Prop() public required?: boolean = false;
+
+  /** Marks the textarea as disabled. */
+  @Prop() public disabled?: boolean = false;
+
+  /** Enables automatic focus when the component is rendered */
+  @Prop() public autoFocus?: boolean = false;
+
+  /** Indicates the text directionality of the element */
+  @Prop() public dirName?: string;
+
+  /** The name of the textarea. */
+  @Prop() public name: string;
+
+  /** The max length of the textarea. */
+  @Prop() public maxLength?: number;
+
+  /** The min length of the textarea. */
+  @Prop() public minLength?: number;
+
+  /** Specifies whether the input can be autofilled by the browser */
+  @Prop() public autoComplete?: AutoFillType = '';
+
+  /** Specifies whether the input should have its spelling and grammar checked */
+  @Prop() public spellCheck?: boolean;
+
+  /** Handles wrapping behaviour of elements. */
+  @Prop() public wrap?: TextareaWrapType = 'off';
+
+  /** Specifies whether the textarea should be read-only. */
+  @Prop() public readOnly?: boolean = false;
+
+  /** The textarea value. */
+  @Prop({ mutable: true }) public value?: string;
+
+  /** Emitted when textarea value is changed. */
+  @Event({ bubbles: false }) public update: EventEmitter<TextareaUpdateEventDetail>;
+
+  private nativeTextarea: HTMLTextAreaElement;
   private counterElement: HTMLSpanElement;
   private ariaElement: HTMLSpanElement;
   private hasCounter: boolean;
 
-  // private form: HTMLFormElement;
   private eventListener: EventListener;
 
   @Watch('showCounter')
@@ -170,7 +148,7 @@ update(CustomEvent< {name: string; value: string;}>)
 
   public componentWillLoad(): void {
     // this.textarea = getOnlyChildOfKindHTMLElementOrThrow(this.host, 'textarea');
-    this.textarea = initNativeTextarea(
+    this.nativeTextarea = initNativeTextarea(
       this.host,
       this.name,
       this.disabled,
@@ -183,7 +161,8 @@ update(CustomEvent< {name: string; value: string;}>)
       this.spellCheck,
       this.autoComplete,
       this.wrap,
-      this.value
+      this.value,
+      this.dirName
     );
 
     this.observeAttributes(); // once initially
@@ -204,7 +183,7 @@ update(CustomEvent< {name: string; value: string;}>)
      * Referencing ID's from outside the component is impossible because the web component’s DOM is separate.
      * We have to wait for full support of the Accessibility Object Model (AOM) to provide the relationship between shadow DOM and slots.
      */
-    setAriaAttributes(this.textarea, {
+    setAriaAttributes(this.nativeTextarea, {
       label: this.label,
       message: this.message || this.description,
       state: this.state,
@@ -212,7 +191,7 @@ update(CustomEvent< {name: string; value: string;}>)
   }
 
   public disconnectedCallback(): void {
-    unobserveAttributes(this.textarea);
+    unobserveAttributes(this.nativeTextarea);
   }
 
   public render(): JSX.Element {
@@ -228,14 +207,11 @@ update(CustomEvent< {name: string; value: string;}>)
           label={this.label}
           description={this.description}
           isDisabled={disabled}
-          formElement={this.textarea}
+          formElement={this.nativeTextarea}
         />
+        d
         <div class="wrapper">
-          {/* <slot name="label" /> */}
-          {/* <slot name="description" /> */}
-          {/* <slot name="message" /> */}
           <slot name={INTERNAL_TEXTAREA_SLOT} />
-          {/* <textarea name={this.name} placeholder={this.placeholder}></textarea>*/}
           {this.hasCounter && <span class="counter" aria-hidden="true" ref={(el) => (this.counterElement = el)} />}
           {this.hasCounter && <span class="sr-only" ref={(el) => (this.ariaElement = el)} aria-live="polite" />}
         </div>
@@ -246,7 +222,7 @@ update(CustomEvent< {name: string; value: string;}>)
 
   private observeAttributes = (): void => {
     observeAttributes(
-      this.textarea,
+      this.nativeTextarea,
       [
         'disabled',
         'readonly',
@@ -259,6 +235,7 @@ update(CustomEvent< {name: string; value: string;}>)
         'spellcheck',
         'autocomplete',
         'wrap',
+        'dirname',
       ],
       () => {
         forceUpdate(this.host);
@@ -268,7 +245,7 @@ update(CustomEvent< {name: string; value: string;}>)
   };
 
   private updateCounterVisibility = (): void => {
-    this.hasCounter = hasCounter(this.textarea) && this.showCounter;
+    this.hasCounter = hasCounter(this.nativeTextarea) && this.showCounter;
   };
 
   private addInputEventListenerForCounter = (
@@ -276,17 +253,23 @@ update(CustomEvent< {name: string; value: string;}>)
     counterElement?: HTMLSpanElement,
     inputChangeCallback?: () => void
   ): void => {
-    updateCounter(this.textarea, characterCountElement, counterElement); // Initial value
+    updateCounter(this.nativeTextarea, characterCountElement, counterElement); // Initial value
 
     // When value changes programmatically
-
-    observeProperties(this.textarea, ['value'], () => {
-      updateCounter(this.textarea, characterCountElement, counterElement, inputChangeCallback);
+    observeProperties(this.nativeTextarea, ['value'], () => {
+      this.update.emit({ name: this.name, value: this.nativeTextarea.value });
+      updateCounter(this.nativeTextarea, characterCountElement, counterElement, inputChangeCallback);
     });
 
-    this.eventListener = inputEventListenerCurry(characterCountElement, counterElement, inputChangeCallback);
+    this.eventListener = textareaInputEventListenerCurry(
+      this.nativeTextarea,
+      this.update,
+      characterCountElement,
+      counterElement,
+      inputChangeCallback
+    );
 
-    this.textarea.removeEventListener('input', this.eventListener);
-    this.textarea.addEventListener('input', this.eventListener);
+    this.nativeTextarea.removeEventListener('input', this.eventListener);
+    this.nativeTextarea.addEventListener('input', this.eventListener);
   };
 }

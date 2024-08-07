@@ -1,21 +1,21 @@
 import { type Styles } from 'jss';
-import { type BreakpointCustomizable, type Theme } from '../../types';
-import { getCss, mergeDeep } from '../../utils';
-import { addImportantToEachRule, colorSchemeStyles, getHiddenTextJssStyle, hostHiddenStyles } from '../../styles';
+import { type BreakpointCustomizable, type Theme } from '../types';
+import { getCss, mergeDeep } from '../utils';
+import { addImportantToEachRule, colorSchemeStyles, getHiddenTextJssStyle, hostHiddenStyles } from '../styles';
 import {
   formElementPaddingHorizontal,
   getSlottedTextFieldTextareaSelectStyles,
   getUnitCounterJssStyle,
-} from '../../styles/form-styles';
-import { getFunctionalComponentStateMessageStyles } from '../common/state-message/state-message-styles';
-import { type FormState } from '../../utils/form/form-state';
+} from './form-styles';
+import { getFunctionalComponentStateMessageStyles } from '../components/common/state-message/state-message-styles';
+import { type FormState } from '../utils/form/form-state';
 import {
   borderWidthBase,
   spacingStaticLarge,
   spacingStaticXSmall,
   textSmallStyle,
 } from '@porsche-design-system/styles';
-import { getFunctionalComponentLabelStyles } from '../common/label/label-styles';
+import { getFunctionalComponentLabelStyles } from '../components/common/label/label-styles';
 
 export const getComponentCss = (
   isDisabled: boolean,

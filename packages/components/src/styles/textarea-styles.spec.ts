@@ -1,5 +1,5 @@
 import { getComponentCss } from './textarea-styles';
-import { validateCssAndMatchSnapshot } from '../../../tests/unit/helpers';
+import { validateCssAndMatchSnapshot } from '../../tests/unit/helpers';
 
 describe('getComponentCss()', () => {
   it.each<Parameters<typeof getComponentCss>>([
