@@ -52,7 +52,6 @@ slot[name="heading"] {
 .close {
   --p-internal-button-scaling: 0;
   mix-blend-mode: plus-lighter;
-  isolation: isolate;
 }
 @media(min-width:760px) {
   .content {
@@ -120,7 +119,6 @@ slot[name="heading"] {
 .close {
   --p-internal-button-scaling: 0;
   mix-blend-mode: multiply;
-  isolation: isolate;
 }
 @media(min-width:760px) {
   .content {
@@ -188,7 +186,6 @@ slot[name="heading"] {
 .close {
   --p-internal-button-scaling: 0;
   mix-blend-mode: plus-lighter;
-  isolation: isolate;
 }
 @media(min-width:760px) {
   .content {
@@ -256,7 +253,6 @@ slot[name="heading"] {
 .close {
   --p-internal-button-scaling: 0;
   mix-blend-mode: multiply;
-  isolation: isolate;
 }
 @media(min-width:760px) {
   .content {
@@ -324,7 +320,6 @@ slot[name="heading"] {
 .close {
   --p-internal-button-scaling: 0;
   mix-blend-mode: plus-lighter;
-  isolation: isolate;
 }
 @media(min-width:760px) {
   .content {
@@ -392,7 +387,6 @@ slot[name="heading"] {
 .close {
   --p-internal-button-scaling: 0;
   mix-blend-mode: multiply;
-  isolation: isolate;
 }
 @media(min-width:760px) {
   .content {
@@ -463,7 +457,6 @@ slot[name="heading"] {
 .close {
   --p-internal-button-scaling: 0;
   mix-blend-mode: plus-lighter;
-  isolation: isolate;
 }
 @media(min-width:760px) {
   .content {
@@ -537,7 +530,6 @@ slot[name="heading"] {
 .close {
   --p-internal-button-scaling: 0;
   mix-blend-mode: multiply;
-  isolation: isolate;
 }
 @media(min-width:760px) {
   .content {
@@ -611,7 +603,6 @@ slot[name="heading"] {
 .close {
   --p-internal-button-scaling: 0;
   mix-blend-mode: plus-lighter;
-  isolation: isolate;
 }
 @media(min-width:760px) {
   .content {
@@ -685,7 +676,6 @@ slot[name="heading"] {
 .close {
   --p-internal-button-scaling: 0;
   mix-blend-mode: multiply;
-  isolation: isolate;
 }
 @media(min-width:760px) {
   .content {
@@ -756,7 +746,6 @@ slot[name="heading"] {
 .close {
   --p-internal-button-scaling: 0;
   mix-blend-mode: plus-lighter;
-  isolation: isolate;
 }
 @media(min-width:760px) {
   .content {
@@ -824,7 +813,6 @@ slot[name="heading"] {
 .close {
   --p-internal-button-scaling: 0;
   mix-blend-mode: multiply;
-  isolation: isolate;
 }
 @media(min-width:760px) {
   .content {
@@ -892,7 +880,6 @@ slot[name="heading"] {
 .close {
   --p-internal-button-scaling: 0;
   mix-blend-mode: plus-lighter;
-  isolation: isolate;
 }
 @media(min-width:760px) {
   .content {
@@ -960,7 +947,6 @@ slot[name="heading"] {
 .close {
   --p-internal-button-scaling: 0;
   mix-blend-mode: multiply;
-  isolation: isolate;
 }
 @media(min-width:760px) {
   .content {
@@ -1031,7 +1017,6 @@ slot[name="heading"] {
 .close {
   --p-internal-button-scaling: 0;
   mix-blend-mode: plus-lighter;
-  isolation: isolate;
 }
 @media(min-width:760px) {
   .content {
@@ -1105,7 +1090,6 @@ slot[name="heading"] {
 .close {
   --p-internal-button-scaling: 0;
   mix-blend-mode: multiply;
-  isolation: isolate;
 }
 @media(min-width:760px) {
   .content {
@@ -1179,7 +1163,6 @@ slot[name="heading"] {
 .close {
   --p-internal-button-scaling: 0;
   mix-blend-mode: plus-lighter;
-  isolation: isolate;
 }
 @media(min-width:760px) {
   .content {
@@ -1253,7 +1236,6 @@ slot[name="heading"] {
 .close {
   --p-internal-button-scaling: 0;
   mix-blend-mode: multiply;
-  isolation: isolate;
 }
 @media(min-width:760px) {
   .content {
@@ -1324,7 +1306,6 @@ slot[name="heading"] {
 .close {
   --p-internal-button-scaling: 0;
   mix-blend-mode: plus-lighter;
-  isolation: isolate;
 }
 @media(min-width:760px) {
   .content {
@@ -1392,7 +1373,6 @@ slot[name="heading"] {
 .close {
   --p-internal-button-scaling: 0;
   mix-blend-mode: multiply;
-  isolation: isolate;
 }
 @media(min-width:760px) {
   .content {
@@ -1460,7 +1440,6 @@ slot[name="heading"] {
 .close {
   --p-internal-button-scaling: 0;
   mix-blend-mode: plus-lighter;
-  isolation: isolate;
 }
 @media(min-width:760px) {
   .content {
@@ -1528,7 +1507,6 @@ slot[name="heading"] {
 .close {
   --p-internal-button-scaling: 0;
   mix-blend-mode: multiply;
-  isolation: isolate;
 }
 @media(min-width:760px) {
   .content {

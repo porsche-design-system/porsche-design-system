@@ -50,7 +50,6 @@ p {
 .close {
   --p-internal-button-scaling: 0;
   mix-blend-mode: plus-lighter;
-  isolation: isolate;
 }
 @media(max-width:759px) {
   .icon {
@@ -110,7 +109,6 @@ p {
 .close {
   --p-internal-button-scaling: 0;
   mix-blend-mode: multiply;
-  isolation: isolate;
 }
 @media(max-width:759px) {
   .icon {
@@ -170,7 +168,6 @@ p {
 .close {
   --p-internal-button-scaling: 0;
   mix-blend-mode: plus-lighter;
-  isolation: isolate;
 }
 @media(max-width:759px) {
   .icon {
@@ -230,7 +227,6 @@ p {
 .close {
   --p-internal-button-scaling: 0;
   mix-blend-mode: multiply;
-  isolation: isolate;
 }
 @media(max-width:759px) {
   .icon {
@@ -290,7 +286,6 @@ p {
 .close {
   --p-internal-button-scaling: 0;
   mix-blend-mode: plus-lighter;
-  isolation: isolate;
 }
 @media(max-width:759px) {
   .icon {
@@ -350,7 +345,6 @@ p {
 .close {
   --p-internal-button-scaling: 0;
   mix-blend-mode: multiply;
-  isolation: isolate;
 }
 @media(max-width:759px) {
   .icon {
