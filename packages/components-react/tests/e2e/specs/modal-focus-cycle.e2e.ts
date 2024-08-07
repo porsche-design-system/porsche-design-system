@@ -20,9 +20,9 @@ test('should focus correct element', async ({ page }) => {
   };
 
   const expectDismissButtonToBeFocused = async (failMessage: string) => {
-    const dismissHandle = page.locator('p-modal P-BUTTON-PURE.dismiss');
+    const dismissHandle = page.locator('p-modal .dismiss');
     const focused = await waitForFocus(dismissHandle);
-    expect(await getProperty(focused, 'tagName'), failMessage).toBe('P-BUTTON-PURE');
+    expect(await getProperty(focused, 'tagName'), failMessage).toBe('P-BUTTON');
     expect(await getProperty(focused, 'className'), failMessage).toContain('dismiss');
   };
 
