@@ -51,6 +51,7 @@ export const getComponentCss = (state: ToastState, theme: Theme): string => {
     close: {
       ...dismissButtonJssStyle,
       mixBlendMode: isThemeDark(theme) ? 'plus-lighter' : 'multiply',
+      isolation: 'isolate',
       ...prefersColorSchemeDarkMediaQuery(theme, {
         mixBlendMode: 'plus-lighter',
       }),
