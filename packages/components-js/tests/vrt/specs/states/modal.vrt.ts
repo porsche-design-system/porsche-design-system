@@ -46,7 +46,7 @@ const scenario = async (
   } else if (pseudoState === 'focus') {
     await forceFocusVisibleState(page, '.focus p-modal a');
     await forceFocusState(page, '.focus p-modal >>> .root');
-    await forceFocusVisibleState(page, '.focus p-modal >>> p-button-pure >>> button');
+    await forceFocusVisibleState(page, '.focus p-modal >>> p-button >>> button');
   } else if (pseudoState === 'focus-hover') {
     await forceFocusHoverState(page, '.focus-hover p-modal a');
     await forceFocusHoverState(page, '.focus-hover p-modal >>> .root');
