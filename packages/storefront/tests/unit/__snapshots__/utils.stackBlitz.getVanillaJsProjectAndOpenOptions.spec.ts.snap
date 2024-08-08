@@ -144,6 +144,7 @@ exports[`getIndexHtml() development mode or non stable storefront release (e.g. 
       p-text-field-wrapper,
       p-text-list,
       p-text-list-item,
+      p-textarea,
       p-textarea-wrapper,
       p-toast,
       p-wordmark {
@@ -323,6 +324,7 @@ exports[`getIndexHtml() development mode or non stable storefront release (e.g. 
           p-text-field-wrapper,
           p-text-list,
           p-text-list-item,
+          p-textarea,
           p-textarea-wrapper,
           p-toast,
           p-wordmark {
@@ -463,6 +465,7 @@ exports[`getIndexHtml() development mode or non stable storefront release (e.g. 
       p-text-field-wrapper,
       p-text-list,
       p-text-list-item,
+      p-textarea,
       p-textarea-wrapper,
       p-toast,
       p-wordmark {
@@ -603,6 +606,7 @@ exports[`getIndexHtml() development mode or non stable storefront release (e.g. 
       p-text-field-wrapper,
       p-text-list,
       p-text-list-item,
+      p-textarea,
       p-textarea-wrapper,
       p-toast,
       p-wordmark {
@@ -743,6 +747,7 @@ exports[`getIndexHtml() stable storefront release (e.g. /v2/…, /v3/…) should
       p-text-field-wrapper,
       p-text-list,
       p-text-list-item,
+      p-textarea,
       p-textarea-wrapper,
       p-toast,
       p-wordmark {
@@ -922,6 +927,7 @@ exports[`getIndexHtml() stable storefront release (e.g. /v2/…, /v3/…) should
           p-text-field-wrapper,
           p-text-list,
           p-text-list-item,
+          p-textarea,
           p-textarea-wrapper,
           p-toast,
           p-wordmark {
@@ -1062,6 +1068,7 @@ exports[`getIndexHtml() stable storefront release (e.g. /v2/…, /v3/…) should
       p-text-field-wrapper,
       p-text-list,
       p-text-list-item,
+      p-textarea,
       p-textarea-wrapper,
       p-toast,
       p-wordmark {
