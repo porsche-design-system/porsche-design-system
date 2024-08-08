@@ -5,7 +5,7 @@ Textarea component if you want to allow users to enter shorter responses that ar
 a phone number or name. In this case, you should use the Text Field component.
 
 A `label` is a caption which informs the user what information a particular form field is asking for. The
-`p-textarea-wrapper` component can be used with or without a label but it's recommended to keep the label visible for
+`p-textarea-wrapper` component can be used with or without a label, but it's recommended to keep the label visible for
 better accessibility whenever possible. When used without a label, it's best practice to provide a descriptive label
 text for screen readers.
 

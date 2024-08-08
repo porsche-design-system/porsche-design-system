@@ -135,6 +135,7 @@ exports[`getIndexHtml() should return correct markup with styles 1`] = `
       p-text-field-wrapper,
       p-text-list,
       p-text-list-item,
+      p-textarea,
       p-textarea-wrapper,
       p-toast,
       p-wordmark {
@@ -274,6 +275,7 @@ exports[`getIndexHtml() should return correct markup with styles and rtl mode 1`
       p-text-field-wrapper,
       p-text-list,
       p-text-list-item,
+      p-textarea,
       p-textarea-wrapper,
       p-toast,
       p-wordmark {

@@ -1,0 +1,6 @@
+<div class="root">
+  <label class="label" id="label"> </label>
+  <div class="wrapper">
+    <slot name="internal-textarea"> </slot>
+  </div>
+</div>

@@ -412,6 +412,10 @@ const generatedRoutes = {
     "path": "/text-list",
     "name": "TextList"
   },
+  "textarea": {
+    "path": "/textarea",
+    "name": "Textarea"
+  },
   "textareaWrapper": {
     "path": "/textarea-wrapper",
     "name": "TextareaWrapper"
