@@ -17,12 +17,12 @@
               <p-select
                 :theme="storefrontTheme"
                 label="Salutation"
-                v-bind:message="bag.errors.salutation"
-                v-bind:state="getState('salutation')"
-                v-on:update="onCustomSelectUpdate"
-                v-on:blur="onFieldBlur"
+                :message="bag.errors.salutation"
+                :state="getState('salutation')"
+                @update="onCustomSelectUpdate"
+                @blur="onFieldBlur"
                 :ref="validateFieldName('salutation')"
-                v-bind:name="validateFieldName('salutation')"
+                :name="validateFieldName('salutation')"
                 required
               >
                 <p-select-option value hidden></p-select-option>
@@ -34,7 +34,7 @@
               width="{base: 'full', m: 'one-third'}"
               class="form-row-spacing form-row-spacing--zero-m form-grid-item"
             >
-              <p-select :theme="storefrontTheme" label="Title" v-bind:name="validateFieldName('title')">
+              <p-select :theme="storefrontTheme" label="Title" :name="validateFieldName('title')">
                 <p-select-option></p-select-option>
                 <p-select-option value="Dr.">Dr.</p-select-option>
                 <p-select-option value="Prof.">Prof.</p-select-option>
@@ -47,15 +47,15 @@
               <p-text-field-wrapper
                 :theme="storefrontTheme"
                 label="First name"
-                v-bind:message="bag.errors.firstName"
-                v-bind:state="getState('firstName')"
+                :message="bag.errors.firstName"
+                :state="getState('firstName')"
               >
                 <input
                   type="text"
                   :ref="validateFieldName('firstName')"
-                  v-bind:name="validateFieldName('firstName')"
+                  :name="validateFieldName('firstName')"
                   v-model="bag.data.firstName"
-                  v-on:blur="onFieldBlur"
+                  @blur="onFieldBlur"
                   required
                 />
               </p-text-field-wrapper>
@@ -67,15 +67,15 @@
               <p-text-field-wrapper
                 :theme="storefrontTheme"
                 label="Last name"
-                v-bind:message="bag.errors.lastName"
-                v-bind:state="getState('lastName')"
+                :message="bag.errors.lastName"
+                :state="getState('lastName')"
               >
                 <input
                   type="text"
                   :ref="validateFieldName('lastName')"
-                  v-bind:name="validateFieldName('lastName')"
+                  :name="validateFieldName('lastName')"
                   v-model="bag.data.lastName"
-                  v-on:blur="onFieldBlur"
+                  @blur="onFieldBlur"
                   required
                 />
               </p-text-field-wrapper>
@@ -85,15 +85,15 @@
             :theme="storefrontTheme"
             label="Email address"
             class="form-row-spacing"
-            v-bind:message="bag.errors.email"
-            v-bind:state="getState('email')"
+            :message="bag.errors.email"
+            :state="getState('email')"
           >
             <input
               type="email"
               :ref="validateFieldName('email')"
-              v-bind:name="validateFieldName('email')"
+              :name="validateFieldName('email')"
               v-model="bag.data.email"
-              v-on:blur="onFieldBlur"
+              @blur="onFieldBlur"
               required
             />
           </p-text-field-wrapper>
@@ -101,23 +101,23 @@
             :theme="storefrontTheme"
             label="Password"
             class="form-row-spacing"
-            v-bind:message="bag.errors.password"
-            v-bind:state="getState('password')"
+            :message="bag.errors.password"
+            :state="getState('password')"
           >
             <input
               type="password"
               :ref="validateFieldName('password')"
-              v-bind:name="validateFieldName('password')"
+              :name="validateFieldName('password')"
               v-model="bag.data.password"
-              v-on:blur="onFieldBlur"
+              @blur="onFieldBlur"
               required
             />
           </p-text-field-wrapper>
           <p-checkbox-wrapper
             :theme="storefrontTheme"
             class="form-section-spacing"
-            v-bind:message="bag.errors.terms"
-            v-bind:state="getState('terms')"
+            :message="bag.errors.terms"
+            :state="getState('terms')"
           >
             <span slot="label" id="terms">
               I have read the
@@ -126,9 +126,9 @@
             <input
               type="checkbox"
               :ref="validateFieldName('terms')"
-              v-bind:name="validateFieldName('terms')"
+              :name="validateFieldName('terms')"
               v-model="bag.data.terms"
-              v-on:change="onFieldBlur"
+              @change="onFieldBlur"
               required
               aria-labelledby="terms"
             />
@@ -136,8 +136,8 @@
           <p-checkbox-wrapper
             :theme="storefrontTheme"
             class="form-row-spacing"
-            v-bind:message="bag.errors.privacy"
-            v-bind:state="getState('privacy')"
+            :message="bag.errors.privacy"
+            :state="getState('privacy')"
           >
             <span slot="label" id="privacy"
               >I have read the <a href="https://porsche.com">Data Privacy Statement</a>.</span
@@ -145,9 +145,9 @@
             <input
               type="checkbox"
               :ref="validateFieldName('privacy')"
-              v-bind:name="validateFieldName('privacy')"
+              :name="validateFieldName('privacy')"
               v-model="bag.data.privacy"
-              v-on:change="onFieldBlur"
+              @change="onFieldBlur"
               required
               aria-labelledby="privacy"
             />
