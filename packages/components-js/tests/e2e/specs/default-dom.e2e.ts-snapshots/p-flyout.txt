@@ -1,7 +1,7 @@
 <dialog inert="" tabindex="-1" aria-modal="true" aria-hidden="true">
   <div class="scroller">
     <div class="flyout">
-      <p-button-pure class="dismiss hydrated"> Dismiss flyout</p-button-pure>
+      <p-button class="dismiss hydrated"> Dismiss flyout</p-button>
       <slot> </slot>
     </div>
   </div>

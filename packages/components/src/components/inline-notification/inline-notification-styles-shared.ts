@@ -56,6 +56,7 @@ export const getNotificationRootJssStyle = (
 };
 
 export const getNotificationIconJssStyle = (): JssStyle => ({
+  marginTop: '2px', // To be center aligned with close button
   [mediaQueryMaxS]: {
     display: 'none',
   },
@@ -65,6 +66,7 @@ export const getNotificationContentJssStyle = (): JssStyle => ({
   display: 'grid',
   gap: spacingStaticXSmall,
   maxWidth: '50rem',
+  marginTop: '2px', // To be center aligned with close button
   [mediaQueryMinS]: {
     marginLeft: `-${spacingStaticSmall}`,
   },

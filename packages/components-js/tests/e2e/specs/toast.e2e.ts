@@ -67,7 +67,7 @@ const waitForAnimationFinish = () => sleep(ANIMATION_DURATION);
 
 const getHost = (page: Page) => page.locator('p-toast');
 const getToastItem = (page: Page) => page.locator('p-toast p-toast-item');
-const getCloseButton = (page: Page) => page.locator('p-toast p-toast-item p-button-pure');
+const getCloseButton = (page: Page) => page.locator('p-toast p-toast-item p-button');
 
 for (const state of TOAST_STATES) {
   test(`should forward state: ${state} to p-toast-item`, async ({ page }) => {
@@ -132,7 +132,7 @@ test.describe('lifecycle', () => {
     expect(status.componentDidLoad['p-toast'], 'componentDidLoad: p-toast').toBe(1);
     expect(status.componentDidLoad['p-toast-item'], 'componentDidLoad: p-icon').toBe(1);
     expect(status.componentDidLoad['p-icon'], 'componentDidLoad: p-icon').toBe(2);
-    expect(status.componentDidLoad['p-button-pure'], 'componentDidLoad: p-button-pure').toBe(1);
+    expect(status.componentDidLoad['p-button'], 'componentDidLoad: p-button').toBe(1);
 
     expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(1);
     expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(5);
@@ -155,7 +155,7 @@ test.describe('lifecycle', () => {
 test.describe('toast-item', () => {
   test('should render close button with type of "button"', async ({ page }) => {
     await initToastWithToastItem(page);
-    const closeBtnReal = page.locator('p-toast p-toast-item p-button-pure button');
+    const closeBtnReal = page.locator('p-toast p-toast-item p-button button');
     expect(await getAttribute(closeBtnReal, 'type')).toBe('button');
   });
 

@@ -125,7 +125,7 @@ const buildTabPanel = (id: number) => `<div id="tab-panel-${id}" hidden tabindex
   
 @Component
 export default class Code extends Vue {
-  config = { themeable: true };
+  config = { themeable: true, overflowX: 'visible' };
 
   codeExampleAccessibility = getTabsBarCodeSamples('example-accessibility');
   codeExampleBasic = getTabsBarCodeSamples('example-basic');

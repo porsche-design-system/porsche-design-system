@@ -1,6 +1,5 @@
 import { type JssStyle } from 'jss';
 import {
-  borderRadiusSmall,
   frostedGlassStyle,
   gridGap,
   spacingFluidLarge,
@@ -10,6 +9,7 @@ import {
 } from '@porsche-design-system/styles';
 import {
   cssVariableTransitionDuration,
+  dismissButtonJssStyle,
   getThemedColors,
   getTransition,
   motionDurationMap,
@@ -175,24 +175,9 @@ export const getDialogTransitionJssStyle = (isVisible: boolean, slideIn: '^' | '
   };
 };
 
-export const getDismissButtonJssStyle = (
-  theme: Theme,
-  isOpen: boolean,
-  applyAutoFocusHack: boolean = false
-): JssStyle => {
-  const { backgroundSurfaceColor } = getThemedColors(theme);
-  const { backgroundSurfaceColor: backgroundSurfaceColorDark } = getThemedColors('dark');
-
+export const getDialogDismissButtonJssStyle = (isOpen: boolean, applyAutoFocusHack: boolean = false): JssStyle => {
   return {
-    width: 'fit-content',
-    height: 'fit-content',
-    border: `2px solid ${backgroundSurfaceColor}`, // needed to enlarge button slightly without affecting the hover area (are equal now).
-    borderRadius: borderRadiusSmall,
-    background: backgroundSurfaceColor,
-    ...prefersColorSchemeDarkMediaQuery(theme, {
-      background: backgroundSurfaceColorDark,
-      borderColor: backgroundSurfaceColorDark,
-    }),
+    ...dismissButtonJssStyle,
     // we need to ensure that the dismiss button, which gets auto focused by `.showModal()`, to always be in the
     // viewport (or off the view on the start-hand side) before the dialog transition starts otherwise the transition
     // won't work in all cases, e.g. `dir="rtl"` and `<p-flyout position="end" />`. Because auto focus would force the

@@ -45,23 +45,19 @@
         }
       },
       {
-        "p-button-pure": {
+        "p-button": {
           "properties": {
             "type": "button",
             "disabled": false,
             "loading": false,
-            "size": "small",
-            "weight": "regular",
+            "variant": "ghost",
             "icon": "close",
-            "underline": false,
-            "active": false,
             "hideLabel": true,
-            "alignLabel": "end",
-            "stretch": false,
+            "compact": false,
             "theme": "dark"
           },
           "children": "Close notification",
-          "hostPdsComponent": "p-button-pure"
+          "hostPdsComponent": "p-button"
         }
       },
       {

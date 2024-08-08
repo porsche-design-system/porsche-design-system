@@ -44,12 +44,12 @@ const initInlineNotification = (
 };
 
 const getHost = (page: Page) => page.locator('p-inline-notification');
-const getCloseButton = (page: Page) => page.locator('p-inline-notification p-button-pure.close');
-const getActionButton = (page: Page) => page.locator('p-inline-notification p-button-pure.action');
+const getCloseButton = (page: Page) => page.locator('p-inline-notification .close');
+const getActionButton = (page: Page) => page.locator('p-inline-notification .action');
 
 test('should render close button with type of "button"', async ({ page }) => {
   await initInlineNotification(page);
-  const closeBtnReal = page.locator('p-inline-notification p-button-pure button');
+  const closeBtnReal = page.locator('p-inline-notification .close button');
   expect(await getAttribute(closeBtnReal, 'type')).toBe('button');
 });
 
@@ -112,8 +112,8 @@ test.describe('lifecycle', () => {
     const status = await getLifecycleStatus(page);
 
     expect(status.componentDidLoad['p-inline-notification'], 'componentDidLoad: p-inline-notification').toBe(1);
-    expect(status.componentDidLoad['p-icon'], 'componentDidLoad: p-icon').toBe(2); // one included in button-pure
-    expect(status.componentDidLoad['p-button-pure'], 'componentDidLoad: p-button-pure').toBe(1);
+    expect(status.componentDidLoad['p-icon'], 'componentDidLoad: p-icon').toBe(2); // one included in button
+    expect(status.componentDidLoad['p-button'], 'componentDidLoad: p-button').toBe(1);
 
     expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(4);
     expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(0);

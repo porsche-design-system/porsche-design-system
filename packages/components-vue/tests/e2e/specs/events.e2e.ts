@@ -121,7 +121,7 @@ test.describe('banner', () => {
 
     const banner = page.locator('p-banner');
     const bannerOpenBtn = page.locator('p-banner ~ button');
-    const bannerCloseBtn = page.locator('p-banner p-inline-notification p-button-pure.close');
+    const bannerCloseBtn = page.locator('p-banner p-inline-notification .close');
     const bannerDismissEventCounter = page.locator('p-banner + p');
 
     await bannerOpenBtn.click();
@@ -149,7 +149,7 @@ test.describe('modal', () => {
     await goto(page, 'events');
 
     const modalOpenBtn = page.locator('p-modal ~ button');
-    const modalCloseBtn = page.locator('p-modal p-button-pure button');
+    const modalCloseBtn = page.locator('p-modal p-button button');
     const modalDismissEventCounter = page.locator('p-modal + p');
 
     await modalOpenBtn.click();

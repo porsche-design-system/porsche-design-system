@@ -11,6 +11,6 @@
     <slot> </slot>
   </p>
 </div>
-<p-button-pure class="close hydrated" aria-controls="banner">
-  Close notification</p-button-pure
+<p-button class="close hydrated" aria-controls="banner">
+  Close notification</p-button
 >

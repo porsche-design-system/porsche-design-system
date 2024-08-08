@@ -9,7 +9,7 @@ import {
   getDialogJssStyle,
   getDialogStickyAreaJssStyle,
   getDialogTransitionJssStyle,
-  getDismissButtonJssStyle,
+  getDialogDismissButtonJssStyle,
   getScrollerJssStyle,
 } from '../../styles/dialog-styles';
 
@@ -83,7 +83,7 @@ export const getComponentCss = (
       maxWidth: `var(${cssVariableMaxWidth},1180px)`,
     },
     dismiss: {
-      ...getDismissButtonJssStyle(theme, isOpen, !isPositionStart),
+      ...getDialogDismissButtonJssStyle(isOpen, !isPositionStart),
       gridArea: '1/3',
       zIndex: 4, // ensures dismiss button is above everything
       position: 'sticky',

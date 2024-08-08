@@ -7,13 +7,23 @@
     </div>
   </div>
   <div class="action-prev">
-    <button type="button" tabindex="-1" aria-hidden="true" aria-label="prev">
-      <p-icon class="icon hydrated"> </p-icon>
-    </button>
+    <p-button
+      class="action-button hydrated"
+      hide-label="true"
+      tabindex="-1"
+      dir="ltr"
+    >
+      prev</p-button
+    >
   </div>
   <div class="action-next">
-    <button type="button" tabindex="-1" aria-hidden="true" aria-label="next">
-      <p-icon class="icon hydrated"> </p-icon>
-    </button>
+    <p-button
+      class="action-button hydrated"
+      hide-label="true"
+      tabindex="-1"
+      dir="ltr"
+    >
+      next</p-button
+    >
   </div>
 </div>

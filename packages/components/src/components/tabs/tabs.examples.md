@@ -74,7 +74,7 @@ const buildTabsItem = (name: string, index: number) =>
   
 @Component
 export default class Code extends Vue {
-  config = { themeable: true };
+  config = { themeable: true, overflowX: 'visible' };
 
   basic =
 `<p-tabs>

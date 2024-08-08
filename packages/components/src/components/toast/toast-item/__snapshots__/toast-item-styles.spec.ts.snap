@@ -33,6 +33,7 @@ p {
   display: grid;
   gap: 4px;
   max-width: 50rem;
+  margin-top: 2px;
 }
 @media(min-width:760px) {
   :host {
@@ -43,6 +44,13 @@ p {
   }
 }
 
+.icon {
+  margin-top: 2px;
+}
+.close {
+  --p-internal-button-scaling: 0;
+  mix-blend-mode: plus-lighter;
+}
 @media(max-width:759px) {
   .icon {
     display: none;
@@ -84,6 +92,7 @@ p {
   display: grid;
   gap: 4px;
   max-width: 50rem;
+  margin-top: 2px;
 }
 @media(min-width:760px) {
   :host {
@@ -94,6 +103,13 @@ p {
   }
 }
 
+.icon {
+  margin-top: 2px;
+}
+.close {
+  --p-internal-button-scaling: 0;
+  mix-blend-mode: multiply;
+}
 @media(max-width:759px) {
   .icon {
     display: none;
@@ -135,6 +151,7 @@ p {
   display: grid;
   gap: 4px;
   max-width: 50rem;
+  margin-top: 2px;
 }
 @media(min-width:760px) {
   :host {
@@ -145,6 +162,13 @@ p {
   }
 }
 
+.icon {
+  margin-top: 2px;
+}
+.close {
+  --p-internal-button-scaling: 0;
+  mix-blend-mode: plus-lighter;
+}
 @media(max-width:759px) {
   .icon {
     display: none;
@@ -186,6 +210,7 @@ p {
   display: grid;
   gap: 4px;
   max-width: 50rem;
+  margin-top: 2px;
 }
 @media(min-width:760px) {
   :host {
@@ -196,6 +221,13 @@ p {
   }
 }
 
+.icon {
+  margin-top: 2px;
+}
+.close {
+  --p-internal-button-scaling: 0;
+  mix-blend-mode: multiply;
+}
 @media(max-width:759px) {
   .icon {
     display: none;
@@ -237,6 +269,7 @@ p {
   display: grid;
   gap: 4px;
   max-width: 50rem;
+  margin-top: 2px;
 }
 @media(min-width:760px) {
   :host {
@@ -247,6 +280,13 @@ p {
   }
 }
 
+.icon {
+  margin-top: 2px;
+}
+.close {
+  --p-internal-button-scaling: 0;
+  mix-blend-mode: plus-lighter;
+}
 @media(max-width:759px) {
   .icon {
     display: none;
@@ -288,6 +328,7 @@ p {
   display: grid;
   gap: 4px;
   max-width: 50rem;
+  margin-top: 2px;
 }
 @media(min-width:760px) {
   :host {
@@ -298,6 +339,13 @@ p {
   }
 }
 
+.icon {
+  margin-top: 2px;
+}
+.close {
+  --p-internal-button-scaling: 0;
+  mix-blend-mode: multiply;
+}
 @media(max-width:759px) {
   .icon {
     display: none;

@@ -71,7 +71,8 @@ export class ToastItem {
           aria-hidden="true"
         />
         <p id={toastId} innerHTML={this.text}></p>
-        <PrefixedTagNames.pButtonPure
+        <PrefixedTagNames.pButton
+          variant="ghost"
           theme={this.theme}
           class="close"
           type="button"
@@ -81,7 +82,7 @@ export class ToastItem {
           onClick={this.dismiss.emit}
         >
           Close notification message
-        </PrefixedTagNames.pButtonPure>
+        </PrefixedTagNames.pButton>
       </Host>
     );
   }

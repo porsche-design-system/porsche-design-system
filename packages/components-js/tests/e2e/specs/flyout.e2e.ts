@@ -27,8 +27,8 @@ const getFlyout = (page: Page) => page.locator('p-flyout dialog');
 const getFlyoutScroller = (page: Page) => page.locator('p-flyout dialog .scroller');
 const getHeader = (page: Page) => page.locator('p-flyout slot[name="header"]');
 const getFooter = (page: Page) => page.locator('p-flyout slot[name="footer"]');
-const getFlyoutDismissButton = (page: Page) => page.locator('p-flyout p-button-pure.dismiss');
-const getFlyoutDismissButtonReal = (page: Page) => page.locator('p-flyout p-button-pure.dismiss button');
+const getFlyoutDismissButton = (page: Page) => page.locator('p-flyout .dismiss');
+const getFlyoutDismissButtonReal = (page: Page) => page.locator('p-flyout .dismiss button');
 const getBodyStyle = async (page: Page) => getAttribute(page.locator('body'), 'style');
 const getFlyoutVisibility = async (page: Page) => await getElementStyle(getFlyout(page), 'visibility');
 const waitForFlyoutTransition = async () => sleep(CSS_TRANSITION_DURATION);
@@ -137,7 +137,7 @@ const removeHeaderSlot = async (host: Locator) => {
 
 const expectDismissButtonToBeFocused = async (page: Page, failMessage?: string) => {
   const host = getHost(page);
-  expect(await getActiveElementTagNameInShadowRoot(host), failMessage).toBe('P-BUTTON-PURE');
+  expect(await getActiveElementTagNameInShadowRoot(host), failMessage).toBe('P-BUTTON');
   expect(await getActiveElementClassNameInShadowRoot(host), failMessage).toContain('dismiss');
 };
 
@@ -624,7 +624,7 @@ test.describe('lifecycle', () => {
     const status = await getLifecycleStatus(page);
 
     expect(status.componentDidLoad['p-flyout'], 'componentDidLoad: p-flyout').toBe(1);
-    expect(status.componentDidLoad['p-button-pure'], 'componentDidLoad: p-button-pure').toBe(1); // includes p-icon
+    expect(status.componentDidLoad['p-button'], 'componentDidLoad: p-button').toBe(1); // includes p-icon
 
     expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(3);
     expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(0);
@@ -650,7 +650,7 @@ test.describe('lifecycle', () => {
     const status = await getLifecycleStatus(page);
 
     expect(status.componentDidLoad['p-flyout'], 'componentDidLoad: p-flyout').toBe(1);
-    expect(status.componentDidLoad['p-button-pure'], 'componentDidLoad: p-button-pure').toBe(1); // includes p-icon
+    expect(status.componentDidLoad['p-button'], 'componentDidLoad: p-button').toBe(1); // includes p-icon
 
     expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(3);
     expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(0);
@@ -673,7 +673,7 @@ test.describe('lifecycle', () => {
     const status = await getLifecycleStatus(page);
 
     expect(status.componentDidLoad['p-flyout'], 'componentDidLoad: p-flyout').toBe(1);
-    expect(status.componentDidLoad['p-button-pure'], 'componentDidLoad: p-button-pure').toBe(1); // includes p-icon
+    expect(status.componentDidLoad['p-button'], 'componentDidLoad: p-button').toBe(1); // includes p-icon
 
     expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(3);
     expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(0);

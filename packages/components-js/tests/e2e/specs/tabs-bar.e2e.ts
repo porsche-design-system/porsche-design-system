@@ -573,8 +573,9 @@ test.describe('lifecycle', () => {
     expect(status.componentDidLoad['p-tabs-bar'], 'componentDidLoad: p-tabs-bar').toBe(1);
     expect(status.componentDidLoad['p-scroller'], 'componentDidLoad: p-scroller').toBe(1);
     expect(status.componentDidLoad['p-icon'], 'componentDidLoad: p-icon').toBe(2);
+    expect(status.componentDidLoad['p-button'], 'componentDidLoad: p-button').toBe(2);
 
-    expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(4);
+    expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(6);
     expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(0);
   });
 
@@ -585,8 +586,9 @@ test.describe('lifecycle', () => {
     expect(status.componentDidLoad['p-tabs-bar'], 'componentDidLoad: p-tabs-bar').toBe(1);
     expect(status.componentDidLoad['p-scroller'], 'componentDidLoad: p-scroller').toBe(1);
     expect(status.componentDidLoad['p-icon'], 'componentDidLoad: p-icon').toBe(2);
+    expect(status.componentDidLoad['p-button'], 'componentDidLoad: p-button').toBe(2);
 
-    expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(4);
+    expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(6);
     expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(0);
   });
 
@@ -601,7 +603,7 @@ test.describe('lifecycle', () => {
     expect(status.componentDidUpdate['p-tabs-bar'], 'componentDidUpdate: p-tabs-bar').toBe(1);
     expect(status.componentDidUpdate['p-scroller'], 'componentDidUpdate: p-scroller').toBe(0);
 
-    expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(4);
+    expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(6);
     expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(1);
   });
 });

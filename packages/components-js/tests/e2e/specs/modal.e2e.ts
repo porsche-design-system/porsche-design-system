@@ -25,7 +25,7 @@ const getScrollContainer = (page: Page) => page.locator('p-modal .scroller');
 const getHeading = (page: Page) => page.locator('p-modal slot[name="heading"]');
 const getHeader = (page: Page) => page.locator('p-modal slot[name="header"]');
 const getModal = (page: Page) => page.locator('p-modal .root');
-const getDismissButton = (page: Page) => page.locator('p-modal p-button-pure.dismiss');
+const getDismissButton = (page: Page) => page.locator('p-modal .dismiss');
 const getFooter = (page: Page) => page.locator('p-modal slot[name="footer"]');
 const getFooterBoxShadow = async (page: Page): Promise<string> => getElementStyle(getFooter(page), 'boxShadow');
 const getBodyStyle = async (page: Page) => getAttribute(page.locator('body'), 'style');
@@ -129,7 +129,7 @@ const expectDialogToBeFocused = async (page: Page, failMessage?: string) => {
 
 const expectDismissButtonToBeFocused = async (page: Page, failMessage?: string) => {
   const host = getHost(page);
-  expect(await getActiveElementTagNameInShadowRoot(host), failMessage).toBe('P-BUTTON-PURE');
+  expect(await getActiveElementTagNameInShadowRoot(host), failMessage).toBe('P-BUTTON');
   expect(await getActiveElementClassNameInShadowRoot(host), failMessage).toContain('dismiss');
 };
 
@@ -168,7 +168,7 @@ test.describe('can be dismissed', () => {
     const dismissBtn = getDismissButton(page);
     expect(dismissBtn).not.toBeNull();
 
-    const dismissBtnReal = page.locator('p-modal p-button-pure.dismiss button');
+    const dismissBtnReal = page.locator('p-modal .dismiss button');
     expect(await getAttribute(dismissBtnReal, 'type')).toBe('button');
 
     await dismissBtn.click();
@@ -674,7 +674,7 @@ test.describe('lifecycle', () => {
     const status = await getLifecycleStatus(page);
 
     expect(status.componentDidLoad['p-modal'], 'componentDidLoad: p-modal').toBe(1);
-    expect(status.componentDidLoad['p-button-pure'], 'componentDidLoad: p-button-pure').toBe(1); // includes p-icon
+    expect(status.componentDidLoad['p-button'], 'componentDidLoad: p-button').toBe(1); // includes p-icon
 
     expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(3);
     expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(0);
@@ -701,7 +701,7 @@ test.describe('lifecycle', () => {
     const status = await getLifecycleStatus(page);
 
     expect(status.componentDidLoad['p-modal'], 'componentDidLoad: p-modal').toBe(1);
-    expect(status.componentDidLoad['p-button-pure'], 'componentDidLoad: p-button-pure').toBe(1); // includes p-icon
+    expect(status.componentDidLoad['p-button'], 'componentDidLoad: p-button').toBe(1); // includes p-icon
 
     expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(3);
     expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(0);
@@ -724,7 +724,7 @@ test.describe('lifecycle', () => {
     const status = await getLifecycleStatus(page);
 
     expect(status.componentDidLoad['p-modal'], 'componentDidLoad: p-modal').toBe(1);
-    expect(status.componentDidLoad['p-button-pure'], 'componentDidLoad: p-button-pure').toBe(1); // includes p-icon
+    expect(status.componentDidLoad['p-button'], 'componentDidLoad: p-button').toBe(1); // includes p-icon
 
     expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(3);
     expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(0);

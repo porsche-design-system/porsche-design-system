@@ -33,10 +33,13 @@ const scenario = async (page: Page, theme: Theme, scheme?: PrefersColorScheme): 
   });
 
   await forceHoverState(page, '.hover p-inline-notification a');
+  await forceHoverState(page, '.hover p-inline-notification >>> p-button >>> button');
   await forceHoverState(page, '.hover p-inline-notification >>> p-button-pure >>> button');
   await forceFocusVisibleState(page, '.focus p-inline-notification a');
+  await forceFocusVisibleState(page, '.focus p-inline-notification >>> p-button >>> button');
   await forceFocusVisibleState(page, '.focus p-inline-notification >>> p-button-pure >>> button');
   await forceFocusHoverState(page, '.focus-hover p-inline-notification a');
+  await forceFocusHoverState(page, '.focus-hover p-inline-notification >>> p-button >>> button');
   await forceFocusHoverState(page, '.focus-hover p-inline-notification >>> p-button-pure >>> button');
 };
 
