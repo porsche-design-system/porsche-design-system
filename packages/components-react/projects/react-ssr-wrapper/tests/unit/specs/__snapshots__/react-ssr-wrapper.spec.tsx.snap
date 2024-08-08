@@ -852,6 +852,7 @@ img {
   display: inline-block;
   vertical-align: top !important;
   outline: 0 !important;
+  border-radius: 4px !important;
   color-scheme: light dark !important;
 }
 :host([hidden]) {
@@ -867,17 +868,17 @@ img {
   -webkit-appearance: none;
   appearance: none;
   text-decoration: none;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
   border: 2px solid #FBFCFF;
   border-radius: 4px;
   transform: translate3d(0,0,0);
   background-color: #FBFCFF;
   color: #010205;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: auto;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  padding: 13px 26px;
-  gap: 8px;
+  padding: calc(var(--p-internal-link-scaling, 1) * 0.8125 * 16px ) max(calc(var(--p-internal-link-scaling, 1) * 1.625 * 16px ), 4px);
+  gap: clamp(2px, calc(var(--p-internal-link-scaling, 1) * 0.5 * 16px), 16px);
 }
 .root::-moz-focus-inner {
   border: 0;
@@ -925,6 +926,7 @@ img {
   display: inline-block;
   vertical-align: top !important;
   outline: 0 !important;
+  border-radius: 4px !important;
   color-scheme: light dark !important;
 }
 :host([hidden]) {
@@ -940,17 +942,17 @@ img {
   -webkit-appearance: none;
   appearance: none;
   text-decoration: none;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
   border: 2px solid #FBFCFF;
   border-radius: 4px;
   transform: translate3d(0,0,0);
   background-color: transparent;
   color: #FBFCFF;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: auto;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  padding: 13px 26px;
-  gap: 8px;
+  padding: calc(var(--p-internal-link-scaling, 1) * 0.8125 * 16px ) max(calc(var(--p-internal-link-scaling, 1) * 1.625 * 16px ), 4px);
+  gap: clamp(2px, calc(var(--p-internal-link-scaling, 1) * 0.5 * 16px), 16px);
 }
 .root::-moz-focus-inner {
   border: 0;
@@ -1201,6 +1203,7 @@ img {
   display: inline-block;
   vertical-align: top !important;
   outline: 0 !important;
+  border-radius: 4px !important;
   color-scheme: light dark !important;
 }
 :host([hidden]) {
@@ -1235,17 +1238,17 @@ img {
   -webkit-appearance: none;
   appearance: none;
   text-decoration: none;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
   border: 2px solid #FBFCFF;
   border-radius: 4px;
   transform: translate3d(0,0,0);
   background-color: #FBFCFF;
   color: #010205;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: auto;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  padding: 13px 26px;
-  gap: 8px;
+  padding: calc(var(--p-internal-link-scaling, 1) * 0.8125 * 16px ) max(calc(var(--p-internal-link-scaling, 1) * 1.625 * 16px ), 4px);
+  gap: clamp(2px, calc(var(--p-internal-link-scaling, 1) * 0.5 * 16px), 16px);
 }
 .label {
   position: static;
@@ -1292,6 +1295,7 @@ img {
   display: inline-block;
   vertical-align: top !important;
   outline: 0 !important;
+  border-radius: 4px !important;
   color-scheme: light dark !important;
 }
 :host([hidden]) {
@@ -1326,17 +1330,17 @@ img {
   -webkit-appearance: none;
   appearance: none;
   text-decoration: none;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
   border: 2px solid #FBFCFF;
   border-radius: 4px;
   transform: translate3d(0,0,0);
   background-color: transparent;
   color: #FBFCFF;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: auto;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  padding: 13px 26px;
-  gap: 8px;
+  padding: calc(var(--p-internal-link-scaling, 1) * 0.8125 * 16px ) max(calc(var(--p-internal-link-scaling, 1) * 1.625 * 16px ), 4px);
+  gap: clamp(2px, calc(var(--p-internal-link-scaling, 1) * 0.5 * 16px), 16px);
 }
 .label {
   position: static;
@@ -1586,6 +1590,7 @@ img {
   display: inline-block;
   vertical-align: top !important;
   outline: 0 !important;
+  border-radius: 4px !important;
   color-scheme: light dark !important;
 }
 :host([hidden]) {
@@ -1620,17 +1625,17 @@ img {
   -webkit-appearance: none;
   appearance: none;
   text-decoration: none;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
   border: 2px solid #FBFCFF;
   border-radius: 4px;
   transform: translate3d(0,0,0);
   background-color: #FBFCFF;
   color: #010205;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: auto;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  padding: 13px 26px;
-  gap: 8px;
+  padding: calc(var(--p-internal-link-scaling, 1) * 0.8125 * 16px ) max(calc(var(--p-internal-link-scaling, 1) * 1.625 * 16px ), 4px);
+  gap: clamp(2px, calc(var(--p-internal-link-scaling, 1) * 0.5 * 16px), 16px);
 }
 .label {
   position: static;
@@ -1677,6 +1682,7 @@ img {
   display: inline-block;
   vertical-align: top !important;
   outline: 0 !important;
+  border-radius: 4px !important;
   color-scheme: light dark !important;
 }
 :host([hidden]) {
@@ -1711,17 +1717,17 @@ img {
   -webkit-appearance: none;
   appearance: none;
   text-decoration: none;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
   border: 2px solid #FBFCFF;
   border-radius: 4px;
   transform: translate3d(0,0,0);
   background-color: transparent;
   color: #FBFCFF;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: auto;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  padding: 13px 26px;
-  gap: 8px;
+  padding: calc(var(--p-internal-link-scaling, 1) * 0.8125 * 16px ) max(calc(var(--p-internal-link-scaling, 1) * 1.625 * 16px ), 4px);
+  gap: clamp(2px, calc(var(--p-internal-link-scaling, 1) * 0.5 * 16px), 16px);
 }
 .label {
   position: static;
@@ -1971,6 +1977,7 @@ img {
   display: inline-block;
   vertical-align: top !important;
   outline: 0 !important;
+  border-radius: 4px !important;
   color-scheme: light dark !important;
 }
 :host([hidden]) {
@@ -2005,17 +2012,17 @@ img {
   -webkit-appearance: none;
   appearance: none;
   text-decoration: none;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
   border: 2px solid #FBFCFF;
   border-radius: 4px;
   transform: translate3d(0,0,0);
   background-color: #FBFCFF;
   color: #010205;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: auto;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  padding: 13px 26px;
-  gap: 8px;
+  padding: calc(var(--p-internal-link-scaling, 1) * 0.8125 * 16px ) max(calc(var(--p-internal-link-scaling, 1) * 1.625 * 16px ), 4px);
+  gap: clamp(2px, calc(var(--p-internal-link-scaling, 1) * 0.5 * 16px), 16px);
 }
 .label {
   position: static;
@@ -2065,6 +2072,7 @@ img {
   display: inline-block;
   vertical-align: top !important;
   outline: 0 !important;
+  border-radius: 4px !important;
   color-scheme: light dark !important;
 }
 :host([hidden]) {
@@ -2099,17 +2107,17 @@ img {
   -webkit-appearance: none;
   appearance: none;
   text-decoration: none;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
   border: 2px solid #FBFCFF;
   border-radius: 4px;
   transform: translate3d(0,0,0);
   background-color: transparent;
   color: #FBFCFF;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: auto;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  padding: 13px 26px;
-  gap: 8px;
+  padding: calc(var(--p-internal-link-scaling, 1) * 0.8125 * 16px ) max(calc(var(--p-internal-link-scaling, 1) * 1.625 * 16px ), 4px);
+  gap: clamp(2px, calc(var(--p-internal-link-scaling, 1) * 0.5 * 16px), 16px);
 }
 .label {
   position: static;
@@ -3630,26 +3638,6 @@ exports[`manual test cases > should pass internal props correctly to p-stepper-h
 :host([hidden]) {
   display: none !important;
 }
-button {
-  display: flex;
-  pointer-events: auto;
-  align-items: center;
-  justify-content: center;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  height: calc(calc(6px + 2.125ex) + 4px);
-  width: calc(calc(6px + 2.125ex) + 4px);
-  border: 0;
-  outline: 0;
-  cursor: pointer;
-  background: #212225;
-  border-radius: 4px;
-  -webkit-backdrop-filter: blur(32px);
-  backdrop-filter: blur(32px);
-  visibility: hidden;
-}
-
 .root {
   position: relative;
   display: grid;
@@ -3698,7 +3686,6 @@ button {
   direction: ltr;
   width: calc(calc(6px + 2.125ex) + 24px);
   padding: 4px 0;
-  pointer-events: none;
   display: flex;
   align-items: center;
   left: -1px;
@@ -3706,7 +3693,7 @@ button {
   background: linear-gradient(to right, rgba(14,14,18,1) 20%,rgba(14,14,18,0.6) 48%,rgba(14,14,18,0.3) 68%,rgba(14,14,18,0) 100%);
   visibility: hidden;
 }
-.action-prev button {
+.action-prev .action-button {
   margin-left: 8px;
 }
 .action-next {
@@ -3716,7 +3703,6 @@ button {
   direction: ltr;
   width: calc(calc(6px + 2.125ex) + 24px);
   padding: 4px 0;
-  pointer-events: none;
   display: flex;
   align-items: center;
   right: -1px;
@@ -3724,8 +3710,11 @@ button {
   background: linear-gradient(to left, rgba(14,14,18,1) 20%,rgba(14,14,18,0.6) 48%,rgba(14,14,18,0.3) 68%,rgba(14,14,18,0) 100%);
   visibility: hidden;
 }
-.action-next button {
+.action-next .action-button {
   margin-right: 8px;
+}
+.action-button {
+  --p-internal-button-scaling: 0;
 }
 .icon:dir(rtl) {
   transform: scaleX(-1);
@@ -3754,21 +3743,100 @@ button {
           <div
             class="action-prev"
           >
-            <button
-              aria-hidden="true"
-              aria-label="prev"
+            <p-button
+              class="action-button ssr"
+              dir="ltr"
+              hide-label="true"
               tabindex="-1"
-              type="button"
             >
-              <p-icon
-                class="icon ssr"
+              <template
+                shadowroot="open"
+                shadowrootdelegatesfocus="true"
+                shadowrootmode="open"
               >
-                <template
-                  shadowroot="open"
-                  shadowrootmode="open"
+                <style>
+                  :host {
+  display: inline-block;
+  vertical-align: top !important;
+  outline: 0 !important;
+  border-radius: 4px !important;
+  color-scheme: light dark !important;
+}
+:host([hidden]) {
+  display: none !important;
+}
+.root {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  width: 100%;
+  box-sizing: border-box;
+  text-align: start;
+  -webkit-appearance: none;
+  appearance: none;
+  text-decoration: none;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  -webkit-backdrop-filter: blur(32px);
+  backdrop-filter: blur(32px);
+  border: none;
+  border-radius: 4px;
+  transform: translate3d(0,0,0);
+  background-color: hsl(240 3% 26%/35%);
+  color: #FBFCFF;
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  padding: calc(var(--p-internal-button-scaling, 1) * 0.8125 * 16px + 2px) max(calc(var(--p-internal-button-scaling, 1) * 1.625 * 16px + 2px), 6px);
+  gap: clamp(2px, calc(var(--p-internal-button-scaling, 1) * 0.5 * 16px), 16px);
+  cursor: pointer;
+  margin: 0;
+}
+.root::-moz-focus-inner {
+  border: 0;
+}
+.label {
+  position: static;
+  width: auto;
+  height: auto;
+  padding: 0;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
+  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+}
+.icon {
+  width: calc(6px + 2.125ex);
+  height: calc(6px + 2.125ex);
+  margin-inline-start: clamp(-16px, calc(var(--p-internal-button-scaling, 1) * -0.5 * 16px), -2px);
+  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+}
+.loading {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+}
+
+                </style>
+                <button
+                  class="root"
+                  type="button"
                 >
-                  <style>
-                    :host {
+                  <p-icon
+                    aria-hidden="true"
+                    class="icon ssr"
+                  >
+                    <template
+                      shadowroot="open"
+                      shadowrootmode="open"
+                    >
+                      <style>
+                        :host {
   display: inline-block;
   vertical-align: top;
   color-scheme: light dark !important;
@@ -3783,9 +3851,8 @@ img {
   pointer-events: none;
   filter: var(--p-internal-icon-filter,invert(100%) sepia(91%) saturate(38%) hue-rotate(254deg) brightness(110%) contrast(110%));
   -webkit-animation: rerender-dark-primary 1ms;
-  width: calc(6px + 2.125ex);
-  height: calc(6px + 2.125ex);
-  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  width: inherit;
+  height: inherit;
 }
 img:dir(rtl) {
   transform: scaleX(-1);
@@ -3798,36 +3865,128 @@ img:dir(rtl) {
     transform: rotateZ(0);
   }
 }
-                  </style>
-                  <img
-                    alt=""
-                    height="24"
-                    loading="lazy"
-                    src="http://localhost:3001/icons/arrow-head-left.cf1395d.svg"
-                    width="24"
-                  />
-                </template>
-              </p-icon>
-            </button>
+                      </style>
+                      <img
+                        alt=""
+                        height="24"
+                        loading="lazy"
+                        src="http://localhost:3001/icons/arrow-head-left.cf1395d.svg"
+                        width="24"
+                      />
+                    </template>
+                  </p-icon>
+                  <span
+                    class="label"
+                  >
+                    <slot />
+                  </span>
+                </button>
+                <span
+                  class="loading"
+                  id="loading"
+                  role="status"
+                />
+              </template>
+              prev
+            </p-button>
           </div>
           <div
             class="action-next"
           >
-            <button
-              aria-hidden="true"
-              aria-label="next"
+            <p-button
+              class="action-button ssr"
+              dir="ltr"
+              hide-label="true"
               tabindex="-1"
-              type="button"
             >
-              <p-icon
-                class="icon ssr"
+              <template
+                shadowroot="open"
+                shadowrootdelegatesfocus="true"
+                shadowrootmode="open"
               >
-                <template
-                  shadowroot="open"
-                  shadowrootmode="open"
+                <style>
+                  :host {
+  display: inline-block;
+  vertical-align: top !important;
+  outline: 0 !important;
+  border-radius: 4px !important;
+  color-scheme: light dark !important;
+}
+:host([hidden]) {
+  display: none !important;
+}
+.root {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  width: 100%;
+  box-sizing: border-box;
+  text-align: start;
+  -webkit-appearance: none;
+  appearance: none;
+  text-decoration: none;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  -webkit-backdrop-filter: blur(32px);
+  backdrop-filter: blur(32px);
+  border: none;
+  border-radius: 4px;
+  transform: translate3d(0,0,0);
+  background-color: hsl(240 3% 26%/35%);
+  color: #FBFCFF;
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  padding: calc(var(--p-internal-button-scaling, 1) * 0.8125 * 16px + 2px) max(calc(var(--p-internal-button-scaling, 1) * 1.625 * 16px + 2px), 6px);
+  gap: clamp(2px, calc(var(--p-internal-button-scaling, 1) * 0.5 * 16px), 16px);
+  cursor: pointer;
+  margin: 0;
+}
+.root::-moz-focus-inner {
+  border: 0;
+}
+.label {
+  position: static;
+  width: auto;
+  height: auto;
+  padding: 0;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
+  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+}
+.icon {
+  width: calc(6px + 2.125ex);
+  height: calc(6px + 2.125ex);
+  margin-inline-start: clamp(-16px, calc(var(--p-internal-button-scaling, 1) * -0.5 * 16px), -2px);
+  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+}
+.loading {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+}
+
+                </style>
+                <button
+                  class="root"
+                  type="button"
                 >
-                  <style>
-                    :host {
+                  <p-icon
+                    aria-hidden="true"
+                    class="icon ssr"
+                  >
+                    <template
+                      shadowroot="open"
+                      shadowrootmode="open"
+                    >
+                      <style>
+                        :host {
   display: inline-block;
   vertical-align: top;
   color-scheme: light dark !important;
@@ -3842,9 +4001,8 @@ img {
   pointer-events: none;
   filter: var(--p-internal-icon-filter,invert(100%) sepia(91%) saturate(38%) hue-rotate(254deg) brightness(110%) contrast(110%));
   -webkit-animation: rerender-dark-primary 1ms;
-  width: calc(6px + 2.125ex);
-  height: calc(6px + 2.125ex);
-  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  width: inherit;
+  height: inherit;
 }
 img:dir(rtl) {
   transform: scaleX(-1);
@@ -3857,17 +4015,30 @@ img:dir(rtl) {
     transform: rotateZ(0);
   }
 }
-                  </style>
-                  <img
-                    alt=""
-                    height="24"
-                    loading="lazy"
-                    src="http://localhost:3001/icons/arrow-head-right.304b330.svg"
-                    width="24"
-                  />
-                </template>
-              </p-icon>
-            </button>
+                      </style>
+                      <img
+                        alt=""
+                        height="24"
+                        loading="lazy"
+                        src="http://localhost:3001/icons/arrow-head-right.304b330.svg"
+                        width="24"
+                      />
+                    </template>
+                  </p-icon>
+                  <span
+                    class="label"
+                  >
+                    <slot />
+                  </span>
+                </button>
+                <span
+                  class="loading"
+                  id="loading"
+                  role="status"
+                />
+              </template>
+              next
+            </p-button>
           </div>
         </div>
       </template>
@@ -4169,27 +4340,6 @@ exports[`manual test cases > should pass internal props correctly to p-tabs-bar 
 :host([hidden]) {
   display: none !important;
 }
-button {
-  display: flex;
-  pointer-events: auto;
-  align-items: center;
-  justify-content: center;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  height: calc(calc(6px + 2.125ex) + 4px);
-  width: calc(calc(6px + 2.125ex) + 4px);
-  border: 0;
-  outline: 0;
-  cursor: pointer;
-  background: #FFF;
-  border-radius: 4px;
-  -webkit-backdrop-filter: blur(32px);
-  backdrop-filter: blur(32px);
-  visibility: hidden;
-  box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.16);
-}
-
 .root {
   position: relative;
   display: grid;
@@ -4238,7 +4388,6 @@ button {
   direction: ltr;
   width: calc(calc(6px + 2.125ex) + 24px);
   padding: 4px 0;
-  pointer-events: none;
   display: flex;
   align-items: flex-start;
   left: -1px;
@@ -4246,7 +4395,7 @@ button {
   background: linear-gradient(to right, rgba(255,255,255,1) 20%,rgba(255,255,255,0.6) 48%,rgba(255,255,255,0.3) 68%,rgba(255,255,255,0) 100%);
   visibility: hidden;
 }
-.action-prev button {
+.action-prev .action-button {
   margin-left: 8px;
 }
 .action-next {
@@ -4256,7 +4405,6 @@ button {
   direction: ltr;
   width: calc(calc(6px + 2.125ex) + 24px);
   padding: 4px 0;
-  pointer-events: none;
   display: flex;
   align-items: flex-start;
   right: -1px;
@@ -4264,8 +4412,12 @@ button {
   background: linear-gradient(to left, rgba(255,255,255,1) 20%,rgba(255,255,255,0.6) 48%,rgba(255,255,255,0.3) 68%,rgba(255,255,255,0) 100%);
   visibility: hidden;
 }
-.action-next button {
+.action-next .action-button {
   margin-right: 8px;
+}
+.action-button {
+  --p-internal-button-scaling: 0;
+  box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.16);
 }
 .icon:dir(rtl) {
   transform: scaleX(-1);
@@ -4293,21 +4445,100 @@ button {
           <div
             class="action-prev"
           >
-            <button
-              aria-hidden="true"
-              aria-label="prev"
+            <p-button
+              class="action-button ssr"
+              dir="ltr"
+              hide-label="true"
               tabindex="-1"
-              type="button"
             >
-              <p-icon
-                class="icon ssr"
+              <template
+                shadowroot="open"
+                shadowrootdelegatesfocus="true"
+                shadowrootmode="open"
               >
-                <template
-                  shadowroot="open"
-                  shadowrootmode="open"
+                <style>
+                  :host {
+  display: inline-block;
+  vertical-align: top !important;
+  outline: 0 !important;
+  border-radius: 4px !important;
+  color-scheme: light dark !important;
+}
+:host([hidden]) {
+  display: none !important;
+}
+.root {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  width: 100%;
+  box-sizing: border-box;
+  text-align: start;
+  -webkit-appearance: none;
+  appearance: none;
+  text-decoration: none;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  -webkit-backdrop-filter: blur(32px);
+  backdrop-filter: blur(32px);
+  border: none;
+  border-radius: 4px;
+  transform: translate3d(0,0,0);
+  background-color: hsl(240 4% 85%/35%);
+  color: #010205;
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  padding: calc(var(--p-internal-button-scaling, 1) * 0.8125 * 16px + 2px) max(calc(var(--p-internal-button-scaling, 1) * 1.625 * 16px + 2px), 6px);
+  gap: clamp(2px, calc(var(--p-internal-button-scaling, 1) * 0.5 * 16px), 16px);
+  cursor: pointer;
+  margin: 0;
+}
+.root::-moz-focus-inner {
+  border: 0;
+}
+.label {
+  position: static;
+  width: auto;
+  height: auto;
+  padding: 0;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
+  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+}
+.icon {
+  width: calc(6px + 2.125ex);
+  height: calc(6px + 2.125ex);
+  margin-inline-start: clamp(-16px, calc(var(--p-internal-button-scaling, 1) * -0.5 * 16px), -2px);
+  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+}
+.loading {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+}
+
+                </style>
+                <button
+                  class="root"
+                  type="button"
                 >
-                  <style>
-                    :host {
+                  <p-icon
+                    aria-hidden="true"
+                    class="icon ssr"
+                  >
+                    <template
+                      shadowroot="open"
+                      shadowrootmode="open"
+                    >
+                      <style>
+                        :host {
   display: inline-block;
   vertical-align: top;
   color-scheme: light dark !important;
@@ -4322,9 +4553,8 @@ img {
   pointer-events: none;
   filter: var(--p-internal-icon-filter,invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%));
   -webkit-animation: rerender-light-primary 1ms;
-  width: calc(6px + 2.125ex);
-  height: calc(6px + 2.125ex);
-  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  width: inherit;
+  height: inherit;
 }
 img:dir(rtl) {
   transform: scaleX(-1);
@@ -4337,36 +4567,128 @@ img:dir(rtl) {
     transform: rotateZ(0);
   }
 }
-                  </style>
-                  <img
-                    alt=""
-                    height="24"
-                    loading="lazy"
-                    src="http://localhost:3001/icons/arrow-head-left.cf1395d.svg"
-                    width="24"
-                  />
-                </template>
-              </p-icon>
-            </button>
+                      </style>
+                      <img
+                        alt=""
+                        height="24"
+                        loading="lazy"
+                        src="http://localhost:3001/icons/arrow-head-left.cf1395d.svg"
+                        width="24"
+                      />
+                    </template>
+                  </p-icon>
+                  <span
+                    class="label"
+                  >
+                    <slot />
+                  </span>
+                </button>
+                <span
+                  class="loading"
+                  id="loading"
+                  role="status"
+                />
+              </template>
+              prev
+            </p-button>
           </div>
           <div
             class="action-next"
           >
-            <button
-              aria-hidden="true"
-              aria-label="next"
+            <p-button
+              class="action-button ssr"
+              dir="ltr"
+              hide-label="true"
               tabindex="-1"
-              type="button"
             >
-              <p-icon
-                class="icon ssr"
+              <template
+                shadowroot="open"
+                shadowrootdelegatesfocus="true"
+                shadowrootmode="open"
               >
-                <template
-                  shadowroot="open"
-                  shadowrootmode="open"
+                <style>
+                  :host {
+  display: inline-block;
+  vertical-align: top !important;
+  outline: 0 !important;
+  border-radius: 4px !important;
+  color-scheme: light dark !important;
+}
+:host([hidden]) {
+  display: none !important;
+}
+.root {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  width: 100%;
+  box-sizing: border-box;
+  text-align: start;
+  -webkit-appearance: none;
+  appearance: none;
+  text-decoration: none;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  -webkit-backdrop-filter: blur(32px);
+  backdrop-filter: blur(32px);
+  border: none;
+  border-radius: 4px;
+  transform: translate3d(0,0,0);
+  background-color: hsl(240 4% 85%/35%);
+  color: #010205;
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  padding: calc(var(--p-internal-button-scaling, 1) * 0.8125 * 16px + 2px) max(calc(var(--p-internal-button-scaling, 1) * 1.625 * 16px + 2px), 6px);
+  gap: clamp(2px, calc(var(--p-internal-button-scaling, 1) * 0.5 * 16px), 16px);
+  cursor: pointer;
+  margin: 0;
+}
+.root::-moz-focus-inner {
+  border: 0;
+}
+.label {
+  position: static;
+  width: auto;
+  height: auto;
+  padding: 0;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
+  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+}
+.icon {
+  width: calc(6px + 2.125ex);
+  height: calc(6px + 2.125ex);
+  margin-inline-start: clamp(-16px, calc(var(--p-internal-button-scaling, 1) * -0.5 * 16px), -2px);
+  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+}
+.loading {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+}
+
+                </style>
+                <button
+                  class="root"
+                  type="button"
                 >
-                  <style>
-                    :host {
+                  <p-icon
+                    aria-hidden="true"
+                    class="icon ssr"
+                  >
+                    <template
+                      shadowroot="open"
+                      shadowrootmode="open"
+                    >
+                      <style>
+                        :host {
   display: inline-block;
   vertical-align: top;
   color-scheme: light dark !important;
@@ -4381,9 +4703,8 @@ img {
   pointer-events: none;
   filter: var(--p-internal-icon-filter,invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%));
   -webkit-animation: rerender-light-primary 1ms;
-  width: calc(6px + 2.125ex);
-  height: calc(6px + 2.125ex);
-  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  width: inherit;
+  height: inherit;
 }
 img:dir(rtl) {
   transform: scaleX(-1);
@@ -4396,17 +4717,30 @@ img:dir(rtl) {
     transform: rotateZ(0);
   }
 }
-                  </style>
-                  <img
-                    alt=""
-                    height="24"
-                    loading="lazy"
-                    src="http://localhost:3001/icons/arrow-head-right.304b330.svg"
-                    width="24"
-                  />
-                </template>
-              </p-icon>
-            </button>
+                      </style>
+                      <img
+                        alt=""
+                        height="24"
+                        loading="lazy"
+                        src="http://localhost:3001/icons/arrow-head-right.304b330.svg"
+                        width="24"
+                      />
+                    </template>
+                  </p-icon>
+                  <span
+                    class="label"
+                  >
+                    <slot />
+                  </span>
+                </button>
+                <span
+                  class="loading"
+                  id="loading"
+                  role="status"
+                />
+              </template>
+              next
+            </p-button>
           </div>
         </div>
       </template>
@@ -4560,26 +4894,6 @@ exports[`manual test cases > should pass internal props correctly to p-tabs-item
 :host([hidden]) {
   display: none !important;
 }
-button {
-  display: flex;
-  pointer-events: auto;
-  align-items: center;
-  justify-content: center;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  height: calc(calc(6px + 2.125ex) + 4px);
-  width: calc(calc(6px + 2.125ex) + 4px);
-  border: 0;
-  outline: 0;
-  cursor: pointer;
-  background: #212225;
-  border-radius: 4px;
-  -webkit-backdrop-filter: blur(32px);
-  backdrop-filter: blur(32px);
-  visibility: hidden;
-}
-
 .root {
   position: relative;
   display: grid;
@@ -4628,7 +4942,6 @@ button {
   direction: ltr;
   width: calc(calc(6px + 2.125ex) + 24px);
   padding: 4px 0;
-  pointer-events: none;
   display: flex;
   align-items: flex-start;
   left: -1px;
@@ -4636,7 +4949,7 @@ button {
   background: linear-gradient(to right, rgba(14,14,18,1) 20%,rgba(14,14,18,0.6) 48%,rgba(14,14,18,0.3) 68%,rgba(14,14,18,0) 100%);
   visibility: hidden;
 }
-.action-prev button {
+.action-prev .action-button {
   margin-left: 8px;
 }
 .action-next {
@@ -4646,7 +4959,6 @@ button {
   direction: ltr;
   width: calc(calc(6px + 2.125ex) + 24px);
   padding: 4px 0;
-  pointer-events: none;
   display: flex;
   align-items: flex-start;
   right: -1px;
@@ -4654,8 +4966,11 @@ button {
   background: linear-gradient(to left, rgba(14,14,18,1) 20%,rgba(14,14,18,0.6) 48%,rgba(14,14,18,0.3) 68%,rgba(14,14,18,0) 100%);
   visibility: hidden;
 }
-.action-next button {
+.action-next .action-button {
   margin-right: 8px;
+}
+.action-button {
+  --p-internal-button-scaling: 0;
 }
 .icon:dir(rtl) {
   transform: scaleX(-1);
@@ -4683,21 +4998,100 @@ button {
               <div
                 class="action-prev"
               >
-                <button
-                  aria-hidden="true"
-                  aria-label="prev"
+                <p-button
+                  class="action-button ssr"
+                  dir="ltr"
+                  hide-label="true"
                   tabindex="-1"
-                  type="button"
                 >
-                  <p-icon
-                    class="icon ssr"
+                  <template
+                    shadowroot="open"
+                    shadowrootdelegatesfocus="true"
+                    shadowrootmode="open"
                   >
-                    <template
-                      shadowroot="open"
-                      shadowrootmode="open"
+                    <style>
+                      :host {
+  display: inline-block;
+  vertical-align: top !important;
+  outline: 0 !important;
+  border-radius: 4px !important;
+  color-scheme: light dark !important;
+}
+:host([hidden]) {
+  display: none !important;
+}
+.root {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  width: 100%;
+  box-sizing: border-box;
+  text-align: start;
+  -webkit-appearance: none;
+  appearance: none;
+  text-decoration: none;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  -webkit-backdrop-filter: blur(32px);
+  backdrop-filter: blur(32px);
+  border: none;
+  border-radius: 4px;
+  transform: translate3d(0,0,0);
+  background-color: hsl(240 3% 26%/35%);
+  color: #FBFCFF;
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  padding: calc(var(--p-internal-button-scaling, 1) * 0.8125 * 16px + 2px) max(calc(var(--p-internal-button-scaling, 1) * 1.625 * 16px + 2px), 6px);
+  gap: clamp(2px, calc(var(--p-internal-button-scaling, 1) * 0.5 * 16px), 16px);
+  cursor: pointer;
+  margin: 0;
+}
+.root::-moz-focus-inner {
+  border: 0;
+}
+.label {
+  position: static;
+  width: auto;
+  height: auto;
+  padding: 0;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
+  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+}
+.icon {
+  width: calc(6px + 2.125ex);
+  height: calc(6px + 2.125ex);
+  margin-inline-start: clamp(-16px, calc(var(--p-internal-button-scaling, 1) * -0.5 * 16px), -2px);
+  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+}
+.loading {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+}
+
+                    </style>
+                    <button
+                      class="root"
+                      type="button"
                     >
-                      <style>
-                        :host {
+                      <p-icon
+                        aria-hidden="true"
+                        class="icon ssr"
+                      >
+                        <template
+                          shadowroot="open"
+                          shadowrootmode="open"
+                        >
+                          <style>
+                            :host {
   display: inline-block;
   vertical-align: top;
   color-scheme: light dark !important;
@@ -4712,9 +5106,8 @@ img {
   pointer-events: none;
   filter: var(--p-internal-icon-filter,invert(100%) sepia(91%) saturate(38%) hue-rotate(254deg) brightness(110%) contrast(110%));
   -webkit-animation: rerender-dark-primary 1ms;
-  width: calc(6px + 2.125ex);
-  height: calc(6px + 2.125ex);
-  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  width: inherit;
+  height: inherit;
 }
 img:dir(rtl) {
   transform: scaleX(-1);
@@ -4727,36 +5120,128 @@ img:dir(rtl) {
     transform: rotateZ(0);
   }
 }
-                      </style>
-                      <img
-                        alt=""
-                        height="24"
-                        loading="lazy"
-                        src="http://localhost:3001/icons/arrow-head-left.cf1395d.svg"
-                        width="24"
-                      />
-                    </template>
-                  </p-icon>
-                </button>
+                          </style>
+                          <img
+                            alt=""
+                            height="24"
+                            loading="lazy"
+                            src="http://localhost:3001/icons/arrow-head-left.cf1395d.svg"
+                            width="24"
+                          />
+                        </template>
+                      </p-icon>
+                      <span
+                        class="label"
+                      >
+                        <slot />
+                      </span>
+                    </button>
+                    <span
+                      class="loading"
+                      id="loading"
+                      role="status"
+                    />
+                  </template>
+                  prev
+                </p-button>
               </div>
               <div
                 class="action-next"
               >
-                <button
-                  aria-hidden="true"
-                  aria-label="next"
+                <p-button
+                  class="action-button ssr"
+                  dir="ltr"
+                  hide-label="true"
                   tabindex="-1"
-                  type="button"
                 >
-                  <p-icon
-                    class="icon ssr"
+                  <template
+                    shadowroot="open"
+                    shadowrootdelegatesfocus="true"
+                    shadowrootmode="open"
                   >
-                    <template
-                      shadowroot="open"
-                      shadowrootmode="open"
+                    <style>
+                      :host {
+  display: inline-block;
+  vertical-align: top !important;
+  outline: 0 !important;
+  border-radius: 4px !important;
+  color-scheme: light dark !important;
+}
+:host([hidden]) {
+  display: none !important;
+}
+.root {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  width: 100%;
+  box-sizing: border-box;
+  text-align: start;
+  -webkit-appearance: none;
+  appearance: none;
+  text-decoration: none;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  -webkit-backdrop-filter: blur(32px);
+  backdrop-filter: blur(32px);
+  border: none;
+  border-radius: 4px;
+  transform: translate3d(0,0,0);
+  background-color: hsl(240 3% 26%/35%);
+  color: #FBFCFF;
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  padding: calc(var(--p-internal-button-scaling, 1) * 0.8125 * 16px + 2px) max(calc(var(--p-internal-button-scaling, 1) * 1.625 * 16px + 2px), 6px);
+  gap: clamp(2px, calc(var(--p-internal-button-scaling, 1) * 0.5 * 16px), 16px);
+  cursor: pointer;
+  margin: 0;
+}
+.root::-moz-focus-inner {
+  border: 0;
+}
+.label {
+  position: static;
+  width: auto;
+  height: auto;
+  padding: 0;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
+  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+}
+.icon {
+  width: calc(6px + 2.125ex);
+  height: calc(6px + 2.125ex);
+  margin-inline-start: clamp(-16px, calc(var(--p-internal-button-scaling, 1) * -0.5 * 16px), -2px);
+  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+}
+.loading {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+}
+
+                    </style>
+                    <button
+                      class="root"
+                      type="button"
                     >
-                      <style>
-                        :host {
+                      <p-icon
+                        aria-hidden="true"
+                        class="icon ssr"
+                      >
+                        <template
+                          shadowroot="open"
+                          shadowrootmode="open"
+                        >
+                          <style>
+                            :host {
   display: inline-block;
   vertical-align: top;
   color-scheme: light dark !important;
@@ -4771,9 +5256,8 @@ img {
   pointer-events: none;
   filter: var(--p-internal-icon-filter,invert(100%) sepia(91%) saturate(38%) hue-rotate(254deg) brightness(110%) contrast(110%));
   -webkit-animation: rerender-dark-primary 1ms;
-  width: calc(6px + 2.125ex);
-  height: calc(6px + 2.125ex);
-  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  width: inherit;
+  height: inherit;
 }
 img:dir(rtl) {
   transform: scaleX(-1);
@@ -4786,17 +5270,30 @@ img:dir(rtl) {
     transform: rotateZ(0);
   }
 }
-                      </style>
-                      <img
-                        alt=""
-                        height="24"
-                        loading="lazy"
-                        src="http://localhost:3001/icons/arrow-head-right.304b330.svg"
-                        width="24"
-                      />
-                    </template>
-                  </p-icon>
-                </button>
+                          </style>
+                          <img
+                            alt=""
+                            height="24"
+                            loading="lazy"
+                            src="http://localhost:3001/icons/arrow-head-right.304b330.svg"
+                            width="24"
+                          />
+                        </template>
+                      </p-icon>
+                      <span
+                        class="label"
+                      >
+                        <slot />
+                      </span>
+                    </button>
+                    <span
+                      class="loading"
+                      id="loading"
+                      role="status"
+                    />
+                  </template>
+                  next
+                </p-button>
               </div>
             </div>
           </template>
@@ -6165,10 +6662,18 @@ slot[name="heading"] {
   margin: 0;
   color: #010205;
 }
+.icon {
+  margin-top: 2px;
+}
 .content {
   display: grid;
   gap: 4px;
   max-width: 50rem;
+  margin-top: 2px;
+}
+.close {
+  --p-internal-button-scaling: 0;
+  mix-blend-mode: multiply;
 }
 @media(min-width:760px) {
   .content {
@@ -6244,7 +6749,7 @@ img {
             <slot />
           </p>
         </div>
-        <p-button-pure
+        <p-button
           aria-controls="banner"
           class="close ssr"
         >
@@ -6255,62 +6760,60 @@ img {
           >
             <style>
               :host {
-  transform: translate3d(0,0,0) !important;
-  outline: 0 !important;
-  color-scheme: light dark !important;
   display: inline-block;
-  width: auto;
-  vertical-align: top;
+  vertical-align: top !important;
+  outline: 0 !important;
+  border-radius: 4px !important;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
 }
 .root {
   display: flex;
+  align-items: flex-start;
+  justify-content: center;
   width: 100%;
-  padding: 0;
-  margin: 0;
-  color: #010205;
+  box-sizing: border-box;
+  text-align: start;
+  -webkit-appearance: none;
+  appearance: none;
   text-decoration: none;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
-  gap: 0;
-  justify-content: flex-start;
-  align-items: flex-start;
-  font-size: 1rem;
-  -webkit-appearance: none;
-  appearance: none;
-  background: transparent;
-  text-align: start;
-  border: 0;
-  cursor: pointer;
-}
-.root::before {
-  content: "";
-  position: absolute;
-  top: -2px;
-  bottom: -2px;
-  right: -2px;
-  left: -2px;
+  -webkit-backdrop-filter: blur(32px);
+  backdrop-filter: blur(32px);
+  border: none;
   border-radius: 4px;
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  transform: translate3d(0,0,0);
+  background-color: hsl(240 4% 85%/35%);
+  color: #010205;
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  padding: calc(var(--p-internal-button-scaling, 1) * 0.8125 * 16px + 2px);
+  gap: 0;
+  cursor: pointer;
+  margin: 0;
 }
 .root::-moz-focus-inner {
   border: 0;
 }
+.label {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+}
 .icon {
-  position: relative;
-  flex-shrink: 0;
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
-}
-.label {
-  z-index: 1;
-  white-space: nowrap;
-  text-indent: -999999px;
-  overflow: hidden;
-  order: 0;
+  margin-inline-start: 0;
+  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 .loading {
   position: absolute;
@@ -6322,13 +6825,6 @@ img {
   clip: rect(0,0,0,0);
   white-space: nowrap;
 }
-@supports (width: round(down, 1px, 1px)) {
-  .icon {
-    width: round(down, calc(6px + 2.125ex), 1px);
-    height: round(down, calc(6px + 2.125ex), 1px);
-  }
-}
-
 
             </style>
             <button
@@ -6393,7 +6889,7 @@ img {
             />
           </template>
           Close notification
-        </p-button-pure>
+        </p-button>
       </template>
     </p-inline-notification>
   </template>
@@ -6415,6 +6911,7 @@ exports[`should render dsr component for PButton 1`] = `
   display: inline-block;
   vertical-align: top !important;
   outline: 0 !important;
+  border-radius: 4px !important;
   color-scheme: light dark !important;
 }
 :host([hidden]) {
@@ -6430,17 +6927,17 @@ exports[`should render dsr component for PButton 1`] = `
   -webkit-appearance: none;
   appearance: none;
   text-decoration: none;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
   border: 2px solid #010205;
   border-radius: 4px;
   transform: translate3d(0,0,0);
   background-color: #010205;
   color: #FBFCFF;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: auto;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  padding: 13px 26px;
-  gap: 8px;
+  padding: calc(var(--p-internal-button-scaling, 1) * 0.8125 * 16px ) max(calc(var(--p-internal-button-scaling, 1) * 1.625 * 16px ), 4px);
+  gap: clamp(2px, calc(var(--p-internal-button-scaling, 1) * 0.5 * 16px), 16px);
   cursor: pointer;
   margin: 0;
 }
@@ -6819,6 +7316,7 @@ p {
   display: inline-block;
   vertical-align: top !important;
   outline: 0 !important;
+  border-radius: 4px !important;
   color-scheme: light dark !important;
 }
 :host([hidden]) {
@@ -6834,17 +7332,17 @@ p {
   -webkit-appearance: none;
   appearance: none;
   text-decoration: none;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
   border: 2px solid #FBFCFF;
   border-radius: 4px;
   transform: translate3d(0,0,0);
   background-color: transparent;
   color: #FBFCFF;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: auto;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  padding: 13px 26px;
-  gap: 8px;
+  padding: calc(var(--p-internal-button-scaling, 1) * 0.8125 * 16px ) max(calc(var(--p-internal-button-scaling, 1) * 1.625 * 16px ), 4px);
+  gap: clamp(2px, calc(var(--p-internal-button-scaling, 1) * 0.5 * 16px), 16px);
   cursor: pointer;
   margin: 0;
 }
@@ -7094,11 +7592,7 @@ dialog::backdrop {
   max-width: var(--p-flyout-max-width,1180px);
 }
 .dismiss {
-  width: fit-content;
-  height: fit-content;
-  border: 2px solid #EEEFF2;
-  border-radius: 4px;
-  background: #EEEFF2;
+  --p-internal-button-scaling: 0;
   grid-area: 1/3;
   z-index: 4;
   position: sticky;
@@ -7120,7 +7614,7 @@ dialog::backdrop {
             <div
               class="flyout"
             >
-              <p-button-pure
+              <p-button
                 class="dismiss ssr"
               >
                 <template
@@ -7130,62 +7624,60 @@ dialog::backdrop {
                 >
                   <style>
                     :host {
-  transform: translate3d(0,0,0) !important;
-  outline: 0 !important;
-  color-scheme: light dark !important;
   display: inline-block;
-  width: auto;
-  vertical-align: top;
+  vertical-align: top !important;
+  outline: 0 !important;
+  border-radius: 4px !important;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
 }
 .root {
   display: flex;
+  align-items: flex-start;
+  justify-content: center;
   width: 100%;
-  padding: 0;
-  margin: 0;
-  color: #010205;
+  box-sizing: border-box;
+  text-align: start;
+  -webkit-appearance: none;
+  appearance: none;
   text-decoration: none;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
-  gap: 0;
-  justify-content: flex-start;
-  align-items: flex-start;
-  font-size: 1rem;
-  -webkit-appearance: none;
-  appearance: none;
-  background: transparent;
-  text-align: start;
-  border: 0;
-  cursor: pointer;
-}
-.root::before {
-  content: "";
-  position: absolute;
-  top: -2px;
-  bottom: -2px;
-  right: -2px;
-  left: -2px;
+  -webkit-backdrop-filter: blur(32px);
+  backdrop-filter: blur(32px);
+  border: none;
   border-radius: 4px;
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  transform: translate3d(0,0,0);
+  background-color: hsl(240 4% 85%/35%);
+  color: #010205;
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  padding: calc(var(--p-internal-button-scaling, 1) * 0.8125 * 16px + 2px);
+  gap: 0;
+  cursor: pointer;
+  margin: 0;
 }
 .root::-moz-focus-inner {
   border: 0;
 }
+.label {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+}
 .icon {
-  position: relative;
-  flex-shrink: 0;
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
-}
-.label {
-  z-index: 1;
-  white-space: nowrap;
-  text-indent: -999999px;
-  overflow: hidden;
-  order: 0;
+  margin-inline-start: 0;
+  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 .loading {
   position: absolute;
@@ -7197,13 +7689,6 @@ dialog::backdrop {
   clip: rect(0,0,0,0);
   white-space: nowrap;
 }
-@supports (width: round(down, 1px, 1px)) {
-  .icon {
-    width: round(down, calc(6px + 2.125ex), 1px);
-    height: round(down, calc(6px + 2.125ex), 1px);
-  }
-}
-
 
                   </style>
                   <button
@@ -7268,7 +7753,7 @@ img {
                   />
                 </template>
                 Dismiss flyout
-              </p-button-pure>
+              </p-button>
               <slot />
             </div>
           </div>
@@ -7364,11 +7849,7 @@ dialog::backdrop {
   max-width: var(--p-flyout-max-width,1180px);
 }
 .dismiss {
-  width: fit-content;
-  height: fit-content;
-  border: 2px solid #EEEFF2;
-  border-radius: 4px;
-  background: #EEEFF2;
+  --p-internal-button-scaling: 0;
   margin-inline-end: 200vw;
   transition: margin-inline-end 0s linear var(--p-transition-duration, 0s);
   grid-area: 1/3;
@@ -7392,7 +7873,7 @@ dialog::backdrop {
             <div
               class="flyout"
             >
-              <p-button-pure
+              <p-button
                 class="dismiss ssr"
               >
                 <template
@@ -7402,62 +7883,60 @@ dialog::backdrop {
                 >
                   <style>
                     :host {
-  transform: translate3d(0,0,0) !important;
-  outline: 0 !important;
-  color-scheme: light dark !important;
   display: inline-block;
-  width: auto;
-  vertical-align: top;
+  vertical-align: top !important;
+  outline: 0 !important;
+  border-radius: 4px !important;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
 }
 .root {
   display: flex;
+  align-items: flex-start;
+  justify-content: center;
   width: 100%;
-  padding: 0;
-  margin: 0;
-  color: #010205;
+  box-sizing: border-box;
+  text-align: start;
+  -webkit-appearance: none;
+  appearance: none;
   text-decoration: none;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
-  gap: 0;
-  justify-content: flex-start;
-  align-items: flex-start;
-  font-size: 1rem;
-  -webkit-appearance: none;
-  appearance: none;
-  background: transparent;
-  text-align: start;
-  border: 0;
-  cursor: pointer;
-}
-.root::before {
-  content: "";
-  position: absolute;
-  top: -2px;
-  bottom: -2px;
-  right: -2px;
-  left: -2px;
+  -webkit-backdrop-filter: blur(32px);
+  backdrop-filter: blur(32px);
+  border: none;
   border-radius: 4px;
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  transform: translate3d(0,0,0);
+  background-color: hsl(240 4% 85%/35%);
+  color: #010205;
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  padding: calc(var(--p-internal-button-scaling, 1) * 0.8125 * 16px + 2px);
+  gap: 0;
+  cursor: pointer;
+  margin: 0;
 }
 .root::-moz-focus-inner {
   border: 0;
 }
+.label {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+}
 .icon {
-  position: relative;
-  flex-shrink: 0;
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
-}
-.label {
-  z-index: 1;
-  white-space: nowrap;
-  text-indent: -999999px;
-  overflow: hidden;
-  order: 0;
+  margin-inline-start: 0;
+  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 .loading {
   position: absolute;
@@ -7469,13 +7948,6 @@ dialog::backdrop {
   clip: rect(0,0,0,0);
   white-space: nowrap;
 }
-@supports (width: round(down, 1px, 1px)) {
-  .icon {
-    width: round(down, calc(6px + 2.125ex), 1px);
-    height: round(down, calc(6px + 2.125ex), 1px);
-  }
-}
-
 
                   </style>
                   <button
@@ -7540,7 +8012,7 @@ img {
                   />
                 </template>
                 Dismiss flyout
-              </p-button-pure>
+              </p-button>
               <slot />
             </div>
           </div>
@@ -8290,11 +8762,7 @@ dialog::backdrop {
   max-width: var(--p-flyout-max-width,1180px);
 }
 .dismiss {
-  width: fit-content;
-  height: fit-content;
-  border: 2px solid #EEEFF2;
-  border-radius: 4px;
-  background: #EEEFF2;
+  --p-internal-button-scaling: 0;
   margin-inline-end: 200vw;
   transition: margin-inline-end 0s linear var(--p-transition-duration, 0s);
   grid-area: 1/3;
@@ -8318,7 +8786,7 @@ dialog::backdrop {
         <div
           class="flyout"
         >
-          <p-button-pure
+          <p-button
             class="dismiss ssr"
           >
             <template
@@ -8328,62 +8796,60 @@ dialog::backdrop {
             >
               <style>
                 :host {
-  transform: translate3d(0,0,0) !important;
-  outline: 0 !important;
-  color-scheme: light dark !important;
   display: inline-block;
-  width: auto;
-  vertical-align: top;
+  vertical-align: top !important;
+  outline: 0 !important;
+  border-radius: 4px !important;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
 }
 .root {
   display: flex;
+  align-items: flex-start;
+  justify-content: center;
   width: 100%;
-  padding: 0;
-  margin: 0;
-  color: #010205;
+  box-sizing: border-box;
+  text-align: start;
+  -webkit-appearance: none;
+  appearance: none;
   text-decoration: none;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
-  gap: 0;
-  justify-content: flex-start;
-  align-items: flex-start;
-  font-size: 1rem;
-  -webkit-appearance: none;
-  appearance: none;
-  background: transparent;
-  text-align: start;
-  border: 0;
-  cursor: pointer;
-}
-.root::before {
-  content: "";
-  position: absolute;
-  top: -2px;
-  bottom: -2px;
-  right: -2px;
-  left: -2px;
+  -webkit-backdrop-filter: blur(32px);
+  backdrop-filter: blur(32px);
+  border: none;
   border-radius: 4px;
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  transform: translate3d(0,0,0);
+  background-color: hsl(240 4% 85%/35%);
+  color: #010205;
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  padding: calc(var(--p-internal-button-scaling, 1) * 0.8125 * 16px + 2px);
+  gap: 0;
+  cursor: pointer;
+  margin: 0;
 }
 .root::-moz-focus-inner {
   border: 0;
 }
+.label {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+}
 .icon {
-  position: relative;
-  flex-shrink: 0;
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
-}
-.label {
-  z-index: 1;
-  white-space: nowrap;
-  text-indent: -999999px;
-  overflow: hidden;
-  order: 0;
+  margin-inline-start: 0;
+  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 .loading {
   position: absolute;
@@ -8395,13 +8861,6 @@ dialog::backdrop {
   clip: rect(0,0,0,0);
   white-space: nowrap;
 }
-@supports (width: round(down, 1px, 1px)) {
-  .icon {
-    width: round(down, calc(6px + 2.125ex), 1px);
-    height: round(down, calc(6px + 2.125ex), 1px);
-  }
-}
-
 
               </style>
               <button
@@ -8466,7 +8925,7 @@ img {
               />
             </template>
             Dismiss flyout
-          </p-button-pure>
+          </p-button>
           <slot />
         </div>
       </div>
@@ -9462,10 +9921,18 @@ slot[name="heading"] {
   margin: 0;
   color: #010205;
 }
+.icon {
+  margin-top: 2px;
+}
 .content {
   display: grid;
   gap: 4px;
   max-width: 50rem;
+  margin-top: 2px;
+}
+.close {
+  --p-internal-button-scaling: 0;
+  mix-blend-mode: multiply;
 }
 @media(min-width:760px) {
   .content {
@@ -9541,7 +10008,7 @@ img {
         <slot />
       </p>
     </div>
-    <p-button-pure
+    <p-button
       aria-controls="banner"
       class="close ssr"
     >
@@ -9552,62 +10019,60 @@ img {
       >
         <style>
           :host {
-  transform: translate3d(0,0,0) !important;
-  outline: 0 !important;
-  color-scheme: light dark !important;
   display: inline-block;
-  width: auto;
-  vertical-align: top;
+  vertical-align: top !important;
+  outline: 0 !important;
+  border-radius: 4px !important;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
 }
 .root {
   display: flex;
+  align-items: flex-start;
+  justify-content: center;
   width: 100%;
-  padding: 0;
-  margin: 0;
-  color: #010205;
+  box-sizing: border-box;
+  text-align: start;
+  -webkit-appearance: none;
+  appearance: none;
   text-decoration: none;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
-  gap: 0;
-  justify-content: flex-start;
-  align-items: flex-start;
-  font-size: 1rem;
-  -webkit-appearance: none;
-  appearance: none;
-  background: transparent;
-  text-align: start;
-  border: 0;
-  cursor: pointer;
-}
-.root::before {
-  content: "";
-  position: absolute;
-  top: -2px;
-  bottom: -2px;
-  right: -2px;
-  left: -2px;
+  -webkit-backdrop-filter: blur(32px);
+  backdrop-filter: blur(32px);
+  border: none;
   border-radius: 4px;
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  transform: translate3d(0,0,0);
+  background-color: hsl(240 4% 85%/35%);
+  color: #010205;
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  padding: calc(var(--p-internal-button-scaling, 1) * 0.8125 * 16px + 2px);
+  gap: 0;
+  cursor: pointer;
+  margin: 0;
 }
 .root::-moz-focus-inner {
   border: 0;
 }
+.label {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+}
 .icon {
-  position: relative;
-  flex-shrink: 0;
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
-}
-.label {
-  z-index: 1;
-  white-space: nowrap;
-  text-indent: -999999px;
-  overflow: hidden;
-  order: 0;
+  margin-inline-start: 0;
+  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 .loading {
   position: absolute;
@@ -9619,13 +10084,6 @@ img {
   clip: rect(0,0,0,0);
   white-space: nowrap;
 }
-@supports (width: round(down, 1px, 1px)) {
-  .icon {
-    width: round(down, calc(6px + 2.125ex), 1px);
-    height: round(down, calc(6px + 2.125ex), 1px);
-  }
-}
-
 
         </style>
         <button
@@ -9690,7 +10148,7 @@ img {
         />
       </template>
       Close notification
-    </p-button-pure>
+    </p-button>
   </template>
   Some child
 </p-inline-notification>
@@ -9710,6 +10168,7 @@ exports[`should render dsr component for PLink 1`] = `
   display: inline-block;
   vertical-align: top !important;
   outline: 0 !important;
+  border-radius: 4px !important;
   color-scheme: light dark !important;
 }
 :host([hidden]) {
@@ -9744,17 +10203,17 @@ exports[`should render dsr component for PLink 1`] = `
   -webkit-appearance: none;
   appearance: none;
   text-decoration: none;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
   border: 2px solid #010205;
   border-radius: 4px;
   transform: translate3d(0,0,0);
   background-color: #010205;
   color: #FBFCFF;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: auto;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  padding: 13px 26px;
-  gap: 8px;
+  padding: calc(var(--p-internal-link-scaling, 1) * 0.8125 * 16px ) max(calc(var(--p-internal-link-scaling, 1) * 1.625 * 16px ), 4px);
+  gap: clamp(2px, calc(var(--p-internal-link-scaling, 1) * 0.5 * 16px), 16px);
 }
 .label {
   position: static;
@@ -9949,6 +10408,7 @@ exports[`should render dsr component for PLinkSocial 1`] = `
   display: inline-block;
   vertical-align: top !important;
   outline: 0 !important;
+  border-radius: 4px !important;
   color-scheme: light dark !important;
 }
 :host([hidden]) {
@@ -9983,17 +10443,17 @@ exports[`should render dsr component for PLinkSocial 1`] = `
   -webkit-appearance: none;
   appearance: none;
   text-decoration: none;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
   border: 2px solid #010205;
   border-radius: 4px;
   transform: translate3d(0,0,0);
   background-color: #010205;
   color: #FBFCFF;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: auto;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  padding: 13px 26px;
-  gap: 8px;
+  padding: calc(var(--p-internal-link-scaling, 1) * 0.8125 * 16px ) max(calc(var(--p-internal-link-scaling, 1) * 1.625 * 16px ), 4px);
+  gap: clamp(2px, calc(var(--p-internal-link-scaling, 1) * 0.5 * 16px), 16px);
 }
 .label {
   position: static;
@@ -10008,7 +10468,7 @@ exports[`should render dsr component for PLinkSocial 1`] = `
 .icon {
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
-  margin-inline-start: -8px;
+  margin-inline-start: clamp(-16px, calc(var(--p-internal-link-scaling, 1) * -0.5 * 16px), -2px);
   filter: invert(1);
 }
 
@@ -10209,6 +10669,7 @@ p {
   display: inline-block;
   vertical-align: top !important;
   outline: 0 !important;
+  border-radius: 4px !important;
   color-scheme: light dark !important;
 }
 :host([hidden]) {
@@ -10243,17 +10704,17 @@ p {
   -webkit-appearance: none;
   appearance: none;
   text-decoration: none;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
   border: 2px solid #FBFCFF;
   border-radius: 4px;
   transform: translate3d(0,0,0);
   background-color: transparent;
   color: #FBFCFF;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: auto;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  padding: 13px 26px;
-  gap: 8px;
+  padding: calc(var(--p-internal-link-scaling, 1) * 0.8125 * 16px ) max(calc(var(--p-internal-link-scaling, 1) * 1.625 * 16px ), 4px);
+  gap: clamp(2px, calc(var(--p-internal-link-scaling, 1) * 0.5 * 16px), 16px);
 }
 .label {
   position: static;
@@ -10500,6 +10961,7 @@ img {
   display: inline-block;
   vertical-align: top !important;
   outline: 0 !important;
+  border-radius: 4px !important;
   color-scheme: light dark !important;
 }
 :host([hidden]) {
@@ -10515,17 +10977,17 @@ img {
   -webkit-appearance: none;
   appearance: none;
   text-decoration: none;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
   border: 2px solid #FBFCFF;
   border-radius: 4px;
   transform: translate3d(0,0,0);
   background-color: #FBFCFF;
   color: #010205;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: auto;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  padding: 13px 26px;
-  gap: 8px;
+  padding: calc(var(--p-internal-link-scaling, 1) * 0.8125 * 16px ) max(calc(var(--p-internal-link-scaling, 1) * 1.625 * 16px ), 4px);
+  gap: clamp(2px, calc(var(--p-internal-link-scaling, 1) * 0.5 * 16px), 16px);
 }
 .root::-moz-focus-inner {
   border: 0;
@@ -10573,6 +11035,7 @@ img {
   display: inline-block;
   vertical-align: top !important;
   outline: 0 !important;
+  border-radius: 4px !important;
   color-scheme: light dark !important;
 }
 :host([hidden]) {
@@ -10588,17 +11051,17 @@ img {
   -webkit-appearance: none;
   appearance: none;
   text-decoration: none;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
   border: 2px solid #FBFCFF;
   border-radius: 4px;
   transform: translate3d(0,0,0);
   background-color: transparent;
   color: #FBFCFF;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: auto;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  padding: 13px 26px;
-  gap: 8px;
+  padding: calc(var(--p-internal-link-scaling, 1) * 0.8125 * 16px ) max(calc(var(--p-internal-link-scaling, 1) * 1.625 * 16px ), 4px);
+  gap: clamp(2px, calc(var(--p-internal-link-scaling, 1) * 0.5 * 16px), 16px);
 }
 .root::-moz-focus-inner {
   border: 0;
@@ -11094,11 +11557,7 @@ dialog::backdrop {
   transform: translateY(25vh);
 }
 .dismiss {
-  width: fit-content;
-  height: fit-content;
-  border: 2px solid #EEEFF2;
-  border-radius: 4px;
-  background: #EEEFF2;
+  --p-internal-button-scaling: 0;
   grid-area: 1/3;
   z-index: 2;
   position: sticky;
@@ -11120,7 +11579,7 @@ dialog::backdrop {
         <div
           class="modal"
         >
-          <p-button-pure
+          <p-button
             class="dismiss ssr"
           >
             <template
@@ -11130,62 +11589,60 @@ dialog::backdrop {
             >
               <style>
                 :host {
-  transform: translate3d(0,0,0) !important;
-  outline: 0 !important;
-  color-scheme: light dark !important;
   display: inline-block;
-  width: auto;
-  vertical-align: top;
+  vertical-align: top !important;
+  outline: 0 !important;
+  border-radius: 4px !important;
+  color-scheme: light dark !important;
 }
 :host([hidden]) {
   display: none !important;
 }
 .root {
   display: flex;
+  align-items: flex-start;
+  justify-content: center;
   width: 100%;
-  padding: 0;
-  margin: 0;
-  color: #010205;
+  box-sizing: border-box;
+  text-align: start;
+  -webkit-appearance: none;
+  appearance: none;
   text-decoration: none;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
-  gap: 0;
-  justify-content: flex-start;
-  align-items: flex-start;
-  font-size: 1rem;
-  -webkit-appearance: none;
-  appearance: none;
-  background: transparent;
-  text-align: start;
-  border: 0;
-  cursor: pointer;
-}
-.root::before {
-  content: "";
-  position: absolute;
-  top: -2px;
-  bottom: -2px;
-  right: -2px;
-  left: -2px;
+  -webkit-backdrop-filter: blur(32px);
+  backdrop-filter: blur(32px);
+  border: none;
   border-radius: 4px;
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  transform: translate3d(0,0,0);
+  background-color: hsl(240 4% 85%/35%);
+  color: #010205;
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  padding: calc(var(--p-internal-button-scaling, 1) * 0.8125 * 16px + 2px);
+  gap: 0;
+  cursor: pointer;
+  margin: 0;
 }
 .root::-moz-focus-inner {
   border: 0;
 }
+.label {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+}
 .icon {
-  position: relative;
-  flex-shrink: 0;
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
-}
-.label {
-  z-index: 1;
-  white-space: nowrap;
-  text-indent: -999999px;
-  overflow: hidden;
-  order: 0;
+  margin-inline-start: 0;
+  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 .loading {
   position: absolute;
@@ -11197,13 +11654,6 @@ dialog::backdrop {
   clip: rect(0,0,0,0);
   white-space: nowrap;
 }
-@supports (width: round(down, 1px, 1px)) {
-  .icon {
-    width: round(down, calc(6px + 2.125ex), 1px);
-    height: round(down, calc(6px + 2.125ex), 1px);
-  }
-}
-
 
               </style>
               <button
@@ -11268,7 +11718,7 @@ img {
               />
             </template>
             Dismiss modal
-          </p-button-pure>
+          </p-button>
           <slot />
         </div>
       </div>
@@ -12364,27 +12814,6 @@ exports[`should render dsr component for PScroller 1`] = `
 :host([hidden]) {
   display: none !important;
 }
-button {
-  display: flex;
-  pointer-events: auto;
-  align-items: center;
-  justify-content: center;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  height: calc(calc(6px + 2.125ex) + 4px);
-  width: calc(calc(6px + 2.125ex) + 4px);
-  border: 0;
-  outline: 0;
-  cursor: pointer;
-  background: #FFF;
-  border-radius: 4px;
-  -webkit-backdrop-filter: blur(32px);
-  backdrop-filter: blur(32px);
-  visibility: hidden;
-  box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.16);
-}
-
 .root {
   position: relative;
   display: grid;
@@ -12433,7 +12862,6 @@ button {
   direction: ltr;
   width: calc(calc(6px + 2.125ex) + 24px);
   padding: 4px 0;
-  pointer-events: none;
   display: flex;
   align-items: center;
   left: -1px;
@@ -12441,7 +12869,7 @@ button {
   background: linear-gradient(to right, rgba(255,255,255,1) 20%,rgba(255,255,255,0.6) 48%,rgba(255,255,255,0.3) 68%,rgba(255,255,255,0) 100%);
   visibility: hidden;
 }
-.action-prev button {
+.action-prev .action-button {
   margin-left: 8px;
 }
 .action-next {
@@ -12451,7 +12879,6 @@ button {
   direction: ltr;
   width: calc(calc(6px + 2.125ex) + 24px);
   padding: 4px 0;
-  pointer-events: none;
   display: flex;
   align-items: center;
   right: -1px;
@@ -12459,8 +12886,12 @@ button {
   background: linear-gradient(to left, rgba(255,255,255,1) 20%,rgba(255,255,255,0.6) 48%,rgba(255,255,255,0.3) 68%,rgba(255,255,255,0) 100%);
   visibility: hidden;
 }
-.action-next button {
+.action-next .action-button {
   margin-right: 8px;
+}
+.action-button {
+  --p-internal-button-scaling: 0;
+  box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.16);
 }
 .icon:dir(rtl) {
   transform: scaleX(-1);
@@ -12488,21 +12919,100 @@ button {
       <div
         class="action-prev"
       >
-        <button
-          aria-hidden="true"
-          aria-label="prev"
+        <p-button
+          class="action-button ssr"
+          dir="ltr"
+          hide-label="true"
           tabindex="-1"
-          type="button"
         >
-          <p-icon
-            class="icon ssr"
+          <template
+            shadowroot="open"
+            shadowrootdelegatesfocus="true"
+            shadowrootmode="open"
           >
-            <template
-              shadowroot="open"
-              shadowrootmode="open"
+            <style>
+              :host {
+  display: inline-block;
+  vertical-align: top !important;
+  outline: 0 !important;
+  border-radius: 4px !important;
+  color-scheme: light dark !important;
+}
+:host([hidden]) {
+  display: none !important;
+}
+.root {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  width: 100%;
+  box-sizing: border-box;
+  text-align: start;
+  -webkit-appearance: none;
+  appearance: none;
+  text-decoration: none;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  -webkit-backdrop-filter: blur(32px);
+  backdrop-filter: blur(32px);
+  border: none;
+  border-radius: 4px;
+  transform: translate3d(0,0,0);
+  background-color: hsl(240 4% 85%/35%);
+  color: #010205;
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  padding: calc(var(--p-internal-button-scaling, 1) * 0.8125 * 16px + 2px) max(calc(var(--p-internal-button-scaling, 1) * 1.625 * 16px + 2px), 6px);
+  gap: clamp(2px, calc(var(--p-internal-button-scaling, 1) * 0.5 * 16px), 16px);
+  cursor: pointer;
+  margin: 0;
+}
+.root::-moz-focus-inner {
+  border: 0;
+}
+.label {
+  position: static;
+  width: auto;
+  height: auto;
+  padding: 0;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
+  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+}
+.icon {
+  width: calc(6px + 2.125ex);
+  height: calc(6px + 2.125ex);
+  margin-inline-start: clamp(-16px, calc(var(--p-internal-button-scaling, 1) * -0.5 * 16px), -2px);
+  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+}
+.loading {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+}
+
+            </style>
+            <button
+              class="root"
+              type="button"
             >
-              <style>
-                :host {
+              <p-icon
+                aria-hidden="true"
+                class="icon ssr"
+              >
+                <template
+                  shadowroot="open"
+                  shadowrootmode="open"
+                >
+                  <style>
+                    :host {
   display: inline-block;
   vertical-align: top;
   color-scheme: light dark !important;
@@ -12517,9 +13027,8 @@ img {
   pointer-events: none;
   filter: var(--p-internal-icon-filter,invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%));
   -webkit-animation: rerender-light-primary 1ms;
-  width: calc(6px + 2.125ex);
-  height: calc(6px + 2.125ex);
-  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  width: inherit;
+  height: inherit;
 }
 img:dir(rtl) {
   transform: scaleX(-1);
@@ -12532,36 +13041,128 @@ img:dir(rtl) {
     transform: rotateZ(0);
   }
 }
-              </style>
-              <img
-                alt=""
-                height="24"
-                loading="lazy"
-                src="http://localhost:3001/icons/arrow-head-left.cf1395d.svg"
-                width="24"
-              />
-            </template>
-          </p-icon>
-        </button>
+                  </style>
+                  <img
+                    alt=""
+                    height="24"
+                    loading="lazy"
+                    src="http://localhost:3001/icons/arrow-head-left.cf1395d.svg"
+                    width="24"
+                  />
+                </template>
+              </p-icon>
+              <span
+                class="label"
+              >
+                <slot />
+              </span>
+            </button>
+            <span
+              class="loading"
+              id="loading"
+              role="status"
+            />
+          </template>
+          prev
+        </p-button>
       </div>
       <div
         class="action-next"
       >
-        <button
-          aria-hidden="true"
-          aria-label="next"
+        <p-button
+          class="action-button ssr"
+          dir="ltr"
+          hide-label="true"
           tabindex="-1"
-          type="button"
         >
-          <p-icon
-            class="icon ssr"
+          <template
+            shadowroot="open"
+            shadowrootdelegatesfocus="true"
+            shadowrootmode="open"
           >
-            <template
-              shadowroot="open"
-              shadowrootmode="open"
+            <style>
+              :host {
+  display: inline-block;
+  vertical-align: top !important;
+  outline: 0 !important;
+  border-radius: 4px !important;
+  color-scheme: light dark !important;
+}
+:host([hidden]) {
+  display: none !important;
+}
+.root {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  width: 100%;
+  box-sizing: border-box;
+  text-align: start;
+  -webkit-appearance: none;
+  appearance: none;
+  text-decoration: none;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  -webkit-backdrop-filter: blur(32px);
+  backdrop-filter: blur(32px);
+  border: none;
+  border-radius: 4px;
+  transform: translate3d(0,0,0);
+  background-color: hsl(240 4% 85%/35%);
+  color: #010205;
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  padding: calc(var(--p-internal-button-scaling, 1) * 0.8125 * 16px + 2px) max(calc(var(--p-internal-button-scaling, 1) * 1.625 * 16px + 2px), 6px);
+  gap: clamp(2px, calc(var(--p-internal-button-scaling, 1) * 0.5 * 16px), 16px);
+  cursor: pointer;
+  margin: 0;
+}
+.root::-moz-focus-inner {
+  border: 0;
+}
+.label {
+  position: static;
+  width: auto;
+  height: auto;
+  padding: 0;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
+  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+}
+.icon {
+  width: calc(6px + 2.125ex);
+  height: calc(6px + 2.125ex);
+  margin-inline-start: clamp(-16px, calc(var(--p-internal-button-scaling, 1) * -0.5 * 16px), -2px);
+  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+}
+.loading {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+}
+
+            </style>
+            <button
+              class="root"
+              type="button"
             >
-              <style>
-                :host {
+              <p-icon
+                aria-hidden="true"
+                class="icon ssr"
+              >
+                <template
+                  shadowroot="open"
+                  shadowrootmode="open"
+                >
+                  <style>
+                    :host {
   display: inline-block;
   vertical-align: top;
   color-scheme: light dark !important;
@@ -12576,9 +13177,8 @@ img {
   pointer-events: none;
   filter: var(--p-internal-icon-filter,invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%));
   -webkit-animation: rerender-light-primary 1ms;
-  width: calc(6px + 2.125ex);
-  height: calc(6px + 2.125ex);
-  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  width: inherit;
+  height: inherit;
 }
 img:dir(rtl) {
   transform: scaleX(-1);
@@ -12591,17 +13191,30 @@ img:dir(rtl) {
     transform: rotateZ(0);
   }
 }
-              </style>
-              <img
-                alt=""
-                height="24"
-                loading="lazy"
-                src="http://localhost:3001/icons/arrow-head-right.304b330.svg"
-                width="24"
-              />
-            </template>
-          </p-icon>
-        </button>
+                  </style>
+                  <img
+                    alt=""
+                    height="24"
+                    loading="lazy"
+                    src="http://localhost:3001/icons/arrow-head-right.304b330.svg"
+                    width="24"
+                  />
+                </template>
+              </p-icon>
+              <span
+                class="label"
+              >
+                <slot />
+              </span>
+            </button>
+            <span
+              class="loading"
+              id="loading"
+              role="status"
+            />
+          </template>
+          next
+        </p-button>
       </div>
     </div>
   </template>
@@ -13364,27 +13977,6 @@ exports[`should render dsr component for PStepperHorizontal 1`] = `
 :host([hidden]) {
   display: none !important;
 }
-button {
-  display: flex;
-  pointer-events: auto;
-  align-items: center;
-  justify-content: center;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  height: calc(calc(6px + 2.125ex) + 4px);
-  width: calc(calc(6px + 2.125ex) + 4px);
-  border: 0;
-  outline: 0;
-  cursor: pointer;
-  background: #FFF;
-  border-radius: 4px;
-  -webkit-backdrop-filter: blur(32px);
-  backdrop-filter: blur(32px);
-  visibility: hidden;
-  box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.16);
-}
-
 .root {
   position: relative;
   display: grid;
@@ -13433,7 +14025,6 @@ button {
   direction: ltr;
   width: calc(calc(6px + 2.125ex) + 24px);
   padding: 4px 0;
-  pointer-events: none;
   display: flex;
   align-items: center;
   left: -1px;
@@ -13441,7 +14032,7 @@ button {
   background: linear-gradient(to right, rgba(255,255,255,1) 20%,rgba(255,255,255,0.6) 48%,rgba(255,255,255,0.3) 68%,rgba(255,255,255,0) 100%);
   visibility: hidden;
 }
-.action-prev button {
+.action-prev .action-button {
   margin-left: 8px;
 }
 .action-next {
@@ -13451,7 +14042,6 @@ button {
   direction: ltr;
   width: calc(calc(6px + 2.125ex) + 24px);
   padding: 4px 0;
-  pointer-events: none;
   display: flex;
   align-items: center;
   right: -1px;
@@ -13459,8 +14049,12 @@ button {
   background: linear-gradient(to left, rgba(255,255,255,1) 20%,rgba(255,255,255,0.6) 48%,rgba(255,255,255,0.3) 68%,rgba(255,255,255,0) 100%);
   visibility: hidden;
 }
-.action-next button {
+.action-next .action-button {
   margin-right: 8px;
+}
+.action-button {
+  --p-internal-button-scaling: 0;
+  box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.16);
 }
 .icon:dir(rtl) {
   transform: scaleX(-1);
@@ -13489,21 +14083,100 @@ button {
           <div
             class="action-prev"
           >
-            <button
-              aria-hidden="true"
-              aria-label="prev"
+            <p-button
+              class="action-button ssr"
+              dir="ltr"
+              hide-label="true"
               tabindex="-1"
-              type="button"
             >
-              <p-icon
-                class="icon ssr"
+              <template
+                shadowroot="open"
+                shadowrootdelegatesfocus="true"
+                shadowrootmode="open"
               >
-                <template
-                  shadowroot="open"
-                  shadowrootmode="open"
+                <style>
+                  :host {
+  display: inline-block;
+  vertical-align: top !important;
+  outline: 0 !important;
+  border-radius: 4px !important;
+  color-scheme: light dark !important;
+}
+:host([hidden]) {
+  display: none !important;
+}
+.root {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  width: 100%;
+  box-sizing: border-box;
+  text-align: start;
+  -webkit-appearance: none;
+  appearance: none;
+  text-decoration: none;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  -webkit-backdrop-filter: blur(32px);
+  backdrop-filter: blur(32px);
+  border: none;
+  border-radius: 4px;
+  transform: translate3d(0,0,0);
+  background-color: hsl(240 4% 85%/35%);
+  color: #010205;
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  padding: calc(var(--p-internal-button-scaling, 1) * 0.8125 * 16px + 2px) max(calc(var(--p-internal-button-scaling, 1) * 1.625 * 16px + 2px), 6px);
+  gap: clamp(2px, calc(var(--p-internal-button-scaling, 1) * 0.5 * 16px), 16px);
+  cursor: pointer;
+  margin: 0;
+}
+.root::-moz-focus-inner {
+  border: 0;
+}
+.label {
+  position: static;
+  width: auto;
+  height: auto;
+  padding: 0;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
+  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+}
+.icon {
+  width: calc(6px + 2.125ex);
+  height: calc(6px + 2.125ex);
+  margin-inline-start: clamp(-16px, calc(var(--p-internal-button-scaling, 1) * -0.5 * 16px), -2px);
+  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+}
+.loading {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+}
+
+                </style>
+                <button
+                  class="root"
+                  type="button"
                 >
-                  <style>
-                    :host {
+                  <p-icon
+                    aria-hidden="true"
+                    class="icon ssr"
+                  >
+                    <template
+                      shadowroot="open"
+                      shadowrootmode="open"
+                    >
+                      <style>
+                        :host {
   display: inline-block;
   vertical-align: top;
   color-scheme: light dark !important;
@@ -13518,9 +14191,8 @@ img {
   pointer-events: none;
   filter: var(--p-internal-icon-filter,invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%));
   -webkit-animation: rerender-light-primary 1ms;
-  width: calc(6px + 2.125ex);
-  height: calc(6px + 2.125ex);
-  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  width: inherit;
+  height: inherit;
 }
 img:dir(rtl) {
   transform: scaleX(-1);
@@ -13533,36 +14205,128 @@ img:dir(rtl) {
     transform: rotateZ(0);
   }
 }
-                  </style>
-                  <img
-                    alt=""
-                    height="24"
-                    loading="lazy"
-                    src="http://localhost:3001/icons/arrow-head-left.cf1395d.svg"
-                    width="24"
-                  />
-                </template>
-              </p-icon>
-            </button>
+                      </style>
+                      <img
+                        alt=""
+                        height="24"
+                        loading="lazy"
+                        src="http://localhost:3001/icons/arrow-head-left.cf1395d.svg"
+                        width="24"
+                      />
+                    </template>
+                  </p-icon>
+                  <span
+                    class="label"
+                  >
+                    <slot />
+                  </span>
+                </button>
+                <span
+                  class="loading"
+                  id="loading"
+                  role="status"
+                />
+              </template>
+              prev
+            </p-button>
           </div>
           <div
             class="action-next"
           >
-            <button
-              aria-hidden="true"
-              aria-label="next"
+            <p-button
+              class="action-button ssr"
+              dir="ltr"
+              hide-label="true"
               tabindex="-1"
-              type="button"
             >
-              <p-icon
-                class="icon ssr"
+              <template
+                shadowroot="open"
+                shadowrootdelegatesfocus="true"
+                shadowrootmode="open"
               >
-                <template
-                  shadowroot="open"
-                  shadowrootmode="open"
+                <style>
+                  :host {
+  display: inline-block;
+  vertical-align: top !important;
+  outline: 0 !important;
+  border-radius: 4px !important;
+  color-scheme: light dark !important;
+}
+:host([hidden]) {
+  display: none !important;
+}
+.root {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  width: 100%;
+  box-sizing: border-box;
+  text-align: start;
+  -webkit-appearance: none;
+  appearance: none;
+  text-decoration: none;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  -webkit-backdrop-filter: blur(32px);
+  backdrop-filter: blur(32px);
+  border: none;
+  border-radius: 4px;
+  transform: translate3d(0,0,0);
+  background-color: hsl(240 4% 85%/35%);
+  color: #010205;
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  padding: calc(var(--p-internal-button-scaling, 1) * 0.8125 * 16px + 2px) max(calc(var(--p-internal-button-scaling, 1) * 1.625 * 16px + 2px), 6px);
+  gap: clamp(2px, calc(var(--p-internal-button-scaling, 1) * 0.5 * 16px), 16px);
+  cursor: pointer;
+  margin: 0;
+}
+.root::-moz-focus-inner {
+  border: 0;
+}
+.label {
+  position: static;
+  width: auto;
+  height: auto;
+  padding: 0;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
+  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+}
+.icon {
+  width: calc(6px + 2.125ex);
+  height: calc(6px + 2.125ex);
+  margin-inline-start: clamp(-16px, calc(var(--p-internal-button-scaling, 1) * -0.5 * 16px), -2px);
+  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+}
+.loading {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+}
+
+                </style>
+                <button
+                  class="root"
+                  type="button"
                 >
-                  <style>
-                    :host {
+                  <p-icon
+                    aria-hidden="true"
+                    class="icon ssr"
+                  >
+                    <template
+                      shadowroot="open"
+                      shadowrootmode="open"
+                    >
+                      <style>
+                        :host {
   display: inline-block;
   vertical-align: top;
   color-scheme: light dark !important;
@@ -13577,9 +14341,8 @@ img {
   pointer-events: none;
   filter: var(--p-internal-icon-filter,invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%));
   -webkit-animation: rerender-light-primary 1ms;
-  width: calc(6px + 2.125ex);
-  height: calc(6px + 2.125ex);
-  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  width: inherit;
+  height: inherit;
 }
 img:dir(rtl) {
   transform: scaleX(-1);
@@ -13592,17 +14355,30 @@ img:dir(rtl) {
     transform: rotateZ(0);
   }
 }
-                  </style>
-                  <img
-                    alt=""
-                    height="24"
-                    loading="lazy"
-                    src="http://localhost:3001/icons/arrow-head-right.304b330.svg"
-                    width="24"
-                  />
-                </template>
-              </p-icon>
-            </button>
+                      </style>
+                      <img
+                        alt=""
+                        height="24"
+                        loading="lazy"
+                        src="http://localhost:3001/icons/arrow-head-right.304b330.svg"
+                        width="24"
+                      />
+                    </template>
+                  </p-icon>
+                  <span
+                    class="label"
+                  >
+                    <slot />
+                  </span>
+                </button>
+                <span
+                  class="loading"
+                  id="loading"
+                  role="status"
+                />
+              </template>
+              next
+            </p-button>
           </div>
         </div>
       </template>
@@ -13873,27 +14649,6 @@ exports[`should render dsr component for PTable 1`] = `
 :host([hidden]) {
   display: none !important;
 }
-button {
-  display: flex;
-  pointer-events: auto;
-  align-items: center;
-  justify-content: center;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  height: calc(calc(6px + 2.125ex) + 4px);
-  width: calc(calc(6px + 2.125ex) + 4px);
-  border: 0;
-  outline: 0;
-  cursor: pointer;
-  background: #FFF;
-  border-radius: 4px;
-  -webkit-backdrop-filter: blur(32px);
-  backdrop-filter: blur(32px);
-  visibility: hidden;
-  box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.16);
-}
-
 .root {
   position: relative;
   display: grid;
@@ -13937,7 +14692,6 @@ button {
   direction: ltr;
   width: calc(calc(6px + 2.125ex) + 24px);
   padding: 4px 0;
-  pointer-events: none;
   display: flex;
   align-items: center;
   left: -1px;
@@ -13945,7 +14699,7 @@ button {
   background: linear-gradient(to right, rgba(255,255,255,1) 20%,rgba(255,255,255,0.6) 48%,rgba(255,255,255,0.3) 68%,rgba(255,255,255,0) 100%);
   visibility: hidden;
 }
-.action-prev button {
+.action-prev .action-button {
   margin-left: 8px;
 }
 .action-next {
@@ -13955,7 +14709,6 @@ button {
   direction: ltr;
   width: calc(calc(6px + 2.125ex) + 24px);
   padding: 4px 0;
-  pointer-events: none;
   display: flex;
   align-items: center;
   right: -1px;
@@ -13963,8 +14716,12 @@ button {
   background: linear-gradient(to left, rgba(255,255,255,1) 20%,rgba(255,255,255,0.6) 48%,rgba(255,255,255,0.3) 68%,rgba(255,255,255,0) 100%);
   visibility: hidden;
 }
-.action-next button {
+.action-next .action-button {
   margin-right: 8px;
+}
+.action-button {
+  --p-internal-button-scaling: 0;
+  box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.16);
 }
 .icon:dir(rtl) {
   transform: scaleX(-1);
@@ -13992,21 +14749,100 @@ button {
           <div
             class="action-prev"
           >
-            <button
-              aria-hidden="true"
-              aria-label="prev"
+            <p-button
+              class="action-button ssr"
+              dir="ltr"
+              hide-label="true"
               tabindex="-1"
-              type="button"
             >
-              <p-icon
-                class="icon ssr"
+              <template
+                shadowroot="open"
+                shadowrootdelegatesfocus="true"
+                shadowrootmode="open"
               >
-                <template
-                  shadowroot="open"
-                  shadowrootmode="open"
+                <style>
+                  :host {
+  display: inline-block;
+  vertical-align: top !important;
+  outline: 0 !important;
+  border-radius: 4px !important;
+  color-scheme: light dark !important;
+}
+:host([hidden]) {
+  display: none !important;
+}
+.root {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  width: 100%;
+  box-sizing: border-box;
+  text-align: start;
+  -webkit-appearance: none;
+  appearance: none;
+  text-decoration: none;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  -webkit-backdrop-filter: blur(32px);
+  backdrop-filter: blur(32px);
+  border: none;
+  border-radius: 4px;
+  transform: translate3d(0,0,0);
+  background-color: hsl(240 4% 85%/35%);
+  color: #010205;
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  padding: calc(var(--p-internal-button-scaling, 1) * 0.8125 * 16px + 2px) max(calc(var(--p-internal-button-scaling, 1) * 1.625 * 16px + 2px), 6px);
+  gap: clamp(2px, calc(var(--p-internal-button-scaling, 1) * 0.5 * 16px), 16px);
+  cursor: pointer;
+  margin: 0;
+}
+.root::-moz-focus-inner {
+  border: 0;
+}
+.label {
+  position: static;
+  width: auto;
+  height: auto;
+  padding: 0;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
+  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+}
+.icon {
+  width: calc(6px + 2.125ex);
+  height: calc(6px + 2.125ex);
+  margin-inline-start: clamp(-16px, calc(var(--p-internal-button-scaling, 1) * -0.5 * 16px), -2px);
+  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+}
+.loading {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+}
+
+                </style>
+                <button
+                  class="root"
+                  type="button"
                 >
-                  <style>
-                    :host {
+                  <p-icon
+                    aria-hidden="true"
+                    class="icon ssr"
+                  >
+                    <template
+                      shadowroot="open"
+                      shadowrootmode="open"
+                    >
+                      <style>
+                        :host {
   display: inline-block;
   vertical-align: top;
   color-scheme: light dark !important;
@@ -14021,9 +14857,8 @@ img {
   pointer-events: none;
   filter: var(--p-internal-icon-filter,invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%));
   -webkit-animation: rerender-light-primary 1ms;
-  width: calc(6px + 2.125ex);
-  height: calc(6px + 2.125ex);
-  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  width: inherit;
+  height: inherit;
 }
 img:dir(rtl) {
   transform: scaleX(-1);
@@ -14036,36 +14871,128 @@ img:dir(rtl) {
     transform: rotateZ(0);
   }
 }
-                  </style>
-                  <img
-                    alt=""
-                    height="24"
-                    loading="lazy"
-                    src="http://localhost:3001/icons/arrow-head-left.cf1395d.svg"
-                    width="24"
-                  />
-                </template>
-              </p-icon>
-            </button>
+                      </style>
+                      <img
+                        alt=""
+                        height="24"
+                        loading="lazy"
+                        src="http://localhost:3001/icons/arrow-head-left.cf1395d.svg"
+                        width="24"
+                      />
+                    </template>
+                  </p-icon>
+                  <span
+                    class="label"
+                  >
+                    <slot />
+                  </span>
+                </button>
+                <span
+                  class="loading"
+                  id="loading"
+                  role="status"
+                />
+              </template>
+              prev
+            </p-button>
           </div>
           <div
             class="action-next"
           >
-            <button
-              aria-hidden="true"
-              aria-label="next"
+            <p-button
+              class="action-button ssr"
+              dir="ltr"
+              hide-label="true"
               tabindex="-1"
-              type="button"
             >
-              <p-icon
-                class="icon ssr"
+              <template
+                shadowroot="open"
+                shadowrootdelegatesfocus="true"
+                shadowrootmode="open"
               >
-                <template
-                  shadowroot="open"
-                  shadowrootmode="open"
+                <style>
+                  :host {
+  display: inline-block;
+  vertical-align: top !important;
+  outline: 0 !important;
+  border-radius: 4px !important;
+  color-scheme: light dark !important;
+}
+:host([hidden]) {
+  display: none !important;
+}
+.root {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  width: 100%;
+  box-sizing: border-box;
+  text-align: start;
+  -webkit-appearance: none;
+  appearance: none;
+  text-decoration: none;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  -webkit-backdrop-filter: blur(32px);
+  backdrop-filter: blur(32px);
+  border: none;
+  border-radius: 4px;
+  transform: translate3d(0,0,0);
+  background-color: hsl(240 4% 85%/35%);
+  color: #010205;
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  padding: calc(var(--p-internal-button-scaling, 1) * 0.8125 * 16px + 2px) max(calc(var(--p-internal-button-scaling, 1) * 1.625 * 16px + 2px), 6px);
+  gap: clamp(2px, calc(var(--p-internal-button-scaling, 1) * 0.5 * 16px), 16px);
+  cursor: pointer;
+  margin: 0;
+}
+.root::-moz-focus-inner {
+  border: 0;
+}
+.label {
+  position: static;
+  width: auto;
+  height: auto;
+  padding: 0;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
+  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+}
+.icon {
+  width: calc(6px + 2.125ex);
+  height: calc(6px + 2.125ex);
+  margin-inline-start: clamp(-16px, calc(var(--p-internal-button-scaling, 1) * -0.5 * 16px), -2px);
+  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+}
+.loading {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+}
+
+                </style>
+                <button
+                  class="root"
+                  type="button"
                 >
-                  <style>
-                    :host {
+                  <p-icon
+                    aria-hidden="true"
+                    class="icon ssr"
+                  >
+                    <template
+                      shadowroot="open"
+                      shadowrootmode="open"
+                    >
+                      <style>
+                        :host {
   display: inline-block;
   vertical-align: top;
   color-scheme: light dark !important;
@@ -14080,9 +15007,8 @@ img {
   pointer-events: none;
   filter: var(--p-internal-icon-filter,invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%));
   -webkit-animation: rerender-light-primary 1ms;
-  width: calc(6px + 2.125ex);
-  height: calc(6px + 2.125ex);
-  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  width: inherit;
+  height: inherit;
 }
 img:dir(rtl) {
   transform: scaleX(-1);
@@ -14095,17 +15021,30 @@ img:dir(rtl) {
     transform: rotateZ(0);
   }
 }
-                  </style>
-                  <img
-                    alt=""
-                    height="24"
-                    loading="lazy"
-                    src="http://localhost:3001/icons/arrow-head-right.304b330.svg"
-                    width="24"
-                  />
-                </template>
-              </p-icon>
-            </button>
+                      </style>
+                      <img
+                        alt=""
+                        height="24"
+                        loading="lazy"
+                        src="http://localhost:3001/icons/arrow-head-right.304b330.svg"
+                        width="24"
+                      />
+                    </template>
+                  </p-icon>
+                  <span
+                    class="label"
+                  >
+                    <slot />
+                  </span>
+                </button>
+                <span
+                  class="loading"
+                  id="loading"
+                  role="status"
+                />
+              </template>
+              next
+            </p-button>
           </div>
         </div>
       </template>
@@ -14405,27 +15344,6 @@ exports[`should render dsr component for PTabs 1`] = `
 :host([hidden]) {
   display: none !important;
 }
-button {
-  display: flex;
-  pointer-events: auto;
-  align-items: center;
-  justify-content: center;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  height: calc(calc(6px + 2.125ex) + 4px);
-  width: calc(calc(6px + 2.125ex) + 4px);
-  border: 0;
-  outline: 0;
-  cursor: pointer;
-  background: #FFF;
-  border-radius: 4px;
-  -webkit-backdrop-filter: blur(32px);
-  backdrop-filter: blur(32px);
-  visibility: hidden;
-  box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.16);
-}
-
 .root {
   position: relative;
   display: grid;
@@ -14474,7 +15392,6 @@ button {
   direction: ltr;
   width: calc(calc(6px + 2.125ex) + 24px);
   padding: 4px 0;
-  pointer-events: none;
   display: flex;
   align-items: flex-start;
   left: -1px;
@@ -14482,7 +15399,7 @@ button {
   background: linear-gradient(to right, rgba(255,255,255,1) 20%,rgba(255,255,255,0.6) 48%,rgba(255,255,255,0.3) 68%,rgba(255,255,255,0) 100%);
   visibility: hidden;
 }
-.action-prev button {
+.action-prev .action-button {
   margin-left: 8px;
 }
 .action-next {
@@ -14492,7 +15409,6 @@ button {
   direction: ltr;
   width: calc(calc(6px + 2.125ex) + 24px);
   padding: 4px 0;
-  pointer-events: none;
   display: flex;
   align-items: flex-start;
   right: -1px;
@@ -14500,8 +15416,12 @@ button {
   background: linear-gradient(to left, rgba(255,255,255,1) 20%,rgba(255,255,255,0.6) 48%,rgba(255,255,255,0.3) 68%,rgba(255,255,255,0) 100%);
   visibility: hidden;
 }
-.action-next button {
+.action-next .action-button {
   margin-right: 8px;
+}
+.action-button {
+  --p-internal-button-scaling: 0;
+  box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.16);
 }
 .icon:dir(rtl) {
   transform: scaleX(-1);
@@ -14529,21 +15449,100 @@ button {
               <div
                 class="action-prev"
               >
-                <button
-                  aria-hidden="true"
-                  aria-label="prev"
+                <p-button
+                  class="action-button ssr"
+                  dir="ltr"
+                  hide-label="true"
                   tabindex="-1"
-                  type="button"
                 >
-                  <p-icon
-                    class="icon ssr"
+                  <template
+                    shadowroot="open"
+                    shadowrootdelegatesfocus="true"
+                    shadowrootmode="open"
                   >
-                    <template
-                      shadowroot="open"
-                      shadowrootmode="open"
+                    <style>
+                      :host {
+  display: inline-block;
+  vertical-align: top !important;
+  outline: 0 !important;
+  border-radius: 4px !important;
+  color-scheme: light dark !important;
+}
+:host([hidden]) {
+  display: none !important;
+}
+.root {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  width: 100%;
+  box-sizing: border-box;
+  text-align: start;
+  -webkit-appearance: none;
+  appearance: none;
+  text-decoration: none;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  -webkit-backdrop-filter: blur(32px);
+  backdrop-filter: blur(32px);
+  border: none;
+  border-radius: 4px;
+  transform: translate3d(0,0,0);
+  background-color: hsl(240 4% 85%/35%);
+  color: #010205;
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  padding: calc(var(--p-internal-button-scaling, 1) * 0.8125 * 16px + 2px) max(calc(var(--p-internal-button-scaling, 1) * 1.625 * 16px + 2px), 6px);
+  gap: clamp(2px, calc(var(--p-internal-button-scaling, 1) * 0.5 * 16px), 16px);
+  cursor: pointer;
+  margin: 0;
+}
+.root::-moz-focus-inner {
+  border: 0;
+}
+.label {
+  position: static;
+  width: auto;
+  height: auto;
+  padding: 0;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
+  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+}
+.icon {
+  width: calc(6px + 2.125ex);
+  height: calc(6px + 2.125ex);
+  margin-inline-start: clamp(-16px, calc(var(--p-internal-button-scaling, 1) * -0.5 * 16px), -2px);
+  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+}
+.loading {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+}
+
+                    </style>
+                    <button
+                      class="root"
+                      type="button"
                     >
-                      <style>
-                        :host {
+                      <p-icon
+                        aria-hidden="true"
+                        class="icon ssr"
+                      >
+                        <template
+                          shadowroot="open"
+                          shadowrootmode="open"
+                        >
+                          <style>
+                            :host {
   display: inline-block;
   vertical-align: top;
   color-scheme: light dark !important;
@@ -14558,9 +15557,8 @@ img {
   pointer-events: none;
   filter: var(--p-internal-icon-filter,invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%));
   -webkit-animation: rerender-light-primary 1ms;
-  width: calc(6px + 2.125ex);
-  height: calc(6px + 2.125ex);
-  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  width: inherit;
+  height: inherit;
 }
 img:dir(rtl) {
   transform: scaleX(-1);
@@ -14573,36 +15571,128 @@ img:dir(rtl) {
     transform: rotateZ(0);
   }
 }
-                      </style>
-                      <img
-                        alt=""
-                        height="24"
-                        loading="lazy"
-                        src="http://localhost:3001/icons/arrow-head-left.cf1395d.svg"
-                        width="24"
-                      />
-                    </template>
-                  </p-icon>
-                </button>
+                          </style>
+                          <img
+                            alt=""
+                            height="24"
+                            loading="lazy"
+                            src="http://localhost:3001/icons/arrow-head-left.cf1395d.svg"
+                            width="24"
+                          />
+                        </template>
+                      </p-icon>
+                      <span
+                        class="label"
+                      >
+                        <slot />
+                      </span>
+                    </button>
+                    <span
+                      class="loading"
+                      id="loading"
+                      role="status"
+                    />
+                  </template>
+                  prev
+                </p-button>
               </div>
               <div
                 class="action-next"
               >
-                <button
-                  aria-hidden="true"
-                  aria-label="next"
+                <p-button
+                  class="action-button ssr"
+                  dir="ltr"
+                  hide-label="true"
                   tabindex="-1"
-                  type="button"
                 >
-                  <p-icon
-                    class="icon ssr"
+                  <template
+                    shadowroot="open"
+                    shadowrootdelegatesfocus="true"
+                    shadowrootmode="open"
                   >
-                    <template
-                      shadowroot="open"
-                      shadowrootmode="open"
+                    <style>
+                      :host {
+  display: inline-block;
+  vertical-align: top !important;
+  outline: 0 !important;
+  border-radius: 4px !important;
+  color-scheme: light dark !important;
+}
+:host([hidden]) {
+  display: none !important;
+}
+.root {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  width: 100%;
+  box-sizing: border-box;
+  text-align: start;
+  -webkit-appearance: none;
+  appearance: none;
+  text-decoration: none;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  -webkit-backdrop-filter: blur(32px);
+  backdrop-filter: blur(32px);
+  border: none;
+  border-radius: 4px;
+  transform: translate3d(0,0,0);
+  background-color: hsl(240 4% 85%/35%);
+  color: #010205;
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  padding: calc(var(--p-internal-button-scaling, 1) * 0.8125 * 16px + 2px) max(calc(var(--p-internal-button-scaling, 1) * 1.625 * 16px + 2px), 6px);
+  gap: clamp(2px, calc(var(--p-internal-button-scaling, 1) * 0.5 * 16px), 16px);
+  cursor: pointer;
+  margin: 0;
+}
+.root::-moz-focus-inner {
+  border: 0;
+}
+.label {
+  position: static;
+  width: auto;
+  height: auto;
+  padding: 0;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
+  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+}
+.icon {
+  width: calc(6px + 2.125ex);
+  height: calc(6px + 2.125ex);
+  margin-inline-start: clamp(-16px, calc(var(--p-internal-button-scaling, 1) * -0.5 * 16px), -2px);
+  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+}
+.loading {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+}
+
+                    </style>
+                    <button
+                      class="root"
+                      type="button"
                     >
-                      <style>
-                        :host {
+                      <p-icon
+                        aria-hidden="true"
+                        class="icon ssr"
+                      >
+                        <template
+                          shadowroot="open"
+                          shadowrootmode="open"
+                        >
+                          <style>
+                            :host {
   display: inline-block;
   vertical-align: top;
   color-scheme: light dark !important;
@@ -14617,9 +15707,8 @@ img {
   pointer-events: none;
   filter: var(--p-internal-icon-filter,invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%));
   -webkit-animation: rerender-light-primary 1ms;
-  width: calc(6px + 2.125ex);
-  height: calc(6px + 2.125ex);
-  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  width: inherit;
+  height: inherit;
 }
 img:dir(rtl) {
   transform: scaleX(-1);
@@ -14632,17 +15721,30 @@ img:dir(rtl) {
     transform: rotateZ(0);
   }
 }
-                      </style>
-                      <img
-                        alt=""
-                        height="24"
-                        loading="lazy"
-                        src="http://localhost:3001/icons/arrow-head-right.304b330.svg"
-                        width="24"
-                      />
-                    </template>
-                  </p-icon>
-                </button>
+                          </style>
+                          <img
+                            alt=""
+                            height="24"
+                            loading="lazy"
+                            src="http://localhost:3001/icons/arrow-head-right.304b330.svg"
+                            width="24"
+                          />
+                        </template>
+                      </p-icon>
+                      <span
+                        class="label"
+                      >
+                        <slot />
+                      </span>
+                    </button>
+                    <span
+                      class="loading"
+                      id="loading"
+                      role="status"
+                    />
+                  </template>
+                  next
+                </p-button>
               </div>
             </div>
           </template>
@@ -14780,27 +15882,6 @@ exports[`should render dsr component for PTabsBar 1`] = `
 :host([hidden]) {
   display: none !important;
 }
-button {
-  display: flex;
-  pointer-events: auto;
-  align-items: center;
-  justify-content: center;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  height: calc(calc(6px + 2.125ex) + 4px);
-  width: calc(calc(6px + 2.125ex) + 4px);
-  border: 0;
-  outline: 0;
-  cursor: pointer;
-  background: #FFF;
-  border-radius: 4px;
-  -webkit-backdrop-filter: blur(32px);
-  backdrop-filter: blur(32px);
-  visibility: hidden;
-  box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.16);
-}
-
 .root {
   position: relative;
   display: grid;
@@ -14849,7 +15930,6 @@ button {
   direction: ltr;
   width: calc(calc(6px + 2.125ex) + 24px);
   padding: 4px 0;
-  pointer-events: none;
   display: flex;
   align-items: flex-start;
   left: -1px;
@@ -14857,7 +15937,7 @@ button {
   background: linear-gradient(to right, rgba(255,255,255,1) 20%,rgba(255,255,255,0.6) 48%,rgba(255,255,255,0.3) 68%,rgba(255,255,255,0) 100%);
   visibility: hidden;
 }
-.action-prev button {
+.action-prev .action-button {
   margin-left: 8px;
 }
 .action-next {
@@ -14867,7 +15947,6 @@ button {
   direction: ltr;
   width: calc(calc(6px + 2.125ex) + 24px);
   padding: 4px 0;
-  pointer-events: none;
   display: flex;
   align-items: flex-start;
   right: -1px;
@@ -14875,8 +15954,12 @@ button {
   background: linear-gradient(to left, rgba(255,255,255,1) 20%,rgba(255,255,255,0.6) 48%,rgba(255,255,255,0.3) 68%,rgba(255,255,255,0) 100%);
   visibility: hidden;
 }
-.action-next button {
+.action-next .action-button {
   margin-right: 8px;
+}
+.action-button {
+  --p-internal-button-scaling: 0;
+  box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.16);
 }
 .icon:dir(rtl) {
   transform: scaleX(-1);
@@ -14904,21 +15987,100 @@ button {
           <div
             class="action-prev"
           >
-            <button
-              aria-hidden="true"
-              aria-label="prev"
+            <p-button
+              class="action-button ssr"
+              dir="ltr"
+              hide-label="true"
               tabindex="-1"
-              type="button"
             >
-              <p-icon
-                class="icon ssr"
+              <template
+                shadowroot="open"
+                shadowrootdelegatesfocus="true"
+                shadowrootmode="open"
               >
-                <template
-                  shadowroot="open"
-                  shadowrootmode="open"
+                <style>
+                  :host {
+  display: inline-block;
+  vertical-align: top !important;
+  outline: 0 !important;
+  border-radius: 4px !important;
+  color-scheme: light dark !important;
+}
+:host([hidden]) {
+  display: none !important;
+}
+.root {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  width: 100%;
+  box-sizing: border-box;
+  text-align: start;
+  -webkit-appearance: none;
+  appearance: none;
+  text-decoration: none;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  -webkit-backdrop-filter: blur(32px);
+  backdrop-filter: blur(32px);
+  border: none;
+  border-radius: 4px;
+  transform: translate3d(0,0,0);
+  background-color: hsl(240 4% 85%/35%);
+  color: #010205;
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  padding: calc(var(--p-internal-button-scaling, 1) * 0.8125 * 16px + 2px) max(calc(var(--p-internal-button-scaling, 1) * 1.625 * 16px + 2px), 6px);
+  gap: clamp(2px, calc(var(--p-internal-button-scaling, 1) * 0.5 * 16px), 16px);
+  cursor: pointer;
+  margin: 0;
+}
+.root::-moz-focus-inner {
+  border: 0;
+}
+.label {
+  position: static;
+  width: auto;
+  height: auto;
+  padding: 0;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
+  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+}
+.icon {
+  width: calc(6px + 2.125ex);
+  height: calc(6px + 2.125ex);
+  margin-inline-start: clamp(-16px, calc(var(--p-internal-button-scaling, 1) * -0.5 * 16px), -2px);
+  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+}
+.loading {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+}
+
+                </style>
+                <button
+                  class="root"
+                  type="button"
                 >
-                  <style>
-                    :host {
+                  <p-icon
+                    aria-hidden="true"
+                    class="icon ssr"
+                  >
+                    <template
+                      shadowroot="open"
+                      shadowrootmode="open"
+                    >
+                      <style>
+                        :host {
   display: inline-block;
   vertical-align: top;
   color-scheme: light dark !important;
@@ -14933,9 +16095,8 @@ img {
   pointer-events: none;
   filter: var(--p-internal-icon-filter,invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%));
   -webkit-animation: rerender-light-primary 1ms;
-  width: calc(6px + 2.125ex);
-  height: calc(6px + 2.125ex);
-  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  width: inherit;
+  height: inherit;
 }
 img:dir(rtl) {
   transform: scaleX(-1);
@@ -14948,36 +16109,128 @@ img:dir(rtl) {
     transform: rotateZ(0);
   }
 }
-                  </style>
-                  <img
-                    alt=""
-                    height="24"
-                    loading="lazy"
-                    src="http://localhost:3001/icons/arrow-head-left.cf1395d.svg"
-                    width="24"
-                  />
-                </template>
-              </p-icon>
-            </button>
+                      </style>
+                      <img
+                        alt=""
+                        height="24"
+                        loading="lazy"
+                        src="http://localhost:3001/icons/arrow-head-left.cf1395d.svg"
+                        width="24"
+                      />
+                    </template>
+                  </p-icon>
+                  <span
+                    class="label"
+                  >
+                    <slot />
+                  </span>
+                </button>
+                <span
+                  class="loading"
+                  id="loading"
+                  role="status"
+                />
+              </template>
+              prev
+            </p-button>
           </div>
           <div
             class="action-next"
           >
-            <button
-              aria-hidden="true"
-              aria-label="next"
+            <p-button
+              class="action-button ssr"
+              dir="ltr"
+              hide-label="true"
               tabindex="-1"
-              type="button"
             >
-              <p-icon
-                class="icon ssr"
+              <template
+                shadowroot="open"
+                shadowrootdelegatesfocus="true"
+                shadowrootmode="open"
               >
-                <template
-                  shadowroot="open"
-                  shadowrootmode="open"
+                <style>
+                  :host {
+  display: inline-block;
+  vertical-align: top !important;
+  outline: 0 !important;
+  border-radius: 4px !important;
+  color-scheme: light dark !important;
+}
+:host([hidden]) {
+  display: none !important;
+}
+.root {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  width: 100%;
+  box-sizing: border-box;
+  text-align: start;
+  -webkit-appearance: none;
+  appearance: none;
+  text-decoration: none;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  -webkit-backdrop-filter: blur(32px);
+  backdrop-filter: blur(32px);
+  border: none;
+  border-radius: 4px;
+  transform: translate3d(0,0,0);
+  background-color: hsl(240 4% 85%/35%);
+  color: #010205;
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  padding: calc(var(--p-internal-button-scaling, 1) * 0.8125 * 16px + 2px) max(calc(var(--p-internal-button-scaling, 1) * 1.625 * 16px + 2px), 6px);
+  gap: clamp(2px, calc(var(--p-internal-button-scaling, 1) * 0.5 * 16px), 16px);
+  cursor: pointer;
+  margin: 0;
+}
+.root::-moz-focus-inner {
+  border: 0;
+}
+.label {
+  position: static;
+  width: auto;
+  height: auto;
+  padding: 0;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
+  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+}
+.icon {
+  width: calc(6px + 2.125ex);
+  height: calc(6px + 2.125ex);
+  margin-inline-start: clamp(-16px, calc(var(--p-internal-button-scaling, 1) * -0.5 * 16px), -2px);
+  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+}
+.loading {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+}
+
+                </style>
+                <button
+                  class="root"
+                  type="button"
                 >
-                  <style>
-                    :host {
+                  <p-icon
+                    aria-hidden="true"
+                    class="icon ssr"
+                  >
+                    <template
+                      shadowroot="open"
+                      shadowrootmode="open"
+                    >
+                      <style>
+                        :host {
   display: inline-block;
   vertical-align: top;
   color-scheme: light dark !important;
@@ -14992,9 +16245,8 @@ img {
   pointer-events: none;
   filter: var(--p-internal-icon-filter,invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%));
   -webkit-animation: rerender-light-primary 1ms;
-  width: calc(6px + 2.125ex);
-  height: calc(6px + 2.125ex);
-  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  width: inherit;
+  height: inherit;
 }
 img:dir(rtl) {
   transform: scaleX(-1);
@@ -15007,17 +16259,30 @@ img:dir(rtl) {
     transform: rotateZ(0);
   }
 }
-                  </style>
-                  <img
-                    alt=""
-                    height="24"
-                    loading="lazy"
-                    src="http://localhost:3001/icons/arrow-head-right.304b330.svg"
-                    width="24"
-                  />
-                </template>
-              </p-icon>
-            </button>
+                      </style>
+                      <img
+                        alt=""
+                        height="24"
+                        loading="lazy"
+                        src="http://localhost:3001/icons/arrow-head-right.304b330.svg"
+                        width="24"
+                      />
+                    </template>
+                  </p-icon>
+                  <span
+                    class="label"
+                  >
+                    <slot />
+                  </span>
+                </button>
+                <span
+                  class="loading"
+                  id="loading"
+                  role="status"
+                />
+              </template>
+              next
+            </p-button>
           </div>
         </div>
       </template>
