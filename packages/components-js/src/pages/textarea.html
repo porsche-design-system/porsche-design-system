@@ -3,11 +3,12 @@
 </div>
 
 <div class="playground light" title="should render with label and placeholder">
-  <p-textarea label="Label with placeholder" placeholder="Some placeholder"></p-textarea>
+  <p-textarea name="Some Name" label="Label with placeholder" placeholder="Some placeholder"></p-textarea>
 </div>
 
 <div class="playground light" title="should render with label, description and placeholder">
   <p-textarea
+    name="Some Name"
     label="Label with description and placeholder"
     description="Some description"
     placeholder="Some placeholder"
@@ -16,6 +17,7 @@
 
 <div class="playground light" title="should render without label and without description">
   <p-textarea
+    name="Some Name"
     label="Label"
     description="Some description"
     hide-label="true"
@@ -25,6 +27,7 @@
 
 <div class="playground light" title="should render with responsive label and description">
   <p-textarea
+    name="Some Name"
     label="Label"
     description="Some description"
     hide-label="{ base: true, xs: false, s: true, m: false, l: true, xl: false }"
@@ -34,48 +37,66 @@
 </div>
 
 <div class="playground light" title="should render in required state">
-  <p-textarea label="Required" required></p-textarea>
-  <p-textarea label="Required and insanely super long label across multiple lines" required></p-textarea>
+  <p-textarea name="Some Name" label="Required" required></p-textarea>
+  <p-textarea
+    name="Some Name"
+    label="Required and insanely super long label across multiple lines"
+    required
+  ></p-textarea>
 </div>
 
 <div class="playground light" title="should render in disabled state">
-  <p-textarea label="Disabled" description="Some description" disabled></p-textarea>
+  <p-textarea name="Some Name" label="Disabled" description="Some description" disabled></p-textarea>
 </div>
 
 <div class="playground light" title="should render with placeholder in disabled state">
-  <p-textarea label="Disabled placeholder" disabled placeholder="Some placeholder"></p-textarea>
+  <p-textarea name="Some Name" label="Disabled placeholder" disabled placeholder="Some placeholder"></p-textarea>
 </div>
 
 <div class="playground light" title="should render in readonly state">
-  <p-textarea label="Readonly" value="Some value" read-only></p-textarea>
+  <p-textarea name="Some Name" label="Readonly" value="Some value" read-only></p-textarea>
 </div>
 
 <div class="playground light" title="should render with counter">
-  <p-textarea label="Counter" max-length="200" value="Some value"></p-textarea>
+  <p-textarea name="Some Name" label="Counter" max-length="200" value="Some value"></p-textarea>
 </div>
 
 <div class="playground light" title="should render without counter">
-  <p-textarea label="showCounter=false" show-counter="false" max-length="200" value="Some value"> </p-textarea>
+  <p-textarea name="Some Name" label="showCounter=false" show-counter="false" max-length="200" value="Some value">
+  </p-textarea>
 </div>
 
 <div class="playground light" title="should render with error state and error message">
-  <p-textarea label="Error with message" state="error" message="Error message" value="Some value"></p-textarea>
+  <p-textarea
+    name="Some Name"
+    label="Error with message"
+    state="error"
+    message="Error message"
+    value="Some value"
+  ></p-textarea>
 </div>
 
 <div class="playground light" title="should render with error state and no error message">
-  <p-textarea label="Error without message" state="error" value="Some value"></p-textarea>
+  <p-textarea name="Some Name" label="Error without message" state="error" value="Some value"></p-textarea>
 </div>
 
 <div class="playground light" title="should render with success state and success message">
-  <p-textarea label="Success with message" state="success" message="Success message" value="Some value"></p-textarea>
+  <p-textarea
+    name="Some Name"
+    label="Success with message"
+    state="success"
+    message="Success message"
+    value="Some value"
+  ></p-textarea>
 </div>
 
 <div class="playground light" title="should render with success state and no success message">
-  <p-textarea label="Success without message" state="success" value="Some value"></p-textarea>
+  <p-textarea name="Some Name" label="Success without message" state="success" value="Some value"></p-textarea>
 </div>
 
 <div class="playground light" title="should render with default state and no message">
   <p-textarea
+    name="Some Name"
     label="Default without message"
     state="none"
     message="this message should be hidden"
@@ -84,7 +105,7 @@
 </div>
 
 <div class="playground light" title="should render label, description and message by slotted content with error state">
-  <p-textarea state="error" aria-labelledby="slotted-label-1" value="Some value">
+  <p-textarea name="Some Name" state="error" aria-labelledby="slotted-label-1" value="Some value">
     <span slot="label" id="slotted-label-1">
       <span>
         Slotted label. And some slotted and deeply nested <a href="#">anchor</a>, <b>bold</b>, <strong>strong</strong>,
@@ -110,7 +131,7 @@
   class="playground light"
   title="should render label, description and message by slotted content with success state"
 >
-  <p-textarea state="success" aria-labelledby="slotted-label-2" value="Some value">
+  <p-textarea name="Some Name" state="success" aria-labelledby="slotted-label-2" value="Some value">
     <span slot="label" id="slotted-label-2">
       <span>
         Slotted label. And some slotted and deeply nested <a href="#">anchor</a>, <b>bold</b>, <strong>strong</strong>,
@@ -134,6 +155,7 @@
 
 <div class="playground light" title="should render with multiline label, description, message and text">
   <p-textarea
+    name="Some Name"
     label="Multiline label lorem ipsum dolor sit amet, consetetur sadipscing"
     description="Multiline description lorem ipsum dolor sit amet, consetetur sadipscing lorem ipsum dolor sit amet"
     state="error"
@@ -146,6 +168,7 @@
 
 <div class="playground light" title="should render with label and multiline text">
   <p-textarea
+    name="Some Name"
     label="Multiline text"
     value="Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Lorem ipsum dolor sit amet,"
   >
