@@ -133,7 +133,7 @@ export default class Code extends Vue {
 `<p-textarea dir-name="comment-direction" name="some-name" label="Some label" value="Some value"></p-textarea>`;
 
   autoComplete =
-`<p-textarea auto-complete="true" name="some-name" label="Some label" value="Some value"></p-textarea>`;
+`<p-textarea auto-complete="on" name="some-name" label="Some label" value="Some value"></p-textarea>`;
 
   spellCheck =
 `<p-textarea spell-check="true" name="some-name" label="Some label" value="Some value"></p-textarea>`;
