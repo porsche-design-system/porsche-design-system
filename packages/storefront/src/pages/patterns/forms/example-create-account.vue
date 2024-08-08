@@ -214,9 +214,9 @@
     onFieldBlur({ target }: FocusEvent & { target: HTMLInputElement }): void {
       validateField(target.name as keyof FormModel, this.bag);
     }
-    onCustomSelectUpdate({ target }: CustomEvent & { target: HTMLElement }): void {
-      this.bag.data.salutation = (target as HTMLSelectElement).value;
-      validateField((target as HTMLSelectElement).name as keyof FormModel, this.bag);
+    onCustomSelectUpdate({ target }: CustomEvent & { target: HTMLSelectElement }): void {
+      this.bag.data.salutation = target.value;
+      validateField(target.name as keyof FormModel, this.bag);
     }
 
     async onSubmit(): Promise<void> {
