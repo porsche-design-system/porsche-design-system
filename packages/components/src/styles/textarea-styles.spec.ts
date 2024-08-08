@@ -2,7 +2,7 @@ import { getTextareaStyles } from './textarea-styles';
 import { validateCssAndMatchSnapshot } from '../../tests/unit/helpers';
 import { getCss } from '../utils';
 
-describe('getComponentCss()', () => {
+describe('getTextareaStyles()', () => {
   it.each<Parameters<typeof getTextareaStyles>>([
     [false, false, 'none', true, 'light'],
     [false, false, 'none', false, 'light'],
