@@ -11,7 +11,8 @@ export const warnIfAriaAndHeadingPropsAreUndefined = (
     consoleWarn(
       `heading or aria has to be set via property for component ${getTagNameWithoutPrefix(
         host
-      )} in order to ensure accessibility.`
+      )} in order to ensure accessibility.`,
+      host
     );
   }
 };

@@ -36,7 +36,8 @@ export const warnIfIsLoadingAndIconIsNone = (
     consoleWarn(
       `combination of properties icon='${iconName}' and loading='${loading}' for component ${getTagNameWithoutPrefix(
         host
-      )} is not supported.`
+      )} is not supported.`,
+      host
     );
   }
 };
