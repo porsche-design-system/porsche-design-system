@@ -44,8 +44,8 @@ describe('componentWillLoad', () => {
       false,
       undefined,
       '',
-      'off',
-      undefined,
+      'soft',
+      '',
       undefined
     );
   });
