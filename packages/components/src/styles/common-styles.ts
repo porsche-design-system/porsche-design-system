@@ -38,12 +38,15 @@ export const motionEasingMap: Record<MotionEasingKey | 'linear', string> = {
 };
 
 /**
- * Base value used for spacing calculations with 'em'.
+ * Base value used for spacing calculations
  *
  * This constant defines the base value of 16 pixels, which serves as a
- * standard unit for calculating relative sizes in 'em'. When working
- * with 'em' units, all measurements will be scaled according to this
- * base value. E.g. 0.5em will equal 8px;
+ * standard unit for calculating relative sizes. By multiplying this base
+ * value with scaling factors and proportions, you can derive consistent
+ * and proportional dimensions and spacings throughout the design.
+ *
+ * Example:
+ * const spacing = scalingFactor * proportion * SCALING_BASE_VALUE;
  */
 export const SCALING_BASE_VALUE = '16px';
 
