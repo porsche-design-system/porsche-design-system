@@ -17,14 +17,14 @@ import {
 } from '../../utils';
 import {
   type TextareaUpdateEventDetail,
-  AUTO_FILL,
-  type AutoFillType,
+  AUTO_COMPLETE,
+  type TextareaAutoComplete,
   initNativeTextarea,
   INTERNAL_TEXTAREA_SLOT,
   TEXTAREA_WRAPS,
   textareaInputEventListenerCurry,
   type TextareaState,
-  type TextareaWrapType,
+  type TextareaWrap,
 } from './textarea-utils';
 import { StateMessage } from '../common/state-message/state-message';
 import { Label } from '../common/label/label';
@@ -49,9 +49,9 @@ const propTypes: PropTypes<typeof Textarea> = {
   value: AllowedTypes.string,
   maxLength: AllowedTypes.number,
   minLength: AllowedTypes.number,
-  wrap: AllowedTypes.oneOf<TextareaWrapType>(TEXTAREA_WRAPS),
+  wrap: AllowedTypes.oneOf<TextareaWrap>(TEXTAREA_WRAPS),
   spellCheck: AllowedTypes.boolean,
-  autoComplete: AllowedTypes.oneOf<AutoFillType>(AUTO_FILL),
+  autoComplete: AllowedTypes.oneOf<TextareaAutoComplete>(AUTO_COMPLETE),
 };
 
 /**
@@ -112,13 +112,13 @@ export class Textarea {
   @Prop() public minLength?: number;
 
   /** Specifies whether the input can be autofilled by the browser */
-  @Prop() public autoComplete?: AutoFillType = '';
+  @Prop() public autoComplete?: TextareaAutoComplete = '';
 
   /** Specifies whether the input should have its spelling and grammar checked */
   @Prop() public spellCheck?: boolean;
 
   /** Handles wrapping behaviour of elements. */
-  @Prop() public wrap?: TextareaWrapType = 'soft';
+  @Prop() public wrap?: TextareaWrap = 'soft';
 
   /** Specifies whether the textarea should be read-only. */
   @Prop() public readOnly?: boolean = false;

@@ -5,11 +5,11 @@ import type { EventEmitter } from '@stencil/core';
 export type TextareaState = FormState;
 export const INTERNAL_TEXTAREA_SLOT = 'internal-textarea';
 
-export const AUTO_FILL = ['off', 'on', ''] as const;
-export type AutoFillType = (typeof AUTO_FILL)[number];
+export const AUTO_COMPLETE = ['off', 'on', ''] as const;
+export type TextareaAutoComplete = (typeof AUTO_COMPLETE)[number];
 
 export const TEXTAREA_WRAPS = ['hard', 'soft', 'off'] as const;
-export type TextareaWrapType = (typeof TEXTAREA_WRAPS)[number];
+export type TextareaWrap = (typeof TEXTAREA_WRAPS)[number];
 
 export type TextareaUpdateEventDetail = { name: string; value: string };
 
@@ -24,8 +24,8 @@ export const initNativeTextarea = (
   readOnly: boolean,
   autoFocus: boolean,
   spellCheck: boolean,
-  autoComplete: AutoFillType,
-  wrap: TextareaWrapType,
+  autoComplete: TextareaAutoComplete,
+  wrap: TextareaWrap,
   value: string,
   dirName: string
 ): HTMLTextAreaElement => {
@@ -66,8 +66,8 @@ export const syncNativeTextarea = (
   readOnly: boolean,
   autoFocus: boolean,
   spellCheck: boolean,
-  autoComplete: AutoFillType,
-  wrap: TextareaWrapType,
+  autoComplete: TextareaAutoComplete,
+  wrap: TextareaWrap,
   value: string,
   dirName: string
 ): void => {
