@@ -25,7 +25,7 @@
                 :name="validateFieldName('salutation')"
                 required
               >
-                <p-select-option value hidden></p-select-option>
+<p-select-option hidden></p-select-option>
                 <p-select-option value="Mr.">Mr.</p-select-option>
                 <p-select-option value="Mrs.">Mrs.</p-select-option>
               </p-select>
