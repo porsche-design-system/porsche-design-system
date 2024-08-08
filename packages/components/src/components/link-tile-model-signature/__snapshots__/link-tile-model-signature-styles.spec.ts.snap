@@ -68,6 +68,7 @@ h1,h2,h3,h4,h5,h6 {
   gap: clamp(8px, 0.5vw + 6px, 16px);
 }
 .media {
+  position: relative;
   grid-area: 1/1/-1 /-1;
   z-index: 1;
   overflow: hidden;
@@ -181,6 +182,7 @@ p {
   gap: clamp(8px, 0.5vw + 6px, 16px);
 }
 .media {
+  position: relative;
   grid-area: 1/1/-1 /-1;
   z-index: 1;
   overflow: hidden;
@@ -294,6 +296,7 @@ p {
   gap: clamp(8px, 0.5vw + 6px, 16px);
 }
 .media {
+  position: relative;
   grid-area: 1/1/-1 /-1;
   z-index: 1;
   overflow: hidden;
@@ -398,6 +401,7 @@ h1,h2,h3,h4,h5,h6 {
   gap: clamp(8px, 0.5vw + 6px, 16px);
 }
 .media {
+  position: relative;
   grid-area: 1/1/-1 /-1;
   z-index: 1;
   overflow: hidden;
@@ -511,6 +515,7 @@ p {
   gap: clamp(8px, 0.5vw + 6px, 16px);
 }
 .media {
+  position: relative;
   grid-area: 1/1/-1 /-1;
   z-index: 1;
   overflow: hidden;
@@ -654,6 +659,7 @@ p {
   gap: clamp(8px, 0.5vw + 6px, 16px);
 }
 .media {
+  position: relative;
   grid-area: 1/1/-1 /-1;
   z-index: 1;
   overflow: hidden;

@@ -123,6 +123,7 @@ export const getComponentCss = (
       gap: spacingFluidSmall,
     },
     media: {
+      position: 'relative', // necessary if custom `position: absolute` style is added to media elements
       gridArea: '1/1/-1 /-1',
       zIndex: 1,
       overflow: 'hidden', // relevant for scaling of nested image

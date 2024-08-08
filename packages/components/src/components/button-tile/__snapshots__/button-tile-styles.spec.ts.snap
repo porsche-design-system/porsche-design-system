@@ -63,6 +63,7 @@ p {
   border-end-end-radius: 12px;
 }
 .media {
+  position: relative;
   grid-area: 1/1/-1 /-1;
   z-index: 1;
   overflow: hidden;
@@ -153,6 +154,7 @@ p {
   grid-template: clamp(16px, 1.25vw + 12px, 36px) auto minmax(0px, 1fr) auto clamp(16px, 1.25vw + 12px, 36px)/clamp(16px, 1.25vw + 12px, 36px) minmax(0px, 1fr) clamp(16px, 1.25vw + 12px, 36px);
 }
 .media {
+  position: relative;
   grid-area: 1/1/-1 /-1;
   z-index: 1;
   overflow: hidden;
@@ -237,6 +239,7 @@ p {
   grid-template: clamp(16px, 1.25vw + 12px, 36px) auto minmax(0px, 1fr) auto clamp(16px, 1.25vw + 12px, 36px)/clamp(16px, 1.25vw + 12px, 36px) minmax(0px, 1fr) clamp(16px, 1.25vw + 12px, 36px);
 }
 .media {
+  position: relative;
   grid-area: 1/1/-1 /-1;
   z-index: 1;
   overflow: hidden;
@@ -350,6 +353,7 @@ p {
   grid-template: clamp(16px, 1.25vw + 12px, 36px) auto minmax(0px, 1fr) auto clamp(16px, 1.25vw + 12px, 36px)/clamp(16px, 1.25vw + 12px, 36px) minmax(0px, 1fr) clamp(16px, 1.25vw + 12px, 36px);
 }
 .media {
+  position: relative;
   grid-area: 1/1/-1 /-1;
   z-index: 1;
   overflow: hidden;
@@ -514,6 +518,7 @@ p {
   grid-template: clamp(16px, 1.25vw + 12px, 36px) auto minmax(0px, 1fr) auto clamp(16px, 1.25vw + 12px, 36px)/clamp(16px, 1.25vw + 12px, 36px) minmax(0px, 1fr) clamp(16px, 1.25vw + 12px, 36px);
 }
 .media {
+  position: relative;
   grid-area: 1/1/-1 /-1;
   z-index: 1;
   overflow: hidden;
@@ -601,6 +606,7 @@ p {
   border-start-end-radius: 12px;
 }
 .media {
+  position: relative;
   grid-area: 1/1/-1 /-1;
   z-index: 1;
   overflow: hidden;
