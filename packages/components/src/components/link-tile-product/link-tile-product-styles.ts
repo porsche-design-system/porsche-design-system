@@ -143,7 +143,6 @@ export const getComponentCss = (
       },
     }),
     image: {
-      position: 'relative', // necessary if custom `position: absolute` style is added to media elements
       aspectRatio: '8/9',
       margin: `${spacingFluidSmall} auto ${spacingFluidXSmall}`,
       overflow: 'hidden',
