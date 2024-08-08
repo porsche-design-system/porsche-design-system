@@ -1,9 +1,8 @@
-import { getTextareaStyles } from './textarea-styles';
-import { validateCssAndMatchSnapshot } from '../../tests/unit/helpers';
-import { getCss } from '../utils';
+import { getComponentCss } from './textarea-styles';
+import { validateCssAndMatchSnapshot } from '../../../tests/unit/helpers';
 
 describe('getComponentCss()', () => {
-  it.each<Parameters<typeof getTextareaStyles>>([
+  it.each<Parameters<typeof getComponentCss>>([
     [false, false, 'none', true, 'light'],
     [false, false, 'none', false, 'light'],
     [false, true, 'none', true, 'light'],
@@ -20,6 +19,6 @@ describe('getComponentCss()', () => {
     [false, { base: true, xs: false, s: true, m: false, l: true, xl: false }, 'none', true, 'light'],
     [false, { base: true, xs: false, s: true, m: false, l: true, xl: false }, 'none', true, 'dark'],
   ])('should return correct css for isDisabled: %s, hideLabel: %o, state: %s, hasCounter: %s, theme: %s', (...args) => {
-    validateCssAndMatchSnapshot(getCss(getTextareaStyles(...args)));
+    validateCssAndMatchSnapshot(getComponentCss(...args));
   });
 });
