@@ -12,6 +12,7 @@ import {
   hostHiddenStyles,
   hoverMediaQuery,
   prefersColorSchemeDarkMediaQuery,
+  SCALING_BASE_VALUE,
 } from './';
 import {
   borderRadiusSmall,
@@ -20,6 +21,7 @@ import {
   frostedGlassStyle,
   textSmallStyle,
 } from '@porsche-design-system/styles';
+import { JssStyle } from 'jss';
 
 const { primaryColor: darkThemePrimaryColor } = getThemedColors('dark');
 const { primaryColor: lightThemePrimaryColor } = getThemedColors('light');
@@ -93,21 +95,14 @@ export const getLinkButtonStyles = (
   const { focusColor } = getThemedColors(theme);
   const hasIcon = hasVisibleIcon(icon, iconSource) || hideLabel;
 
-  const defaultScaling = compact ? 'calc(4 / 13)' : 1;
-  const scalingBaseValue = '1px';
-  const scalingFactors = {
-    paddingBlock: 13,
-    paddingInline: 26,
-    gap: 8,
-    iconMarginInlineStart: -8,
-  };
+  const scalingVar = `var(${cssVariableInternalScaling}, ${compact ? 'calc(4 / 13)' : 1})`; // Compact mode needs to have 4px paddingBlock thus this scaling factor
 
-  const scalingVar = `var(${cssVariableInternalScaling}, ${defaultScaling})`;
+  const borderCompensation = variant === 'ghost' ? `+ ${borderWidthBase}` : ''; // Compensate for missing border in ghost variant (Fixes border backdrop-filter blur rendering issue in safari)
 
-  const paddingBlock = `calc(${scalingVar} * ${scalingBaseValue} * ${scalingFactors.paddingBlock} ${variant === 'ghost' ? `+ ${borderWidthBase}` : ''})`; // Compensate for missing border in ghost variant (Fixes border backdrop-filter blur rendering issue in safari)
-  const paddingInline = `max(calc(${scalingVar} * ${scalingBaseValue} * ${scalingFactors.paddingInline} ${variant === 'ghost' ? `+ ${borderWidthBase}` : ''}), ${variant === 'ghost' ? '6px' : '4px'})`; // Compensate for missing border in ghost variant (Fixes border backdrop-filter blur rendering issue in safari)
-  const gap = `clamp(2px, calc(${scalingVar} * ${scalingBaseValue} * ${scalingFactors.gap}), 16px)`;
-  const iconMarginInlineStart = `clamp(-16px, calc(${scalingVar} * ${scalingBaseValue} * ${scalingFactors.iconMarginInlineStart}), -2px)`;
+  const paddingBlock = `calc(${scalingVar} * 0.8125em ${borderCompensation})`; // 0.8125em corresponds to 13px (fontSize: SCALING_BASE_VALUE)
+  const paddingInline = `max(calc(${scalingVar} * 1.625em ${borderCompensation}), ${variant === 'ghost' ? '6px' : '4px'})`; // 1.625em corresponds to 26px (fontSize: SCALING_BASE_VALUE)
+  const gap = `clamp(2px, calc(${scalingVar} * 0.5em), 16px)`; // 0.5em corresponds to 8px (fontSize: SCALING_BASE_VALUE)
+  const iconMarginInlineStart = `clamp(-16px, calc(${scalingVar} * -0.5em), -2px)`; // -0.5em corresponds to -8px (fontSize: SCALING_BASE_VALUE)
 
   return {
     '@global': {
@@ -123,6 +118,7 @@ export const getLinkButtonStyles = (
       },
     },
     root: {
+      fontSize: SCALING_BASE_VALUE,
       display: 'flex',
       alignItems: 'flex-start',
       justifyContent: 'center',
@@ -133,13 +129,12 @@ export const getLinkButtonStyles = (
       appearance: 'none',
       textDecoration: 'none',
       ...(variant === 'ghost'
-        ? { ...frostedGlassStyle, border: 'none' }
+        ? { ...frostedGlassStyle, border: 'none' } // We can't use a border in the ghost variant due to rendering issues with backdrop-filter in safari
         : { border: `${borderWidthBase} solid ${borderColor}` }),
       borderRadius: borderRadiusSmall,
       transform: 'translate3d(0,0,0)', // creates new stacking context (for slotted anchor + focus)
       backgroundColor,
       color: textColor,
-      ...textSmallStyle,
       transition: `${getTransition('background-color')}, ${getTransition('border-color')}, ${getTransition('color')}`,
       ...buildResponsiveStyles(hideLabel, (hideLabelValue: boolean) => ({
         padding: hideLabelValue ? paddingBlock : `${paddingBlock} ${paddingInline}`,
@@ -164,9 +159,13 @@ export const getLinkButtonStyles = (
         color: textColorDark,
       }),
     },
-    label: buildResponsiveStyles(hideLabel, getHiddenTextJssStyle),
+    label: buildResponsiveStyles(hideLabel, (isHidden = true, isShownJssStyle?: JssStyle) => ({
+      ...getHiddenTextJssStyle(isHidden, isShownJssStyle),
+      ...textSmallStyle, // Overwrite scaling fontSize
+    })),
     ...(hasIcon && {
       icon: {
+        ...textSmallStyle, // Overwrite scaling fontSize
         width: fontLineHeight, // ensure space is already reserved until icon component is loaded (ssr)
         height: fontLineHeight, // ensure space is already reserved until icon component is loaded (ssr)
         ...buildResponsiveStyles(hideLabel, (hideLabelValue: boolean) => ({

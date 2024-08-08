@@ -37,6 +37,16 @@ export const motionEasingMap: Record<MotionEasingKey | 'linear', string> = {
   linear: 'linear',
 };
 
+/**
+ * Base value used for spacing calculations with 'em'.
+ *
+ * This constant defines the base value of 16 pixels, which serves as a
+ * standard unit for calculating relative sizes in 'em'. When working
+ * with 'em' units, all measurements will be scaled according to this
+ * base value. E.g. 0.5em will equal 8px;
+ */
+export const SCALING_BASE_VALUE = '16px';
+
 export const dismissButtonJssStyle: JssStyle = {
   '--p-internal-button-scaling': 0,
 };
