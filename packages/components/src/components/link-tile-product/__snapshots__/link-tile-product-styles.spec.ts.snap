@@ -59,6 +59,7 @@ slot[name="header"] {
   align-items: flex-start;
 }
 .image {
+  position: relative;
   aspect-ratio: 8/9;
   margin: clamp(8px, 0.5vw + 6px, 16px) auto clamp(4px, 0.25vw + 3px, 8px);
   overflow: hidden;
@@ -163,6 +164,7 @@ slot[name="header"] {
   z-index: 2;
 }
 .image {
+  position: relative;
   aspect-ratio: 8/9;
   margin: clamp(8px, 0.5vw + 6px, 16px) auto clamp(4px, 0.25vw + 3px, 8px);
   overflow: hidden;
@@ -277,6 +279,7 @@ slot[name="header"] {
   z-index: 2;
 }
 .image {
+  position: relative;
   aspect-ratio: 8/9;
   margin: clamp(8px, 0.5vw + 6px, 16px) auto clamp(4px, 0.25vw + 3px, 8px);
   overflow: hidden;
@@ -381,6 +384,7 @@ slot[name="header"] {
   z-index: 2;
 }
 .image {
+  position: relative;
   aspect-ratio: 8/9;
   margin: clamp(8px, 0.5vw + 6px, 16px) auto clamp(4px, 0.25vw + 3px, 8px);
   overflow: hidden;
@@ -492,6 +496,7 @@ slot[name="header"] {
   z-index: 2;
 }
 .image {
+  position: relative;
   aspect-ratio: 8/9;
   margin: clamp(8px, 0.5vw + 6px, 16px) auto clamp(4px, 0.25vw + 3px, 8px);
   overflow: hidden;
@@ -600,6 +605,7 @@ s {
   z-index: 2;
 }
 .image {
+  position: relative;
   aspect-ratio: 8/9;
   margin: clamp(8px, 0.5vw + 6px, 16px) auto clamp(4px, 0.25vw + 3px, 8px);
   overflow: hidden;
@@ -722,6 +728,7 @@ s {
   z-index: 2;
 }
 .image {
+  position: relative;
   aspect-ratio: 8/9;
   margin: clamp(8px, 0.5vw + 6px, 16px) auto clamp(4px, 0.25vw + 3px, 8px);
   overflow: hidden;
