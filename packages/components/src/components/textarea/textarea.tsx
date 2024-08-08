@@ -118,7 +118,7 @@ export class Textarea {
   @Prop() public spellCheck?: boolean;
 
   /** Handles wrapping behaviour of elements. */
-  @Prop() public wrap?: TextareaWrapType = 'off';
+  @Prop() public wrap?: TextareaWrapType = 'soft';
 
   /** Specifies whether the textarea should be read-only. */
   @Prop() public readOnly?: boolean = false;

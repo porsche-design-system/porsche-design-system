@@ -49,7 +49,6 @@ export const getTextareaStyles = (
         {
           // TODO: is it possible to move into getSlottedTextFieldTextareaSelectStyles()?
           '::slotted(textarea)': {
-            textWrap: 'wrap', // only required for textarea not for textarea-wrapper. Why?
             height: 'auto', // removes !important from getBaseChildStyles
             minHeight: '200px', // min-height should be overridable
             resize: 'vertical', // overridable, too
