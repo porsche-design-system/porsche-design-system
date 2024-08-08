@@ -7942,6 +7942,20 @@ exports[`should match snapshot 1`] = `
     "nestedComponents": [
       "p-icon",
     ],
+    "observedAttributes": [
+      "disabled",
+      "readonly",
+      "required",
+      "maxlength",
+      "minlength",
+      "placeholder",
+      "readonly",
+      "autofocus",
+      "spellcheck",
+      "autocomplete",
+      "wrap",
+      "dirname",
+    ],
     "propsMeta": {
       "autoComplete": {
         "allowedValues": [
