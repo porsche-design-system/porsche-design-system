@@ -7951,7 +7951,7 @@ exports[`should match snapshot 1`] = `
         ],
         "defaultValue": "",
         "description": "Specifies whether the input can be autofilled by the browser",
-        "type": "AutoFillType",
+        "type": "TextareaAutoComplete",
       },
       "autoFocus": {
         "allowedValues": "boolean",
@@ -8077,9 +8077,9 @@ exports[`should match snapshot 1`] = `
           "soft",
           "off",
         ],
-        "defaultValue": "off",
+        "defaultValue": "soft",
         "description": "Handles wrapping behaviour of elements.",
-        "type": "TextareaWrapType",
+        "type": "TextareaWrap",
       },
     },
     "slotsMeta": {
