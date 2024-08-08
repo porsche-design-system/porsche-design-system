@@ -2416,7 +2416,7 @@ exports[`should match snapshot 1`] = `
     "isInternal": false,
     "isThemeable": true,
     "nestedComponents": [
-      "p-button",
+      "p-button-pure",
     ],
     "propsMeta": {
       "activeIdentifier": {
