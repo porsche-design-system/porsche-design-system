@@ -35,7 +35,7 @@
               class="form-row-spacing form-row-spacing--zero-m form-grid-item"
             >
               <p-select :theme="storefrontTheme" label="Title" v-bind:name="validateFieldName('title')">
-                <p-select-option value></p-select-option>
+                <p-select-option></p-select-option>
                 <p-select-option value="Dr.">Dr.</p-select-option>
                 <p-select-option value="Prof.">Prof.</p-select-option>
                 <p-select-option value="Prof. Dr.">Prof. Dr.</p-select-option>
