@@ -1,0 +1,9 @@
+<ul class="list-unordered {{ styleModifier }} {{#if list-unordered_inverted }} list-unordered--inverted {{/ if }}">
+  {{# each list-unordered_items }}
+    <li class="list-unordered__item
+        {{#if ../list-unordered_inverted }} list-unordered__item--inverted {{/ if }}
+    ">
+      <span class="list-unordered__label">{{ label }}</span>
+    </li>
+  {{/ each }}
+</ul>

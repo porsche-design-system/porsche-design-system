@@ -1,0 +1,5 @@
+<label class="textarea {{ styleModifier }}">
+    <textarea class="textarea__field {{#if textarea_error }} textarea__field--error {{/if}} {{#if ng-textarea_error }} ng-invalid {{/if}}"
+              placeholder=" {{ textarea_label }}" {{#if textarea_disabled }} disabled readonly {{/if}} ></textarea>
+    <span class="textarea__label"> {{ textarea_label }} </span>
+</label>

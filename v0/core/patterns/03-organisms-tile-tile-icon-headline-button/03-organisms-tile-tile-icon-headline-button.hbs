@@ -1,0 +1,30 @@
+<div class="tile-icon-headline-button {{ styleModifier }}">
+  <div class="tile-icon-headline-button__content">
+    <div class="tile-icon-headline-button__centered-container">
+      <div class="tile-icon-headline-button__icon
+           {{#if tile-icon-headline-button_iconHeightS}} tile-icon-headline-button__icon--small {{/if}}">
+        <span class="icon-font icon-font--{{ tile-icon-headline-button_icon }}"></span>
+      </div>
+      <div class="tile-icon-headline-button__textarea
+           {{#if tile-icon-headline-button_contentWidthS}} tile-icon-headline-button__textarea--small {{/if}}">
+        <div class="tile-icon-headline-button__headline
+             {{#if tile-icon-headline-button_headlineMultiline}} tile-icon-headline-button__headline--multiline {{/if}}">
+          {{ tile-icon-headline-button_headline }}
+        </div>
+        <div class="tile-icon-headline-button__text
+             {{#if tile-icon-headline-button_textInvisible}} tile-icon-headline-button__text--hide {{/if}}">
+          {{ tile-icon-headline-button_text }}
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="tile-icon-headline-button__button">
+
+    {{> deprecated-button-inline
+        button-inline_icon=tile-icon-headline-button_buttonIcon
+        button-inline_active=tile-icon-headline-button_buttonActive
+        button-inline_label=tile-icon-headline-button_buttonLabel
+        button-inline_stretch="true" }}
+
+  </div>
+</div>

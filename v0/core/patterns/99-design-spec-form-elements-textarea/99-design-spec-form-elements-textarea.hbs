@@ -1,0 +1,21 @@
+<div class="-background-grey-9-1 -spacing-inner-a">
+    <h2 class="-text-size-3-thin -text-color-white">Textarea</h2>
+    <div class="row">
+        <div class="column column--12 column--6-xs column--3-s -spacing-30">
+            <h4 class="-text-size-5-thin -text-color-white">Default</h4>
+          {{> molecules-textarea styleModifier="-spacing-12" textarea_disabled=false textarea_label="Some Textarea Label"}}
+        </div>
+        <div class="column column--12 column--6-xs column--3-s -spacing-30">
+            <h4 class="-text-size-5-thin -text-color-white">Default Disabled</h4>
+          {{> molecules-textarea styleModifier="-spacing-12" textarea_disabled=true textarea_label="Some Textarea Label"}}
+        </div>
+        <div class="column column--12 column--6-xs column--3-s -spacing-30">
+            <h4 class="-text-size-5-thin -text-color-white">Default Error</h4>
+          {{> molecules-textarea styleModifier="-spacing-12" textarea_disabled=false textarea_error=true textarea_label="Some Textarea Label"}}
+        </div>
+        <div class="column column--12 column--6-xs column--3-s -spacing-30">
+            <h4 class="-text-size-5-thin -text-color-white">Default + Long Label</h4>
+          {{> molecules-textarea styleModifier="-spacing-12" textarea_disabled=false textarea_label="Some very long textarea label to show overflow"}}
+        </div>
+    </div>
+</div>

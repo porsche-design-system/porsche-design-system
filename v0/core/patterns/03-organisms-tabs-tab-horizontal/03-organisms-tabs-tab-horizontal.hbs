@@ -1,0 +1,7 @@
+<div class="tab-horizontal {{ styleModifier }}">
+  <ul class="tab-horizontal__list">
+    {{#each tab-horizontal_items}}
+    <li class="tab-horizontal__item  {{#if active }} tab-horizontal__item--active {{/if}}">{{label}}</li>
+    {{/each}}
+  </ul>
+</div>

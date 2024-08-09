@@ -1,0 +1,12 @@
+<div class="header-tile {{ styleModifier }}">
+  {{#if header-tile_icon }}<span class="header-tile__icon icon-font icon-font--{{ header-tile_icon }}"></span>{{/if}}
+  <h2 class="header-tile__title">{{ header-tile_title }}</h2>
+  {{#if header-tile_subtitle }}<p class="header-tile__subtitle">{{ header-tile_subtitle }}</p>{{/if}}
+  {{#if header-tile_additionalInformation }}
+    <div class="header-tile__right">
+        <span class="header-tile__paragraph">{{ header-tile_paragraph }}</span>
+        <span class="header-tile__icon header-tile__icon--tooltip icon-font icon-font--info"></span>
+    </div>
+  {{/if}}
+
+</div>

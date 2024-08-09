@@ -1,0 +1,11 @@
+<div class="footer {{styleModifier}}">
+    {{#if footer_loggedIn }}
+      {{> organisms-navigation-footer
+        navigation-footer_items=footer_navigationFooterItems}}
+    {{/if}}
+    <div class="row">
+        <div class="column column--12">
+            <p class="footer__paragraph">{{footer_disclaimer}} <span class="footer__links"> {{#each footer_links}}<a href="#" class="footer__link">{{name}}</a> {{/each}}</span></p>
+        </div>
+    </div>
+</div>

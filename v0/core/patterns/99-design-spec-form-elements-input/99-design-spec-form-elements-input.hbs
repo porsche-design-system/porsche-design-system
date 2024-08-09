@@ -1,0 +1,157 @@
+<div class="-background-white -spacing-inner-a">
+  <h2 class="-text-size-3-thin -text-color-black">Input</h2>
+  <div class="row">
+    <div class="column -spacing-30">
+      <h4 class="-text-size-5-thin -text-color-black">Default</h4>
+      {{> molecules-input styleModifier="-spacing-12" }}
+    </div>
+    <div class="column -spacing-30">
+      <h4 class="-text-size-5-thin -text-color-black">Value</h4>
+      {{> molecules-input styleModifier="-spacing-12" input_value="Some value" input_label="Some input"}}
+    </div>
+    <div class="column -spacing-30">
+      <h4 class="-text-size-5-thin -text-color-black">Value + Long Label</h4>
+      {{> molecules-input styleModifier="-spacing-12" input_value="Some value" input_label="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s"}}
+    </div>
+    <div class="column -spacing-30">
+      <h4 class="-text-size-5-thin -text-color-black">Disabled</h4>
+      {{> molecules-input styleModifier="-spacing-12" input_disabled=true input_label="Some input"}}
+    </div>
+    <div class="column -spacing-30">
+      <h4 class="-text-size-5-thin -text-color-black">Disabled + Value</h4>
+      {{> molecules-input styleModifier="-spacing-12" input_disabled=true input_label="Some input" input_value="Some value"}}
+    </div>
+    <div class="column -spacing-30">
+      <h4 class="-text-size-5-thin -text-color-black">Error</h4>
+      {{> molecules-input styleModifier="-spacing-12" input_error=true input_label="Some input"}}
+    </div>
+    <div class="column -spacing-30">
+      <h4 class="-text-size-5-thin -text-color-black">Error + Value</h4>
+      {{> molecules-input styleModifier="-spacing-12" input_error=true input_label="Some input" input_value="Some value"}}
+    </div>
+    <div class="column -spacing-30">
+      <h4 class="-text-size-5-thin -text-color-black">Error + Disabled</h4>
+      {{> molecules-input styleModifier="-spacing-12" input_error=true input_label="Some input" input_disabled= true}}
+    </div>
+    <div class="column -spacing-30">
+      <h4 class="-text-size-5-thin -text-color-black">Error + Disabled + Value</h4>
+      {{> molecules-input styleModifier="-spacing-12" input_error=true input_label="Some input" input_value="Some value" input_disabled= true}}
+    </div>
+  </div>
+</div>
+
+<div class="-background-white -spacing-inner-a">
+  <h2 class="-text-size-3-thin -text-color-black">Input (Angular Extended Version)</h2>
+  <div class="row ng-submitted">
+    <div class="column -spacing-30">
+      <h4 class="-text-size-5-thin -text-color-black">Error</h4>
+      {{> molecules-input styleModifier="-spacing-12" ng-input_error= true input_label="Some input"}}
+    </div>
+    <div class="column -spacing-30">
+      <h4 class="-text-size-5-thin -text-color-black">Error + Value</h4>
+      {{> molecules-input styleModifier="-spacing-12" ng-input_error= true input_label="Some input" input_value="Some error value"}}
+    </div>
+    <div class="column -spacing-30">
+      <h4 class="-text-size-5-thin -text-color-black">Error + Disabled</h4>
+      {{> molecules-input styleModifier="-spacing-12" ng-input_error= true input_label="Some input" input_disabled= true}}
+    </div>
+    <div class="column -spacing-30">
+      <h4 class="-text-size-5-thin -text-color-black">Error + Disabled + Value</h4>
+      {{> molecules-input styleModifier="-spacing-12" ng-input_error= true input_label="Some input" input_value="Some error value" input_disabled= true}}
+    </div>
+  </div>
+  <div class="row ng-submitted">
+    <div class="column -spacing-30">
+      <h4 class="-text-size-5-thin -text-color-black">Error + Icon</h4>
+      {{> molecules-input styleModifier="-spacing-12" input_label="Some input" input_type="text" input_icon="timer-pcm" ng-input_error= true}}
+    </div>
+    <div class="column -spacing-30">
+      <h4 class="-text-size-5-thin -text-color-black">Error + Icon + Value</h4>
+      {{> molecules-input styleModifier="-spacing-12" ng-input_error= true input_label="Some input" input_value="Some error value" input_type="text" input_icon="timer-pcm"}}
+    </div>
+    <div class="column -spacing-30">
+      <h4 class="-text-size-5-thin -text-color-black">Error + Icon + Disabled</h4>
+      {{> molecules-input styleModifier="-spacing-12" ng-input_error= true input_label="Some input" input_type="text" input_icon="timer-pcm" input_disabled= true}}
+    </div>
+    <div class="column -spacing-30">
+      <h4 class="-text-size-5-thin -text-color-black">Error + Icon + Disabled + Value</h4>
+      {{> molecules-input styleModifier="-spacing-12" ng-input_error= true input_label="Some input" input_type="text" input_icon="timer-pcm" input_value="Some error value" input_disabled= true}}
+    </div>
+  </div>
+</div>
+
+<div class="-background-white -spacing-inner-a">
+  <h2 class="-text-size-3-thin -text-color-black">Other input fields</h2>
+  <div class="row">
+    <div class="column -spacing-30">
+      <h4 class="-text-size-5-thin -text-color-black">Text & Clear Button</h4>
+      {{> molecules-input styleModifier="-spacing-12" input_label="Some input" input_type="text" input_value="Some value" input_icon="close"}}
+    </div>
+    <div class="column -spacing-30">
+      <h4 class="-text-size-5-thin -text-color-black">Text & Clear Button + Disabled</h4>
+      {{> molecules-input styleModifier="-spacing-12" input_label="Some input" input_type="text" input_value="Some value" input_icon="close" input_disabled= true}}
+    </div>
+    <div class="column -spacing-30">
+      <h4 class="-text-size-5-thin -text-color-black">Text & Clear Button + Error</h4>
+      {{> molecules-input styleModifier="-spacing-12" input_label="Some input" input_type="text" input_value="Some value" input_icon="close" input_error= true}}
+    </div>
+    <div class="column -spacing-30">
+      <h4 class="-text-size-5-thin -text-color-black">Text & Clear Button + Error + Disabled</h4>
+      {{> molecules-input styleModifier="-spacing-12" input_label="Some input" input_type="text" input_value="Some value" input_icon="close" input_disabled= true input_error= true}}
+    </div>
+  </div>
+  <div class="row">
+    <div class="column -spacing-30">
+      <h4 class="-text-size-5-thin -text-color-black">Password</h4>
+      {{> molecules-input styleModifier="-spacing-12" input_label="Some input" input_type="password" input_value="123456" input_icon="eye"}}
+    </div>
+    <div class="column -spacing-30">
+      <h4 class="-text-size-5-thin -text-color-black">Password + Disabled</h4>
+      {{> molecules-input styleModifier="-spacing-12" input_label="Some input" input_type="password" input_value="123456" input_icon="eye" input_disabled= true}}
+    </div>
+    <div class="column -spacing-30">
+      <h4 class="-text-size-5-thin -text-color-black">Password + Error</h4>
+      {{> molecules-input styleModifier="-spacing-12" input_label="Some input" input_type="password" input_value="123456" input_icon="eye" input_error= true}}
+    </div>
+    <div class="column -spacing-30">
+      <h4 class="-text-size-5-thin -text-color-black">Password + Error + Disabled</h4>
+      {{> molecules-input styleModifier="-spacing-12" input_label="Some input" input_type="password" input_value="123456" input_icon="eye" input_error= true input_disabled= true}}
+    </div>
+  </div>
+  <div class="row">
+    <div class="column -spacing-30">
+      <h4 class="-text-size-5-thin -text-color-black">Date</h4>
+      {{> molecules-input styleModifier="-spacing-12" input_label="Some input" input_type="date" input_icon="registration"}}
+    </div>
+    <div class="column -spacing-30">
+      <h4 class="-text-size-5-thin -text-color-black">Date + Disabled</h4>
+      {{> molecules-input styleModifier="-spacing-12" input_disabled= true input_label="Some input" input_type="date" input_icon="registration"}}
+    </div>
+    <div class="column -spacing-30">
+      <h4 class="-text-size-5-thin -text-color-black">Date + Error</h4>
+      {{> molecules-input styleModifier="-spacing-12" input_label="Some input" input_type="date" input_icon="registration" input_error= true}}
+    </div>
+    <div class="column -spacing-30">
+      <h4 class="-text-size-5-thin -text-color-black">Date + Error + Disabled</h4>
+      {{> molecules-input styleModifier="-spacing-12" input_label="Some input" input_type="date" input_icon="registration" input_error= true input_disabled= true}}
+    </div>
+  </div>
+  <div class="row">
+    <div class="column -spacing-30">
+      <h4 class="-text-size-5-thin -text-color-black">Time</h4>
+      {{> molecules-input styleModifier="-spacing-12" input_label="Some input" input_type="time" input_icon="timer-pcm"}}
+    </div>
+    <div class="column -spacing-30">
+      <h4 class="-text-size-5-thin -text-color-black">Time + Disabled</h4>
+      {{> molecules-input styleModifier="-spacing-12" input_disabled= true input_label="Some input" input_type="time" input_icon="timer-pcm"}}
+    </div>
+    <div class="column -spacing-30">
+      <h4 class="-text-size-5-thin -text-color-black">Time + Error</h4>
+      {{> molecules-input styleModifier="-spacing-12" input_label="Some input" input_type="time" input_icon="timer-pcm" input_error= true}}
+    </div>
+    <div class="column -spacing-30">
+      <h4 class="-text-size-5-thin -text-color-black">Time + Error + Disabled</h4>
+      {{> molecules-input styleModifier="-spacing-12" input_label="Some input" input_type="time" input_icon="timer-pcm" input_error= true input_disabled= true}}
+    </div>
+  </div>
+</div>
