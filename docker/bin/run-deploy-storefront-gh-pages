@@ -63,7 +63,9 @@ prepare_deployment() {
 
 update_base_tag() {
   echo "task: [$(date)] \"update_base_tag\" (${1})"
-  sed -i -E -e 's$<base href="/">$<base href="/'${1}'/">$' "./packages/storefront/dist/index.html"
+  pushd "./packages/storefront/dist"
+    find . -type f -name "index.html" -exec sed -i -E -e 's$<base href="/">$<base href="/'${1}'/">$' {} +
+  popd
 }
 
 copy_storefront() {
