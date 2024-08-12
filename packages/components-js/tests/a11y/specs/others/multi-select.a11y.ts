@@ -2,10 +2,10 @@ import { type Page, test, expect } from '@playwright/test';
 import type { Components } from '@porsche-design-system/components/src/components';
 import { getHTMLAttributes, setContentWithDesignSystem, setProperty, waitForStencilLifecycle } from '../../helpers';
 
-const getHost = (page: Page) => page.$('p-multi-select');
-const getInput = (page: Page) => page.$('p-multi-select input');
-const getDropdown = (page: Page) => page.$('p-multi-select .listbox');
-const getAssertiveText = (page: Page) => page.$('span[aria-live="assertive"]');
+const getHost = (page: Page) => page.locator('p-multi-select');
+const getInput = (page: Page) => page.locator('p-multi-select input');
+const getDropdown = (page: Page) => page.locator('p-multi-select .listbox');
+const getAssertiveText = (page: Page) => page.locator('span[aria-live="assertive"]');
 
 type InitOptions = {
   props?: Components.PMultiSelect;
@@ -49,19 +49,19 @@ const initMultiSelect = (page: Page, opt?: InitOptions): Promise<void> => {
 
 test.fixme('should expose correct initial accessibility tree and aria properties of filter', async ({ page }) => {
   await initMultiSelect(page, { options: { disabledIndex: 1 } });
-  const inputElement = await getInput(page);
+  const inputElement = getInput(page);
 
   // await expectA11yToMatchSnapshot(page, inputElement, { interestingOnly: false });
 });
 
 test.fixme('should expose correct accessibility tree of option list if filter value has no match', async ({ page }) => {
   await initMultiSelect(page);
-  const inputElement = await getInput(page);
-  await inputElement.type('d');
+  const inputElement = getInput(page);
+  await inputElement.fill('d');
   await waitForStencilLifecycle(page);
 
-  const dropDown = await getDropdown(page);
-  const assertiveText = await getAssertiveText(page);
+  const dropDown = getDropdown(page);
+  const assertiveText = getAssertiveText(page);
 
   // await expectA11yToMatchSnapshot(page, dropDown, { interestingOnly: false });
 });
@@ -73,8 +73,8 @@ test.fixme('should expose correct accessibility tree if option is highlighted', 
   await page.keyboard.press('ArrowDown');
   await waitForStencilLifecycle(page);
 
-  const inputElement = await getInput(page);
-  const assertiveText = await getAssertiveText(page);
+  const inputElement = getInput(page);
+  const assertiveText = getAssertiveText(page);
 
   // await expectA11yToMatchSnapshot(page, inputElement, { interestingOnly: false });
   // await expectA11yToMatchSnapshot(page, assertiveText, { interestingOnly: false });
@@ -88,8 +88,8 @@ test.fixme('should expose correct accessibility tree if option is selected', asy
   await page.keyboard.press('Enter');
   await waitForStencilLifecycle(page);
 
-  const inputElement = await getInput(page);
-  const assertiveText = await getAssertiveText(page);
+  const inputElement = getInput(page);
+  const assertiveText = getAssertiveText(page);
 
   // await expectA11yToMatchSnapshot(page, inputElement, { interestingOnly: false });
   // await expectA11yToMatchSnapshot(page, assertiveText, { interestingOnly: false });
@@ -97,21 +97,21 @@ test.fixme('should expose correct accessibility tree if option is selected', asy
 
 test.fixme('should expose correct accessibility tree if description is set', async ({ page }) => {
   await initMultiSelect(page);
-  const host = await getHost(page);
+  const host = getHost(page);
   await setProperty(host, 'description', 'Some description');
   await waitForStencilLifecycle(page);
-  const inputElement = await getInput(page);
+  const inputElement = getInput(page);
 
   // await expectA11yToMatchSnapshot(page, inputElement);
 });
 
 test.fixme('should expose correct accessibility tree in error state', async ({ page }) => {
   await initMultiSelect(page);
-  const host = await getHost(page);
+  const host = getHost(page);
   await setProperty(host, 'state', 'error');
   await setProperty(host, 'message', 'Some error message');
   await waitForStencilLifecycle(page);
-  const inputElement = await getInput(page);
+  const inputElement = getInput(page);
 
   // await expectA11yToMatchSnapshot(page, inputElement);
 });

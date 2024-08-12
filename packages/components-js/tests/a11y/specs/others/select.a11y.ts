@@ -2,8 +2,8 @@ import { type Page, test, expect } from '@playwright/test';
 import type { Components } from '@porsche-design-system/components/src/components';
 import { getHTMLAttributes, setContentWithDesignSystem, setProperty, waitForStencilLifecycle } from '../../helpers';
 
-const getHost = (page: Page) => page.$('p-select');
-const getButton = (page: Page) => page.$('p-select button');
+const getHost = (page: Page) => page.locator('p-select');
+const getButton = (page: Page) => page.locator('p-select button');
 
 type InitOptions = {
   props?: Components.PSelect;
@@ -53,14 +53,14 @@ const initSelect = (page: Page, opt?: InitOptions): Promise<void> => {
 
 test.fixme('should expose correct initial accessibility tree and aria properties of button', async ({ page }) => {
   await initSelect(page, { options: { disabledIndices: [1] } });
-  const buttonElement = await getButton(page);
+  const buttonElement = getButton(page);
 
   // await expectA11yToMatchSnapshot(page, buttonElement, { interestingOnly: false });
 });
 
 test.fixme('should expose correct accessibility tree if option is highlighted', async ({ page }) => {
   await initSelect(page);
-  const buttonElement = await getButton(page);
+  const buttonElement = getButton(page);
 
   await buttonElement.press('Space');
   await buttonElement.press('ArrowDown');
@@ -71,7 +71,7 @@ test.fixme('should expose correct accessibility tree if option is highlighted', 
 
 test.fixme('should expose correct accessibility tree if option is selected', async ({ page }) => {
   await initSelect(page);
-  const buttonElement = await getButton(page);
+  const buttonElement = getButton(page);
 
   await buttonElement.press('Space');
   await buttonElement.press('ArrowDown');
@@ -83,21 +83,21 @@ test.fixme('should expose correct accessibility tree if option is selected', asy
 
 test.fixme('should expose correct accessibility tree if description is set', async ({ page }) => {
   await initSelect(page);
-  const host = await getHost(page);
+  const host = getHost(page);
   await setProperty(host, 'description', 'Some description');
   await waitForStencilLifecycle(page);
-  const buttonElement = await getButton(page);
+  const buttonElement = getButton(page);
 
   // await expectA11yToMatchSnapshot(page, buttonElement);
 });
 
 test.fixme('should expose correct accessibility tree in error state', async ({ page }) => {
   await initSelect(page);
-  const host = await getHost(page);
+  const host = getHost(page);
   await setProperty(host, 'state', 'error');
   await setProperty(host, 'message', 'Some error message');
   await waitForStencilLifecycle(page);
-  const buttonElement = await getButton(page);
+  const buttonElement = getButton(page);
 
   // await expectA11yToMatchSnapshot(page, buttonElement);
 });

@@ -1,9 +1,7 @@
 import { Component, Element, h, Host, type JSX, Listen, Prop, Watch } from '@stencil/core';
-import type {
-  StepperHorizontalItemInternalHTMLProps,
-  StepperHorizontalItemState,
-} from './stepper-horizontal-item-utils';
 import {
+  type StepperHorizontalItemInternalHTMLProps,
+  type StepperHorizontalItemState,
   getStepperHorizontalIconName,
   isItemClickable,
   isStateCompleteOrWarning,

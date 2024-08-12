@@ -1,11 +1,8 @@
-import { type ConsoleMessage, ElementHandle, Page, expect } from '@playwright/test';
+import { type ConsoleMessage, Page, expect, type Locator } from '@playwright/test';
 import { waitForComponentsReady } from './stencil';
 import type { TagName } from '@porsche-design-system/shared';
-import type { ComponentMeta } from '@porsche-design-system/component-meta';
 import { getComponentMeta } from '@porsche-design-system/component-meta';
-import { format } from 'prettier';
 import { getInitialStyles } from '@porsche-design-system/components-js/partials';
-import { type FormState } from '@porsche-design-system/components/dist/types/bundle';
 
 // TODO: temporary workaround, because of https://github.com/microsoft/playwright/issues/17075
 // import { kebabCase } from 'change-case';
@@ -134,75 +131,45 @@ export const setContentWithDesignSystem = async (page: Page, content: string, op
   }
 };
 
-export const getShadowRoot = async (
-  element: ElementHandle<HTMLElement | SVGElement>
-): Promise<ElementHandle<ShadowRoot>> => {
-  return (await element.evaluateHandle((el) => el.shadowRoot)).asElement();
-};
-
 const containsCapitalChar = (key: string): boolean => /[A-Z]/.test(key);
 
-export const getAttribute = (element: ElementHandle<HTMLElement | SVGElement>, attribute: string): Promise<string> => {
-  return element.evaluate((el, attr: string) => el.getAttribute(attr), attribute);
+export const getAttribute = (locator: Locator, attribute: string): Promise<string> => {
+  return locator.evaluate((el, attr: string) => el.getAttribute(attr), attribute);
 };
 
-export const setAttribute = async (
-  element: ElementHandle<HTMLElement | SVGElement>,
-  key: string,
-  value: string
-): Promise<void> => {
+export const setAttribute = async (locator: Locator, key: string, value: string): Promise<void> => {
   if (containsCapitalChar(key)) {
     console.warn(`setAttribute: '${key}' contains a capital character which is most likely wrong`);
   }
-  await element.evaluate((el, { key, value }) => el.setAttribute(key, value), { key, value });
+  await locator.evaluate((el, { key, value }) => el.setAttribute(key, value), { key, value });
 };
 
-export const removeAttribute = async (element: ElementHandle<HTMLElement | SVGElement>, key: string): Promise<void> => {
+export const removeAttribute = async (element: Locator, key: string): Promise<void> => {
   if (containsCapitalChar(key)) {
     console.warn(`removeAttribute: '${key}' contains a capital character which is most likely wrong`);
   }
   await element.evaluate((el, key) => el.removeAttribute(key), key);
 };
 
-export const getProperty = async <T>(element: ElementHandle<HTMLElement | SVGElement>, prop: string): Promise<T> => {
-  return element.evaluate((el, prop: string) => el[prop], prop);
+export const getProperty = async <T>(locator: Locator, prop: string): Promise<T> => {
+  return locator.evaluate((el, prop: string) => el[prop], prop);
 };
 
 export const setProperty = async <T>(
-  element: ElementHandle<HTMLElement | SVGElement>,
+  element: Locator,
   key: string,
   value: string | boolean | number | T
 ): Promise<void> => {
   await element.evaluate((el, { key, value }) => (el[key] = value), { key, value } as any);
 };
 
-export const getCssClasses = async (element: ElementHandle<HTMLElement | SVGElement>): Promise<string> => {
-  return Object.values(await getProperty(element, 'classList')).join(' ');
-};
-
-export const getActiveElementTagNameInShadowRoot = async (
-  element: ElementHandle<HTMLElement | SVGElement>
-): Promise<string> => {
+export const getActiveElementTagNameInShadowRoot = async (element: Locator): Promise<string> => {
   return element.evaluate((el) => {
     try {
       return el.shadowRoot.activeElement.tagName;
     } catch (e) {
       throw new Error(
         `Could not get "tagName" from ${el.tagName}.shadowRoot.activeElement (${el.shadowRoot.activeElement}) `
-      );
-    }
-  });
-};
-
-export const getActiveElementClassNameInShadowRoot = (
-  element: ElementHandle<HTMLElement | SVGElement>
-): Promise<string> => {
-  return element.evaluate((el) => {
-    try {
-      return el.shadowRoot.activeElement.className;
-    } catch (e) {
-      throw new Error(
-        `Could not get "className" from ${el.tagName}.shadowRoot.activeElement (${el.shadowRoot.activeElement}) `
       );
     }
   });
@@ -218,26 +185,6 @@ export const getActiveElementId = (page: Page): Promise<string> => {
   });
 };
 
-export const getActiveElementTagName = (page: Page): Promise<string> => {
-  return page.evaluate(() => {
-    try {
-      return document.activeElement.tagName;
-    } catch (e) {
-      throw new Error(`Could not get "tagName" from document.activeElement (${document.activeElement}) `);
-    }
-  });
-};
-
-export const getActiveElementProp = (page: Page, prop: string): Promise<string> => {
-  return page.evaluate((prop) => {
-    try {
-      return document.activeElement[prop];
-    } catch (e) {
-      throw new Error(`Could not get "${prop}" from document.activeElement (${document.activeElement}) `);
-    }
-  }, prop);
-};
-
 type Pseudo = '::before' | '::after' | '::-webkit-search-decoration';
 type GetElementStyleOptions = {
   waitForTransition?: boolean;
@@ -245,7 +192,7 @@ type GetElementStyleOptions = {
 };
 
 export const getElementStyle = (
-  element: ElementHandle<HTMLElement | SVGElement>,
+  element: Locator,
   property: keyof CSSStyleDeclaration,
   opts?: GetElementStyleOptions
 ): Promise<string> => {
@@ -266,56 +213,13 @@ export const getElementStyle = (
   );
 };
 
-export const getElementIndex = (
-  element: ElementHandle<HTMLElement | SVGElement | ShadowRoot>,
-  selector: string
-): Promise<number> => {
-  return element.evaluate(async (el, selector: string): Promise<number> => {
-    let option: ChildNode = el.querySelector(selector);
-    let pos = 0;
-    while (option && (option = option.previousSibling) !== null) {
-      pos++;
-    }
-    return pos;
-  }, selector);
-};
-
-export const getElementInnerText = (element: ElementHandle): Promise<string> =>
-  element.evaluate((el) => (el as HTMLElement).innerText);
-
-export const getElementPositions = (page: Page, element: ElementHandle<HTMLElement | SVGElement>): Promise<DOMRect> =>
-  page.evaluate((element) => element.getBoundingClientRect(), element);
-
-export const reattachElementHandle = (handle: ElementHandle<HTMLElement | SVGElement>): Promise<void> => {
-  return handle.evaluate((el) => {
-    el.remove();
-    document.body.appendChild(el);
-  });
-};
-
 export const enableBrowserLogging = (page: Page): void => {
   page.on('console', (msg) => {
     console.log(msg.type() + ':', msg.text());
   });
 };
 
-export const waitForInputTransition = (page: Page): Promise<void> => new Promise((resolve) => setTimeout(resolve, 250));
-
-export const hasFocus = (element: ElementHandle<HTMLElement | SVGElement>): Promise<boolean> =>
-  element.evaluate((el) => document.activeElement === el);
-
 const consoleMessages: ConsoleMessage[] = [];
-
-// Use to track console errors, excluding custom thrown errors
-export const initConsoleObserver = (page: Page): void => {
-  consoleMessages.length = 0; // reset
-  page.on('console', async (msg) => {
-    consoleMessages.push(msg);
-    if (msg.type() === 'error') {
-      console.error(msg.text());
-    }
-  });
-};
 
 const getConsoleErrors = () => consoleMessages.filter((x) => x.type() === 'error');
 export const getConsoleWarnings = () => consoleMessages.filter((x) => x.type() === 'warning');
@@ -329,26 +233,6 @@ export const getConsoleWarningMessages = () =>
   getConsoleWarnings()
     .map((msg) => '- ' + msg.text())
     .join('\n');
-
-const thrownErrors: string[] = [];
-
-// Use to track custom thrown errors
-export const initPageErrorObserver = (page: Page): void => {
-  thrownErrors.length = 0; // reset
-
-  page.on('pageerror', function (error) {
-    thrownErrors.push(error.toString());
-  });
-};
-
-export const getPageThrownErrorsAmount = () => thrownErrors.length;
-
-const BASE_URL = 'http://localhost:8575';
-
-export const goto = async (page: Page, url: string) => {
-  await page.goto(`${BASE_URL}/${url}`);
-  await waitForComponentsReady(page);
-};
 
 export const buildDefaultComponentMarkup = (tagName: TagName): string => {
   const {
@@ -415,74 +299,10 @@ export type ExpectToMatchSnapshotOptions = Omit<any, 'root'> & {
   message?: string;
   skipWaitForFunction?: boolean;
 };
-export const expectA11yToMatchSnapshot = async (
-  page: Page,
-  elementHandle: ElementHandle<HTMLElement | SVGElement>,
-  opts?: ExpectToMatchSnapshotOptions
-): Promise<void> => {
-  const { message, skipWaitForFunction, ...options } = opts || {};
 
-  // TODO: remove this workaround once waitForStencilLifecycle() is reliable
-  // currently it is mostly based on a 40ms timeout which isn't always enough
-  // in scenarios when multiple properties are changed after each other, e.g.
-  // await setProperty(host, 'state', 'error');
-  // await setProperty(host, 'message', 'Some error message.');
-  // then there are 2 lifecycles but waitForStencilLifecycle() can resolve after the 1st
-  /* if (!skipWaitForFunction && elementHandle) {
-    const tagName = (await (await elementHandle.getProperty('tagName')).jsonValue()).toLowerCase();
-    if (['input', 'select', 'textarea'].includes(tagName)) {
-      const state: FormState = await elementHandle.evaluate(
-        (el) => (el.parentElement as any)?.state || (el.getRootNode() as any).host?.state
-      );
-      if (state) {
-        await page.waitForFunction(
-          (el, state) => {
-            if (!el.ariaLabel) {
-              return true; // some nested input elements don't have/need it
-            } else if (state === 'none') {
-              return !el.ariaLabel.includes('success') && !el.ariaLabel.includes('error');
-            } else {
-              return el.ariaLabel.includes(state);
-            }
-          },
-          { timeout: 500 },
-          elementHandle,
-          state
-        );
-      }
-    }
-  }*/
-
-  const snapshot = await page.accessibility.snapshot({
-    root: elementHandle,
-    ...options,
-  });
-
-  // const snapshot = 'Of Button';
-
-  // message ? expect(snapshot).toMatchSnapshot(message) : expect(snapshot).toMatchSnapshot();
-};
-
-export const expectToSkipFocusOnComponent = async (page: Page, component: ElementHandle, before: ElementHandle) => {
-  await before.focus();
-
-  await page.keyboard.press('Tab');
-
-  expect(await getActiveElementId(page)).toBe('after');
-
-  await page.keyboard.down('Shift');
-  await page.keyboard.press('Tab');
-  await page.keyboard.up('Shift');
-
-  expect(await getActiveElementId(page)).toBe('before');
-};
-
-export const getScrollLeft = (element: ElementHandle<HTMLElement | SVGElement>): Promise<number> =>
-  getProperty<number>(element, 'scrollLeft');
-export const getOffsetLeft = (element: ElementHandle<HTMLElement | SVGElement>): Promise<number> =>
-  getProperty<number>(element, 'offsetLeft');
-export const getOffsetWidth = (element: ElementHandle<HTMLElement | SVGElement>): Promise<number> =>
-  getProperty<number>(element, 'offsetWidth');
+export const getScrollLeft = (locator: Locator): Promise<number> => getProperty<number>(locator, 'scrollLeft');
+export const getOffsetLeft = (locator: Locator): Promise<number> => getProperty<number>(locator, 'offsetLeft');
+export const getOffsetWidth = (locator: Locator): Promise<number> => getProperty<number>(locator, 'offsetWidth');
 
 /**
  * Get HTML attributes string from an object of properties.
@@ -498,14 +318,4 @@ export const getHTMLAttributes = <T extends object>(props: T): string => {
       return `${attributeName}="${attributeValue}"`;
     })
     .join(' ');
-};
-
-export const getOldLoaderScriptForPrefixes = (prefixes: string[]): string => {
-  const loadCalls = prefixes.map((prefix) => `porscheDesignSystem.load(\{ prefix: '${prefix}' \});`).join('\n      ');
-  // the script below has been copied from https://designsystem.porsche.com/release/components-v3.7.0/
-  return (
-    '<script data-pds-loader-script="">var porscheDesignSystem;(()=>{"use strict";var e={d:(t,n)=>{for(var o in n)e.o(n,o)&&!e.o(t,o)&&Object.defineProperty(t,o,{enumerable:!0,get:n[o]})},o:(e,t)=>Object.prototype.hasOwnProperty.call(e,t),r:e=>{"undefined"!=typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{value:"Module"}),Object.defineProperty(e,"__esModule",{value:!0})}},t={};e.r(t),e.d(t,{load:()=>r});const n="porscheDesignSystem";function o(){return document[n]||(document[n]={}),document[n]}function s({script:e,version:t,prefix:s}){const r=function(e){const t=o(),{[e]:n}=t;if(!n){let n=()=>{};const o=new Promise((e=>n=e));t[e]={isInjected:!1,isReady:()=>o,readyResolve:n,prefixes:[],registerCustomElements:null}}return t[e]}(t),{isInjected:i,prefixes:c=[],registerCustomElements:d}=r,[u]=Object.entries(o()).filter((([e,n])=>e!==t&&"object"==typeof n&&n.prefixes.includes(s)));if(u)throw new Error(`[Porsche Design System v${t}] prefix \'${s}\' is already registered with version \'${u[0]}\' of the Porsche Design System. Please use a different one.\\nTake a look at document.${n} for more details.`);i||(function(e){const t=document.createElement("script");t.src=e,t.setAttribute("crossorigin",""),document.body.appendChild(t)}(e),r.isInjected=!0),c.includes(s)||(c.push(s),d&&d(s))}const r=(e={})=>{const t="PORSCHE_DESIGN_SYSTEM_CDN";window[t]=e.cdn||window[t]||(window.location.origin.match(/\\.cn$/)?"cn":"auto");const n="porscheDesignSystem";document[n]||(document[n]={}),document[n].cdn={url:"https://cdn.ui.porsche."+("cn"===window[t]?"cn":"com"),prefixes:[]},s({version:"3.7.0",script:document[n].cdn.url+"/porsche-design-system/components/porsche-design-system.v3.7.0.3c3999ee659a976cf191.js",prefix:e.prefix||""})};porscheDesignSystem=t})();' +
-    loadCalls +
-    '</script>'
-  );
 };

@@ -1,5 +1,4 @@
-import type { TagName, TagNameCamelCase } from '@porsche-design-system/shared';
-import { TAG_NAMES } from '@porsche-design-system/shared';
+import { type TagName, type TagNameCamelCase, TAG_NAMES } from '@porsche-design-system/shared';
 import { paramCaseToCamelCase } from './paramCaseToCamelCase';
 
 // NOTE: these utils are in the same file on purpose

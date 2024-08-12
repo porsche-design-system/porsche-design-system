@@ -1,12 +1,9 @@
 import { buildDefaultComponentMarkup, goto, waitForComponentsReady } from '../helpers';
-import { test, expect, type ElementHandle } from '@playwright/test';
+import { test, expect, type Locator } from '@playwright/test';
 import { INTERNAL_TAG_NAMES, TAG_NAMES, type TagName } from '@porsche-design-system/shared';
 import { format } from 'prettier';
 
-const expectShadowDomToMatchSnapshot = async (
-  host: ElementHandle<HTMLElement | SVGElement>,
-  tagName: TagName
-): Promise<void> => {
+const expectShadowDomToMatchSnapshot = async (host: Locator, tagName: TagName): Promise<void> => {
   const html = await host.evaluate((el) => el.shadowRoot.innerHTML);
   const prettyHtml = await format(html.replace(/>/g, '>\n'), { parser: 'html' });
 
@@ -26,7 +23,7 @@ for (const tagName of TAG_NAMES.filter((x) => !INTERNAL_TAG_NAMES.includes(x))) 
     }, markup);
     await waitForComponentsReady(page);
 
-    const host = await page.$(tagName);
+    const host = page.locator(tagName);
     await expectShadowDomToMatchSnapshot(host, tagName);
   });
 }

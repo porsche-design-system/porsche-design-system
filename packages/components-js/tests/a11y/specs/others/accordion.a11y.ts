@@ -28,12 +28,12 @@ ut labore et dolore magna aliquyam erat, sed diam voluptua.${hasInput ? '<input 
   return setContentWithDesignSystem(page, content);
 };
 
-const getButton = (page: Page) => page.$('p-accordion button');
-const getCollapsible = (page: Page) => page.$('p-accordion .collapsible');
+const getButton = (page: Page) => page.locator('p-accordion button');
+const getCollapsible = (page: Page) => page.locator('p-accordion .collapsible');
 
 test('should expose correct initial accessibility tree and aria properties', async ({ page }) => {
   await initAccordion(page);
-  const button = await getButton(page);
+  const button = getButton(page);
 
   // await expectA11yToMatchSnapshot(page, button, { message: 'Of Button' });
   expect(await getAttribute(button, 'aria-controls')).toBe('accordion-panel');
@@ -41,8 +41,8 @@ test('should expose correct initial accessibility tree and aria properties', asy
 
 test.fixme('should expose correct accessibility tree properties in open state', async ({ page }) => {
   await initAccordion(page, { otherMarkup: clickHandlerScript });
-  const button = await getButton(page);
-  const panel = await getCollapsible(page);
+  const button = getButton(page);
+  const panel = getCollapsible(page);
   await page.keyboard.press('Tab');
   await page.keyboard.press('Space');
   await waitForStencilLifecycle(page);

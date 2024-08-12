@@ -1,6 +1,5 @@
 import type { JssStyle, Styles } from 'jss';
-import type { GetJssStyleFunction } from '../utils';
-import { buildResponsiveStyles, hasVisibleIcon, mergeDeep } from '../utils';
+import { type GetJssStyleFunction, buildResponsiveStyles, hasVisibleIcon, mergeDeep } from '../utils';
 import type { AlignLabel, BreakpointCustomizable, LinkButtonIconName, TextSize, Theme } from '../types';
 import {
   addImportantToEachRule,

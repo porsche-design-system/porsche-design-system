@@ -11,12 +11,15 @@ import {
   warnIfDeprecatedPropIsUsed,
 } from '../../utils';
 import type { BreakpointCustomizable, PropTypes, Theme } from '../../types';
-import type {
-  PaginationInternationalization,
-  PaginationMaxNumberOfPageLinks,
-  PaginationUpdateEventDetail,
+import {
+  type PaginationInternationalization,
+  type PaginationMaxNumberOfPageLinks,
+  type PaginationUpdateEventDetail,
+  createPaginationItems,
+  getCurrentActivePage,
+  getTotalPages,
+  ItemType,
 } from './pagination-utils';
-import { createPaginationItems, getCurrentActivePage, getTotalPages, ItemType } from './pagination-utils';
 import { getComponentCss } from './pagination-styles';
 
 const propTypes: Omit<PropTypes<typeof Pagination>, 'maxNumberOfPageLinks'> = {

@@ -1,5 +1,4 @@
-import type { ToastMessage } from './toast-manager';
-import { toastManager } from './toast-manager';
+import { type ToastMessage, toastManager } from './toast-manager';
 import { Component, Element, h, Host, type JSX, Method, Prop } from '@stencil/core';
 import { getComponentCss, toastCloseClassName } from './toast-styles';
 import { AllowedTypes, attachComponentCss, getPrefixedTagNames, THEMES, validateProps } from '../../../utils';
@@ -57,7 +56,11 @@ export class Toast {
     return (
       <Host role="status" aria-live="polite">
         {toast && (
-          <PrefixedTagNames.pToastItem {...toast} theme={this.theme} ref={(el) => (this.toastItemElement = el)} />
+          <PrefixedTagNames.pToastItem
+            {...toast}
+            theme={this.theme}
+            ref={(el: HTMLPToastItemElement) => (this.toastItemElement = el)}
+          />
         )}
       </Host>
     );

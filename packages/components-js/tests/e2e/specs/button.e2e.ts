@@ -1,5 +1,4 @@
-import type { ElementHandle, Page } from 'playwright';
-import { expect, test } from '@playwright/test';
+import { expect, Locator, test, type Page } from '@playwright/test';
 import {
   addEventListener,
   ClickableTests,
@@ -16,8 +15,8 @@ import {
 
 skipInBrowsers(['firefox', 'webkit']);
 
-const getHost = (page: Page) => page.$('p-button');
-const getButton = (page: Page) => page.$('p-button button');
+const getHost = (page: Page) => page.locator('p-button');
+const getButton = (page: Page) => page.locator('p-button button');
 
 const initButton = (page: Page, opts?: { isLoading?: boolean; isDisabled?: boolean }): Promise<void> => {
   const { isLoading = false, isDisabled = false } = opts || {};
@@ -47,8 +46,8 @@ const clickableTests: ClickableTests = [
 for (const { state, setContent } of clickableTests) {
   test(`should not be clickable when ${state}`, async ({ page }) => {
     await setContent(page);
-    const host = await getHost(page);
-    const button = await getButton(page);
+    const host = getHost(page);
+    const button = getButton(page);
     await addEventListener(host, 'click');
 
     await host.click();
@@ -70,9 +69,9 @@ for (const { state, setContent } of clickableTests) {
 test('should dispatch correct click events', async ({ page }) => {
   await setContentWithDesignSystem(page, `<div><p-button id="hostElement">Some label</p-button></div>`);
 
-  const wrapper = await page.$('div');
-  const host = await getHost(page);
-  const button = await getButton(page);
+  const wrapper = page.locator('div');
+  const host = getHost(page);
+  const button = getButton(page);
   await addEventListener(wrapper, 'click');
 
   await button.click();
@@ -93,9 +92,9 @@ test.describe('within form', () => {
       <p-button type="submit">Some label</p-button>
     </form>`
     );
-    const button = await getButton(page);
-    const host = await getHost(page);
-    const form = await page.$('form');
+    const button = getButton(page);
+    const host = getHost(page);
+    const form = page.locator('form');
     await addEventListener(form, 'submit');
 
     await button.click();
@@ -121,8 +120,8 @@ test.describe('within form', () => {
     </script>`
     );
 
-    const button = await getButton(page);
-    const form = await page.$('form');
+    const button = getButton(page);
+    const form = page.locator('form');
     await addEventListener(form, 'submit');
 
     await button.click();
@@ -140,9 +139,9 @@ test.describe('within form', () => {
     </div>`
     );
 
-    const host = await getHost(page);
-    const button = await getButton(page);
-    const form = await page.$('form');
+    const host = getHost(page);
+    const button = getButton(page);
+    const form = page.locator('form');
     await addEventListener(form, 'submit');
 
     await button.click({ force: true });
@@ -160,12 +159,15 @@ test.describe('within form', () => {
       <p-button type="submit" name="${name}" value="${value}">Some label</p-button>
     </form>`
     );
-    const host = await getHost(page);
+
+    const host = getHost(page);
     await host.click();
 
-    await page.waitForNavigation();
+    const urlPart = `?${name}=${value}`;
+
+    await page.waitForURL(`**/*${urlPart}`);
     // Since the data in only available via the event submitter it is easier to test it by checking the request params
-    expect(page.url()).toContain(`?${name}=${value}`);
+    expect(page.url()).toContain(urlPart);
   });
 });
 
@@ -180,9 +182,9 @@ test('should trigger focus & blur events at the correct time', async ({ page }) 
     </div>`
   );
 
-  const button = await getHost(page);
-  const before = await page.$('#before');
-  const after = await page.$('#after');
+  const button = getHost(page);
+  const before = page.locator('#before');
+  const after = page.locator('#after');
 
   await addEventListener(before, 'focus');
   await addEventListener(button, 'focus');
@@ -261,8 +263,8 @@ test('should provide functionality to focus & blur the custom element', async ({
 
   const buttonHasFocus = () => page.evaluate(() => document.activeElement === document.querySelector('p-button'));
 
-  const button = await getHost(page);
-  const before = await page.$('#before');
+  const button = getHost(page);
+  const before = page.locator('#before');
   await before.focus();
   expect(await buttonHasFocus()).toBe(false);
   await button.focus();
@@ -290,21 +292,21 @@ test('should submit form via enter key when type is submit', async ({ page }) =>
     </script>`
   );
 
-  const host = await getHost(page);
-  const form = await page.$('form');
+  const host = getHost(page);
+  const form = page.locator('form');
   await addEventListener(form, 'submit');
 
-  const focusElAndPressEnter = async (el: ElementHandle<Element>) => {
-    await el.focus();
+  const focusElAndPressEnter = async (locator: Locator) => {
+    await locator.focus();
     await page.keyboard.press('Enter');
     await waitForImproveButtonHandlingForCustomElement(page);
   };
 
-  const input = await page.$('input');
+  const input = page.locator('input');
   await focusElAndPressEnter(input);
   expect((await getEventSummary(form, 'submit')).counter).toBe(1);
 
-  const button = await getHost(page);
+  const button = getHost(page);
   await focusElAndPressEnter(button);
   expect((await getEventSummary(form, 'submit')).counter).toBe(1); // type isn't submit, yet
 
@@ -329,7 +331,7 @@ test.describe('focus state', () => {
   test('should keep focus if state switches to loading', async ({ page }) => {
     await initButton(page);
 
-    const host = await getHost(page);
+    const host = getHost(page);
     expect(await hasFocus(host)).toBe(false);
 
     await page.keyboard.press('Tab');
@@ -372,7 +374,7 @@ test.describe('lifecycle', () => {
 
   test('should work without unnecessary round trips on prop change', async ({ page }) => {
     await initButton(page);
-    const host = await getHost(page);
+    const host = getHost(page);
 
     await setProperty(host, 'icon', 'arrow-right');
     await waitForStencilLifecycle(page);

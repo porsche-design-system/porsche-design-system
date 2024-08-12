@@ -21,11 +21,12 @@ import {
   warnIfAriaAndHeadingPropsAreUndefined,
   warnIfDeprecatedPropIsUsed,
 } from '../../utils';
-import type { ModalAriaAttribute, ModalBackdrop } from './modal-utils';
 import {
-  MODAL_ARIA_ATTRIBUTES,
+  type ModalAriaAttribute,
+  type ModalBackdrop,
   type ModalMotionVisibleEndEventDetail,
   type ModalMotionHiddenEndEventDetail,
+  MODAL_ARIA_ATTRIBUTES,
 } from './modal-utils';
 import { getComponentCss } from './modal-styles';
 import { BACKDROPS } from '../../styles/dialog-styles';

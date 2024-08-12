@@ -1,5 +1,4 @@
-import type { ScrollerDirection } from '../components/scroller/scroller-utils';
-import { getScrollerElements } from '../components/scroller/scroller-utils';
+import { type ScrollerDirection, getScrollerElements } from '../components/scroller/scroller-utils';
 
 export const scrollElementTo = (el: HTMLElement, amount: number): void => {
   el.scrollTo({

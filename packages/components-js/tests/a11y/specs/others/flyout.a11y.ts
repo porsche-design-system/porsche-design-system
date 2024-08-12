@@ -8,14 +8,14 @@ import {
 import { type Page, test, expect } from '@playwright/test';
 import { Components } from '@porsche-design-system/components';
 
-const getHost = (page: Page) => page.$('p-flyout');
-const getFlyout = (page: Page) => page.$('p-flyout dialog');
-const getHeader = (page: Page) => page.$('p-flyout .header');
-const getHeaderSlottedContent = (page: Page) => page.$('[slot="header"]');
-const getFooter = (page: Page) => page.$('p-flyout .footer');
-const getFooterSlottedContent = (page: Page) => page.$('[slot="footer"]');
-const getSubFooter = (page: Page) => page.$('p-flyout .sub-footer');
-const getSubFooterSlottedContent = (page: Page) => page.$('[slot="sub-footer"]');
+const getHost = (page: Page) => page.locator('p-flyout');
+const getFlyout = (page: Page) => page.locator('p-flyout dialog');
+const getHeader = (page: Page) => page.locator('p-flyout .header');
+const getHeaderSlottedContent = (page: Page) => page.locator('[slot="header"]');
+const getFooter = (page: Page) => page.locator('p-flyout .footer');
+const getFooterSlottedContent = (page: Page) => page.locator('[slot="footer"]');
+const getSubFooter = (page: Page) => page.locator('p-flyout .sub-footer');
+const getSubFooterSlottedContent = (page: Page) => page.locator('[slot="sub-footer"]');
 
 const initBasicFlyout = (
   page: Page,
@@ -67,15 +67,15 @@ test.describe('slotted', () => {
     //   `"<h1>Sticky Heading</h1><p>Sticky header text</p>"`
     // );
 
-    const footer = await getFooter(page);
-    const footerSlottedContent = await getFooterSlottedContent(page);
+    const footer = getFooter(page);
+    const footerSlottedContent = getFooterSlottedContent(page);
     // expect(await getProperty(footer, 'innerHTML')).toMatchInlineSnapshot(`"<slot name="footer"></slot>"`);
     // expect(await getProperty(footerSlottedContent, 'innerHTML')).toMatchInlineSnapshot(
     //   `"<button>Footer Button</button>"`
     // );
 
-    const subFooter = await getSubFooter(page);
-    const subFooterSlottedContent = await getSubFooterSlottedContent(page);
+    const subFooter = getSubFooter(page);
+    const subFooterSlottedContent = getSubFooterSlottedContent(page);
     // expect(await getProperty(subFooter, 'innerHTML')).toMatchInlineSnapshot(`"<slot name="sub-footer"></slot>"`);
     // expect(await getProperty(subFooterSlottedContent, 'innerHTML')).toMatchInlineSnapshot(
     //   `"<p>Sub Footer Content</p>"`
@@ -85,22 +85,22 @@ test.describe('slotted', () => {
 
 test.fixme('should expose correct initial accessibility tree', async ({ page }) => {
   await initBasicFlyout(page);
-  const flyout = await getFlyout(page);
+  const flyout = getFlyout(page);
 
   // await expectA11yToMatchSnapshot(page, flyout, { interestingOnly: false });
 });
 
 test.fixme('should not expose accessibility tree if flyout is hidden', async ({ page }) => {
   await initBasicFlyout(page, { open: false });
-  const flyout = await getFlyout(page);
+  const flyout = getFlyout(page);
 
   // await expectA11yToMatchSnapshot(page, flyout);
 });
 
 test('should overwrite aria-label when adding aria prop', async ({ page }) => {
   await initBasicFlyout(page, { open: false, aria: "{'aria-label': 'Some Heading'}" });
-  const host = await getHost(page);
-  const flyout = await getFlyout(page);
+  const host = getHost(page);
+  const flyout = getFlyout(page);
   await setProperty(host, 'aria', "{'aria-label': 'Other Heading'}");
   await waitForStencilLifecycle(page);
 

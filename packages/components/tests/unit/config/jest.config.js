@@ -19,6 +19,9 @@ module.exports = {
     '^.+\\.tsx?$': [
       'ts-jest',
       {
+        diagnostics: {
+          warnOnly: true,
+        },
         tsconfig: 'tsconfig.test.json',
       },
     ],

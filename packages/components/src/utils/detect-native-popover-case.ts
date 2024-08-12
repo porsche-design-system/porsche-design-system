@@ -7,8 +7,7 @@ export const detectNativePopoverCase = (host: HTMLElement, nested: boolean): boo
       nested ? ((host.getRootNode() as ShadowRoot).host as HTMLElement) : host,
       'pTable'
     );
-    if (!!parentTableElement) {
-      return true;
-    }
+    return !!parentTableElement;
   }
+  return false;
 };

@@ -1,6 +1,13 @@
 import type { FormState } from '../../../utils/form/form-state';
-import type { SelectComponentsDropdownDirection, SelectDropdownDirectionInternal, Theme } from '../../../utils';
-import { consoleWarn, determineDropdownDirection, setAttribute, setAttributes } from '../../../utils';
+import {
+  type SelectComponentsDropdownDirection,
+  type SelectDropdownDirectionInternal,
+  type Theme,
+  consoleWarn,
+  determineDropdownDirection,
+  setAttribute,
+  setAttributes,
+} from '../../../utils';
 import type { MultiSelectOptionInternalHTMLProps } from '../multi-select-option/multi-select-option-utils';
 import { forceUpdate } from '@stencil/core';
 import type { OptgroupInternalHTMLProps } from '../../optgroup/optgroup-utils';
@@ -163,11 +170,14 @@ export const resetSelectedOptions = (options: MultiSelectOption[]): void =>
     }
   });
 
-export const getNewOptionIndex = (options: MultiSelectOption[], direction: SelectDropdownDirectionInternal): number => {
+export const getNewOptionIndex = (
+  options: MultiSelectOption[],
+  direction: SelectDropdownDirectionInternal
+): number | undefined => {
   const validItems = getUsableOptions(options);
   const validMax = validItems.length - 1;
   if (validMax < 0) {
-    return;
+    return undefined;
   }
   const oldIndex = getHighlightedOptionIndex(validItems);
   let newIndex = oldIndex;
@@ -185,7 +195,9 @@ export const updateHighlightedOption = (
   direction: SelectDropdownDirectionInternal
 ): void => {
   const newIndex = getNewOptionIndex(options, direction);
-  setNextOptionHighlighted(host, options, newIndex);
+  if (newIndex !== undefined) {
+    setNextOptionHighlighted(host, options, newIndex);
+  }
 };
 
 /**

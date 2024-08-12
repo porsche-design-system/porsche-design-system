@@ -1,4 +1,4 @@
-import { type ElementHandle, type Page, test, expect } from '@playwright/test';
+import { type Page, test, expect, type Locator } from '@playwright/test';
 import {
   CSS_ANIMATION_DURATION,
   FOCUS_PADDING,
@@ -47,10 +47,10 @@ ${otherMarkup}
   return setContentWithDesignSystem(page, isWrapped ? `<div style="width: 300px">${content}</div>` : content);
 };
 
-const getHost = (page: Page) => page.$('p-tabs-bar');
-const getScrollArea = (page: Page) => page.$('p-tabs-bar p-scroller .scroll-area');
+const getHost = (page: Page) => page.locator('p-tabs-bar');
+const getScrollArea = (page: Page) => page.locator('p-tabs-bar p-scroller .scroll-area');
 
-const clickElement = async (page: Page, el: ElementHandle): Promise<void> => {
+const clickElement = async (page: Page, el: Locator): Promise<void> => {
   await el.click();
   await waitForStencilLifecycle(page);
   await waitForAnimation();
@@ -158,10 +158,10 @@ test.describe('keyboard', () => {
           </p-tabs>
         </div>`
     );
-    const allButtons = await page.$$('p-tabs p-tabs-bar button');
-    const gradientNext = await page.$('p-tabs p-tabs-bar p-scroller .action-next');
+    const allButtons = await page.locator('p-tabs p-tabs-bar button').all();
+    const gradientNext = page.locator('p-tabs p-tabs-bar p-scroller .action-next');
     const gradientWidth = await getOffsetWidth(gradientNext);
-    const scrollArea = await page.$('p-tabs p-tabs-bar p-scroller .scroll-area');
+    const scrollArea = page.locator('p-tabs p-tabs-bar p-scroller .scroll-area');
     const scrollAreaWidth = await getOffsetWidth(scrollArea);
 
     expect(await getScrollLeft(scrollArea)).toEqual(0);
@@ -206,7 +206,7 @@ test.describe('keyboard', () => {
   });
 });
 
-const getTabList = (page: Page) => page.$('p-tabs-bar [role="tablist"]');
+const getTabList = (page: Page) => page.locator('p-tabs-bar [role="tablist"]');
 test.fixme('should expose correct initial accessibility tree of tablist', async ({ page }) => {
   await initTabsBar(page, { amount: 3 });
 
@@ -221,7 +221,7 @@ test.fixme('should render correct accessibility tree if activeTabIndex is set ',
 
 test.fixme('should render correct accessibility tree if activeTabIndex is removed ', async ({ page }) => {
   await initTabsBar(page, { amount: 3, activeTabIndex: 1 });
-  const host = await getHost(page);
+  const host = getHost(page);
 
   await removeAttribute(host, 'active-tab-index');
   await waitForStencilLifecycle(page);
@@ -231,7 +231,7 @@ test.fixme('should render correct accessibility tree if activeTabIndex is remove
 
 test.fixme('should render correct accessibility tree on scrollArea click', async ({ page }) => {
   await initTabsBar(page, { amount: 4, activeTabIndex: 3 });
-  const scrollArea = await getScrollArea(page);
+  const scrollArea = getScrollArea(page);
 
   // await expectA11yToMatchSnapshot(page, await getTabList(), {
   //   message: 'Before click',

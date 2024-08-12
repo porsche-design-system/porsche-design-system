@@ -8,8 +8,15 @@ import {
   warnIfDeprecatedPropIsUsed,
 } from '../../../utils';
 import type { PropTypes, Theme } from '../../../types';
-import type { TextListListType, TextListOrderType, TextListType } from './text-list-utils';
-import { isListTypeOrdered, LIST_TYPES, ORDER_TYPES, TEXT_LIST_TYPES } from './text-list-utils';
+import {
+  type TextListListType,
+  type TextListOrderType,
+  type TextListType,
+  isListTypeOrdered,
+  LIST_TYPES,
+  ORDER_TYPES,
+  TEXT_LIST_TYPES,
+} from './text-list-utils';
 import { getComponentCss } from './text-list-styles';
 import { getSlottedAnchorStyles } from '../../../styles';
 

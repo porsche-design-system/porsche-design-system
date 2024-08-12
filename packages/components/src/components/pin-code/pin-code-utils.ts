@@ -66,7 +66,7 @@ export const getSanitisedValue = (host: HTMLElement, value: string, length: numb
   }
 };
 
-export const removeWhiteSpaces = (value): string => value.replace(/\s/g, '');
+export const removeWhiteSpaces = (value: string): string => value.replace(/\s/g, '');
 
 export const initHiddenInput = (
   host: HTMLElement,

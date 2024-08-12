@@ -10,13 +10,19 @@ import {
   warnIfDeprecatedPropValueIsUsed,
 } from '../../utils';
 import { getComponentCss } from './tag-dismissible-styles';
-import type {
-  TagDismissibleAriaAttribute,
-  TagDismissibleColor,
-  TagDismissibleColorDeprecated,
+import {
+  type TagDismissibleAriaAttribute,
+  type TagDismissibleColor,
+  type TagDismissibleColorDeprecated,
+  TAG_DISMISSIBLE_ARIA_ATTRIBUTES,
+  TAG_DISMISSIBLE_COLORS,
 } from './tag-dismissible-utils';
-import { TAG_DISMISSIBLE_ARIA_ATTRIBUTES, TAG_DISMISSIBLE_COLORS } from './tag-dismissible-utils';
 import type { PropTypes, SelectedAriaAttributes, Theme } from '../../types';
+
+type DeprecationMapType = Record<
+  TagDismissibleColorDeprecated,
+  Exclude<TagDismissibleColor, TagDismissibleColorDeprecated>
+>;
 
 const propTypes: PropTypes<typeof TagDismissible> = {
   color: AllowedTypes.oneOf<TagDismissibleColor>(TAG_DISMISSIBLE_COLORS),
@@ -53,10 +59,7 @@ export class TagDismissible {
 
   public render(): JSX.Element {
     validateProps(this, propTypes);
-    const deprecationMap: Record<
-      TagDismissibleColorDeprecated,
-      Exclude<TagDismissibleColor, TagDismissibleColorDeprecated>
-    > = {
+    const deprecationMap: DeprecationMapType = {
       'background-default': 'background-base',
     };
     warnIfDeprecatedPropValueIsUsed<typeof TagDismissible, TagDismissibleColorDeprecated, TagDismissibleColor>(
@@ -67,7 +70,10 @@ export class TagDismissible {
     attachComponentCss(
       this.host,
       getComponentCss,
-      (deprecationMap[this.color] || this.color) as Exclude<TagDismissibleColor, TagDismissibleColorDeprecated>,
+      (deprecationMap[this.color as keyof DeprecationMapType] || this.color) as Exclude<
+        TagDismissibleColor,
+        TagDismissibleColorDeprecated
+      >,
       !!this.label,
       this.theme
     );

@@ -36,7 +36,7 @@ const initInlineNotification = (
 for (const notificationState of INLINE_NOTIFICATION_STATES) {
   test(`should expose correct accessibility tree properties for state: ${notificationState}`, async ({ page }) => {
     await initInlineNotification(page, { state: notificationState });
-    const wrapper = await page.$('p-inline-notification .content');
+    const wrapper = page.locator('p-inline-notification .content');
 
     // await expectA11yToMatchSnapshot(page, wrapper, { interestingOnly: false });
     expect(await getAttribute(wrapper, 'aria-live')).toBeDefined();

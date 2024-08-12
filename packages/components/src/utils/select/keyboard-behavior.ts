@@ -50,7 +50,7 @@ export const handleSelectDropdownScroll = (scrollElement: HTMLElement, element: 
  * @param {boolean} menuOpen - A boolean indicating whether the select menu is open or closed.
  * @returns {SelectAction} - The corresponding action to be performed.
  */
-export const getActionFromKeyboardEvent = (event: KeyboardEvent, menuOpen: boolean): SelectAction => {
+export const getActionFromKeyboardEvent = (event: KeyboardEvent, menuOpen: boolean): SelectAction | undefined => {
   const { key, altKey, ctrlKey, metaKey } = event;
   const openKeys = ['ArrowDown', 'ArrowUp', 'Enter', ' ']; // all keys that will do the default open action
   // handle opening when closed
@@ -89,6 +89,7 @@ export const getActionFromKeyboardEvent = (event: KeyboardEvent, menuOpen: boole
       return 'CloseSelect';
     }
   }
+  return undefined;
 };
 
 /**

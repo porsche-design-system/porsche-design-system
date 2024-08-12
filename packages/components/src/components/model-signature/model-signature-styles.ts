@@ -9,8 +9,12 @@ import {
   prefersColorSchemeDarkMediaQuery,
   type ThemedColors,
 } from '../../styles';
-import type { ModelSignatureColor, ModelSignatureModel, ModelSignatureSize } from './model-signature-utils';
-import { getSvgUrl } from './model-signature-utils';
+import {
+  type ModelSignatureColor,
+  type ModelSignatureModel,
+  type ModelSignatureSize,
+  getSvgUrl,
+} from './model-signature-utils';
 import type { Theme } from '../../types';
 import { MODEL_SIGNATURES_MANIFEST } from '@porsche-design-system/assets';
 

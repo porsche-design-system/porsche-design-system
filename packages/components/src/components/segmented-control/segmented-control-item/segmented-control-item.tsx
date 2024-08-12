@@ -11,13 +11,14 @@ import {
 } from '../../../utils';
 import { getComponentCss } from './segmented-control-item-styles';
 import {
+  type SegmentedControlItemAriaAttribute,
+  type SegmentedControlItemIcon,
+  type SegmentedControlItemInternalHTMLProps,
   getSegmentedControlItemAriaAttributes,
   getIconColor,
   SEGMENTED_CONTROL_ITEM_ARIA_ATTRIBUTES,
-  type SegmentedControlItemAriaAttribute,
 } from './segmented-control-item-utils';
 import type { PropTypes, ValidatorFunction, SelectedAriaAttributes } from '../../../types';
-import type { SegmentedControlItemIcon, SegmentedControlItemInternalHTMLProps } from './segmented-control-item-utils';
 
 const propTypes: PropTypes<typeof SegmentedControlItem> = {
   value: AllowedTypes.oneOf<ValidatorFunction>([AllowedTypes.string, AllowedTypes.number]),

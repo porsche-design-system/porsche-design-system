@@ -15,14 +15,14 @@ const initLinkSocial = (page: Page, opts?: { useSlottedAnchor?: boolean }): Prom
   );
 };
 
-const getHost = (page: Page) => page.$('p-link-social');
-const getLink = (page: Page) => page.$('p-link-social a');
-const getIcon = (page: Page) => page.$('p-link-social p-icon svg');
+const getHost = (page: Page) => page.locator('p-link-social');
+const getLink = (page: Page) => page.locator('p-link-social a');
+const getIcon = (page: Page) => page.locator('p-link-social p-icon svg');
 
 test.fixme('should expose correct initial accessibility tree properties', async ({ page }) => {
   await initLinkSocial(page);
-  const link = await getLink(page);
-  const icon = await getIcon(page);
+  const link = getLink(page);
+  const icon = getIcon(page);
 
   // await expectA11yToMatchSnapshot(page, link);
   // await expectA11yToMatchSnapshot(page, icon, { interestingOnly: false });
@@ -30,8 +30,8 @@ test.fixme('should expose correct initial accessibility tree properties', async 
 
 test.fixme('should expose correct accessibility name if label is hidden', async ({ page }) => {
   await initLinkSocial(page);
-  const host = await getHost(page);
-  const link = await getLink(page);
+  const host = getHost(page);
+  const link = getLink(page);
   await setProperty(host, 'hide-label', 'true');
   await waitForStencilLifecycle(page);
 

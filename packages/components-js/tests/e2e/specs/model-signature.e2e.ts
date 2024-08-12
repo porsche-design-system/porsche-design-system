@@ -1,9 +1,9 @@
 import type { Page } from 'playwright';
-import { expect, type Locator, test, type ElementHandle } from '@playwright/test';
+import { expect, type Locator, test } from '@playwright/test';
 import { getLifecycleStatus, setContentWithDesignSystem, setProperty, waitForStencilLifecycle } from '../helpers';
 import { type ModelSignatureFetchPriority } from '@porsche-design-system/components';
 
-const getHost = (page: Page): Promise<ElementHandle<HTMLElement>> => page.$('p-model-signature');
+const getHost = (page: Page): Locator => page.locator('p-model-signature');
 const getImage = (page: Page): Locator => page.locator('p-model-signature').getByRole('img');
 
 const initModelSignature = (
@@ -64,7 +64,7 @@ test.describe('lifecycle', () => {
 
   test('should work without unnecessary round trips on prop change', async ({ page }) => {
     await initModelSignature(page);
-    const host = await getHost(page);
+    const host = getHost(page);
 
     await setProperty(host, 'model', 'taycan');
     await waitForStencilLifecycle(page);

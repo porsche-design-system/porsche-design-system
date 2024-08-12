@@ -27,7 +27,7 @@ test.fixme('should initialize component deterministically', async ({ page }) => 
   await goto(page, 'core-initializer');
   await new Promise((resolve) => setTimeout(resolve, 1000));
 
-  const [component1, component2] = await page.$$('p-text-field-wrapper');
+  const [component1, component2] = await page.locator('p-text-field-wrapper').all();
 
   const component1HTML = await getOuterHTML(component1);
   const component2HTML = await getOuterHTML(component2);

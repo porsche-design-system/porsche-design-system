@@ -1,21 +1,7 @@
-import { type ConsoleMessage, type ElementHandle, type Page } from '@playwright/test';
+import type { ConsoleMessage, Locator, Page } from '@playwright/test';
 import { waitForComponentsReady } from './stencil';
 
-export const selectNode = async (page: Page, selector: string): Promise<ElementHandle> => {
-  const selectorParts = selector.split('>>>');
-  const shadowRootSelectors =
-    selectorParts.length > 1
-      ? selectorParts
-          .slice(1)
-          .map((x) => `.shadowRoot.querySelector('${x.trim()}')`)
-          .join('')
-      : '';
-  return (
-    await page.evaluateHandle(`document.querySelector('${selectorParts[0].trim()}')${shadowRootSelectors}`)
-  ).asElement() as ElementHandle;
-};
-
-export const getOuterHTML = (el: ElementHandle): Promise<string> => el.evaluate((el) => el.outerHTML);
+export const getOuterHTML = (el: Locator): Promise<string> => el.evaluate((el) => el.outerHTML);
 
 export const goto = async (page: Page, url: string): Promise<void> => {
   await page.goto(url);

@@ -12,9 +12,9 @@ import {
   waitForStencilLifecycle,
 } from '../helpers';
 
-const getHost = (page: Page) => page.$('p-link');
-const getLink = (page: Page) => page.$('p-link a');
-const getSlottedLink = (page: Page) => page.$('p-link a');
+const getHost = (page: Page) => page.locator('p-link');
+const getLink = (page: Page) => page.locator('p-link a');
+const getSlottedLink = (page: Page) => page.locator('p-link a');
 
 const initLink = (page: Page, opts?: { useSlottedAnchor?: boolean }): Promise<void> => {
   const { useSlottedAnchor = false } = opts || {};
@@ -33,9 +33,9 @@ const initLink = (page: Page, opts?: { useSlottedAnchor?: boolean }): Promise<vo
 test('should dispatch correct click events', async ({ page }) => {
   await setContentWithDesignSystem(page, `<div><p-link id="hostElement" href="about:blank#">Some label</p-link></div>`);
 
-  const wrapper = await page.$('div');
-  const host = await getHost(page);
-  const link = await getLink(page);
+  const wrapper = page.locator('div');
+  const host = getHost(page);
+  const link = getLink(page);
 
   await addEventListener(wrapper, 'click');
 
@@ -61,9 +61,9 @@ skipInBrowsers(['webkit', 'firefox'], () => {
     </div>`
     );
 
-    const link = await getHost(page);
-    const before = await page.$('#before');
-    const after = await page.$('#after');
+    const link = getHost(page);
+    const before = page.locator('#before');
+    const after = page.locator('#after');
 
     await addEventListener(before, 'focus');
     await addEventListener(link, 'focus');
@@ -143,8 +143,8 @@ test('should provide functionality to focus & blur the custom element', async ({
 
   const linkHasFocus = () => page.evaluate(() => document.activeElement === document.querySelector('p-link'));
 
-  const link = await getHost(page);
-  const before = await page.$('#before');
+  const link = getHost(page);
+  const before = page.locator('#before');
   await before.focus();
   expect(await linkHasFocus()).toBe(false);
   await link.focus();
@@ -160,7 +160,7 @@ test.describe('slotted anchor', () => {
   test('should have the same width as host', async ({ page }) => {
     await initLink(page, { useSlottedAnchor: true });
 
-    const host = await getHost(page);
+    const host = getHost(page);
     const hostWidthInPx = await getElementStyle(host, 'width');
     const slottedAnchorWidthInPx = await getElementStyle(await getSlottedLink(page), 'width', { pseudo: '::before' });
 
@@ -182,7 +182,7 @@ test.describe('lifecycle', () => {
 
   test('should work without unnecessary round trips on prop change', async ({ page }) => {
     await initLink(page);
-    const host = await getHost(page);
+    const host = getHost(page);
 
     await setProperty(host, 'icon', 'arrow-right');
     await waitForStencilLifecycle(page);

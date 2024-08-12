@@ -1,6 +1,5 @@
-import type { TextListType } from './text-list-utils';
+import { type TextListType, isListTypeOrdered, isListTypeNumbered } from './text-list-utils';
 import type { Theme } from '../../../types';
-import { isListTypeOrdered, isListTypeNumbered } from './text-list-utils';
 import { getCss } from '../../../utils';
 import {
   addImportantToEachRule,

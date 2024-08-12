@@ -33,10 +33,10 @@ const initHeading = (
   );
 };
 
-const getHost = (page: Page) => page.$('p-heading');
+const getHost = (page: Page) => page.locator('p-heading');
 
 const getHeadingTagName = async (page: Page): Promise<string> =>
-  (await getHost(page)).evaluate((el) => el.shadowRoot.querySelector('.root').tagName);
+  getHost(page).evaluate((el) => el.shadowRoot.querySelector('.root').tagName);
 
 test.describe('tag', () => {
   test('should render according to size', async ({ page }) => {
@@ -105,7 +105,7 @@ test.describe('lifecycle', () => {
 
   test('should work without unnecessary round trips after prop change', async ({ page }) => {
     await initHeading(page, { size: 'xx-large' });
-    const host = await getHost(page);
+    const host = getHost(page);
 
     await setProperty(host, 'size', 'medium');
     await waitForStencilLifecycle(page);
@@ -117,7 +117,7 @@ test.describe('lifecycle', () => {
 
   test('should work without unnecessary round trips after state change with custom breakpoints', async ({ page }) => {
     await initHeading(page, { size: { base: 'small', l: 'large' } });
-    const host = await getHost(page);
+    const host = getHost(page);
 
     await setProperty(host, 'size', 'medium');
     await waitForStencilLifecycle(page);
@@ -129,7 +129,7 @@ test.describe('lifecycle', () => {
 
   test('should have a theme prop defined at any time without any unnecessary round trips', async ({ page }) => {
     await initHeading(page, { size: 'large-title' });
-    const host = await getHost(page);
+    const host = getHost(page);
 
     expect(await getProperty(host, 'theme')).toBe('light');
 

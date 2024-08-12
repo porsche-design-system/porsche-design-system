@@ -1,5 +1,5 @@
 import type { TagName } from '@porsche-design-system/shared';
-import { getPrefixedTagNames, getTagName } from '../tag-name';
+import { type PrefixedTagNames, getPrefixedTagNames, getTagName } from '../tag-name';
 import { throwException } from '../log';
 import { paramCaseToCamelCase } from '../paramCaseToCamelCase';
 
@@ -11,8 +11,8 @@ export const throwIfElementIsNotOfKind = (
   const prefixedTagNamesMap = getPrefixedTagNames(host);
 
   const prefixedTagNames: string[] = Array.isArray(tagNameOrNames)
-    ? tagNameOrNames.map((tagName) => prefixedTagNamesMap[paramCaseToCamelCase(tagName)])
-    : [prefixedTagNamesMap[paramCaseToCamelCase(tagNameOrNames)]];
+    ? tagNameOrNames.map((tagName) => prefixedTagNamesMap[paramCaseToCamelCase(tagName) as keyof PrefixedTagNames])
+    : [prefixedTagNamesMap[paramCaseToCamelCase(tagNameOrNames) as keyof PrefixedTagNames]];
 
   const actualTagName = getTagName(element);
 

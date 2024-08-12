@@ -23,8 +23,8 @@ export const buildIconUrl = (iconNameOrSource: IconName | string = DEFAULT_ICON_
     return buildIconUrl(DEFAULT_ICON_NAME);
   } else if (isUrl(iconNameOrSource)) {
     return iconNameOrSource;
-  } else if (ICONS_MANIFEST[iconNameOrSource]) {
-    return `${getCDNBaseURL()}/icons/${ICONS_MANIFEST[iconNameOrSource]}`;
+  } else if (ICONS_MANIFEST[iconNameOrSource as keyof Record<IconName, string>]) {
+    return `${getCDNBaseURL()}/icons/${ICONS_MANIFEST[iconNameOrSource as keyof Record<IconName, string>]}`;
   }
 
   return buildIconUrl(DEFAULT_ICON_NAME);

@@ -9,12 +9,15 @@ import {
   gridExtendedOffset,
 } from '@porsche-design-system/styles';
 
-const widthMap: { [key in Exclude<ContentWrapperWidth, 'full' | 'fluid'>]: { base: string; s: string; xxl: string } } =
-  {
-    narrow: gridNarrowOffset,
-    basic: gridBasicOffset,
-    extended: gridExtendedOffset,
-  };
+type WidthMapType = {
+  [key in Exclude<ContentWrapperWidth, 'full' | 'fluid'>]: { base: string; s: string; xxl: string };
+};
+
+const widthMap: WidthMapType = {
+  narrow: gridNarrowOffset,
+  basic: gridBasicOffset,
+  extended: gridExtendedOffset,
+};
 
 export const getComponentCss = (width: ContentWrapperWidth): string => {
   return getCss({
@@ -34,12 +37,12 @@ export const getComponentCss = (width: ContentWrapperWidth): string => {
             padding: `0 ${gridFullOffset}`,
           }
         : {
-            padding: `0 ${widthMap[width].base}`,
+            padding: `0 ${widthMap[width as keyof WidthMapType].base}`,
             [getMediaQueryMin('s')]: {
-              padding: `0 ${widthMap[width].s}`,
+              padding: `0 ${widthMap[width as keyof WidthMapType].s}`,
             },
             [getMediaQueryMin('xxl')]: {
-              padding: `0 ${widthMap[width].xxl}`,
+              padding: `0 ${widthMap[width as keyof WidthMapType].xxl}`,
             },
           }),
     },

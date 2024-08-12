@@ -14,6 +14,7 @@ export const addParentAndSetRequiredProps = (tagName: TagName, component: any): 
     const child = document.createElement(childTagName);
     if (childAttribute) {
       const [childAttributeName, childAttributeValue] = childAttribute.replace(/"/g, '').split('=');
+      // @ts-expect-error: Type string can't be used to index type HTMLElement
       child[childAttributeName] = childAttributeValue;
     }
 

@@ -1,4 +1,4 @@
-import { type ElementHandle, expect, Locator, type Page, test } from '@playwright/test';
+import { expect, type Locator, type Page, test } from '@playwright/test';
 import { getConsoleErrorsAmount, initConsoleObserver } from '../helpers';
 import { config as STOREFRONT_CONFIG } from '../../../storefront.config';
 import { paramCase } from 'change-case';
@@ -50,16 +50,22 @@ const isLinkActive = (element: Locator | null): Promise<boolean> => {
   return element.evaluate((el) => el.active);
 };
 
-const waitForHeading = async (page: Page): Promise<ElementHandle<HTMLElement>> => {
-  const headingElementHandle = (await page.waitForSelector('main .vmark > h1')) as ElementHandle<HTMLElement>;
+const waitForHeading = async (page: Page): Promise<Locator> => {
+  const headingElement = page.locator('main .vmark > h1');
+  await headingElement.waitFor();
+
   // NOTE: sometimes h1 or p-heading is rendered empty for whatever reason 🤷‍
-  await page.waitForFunction((headingEl) => headingEl.innerText !== '', headingElementHandle);
-  return headingElementHandle;
+  await page.waitForFunction(
+    (el) => el.innerText !== '',
+    (await headingElement.elementHandle()) as unknown as HTMLElement
+  );
+
+  return headingElement;
 };
 
 const getHeadingText = async (page: Page): Promise<string> => {
-  const headingElementHandle = await waitForHeading(page);
-  return headingElementHandle.evaluate((headingEl) => headingEl.innerText);
+  const headingElement = await waitForHeading(page);
+  return headingElement.evaluate((headingEl: HTMLElement) => headingEl.innerText);
 };
 
 const hasPageObjectObject = (page: Page): Promise<boolean> => {
@@ -125,11 +131,11 @@ for (const [path, category, page, tab, isFirst] of sitemap) {
     expect(await isLinkActive(linkPureElement), 'sidebar link should not be active initially').toBe(false);
 
     // NOTE: very flaky and potential timeout here 🤷‍
-    await Promise.all([browserPage.waitForNavigation(), linkPureElement.click()]);
+    await Promise.all([browserPage.waitForURL(browserPage.url()), linkPureElement.click()]);
 
     // wait for p-heading and p-tabs-bar to be ready
-    const mainElementHandle = await browserPage.$('main');
-    await mainElementHandle.evaluate((el) => (window as any).componentsReady(el));
+    const mainElement = browserPage.locator('main');
+    await mainElement.evaluate((el) => (window as any).componentsReady(el));
 
     await waitForHeading(browserPage);
     await browserPage.waitForFunction((el) => el.active, await linkPureElement.elementHandle());
@@ -154,7 +160,7 @@ for (const [path, category, page, tab, isFirst] of sitemap) {
         expect(isTabElementActiveInitially, 'should not have tab active initially').toBe(false);
         // we need to switch tabs, e.g. to "Usage" or "Props" for components
 
-        await Promise.all([browserPage.waitForNavigation(), tabElement.click()]);
+        await Promise.all([browserPage.waitForURL(browserPage.url()), tabElement.click()]);
 
         expect(await isTabActive(tabElement), 'should have tab active after click').toBe(true);
         expect(await isLinkActive(linkPureElement), 'sidebar link should still be active after click').toBe(true);

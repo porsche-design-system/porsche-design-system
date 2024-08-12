@@ -11,8 +11,8 @@ import {
   waitForStencilLifecycle,
 } from '../helpers';
 
-const getHost = (page: Page) => page.$('p-link-pure');
-const getLink = (page: Page) => page.$('p-link-pure a');
+const getHost = (page: Page) => page.locator('p-link-pure');
+const getLink = (page: Page) => page.locator('p-link-pure a');
 
 const initLinkPure = (page: Page, opts?: { useSlottedAnchor?: boolean; withSubline?: boolean }): Promise<void> => {
   const { useSlottedAnchor = false, withSubline = false } = opts || {};
@@ -35,9 +35,9 @@ test('should dispatch correct click events', async ({ page }) => {
     `<div><p-link-pure id="hostElement" href="about:blank#">Some label</p-link-pure></div>`
   );
 
-  const wrapper = await page.$('div');
-  const host = await getHost(page);
-  const link = await getLink(page);
+  const wrapper = page.locator('div');
+  const host = getHost(page);
+  const link = getLink(page);
 
   await addEventListener(wrapper, 'click');
 
@@ -62,9 +62,9 @@ skipInBrowsers(['webkit', 'firefox'], () => {
       <a href="#" id="after">after</a>
     </div>`
     );
-    const link = await getHost(page);
-    const before = await page.$('#before');
-    const after = await page.$('#after');
+    const link = getHost(page);
+    const before = page.locator('#before');
+    const after = page.locator('#after');
 
     await addEventListener(before, 'focus');
     await addEventListener(link, 'focus');
@@ -144,8 +144,8 @@ test('should provide functionality to focus & blur the custom element', async ({
 
   const linkHasFocus = () => page.evaluate(() => document.activeElement === document.querySelector('p-link-pure'));
 
-  const link = await getHost(page);
-  const before = await page.$('#before');
+  const link = getHost(page);
+  const before = page.locator('#before');
   await before.focus();
 
   expect(await linkHasFocus()).toBe(false);
@@ -172,7 +172,7 @@ test.describe('lifecycle', () => {
 
   test('should work without unnecessary round trips on prop change', async ({ page }) => {
     await initLinkPure(page);
-    const host = await getHost(page);
+    const host = getHost(page);
 
     await setProperty(host, 'size', 'medium');
     await waitForStencilLifecycle(page);

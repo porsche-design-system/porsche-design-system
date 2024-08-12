@@ -1,5 +1,4 @@
-import type { ElementHandle, Page } from 'playwright';
-import { expect, test } from '@playwright/test';
+import { expect, type Locator, test, type Page } from '@playwright/test';
 import {
   addEventListener,
   getActiveElementClassNameInShadowRoot,
@@ -23,18 +22,18 @@ import type { Components } from '@porsche-design-system/components';
 
 const CSS_TRANSITION_DURATION = 600;
 
-const getHost = (page: Page) => page.$('p-flyout-multilevel');
-const getFlyoutMultilevelDialog = (page: Page) => page.$('p-flyout-multilevel dialog');
-const getFlyoutMultilevelDismissButton = (page: Page) => page.$('p-flyout-multilevel p-button-pure.dismiss');
+const getHost = (page: Page) => page.locator('p-flyout-multilevel');
+const getFlyoutMultilevelDialog = (page: Page) => page.locator('p-flyout-multilevel dialog');
+const getFlyoutMultilevelDismissButton = (page: Page) => page.locator('p-flyout-multilevel p-button-pure.dismiss');
 const getFlyoutMultilevelDialogVisibility = async (page: Page) =>
-  await getElementStyle(await getFlyoutMultilevelDialog(page), 'visibility');
+  await getElementStyle(getFlyoutMultilevelDialog(page), 'visibility');
 const getFlyoutMultilevelItem = (page: Page, identifier: string) =>
-  page.$(`p-flyout-multilevel-item[identifier="${identifier}"]`);
+  page.locator(`p-flyout-multilevel-item[identifier="${identifier}"]`);
 const getFlyoutMultilevelItemScroller = (page: Page, identifier: string) =>
-  page.$(`p-flyout-multilevel-item[identifier="${identifier}"] .scroller`);
+  page.locator(`p-flyout-multilevel-item[identifier="${identifier}"] .scroller`);
 const getFlyoutMultilevelItemScrollerVisibility = async (page: Page, identifier: string) =>
-  await getElementStyle(await getFlyoutMultilevelItemScroller(page, identifier), 'visibility');
-const getBodyStyle = async (page: Page) => getAttribute(await page.$('body'), 'style');
+  await getElementStyle(getFlyoutMultilevelItemScroller(page, identifier), 'visibility');
+const getBodyStyle = async (page: Page) => getAttribute(page.locator('body'), 'style');
 
 const waitForFlyoutTransition = async () => sleep(CSS_TRANSITION_DURATION);
 
@@ -75,12 +74,12 @@ const initBasicFlyoutMultilevel = (
 };
 
 const openFlyoutMultilevel = async (page: Page) => {
-  await setProperty(await getHost(page), 'open', true);
+  await setProperty(getHost(page), 'open', true);
   await waitForStencilLifecycle(page);
 };
 
 const dismissFlyoutMultilevel = async (page: Page) => {
-  await setProperty(await getHost(page), 'open', false);
+  await setProperty(getHost(page), 'open', false);
   await waitForStencilLifecycle(page);
 };
 
@@ -98,14 +97,14 @@ const addButtonsBeforeAndAfterFlyout = (page: Page) =>
   });
 
 const expectDismissButtonToBeFocused = async (page: Page, failMessage?: string) => {
-  const host = await getHost(page);
+  const host = getHost(page);
   expect(await getActiveElementTagNameInShadowRoot(host), failMessage).toBe('P-BUTTON-PURE');
   expect(await getActiveElementClassNameInShadowRoot(host), failMessage).toContain('dismiss');
 };
 
 test('should render and be visible when open', async ({ page }) => {
   await initBasicFlyoutMultilevel(page, { open: true });
-  expect(await getFlyoutMultilevelDialog(page)).not.toBeNull();
+  expect(getFlyoutMultilevelDialog(page)).not.toBeNull();
   expect(await getFlyoutMultilevelDialogVisibility(page)).toBe('visible');
 });
 
@@ -116,7 +115,7 @@ test('should not be visible when not open', async ({ page }) => {
 
 test('should be visible after opened', async ({ page }) => {
   await initBasicFlyoutMultilevel(page, { open: false });
-  const host = await getHost(page);
+  const host = getHost(page);
   await setProperty(host, 'open', true);
 
   await waitForFlyoutTransition();
@@ -125,18 +124,18 @@ test('should be visible after opened', async ({ page }) => {
 });
 
 test.describe('update event', () => {
-  let host: ElementHandle;
+  let host: Locator;
 
   test.beforeEach(async ({ page }) => {
     await initBasicFlyoutMultilevel(page, { open: true });
-    host = await getHost(page);
+    host = getHost(page);
     await addEventListener(host, 'update');
   });
 
   test('should be emitted when clicking on a navigation-item', async ({ page }) => {
     expect((await getEventSummary(host, 'update')).counter, 'before activeIdentifier change').toBe(0);
 
-    await (await getFlyoutMultilevelItem(page, 'item-1')).click();
+    await getFlyoutMultilevelItem(page, 'item-1').click();
     await waitForStencilLifecycle(page);
 
     expect((await getEventSummary(host, 'update')).counter, 'after activeIdentifier change').toBe(1);
@@ -183,13 +182,13 @@ test.describe('update event', () => {
   });
 
   test('should not bubble', async ({ page }) => {
-    const body = await page.$('body');
+    const body = page.locator('body');
     await addEventListener(body, 'update');
 
     expect((await getEventSummary(host, 'update')).counter).toBe(0);
     expect((await getEventSummary(body, 'update')).counter).toBe(0);
 
-    await (await getFlyoutMultilevelItem(page, 'item-1')).click();
+    await getFlyoutMultilevelItem(page, 'item-1').click();
     await waitForStencilLifecycle(page);
 
     expect((await getEventSummary(host, 'update')).counter).toBe(1);
@@ -198,18 +197,18 @@ test.describe('update event', () => {
 });
 
 test.describe('dismiss event', () => {
-  let host: ElementHandle;
+  let host: Locator;
 
   test.beforeEach(async ({ page }) => {
     await initBasicFlyoutMultilevel(page, { open: true });
-    host = await getHost(page);
+    host = getHost(page);
     await addEventListener(host, 'dismiss');
   });
 
   test('should be emitted when clicking dismiss button', async ({ page }) => {
-    const dismissBtn = await getFlyoutMultilevelDismissButton(page);
+    const dismissBtn = getFlyoutMultilevelDismissButton(page);
 
-    expect(dismissBtn).not.toBeNull();
+    await expect(dismissBtn).not.toHaveCount(0);
     expect(await getProperty(dismissBtn, 'type')).toBe('button');
 
     expect((await getEventSummary(host, 'dismiss')).counter).toBe(0);
@@ -256,13 +255,13 @@ test.describe('dismiss event', () => {
   });
 
   test('should not bubble', async ({ page }) => {
-    const body = await page.$('body');
+    const body = page.locator('body');
     await addEventListener(body, 'dismiss');
 
     expect((await getEventSummary(host, 'dismiss')).counter).toBe(0);
     expect((await getEventSummary(body, 'dismiss')).counter).toBe(0);
 
-    const dismissBtn = await getFlyoutMultilevelDismissButton(page);
+    const dismissBtn = getFlyoutMultilevelDismissButton(page);
     await dismissBtn.click();
 
     expect((await getEventSummary(host, 'dismiss')).counter).toBe(1);
@@ -311,7 +310,7 @@ test.describe('focus behavior', () => {
   skipInBrowsers(['firefox'], () => {
     test('should have correct focus order when level 2 is opened', async ({ page }) => {
       await initBasicFlyoutMultilevel(page, { open: false });
-      const host = await getHost(page);
+      const host = getHost(page);
       await openFlyoutMultilevel(page);
       await waitForStencilLifecycle(page);
 
@@ -389,7 +388,7 @@ test.describe('focus behavior', () => {
       });
     });
 
-    await (await page.$('#btn-open')).click();
+    page.locator('#btn-open').click();
     await waitForStencilLifecycle(page);
 
     expect(await getFlyoutMultilevelDialogVisibility(page)).toBe('visible');
@@ -448,7 +447,7 @@ test.describe('scroll lock', () => {
     await openFlyoutMultilevel(page);
     expect(await getBodyStyle(page)).toBe(bodyLockedStyle);
 
-    await setProperty(await getHost(page), 'open', false);
+    await setProperty(getHost(page), 'open', false);
     await waitForStencilLifecycle(page);
     expect(await getBodyStyle(page)).toBe('');
   });
@@ -491,7 +490,7 @@ test.describe('second level', () => {
   test('should open correct second level when setting activeIdentifier', async ({ page }) => {
     await initBasicFlyoutMultilevel(page, { open: false });
     await openFlyoutMultilevel(page);
-    const host = await getHost(page);
+    const host = getHost(page);
     expect(await getFlyoutMultilevelItemScrollerVisibility(page, 'item-1')).toBe('hidden');
     expect(await getFlyoutMultilevelItemScrollerVisibility(page, 'item-2')).toBe('hidden');
     expect(await getFlyoutMultilevelItemScrollerVisibility(page, 'item-3')).toBe('hidden');
@@ -508,7 +507,7 @@ test.describe('second level', () => {
     test('should change to correct second level open when activeIdentifier is changed', async ({ page }) => {
       await initBasicFlyoutMultilevel(page, { open: false, activeIdentifier: 'item-2' });
       await openFlyoutMultilevel(page);
-      const host = await getHost(page);
+      const host = getHost(page);
       expect(await getFlyoutMultilevelItemScrollerVisibility(page, 'item-1')).toBe('hidden');
       expect(await getFlyoutMultilevelItemScrollerVisibility(page, 'item-2')).toBe('visible');
       expect(await getFlyoutMultilevelItemScrollerVisibility(page, 'item-3')).toBe('hidden');
@@ -527,12 +526,12 @@ test.describe('second level', () => {
       page,
     }) => {
       await initBasicFlyoutMultilevel(page, { open: true });
-      const host = await getHost(page);
+      const host = getHost(page);
 
       expect(await getFlyoutMultilevelItemScrollerVisibility(page, 'item-1')).toBe('hidden');
       expect(await getFlyoutMultilevelItemScrollerVisibility(page, 'item-2')).toBe('hidden');
       expect(await getFlyoutMultilevelItemScrollerVisibility(page, 'item-3')).toBe('hidden');
-      expect(await getFlyoutMultilevelItem(page, 'item-4')).toBeNull();
+      await expect(getFlyoutMultilevelItem(page, 'item-4')).toHaveCount(0);
 
       await host.evaluate((el) => {
         const newItem = document.createElement('p-flyout-multilevel-item');
@@ -541,7 +540,7 @@ test.describe('second level', () => {
         el.appendChild(newItem);
       });
 
-      const item4 = await getFlyoutMultilevelItem(page, 'item-4');
+      const item4 = getFlyoutMultilevelItem(page, 'item-4');
       expect(item4).toBeDefined();
       expect(await getFlyoutMultilevelItemScrollerVisibility(page, 'item-1')).toBe('hidden');
       expect(await getFlyoutMultilevelItemScrollerVisibility(page, 'item-2')).toBe('hidden');
@@ -559,7 +558,7 @@ test.describe('second level', () => {
 
   test('should close second level of active item when item is removed', async ({ page }) => {
     await initBasicFlyoutMultilevel(page, { open: true, activeIdentifier: 'item-3' });
-    const host = await getHost(page);
+    const host = getHost(page);
 
     expect(await getFlyoutMultilevelItemScrollerVisibility(page, 'item-1')).toBe('hidden');
     expect(await getFlyoutMultilevelItemScrollerVisibility(page, 'item-2')).toBe('hidden');
@@ -572,7 +571,7 @@ test.describe('second level', () => {
 
     expect(await getFlyoutMultilevelItemScrollerVisibility(page, 'item-1')).toBe('hidden');
     expect(await getFlyoutMultilevelItemScrollerVisibility(page, 'item-2')).toBe('hidden');
-    expect(await getFlyoutMultilevelItem(page, 'item-3')).toBeNull();
+    await expect(getFlyoutMultilevelItem(page, 'item-3')).toHaveCount(0);
   });
 
   skipInBrowsers(['webkit'], () => {
@@ -580,7 +579,7 @@ test.describe('second level', () => {
       page,
     }) => {
       await initBasicFlyoutMultilevel(page, { open: true, activeIdentifier: 'item-4' });
-      const host = await getHost(page);
+      const host = getHost(page);
       await waitForStencilLifecycle(page);
 
       await host.evaluate((el) => {
@@ -614,7 +613,7 @@ test.describe('lifecycle', () => {
 
   test('should work without unnecessary round trips after setting an activeIdentifier', async ({ page }) => {
     await initBasicFlyoutMultilevel(page, { open: true });
-    const host = await getHost(page);
+    const host = getHost(page);
     const statusBefore = await getLifecycleStatus(page);
 
     expect(statusBefore.componentDidLoad.all, 'componentDidLoad: all').toBe(18);

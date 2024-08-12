@@ -1,10 +1,13 @@
 import { Component, Element, Event, type EventEmitter, h, type JSX, Prop } from '@stencil/core';
 import type { BreakpointCustomizable, PropTypes, Theme } from '../../types';
-import type { PinCodeLength, PinCodeState, PinCodeType, PinCodeUpdateEventDetail } from './pin-code-utils';
 import {
+  type PinCodeLength,
+  type PinCodeState,
+  type PinCodeType,
+  type PinCodeUpdateEventDetail,
+  type HTMLInputElementEventTarget,
   getConcatenatedInputValues,
   getSanitisedValue,
-  type HTMLInputElementEventTarget,
   initHiddenInput,
   isCurrentInput,
   isFormSubmittable,

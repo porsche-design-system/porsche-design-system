@@ -13,7 +13,7 @@ const initTag = (page: Page, props?: InitOpts) => {
 
   return setContentWithDesignSystem(page, content);
 };
-const getSpan = (page: Page) => page.$('p-tag span');
+const getSpan = (page: Page) => page.locator('p-tag span');
 
 test.fixme('should expose correct initial accessibility tree', async ({ page }) => {
   await initTag(page);

@@ -16,8 +16,8 @@ import {
 } from '../helpers';
 import { Components } from '@porsche-design-system/components';
 
-const getHost = (page: Page) => page.$('p-link-tile-product');
-const getLikeButton = (page: Page) => page.$('p-link-tile-product .button');
+const getHost = (page: Page) => page.locator('p-link-tile-product');
+const getLikeButton = (page: Page) => page.locator('p-link-tile-product .button');
 
 type InitOptions = {
   props?: Components.PLinkTileProduct;
@@ -44,8 +44,8 @@ const initLinkTileProduct = (page: Page, opt?: InitOptions): Promise<void> => {
 test.describe('like button', () => {
   test('should update like button icon on like prop change', async ({ page }) => {
     await initLinkTileProduct(page);
-    const host = await getHost(page);
-    const likeButton = await getLikeButton(page);
+    const host = getHost(page);
+    const likeButton = getLikeButton(page);
     expect(likeButton).toBeDefined();
     expect(await getProperty(host, 'liked')).toBe(false);
     expect(await getProperty(likeButton, 'icon')).toBe('heart');
@@ -58,11 +58,11 @@ test.describe('like button', () => {
   });
   test('should emit like event on like button click', async ({ page }) => {
     await initLinkTileProduct(page);
-    const host = await getHost(page);
+    const host = getHost(page);
     await addEventListener(host, 'like');
 
     expect((await getEventSummary(host, 'like')).counter, 'before like click').toBe(0);
-    const likeButton = await getLikeButton(page);
+    const likeButton = getLikeButton(page);
     expect(likeButton).toBeDefined();
     expect(await getProperty(host, 'liked')).toBe(false);
     expect(await getProperty(likeButton, 'icon')).toBe('heart');
@@ -101,7 +101,7 @@ test.describe('lifecycle', () => {
 
   test('should work without unnecessary round trips on prop change', async ({ page }) => {
     await initLinkTileProduct(page);
-    const host = await getHost(page);
+    const host = getHost(page);
 
     await setProperty(host, 'heading', 'Some new heading');
     await waitForStencilLifecycle(page);
@@ -117,7 +117,7 @@ test.describe('focus', () => {
 
   test('should have correct focus order when using href prop', async ({ page }) => {
     await initLinkTileProduct(page);
-    const host = await getHost(page);
+    const host = getHost(page);
     await page.evaluate(() => {
       const linkBefore = document.createElement('a');
       linkBefore.id = 'before';
@@ -152,7 +152,7 @@ test.describe('focus', () => {
       props: { heading: 'Some product name', price: '1.199,00 €', href: undefined },
       slotted: '<a slot="anchor" href="/packages/components-js/public">Some product name, 1.199,00 €</a>',
     });
-    const host = await getHost(page);
+    const host = getHost(page);
     await page.evaluate(() => {
       const linkBefore = document.createElement('a');
       linkBefore.id = 'before';
