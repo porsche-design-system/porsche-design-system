@@ -2043,7 +2043,7 @@ export namespace Components {
          */
         "autoComplete"?: TextareaAutoComplete;
         /**
-          * Enables automatic focus when the component is rendered
+          * Enables automatic focus when the component is rendered.
          */
         "autoFocus"?: boolean;
         /**
@@ -5213,7 +5213,7 @@ declare namespace LocalJSX {
          */
         "autoComplete"?: TextareaAutoComplete;
         /**
-          * Enables automatic focus when the component is rendered
+          * Enables automatic focus when the component is rendered.
          */
         "autoFocus"?: boolean;
         /**

@@ -16,8 +16,8 @@ import {
   type TextareaState,
   type TextareaWrap,
 } from './textarea-utils';
-import { StateMessage } from '../common/state-message/state-message';
-import { Label } from '../common/label/label';
+import { messageId, StateMessage } from '../common/state-message/state-message';
+import { descriptionId, Label } from '../common/label/label';
 import { getSlottedAnchorStyles } from '../../styles';
 import { getComponentCss } from './textarea-styles';
 import { setAriaElementInnerHtml } from '../../utils/form/form-utils';
@@ -89,7 +89,7 @@ export class Textarea {
   /** Marks the textarea as disabled. */
   @Prop() public disabled?: boolean = false;
 
-  /** Enables automatic focus when the component is rendered */
+  /** Enables automatic focus when the component is rendered. */
   @Prop() public autoFocus?: boolean = false;
 
   /** The name of the textarea. */
@@ -181,11 +181,14 @@ export class Textarea {
           htmlFor={id}
           label={this.label}
           description={this.description}
+          isRequired={this.required}
           isDisabled={disabled}
           formElement={this.textAreaElement}
         />
         <div class="wrapper">
           <textarea
+            aria-describedby={`${descriptionId} ${messageId}`}
+            aria-invalid={this.state === 'error' ? 'true' : null}
             id={id}
             ref={(el: HTMLTextAreaElement) => (this.textAreaElement = el)}
             onInput={this.onInput}
