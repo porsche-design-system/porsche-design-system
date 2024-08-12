@@ -1,28 +1,18 @@
-import { Component, Element, Event, type EventEmitter, forceUpdate, h, type JSX, Prop, Watch } from '@stencil/core';
+import { AttachInternals, Component, Element, Event, type EventEmitter, h, type JSX, Prop, Watch } from '@stencil/core';
 import { type BreakpointCustomizable, type PropTypes, type Theme } from '../../types';
 import {
   AllowedTypes,
   applyConstructableStylesheetStyles,
   attachComponentCss,
   FORM_STATES,
-  hasCounter,
   hasPropValueChanged,
-  observeAttributes,
-  observeProperties,
-  setAriaAttributes,
   THEMES,
-  unobserveAttributes,
-  updateCounter,
   validateProps,
 } from '../../utils';
 import {
-  type TextareaUpdateEventDetail,
   AUTO_COMPLETE,
   type TextareaAutoComplete,
-  initNativeTextarea,
-  INTERNAL_TEXTAREA_SLOT,
   TEXTAREA_WRAPS,
-  textareaInputEventListenerCurry,
   type TextareaState,
   type TextareaWrap,
 } from './textarea-utils';
@@ -30,6 +20,7 @@ import { StateMessage } from '../common/state-message/state-message';
 import { Label } from '../common/label/label';
 import { getSlottedAnchorStyles } from '../../styles';
 import { getComponentCss } from './textarea-styles';
+import { setAriaElementInnerHtml } from '../../utils/form/form-utils';
 
 const propTypes: PropTypes<typeof Textarea> = {
   label: AllowedTypes.string,
@@ -43,12 +34,13 @@ const propTypes: PropTypes<typeof Textarea> = {
   required: AllowedTypes.boolean,
   disabled: AllowedTypes.boolean,
   autoFocus: AllowedTypes.boolean,
-  dirName: AllowedTypes.string,
   readOnly: AllowedTypes.boolean,
   name: AllowedTypes.string,
   value: AllowedTypes.string,
+  form: AllowedTypes.string,
   maxLength: AllowedTypes.number,
   minLength: AllowedTypes.number,
+  rows: AllowedTypes.number,
   wrap: AllowedTypes.oneOf<TextareaWrap>(TEXTAREA_WRAPS),
   spellCheck: AllowedTypes.boolean,
   autoComplete: AllowedTypes.oneOf<TextareaAutoComplete>(AUTO_COMPLETE),
@@ -61,7 +53,8 @@ const propTypes: PropTypes<typeof Textarea> = {
  */
 @Component({
   tag: 'p-textarea',
-  shadow: true,
+  shadow: { delegatesFocus: true },
+  formAssociated: true,
 })
 export class Textarea {
   @Element() public host!: HTMLElement;
@@ -99,9 +92,6 @@ export class Textarea {
   /** Enables automatic focus when the component is rendered */
   @Prop() public autoFocus?: boolean = false;
 
-  /** Indicates the text directionality of the element */
-  @Prop() public dirName?: string;
-
   /** The name of the textarea. */
   @Prop() public name: string;
 
@@ -110,6 +100,12 @@ export class Textarea {
 
   /** The min length of the textarea. */
   @Prop() public minLength?: number;
+
+  /** The id of a form element the textarea should be associated with. */
+  @Prop() public form?: string;
+
+  /** The amount of rows of the textarea. */
+  @Prop() public rows?: number;
 
   /** Specifies whether the input can be autofilled by the browser */
   @Prop() public autoComplete?: TextareaAutoComplete = '';
@@ -126,15 +122,20 @@ export class Textarea {
   /** The textarea value. */
   @Prop({ mutable: true }) public value?: string = '';
 
-  /** Emitted when textarea value is changed. */
-  @Event({ bubbles: false }) public update: EventEmitter<TextareaUpdateEventDetail>;
+  /** Emitted when the textarea loses focus after its value was changed. */
+  @Event({ bubbles: true }) public change: EventEmitter<Event>;
 
-  private nativeTextarea: HTMLTextAreaElement;
-  private counterElement: HTMLSpanElement;
+  /** Emitted when the textarea has lost focus. */
+  @Event({ bubbles: false }) public blur: EventEmitter<Event>;
+
+  /** Emitted when the value has been changed as a direct result of a user action. */
+  @Event({ bubbles: true }) public input: EventEmitter<Event>;
+
+  @AttachInternals() private internals: ElementInternals;
+
+  private textAreaElement: HTMLTextAreaElement;
   private ariaElement: HTMLSpanElement;
   private hasCounter: boolean;
-
-  private eventListener: EventListener;
 
   @Watch('showCounter')
   public onShowCounterChange(): void {
@@ -143,54 +144,27 @@ export class Textarea {
 
   public connectedCallback(): void {
     applyConstructableStylesheetStyles(this.host, getSlottedAnchorStyles);
-    this.observeAttributes(); // on every reconnect
   }
 
   public componentWillLoad(): void {
-    this.nativeTextarea = initNativeTextarea(
-      this.host,
-      this.name,
-      this.disabled,
-      this.required,
-      this.placeholder,
-      this.maxLength,
-      this.minLength,
-      this.readOnly,
-      this.autoFocus,
-      this.spellCheck,
-      this.autoComplete,
-      this.wrap,
-      this.value,
-      this.dirName
-    );
-
-    this.observeAttributes(); // once initially
     this.updateCounterVisibility();
+  }
+
+  public formResetCallback(): void {
+    this.internals.setValidity({});
+    this.internals.setFormValue('');
+    this.textAreaElement.value = '';
+    this.value = '';
   }
 
   public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
     return hasPropValueChanged(newVal, oldVal);
   }
-
-  public componentDidRender(): void {
+  public componentDidLoad(): void {
     if (this.hasCounter) {
-      this.addInputEventListenerForCounter(this.ariaElement, this.counterElement);
+      setAriaElementInnerHtml(this.textAreaElement, this.ariaElement);
     }
-
-    /*
-     * This is a workaround to improve accessibility because the textarea and the label/description/message text are placed in different DOM.
-     * Referencing ID's from outside the component is impossible because the web component’s DOM is separate.
-     * We have to wait for full support of the Accessibility Object Model (AOM) to provide the relationship between shadow DOM and slots.
-     */
-    setAriaAttributes(this.nativeTextarea, {
-      label: this.label,
-      message: this.message || this.description,
-      state: this.state,
-    });
-  }
-
-  public disconnectedCallback(): void {
-    unobserveAttributes(this.nativeTextarea);
+    this.internals.setFormValue(this.value);
   }
 
   public render(): JSX.Element {
@@ -199,18 +173,44 @@ export class Textarea {
 
     attachComponentCss(this.host, getComponentCss, disabled, this.hideLabel, this.state, this.hasCounter, this.theme);
 
+    const id = 'textarea';
     return (
       <div class="root">
         <Label
           host={this.host}
+          htmlFor={id}
           label={this.label}
           description={this.description}
           isDisabled={disabled}
-          formElement={this.nativeTextarea}
+          formElement={this.textAreaElement}
         />
         <div class="wrapper">
-          <slot name={INTERNAL_TEXTAREA_SLOT} />
-          {this.hasCounter && <span class="counter" aria-hidden="true" ref={(el) => (this.counterElement = el)} />}
+          <textarea
+            id={id}
+            ref={(el: HTMLTextAreaElement) => (this.textAreaElement = el)}
+            onInput={this.onInput}
+            onChange={this.onChange}
+            onBlur={this.onBlur}
+            name={this.name}
+            value={this.value}
+            form={this.form}
+            disabled={this.disabled}
+            required={this.required}
+            placeholder={this.placeholder}
+            maxlength={this.maxLength}
+            minlength={this.minLength}
+            rows={this.rows}
+            readonly={this.readOnly}
+            autofocus={this.autoFocus}
+            spellcheck={this.spellCheck}
+            autocomplete={this.autoComplete}
+            wrap={this.wrap}
+          />
+          {this.hasCounter && (
+            <span class="counter" aria-hidden="true">
+              {`${this.value.length}/${this.maxLength}`}
+            </span>
+          )}
           {this.hasCounter && <span class="sr-only" ref={(el) => (this.ariaElement = el)} aria-live="polite" />}
         </div>
         <StateMessage state={this.state} message={this.message} theme={this.theme} host={this.host} />
@@ -218,56 +218,25 @@ export class Textarea {
     );
   }
 
-  private observeAttributes = (): void => {
-    observeAttributes(
-      this.nativeTextarea,
-      [
-        'disabled',
-        'readonly',
-        'required',
-        'maxlength',
-        'minlength',
-        'placeholder',
-        'readonly',
-        'autofocus',
-        'spellcheck',
-        'autocomplete',
-        'wrap',
-        'dirname',
-      ],
-      () => {
-        forceUpdate(this.host);
-        this.updateCounterVisibility();
-      }
-    );
+  private onChange = (e: Event): void => {
+    this.change.emit(e);
+  };
+
+  private onBlur = (e: Event): void => {
+    this.blur.emit(e);
+  };
+
+  private onInput = (e: InputEvent): void => {
+    this.input.emit(e);
+    const target = e.target as HTMLTextAreaElement;
+    this.value = target.value;
+    if (this.hasCounter) {
+      setAriaElementInnerHtml(this.textAreaElement, this.ariaElement);
+    }
+    this.internals.setFormValue(target.value);
   };
 
   private updateCounterVisibility = (): void => {
-    this.hasCounter = hasCounter(this.nativeTextarea) && this.showCounter;
-  };
-
-  private addInputEventListenerForCounter = (
-    characterCountElement: HTMLSpanElement,
-    counterElement?: HTMLSpanElement,
-    inputChangeCallback?: () => void
-  ): void => {
-    updateCounter(this.nativeTextarea, characterCountElement, counterElement); // Initial value
-
-    // When value changes programmatically
-    observeProperties(this.nativeTextarea, ['value'], () => {
-      this.update.emit({ name: this.name, value: this.nativeTextarea.value });
-      updateCounter(this.nativeTextarea, characterCountElement, counterElement, inputChangeCallback);
-    });
-
-    this.eventListener = textareaInputEventListenerCurry(
-      this.nativeTextarea,
-      this.update,
-      characterCountElement,
-      counterElement,
-      inputChangeCallback
-    );
-
-    this.nativeTextarea.removeEventListener('input', this.eventListener);
-    this.nativeTextarea.addEventListener('input', this.eventListener);
+    this.hasCounter = this.maxLength >= 0 && this.showCounter;
   };
 }

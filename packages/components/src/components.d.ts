@@ -63,7 +63,8 @@ import { TagDismissibleAriaAttribute, TagDismissibleColor } from "./components/t
 import { TextAlign, TextColor, TextTag, TextWeight } from "./components/text/text-utils";
 import { TextFieldWrapperActionIcon, TextFieldWrapperState, TextFieldWrapperUnitPosition } from "./components/text-field-wrapper/text-field-wrapper-utils";
 import { TextListListType, TextListOrderType, TextListType } from "./components/text-list/text-list/text-list-utils";
-import { TextareaAutoComplete, TextareaState, TextareaUpdateEventDetail, TextareaWrap } from "./components/textarea/textarea-utils";
+import { TextareaAutoComplete, TextareaState, TextareaWrap } from "./components/textarea/textarea-utils";
+import { Event } from "@stencil/core";
 import { TextareaWrapperState } from "./components/textarea-wrapper/textarea-wrapper-utils";
 import { ToastMessage } from "./components/toast/toast/toast-manager";
 import { ToastState } from "./components/toast/toast/toast-utils";
@@ -126,7 +127,8 @@ export { TagDismissibleAriaAttribute, TagDismissibleColor } from "./components/t
 export { TextAlign, TextColor, TextTag, TextWeight } from "./components/text/text-utils";
 export { TextFieldWrapperActionIcon, TextFieldWrapperState, TextFieldWrapperUnitPosition } from "./components/text-field-wrapper/text-field-wrapper-utils";
 export { TextListListType, TextListOrderType, TextListType } from "./components/text-list/text-list/text-list-utils";
-export { TextareaAutoComplete, TextareaState, TextareaUpdateEventDetail, TextareaWrap } from "./components/textarea/textarea-utils";
+export { TextareaAutoComplete, TextareaState, TextareaWrap } from "./components/textarea/textarea-utils";
+export { Event } from "@stencil/core";
 export { TextareaWrapperState } from "./components/textarea-wrapper/textarea-wrapper-utils";
 export { ToastMessage } from "./components/toast/toast/toast-manager";
 export { ToastState } from "./components/toast/toast/toast-utils";
@@ -2049,13 +2051,13 @@ export namespace Components {
          */
         "description"?: string;
         /**
-          * Indicates the text directionality of the element
-         */
-        "dirName"?: string;
-        /**
           * Marks the textarea as disabled.
          */
         "disabled"?: boolean;
+        /**
+          * The id of a form element the textarea should be associated with.
+         */
+        "form"?: string;
         /**
           * Show or hide label. For better accessibility it is recommended to show the label.
          */
@@ -2092,6 +2094,10 @@ export namespace Components {
           * Marks the textarea as required.
          */
         "required"?: boolean;
+        /**
+          * The amount of rows of the textarea.
+         */
+        "rows"?: number;
         /**
           * Show or hide max character count.
          */
@@ -3019,7 +3025,9 @@ declare global {
         new (): HTMLPTextListItemElement;
     };
     interface HTMLPTextareaElementEventMap {
-        "update": TextareaUpdateEventDetail;
+        "change": Event;
+        "blur": Event;
+        "input": Event;
     }
     interface HTMLPTextareaElement extends Components.PTextarea, HTMLStencilElement {
         addEventListener<K extends keyof HTMLPTextareaElementEventMap>(type: K, listener: (this: HTMLPTextareaElement, ev: PTextareaCustomEvent<HTMLPTextareaElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
@@ -5213,13 +5221,13 @@ declare namespace LocalJSX {
          */
         "description"?: string;
         /**
-          * Indicates the text directionality of the element
-         */
-        "dirName"?: string;
-        /**
           * Marks the textarea as disabled.
          */
         "disabled"?: boolean;
+        /**
+          * The id of a form element the textarea should be associated with.
+         */
+        "form"?: string;
         /**
           * Show or hide label. For better accessibility it is recommended to show the label.
          */
@@ -5245,9 +5253,17 @@ declare namespace LocalJSX {
          */
         "name"?: string;
         /**
-          * Emitted when textarea value is changed.
+          * Emitted when the textarea has lost focus.
          */
-        "onUpdate"?: (event: PTextareaCustomEvent<TextareaUpdateEventDetail>) => void;
+        "onBlur"?: (event: PTextareaCustomEvent<Event>) => void;
+        /**
+          * Emitted when the textarea loses focus after its value was changed.
+         */
+        "onChange"?: (event: PTextareaCustomEvent<Event>) => void;
+        /**
+          * Emitted when the value has been changed as a direct result of a user action.
+         */
+        "onInput"?: (event: PTextareaCustomEvent<Event>) => void;
         /**
           * The placeholder text.
          */
@@ -5260,6 +5276,10 @@ declare namespace LocalJSX {
           * Marks the textarea as required.
          */
         "required"?: boolean;
+        /**
+          * The amount of rows of the textarea.
+         */
+        "rows"?: number;
         /**
           * Show or hide max character count.
          */
