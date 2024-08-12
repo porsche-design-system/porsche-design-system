@@ -6,3 +6,7 @@ export type TextareaAutoComplete = (typeof AUTO_COMPLETE)[number];
 
 export const TEXTAREA_WRAPS = ['hard', 'soft', 'off'] as const;
 export type TextareaWrap = (typeof TEXTAREA_WRAPS)[number];
+
+export type TextareaChangeEventDetail = Event;
+export type TextareaBlurEventDetail = Event;
+export type TextareaInputEventDetail = InputEvent;

@@ -63,8 +63,7 @@ import { TagDismissibleAriaAttribute, TagDismissibleColor } from "./components/t
 import { TextAlign, TextColor, TextTag, TextWeight } from "./components/text/text-utils";
 import { TextFieldWrapperActionIcon, TextFieldWrapperState, TextFieldWrapperUnitPosition } from "./components/text-field-wrapper/text-field-wrapper-utils";
 import { TextListListType, TextListOrderType, TextListType } from "./components/text-list/text-list/text-list-utils";
-import { TextareaAutoComplete, TextareaState, TextareaWrap } from "./components/textarea/textarea-utils";
-import { Event } from "@stencil/core";
+import { TextareaAutoComplete, TextareaBlurEventDetail, TextareaChangeEventDetail, TextareaInputEventDetail, TextareaState, TextareaWrap } from "./components/textarea/textarea-utils";
 import { TextareaWrapperState } from "./components/textarea-wrapper/textarea-wrapper-utils";
 import { ToastMessage } from "./components/toast/toast/toast-manager";
 import { ToastState } from "./components/toast/toast/toast-utils";
@@ -127,8 +126,7 @@ export { TagDismissibleAriaAttribute, TagDismissibleColor } from "./components/t
 export { TextAlign, TextColor, TextTag, TextWeight } from "./components/text/text-utils";
 export { TextFieldWrapperActionIcon, TextFieldWrapperState, TextFieldWrapperUnitPosition } from "./components/text-field-wrapper/text-field-wrapper-utils";
 export { TextListListType, TextListOrderType, TextListType } from "./components/text-list/text-list/text-list-utils";
-export { TextareaAutoComplete, TextareaState, TextareaWrap } from "./components/textarea/textarea-utils";
-export { Event } from "@stencil/core";
+export { TextareaAutoComplete, TextareaBlurEventDetail, TextareaChangeEventDetail, TextareaInputEventDetail, TextareaState, TextareaWrap } from "./components/textarea/textarea-utils";
 export { TextareaWrapperState } from "./components/textarea-wrapper/textarea-wrapper-utils";
 export { ToastMessage } from "./components/toast/toast/toast-manager";
 export { ToastState } from "./components/toast/toast/toast-utils";
@@ -3025,9 +3023,9 @@ declare global {
         new (): HTMLPTextListItemElement;
     };
     interface HTMLPTextareaElementEventMap {
-        "change": Event;
-        "blur": Event;
-        "input": Event;
+        "change": TextareaChangeEventDetail;
+        "blur": TextareaBlurEventDetail;
+        "input": TextareaInputEventDetail;
     }
     interface HTMLPTextareaElement extends Components.PTextarea, HTMLStencilElement {
         addEventListener<K extends keyof HTMLPTextareaElementEventMap>(type: K, listener: (this: HTMLPTextareaElement, ev: PTextareaCustomEvent<HTMLPTextareaElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
@@ -5255,15 +5253,15 @@ declare namespace LocalJSX {
         /**
           * Emitted when the textarea has lost focus.
          */
-        "onBlur"?: (event: PTextareaCustomEvent<Event>) => void;
+        "onBlur"?: (event: PTextareaCustomEvent<TextareaBlurEventDetail>) => void;
         /**
           * Emitted when the textarea loses focus after its value was changed.
          */
-        "onChange"?: (event: PTextareaCustomEvent<Event>) => void;
+        "onChange"?: (event: PTextareaCustomEvent<TextareaChangeEventDetail>) => void;
         /**
           * Emitted when the value has been changed as a direct result of a user action.
          */
-        "onInput"?: (event: PTextareaCustomEvent<Event>) => void;
+        "onInput"?: (event: PTextareaCustomEvent<TextareaInputEventDetail>) => void;
         /**
           * The placeholder text.
          */

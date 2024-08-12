@@ -15,6 +15,9 @@ import {
   TEXTAREA_WRAPS,
   type TextareaState,
   type TextareaWrap,
+  type TextareaChangeEventDetail,
+  type TextareaBlurEventDetail,
+  type TextareaInputEventDetail,
 } from './textarea-utils';
 import { messageId, StateMessage } from '../common/state-message/state-message';
 import { descriptionId, Label } from '../common/label/label';
@@ -123,13 +126,13 @@ export class Textarea {
   @Prop({ mutable: true }) public value?: string = '';
 
   /** Emitted when the textarea loses focus after its value was changed. */
-  @Event({ bubbles: true }) public change: EventEmitter<Event>;
+  @Event({ bubbles: true }) public change: EventEmitter<TextareaChangeEventDetail>;
 
   /** Emitted when the textarea has lost focus. */
-  @Event({ bubbles: false }) public blur: EventEmitter<Event>;
+  @Event({ bubbles: false }) public blur: EventEmitter<TextareaBlurEventDetail>;
 
   /** Emitted when the value has been changed as a direct result of a user action. */
-  @Event({ bubbles: true }) public input: EventEmitter<Event>;
+  @Event({ bubbles: true }) public input: EventEmitter<TextareaInputEventDetail>;
 
   @AttachInternals() private internals: ElementInternals;
 
