@@ -31,8 +31,8 @@ import { type FlyoutMultilevelUpdateEventDetail } from '@porsche-design-system/c
           [aspectRatio]="{ base: '4:3', xs: '16:9', s: '1:1' }"
         >
           <img
-            srcset="https://porsche-design-system.github.io/porsche-design-system/porsche-963@2x.webp 2x"
-            src="https://porsche-design-system.github.io/porsche-design-system/porsche-963.webp"
+            srcset="https://porsche-design-system.github.io/porsche-design-system/assets/porsche-963@2x.webp 2x"
+            src="https://porsche-design-system.github.io/porsche-design-system/assets/porsche-963.webp"
             width="636"
             height="847"
             alt="Porsche 963"
