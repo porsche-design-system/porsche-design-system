@@ -56,6 +56,11 @@ checkout_gh_pages() {
   git clone --single-branch -b gh-pages "git@github.com:${GITHUB_REPOSITORY}.git" "/opt/porsche-design-system-gh-pages"
 }
 
+add_deployment_version() {
+  echo "task: [$(date)] \"add_deployment_version\""
+  echo "${GITHUB_SHA}" > "./packages/storefront/dist/version.md"
+}
+
 prepare_deployment() {
   echo "task: [$(date)] \"prepare_deployment\" (${1})"
   rm -rf "/opt/porsche-design-system-gh-pages/${1}"
@@ -63,7 +68,9 @@ prepare_deployment() {
 
 update_base_tag() {
   echo "task: [$(date)] \"update_base_tag\" (${1})"
-  sed -i -E -e 's$<base href="/">$<base href="/'${1}'/">$' "./packages/storefront/dist/index.html"
+  pushd "./packages/storefront/dist"
+    find . -type f -name "index.html" -exec sed -i -E -e 's$<base href="/">$<base href="/'${1}'/">$' {} +
+  popd
 }
 
 copy_storefront() {
@@ -94,6 +101,7 @@ source "${SCRIPT_DIR}/../shared/ensure-github-credentials.sh"
 if [[ "${GITHUB_REF_TYPE}" == "branch" ]]; then
   setup
   checkout_gh_pages
+  add_deployment_version
   if [[ "${GITHUB_REF_NAME}" == "main" ]]; then
     prepare_deployment "nightly"
     update_base_tag "nightly"
