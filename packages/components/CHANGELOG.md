@@ -14,6 +14,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ### [Unreleased]
 
+- Extend deprecation console warnings by reference to causing DOM element
+  ([#3439](https://github.com/porsche-design-system/porsche-design-system/pull/3439))
+
 ### [3.17.0] - 2024-08-01
 
 ### [3.17.0-rc.2] - 2024-08-01
