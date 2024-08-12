@@ -401,7 +401,7 @@
           <img
             alt="Some alt text"
             height="900"
-            src="https://porsche-design-system.github.io/porsche-design-system/placeholder_800x900.svg"
+            src="https://porsche-design-system.github.io/porsche-design-system/assets/placeholder_800x900.svg"
             width="800"
           />
         </PLinkTileProduct>
@@ -745,7 +745,7 @@
             <img
               alt="Some alt text"
               height="900"
-              src="https://porsche-design-system.github.io/porsche-design-system/placeholder_800x900.svg"
+              src="https://porsche-design-system.github.io/porsche-design-system/assets/placeholder_800x900.svg"
               width="800"
             />
           </PLinkTileProduct>
