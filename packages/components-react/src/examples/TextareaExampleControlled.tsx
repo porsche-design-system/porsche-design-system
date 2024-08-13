@@ -1,4 +1,4 @@
-import { FormEvent, useState } from 'react';
+import { useState } from 'react';
 import { PText, type PTextareaProps } from '@porsche-design-system/components-react';
 import { PTextarea } from '@porsche-design-system/components-react';
 import { TextareaInputEventDetail } from '@porsche-design-system/components';
@@ -6,7 +6,7 @@ import { TextareaInputEventDetail } from '@porsche-design-system/components';
 export const TextareaControlledExamplePage = (): JSX.Element => {
   const [value, setValue] = useState<PTextareaProps['value']>('');
 
-  const onInput = (e: FormEvent<TextareaInputEventDetail>) => {
+  const onInput = (e: CustomEvent<TextareaInputEventDetail>) => {
     setValue((e.target as HTMLTextAreaElement).value);
   };
 
@@ -14,7 +14,7 @@ export const TextareaControlledExamplePage = (): JSX.Element => {
 
   return (
     <>
-      <PTextarea name="name" value={value} onInput={onInput} />
+      <PTextarea name="some-name" value={value} onInput={(e) => onInput(e as CustomEvent<TextareaInputEventDetail>)} />
       <PText>{debugText}</PText>
     </>
   );
