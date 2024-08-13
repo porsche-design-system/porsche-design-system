@@ -20,7 +20,7 @@ export const test = base.extend<AxeFixture>({
   makeAxeBuilder: async ({ page }, use, testInfo) => {
     const makeAxeBuilder = () =>
       new AxeBuilder({ page })
-        .withTags(['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa', 'wcag22aa'])
+        .withTags(['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa', 'wcag22aa', 'best-practice'])
         .include('#app')
         .exclude(
           `:is(.skip-axe-core-test, ${deprecatedComponents.map((component) => {
