@@ -1,8 +1,22 @@
 import { type BreakpointCustomizable, type Theme } from '../../types';
 import { type FormState } from '../../utils/form/form-state';
 
-import { getTextareaStyles } from '../../styles/textarea-styles';
-import { getCss } from '../../utils';
+import { getCss, mergeDeep } from '../../utils';
+import { addImportantToEachRule, colorSchemeStyles, getHiddenTextJssStyle, hostHiddenStyles } from '../../styles';
+import {
+  formElementPaddingHorizontal,
+  getSlottedTextFieldTextareaSelectStyles,
+  getUnitCounterJssStyle,
+} from '../../styles/form-styles';
+import type { Styles } from 'jss';
+import { getFunctionalComponentLabelStyles } from '../common/label/label-styles';
+import { getFunctionalComponentStateMessageStyles } from '../common/state-message/state-message-styles';
+import {
+  borderWidthBase,
+  spacingStaticLarge,
+  spacingStaticXSmall,
+  textSmallStyle,
+} from '@porsche-design-system/styles';
 
 export const getComponentCss = (
   isDisabled: boolean,
@@ -11,5 +25,58 @@ export const getComponentCss = (
   hasCounter: boolean,
   theme: Theme
 ): string => {
-  return getCss(getTextareaStyles(isDisabled, hideLabel, state, hasCounter, theme));
+  return getCss({
+    '@global': {
+      ':host': {
+        display: 'block',
+        ...addImportantToEachRule({
+          ...colorSchemeStyles,
+          ...hostHiddenStyles,
+        }),
+      },
+      // ::slotted(textarea)
+      ...mergeDeep(
+        addImportantToEachRule(
+          getSlottedTextFieldTextareaSelectStyles('textarea', state, false, theme, {
+            gridArea: '1/1',
+            // TODO: move into getSlottedTextFieldTextareaSelectStyles()
+            font: textSmallStyle.font, // to override line-height
+            // TODO: move into getSlottedTextFieldTextareaSelectStyles()
+            padding: hasCounter
+              ? `12px ${formElementPaddingHorizontal} ${spacingStaticLarge}`
+              : `12px ${formElementPaddingHorizontal}`,
+          })
+        ),
+        {
+          // TODO: is it possible to move into getSlottedTextFieldTextareaSelectStyles()?
+          '::slotted(textarea)': {
+            height: 'auto', // removes !important from getBaseChildStyles
+            minHeight: '200px', // min-height should be overridable
+            resize: 'vertical', // overridable, too
+          },
+        } as Styles
+      ),
+    },
+    root: {
+      display: 'grid',
+      gap: spacingStaticXSmall,
+    },
+    wrapper: {
+      display: 'grid',
+    },
+    ...(hasCounter && {
+      counter: {
+        ...getUnitCounterJssStyle(isDisabled, theme),
+        gridArea: '1/1',
+        placeSelf: 'flex-end',
+        padding: `6px calc(${formElementPaddingHorizontal} + ${borderWidthBase})`,
+      },
+      // TODO: maybe we should extract it as functional component too
+      'sr-only': getHiddenTextJssStyle(),
+    }),
+    // .label / .required
+    ...getFunctionalComponentLabelStyles(isDisabled, hideLabel, theme),
+    // .message
+    ...getFunctionalComponentStateMessageStyles(theme, state),
+  });
 };

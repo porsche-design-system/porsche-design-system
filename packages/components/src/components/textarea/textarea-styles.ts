@@ -1,21 +1,31 @@
-import { type Styles } from 'jss';
+import type { Styles } from 'jss';
 import { type BreakpointCustomizable, type Theme } from '../../types';
-import { mergeDeep, getCss } from '../../utils';
-import { addImportantToEachRule, colorSchemeStyles, getHiddenTextJssStyle, hostHiddenStyles } from '../../styles';
+import { getCss } from '../../utils';
 import {
-  formElementPaddingHorizontal,
-  getTextFieldTextareaSelectStyles,
-  getUnitCounterJssStyle,
-} from '../../styles/form-styles';
+  addImportantToEachRule,
+  colorSchemeStyles,
+  getHiddenTextJssStyle,
+  getThemedColors,
+  getTransition,
+  hostHiddenStyles,
+  hoverMediaQuery,
+  prefersColorSchemeDarkMediaQuery,
+} from '../../styles';
+import { formElementPaddingHorizontal, getUnitCounterJssStyle } from '../../styles/form-styles';
 import { getFunctionalComponentStateMessageStyles } from '../common/state-message/state-message-styles';
 import { type FormState } from '../../utils/form/form-state';
 import {
+  borderRadiusSmall,
   borderWidthBase,
   spacingStaticLarge,
   spacingStaticXSmall,
   textSmallStyle,
 } from '@porsche-design-system/styles';
 import { getFunctionalComponentLabelStyles } from '../common/label/label-styles';
+import { getThemedFormStateColors } from '../../styles/form-state-color-styles';
+
+const cssVariableMinHeight = '--p-textarea-min-height';
+const cssVariableResize = '--p-textarea-resize';
 
 export const getComponentCss = (
   isDisabled: boolean,
@@ -24,6 +34,18 @@ export const getComponentCss = (
   hasCounter: boolean,
   theme: Theme
 ): string => {
+  const { primaryColor, contrastLowColor, contrastMediumColor, disabledColor } = getThemedColors(theme);
+  const {
+    primaryColor: primaryColorDark,
+    contrastLowColor: contrastLowColorDark,
+    contrastMediumColor: contrastMediumColorDark,
+    disabledColor: disabledColorDark,
+  } = getThemedColors('dark');
+  const { formStateColor, formStateHoverColor } = getThemedFormStateColors(theme, state);
+  const { formStateColor: formStateColorDark, formStateHoverColor: formStateHoverColorDark } = getThemedFormStateColors(
+    'dark',
+    state
+  );
   return getCss({
     '@global': {
       ':host': {
@@ -33,28 +55,71 @@ export const getComponentCss = (
           ...hostHiddenStyles,
         }),
       },
-      // textarea
-      ...mergeDeep(
-        addImportantToEachRule(
-          getTextFieldTextareaSelectStyles('textarea', state, false, theme, {
-            gridArea: '1/1',
-            // TODO: move into getSlottedTextFieldTextareaSelectStyles()
-            font: textSmallStyle.font, // to override line-height
-            // TODO: move into getSlottedTextFieldTextareaSelectStyles()
-            padding: hasCounter
-              ? `12px ${formElementPaddingHorizontal} ${spacingStaticLarge}`
-              : `12px ${formElementPaddingHorizontal}`,
-          })
-        ),
-        {
-          // TODO: is it possible to move into getSlottedTextFieldTextareaSelectStyles()?
-          textarea: {
-            height: 'auto', // removes !important from getBaseChildStyles
-            minHeight: '200px', // min-height should be overridable
-            resize: 'vertical', // overridable, too
+      textarea: {
+        minHeight: `var(${cssVariableMinHeight}, 200px)`,
+        resize: `var(${cssVariableResize}, vertical)`,
+        display: 'block',
+        width: '100%',
+        height: 'auto',
+        margin: 0,
+        outline: 0,
+        WebkitAppearance: 'none', // iOS safari
+        appearance: 'none',
+        boxSizing: 'border-box',
+        border: `${borderWidthBase} solid ${formStateColor || contrastMediumColor}`,
+        borderRadius: borderRadiusSmall,
+        background: 'transparent',
+        textIndent: 0,
+        color: primaryColor,
+        transition: `${getTransition('background-color')}, ${getTransition('border-color')}, ${getTransition('color')}`, // for smooth transitions between e.g. disabled states
+        ...prefersColorSchemeDarkMediaQuery(theme, {
+          borderColor: formStateColorDark || contrastMediumColorDark,
+          color: primaryColorDark,
+        }),
+        gridArea: '1/1',
+        // TODO: move into getSlottedTextFieldTextareaSelectStyles()
+        font: textSmallStyle.font, // to override line-height
+        // TODO: move into getSlottedTextFieldTextareaSelectStyles()
+        padding: hasCounter
+          ? `12px ${formElementPaddingHorizontal} ${spacingStaticLarge}`
+          : `12px ${formElementPaddingHorizontal}`,
+      },
+      ...(hoverMediaQuery({
+        // with the media query the selector has higher priority and overrides disabled styles
+        ['textarea:not(:disabled):not(:focus):not([readonly]):hover,label:hover~.wrapper textarea:not(:disabled):not(:focus):not([readonly])']:
+          {
+            borderColor: formStateHoverColor || primaryColor,
+            ...prefersColorSchemeDarkMediaQuery(theme, {
+              borderColor: formStateHoverColorDark || primaryColorDark,
+            }),
           },
-        } as Styles
-      ),
+      }) as Styles),
+      // TODO: getFocusJssStyle() can't be re-used because focus style differs for form elements
+      ['textarea:focus']: {
+        borderColor: primaryColor,
+        ...prefersColorSchemeDarkMediaQuery(theme, {
+          borderColor: primaryColorDark,
+        }),
+      },
+      ['textarea:disabled']: {
+        cursor: 'not-allowed',
+        color: disabledColor,
+        borderColor: disabledColor,
+        WebkitTextFillColor: disabledColor,
+        ...prefersColorSchemeDarkMediaQuery(theme, {
+          color: disabledColorDark,
+          borderColor: disabledColorDark,
+          WebkitTextFillColor: disabledColorDark,
+        }),
+      },
+      ['textarea[readonly]']: {
+        borderColor: contrastLowColor,
+        background: contrastLowColor,
+        ...prefersColorSchemeDarkMediaQuery(theme, {
+          borderColor: contrastLowColorDark,
+          background: contrastLowColorDark,
+        }),
+      },
     },
     root: {
       display: 'grid',

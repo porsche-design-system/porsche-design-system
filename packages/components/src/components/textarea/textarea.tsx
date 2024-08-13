@@ -172,9 +172,16 @@ export class Textarea {
 
   public render(): JSX.Element {
     validateProps(this, propTypes);
-    const disabled = false;
 
-    attachComponentCss(this.host, getComponentCss, disabled, this.hideLabel, this.state, this.hasCounter, this.theme);
+    attachComponentCss(
+      this.host,
+      getComponentCss,
+      this.disabled,
+      this.hideLabel,
+      this.state,
+      this.hasCounter,
+      this.theme
+    );
 
     const id = 'textarea';
     return (
@@ -185,7 +192,7 @@ export class Textarea {
           label={this.label}
           description={this.description}
           isRequired={this.required}
-          isDisabled={disabled}
+          isDisabled={this.disabled}
           formElement={this.textAreaElement}
         />
         <div class="wrapper">
