@@ -14,6 +14,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ### [Unreleased]
 
+#### Added
+
+- Extend deprecation console warnings by reference to causing DOM element
+  ([#3439](https://github.com/porsche-design-system/porsche-design-system/pull/3439))
+
 #### Fixed
 
 - `Button Tile`, `Link Tile`, `Link Tile Model Signature`: correct image position if custom css `position: absolute` is
