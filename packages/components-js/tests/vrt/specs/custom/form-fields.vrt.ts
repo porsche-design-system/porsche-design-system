@@ -35,6 +35,7 @@ const scenario = async (page: Page, theme: Theme): Promise<void> => {
     'p-multi-select': '<p-multi-select-option>Some value</p-multi-select-option>', // readonly is not supported
     'p-text-field-wrapper': '<input type="text" value="Some value" />',
     'p-pin-code': '', // readonly is not supported
+    'p-textarea': '',
     'p-textarea-wrapper': '<textarea>Some value</textarea>',
   };
 
