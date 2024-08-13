@@ -56,12 +56,12 @@ export const getComponentCss = (
           pointerEvents: 'auto',
         },
       },
-      '::slotted(:is(img,picture))': addImportantToEachRule({
+      '::slotted(:is(img,picture,video))': addImportantToEachRule({
         display: 'block',
         width: '100%',
         height: '100%',
       }),
-      '::slotted(img)': addImportantToEachRule({
+      '::slotted(:is(img,video))': addImportantToEachRule({
         objectFit: 'cover',
       }),
       a: {
