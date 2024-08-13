@@ -83,7 +83,9 @@ export default class Code extends Vue {
       content = content
         .replace(/(<input type="(?:checkbox|radio)")/g, '$1 checked')
         .replace(/(<input type="[^cr][a-z]+")/g, '$1 value="Value"')
-        .replace(/(<textarea.*?>)(<\/textarea>)/g, '$1Value$2');
+        .replace(/(<textarea.*?>)(<\/textarea>)/g, '$1Value$2')
+        .replace(/(<p-textarea\s.*?)/g, '$1 value="Value"');
+
     }
     return this.isWrappedInForm ? `<form onsubmit="return false">${content}</form>` : content;
   }
