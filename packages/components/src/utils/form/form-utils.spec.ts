@@ -1,5 +1,6 @@
 import * as formUtils from './form-utils';
 import { hasCounter, setAriaElementInnerHtml, setCounterInnerHtml, updateCounter } from './form-utils';
+jest.useFakeTimers();
 
 const getInputElement = (): HTMLInputElement => {
   const el = document.createElement('input');
@@ -100,5 +101,55 @@ describe('updateCounter()', () => {
     updateCounter(inputElement, ariaElement, counterElement, callback);
 
     expect(callback).toHaveBeenCalledTimes(1);
+  });
+});
+
+describe('debounce', () => {
+  let mockFn: jest.Mock;
+
+  beforeEach(() => {
+    mockFn = jest.fn();
+  });
+
+  it('should call the function after the specified delay', () => {
+    const debouncedFn = formUtils.debounce(mockFn, 800);
+
+    debouncedFn('test');
+    expect(mockFn).not.toHaveBeenCalled();
+
+    // Fast-forward time by 800ms
+    jest.advanceTimersByTime(800);
+
+    expect(mockFn).toHaveBeenCalledTimes(1);
+    expect(mockFn).toHaveBeenCalledWith('test');
+  });
+
+  it('should only call the function once if invoked multiple times rapidly', () => {
+    const debouncedFn = formUtils.debounce(mockFn, 800);
+
+    debouncedFn('first call');
+    debouncedFn('second call');
+    debouncedFn('third call');
+
+    // Fast-forward time by 800ms
+    jest.advanceTimersByTime(800);
+
+    expect(mockFn).toHaveBeenCalledTimes(1);
+    expect(mockFn).toHaveBeenCalledWith('third call');
+  });
+
+  it('should reset the timer if called again within the delay', () => {
+    const debouncedFn = formUtils.debounce(mockFn, 800);
+
+    debouncedFn('first call');
+    jest.advanceTimersByTime(500);
+    debouncedFn('second call');
+    jest.advanceTimersByTime(500);
+
+    expect(mockFn).not.toHaveBeenCalled();
+
+    jest.advanceTimersByTime(300);
+    expect(mockFn).toHaveBeenCalledTimes(1);
+    expect(mockFn).toHaveBeenCalledWith('second call');
   });
 });

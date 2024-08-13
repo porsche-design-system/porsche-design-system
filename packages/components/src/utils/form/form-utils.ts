@@ -1,5 +1,3 @@
-import { debounce } from 'throttle-debounce';
-
 export const hasCounter = (el: HTMLTextAreaElement | HTMLInputElement | undefined): boolean => el && el.maxLength >= 0;
 
 // https://javascript.info/currying-partials
@@ -36,8 +34,15 @@ export const setCounterInnerHtml = (el: HTMLTextAreaElement | HTMLInputElement, 
   counterElement.innerText = `${el.value.length}/${el.maxLength}`;
 };
 
+export const debounce = (fn: (...args: any) => void, ms = 800) => {
+  let timeoutId: ReturnType<typeof setTimeout>;
+  return function (this: any, ...args: any[]) {
+    clearTimeout(timeoutId);
+    timeoutId = setTimeout(() => fn.apply(this, args), ms);
+  };
+};
+
 export const setAriaElementInnerHtml = debounce(
-  800,
   (el: HTMLTextAreaElement | HTMLInputElement, ariaElement: HTMLSpanElement): void => {
     ariaElement.innerText = `You have ${el.maxLength - el.value.length} out of ${el.maxLength} characters left`;
   }
