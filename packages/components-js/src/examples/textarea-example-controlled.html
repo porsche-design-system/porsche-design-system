@@ -1,0 +1,17 @@
+<p-textarea name="name"></p-textarea>
+
+<p-text>Value: ''</p-text>
+
+<script>
+  const debugElement = document.querySelector('p');
+  const textarea = document.querySelector('p-textarea');
+
+  textarea.addEventListener('input', (e) => {
+    e.target.value = e.detail.value;
+    setDebugText(e.detail.value);
+  });
+
+  function setDebugText(value) {
+    debugElement.innerText = `Value: ${value}`;
+  }
+</script>
