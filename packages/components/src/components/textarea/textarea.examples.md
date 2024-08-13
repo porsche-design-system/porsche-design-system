@@ -11,13 +11,27 @@ whenever possible. When used without a label, it's best practice to provide a de
 While a `placeholder` is optional but recommended to be set whenever bits of example content or hints shall be shown to
 give the user visual cues to fill out the form.
 
+<Notification heading="Attention" heading-tag="h2" state="warning">
+When the <code>p-textarea</code> component is used within a form, it utilizes the
+<a href="https://developer.mozilla.org/en-US/docs/Web/API/ElementInternals">ElementInternals</a> API, which has limited
+browser support. For broader browser compatibility, consider using a
+<a href="components/textarea/examples#controlled">controlled</a> approach instead.
+</Notification>
+
 <TableOfContents></TableOfContents>
 
 ## Basic example
 
+Instead of relying on slotted content, the `p-textarea` component offers a `value` attribute and property that remain
+synchronized with user input.
+
 <Playground :markup="labelMarkup" :config="config"></Playground>
 
 ## Form
+
+The `p-textarea` component is a form-associated custom element that integrates seamlessly with forms. Leveraging the
+[ElementInternals](https://developer.mozilla.org/en-US/docs/Web/API/ElementInternals) API, it functions like a native
+textarea, ensuring compatibility with form behaviors. However, note that browser support for this API is limited.
 
 <Playground :frameworkMarkup="formExample" :config="{ ...config, withoutDemo: true }">
   <form @submit.prevent="onSubmit">
@@ -30,7 +44,8 @@ give the user visual cues to fill out the form.
 
 ## Controlled
 
-In the controlled approach, the `p-textarea` component is externally controlled.
+In the controlled approach, the `p-textarea` value is externally managed. While the internal value will be updated
+automatically, you can use the `input`, `change` or `blur` event to update the external state.
 
 <Playground :frameworkMarkup="controlledExample" :config="{ ...config, withoutDemo: true }">
 <p-textarea name="some-name" :theme="theme" @input="updateControlledExample"></p-textarea>
