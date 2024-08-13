@@ -19,6 +19,16 @@ give the user visual cues to fill out the form.
   <PlaygroundSelect v-model="hideLabel" :values="hideLabels" name="hideLabel"></PlaygroundSelect>
 </Playground>
 
+## Controlled
+
+In the controlled approach, the `p-textarea` component is externally controlled.
+
+<Playground :frameworkMarkup="controlledExample" :config="{ ...config, withoutDemo: true }">
+<p-textarea name="name" :theme="theme" @input="updateControlledExample"></p-textarea>
+<br>
+<p-text :theme="theme">{{ value }}</p-text>
+</Playground>
+
 ## With description text
 
 A description text can be added to explain the meaning of a specific form field. It's meant to be a textual enhancement
@@ -103,12 +113,15 @@ reader users the corresponding information:
 
 <script lang="ts">
 import Vue from 'vue';  
+import {getTextareaCodeSamples} from "shared/src";
 import Component from 'vue-class-component';
 import { FORM_STATES } from '../../utils'; 
 
 @Component
 export default class Code extends Vue {
   config = { themeable: true, spacing: 'block' };
+
+  controlledExample = getTextareaCodeSamples('example-controlled');
 
   hideLabel = false;
   hideLabels = [false, true, '{ base: true, l: false }'];
@@ -160,5 +173,11 @@ export default class Code extends Vue {
   <span slot="description" id="some-description-id">Some description with a <a href="https://designsystem.porsche.com">link</a>.</span>
   <span slot="message" id="some-message-id">Some error message with a <a href="https://designsystem.porsche.com">link</a>.</span>
 </p-textarea>`;
+
+  updateControlledExample(e) {
+  console.log(e);
+    this.value = `Value: ${e.target.value}`;
+  }
+
 }
 </script>
