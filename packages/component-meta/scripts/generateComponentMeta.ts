@@ -484,7 +484,7 @@ const generateComponentMeta = (): void => {
             eventTypeFileContent.match(new RegExp(`type ${eventTypeAlias || eventType} = ({[\\s\\S]+?});\\n`)) || [];
 
           // Standard lib types don't need to be resolved
-          if (['TransitionEvent'].includes(eventTypeAlias)) {
+          if (['TransitionEvent', 'InputEvent', 'Event'].includes(eventTypeAlias)) {
             typeDetail = eventTypeAlias;
           } else if (eventTypeDetail) {
             typeDetail = eventTypeDetail;
