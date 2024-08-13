@@ -15,6 +15,6 @@
 </script>
 
 <template>
-  <PTextarea :name="'name'" :value="value" @input="onInput" />
+  <PTextarea :name="'some-name'" :value="value" @input="onInput" />
   <PText>{{ debugText }}</PText>
 </template>
