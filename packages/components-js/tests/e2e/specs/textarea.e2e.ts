@@ -59,62 +59,93 @@ const initTextarea = (page: Page, opts?: InitOptions): Promise<void> => {
   );
 };
 
-test('should focus textarea when label is clicked', async ({ page }) => {
-  await initTextarea(page, { hasLabel: true });
-  const label = getLabel(page);
-  const textarea = getTextarea(page);
-
-  await addEventListener(textarea, 'focus');
-  expect((await getEventSummary(textarea, 'focus')).counter).toBe(0);
-
-  await label.click();
-  await waitForStencilLifecycle(page);
-  expect((await getEventSummary(textarea, 'focus')).counter).toBe(1);
-});
-
-skipInBrowsers(['webkit'], () => {
-  test('should focus textarea when counter text is clicked', async ({ page }) => {
-    await initTextarea(page, { maxLength: 160 });
-    const counter = getCounter(page);
+test.describe('Focus Management', () => {
+  test('should focus textarea when label is clicked', async ({ page }) => {
+    await initTextarea(page, { hasLabel: true });
+    const label = getLabel(page);
     const textarea = getTextarea(page);
 
     await addEventListener(textarea, 'focus');
     expect((await getEventSummary(textarea, 'focus')).counter).toBe(0);
 
-    await clickElementPosition(page, counter);
+    await label.click();
+    await waitForStencilLifecycle(page);
+    expect((await getEventSummary(textarea, 'focus')).counter).toBe(1);
+  });
+
+  skipInBrowsers(['webkit'], () => {
+    test('should focus textarea when counter text is clicked', async ({ page }) => {
+      await initTextarea(page, { maxLength: 160 });
+      const counter = getCounter(page);
+      const textarea = getTextarea(page);
+
+      await addEventListener(textarea, 'focus');
+      expect((await getEventSummary(textarea, 'focus')).counter).toBe(0);
+
+      await clickElementPosition(page, counter);
+      await waitForStencilLifecycle(page);
+      expect((await getEventSummary(textarea, 'focus')).counter).toBe(1);
+    });
+  });
+
+  test('should focus textarea programmatically', async ({ page }) => {
+    await initTextarea(page);
+    const textarea = getTextarea(page);
+
+    await addEventListener(textarea, 'focus');
+    expect((await getEventSummary(textarea, 'focus')).counter).toBe(0);
+
+    await textarea.focus();
     await waitForStencilLifecycle(page);
     expect((await getEventSummary(textarea, 'focus')).counter).toBe(1);
   });
 });
 
-test('should display correct counter when typing', async ({ page }) => {
-  await initTextarea(page, { maxLength: 160 });
-  const counter = getCounter(page);
-  const textarea = getTextarea(page);
+test.describe('Counter', () => {
+  test('should display correct counter when typing', async ({ page }) => {
+    await initTextarea(page, { maxLength: 160 });
+    const counter = getCounter(page);
+    const textarea = getTextarea(page);
 
-  expect(await getElementInnerText(counter)).toBe('0/160');
-  await textarea.fill('h');
-  expect(await getElementInnerText(counter)).toBe('1/160');
-  await textarea.fill('hello');
-  expect(await getElementInnerText(counter)).toBe('5/160');
-  await textarea.press('Backspace');
-  expect(await getElementInnerText(counter)).toBe('4/160');
-  await textarea.press('Backspace');
-  await textarea.press('Backspace');
-  await textarea.press('Backspace');
-  await textarea.press('Backspace');
-  expect(await getElementInnerText(counter)).toBe('0/160');
-});
+    expect(await getElementInnerText(counter)).toBe('0/160');
+    await textarea.fill('h');
+    await waitForStencilLifecycle(page);
+    expect(await getElementInnerText(counter)).toBe('1/160');
+    await textarea.fill('hello');
+    await waitForStencilLifecycle(page);
+    expect(await getElementInnerText(counter)).toBe('5/160');
+    await textarea.press('Backspace');
+    await waitForStencilLifecycle(page);
+    expect(await getElementInnerText(counter)).toBe('4/160');
+    await textarea.press('Backspace');
+    await textarea.press('Backspace');
+    await textarea.press('Backspace');
+    await textarea.press('Backspace');
+    await waitForStencilLifecycle(page);
+    expect(await getElementInnerText(counter)).toBe('0/160');
+  });
 
-test('should render characterCountElement when maxlength is set', async ({ page }) => {
-  await initTextarea(page);
-  const textarea = getTextarea(page);
+  test('should display correct counter when value is set programmatically', async ({ page }) => {
+    await initTextarea(page, { maxLength: 160 });
+    const counter = getCounter(page);
+    const textarea = getTextarea(page);
 
-  await expect(page.locator('p-textarea label .sr-only')).toHaveCount(0);
+    expect(await getElementInnerText(counter)).toBe('0/160');
+    await setProperty(textarea, 'value', 'hello');
+    await waitForStencilLifecycle(page);
+    await expect(counter).toHaveText('5/160');
+  });
 
-  await setAttribute(textarea, 'maxlength', '20');
+  test('should render characterCountElement when maxlength is set', async ({ page }) => {
+    await initTextarea(page);
+    const textarea = getTextarea(page);
 
-  expect(page.locator('p-textarea label .sr-only')).toBeDefined();
+    await expect(page.locator('p-textarea label .sr-only')).toHaveCount(0);
+
+    await setAttribute(textarea, 'maxlength', '20');
+
+    expect(page.locator('p-textarea label .sr-only')).toBeDefined();
+  });
 });
 
 test.describe('hover state', () => {
