@@ -148,8 +148,17 @@ export class Textarea {
     this.internals.setFormValue(newValue);
   }
 
+  @Watch('maxLength')
+  public onMaxLengthChange(): void {
+    this.updateCounter();
+  }
+
   @Watch('showCounter')
   public onShowCounterChange(): void {
+    this.updateCounter();
+  }
+
+  public updateCounter(): void {
     this.updateCounterVisibility();
     if (this.hasCounter) {
       this.setCounterAriaText();
@@ -204,7 +213,6 @@ export class Textarea {
           description={this.description}
           isRequired={this.required}
           isDisabled={this.disabled}
-          formElement={this.textAreaElement}
         />
         <div class="wrapper">
           <textarea
@@ -251,10 +259,14 @@ export class Textarea {
   };
 
   private onBlur = (e: Event): void => {
+    e.stopPropagation();
+    e.stopImmediatePropagation();
     this.blur.emit(e);
   };
 
   private onInput = (e: InputEvent): void => {
+    e.stopPropagation();
+    e.stopImmediatePropagation();
     this.input.emit(e);
     const target = e.target as HTMLTextAreaElement;
     this.value = target.value;
