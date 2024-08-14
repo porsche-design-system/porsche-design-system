@@ -7924,37 +7924,33 @@ exports[`should match snapshot 1`] = `
   },
   "p-textarea": {
     "eventsMeta": {
-      "update": {
-        "description": "Emitted when textarea value is changed.",
-        "type": "TextareaUpdateEventDetail",
-        "typeDetail": "{ name: string; value: string }",
+      "blur": {
+        "description": "Emitted when the textarea has lost focus.",
+        "type": "TextareaBlurEventDetail",
+        "typeDetail": "Event",
+      },
+      "change": {
+        "description": "Emitted when the textarea loses focus after its value was changed.",
+        "type": "TextareaChangeEventDetail",
+        "typeDetail": "Event",
+      },
+      "input": {
+        "description": "Emitted when the value has been changed as a direct result of a user action.",
+        "type": "TextareaInputEventDetail",
+        "typeDetail": "InputEvent",
       },
     },
     "hasAriaProp": false,
     "hasEvent": true,
-    "hasObserveAttributes": true,
+    "hasObserveAttributes": false,
     "hasObserveChildren": false,
     "hasSlot": true,
     "isChunked": true,
-    "isDelegatingFocus": false,
+    "isDelegatingFocus": true,
     "isInternal": false,
     "isThemeable": true,
     "nestedComponents": [
       "p-icon",
-    ],
-    "observedAttributes": [
-      "disabled",
-      "readonly",
-      "required",
-      "maxlength",
-      "minlength",
-      "placeholder",
-      "readonly",
-      "autofocus",
-      "spellcheck",
-      "autocomplete",
-      "wrap",
-      "dirname",
     ],
     "propsMeta": {
       "autoComplete": {
@@ -7970,7 +7966,7 @@ exports[`should match snapshot 1`] = `
       "autoFocus": {
         "allowedValues": "boolean",
         "defaultValue": false,
-        "description": "Enables automatic focus when the component is rendered",
+        "description": "Enables automatic focus when the component is rendered.",
         "type": "boolean",
       },
       "description": {
@@ -7979,17 +7975,17 @@ exports[`should match snapshot 1`] = `
         "description": "The description text.",
         "type": "string",
       },
-      "dirName": {
-        "allowedValues": "string",
-        "defaultValue": null,
-        "description": "Indicates the text directionality of the element",
-        "type": "string",
-      },
       "disabled": {
         "allowedValues": "boolean",
         "defaultValue": false,
         "description": "Marks the textarea as disabled.",
         "type": "boolean",
+      },
+      "form": {
+        "allowedValues": "string",
+        "defaultValue": null,
+        "description": "The id of a form element the textarea should be associated with.",
+        "type": "string",
       },
       "hideLabel": {
         "allowedValues": "boolean",
@@ -8046,6 +8042,12 @@ exports[`should match snapshot 1`] = `
         "defaultValue": false,
         "description": "Marks the textarea as required.",
         "type": "boolean",
+      },
+      "rows": {
+        "allowedValues": "number",
+        "defaultValue": null,
+        "description": "The amount of rows of the textarea.",
+        "type": "number",
       },
       "showCounter": {
         "allowedValues": "boolean",
