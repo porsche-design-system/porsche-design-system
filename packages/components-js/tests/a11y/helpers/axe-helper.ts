@@ -26,7 +26,9 @@ export const test = base.extend<AxeFixture>({
           `:is(.skip-axe-core-test, ${deprecatedComponents.map((component) => {
             return component + ',my-prefix-' + component;
           })})`
-        );
+        )
+        // disable some "best-practice" rules referring to general page compliance which is not needed because only components itself are tested
+        .disableRules(['landmark-one-main', 'page-has-heading-one', 'landmark-unique', 'heading-order']);
 
     await use(makeAxeBuilder);
   },
