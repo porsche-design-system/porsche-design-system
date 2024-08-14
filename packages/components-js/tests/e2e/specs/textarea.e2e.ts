@@ -1,42 +1,45 @@
-import { expect, type Locator, test, type Page } from '@playwright/test';
+import { expect, Locator, type Page, test } from '@playwright/test';
 import {
   addEventListener,
   clickElementPosition,
-  getElementInnerText,
-  getElementStyle,
   getEventSummary,
+  getHTMLAttributes,
   getLifecycleStatus,
   hoverElementPosition,
-  setAttribute,
   setContentWithDesignSystem,
   setProperty,
   skipInBrowsers,
+  sleep,
   waitForStencilLifecycle,
 } from '../helpers';
-import type { FormState } from '@porsche-design-system/components';
+import { Components } from '@porsche-design-system/components';
 
 const getHost = (page: Page) => page.locator('p-textarea');
 const getTextarea = (page: Page) => page.locator('p-textarea textarea');
 const getLabel = (page: Page) => page.locator('p-textarea label');
 const getCounter = (page: Page) => page.locator('p-textarea .counter');
+const getCounterAria = (page: Page) => page.locator('p-textarea span.sr-only[aria-live="polite"]');
+const getForm = (page: Page) => page.locator('form');
 
 type InitOptions = {
+  props?: Components.PTextarea;
   useSlottedLabel?: boolean;
   useSlottedDescription?: boolean;
   useSlottedMessage?: boolean;
-  state?: FormState;
-  hasLabel?: boolean;
-  maxLength?: number;
+  isWithinForm?: boolean;
+  markupBefore?: string;
+  markupAfter?: string;
 };
 
 const initTextarea = (page: Page, opts?: InitOptions): Promise<void> => {
   const {
+    props = {},
     useSlottedLabel = false,
     useSlottedDescription = false,
     useSlottedMessage = false,
-    state = 'none',
-    hasLabel = false,
-    maxLength,
+    isWithinForm = false,
+    markupBefore = '',
+    markupAfter = '',
   } = opts || {};
 
   const link = '<a href="#" onclick="return false;">link</a>';
@@ -44,24 +47,169 @@ const initTextarea = (page: Page, opts?: InitOptions): Promise<void> => {
   const slottedDescription = useSlottedDescription ? `<span slot="description">Description with a ${link}</span>` : '';
   const slottedMessage = useSlottedMessage ? `<span slot="message">Message with a ${link}</span>` : '';
 
-  const attrs = [`state="${state}"`, hasLabel && 'label="Some label"', maxLength && ` max-length="${maxLength}"`]
-    .filter((x) => x)
-    .join(' ');
-
-  return setContentWithDesignSystem(
-    page,
-    `
-    <p-textarea ${attrs}>
+  const markup = `${markupBefore}<p-textarea ${getHTMLAttributes(props)}>
       ${slottedLabel}
       ${slottedDescription}
       ${slottedMessage}
-    </p-textarea>`
-  );
+    </p-textarea>${markupAfter}`;
+
+  return setContentWithDesignSystem(page, isWithinForm ? `<form onsubmit="return false;">${markup}</form>` : markup);
 };
 
-test.describe('Focus Management', () => {
+const getFormDataValue = async (form: Locator, name: string) => {
+  return form.evaluate((el: HTMLFormElement, name: string) => {
+    return new FormData(el).get(name);
+  }, name);
+};
+
+test.describe('value', () => {
+  test('should have value as slotted content when set initially', async ({ page }) => {
+    const testValue = 'hello \n\n 123\n';
+    await initTextarea(page, { props: { name: 'Some name', value: testValue } });
+    const host = await getHost(page);
+    const textarea = getTextarea(page);
+
+    await expect(host).toHaveJSProperty('value', testValue);
+    await expect(textarea).toHaveJSProperty('value', testValue);
+    await expect(textarea).toHaveValue(testValue);
+  });
+
+  test('should sync value with slotted content when typing', async ({ page }) => {
+    await initTextarea(page);
+    const host = await getHost(page);
+    const textarea = getTextarea(page);
+    await expect(host).toHaveJSProperty('value', '');
+    await expect(textarea).toHaveJSProperty('value', '');
+
+    const testInput = 'hello';
+
+    await textarea.fill(testInput);
+    await waitForStencilLifecycle(page);
+
+    await expect(host).toHaveJSProperty('value', testInput);
+    await expect(textarea).toHaveJSProperty('value', testInput);
+  });
+
+  test('should sync slotted content with value when changed programmatically', async ({ page }) => {
+    await initTextarea(page);
+    const host = await getHost(page);
+    const textarea = getTextarea(page);
+    await expect(host).toHaveJSProperty('value', '');
+    await expect(textarea).toHaveJSProperty('value', '');
+
+    const testInput = 'hello';
+
+    await setProperty(host, 'value', testInput);
+    await waitForStencilLifecycle(page);
+
+    await expect(host).toHaveJSProperty('value', testInput);
+    await expect(textarea).toHaveJSProperty('value', testInput);
+    await expect(textarea).toHaveValue(testInput);
+  });
+});
+
+test.describe('counter', () => {
+  test('should display correct counter initially', async ({ page }) => {
+    await initTextarea(page, { props: { name: 'Some name', maxLength: 160, value: 'hallo' } });
+    const counter = getCounter(page);
+    const counterAria = getCounterAria(page);
+
+    await expect(counter).toHaveText('5/160');
+    await expect(counterAria).toHaveText('You have 155 out of 160 characters left');
+  });
+
+  test('should display correct counter when typing', async ({ page }) => {
+    await initTextarea(page, { props: { name: 'Some name', maxLength: 160 } });
+    const counter = getCounter(page);
+    const host = getTextarea(page);
+
+    await expect(counter).toHaveText('0/160');
+    await host.fill('h');
+    await expect(counter).toHaveText('1/160');
+    await host.fill('hello');
+    await expect(counter).toHaveText('5/160');
+    await host.press('Backspace');
+    await expect(counter).toHaveText('4/160');
+    await host.press('Backspace');
+    await host.press('Backspace');
+    await host.press('Backspace');
+    await host.press('Backspace');
+    await expect(counter).toHaveText('0/160');
+  });
+
+  test('should display correct counter when value is set programmatically', async ({ page }) => {
+    await initTextarea(page, { props: { name: 'Some name', maxLength: 160 } });
+    const counter = getCounter(page);
+    const host = getHost(page);
+
+    await expect(counter).toHaveText('0/160');
+    await setProperty(host, 'value', 'hello');
+    await expect(counter).toHaveText('5/160');
+  });
+
+  test('should not render counter when showCounter is set to false', async ({ page }) => {
+    await initTextarea(page, { props: { name: 'Some name', value: 'hello', maxLength: 160, showCounter: false } });
+    const host = getHost(page);
+
+    await expect(await getCounter(page)).toHaveCount(0);
+
+    await setProperty(host, 'showCounter', true);
+
+    const counter = await getCounter(page);
+    const counterAria = await getCounterAria(page);
+    await expect(counter).toHaveCount(1);
+    await expect(counter).toHaveText('5/160');
+    await expect(counterAria).toHaveText('You have 155 out of 160 characters left');
+  });
+
+  test('should render aria-live for counter correctly when typing', async ({ page }) => {
+    await initTextarea(page, { props: { name: 'Some name', maxLength: 160 } });
+    const counterAria = getCounterAria(page);
+    const host = getTextarea(page);
+    await expect(counterAria).toHaveText('You have 160 out of 160 characters left');
+
+    await host.fill('hello');
+    await sleep(800); // Aria text is debounced 800ms
+    await expect(counterAria).toHaveText('You have 155 out of 160 characters left');
+  });
+
+  test('should render aria-live for counter correctly when value is set programmatically', async ({ page }) => {
+    await initTextarea(page, { props: { name: 'Some name', maxLength: 160 } });
+    const counterAria = getCounterAria(page);
+    const host = getHost(page);
+    await expect(counterAria).toHaveText('You have 160 out of 160 characters left');
+
+    await setProperty(host, 'value', 'hello');
+    await waitForStencilLifecycle(page);
+    await sleep(800); // Aria text is debounced 800ms
+    await expect(counterAria).toHaveText('You have 155 out of 160 characters left');
+  });
+});
+
+test.describe('form', () => {
+  test('should include name & value in FormData submit', async ({ page }) => {
+    const name = 'name';
+    const value = 'Hallo';
+    await initTextarea(page, {
+      props: { name, value },
+      isWithinForm: true,
+      markupAfter: '<button type="submit">Submit</button>',
+    });
+    const form = await getForm(page);
+
+    await addEventListener(form, 'submit');
+    expect((await getEventSummary(form, 'submit')).counter).toBe(0);
+
+    await page.locator('button[type="submit"]').click();
+
+    expect((await getEventSummary(form, 'submit')).counter).toBe(1);
+    expect(await getFormDataValue(form, name)).toBe(value);
+  });
+});
+
+test.describe('focus state', () => {
   test('should focus textarea when label is clicked', async ({ page }) => {
-    await initTextarea(page, { hasLabel: true });
+    await initTextarea(page, { props: { name: 'Some name', label: 'Some label' } });
     const label = getLabel(page);
     const textarea = getTextarea(page);
 
@@ -75,7 +223,7 @@ test.describe('Focus Management', () => {
 
   skipInBrowsers(['webkit'], () => {
     test('should focus textarea when counter text is clicked', async ({ page }) => {
-      await initTextarea(page, { maxLength: 160 });
+      await initTextarea(page, { props: { name: 'Some name', maxLength: 160 } });
       const counter = getCounter(page);
       const textarea = getTextarea(page);
 
@@ -88,118 +236,67 @@ test.describe('Focus Management', () => {
     });
   });
 
-  test('should focus textarea programmatically', async ({ page }) => {
+  test('should focus textarea when host is focused', async ({ page }) => {
     await initTextarea(page);
+    const host = getHost(page);
     const textarea = getTextarea(page);
 
     await addEventListener(textarea, 'focus');
     expect((await getEventSummary(textarea, 'focus')).counter).toBe(0);
 
-    await textarea.focus();
+    await host.focus();
     await waitForStencilLifecycle(page);
     expect((await getEventSummary(textarea, 'focus')).counter).toBe(1);
   });
 });
 
-test.describe('Counter', () => {
-  test('should display correct counter when typing', async ({ page }) => {
-    await initTextarea(page, { maxLength: 160 });
-    const counter = getCounter(page);
-    const textarea = getTextarea(page);
-
-    expect(await getElementInnerText(counter)).toBe('0/160');
-    await textarea.fill('h');
-    await waitForStencilLifecycle(page);
-    expect(await getElementInnerText(counter)).toBe('1/160');
-    await textarea.fill('hello');
-    await waitForStencilLifecycle(page);
-    expect(await getElementInnerText(counter)).toBe('5/160');
-    await textarea.press('Backspace');
-    await waitForStencilLifecycle(page);
-    expect(await getElementInnerText(counter)).toBe('4/160');
-    await textarea.press('Backspace');
-    await textarea.press('Backspace');
-    await textarea.press('Backspace');
-    await textarea.press('Backspace');
-    await waitForStencilLifecycle(page);
-    expect(await getElementInnerText(counter)).toBe('0/160');
-  });
-
-  test('should display correct counter when value is set programmatically', async ({ page }) => {
-    await initTextarea(page, { maxLength: 160 });
-    const counter = getCounter(page);
-    const textarea = getTextarea(page);
-
-    expect(await getElementInnerText(counter)).toBe('0/160');
-    await setProperty(textarea, 'value', 'hello');
-    await waitForStencilLifecycle(page);
-    await expect(counter).toHaveText('5/160');
-  });
-
-  test('should render characterCountElement when maxlength is set', async ({ page }) => {
-    await initTextarea(page);
-    const textarea = getTextarea(page);
-
-    await expect(page.locator('p-textarea label .sr-only')).toHaveCount(0);
-
-    await setAttribute(textarea, 'maxlength', '20');
-
-    expect(page.locator('p-textarea label .sr-only')).toBeDefined();
-  });
-});
-
 test.describe('hover state', () => {
-  skipInBrowsers(['firefox', 'webkit']);
-  const getBorderColor = (element: Locator) => getElementStyle(element, 'borderColor');
   const defaultBorderColor = 'rgb(107, 109, 112)';
   const hoverBorderColor = 'rgb(1, 2, 5)';
 
-  test('should show hover state on input when label is hovered', async ({ page }) => {
-    await initTextarea(page, { hasLabel: true });
+  test('should show hover state on textarea when label is hovered', async ({ page }) => {
+    await initTextarea(page, { props: { name: 'Some name', label: 'Some label' } });
     await page.mouse.move(0, 300); // avoid potential hover initially
     const label = getLabel(page);
     const textarea = getTextarea(page);
 
-    const initialStyle = await getBorderColor(textarea);
-    expect(initialStyle).toBe(defaultBorderColor);
+    await expect(textarea).toHaveCSS('border-color', defaultBorderColor);
     await textarea.hover();
-    const hoverStyle = await getBorderColor(textarea);
-    expect(hoverStyle).toBe(hoverBorderColor);
+
+    await expect(textarea).toHaveCSS('border-color', hoverBorderColor);
 
     await page.mouse.move(0, 300); // undo hover
-    expect(await getBorderColor(textarea)).toBe(defaultBorderColor);
+    await expect(textarea).toHaveCSS('border-color', defaultBorderColor);
 
     await label.hover();
-    expect(await getBorderColor(textarea)).toBe(hoverBorderColor);
+    await expect(textarea).toHaveCSS('border-color', hoverBorderColor);
   });
 
   test('should show hover state on textarea when counter is hovered', async ({ page }) => {
-    await initTextarea(page, { maxLength: 160 });
+    await initTextarea(page, { props: { name: 'Some name', maxLength: 160 } });
     await page.mouse.move(0, 300); // avoid potential hover initially
     const counter = getCounter(page);
     const textarea = getTextarea(page);
 
-    const initialStyle = await getBorderColor(textarea);
-    expect(initialStyle).toBe(defaultBorderColor);
+    await expect(textarea).toHaveCSS('border-color', defaultBorderColor);
     await textarea.hover();
-    const hoverStyle = await getBorderColor(textarea);
-    expect(hoverStyle).toBe(hoverBorderColor);
+    await expect(textarea).toHaveCSS('border-color', hoverBorderColor);
 
     await page.mouse.move(0, 300); // undo hover
-    expect(await getBorderColor(textarea)).toBe(defaultBorderColor);
+    await expect(textarea).toHaveCSS('border-color', defaultBorderColor);
 
     await hoverElementPosition(page, counter);
-    expect(await getBorderColor(textarea)).toBe(hoverBorderColor);
+    await expect(textarea).toHaveCSS('border-color', hoverBorderColor);
   });
 });
 
 test.describe('lifecycle', () => {
   test('should work without unnecessary round trips on init', async ({ page }) => {
     await initTextarea(page, {
+      props: { name: 'Some name', state: 'error' },
       useSlottedLabel: true,
       useSlottedMessage: true,
       useSlottedDescription: true,
-      state: 'error',
     });
     const status = await getLifecycleStatus(page);
 
@@ -212,10 +309,10 @@ test.describe('lifecycle', () => {
 
   test('should work without unnecessary round trips after state change', async ({ page }) => {
     await initTextarea(page, {
+      props: { name: 'Some name', state: 'error' },
       useSlottedLabel: true,
       useSlottedMessage: true,
       useSlottedDescription: true,
-      state: 'error',
     });
     const host = getHost(page);
     await setProperty(host, 'state', 'none');
@@ -226,5 +323,21 @@ test.describe('lifecycle', () => {
 
     expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(2);
     expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(1);
+  });
+
+  test('should work without unnecessary round trips after value change', async ({ page }) => {
+    await initTextarea(page);
+    const host = getHost(page);
+    const status = await getLifecycleStatus(page);
+
+    expect(status.componentDidLoad['p-textarea'], 'componentDidLoad: p-textarea').toBe(1);
+    expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(1);
+
+    await setProperty(host, 'value', 'test');
+    await waitForStencilLifecycle(page);
+    const statusAfterChange = await getLifecycleStatus(page);
+
+    expect(statusAfterChange.componentDidUpdate['p-textarea'], 'componentDidUpdate: p-textarea').toBe(1);
+    expect(statusAfterChange.componentDidUpdate.all, 'componentDidUpdate: all').toBe(1);
   });
 });
