@@ -40,7 +40,7 @@ resetting the form. Native form validation features are not yet supported.
     <p-textarea name="some-name" label="Some Label" :theme="theme" />
     <br>
     <PlaygroundButton name="Submit" type="submit"></PlaygroundButton>
-    <p-text :theme="theme" style="display: inline-block;">{{ selectedValuesForm }}</p-text>
+    <p-text :theme="theme" style="display: inline-block;">{{ selectedValueForm }}</p-text>
   </form>
 </Playground>
 
@@ -52,7 +52,7 @@ automatically, you can use the `input`, `change` or `blur` event to update the e
 <Playground :frameworkMarkup="controlledExample" :config="{ ...config, withoutDemo: true }">
 <p-textarea name="some-name" :theme="theme" @input="updateControlledExample"></p-textarea>
 <br>
-<p-text :theme="theme">{{ value }}</p-text>
+<p-text :theme="theme">{{ selectedValueControlled }}</p-text>
 </Playground>
 
 ## With description text
@@ -133,6 +133,10 @@ import { FORM_STATES } from '../../utils';
 export default class Code extends Vue {
   config = { themeable: true, spacing: 'block' };
 
+  get theme(): Theme {
+    return this.$store.getters.playgroundTheme;
+  }
+
   formExample = getTextareaCodeSamples('default');
   controlledExample = getTextareaCodeSamples('example-controlled');
 
@@ -160,9 +164,19 @@ export default class Code extends Vue {
   <span slot="message" id="some-message-id">Some error message with a <a href="https://designsystem.porsche.com">link</a>.</span>
 </p-textarea>`;
 
+  selectedValueForm = 'Last submitted data: ';
+  onSubmit(e) {
+    const formData = new FormData(e.target);
+    this.selectedValueForm = `Last submitted data: ${
+      Array.from(formData.entries(), ([_, value]) => value)
+        .join('')
+    }`;
+  }
+
+  selectedValueControlled = 'Selected value: ';
   updateControlledExample(e) {
   console.log(e);
-    this.value = `Value: ${e.target.value}`;
+    this.selectedValueControlled = `Selected value: ${e.target.value}`;
   }
 
 }
