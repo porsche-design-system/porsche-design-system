@@ -304,41 +304,44 @@ test.describe('focus state', () => {
 test.describe('Event', () => {
   test('should trigger a change event when textarea value is modified and focus is lost', async ({ page }) => {
     await initTextarea(page);
+    const host = getHost(page);
     const textarea = getTextarea(page);
 
-    await addEventListener(textarea, 'change');
-    expect((await getEventSummary(textarea, 'change')).counter).toBe(0);
+    await addEventListener(host, 'change');
+    expect((await getEventSummary(host, 'change')).counter).toBe(0);
 
     await textarea.fill('New value');
     await textarea.press('Tab');
     await waitForStencilLifecycle(page);
 
-    expect((await getEventSummary(textarea, 'change')).counter).toBe(1);
+    expect((await getEventSummary(host, 'change')).counter).toBe(1);
   });
-  test.skip('should trigger a blur event when the textarea loses focus', async ({ page }) => {
+  test('should trigger a blur event when the textarea loses focus', async ({ page }) => {
     await initTextarea(page);
     const textarea = getTextarea(page);
+    const host = getHost(page);
 
-    await addEventListener(textarea, 'blur');
-    expect((await getEventSummary(textarea, 'blur')).counter).toBe(0);
+    await addEventListener(host, 'blur');
+    expect((await getEventSummary(host, 'blur')).counter).toBe(0);
 
-    await textarea.focus();
-    await page.click('body');
+    await textarea.click();
+    await textarea.press('Tab');
     await waitForStencilLifecycle(page);
 
-    expect((await getEventSummary(textarea, 'blur')).counter).toBe(1);
+    expect((await getEventSummary(host, 'blur')).counter).toBe(1);
   });
   test('should trigger an input event each time the textarea value is changed', async ({ page }) => {
     await initTextarea(page);
     const textarea = getTextarea(page);
+    const host = getHost(page);
 
-    await addEventListener(textarea, 'input');
-    expect((await getEventSummary(textarea, 'input')).counter).toBe(0);
+    await addEventListener(host, 'input');
+    expect((await getEventSummary(host, 'input')).counter).toBe(0);
 
-    await textarea.fill('Typing text...');
+    await textarea.fill('x');
     await waitForStencilLifecycle(page);
 
-    expect((await getEventSummary(textarea, 'input')).counter).toBe(1);
+    expect((await getEventSummary(host, 'input')).counter).toBe(1);
   });
 });
 
