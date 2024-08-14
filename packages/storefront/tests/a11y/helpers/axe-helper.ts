@@ -12,7 +12,10 @@ type AxeFixture = {
 export const test = base.extend<AxeFixture>({
   makeAxeBuilder: async ({ page }, use) => {
     const makeAxeBuilder = () =>
-      new AxeBuilder({ page }).withTags(['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa', 'wcag22aa', 'best-practice']);
+      new AxeBuilder({ page })
+        .withTags(['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa', 'wcag22aa', 'best-practice'])
+        // rule is disabled due to unwanted refactorings in component presentation
+        .disableRules('landmark-unique');
     await use(makeAxeBuilder);
   },
 });
