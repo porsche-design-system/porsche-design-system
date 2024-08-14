@@ -50,7 +50,7 @@ In the controlled approach, the `p-textarea` value is externally managed. While 
 automatically, you can use the `input`, `change` or `blur` event to update the external state.
 
 <Playground :frameworkMarkup="controlledExample" :config="{ ...config, withoutDemo: true }">
-<p-textarea name="some-name" :theme="theme" @input="updateControlledExample"></p-textarea>
+<p-textarea name="some-name" label="Some Label" :theme="theme" @input="updateControlledExample"></p-textarea>
 <br>
 <p-text :theme="theme">{{ selectedValueControlled }}</p-text>
 </Playground>
