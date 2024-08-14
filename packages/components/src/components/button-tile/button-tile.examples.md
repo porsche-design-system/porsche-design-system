@@ -10,7 +10,7 @@ The `p-button-tile` is an interactive component that displays a provided image t
 
 ## Basic
 
-An `img` or `picture` tag has to be provided as default slot.
+An `<img/>`, `<picture/>` or `<video/>` tag has to be provided as default slot.
 
 Additionally, the properties `description` and `label` are required. The `description` property is used as a teaser with
 a more detailed description of the button and its action.
@@ -25,11 +25,16 @@ The `label` property is used to describe the button.
 
 ### <A11yIcon></A11yIcon> Accessibility hints
 
-In general, placing textual contents above an image can easily lead to **contrast issues**. Though we are providing a
-scalable background gradient to reduce the risk of low contrasts between foreground text and background image, there
-still can occur issues with color contrast ratios, especially if different aspect ratios for multiple viewport sizes are
-used. So, always **check readability** and play around with the `size` and `weight` properties to achieve the best
-results.
+In general, placing textual contents above an image or video can easily lead to **contrast issues**. Though we are
+providing a scalable background gradient to reduce the risk of low contrasts between foreground text and background
+image, there still can occur issues with color contrast ratios, especially if different aspect ratios for multiple
+viewport sizes are used. So, always **check readability** and play around with the `size` and `weight` properties to
+achieve the best results.
+
+In case a video background is used, the component checks once during initialization whether **reduced motion** is
+enabled in the **operating system settings** and disables autoplay of the video automatically. In addition, the slotted
+video should have no audio or is muted by `<video muted />`. Also keep in mind that long videos or videos in general
+might increase the page load time. The video content should support the CTA instead of distracting from it.
 
 ## States
 
@@ -134,15 +139,31 @@ import { THEMES, TILE_ALIGNS, TILE_ASPECT_RATIOS, TILE_ASPECT_RATIOS_DEPRECATED,
 @Component
 export default class Code extends Vue {
   config = { spacing: 'inline' };
-  imgAttributes = 'alt="Some alt text"';
+  imgAttributes = 'alt="Some image description"';
 
-  basic = `<p-button-tile
-  label="Some label"
-  description="Some Description"
->
-  <p-tag slot="header" theme="dark" color="background-frosted" compact="true">Some tag</p-tag>
-  <img src="${require('@/assets/lights.jpg')}" ${this.imgAttributes} />
-</p-button-tile>`;
+  basic = `<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px;">
+  <p-button-tile
+    label="Some label"
+    description="Some Description"
+  >
+    <p-tag slot="header" theme="dark" color="background-frosted" compact="true">Some tag</p-tag>
+    <img src="${require('@/assets/lights.jpg')}" ${this.imgAttributes} />
+  </p-button-tile>
+  <p-button-tile
+    label="Some label"
+    description="Some Description"
+  >
+    <p-tag slot="header" theme="dark" color="background-frosted" compact="true">Some tag</p-tag>
+    <video
+      poster="https://porsche-design-system.github.io/porsche-design-system/assets/ocean.jpg"
+      src="https://porsche-design-system.github.io/porsche-design-system/assets/ocean.mp4"
+      loop
+      muted
+      autoplay
+      aria-label="Some video description"
+    ></video>
+  </p-button-tile>
+</div>`;
 
   state = 'disabled';
   states = ['disabled', 'loading'];
