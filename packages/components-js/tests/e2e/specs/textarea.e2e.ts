@@ -26,7 +26,7 @@ type InitOptions = {
   useSlottedLabel?: boolean;
   useSlottedDescription?: boolean;
   useSlottedMessage?: boolean;
-  formContext?: 'within' | 'outside' | 'none';
+  isWithinForm?: true;
   markupBefore?: string;
   markupAfter?: string;
 };
@@ -37,7 +37,7 @@ const initTextarea = (page: Page, opts?: InitOptions): Promise<void> => {
     useSlottedLabel = false,
     useSlottedDescription = false,
     useSlottedMessage = false,
-    formContext = 'none',
+    isWithinForm = false,
     markupBefore = '',
     markupAfter = '',
   } = opts || {};
@@ -47,27 +47,13 @@ const initTextarea = (page: Page, opts?: InitOptions): Promise<void> => {
   const slottedDescription = useSlottedDescription ? `<span slot="description">Description with a ${link}</span>` : '';
   const slottedMessage = useSlottedMessage ? `<span slot="message">Message with a ${link}</span>` : '';
 
-  const textareaMarkup = `${markupBefore}<p-textarea ${getHTMLAttributes(props)}>
+  const markup = `${markupBefore}<p-textarea ${getHTMLAttributes(props)}>
       ${slottedLabel}
       ${slottedDescription}
       ${slottedMessage}
     </p-textarea>${markupAfter}`;
 
-  let markup: string;
-
-  switch (formContext) {
-    case 'within':
-      markup = `<form onsubmit="return false;">${textareaMarkup}</form>`;
-      break;
-    case 'outside':
-      markup = `<form id=${props['form'] ?? null} onsubmit="return false;"></form>${textareaMarkup}`;
-      break;
-    case 'none':
-    default:
-      markup = textareaMarkup;
-  }
-
-  return setContentWithDesignSystem(page, markup);
+  return setContentWithDesignSystem(page, isWithinForm ? `<form onsubmit="return false;">${markup}</form>` : markup);
 };
 
 const getFormDataValue = async (form: Locator, name: string) => {
@@ -206,7 +192,7 @@ test.describe('form', () => {
     const value = 'Hallo';
     await initTextarea(page, {
       props: { name, value },
-      formContext: 'within',
+      isWithinForm: true,
       markupAfter: '<button type="submit">Submit</button>',
     });
     const form = getForm(page);
@@ -226,8 +212,7 @@ test.describe('form', () => {
     const formId = 'myForm';
     await initTextarea(page, {
       props: { name, value, form: formId },
-      formContext: 'outside',
-      markupAfter: '<button type="submit">Submit</button>',
+      markupBefore: `<form id="myForm" onsubmit="return false;"><button type="submit">Submit</button></form>`,
     });
     const form = getForm(page);
 
@@ -236,29 +221,40 @@ test.describe('form', () => {
 
     await page.locator('button[type="submit"]').click();
 
-    // expect((await getEventSummary(form, 'submit')).counter).toBe(1); TODO with is this 0?
+    expect((await getEventSummary(form, 'submit')).counter).toBe(1);
     expect(await getFormDataValue(form, name)).toBe(value);
   });
 
   test('should reset textarea value on form reset', async ({ page }) => {
     const name = 'name';
     const value = 'Hallo';
-    const resetValue = '';
-    const host = getTextarea(page);
+    const host = getHost(page);
+    const textarea = getTextarea(page);
     await initTextarea(page, {
       props: { name, value },
-      formContext: 'within',
+      isWithinForm: true,
       markupAfter: `
         <button type="submit">Submit</button>
         <button type="reset">Reset</button>
       `,
     });
+    const form = getForm(page);
 
-    expect(await host.inputValue()).toBe(value);
+    await addEventListener(form, 'submit');
+    expect((await getEventSummary(form, 'submit')).counter).toBe(0);
+
+    await expect(host).toHaveJSProperty('value', value);
+    await expect(textarea).toHaveValue(value);
 
     await page.locator('button[type="reset"]').click();
 
-    expect(await host.inputValue()).toBe(resetValue);
+    await expect(host).toHaveJSProperty('value', '');
+    await expect(textarea).toHaveValue('');
+
+    await page.locator('button[type="submit"]').click(); // Check if ElementInternal value was reset as well
+
+    expect((await getEventSummary(form, 'submit')).counter).toBe(1);
+    expect(await getFormDataValue(form, name)).toBe('');
   });
 });
 
