@@ -1,5 +1,7 @@
 <ComponentHeading name="Tag"></ComponentHeading>
 
+## Usage
+
 Use tags to label, categorize, or organize items using keywords that describe them.
 
 The following segment provides instructions for designers and developers regarding the appropriate utilization of this

@@ -12,7 +12,7 @@ The `p-canvas` is an experimental layout component for productive web applicatio
 
 ## Basic
 
-#### Supported named slots:
+### Supported named slots:
 
 - `slot="header"`: Renders a **sticky** header section above the content area.
 - `slot`: Shows the content area.

@@ -16,7 +16,7 @@ It is required to have two `p-link` components as named slots, `slot="primary"` 
 The `heading` property is required, too. It is used as a teaser with a more detailed description of where the link leads
 to.
 
-#### Supported named slots:
+### Supported named slots:
 
 - `slot="header"`: Renders a header section above the content area but underneath the model signature.
 

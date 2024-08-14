@@ -108,7 +108,7 @@ The appearance of a table's contents can be customized as illustrated in the fol
 
 <Playground :frameworkMarkup="advanced" :config="config">
   <p-table ref="tableAdvanced" :theme="theme">
-    <p-heading slot="caption" :theme="theme" size="large">Some visual caption</p-heading>
+    <p-heading slot="caption" :theme="theme" size="large" tag="h3">Some visual caption</p-heading>
     <p-table-head>
       <p-table-head-row>
         <p-table-head-cell v-for="(item, index) in headAdvanced" :key="index" ref="headCellsAdvanced">{{ item.name }}</p-table-head-cell>

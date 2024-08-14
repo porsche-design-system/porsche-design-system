@@ -17,7 +17,7 @@ teaser with a more detailed description of the link and where it leads to.
 
 The `label` property is used to describe the anchor.
 
-#### Supported named slots:
+### Supported named slots:
 
 - `slot="header"`: Renders a header section above the content area.
 
