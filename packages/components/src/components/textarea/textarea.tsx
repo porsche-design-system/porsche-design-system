@@ -158,22 +158,12 @@ export class Textarea {
     this.updateCounter();
   }
 
-  public updateCounter(): void {
-    this.updateCounterVisibility();
-    if (this.hasCounter) {
-      this.setCounterAriaText();
-    }
-  }
-
   public connectedCallback(): void {
     applyConstructableStylesheetStyles(this.host, getSlottedAnchorStyles);
   }
 
   public componentWillLoad(): void {
-    this.updateCounterVisibility();
-    if (this.hasCounter) {
-      this.setCounterAriaText();
-    }
+    this.updateCounter();
   }
 
   public formResetCallback(): void {
@@ -275,6 +265,13 @@ export class Textarea {
     }
     this.internals.setFormValue(target.value);
   };
+
+  private updateCounter(): void {
+    this.updateCounterVisibility();
+    if (this.hasCounter) {
+      this.setCounterAriaText();
+    }
+  }
 
   private updateCounterVisibility = (): void => {
     this.hasCounter = this.maxLength >= 0 && this.showCounter;
