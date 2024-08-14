@@ -1,5 +1,5 @@
 <template>
-  <nav v-show="!this.isSearchVisible">
+  <nav v-show="!this.isSearchVisible" aria-label="Main">
     <!-- TODO: spacer class could be applied with an additional abstraction layer in storefront.config.ts  -->
     <p-accordion
       :theme="storefrontTheme"

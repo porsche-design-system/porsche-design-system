@@ -15,9 +15,9 @@
     <div class="wide-grid">
       <div class="wide-sidebar">
         <span class="info"><b>Wide Sidebar</b></span>
-        <p-accordion heading="Some Heading" tag="h3"></p-accordion>
-        <p-accordion heading="Some Heading" tag="h3"></p-accordion>
-        <p-accordion heading="Some Heading" tag="h3"></p-accordion>
+        <p-accordion heading="Some Heading" tag="h2"></p-accordion>
+        <p-accordion heading="Some Heading" tag="h2"></p-accordion>
+        <p-accordion heading="Some Heading" tag="h2"></p-accordion>
       </div>
       <div class="wide-content">
         <span class="info"><b>Wide Content</b></span>
@@ -48,7 +48,7 @@
       </div>
       <div class="teaser-content">
         <span class="info"><b>Basic</b> for Content in Teaser</span>
-        <h3 class="heading-x-large">Heading in Teaser</h3>
+        <h2 class="heading-x-large">Heading in Teaser</h2>
         <p class="text">Subline or Copy Text in Large Teaser</p>
         <p-button variant="secondary">Some label</p-button>
       </div>
