@@ -5,7 +5,8 @@ export const warnIfCaptionIsMissing = (host: HTMLElement, caption: string): void
     consoleWarn(
       `caption has to be set via property or named slot for component ${getTagNameWithoutPrefix(
         host
-      )} in order to ensure accessibility.`
+      )} in order to ensure accessibility.`,
+      host
     );
   }
 };
