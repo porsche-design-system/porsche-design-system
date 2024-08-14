@@ -24,7 +24,6 @@ export { parseJSONAttribute } from './json';
 export * from './link-button/link-target';
 export * from './link-button-tile/link-button-tile-utils';
 export * from './tile';
-export * from './match-media';
 export * from './log';
 export { paramCaseToCamelCase } from './paramCaseToCamelCase';
 export * from './property-observer';

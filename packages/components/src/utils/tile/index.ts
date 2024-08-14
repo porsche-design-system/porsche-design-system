@@ -1,2 +1,2 @@
-export * from './stopAutoPlayOfSlottedVideoOnPrefersReducedMotion';
+export * from './preventAutoPlayOfSlottedVideoOnPrefersReducedMotion';
 export * from './tile-utils';

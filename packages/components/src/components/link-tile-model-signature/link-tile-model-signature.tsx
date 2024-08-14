@@ -8,7 +8,7 @@ import {
   getNamedSlotOrThrow,
   getPrefixedTagNames,
   hasPropValueChanged,
-  stopAutoPlayOfSlottedVideoOnPrefersReducedMotion,
+  preventAutoPlayOfSlottedVideoOnPrefersReducedMotion,
   throwIfElementIsNotOfKind,
   TILE_ASPECT_RATIOS,
   TILE_WEIGHTS,
@@ -79,7 +79,7 @@ export class LinkTileModelSignature {
   }
 
   public componentWillLoad(): void {
-    stopAutoPlayOfSlottedVideoOnPrefersReducedMotion(this.host); // only checked once during component initialization
+    preventAutoPlayOfSlottedVideoOnPrefersReducedMotion(this.host); // only checked once during component initialization
   }
 
   public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {

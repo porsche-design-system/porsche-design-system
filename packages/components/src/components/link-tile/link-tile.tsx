@@ -7,7 +7,7 @@ import {
   hasPropValueChanged,
   type ITileProps,
   LINK_ARIA_ATTRIBUTES,
-  stopAutoPlayOfSlottedVideoOnPrefersReducedMotion,
+  preventAutoPlayOfSlottedVideoOnPrefersReducedMotion,
   validateProps,
 } from '../../utils';
 import {
@@ -93,7 +93,7 @@ export class LinkTile implements ITileProps {
   }
 
   public componentWillLoad(): void {
-    stopAutoPlayOfSlottedVideoOnPrefersReducedMotion(this.host); // only checked once during component initialization
+    preventAutoPlayOfSlottedVideoOnPrefersReducedMotion(this.host); // only checked once during component initialization
   }
 
   public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
