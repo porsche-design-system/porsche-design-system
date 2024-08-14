@@ -17,6 +17,7 @@ import {
   isDisabledOrLoading,
   TILE_WEIGHTS,
   validateProps,
+  stopAutoPlayOfSlottedVideoOnPrefersReducedMotion,
 } from '../../utils';
 import type {
   ButtonTileAlign,
@@ -109,6 +110,10 @@ export class ButtonTile implements ITileProps {
 
   public connectedCallback(): void {
     applyConstructableStylesheetStyles(this.host, getSlottedPictureImageStyles);
+  }
+
+  public componentWillLoad(): void {
+    stopAutoPlayOfSlottedVideoOnPrefersReducedMotion(this.host); // only checked once during component initialization
   }
 
   public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {

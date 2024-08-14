@@ -8,6 +8,7 @@ import {
   getNamedSlotOrThrow,
   getPrefixedTagNames,
   hasPropValueChanged,
+  stopAutoPlayOfSlottedVideoOnPrefersReducedMotion,
   throwIfElementIsNotOfKind,
   TILE_ASPECT_RATIOS,
   TILE_WEIGHTS,
@@ -75,6 +76,10 @@ export class LinkTileModelSignature {
 
   public connectedCallback(): void {
     applyConstructableStylesheetStyles(this.host, getSlottedPictureImageStyles);
+  }
+
+  public componentWillLoad(): void {
+    stopAutoPlayOfSlottedVideoOnPrefersReducedMotion(this.host); // only checked once during component initialization
   }
 
   public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {

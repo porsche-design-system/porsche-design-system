@@ -1,12 +1,13 @@
 import type { BreakpointCustomizable, PropTypes, SelectedAriaAttributes } from '../../types';
 import {
-  type ITileProps,
   AllowedTypes,
   applyConstructableStylesheetStyles,
   attachComponentCss,
   getPrefixedTagNames,
   hasPropValueChanged,
+  type ITileProps,
   LINK_ARIA_ATTRIBUTES,
+  stopAutoPlayOfSlottedVideoOnPrefersReducedMotion,
   validateProps,
 } from '../../utils';
 import {
@@ -89,6 +90,10 @@ export class LinkTile implements ITileProps {
 
   public connectedCallback(): void {
     applyConstructableStylesheetStyles(this.host, getSlottedPictureImageStyles);
+  }
+
+  public componentWillLoad(): void {
+    stopAutoPlayOfSlottedVideoOnPrefersReducedMotion(this.host); // only checked once during component initialization
   }
 
   public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
