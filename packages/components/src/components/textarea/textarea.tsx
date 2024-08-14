@@ -8,22 +8,22 @@ import {
   hasPropValueChanged,
   THEMES,
   validateProps,
-  setAriaElementInnerHtml,
 } from '../../utils';
 import {
   AUTO_COMPLETE,
-  type TextareaAutoComplete,
   TEXTAREA_WRAPS,
+  type TextareaAutoComplete,
+  type TextareaBlurEventDetail,
+  type TextareaChangeEventDetail,
+  type TextareaInputEventDetail,
   type TextareaState,
   type TextareaWrap,
-  type TextareaChangeEventDetail,
-  type TextareaBlurEventDetail,
-  type TextareaInputEventDetail,
 } from './textarea-utils';
 import { messageId, StateMessage } from '../common/state-message/state-message';
 import { descriptionId, Label } from '../common/label/label';
 import { getSlottedAnchorStyles } from '../../styles';
 import { getComponentCss } from './textarea-styles';
+import { debounce } from '../../utils/form/form-utils';
 
 const propTypes: PropTypes<typeof Textarea> = {
   label: AllowedTypes.string,
@@ -137,12 +137,23 @@ export class Textarea {
   @AttachInternals() private internals: ElementInternals;
 
   private textAreaElement: HTMLTextAreaElement;
-  private ariaElement: HTMLSpanElement;
   private hasCounter: boolean;
+  private counterAriaText: string;
+
+  @Watch('value')
+  public onValueChange(newValue: string): void {
+    if (this.hasCounter) {
+      this.setCounterAriaText();
+    }
+    this.internals.setFormValue(newValue);
+  }
 
   @Watch('showCounter')
   public onShowCounterChange(): void {
     this.updateCounterVisibility();
+    if (this.hasCounter) {
+      this.setCounterAriaText();
+    }
   }
 
   public connectedCallback(): void {
@@ -151,6 +162,9 @@ export class Textarea {
 
   public componentWillLoad(): void {
     this.updateCounterVisibility();
+    if (this.hasCounter) {
+      this.setCounterAriaText();
+    }
   }
 
   public formResetCallback(): void {
@@ -164,9 +178,6 @@ export class Textarea {
     return hasPropValueChanged(newVal, oldVal);
   }
   public componentDidLoad(): void {
-    if (this.hasCounter) {
-      setAriaElementInnerHtml(this.textAreaElement, this.ariaElement);
-    }
     this.internals.setFormValue(this.value);
   }
 
@@ -224,7 +235,11 @@ export class Textarea {
               {`${this.value.length}/${this.maxLength}`}
             </span>
           )}
-          {this.hasCounter && <span class="sr-only" ref={(el) => (this.ariaElement = el)} aria-live="polite" />}
+          {this.hasCounter && (
+            <span class="sr-only" aria-live="polite">
+              {this.counterAriaText}
+            </span>
+          )}
         </div>
         <StateMessage state={this.state} message={this.message} theme={this.theme} host={this.host} />
       </div>
@@ -244,12 +259,16 @@ export class Textarea {
     const target = e.target as HTMLTextAreaElement;
     this.value = target.value;
     if (this.hasCounter) {
-      setAriaElementInnerHtml(this.textAreaElement, this.ariaElement);
+      debounce(() => this.setCounterAriaText());
     }
     this.internals.setFormValue(target.value);
   };
 
   private updateCounterVisibility = (): void => {
     this.hasCounter = this.maxLength >= 0 && this.showCounter;
+  };
+
+  private setCounterAriaText = (): void => {
+    this.counterAriaText = `You have ${this.maxLength - this.value.length} out of ${this.maxLength} characters left`;
   };
 }
