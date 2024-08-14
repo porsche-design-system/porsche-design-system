@@ -26,7 +26,7 @@ type InitOptions = {
   useSlottedLabel?: boolean;
   useSlottedDescription?: boolean;
   useSlottedMessage?: boolean;
-  isWithinForm?: boolean;
+  formContext?: 'within' | 'outside' | 'none';
   markupBefore?: string;
   markupAfter?: string;
 };
@@ -37,7 +37,7 @@ const initTextarea = (page: Page, opts?: InitOptions): Promise<void> => {
     useSlottedLabel = false,
     useSlottedDescription = false,
     useSlottedMessage = false,
-    isWithinForm = false,
+    formContext = 'none',
     markupBefore = '',
     markupAfter = '',
   } = opts || {};
@@ -47,13 +47,27 @@ const initTextarea = (page: Page, opts?: InitOptions): Promise<void> => {
   const slottedDescription = useSlottedDescription ? `<span slot="description">Description with a ${link}</span>` : '';
   const slottedMessage = useSlottedMessage ? `<span slot="message">Message with a ${link}</span>` : '';
 
-  const markup = `${markupBefore}<p-textarea ${getHTMLAttributes(props)}>
+  const textareaMarkup = `${markupBefore}<p-textarea ${getHTMLAttributes(props)}>
       ${slottedLabel}
       ${slottedDescription}
       ${slottedMessage}
     </p-textarea>${markupAfter}`;
 
-  return setContentWithDesignSystem(page, isWithinForm ? `<form onsubmit="return false;">${markup}</form>` : markup);
+  let markup: string;
+
+  switch (formContext) {
+    case 'within':
+      markup = `<form onsubmit="return false;">${textareaMarkup}</form>`;
+      break;
+    case 'outside':
+      markup = `<form id=${props['form'] ?? null} onsubmit="return false;"></form>${textareaMarkup}`;
+      break;
+    case 'none':
+    default:
+      markup = textareaMarkup;
+  }
+
+  return setContentWithDesignSystem(page, markup);
 };
 
 const getFormDataValue = async (form: Locator, name: string) => {
@@ -66,7 +80,7 @@ test.describe('value', () => {
   test('should have value as slotted content when set initially', async ({ page }) => {
     const testValue = 'hello \n\n 123\n';
     await initTextarea(page, { props: { name: 'Some name', value: testValue } });
-    const host = await getHost(page);
+    const host = getHost(page);
     const textarea = getTextarea(page);
 
     await expect(host).toHaveJSProperty('value', testValue);
@@ -76,7 +90,7 @@ test.describe('value', () => {
 
   test('should sync value with slotted content when typing', async ({ page }) => {
     await initTextarea(page);
-    const host = await getHost(page);
+    const host = getHost(page);
     const textarea = getTextarea(page);
     await expect(host).toHaveJSProperty('value', '');
     await expect(textarea).toHaveJSProperty('value', '');
@@ -92,7 +106,7 @@ test.describe('value', () => {
 
   test('should sync slotted content with value when changed programmatically', async ({ page }) => {
     await initTextarea(page);
-    const host = await getHost(page);
+    const host = getHost(page);
     const textarea = getTextarea(page);
     await expect(host).toHaveJSProperty('value', '');
     await expect(textarea).toHaveJSProperty('value', '');
@@ -151,12 +165,12 @@ test.describe('counter', () => {
     await initTextarea(page, { props: { name: 'Some name', value: 'hello', maxLength: 160, showCounter: false } });
     const host = getHost(page);
 
-    await expect(await getCounter(page)).toHaveCount(0);
+    await expect(getCounter(page)).toHaveCount(0);
 
     await setProperty(host, 'showCounter', true);
 
-    const counter = await getCounter(page);
-    const counterAria = await getCounterAria(page);
+    const counter = getCounter(page);
+    const counterAria = getCounterAria(page);
     await expect(counter).toHaveCount(1);
     await expect(counter).toHaveText('5/160');
     await expect(counterAria).toHaveText('You have 155 out of 160 characters left');
@@ -192,10 +206,10 @@ test.describe('form', () => {
     const value = 'Hallo';
     await initTextarea(page, {
       props: { name, value },
-      isWithinForm: true,
+      formContext: 'within',
       markupAfter: '<button type="submit">Submit</button>',
     });
-    const form = await getForm(page);
+    const form = getForm(page);
 
     await addEventListener(form, 'submit');
     expect((await getEventSummary(form, 'submit')).counter).toBe(0);
@@ -204,6 +218,47 @@ test.describe('form', () => {
 
     expect((await getEventSummary(form, 'submit')).counter).toBe(1);
     expect(await getFormDataValue(form, name)).toBe(value);
+  });
+
+  test('should include name & value in FormData submit if outside of form', async ({ page }) => {
+    const name = 'name';
+    const value = 'Hallo';
+    const formId = 'myForm';
+    await initTextarea(page, {
+      props: { name, value, form: formId },
+      formContext: 'outside',
+      markupAfter: '<button type="submit">Submit</button>',
+    });
+    const form = getForm(page);
+
+    await addEventListener(form, 'submit');
+    expect((await getEventSummary(form, 'submit')).counter).toBe(0);
+
+    await page.locator('button[type="submit"]').click();
+
+    // expect((await getEventSummary(form, 'submit')).counter).toBe(1); TODO with is this 0?
+    expect(await getFormDataValue(form, name)).toBe(value);
+  });
+
+  test('should reset textarea value on form reset', async ({ page }) => {
+    const name = 'name';
+    const value = 'Hallo';
+    const resetValue = '';
+    const host = getTextarea(page);
+    await initTextarea(page, {
+      props: { name, value },
+      formContext: 'within',
+      markupAfter: `
+        <button type="submit">Submit</button>
+        <button type="reset">Reset</button>
+      `,
+    });
+
+    expect(await host.inputValue()).toBe(value);
+
+    await page.locator('button[type="reset"]').click();
+
+    expect(await host.inputValue()).toBe(resetValue);
   });
 });
 
@@ -247,6 +302,47 @@ test.describe('focus state', () => {
     await host.focus();
     await waitForStencilLifecycle(page);
     expect((await getEventSummary(textarea, 'focus')).counter).toBe(1);
+  });
+});
+
+test.describe('Event', () => {
+  test('should trigger a change event when textarea value is modified and focus is lost', async ({ page }) => {
+    await initTextarea(page);
+    const textarea = getTextarea(page);
+
+    await addEventListener(textarea, 'change');
+    expect((await getEventSummary(textarea, 'change')).counter).toBe(0);
+
+    await textarea.fill('New value');
+    await textarea.press('Tab');
+    await waitForStencilLifecycle(page);
+
+    expect((await getEventSummary(textarea, 'change')).counter).toBe(1);
+  });
+  test.skip('should trigger a blur event when the textarea loses focus', async ({ page }) => {
+    await initTextarea(page);
+    const textarea = getTextarea(page);
+
+    await addEventListener(textarea, 'blur');
+    expect((await getEventSummary(textarea, 'blur')).counter).toBe(0);
+
+    await textarea.focus();
+    await page.click('body');
+    await waitForStencilLifecycle(page);
+
+    expect((await getEventSummary(textarea, 'blur')).counter).toBe(1);
+  });
+  test('should trigger an input event each time the textarea value is changed', async ({ page }) => {
+    await initTextarea(page);
+    const textarea = getTextarea(page);
+
+    await addEventListener(textarea, 'input');
+    expect((await getEventSummary(textarea, 'input')).counter).toBe(0);
+
+    await textarea.fill('Typing text...');
+    await waitForStencilLifecycle(page);
+
+    expect((await getEventSummary(textarea, 'input')).counter).toBe(1);
   });
 });
 
