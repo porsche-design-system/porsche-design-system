@@ -34,13 +34,17 @@ export const setCounterInnerHtml = (el: HTMLTextAreaElement | HTMLInputElement, 
   counterElement.innerText = `${el.value.length}/${el.maxLength}`;
 };
 
-export const debounce = (fn: (...args: any) => void, ms = 800) => {
+// eslint-disable-next-line prefer-arrow/prefer-arrow-functions
+export function debounce<T extends (...args: any[]) => void>(fn: T, ms = 800) {
   let timeoutId: ReturnType<typeof setTimeout>;
-  return function (this: any, ...args: any[]) {
-    clearTimeout(timeoutId);
+
+  return function (this: any, ...args: Parameters<T>) {
+    if (timeoutId) {
+      clearTimeout(timeoutId);
+    }
     timeoutId = setTimeout(() => fn.apply(this, args), ms);
   };
-};
+}
 
 export const setAriaElementInnerHtml = debounce(
   (el: HTMLTextAreaElement | HTMLInputElement, ariaElement: HTMLSpanElement): void => {
