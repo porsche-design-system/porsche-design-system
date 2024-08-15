@@ -137,25 +137,23 @@ export class Textarea {
   @AttachInternals() private internals: ElementInternals;
 
   private textAreaElement: HTMLTextAreaElement;
+  private counterElement: HTMLSpanElement;
   private hasCounter: boolean;
-  private counterAriaText: string;
+  private setCounterAriaTextDebounced = debounce(() => this.setCounterAriaText());
 
   @Watch('value')
   public onValueChange(newValue: string): void {
-    if (this.hasCounter) {
-      this.setCounterAriaText();
-    }
     this.internals.setFormValue(newValue);
   }
 
   @Watch('maxLength')
   public onMaxLengthChange(): void {
-    this.updateCounter();
+    this.updateCounterVisibility();
   }
 
   @Watch('showCounter')
   public onShowCounterChange(): void {
-    this.updateCounter();
+    this.updateCounterVisibility();
   }
 
   public connectedCallback(): void {
@@ -163,7 +161,7 @@ export class Textarea {
   }
 
   public componentWillLoad(): void {
-    this.updateCounter();
+    this.updateCounterVisibility();
   }
 
   public formResetCallback(): void {
@@ -178,6 +176,12 @@ export class Textarea {
   }
   public componentDidLoad(): void {
     this.internals.setFormValue(this.value);
+  }
+
+  public componentDidRender(): void {
+    if (this.hasCounter) {
+      this.setCounterAriaTextDebounced();
+    }
   }
 
   public render(): JSX.Element {
@@ -233,11 +237,7 @@ export class Textarea {
               {`${this.value.length}/${this.maxLength}`}
             </span>
           )}
-          {this.hasCounter && (
-            <span class="sr-only" aria-live="polite">
-              {this.counterAriaText}
-            </span>
-          )}
+          {this.hasCounter && <span class="sr-only" aria-live="polite" ref={(el) => (this.counterElement = el)} />}
         </div>
         <StateMessage state={this.state} message={this.message} theme={this.theme} host={this.host} />
       </div>
@@ -259,25 +259,14 @@ export class Textarea {
     e.stopImmediatePropagation();
     this.input.emit(e);
     const target = e.target as HTMLTextAreaElement;
-    this.value = target.value;
-    if (this.hasCounter) {
-      debounce(() => this.setCounterAriaText());
-    }
-    this.internals.setFormValue(target.value);
+    this.value = target.value; // triggers @Watch('value')
   };
-
-  private updateCounter(): void {
-    this.updateCounterVisibility();
-    if (this.hasCounter) {
-      this.setCounterAriaText();
-    }
-  }
 
   private updateCounterVisibility = (): void => {
     this.hasCounter = this.maxLength >= 0 && this.showCounter;
   };
 
   private setCounterAriaText = (): void => {
-    this.counterAriaText = `You have ${this.maxLength - this.value.length} out of ${this.maxLength} characters left`;
+    this.counterElement.innerText = `You have ${this.maxLength - this.value.length} out of ${this.maxLength} characters left`;
   };
 }
