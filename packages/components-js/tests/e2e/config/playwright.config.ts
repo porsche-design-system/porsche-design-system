@@ -6,7 +6,10 @@ export default defineConfig({
   projects: [
     {
       name: 'chrome',
-      use: devices['Desktop Chrome'],
+      use: {
+        ...devices['Desktop Chrome'],
+        channel: 'chrome', // test against branded Chromium, Google Chrome (https://playwright.dev/docs/browsers#google-chrome--microsoft-edge)
+      },
     },
     {
       name: 'safari',

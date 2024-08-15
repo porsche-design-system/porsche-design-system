@@ -125,7 +125,7 @@ export class LinkTileModelSignature {
           <slot name="header" />
         </div>
         <div class="media">
-          <slot />
+          <slot onSlotchange={() => preventAutoPlayOfSlottedVideoOnPrefersReducedMotion(this.host)} />
         </div>
         <div class="footer">
           <this.headingTag>{this.heading}</this.headingTag>

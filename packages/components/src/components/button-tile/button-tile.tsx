@@ -113,7 +113,7 @@ export class ButtonTile implements ITileProps {
   }
 
   public componentWillLoad(): void {
-    preventAutoPlayOfSlottedVideoOnPrefersReducedMotion(this.host); // only checked once during component initialization
+    preventAutoPlayOfSlottedVideoOnPrefersReducedMotion(this.host);
   }
 
   public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
@@ -170,7 +170,7 @@ export class ButtonTile implements ITileProps {
       <div class="root">
         <slot name="header" />
         <div class="media">
-          <slot />
+          <slot onSlotchange={() => preventAutoPlayOfSlottedVideoOnPrefersReducedMotion(this.host)} />
         </div>
         <div class="footer">
           <p>{this.description}</p>
