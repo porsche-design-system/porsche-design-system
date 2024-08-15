@@ -5,7 +5,7 @@ type PromiseResolve = (amount: number) => void;
 
 export const componentsReady = (
   el: HTMLElement = document.body,
-  readyState: DocumentReadyState = 'interactive'
+  readyState: DocumentReadyState = 'complete'
 ): Promise<number> => {
   let promiseResolve: PromiseResolve;
   const promise: Promise<number> = new Promise((resolve) => (promiseResolve = resolve));
