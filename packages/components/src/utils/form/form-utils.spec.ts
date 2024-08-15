@@ -56,22 +56,21 @@ describe('setAriaElementInnerHtml()', () => {
   it('should set correct character count text for screen reader as innerText on element', async () => {
     const ariaElement = getAriaElement();
     const inputElement = getInputElement();
-    const wait = () => new Promise((resolve) => setTimeout(resolve, 1000));
 
     inputElement.maxLength = 20;
     setAriaElementInnerHtml(inputElement, ariaElement);
-    await wait();
+    jest.advanceTimersByTime(800);
     expect(ariaElement.innerText).toBe(getAccessibilityMessage(20, 20));
 
     inputElement.value = 'some';
     setAriaElementInnerHtml(inputElement, ariaElement);
-    await wait();
+    jest.advanceTimersByTime(800);
     expect(ariaElement.innerText).toBe(getAccessibilityMessage(16, 20));
 
     inputElement.maxLength = 25;
     inputElement.value = 'Hi';
     setAriaElementInnerHtml(inputElement, ariaElement);
-    await wait();
+    jest.advanceTimersByTime(800);
     expect(ariaElement.innerText).toBe(getAccessibilityMessage(23, 25));
   });
 });
