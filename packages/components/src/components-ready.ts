@@ -69,15 +69,18 @@ const allComponentsLoaded = (el: HTMLElement, resolve: PromiseResolve): void => 
 };
 
 const collectAllComponentOnReadyPromises = (el: HTMLElement): Promise<HostElement>[] => {
-  let readyPromises: Promise<HostElement>[] = [];
+  const readyPromises: Promise<HostElement>[] = [];
+  const stack: HostElement[] = [el];
 
-  if (el?.nodeType === Node.ELEMENT_NODE) {
-    (Array.from(el.children) as HostElement[]).forEach((childEl) => {
-      if (isDesignSystemElement(childEl)) {
-        readyPromises.push(childEl.componentOnReady());
+  while (stack.length > 0) {
+    const currentEl = stack.pop();
+
+    if (currentEl.nodeType === Node.ELEMENT_NODE) {
+      if (isDesignSystemElement(currentEl)) {
+        readyPromises.push(currentEl.componentOnReady());
       }
-      readyPromises = readyPromises.concat(collectAllComponentOnReadyPromises(childEl));
-    });
+      stack.push(...(Array.from(currentEl.children) as HostElement[]));
+    }
   }
 
   return readyPromises;
@@ -85,5 +88,5 @@ const collectAllComponentOnReadyPromises = (el: HTMLElement): Promise<HostElemen
 
 const regex = /^(.*-)?P-(.*)$/;
 const isDesignSystemElement = (el: HostElement): boolean => {
-  return regex.exec(el.tagName) && typeof el.componentOnReady === 'function';
+  return regex.test(el.tagName) && typeof el.componentOnReady === 'function';
 };
