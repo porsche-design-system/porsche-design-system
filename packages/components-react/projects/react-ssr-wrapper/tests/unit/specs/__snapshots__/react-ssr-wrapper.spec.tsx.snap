@@ -15503,6 +15503,7 @@ exports[`should render dsr component for PTextarea 1`] = `
 >
   <template
     shadowroot="open"
+    shadowrootdelegatesfocus="true"
     shadowrootmode="open"
   >
     <style>
@@ -15513,36 +15514,36 @@ exports[`should render dsr component for PTextarea 1`] = `
 :host([hidden]) {
   display: none !important;
 }
-::slotted(textarea) {
-  display: block !important;
-  width: 100% !important;
+textarea {
+  min-height: var(--p-textarea-min-height, 200px);
+  resize: var(--p-textarea-resize, vertical);
+  display: block;
+  width: 100%;
   height: auto;
-  margin: 0 !important;
-  outline: 0 !important;
-  -webkit-appearance: none !important;
-  appearance: none !important;
-  box-sizing: border-box !important;
-  border: 2px solid #6B6D70 !important;
-  border-radius: 4px !important;
-  background: transparent !important;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  text-indent: 0 !important;
-  color: #010205 !important;
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
-  grid-area: 1/1 !important;
-  padding: 12px 16px !important;
-  min-height: 200px;
-  resize: vertical;
+  margin: 0;
+  outline: 0;
+  -webkit-appearance: none;
+  appearance: none;
+  box-sizing: border-box;
+  border: 2px solid #6B6D70;
+  border-radius: 4px;
+  background: transparent;
+  text-indent: 0;
+  color: #010205;
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  grid-area: 1/1;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  padding: 12px 16px;
 }
-::slotted(textarea:disabled) {
-  cursor: not-allowed !important;
-  color: #949598 !important;
-  border-color: #949598 !important;
-  -webkit-text-fill-color: #949598 !important;
+textarea:disabled {
+  cursor: not-allowed;
+  color: #949598;
+  border-color: #949598;
+  -webkit-text-fill-color: #949598;
 }
-::slotted(textarea[readonly]) {
-  border-color: #D8D8DB !important;
-  background: #D8D8DB !important;
+textarea[readonly] {
+  border-color: #D8D8DB;
+  background: #D8D8DB;
 }
 
 .root {
@@ -15595,18 +15596,22 @@ exports[`should render dsr component for PTextarea 1`] = `
     >
       <label
         class="label"
+        for="textarea"
         id="label"
       />
       <div
         class="wrapper"
       >
-        <slot
-          name="internal-textarea"
+        <textarea
+          aria-describedby="description message"
+          autocomplete=""
+          id="textarea"
+          placeholder=""
+          wrap="soft"
         />
       </div>
     </div>
   </template>
-  Some child
 </p-textarea>
 `;
 
