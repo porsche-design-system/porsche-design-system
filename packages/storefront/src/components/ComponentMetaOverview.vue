@@ -37,7 +37,7 @@
       return ['', ...tagNames]
         .map((tagName) => {
           const { isDeprecated, isExperimental } = getComponentMeta(tagName as TagName) || {};
-          return `<p-table-head-cell>${tagName}${isDeprecated ? ' 🚫' : ''}${
+          return `<p-table-head-cell ${!tagName && 'aria-hidden="true"'}>${tagName}${isDeprecated ? ' 🚫' : ''}${
             isExperimental ? ' 🧪' : ''
           }</p-table-head-cell>`;
         })
