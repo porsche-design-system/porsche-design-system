@@ -8,43 +8,43 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 :host([hidden]) {
   display: none !important;
 }
-::slotted(textarea) {
-  display: block !important;
-  width: 100% !important;
+textarea {
+  min-height: var(--p-textarea-min-height, 200px);
+  resize: var(--p-textarea-resize, vertical);
+  display: block;
+  width: 100%;
   height: auto;
-  margin: 0 !important;
-  outline: 0 !important;
-  -webkit-appearance: none !important;
-  appearance: none !important;
-  box-sizing: border-box !important;
-  border: 2px solid #88898C !important;
-  border-radius: 4px !important;
-  background: transparent !important;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  text-indent: 0 !important;
-  color: #FBFCFF !important;
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
-  grid-area: 1/1 !important;
-  padding: 12px 16px 32px !important;
-  min-height: 200px;
-  resize: vertical;
+  margin: 0;
+  outline: 0;
+  -webkit-appearance: none;
+  appearance: none;
+  box-sizing: border-box;
+  border: 2px solid #88898C;
+  border-radius: 4px;
+  background: transparent;
+  text-indent: 0;
+  color: #FBFCFF;
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  grid-area: 1/1;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  padding: 12px 16px 32px;
 }
-::slotted(textarea:focus) {
-  border-color: #FBFCFF !important;
+textarea:focus {
+  border-color: #FBFCFF;
 }
-::slotted(textarea:disabled) {
-  cursor: not-allowed !important;
-  color: #7E7F82 !important;
-  border-color: #7E7F82 !important;
-  -webkit-text-fill-color: #7E7F82 !important;
+textarea:disabled {
+  cursor: not-allowed;
+  color: #7E7F82;
+  border-color: #7E7F82;
+  -webkit-text-fill-color: #7E7F82;
 }
-::slotted(textarea[readonly]) {
-  border-color: #404044 !important;
-  background: #404044 !important;
+textarea[readonly] {
+  border-color: #404044;
+  background: #404044;
 }
 @media(hover:hover) {
-  ::slotted(textarea:not(:disabled):not(:focus):not([readonly]):hover),label:hover~.wrapper ::slotted(textarea:not(:disabled):not(:focus):not([readonly])) {
-    border-color: #FBFCFF !important;
+  textarea:not(:disabled):not(:focus):not([readonly]):hover,label:hover~.wrapper textarea:not(:disabled):not(:focus):not([readonly]) {
+    border-color: #FBFCFF;
   }
 }
 
@@ -190,43 +190,43 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 :host([hidden]) {
   display: none !important;
 }
-::slotted(textarea) {
-  display: block !important;
-  width: 100% !important;
+textarea {
+  min-height: var(--p-textarea-min-height, 200px);
+  resize: var(--p-textarea-resize, vertical);
+  display: block;
+  width: 100%;
   height: auto;
-  margin: 0 !important;
-  outline: 0 !important;
-  -webkit-appearance: none !important;
-  appearance: none !important;
-  box-sizing: border-box !important;
-  border: 2px solid #6B6D70 !important;
-  border-radius: 4px !important;
-  background: transparent !important;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  text-indent: 0 !important;
-  color: #010205 !important;
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
-  grid-area: 1/1 !important;
-  padding: 12px 16px 32px !important;
-  min-height: 200px;
-  resize: vertical;
+  margin: 0;
+  outline: 0;
+  -webkit-appearance: none;
+  appearance: none;
+  box-sizing: border-box;
+  border: 2px solid #6B6D70;
+  border-radius: 4px;
+  background: transparent;
+  text-indent: 0;
+  color: #010205;
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  grid-area: 1/1;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  padding: 12px 16px 32px;
 }
-::slotted(textarea:focus) {
-  border-color: #010205 !important;
+textarea:focus {
+  border-color: #010205;
 }
-::slotted(textarea:disabled) {
-  cursor: not-allowed !important;
-  color: #949598 !important;
-  border-color: #949598 !important;
-  -webkit-text-fill-color: #949598 !important;
+textarea:disabled {
+  cursor: not-allowed;
+  color: #949598;
+  border-color: #949598;
+  -webkit-text-fill-color: #949598;
 }
-::slotted(textarea[readonly]) {
-  border-color: #D8D8DB !important;
-  background: #D8D8DB !important;
+textarea[readonly] {
+  border-color: #D8D8DB;
+  background: #D8D8DB;
 }
 @media(hover:hover) {
-  ::slotted(textarea:not(:disabled):not(:focus):not([readonly]):hover),label:hover~.wrapper ::slotted(textarea:not(:disabled):not(:focus):not([readonly])) {
-    border-color: #010205 !important;
+  textarea:not(:disabled):not(:focus):not([readonly]):hover,label:hover~.wrapper textarea:not(:disabled):not(:focus):not([readonly]) {
+    border-color: #010205;
   }
 }
 
@@ -372,43 +372,43 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 :host([hidden]) {
   display: none !important;
 }
-::slotted(textarea) {
-  display: block !important;
-  width: 100% !important;
+textarea {
+  min-height: var(--p-textarea-min-height, 200px);
+  resize: var(--p-textarea-resize, vertical);
+  display: block;
+  width: 100%;
   height: auto;
-  margin: 0 !important;
-  outline: 0 !important;
-  -webkit-appearance: none !important;
-  appearance: none !important;
-  box-sizing: border-box !important;
-  border: 2px solid #CC1922 !important;
-  border-radius: 4px !important;
-  background: transparent !important;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  text-indent: 0 !important;
-  color: #010205 !important;
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
-  grid-area: 1/1 !important;
-  padding: 12px 16px !important;
-  min-height: 200px;
-  resize: vertical;
+  margin: 0;
+  outline: 0;
+  -webkit-appearance: none;
+  appearance: none;
+  box-sizing: border-box;
+  border: 2px solid #CC1922;
+  border-radius: 4px;
+  background: transparent;
+  text-indent: 0;
+  color: #010205;
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  grid-area: 1/1;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  padding: 12px 16px;
 }
-::slotted(textarea:focus) {
-  border-color: #010205 !important;
+textarea:focus {
+  border-color: #010205;
 }
-::slotted(textarea:disabled) {
-  cursor: not-allowed !important;
-  color: #949598 !important;
-  border-color: #949598 !important;
-  -webkit-text-fill-color: #949598 !important;
+textarea:disabled {
+  cursor: not-allowed;
+  color: #949598;
+  border-color: #949598;
+  -webkit-text-fill-color: #949598;
 }
-::slotted(textarea[readonly]) {
-  border-color: #D8D8DB !important;
-  background: #D8D8DB !important;
+textarea[readonly] {
+  border-color: #D8D8DB;
+  background: #D8D8DB;
 }
 @media(hover:hover) {
-  ::slotted(textarea:not(:disabled):not(:focus):not([readonly]):hover),label:hover~.wrapper ::slotted(textarea:not(:disabled):not(:focus):not([readonly])) {
-    border-color: #951219 !important;
+  textarea:not(:disabled):not(:focus):not([readonly]):hover,label:hover~.wrapper textarea:not(:disabled):not(:focus):not([readonly]) {
+    border-color: #951219;
   }
 }
 
@@ -467,43 +467,43 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 :host([hidden]) {
   display: none !important;
 }
-::slotted(textarea) {
-  display: block !important;
-  width: 100% !important;
+textarea {
+  min-height: var(--p-textarea-min-height, 200px);
+  resize: var(--p-textarea-resize, vertical);
+  display: block;
+  width: 100%;
   height: auto;
-  margin: 0 !important;
-  outline: 0 !important;
-  -webkit-appearance: none !important;
-  appearance: none !important;
-  box-sizing: border-box !important;
-  border: 2px solid #CC1922 !important;
-  border-radius: 4px !important;
-  background: transparent !important;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  text-indent: 0 !important;
-  color: #010205 !important;
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
-  grid-area: 1/1 !important;
-  padding: 12px 16px 32px !important;
-  min-height: 200px;
-  resize: vertical;
+  margin: 0;
+  outline: 0;
+  -webkit-appearance: none;
+  appearance: none;
+  box-sizing: border-box;
+  border: 2px solid #CC1922;
+  border-radius: 4px;
+  background: transparent;
+  text-indent: 0;
+  color: #010205;
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  grid-area: 1/1;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  padding: 12px 16px 32px;
 }
-::slotted(textarea:focus) {
-  border-color: #010205 !important;
+textarea:focus {
+  border-color: #010205;
 }
-::slotted(textarea:disabled) {
-  cursor: not-allowed !important;
-  color: #949598 !important;
-  border-color: #949598 !important;
-  -webkit-text-fill-color: #949598 !important;
+textarea:disabled {
+  cursor: not-allowed;
+  color: #949598;
+  border-color: #949598;
+  -webkit-text-fill-color: #949598;
 }
-::slotted(textarea[readonly]) {
-  border-color: #D8D8DB !important;
-  background: #D8D8DB !important;
+textarea[readonly] {
+  border-color: #D8D8DB;
+  background: #D8D8DB;
 }
 @media(hover:hover) {
-  ::slotted(textarea:not(:disabled):not(:focus):not([readonly]):hover),label:hover~.wrapper ::slotted(textarea:not(:disabled):not(:focus):not([readonly])) {
-    border-color: #951219 !important;
+  textarea:not(:disabled):not(:focus):not([readonly]):hover,label:hover~.wrapper textarea:not(:disabled):not(:focus):not([readonly]) {
+    border-color: #951219;
   }
 }
 
@@ -585,43 +585,43 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 :host([hidden]) {
   display: none !important;
 }
-::slotted(textarea) {
-  display: block !important;
-  width: 100% !important;
+textarea {
+  min-height: var(--p-textarea-min-height, 200px);
+  resize: var(--p-textarea-resize, vertical);
+  display: block;
+  width: 100%;
   height: auto;
-  margin: 0 !important;
-  outline: 0 !important;
-  -webkit-appearance: none !important;
-  appearance: none !important;
-  box-sizing: border-box !important;
-  border: 2px solid #6B6D70 !important;
-  border-radius: 4px !important;
-  background: transparent !important;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  text-indent: 0 !important;
-  color: #010205 !important;
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
-  grid-area: 1/1 !important;
-  padding: 12px 16px !important;
-  min-height: 200px;
-  resize: vertical;
+  margin: 0;
+  outline: 0;
+  -webkit-appearance: none;
+  appearance: none;
+  box-sizing: border-box;
+  border: 2px solid #6B6D70;
+  border-radius: 4px;
+  background: transparent;
+  text-indent: 0;
+  color: #010205;
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  grid-area: 1/1;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  padding: 12px 16px;
 }
-::slotted(textarea:focus) {
-  border-color: #010205 !important;
+textarea:focus {
+  border-color: #010205;
 }
-::slotted(textarea:disabled) {
-  cursor: not-allowed !important;
-  color: #949598 !important;
-  border-color: #949598 !important;
-  -webkit-text-fill-color: #949598 !important;
+textarea:disabled {
+  cursor: not-allowed;
+  color: #949598;
+  border-color: #949598;
+  -webkit-text-fill-color: #949598;
 }
-::slotted(textarea[readonly]) {
-  border-color: #D8D8DB !important;
-  background: #D8D8DB !important;
+textarea[readonly] {
+  border-color: #D8D8DB;
+  background: #D8D8DB;
 }
 @media(hover:hover) {
-  ::slotted(textarea:not(:disabled):not(:focus):not([readonly]):hover),label:hover~.wrapper ::slotted(textarea:not(:disabled):not(:focus):not([readonly])) {
-    border-color: #010205 !important;
+  textarea:not(:disabled):not(:focus):not([readonly]):hover,label:hover~.wrapper textarea:not(:disabled):not(:focus):not([readonly]) {
+    border-color: #010205;
   }
 }
 
@@ -679,43 +679,43 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 :host([hidden]) {
   display: none !important;
 }
-::slotted(textarea) {
-  display: block !important;
-  width: 100% !important;
+textarea {
+  min-height: var(--p-textarea-min-height, 200px);
+  resize: var(--p-textarea-resize, vertical);
+  display: block;
+  width: 100%;
   height: auto;
-  margin: 0 !important;
-  outline: 0 !important;
-  -webkit-appearance: none !important;
-  appearance: none !important;
-  box-sizing: border-box !important;
-  border: 2px solid #6B6D70 !important;
-  border-radius: 4px !important;
-  background: transparent !important;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  text-indent: 0 !important;
-  color: #010205 !important;
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
-  grid-area: 1/1 !important;
-  padding: 12px 16px 32px !important;
-  min-height: 200px;
-  resize: vertical;
+  margin: 0;
+  outline: 0;
+  -webkit-appearance: none;
+  appearance: none;
+  box-sizing: border-box;
+  border: 2px solid #6B6D70;
+  border-radius: 4px;
+  background: transparent;
+  text-indent: 0;
+  color: #010205;
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  grid-area: 1/1;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  padding: 12px 16px 32px;
 }
-::slotted(textarea:focus) {
-  border-color: #010205 !important;
+textarea:focus {
+  border-color: #010205;
 }
-::slotted(textarea:disabled) {
-  cursor: not-allowed !important;
-  color: #949598 !important;
-  border-color: #949598 !important;
-  -webkit-text-fill-color: #949598 !important;
+textarea:disabled {
+  cursor: not-allowed;
+  color: #949598;
+  border-color: #949598;
+  -webkit-text-fill-color: #949598;
 }
-::slotted(textarea[readonly]) {
-  border-color: #D8D8DB !important;
-  background: #D8D8DB !important;
+textarea[readonly] {
+  border-color: #D8D8DB;
+  background: #D8D8DB;
 }
 @media(hover:hover) {
-  ::slotted(textarea:not(:disabled):not(:focus):not([readonly]):hover),label:hover~.wrapper ::slotted(textarea:not(:disabled):not(:focus):not([readonly])) {
-    border-color: #010205 !important;
+  textarea:not(:disabled):not(:focus):not([readonly]):hover,label:hover~.wrapper textarea:not(:disabled):not(:focus):not([readonly]) {
+    border-color: #010205;
   }
 }
 
@@ -796,43 +796,43 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 :host([hidden]) {
   display: none !important;
 }
-::slotted(textarea) {
-  display: block !important;
-  width: 100% !important;
+textarea {
+  min-height: var(--p-textarea-min-height, 200px);
+  resize: var(--p-textarea-resize, vertical);
+  display: block;
+  width: 100%;
   height: auto;
-  margin: 0 !important;
-  outline: 0 !important;
-  -webkit-appearance: none !important;
-  appearance: none !important;
-  box-sizing: border-box !important;
-  border: 2px solid #197E10 !important;
-  border-radius: 4px !important;
-  background: transparent !important;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  text-indent: 0 !important;
-  color: #010205 !important;
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
-  grid-area: 1/1 !important;
-  padding: 12px 16px !important;
-  min-height: 200px;
-  resize: vertical;
+  margin: 0;
+  outline: 0;
+  -webkit-appearance: none;
+  appearance: none;
+  box-sizing: border-box;
+  border: 2px solid #197E10;
+  border-radius: 4px;
+  background: transparent;
+  text-indent: 0;
+  color: #010205;
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  grid-area: 1/1;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  padding: 12px 16px;
 }
-::slotted(textarea:focus) {
-  border-color: #010205 !important;
+textarea:focus {
+  border-color: #010205;
 }
-::slotted(textarea:disabled) {
-  cursor: not-allowed !important;
-  color: #949598 !important;
-  border-color: #949598 !important;
-  -webkit-text-fill-color: #949598 !important;
+textarea:disabled {
+  cursor: not-allowed;
+  color: #949598;
+  border-color: #949598;
+  -webkit-text-fill-color: #949598;
 }
-::slotted(textarea[readonly]) {
-  border-color: #D8D8DB !important;
-  background: #D8D8DB !important;
+textarea[readonly] {
+  border-color: #D8D8DB;
+  background: #D8D8DB;
 }
 @media(hover:hover) {
-  ::slotted(textarea:not(:disabled):not(:focus):not([readonly]):hover),label:hover~.wrapper ::slotted(textarea:not(:disabled):not(:focus):not([readonly])) {
-    border-color: #0E4809 !important;
+  textarea:not(:disabled):not(:focus):not([readonly]):hover,label:hover~.wrapper textarea:not(:disabled):not(:focus):not([readonly]) {
+    border-color: #0E4809;
   }
 }
 
@@ -891,43 +891,43 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 :host([hidden]) {
   display: none !important;
 }
-::slotted(textarea) {
-  display: block !important;
-  width: 100% !important;
+textarea {
+  min-height: var(--p-textarea-min-height, 200px);
+  resize: var(--p-textarea-resize, vertical);
+  display: block;
+  width: 100%;
   height: auto;
-  margin: 0 !important;
-  outline: 0 !important;
-  -webkit-appearance: none !important;
-  appearance: none !important;
-  box-sizing: border-box !important;
-  border: 2px solid #197E10 !important;
-  border-radius: 4px !important;
-  background: transparent !important;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  text-indent: 0 !important;
-  color: #010205 !important;
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
-  grid-area: 1/1 !important;
-  padding: 12px 16px 32px !important;
-  min-height: 200px;
-  resize: vertical;
+  margin: 0;
+  outline: 0;
+  -webkit-appearance: none;
+  appearance: none;
+  box-sizing: border-box;
+  border: 2px solid #197E10;
+  border-radius: 4px;
+  background: transparent;
+  text-indent: 0;
+  color: #010205;
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  grid-area: 1/1;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  padding: 12px 16px 32px;
 }
-::slotted(textarea:focus) {
-  border-color: #010205 !important;
+textarea:focus {
+  border-color: #010205;
 }
-::slotted(textarea:disabled) {
-  cursor: not-allowed !important;
-  color: #949598 !important;
-  border-color: #949598 !important;
-  -webkit-text-fill-color: #949598 !important;
+textarea:disabled {
+  cursor: not-allowed;
+  color: #949598;
+  border-color: #949598;
+  -webkit-text-fill-color: #949598;
 }
-::slotted(textarea[readonly]) {
-  border-color: #D8D8DB !important;
-  background: #D8D8DB !important;
+textarea[readonly] {
+  border-color: #D8D8DB;
+  background: #D8D8DB;
 }
 @media(hover:hover) {
-  ::slotted(textarea:not(:disabled):not(:focus):not([readonly]):hover),label:hover~.wrapper ::slotted(textarea:not(:disabled):not(:focus):not([readonly])) {
-    border-color: #0E4809 !important;
+  textarea:not(:disabled):not(:focus):not([readonly]):hover,label:hover~.wrapper textarea:not(:disabled):not(:focus):not([readonly]) {
+    border-color: #0E4809;
   }
 }
 
@@ -1009,43 +1009,43 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 :host([hidden]) {
   display: none !important;
 }
-::slotted(textarea) {
-  display: block !important;
-  width: 100% !important;
+textarea {
+  min-height: var(--p-textarea-min-height, 200px);
+  resize: var(--p-textarea-resize, vertical);
+  display: block;
+  width: 100%;
   height: auto;
-  margin: 0 !important;
-  outline: 0 !important;
-  -webkit-appearance: none !important;
-  appearance: none !important;
-  box-sizing: border-box !important;
-  border: 2px solid #CC1922 !important;
-  border-radius: 4px !important;
-  background: transparent !important;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  text-indent: 0 !important;
-  color: #010205 !important;
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
-  grid-area: 1/1 !important;
-  padding: 12px 16px !important;
-  min-height: 200px;
-  resize: vertical;
+  margin: 0;
+  outline: 0;
+  -webkit-appearance: none;
+  appearance: none;
+  box-sizing: border-box;
+  border: 2px solid #CC1922;
+  border-radius: 4px;
+  background: transparent;
+  text-indent: 0;
+  color: #010205;
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  grid-area: 1/1;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  padding: 12px 16px;
 }
-::slotted(textarea:focus) {
-  border-color: #010205 !important;
+textarea:focus {
+  border-color: #010205;
 }
-::slotted(textarea:disabled) {
-  cursor: not-allowed !important;
-  color: #949598 !important;
-  border-color: #949598 !important;
-  -webkit-text-fill-color: #949598 !important;
+textarea:disabled {
+  cursor: not-allowed;
+  color: #949598;
+  border-color: #949598;
+  -webkit-text-fill-color: #949598;
 }
-::slotted(textarea[readonly]) {
-  border-color: #D8D8DB !important;
-  background: #D8D8DB !important;
+textarea[readonly] {
+  border-color: #D8D8DB;
+  background: #D8D8DB;
 }
 @media(hover:hover) {
-  ::slotted(textarea:not(:disabled):not(:focus):not([readonly]):hover),label:hover~.wrapper ::slotted(textarea:not(:disabled):not(:focus):not([readonly])) {
-    border-color: #951219 !important;
+  textarea:not(:disabled):not(:focus):not([readonly]):hover,label:hover~.wrapper textarea:not(:disabled):not(:focus):not([readonly]) {
+    border-color: #951219;
   }
 }
 
@@ -1104,43 +1104,43 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 :host([hidden]) {
   display: none !important;
 }
-::slotted(textarea) {
-  display: block !important;
-  width: 100% !important;
+textarea {
+  min-height: var(--p-textarea-min-height, 200px);
+  resize: var(--p-textarea-resize, vertical);
+  display: block;
+  width: 100%;
   height: auto;
-  margin: 0 !important;
-  outline: 0 !important;
-  -webkit-appearance: none !important;
-  appearance: none !important;
-  box-sizing: border-box !important;
-  border: 2px solid #CC1922 !important;
-  border-radius: 4px !important;
-  background: transparent !important;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  text-indent: 0 !important;
-  color: #010205 !important;
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
-  grid-area: 1/1 !important;
-  padding: 12px 16px 32px !important;
-  min-height: 200px;
-  resize: vertical;
+  margin: 0;
+  outline: 0;
+  -webkit-appearance: none;
+  appearance: none;
+  box-sizing: border-box;
+  border: 2px solid #CC1922;
+  border-radius: 4px;
+  background: transparent;
+  text-indent: 0;
+  color: #010205;
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  grid-area: 1/1;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  padding: 12px 16px 32px;
 }
-::slotted(textarea:focus) {
-  border-color: #010205 !important;
+textarea:focus {
+  border-color: #010205;
 }
-::slotted(textarea:disabled) {
-  cursor: not-allowed !important;
-  color: #949598 !important;
-  border-color: #949598 !important;
-  -webkit-text-fill-color: #949598 !important;
+textarea:disabled {
+  cursor: not-allowed;
+  color: #949598;
+  border-color: #949598;
+  -webkit-text-fill-color: #949598;
 }
-::slotted(textarea[readonly]) {
-  border-color: #D8D8DB !important;
-  background: #D8D8DB !important;
+textarea[readonly] {
+  border-color: #D8D8DB;
+  background: #D8D8DB;
 }
 @media(hover:hover) {
-  ::slotted(textarea:not(:disabled):not(:focus):not([readonly]):hover),label:hover~.wrapper ::slotted(textarea:not(:disabled):not(:focus):not([readonly])) {
-    border-color: #951219 !important;
+  textarea:not(:disabled):not(:focus):not([readonly]):hover,label:hover~.wrapper textarea:not(:disabled):not(:focus):not([readonly]) {
+    border-color: #951219;
   }
 }
 
@@ -1222,43 +1222,43 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 :host([hidden]) {
   display: none !important;
 }
-::slotted(textarea) {
-  display: block !important;
-  width: 100% !important;
+textarea {
+  min-height: var(--p-textarea-min-height, 200px);
+  resize: var(--p-textarea-resize, vertical);
+  display: block;
+  width: 100%;
   height: auto;
-  margin: 0 !important;
-  outline: 0 !important;
-  -webkit-appearance: none !important;
-  appearance: none !important;
-  box-sizing: border-box !important;
-  border: 2px solid #6B6D70 !important;
-  border-radius: 4px !important;
-  background: transparent !important;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  text-indent: 0 !important;
-  color: #010205 !important;
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
-  grid-area: 1/1 !important;
-  padding: 12px 16px !important;
-  min-height: 200px;
-  resize: vertical;
+  margin: 0;
+  outline: 0;
+  -webkit-appearance: none;
+  appearance: none;
+  box-sizing: border-box;
+  border: 2px solid #6B6D70;
+  border-radius: 4px;
+  background: transparent;
+  text-indent: 0;
+  color: #010205;
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  grid-area: 1/1;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  padding: 12px 16px;
 }
-::slotted(textarea:focus) {
-  border-color: #010205 !important;
+textarea:focus {
+  border-color: #010205;
 }
-::slotted(textarea:disabled) {
-  cursor: not-allowed !important;
-  color: #949598 !important;
-  border-color: #949598 !important;
-  -webkit-text-fill-color: #949598 !important;
+textarea:disabled {
+  cursor: not-allowed;
+  color: #949598;
+  border-color: #949598;
+  -webkit-text-fill-color: #949598;
 }
-::slotted(textarea[readonly]) {
-  border-color: #D8D8DB !important;
-  background: #D8D8DB !important;
+textarea[readonly] {
+  border-color: #D8D8DB;
+  background: #D8D8DB;
 }
 @media(hover:hover) {
-  ::slotted(textarea:not(:disabled):not(:focus):not([readonly]):hover),label:hover~.wrapper ::slotted(textarea:not(:disabled):not(:focus):not([readonly])) {
-    border-color: #010205 !important;
+  textarea:not(:disabled):not(:focus):not([readonly]):hover,label:hover~.wrapper textarea:not(:disabled):not(:focus):not([readonly]) {
+    border-color: #010205;
   }
 }
 
@@ -1316,43 +1316,43 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 :host([hidden]) {
   display: none !important;
 }
-::slotted(textarea) {
-  display: block !important;
-  width: 100% !important;
+textarea {
+  min-height: var(--p-textarea-min-height, 200px);
+  resize: var(--p-textarea-resize, vertical);
+  display: block;
+  width: 100%;
   height: auto;
-  margin: 0 !important;
-  outline: 0 !important;
-  -webkit-appearance: none !important;
-  appearance: none !important;
-  box-sizing: border-box !important;
-  border: 2px solid #6B6D70 !important;
-  border-radius: 4px !important;
-  background: transparent !important;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  text-indent: 0 !important;
-  color: #010205 !important;
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
-  grid-area: 1/1 !important;
-  padding: 12px 16px 32px !important;
-  min-height: 200px;
-  resize: vertical;
+  margin: 0;
+  outline: 0;
+  -webkit-appearance: none;
+  appearance: none;
+  box-sizing: border-box;
+  border: 2px solid #6B6D70;
+  border-radius: 4px;
+  background: transparent;
+  text-indent: 0;
+  color: #010205;
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  grid-area: 1/1;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  padding: 12px 16px 32px;
 }
-::slotted(textarea:focus) {
-  border-color: #010205 !important;
+textarea:focus {
+  border-color: #010205;
 }
-::slotted(textarea:disabled) {
-  cursor: not-allowed !important;
-  color: #949598 !important;
-  border-color: #949598 !important;
-  -webkit-text-fill-color: #949598 !important;
+textarea:disabled {
+  cursor: not-allowed;
+  color: #949598;
+  border-color: #949598;
+  -webkit-text-fill-color: #949598;
 }
-::slotted(textarea[readonly]) {
-  border-color: #D8D8DB !important;
-  background: #D8D8DB !important;
+textarea[readonly] {
+  border-color: #D8D8DB;
+  background: #D8D8DB;
 }
 @media(hover:hover) {
-  ::slotted(textarea:not(:disabled):not(:focus):not([readonly]):hover),label:hover~.wrapper ::slotted(textarea:not(:disabled):not(:focus):not([readonly])) {
-    border-color: #010205 !important;
+  textarea:not(:disabled):not(:focus):not([readonly]):hover,label:hover~.wrapper textarea:not(:disabled):not(:focus):not([readonly]) {
+    border-color: #010205;
   }
 }
 
@@ -1433,43 +1433,43 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 :host([hidden]) {
   display: none !important;
 }
-::slotted(textarea) {
-  display: block !important;
-  width: 100% !important;
+textarea {
+  min-height: var(--p-textarea-min-height, 200px);
+  resize: var(--p-textarea-resize, vertical);
+  display: block;
+  width: 100%;
   height: auto;
-  margin: 0 !important;
-  outline: 0 !important;
-  -webkit-appearance: none !important;
-  appearance: none !important;
-  box-sizing: border-box !important;
-  border: 2px solid #197E10 !important;
-  border-radius: 4px !important;
-  background: transparent !important;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  text-indent: 0 !important;
-  color: #010205 !important;
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
-  grid-area: 1/1 !important;
-  padding: 12px 16px !important;
-  min-height: 200px;
-  resize: vertical;
+  margin: 0;
+  outline: 0;
+  -webkit-appearance: none;
+  appearance: none;
+  box-sizing: border-box;
+  border: 2px solid #197E10;
+  border-radius: 4px;
+  background: transparent;
+  text-indent: 0;
+  color: #010205;
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  grid-area: 1/1;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  padding: 12px 16px;
 }
-::slotted(textarea:focus) {
-  border-color: #010205 !important;
+textarea:focus {
+  border-color: #010205;
 }
-::slotted(textarea:disabled) {
-  cursor: not-allowed !important;
-  color: #949598 !important;
-  border-color: #949598 !important;
-  -webkit-text-fill-color: #949598 !important;
+textarea:disabled {
+  cursor: not-allowed;
+  color: #949598;
+  border-color: #949598;
+  -webkit-text-fill-color: #949598;
 }
-::slotted(textarea[readonly]) {
-  border-color: #D8D8DB !important;
-  background: #D8D8DB !important;
+textarea[readonly] {
+  border-color: #D8D8DB;
+  background: #D8D8DB;
 }
 @media(hover:hover) {
-  ::slotted(textarea:not(:disabled):not(:focus):not([readonly]):hover),label:hover~.wrapper ::slotted(textarea:not(:disabled):not(:focus):not([readonly])) {
-    border-color: #0E4809 !important;
+  textarea:not(:disabled):not(:focus):not([readonly]):hover,label:hover~.wrapper textarea:not(:disabled):not(:focus):not([readonly]) {
+    border-color: #0E4809;
   }
 }
 
@@ -1528,43 +1528,43 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 :host([hidden]) {
   display: none !important;
 }
-::slotted(textarea) {
-  display: block !important;
-  width: 100% !important;
+textarea {
+  min-height: var(--p-textarea-min-height, 200px);
+  resize: var(--p-textarea-resize, vertical);
+  display: block;
+  width: 100%;
   height: auto;
-  margin: 0 !important;
-  outline: 0 !important;
-  -webkit-appearance: none !important;
-  appearance: none !important;
-  box-sizing: border-box !important;
-  border: 2px solid #197E10 !important;
-  border-radius: 4px !important;
-  background: transparent !important;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  text-indent: 0 !important;
-  color: #010205 !important;
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
-  grid-area: 1/1 !important;
-  padding: 12px 16px 32px !important;
-  min-height: 200px;
-  resize: vertical;
+  margin: 0;
+  outline: 0;
+  -webkit-appearance: none;
+  appearance: none;
+  box-sizing: border-box;
+  border: 2px solid #197E10;
+  border-radius: 4px;
+  background: transparent;
+  text-indent: 0;
+  color: #010205;
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  grid-area: 1/1;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  padding: 12px 16px 32px;
 }
-::slotted(textarea:focus) {
-  border-color: #010205 !important;
+textarea:focus {
+  border-color: #010205;
 }
-::slotted(textarea:disabled) {
-  cursor: not-allowed !important;
-  color: #949598 !important;
-  border-color: #949598 !important;
-  -webkit-text-fill-color: #949598 !important;
+textarea:disabled {
+  cursor: not-allowed;
+  color: #949598;
+  border-color: #949598;
+  -webkit-text-fill-color: #949598;
 }
-::slotted(textarea[readonly]) {
-  border-color: #D8D8DB !important;
-  background: #D8D8DB !important;
+textarea[readonly] {
+  border-color: #D8D8DB;
+  background: #D8D8DB;
 }
 @media(hover:hover) {
-  ::slotted(textarea:not(:disabled):not(:focus):not([readonly]):hover),label:hover~.wrapper ::slotted(textarea:not(:disabled):not(:focus):not([readonly])) {
-    border-color: #0E4809 !important;
+  textarea:not(:disabled):not(:focus):not([readonly]):hover,label:hover~.wrapper textarea:not(:disabled):not(:focus):not([readonly]) {
+    border-color: #0E4809;
   }
 }
 
@@ -1646,43 +1646,43 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
 :host([hidden]) {
   display: none !important;
 }
-::slotted(textarea) {
-  display: block !important;
-  width: 100% !important;
+textarea {
+  min-height: var(--p-textarea-min-height, 200px);
+  resize: var(--p-textarea-resize, vertical);
+  display: block;
+  width: 100%;
   height: auto;
-  margin: 0 !important;
-  outline: 0 !important;
-  -webkit-appearance: none !important;
-  appearance: none !important;
-  box-sizing: border-box !important;
-  border: 2px solid #CC1922 !important;
-  border-radius: 4px !important;
-  background: transparent !important;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  text-indent: 0 !important;
-  color: #010205 !important;
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
-  grid-area: 1/1 !important;
-  padding: 12px 16px !important;
-  min-height: 200px;
-  resize: vertical;
+  margin: 0;
+  outline: 0;
+  -webkit-appearance: none;
+  appearance: none;
+  box-sizing: border-box;
+  border: 2px solid #CC1922;
+  border-radius: 4px;
+  background: transparent;
+  text-indent: 0;
+  color: #010205;
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  grid-area: 1/1;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  padding: 12px 16px;
 }
-::slotted(textarea:focus) {
-  border-color: #010205 !important;
+textarea:focus {
+  border-color: #010205;
 }
-::slotted(textarea:disabled) {
-  cursor: not-allowed !important;
-  color: #949598 !important;
-  border-color: #949598 !important;
-  -webkit-text-fill-color: #949598 !important;
+textarea:disabled {
+  cursor: not-allowed;
+  color: #949598;
+  border-color: #949598;
+  -webkit-text-fill-color: #949598;
 }
-::slotted(textarea[readonly]) {
-  border-color: #D8D8DB !important;
-  background: #D8D8DB !important;
+textarea[readonly] {
+  border-color: #D8D8DB;
+  background: #D8D8DB;
 }
 @media(hover:hover) {
-  ::slotted(textarea:not(:disabled):not(:focus):not([readonly]):hover),label:hover~.wrapper ::slotted(textarea:not(:disabled):not(:focus):not([readonly])) {
-    border-color: #951219 !important;
+  textarea:not(:disabled):not(:focus):not([readonly]):hover,label:hover~.wrapper textarea:not(:disabled):not(:focus):not([readonly]) {
+    border-color: #951219;
   }
 }
 
