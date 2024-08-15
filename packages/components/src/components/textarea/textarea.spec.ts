@@ -1,8 +1,6 @@
 import { Textarea } from './textarea';
 import * as applyConstructableStylesheetStylesUtils from '../../utils/applyConstructableStylesheetStyle';
-import * as formUtils from '../../utils/form/form-utils';
 import { getSlottedAnchorStyles } from '../../styles';
-import { Event } from '@stencil/core';
 import { expect } from '@jest/globals';
 
 jest.mock('../../utils/dom');
@@ -19,8 +17,11 @@ const initComponent = (): Textarea => {
   component.host = document.createElement('p-textarea');
   component.host.attachShadow({ mode: 'open' });
   const textarea = document.createElement('textarea');
+  const counterElement = document.createElement('span');
   component.host.shadowRoot.appendChild(textarea);
+  component.host.shadowRoot.appendChild(counterElement);
   component['textAreaElement'] = textarea;
+  component['counterElement'] = counterElement;
   component['internals'] = new MockElementInternals() as unknown as ElementInternals;
 
   mockEmit = jest.fn();
@@ -45,12 +46,12 @@ describe('connectedCallback', () => {
   });
 });
 describe('componentWillLoad', () => {
-  it('should call updateCounter()', () => {
+  it('should call updateCounterVisibility()', () => {
     const component = initComponent();
-    const updateCounterSpy = jest.spyOn(component, 'updateCounter' as any);
+    const updateCounterVisibilitySpy = jest.spyOn(component, 'updateCounterVisibility' as any);
 
     component.componentWillLoad();
-    expect(updateCounterSpy).toHaveBeenCalledTimes(1);
+    expect(updateCounterVisibilitySpy).toHaveBeenCalledTimes(1);
   });
 });
 describe('formResetCallback', () => {
@@ -97,7 +98,7 @@ describe('onBlur', () => {
   });
 });
 describe('onInput', () => {
-  it('should stop propagation and emit blur event on onBlur', () => {
+  it('should stop propagation and emit input event on onInput', () => {
     const component = initComponent();
     const testValue = 'test';
     const event = {
@@ -109,39 +110,29 @@ describe('onInput', () => {
     } as unknown as InputEvent;
     component['hasCounter'] = true;
 
-    const debounceSpy = jest.spyOn(formUtils, 'debounce');
-    const setFormValueSpy = jest.spyOn(component['internals'], 'setFormValue' as any);
-
     component['onInput'](event);
 
     expect(event.stopPropagation).toHaveBeenCalled();
     expect(event.stopImmediatePropagation).toHaveBeenCalled();
     expect(mockEmit).toHaveBeenCalledWith(event);
     expect(component.value).toBe(testValue);
-    expect(debounceSpy).toHaveBeenCalled();
-    expect(setFormValueSpy).toHaveBeenCalledWith(component.value);
   });
 });
-describe('updateCounter', () => {
-  // TODO: Why is setCounterAriaTextSpy not called?
-  // it('should call updateCounterVisibility() and setCounterAriaText() when hasCounter is true', () => {
-  //   const component = initComponent();
-  //   const updateCounterVisibilitySpy = jest.spyOn(component, 'updateCounterVisibility' as any);
-  //   const setCounterAriaTextSpy = jest.spyOn(component, 'setCounterAriaText' as any);
-  //   component['hasCounter'] = true;
-  //   component['updateCounter']();
-  //
-  //   expect(updateCounterVisibilitySpy).toHaveBeenCalledTimes(1);
-  //   expect(setCounterAriaTextSpy).toHaveBeenCalledTimes(1);
-  // });
-  it('should call updateCounterVisibility() and not setCounterAriaText() when hasCounter is false', () => {
+describe('componentDidRender', () => {
+  it('should call setCounterAriaTextDebounced() when hasCounter is true', () => {
     const component = initComponent();
-    const updateCounterVisibilitySpy = jest.spyOn(component, 'updateCounterVisibility' as any);
-    const setCounterAriaTextSpy = jest.spyOn(component, 'setCounterAriaText' as any);
+    const setCounterAriaTextDebouncedSpy = jest.spyOn(component as any, 'setCounterAriaTextDebounced');
+    component['hasCounter'] = true;
+    component.componentDidRender();
+    expect(setCounterAriaTextDebouncedSpy).toHaveBeenCalledTimes(1);
+  });
+
+  it('should not call setCounterAriaTextDebounced() when hasCounter is false', () => {
+    const component = initComponent();
+    const setCounterAriaTextDebouncedSpy = jest.spyOn(component as any, 'setCounterAriaTextDebounced');
     component['hasCounter'] = false;
-    component['updateCounter']();
-    expect(updateCounterVisibilitySpy).toHaveBeenCalledTimes(1);
-    expect(setCounterAriaTextSpy).not.toHaveBeenCalledTimes(1);
+    component.componentDidRender();
+    expect(setCounterAriaTextDebouncedSpy).not.toHaveBeenCalledTimes(1);
   });
 });
 describe('updateCounterVisibility', () => {
@@ -163,6 +154,6 @@ describe('setCounterAriaText', () => {
 
     component['setCounterAriaText']();
 
-    expect(component['counterAriaText']).toBe('You have 96 out of 100 characters left');
+    expect(component['counterElement'].innerText).toBe('You have 96 out of 100 characters left');
   });
 });
