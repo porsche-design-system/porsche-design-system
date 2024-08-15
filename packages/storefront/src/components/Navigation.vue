@@ -18,7 +18,7 @@
             v-slot="{ href, navigate }"
           >
             <p-link-pure :theme="storefrontTheme" icon="none" :active="isExtendedActive(category, page)">
-              <a :href="href" @click="navigate"
+              <a :href="href" @click="navigate" :aria-current="isExtendedActive(category, page) ? 'page' : 'false'"
                 >{{ page }}
                 <span v-if="isComponentWithProp(category, page, 'isDeprecated')" title="deprecated"> 🚫</span>
                 <span v-if="isComponentWithProp(category, page, 'isExperimental')" title="experimental"> 🧪</span>
