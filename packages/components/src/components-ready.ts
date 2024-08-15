@@ -3,9 +3,15 @@ import type { PorscheDesignSystem } from './types';
 
 type PromiseResolve = (amount: number) => void;
 
+const documentReadyStateHierarchy: Record<DocumentReadyState, number> = {
+  loading: 0,
+  interactive: 1,
+  complete: 2,
+};
+
 export const componentsReady = (
   el: HTMLElement = document.body,
-  readyState: DocumentReadyState = 'complete'
+  readyState: DocumentReadyState = 'interactive'
 ): Promise<number> => {
   let promiseResolve: PromiseResolve;
   const promise: Promise<number> = new Promise((resolve) => (promiseResolve = resolve));
@@ -31,7 +37,8 @@ export const componentsReady = (
   return promise;
 };
 
-const isDocumentReady = (readyState: DocumentReadyState): boolean => document.readyState === readyState;
+const isDocumentReady = (requiredState: DocumentReadyState): boolean =>
+  documentReadyStateHierarchy[document.readyState] >= documentReadyStateHierarchy[requiredState];
 
 const isDesignSystemReady = (): Promise<void> => {
   if ((document.porscheDesignSystem?.[ROLLUP_REPLACE_VERSION as keyof PorscheDesignSystem] as any)?.isReady) {
