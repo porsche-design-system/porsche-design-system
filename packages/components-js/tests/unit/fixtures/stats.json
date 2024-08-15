@@ -147,7 +147,7 @@
   {
     "chunkShortName": "main",
     "size": 80218,
-    "gzipSize": 26643
+    "gzipSize": 26642
   },
   {
     "chunkShortName": "marque",
@@ -261,8 +261,8 @@
   },
   {
     "chunkShortName": "text-field-wrapper",
-    "size": 17806,
-    "gzipSize": 6784
+    "size": 17830,
+    "gzipSize": 6791
   },
   {
     "chunkShortName": "text-list",
@@ -271,13 +271,13 @@
   },
   {
     "chunkShortName": "textarea",
-    "size": 12829,
-    "gzipSize": 4684
+    "size": 13298,
+    "gzipSize": 4881
   },
   {
     "chunkShortName": "textarea-wrapper",
-    "size": 12036,
-    "gzipSize": 4761
+    "size": 12060,
+    "gzipSize": 4770
   },
   {
     "chunkShortName": "toast",
