@@ -8,6 +8,7 @@ import {
   hasPropValueChanged,
   THEMES,
   validateProps,
+  debounce,
 } from '../../utils';
 import {
   AUTO_COMPLETE,
@@ -23,7 +24,6 @@ import { messageId, StateMessage } from '../common/state-message/state-message';
 import { descriptionId, Label } from '../common/label/label';
 import { getSlottedAnchorStyles } from '../../styles';
 import { getComponentCss } from './textarea-styles';
-import { debounce } from '../../utils/form/form-utils';
 
 const propTypes: PropTypes<typeof Textarea> = {
   label: AllowedTypes.string,
