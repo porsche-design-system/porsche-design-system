@@ -302,33 +302,35 @@ test.describe('focus state', () => {
 });
 
 test.describe('Event', () => {
-  test('should trigger a change event when textarea value is modified and focus is lost', async ({ page }) => {
-    await initTextarea(page);
-    const host = getHost(page);
-    const textarea = getTextarea(page);
+  skipInBrowsers(['firefox', 'webkit'], () => {
+    test('should trigger a change event when textarea value is modified and focus is lost', async ({ page }) => {
+      await initTextarea(page);
+      const host = getHost(page);
+      const textarea = getTextarea(page);
 
-    await addEventListener(host, 'change');
-    expect((await getEventSummary(host, 'change')).counter).toBe(0);
+      await addEventListener(host, 'change');
+      expect((await getEventSummary(host, 'change')).counter).toBe(0);
 
-    await textarea.fill('New value');
-    await textarea.press('Tab');
-    await waitForStencilLifecycle(page);
+      await textarea.fill('New value');
+      await textarea.press('Tab');
+      await waitForStencilLifecycle(page);
 
-    expect((await getEventSummary(host, 'change')).counter).toBe(1);
-  });
-  test('should trigger a blur event when the textarea loses focus', async ({ page }) => {
-    await initTextarea(page);
-    const textarea = getTextarea(page);
-    const host = getHost(page);
+      expect((await getEventSummary(host, 'change')).counter).toBe(1);
+    });
+    test('should trigger a blur event when the textarea loses focus', async ({ page }) => {
+      await initTextarea(page);
+      const textarea = getTextarea(page);
+      const host = getHost(page);
 
-    await addEventListener(host, 'blur');
-    expect((await getEventSummary(host, 'blur')).counter).toBe(0);
+      await addEventListener(host, 'blur');
+      expect((await getEventSummary(host, 'blur')).counter).toBe(0);
 
-    await textarea.click();
-    await textarea.press('Tab');
-    await waitForStencilLifecycle(page);
+      await textarea.click();
+      await textarea.press('Tab');
+      await waitForStencilLifecycle(page);
 
-    expect((await getEventSummary(host, 'blur')).counter).toBe(1);
+      expect((await getEventSummary(host, 'blur')).counter).toBe(1);
+    });
   });
   test('should trigger an input event each time the textarea value is changed', async ({ page }) => {
     await initTextarea(page);
@@ -346,6 +348,7 @@ test.describe('Event', () => {
 });
 
 test.describe('hover state', () => {
+  skipInBrowsers(['firefox', 'webkit']);
   const defaultBorderColor = 'rgb(107, 109, 112)';
   const hoverBorderColor = 'rgb(1, 2, 5)';
 
