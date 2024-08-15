@@ -15607,6 +15607,7 @@ textarea[readonly] {
           autocomplete=""
           id="textarea"
           placeholder=""
+          readonly=""
           wrap="soft"
         />
       </div>
