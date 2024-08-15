@@ -100,6 +100,10 @@ test.describe('lifecycle', () => {
 });
 
 test.describe('slotted video', () => {
+  // test against branded Chromium, Google Chrome would work (https://playwright.dev/docs/browsers#google-chrome--microsoft-edge)
+  // but it's not shipped with the default Microsoft Playwright docker image
+  test.skip(({ browserName }) => browserName === 'chromium');
+
   test('should work with autoplay', async ({ page }) => {
     await initLinkTile(page, { video: true });
 
