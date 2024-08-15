@@ -1,6 +1,13 @@
 <div class="root">
-  <label class="label" id="label"> </label>
+  <label class="label" id="label" for="textarea"> </label>
   <div class="wrapper">
-    <slot name="internal-textarea"> </slot>
+    <textarea
+      aria-describedby="description message"
+      id="textarea"
+      name="value"
+      placeholder=""
+      autocomplete=""
+      wrap="soft"
+    ></textarea>
   </div>
 </div>
