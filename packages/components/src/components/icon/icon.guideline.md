@@ -8,6 +8,8 @@ Do you have an icon that is mandatory for several teams and purposes? We are hap
 System. Feel free to get in touch with us on our
 [Porsche Design System Slack](https://porschedev.slack.com/archives/CT7AVHTTQ)
 
+<TableOfContents></TableOfContents>
+
 ## Metaphor and Appearance
 
 - Check the Porsche environment for similar or close icons to adapt (Web, App, In Car, Print)

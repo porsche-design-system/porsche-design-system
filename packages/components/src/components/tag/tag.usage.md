@@ -1,5 +1,7 @@
 <ComponentHeading name="Tag"></ComponentHeading>
 
+<TableOfContents></TableOfContents>
+
 ## Usage
 
 Use tags to label, categorize, or organize items using keywords that describe them.
