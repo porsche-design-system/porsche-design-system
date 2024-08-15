@@ -18,3 +18,5 @@ export const Watch = jest.fn();
 export const h = jest.fn();
 
 export const forceUpdate = jest.fn();
+
+export const AttachInternals = jest.fn();
