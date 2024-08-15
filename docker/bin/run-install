@@ -7,9 +7,11 @@ echo "task: [$(date)] installing dependencies"
 
 if [ "$CI" != true ]; then
   yarn install
+  yarn playwright install chrome
 else
   # If you need reproducible dependencies, which is usually the case with the continuous integration systems, you should pass --frozen-lockfile flag.
   yarn install --frozen-lockfile
+  yarn playwright install chrome
 fi
 
 echo "task: [$(date)] finished installing dependencies"
