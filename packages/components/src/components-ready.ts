@@ -3,7 +3,10 @@ import type { PorscheDesignSystem } from './types';
 
 type PromiseResolve = (amount: number) => void;
 
-export const componentsReady = (el: HTMLElement = document.body): Promise<number> => {
+export const componentsReady = (
+  el: HTMLElement = document.body,
+  readyState: DocumentReadyState = 'interactive'
+): Promise<number> => {
   let promiseResolve: PromiseResolve;
   const promise: Promise<number> = new Promise((resolve) => (promiseResolve = resolve));
 
@@ -11,13 +14,13 @@ export const componentsReady = (el: HTMLElement = document.body): Promise<number
     isDesignSystemReady().then(() => allComponentsLoaded(el, promiseResolve));
   };
 
-  if (isDocumentReady()) {
+  if (isDocumentReady(readyState)) {
     waitForDesignSystemAndComponents();
   } else {
     // if document isn't ready yet, we register readystatechange event listener
     const eventName = 'readystatechange';
     const eventHandler = (): void => {
-      if (isDocumentReady()) {
+      if (isDocumentReady(readyState)) {
         document.removeEventListener(eventName, eventHandler);
         waitForDesignSystemAndComponents();
       }
@@ -28,7 +31,7 @@ export const componentsReady = (el: HTMLElement = document.body): Promise<number
   return promise;
 };
 
-const isDocumentReady = (): boolean => document.readyState === 'complete';
+const isDocumentReady = (readyState: DocumentReadyState): boolean => document.readyState === readyState;
 
 const isDesignSystemReady = (): Promise<void> => {
   if ((document.porscheDesignSystem?.[ROLLUP_REPLACE_VERSION as keyof PorscheDesignSystem] as any)?.isReady) {
@@ -68,8 +71,7 @@ const allComponentsLoaded = (el: HTMLElement, resolve: PromiseResolve): void => 
 const collectAllComponentOnReadyPromises = (el: HTMLElement): Promise<HostElement>[] => {
   let readyPromises: Promise<HostElement>[] = [];
 
-  // Node.ELEMENT_NODE: An Element node like <p> or <div>
-  if (el?.nodeType === 1) {
+  if (el?.nodeType === Node.ELEMENT_NODE) {
     (Array.from(el.children) as HostElement[]).forEach((childEl) => {
       if (isDesignSystemElement(childEl)) {
         readyPromises.push(childEl.componentOnReady());
