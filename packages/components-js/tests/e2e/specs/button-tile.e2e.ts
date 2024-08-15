@@ -37,11 +37,6 @@ const appendVideo = async (page: Page): Promise<void> => {
     video.loop = true;
     video.muted = true;
     video.autoplay = true;
-    // Even when video gets added with `autoplay` but dynamically we need to ensure the videos gets played with .play()
-    // to ensure read-only `paused` property is set correctly.
-    // If the video is not forced to play by `.play()` the `paused` prop will first have false and later true as value.
-    // As a result the test would always be correct independent of the expectation.
-    await video.play();
 
     document.querySelector('p-button-tile').appendChild(video);
   });
