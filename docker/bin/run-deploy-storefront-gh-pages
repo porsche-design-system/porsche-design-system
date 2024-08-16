@@ -79,7 +79,7 @@ deploy_to_gh_pages() {
   pushd "/opt/porsche-design-system-gh-pages"
     git add -A
     git commit -m "Automated deployment to GitHub Pages (${1}): ${GITHUB_SHA}" --allow-empty
-    git push origin gh-pages --force
+    git push origin main --force
   popd
 }
 
