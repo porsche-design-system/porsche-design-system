@@ -16,6 +16,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 #### Added
 
+- `Button Tile`, `Link Tile`, `Link Tile Model Signature`: supports `<video/>` (the tile components automatically check
+  for OS reduced motion setting to decide weather the video autoplay should be prevented or not to improve accessibility
+  & UX) ([#3454](https://github.com/porsche-design-system/porsche-design-system/pull/3454))
 - Extend deprecation console warnings by reference to causing DOM element
   ([#3439](https://github.com/porsche-design-system/porsche-design-system/pull/3439))
 

@@ -26,8 +26,8 @@
   },
   {
     "chunkShortName": "button-tile",
-    "size": 7325,
-    "gzipSize": 3084
+    "size": 7833,
+    "gzipSize": 3313
   },
   {
     "chunkShortName": "canvas",
@@ -131,13 +131,13 @@
   },
   {
     "chunkShortName": "link-tile",
-    "size": 7064,
-    "gzipSize": 2993
+    "size": 7572,
+    "gzipSize": 3223
   },
   {
     "chunkShortName": "link-tile-model-signature",
-    "size": 7096,
-    "gzipSize": 3177
+    "size": 7604,
+    "gzipSize": 3403
   },
   {
     "chunkShortName": "link-tile-product",
@@ -147,7 +147,7 @@
   {
     "chunkShortName": "main",
     "size": 80146,
-    "gzipSize": 26748
+    "gzipSize": 26747
   },
   {
     "chunkShortName": "marque",
