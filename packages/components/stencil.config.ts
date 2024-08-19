@@ -49,6 +49,7 @@ export const bundles: { components: TagName[] }[] = [
 export const config: Config = {
   namespace: 'porsche-design-system',
   taskQueue: 'async',
+  hydratedFlag: null,
   invisiblePrehydration: false, // done manually via getInitialStyles() partial and injectGlobalStyle() fallback
   outputTargets: [
     { type: 'dist' },
