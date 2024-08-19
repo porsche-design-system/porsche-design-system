@@ -40,6 +40,10 @@ In case you want to limit the search radius of `componentsReady` you can pass an
 This is useful when you want to show a loading indicator for only a part of your application's interface, e.g. the
 sidebar and only care about components inside.
 
+You can also specify the [`readyState`](https://developer.mozilla.org/en-US/docs/Web/API/Document/readyState) that the
+document or component should reach before the promise resolves. The default `readyState` is set to `complete`, but you
+can adjust it to other states like `interactive` or `loading` based on your requirements.
+
 ```tsx
 import { componentsReady } from '@porsche-design-system/components-{js|angular|react|vue}';
 
@@ -48,7 +52,7 @@ const initSomeSidebar = async () => {
   let showSpinner = true;
 
   // wait until all Porsche Design System components used within sidebar are ready
-  await componentsReady(sidebarEl);
+  await componentsReady(sidebarEl, 'interactive');
   showSpinner = false;
 };
 ```
