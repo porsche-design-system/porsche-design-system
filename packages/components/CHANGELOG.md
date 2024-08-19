@@ -2132,7 +2132,7 @@ to the new values since those ones will be removed with next major version.
 - Validation to ensure crucial partials are used.  
   **Disclaimer:** The Porsche Design System will **not** inject its initial styles anymore. Please use the
   `getInitialStyles()` partial to reduce flash of unstyled content (FOUC) as described here:
-  [getInitialStyles() documentation](https://designsystem.porsche.com/latest/partials/initial-styles)
+  [getInitialStyles() documentation](https://designsystem.porsche.com/v2/partials/initial-styles)
 
 #### Changed
 
@@ -2167,7 +2167,7 @@ to the new values since those ones will be removed with next major version.
 
 **Important:** make sure to apply the new `getDSRPonyfill()` partial right before your closing `</body>` tag. More
 information can be found here:
-[getDSRPonyfill() documentation](https://designsystem.porsche.com/latest/partials/dsr-ponyfill)
+[getDSRPonyfill() documentation](https://designsystem.porsche.com/v2/partials/dsr-ponyfill)
 
 ```diff
 - import { PorscheDesignSystemProvider, PButton, ... } from '@porsche-design-system/components-react';
@@ -2909,18 +2909,18 @@ guidelines.
 This way all web based digital Porsche products share and use the cached and versioned assets regardless of the JS
 framework used to improve loading performance across the Porsche group. Only a tiny (1.4kb sized) Porsche Design System
 loader script gets bundled into your application code. Everything else gets loaded versioned, cached and chunked from a
-central CDN ([read more](https://designsystem.porsche.com/latest/performance/cdn)). However, this also means that you
-will need an **Internet connection** to render the components in a browser (possibly relevant for development stage or
-intranet applications).
+central CDN ([read more](https://designsystem.porsche.com/v3/must-know/performance/cdn)). However, this also means that
+you will need an **Internet connection** to render the components in a browser (possibly relevant for development stage
+or intranet applications).
 
 #### Enabling Micro Frontend Architecture
 
 In case of a micro-frontend architecture, multiple instances and versions of the Porsche Design System can be combined
 in a final application by configurable prefixing technique of the Porsche Design System components during runtime.
 Please refer to our framework specific guidelines
-[Vanilla JS](https://designsystem.porsche.com/latest/start-coding/vanilla-js),
-[Angular](https://designsystem.porsche.com/latest/start-coding/angular) and
-[React](https://designsystem.porsche.com/latest/start-coding/react).
+[Vanilla JS](https://designsystem.porsche.com/v2/start-coding/vanilla-js),
+[Angular](https://designsystem.porsche.com/v2/start-coding/angular) and
+[React](https://designsystem.porsche.com/v2/start-coding/react).
 
 #### Prevent Flash of Unstyled Content (FOUC) and Flash of Unstyled Text (FOUT)
 
@@ -2928,7 +2928,7 @@ To prevent FOUC/FOUT, the Porsche Design System offers various partials as part 
 `@porsche-design-system/components-{js|angular|react}` package to ensure all necessary Porsche Design System fonts and
 components are fully loaded. If you've used the `@porsche-design-system/partials` package previously, stop using it and
 replace the integration with the partials provided by `@porsche-design-system/components-{js|angular|react}` package.
-Have a look at our [FOUC/FOUT guidelines](https://designsystem.porsche.com/latest/performance/loading-behaviour).
+Have a look at our [FOUC/FOUT guidelines](https://designsystem.porsche.com/v3/must-know/performance/loading-behaviour).
 
 ```diff
 - <%= require('@porsche-design-system/partials').getPorscheDesignSystemCoreStyles() %>
@@ -2946,7 +2946,7 @@ Have a look at our [FOUC/FOUT guidelines](https://designsystem.porsche.com/lates
 Our CDN is configured to forward requests to Chinese CDN automatically when necessary. So you're good to go without any
 configuration or multiple region specific builds of your application. However, if you are aiming for the maximum
 possible performance in China, you can configure which CDN the Porsche Design System must use. Please follow our
-[CDN guidelines](https://designsystem.porsche.com/latest/performance/cdn) for more information.
+[CDN guidelines](https://designsystem.porsche.com/v3/must-know/performance/cdn) for more information.
 
 #### New/optimized components
 
@@ -2975,7 +2975,7 @@ web components of the Porsche Design System.
 Because the Porsche Design System components get loaded async at the time they are needed, it might be relevant within
 your application or test automation to know when those have been initialized. Therefore, we provide in all three
 `@porsche-design-system/components-{js|angular|react}')` packages a reliable helper function `componentsReady()`.
-[Read more about it](https://designsystem.porsche.com/latest/helpers/components-ready).
+[Read more about it](https://designsystem.porsche.com/v3/developing/components-ready).
 
 #### Removed "blur on focus"
 
@@ -2999,7 +2999,7 @@ If you still need to support these browsers, you have to stick to `v1.5.x`. We o
 `@porsche-design-system/browser-notification` to alert users that these browsers are no longer supported. It supports a
 blocking layer (to be used with Porsche Design System `v2.x`), or a dismissible banner (to be used with Porsche Design
 System `v1.x`). Please refer to our
-[Browser compatibility guidelines](https://designsystem.porsche.com/latest/help/browser-compatibility).
+[Browser compatibility guidelines](https://designsystem.porsche.com/v3/must-know/browser-compatibility).
 
 #### Changed default type of Button and Button Pure
 
@@ -3068,7 +3068,7 @@ these components any longer.
 In the past it was possible to provide a token called `PREVENT_WEB_COMPONENTS_REGISTRATION` which prevented the
 registration of the Porsche Design System components and loading of polyfills. Due to the fact that we no longer provide
 / need poly filling, we have completely removed the token. For advanced usage please
-[read further](https://designsystem.porsche.com/latest/start-coding/angular).
+[read further](https://designsystem.porsche.com/v2/start-coding/angular).
 
 ---
 
@@ -3097,7 +3097,7 @@ in your `index.tsx` which then initializes the **Porsche Design System Loader**,
   );
 ```
 
-For advanced usage please [read further](https://designsystem.porsche.com/latest/start-coding/react).
+For advanced usage please [read further](https://designsystem.porsche.com/v2/start-coding/react).
 
 #### Jsdom Polyfill for React / Jest / jsdom test automation
 
@@ -3105,7 +3105,7 @@ We removed test mocks for React / Jest / jsdom as Shadow DOM is supported since 
 Jsdom Polyfill (exclusivly for `@porsche-design-system/components-react` package) fixing missing implementation of jsdom
 which the Porsche Design System relies on. **Note:** If your test includes Porsche Design System components, make sure
 to wrap the component you want to test with a PorscheDesignSystemProvider in order to avoid exceptions. For more
-information please [read further](https://designsystem.porsche.com/latest/start-coding/react).
+information please [read further](https://designsystem.porsche.com/v2/start-coding/react).
 
 ---
 
@@ -3137,7 +3137,7 @@ only need to copy one `index.js` file and initialize the Porsche Design System l
   </html>
 ```
 
-For advanced usage please [read further](https://designsystem.porsche.com/latest/start-coding/vanilla-js).
+For advanced usage please [read further](https://designsystem.porsche.com/v2/start-coding/vanilla-js).
 
 ---
 
@@ -3185,7 +3185,7 @@ For advanced usage please [read further](https://designsystem.porsche.com/latest
 
 - `Tabs Bar` has a new default `activeTabIndex`, which is `undefined`
 - `Tabs Bar` does not work by itself anymore. The `activeTabIndex` needs to be controlled from the outside
-  ([read more](https://designsystem.porsche.com/latest/components/tabs-bar/examples))
+  ([read more](https://designsystem.porsche.com/v2/components/tabs-bar/examples))
 - Background Color of `Select Wrapper` in `dark` theme to meet accessibility criteria
 
 ### [2.0.0-rc.7] - 2021-03-15
