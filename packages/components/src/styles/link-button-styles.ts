@@ -120,7 +120,8 @@ export const getLinkButtonStyles = (
       display: 'flex',
       alignItems: 'flex-start',
       justifyContent: 'center',
-      width: '100%',
+      width: '100%', // Allows for setting a width on the host
+      minWidth: 'min-content', // Do not shrink beyond icon size + padding + border + label
       boxSizing: 'border-box',
       textAlign: 'start',
       WebkitAppearance: 'none', // iOS safari
