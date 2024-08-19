@@ -664,12 +664,12 @@ slot[name=primary] {
 slot[name=secondary] {
   pointer-events: auto;
 }
-::slotted(:is(img,picture)) {
+::slotted(:is(img,picture,video)) {
   display: block !important;
   width: 100% !important;
   height: 100% !important;
 }
-::slotted(img) {
+::slotted(:is(img,video)) {
   object-fit: cover !important;
 }
 a {
@@ -1014,12 +1014,12 @@ slot[name=primary] {
 slot[name=secondary] {
   pointer-events: auto;
 }
-::slotted(:is(img,picture)) {
+::slotted(:is(img,picture,video)) {
   display: block !important;
   width: 100% !important;
   height: 100% !important;
 }
-::slotted(img) {
+::slotted(:is(img,video)) {
   object-fit: cover !important;
 }
 a {
@@ -1400,12 +1400,12 @@ slot[name=primary] {
 slot[name=secondary] {
   pointer-events: auto;
 }
-::slotted(:is(img,picture)) {
+::slotted(:is(img,picture,video)) {
   display: block !important;
   width: 100% !important;
   height: 100% !important;
 }
-::slotted(img) {
+::slotted(:is(img,video)) {
   object-fit: cover !important;
 }
 a {
@@ -1786,12 +1786,12 @@ slot[name=primary] {
 slot[name=secondary] {
   pointer-events: auto;
 }
-::slotted(:is(img,picture)) {
+::slotted(:is(img,picture,video)) {
   display: block !important;
   width: 100% !important;
   height: 100% !important;
 }
-::slotted(img) {
+::slotted(:is(img,video)) {
   object-fit: cover !important;
 }
 a {
@@ -6723,12 +6723,12 @@ slot[name="header"] {
   grid-area: 2/2;
   z-index: 3;
 }
-::slotted(:is(img,picture)) {
+::slotted(:is(img,picture,video)) {
   display: block !important;
   width: 100% !important;
   height: 100% !important;
 }
-::slotted(img) {
+::slotted(:is(img,video)) {
   object-fit: cover !important;
 }
 a {
@@ -10110,12 +10110,12 @@ slot[name="header"] {
   grid-area: 2/2;
   z-index: 3;
 }
-::slotted(:is(img,picture)) {
+::slotted(:is(img,picture,video)) {
   display: block !important;
   width: 100% !important;
   height: 100% !important;
 }
-::slotted(img) {
+::slotted(:is(img,video)) {
   object-fit: cover !important;
 }
 a {
@@ -10320,12 +10320,12 @@ slot[name=primary] {
 slot[name=secondary] {
   pointer-events: auto;
 }
-::slotted(:is(img,picture)) {
+::slotted(:is(img,picture,video)) {
   display: block !important;
   width: 100% !important;
   height: 100% !important;
 }
-::slotted(img) {
+::slotted(:is(img,video)) {
   object-fit: cover !important;
 }
 a {

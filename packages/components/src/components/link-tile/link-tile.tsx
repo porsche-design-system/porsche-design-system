@@ -1,12 +1,13 @@
 import type { BreakpointCustomizable, PropTypes, SelectedAriaAttributes } from '../../types';
 import {
-  type ITileProps,
   AllowedTypes,
   applyConstructableStylesheetStyles,
   attachComponentCss,
   getPrefixedTagNames,
   hasPropValueChanged,
+  type ITileProps,
   LINK_ARIA_ATTRIBUTES,
+  preventAutoPlayOfSlottedVideoOnPrefersReducedMotion,
   validateProps,
 } from '../../utils';
 import {
@@ -91,6 +92,10 @@ export class LinkTile implements ITileProps {
     applyConstructableStylesheetStyles(this.host, getSlottedPictureImageStyles);
   }
 
+  public componentWillLoad(): void {
+    preventAutoPlayOfSlottedVideoOnPrefersReducedMotion(this.host);
+  }
+
   public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
     return hasPropValueChanged(newVal, oldVal);
   }
@@ -148,7 +153,7 @@ export class LinkTile implements ITileProps {
         <a {...sharedLinkProps} tabIndex={-1} aria-hidden="true" />
         <slot name="header" />
         <div class="media">
-          <slot />
+          <slot onSlotchange={() => preventAutoPlayOfSlottedVideoOnPrefersReducedMotion(this.host)} />
         </div>
         <div class="footer">
           <p>{this.description}</p>

@@ -74,6 +74,7 @@ const generateDSRComponents = (): void => {
         .replace(/(private [a-zA-Z]+\??:) [-a-zA-Z<>,'| ]+/g, '$1 any') // change type of private members to any
         .replace(/( class)([:=])/g, '$1Name$2') // change class prop to className in JSX
         .replace(/getPrefixedTagNames,?\s*/, '') // remove getPrefixedTagNames import
+        .replace(/ onSlotchange={.*}/g, '') // doesn't exist in React JSX
         // remove all imports except for utils and functional components which are rewritten
         .replace(/import[\s\S]*?from '(.*)';\n/g, (m, group) =>
           group.endsWith('utils')
