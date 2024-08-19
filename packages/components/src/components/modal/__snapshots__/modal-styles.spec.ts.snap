@@ -51,7 +51,7 @@ slot[name=heading],h1,h2,h3,h4,h5,h6 {
   grid-row-start: auto;
 }
 ::slotted([slot="heading"]:is(h1,h2,h3,h4,h5,h6)) {
-  margin: 0 !important;
+  margin: 0;
 }
 dialog {
   position: fixed;
@@ -275,7 +275,7 @@ slot[name=heading],h1,h2,h3,h4,h5,h6 {
   grid-row-start: auto;
 }
 ::slotted([slot="heading"]:is(h1,h2,h3,h4,h5,h6)) {
-  margin: 0 !important;
+  margin: 0;
 }
 dialog {
   position: fixed;
@@ -499,7 +499,7 @@ slot[name=heading],h1,h2,h3,h4,h5,h6 {
   grid-row-start: auto;
 }
 ::slotted([slot="heading"]:is(h1,h2,h3,h4,h5,h6)) {
-  margin: 0 !important;
+  margin: 0;
 }
 dialog {
   position: fixed;
@@ -848,7 +848,7 @@ slot[name=heading],h1,h2,h3,h4,h5,h6 {
   grid-row-start: auto;
 }
 ::slotted([slot="heading"]:is(h1,h2,h3,h4,h5,h6)) {
-  margin: 0 !important;
+  margin: 0;
 }
 dialog {
   position: fixed;
@@ -1652,7 +1652,7 @@ slot[name=heading],h1,h2,h3,h4,h5,h6 {
   grid-row-start: auto;
 }
 ::slotted([slot="heading"]:is(h1,h2,h3,h4,h5,h6)) {
-  margin: 0 !important;
+  margin: 0;
 }
 dialog {
   position: fixed;
@@ -1778,7 +1778,7 @@ slot[name=heading],h1,h2,h3,h4,h5,h6 {
   grid-row-start: auto;
 }
 ::slotted([slot="heading"]:is(h1,h2,h3,h4,h5,h6)) {
-  margin: 0 !important;
+  margin: 0;
 }
 dialog {
   position: fixed;
@@ -2000,7 +2000,7 @@ slot[name=heading],h1,h2,h3,h4,h5,h6 {
   grid-row-start: auto;
 }
 ::slotted([slot="heading"]:is(h1,h2,h3,h4,h5,h6)) {
-  margin: 0 !important;
+  margin: 0;
 }
 dialog {
   position: fixed;
@@ -2222,7 +2222,7 @@ slot[name=heading],h1,h2,h3,h4,h5,h6 {
   grid-row-start: auto;
 }
 ::slotted([slot="heading"]:is(h1,h2,h3,h4,h5,h6)) {
-  margin: 0 !important;
+  margin: 0;
 }
 dialog {
   position: fixed;
@@ -2444,7 +2444,7 @@ slot[name=heading],h1,h2,h3,h4,h5,h6 {
   grid-row-start: auto;
 }
 ::slotted([slot="heading"]:is(h1,h2,h3,h4,h5,h6)) {
-  margin: 0 !important;
+  margin: 0;
 }
 dialog {
   position: fixed;

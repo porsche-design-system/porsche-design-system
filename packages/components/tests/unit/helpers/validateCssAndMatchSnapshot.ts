@@ -71,7 +71,7 @@ const validateSlottedStyles = (cssObject: object, tagName: TagName) => {
       // exceptions for tagName and css property are defined here
       if (
         !['p-textarea-wrapper', 'p-optgroup'].includes(tagName) &&
-        !['height', 'min-height', 'resize'].includes(cssProp)
+        !['height', 'min-height', 'resize', 'margin'].includes(cssProp)
       ) {
         expect(cssValue).toMatch(/!important$/);
       }
