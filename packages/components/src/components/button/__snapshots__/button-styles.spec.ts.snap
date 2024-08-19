@@ -16,6 +16,7 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
   align-items: flex-start;
   justify-content: center;
   width: 100%;
+  min-width: min-content;
   box-sizing: border-box;
   text-align: start;
   -webkit-appearance: none;
@@ -101,6 +102,7 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
   align-items: flex-start;
   justify-content: center;
   width: 100%;
+  min-width: min-content;
   box-sizing: border-box;
   text-align: start;
   -webkit-appearance: none;
@@ -186,6 +188,7 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
   align-items: flex-start;
   justify-content: center;
   width: 100%;
+  min-width: min-content;
   box-sizing: border-box;
   text-align: start;
   -webkit-appearance: none;
@@ -271,6 +274,7 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
   align-items: flex-start;
   justify-content: center;
   width: 100%;
+  min-width: min-content;
   box-sizing: border-box;
   text-align: start;
   -webkit-appearance: none;
@@ -446,6 +450,7 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
   align-items: flex-start;
   justify-content: center;
   width: 100%;
+  min-width: min-content;
   box-sizing: border-box;
   text-align: start;
   -webkit-appearance: none;
@@ -528,6 +533,7 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
   align-items: flex-start;
   justify-content: center;
   width: 100%;
+  min-width: min-content;
   box-sizing: border-box;
   text-align: start;
   -webkit-appearance: none;
@@ -610,6 +616,7 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
   align-items: flex-start;
   justify-content: center;
   width: 100%;
+  min-width: min-content;
   box-sizing: border-box;
   text-align: start;
   -webkit-appearance: none;
@@ -692,6 +699,7 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
   align-items: flex-start;
   justify-content: center;
   width: 100%;
+  min-width: min-content;
   box-sizing: border-box;
   text-align: start;
   -webkit-appearance: none;
@@ -774,6 +782,7 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
   align-items: flex-start;
   justify-content: center;
   width: 100%;
+  min-width: min-content;
   box-sizing: border-box;
   text-align: start;
   -webkit-appearance: none;
@@ -862,6 +871,7 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
   align-items: flex-start;
   justify-content: center;
   width: 100%;
+  min-width: min-content;
   box-sizing: border-box;
   text-align: start;
   -webkit-appearance: none;
@@ -937,6 +947,7 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
   align-items: flex-start;
   justify-content: center;
   width: 100%;
+  min-width: min-content;
   box-sizing: border-box;
   text-align: start;
   -webkit-appearance: none;
@@ -1020,6 +1031,7 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
   align-items: flex-start;
   justify-content: center;
   width: 100%;
+  min-width: min-content;
   box-sizing: border-box;
   text-align: start;
   -webkit-appearance: none;
@@ -1103,6 +1115,7 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
   align-items: flex-start;
   justify-content: center;
   width: 100%;
+  min-width: min-content;
   box-sizing: border-box;
   text-align: start;
   -webkit-appearance: none;
@@ -1186,6 +1199,7 @@ exports[`getComponentCss() should return correct css for icon: arrow-right, icon
   align-items: flex-start;
   justify-content: center;
   width: 100%;
+  min-width: min-content;
   box-sizing: border-box;
   text-align: start;
   -webkit-appearance: none;
@@ -1269,6 +1283,7 @@ exports[`getComponentCss() should return correct css for icon: none, iconSource:
   align-items: flex-start;
   justify-content: center;
   width: 100%;
+  min-width: min-content;
   box-sizing: border-box;
   text-align: start;
   -webkit-appearance: none;
