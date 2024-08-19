@@ -6,7 +6,7 @@ should use the Text Field component.
 
 A `label` is a caption which informs the user what information a particular form field is asking for. The `p-textarea`
 component can be used with or without a label, but it's recommended to keep the label visible for better accessibility
-whenever possible. When used without a label, it's best practice to provide a descriptive label text for screen readers.
+whenever possible. When used without a label, it's mandatory to provide a descriptive label text for screen readers.
 
 While a `placeholder` is optional but recommended to be set whenever bits of example content or hints shall be shown to
 give the user visual cues to fill out the form.
@@ -94,17 +94,6 @@ allowed.
 
 <Playground :markup="slots" :config="config"></Playground>
 
-### <A11yIcon></A11yIcon> Accessibility hints
-
-If using **slotted contents** to serve form elements, make sure to provide the right **ARIA attributes** to give screen
-reader users the corresponding information:
-
-1. Add a unique ID to the `slot="label"` element
-1. Add a unique ID to the `slot="message"` element (if they are created)
-1. Add corresponding `aria-labelledby="some-label-id"` to the `textarea` element which points to the `label` ID
-1. Add corresponding `aria-describedby="some-description-id some-message-id"` to the `textarea` element which points to
-   both, the `description` ID (if set) and the `message` ID when the (error/success) message appears
-
 ## Custom styling
 
 The `p-textarea` component allows for customization through CSS Custom Properties (also known as CSS Variables). These
@@ -155,13 +144,13 @@ export default class Code extends Vue {
   states = FORM_STATES;
   get stateMarkup() {
     const attr = `message="${this.state !== 'none' ? `Some ${this.state} validation message.` : ''}"`;
-    return `<p-textarea aria-invalid="${this.state === 'error'}" name="some-name" label="Some label" value="Some value" state="${this.state}" ${attr}></p-textarea>`;
+    return `<p-textarea name="some-name" label="Some label" value="Some value" state="${this.state}" ${attr}></p-textarea>`;
     }
     
   slots = `<p-textarea name="some-name" aria-labelledby="some-label-id" aria-describedby="some-description-id some-message-id" state="error">
-  <span slot="label" id="some-label-id">Some label with a <a href="https://designsystem.porsche.com">link</a>.</span>
-  <span slot="description" id="some-description-id">Some description with a <a href="https://designsystem.porsche.com">link</a>.</span>
-  <span slot="message" id="some-message-id">Some error message with a <a href="https://designsystem.porsche.com">link</a>.</span>
+  <span slot="label">Some label with a <a href="https://designsystem.porsche.com">link</a>.</span>
+  <span slot="description">Some description with a <a href="https://designsystem.porsche.com">link</a>.</span>
+  <span slot="message">Some error message with a <a href="https://designsystem.porsche.com">link</a>.</span>
 </p-textarea>`;
 
   selectedValueForm = 'Last submitted data: ';
