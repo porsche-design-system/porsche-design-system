@@ -8,7 +8,7 @@ import {
 } from '@porsche-design-system/styles';
 import { type BreakpointCustomizable, type Theme } from '../../types';
 import { buildResponsiveStyles, getCss, mergeDeep } from '../../utils';
-import { addImportantToEachRule, colorSchemeStyles, hostHiddenStyles } from '../../styles';
+import { addImportantToEachRule, addImportantToRule, colorSchemeStyles, hostHiddenStyles } from '../../styles';
 import { type ModalBackdrop } from './modal-utils';
 import {
   dialogGridJssStyle,
@@ -118,7 +118,7 @@ export const getComponentCss = (
           gridRowStart: 'auto',
         },
         [`::slotted([slot="heading"]:is(${headingTags}))`]: {
-          margin: 0, // ua-style (relevant for e.g. <h3 slot="heading"/>)
+          margin: addImportantToRule(0), // ua-style (relevant for e.g. <h3 slot="heading"/>)
         },
       }),
       dialog: getDialogJssStyle(isOpen, theme, backdrop),
