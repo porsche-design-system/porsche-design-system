@@ -13,8 +13,7 @@ export const validateCssAndMatchSnapshot = (css: string) => {
   expect(css).not.toMatch('. {'); // Invalid css which was produced before
 
   validateVisibilityStyle(cssObject);
-  // TODO: fixme
-  // validateSlottedStyles(cssObject, componentTagName);
+  validateSlottedStyles(cssObject, componentTagName);
   validateHoverMediaQuery(cssObject);
 
   // Validations for components only
@@ -70,7 +69,10 @@ const validateSlottedStyles = (cssObject: object, tagName: TagName) => {
   recursivelyApplyForKeyIncludes(cssObject, '::slotted', (_, value) => {
     Object.entries(value).forEach(([cssProp, cssValue]) => {
       // exceptions for tagName and css property are defined here
-      if (tagName !== 'p-textarea-wrapper' || !['height', 'min-height', 'resize'].includes(cssProp)) {
+      if (
+        !['p-textarea-wrapper', 'p-optgroup'].includes(tagName) &&
+        !['height', 'min-height', 'resize'].includes(cssProp)
+      ) {
         expect(cssValue).toMatch(/!important$/);
       }
 
