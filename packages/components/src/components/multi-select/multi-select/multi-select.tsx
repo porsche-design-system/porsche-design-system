@@ -304,6 +304,7 @@ export class MultiSelect {
           />
           {this.currentValue.length > 0 && (
             <PrefixedTagNames.pButtonPure
+              type="button"
               class="button"
               icon="close"
               hideLabel={true}
