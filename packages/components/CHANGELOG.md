@@ -36,6 +36,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 #### Removed
 
 - `.hydrated` class from web components
+  ([#3466](https://github.com/porsche-design-system/porsche-design-system/pull/3466))
 
 ### [3.17.0] - 2024-08-01
 
