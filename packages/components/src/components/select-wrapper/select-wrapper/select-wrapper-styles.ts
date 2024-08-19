@@ -11,7 +11,7 @@ import {
 } from '../../../styles/form-styles';
 import { getFunctionalComponentStateMessageStyles } from '../../common/state-message/state-message-styles';
 import { type FormState } from '../../../utils/form/form-state';
-import { spacingStaticXSmall } from '@porsche-design-system/styles';
+import { borderWidthBase, spacingStaticXSmall } from '@porsche-design-system/styles';
 import { getFunctionalComponentLabelStyles } from '../../common/label/label-styles';
 
 export const getComponentCss = (
@@ -48,6 +48,8 @@ export const getComponentCss = (
     root: {
       display: 'grid',
       gap: spacingStaticXSmall,
+      // min width is needed for showing at least 1 character in very narrow containers
+      minWidth: `calc(${formElementPaddingHorizontal} + ${borderWidthBase} * 2 + ${getCalculatedFormElementPaddingHorizontal(1)} + 1rem)`,
     },
     wrapper: {
       display: 'grid',

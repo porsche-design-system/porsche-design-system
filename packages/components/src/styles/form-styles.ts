@@ -53,6 +53,7 @@ export const getSlottedTextFieldTextareaSelectStyles = (
       background: 'transparent',
       font: textSmallStyle.font.replace('ex', 'ex + 6px'), // a minimum line-height is needed for input, otherwise value is scrollable in Chrome, +6px is aligned with how Safari visualize date/time input highlighting
       textIndent: 0,
+      textOverflow: 'ellipsis',
       color: primaryColor,
       transition: `${getTransition('background-color')}, ${getTransition('border-color')}, ${getTransition('color')}`, // for smooth transitions between e.g. disabled states
       ...prefersColorSchemeDarkMediaQuery(theme, {

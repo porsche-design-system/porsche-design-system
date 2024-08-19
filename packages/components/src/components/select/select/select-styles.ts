@@ -67,6 +67,8 @@ export const getComponentCss = (
     root: {
       display: 'grid',
       gap: spacingStaticXSmall,
+      // min width is needed for showing at least 1 character in very narrow containers
+      minWidth: `calc(${formElementPaddingHorizontal} + ${borderWidthBase} * 2 + ${getCalculatedFormElementPaddingHorizontal(1)} + 1rem)`,
       ...(isWithinForm && {
         position: 'relative', // Necessary for native HTML validation box positioning (internal-select)
       }),
