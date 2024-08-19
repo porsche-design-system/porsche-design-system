@@ -5,8 +5,8 @@
 set -o errexit
 set -o pipefail
 
-if [[ -z "${GH_DEPLOY_KEY_PAGES}" ]]; then
-  echo "Please provide the \$GH_DEPLOY_KEY_PAGES environment variable."
+if [[ -z "${GH_DEPLOY_KEY_STOREFRONT}" ]]; then
+  echo "Please provide the \$GH_DEPLOY_KEY_STOREFRONT environment variable."
   exit 1
 fi
 
@@ -21,7 +21,7 @@ setup_github_credentials() {
   echo "task: [$(date)] \"setup_github_credentials\""
   mkdir -p "/root/.ssh"
   ssh-keyscan -t rsa github.com > "/root/.ssh/known_hosts"
-  printf -- "${GH_DEPLOY_KEY_PAGES}\n" > "/root/.ssh/id_rsa"
+  printf -- "${GH_DEPLOY_KEY_STOREFRONT}\n" > "/root/.ssh/id_rsa"
   chmod 600 "/root/.ssh/id_rsa"
 }
 

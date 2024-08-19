@@ -403,6 +403,20 @@
   </p-link-tile-model-signature>
 </div>
 
+<div class="playground light auto-layout-inline" title="should render with video">
+  <p-link-tile-model-signature heading="Some heading" description="Video tag">
+    <video
+      poster="https://porsche-design-system.github.io/dummyasset/ocean.jpg"
+      src="https://porsche-design-system.github.io/dummyasset/ocean.mp4"
+      loop
+      muted
+      aria-hidden="true"
+    ></video>
+    <p-link slot="primary" href="#primary">Some label</p-link>
+    <p-link slot="secondary" href="#secondary">Some label</p-link>
+  </p-link-tile-model-signature>
+</div>
+
 <div class="playground light auto-layout-inline" title="should render with max width description text">
   <p-link-tile-model-signature
     style="max-width: 50rem"

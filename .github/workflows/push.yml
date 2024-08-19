@@ -21,14 +21,13 @@ jobs:
       - build-and-test
     secrets:
       github-token: ${{ secrets.GITHUB_TOKEN }}
-      gh-deploy-key-pages: ${{ secrets.GH_DEPLOY_KEY_PAGES }}
+      gh-repository-storefront: ${{ secrets.GH_REPOSITORY_STOREFRONT }}
+      gh-deploy-key-storefront: ${{ secrets.GH_DEPLOY_KEY_STOREFRONT }}
       porsche-npm-registry-token: ${{ secrets.PORSCHE_NPM_REGISTRY_TOKEN }}
       npmjs-registry-token: ${{ secrets.NPMJS_REGISTRY_TOKEN }}
       cdn-user: ${{ secrets.CDN_USER }}
       cdn-ssh-key: ${{ secrets.CDN_SSH_KEY }}
       algolia-app-id: ${{ secrets.ALGOLIA_APP_ID }}
       algolia-api-key: ${{ secrets.ALGOLIA_API_KEY }}
-      aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-      aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
       uxpin-token-dev: ${{ secrets.UXPIN_TOKEN_DEV }}
       uxpin-token-latest: ${{ secrets.UXPIN_TOKEN_LATEST }}

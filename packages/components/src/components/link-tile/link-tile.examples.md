@@ -10,7 +10,7 @@ information within one container. In case you want the user to execute an action
 
 ## Basic
 
-An `img` or `picture` tag has to be provided as default slot.
+An `<img/>`, `<picture/>` or `<video/>` tag has to be provided as default slot.
 
 Additionally, the properties `href`, `description` and `label` are required. The `description` property is used as a
 teaser with a more detailed description of the link and where it leads to.
@@ -25,11 +25,18 @@ The `label` property is used to describe the anchor.
 
 ### <A11yIcon></A11yIcon> Accessibility hints
 
-In general, placing textual contents above an image can easily lead to **contrast issues**. Though we are providing a
-scalable background gradient to reduce the risk of low contrasts between foreground text and background image, there
-still can occur issues with color contrast ratios, especially if different aspect ratios for multiple viewport sizes are
-used. So, always **check readability** and play around with the `size` and `weight` properties to achieve the best
-results.
+In general, placing textual contents above an image or video can easily lead to **contrast issues**. Though we are
+providing a scalable background gradient to reduce the risk of low contrasts between foreground text and background
+image, there still can occur issues with color contrast ratios, especially if different aspect ratios for multiple
+viewport sizes are used. So, always **check readability** and play around with the `size` and `weight` properties to
+achieve the best results.
+
+In case a video background is used, the component checks whether **reduced motion** is enabled in the **operating system
+settings** and prevents the `<video autoplay loop />` attribute from working to improve accessibility & UX. In addition,
+the slotted video should have no audio or is muted by `<video muted />`. Also keep in mind that long videos or videos in
+general might increase the page load time. The video content should support the CTA instead of distracting from it. To
+support screen reader users it's recommended to define an alternative video description
+`<video aria-label="Some video description"" />`.
 
 ## ARIA attributes and states
 
@@ -136,16 +143,33 @@ import { THEMES, TILE_ALIGNS, TILE_ASPECT_RATIOS, TILE_ASPECT_RATIOS_DEPRECATED,
 @Component
 export default class Code extends Vue {
   config = { spacing: 'block' };
-  imgAttributes = 'alt="Some alt text"';
+  imgAttributes = 'alt="Some image description"';
 
-  basic = `<p-link-tile
-  href="https://porsche.com"
-  label="Some label"
-  description="Some Description"
->
-  <p-tag slot="header" theme="dark" color="background-frosted" compact="true">Some tag</p-tag>
-  <img src="${require('@/assets/lights.jpg')}" ${this.imgAttributes} />
-</p-link-tile>`;
+  basic = `<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px;">
+  <p-link-tile
+    href="https://porsche.com"
+    label="Some label"
+    description="Some Description"
+  >
+    <p-tag slot="header" theme="dark" color="background-frosted" compact="true">Some tag</p-tag>
+    <img src="${require('@/assets/lights.jpg')}" ${this.imgAttributes} />
+  </p-link-tile>
+  <p-link-tile
+    href="https://porsche.com"
+    label="Some label"
+    description="Some Description"
+  >
+    <p-tag slot="header" theme="dark" color="background-frosted" compact="true">Some tag</p-tag>
+    <video
+      poster="https://porsche-design-system.github.io/dummyasset/ocean.jpg"
+      src="https://porsche-design-system.github.io/dummyasset/ocean.mp4"
+      loop
+      muted
+      autoplay
+      aria-label="Some video description"
+    ></video>
+  </p-link-tile>
+</div>`;
 
   accessibility = `<p-link-tile
   href="https://porsche.com"
