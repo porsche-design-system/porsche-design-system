@@ -4,8 +4,11 @@ on:
       github-token:
         description: 'github token for container registry'
         required: true
+      gh-repository-storefront:
+        description: 'github repository for github pages (storefront)'
+        required: true
       gh-deploy-key-storefront:
-        description: 'github deploy key for github pages'
+        description: 'github deploy key for github pages (storefront)'
         required: true
       porsche-npm-registry-token:
         description: 'npm registry token for porsche jfrog'
@@ -39,7 +42,7 @@ on:
         required: true
 name: 'Deploy and Release'
 env:
-  PDS_PLAYWRIGHT_DOCKER_IMAGE: ghcr.io/porsche-design-system/porsche-design-system/playwright:v1.42.1-focal-11
+  PDS_PLAYWRIGHT_DOCKER_IMAGE: ghcr.io/porsche-design-system/porsche-design-system/playwright:v1.42.1-focal-12
 jobs:
   assets-deployment:
     name: 'Assets Deployment'
@@ -109,6 +112,7 @@ jobs:
           ALGOLIA_APP_ID: ${{ secrets.algolia-app-id }}
           ALGOLIA_API_KEY: ${{ secrets.algolia-api-key }}
           GH_DEPLOY_KEY_STOREFRONT: ${{ secrets.gh-deploy-key-storefront }}
+          GH_REPOSITORY_STOREFRONT: ${{ secrets.gh-repository-storefront }}
         with:
           entrypoint: run-deploy-storefront-gh-pages
   smoke-test:

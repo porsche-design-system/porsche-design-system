@@ -21,6 +21,7 @@ jobs:
       - build-and-test
     secrets:
       github-token: ${{ secrets.GITHUB_TOKEN }}
+      gh-repository-storefront: ${{ secrets.GH_REPOSITORY_STOREFRONT }}
       gh-deploy-key-storefront: ${{ secrets.GH_DEPLOY_KEY_STOREFRONT }}
       porsche-npm-registry-token: ${{ secrets.PORSCHE_NPM_REGISTRY_TOKEN }}
       npmjs-registry-token: ${{ secrets.NPMJS_REGISTRY_TOKEN }}
