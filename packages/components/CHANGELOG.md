@@ -26,6 +26,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 - Partials: `getInitialStyles` uses CSS `:defined` to determine the visibility of web components
   ([#3466](https://github.com/porsche-design-system/porsche-design-system/pull/3466))
+- Removed `.hydrated` class from web components
 
 #### Fixed
 
