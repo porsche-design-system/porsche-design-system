@@ -29,7 +29,5 @@ jobs:
       cdn-ssh-key: ${{ secrets.CDN_SSH_KEY }}
       algolia-app-id: ${{ secrets.ALGOLIA_APP_ID }}
       algolia-api-key: ${{ secrets.ALGOLIA_API_KEY }}
-      aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-      aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
       uxpin-token-dev: ${{ secrets.UXPIN_TOKEN_DEV }}
       uxpin-token-latest: ${{ secrets.UXPIN_TOKEN_LATEST }}
