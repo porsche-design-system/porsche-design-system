@@ -864,6 +864,7 @@ img {
   align-items: flex-start;
   justify-content: center;
   width: 100%;
+  min-width: min-content;
   box-sizing: border-box;
   text-align: start;
   -webkit-appearance: none;
@@ -938,6 +939,7 @@ img {
   align-items: flex-start;
   justify-content: center;
   width: 100%;
+  min-width: min-content;
   box-sizing: border-box;
   text-align: start;
   -webkit-appearance: none;
@@ -1235,6 +1237,7 @@ img {
   align-items: flex-start;
   justify-content: center;
   width: 100%;
+  min-width: min-content;
   box-sizing: border-box;
   text-align: start;
   -webkit-appearance: none;
@@ -1327,6 +1330,7 @@ img {
   align-items: flex-start;
   justify-content: center;
   width: 100%;
+  min-width: min-content;
   box-sizing: border-box;
   text-align: start;
   -webkit-appearance: none;
@@ -1623,6 +1627,7 @@ img {
   align-items: flex-start;
   justify-content: center;
   width: 100%;
+  min-width: min-content;
   box-sizing: border-box;
   text-align: start;
   -webkit-appearance: none;
@@ -1715,6 +1720,7 @@ img {
   align-items: flex-start;
   justify-content: center;
   width: 100%;
+  min-width: min-content;
   box-sizing: border-box;
   text-align: start;
   -webkit-appearance: none;
@@ -2011,6 +2017,7 @@ img {
   align-items: flex-start;
   justify-content: center;
   width: 100%;
+  min-width: min-content;
   box-sizing: border-box;
   text-align: start;
   -webkit-appearance: none;
@@ -2106,6 +2113,7 @@ img {
   align-items: flex-start;
   justify-content: center;
   width: 100%;
+  min-width: min-content;
   box-sizing: border-box;
   text-align: start;
   -webkit-appearance: none;
@@ -3774,6 +3782,7 @@ exports[`manual test cases > should pass internal props correctly to p-stepper-h
   align-items: flex-start;
   justify-content: center;
   width: 100%;
+  min-width: min-content;
   box-sizing: border-box;
   text-align: start;
   -webkit-appearance: none;
@@ -3924,6 +3933,7 @@ img:dir(rtl) {
   align-items: flex-start;
   justify-content: center;
   width: 100%;
+  min-width: min-content;
   box-sizing: border-box;
   text-align: start;
   -webkit-appearance: none;
@@ -4476,6 +4486,7 @@ exports[`manual test cases > should pass internal props correctly to p-tabs-bar 
   align-items: flex-start;
   justify-content: center;
   width: 100%;
+  min-width: min-content;
   box-sizing: border-box;
   text-align: start;
   -webkit-appearance: none;
@@ -4626,6 +4637,7 @@ img:dir(rtl) {
   align-items: flex-start;
   justify-content: center;
   width: 100%;
+  min-width: min-content;
   box-sizing: border-box;
   text-align: start;
   -webkit-appearance: none;
@@ -5029,6 +5041,7 @@ exports[`manual test cases > should pass internal props correctly to p-tabs-item
   align-items: flex-start;
   justify-content: center;
   width: 100%;
+  min-width: min-content;
   box-sizing: border-box;
   text-align: start;
   -webkit-appearance: none;
@@ -5179,6 +5192,7 @@ img:dir(rtl) {
   align-items: flex-start;
   justify-content: center;
   width: 100%;
+  min-width: min-content;
   box-sizing: border-box;
   text-align: start;
   -webkit-appearance: none;
@@ -6778,6 +6792,7 @@ img {
   align-items: flex-start;
   justify-content: center;
   width: 100%;
+  min-width: min-content;
   box-sizing: border-box;
   text-align: start;
   -webkit-appearance: none;
@@ -6926,6 +6941,7 @@ exports[`should render dsr component for PButton 1`] = `
   align-items: flex-start;
   justify-content: center;
   width: 100%;
+  min-width: min-content;
   box-sizing: border-box;
   text-align: start;
   -webkit-appearance: none;
@@ -7332,6 +7348,7 @@ p {
   align-items: flex-start;
   justify-content: center;
   width: 100%;
+  min-width: min-content;
   box-sizing: border-box;
   text-align: start;
   -webkit-appearance: none;
@@ -7643,6 +7660,7 @@ dialog::backdrop {
   align-items: flex-start;
   justify-content: center;
   width: 100%;
+  min-width: min-content;
   box-sizing: border-box;
   text-align: start;
   -webkit-appearance: none;
@@ -7902,6 +7920,7 @@ dialog::backdrop {
   align-items: flex-start;
   justify-content: center;
   width: 100%;
+  min-width: min-content;
   box-sizing: border-box;
   text-align: start;
   -webkit-appearance: none;
@@ -8815,6 +8834,7 @@ dialog::backdrop {
   align-items: flex-start;
   justify-content: center;
   width: 100%;
+  min-width: min-content;
   box-sizing: border-box;
   text-align: start;
   -webkit-appearance: none;
@@ -10038,6 +10058,7 @@ img {
   align-items: flex-start;
   justify-content: center;
   width: 100%;
+  min-width: min-content;
   box-sizing: border-box;
   text-align: start;
   -webkit-appearance: none;
@@ -10203,6 +10224,7 @@ exports[`should render dsr component for PLink 1`] = `
   align-items: flex-start;
   justify-content: center;
   width: 100%;
+  min-width: min-content;
   box-sizing: border-box;
   text-align: start;
   -webkit-appearance: none;
@@ -10443,6 +10465,7 @@ exports[`should render dsr component for PLinkSocial 1`] = `
   align-items: flex-start;
   justify-content: center;
   width: 100%;
+  min-width: min-content;
   box-sizing: border-box;
   text-align: start;
   -webkit-appearance: none;
@@ -10705,6 +10728,7 @@ p {
   align-items: flex-start;
   justify-content: center;
   width: 100%;
+  min-width: min-content;
   box-sizing: border-box;
   text-align: start;
   -webkit-appearance: none;
@@ -10979,6 +11003,7 @@ img {
   align-items: flex-start;
   justify-content: center;
   width: 100%;
+  min-width: min-content;
   box-sizing: border-box;
   text-align: start;
   -webkit-appearance: none;
@@ -11053,6 +11078,7 @@ img {
   align-items: flex-start;
   justify-content: center;
   width: 100%;
+  min-width: min-content;
   box-sizing: border-box;
   text-align: start;
   -webkit-appearance: none;
@@ -11610,6 +11636,7 @@ dialog::backdrop {
   align-items: flex-start;
   justify-content: center;
   width: 100%;
+  min-width: min-content;
   box-sizing: border-box;
   text-align: start;
   -webkit-appearance: none;
@@ -12953,6 +12980,7 @@ exports[`should render dsr component for PScroller 1`] = `
   align-items: flex-start;
   justify-content: center;
   width: 100%;
+  min-width: min-content;
   box-sizing: border-box;
   text-align: start;
   -webkit-appearance: none;
@@ -13103,6 +13131,7 @@ img:dir(rtl) {
   align-items: flex-start;
   justify-content: center;
   width: 100%;
+  min-width: min-content;
   box-sizing: border-box;
   text-align: start;
   -webkit-appearance: none;
@@ -14117,6 +14146,7 @@ exports[`should render dsr component for PStepperHorizontal 1`] = `
   align-items: flex-start;
   justify-content: center;
   width: 100%;
+  min-width: min-content;
   box-sizing: border-box;
   text-align: start;
   -webkit-appearance: none;
@@ -14267,6 +14297,7 @@ img:dir(rtl) {
   align-items: flex-start;
   justify-content: center;
   width: 100%;
+  min-width: min-content;
   box-sizing: border-box;
   text-align: start;
   -webkit-appearance: none;
@@ -14783,6 +14814,7 @@ exports[`should render dsr component for PTable 1`] = `
   align-items: flex-start;
   justify-content: center;
   width: 100%;
+  min-width: min-content;
   box-sizing: border-box;
   text-align: start;
   -webkit-appearance: none;
@@ -14933,6 +14965,7 @@ img:dir(rtl) {
   align-items: flex-start;
   justify-content: center;
   width: 100%;
+  min-width: min-content;
   box-sizing: border-box;
   text-align: start;
   -webkit-appearance: none;
@@ -15483,6 +15516,7 @@ exports[`should render dsr component for PTabs 1`] = `
   align-items: flex-start;
   justify-content: center;
   width: 100%;
+  min-width: min-content;
   box-sizing: border-box;
   text-align: start;
   -webkit-appearance: none;
@@ -15633,6 +15667,7 @@ img:dir(rtl) {
   align-items: flex-start;
   justify-content: center;
   width: 100%;
+  min-width: min-content;
   box-sizing: border-box;
   text-align: start;
   -webkit-appearance: none;
@@ -16021,6 +16056,7 @@ exports[`should render dsr component for PTabsBar 1`] = `
   align-items: flex-start;
   justify-content: center;
   width: 100%;
+  min-width: min-content;
   box-sizing: border-box;
   text-align: start;
   -webkit-appearance: none;
@@ -16171,6 +16207,7 @@ img:dir(rtl) {
   align-items: flex-start;
   justify-content: center;
   width: 100%;
+  min-width: min-content;
   box-sizing: border-box;
   text-align: start;
   -webkit-appearance: none;
