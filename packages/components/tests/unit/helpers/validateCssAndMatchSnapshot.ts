@@ -4,7 +4,7 @@ import { getCssObject } from '../../../src/test-utils';
 import type { TagName } from '@porsche-design-system/shared';
 
 export const validateCssAndMatchSnapshot = (css: string) => {
-  const cssObject = getCssObject(css);
+  const cssObject: any = getCssObject(css);
   const componentName = expect.getState().testPath.match(/\/([^\/]+)\/[^\/]+\.spec\.ts/)[1];
   const componentTagName = `p-${componentName}` as TagName;
   // Extract componentMeta from testPath, if it's a functional component this will be undefined
@@ -21,6 +21,7 @@ export const validateCssAndMatchSnapshot = (css: string) => {
   if (componentMeta && !componentMeta.isInternal) {
     expect(cssObject[':host([hidden])']).toEqual({ display: 'none !important' });
     validateHostDisplayStyle(cssObject);
+    validateFormComponentHostDisplayStyle(cssObject, componentTagName);
   }
 
   expect(css).toMatchSnapshot();
@@ -36,12 +37,30 @@ const validateVisibilityStyle = (cssObject: object) => {
 };
 
 // Expect no !important rule on display style of :host selector since it should be overridable
-const validateHostDisplayStyle = (cssObject: object) => {
+const validateHostDisplayStyle = (cssObject: any) => {
   if (cssObject[':host'].display) {
     expect(cssObject[':host'].display).not.toMatch(/!important/);
   } else {
     // some components don't have a display style
     expect(cssObject[':host'].display).toBeUndefined();
+  }
+};
+
+// Expect all form components to have display: block as host style
+const validateFormComponentHostDisplayStyle = (cssObject: any, tagName: TagName) => {
+  if (
+    [
+      'p-checkbox-wrapper',
+      'p-multi-select',
+      'p-pin-code',
+      'p-radio-button-wrapper',
+      'p-select',
+      'p-select-wrapper',
+      'p-textarea',
+      'p-text-field-wrapper',
+    ].includes(tagName)
+  ) {
+    expect(cssObject[':host'].display).toBe('block');
   }
 };
 
