@@ -55,7 +55,7 @@ body:
     id: reproduction
     attributes:
       label: Reproduction Example
-      description: Please provide a minimal reproduction example of the issue using [StackBlitz](https://designsystem.porsche.com/latest/help/bug-report#reproduction).
+      description: Please provide a minimal reproduction example of the issue using [StackBlitz](https://designsystem.porsche.com/v3/help/bug-report#reproduction).
       placeholder: e.g. https://stackblitz.com/
     validations:
       required: true
