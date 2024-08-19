@@ -33,8 +33,8 @@ window.componentsReady = componentsReady; // for vrt
 
 /**
  * TODO: Bugfix for macOS + Slack automatic hash escaping (e.g. Slack on macOS manipulates following url
- * from https://designsystem.porsche.com/latest/#/components/marque#code
- * to https://designsystem.porsche.com/latest/#/components/marque%23code
+ * from https://designsystem.porsche.com/v3/#/components/marque#code
+ * to https://designsystem.porsche.com/v3/#/components/marque%23code
  * which causes 404)
  */
 window.location.hash = window.location.hash.replace(/%23/g, '#');

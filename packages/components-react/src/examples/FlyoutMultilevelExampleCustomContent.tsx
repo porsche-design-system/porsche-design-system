@@ -45,8 +45,8 @@ export const FlyoutMultilevelExampleCustomContentPage = (): JSX.Element => {
             aspectRatio={{ base: '4:3', xs: '16:9', s: '1:1' }}
           >
             <img
-              srcSet="https://porsche-design-system.github.io/porsche-design-system/assets/porsche-963@2x.webp 2x"
-              src="https://porsche-design-system.github.io/porsche-design-system/assets/porsche-963.webp"
+              srcSet="https://porsche-design-system.github.io/dummyasset/porsche-963@2x.webp 2x"
+              src="https://porsche-design-system.github.io/dummyasset/porsche-963.webp"
               width="636"
               height="847"
               alt="Porsche 963"

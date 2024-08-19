@@ -14,13 +14,13 @@ const component = 'link-tile-product';
 
 const scenario = async (page: Page, theme: Theme, scheme?: PrefersColorScheme): Promise<void> => {
   const image =
-    '<img src="https://porsche-design-system.github.io/porsche-design-system/assets/placeholder_800x900.svg" width="800" height="900" alt="Some alt text" />';
+    '<img src="https://porsche-design-system.github.io/dummyasset/placeholder_800x900.svg" width="800" height="900" alt="Some alt text" />';
   const picture = `<picture>
       <source
         media="(min-width:960px)"
-        srcset="https://porsche-design-system.github.io/porsche-design-system/assets/placeholder_800x900.svg"
+        srcset="https://porsche-design-system.github.io/dummyasset/placeholder_800x900.svg"
       />
-      <img src="https://porsche-design-system.github.io/porsche-design-system/assets/placeholder_800x900.svg" alt="Some alt text" />
+      <img src="https://porsche-design-system.github.io/dummyasset/placeholder_800x900.svg" alt="Some alt text" />
     </picture>`;
 
   const link = '<a slot="anchor" href="https://porsche.com">Some label</a>';

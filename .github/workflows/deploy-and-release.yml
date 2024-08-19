@@ -4,8 +4,11 @@ on:
       github-token:
         description: 'github token for container registry'
         required: true
-      gh-deploy-key-pages:
-        description: 'github deploy key for github pages'
+      gh-repository-storefront:
+        description: 'github repository for github pages (storefront)'
+        required: true
+      gh-deploy-key-storefront:
+        description: 'github deploy key for github pages (storefront)'
         required: true
       porsche-npm-registry-token:
         description: 'npm registry token for porsche jfrog'
@@ -25,12 +28,6 @@ on:
       algolia-api-key:
         description: 'algolia api key'
         required: true
-      aws-access-key-id:
-        description: 'aws access key id'
-        required: true
-      aws-secret-access-key:
-        description: 'aws secret access key'
-        required: true
       uxpin-token-dev:
         description: 'uxpin-token-dev'
         required: true
@@ -39,7 +36,7 @@ on:
         required: true
 name: 'Deploy and Release'
 env:
-  PDS_PLAYWRIGHT_DOCKER_IMAGE: ghcr.io/porsche-design-system/porsche-design-system/playwright:v1.42.1-focal-8
+  PDS_PLAYWRIGHT_DOCKER_IMAGE: ghcr.io/porsche-design-system/porsche-design-system/playwright:v1.42.1-focal-12
 jobs:
   assets-deployment:
     name: 'Assets Deployment'
@@ -64,30 +61,6 @@ jobs:
           CDN_SSH_KEY: ${{ secrets.cdn-ssh-key }}
         with:
           entrypoint: run-deploy-assets
-  storefront-deployment:
-    name: 'Storefront Deployment'
-    runs-on: ubuntu-latest
-    steps:
-      - name: 'Checkout'
-        uses: actions/checkout@v4
-      - name: 'Setup and install'
-        uses: ./.github/actions/setup-and-install
-        with:
-          github-token: ${{ secrets.github-token }}
-      - name: 'Restore Build Artifact'
-        uses: actions/download-artifact@v4
-        with:
-          name: storefront-build
-          path: ./packages/storefront/dist
-      - name: 'Deploy'
-        uses: ./.github/actions/docker-run-playwright
-        env:
-          ALGOLIA_APP_ID: ${{ secrets.algolia-app-id }}
-          ALGOLIA_API_KEY: ${{ secrets.algolia-api-key }}
-          AWS_ACCESS_KEY_ID: ${{ secrets.aws-access-key-id }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.aws-secret-access-key }}
-        with:
-          entrypoint: run-deploy-storefront
   deploy-to-gh-pages:
     name: 'Deploy to GH Pages'
     runs-on: ubuntu-latest
@@ -108,7 +81,8 @@ jobs:
         env:
           ALGOLIA_APP_ID: ${{ secrets.algolia-app-id }}
           ALGOLIA_API_KEY: ${{ secrets.algolia-api-key }}
-          GH_DEPLOY_KEY_PAGES: ${{ secrets.gh-deploy-key-pages }}
+          GH_DEPLOY_KEY_STOREFRONT: ${{ secrets.gh-deploy-key-storefront }}
+          GH_REPOSITORY_STOREFRONT: ${{ secrets.gh-repository-storefront }}
         with:
           entrypoint: run-deploy-storefront-gh-pages
   smoke-test:
@@ -208,7 +182,6 @@ jobs:
     name: 'Release Components JS'
     needs:
       - smoke-test
-      - storefront-deployment
       - deploy-to-gh-pages
     if: startsWith( github.ref, 'refs/heads/v') || github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
@@ -322,7 +295,6 @@ jobs:
     name: 'Release Assets'
     needs:
       - smoke-test
-      - storefront-deployment
       - deploy-to-gh-pages
     if: startsWith( github.ref, 'refs/heads/v') || github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest

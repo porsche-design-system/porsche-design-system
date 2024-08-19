@@ -17,9 +17,23 @@ const getHost = (page: Page) => page.locator('p-link-tile-model-signature');
 const getOverlayAnchor = (page: Page) => page.locator('p-link-tile-model-signature a').first();
 const getPrimaryLink = (page: Page) => page.locator('p-link-tile-model-signature p-link[slot="primary"]');
 const getPrimaryLinkAnchor = (page: Page) => page.locator('p-link-tile-model-signature p-link[slot="primary"] a');
+const getVideo = (page: Page) => page.locator('p-link-tile-model-signature video');
 
-const initLinkTileModelSignature = (page: Page, opts?: { useSlottedAnchor?: boolean }): Promise<void> => {
-  const { useSlottedAnchor = false } = opts || {};
+const imageTag = `<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyAQMAAAAk8RryAAAABlBMVEUAAAD2vP9xXLiUAAAAAXRSTlMAQObYZgAAABxJREFUGNNjYOBgYGBhYKAZ/R8MDsD4Q5amkz8ASp4PtTYYQZIAAAAASUVORK5CYII=" alt="Some image label"/>`;
+const videoTag = `<video
+  poster="https://porsche-design-system.github.io/dummyasset/ocean.jpg"
+  src="https://porsche-design-system.github.io/dummyasset/ocean.mp4"
+  loop
+  muted
+  autoplay
+  aria-hidden="true"
+></video>`;
+
+const initLinkTileModelSignature = (
+  page: Page,
+  opts?: { useSlottedAnchor?: boolean; img?: boolean; video?: boolean }
+): Promise<void> => {
+  const { useSlottedAnchor = false, img = false, video = false } = opts || {};
 
   const primaryAttrs = useSlottedAnchor ? '' : ' href="https://porsche.com/"';
   const primaryChild = useSlottedAnchor ? '<a href="https://porsche.com/">Some label</a>' : 'Some label';
@@ -27,17 +41,30 @@ const initLinkTileModelSignature = (page: Page, opts?: { useSlottedAnchor?: bool
   return setContentWithDesignSystem(
     page,
     `<p-link-tile-model-signature heading="Some heading">
-  <img src="'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyAQMAAAAk8RryAAAABlBMVEUAAAD2vP9xXLiUAAAAAXRSTlMAQObYZgAAABxJREFUGNNjYOBgYGBhYKAZ/R8MDsD4Q5amkz8ASp4PtTYYQZIAAAAASUVORK5CYII='" alt="Some image label" />
+  ${img ? imageTag : ''}
+  ${video ? videoTag : ''}
   <p-link slot="primary"${primaryAttrs}>${primaryChild}</p-link>
   <p-link slot="secondary" href="#">Some label</p-link>
 </p-link-tile-model-signature>`
   );
 };
 
+const appendVideo = async (page: Page): Promise<void> => {
+  await page.evaluate(async (): Promise<void> => {
+    const video = document.createElement('video');
+    video.src = 'https://porsche-design-system.github.io/dummyasset/ocean.mp4';
+    video.loop = true;
+    video.muted = true;
+    video.autoplay = true;
+
+    document.querySelector('p-link-tile-model-signature').appendChild(video);
+  });
+};
+
 test('should mirror anchor props of slot name="primary" onto overlay anchor for usage with href prop', async ({
   page,
 }) => {
-  await initLinkTileModelSignature(page);
+  await initLinkTileModelSignature(page, { img: true });
 
   const primaryLink = getPrimaryLink(page);
   const overlayAnchor = getOverlayAnchor(page);
@@ -48,7 +75,7 @@ test('should mirror anchor props of slot name="primary" onto overlay anchor for 
 test('should mirror anchor props of slot name="primary" onto overlay anchor for usage with slotted anchor', async ({
   page,
 }) => {
-  await initLinkTileModelSignature(page, { useSlottedAnchor: true });
+  await initLinkTileModelSignature(page, { useSlottedAnchor: true, img: true });
 
   const primaryLink = getPrimaryLink(page);
   const primaryLinkAnchor = getPrimaryLinkAnchor(page);
@@ -60,7 +87,7 @@ test('should mirror anchor props of slot name="primary" onto overlay anchor for 
 
 test.describe('lifecycle', () => {
   test('should work without unnecessary round trips on init', async ({ page }) => {
-    await initLinkTileModelSignature(page);
+    await initLinkTileModelSignature(page, { img: true });
     const status = await getLifecycleStatus(page);
 
     expect(
@@ -75,7 +102,7 @@ test.describe('lifecycle', () => {
   });
 
   test('should work without unnecessary round trips on prop change', async ({ page }) => {
-    await initLinkTileModelSignature(page);
+    await initLinkTileModelSignature(page, { img: true });
     const host = getHost(page);
 
     await setProperty(host, 'model', 'taycan');
@@ -110,7 +137,7 @@ test.describe('lifecycle', () => {
         }
       });
 
-      await initLinkTileModelSignature(page);
+      await initLinkTileModelSignature(page, { img: true });
       const overlayAnchor = getOverlayAnchor(page);
 
       expect(await getAttribute(overlayAnchor, 'target')).toEqual('_self');
@@ -123,7 +150,7 @@ test.describe('focus', () => {
   skipInBrowsers(['firefox', 'webkit']);
 
   test('should have correct focus order', async ({ page }) => {
-    await initLinkTileModelSignature(page);
+    await initLinkTileModelSignature(page, { img: true });
     await page.evaluate(() => {
       const linkBefore = document.createElement('a');
       linkBefore.id = 'before';
@@ -147,5 +174,41 @@ test.describe('focus', () => {
 
     await page.keyboard.press('Tab');
     expect(await getActiveElementId(page), 'active element after fourth tab click').toBe('after');
+  });
+});
+
+test.describe('slotted video', () => {
+  // test against branded Chromium, Google Chrome would work (https://playwright.dev/docs/browsers#google-chrome--microsoft-edge)
+  // but it's not shipped with the default Microsoft Playwright docker image
+  test.skip(({ browserName }) => browserName === 'chromium');
+
+  test('should work with autoplay', async ({ page }) => {
+    await initLinkTileModelSignature(page, { video: true });
+
+    await expect(getVideo(page)).toHaveJSProperty('paused', false);
+  });
+
+  test('should not autoplay when reduced motion is set', async ({ page }) => {
+    await page.emulateMedia({ reducedMotion: 'reduce' });
+
+    await initLinkTileModelSignature(page, { video: true });
+
+    await expect(getVideo(page)).toHaveJSProperty('paused', true);
+  });
+
+  test('should work with autoplay when video gets added dynamically', async ({ page }) => {
+    await initLinkTileModelSignature(page, { video: false });
+    await appendVideo(page);
+
+    await expect(getVideo(page)).toHaveJSProperty('paused', false);
+  });
+
+  test('should not autoplay when video gets added dynamically and reduced motion is set', async ({ page }) => {
+    await page.emulateMedia({ reducedMotion: 'reduce' });
+
+    await initLinkTileModelSignature(page, { video: false });
+    await appendVideo(page);
+
+    await expect(getVideo(page)).toHaveJSProperty('paused', true);
   });
 });
