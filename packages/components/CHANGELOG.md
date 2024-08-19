@@ -21,6 +21,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
   & UX) ([#3454](https://github.com/porsche-design-system/porsche-design-system/pull/3454))
 - Extend deprecation console warnings by reference to causing DOM element
   ([#3439](https://github.com/porsche-design-system/porsche-design-system/pull/3439))
+- `componentsReady()`: provide `readyState` as an optional second parameter
+  ([#3460](https://github.com/porsche-design-system/porsche-design-system/pull/3460))
 
 #### Fixed
 
