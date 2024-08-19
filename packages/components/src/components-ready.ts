@@ -11,7 +11,7 @@ const documentReadyStateHierarchy: Record<DocumentReadyState, number> = {
 
 export const componentsReady = (
   el: HTMLElement = document.body,
-  readyState: DocumentReadyState = 'interactive'
+  readyState: DocumentReadyState = 'complete'
 ): Promise<number> => {
   let promiseResolve: PromiseResolve;
   const promise: Promise<number> = new Promise((resolve) => (promiseResolve = resolve));
