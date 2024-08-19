@@ -58,7 +58,7 @@ export function getInitialStyles(opts?: GetInitialStylesOptions): string | JSX.E
   const styleAttributes = convertPropsToAttributeString(styleProps);
 
   const normalizeStyles = \`${getMinifiedCss(normalizeStyles)}\`;
-  const hydrationStyles = prefixedTagNames.join() + '{visibility:hidden}.hydrated,.ssr{visibility:inherit}';
+  const hydrationStyles = ':is('+ prefixedTagNames.join() + '):not(:defined,.ssr,[data-ssr]){visibility:hidden}';
 
 
   const styles = globalStyles ? normalizeStyles.concat(hydrationStyles) : hydrationStyles;
