@@ -14,6 +14,9 @@
   .scaling-2 {
     --p-internal-link-scaling: 2;
   }
+  .w-0 {
+    width: 0px;
+  }
 </style>
 
 <div class="playground light auto-layout-inline" title="should render primary with label only">
@@ -216,7 +219,7 @@
   <p-link class="scaling-1" href="https://porsche.com" variant="ghost">Scaling 1</p-link>
   <p-link class="scaling-1" href="https://porsche.com" variant="secondary" icon="arrow-right">Scaling 1</p-link>
   <p-link class="scaling-1" variant="secondary" icon="arrow-right"><a href="https://porsche.com">Scaling 1</a></p-link>
-  <p-link variant="secondary" icon="arrow-right">Default</p-link>
+  <p-link variant="secondary" icon="arrow-right" href="https://porsche.com">Default</p-link>
 </div>
 
 <div class="playground light auto-layout-inline" title="should render link with scaling 2">
@@ -224,4 +227,24 @@
   <p-link class="scaling-2" href="https://porsche.com" variant="ghost">Scaling 2</p-link>
   <p-link class="scaling-2" href="https://porsche.com" variant="secondary" icon="arrow-right">Scaling 2</p-link>
   <p-link class="scaling-2" variant="secondary" icon="arrow-right"><a href="https://porsche.com">Scaling 2</a></p-link>
+</div>
+
+<div
+  class="playground light auto-layout-inline"
+  title="should not render link smaller than min-content if set to 0px width"
+>
+  <div style="width: 5rem">
+    <p-link class="scaling-0 w-0" href="https://porsche.com" icon="arrow-right" hide-label="true">Scaling 0</p-link>
+  </div>
+  <div style="width: 5rem">
+    <p-link class="scaling-0 w-0" href="https://porsche.com" variant="ghost">Scaling 0</p-link>
+  </div>
+  <div style="width: 5rem">
+    <p-link class="scaling-0 w-0" href="https://porsche.com" variant="secondary" icon="arrow-right">Scaling 0</p-link>
+  </div>
+  <div style="width: 5rem">
+    <p-link class="scaling-0 w-0" variant="secondary" icon="arrow-right"
+      ><a href="https://porsche.com">Scaling 0</a></p-link
+    >
+  </div>
 </div>

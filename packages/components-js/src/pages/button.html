@@ -14,6 +14,9 @@
   .scaling-2 {
     --p-internal-button-scaling: 2;
   }
+  .w-0 {
+    width: 0px;
+  }
 </style>
 
 <div class="playground light auto-layout-inline" title="should render button primary with label only">
@@ -184,4 +187,19 @@
   <p-button class="scaling-2" icon="arrow-right" hide-label="true">Scaling 2</p-button>
   <p-button class="scaling-2" variant="ghost">Scaling 2</p-button>
   <p-button class="scaling-2" variant="secondary" icon="arrow-right">Scaling 2</p-button>
+</div>
+
+<div
+  class="playground light auto-layout-inline"
+  title="should not render button smaller than min-content if set to 0px width"
+>
+  <div style="width: 5rem">
+    <p-button class="scaling-0 w-0" icon="arrow-right" hide-label="true">Width: 0px</p-button>
+  </div>
+  <div style="width: 5rem">
+    <p-button class="scaling-0 w-0" variant="ghost">Width: 0px</p-button>
+  </div>
+  <div style="width: 5rem">
+    <p-button class="scaling-0 w-0" variant="secondary" icon="arrow-right">Width: 0px</p-button>
+  </div>
 </div>
