@@ -24,14 +24,18 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 #### Changed
 
-- Partials: `getInitialStyles` uses CSS `:defined` to determine the visibility of web components
+- Partials: `getInitialStyles` uses CSS `:defined` to determine the visibility of web components, as well as
+  `[data-ssr]` attribute for Next JS and Remix
   ([#3466](https://github.com/porsche-design-system/porsche-design-system/pull/3466))
-- Removed `.hydrated` class from web components
 
 #### Fixed
 
 - `Button Tile`, `Link Tile`, `Link Tile Model Signature`: correct image position if custom css `position: absolute` is
   used on media element ([#3446](https://github.com/porsche-design-system/porsche-design-system/pull/3446))
+
+#### Removed
+
+- `.hydrated` class from web components
 
 ### [3.17.0] - 2024-08-01
 
