@@ -22,8 +22,18 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 - Extend deprecation console warnings by reference to causing DOM element
   ([#3439](https://github.com/porsche-design-system/porsche-design-system/pull/3439))
 
+#### Changed
+
+- `Select`: added `display: block` to host in order to be consistent with other form components
+  ([#3462](https://github.com/porsche-design-system/porsche-design-system/pull/3462))
+- Partials: `getInitialStyles` uses CSS `:defined` to determine the visibility of web components, as well as
+  `[data-ssr]` attribute instead of `.ssr` class for Next JS and Remix
+  ([#3466](https://github.com/porsche-design-system/porsche-design-system/pull/3466))
+
 #### Fixed
 
+- `Select`, `Multi-Select`: programmatic focus
+  ([#3462](https://github.com/porsche-design-system/porsche-design-system/pull/3462))
 - `Button Tile`, `Link Tile`, `Link Tile Model Signature`: correct image position if custom css `position: absolute` is
   used on media element ([#3446](https://github.com/porsche-design-system/porsche-design-system/pull/3446))
 - `Select`, `Select Wrapper`, `Multi Select`, `Textfield Wrapper`: `text-overflow` has now ellipsis behaviour and
