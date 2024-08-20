@@ -29,6 +29,9 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   padding-inline-start: var(--p-internal-text-field-input-padding-start) !important;
   padding-inline-end: var(--p-internal-text-field-input-padding-end) !important;
 }
+::slotted(:not(input[type="password"])) {
+  text-overflow: ellipsis !important;
+}
 ::slotted(input:focus) {
   border-color: #010205 !important;
 }
@@ -204,6 +207,9 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   padding-inline-start: var(--p-internal-text-field-input-padding-start) !important;
   padding-inline-end: var(--p-internal-text-field-input-padding-end) !important;
 }
+::slotted(:not(input[type="password"])) {
+  text-overflow: ellipsis !important;
+}
 ::slotted(input:focus) {
   border-color: #010205 !important;
 }
@@ -323,6 +329,9 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   padding-inline-start: var(--p-internal-text-field-input-padding-start) !important;
   padding-inline-end: var(--p-internal-text-field-input-padding-end) !important;
 }
+::slotted(:not(input[type="password"])) {
+  text-overflow: ellipsis !important;
+}
 ::slotted(input:focus) {
   border-color: #010205 !important;
 }
@@ -433,6 +442,9 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   padding: 8px 16px !important;
   padding-inline-start: var(--p-internal-text-field-input-padding-start) !important;
   padding-inline-end: var(--p-internal-text-field-input-padding-end) !important;
+}
+::slotted(:not(input[type="password"])) {
+  text-overflow: ellipsis !important;
 }
 ::slotted(input:focus) {
   border-color: #010205 !important;
@@ -558,6 +570,9 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   padding-inline-start: var(--p-internal-text-field-input-padding-start) !important;
   padding-inline-end: var(--p-internal-text-field-input-padding-end) !important;
 }
+::slotted(:not(input[type="password"])) {
+  text-overflow: ellipsis !important;
+}
 ::slotted(input:focus) {
   border-color: #FBFCFF !important;
 }
@@ -681,6 +696,9 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   padding: 8px 16px !important;
   padding-inline-start: var(--p-internal-text-field-input-padding-start) !important;
   padding-inline-end: var(--p-internal-text-field-input-padding-end) !important;
+}
+::slotted(:not(input[type="password"])) {
+  text-overflow: ellipsis !important;
 }
 ::slotted(input:focus) {
   border-color: #010205 !important;
@@ -806,6 +824,9 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   padding-inline-start: var(--p-internal-text-field-input-padding-start) !important;
   padding-inline-end: var(--p-internal-text-field-input-padding-end) !important;
 }
+::slotted(:not(input[type="password"])) {
+  text-overflow: ellipsis !important;
+}
 ::slotted(input:focus) {
   border-color: #010205 !important;
 }
@@ -923,6 +944,9 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   padding: 8px 16px !important;
   padding-inline-start: var(--p-internal-text-field-input-padding-start) !important;
   padding-inline-end: var(--p-internal-text-field-input-padding-end) !important;
+}
+::slotted(:not(input[type="password"])) {
+  text-overflow: ellipsis !important;
 }
 ::slotted(input:focus) {
   border-color: #010205 !important;
@@ -1048,6 +1072,9 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   padding-inline-start: var(--p-internal-text-field-input-padding-start) !important;
   padding-inline-end: var(--p-internal-text-field-input-padding-end) !important;
 }
+::slotted(:not(input[type="password"])) {
+  text-overflow: ellipsis !important;
+}
 ::slotted(input:focus) {
   border-color: #010205 !important;
 }
@@ -1172,6 +1199,9 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   padding-inline-start: var(--p-internal-text-field-input-padding-start) !important;
   padding-inline-end: var(--p-internal-text-field-input-padding-end) !important;
 }
+::slotted(:not(input[type="password"])) {
+  text-overflow: ellipsis !important;
+}
 ::slotted(input:focus) {
   border-color: #010205 !important;
 }
@@ -1290,6 +1320,9 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   padding-inline-start: var(--p-internal-text-field-input-padding-start) !important;
   padding-inline-end: var(--p-internal-text-field-input-padding-end) !important;
 }
+::slotted(:not(input[type="password"])) {
+  text-overflow: ellipsis !important;
+}
 ::slotted(input:focus) {
   border-color: #010205 !important;
 }
@@ -1399,6 +1432,9 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   padding: 8px 16px !important;
   padding-inline-start: var(--p-internal-text-field-input-padding-start) !important;
   padding-inline-end: var(--p-internal-text-field-input-padding-end) !important;
+}
+::slotted(:not(input[type="password"])) {
+  text-overflow: ellipsis !important;
 }
 ::slotted(input:focus) {
   border-color: #010205 !important;
@@ -1529,6 +1565,9 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   padding: 8px 16px !important;
   padding-inline-start: var(--p-internal-text-field-input-padding-start) !important;
   padding-inline-end: var(--p-internal-text-field-input-padding-end) !important;
+}
+::slotted(:not(input[type="password"])) {
+  text-overflow: ellipsis !important;
 }
 ::slotted(input:focus) {
   border-color: #010205 !important;
@@ -1661,6 +1700,9 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   padding-inline-end: var(--p-internal-text-field-input-padding-end) !important;
   -moz-appearance: textfield !important;
 }
+::slotted(:not(input[type="password"])) {
+  text-overflow: ellipsis !important;
+}
 ::slotted(input:focus) {
   border-color: #010205 !important;
 }
@@ -1784,6 +1826,9 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   padding-inline-start: var(--p-internal-text-field-input-padding-start) !important;
   padding-inline-end: var(--p-internal-text-field-input-padding-end) !important;
 }
+::slotted(:not(input[type="password"])) {
+  text-overflow: ellipsis !important;
+}
 ::slotted(input:focus) {
   border-color: #010205 !important;
 }
@@ -1906,6 +1951,9 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   padding: 8px 16px !important;
   padding-inline-start: var(--p-internal-text-field-input-padding-start) !important;
   padding-inline-end: var(--p-internal-text-field-input-padding-end) !important;
+}
+::slotted(:not(input[type="password"])) {
+  text-overflow: ellipsis !important;
 }
 ::slotted(input:focus) {
   border-color: #010205 !important;
@@ -2037,6 +2085,9 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   padding-inline-start: var(--p-internal-text-field-input-padding-start) !important;
   padding-inline-end: var(--p-internal-text-field-input-padding-end) !important;
 }
+::slotted(:not(input[type="password"])) {
+  text-overflow: ellipsis !important;
+}
 ::slotted(input:focus) {
   border-color: #010205 !important;
 }
@@ -2167,6 +2218,9 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   padding-inline-start: var(--p-internal-text-field-input-padding-start) !important;
   padding-inline-end: var(--p-internal-text-field-input-padding-end) !important;
 }
+::slotted(:not(input[type="password"])) {
+  text-overflow: ellipsis !important;
+}
 ::slotted(input:focus) {
   border-color: #FBFCFF !important;
 }
@@ -2289,6 +2343,9 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   padding: 8px 16px !important;
   padding-inline-start: var(--p-internal-text-field-input-padding-start) !important;
   padding-inline-end: var(--p-internal-text-field-input-padding-end) !important;
+}
+::slotted(:not(input[type="password"])) {
+  text-overflow: ellipsis !important;
 }
 ::slotted(input:focus) {
   border-color: #010205 !important;
@@ -2413,6 +2470,9 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   padding-inline-start: var(--p-internal-text-field-input-padding-start) !important;
   padding-inline-end: var(--p-internal-text-field-input-padding-end) !important;
 }
+::slotted(:not(input[type="password"])) {
+  text-overflow: ellipsis !important;
+}
 ::slotted(input:focus) {
   border-color: #010205 !important;
 }
@@ -2532,6 +2592,9 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   padding-inline-start: var(--p-internal-text-field-input-padding-start) !important;
   padding-inline-end: var(--p-internal-text-field-input-padding-end) !important;
 }
+::slotted(:not(input[type="password"])) {
+  text-overflow: ellipsis !important;
+}
 ::slotted(input:focus) {
   border-color: #010205 !important;
 }
@@ -2642,6 +2705,9 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   padding: 8px 16px !important;
   padding-inline-start: var(--p-internal-text-field-input-padding-start) !important;
   padding-inline-end: var(--p-internal-text-field-input-padding-end) !important;
+}
+::slotted(:not(input[type="password"])) {
+  text-overflow: ellipsis !important;
 }
 ::slotted(input:focus) {
   border-color: #010205 !important;
@@ -2767,6 +2833,9 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   padding-inline-start: var(--p-internal-text-field-input-padding-start) !important;
   padding-inline-end: var(--p-internal-text-field-input-padding-end) !important;
 }
+::slotted(:not(input[type="password"])) {
+  text-overflow: ellipsis !important;
+}
 ::slotted(input:focus) {
   border-color: #FBFCFF !important;
 }
@@ -2890,6 +2959,9 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   padding: 8px 16px !important;
   padding-inline-start: var(--p-internal-text-field-input-padding-start) !important;
   padding-inline-end: var(--p-internal-text-field-input-padding-end) !important;
+}
+::slotted(:not(input[type="password"])) {
+  text-overflow: ellipsis !important;
 }
 ::slotted(input:focus) {
   border-color: #010205 !important;
@@ -3015,6 +3087,9 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
   padding-inline-start: var(--p-internal-text-field-input-padding-start) !important;
   padding-inline-end: var(--p-internal-text-field-input-padding-end) !important;
 }
+::slotted(:not(input[type="password"])) {
+  text-overflow: ellipsis !important;
+}
 ::slotted(input:focus) {
   border-color: #010205 !important;
 }
@@ -3133,6 +3208,9 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
   padding-inline-start: var(--p-internal-text-field-input-padding-start) !important;
   padding-inline-end: var(--p-internal-text-field-input-padding-end) !important;
 }
+::slotted(:not(input[type="password"])) {
+  text-overflow: ellipsis !important;
+}
 ::slotted(input:focus) {
   border-color: #010205 !important;
 }
@@ -3242,6 +3320,9 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
   padding: 8px 16px !important;
   padding-inline-start: var(--p-internal-text-field-input-padding-start) !important;
   padding-inline-end: var(--p-internal-text-field-input-padding-end) !important;
+}
+::slotted(:not(input[type="password"])) {
+  text-overflow: ellipsis !important;
 }
 ::slotted(input:focus) {
   border-color: #010205 !important;
@@ -3366,6 +3447,9 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
   padding-inline-start: var(--p-internal-text-field-input-padding-start) !important;
   padding-inline-end: var(--p-internal-text-field-input-padding-end) !important;
 }
+::slotted(:not(input[type="password"])) {
+  text-overflow: ellipsis !important;
+}
 ::slotted(input:focus) {
   border-color: #010205 !important;
 }
@@ -3483,6 +3567,9 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
   padding-inline-start: var(--p-internal-text-field-input-padding-start) !important;
   padding-inline-end: var(--p-internal-text-field-input-padding-end) !important;
 }
+::slotted(:not(input[type="password"])) {
+  text-overflow: ellipsis !important;
+}
 ::slotted(input:focus) {
   border-color: #010205 !important;
 }
@@ -3591,6 +3678,9 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
   padding: 8px 16px !important;
   padding-inline-start: var(--p-internal-text-field-input-padding-start) !important;
   padding-inline-end: var(--p-internal-text-field-input-padding-end) !important;
+}
+::slotted(:not(input[type="password"])) {
+  text-overflow: ellipsis !important;
 }
 ::slotted(input:focus) {
   border-color: #010205 !important;
@@ -3714,6 +3804,9 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
   padding-inline-start: var(--p-internal-text-field-input-padding-start) !important;
   padding-inline-end: var(--p-internal-text-field-input-padding-end) !important;
 }
+::slotted(:not(input[type="password"])) {
+  text-overflow: ellipsis !important;
+}
 ::slotted(input:focus) {
   border-color: #010205 !important;
 }
@@ -3832,6 +3925,9 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
   padding-inline-start: var(--p-internal-text-field-input-padding-start) !important;
   padding-inline-end: var(--p-internal-text-field-input-padding-end) !important;
 }
+::slotted(:not(input[type="password"])) {
+  text-overflow: ellipsis !important;
+}
 ::slotted(input:focus) {
   border-color: #010205 !important;
 }
@@ -3941,6 +4037,9 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
   padding: 8px 16px !important;
   padding-inline-start: var(--p-internal-text-field-input-padding-start) !important;
   padding-inline-end: var(--p-internal-text-field-input-padding-end) !important;
+}
+::slotted(:not(input[type="password"])) {
+  text-overflow: ellipsis !important;
 }
 ::slotted(input:focus) {
   border-color: #010205 !important;
@@ -4065,6 +4164,9 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
   padding-inline-start: var(--p-internal-text-field-input-padding-start) !important;
   padding-inline-end: var(--p-internal-text-field-input-padding-end) !important;
 }
+::slotted(:not(input[type="password"])) {
+  text-overflow: ellipsis !important;
+}
 ::slotted(input:focus) {
   border-color: #010205 !important;
 }
@@ -4174,6 +4276,9 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
   padding: 8px 16px !important;
   padding-inline-start: var(--p-internal-text-field-input-padding-start) !important;
   padding-inline-end: var(--p-internal-text-field-input-padding-end) !important;
+}
+::slotted(:not(input[type="password"])) {
+  text-overflow: ellipsis !important;
 }
 ::slotted(input:focus) {
   border-color: #010205 !important;

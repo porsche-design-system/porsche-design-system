@@ -70,6 +70,7 @@ button:not(:focus):-moz-placeholder {
 .root {
   display: grid;
   gap: 4px;
+  min-width: calc(16px + 2px * 2 + calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 1) + 1rem);
   position: relative;
 }
 .wrapper {
@@ -236,6 +237,7 @@ button:not(:focus):-moz-placeholder {
 .root {
   display: grid;
   gap: 4px;
+  min-width: calc(16px + 2px * 2 + calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 1) + 1rem);
   position: relative;
 }
 .wrapper {
@@ -408,6 +410,7 @@ button:not(:focus):-moz-placeholder {
 .root {
   display: grid;
   gap: 4px;
+  min-width: calc(16px + 2px * 2 + calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 1) + 1rem);
 }
 .wrapper {
   position: relative;
@@ -595,6 +598,7 @@ button:not(:focus):-moz-placeholder {
 .root {
   display: grid;
   gap: 4px;
+  min-width: calc(16px + 2px * 2 + calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 1) + 1rem);
   position: relative;
 }
 .wrapper {
@@ -771,6 +775,7 @@ button:not(:focus):-moz-placeholder {
 .root {
   display: grid;
   gap: 4px;
+  min-width: calc(16px + 2px * 2 + calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 1) + 1rem);
   position: relative;
 }
 .wrapper {
@@ -947,6 +952,7 @@ button:not(:focus):-moz-placeholder {
 .root {
   display: grid;
   gap: 4px;
+  min-width: calc(16px + 2px * 2 + calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 1) + 1rem);
   position: relative;
 }
 .wrapper {
@@ -1124,6 +1130,7 @@ button:not(:focus):-moz-placeholder {
 .root {
   display: grid;
   gap: 4px;
+  min-width: calc(16px + 2px * 2 + calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 1) + 1rem);
   position: relative;
 }
 .wrapper {
@@ -1300,6 +1307,7 @@ button:not(:focus):-moz-placeholder {
 .root {
   display: grid;
   gap: 4px;
+  min-width: calc(16px + 2px * 2 + calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 1) + 1rem);
   position: relative;
 }
 .wrapper {
@@ -1469,6 +1477,7 @@ button:not(:focus):-moz-placeholder {
 .root {
   display: grid;
   gap: 4px;
+  min-width: calc(16px + 2px * 2 + calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 1) + 1rem);
   position: relative;
 }
 .wrapper {
@@ -1639,6 +1648,7 @@ button:not(:focus):-moz-placeholder {
 .root {
   display: grid;
   gap: 4px;
+  min-width: calc(16px + 2px * 2 + calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 1) + 1rem);
   position: relative;
 }
 .wrapper {
@@ -1809,6 +1819,7 @@ button:not(:focus):-moz-placeholder {
 .root {
   display: grid;
   gap: 4px;
+  min-width: calc(16px + 2px * 2 + calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 1) + 1rem);
   position: relative;
 }
 .wrapper {
@@ -1979,6 +1990,7 @@ button:not(:focus):-moz-placeholder {
 .root {
   display: grid;
   gap: 4px;
+  min-width: calc(16px + 2px * 2 + calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 1) + 1rem);
   position: relative;
 }
 .wrapper {
@@ -2161,6 +2173,7 @@ button:not(:focus):-moz-placeholder {
 .root {
   display: grid;
   gap: 4px;
+  min-width: calc(16px + 2px * 2 + calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 1) + 1rem);
   position: relative;
 }
 .wrapper {
@@ -2341,6 +2354,7 @@ button:not(:focus):-moz-placeholder {
 .root {
   display: grid;
   gap: 4px;
+  min-width: calc(16px + 2px * 2 + calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 1) + 1rem);
   position: relative;
 }
 .wrapper {
@@ -2506,6 +2520,7 @@ button:not(:focus):-moz-placeholder {
 .root {
   display: grid;
   gap: 4px;
+  min-width: calc(16px + 2px * 2 + calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 1) + 1rem);
   position: relative;
 }
 .wrapper {
@@ -2673,6 +2688,7 @@ button:not(:focus):-moz-placeholder {
 .root {
   display: grid;
   gap: 4px;
+  min-width: calc(16px + 2px * 2 + calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 1) + 1rem);
   position: relative;
 }
 .wrapper {
@@ -2851,6 +2867,7 @@ button:not(:focus):-moz-placeholder {
 .root {
   display: grid;
   gap: 4px;
+  min-width: calc(16px + 2px * 2 + calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 1) + 1rem);
   position: relative;
 }
 .wrapper {
@@ -3028,6 +3045,7 @@ button:not(:focus):-moz-placeholder {
 .root {
   display: grid;
   gap: 4px;
+  min-width: calc(16px + 2px * 2 + calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 1) + 1rem);
   position: relative;
 }
 .wrapper {
@@ -3205,6 +3223,7 @@ button:not(:focus):-moz-placeholder {
 .root {
   display: grid;
   gap: 4px;
+  min-width: calc(16px + 2px * 2 + calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 1) + 1rem);
   position: relative;
 }
 .wrapper {
@@ -3382,6 +3401,7 @@ button:not(:focus):-moz-placeholder {
 .root {
   display: grid;
   gap: 4px;
+  min-width: calc(16px + 2px * 2 + calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 1) + 1rem);
   position: relative;
 }
 .wrapper {
@@ -3552,6 +3572,7 @@ button:not(:focus):-moz-placeholder {
 .root {
   display: grid;
   gap: 4px;
+  min-width: calc(16px + 2px * 2 + calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 1) + 1rem);
   position: relative;
 }
 .wrapper {
@@ -3723,6 +3744,7 @@ button:not(:focus):-moz-placeholder {
 .root {
   display: grid;
   gap: 4px;
+  min-width: calc(16px + 2px * 2 + calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 1) + 1rem);
   position: relative;
 }
 .wrapper {
@@ -3894,6 +3916,7 @@ button:not(:focus):-moz-placeholder {
 .root {
   display: grid;
   gap: 4px;
+  min-width: calc(16px + 2px * 2 + calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 1) + 1rem);
   position: relative;
 }
 .wrapper {
@@ -4065,6 +4088,7 @@ button:not(:focus):-moz-placeholder {
 .root {
   display: grid;
   gap: 4px;
+  min-width: calc(16px + 2px * 2 + calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 1) + 1rem);
   position: relative;
 }
 .wrapper {
@@ -4247,6 +4271,7 @@ button:not(:focus):-moz-placeholder {
 .root {
   display: grid;
   gap: 4px;
+  min-width: calc(16px + 2px * 2 + calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 1) + 1rem);
   position: relative;
 }
 .wrapper {
@@ -4422,6 +4447,7 @@ button:not(:focus):-moz-placeholder {
 .root {
   display: grid;
   gap: 4px;
+  min-width: calc(16px + 2px * 2 + calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 1) + 1rem);
 }
 .wrapper {
   position: relative;
@@ -4614,6 +4640,7 @@ button:not(:focus):-moz-placeholder {
 .root {
   display: grid;
   gap: 4px;
+  min-width: calc(16px + 2px * 2 + calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 1) + 1rem);
   position: relative;
 }
 .wrapper {
@@ -4795,6 +4822,7 @@ button:not(:focus):-moz-placeholder {
 .root {
   display: grid;
   gap: 4px;
+  min-width: calc(16px + 2px * 2 + calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 1) + 1rem);
   position: relative;
 }
 .wrapper {

@@ -45,6 +45,9 @@ input:nth-of-type(5) {
 input:nth-of-type(6) {
   grid-area: 1/6;
 }
+:not(input[type="password"]) {
+  text-overflow: ellipsis;
+}
 input:focus {
   border-color: #010205;
 }
@@ -230,6 +233,9 @@ input:nth-of-type(5) {
 input:nth-of-type(6) {
   grid-area: 1/6;
 }
+:not(input[type="password"]) {
+  text-overflow: ellipsis;
+}
 input:focus {
   border-color: #010205;
 }
@@ -348,6 +354,9 @@ input:nth-of-type(5) {
 }
 input:nth-of-type(6) {
   grid-area: 1/6;
+}
+:not(input[type="password"]) {
+  text-overflow: ellipsis;
 }
 input:focus {
   border-color: #010205;
@@ -468,6 +477,9 @@ input:nth-of-type(5) {
 input:nth-of-type(6) {
   grid-area: 1/6;
 }
+:not(input[type="password"]) {
+  text-overflow: ellipsis;
+}
 input:focus {
   border-color: #010205;
 }
@@ -587,6 +599,9 @@ input:nth-of-type(5) {
 input:nth-of-type(6) {
   grid-area: 1/6;
 }
+:not(input[type="password"]) {
+  text-overflow: ellipsis;
+}
 input:focus {
   border-color: #010205;
 }
@@ -705,6 +720,9 @@ input:nth-of-type(5) {
 }
 input:nth-of-type(6) {
   grid-area: 1/6;
+}
+:not(input[type="password"]) {
+  text-overflow: ellipsis;
 }
 input:focus {
   border-color: #010205;
@@ -832,6 +850,9 @@ input:nth-of-type(5) {
 }
 input:nth-of-type(6) {
   grid-area: 1/6;
+}
+:not(input[type="password"]) {
+  text-overflow: ellipsis;
 }
 input:focus {
   border-color: #010205;
@@ -965,6 +986,9 @@ input:nth-of-type(5) {
 input:nth-of-type(6) {
   grid-area: 1/6;
 }
+:not(input[type="password"]) {
+  text-overflow: ellipsis;
+}
 input:focus {
   border-color: #010205;
 }
@@ -1082,6 +1106,9 @@ input:nth-of-type(5) {
 }
 input:nth-of-type(6) {
   grid-area: 1/6;
+}
+:not(input[type="password"]) {
+  text-overflow: ellipsis;
 }
 input:focus {
   border-color: #010205;
@@ -1201,6 +1228,9 @@ input:nth-of-type(5) {
 input:nth-of-type(6) {
   grid-area: 1/6;
 }
+:not(input[type="password"]) {
+  text-overflow: ellipsis;
+}
 input:focus {
   border-color: #010205;
 }
@@ -1319,6 +1349,9 @@ input:nth-of-type(5) {
 input:nth-of-type(6) {
   grid-area: 1/6;
 }
+:not(input[type="password"]) {
+  text-overflow: ellipsis;
+}
 input:focus {
   border-color: #010205;
 }
@@ -1436,6 +1469,9 @@ input:nth-of-type(5) {
 }
 input:nth-of-type(6) {
   grid-area: 1/6;
+}
+:not(input[type="password"]) {
+  text-overflow: ellipsis;
 }
 input:focus {
   border-color: #010205;
@@ -1560,6 +1596,9 @@ input:nth-of-type(5) {
 }
 input:nth-of-type(6) {
   grid-area: 1/6;
+}
+:not(input[type="password"]) {
+  text-overflow: ellipsis;
 }
 input:focus {
   border-color: #FBFCFF;
