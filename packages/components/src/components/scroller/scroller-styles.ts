@@ -2,22 +2,15 @@ import { getCss, isThemeDark } from '../../utils';
 import {
   addImportantToEachRule,
   colorSchemeStyles,
+  dismissButtonJssStyle,
   getFocusJssStyle,
-  getThemedColors,
-  getTransition,
   hostHiddenStyles,
   hoverMediaQuery,
   prefersColorSchemeDarkMediaQuery,
 } from '../../styles';
 import type { Theme } from '../../types';
 import type { ScrollerGradientColor, ScrollerScrollIndicatorPosition } from './scroller-utils';
-import {
-  borderRadiusSmall,
-  dropShadowLowStyle,
-  fontLineHeight,
-  frostedGlassStyle,
-  textSmallStyle,
-} from '@porsche-design-system/styles';
+import { borderRadiusSmall, dropShadowLowStyle, fontLineHeight } from '@porsche-design-system/styles';
 
 const gradientColorLight: Record<ScrollerGradientColor, string> = {
   'background-base': '255,255,255',
@@ -56,26 +49,6 @@ export const getComponentCss = (
   hasScrollbar: boolean,
   theme: Theme
 ): string => {
-  const { backgroundColor, backgroundSurfaceColor, hoverColor } = getThemedColors(theme);
-  const {
-    backgroundColor: backgroundColorDark,
-    backgroundSurfaceColor: backgroundSurfaceColorDark,
-    hoverColor: hoverColorDark,
-  } = getThemedColors('dark');
-  const backgroundColorLight: Record<ScrollerGradientColor, string> = {
-    'background-base': backgroundColor,
-    'background-surface': backgroundSurfaceColor,
-  };
-
-  const backgroundColorMap: Record<Theme, Record<ScrollerGradientColor, string>> = {
-    auto: backgroundColorLight,
-    light: backgroundColorLight,
-    dark: {
-      'background-base': backgroundSurfaceColorDark,
-      'background-surface': backgroundColorDark,
-    },
-  };
-
   const actionPrevNextStyles = {
     position: 'absolute',
     top: 0,
@@ -83,7 +56,6 @@ export const getComponentCss = (
     direction: 'ltr',
     width: prevNextWrapperWidth,
     padding: '4px 0',
-    pointerEvents: 'none',
     display: 'flex',
     alignItems: scrollIndicatorPosition === 'center' ? 'center' : 'flex-start',
   };
@@ -96,36 +68,6 @@ export const getComponentCss = (
           height: 'inherit',
           ...colorSchemeStyles,
           ...hostHiddenStyles,
-        }),
-      },
-      button: {
-        display: 'flex',
-        pointerEvents: 'auto',
-        alignItems: 'center',
-        justifyContent: 'center',
-        ...textSmallStyle,
-        height: `calc(${fontLineHeight} + 4px)`,
-        width: `calc(${fontLineHeight} + 4px)`,
-        border: 0,
-        outline: 0,
-        cursor: 'pointer',
-        background: backgroundColorMap[theme][gradientColor],
-        ...prefersColorSchemeDarkMediaQuery(theme, {
-          background: backgroundColorMap.dark[gradientColor],
-        }),
-        borderRadius: borderRadiusSmall,
-        ...frostedGlassStyle,
-        visibility: 'hidden',
-        ...(!isThemeDark(theme) && dropShadowLowStyle),
-        ...hoverMediaQuery({
-          transition: getTransition('background-color'),
-          '&:hover': {
-            ...frostedGlassStyle,
-            background: hoverColor,
-            ...prefersColorSchemeDarkMediaQuery(theme, {
-              background: hoverColorDark,
-            }),
-          },
         }),
       },
     },
@@ -182,7 +124,7 @@ export const getComponentCss = (
         background: `linear-gradient(to right, ${getGradient('dark', gradientColor)} 100%)`,
       }),
       visibility: isPrevHidden ? 'hidden' : 'inherit',
-      '& button': {
+      '& .action-button': {
         marginLeft: '8px',
         // hide buttons on mobile (actually devices not supporting hover)
         ...hoverMediaQuery({
@@ -199,13 +141,17 @@ export const getComponentCss = (
         background: `linear-gradient(to left, ${getGradient('dark', gradientColor)} 100%)`,
       }),
       visibility: isNextHidden ? 'hidden' : 'inherit',
-      '& button': {
+      '& .action-button': {
         marginRight: '8px',
         // hide buttons on mobile (actually devices not supporting hover)
         ...hoverMediaQuery({
           visibility: isNextHidden ? 'hidden' : 'inherit',
         }),
       },
+    },
+    'action-button': {
+      ...dismissButtonJssStyle,
+      ...(!isThemeDark(theme) && dropShadowLowStyle),
     },
     icon: {
       '&:dir(rtl)': {

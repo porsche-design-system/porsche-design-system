@@ -185,7 +185,8 @@ export class Flyout {
       >
         <div class="scroller" ref={(el) => (this.scroller = el)}>
           <div class="flyout">
-            <PrefixedTagNames.pButtonPure
+            <PrefixedTagNames.pButton
+              variant="ghost"
               class="dismiss"
               type="button"
               hideLabel
@@ -194,7 +195,7 @@ export class Flyout {
               onClick={this.dismissDialog}
             >
               Dismiss flyout
-            </PrefixedTagNames.pButtonPure>
+            </PrefixedTagNames.pButton>
             {this.hasHeader && <slot name="header" ref={(el: HTMLSlotElement) => (this.header = el)} />}
             <slot />
             {this.hasFooter && <slot name="footer" ref={(el: HTMLSlotElement) => (this.footer = el)} />}

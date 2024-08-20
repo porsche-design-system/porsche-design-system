@@ -217,7 +217,8 @@ export class Modal {
         <div class="scroller" ref={(el) => (this.scroller = el)}>
           <div class="modal">
             {this.hasDismissButton && (
-              <PrefixedTagNames.pButtonPure
+              <PrefixedTagNames.pButton
+                variant="ghost"
                 class="dismiss"
                 type="button"
                 hideLabel
@@ -226,7 +227,7 @@ export class Modal {
                 theme={this.theme}
               >
                 Dismiss modal
-              </PrefixedTagNames.pButtonPure>
+              </PrefixedTagNames.pButton>
             )}
             {this.hasHeader &&
               (this.heading ? (

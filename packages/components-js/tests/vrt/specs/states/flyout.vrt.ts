@@ -41,17 +41,13 @@ const scenario = async (
 
   if (pseudoState === 'hover') {
     await forceHoverState(page, '.hover p-flyout a');
-    // due to custom hover state we need to set hover also on component itself
-    await forceHoverState(page, '.hover p-flyout >>> p-button-pure');
-    await forceHoverState(page, '.hover p-flyout >>> p-button-pure >>> button');
+    await forceHoverState(page, '.hover p-flyout >>> p-button >>> button');
   } else if (pseudoState === 'focus') {
     await forceFocusVisibleState(page, '.focus p-flyout a');
-    await forceFocusVisibleState(page, '.focus p-flyout >>> p-button-pure >>> button');
+    await forceFocusVisibleState(page, '.focus p-flyout >>> p-button >>> button');
   } else if (pseudoState === 'focus-hover') {
     await forceFocusHoverState(page, '.focus-hover p-flyout a');
-    // due to custom hover state we need to set hover also on component itself
-    await forceFocusHoverState(page, '.focus-hover p-flyout >>> p-button-pure');
-    await forceFocusHoverState(page, '.focus-hover p-flyout >>> p-button-pure >>> button');
+    await forceFocusHoverState(page, '.focus-hover p-flyout >>> p-button >>> button');
   }
 };
 

@@ -34,7 +34,7 @@ const initBanner = (page: Page, opts: InitOptions): Promise<void> => {
 
 const getHost = (page: Page) => page.locator('p-banner');
 const getInlineNotification = (page: Page) => page.locator('p-banner p-inline-notification');
-const getCloseButton = (page: Page) => page.locator('p-banner p-inline-notification p-button-pure.close');
+const getCloseButton = (page: Page) => page.locator('p-banner p-inline-notification .close');
 
 test('should forward props correctly to p-inline-notification', async ({ page }) => {
   await setContentWithDesignSystem(
@@ -156,7 +156,7 @@ test.describe('close', () => {
 
     const banner1 = page.locator('#banner1');
     const banner2 = page.locator('#banner2');
-    const closeButtonBanner2 = page.locator('#banner2 p-inline-notification p-button-pure');
+    const closeButtonBanner2 = page.locator('#banner2 p-inline-notification p-button');
 
     const classListBanner1 = await getCssClasses(banner1);
     const classListBanner2 = await getCssClasses(banner2);
@@ -183,8 +183,8 @@ test.describe('lifecycle', () => {
 
     expect(status.componentDidLoad['p-banner'], 'componentDidLoad: p-banner').toBe(1);
     expect(status.componentDidLoad['p-inline-notification'], 'componentDidLoad: p-inline-notification').toBe(1);
-    expect(status.componentDidLoad['p-icon'], 'componentDidLoad: p-icon').toBe(2); // one included in button-pure
-    expect(status.componentDidLoad['p-button-pure'], 'componentDidLoad: p-button-pure').toBe(1);
+    expect(status.componentDidLoad['p-icon'], 'componentDidLoad: p-icon').toBe(2); // one included in button
+    expect(status.componentDidLoad['p-button'], 'componentDidLoad: p-button').toBe(1);
 
     expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(5);
     expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(0);

@@ -1,10 +1,11 @@
 import type { Theme } from '../../types';
 import type { InlineNotificationState } from './inline-notification-utils';
-import { getMediaQueryMax, headingSmallStyle, textSmallStyle } from '@porsche-design-system/styles';
-import { getCss, HEADING_TAGS } from '../../utils';
+import { borderWidthBase, getMediaQueryMax, headingSmallStyle, textSmallStyle } from '@porsche-design-system/styles';
+import { getCss, HEADING_TAGS, isThemeDark } from '../../utils';
 import {
   addImportantToEachRule,
   colorSchemeStyles,
+  dismissButtonJssStyle,
   getThemedColors,
   hostHiddenStyles,
   prefersColorSchemeDarkMediaQuery,
@@ -59,10 +60,18 @@ export const getComponentCss = (
     content: getNotificationContentJssStyle(),
     ...(hasAction && {
       action: {
+        marginTop: borderWidthBase, // To visually align with close button
         [mediaQueryMaxS]: {
           gridRowStart: 2,
         },
       },
     }),
+    close: {
+      ...dismissButtonJssStyle,
+      mixBlendMode: isThemeDark(theme) ? 'plus-lighter' : 'multiply',
+      ...prefersColorSchemeDarkMediaQuery(theme, {
+        mixBlendMode: 'plus-lighter',
+      }),
+    },
   });
 };

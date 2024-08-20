@@ -88,7 +88,7 @@ import { GRADIENT_COLORS } from './scroller-utils';
   
 @Component
 export default class Code extends Vue {
-  config = { themeable: true };
+  config = { themeable: true, overflowX: 'visible' };
 
   get theme(): Theme {
     return this.$store.getters.playgroundTheme;
