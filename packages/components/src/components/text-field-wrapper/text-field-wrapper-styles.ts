@@ -102,6 +102,10 @@ export const getComponentCss = (
           : formElementPaddingHorizontal,
       display: 'grid',
       gap: spacingStaticXSmall,
+      // min width is needed for showing at least 1 character in very narrow containers
+      ...((hasUnitOrVisibleCounter || isSearch || isPassword || isCalendarOrTimeWithCustomIndicator) && {
+        minWidth: `calc(${formElementPaddingHorizontal} + ${borderWidthBase} * 2 + ${getCalculatedFormElementPaddingHorizontal(isSearch ? 2 : 1)} + 2rem)`,
+      }),
     },
     wrapper: {
       display: 'grid',
