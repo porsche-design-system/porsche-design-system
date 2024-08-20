@@ -1,1 +1,1 @@
-export const isSsrHydration = (host: HTMLElement): boolean => host.classList.contains('ssr');
+export const isSsrHydration = (host: HTMLElement): boolean => host.hasAttribute('data-ssr');
