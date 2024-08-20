@@ -26,6 +26,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 - `Button Tile`, `Link Tile`, `Link Tile Model Signature`: correct image position if custom css `position: absolute` is
   used on media element ([#3446](https://github.com/porsche-design-system/porsche-design-system/pull/3446))
+- `Select`, `Select Wrapper`, `Multi Select`, `Textfield Wrapper`: `text-overflow` has now ellipsis behaviour and
+  `min-width` is added to prevent text overlapping
+  ([#3465](https://github.com/porsche-design-system/porsche-design-system/pull/3465))
 
 ### [3.17.0] - 2024-08-01
 
