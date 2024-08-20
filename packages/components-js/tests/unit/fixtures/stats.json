@@ -116,13 +116,13 @@
   },
   {
     "chunkShortName": "link",
-    "size": 6755,
-    "gzipSize": 2903
+    "size": 6754,
+    "gzipSize": 2907
   },
   {
     "chunkShortName": "link-pure",
-    "size": 7578,
-    "gzipSize": 3222
+    "size": 7577,
+    "gzipSize": 3227
   },
   {
     "chunkShortName": "link-social",
@@ -146,8 +146,8 @@
   },
   {
     "chunkShortName": "main",
-    "size": 80146,
-    "gzipSize": 26747
+    "size": 80148,
+    "gzipSize": 26751
   },
   {
     "chunkShortName": "marque",
@@ -166,8 +166,8 @@
   },
   {
     "chunkShortName": "multi-select",
-    "size": 26682,
-    "gzipSize": 9290
+    "size": 26733,
+    "gzipSize": 9309
   },
   {
     "chunkShortName": "optgroup",
@@ -206,13 +206,13 @@
   },
   {
     "chunkShortName": "select",
-    "size": 25802,
-    "gzipSize": 9070
+    "size": 25860,
+    "gzipSize": 9089
   },
   {
     "chunkShortName": "select-wrapper",
-    "size": 27321,
-    "gzipSize": 9200
+    "size": 27320,
+    "gzipSize": 9199
   },
   {
     "chunkShortName": "spinner",
