@@ -2154,6 +2154,7 @@ exports[`manual test cases > should pass internal props correctly to p-multi-sel
 >
   <template
     shadowroot="open"
+    shadowrootdelegatesfocus="true"
     shadowrootmode="open"
   >
     <style>
@@ -11394,6 +11395,7 @@ exports[`should render dsr component for PMultiSelect 1`] = `
 >
   <template
     shadowroot="open"
+    shadowrootdelegatesfocus="true"
     shadowrootmode="open"
   >
     <style>
@@ -12758,10 +12760,12 @@ exports[`should render dsr component for PSelect 1`] = `
 >
   <template
     shadowroot="open"
+    shadowrootdelegatesfocus="true"
     shadowrootmode="open"
   >
     <style>
       :host {
+  display: block;
   color-scheme: light dark !important;
 }
 :host([hidden]) {
