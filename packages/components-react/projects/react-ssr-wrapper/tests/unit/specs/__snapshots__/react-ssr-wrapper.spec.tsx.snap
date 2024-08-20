@@ -2,7 +2,7 @@
 
 exports[`manual test cases > should pass internal props correctly to p-checkbox-wrapper 1`] = `
 <p-checkbox-wrapper
-  class="ssr"
+  data-ssr=""
 >
   <template
     shadowroot="open"
@@ -128,7 +128,8 @@ exports[`manual test cases > should pass internal props correctly to p-checkbox-
         <slot />
         <p-spinner
           aria-hidden="true"
-          class="spinner ssr"
+          class="spinner"
+          data-ssr=""
         >
           <template
             shadowroot="open"
@@ -241,7 +242,7 @@ circle:last-child {
 
 exports[`manual test cases > should pass internal props correctly to p-checkbox-wrapper 2`] = `
 <p-checkbox-wrapper
-  class="ssr"
+  data-ssr=""
 >
   <template
     shadowroot="open"
@@ -367,7 +368,8 @@ exports[`manual test cases > should pass internal props correctly to p-checkbox-
         <slot />
         <p-spinner
           aria-hidden="true"
-          class="spinner ssr"
+          class="spinner"
+          data-ssr=""
         >
           <template
             shadowroot="open"
@@ -481,7 +483,7 @@ circle:last-child {
 
 exports[`manual test cases > should pass internal props correctly to p-grid-item 1`] = `
 <p-grid
-  class="ssr"
+  data-ssr=""
 >
   <template
     shadowroot="open"
@@ -505,7 +507,7 @@ exports[`manual test cases > should pass internal props correctly to p-grid-item
     <slot />
   </template>
   <p-grid-item
-    class="ssr"
+    data-ssr=""
     gutter="16"
   >
     <template
@@ -530,7 +532,7 @@ exports[`manual test cases > should pass internal props correctly to p-grid-item
     Item 1
   </p-grid-item>
   <p-grid-item
-    class="ssr"
+    data-ssr=""
     gutter="16"
   >
     <template
@@ -559,7 +561,7 @@ exports[`manual test cases > should pass internal props correctly to p-grid-item
 
 exports[`manual test cases > should pass internal props correctly to p-grid-item 2`] = `
 <p-grid
-  class="ssr"
+  data-ssr=""
 >
   <template
     shadowroot="open"
@@ -583,7 +585,7 @@ exports[`manual test cases > should pass internal props correctly to p-grid-item
     <slot />
   </template>
   <p-grid-item
-    class="ssr"
+    data-ssr=""
     gutter="24"
   >
     <template
@@ -608,7 +610,7 @@ exports[`manual test cases > should pass internal props correctly to p-grid-item
     Item 1
   </p-grid-item>
   <p-grid-item
-    class="ssr"
+    data-ssr=""
     gutter="24"
   >
     <template
@@ -637,7 +639,7 @@ exports[`manual test cases > should pass internal props correctly to p-grid-item
 
 exports[`manual test cases > should pass internal props correctly to p-link-tile-model-signature 1`] = `
 <p-link-tile-model-signature
-  class="ssr"
+  data-ssr=""
 >
   <template
     shadowroot="open"
@@ -762,7 +764,7 @@ h1,h2,h3,h4,h5,h6 {
         class="header"
       >
         <p-model-signature
-          class="ssr"
+          data-ssr=""
         >
           <template
             shadowroot="open"
@@ -840,7 +842,7 @@ img {
     </div>
   </template>
   <p-link
-    class="ssr"
+    data-ssr=""
     slot="primary"
   >
     <template
@@ -853,7 +855,6 @@ img {
   display: inline-block;
   vertical-align: top !important;
   outline: 0 !important;
-  border-radius: 4px !important;
   color-scheme: light dark !important;
 }
 :host([hidden]) {
@@ -864,23 +865,22 @@ img {
   align-items: flex-start;
   justify-content: center;
   width: 100%;
-  min-width: min-content;
   box-sizing: border-box;
   text-align: start;
   -webkit-appearance: none;
   appearance: none;
   text-decoration: none;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: auto;
   border: 2px solid #FBFCFF;
   border-radius: 4px;
   transform: translate3d(0,0,0);
   background-color: #FBFCFF;
   color: #010205;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  padding: calc(var(--p-internal-link-scaling, 1) * 0.8125 * 16px ) max(calc(var(--p-internal-link-scaling, 1) * 1.625 * 16px ), 4px);
-  gap: clamp(2px, calc(var(--p-internal-link-scaling, 1) * 0.5 * 16px), 16px);
+  padding: 13px 26px;
+  gap: 8px;
 }
 .root::-moz-focus-inner {
   border: 0;
@@ -915,7 +915,7 @@ img {
     Primary
   </p-link>
   <p-link
-    class="ssr"
+    data-ssr=""
     slot="secondary"
   >
     <template
@@ -928,7 +928,6 @@ img {
   display: inline-block;
   vertical-align: top !important;
   outline: 0 !important;
-  border-radius: 4px !important;
   color-scheme: light dark !important;
 }
 :host([hidden]) {
@@ -939,23 +938,22 @@ img {
   align-items: flex-start;
   justify-content: center;
   width: 100%;
-  min-width: min-content;
   box-sizing: border-box;
   text-align: start;
   -webkit-appearance: none;
   appearance: none;
   text-decoration: none;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: auto;
   border: 2px solid #FBFCFF;
   border-radius: 4px;
   transform: translate3d(0,0,0);
   background-color: transparent;
   color: #FBFCFF;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  padding: calc(var(--p-internal-link-scaling, 1) * 0.8125 * 16px ) max(calc(var(--p-internal-link-scaling, 1) * 1.625 * 16px ), 4px);
-  gap: clamp(2px, calc(var(--p-internal-link-scaling, 1) * 0.5 * 16px), 16px);
+  padding: 13px 26px;
+  gap: 8px;
 }
 .root::-moz-focus-inner {
   border: 0;
@@ -991,7 +989,7 @@ img {
 
 exports[`manual test cases > should pass internal props correctly to p-link-tile-model-signature 2`] = `
 <p-link-tile-model-signature
-  class="ssr"
+  data-ssr=""
 >
   <template
     shadowroot="open"
@@ -1116,7 +1114,7 @@ h1,h2,h3,h4,h5,h6 {
         class="header"
       >
         <p-model-signature
-          class="ssr"
+          data-ssr=""
         >
           <template
             shadowroot="open"
@@ -1194,7 +1192,7 @@ img {
     </div>
   </template>
   <p-link
-    class="ssr"
+    data-ssr=""
     slot="primary"
   >
     <template
@@ -1207,7 +1205,6 @@ img {
   display: inline-block;
   vertical-align: top !important;
   outline: 0 !important;
-  border-radius: 4px !important;
   color-scheme: light dark !important;
 }
 :host([hidden]) {
@@ -1237,23 +1234,22 @@ img {
   align-items: flex-start;
   justify-content: center;
   width: 100%;
-  min-width: min-content;
   box-sizing: border-box;
   text-align: start;
   -webkit-appearance: none;
   appearance: none;
   text-decoration: none;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: auto;
   border: 2px solid #FBFCFF;
   border-radius: 4px;
   transform: translate3d(0,0,0);
   background-color: #FBFCFF;
   color: #010205;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  padding: calc(var(--p-internal-link-scaling, 1) * 0.8125 * 16px ) max(calc(var(--p-internal-link-scaling, 1) * 1.625 * 16px ), 4px);
-  gap: clamp(2px, calc(var(--p-internal-link-scaling, 1) * 0.5 * 16px), 16px);
+  padding: 13px 26px;
+  gap: 8px;
 }
 .label {
   position: static;
@@ -1287,7 +1283,7 @@ img {
     </a>
   </p-link>
   <p-link
-    class="ssr"
+    data-ssr=""
     slot="secondary"
   >
     <template
@@ -1300,7 +1296,6 @@ img {
   display: inline-block;
   vertical-align: top !important;
   outline: 0 !important;
-  border-radius: 4px !important;
   color-scheme: light dark !important;
 }
 :host([hidden]) {
@@ -1330,23 +1325,22 @@ img {
   align-items: flex-start;
   justify-content: center;
   width: 100%;
-  min-width: min-content;
   box-sizing: border-box;
   text-align: start;
   -webkit-appearance: none;
   appearance: none;
   text-decoration: none;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: auto;
   border: 2px solid #FBFCFF;
   border-radius: 4px;
   transform: translate3d(0,0,0);
   background-color: transparent;
   color: #FBFCFF;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  padding: calc(var(--p-internal-link-scaling, 1) * 0.8125 * 16px ) max(calc(var(--p-internal-link-scaling, 1) * 1.625 * 16px ), 4px);
-  gap: clamp(2px, calc(var(--p-internal-link-scaling, 1) * 0.5 * 16px), 16px);
+  padding: 13px 26px;
+  gap: 8px;
 }
 .label {
   position: static;
@@ -1381,7 +1375,7 @@ img {
 
 exports[`manual test cases > should pass internal props correctly to p-link-tile-model-signature 3`] = `
 <p-link-tile-model-signature
-  class="ssr"
+  data-ssr=""
 >
   <template
     shadowroot="open"
@@ -1506,7 +1500,7 @@ h1,h2,h3,h4,h5,h6 {
         class="header"
       >
         <p-model-signature
-          class="ssr"
+          data-ssr=""
         >
           <template
             shadowroot="open"
@@ -1584,7 +1578,7 @@ img {
     </div>
   </template>
   <p-link
-    class="ssr"
+    data-ssr=""
     slot="primary"
   >
     <template
@@ -1597,7 +1591,6 @@ img {
   display: inline-block;
   vertical-align: top !important;
   outline: 0 !important;
-  border-radius: 4px !important;
   color-scheme: light dark !important;
 }
 :host([hidden]) {
@@ -1627,23 +1620,22 @@ img {
   align-items: flex-start;
   justify-content: center;
   width: 100%;
-  min-width: min-content;
   box-sizing: border-box;
   text-align: start;
   -webkit-appearance: none;
   appearance: none;
   text-decoration: none;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: auto;
   border: 2px solid #FBFCFF;
   border-radius: 4px;
   transform: translate3d(0,0,0);
   background-color: #FBFCFF;
   color: #010205;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  padding: calc(var(--p-internal-link-scaling, 1) * 0.8125 * 16px ) max(calc(var(--p-internal-link-scaling, 1) * 1.625 * 16px ), 4px);
-  gap: clamp(2px, calc(var(--p-internal-link-scaling, 1) * 0.5 * 16px), 16px);
+  padding: 13px 26px;
+  gap: 8px;
 }
 .label {
   position: static;
@@ -1677,7 +1669,7 @@ img {
     </a>
   </p-link>
   <p-link
-    class="ssr"
+    data-ssr=""
     slot="secondary"
   >
     <template
@@ -1690,7 +1682,6 @@ img {
   display: inline-block;
   vertical-align: top !important;
   outline: 0 !important;
-  border-radius: 4px !important;
   color-scheme: light dark !important;
 }
 :host([hidden]) {
@@ -1720,23 +1711,22 @@ img {
   align-items: flex-start;
   justify-content: center;
   width: 100%;
-  min-width: min-content;
   box-sizing: border-box;
   text-align: start;
   -webkit-appearance: none;
   appearance: none;
   text-decoration: none;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: auto;
   border: 2px solid #FBFCFF;
   border-radius: 4px;
   transform: translate3d(0,0,0);
   background-color: transparent;
   color: #FBFCFF;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  padding: calc(var(--p-internal-link-scaling, 1) * 0.8125 * 16px ) max(calc(var(--p-internal-link-scaling, 1) * 1.625 * 16px ), 4px);
-  gap: clamp(2px, calc(var(--p-internal-link-scaling, 1) * 0.5 * 16px), 16px);
+  padding: 13px 26px;
+  gap: 8px;
 }
 .label {
   position: static;
@@ -1771,7 +1761,7 @@ img {
 
 exports[`manual test cases > should pass internal props correctly to p-link-tile-model-signature 4`] = `
 <p-link-tile-model-signature
-  class="ssr"
+  data-ssr=""
 >
   <template
     shadowroot="open"
@@ -1896,7 +1886,7 @@ h1,h2,h3,h4,h5,h6 {
         class="header"
       >
         <p-model-signature
-          class="ssr"
+          data-ssr=""
         >
           <template
             shadowroot="open"
@@ -1974,7 +1964,7 @@ img {
     </div>
   </template>
   <p-link
-    class="ssr"
+    data-ssr=""
     slot="primary"
   >
     <template
@@ -1987,7 +1977,6 @@ img {
   display: inline-block;
   vertical-align: top !important;
   outline: 0 !important;
-  border-radius: 4px !important;
   color-scheme: light dark !important;
 }
 :host([hidden]) {
@@ -2017,23 +2006,22 @@ img {
   align-items: flex-start;
   justify-content: center;
   width: 100%;
-  min-width: min-content;
   box-sizing: border-box;
   text-align: start;
   -webkit-appearance: none;
   appearance: none;
   text-decoration: none;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: auto;
   border: 2px solid #FBFCFF;
   border-radius: 4px;
   transform: translate3d(0,0,0);
   background-color: #FBFCFF;
   color: #010205;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  padding: calc(var(--p-internal-link-scaling, 1) * 0.8125 * 16px ) max(calc(var(--p-internal-link-scaling, 1) * 1.625 * 16px ), 4px);
-  gap: clamp(2px, calc(var(--p-internal-link-scaling, 1) * 0.5 * 16px), 16px);
+  padding: 13px 26px;
+  gap: 8px;
 }
 .label {
   position: static;
@@ -2070,7 +2058,7 @@ img {
     </span>
   </p-link>
   <p-link
-    class="ssr"
+    data-ssr=""
     slot="secondary"
   >
     <template
@@ -2083,7 +2071,6 @@ img {
   display: inline-block;
   vertical-align: top !important;
   outline: 0 !important;
-  border-radius: 4px !important;
   color-scheme: light dark !important;
 }
 :host([hidden]) {
@@ -2113,23 +2100,22 @@ img {
   align-items: flex-start;
   justify-content: center;
   width: 100%;
-  min-width: min-content;
   box-sizing: border-box;
   text-align: start;
   -webkit-appearance: none;
   appearance: none;
   text-decoration: none;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: auto;
   border: 2px solid #FBFCFF;
   border-radius: 4px;
   transform: translate3d(0,0,0);
   background-color: transparent;
   color: #FBFCFF;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  padding: calc(var(--p-internal-link-scaling, 1) * 0.8125 * 16px ) max(calc(var(--p-internal-link-scaling, 1) * 1.625 * 16px ), 4px);
-  gap: clamp(2px, calc(var(--p-internal-link-scaling, 1) * 0.5 * 16px), 16px);
+  padding: 13px 26px;
+  gap: 8px;
 }
 .label {
   position: static;
@@ -2164,7 +2150,7 @@ img {
 
 exports[`manual test cases > should pass internal props correctly to p-multi-select-option 1`] = `
 <p-multi-select
-  class="ssr"
+  data-ssr=""
 >
   <template
     shadowroot="open"
@@ -2343,7 +2329,8 @@ input:disabled {
         />
         <p-icon
           aria-hidden="true"
-          class="icon ssr"
+          class="icon"
+          data-ssr=""
         >
           <template
             shadowroot="open"
@@ -2421,29 +2408,29 @@ img {
     </div>
   </template>
   <p-multi-select-option
-    class="ssr"
+    data-ssr=""
   />
   <p-multi-select-option
-    class="ssr"
+    data-ssr=""
   />
   <p-multi-select-option
-    class="ssr"
+    data-ssr=""
   />
   <p-multi-select-option
-    class="ssr"
+    data-ssr=""
   />
   <p-multi-select-option
-    class="ssr"
+    data-ssr=""
   />
   <p-multi-select-option
-    class="ssr"
+    data-ssr=""
   />
 </p-multi-select>
 `;
 
 exports[`manual test cases > should pass internal props correctly to p-pin-code 1`] = `
 <p-pin-code
-  class="ssr"
+  data-ssr=""
 >
   <template
     shadowroot="open"
@@ -2620,7 +2607,7 @@ input:disabled {
 
 exports[`manual test cases > should pass internal props correctly to p-radio-button-wrapper 1`] = `
 <p-radio-button-wrapper
-  class="ssr"
+  data-ssr=""
 >
   <template
     shadowroot="open"
@@ -2746,7 +2733,8 @@ exports[`manual test cases > should pass internal props correctly to p-radio-but
         <slot />
         <p-spinner
           aria-hidden="true"
-          class="spinner ssr"
+          class="spinner"
+          data-ssr=""
         >
           <template
             shadowroot="open"
@@ -2859,7 +2847,7 @@ circle:last-child {
 
 exports[`manual test cases > should pass internal props correctly to p-radio-button-wrapper 2`] = `
 <p-radio-button-wrapper
-  class="ssr"
+  data-ssr=""
 >
   <template
     shadowroot="open"
@@ -2992,7 +2980,7 @@ exports[`manual test cases > should pass internal props correctly to p-radio-but
 
 exports[`manual test cases > should pass internal props correctly to p-segmented-control-item 1`] = `
 <p-segmented-control
-  class="ssr"
+  data-ssr=""
   role="group"
 >
   <template
@@ -3015,7 +3003,7 @@ exports[`manual test cases > should pass internal props correctly to p-segmented
   </template>
   <p-segmented-control-item
     backgroundcolor="background-surface"
-    class="ssr"
+    data-ssr=""
   >
     <template
       shadowroot="open"
@@ -3068,7 +3056,7 @@ span {
   </p-segmented-control-item>
   <p-segmented-control-item
     backgroundcolor="background-surface"
-    class="ssr"
+    data-ssr=""
   >
     <template
       shadowroot="open"
@@ -3125,7 +3113,7 @@ span {
 
 exports[`manual test cases > should pass internal props correctly to p-select-wrapper 1`] = `
 <p-select-wrapper
-  class="ssr"
+  data-ssr=""
 >
   <template
     shadowroot="open"
@@ -3247,7 +3235,8 @@ exports[`manual test cases > should pass internal props correctly to p-select-wr
         <slot />
         <p-icon
           aria-hidden="true"
-          class="icon ssr"
+          class="icon"
+          data-ssr=""
         >
           <template
             shadowroot="open"
@@ -3292,7 +3281,8 @@ img {
           </template>
         </p-icon>
         <p-select-wrapper-dropdown
-          class="dropdown ssr"
+          class="dropdown"
+          data-ssr=""
         >
           <template
             shadowroot="open"
@@ -3407,7 +3397,7 @@ input+span {
 
 exports[`manual test cases > should pass internal props correctly to p-select-wrapper 2`] = `
 <p-select-wrapper
-  class="ssr"
+  data-ssr=""
 >
   <template
     shadowroot="open"
@@ -3528,7 +3518,8 @@ exports[`manual test cases > should pass internal props correctly to p-select-wr
         <slot />
         <p-icon
           aria-hidden="true"
-          class="icon ssr"
+          class="icon"
+          data-ssr=""
         >
           <template
             shadowroot="open"
@@ -3614,7 +3605,7 @@ img {
 
 exports[`manual test cases > should pass internal props correctly to p-stepper-horizontal-item 1`] = `
 <p-stepper-horizontal
-  class="ssr"
+  data-ssr=""
 >
   <template
     shadowroot="open"
@@ -3636,7 +3627,8 @@ exports[`manual test cases > should pass internal props correctly to p-stepper-h
 }
     </style>
     <p-scroller
-      class="scroller ssr"
+      class="scroller"
+      data-ssr=""
     >
       <template
         shadowroot="open"
@@ -3651,6 +3643,26 @@ exports[`manual test cases > should pass internal props correctly to p-stepper-h
 :host([hidden]) {
   display: none !important;
 }
+button {
+  display: flex;
+  pointer-events: auto;
+  align-items: center;
+  justify-content: center;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  height: calc(calc(6px + 2.125ex) + 4px);
+  width: calc(calc(6px + 2.125ex) + 4px);
+  border: 0;
+  outline: 0;
+  cursor: pointer;
+  background: #212225;
+  border-radius: 4px;
+  -webkit-backdrop-filter: blur(32px);
+  backdrop-filter: blur(32px);
+  visibility: hidden;
+}
+
 .root {
   position: relative;
   display: grid;
@@ -3699,6 +3711,7 @@ exports[`manual test cases > should pass internal props correctly to p-stepper-h
   direction: ltr;
   width: calc(calc(6px + 2.125ex) + 24px);
   padding: 4px 0;
+  pointer-events: none;
   display: flex;
   align-items: center;
   left: -1px;
@@ -3706,7 +3719,7 @@ exports[`manual test cases > should pass internal props correctly to p-stepper-h
   background: linear-gradient(to right, rgba(14,14,18,1) 20%,rgba(14,14,18,0.6) 48%,rgba(14,14,18,0.3) 68%,rgba(14,14,18,0) 100%);
   visibility: hidden;
 }
-.action-prev .action-button {
+.action-prev button {
   margin-left: 8px;
 }
 .action-next {
@@ -3716,6 +3729,7 @@ exports[`manual test cases > should pass internal props correctly to p-stepper-h
   direction: ltr;
   width: calc(calc(6px + 2.125ex) + 24px);
   padding: 4px 0;
+  pointer-events: none;
   display: flex;
   align-items: center;
   right: -1px;
@@ -3723,11 +3737,8 @@ exports[`manual test cases > should pass internal props correctly to p-stepper-h
   background: linear-gradient(to left, rgba(14,14,18,1) 20%,rgba(14,14,18,0.6) 48%,rgba(14,14,18,0.3) 68%,rgba(14,14,18,0) 100%);
   visibility: hidden;
 }
-.action-next .action-button {
+.action-next button {
   margin-right: 8px;
-}
-.action-button {
-  --p-internal-button-scaling: 0;
 }
 .icon:dir(rtl) {
   transform: scaleX(-1);
@@ -3756,101 +3767,22 @@ exports[`manual test cases > should pass internal props correctly to p-stepper-h
           <div
             class="action-prev"
           >
-            <p-button
-              class="action-button ssr"
-              dir="ltr"
-              hide-label="true"
+            <button
+              aria-hidden="true"
+              aria-label="prev"
               tabindex="-1"
+              type="button"
             >
-              <template
-                shadowroot="open"
-                shadowrootdelegatesfocus="true"
-                shadowrootmode="open"
+              <p-icon
+                class="icon"
+                data-ssr=""
               >
-                <style>
-                  :host {
-  display: inline-block;
-  vertical-align: top !important;
-  outline: 0 !important;
-  border-radius: 4px !important;
-  color-scheme: light dark !important;
-}
-:host([hidden]) {
-  display: none !important;
-}
-.root {
-  display: flex;
-  align-items: flex-start;
-  justify-content: center;
-  width: 100%;
-  min-width: min-content;
-  box-sizing: border-box;
-  text-align: start;
-  -webkit-appearance: none;
-  appearance: none;
-  text-decoration: none;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  -webkit-backdrop-filter: blur(32px);
-  backdrop-filter: blur(32px);
-  border: none;
-  border-radius: 4px;
-  transform: translate3d(0,0,0);
-  background-color: hsl(240 3% 26%/35%);
-  color: #FBFCFF;
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  padding: calc(var(--p-internal-button-scaling, 1) * 0.8125 * 16px + 2px) max(calc(var(--p-internal-button-scaling, 1) * 1.625 * 16px + 2px), 6px);
-  gap: clamp(2px, calc(var(--p-internal-button-scaling, 1) * 0.5 * 16px), 16px);
-  cursor: pointer;
-  margin: 0;
-}
-.root::-moz-focus-inner {
-  border: 0;
-}
-.label {
-  position: static;
-  width: auto;
-  height: auto;
-  padding: 0;
-  margin: 0;
-  overflow: visible;
-  clip: auto;
-  white-space: normal;
-  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-}
-.icon {
-  width: calc(6px + 2.125ex);
-  height: calc(6px + 2.125ex);
-  margin-inline-start: clamp(-16px, calc(var(--p-internal-button-scaling, 1) * -0.5 * 16px), -2px);
-  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-}
-.loading {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0,0,0,0);
-  white-space: nowrap;
-}
-
-                </style>
-                <button
-                  class="root"
-                  type="button"
+                <template
+                  shadowroot="open"
+                  shadowrootmode="open"
                 >
-                  <p-icon
-                    aria-hidden="true"
-                    class="icon ssr"
-                  >
-                    <template
-                      shadowroot="open"
-                      shadowrootmode="open"
-                    >
-                      <style>
-                        :host {
+                  <style>
+                    :host {
   display: inline-block;
   vertical-align: top;
   color-scheme: light dark !important;
@@ -3865,8 +3797,9 @@ img {
   pointer-events: none;
   filter: var(--p-internal-icon-filter,invert(100%) sepia(91%) saturate(38%) hue-rotate(254deg) brightness(110%) contrast(110%));
   -webkit-animation: rerender-dark-primary 1ms;
-  width: inherit;
-  height: inherit;
+  width: calc(6px + 2.125ex);
+  height: calc(6px + 2.125ex);
+  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
 }
 img:dir(rtl) {
   transform: scaleX(-1);
@@ -3879,129 +3812,37 @@ img:dir(rtl) {
     transform: rotateZ(0);
   }
 }
-                      </style>
-                      <img
-                        alt=""
-                        height="24"
-                        loading="lazy"
-                        src="http://localhost:3001/icons/arrow-head-left.cf1395d.svg"
-                        width="24"
-                      />
-                    </template>
-                  </p-icon>
-                  <span
-                    class="label"
-                  >
-                    <slot />
-                  </span>
-                </button>
-                <span
-                  class="loading"
-                  id="loading"
-                  role="status"
-                />
-              </template>
-              prev
-            </p-button>
+                  </style>
+                  <img
+                    alt=""
+                    height="24"
+                    loading="lazy"
+                    src="http://localhost:3001/icons/arrow-head-left.cf1395d.svg"
+                    width="24"
+                  />
+                </template>
+              </p-icon>
+            </button>
           </div>
           <div
             class="action-next"
           >
-            <p-button
-              class="action-button ssr"
-              dir="ltr"
-              hide-label="true"
+            <button
+              aria-hidden="true"
+              aria-label="next"
               tabindex="-1"
+              type="button"
             >
-              <template
-                shadowroot="open"
-                shadowrootdelegatesfocus="true"
-                shadowrootmode="open"
+              <p-icon
+                class="icon"
+                data-ssr=""
               >
-                <style>
-                  :host {
-  display: inline-block;
-  vertical-align: top !important;
-  outline: 0 !important;
-  border-radius: 4px !important;
-  color-scheme: light dark !important;
-}
-:host([hidden]) {
-  display: none !important;
-}
-.root {
-  display: flex;
-  align-items: flex-start;
-  justify-content: center;
-  width: 100%;
-  min-width: min-content;
-  box-sizing: border-box;
-  text-align: start;
-  -webkit-appearance: none;
-  appearance: none;
-  text-decoration: none;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  -webkit-backdrop-filter: blur(32px);
-  backdrop-filter: blur(32px);
-  border: none;
-  border-radius: 4px;
-  transform: translate3d(0,0,0);
-  background-color: hsl(240 3% 26%/35%);
-  color: #FBFCFF;
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  padding: calc(var(--p-internal-button-scaling, 1) * 0.8125 * 16px + 2px) max(calc(var(--p-internal-button-scaling, 1) * 1.625 * 16px + 2px), 6px);
-  gap: clamp(2px, calc(var(--p-internal-button-scaling, 1) * 0.5 * 16px), 16px);
-  cursor: pointer;
-  margin: 0;
-}
-.root::-moz-focus-inner {
-  border: 0;
-}
-.label {
-  position: static;
-  width: auto;
-  height: auto;
-  padding: 0;
-  margin: 0;
-  overflow: visible;
-  clip: auto;
-  white-space: normal;
-  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-}
-.icon {
-  width: calc(6px + 2.125ex);
-  height: calc(6px + 2.125ex);
-  margin-inline-start: clamp(-16px, calc(var(--p-internal-button-scaling, 1) * -0.5 * 16px), -2px);
-  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-}
-.loading {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0,0,0,0);
-  white-space: nowrap;
-}
-
-                </style>
-                <button
-                  class="root"
-                  type="button"
+                <template
+                  shadowroot="open"
+                  shadowrootmode="open"
                 >
-                  <p-icon
-                    aria-hidden="true"
-                    class="icon ssr"
-                  >
-                    <template
-                      shadowroot="open"
-                      shadowrootmode="open"
-                    >
-                      <style>
-                        :host {
+                  <style>
+                    :host {
   display: inline-block;
   vertical-align: top;
   color-scheme: light dark !important;
@@ -4016,8 +3857,9 @@ img {
   pointer-events: none;
   filter: var(--p-internal-icon-filter,invert(100%) sepia(91%) saturate(38%) hue-rotate(254deg) brightness(110%) contrast(110%));
   -webkit-animation: rerender-dark-primary 1ms;
-  width: inherit;
-  height: inherit;
+  width: calc(6px + 2.125ex);
+  height: calc(6px + 2.125ex);
+  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
 }
 img:dir(rtl) {
   transform: scaleX(-1);
@@ -4030,30 +3872,17 @@ img:dir(rtl) {
     transform: rotateZ(0);
   }
 }
-                      </style>
-                      <img
-                        alt=""
-                        height="24"
-                        loading="lazy"
-                        src="http://localhost:3001/icons/arrow-head-right.304b330.svg"
-                        width="24"
-                      />
-                    </template>
-                  </p-icon>
-                  <span
-                    class="label"
-                  >
-                    <slot />
-                  </span>
-                </button>
-                <span
-                  class="loading"
-                  id="loading"
-                  role="status"
-                />
-              </template>
-              next
-            </p-button>
+                  </style>
+                  <img
+                    alt=""
+                    height="24"
+                    loading="lazy"
+                    src="http://localhost:3001/icons/arrow-head-right.304b330.svg"
+                    width="24"
+                  />
+                </template>
+              </p-icon>
+            </button>
           </div>
         </div>
       </template>
@@ -4061,7 +3890,7 @@ img:dir(rtl) {
     </p-scroller>
   </template>
   <p-stepper-horizontal-item
-    class="ssr"
+    data-ssr=""
     role="listitem"
   >
     <template
@@ -4152,7 +3981,7 @@ button::-moz-focus-inner {
     Item 1
   </p-stepper-horizontal-item>
   <p-stepper-horizontal-item
-    class="ssr"
+    data-ssr=""
     role="listitem"
   >
     <template
@@ -4247,7 +4076,7 @@ button::-moz-focus-inner {
 
 exports[`manual test cases > should pass internal props correctly to p-tabs-bar 1`] = `
 <p-tabs-bar
-  class="ssr"
+  data-ssr=""
 >
   <template
     shadowroot="open"
@@ -4340,7 +4169,8 @@ exports[`manual test cases > should pass internal props correctly to p-tabs-bar 
 }
     </style>
     <p-scroller
-      class="scroller ssr"
+      class="scroller"
+      data-ssr=""
     >
       <template
         shadowroot="open"
@@ -4355,6 +4185,27 @@ exports[`manual test cases > should pass internal props correctly to p-tabs-bar 
 :host([hidden]) {
   display: none !important;
 }
+button {
+  display: flex;
+  pointer-events: auto;
+  align-items: center;
+  justify-content: center;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  height: calc(calc(6px + 2.125ex) + 4px);
+  width: calc(calc(6px + 2.125ex) + 4px);
+  border: 0;
+  outline: 0;
+  cursor: pointer;
+  background: #FFF;
+  border-radius: 4px;
+  -webkit-backdrop-filter: blur(32px);
+  backdrop-filter: blur(32px);
+  visibility: hidden;
+  box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.16);
+}
+
 .root {
   position: relative;
   display: grid;
@@ -4403,6 +4254,7 @@ exports[`manual test cases > should pass internal props correctly to p-tabs-bar 
   direction: ltr;
   width: calc(calc(6px + 2.125ex) + 24px);
   padding: 4px 0;
+  pointer-events: none;
   display: flex;
   align-items: flex-start;
   left: -1px;
@@ -4410,7 +4262,7 @@ exports[`manual test cases > should pass internal props correctly to p-tabs-bar 
   background: linear-gradient(to right, rgba(255,255,255,1) 20%,rgba(255,255,255,0.6) 48%,rgba(255,255,255,0.3) 68%,rgba(255,255,255,0) 100%);
   visibility: hidden;
 }
-.action-prev .action-button {
+.action-prev button {
   margin-left: 8px;
 }
 .action-next {
@@ -4420,6 +4272,7 @@ exports[`manual test cases > should pass internal props correctly to p-tabs-bar 
   direction: ltr;
   width: calc(calc(6px + 2.125ex) + 24px);
   padding: 4px 0;
+  pointer-events: none;
   display: flex;
   align-items: flex-start;
   right: -1px;
@@ -4427,12 +4280,8 @@ exports[`manual test cases > should pass internal props correctly to p-tabs-bar 
   background: linear-gradient(to left, rgba(255,255,255,1) 20%,rgba(255,255,255,0.6) 48%,rgba(255,255,255,0.3) 68%,rgba(255,255,255,0) 100%);
   visibility: hidden;
 }
-.action-next .action-button {
+.action-next button {
   margin-right: 8px;
-}
-.action-button {
-  --p-internal-button-scaling: 0;
-  box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.16);
 }
 .icon:dir(rtl) {
   transform: scaleX(-1);
@@ -4460,101 +4309,22 @@ exports[`manual test cases > should pass internal props correctly to p-tabs-bar 
           <div
             class="action-prev"
           >
-            <p-button
-              class="action-button ssr"
-              dir="ltr"
-              hide-label="true"
+            <button
+              aria-hidden="true"
+              aria-label="prev"
               tabindex="-1"
+              type="button"
             >
-              <template
-                shadowroot="open"
-                shadowrootdelegatesfocus="true"
-                shadowrootmode="open"
+              <p-icon
+                class="icon"
+                data-ssr=""
               >
-                <style>
-                  :host {
-  display: inline-block;
-  vertical-align: top !important;
-  outline: 0 !important;
-  border-radius: 4px !important;
-  color-scheme: light dark !important;
-}
-:host([hidden]) {
-  display: none !important;
-}
-.root {
-  display: flex;
-  align-items: flex-start;
-  justify-content: center;
-  width: 100%;
-  min-width: min-content;
-  box-sizing: border-box;
-  text-align: start;
-  -webkit-appearance: none;
-  appearance: none;
-  text-decoration: none;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  -webkit-backdrop-filter: blur(32px);
-  backdrop-filter: blur(32px);
-  border: none;
-  border-radius: 4px;
-  transform: translate3d(0,0,0);
-  background-color: hsl(240 4% 85%/35%);
-  color: #010205;
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  padding: calc(var(--p-internal-button-scaling, 1) * 0.8125 * 16px + 2px) max(calc(var(--p-internal-button-scaling, 1) * 1.625 * 16px + 2px), 6px);
-  gap: clamp(2px, calc(var(--p-internal-button-scaling, 1) * 0.5 * 16px), 16px);
-  cursor: pointer;
-  margin: 0;
-}
-.root::-moz-focus-inner {
-  border: 0;
-}
-.label {
-  position: static;
-  width: auto;
-  height: auto;
-  padding: 0;
-  margin: 0;
-  overflow: visible;
-  clip: auto;
-  white-space: normal;
-  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-}
-.icon {
-  width: calc(6px + 2.125ex);
-  height: calc(6px + 2.125ex);
-  margin-inline-start: clamp(-16px, calc(var(--p-internal-button-scaling, 1) * -0.5 * 16px), -2px);
-  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-}
-.loading {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0,0,0,0);
-  white-space: nowrap;
-}
-
-                </style>
-                <button
-                  class="root"
-                  type="button"
+                <template
+                  shadowroot="open"
+                  shadowrootmode="open"
                 >
-                  <p-icon
-                    aria-hidden="true"
-                    class="icon ssr"
-                  >
-                    <template
-                      shadowroot="open"
-                      shadowrootmode="open"
-                    >
-                      <style>
-                        :host {
+                  <style>
+                    :host {
   display: inline-block;
   vertical-align: top;
   color-scheme: light dark !important;
@@ -4569,8 +4339,9 @@ img {
   pointer-events: none;
   filter: var(--p-internal-icon-filter,invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%));
   -webkit-animation: rerender-light-primary 1ms;
-  width: inherit;
-  height: inherit;
+  width: calc(6px + 2.125ex);
+  height: calc(6px + 2.125ex);
+  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
 }
 img:dir(rtl) {
   transform: scaleX(-1);
@@ -4583,129 +4354,37 @@ img:dir(rtl) {
     transform: rotateZ(0);
   }
 }
-                      </style>
-                      <img
-                        alt=""
-                        height="24"
-                        loading="lazy"
-                        src="http://localhost:3001/icons/arrow-head-left.cf1395d.svg"
-                        width="24"
-                      />
-                    </template>
-                  </p-icon>
-                  <span
-                    class="label"
-                  >
-                    <slot />
-                  </span>
-                </button>
-                <span
-                  class="loading"
-                  id="loading"
-                  role="status"
-                />
-              </template>
-              prev
-            </p-button>
+                  </style>
+                  <img
+                    alt=""
+                    height="24"
+                    loading="lazy"
+                    src="http://localhost:3001/icons/arrow-head-left.cf1395d.svg"
+                    width="24"
+                  />
+                </template>
+              </p-icon>
+            </button>
           </div>
           <div
             class="action-next"
           >
-            <p-button
-              class="action-button ssr"
-              dir="ltr"
-              hide-label="true"
+            <button
+              aria-hidden="true"
+              aria-label="next"
               tabindex="-1"
+              type="button"
             >
-              <template
-                shadowroot="open"
-                shadowrootdelegatesfocus="true"
-                shadowrootmode="open"
+              <p-icon
+                class="icon"
+                data-ssr=""
               >
-                <style>
-                  :host {
-  display: inline-block;
-  vertical-align: top !important;
-  outline: 0 !important;
-  border-radius: 4px !important;
-  color-scheme: light dark !important;
-}
-:host([hidden]) {
-  display: none !important;
-}
-.root {
-  display: flex;
-  align-items: flex-start;
-  justify-content: center;
-  width: 100%;
-  min-width: min-content;
-  box-sizing: border-box;
-  text-align: start;
-  -webkit-appearance: none;
-  appearance: none;
-  text-decoration: none;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  -webkit-backdrop-filter: blur(32px);
-  backdrop-filter: blur(32px);
-  border: none;
-  border-radius: 4px;
-  transform: translate3d(0,0,0);
-  background-color: hsl(240 4% 85%/35%);
-  color: #010205;
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  padding: calc(var(--p-internal-button-scaling, 1) * 0.8125 * 16px + 2px) max(calc(var(--p-internal-button-scaling, 1) * 1.625 * 16px + 2px), 6px);
-  gap: clamp(2px, calc(var(--p-internal-button-scaling, 1) * 0.5 * 16px), 16px);
-  cursor: pointer;
-  margin: 0;
-}
-.root::-moz-focus-inner {
-  border: 0;
-}
-.label {
-  position: static;
-  width: auto;
-  height: auto;
-  padding: 0;
-  margin: 0;
-  overflow: visible;
-  clip: auto;
-  white-space: normal;
-  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-}
-.icon {
-  width: calc(6px + 2.125ex);
-  height: calc(6px + 2.125ex);
-  margin-inline-start: clamp(-16px, calc(var(--p-internal-button-scaling, 1) * -0.5 * 16px), -2px);
-  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-}
-.loading {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0,0,0,0);
-  white-space: nowrap;
-}
-
-                </style>
-                <button
-                  class="root"
-                  type="button"
+                <template
+                  shadowroot="open"
+                  shadowrootmode="open"
                 >
-                  <p-icon
-                    aria-hidden="true"
-                    class="icon ssr"
-                  >
-                    <template
-                      shadowroot="open"
-                      shadowrootmode="open"
-                    >
-                      <style>
-                        :host {
+                  <style>
+                    :host {
   display: inline-block;
   vertical-align: top;
   color-scheme: light dark !important;
@@ -4720,8 +4399,9 @@ img {
   pointer-events: none;
   filter: var(--p-internal-icon-filter,invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%));
   -webkit-animation: rerender-light-primary 1ms;
-  width: inherit;
-  height: inherit;
+  width: calc(6px + 2.125ex);
+  height: calc(6px + 2.125ex);
+  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
 }
 img:dir(rtl) {
   transform: scaleX(-1);
@@ -4734,30 +4414,17 @@ img:dir(rtl) {
     transform: rotateZ(0);
   }
 }
-                      </style>
-                      <img
-                        alt=""
-                        height="24"
-                        loading="lazy"
-                        src="http://localhost:3001/icons/arrow-head-right.304b330.svg"
-                        width="24"
-                      />
-                    </template>
-                  </p-icon>
-                  <span
-                    class="label"
-                  >
-                    <slot />
-                  </span>
-                </button>
-                <span
-                  class="loading"
-                  id="loading"
-                  role="status"
-                />
-              </template>
-              next
-            </p-button>
+                  </style>
+                  <img
+                    alt=""
+                    height="24"
+                    loading="lazy"
+                    src="http://localhost:3001/icons/arrow-head-right.304b330.svg"
+                    width="24"
+                  />
+                </template>
+              </p-icon>
+            </button>
           </div>
         </div>
       </template>
@@ -4784,7 +4451,7 @@ img:dir(rtl) {
 
 exports[`manual test cases > should pass internal props correctly to p-tabs-item 1`] = `
 <p-tabs
-  class="ssr"
+  data-ssr=""
 >
   <template
     shadowroot="open"
@@ -4803,7 +4470,8 @@ exports[`manual test cases > should pass internal props correctly to p-tabs-item
 }
     </style>
     <p-tabs-bar
-      class="root ssr"
+      class="root"
+      data-ssr=""
     >
       <template
         shadowroot="open"
@@ -4896,7 +4564,8 @@ exports[`manual test cases > should pass internal props correctly to p-tabs-item
 }
         </style>
         <p-scroller
-          class="scroller ssr"
+          class="scroller"
+          data-ssr=""
         >
           <template
             shadowroot="open"
@@ -4911,6 +4580,26 @@ exports[`manual test cases > should pass internal props correctly to p-tabs-item
 :host([hidden]) {
   display: none !important;
 }
+button {
+  display: flex;
+  pointer-events: auto;
+  align-items: center;
+  justify-content: center;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  height: calc(calc(6px + 2.125ex) + 4px);
+  width: calc(calc(6px + 2.125ex) + 4px);
+  border: 0;
+  outline: 0;
+  cursor: pointer;
+  background: #212225;
+  border-radius: 4px;
+  -webkit-backdrop-filter: blur(32px);
+  backdrop-filter: blur(32px);
+  visibility: hidden;
+}
+
 .root {
   position: relative;
   display: grid;
@@ -4959,6 +4648,7 @@ exports[`manual test cases > should pass internal props correctly to p-tabs-item
   direction: ltr;
   width: calc(calc(6px + 2.125ex) + 24px);
   padding: 4px 0;
+  pointer-events: none;
   display: flex;
   align-items: flex-start;
   left: -1px;
@@ -4966,7 +4656,7 @@ exports[`manual test cases > should pass internal props correctly to p-tabs-item
   background: linear-gradient(to right, rgba(14,14,18,1) 20%,rgba(14,14,18,0.6) 48%,rgba(14,14,18,0.3) 68%,rgba(14,14,18,0) 100%);
   visibility: hidden;
 }
-.action-prev .action-button {
+.action-prev button {
   margin-left: 8px;
 }
 .action-next {
@@ -4976,6 +4666,7 @@ exports[`manual test cases > should pass internal props correctly to p-tabs-item
   direction: ltr;
   width: calc(calc(6px + 2.125ex) + 24px);
   padding: 4px 0;
+  pointer-events: none;
   display: flex;
   align-items: flex-start;
   right: -1px;
@@ -4983,11 +4674,8 @@ exports[`manual test cases > should pass internal props correctly to p-tabs-item
   background: linear-gradient(to left, rgba(14,14,18,1) 20%,rgba(14,14,18,0.6) 48%,rgba(14,14,18,0.3) 68%,rgba(14,14,18,0) 100%);
   visibility: hidden;
 }
-.action-next .action-button {
+.action-next button {
   margin-right: 8px;
-}
-.action-button {
-  --p-internal-button-scaling: 0;
 }
 .icon:dir(rtl) {
   transform: scaleX(-1);
@@ -5015,101 +4703,22 @@ exports[`manual test cases > should pass internal props correctly to p-tabs-item
               <div
                 class="action-prev"
               >
-                <p-button
-                  class="action-button ssr"
-                  dir="ltr"
-                  hide-label="true"
+                <button
+                  aria-hidden="true"
+                  aria-label="prev"
                   tabindex="-1"
+                  type="button"
                 >
-                  <template
-                    shadowroot="open"
-                    shadowrootdelegatesfocus="true"
-                    shadowrootmode="open"
+                  <p-icon
+                    class="icon"
+                    data-ssr=""
                   >
-                    <style>
-                      :host {
-  display: inline-block;
-  vertical-align: top !important;
-  outline: 0 !important;
-  border-radius: 4px !important;
-  color-scheme: light dark !important;
-}
-:host([hidden]) {
-  display: none !important;
-}
-.root {
-  display: flex;
-  align-items: flex-start;
-  justify-content: center;
-  width: 100%;
-  min-width: min-content;
-  box-sizing: border-box;
-  text-align: start;
-  -webkit-appearance: none;
-  appearance: none;
-  text-decoration: none;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  -webkit-backdrop-filter: blur(32px);
-  backdrop-filter: blur(32px);
-  border: none;
-  border-radius: 4px;
-  transform: translate3d(0,0,0);
-  background-color: hsl(240 3% 26%/35%);
-  color: #FBFCFF;
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  padding: calc(var(--p-internal-button-scaling, 1) * 0.8125 * 16px + 2px) max(calc(var(--p-internal-button-scaling, 1) * 1.625 * 16px + 2px), 6px);
-  gap: clamp(2px, calc(var(--p-internal-button-scaling, 1) * 0.5 * 16px), 16px);
-  cursor: pointer;
-  margin: 0;
-}
-.root::-moz-focus-inner {
-  border: 0;
-}
-.label {
-  position: static;
-  width: auto;
-  height: auto;
-  padding: 0;
-  margin: 0;
-  overflow: visible;
-  clip: auto;
-  white-space: normal;
-  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-}
-.icon {
-  width: calc(6px + 2.125ex);
-  height: calc(6px + 2.125ex);
-  margin-inline-start: clamp(-16px, calc(var(--p-internal-button-scaling, 1) * -0.5 * 16px), -2px);
-  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-}
-.loading {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0,0,0,0);
-  white-space: nowrap;
-}
-
-                    </style>
-                    <button
-                      class="root"
-                      type="button"
+                    <template
+                      shadowroot="open"
+                      shadowrootmode="open"
                     >
-                      <p-icon
-                        aria-hidden="true"
-                        class="icon ssr"
-                      >
-                        <template
-                          shadowroot="open"
-                          shadowrootmode="open"
-                        >
-                          <style>
-                            :host {
+                      <style>
+                        :host {
   display: inline-block;
   vertical-align: top;
   color-scheme: light dark !important;
@@ -5124,8 +4733,9 @@ img {
   pointer-events: none;
   filter: var(--p-internal-icon-filter,invert(100%) sepia(91%) saturate(38%) hue-rotate(254deg) brightness(110%) contrast(110%));
   -webkit-animation: rerender-dark-primary 1ms;
-  width: inherit;
-  height: inherit;
+  width: calc(6px + 2.125ex);
+  height: calc(6px + 2.125ex);
+  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
 }
 img:dir(rtl) {
   transform: scaleX(-1);
@@ -5138,129 +4748,37 @@ img:dir(rtl) {
     transform: rotateZ(0);
   }
 }
-                          </style>
-                          <img
-                            alt=""
-                            height="24"
-                            loading="lazy"
-                            src="http://localhost:3001/icons/arrow-head-left.cf1395d.svg"
-                            width="24"
-                          />
-                        </template>
-                      </p-icon>
-                      <span
-                        class="label"
-                      >
-                        <slot />
-                      </span>
-                    </button>
-                    <span
-                      class="loading"
-                      id="loading"
-                      role="status"
-                    />
-                  </template>
-                  prev
-                </p-button>
+                      </style>
+                      <img
+                        alt=""
+                        height="24"
+                        loading="lazy"
+                        src="http://localhost:3001/icons/arrow-head-left.cf1395d.svg"
+                        width="24"
+                      />
+                    </template>
+                  </p-icon>
+                </button>
               </div>
               <div
                 class="action-next"
               >
-                <p-button
-                  class="action-button ssr"
-                  dir="ltr"
-                  hide-label="true"
+                <button
+                  aria-hidden="true"
+                  aria-label="next"
                   tabindex="-1"
+                  type="button"
                 >
-                  <template
-                    shadowroot="open"
-                    shadowrootdelegatesfocus="true"
-                    shadowrootmode="open"
+                  <p-icon
+                    class="icon"
+                    data-ssr=""
                   >
-                    <style>
-                      :host {
-  display: inline-block;
-  vertical-align: top !important;
-  outline: 0 !important;
-  border-radius: 4px !important;
-  color-scheme: light dark !important;
-}
-:host([hidden]) {
-  display: none !important;
-}
-.root {
-  display: flex;
-  align-items: flex-start;
-  justify-content: center;
-  width: 100%;
-  min-width: min-content;
-  box-sizing: border-box;
-  text-align: start;
-  -webkit-appearance: none;
-  appearance: none;
-  text-decoration: none;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  -webkit-backdrop-filter: blur(32px);
-  backdrop-filter: blur(32px);
-  border: none;
-  border-radius: 4px;
-  transform: translate3d(0,0,0);
-  background-color: hsl(240 3% 26%/35%);
-  color: #FBFCFF;
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  padding: calc(var(--p-internal-button-scaling, 1) * 0.8125 * 16px + 2px) max(calc(var(--p-internal-button-scaling, 1) * 1.625 * 16px + 2px), 6px);
-  gap: clamp(2px, calc(var(--p-internal-button-scaling, 1) * 0.5 * 16px), 16px);
-  cursor: pointer;
-  margin: 0;
-}
-.root::-moz-focus-inner {
-  border: 0;
-}
-.label {
-  position: static;
-  width: auto;
-  height: auto;
-  padding: 0;
-  margin: 0;
-  overflow: visible;
-  clip: auto;
-  white-space: normal;
-  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-}
-.icon {
-  width: calc(6px + 2.125ex);
-  height: calc(6px + 2.125ex);
-  margin-inline-start: clamp(-16px, calc(var(--p-internal-button-scaling, 1) * -0.5 * 16px), -2px);
-  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-}
-.loading {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0,0,0,0);
-  white-space: nowrap;
-}
-
-                    </style>
-                    <button
-                      class="root"
-                      type="button"
+                    <template
+                      shadowroot="open"
+                      shadowrootmode="open"
                     >
-                      <p-icon
-                        aria-hidden="true"
-                        class="icon ssr"
-                      >
-                        <template
-                          shadowroot="open"
-                          shadowrootmode="open"
-                        >
-                          <style>
-                            :host {
+                      <style>
+                        :host {
   display: inline-block;
   vertical-align: top;
   color-scheme: light dark !important;
@@ -5275,8 +4793,9 @@ img {
   pointer-events: none;
   filter: var(--p-internal-icon-filter,invert(100%) sepia(91%) saturate(38%) hue-rotate(254deg) brightness(110%) contrast(110%));
   -webkit-animation: rerender-dark-primary 1ms;
-  width: inherit;
-  height: inherit;
+  width: calc(6px + 2.125ex);
+  height: calc(6px + 2.125ex);
+  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
 }
 img:dir(rtl) {
   transform: scaleX(-1);
@@ -5289,30 +4808,17 @@ img:dir(rtl) {
     transform: rotateZ(0);
   }
 }
-                          </style>
-                          <img
-                            alt=""
-                            height="24"
-                            loading="lazy"
-                            src="http://localhost:3001/icons/arrow-head-right.304b330.svg"
-                            width="24"
-                          />
-                        </template>
-                      </p-icon>
-                      <span
-                        class="label"
-                      >
-                        <slot />
-                      </span>
-                    </button>
-                    <span
-                      class="loading"
-                      id="loading"
-                      role="status"
-                    />
-                  </template>
-                  next
-                </p-button>
+                      </style>
+                      <img
+                        alt=""
+                        height="24"
+                        loading="lazy"
+                        src="http://localhost:3001/icons/arrow-head-right.304b330.svg"
+                        width="24"
+                      />
+                    </template>
+                  </p-icon>
+                </button>
               </div>
             </div>
           </template>
@@ -5342,7 +4848,7 @@ img:dir(rtl) {
     <slot />
   </template>
   <p-tabs-item
-    class="ssr"
+    data-ssr=""
   >
     <template
       shadowroot="open"
@@ -5365,7 +4871,7 @@ img:dir(rtl) {
     </template>
   </p-tabs-item>
   <p-tabs-item
-    class="ssr"
+    data-ssr=""
     hidden="true"
   >
     <template
@@ -5393,7 +4899,7 @@ img:dir(rtl) {
 
 exports[`manual test cases > should pass internal props correctly to p-text-field-wrapper 1`] = `
 <p-text-field-wrapper
-  class="ssr"
+  data-ssr=""
 >
   <template
     shadowroot="open"
@@ -5523,7 +5029,7 @@ exports[`manual test cases > should pass internal props correctly to p-text-fiel
 
 exports[`manual test cases > should pass internal props correctly to p-text-field-wrapper 2`] = `
 <p-text-field-wrapper
-  class="ssr"
+  data-ssr=""
 >
   <template
     shadowroot="open"
@@ -5653,7 +5159,7 @@ exports[`manual test cases > should pass internal props correctly to p-text-fiel
 
 exports[`manual test cases > should pass internal props correctly to p-text-field-wrapper 3`] = `
 <p-text-field-wrapper
-  class="ssr"
+  data-ssr=""
 >
   <template
     shadowroot="open"
@@ -5779,7 +5285,8 @@ exports[`manual test cases > should pass internal props correctly to p-text-fiel
       >
         <slot />
         <p-button-pure
-          class="button ssr"
+          class="button"
+          data-ssr=""
         >
           <template
             shadowroot="open"
@@ -5871,7 +5378,8 @@ exports[`manual test cases > should pass internal props correctly to p-text-fiel
             >
               <p-icon
                 aria-hidden="true"
-                class="icon ssr"
+                class="icon"
+                data-ssr=""
               >
                 <template
                   shadowroot="open"
@@ -5940,7 +5448,7 @@ img {
 
 exports[`manual test cases > should pass internal props correctly to p-text-field-wrapper 4`] = `
 <p-text-field-wrapper
-  class="ssr"
+  data-ssr=""
 >
   <template
     shadowroot="open"
@@ -6073,7 +5581,8 @@ exports[`manual test cases > should pass internal props correctly to p-text-fiel
         <slot />
         <p-icon
           aria-hidden="true"
-          class="icon ssr"
+          class="icon"
+          data-ssr=""
         >
           <template
             shadowroot="open"
@@ -6118,7 +5627,8 @@ img {
           </template>
         </p-icon>
         <p-button-pure
-          class="button ssr"
+          class="button"
+          data-ssr=""
           hidden="true"
           tabindex="-1"
         >
@@ -6211,7 +5721,8 @@ img {
             >
               <p-icon
                 aria-hidden="true"
-                class="icon ssr"
+                class="icon"
+                data-ssr=""
               >
                 <template
                   shadowroot="open"
@@ -6279,7 +5790,7 @@ img {
 
 exports[`manual test cases > should pass internal props correctly to p-text-list-item 1`] = `
 <p-text-list
-  class="ssr"
+  data-ssr=""
 >
   <template
     shadowroot="open"
@@ -6320,7 +5831,7 @@ ol,ul {
     </ol>
   </template>
   <p-text-list-item
-    class="ssr"
+    data-ssr=""
     role="listitem"
   >
     <template
@@ -6355,7 +5866,7 @@ ol,ul {
     Item 1
   </p-text-list-item>
   <p-text-list-item
-    class="ssr"
+    data-ssr=""
     role="listitem"
   >
     <template
@@ -6394,7 +5905,7 @@ ol,ul {
 
 exports[`should render dsr component for PAccordion 1`] = `
 <p-accordion
-  class="ssr"
+  data-ssr=""
 >
   <template
     shadowroot="open"
@@ -6504,7 +6015,8 @@ button::-moz-focus-inner {
         >
           <p-icon
             aria-hidden="true"
-            class="icon ssr"
+            class="icon"
+            data-ssr=""
           >
             <template
               shadowroot="open"
@@ -6568,7 +6080,7 @@ img {
 
 exports[`should render dsr component for PBanner 1`] = `
 <p-banner
-  class="ssr"
+  data-ssr=""
   popover="manual"
 >
   <template
@@ -6635,7 +6147,7 @@ exports[`should render dsr component for PBanner 1`] = `
     </style>
     <p-inline-notification
       aria-hidden="true"
-      class="ssr"
+      data-ssr=""
     >
       <template
         shadowroot="open"
@@ -6681,18 +6193,10 @@ slot[name="heading"] {
   margin: 0;
   color: #010205;
 }
-.icon {
-  margin-top: 2px;
-}
 .content {
   display: grid;
   gap: 4px;
   max-width: 50rem;
-  margin-top: 2px;
-}
-.close {
-  --p-internal-button-scaling: 0;
-  mix-blend-mode: multiply;
 }
 @media(min-width:760px) {
   .content {
@@ -6709,7 +6213,8 @@ slot[name="heading"] {
         </style>
         <p-icon
           aria-hidden="true"
-          class="icon ssr"
+          class="icon"
+          data-ssr=""
         >
           <template
             shadowroot="open"
@@ -6768,9 +6273,10 @@ img {
             <slot />
           </p>
         </div>
-        <p-button
+        <p-button-pure
           aria-controls="banner"
-          class="close ssr"
+          class="close"
+          data-ssr=""
         >
           <template
             shadowroot="open"
@@ -6779,61 +6285,62 @@ img {
           >
             <style>
               :host {
-  display: inline-block;
-  vertical-align: top !important;
+  transform: translate3d(0,0,0) !important;
   outline: 0 !important;
-  border-radius: 4px !important;
   color-scheme: light dark !important;
+  display: inline-block;
+  width: auto;
+  vertical-align: top;
 }
 :host([hidden]) {
   display: none !important;
 }
 .root {
   display: flex;
-  align-items: flex-start;
-  justify-content: center;
   width: 100%;
-  min-width: min-content;
-  box-sizing: border-box;
-  text-align: start;
-  -webkit-appearance: none;
-  appearance: none;
+  padding: 0;
+  margin: 0;
+  color: #010205;
   text-decoration: none;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
-  -webkit-backdrop-filter: blur(32px);
-  backdrop-filter: blur(32px);
-  border: none;
-  border-radius: 4px;
-  transform: translate3d(0,0,0);
-  background-color: hsl(240 4% 85%/35%);
-  color: #010205;
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  padding: calc(var(--p-internal-button-scaling, 1) * 0.8125 * 16px + 2px);
   gap: 0;
+  justify-content: flex-start;
+  align-items: flex-start;
+  font-size: 1rem;
+  -webkit-appearance: none;
+  appearance: none;
+  background: transparent;
+  text-align: start;
+  border: 0;
   cursor: pointer;
-  margin: 0;
+}
+.root::before {
+  content: "";
+  position: absolute;
+  top: -2px;
+  bottom: -2px;
+  right: -2px;
+  left: -2px;
+  border-radius: 4px;
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 .root::-moz-focus-inner {
   border: 0;
 }
-.label {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0,0,0,0);
-  white-space: nowrap;
-  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-}
 .icon {
+  position: relative;
+  flex-shrink: 0;
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
-  margin-inline-start: 0;
-  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+}
+.label {
+  z-index: 1;
+  white-space: nowrap;
+  text-indent: -999999px;
+  overflow: hidden;
+  order: 0;
 }
 .loading {
   position: absolute;
@@ -6845,6 +6352,13 @@ img {
   clip: rect(0,0,0,0);
   white-space: nowrap;
 }
+@supports (width: round(down, 1px, 1px)) {
+  .icon {
+    width: round(down, calc(6px + 2.125ex), 1px);
+    height: round(down, calc(6px + 2.125ex), 1px);
+  }
+}
+
 
             </style>
             <button
@@ -6853,7 +6367,8 @@ img {
             >
               <p-icon
                 aria-hidden="true"
-                class="icon ssr"
+                class="icon"
+                data-ssr=""
               >
                 <template
                   shadowroot="open"
@@ -6909,7 +6424,7 @@ img {
             />
           </template>
           Close notification
-        </p-button>
+        </p-button-pure>
       </template>
     </p-inline-notification>
   </template>
@@ -6919,7 +6434,7 @@ img {
 
 exports[`should render dsr component for PButton 1`] = `
 <p-button
-  class="ssr"
+  data-ssr=""
 >
   <template
     shadowroot="open"
@@ -6931,7 +6446,6 @@ exports[`should render dsr component for PButton 1`] = `
   display: inline-block;
   vertical-align: top !important;
   outline: 0 !important;
-  border-radius: 4px !important;
   color-scheme: light dark !important;
 }
 :host([hidden]) {
@@ -6942,23 +6456,22 @@ exports[`should render dsr component for PButton 1`] = `
   align-items: flex-start;
   justify-content: center;
   width: 100%;
-  min-width: min-content;
   box-sizing: border-box;
   text-align: start;
   -webkit-appearance: none;
   appearance: none;
   text-decoration: none;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: auto;
   border: 2px solid #010205;
   border-radius: 4px;
   transform: translate3d(0,0,0);
   background-color: #010205;
   color: #FBFCFF;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  padding: calc(var(--p-internal-button-scaling, 1) * 0.8125 * 16px ) max(calc(var(--p-internal-button-scaling, 1) * 1.625 * 16px ), 4px);
-  gap: clamp(2px, calc(var(--p-internal-button-scaling, 1) * 0.5 * 16px), 16px);
+  padding: 13px 26px;
+  gap: 8px;
   cursor: pointer;
   margin: 0;
 }
@@ -7014,7 +6527,7 @@ exports[`should render dsr component for PButton 1`] = `
 
 exports[`should render dsr component for PButtonGroup 1`] = `
 <p-button-group
-  class="ssr"
+  data-ssr=""
 >
   <template
     shadowroot="open"
@@ -7054,7 +6567,7 @@ div {
 
 exports[`should render dsr component for PButtonPure 1`] = `
 <p-button-pure
-  class="ssr"
+  data-ssr=""
 >
   <template
     shadowroot="open"
@@ -7145,7 +6658,8 @@ exports[`should render dsr component for PButtonPure 1`] = `
     >
       <p-icon
         aria-hidden="true"
-        class="icon ssr"
+        class="icon"
+        data-ssr=""
       >
         <template
           shadowroot="open"
@@ -7209,7 +6723,7 @@ img:dir(rtl) {
 
 exports[`should render dsr component for PButtonTile 1`] = `
 <p-button-tile
-  class="ssr"
+  data-ssr=""
 >
   <template
     shadowroot="open"
@@ -7326,7 +6840,8 @@ p {
       >
         <p />
         <p-button
-          class="link-or-button ssr"
+          class="link-or-button"
+          data-ssr=""
         >
           <template
             shadowroot="open"
@@ -7338,7 +6853,6 @@ p {
   display: inline-block;
   vertical-align: top !important;
   outline: 0 !important;
-  border-radius: 4px !important;
   color-scheme: light dark !important;
 }
 :host([hidden]) {
@@ -7349,23 +6863,22 @@ p {
   align-items: flex-start;
   justify-content: center;
   width: 100%;
-  min-width: min-content;
   box-sizing: border-box;
   text-align: start;
   -webkit-appearance: none;
   appearance: none;
   text-decoration: none;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: auto;
   border: 2px solid #FBFCFF;
   border-radius: 4px;
   transform: translate3d(0,0,0);
   background-color: transparent;
   color: #FBFCFF;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  padding: calc(var(--p-internal-button-scaling, 1) * 0.8125 * 16px ) max(calc(var(--p-internal-button-scaling, 1) * 1.625 * 16px ), 4px);
-  gap: clamp(2px, calc(var(--p-internal-button-scaling, 1) * 0.5 * 16px), 16px);
+  padding: 13px 26px;
+  gap: 8px;
   cursor: pointer;
   margin: 0;
 }
@@ -7424,7 +6937,7 @@ p {
 
 exports[`should render dsr component for PCanvas 1`] = `
 <p-canvas
-  class="ssr"
+  data-ssr=""
 >
   <template
     shadowroot="open"
@@ -7530,7 +7043,7 @@ aside:last-of-type {
       </footer>
     </div>
     <p-flyout
-      class="ssr"
+      data-ssr=""
     >
       <template
         shadowroot="open"
@@ -7615,7 +7128,11 @@ dialog::backdrop {
   max-width: var(--p-flyout-max-width,1180px);
 }
 .dismiss {
-  --p-internal-button-scaling: 0;
+  width: fit-content;
+  height: fit-content;
+  border: 2px solid #EEEFF2;
+  border-radius: 4px;
+  background: #EEEFF2;
   grid-area: 1/3;
   z-index: 4;
   position: sticky;
@@ -7637,8 +7154,9 @@ dialog::backdrop {
             <div
               class="flyout"
             >
-              <p-button
-                class="dismiss ssr"
+              <p-button-pure
+                class="dismiss"
+                data-ssr=""
               >
                 <template
                   shadowroot="open"
@@ -7647,61 +7165,62 @@ dialog::backdrop {
                 >
                   <style>
                     :host {
-  display: inline-block;
-  vertical-align: top !important;
+  transform: translate3d(0,0,0) !important;
   outline: 0 !important;
-  border-radius: 4px !important;
   color-scheme: light dark !important;
+  display: inline-block;
+  width: auto;
+  vertical-align: top;
 }
 :host([hidden]) {
   display: none !important;
 }
 .root {
   display: flex;
-  align-items: flex-start;
-  justify-content: center;
   width: 100%;
-  min-width: min-content;
-  box-sizing: border-box;
-  text-align: start;
-  -webkit-appearance: none;
-  appearance: none;
+  padding: 0;
+  margin: 0;
+  color: #010205;
   text-decoration: none;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
-  -webkit-backdrop-filter: blur(32px);
-  backdrop-filter: blur(32px);
-  border: none;
-  border-radius: 4px;
-  transform: translate3d(0,0,0);
-  background-color: hsl(240 4% 85%/35%);
-  color: #010205;
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  padding: calc(var(--p-internal-button-scaling, 1) * 0.8125 * 16px + 2px);
   gap: 0;
+  justify-content: flex-start;
+  align-items: flex-start;
+  font-size: 1rem;
+  -webkit-appearance: none;
+  appearance: none;
+  background: transparent;
+  text-align: start;
+  border: 0;
   cursor: pointer;
-  margin: 0;
+}
+.root::before {
+  content: "";
+  position: absolute;
+  top: -2px;
+  bottom: -2px;
+  right: -2px;
+  left: -2px;
+  border-radius: 4px;
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 .root::-moz-focus-inner {
   border: 0;
 }
-.label {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0,0,0,0);
-  white-space: nowrap;
-  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-}
 .icon {
+  position: relative;
+  flex-shrink: 0;
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
-  margin-inline-start: 0;
-  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+}
+.label {
+  z-index: 1;
+  white-space: nowrap;
+  text-indent: -999999px;
+  overflow: hidden;
+  order: 0;
 }
 .loading {
   position: absolute;
@@ -7713,6 +7232,13 @@ dialog::backdrop {
   clip: rect(0,0,0,0);
   white-space: nowrap;
 }
+@supports (width: round(down, 1px, 1px)) {
+  .icon {
+    width: round(down, calc(6px + 2.125ex), 1px);
+    height: round(down, calc(6px + 2.125ex), 1px);
+  }
+}
+
 
                   </style>
                   <button
@@ -7721,7 +7247,8 @@ dialog::backdrop {
                   >
                     <p-icon
                       aria-hidden="true"
-                      class="icon ssr"
+                      class="icon"
+                      data-ssr=""
                     >
                       <template
                         shadowroot="open"
@@ -7777,7 +7304,7 @@ img {
                   />
                 </template>
                 Dismiss flyout
-              </p-button>
+              </p-button-pure>
               <slot />
             </div>
           </div>
@@ -7788,7 +7315,7 @@ img {
       />
     </p-flyout>
     <p-flyout
-      class="ssr"
+      data-ssr=""
     >
       <template
         shadowroot="open"
@@ -7873,7 +7400,11 @@ dialog::backdrop {
   max-width: var(--p-flyout-max-width,1180px);
 }
 .dismiss {
-  --p-internal-button-scaling: 0;
+  width: fit-content;
+  height: fit-content;
+  border: 2px solid #EEEFF2;
+  border-radius: 4px;
+  background: #EEEFF2;
   margin-inline-end: 200vw;
   transition: margin-inline-end 0s linear var(--p-transition-duration, 0s);
   grid-area: 1/3;
@@ -7897,8 +7428,9 @@ dialog::backdrop {
             <div
               class="flyout"
             >
-              <p-button
-                class="dismiss ssr"
+              <p-button-pure
+                class="dismiss"
+                data-ssr=""
               >
                 <template
                   shadowroot="open"
@@ -7907,61 +7439,62 @@ dialog::backdrop {
                 >
                   <style>
                     :host {
-  display: inline-block;
-  vertical-align: top !important;
+  transform: translate3d(0,0,0) !important;
   outline: 0 !important;
-  border-radius: 4px !important;
   color-scheme: light dark !important;
+  display: inline-block;
+  width: auto;
+  vertical-align: top;
 }
 :host([hidden]) {
   display: none !important;
 }
 .root {
   display: flex;
-  align-items: flex-start;
-  justify-content: center;
   width: 100%;
-  min-width: min-content;
-  box-sizing: border-box;
-  text-align: start;
-  -webkit-appearance: none;
-  appearance: none;
+  padding: 0;
+  margin: 0;
+  color: #010205;
   text-decoration: none;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
-  -webkit-backdrop-filter: blur(32px);
-  backdrop-filter: blur(32px);
-  border: none;
-  border-radius: 4px;
-  transform: translate3d(0,0,0);
-  background-color: hsl(240 4% 85%/35%);
-  color: #010205;
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  padding: calc(var(--p-internal-button-scaling, 1) * 0.8125 * 16px + 2px);
   gap: 0;
+  justify-content: flex-start;
+  align-items: flex-start;
+  font-size: 1rem;
+  -webkit-appearance: none;
+  appearance: none;
+  background: transparent;
+  text-align: start;
+  border: 0;
   cursor: pointer;
-  margin: 0;
+}
+.root::before {
+  content: "";
+  position: absolute;
+  top: -2px;
+  bottom: -2px;
+  right: -2px;
+  left: -2px;
+  border-radius: 4px;
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 .root::-moz-focus-inner {
   border: 0;
 }
-.label {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0,0,0,0);
-  white-space: nowrap;
-  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-}
 .icon {
+  position: relative;
+  flex-shrink: 0;
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
-  margin-inline-start: 0;
-  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+}
+.label {
+  z-index: 1;
+  white-space: nowrap;
+  text-indent: -999999px;
+  overflow: hidden;
+  order: 0;
 }
 .loading {
   position: absolute;
@@ -7973,6 +7506,13 @@ dialog::backdrop {
   clip: rect(0,0,0,0);
   white-space: nowrap;
 }
+@supports (width: round(down, 1px, 1px)) {
+  .icon {
+    width: round(down, calc(6px + 2.125ex), 1px);
+    height: round(down, calc(6px + 2.125ex), 1px);
+  }
+}
+
 
                   </style>
                   <button
@@ -7981,7 +7521,8 @@ dialog::backdrop {
                   >
                     <p-icon
                       aria-hidden="true"
-                      class="icon ssr"
+                      class="icon"
+                      data-ssr=""
                     >
                       <template
                         shadowroot="open"
@@ -8037,7 +7578,7 @@ img {
                   />
                 </template>
                 Dismiss flyout
-              </p-button>
+              </p-button-pure>
               <slot />
             </div>
           </div>
@@ -8054,7 +7595,7 @@ img {
 
 exports[`should render dsr component for PCarousel 1`] = `
 <p-carousel
-  class="ssr"
+  data-ssr=""
 >
   <template
     shadowroot="open"
@@ -8240,7 +7781,7 @@ exports[`should render dsr component for PCarousel 1`] = `
 
 exports[`should render dsr component for PCheckboxWrapper 1`] = `
 <p-checkbox-wrapper
-  class="ssr"
+  data-ssr=""
 >
   <template
     shadowroot="open"
@@ -8373,7 +7914,7 @@ exports[`should render dsr component for PCheckboxWrapper 1`] = `
 
 exports[`should render dsr component for PContentWrapper 1`] = `
 <p-content-wrapper
-  class="ssr"
+  data-ssr=""
 >
   <template
     shadowroot="open"
@@ -8416,7 +7957,7 @@ exports[`should render dsr component for PContentWrapper 1`] = `
 
 exports[`should render dsr component for PCrest 1`] = `
 <p-crest
-  class="ssr"
+  data-ssr=""
 >
   <template
     shadowroot="open"
@@ -8491,7 +8032,7 @@ img {
 
 exports[`should render dsr component for PDisplay 1`] = `
 <p-display
-  class="ssr"
+  data-ssr=""
 >
   <template
     shadowroot="open"
@@ -8532,7 +8073,7 @@ exports[`should render dsr component for PDisplay 1`] = `
 
 exports[`should render dsr component for PDivider 1`] = `
 <p-divider
-  class="ssr"
+  data-ssr=""
 >
   <template
     shadowroot="open"
@@ -8563,7 +8104,7 @@ hr {
 
 exports[`should render dsr component for PFieldset 1`] = `
 <p-fieldset
-  class="ssr"
+  data-ssr=""
 >
   <template
     shadowroot="open"
@@ -8605,7 +8146,7 @@ fieldset {
 
 exports[`should render dsr component for PFieldsetWrapper 1`] = `
 <p-fieldset-wrapper
-  class="ssr"
+  data-ssr=""
 >
   <template
     shadowroot="open"
@@ -8647,7 +8188,7 @@ fieldset {
 
 exports[`should render dsr component for PFlex 1`] = `
 <p-flex
-  class="ssr"
+  data-ssr=""
 >
   <template
     shadowroot="open"
@@ -8675,7 +8216,7 @@ exports[`should render dsr component for PFlex 1`] = `
 
 exports[`should render dsr component for PFlexItem 1`] = `
 <p-flex-item
-  class="ssr"
+  data-ssr=""
 >
   <template
     shadowroot="open"
@@ -8702,7 +8243,7 @@ exports[`should render dsr component for PFlexItem 1`] = `
 
 exports[`should render dsr component for PFlyout 1`] = `
 <p-flyout
-  class="ssr"
+  data-ssr=""
 >
   <template
     shadowroot="open"
@@ -8787,7 +8328,11 @@ dialog::backdrop {
   max-width: var(--p-flyout-max-width,1180px);
 }
 .dismiss {
-  --p-internal-button-scaling: 0;
+  width: fit-content;
+  height: fit-content;
+  border: 2px solid #EEEFF2;
+  border-radius: 4px;
+  background: #EEEFF2;
   margin-inline-end: 200vw;
   transition: margin-inline-end 0s linear var(--p-transition-duration, 0s);
   grid-area: 1/3;
@@ -8811,8 +8356,9 @@ dialog::backdrop {
         <div
           class="flyout"
         >
-          <p-button
-            class="dismiss ssr"
+          <p-button-pure
+            class="dismiss"
+            data-ssr=""
           >
             <template
               shadowroot="open"
@@ -8821,61 +8367,62 @@ dialog::backdrop {
             >
               <style>
                 :host {
-  display: inline-block;
-  vertical-align: top !important;
+  transform: translate3d(0,0,0) !important;
   outline: 0 !important;
-  border-radius: 4px !important;
   color-scheme: light dark !important;
+  display: inline-block;
+  width: auto;
+  vertical-align: top;
 }
 :host([hidden]) {
   display: none !important;
 }
 .root {
   display: flex;
-  align-items: flex-start;
-  justify-content: center;
   width: 100%;
-  min-width: min-content;
-  box-sizing: border-box;
-  text-align: start;
-  -webkit-appearance: none;
-  appearance: none;
+  padding: 0;
+  margin: 0;
+  color: #010205;
   text-decoration: none;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
-  -webkit-backdrop-filter: blur(32px);
-  backdrop-filter: blur(32px);
-  border: none;
-  border-radius: 4px;
-  transform: translate3d(0,0,0);
-  background-color: hsl(240 4% 85%/35%);
-  color: #010205;
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  padding: calc(var(--p-internal-button-scaling, 1) * 0.8125 * 16px + 2px);
   gap: 0;
+  justify-content: flex-start;
+  align-items: flex-start;
+  font-size: 1rem;
+  -webkit-appearance: none;
+  appearance: none;
+  background: transparent;
+  text-align: start;
+  border: 0;
   cursor: pointer;
-  margin: 0;
+}
+.root::before {
+  content: "";
+  position: absolute;
+  top: -2px;
+  bottom: -2px;
+  right: -2px;
+  left: -2px;
+  border-radius: 4px;
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 .root::-moz-focus-inner {
   border: 0;
 }
-.label {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0,0,0,0);
-  white-space: nowrap;
-  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-}
 .icon {
+  position: relative;
+  flex-shrink: 0;
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
-  margin-inline-start: 0;
-  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+}
+.label {
+  z-index: 1;
+  white-space: nowrap;
+  text-indent: -999999px;
+  overflow: hidden;
+  order: 0;
 }
 .loading {
   position: absolute;
@@ -8887,6 +8434,13 @@ dialog::backdrop {
   clip: rect(0,0,0,0);
   white-space: nowrap;
 }
+@supports (width: round(down, 1px, 1px)) {
+  .icon {
+    width: round(down, calc(6px + 2.125ex), 1px);
+    height: round(down, calc(6px + 2.125ex), 1px);
+  }
+}
+
 
               </style>
               <button
@@ -8895,7 +8449,8 @@ dialog::backdrop {
               >
                 <p-icon
                   aria-hidden="true"
-                  class="icon ssr"
+                  class="icon"
+                  data-ssr=""
                 >
                   <template
                     shadowroot="open"
@@ -8951,7 +8506,7 @@ img {
               />
             </template>
             Dismiss flyout
-          </p-button>
+          </p-button-pure>
           <slot />
         </div>
       </div>
@@ -8963,7 +8518,7 @@ img {
 
 exports[`should render dsr component for PFlyoutMultilevel 1`] = `
 <p-flyout-multilevel
-  class="ssr"
+  data-ssr=""
 >
   <template
     shadowroot="open"
@@ -9091,7 +8646,8 @@ dialog::backdrop {
         class="header"
       >
         <p-button-pure
-          class="dismiss ssr"
+          class="dismiss"
+          data-ssr=""
         >
           <template
             shadowroot="open"
@@ -9182,7 +8738,8 @@ dialog::backdrop {
             >
               <p-icon
                 aria-hidden="true"
-                class="icon ssr"
+                class="icon"
+                data-ssr=""
               >
                 <template
                   shadowroot="open"
@@ -9257,7 +8814,7 @@ img {
 
 exports[`should render dsr component for PFlyoutMultilevelItem 1`] = `
 <p-flyout-multilevel-item
-  class="ssr"
+  data-ssr=""
 >
   <template
     shadowroot="open"
@@ -9386,7 +8943,8 @@ exports[`should render dsr component for PFlyoutMultilevelItem 1`] = `
 
     </style>
     <p-button-pure
-      class="button ssr"
+      class="button"
+      data-ssr=""
     >
       <template
         shadowroot="open"
@@ -9477,7 +9035,8 @@ exports[`should render dsr component for PFlyoutMultilevelItem 1`] = `
         >
           <p-icon
             aria-hidden="true"
-            class="icon ssr"
+            class="icon"
+            data-ssr=""
           >
             <template
               shadowroot="open"
@@ -9544,7 +9103,8 @@ img:dir(rtl) {
         class="header"
       >
         <p-button-pure
-          class="back ssr"
+          class="back"
+          data-ssr=""
         >
           <template
             shadowroot="open"
@@ -9635,7 +9195,8 @@ img:dir(rtl) {
             >
               <p-icon
                 aria-hidden="true"
-                class="icon ssr"
+                class="icon"
+                data-ssr=""
               >
                 <template
                   shadowroot="open"
@@ -9712,7 +9273,7 @@ img:dir(rtl) {
 
 exports[`should render dsr component for PGrid 1`] = `
 <p-grid
-  class="ssr"
+  data-ssr=""
 >
   <template
     shadowroot="open"
@@ -9741,7 +9302,7 @@ exports[`should render dsr component for PGrid 1`] = `
 
 exports[`should render dsr component for PGridItem 1`] = `
 <p-grid-item
-  class="ssr"
+  data-ssr=""
 >
   <template
     shadowroot="open"
@@ -9768,7 +9329,7 @@ exports[`should render dsr component for PGridItem 1`] = `
 
 exports[`should render dsr component for PHeading 1`] = `
 <p-heading
-  class="ssr"
+  data-ssr=""
 >
   <template
     shadowroot="open"
@@ -9809,7 +9370,7 @@ exports[`should render dsr component for PHeading 1`] = `
 
 exports[`should render dsr component for PHeadline 1`] = `
 <p-headline
-  class="ssr"
+  data-ssr=""
 >
   <template
     shadowroot="open"
@@ -9850,7 +9411,7 @@ exports[`should render dsr component for PHeadline 1`] = `
 
 exports[`should render dsr component for PIcon 1`] = `
 <p-icon
-  class="ssr"
+  data-ssr=""
 >
   <template
     shadowroot="open"
@@ -9901,7 +9462,7 @@ img:dir(rtl) {
 
 exports[`should render dsr component for PInlineNotification 1`] = `
 <p-inline-notification
-  class="ssr"
+  data-ssr=""
 >
   <template
     shadowroot="open"
@@ -9947,18 +9508,10 @@ slot[name="heading"] {
   margin: 0;
   color: #010205;
 }
-.icon {
-  margin-top: 2px;
-}
 .content {
   display: grid;
   gap: 4px;
   max-width: 50rem;
-  margin-top: 2px;
-}
-.close {
-  --p-internal-button-scaling: 0;
-  mix-blend-mode: multiply;
 }
 @media(min-width:760px) {
   .content {
@@ -9975,7 +9528,8 @@ slot[name="heading"] {
     </style>
     <p-icon
       aria-hidden="true"
-      class="icon ssr"
+      class="icon"
+      data-ssr=""
     >
       <template
         shadowroot="open"
@@ -10034,9 +9588,10 @@ img {
         <slot />
       </p>
     </div>
-    <p-button
+    <p-button-pure
       aria-controls="banner"
-      class="close ssr"
+      class="close"
+      data-ssr=""
     >
       <template
         shadowroot="open"
@@ -10045,61 +9600,62 @@ img {
       >
         <style>
           :host {
-  display: inline-block;
-  vertical-align: top !important;
+  transform: translate3d(0,0,0) !important;
   outline: 0 !important;
-  border-radius: 4px !important;
   color-scheme: light dark !important;
+  display: inline-block;
+  width: auto;
+  vertical-align: top;
 }
 :host([hidden]) {
   display: none !important;
 }
 .root {
   display: flex;
-  align-items: flex-start;
-  justify-content: center;
   width: 100%;
-  min-width: min-content;
-  box-sizing: border-box;
-  text-align: start;
-  -webkit-appearance: none;
-  appearance: none;
+  padding: 0;
+  margin: 0;
+  color: #010205;
   text-decoration: none;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
-  -webkit-backdrop-filter: blur(32px);
-  backdrop-filter: blur(32px);
-  border: none;
-  border-radius: 4px;
-  transform: translate3d(0,0,0);
-  background-color: hsl(240 4% 85%/35%);
-  color: #010205;
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  padding: calc(var(--p-internal-button-scaling, 1) * 0.8125 * 16px + 2px);
   gap: 0;
+  justify-content: flex-start;
+  align-items: flex-start;
+  font-size: 1rem;
+  -webkit-appearance: none;
+  appearance: none;
+  background: transparent;
+  text-align: start;
+  border: 0;
   cursor: pointer;
-  margin: 0;
+}
+.root::before {
+  content: "";
+  position: absolute;
+  top: -2px;
+  bottom: -2px;
+  right: -2px;
+  left: -2px;
+  border-radius: 4px;
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 .root::-moz-focus-inner {
   border: 0;
 }
-.label {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0,0,0,0);
-  white-space: nowrap;
-  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-}
 .icon {
+  position: relative;
+  flex-shrink: 0;
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
-  margin-inline-start: 0;
-  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+}
+.label {
+  z-index: 1;
+  white-space: nowrap;
+  text-indent: -999999px;
+  overflow: hidden;
+  order: 0;
 }
 .loading {
   position: absolute;
@@ -10111,6 +9667,13 @@ img {
   clip: rect(0,0,0,0);
   white-space: nowrap;
 }
+@supports (width: round(down, 1px, 1px)) {
+  .icon {
+    width: round(down, calc(6px + 2.125ex), 1px);
+    height: round(down, calc(6px + 2.125ex), 1px);
+  }
+}
+
 
         </style>
         <button
@@ -10119,7 +9682,8 @@ img {
         >
           <p-icon
             aria-hidden="true"
-            class="icon ssr"
+            class="icon"
+            data-ssr=""
           >
             <template
               shadowroot="open"
@@ -10175,7 +9739,7 @@ img {
         />
       </template>
       Close notification
-    </p-button>
+    </p-button-pure>
   </template>
   Some child
 </p-inline-notification>
@@ -10183,7 +9747,7 @@ img {
 
 exports[`should render dsr component for PLink 1`] = `
 <p-link
-  class="ssr"
+  data-ssr=""
 >
   <template
     shadowroot="open"
@@ -10195,7 +9759,6 @@ exports[`should render dsr component for PLink 1`] = `
   display: inline-block;
   vertical-align: top !important;
   outline: 0 !important;
-  border-radius: 4px !important;
   color-scheme: light dark !important;
 }
 :host([hidden]) {
@@ -10225,23 +9788,22 @@ exports[`should render dsr component for PLink 1`] = `
   align-items: flex-start;
   justify-content: center;
   width: 100%;
-  min-width: min-content;
   box-sizing: border-box;
   text-align: start;
   -webkit-appearance: none;
   appearance: none;
   text-decoration: none;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: auto;
   border: 2px solid #010205;
   border-radius: 4px;
   transform: translate3d(0,0,0);
   background-color: #010205;
   color: #FBFCFF;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  padding: calc(var(--p-internal-link-scaling, 1) * 0.8125 * 16px ) max(calc(var(--p-internal-link-scaling, 1) * 1.625 * 16px ), 4px);
-  gap: clamp(2px, calc(var(--p-internal-link-scaling, 1) * 0.5 * 16px), 16px);
+  padding: 13px 26px;
+  gap: 8px;
 }
 .label {
   position: static;
@@ -10274,7 +9836,7 @@ exports[`should render dsr component for PLink 1`] = `
 
 exports[`should render dsr component for PLinkPure 1`] = `
 <p-link-pure
-  class="ssr"
+  data-ssr=""
 >
   <template
     shadowroot="open"
@@ -10365,7 +9927,8 @@ exports[`should render dsr component for PLinkPure 1`] = `
     >
       <p-icon
         aria-hidden="true"
-        class="icon ssr"
+        class="icon"
+        data-ssr=""
       >
         <template
           shadowroot="open"
@@ -10424,7 +9987,7 @@ img:dir(rtl) {
 
 exports[`should render dsr component for PLinkSocial 1`] = `
 <p-link-social
-  class="ssr"
+  data-ssr=""
 >
   <template
     shadowroot="open"
@@ -10436,7 +9999,6 @@ exports[`should render dsr component for PLinkSocial 1`] = `
   display: inline-block;
   vertical-align: top !important;
   outline: 0 !important;
-  border-radius: 4px !important;
   color-scheme: light dark !important;
 }
 :host([hidden]) {
@@ -10466,23 +10028,22 @@ exports[`should render dsr component for PLinkSocial 1`] = `
   align-items: flex-start;
   justify-content: center;
   width: 100%;
-  min-width: min-content;
   box-sizing: border-box;
   text-align: start;
   -webkit-appearance: none;
   appearance: none;
   text-decoration: none;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: auto;
   border: 2px solid #010205;
   border-radius: 4px;
   transform: translate3d(0,0,0);
   background-color: #010205;
   color: #FBFCFF;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  padding: calc(var(--p-internal-link-scaling, 1) * 0.8125 * 16px ) max(calc(var(--p-internal-link-scaling, 1) * 1.625 * 16px ), 4px);
-  gap: clamp(2px, calc(var(--p-internal-link-scaling, 1) * 0.5 * 16px), 16px);
+  padding: 13px 26px;
+  gap: 8px;
 }
 .label {
   position: static;
@@ -10497,7 +10058,7 @@ exports[`should render dsr component for PLinkSocial 1`] = `
 .icon {
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
-  margin-inline-start: clamp(-16px, calc(var(--p-internal-link-scaling, 1) * -0.5 * 16px), -2px);
+  margin-inline-start: -8px;
   filter: invert(1);
 }
 
@@ -10507,7 +10068,8 @@ exports[`should render dsr component for PLinkSocial 1`] = `
     >
       <p-icon
         aria-hidden="true"
-        class="icon ssr"
+        class="icon"
+        data-ssr=""
       >
         <template
           shadowroot="open"
@@ -10566,7 +10128,7 @@ img:dir(rtl) {
 
 exports[`should render dsr component for PLinkTile 1`] = `
 <p-link-tile
-  class="ssr"
+  data-ssr=""
 >
   <template
     shadowroot="open"
@@ -10687,7 +10249,8 @@ p {
       >
         <p />
         <p-link
-          class="link-or-button ssr"
+          class="link-or-button"
+          data-ssr=""
         >
           <template
             shadowroot="open"
@@ -10699,7 +10262,6 @@ p {
   display: inline-block;
   vertical-align: top !important;
   outline: 0 !important;
-  border-radius: 4px !important;
   color-scheme: light dark !important;
 }
 :host([hidden]) {
@@ -10729,23 +10291,22 @@ p {
   align-items: flex-start;
   justify-content: center;
   width: 100%;
-  min-width: min-content;
   box-sizing: border-box;
   text-align: start;
   -webkit-appearance: none;
   appearance: none;
   text-decoration: none;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: auto;
   border: 2px solid #FBFCFF;
   border-radius: 4px;
   transform: translate3d(0,0,0);
   background-color: transparent;
   color: #FBFCFF;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  padding: calc(var(--p-internal-link-scaling, 1) * 0.8125 * 16px ) max(calc(var(--p-internal-link-scaling, 1) * 1.625 * 16px ), 4px);
-  gap: clamp(2px, calc(var(--p-internal-link-scaling, 1) * 0.5 * 16px), 16px);
+  padding: 13px 26px;
+  gap: 8px;
 }
 .label {
   position: static;
@@ -10779,7 +10340,7 @@ p {
 
 exports[`should render dsr component for PLinkTileModelSignature 1`] = `
 <p-link-tile-model-signature
-  class="ssr"
+  data-ssr=""
 >
   <template
     shadowroot="open"
@@ -10904,7 +10465,7 @@ h1,h2,h3,h4,h5,h6 {
         class="header"
       >
         <p-model-signature
-          class="ssr"
+          data-ssr=""
         >
           <template
             shadowroot="open"
@@ -10980,7 +10541,7 @@ img {
     </div>
   </template>
   <p-link
-    class="ssr"
+    data-ssr=""
     slot="primary"
   >
     <template
@@ -10993,7 +10554,6 @@ img {
   display: inline-block;
   vertical-align: top !important;
   outline: 0 !important;
-  border-radius: 4px !important;
   color-scheme: light dark !important;
 }
 :host([hidden]) {
@@ -11004,23 +10564,22 @@ img {
   align-items: flex-start;
   justify-content: center;
   width: 100%;
-  min-width: min-content;
   box-sizing: border-box;
   text-align: start;
   -webkit-appearance: none;
   appearance: none;
   text-decoration: none;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: auto;
   border: 2px solid #FBFCFF;
   border-radius: 4px;
   transform: translate3d(0,0,0);
   background-color: #FBFCFF;
   color: #010205;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  padding: calc(var(--p-internal-link-scaling, 1) * 0.8125 * 16px ) max(calc(var(--p-internal-link-scaling, 1) * 1.625 * 16px ), 4px);
-  gap: clamp(2px, calc(var(--p-internal-link-scaling, 1) * 0.5 * 16px), 16px);
+  padding: 13px 26px;
+  gap: 8px;
 }
 .root::-moz-focus-inner {
   border: 0;
@@ -11055,7 +10614,7 @@ img {
     Some label
   </p-link>
   <p-link
-    class="ssr"
+    data-ssr=""
     slot="secondary"
   >
     <template
@@ -11068,7 +10627,6 @@ img {
   display: inline-block;
   vertical-align: top !important;
   outline: 0 !important;
-  border-radius: 4px !important;
   color-scheme: light dark !important;
 }
 :host([hidden]) {
@@ -11079,23 +10637,22 @@ img {
   align-items: flex-start;
   justify-content: center;
   width: 100%;
-  min-width: min-content;
   box-sizing: border-box;
   text-align: start;
   -webkit-appearance: none;
   appearance: none;
   text-decoration: none;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: auto;
   border: 2px solid #FBFCFF;
   border-radius: 4px;
   transform: translate3d(0,0,0);
   background-color: transparent;
   color: #FBFCFF;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  padding: calc(var(--p-internal-link-scaling, 1) * 0.8125 * 16px ) max(calc(var(--p-internal-link-scaling, 1) * 1.625 * 16px ), 4px);
-  gap: clamp(2px, calc(var(--p-internal-link-scaling, 1) * 0.5 * 16px), 16px);
+  padding: 13px 26px;
+  gap: 8px;
 }
 .root::-moz-focus-inner {
   border: 0;
@@ -11131,7 +10688,7 @@ img {
 
 exports[`should render dsr component for PLinkTileProduct 1`] = `
 <p-link-tile-product
-  class="ssr"
+  data-ssr=""
 >
   <template
     shadowroot="open"
@@ -11244,7 +10801,8 @@ slot[name="header"] {
           name="header"
         />
         <p-button-pure
-          class="button ssr"
+          class="button"
+          data-ssr=""
         >
           <template
             shadowroot="open"
@@ -11335,7 +10893,8 @@ slot[name="header"] {
             >
               <p-icon
                 aria-hidden="true"
-                class="icon ssr"
+                class="icon"
+                data-ssr=""
               >
                 <template
                   shadowroot="open"
@@ -11409,7 +10968,7 @@ img {
 
 exports[`should render dsr component for PMarque 1`] = `
 <p-marque
-  class="ssr"
+  data-ssr=""
 >
   <template
     shadowroot="open"
@@ -11489,7 +11048,7 @@ img {
 
 exports[`should render dsr component for PModal 1`] = `
 <p-modal
-  class="ssr"
+  data-ssr=""
 >
   <template
     shadowroot="open"
@@ -11591,7 +11150,11 @@ dialog::backdrop {
   transform: translateY(25vh);
 }
 .dismiss {
-  --p-internal-button-scaling: 0;
+  width: fit-content;
+  height: fit-content;
+  border: 2px solid #EEEFF2;
+  border-radius: 4px;
+  background: #EEEFF2;
   grid-area: 1/3;
   z-index: 2;
   position: sticky;
@@ -11613,8 +11176,9 @@ dialog::backdrop {
         <div
           class="modal"
         >
-          <p-button
-            class="dismiss ssr"
+          <p-button-pure
+            class="dismiss"
+            data-ssr=""
           >
             <template
               shadowroot="open"
@@ -11623,61 +11187,62 @@ dialog::backdrop {
             >
               <style>
                 :host {
-  display: inline-block;
-  vertical-align: top !important;
+  transform: translate3d(0,0,0) !important;
   outline: 0 !important;
-  border-radius: 4px !important;
   color-scheme: light dark !important;
+  display: inline-block;
+  width: auto;
+  vertical-align: top;
 }
 :host([hidden]) {
   display: none !important;
 }
 .root {
   display: flex;
-  align-items: flex-start;
-  justify-content: center;
   width: 100%;
-  min-width: min-content;
-  box-sizing: border-box;
-  text-align: start;
-  -webkit-appearance: none;
-  appearance: none;
+  padding: 0;
+  margin: 0;
+  color: #010205;
   text-decoration: none;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
   hyphens: auto;
-  -webkit-backdrop-filter: blur(32px);
-  backdrop-filter: blur(32px);
-  border: none;
-  border-radius: 4px;
-  transform: translate3d(0,0,0);
-  background-color: hsl(240 4% 85%/35%);
-  color: #010205;
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  padding: calc(var(--p-internal-button-scaling, 1) * 0.8125 * 16px + 2px);
   gap: 0;
+  justify-content: flex-start;
+  align-items: flex-start;
+  font-size: 1rem;
+  -webkit-appearance: none;
+  appearance: none;
+  background: transparent;
+  text-align: start;
+  border: 0;
   cursor: pointer;
-  margin: 0;
+}
+.root::before {
+  content: "";
+  position: absolute;
+  top: -2px;
+  bottom: -2px;
+  right: -2px;
+  left: -2px;
+  border-radius: 4px;
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 .root::-moz-focus-inner {
   border: 0;
 }
-.label {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0,0,0,0);
-  white-space: nowrap;
-  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-}
 .icon {
+  position: relative;
+  flex-shrink: 0;
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
-  margin-inline-start: 0;
-  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+}
+.label {
+  z-index: 1;
+  white-space: nowrap;
+  text-indent: -999999px;
+  overflow: hidden;
+  order: 0;
 }
 .loading {
   position: absolute;
@@ -11689,6 +11254,13 @@ dialog::backdrop {
   clip: rect(0,0,0,0);
   white-space: nowrap;
 }
+@supports (width: round(down, 1px, 1px)) {
+  .icon {
+    width: round(down, calc(6px + 2.125ex), 1px);
+    height: round(down, calc(6px + 2.125ex), 1px);
+  }
+}
+
 
               </style>
               <button
@@ -11697,7 +11269,8 @@ dialog::backdrop {
               >
                 <p-icon
                   aria-hidden="true"
-                  class="icon ssr"
+                  class="icon"
+                  data-ssr=""
                 >
                   <template
                     shadowroot="open"
@@ -11753,7 +11326,7 @@ img {
               />
             </template>
             Dismiss modal
-          </p-button>
+          </p-button-pure>
           <slot />
         </div>
       </div>
@@ -11765,7 +11338,7 @@ img {
 
 exports[`should render dsr component for PModelSignature 1`] = `
 <p-model-signature
-  class="ssr"
+  data-ssr=""
 >
   <template
     shadowroot="open"
@@ -11818,7 +11391,7 @@ img {
 
 exports[`should render dsr component for PMultiSelect 1`] = `
 <p-multi-select
-  class="ssr"
+  data-ssr=""
 >
   <template
     shadowroot="open"
@@ -11997,7 +11570,8 @@ input:disabled {
         />
         <p-icon
           aria-hidden="true"
-          class="icon ssr"
+          class="icon"
+          data-ssr=""
         >
           <template
             shadowroot="open"
@@ -12080,13 +11654,13 @@ img {
 
 exports[`should render dsr component for PMultiSelectOption 1`] = `
 <p-multi-select-option
-  class="ssr"
+  data-ssr=""
 />
 `;
 
 exports[`should render dsr component for POptgroup 1`] = `
 <p-optgroup
-  class="ssr"
+  data-ssr=""
 >
   <template
     shadowroot="open"
@@ -12135,7 +11709,7 @@ exports[`should render dsr component for POptgroup 1`] = `
 
 exports[`should render dsr component for PPagination 1`] = `
 <p-pagination
-  class="ssr"
+  data-ssr=""
 >
   <template
     shadowroot="open"
@@ -12236,7 +11810,7 @@ span:not(.ellipsis)::-moz-focus-inner {
           >
             <p-icon
               aria-hidden="true"
-              class="ssr"
+              data-ssr=""
             >
               <template
                 shadowroot="open"
@@ -12307,7 +11881,7 @@ img:dir(rtl) {
           >
             <p-icon
               aria-hidden="true"
-              class="ssr"
+              data-ssr=""
             >
               <template
                 shadowroot="open"
@@ -12364,7 +11938,7 @@ img:dir(rtl) {
 
 exports[`should render dsr component for PPinCode 1`] = `
 <p-pin-code
-  class="ssr"
+  data-ssr=""
 >
   <template
     shadowroot="open"
@@ -12542,7 +12116,7 @@ input:disabled {
 
 exports[`should render dsr component for PPopover 1`] = `
 <p-popover
-  class="ssr"
+  data-ssr=""
 >
   <template
     shadowroot="open"
@@ -12648,7 +12222,8 @@ button::-moz-focus-inner {
       type="button"
     >
       <p-icon
-        class="icon ssr"
+        class="icon"
+        data-ssr=""
       >
         <template
           shadowroot="open"
@@ -12705,7 +12280,7 @@ img {
 
 exports[`should render dsr component for PRadioButtonWrapper 1`] = `
 <p-radio-button-wrapper
-  class="ssr"
+  data-ssr=""
 >
   <template
     shadowroot="open"
@@ -12835,7 +12410,7 @@ exports[`should render dsr component for PRadioButtonWrapper 1`] = `
 
 exports[`should render dsr component for PScroller 1`] = `
 <p-scroller
-  class="ssr"
+  data-ssr=""
 >
   <template
     shadowroot="open"
@@ -12850,6 +12425,27 @@ exports[`should render dsr component for PScroller 1`] = `
 :host([hidden]) {
   display: none !important;
 }
+button {
+  display: flex;
+  pointer-events: auto;
+  align-items: center;
+  justify-content: center;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  height: calc(calc(6px + 2.125ex) + 4px);
+  width: calc(calc(6px + 2.125ex) + 4px);
+  border: 0;
+  outline: 0;
+  cursor: pointer;
+  background: #FFF;
+  border-radius: 4px;
+  -webkit-backdrop-filter: blur(32px);
+  backdrop-filter: blur(32px);
+  visibility: hidden;
+  box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.16);
+}
+
 .root {
   position: relative;
   display: grid;
@@ -12898,6 +12494,7 @@ exports[`should render dsr component for PScroller 1`] = `
   direction: ltr;
   width: calc(calc(6px + 2.125ex) + 24px);
   padding: 4px 0;
+  pointer-events: none;
   display: flex;
   align-items: center;
   left: -1px;
@@ -12905,7 +12502,7 @@ exports[`should render dsr component for PScroller 1`] = `
   background: linear-gradient(to right, rgba(255,255,255,1) 20%,rgba(255,255,255,0.6) 48%,rgba(255,255,255,0.3) 68%,rgba(255,255,255,0) 100%);
   visibility: hidden;
 }
-.action-prev .action-button {
+.action-prev button {
   margin-left: 8px;
 }
 .action-next {
@@ -12915,6 +12512,7 @@ exports[`should render dsr component for PScroller 1`] = `
   direction: ltr;
   width: calc(calc(6px + 2.125ex) + 24px);
   padding: 4px 0;
+  pointer-events: none;
   display: flex;
   align-items: center;
   right: -1px;
@@ -12922,12 +12520,8 @@ exports[`should render dsr component for PScroller 1`] = `
   background: linear-gradient(to left, rgba(255,255,255,1) 20%,rgba(255,255,255,0.6) 48%,rgba(255,255,255,0.3) 68%,rgba(255,255,255,0) 100%);
   visibility: hidden;
 }
-.action-next .action-button {
+.action-next button {
   margin-right: 8px;
-}
-.action-button {
-  --p-internal-button-scaling: 0;
-  box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.16);
 }
 .icon:dir(rtl) {
   transform: scaleX(-1);
@@ -12955,101 +12549,22 @@ exports[`should render dsr component for PScroller 1`] = `
       <div
         class="action-prev"
       >
-        <p-button
-          class="action-button ssr"
-          dir="ltr"
-          hide-label="true"
+        <button
+          aria-hidden="true"
+          aria-label="prev"
           tabindex="-1"
+          type="button"
         >
-          <template
-            shadowroot="open"
-            shadowrootdelegatesfocus="true"
-            shadowrootmode="open"
+          <p-icon
+            class="icon"
+            data-ssr=""
           >
-            <style>
-              :host {
-  display: inline-block;
-  vertical-align: top !important;
-  outline: 0 !important;
-  border-radius: 4px !important;
-  color-scheme: light dark !important;
-}
-:host([hidden]) {
-  display: none !important;
-}
-.root {
-  display: flex;
-  align-items: flex-start;
-  justify-content: center;
-  width: 100%;
-  min-width: min-content;
-  box-sizing: border-box;
-  text-align: start;
-  -webkit-appearance: none;
-  appearance: none;
-  text-decoration: none;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  -webkit-backdrop-filter: blur(32px);
-  backdrop-filter: blur(32px);
-  border: none;
-  border-radius: 4px;
-  transform: translate3d(0,0,0);
-  background-color: hsl(240 4% 85%/35%);
-  color: #010205;
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  padding: calc(var(--p-internal-button-scaling, 1) * 0.8125 * 16px + 2px) max(calc(var(--p-internal-button-scaling, 1) * 1.625 * 16px + 2px), 6px);
-  gap: clamp(2px, calc(var(--p-internal-button-scaling, 1) * 0.5 * 16px), 16px);
-  cursor: pointer;
-  margin: 0;
-}
-.root::-moz-focus-inner {
-  border: 0;
-}
-.label {
-  position: static;
-  width: auto;
-  height: auto;
-  padding: 0;
-  margin: 0;
-  overflow: visible;
-  clip: auto;
-  white-space: normal;
-  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-}
-.icon {
-  width: calc(6px + 2.125ex);
-  height: calc(6px + 2.125ex);
-  margin-inline-start: clamp(-16px, calc(var(--p-internal-button-scaling, 1) * -0.5 * 16px), -2px);
-  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-}
-.loading {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0,0,0,0);
-  white-space: nowrap;
-}
-
-            </style>
-            <button
-              class="root"
-              type="button"
+            <template
+              shadowroot="open"
+              shadowrootmode="open"
             >
-              <p-icon
-                aria-hidden="true"
-                class="icon ssr"
-              >
-                <template
-                  shadowroot="open"
-                  shadowrootmode="open"
-                >
-                  <style>
-                    :host {
+              <style>
+                :host {
   display: inline-block;
   vertical-align: top;
   color-scheme: light dark !important;
@@ -13064,8 +12579,9 @@ img {
   pointer-events: none;
   filter: var(--p-internal-icon-filter,invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%));
   -webkit-animation: rerender-light-primary 1ms;
-  width: inherit;
-  height: inherit;
+  width: calc(6px + 2.125ex);
+  height: calc(6px + 2.125ex);
+  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
 }
 img:dir(rtl) {
   transform: scaleX(-1);
@@ -13078,129 +12594,37 @@ img:dir(rtl) {
     transform: rotateZ(0);
   }
 }
-                  </style>
-                  <img
-                    alt=""
-                    height="24"
-                    loading="lazy"
-                    src="http://localhost:3001/icons/arrow-head-left.cf1395d.svg"
-                    width="24"
-                  />
-                </template>
-              </p-icon>
-              <span
-                class="label"
-              >
-                <slot />
-              </span>
-            </button>
-            <span
-              class="loading"
-              id="loading"
-              role="status"
-            />
-          </template>
-          prev
-        </p-button>
+              </style>
+              <img
+                alt=""
+                height="24"
+                loading="lazy"
+                src="http://localhost:3001/icons/arrow-head-left.cf1395d.svg"
+                width="24"
+              />
+            </template>
+          </p-icon>
+        </button>
       </div>
       <div
         class="action-next"
       >
-        <p-button
-          class="action-button ssr"
-          dir="ltr"
-          hide-label="true"
+        <button
+          aria-hidden="true"
+          aria-label="next"
           tabindex="-1"
+          type="button"
         >
-          <template
-            shadowroot="open"
-            shadowrootdelegatesfocus="true"
-            shadowrootmode="open"
+          <p-icon
+            class="icon"
+            data-ssr=""
           >
-            <style>
-              :host {
-  display: inline-block;
-  vertical-align: top !important;
-  outline: 0 !important;
-  border-radius: 4px !important;
-  color-scheme: light dark !important;
-}
-:host([hidden]) {
-  display: none !important;
-}
-.root {
-  display: flex;
-  align-items: flex-start;
-  justify-content: center;
-  width: 100%;
-  min-width: min-content;
-  box-sizing: border-box;
-  text-align: start;
-  -webkit-appearance: none;
-  appearance: none;
-  text-decoration: none;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  -webkit-backdrop-filter: blur(32px);
-  backdrop-filter: blur(32px);
-  border: none;
-  border-radius: 4px;
-  transform: translate3d(0,0,0);
-  background-color: hsl(240 4% 85%/35%);
-  color: #010205;
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  padding: calc(var(--p-internal-button-scaling, 1) * 0.8125 * 16px + 2px) max(calc(var(--p-internal-button-scaling, 1) * 1.625 * 16px + 2px), 6px);
-  gap: clamp(2px, calc(var(--p-internal-button-scaling, 1) * 0.5 * 16px), 16px);
-  cursor: pointer;
-  margin: 0;
-}
-.root::-moz-focus-inner {
-  border: 0;
-}
-.label {
-  position: static;
-  width: auto;
-  height: auto;
-  padding: 0;
-  margin: 0;
-  overflow: visible;
-  clip: auto;
-  white-space: normal;
-  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-}
-.icon {
-  width: calc(6px + 2.125ex);
-  height: calc(6px + 2.125ex);
-  margin-inline-start: clamp(-16px, calc(var(--p-internal-button-scaling, 1) * -0.5 * 16px), -2px);
-  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-}
-.loading {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0,0,0,0);
-  white-space: nowrap;
-}
-
-            </style>
-            <button
-              class="root"
-              type="button"
+            <template
+              shadowroot="open"
+              shadowrootmode="open"
             >
-              <p-icon
-                aria-hidden="true"
-                class="icon ssr"
-              >
-                <template
-                  shadowroot="open"
-                  shadowrootmode="open"
-                >
-                  <style>
-                    :host {
+              <style>
+                :host {
   display: inline-block;
   vertical-align: top;
   color-scheme: light dark !important;
@@ -13215,8 +12639,9 @@ img {
   pointer-events: none;
   filter: var(--p-internal-icon-filter,invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%));
   -webkit-animation: rerender-light-primary 1ms;
-  width: inherit;
-  height: inherit;
+  width: calc(6px + 2.125ex);
+  height: calc(6px + 2.125ex);
+  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
 }
 img:dir(rtl) {
   transform: scaleX(-1);
@@ -13229,30 +12654,17 @@ img:dir(rtl) {
     transform: rotateZ(0);
   }
 }
-                  </style>
-                  <img
-                    alt=""
-                    height="24"
-                    loading="lazy"
-                    src="http://localhost:3001/icons/arrow-head-right.304b330.svg"
-                    width="24"
-                  />
-                </template>
-              </p-icon>
-              <span
-                class="label"
-              >
-                <slot />
-              </span>
-            </button>
-            <span
-              class="loading"
-              id="loading"
-              role="status"
-            />
-          </template>
-          next
-        </p-button>
+              </style>
+              <img
+                alt=""
+                height="24"
+                loading="lazy"
+                src="http://localhost:3001/icons/arrow-head-right.304b330.svg"
+                width="24"
+              />
+            </template>
+          </p-icon>
+        </button>
       </div>
     </div>
   </template>
@@ -13262,7 +12674,7 @@ img:dir(rtl) {
 
 exports[`should render dsr component for PSegmentedControl 1`] = `
 <p-segmented-control
-  class="ssr"
+  data-ssr=""
   role="group"
 >
   <template
@@ -13289,7 +12701,7 @@ exports[`should render dsr component for PSegmentedControl 1`] = `
 
 exports[`should render dsr component for PSegmentedControlItem 1`] = `
 <p-segmented-control-item
-  class="ssr"
+  data-ssr=""
 >
   <template
     shadowroot="open"
@@ -13344,7 +12756,7 @@ span {
 
 exports[`should render dsr component for PSelect 1`] = `
 <p-select
-  class="ssr"
+  data-ssr=""
 >
   <template
     shadowroot="open"
@@ -13510,7 +12922,8 @@ button:disabled {
         />
         <p-icon
           aria-hidden="true"
-          class="icon ssr"
+          class="icon"
+          data-ssr=""
         >
           <template
             shadowroot="open"
@@ -13580,7 +12993,7 @@ img {
 
 exports[`should render dsr component for PSelectOption 1`] = `
 <p-select-option
-  class="ssr"
+  data-ssr=""
 >
   <template
     shadowroot="open"
@@ -13665,7 +13078,7 @@ exports[`should render dsr component for PSelectOption 1`] = `
 
 exports[`should render dsr component for PSelectWrapper 1`] = `
 <p-select-wrapper
-  class="ssr"
+  data-ssr=""
 >
   <template
     shadowroot="open"
@@ -13785,7 +13198,8 @@ exports[`should render dsr component for PSelectWrapper 1`] = `
         <slot />
         <p-icon
           aria-hidden="true"
-          class="icon ssr"
+          class="icon"
+          data-ssr=""
         >
           <template
             shadowroot="open"
@@ -13830,7 +13244,8 @@ img {
           </template>
         </p-icon>
         <p-select-wrapper-dropdown
-          class="dropdown ssr"
+          class="dropdown"
+          data-ssr=""
         >
           <template
             shadowroot="open"
@@ -13881,7 +13296,7 @@ button:disabled {
 
 exports[`should render dsr component for PSpinner 1`] = `
 <p-spinner
-  class="ssr"
+  data-ssr=""
 >
   <template
     shadowroot="open"
@@ -13980,7 +13395,7 @@ circle:last-child {
 
 exports[`should render dsr component for PStepperHorizontal 1`] = `
 <p-stepper-horizontal
-  class="ssr"
+  data-ssr=""
 >
   <template
     shadowroot="open"
@@ -14002,7 +13417,8 @@ exports[`should render dsr component for PStepperHorizontal 1`] = `
 }
     </style>
     <p-scroller
-      class="scroller ssr"
+      class="scroller"
+      data-ssr=""
     >
       <template
         shadowroot="open"
@@ -14017,6 +13433,27 @@ exports[`should render dsr component for PStepperHorizontal 1`] = `
 :host([hidden]) {
   display: none !important;
 }
+button {
+  display: flex;
+  pointer-events: auto;
+  align-items: center;
+  justify-content: center;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  height: calc(calc(6px + 2.125ex) + 4px);
+  width: calc(calc(6px + 2.125ex) + 4px);
+  border: 0;
+  outline: 0;
+  cursor: pointer;
+  background: #FFF;
+  border-radius: 4px;
+  -webkit-backdrop-filter: blur(32px);
+  backdrop-filter: blur(32px);
+  visibility: hidden;
+  box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.16);
+}
+
 .root {
   position: relative;
   display: grid;
@@ -14065,6 +13502,7 @@ exports[`should render dsr component for PStepperHorizontal 1`] = `
   direction: ltr;
   width: calc(calc(6px + 2.125ex) + 24px);
   padding: 4px 0;
+  pointer-events: none;
   display: flex;
   align-items: center;
   left: -1px;
@@ -14072,7 +13510,7 @@ exports[`should render dsr component for PStepperHorizontal 1`] = `
   background: linear-gradient(to right, rgba(255,255,255,1) 20%,rgba(255,255,255,0.6) 48%,rgba(255,255,255,0.3) 68%,rgba(255,255,255,0) 100%);
   visibility: hidden;
 }
-.action-prev .action-button {
+.action-prev button {
   margin-left: 8px;
 }
 .action-next {
@@ -14082,6 +13520,7 @@ exports[`should render dsr component for PStepperHorizontal 1`] = `
   direction: ltr;
   width: calc(calc(6px + 2.125ex) + 24px);
   padding: 4px 0;
+  pointer-events: none;
   display: flex;
   align-items: center;
   right: -1px;
@@ -14089,12 +13528,8 @@ exports[`should render dsr component for PStepperHorizontal 1`] = `
   background: linear-gradient(to left, rgba(255,255,255,1) 20%,rgba(255,255,255,0.6) 48%,rgba(255,255,255,0.3) 68%,rgba(255,255,255,0) 100%);
   visibility: hidden;
 }
-.action-next .action-button {
+.action-next button {
   margin-right: 8px;
-}
-.action-button {
-  --p-internal-button-scaling: 0;
-  box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.16);
 }
 .icon:dir(rtl) {
   transform: scaleX(-1);
@@ -14123,101 +13558,22 @@ exports[`should render dsr component for PStepperHorizontal 1`] = `
           <div
             class="action-prev"
           >
-            <p-button
-              class="action-button ssr"
-              dir="ltr"
-              hide-label="true"
+            <button
+              aria-hidden="true"
+              aria-label="prev"
               tabindex="-1"
+              type="button"
             >
-              <template
-                shadowroot="open"
-                shadowrootdelegatesfocus="true"
-                shadowrootmode="open"
+              <p-icon
+                class="icon"
+                data-ssr=""
               >
-                <style>
-                  :host {
-  display: inline-block;
-  vertical-align: top !important;
-  outline: 0 !important;
-  border-radius: 4px !important;
-  color-scheme: light dark !important;
-}
-:host([hidden]) {
-  display: none !important;
-}
-.root {
-  display: flex;
-  align-items: flex-start;
-  justify-content: center;
-  width: 100%;
-  min-width: min-content;
-  box-sizing: border-box;
-  text-align: start;
-  -webkit-appearance: none;
-  appearance: none;
-  text-decoration: none;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  -webkit-backdrop-filter: blur(32px);
-  backdrop-filter: blur(32px);
-  border: none;
-  border-radius: 4px;
-  transform: translate3d(0,0,0);
-  background-color: hsl(240 4% 85%/35%);
-  color: #010205;
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  padding: calc(var(--p-internal-button-scaling, 1) * 0.8125 * 16px + 2px) max(calc(var(--p-internal-button-scaling, 1) * 1.625 * 16px + 2px), 6px);
-  gap: clamp(2px, calc(var(--p-internal-button-scaling, 1) * 0.5 * 16px), 16px);
-  cursor: pointer;
-  margin: 0;
-}
-.root::-moz-focus-inner {
-  border: 0;
-}
-.label {
-  position: static;
-  width: auto;
-  height: auto;
-  padding: 0;
-  margin: 0;
-  overflow: visible;
-  clip: auto;
-  white-space: normal;
-  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-}
-.icon {
-  width: calc(6px + 2.125ex);
-  height: calc(6px + 2.125ex);
-  margin-inline-start: clamp(-16px, calc(var(--p-internal-button-scaling, 1) * -0.5 * 16px), -2px);
-  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-}
-.loading {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0,0,0,0);
-  white-space: nowrap;
-}
-
-                </style>
-                <button
-                  class="root"
-                  type="button"
+                <template
+                  shadowroot="open"
+                  shadowrootmode="open"
                 >
-                  <p-icon
-                    aria-hidden="true"
-                    class="icon ssr"
-                  >
-                    <template
-                      shadowroot="open"
-                      shadowrootmode="open"
-                    >
-                      <style>
-                        :host {
+                  <style>
+                    :host {
   display: inline-block;
   vertical-align: top;
   color-scheme: light dark !important;
@@ -14232,8 +13588,9 @@ img {
   pointer-events: none;
   filter: var(--p-internal-icon-filter,invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%));
   -webkit-animation: rerender-light-primary 1ms;
-  width: inherit;
-  height: inherit;
+  width: calc(6px + 2.125ex);
+  height: calc(6px + 2.125ex);
+  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
 }
 img:dir(rtl) {
   transform: scaleX(-1);
@@ -14246,129 +13603,37 @@ img:dir(rtl) {
     transform: rotateZ(0);
   }
 }
-                      </style>
-                      <img
-                        alt=""
-                        height="24"
-                        loading="lazy"
-                        src="http://localhost:3001/icons/arrow-head-left.cf1395d.svg"
-                        width="24"
-                      />
-                    </template>
-                  </p-icon>
-                  <span
-                    class="label"
-                  >
-                    <slot />
-                  </span>
-                </button>
-                <span
-                  class="loading"
-                  id="loading"
-                  role="status"
-                />
-              </template>
-              prev
-            </p-button>
+                  </style>
+                  <img
+                    alt=""
+                    height="24"
+                    loading="lazy"
+                    src="http://localhost:3001/icons/arrow-head-left.cf1395d.svg"
+                    width="24"
+                  />
+                </template>
+              </p-icon>
+            </button>
           </div>
           <div
             class="action-next"
           >
-            <p-button
-              class="action-button ssr"
-              dir="ltr"
-              hide-label="true"
+            <button
+              aria-hidden="true"
+              aria-label="next"
               tabindex="-1"
+              type="button"
             >
-              <template
-                shadowroot="open"
-                shadowrootdelegatesfocus="true"
-                shadowrootmode="open"
+              <p-icon
+                class="icon"
+                data-ssr=""
               >
-                <style>
-                  :host {
-  display: inline-block;
-  vertical-align: top !important;
-  outline: 0 !important;
-  border-radius: 4px !important;
-  color-scheme: light dark !important;
-}
-:host([hidden]) {
-  display: none !important;
-}
-.root {
-  display: flex;
-  align-items: flex-start;
-  justify-content: center;
-  width: 100%;
-  min-width: min-content;
-  box-sizing: border-box;
-  text-align: start;
-  -webkit-appearance: none;
-  appearance: none;
-  text-decoration: none;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  -webkit-backdrop-filter: blur(32px);
-  backdrop-filter: blur(32px);
-  border: none;
-  border-radius: 4px;
-  transform: translate3d(0,0,0);
-  background-color: hsl(240 4% 85%/35%);
-  color: #010205;
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  padding: calc(var(--p-internal-button-scaling, 1) * 0.8125 * 16px + 2px) max(calc(var(--p-internal-button-scaling, 1) * 1.625 * 16px + 2px), 6px);
-  gap: clamp(2px, calc(var(--p-internal-button-scaling, 1) * 0.5 * 16px), 16px);
-  cursor: pointer;
-  margin: 0;
-}
-.root::-moz-focus-inner {
-  border: 0;
-}
-.label {
-  position: static;
-  width: auto;
-  height: auto;
-  padding: 0;
-  margin: 0;
-  overflow: visible;
-  clip: auto;
-  white-space: normal;
-  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-}
-.icon {
-  width: calc(6px + 2.125ex);
-  height: calc(6px + 2.125ex);
-  margin-inline-start: clamp(-16px, calc(var(--p-internal-button-scaling, 1) * -0.5 * 16px), -2px);
-  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-}
-.loading {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0,0,0,0);
-  white-space: nowrap;
-}
-
-                </style>
-                <button
-                  class="root"
-                  type="button"
+                <template
+                  shadowroot="open"
+                  shadowrootmode="open"
                 >
-                  <p-icon
-                    aria-hidden="true"
-                    class="icon ssr"
-                  >
-                    <template
-                      shadowroot="open"
-                      shadowrootmode="open"
-                    >
-                      <style>
-                        :host {
+                  <style>
+                    :host {
   display: inline-block;
   vertical-align: top;
   color-scheme: light dark !important;
@@ -14383,8 +13648,9 @@ img {
   pointer-events: none;
   filter: var(--p-internal-icon-filter,invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%));
   -webkit-animation: rerender-light-primary 1ms;
-  width: inherit;
-  height: inherit;
+  width: calc(6px + 2.125ex);
+  height: calc(6px + 2.125ex);
+  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
 }
 img:dir(rtl) {
   transform: scaleX(-1);
@@ -14397,30 +13663,17 @@ img:dir(rtl) {
     transform: rotateZ(0);
   }
 }
-                      </style>
-                      <img
-                        alt=""
-                        height="24"
-                        loading="lazy"
-                        src="http://localhost:3001/icons/arrow-head-right.304b330.svg"
-                        width="24"
-                      />
-                    </template>
-                  </p-icon>
-                  <span
-                    class="label"
-                  >
-                    <slot />
-                  </span>
-                </button>
-                <span
-                  class="loading"
-                  id="loading"
-                  role="status"
-                />
-              </template>
-              next
-            </p-button>
+                  </style>
+                  <img
+                    alt=""
+                    height="24"
+                    loading="lazy"
+                    src="http://localhost:3001/icons/arrow-head-right.304b330.svg"
+                    width="24"
+                  />
+                </template>
+              </p-icon>
+            </button>
           </div>
         </div>
       </template>
@@ -14433,7 +13686,7 @@ img:dir(rtl) {
 
 exports[`should render dsr component for PStepperHorizontalItem 1`] = `
 <p-stepper-horizontal-item
-  class="ssr"
+  data-ssr=""
   role="listitem"
 >
   <template
@@ -14527,7 +13780,7 @@ button::-moz-focus-inner {
 
 exports[`should render dsr component for PSwitch 1`] = `
 <p-switch
-  class="ssr"
+  data-ssr=""
 >
   <template
     shadowroot="open"
@@ -14641,7 +13894,7 @@ label {
 
 exports[`should render dsr component for PTable 1`] = `
 <p-table
-  class="ssr"
+  data-ssr=""
 >
   <template
     shadowroot="open"
@@ -14676,7 +13929,7 @@ exports[`should render dsr component for PTable 1`] = `
 }
     </style>
     <p-scroller
-      class="ssr"
+      data-ssr=""
     >
       <template
         shadowroot="open"
@@ -14691,6 +13944,27 @@ exports[`should render dsr component for PTable 1`] = `
 :host([hidden]) {
   display: none !important;
 }
+button {
+  display: flex;
+  pointer-events: auto;
+  align-items: center;
+  justify-content: center;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  height: calc(calc(6px + 2.125ex) + 4px);
+  width: calc(calc(6px + 2.125ex) + 4px);
+  border: 0;
+  outline: 0;
+  cursor: pointer;
+  background: #FFF;
+  border-radius: 4px;
+  -webkit-backdrop-filter: blur(32px);
+  backdrop-filter: blur(32px);
+  visibility: hidden;
+  box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.16);
+}
+
 .root {
   position: relative;
   display: grid;
@@ -14734,6 +14008,7 @@ exports[`should render dsr component for PTable 1`] = `
   direction: ltr;
   width: calc(calc(6px + 2.125ex) + 24px);
   padding: 4px 0;
+  pointer-events: none;
   display: flex;
   align-items: center;
   left: -1px;
@@ -14741,7 +14016,7 @@ exports[`should render dsr component for PTable 1`] = `
   background: linear-gradient(to right, rgba(255,255,255,1) 20%,rgba(255,255,255,0.6) 48%,rgba(255,255,255,0.3) 68%,rgba(255,255,255,0) 100%);
   visibility: hidden;
 }
-.action-prev .action-button {
+.action-prev button {
   margin-left: 8px;
 }
 .action-next {
@@ -14751,6 +14026,7 @@ exports[`should render dsr component for PTable 1`] = `
   direction: ltr;
   width: calc(calc(6px + 2.125ex) + 24px);
   padding: 4px 0;
+  pointer-events: none;
   display: flex;
   align-items: center;
   right: -1px;
@@ -14758,12 +14034,8 @@ exports[`should render dsr component for PTable 1`] = `
   background: linear-gradient(to left, rgba(255,255,255,1) 20%,rgba(255,255,255,0.6) 48%,rgba(255,255,255,0.3) 68%,rgba(255,255,255,0) 100%);
   visibility: hidden;
 }
-.action-next .action-button {
+.action-next button {
   margin-right: 8px;
-}
-.action-button {
-  --p-internal-button-scaling: 0;
-  box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.16);
 }
 .icon:dir(rtl) {
   transform: scaleX(-1);
@@ -14791,101 +14063,22 @@ exports[`should render dsr component for PTable 1`] = `
           <div
             class="action-prev"
           >
-            <p-button
-              class="action-button ssr"
-              dir="ltr"
-              hide-label="true"
+            <button
+              aria-hidden="true"
+              aria-label="prev"
               tabindex="-1"
+              type="button"
             >
-              <template
-                shadowroot="open"
-                shadowrootdelegatesfocus="true"
-                shadowrootmode="open"
+              <p-icon
+                class="icon"
+                data-ssr=""
               >
-                <style>
-                  :host {
-  display: inline-block;
-  vertical-align: top !important;
-  outline: 0 !important;
-  border-radius: 4px !important;
-  color-scheme: light dark !important;
-}
-:host([hidden]) {
-  display: none !important;
-}
-.root {
-  display: flex;
-  align-items: flex-start;
-  justify-content: center;
-  width: 100%;
-  min-width: min-content;
-  box-sizing: border-box;
-  text-align: start;
-  -webkit-appearance: none;
-  appearance: none;
-  text-decoration: none;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  -webkit-backdrop-filter: blur(32px);
-  backdrop-filter: blur(32px);
-  border: none;
-  border-radius: 4px;
-  transform: translate3d(0,0,0);
-  background-color: hsl(240 4% 85%/35%);
-  color: #010205;
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  padding: calc(var(--p-internal-button-scaling, 1) * 0.8125 * 16px + 2px) max(calc(var(--p-internal-button-scaling, 1) * 1.625 * 16px + 2px), 6px);
-  gap: clamp(2px, calc(var(--p-internal-button-scaling, 1) * 0.5 * 16px), 16px);
-  cursor: pointer;
-  margin: 0;
-}
-.root::-moz-focus-inner {
-  border: 0;
-}
-.label {
-  position: static;
-  width: auto;
-  height: auto;
-  padding: 0;
-  margin: 0;
-  overflow: visible;
-  clip: auto;
-  white-space: normal;
-  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-}
-.icon {
-  width: calc(6px + 2.125ex);
-  height: calc(6px + 2.125ex);
-  margin-inline-start: clamp(-16px, calc(var(--p-internal-button-scaling, 1) * -0.5 * 16px), -2px);
-  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-}
-.loading {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0,0,0,0);
-  white-space: nowrap;
-}
-
-                </style>
-                <button
-                  class="root"
-                  type="button"
+                <template
+                  shadowroot="open"
+                  shadowrootmode="open"
                 >
-                  <p-icon
-                    aria-hidden="true"
-                    class="icon ssr"
-                  >
-                    <template
-                      shadowroot="open"
-                      shadowrootmode="open"
-                    >
-                      <style>
-                        :host {
+                  <style>
+                    :host {
   display: inline-block;
   vertical-align: top;
   color-scheme: light dark !important;
@@ -14900,8 +14093,9 @@ img {
   pointer-events: none;
   filter: var(--p-internal-icon-filter,invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%));
   -webkit-animation: rerender-light-primary 1ms;
-  width: inherit;
-  height: inherit;
+  width: calc(6px + 2.125ex);
+  height: calc(6px + 2.125ex);
+  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
 }
 img:dir(rtl) {
   transform: scaleX(-1);
@@ -14914,129 +14108,37 @@ img:dir(rtl) {
     transform: rotateZ(0);
   }
 }
-                      </style>
-                      <img
-                        alt=""
-                        height="24"
-                        loading="lazy"
-                        src="http://localhost:3001/icons/arrow-head-left.cf1395d.svg"
-                        width="24"
-                      />
-                    </template>
-                  </p-icon>
-                  <span
-                    class="label"
-                  >
-                    <slot />
-                  </span>
-                </button>
-                <span
-                  class="loading"
-                  id="loading"
-                  role="status"
-                />
-              </template>
-              prev
-            </p-button>
+                  </style>
+                  <img
+                    alt=""
+                    height="24"
+                    loading="lazy"
+                    src="http://localhost:3001/icons/arrow-head-left.cf1395d.svg"
+                    width="24"
+                  />
+                </template>
+              </p-icon>
+            </button>
           </div>
           <div
             class="action-next"
           >
-            <p-button
-              class="action-button ssr"
-              dir="ltr"
-              hide-label="true"
+            <button
+              aria-hidden="true"
+              aria-label="next"
               tabindex="-1"
+              type="button"
             >
-              <template
-                shadowroot="open"
-                shadowrootdelegatesfocus="true"
-                shadowrootmode="open"
+              <p-icon
+                class="icon"
+                data-ssr=""
               >
-                <style>
-                  :host {
-  display: inline-block;
-  vertical-align: top !important;
-  outline: 0 !important;
-  border-radius: 4px !important;
-  color-scheme: light dark !important;
-}
-:host([hidden]) {
-  display: none !important;
-}
-.root {
-  display: flex;
-  align-items: flex-start;
-  justify-content: center;
-  width: 100%;
-  min-width: min-content;
-  box-sizing: border-box;
-  text-align: start;
-  -webkit-appearance: none;
-  appearance: none;
-  text-decoration: none;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  -webkit-backdrop-filter: blur(32px);
-  backdrop-filter: blur(32px);
-  border: none;
-  border-radius: 4px;
-  transform: translate3d(0,0,0);
-  background-color: hsl(240 4% 85%/35%);
-  color: #010205;
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  padding: calc(var(--p-internal-button-scaling, 1) * 0.8125 * 16px + 2px) max(calc(var(--p-internal-button-scaling, 1) * 1.625 * 16px + 2px), 6px);
-  gap: clamp(2px, calc(var(--p-internal-button-scaling, 1) * 0.5 * 16px), 16px);
-  cursor: pointer;
-  margin: 0;
-}
-.root::-moz-focus-inner {
-  border: 0;
-}
-.label {
-  position: static;
-  width: auto;
-  height: auto;
-  padding: 0;
-  margin: 0;
-  overflow: visible;
-  clip: auto;
-  white-space: normal;
-  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-}
-.icon {
-  width: calc(6px + 2.125ex);
-  height: calc(6px + 2.125ex);
-  margin-inline-start: clamp(-16px, calc(var(--p-internal-button-scaling, 1) * -0.5 * 16px), -2px);
-  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-}
-.loading {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0,0,0,0);
-  white-space: nowrap;
-}
-
-                </style>
-                <button
-                  class="root"
-                  type="button"
+                <template
+                  shadowroot="open"
+                  shadowrootmode="open"
                 >
-                  <p-icon
-                    aria-hidden="true"
-                    class="icon ssr"
-                  >
-                    <template
-                      shadowroot="open"
-                      shadowrootmode="open"
-                    >
-                      <style>
-                        :host {
+                  <style>
+                    :host {
   display: inline-block;
   vertical-align: top;
   color-scheme: light dark !important;
@@ -15051,8 +14153,9 @@ img {
   pointer-events: none;
   filter: var(--p-internal-icon-filter,invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%));
   -webkit-animation: rerender-light-primary 1ms;
-  width: inherit;
-  height: inherit;
+  width: calc(6px + 2.125ex);
+  height: calc(6px + 2.125ex);
+  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
 }
 img:dir(rtl) {
   transform: scaleX(-1);
@@ -15065,30 +14168,17 @@ img:dir(rtl) {
     transform: rotateZ(0);
   }
 }
-                      </style>
-                      <img
-                        alt=""
-                        height="24"
-                        loading="lazy"
-                        src="http://localhost:3001/icons/arrow-head-right.304b330.svg"
-                        width="24"
-                      />
-                    </template>
-                  </p-icon>
-                  <span
-                    class="label"
-                  >
-                    <slot />
-                  </span>
-                </button>
-                <span
-                  class="loading"
-                  id="loading"
-                  role="status"
-                />
-              </template>
-              next
-            </p-button>
+                  </style>
+                  <img
+                    alt=""
+                    height="24"
+                    loading="lazy"
+                    src="http://localhost:3001/icons/arrow-head-right.304b330.svg"
+                    width="24"
+                  />
+                </template>
+              </p-icon>
+            </button>
           </div>
         </div>
       </template>
@@ -15106,7 +14196,7 @@ img:dir(rtl) {
 
 exports[`should render dsr component for PTableBody 1`] = `
 <p-table-body
-  class="ssr"
+  data-ssr=""
   role="rowgroup"
 >
   <template
@@ -15129,7 +14219,7 @@ exports[`should render dsr component for PTableBody 1`] = `
 
 exports[`should render dsr component for PTableCell 1`] = `
 <p-table-cell
-  class="ssr"
+  data-ssr=""
   role="cell"
 >
   <template
@@ -15156,7 +14246,7 @@ exports[`should render dsr component for PTableCell 1`] = `
 
 exports[`should render dsr component for PTableHead 1`] = `
 <p-table-head
-  class="ssr"
+  data-ssr=""
   role="rowgroup"
 >
   <template
@@ -15182,7 +14272,7 @@ exports[`should render dsr component for PTableHead 1`] = `
 
 exports[`should render dsr component for PTableHeadCell 1`] = `
 <p-table-head-cell
-  class="ssr"
+  data-ssr=""
   role="columnheader"
   scope="col"
 >
@@ -15211,7 +14301,7 @@ exports[`should render dsr component for PTableHeadCell 1`] = `
 
 exports[`should render dsr component for PTableHeadRow 1`] = `
 <p-table-head-row
-  class="ssr"
+  data-ssr=""
   role="row"
 >
   <template
@@ -15234,7 +14324,7 @@ exports[`should render dsr component for PTableHeadRow 1`] = `
 
 exports[`should render dsr component for PTableRow 1`] = `
 <p-table-row
-  class="ssr"
+  data-ssr=""
   role="row"
 >
   <template
@@ -15261,7 +14351,7 @@ exports[`should render dsr component for PTableRow 1`] = `
 
 exports[`should render dsr component for PTabs 1`] = `
 <p-tabs
-  class="ssr"
+  data-ssr=""
 >
   <template
     shadowroot="open"
@@ -15280,7 +14370,8 @@ exports[`should render dsr component for PTabs 1`] = `
 }
     </style>
     <p-tabs-bar
-      class="root ssr"
+      class="root"
+      data-ssr=""
     >
       <template
         shadowroot="open"
@@ -15373,7 +14464,8 @@ exports[`should render dsr component for PTabs 1`] = `
 }
         </style>
         <p-scroller
-          class="scroller ssr"
+          class="scroller"
+          data-ssr=""
         >
           <template
             shadowroot="open"
@@ -15388,6 +14480,27 @@ exports[`should render dsr component for PTabs 1`] = `
 :host([hidden]) {
   display: none !important;
 }
+button {
+  display: flex;
+  pointer-events: auto;
+  align-items: center;
+  justify-content: center;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  height: calc(calc(6px + 2.125ex) + 4px);
+  width: calc(calc(6px + 2.125ex) + 4px);
+  border: 0;
+  outline: 0;
+  cursor: pointer;
+  background: #FFF;
+  border-radius: 4px;
+  -webkit-backdrop-filter: blur(32px);
+  backdrop-filter: blur(32px);
+  visibility: hidden;
+  box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.16);
+}
+
 .root {
   position: relative;
   display: grid;
@@ -15436,6 +14549,7 @@ exports[`should render dsr component for PTabs 1`] = `
   direction: ltr;
   width: calc(calc(6px + 2.125ex) + 24px);
   padding: 4px 0;
+  pointer-events: none;
   display: flex;
   align-items: flex-start;
   left: -1px;
@@ -15443,7 +14557,7 @@ exports[`should render dsr component for PTabs 1`] = `
   background: linear-gradient(to right, rgba(255,255,255,1) 20%,rgba(255,255,255,0.6) 48%,rgba(255,255,255,0.3) 68%,rgba(255,255,255,0) 100%);
   visibility: hidden;
 }
-.action-prev .action-button {
+.action-prev button {
   margin-left: 8px;
 }
 .action-next {
@@ -15453,6 +14567,7 @@ exports[`should render dsr component for PTabs 1`] = `
   direction: ltr;
   width: calc(calc(6px + 2.125ex) + 24px);
   padding: 4px 0;
+  pointer-events: none;
   display: flex;
   align-items: flex-start;
   right: -1px;
@@ -15460,12 +14575,8 @@ exports[`should render dsr component for PTabs 1`] = `
   background: linear-gradient(to left, rgba(255,255,255,1) 20%,rgba(255,255,255,0.6) 48%,rgba(255,255,255,0.3) 68%,rgba(255,255,255,0) 100%);
   visibility: hidden;
 }
-.action-next .action-button {
+.action-next button {
   margin-right: 8px;
-}
-.action-button {
-  --p-internal-button-scaling: 0;
-  box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.16);
 }
 .icon:dir(rtl) {
   transform: scaleX(-1);
@@ -15493,101 +14604,22 @@ exports[`should render dsr component for PTabs 1`] = `
               <div
                 class="action-prev"
               >
-                <p-button
-                  class="action-button ssr"
-                  dir="ltr"
-                  hide-label="true"
+                <button
+                  aria-hidden="true"
+                  aria-label="prev"
                   tabindex="-1"
+                  type="button"
                 >
-                  <template
-                    shadowroot="open"
-                    shadowrootdelegatesfocus="true"
-                    shadowrootmode="open"
+                  <p-icon
+                    class="icon"
+                    data-ssr=""
                   >
-                    <style>
-                      :host {
-  display: inline-block;
-  vertical-align: top !important;
-  outline: 0 !important;
-  border-radius: 4px !important;
-  color-scheme: light dark !important;
-}
-:host([hidden]) {
-  display: none !important;
-}
-.root {
-  display: flex;
-  align-items: flex-start;
-  justify-content: center;
-  width: 100%;
-  min-width: min-content;
-  box-sizing: border-box;
-  text-align: start;
-  -webkit-appearance: none;
-  appearance: none;
-  text-decoration: none;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  -webkit-backdrop-filter: blur(32px);
-  backdrop-filter: blur(32px);
-  border: none;
-  border-radius: 4px;
-  transform: translate3d(0,0,0);
-  background-color: hsl(240 4% 85%/35%);
-  color: #010205;
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  padding: calc(var(--p-internal-button-scaling, 1) * 0.8125 * 16px + 2px) max(calc(var(--p-internal-button-scaling, 1) * 1.625 * 16px + 2px), 6px);
-  gap: clamp(2px, calc(var(--p-internal-button-scaling, 1) * 0.5 * 16px), 16px);
-  cursor: pointer;
-  margin: 0;
-}
-.root::-moz-focus-inner {
-  border: 0;
-}
-.label {
-  position: static;
-  width: auto;
-  height: auto;
-  padding: 0;
-  margin: 0;
-  overflow: visible;
-  clip: auto;
-  white-space: normal;
-  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-}
-.icon {
-  width: calc(6px + 2.125ex);
-  height: calc(6px + 2.125ex);
-  margin-inline-start: clamp(-16px, calc(var(--p-internal-button-scaling, 1) * -0.5 * 16px), -2px);
-  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-}
-.loading {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0,0,0,0);
-  white-space: nowrap;
-}
-
-                    </style>
-                    <button
-                      class="root"
-                      type="button"
+                    <template
+                      shadowroot="open"
+                      shadowrootmode="open"
                     >
-                      <p-icon
-                        aria-hidden="true"
-                        class="icon ssr"
-                      >
-                        <template
-                          shadowroot="open"
-                          shadowrootmode="open"
-                        >
-                          <style>
-                            :host {
+                      <style>
+                        :host {
   display: inline-block;
   vertical-align: top;
   color-scheme: light dark !important;
@@ -15602,8 +14634,9 @@ img {
   pointer-events: none;
   filter: var(--p-internal-icon-filter,invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%));
   -webkit-animation: rerender-light-primary 1ms;
-  width: inherit;
-  height: inherit;
+  width: calc(6px + 2.125ex);
+  height: calc(6px + 2.125ex);
+  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
 }
 img:dir(rtl) {
   transform: scaleX(-1);
@@ -15616,129 +14649,37 @@ img:dir(rtl) {
     transform: rotateZ(0);
   }
 }
-                          </style>
-                          <img
-                            alt=""
-                            height="24"
-                            loading="lazy"
-                            src="http://localhost:3001/icons/arrow-head-left.cf1395d.svg"
-                            width="24"
-                          />
-                        </template>
-                      </p-icon>
-                      <span
-                        class="label"
-                      >
-                        <slot />
-                      </span>
-                    </button>
-                    <span
-                      class="loading"
-                      id="loading"
-                      role="status"
-                    />
-                  </template>
-                  prev
-                </p-button>
+                      </style>
+                      <img
+                        alt=""
+                        height="24"
+                        loading="lazy"
+                        src="http://localhost:3001/icons/arrow-head-left.cf1395d.svg"
+                        width="24"
+                      />
+                    </template>
+                  </p-icon>
+                </button>
               </div>
               <div
                 class="action-next"
               >
-                <p-button
-                  class="action-button ssr"
-                  dir="ltr"
-                  hide-label="true"
+                <button
+                  aria-hidden="true"
+                  aria-label="next"
                   tabindex="-1"
+                  type="button"
                 >
-                  <template
-                    shadowroot="open"
-                    shadowrootdelegatesfocus="true"
-                    shadowrootmode="open"
+                  <p-icon
+                    class="icon"
+                    data-ssr=""
                   >
-                    <style>
-                      :host {
-  display: inline-block;
-  vertical-align: top !important;
-  outline: 0 !important;
-  border-radius: 4px !important;
-  color-scheme: light dark !important;
-}
-:host([hidden]) {
-  display: none !important;
-}
-.root {
-  display: flex;
-  align-items: flex-start;
-  justify-content: center;
-  width: 100%;
-  min-width: min-content;
-  box-sizing: border-box;
-  text-align: start;
-  -webkit-appearance: none;
-  appearance: none;
-  text-decoration: none;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  -webkit-backdrop-filter: blur(32px);
-  backdrop-filter: blur(32px);
-  border: none;
-  border-radius: 4px;
-  transform: translate3d(0,0,0);
-  background-color: hsl(240 4% 85%/35%);
-  color: #010205;
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  padding: calc(var(--p-internal-button-scaling, 1) * 0.8125 * 16px + 2px) max(calc(var(--p-internal-button-scaling, 1) * 1.625 * 16px + 2px), 6px);
-  gap: clamp(2px, calc(var(--p-internal-button-scaling, 1) * 0.5 * 16px), 16px);
-  cursor: pointer;
-  margin: 0;
-}
-.root::-moz-focus-inner {
-  border: 0;
-}
-.label {
-  position: static;
-  width: auto;
-  height: auto;
-  padding: 0;
-  margin: 0;
-  overflow: visible;
-  clip: auto;
-  white-space: normal;
-  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-}
-.icon {
-  width: calc(6px + 2.125ex);
-  height: calc(6px + 2.125ex);
-  margin-inline-start: clamp(-16px, calc(var(--p-internal-button-scaling, 1) * -0.5 * 16px), -2px);
-  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-}
-.loading {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0,0,0,0);
-  white-space: nowrap;
-}
-
-                    </style>
-                    <button
-                      class="root"
-                      type="button"
+                    <template
+                      shadowroot="open"
+                      shadowrootmode="open"
                     >
-                      <p-icon
-                        aria-hidden="true"
-                        class="icon ssr"
-                      >
-                        <template
-                          shadowroot="open"
-                          shadowrootmode="open"
-                        >
-                          <style>
-                            :host {
+                      <style>
+                        :host {
   display: inline-block;
   vertical-align: top;
   color-scheme: light dark !important;
@@ -15753,8 +14694,9 @@ img {
   pointer-events: none;
   filter: var(--p-internal-icon-filter,invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%));
   -webkit-animation: rerender-light-primary 1ms;
-  width: inherit;
-  height: inherit;
+  width: calc(6px + 2.125ex);
+  height: calc(6px + 2.125ex);
+  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
 }
 img:dir(rtl) {
   transform: scaleX(-1);
@@ -15767,30 +14709,17 @@ img:dir(rtl) {
     transform: rotateZ(0);
   }
 }
-                          </style>
-                          <img
-                            alt=""
-                            height="24"
-                            loading="lazy"
-                            src="http://localhost:3001/icons/arrow-head-right.304b330.svg"
-                            width="24"
-                          />
-                        </template>
-                      </p-icon>
-                      <span
-                        class="label"
-                      >
-                        <slot />
-                      </span>
-                    </button>
-                    <span
-                      class="loading"
-                      id="loading"
-                      role="status"
-                    />
-                  </template>
-                  next
-                </p-button>
+                      </style>
+                      <img
+                        alt=""
+                        height="24"
+                        loading="lazy"
+                        src="http://localhost:3001/icons/arrow-head-right.304b330.svg"
+                        width="24"
+                      />
+                    </template>
+                  </p-icon>
+                </button>
               </div>
             </div>
           </template>
@@ -15820,7 +14749,7 @@ img:dir(rtl) {
 
 exports[`should render dsr component for PTabsBar 1`] = `
 <p-tabs-bar
-  class="ssr"
+  data-ssr=""
 >
   <template
     shadowroot="open"
@@ -15913,7 +14842,8 @@ exports[`should render dsr component for PTabsBar 1`] = `
 }
     </style>
     <p-scroller
-      class="scroller ssr"
+      class="scroller"
+      data-ssr=""
     >
       <template
         shadowroot="open"
@@ -15928,6 +14858,27 @@ exports[`should render dsr component for PTabsBar 1`] = `
 :host([hidden]) {
   display: none !important;
 }
+button {
+  display: flex;
+  pointer-events: auto;
+  align-items: center;
+  justify-content: center;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  height: calc(calc(6px + 2.125ex) + 4px);
+  width: calc(calc(6px + 2.125ex) + 4px);
+  border: 0;
+  outline: 0;
+  cursor: pointer;
+  background: #FFF;
+  border-radius: 4px;
+  -webkit-backdrop-filter: blur(32px);
+  backdrop-filter: blur(32px);
+  visibility: hidden;
+  box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.16);
+}
+
 .root {
   position: relative;
   display: grid;
@@ -15976,6 +14927,7 @@ exports[`should render dsr component for PTabsBar 1`] = `
   direction: ltr;
   width: calc(calc(6px + 2.125ex) + 24px);
   padding: 4px 0;
+  pointer-events: none;
   display: flex;
   align-items: flex-start;
   left: -1px;
@@ -15983,7 +14935,7 @@ exports[`should render dsr component for PTabsBar 1`] = `
   background: linear-gradient(to right, rgba(255,255,255,1) 20%,rgba(255,255,255,0.6) 48%,rgba(255,255,255,0.3) 68%,rgba(255,255,255,0) 100%);
   visibility: hidden;
 }
-.action-prev .action-button {
+.action-prev button {
   margin-left: 8px;
 }
 .action-next {
@@ -15993,6 +14945,7 @@ exports[`should render dsr component for PTabsBar 1`] = `
   direction: ltr;
   width: calc(calc(6px + 2.125ex) + 24px);
   padding: 4px 0;
+  pointer-events: none;
   display: flex;
   align-items: flex-start;
   right: -1px;
@@ -16000,12 +14953,8 @@ exports[`should render dsr component for PTabsBar 1`] = `
   background: linear-gradient(to left, rgba(255,255,255,1) 20%,rgba(255,255,255,0.6) 48%,rgba(255,255,255,0.3) 68%,rgba(255,255,255,0) 100%);
   visibility: hidden;
 }
-.action-next .action-button {
+.action-next button {
   margin-right: 8px;
-}
-.action-button {
-  --p-internal-button-scaling: 0;
-  box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.16);
 }
 .icon:dir(rtl) {
   transform: scaleX(-1);
@@ -16033,101 +14982,22 @@ exports[`should render dsr component for PTabsBar 1`] = `
           <div
             class="action-prev"
           >
-            <p-button
-              class="action-button ssr"
-              dir="ltr"
-              hide-label="true"
+            <button
+              aria-hidden="true"
+              aria-label="prev"
               tabindex="-1"
+              type="button"
             >
-              <template
-                shadowroot="open"
-                shadowrootdelegatesfocus="true"
-                shadowrootmode="open"
+              <p-icon
+                class="icon"
+                data-ssr=""
               >
-                <style>
-                  :host {
-  display: inline-block;
-  vertical-align: top !important;
-  outline: 0 !important;
-  border-radius: 4px !important;
-  color-scheme: light dark !important;
-}
-:host([hidden]) {
-  display: none !important;
-}
-.root {
-  display: flex;
-  align-items: flex-start;
-  justify-content: center;
-  width: 100%;
-  min-width: min-content;
-  box-sizing: border-box;
-  text-align: start;
-  -webkit-appearance: none;
-  appearance: none;
-  text-decoration: none;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  -webkit-backdrop-filter: blur(32px);
-  backdrop-filter: blur(32px);
-  border: none;
-  border-radius: 4px;
-  transform: translate3d(0,0,0);
-  background-color: hsl(240 4% 85%/35%);
-  color: #010205;
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  padding: calc(var(--p-internal-button-scaling, 1) * 0.8125 * 16px + 2px) max(calc(var(--p-internal-button-scaling, 1) * 1.625 * 16px + 2px), 6px);
-  gap: clamp(2px, calc(var(--p-internal-button-scaling, 1) * 0.5 * 16px), 16px);
-  cursor: pointer;
-  margin: 0;
-}
-.root::-moz-focus-inner {
-  border: 0;
-}
-.label {
-  position: static;
-  width: auto;
-  height: auto;
-  padding: 0;
-  margin: 0;
-  overflow: visible;
-  clip: auto;
-  white-space: normal;
-  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-}
-.icon {
-  width: calc(6px + 2.125ex);
-  height: calc(6px + 2.125ex);
-  margin-inline-start: clamp(-16px, calc(var(--p-internal-button-scaling, 1) * -0.5 * 16px), -2px);
-  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-}
-.loading {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0,0,0,0);
-  white-space: nowrap;
-}
-
-                </style>
-                <button
-                  class="root"
-                  type="button"
+                <template
+                  shadowroot="open"
+                  shadowrootmode="open"
                 >
-                  <p-icon
-                    aria-hidden="true"
-                    class="icon ssr"
-                  >
-                    <template
-                      shadowroot="open"
-                      shadowrootmode="open"
-                    >
-                      <style>
-                        :host {
+                  <style>
+                    :host {
   display: inline-block;
   vertical-align: top;
   color-scheme: light dark !important;
@@ -16142,8 +15012,9 @@ img {
   pointer-events: none;
   filter: var(--p-internal-icon-filter,invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%));
   -webkit-animation: rerender-light-primary 1ms;
-  width: inherit;
-  height: inherit;
+  width: calc(6px + 2.125ex);
+  height: calc(6px + 2.125ex);
+  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
 }
 img:dir(rtl) {
   transform: scaleX(-1);
@@ -16156,129 +15027,37 @@ img:dir(rtl) {
     transform: rotateZ(0);
   }
 }
-                      </style>
-                      <img
-                        alt=""
-                        height="24"
-                        loading="lazy"
-                        src="http://localhost:3001/icons/arrow-head-left.cf1395d.svg"
-                        width="24"
-                      />
-                    </template>
-                  </p-icon>
-                  <span
-                    class="label"
-                  >
-                    <slot />
-                  </span>
-                </button>
-                <span
-                  class="loading"
-                  id="loading"
-                  role="status"
-                />
-              </template>
-              prev
-            </p-button>
+                  </style>
+                  <img
+                    alt=""
+                    height="24"
+                    loading="lazy"
+                    src="http://localhost:3001/icons/arrow-head-left.cf1395d.svg"
+                    width="24"
+                  />
+                </template>
+              </p-icon>
+            </button>
           </div>
           <div
             class="action-next"
           >
-            <p-button
-              class="action-button ssr"
-              dir="ltr"
-              hide-label="true"
+            <button
+              aria-hidden="true"
+              aria-label="next"
               tabindex="-1"
+              type="button"
             >
-              <template
-                shadowroot="open"
-                shadowrootdelegatesfocus="true"
-                shadowrootmode="open"
+              <p-icon
+                class="icon"
+                data-ssr=""
               >
-                <style>
-                  :host {
-  display: inline-block;
-  vertical-align: top !important;
-  outline: 0 !important;
-  border-radius: 4px !important;
-  color-scheme: light dark !important;
-}
-:host([hidden]) {
-  display: none !important;
-}
-.root {
-  display: flex;
-  align-items: flex-start;
-  justify-content: center;
-  width: 100%;
-  min-width: min-content;
-  box-sizing: border-box;
-  text-align: start;
-  -webkit-appearance: none;
-  appearance: none;
-  text-decoration: none;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  -webkit-backdrop-filter: blur(32px);
-  backdrop-filter: blur(32px);
-  border: none;
-  border-radius: 4px;
-  transform: translate3d(0,0,0);
-  background-color: hsl(240 4% 85%/35%);
-  color: #010205;
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  padding: calc(var(--p-internal-button-scaling, 1) * 0.8125 * 16px + 2px) max(calc(var(--p-internal-button-scaling, 1) * 1.625 * 16px + 2px), 6px);
-  gap: clamp(2px, calc(var(--p-internal-button-scaling, 1) * 0.5 * 16px), 16px);
-  cursor: pointer;
-  margin: 0;
-}
-.root::-moz-focus-inner {
-  border: 0;
-}
-.label {
-  position: static;
-  width: auto;
-  height: auto;
-  padding: 0;
-  margin: 0;
-  overflow: visible;
-  clip: auto;
-  white-space: normal;
-  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-}
-.icon {
-  width: calc(6px + 2.125ex);
-  height: calc(6px + 2.125ex);
-  margin-inline-start: clamp(-16px, calc(var(--p-internal-button-scaling, 1) * -0.5 * 16px), -2px);
-  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-}
-.loading {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0,0,0,0);
-  white-space: nowrap;
-}
-
-                </style>
-                <button
-                  class="root"
-                  type="button"
+                <template
+                  shadowroot="open"
+                  shadowrootmode="open"
                 >
-                  <p-icon
-                    aria-hidden="true"
-                    class="icon ssr"
-                  >
-                    <template
-                      shadowroot="open"
-                      shadowrootmode="open"
-                    >
-                      <style>
-                        :host {
+                  <style>
+                    :host {
   display: inline-block;
   vertical-align: top;
   color-scheme: light dark !important;
@@ -16293,8 +15072,9 @@ img {
   pointer-events: none;
   filter: var(--p-internal-icon-filter,invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%));
   -webkit-animation: rerender-light-primary 1ms;
-  width: inherit;
-  height: inherit;
+  width: calc(6px + 2.125ex);
+  height: calc(6px + 2.125ex);
+  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
 }
 img:dir(rtl) {
   transform: scaleX(-1);
@@ -16307,30 +15087,17 @@ img:dir(rtl) {
     transform: rotateZ(0);
   }
 }
-                      </style>
-                      <img
-                        alt=""
-                        height="24"
-                        loading="lazy"
-                        src="http://localhost:3001/icons/arrow-head-right.304b330.svg"
-                        width="24"
-                      />
-                    </template>
-                  </p-icon>
-                  <span
-                    class="label"
-                  >
-                    <slot />
-                  </span>
-                </button>
-                <span
-                  class="loading"
-                  id="loading"
-                  role="status"
-                />
-              </template>
-              next
-            </p-button>
+                  </style>
+                  <img
+                    alt=""
+                    height="24"
+                    loading="lazy"
+                    src="http://localhost:3001/icons/arrow-head-right.304b330.svg"
+                    width="24"
+                  />
+                </template>
+              </p-icon>
+            </button>
           </div>
         </div>
       </template>
@@ -16346,7 +15113,7 @@ img:dir(rtl) {
 
 exports[`should render dsr component for PTabsItem 1`] = `
 <p-tabs-item
-  class="ssr"
+  data-ssr=""
 >
   <template
     shadowroot="open"
@@ -16373,7 +15140,7 @@ exports[`should render dsr component for PTabsItem 1`] = `
 
 exports[`should render dsr component for PTag 1`] = `
 <p-tag
-  class="ssr"
+  data-ssr=""
 >
   <template
     shadowroot="open"
@@ -16433,7 +15200,7 @@ span {
 
 exports[`should render dsr component for PTagDismissible 1`] = `
 <p-tag-dismissible
-  class="ssr"
+  data-ssr=""
 >
   <template
     shadowroot="open"
@@ -16502,7 +15269,8 @@ button::-moz-focus-inner {
       </span>
       <p-icon
         aria-hidden="true"
-        class="icon ssr"
+        class="icon"
+        data-ssr=""
       >
         <template
           shadowroot="open"
@@ -16554,7 +15322,7 @@ img {
 
 exports[`should render dsr component for PText 1`] = `
 <p-text
-  class="ssr"
+  data-ssr=""
 >
   <template
     shadowroot="open"
@@ -16598,7 +15366,7 @@ exports[`should render dsr component for PText 1`] = `
 
 exports[`should render dsr component for PTextFieldWrapper 1`] = `
 <p-text-field-wrapper
-  class="ssr"
+  data-ssr=""
 >
   <template
     shadowroot="open"
@@ -16724,7 +15492,7 @@ exports[`should render dsr component for PTextFieldWrapper 1`] = `
 
 exports[`should render dsr component for PTextList 1`] = `
 <p-text-list
-  class="ssr"
+  data-ssr=""
 >
   <template
     shadowroot="open"
@@ -16767,7 +15535,7 @@ ol,ul {
 
 exports[`should render dsr component for PTextListItem 1`] = `
 <p-text-list-item
-  class="ssr"
+  data-ssr=""
   role="listitem"
 >
   <template
@@ -16805,7 +15573,7 @@ exports[`should render dsr component for PTextListItem 1`] = `
 
 exports[`should render dsr component for PTextareaWrapper 1`] = `
 <p-textarea-wrapper
-  class="ssr"
+  data-ssr=""
 >
   <template
     shadowroot="open"
@@ -16917,7 +15685,7 @@ exports[`should render dsr component for PTextareaWrapper 1`] = `
 exports[`should render dsr component for PToast 1`] = `
 <p-toast
   aria-live="polite"
-  class="ssr"
+  data-ssr=""
   role="status"
 >
   <template
@@ -16940,7 +15708,7 @@ exports[`should render dsr component for PToast 1`] = `
 
 exports[`should render dsr component for PWordmark 1`] = `
 <p-wordmark
-  class="ssr"
+  data-ssr=""
 >
   <template
     shadowroot="open"

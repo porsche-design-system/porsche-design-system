@@ -41,17 +41,6 @@ export class NextJsReactWrapperGenerator extends ReactWrapperGenerator {
       });
     }
 
-    // add hydrated class
-    tweakedComponent = tweakedComponent.replace(
-      /const props = \{/,
-      `// @ts-ignore
-    if (!process.browser) {
-      className = className ? \`\${className} ssr\` : 'ssr';
-    }
-
-    $&`
-    );
-
     // add props
     const propsToSync = extendedProps.filter(({ isEvent }) => !isEvent);
     const spreadProps = [
@@ -77,6 +66,7 @@ export class NextJsReactWrapperGenerator extends ReactWrapperGenerator {
         : {
             ${hasChildren ? 'children,\n            ' : ''}suppressHydrationWarning: true,
           }),
+      'data-ssr': '',
 `
     );
 
