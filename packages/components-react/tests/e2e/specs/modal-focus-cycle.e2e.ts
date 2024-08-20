@@ -61,9 +61,9 @@ test('should focus correct element', async ({ page }) => {
   await page.keyboard.press('Space'); // dismiss modal
 
   await expect(page.locator('p-modal')).toBeHidden();
-  expect(await getActiveElementId(), 'after dismiss').toBe('btn-open');
+  await expect(btnOpen, 'after dismiss').toBeFocused();
 
   await page.keyboard.press('Tab');
 
-  expect(await getActiveElementId(), 'after dismiss 1st tab').toBe('btn-after');
+  await expect(page.locator('#btn-after'), 'after dismiss 1st tab').toBeFocused();
 });
