@@ -96,7 +96,9 @@ export class Textarea {
   @Prop() public autoFocus?: boolean = false;
 
   /** The name of the textarea. */
-  @Prop() public name: string;
+  @Prop({ reflect: true }) public name: string;
+  // The "name" property is reflected as an attribute to ensure compatibility with native form submission.
+  // In the React wrapper, all props are synced as properties on the element ref, so reflecting "name" as an attribute ensures it is properly handled in the form submission process.
 
   /** The max length of the textarea. */
   @Prop() public maxLength?: number;
