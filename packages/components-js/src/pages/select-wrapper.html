@@ -277,6 +277,18 @@
   </p-select-wrapper>
 </div>
 
+<div class="playground light" title="should render with ellipsis and min-width in a smaller container">
+  <div style="width: 60px">
+    <p-select-wrapper label="Some label">
+      <select>
+        <option value="a">Option A</option>
+        <option value="b">Option B</option>
+        <option value="c">Option C</option>
+      </select>
+    </p-select-wrapper>
+  </div>
+</div>
+
 <script>
   porscheDesignSystem.componentsReady().then(() => {
     document
