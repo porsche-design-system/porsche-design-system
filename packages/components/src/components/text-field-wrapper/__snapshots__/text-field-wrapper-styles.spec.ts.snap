@@ -237,6 +237,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   --p-internal-text-field-input-padding-end: calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 1);
   display: grid;
   gap: 4px;
+  min-width: calc(16px + 2px * 2 + calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 1) + 2rem);
 }
 .wrapper {
   display: grid;
@@ -473,6 +474,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   --p-internal-text-field-input-padding-end: 16px;
   display: grid;
   gap: 4px;
+  min-width: calc(16px + 2px * 2 + calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 1) + 2rem);
 }
 .wrapper {
   display: grid;
@@ -600,6 +602,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   --p-internal-text-field-input-padding-end: 16px;
   display: grid;
   gap: 4px;
+  min-width: calc(16px + 2px * 2 + calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 1) + 2rem);
 }
 .wrapper {
   display: grid;
@@ -727,6 +730,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   --p-internal-text-field-input-padding-end: 16px;
   display: grid;
   gap: 4px;
+  min-width: calc(16px + 2px * 2 + calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 1) + 2rem);
 }
 .wrapper {
   display: grid;
@@ -854,6 +858,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   --p-internal-text-field-input-padding-end: calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 1);
   display: grid;
   gap: 4px;
+  min-width: calc(16px + 2px * 2 + calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 1) + 2rem);
 }
 .wrapper {
   display: grid;
@@ -975,6 +980,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   --p-internal-text-field-input-padding-end: calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 1);
   display: grid;
   gap: 4px;
+  min-width: calc(16px + 2px * 2 + calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 2) + 2rem);
 }
 .wrapper {
   display: grid;
@@ -1102,6 +1108,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   --p-internal-text-field-input-padding-end: calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 1);
   display: grid;
   gap: 4px;
+  min-width: calc(16px + 2px * 2 + calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 2) + 2rem);
 }
 .wrapper {
   display: grid;
@@ -1229,6 +1236,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   --p-internal-text-field-input-padding-end: calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 2);
   display: grid;
   gap: 4px;
+  min-width: calc(16px + 2px * 2 + calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 2) + 2rem);
 }
 .wrapper {
   display: grid;
@@ -1470,6 +1478,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   --p-internal-text-field-input-padding-end: 16px;
   display: grid;
   gap: 4px;
+  min-width: calc(16px + 2px * 2 + calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 1) + 2rem);
 }
 .wrapper {
   display: grid;
@@ -1603,6 +1612,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   --p-internal-text-field-input-padding-end: 16px;
   display: grid;
   gap: 4px;
+  min-width: calc(16px + 2px * 2 + calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 1) + 2rem);
 }
 .wrapper {
   display: grid;
@@ -1730,6 +1740,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   --p-internal-text-field-input-padding-end: 16px;
   display: grid;
   gap: 4px;
+  min-width: calc(16px + 2px * 2 + calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 1) + 2rem);
 }
 .wrapper {
   display: grid;
@@ -1856,6 +1867,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   --p-internal-text-field-input-padding-end: 16px;
   display: grid;
   gap: 4px;
+  min-width: calc(16px + 2px * 2 + calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 1) + 2rem);
 }
 .wrapper {
   display: grid;
@@ -1989,6 +2001,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   --p-internal-text-field-input-padding-end: 16px;
   display: grid;
   gap: 4px;
+  min-width: calc(16px + 2px * 2 + calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 1) + 2rem);
 }
 .wrapper {
   display: grid;
@@ -2122,6 +2135,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   --p-internal-text-field-input-padding-end: 16px;
   display: grid;
   gap: 4px;
+  min-width: calc(16px + 2px * 2 + calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 1) + 2rem);
 }
 .wrapper {
   display: grid;
@@ -2248,6 +2262,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   --p-internal-text-field-input-padding-end: 16px;
   display: grid;
   gap: 4px;
+  min-width: calc(16px + 2px * 2 + calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 1) + 2rem);
 }
 .wrapper {
   display: grid;
@@ -2374,6 +2389,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   --p-internal-text-field-input-padding-end: 16px;
   display: grid;
   gap: 4px;
+  min-width: calc(16px + 2px * 2 + calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 1) + 2rem);
 }
 .wrapper {
   display: grid;
@@ -2500,6 +2516,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   --p-internal-text-field-input-padding-end: calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 1);
   display: grid;
   gap: 4px;
+  min-width: calc(16px + 2px * 2 + calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 1) + 2rem);
 }
 .wrapper {
   display: grid;
@@ -2736,6 +2753,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   --p-internal-text-field-input-padding-end: 16px;
   display: grid;
   gap: 4px;
+  min-width: calc(16px + 2px * 2 + calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 1) + 2rem);
 }
 .wrapper {
   display: grid;
@@ -2863,6 +2881,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   --p-internal-text-field-input-padding-end: 16px;
   display: grid;
   gap: 4px;
+  min-width: calc(16px + 2px * 2 + calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 1) + 2rem);
 }
 .wrapper {
   display: grid;
@@ -2990,6 +3009,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   --p-internal-text-field-input-padding-end: 16px;
   display: grid;
   gap: 4px;
+  min-width: calc(16px + 2px * 2 + calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 1) + 2rem);
 }
 .wrapper {
   display: grid;
@@ -3117,6 +3137,7 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
   --p-internal-text-field-input-padding-end: calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 1);
   display: grid;
   gap: 4px;
+  min-width: calc(16px + 2px * 2 + calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 1) + 2rem);
 }
 .wrapper {
   display: grid;
@@ -3351,6 +3372,7 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
   --p-internal-text-field-input-padding-end: 16px;
   display: grid;
   gap: 4px;
+  min-width: calc(16px + 2px * 2 + calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 1) + 2rem);
 }
 .wrapper {
   display: grid;
@@ -3477,6 +3499,7 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
   --p-internal-text-field-input-padding-end: calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 1);
   display: grid;
   gap: 4px;
+  min-width: calc(16px + 2px * 2 + calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 1) + 2rem);
 }
 .wrapper {
   display: grid;
@@ -3709,6 +3732,7 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
   --p-internal-text-field-input-padding-end: 16px;
   display: grid;
   gap: 4px;
+  min-width: calc(16px + 2px * 2 + calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 1) + 2rem);
 }
 .wrapper {
   display: grid;
@@ -3834,6 +3858,7 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
   --p-internal-text-field-input-padding-end: calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 1);
   display: grid;
   gap: 4px;
+  min-width: calc(16px + 2px * 2 + calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 1) + 2rem);
 }
 .wrapper {
   display: grid;
@@ -4068,6 +4093,7 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
   --p-internal-text-field-input-padding-end: 16px;
   display: grid;
   gap: 4px;
+  min-width: calc(16px + 2px * 2 + calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 1) + 2rem);
 }
 .wrapper {
   display: grid;
@@ -4194,6 +4220,7 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
   --p-internal-text-field-input-padding-end: 16px;
   display: grid;
   gap: 4px;
+  min-width: calc(16px + 2px * 2 + calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 1) + 2rem);
 }
 .wrapper {
   display: grid;
@@ -4307,6 +4334,7 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
   --p-internal-text-field-input-padding-end: calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 1);
   display: grid;
   gap: 4px;
+  min-width: calc(16px + 2px * 2 + calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 1) + 2rem);
 }
 .wrapper {
   display: grid;
