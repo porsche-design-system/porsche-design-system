@@ -48,10 +48,13 @@ export const getComponentCss = (
 ): string => {
   return getCss({
     '@global': {
-      ':host': addImportantToEachRule({
-        ...colorSchemeStyles,
-        ...hostHiddenStyles,
-      }),
+      ':host': {
+        display: 'block',
+        ...addImportantToEachRule({
+          ...colorSchemeStyles,
+          ...hostHiddenStyles,
+        }),
+      },
       ...(isWithinForm &&
         addImportantToEachRule({
           [`::slotted([slot=${INTERNAL_SELECT_SLOT}])`]: {
