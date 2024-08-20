@@ -33,11 +33,6 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 - `Button Tile`, `Link Tile`, `Link Tile Model Signature`: correct image position if custom css `position: absolute` is
   used on media element ([#3446](https://github.com/porsche-design-system/porsche-design-system/pull/3446))
 
-#### Removed
-
-- `.hydrated` class from web components
-  ([#3466](https://github.com/porsche-design-system/porsche-design-system/pull/3466))
-
 ### [3.17.0] - 2024-08-01
 
 ### [3.17.0-rc.2] - 2024-08-01
