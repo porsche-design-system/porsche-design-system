@@ -123,7 +123,7 @@ test.describe('banner', () => {
 
     const banner = page.locator('p-banner');
     const bannerOpenBtn = page.locator('p-banner ~ button');
-    const bannerCloseBtn = page.locator('p-banner >>> p-inline-notification >>> p-button-pure.close');
+    const bannerCloseBtn = page.locator('p-banner >>> p-inline-notification >>> .close');
     const bannerDismissEventCounter = page.locator('p-banner + p');
 
     await bannerOpenBtn.click();

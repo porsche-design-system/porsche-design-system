@@ -118,6 +118,7 @@ test.describe('lifecycle', () => {
     expect(status.componentDidLoad['p-table'], 'componentDidLoad: p-table').toBe(1);
     expect(status.componentDidLoad['p-scroller'], 'componentDidLoad: p-scroller').toBe(1); // table uses p-scroller
     expect(status.componentDidLoad['p-icon'], 'componentDidLoad: p-icon').toBe(2); // scroller contains 2 p-icons: inside left and right scroll buttons
+    expect(status.componentDidLoad['p-button'], 'componentDidLoad: p-button').toBe(2);
     expect(status.componentDidLoad['p-table-head'], 'componentDidLoad: p-table-head').toBe(1);
     expect(status.componentDidLoad['p-table-head-row'], 'componentDidLoad: p-table-head-row').toBe(1);
     expect(status.componentDidLoad['p-table-head-cell'], 'componentDidLoad: p-table-head-cell').toBe(5);
@@ -125,7 +126,7 @@ test.describe('lifecycle', () => {
     expect(status.componentDidLoad['p-table-row'], 'componentDidLoad: p-table-row').toBe(3);
     expect(status.componentDidLoad['p-table-cell'], 'componentDidLoad: p-table-cell').toBe(15);
 
-    expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(30); // all the components summed up
+    expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(32); // all the components summed up
     expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(0);
   });
 
@@ -133,7 +134,7 @@ test.describe('lifecycle', () => {
     await initTable(page);
     const initialStatus = await getLifecycleStatus(page);
 
-    expect(initialStatus.componentDidLoad.all, 'initial componentDidLoad: all').toBe(30);
+    expect(initialStatus.componentDidLoad.all, 'initial componentDidLoad: all').toBe(32);
     expect(initialStatus.componentDidUpdate.all, 'initial componentDidUpdate: all').toBe(0);
 
     const host = getHost(page);
@@ -147,7 +148,7 @@ test.describe('lifecycle', () => {
     const status = await getLifecycleStatus(page);
 
     // after adding sorting to every column (5 columns) we get 5 p-icons extra, so that the component amount increases from 30 to 40
-    expect(status.componentDidLoad.all, 'final componentDidLoad: all').toBe(35);
+    expect(status.componentDidLoad.all, 'final componentDidLoad: all').toBe(37);
     expect(status.componentDidLoad['p-icon'], 'final componentDidLoad: p-icon').toBe(7); // 2 p-icons inside scroller + 5 p-icons in table head for sorting
     expect(status.componentDidUpdate.all, 'final componentDidUpdate: all').toBe(5); // 5 p-table-head-cells have been updated
     expect(status.componentDidUpdate['p-table-head-cell'], 'final componentDidUpdate: p-table-head-cell').toBe(5);

@@ -91,7 +91,7 @@ import { STEPPER_HORIZONTAL_SIZES } from './stepper-horizontal-utils';
 
 @Component
 export default class Code extends Vue {
-  config = { themeable: true };
+  config = { themeable: true, overflowX: 'visible' };
 
   codeExample = getStepperHorizontalCodeSamples();
   

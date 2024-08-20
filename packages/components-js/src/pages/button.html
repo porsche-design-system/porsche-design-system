@@ -1,3 +1,24 @@
+<style>
+  .scaling-0 {
+    --p-internal-button-scaling: 0;
+  }
+  .scaling-0-3 {
+    --p-internal-button-scaling: 0.3;
+  }
+  .scaling-0-5 {
+    --p-internal-button-scaling: 0.5;
+  }
+  .scaling-1 {
+    --p-internal-button-scaling: 1;
+  }
+  .scaling-2 {
+    --p-internal-button-scaling: 2;
+  }
+  .w-0 {
+    width: 0px;
+  }
+</style>
+
 <div class="playground light auto-layout-inline" title="should render button primary with label only">
   <p-button variant="primary">Some label</p-button>
   <p-button variant="primary" loading="true">Some label</p-button>
@@ -135,4 +156,50 @@
   <p-button compact="true" hide-label="true" icon-source="./assets/icon-custom-kaixin.svg">Some label</p-button>
   <p-button compact="true" loading="true">Some label</p-button>
   <p-button compact="true" disabled="true">Some label</p-button>
+</div>
+
+<div class="playground light auto-layout-inline" title="should render button with scaling 0">
+  <p-button class="scaling-0" icon="arrow-right" hide-label="true">Scaling 0</p-button>
+  <p-button class="scaling-0" variant="ghost">Scaling 0</p-button>
+  <p-button class="scaling-0" variant="secondary" icon="arrow-right">Scaling 0</p-button>
+</div>
+
+<div class="playground light auto-layout-inline" title="should render button with scaling 0.3">
+  <p-button class="scaling-0-3" icon="arrow-right" hide-label="true">Scaling 0.3</p-button>
+  <p-button class="scaling-0-3" variant="ghost">Scaling 0.3</p-button>
+  <p-button class="scaling-0-3" variant="secondary" icon="arrow-right">Scaling 0.3</p-button>
+</div>
+
+<div class="playground light auto-layout-inline" title="should render button with scaling 0.5">
+  <p-button class="scaling-0-5" icon="arrow-right" hide-label="true">Scaling 0.5</p-button>
+  <p-button class="scaling-0-5" variant="ghost">Scaling 0.5</p-button>
+  <p-button class="scaling-0-5" variant="secondary" icon="arrow-right">Scaling 0.5</p-button>
+</div>
+
+<div class="playground light auto-layout-inline" title="should render button with scaling 1">
+  <p-button class="scaling-1" icon="arrow-right" hide-label="true">Scaling 1</p-button>
+  <p-button class="scaling-1" variant="ghost">Scaling 1</p-button>
+  <p-button class="scaling-1" variant="secondary" icon="arrow-right">Scaling 1</p-button>
+  <p-button variant="secondary" icon="arrow-right">Default</p-button>
+</div>
+
+<div class="playground light auto-layout-inline" title="should render button with scaling 2">
+  <p-button class="scaling-2" icon="arrow-right" hide-label="true">Scaling 2</p-button>
+  <p-button class="scaling-2" variant="ghost">Scaling 2</p-button>
+  <p-button class="scaling-2" variant="secondary" icon="arrow-right">Scaling 2</p-button>
+</div>
+
+<div
+  class="playground light auto-layout-inline"
+  title="should not render button smaller than min-content if set to 0px width"
+>
+  <div style="width: 5rem">
+    <p-button class="scaling-0 w-0" icon="arrow-right" hide-label="true">Some label</p-button>
+  </div>
+  <div style="width: 5rem">
+    <p-button class="scaling-0 w-0" variant="ghost">Some label</p-button>
+  </div>
+  <div style="width: 5rem">
+    <p-button class="scaling-0 w-0" variant="secondary" icon="arrow-right">Some label</p-button>
+  </div>
 </div>

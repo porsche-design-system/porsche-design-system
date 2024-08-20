@@ -1,13 +1,18 @@
 import type { Theme } from '../../../types';
 import type { ToastState } from '../toast/toast-utils';
-import { getCss } from '../../../utils';
+import { getCss, isThemeDark } from '../../../utils';
 import {
   getNotificationContentJssStyle,
   getNotificationIconJssStyle,
   getNotificationRootJssStyle,
 } from '../../inline-notification/inline-notification-styles-shared';
 import { dropShadowHighStyle, textSmallStyle } from '@porsche-design-system/styles';
-import { addImportantToEachRule, getThemedColors, prefersColorSchemeDarkMediaQuery } from '../../../styles';
+import {
+  addImportantToEachRule,
+  dismissButtonJssStyle,
+  getThemedColors,
+  prefersColorSchemeDarkMediaQuery,
+} from '../../../styles';
 
 export const getComponentCss = (state: ToastState, theme: Theme): string => {
   return getCss({
@@ -43,5 +48,12 @@ export const getComponentCss = (state: ToastState, theme: Theme): string => {
       },
     },
     icon: getNotificationIconJssStyle(),
+    close: {
+      ...dismissButtonJssStyle,
+      mixBlendMode: isThemeDark(theme) ? 'plus-lighter' : 'multiply',
+      ...prefersColorSchemeDarkMediaQuery(theme, {
+        mixBlendMode: 'plus-lighter',
+      }),
+    },
   });
 };

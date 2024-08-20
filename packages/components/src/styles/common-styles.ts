@@ -1,7 +1,7 @@
 import type { Theme } from '../types';
 import type { JssStyle } from 'jss';
 import type { PropertiesHyphen } from 'csstype';
-import { type ThemedColors, getThemedColors, prefersColorSchemeDarkMediaQuery } from './';
+import { getThemedColors, prefersColorSchemeDarkMediaQuery, type ThemedColors } from './';
 import {
   borderWidthBase,
   frostedGlassStyle,
@@ -35,6 +35,23 @@ export const motionEasingMap: Record<MotionEasingKey | 'linear', string> = {
   in: motionEasingIn,
   out: motionEasingOut,
   linear: 'linear',
+};
+
+/**
+ * Base value used for spacing calculations
+ *
+ * This constant defines the base value of 16 pixels, which serves as a
+ * standard unit for calculating relative sizes. By multiplying this base
+ * value with scaling factors and proportions, you can derive consistent
+ * and proportional dimensions and spacings throughout the design.
+ *
+ * Example:
+ * const spacing = scalingFactor * proportion * SCALING_BASE_VALUE;
+ */
+export const SCALING_BASE_VALUE = '16px';
+
+export const dismissButtonJssStyle: JssStyle = {
+  '--p-internal-button-scaling': 0,
 };
 
 export const cssVariableTransitionDuration = '--p-transition-duration';
