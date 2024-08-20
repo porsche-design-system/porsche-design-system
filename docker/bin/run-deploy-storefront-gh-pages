@@ -3,6 +3,11 @@
 set -o errexit
 set -o pipefail
 
+if [[ -z "${GH_REPOSITORY_STOREFRONT}" ]]; then
+  echo "Please provide the \$GH_REPOSITORY_STOREFRONT environment variable."
+  exit 1
+fi
+
 if [[ -z "${GITHUB_ACTOR}" ]]; then
   echo "Please provide the \$GITHUB_ACTOR environment variable."
   exit 1
@@ -43,12 +48,12 @@ setup() {
   git config --global --add safe.directory /github/workspace # fix detected dubious ownership in repository at '/github/workspace'
   git config --global user.name "${GITHUB_ACTOR}"
   git config --global user.email "${GITHUB_ACTOR}@users.noreply.github.com"
-  git remote set-url origin "git@github.com:porsche-design-system/porsche-design-system.github.io.git"
+  git remote set-url origin "${GH_REPOSITORY_STOREFRONT}"
 }
 
 checkout_gh_pages() {
   echo "task: [$(date)] \"checkout_gh_pages\""
-  git clone --single-branch -b main "git@github.com:porsche-design-system/porsche-design-system.github.io.git" "/opt/porsche-design-system-gh-pages"
+  git clone --single-branch -b main "${GH_REPOSITORY_STOREFRONT}" "/opt/porsche-design-system-gh-pages"
 }
 
 add_deployment_version() {
