@@ -1,8 +1,9 @@
-import { expect, Locator, type Page, test } from '@playwright/test';
+import { expect, type Page, test } from '@playwright/test';
 import {
   addEventListener,
   clickElementPosition,
   getEventSummary,
+  getFormDataValue,
   getHTMLAttributes,
   getLifecycleStatus,
   hoverElementPosition,
@@ -54,12 +55,6 @@ const initTextarea = (page: Page, opts?: InitOptions): Promise<void> => {
     </p-textarea>${markupAfter}`;
 
   return setContentWithDesignSystem(page, isWithinForm ? `<form onsubmit="return false;">${markup}</form>` : markup);
-};
-
-const getFormDataValue = async (form: Locator, name: string) => {
-  return form.evaluate((el: HTMLFormElement, name: string) => {
-    return new FormData(el).get(name);
-  }, name);
 };
 
 test.describe('value', () => {
