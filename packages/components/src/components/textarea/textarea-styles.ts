@@ -24,7 +24,6 @@ import {
 import { getFunctionalComponentLabelStyles } from '../common/label/label-styles';
 import { getThemedFormStateColors } from '../../styles/form-state-color-styles';
 
-const cssVariableMinHeight = '--p-textarea-min-height';
 const cssVariableResize = '--p-textarea-resize';
 
 export const getComponentCss = (
@@ -56,7 +55,6 @@ export const getComponentCss = (
         }),
       },
       textarea: {
-        minHeight: `var(${cssVariableMinHeight}, 200px)`,
         resize: `var(${cssVariableResize}, vertical)`,
         display: 'block',
         width: '100%',

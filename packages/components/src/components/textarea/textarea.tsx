@@ -110,7 +110,7 @@ export class Textarea {
   @Prop() public form?: string;
 
   /** The amount of rows of the textarea. */
-  @Prop() public rows?: number;
+  @Prop() public rows?: number = 7;
 
   /** Specifies whether the input can be autofilled by the browser */
   @Prop() public autoComplete?: TextareaAutoComplete = '';
