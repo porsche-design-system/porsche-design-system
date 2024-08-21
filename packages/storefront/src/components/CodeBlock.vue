@@ -4,7 +4,7 @@
       <!-- prettier-ignore -->
       <button type="button" v-for="(framework, index) in usedFrameworks" :key="index" @click="setFramework(index)">{{ framework }}</button>
     </p-tabs-bar>
-    <pre dir="ltr" tabindex="0" role="region" aria-label="Code sample"><code v-html="highlightedMarkup"></code></pre>
+    <pre dir="ltr" tabindex="0"><code v-html="highlightedMarkup"></code></pre>
   </div>
 </template>
 

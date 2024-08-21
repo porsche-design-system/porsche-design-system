@@ -27,7 +27,7 @@ key you need to register an event listener for the `dismiss` event which is emit
 
 The size of `p-flyout` adjusts itself to the content with a predefined **min/max width**.
 
-#### Supported named slots:
+### Supported named slots:
 
 - `slot="header"`: Renders a **sticky** header section above the content area.
 - `slot`: Shows the content area.

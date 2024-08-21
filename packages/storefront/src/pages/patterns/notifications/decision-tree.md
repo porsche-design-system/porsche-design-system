@@ -14,7 +14,7 @@ component for your notification.
 
 Status: Neutral
 
-#### Example use Cases:
+### Example use Cases:
 
 - Ask for User data
 - Request feedback
@@ -23,7 +23,7 @@ Status: Neutral
 
 ![The five basic elements of Porsche forms](./assets/notification-neutral.png)
 
-#### Related Components:
+### Related Components:
 
 - [Inline Notification](components/inline-notification)
 - [Modal](components/modal)
@@ -35,7 +35,7 @@ Status: Neutral
 
 Status: Success
 
-#### Example use Cases:
+### Example use Cases:
 
 - From submit was successful
 - Selection made is approved
@@ -45,7 +45,7 @@ Status: Success
 
 ![The five basic elements of Porsche forms](./assets/notification-success.png)
 
-#### Related Components:
+### Related Components:
 
 - [Inline Notification](components/inline-notification)
 - Inline Validation (supported by all form elements)
@@ -57,7 +57,7 @@ Status: Success
 
 Status: Warning
 
-#### Example use Cases:
+### Example use Cases:
 
 - The user’s login session is about to expire
 - Planned system maintenance is coming soon
@@ -66,7 +66,7 @@ Status: Warning
 
 ![The five basic elements of Porsche forms](./assets/notification-warning.png)
 
-#### Related Components:
+### Related Components:
 
 - [Banner](components/banner)
 - [Inline Notification](components/inline-notification)
@@ -78,7 +78,7 @@ Status: Warning
 
 Status: Error
 
-#### Example use Cases:
+### Example use Cases:
 
 - Internet connection lost
 - Form submit error (mandatory fields missing)
@@ -89,7 +89,7 @@ Status: Error
 
 ![The five basic elements of Porsche forms](./assets/notification-error.png)
 
-#### Related Components:
+### Related Components:
 
 - [Banner](components/banner)
 - [Inline Notification](components/inline-notification)

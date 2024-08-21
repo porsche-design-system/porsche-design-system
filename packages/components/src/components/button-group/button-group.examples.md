@@ -4,11 +4,13 @@ The `p-button-group` is a component for wrapping multiple buttons and display th
 corresponding spacing and width. By default buttons are displayed in full-width as a vertical stacked group for mobile
 viewports (breakpoint XS) and side-by-side in a row for larger viewports.
 
-### Responsive row/column behaviour left aligned
+<TableOfContents></TableOfContents>
+
+## Responsive row/column behaviour left aligned
 
 <Playground :markup="buttonGroup"></Playground>
 
-### With custom direction breakpoint
+## With custom direction breakpoint
 
 <Playground :markup="buttonGroupCustomBreakpoint"></Playground>
 
