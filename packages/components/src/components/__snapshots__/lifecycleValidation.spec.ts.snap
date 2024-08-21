@@ -730,7 +730,6 @@ exports[`should call validateProps() with correct parameters via render for p-te
 exports[`should call validateProps() with correct parameters via render for p-textarea: propTypes with ValidatorFunctions 1`] = `
 {
   "autoComplete": "oneOf",
-  "autoFocus": "boolean",
   "description": "string",
   "disabled": "boolean",
   "form": "string",
@@ -743,6 +742,7 @@ exports[`should call validateProps() with correct parameters via render for p-te
   "placeholder": "string",
   "readOnly": "boolean",
   "required": "boolean",
+  "resize": "oneOf",
   "rows": "number",
   "showCounter": "boolean",
   "spellCheck": "boolean",
