@@ -36,14 +36,6 @@ it('should return 0 when nothing is rendered', async () => {
   expect(await componentsReady()).toBe(0);
 });
 
-it('should return 1 after component is rendered initially', async () => {
-  const { container } = await render(SampleComponent);
-  expect(replaceHtmlComments(container.innerHTML)).toEqual('<p-button>Button 1</p-button>');
-
-  expect(await componentsReady()).toBe(1);
-  expect(replaceHtmlComments(container.innerHTML)).toEqual('<p-button class="hydrated">Button 1</p-button>');
-});
-
 it('should return 2 after button is clicked', async () => {
   await render(SampleComponent);
   await componentsReady();
@@ -52,4 +44,12 @@ it('should return 2 after button is clicked', async () => {
   fireEvent.click(button);
 
   expect(await componentsReady()).toBe(2);
+});
+
+it('should return 1 after component is rendered initially', async () => {
+  const { container } = await render(SampleComponent);
+  expect(replaceHtmlComments(container.innerHTML)).toEqual('<p-button>Button 1</p-button>');
+
+  expect(await componentsReady()).toBe(1);
+  expect(replaceHtmlComments(container.innerHTML)).toEqual('<p-button class="hydrated">Button 1</p-button>');
 });

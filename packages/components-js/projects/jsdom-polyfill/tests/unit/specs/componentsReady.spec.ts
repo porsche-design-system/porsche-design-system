@@ -11,16 +11,6 @@ it('should return 0 when nothing is rendered', async () => {
   expect(await componentsReady()).toBe(0);
 });
 
-it('should return 1 after component is rendered initially', async () => {
-  document.body.innerHTML = getMarkup();
-  expect(document.body.innerHTML).toEqual('<p-button>Button 1</p-button>');
-
-  expect(await componentsReady()).toBe(1);
-  const el = document.body.firstElementChild;
-  expect(el.shadowRoot).not.toBeNull();
-  expect(el.className).toBe('hydrated');
-});
-
 it('should return 2 after button is clicked', async () => {
   document.body.innerHTML = getMarkup();
   expect(await componentsReady()).toBe(1);
@@ -38,4 +28,14 @@ document.querySelector('p-button').addEventListener('click', () => {
   await userEvent.click(button);
 
   expect(await componentsReady()).toBe(2);
+});
+
+it('should return 1 after component is rendered initially', async () => {
+  document.body.innerHTML = getMarkup();
+  expect(document.body.innerHTML).toEqual('<p-button>Button 1</p-button>');
+
+  expect(await componentsReady()).toBe(1);
+  const el = document.body.firstElementChild;
+  expect(el.shadowRoot).not.toBeNull();
+  expect(el.className).toBe('hydrated');
 });
