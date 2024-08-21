@@ -7964,12 +7964,6 @@ exports[`should match snapshot 1`] = `
         "description": "Specifies whether the input can be autofilled by the browser",
         "type": "TextareaAutoComplete",
       },
-      "autoFocus": {
-        "allowedValues": "boolean",
-        "defaultValue": false,
-        "description": "Enables automatic focus when the component is rendered.",
-        "type": "boolean",
-      },
       "description": {
         "allowedValues": "string",
         "defaultValue": "",
@@ -8044,9 +8038,22 @@ exports[`should match snapshot 1`] = `
         "description": "Marks the textarea as required.",
         "type": "boolean",
       },
+      "resize": {
+        "allowedValues": [
+          "none",
+          "both",
+          "horizontal",
+          "vertical",
+          "block",
+          "inline",
+        ],
+        "defaultValue": "vertical",
+        "description": "Controls whether the textarea is resizable and in which direction.",
+        "type": "TextareaResize",
+      },
       "rows": {
         "allowedValues": "number",
-        "defaultValue": null,
+        "defaultValue": 7,
         "description": "The amount of rows of the textarea.",
         "type": "number",
       },
