@@ -5,7 +5,8 @@
   const value = ref<string>('');
 
   const onInput = (e: TextareaInputEventDetail) => {
-    value.value = (e.detail.target as HTMLTextAreaElement).value;
+    console.log(e);
+    value.value = (e.target as HTMLTextAreaElement).value;
   };
 
   const debugText = computed(() => {
