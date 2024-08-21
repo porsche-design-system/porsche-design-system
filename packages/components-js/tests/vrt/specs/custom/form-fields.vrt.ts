@@ -24,9 +24,6 @@ const scenario = async (page: Page, theme: Theme): Promise<void> => {
         gap: 1rem;
         width: 100%;
        }
-       p-textarea {
-        --p-textarea-min-height: auto;
-       }
       textarea { min-height: initial; }
     </style>`;
 
