@@ -17,7 +17,7 @@ import {
   getDialogJssStyle,
   getDialogStickyAreaJssStyle,
   getDialogTransitionJssStyle,
-  getDismissButtonJssStyle,
+  getDialogDismissButtonJssStyle,
   getScrollerJssStyle,
   headingTags,
 } from '../../styles/dialog-styles';
@@ -151,7 +151,7 @@ export const getComponentCss = (
     },
     ...(hasDismissButton && {
       dismiss: {
-        ...getDismissButtonJssStyle(theme, isOpen),
+        ...getDialogDismissButtonJssStyle(isOpen),
         gridArea: '1/3',
         zIndex: 2, // ensures dismiss button is above sticky footer, header and content
         position: 'sticky',

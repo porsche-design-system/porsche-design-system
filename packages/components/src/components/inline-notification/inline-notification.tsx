@@ -147,9 +147,10 @@ export class InlineNotification {
           </PrefixedTagNames.pButtonPure>
         )}
         {this.hasDismissButton && (
-          <PrefixedTagNames.pButtonPure
+          <PrefixedTagNames.pButton
             class="close"
             type="button"
+            variant="ghost"
             icon="close"
             theme={this.theme}
             hideLabel={true}
@@ -157,7 +158,7 @@ export class InlineNotification {
             onClick={this.dismiss.emit}
           >
             Close notification
-          </PrefixedTagNames.pButtonPure>
+          </PrefixedTagNames.pButton>
         )}
       </Host>
     );

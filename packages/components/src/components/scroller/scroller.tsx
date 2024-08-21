@@ -1,4 +1,4 @@
-import { Component, Element, h, Prop, State, Watch } from '@stencil/core';
+import { Component, Element, h, Prop, State, Watch, type JSX } from '@stencil/core';
 import {
   AllowedTypes,
   attachComponentCss,
@@ -163,22 +163,21 @@ export class Scroller {
 
     const renderPrevNextButton = (direction: ScrollerDirection): JSX.Element => {
       const PrefixedTagNames = getPrefixedTagNames(this.host);
-      // TODO: why not use p-button?
       return (
         <div key={direction} class={direction === 'next' ? 'action-next' : 'action-prev'}>
-          <button
+          <PrefixedTagNames.pButton
+            class="action-button"
+            variant="ghost"
+            hide-label="true"
+            icon={direction === 'next' ? 'arrow-head-right' : 'arrow-head-left'}
             type="button"
             tabIndex={-1}
             onClick={() => this.scrollOnPrevNextClick(direction)}
-            aria-hidden="true"
-            aria-label={direction}
+            theme={this.theme}
+            dir="ltr" // Otherwise icon will be flipped which doesn't make sense in this use case
           >
-            <PrefixedTagNames.pIcon
-              class="icon"
-              name={direction === 'next' ? 'arrow-head-right' : 'arrow-head-left'}
-              theme={this.theme}
-            />
-          </button>
+            {direction}
+          </PrefixedTagNames.pButton>
         </div>
       );
     };
