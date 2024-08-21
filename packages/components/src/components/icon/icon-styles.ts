@@ -1,5 +1,5 @@
-import type { TextSize, Theme, IconName } from '../../types';
-import { getCss, isThemeDark, isHighContrastMode } from '../../utils';
+import type { IconName, TextSize, Theme } from '../../types';
+import { getCss, isHighContrastMode, isThemeDark } from '../../utils';
 import {
   fontFamily,
   fontLineHeight,
@@ -12,10 +12,10 @@ import {
 } from '@porsche-design-system/styles';
 import {
   addImportantToEachRule,
-  hostHiddenStyles,
-  getSchemedHighContrastMediaQuery,
-  prefersColorSchemeDarkMediaQuery,
   colorSchemeStyles,
+  getSchemedHighContrastMediaQuery,
+  hostHiddenStyles,
+  prefersColorSchemeDarkMediaQuery,
 } from '../../styles';
 import type { IconColor, IconColorDeprecated } from './icon-utils';
 import {

@@ -14,6 +14,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ### [Unreleased]
 
+### [3.18.0-rc.0] - 2024-08-21
+
 #### Added
 
 - `Button Tile`, `Link Tile`, `Link Tile Model Signature`: supports `<video/>` (the tile components automatically check
@@ -25,14 +27,16 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 #### Changed
 
-- `Select`: added `display: block` to host in order to be consistent with other form components
-  ([#3462](https://github.com/porsche-design-system/porsche-design-system/pull/3462))
 - Partials: `getInitialStyles` uses CSS `:defined` to determine the visibility of web components, as well as
   `[data-ssr]` attribute instead of `.ssr` class for Next JS and Remix
   ([#3466](https://github.com/porsche-design-system/porsche-design-system/pull/3466))
+- Components: Use `:defined` & `[data-ssr]` to handle visibility of nested elements within Shadow DOM
+  ([#3470](https://github.com/porsche-design-system/porsche-design-system/pull/3470))
 - `Button`, `Link`: spacings adjusted for `compact` mode
 - `Banner`, `Flyout`, `Inline Notification`, `Modal`, `Scroller`, `Toast`: button style
   ([#3435](https://github.com/porsche-design-system/porsche-design-system/pull/3435))
+- `Select`: added `display: block` to host in order to be consistent with other form components
+  ([#3462](https://github.com/porsche-design-system/porsche-design-system/pull/3462))
 
 #### Fixed
 

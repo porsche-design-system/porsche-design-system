@@ -8,6 +8,9 @@ exports[`getComponentCss() should return correct css for isSecondaryScrollerVisi
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 ::slotted(:is(h1, h2, h3, h4, h5, h6)) {
   font: normal normal 600 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   margin: 0 !important;
@@ -179,6 +182,9 @@ exports[`getComponentCss() should return correct css for isSecondaryScrollerVisi
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 ::slotted(:is(h1, h2, h3, h4, h5, h6)) {
   font: normal normal 600 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   margin: 0 !important;
@@ -314,6 +320,9 @@ exports[`getComponentCss() should return correct css for isSecondaryScrollerVisi
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 ::slotted(:is(h1, h2, h3, h4, h5, h6)) {
   font: normal normal 600 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   margin: 0 !important;
@@ -448,6 +457,9 @@ exports[`getComponentCss() should return correct css for isSecondaryScrollerVisi
 }
 :host([hidden]) {
   display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
 }
 ::slotted(:is(h1, h2, h3, h4, h5, h6)) {
   font: normal normal 600 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
@@ -618,6 +630,9 @@ exports[`getComponentCss() should return correct css for isSecondaryScrollerVisi
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 ::slotted(:is(h1, h2, h3, h4, h5, h6)) {
   font: normal normal 600 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   margin: 0 !important;
@@ -750,6 +765,9 @@ exports[`getComponentCss() should return correct css for isSecondaryScrollerVisi
 }
 :host([hidden]) {
   display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
 }
 ::slotted(:is(h1, h2, h3, h4, h5, h6)) {
   font: normal normal 600 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;

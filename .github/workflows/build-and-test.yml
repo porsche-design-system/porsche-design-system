@@ -790,6 +790,11 @@ jobs:
         with:
           name: assets-build
           path: ./packages/assets/dist
+      - name: 'Store Components Build Artifact'
+        uses: actions/upload-artifact@v4
+        with:
+          name: components-prod-build
+          path: ./packages/components/dist
       - name: 'Store Components JS Build Artifact'
         uses: actions/upload-artifact@v4
         with:

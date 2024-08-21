@@ -24,6 +24,9 @@ exports[`getComponentCss() should return correct css for state: info and theme: 
 :host::backdrop {
   display: none;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 p {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
@@ -82,6 +85,9 @@ exports[`getComponentCss() should return correct css for state: info and theme: 
 }
 :host::backdrop {
   display: none;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
 }
 p {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -142,6 +148,9 @@ exports[`getComponentCss() should return correct css for state: neutral and them
 :host::backdrop {
   display: none;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 p {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
@@ -200,6 +209,9 @@ exports[`getComponentCss() should return correct css for state: neutral and them
 }
 :host::backdrop {
   display: none;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
 }
 p {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -260,6 +272,9 @@ exports[`getComponentCss() should return correct css for state: success and them
 :host::backdrop {
   display: none;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 p {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
@@ -318,6 +333,9 @@ exports[`getComponentCss() should return correct css for state: success and them
 }
 :host::backdrop {
   display: none;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
 }
 p {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;

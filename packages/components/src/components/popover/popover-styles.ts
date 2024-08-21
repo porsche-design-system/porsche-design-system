@@ -21,6 +21,7 @@ import {
   hostHiddenStyles,
   hoverMediaQuery,
   prefersColorSchemeDarkMediaQuery,
+  preventFoucOfNestedElementsStyles,
 } from '../../styles';
 import { POPOVER_Z_INDEX } from '../../constants';
 import type { Theme } from '../../types';
@@ -159,6 +160,7 @@ export const getComponentCss = (direction: PopoverDirection, isNativePopoverCase
           ...hostHiddenStyles,
         }),
       },
+      ...preventFoucOfNestedElementsStyles,
       p: {
         ...textSmallStyle,
         margin: 0,

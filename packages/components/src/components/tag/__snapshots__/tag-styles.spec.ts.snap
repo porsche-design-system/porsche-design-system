@@ -42,6 +42,9 @@ exports[`getComponentCss() should return correct css for color: background-base,
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 span {
   position: relative;
   display: flex;
@@ -110,6 +113,9 @@ exports[`getComponentCss() should return correct css for color: background-base,
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 span {
   position: relative;
   display: flex;
@@ -177,6 +183,9 @@ exports[`getComponentCss() should return correct css for color: background-base,
 }
 :host([hidden]) {
   display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
 }
 span {
   position: relative;
@@ -252,6 +261,9 @@ exports[`getComponentCss() should return correct css for color: background-base,
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 span {
   position: relative;
   display: flex;
@@ -326,6 +338,9 @@ exports[`getComponentCss() should return correct css for color: background-base,
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 span {
   position: relative;
   display: flex;
@@ -390,6 +405,9 @@ exports[`getComponentCss() should return correct css for color: background-base,
 }
 :host([hidden]) {
   display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
 }
 span {
   position: relative;
@@ -458,6 +476,9 @@ exports[`getComponentCss() should return correct css for color: background-frost
 }
 :host([hidden]) {
   display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
 }
 span {
   position: relative;
@@ -535,6 +556,9 @@ exports[`getComponentCss() should return correct css for color: background-frost
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 span {
   position: relative;
   display: flex;
@@ -611,6 +635,9 @@ exports[`getComponentCss() should return correct css for color: background-surfa
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 span {
   position: relative;
   display: flex;
@@ -684,6 +711,9 @@ exports[`getComponentCss() should return correct css for color: background-surfa
 }
 :host([hidden]) {
   display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
 }
 span {
   position: relative;
@@ -759,6 +789,9 @@ exports[`getComponentCss() should return correct css for color: notification-err
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 span {
   position: relative;
   display: flex;
@@ -832,6 +865,9 @@ exports[`getComponentCss() should return correct css for color: notification-err
 }
 :host([hidden]) {
   display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
 }
 span {
   position: relative;
@@ -907,6 +943,9 @@ exports[`getComponentCss() should return correct css for color: notification-inf
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 span {
   position: relative;
   display: flex;
@@ -980,6 +1019,9 @@ exports[`getComponentCss() should return correct css for color: notification-inf
 }
 :host([hidden]) {
   display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
 }
 span {
   position: relative;
@@ -1055,6 +1097,9 @@ exports[`getComponentCss() should return correct css for color: notification-suc
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 span {
   position: relative;
   display: flex;
@@ -1128,6 +1173,9 @@ exports[`getComponentCss() should return correct css for color: notification-suc
 }
 :host([hidden]) {
   display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
 }
 span {
   position: relative;
@@ -1203,6 +1251,9 @@ exports[`getComponentCss() should return correct css for color: notification-war
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 span {
   position: relative;
   display: flex;
@@ -1276,6 +1327,9 @@ exports[`getComponentCss() should return correct css for color: notification-war
 }
 :host([hidden]) {
   display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
 }
 span {
   position: relative;
@@ -1351,6 +1405,9 @@ exports[`getComponentCss() should return correct css for color: primary, compact
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 span {
   position: relative;
   display: flex;
@@ -1425,6 +1482,9 @@ exports[`getComponentCss() should return correct css for color: primary, compact
 }
 :host([hidden]) {
   display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
 }
 span {
   position: relative;

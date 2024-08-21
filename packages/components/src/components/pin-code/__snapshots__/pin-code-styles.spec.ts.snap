@@ -8,6 +8,9 @@ exports[`getComponentCss() should return correct css for hideLabel: { base: true
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 input {
   display: block;
   width: calc(calc(6px + 2.125ex) + 10px + 2px * 2 + 8px * 2);
@@ -196,6 +199,9 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 input {
   display: block;
   width: calc(calc(6px + 2.125ex) + 10px + 2px * 2 + 8px * 2);
@@ -317,6 +323,9 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 }
 :host([hidden]) {
   display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
 }
 input {
   display: block;
@@ -440,6 +449,9 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 input {
   display: block;
   width: calc(calc(6px + 2.125ex) + 10px + 2px * 2 + 8px * 2);
@@ -562,6 +574,9 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 input {
   display: block;
   width: calc(calc(6px + 2.125ex) + 10px + 2px * 2 + 8px * 2);
@@ -683,6 +698,9 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 }
 :host([hidden]) {
   display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
 }
 input {
   display: block;
@@ -811,6 +829,9 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 }
 :host([hidden]) {
   display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
 }
 input {
   display: block;
@@ -949,6 +970,9 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 input {
   display: block;
   width: calc(calc(6px + 2.125ex) + 10px + 2px * 2 + 8px * 2);
@@ -1069,6 +1093,9 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 }
 :host([hidden]) {
   display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
 }
 input {
   display: block;
@@ -1191,6 +1218,9 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 input {
   display: block;
   width: calc(calc(6px + 2.125ex) + 10px + 2px * 2 + 8px * 2);
@@ -1312,6 +1342,9 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 input {
   display: block;
   width: calc(calc(6px + 2.125ex) + 10px + 2px * 2 + 8px * 2);
@@ -1432,6 +1465,9 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 }
 :host([hidden]) {
   display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
 }
 input {
   display: block;
@@ -1559,6 +1595,9 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
 }
 :host([hidden]) {
   display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
 }
 input {
   display: block;

@@ -12,6 +12,9 @@ exports[`getComponentCss() should return correct css for open: false, backdrop: 
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 ::slotted(.stretch-to-full-modal-width) {
   display: block !important;
   margin: 0 calc(clamp(32px, 2.75vw + 23px, 76px) * -1) !important;
@@ -125,6 +128,9 @@ exports[`getComponentCss() should return correct css for open: false, backdrop: 
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 ::slotted(.stretch-to-full-modal-width) {
   display: block !important;
   margin: 0 calc(clamp(32px, 2.75vw + 23px, 76px) * -1) !important;
@@ -231,6 +237,9 @@ exports[`getComponentCss() should return correct css for open: false, backdrop: 
 }
 :host([hidden]) {
   display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
 }
 ::slotted(.stretch-to-full-modal-width) {
   display: block !important;
@@ -355,6 +364,9 @@ exports[`getComponentCss() should return correct css for open: false, backdrop: 
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 ::slotted(.stretch-to-full-modal-width) {
   display: block !important;
   margin: 0 calc(clamp(32px, 2.75vw + 23px, 76px) * -1) !important;
@@ -451,6 +463,9 @@ exports[`getComponentCss() should return correct css for open: false, backdrop: 
 }
 :host([hidden]) {
   display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
 }
 ::slotted(.stretch-to-full-modal-width) {
   display: block !important;
@@ -564,6 +579,9 @@ exports[`getComponentCss() should return correct css for open: false, backdrop: 
 }
 :host([hidden]) {
   display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
 }
 ::slotted(.stretch-to-full-modal-width) {
   display: block !important;
@@ -682,6 +700,9 @@ exports[`getComponentCss() should return correct css for open: false, backdrop: 
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 ::slotted(.stretch-to-full-modal-width) {
   display: block !important;
   margin: 0 calc(clamp(32px, 2.75vw + 23px, 76px) * -1) !important;
@@ -788,6 +809,9 @@ exports[`getComponentCss() should return correct css for open: false, backdrop: 
 }
 :host([hidden]) {
   display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
 }
 ::slotted(.stretch-to-full-modal-width) {
   display: block !important;
@@ -912,6 +936,9 @@ exports[`getComponentCss() should return correct css for open: false, backdrop: 
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 ::slotted(.stretch-to-full-modal-width) {
   display: block !important;
   margin: 0 calc(clamp(32px, 2.75vw + 23px, 76px) * -1) !important;
@@ -1018,6 +1045,9 @@ exports[`getComponentCss() should return correct css for open: false, backdrop: 
 }
 :host([hidden]) {
   display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
 }
 ::slotted(.stretch-to-full-modal-width) {
   display: block !important;
@@ -1136,6 +1166,9 @@ exports[`getComponentCss() should return correct css for open: false, backdrop: 
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 ::slotted(.stretch-to-full-modal-width) {
   display: block !important;
   margin: 0 calc(clamp(32px, 2.75vw + 23px, 76px) * -1) !important;
@@ -1242,6 +1275,9 @@ exports[`getComponentCss() should return correct css for open: true, backdrop: b
 }
 :host([hidden]) {
   display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
 }
 ::slotted(.stretch-to-full-modal-width) {
   display: block !important;
@@ -1459,6 +1495,9 @@ exports[`getComponentCss() should return correct css for open: true, backdrop: b
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 ::slotted(.stretch-to-full-modal-width) {
   display: block !important;
   margin: 0 calc(clamp(32px, 2.75vw + 23px, 76px) * -1) !important;
@@ -1568,6 +1607,9 @@ exports[`getComponentCss() should return correct css for open: true, backdrop: b
 }
 :host([hidden]) {
   display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
 }
 ::slotted(.stretch-to-full-modal-width) {
   display: block !important;
@@ -1680,6 +1722,9 @@ exports[`getComponentCss() should return correct css for open: true, backdrop: b
 }
 :host([hidden]) {
   display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
 }
 ::slotted(.stretch-to-full-modal-width) {
   display: block !important;
@@ -1807,6 +1852,9 @@ exports[`getComponentCss() should return correct css for open: true, backdrop: b
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 ::slotted(.stretch-to-full-modal-width) {
   display: block !important;
   margin: 0 calc(clamp(32px, 2.75vw + 23px, 76px) * -1) !important;
@@ -1912,6 +1960,9 @@ exports[`getComponentCss() should return correct css for open: true, backdrop: b
 }
 :host([hidden]) {
   display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
 }
 ::slotted(.stretch-to-full-modal-width) {
   display: block !important;
@@ -2035,6 +2086,9 @@ exports[`getComponentCss() should return correct css for open: true, backdrop: b
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 ::slotted(.stretch-to-full-modal-width) {
   display: block !important;
   margin: 0 calc(clamp(32px, 2.75vw + 23px, 76px) * -1) !important;
@@ -2130,6 +2184,9 @@ exports[`getComponentCss() should return correct css for open: true, backdrop: b
 }
 :host([hidden]) {
   display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
 }
 ::slotted(.stretch-to-full-modal-width) {
   display: block !important;
@@ -2243,6 +2300,9 @@ exports[`getComponentCss() should return correct css for open: true, backdrop: b
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 ::slotted(.stretch-to-full-modal-width) {
   display: block !important;
   margin: 0 calc(clamp(32px, 2.75vw + 23px, 76px) * -1) !important;
@@ -2348,6 +2408,9 @@ exports[`getComponentCss() should return correct css for open: true, backdrop: b
 }
 :host([hidden]) {
   display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
 }
 ::slotted(.stretch-to-full-modal-width) {
   display: block !important;

@@ -8,6 +8,7 @@ import {
   hostHiddenStyles,
   hoverMediaQuery,
   prefersColorSchemeDarkMediaQuery,
+  preventFoucOfNestedElementsStyles,
 } from '../../../styles';
 import {
   borderRadiusSmall,
@@ -117,6 +118,7 @@ export const getComponentCss = (state: StepperHorizontalItemState, disabled: boo
           },
         }),
       },
+      ...preventFoucOfNestedElementsStyles,
       button: {
         display: 'flex',
         position: 'relative',
