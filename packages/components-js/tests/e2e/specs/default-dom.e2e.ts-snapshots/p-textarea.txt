@@ -6,6 +6,7 @@
       id="textarea"
       name="value"
       placeholder=""
+      rows="7"
       autocomplete=""
       wrap="soft"
     ></textarea>
