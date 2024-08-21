@@ -355,7 +355,9 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
           )
           .replace(/{this\.props\.children}/, '{manipulatedChildren}');
       } else if (tagName === 'p-scroller') {
-        newFileContent = newFileContent.replace(/(this\.)props\.(is(?:Next|Prev)Hidden)/g, '$1$2');
+        newFileContent = newFileContent
+          .replace(/(this\.)props\.(is(?:Next|Prev)Hidden)/g, '$1$2')
+          .replace(/(deprecationMap\[this\.props\.gradientColorScheme)/, '$1 as ScrollerGradientColorScheme');
       } else if (tagName === 'p-popover') {
         // only keep :host , button, .icon & .label styles
         newFileContent = newFileContent.replace(
@@ -594,7 +596,7 @@ $&`
     $1 = primaryLink.props.href
       ? primaryLink.props
       : (Array.isArray(primaryLink.props.children) ? primaryLink.props.children : [primaryLink.props.children]).find(
-          (child) => child.type === 'a' || child.props.href || child.props.to // href and to check is for framework links
+          (child: any) => child.type === 'a' || child.props.href || child.props.to // href and to check is for framework links
         ).props;`
           ) // rewire source for linkEl
           .replace(/(href: linkEl\.href),/, '$1 || linkEl.to,') // fallback for framework links
