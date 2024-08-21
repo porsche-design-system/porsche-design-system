@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { TextareaInputEventDetail } from '@porsche-design-system/components';
+import { type TextareaInputEventDetail } from '@porsche-design-system/components-angular';
 
 @Component({
   selector: 'page-textarea-example-controlled',
@@ -16,6 +16,6 @@ export class TextareaExampleControlledComponent {
   }
 
   onInput(e: CustomEvent<TextareaInputEventDetail>) {
-    this.value = (e.target as HTMLTextAreaElement).value;
+    this.value = (e.detail.target as HTMLTextAreaElement).value;
   }
 }

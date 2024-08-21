@@ -7,8 +7,8 @@
   const textarea = document.querySelector('p-textarea');
 
   textarea.addEventListener('input', (e) => {
-    e.target.value = e.detail.value;
-    setDebugText(e.detail.value);
+    e.target.value = e.detail.target.value;
+    setDebugText(e.detail.target.value);
   });
 
   function setDebugText(value) {
