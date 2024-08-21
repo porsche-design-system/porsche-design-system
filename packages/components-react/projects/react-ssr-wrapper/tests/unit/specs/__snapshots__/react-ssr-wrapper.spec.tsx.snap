@@ -2210,7 +2210,7 @@ input:disabled {
 .root {
   display: grid;
   gap: 4px;
-  min-width: calc(16px + 2px * 2 + calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 2) + 1rem);
+  min-width: calc(1rem + 16px + 2px * 2 + calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 2));
 }
 .wrapper {
   position: relative;
@@ -3184,7 +3184,7 @@ exports[`manual test cases > should pass internal props correctly to p-select-wr
 .root {
   display: grid;
   gap: 4px;
-  min-width: calc(16px + 2px * 2 + calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 1) + 1rem);
+  min-width: calc(1rem + 16px + 2px * 2 + calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 1));
 }
 .wrapper {
   display: grid;
@@ -3471,7 +3471,7 @@ exports[`manual test cases > should pass internal props correctly to p-select-wr
 .root {
   display: grid;
   gap: 4px;
-  min-width: calc(16px + 2px * 2 + calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 1) + 1rem);
+  min-width: calc(1rem + 16px + 2px * 2 + calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 1));
 }
 .wrapper {
   display: grid;
@@ -5482,6 +5482,7 @@ exports[`manual test cases > should pass internal props correctly to p-text-fiel
   --p-internal-text-field-input-padding-end: 16px;
   display: grid;
   gap: 4px;
+  min-width: calc(2rem + 16px + 2px*2 + 0px);
 }
 .wrapper {
   display: grid;
@@ -5615,6 +5616,7 @@ exports[`manual test cases > should pass internal props correctly to p-text-fiel
   --p-internal-text-field-input-padding-end: 16px;
   display: grid;
   gap: 4px;
+  min-width: calc(2rem + 16px + 2px*2 + 0px);
 }
 .wrapper {
   display: grid;
@@ -5748,7 +5750,7 @@ exports[`manual test cases > should pass internal props correctly to p-text-fiel
   --p-internal-text-field-input-padding-end: calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 1);
   display: grid;
   gap: 4px;
-  min-width: calc(16px + 2px * 2 + calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 1) + 2rem);
+  min-width: calc(2rem + 16px + 2px*2 + calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 1));
 }
 .wrapper {
   display: grid;
@@ -6041,7 +6043,7 @@ exports[`manual test cases > should pass internal props correctly to p-text-fiel
   --p-internal-text-field-input-padding-end: calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 1);
   display: grid;
   gap: 4px;
-  min-width: calc(16px + 2px * 2 + calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 2) + 2rem);
+  min-width: calc(2rem + 16px + 2px*2 + calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 2));
 }
 .wrapper {
   display: grid;
@@ -11944,7 +11946,7 @@ input:disabled {
 .root {
   display: grid;
   gap: 4px;
-  min-width: calc(16px + 2px * 2 + calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 2) + 1rem);
+  min-width: calc(1rem + 16px + 2px * 2 + calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 2));
 }
 .wrapper {
   position: relative;
@@ -13484,7 +13486,7 @@ button:disabled {
 .root {
   display: grid;
   gap: 4px;
-  min-width: calc(16px + 2px * 2 + calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 1) + 1rem);
+  min-width: calc(1rem + 16px + 2px * 2 + calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 1));
 }
 .wrapper {
   position: relative;
@@ -13810,7 +13812,7 @@ exports[`should render dsr component for PSelectWrapper 1`] = `
 .root {
   display: grid;
   gap: 4px;
-  min-width: calc(16px + 2px * 2 + calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 1) + 1rem);
+  min-width: calc(1rem + 16px + 2px * 2 + calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 1));
 }
 .wrapper {
   display: grid;
@@ -16773,6 +16775,7 @@ exports[`should render dsr component for PTextFieldWrapper 1`] = `
   --p-internal-text-field-input-padding-end: 16px;
   display: grid;
   gap: 4px;
+  min-width: calc(2rem + 16px + 2px*2 + 0px);
 }
 .wrapper {
   display: grid;

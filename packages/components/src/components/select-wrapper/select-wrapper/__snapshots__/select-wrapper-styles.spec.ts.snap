@@ -52,7 +52,7 @@ exports[`getComponentCss() should return correct css for disabled: false, hasCus
 .root {
   display: grid;
   gap: 4px;
-  min-width: calc(16px + 2px * 2 + calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 1) + 1rem);
+  min-width: calc(1rem + 16px + 2px * 2 + calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 1));
 }
 .wrapper {
   display: grid;
@@ -230,7 +230,7 @@ exports[`getComponentCss() should return correct css for disabled: false, hasCus
 .root {
   display: grid;
   gap: 4px;
-  min-width: calc(16px + 2px * 2 + calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 1) + 1rem);
+  min-width: calc(1rem + 16px + 2px * 2 + calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 1));
 }
 .wrapper {
   display: grid;
@@ -344,7 +344,7 @@ exports[`getComponentCss() should return correct css for disabled: false, hasCus
 .root {
   display: grid;
   gap: 4px;
-  min-width: calc(16px + 2px * 2 + calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 1) + 1rem);
+  min-width: calc(1rem + 16px + 2px * 2 + calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 1));
 }
 .wrapper {
   display: grid;
@@ -458,7 +458,7 @@ exports[`getComponentCss() should return correct css for disabled: false, hasCus
 .root {
   display: grid;
   gap: 4px;
-  min-width: calc(16px + 2px * 2 + calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 1) + 1rem);
+  min-width: calc(1rem + 16px + 2px * 2 + calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 1));
 }
 .wrapper {
   display: grid;
@@ -572,7 +572,7 @@ exports[`getComponentCss() should return correct css for disabled: false, hasCus
 .root {
   display: grid;
   gap: 4px;
-  min-width: calc(16px + 2px * 2 + calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 1) + 1rem);
+  min-width: calc(1rem + 16px + 2px * 2 + calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 1));
 }
 .wrapper {
   display: grid;
@@ -686,7 +686,7 @@ exports[`getComponentCss() should return correct css for disabled: false, hasCus
 .root {
   display: grid;
   gap: 4px;
-  min-width: calc(16px + 2px * 2 + calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 1) + 1rem);
+  min-width: calc(1rem + 16px + 2px * 2 + calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 1));
 }
 .wrapper {
   display: grid;
@@ -799,7 +799,7 @@ exports[`getComponentCss() should return correct css for disabled: false, hasCus
 .root {
   display: grid;
   gap: 4px;
-  min-width: calc(16px + 2px * 2 + calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 1) + 1rem);
+  min-width: calc(1rem + 16px + 2px * 2 + calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 1));
 }
 .wrapper {
   display: grid;
@@ -913,7 +913,7 @@ exports[`getComponentCss() should return correct css for disabled: false, hasCus
 .root {
   display: grid;
   gap: 4px;
-  min-width: calc(16px + 2px * 2 + calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 1) + 1rem);
+  min-width: calc(1rem + 16px + 2px * 2 + calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 1));
 }
 .wrapper {
   display: grid;
@@ -1028,7 +1028,7 @@ exports[`getComponentCss() should return correct css for disabled: false, hasCus
 .root {
   display: grid;
   gap: 4px;
-  min-width: calc(16px + 2px * 2 + calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 1) + 1rem);
+  min-width: calc(1rem + 16px + 2px * 2 + calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 1));
 }
 .wrapper {
   display: grid;
@@ -1143,7 +1143,7 @@ exports[`getComponentCss() should return correct css for disabled: false, hasCus
 .root {
   display: grid;
   gap: 4px;
-  min-width: calc(16px + 2px * 2 + calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 1) + 1rem);
+  min-width: calc(1rem + 16px + 2px * 2 + calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 1));
 }
 .wrapper {
   display: grid;
@@ -1257,7 +1257,7 @@ exports[`getComponentCss() should return correct css for disabled: false, hasCus
 .root {
   display: grid;
   gap: 4px;
-  min-width: calc(16px + 2px * 2 + calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 1) + 1rem);
+  min-width: calc(1rem + 16px + 2px * 2 + calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 1));
 }
 .wrapper {
   display: grid;
@@ -1371,7 +1371,7 @@ exports[`getComponentCss() should return correct css for disabled: false, hasCus
 .root {
   display: grid;
   gap: 4px;
-  min-width: calc(16px + 2px * 2 + calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 1) + 1rem);
+  min-width: calc(1rem + 16px + 2px * 2 + calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 1));
 }
 .wrapper {
   display: grid;
@@ -1486,7 +1486,7 @@ exports[`getComponentCss() should return correct css for disabled: false, hasCus
 .root {
   display: grid;
   gap: 4px;
-  min-width: calc(16px + 2px * 2 + calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 1) + 1rem);
+  min-width: calc(1rem + 16px + 2px * 2 + calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 1));
 }
 .wrapper {
   display: grid;
@@ -1600,7 +1600,7 @@ exports[`getComponentCss() should return correct css for disabled: true, hasCust
 .root {
   display: grid;
   gap: 4px;
-  min-width: calc(16px + 2px * 2 + calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 1) + 1rem);
+  min-width: calc(1rem + 16px + 2px * 2 + calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 1));
 }
 .wrapper {
   display: grid;
