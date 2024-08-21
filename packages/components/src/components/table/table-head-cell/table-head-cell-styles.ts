@@ -8,6 +8,7 @@ import {
   getTransition,
   hostHiddenStyles,
   hoverMediaQuery,
+  preventFoucOfNestedElementsStyles,
 } from '../../../styles';
 import {
   borderRadiusSmall,
@@ -42,6 +43,7 @@ export const getComponentCss = (
           ...hostHiddenStyles,
         }),
       },
+      ...preventFoucOfNestedElementsStyles,
       ...(sortable
         ? {
             button: {

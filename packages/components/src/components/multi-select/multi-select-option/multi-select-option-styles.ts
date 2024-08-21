@@ -9,6 +9,7 @@ import {
   hostHiddenStyles,
   hoverMediaQuery,
   prefersColorSchemeDarkMediaQuery,
+  preventFoucOfNestedElementsStyles,
 } from '../../../styles';
 import { borderRadiusSmall, fontLineHeight, spacingStaticSmall } from '@porsche-design-system/styles';
 export const cssVariableMultiSelectPaddingInlineStart = '--p-internal-multi-select-option-padding-left';
@@ -31,6 +32,7 @@ export const getComponentCss = (theme: Theme): string => {
         scrollMarginTop: spacingStaticSmall, // Creates top margin when navigating with keyboard and list is scrolled automatically
         ...hostHiddenStyles,
       }),
+      ...preventFoucOfNestedElementsStyles,
     },
     option: {
       display: 'flex',

@@ -12,6 +12,7 @@ import {
   getHiddenTextJssStyle,
   getThemedColors,
   hostHiddenStyles,
+  preventFoucOfNestedElementsStyles,
 } from '../../styles';
 import {
   formButtonOrIconPadding,
@@ -61,6 +62,7 @@ export const getComponentCss = (
           ...hostHiddenStyles,
         }),
       },
+      ...preventFoucOfNestedElementsStyles,
       // ::slotted(input)
       ...addImportantToEachRule({
         ...getSlottedTextFieldTextareaSelectStyles('input', state, false, theme, {

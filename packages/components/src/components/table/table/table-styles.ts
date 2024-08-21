@@ -8,6 +8,7 @@ import {
   getSchemedHighContrastMediaQuery,
   prefersColorSchemeDarkMediaQuery,
   colorSchemeStyles,
+  preventFoucOfNestedElementsStyles,
 } from '../../../styles';
 
 export const cssVariableTableHoverColor = '--p-internal-table-hover-color';
@@ -37,6 +38,7 @@ export const getComponentCss = (theme: Theme): string => {
           }),
         }),
       },
+      ...preventFoucOfNestedElementsStyles,
       '::slotted(*)': addImportantToEachRule({
         [cssVariableTableHoverColor]: hoverColor,
         [cssVariableTableBorderColor]: contrastLowColor,

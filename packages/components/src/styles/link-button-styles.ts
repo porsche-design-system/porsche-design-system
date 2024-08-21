@@ -12,6 +12,7 @@ import {
   hostHiddenStyles,
   hoverMediaQuery,
   prefersColorSchemeDarkMediaQuery,
+  preventFoucOfNestedElementsStyles,
   SCALING_BASE_VALUE,
 } from './';
 import {
@@ -115,6 +116,7 @@ export const getLinkButtonStyles = (
           ...hostHiddenStyles,
         }),
       },
+      ...preventFoucOfNestedElementsStyles,
     },
     root: {
       display: 'flex',

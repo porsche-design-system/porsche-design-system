@@ -10,6 +10,7 @@ import {
   hostHiddenStyles,
   hoverMediaQuery,
   prefersColorSchemeDarkMediaQuery,
+  preventFoucOfNestedElementsStyles,
 } from '../../../styles';
 import {
   borderRadiusSmall,
@@ -58,6 +59,7 @@ export const getComponentCss = (
           ...hostHiddenStyles,
         }),
       },
+      ...preventFoucOfNestedElementsStyles,
       ...(isWithinForm &&
         addImportantToEachRule({
           [`::slotted([slot=${INTERNAL_MULTI_SELECT_SLOT}])`]: {

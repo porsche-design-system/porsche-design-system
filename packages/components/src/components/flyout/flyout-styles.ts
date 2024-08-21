@@ -1,5 +1,10 @@
 import { getCss, type Theme } from '../../utils';
-import { addImportantToEachRule, colorSchemeStyles, hostHiddenStyles } from '../../styles';
+import {
+  addImportantToEachRule,
+  colorSchemeStyles,
+  hostHiddenStyles,
+  preventFoucOfNestedElementsStyles,
+} from '../../styles';
 import { spacingFluidMedium, spacingFluidSmall } from '@porsche-design-system/styles';
 import { type FlyoutPosition } from './flyout-utils';
 import {
@@ -37,6 +42,7 @@ export const getComponentCss = (
           ...hostHiddenStyles,
         }),
       },
+      ...preventFoucOfNestedElementsStyles,
       slot: {
         display: 'block',
         '&:first-of-type': {

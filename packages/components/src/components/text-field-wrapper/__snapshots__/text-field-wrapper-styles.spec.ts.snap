@@ -8,6 +8,9 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 ::slotted(input) {
   display: block !important;
   width: 100% !important;
@@ -183,6 +186,9 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 ::slotted(input) {
   display: block !important;
   width: 100% !important;
@@ -302,6 +308,9 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 ::slotted(input) {
   display: block !important;
   width: 100% !important;
@@ -412,6 +421,9 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 }
 :host([hidden]) {
   display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
 }
 ::slotted(input) {
   display: block !important;
@@ -537,6 +549,9 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 ::slotted(input) {
   display: block !important;
   width: 100% !important;
@@ -660,6 +675,9 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 }
 :host([hidden]) {
   display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
 }
 ::slotted(input) {
   display: block !important;
@@ -785,6 +803,9 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 ::slotted(input) {
   display: block !important;
   width: 100% !important;
@@ -902,6 +923,9 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 }
 :host([hidden]) {
   display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
 }
 ::slotted(input) {
   display: block !important;
@@ -1027,6 +1051,9 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 ::slotted(input) {
   display: block !important;
   width: 100% !important;
@@ -1151,6 +1178,9 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 ::slotted(input) {
   display: block !important;
   width: 100% !important;
@@ -1269,6 +1299,9 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 ::slotted(input) {
   display: block !important;
   width: 100% !important;
@@ -1378,6 +1411,9 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 }
 :host([hidden]) {
   display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
 }
 ::slotted(input) {
   display: block !important;
@@ -1509,6 +1545,9 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 ::slotted(input) {
   display: block !important;
   width: 100% !important;
@@ -1639,6 +1678,9 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 ::slotted(input) {
   display: block !important;
   width: 100% !important;
@@ -1763,6 +1805,9 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 ::slotted(input) {
   display: block !important;
   width: 100% !important;
@@ -1885,6 +1930,9 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 }
 :host([hidden]) {
   display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
 }
 ::slotted(input) {
   display: block !important;
@@ -2016,6 +2064,9 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 ::slotted(input) {
   display: block !important;
   width: 100% !important;
@@ -2146,6 +2197,9 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 ::slotted(input) {
   display: block !important;
   width: 100% !important;
@@ -2268,6 +2322,9 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 }
 :host([hidden]) {
   display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
 }
 ::slotted(input) {
   display: block !important;
@@ -2392,6 +2449,9 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 ::slotted(input) {
   display: block !important;
   width: 100% !important;
@@ -2511,6 +2571,9 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 ::slotted(input) {
   display: block !important;
   width: 100% !important;
@@ -2621,6 +2684,9 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 }
 :host([hidden]) {
   display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
 }
 ::slotted(input) {
   display: block !important;
@@ -2746,6 +2812,9 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 ::slotted(input) {
   display: block !important;
   width: 100% !important;
@@ -2869,6 +2938,9 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 }
 :host([hidden]) {
   display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
 }
 ::slotted(input) {
   display: block !important;
@@ -2994,6 +3066,9 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 ::slotted(input) {
   display: block !important;
   width: 100% !important;
@@ -3112,6 +3187,9 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 ::slotted(input) {
   display: block !important;
   width: 100% !important;
@@ -3221,6 +3299,9 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
 }
 :host([hidden]) {
   display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
 }
 ::slotted(input) {
   display: block !important;
@@ -3345,6 +3426,9 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 ::slotted(input) {
   display: block !important;
   width: 100% !important;
@@ -3462,6 +3546,9 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 ::slotted(input) {
   display: block !important;
   width: 100% !important;
@@ -3570,6 +3657,9 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
 }
 :host([hidden]) {
   display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
 }
 ::slotted(input) {
   display: block !important;
@@ -3693,6 +3783,9 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 ::slotted(input) {
   display: block !important;
   width: 100% !important;
@@ -3811,6 +3904,9 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 ::slotted(input) {
   display: block !important;
   width: 100% !important;
@@ -3920,6 +4016,9 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
 }
 :host([hidden]) {
   display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
 }
 ::slotted(input) {
   display: block !important;
@@ -4044,6 +4143,9 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 ::slotted(input) {
   display: block !important;
   width: 100% !important;
@@ -4153,6 +4255,9 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
 }
 :host([hidden]) {
   display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
 }
 ::slotted(input) {
   display: block !important;

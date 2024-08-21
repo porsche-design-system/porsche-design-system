@@ -7,6 +7,9 @@ exports[`getComponentCss() should return correct css for theme: dark 1`] = `
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 .option {
   display: flex;
   justify-content: space-between;
@@ -69,6 +72,9 @@ exports[`getComponentCss() should return correct css for theme: light 1`] = `
 }
 :host([hidden]) {
   display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
 }
 .option {
   display: flex;

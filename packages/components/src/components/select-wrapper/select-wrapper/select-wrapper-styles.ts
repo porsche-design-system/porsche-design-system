@@ -1,6 +1,12 @@
 import { type BreakpointCustomizable, type Theme } from '../../../types';
 import { getCss } from '../../../utils';
-import { addImportantToEachRule, colorSchemeStyles, getTransition, hostHiddenStyles } from '../../../styles';
+import {
+  addImportantToEachRule,
+  colorSchemeStyles,
+  getTransition,
+  hostHiddenStyles,
+  preventFoucOfNestedElementsStyles,
+} from '../../../styles';
 import {
   formButtonOrIconPadding,
   formElementLayeredSafeZone,
@@ -30,6 +36,7 @@ export const getComponentCss = (
           ...hostHiddenStyles,
         }),
       },
+      ...preventFoucOfNestedElementsStyles,
       // ::slotted(select)
       ...addImportantToEachRule(
         getSlottedTextFieldTextareaSelectStyles('select', state, false, theme, {

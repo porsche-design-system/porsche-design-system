@@ -4,7 +4,12 @@ import { getCss } from '../../utils';
 import { formElementPaddingVertical, getSlottedTextFieldTextareaSelectStyles } from '../../styles/form-styles';
 import { getFunctionalComponentStateMessageStyles } from '../common/state-message/state-message-styles';
 import { type PinCodeLength, removeSlottedSelector, removeStyles } from './pin-code-utils';
-import { addImportantToEachRule, colorSchemeStyles, hostHiddenStyles } from '../../styles';
+import {
+  addImportantToEachRule,
+  colorSchemeStyles,
+  hostHiddenStyles,
+  preventFoucOfNestedElementsStyles,
+} from '../../styles';
 import {
   borderWidthBase,
   fontLineHeight,
@@ -71,6 +76,7 @@ export const getComponentCss = (
           ...hostHiddenStyles,
         }),
       },
+      ...preventFoucOfNestedElementsStyles,
       // input
       ...inputStyles,
       ...(isWithinForm &&

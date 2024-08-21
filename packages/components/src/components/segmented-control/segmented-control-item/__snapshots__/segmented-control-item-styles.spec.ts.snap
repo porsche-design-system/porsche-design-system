@@ -8,6 +8,9 @@ exports[`getComponentCss() should return correct css for isDisabled: false, isSe
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 button {
   position: relative;
   display: block;
@@ -59,6 +62,9 @@ exports[`getComponentCss() should return correct css for isDisabled: false, isSe
 }
 :host([hidden]) {
   display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
 }
 button {
   position: relative;
@@ -112,6 +118,9 @@ exports[`getComponentCss() should return correct css for isDisabled: false, isSe
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 button {
   position: relative;
   display: block;
@@ -164,6 +173,9 @@ exports[`getComponentCss() should return correct css for isDisabled: false, isSe
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 button {
   position: relative;
   display: block;
@@ -215,6 +227,9 @@ exports[`getComponentCss() should return correct css for isDisabled: false, isSe
 }
 :host([hidden]) {
   display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
 }
 button {
   position: relative;
@@ -271,6 +286,9 @@ exports[`getComponentCss() should return correct css for isDisabled: false, isSe
 }
 :host([hidden]) {
   display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
 }
 button {
   position: relative;
@@ -329,6 +347,9 @@ exports[`getComponentCss() should return correct css for isDisabled: false, isSe
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 button {
   position: relative;
   display: block;
@@ -375,6 +396,9 @@ exports[`getComponentCss() should return correct css for isDisabled: false, isSe
 }
 :host([hidden]) {
   display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
 }
 button {
   position: relative;
@@ -424,6 +448,9 @@ exports[`getComponentCss() should return correct css for isDisabled: true, isSel
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 button {
   position: relative;
   display: block;
@@ -470,6 +497,9 @@ exports[`getComponentCss() should return correct css for isDisabled: true, isSel
 }
 :host([hidden]) {
   display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
 }
 button {
   position: relative;
@@ -519,6 +549,9 @@ exports[`getComponentCss() should return correct css for isDisabled: true, isSel
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 button {
   position: relative;
   display: block;
@@ -565,6 +598,9 @@ exports[`getComponentCss() should return correct css for isDisabled: true, isSel
 }
 :host([hidden]) {
   display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
 }
 button {
   position: relative;

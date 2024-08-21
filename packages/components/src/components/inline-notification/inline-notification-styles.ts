@@ -9,6 +9,7 @@ import {
   getThemedColors,
   hostHiddenStyles,
   prefersColorSchemeDarkMediaQuery,
+  preventFoucOfNestedElementsStyles,
 } from '../../styles';
 import {
   getNotificationContentJssStyle,
@@ -48,6 +49,7 @@ export const getComponentCss = (
           ...hostHiddenStyles,
         }),
       },
+      ...preventFoucOfNestedElementsStyles,
       [`::slotted(:is(${HEADING_TAGS.join()}))`]: addImportantToEachRule(getTypographySlottedJssStyle()),
       'slot[name="heading"]': getHeadingJssStyle(theme),
     },

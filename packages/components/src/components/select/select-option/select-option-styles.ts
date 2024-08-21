@@ -9,6 +9,7 @@ import {
   hostHiddenStyles,
   hoverMediaQuery,
   prefersColorSchemeDarkMediaQuery,
+  preventFoucOfNestedElementsStyles,
 } from '../../../styles';
 import {
   borderRadiusSmall,
@@ -23,17 +24,21 @@ export const cssVariableSelectPaddingInlineStart = '--p-internal-select-option-p
 // TODO: Enforce order of slotted text, img
 export const getComponentCss = (theme: Theme): string => {
   return getCss({
-    '@global': addImportantToEachRule({
-      ':host': {
-        scrollMargin: '6px', // Aligns option when list is scrolled by navigating with keyboard
-        ...hostHiddenStyles,
-      },
-      '::slotted(img)': {
-        height: fontLineHeight,
-        borderRadius: borderRadiusSmall,
-        width: 'auto',
-      },
-    }),
+    '@global': {
+      ...addImportantToEachRule({
+        ':host': {
+          // TODO: display is missing
+          scrollMargin: '6px', // Aligns option when list is scrolled by navigating with keyboard
+          ...hostHiddenStyles,
+        },
+        '::slotted(img)': {
+          height: fontLineHeight,
+          borderRadius: borderRadiusSmall,
+          width: 'auto',
+        },
+      }),
+      ...preventFoucOfNestedElementsStyles,
+    },
     ...getOptionStyles(theme),
     icon: {
       marginInlineStart: 'auto',

@@ -9,6 +9,7 @@ import {
   hostHiddenStyles,
   hoverMediaQuery,
   prefersColorSchemeDarkMediaQuery,
+  preventFoucOfNestedElementsStyles,
 } from '../../styles';
 import {
   borderRadiusLarge,
@@ -70,6 +71,7 @@ export const getComponentCss = (
           ...hostHiddenStyles,
         }),
       },
+      ...preventFoucOfNestedElementsStyles,
       [`slot[name="${headerSlot}"]`]: {
         display: 'block', // to ensure correct like button positioning when slot is unused
       },

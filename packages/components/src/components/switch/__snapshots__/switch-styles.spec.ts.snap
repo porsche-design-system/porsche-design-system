@@ -13,6 +13,9 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"end","hi
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 button {
   display: flex;
   align-items: center;
@@ -108,6 +111,9 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"end","hi
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 button {
   display: flex;
   align-items: center;
@@ -191,6 +197,9 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"end","hi
 }
 :host([hidden]) {
   display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
 }
 button {
   display: flex;
@@ -286,6 +295,9 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"end","hi
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 button {
   display: flex;
   align-items: center;
@@ -373,6 +385,9 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"end","hi
 }
 :host([hidden]) {
   display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
 }
 button {
   display: flex;
@@ -462,6 +477,9 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"end","hi
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 button {
   display: flex;
   align-items: center;
@@ -549,6 +567,9 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"end","hi
 }
 :host([hidden]) {
   display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
 }
 button {
   display: flex;
@@ -645,6 +666,9 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"left","h
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 button {
   display: flex;
   align-items: center;
@@ -739,6 +763,9 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"right","
 }
 :host([hidden]) {
   display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
 }
 button {
   display: flex;
@@ -835,6 +862,9 @@ exports[`getComponentCss() should return correct css for {"alignLabel":"start","
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 button {
   display: flex;
   align-items: center;
@@ -928,6 +958,9 @@ exports[`getComponentCss() should return correct css for {"alignLabel":{"base":"
 }
 :host([hidden]) {
   display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
 }
 button {
   display: flex;

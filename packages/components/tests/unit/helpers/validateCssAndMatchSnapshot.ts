@@ -15,6 +15,10 @@ export const validateCssAndMatchSnapshot = (css: string) => {
   validateVisibilityStyle(cssObject);
   validateSlottedStyles(cssObject, componentTagName);
   validateHoverMediaQuery(cssObject);
+  validatePreventFoucOfNestedElementsStyle(
+    cssObject,
+    componentMeta && Array.isArray(componentMeta.nestedComponents) && componentMeta.nestedComponents.length > 0
+  );
 
   // Validations for components only
   if (componentMeta && !componentMeta.isInternal) {
@@ -23,12 +27,16 @@ export const validateCssAndMatchSnapshot = (css: string) => {
     validateFormComponentHostDisplayStyle(cssObject, componentTagName);
   }
 
-  // Validation for components with nested components only
-  if (componentMeta && Array.isArray(componentMeta.nestedComponents) && componentMeta.nestedComponents.length > 0) {
-    expect(cssObject[':not(:defined,[data-ssr])']).toEqual({ visibility: 'hidden' });
-  }
-
   expect(css).toMatchSnapshot();
+};
+
+const validatePreventFoucOfNestedElementsStyle = (cssObject: object, isComponentWithNestedComponents: boolean) => {
+  const selector = ':not(:defined,[data-ssr])';
+  if (isComponentWithNestedComponents) {
+    expect(cssObject[selector]).toEqual({ visibility: 'hidden' });
+  } else {
+    expect(cssObject[selector]).toBe(undefined);
+  }
 };
 
 // We shouldn't use visibility: visible since it cannot be overridden, use inherit instead
