@@ -28,25 +28,24 @@ import { getComponentCss } from './textarea-styles';
 const propTypes: PropTypes<typeof Textarea> = {
   label: AllowedTypes.string,
   description: AllowedTypes.string,
+  name: AllowedTypes.string,
+  value: AllowedTypes.string,
   state: AllowedTypes.oneOf<TextareaState>(FORM_STATES),
   message: AllowedTypes.string,
   hideLabel: AllowedTypes.breakpoint('boolean'),
   showCounter: AllowedTypes.boolean,
-  theme: AllowedTypes.oneOf<Theme>(THEMES),
   placeholder: AllowedTypes.string,
   required: AllowedTypes.boolean,
   disabled: AllowedTypes.boolean,
-  autoFocus: AllowedTypes.boolean,
-  readOnly: AllowedTypes.boolean,
-  name: AllowedTypes.string,
-  value: AllowedTypes.string,
-  form: AllowedTypes.string,
   maxLength: AllowedTypes.number,
   minLength: AllowedTypes.number,
+  form: AllowedTypes.string,
   rows: AllowedTypes.number,
-  wrap: AllowedTypes.oneOf<TextareaWrap>(TEXTAREA_WRAPS),
-  spellCheck: AllowedTypes.boolean,
   autoComplete: AllowedTypes.oneOf<TextareaAutoComplete>(AUTO_COMPLETE),
+  spellCheck: AllowedTypes.boolean,
+  wrap: AllowedTypes.oneOf<TextareaWrap>(TEXTAREA_WRAPS),
+  readOnly: AllowedTypes.boolean,
+  theme: AllowedTypes.oneOf<Theme>(THEMES),
 };
 
 /**
@@ -68,6 +67,14 @@ export class Textarea {
   /** The description text. */
   @Prop() public description?: string = '';
 
+  /** The name of the textarea. */
+  @Prop({ reflect: true }) public name: string;
+  // The "name" property is reflected as an attribute to ensure compatibility with native form submission.
+  // In the React wrapper, all props are synced as properties on the element ref, so reflecting "name" as an attribute ensures it is properly handled in the form submission process.
+
+  /** The textarea value. */
+  @Prop({ mutable: true }) public value?: string = '';
+
   /** The validation state. */
   @Prop() public state?: TextareaState = 'none';
 
@@ -80,9 +87,6 @@ export class Textarea {
   /** Show or hide max character count. */
   @Prop() public showCounter?: boolean = true;
 
-  /** Adapts the color depending on the theme. */
-  @Prop() public theme?: Theme = 'light';
-
   /** The placeholder text. */
   @Prop() public placeholder?: string = '';
 
@@ -91,14 +95,6 @@ export class Textarea {
 
   /** Marks the textarea as disabled. */
   @Prop() public disabled?: boolean = false;
-
-  /** Enables automatic focus when the component is rendered. */
-  @Prop() public autoFocus?: boolean = false;
-
-  /** The name of the textarea. */
-  @Prop({ reflect: true }) public name: string;
-  // The "name" property is reflected as an attribute to ensure compatibility with native form submission.
-  // In the React wrapper, all props are synced as properties on the element ref, so reflecting "name" as an attribute ensures it is properly handled in the form submission process.
 
   /** The max length of the textarea. */
   @Prop() public maxLength?: number;
@@ -124,8 +120,8 @@ export class Textarea {
   /** Specifies whether the textarea should be read-only. */
   @Prop() public readOnly?: boolean = false;
 
-  /** The textarea value. */
-  @Prop({ mutable: true }) public value?: string = '';
+  /** Adapts the color depending on the theme. */
+  @Prop() public theme?: Theme = 'light';
 
   /** Emitted when the textarea loses focus after its value was changed. */
   @Event({ bubbles: true }) public change: EventEmitter<TextareaChangeEventDetail>;
@@ -229,7 +225,6 @@ export class Textarea {
             minlength={this.minLength}
             rows={this.rows}
             readonly={this.readOnly}
-            autofocus={this.autoFocus}
             spellcheck={this.spellCheck}
             autocomplete={this.autoComplete}
             wrap={this.wrap}
