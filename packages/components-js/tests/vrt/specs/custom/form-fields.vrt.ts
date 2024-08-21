@@ -35,6 +35,7 @@ const scenario = async (page: Page, theme: Theme): Promise<void> => {
     'p-multi-select': '<p-multi-select-option>Some value</p-multi-select-option>', // readonly is not supported
     'p-text-field-wrapper': '<input type="text" value="Some value" />',
     'p-pin-code': '', // readonly is not supported
+    'p-textarea': '',
     'p-textarea-wrapper': '<textarea>Some value</textarea>',
   };
 
@@ -44,29 +45,34 @@ const scenario = async (page: Page, theme: Theme): Promise<void> => {
         const childDisabled = child.replace(/((?: \/)?>)/, ' disabled$1');
         const childReadonly = child.replace(/((?: \/)?>)/, ' readonly$1');
         const disabledAttribute =
-          tag === 'p-pin-code' || tag === 'p-multi-select' || tag === 'p-select' ? ' disabled="true"' : '';
+          tag === 'p-pin-code' || tag === 'p-multi-select' || tag === 'p-textarea' || tag === 'p-select'
+            ? ' disabled="true"'
+            : '';
+
+        const readOnlyAttribute = tag === 'p-textarea' ? ' read-only="true"' : '';
+        const valueAttribute = tag === 'p-textarea' ? ' value="Some value"' : '';
 
         return `
 <div>
-  <${tag} label="Default">
+  <${tag} label="Default" ${valueAttribute}>
     ${child}
   </${tag}>
-  <${tag} label="Readonly">
+  <${tag} label="Readonly" ${valueAttribute} ${readOnlyAttribute}>
     ${childReadonly}
   </${tag}>
-  <${tag} label="Disabled"${disabledAttribute}>
+  <${tag} label="Disabled" ${valueAttribute} ${disabledAttribute}>
     ${childDisabled}
   </${tag}>
-  <${tag} label="Error" state="error" message="Error">
+  <${tag} label="Error" state="error" message="Error" ${valueAttribute}>
     ${child}
   </${tag}>
-  <${tag} label="Disabled" state="error" message="Error"${disabledAttribute}>
+  <${tag} label="Disabled" state="error" message="Error" ${valueAttribute} ${disabledAttribute}>
     ${childDisabled}
   </${tag}>
-  <${tag} label="Success" state="success" message="Success">
+  <${tag} label="Success" state="success" message="Success" ${valueAttribute}>
     ${child}
   </${tag}>
-  <${tag} label="Disabled" state="success" message="Success"${disabledAttribute}>
+  <${tag} label="Disabled" state="success" message="Success" ${valueAttribute} ${disabledAttribute}>
     ${childDisabled}
   </${tag}>
 </div>`.replace(/(<p-select-wrapper)/g, '$1 native'); // native select is easier to force states on

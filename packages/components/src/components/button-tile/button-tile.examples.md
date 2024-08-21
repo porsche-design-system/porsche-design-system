@@ -17,7 +17,7 @@ a more detailed description of the button and its action.
 
 The `label` property is used to describe the button.
 
-#### Supported named slots:
+### Supported named slots:
 
 - `slot="header"`: Renders a header section above the content area.
 

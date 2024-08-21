@@ -221,6 +221,16 @@ export const routes: RouteType[] = [
     component: fromExamples.TabsBarExampleBasic,
   },
   {
+    path: '/textarea-example',
+    name: 'Textarea Example',
+    component: fromExamples.TextareaExample,
+  },
+  {
+    path: '/textarea-example-controlled',
+    name: 'Textarea Example Controlled',
+    component: fromExamples.TextareaExampleControlled,
+  },
+  {
     path: '/text-field-wrapper-example-imask',
     name: 'Text Field Wrapper Example IMask',
     component: fromExamples.TextFieldWrapperExampleIMask,

@@ -17,8 +17,7 @@ To apply the polyfill, simply import it in your **setupTest.{js|ts}** file.
 want to test with a `PorscheDesignSystemProvider` in order to avoid exceptions.
 
 <Notification heading="Attention" heading-tag="h2" state="warning">
-    The <code>Modal</code> and <code>Flyout</code> components use the <strong>Dialog API</strong>, which isn't currently supported by jsdom (<a href="https://github.com/jsdom/jsdom/issues/3294" target="_blank">see issue</a>). 
-    Since we cannot easily provide a polyfill for this, they have to be mocked or polyfilled manually. Either by using the available polyfill package <a href="https://npmjs.com/package/dialog-polyfill" target="_blank">https://npmjs.com/package/dialog-polyfill</a> or by mocking the API.
+    Certain modern browser APIs are not supported in the jsdom environment. See <a href="developing/react/testing#unsupported-ap-is">Unsupported APIs</a> for more information.
 </Notification>
 
 ### Setup file
@@ -245,3 +244,30 @@ it('should work for PAccordion', async () => {
 
 We also provide test examples in our
 [sample integration project](https://github.com/porsche-design-system/sample-integration-react/tree/master/src/tests).
+
+## Unsupported APIs
+
+Certain modern browser APIs are not supported in the jsdom environment.
+
+### Dialog API
+
+Affected Components: `p-modal`, `p-flyout`
+
+Due to the lack of native support in jsdom, the Dialog API needs to be either manually polyfilled or mocked. You can use
+the available [dialog-polyfill package](https://npmjs.com/package/dialog-polyfill) or create a custom mock
+implementation.
+
+### Element Internals API
+
+Affected Components: `p-textarea`
+
+Current polyfills for the Element Internals API are incompatible with Stencil. Therefore, the API must be mocked within
+the test setup.
+
+```
+HTMLElement.prototype.attachInternals = () =>
+    ({
+      setFormValue: () => {},
+      setValidity: () => {},
+    }) as any;
+```

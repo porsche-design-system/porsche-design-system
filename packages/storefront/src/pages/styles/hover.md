@@ -21,7 +21,7 @@ indicate the possibility of interaction.
 
 The styles are available as `JavaScript` and `SCSS` version. Look at the example above to see how the styles work.
 
-#### JS
+### JS
 
 JavaScript styles can be imported by
 `import { … } from '@porsche-design-system/components-{js|angular|react|vue}/styles';`.
@@ -30,7 +30,7 @@ JavaScript styles can be imported by
 
 ---
 
-#### SCSS
+### SCSS
 
 SCSS styles can be imported by `@use '@porsche-design-system/components-{js|angular|react|vue}/styles' as *;`
 

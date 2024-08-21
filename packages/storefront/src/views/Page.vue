@@ -1,8 +1,10 @@
 <template>
   <div>
-    <p-tabs-bar v-if="hasTabs" :theme="storefrontTheme" :active-tab-index="activeTabIndex" size="medium">
-      <router-link v-for="(tab, index) in tabs" :key="index" :to="createTabLink(tab)">{{ tab }}</router-link>
-    </p-tabs-bar>
+    <nav aria-label="Content">
+      <p-tabs-bar v-if="hasTabs" :theme="storefrontTheme" :active-tab-index="activeTabIndex" size="medium">
+        <router-link v-for="(tab, index) in tabs" :key="index" :to="createTabLink(tab)">{{ tab }}</router-link>
+      </p-tabs-bar>
+    </nav>
 
     <div v-if="isLoading">
       <div :class="['skeleton', 'skeleton--h1', getSkeletonTheme()]"></div>

@@ -484,7 +484,7 @@ const generateComponentMeta = (): void => {
             eventTypeFileContent.match(new RegExp(`type ${eventTypeAlias || eventType} = ({[\\s\\S]+?});\\n`)) || [];
 
           // Standard lib types don't need to be resolved
-          if (['TransitionEvent'].includes(eventTypeAlias)) {
+          if (['TransitionEvent', 'InputEvent', 'Event'].includes(eventTypeAlias)) {
             typeDetail = eventTypeAlias;
           } else if (eventTypeDetail) {
             typeDetail = eventTypeDetail;
@@ -548,7 +548,7 @@ const generateComponentMeta = (): void => {
 
     // observed attributes
     let observedAttributes: ComponentMeta['observedAttributes'] = [];
-    const [, rawObservedAttributes] = /observeAttributes\([a-zA-Z.]+, (\[.+])/.exec(source) || [];
+    const [, rawObservedAttributes] = /observeAttributes\(\s*[a-zA-Z.]+\s*,\s*(\[[\s\S]*?])/.exec(source) || [];
     if (rawObservedAttributes) {
       observedAttributes = eval(rawObservedAttributes);
     }

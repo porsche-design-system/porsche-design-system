@@ -29,6 +29,8 @@ export { default as TableExampleBasic } from './TableExampleBasic.vue';
 export { default as TableExampleSorting } from './TableExampleSorting.vue';
 export { default as TabsBarExampleAccessibility } from './TabsBarExampleAccessibility.vue';
 export { default as TabsBarExampleBasic } from './TabsBarExampleBasic.vue';
+export { default as TextareaExample } from './TextareaExample.vue';
+export { default as TextareaExampleControlled } from './TextareaExampleControlled.vue';
 export { default as TextFieldWrapperExampleIMask } from './TextFieldWrapperExampleIMask.vue';
 export { default as TextFieldWrapperExampleSearch } from './TextFieldWrapperExampleSearch.vue';
 export { default as ToastExample } from './ToastExample.vue';

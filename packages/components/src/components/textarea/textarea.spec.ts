@@ -1,0 +1,159 @@
+import { Textarea } from './textarea';
+import * as applyConstructableStylesheetStylesUtils from '../../utils/applyConstructableStylesheetStyle';
+import { getSlottedAnchorStyles } from '../../styles';
+import { expect } from '@jest/globals';
+
+jest.mock('../../utils/dom');
+
+class MockElementInternals {
+  setValidity = jest.fn();
+  setFormValue = jest.fn();
+}
+
+let mockEmit: jest.SpyInstance;
+
+const initComponent = (): Textarea => {
+  const component = new Textarea();
+  component.host = document.createElement('p-textarea');
+  component.host.attachShadow({ mode: 'open' });
+  const textarea = document.createElement('textarea');
+  const counterElement = document.createElement('span');
+  component.host.shadowRoot.appendChild(textarea);
+  component.host.shadowRoot.appendChild(counterElement);
+  component['textAreaElement'] = textarea;
+  component['counterElement'] = counterElement;
+  component['internals'] = new MockElementInternals() as unknown as ElementInternals;
+
+  mockEmit = jest.fn();
+
+  // Mock the emit methods
+  component.change = { emit: mockEmit } as any;
+  component.blur = { emit: mockEmit } as any;
+  component.input = { emit: mockEmit } as any;
+  return component;
+};
+
+describe('connectedCallback', () => {
+  it('should call applyConstructableStylesheetStyles() with correct parameters', () => {
+    const applyConstructableStylesheetStylesSpy = jest.spyOn(
+      applyConstructableStylesheetStylesUtils,
+      'applyConstructableStylesheetStyles'
+    );
+    const component = initComponent();
+
+    component.connectedCallback();
+    expect(applyConstructableStylesheetStylesSpy).toHaveBeenCalledWith(component.host, getSlottedAnchorStyles);
+  });
+});
+describe('componentWillLoad', () => {
+  it('should call updateCounterVisibility()', () => {
+    const component = initComponent();
+    const updateCounterVisibilitySpy = jest.spyOn(component, 'updateCounterVisibility' as any);
+
+    component.componentWillLoad();
+    expect(updateCounterVisibilitySpy).toHaveBeenCalledTimes(1);
+  });
+});
+describe('formResetCallback', () => {
+  const component = initComponent();
+  component.value = 'test';
+  const setValiditySpy = jest.spyOn(component['internals'], 'setValidity' as any);
+  const setFormValueSpy = jest.spyOn(component['internals'], 'setFormValue' as any);
+  component.formResetCallback();
+  expect(setValiditySpy).toHaveBeenCalledWith({});
+  expect(setFormValueSpy).toHaveBeenCalledWith('');
+  expect(component.value).toBe('');
+});
+describe('componentDidLoad', () => {
+  const component = initComponent();
+  component.value = 'test';
+  const setFormValueSpy = jest.spyOn(component['internals'], 'setFormValue' as any);
+  component.componentDidLoad();
+  expect(setFormValueSpy).toHaveBeenCalledWith(component.value);
+});
+describe('onChange', () => {
+  const component = initComponent();
+  const event = {
+    stopPropagation: jest.fn(),
+    stopImmediatePropagation: jest.fn(),
+  } as unknown as Event;
+
+  component['onChange'](event);
+
+  expect(mockEmit).toHaveBeenCalledWith(event);
+});
+describe('onBlur', () => {
+  it('should stop propagation and emit blur event on onBlur', () => {
+    const component = initComponent();
+    const event = {
+      stopPropagation: jest.fn(),
+      stopImmediatePropagation: jest.fn(),
+    } as unknown as Event;
+
+    component['onBlur'](event);
+
+    expect(event.stopPropagation).toHaveBeenCalled();
+    expect(event.stopImmediatePropagation).toHaveBeenCalled();
+    expect(mockEmit).toHaveBeenCalledWith(event);
+  });
+});
+describe('onInput', () => {
+  it('should stop propagation and emit input event on onInput', () => {
+    const component = initComponent();
+    const testValue = 'test';
+    const event = {
+      stopPropagation: jest.fn(),
+      stopImmediatePropagation: jest.fn(),
+      target: {
+        value: testValue,
+      },
+    } as unknown as InputEvent;
+    component['hasCounter'] = true;
+
+    component['onInput'](event);
+
+    expect(event.stopPropagation).toHaveBeenCalled();
+    expect(event.stopImmediatePropagation).toHaveBeenCalled();
+    expect(mockEmit).toHaveBeenCalledWith(event);
+    expect(component.value).toBe(testValue);
+  });
+});
+describe('componentDidRender', () => {
+  it('should call setCounterAriaTextDebounced() when hasCounter is true', () => {
+    const component = initComponent();
+    const setCounterAriaTextDebouncedSpy = jest.spyOn(component as any, 'setCounterAriaTextDebounced');
+    component['hasCounter'] = true;
+    component.componentDidRender();
+    expect(setCounterAriaTextDebouncedSpy).toHaveBeenCalledTimes(1);
+  });
+
+  it('should not call setCounterAriaTextDebounced() when hasCounter is false', () => {
+    const component = initComponent();
+    const setCounterAriaTextDebouncedSpy = jest.spyOn(component as any, 'setCounterAriaTextDebounced');
+    component['hasCounter'] = false;
+    component.componentDidRender();
+    expect(setCounterAriaTextDebouncedSpy).not.toHaveBeenCalledTimes(1);
+  });
+});
+describe('updateCounterVisibility', () => {
+  it('should update counter visibility based on maxLength and showCounter', () => {
+    const component = initComponent();
+    component.maxLength = 100;
+    component.showCounter = true;
+
+    component['updateCounterVisibility']();
+
+    expect(component['hasCounter']).toBe(true);
+  });
+});
+describe('setCounterAriaText', () => {
+  it('should set correct counter aria text on setCounterAriaText', () => {
+    const component = initComponent();
+    component.maxLength = 100;
+    component.value = 'test';
+
+    component['setCounterAriaText']();
+
+    expect(component['counterElement'].innerText).toBe('You have 96 out of 100 characters left');
+  });
+});

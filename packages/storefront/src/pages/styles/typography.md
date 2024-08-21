@@ -14,7 +14,7 @@ Fluid typography scales up or down based on the size of the viewing device or br
 font size. This is in contrast to static font sizes, which are set to a specific pixel value and do not scale according
 to the viewport.
 
-##### Do:
+### Do:
 
 - Use fluid font styles as default.
 - Section headings should be center-aligned.
@@ -28,7 +28,7 @@ to the viewport.
 - Pair a headline style with a text style one or two steps below (e.g. headline-large with text-medium).
 - Use text-xx-small only for disclaimers/consumption.
 
-##### Don't:
+### Don't:
 
 - Don't use static font styles.
 - Don't use thin or any italic style of the Porsche Next.
@@ -37,7 +37,7 @@ to the viewport.
 
 The styles are available as `JavaScript` and `SCSS` version. Look at the example above to see how the styles work.
 
-#### JS
+### JS
 
 JavaScript styles can be imported by
 `import { … } from '@porsche-design-system/components-{js|angular|react|vue}/styles';`.
@@ -59,7 +59,7 @@ JavaScript styles can be imported by
 
 ---
 
-#### SCSS
+### SCSS
 
 SCSS styles can be imported by `@use '@porsche-design-system/components-{js|angular|react|vue}/styles' as *;`
 

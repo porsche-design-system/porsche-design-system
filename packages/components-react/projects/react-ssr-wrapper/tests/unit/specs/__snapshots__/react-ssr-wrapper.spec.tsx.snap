@@ -16889,6 +16889,125 @@ exports[`should render dsr component for PTextListItem 1`] = `
 </p-text-list-item>
 `;
 
+exports[`should render dsr component for PTextarea 1`] = `
+<p-textarea
+  data-ssr=""
+>
+  <template
+    shadowroot="open"
+    shadowrootdelegatesfocus="true"
+    shadowrootmode="open"
+  >
+    <style>
+      :host {
+  display: block;
+  color-scheme: light dark !important;
+}
+:host([hidden]) {
+  display: none !important;
+}
+textarea {
+  resize: vertical;
+  display: block;
+  width: 100%;
+  height: auto;
+  margin: 0;
+  outline: 0;
+  -webkit-appearance: none;
+  appearance: none;
+  box-sizing: border-box;
+  border: 2px solid #6B6D70;
+  border-radius: 4px;
+  background: transparent;
+  text-indent: 0;
+  color: #010205;
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  grid-area: 1/1;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  padding: 12px 16px;
+}
+textarea:disabled {
+  cursor: not-allowed;
+  color: #949598;
+  border-color: #949598;
+  -webkit-text-fill-color: #949598;
+}
+textarea[readonly] {
+  border-color: #D8D8DB;
+  background: #D8D8DB;
+}
+
+.root {
+  display: grid;
+  gap: 4px;
+}
+.wrapper {
+  display: grid;
+}
+.label {
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  cursor: pointer;
+  justify-self: flex-start;
+  color: #010205;
+  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  position: static;
+  width: auto;
+  height: auto;
+  padding: 0;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
+}
+.label:empty {
+  display: none;
+}
+.label+.label {
+  cursor: unset;
+  margin-top: -4px;
+  font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
+  color: #535457;
+}
+.required {
+  user-select: none;
+}
+.message {
+  display: flex;
+  gap: 4px;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+}
+    </style>
+    <div
+      class="root"
+    >
+      <label
+        class="label"
+        for="textarea"
+        id="label"
+      />
+      <div
+        class="wrapper"
+      >
+        <textarea
+          aria-describedby="description message"
+          autocomplete=""
+          id="textarea"
+          placeholder=""
+          readonly=""
+          rows="7"
+          wrap="soft"
+        />
+      </div>
+    </div>
+  </template>
+</p-textarea>
+`;
+
 exports[`should render dsr component for PTextareaWrapper 1`] = `
 <p-textarea-wrapper
   data-ssr=""
