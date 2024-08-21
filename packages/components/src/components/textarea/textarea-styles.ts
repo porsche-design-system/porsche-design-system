@@ -75,12 +75,36 @@ export const getComponentCss = (
           color: primaryColorDark,
         }),
         gridArea: '1/1',
-        // TODO: move into getSlottedTextFieldTextareaSelectStyles()
         font: textSmallStyle.font, // to override line-height
-        // TODO: move into getSlottedTextFieldTextareaSelectStyles()
         padding: hasCounter
           ? `12px ${formElementPaddingHorizontal} ${spacingStaticLarge}`
           : `12px ${formElementPaddingHorizontal}`,
+        // TODO: getFocusJssStyle() can't be re-used because focus style differs for form elements
+        '&:focus': {
+          borderColor: primaryColor,
+          ...prefersColorSchemeDarkMediaQuery(theme, {
+            borderColor: primaryColorDark,
+          }),
+        },
+        '&:disabled': {
+          cursor: 'not-allowed',
+          color: disabledColor,
+          borderColor: disabledColor,
+          WebkitTextFillColor: disabledColor,
+          ...prefersColorSchemeDarkMediaQuery(theme, {
+            color: disabledColorDark,
+            borderColor: disabledColorDark,
+            WebkitTextFillColor: disabledColorDark,
+          }),
+        },
+        '&[readonly]': {
+          borderColor: contrastLowColor,
+          background: contrastLowColor,
+          ...prefersColorSchemeDarkMediaQuery(theme, {
+            borderColor: contrastLowColorDark,
+            background: contrastLowColorDark,
+          }),
+        },
       },
       ...(hoverMediaQuery({
         // with the media query the selector has higher priority and overrides disabled styles
@@ -92,32 +116,6 @@ export const getComponentCss = (
             }),
           },
       }) as Styles),
-      // TODO: getFocusJssStyle() can't be re-used because focus style differs for form elements
-      ['textarea:focus']: {
-        borderColor: primaryColor,
-        ...prefersColorSchemeDarkMediaQuery(theme, {
-          borderColor: primaryColorDark,
-        }),
-      },
-      ['textarea:disabled']: {
-        cursor: 'not-allowed',
-        color: disabledColor,
-        borderColor: disabledColor,
-        WebkitTextFillColor: disabledColor,
-        ...prefersColorSchemeDarkMediaQuery(theme, {
-          color: disabledColorDark,
-          borderColor: disabledColorDark,
-          WebkitTextFillColor: disabledColorDark,
-        }),
-      },
-      ['textarea[readonly]']: {
-        borderColor: contrastLowColor,
-        background: contrastLowColor,
-        ...prefersColorSchemeDarkMediaQuery(theme, {
-          borderColor: contrastLowColorDark,
-          background: contrastLowColorDark,
-        }),
-      },
     },
     root: {
       display: 'grid',
