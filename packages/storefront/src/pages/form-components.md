@@ -137,10 +137,6 @@ export default class Code extends Vue {
     width: 100%;
   }
 
-  :deep(p-textarea) {
-    --p-textarea-min-height: auto; 
-  }
-
   :deep(textarea) {
     min-height: initial;
   }
