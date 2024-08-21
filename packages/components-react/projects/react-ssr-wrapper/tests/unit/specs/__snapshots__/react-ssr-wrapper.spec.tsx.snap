@@ -16891,7 +16891,7 @@ exports[`should render dsr component for PTextListItem 1`] = `
 
 exports[`should render dsr component for PTextarea 1`] = `
 <p-textarea
-  class="ssr"
+  data-ssr=""
 >
   <template
     shadowroot="open"
@@ -16907,8 +16907,7 @@ exports[`should render dsr component for PTextarea 1`] = `
   display: none !important;
 }
 textarea {
-  min-height: var(--p-textarea-min-height, 200px);
-  resize: var(--p-textarea-resize, vertical);
+  resize: vertical;
   display: block;
   width: 100%;
   height: auto;
@@ -17000,6 +16999,7 @@ textarea[readonly] {
           id="textarea"
           placeholder=""
           readonly=""
+          rows="7"
           wrap="soft"
         />
       </div>
