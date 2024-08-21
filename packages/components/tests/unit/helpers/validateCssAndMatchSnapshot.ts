@@ -30,7 +30,7 @@ export const validateCssAndMatchSnapshot = (css: string) => {
   expect(css).toMatchSnapshot();
 };
 
-const validatePreventFoucOfNestedElementsStyle = (cssObject: object, isComponentWithNestedComponents: boolean) => {
+const validatePreventFoucOfNestedElementsStyle = (cssObject: any, isComponentWithNestedComponents: boolean) => {
   const selector = ':not(:defined,[data-ssr])';
   if (isComponentWithNestedComponents) {
     expect(cssObject[selector]).toEqual({ visibility: 'hidden' });
@@ -77,8 +77,7 @@ const validateFormComponentHostDisplayStyle = (cssObject: any, tagName: TagName)
 };
 
 // Expect all slotted styles to be !important since they shouldn't be overridable
-// @ts-expect-error
-const validateSlottedStyles = (cssObject: object, tagName: TagName) => {
+const validateSlottedStyles = (cssObject: any, tagName: TagName) => {
   recursivelyApplyForKeyIncludes(cssObject, '::slotted', (_, value) => {
     Object.entries(value).forEach(([cssProp, cssValue]) => {
       // exceptions for tagName and css property are defined here
