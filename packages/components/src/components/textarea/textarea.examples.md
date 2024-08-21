@@ -94,24 +94,6 @@ allowed.
 
 <Playground :markup="slots" :config="config"></Playground>
 
-## Custom styling
-
-The `p-textarea` component allows for customization through CSS Custom Properties (also known as CSS Variables). These
-variables enable you to override certain styles of the native textarea element within the Shadow DOM, such as adjusting
-the `min-height` and `resize` properties.
-
-```scss
-// default CSS variables
---p-textarea-min-height: 200px;
---p-textarea-resize: vertical;
-
-// overwrite with CSS variables
-p-textarea {
-  --p-textarea-min-height: 100px;
-  --p-textarea-resize: horizontal;
-}
-```
-
 <script lang="ts">
 import Vue from 'vue';  
 import {getTextareaCodeSamples} from "shared/src";
