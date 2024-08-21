@@ -23,14 +23,14 @@ import {
 } from '@porsche-design-system/styles';
 import { getFunctionalComponentLabelStyles } from '../common/label/label-styles';
 import { getThemedFormStateColors } from '../../styles/form-state-color-styles';
-
-const cssVariableResize = '--p-textarea-resize';
+import type { TextareaResize } from './textarea-utils';
 
 export const getComponentCss = (
   isDisabled: boolean,
   hideLabel: BreakpointCustomizable<boolean>,
   state: FormState,
   hasCounter: boolean,
+  resize: TextareaResize,
   theme: Theme
 ): string => {
   const { primaryColor, contrastLowColor, contrastMediumColor, disabledColor } = getThemedColors(theme);
@@ -55,7 +55,7 @@ export const getComponentCss = (
         }),
       },
       textarea: {
-        resize: `var(${cssVariableResize}, vertical)`,
+        resize,
         display: 'block',
         width: '100%',
         height: 'auto',

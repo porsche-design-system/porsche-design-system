@@ -63,7 +63,7 @@ import { TagDismissibleAriaAttribute, TagDismissibleColor } from "./components/t
 import { TextAlign, TextColor, TextTag, TextWeight } from "./components/text/text-utils";
 import { TextFieldWrapperActionIcon, TextFieldWrapperState, TextFieldWrapperUnitPosition } from "./components/text-field-wrapper/text-field-wrapper-utils";
 import { TextListListType, TextListOrderType, TextListType } from "./components/text-list/text-list/text-list-utils";
-import { TextareaAutoComplete, TextareaBlurEventDetail, TextareaChangeEventDetail, TextareaInputEventDetail, TextareaState, TextareaWrap } from "./components/textarea/textarea-utils";
+import { TextareaAutoComplete, TextareaBlurEventDetail, TextareaChangeEventDetail, TextareaInputEventDetail, TextareaResize, TextareaState, TextareaWrap } from "./components/textarea/textarea-utils";
 import { TextareaWrapperState } from "./components/textarea-wrapper/textarea-wrapper-utils";
 import { ToastMessage } from "./components/toast/toast/toast-manager";
 import { ToastState } from "./components/toast/toast/toast-utils";
@@ -126,7 +126,7 @@ export { TagDismissibleAriaAttribute, TagDismissibleColor } from "./components/t
 export { TextAlign, TextColor, TextTag, TextWeight } from "./components/text/text-utils";
 export { TextFieldWrapperActionIcon, TextFieldWrapperState, TextFieldWrapperUnitPosition } from "./components/text-field-wrapper/text-field-wrapper-utils";
 export { TextListListType, TextListOrderType, TextListType } from "./components/text-list/text-list/text-list-utils";
-export { TextareaAutoComplete, TextareaBlurEventDetail, TextareaChangeEventDetail, TextareaInputEventDetail, TextareaState, TextareaWrap } from "./components/textarea/textarea-utils";
+export { TextareaAutoComplete, TextareaBlurEventDetail, TextareaChangeEventDetail, TextareaInputEventDetail, TextareaResize, TextareaState, TextareaWrap } from "./components/textarea/textarea-utils";
 export { TextareaWrapperState } from "./components/textarea-wrapper/textarea-wrapper-utils";
 export { ToastMessage } from "./components/toast/toast/toast-manager";
 export { ToastState } from "./components/toast/toast/toast-utils";
@@ -2088,6 +2088,10 @@ export namespace Components {
           * Marks the textarea as required.
          */
         "required"?: boolean;
+        /**
+          * Controls whether the textarea is resizable and in which direction.
+         */
+        "resize"?: TextareaResize;
         /**
           * The amount of rows of the textarea.
          */
@@ -5266,6 +5270,10 @@ declare namespace LocalJSX {
           * Marks the textarea as required.
          */
         "required"?: boolean;
+        /**
+          * Controls whether the textarea is resizable and in which direction.
+         */
+        "resize"?: TextareaResize;
         /**
           * The amount of rows of the textarea.
          */

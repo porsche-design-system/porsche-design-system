@@ -12,11 +12,13 @@ import {
 } from '../../utils';
 import {
   AUTO_COMPLETE,
+  TEXTAREA_RESIZE,
   TEXTAREA_WRAPS,
   type TextareaAutoComplete,
   type TextareaBlurEventDetail,
   type TextareaChangeEventDetail,
   type TextareaInputEventDetail,
+  type TextareaResize,
   type TextareaState,
   type TextareaWrap,
 } from './textarea-utils';
@@ -44,6 +46,7 @@ const propTypes: PropTypes<typeof Textarea> = {
   autoComplete: AllowedTypes.oneOf<TextareaAutoComplete>(AUTO_COMPLETE),
   spellCheck: AllowedTypes.boolean,
   wrap: AllowedTypes.oneOf<TextareaWrap>(TEXTAREA_WRAPS),
+  resize: AllowedTypes.oneOf<TextareaResize>(TEXTAREA_RESIZE),
   readOnly: AllowedTypes.boolean,
   theme: AllowedTypes.oneOf<Theme>(THEMES),
 };
@@ -116,6 +119,9 @@ export class Textarea {
 
   /** Handles wrapping behaviour of elements. */
   @Prop() public wrap?: TextareaWrap = 'soft';
+
+  /** Controls whether the textarea is resizable and in which direction. */
+  @Prop() public resize?: TextareaResize = 'vertical';
 
   /** Specifies whether the textarea should be read-only. */
   @Prop() public readOnly?: boolean = false;
@@ -192,6 +198,7 @@ export class Textarea {
       this.hideLabel,
       this.state,
       this.hasCounter,
+      this.resize,
       this.theme
     );
 
