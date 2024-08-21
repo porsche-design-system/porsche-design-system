@@ -102,10 +102,8 @@ export const getComponentCss = (
           : formElementPaddingHorizontal,
       display: 'grid',
       gap: spacingStaticXSmall,
-      // min width is needed for showing at least 1 character in very narrow containers
-      ...((hasUnitOrVisibleCounter || isSearch || isPassword || isCalendarOrTimeWithCustomIndicator) && {
-        minWidth: `calc(${formElementPaddingHorizontal} + ${borderWidthBase} * 2 + ${getCalculatedFormElementPaddingHorizontal(isSearch ? 2 : 1)} + 2rem)`,
-      }),
+      // min width is needed for showing at least 1 character in very narrow containers. The "2rem" value is the minimum safe zone to show at least 1 character plus the ellipsis dots.
+      minWidth: `calc(2rem + ${formElementPaddingHorizontal} + ${borderWidthBase}*2 + ${hasUnitOrVisibleCounter || isSearch || isPassword || isCalendarOrTimeWithCustomIndicator ? getCalculatedFormElementPaddingHorizontal(isSearch ? 2 : 1) : '0px'})`,
     },
     wrapper: {
       display: 'grid',
