@@ -132,6 +132,7 @@ import { TabsBarComponent } from './generated/tabs-bar.component';
 import { TagComponent } from './generated/tag.component';
 import { TagDismissibleComponent } from './generated/tag-dismissible.component';
 import { TextComponent } from './generated/text.component';
+import { TextareaComponent } from './generated/textarea.component';
 import { TextareaWrapperComponent } from './generated/textarea-wrapper.component';
 import { TextFieldWrapperComponent } from './generated/text-field-wrapper.component';
 import { TextListComponent } from './generated/text-list.component';
@@ -251,6 +252,7 @@ export const generatedPages = [
   TagComponent,
   TagDismissibleComponent,
   TextComponent,
+  TextareaComponent,
   TextareaWrapperComponent,
   TextFieldWrapperComponent,
   TextListComponent,
@@ -774,6 +776,11 @@ export const generatedRoutes: ExtendedRoute[] = [
     name: 'Text List',
     path: 'text-list',
     component: TextListComponent,
+  },
+  {
+    name: 'Textarea',
+    path: 'textarea',
+    component: TextareaComponent,
   },
   {
     name: 'Textarea Wrapper',

@@ -2,6 +2,12 @@ import { tagNameMarkup } from '../helper';
 import { vi } from 'vitest';
 import { componentsReady } from '@porsche-design-system/components-js';
 
+HTMLElement.prototype.attachInternals = () =>
+  ({
+    setFormValue: () => {},
+    setValidity: () => {},
+  }) as any;
+
 it.each(Object.entries(tagNameMarkup))('should work without console errors for %s', async (tagName, markup) => {
   const spy = vi.spyOn(global.console, 'error');
 

@@ -607,6 +607,16 @@ $&`
           .replace(/type LinkTileProductAspectRatio,/, '')
           .replace(/type LinkTileProductLikeEventDetail,/, '')
           .replace(/type LinkTileProductTarget,/, '');
+      } else if (tagName === 'p-textarea') {
+        newFileContent = newFileContent
+          .replace(/@AttachInternals\(\)/, '')
+          .replace(/maxlength/, 'maxLength')
+          .replace(/minlength/, 'minLength')
+          .replace(/readonly/, 'readOnly')
+          .replace(/autofocus/, 'autoFocus')
+          .replace(/spellcheck/, 'spellCheck')
+          .replace(/autocomplete/, 'autoComplete')
+          .replace(/this\.props\.value = '';/, '');
       }
 
       return newFileContent;

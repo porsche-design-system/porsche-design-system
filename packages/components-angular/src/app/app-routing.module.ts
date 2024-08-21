@@ -261,6 +261,16 @@ export const routes: ExtendedRoute[] = [
     component: fromExamples.TabsBarExampleBasicComponent,
   },
   {
+    name: 'Textarea Example',
+    path: 'textarea-example',
+    component: fromExamples.TextareaExampleComponent,
+  },
+  {
+    name: 'Textarea Example Controlled',
+    path: 'textarea-controlled-example',
+    component: fromExamples.TextareaExampleControlledComponent,
+  },
+  {
     name: 'Text Field Wrapper Example IMask',
     path: 'text-field-wrapper-example-imask',
     component: fromExamples.TextFieldWrapperExampleImaskComponent,

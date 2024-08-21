@@ -62,8 +62,14 @@ it.each(Object.keys(fromComponents))('should render dsr component for %s', (comp
   // but this does not work since our wrappers internally set children on the server side.
   // together with `...rest` which would contain dangerouslySetInnerHTML, we would have both
   // and this is not allowed and throws an exception
-  const props = hasSlot ? { children: renderChildren() } : null;
+  let props: any = hasSlot ? { children: renderChildren() } : null;
 
+  if (tagName === 'p-textarea') {
+    props = {
+      ...props,
+      readOnly: true,
+    };
+  }
   const consoleSpy = vi.spyOn(console, 'error');
   const { container } = render(
     <PorscheDesignSystemProvider>
@@ -71,6 +77,7 @@ it.each(Object.keys(fromComponents))('should render dsr component for %s', (comp
     </PorscheDesignSystemProvider>
   );
 
+  // eslint-disable-next-line testing-library/no-node-access
   expect(container.firstElementChild).toMatchSnapshot();
   expect(consoleSpy).not.toHaveBeenCalled(); // detect react jsx errors/warnings
 });

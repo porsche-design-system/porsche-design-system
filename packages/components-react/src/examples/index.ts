@@ -30,6 +30,8 @@ export * from './TableExampleBasic';
 export * from './TableExampleSorting';
 export * from './TabsBarExampleAccessibility';
 export * from './TabsBarExampleBasic';
+export * from './TextareaExample';
+export * from './TextareaExampleControlled';
 export * from './TextFieldWrapperExampleIMask';
 export * from './TextFieldWrapperExampleSearch';
 export * from './ToastExample';
