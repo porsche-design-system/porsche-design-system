@@ -2913,7 +2913,7 @@ guidelines.
 
 ## General changes / improvements:
 
-#### All components, icons, fonts, styles and marque of the Porsche Design System are loaded versioned and chunked from a central CDN
+### All components, icons, fonts, styles and marque of the Porsche Design System are loaded versioned and chunked from a central CDN
 
 This way all web based digital Porsche products share and use the cached and versioned assets regardless of the JS
 framework used to improve loading performance across the Porsche group. Only a tiny (1.4kb sized) Porsche Design System
@@ -2922,7 +2922,7 @@ central CDN ([read more](https://designsystem.porsche.com/v3/must-know/performan
 you will need an **Internet connection** to render the components in a browser (possibly relevant for development stage
 or intranet applications).
 
-#### Enabling Micro Frontend Architecture
+### Enabling Micro Frontend Architecture
 
 In case of a micro-frontend architecture, multiple instances and versions of the Porsche Design System can be combined
 in a final application by configurable prefixing technique of the Porsche Design System components during runtime.
@@ -2931,7 +2931,7 @@ Please refer to our framework specific guidelines
 [Angular](https://designsystem.porsche.com/v2/start-coding/angular) and
 [React](https://designsystem.porsche.com/v2/start-coding/react).
 
-#### Prevent Flash of Unstyled Content (FOUC) and Flash of Unstyled Text (FOUT)
+### Prevent Flash of Unstyled Content (FOUC) and Flash of Unstyled Text (FOUT)
 
 To prevent FOUC/FOUT, the Porsche Design System offers various partials as part of the
 `@porsche-design-system/components-{js|angular|react}` package to ensure all necessary Porsche Design System fonts and
@@ -2950,14 +2950,14 @@ Have a look at our [FOUC/FOUT guidelines](https://designsystem.porsche.com/v3/mu
 + <%= require('@porsche-design-system/components-{js|angular|react}/partials').getFontLinks({ weights: ['regular', 'semi-bold'] }) %>
 ```
 
-#### Added support for China CDN
+### Added support for China CDN
 
 Our CDN is configured to forward requests to Chinese CDN automatically when necessary. So you're good to go without any
 configuration or multiple region specific builds of your application. However, if you are aiming for the maximum
 possible performance in China, you can configure which CDN the Porsche Design System must use. Please follow our
 [CDN guidelines](https://designsystem.porsche.com/v3/must-know/performance/cdn) for more information.
 
-#### New/optimized components
+### New/optimized components
 
 - **Tabs**
 - **Tabs Bar**
@@ -2974,35 +2974,35 @@ possible performance in China, you can configure which CDN the Porsche Design Sy
 - Checkbox
 - Radio Button
 
-#### Improved TypeScript support for Angular and React
+### Improved TypeScript support for Angular and React
 
 To ensure the best possible typing support, we have refactored our Angular and React wrappers which integrate the native
 web components of the Porsche Design System.
 
-#### componentsReady() works reliable
+### componentsReady() works reliable
 
 Because the Porsche Design System components get loaded async at the time they are needed, it might be relevant within
 your application or test automation to know when those have been initialized. Therefore, we provide in all three
 `@porsche-design-system/components-{js|angular|react}')` packages a reliable helper function `componentsReady()`.
 [Read more about it](https://designsystem.porsche.com/v3/developing/components-ready).
 
-#### Removed "blur on focus"
+### Removed "blur on focus"
 
 Now focus styling is only applied when you navigate through keyboard and ignored by mouse interaction for browsers
 supporting `:focus-visible` otherwise it will fallback to `:focus` CSS implementation.
 
-#### Changed focus styling for a better compromise between accessibility and visual appearance
+### Changed focus styling for a better compromise between accessibility and visual appearance
 
 Color and outline of general focus styling has changed to `currentColor` for light/dark theme with an outline of 1px
 width/offset. If you have custom components build with the usage of our `@porsche-design-system/utilities` package then
 update it to the latest version.
 
-#### Improved geometry of Porsche Next font
+### Improved geometry of Porsche Next font
 
 For better alignment and readability we've changed the geometry of the Porsche Next font which results in a visual
 change of font size and spacing.
 
-#### Dropped support for IE11 and EdgeHTML according to Porsche's official browser strategy 2021
+### Dropped support for IE11 and EdgeHTML according to Porsche's official browser strategy 2021
 
 If you still need to support these browsers, you have to stick to `v1.5.x`. We offer a Browser Notification package
 `@porsche-design-system/browser-notification` to alert users that these browsers are no longer supported. It supports a
@@ -3010,7 +3010,7 @@ blocking layer (to be used with Porsche Design System `v2.x`), or a dismissible 
 System `v1.x`). Please refer to our
 [Browser compatibility guidelines](https://designsystem.porsche.com/v3/must-know/browser-compatibility).
 
-#### Changed default type of Button and Button Pure
+### Changed default type of Button and Button Pure
 
 To be in sync with native `<button>` behavior we've changed the default `type` of **Button** and **Button Pure**
 component. Those components will render a button within their Shadow DOM as `<button type="submit">` ( previously
@@ -3021,7 +3021,7 @@ component. Those components will render a button within their Shadow DOM as `<bu
 - `button`: The button has no default behavior, and does nothing when pressed by default. It can have client-side
   scripts listen to the element's events, which are triggered when the events occur.
 
-#### Changed support for wrapped links around Link, Link Pure and Link Social component
+### Changed support for wrapped links around Link, Link Pure and Link Social component
 
 Due to the support for setting links (`<a href="#">`) in our **Link**, **Link Pure** and **Link Social** components as
 child, we've removed support for styling the anchor tag (`<a>`) when it surrounds the component. So we recommend
@@ -3038,7 +3038,7 @@ changing the position of the `<a>` tag from wrapping the component to a direct s
 + <p-link-social><a href="#">Some label</a></p-link-social>
 ```
 
-#### Automatic \* asterisk symbol to form field labels
+### Automatic \* asterisk symbol to form field labels
 
 We added an automatic generated _ asterisk symbol to form field labels which have the required attribute. This might
 lead to a doubled _ symbol if you set one by yourself.
@@ -3063,7 +3063,7 @@ lead to a doubled _ symbol if you set one by yourself.
 + <p-select-wrapper label="Some label"><select name="some-name" required><option>A</option></select></p-select-wrapper>
 ```
 
-#### Shadow DOM
+### Shadow DOM
 
 `Flex`, `Flex Item`, `Grid` and `Grid Item` now use Shadow DOM, thus you are not able to overwrite styles defined by
 these components any longer.
@@ -3072,7 +3072,7 @@ these components any longer.
 
 ## Angular
 
-#### Integration of Angular components
+### Integration of Angular components
 
 In the past it was possible to provide a token called `PREVENT_WEB_COMPONENTS_REGISTRATION` which prevented the
 registration of the Porsche Design System components and loading of polyfills. Due to the fact that we no longer provide
@@ -3083,7 +3083,7 @@ registration of the Porsche Design System components and loading of polyfills. D
 
 ## React
 
-#### Integration of React components
+### Integration of React components
 
 In the past `@porsche-design-system/components-react` components have initialized the **Porsche Design System Loader**
 automatically as soon as a component was imported. With `v2.x` you have to import the `PorscheDesignSystemProvider` once
@@ -3120,7 +3120,7 @@ information please [read further](https://designsystem.porsche.com/v2/start-codi
 
 ## Vanilla JS
 
-#### Integration of Vanilla JS components
+### Integration of Vanilla JS components
 
 With `v1.x` of the Porsche Design System you've had to copy all needed JS files of
 `@porsche-design-system/components-js` into your target directory and include the ES5 and ESM loader snippet. Now you

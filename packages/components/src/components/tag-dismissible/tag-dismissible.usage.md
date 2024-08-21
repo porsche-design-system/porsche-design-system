@@ -1,5 +1,9 @@
 <ComponentHeading name="Tag Dismissible"></ComponentHeading>
 
+<TableOfContents></TableOfContents>
+
+## Usage
+
 Allows users to quickly refine the result of data they want to be presented on the page.
 
 The following segment provides instructions for designers and developers regarding the appropriate utilization of this
