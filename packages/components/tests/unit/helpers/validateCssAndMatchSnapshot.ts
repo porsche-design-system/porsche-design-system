@@ -23,6 +23,11 @@ export const validateCssAndMatchSnapshot = (css: string) => {
     validateFormComponentHostDisplayStyle(cssObject, componentTagName);
   }
 
+  // Validation for components with nested components only
+  if (componentMeta && Array.isArray(componentMeta.nestedComponents) && componentMeta.nestedComponents.length > 0) {
+    expect(cssObject[':not(:defined,[data-ssr])']).toEqual({ visibility: 'hidden' });
+  }
+
   expect(css).toMatchSnapshot();
 };
 
