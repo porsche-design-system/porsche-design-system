@@ -1,5 +1,6 @@
 import {
   getBrowserSupportFallbackScript,
+  getFontFaceStyles,
   getInitialStyles,
   getLoaderScript,
   getMetaTagsAndIconLinks,
@@ -28,6 +29,9 @@ export const initialStyles = ${JSON.stringify(initialStyles)};
 
   const indexHtmlFilePath = path.resolve(__dirname, '../public/index.html');
   const indexHtmlContent = fs.readFileSync(indexHtmlFilePath, 'utf8');
+
+  // TODO: 'unsafe-inline' is ignored if either a hash or nonce value is present in the source list.
+  // const styleHashes = [getFontFaceStyles({ format: 'sha256' })].join(' ');
 
   const scriptHashes = [
     getLoaderScript({ format: 'sha256' }),

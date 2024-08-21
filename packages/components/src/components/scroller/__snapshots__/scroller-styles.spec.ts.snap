@@ -9,36 +9,6 @@ exports[`getComponentCss() should return correct css for gradientColor: backgrou
 :host([hidden]) {
   display: none !important;
 }
-button {
-  display: flex;
-  pointer-events: auto;
-  align-items: center;
-  justify-content: center;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  height: calc(calc(6px + 2.125ex) + 4px);
-  width: calc(calc(6px + 2.125ex) + 4px);
-  border: 0;
-  outline: 0;
-  cursor: pointer;
-  background: #212225;
-  border-radius: 4px;
-  -webkit-backdrop-filter: blur(32px);
-  backdrop-filter: blur(32px);
-  visibility: hidden;
-}
-@media(hover:hover) {
-  button {
-    transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  }
-  button:hover {
-    -webkit-backdrop-filter: blur(32px);
-    backdrop-filter: blur(32px);
-    background: rgba(148, 149, 152, .18);
-  }
-}
-
 .root {
   position: relative;
   display: grid;
@@ -94,7 +64,6 @@ button {
   direction: ltr;
   width: calc(calc(6px + 2.125ex) + 24px);
   padding: 4px 0;
-  pointer-events: none;
   display: flex;
   align-items: center;
   left: -1px;
@@ -102,7 +71,7 @@ button {
   background: linear-gradient(to right, rgba(14,14,18,1) 20%,rgba(14,14,18,0.6) 48%,rgba(14,14,18,0.3) 68%,rgba(14,14,18,0) 100%);
   visibility: inherit;
 }
-.action-prev button {
+.action-prev .action-button {
   margin-left: 8px;
 }
 .action-next {
@@ -112,7 +81,6 @@ button {
   direction: ltr;
   width: calc(calc(6px + 2.125ex) + 24px);
   padding: 4px 0;
-  pointer-events: none;
   display: flex;
   align-items: center;
   right: -1px;
@@ -120,17 +88,20 @@ button {
   background: linear-gradient(to left, rgba(14,14,18,1) 20%,rgba(14,14,18,0.6) 48%,rgba(14,14,18,0.3) 68%,rgba(14,14,18,0) 100%);
   visibility: inherit;
 }
-.action-next button {
+.action-next .action-button {
   margin-right: 8px;
+}
+.action-button {
+  --p-internal-button-scaling: 0;
 }
 .icon:dir(rtl) {
   transform: scaleX(-1);
 }
 @media(hover:hover) {
-  .action-prev button {
+  .action-prev .action-button {
     visibility: inherit;
   }
-  .action-next button {
+  .action-next .action-button {
     visibility: inherit;
   }
 }
@@ -146,37 +117,6 @@ exports[`getComponentCss() should return correct css for gradientColor: backgrou
 :host([hidden]) {
   display: none !important;
 }
-button {
-  display: flex;
-  pointer-events: auto;
-  align-items: center;
-  justify-content: center;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  height: calc(calc(6px + 2.125ex) + 4px);
-  width: calc(calc(6px + 2.125ex) + 4px);
-  border: 0;
-  outline: 0;
-  cursor: pointer;
-  background: #FFF;
-  border-radius: 4px;
-  -webkit-backdrop-filter: blur(32px);
-  backdrop-filter: blur(32px);
-  visibility: hidden;
-  box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.16);
-}
-@media(hover:hover) {
-  button {
-    transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  }
-  button:hover {
-    -webkit-backdrop-filter: blur(32px);
-    backdrop-filter: blur(32px);
-    background: rgba(148, 149, 152, .18);
-  }
-}
-
 .root {
   position: relative;
   display: grid;
@@ -232,7 +172,6 @@ button {
   direction: ltr;
   width: calc(calc(6px + 2.125ex) + 24px);
   padding: 4px 0;
-  pointer-events: none;
   display: flex;
   align-items: center;
   left: -1px;
@@ -240,7 +179,7 @@ button {
   background: linear-gradient(to right, rgba(255,255,255,1) 20%,rgba(255,255,255,0.6) 48%,rgba(255,255,255,0.3) 68%,rgba(255,255,255,0) 100%);
   visibility: inherit;
 }
-.action-prev button {
+.action-prev .action-button {
   margin-left: 8px;
 }
 .action-next {
@@ -250,7 +189,6 @@ button {
   direction: ltr;
   width: calc(calc(6px + 2.125ex) + 24px);
   padding: 4px 0;
-  pointer-events: none;
   display: flex;
   align-items: center;
   right: -1px;
@@ -258,17 +196,21 @@ button {
   background: linear-gradient(to left, rgba(255,255,255,1) 20%,rgba(255,255,255,0.6) 48%,rgba(255,255,255,0.3) 68%,rgba(255,255,255,0) 100%);
   visibility: inherit;
 }
-.action-next button {
+.action-next .action-button {
   margin-right: 8px;
+}
+.action-button {
+  --p-internal-button-scaling: 0;
+  box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.16);
 }
 .icon:dir(rtl) {
   transform: scaleX(-1);
 }
 @media(hover:hover) {
-  .action-prev button {
+  .action-prev .action-button {
     visibility: inherit;
   }
-  .action-next button {
+  .action-next .action-button {
     visibility: inherit;
   }
 }
@@ -284,37 +226,6 @@ exports[`getComponentCss() should return correct css for gradientColor: backgrou
 :host([hidden]) {
   display: none !important;
 }
-button {
-  display: flex;
-  pointer-events: auto;
-  align-items: center;
-  justify-content: center;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  height: calc(calc(6px + 2.125ex) + 4px);
-  width: calc(calc(6px + 2.125ex) + 4px);
-  border: 0;
-  outline: 0;
-  cursor: pointer;
-  background: #FFF;
-  border-radius: 4px;
-  -webkit-backdrop-filter: blur(32px);
-  backdrop-filter: blur(32px);
-  visibility: hidden;
-  box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.16);
-}
-@media(hover:hover) {
-  button {
-    transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  }
-  button:hover {
-    -webkit-backdrop-filter: blur(32px);
-    backdrop-filter: blur(32px);
-    background: rgba(148, 149, 152, .18);
-  }
-}
-
 .root {
   position: relative;
   display: grid;
@@ -365,7 +276,6 @@ button {
   direction: ltr;
   width: calc(calc(6px + 2.125ex) + 24px);
   padding: 4px 0;
-  pointer-events: none;
   display: flex;
   align-items: flex-start;
   left: -1px;
@@ -373,7 +283,7 @@ button {
   background: linear-gradient(to right, rgba(255,255,255,1) 20%,rgba(255,255,255,0.6) 48%,rgba(255,255,255,0.3) 68%,rgba(255,255,255,0) 100%);
   visibility: inherit;
 }
-.action-prev button {
+.action-prev .action-button {
   margin-left: 8px;
 }
 .action-next {
@@ -383,7 +293,6 @@ button {
   direction: ltr;
   width: calc(calc(6px + 2.125ex) + 24px);
   padding: 4px 0;
-  pointer-events: none;
   display: flex;
   align-items: flex-start;
   right: -1px;
@@ -391,17 +300,21 @@ button {
   background: linear-gradient(to left, rgba(255,255,255,1) 20%,rgba(255,255,255,0.6) 48%,rgba(255,255,255,0.3) 68%,rgba(255,255,255,0) 100%);
   visibility: inherit;
 }
-.action-next button {
+.action-next .action-button {
   margin-right: 8px;
+}
+.action-button {
+  --p-internal-button-scaling: 0;
+  box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.16);
 }
 .icon:dir(rtl) {
   transform: scaleX(-1);
 }
 @media(hover:hover) {
-  .action-prev button {
+  .action-prev .action-button {
     visibility: inherit;
   }
-  .action-next button {
+  .action-next .action-button {
     visibility: inherit;
   }
 }
@@ -417,36 +330,6 @@ exports[`getComponentCss() should return correct css for gradientColor: backgrou
 :host([hidden]) {
   display: none !important;
 }
-button {
-  display: flex;
-  pointer-events: auto;
-  align-items: center;
-  justify-content: center;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  height: calc(calc(6px + 2.125ex) + 4px);
-  width: calc(calc(6px + 2.125ex) + 4px);
-  border: 0;
-  outline: 0;
-  cursor: pointer;
-  background: #212225;
-  border-radius: 4px;
-  -webkit-backdrop-filter: blur(32px);
-  backdrop-filter: blur(32px);
-  visibility: hidden;
-}
-@media(hover:hover) {
-  button {
-    transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  }
-  button:hover {
-    -webkit-backdrop-filter: blur(32px);
-    backdrop-filter: blur(32px);
-    background: rgba(148, 149, 152, .18);
-  }
-}
-
 .root {
   position: relative;
   display: grid;
@@ -497,7 +380,6 @@ button {
   direction: ltr;
   width: calc(calc(6px + 2.125ex) + 24px);
   padding: 4px 0;
-  pointer-events: none;
   display: flex;
   align-items: flex-start;
   left: -1px;
@@ -505,7 +387,7 @@ button {
   background: linear-gradient(to right, rgba(14,14,18,1) 20%,rgba(14,14,18,0.6) 48%,rgba(14,14,18,0.3) 68%,rgba(14,14,18,0) 100%);
   visibility: hidden;
 }
-.action-prev button {
+.action-prev .action-button {
   margin-left: 8px;
 }
 .action-next {
@@ -515,7 +397,6 @@ button {
   direction: ltr;
   width: calc(calc(6px + 2.125ex) + 24px);
   padding: 4px 0;
-  pointer-events: none;
   display: flex;
   align-items: flex-start;
   right: -1px;
@@ -523,17 +404,20 @@ button {
   background: linear-gradient(to left, rgba(14,14,18,1) 20%,rgba(14,14,18,0.6) 48%,rgba(14,14,18,0.3) 68%,rgba(14,14,18,0) 100%);
   visibility: inherit;
 }
-.action-next button {
+.action-next .action-button {
   margin-right: 8px;
+}
+.action-button {
+  --p-internal-button-scaling: 0;
 }
 .icon:dir(rtl) {
   transform: scaleX(-1);
 }
 @media(hover:hover) {
-  .action-prev button {
+  .action-prev .action-button {
     visibility: hidden;
   }
-  .action-next button {
+  .action-next .action-button {
     visibility: inherit;
   }
 }
@@ -549,37 +433,6 @@ exports[`getComponentCss() should return correct css for gradientColor: backgrou
 :host([hidden]) {
   display: none !important;
 }
-button {
-  display: flex;
-  pointer-events: auto;
-  align-items: center;
-  justify-content: center;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  height: calc(calc(6px + 2.125ex) + 4px);
-  width: calc(calc(6px + 2.125ex) + 4px);
-  border: 0;
-  outline: 0;
-  cursor: pointer;
-  background: #FFF;
-  border-radius: 4px;
-  -webkit-backdrop-filter: blur(32px);
-  backdrop-filter: blur(32px);
-  visibility: hidden;
-  box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.16);
-}
-@media(hover:hover) {
-  button {
-    transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  }
-  button:hover {
-    -webkit-backdrop-filter: blur(32px);
-    backdrop-filter: blur(32px);
-    background: rgba(148, 149, 152, .18);
-  }
-}
-
 .root {
   position: relative;
   display: grid;
@@ -630,7 +483,6 @@ button {
   direction: ltr;
   width: calc(calc(6px + 2.125ex) + 24px);
   padding: 4px 0;
-  pointer-events: none;
   display: flex;
   align-items: flex-start;
   left: -1px;
@@ -638,7 +490,7 @@ button {
   background: linear-gradient(to right, rgba(255,255,255,1) 20%,rgba(255,255,255,0.6) 48%,rgba(255,255,255,0.3) 68%,rgba(255,255,255,0) 100%);
   visibility: inherit;
 }
-.action-prev button {
+.action-prev .action-button {
   margin-left: 8px;
 }
 .action-next {
@@ -648,7 +500,6 @@ button {
   direction: ltr;
   width: calc(calc(6px + 2.125ex) + 24px);
   padding: 4px 0;
-  pointer-events: none;
   display: flex;
   align-items: flex-start;
   right: -1px;
@@ -656,17 +507,21 @@ button {
   background: linear-gradient(to left, rgba(255,255,255,1) 20%,rgba(255,255,255,0.6) 48%,rgba(255,255,255,0.3) 68%,rgba(255,255,255,0) 100%);
   visibility: hidden;
 }
-.action-next button {
+.action-next .action-button {
   margin-right: 8px;
+}
+.action-button {
+  --p-internal-button-scaling: 0;
+  box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.16);
 }
 .icon:dir(rtl) {
   transform: scaleX(-1);
 }
 @media(hover:hover) {
-  .action-prev button {
+  .action-prev .action-button {
     visibility: inherit;
   }
-  .action-next button {
+  .action-next .action-button {
     visibility: hidden;
   }
 }
@@ -682,37 +537,6 @@ exports[`getComponentCss() should return correct css for gradientColor: backgrou
 :host([hidden]) {
   display: none !important;
 }
-button {
-  display: flex;
-  pointer-events: auto;
-  align-items: center;
-  justify-content: center;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  height: calc(calc(6px + 2.125ex) + 4px);
-  width: calc(calc(6px + 2.125ex) + 4px);
-  border: 0;
-  outline: 0;
-  cursor: pointer;
-  background: #FFF;
-  border-radius: 4px;
-  -webkit-backdrop-filter: blur(32px);
-  backdrop-filter: blur(32px);
-  visibility: hidden;
-  box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.16);
-}
-@media(hover:hover) {
-  button {
-    transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  }
-  button:hover {
-    -webkit-backdrop-filter: blur(32px);
-    backdrop-filter: blur(32px);
-    background: rgba(148, 149, 152, .18);
-  }
-}
-
 .root {
   position: relative;
   display: grid;
@@ -763,7 +587,6 @@ button {
   direction: ltr;
   width: calc(calc(6px + 2.125ex) + 24px);
   padding: 4px 0;
-  pointer-events: none;
   display: flex;
   align-items: flex-start;
   left: -1px;
@@ -771,7 +594,7 @@ button {
   background: linear-gradient(to right, rgba(255,255,255,1) 20%,rgba(255,255,255,0.6) 48%,rgba(255,255,255,0.3) 68%,rgba(255,255,255,0) 100%);
   visibility: hidden;
 }
-.action-prev button {
+.action-prev .action-button {
   margin-left: 8px;
 }
 .action-next {
@@ -781,7 +604,6 @@ button {
   direction: ltr;
   width: calc(calc(6px + 2.125ex) + 24px);
   padding: 4px 0;
-  pointer-events: none;
   display: flex;
   align-items: flex-start;
   right: -1px;
@@ -789,17 +611,21 @@ button {
   background: linear-gradient(to left, rgba(255,255,255,1) 20%,rgba(255,255,255,0.6) 48%,rgba(255,255,255,0.3) 68%,rgba(255,255,255,0) 100%);
   visibility: hidden;
 }
-.action-next button {
+.action-next .action-button {
   margin-right: 8px;
+}
+.action-button {
+  --p-internal-button-scaling: 0;
+  box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.16);
 }
 .icon:dir(rtl) {
   transform: scaleX(-1);
 }
 @media(hover:hover) {
-  .action-prev button {
+  .action-prev .action-button {
     visibility: hidden;
   }
-  .action-next button {
+  .action-next .action-button {
     visibility: hidden;
   }
 }
@@ -815,36 +641,6 @@ exports[`getComponentCss() should return correct css for gradientColor: backgrou
 :host([hidden]) {
   display: none !important;
 }
-button {
-  display: flex;
-  pointer-events: auto;
-  align-items: center;
-  justify-content: center;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  height: calc(calc(6px + 2.125ex) + 4px);
-  width: calc(calc(6px + 2.125ex) + 4px);
-  border: 0;
-  outline: 0;
-  cursor: pointer;
-  background: #0E0E12;
-  border-radius: 4px;
-  -webkit-backdrop-filter: blur(32px);
-  backdrop-filter: blur(32px);
-  visibility: hidden;
-}
-@media(hover:hover) {
-  button {
-    transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  }
-  button:hover {
-    -webkit-backdrop-filter: blur(32px);
-    backdrop-filter: blur(32px);
-    background: rgba(148, 149, 152, .18);
-  }
-}
-
 .root {
   position: relative;
   display: grid;
@@ -900,7 +696,6 @@ button {
   direction: ltr;
   width: calc(calc(6px + 2.125ex) + 24px);
   padding: 4px 0;
-  pointer-events: none;
   display: flex;
   align-items: center;
   left: -1px;
@@ -908,7 +703,7 @@ button {
   background: linear-gradient(to right, rgba(33,34,37,1) 20%,rgba(33,34,37,0.6) 48%,rgba(33,34,37,0.3) 68%,rgba(33,34,37,0) 100%);
   visibility: inherit;
 }
-.action-prev button {
+.action-prev .action-button {
   margin-left: 8px;
 }
 .action-next {
@@ -918,7 +713,6 @@ button {
   direction: ltr;
   width: calc(calc(6px + 2.125ex) + 24px);
   padding: 4px 0;
-  pointer-events: none;
   display: flex;
   align-items: center;
   right: -1px;
@@ -926,17 +720,20 @@ button {
   background: linear-gradient(to left, rgba(33,34,37,1) 20%,rgba(33,34,37,0.6) 48%,rgba(33,34,37,0.3) 68%,rgba(33,34,37,0) 100%);
   visibility: inherit;
 }
-.action-next button {
+.action-next .action-button {
   margin-right: 8px;
+}
+.action-button {
+  --p-internal-button-scaling: 0;
 }
 .icon:dir(rtl) {
   transform: scaleX(-1);
 }
 @media(hover:hover) {
-  .action-prev button {
+  .action-prev .action-button {
     visibility: inherit;
   }
-  .action-next button {
+  .action-next .action-button {
     visibility: inherit;
   }
 }
@@ -952,37 +749,6 @@ exports[`getComponentCss() should return correct css for gradientColor: backgrou
 :host([hidden]) {
   display: none !important;
 }
-button {
-  display: flex;
-  pointer-events: auto;
-  align-items: center;
-  justify-content: center;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  height: calc(calc(6px + 2.125ex) + 4px);
-  width: calc(calc(6px + 2.125ex) + 4px);
-  border: 0;
-  outline: 0;
-  cursor: pointer;
-  background: #EEEFF2;
-  border-radius: 4px;
-  -webkit-backdrop-filter: blur(32px);
-  backdrop-filter: blur(32px);
-  visibility: hidden;
-  box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.16);
-}
-@media(hover:hover) {
-  button {
-    transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  }
-  button:hover {
-    -webkit-backdrop-filter: blur(32px);
-    backdrop-filter: blur(32px);
-    background: rgba(148, 149, 152, .18);
-  }
-}
-
 .root {
   position: relative;
   display: grid;
@@ -1038,7 +804,6 @@ button {
   direction: ltr;
   width: calc(calc(6px + 2.125ex) + 24px);
   padding: 4px 0;
-  pointer-events: none;
   display: flex;
   align-items: center;
   left: -1px;
@@ -1046,7 +811,7 @@ button {
   background: linear-gradient(to right, rgba(238,239,242,1) 20%,rgba(238,239,242,0.6) 48%,rgba(238,239,242,0.3) 68%,rgba(238,239,242,0) 100%);
   visibility: inherit;
 }
-.action-prev button {
+.action-prev .action-button {
   margin-left: 8px;
 }
 .action-next {
@@ -1056,7 +821,6 @@ button {
   direction: ltr;
   width: calc(calc(6px + 2.125ex) + 24px);
   padding: 4px 0;
-  pointer-events: none;
   display: flex;
   align-items: center;
   right: -1px;
@@ -1064,17 +828,21 @@ button {
   background: linear-gradient(to left, rgba(238,239,242,1) 20%,rgba(238,239,242,0.6) 48%,rgba(238,239,242,0.3) 68%,rgba(238,239,242,0) 100%);
   visibility: inherit;
 }
-.action-next button {
+.action-next .action-button {
   margin-right: 8px;
+}
+.action-button {
+  --p-internal-button-scaling: 0;
+  box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.16);
 }
 .icon:dir(rtl) {
   transform: scaleX(-1);
 }
 @media(hover:hover) {
-  .action-prev button {
+  .action-prev .action-button {
     visibility: inherit;
   }
-  .action-next button {
+  .action-next .action-button {
     visibility: inherit;
   }
 }

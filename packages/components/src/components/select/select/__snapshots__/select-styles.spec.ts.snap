@@ -2,6 +2,7 @@
 
 exports[`getComponentCss() should return correct css for direction: down, isOpen: false, isDisabled: false, hideLabel: false, state: none, isWithinForm: true, isNativePopoverCase: false and theme: light 1`] = `
 ":host {
+  display: block;
   color-scheme: light dark !important;
 }
 :host([hidden]) {
@@ -168,6 +169,7 @@ button:not(:focus):-moz-placeholder {
 
 exports[`getComponentCss() should return correct css for direction: down, isOpen: false, isDisabled: false, hideLabel: true, state: success, isWithinForm: true, isNativePopoverCase: false and theme: light 1`] = `
 ":host {
+  display: block;
   color-scheme: light dark !important;
 }
 :host([hidden]) {
@@ -335,6 +337,7 @@ button:not(:focus):-moz-placeholder {
 
 exports[`getComponentCss() should return correct css for direction: down, isOpen: false, isDisabled: true, hideLabel: false, state: none, isWithinForm: false, isNativePopoverCase: true and theme: light 1`] = `
 ":host {
+  display: block;
   color-scheme: light dark !important;
 }
 :host([hidden]) {
@@ -516,6 +519,7 @@ button:not(:focus):-moz-placeholder {
 
 exports[`getComponentCss() should return correct css for direction: down, isOpen: false, isDisabled: true, hideLabel: false, state: none, isWithinForm: true, isNativePopoverCase: false and theme: light 1`] = `
 ":host {
+  display: block;
   color-scheme: light dark !important;
 }
 :host([hidden]) {
@@ -692,6 +696,7 @@ button:not(:focus):-moz-placeholder {
 
 exports[`getComponentCss() should return correct css for direction: down, isOpen: false, isDisabled: true, hideLabel: false, state: none, isWithinForm: true, isNativePopoverCase: false and theme: light 2`] = `
 ":host {
+  display: block;
   color-scheme: light dark !important;
 }
 :host([hidden]) {
@@ -868,6 +873,7 @@ button:not(:focus):-moz-placeholder {
 
 exports[`getComponentCss() should return correct css for direction: down, isOpen: false, isDisabled: true, hideLabel: false, state: success, isWithinForm: true, isNativePopoverCase: false and theme: light 1`] = `
 ":host {
+  display: block;
   color-scheme: light dark !important;
 }
 :host([hidden]) {
@@ -1045,6 +1051,7 @@ button:not(:focus):-moz-placeholder {
 
 exports[`getComponentCss() should return correct css for direction: down, isOpen: false, isDisabled: true, hideLabel: true, state: none, isWithinForm: true, isNativePopoverCase: false and theme: light 1`] = `
 ":host {
+  display: block;
   color-scheme: light dark !important;
 }
 :host([hidden]) {
@@ -1221,6 +1228,7 @@ button:not(:focus):-moz-placeholder {
 
 exports[`getComponentCss() should return correct css for direction: down, isOpen: false, isDisabled: true, hideLabel: true, state: none, isWithinForm: true, isNativePopoverCase: false and theme: light 2`] = `
 ":host {
+  display: block;
   color-scheme: light dark !important;
 }
 :host([hidden]) {
@@ -1397,6 +1405,7 @@ button:not(:focus):-moz-placeholder {
 
 exports[`getComponentCss() should return correct css for direction: down, isOpen: true, isDisabled: false, hideLabel: false, state: none, isWithinForm: true, isNativePopoverCase: false and theme: light 1`] = `
 ":host {
+  display: block;
   color-scheme: light dark !important;
 }
 :host([hidden]) {
@@ -1567,6 +1576,7 @@ button:not(:focus):-moz-placeholder {
 
 exports[`getComponentCss() should return correct css for direction: down, isOpen: true, isDisabled: false, hideLabel: false, state: none, isWithinForm: true, isNativePopoverCase: false and theme: light 2`] = `
 ":host {
+  display: block;
   color-scheme: light dark !important;
 }
 :host([hidden]) {
@@ -1737,6 +1747,7 @@ button:not(:focus):-moz-placeholder {
 
 exports[`getComponentCss() should return correct css for direction: down, isOpen: true, isDisabled: false, hideLabel: true, state: none, isWithinForm: true, isNativePopoverCase: false and theme: light 1`] = `
 ":host {
+  display: block;
   color-scheme: light dark !important;
 }
 :host([hidden]) {
@@ -1907,6 +1918,7 @@ button:not(:focus):-moz-placeholder {
 
 exports[`getComponentCss() should return correct css for direction: down, isOpen: true, isDisabled: false, hideLabel: true, state: success, isWithinForm: true, isNativePopoverCase: false and theme: light 1`] = `
 ":host {
+  display: block;
   color-scheme: light dark !important;
 }
 :host([hidden]) {
@@ -2078,6 +2090,7 @@ button:not(:focus):-moz-placeholder {
 
 exports[`getComponentCss() should return correct css for direction: down, isOpen: true, isDisabled: true, hideLabel: false, state: none, isWithinForm: true, isNativePopoverCase: false and theme: light 1`] = `
 ":host {
+  display: block;
   color-scheme: light dark !important;
 }
 :host([hidden]) {
@@ -2258,6 +2271,7 @@ button:not(:focus):-moz-placeholder {
 
 exports[`getComponentCss() should return correct css for direction: down, isOpen: true, isDisabled: true, hideLabel: true, state: none, isWithinForm: true, isNativePopoverCase: false and theme: light 1`] = `
 ":host {
+  display: block;
   color-scheme: light dark !important;
 }
 :host([hidden]) {
@@ -2438,6 +2452,7 @@ button:not(:focus):-moz-placeholder {
 
 exports[`getComponentCss() should return correct css for direction: up, isOpen: false, isDisabled: false, hideLabel: false, state: success, isWithinForm: true, isNativePopoverCase: false and theme: dark 1`] = `
 ":host {
+  display: block;
   color-scheme: light dark !important;
 }
 :host([hidden]) {
@@ -2605,6 +2620,7 @@ button:not(:focus):-moz-placeholder {
 
 exports[`getComponentCss() should return correct css for direction: up, isOpen: false, isDisabled: false, hideLabel: true, state: error, isWithinForm: true, isNativePopoverCase: false and theme: dark 1`] = `
 ":host {
+  display: block;
   color-scheme: light dark !important;
 }
 :host([hidden]) {
@@ -2772,6 +2788,7 @@ button:not(:focus):-moz-placeholder {
 
 exports[`getComponentCss() should return correct css for direction: up, isOpen: false, isDisabled: true, hideLabel: false, state: error, isWithinForm: true, isNativePopoverCase: false and theme: dark 1`] = `
 ":host {
+  display: block;
   color-scheme: light dark !important;
 }
 :host([hidden]) {
@@ -2949,6 +2966,7 @@ button:not(:focus):-moz-placeholder {
 
 exports[`getComponentCss() should return correct css for direction: up, isOpen: false, isDisabled: true, hideLabel: false, state: error, isWithinForm: true, isNativePopoverCase: false and theme: dark 2`] = `
 ":host {
+  display: block;
   color-scheme: light dark !important;
 }
 :host([hidden]) {
@@ -3126,6 +3144,7 @@ button:not(:focus):-moz-placeholder {
 
 exports[`getComponentCss() should return correct css for direction: up, isOpen: false, isDisabled: true, hideLabel: true, state: error, isWithinForm: true, isNativePopoverCase: false and theme: dark 1`] = `
 ":host {
+  display: block;
   color-scheme: light dark !important;
 }
 :host([hidden]) {
@@ -3303,6 +3322,7 @@ button:not(:focus):-moz-placeholder {
 
 exports[`getComponentCss() should return correct css for direction: up, isOpen: false, isDisabled: true, hideLabel: true, state: success, isWithinForm: true, isNativePopoverCase: false and theme: dark 1`] = `
 ":host {
+  display: block;
   color-scheme: light dark !important;
 }
 :host([hidden]) {
@@ -3480,6 +3500,7 @@ button:not(:focus):-moz-placeholder {
 
 exports[`getComponentCss() should return correct css for direction: up, isOpen: true, isDisabled: false, hideLabel: false, state: error, isWithinForm: true, isNativePopoverCase: false and theme: dark 1`] = `
 ":host {
+  display: block;
   color-scheme: light dark !important;
 }
 :host([hidden]) {
@@ -3651,6 +3672,7 @@ button:not(:focus):-moz-placeholder {
 
 exports[`getComponentCss() should return correct css for direction: up, isOpen: true, isDisabled: false, hideLabel: false, state: error, isWithinForm: true, isNativePopoverCase: false and theme: dark 2`] = `
 ":host {
+  display: block;
   color-scheme: light dark !important;
 }
 :host([hidden]) {
@@ -3822,6 +3844,7 @@ button:not(:focus):-moz-placeholder {
 
 exports[`getComponentCss() should return correct css for direction: up, isOpen: true, isDisabled: false, hideLabel: true, state: error, isWithinForm: true, isNativePopoverCase: false and theme: dark 1`] = `
 ":host {
+  display: block;
   color-scheme: light dark !important;
 }
 :host([hidden]) {
@@ -3993,6 +4016,7 @@ button:not(:focus):-moz-placeholder {
 
 exports[`getComponentCss() should return correct css for direction: up, isOpen: true, isDisabled: false, hideLabel: true, state: success, isWithinForm: true, isNativePopoverCase: false and theme: dark 1`] = `
 ":host {
+  display: block;
   color-scheme: light dark !important;
 }
 :host([hidden]) {
@@ -4164,6 +4188,7 @@ button:not(:focus):-moz-placeholder {
 
 exports[`getComponentCss() should return correct css for direction: up, isOpen: true, isDisabled: true, hideLabel: false, state: error, isWithinForm: true, isNativePopoverCase: false and theme: dark 1`] = `
 ":host {
+  display: block;
   color-scheme: light dark !important;
 }
 :host([hidden]) {
@@ -4345,6 +4370,7 @@ button:not(:focus):-moz-placeholder {
 
 exports[`getComponentCss() should return correct css for direction: up, isOpen: true, isDisabled: true, hideLabel: false, state: success, isWithinForm: false, isNativePopoverCase: true and theme: dark 1`] = `
 ":host {
+  display: block;
   color-scheme: light dark !important;
 }
 :host([hidden]) {
@@ -4531,6 +4557,7 @@ button:not(:focus):-moz-placeholder {
 
 exports[`getComponentCss() should return correct css for direction: up, isOpen: true, isDisabled: true, hideLabel: false, state: success, isWithinForm: true, isNativePopoverCase: false and theme: dark 1`] = `
 ":host {
+  display: block;
   color-scheme: light dark !important;
 }
 :host([hidden]) {
@@ -4712,6 +4739,7 @@ button:not(:focus):-moz-placeholder {
 
 exports[`getComponentCss() should return correct css for direction: up, isOpen: true, isDisabled: true, hideLabel: true, state: error, isWithinForm: true, isNativePopoverCase: false and theme: dark 1`] = `
 ":host {
+  display: block;
   color-scheme: light dark !important;
 }
 :host([hidden]) {

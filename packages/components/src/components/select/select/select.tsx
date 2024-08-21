@@ -90,7 +90,7 @@ const propTypes: PropTypes<typeof Select> = {
  */
 @Component({
   tag: 'p-select',
-  shadow: true,
+  shadow: { delegatesFocus: true },
 })
 export class Select {
   @Element() public host!: HTMLElement;

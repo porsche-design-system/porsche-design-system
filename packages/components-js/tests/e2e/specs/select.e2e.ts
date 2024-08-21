@@ -8,6 +8,7 @@ import {
   getAttribute,
   getElementStyle,
   getEventSummary,
+  getFormDataValue,
   getHTMLAttributes,
   getLifecycleStatus,
   getProperty,
@@ -67,6 +68,8 @@ const getNativeSelectValue = async (page: Page): Promise<string | number> =>
   await getProperty(getNativeSelect(page), 'value');
 const getNativeSelectInnerHTML = (page: Page) => page.locator('p-select select').evaluate((el) => el.innerHTML);
 const getLabel = (page: Page) => page.locator('p-select label');
+
+const getForm = (page: Page) => page.locator('form');
 
 const setValue = async (page: Page, value: string) => {
   const host: Locator = getHost(page);
@@ -427,6 +430,80 @@ test.describe('native select', () => {
     const nativeSelectElement = getNativeSelect(page);
     await expect(nativeSelectElement).toHaveCount(0);
   });
+
+  // TODO: Focus host (currently native select is focused and native validation box shown)
+  test.fixme('should receive focus when form is submitted but native validation fails', async ({ page }) => {
+    await initSelect(page, {
+      props: { name: 'options', required: true },
+      options: { isWithinForm: true, markupAfter: '<button type="submit">Submit</button>' },
+    });
+    const buttonElement = getButton(page);
+    const form = getForm(page);
+
+    await addEventListener(form, 'submit');
+    expect((await getEventSummary(form, 'submit')).counter).toBe(0);
+
+    await page.locator('button[type="submit"]').click();
+
+    expect((await getEventSummary(form, 'submit')).counter).toBe(1);
+    await expect(buttonElement).toBeFocused();
+  });
+
+  test('should include name & value in FormData submit', async ({ page }) => {
+    const name = 'name';
+    const value = 'a';
+    await initSelect(page, {
+      props: { name },
+      options: {
+        isWithinForm: true,
+        markupAfter: '<button type="submit">Submit</button>',
+      },
+    });
+    const host = await getHost(page);
+    await setProperty(host, 'value', value);
+    const form = getForm(page);
+
+    await addEventListener(form, 'submit');
+    expect((await getEventSummary(form, 'submit')).counter).toBe(0);
+
+    await page.locator('button[type=submit]').click();
+
+    expect((await getEventSummary(form, 'submit')).counter).toBe(1);
+    expect(await getFormDataValue(form, name)).toStrictEqual(value);
+  });
+
+  // TODO: Reset not implemented yet (Only way to do this would be to add reset listener to wrapping form?)
+  test.fixme('should reset select value on form reset', async ({ page }) => {
+    const name = 'name';
+    const value = 'a';
+    await initSelect(page, {
+      props: { name },
+      options: {
+        isWithinForm: true,
+        markupAfter: `
+        <button type="submit">Submit</button>
+        <button type="reset">Reset</button>
+      `,
+      },
+    });
+    const host = getHost(page);
+    await setProperty(host, 'value', value);
+    const form = getForm(page);
+
+    await addEventListener(form, 'submit');
+    expect((await getEventSummary(form, 'submit')).counter).toBe(0);
+    await setProperty(host, 'value', 'b');
+    await expect(host).toHaveJSProperty('value', 'b');
+
+    await page.locator('button[type="reset"]').click();
+
+    await expect(host).toHaveJSProperty('value', value); // Should be initial value again
+
+    await page.locator('button[type="submit"]').click();
+
+    expect((await getEventSummary(form, 'submit')).counter).toBe(1);
+    expect(await getFormDataValue(form, name)).toStrictEqual(value);
+  });
 });
 
 // TODO: Should the update event be emitted when slot changes? e.g. option with current set value is added
@@ -586,6 +663,21 @@ test.describe('focus', () => {
     await waitForStencilLifecycle(page);
 
     expect((await getEventSummary(button, 'focus')).counter, 'button focus after second tab').toBe(1);
+  });
+
+  test('should receive focus when focus is set programmatically', async ({ page }) => {
+    await initSelect(page);
+    const host = await getHost(page);
+
+    const buttonElement = getButton(page);
+    await addEventListener(buttonElement, 'focus');
+
+    expect((await getEventSummary(buttonElement, 'focus')).counter).toBe(0);
+
+    await host.focus();
+    await waitForStencilLifecycle(page);
+
+    expect((await getEventSummary(buttonElement, 'focus')).counter).toBe(1);
   });
 });
 

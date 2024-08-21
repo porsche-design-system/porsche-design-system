@@ -92,7 +92,7 @@ const propTypes: PropTypes<typeof MultiSelect> = {
  */
 @Component({
   tag: 'p-multi-select',
-  shadow: true,
+  shadow: { delegatesFocus: true },
 })
 export class MultiSelect {
   @Element() public host!: HTMLElement;
@@ -304,6 +304,7 @@ export class MultiSelect {
           />
           {this.currentValue.length > 0 && (
             <PrefixedTagNames.pButtonPure
+              type="button"
               class="button"
               icon="close"
               hideLabel={true}
