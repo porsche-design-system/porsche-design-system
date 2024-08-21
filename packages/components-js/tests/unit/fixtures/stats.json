@@ -147,7 +147,7 @@
   {
     "chunkShortName": "main",
     "size": 80215,
-    "gzipSize": 26771
+    "gzipSize": 26770
   },
   {
     "chunkShortName": "marque",
@@ -166,8 +166,8 @@
   },
   {
     "chunkShortName": "multi-select",
-    "size": 26726,
-    "gzipSize": 9313
+    "size": 26854,
+    "gzipSize": 9360
   },
   {
     "chunkShortName": "optgroup",
@@ -181,8 +181,8 @@
   },
   {
     "chunkShortName": "pin-code",
-    "size": 15355,
-    "gzipSize": 5893
+    "size": 15423,
+    "gzipSize": 5915
   },
   {
     "chunkShortName": "popover",
@@ -206,13 +206,13 @@
   },
   {
     "chunkShortName": "select",
-    "size": 25855,
-    "gzipSize": 9094
+    "size": 25983,
+    "gzipSize": 9145
   },
   {
     "chunkShortName": "select-wrapper",
-    "size": 27318,
-    "gzipSize": 9197
+    "size": 27446,
+    "gzipSize": 9253
   },
   {
     "chunkShortName": "spinner",
@@ -261,8 +261,8 @@
   },
   {
     "chunkShortName": "text-field-wrapper",
-    "size": 17397,
-    "gzipSize": 6609
+    "size": 17548,
+    "gzipSize": 6665
   },
   {
     "chunkShortName": "text-list",
@@ -271,8 +271,8 @@
   },
   {
     "chunkShortName": "textarea-wrapper",
-    "size": 11567,
-    "gzipSize": 4569
+    "size": 11635,
+    "gzipSize": 4597
   },
   {
     "chunkShortName": "toast",
