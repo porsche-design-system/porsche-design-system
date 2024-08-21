@@ -369,3 +369,28 @@
     <input type="text" value="three hundred" maxlength="50" />
   </p-text-field-wrapper>
 </div>
+
+<div class="playground light" title="should render with ellipsis and min-width in a smaller container">
+  <div style="width: 0">
+    <p-text-field-wrapper label="Some label">
+      <input type="text" name="some-name" value="Some value" />
+    </p-text-field-wrapper>
+    <p-text-field-wrapper label="Some label">
+      <input type="text" name="some-name" value="Some value" maxlength="20" />
+    </p-text-field-wrapper>
+    <p-text-field-wrapper label="Some label">
+      <input type="search" name="some-name" value="Some value" />
+    </p-text-field-wrapper>
+    <form action="#">
+      <p-text-field-wrapper label="Some label">
+        <input type="search" name="some-name" value="Some value" />
+      </p-text-field-wrapper>
+    </form>
+    <p-text-field-wrapper label="Some label">
+      <input type="password" name="some-name" value="Some value" />
+    </p-text-field-wrapper>
+    <p-text-field-wrapper label="Some label">
+      <input type="date" name="some-name" />
+    </p-text-field-wrapper>
+  </div>
+</div>

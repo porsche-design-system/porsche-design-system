@@ -17,7 +17,7 @@ import {
 } from '../../../styles/form-styles';
 import { getFunctionalComponentStateMessageStyles } from '../../common/state-message/state-message-styles';
 import { type FormState } from '../../../utils/form/form-state';
-import { spacingStaticXSmall } from '@porsche-design-system/styles';
+import { borderWidthBase, spacingStaticXSmall } from '@porsche-design-system/styles';
 import { getFunctionalComponentLabelStyles } from '../../common/label/label-styles';
 
 export const getComponentCss = (
@@ -55,6 +55,8 @@ export const getComponentCss = (
     root: {
       display: 'grid',
       gap: spacingStaticXSmall,
+      // min width is needed for showing at least 1 character in very narrow containers. The "1rem" value is the minimum safe zone to show at least 1 character plus the ellipsis dots.
+      minWidth: `calc(1rem + ${formElementPaddingHorizontal} + ${borderWidthBase} * 2 + ${getCalculatedFormElementPaddingHorizontal(1)})`,
     },
     wrapper: {
       display: 'grid',

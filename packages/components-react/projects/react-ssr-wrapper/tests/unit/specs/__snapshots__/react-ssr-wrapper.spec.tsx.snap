@@ -2255,6 +2255,7 @@ input:disabled {
 .root {
   display: grid;
   gap: 4px;
+  min-width: calc(1rem + 16px + 2px * 2 + calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 2));
 }
 .wrapper {
   position: relative;
@@ -2544,6 +2545,9 @@ input:nth-of-type(5) {
 }
 input:nth-of-type(6) {
   grid-area: 1/6;
+}
+:not(input[type="password"]) {
+  text-overflow: ellipsis;
 }
 input:disabled {
   cursor: not-allowed;
@@ -3230,6 +3234,9 @@ exports[`manual test cases > should pass internal props correctly to p-select-wr
   padding-inline-end: calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 1) !important;
   border-color: transparent !important;
 }
+::slotted(:not(input[type="password"])) {
+  text-overflow: ellipsis !important;
+}
 ::slotted(select:disabled) {
   cursor: not-allowed !important;
   color: #949598 !important;
@@ -3240,6 +3247,7 @@ exports[`manual test cases > should pass internal props correctly to p-select-wr
 .root {
   display: grid;
   gap: 4px;
+  min-width: calc(1rem + 16px + 2px * 2 + calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 1));
 }
 .wrapper {
   display: grid;
@@ -3519,6 +3527,9 @@ exports[`manual test cases > should pass internal props correctly to p-select-wr
   padding: 8px 16px !important;
   padding-inline-end: calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 1) !important;
 }
+::slotted(:not(input[type="password"])) {
+  text-overflow: ellipsis !important;
+}
 ::slotted(select:disabled) {
   cursor: not-allowed !important;
   color: #949598 !important;
@@ -3529,6 +3540,7 @@ exports[`manual test cases > should pass internal props correctly to p-select-wr
 .root {
   display: grid;
   gap: 4px;
+  min-width: calc(1rem + 16px + 2px * 2 + calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 1));
 }
 .wrapper {
   display: grid;
@@ -5568,6 +5580,9 @@ exports[`manual test cases > should pass internal props correctly to p-text-fiel
   padding-inline-start: var(--p-internal-text-field-input-padding-start) !important;
   padding-inline-end: var(--p-internal-text-field-input-padding-end) !important;
 }
+::slotted(:not(input[type="password"])) {
+  text-overflow: ellipsis !important;
+}
 ::slotted(input:disabled) {
   cursor: not-allowed !important;
   color: #949598 !important;
@@ -5584,6 +5599,7 @@ exports[`manual test cases > should pass internal props correctly to p-text-fiel
   --p-internal-text-field-input-padding-end: 16px;
   display: grid;
   gap: 4px;
+  min-width: calc(2rem + 16px + 2px*2 + 0px);
 }
 .wrapper {
   display: grid;
@@ -5701,6 +5717,9 @@ exports[`manual test cases > should pass internal props correctly to p-text-fiel
   padding-inline-start: var(--p-internal-text-field-input-padding-start) !important;
   padding-inline-end: var(--p-internal-text-field-input-padding-end) !important;
 }
+::slotted(:not(input[type="password"])) {
+  text-overflow: ellipsis !important;
+}
 ::slotted(input:disabled) {
   cursor: not-allowed !important;
   color: #949598 !important;
@@ -5717,6 +5736,7 @@ exports[`manual test cases > should pass internal props correctly to p-text-fiel
   --p-internal-text-field-input-padding-end: 16px;
   display: grid;
   gap: 4px;
+  min-width: calc(2rem + 16px + 2px*2 + 0px);
 }
 .wrapper {
   display: grid;
@@ -5834,6 +5854,9 @@ exports[`manual test cases > should pass internal props correctly to p-text-fiel
   padding-inline-start: var(--p-internal-text-field-input-padding-start) !important;
   padding-inline-end: var(--p-internal-text-field-input-padding-end) !important;
 }
+::slotted(:not(input[type="password"])) {
+  text-overflow: ellipsis !important;
+}
 ::slotted(input:disabled) {
   cursor: not-allowed !important;
   color: #949598 !important;
@@ -5850,6 +5873,7 @@ exports[`manual test cases > should pass internal props correctly to p-text-fiel
   --p-internal-text-field-input-padding-end: calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 1);
   display: grid;
   gap: 4px;
+  min-width: calc(2rem + 16px + 2px*2 + calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 1));
 }
 .wrapper {
   display: grid;
@@ -6129,6 +6153,9 @@ exports[`manual test cases > should pass internal props correctly to p-text-fiel
   padding-inline-start: var(--p-internal-text-field-input-padding-start) !important;
   padding-inline-end: var(--p-internal-text-field-input-padding-end) !important;
 }
+::slotted(:not(input[type="password"])) {
+  text-overflow: ellipsis !important;
+}
 ::slotted(input:disabled) {
   cursor: not-allowed !important;
   color: #949598 !important;
@@ -6145,6 +6172,7 @@ exports[`manual test cases > should pass internal props correctly to p-text-fiel
   --p-internal-text-field-input-padding-end: calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 1);
   display: grid;
   gap: 4px;
+  min-width: calc(2rem + 16px + 2px*2 + calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 2));
 }
 .wrapper {
   display: grid;
@@ -12167,6 +12195,7 @@ input:disabled {
 .root {
   display: grid;
   gap: 4px;
+  min-width: calc(1rem + 16px + 2px * 2 + calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 2));
 }
 .wrapper {
   position: relative;
@@ -12726,6 +12755,9 @@ input:nth-of-type(5) {
 }
 input:nth-of-type(6) {
   grid-area: 1/6;
+}
+:not(input[type="password"]) {
+  text-overflow: ellipsis;
 }
 input:disabled {
   cursor: not-allowed;
@@ -13730,6 +13762,7 @@ button:disabled {
 .root {
   display: grid;
   gap: 4px;
+  min-width: calc(1rem + 16px + 2px * 2 + calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 1));
 }
 .wrapper {
   position: relative;
@@ -14048,6 +14081,9 @@ exports[`should render dsr component for PSelectWrapper 1`] = `
   padding-inline-end: calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 1) !important;
   border-color: transparent !important;
 }
+::slotted(:not(input[type="password"])) {
+  text-overflow: ellipsis !important;
+}
 ::slotted(select:disabled) {
   cursor: not-allowed !important;
   color: #949598 !important;
@@ -14058,6 +14094,7 @@ exports[`should render dsr component for PSelectWrapper 1`] = `
 .root {
   display: grid;
   gap: 4px;
+  min-width: calc(1rem + 16px + 2px * 2 + calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 1));
 }
 .wrapper {
   display: grid;
@@ -17073,6 +17110,9 @@ exports[`should render dsr component for PTextFieldWrapper 1`] = `
   padding-inline-start: var(--p-internal-text-field-input-padding-start) !important;
   padding-inline-end: var(--p-internal-text-field-input-padding-end) !important;
 }
+::slotted(:not(input[type="password"])) {
+  text-overflow: ellipsis !important;
+}
 ::slotted(input:disabled) {
   cursor: not-allowed !important;
   color: #949598 !important;
@@ -17089,6 +17129,7 @@ exports[`should render dsr component for PTextFieldWrapper 1`] = `
   --p-internal-text-field-input-padding-end: 16px;
   display: grid;
   gap: 4px;
+  min-width: calc(2rem + 16px + 2px*2 + 0px);
 }
 .wrapper {
   display: grid;
@@ -17404,6 +17445,9 @@ exports[`should render dsr component for PTextareaWrapper 1`] = `
   padding: 12px 16px !important;
   min-height: 200px;
   resize: vertical;
+}
+::slotted(:not(input[type="password"])) {
+  text-overflow: ellipsis !important;
 }
 ::slotted(textarea:disabled) {
   cursor: not-allowed !important;
