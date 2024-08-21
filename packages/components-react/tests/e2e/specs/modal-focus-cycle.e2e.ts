@@ -20,9 +20,9 @@ test('should focus correct element', async ({ page }) => {
   };
 
   const expectDismissButtonToBeFocused = async (failMessage: string) => {
-    const dismissHandle = page.locator('p-modal P-BUTTON-PURE.dismiss');
+    const dismissHandle = page.locator('p-modal .dismiss');
     const focused = await waitForFocus(dismissHandle);
-    expect(await getProperty(focused, 'tagName'), failMessage).toBe('P-BUTTON-PURE');
+    expect(await getProperty(focused, 'tagName'), failMessage).toBe('P-BUTTON');
     expect(await getProperty(focused, 'className'), failMessage).toContain('dismiss');
   };
 
@@ -61,9 +61,9 @@ test('should focus correct element', async ({ page }) => {
   await page.keyboard.press('Space'); // dismiss modal
 
   await expect(page.locator('p-modal')).toBeHidden();
-  expect(await getActiveElementId(), 'after dismiss').toBe('btn-open');
+  await expect(btnOpen, 'after dismiss').toBeFocused();
 
   await page.keyboard.press('Tab');
 
-  expect(await getActiveElementId(), 'after dismiss 1st tab').toBe('btn-after');
+  await expect(page.locator('#btn-after'), 'after dismiss 1st tab').toBeFocused();
 });

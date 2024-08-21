@@ -29,6 +29,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 - Partials: `getInitialStyles` uses CSS `:defined` to determine the visibility of web components, as well as
   `[data-ssr]` attribute instead of `.ssr` class for Next JS and Remix
   ([#3466](https://github.com/porsche-design-system/porsche-design-system/pull/3466))
+- `Button`, `Link`: spacings adjusted for `compact` mode
+- `Banner`, `Flyout`, `Inline Notification`, `Modal`, `Scroller`, `Toast`: button style
+  ([#3435](https://github.com/porsche-design-system/porsche-design-system/pull/3435))
 
 #### Fixed
 
@@ -36,6 +39,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
   ([#3462](https://github.com/porsche-design-system/porsche-design-system/pull/3462))
 - `Button Tile`, `Link Tile`, `Link Tile Model Signature`: correct image position if custom css `position: absolute` is
   used on media element ([#3446](https://github.com/porsche-design-system/porsche-design-system/pull/3446))
+- `Button`, `Link`: Safari rendering issue of `backdrop-filter` on border in variant `ghost`
+  ([#3435](https://github.com/porsche-design-system/porsche-design-system/pull/3435))
 - `Select`, `Select Wrapper`, `Multi Select`, `Textfield Wrapper`: `text-overflow` has now ellipsis behaviour and
   `min-width` is added to prevent text overlapping
   ([#3465](https://github.com/porsche-design-system/porsche-design-system/pull/3465))

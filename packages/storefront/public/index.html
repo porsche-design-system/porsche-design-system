@@ -11,16 +11,20 @@
 
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+
+    <!-- prettier-ignore -->
+    <%= require('@porsche-design-system/components-js/partials').getInitialStyles() %>
+
     <% if (process.env.NODE_ENV === 'production') { %>
     <!-- CSP_PLACEHOLDER -->
     <meta http-equiv="Content-Security-Policy" content="default-src 'self' https://cdn.ui.porsche.com; style-src 'self' 'unsafe-inline' https://cdn.ui.porsche.com 'sha256-yxwVJW/K4jacbKpVjEl1gF4lo1qrXE250ZTsjsFayTQ='; script-src 'self' https://cdn.ui.porsche.com 'sha256-PFi+z4fRGrQcDui8zWHa5SL/jnyrjdDDADcw9HSSaro=' 'sha256-AjifP4agQgIcC1ep5F7cnXwxUy33FSINnoMBQ3vTjJk='; img-src 'self' https://cdn.ui.porsche.com https://porsche-design-system.github.io data:; media-src 'self' https://porsche-design-system.github.io; connect-src 'self' https://*.algolia.net https://*.algolianet.com https://registry.npmjs.org/@porsche-design-system/components-js" />
 
     <!-- prettier-ignore -->
-    <%= require('@porsche-design-system/components-js/partials').getFontLinks({ weights: ['regular', 'semi-bold', 'bold'] }) %>
+    <%= require('@porsche-design-system/components-js/partials').getFontLinks({ subset: 'latin', weights: ['regular', 'semi-bold', 'bold'] }) %>
     <%= require('@porsche-design-system/components-js/partials').getFontFaceStyles() %>
-    <%= require('@porsche-design-system/components-js/partials').getComponentChunkLinks({ components: ['accordion', 'divider', 'button-pure', 'link', 'link-pure', 'wordmark', 'icon', 'text', 'headline', 'grid', 'flex' ] }) %>
+    <%= require('@porsche-design-system/components-js/partials').getComponentChunkLinks({ components: ['accordion', 'button-pure', 'link', 'link-pure', 'wordmark', 'icon' ] }) %>
+    <%= require('@porsche-design-system/components-js/partials').getIconLinks({ icons: ['arrow-right', 'plus', 'minus', 'moon', 'sun', 'search', 'external' ] }) %>
     <%= require('@porsche-design-system/components-js/partials').getMetaTagsAndIconLinks({ appTitle: 'Porsche Design System', ogImage: false }) %>
-    <%= require('@porsche-design-system/components-js/partials').getIconLinks({ icons: ['plus', 'arrow-right', 'minus' ] }) %>
     <% } else { %>
     <link rel="icon" href="http://localhost:3001/meta-icons/favicon-32x32.d42ac2876697ec701e95e4a4d608fb0e.png" />
     <link rel="stylesheet" href="http://localhost:3001/styles/font-face.css" />
@@ -36,8 +40,6 @@
     <meta name="twitter:title" content="Porsche Design System">
     <meta name="twitter:description" content="Find all the fundamental UXI guidelines and pattern-based web components to build brand driven, consistent and intuitive designs for digital Porsche products.">
     <meta name="twitter:image" content="https://porsche-design-system.github.io/dummyasset/og-image.png">
-    <!-- prettier-ignore -->
-    <%= require('@porsche-design-system/components-js/partials').getInitialStyles() %>
   </head>
   <body>
     <noscript>

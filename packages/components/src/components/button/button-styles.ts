@@ -5,6 +5,8 @@ import { getFunctionalComponentLoadingMessageStyles } from '../common/loading-me
 import { fontLineHeight, frostedGlassStyle } from '@porsche-design-system/styles';
 import { getHighContrastColors, getThemedColors, getTransition, prefersColorSchemeDarkMediaQuery } from '../../styles';
 
+export const cssVariableInternalButtonScaling = '--p-internal-button-scaling';
+
 type Colors = {
   textColor: string;
   borderColor: string;
@@ -58,53 +60,66 @@ export const getComponentCss = (
   const isPrimary = variant === 'primary';
 
   return getCss(
-    mergeDeep(getLinkButtonStyles(icon, iconSource, variant, hideLabel, disabledOrLoading, false, compact, theme), {
-      root: {
-        cursor: disabledOrLoading ? 'not-allowed' : 'pointer',
-        ...(disabledOrLoading && {
-          backgroundColor,
-          borderColor,
-          color: textColor,
-          ...prefersColorSchemeDarkMediaQuery(theme, {
-            backgroundColor: backgroundColorDark,
-            borderColor: borderColorDark,
-            color: textColorDark,
+    mergeDeep(
+      getLinkButtonStyles(
+        icon,
+        iconSource,
+        variant,
+        hideLabel,
+        disabledOrLoading,
+        false,
+        compact,
+        cssVariableInternalButtonScaling,
+        theme
+      ),
+      {
+        root: {
+          cursor: disabledOrLoading ? 'not-allowed' : 'pointer',
+          ...(disabledOrLoading && {
+            backgroundColor,
+            borderColor,
+            color: textColor,
+            ...prefersColorSchemeDarkMediaQuery(theme, {
+              backgroundColor: backgroundColorDark,
+              borderColor: borderColorDark,
+              color: textColorDark,
+            }),
           }),
-        }),
-        ...(loading && !isPrimary && frostedGlassStyle),
-        margin: 0, // Removes default button margin on safari 15
-      },
-      ...(loading && {
-        spinner: {
-          width: fontLineHeight,
-          height: fontLineHeight,
-          pointerEvents: 'none',
-          position: 'absolute',
-          top: '50%',
-          left: '50%',
-          transform: 'translate(-50%, -50%)',
-          ...(isPrimary && !isHighContrastMode && { filter: 'invert(1)' }),
+          ...(loading && !isPrimary && frostedGlassStyle),
+          margin: 0, // Removes default button margin on safari 15
         },
-      }),
-      label: {
-        transition: getTransition('opacity'),
         ...(loading && {
-          opacity: 0, // use opacity for smooth transition between states
+          spinner: {
+            width: fontLineHeight,
+            height: fontLineHeight,
+            pointerEvents: 'none',
+            position: 'absolute',
+            top: '50%',
+            left: '50%',
+            transform: 'translate(-50%, -50%)',
+            ...(isPrimary && !isHighContrastMode && { filter: 'invert(1)' }),
+          },
         }),
-      },
-      icon: {
-        transition: getTransition('opacity'),
-        ...(!disabled &&
-          isPrimary &&
-          !isHighContrastMode && {
-            filter: 'invert(1)',
+        label: {
+          transition: getTransition('opacity'),
+          ...(loading && {
+            opacity: 0, // use opacity for smooth transition between states
           }),
-        ...(loading && {
-          opacity: 0, // use opacity for smooth transition between states
-        }),
-      },
-      // .loading
-      ...getFunctionalComponentLoadingMessageStyles(),
-    })
+        },
+        icon: {
+          transition: getTransition('opacity'),
+          ...(!disabled &&
+            isPrimary &&
+            !isHighContrastMode && {
+              filter: 'invert(1)',
+            }),
+          ...(loading && {
+            opacity: 0, // use opacity for smooth transition between states
+          }),
+        },
+        // .loading
+        ...getFunctionalComponentLoadingMessageStyles(),
+      }
+    )
   );
 };
