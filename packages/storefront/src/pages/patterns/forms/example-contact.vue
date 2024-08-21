@@ -209,7 +209,7 @@
                 <option value="3">Option 3</option>
               </select>
             </p-select-wrapper>
-            <p-heading :theme="storefrontTheme" size="small" tag="h3" class="spacing-mt-24"
+            <p-heading :theme="storefrontTheme" size="small" tag="h2" class="spacing-mt-24"
               >Date of first registration</p-heading
             >
             <p-text-field-wrapper

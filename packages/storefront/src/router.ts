@@ -41,6 +41,8 @@ const router = new VueRouter({
 
 router.afterEach(() => {
   window.scrollTo(0, 0);
+  const targetFocusElement = document.querySelector('h1');
+  targetFocusElement?.focus();
 });
 
 export default router;

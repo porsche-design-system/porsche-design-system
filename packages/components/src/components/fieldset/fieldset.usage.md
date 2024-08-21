@@ -31,6 +31,6 @@ component in various situations.
 
 ## Behavior
 
-##### Sections including form elements
+### Sections including form elements
 
 [Form pattern guideline](patterns/forms).
