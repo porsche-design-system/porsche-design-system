@@ -1,0 +1,14 @@
+<div class="root">
+  <label class="label" id="label" for="textarea"> </label>
+  <div class="wrapper">
+    <textarea
+      aria-describedby="description message"
+      id="textarea"
+      name="value"
+      placeholder=""
+      rows="7"
+      autocomplete=""
+      wrap="soft"
+    ></textarea>
+  </div>
+</div>

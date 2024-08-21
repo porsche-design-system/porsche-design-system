@@ -32,6 +32,8 @@ import { TableExampleBasicComponent } from './table-example-basic.component';
 import { TableExampleSortingComponent } from './table-example-sorting.component';
 import { TabsBarExampleAccessibilityComponent } from './tabs-bar-example-accessibility.component';
 import { TabsBarExampleBasicComponent } from './tabs-bar-example-basic.component';
+import { TextareaExampleComponent } from './textarea-example.component';
+import { TextareaExampleControlledComponent } from './textarea-example-controlled.component';
 import { TextFieldWrapperExampleImaskComponent } from './text-field-wrapper-example-imask.component';
 import { TextFieldWrapperExampleSearchComponent } from './text-field-wrapper-example-search.component';
 import { ToastExampleComponent } from './toast-example.component';
@@ -71,6 +73,8 @@ export const examples = [
   TableExampleSortingComponent,
   TabsBarExampleAccessibilityComponent,
   TabsBarExampleBasicComponent,
+  TextareaExampleComponent,
+  TextareaExampleControlledComponent,
   TextFieldWrapperExampleImaskComponent,
   TextFieldWrapperExampleSearchComponent,
   ToastExampleComponent,
@@ -110,6 +114,8 @@ export * from './table-example-basic.component';
 export * from './table-example-sorting.component';
 export * from './tabs-bar-example-accessibility.component';
 export * from './tabs-bar-example-basic.component';
+export * from './textarea-example.component';
+export * from './textarea-example-controlled.component';
 export * from './text-field-wrapper-example-imask.component';
 export * from './text-field-wrapper-example-search.component';
 export * from './toast-example.component';

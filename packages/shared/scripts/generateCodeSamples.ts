@@ -331,6 +331,23 @@ const generateCodeSamples = (): void => {
       ],
     },
     {
+      component: 'p-textarea',
+      samples: [
+        [
+          componentsJsPath + '/textarea-example.html',
+          componentsAngularPath + '/textarea-example.component.ts',
+          componentsReactPath + '/TextareaExample.tsx',
+          componentsVuePath + '/TextareaExample.vue',
+        ],
+        [
+          componentsJsPath + '/textarea-example-controlled.html',
+          componentsAngularPath + '/textarea-example-controlled.component.ts',
+          componentsReactPath + '/TextareaExampleControlled.tsx',
+          componentsVuePath + '/TextareaExampleControlled.vue',
+        ],
+      ],
+    },
+    {
       component: 'p-text-field-wrapper',
       samples: [
         [

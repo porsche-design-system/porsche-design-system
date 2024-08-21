@@ -36,13 +36,15 @@ const variations: Variation[] = [
   { tagName: 'p-text-field-wrapper', child: '<input type="search" />' },
   { tagName: 'p-text-field-wrapper', child: '<input type="search" />', attributes: 'action-icon="locate"'  },
   { tagName: 'p-pin-code', child: '', isCustomElement: true },
+  { tagName: 'p-textarea', child: '', isCustomElement: true },
   { tagName: 'p-textarea-wrapper', child: '<textarea></textarea>' },
 ];
 
 const renderMarkupForVariation = ({ tagName, child, attributes, isCustomElement }: Variation, theme: PlaygroundTheme): string => {
   const childDisabled = isCustomElement ? child : child.replace(/((?: \/)?>)/, ' disabled$1');
   const parentDisabled = isCustomElement ? 'disabled="true"' : '';
-  const childReadonly = child.replace(/((?: \/)?>)/, ' readonly$1');
+  const parentReadonly = isCustomElement ? 'read-only="true"' : '';
+  const childReadonly = isCustomElement ? child : child.replace(/((?: \/)?>)/, ' readonly$1');
   attributes = attributes ? ` ${attributes}` : '';
   const labelSuffix = child.match(/type="[^cr][a-z]+"/) ? ` ${child.slice(child.indexOf('type='), -3).replace(/"/g, '&quot;')}` : '';
 
@@ -51,7 +53,7 @@ const renderMarkupForVariation = ({ tagName, child, attributes, isCustomElement 
   <${tagName}${attributes} label="Default${labelSuffix}" theme="${theme}">
     ${child}
   </${tagName}>
-  <${tagName}${attributes} label="Readonly${labelSuffix}" theme="${theme}">
+  <${tagName}${attributes} ${parentReadonly} label="Readonly${labelSuffix}" theme="${theme}">
     ${childReadonly}
   </${tagName}>
   <${tagName}${attributes} ${parentDisabled} label="Disabled${labelSuffix}" theme="${theme}">
@@ -81,7 +83,9 @@ export default class Code extends Vue {
       content = content
         .replace(/(<input type="(?:checkbox|radio)")/g, '$1 checked')
         .replace(/(<input type="[^cr][a-z]+")/g, '$1 value="Value"')
-        .replace(/(<textarea.*?>)(<\/textarea>)/g, '$1Value$2');
+        .replace(/(<textarea.*?>)(<\/textarea>)/g, '$1Value$2')
+        .replace(/(<p-textarea\s.*?)/g, '$1 value="Value"');
+
     }
     return this.isWrappedInForm ? `<form onsubmit="return false">${content}</form>` : content;
   }

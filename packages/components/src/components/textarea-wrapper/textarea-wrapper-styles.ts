@@ -1,5 +1,6 @@
-import { type Styles } from 'jss';
 import { type BreakpointCustomizable, type Theme } from '../../types';
+import { type FormState } from '../../utils/form/form-state';
+
 import { getCss, mergeDeep } from '../../utils';
 import { addImportantToEachRule, colorSchemeStyles, getHiddenTextJssStyle, hostHiddenStyles } from '../../styles';
 import {
@@ -7,15 +8,15 @@ import {
   getSlottedTextFieldTextareaSelectStyles,
   getUnitCounterJssStyle,
 } from '../../styles/form-styles';
+import type { Styles } from 'jss';
+import { getFunctionalComponentLabelStyles } from '../common/label/label-styles';
 import { getFunctionalComponentStateMessageStyles } from '../common/state-message/state-message-styles';
-import { type FormState } from '../../utils/form/form-state';
 import {
   borderWidthBase,
   spacingStaticLarge,
   spacingStaticXSmall,
   textSmallStyle,
 } from '@porsche-design-system/styles';
-import { getFunctionalComponentLabelStyles } from '../common/label/label-styles';
 
 export const getComponentCss = (
   isDisabled: boolean,
