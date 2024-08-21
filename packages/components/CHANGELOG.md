@@ -14,6 +14,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ### [Unreleased]
 
+### [3.18.0] - 2024-08-21
+
 ### [3.18.0-rc.0] - 2024-08-21
 
 #### Added
