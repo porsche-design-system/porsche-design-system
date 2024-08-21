@@ -13,6 +13,9 @@ exports[`getComponentCss() should return correct css for theme: dark 1`] = `
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 ::slotted(*) {
   --p-internal-table-hover-color: rgba(148, 149, 152, .18) !important;
   --p-internal-table-border-color: #404044 !important;
@@ -41,6 +44,9 @@ exports[`getComponentCss() should return correct css for theme: light 1`] = `
 }
 :host([hidden]) {
   display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
 }
 ::slotted(*) {
   --p-internal-table-hover-color: rgba(148, 149, 152, .18) !important;

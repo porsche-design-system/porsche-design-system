@@ -2,7 +2,7 @@
   <!-- using h1 instead of p-heading for more stable navigation e2e test -->
   <!-- to prevent additional space characters within tags -->
   <!-- prettier-ignore -->
-  <h1>{{ name }}<span
+  <h1 tabindex="-1" ref="heading">{{ name }}<span
       v-if="getFlag('isDeprecated')"
       title="This component is deprecated and will be removed with the next major release."
     > 🚫</span

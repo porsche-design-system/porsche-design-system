@@ -8,6 +8,9 @@ exports[`getComponentCss() should return correct css 1`] = `
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 .root {
   margin-bottom: 8px;
 }"

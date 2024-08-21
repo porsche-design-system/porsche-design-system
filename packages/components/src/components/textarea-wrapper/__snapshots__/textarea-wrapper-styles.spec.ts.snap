@@ -8,6 +8,9 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 ::slotted(textarea) {
   display: block !important;
   width: 100% !important;
@@ -28,6 +31,9 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   padding: 12px 16px 32px !important;
   min-height: 200px;
   resize: vertical;
+}
+::slotted(:not(input[type="password"])) {
+  text-overflow: ellipsis !important;
 }
 ::slotted(textarea:focus) {
   border-color: #FBFCFF !important;
@@ -190,6 +196,9 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 ::slotted(textarea) {
   display: block !important;
   width: 100% !important;
@@ -210,6 +219,9 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   padding: 12px 16px 32px !important;
   min-height: 200px;
   resize: vertical;
+}
+::slotted(:not(input[type="password"])) {
+  text-overflow: ellipsis !important;
 }
 ::slotted(textarea:focus) {
   border-color: #010205 !important;
@@ -372,6 +384,9 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 ::slotted(textarea) {
   display: block !important;
   width: 100% !important;
@@ -392,6 +407,9 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   padding: 12px 16px !important;
   min-height: 200px;
   resize: vertical;
+}
+::slotted(:not(input[type="password"])) {
+  text-overflow: ellipsis !important;
 }
 ::slotted(textarea:focus) {
   border-color: #010205 !important;
@@ -467,6 +485,9 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 ::slotted(textarea) {
   display: block !important;
   width: 100% !important;
@@ -487,6 +508,9 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   padding: 12px 16px 32px !important;
   min-height: 200px;
   resize: vertical;
+}
+::slotted(:not(input[type="password"])) {
+  text-overflow: ellipsis !important;
 }
 ::slotted(textarea:focus) {
   border-color: #010205 !important;
@@ -585,6 +609,9 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 ::slotted(textarea) {
   display: block !important;
   width: 100% !important;
@@ -605,6 +632,9 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   padding: 12px 16px !important;
   min-height: 200px;
   resize: vertical;
+}
+::slotted(:not(input[type="password"])) {
+  text-overflow: ellipsis !important;
 }
 ::slotted(textarea:focus) {
   border-color: #010205 !important;
@@ -679,6 +709,9 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 ::slotted(textarea) {
   display: block !important;
   width: 100% !important;
@@ -699,6 +732,9 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   padding: 12px 16px 32px !important;
   min-height: 200px;
   resize: vertical;
+}
+::slotted(:not(input[type="password"])) {
+  text-overflow: ellipsis !important;
 }
 ::slotted(textarea:focus) {
   border-color: #010205 !important;
@@ -796,6 +832,9 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 ::slotted(textarea) {
   display: block !important;
   width: 100% !important;
@@ -816,6 +855,9 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   padding: 12px 16px !important;
   min-height: 200px;
   resize: vertical;
+}
+::slotted(:not(input[type="password"])) {
+  text-overflow: ellipsis !important;
 }
 ::slotted(textarea:focus) {
   border-color: #010205 !important;
@@ -891,6 +933,9 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 ::slotted(textarea) {
   display: block !important;
   width: 100% !important;
@@ -911,6 +956,9 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   padding: 12px 16px 32px !important;
   min-height: 200px;
   resize: vertical;
+}
+::slotted(:not(input[type="password"])) {
+  text-overflow: ellipsis !important;
 }
 ::slotted(textarea:focus) {
   border-color: #010205 !important;
@@ -1009,6 +1057,9 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 ::slotted(textarea) {
   display: block !important;
   width: 100% !important;
@@ -1029,6 +1080,9 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   padding: 12px 16px !important;
   min-height: 200px;
   resize: vertical;
+}
+::slotted(:not(input[type="password"])) {
+  text-overflow: ellipsis !important;
 }
 ::slotted(textarea:focus) {
   border-color: #010205 !important;
@@ -1104,6 +1158,9 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 ::slotted(textarea) {
   display: block !important;
   width: 100% !important;
@@ -1124,6 +1181,9 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   padding: 12px 16px 32px !important;
   min-height: 200px;
   resize: vertical;
+}
+::slotted(:not(input[type="password"])) {
+  text-overflow: ellipsis !important;
 }
 ::slotted(textarea:focus) {
   border-color: #010205 !important;
@@ -1222,6 +1282,9 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 ::slotted(textarea) {
   display: block !important;
   width: 100% !important;
@@ -1242,6 +1305,9 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   padding: 12px 16px !important;
   min-height: 200px;
   resize: vertical;
+}
+::slotted(:not(input[type="password"])) {
+  text-overflow: ellipsis !important;
 }
 ::slotted(textarea:focus) {
   border-color: #010205 !important;
@@ -1316,6 +1382,9 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 ::slotted(textarea) {
   display: block !important;
   width: 100% !important;
@@ -1336,6 +1405,9 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   padding: 12px 16px 32px !important;
   min-height: 200px;
   resize: vertical;
+}
+::slotted(:not(input[type="password"])) {
+  text-overflow: ellipsis !important;
 }
 ::slotted(textarea:focus) {
   border-color: #010205 !important;
@@ -1433,6 +1505,9 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 ::slotted(textarea) {
   display: block !important;
   width: 100% !important;
@@ -1453,6 +1528,9 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   padding: 12px 16px !important;
   min-height: 200px;
   resize: vertical;
+}
+::slotted(:not(input[type="password"])) {
+  text-overflow: ellipsis !important;
 }
 ::slotted(textarea:focus) {
   border-color: #010205 !important;
@@ -1528,6 +1606,9 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 ::slotted(textarea) {
   display: block !important;
   width: 100% !important;
@@ -1548,6 +1629,9 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
   padding: 12px 16px 32px !important;
   min-height: 200px;
   resize: vertical;
+}
+::slotted(:not(input[type="password"])) {
+  text-overflow: ellipsis !important;
 }
 ::slotted(textarea:focus) {
   border-color: #010205 !important;
@@ -1646,6 +1730,9 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 ::slotted(textarea) {
   display: block !important;
   width: 100% !important;
@@ -1666,6 +1753,9 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
   padding: 12px 16px !important;
   min-height: 200px;
   resize: vertical;
+}
+::slotted(:not(input[type="password"])) {
+  text-overflow: ellipsis !important;
 }
 ::slotted(textarea:focus) {
   border-color: #010205 !important;

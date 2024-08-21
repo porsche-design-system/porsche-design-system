@@ -12,6 +12,9 @@ exports[`getComponentCss() should return correct css for isOpen: false, position
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 slot {
   display: block;
 }
@@ -79,11 +82,7 @@ dialog::backdrop {
   max-width: var(--p-flyout-max-width,1180px);
 }
 .dismiss {
-  width: fit-content;
-  height: fit-content;
-  border: 2px solid #EEEFF2;
-  border-radius: 4px;
-  background: #EEEFF2;
+  --p-internal-button-scaling: 0;
   margin-inline-end: 200vw;
   transition: margin-inline-end 0s linear var(--p-transition-duration, 0s);
   grid-area: 1/3;
@@ -108,6 +107,9 @@ exports[`getComponentCss() should return correct css for isOpen: false, position
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 slot {
   display: block;
 }
@@ -179,11 +181,7 @@ dialog::backdrop {
   max-width: var(--p-flyout-max-width,1180px);
 }
 .dismiss {
-  width: fit-content;
-  height: fit-content;
-  border: 2px solid #212225;
-  border-radius: 4px;
-  background: #212225;
+  --p-internal-button-scaling: 0;
   margin-inline-end: 200vw;
   transition: margin-inline-end 0s linear var(--p-transition-duration, 0s);
   grid-area: 1/3;
@@ -208,6 +206,9 @@ exports[`getComponentCss() should return correct css for isOpen: false, position
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 slot {
   display: block;
 }
@@ -294,11 +295,7 @@ dialog::backdrop {
   max-width: var(--p-flyout-max-width,1180px);
 }
 .dismiss {
-  width: fit-content;
-  height: fit-content;
-  border: 2px solid #212225;
-  border-radius: 4px;
-  background: #212225;
+  --p-internal-button-scaling: 0;
   margin-inline-end: 200vw;
   transition: margin-inline-end 0s linear var(--p-transition-duration, 0s);
   grid-area: 1/3;
@@ -323,6 +320,9 @@ exports[`getComponentCss() should return correct css for isOpen: false, position
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 slot {
   display: block;
 }
@@ -405,11 +405,7 @@ dialog::backdrop {
   max-width: var(--p-flyout-max-width,1180px);
 }
 .dismiss {
-  width: fit-content;
-  height: fit-content;
-  border: 2px solid #EEEFF2;
-  border-radius: 4px;
-  background: #EEEFF2;
+  --p-internal-button-scaling: 0;
   margin-inline-end: 200vw;
   transition: margin-inline-end 0s linear var(--p-transition-duration, 0s);
   grid-area: 1/3;
@@ -434,6 +430,9 @@ exports[`getComponentCss() should return correct css for isOpen: false, position
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 slot {
   display: block;
 }
@@ -501,11 +500,7 @@ dialog::backdrop {
   max-width: var(--p-flyout-max-width,1180px);
 }
 .dismiss {
-  width: fit-content;
-  height: fit-content;
-  border: 2px solid #EEEFF2;
-  border-radius: 4px;
-  background: #EEEFF2;
+  --p-internal-button-scaling: 0;
   grid-area: 1/3;
   z-index: 4;
   position: sticky;
@@ -527,6 +522,9 @@ exports[`getComponentCss() should return correct css for isOpen: false, position
 }
 :host([hidden]) {
   display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
 }
 slot {
   display: block;
@@ -595,11 +593,7 @@ dialog::backdrop {
   max-width: var(--p-flyout-max-width,1180px);
 }
 .dismiss {
-  width: fit-content;
-  height: fit-content;
-  border: 2px solid #EEEFF2;
-  border-radius: 4px;
-  background: #EEEFF2;
+  --p-internal-button-scaling: 0;
   margin-inline-end: 200vw;
   transition: margin-inline-end 0s linear var(--p-transition-duration, 0s);
   grid-area: 1/3;
@@ -624,6 +618,9 @@ exports[`getComponentCss() should return correct css for isOpen: false, position
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 slot {
   display: block;
 }
@@ -691,11 +688,7 @@ dialog::backdrop {
   max-width: var(--p-flyout-max-width,1180px);
 }
 .dismiss {
-  width: fit-content;
-  height: fit-content;
-  border: 2px solid #EEEFF2;
-  border-radius: 4px;
-  background: #EEEFF2;
+  --p-internal-button-scaling: 0;
   grid-area: 1/3;
   z-index: 4;
   position: sticky;
@@ -717,6 +710,9 @@ exports[`getComponentCss() should return correct css for isOpen: false, position
 }
 :host([hidden]) {
   display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
 }
 slot {
   display: block;
@@ -789,11 +785,7 @@ dialog::backdrop {
   max-width: var(--p-flyout-max-width,1180px);
 }
 .dismiss {
-  width: fit-content;
-  height: fit-content;
-  border: 2px solid #212225;
-  border-radius: 4px;
-  background: #212225;
+  --p-internal-button-scaling: 0;
   grid-area: 1/3;
   z-index: 4;
   position: sticky;
@@ -815,6 +807,9 @@ exports[`getComponentCss() should return correct css for isOpen: false, position
 }
 :host([hidden]) {
   display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
 }
 slot {
   display: block;
@@ -902,11 +897,7 @@ dialog::backdrop {
   max-width: var(--p-flyout-max-width,1180px);
 }
 .dismiss {
-  width: fit-content;
-  height: fit-content;
-  border: 2px solid #212225;
-  border-radius: 4px;
-  background: #212225;
+  --p-internal-button-scaling: 0;
   grid-area: 1/3;
   z-index: 4;
   position: sticky;
@@ -928,6 +919,9 @@ exports[`getComponentCss() should return correct css for isOpen: true, position:
 }
 :host([hidden]) {
   display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
 }
 slot {
   display: block;
@@ -1001,11 +995,7 @@ dialog::backdrop {
   max-width: var(--p-flyout-max-width,1180px);
 }
 .dismiss {
-  width: fit-content;
-  height: fit-content;
-  border: 2px solid #EEEFF2;
-  border-radius: 4px;
-  background: #EEEFF2;
+  --p-internal-button-scaling: 0;
   margin-inline-end: 0;
   transition: margin-inline-end 0s linear var(--p-transition-duration, 1ms);
   grid-area: 1/3;
@@ -1024,10 +1014,6 @@ dialog::backdrop {
     color: #FBFCFF;
     background: #0E0E12;
   }
-  .dismiss {
-    background: #212225;
-    border-color: #212225;
-  }
 }
 "
 `;
@@ -1043,6 +1029,9 @@ exports[`getComponentCss() should return correct css for isOpen: true, position:
 }
 :host([hidden]) {
   display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
 }
 slot {
   display: block;
@@ -1110,11 +1099,7 @@ dialog::backdrop {
   max-width: var(--p-flyout-max-width,1180px);
 }
 .dismiss {
-  width: fit-content;
-  height: fit-content;
-  border: 2px solid #212225;
-  border-radius: 4px;
-  background: #212225;
+  --p-internal-button-scaling: 0;
   margin-inline-end: 0;
   transition: margin-inline-end 0s linear var(--p-transition-duration, 1ms);
   grid-area: 1/3;
@@ -1139,6 +1124,9 @@ exports[`getComponentCss() should return correct css for isOpen: true, position:
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 slot {
   display: block;
 }
@@ -1205,11 +1193,7 @@ dialog::backdrop {
   max-width: var(--p-flyout-max-width,1180px);
 }
 .dismiss {
-  width: fit-content;
-  height: fit-content;
-  border: 2px solid #EEEFF2;
-  border-radius: 4px;
-  background: #EEEFF2;
+  --p-internal-button-scaling: 0;
   margin-inline-end: 0;
   transition: margin-inline-end 0s linear var(--p-transition-duration, 1ms);
   grid-area: 1/3;
@@ -1233,6 +1217,9 @@ exports[`getComponentCss() should return correct css for isOpen: true, position:
 }
 :host([hidden]) {
   display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
 }
 slot {
   display: block;
@@ -1310,11 +1297,7 @@ dialog::backdrop {
   max-width: var(--p-flyout-max-width,1180px);
 }
 .dismiss {
-  width: fit-content;
-  height: fit-content;
-  border: 2px solid #EEEFF2;
-  border-radius: 4px;
-  background: #EEEFF2;
+  --p-internal-button-scaling: 0;
   margin-inline-end: 0;
   transition: margin-inline-end 0s linear var(--p-transition-duration, 1ms);
   grid-area: 1/3;
@@ -1333,10 +1316,6 @@ dialog::backdrop {
     color: #FBFCFF;
     background: #0E0E12;
   }
-  .dismiss {
-    background: #212225;
-    border-color: #212225;
-  }
 }
 "
 `;
@@ -1352,6 +1331,9 @@ exports[`getComponentCss() should return correct css for isOpen: true, position:
 }
 :host([hidden]) {
   display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
 }
 slot {
   display: block;
@@ -1434,11 +1416,7 @@ dialog::backdrop {
   max-width: var(--p-flyout-max-width,1180px);
 }
 .dismiss {
-  width: fit-content;
-  height: fit-content;
-  border: 2px solid #212225;
-  border-radius: 4px;
-  background: #212225;
+  --p-internal-button-scaling: 0;
   margin-inline-end: 0;
   transition: margin-inline-end 0s linear var(--p-transition-duration, 1ms);
   grid-area: 1/3;
@@ -1462,6 +1440,9 @@ exports[`getComponentCss() should return correct css for isOpen: true, position:
 }
 :host([hidden]) {
   display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
 }
 slot {
   display: block;
@@ -1544,11 +1525,7 @@ dialog::backdrop {
   max-width: var(--p-flyout-max-width,1180px);
 }
 .dismiss {
-  width: fit-content;
-  height: fit-content;
-  border: 2px solid #EEEFF2;
-  border-radius: 4px;
-  background: #EEEFF2;
+  --p-internal-button-scaling: 0;
   margin-inline-end: 0;
   transition: margin-inline-end 0s linear var(--p-transition-duration, 1ms);
   grid-area: 1/3;
@@ -1572,6 +1549,9 @@ exports[`getComponentCss() should return correct css for isOpen: true, position:
 }
 :host([hidden]) {
   display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
 }
 slot {
   display: block;
@@ -1658,11 +1638,7 @@ dialog::backdrop {
   max-width: var(--p-flyout-max-width,1180px);
 }
 .dismiss {
-  width: fit-content;
-  height: fit-content;
-  border: 2px solid #EEEFF2;
-  border-radius: 4px;
-  background: #EEEFF2;
+  --p-internal-button-scaling: 0;
   margin-inline-end: 0;
   transition: margin-inline-end 0s linear var(--p-transition-duration, 1ms);
   grid-area: 1/3;
@@ -1686,6 +1662,9 @@ exports[`getComponentCss() should return correct css for isOpen: true, position:
 }
 :host([hidden]) {
   display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
 }
 slot {
   display: block;
@@ -1787,11 +1766,7 @@ dialog::backdrop {
   max-width: var(--p-flyout-max-width,1180px);
 }
 .dismiss {
-  width: fit-content;
-  height: fit-content;
-  border: 2px solid #EEEFF2;
-  border-radius: 4px;
-  background: #EEEFF2;
+  --p-internal-button-scaling: 0;
   margin-inline-end: 0;
   transition: margin-inline-end 0s linear var(--p-transition-duration, 1ms);
   grid-area: 1/3;
@@ -1815,6 +1790,9 @@ exports[`getComponentCss() should return correct css for isOpen: true, position:
 }
 :host([hidden]) {
   display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
 }
 slot {
   display: block;
@@ -1882,11 +1860,7 @@ dialog::backdrop {
   max-width: var(--p-flyout-max-width,1180px);
 }
 .dismiss {
-  width: fit-content;
-  height: fit-content;
-  border: 2px solid #212225;
-  border-radius: 4px;
-  background: #212225;
+  --p-internal-button-scaling: 0;
   grid-area: 1/3;
   z-index: 4;
   position: sticky;
@@ -1908,6 +1882,9 @@ exports[`getComponentCss() should return correct css for isOpen: true, position:
 }
 :host([hidden]) {
   display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
 }
 slot {
   display: block;
@@ -1975,11 +1952,7 @@ dialog::backdrop {
   max-width: var(--p-flyout-max-width,1180px);
 }
 .dismiss {
-  width: fit-content;
-  height: fit-content;
-  border: 2px solid #EEEFF2;
-  border-radius: 4px;
-  background: #EEEFF2;
+  --p-internal-button-scaling: 0;
   grid-area: 1/3;
   z-index: 4;
   position: sticky;
@@ -2001,6 +1974,9 @@ exports[`getComponentCss() should return correct css for isOpen: true, position:
 }
 :host([hidden]) {
   display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
 }
 slot {
   display: block;
@@ -2083,11 +2059,7 @@ dialog::backdrop {
   max-width: var(--p-flyout-max-width,1180px);
 }
 .dismiss {
-  width: fit-content;
-  height: fit-content;
-  border: 2px solid #212225;
-  border-radius: 4px;
-  background: #212225;
+  --p-internal-button-scaling: 0;
   grid-area: 1/3;
   z-index: 4;
   position: sticky;
@@ -2109,6 +2081,9 @@ exports[`getComponentCss() should return correct css for isOpen: true, position:
 }
 :host([hidden]) {
   display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
 }
 slot {
   display: block;
@@ -2191,11 +2166,7 @@ dialog::backdrop {
   max-width: var(--p-flyout-max-width,1180px);
 }
 .dismiss {
-  width: fit-content;
-  height: fit-content;
-  border: 2px solid #EEEFF2;
-  border-radius: 4px;
-  background: #EEEFF2;
+  --p-internal-button-scaling: 0;
   grid-area: 1/3;
   z-index: 4;
   position: sticky;
@@ -2217,6 +2188,9 @@ exports[`getComponentCss() should return correct css for isOpen: true, position:
 }
 :host([hidden]) {
   display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
 }
 slot {
   display: block;
@@ -2303,11 +2277,7 @@ dialog::backdrop {
   max-width: var(--p-flyout-max-width,1180px);
 }
 .dismiss {
-  width: fit-content;
-  height: fit-content;
-  border: 2px solid #EEEFF2;
-  border-radius: 4px;
-  background: #EEEFF2;
+  --p-internal-button-scaling: 0;
   grid-area: 1/3;
   z-index: 4;
   position: sticky;

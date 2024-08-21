@@ -34,6 +34,9 @@ exports[`getComponentCss() should return correct css for open: false 1`] = `
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 @media(min-width:760px) {
   :host {
     top: var(--p-banner-position-top,56px) !important;
@@ -90,6 +93,9 @@ exports[`getComponentCss() should return correct css for open: true 1`] = `
 }
 :host([hidden]) {
   display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
 }
 @media(min-width:760px) {
   :host {

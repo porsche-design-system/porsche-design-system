@@ -8,6 +8,7 @@ import {
   getThemedColors,
   hostHiddenStyles,
   prefersColorSchemeDarkMediaQuery,
+  preventFoucOfNestedElementsStyles,
 } from '../../styles';
 import { headingSmallStyle, headingMediumStyle, spacingStaticMedium } from '@porsche-design-system/styles';
 import { getFunctionalComponentRequiredStyles } from '../common/required/required-styles';
@@ -28,6 +29,7 @@ export const getComponentCss = (
           ...hostHiddenStyles,
         }),
       },
+      ...preventFoucOfNestedElementsStyles,
       fieldset: {
         margin: 0,
         padding: 0,

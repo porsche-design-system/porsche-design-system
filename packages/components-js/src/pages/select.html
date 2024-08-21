@@ -358,7 +358,7 @@
   <p-select name="options" label="Opened with slotted images" dropdown-direction="down" class="open">
     <p-select-option value="a">
       <img
-        src="https://porsche-design-system.github.io/porsche-design-system/assets/placeholder_800x500.svg"
+        src="https://porsche-design-system.github.io/dummyasset/placeholder_800x500.svg"
         alt="Some alt text"
         width="800"
         height="500"
@@ -369,7 +369,7 @@
     >
     <p-select-option value="b">
       <img
-        src="https://porsche-design-system.github.io/porsche-design-system/assets/placeholder_800x900.svg"
+        src="https://porsche-design-system.github.io/dummyasset/placeholder_800x900.svg"
         alt="Some alt text"
         width="800"
         height="900"
@@ -378,7 +378,7 @@
     </p-select-option>
     <p-select-option value="c">
       <img
-        src="https://porsche-design-system.github.io/porsche-design-system/assets/placeholder_800x900.svg"
+        src="https://porsche-design-system.github.io/dummyasset/placeholder_800x900.svg"
         alt="Some alt text"
         width="800"
         height="900"
@@ -387,7 +387,7 @@
     </p-select-option>
     <p-select-option value="d">
       <img
-        src="https://porsche-design-system.github.io/porsche-design-system/assets/718.png"
+        src="https://porsche-design-system.github.io/dummyasset/718.png"
         alt="Some alt text"
         width="271"
         height="96"
@@ -397,6 +397,16 @@
     <p-select-option value="e">Option E</p-select-option>
     <p-select-option value="f">Option F</p-select-option>
   </p-select>
+</div>
+
+<div class="playground light" title="should render with ellipsis and min-width in a smaller container">
+  <div style="width: 60px">
+    <p-select name="options" value="a" label="Some label">
+      <p-select-option value="a">Option A</p-select-option>
+      <p-select-option value="b">Option B</p-select-option>
+      <p-select-option value="c">Option C</p-select-option>
+    </p-select>
+  </div>
 </div>
 
 <script>

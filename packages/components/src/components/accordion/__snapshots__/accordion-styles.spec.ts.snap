@@ -12,6 +12,9 @@ exports[`getComponentCss() should return correct css for size: "medium", compact
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 button {
   display: flex;
   position: relative;
@@ -117,6 +120,9 @@ exports[`getComponentCss() should return correct css for size: "medium", compact
 }
 :host([hidden]) {
   display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
 }
 button {
   display: flex;
@@ -225,6 +231,9 @@ exports[`getComponentCss() should return correct css for size: "medium", compact
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 button {
   display: flex;
   position: relative;
@@ -330,6 +339,9 @@ exports[`getComponentCss() should return correct css for size: "medium", compact
 }
 :host([hidden]) {
   display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
 }
 button {
   display: flex;
@@ -443,6 +455,9 @@ exports[`getComponentCss() should return correct css for size: "medium", compact
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 button {
   display: flex;
   position: relative;
@@ -548,6 +563,9 @@ exports[`getComponentCss() should return correct css for size: "medium", compact
 }
 :host([hidden]) {
   display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
 }
 button {
   display: flex;
@@ -661,6 +679,9 @@ exports[`getComponentCss() should return correct css for size: "medium", compact
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 button {
   display: flex;
   position: relative;
@@ -768,6 +789,9 @@ exports[`getComponentCss() should return correct css for size: "small", compact:
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 button {
   display: flex;
   position: relative;
@@ -873,6 +897,9 @@ exports[`getComponentCss() should return correct css for size: "small", compact:
 }
 :host([hidden]) {
   display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
 }
 button {
   display: flex;
@@ -981,6 +1008,9 @@ exports[`getComponentCss() should return correct css for size: "small", compact:
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 button {
   display: flex;
   position: relative;
@@ -1088,6 +1118,9 @@ exports[`getComponentCss() should return correct css for size: "small", compact:
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 button {
   display: flex;
   position: relative;
@@ -1193,6 +1226,9 @@ exports[`getComponentCss() should return correct css for size: "small", compact:
 }
 :host([hidden]) {
   display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
 }
 button {
   display: flex;
@@ -1300,6 +1336,9 @@ exports[`getComponentCss() should return correct css for size: {"base":"small","
 }
 :host([hidden]) {
   display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
 }
 button {
   display: flex;

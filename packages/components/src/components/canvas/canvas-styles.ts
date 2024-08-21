@@ -1,5 +1,11 @@
 import { getCss } from '../../utils';
-import { addImportantToEachRule, colorSchemeStyles, getTransition, hostHiddenStyles } from '../../styles';
+import {
+  addImportantToEachRule,
+  colorSchemeStyles,
+  getTransition,
+  hostHiddenStyles,
+  preventFoucOfNestedElementsStyles,
+} from '../../styles';
 import { getMediaQueryMin, spacingStaticXSmall, gridGap } from '@porsche-design-system/styles';
 import { type CanvasSidebarWidth, type CanvasSidebarStartWidth, type CanvasSidebarEndWidth } from './canvas-utils';
 
@@ -29,6 +35,7 @@ export const getComponentCss = (
           ...hostHiddenStyles,
         }),
       },
+      ...preventFoucOfNestedElementsStyles,
       ':is(header, main, footer, aside)': {
         padding: gridProductiveGap,
         boxSizing: 'border-box',

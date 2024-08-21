@@ -10,6 +10,7 @@ import {
   hostHiddenStyles,
   hoverMediaQuery,
   prefersColorSchemeDarkMediaQuery,
+  preventFoucOfNestedElementsStyles,
 } from '../../styles';
 import {
   borderRadiusSmall,
@@ -54,6 +55,7 @@ export const getComponentCss = (activePage: number, pageTotal: number, showLastP
           ...hostHiddenStyles,
         }),
       },
+      ...preventFoucOfNestedElementsStyles,
       nav: {
         display: 'flex',
         justifyContent: 'center',

@@ -8,6 +8,7 @@ import {
   getNamedSlotOrThrow,
   getPrefixedTagNames,
   hasPropValueChanged,
+  preventAutoPlayOfSlottedVideoOnPrefersReducedMotion,
   throwIfElementIsNotOfKind,
   TILE_ASPECT_RATIOS,
   TILE_WEIGHTS,
@@ -77,6 +78,10 @@ export class LinkTileModelSignature {
     applyConstructableStylesheetStyles(this.host, getSlottedPictureImageStyles);
   }
 
+  public componentWillLoad(): void {
+    preventAutoPlayOfSlottedVideoOnPrefersReducedMotion(this.host); // only checked once during component initialization
+  }
+
   public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
     return hasPropValueChanged(newVal, oldVal);
   }
@@ -120,7 +125,7 @@ export class LinkTileModelSignature {
           <slot name="header" />
         </div>
         <div class="media">
-          <slot />
+          <slot onSlotchange={() => preventAutoPlayOfSlottedVideoOnPrefersReducedMotion(this.host)} />
         </div>
         <div class="footer">
           <this.headingTag>{this.heading}</this.headingTag>

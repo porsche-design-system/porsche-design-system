@@ -85,13 +85,13 @@ export default class Code extends Vue {
   }
 
   customTagHierarchy =
-`<p-headline variant="headline-1" tag="h3">${sentence}</p-headline>
-<p-headline variant="headline-3" tag="h1">${sentence}</p-headline>
-<p-headline variant="headline-1">
-  <h3>${sentence}</h3>
-</p-headline>
+`<p-headline variant="headline-3" tag="h1">${sentence}</p-headline>
 <p-headline variant="headline-3">
   <h1>${sentence}</h1>
+</p-headline>
+<p-headline variant="headline-1" tag="h2">${sentence}</p-headline>
+<p-headline variant="headline-1">
+  <h2>${sentence}</h2>
 </p-headline>`;
 
   color = 'default';

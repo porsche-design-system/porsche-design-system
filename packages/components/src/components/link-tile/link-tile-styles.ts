@@ -18,6 +18,7 @@ import {
   getTransition,
   hostHiddenStyles,
   hoverMediaQuery,
+  preventFoucOfNestedElementsStyles,
 } from '../../styles';
 import {
   borderRadiusLarge,
@@ -55,6 +56,7 @@ export const getComponentCss = (
           ...hostHiddenStyles,
         }),
       },
+      ...preventFoucOfNestedElementsStyles,
       slot: {
         display: 'block',
         '&:not([name])': {
@@ -67,12 +69,12 @@ export const getComponentCss = (
           zIndex: 3,
         },
       },
-      '::slotted(:is(img,picture))': addImportantToEachRule({
+      '::slotted(:is(img,picture,video))': addImportantToEachRule({
         display: 'block',
         width: '100%',
         height: '100%',
       }),
-      '::slotted(img)': addImportantToEachRule({
+      '::slotted(:is(img,video))': addImportantToEachRule({
         objectFit: 'cover',
       }),
       a: {
@@ -140,6 +142,7 @@ export const getComponentCss = (
         })),
     },
     media: {
+      position: 'relative', // necessary if custom `position: absolute` style is added to media elements
       gridArea: '1/1/-1 /-1',
       zIndex: 1,
       overflow: 'hidden', // relevant for scaling of nested image

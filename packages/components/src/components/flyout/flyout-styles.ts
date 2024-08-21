@@ -1,5 +1,10 @@
 import { getCss, type Theme } from '../../utils';
-import { addImportantToEachRule, colorSchemeStyles, hostHiddenStyles } from '../../styles';
+import {
+  addImportantToEachRule,
+  colorSchemeStyles,
+  hostHiddenStyles,
+  preventFoucOfNestedElementsStyles,
+} from '../../styles';
 import { spacingFluidMedium, spacingFluidSmall } from '@porsche-design-system/styles';
 import { type FlyoutPosition } from './flyout-utils';
 import {
@@ -9,7 +14,7 @@ import {
   getDialogJssStyle,
   getDialogStickyAreaJssStyle,
   getDialogTransitionJssStyle,
-  getDismissButtonJssStyle,
+  getDialogDismissButtonJssStyle,
   getScrollerJssStyle,
 } from '../../styles/dialog-styles';
 
@@ -37,6 +42,7 @@ export const getComponentCss = (
           ...hostHiddenStyles,
         }),
       },
+      ...preventFoucOfNestedElementsStyles,
       slot: {
         display: 'block',
         '&:first-of-type': {
@@ -83,7 +89,7 @@ export const getComponentCss = (
       maxWidth: `var(${cssVariableMaxWidth},1180px)`,
     },
     dismiss: {
-      ...getDismissButtonJssStyle(theme, isOpen, !isPositionStart),
+      ...getDialogDismissButtonJssStyle(isOpen, !isPositionStart),
       gridArea: '1/3',
       zIndex: 4, // ensures dismiss button is above everything
       position: 'sticky',

@@ -10,6 +10,7 @@ import {
   hostHiddenStyles,
   hoverMediaQuery,
   prefersColorSchemeDarkMediaQuery,
+  preventFoucOfNestedElementsStyles,
 } from './';
 import {
   borderRadiusSmall,
@@ -74,6 +75,7 @@ export const getLinkButtonPureStyles = (
           ...(!responsiveStretch && { verticalAlign: 'top' }),
         })),
       },
+      ...preventFoucOfNestedElementsStyles,
     },
     root: {
       display: 'flex',

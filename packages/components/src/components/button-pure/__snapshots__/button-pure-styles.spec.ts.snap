@@ -11,6 +11,9 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 @media(min-width:480px) {
   :host {
     display: inline-block;
@@ -240,6 +243,9 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 .root {
   display: flex;
   width: 100%;
@@ -411,6 +417,9 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 .root {
   display: flex;
   width: 100%;
@@ -506,6 +515,9 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
 }
 :host([hidden]) {
   display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
 }
 .root {
   display: flex;
@@ -603,6 +615,9 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 .root {
   display: flex;
   width: 100%;
@@ -698,6 +713,9 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
 }
 :host([hidden]) {
   display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
 }
 .root {
   display: flex;
@@ -795,6 +813,9 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 .root {
   display: flex;
   width: 100%;
@@ -890,6 +911,9 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
 }
 :host([hidden]) {
   display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
 }
 .root {
   display: flex;
@@ -987,6 +1011,9 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 .root {
   display: flex;
   width: 100%;
@@ -1075,6 +1102,9 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 .root {
   display: flex;
   width: 100%;
@@ -1161,6 +1191,9 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
 }
 :host([hidden]) {
   display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
 }
 .root {
   display: flex;
@@ -1259,6 +1292,9 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
 }
 :host([hidden]) {
   display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
 }
 .root {
   display: flex;
@@ -1359,6 +1395,9 @@ exports[`getComponentCss() should return correct css for {"icon":"arrow-head-rig
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 .root {
   display: flex;
   width: 100%;
@@ -1450,6 +1489,9 @@ exports[`getComponentCss() should return correct css for {"icon":"none","iconSou
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 .root {
   display: flex;
   width: 100%;
@@ -1529,6 +1571,9 @@ exports[`getComponentCss() should return correct css for {"icon":"none","iconSou
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 .root {
   display: flex;
   width: 100%;
@@ -1607,6 +1652,9 @@ exports[`getComponentCss() should return correct css for {"icon":"none","iconSou
 }
 :host([hidden]) {
   display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
 }
 .root {
   display: flex;
@@ -1716,6 +1764,9 @@ exports[`getComponentCss() should return correct css for {"icon":"none","iconSou
 }
 :host([hidden]) {
   display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
 }
 .root {
   display: flex;

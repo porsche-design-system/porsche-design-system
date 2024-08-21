@@ -1,5 +1,5 @@
 <template>
-  <nav v-show="!this.isSearchVisible">
+  <nav v-show="!this.isSearchVisible" aria-label="Main">
     <!-- TODO: spacer class could be applied with an additional abstraction layer in storefront.config.ts  -->
     <p-accordion
       :theme="storefrontTheme"
@@ -18,7 +18,7 @@
             v-slot="{ href, navigate }"
           >
             <p-link-pure :theme="storefrontTheme" icon="none" :active="isExtendedActive(category, page)">
-              <a :href="href" @click="navigate"
+              <a :href="href" @click="navigate" :aria-current="isExtendedActive(category, page) ? 'page' : 'false'"
                 >{{ page }}
                 <span v-if="isComponentWithProp(category, page, 'isDeprecated')" title="deprecated"> 🚫</span>
                 <span v-if="isComponentWithProp(category, page, 'isExperimental')" title="experimental"> 🧪</span>

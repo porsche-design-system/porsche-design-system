@@ -61,6 +61,9 @@ export const getSlottedTextFieldTextareaSelectStyles = (
       }),
       ...additionalDefaultJssStyle,
     },
+    ['::slotted(:not(input[type="password"]))']: {
+      textOverflow: 'ellipsis',
+    },
     ...(!isLoading &&
       (hoverMediaQuery({
         // with the media query the selector has higher priority and overrides disabled styles

@@ -9,6 +9,9 @@ exports[`getComponentCss() should return correct css for aspectRatio: "1:1", wei
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 slot:not([name]) {
   display: block;
   width: 100%;
@@ -21,12 +24,12 @@ slot[name=primary] {
 slot[name=secondary] {
   pointer-events: auto;
 }
-::slotted(:is(img,picture)) {
+::slotted(:is(img,picture,video)) {
   display: block !important;
   width: 100% !important;
   height: 100% !important;
 }
-::slotted(img) {
+::slotted(:is(img,video)) {
   object-fit: cover !important;
 }
 a {
@@ -68,6 +71,7 @@ h1,h2,h3,h4,h5,h6 {
   gap: clamp(8px, 0.5vw + 6px, 16px);
 }
 .media {
+  position: relative;
   grid-area: 1/1/-1 /-1;
   z-index: 1;
   overflow: hidden;
@@ -113,6 +117,9 @@ exports[`getComponentCss() should return correct css for aspectRatio: "3:4", wei
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 slot:not([name]) {
   display: block;
   width: 100%;
@@ -125,12 +132,12 @@ slot[name=primary] {
 slot[name=secondary] {
   pointer-events: auto;
 }
-::slotted(:is(img,picture)) {
+::slotted(:is(img,picture,video)) {
   display: block !important;
   width: 100% !important;
   height: 100% !important;
 }
-::slotted(img) {
+::slotted(:is(img,video)) {
   object-fit: cover !important;
 }
 a {
@@ -181,6 +188,7 @@ p {
   gap: clamp(8px, 0.5vw + 6px, 16px);
 }
 .media {
+  position: relative;
   grid-area: 1/1/-1 /-1;
   z-index: 1;
   overflow: hidden;
@@ -226,6 +234,9 @@ exports[`getComponentCss() should return correct css for aspectRatio: "4:3", wei
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 slot:not([name]) {
   display: block;
   width: 100%;
@@ -238,12 +249,12 @@ slot[name=primary] {
 slot[name=secondary] {
   pointer-events: auto;
 }
-::slotted(:is(img,picture)) {
+::slotted(:is(img,picture,video)) {
   display: block !important;
   width: 100% !important;
   height: 100% !important;
 }
-::slotted(img) {
+::slotted(:is(img,video)) {
   object-fit: cover !important;
 }
 a {
@@ -294,6 +305,7 @@ p {
   gap: clamp(8px, 0.5vw + 6px, 16px);
 }
 .media {
+  position: relative;
   grid-area: 1/1/-1 /-1;
   z-index: 1;
   overflow: hidden;
@@ -339,6 +351,9 @@ exports[`getComponentCss() should return correct css for aspectRatio: "9:16", we
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 slot:not([name]) {
   display: block;
   width: 100%;
@@ -351,12 +366,12 @@ slot[name=primary] {
 slot[name=secondary] {
   pointer-events: auto;
 }
-::slotted(:is(img,picture)) {
+::slotted(:is(img,picture,video)) {
   display: block !important;
   width: 100% !important;
   height: 100% !important;
 }
-::slotted(img) {
+::slotted(:is(img,video)) {
   object-fit: cover !important;
 }
 a {
@@ -398,6 +413,7 @@ h1,h2,h3,h4,h5,h6 {
   gap: clamp(8px, 0.5vw + 6px, 16px);
 }
 .media {
+  position: relative;
   grid-area: 1/1/-1 /-1;
   z-index: 1;
   overflow: hidden;
@@ -443,6 +459,9 @@ exports[`getComponentCss() should return correct css for aspectRatio: "16:9", we
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 slot:not([name]) {
   display: block;
   width: 100%;
@@ -455,12 +474,12 @@ slot[name=primary] {
 slot[name=secondary] {
   pointer-events: auto;
 }
-::slotted(:is(img,picture)) {
+::slotted(:is(img,picture,video)) {
   display: block !important;
   width: 100% !important;
   height: 100% !important;
 }
-::slotted(img) {
+::slotted(:is(img,video)) {
   object-fit: cover !important;
 }
 a {
@@ -511,6 +530,7 @@ p {
   gap: clamp(8px, 0.5vw + 6px, 16px);
 }
 .media {
+  position: relative;
   grid-area: 1/1/-1 /-1;
   z-index: 1;
   overflow: hidden;
@@ -556,6 +576,9 @@ exports[`getComponentCss() should return correct css for aspectRatio: {"base":"1
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 slot:not([name]) {
   display: block;
   width: 100%;
@@ -568,12 +591,12 @@ slot[name=primary] {
 slot[name=secondary] {
   pointer-events: auto;
 }
-::slotted(:is(img,picture)) {
+::slotted(:is(img,picture,video)) {
   display: block !important;
   width: 100% !important;
   height: 100% !important;
 }
-::slotted(img) {
+::slotted(:is(img,video)) {
   object-fit: cover !important;
 }
 a {
@@ -654,6 +677,7 @@ p {
   gap: clamp(8px, 0.5vw + 6px, 16px);
 }
 .media {
+  position: relative;
   grid-area: 1/1/-1 /-1;
   z-index: 1;
   overflow: hidden;

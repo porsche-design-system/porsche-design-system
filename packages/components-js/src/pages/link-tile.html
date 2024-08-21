@@ -299,6 +299,18 @@
   </p-link-tile>
 </div>
 
+<div class="playground light auto-layout-inline" title="should render with video">
+  <p-link-tile href="#" label="Some label" description="Video tag">
+    <video
+      poster="https://porsche-design-system.github.io/dummyasset/ocean.jpg"
+      src="https://porsche-design-system.github.io/dummyasset/ocean.mp4"
+      loop
+      muted
+      aria-hidden="true"
+    ></video>
+  </p-link-tile>
+</div>
+
 <div class="playground light" title="should render with max width description text">
   <p-link-tile
     style="max-width: 50rem"
@@ -374,4 +386,19 @@
       />
     </p-link-tile>
   </div>
+</div>
+
+<div
+  class="playground light auto-layout-inline"
+  title="should render default button-tile with custom styles on media element"
+>
+  <p-link-tile href="#" label="Some Label" description="Default">
+    <img
+      src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyAQMAAAAk8RryAAAABlBMVEUAAAD2vP9xXLiUAAAAAXRSTlMAQObYZgAAABxJREFUGNNjYOBgYGBhYKAZ/R8MDsD4Q5amkz8ASp4PtTYYQZIAAAAASUVORK5CYII="
+      width="50"
+      height="50"
+      alt="Some alt text"
+      style="position: absolute; inset: 0; object-fit: cover; object-position: 42% 0; aspect-ratio: 3 / 4"
+    />
+  </p-link-tile>
 </div>

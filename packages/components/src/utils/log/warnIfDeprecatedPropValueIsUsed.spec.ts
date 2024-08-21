@@ -3,8 +3,8 @@ import * as helperUtils from './helper';
 import { warnIfDeprecatedPropValueIsUsed } from './warnIfDeprecatedPropValueIsUsed';
 
 const warningMessage1 =
-  'prop=\'deprecatedValue\' is deprecated for component span and will be removed with next major release.';
-const warningMessage2 = 'Please use prop=\'value\' instead.';
+  "prop='deprecatedValue' is deprecated for component span and will be removed with next major release.";
+const warningMessage2 = "Please use prop='value' instead.";
 
 class SomeInstance {
   host = document.createElement('span');
@@ -26,8 +26,8 @@ it('should call getDeprecatedPropOrSlotWarningMessage() with correct parameters 
     deprecatedValue: 'value',
   });
 
-  expect(getDeprecatedPropOrSlotWarningMessageSpy).toHaveBeenCalledWith(instance.host, 'prop=\'deprecatedValue\'');
-  expect(consoleWarnSpy).toHaveBeenCalledWith(warningMessage1, warningMessage2);
+  expect(getDeprecatedPropOrSlotWarningMessageSpy).toHaveBeenCalledWith(instance.host, "prop='deprecatedValue'");
+  expect(consoleWarnSpy).toHaveBeenCalledWith(warningMessage1, warningMessage2, instance.host);
 });
 
 it('should not call getDeprecatedPropOrSlotWarningMessage() when prop value is not a key of deprecationMap', () => {
@@ -50,7 +50,7 @@ it('should call consoleWarn() with correct parameters when prop value is key of 
     deprecatedValue: 'value',
   });
 
-  expect(spy).toHaveBeenCalledWith(warningMessage1, warningMessage2);
+  expect(spy).toHaveBeenCalledWith(warningMessage1, warningMessage2, instance.host);
 });
 
 it('should not call consoleWarn() when prop value is not a key of deprecationMap', () => {

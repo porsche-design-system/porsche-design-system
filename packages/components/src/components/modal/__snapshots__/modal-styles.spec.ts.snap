@@ -12,6 +12,9 @@ exports[`getComponentCss() should return correct css for open: false, backdrop: 
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 ::slotted(.stretch-to-full-modal-width) {
   display: block !important;
   margin: 0 calc(clamp(32px, 2.75vw + 23px, 76px) * -1) !important;
@@ -125,6 +128,9 @@ exports[`getComponentCss() should return correct css for open: false, backdrop: 
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 ::slotted(.stretch-to-full-modal-width) {
   display: block !important;
   margin: 0 calc(clamp(32px, 2.75vw + 23px, 76px) * -1) !important;
@@ -209,11 +215,7 @@ dialog::backdrop {
   transform: translateY(25vh);
 }
 .dismiss {
-  width: fit-content;
-  height: fit-content;
-  border: 2px solid #EEEFF2;
-  border-radius: 4px;
-  background: #EEEFF2;
+  --p-internal-button-scaling: 0;
   grid-area: 1/3;
   z-index: 2;
   position: sticky;
@@ -235,6 +237,9 @@ exports[`getComponentCss() should return correct css for open: false, backdrop: 
 }
 :host([hidden]) {
   display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
 }
 ::slotted(.stretch-to-full-modal-width) {
   display: block !important;
@@ -336,11 +341,7 @@ dialog::backdrop {
   transform: translateY(25vh);
 }
 .dismiss {
-  width: fit-content;
-  height: fit-content;
-  border: 2px solid #212225;
-  border-radius: 4px;
-  background: #212225;
+  --p-internal-button-scaling: 0;
   grid-area: 1/3;
   z-index: 2;
   position: sticky;
@@ -362,6 +363,9 @@ exports[`getComponentCss() should return correct css for open: false, backdrop: 
 }
 :host([hidden]) {
   display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
 }
 ::slotted(.stretch-to-full-modal-width) {
   display: block !important;
@@ -459,6 +463,9 @@ exports[`getComponentCss() should return correct css for open: false, backdrop: 
 }
 :host([hidden]) {
   display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
 }
 ::slotted(.stretch-to-full-modal-width) {
   display: block !important;
@@ -573,6 +580,9 @@ exports[`getComponentCss() should return correct css for open: false, backdrop: 
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 ::slotted(.stretch-to-full-modal-width) {
   display: block !important;
   margin: 0 calc(clamp(32px, 2.75vw + 23px, 76px) * -1) !important;
@@ -657,11 +667,7 @@ dialog::backdrop {
   transform: translateY(25vh);
 }
 .dismiss {
-  width: fit-content;
-  height: fit-content;
-  border: 2px solid #EEEFF2;
-  border-radius: 4px;
-  background: #EEEFF2;
+  --p-internal-button-scaling: 0;
   grid-area: 1/3;
   z-index: 2;
   position: sticky;
@@ -678,10 +684,6 @@ dialog::backdrop {
     color: #FBFCFF;
     background: #0E0E12;
   }
-  .dismiss {
-    background: #212225;
-    border-color: #212225;
-  }
 }
 "
 `;
@@ -697,6 +699,9 @@ exports[`getComponentCss() should return correct css for open: false, backdrop: 
 }
 :host([hidden]) {
   display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
 }
 ::slotted(.stretch-to-full-modal-width) {
   display: block !important;
@@ -782,11 +787,7 @@ dialog::backdrop {
   transform: translateY(25vh);
 }
 .dismiss {
-  width: fit-content;
-  height: fit-content;
-  border: 2px solid #212225;
-  border-radius: 4px;
-  background: #212225;
+  --p-internal-button-scaling: 0;
   grid-area: 1/3;
   z-index: 2;
   position: sticky;
@@ -808,6 +809,9 @@ exports[`getComponentCss() should return correct css for open: false, backdrop: 
 }
 :host([hidden]) {
   display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
 }
 ::slotted(.stretch-to-full-modal-width) {
   display: block !important;
@@ -909,11 +913,7 @@ dialog::backdrop {
   transform: translateY(25vh);
 }
 .dismiss {
-  width: fit-content;
-  height: fit-content;
-  border: 2px solid #EEEFF2;
-  border-radius: 4px;
-  background: #EEEFF2;
+  --p-internal-button-scaling: 0;
   grid-area: 1/3;
   z-index: 2;
   position: sticky;
@@ -935,6 +935,9 @@ exports[`getComponentCss() should return correct css for open: false, backdrop: 
 }
 :host([hidden]) {
   display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
 }
 ::slotted(.stretch-to-full-modal-width) {
   display: block !important;
@@ -1020,11 +1023,7 @@ dialog::backdrop {
   transform: translateY(25vh);
 }
 .dismiss {
-  width: fit-content;
-  height: fit-content;
-  border: 2px solid #EEEFF2;
-  border-radius: 4px;
-  background: #EEEFF2;
+  --p-internal-button-scaling: 0;
   grid-area: 1/3;
   z-index: 2;
   position: sticky;
@@ -1046,6 +1045,9 @@ exports[`getComponentCss() should return correct css for open: false, backdrop: 
 }
 :host([hidden]) {
   display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
 }
 ::slotted(.stretch-to-full-modal-width) {
   display: block !important;
@@ -1131,11 +1133,7 @@ dialog::backdrop {
   transform: translateY(25vh);
 }
 .dismiss {
-  width: fit-content;
-  height: fit-content;
-  border: 2px solid #EEEFF2;
-  border-radius: 4px;
-  background: #EEEFF2;
+  --p-internal-button-scaling: 0;
   grid-area: 1/3;
   z-index: 2;
   position: sticky;
@@ -1152,10 +1150,6 @@ dialog::backdrop {
     color: #FBFCFF;
     background: #0E0E12;
   }
-  .dismiss {
-    background: #212225;
-    border-color: #212225;
-  }
 }
 "
 `;
@@ -1171,6 +1165,9 @@ exports[`getComponentCss() should return correct css for open: false, backdrop: 
 }
 :host([hidden]) {
   display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
 }
 ::slotted(.stretch-to-full-modal-width) {
   display: block !important;
@@ -1256,11 +1253,7 @@ dialog::backdrop {
   transform: translateY(25vh);
 }
 .dismiss {
-  width: fit-content;
-  height: fit-content;
-  border: 2px solid #212225;
-  border-radius: 4px;
-  background: #212225;
+  --p-internal-button-scaling: 0;
   grid-area: 1/3;
   z-index: 2;
   position: sticky;
@@ -1282,6 +1275,9 @@ exports[`getComponentCss() should return correct css for open: true, backdrop: b
 }
 :host([hidden]) {
   display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
 }
 ::slotted(.stretch-to-full-modal-width) {
   display: block !important;
@@ -1421,11 +1417,7 @@ dialog::backdrop {
   border-radius: 0;
 }
 .dismiss {
-  width: fit-content;
-  height: fit-content;
-  border: 2px solid #EEEFF2;
-  border-radius: 4px;
-  background: #EEEFF2;
+  --p-internal-button-scaling: 0;
   grid-area: 1/3;
   z-index: 2;
   position: sticky;
@@ -1502,6 +1494,9 @@ exports[`getComponentCss() should return correct css for open: true, backdrop: b
 }
 :host([hidden]) {
   display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
 }
 ::slotted(.stretch-to-full-modal-width) {
   display: block !important;
@@ -1612,6 +1607,9 @@ exports[`getComponentCss() should return correct css for open: true, backdrop: b
 }
 :host([hidden]) {
   display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
 }
 ::slotted(.stretch-to-full-modal-width) {
   display: block !important;
@@ -1724,6 +1722,9 @@ exports[`getComponentCss() should return correct css for open: true, backdrop: b
 }
 :host([hidden]) {
   display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
 }
 ::slotted(.stretch-to-full-modal-width) {
   display: block !important;
@@ -1851,6 +1852,9 @@ exports[`getComponentCss() should return correct css for open: true, backdrop: b
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 ::slotted(.stretch-to-full-modal-width) {
   display: block !important;
   margin: 0 calc(clamp(32px, 2.75vw + 23px, 76px) * -1) !important;
@@ -1934,11 +1938,7 @@ dialog::backdrop {
   border-radius: 8px;
 }
 .dismiss {
-  width: fit-content;
-  height: fit-content;
-  border: 2px solid #212225;
-  border-radius: 4px;
-  background: #212225;
+  --p-internal-button-scaling: 0;
   grid-area: 1/3;
   z-index: 2;
   position: sticky;
@@ -1960,6 +1960,9 @@ exports[`getComponentCss() should return correct css for open: true, backdrop: b
 }
 :host([hidden]) {
   display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
 }
 ::slotted(.stretch-to-full-modal-width) {
   display: block !important;
@@ -2060,11 +2063,7 @@ dialog::backdrop {
   border-radius: 8px;
 }
 .dismiss {
-  width: fit-content;
-  height: fit-content;
-  border: 2px solid #EEEFF2;
-  border-radius: 4px;
-  background: #EEEFF2;
+  --p-internal-button-scaling: 0;
   grid-area: 1/3;
   z-index: 2;
   position: sticky;
@@ -2086,6 +2085,9 @@ exports[`getComponentCss() should return correct css for open: true, backdrop: b
 }
 :host([hidden]) {
   display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
 }
 ::slotted(.stretch-to-full-modal-width) {
   display: block !important;
@@ -2182,6 +2184,9 @@ exports[`getComponentCss() should return correct css for open: true, backdrop: b
 }
 :host([hidden]) {
   display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
 }
 ::slotted(.stretch-to-full-modal-width) {
   display: block !important;
@@ -2295,6 +2300,9 @@ exports[`getComponentCss() should return correct css for open: true, backdrop: b
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 ::slotted(.stretch-to-full-modal-width) {
   display: block !important;
   margin: 0 calc(clamp(32px, 2.75vw + 23px, 76px) * -1) !important;
@@ -2378,11 +2386,7 @@ dialog::backdrop {
   border-radius: 0;
 }
 .dismiss {
-  width: fit-content;
-  height: fit-content;
-  border: 2px solid #EEEFF2;
-  border-radius: 4px;
-  background: #EEEFF2;
+  --p-internal-button-scaling: 0;
   grid-area: 1/3;
   z-index: 2;
   position: sticky;
@@ -2404,6 +2408,9 @@ exports[`getComponentCss() should return correct css for open: true, backdrop: b
 }
 :host([hidden]) {
   display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
 }
 ::slotted(.stretch-to-full-modal-width) {
   display: block !important;
@@ -2504,11 +2511,7 @@ dialog::backdrop {
   border-radius: 0;
 }
 .dismiss {
-  width: fit-content;
-  height: fit-content;
-  border: 2px solid #212225;
-  border-radius: 4px;
-  background: #212225;
+  --p-internal-button-scaling: 0;
   grid-area: 1/3;
   z-index: 2;
   position: sticky;

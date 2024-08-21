@@ -1,6 +1,6 @@
 # Font Face Stylesheet
 
-<Notification heading="Deprecation hint" state="warning">
+<Notification heading="Deprecation hint" heading-tag="h2" state="warning">
   Critical CSS should be inlined in order to improve the performance of your page.<br>
   Therefore the <code>getFontFaceStylesheet()</code> has been deprecated and will be removed with the next major release.<br>
   Please use the <code>getFontFaceStyles()</code> partial instead.

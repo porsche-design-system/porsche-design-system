@@ -8,7 +8,12 @@ import {
 } from '@porsche-design-system/styles';
 import { type BreakpointCustomizable, type Theme } from '../../types';
 import { buildResponsiveStyles, getCss, mergeDeep } from '../../utils';
-import { addImportantToEachRule, colorSchemeStyles, hostHiddenStyles } from '../../styles';
+import {
+  addImportantToEachRule,
+  colorSchemeStyles,
+  hostHiddenStyles,
+  preventFoucOfNestedElementsStyles,
+} from '../../styles';
 import { type ModalBackdrop } from './modal-utils';
 import {
   dialogGridJssStyle,
@@ -17,7 +22,7 @@ import {
   getDialogJssStyle,
   getDialogStickyAreaJssStyle,
   getDialogTransitionJssStyle,
-  getDismissButtonJssStyle,
+  getDialogDismissButtonJssStyle,
   getScrollerJssStyle,
   headingTags,
 } from '../../styles/dialog-styles';
@@ -49,6 +54,7 @@ export const getComponentCss = (
           ...hostHiddenStyles,
         }),
       },
+      ...preventFoucOfNestedElementsStyles,
       // TODO: why not available to Flyout too?
       // TODO: discussable if so many styles are a good thing, since we could also expose one or two CSS variables with which a stretch to full width is possible too
       '::slotted': addImportantToEachRule(
@@ -151,7 +157,7 @@ export const getComponentCss = (
     },
     ...(hasDismissButton && {
       dismiss: {
-        ...getDismissButtonJssStyle(theme, isOpen),
+        ...getDialogDismissButtonJssStyle(isOpen),
         gridArea: '1/3',
         zIndex: 2, // ensures dismiss button is above sticky footer, header and content
         position: 'sticky',

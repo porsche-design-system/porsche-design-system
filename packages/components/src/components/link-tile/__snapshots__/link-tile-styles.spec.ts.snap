@@ -9,6 +9,9 @@ exports[`getComponentCss() should return correct css for aspectRatio: "1:1", siz
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 slot {
   display: block;
 }
@@ -21,12 +24,12 @@ slot[name="header"] {
   grid-area: 2/2;
   z-index: 3;
 }
-::slotted(:is(img,picture)) {
+::slotted(:is(img,picture,video)) {
   display: block !important;
   width: 100% !important;
   height: 100% !important;
 }
-::slotted(img) {
+::slotted(:is(img,video)) {
   object-fit: cover !important;
 }
 a {
@@ -53,6 +56,7 @@ p {
   grid-template: clamp(16px, 1.25vw + 12px, 36px) auto minmax(0px, 1fr) auto clamp(16px, 1.25vw + 12px, 36px)/clamp(16px, 1.25vw + 12px, 36px) minmax(0px, 1fr) clamp(16px, 1.25vw + 12px, 36px);
 }
 .media {
+  position: relative;
   grid-area: 1/1/-1 /-1;
   z-index: 1;
   overflow: hidden;
@@ -92,6 +96,9 @@ exports[`getComponentCss() should return correct css for aspectRatio: "3:4", siz
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 slot {
   display: block;
 }
@@ -104,12 +111,12 @@ slot[name="header"] {
   grid-area: 4/2;
   z-index: 3;
 }
-::slotted(:is(img,picture)) {
+::slotted(:is(img,picture,video)) {
   display: block !important;
   width: 100% !important;
   height: 100% !important;
 }
-::slotted(img) {
+::slotted(:is(img,video)) {
   object-fit: cover !important;
 }
 a {
@@ -145,6 +152,7 @@ p {
   border-start-end-radius: 12px;
 }
 .media {
+  position: relative;
   grid-area: 1/1/-1 /-1;
   z-index: 1;
   overflow: hidden;
@@ -190,6 +198,9 @@ exports[`getComponentCss() should return correct css for aspectRatio: "4:3", siz
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 slot {
   display: block;
 }
@@ -202,12 +213,12 @@ slot[name="header"] {
   grid-area: 2/2;
   z-index: 3;
 }
-::slotted(:is(img,picture)) {
+::slotted(:is(img,picture,video)) {
   display: block !important;
   width: 100% !important;
   height: 100% !important;
 }
-::slotted(img) {
+::slotted(:is(img,video)) {
   object-fit: cover !important;
 }
 a {
@@ -243,6 +254,7 @@ p {
   border-end-end-radius: 12px;
 }
 .media {
+  position: relative;
   grid-area: 1/1/-1 /-1;
   z-index: 1;
   overflow: hidden;
@@ -288,6 +300,9 @@ exports[`getComponentCss() should return correct css for aspectRatio: "9:16", si
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 slot {
   display: block;
 }
@@ -300,12 +315,12 @@ slot[name="header"] {
   grid-area: 2/2;
   z-index: 3;
 }
-::slotted(:is(img,picture)) {
+::slotted(:is(img,picture,video)) {
   display: block !important;
   width: 100% !important;
   height: 100% !important;
 }
-::slotted(img) {
+::slotted(:is(img,video)) {
   object-fit: cover !important;
 }
 a {
@@ -332,6 +347,7 @@ p {
   grid-template: clamp(16px, 1.25vw + 12px, 36px) auto minmax(0px, 1fr) auto clamp(16px, 1.25vw + 12px, 36px)/clamp(16px, 1.25vw + 12px, 36px) minmax(0px, 1fr) clamp(16px, 1.25vw + 12px, 36px);
 }
 .media {
+  position: relative;
   grid-area: 1/1/-1 /-1;
   z-index: 1;
   overflow: hidden;
@@ -371,6 +387,9 @@ exports[`getComponentCss() should return correct css for aspectRatio: "16:9", si
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 slot {
   display: block;
 }
@@ -383,12 +402,12 @@ slot[name="header"] {
   grid-area: 4/2;
   z-index: 3;
 }
-::slotted(:is(img,picture)) {
+::slotted(:is(img,picture,video)) {
   display: block !important;
   width: 100% !important;
   height: 100% !important;
 }
-::slotted(img) {
+::slotted(:is(img,video)) {
   object-fit: cover !important;
 }
 a {
@@ -415,6 +434,7 @@ p {
   grid-template: clamp(16px, 1.25vw + 12px, 36px) auto minmax(0px, 1fr) auto clamp(16px, 1.25vw + 12px, 36px)/clamp(16px, 1.25vw + 12px, 36px) minmax(0px, 1fr) clamp(16px, 1.25vw + 12px, 36px);
 }
 .media {
+  position: relative;
   grid-area: 1/1/-1 /-1;
   z-index: 1;
   overflow: hidden;
@@ -454,6 +474,9 @@ exports[`getComponentCss() should return correct css for aspectRatio: {"base":"1
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 slot {
   display: block;
 }
@@ -466,12 +489,12 @@ slot[name="header"] {
   grid-area: 4/2;
   z-index: 3;
 }
-::slotted(:is(img,picture)) {
+::slotted(:is(img,picture,video)) {
   display: block !important;
   width: 100% !important;
   height: 100% !important;
 }
-::slotted(img) {
+::slotted(:is(img,video)) {
   object-fit: cover !important;
 }
 a {
@@ -533,6 +556,7 @@ p {
   grid-template: clamp(16px, 1.25vw + 12px, 36px) auto minmax(0px, 1fr) auto clamp(16px, 1.25vw + 12px, 36px)/clamp(16px, 1.25vw + 12px, 36px) minmax(0px, 1fr) clamp(16px, 1.25vw + 12px, 36px);
 }
 .media {
+  position: relative;
   grid-area: 1/1/-1 /-1;
   z-index: 1;
   overflow: hidden;

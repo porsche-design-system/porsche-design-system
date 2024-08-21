@@ -11,6 +11,7 @@ import {
   hostHiddenStyles,
   hoverMediaQuery,
   prefersColorSchemeDarkMediaQuery,
+  preventFoucOfNestedElementsStyles,
 } from '../../styles';
 import { borderWidthBase, spacingStaticSmall, textSmallStyle } from '@porsche-design-system/styles';
 import { getFunctionalComponentLoadingMessageStyles } from '../common/loading-message/loading-message-styles';
@@ -105,6 +106,7 @@ export const getComponentCss = (
           })),
         }),
       },
+      ...preventFoucOfNestedElementsStyles,
       button: {
         display: 'flex',
         alignItems: 'center',

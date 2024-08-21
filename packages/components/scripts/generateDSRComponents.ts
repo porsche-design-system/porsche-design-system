@@ -74,6 +74,7 @@ const generateDSRComponents = (): void => {
         .replace(/(private [a-zA-Z]+\??:) [-a-zA-Z<>,'| ]+/g, '$1 any') // change type of private members to any
         .replace(/( class)([:=])/g, '$1Name$2') // change class prop to className in JSX
         .replace(/getPrefixedTagNames,?\s*/, '') // remove getPrefixedTagNames import
+        .replace(/ onSlotchange={.*}/g, '') // doesn't exist in React JSX
         // remove all imports except for utils and functional components which are rewritten
         .replace(/import[\s\S]*?from '(.*)';\n/g, (m, group) =>
           group.endsWith('utils')
@@ -354,7 +355,9 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
           )
           .replace(/{this\.props\.children}/, '{manipulatedChildren}');
       } else if (tagName === 'p-scroller') {
-        newFileContent = newFileContent.replace(/(this\.)props\.(is(?:Next|Prev)Hidden)/g, '$1$2');
+        newFileContent = newFileContent
+          .replace(/(this\.)props\.(is(?:Next|Prev)Hidden)/g, '$1$2')
+          .replace(/(deprecationMap\[this\.props\.gradientColorScheme)/, '$1 as ScrollerGradientColorScheme');
       } else if (tagName === 'p-popover') {
         // only keep :host , button, .icon & .label styles
         newFileContent = newFileContent.replace(
@@ -593,7 +596,7 @@ $&`
     $1 = primaryLink.props.href
       ? primaryLink.props
       : (Array.isArray(primaryLink.props.children) ? primaryLink.props.children : [primaryLink.props.children]).find(
-          (child) => child.type === 'a' || child.props.href || child.props.to // href and to check is for framework links
+          (child: any) => child.type === 'a' || child.props.href || child.props.to // href and to check is for framework links
         ).props;`
           ) // rewire source for linkEl
           .replace(/(href: linkEl\.href),/, '$1 || linkEl.to,') // fallback for framework links
@@ -604,6 +607,16 @@ $&`
           .replace(/type LinkTileProductAspectRatio,/, '')
           .replace(/type LinkTileProductLikeEventDetail,/, '')
           .replace(/type LinkTileProductTarget,/, '');
+      } else if (tagName === 'p-textarea') {
+        newFileContent = newFileContent
+          .replace(/@AttachInternals\(\)/, '')
+          .replace(/maxlength/, 'maxLength')
+          .replace(/minlength/, 'minLength')
+          .replace(/readonly/, 'readOnly')
+          .replace(/autofocus/, 'autoFocus')
+          .replace(/spellcheck/, 'spellCheck')
+          .replace(/autocomplete/, 'autoComplete')
+          .replace(/this\.props\.value = '';/, '');
       }
 
       return newFileContent;

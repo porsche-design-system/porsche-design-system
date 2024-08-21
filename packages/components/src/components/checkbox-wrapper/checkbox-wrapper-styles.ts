@@ -12,6 +12,7 @@ import {
   getThemedColors,
   hostHiddenStyles,
   prefersColorSchemeDarkMediaQuery,
+  preventFoucOfNestedElementsStyles,
 } from '../../styles';
 import {
   borderRadiusSmall,
@@ -65,6 +66,7 @@ export const getComponentCss = (
           ...hostHiddenStyles,
         }),
       },
+      ...preventFoucOfNestedElementsStyles,
       // ::slotted(input)
       ...addImportantToEachRule(
         mergeDeep(getSlottedCheckboxRadioButtonStyles(state, isDisabled, isLoading, theme), {

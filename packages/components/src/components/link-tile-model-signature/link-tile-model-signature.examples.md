@@ -10,13 +10,13 @@ shows one of the model signatures at the top.
 
 ## Basic
 
-An `img` or `picture` tag has to be provided as default slot.
+An `<img/>`, `<picture/>` or `<video/>` tag has to be provided as default slot.
 
 It is required to have two `p-link` components as named slots, `slot="primary"` and `slot="secondary"`.  
 The `heading` property is required, too. It is used as a teaser with a more detailed description of where the link leads
 to.
 
-#### Supported named slots:
+### Supported named slots:
 
 - `slot="header"`: Renders a header section above the content area but underneath the model signature.
 
@@ -24,10 +24,18 @@ to.
 
 ### <A11yIcon></A11yIcon> Accessibility hints
 
-In general, placing textual contents above an image can easily lead to **contrast issues**. Though we are providing a
-scalable background gradient to reduce the risk of low contrasts between foreground text and background image, there
-still can occur issues with color contrast ratios, especially if different aspect ratios for multiple viewport sizes are
-used. So, always **check readability** and play around with the `weight` property to achieve the best results.
+In general, placing textual contents above an image or video can easily lead to **contrast issues**. Though we are
+providing a scalable background gradient to reduce the risk of low contrasts between foreground text and background
+image, there still can occur issues with color contrast ratios, especially if different aspect ratios for multiple
+viewport sizes are used. So, always **check readability** and play around with the `size` and `weight` properties to
+achieve the best results.
+
+In case a video background is used, the component checks whether **reduced motion** is enabled in the **operating system
+settings** and prevents the `<video autoplay loop />` attribute from working to improve accessibility & UX. In addition,
+the slotted video should have no audio or is muted by `<video muted />`. Also keep in mind that long videos or videos in
+general might increase the page load time. The video content should support the CTA instead of distracting from it. To
+support screen reader users it's recommended to define an alternative video description
+`<video aria-label="Some video description"" />`.
 
 To provide more contextual HTML semantics you can use the `headingTag` property to change the heading parent from
 default `h2` to e.g. `h3`.
@@ -133,16 +141,31 @@ import { GROUP_DIRECTIONS } from '../../styles/group-direction-styles';
 export default class Code extends Vue {
   config = { spacing: 'block' };
   imgSrc = require('@/assets/lights.jpg');
-  img = `<img src="${this.imgSrc}" alt="Some alt text" />`;
+  img = `<img src="${this.imgSrc}" alt="Some image description" />`;
   primaryLink = '<p-link slot="primary" href="https://porsche.com/#primary">Primary label</p-link>';
   secondaryLink = '<p-link slot="secondary" href="https://porsche.com/#secondary">Secondary label</p-link>';
 
-  basic = `<p-link-tile-model-signature heading="Some heading">
-  <p-tag slot="header" theme="dark" color="background-frosted" compact="true">Some tag</p-tag>
-  ${this.img}
-  ${this.primaryLink}
-  ${this.secondaryLink}
-</p-link-tile-model-signature>`;
+  basic = `<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px;">
+  <p-link-tile-model-signature heading="Some heading">
+    <p-tag slot="header" theme="dark" color="background-frosted" compact="true">Some tag</p-tag>
+    ${this.img}
+    ${this.primaryLink}
+    ${this.secondaryLink}
+  </p-link-tile-model-signature>
+  <p-link-tile-model-signature heading="Some heading">
+    <p-tag slot="header" theme="dark" color="background-frosted" compact="true">Some tag</p-tag>
+    <video
+      poster="https://porsche-design-system.github.io/dummyasset/ocean.jpg"
+      src="https://porsche-design-system.github.io/dummyasset/ocean.mp4"
+      loop
+      muted
+      autoplay
+      aria-label="Some video description"
+    ></video>
+    ${this.primaryLink}
+    ${this.secondaryLink}
+  </p-link-tile-model-signature>
+</div>`;
 
   weight = 'semi-bold';
   weights = [...TILE_WEIGHTS, "{ base: 'semi-bold', m: 'regular' }"];

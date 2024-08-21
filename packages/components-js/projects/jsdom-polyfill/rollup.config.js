@@ -19,6 +19,10 @@ export default [
     plugins: [
       commonjs({ dynamicRequireTargets: ['src/**/*.js'] }),
       resolve(),
+      modify({
+        find: /(:not\(:defined,\[data-ssr]\)['"`]:\s*{)[^}]*(})/,
+        replace: (_, $1, $2) => `${$1}${$2}`,
+      }),
       /* TODO: There should be a better solution for this
        * This is necessary since stencil made the appGlobals function async.
        * Following error is produced without the replacement: (plugin commonjs--resolver) RollupError: Expression expected

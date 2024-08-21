@@ -9,6 +9,7 @@ import {
   getTransition,
   hoverMediaQuery,
   prefersColorSchemeDarkMediaQuery,
+  preventFoucOfNestedElementsStyles,
 } from '../../../styles';
 import {
   borderRadiusSmall,
@@ -383,6 +384,7 @@ export const getComponentCss = (
             display: 'block',
             position: 'relative',
           },
+          ...preventFoucOfNestedElementsStyles,
         },
         'sr-text': {
           display: 'none',

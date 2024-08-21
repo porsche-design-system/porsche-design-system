@@ -90,7 +90,7 @@ const propTypes: PropTypes<typeof Select> = {
  */
 @Component({
   tag: 'p-select',
-  shadow: true,
+  shadow: { delegatesFocus: true },
 })
 export class Select {
   @Element() public host!: HTMLElement;
@@ -254,6 +254,7 @@ export class Select {
         </span>
         <div class={{ wrapper: true, disabled: this.disabled }} ref={(el) => (this.comboboxContainer = el)}>
           <button
+            aria-invalid={this.state === 'error' ? 'true' : null}
             type="button"
             role="combobox"
             id={buttonId}

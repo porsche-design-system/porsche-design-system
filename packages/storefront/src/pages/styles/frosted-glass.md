@@ -10,7 +10,7 @@
 
 ## Usage
 
-#### Do:
+### Do:
 
 - Add frosted-glass effect to a container to create an emersive moment.
 - Use the effect as an overlay on contrast-rich backgrounds.
@@ -18,7 +18,7 @@
 - Only pair with neutral colors.
 - Use it rarely.
 
-#### Hint:
+### Hint:
 
 - Be aware of contrast issues depending on the background
 - Some browsers have issues with rendering the effect
@@ -27,7 +27,7 @@
 
 The styles are available as `JavaScript` and `SCSS` version. Look at the example above to see how the styles work.
 
-#### JS
+### JS
 
 JavaScript styles can be imported by
 `import { … } from '@porsche-design-system/components-{js|angular|react|vue}/styles';`.
@@ -36,7 +36,7 @@ JavaScript styles can be imported by
 
 ---
 
-#### SCSS
+### SCSS
 
 SCSS styles can be imported by `@use '@porsche-design-system/components-{js|angular|react|vue}/styles' as *;`
 

@@ -9,6 +9,9 @@ exports[`getComponentCss() should return correct css for size: "medium", weight:
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 ::slotted(a::-moz-focus-inner) {
   border: 0 !important;
 }
@@ -124,6 +127,9 @@ exports[`getComponentCss() should return correct css for size: "medium", weight:
 }
 :host([hidden]) {
   display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
 }
 ::slotted(a::-moz-focus-inner) {
   border: 0 !important;
@@ -241,6 +247,9 @@ exports[`getComponentCss() should return correct css for size: "small", weight: 
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 ::slotted(a::-moz-focus-inner) {
   border: 0 !important;
 }
@@ -356,6 +365,9 @@ exports[`getComponentCss() should return correct css for size: "small", weight: 
 }
 :host([hidden]) {
   display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
 }
 ::slotted(a::-moz-focus-inner) {
   border: 0 !important;
@@ -473,6 +485,9 @@ exports[`getComponentCss() should return correct css for size: "small", weight: 
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 ::slotted(a::-moz-focus-inner) {
   border: 0 !important;
 }
@@ -588,6 +603,9 @@ exports[`getComponentCss() should return correct css for size: {"base":"small","
 }
 :host([hidden]) {
   display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
 }
 ::slotted(a::-moz-focus-inner) {
   border: 0 !important;

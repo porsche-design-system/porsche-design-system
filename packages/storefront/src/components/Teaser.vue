@@ -1,6 +1,6 @@
 <template>
   <header>
-    <p-display :theme="storefrontTheme" class="heading" size="small" tag="h2">Welcome to the new digital</p-display>
+    <p-display :theme="storefrontTheme" class="heading" size="small" tag="h1">Welcome to the new digital</p-display>
     <p-text :theme="storefrontTheme" class="paragraph" color="contrast-high" size="large">
       Become today a part of tomorrow’s Porsche new design language with the new Porsche Design System v3.
     </p-text>

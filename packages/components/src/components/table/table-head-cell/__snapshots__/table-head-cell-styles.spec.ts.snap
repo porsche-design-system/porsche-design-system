@@ -10,6 +10,9 @@ exports[`getComponentCss() should return correct css for active: false, directio
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 button {
   position: relative;
   display: flex;
@@ -78,6 +81,9 @@ exports[`getComponentCss() should return correct css for active: false, directio
 }
 :host([hidden]) {
   display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
 }
 button {
   position: relative;
@@ -148,6 +154,9 @@ exports[`getComponentCss() should return correct css for active: true, direction
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 button {
   position: relative;
   display: flex;
@@ -216,6 +225,9 @@ exports[`getComponentCss() should return correct css for active: true, direction
 }
 :host([hidden]) {
   display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
 }
 button {
   position: relative;
@@ -286,6 +298,9 @@ exports[`getComponentCss() should return correct css for active: true, direction
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 button {
   position: relative;
   display: flex;
@@ -354,6 +369,9 @@ exports[`getComponentCss() should return correct css for active: undefined, dire
 }
 :host([hidden]) {
   display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
 }"
 `;
 
@@ -366,6 +384,9 @@ exports[`getComponentCss() should return correct css for active: undefined, dire
 }
 :host([hidden]) {
   display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
 }
 span {
   position: absolute;

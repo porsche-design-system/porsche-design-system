@@ -286,6 +286,18 @@
   </p-button-tile>
 </div>
 
+<div class="playground light auto-layout-inline" title="should render with video">
+  <p-button-tile label="Some label" description="Video tag">
+    <video
+      poster="https://porsche-design-system.github.io/dummyasset/ocean.jpg"
+      src="https://porsche-design-system.github.io/dummyasset/ocean.mp4"
+      loop
+      muted
+      aria-hidden="true"
+    ></video>
+  </p-button-tile>
+</div>
+
 <div class="playground light" title="should render with max width description text">
   <p-button-tile
     style="max-width: 50rem"
@@ -423,6 +435,21 @@
       width="50"
       height="50"
       alt="Some alt text"
+    />
+  </p-button-tile>
+</div>
+
+<div
+  class="playground light auto-layout-inline"
+  title="should render default button-tile with custom styles on media element"
+>
+  <p-button-tile label="Some Label" description="Default">
+    <img
+      src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyAQMAAAAk8RryAAAABlBMVEUAAAD2vP9xXLiUAAAAAXRSTlMAQObYZgAAABxJREFUGNNjYOBgYGBhYKAZ/R8MDsD4Q5amkz8ASp4PtTYYQZIAAAAASUVORK5CYII="
+      width="50"
+      height="50"
+      alt="Some alt text"
+      style="position: absolute; inset: 0; object-fit: cover; object-position: 42% 0; aspect-ratio: 3 / 4"
     />
   </p-button-tile>
 </div>

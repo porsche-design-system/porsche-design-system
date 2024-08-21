@@ -8,6 +8,9 @@ exports[`getComponentCss() should return correct css for direction: down, isOpen
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 ::slotted([slot=internal-select]) {
   position: absolute !important;
   opacity: 0 !important;
@@ -67,6 +70,7 @@ input:not(:focus):-moz-placeholder {
 .root {
   display: grid;
   gap: 4px;
+  min-width: calc(1rem + 16px + 2px * 2 + calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 2));
   position: relative;
 }
 .wrapper {
@@ -194,6 +198,9 @@ exports[`getComponentCss() should return correct css for direction: down, isOpen
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 ::slotted([slot=internal-select]) {
   position: absolute !important;
   opacity: 0 !important;
@@ -253,6 +260,7 @@ input:not(:focus):-moz-placeholder {
 .root {
   display: grid;
   gap: 4px;
+  min-width: calc(1rem + 16px + 2px * 2 + calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 2));
   position: relative;
 }
 .wrapper {
@@ -381,6 +389,9 @@ exports[`getComponentCss() should return correct css for direction: down, isOpen
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 input {
   grid-area: 1/1/1/-1;
   flex: 1;
@@ -446,6 +457,7 @@ input:not(:focus):-moz-placeholder {
 .root {
   display: grid;
   gap: 4px;
+  min-width: calc(1rem + 16px + 2px * 2 + calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 2));
 }
 .wrapper {
   position: relative;
@@ -583,6 +595,9 @@ exports[`getComponentCss() should return correct css for direction: down, isOpen
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 ::slotted([slot=internal-select]) {
   position: absolute !important;
   opacity: 0 !important;
@@ -654,6 +669,7 @@ input:not(:focus):-moz-placeholder {
 .root {
   display: grid;
   gap: 4px;
+  min-width: calc(1rem + 16px + 2px * 2 + calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 2));
   position: relative;
 }
 .wrapper {
@@ -780,6 +796,9 @@ exports[`getComponentCss() should return correct css for direction: down, isOpen
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 ::slotted([slot=internal-select]) {
   position: absolute !important;
   opacity: 0 !important;
@@ -851,6 +870,7 @@ input:not(:focus):-moz-placeholder {
 .root {
   display: grid;
   gap: 4px;
+  min-width: calc(1rem + 16px + 2px * 2 + calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 2));
   position: relative;
 }
 .wrapper {
@@ -977,6 +997,9 @@ exports[`getComponentCss() should return correct css for direction: down, isOpen
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 ::slotted([slot=internal-select]) {
   position: absolute !important;
   opacity: 0 !important;
@@ -1048,6 +1071,7 @@ input:not(:focus):-moz-placeholder {
 .root {
   display: grid;
   gap: 4px;
+  min-width: calc(1rem + 16px + 2px * 2 + calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 2));
   position: relative;
 }
 .wrapper {
@@ -1175,6 +1199,9 @@ exports[`getComponentCss() should return correct css for direction: down, isOpen
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 ::slotted([slot=internal-select]) {
   position: absolute !important;
   opacity: 0 !important;
@@ -1246,6 +1273,7 @@ input:not(:focus):-moz-placeholder {
 .root {
   display: grid;
   gap: 4px;
+  min-width: calc(1rem + 16px + 2px * 2 + calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 2));
   position: relative;
 }
 .wrapper {
@@ -1372,6 +1400,9 @@ exports[`getComponentCss() should return correct css for direction: down, isOpen
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 ::slotted([slot=internal-select]) {
   position: absolute !important;
   opacity: 0 !important;
@@ -1443,6 +1474,7 @@ input:not(:focus):-moz-placeholder {
 .root {
   display: grid;
   gap: 4px;
+  min-width: calc(1rem + 16px + 2px * 2 + calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 2));
   position: relative;
 }
 .wrapper {
@@ -1569,6 +1601,9 @@ exports[`getComponentCss() should return correct css for direction: down, isOpen
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 ::slotted([slot=internal-select]) {
   position: absolute !important;
   opacity: 0 !important;
@@ -1632,6 +1667,7 @@ input:not(:focus):-moz-placeholder {
 .root {
   display: grid;
   gap: 4px;
+  min-width: calc(1rem + 16px + 2px * 2 + calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 2));
   position: relative;
 }
 .wrapper {
@@ -1759,6 +1795,9 @@ exports[`getComponentCss() should return correct css for direction: down, isOpen
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 ::slotted([slot=internal-select]) {
   position: absolute !important;
   opacity: 0 !important;
@@ -1822,6 +1861,7 @@ input:not(:focus):-moz-placeholder {
 .root {
   display: grid;
   gap: 4px;
+  min-width: calc(1rem + 16px + 2px * 2 + calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 2));
   position: relative;
 }
 .wrapper {
@@ -1949,6 +1989,9 @@ exports[`getComponentCss() should return correct css for direction: down, isOpen
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 ::slotted([slot=internal-select]) {
   position: absolute !important;
   opacity: 0 !important;
@@ -2012,6 +2055,7 @@ input:not(:focus):-moz-placeholder {
 .root {
   display: grid;
   gap: 4px;
+  min-width: calc(1rem + 16px + 2px * 2 + calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 2));
   position: relative;
 }
 .wrapper {
@@ -2139,6 +2183,9 @@ exports[`getComponentCss() should return correct css for direction: down, isOpen
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 ::slotted([slot=internal-select]) {
   position: absolute !important;
   opacity: 0 !important;
@@ -2202,6 +2249,7 @@ input:not(:focus):-moz-placeholder {
 .root {
   display: grid;
   gap: 4px;
+  min-width: calc(1rem + 16px + 2px * 2 + calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 2));
   position: relative;
 }
 .wrapper {
@@ -2330,6 +2378,9 @@ exports[`getComponentCss() should return correct css for direction: down, isOpen
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 ::slotted([slot=internal-select]) {
   position: absolute !important;
   opacity: 0 !important;
@@ -2405,6 +2456,7 @@ input:not(:focus):-moz-placeholder {
 .root {
   display: grid;
   gap: 4px;
+  min-width: calc(1rem + 16px + 2px * 2 + calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 2));
   position: relative;
 }
 .wrapper {
@@ -2531,6 +2583,9 @@ exports[`getComponentCss() should return correct css for direction: down, isOpen
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 ::slotted([slot=internal-select]) {
   position: absolute !important;
   opacity: 0 !important;
@@ -2606,6 +2661,7 @@ input:not(:focus):-moz-placeholder {
 .root {
   display: grid;
   gap: 4px;
+  min-width: calc(1rem + 16px + 2px * 2 + calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 2));
   position: relative;
 }
 .wrapper {
@@ -2732,6 +2788,9 @@ exports[`getComponentCss() should return correct css for direction: up, isOpen: 
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 ::slotted([slot=internal-select]) {
   position: absolute !important;
   opacity: 0 !important;
@@ -2791,6 +2850,7 @@ input:not(:focus):-moz-placeholder {
 .root {
   display: grid;
   gap: 4px;
+  min-width: calc(1rem + 16px + 2px * 2 + calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 2));
   position: relative;
 }
 .wrapper {
@@ -2919,6 +2979,9 @@ exports[`getComponentCss() should return correct css for direction: up, isOpen: 
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 ::slotted([slot=internal-select]) {
   position: absolute !important;
   opacity: 0 !important;
@@ -2978,6 +3041,7 @@ input:not(:focus):-moz-placeholder {
 .root {
   display: grid;
   gap: 4px;
+  min-width: calc(1rem + 16px + 2px * 2 + calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 2));
   position: relative;
 }
 .wrapper {
@@ -3106,6 +3170,9 @@ exports[`getComponentCss() should return correct css for direction: up, isOpen: 
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 ::slotted([slot=internal-select]) {
   position: absolute !important;
   opacity: 0 !important;
@@ -3177,6 +3244,7 @@ input:not(:focus):-moz-placeholder {
 .root {
   display: grid;
   gap: 4px;
+  min-width: calc(1rem + 16px + 2px * 2 + calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 2));
   position: relative;
 }
 .wrapper {
@@ -3304,6 +3372,9 @@ exports[`getComponentCss() should return correct css for direction: up, isOpen: 
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 ::slotted([slot=internal-select]) {
   position: absolute !important;
   opacity: 0 !important;
@@ -3375,6 +3446,7 @@ input:not(:focus):-moz-placeholder {
 .root {
   display: grid;
   gap: 4px;
+  min-width: calc(1rem + 16px + 2px * 2 + calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 2));
   position: relative;
 }
 .wrapper {
@@ -3502,6 +3574,9 @@ exports[`getComponentCss() should return correct css for direction: up, isOpen: 
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 ::slotted([slot=internal-select]) {
   position: absolute !important;
   opacity: 0 !important;
@@ -3573,6 +3648,7 @@ input:not(:focus):-moz-placeholder {
 .root {
   display: grid;
   gap: 4px;
+  min-width: calc(1rem + 16px + 2px * 2 + calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 2));
   position: relative;
 }
 .wrapper {
@@ -3700,6 +3776,9 @@ exports[`getComponentCss() should return correct css for direction: up, isOpen: 
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 ::slotted([slot=internal-select]) {
   position: absolute !important;
   opacity: 0 !important;
@@ -3771,6 +3850,7 @@ input:not(:focus):-moz-placeholder {
 .root {
   display: grid;
   gap: 4px;
+  min-width: calc(1rem + 16px + 2px * 2 + calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 2));
   position: relative;
 }
 .wrapper {
@@ -3898,6 +3978,9 @@ exports[`getComponentCss() should return correct css for direction: up, isOpen: 
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 ::slotted([slot=internal-select]) {
   position: absolute !important;
   opacity: 0 !important;
@@ -3961,6 +4044,7 @@ input:not(:focus):-moz-placeholder {
 .root {
   display: grid;
   gap: 4px;
+  min-width: calc(1rem + 16px + 2px * 2 + calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 2));
   position: relative;
 }
 .wrapper {
@@ -4089,6 +4173,9 @@ exports[`getComponentCss() should return correct css for direction: up, isOpen: 
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 ::slotted([slot=internal-select]) {
   position: absolute !important;
   opacity: 0 !important;
@@ -4152,6 +4239,7 @@ input:not(:focus):-moz-placeholder {
 .root {
   display: grid;
   gap: 4px;
+  min-width: calc(1rem + 16px + 2px * 2 + calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 2));
   position: relative;
 }
 .wrapper {
@@ -4280,6 +4368,9 @@ exports[`getComponentCss() should return correct css for direction: up, isOpen: 
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 ::slotted([slot=internal-select]) {
   position: absolute !important;
   opacity: 0 !important;
@@ -4343,6 +4434,7 @@ input:not(:focus):-moz-placeholder {
 .root {
   display: grid;
   gap: 4px;
+  min-width: calc(1rem + 16px + 2px * 2 + calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 2));
   position: relative;
 }
 .wrapper {
@@ -4471,6 +4563,9 @@ exports[`getComponentCss() should return correct css for direction: up, isOpen: 
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 ::slotted([slot=internal-select]) {
   position: absolute !important;
   opacity: 0 !important;
@@ -4534,6 +4629,7 @@ input:not(:focus):-moz-placeholder {
 .root {
   display: grid;
   gap: 4px;
+  min-width: calc(1rem + 16px + 2px * 2 + calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 2));
   position: relative;
 }
 .wrapper {
@@ -4662,6 +4758,9 @@ exports[`getComponentCss() should return correct css for direction: up, isOpen: 
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 ::slotted([slot=internal-select]) {
   position: absolute !important;
   opacity: 0 !important;
@@ -4737,6 +4836,7 @@ input:not(:focus):-moz-placeholder {
 .root {
   display: grid;
   gap: 4px;
+  min-width: calc(1rem + 16px + 2px * 2 + calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 2));
   position: relative;
 }
 .wrapper {
@@ -4864,6 +4964,9 @@ exports[`getComponentCss() should return correct css for direction: up, isOpen: 
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 input {
   grid-area: 1/1/1/-1;
   flex: 1;
@@ -4933,6 +5036,7 @@ input:not(:focus):-moz-placeholder {
 .root {
   display: grid;
   gap: 4px;
+  min-width: calc(1rem + 16px + 2px * 2 + calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 2));
 }
 .wrapper {
   position: relative;
@@ -5071,6 +5175,9 @@ exports[`getComponentCss() should return correct css for direction: up, isOpen: 
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 ::slotted([slot=internal-select]) {
   position: absolute !important;
   opacity: 0 !important;
@@ -5146,6 +5253,7 @@ input:not(:focus):-moz-placeholder {
 .root {
   display: grid;
   gap: 4px;
+  min-width: calc(1rem + 16px + 2px * 2 + calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 2));
   position: relative;
 }
 .wrapper {
@@ -5273,6 +5381,9 @@ exports[`getComponentCss() should return correct css for direction: up, isOpen: 
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 ::slotted([slot=internal-select]) {
   position: absolute !important;
   opacity: 0 !important;
@@ -5348,6 +5459,7 @@ input:not(:focus):-moz-placeholder {
 .root {
   display: grid;
   gap: 4px;
+  min-width: calc(1rem + 16px + 2px * 2 + calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 2));
   position: relative;
 }
 .wrapper {

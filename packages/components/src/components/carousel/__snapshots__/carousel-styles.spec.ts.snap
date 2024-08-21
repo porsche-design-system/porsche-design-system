@@ -11,6 +11,9 @@ exports[`getComponentCss() should return correct css for hasHeading: false, hasD
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 slot[name="controls"] {
   display: block;
   grid-column-start: 1;
@@ -185,6 +188,9 @@ exports[`getComponentCss() should return correct css for hasHeading: false, hasD
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 slot[name="controls"] {
   display: block;
   grid-column-start: 1;
@@ -352,6 +358,9 @@ exports[`getComponentCss() should return correct css for hasHeading: false, hasD
 }
 :host([hidden]) {
   display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
 }
 slot[name="controls"] {
   display: block;
@@ -551,6 +560,9 @@ exports[`getComponentCss() should return correct css for hasHeading: false, hasD
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 slot[name="controls"] {
   display: block;
   grid-column-start: 1;
@@ -665,6 +677,9 @@ exports[`getComponentCss() should return correct css for hasHeading: false, hasD
 }
 :host([hidden]) {
   display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
 }
 slot[name="controls"] {
   display: block;
@@ -791,6 +806,9 @@ exports[`getComponentCss() should return correct css for hasHeading: false, hasD
 }
 :host([hidden]) {
   display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
 }
 slot[name="controls"] {
   display: block;
@@ -1030,6 +1048,9 @@ exports[`getComponentCss() should return correct css for hasHeading: true, hasDe
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 slot[name="controls"] {
   display: block;
   grid-column-start: 1;
@@ -1157,6 +1178,9 @@ exports[`getComponentCss() should return correct css for hasHeading: true, hasDe
 }
 :host([hidden]) {
   display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
 }
 slot[name="controls"] {
   display: block;
@@ -1293,6 +1317,9 @@ exports[`getComponentCss() should return correct css for hasHeading: true, hasDe
 }
 :host([hidden]) {
   display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
 }
 ::slotted(*) {
   border-radius: var(--p-carousel-border-radius, 12px) !important;
@@ -1476,6 +1503,9 @@ exports[`getComponentCss() should return correct css for hasHeading: true, hasDe
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 slot[name="controls"] {
   display: block;
   grid-column-start: 1;
@@ -1618,6 +1648,9 @@ exports[`getComponentCss() should return correct css for hasHeading: true, hasDe
 }
 :host([hidden]) {
   display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
 }
 slot[name="controls"] {
   display: block;
@@ -1830,6 +1863,9 @@ exports[`getComponentCss() should return correct css for hasHeading: true, hasDe
 }
 :host([hidden]) {
   display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
 }
 slot[name="controls"] {
   display: block;
@@ -2046,6 +2082,9 @@ exports[`getComponentCss() should return correct css for hasHeading: true, hasDe
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 slot[name="controls"] {
   display: block;
   grid-column-start: 1;
@@ -2232,6 +2271,9 @@ exports[`getComponentCss() should return correct css for hasHeading: true, hasDe
 }
 :host([hidden]) {
   display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
 }
 slot[name="controls"] {
   display: block;
