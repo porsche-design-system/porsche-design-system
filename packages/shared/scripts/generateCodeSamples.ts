@@ -532,6 +532,9 @@ const generateCodeSamples = (): void => {
               fileContent = fileContent.replace(/\s\sconst getHeadAndData = (\s|\S)*?return(.*\s){3}/, '');
             }
 
+            // Replace locally served assets with public assets folder of storefront
+            fileContent = fileContent.replace(/http:\/\/localhost:3002/, '/assets');
+
             return { [framework]: fileContent };
           });
 

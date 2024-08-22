@@ -141,15 +141,15 @@ export default class Code extends Vue {
 
   get imageMarkup() {
     return `<p-model-signature safe-zone="false" style="--p-model-signature-width: auto;">
-  <img src="https://porsche-design-system.github.io/dummyasset/dessert.jpg" alt="Dessert" />
+  <img src="/assets/dessert.jpg" alt="Dessert" />
 </p-model-signature>`;
   }
 
   get videoMarkup() {
     return `<p-model-signature safe-zone="false" style="--p-model-signature-width: auto;">
   <video
-    poster="https://porsche-design-system.github.io/dummyasset/ocean.jpg"
-    src="https://porsche-design-system.github.io/dummyasset/ocean.mp4"
+    poster="/assets/ocean.jpg"
+    src="/assets/ocean.mp4"
     autoplay
     playsinline
     loop
