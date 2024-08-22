@@ -10,6 +10,7 @@ import {
   hostHiddenStyles,
   hoverMediaQuery,
   prefersColorSchemeDarkMediaQuery,
+  preventFoucOfNestedElementsStyles,
 } from '../../../styles';
 import {
   formButtonOrIconPadding,
@@ -48,10 +49,14 @@ export const getComponentCss = (
 ): string => {
   return getCss({
     '@global': {
-      ':host': addImportantToEachRule({
-        ...colorSchemeStyles,
-        ...hostHiddenStyles,
-      }),
+      ':host': {
+        display: 'block',
+        ...addImportantToEachRule({
+          ...colorSchemeStyles,
+          ...hostHiddenStyles,
+        }),
+      },
+      ...preventFoucOfNestedElementsStyles,
       ...(isWithinForm &&
         addImportantToEachRule({
           [`::slotted([slot=${INTERNAL_SELECT_SLOT}])`]: {
@@ -67,6 +72,8 @@ export const getComponentCss = (
     root: {
       display: 'grid',
       gap: spacingStaticXSmall,
+      // min width is needed for showing at least 1 character in very narrow containers. The "1rem" value is the minimum safe zone to show at least 1 character plus the ellipsis dots.
+      minWidth: `calc(1rem + ${formElementPaddingHorizontal} + ${borderWidthBase} * 2 + ${getCalculatedFormElementPaddingHorizontal(1)})`,
       ...(isWithinForm && {
         position: 'relative', // Necessary for native HTML validation box positioning (internal-select)
       }),

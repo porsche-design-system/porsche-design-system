@@ -15,6 +15,7 @@ import {
   hostHiddenStyles,
   hoverMediaQuery,
   prefersColorSchemeDarkMediaQuery,
+  preventFoucOfNestedElementsStyles,
 } from '../../styles';
 import { getFontWeight } from '../../styles/font-weight-styles';
 import {
@@ -67,6 +68,7 @@ export const getComponentCss = (
           ...hostHiddenStyles,
         }),
       },
+      ...preventFoucOfNestedElementsStyles,
       ...addImportantToEachRule({
         '::slotted': {
           // TODO: produces duplicated css code in SSR context, we should try to make use of multiple selector like

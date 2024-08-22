@@ -8,6 +8,9 @@ exports[`getComponentCss() should return correct css for activePage: 1, pageTota
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 nav {
   display: flex;
   justify-content: center;
@@ -101,6 +104,9 @@ exports[`getComponentCss() should return correct css for activePage: 1, pageTota
 }
 :host([hidden]) {
   display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
 }
 nav {
   display: flex;
@@ -196,6 +202,9 @@ exports[`getComponentCss() should return correct css for activePage: 1, pageTota
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 nav {
   display: flex;
   justify-content: center;
@@ -289,6 +298,9 @@ exports[`getComponentCss() should return correct css for activePage: 1, pageTota
 }
 :host([hidden]) {
   display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
 }
 nav {
   display: flex;
@@ -390,6 +402,9 @@ exports[`getComponentCss() should return correct css for activePage: 1, pageTota
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 nav {
   display: flex;
   justify-content: center;
@@ -489,6 +504,9 @@ exports[`getComponentCss() should return correct css for activePage: 1, pageTota
 }
 :host([hidden]) {
   display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
 }
 nav {
   display: flex;
@@ -590,6 +608,9 @@ exports[`getComponentCss() should return correct css for activePage: 2, pageTota
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 nav {
   display: flex;
   justify-content: center;
@@ -689,6 +710,9 @@ exports[`getComponentCss() should return correct css for activePage: 2, pageTota
 }
 :host([hidden]) {
   display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
 }
 nav {
   display: flex;
@@ -790,6 +814,9 @@ exports[`getComponentCss() should return correct css for activePage: 3, pageTota
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 nav {
   display: flex;
   justify-content: center;
@@ -889,6 +916,9 @@ exports[`getComponentCss() should return correct css for activePage: 3, pageTota
 }
 :host([hidden]) {
   display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
 }
 nav {
   display: flex;
@@ -990,6 +1020,9 @@ exports[`getComponentCss() should return correct css for activePage: 4, pageTota
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 nav {
   display: flex;
   justify-content: center;
@@ -1089,6 +1122,9 @@ exports[`getComponentCss() should return correct css for activePage: 4, pageTota
 }
 :host([hidden]) {
   display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
 }
 nav {
   display: flex;
@@ -1190,6 +1226,9 @@ exports[`getComponentCss() should return correct css for activePage: 5, pageTota
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 nav {
   display: flex;
   justify-content: center;
@@ -1290,6 +1329,9 @@ exports[`getComponentCss() should return correct css for activePage: 5, pageTota
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 nav {
   display: flex;
   justify-content: center;
@@ -1386,6 +1428,9 @@ exports[`getComponentCss() should return correct css for activePage: 6, pageTota
 }
 :host([hidden]) {
   display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
 }
 nav {
   display: flex;
@@ -1487,6 +1532,9 @@ exports[`getComponentCss() should return correct css for activePage: 6, pageTota
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 nav {
   display: flex;
   justify-content: center;
@@ -1583,6 +1631,9 @@ exports[`getComponentCss() should return correct css for activePage: 7, pageTota
 }
 :host([hidden]) {
   display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
 }
 nav {
   display: flex;
@@ -1683,6 +1734,9 @@ exports[`getComponentCss() should return correct css for activePage: 8, pageTota
 }
 :host([hidden]) {
   display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
 }
 nav {
   display: flex;
@@ -1787,6 +1841,9 @@ exports[`getComponentCss() should return correct css for activePage: 9, pageTota
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 nav {
   display: flex;
   justify-content: center;
@@ -1889,6 +1946,9 @@ exports[`getComponentCss() should return correct css for activePage: 10, pageTot
 }
 :host([hidden]) {
   display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
 }
 nav {
   display: flex;

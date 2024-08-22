@@ -8,6 +8,9 @@ exports[`getComponentCss() should return correct css for disabled: false, hasCus
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 ::slotted(select) {
   display: block !important;
   width: 100% !important;
@@ -31,6 +34,9 @@ exports[`getComponentCss() should return correct css for disabled: false, hasCus
   padding: 8px 16px !important;
   padding-inline-end: calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 1) !important;
 }
+::slotted(:not(input[type="password"])) {
+  text-overflow: ellipsis !important;
+}
 ::slotted(select:focus) {
   border-color: #010205 !important;
 }
@@ -49,6 +55,7 @@ exports[`getComponentCss() should return correct css for disabled: false, hasCus
 .root {
   display: grid;
   gap: 4px;
+  min-width: calc(1rem + 16px + 2px * 2 + calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 1));
 }
 .wrapper {
   display: grid;
@@ -182,6 +189,9 @@ exports[`getComponentCss() should return correct css for disabled: false, hasCus
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 ::slotted(select) {
   display: block !important;
   width: 100% !important;
@@ -205,6 +215,9 @@ exports[`getComponentCss() should return correct css for disabled: false, hasCus
   padding: 8px 16px !important;
   padding-inline-end: calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 1) !important;
 }
+::slotted(:not(input[type="password"])) {
+  text-overflow: ellipsis !important;
+}
 ::slotted(select:focus) {
   border-color: #FBFCFF !important;
 }
@@ -223,6 +236,7 @@ exports[`getComponentCss() should return correct css for disabled: false, hasCus
 .root {
   display: grid;
   gap: 4px;
+  min-width: calc(1rem + 16px + 2px * 2 + calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 1));
 }
 .wrapper {
   display: grid;
@@ -292,6 +306,9 @@ exports[`getComponentCss() should return correct css for disabled: false, hasCus
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 ::slotted(select) {
   display: block !important;
   width: 100% !important;
@@ -315,6 +332,9 @@ exports[`getComponentCss() should return correct css for disabled: false, hasCus
   padding: 8px 16px !important;
   padding-inline-end: calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 1) !important;
 }
+::slotted(:not(input[type="password"])) {
+  text-overflow: ellipsis !important;
+}
 ::slotted(select:focus) {
   border-color: #010205 !important;
 }
@@ -333,6 +353,7 @@ exports[`getComponentCss() should return correct css for disabled: false, hasCus
 .root {
   display: grid;
   gap: 4px;
+  min-width: calc(1rem + 16px + 2px * 2 + calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 1));
 }
 .wrapper {
   display: grid;
@@ -402,6 +423,9 @@ exports[`getComponentCss() should return correct css for disabled: false, hasCus
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 ::slotted(select) {
   display: block !important;
   width: 100% !important;
@@ -425,6 +449,9 @@ exports[`getComponentCss() should return correct css for disabled: false, hasCus
   padding: 8px 16px !important;
   padding-inline-end: calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 1) !important;
 }
+::slotted(:not(input[type="password"])) {
+  text-overflow: ellipsis !important;
+}
 ::slotted(select:focus) {
   border-color: #FBFCFF !important;
 }
@@ -443,6 +470,7 @@ exports[`getComponentCss() should return correct css for disabled: false, hasCus
 .root {
   display: grid;
   gap: 4px;
+  min-width: calc(1rem + 16px + 2px * 2 + calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 1));
 }
 .wrapper {
   display: grid;
@@ -512,6 +540,9 @@ exports[`getComponentCss() should return correct css for disabled: false, hasCus
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 ::slotted(select) {
   display: block !important;
   width: 100% !important;
@@ -535,6 +566,9 @@ exports[`getComponentCss() should return correct css for disabled: false, hasCus
   padding: 8px 16px !important;
   padding-inline-end: calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 1) !important;
 }
+::slotted(:not(input[type="password"])) {
+  text-overflow: ellipsis !important;
+}
 ::slotted(select:focus) {
   border-color: #010205 !important;
 }
@@ -553,6 +587,7 @@ exports[`getComponentCss() should return correct css for disabled: false, hasCus
 .root {
   display: grid;
   gap: 4px;
+  min-width: calc(1rem + 16px + 2px * 2 + calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 1));
 }
 .wrapper {
   display: grid;
@@ -622,6 +657,9 @@ exports[`getComponentCss() should return correct css for disabled: false, hasCus
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 ::slotted(select) {
   display: block !important;
   width: 100% !important;
@@ -645,6 +683,9 @@ exports[`getComponentCss() should return correct css for disabled: false, hasCus
   padding: 8px 16px !important;
   padding-inline-end: calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 1) !important;
 }
+::slotted(:not(input[type="password"])) {
+  text-overflow: ellipsis !important;
+}
 ::slotted(select:focus) {
   border-color: #FBFCFF !important;
 }
@@ -663,6 +704,7 @@ exports[`getComponentCss() should return correct css for disabled: false, hasCus
 .root {
   display: grid;
   gap: 4px;
+  min-width: calc(1rem + 16px + 2px * 2 + calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 1));
 }
 .wrapper {
   display: grid;
@@ -731,6 +773,9 @@ exports[`getComponentCss() should return correct css for disabled: false, hasCus
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 ::slotted(select) {
   display: block !important;
   width: 100% !important;
@@ -754,6 +799,9 @@ exports[`getComponentCss() should return correct css for disabled: false, hasCus
   padding: 8px 16px !important;
   padding-inline-end: calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 1) !important;
 }
+::slotted(:not(input[type="password"])) {
+  text-overflow: ellipsis !important;
+}
 ::slotted(select:focus) {
   border-color: #010205 !important;
 }
@@ -772,6 +820,7 @@ exports[`getComponentCss() should return correct css for disabled: false, hasCus
 .root {
   display: grid;
   gap: 4px;
+  min-width: calc(1rem + 16px + 2px * 2 + calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 1));
 }
 .wrapper {
   display: grid;
@@ -840,6 +889,9 @@ exports[`getComponentCss() should return correct css for disabled: false, hasCus
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 ::slotted(select) {
   display: block !important;
   width: 100% !important;
@@ -864,6 +916,9 @@ exports[`getComponentCss() should return correct css for disabled: false, hasCus
   padding-inline-end: calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 1) !important;
   border-color: transparent !important;
 }
+::slotted(:not(input[type="password"])) {
+  text-overflow: ellipsis !important;
+}
 ::slotted(select:focus) {
   border-color: #FBFCFF !important;
 }
@@ -882,6 +937,7 @@ exports[`getComponentCss() should return correct css for disabled: false, hasCus
 .root {
   display: grid;
   gap: 4px;
+  min-width: calc(1rem + 16px + 2px * 2 + calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 1));
 }
 .wrapper {
   display: grid;
@@ -951,6 +1007,9 @@ exports[`getComponentCss() should return correct css for disabled: false, hasCus
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 ::slotted(select) {
   display: block !important;
   width: 100% !important;
@@ -975,6 +1034,9 @@ exports[`getComponentCss() should return correct css for disabled: false, hasCus
   padding-inline-end: calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 1) !important;
   border-color: transparent !important;
 }
+::slotted(:not(input[type="password"])) {
+  text-overflow: ellipsis !important;
+}
 ::slotted(select:focus) {
   border-color: #010205 !important;
 }
@@ -993,6 +1055,7 @@ exports[`getComponentCss() should return correct css for disabled: false, hasCus
 .root {
   display: grid;
   gap: 4px;
+  min-width: calc(1rem + 16px + 2px * 2 + calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 1));
 }
 .wrapper {
   display: grid;
@@ -1062,6 +1125,9 @@ exports[`getComponentCss() should return correct css for disabled: false, hasCus
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 ::slotted(select) {
   display: block !important;
   width: 100% !important;
@@ -1086,6 +1152,9 @@ exports[`getComponentCss() should return correct css for disabled: false, hasCus
   padding-inline-end: calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 1) !important;
   border-color: transparent !important;
 }
+::slotted(:not(input[type="password"])) {
+  text-overflow: ellipsis !important;
+}
 ::slotted(select:focus) {
   border-color: #FBFCFF !important;
 }
@@ -1104,6 +1173,7 @@ exports[`getComponentCss() should return correct css for disabled: false, hasCus
 .root {
   display: grid;
   gap: 4px;
+  min-width: calc(1rem + 16px + 2px * 2 + calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 1));
 }
 .wrapper {
   display: grid;
@@ -1172,6 +1242,9 @@ exports[`getComponentCss() should return correct css for disabled: false, hasCus
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 ::slotted(select) {
   display: block !important;
   width: 100% !important;
@@ -1196,6 +1269,9 @@ exports[`getComponentCss() should return correct css for disabled: false, hasCus
   padding-inline-end: calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 1) !important;
   border-color: transparent !important;
 }
+::slotted(:not(input[type="password"])) {
+  text-overflow: ellipsis !important;
+}
 ::slotted(select:focus) {
   border-color: #010205 !important;
 }
@@ -1214,6 +1290,7 @@ exports[`getComponentCss() should return correct css for disabled: false, hasCus
 .root {
   display: grid;
   gap: 4px;
+  min-width: calc(1rem + 16px + 2px * 2 + calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 1));
 }
 .wrapper {
   display: grid;
@@ -1282,6 +1359,9 @@ exports[`getComponentCss() should return correct css for disabled: false, hasCus
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 ::slotted(select) {
   display: block !important;
   width: 100% !important;
@@ -1306,6 +1386,9 @@ exports[`getComponentCss() should return correct css for disabled: false, hasCus
   padding-inline-end: calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 1) !important;
   border-color: transparent !important;
 }
+::slotted(:not(input[type="password"])) {
+  text-overflow: ellipsis !important;
+}
 ::slotted(select:focus) {
   border-color: #FBFCFF !important;
 }
@@ -1324,6 +1407,7 @@ exports[`getComponentCss() should return correct css for disabled: false, hasCus
 .root {
   display: grid;
   gap: 4px;
+  min-width: calc(1rem + 16px + 2px * 2 + calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 1));
 }
 .wrapper {
   display: grid;
@@ -1393,6 +1477,9 @@ exports[`getComponentCss() should return correct css for disabled: false, hasCus
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 ::slotted(select) {
   display: block !important;
   width: 100% !important;
@@ -1417,6 +1504,9 @@ exports[`getComponentCss() should return correct css for disabled: false, hasCus
   padding-inline-end: calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 1) !important;
   border-color: transparent !important;
 }
+::slotted(:not(input[type="password"])) {
+  text-overflow: ellipsis !important;
+}
 ::slotted(select:focus) {
   border-color: #010205 !important;
 }
@@ -1435,6 +1525,7 @@ exports[`getComponentCss() should return correct css for disabled: false, hasCus
 .root {
   display: grid;
   gap: 4px;
+  min-width: calc(1rem + 16px + 2px * 2 + calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 1));
 }
 .wrapper {
   display: grid;
@@ -1504,6 +1595,9 @@ exports[`getComponentCss() should return correct css for disabled: true, hasCust
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 ::slotted(select) {
   display: block !important;
   width: 100% !important;
@@ -1527,6 +1621,9 @@ exports[`getComponentCss() should return correct css for disabled: true, hasCust
   padding: 8px 16px !important;
   padding-inline-end: calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 1) !important;
 }
+::slotted(:not(input[type="password"])) {
+  text-overflow: ellipsis !important;
+}
 ::slotted(select:focus) {
   border-color: #FBFCFF !important;
 }
@@ -1545,6 +1642,7 @@ exports[`getComponentCss() should return correct css for disabled: true, hasCust
 .root {
   display: grid;
   gap: 4px;
+  min-width: calc(1rem + 16px + 2px * 2 + calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 1));
 }
 .wrapper {
   display: grid;

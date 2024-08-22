@@ -1,7 +1,7 @@
 <template>
-  <article @click="onContentClick">
+  <div class="main-content" @click="onContentClick">
     <slot />
-  </article>
+  </div>
 </template>
 
 <script lang="ts">
@@ -52,7 +52,7 @@
   /* More information about :deep selector can be found here: https://vue-loader.vuejs.org/guide/scoped-css.html#deep-selectors
 * Child div selector is necessary because dynamic component loader vmark is using another <div> as component root element.
 */
-  article :deep(> .vmark) {
+  .main-content :deep(> .vmark) {
     .language-diff {
       & > {
         .inserted {

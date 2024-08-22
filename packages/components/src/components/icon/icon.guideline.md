@@ -8,7 +8,9 @@ Do you have an icon that is mandatory for several teams and purposes? We are hap
 System. Feel free to get in touch with us on our
 [Porsche Design System Slack](https://porschedev.slack.com/archives/CT7AVHTTQ)
 
-### Metaphor and Appearance
+<TableOfContents></TableOfContents>
+
+## Metaphor and Appearance
 
 - Check the Porsche environment for similar or close icons to adapt (Web, App, In Car, Print)
 - Stick to the basic geometric shapes.
@@ -17,7 +19,7 @@ System. Feel free to get in touch with us on our
 - Make sure corresponding icons have the same position e.g. the "add" and "remove" icon.
 - Check your design about other icons from the Porsche Design System.
 
-### Quality assurance
+## Quality assurance
 
 - Build your icons based on the default grid (48x48px) Default Porsche icons are based on 2px lines.
 - Fill areas smaller than 4px.
@@ -27,7 +29,7 @@ System. Feel free to get in touch with us on our
 - Respect the safe area around the icon (approximately 4px, which can vary depending on the ratio of the icon).
 - Design with only one color.
 
-### SVG Export
+## SVG Export
 
 - Transform vector forms in a full, coherent vector shape. (convert strokes to shapes and merge objects).
 - Delete everything that is not necessary (layers, strokes, variants, etc.).
@@ -38,7 +40,7 @@ System. Feel free to get in touch with us on our
 
 ---
 
-##### Read more on
+### Read more on
 
 [Nielsen Norman Group](https://nngroup.com/articles/icon-testing)
 

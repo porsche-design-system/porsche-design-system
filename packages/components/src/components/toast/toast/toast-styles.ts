@@ -13,6 +13,7 @@ import {
   colorSchemeStyles,
   cssVariableAnimationDuration,
   hostHiddenStyles,
+  preventFoucOfNestedElementsStyles,
 } from '../../../styles';
 import { TOAST_Z_INDEX } from '../../../constants';
 
@@ -67,6 +68,7 @@ export const getComponentCss = (): string => {
         ...colorSchemeStyles,
         ...hostHiddenStyles,
       }),
+      ...preventFoucOfNestedElementsStyles,
       '@keyframes in': getKeyframesMobile('in', cssVariablePositionBottomInternal),
       '@keyframes out': getKeyframesMobile('out', cssVariablePositionBottomInternal),
     },

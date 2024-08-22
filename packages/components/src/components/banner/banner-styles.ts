@@ -17,6 +17,7 @@ import {
   cssVariableTransitionDuration,
   getTransition,
   hostHiddenStyles,
+  preventFoucOfNestedElementsStyles,
 } from '../../styles';
 import { getBannerPopoverResetStyles } from '../../styles/banner-popover-reset-styles';
 
@@ -79,6 +80,7 @@ export const getComponentCss = (isOpen: boolean): string => {
           ...hostHiddenStyles,
         }),
       },
+      ...preventFoucOfNestedElementsStyles,
     },
   });
 };

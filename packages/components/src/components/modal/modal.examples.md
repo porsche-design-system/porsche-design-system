@@ -30,7 +30,7 @@ key you need to register an event listener for the `dismiss` event which is emit
 The size of `p-modal` adjusts itself to the content with a predefined **min/max width** which aligns to the
 **[Porsche Grid](styles/grid)**.
 
-#### Supported named slots:
+### Supported named slots:
 
 - `slot="header"`: Renders a header section above the content area.
 - `slot`: Shows the content area.

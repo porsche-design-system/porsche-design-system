@@ -10,15 +10,15 @@
 
 ## Usage
 
-##### Do:
+### Do:
 
 - Use only when placing text on images (e.g. a Link Tile) to provide a subtle contrast, making it easier to read.
 
-##### Don't:
+### Don't:
 
 - Don't build the gradient yourself.
 
-##### Hint
+### Hint
 
 - The gradient consists of various points to create a smooth gradient.
 
@@ -26,7 +26,7 @@
 
 The styles are available as `JavaScript` and `SCSS` version. Look at the example above to see how the styles work.
 
-#### JS
+### JS
 
 JavaScript styles can be imported by
 `import { … } from '@porsche-design-system/components-{js|angular|react|vue}/styles';`.
@@ -38,7 +38,7 @@ JavaScript styles can be imported by
 
 ---
 
-#### SCSS
+### SCSS
 
 SCSS styles can be imported by `@use '@porsche-design-system/components-{js|angular|react|vue}/styles' as *;`
 

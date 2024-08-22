@@ -12,7 +12,7 @@ type TextareaStyleProps = {
 
 export type TextareaProps = PTextareaWrapperProps & TextareaStyleProps & DummyTextareaProps;
 
-export const Textarea = (props: TextareaProps): JSX.Element => {
+export const TextareaWrapperDummy = (props: TextareaProps): JSX.Element => {
   const { height, ...rest } = props;
   const [wrapperProps, dummyTextareaProps] = partitionProps<PTextareaWrapperProps, DummyTextareaProps>(
     rest,

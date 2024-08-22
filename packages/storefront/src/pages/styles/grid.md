@@ -20,7 +20,7 @@ between 320px and 2560px, using fluid sized columns and gaps.
 
 ## Usage
 
-##### Grid Areas:
+### Grid Areas:
 
 **Basic-Grid 12 Columns:** This is the default and should contain all productive content, such as copy, graphics, and
 descriptive imagery (or at least the main focus of the image).
@@ -50,7 +50,7 @@ This does not correspond to the grid.
 
 The styles are available as `JavaScript` and `SCSS` version. Look at the example above to see how the styles work.
 
-#### JS
+### JS
 
 JavaScript styles can be imported by
 `import { … } from '@porsche-design-system/components-{js|angular|react|vue}/styles';`.
@@ -97,7 +97,7 @@ JavaScript styles can be imported by
 
 ---
 
-#### SCSS
+### SCSS
 
 SCSS styles can be imported by `@use '@porsche-design-system/components-{js|angular|react|vue}/styles' as *;`
 

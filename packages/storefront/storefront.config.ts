@@ -343,6 +343,11 @@ export const config: StorefrontConfig = {
       Usage: [() => import('@/../../components/src/components/text-list/text-list.usage.md')],
       Props: [() => import('@/../../components/src/components/text-list/text-list/text-list.props.md')],
     },
+    Textarea: {
+      Examples: [() => import('@/../../components/src/components/textarea/textarea.examples.md')],
+      Usage: [() => import('@/../../components/src/components/textarea/textarea.usage.md')],
+      Props: [() => import('@/../../components/src/components/textarea/textarea.props.md')],
+    },
     'Textarea Wrapper': {
       Examples: [() => import('@/../../components/src/components/textarea-wrapper/textarea-wrapper.examples.md')],
       Usage: [() => import('@/../../components/src/components/textarea-wrapper/textarea-wrapper.usage.md')],

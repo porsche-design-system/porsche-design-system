@@ -36,7 +36,7 @@ on:
         required: true
 name: 'Deploy and Release'
 env:
-  PDS_PLAYWRIGHT_DOCKER_IMAGE: ghcr.io/porsche-design-system/porsche-design-system/playwright:v1.42.1-focal-12
+  PDS_PLAYWRIGHT_DOCKER_IMAGE: ghcr.io/porsche-design-system/porsche-design-system/playwright:v1.42.1-focal-13
 jobs:
   assets-deployment:
     name: 'Assets Deployment'
@@ -71,7 +71,12 @@ jobs:
         uses: ./.github/actions/setup-and-install
         with:
           github-token: ${{ secrets.github-token }}
-      - name: 'Restore Build Artifact'
+      - name: 'Restore Components Build Artifact'
+        uses: actions/download-artifact@v4
+        with:
+          name: components-prod-build
+          path: ./packages/components/dist
+      - name: 'Restore Storefront Build Artifact'
         uses: actions/download-artifact@v4
         with:
           name: storefront-build

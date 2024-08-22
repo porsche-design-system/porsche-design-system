@@ -9,6 +9,9 @@ exports[`getComponentCss() should return correct css for aspectRatio: "1:1", siz
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 slot {
   display: block;
 }
@@ -92,6 +95,9 @@ exports[`getComponentCss() should return correct css for aspectRatio: "3:4", siz
 }
 :host([hidden]) {
   display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
 }
 slot {
   display: block;
@@ -192,6 +198,9 @@ exports[`getComponentCss() should return correct css for aspectRatio: "4:3", siz
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 slot {
   display: block;
 }
@@ -291,6 +300,9 @@ exports[`getComponentCss() should return correct css for aspectRatio: "9:16", si
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 slot {
   display: block;
 }
@@ -375,6 +387,9 @@ exports[`getComponentCss() should return correct css for aspectRatio: "16:9", si
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 slot {
   display: block;
 }
@@ -458,6 +473,9 @@ exports[`getComponentCss() should return correct css for aspectRatio: {"base":"1
 }
 :host([hidden]) {
   display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
 }
 slot {
   display: block;

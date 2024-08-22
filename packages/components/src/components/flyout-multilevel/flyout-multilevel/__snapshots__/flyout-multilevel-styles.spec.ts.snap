@@ -20,6 +20,9 @@ exports[`getComponentCss() should return correct css for isPrimaryScrollerVisibl
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 dialog {
   position: fixed;
   height: 100dvh;
@@ -150,6 +153,9 @@ exports[`getComponentCss() should return correct css for isPrimaryScrollerVisibl
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 dialog {
   position: fixed;
   height: 100dvh;
@@ -265,6 +271,9 @@ exports[`getComponentCss() should return correct css for isPrimaryScrollerVisibl
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 dialog {
   position: fixed;
   height: 100dvh;
@@ -377,6 +386,9 @@ exports[`getComponentCss() should return correct css for isPrimaryScrollerVisibl
 }
 :host([hidden]) {
   display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
 }
 dialog {
   position: fixed;
@@ -503,6 +515,9 @@ exports[`getComponentCss() should return correct css for isPrimaryScrollerVisibl
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 dialog {
   position: fixed;
   height: 100dvh;
@@ -613,6 +628,9 @@ exports[`getComponentCss() should return correct css for isPrimaryScrollerVisibl
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 dialog {
   position: fixed;
   height: 100dvh;
@@ -722,6 +740,9 @@ exports[`getComponentCss() should return correct css for isPrimaryScrollerVisibl
 }
 :host([hidden]) {
   display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
 }
 dialog {
   position: fixed;
@@ -848,6 +869,9 @@ exports[`getComponentCss() should return correct css for isPrimaryScrollerVisibl
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 dialog {
   position: fixed;
   height: 100dvh;
@@ -957,6 +981,9 @@ exports[`getComponentCss() should return correct css for isPrimaryScrollerVisibl
 }
 :host([hidden]) {
   display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
 }
 dialog {
   position: fixed;

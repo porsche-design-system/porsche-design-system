@@ -14,6 +14,9 @@ exports[`getComponentCss() should return correct css for state: error, hasAction
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 ::slotted(:is(h1,h2,h3,h4,h5,h6)) {
   all: unset !important;
 }
@@ -40,10 +43,18 @@ slot[name="heading"] {
   margin: 0;
   color: #FBFCFF;
 }
+.icon {
+  margin-top: 2px;
+}
 .content {
   display: grid;
   gap: 4px;
   max-width: 50rem;
+  margin-top: 2px;
+}
+.close {
+  --p-internal-button-scaling: 0;
+  mix-blend-mode: plus-lighter;
 }
 @media(min-width:760px) {
   .content {
@@ -73,6 +84,9 @@ exports[`getComponentCss() should return correct css for state: error, hasAction
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 ::slotted(:is(h1,h2,h3,h4,h5,h6)) {
   all: unset !important;
 }
@@ -99,10 +113,18 @@ slot[name="heading"] {
   margin: 0;
   color: #010205;
 }
+.icon {
+  margin-top: 2px;
+}
 .content {
   display: grid;
   gap: 4px;
   max-width: 50rem;
+  margin-top: 2px;
+}
+.close {
+  --p-internal-button-scaling: 0;
+  mix-blend-mode: multiply;
 }
 @media(min-width:760px) {
   .content {
@@ -132,6 +154,9 @@ exports[`getComponentCss() should return correct css for state: info, hasAction:
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 ::slotted(:is(h1,h2,h3,h4,h5,h6)) {
   all: unset !important;
 }
@@ -158,10 +183,18 @@ slot[name="heading"] {
   margin: 0;
   color: #FBFCFF;
 }
+.icon {
+  margin-top: 2px;
+}
 .content {
   display: grid;
   gap: 4px;
   max-width: 50rem;
+  margin-top: 2px;
+}
+.close {
+  --p-internal-button-scaling: 0;
+  mix-blend-mode: plus-lighter;
 }
 @media(min-width:760px) {
   .content {
@@ -191,6 +224,9 @@ exports[`getComponentCss() should return correct css for state: info, hasAction:
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 ::slotted(:is(h1,h2,h3,h4,h5,h6)) {
   all: unset !important;
 }
@@ -217,10 +253,18 @@ slot[name="heading"] {
   margin: 0;
   color: #010205;
 }
+.icon {
+  margin-top: 2px;
+}
 .content {
   display: grid;
   gap: 4px;
   max-width: 50rem;
+  margin-top: 2px;
+}
+.close {
+  --p-internal-button-scaling: 0;
+  mix-blend-mode: multiply;
 }
 @media(min-width:760px) {
   .content {
@@ -250,6 +294,9 @@ exports[`getComponentCss() should return correct css for state: info, hasAction:
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 ::slotted(:is(h1,h2,h3,h4,h5,h6)) {
   all: unset !important;
 }
@@ -276,10 +323,18 @@ slot[name="heading"] {
   margin: 0;
   color: #FBFCFF;
 }
+.icon {
+  margin-top: 2px;
+}
 .content {
   display: grid;
   gap: 4px;
   max-width: 50rem;
+  margin-top: 2px;
+}
+.close {
+  --p-internal-button-scaling: 0;
+  mix-blend-mode: plus-lighter;
 }
 @media(min-width:760px) {
   .content {
@@ -309,6 +364,9 @@ exports[`getComponentCss() should return correct css for state: info, hasAction:
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 ::slotted(:is(h1,h2,h3,h4,h5,h6)) {
   all: unset !important;
 }
@@ -335,10 +393,18 @@ slot[name="heading"] {
   margin: 0;
   color: #010205;
 }
+.icon {
+  margin-top: 2px;
+}
 .content {
   display: grid;
   gap: 4px;
   max-width: 50rem;
+  margin-top: 2px;
+}
+.close {
+  --p-internal-button-scaling: 0;
+  mix-blend-mode: multiply;
 }
 @media(min-width:760px) {
   .content {
@@ -368,6 +434,9 @@ exports[`getComponentCss() should return correct css for state: info, hasAction:
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 ::slotted(:is(h1,h2,h3,h4,h5,h6)) {
   all: unset !important;
 }
@@ -394,10 +463,21 @@ slot[name="heading"] {
   margin: 0;
   color: #FBFCFF;
 }
+.icon {
+  margin-top: 2px;
+}
 .content {
   display: grid;
   gap: 4px;
   max-width: 50rem;
+  margin-top: 2px;
+}
+.action {
+  margin-top: 2px;
+}
+.close {
+  --p-internal-button-scaling: 0;
+  mix-blend-mode: plus-lighter;
 }
 @media(min-width:760px) {
   .content {
@@ -430,6 +510,9 @@ exports[`getComponentCss() should return correct css for state: info, hasAction:
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 ::slotted(:is(h1,h2,h3,h4,h5,h6)) {
   all: unset !important;
 }
@@ -456,10 +539,21 @@ slot[name="heading"] {
   margin: 0;
   color: #010205;
 }
+.icon {
+  margin-top: 2px;
+}
 .content {
   display: grid;
   gap: 4px;
   max-width: 50rem;
+  margin-top: 2px;
+}
+.action {
+  margin-top: 2px;
+}
+.close {
+  --p-internal-button-scaling: 0;
+  mix-blend-mode: multiply;
 }
 @media(min-width:760px) {
   .content {
@@ -492,6 +586,9 @@ exports[`getComponentCss() should return correct css for state: info, hasAction:
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 ::slotted(:is(h1,h2,h3,h4,h5,h6)) {
   all: unset !important;
 }
@@ -518,10 +615,21 @@ slot[name="heading"] {
   margin: 0;
   color: #FBFCFF;
 }
+.icon {
+  margin-top: 2px;
+}
 .content {
   display: grid;
   gap: 4px;
   max-width: 50rem;
+  margin-top: 2px;
+}
+.action {
+  margin-top: 2px;
+}
+.close {
+  --p-internal-button-scaling: 0;
+  mix-blend-mode: plus-lighter;
 }
 @media(min-width:760px) {
   .content {
@@ -554,6 +662,9 @@ exports[`getComponentCss() should return correct css for state: info, hasAction:
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 ::slotted(:is(h1,h2,h3,h4,h5,h6)) {
   all: unset !important;
 }
@@ -580,10 +691,21 @@ slot[name="heading"] {
   margin: 0;
   color: #010205;
 }
+.icon {
+  margin-top: 2px;
+}
 .content {
   display: grid;
   gap: 4px;
   max-width: 50rem;
+  margin-top: 2px;
+}
+.action {
+  margin-top: 2px;
+}
+.close {
+  --p-internal-button-scaling: 0;
+  mix-blend-mode: multiply;
 }
 @media(min-width:760px) {
   .content {
@@ -616,6 +738,9 @@ exports[`getComponentCss() should return correct css for state: neutral, hasActi
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 ::slotted(:is(h1,h2,h3,h4,h5,h6)) {
   all: unset !important;
 }
@@ -642,10 +767,18 @@ slot[name="heading"] {
   margin: 0;
   color: #FBFCFF;
 }
+.icon {
+  margin-top: 2px;
+}
 .content {
   display: grid;
   gap: 4px;
   max-width: 50rem;
+  margin-top: 2px;
+}
+.close {
+  --p-internal-button-scaling: 0;
+  mix-blend-mode: plus-lighter;
 }
 @media(min-width:760px) {
   .content {
@@ -675,6 +808,9 @@ exports[`getComponentCss() should return correct css for state: neutral, hasActi
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 ::slotted(:is(h1,h2,h3,h4,h5,h6)) {
   all: unset !important;
 }
@@ -701,10 +837,18 @@ slot[name="heading"] {
   margin: 0;
   color: #010205;
 }
+.icon {
+  margin-top: 2px;
+}
 .content {
   display: grid;
   gap: 4px;
   max-width: 50rem;
+  margin-top: 2px;
+}
+.close {
+  --p-internal-button-scaling: 0;
+  mix-blend-mode: multiply;
 }
 @media(min-width:760px) {
   .content {
@@ -734,6 +878,9 @@ exports[`getComponentCss() should return correct css for state: neutral, hasActi
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 ::slotted(:is(h1,h2,h3,h4,h5,h6)) {
   all: unset !important;
 }
@@ -760,10 +907,18 @@ slot[name="heading"] {
   margin: 0;
   color: #FBFCFF;
 }
+.icon {
+  margin-top: 2px;
+}
 .content {
   display: grid;
   gap: 4px;
   max-width: 50rem;
+  margin-top: 2px;
+}
+.close {
+  --p-internal-button-scaling: 0;
+  mix-blend-mode: plus-lighter;
 }
 @media(min-width:760px) {
   .content {
@@ -793,6 +948,9 @@ exports[`getComponentCss() should return correct css for state: neutral, hasActi
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 ::slotted(:is(h1,h2,h3,h4,h5,h6)) {
   all: unset !important;
 }
@@ -819,10 +977,18 @@ slot[name="heading"] {
   margin: 0;
   color: #010205;
 }
+.icon {
+  margin-top: 2px;
+}
 .content {
   display: grid;
   gap: 4px;
   max-width: 50rem;
+  margin-top: 2px;
+}
+.close {
+  --p-internal-button-scaling: 0;
+  mix-blend-mode: multiply;
 }
 @media(min-width:760px) {
   .content {
@@ -852,6 +1018,9 @@ exports[`getComponentCss() should return correct css for state: neutral, hasActi
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 ::slotted(:is(h1,h2,h3,h4,h5,h6)) {
   all: unset !important;
 }
@@ -878,10 +1047,21 @@ slot[name="heading"] {
   margin: 0;
   color: #FBFCFF;
 }
+.icon {
+  margin-top: 2px;
+}
 .content {
   display: grid;
   gap: 4px;
   max-width: 50rem;
+  margin-top: 2px;
+}
+.action {
+  margin-top: 2px;
+}
+.close {
+  --p-internal-button-scaling: 0;
+  mix-blend-mode: plus-lighter;
 }
 @media(min-width:760px) {
   .content {
@@ -914,6 +1094,9 @@ exports[`getComponentCss() should return correct css for state: neutral, hasActi
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 ::slotted(:is(h1,h2,h3,h4,h5,h6)) {
   all: unset !important;
 }
@@ -940,10 +1123,21 @@ slot[name="heading"] {
   margin: 0;
   color: #010205;
 }
+.icon {
+  margin-top: 2px;
+}
 .content {
   display: grid;
   gap: 4px;
   max-width: 50rem;
+  margin-top: 2px;
+}
+.action {
+  margin-top: 2px;
+}
+.close {
+  --p-internal-button-scaling: 0;
+  mix-blend-mode: multiply;
 }
 @media(min-width:760px) {
   .content {
@@ -976,6 +1170,9 @@ exports[`getComponentCss() should return correct css for state: neutral, hasActi
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 ::slotted(:is(h1,h2,h3,h4,h5,h6)) {
   all: unset !important;
 }
@@ -1002,10 +1199,21 @@ slot[name="heading"] {
   margin: 0;
   color: #FBFCFF;
 }
+.icon {
+  margin-top: 2px;
+}
 .content {
   display: grid;
   gap: 4px;
   max-width: 50rem;
+  margin-top: 2px;
+}
+.action {
+  margin-top: 2px;
+}
+.close {
+  --p-internal-button-scaling: 0;
+  mix-blend-mode: plus-lighter;
 }
 @media(min-width:760px) {
   .content {
@@ -1038,6 +1246,9 @@ exports[`getComponentCss() should return correct css for state: neutral, hasActi
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 ::slotted(:is(h1,h2,h3,h4,h5,h6)) {
   all: unset !important;
 }
@@ -1064,10 +1275,21 @@ slot[name="heading"] {
   margin: 0;
   color: #010205;
 }
+.icon {
+  margin-top: 2px;
+}
 .content {
   display: grid;
   gap: 4px;
   max-width: 50rem;
+  margin-top: 2px;
+}
+.action {
+  margin-top: 2px;
+}
+.close {
+  --p-internal-button-scaling: 0;
+  mix-blend-mode: multiply;
 }
 @media(min-width:760px) {
   .content {
@@ -1100,6 +1322,9 @@ exports[`getComponentCss() should return correct css for state: success, hasActi
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 ::slotted(:is(h1,h2,h3,h4,h5,h6)) {
   all: unset !important;
 }
@@ -1126,10 +1351,18 @@ slot[name="heading"] {
   margin: 0;
   color: #FBFCFF;
 }
+.icon {
+  margin-top: 2px;
+}
 .content {
   display: grid;
   gap: 4px;
   max-width: 50rem;
+  margin-top: 2px;
+}
+.close {
+  --p-internal-button-scaling: 0;
+  mix-blend-mode: plus-lighter;
 }
 @media(min-width:760px) {
   .content {
@@ -1159,6 +1392,9 @@ exports[`getComponentCss() should return correct css for state: success, hasActi
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 ::slotted(:is(h1,h2,h3,h4,h5,h6)) {
   all: unset !important;
 }
@@ -1185,10 +1421,18 @@ slot[name="heading"] {
   margin: 0;
   color: #010205;
 }
+.icon {
+  margin-top: 2px;
+}
 .content {
   display: grid;
   gap: 4px;
   max-width: 50rem;
+  margin-top: 2px;
+}
+.close {
+  --p-internal-button-scaling: 0;
+  mix-blend-mode: multiply;
 }
 @media(min-width:760px) {
   .content {
@@ -1218,6 +1462,9 @@ exports[`getComponentCss() should return correct css for state: warning, hasActi
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 ::slotted(:is(h1,h2,h3,h4,h5,h6)) {
   all: unset !important;
 }
@@ -1244,10 +1491,18 @@ slot[name="heading"] {
   margin: 0;
   color: #FBFCFF;
 }
+.icon {
+  margin-top: 2px;
+}
 .content {
   display: grid;
   gap: 4px;
   max-width: 50rem;
+  margin-top: 2px;
+}
+.close {
+  --p-internal-button-scaling: 0;
+  mix-blend-mode: plus-lighter;
 }
 @media(min-width:760px) {
   .content {
@@ -1277,6 +1532,9 @@ exports[`getComponentCss() should return correct css for state: warning, hasActi
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 ::slotted(:is(h1,h2,h3,h4,h5,h6)) {
   all: unset !important;
 }
@@ -1303,10 +1561,18 @@ slot[name="heading"] {
   margin: 0;
   color: #010205;
 }
+.icon {
+  margin-top: 2px;
+}
 .content {
   display: grid;
   gap: 4px;
   max-width: 50rem;
+  margin-top: 2px;
+}
+.close {
+  --p-internal-button-scaling: 0;
+  mix-blend-mode: multiply;
 }
 @media(min-width:760px) {
   .content {

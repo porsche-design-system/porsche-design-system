@@ -399,6 +399,16 @@
   </p-select>
 </div>
 
+<div class="playground light" title="should render with ellipsis and min-width in a smaller container">
+  <div style="width: 60px">
+    <p-select name="options" value="a" label="Some label">
+      <p-select-option value="a">Option A</p-select-option>
+      <p-select-option value="b">Option B</p-select-option>
+      <p-select-option value="c">Option C</p-select-option>
+    </p-select>
+  </div>
+</div>
+
 <script>
   porscheDesignSystem.componentsReady().then(() => {
     // Call click on the shadow root input so isOutsideClick won't close the dropdowns
