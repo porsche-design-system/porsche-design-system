@@ -10,6 +10,7 @@
   "license": "UNLICENSED",
   "homepage": "https://designsystem.porsche.com",
   "scripts": {
+    "start": "node ./bin/serve-dummyassets.js",
     "build": "yarn clean:build && yarn build:generateTagNames && yarn build:generateChunkNames && yarn build:generatePartialNames && yarn build:generateCodeSamples && yarn build:bundle",
     "build:generateTagNames": "tsx scripts/generateTagNames.ts",
     "build:generateCodeSamples": "tsx scripts/generateCodeSamples.ts",
@@ -53,6 +54,9 @@
     "ts-jest": "*",
     "tsx": "*",
     "typescript": "*"
+  },
+  "bin": {
+    "serve-dummyassets": "./bin/serve-dummyassets.js"
   },
   "volta": {
     "extends": "../../package.json"
