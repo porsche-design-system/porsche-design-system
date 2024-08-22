@@ -10,6 +10,9 @@ exports[`getComponentCss() should return correct css for state: complete, isDisa
 :host(:not(:last-of-type)) {
   margin-inline-end: clamp(4px, 0.25vw + 3px, 8px) !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 button {
   display: flex;
   position: relative;
@@ -73,6 +76,9 @@ exports[`getComponentCss() should return correct css for state: complete, isDisa
 }
 :host(:not(:last-of-type)) {
   margin-inline-end: clamp(4px, 0.25vw + 3px, 8px) !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
 }
 button {
   display: flex;
@@ -138,6 +144,9 @@ exports[`getComponentCss() should return correct css for state: complete, isDisa
 :host(:not(:last-of-type)) {
   margin-inline-end: clamp(4px, 0.25vw + 3px, 8px) !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 button {
   display: flex;
   position: relative;
@@ -190,6 +199,9 @@ exports[`getComponentCss() should return correct css for state: complete, isDisa
 }
 :host(:not(:last-of-type)) {
   margin-inline-end: clamp(4px, 0.25vw + 3px, 8px) !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
 }
 button {
   display: flex;
@@ -270,6 +282,9 @@ exports[`getComponentCss() should return correct css for state: current, isDisab
 }
 :host(:not(:last-of-type)) {
   margin-inline-end: clamp(4px, 0.25vw + 3px, 8px) !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
 }
 button {
   display: flex;
@@ -365,6 +380,9 @@ exports[`getComponentCss() should return correct css for state: current, isDisab
 :host(:not(:last-of-type)) {
   margin-inline-end: clamp(4px, 0.25vw + 3px, 8px) !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 button {
   display: flex;
   position: relative;
@@ -459,6 +477,9 @@ exports[`getComponentCss() should return correct css for state: current, isDisab
 :host(:not(:last-of-type)) {
   margin-inline-end: clamp(4px, 0.25vw + 3px, 8px) !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 button {
   display: flex;
   position: relative;
@@ -541,6 +562,9 @@ exports[`getComponentCss() should return correct css for state: current, isDisab
 }
 :host(:not(:last-of-type)) {
   margin-inline-end: clamp(4px, 0.25vw + 3px, 8px) !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
 }
 button {
   display: flex;
@@ -625,6 +649,9 @@ exports[`getComponentCss() should return correct css for state: undefined, isDis
 :host(:not(:last-of-type)) {
   margin-inline-end: clamp(4px, 0.25vw + 3px, 8px) !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 button {
   display: flex;
   position: relative;
@@ -705,6 +732,9 @@ exports[`getComponentCss() should return correct css for state: undefined, isDis
 }
 :host(:not(:last-of-type)) {
   margin-inline-end: clamp(4px, 0.25vw + 3px, 8px) !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
 }
 button {
   display: flex;
@@ -787,6 +817,9 @@ exports[`getComponentCss() should return correct css for state: undefined, isDis
 :host(:not(:last-of-type)) {
   margin-inline-end: clamp(4px, 0.25vw + 3px, 8px) !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 button {
   display: flex;
   position: relative;
@@ -868,6 +901,9 @@ exports[`getComponentCss() should return correct css for state: undefined, isDis
 :host(:not(:last-of-type)) {
   margin-inline-end: clamp(4px, 0.25vw + 3px, 8px) !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 button {
   display: flex;
   position: relative;
@@ -921,6 +957,9 @@ exports[`getComponentCss() should return correct css for state: warning, isDisab
 }
 :host(:not(:last-of-type)) {
   margin-inline-end: clamp(4px, 0.25vw + 3px, 8px) !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
 }
 button {
   display: flex;
@@ -986,6 +1025,9 @@ exports[`getComponentCss() should return correct css for state: warning, isDisab
 :host(:not(:last-of-type)) {
   margin-inline-end: clamp(4px, 0.25vw + 3px, 8px) !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 button {
   display: flex;
   position: relative;
@@ -1050,6 +1092,9 @@ exports[`getComponentCss() should return correct css for state: warning, isDisab
 :host(:not(:last-of-type)) {
   margin-inline-end: clamp(4px, 0.25vw + 3px, 8px) !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 button {
   display: flex;
   position: relative;
@@ -1102,6 +1147,9 @@ exports[`getComponentCss() should return correct css for state: warning, isDisab
 }
 :host(:not(:last-of-type)) {
   margin-inline-end: clamp(4px, 0.25vw + 3px, 8px) !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
 }
 button {
   display: flex;

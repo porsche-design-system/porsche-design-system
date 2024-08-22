@@ -8,7 +8,12 @@ import {
 } from '@porsche-design-system/styles';
 import { type BreakpointCustomizable, type Theme } from '../../types';
 import { buildResponsiveStyles, getCss, mergeDeep } from '../../utils';
-import { addImportantToEachRule, colorSchemeStyles, hostHiddenStyles } from '../../styles';
+import {
+  addImportantToEachRule,
+  colorSchemeStyles,
+  hostHiddenStyles,
+  preventFoucOfNestedElementsStyles,
+} from '../../styles';
 import { type ModalBackdrop } from './modal-utils';
 import {
   dialogGridJssStyle,
@@ -49,6 +54,7 @@ export const getComponentCss = (
           ...hostHiddenStyles,
         }),
       },
+      ...preventFoucOfNestedElementsStyles,
       // TODO: why not available to Flyout too?
       // TODO: discussable if so many styles are a good thing, since we could also expose one or two CSS variables with which a stretch to full width is possible too
       '::slotted': addImportantToEachRule(

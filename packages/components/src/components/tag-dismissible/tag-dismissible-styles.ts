@@ -8,6 +8,7 @@ import {
   hostHiddenStyles,
   hoverMediaQuery,
   prefersColorSchemeDarkMediaQuery,
+  preventFoucOfNestedElementsStyles,
 } from '../../styles';
 import { getCss, isHighContrastMode } from '../../utils';
 import type { TagDismissibleColor, TagDismissibleColorDeprecated } from './tag-dismissible-utils';
@@ -42,6 +43,7 @@ export const getComponentCss = (
           ...hostHiddenStyles,
         }),
       },
+      ...preventFoucOfNestedElementsStyles,
       button: {
         display: 'flex',
         position: 'relative',

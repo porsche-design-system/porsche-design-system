@@ -9,6 +9,9 @@ exports[`getComponentCss() should return correct css for hasLikeButton: false, h
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 slot[name="header"] {
   display: block;
 }
@@ -108,6 +111,9 @@ exports[`getComponentCss() should return correct css for hasLikeButton: true, ha
 }
 :host([hidden]) {
   display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
 }
 slot[name="header"] {
   display: block;
@@ -223,6 +229,9 @@ exports[`getComponentCss() should return correct css for hasLikeButton: true, ha
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 slot[name="header"] {
   display: block;
 }
@@ -326,6 +335,9 @@ exports[`getComponentCss() should return correct css for hasLikeButton: true, ha
 }
 :host([hidden]) {
   display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
 }
 slot[name="header"] {
   display: block;
@@ -437,6 +449,9 @@ exports[`getComponentCss() should return correct css for hasLikeButton: true, ha
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 slot[name="header"] {
   display: block;
 }
@@ -541,6 +556,9 @@ exports[`getComponentCss() should return correct css for hasLikeButton: true, ha
 }
 :host([hidden]) {
   display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
 }
 slot[name="header"] {
   display: block;
@@ -663,6 +681,9 @@ exports[`getComponentCss() should return correct css for hasLikeButton: true, ha
 }
 :host([hidden]) {
   display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
 }
 slot[name="header"] {
   display: block;

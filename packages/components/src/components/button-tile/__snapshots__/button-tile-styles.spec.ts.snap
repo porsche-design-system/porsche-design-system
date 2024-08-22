@@ -9,6 +9,9 @@ exports[`getComponentCss() should return correct css for isDisabledOrLoading: fa
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 slot {
   display: block;
 }
@@ -109,6 +112,9 @@ exports[`getComponentCss() should return correct css for isDisabledOrLoading: fa
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 slot {
   display: block;
 }
@@ -194,6 +200,9 @@ exports[`getComponentCss() should return correct css for isDisabledOrLoading: fa
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 slot {
   display: block;
 }
@@ -272,6 +281,9 @@ exports[`getComponentCss() should return correct css for isDisabledOrLoading: fa
 }
 :host([hidden]) {
   display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
 }
 slot {
   display: block;
@@ -473,6 +485,9 @@ exports[`getComponentCss() should return correct css for isDisabledOrLoading: tr
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 slot {
   display: block;
 }
@@ -551,6 +566,9 @@ exports[`getComponentCss() should return correct css for isDisabledOrLoading: tr
 }
 :host([hidden]) {
   display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
 }
 slot {
   display: block;

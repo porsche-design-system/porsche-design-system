@@ -8,6 +8,9 @@ exports[`getComponentCss() should return correct css for hideLabel: { base: true
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 ::slotted(input) {
   width: calc(6px + 2.125ex) !important;
   height: calc(6px + 2.125ex) !important;
@@ -171,6 +174,9 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 ::slotted(input) {
   width: calc(6px + 2.125ex) !important;
   height: calc(6px + 2.125ex) !important;
@@ -283,6 +289,9 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 }
 :host([hidden]) {
   display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
 }
 ::slotted(input) {
   width: calc(6px + 2.125ex) !important;
@@ -397,6 +406,9 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 ::slotted(input) {
   width: calc(6px + 2.125ex) !important;
   height: calc(6px + 2.125ex) !important;
@@ -492,6 +504,9 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 ::slotted(input) {
   width: calc(6px + 2.125ex) !important;
   height: calc(6px + 2.125ex) !important;
@@ -586,6 +601,9 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 }
 :host([hidden]) {
   display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
 }
 ::slotted(input) {
   width: calc(6px + 2.125ex) !important;
@@ -699,6 +717,9 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 ::slotted(input) {
   width: calc(6px + 2.125ex) !important;
   height: calc(6px + 2.125ex) !important;
@@ -811,6 +832,9 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 ::slotted(input) {
   width: calc(6px + 2.125ex) !important;
   height: calc(6px + 2.125ex) !important;
@@ -905,6 +929,9 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 ::slotted(input) {
   width: calc(6px + 2.125ex) !important;
   height: calc(6px + 2.125ex) !important;
@@ -998,6 +1025,9 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 }
 :host([hidden]) {
   display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
 }
 ::slotted(input) {
   width: calc(6px + 2.125ex) !important;
@@ -1112,6 +1142,9 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 ::slotted(input) {
   width: calc(6px + 2.125ex) !important;
   height: calc(6px + 2.125ex) !important;
@@ -1225,6 +1258,9 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 ::slotted(input) {
   width: calc(6px + 2.125ex) !important;
   height: calc(6px + 2.125ex) !important;
@@ -1320,6 +1356,9 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 ::slotted(input) {
   width: calc(6px + 2.125ex) !important;
   height: calc(6px + 2.125ex) !important;
@@ -1414,6 +1453,9 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
 }
 :host([hidden]) {
   display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
 }
 ::slotted(input) {
   width: calc(6px + 2.125ex) !important;
@@ -1534,6 +1576,9 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 ::slotted(input) {
   width: calc(6px + 2.125ex) !important;
   height: calc(6px + 2.125ex) !important;
@@ -1653,6 +1698,9 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 ::slotted(input) {
   width: calc(6px + 2.125ex) !important;
   height: calc(6px + 2.125ex) !important;
@@ -1754,6 +1802,9 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 ::slotted(input) {
   width: calc(6px + 2.125ex) !important;
   height: calc(6px + 2.125ex) !important;
@@ -1854,6 +1905,9 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
 }
 :host([hidden]) {
   display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
 }
 ::slotted(input) {
   width: calc(6px + 2.125ex) !important;
@@ -1973,6 +2027,9 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 ::slotted(input) {
   width: calc(6px + 2.125ex) !important;
   height: calc(6px + 2.125ex) !important;
@@ -2091,6 +2148,9 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 ::slotted(input) {
   width: calc(6px + 2.125ex) !important;
   height: calc(6px + 2.125ex) !important;
@@ -2191,6 +2251,9 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 ::slotted(input) {
   width: calc(6px + 2.125ex) !important;
   height: calc(6px + 2.125ex) !important;
@@ -2290,6 +2353,9 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
 }
 :host([hidden]) {
   display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
 }
 ::slotted(input) {
   width: calc(6px + 2.125ex) !important;
@@ -2410,6 +2476,9 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 ::slotted(input) {
   width: calc(6px + 2.125ex) !important;
   height: calc(6px + 2.125ex) !important;
@@ -2529,6 +2598,9 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 ::slotted(input) {
   width: calc(6px + 2.125ex) !important;
   height: calc(6px + 2.125ex) !important;
@@ -2629,6 +2701,9 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
 }
 :host([hidden]) {
   display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
 }
 ::slotted(input) {
   width: calc(6px + 2.125ex) !important;

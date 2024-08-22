@@ -7,6 +7,7 @@ import {
   getInvertedThemedColors,
   hostHiddenStyles,
   prefersColorSchemeDarkMediaQuery,
+  preventFoucOfNestedElementsStyles,
 } from '../../styles';
 import { getSlottedCheckboxRadioButtonStyles } from '../../styles/checkbox-radio-styles';
 import { getCss, isDisabledOrLoading, isHighContrastMode, mergeDeep } from '../../utils';
@@ -50,6 +51,7 @@ export const getComponentCss = (
           ...hostHiddenStyles,
         }),
       },
+      ...preventFoucOfNestedElementsStyles,
       // ::slotted(input)
       ...addImportantToEachRule(
         mergeDeep(getSlottedCheckboxRadioButtonStyles(state, isDisabled, isLoading, theme), {

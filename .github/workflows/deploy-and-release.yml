@@ -71,7 +71,12 @@ jobs:
         uses: ./.github/actions/setup-and-install
         with:
           github-token: ${{ secrets.github-token }}
-      - name: 'Restore Build Artifact'
+      - name: 'Restore Components Build Artifact'
+        uses: actions/download-artifact@v4
+        with:
+          name: components-prod-build
+          path: ./packages/components/dist
+      - name: 'Restore Storefront Build Artifact'
         uses: actions/download-artifact@v4
         with:
           name: storefront-build

@@ -2,7 +2,13 @@ import { type BreakpointCustomizable, type Theme } from '../../types';
 import { type FormState } from '../../utils/form/form-state';
 
 import { getCss, mergeDeep } from '../../utils';
-import { addImportantToEachRule, colorSchemeStyles, getHiddenTextJssStyle, hostHiddenStyles } from '../../styles';
+import {
+  addImportantToEachRule,
+  colorSchemeStyles,
+  getHiddenTextJssStyle,
+  hostHiddenStyles,
+  preventFoucOfNestedElementsStyles,
+} from '../../styles';
 import {
   formElementPaddingHorizontal,
   getSlottedTextFieldTextareaSelectStyles,
@@ -34,6 +40,7 @@ export const getComponentCss = (
           ...hostHiddenStyles,
         }),
       },
+      ...preventFoucOfNestedElementsStyles,
       // ::slotted(textarea)
       ...mergeDeep(
         addImportantToEachRule(

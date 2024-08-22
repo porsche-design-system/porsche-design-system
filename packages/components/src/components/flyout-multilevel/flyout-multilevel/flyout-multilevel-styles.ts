@@ -9,6 +9,7 @@ import {
   getTransition,
   hostHiddenStyles,
   prefersColorSchemeDarkMediaQuery,
+  preventFoucOfNestedElementsStyles,
 } from '../../../styles';
 import {
   getMediaQueryMin,
@@ -58,6 +59,7 @@ export const getComponentCss = (
           ...hostHiddenStyles,
         }),
       },
+      ...preventFoucOfNestedElementsStyles,
       dialog: {
         ...getFlyoutDialogResetJssStyle(),
         inset: '0',

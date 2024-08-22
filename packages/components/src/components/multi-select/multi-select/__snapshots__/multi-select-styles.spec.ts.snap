@@ -8,6 +8,9 @@ exports[`getComponentCss() should return correct css for direction: down, isOpen
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 ::slotted([slot=internal-select]) {
   position: absolute !important;
   opacity: 0 !important;
@@ -194,6 +197,9 @@ exports[`getComponentCss() should return correct css for direction: down, isOpen
 }
 :host([hidden]) {
   display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
 }
 ::slotted([slot=internal-select]) {
   position: absolute !important;
@@ -382,6 +388,9 @@ exports[`getComponentCss() should return correct css for direction: down, isOpen
 }
 :host([hidden]) {
   display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
 }
 input {
   grid-area: 1/1/1/-1;
@@ -586,6 +595,9 @@ exports[`getComponentCss() should return correct css for direction: down, isOpen
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 ::slotted([slot=internal-select]) {
   position: absolute !important;
   opacity: 0 !important;
@@ -784,6 +796,9 @@ exports[`getComponentCss() should return correct css for direction: down, isOpen
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 ::slotted([slot=internal-select]) {
   position: absolute !important;
   opacity: 0 !important;
@@ -981,6 +996,9 @@ exports[`getComponentCss() should return correct css for direction: down, isOpen
 }
 :host([hidden]) {
   display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
 }
 ::slotted([slot=internal-select]) {
   position: absolute !important;
@@ -1181,6 +1199,9 @@ exports[`getComponentCss() should return correct css for direction: down, isOpen
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 ::slotted([slot=internal-select]) {
   position: absolute !important;
   opacity: 0 !important;
@@ -1378,6 +1399,9 @@ exports[`getComponentCss() should return correct css for direction: down, isOpen
 }
 :host([hidden]) {
   display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
 }
 ::slotted([slot=internal-select]) {
   position: absolute !important;
@@ -1577,6 +1601,9 @@ exports[`getComponentCss() should return correct css for direction: down, isOpen
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 ::slotted([slot=internal-select]) {
   position: absolute !important;
   opacity: 0 !important;
@@ -1767,6 +1794,9 @@ exports[`getComponentCss() should return correct css for direction: down, isOpen
 }
 :host([hidden]) {
   display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
 }
 ::slotted([slot=internal-select]) {
   position: absolute !important;
@@ -1959,6 +1989,9 @@ exports[`getComponentCss() should return correct css for direction: down, isOpen
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 ::slotted([slot=internal-select]) {
   position: absolute !important;
   opacity: 0 !important;
@@ -2149,6 +2182,9 @@ exports[`getComponentCss() should return correct css for direction: down, isOpen
 }
 :host([hidden]) {
   display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
 }
 ::slotted([slot=internal-select]) {
   position: absolute !important;
@@ -2341,6 +2377,9 @@ exports[`getComponentCss() should return correct css for direction: down, isOpen
 }
 :host([hidden]) {
   display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
 }
 ::slotted([slot=internal-select]) {
   position: absolute !important;
@@ -2544,6 +2583,9 @@ exports[`getComponentCss() should return correct css for direction: down, isOpen
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 ::slotted([slot=internal-select]) {
   position: absolute !important;
   opacity: 0 !important;
@@ -2746,6 +2788,9 @@ exports[`getComponentCss() should return correct css for direction: up, isOpen: 
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 ::slotted([slot=internal-select]) {
   position: absolute !important;
   opacity: 0 !important;
@@ -2934,6 +2979,9 @@ exports[`getComponentCss() should return correct css for direction: up, isOpen: 
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 ::slotted([slot=internal-select]) {
   position: absolute !important;
   opacity: 0 !important;
@@ -3121,6 +3169,9 @@ exports[`getComponentCss() should return correct css for direction: up, isOpen: 
 }
 :host([hidden]) {
   display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
 }
 ::slotted([slot=internal-select]) {
   position: absolute !important;
@@ -3321,6 +3372,9 @@ exports[`getComponentCss() should return correct css for direction: up, isOpen: 
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 ::slotted([slot=internal-select]) {
   position: absolute !important;
   opacity: 0 !important;
@@ -3519,6 +3573,9 @@ exports[`getComponentCss() should return correct css for direction: up, isOpen: 
 }
 :host([hidden]) {
   display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
 }
 ::slotted([slot=internal-select]) {
   position: absolute !important;
@@ -3719,6 +3776,9 @@ exports[`getComponentCss() should return correct css for direction: up, isOpen: 
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 ::slotted([slot=internal-select]) {
   position: absolute !important;
   opacity: 0 !important;
@@ -3918,6 +3978,9 @@ exports[`getComponentCss() should return correct css for direction: up, isOpen: 
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 ::slotted([slot=internal-select]) {
   position: absolute !important;
   opacity: 0 !important;
@@ -4109,6 +4172,9 @@ exports[`getComponentCss() should return correct css for direction: up, isOpen: 
 }
 :host([hidden]) {
   display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
 }
 ::slotted([slot=internal-select]) {
   position: absolute !important;
@@ -4302,6 +4368,9 @@ exports[`getComponentCss() should return correct css for direction: up, isOpen: 
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 ::slotted([slot=internal-select]) {
   position: absolute !important;
   opacity: 0 !important;
@@ -4494,6 +4563,9 @@ exports[`getComponentCss() should return correct css for direction: up, isOpen: 
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 ::slotted([slot=internal-select]) {
   position: absolute !important;
   opacity: 0 !important;
@@ -4685,6 +4757,9 @@ exports[`getComponentCss() should return correct css for direction: up, isOpen: 
 }
 :host([hidden]) {
   display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
 }
 ::slotted([slot=internal-select]) {
   position: absolute !important;
@@ -4888,6 +4963,9 @@ exports[`getComponentCss() should return correct css for direction: up, isOpen: 
 }
 :host([hidden]) {
   display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
 }
 input {
   grid-area: 1/1/1/-1;
@@ -5097,6 +5175,9 @@ exports[`getComponentCss() should return correct css for direction: up, isOpen: 
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 ::slotted([slot=internal-select]) {
   position: absolute !important;
   opacity: 0 !important;
@@ -5299,6 +5380,9 @@ exports[`getComponentCss() should return correct css for direction: up, isOpen: 
 }
 :host([hidden]) {
   display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
 }
 ::slotted([slot=internal-select]) {
   position: absolute !important;

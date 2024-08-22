@@ -10,6 +10,7 @@ import {
   hostHiddenStyles,
   hoverMediaQuery,
   prefersColorSchemeDarkMediaQuery,
+  preventFoucOfNestedElementsStyles,
 } from '../../../styles';
 import {
   borderRadiusSmall,
@@ -73,6 +74,7 @@ export const getComponentCss = (isSecondaryScrollerVisible: boolean, theme: Them
           ...hostHiddenStyles,
         }),
       },
+      ...preventFoucOfNestedElementsStyles,
       '::slotted(:is(h1, h2, h3, h4, h5, h6))': addImportantToEachRule({
         ...headingSmallStyle,
         margin: 0,

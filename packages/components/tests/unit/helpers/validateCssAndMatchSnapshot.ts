@@ -15,6 +15,10 @@ export const validateCssAndMatchSnapshot = (css: string) => {
   validateVisibilityStyle(cssObject);
   validateSlottedStyles(cssObject, componentTagName);
   validateHoverMediaQuery(cssObject);
+  validatePreventFoucOfNestedElementsStyle(
+    cssObject,
+    componentMeta && Array.isArray(componentMeta.nestedComponents) && componentMeta.nestedComponents.length > 0
+  );
 
   // Validations for components only
   if (componentMeta && !componentMeta.isInternal) {
@@ -24,6 +28,15 @@ export const validateCssAndMatchSnapshot = (css: string) => {
   }
 
   expect(css).toMatchSnapshot();
+};
+
+const validatePreventFoucOfNestedElementsStyle = (cssObject: any, isComponentWithNestedComponents: boolean) => {
+  const selector = ':not(:defined,[data-ssr])';
+  if (isComponentWithNestedComponents) {
+    expect(cssObject[selector]).toEqual({ visibility: 'hidden' });
+  } else {
+    expect(cssObject[selector]).toBe(undefined);
+  }
 };
 
 // We shouldn't use visibility: visible since it cannot be overridden, use inherit instead
@@ -65,8 +78,7 @@ const validateFormComponentHostDisplayStyle = (cssObject: any, tagName: TagName)
 };
 
 // Expect all slotted styles to be !important since they shouldn't be overridable
-// @ts-expect-error
-const validateSlottedStyles = (cssObject: object, tagName: TagName) => {
+const validateSlottedStyles = (cssObject: any, tagName: TagName) => {
   recursivelyApplyForKeyIncludes(cssObject, '::slotted', (_, value) => {
     Object.entries(value).forEach(([cssProp, cssValue]) => {
       // exceptions for tagName and css property are defined here

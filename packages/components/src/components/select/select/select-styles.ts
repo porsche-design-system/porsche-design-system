@@ -10,6 +10,7 @@ import {
   hostHiddenStyles,
   hoverMediaQuery,
   prefersColorSchemeDarkMediaQuery,
+  preventFoucOfNestedElementsStyles,
 } from '../../../styles';
 import {
   formButtonOrIconPadding,
@@ -55,6 +56,7 @@ export const getComponentCss = (
           ...hostHiddenStyles,
         }),
       },
+      ...preventFoucOfNestedElementsStyles,
       ...(isWithinForm &&
         addImportantToEachRule({
           [`::slotted([slot=${INTERNAL_SELECT_SLOT}])`]: {

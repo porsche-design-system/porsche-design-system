@@ -9,6 +9,9 @@ exports[`getComponentCss() should return correct css for gradientColor: backgrou
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 .root {
   position: relative;
   display: grid;
@@ -116,6 +119,9 @@ exports[`getComponentCss() should return correct css for gradientColor: backgrou
 }
 :host([hidden]) {
   display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
 }
 .root {
   position: relative;
@@ -226,6 +232,9 @@ exports[`getComponentCss() should return correct css for gradientColor: backgrou
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 .root {
   position: relative;
   display: grid;
@@ -330,6 +339,9 @@ exports[`getComponentCss() should return correct css for gradientColor: backgrou
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 .root {
   position: relative;
   display: grid;
@@ -432,6 +444,9 @@ exports[`getComponentCss() should return correct css for gradientColor: backgrou
 }
 :host([hidden]) {
   display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
 }
 .root {
   position: relative;
@@ -537,6 +552,9 @@ exports[`getComponentCss() should return correct css for gradientColor: backgrou
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 .root {
   position: relative;
   display: grid;
@@ -640,6 +658,9 @@ exports[`getComponentCss() should return correct css for gradientColor: backgrou
 }
 :host([hidden]) {
   display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
 }
 .root {
   position: relative;
@@ -748,6 +769,9 @@ exports[`getComponentCss() should return correct css for gradientColor: backgrou
 }
 :host([hidden]) {
   display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
 }
 .root {
   position: relative;

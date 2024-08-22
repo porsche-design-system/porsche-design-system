@@ -8,6 +8,9 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 textarea {
   resize: vertical;
   display: block;
@@ -188,6 +191,9 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 }
 :host([hidden]) {
   display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
 }
 textarea {
   resize: vertical;
@@ -370,6 +376,9 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 textarea {
   resize: vertical;
   display: block;
@@ -463,6 +472,9 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 }
 :host([hidden]) {
   display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
 }
 textarea {
   resize: vertical;
@@ -581,6 +593,9 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 textarea {
   resize: vertical;
   display: block;
@@ -673,6 +688,9 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 }
 :host([hidden]) {
   display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
 }
 textarea {
   resize: vertical;
@@ -790,6 +808,9 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 textarea {
   resize: vertical;
   display: block;
@@ -883,6 +904,9 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 }
 :host([hidden]) {
   display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
 }
 textarea {
   resize: vertical;
@@ -1001,6 +1025,9 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 textarea {
   resize: vertical;
   display: block;
@@ -1094,6 +1121,9 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 }
 :host([hidden]) {
   display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
 }
 textarea {
   resize: vertical;
@@ -1212,6 +1242,9 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 textarea {
   resize: vertical;
   display: block;
@@ -1304,6 +1337,9 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 }
 :host([hidden]) {
   display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
 }
 textarea {
   resize: vertical;
@@ -1421,6 +1457,9 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 textarea {
   resize: vertical;
   display: block;
@@ -1514,6 +1553,9 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 }
 :host([hidden]) {
   display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
 }
 textarea {
   resize: vertical;
@@ -1631,6 +1673,9 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
 }
 :host([hidden]) {
   display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
 }
 textarea {
   resize: vertical;

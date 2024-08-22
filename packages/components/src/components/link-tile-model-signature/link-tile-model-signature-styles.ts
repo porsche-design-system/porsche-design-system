@@ -7,6 +7,7 @@ import {
   getTransition,
   hostHiddenStyles,
   hoverMediaQuery,
+  preventFoucOfNestedElementsStyles,
 } from '../../styles';
 import {
   borderRadiusLarge,
@@ -42,6 +43,7 @@ export const getComponentCss = (
           ...hostHiddenStyles,
         }),
       },
+      ...preventFoucOfNestedElementsStyles,
       slot: {
         '&:not([name])': {
           display: 'block',

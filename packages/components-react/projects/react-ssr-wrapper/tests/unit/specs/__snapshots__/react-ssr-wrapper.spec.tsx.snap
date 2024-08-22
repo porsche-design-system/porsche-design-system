@@ -16,6 +16,9 @@ exports[`manual test cases > should pass internal props correctly to p-checkbox-
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 ::slotted(input) {
   width: calc(6px + 2.125ex) !important;
   height: calc(6px + 2.125ex) !important;
@@ -255,6 +258,9 @@ exports[`manual test cases > should pass internal props correctly to p-checkbox-
 }
 :host([hidden]) {
   display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
 }
 ::slotted(input) {
   width: calc(6px + 2.125ex) !important;
@@ -654,6 +660,9 @@ exports[`manual test cases > should pass internal props correctly to p-link-tile
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 slot:not([name]) {
   display: block;
   width: 100%;
@@ -861,6 +870,9 @@ img {
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 .root {
   display: flex;
   align-items: flex-start;
@@ -936,6 +948,9 @@ img {
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 .root {
   display: flex;
   align-items: flex-start;
@@ -1007,6 +1022,9 @@ exports[`manual test cases > should pass internal props correctly to p-link-tile
 }
 :host([hidden]) {
   display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
 }
 slot:not([name]) {
   display: block;
@@ -1215,6 +1233,9 @@ img {
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 ::slotted(a) {
   margin: 0 !important;
   padding: 0 !important;
@@ -1308,6 +1329,9 @@ img {
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 ::slotted(a) {
   margin: 0 !important;
   padding: 0 !important;
@@ -1397,6 +1421,9 @@ exports[`manual test cases > should pass internal props correctly to p-link-tile
 }
 :host([hidden]) {
   display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
 }
 slot:not([name]) {
   display: block;
@@ -1605,6 +1632,9 @@ img {
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 ::slotted(a) {
   margin: 0 !important;
   padding: 0 !important;
@@ -1698,6 +1728,9 @@ img {
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 ::slotted(a) {
   margin: 0 !important;
   padding: 0 !important;
@@ -1787,6 +1820,9 @@ exports[`manual test cases > should pass internal props correctly to p-link-tile
 }
 :host([hidden]) {
   display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
 }
 slot:not([name]) {
   display: block;
@@ -1995,6 +2031,9 @@ img {
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 ::slotted(a) {
   margin: 0 !important;
   padding: 0 !important;
@@ -2091,6 +2130,9 @@ img {
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 ::slotted(a) {
   margin: 0 !important;
   padding: 0 !important;
@@ -2180,6 +2222,9 @@ exports[`manual test cases > should pass internal props correctly to p-multi-sel
 }
 :host([hidden]) {
   display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
 }
 input {
   grid-area: 1/1/1/-1;
@@ -2461,6 +2506,9 @@ exports[`manual test cases > should pass internal props correctly to p-pin-code 
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 input {
   display: block;
   width: calc(calc(6px + 2.125ex) + 10px + 2px * 2 + 8px * 2);
@@ -2640,6 +2688,9 @@ exports[`manual test cases > should pass internal props correctly to p-radio-but
 }
 :host([hidden]) {
   display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
 }
 ::slotted(input) {
   width: calc(6px + 2.125ex) !important;
@@ -2881,6 +2932,9 @@ exports[`manual test cases > should pass internal props correctly to p-radio-but
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 ::slotted(input) {
   width: calc(6px + 2.125ex) !important;
   height: calc(6px + 2.125ex) !important;
@@ -3038,6 +3092,9 @@ exports[`manual test cases > should pass internal props correctly to p-segmented
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 button {
   position: relative;
   display: block;
@@ -3090,6 +3147,9 @@ span {
 }
 :host([hidden]) {
   display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
 }
 button {
   position: relative;
@@ -3146,6 +3206,9 @@ exports[`manual test cases > should pass internal props correctly to p-select-wr
 }
 :host([hidden]) {
   display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
 }
 ::slotted(select) {
   display: block !important;
@@ -3317,6 +3380,9 @@ img {
   display: block;
   position: relative;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 input {
   display: block;
   position: absolute;
@@ -3434,6 +3500,9 @@ exports[`manual test cases > should pass internal props correctly to p-select-wr
 }
 :host([hidden]) {
   display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
 }
 ::slotted(select) {
   display: block !important;
@@ -3647,6 +3716,9 @@ exports[`manual test cases > should pass internal props correctly to p-stepper-h
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 .scroller {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
@@ -3670,6 +3742,9 @@ exports[`manual test cases > should pass internal props correctly to p-stepper-h
 }
 :host([hidden]) {
   display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
 }
 .root {
   position: relative;
@@ -3798,6 +3873,9 @@ exports[`manual test cases > should pass internal props correctly to p-stepper-h
 }
 :host([hidden]) {
   display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
 }
 .root {
   display: flex;
@@ -3951,6 +4029,9 @@ img:dir(rtl) {
 }
 :host([hidden]) {
   display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
 }
 .root {
   display: flex;
@@ -4130,6 +4211,9 @@ img:dir(rtl) {
 :host(:not(:last-of-type)) {
   margin-inline-end: clamp(4px, 0.25vw + 3px, 8px) !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 button {
   display: flex;
   position: relative;
@@ -4221,6 +4305,9 @@ button::-moz-focus-inner {
 :host(:not(:last-of-type)) {
   margin-inline-end: clamp(4px, 0.25vw + 3px, 8px) !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 button {
   display: flex;
   position: relative;
@@ -4285,6 +4372,9 @@ exports[`manual test cases > should pass internal props correctly to p-tabs-bar 
 }
 :host([hidden]) {
   display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
 }
 ::slotted(a::-moz-focus-inner) {
   border: 0 !important;
@@ -4379,6 +4469,9 @@ exports[`manual test cases > should pass internal props correctly to p-tabs-bar 
 }
 :host([hidden]) {
   display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
 }
 .root {
   position: relative;
@@ -4507,6 +4600,9 @@ exports[`manual test cases > should pass internal props correctly to p-tabs-bar 
 }
 :host([hidden]) {
   display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
 }
 .root {
   display: flex;
@@ -4660,6 +4756,9 @@ img:dir(rtl) {
 }
 :host([hidden]) {
   display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
 }
 .root {
   display: flex;
@@ -4827,6 +4926,9 @@ exports[`manual test cases > should pass internal props correctly to p-tabs-item
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 .root {
   margin-bottom: 8px;
 }
@@ -4847,6 +4949,9 @@ exports[`manual test cases > should pass internal props correctly to p-tabs-item
 }
 :host([hidden]) {
   display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
 }
 ::slotted(a::-moz-focus-inner) {
   border: 0 !important;
@@ -4941,6 +5046,9 @@ exports[`manual test cases > should pass internal props correctly to p-tabs-item
 }
 :host([hidden]) {
   display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
 }
 .root {
   position: relative;
@@ -5068,6 +5176,9 @@ exports[`manual test cases > should pass internal props correctly to p-tabs-item
 }
 :host([hidden]) {
   display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
 }
 .root {
   display: flex;
@@ -5221,6 +5332,9 @@ img:dir(rtl) {
 }
 :host([hidden]) {
   display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
 }
 .root {
   display: flex;
@@ -5442,6 +5556,9 @@ exports[`manual test cases > should pass internal props correctly to p-text-fiel
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 ::slotted(input) {
   display: block !important;
   width: 100% !important;
@@ -5576,6 +5693,9 @@ exports[`manual test cases > should pass internal props correctly to p-text-fiel
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 ::slotted(input) {
   display: block !important;
   width: 100% !important;
@@ -5709,6 +5829,9 @@ exports[`manual test cases > should pass internal props correctly to p-text-fiel
 }
 :host([hidden]) {
   display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
 }
 ::slotted(input) {
   display: block !important;
@@ -5845,6 +5968,9 @@ exports[`manual test cases > should pass internal props correctly to p-text-fiel
 }
 :host([hidden]) {
   display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
 }
 .root {
   display: flex;
@@ -6002,6 +6128,9 @@ exports[`manual test cases > should pass internal props correctly to p-text-fiel
 }
 :host([hidden]) {
   display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
 }
 ::slotted(input) {
   display: block !important;
@@ -6193,6 +6322,9 @@ img {
 }
 :host([hidden]) {
   display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
 }
 .root {
   display: flex;
@@ -6468,6 +6600,9 @@ exports[`should render dsr component for PAccordion 1`] = `
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 button {
   display: flex;
   position: relative;
@@ -6666,6 +6801,9 @@ exports[`should render dsr component for PBanner 1`] = `
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 @media(min-width:760px) {
   :host {
     top: var(--p-banner-position-top,56px) !important;
@@ -6711,6 +6849,9 @@ exports[`should render dsr component for PBanner 1`] = `
 }
 :host([hidden]) {
   display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
 }
 ::slotted(:is(h1,h2,h3,h4,h5,h6)) {
   all: unset !important;
@@ -6846,6 +6987,9 @@ img {
 }
 :host([hidden]) {
   display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
 }
 .root {
   display: flex;
@@ -6997,6 +7141,9 @@ exports[`should render dsr component for PButton 1`] = `
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 .root {
   display: flex;
   align-items: flex-start;
@@ -7132,6 +7279,9 @@ exports[`should render dsr component for PButtonPure 1`] = `
 }
 :host([hidden]) {
   display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
 }
 .root {
   display: flex;
@@ -7286,6 +7436,9 @@ exports[`should render dsr component for PButtonTile 1`] = `
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 slot {
   display: block;
 }
@@ -7406,6 +7559,9 @@ p {
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 .root {
   display: flex;
   align-items: flex-start;
@@ -7499,6 +7655,9 @@ exports[`should render dsr component for PCanvas 1`] = `
 }
 :host([hidden]) {
   display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
 }
 :is(header, main, footer, aside) {
   padding: clamp(16px, 1.25vw + 12px, 24px);
@@ -7610,6 +7769,9 @@ aside:last-of-type {
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 slot {
   display: block;
 }
@@ -7718,6 +7880,9 @@ dialog::backdrop {
 }
 :host([hidden]) {
   display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
 }
 .root {
   display: flex;
@@ -7870,6 +8035,9 @@ img {
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 slot {
   display: block;
 }
@@ -7980,6 +8148,9 @@ dialog::backdrop {
 }
 :host([hidden]) {
   display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
 }
 .root {
   display: flex;
@@ -8136,6 +8307,9 @@ exports[`should render dsr component for PCarousel 1`] = `
 }
 :host([hidden]) {
   display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
 }
 ::slotted(*) {
   border-radius: var(--p-carousel-border-radius, 12px) !important;
@@ -8319,6 +8493,9 @@ exports[`should render dsr component for PCheckboxWrapper 1`] = `
 }
 :host([hidden]) {
   display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
 }
 ::slotted(input) {
   width: calc(6px + 2.125ex) !important;
@@ -8643,6 +8820,9 @@ exports[`should render dsr component for PFieldset 1`] = `
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 fieldset {
   margin: 0;
   padding: 0;
@@ -8684,6 +8864,9 @@ exports[`should render dsr component for PFieldsetWrapper 1`] = `
 }
 :host([hidden]) {
   display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
 }
 fieldset {
   margin: 0;
@@ -8785,6 +8968,9 @@ exports[`should render dsr component for PFlyout 1`] = `
 }
 :host([hidden]) {
   display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
 }
 slot {
   display: block;
@@ -8896,6 +9082,9 @@ dialog::backdrop {
 }
 :host([hidden]) {
   display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
 }
 .root {
   display: flex;
@@ -9057,6 +9246,9 @@ exports[`should render dsr component for PFlyoutMultilevel 1`] = `
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 dialog {
   position: fixed;
   height: 100dvh;
@@ -9178,6 +9370,9 @@ dialog::backdrop {
 }
 :host([hidden]) {
   display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
 }
 .root {
   display: flex;
@@ -9341,6 +9536,9 @@ exports[`should render dsr component for PFlyoutMultilevelItem 1`] = `
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 ::slotted(:is(h1, h2, h3, h4, h5, h6)) {
   font: normal normal 600 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
   margin: 0 !important;
@@ -9474,6 +9672,9 @@ exports[`should render dsr component for PFlyoutMultilevelItem 1`] = `
 }
 :host([hidden]) {
   display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
 }
 .root {
   display: flex;
@@ -9635,6 +9836,9 @@ img:dir(rtl) {
 }
 :host([hidden]) {
   display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
 }
 .root {
   display: flex;
@@ -9995,6 +10199,9 @@ exports[`should render dsr component for PInlineNotification 1`] = `
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 ::slotted(:is(h1,h2,h3,h4,h5,h6)) {
   all: unset !important;
 }
@@ -10129,6 +10336,9 @@ img {
 }
 :host([hidden]) {
   display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
 }
 .root {
   display: flex;
@@ -10278,6 +10488,9 @@ exports[`should render dsr component for PLink 1`] = `
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 ::slotted(a) {
   margin: 0 !important;
   padding: 0 !important;
@@ -10369,6 +10582,9 @@ exports[`should render dsr component for PLinkPure 1`] = `
 }
 :host([hidden]) {
   display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
 }
 ::slotted(a) {
   margin: 0 !important;
@@ -10520,6 +10736,9 @@ exports[`should render dsr component for PLinkSocial 1`] = `
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 ::slotted(a) {
   margin: 0 !important;
   padding: 0 !important;
@@ -10661,6 +10880,9 @@ exports[`should render dsr component for PLinkTile 1`] = `
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 slot {
   display: block;
 }
@@ -10785,6 +11007,9 @@ p {
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 ::slotted(a) {
   margin: 0 !important;
   padding: 0 !important;
@@ -10873,6 +11098,9 @@ exports[`should render dsr component for PLinkTileModelSignature 1`] = `
 }
 :host([hidden]) {
   display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
 }
 slot:not([name]) {
   display: block;
@@ -11079,6 +11307,9 @@ img {
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 .root {
   display: flex;
   align-items: flex-start;
@@ -11154,6 +11385,9 @@ img {
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 .root {
   display: flex;
   align-items: flex-start;
@@ -11226,6 +11460,9 @@ exports[`should render dsr component for PLinkTileProduct 1`] = `
 }
 :host([hidden]) {
   display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
 }
 slot[name="header"] {
   display: block;
@@ -11343,6 +11580,9 @@ slot[name="header"] {
 }
 :host([hidden]) {
   display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
 }
 .root {
   display: flex;
@@ -11589,6 +11829,9 @@ exports[`should render dsr component for PModal 1`] = `
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 ::slotted(.stretch-to-full-modal-width) {
   display: block !important;
   margin: 0 calc(clamp(32px, 2.75vw + 23px, 76px) * -1) !important;
@@ -11714,6 +11957,9 @@ dialog::backdrop {
 }
 :host([hidden]) {
   display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
 }
 .root {
   display: flex;
@@ -11916,6 +12162,9 @@ exports[`should render dsr component for PMultiSelect 1`] = `
 }
 :host([hidden]) {
   display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
 }
 input {
   grid-area: 1/1/1/-1;
@@ -12236,6 +12485,9 @@ exports[`should render dsr component for PPagination 1`] = `
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 nav {
   display: flex;
   justify-content: center;
@@ -12464,6 +12716,9 @@ exports[`should render dsr component for PPinCode 1`] = `
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 input {
   display: block;
   width: calc(calc(6px + 2.125ex) + 10px + 2px * 2 + 8px * 2);
@@ -12648,6 +12903,9 @@ exports[`should render dsr component for PPopover 1`] = `
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 p {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
@@ -12809,6 +13067,9 @@ exports[`should render dsr component for PRadioButtonWrapper 1`] = `
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 ::slotted(input) {
   width: calc(6px + 2.125ex) !important;
   height: calc(6px + 2.125ex) !important;
@@ -12940,6 +13201,9 @@ exports[`should render dsr component for PScroller 1`] = `
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 .root {
   position: relative;
   display: grid;
@@ -13067,6 +13331,9 @@ exports[`should render dsr component for PScroller 1`] = `
 }
 :host([hidden]) {
   display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
 }
 .root {
   display: flex;
@@ -13220,6 +13487,9 @@ img:dir(rtl) {
 }
 :host([hidden]) {
   display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
 }
 .root {
   display: flex;
@@ -13398,6 +13668,9 @@ exports[`should render dsr component for PSegmentedControlItem 1`] = `
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 button {
   position: relative;
   display: block;
@@ -13452,6 +13725,9 @@ exports[`should render dsr component for PSelect 1`] = `
 }
 :host([hidden]) {
   display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
 }
 button {
   text-align: start;
@@ -13694,6 +13970,9 @@ exports[`should render dsr component for PSelectOption 1`] = `
   border-radius: 4px !important;
   width: auto !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 .option {
   font-weight: 400;
   display: flex;
@@ -13774,6 +14053,9 @@ exports[`should render dsr component for PSelectWrapper 1`] = `
 }
 :host([hidden]) {
   display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
 }
 ::slotted(select) {
   display: block !important;
@@ -13943,6 +14225,9 @@ img {
   display: block;
   position: relative;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 button {
   position: absolute;
   inset: 0;
@@ -14096,6 +14381,9 @@ exports[`should render dsr component for PStepperHorizontal 1`] = `
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 .scroller {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
   overflow-wrap: break-word;
@@ -14119,6 +14407,9 @@ exports[`should render dsr component for PStepperHorizontal 1`] = `
 }
 :host([hidden]) {
   display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
 }
 .root {
   position: relative;
@@ -14248,6 +14539,9 @@ exports[`should render dsr component for PStepperHorizontal 1`] = `
 }
 :host([hidden]) {
   display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
 }
 .root {
   display: flex;
@@ -14401,6 +14695,9 @@ img:dir(rtl) {
 }
 :host([hidden]) {
   display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
 }
 .root {
   display: flex;
@@ -14585,6 +14882,9 @@ exports[`should render dsr component for PStepperHorizontalItem 1`] = `
 :host(:not(:last-of-type)) {
   margin-inline-end: clamp(4px, 0.25vw + 3px, 8px) !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 button {
   display: flex;
   position: relative;
@@ -14653,6 +14953,9 @@ exports[`should render dsr component for PSwitch 1`] = `
 }
 :host([hidden]) {
   display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
 }
 button {
   display: flex;
@@ -14767,6 +15070,9 @@ exports[`should render dsr component for PTable 1`] = `
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 ::slotted(*) {
   --p-internal-table-hover-color: rgba(148, 149, 152, .18) !important;
   --p-internal-table-border-color: #D8D8DB !important;
@@ -14797,6 +15103,9 @@ exports[`should render dsr component for PTable 1`] = `
 }
 :host([hidden]) {
   display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
 }
 .root {
   position: relative;
@@ -14920,6 +15229,9 @@ exports[`should render dsr component for PTable 1`] = `
 }
 :host([hidden]) {
   display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
 }
 .root {
   display: flex;
@@ -15073,6 +15385,9 @@ img:dir(rtl) {
 }
 :host([hidden]) {
   display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
 }
 .root {
   display: flex;
@@ -15311,6 +15626,9 @@ exports[`should render dsr component for PTableHeadCell 1`] = `
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
     </style>
     <span>
       <slot />
@@ -15386,6 +15704,9 @@ exports[`should render dsr component for PTabs 1`] = `
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 .root {
   margin-bottom: 8px;
 }
@@ -15406,6 +15727,9 @@ exports[`should render dsr component for PTabs 1`] = `
 }
 :host([hidden]) {
   display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
 }
 ::slotted(a::-moz-focus-inner) {
   border: 0 !important;
@@ -15500,6 +15824,9 @@ exports[`should render dsr component for PTabs 1`] = `
 }
 :host([hidden]) {
   display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
 }
 .root {
   position: relative;
@@ -15628,6 +15955,9 @@ exports[`should render dsr component for PTabs 1`] = `
 }
 :host([hidden]) {
   display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
 }
 .root {
   display: flex;
@@ -15781,6 +16111,9 @@ img:dir(rtl) {
 }
 :host([hidden]) {
   display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
 }
 .root {
   display: flex;
@@ -15952,6 +16285,9 @@ exports[`should render dsr component for PTabsBar 1`] = `
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 ::slotted(a::-moz-focus-inner) {
   border: 0 !important;
 }
@@ -16045,6 +16381,9 @@ exports[`should render dsr component for PTabsBar 1`] = `
 }
 :host([hidden]) {
   display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
 }
 .root {
   position: relative;
@@ -16173,6 +16512,9 @@ exports[`should render dsr component for PTabsBar 1`] = `
 }
 :host([hidden]) {
   display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
 }
 .root {
   display: flex;
@@ -16326,6 +16668,9 @@ img:dir(rtl) {
 }
 :host([hidden]) {
   display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
 }
 .root {
   display: flex;
@@ -16511,6 +16856,9 @@ exports[`should render dsr component for PTag 1`] = `
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 span {
   position: relative;
   display: flex;
@@ -16571,6 +16919,9 @@ exports[`should render dsr component for PTagDismissible 1`] = `
 }
 :host([hidden]) {
   display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
 }
 button {
   display: flex;
@@ -16734,6 +17085,9 @@ exports[`should render dsr component for PTextFieldWrapper 1`] = `
 }
 :host([hidden]) {
   display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
 }
 ::slotted(input) {
   display: block !important;
@@ -16947,6 +17301,9 @@ exports[`should render dsr component for PTextarea 1`] = `
 :host([hidden]) {
   display: none !important;
 }
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
 textarea {
   resize: vertical;
   display: block;
@@ -17064,6 +17421,9 @@ exports[`should render dsr component for PTextareaWrapper 1`] = `
 }
 :host([hidden]) {
   display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
 }
 ::slotted(textarea) {
   display: block !important;

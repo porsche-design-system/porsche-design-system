@@ -1,5 +1,10 @@
 import { getCss } from '../../../utils';
-import { addImportantToEachRule, colorSchemeStyles, hostHiddenStyles } from '../../../styles';
+import {
+  addImportantToEachRule,
+  colorSchemeStyles,
+  hostHiddenStyles,
+  preventFoucOfNestedElementsStyles,
+} from '../../../styles';
 
 export const getComponentCss = (): string => {
   return getCss({
@@ -11,6 +16,7 @@ export const getComponentCss = (): string => {
           ...hostHiddenStyles,
         }),
       },
+      ...preventFoucOfNestedElementsStyles,
     },
     root: {
       marginBottom: '8px',

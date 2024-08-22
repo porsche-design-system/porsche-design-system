@@ -7,6 +7,7 @@ import {
   hostHiddenStyles,
   hoverMediaQuery,
   prefersColorSchemeDarkMediaQuery,
+  preventFoucOfNestedElementsStyles,
 } from '../../styles';
 import type { Theme } from '../../types';
 import type { ScrollerGradientColor, ScrollerScrollIndicatorPosition } from './scroller-utils';
@@ -70,6 +71,7 @@ export const getComponentCss = (
           ...hostHiddenStyles,
         }),
       },
+      ...preventFoucOfNestedElementsStyles,
     },
     root: {
       position: 'relative',

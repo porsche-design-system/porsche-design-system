@@ -16,6 +16,7 @@ import {
   hostHiddenStyles,
   hoverMediaQuery,
   prefersColorSchemeDarkMediaQuery,
+  preventFoucOfNestedElementsStyles,
 } from '../../styles';
 import { getThemedBackgroundColor } from './tag-shared-utils';
 import { getThemedBackgroundHoverColor, type TagColor, type TagColorDeprecated } from './tag-utils';
@@ -64,6 +65,7 @@ export const getComponentCss = (
           ...hostHiddenStyles,
         }),
       },
+      ...preventFoucOfNestedElementsStyles,
       span: {
         position: 'relative', // necessary as relative anchor to ensure click area of optional slotted focusable element is in sync
         display: 'flex',

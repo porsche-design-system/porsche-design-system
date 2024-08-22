@@ -12,6 +12,7 @@ import {
   dismissButtonJssStyle,
   getThemedColors,
   prefersColorSchemeDarkMediaQuery,
+  preventFoucOfNestedElementsStyles,
 } from '../../../styles';
 
 export const getComponentCss = (state: ToastState, theme: Theme): string => {
@@ -37,6 +38,7 @@ export const getComponentCss = (state: ToastState, theme: Theme): string => {
           display: 'none',
         },
       },
+      ...preventFoucOfNestedElementsStyles,
       p: {
         ...textSmallStyle,
         margin: 0,
