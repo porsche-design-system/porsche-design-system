@@ -122,7 +122,7 @@ export const getComponentCss = (
     root: {
       display: 'grid',
       gap: spacingStaticXSmall,
-      // min width is needed for showing at least 1 character in very narrow containers. The "2rem" value is the minimum safe zone to show at least 1 character plus the ellipsis dots.
+      // min width is needed for showing at least 1 character in very narrow containers. The "1rem" value is the minimum safe zone to show at least 1 character.
       minWidth: `calc(1rem + ${formElementPaddingHorizontal}*2 + ${borderWidthBase}*2)`,
     },
     wrapper: {
