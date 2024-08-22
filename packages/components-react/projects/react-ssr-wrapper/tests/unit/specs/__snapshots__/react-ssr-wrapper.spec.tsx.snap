@@ -17338,6 +17338,7 @@ textarea[readonly] {
 .root {
   display: grid;
   gap: 4px;
+  min-width: calc(1rem + 16px*2 + 2px*2);
 }
 .wrapper {
   display: grid;
@@ -17463,6 +17464,7 @@ exports[`should render dsr component for PTextareaWrapper 1`] = `
 .root {
   display: grid;
   gap: 4px;
+  min-width: calc(1rem + 16px*2 + 2px*2);
 }
 .wrapper {
   display: grid;
