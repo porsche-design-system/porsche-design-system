@@ -26,6 +26,7 @@ runs:
           ./packages/fallbacks/dist
           ./packages/icons/dist
           ./packages/model-signatures/dist
+          ./packages/shared/bin
           ./packages/shared/dist
           ./packages/utilities/projects/utilities/dist
         key: ${{ runner.os }}-${{ github.sha }} # cache is only used for current commit
