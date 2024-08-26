@@ -17323,6 +17323,7 @@ textarea {
   background: transparent;
   text-indent: 0;
   color: #010205;
+  min-width: calc(1rem + 16px*2 + 2px*2);
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   grid-area: 1/1;
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -17342,7 +17343,6 @@ textarea[readonly] {
 .root {
   display: grid;
   gap: 4px;
-  min-width: calc(1rem + 16px*2 + 2px*2);
 }
 .wrapper {
   display: grid;

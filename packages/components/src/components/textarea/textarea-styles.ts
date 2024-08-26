@@ -71,6 +71,8 @@ export const getComponentCss = (
         background: 'transparent',
         textIndent: 0,
         color: primaryColor,
+        // min width is needed for showing at least 1 character in very narrow containers. The "1rem" value is the minimum safe zone to show at least 1 character.
+        minWidth: `calc(1rem + ${formElementPaddingHorizontal}*2 + ${borderWidthBase}*2)`,
         transition: `${getTransition('background-color')}, ${getTransition('border-color')}, ${getTransition('color')}`, // for smooth transitions between e.g. disabled states
         ...prefersColorSchemeDarkMediaQuery(theme, {
           borderColor: formStateColorDark || contrastMediumColorDark,
@@ -122,8 +124,6 @@ export const getComponentCss = (
     root: {
       display: 'grid',
       gap: spacingStaticXSmall,
-      // min width is needed for showing at least 1 character in very narrow containers. The "1rem" value is the minimum safe zone to show at least 1 character.
-      minWidth: `calc(1rem + ${formElementPaddingHorizontal}*2 + ${borderWidthBase}*2)`,
     },
     wrapper: {
       display: 'grid',
