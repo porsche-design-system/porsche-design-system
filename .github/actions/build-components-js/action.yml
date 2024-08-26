@@ -71,6 +71,7 @@ runs:
           ./packages/fallbacks/dist
           ./packages/model-signatures/dist
           ./packages/icons/dist
+          ./packages/shared/bin
           ./packages/shared/dist
           ./packages/utilities/projects/utilities/dist
         key: ${{ steps.cache-builds-restore.outputs.cache-primary-key }} # linked to restore key
