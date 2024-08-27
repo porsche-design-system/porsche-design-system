@@ -155,11 +155,19 @@ Certain modern browser APIs are not supported in the jsdom environment.
 
 ### Dialog API
 
-Affected Components: `p-modal`, `p-flyout`
+Affected Components: `p-modal`, `p-flyout`, `p-flyout-multilevel`
 
 Due to the lack of native support in jsdom, the Dialog API needs to be either manually polyfilled or mocked. You can use
 the available [dialog-polyfill package](https://npmjs.com/package/dialog-polyfill) or create a custom mock
 implementation.
+
+Example mock:
+
+```
+HTMLDialogElement.prototype.show = jest.fn();
+HTMLDialogElement.prototype.showModal = jest.fn();
+HTMLDialogElement.prototype.close = jest.fn();
+```
 
 ### Element Internals API
 
@@ -168,10 +176,14 @@ Affected Components: `p-textarea`
 Current polyfills for the Element Internals API are incompatible with Stencil. Therefore, the API must be mocked within
 the test setup.
 
+Example mock:
+
 ```
-HTMLElement.prototype.attachInternals = () =>
-    ({
-      setFormValue: () => {},
-      setValidity: () => {},
-    }) as any;
+HTMLElement.prototype.attachInternals = jest.fn(
+() =>
+  ({
+    setFormValue: jest.fn(),
+    setValidity: jest.fn(),
+  }) as ElementInternals
+);
 ```
