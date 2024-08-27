@@ -19,6 +19,13 @@ export default [
     plugins: [
       commonjs({ dynamicRequireTargets: ['src/**/*.js'] }),
       resolve(),
+      /* Fixes Problem with https://github.com/calebdwilliams/construct-style-sheets polyfill where document definition is not safely checked causing lots of:
+       * Error: Uncaught [ReferenceError: document is not defined] errors
+       */
+      modify({
+        find: /if \(!document\)/,
+        replace: () => `if (typeof document === 'undefined')`,
+      }),
       modify({
         find: /(:not\(:defined,\[data-ssr]\)['"`]:\s*{)[^}]*(})/,
         replace: (_, $1, $2) => `${$1}${$2}`,
