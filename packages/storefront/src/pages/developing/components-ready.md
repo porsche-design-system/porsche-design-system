@@ -15,6 +15,11 @@ The `componentsReady` function is provided as part of the following components p
 - @porsche-design-system/components-react
 - @porsche-design-system/components-vue
 
+<Notification heading="Attention" heading-tag="h2" state="warning">
+Before proceeding, consider using the <code>whenDefined</code> function from the <a href="https://developer.mozilla.org/en-US/docs/Web/API/CustomElementRegistry">CustomElementRegistry</a> API.
+If you're unsure, review our <a href="developing/components-ready#component-readiness-explained">comparison</a> and <a href="developing/components-ready#basic-example-when-defined">example usage</a> for guidance.
+</Notification>
+
 <TableOfContents></TableOfContents>
 
 ## Basic Example
@@ -98,3 +103,51 @@ export default class Code extends Vue {
   codeSampleAngularTestingLibrary = getComponentsReadyCodeSamples('testing-library');
 }
 </script>
+
+## Component Readiness Explained
+
+- **[`componentOnReady`](https://stenciljs.com/docs/api#componentonready) (Stencil):** Resolves when a single Stencil
+  component and its internal DOM are fully initialized. Ideal for ensuring readiness before operations.
+
+- **[`componentsReady`](developing/components-ready#basic-example) (PDS):** A Porsche Design System (PDS) utility that
+  wraps `componentOnReady`, resolving when all currently used PDS components are fully loaded and operational.
+
+- **[`whenDefined`](https://developer.mozilla.org/en-US/docs/Web/API/CustomElementRegistry/whenDefined) (Web API):**
+  Resolves when a custom element is registered in the browser, ensuring availability but not readiness.
+
+## Basic Example (When Defined)
+
+This example demonstrates how to use the `whenDefined` function to track and wait for the definition of all custom
+elements within the document's body. The function returns the number of elements that were initially undefined but have
+now been defined.
+
+```tsx
+const whenDefined = async (el: HTMLElement = document.body): Promise<number> => {
+  // select all elements that are not yet defined as custom elements.
+  const undefinedElements = el.querySelectorAll(':not(:defined)');
+
+  // create a list of promises that resolve when each undefined element is defined.
+  const promises = Array.from(undefinedElements).map((el) => customElements.whenDefined(el.localName));
+
+  try {
+    // wait for all elements to be defined.
+    await Promise.all(promises);
+
+    // return the number of elements that were undefined but are now defined.
+    return promises.length;
+  } catch (err) {
+    console.error('[CustomElementRegistry: whenDefined()]', err); // eslint-disable-line no-console
+
+    // return 0 if an error occurs.
+    return 0;
+  }
+};
+
+const doSomeStuff = async () => {
+  // modify the DOM and add new custom elements to it.
+
+  await whenDefined();
+
+  // execute code that depends on the newly added custom elements being registered and available in the browser.
+};
+```
