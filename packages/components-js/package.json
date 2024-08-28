@@ -75,6 +75,7 @@
     "clean:partials:build": "yarn --cwd ./projects/partials clean:build"
   },
   "dependencies": {
+    "ag-grid-enterprise": "^32.1.0",
     "@porsche-design-system/assets": "5.0.2",
     "@porsche-design-system/components": "3.18.0",
     "@porsche-design-system/components-js": "3.18.0",

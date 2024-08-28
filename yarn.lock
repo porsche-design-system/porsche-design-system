@@ -7725,6 +7725,39 @@ adjust-sourcemap-loader@^4.0.0:
     loader-utils "^2.0.0"
     regex-parser "^2.2.11"
 
+ag-charts-community@10.1.0:
+  version "10.1.0"
+  resolved "https://registry.yarnpkg.com/ag-charts-community/-/ag-charts-community-10.1.0.tgz#c82e1d389b475b8b6317ed09c68dc494470ff7c9"
+  integrity sha512-Vbie015E3nb3ijw1xJjdgQnFSnVQcFpVy9lxJ/3ZSEYMznQApeAJ1a1G6J0mlPbU5xc3V1Y7rVHoisOmv8swHw==
+  dependencies:
+    ag-charts-locale "10.1.0"
+    ag-charts-types "10.1.0"
+
+ag-charts-locale@10.1.0:
+  version "10.1.0"
+  resolved "https://registry.yarnpkg.com/ag-charts-locale/-/ag-charts-locale-10.1.0.tgz#ec8d0fd803fec9ed96f3fe181348a7032322f959"
+  integrity sha512-cClD9SeWtwnpwlPqrjR3weBuoF/wkL3K0bOndseDbv8SIDNL02PeMQoEEo8r3S5gTGBHfjYo2SghiiRNhRPFsg==
+
+ag-charts-types@10.1.0:
+  version "10.1.0"
+  resolved "https://registry.yarnpkg.com/ag-charts-types/-/ag-charts-types-10.1.0.tgz#f265665f6b92742bb0bc2dcfab319b21e6d78749"
+  integrity sha512-pk9ft8hbgTXJ/thI/SEUR1BoauNplYExpcHh7tMOqVikoDsta1O15TB1ZL4XWnl4TPIzROBmONKsz7d8a2HBuQ==
+
+ag-grid-community@32.1.0:
+  version "32.1.0"
+  resolved "https://registry.yarnpkg.com/ag-grid-community/-/ag-grid-community-32.1.0.tgz#69d5b0af1b4d5cd5262705ecd87a3bd16c9c4155"
+  integrity sha512-RVvkjRH61nuCXwIqTKQPqNbKR+8cGBKw7S1qmmMXsy0pCBAJaQn4kL3v31hKHxDtV4bPscBXLFKGnKzHuss0GQ==
+  dependencies:
+    ag-charts-types "10.1.0"
+
+ag-grid-enterprise@^32.1.0:
+  version "32.1.0"
+  resolved "https://registry.yarnpkg.com/ag-grid-enterprise/-/ag-grid-enterprise-32.1.0.tgz#828806db5647b13bd3ac9fb9de4082ae45ed67fe"
+  integrity sha512-FXAcWRNBg37fz0QW6zx8wuC0rmVraN9vgsCNkjcahwT73zCXvbcBNluN14bimRVm9c3j5I2iBmC8+QXTYePmLg==
+  dependencies:
+    ag-charts-community "10.1.0"
+    ag-grid-community "32.1.0"
+
 agent-base@6:
   version "6.0.2"
   resolved "https://registry.yarnpkg.com/agent-base/-/agent-base-6.0.2.tgz#49fff58577cfee3f37176feab4c22e00f86d7f77"

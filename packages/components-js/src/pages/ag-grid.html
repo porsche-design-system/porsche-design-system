@@ -1,0 +1,74 @@
+<script type="module">
+  class ImageUrlRenderer {
+    eGui;
+
+    // Optional: Params for rendering. The same params that are passed to the cellRenderer function.
+    init(params) {
+      let imageElement = document.createElement('img');
+
+      imageElement.src = params.value.replace('/porsche-design-system/', '/dummyasset/'); // TODO: why is this needed?
+      imageElement.style = 'margin-inline-end: 8px; object-fit: contain;';
+      imageElement.width = 80;
+      imageElement.height = 45;
+
+      this.eGui = imageElement;
+    }
+
+    // Required: Return the DOM element of the component, this is what the grid puts into the cell
+    getGui() {
+      return this.eGui;
+    }
+
+    // Required: Get the cell to refresh.
+    refresh(params) {
+      return false;
+    }
+  }
+
+  const gridOptions = {
+    // Data to be displayed
+    rowData: window.dataAdvanced,
+    // Columns to be displayed (Should match rowData properties)
+    columnDefs: [
+      {
+        field: 'imageUrl',
+        cellRenderer: ImageUrlRenderer,
+      },
+      {
+        field: 'model',
+      },
+      {
+        field: 'date',
+      },
+      {
+        field: 'interest',
+      },
+      {
+        field: 'vin',
+      },
+      {
+        field: 'purchaseIntention',
+      },
+      {
+        field: 'status',
+      },
+      {
+        field: 'comment',
+      },
+      {
+        field: 'leadId',
+      },
+    ],
+    // Configurations applied to all columns
+    defaultColDef: {
+      filter: true,
+      editable: true,
+    },
+    // Grid Options & Callbacks
+    pagination: true,
+  };
+
+  window.agGrid.createGrid(document.querySelector('#my-grid'), gridOptions);
+</script>
+
+<div id="my-grid" class="ag-theme-quartz" style="height: 80vh"></div>
