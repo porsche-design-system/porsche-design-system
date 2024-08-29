@@ -187,8 +187,10 @@ export class TextFieldWrapper {
   }
 
   public componentDidRender(): void {
-    if (this.isCounterVisible || this.hasCounter) {
+    if (this.isCounterVisible) {
       addCounterCharacterLengthCssVarStyleSheet(this.host);
+    }
+    if (this.isCounterVisible || this.hasCounter) {
       // renders innerHTML of unitOrCounterElement initially and on every input event
       this.addInputEventListenerForCounter(this.ariaElement, this.isCounterVisible && this.unitOrCounterElement);
     }
@@ -391,16 +393,22 @@ export class TextFieldWrapper {
     counterElement?: HTMLSpanElement
   ): void => {
     updateCounter(this.input, characterCountElement, counterElement); // Initial value
-    updateCounterCharacterLengthCssVarStyleSheet(this.host, counterElement.innerText.length);
+    if (this.isCounterVisible) {
+      updateCounterCharacterLengthCssVarStyleSheet(this.host, counterElement.innerText.length);
+    }
 
     // When value changes programmatically
     observeProperties(this.input, ['value'], () => {
       updateCounter(this.input, characterCountElement, counterElement);
-      updateCounterCharacterLengthCssVarStyleSheet(this.host, counterElement.innerText.length);
+      if (this.isCounterVisible) {
+        updateCounterCharacterLengthCssVarStyleSheet(this.host, counterElement.innerText.length);
+      }
     });
 
     this.eventListener = inputEventListenerCurry(characterCountElement, counterElement, () => {
-      updateCounterCharacterLengthCssVarStyleSheet(this.host, counterElement.innerText.length);
+      if (this.isCounterVisible) {
+        updateCounterCharacterLengthCssVarStyleSheet(this.host, counterElement.innerText.length);
+      }
     });
 
     this.input.removeEventListener('input', this.eventListener);
