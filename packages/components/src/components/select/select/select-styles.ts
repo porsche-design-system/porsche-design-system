@@ -37,6 +37,13 @@ import { getPopoverResetJssStyle } from '../../../styles/popover-reset-styles';
 import { OPTION_HEIGHT } from '../../../styles/option-styles';
 import { INTERNAL_SELECT_SLOT } from './select-utils';
 
+const cssVarBackgroundColor = '--p-select-background-color';
+const cssVarBackgroundColorFocus = '--p-select-background-color-focus';
+const cssVarTextColor = '--p-select-text-color';
+const cssVarBorderColor = '--p-select-border-color';
+const cssVarBorderColorFocus = '--p-select-border-color-focus';
+const cssVarIconFilter = '--p-select-icon-filter';
+
 export const getComponentCss = (
   direction: SelectDropdownDirectionInternal,
   isOpen: boolean,
@@ -90,6 +97,7 @@ export const getComponentCss = (
       pointerEvents: 'none',
       transform: 'rotate3d(0,0,1,0.0001deg)', // needs to be a little more than 0 for correct direction in safari
       transition: getTransition('transform'),
+      filter: `var(${cssVarIconFilter})`,
       '&--rotate': {
         transform: 'rotate3d(0,0,1,180deg)',
       },
@@ -156,7 +164,7 @@ const getButtonStyles = (
       cursor: 'not-allowed',
     },
     transition: `${getTransition('background-color')}, ${getTransition('border-color')}, ${getTransition('color')}`, // for smooth transitions between e.g. disabled states
-    color: primaryColor,
+    color: `var(${cssVarTextColor}, ${primaryColor})`,
     '&:not(:focus)': {
       ...getPlaceholderJssStyle({ color: primaryColor, opacity: 1 }),
       ...prefersColorSchemeDarkMediaQuery(theme, getPlaceholderJssStyle({ color: primaryColorDark, opacity: 1 })),
@@ -164,9 +172,9 @@ const getButtonStyles = (
 
     ...hoverMediaQuery({
       '&:hover:not(:disabled):not(:focus),label:hover~.wrapper &:not(:disabled):not(:focus)': {
-        borderColor: isOpen ? primaryColor : formStateHoverColor || primaryColor,
+        borderColor: `var(${cssVarBorderColor}, ${isOpen ? primaryColor : formStateHoverColor || primaryColor})`,
         ...prefersColorSchemeDarkMediaQuery(theme, {
-          borderColor: isOpen ? primaryColorDark : formStateHoverColorDark || primaryColorDark,
+          borderColor: `var(${cssVarBorderColor}, ${isOpen ? primaryColorDark : formStateHoverColorDark || primaryColorDark})`,
         }),
       },
     }),
@@ -178,8 +186,8 @@ const getButtonStyles = (
         }),
       },
     }),
-    background: backgroundColor,
-    border: `${borderWidthBase} solid ${isOpen ? primaryColor : formStateColor || contrastMediumColor}`,
+    background: `var(${cssVarBackgroundColor}, ${backgroundColor})`,
+    border: `${borderWidthBase} solid var(${cssVarBorderColor}, ${isOpen ? primaryColor : formStateColor || contrastMediumColor})`,
     borderRadius: borderRadiusSmall,
     ...(isOpen && {
       [isDirectionDown ? 'paddingBottom' : 'paddingTop']: `calc(${formElementPaddingVertical} + 1px)`, // Add padding to keep same height when border changes
@@ -195,9 +203,9 @@ const getButtonStyles = (
       WebkitTextFillColor: disabledColor,
     }),
     ...prefersColorSchemeDarkMediaQuery(theme, {
-      color: primaryColorDark,
-      background: backgroundColorDark,
-      border: `${borderWidthBase} solid ${isOpen ? primaryColorDark : formStateColorDark || contrastMediumColorDark}`,
+      color: `var(${cssVarTextColor}, ${primaryColorDark})`,
+      background: `var(${cssVarBackgroundColor}, ${backgroundColorDark})`,
+      border: `${borderWidthBase} solid var(${cssVarBorderColor}, ${isOpen ? primaryColorDark : formStateColorDark || contrastMediumColorDark})`,
       ...(isOpen && {
         [isDirectionDown ? 'borderBottom' : 'borderTop']: addImportantToRule(`1px solid ${contrastMediumColorDark}`),
       }),
@@ -236,7 +244,7 @@ const getListStyles = (isOpen: boolean, direction: SelectDropdownDirectionIntern
     overflowY: 'auto',
     WebkitOverflowScrolling: 'touch',
     background: backgroundColor,
-    border: `2px solid ${primaryColor}`,
+    border: `2px solid var(${cssVarBorderColor}, ${primaryColor})`,
     [isDirectionDown ? 'borderTop' : 'borderBottom']: 'none',
     borderRadius: borderRadiusSmall,
     [isDirectionDown ? 'borderTopLeftRadius' : 'borderBottomLeftRadius']: 0,
@@ -247,7 +255,7 @@ const getListStyles = (isOpen: boolean, direction: SelectDropdownDirectionIntern
     transform: 'translate3d(0,0,0)', // fix iOS bug if less than 5 items are displayed
     ...prefersColorSchemeDarkMediaQuery(theme, {
       background: backgroundColorDark,
-      borderColor: primaryColorDark,
+      borderColor: `var(${cssVarBorderColor}, ${primaryColorDark})`,
     }),
   };
 };
