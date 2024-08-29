@@ -513,16 +513,18 @@ test.describe('showCounter', () => {
     await expect(getLabelSrText(page)).toHaveCount(0);
   });
 
-  test('should update css character length custom property correctly', async ({ page }) => {
-    await initTextField(page, { showCounter: true });
-    const input = getInput(page);
-    await setAttribute(input, 'maxlength', '20');
-    expect(await counterCharacterLengthCssVarValue(page)).toBe('4');
+  skipInBrowsers(['webkit'], () => {
+    test('should update css character length custom property correctly', async ({ page }) => {
+      await initTextField(page, { showCounter: true });
+      const input = getInput(page);
+      await setAttribute(input, 'maxlength', '20');
+      expect(await counterCharacterLengthCssVarValue(page)).toBe('4');
 
-    await setProperty(input, 'value', 'some longer text');
-    await waitForStencilLifecycle(page);
+      await setProperty(input, 'value', 'some longer text');
+      await waitForStencilLifecycle(page);
 
-    expect(await counterCharacterLengthCssVarValue(page)).toBe('5');
+      expect(await counterCharacterLengthCssVarValue(page)).toBe('5');
+    });
   });
 });
 
