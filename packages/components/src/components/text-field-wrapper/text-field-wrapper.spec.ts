@@ -256,17 +256,17 @@ describe('componentDidLoad', () => {
 });
 
 describe('componentDidRender', () => {
-  it('should call setInputStyles()', () => {
-    const component = new TextFieldWrapper();
-    const spy = jest.spyOn(textFieldWrapperUtils, 'setInputStyles');
-
-    component.componentDidRender();
-    expect(spy).toHaveBeenCalledTimes(1);
-  });
-
-  it('should call addeventListenerForCounter() with correct parameters if hasCounter is true and isCounterVisible is false/true', () => {
+  it('should call addInputEventListenerForCounter() with correct parameters if hasCounter is true and isCounterVisible is false/true', () => {
     const updateCounterSpy = jest.spyOn(formUtils, 'updateCounter');
     const observePropertiesSpy = jest.spyOn(propertyObserverUtils, 'observeProperties');
+    const addCounterCharacterLengthCssVarStyleSheetSpy = jest.spyOn(
+      textFieldWrapperUtils,
+      'addCounterCharacterLengthCssVarStyleSheet'
+    );
+    const updateCounterCharacterLengthCssVarStyleSheetSpy = jest.spyOn(
+      textFieldWrapperUtils,
+      'updateCounterCharacterLengthCssVarStyleSheet'
+    );
     const addEventListenerSpy = jest.fn();
     const removeEventListenerSpy = jest.fn();
 
@@ -277,6 +277,8 @@ describe('componentDidRender', () => {
 
     const ariaElement = document.createElement('span');
     const component = new TextFieldWrapper();
+    component.host = document.createElement('p-flyout');
+    component.host.attachShadow({ mode: 'open' });
 
     component['input'] = input;
     component['ariaElement'] = ariaElement;
@@ -285,6 +287,8 @@ describe('componentDidRender', () => {
 
     expect(updateCounterSpy).not.toHaveBeenCalled();
     expect(observePropertiesSpy).not.toHaveBeenCalled();
+    expect(updateCounterCharacterLengthCssVarStyleSheetSpy).not.toHaveBeenCalled();
+    expect(addCounterCharacterLengthCssVarStyleSheetSpy).not.toHaveBeenCalled();
 
     component['hasCounter'] = true;
 
@@ -292,6 +296,8 @@ describe('componentDidRender', () => {
 
     expect(updateCounterSpy).toHaveBeenCalledWith(input, ariaElement, undefined);
     expect(observePropertiesSpy).toHaveBeenCalledWith(input, ['value'], expect.any(Function));
+    expect(addCounterCharacterLengthCssVarStyleSheetSpy).not.toHaveBeenCalled();
+    expect(updateCounterCharacterLengthCssVarStyleSheetSpy).not.toHaveBeenCalled();
     expect(addEventListenerSpy).toHaveBeenCalledWith('input', component['eventListener']);
     expect(removeEventListenerSpy).toHaveBeenCalledWith('input', component['eventListener']);
 
@@ -304,6 +310,11 @@ describe('componentDidRender', () => {
 
     expect(updateCounterSpy).toHaveBeenCalledWith(input, ariaElement, counter);
     expect(observePropertiesSpy).toHaveBeenCalledWith(input, ['value'], expect.any(Function));
+    expect(updateCounterCharacterLengthCssVarStyleSheetSpy).toHaveBeenCalledWith(
+      component.host,
+      counter.innerText.length
+    );
+    expect(addCounterCharacterLengthCssVarStyleSheetSpy).toHaveBeenCalledWith(component.host);
     expect(addEventListenerSpy).toHaveBeenCalledWith('input', component['eventListener']);
     expect(removeEventListenerSpy).toHaveBeenCalledWith('input', component['eventListener']);
   });
