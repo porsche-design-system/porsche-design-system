@@ -43,10 +43,11 @@ import {
   hasLocateAction,
   hasUnitAndIsTypeTextOrNumber,
   isType,
-  setInputStyles,
   showCustomCalendarOrTimeIndicator,
   throwIfUnitLengthExceeded,
   UNIT_POSITIONS,
+  addCounterCharacterLengthCssVarStyleSheet,
+  updateCounterCharacterLengthCssVarStyleSheet,
 } from './text-field-wrapper-utils';
 import { Label } from '../common/label/label';
 import { getSlottedAnchorStyles } from '../../styles';
@@ -185,24 +186,11 @@ export class TextFieldWrapper {
     return hasPropValueChanged(newVal, oldVal);
   }
 
-  public componentDidLoad(): void {
-    if (this.isSearch) {
-      addInputEventListenerForSearch(this.input, (hasValue) => (this.isClearable = hasValue));
-    }
-  }
-
   public componentDidRender(): void {
-    // needs to happen after render in order to have unitOrCounterElement defined
-    this.setInputStyles();
-
     if (this.isCounterVisible || this.hasCounter) {
+      addCounterCharacterLengthCssVarStyleSheet(this.host);
       // renders innerHTML of unitOrCounterElement initially and on every input event
-      this.addInputEventListenerForCounter(
-        this.ariaElement,
-        this.isCounterVisible && this.unitOrCounterElement,
-        this.setInputStyles
-      );
-      this.setInputStyles(); // set style initially after componentDidRender already ran with empty unitOrCounterElement
+      this.addInputEventListenerForCounter(this.ariaElement, this.isCounterVisible && this.unitOrCounterElement);
     }
 
     /*
@@ -215,6 +203,12 @@ export class TextFieldWrapper {
       message: this.message || this.description,
       state: this.state,
     });
+  }
+
+  public componentDidLoad(): void {
+    if (this.isSearch) {
+      addInputEventListenerForSearch(this.input, (hasValue) => (this.isClearable = hasValue));
+    }
   }
 
   public disconnectedCallback(): void {
@@ -243,7 +237,8 @@ export class TextFieldWrapper {
       this.showPasswordToggle,
       this.isWithinForm,
       this.submitButton,
-      this.theme
+      this.theme,
+      !!this.hasUnit && this.unit.length
     );
 
     const disabledOrReadOnly = disabled || readOnly;
@@ -391,23 +386,22 @@ export class TextFieldWrapper {
     this.hasUnit = !this.isCounterVisible && hasUnitAndIsTypeTextOrNumber(this.input, this.unit);
   };
 
-  private setInputStyles = (): void => {
-    setInputStyles(this.input, this.unitOrCounterElement, this.isCounterVisible ? 'suffix' : this.unitPosition);
-  };
-
   private addInputEventListenerForCounter = (
     characterCountElement: HTMLSpanElement,
-    counterElement?: HTMLSpanElement,
-    inputChangeCallback?: () => void
+    counterElement?: HTMLSpanElement
   ): void => {
     updateCounter(this.input, characterCountElement, counterElement); // Initial value
+    updateCounterCharacterLengthCssVarStyleSheet(this.host, counterElement.innerText.length);
 
     // When value changes programmatically
     observeProperties(this.input, ['value'], () => {
-      updateCounter(this.input, characterCountElement, counterElement, inputChangeCallback);
+      updateCounter(this.input, characterCountElement, counterElement);
+      updateCounterCharacterLengthCssVarStyleSheet(this.host, counterElement.innerText.length);
     });
 
-    this.eventListener = inputEventListenerCurry(characterCountElement, counterElement, inputChangeCallback);
+    this.eventListener = inputEventListenerCurry(characterCountElement, counterElement, () => {
+      updateCounterCharacterLengthCssVarStyleSheet(this.host, counterElement.innerText.length);
+    });
 
     this.input.removeEventListener('input', this.eventListener);
     this.input.addEventListener('input', this.eventListener);
