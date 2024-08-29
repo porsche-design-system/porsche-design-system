@@ -38,11 +38,12 @@ import { OPTION_HEIGHT } from '../../../styles/option-styles';
 import { INTERNAL_SELECT_SLOT } from './select-utils';
 
 const cssVarBackgroundColor = '--p-select-background-color';
-const cssVarBackgroundColorFocus = '--p-select-background-color-focus';
 const cssVarTextColor = '--p-select-text-color';
 const cssVarBorderColor = '--p-select-border-color';
-const cssVarBorderColorFocus = '--p-select-border-color-focus';
 const cssVarIconFilter = '--p-select-icon-filter';
+
+const cssVarBackgroundColorFocus = '--p-select-focus-background-color';
+const cssVarBorderColorFocus = '--p-select-focus-border-color';
 
 export const getComponentCss = (
   direction: SelectDropdownDirectionInternal,
@@ -165,13 +166,25 @@ const getButtonStyles = (
     },
     transition: `${getTransition('background-color')}, ${getTransition('border-color')}, ${getTransition('color')}`, // for smooth transitions between e.g. disabled states
     color: `var(${cssVarTextColor}, ${primaryColor})`,
-    '&:not(:focus)': {
-      ...getPlaceholderJssStyle({ color: primaryColor, opacity: 1 }),
-      ...prefersColorSchemeDarkMediaQuery(theme, getPlaceholderJssStyle({ color: primaryColorDark, opacity: 1 })),
+    background: `var(${cssVarBackgroundColor}, ${backgroundColor})`,
+    border: `${borderWidthBase} solid var(${cssVarBorderColor}, ${isOpen ? primaryColor : formStateColor || contrastMediumColor})`,
+    borderRadius: borderRadiusSmall,
+    '&:not(:focus-visible)': {
+      ...getPlaceholderJssStyle({
+        color: `var(${cssVarTextColor}, ${primaryColor})`,
+        opacity: 1,
+      }),
+      ...prefersColorSchemeDarkMediaQuery(
+        theme,
+        getPlaceholderJssStyle({
+          color: `var(${cssVarTextColor}, ${primaryColorDark})`,
+          opacity: 1,
+        })
+      ),
     }, // Opacity fixes placeholder being shown lighter in firefox
 
     ...hoverMediaQuery({
-      '&:hover:not(:disabled):not(:focus),label:hover~.wrapper &:not(:disabled):not(:focus)': {
+      '&:hover:not(:disabled):not(:focus-visible),label:hover~.wrapper &:not(:disabled):not(:focus-visible)': {
         borderColor: `var(${cssVarBorderColor}, ${isOpen ? primaryColor : formStateHoverColor || primaryColor})`,
         ...prefersColorSchemeDarkMediaQuery(theme, {
           borderColor: `var(${cssVarBorderColor}, ${isOpen ? primaryColorDark : formStateHoverColorDark || primaryColorDark})`,
@@ -179,16 +192,15 @@ const getButtonStyles = (
       },
     }),
     ...(!isDisabled && {
-      '&:focus': {
-        borderColor: primaryColor,
+      '&:focus-visible': {
+        borderColor: `var(${cssVarBorderColorFocus}, ${primaryColor})`,
+        background: `var(${cssVarBackgroundColorFocus}, ${backgroundColor})`,
         ...prefersColorSchemeDarkMediaQuery(theme, {
-          borderColor: primaryColorDark,
+          borderColor: `var(${cssVarBorderColorFocus}, ${primaryColorDark})`,
+          background: `var(${cssVarBackgroundColorFocus}, ${backgroundColorDark})`,
         }),
       },
     }),
-    background: `var(${cssVarBackgroundColor}, ${backgroundColor})`,
-    border: `${borderWidthBase} solid var(${cssVarBorderColor}, ${isOpen ? primaryColor : formStateColor || contrastMediumColor})`,
-    borderRadius: borderRadiusSmall,
     ...(isOpen && {
       [isDirectionDown ? 'paddingBottom' : 'paddingTop']: `calc(${formElementPaddingVertical} + 1px)`, // Add padding to keep same height when border changes
       [isDirectionDown ? 'borderBottom' : 'borderTop']: addImportantToRule(`1px solid ${contrastMediumColor}`),
@@ -196,7 +208,9 @@ const getButtonStyles = (
       [isDirectionDown ? 'borderBottomRightRadius' : 'borderTopRightRadius']: 0,
     }),
     ...(isDisabled && {
-      ...getPlaceholderJssStyle({ color: disabledColor }),
+      ...getPlaceholderJssStyle({
+        color: disabledColor,
+      }),
       cursor: 'not-allowed',
       color: disabledColor,
       borderColor: disabledColor,
