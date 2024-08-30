@@ -1,5 +1,5 @@
 import type { BreakpointCustomizable, Theme } from '../../types';
-import type { CarouselAlignHeader, CarouselHeadingSize, CarouselWidth } from './carousel-utils';
+import type { CarouselAlignHeader, CarouselGradientColor, CarouselHeadingSize, CarouselWidth } from './carousel-utils';
 import { buildResponsiveStyles, getCss, isHighContrastMode } from '../../utils';
 import {
   addImportantToEachRule,
@@ -69,12 +69,44 @@ const spacingMap: Record<CarouselWidth, { base: string; s: string; xxl: string }
   extended: gridExtendedOffset,
 };
 
+export const cssVariableGradientColorWidth = '--p-gradient-color-width';
+
 const backfaceVisibilityJssStyle: JssStyle = {
   backfaceVisibility: 'hidden',
   WebkitBackfaceVisibility: 'hidden',
 };
 
+const gradientColorLight: Record<CarouselGradientColor, string> = {
+  'background-base': '255,255,255',
+  'background-surface': '238,239,242',
+  none: '',
+};
+
+const gradientColorDark: Record<CarouselGradientColor, string> = {
+  'background-base': '14,14,18',
+  'background-surface': '33,34,37',
+  none: '',
+};
+
+const gradientColorMap: Record<Theme, Record<CarouselGradientColor, string>> = {
+  auto: gradientColorLight,
+  light: gradientColorLight,
+  dark: gradientColorDark,
+};
+
+const getGradient = (theme: Theme, gradientColorTheme: CarouselGradientColor): string => {
+  const gradientColor = gradientColorMap[theme][gradientColorTheme];
+
+  return (
+    `rgba(${gradientColor},1) 20%,` +
+    `rgba(${gradientColor},0.6) 48%,` +
+    `rgba(${gradientColor},0.3) 68%,` +
+    `rgba(${gradientColor},0)`
+  );
+};
+
 export const getComponentCss = (
+  gradientColor: CarouselGradientColor,
   hasHeading: boolean,
   hasDescription: boolean,
   hasControlsSlot: boolean,
@@ -90,6 +122,17 @@ export const getComponentCss = (
   const { primaryColor: primaryColorDark, contrastMediumColor: contrastMediumColorDark } = getThemedColors('dark');
   const { canvasTextColor } = getHighContrastColors();
   const isHeaderAlignCenter = alignHeader === 'center';
+
+  const getGradientStyles = (direction: 'left' | 'right'): JssStyle =>
+    gradientColor
+      ? {
+          [direction === 'left' ? 'right' : 'left']: 0,
+          background: `linear-gradient(to ${direction}, ${getGradient(theme, gradientColor)} 100%)`,
+          ...prefersColorSchemeDarkMediaQuery(theme, {
+            background: `linear-gradient(to ${direction}, ${getGradient('dark', gradientColor)} 100%)`,
+          }),
+        }
+      : {};
 
   return getCss({
     '@global': {
@@ -160,6 +203,7 @@ export const getComponentCss = (
       }),
     },
     header: {
+      zIndex: 10,
       display: 'grid',
       padding: `0 ${spacingMap[width].base}`,
       [mediaQueryS]: {
@@ -216,12 +260,26 @@ export const getComponentCss = (
           WebkitUserSelect: 'none',
           WebkitTouchCallout: 'none',
         },
+        '&::before, &::after': {
+          content: '""',
+          position: 'absolute',
+          zIndex: 1,
+          top: 0,
+          height: '100%',
+          width: `var(${cssVariableGradientColorWidth}, 33%)`,
+        },
+        '&::before': getGradientStyles('right'),
+        '&::after': getGradientStyles('left'),
       },
       '&__list': {
         ...backfaceVisibilityJssStyle,
         display: 'flex',
       },
       '&__slide': {
+        background: '#00b0f4',
+        '&.is-active': {
+          backgroundColor: 'red !important',
+        },
         ...backfaceVisibilityJssStyle,
         flexShrink: 0,
         transform: 'translateZ(0)', // fixes mobile safari flickering, https://github.com/nolimits4web/swiper/issues/3527#issuecomment-609088939

@@ -11,6 +11,12 @@ import {
 export const CAROUSEL_WIDTHS = ['basic', 'extended'] as const;
 export type CarouselWidth = (typeof CAROUSEL_WIDTHS)[number];
 
+export const CAROUSEL_TYPE = ['loop', 'slide'] as const;
+export type CarouselType = (typeof CAROUSEL_TYPE)[number];
+
+export const GRADIENT_COLORS = ['background-base', 'background-surface', 'none'] as const;
+export type CarouselGradientColor = (typeof GRADIENT_COLORS)[number];
+
 // 'left' is deprecated and will be mapped to 'start'
 /** @deprecated */
 export const CAROUSEL_ALIGN_HEADERS_DEPRECATED = ['left'] as const;
@@ -86,14 +92,22 @@ export const getAmountOfPages = (amountOfSlides: number, slidesPerPage: number):
 export const isFirstPage = (splide: Splide): boolean => splide.index === 0;
 export const isLastPage = (splide: Splide, amountOfPages: number): boolean => splide.index >= amountOfPages - 1; // catch removal of slide
 
-export const slidePrev = (splide: Splide, amountOfPages: number): void => {
-  // sanitize in case of removal of slide since splide.index seems to be from before splide.refresh()
-  const prevSlide = splide.index === amountOfPages ? splide.index - 2 : '<';
-  splide.go(isFirstPage(splide) ? amountOfPages - 1 : prevSlide);
+export const slidePrev = (splide: Splide, amountOfPages: number, highlightSlide?: boolean): void => {
+  if (highlightSlide) {
+    splide.go('<');
+  } else {
+    // sanitize in case of removal of slide since splide.index seems to be from before splide.refresh()
+    const prevSlide = splide.index === amountOfPages ? splide.index - 2 : '<';
+    splide.go(isFirstPage(splide) ? amountOfPages - 1 : prevSlide);
+  }
 };
 
-export const slideNext = (splide: Splide, amountOfPages: number): void => {
-  splide.go(isLastPage(splide, amountOfPages) ? 0 : '>');
+export const slideNext = (splide: Splide, amountOfPages: number, highlightSlide?: boolean): void => {
+  if (highlightSlide) {
+    splide.go('>');
+  } else {
+    splide.go(isLastPage(splide, amountOfPages) ? 0 : '>');
+  }
 };
 
 export const updatePrevNextButtons = (
