@@ -409,6 +409,26 @@
   </div>
 </div>
 
+<div class="playground light" title="should render with custom css variables">
+  <p-select
+    name="options"
+    value="a"
+    label="Some label"
+    style="
+      --p-select-background-color: royalblue;
+      --p-select-text-color: #fff;
+      --p-select-border-color: darkblue;
+      --p-select-icon-filter: invert(1);
+      --p-select-focus-background-color: #000;
+      --p-select-focus-border-color: #000;
+    "
+  >
+    <p-select-option value="a">Option A</p-select-option>
+    <p-select-option value="b">Option B</p-select-option>
+    <p-select-option value="c">Option C</p-select-option>
+  </p-select>
+</div>
+
 <script>
   porscheDesignSystem.componentsReady().then(() => {
     // Call click on the shadow root input so isOutsideClick won't close the dropdowns
