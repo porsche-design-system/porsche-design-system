@@ -1,0 +1,9 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`should match snapshot in theme light 1`] = `
+":where(.ag-root-wrapper, .ag-measurement-container, .ag-apply-theme-variables, .ag-popup) {
+  --ag-background-color: #fff;
+  --ag-foreground-color: #010205;
+}
+"
+`;
