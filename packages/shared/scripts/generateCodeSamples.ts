@@ -105,6 +105,12 @@ const generateCodeSamples = (): void => {
           componentsVuePath + '/CarouselExampleDynamicSlides.vue',
         ],
         [
+          componentsJsPath + '/carousel-example-focus-on-center-slide.html',
+          componentsAngularPath + '/carousel-example-focus-on-center-slide.component.ts',
+          componentsReactPath + '/CarouselExampleFocusOnCenterSlide.tsx',
+          componentsVuePath + '/CarouselExampleFocusOnCenterSlide.vue',
+        ],
+        [
           componentsJsPath + '/carousel-example-jump-to-slide.html',
           componentsAngularPath + '/carousel-example-jump-to-slide.component.ts',
           componentsReactPath + '/CarouselExampleJumpToSlide.tsx',
