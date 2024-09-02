@@ -444,7 +444,7 @@ export namespace Components {
          */
         "disablePagination"?: BreakpointCustomizable<boolean>;
         /**
-          * Determines whether the focus should be set on the center slide when multiple slides are displayed, and specifies if the carousel loops by page or by individual slide.
+          * Indicates whether focus should be set on the center slide. If true, the carousel loops by individual slide; otherwise, it loops by page.
          */
         "focusOnCenterSlide"?: boolean;
         /**
@@ -3494,7 +3494,7 @@ declare namespace LocalJSX {
          */
         "disablePagination"?: BreakpointCustomizable<boolean>;
         /**
-          * Determines whether the focus should be set on the center slide when multiple slides are displayed, and specifies if the carousel loops by page or by individual slide.
+          * Indicates whether focus should be set on the center slide. If true, the carousel loops by individual slide; otherwise, it loops by page.
          */
         "focusOnCenterSlide"?: boolean;
         /**
