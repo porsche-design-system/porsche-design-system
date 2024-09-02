@@ -398,12 +398,7 @@
 
       <div class="playground light" title="should render default link-tile-product">
         <PLinkTileProduct :heading="'Some product'" :href="'https://porsche.com'" :price="'1.911,00 €'">
-          <img
-            alt="Some alt text"
-            height="900"
-            src="https://porsche-design-system.github.io/dummyasset/placeholder_800x900.svg"
-            width="800"
-          />
+          <img alt="Some alt text" height="900" src="http://localhost:3002/placeholder_800x900.svg" width="800" />
         </PLinkTileProduct>
       </div>
 
@@ -742,12 +737,7 @@
 
         <div class="playground light" title="should render default link-tile-product with custom prefix">
           <PLinkTileProduct :heading="'Some product'" :href="'https://porsche.com'" :price="'1.911,00 €'">
-            <img
-              alt="Some alt text"
-              height="900"
-              src="https://porsche-design-system.github.io/dummyasset/placeholder_800x900.svg"
-              width="800"
-            />
+            <img alt="Some alt text" height="900" src="http://localhost:3002/placeholder_800x900.svg" width="800" />
           </PLinkTileProduct>
         </div>
 

@@ -42,7 +42,7 @@ export type DataAdvanced = {
 
 export const dataAdvanced: DataAdvanced[] = [
   {
-    imageUrl: 'https://porsche-design-system.github.io/dummyasset/718.png',
+    imageUrl: 'http://localhost:3002/718.png',
     model: '718',
     date: '23.06.2021',
     interest: 'New Car',
@@ -53,7 +53,7 @@ export const dataAdvanced: DataAdvanced[] = [
     leadId: '0000824402',
   },
   {
-    imageUrl: 'https://porsche-design-system.github.io/dummyasset/panamera.png',
+    imageUrl: 'http://localhost:3002/panamera.png',
     model: 'Panamera',
     date: '19.06.2021',
     interest: 'New Car',
@@ -64,7 +64,7 @@ export const dataAdvanced: DataAdvanced[] = [
     leadId: '0000824409',
   },
   {
-    imageUrl: 'https://porsche-design-system.github.io/dummyasset/911.png',
+    imageUrl: 'http://localhost:3002/911.png',
     model: '911',
     date: '19.05.2021',
     interest: 'Used Car',
@@ -75,7 +75,7 @@ export const dataAdvanced: DataAdvanced[] = [
     leadId: '0000824408',
   },
   {
-    imageUrl: 'https://porsche-design-system.github.io/dummyasset/macan.png',
+    imageUrl: 'http://localhost:3002/macan.png',
     model: 'Macan',
     date: '10.05.2021',
     interest: 'Used Car',
@@ -86,7 +86,7 @@ export const dataAdvanced: DataAdvanced[] = [
     leadId: '0000824407',
   },
   {
-    imageUrl: 'https://porsche-design-system.github.io/dummyasset/taycan.png',
+    imageUrl: 'http://localhost:3002/taycan.png',
     model: 'Taycan',
     date: '03.05.2021',
     interest: 'New Car',

@@ -8,8 +8,8 @@ const nextConfig = {
         hostname: 'nav.porsche.com',
       },
       {
-        protocol: 'https',
-        hostname: 'porsche-design-system.github.io',
+        protocol: 'http',
+        hostname: 'localhost',
       },
     ],
   },
