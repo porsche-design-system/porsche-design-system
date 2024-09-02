@@ -148,12 +148,22 @@ Slides can be added and removed dynamically.
 
 ## Focus On Center Slide
 
-The carousel highlights the center slide when multiple slides are visible on the page, and it loops through each slide
-individually.
+The carousel centers the active slide and individually loops through each slide, when multiple slides are visible. You
+can customize the styles for the active slide, as well as the previous and next slides, to highlight their visibility.
 
 <Playground :frameworkMarkup="focusOnCenterSlideExamples" :config="{ ...config, withoutDemo: true }">
-  <p-carousel :theme="theme" :heading="basicHeading" slides-per-page="3" v-html="getSlides(amountOfSlides)" style="margin: 0 0 1rem">
-  </p-carousel>
+  <p-carousel :theme="theme" :heading="basicHeading" slides-per-page="3" active-slide-index="2" focus-on-center-slide="true" style="margin: 0 0 1rem" @update="onCarouselUpdate">
+  <div v-for="(_, index) in Array(6)" :key="index" :class="getSlideClass(index)">Slide {{index + 1}}</div>
+</p-carousel>
+</Playground>
+
+## Gradient Color
+
+The background and gradient has to align with your chosen background.
+
+<Playground :markup="gradientColorMarkup" :config="{ ...config, backgroundColor: gradientColor }">
+  <PlaygroundSelect v-model="gradientColor" :values="gradientColors" name="gradientColor"></PlaygroundSelect>
+  <PlaygroundSelect v-model="gradientColorWidth" :values="gradientColorWidths" name="gradientColorWidth"></PlaygroundSelect>
 </Playground>
 
 ## Internationalization (i18n)
@@ -215,13 +225,14 @@ p-carousel {
 ```
 
 <script lang="ts">
-import Vue from 'vue';
+import Vue, { ref } from 'vue';
 import Component from 'vue-class-component';
 import type { Theme } from '@/models';
 import type { CarouselAlignHeader, CarouselHeadingSize, CarouselWidth } from './carousel-utils'; 
 import { getCarouselCodeSamples } from '@porsche-design-system/shared';
 import { CAROUSEL_ALIGN_HEADERS, CAROUSEL_ALIGN_HEADERS_DEPRECATED, CAROUSEL_WIDTHS  } from './carousel-utils';
-import { borderRadius } from '@porsche-design-system/components-js/styles';
+import { borderRadius } from '@porsche-design-system/components-js/styles'; 
+import {CAROUSEL_GRADIENT_COLORS} from "./carousel-utils"; 
 
 @Component
 export default class Code extends Vue {
@@ -231,9 +242,28 @@ export default class Code extends Vue {
     return this.$store.getters.playgroundTheme;
   }
 
+  activeSlideIndexRef = ref(2);
+  
+  getSlideClass = (index) => {
+    return {
+      'is-active': index === this.activeSlideIndexRef.value,
+      'is-prev': index === this.activeSlideIndexRef.value - 1,
+      'is-next': index === this.activeSlideIndexRef.value + 1,
+    };
+  };
+  
+  onCarouselUpdate = (event) => {
+    this.activeSlideIndexRef.value = event.detail.activeIndex;
+  };
+
   basicHeading = "Some heading";
   basicDescription = "Some description";
   getSlides = (amount = 6, join = '\n  ') => Array.from(Array(amount), (_, i) => `<div>Slide ${i+1}</div>`).join(join);
+  gradientColor = 'background-surface';
+  gradientColors = CAROUSEL_GRADIENT_COLORS;
+
+  gradientColorWidth = 'default';
+  gradientColorWidths = ['50', '25', 'default'];
 
   basic = `<p-carousel heading="${this.basicHeading}">
   ${this.getSlides(4)}
@@ -243,8 +273,14 @@ export default class Code extends Vue {
   slidesPerPages = [1, 2, 3, 4, 5, '{ base: 1, s: 2, m: 3 }'];
   get slidesPerPageMarkup() {
     return `<p-carousel slides-per-page="${this.slidesPerPage}" heading="${this.basicHeading}">
-  ${this.getSlides()}
-</p-carousel>`;
+      ${this.getSlides()}
+    </p-carousel>`;
+  }
+
+  get gradientColorMarkup() {
+    return `<p-carousel class="change-gradient-color-width-${this.gradientColorWidth}" slides-per-page="3" active-slide-index="2" heading="${this.basicHeading}" gradient-color="${this.gradientColor}">
+      ${this.getSlides()}
+    </p-carousel>`;
   }
 
   slidesPerPageAutoMarkup = `<p-carousel slides-per-page="auto" heading="${this.basicHeading}">
@@ -365,6 +401,13 @@ skip = `<p-carousel heading="${this.basicHeading}" skip-link-target="components/
     height: 150px;
     color: $pds-theme-light-primary;
   }
+  :deep(.is-active) {
+    background: #fc4040 !important;
+  }
+
+  :deep(.is-prev), :deep(.is-next) {
+    background: #f7cb47 !important;
+  }
 
    :deep(.example--light p-carousel div[slot="controls"]) {
      color: $pds-theme-light-primary;
@@ -383,6 +426,14 @@ skip = `<p-carousel heading="${this.basicHeading}" skip-link-target="components/
     + button { 
       margin: 0 0 0 .5rem;
     }
+  }
+
+  :deep(.change-gradient-color-width-50) {
+    --p-gradient-color-width: 50%;
+  }
+
+  :deep(.change-gradient-color-width-25) {
+    --p-gradient-color-width: 25%;
   }
 
   :deep(.demo) {
