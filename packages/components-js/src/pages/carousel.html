@@ -11,8 +11,21 @@
     height: 100px;
   }
 
+  .is-active {
+    background: #fc4040;
+  }
+
+  .is-prev,
+  .is-next {
+    background: #f7cb47;
+  }
+
   .change-border-radius {
     --p-carousel-border-radius: 4px;
+  }
+
+  .change-gradient-color-width {
+    --p-gradient-color-width: 50%;
   }
 </style>
 
@@ -541,6 +554,51 @@
   </p-carousel>
 </div>
 
+<div class="playground light" title="should render carousel with center slide focused">
+  <p-carousel
+    id="focus-on-center-slide"
+    heading="Focus on center slide"
+    focus-on-center-slide="true"
+    slides-per-page="3"
+    active-slide-index="3"
+  >
+    <div>Slide 1</div>
+    <div>Slide 2</div>
+    <div>Slide 3</div>
+    <div>Slide 4</div>
+    <div>Slide 5</div>
+    <div>Slide 6</div>
+  </p-carousel>
+</div>
+
+<div class="playground light" title="should render carousel with gradient background">
+  <p-carousel heading="Background gradient" gradient-color="background-base" slides-per-page="3" active-slide-index="2">
+    <div>Slide 1</div>
+    <div>Slide 2</div>
+    <div>Slide 3</div>
+    <div>Slide 4</div>
+    <div>Slide 5</div>
+    <div>Slide 6</div>
+  </p-carousel>
+</div>
+
+<div class="playground light" title="should render carousel with gradient background">
+  <p-carousel
+    heading="Background gradient with custom width"
+    gradient-color="background-base"
+    slides-per-page="3"
+    active-slide-index="2"
+    class="change-gradient-color-width"
+  >
+    <div>Slide 1</div>
+    <div>Slide 2</div>
+    <div>Slide 3</div>
+    <div>Slide 4</div>
+    <div>Slide 5</div>
+    <div>Slide 6</div>
+  </p-carousel>
+</div>
+
 <div class="playground light" title="should render carousel with custom border-radius">
   <p-carousel heading="Slides with custom border radius" class="change-border-radius">
     <div>Slide 1</div>
@@ -617,3 +675,33 @@
     <div>Slide 2</div>
   </p-carousel>
 </div>
+<script>
+  const carousel = document.querySelector('#focus-on-center-slide');
+
+  const updateActiveSlide = (activeSlideIndex) => {
+    const slides = Array.from(carousel?.children || []);
+    slides.forEach((slide, index) => {
+      slide.classList.remove('is-active', 'is-prev', 'is-next');
+
+      if (index === activeSlideIndex) {
+        slide.classList.add('is-active');
+      }
+
+      if (index === activeSlideIndex - 1) {
+        slide.classList.add('is-prev');
+      }
+
+      if (index === activeSlideIndex + 1) {
+        slide.classList.add('is-next');
+      }
+    });
+  };
+
+  const activeSlideIndex = parseInt(carousel.getAttribute('active-slide-index') ?? '0', 10) || 0;
+  updateActiveSlide(activeSlideIndex);
+
+  carousel.addEventListener('update', (e) => {
+    const { activeIndex = 0 } = e.detail || {};
+    updateActiveSlide(activeIndex);
+  });
+</script>
