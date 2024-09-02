@@ -14,8 +14,8 @@ export type CarouselWidth = (typeof CAROUSEL_WIDTHS)[number];
 export const CAROUSEL_TYPE = ['loop', 'slide'] as const;
 export type CarouselType = (typeof CAROUSEL_TYPE)[number];
 
-export const GRADIENT_COLORS = ['background-base', 'background-surface', 'none'] as const;
-export type CarouselGradientColor = (typeof GRADIENT_COLORS)[number];
+export const CAROUSEL_GRADIENT_COLORS = ['background-base', 'background-surface', 'none'] as const;
+export type CarouselGradientColor = (typeof CAROUSEL_GRADIENT_COLORS)[number];
 
 // 'left' is deprecated and will be mapped to 'start'
 /** @deprecated */
@@ -92,8 +92,8 @@ export const getAmountOfPages = (amountOfSlides: number, slidesPerPage: number):
 export const isFirstPage = (splide: Splide): boolean => splide.index === 0;
 export const isLastPage = (splide: Splide, amountOfPages: number): boolean => splide.index >= amountOfPages - 1; // catch removal of slide
 
-export const slidePrev = (splide: Splide, amountOfPages: number, highlightSlide?: boolean): void => {
-  if (highlightSlide) {
+export const slidePrev = (splide: Splide, amountOfPages: number, focusOnCenterSlide?: boolean): void => {
+  if (focusOnCenterSlide) {
     splide.go('<');
   } else {
     // sanitize in case of removal of slide since splide.index seems to be from before splide.refresh()
@@ -102,8 +102,8 @@ export const slidePrev = (splide: Splide, amountOfPages: number, highlightSlide?
   }
 };
 
-export const slideNext = (splide: Splide, amountOfPages: number, highlightSlide?: boolean): void => {
-  if (highlightSlide) {
+export const slideNext = (splide: Splide, amountOfPages: number, focusOnCenterSlide?: boolean): void => {
+  if (focusOnCenterSlide) {
     splide.go('>');
   } else {
     splide.go(isLastPage(splide, amountOfPages) ? 0 : '>');

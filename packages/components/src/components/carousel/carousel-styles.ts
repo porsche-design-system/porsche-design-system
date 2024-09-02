@@ -36,6 +36,7 @@ import {
 import type { JssStyle } from 'jss';
 
 const cssVariablePrevNextFilter = '--p-carousel-prev-next-filter';
+export const cssVariableGradientColorWidth = '--p-gradient-color-width';
 export const carouselTransitionDuration = motionDurationModerate;
 export const paginationInfiniteStartCaseClass = 'pagination--infinite';
 export const bulletClass = 'bullet';
@@ -68,8 +69,6 @@ const spacingMap: Record<CarouselWidth, { base: string; s: string; xxl: string }
   basic: gridBasicOffset,
   extended: gridExtendedOffset,
 };
-
-export const cssVariableGradientColorWidth = '--p-gradient-color-width';
 
 const backfaceVisibilityJssStyle: JssStyle = {
   backfaceVisibility: 'hidden',
@@ -203,7 +202,6 @@ export const getComponentCss = (
       }),
     },
     header: {
-      zIndex: 10,
       display: 'grid',
       padding: `0 ${spacingMap[width].base}`,
       [mediaQueryS]: {
@@ -241,6 +239,7 @@ export const getComponentCss = (
       padding: '4px 0', // for slide focus outline
       margin: '-4px 0', // for slide focus outline
       '&__track': {
+        position: 'relative',
         // !important is necessary to override inline styles set by splide library
         ...addImportantToEachRule({
           padding: `0 ${spacingMap[width].base}`,
@@ -276,10 +275,6 @@ export const getComponentCss = (
         display: 'flex',
       },
       '&__slide': {
-        background: '#00b0f4',
-        '&.is-active': {
-          backgroundColor: 'red !important',
-        },
         ...backfaceVisibilityJssStyle,
         flexShrink: 0,
         transform: 'translateZ(0)', // fixes mobile safari flickering, https://github.com/nolimits4web/swiper/issues/3527#issuecomment-609088939

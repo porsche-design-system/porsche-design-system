@@ -11,7 +11,7 @@ import {
   CAROUSEL_ALIGN_HEADERS,
   CAROUSEL_ARIA_ATTRIBUTES,
   CAROUSEL_WIDTHS,
-  GRADIENT_COLORS,
+  CAROUSEL_GRADIENT_COLORS,
   getAmountOfPages,
   getSlidesAndAddAttributes,
   getSplideBreakpoints,
@@ -68,8 +68,8 @@ const propTypes: PropTypes<typeof Carousel> = {
     AllowedTypes.breakpoint('number'),
     AllowedTypes.oneOf(['auto']),
   ]),
-  gradientColor: AllowedTypes.oneOf<CarouselGradientColor>(GRADIENT_COLORS),
-  highlightSlide: AllowedTypes.boolean,
+  gradientColor: AllowedTypes.oneOf<CarouselGradientColor>(CAROUSEL_GRADIENT_COLORS),
+  focusOnCenterSlide: AllowedTypes.boolean,
   disablePagination: AllowedTypes.breakpoint('boolean'),
   pagination: AllowedTypes.breakpoint('boolean'),
   aria: AllowedTypes.aria<CarouselAriaAttribute>(CAROUSEL_ARIA_ATTRIBUTES),
@@ -152,10 +152,10 @@ export class Carousel {
   @Prop() public skipLinkTarget?: string;
 
   /**
-   * Determines whether the center slide should be highlighted when multiple slides are displayed on a page,
+   * Determines whether the focus should be set on the center slide when multiple slides are displayed,
    * and specifies if the carousel loops by page or by individual slide.
    */
-  @Prop() public highlightSlide?: boolean = false;
+  @Prop() public focusOnCenterSlide?: boolean = false;
 
   /** Adapts the background gradient for the left and right edge. */
   @Prop() public gradientColor?: CarouselGradientColor = 'none';
@@ -221,7 +221,7 @@ export class Carousel {
       autoWidth: this.slidesPerPage === 'auto', // https://splidejs.com/guides/auto-width/#auto-width
       arrows: false,
       easing: motionEasingBase,
-      focus: this.highlightSlide ? 'center' : undefined,
+      focus: this.focusOnCenterSlide ? 'center' : undefined,
       pagination: false,
       rewind: this.rewind,
       rewindByDrag: true, // only works when rewind: true
@@ -290,7 +290,7 @@ export class Carousel {
             ) as BreakpointCustomizable<boolean>)
           : !this.disablePagination
         : this.pagination,
-      isInfinitePagination(this.highlightSlide ? this.slides.length : this.amountOfPages),
+      isInfinitePagination(this.getAmountOfPages()),
       (alignHeaderDeprecationMap[this.alignHeader as keyof AlignHeaderDeprecationMapType] ||
         this.alignHeader) as Exclude<CarouselAlignHeader, CarouselAlignHeaderDeprecated>,
       this.theme,
@@ -344,7 +344,7 @@ export class Carousel {
                 {...btnProps}
                 icon="arrow-left"
                 ref={(ref: HTMLPButtonPureElement) => (this.btnPrev = ref)}
-                onClick={() => slidePrev(this.splide, this.amountOfPages, this.highlightSlide)}
+                onClick={() => slidePrev(this.splide, this.amountOfPages, this.focusOnCenterSlide)}
               />
             )}
             {this.hasNavigation && (
@@ -352,7 +352,7 @@ export class Carousel {
                 {...btnProps}
                 icon="arrow-right"
                 ref={(ref: HTMLPButtonPureElement) => (this.btnNext = ref)}
-                onClick={() => slideNext(this.splide, this.amountOfPages, this.highlightSlide)}
+                onClick={() => slideNext(this.splide, this.amountOfPages, this.focusOnCenterSlide)}
                 onKeyDown={this.onNextKeyDown}
               />
             )}
@@ -394,18 +394,13 @@ export class Carousel {
     splide.on('mounted', () => {
       if (this.splide.options.drag) {
         updatePrevNextButtons(this.btnPrev, this.btnNext, splide);
-        renderPagination(
-          this.paginationEl,
-          this.highlightSlide ? this.slides.length : this.amountOfPages,
-          this.activeSlideIndex,
-          this.splide
-        ); // initial pagination
+        renderPagination(this.paginationEl, this.getAmountOfPages(), this.activeSlideIndex, this.splide); // initial pagination
       }
     });
 
     splide.on('move', (activeIndex, previousIndex): void => {
       updatePrevNextButtons(this.btnPrev, this.btnNext, splide);
-      updatePagination(this.paginationEl, this.highlightSlide ? this.slides.length : this.amountOfPages, activeIndex);
+      updatePagination(this.paginationEl, this.getAmountOfPages(), activeIndex);
       this.update.emit({ activeIndex, previousIndex });
       this.carouselChange.emit({ activeIndex, previousIndex });
     });
@@ -441,6 +436,8 @@ export class Carousel {
     }
   };
 
+  private getAmountOfPages = (): number => (this.focusOnCenterSlide ? this.slides.length : this.amountOfPages);
+
   private onSplideFocusIn = (e: FocusEvent & { target: HTMLElement }): void => {
     const { target } = e;
     const { index: splideIndex } = this.splide;
@@ -449,10 +446,10 @@ export class Carousel {
       this.splide.Components.Elements.slides[slideIndexOfFocusedElement].classList.contains('is-visible');
 
     if (splideIndex !== slideIndexOfFocusedElement) {
-      if (slideIndexOfFocusedElement > splideIndex && (!slideIsVisible || this.highlightSlide)) {
-        slideNext(this.splide, this.amountOfPages, this.highlightSlide);
+      if (slideIndexOfFocusedElement > splideIndex && (!slideIsVisible || this.focusOnCenterSlide)) {
+        slideNext(this.splide, this.amountOfPages, this.focusOnCenterSlide);
       } else if (slideIndexOfFocusedElement < splideIndex) {
-        slidePrev(this.splide, this.amountOfPages, this.highlightSlide);
+        slidePrev(this.splide, this.amountOfPages, this.focusOnCenterSlide);
       }
     }
   };
