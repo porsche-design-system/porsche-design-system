@@ -6,11 +6,19 @@ export const CarouselExampleDynamicSlidesPage = (): JSX.Element => {
   const onAddClick = useCallback(() => setAmountOfSlides((prev) => prev + 1), []);
   const onRemoveClick = useCallback(() => setAmountOfSlides((prev) => (prev === 0 ? 0 : prev - 1)), []);
 
+  const slideStyle = {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    background: '#00b0f4',
+    height: '150px',
+  };
+
   return (
     <>
       <PCarousel slidesPerPage={2} heading="Some Heading">
         {Array.from(Array(amountOfSlides)).map((_, i) => (
-          <div key={i} children={`Slide ${i + 1}`} />
+          <div style={slideStyle} key={i} children={`Slide ${i + 1}`} />
         ))}
       </PCarousel>
 
