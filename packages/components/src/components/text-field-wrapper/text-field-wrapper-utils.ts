@@ -1,7 +1,6 @@
 import type { IconName } from '../../types';
-import { hasCounter, hasDocument, throwException } from '../../utils';
+import { getHasConstructableStylesheetSupport, hasCounter, hasDocument, throwException } from '../../utils';
 import { borderWidthBase } from '@porsche-design-system/styles';
-import { cssVariableInputPaddingStart, cssVariableInputPaddingEnd } from './text-field-wrapper-styles';
 import type { FormState } from '../../utils/form/form-state';
 
 export const UNIT_POSITIONS = ['prefix', 'suffix'] as const;
@@ -21,23 +20,6 @@ export const hasLocateAction = (icon: IconName): boolean => icon === 'locate';
 
 export const getInputPaddingLeftOrRight = (unitElementWidth: number): string => {
   return `calc(${unitElementWidth}px - ${borderWidthBase})`;
-};
-
-export const setInputStyles = (
-  input: HTMLInputElement,
-  unitOrCounterElement: HTMLElement,
-  unitPosition: TextFieldWrapperUnitPosition
-): void => {
-  if (unitOrCounterElement) {
-    input.style.removeProperty(cssVariableInputPaddingStart);
-    input.style.removeProperty(cssVariableInputPaddingEnd);
-
-    input.style.setProperty(
-      unitPosition === 'prefix' ? cssVariableInputPaddingStart : cssVariableInputPaddingEnd,
-      getInputPaddingLeftOrRight(unitOrCounterElement.offsetWidth), // in case fonts are not loaded, this value is wrong
-      'important'
-    );
-  }
 };
 
 export const throwIfUnitLengthExceeded = (unit: string): void => {
@@ -81,4 +63,29 @@ const hasShowPickerSupport = _hasShowPickerSupport();
 
 export const showCustomCalendarOrTimeIndicator = (isCalendar: boolean, isTime: boolean): boolean => {
   return hasShowPickerSupport && (isCalendar || isTime);
+};
+
+/**
+ * Map of flyout instances and their corresponding css stylesheets including the experimental css property --p-flyout-sticky-top.
+ */
+export const counterCharacterLengthCssVarStyleSheetMap = new Map<HTMLElement, CSSStyleSheet>();
+
+// Called once in didRender for setup
+export const addCounterCharacterLengthCssVarStyleSheet = (host: HTMLElement): void => {
+  if (getHasConstructableStylesheetSupport()) {
+    counterCharacterLengthCssVarStyleSheetMap.set(host, new CSSStyleSheet());
+    // It's very important to create and push the stylesheet after `attachComponentCss()` has been called, otherwise styles might replace each other.
+    // TODO: for some reason unit test in Docker environment throws TS2339: Property 'push' does not exist on type 'readonly CSSStyleSheet[]'
+    /* eslint-disable @typescript-eslint/prefer-ts-expect-error, @typescript-eslint/ban-ts-comment */
+    // @ts-ignore
+    host.shadowRoot.adoptedStyleSheets.push(counterCharacterLengthCssVarStyleSheetMap.get(host));
+    updateCounterCharacterLengthCssVarStyleSheet(host, 0);
+  }
+};
+
+export const updateCounterCharacterLengthCssVarStyleSheet = (host: HTMLElement, value: number): void => {
+  // EXPERIMENTAL CSS variable
+  counterCharacterLengthCssVarStyleSheetMap
+    .get(host)
+    .replaceSync(`:host{--p-internal-counter-character-length:${value}}`);
 };
