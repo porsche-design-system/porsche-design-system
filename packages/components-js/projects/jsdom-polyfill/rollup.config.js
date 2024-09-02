@@ -19,6 +19,20 @@ export default [
     plugins: [
       commonjs({ dynamicRequireTargets: ['src/**/*.js'] }),
       resolve(),
+      /* Fixes flaky problem with https://github.com/GoogleChromeLabs/intersection-observer polyfill where window is not defined:
+       * ReferenceError: window is not defined
+       */
+      modify({
+        find: /(return window\.performance && performance\.now && performance\.now\(\);)/,
+        replace: (_, $1) => `if (typeof window !== 'undefined') {${$1}}`,
+      }),
+      /* Fixes problem with https://github.com/calebdwilliams/construct-style-sheets polyfill where document definition is not safely checked causing lots of:
+       * Error: Uncaught [ReferenceError: document is not defined] errors
+       */
+      modify({
+        find: /if \(!document\)/,
+        replace: () => `if (typeof document === 'undefined')`,
+      }),
       modify({
         find: /(:not\(:defined,\[data-ssr]\)['"`]:\s*{)[^}]*(})/,
         replace: (_, $1, $2) => `${$1}${$2}`,
