@@ -146,6 +146,16 @@ Slides can be added and removed dynamically.
   <button type="button" @click="amountOfSlides--">Remove last slide</button>
 </Playground>
 
+## Focus On Center Slide
+
+The carousel highlights the center slide when multiple slides are visible on the page, and it loops through each slide
+individually.
+
+<Playground :frameworkMarkup="focusOnCenterSlideExamples" :config="{ ...config, withoutDemo: true }">
+  <p-carousel :theme="theme" :heading="basicHeading" slides-per-page="3" v-html="getSlides(amountOfSlides)" style="margin: 0 0 1rem">
+  </p-carousel>
+</Playground>
+
 ## Internationalization (i18n)
 
 Default wordings for screen readers can be overridden or translated by passing an object to the `intl` property.  
@@ -320,6 +330,7 @@ export default class Code extends Vue {
 
   amountOfSlides = 3;
   addRemoveSlidesExamples = getCarouselCodeSamples('example-dynamic-slides');
+  focusOnCenterSlideExamples = getCarouselCodeSamples('example-focus-on-center-slide');
 
   internationalization = `<p-carousel intl="{ slideLabel: 'Slide %s von %s', prev: 'Vorheriger Slide', next: 'Nächster Slide', first: 'Zum ersten Slide', last: 'Zum letzten Slide' }" heading="${this.basicHeading}">
   ${this.getSlides(3)}
