@@ -1,3 +1,14 @@
+<style>
+  p-select.css-variables {
+    --p-select-background-color: royalblue;
+    --p-select-text-color: #fff;
+    --p-select-border-color: darkblue;
+    --p-select-icon-filter: invert(1);
+    --p-select-focus-background-color: #000;
+    --p-select-focus-border-color: #000;
+  }
+</style>
+
 <!-- skip this axe-core test because it is just needed for vrt -->
 <div class="playground light skip-axe-core-test" title="should render without label and without description">
   <p-select name="options" value="a">
@@ -387,6 +398,15 @@
       <p-select-option value="c">Option C</p-select-option>
     </p-select>
   </div>
+</div>
+
+<!-- when theme="dark" is used then icon will also be dark because `--p-select-icon-filter` needs to be defined by the integrating team -->
+<div class="playground light" title="should render with custom css variables">
+  <p-select class="css-variables" name="options" value="a" label="Some label">
+    <p-select-option value="a">Option A</p-select-option>
+    <p-select-option value="b">Option B</p-select-option>
+    <p-select-option value="c">Option C</p-select-option>
+  </p-select>
 </div>
 
 <script>

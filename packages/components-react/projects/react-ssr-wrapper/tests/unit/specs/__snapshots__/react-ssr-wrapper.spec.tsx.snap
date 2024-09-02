@@ -13750,9 +13750,9 @@ button {
   text-overflow: ellipsis;
   cursor: pointer;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  color: #010205;
-  background: #FFF;
-  border: 2px solid #6B6D70;
+  color: var(--p-select-text-color, #010205);
+  background: var(--p-select-background-color, #FFF);
+  border: 2px solid var(--p-select-border-color, #6B6D70);
   border-radius: 4px;
 }
 button:disabled {
@@ -13776,6 +13776,7 @@ button:disabled {
   pointer-events: none;
   transform: rotate3d(0,0,1,0.0001deg);
   transition: transform var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  filter: var(--p-select-icon-filter);
 }
 .icon--rotate {
   transform: rotate3d(0,0,1,180deg);
@@ -13799,7 +13800,7 @@ button:disabled {
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
   background: #FFF;
-  border: 2px solid #010205;
+  border: 2px solid var(--p-select-border-color, #010205);
   border-top: none;
   border-radius: 4px;
   border-top-left-radius: 0;
