@@ -6,9 +6,8 @@
   "scope": "@porsche-design-system",
   "sideEffects": false,
   "scripts": {
-    "build": "yarn clean:build && yarn build:sass && yarn build:bundle",
-    "build:sass": "sass src/scss:src/css --load-path=../../../../node_modules",
-    "build:bundle": "rollup -c rollup.config.js --bundleConfigAsCjs",
+    "build": "yarn clean:build && yarn build:sass",
+    "build:sass": "sass src/scss:dist --load-path=../../../../node_modules --no-source-map",
     "test": "yarn test:unit",
     "test:unit": "vitest --config tests/unit/config/vitest.config.ts",
     "clean:build": "rm -rf ./dist && rm -rf ./src/css"
