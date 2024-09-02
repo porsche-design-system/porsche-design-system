@@ -1,0 +1,25 @@
+{
+  "name": "@porsche-design-system/ag-grid",
+  "version": "0.0.0",
+  "private": true,
+  "license": "UNLICENSED",
+  "scope": "@porsche-design-system",
+  "sideEffects": false,
+  "scripts": {
+    "build": "yarn clean:build && yarn build:sass && yarn build:bundle",
+    "build:sass": "sass src/scss:src/css --load-path=../../../../node_modules",
+    "build:bundle": "rollup -c rollup.config.js --bundleConfigAsCjs",
+    "test": "yarn test:unit",
+    "test:unit": "vitest --config tests/unit/config/vitest.config.ts",
+    "clean:build": "rm -rf ./dist && rm -rf ./src/css"
+  },
+  "dependencies": {
+    "@porsche-design-system/components-js": "3.18.0"
+  },
+  "peerDependencies": {
+    "sass": "*"
+  },
+  "volta": {
+    "extends": "../../package.json"
+  }
+}

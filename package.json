@@ -27,6 +27,7 @@
       "packages/components-react/projects/uxpin-wrapper",
       "packages/components-vue/dist/vue-wrapper",
       "packages/utilities/projects/utilities",
+      "packages/utilities/projects/ag-grid",
       "packages/shared/dist"
     ],
     "nohoist": [
