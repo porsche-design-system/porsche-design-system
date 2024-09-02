@@ -1,5 +1,5 @@
 import type { BreakpointCustomizable, Theme } from '../../../types';
-import { getCss, type SelectDropdownDirectionInternal } from '../../../utils';
+import { getCss, isHighContrastMode, type SelectDropdownDirectionInternal } from '../../../utils';
 import {
   addImportantToEachRule,
   addImportantToRule,
@@ -98,7 +98,9 @@ export const getComponentCss = (
       pointerEvents: 'none',
       transform: 'rotate3d(0,0,1,0.0001deg)', // needs to be a little more than 0 for correct direction in safari
       transition: getTransition('transform'),
-      filter: `var(${cssVarIconFilter})`,
+      ...(!isHighContrastMode && {
+        filter: `var(${cssVarIconFilter})`,
+      }),
       '&--rotate': {
         transform: 'rotate3d(0,0,1,180deg)',
       },
