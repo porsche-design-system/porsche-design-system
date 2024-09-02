@@ -7,8 +7,8 @@ const getVideo = (page: Page) => page.locator('p-button-tile video');
 
 const imageTag = `<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyAQMAAAAk8RryAAAABlBMVEUAAAD2vP9xXLiUAAAAAXRSTlMAQObYZgAAABxJREFUGNNjYOBgYGBhYKAZ/R8MDsD4Q5amkz8ASp4PtTYYQZIAAAAASUVORK5CYII=" alt="Some image label"/>`;
 const videoTag = `<video
-  poster="https://porsche-design-system.github.io/dummyasset/ocean.jpg"
-  src="https://porsche-design-system.github.io/dummyasset/ocean.mp4"
+  poster="http://localhost:3002/ocean.jpg"
+  src="http://localhost:3002/ocean.mp4"
   loop
   muted
   autoplay
@@ -33,7 +33,7 @@ const initButtonTile = (
 const appendVideo = async (page: Page): Promise<void> => {
   await page.evaluate(async (): Promise<void> => {
     const video = document.createElement('video');
-    video.src = 'https://porsche-design-system.github.io/dummyasset/ocean.mp4';
+    video.src = 'http://localhost:3002/ocean.mp4';
     video.loop = true;
     video.muted = true;
     video.autoplay = true;
