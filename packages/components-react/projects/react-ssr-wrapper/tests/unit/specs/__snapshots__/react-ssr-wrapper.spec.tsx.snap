@@ -8336,6 +8336,7 @@ exports[`should render dsr component for PCarousel 1`] = `
   margin: -4px 0;
 }
 .splide__track {
+  position: relative;
   padding: 0 max(22px, 10.625vw - 12px) !important;
 }
 .splide__list {
@@ -8364,6 +8365,22 @@ exports[`should render dsr component for PCarousel 1`] = `
   user-select: none;
   -webkit-user-select: none;
   -webkit-touch-callout: none;
+}
+.splide__track::before, .splide__track::after {
+  content: "";
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  height: 100%;
+  width: var(--p-gradient-color-width, 33%);
+}
+.splide__track::before {
+  left: 0;
+  background: linear-gradient(to right, rgba(,1) 20%,rgba(,0.6) 48%,rgba(,0.3) 68%,rgba(,0) 100%);
+}
+.splide__track::after {
+  right: 0;
+  background: linear-gradient(to left, rgba(,1) 20%,rgba(,0.6) 48%,rgba(,0.3) 68%,rgba(,0) 100%);
 }
 .pagination-container {
   display: flex;
