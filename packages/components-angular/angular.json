@@ -24,7 +24,11 @@
             "tsConfig": "tsconfig.app.json",
             "aot": true,
             "assets": ["src/favicon.ico", "src/assets"],
-            "styles": ["@porsche-design-system/shared/css/styles.css"],
+            "styles": [
+              "@porsche-design-system/shared/css/styles.css",
+              "ag-grid-enterprise/styles/ag-grid.css",
+              "@porsche-design-system/components-js/ag-grid/theme-light.css"
+            ],
             "inlineStyleLanguage": "scss",
             "scripts": [],
             "indexTransform": "./scripts/injectPartials.js"
