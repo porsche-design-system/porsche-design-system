@@ -41,6 +41,7 @@
     align-items: center;
     justify-content: center;
     background: #00b0f4;
+    transition: background 0.3s ease;
     height: 150px;
   }
 
