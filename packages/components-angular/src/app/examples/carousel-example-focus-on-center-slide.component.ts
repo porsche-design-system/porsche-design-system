@@ -23,6 +23,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       justify-content: center;
       background: #00b0f4;
       height: 150px;
+      transition: background 0.3s ease;
       color: $pds-theme-light-primary;
     }
 
