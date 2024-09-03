@@ -262,8 +262,8 @@ export default class Code extends Vue {
   gradientColor = 'background-surface';
   gradientColors = CAROUSEL_GRADIENT_COLORS;
 
-  gradientColorWidth = 'default';
-  gradientColorWidths = ['50', '25', 'default'];
+  gradientColorWidth = '33% (default)';
+  gradientColorWidths = ['50%', '25%', '33% (default)'];
 
   basic = `<p-carousel heading="${this.basicHeading}">
   ${this.getSlides(4)}
@@ -278,7 +278,7 @@ export default class Code extends Vue {
   }
 
   get gradientColorMarkup() {
-    return `<p-carousel class="change-gradient-color-width-${this.gradientColorWidth}" slides-per-page="3" active-slide-index="2" heading="${this.basicHeading}" gradient-color="${this.gradientColor}">
+    return `<p-carousel style="--p-gradient-color-width: ${this.gradientColorWidth === this.gradientColorWidths[2] ? '33%' : this.gradientColorWidth}" slides-per-page="3" active-slide-index="2" heading="${this.basicHeading}" gradient-color="${this.gradientColor}">
       ${this.getSlides()}
     </p-carousel>`;
   }
@@ -426,14 +426,6 @@ skip = `<p-carousel heading="${this.basicHeading}" skip-link-target="components/
     + button { 
       margin: 0 0 0 .5rem;
     }
-  }
-
-  :deep(.change-gradient-color-width-50) {
-    --p-gradient-color-width: 50%;
-  }
-
-  :deep(.change-gradient-color-width-25) {
-    --p-gradient-color-width: 25%;
   }
 
   :deep(.demo) {
