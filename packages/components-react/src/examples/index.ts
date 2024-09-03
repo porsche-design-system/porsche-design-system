@@ -1,4 +1,5 @@
 export * from './AccordionExample';
+export * from './AGGridExample';
 export * from './BannerExample';
 export * from './ButtonExampleForm';
 export * from './CanvasExample';
