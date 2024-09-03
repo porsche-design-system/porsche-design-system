@@ -56,6 +56,11 @@ export const routes: RouteType[] = [
     component: fromExamples.CarouselExampleDynamicSlides,
   },
   {
+    path: '/carousel-example-focus-on-center-slide',
+    name: 'Carousel Example Focus On Center Slide',
+    component: fromExamples.CarouselExampleFocusOnCenterSlide,
+  },
+  {
     path: '/carousel-example-events',
     name: 'Carousel Example Events',
     component: fromExamples.CarouselExampleEvents,

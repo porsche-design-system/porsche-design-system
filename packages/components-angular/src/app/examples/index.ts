@@ -3,6 +3,7 @@ import { BannerExampleComponent } from './banner-example.component';
 import { ButtonExampleFormComponent } from './button-example-form.component';
 import { CanvasExampleComponent } from './canvas-example.component';
 import { CarouselExampleDynamicSlidesComponent } from './carousel-example-dynamic-slides.component';
+import { CarouselExampleFocusOnCenterSlideComponent } from './carousel-example-focus-on-center-slide.component';
 import { CarouselExampleEventsComponent } from './carousel-example-events.component';
 import { CarouselExampleJumpToSlideComponent } from './carousel-example-jump-to-slide.component';
 import { FlyoutExampleComponent } from './flyout-example.component';
@@ -44,6 +45,7 @@ export const examples = [
   ButtonExampleFormComponent,
   CanvasExampleComponent,
   CarouselExampleDynamicSlidesComponent,
+  CarouselExampleFocusOnCenterSlideComponent,
   CarouselExampleEventsComponent,
   CarouselExampleJumpToSlideComponent,
   FlyoutExampleComponent,
@@ -85,6 +87,7 @@ export * from './banner-example.component';
 export * from './button-example-form.component';
 export * from './canvas-example.component';
 export * from './carousel-example-dynamic-slides.component';
+export * from './carousel-example-focus-on-center-slide.component';
 export * from './carousel-example-events.component';
 export * from './carousel-example-jump-to-slide.component';
 export * from './flyout-example.component';

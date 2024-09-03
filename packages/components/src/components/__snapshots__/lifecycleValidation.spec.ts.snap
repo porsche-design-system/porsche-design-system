@@ -106,6 +106,8 @@ exports[`should call validateProps() with correct parameters via render for p-ca
   "aria": "aria",
   "description": "string",
   "disablePagination": "breakpoint",
+  "focusOnCenterSlide": "boolean",
+  "gradientColor": "oneOf",
   "heading": "string",
   "headingSize": "oneOf",
   "intl": "shape",

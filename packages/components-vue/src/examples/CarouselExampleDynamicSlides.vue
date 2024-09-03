@@ -20,3 +20,12 @@
   <button type="button" @update="onAddClick">Add slide</button>
   <button type="button" @update="onRemoveClick">Remove last slide</button>
 </template>
+<style scoped>
+  p-carousel div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #00b0f4;
+    height: 150px;
+  }
+</style>

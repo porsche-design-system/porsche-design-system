@@ -1,0 +1,58 @@
+<style>
+  p-carousel div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #00b0f4;
+    height: 150px;
+    transition: background 0.3s ease;
+  }
+
+  .is-active {
+    background: #fc4040;
+  }
+
+  .is-prev,
+  .is-next {
+    background: #f7cb47;
+  }
+</style>
+
+<p-carousel slides-per-page="3" focus-on-center-slide="true">
+  <div>Slide 1</div>
+  <div>Slide 2</div>
+  <div>Slide 3</div>
+  <div>Slide 4</div>
+  <div>Slide 5</div>
+  <div>Slide 6</div>
+</p-carousel>
+
+<script>
+  const carousel = document.querySelector('p-carousel');
+
+  const updateActiveSlide = (activeSlideIndex) => {
+    const slides = Array.from(carousel?.children || []);
+    slides.forEach((slide, index) => {
+      slide.classList.remove('is-active', 'is-prev', 'is-next');
+
+      if (index === activeSlideIndex) {
+        slide.classList.add('is-active');
+      }
+
+      if (index === activeSlideIndex - 1) {
+        slide.classList.add('is-prev');
+      }
+
+      if (index === activeSlideIndex + 1) {
+        slide.classList.add('is-next');
+      }
+    });
+  };
+
+  updateActiveSlide(0);
+
+  carousel.addEventListener('update', (e) => {
+    const { activeIndex = 0 } = e.detail || {};
+    updateActiveSlide(activeIndex);
+  });
+</script>
