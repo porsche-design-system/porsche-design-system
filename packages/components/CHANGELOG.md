@@ -14,10 +14,17 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ### [Unreleased]
 
+### [3.19.0-rc.0] - 2024-09-03
+
 #### Added
 
 - `componentsReady()`: Introduce optional `readyState` parameter
   ([#3460](https://github.com/porsche-design-system/porsche-design-system/pull/3460))
+
+#### Changed
+
+- `Text Field Wrapper`: width calculation of counter and unit element are now CSS based in relation to the number of
+  characters ([#3472](https://github.com/porsche-design-system/porsche-design-system/pull/3472))
 
 #### Fixed
 
