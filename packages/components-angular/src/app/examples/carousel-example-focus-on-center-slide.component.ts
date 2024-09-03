@@ -45,19 +45,6 @@ export class CarouselExampleFocusOnCenterSlideComponent {
   @ViewChild('carousel', { static: true })
   carouselRef!: ElementRef<HTMLElement>;
 
-  constructor() {
-    /**
-     * Defers execution to ensure the view is initialized before running the logic.
-     * Necessary to avoid lifecycle hooks, as `getAngularProjectAndOpenOptions.ts` cannot handle them.
-     */
-    setTimeout(() => {
-      if (this.carouselRef) {
-        const carousel = this.carouselRef.nativeElement;
-        this.updateActiveSlide((carousel as any)['activeSlideIndex'] || 0);
-      }
-    }, 0);
-  }
-
   onCarouselUpdate(event: any): void {
     this.updateActiveSlide(event.detail.activeIndex);
   }
