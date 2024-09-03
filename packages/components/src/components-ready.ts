@@ -3,7 +3,16 @@ import type { PorscheDesignSystem } from './types';
 
 type PromiseResolve = (amount: number) => void;
 
-export const componentsReady = (el: HTMLElement = document.body): Promise<number> => {
+const documentReadyStateHierarchy: Record<DocumentReadyState, number> = {
+  loading: 0,
+  interactive: 1,
+  complete: 2,
+};
+
+export const componentsReady = (
+  el: HTMLElement = document.body,
+  readyState: DocumentReadyState = 'complete'
+): Promise<number> => {
   let promiseResolve: PromiseResolve;
   const promise: Promise<number> = new Promise((resolve) => (promiseResolve = resolve));
 
@@ -11,13 +20,13 @@ export const componentsReady = (el: HTMLElement = document.body): Promise<number
     isDesignSystemReady().then(() => allComponentsLoaded(el, promiseResolve));
   };
 
-  if (isDocumentReady()) {
+  if (isDocumentReady(readyState)) {
     waitForDesignSystemAndComponents();
   } else {
     // if document isn't ready yet, we register readystatechange event listener
     const eventName = 'readystatechange';
     const eventHandler = (): void => {
-      if (isDocumentReady()) {
+      if (isDocumentReady(readyState)) {
         document.removeEventListener(eventName, eventHandler);
         waitForDesignSystemAndComponents();
       }
@@ -28,7 +37,8 @@ export const componentsReady = (el: HTMLElement = document.body): Promise<number
   return promise;
 };
 
-const isDocumentReady = (): boolean => document.readyState === 'complete';
+const isDocumentReady = (requiredState: DocumentReadyState): boolean =>
+  documentReadyStateHierarchy[document.readyState] >= documentReadyStateHierarchy[requiredState];
 
 const isDesignSystemReady = (): Promise<void> => {
   if ((document.porscheDesignSystem?.[ROLLUP_REPLACE_VERSION as keyof PorscheDesignSystem] as any)?.isReady) {
@@ -66,16 +76,18 @@ const allComponentsLoaded = (el: HTMLElement, resolve: PromiseResolve): void => 
 };
 
 const collectAllComponentOnReadyPromises = (el: HTMLElement): Promise<HostElement>[] => {
-  let readyPromises: Promise<HostElement>[] = [];
+  const readyPromises: Promise<HostElement>[] = [];
+  const stack: HostElement[] = [el];
 
-  // Node.ELEMENT_NODE: An Element node like <p> or <div>
-  if (el?.nodeType === 1) {
-    (Array.from(el.children) as HostElement[]).forEach((childEl) => {
-      if (isDesignSystemElement(childEl)) {
-        readyPromises.push(childEl.componentOnReady());
+  while (stack.length > 0) {
+    const currentEl = stack.pop();
+
+    if (currentEl.nodeType === Node.ELEMENT_NODE) {
+      if (isDesignSystemElement(currentEl)) {
+        readyPromises.push(currentEl.componentOnReady());
       }
-      readyPromises = readyPromises.concat(collectAllComponentOnReadyPromises(childEl));
-    });
+      stack.push(...(Array.from(currentEl.children) as HostElement[]));
+    }
   }
 
   return readyPromises;
@@ -83,5 +95,5 @@ const collectAllComponentOnReadyPromises = (el: HTMLElement): Promise<HostElemen
 
 const regex = /^(.*-)?P-(.*)$/;
 const isDesignSystemElement = (el: HostElement): boolean => {
-  return regex.exec(el.tagName) && typeof el.componentOnReady === 'function';
+  return regex.test(el.tagName) && typeof el.componentOnReady === 'function';
 };

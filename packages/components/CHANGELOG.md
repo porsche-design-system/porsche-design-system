@@ -14,6 +14,16 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ### [Unreleased]
 
+#### Added
+
+- `componentsReady()`: Introduce optional `readyState` parameter
+  ([#3460](https://github.com/porsche-design-system/porsche-design-system/pull/3460))
+
+#### Fixed
+
+- `jsdom-polyfill`: errors from included polyfill packages
+  ([3481](https://github.com/porsche-design-system/porsche-design-system/pull/3481))
+
 ### [3.18.0] - 2024-08-21
 
 ### [3.18.0-rc.0] - 2024-08-21

@@ -69,6 +69,7 @@ const validateFormComponentHostDisplayStyle = (cssObject: any, tagName: TagName)
       'p-select',
       'p-select-wrapper',
       'p-textarea',
+      'p-textarea-wrapper',
       'p-text-field-wrapper',
     ].includes(tagName)
   ) {

@@ -17,7 +17,7 @@
 
     <% if (process.env.NODE_ENV === 'production') { %>
     <!-- CSP_PLACEHOLDER -->
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self' https://cdn.ui.porsche.com; style-src 'self' 'unsafe-inline' https://cdn.ui.porsche.com 'sha256-yxwVJW/K4jacbKpVjEl1gF4lo1qrXE250ZTsjsFayTQ='; script-src 'self' https://cdn.ui.porsche.com 'sha256-PFi+z4fRGrQcDui8zWHa5SL/jnyrjdDDADcw9HSSaro=' 'sha256-AjifP4agQgIcC1ep5F7cnXwxUy33FSINnoMBQ3vTjJk='; img-src 'self' https://cdn.ui.porsche.com https://porsche-design-system.github.io data:; media-src 'self' https://porsche-design-system.github.io; connect-src 'self' https://*.algolia.net https://*.algolianet.com https://registry.npmjs.org/@porsche-design-system/components-js" />
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' https://cdn.ui.porsche.com; style-src 'self' 'unsafe-inline' https://cdn.ui.porsche.com; script-src 'self' https://cdn.ui.porsche.com 'sha256-oGjFXlblBVl7yEVdFkopiZFnzuSAEN3lI1doNwVvEFw=' 'sha256-AjifP4agQgIcC1ep5F7cnXwxUy33FSINnoMBQ3vTjJk='; img-src 'self' https://cdn.ui.porsche.com https://porsche-design-system.github.io data:; media-src 'self' https://porsche-design-system.github.io; connect-src 'self' https://*.algolia.net https://*.algolianet.com https://registry.npmjs.org/@porsche-design-system/components-js" />
 
     <!-- prettier-ignore -->
     <%= require('@porsche-design-system/components-js/partials').getFontLinks({ subset: 'latin', weights: ['regular', 'semi-bold', 'bold'] }) %>
@@ -30,7 +30,7 @@
     <link rel="stylesheet" href="http://localhost:3001/styles/font-face.css" />
     <% } %>
     <!-- Open Graph Meta Tags -->
-    <meta property="og:image" content="https://porsche-design-system.github.io/dummyasset/og-image.png">
+    <meta property="og:image" content="/assets/og-image.png">
     <meta property="og:image:alt" content="Porsche Wordmark" />
     <meta property="og:type" content="website">
     <meta property="og:title" content="Porsche Design System">
@@ -39,7 +39,7 @@
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Porsche Design System">
     <meta name="twitter:description" content="Find all the fundamental UXI guidelines and pattern-based web components to build brand driven, consistent and intuitive designs for digital Porsche products.">
-    <meta name="twitter:image" content="https://porsche-design-system.github.io/dummyasset/og-image.png">
+    <meta name="twitter:image" content="/assets/og-image.png">
   </head>
   <body>
     <noscript>

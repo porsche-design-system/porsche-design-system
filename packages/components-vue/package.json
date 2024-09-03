@@ -3,8 +3,8 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "concurrently -k -s 'first' -n 'cdn,vue' 'serve-cdn' 'vite -c vite.config.app.mts'",
-    "start-app": "concurrently -k -s 'first' -n 'cdn,app' 'serve-cdn' 'ws --spa index.html -p 5173 -d ./dist/demo-app'",
+    "start": "concurrently -k -s 'first' -n 'cdn,dummyassets,vue' 'serve-cdn' 'serve-dummyassets' 'vite -c vite.config.app.mts'",
+    "start-app": "concurrently -k -s 'first' -n 'cdn,dummyassets,app' 'serve-cdn' 'serve-dummyassets' 'ws --spa index.html -p 5173 -d ./dist/demo-app'",
     "build": "yarn clean:build && yarn build:vue-wrapper && yarn build:subPackages",
     "build:vue-wrapper": "yarn build:vue-wrapper:lib && yarn build:vue-wrapper:typings",
     "build:vue-wrapper:lib": "vite build -c vite.config.package.mts",
@@ -36,7 +36,7 @@
   "devDependencies": {
     "@porsche-design-system/assets": "5.0.2",
     "@porsche-design-system/shared": "0.0.0",
-    "@rushstack/eslint-patch": "^1.10.3",
+    "@rushstack/eslint-patch": "^1.10.4",
     "@testing-library/vue": "^8.1.0",
     "@tsconfig/node18": "^18.2.4",
     "@vitejs/plugin-vue": "^5.0.5",

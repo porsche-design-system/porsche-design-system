@@ -21,11 +21,6 @@
     <slot name="header">
       <PTag :color="'background-base'">New</PTag>
     </slot>
-    <img
-      src="https://porsche-design-system.github.io/dummyasset/placeholder_800x900.svg"
-      width="800"
-      height="900"
-      alt="Some alt text"
-    />
+    <img src="http://localhost:3002/placeholder_800x900.svg" width="800" height="900" alt="Some alt text" />
   </PLinkTileProduct>
 </template>
