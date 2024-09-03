@@ -42,7 +42,7 @@ describe('getComponentCss()', () => {
       true,
     ],
   ])(
-    'should return correct css for hasHeading: %s, hasDescription: %s, hasControlsSlot: %s, headingSize: %s, width: %s, hasPagination: %j, isInfinitePagination: %s, alignHeader: %s, theme: %s and hasNavigation: %s',
+    'should return correct css for gradientColor: %s, hasHeading: %s, hasDescription: %s, hasControlsSlot: %s, headingSize: %s, width: %s, hasPagination: %j, isInfinitePagination: %s, alignHeader: %s, theme: %s and hasNavigation: %s',
     (...args) => {
       validateCssAndMatchSnapshot(getComponentCss(...args));
     }
