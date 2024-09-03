@@ -1,21 +1,17 @@
-import { ChangeDetectionStrategy, Component, ViewChild, ElementRef } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
   selector: 'page-carousel-example-focus-on-center-slide',
   template: `
     <p-carousel
-      #carousel
       [slidesPerPage]="3"
       [focusOnCenterSlide]="true"
       [heading]="'Some Heading'"
       (update)="onCarouselUpdate($event)"
     >
-      <div>Slide 1</div>
-      <div>Slide 2</div>
-      <div>Slide 3</div>
-      <div>Slide 4</div>
-      <div>Slide 5</div>
-      <div>Slide 6</div>
+      <div *ngFor="let slide of slides; let i = index" [ngClass]="getSlideClass(i)">
+        {{ slide }}
+      </div>
     </p-carousel>
   `,
   styles: `
@@ -42,30 +38,18 @@ import { ChangeDetectionStrategy, Component, ViewChild, ElementRef } from '@angu
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CarouselExampleFocusOnCenterSlideComponent {
-  @ViewChild('carousel', { static: true })
-  carouselRef!: ElementRef<HTMLElement>;
+  slides: string[] = Array.from({ length: 6 }, (_, i) => `Slide ${i}`);
+  private activeSlideIndex = 0;
 
   onCarouselUpdate(event: any): void {
-    this.updateActiveSlide(event.detail.activeIndex);
+    this.activeSlideIndex = event.detail.activeIndex;
   }
 
-  updateActiveSlide(activeSlideIndex: number): void {
-    if (this.carouselRef) {
-      const carousel = this.carouselRef.nativeElement;
-      const slides = Array.from(carousel?.children || []) as HTMLElement[];
-      slides.forEach((slide) => {
-        slide.classList.remove('is-active', 'is-prev', 'is-next');
-      });
-
-      slides.forEach((slide, index) => {
-        if (index === activeSlideIndex) {
-          slide.classList.add('is-active');
-        } else if (index === activeSlideIndex - 1) {
-          slide.classList.add('is-prev');
-        } else if (index === activeSlideIndex + 1) {
-          slide.classList.add('is-next');
-        }
-      });
-    }
+  getSlideClass(index: number): { [key: string]: boolean } {
+    return {
+      'is-active': index === this.activeSlideIndex,
+      'is-prev': index === this.activeSlideIndex - 1,
+      'is-next': index === this.activeSlideIndex + 1,
+    };
   }
 }
