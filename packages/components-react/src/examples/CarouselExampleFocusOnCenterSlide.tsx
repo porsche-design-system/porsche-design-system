@@ -5,31 +5,7 @@ export const CarouselExampleFocusOnCenterSlidePage = (): JSX.Element => {
   const carouselRef = useRef(null);
   const [activeSlideIndex, setActiveSlideIndex] = useState(0);
 
-  useEffect(() => {
-    const carousel = carouselRef.current;
-    if (carousel) {
-      updateActiveSlide(activeSlideIndex);
-    }
-  }, [activeSlideIndex]);
-
-  const slideStyle = {
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    background: '#00b0f4',
-    height: '150px',
-  };
-
-  const activeSlideStyle = {
-    ...slideStyle,
-    background: '#fc4040',
-  };
-
-  const prevNextSlideStyle = {
-    ...slideStyle,
-    background: '#f7cb47',
-  };
-
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   const updateActiveSlide = (activeSlideIndex: number) => {
     if (carouselRef.current) {
       const carousel: HTMLElement = carouselRef.current;
@@ -51,6 +27,31 @@ export const CarouselExampleFocusOnCenterSlidePage = (): JSX.Element => {
         }
       });
     }
+  };
+
+  useEffect(() => {
+    const carousel = carouselRef.current;
+    if (carousel) {
+      updateActiveSlide(activeSlideIndex);
+    }
+  }, [activeSlideIndex, updateActiveSlide]);
+
+  const slideStyle = {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    background: '#00b0f4',
+    height: '150px',
+  };
+
+  const activeSlideStyle = {
+    ...slideStyle,
+    background: '#fc4040',
+  };
+
+  const prevNextSlideStyle = {
+    ...slideStyle,
+    background: '#f7cb47',
   };
 
   const onCarouselUpdate = (newIndex: number) => {
