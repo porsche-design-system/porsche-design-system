@@ -1,4 +1,5 @@
 export { default as AccordionExample } from './AccordionExample.vue';
+export { default as AGGridExample } from './AGGridExample.vue';
 export { default as ButtonExampleForm } from './ButtonExampleForm.vue';
 export { default as CanvasExample } from './CanvasExample.vue';
 export { default as CarouselExampleDynamicSlides } from './CarouselExampleDynamicSlides.vue';

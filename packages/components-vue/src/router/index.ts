@@ -1,5 +1,5 @@
-import { createRouter, createWebHistory } from 'vue-router';
 import type { RouteComponent, RouteRecordRaw } from 'vue-router';
+import { createRouter, createWebHistory } from 'vue-router';
 import * as fromPages from '../pages';
 import { kebabCase } from 'change-case';
 import * as fromExamples from '../examples';
@@ -29,6 +29,11 @@ export const routes: RouteType[] = [
     path: '/accordion-example',
     name: 'Accordion Example',
     component: fromExamples.AccordionExample,
+  },
+  {
+    path: '/ag-grid-example',
+    name: 'AG Grid Example',
+    component: fromExamples.AGGridExample,
   },
   {
     path: '/banner-basic',
