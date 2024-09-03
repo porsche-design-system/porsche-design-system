@@ -49,8 +49,7 @@
     });
   };
 
-  const activeSlideIndex = parseInt(carousel.getAttribute('active-slide-index') ?? '0', 10) || 0;
-  updateActiveSlide(activeSlideIndex);
+  updateActiveSlide(0);
 
   carousel.addEventListener('update', (e) => {
     const { activeIndex = 0 } = e.detail || {};

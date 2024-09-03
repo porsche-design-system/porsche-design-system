@@ -696,7 +696,8 @@
       }
     });
   };
-  updateActiveSlide(0);
+
+  updateActiveSlide(3); // Initial value of active-slide-index
 
   carousel.addEventListener('update', (e) => {
     const { activeIndex = 0 } = e.detail || {};
