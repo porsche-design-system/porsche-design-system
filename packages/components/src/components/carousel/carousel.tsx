@@ -290,7 +290,7 @@ export class Carousel {
             ) as BreakpointCustomizable<boolean>)
           : !this.disablePagination
         : this.pagination,
-      isInfinitePagination(this.getAmountOfPages()),
+      isInfinitePagination(this.getPageCount()),
       (alignHeaderDeprecationMap[this.alignHeader as keyof AlignHeaderDeprecationMapType] ||
         this.alignHeader) as Exclude<CarouselAlignHeader, CarouselAlignHeaderDeprecated>,
       this.theme,
@@ -394,13 +394,13 @@ export class Carousel {
     splide.on('mounted', () => {
       if (this.splide.options.drag) {
         updatePrevNextButtons(this.btnPrev, this.btnNext, splide);
-        renderPagination(this.paginationEl, this.getAmountOfPages(), this.activeSlideIndex, this.splide); // initial pagination
+        renderPagination(this.paginationEl, this.getPageCount(), this.activeSlideIndex, this.splide); // initial pagination
       }
     });
 
     splide.on('move', (activeIndex, previousIndex): void => {
       updatePrevNextButtons(this.btnPrev, this.btnNext, splide);
-      updatePagination(this.paginationEl, this.getAmountOfPages(), activeIndex);
+      updatePagination(this.paginationEl, this.getPageCount(), activeIndex);
       this.update.emit({ activeIndex, previousIndex });
       this.carouselChange.emit({ activeIndex, previousIndex });
     });
@@ -436,7 +436,7 @@ export class Carousel {
     }
   };
 
-  private getAmountOfPages = (): number => (this.focusOnCenterSlide ? this.slides.length : this.amountOfPages);
+  private getPageCount = (): number => (this.focusOnCenterSlide ? this.slides.length : this.amountOfPages);
 
   private onSplideFocusIn = (e: FocusEvent & { target: HTMLElement }): void => {
     const { target } = e;
