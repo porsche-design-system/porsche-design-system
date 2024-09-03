@@ -51,8 +51,10 @@ export class CarouselExampleFocusOnCenterSlideComponent {
      * Necessary to avoid lifecycle hooks, as `getAngularProjectAndOpenOptions.ts` cannot handle them.
      */
     setTimeout(() => {
-      const carousel = this.carouselRef.nativeElement;
-      this.updateActiveSlide((carousel as any)['activeSlideIndex'] || 0);
+      if (this.carouselRef) {
+        const carousel = this.carouselRef.nativeElement;
+        this.updateActiveSlide((carousel as any)['activeSlideIndex'] || 0);
+      }
     }, 0);
   }
 
