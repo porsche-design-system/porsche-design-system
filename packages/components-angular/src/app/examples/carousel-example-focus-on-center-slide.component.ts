@@ -45,11 +45,6 @@ export class CarouselExampleFocusOnCenterSlideComponent {
   @ViewChild('carousel', { static: true })
   carouselRef!: ElementRef<HTMLElement>;
 
-  ngAfterViewInit(): void {
-    const carousel = this.carouselRef.nativeElement;
-    this.updateActiveSlide((carousel as any)['activeSlideIndex'] || 0);
-  }
-
   onCarouselUpdate(event: any): void {
     this.updateActiveSlide(event.detail.activeIndex);
   }
