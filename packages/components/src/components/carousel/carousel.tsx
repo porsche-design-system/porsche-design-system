@@ -290,7 +290,7 @@ export class Carousel {
             ) as BreakpointCustomizable<boolean>)
           : !this.disablePagination
         : this.pagination,
-      isInfinitePagination(this.getPageCount()),
+      isInfinitePagination(this.focusOnCenterSlide ? this.slides.length : this.amountOfPages),
       (alignHeaderDeprecationMap[this.alignHeader as keyof AlignHeaderDeprecationMapType] ||
         this.alignHeader) as Exclude<CarouselAlignHeader, CarouselAlignHeaderDeprecated>,
       this.theme,
