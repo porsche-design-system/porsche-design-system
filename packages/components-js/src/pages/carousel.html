@@ -679,7 +679,7 @@
   const carousel = document.querySelector('#focus-on-center-slide');
 
   const updateActiveSlide = (activeSlideIndex) => {
-    const slides = Array.from(carousel?.children || []);
+    const slides = Array.from(carousel.children);
     slides.forEach((slide, index) => {
       slide.classList.remove('is-active', 'is-prev', 'is-next');
 
@@ -696,9 +696,7 @@
       }
     });
   };
-
-  const activeSlideIndex = parseInt(carousel.getAttribute('active-slide-index') ?? '0', 10) || 0;
-  updateActiveSlide(activeSlideIndex);
+  updateActiveSlide(0);
 
   carousel.addEventListener('update', (e) => {
     const { activeIndex = 0 } = e.detail || {};
