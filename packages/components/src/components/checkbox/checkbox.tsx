@@ -81,7 +81,7 @@ export class Checkbox {
    * The checkbox value.
    * When a form is submitted, only a checkbox which is currently checked is included in the submission.
    */
-  @Prop() public value?: string = '';
+  @Prop() public value?: string = 'on';
 
   /** The label text. */
   @Prop() public label?: string = '';
@@ -120,12 +120,12 @@ export class Checkbox {
 
   @Watch('value')
   public onValueChange(newValue: string): void {
-    this.internals.setFormValue(this.input.checked ? newValue : null);
+    this.internals.setFormValue(this.input.checked ? newValue : undefined);
   }
 
   @Watch('checked')
   public onCheckedChange(newValue: boolean): void {
-    this.internals.setFormValue(newValue ? this.value : null);
+    this.internals.setFormValue(newValue ? this.value : undefined);
   }
 
   public connectedCallback(): void {
@@ -144,7 +144,7 @@ export class Checkbox {
 
   public formResetCallback(): void {
     this.internals.setValidity({});
-    this.internals.setFormValue(null);
+    this.internals.setFormValue(undefined);
     this.input.checked = false;
     this.checked = false;
   }
@@ -196,10 +196,9 @@ export class Checkbox {
 
   private onChange = (e: Event): void => {
     const checked = (e.target as HTMLInputElement).checked;
-    const value = checked ? this.value : null;
-    this.internals.setFormValue(value);
+    this.internals.setFormValue(checked ? this.value : undefined);
     this.update.emit({
-      value,
+      value: this.value,
       name: this.name,
       checked: (e.target as HTMLInputElement).checked,
     });
