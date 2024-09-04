@@ -146,7 +146,7 @@ Slides can be added and removed dynamically.
   <button type="button" @click="amountOfSlides--">Remove last slide</button>
 </Playground>
 
-## Focus On Center Slide/TrimSpace
+## Focus On Center Slide/Trim Space
 
 The carousel centers the active slide and individually loops through each slide, when multiple slides are visible. You
 can customize the styles for the active slide, as well as the previous and next slides, to highlight their visibility
