@@ -11,31 +11,31 @@ exports[`getComponentCss() should return correct css for hideLabel: { base: true
 :not(:defined,[data-ssr]) {
   visibility: hidden;
 }
-::slotted(input) {
-  width: calc(6px + 2.125ex) !important;
-  height: calc(6px + 2.125ex) !important;
-  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  display: block !important;
-  margin: 0 !important;
-  padding: 0 !important;
-  -webkit-appearance: none !important;
-  appearance: none !important;
-  box-sizing: content-box !important;
-  background: transparent 0% 0% / calc(6px + 2.125ex) !important;
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
-  border: 2px solid #949598 !important;
-  outline: 0 !important;
-  pointer-events: none !important;
-  grid-area: 1/1 !important;
-  border-radius: 4px !important;
+input {
+  width: calc(6px + 2.125ex);
+  height: calc(6px + 2.125ex);
+  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  display: block;
+  margin: 0;
+  padding: 0;
+  -webkit-appearance: none;
+  appearance: none;
+  box-sizing: content-box;
+  background: transparent 0% 0% / calc(6px + 2.125ex);
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  border: 2px solid #949598;
+  outline: 0;
+  pointer-events: none;
+  grid-area: 1/1;
+  border-radius: 4px;
 }
-::slotted(input:checked) {
-  border-color: #949598 !important;
-  background-color: #949598 !important;
-  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23FBFCFF" d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') !important;
+input:checked {
+  border-color: #949598;
+  background-color: #949598;
+  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23FBFCFF" d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>');
 }
-::slotted(input:indeterminate) {
-  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23010205" d="m20,11v2H4v-2h16Z"/></svg>') !important;
+input:indeterminate {
+  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23010205" d="m20,11v2H4v-2h16Z"/></svg>');
 }
 .root {
   display: grid;
@@ -180,53 +180,53 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 :not(:defined,[data-ssr]) {
   visibility: hidden;
 }
-::slotted(input) {
-  width: calc(6px + 2.125ex) !important;
-  height: calc(6px + 2.125ex) !important;
-  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  display: block !important;
-  margin: 0 !important;
-  padding: 0 !important;
-  -webkit-appearance: none !important;
-  appearance: none !important;
-  box-sizing: content-box !important;
-  background: transparent 0% 0% / calc(6px + 2.125ex) !important;
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
-  border: 2px solid #FC4040 !important;
-  outline: 0 !important;
-  cursor: pointer !important;
-  grid-area: 1/1 !important;
-  border-radius: 4px !important;
+input {
+  width: calc(6px + 2.125ex);
+  height: calc(6px + 2.125ex);
+  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  display: block;
+  margin: 0;
+  padding: 0;
+  -webkit-appearance: none;
+  appearance: none;
+  box-sizing: content-box;
+  background: transparent 0% 0% / calc(6px + 2.125ex);
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  border: 2px solid #FC4040;
+  outline: 0;
+  cursor: pointer;
+  grid-area: 1/1;
+  border-radius: 4px;
 }
-::slotted(input:checked) {
-  border-color: #FC4040 !important;
-  background-color: #FC4040 !important;
-  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23010205" d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') !important;
+input:checked {
+  border-color: #FC4040;
+  background-color: #FC4040;
+  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23010205" d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>');
 }
-::slotted(input::-moz-focus-inner) {
-  border: 0 !important;
+input:indeterminate {
+  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23FBFCFF" d="m20,11v2H4v-2h16Z"/></svg>');
 }
-::slotted(input:focus) {
-  outline: 0 !important;
+&(input::-moz-focus-inner) {
+  border: 0;
 }
-::slotted(input:focus-visible) {
-  outline: 2px solid #1A44EA !important;
-  outline-offset: 2px !important;
+&(input:focus) {
+  outline: 0;
 }
-::slotted(input:indeterminate) {
-  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23FBFCFF" d="m20,11v2H4v-2h16Z"/></svg>') !important;
+&(input:focus-visible) {
+  outline: 2px solid #1A44EA;
+  outline-offset: 2px;
 }
 @media(hover:hover) {
-  ::slotted(input:hover), label:hover~.wrapper ::slotted(input) {
-    border-color: #FB0404 !important;
+  input:hover,label:hover~.wrapper input {
+    border-color: #FB0404;
   }
-  ::slotted(input:checked:hover), label:hover~.wrapper ::slotted(input:checked) {
-    border-color: #FB0404 !important;
-    background-color: #FB0404 !important;
+  input:checked:hover,label:hover~.wrapper input:checked {
+    border-color: #FB0404;
+    background-color: #FB0404;
   }
 @media screen and (-webkit-min-device-pixel-ratio: 0) and (min-resolution: 0.001dpcm) {
-    label:hover~.wrapper ::slotted(input) {
-      transition: unset !important;
+    label:hover~.wrapper input {
+      transition: unset;
     }
 }
 
@@ -307,53 +307,53 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 :not(:defined,[data-ssr]) {
   visibility: hidden;
 }
-::slotted(input) {
-  width: calc(6px + 2.125ex) !important;
-  height: calc(6px + 2.125ex) !important;
-  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  display: block !important;
-  margin: 0 !important;
-  padding: 0 !important;
-  -webkit-appearance: none !important;
-  appearance: none !important;
-  box-sizing: content-box !important;
-  background: transparent 0% 0% / calc(6px + 2.125ex) !important;
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
-  border: 2px solid #CC1922 !important;
-  outline: 0 !important;
-  cursor: pointer !important;
-  grid-area: 1/1 !important;
-  border-radius: 4px !important;
+input {
+  width: calc(6px + 2.125ex);
+  height: calc(6px + 2.125ex);
+  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  display: block;
+  margin: 0;
+  padding: 0;
+  -webkit-appearance: none;
+  appearance: none;
+  box-sizing: content-box;
+  background: transparent 0% 0% / calc(6px + 2.125ex);
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  border: 2px solid #CC1922;
+  outline: 0;
+  cursor: pointer;
+  grid-area: 1/1;
+  border-radius: 4px;
 }
-::slotted(input:checked) {
-  border-color: #CC1922 !important;
-  background-color: #CC1922 !important;
-  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23FBFCFF" d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') !important;
+input:checked {
+  border-color: #CC1922;
+  background-color: #CC1922;
+  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23FBFCFF" d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>');
 }
-::slotted(input::-moz-focus-inner) {
-  border: 0 !important;
+input:indeterminate {
+  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23010205" d="m20,11v2H4v-2h16Z"/></svg>');
 }
-::slotted(input:focus) {
-  outline: 0 !important;
+&(input::-moz-focus-inner) {
+  border: 0;
 }
-::slotted(input:focus-visible) {
-  outline: 2px solid #1A44EA !important;
-  outline-offset: 2px !important;
+&(input:focus) {
+  outline: 0;
 }
-::slotted(input:indeterminate) {
-  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23010205" d="m20,11v2H4v-2h16Z"/></svg>') !important;
+&(input:focus-visible) {
+  outline: 2px solid #1A44EA;
+  outline-offset: 2px;
 }
 @media(hover:hover) {
-  ::slotted(input:hover), label:hover~.wrapper ::slotted(input) {
-    border-color: #951219 !important;
+  input:hover,label:hover~.wrapper input {
+    border-color: #951219;
   }
-  ::slotted(input:checked:hover), label:hover~.wrapper ::slotted(input:checked) {
-    border-color: #951219 !important;
-    background-color: #951219 !important;
+  input:checked:hover,label:hover~.wrapper input:checked {
+    border-color: #951219;
+    background-color: #951219;
   }
 @media screen and (-webkit-min-device-pixel-ratio: 0) and (min-resolution: 0.001dpcm) {
-    label:hover~.wrapper ::slotted(input) {
-      transition: unset !important;
+    label:hover~.wrapper input {
+      transition: unset;
     }
 }
 
@@ -434,31 +434,31 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 :not(:defined,[data-ssr]) {
   visibility: hidden;
 }
-::slotted(input) {
-  width: calc(6px + 2.125ex) !important;
-  height: calc(6px + 2.125ex) !important;
-  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  display: block !important;
-  margin: 0 !important;
-  padding: 0 !important;
-  -webkit-appearance: none !important;
-  appearance: none !important;
-  box-sizing: content-box !important;
-  background: transparent 0% 0% / calc(6px + 2.125ex) !important;
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
-  border: 2px solid #7E7F82 !important;
-  outline: 0 !important;
-  pointer-events: none !important;
-  grid-area: 1/1 !important;
-  border-radius: 4px !important;
+input {
+  width: calc(6px + 2.125ex);
+  height: calc(6px + 2.125ex);
+  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  display: block;
+  margin: 0;
+  padding: 0;
+  -webkit-appearance: none;
+  appearance: none;
+  box-sizing: content-box;
+  background: transparent 0% 0% / calc(6px + 2.125ex);
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  border: 2px solid #7E7F82;
+  outline: 0;
+  pointer-events: none;
+  grid-area: 1/1;
+  border-radius: 4px;
 }
-::slotted(input:checked) {
-  border-color: #7E7F82 !important;
-  background-color: #7E7F82 !important;
-  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23010205" d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') !important;
+input:checked {
+  border-color: #7E7F82;
+  background-color: #7E7F82;
+  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23010205" d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>');
 }
-::slotted(input:indeterminate) {
-  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23FBFCFF" d="m20,11v2H4v-2h16Z"/></svg>') !important;
+input:indeterminate {
+  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23FBFCFF" d="m20,11v2H4v-2h16Z"/></svg>');
 }
 .root {
   display: grid;
@@ -535,31 +535,31 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 :not(:defined,[data-ssr]) {
   visibility: hidden;
 }
-::slotted(input) {
-  width: calc(6px + 2.125ex) !important;
-  height: calc(6px + 2.125ex) !important;
-  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  display: block !important;
-  margin: 0 !important;
-  padding: 0 !important;
-  -webkit-appearance: none !important;
-  appearance: none !important;
-  box-sizing: content-box !important;
-  background: transparent 0% 0% / calc(6px + 2.125ex) !important;
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
-  border: 2px solid #949598 !important;
-  outline: 0 !important;
-  pointer-events: none !important;
-  grid-area: 1/1 !important;
-  border-radius: 4px !important;
+input {
+  width: calc(6px + 2.125ex);
+  height: calc(6px + 2.125ex);
+  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  display: block;
+  margin: 0;
+  padding: 0;
+  -webkit-appearance: none;
+  appearance: none;
+  box-sizing: content-box;
+  background: transparent 0% 0% / calc(6px + 2.125ex);
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  border: 2px solid #949598;
+  outline: 0;
+  pointer-events: none;
+  grid-area: 1/1;
+  border-radius: 4px;
 }
-::slotted(input:checked) {
-  border-color: #949598 !important;
-  background-color: #949598 !important;
-  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23FBFCFF" d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') !important;
+input:checked {
+  border-color: #949598;
+  background-color: #949598;
+  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23FBFCFF" d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>');
 }
-::slotted(input:indeterminate) {
-  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23010205" d="m20,11v2H4v-2h16Z"/></svg>') !important;
+input:indeterminate {
+  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23010205" d="m20,11v2H4v-2h16Z"/></svg>');
 }
 .root {
   display: grid;
@@ -636,53 +636,53 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 :not(:defined,[data-ssr]) {
   visibility: hidden;
 }
-::slotted(input) {
-  width: calc(6px + 2.125ex) !important;
-  height: calc(6px + 2.125ex) !important;
-  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  display: block !important;
-  margin: 0 !important;
-  padding: 0 !important;
-  -webkit-appearance: none !important;
-  appearance: none !important;
-  box-sizing: content-box !important;
-  background: transparent 0% 0% / calc(6px + 2.125ex) !important;
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
-  border: 2px solid #88898C !important;
-  outline: 0 !important;
-  cursor: pointer !important;
-  grid-area: 1/1 !important;
-  border-radius: 4px !important;
+input {
+  width: calc(6px + 2.125ex);
+  height: calc(6px + 2.125ex);
+  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  display: block;
+  margin: 0;
+  padding: 0;
+  -webkit-appearance: none;
+  appearance: none;
+  box-sizing: content-box;
+  background: transparent 0% 0% / calc(6px + 2.125ex);
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  border: 2px solid #88898C;
+  outline: 0;
+  cursor: pointer;
+  grid-area: 1/1;
+  border-radius: 4px;
 }
-::slotted(input:checked) {
-  border-color: #FBFCFF !important;
-  background-color: #FBFCFF !important;
-  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23010205" d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') !important;
+input:checked {
+  border-color: #FBFCFF;
+  background-color: #FBFCFF;
+  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23010205" d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>');
 }
-::slotted(input::-moz-focus-inner) {
-  border: 0 !important;
+input:indeterminate {
+  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23FBFCFF" d="m20,11v2H4v-2h16Z"/></svg>');
 }
-::slotted(input:focus) {
-  outline: 0 !important;
+&(input::-moz-focus-inner) {
+  border: 0;
 }
-::slotted(input:focus-visible) {
-  outline: 2px solid #1A44EA !important;
-  outline-offset: 2px !important;
+&(input:focus) {
+  outline: 0;
 }
-::slotted(input:indeterminate) {
-  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23FBFCFF" d="m20,11v2H4v-2h16Z"/></svg>') !important;
+&(input:focus-visible) {
+  outline: 2px solid #1A44EA;
+  outline-offset: 2px;
 }
 @media(hover:hover) {
-  ::slotted(input:hover), label:hover~.wrapper ::slotted(input) {
-    border-color: #FBFCFF !important;
+  input:hover,label:hover~.wrapper input {
+    border-color: #FBFCFF;
   }
-  ::slotted(input:checked:hover), label:hover~.wrapper ::slotted(input:checked) {
-    border-color: #AFB0B3 !important;
-    background-color: #AFB0B3 !important;
+  input:checked:hover,label:hover~.wrapper input:checked {
+    border-color: #AFB0B3;
+    background-color: #AFB0B3;
   }
 @media screen and (-webkit-min-device-pixel-ratio: 0) and (min-resolution: 0.001dpcm) {
-    label:hover~.wrapper ::slotted(input) {
-      transition: unset !important;
+    label:hover~.wrapper input {
+      transition: unset;
     }
 }
 
@@ -762,53 +762,53 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 :not(:defined,[data-ssr]) {
   visibility: hidden;
 }
-::slotted(input) {
-  width: calc(6px + 2.125ex) !important;
-  height: calc(6px + 2.125ex) !important;
-  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  display: block !important;
-  margin: 0 !important;
-  padding: 0 !important;
-  -webkit-appearance: none !important;
-  appearance: none !important;
-  box-sizing: content-box !important;
-  background: transparent 0% 0% / calc(6px + 2.125ex) !important;
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
-  border: 2px solid #6B6D70 !important;
-  outline: 0 !important;
-  cursor: pointer !important;
-  grid-area: 1/1 !important;
-  border-radius: 4px !important;
+input {
+  width: calc(6px + 2.125ex);
+  height: calc(6px + 2.125ex);
+  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  display: block;
+  margin: 0;
+  padding: 0;
+  -webkit-appearance: none;
+  appearance: none;
+  box-sizing: content-box;
+  background: transparent 0% 0% / calc(6px + 2.125ex);
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  border: 2px solid #6B6D70;
+  outline: 0;
+  cursor: pointer;
+  grid-area: 1/1;
+  border-radius: 4px;
 }
-::slotted(input:checked) {
-  border-color: #010205 !important;
-  background-color: #010205 !important;
-  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23FBFCFF" d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') !important;
+input:checked {
+  border-color: #010205;
+  background-color: #010205;
+  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23FBFCFF" d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>');
 }
-::slotted(input::-moz-focus-inner) {
-  border: 0 !important;
+input:indeterminate {
+  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23010205" d="m20,11v2H4v-2h16Z"/></svg>');
 }
-::slotted(input:focus) {
-  outline: 0 !important;
+&(input::-moz-focus-inner) {
+  border: 0;
 }
-::slotted(input:focus-visible) {
-  outline: 2px solid #1A44EA !important;
-  outline-offset: 2px !important;
+&(input:focus) {
+  outline: 0;
 }
-::slotted(input:indeterminate) {
-  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23010205" d="m20,11v2H4v-2h16Z"/></svg>') !important;
+&(input:focus-visible) {
+  outline: 2px solid #1A44EA;
+  outline-offset: 2px;
 }
 @media(hover:hover) {
-  ::slotted(input:hover), label:hover~.wrapper ::slotted(input) {
-    border-color: #010205 !important;
+  input:hover,label:hover~.wrapper input {
+    border-color: #010205;
   }
-  ::slotted(input:checked:hover), label:hover~.wrapper ::slotted(input:checked) {
-    border-color: #535457 !important;
-    background-color: #535457 !important;
+  input:checked:hover,label:hover~.wrapper input:checked {
+    border-color: #535457;
+    background-color: #535457;
   }
 @media screen and (-webkit-min-device-pixel-ratio: 0) and (min-resolution: 0.001dpcm) {
-    label:hover~.wrapper ::slotted(input) {
-      transition: unset !important;
+    label:hover~.wrapper input {
+      transition: unset;
     }
 }
 
@@ -888,31 +888,31 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 :not(:defined,[data-ssr]) {
   visibility: hidden;
 }
-::slotted(input) {
-  width: calc(6px + 2.125ex) !important;
-  height: calc(6px + 2.125ex) !important;
-  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  display: block !important;
-  margin: 0 !important;
-  padding: 0 !important;
-  -webkit-appearance: none !important;
-  appearance: none !important;
-  box-sizing: content-box !important;
-  background: transparent 0% 0% / calc(6px + 2.125ex) !important;
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
-  border: 2px solid #7E7F82 !important;
-  outline: 0 !important;
-  pointer-events: none !important;
-  grid-area: 1/1 !important;
-  border-radius: 4px !important;
+input {
+  width: calc(6px + 2.125ex);
+  height: calc(6px + 2.125ex);
+  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  display: block;
+  margin: 0;
+  padding: 0;
+  -webkit-appearance: none;
+  appearance: none;
+  box-sizing: content-box;
+  background: transparent 0% 0% / calc(6px + 2.125ex);
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  border: 2px solid #7E7F82;
+  outline: 0;
+  pointer-events: none;
+  grid-area: 1/1;
+  border-radius: 4px;
 }
-::slotted(input:checked) {
-  border-color: #7E7F82 !important;
-  background-color: #7E7F82 !important;
-  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23010205" d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') !important;
+input:checked {
+  border-color: #7E7F82;
+  background-color: #7E7F82;
+  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23010205" d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>');
 }
-::slotted(input:indeterminate) {
-  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23FBFCFF" d="m20,11v2H4v-2h16Z"/></svg>') !important;
+input:indeterminate {
+  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23FBFCFF" d="m20,11v2H4v-2h16Z"/></svg>');
 }
 .root {
   display: grid;
@@ -988,31 +988,31 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 :not(:defined,[data-ssr]) {
   visibility: hidden;
 }
-::slotted(input) {
-  width: calc(6px + 2.125ex) !important;
-  height: calc(6px + 2.125ex) !important;
-  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  display: block !important;
-  margin: 0 !important;
-  padding: 0 !important;
-  -webkit-appearance: none !important;
-  appearance: none !important;
-  box-sizing: content-box !important;
-  background: transparent 0% 0% / calc(6px + 2.125ex) !important;
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
-  border: 2px solid #949598 !important;
-  outline: 0 !important;
-  pointer-events: none !important;
-  grid-area: 1/1 !important;
-  border-radius: 4px !important;
+input {
+  width: calc(6px + 2.125ex);
+  height: calc(6px + 2.125ex);
+  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  display: block;
+  margin: 0;
+  padding: 0;
+  -webkit-appearance: none;
+  appearance: none;
+  box-sizing: content-box;
+  background: transparent 0% 0% / calc(6px + 2.125ex);
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  border: 2px solid #949598;
+  outline: 0;
+  pointer-events: none;
+  grid-area: 1/1;
+  border-radius: 4px;
 }
-::slotted(input:checked) {
-  border-color: #949598 !important;
-  background-color: #949598 !important;
-  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23FBFCFF" d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') !important;
+input:checked {
+  border-color: #949598;
+  background-color: #949598;
+  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23FBFCFF" d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>');
 }
-::slotted(input:indeterminate) {
-  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23010205" d="m20,11v2H4v-2h16Z"/></svg>') !important;
+input:indeterminate {
+  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23010205" d="m20,11v2H4v-2h16Z"/></svg>');
 }
 .root {
   display: grid;
@@ -1088,53 +1088,53 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 :not(:defined,[data-ssr]) {
   visibility: hidden;
 }
-::slotted(input) {
-  width: calc(6px + 2.125ex) !important;
-  height: calc(6px + 2.125ex) !important;
-  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  display: block !important;
-  margin: 0 !important;
-  padding: 0 !important;
-  -webkit-appearance: none !important;
-  appearance: none !important;
-  box-sizing: content-box !important;
-  background: transparent 0% 0% / calc(6px + 2.125ex) !important;
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
-  border: 2px solid #09D087 !important;
-  outline: 0 !important;
-  cursor: pointer !important;
-  grid-area: 1/1 !important;
-  border-radius: 4px !important;
+input {
+  width: calc(6px + 2.125ex);
+  height: calc(6px + 2.125ex);
+  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  display: block;
+  margin: 0;
+  padding: 0;
+  -webkit-appearance: none;
+  appearance: none;
+  box-sizing: content-box;
+  background: transparent 0% 0% / calc(6px + 2.125ex);
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  border: 2px solid #09D087;
+  outline: 0;
+  cursor: pointer;
+  grid-area: 1/1;
+  border-radius: 4px;
 }
-::slotted(input:checked) {
-  border-color: #09D087 !important;
-  background-color: #09D087 !important;
-  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23010205" d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') !important;
+input:checked {
+  border-color: #09D087;
+  background-color: #09D087;
+  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23010205" d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>');
 }
-::slotted(input::-moz-focus-inner) {
-  border: 0 !important;
+input:indeterminate {
+  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23FBFCFF" d="m20,11v2H4v-2h16Z"/></svg>');
 }
-::slotted(input:focus) {
-  outline: 0 !important;
+&(input::-moz-focus-inner) {
+  border: 0;
 }
-::slotted(input:focus-visible) {
-  outline: 2px solid #1A44EA !important;
-  outline-offset: 2px !important;
+&(input:focus) {
+  outline: 0;
 }
-::slotted(input:indeterminate) {
-  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23FBFCFF" d="m20,11v2H4v-2h16Z"/></svg>') !important;
+&(input:focus-visible) {
+  outline: 2px solid #1A44EA;
+  outline-offset: 2px;
 }
 @media(hover:hover) {
-  ::slotted(input:hover), label:hover~.wrapper ::slotted(input) {
-    border-color: #069561 !important;
+  input:hover,label:hover~.wrapper input {
+    border-color: #069561;
   }
-  ::slotted(input:checked:hover), label:hover~.wrapper ::slotted(input:checked) {
-    border-color: #069561 !important;
-    background-color: #069561 !important;
+  input:checked:hover,label:hover~.wrapper input:checked {
+    border-color: #069561;
+    background-color: #069561;
   }
 @media screen and (-webkit-min-device-pixel-ratio: 0) and (min-resolution: 0.001dpcm) {
-    label:hover~.wrapper ::slotted(input) {
-      transition: unset !important;
+    label:hover~.wrapper input {
+      transition: unset;
     }
 }
 
@@ -1215,53 +1215,53 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 :not(:defined,[data-ssr]) {
   visibility: hidden;
 }
-::slotted(input) {
-  width: calc(6px + 2.125ex) !important;
-  height: calc(6px + 2.125ex) !important;
-  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  display: block !important;
-  margin: 0 !important;
-  padding: 0 !important;
-  -webkit-appearance: none !important;
-  appearance: none !important;
-  box-sizing: content-box !important;
-  background: transparent 0% 0% / calc(6px + 2.125ex) !important;
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
-  border: 2px solid #197E10 !important;
-  outline: 0 !important;
-  cursor: pointer !important;
-  grid-area: 1/1 !important;
-  border-radius: 4px !important;
+input {
+  width: calc(6px + 2.125ex);
+  height: calc(6px + 2.125ex);
+  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  display: block;
+  margin: 0;
+  padding: 0;
+  -webkit-appearance: none;
+  appearance: none;
+  box-sizing: content-box;
+  background: transparent 0% 0% / calc(6px + 2.125ex);
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  border: 2px solid #197E10;
+  outline: 0;
+  cursor: pointer;
+  grid-area: 1/1;
+  border-radius: 4px;
 }
-::slotted(input:checked) {
-  border-color: #197E10 !important;
-  background-color: #197E10 !important;
-  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23FBFCFF" d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') !important;
+input:checked {
+  border-color: #197E10;
+  background-color: #197E10;
+  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23FBFCFF" d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>');
 }
-::slotted(input::-moz-focus-inner) {
-  border: 0 !important;
+input:indeterminate {
+  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23010205" d="m20,11v2H4v-2h16Z"/></svg>');
 }
-::slotted(input:focus) {
-  outline: 0 !important;
+&(input::-moz-focus-inner) {
+  border: 0;
 }
-::slotted(input:focus-visible) {
-  outline: 2px solid #1A44EA !important;
-  outline-offset: 2px !important;
+&(input:focus) {
+  outline: 0;
 }
-::slotted(input:indeterminate) {
-  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23010205" d="m20,11v2H4v-2h16Z"/></svg>') !important;
+&(input:focus-visible) {
+  outline: 2px solid #1A44EA;
+  outline-offset: 2px;
 }
 @media(hover:hover) {
-  ::slotted(input:hover), label:hover~.wrapper ::slotted(input) {
-    border-color: #0E4809 !important;
+  input:hover,label:hover~.wrapper input {
+    border-color: #0E4809;
   }
-  ::slotted(input:checked:hover), label:hover~.wrapper ::slotted(input:checked) {
-    border-color: #0E4809 !important;
-    background-color: #0E4809 !important;
+  input:checked:hover,label:hover~.wrapper input:checked {
+    border-color: #0E4809;
+    background-color: #0E4809;
   }
 @media screen and (-webkit-min-device-pixel-ratio: 0) and (min-resolution: 0.001dpcm) {
-    label:hover~.wrapper ::slotted(input) {
-      transition: unset !important;
+    label:hover~.wrapper input {
+      transition: unset;
     }
 }
 
@@ -1342,31 +1342,31 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 :not(:defined,[data-ssr]) {
   visibility: hidden;
 }
-::slotted(input) {
-  width: calc(6px + 2.125ex) !important;
-  height: calc(6px + 2.125ex) !important;
-  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  display: block !important;
-  margin: 0 !important;
-  padding: 0 !important;
-  -webkit-appearance: none !important;
-  appearance: none !important;
-  box-sizing: content-box !important;
-  background: transparent 0% 0% / calc(6px + 2.125ex) !important;
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
-  border: 2px solid #7E7F82 !important;
-  outline: 0 !important;
-  pointer-events: none !important;
-  grid-area: 1/1 !important;
-  border-radius: 4px !important;
+input {
+  width: calc(6px + 2.125ex);
+  height: calc(6px + 2.125ex);
+  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  display: block;
+  margin: 0;
+  padding: 0;
+  -webkit-appearance: none;
+  appearance: none;
+  box-sizing: content-box;
+  background: transparent 0% 0% / calc(6px + 2.125ex);
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  border: 2px solid #7E7F82;
+  outline: 0;
+  pointer-events: none;
+  grid-area: 1/1;
+  border-radius: 4px;
 }
-::slotted(input:checked) {
-  border-color: #7E7F82 !important;
-  background-color: #7E7F82 !important;
-  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23010205" d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') !important;
+input:checked {
+  border-color: #7E7F82;
+  background-color: #7E7F82;
+  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23010205" d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>');
 }
-::slotted(input:indeterminate) {
-  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23FBFCFF" d="m20,11v2H4v-2h16Z"/></svg>') !important;
+input:indeterminate {
+  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23FBFCFF" d="m20,11v2H4v-2h16Z"/></svg>');
 }
 .root {
   display: grid;
@@ -1443,31 +1443,31 @@ exports[`getComponentCss() should return correct css for hideLabel: false, state
 :not(:defined,[data-ssr]) {
   visibility: hidden;
 }
-::slotted(input) {
-  width: calc(6px + 2.125ex) !important;
-  height: calc(6px + 2.125ex) !important;
-  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  display: block !important;
-  margin: 0 !important;
-  padding: 0 !important;
-  -webkit-appearance: none !important;
-  appearance: none !important;
-  box-sizing: content-box !important;
-  background: transparent 0% 0% / calc(6px + 2.125ex) !important;
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
-  border: 2px solid #949598 !important;
-  outline: 0 !important;
-  pointer-events: none !important;
-  grid-area: 1/1 !important;
-  border-radius: 4px !important;
+input {
+  width: calc(6px + 2.125ex);
+  height: calc(6px + 2.125ex);
+  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  display: block;
+  margin: 0;
+  padding: 0;
+  -webkit-appearance: none;
+  appearance: none;
+  box-sizing: content-box;
+  background: transparent 0% 0% / calc(6px + 2.125ex);
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  border: 2px solid #949598;
+  outline: 0;
+  pointer-events: none;
+  grid-area: 1/1;
+  border-radius: 4px;
 }
-::slotted(input:checked) {
-  border-color: #949598 !important;
-  background-color: #949598 !important;
-  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23FBFCFF" d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') !important;
+input:checked {
+  border-color: #949598;
+  background-color: #949598;
+  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23FBFCFF" d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>');
 }
-::slotted(input:indeterminate) {
-  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23010205" d="m20,11v2H4v-2h16Z"/></svg>') !important;
+input:indeterminate {
+  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23010205" d="m20,11v2H4v-2h16Z"/></svg>');
 }
 .root {
   display: grid;
@@ -1544,53 +1544,53 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
 :not(:defined,[data-ssr]) {
   visibility: hidden;
 }
-::slotted(input) {
-  width: calc(6px + 2.125ex) !important;
-  height: calc(6px + 2.125ex) !important;
-  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  display: block !important;
-  margin: 0 !important;
-  padding: 0 !important;
-  -webkit-appearance: none !important;
-  appearance: none !important;
-  box-sizing: content-box !important;
-  background: transparent 0% 0% / calc(6px + 2.125ex) !important;
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
-  border: 2px solid #FC4040 !important;
-  outline: 0 !important;
-  cursor: pointer !important;
-  grid-area: 1/1 !important;
-  border-radius: 4px !important;
+input {
+  width: calc(6px + 2.125ex);
+  height: calc(6px + 2.125ex);
+  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  display: block;
+  margin: 0;
+  padding: 0;
+  -webkit-appearance: none;
+  appearance: none;
+  box-sizing: content-box;
+  background: transparent 0% 0% / calc(6px + 2.125ex);
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  border: 2px solid #FC4040;
+  outline: 0;
+  cursor: pointer;
+  grid-area: 1/1;
+  border-radius: 4px;
 }
-::slotted(input:checked) {
-  border-color: #FC4040 !important;
-  background-color: #FC4040 !important;
-  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23010205" d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') !important;
+input:checked {
+  border-color: #FC4040;
+  background-color: #FC4040;
+  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23010205" d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>');
 }
-::slotted(input::-moz-focus-inner) {
-  border: 0 !important;
+input:indeterminate {
+  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23FBFCFF" d="m20,11v2H4v-2h16Z"/></svg>');
 }
-::slotted(input:focus) {
-  outline: 0 !important;
+&(input::-moz-focus-inner) {
+  border: 0;
 }
-::slotted(input:focus-visible) {
-  outline: 2px solid #1A44EA !important;
-  outline-offset: 2px !important;
+&(input:focus) {
+  outline: 0;
 }
-::slotted(input:indeterminate) {
-  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23FBFCFF" d="m20,11v2H4v-2h16Z"/></svg>') !important;
+&(input:focus-visible) {
+  outline: 2px solid #1A44EA;
+  outline-offset: 2px;
 }
 @media(hover:hover) {
-  ::slotted(input:hover), label:hover~.wrapper ::slotted(input) {
-    border-color: #FB0404 !important;
+  input:hover,label:hover~.wrapper input {
+    border-color: #FB0404;
   }
-  ::slotted(input:checked:hover), label:hover~.wrapper ::slotted(input:checked) {
-    border-color: #FB0404 !important;
-    background-color: #FB0404 !important;
+  input:checked:hover,label:hover~.wrapper input:checked {
+    border-color: #FB0404;
+    background-color: #FB0404;
   }
 @media screen and (-webkit-min-device-pixel-ratio: 0) and (min-resolution: 0.001dpcm) {
-    label:hover~.wrapper ::slotted(input) {
-      transition: unset !important;
+    label:hover~.wrapper input {
+      transition: unset;
     }
 }
 
@@ -1669,53 +1669,53 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
 :not(:defined,[data-ssr]) {
   visibility: hidden;
 }
-::slotted(input) {
-  width: calc(6px + 2.125ex) !important;
-  height: calc(6px + 2.125ex) !important;
-  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  display: block !important;
-  margin: 0 !important;
-  padding: 0 !important;
-  -webkit-appearance: none !important;
-  appearance: none !important;
-  box-sizing: content-box !important;
-  background: transparent 0% 0% / calc(6px + 2.125ex) !important;
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
-  border: 2px solid #CC1922 !important;
-  outline: 0 !important;
-  cursor: pointer !important;
-  grid-area: 1/1 !important;
-  border-radius: 4px !important;
+input {
+  width: calc(6px + 2.125ex);
+  height: calc(6px + 2.125ex);
+  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  display: block;
+  margin: 0;
+  padding: 0;
+  -webkit-appearance: none;
+  appearance: none;
+  box-sizing: content-box;
+  background: transparent 0% 0% / calc(6px + 2.125ex);
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  border: 2px solid #CC1922;
+  outline: 0;
+  cursor: pointer;
+  grid-area: 1/1;
+  border-radius: 4px;
 }
-::slotted(input:checked) {
-  border-color: #CC1922 !important;
-  background-color: #CC1922 !important;
-  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23FBFCFF" d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') !important;
+input:checked {
+  border-color: #CC1922;
+  background-color: #CC1922;
+  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23FBFCFF" d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>');
 }
-::slotted(input::-moz-focus-inner) {
-  border: 0 !important;
+input:indeterminate {
+  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23010205" d="m20,11v2H4v-2h16Z"/></svg>');
 }
-::slotted(input:focus) {
-  outline: 0 !important;
+&(input::-moz-focus-inner) {
+  border: 0;
 }
-::slotted(input:focus-visible) {
-  outline: 2px solid #1A44EA !important;
-  outline-offset: 2px !important;
+&(input:focus) {
+  outline: 0;
 }
-::slotted(input:indeterminate) {
-  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23010205" d="m20,11v2H4v-2h16Z"/></svg>') !important;
+&(input:focus-visible) {
+  outline: 2px solid #1A44EA;
+  outline-offset: 2px;
 }
 @media(hover:hover) {
-  ::slotted(input:hover), label:hover~.wrapper ::slotted(input) {
-    border-color: #951219 !important;
+  input:hover,label:hover~.wrapper input {
+    border-color: #951219;
   }
-  ::slotted(input:checked:hover), label:hover~.wrapper ::slotted(input:checked) {
-    border-color: #951219 !important;
-    background-color: #951219 !important;
+  input:checked:hover,label:hover~.wrapper input:checked {
+    border-color: #951219;
+    background-color: #951219;
   }
 @media screen and (-webkit-min-device-pixel-ratio: 0) and (min-resolution: 0.001dpcm) {
-    label:hover~.wrapper ::slotted(input) {
-      transition: unset !important;
+    label:hover~.wrapper input {
+      transition: unset;
     }
 }
 
@@ -1794,31 +1794,31 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
 :not(:defined,[data-ssr]) {
   visibility: hidden;
 }
-::slotted(input) {
-  width: calc(6px + 2.125ex) !important;
-  height: calc(6px + 2.125ex) !important;
-  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  display: block !important;
-  margin: 0 !important;
-  padding: 0 !important;
-  -webkit-appearance: none !important;
-  appearance: none !important;
-  box-sizing: content-box !important;
-  background: transparent 0% 0% / calc(6px + 2.125ex) !important;
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
-  border: 2px solid #7E7F82 !important;
-  outline: 0 !important;
-  pointer-events: none !important;
-  grid-area: 1/1 !important;
-  border-radius: 4px !important;
+input {
+  width: calc(6px + 2.125ex);
+  height: calc(6px + 2.125ex);
+  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  display: block;
+  margin: 0;
+  padding: 0;
+  -webkit-appearance: none;
+  appearance: none;
+  box-sizing: content-box;
+  background: transparent 0% 0% / calc(6px + 2.125ex);
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  border: 2px solid #7E7F82;
+  outline: 0;
+  pointer-events: none;
+  grid-area: 1/1;
+  border-radius: 4px;
 }
-::slotted(input:checked) {
-  border-color: #7E7F82 !important;
-  background-color: #7E7F82 !important;
-  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23010205" d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') !important;
+input:checked {
+  border-color: #7E7F82;
+  background-color: #7E7F82;
+  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23010205" d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>');
 }
-::slotted(input:indeterminate) {
-  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23FBFCFF" d="m20,11v2H4v-2h16Z"/></svg>') !important;
+input:indeterminate {
+  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23FBFCFF" d="m20,11v2H4v-2h16Z"/></svg>');
 }
 .root {
   display: grid;
@@ -1893,31 +1893,31 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
 :not(:defined,[data-ssr]) {
   visibility: hidden;
 }
-::slotted(input) {
-  width: calc(6px + 2.125ex) !important;
-  height: calc(6px + 2.125ex) !important;
-  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  display: block !important;
-  margin: 0 !important;
-  padding: 0 !important;
-  -webkit-appearance: none !important;
-  appearance: none !important;
-  box-sizing: content-box !important;
-  background: transparent 0% 0% / calc(6px + 2.125ex) !important;
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
-  border: 2px solid #949598 !important;
-  outline: 0 !important;
-  pointer-events: none !important;
-  grid-area: 1/1 !important;
-  border-radius: 4px !important;
+input {
+  width: calc(6px + 2.125ex);
+  height: calc(6px + 2.125ex);
+  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  display: block;
+  margin: 0;
+  padding: 0;
+  -webkit-appearance: none;
+  appearance: none;
+  box-sizing: content-box;
+  background: transparent 0% 0% / calc(6px + 2.125ex);
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  border: 2px solid #949598;
+  outline: 0;
+  pointer-events: none;
+  grid-area: 1/1;
+  border-radius: 4px;
 }
-::slotted(input:checked) {
-  border-color: #949598 !important;
-  background-color: #949598 !important;
-  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23FBFCFF" d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') !important;
+input:checked {
+  border-color: #949598;
+  background-color: #949598;
+  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23FBFCFF" d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>');
 }
-::slotted(input:indeterminate) {
-  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23010205" d="m20,11v2H4v-2h16Z"/></svg>') !important;
+input:indeterminate {
+  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23010205" d="m20,11v2H4v-2h16Z"/></svg>');
 }
 .root {
   display: grid;
@@ -1992,53 +1992,53 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
 :not(:defined,[data-ssr]) {
   visibility: hidden;
 }
-::slotted(input) {
-  width: calc(6px + 2.125ex) !important;
-  height: calc(6px + 2.125ex) !important;
-  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  display: block !important;
-  margin: 0 !important;
-  padding: 0 !important;
-  -webkit-appearance: none !important;
-  appearance: none !important;
-  box-sizing: content-box !important;
-  background: transparent 0% 0% / calc(6px + 2.125ex) !important;
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
-  border: 2px solid #88898C !important;
-  outline: 0 !important;
-  cursor: pointer !important;
-  grid-area: 1/1 !important;
-  border-radius: 4px !important;
+input {
+  width: calc(6px + 2.125ex);
+  height: calc(6px + 2.125ex);
+  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  display: block;
+  margin: 0;
+  padding: 0;
+  -webkit-appearance: none;
+  appearance: none;
+  box-sizing: content-box;
+  background: transparent 0% 0% / calc(6px + 2.125ex);
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  border: 2px solid #88898C;
+  outline: 0;
+  cursor: pointer;
+  grid-area: 1/1;
+  border-radius: 4px;
 }
-::slotted(input:checked) {
-  border-color: #FBFCFF !important;
-  background-color: #FBFCFF !important;
-  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23010205" d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') !important;
+input:checked {
+  border-color: #FBFCFF;
+  background-color: #FBFCFF;
+  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23010205" d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>');
 }
-::slotted(input::-moz-focus-inner) {
-  border: 0 !important;
+input:indeterminate {
+  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23FBFCFF" d="m20,11v2H4v-2h16Z"/></svg>');
 }
-::slotted(input:focus) {
-  outline: 0 !important;
+&(input::-moz-focus-inner) {
+  border: 0;
 }
-::slotted(input:focus-visible) {
-  outline: 2px solid #1A44EA !important;
-  outline-offset: 2px !important;
+&(input:focus) {
+  outline: 0;
 }
-::slotted(input:indeterminate) {
-  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23FBFCFF" d="m20,11v2H4v-2h16Z"/></svg>') !important;
+&(input:focus-visible) {
+  outline: 2px solid #1A44EA;
+  outline-offset: 2px;
 }
 @media(hover:hover) {
-  ::slotted(input:hover), label:hover~.wrapper ::slotted(input) {
-    border-color: #FBFCFF !important;
+  input:hover,label:hover~.wrapper input {
+    border-color: #FBFCFF;
   }
-  ::slotted(input:checked:hover), label:hover~.wrapper ::slotted(input:checked) {
-    border-color: #AFB0B3 !important;
-    background-color: #AFB0B3 !important;
+  input:checked:hover,label:hover~.wrapper input:checked {
+    border-color: #AFB0B3;
+    background-color: #AFB0B3;
   }
 @media screen and (-webkit-min-device-pixel-ratio: 0) and (min-resolution: 0.001dpcm) {
-    label:hover~.wrapper ::slotted(input) {
-      transition: unset !important;
+    label:hover~.wrapper input {
+      transition: unset;
     }
 }
 
@@ -2116,53 +2116,53 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
 :not(:defined,[data-ssr]) {
   visibility: hidden;
 }
-::slotted(input) {
-  width: calc(6px + 2.125ex) !important;
-  height: calc(6px + 2.125ex) !important;
-  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  display: block !important;
-  margin: 0 !important;
-  padding: 0 !important;
-  -webkit-appearance: none !important;
-  appearance: none !important;
-  box-sizing: content-box !important;
-  background: transparent 0% 0% / calc(6px + 2.125ex) !important;
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
-  border: 2px solid #6B6D70 !important;
-  outline: 0 !important;
-  cursor: pointer !important;
-  grid-area: 1/1 !important;
-  border-radius: 4px !important;
+input {
+  width: calc(6px + 2.125ex);
+  height: calc(6px + 2.125ex);
+  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  display: block;
+  margin: 0;
+  padding: 0;
+  -webkit-appearance: none;
+  appearance: none;
+  box-sizing: content-box;
+  background: transparent 0% 0% / calc(6px + 2.125ex);
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  border: 2px solid #6B6D70;
+  outline: 0;
+  cursor: pointer;
+  grid-area: 1/1;
+  border-radius: 4px;
 }
-::slotted(input:checked) {
-  border-color: #010205 !important;
-  background-color: #010205 !important;
-  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23FBFCFF" d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') !important;
+input:checked {
+  border-color: #010205;
+  background-color: #010205;
+  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23FBFCFF" d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>');
 }
-::slotted(input::-moz-focus-inner) {
-  border: 0 !important;
+input:indeterminate {
+  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23010205" d="m20,11v2H4v-2h16Z"/></svg>');
 }
-::slotted(input:focus) {
-  outline: 0 !important;
+&(input::-moz-focus-inner) {
+  border: 0;
 }
-::slotted(input:focus-visible) {
-  outline: 2px solid #1A44EA !important;
-  outline-offset: 2px !important;
+&(input:focus) {
+  outline: 0;
 }
-::slotted(input:indeterminate) {
-  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23010205" d="m20,11v2H4v-2h16Z"/></svg>') !important;
+&(input:focus-visible) {
+  outline: 2px solid #1A44EA;
+  outline-offset: 2px;
 }
 @media(hover:hover) {
-  ::slotted(input:hover), label:hover~.wrapper ::slotted(input) {
-    border-color: #010205 !important;
+  input:hover,label:hover~.wrapper input {
+    border-color: #010205;
   }
-  ::slotted(input:checked:hover), label:hover~.wrapper ::slotted(input:checked) {
-    border-color: #535457 !important;
-    background-color: #535457 !important;
+  input:checked:hover,label:hover~.wrapper input:checked {
+    border-color: #535457;
+    background-color: #535457;
   }
 @media screen and (-webkit-min-device-pixel-ratio: 0) and (min-resolution: 0.001dpcm) {
-    label:hover~.wrapper ::slotted(input) {
-      transition: unset !important;
+    label:hover~.wrapper input {
+      transition: unset;
     }
 }
 
@@ -2240,37 +2240,33 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
 :not(:defined,[data-ssr]) {
   visibility: hidden;
 }
-::slotted(input) {
-  width: calc(6px + 2.125ex) !important;
-  height: calc(6px + 2.125ex) !important;
-  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  display: block !important;
-  margin: 0 !important;
-  padding: 0 !important;
-  -webkit-appearance: none !important;
-  appearance: none !important;
-  box-sizing: content-box !important;
-  background: transparent 0% 0% / calc(6px + 2.125ex) !important;
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
-  border: 2px solid #7E7F82 !important;
-  outline: 0 !important;
-  pointer-events: none !important;
-  grid-area: 1/1 !important;
-  border-radius: 4px !important;
+input {
+  width: calc(6px + 2.125ex);
+  height: calc(6px + 2.125ex);
+  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  display: block;
+  margin: 0;
+  padding: 0;
+  -webkit-appearance: none;
+  appearance: none;
+  box-sizing: content-box;
+  background: transparent 0% 0% / calc(6px + 2.125ex);
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  border: 2px solid #7E7F82;
+  outline: 0;
+  pointer-events: none;
+  grid-area: 1/1;
+  border-radius: 4px;
 }
-::slotted(input:checked) {
-  border-color: #7E7F82 !important;
-  background-color: #7E7F82 !important;
+&(input::-moz-focus-inner) {
+  border: 0;
 }
-::slotted(input::-moz-focus-inner) {
-  border: 0 !important;
+&(input:focus) {
+  outline: 0;
 }
-::slotted(input:focus) {
-  outline: 0 !important;
-}
-::slotted(input:focus-visible) {
-  outline: 2px solid #1A44EA !important;
-  outline-offset: 2px !important;
+&(input:focus-visible) {
+  outline: 2px solid #1A44EA;
+  outline-offset: 2px;
 }
 .root {
   display: grid;
@@ -2353,37 +2349,33 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
 :not(:defined,[data-ssr]) {
   visibility: hidden;
 }
-::slotted(input) {
-  width: calc(6px + 2.125ex) !important;
-  height: calc(6px + 2.125ex) !important;
-  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  display: block !important;
-  margin: 0 !important;
-  padding: 0 !important;
-  -webkit-appearance: none !important;
-  appearance: none !important;
-  box-sizing: content-box !important;
-  background: transparent 0% 0% / calc(6px + 2.125ex) !important;
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
-  border: 2px solid #949598 !important;
-  outline: 0 !important;
-  pointer-events: none !important;
-  grid-area: 1/1 !important;
-  border-radius: 4px !important;
+input {
+  width: calc(6px + 2.125ex);
+  height: calc(6px + 2.125ex);
+  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  display: block;
+  margin: 0;
+  padding: 0;
+  -webkit-appearance: none;
+  appearance: none;
+  box-sizing: content-box;
+  background: transparent 0% 0% / calc(6px + 2.125ex);
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  border: 2px solid #949598;
+  outline: 0;
+  pointer-events: none;
+  grid-area: 1/1;
+  border-radius: 4px;
 }
-::slotted(input:checked) {
-  border-color: #949598 !important;
-  background-color: #949598 !important;
+&(input::-moz-focus-inner) {
+  border: 0;
 }
-::slotted(input::-moz-focus-inner) {
-  border: 0 !important;
+&(input:focus) {
+  outline: 0;
 }
-::slotted(input:focus) {
-  outline: 0 !important;
-}
-::slotted(input:focus-visible) {
-  outline: 2px solid #1A44EA !important;
-  outline-offset: 2px !important;
+&(input:focus-visible) {
+  outline: 2px solid #1A44EA;
+  outline-offset: 2px;
 }
 .root {
   display: grid;
@@ -2466,31 +2458,31 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
 :not(:defined,[data-ssr]) {
   visibility: hidden;
 }
-::slotted(input) {
-  width: calc(6px + 2.125ex) !important;
-  height: calc(6px + 2.125ex) !important;
-  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  display: block !important;
-  margin: 0 !important;
-  padding: 0 !important;
-  -webkit-appearance: none !important;
-  appearance: none !important;
-  box-sizing: content-box !important;
-  background: transparent 0% 0% / calc(6px + 2.125ex) !important;
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
-  border: 2px solid #7E7F82 !important;
-  outline: 0 !important;
-  pointer-events: none !important;
-  grid-area: 1/1 !important;
-  border-radius: 4px !important;
+input {
+  width: calc(6px + 2.125ex);
+  height: calc(6px + 2.125ex);
+  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  display: block;
+  margin: 0;
+  padding: 0;
+  -webkit-appearance: none;
+  appearance: none;
+  box-sizing: content-box;
+  background: transparent 0% 0% / calc(6px + 2.125ex);
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  border: 2px solid #7E7F82;
+  outline: 0;
+  pointer-events: none;
+  grid-area: 1/1;
+  border-radius: 4px;
 }
-::slotted(input:checked) {
-  border-color: #7E7F82 !important;
-  background-color: #7E7F82 !important;
-  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23010205" d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') !important;
+input:checked {
+  border-color: #7E7F82;
+  background-color: #7E7F82;
+  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23010205" d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>');
 }
-::slotted(input:indeterminate) {
-  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23FBFCFF" d="m20,11v2H4v-2h16Z"/></svg>') !important;
+input:indeterminate {
+  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23FBFCFF" d="m20,11v2H4v-2h16Z"/></svg>');
 }
 .root {
   display: grid;
@@ -2564,31 +2556,31 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
 :not(:defined,[data-ssr]) {
   visibility: hidden;
 }
-::slotted(input) {
-  width: calc(6px + 2.125ex) !important;
-  height: calc(6px + 2.125ex) !important;
-  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  display: block !important;
-  margin: 0 !important;
-  padding: 0 !important;
-  -webkit-appearance: none !important;
-  appearance: none !important;
-  box-sizing: content-box !important;
-  background: transparent 0% 0% / calc(6px + 2.125ex) !important;
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
-  border: 2px solid #949598 !important;
-  outline: 0 !important;
-  pointer-events: none !important;
-  grid-area: 1/1 !important;
-  border-radius: 4px !important;
+input {
+  width: calc(6px + 2.125ex);
+  height: calc(6px + 2.125ex);
+  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  display: block;
+  margin: 0;
+  padding: 0;
+  -webkit-appearance: none;
+  appearance: none;
+  box-sizing: content-box;
+  background: transparent 0% 0% / calc(6px + 2.125ex);
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  border: 2px solid #949598;
+  outline: 0;
+  pointer-events: none;
+  grid-area: 1/1;
+  border-radius: 4px;
 }
-::slotted(input:checked) {
-  border-color: #949598 !important;
-  background-color: #949598 !important;
-  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23FBFCFF" d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') !important;
+input:checked {
+  border-color: #949598;
+  background-color: #949598;
+  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23FBFCFF" d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>');
 }
-::slotted(input:indeterminate) {
-  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23010205" d="m20,11v2H4v-2h16Z"/></svg>') !important;
+input:indeterminate {
+  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23010205" d="m20,11v2H4v-2h16Z"/></svg>');
 }
 .root {
   display: grid;
@@ -2662,27 +2654,23 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
 :not(:defined,[data-ssr]) {
   visibility: hidden;
 }
-::slotted(input) {
-  width: calc(6px + 2.125ex) !important;
-  height: calc(6px + 2.125ex) !important;
-  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  display: block !important;
-  margin: 0 !important;
-  padding: 0 !important;
-  -webkit-appearance: none !important;
-  appearance: none !important;
-  box-sizing: content-box !important;
-  background: transparent 0% 0% / calc(6px + 2.125ex) !important;
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
-  border: 2px solid #7E7F82 !important;
-  outline: 0 !important;
-  pointer-events: none !important;
-  grid-area: 1/1 !important;
-  border-radius: 4px !important;
-}
-::slotted(input:checked) {
-  border-color: #7E7F82 !important;
-  background-color: #7E7F82 !important;
+input {
+  width: calc(6px + 2.125ex);
+  height: calc(6px + 2.125ex);
+  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  display: block;
+  margin: 0;
+  padding: 0;
+  -webkit-appearance: none;
+  appearance: none;
+  box-sizing: content-box;
+  background: transparent 0% 0% / calc(6px + 2.125ex);
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  border: 2px solid #7E7F82;
+  outline: 0;
+  pointer-events: none;
+  grid-area: 1/1;
+  border-radius: 4px;
 }
 .root {
   display: grid;
@@ -2765,27 +2753,23 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
 :not(:defined,[data-ssr]) {
   visibility: hidden;
 }
-::slotted(input) {
-  width: calc(6px + 2.125ex) !important;
-  height: calc(6px + 2.125ex) !important;
-  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  display: block !important;
-  margin: 0 !important;
-  padding: 0 !important;
-  -webkit-appearance: none !important;
-  appearance: none !important;
-  box-sizing: content-box !important;
-  background: transparent 0% 0% / calc(6px + 2.125ex) !important;
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
-  border: 2px solid #949598 !important;
-  outline: 0 !important;
-  pointer-events: none !important;
-  grid-area: 1/1 !important;
-  border-radius: 4px !important;
-}
-::slotted(input:checked) {
-  border-color: #949598 !important;
-  background-color: #949598 !important;
+input {
+  width: calc(6px + 2.125ex);
+  height: calc(6px + 2.125ex);
+  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  display: block;
+  margin: 0;
+  padding: 0;
+  -webkit-appearance: none;
+  appearance: none;
+  box-sizing: content-box;
+  background: transparent 0% 0% / calc(6px + 2.125ex);
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  border: 2px solid #949598;
+  outline: 0;
+  pointer-events: none;
+  grid-area: 1/1;
+  border-radius: 4px;
 }
 .root {
   display: grid;
@@ -2868,53 +2852,53 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
 :not(:defined,[data-ssr]) {
   visibility: hidden;
 }
-::slotted(input) {
-  width: calc(6px + 2.125ex) !important;
-  height: calc(6px + 2.125ex) !important;
-  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  display: block !important;
-  margin: 0 !important;
-  padding: 0 !important;
-  -webkit-appearance: none !important;
-  appearance: none !important;
-  box-sizing: content-box !important;
-  background: transparent 0% 0% / calc(6px + 2.125ex) !important;
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
-  border: 2px solid #09D087 !important;
-  outline: 0 !important;
-  cursor: pointer !important;
-  grid-area: 1/1 !important;
-  border-radius: 4px !important;
+input {
+  width: calc(6px + 2.125ex);
+  height: calc(6px + 2.125ex);
+  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  display: block;
+  margin: 0;
+  padding: 0;
+  -webkit-appearance: none;
+  appearance: none;
+  box-sizing: content-box;
+  background: transparent 0% 0% / calc(6px + 2.125ex);
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  border: 2px solid #09D087;
+  outline: 0;
+  cursor: pointer;
+  grid-area: 1/1;
+  border-radius: 4px;
 }
-::slotted(input:checked) {
-  border-color: #09D087 !important;
-  background-color: #09D087 !important;
-  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23010205" d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') !important;
+input:checked {
+  border-color: #09D087;
+  background-color: #09D087;
+  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23010205" d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>');
 }
-::slotted(input::-moz-focus-inner) {
-  border: 0 !important;
+input:indeterminate {
+  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23FBFCFF" d="m20,11v2H4v-2h16Z"/></svg>');
 }
-::slotted(input:focus) {
-  outline: 0 !important;
+&(input::-moz-focus-inner) {
+  border: 0;
 }
-::slotted(input:focus-visible) {
-  outline: 2px solid #1A44EA !important;
-  outline-offset: 2px !important;
+&(input:focus) {
+  outline: 0;
 }
-::slotted(input:indeterminate) {
-  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23FBFCFF" d="m20,11v2H4v-2h16Z"/></svg>') !important;
+&(input:focus-visible) {
+  outline: 2px solid #1A44EA;
+  outline-offset: 2px;
 }
 @media(hover:hover) {
-  ::slotted(input:hover), label:hover~.wrapper ::slotted(input) {
-    border-color: #069561 !important;
+  input:hover,label:hover~.wrapper input {
+    border-color: #069561;
   }
-  ::slotted(input:checked:hover), label:hover~.wrapper ::slotted(input:checked) {
-    border-color: #069561 !important;
-    background-color: #069561 !important;
+  input:checked:hover,label:hover~.wrapper input:checked {
+    border-color: #069561;
+    background-color: #069561;
   }
 @media screen and (-webkit-min-device-pixel-ratio: 0) and (min-resolution: 0.001dpcm) {
-    label:hover~.wrapper ::slotted(input) {
-      transition: unset !important;
+    label:hover~.wrapper input {
+      transition: unset;
     }
 }
 
@@ -2993,53 +2977,53 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
 :not(:defined,[data-ssr]) {
   visibility: hidden;
 }
-::slotted(input) {
-  width: calc(6px + 2.125ex) !important;
-  height: calc(6px + 2.125ex) !important;
-  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  display: block !important;
-  margin: 0 !important;
-  padding: 0 !important;
-  -webkit-appearance: none !important;
-  appearance: none !important;
-  box-sizing: content-box !important;
-  background: transparent 0% 0% / calc(6px + 2.125ex) !important;
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
-  border: 2px solid #197E10 !important;
-  outline: 0 !important;
-  cursor: pointer !important;
-  grid-area: 1/1 !important;
-  border-radius: 4px !important;
+input {
+  width: calc(6px + 2.125ex);
+  height: calc(6px + 2.125ex);
+  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  display: block;
+  margin: 0;
+  padding: 0;
+  -webkit-appearance: none;
+  appearance: none;
+  box-sizing: content-box;
+  background: transparent 0% 0% / calc(6px + 2.125ex);
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  border: 2px solid #197E10;
+  outline: 0;
+  cursor: pointer;
+  grid-area: 1/1;
+  border-radius: 4px;
 }
-::slotted(input:checked) {
-  border-color: #197E10 !important;
-  background-color: #197E10 !important;
-  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23FBFCFF" d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') !important;
+input:checked {
+  border-color: #197E10;
+  background-color: #197E10;
+  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23FBFCFF" d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>');
 }
-::slotted(input::-moz-focus-inner) {
-  border: 0 !important;
+input:indeterminate {
+  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23010205" d="m20,11v2H4v-2h16Z"/></svg>');
 }
-::slotted(input:focus) {
-  outline: 0 !important;
+&(input::-moz-focus-inner) {
+  border: 0;
 }
-::slotted(input:focus-visible) {
-  outline: 2px solid #1A44EA !important;
-  outline-offset: 2px !important;
+&(input:focus) {
+  outline: 0;
 }
-::slotted(input:indeterminate) {
-  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23010205" d="m20,11v2H4v-2h16Z"/></svg>') !important;
+&(input:focus-visible) {
+  outline: 2px solid #1A44EA;
+  outline-offset: 2px;
 }
 @media(hover:hover) {
-  ::slotted(input:hover), label:hover~.wrapper ::slotted(input) {
-    border-color: #0E4809 !important;
+  input:hover,label:hover~.wrapper input {
+    border-color: #0E4809;
   }
-  ::slotted(input:checked:hover), label:hover~.wrapper ::slotted(input:checked) {
-    border-color: #0E4809 !important;
-    background-color: #0E4809 !important;
+  input:checked:hover,label:hover~.wrapper input:checked {
+    border-color: #0E4809;
+    background-color: #0E4809;
   }
 @media screen and (-webkit-min-device-pixel-ratio: 0) and (min-resolution: 0.001dpcm) {
-    label:hover~.wrapper ::slotted(input) {
-      transition: unset !important;
+    label:hover~.wrapper input {
+      transition: unset;
     }
 }
 
@@ -3118,31 +3102,31 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
 :not(:defined,[data-ssr]) {
   visibility: hidden;
 }
-::slotted(input) {
-  width: calc(6px + 2.125ex) !important;
-  height: calc(6px + 2.125ex) !important;
-  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  display: block !important;
-  margin: 0 !important;
-  padding: 0 !important;
-  -webkit-appearance: none !important;
-  appearance: none !important;
-  box-sizing: content-box !important;
-  background: transparent 0% 0% / calc(6px + 2.125ex) !important;
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
-  border: 2px solid #7E7F82 !important;
-  outline: 0 !important;
-  pointer-events: none !important;
-  grid-area: 1/1 !important;
-  border-radius: 4px !important;
+input {
+  width: calc(6px + 2.125ex);
+  height: calc(6px + 2.125ex);
+  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  display: block;
+  margin: 0;
+  padding: 0;
+  -webkit-appearance: none;
+  appearance: none;
+  box-sizing: content-box;
+  background: transparent 0% 0% / calc(6px + 2.125ex);
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  border: 2px solid #7E7F82;
+  outline: 0;
+  pointer-events: none;
+  grid-area: 1/1;
+  border-radius: 4px;
 }
-::slotted(input:checked) {
-  border-color: #7E7F82 !important;
-  background-color: #7E7F82 !important;
-  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23010205" d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') !important;
+input:checked {
+  border-color: #7E7F82;
+  background-color: #7E7F82;
+  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23010205" d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>');
 }
-::slotted(input:indeterminate) {
-  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23FBFCFF" d="m20,11v2H4v-2h16Z"/></svg>') !important;
+input:indeterminate {
+  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23FBFCFF" d="m20,11v2H4v-2h16Z"/></svg>');
 }
 .root {
   display: grid;
@@ -3217,31 +3201,31 @@ exports[`getComponentCss() should return correct css for hideLabel: true, state:
 :not(:defined,[data-ssr]) {
   visibility: hidden;
 }
-::slotted(input) {
-  width: calc(6px + 2.125ex) !important;
-  height: calc(6px + 2.125ex) !important;
-  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif !important;
-  display: block !important;
-  margin: 0 !important;
-  padding: 0 !important;
-  -webkit-appearance: none !important;
-  appearance: none !important;
-  box-sizing: content-box !important;
-  background: transparent 0% 0% / calc(6px + 2.125ex) !important;
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1) !important;
-  border: 2px solid #949598 !important;
-  outline: 0 !important;
-  pointer-events: none !important;
-  grid-area: 1/1 !important;
-  border-radius: 4px !important;
+input {
+  width: calc(6px + 2.125ex);
+  height: calc(6px + 2.125ex);
+  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  display: block;
+  margin: 0;
+  padding: 0;
+  -webkit-appearance: none;
+  appearance: none;
+  box-sizing: content-box;
+  background: transparent 0% 0% / calc(6px + 2.125ex);
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  border: 2px solid #949598;
+  outline: 0;
+  pointer-events: none;
+  grid-area: 1/1;
+  border-radius: 4px;
 }
-::slotted(input:checked) {
-  border-color: #949598 !important;
-  background-color: #949598 !important;
-  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23FBFCFF" d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>') !important;
+input:checked {
+  border-color: #949598;
+  background-color: #949598;
+  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23FBFCFF" d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>');
 }
-::slotted(input:indeterminate) {
-  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23010205" d="m20,11v2H4v-2h16Z"/></svg>') !important;
+input:indeterminate {
+  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23010205" d="m20,11v2H4v-2h16Z"/></svg>');
 }
 .root {
   display: grid;
