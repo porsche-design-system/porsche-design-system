@@ -6,6 +6,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     <p-carousel
       [slidesPerPage]="3"
       [focusOnCenterSlide]="true"
+      [trimSpace]="false"
       [heading]="'Some Heading'"
       (update)="onCarouselUpdate($event)"
     >
