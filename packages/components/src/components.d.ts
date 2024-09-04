@@ -501,10 +501,6 @@ export namespace Components {
          */
         "checked"?: boolean;
         /**
-          * The description text.
-         */
-        "description"?: string;
-        /**
           * Marks the checkbox as disabled.
          */
         "disabled"?: boolean;
@@ -3638,10 +3634,6 @@ declare namespace LocalJSX {
           * Marks the checkbox as pre-selected (checked) on initial load.
          */
         "checked"?: boolean;
-        /**
-          * The description text.
-         */
-        "description"?: string;
         /**
           * Marks the checkbox as disabled.
          */

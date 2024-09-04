@@ -35,7 +35,6 @@ const propTypes: PropTypes<typeof Checkbox> = {
   label: AllowedTypes.string,
   name: AllowedTypes.string,
   value: AllowedTypes.string,
-  description: AllowedTypes.string,
   required: AllowedTypes.boolean,
   disabled: AllowedTypes.boolean,
   indeterminate: AllowedTypes.boolean,
@@ -50,7 +49,6 @@ const propTypes: PropTypes<typeof Checkbox> = {
 
 /**
  * @slot {"name": "label", "description": "Shows a label. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed." }
- * @slot {"name": "description", "description": "Shows a description. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed." }
  * @slot {"name": "message", "description": "Shows a state message. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed." }
  */
 @Component({
@@ -75,9 +73,6 @@ export class Checkbox {
 
   /** Marks the checkbox as pre-selected (checked) on initial load. */
   @Prop() public checked?: boolean = false;
-
-  /** The description text. */
-  @Prop() public description?: string = '';
 
   /** The id of a form element the checkbox should be associated with. */
   @Prop() public form?: string;
@@ -125,9 +120,12 @@ export class Checkbox {
 
   @Watch('value')
   public onValueChange(newValue: string): void {
-    if (this.input.checked) {
-      this.internals.setFormValue(newValue);
-    }
+    this.internals.setFormValue(this.input.checked ? newValue : '');
+  }
+
+  @Watch('checked')
+  public onCheckedChange(newValue: boolean): void {
+    this.internals.setFormValue(newValue ? this.value : '');
   }
 
   public connectedCallback(): void {
@@ -138,10 +136,17 @@ export class Checkbox {
     return hasPropValueChanged(newVal, oldVal);
   }
 
+  public componentDidLoad(): void {
+    if (this.input.checked) {
+      this.internals.setFormValue(this.value);
+    }
+  }
+
   public formResetCallback(): void {
     this.internals.setValidity({});
-    this.internals.setFormValue('');
-    this.input.checked = this.checked;
+    this.internals.setFormValue(null);
+    this.input.checked = false;
+    this.checked = false;
   }
 
   public render(): JSX.Element {
@@ -158,7 +163,6 @@ export class Checkbox {
           host={this.host}
           htmlFor={id}
           label={this.label}
-          description={this.description}
           isLoading={this.loading}
           isDisabled={this.disabled}
           isRequired={this.required}
@@ -169,8 +173,10 @@ export class Checkbox {
             id={id}
             aria-describedby={`${descriptionId} ${messageId}`}
             aria-invalid={this.state === 'error' ? 'true' : null}
+            aria-disabled={this.loading || this.disabled ? 'true' : null}
             checked={this.checked}
             form={this.form}
+            value={this.value}
             name={this.name}
             indeterminate={this.indeterminate}
             onChange={this.onChange}
@@ -189,6 +195,8 @@ export class Checkbox {
   }
 
   private onChange = (e: Event): void => {
+    const checked = (e.target as HTMLInputElement).checked;
+    this.internals.setFormValue(checked ? this.value : '');
     this.update.emit({
       value: this.value,
       name: this.name,
