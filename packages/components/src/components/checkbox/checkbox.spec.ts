@@ -56,6 +56,9 @@ describe('formResetCallback', () => {
   expect(setValiditySpy).toHaveBeenCalledWith({});
   expect(setFormValueSpy).toHaveBeenCalledWith(null);
   expect(component.value).toBe(value);
+  expect(component['input'].value).toBe('on');
+  expect(component.checked).toBe(false);
+  expect(component['input'].checked).toBe(false);
 });
 
 describe('componentDidLoad', () => {
