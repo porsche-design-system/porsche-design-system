@@ -1,0 +1,44 @@
+@use '@porsche-design-system/components-js/styles' as *;
+
+:where(.ag-root-wrapper, .ag-measurement-container, .ag-apply-theme-variables, .ag-popup) {
+  --ag-background-color: #{$pds-theme-light-background-base}; // Docs: Can be changed
+  --ag-background-color: #{$pds-theme-light-background-base};
+  --ag-foreground-color: #{$pds-theme-light-primary};
+  --ag-menu-background-color: #{$pds-theme-light-background-base};
+  --ag-border-color: #{$pds-theme-light-contrast-low};
+  --ag-grid-size: 10px; // Default
+  --ag-grid-size: 6px; // Docs: compact
+  --ag-border-radius: #{$pds-border-radius-small}; // widget
+  --ag-wrapper-border-radius: 8px;
+
+  --ag-header-background-color: #{$pds-theme-light-background-surface};
+  --ag-header-font-weight: 600;
+  --ag-header-vertical-padding-scale: 1; // default
+
+  //--ag-header-vertical-padding-scale: 0.5; // Docs: compact
+  --ag-cell-horizontal-padding-scale: 1; // default
+  //--ag-cell-horizontal-padding-scale: 0.5; // Docs: compact
+
+  //--ag-odd-row-background-color: #{$pds-theme-light-background-surface}; // Docs: Optional can be configured
+
+  --ag-font-family: #{$pds-font-family};
+  --ag-font-size: 1rem; // 14px in theme builder
+
+  --ag-icon-size: #{$pds-font-line-height};
+  --ag-checkbox-checked-shape-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23FBFCFF" d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>');
+  --ag-checkbox-checked-background-color: #{$pds-theme-light-primary};
+  --ag-checkbox-checked-border-color: #{$pds-theme-light-primary};
+  --ag-checkbox-unchecked-border-color: #{$pds-theme-light-contrast-medium};
+  --ag-checkbox-border-radius: #{$pds-border-radius-small};
+  --ag-checkbox-border-width: 2px;
+  //--ag-checkbox-indeterminate-background-color: ??? // Can't be like in pds since icon color wont be visible
+
+  --ag-input-background-color: transparent;
+  --ag-input-border: 2px solid #{$pds-theme-light-contrast-medium};
+  --ag-input-focus-border: 2px solid #{$pds-theme-light-primary};
+  --ag-input-focus-shadow: none;
+
+  // General colors
+  --ag-accent-color: none;
+  --ag-invalid-color: #{$pds-theme-light-notification-error};
+}
