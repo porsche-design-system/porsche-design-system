@@ -13,13 +13,13 @@ import {
   waitForInputTransition,
   waitForStencilLifecycle,
 } from '../helpers';
-import type { CheckboxWrapperState } from '@porsche-design-system/components';
+import type { CheckboxState } from '@porsche-design-system/components';
 
-const getHost = (page: Page) => page.locator('p-checkbox-wrapper');
-const getInput = (page: Page) => page.locator('p-checkbox-wrapper input[type="checkbox"]');
-const getWrapper = (page: Page) => page.locator('p-checkbox-wrapper .wrapper');
-const getLabel = (page: Page) => page.locator('p-checkbox-wrapper label');
-const getMessage = (page: Page) => page.locator('p-checkbox-wrapper .message');
+const getHost = (page: Page) => page.locator('p-checkbox');
+const getInput = (page: Page) => page.locator('p-checkbox input[type="checkbox"]');
+const getWrapper = (page: Page) => page.locator('p-checkbox .wrapper');
+const getLabel = (page: Page) => page.locator('p-checkbox label');
+const getMessage = (page: Page) => page.locator('p-checkbox .message');
 
 const setIndeterminate = async (locator: Locator, value: boolean) => {
   await setProperty(locator, 'indeterminate', value);
@@ -36,7 +36,7 @@ type InitOptions = {
   label?: string;
   useSlottedLabel?: boolean;
   useSlottedMessage?: boolean;
-  state?: CheckboxWrapperState;
+  state?: CheckboxState;
   loading?: boolean;
 };
 
@@ -63,11 +63,10 @@ const initCheckbox = (page: Page, opts?: InitOptions): Promise<void> => {
   return setContentWithDesignSystem(
     page,
     `
-    <p-checkbox-wrapper ${attrs}>
+    <p-checkbox ${attrs}>
       ${slottedLabel}
-      <input type="checkbox" />
       ${slottedMessage}
-    </p-checkbox-wrapper>`
+    </p-checkbox>`
   );
 };
 
@@ -326,7 +325,7 @@ test.describe('lifecycle', () => {
     await initCheckbox(page, { useSlottedMessage: true, useSlottedLabel: true, state: 'error' });
     const status = await getLifecycleStatus(page);
 
-    expect(status.componentDidLoad['p-checkbox-wrapper'], 'componentDidLoad: p-checkbox-wrapper').toBe(1);
+    expect(status.componentDidLoad['p-checkbox'], 'componentDidLoad: p-checkbox').toBe(1);
     expect(status.componentDidLoad['p-icon'], 'componentDidLoad: p-icon').toBe(1);
 
     expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(2);
@@ -341,7 +340,7 @@ test.describe('lifecycle', () => {
     await waitForStencilLifecycle(page);
     const status = await getLifecycleStatus(page);
 
-    expect(status.componentDidUpdate['p-checkbox-wrapper'], 'componentDidUpdate: p-checkbox-wrapper').toBe(0);
+    expect(status.componentDidUpdate['p-checkbox'], 'componentDidUpdate: p-checkbox').toBe(0);
 
     expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(2);
     expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(0);
