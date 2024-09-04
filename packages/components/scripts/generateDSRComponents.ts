@@ -617,6 +617,8 @@ $&`
           .replace(/spellcheck/, 'spellCheck')
           .replace(/autocomplete/, 'autoComplete')
           .replace(/this\.props\.value = '';/, '');
+      } else if (tagName === 'p-checkbox') {
+        newFileContent = newFileContent.replace(/@AttachInternals\(\)/, '').replace(/this\.props\.value = '';/, '');
       }
 
       return newFileContent;
