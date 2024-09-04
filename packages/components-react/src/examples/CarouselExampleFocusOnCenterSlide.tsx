@@ -40,6 +40,7 @@ export const CarouselExampleFocusOnCenterSlidePage = (): JSX.Element => {
       heading="Some Heading"
       onUpdate={(e) => onCarouselUpdate(e.detail.activeIndex)}
       focusOnCenterSlide
+      trimSpace={false}
     >
       {Array.from({ length: 6 }).map((_, i) => (
         <div style={getSlideStyle(i)} key={i}>
