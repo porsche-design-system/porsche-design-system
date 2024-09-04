@@ -146,13 +146,14 @@ Slides can be added and removed dynamically.
   <button type="button" @click="amountOfSlides--">Remove last slide</button>
 </Playground>
 
-## Focus On Center Slide
+## Focus On Center Slide/TrimSpace
 
 The carousel centers the active slide and individually loops through each slide, when multiple slides are visible. You
-can customize the styles for the active slide, as well as the previous and next slides, to highlight their visibility.
+can customize the styles for the active slide, as well as the previous and next slides, to highlight their visibility
+and determine whether to trim spaces before/after the carousel.
 
 <Playground :frameworkMarkup="focusOnCenterSlideExamples" :config="{ ...config, withoutDemo: true }">
-  <p-carousel :theme="theme" :heading="basicHeading" slides-per-page="3" active-slide-index="2" focus-on-center-slide="true" style="margin: 0 0 1rem" @update="onCarouselUpdate">
+  <p-carousel :theme="theme" :heading="basicHeading" slides-per-page="3" active-slide-index="2" focus-on-center-slide="true" trim-space="false" style="margin: 0 0 1rem" @update="onCarouselUpdate">
   <div v-for="(_, index) in Array(6)" :key="index" :class="getSlideClass(index)">Slide {{index + 1}}</div>
 </p-carousel>
 </Playground>
@@ -279,8 +280,8 @@ export default class Code extends Vue {
 
   get gradientColorMarkup() {
     return `<p-carousel style="--p-gradient-color-width: ${this.gradientColorWidth === this.gradientColorWidths[2] ? '33%' : this.gradientColorWidth}" slides-per-page="3" active-slide-index="2" heading="${this.basicHeading}" gradient-color="${this.gradientColor}">
-      ${this.getSlides()}
-    </p-carousel>`;
+  ${this.getSlides()}
+</p-carousel>`;
   }
 
   slidesPerPageAutoMarkup = `<p-carousel slides-per-page="auto" heading="${this.basicHeading}">

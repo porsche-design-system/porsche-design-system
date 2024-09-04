@@ -22,6 +22,7 @@
   <PCarousel
     :slidesPerPage="3"
     :focusOnCenterSlide="true"
+    :trimSpace="false"
     :intl="{
       slideLabel: 'Slide %s von %s',
       prev: 'Vorheriger Slide',
