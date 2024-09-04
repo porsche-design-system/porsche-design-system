@@ -54,7 +54,7 @@ describe('formResetCallback', () => {
   const setFormValueSpy = jest.spyOn(component['internals'], 'setFormValue' as any);
   component.formResetCallback();
   expect(setValiditySpy).toHaveBeenCalledWith({});
-  expect(setFormValueSpy).toHaveBeenCalledWith(null);
+  expect(setFormValueSpy).toHaveBeenCalledWith(undefined);
   expect(component.value).toBe(value);
   expect(component['input'].value).toBe('on');
   expect(component.checked).toBe(false);
@@ -121,7 +121,7 @@ describe('onChange', () => {
     } as unknown as Event;
 
     component['onChange'](event);
-    expect(setFormValueSpy).toHaveBeenCalledWith(null);
-    expect(mockEmit).toHaveBeenCalledWith({ name, value: null, checked });
+    expect(setFormValueSpy).toHaveBeenCalledWith(undefined);
+    expect(mockEmit).toHaveBeenCalledWith({ name, value, checked });
   });
 });
