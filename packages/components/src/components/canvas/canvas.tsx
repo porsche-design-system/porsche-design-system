@@ -87,10 +87,36 @@ export class Canvas {
           {/* eslint-disable-next-line */}
           {/* @ts-ignore */}
           <header part="header">
-            <slot name="header-start" />
+            <div class="header-buttons">
+              {/* TODO: define active state for button */}
+              <PrefixedTagNames.pButton
+                icon="menu-lines"
+                variant="ghost"
+                compact="true"
+                hide-label="true"
+                aria={{ 'aria-expanded': this.sidebarStartOpen }}
+                onClick={this.toggleSidebarStart}
+              >
+                {this.sidebarStartOpen ? 'Close' : 'Open'} navigation sidebar
+              </PrefixedTagNames.pButton>
+              <slot name="header-start" />
+            </div>
             <PrefixedTagNames.pCrest class="crest" />
             <PrefixedTagNames.pWordmark class="wordmark" theme={this.theme} />
-            <slot name="header-end" />
+            <div class="header-buttons">
+              <slot name="header-end" />
+              {/* TODO: define active state for button */}
+              <PrefixedTagNames.pButton
+                icon="user"
+                variant="ghost"
+                compact="true"
+                hide-label="true"
+                aria={{ 'aria-expanded': this.sidebarEndOpen }}
+                onClick={this.toggleSidebarEnd}
+              >
+                {this.sidebarStartOpen ? 'Close' : 'Open'} settings sidebar
+              </PrefixedTagNames.pButton>
+            </div>
           </header>
           {/* "part" is not valid in TS */}
           {/* eslint-disable-next-line */}
@@ -115,6 +141,7 @@ export class Canvas {
                 // eslint-disable-next-line
                 /* @ts-ignore */
                 inert={this.sidebarStartOpen ? null : true}
+                aria-label={`Navigation sidebar ${this.sidebarStartOpen ? 'open' : 'closed'}`}
               >
                 <slot name="sidebar-start" />
               </aside>
@@ -127,6 +154,7 @@ export class Canvas {
                 // eslint-disable-next-line
                 /* @ts-ignore */
                 inert={this.sidebarEndOpen ? null : true}
+                aria-label={`Settings sidebar ${this.sidebarEndOpen ? 'open' : 'closed'}`}
               >
                 <slot name="sidebar-end" />
               </aside>
@@ -161,11 +189,19 @@ export class Canvas {
     this.isDesktopView = !!e.matches;
   };
 
+  private toggleSidebarStart = (): void => {
+    this.sidebarStartOpen = !this.sidebarStartOpen;
+  };
+
+  private toggleSidebarEnd = (): void => {
+    this.sidebarEndOpen = !this.sidebarEndOpen;
+  };
+
   private onDismissSidebarStart = (): void => {
-    this.dismissSidebarStart.emit();
+    this.sidebarStartOpen = false;
   };
 
   private onDismissSidebarEnd = (): void => {
-    this.dismissSidebarEnd.emit();
+    this.sidebarEndOpen = false;
   };
 }

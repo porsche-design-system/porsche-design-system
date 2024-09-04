@@ -158,5 +158,12 @@ export const getComponentCss = (
         display: 'none',
       },
     },
+    'header-buttons': {
+      display: 'flex',
+      gap: spacingStaticSmall,
+      '&:last-of-type': {
+        justifyContent: 'end',
+      },
+    },
   });
 };

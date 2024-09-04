@@ -146,25 +146,19 @@
   </head>
   <body>
     <p-canvas
-      sidebar-start-open="true"
+      sidebar-start-open="false"
       sidebar-start-width="medium"
       sidebar-end-open="false"
       sidebar-end-width="medium"
     >
       <div slot="header-start">
-        <p-button id="toggle-sidebar-start" icon="menu-lines" variant="ghost" compact="true" hide-label="true"
-          >Toggle sidebar including main menu</p-button
-        >
-        <p-text>GEARBOX</p-text>
+        <p-text>GEARBOX </p-text>
       </div>
 
       <div slot="header-end">
         <p-button id="toggle-flyout-search" icon="search" variant="ghost" compact="true" hide-label="true"
-          >Open search</p-button
-        >
-        <p-button id="toggle-sidebar-end" icon="user" variant="ghost" compact="true" hide-label="true"
-          >Toggle sidebar</p-button
-        >
+          >Open search
+        </p-button>
       </div>
 
       <div class="teaser">
@@ -179,7 +173,7 @@
       </div>
 
       <div class="module">
-        <p-heading class="tile--full">Getting started</p-heading>
+        <p-heading class="tile--full" tag="h1">Getting started</p-heading>
         <p-link-tile class="tile--one-third" href="#" label="Some label" description="Some Description">
           <img src="https://designsystem.porsche.com/v3/img/lights.1124400a.jpg" alt="Some image description" />
         </p-link-tile>
@@ -196,12 +190,12 @@
       </div>
 
       <div slot="sidebar-start">
-        <p-accordion heading="Some category" heading-tag="h3" compact="true">
+        <p-accordion heading="Some category" heading-tag="h2" compact="true">
           <p-link-pure href="#" icon="none" stretch="true">Some anchor</p-link-pure>
           <p-link-pure href="#" icon="none" stretch="true">Some anchor</p-link-pure>
           <p-link-pure href="#" icon="none" stretch="true">Some anchor</p-link-pure>
         </p-accordion>
-        <p-accordion heading="Some category" heading-tag="h3" compact="true">
+        <p-accordion heading="Some category" heading-tag="h2" compact="true">
           <p-link-pure href="#" icon="none" stretch="true">Some anchor</p-link-pure>
           <p-link-pure href="#" icon="none" stretch="true">Some anchor</p-link-pure>
           <p-link-pure href="#" icon="none" stretch="true">Some anchor</p-link-pure>
@@ -231,16 +225,6 @@
     </p-flyout>
 
     <script>
-      const canvas = document.querySelector('p-canvas');
-      canvas.addEventListener('dismissSidebarStart', () => (canvas.sidebarStartOpen = false));
-      canvas.addEventListener('dismissSidebarEnd', () => (canvas.sidebarEndOpen = false));
-      document
-        .getElementById('toggle-sidebar-start')
-        .addEventListener('click', () => (canvas.sidebarStartOpen = !canvas.sidebarStartOpen));
-      document.getElementById('toggle-sidebar-end').addEventListener('click', (e) => {
-        canvas.sidebarEndOpen = !canvas.sidebarEndOpen;
-      });
-
       document
         .getElementById('toggle-flyout-search')
         .addEventListener('click', () => (document.querySelector('p-flyout').open = true));
