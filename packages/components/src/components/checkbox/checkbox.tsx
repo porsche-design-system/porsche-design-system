@@ -120,12 +120,12 @@ export class Checkbox {
 
   @Watch('value')
   public onValueChange(newValue: string): void {
-    this.internals.setFormValue(this.input.checked ? newValue : '');
+    this.internals.setFormValue(this.input.checked ? newValue : null);
   }
 
   @Watch('checked')
   public onCheckedChange(newValue: boolean): void {
-    this.internals.setFormValue(newValue ? this.value : '');
+    this.internals.setFormValue(newValue ? this.value : null);
   }
 
   public connectedCallback(): void {
