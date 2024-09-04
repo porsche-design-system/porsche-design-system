@@ -4,6 +4,7 @@ import {
   getActiveElementTagName,
   getElementStyle,
   getEventSummary,
+  getFormDataValue,
   getLifecycleStatus,
   getProperty,
   hasFocus,
@@ -20,10 +21,7 @@ const getInput = (page: Page) => page.locator('p-checkbox input[type="checkbox"]
 const getWrapper = (page: Page) => page.locator('p-checkbox .wrapper');
 const getLabel = (page: Page) => page.locator('p-checkbox label');
 const getMessage = (page: Page) => page.locator('p-checkbox .message');
-
-const setIndeterminate = async (locator: Locator, value: boolean) => {
-  await setProperty(locator, 'indeterminate', value);
-};
+const getForm = (page: Page) => page.locator('form');
 
 const setChecked = async (locator: Locator, value: boolean) => {
   await setProperty(locator, 'checked', value);
@@ -33,20 +31,34 @@ const getBackgroundImage = (input: Locator) => getElementStyle(input, 'backgroun
 const backgroundURL = 'url("data:image';
 
 type InitOptions = {
+  name?: string;
+  form?: string;
+  value?: string;
   label?: string;
+  checked?: boolean;
   useSlottedLabel?: boolean;
   useSlottedMessage?: boolean;
+  isWithinForm?: true;
   state?: CheckboxState;
   loading?: boolean;
+  markupBefore?: string;
+  markupAfter?: string;
 };
 
 const initCheckbox = (page: Page, opts?: InitOptions): Promise<void> => {
   const {
     label = 'Some Label',
+    name = 'some-name',
+    value = '',
+    form = '',
+    checked = false,
     useSlottedLabel = false,
     useSlottedMessage = false,
+    isWithinForm = false,
     state = 'none',
     loading = false,
+    markupBefore = '',
+    markupAfter = '',
   } = opts || {};
 
   const slottedLabel = useSlottedLabel
@@ -56,18 +68,21 @@ const initCheckbox = (page: Page, opts?: InitOptions): Promise<void> => {
     ? '<span slot="message">Some message with a <a href="#" onclick="return false;">link</a>.</span>'
     : '';
 
-  const attrs = [!useSlottedLabel && `label="${label}"`, `state="${state}"`, loading && 'loading="true"']
+  const attrs = [
+    !useSlottedLabel && `label="${label}"`,
+    `state="${state}"`,
+    `value="${value}"`,
+    `name="${name}"`,
+    form && `form="${form}"`,
+    loading && 'loading="true"',
+    checked && 'checked="true"',
+  ]
     .filter(Boolean)
     .join(' ');
 
-  return setContentWithDesignSystem(
-    page,
-    `
-    <p-checkbox ${attrs}>
-      ${slottedLabel}
-      ${slottedMessage}
-    </p-checkbox>`
-  );
+  const markup = `${markupBefore}<p-checkbox ${attrs}>${slottedLabel}${slottedMessage}</p-checkbox>${markupAfter}`;
+
+  return setContentWithDesignSystem(page, isWithinForm ? `<form onsubmit="return false;">${markup}</form>` : markup);
 };
 
 test('should add/remove message text with message if state changes programmatically', async ({ page }) => {
@@ -96,6 +111,7 @@ test('should add/remove message text with message if state changes programmatica
 
 test('should toggle checkbox when input is clicked', async ({ page }) => {
   await initCheckbox(page);
+  const host = getHost(page);
   const input = getInput(page);
 
   expect(await getBackgroundImage(input)).toBe('none');
@@ -109,7 +125,8 @@ test('should toggle checkbox when input is clicked', async ({ page }) => {
   expect(await getBackgroundImage(input)).toBe('none');
 
   // ensure that checked and indeterminate use different images
-  await setIndeterminate(input, true);
+  await setProperty(host, 'indeterminate', true);
+  await waitForInputTransition(page);
   expect(checkedImage).not.toBe(await getBackgroundImage(input));
 });
 
@@ -148,7 +165,7 @@ test('should not toggle checkbox when pressed space in focus in loading state', 
   await addEventListener(input, 'change');
 
   await input.focus();
-  expect(await getActiveElementTagName(page)).toBe('INPUT');
+  expect(await getActiveElementTagName(page)).toBe('P-CHECKBOX');
 
   await page.keyboard.press('Space');
   expect((await getEventSummary(input, 'change')).counter).toBe(0);
@@ -166,19 +183,19 @@ skipInBrowsers(['firefox', 'webkit'], () => {
     const input = getInput(page);
     const host = getHost(page);
 
-    expect(await hasFocus(input)).toBe(false);
+    expect(await hasFocus(host)).toBe(false);
     await page.keyboard.press('Tab');
-    expect(await hasFocus(input), 'after Tab').toBe(true);
+    expect(await hasFocus(host), 'after Tab').toBe(true);
 
     await setProperty(host, 'loading', true);
     await waitForStencilLifecycle(page);
 
-    expect(await hasFocus(input), 'focus when loading').toBe(true);
+    expect(await hasFocus(host), 'focus when loading').toBe(true);
 
     await setProperty(host, 'loading', false);
     await waitForStencilLifecycle(page);
 
-    expect(await hasFocus(input), 'final focus').toBe(true);
+    expect(await hasFocus(host), 'final focus').toBe(true);
   });
 });
 
@@ -195,13 +212,13 @@ test('should toggle checkbox when label text is clicked and not set input as act
   await waitForStencilLifecycle(page);
 
   expect(await isInputChecked()).toBe(true);
-  expect(await getActiveElementTagName(page)).toBe('BODY');
+  expect(await getActiveElementTagName(page)).toBe('P-CHECKBOX');
 
   await label.click();
   await waitForStencilLifecycle(page);
 
   expect(await isInputChecked()).toBe(false);
-  expect(await getActiveElementTagName(page)).toBe('BODY');
+  expect(await getActiveElementTagName(page)).toBe('P-CHECKBOX');
 });
 
 test('should check/uncheck checkbox when checkbox attribute is changed programmatically', async ({ page }) => {
@@ -245,14 +262,14 @@ skipInBrowsers(['firefox', 'webkit'], () => {
     expect(await getInputCursor()).toBe('pointer');
     expect(await getInputPointerEvents()).toBe('auto');
 
-    await setProperty(input, 'disabled', true);
+    await setProperty(host, 'disabled', true);
     await waitForInputTransition(page);
 
     expect(await getWrapperCursor()).toBe('not-allowed');
     expect(await getInputCursor()).toBe('default');
     expect(await getInputPointerEvents()).toBe('none'); // prevents checkbox from being toggleable in disabled and especially loading state
 
-    await setProperty(input, 'disabled', false);
+    await setProperty(host, 'disabled', false);
     await waitForInputTransition(page);
 
     expect(await getWrapperCursor()).toBe('auto');
@@ -273,22 +290,28 @@ test.describe('indeterminate state', () => {
 
   test('should show indeterminate state when checkbox is set to indeterminate', async ({ page }) => {
     await initCheckbox(page);
+    const host = getHost(page);
     const input = getInput(page);
 
     expect(await getBackgroundImage(input)).toBe('none');
 
-    await setIndeterminate(input, true);
+    await setProperty(host, 'indeterminate', true);
+    await waitForInputTransition(page);
+
     expect(await getBackgroundImage(input)).toContain(backgroundURL);
 
-    await setIndeterminate(input, false);
+    await setProperty(host, 'indeterminate', false);
+    await waitForInputTransition(page);
     expect(await getBackgroundImage(input)).toBe('none');
   });
 
   test('should remove indeterminate state when checkbox value is changed by the user', async ({ page }) => {
     await initCheckbox(page);
+    const host = getHost(page);
     const input = getInput(page);
 
-    await setIndeterminate(input, true);
+    await setProperty(host, 'indeterminate', true);
+    await waitForInputTransition(page);
     const indeterminateImage = await getBackgroundImage(input);
     expect(indeterminateImage, 'first indeterminate set').toContain(backgroundURL);
 
@@ -298,7 +321,8 @@ test.describe('indeterminate state', () => {
     expect(checkedImage, 'first click').toContain(backgroundURL);
     expect(indeterminateImage).not.toBe(checkedImage);
 
-    await setIndeterminate(input, true);
+    await setProperty(host, 'indeterminate', true);
+    await waitForInputTransition(page);
     expect(await getBackgroundImage(input), 'second indeterminate set').toContain(backgroundURL);
 
     await input.click();
@@ -307,9 +331,11 @@ test.describe('indeterminate state', () => {
 
   test('should keep indeterminate state when checkbox value is changed programmatically', async ({ page }) => {
     await initCheckbox(page);
+    const host = getHost(page);
     const input = getInput(page);
 
-    await setIndeterminate(input, true);
+    await setProperty(host, 'indeterminate', true);
+    await waitForInputTransition(page);
     expect(await getBackgroundImage(input)).toContain(backgroundURL);
 
     await setChecked(input, true);
@@ -344,5 +370,118 @@ test.describe('lifecycle', () => {
 
     expect(status.componentDidLoad.all, 'componentDidLoad: all').toBe(2);
     expect(status.componentDidUpdate.all, 'componentDidUpdate: all').toBe(0);
+  });
+});
+
+test.describe('form', () => {
+  test('should include name & value in FormData submit', async ({ page }) => {
+    const name = 'name';
+    const value = 'Hallo';
+    await initCheckbox(page, {
+      name,
+      value,
+      checked: true,
+      isWithinForm: true,
+      markupAfter: '<button type="submit">Submit</button>',
+    });
+    const form = getForm(page);
+
+    await addEventListener(form, 'submit');
+    expect((await getEventSummary(form, 'submit')).counter).toBe(0);
+
+    await page.locator('button[type="submit"]').click();
+
+    expect((await getEventSummary(form, 'submit')).counter).toBe(1);
+    expect(await getFormDataValue(form, name)).toBe(value);
+  });
+
+  test('should only include name & value in FormData submit if checkbox is checked', async ({ page }) => {
+    const name = 'name';
+    const value = 'Hallo';
+    await initCheckbox(page, {
+      name,
+      value,
+      isWithinForm: true,
+      markupAfter: '<button type="submit">Submit</button>',
+    });
+    const form = getForm(page);
+    const input = getInput(page);
+
+    await addEventListener(form, 'submit');
+    expect((await getEventSummary(form, 'submit')).counter).toBe(0);
+    await page.locator('button[type="submit"]').click();
+
+    expect((await getEventSummary(form, 'submit')).counter).toBe(1);
+    expect(await getFormDataValue(form, name)).toBe(null);
+
+    await input.click();
+
+    await page.locator('button[type="submit"]').click();
+
+    expect((await getEventSummary(form, 'submit')).counter).toBe(2);
+    expect(await getFormDataValue(form, name)).toBe(value);
+  });
+
+  test('should include name & value in FormData submit if outside of form', async ({ page }) => {
+    const name = 'name';
+    const value = 'Hallo';
+    const formId = 'myForm';
+    await initCheckbox(page, {
+      name,
+      value,
+      checked: true,
+      form: formId,
+      markupBefore: `<form id="myForm" onsubmit="return false;"><button type="submit">Submit</button></form>`,
+    });
+    const form = getForm(page);
+
+    await addEventListener(form, 'submit');
+    expect((await getEventSummary(form, 'submit')).counter).toBe(0);
+
+    await page.locator('button[type="submit"]').click();
+
+    expect((await getEventSummary(form, 'submit')).counter).toBe(1);
+    expect(await getFormDataValue(form, name)).toBe(value);
+  });
+
+  test('should reset checkbox value on form reset', async ({ page }) => {
+    const name = 'name';
+    const value = 'Hallo';
+    const checked = true;
+    const host = getHost(page);
+    const input = getInput(page);
+    await initCheckbox(page, {
+      name,
+      value,
+      checked,
+      isWithinForm: true,
+      markupAfter: `
+        <button type="submit">Submit</button>
+        <button type="reset">Reset</button>
+      `,
+    });
+    const form = getForm(page);
+
+    const isInputChecked = (): Promise<boolean> => getProperty(input, 'checked');
+
+    await addEventListener(form, 'submit');
+    expect((await getEventSummary(form, 'submit')).counter).toBe(0);
+
+    await expect(host).toHaveJSProperty('value', value);
+    await expect(input).toHaveValue(value);
+    await expect(host).toHaveJSProperty('checked', true);
+    expect(await isInputChecked()).toBe(true);
+
+    await page.locator('button[type="reset"]').click();
+
+    await expect(host).toHaveJSProperty('value', value);
+    await expect(input).toHaveValue(value);
+    await expect(host).toHaveJSProperty('checked', false);
+    expect(await isInputChecked()).toBe(false);
+
+    await page.locator('button[type="submit"]').click(); // Check if ElementInternal value was reset as well
+
+    expect((await getEventSummary(form, 'submit')).counter).toBe(1);
+    expect(await getFormDataValue(form, name)).toBe('');
   });
 });
