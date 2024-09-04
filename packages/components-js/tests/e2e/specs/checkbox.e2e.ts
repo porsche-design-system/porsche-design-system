@@ -482,6 +482,6 @@ test.describe('form', () => {
     await page.locator('button[type="submit"]').click(); // Check if ElementInternal value was reset as well
 
     expect((await getEventSummary(form, 'submit')).counter).toBe(1);
-    expect(await getFormDataValue(form, name)).toBe('');
+    expect(await getFormDataValue(form, name)).toBe(null);
   });
 });
