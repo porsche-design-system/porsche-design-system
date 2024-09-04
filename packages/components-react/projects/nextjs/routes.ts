@@ -64,6 +64,10 @@ const generatedRoutes = {
     "path": "/carousel",
     "name": "Carousel"
   },
+  "checkbox": {
+    "path": "/checkbox",
+    "name": "Checkbox"
+  },
   "checkboxWrapper": {
     "path": "/checkbox-wrapper",
     "name": "CheckboxWrapper"
