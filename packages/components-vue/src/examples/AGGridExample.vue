@@ -59,6 +59,7 @@
     :defaultColDef="defaultColDef"
     style="height: 80vh"
     class="ag-theme-quartz"
+    :pagination="true"
   >
   </ag-grid-vue>
 </template>
