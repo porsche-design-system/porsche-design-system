@@ -112,6 +112,16 @@ export const routes: RouteType[] = [
     element: <fromExamples.CarouselExampleJumpToSlidePage />,
   },
   {
+    name: 'Checkbox Example',
+    path: '/checkbox-example',
+    element: <fromExamples.CheckboxExamplePage />,
+  },
+  {
+    name: 'Checkbox Example Controlled',
+    path: '/checkbox-example-controlled',
+    element: <fromExamples.CheckboxControlledExamplePage />,
+  },
+  {
     name: 'Flyout Example',
     path: '/flyout-example',
     element: <fromExamples.FlyoutExamplePage />,
