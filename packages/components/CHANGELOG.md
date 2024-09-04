@@ -25,6 +25,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 - `Text Field Wrapper`: width calculation of counter and unit element are now CSS based in relation to the number of
   characters ([#3472](https://github.com/porsche-design-system/porsche-design-system/pull/3472))
+- `Carousel`: introduce `focusOnCenterSlide` & `gradientColor` props
+  ([#3488](https://github.com/porsche-design-system/porsche-design-system/pull/3488))
 
 #### Fixed
 
