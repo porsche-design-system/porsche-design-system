@@ -484,6 +484,10 @@ export namespace Components {
          */
         "theme"?: Theme;
         /**
+          * Determines whether to trim spaces before/after the carousel if `focusOnCenterSlide` option is true.
+         */
+        "trimSpace"?: boolean;
+        /**
           * Defines the outer spacings between the carousel and the left and right screen sides.
          */
         "width"?: CarouselWidth;
@@ -3541,6 +3545,10 @@ declare namespace LocalJSX {
           * Adapts the color when used on dark background.
          */
         "theme"?: Theme;
+        /**
+          * Determines whether to trim spaces before/after the carousel if `focusOnCenterSlide` option is true.
+         */
+        "trimSpace"?: boolean;
         /**
           * Defines the outer spacings between the carousel and the left and right screen sides.
          */
