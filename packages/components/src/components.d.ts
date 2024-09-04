@@ -418,6 +418,10 @@ export namespace Components {
           * Defines the width of the sidebar on the start side
          */
         "sidebarStartWidth"?: CanvasSidebarStartWidth;
+        /**
+          * Adapts the color depending on the theme. Has no effect when "inherit" is set as color prop.
+         */
+        "theme"?: Theme;
     }
     /**
      * @controlled { "props": ["activeSlideIndex"], "event": "update", "isInternallyMutated": true }
@@ -3460,6 +3464,10 @@ declare namespace LocalJSX {
           * Defines the width of the sidebar on the start side
          */
         "sidebarStartWidth"?: CanvasSidebarStartWidth;
+        /**
+          * Adapts the color depending on the theme. Has no effect when "inherit" is set as color prop.
+         */
+        "theme"?: Theme;
     }
     /**
      * @controlled { "props": ["activeSlideIndex"], "event": "update", "isInternallyMutated": true }

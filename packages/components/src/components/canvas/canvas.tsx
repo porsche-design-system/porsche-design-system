@@ -1,5 +1,5 @@
-import type { PropTypes } from '../../types';
-import { AllowedTypes, attachComponentCss, getPrefixedTagNames, validateProps } from '../../utils';
+import type { PropTypes, Theme } from '../../types';
+import { AllowedTypes, attachComponentCss, getPrefixedTagNames, THEMES, validateProps } from '../../utils';
 import { Component, Element, h, type JSX, Prop, Event, State, Host, Fragment, type EventEmitter } from '@stencil/core';
 import { getComponentCss } from './canvas-styles';
 import { CANVAS_SIDEBAR_WIDTHS, type CanvasSidebarEndWidth, type CanvasSidebarStartWidth } from './canvas-utils';
@@ -10,6 +10,7 @@ const propTypes: PropTypes<typeof Canvas> = {
   sidebarStartWidth: AllowedTypes.oneOf<CanvasSidebarStartWidth>(CANVAS_SIDEBAR_WIDTHS),
   sidebarEndOpen: AllowedTypes.boolean,
   sidebarEndWidth: AllowedTypes.oneOf<CanvasSidebarEndWidth>(CANVAS_SIDEBAR_WIDTHS),
+  theme: AllowedTypes.oneOf<Theme>(THEMES),
 };
 
 /**
@@ -43,6 +44,9 @@ export class Canvas {
   /** Defines the width of the sidebar on the end side */
   @Prop() public sidebarEndWidth?: CanvasSidebarEndWidth = 'medium';
 
+  /** Adapts the color depending on the theme. Has no effect when "inherit" is set as color prop. */
+  @Prop() public theme?: Theme = 'light';
+
   /** Emitted when the component requests to close the sidebar on the start side. */
   @Event({ bubbles: false }) public dismissSidebarStart?: EventEmitter<void>;
 
@@ -67,6 +71,7 @@ export class Canvas {
     attachComponentCss(
       this.host,
       getComponentCss,
+      this.theme,
       this.sidebarStartOpen,
       this.sidebarStartWidth,
       this.sidebarEndOpen,
@@ -82,7 +87,10 @@ export class Canvas {
           {/* eslint-disable-next-line */}
           {/* @ts-ignore */}
           <header part="header">
-            <slot name="header" />
+            <slot name="header-start" />
+            <PrefixedTagNames.pCrest class="crest" />
+            <PrefixedTagNames.pWordmark class="wordmark" theme={this.theme} />
+            <slot name="header-end" />
           </header>
           {/* "part" is not valid in TS */}
           {/* eslint-disable-next-line */}
@@ -108,9 +116,6 @@ export class Canvas {
                 /* @ts-ignore */
                 inert={this.sidebarStartOpen ? null : true}
               >
-                <PrefixedTagNames.pButtonPure class="close" icon="close" hideLabel onClick={this.onDismissSidebarStart}>
-                  Close Sidebar
-                </PrefixedTagNames.pButtonPure>
                 <slot name="sidebar-start" />
               </aside>
               <aside
@@ -123,9 +128,6 @@ export class Canvas {
                 /* @ts-ignore */
                 inert={this.sidebarEndOpen ? null : true}
               >
-                <PrefixedTagNames.pButtonPure class="close" icon="close" hideLabel onClick={this.onDismissSidebarEnd}>
-                  Close Sidebar
-                </PrefixedTagNames.pButtonPure>
                 <slot name="sidebar-end" />
               </aside>
             </Fragment>
@@ -134,13 +136,19 @@ export class Canvas {
         {!this.isDesktopView && (
           <Fragment>
             <PrefixedTagNames.pFlyout
+              theme={this.theme}
               open={this.sidebarStartOpen}
               position="start"
               onDismiss={this.onDismissSidebarStart}
             >
               <slot name="sidebar-start" />
             </PrefixedTagNames.pFlyout>
-            <PrefixedTagNames.pFlyout open={this.sidebarEndOpen} position="end" onDismiss={this.onDismissSidebarEnd}>
+            <PrefixedTagNames.pFlyout
+              theme={this.theme}
+              open={this.sidebarEndOpen}
+              position="end"
+              onDismiss={this.onDismissSidebarEnd}
+            >
               <slot name="sidebar-end" />
             </PrefixedTagNames.pFlyout>
           </Fragment>
