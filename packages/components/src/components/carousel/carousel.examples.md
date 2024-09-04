@@ -153,7 +153,7 @@ can customize the styles for the active slide, as well as the previous and next 
 and determine whether to trim spaces before/after the carousel.
 
 <Playground :frameworkMarkup="focusOnCenterSlideExamples" :config="{ ...config, withoutDemo: true }">
-  <p-carousel :theme="theme" :heading="basicHeading" slides-per-page="3" active-slide-index="2" focus-on-center-slide="true" trim-space="false" style="margin: 0 0 1rem" @update="onCarouselUpdate">
+  <p-carousel :theme="theme" :heading="basicHeading" slides-per-page="3" focus-on-center-slide="true" trim-space="false" style="margin: 0 0 1rem" @update="onCarouselUpdate">
   <div v-for="(_, index) in Array(6)" :key="index" :class="getSlideClass(index)">Slide {{index + 1}}</div>
 </p-carousel>
 </Playground>
@@ -243,7 +243,7 @@ export default class Code extends Vue {
     return this.$store.getters.playgroundTheme;
   }
 
-  activeSlideIndexRef = ref(2);
+  activeSlideIndexRef = ref(0);
   
   getSlideClass = (index) => {
     return {
