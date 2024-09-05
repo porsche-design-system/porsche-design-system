@@ -4,7 +4,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   selector: 'page-checkbox-example',
   template: `
     <form (submit)="onSubmit($event)">
-      <p-checkbox name="some-name" label="Some Label" value="some-value" [checked]="true"></p-checkbox>
+      <p-checkbox name="some-name" label="Some Label" value="some-value"></p-checkbox>
       <button type="submit">Submit</button>
     </form>
 
