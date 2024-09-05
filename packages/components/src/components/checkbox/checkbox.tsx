@@ -143,11 +143,8 @@ export class Checkbox {
     return hasPropValueChanged(newVal, oldVal);
   }
 
-  public componentWillLoad(): void {
-    this.input.indeterminate = this.indeterminate;
-  }
-
   public componentDidLoad(): void {
+    this.input.indeterminate = this.indeterminate;
     if (this.input.checked) {
       this.internals.setFormValue(this.value);
     }
