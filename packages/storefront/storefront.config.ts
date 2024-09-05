@@ -404,6 +404,9 @@ export const config: StorefrontConfig = {
       'Decision Tree': [() => import('@/pages/patterns/notifications/decision-tree.md')],
     },
   },
+  'Ag Grid': {
+    Introduction: [() => import('@/pages/ag-grid/introduction.md')],
+  },
   'Must Know': {
     Initialization: {
       Introduction: [() => import('@/pages/must-know/initialization/introduction.md')],

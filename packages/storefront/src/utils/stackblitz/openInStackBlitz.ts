@@ -26,7 +26,7 @@ export type OpenInStackBlitzOpts = {
 };
 
 export const openInStackBlitz = (opts: OpenInStackBlitzOpts): void => {
-  const { markup, framework, theme, backgroundColor, ...rest } = opts;
+  const { markup, framework, theme, backgroundColor, embedElement, ...rest } = opts;
 
   const stackBlitzFrameworkOpts: StackBlitzFrameworkOpts = {
     ...rest,
@@ -54,5 +54,9 @@ export const openInStackBlitz = (opts: OpenInStackBlitzOpts): void => {
 
   const { openFile, ...project } = getProjectAndOpenOptionsMap[framework](stackBlitzFrameworkOpts);
 
-  sdk.openProject(project, { openFile });
+  if (embedElement) {
+    sdk.embedProject(embedElement, project, { openFile });
+  } else {
+    sdk.openProject(project, { openFile });
+  }
 };

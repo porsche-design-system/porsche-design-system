@@ -1,13 +1,17 @@
 <template>
-  <p-button
-    type="button"
-    :theme="theme"
-    :icon-source="stackBlitzIcon"
-    :disabled="framework === 'shared'"
-    :loading="isLoading"
-    @click="onButtonClick()"
-    >{{ buttonLabel }}
-  </p-button>
+  <div>
+    <div v-if="isEmbedded" id="stackblitz-demo"></div>
+    <p-button
+      v-else
+      type="button"
+      :theme="theme"
+      :icon-source="stackBlitzIcon"
+      :disabled="framework === 'shared'"
+      :loading="isLoading"
+      @click="onButtonClick()"
+      >{{ buttonLabel }}
+    </p-button>
+  </div>
 </template>
 
 <script lang="ts">
@@ -24,6 +28,7 @@
 
   @Component
   export default class CodeEditor extends Vue {
+    @Prop({ default: false }) public isEmbedded!: boolean;
     @Prop({ default: '' }) public markup!: string;
     @Prop({ default: 'light' }) public theme!: PlaygroundTheme;
     @Prop({ default: 'ltr' }) public dir!: PlaygroundDir;
@@ -37,6 +42,24 @@
     isLoading = false;
     stackBlitzIcon = require('../assets/icon-stackblitz.svg');
 
+    public async mounted(): void {
+      console.log(this.isEmbedded);
+      if (this.isEmbedded) {
+        openInStackBlitz({
+          porscheDesignSystemBundle: await CodeEditor.porscheDesignSystemBundle(this.framework, this.pdsVersion),
+          markup: this.markup,
+          framework: this.framework,
+          theme: this.theme,
+          dir: this.dir,
+          externalDependencies: ['ag-grid-enterprise'],
+          backgroundColor: this.backgroundColor,
+          sharedImportKeys: this.sharedImportKeys,
+          pdsVersion: this.pdsVersion,
+          embedElement: 'stackblitz-demo',
+        });
+      }
+    }
+
     public async onButtonClick() {
       this.isLoading = true;
       openInStackBlitz({
@@ -49,6 +72,7 @@
         backgroundColor: this.backgroundColor,
         sharedImportKeys: this.sharedImportKeys,
         pdsVersion: this.pdsVersion,
+        embedElement: undefined,
       });
       this.isLoading = false;
     }
