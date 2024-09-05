@@ -4,10 +4,12 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   selector: 'page-carousel-example-focus-on-center-slide',
   template: `
     <p-carousel
+      [ngStyle]="{ '--p-gradient-color-width': '25%' }"
       [slidesPerPage]="3"
       [focusOnCenterSlide]="true"
       [trimSpace]="false"
       [heading]="'Some Heading'"
+      [gradientColor]="'background-surface'"
       (update)="onCarouselUpdate($event)"
     >
       <div *ngFor="let slide of slides; let i = index" [ngClass]="getSlideClass(i)">
