@@ -124,10 +124,8 @@ export class Checkbox {
   }
 
   @Watch('indeterminate')
-  public onIndeterminateChange(newValue: boolean, oldValue: boolean): void {
-    if (newValue !== oldValue) {
-      this.input.indeterminate = newValue;
-    }
+  public onIndeterminateChange(newValue: boolean): void {
+    this.input.indeterminate = newValue;
   }
 
   @Watch('checked')
