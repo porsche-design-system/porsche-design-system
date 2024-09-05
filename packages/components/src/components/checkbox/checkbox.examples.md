@@ -1,10 +1,10 @@
 <ComponentHeading name="Checkbox"></ComponentHeading>
 
-The `p-checkbox` component is a styling wrapper for the native HTML input type `checkbox` form element. Checking one box
-doesn't uncheck other Checkboxes. By default Checkboxes are not selected.
+The `p-checkbox` component wraps the native HTML input type `checkbox` form element. Checking one box doesn't uncheck
+other Checkboxes. By default, Checkboxes are not selected.
 
 A `label` is a caption which informs the user what information a particular form field is asking for. The `p-checkbox`
-component can be used with or without a label but it's recommended to keep the label visible for better accessibility
+component can be used with or without a label, but it's recommended to keep the label visible for better accessibility
 whenever possible. When used without a label, it's best practice to provide a descriptive label text for screen readers.
 
 <Notification heading="Attention" heading-tag="h2" state="warning">
@@ -25,12 +25,11 @@ browser support. For broader browser compatibility, consider using a
 ## Indeterminate
 
 Mask the visual appearance of a checkbox which has a state in-between checked and unchecked.  
-This is especially useful for a checkbox that is used to set the state of a group of checkboxes at once. However this
+This is especially useful for a checkbox that is used to set the state of a group of checkboxes at once. However, this
 group might have a mixed state. In this case we recommend to use `checked=false` and `indeterminate=true`.
 
-**Note: The `indeterminate` attribute can only be set through the DOM node. There is no HTML attribute to set it. Also
-it's worth to know, that the `indeterminate` attribute only affects how the checkbox is shown. The current value is
-hidden from the user, but the checkbox still keeps it's `checked` state. You can find more details in
+**Note: The `indeterminate` attribute only affects how the checkbox is shown. The current value is hidden from the user,
+but the checkbox still keeps it's `checked` state. You can find more details in
 [the specification](https://w3.org/TR/html52/sec-forms.html#dom-htmlinputelement-indeterminate).**
 
 <Playground :markup="indeterminate" :config="config"></Playground>
@@ -69,7 +68,7 @@ visible/hidden depending on the defined `state`.
 
 ## Slots
 
-Sometimes it's useful to be able to render markup (e.g. an anchor tag) for `label` or `message`. Therefore a named slot
+Sometimes it's useful to be able to render markup (e.g. an anchor tag) for `label` or `message`. Therefore, a named slot
 can be used. Make sure **not** to define the corresponding property on the host element when a named slot is used
 (because a property definition is preferred over a named slot). For named slots only
 [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is
@@ -143,10 +142,10 @@ export default class Code extends Vue {
 
   indeterminate =
 `<p-checkbox label="Some label">
-  <input type="checkbox" name="some-name" indeterminate />
+  <input type="checkbox" name="some-name" :indeterminate="'true'" />
 </p-checkbox>
 <p-checkbox label="Some label">
-  <input type="checkbox" name="some-name" :indeterminate="true" checked />
+  <input type="checkbox" name="some-name" :indeterminate="'true'" checked />
 </p-checkbox>`;
 
   formExample = getCheckboxCodeSamples('default');
