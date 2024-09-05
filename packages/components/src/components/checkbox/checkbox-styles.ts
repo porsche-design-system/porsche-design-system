@@ -131,11 +131,16 @@ export const getComponentCss = (
         gridArea: '1/1',
         borderRadius: borderRadiusSmall,
       },
+      'input:checked': {
+        borderColor: checkedColor,
+        backgroundColor: checkedColor,
+        ...prefersColorSchemeDarkMediaQuery(theme, {
+          borderColor: checkedColorDark,
+          backgroundColor: checkedColorDark,
+        }),
+      },
       ...(!isLoading && {
         'input:checked': {
-          // background-image is merged in later
-          borderColor: checkedColor,
-          backgroundColor: checkedColor,
           ...prefersColorSchemeDarkMediaQuery(theme, {
             borderColor: checkedColorDark,
             backgroundColor: checkedColorDark,
