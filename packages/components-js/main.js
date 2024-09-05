@@ -2,8 +2,7 @@ import './style.scss';
 
 import { componentsReady } from '@porsche-design-system/components-js';
 
-import 'ag-grid-enterprise/styles/ag-grid.css';
-import '@porsche-design-system/components-js/ag-grid/theme-light.css';
+import './src/examples/ag-grid-style-light.scss';
 import * as agGrid from 'ag-grid-enterprise';
 import { dataAdvanced } from '@porsche-design-system/shared';
 
