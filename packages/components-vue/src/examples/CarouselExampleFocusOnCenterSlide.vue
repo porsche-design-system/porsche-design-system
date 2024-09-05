@@ -20,6 +20,7 @@
 
 <template>
   <PCarousel
+    gradientColor="background-surface"
     :slidesPerPage="3"
     :focusOnCenterSlide="true"
     :trimSpace="false"
@@ -32,6 +33,7 @@
     }"
     :heading="'Some heading'"
     @update="onCarouselUpdate"
+    :style="{ '--p-gradient-color-width': '25%' }"
   >
     <div v-for="(_, i) in Array.from(Array(6))" :key="i" :class="getSlideClass(i)">Slide {{ i + 1 }}</div>
   </PCarousel>
