@@ -46,6 +46,17 @@ const generateCodeSamples = (): void => {
       ],
     },
     {
+      component: 'ag-grid',
+      samples: [
+        [
+          componentsJsPath + '/ag-grid-example.html',
+          componentsAngularPath + '/ag-grid-example.component.ts',
+          componentsReactPath + '/AGGridExample.tsx',
+          componentsVuePath + '/AGGridExample.vue',
+        ],
+      ],
+    },
+    {
       component: 'p-accordion',
       samples: [
         [
