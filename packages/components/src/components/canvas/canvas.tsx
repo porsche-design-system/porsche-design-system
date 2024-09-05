@@ -114,7 +114,7 @@ export class Canvas {
                 aria={{ 'aria-expanded': this.sidebarEndOpen }}
                 onClick={this.toggleSidebarEnd}
               >
-                {this.sidebarStartOpen ? 'Close' : 'Open'} settings sidebar
+                {this.sidebarEndOpen ? 'Close' : 'Open'} settings sidebar
               </PrefixedTagNames.pButton>
             </div>
           </header>
