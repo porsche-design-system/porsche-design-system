@@ -5,7 +5,6 @@
   const value = ref<string>('');
 
   const onUpdate = (e: CheckboxUpdateEventDetail) => {
-    console.log(e);
     value.value = e.checked ? e.value : '';
   };
 
