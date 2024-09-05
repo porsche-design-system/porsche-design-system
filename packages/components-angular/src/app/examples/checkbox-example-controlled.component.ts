@@ -4,18 +4,18 @@ import { type CheckboxUpdateEventDetail } from '@porsche-design-system/component
 @Component({
   selector: 'page-checkbox-example-controlled',
   template: `
-    <p-checkbox name="some-name" label="Some Label" [checked]="true" [value]="value" (update)="onUpdate($event)" />
+    <p-checkbox name="some-name" label="Some Label" value="some-value" (update)="onUpdate($event)" />
     <p-text>{{ debugText }}</p-text>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CheckboxExampleControlledComponent {
-  value: string = 'some-value';
+  value: string = '';
   get debugText(): string {
     return `Value: ${this.value}`;
   }
 
   onUpdate(e: CustomEvent<CheckboxUpdateEventDetail>) {
-    this.value = e.detail.checked ? e.detail.value : undefined;
+    this.value = e.detail.checked ? e.detail.value : '';
   }
 }
