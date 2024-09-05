@@ -1,4 +1,4 @@
-<p-checkbox name="some-name" label="Some Label" value="some-value" checked></p-checkbox>
+<p-checkbox name="some-name" label="Some Label" value="some-value"></p-checkbox>
 
 <p-text>Value: </p-text>
 
@@ -7,7 +7,7 @@
   const checkbox = document.querySelector('p-checkbox');
 
   checkbox.addEventListener('update', (e) => {
-    setDebugText(e.detail.checked ? e.detail.value : undefined);
+    setDebugText(e.detail.checked ? e.detail.value : '');
   });
 
   function setDebugText(value) {
