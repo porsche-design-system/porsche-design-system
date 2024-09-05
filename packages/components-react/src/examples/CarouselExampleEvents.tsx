@@ -8,12 +8,20 @@ export const CarouselExampleEventsPage = (): JSX.Element => {
     []
   );
 
+  const slideStyle = {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    background: '#00b0f4',
+    height: '150px',
+  };
+
   return (
     <>
       <PCarousel heading="Some Heading" onUpdate={onUpdate}>
-        <div>Slide 1</div>
-        <div>Slide 2</div>
-        <div>Slide 3</div>
+        <div style={slideStyle}>Slide 1</div>
+        <div style={slideStyle}>Slide 2</div>
+        <div style={slideStyle}>Slide 3</div>
       </PCarousel>
       <PText children={`Last event detail: ${lastEventDetail}`} />
     </>

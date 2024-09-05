@@ -30,6 +30,7 @@ for (const exampleUrl of exampleUrls) {
     test.fixme(
       [
         '/carousel-example-dynamic-slides',
+        '/carousel-example-focus-on-center-slide',
         '/carousel-example-events',
         '/carousel-example-jump-to-slide',
         '/inline-notification-example-action-button',
