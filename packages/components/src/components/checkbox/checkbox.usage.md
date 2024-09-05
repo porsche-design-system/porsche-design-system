@@ -1,4 +1,4 @@
-<ComponentHeading name="Checkbox Wrapper"></ComponentHeading>
+<ComponentHeading name="Checkbox"></ComponentHeading>
 
 <TableOfContents></TableOfContents>
 
