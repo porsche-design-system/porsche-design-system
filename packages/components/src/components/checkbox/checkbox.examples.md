@@ -104,17 +104,6 @@ automatically, you can use the `update` event to update the external state.
 <p-text :theme="theme">{{ selectedValueControlled }}</p-text>
 </Playground>
 
-### <A11yIcon></A11yIcon> Accessibility hints
-
-If using **slotted contents** to serve form elements, make sure to provide the right **ARIA attributes** to give screen
-reader users the corresponding information:
-
-1. Add a unique ID to the `slot="label"` element
-1. Add a unique ID to the `slot="message"` element (if they are created)
-1. Add corresponding `aria-labelledby="some-label-id"` to the `input` element which points to the `label` ID
-1. Add corresponding `aria-describedby="some-message-id"` to the `input` element which points to the `message` ID when
-   the (error/success) message appears
-
 <script lang="ts">
 import Vue from 'vue';
 import {getCheckboxCodeSamples} from "shared/src";
@@ -132,48 +121,36 @@ export default class Code extends Vue {
   hideLabel = false;
   hideLabels = [false, true, '{ base: true, l: false }'];
   get hideLabelMarkup() {
-    return `<p-checkbox label="Some label" hide-label="${this.hideLabel}">
-  <input type="checkbox" name="some-name" />
+    return `<p-checkbox label="Some label" hide-label="${this.hideLabel}" name="some-name">
 </p-checkbox>
-<p-checkbox label="Some label" hide-label="${this.hideLabel}">
-  <input type="checkbox" name="some-name" checked />
+<p-checkbox label="Some label" hide-label="${this.hideLabel}" name="some-name" checked>
 </p-checkbox>`;
   }
 
   indeterminate =
-`<p-checkbox label="Some label">
-  <input type="checkbox" name="some-name" :indeterminate="'true'" />
+`<p-checkbox label="Some label" indeterminate>
 </p-checkbox>
-<p-checkbox label="Some label">
-  <input type="checkbox" name="some-name" :indeterminate="'true'" checked />
+<p-checkbox label="Some label" name="some-name" indeterminate checked>
 </p-checkbox>`;
 
   formExample = getCheckboxCodeSamples('default');
   controlledExample = getCheckboxCodeSamples('example-controlled');
 
   required =
-`<p-checkbox label="Some label">
-  <input type="checkbox" name="some-name" required />
+`<p-checkbox label="Some label" name="some-name" required>
 </p-checkbox>
-<p-checkbox label="Some label">
-  <input type="checkbox" name="some-name" required checked />
+<p-checkbox label="Some label" name="some-name" required checked>
 </p-checkbox>`;
 
   disabled =
-`<p-checkbox label="Some label">
-  <input type="checkbox" name="some-name" disabled />
-</p-checkbox>
-<p-checkbox label="Some label">
-  <input type="checkbox" name="some-name" disabled checked />
-</p-checkbox>`;
+`<p-checkbox label="Some label" name="some-name" disabled></p-checkbox>
+<p-checkbox label="Some label" name="some-name" disabled checked></p-checkbox>`;
 
   isLoading = true;
   get loading() {
-    return `<p-checkbox label="Some label" loading="${this.isLoading}">
-  <input type="checkbox" name="some-name" />
+    return `<p-checkbox label="Some label" loading="${this.isLoading}" name="some-name">
 </p-checkbox>
-<p-checkbox label="Some label" loading="${this.isLoading}">
-  <input type="checkbox" name="some-name" checked />
+<p-checkbox label="Some label" loading="${this.isLoading}" name="some-name" checked>
 </p-checkbox>`;
   }
 
@@ -182,15 +159,13 @@ export default class Code extends Vue {
   states = FORM_STATES;
   get stateMarkup() {
     const message = this.state !== 'none' ? `Some ${this.state} validation message.` : ''; 
-    return `<p-checkbox label="Some label" state="${this.state}" message="${message}">
-  <input type="checkbox" name="some-name" />
+    return `<p-checkbox label="Some label" state="${this.state}" message="${message}" name="some-name">
 </p-checkbox>`;
   }
 
   slots =
-`<p-checkbox state="error">
+`<p-checkbox state="error" name="some-name" aria-labelledby="some-label-id" aria-describedby="some-message-id">
   <span slot="label" id="some-label-id">Some label with a <a href="https://designsystem.porsche.com">link</a>.</span>
-  <input type="checkbox" name="some-name" aria-labelledby="some-label-id" aria-describedby="some-message-id" />
   <span slot="message" id="some-message-id">Some error message with a <a href="https://designsystem.porsche.com">link</a>.</span>
 </p-checkbox>`;
 
@@ -205,17 +180,7 @@ export default class Code extends Vue {
 
   selectedValueControlled = 'Selected value: ';
   updateControlledExample(e) {
-  console.log(e);
-    this.selectedValueControlled = `Selected value: ${e.detail.checked ? e.detail.value : undefined}`;
-  }
-
-  mounted() {
-    this.$nextTick(function () {
-      const inputs = document.querySelectorAll('.example-set-to-indeterminate');
-      inputs.forEach(input => {
-        input.indeterminate = true;
-      });
-    });
+    this.selectedValueControlled = `Selected value: ${e.detail.checked ? e.detail.value : ''}`;
   }
 }
 </script>
