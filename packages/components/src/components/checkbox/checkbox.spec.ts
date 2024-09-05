@@ -61,6 +61,14 @@ describe('formResetCallback', () => {
   expect(component['input'].checked).toBe(false);
 });
 
+describe('componentWillLoad', () => {
+  const component = initComponent();
+  component.indeterminate = true;
+  expect(component['input'].indeterminate).toBe(false);
+  component.componentWillLoad();
+  expect(component['input'].indeterminate).toBe(true);
+});
+
 describe('componentDidLoad', () => {
   it('should call setFormValue() on componentDidLoad() if checkbox is checked', () => {
     const component = initComponent();
