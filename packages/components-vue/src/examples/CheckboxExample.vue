@@ -11,7 +11,7 @@
 
 <template>
   <form @submit.prevent="onSubmit">
-    <PCheckbox :name="'some-name'" :label="'Some Label'" :value="'some-value'" checked />
+    <PCheckbox :name="'some-name'" :label="'Some Label'" :value="'some-value'" />
     <button type="submit">Submit</button>
   </form>
 
