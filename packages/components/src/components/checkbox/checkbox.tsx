@@ -123,6 +123,13 @@ export class Checkbox {
     this.internals.setFormValue(this.input.checked ? newValue : undefined);
   }
 
+  @Watch('indeterminate')
+  public onIndeterminateChange(newValue: boolean, oldValue: boolean): void {
+    if (newValue !== oldValue) {
+      this.input.indeterminate = newValue;
+    }
+  }
+
   @Watch('checked')
   public onCheckedChange(newValue: boolean): void {
     this.internals.setFormValue(newValue ? this.value : undefined);
@@ -134,6 +141,10 @@ export class Checkbox {
 
   public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
     return hasPropValueChanged(newVal, oldVal);
+  }
+
+  public componentWillLoad(): void {
+    this.input.indeterminate = this.indeterminate;
   }
 
   public componentDidLoad(): void {
@@ -178,7 +189,6 @@ export class Checkbox {
             form={this.form}
             value={this.value}
             name={this.name}
-            indeterminate={this.indeterminate}
             onChange={this.onChange}
             required={this.required}
             disabled={this.disabled}
