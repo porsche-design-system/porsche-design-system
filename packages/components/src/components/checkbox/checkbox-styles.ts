@@ -6,7 +6,6 @@ import { escapeHashCharacter } from '../../utils/svg/escapeHashCharacter';
 import {
   addImportantToEachRule,
   colorSchemeStyles,
-  getFocusJssStyle,
   getHighContrastColors,
   getInvertedThemedColors,
   getThemedColors,
@@ -47,12 +46,13 @@ export const getComponentCss = (
   isLoading: boolean,
   theme: Theme
 ): string => {
-  const { primaryColor, contrastMediumColor, contrastHighColor, disabledColor } = getThemedColors(theme);
+  const { primaryColor, contrastMediumColor, contrastHighColor, disabledColor, focusColor } = getThemedColors(theme);
   const {
     primaryColor: primaryColorDark,
     contrastMediumColor: contrastMediumColorDark,
     contrastHighColor: contrastHighColorDark,
     disabledColor: disabledColorDark,
+    focusColor: focusColorDark,
   } = getThemedColors('dark');
   const { formStateColor, formStateHoverColor } = getThemedFormStateColors(theme, state);
   const { formStateColor: formStateColorDark, formStateHoverColor: formStateHoverColorDark } = getThemedFormStateColors(
@@ -131,32 +131,38 @@ export const getComponentCss = (
         gridArea: '1/1',
         borderRadius: borderRadiusSmall,
       },
-      'input:checked': {
-        borderColor: checkedColor,
-        backgroundColor: checkedColor,
-        ...prefersColorSchemeDarkMediaQuery(theme, {
-          borderColor: checkedColorDark,
-          backgroundColor: checkedColorDark,
-        }),
-      },
-      ...(!isLoading && {
-        'input:checked': {
-          ...prefersColorSchemeDarkMediaQuery(theme, {
-            borderColor: checkedColorDark,
-            backgroundColor: checkedColorDark,
+      ...(!isLoading
+        ? {
+            'input:checked': {
+              borderColor: checkedColor,
+              backgroundColor: checkedColor,
+              ...prefersColorSchemeDarkMediaQuery(theme, {
+                borderColor: checkedColorDark,
+                backgroundColor: checkedColorDark,
+              }),
+              backgroundImage: getCheckedSVGBackgroundImage(checkedIconColor),
+              ...prefersColorSchemeDarkMediaQuery(theme, {
+                backgroundImage: getCheckedSVGBackgroundImage(checkedIconColorDark),
+              }),
+            },
+            'input:indeterminate': {
+              backgroundImage: getIndeterminateSVGBackgroundImage(indeterminateIconColor),
+              ...prefersColorSchemeDarkMediaQuery(theme, {
+                backgroundImage: getIndeterminateSVGBackgroundImage(indeterminateIconColorDark),
+              }),
+            },
+          }
+        : {
+            'input:checked': {
+              // background-image is merged in later
+              borderColor: checkedColor,
+              backgroundColor: checkedColor,
+              ...prefersColorSchemeDarkMediaQuery(theme, {
+                borderColor: checkedColorDark,
+                backgroundColor: checkedColorDark,
+              }),
+            },
           }),
-          backgroundImage: getCheckedSVGBackgroundImage(checkedIconColor),
-          ...prefersColorSchemeDarkMediaQuery(theme, {
-            backgroundImage: getCheckedSVGBackgroundImage(checkedIconColorDark),
-          }),
-        },
-        'input:indeterminate': {
-          backgroundImage: getIndeterminateSVGBackgroundImage(indeterminateIconColor),
-          ...prefersColorSchemeDarkMediaQuery(theme, {
-            backgroundImage: getIndeterminateSVGBackgroundImage(indeterminateIconColorDark),
-          }),
-        },
-      }),
       ...(!disabledOrLoading &&
         !isHighContrastMode &&
         hoverMediaQuery({
@@ -178,7 +184,19 @@ export const getComponentCss = (
             transition: 'unset', // Fixes chrome bug where transition properties are stuck on hover
           }),
         })),
-      ...(!isDisabled && getFocusJssStyle(theme, { slotted: 'input' })),
+      'input::-moz-focus-inner': {
+        border: 0, // reset ua-style (for FF)
+      },
+      'input:focus': {
+        outline: 0, // reset ua-style (for older browsers)
+      },
+      'input:focus-visible': {
+        outline: `${borderWidthBase} solid ${focusColor}`,
+        outlineOffset: '2px',
+        ...prefersColorSchemeDarkMediaQuery(theme, {
+          outlineColor: focusColorDark,
+        }),
+      },
     },
     root: {
       display: 'grid',
