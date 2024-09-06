@@ -14,7 +14,11 @@ The `p-canvas` is an experimental layout component for productive web applicatio
 
 ### Supported named slots:
 
-- `slot="header"`: Renders a **sticky** header section above the content area.
+- `slot="header-start"`: Renders a **sticky** header section above the content area on the **start** side (**left** in
+  **LTR** mode / **right** in **RTL** mode).
+- `slot="header-end"`: Renders a **sticky** header section above the content area on the **end** side (**right** in
+  **LTR** mode / **left** in **RTL** mode).
+- `slot="title"`: Application name.
 - `slot`: Shows the content area.
 - `slot="footer"`: Shows a footer section, flowing under the content area when scrollable.
 - `slot="sidebar-start"`: Shows a sidebar area on the **start** side (**left** in **LTR** mode / **right** in **RTL**

@@ -8,26 +8,6 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
         overflow-x: hidden;
       }
 
-      p-canvas::part(header) {
-        background: #d1fbc6;
-      }
-
-      p-canvas::part(main) {
-        background: #bed0ff;
-      }
-
-      p-canvas::part(footer) {
-        background: #f7c6fb;
-      }
-
-      p-canvas::part(sidebar-start) {
-        background: #ffbebe;
-      }
-
-      p-canvas::part(sidebar-end) {
-        background: #ffbebe;
-      }
-
       .module {
         display: grid;
         grid-template-columns: subgrid;
@@ -39,7 +19,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
         align-items: center;
         justify-content: center;
         padding: 16px;
-        background: #fff;
+        background: lightpink;
       }
 
       .tile--full {
@@ -60,19 +40,8 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     `,
   ],
   template: `
-    <p-canvas
-      [sidebarStartWidth]="'medium'"
-      [sidebarEndWidth]="'medium'"
-      (dismissSidebarStart)="onDismissSidebarStart()"
-      [sidebarStartOpen]="isSidebarStartOpen"
-      (dismissSidebarEnd)="onDismissSidebarEnd()"
-      [sidebarEndOpen]="isSidebarEndOpen"
-    >
-      <div slot="header">
-        <p-tag color="background-base">Header</p-tag>
-        <p-button-pure icon="menu-lines" (click)="onToggleSidebarStart()">Toggle Sidebar Start</p-button-pure>
-        <p-button-pure icon="menu-lines" (click)="onToggleSidebarEnd()">Toggle Sidebar End</p-button-pure>
-      </div>
+    <p-canvas>
+      <a slot="title" href="#">App Name</a>
 
       <div class="module">
         <div class="tile tile--full">Full</div>
@@ -92,32 +61,16 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       </div>
 
       <div slot="footer">
-        <p-tag color="background-base">Footer</p-tag>
+        <p-text>Footer</p-text>
       </div>
       <div slot="sidebar-start">
-        <p-tag color="background-base">Sidebar</p-tag>
+        <p-text>Sidebar Start</p-text>
       </div>
       <div slot="sidebar-end">
-        <p-tag color="background-base">Sidebar</p-tag>
+        <p-text>Sidebar End</p-text>
       </div>
     </p-canvas>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class CanvasExampleComponent {
-  isSidebarStartOpen = false;
-  isSidebarEndOpen = false;
-
-  onToggleSidebarStart() {
-    this.isSidebarStartOpen = !this.isSidebarStartOpen;
-  }
-  onDismissSidebarStart() {
-    this.isSidebarStartOpen = false;
-  }
-  onToggleSidebarEnd() {
-    this.isSidebarEndOpen = !this.isSidebarEndOpen;
-  }
-  onDismissSidebarEnd() {
-    this.isSidebarEndOpen = false;
-  }
-}
+export class CanvasExampleComponent {}

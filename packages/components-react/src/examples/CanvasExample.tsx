@@ -1,46 +1,9 @@
-import { useCallback, useState } from 'react';
-import { PButtonPure, PCanvas, PTag } from '@porsche-design-system/components-react';
+import { PCanvas, PText } from '@porsche-design-system/components-react';
 
 export const CanvasExamplePage = (): JSX.Element => {
-  const [isSidebarStartOpen, setIsSidebarStartOpen] = useState<boolean>(false);
-  const onToggleSidebarStart = useCallback(() => {
-    setIsSidebarStartOpen((isSidebarStartOpen) => !isSidebarStartOpen);
-  }, []);
-  const onDismissSidebarStart = useCallback(() => {
-    setIsSidebarStartOpen(false);
-  }, []);
-
-  const [isSidebarEndOpen, setIsSidebarEndOpen] = useState<boolean>(false);
-  const onToggleSidebarEnd = useCallback(() => {
-    setIsSidebarEndOpen((isSidebarEndOpen) => !isSidebarEndOpen);
-  }, []);
-  const onDismissSidebarEnd = useCallback(() => {
-    setIsSidebarEndOpen(false);
-  }, []);
-
   const style = `
       body {
         overflow-x: hidden;
-      }
-
-      p-canvas::part(header) {
-        background: #d1fbc6;
-      }
-
-      p-canvas::part(main) {
-        background: #bed0ff;
-      }
-
-      p-canvas::part(footer) {
-        background: #f7c6fb;
-      }
-
-      p-canvas::part(sidebar-start) {
-        background: #ffbebe;
-      }
-
-      p-canvas::part(sidebar-end) {
-        background: #ffbebe;
       }
 
       .module {
@@ -54,7 +17,7 @@ export const CanvasExamplePage = (): JSX.Element => {
         align-items: center;
         justify-content: center;
         padding: 16px;
-        background: #fff;
+        background: lightpink;
       }
 
       .tile--full {
@@ -77,23 +40,10 @@ export const CanvasExamplePage = (): JSX.Element => {
   return (
     <>
       <style dangerouslySetInnerHTML={{ __html: style }} />
-      <PCanvas
-        sidebarStartWidth="medium"
-        sidebarEndWidth="medium"
-        onDismissSidebarStart={onDismissSidebarStart}
-        sidebarStartOpen={isSidebarStartOpen}
-        onDismissSidebarEnd={onDismissSidebarEnd}
-        sidebarEndOpen={isSidebarEndOpen}
-      >
-        <div slot="header">
-          <PTag color="background-base">Header</PTag>
-          <PButtonPure icon="menu-lines" onClick={onToggleSidebarStart}>
-            Toggle Sidebar Start
-          </PButtonPure>
-          <PButtonPure icon="menu-lines" onClick={onToggleSidebarEnd}>
-            Toggle Sidebar End
-          </PButtonPure>
-        </div>
+      <PCanvas>
+        <a slot="title" href="#">
+          App Name
+        </a>
 
         <div className="module">
           <div className="tile tile--full">Full</div>
@@ -113,13 +63,13 @@ export const CanvasExamplePage = (): JSX.Element => {
         </div>
 
         <div slot="footer">
-          <PTag color="background-base">Footer</PTag>
+          <PText>Footer</PText>
         </div>
         <div slot="sidebar-start">
-          <PTag color="background-base">Sidebar</PTag>
+          <PText>Sidebar Start</PText>
         </div>
         <div slot="sidebar-end">
-          <PTag color="background-base">Sidebar</PTag>
+          <PText>Sidebar End</PText>
         </div>
       </PCanvas>
     </>

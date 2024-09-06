@@ -1,38 +1,10 @@
 <script setup lang="ts">
-  import { PButtonPure, PCanvas, PTag } from '@porsche-design-system/components-vue';
-  import { ref } from 'vue';
-
-  const isSidebarStartOpen = ref(false);
-  const onToggleSidebarStart = (): void => {
-    isSidebarStartOpen.value = !isSidebarStartOpen.value;
-  };
-  const onDismissSidebarStart = (): void => {
-    isSidebarStartOpen.value = false;
-  };
-
-  const isSidebarEndOpen = ref(false);
-  const onToggleSidebarEnd = (): void => {
-    isSidebarEndOpen.value = !isSidebarEndOpen.value;
-  };
-  const onDismissSidebarEnd = (): void => {
-    isSidebarEndOpen.value = false;
-  };
+  import { PCanvas, PText } from '@porsche-design-system/components-vue';
 </script>
 
 <template>
-  <PCanvas
-    :sidebarStartWidth="'medium'"
-    :sidebarEndWidth="'medium'"
-    @dismissSidebarStart="onDismissSidebarStart"
-    :sidebarStartOpen="isSidebarStartOpen"
-    @dismissSidebarEnd="onDismissSidebarEnd"
-    :sidebarEndOpen="isSidebarEndOpen"
-  >
-    <div slot="header">
-      <PTag color="background-base">Header</PTag>
-      <PButtonPure icon="menu-lines" @click="onToggleSidebarStart">Toggle Sidebar Start</PButtonPure>
-      <PButtonPure icon="menu-lines" @click="onToggleSidebarEnd">Toggle Sidebar End</PButtonPure>
-    </div>
+  <PCanvas>
+    <a slot="title" href="#">App Name</a>
 
     <div class="module">
       <div class="tile tile--full">Full</div>
@@ -52,13 +24,13 @@
     </div>
 
     <div slot="footer">
-      <PTag color="background-base">Footer</PTag>
+      <PText>Footer</PText>
     </div>
     <div slot="sidebar-start">
-      <PTag color="background-base">Sidebar</PTag>
+      <PText>Sidebar Start</PText>
     </div>
     <div slot="sidebar-end">
-      <PTag color="background-base">Sidebar</PTag>
+      <PText>Sidebar End</PText>
     </div>
   </PCanvas>
 </template>
@@ -70,26 +42,6 @@
 </style>
 
 <style scoped>
-  p-canvas::part(header) {
-    background: #d1fbc6;
-  }
-
-  p-canvas::part(main) {
-    background: #bed0ff;
-  }
-
-  p-canvas::part(footer) {
-    background: #f7c6fb;
-  }
-
-  p-canvas::part(sidebar-start) {
-    background: #ffbebe;
-  }
-
-  p-canvas::part(sidebar-end) {
-    background: #ffbebe;
-  }
-
   .module {
     display: grid;
     grid-template-columns: subgrid;
@@ -101,7 +53,7 @@
     align-items: center;
     justify-content: center;
     padding: 16px;
-    background: #fff;
+    background: lightpink;
   }
 
   .tile--full {
