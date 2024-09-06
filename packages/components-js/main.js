@@ -120,7 +120,7 @@ const updateSelect = (id, value) => {
   };
 
   window.agGrid = agGrid;
-  window.dataAdvanced = dataAdvanced;
+  window.rowData = dataAdvanced;
 
   if (!isPageLoadedInIFrame()) {
     updateSelect('page', getPage());

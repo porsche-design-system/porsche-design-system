@@ -61,9 +61,13 @@
 
   const gridOptions = {
     // Data to be displayed
-    rowData: window.dataAdvanced,
+    rowData: window.rowData.map((row) => ({ active: Math.random() < 0.5 /* random boolean */, ...row })),
     // Columns to be displayed (Should match rowData properties)
     columnDefs: [
+      {
+        field: 'active',
+        showDisabledCheckboxes: true,
+      },
       {
         field: 'imageUrl',
         headerName: 'Image',
