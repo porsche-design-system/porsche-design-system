@@ -92,7 +92,7 @@ export class Canvas {
                   theme={this.theme}
                   icon={this.sidebarStartIcon}
                   variant="ghost"
-                  compact="true"
+                  compact={true}
                   hide-label="true"
                   aria={{ 'aria-expanded': this.sidebarStartOpen }}
                   onClick={this.toggleSidebarStart}
@@ -115,7 +115,7 @@ export class Canvas {
                   theme={this.theme}
                   icon={this.sidebarEndIcon}
                   variant="ghost"
-                  compact="true"
+                  compact={true}
                   hide-label="true"
                   aria={{ 'aria-expanded': this.sidebarEndOpen }}
                   onClick={this.toggleSidebarEnd}
