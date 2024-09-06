@@ -14,7 +14,8 @@
         background-color: $pds-theme-light-background-base,
         foreground-color: $pds-theme-light-primary,
         header-background-color: $pds-theme-light-background-surface,
-        //disabled-foreground-color: $pds-theme-light-state-disabled, // Is defined by foreground-color 50%
+        header-height: calc(var(--ag-font-size) + var(--ag-grid-size) * 2.9),
+        // disabled-foreground-color: $pds-theme-light-state-disabled, // Is defined by foreground-color 50%
         // subheader-background-color: transparent // Default is transparent
         // subheader-toolbar-background-color: transparent // Default is transparent
         // control-panel-background-color: Default set to header-background-color
@@ -25,50 +26,51 @@
         // TODO: Add to docs: Can be enabled (disabled by default)
         //odd-row-background-color: $pds-theme-light-background-surface,
         modal-overlay-background-color: $pds-theme-light-background-frosted,
+        row-height: calc(var(--ag-font-size) + var(--ag-grid-size) * 4),
         row-hover-color: $pds-theme-light-state-hover,
         column-hover-color: $pds-theme-light-state-hover,
         range-selection-border-color: $pds-theme-light-state-focus,
         border-color: $pds-theme-light-contrast-low,
-        borders-input: 2px solid,
+        borders-input: $pds-border-width-base solid,
         input-border-color: $pds-theme-light-contrast-medium,
         input-border-color-invalid: $pds-theme-light-notification-error,
         input-disabled-border-color: $pds-theme-light-state-disabled,
         // TODO: How to show disabled input
-        //input-disabled-background-color: $pds-theme-light-background-base,
+        // input-disabled-background-color: $pds-theme-light-background-base,
         border-radius: $pds-border-radius-small,
         invalid-color: $pds-theme-light-notification-error,
         // TODO: Fix checkbox (replace with custom icons)
         checkbox-checked-color: $pds-theme-light-primary,
         checkbox-unchecked-color: $pds-theme-light-contrast-medium,
         checkbox-indeterminate-color: $pds-theme-light-background-base,
-        // TODO: Radius has no effect?
         checkbox-border-radius: $pds-border-radius-small,
-        //checkbox-background-color: $pds-theme-light-primary,
+        checkbox-background-color: $pds-theme-light-background-base,
         // TODO: Fix toggle button styles
-        //toggle-button-border-width: 2px,
+        // toggle-button-border-width: 2px,
         toggle-button-on-border-color: $pds-theme-light-primary,
-        //toggle-button-off-border-color: $pds-theme-light-background-base,
-        //toggle-button-switch-border-color: $pds-theme-light-background-base,
+        // toggle-button-off-border-color: $pds-theme-light-background-base,
+        // toggle-button-switch-border-color: $pds-theme-light-background-base,
         toggle-button-on-background-color: $pds-theme-light-primary,
-        //toggle-button-off-background-color: $pds-theme-light-background-base,
-        //toggle-button-switch-background-color: $pds-theme-light-primary,
+        // toggle-button-off-background-color: $pds-theme-light-background-base,
+        // toggle-button-switch-background-color: $pds-theme-light-primary,
         input-focus-box-shadow: none,
         input-focus-border-color: $pds-theme-light-primary,
         grid-size: 10px,
-        icon-size: $pds-font-line-height,
+        icon-size: 24px,
         // TODO: Check here after icon-size https://www.ag-grid.com/javascript-data-grid/global-style-customisation-variables/
         font-family: $pds-font-family,
-        font-size: 1rem,
+        font-size: $pds-font-size-text-small,
         icon-font-family: none,
       ),
     ),
   )
 );
 
-// ag.grid-styles SASS mixin validation fails for these variables but they exist
+// ag.grid-styles mixin validation fails for these variables but they exist
 .ag-theme-pds,
 .ag-theme-pds-dark {
-  --ag-wrapper-border-radius: 8px;
+  --ag-wrapper-border-radius: #{$pds-border-radius-medium};
+  --ag-icon-image-opacity-checkbox-checked: 1;
 }
 
 .ag-theme-pds-dark {
@@ -134,6 +136,32 @@
   --ag-icon-image-settings: url('data:image/svg+xml;charset=UTF-8, <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m13.18 4 .451 2.254c.93.263 1.811.733 2.55 1.453l2.157-.729 1.18 2.044-1.722 1.513a6 6 0 0 1 0 2.93l1.722 1.514-1.18 2.044-2.156-.73a5.93 5.93 0 0 1-2.55 1.453L13.18 20h-2.36l-.451-2.254a5.94 5.94 0 0 1-2.55-1.453l-2.157.729-1.18-2.044 1.722-1.513a6 6 0 0 1 0-2.93L4.482 9.022l1.18-2.044 2.156.73a5.94 5.94 0 0 1 2.55-1.454L10.82 4zM14 3h-4l-.497 2.486A6.9 6.9 0 0 0 7.59 6.575l-2.384-.807-2 3.464 1.904 1.672a7 7 0 0 0 0 2.192l-1.904 1.672 2 3.464 2.384-.806q.857.691 1.913 1.088L10 21h4l.498-2.486a6.9 6.9 0 0 0 1.912-1.089l2.384.808 2-3.464-1.903-1.673a7 7 0 0 0 0-2.192l1.903-1.672-2-3.464-2.384.806a6.9 6.9 0 0 0-1.912-1.088zm-2 7a2 2 0 1 1 0 4 2 2 0 0 1 0-4m0-1c-1.654 0-3 1.346-3 3s1.346 3 3 3 3-1.346 3-3-1.346-3-3-3" style="fill:%23000"/></svg>');
 }
 
-.ag-theme-pds .ag-icon::before {
+// Custom overrides since there is no variable
+.ag-theme-pds .ag-icon::before,
+.ag-checkbox-input-wrapper::after,
+.ag-checkbox-input-wrapper.ag-checked::after {
   content: none;
+}
+
+.ag-checkbox-input-wrapper {
+  border: #{$pds-border-width-base} solid #{$pds-theme-light-contrast-medium};
+  // Unfortunately :focus is not working on the checkbox
+  &:hover {
+    border-color: #{$pds-theme-light-primary};
+  }
+}
+
+.ag-checkbox-input-wrapper.ag-checked {
+  border-color: #{$pds-theme-light-primary};
+  background-color: #{$pds-theme-light-primary};
+  // Unfortunately :focus is not working on the checkbox
+  &:hover {
+    border-color: #{$pds-theme-light-contrast-high};
+    background-color: #{$pds-theme-light-contrast-high};
+  }
+}
+
+.ag-theme-pds .ag-header-row {
+  font-weight: #{$pds-font-weight-semi-bold};
+  font-size: #{$pds-font-size-text-x-small};
 }
