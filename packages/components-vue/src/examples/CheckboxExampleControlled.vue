@@ -2,7 +2,7 @@
   import { PCheckbox, PText, type CheckboxUpdateEventDetail } from '@porsche-design-system/components-vue';
   import { computed, ref } from 'vue';
 
-  const value = ref<string>('');
+  const value = ref<string | undefined>('');
 
   const onUpdate = (e: CheckboxUpdateEventDetail) => {
     value.value = e.checked ? e.value : '';
