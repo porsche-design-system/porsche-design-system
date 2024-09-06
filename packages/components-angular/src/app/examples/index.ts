@@ -50,6 +50,8 @@ export const examples = [
   CarouselExampleFocusOnCenterSlideComponent,
   CarouselExampleEventsComponent,
   CarouselExampleJumpToSlideComponent,
+  CheckboxExampleControlledComponent,
+  CheckboxExampleComponent,
   FlyoutExampleComponent,
   FlyoutMultilevelExampleComponent,
   FlyoutMultilevelExampleActiveIdentifierComponent,
