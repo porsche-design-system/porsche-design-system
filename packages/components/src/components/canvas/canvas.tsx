@@ -9,7 +9,7 @@ import {
 } from '../../utils';
 import { Component, Element, Fragment, h, Host, type JSX, Prop, State } from '@stencil/core';
 import { getComponentCss } from './canvas-styles';
-import { type CanvasSidebarIcon } from './canvas-utils';
+import { type CanvasSidebarEndIcon, type CanvasSidebarStartIcon } from './canvas-utils';
 import { breakpointM } from '@porsche-design-system/styles';
 
 const propTypes: PropTypes<typeof Canvas> = {
@@ -21,7 +21,8 @@ const propTypes: PropTypes<typeof Canvas> = {
 };
 
 /**
- * @slot {"name": "header", "description": "Renders a **sticky** header section above the content area." }
+ * @slot {"name": "header-start", "description": "Renders a **sticky** header section above the content area on the **start** side (**left** in **LTR** mode / **right** in **RTL** mode)." }
+ * @slot {"name": "header-end", "description": "Renders a **sticky** header section above the content area on the **end** side (**right** in **LTR** mode / **left** in **RTL** mode)." }
  * @slot {"name": "", "description": "Default slot for the main content" }
  * @slot {"name": "title", "description": "Application name" }
  * @slot {"name": "footer", "description": "Shows a footer section, flowing under the content area when scrollable." }
@@ -41,13 +42,13 @@ export class Canvas {
   @Prop({ mutable: true }) public sidebarStartOpen?: boolean = false;
 
   /** The icon to toggle the Sidebar on the start side */
-  @Prop() public sidebarStartIcon?: CanvasSidebarIcon = 'menu-lines';
+  @Prop() public sidebarStartIcon?: CanvasSidebarStartIcon = 'menu-lines';
 
   /** Open Sidebar on the end side */
   @Prop() public sidebarEndOpen?: boolean = false;
 
   /** The icon to toggle the Sidebar on the end side */
-  @Prop() public sidebarEndIcon?: CanvasSidebarIcon = 'configurate';
+  @Prop() public sidebarEndIcon?: CanvasSidebarEndIcon = 'configurate';
 
   /** Adapts the color depending on the theme. Has no effect when "inherit" is set as color prop. */
   @Prop() public theme?: Theme = 'light';
