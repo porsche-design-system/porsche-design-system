@@ -7674,6 +7674,11 @@ exports[`should render dsr component for PCanvas 1`] = `
 ::slotted(.p-module) {
   grid-column: 1/-1;
 }
+::slotted(.p-module--subgrid) {
+  display: grid;
+  grid-template-columns: subgrid;
+  row-gap: clamp(16px, 1.25vw + 12px, 24px);
+}
 ::slotted(.p-module--more-space-above-small) {
   margin-top: 8px;
 }
@@ -7706,11 +7711,6 @@ exports[`should render dsr component for PCanvas 1`] = `
 }
 ::slotted(.p-gap--large) {
   gap: 32px;
-}
-::slotted(.p-subgrid) {
-  display: grid;
-  grid-template-columns: subgrid;
-  row-gap: clamp(16px, 1.25vw + 12px, 24px);
 }
 slot[name="title"]::slotted(a) {
   text-decoration: none;
@@ -7762,10 +7762,10 @@ header::after {
 }
 main {
   grid-area: main;
-  --pds-grid-span-full: span 6;
-  --pds-grid-span-one-half: span 3;
-  --pds-grid-span-one-third: span 2;
-  --pds-grid-span-two-thirds: span 4;
+  --p-canvas-grid-span-full: span 6;
+  --p-canvas-grid-span-one-half: span 3;
+  --p-canvas-grid-span-one-third: span 2;
+  --p-canvas-grid-span-two-thirds: span 4;
   display: grid;
   grid-template-columns: repeat(6, minmax(0, 1fr));
   gap: clamp(16px, 1.25vw + 12px, 24px);
@@ -7785,10 +7785,10 @@ aside {
 }
 @media(min-width:1000px) {
   main {
-    --pds-grid-span-full: span 12;
-    --pds-grid-span-one-half: span 6;
-    --pds-grid-span-one-third: span 4;
-    --pds-grid-span-two-thirds: span 8;
+    --p-canvas-grid-span-full: span 12;
+    --p-canvas-grid-span-one-half: span 6;
+    --p-canvas-grid-span-one-third: span 4;
+    --p-canvas-grid-span-two-thirds: span 8;
     grid-template-columns: repeat(12, minmax(0, 1fr));
   }
 }
