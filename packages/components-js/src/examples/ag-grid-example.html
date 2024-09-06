@@ -1,6 +1,5 @@
 <script type="module">
   const theme = new URL(document.location).searchParams.get('theme') || 'light';
-
   const grid = document.querySelector('#my-grid');
 
   grid.classList.add(`ag-theme-pds${theme === 'dark' ? '-dark' : ''}`);
@@ -37,7 +36,7 @@
     // Optional: Params for rendering. The same params that are passed to the cellRenderer function.
     init(params) {
       let spanElement = document.createElement('span');
-      spanElement.classList.add('cell__centered');
+      spanElement.classList.add('cell-centered');
 
       let linkElement = document.createElement('p-link');
       linkElement.href = 'https://www.porsche.com';
@@ -60,85 +59,14 @@
     }
   }
 
-  const dataAdvanced = [
-    {
-      test: 'Disabled',
-      imageUrl: 'https://porsche-design-system.github.io/dummyasset/718.png',
-      model: '718',
-      date: '23.06.2021',
-      interest: 'New Car',
-      vin: '1FM5K7F84FGB16304',
-      purchaseIntention: '08/2021',
-      status: 'Won',
-      comment: '-',
-      leadId: '0000824402',
-    },
-    {
-      test: 'test',
-      imageUrl: 'https://porsche-design-system.github.io/dummyasset/panamera.png',
-      model: 'Panamera',
-      date: '19.06.2021',
-      interest: 'New Car',
-      vin: '2GCEC13T141374801',
-      purchaseIntention: '11/2021',
-      status: 'Lost',
-      comment: 'Some multiline text and a column with a min width.',
-      leadId: '0000824409',
-    },
-    {
-      test: 'test',
-      imageUrl: 'https://porsche-design-system.github.io/dummyasset/911.png',
-      model: '911',
-      date: '19.05.2021',
-      interest: 'Used Car',
-      vin: '5GAKVCKD8EJ335750',
-      purchaseIntention: '09/2021',
-      status: 'Won',
-      comment: '-',
-      leadId: '0000824408',
-    },
-    {
-      test: 'test',
-      imageUrl: 'https://porsche-design-system.github.io/dummyasset/macan.png',
-      model: 'Macan',
-      date: '10.05.2021',
-      interest: 'Used Car',
-      vin: '1FMPU17L83LC09302',
-      purchaseIntention: '07/2021',
-      status: 'Lost',
-      comment: '-',
-      leadId: '0000824407',
-    },
-    {
-      test: 'test',
-      imageUrl: 'https://porsche-design-system.github.io/dummyasset/taycan.png',
-      model: 'Taycan',
-      date: '03.05.2021',
-      interest: 'New Car',
-      vin: 'JN1BY1AR3BM375187',
-      purchaseIntention: '05/2021',
-      status: 'Won',
-      comment: '-',
-      leadId: '0000824406',
-    },
-  ];
-
   const gridOptions = {
-    isRowSelectable: (params) => {
-      return !!params.data && params.data.test !== 'Disabled';
-    },
     // Data to be displayed
-    rowData: dataAdvanced,
+    rowData: window.dataAdvanced,
     // Columns to be displayed (Should match rowData properties)
     columnDefs: [
       {
-        field: 'test',
-        checkboxSelection: true,
-        showDisabledCheckboxes: true,
-        rowGroup: true,
-      },
-      {
         field: 'imageUrl',
+        headerName: 'Image',
         cellRenderer: ImageUrlRenderer,
       },
       {
@@ -186,7 +114,7 @@
 <div id="my-grid" style="height: 80vh; padding: 1rem"></div>
 
 <style>
-  .cell__centered {
+  .cell-centered {
     height: 100%;
     display: flex;
     justify-content: space-between;

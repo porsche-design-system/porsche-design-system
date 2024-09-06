@@ -1,5 +1,6 @@
 @use '@porsche-design-system/components-js/styles' as *;
 @use 'ag-grid-community/styles' as ag;
+
 @include ag.grid-styles(
   (
     themes: (
@@ -19,6 +20,7 @@
         // control-panel-background-color: Default set to header-background-color
         // ag-side-button-selected-background-color: Default to transparent (header-background-color)
         // backgroundSurfaceColorDarken
+        // TODO: PDS Sass variable missing
         selected-row-background-color: #cbced7,
         // TODO: Add to docs: Can be enabled (disabled by default)
         //odd-row-background-color: $pds-theme-light-background-surface,
@@ -44,10 +46,10 @@
         //checkbox-background-color: $pds-theme-light-primary,
         // TODO: Fix toggle button styles
         //toggle-button-border-width: 2px,
-        toggle-button-on-border-color: $pds-theme-light-notification-success,
+        toggle-button-on-border-color: $pds-theme-light-primary,
         //toggle-button-off-border-color: $pds-theme-light-background-base,
         //toggle-button-switch-border-color: $pds-theme-light-background-base,
-        toggle-button-on-background-color: $pds-theme-light-notification-success,
+        toggle-button-on-background-color: $pds-theme-light-primary,
         //toggle-button-off-background-color: $pds-theme-light-background-base,
         //toggle-button-switch-background-color: $pds-theme-light-primary,
         input-focus-box-shadow: none,
@@ -64,7 +66,14 @@
 );
 
 // ag.grid-styles SASS mixin validation fails for these variables but they exist
+.ag-theme-pds,
 .ag-theme-pds-dark {
+  --ag-wrapper-border-radius: 8px;
+}
+
+.ag-theme-pds-dark {
+  --ag-menu-background-color: #{$pds-theme-dark-background-base};
+  --ag-panel-background-color: #{$pds-theme-dark-background-base};
 }
 
 .ag-theme-pds {
@@ -128,24 +137,3 @@
 .ag-theme-pds .ag-icon::before {
   content: none;
 }
-
-//:where(.ag-root-wrapper, .ag-measurement-container, .ag-apply-theme-variables, .ag-popup) {
-//  --ag-border-color: #{$pds-theme-light-contrast-low};
-//  --ag-grid-size: 10px; // Default
-//  --ag-grid-size: 6px; // Docs: compact
-//  --ag-border-radius: #{$pds-border-radius-small}; // widget
-//  --ag-wrapper-border-radius: 8px;
-//
-//  --ag-header-background-color: #{$pds-theme-light-background-surface};
-//  --ag-header-font-weight: 600;
-//  --ag-header-vertical-padding-scale: 1; // default
-//
-//  --ag-header-vertical-padding-scale: 0.5; // Docs: compact
-//  --ag-cell-horizontal-padding-scale: 1; // default
-//  --ag-cell-vertical-padding-scale: 1; // default
-//  --ag-cell-horizontal-padding-scale: 0.5; // Docs: compact
-//
-//  --ag-input-background-color: transparent;
-//  --ag-input-border: 2px solid #{$pds-theme-light-contrast-medium};
-//  --ag-input-focus-border: 2px solid #{$pds-theme-light-primary};
-//  --ag-input-focus-shadow: none;
