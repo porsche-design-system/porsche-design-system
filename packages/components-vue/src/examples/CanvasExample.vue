@@ -6,19 +6,19 @@
   <PCanvas>
     <a slot="title" href="#">App Name</a>
 
-    <div class="module">
+    <div class="p-module p-module--subgrid">
       <div class="tile tile--full">Full</div>
     </div>
-    <div class="module">
+    <div class="p-module p-module--subgrid">
       <div class="tile tile--one-half">One Half</div>
       <div class="tile tile--one-half">One Half</div>
     </div>
-    <div class="module">
+    <div class="p-module p-module--subgrid">
       <div class="tile tile--one-third">One Third</div>
       <div class="tile tile--one-third">One Third</div>
       <div class="tile tile--one-third">One Third</div>
     </div>
-    <div class="module">
+    <div class="p-module p-module--subgrid">
       <div class="tile tile--one-third">One Third</div>
       <div class="tile tile--two-thirds">Two Thirds</div>
     </div>
@@ -42,12 +42,6 @@
 </style>
 
 <style scoped>
-  .module {
-    display: grid;
-    grid-template-columns: subgrid;
-    grid-column: 1 / -1;
-  }
-
   .tile {
     display: flex;
     align-items: center;
@@ -57,18 +51,18 @@
   }
 
   .tile--full {
-    grid-column: var(--pds-grid-span-full);
+    grid-column: var(--p-canvas-grid-span-full);
   }
 
   .tile--one-half {
-    grid-column: var(--pds-grid-span-one-half);
+    grid-column: var(--p-canvas-grid-span-one-half);
   }
 
   .tile--one-third {
-    grid-column: var(--pds-grid-span-one-third);
+    grid-column: var(--p-canvas-grid-span-one-third);
   }
 
   .tile--two-thirds {
-    grid-column: var(--pds-grid-span-two-thirds);
+    grid-column: var(--p-canvas-grid-span-two-thirds);
   }
 </style>

@@ -54,6 +54,11 @@ export const getComponentCss = (theme: Theme, isSidebarStartOpen: boolean, isSid
         '&(.p-module)': {
           gridColumn: '1/-1',
         },
+        '&(.p-module--subgrid)': {
+          display: 'grid',
+          gridTemplateColumns: 'subgrid',
+          rowGap: gridProductiveGap,
+        },
         '&(.p-module--more-space-above-small)': {
           marginTop: spacingStaticSmall,
         },
@@ -86,11 +91,6 @@ export const getComponentCss = (theme: Theme, isSidebarStartOpen: boolean, isSid
         },
         '&(.p-gap--large)': {
           gap: spacingStaticLarge,
-        },
-        '&(.p-subgrid)': {
-          display: 'grid',
-          gridTemplateColumns: 'subgrid',
-          rowGap: gridProductiveGap,
         },
       },
       'slot[name="title"]::slotted(a)': {
@@ -141,20 +141,20 @@ export const getComponentCss = (theme: Theme, isSidebarStartOpen: boolean, isSid
       },
       main: {
         gridArea: 'main',
-        '--pds-grid-span-full': 'span 6',
-        '--pds-grid-span-one-half': 'span 3',
-        '--pds-grid-span-one-third': 'span 2',
-        '--pds-grid-span-two-thirds': 'span 4',
+        '--p-canvas-grid-span-full': 'span 6',
+        '--p-canvas-grid-span-one-half': 'span 3',
+        '--p-canvas-grid-span-one-third': 'span 2',
+        '--p-canvas-grid-span-two-thirds': 'span 4',
         display: 'grid',
         gridTemplateColumns: 'repeat(6, minmax(0, 1fr))',
         gap: gridProductiveGap,
         alignContent: 'flex-start',
         backgroundColor,
         [mediaQueryDesktopView]: {
-          '--pds-grid-span-full': 'span 12',
-          '--pds-grid-span-one-half': 'span 6',
-          '--pds-grid-span-one-third': 'span 4',
-          '--pds-grid-span-two-thirds': 'span 8',
+          '--p-canvas-grid-span-full': 'span 12',
+          '--p-canvas-grid-span-one-half': 'span 6',
+          '--p-canvas-grid-span-one-third': 'span 4',
+          '--p-canvas-grid-span-two-thirds': 'span 8',
           gridTemplateColumns: 'repeat(12, minmax(0, 1fr))',
         },
       },
