@@ -89,10 +89,19 @@ export const getComponentCss = (
     : escapeHashCharacter(getInvertedThemedColors('dark').primaryColor);
   const indeterminateIconColor = isHighContrastMode
     ? canvasColor
-    : escapeHashCharacter(getThemedColors(theme).primaryColor);
+    : escapeHashCharacter(disabledOrLoading ? disabledColorDark : formStateColor || primaryColor);
   const indeterminateIconColorDark = isHighContrastMode
     ? canvasColor
-    : escapeHashCharacter(getThemedColors('dark').primaryColor);
+    : escapeHashCharacter(formStateColorDark || primaryColorDark);
+
+  const indeterminateIconHoverColor = isHighContrastMode
+    ? canvasColor
+    : escapeHashCharacter(formStateHoverColor || primaryColor);
+  const indeterminateIconHoverColorDark = isHighContrastMode
+    ? canvasColor
+    : escapeHashCharacter(formStateHoverColorDark || primaryColorDark);
+
+  const background = `transparent 0% 0% / ${fontLineHeight}`;
 
   return getCss({
     '@global': {
@@ -114,7 +123,7 @@ export const getComponentCss = (
         WebkitAppearance: 'none', // iOS safari
         appearance: 'none',
         boxSizing: 'content-box',
-        background: `transparent 0% 0% / ${fontLineHeight}`,
+        background,
         transition: `${getTransition('background-color')}, ${getTransition('border-color')}`,
         border: `${borderWidthBase} solid ${uncheckedColor}`,
         outline: 0, // TODO: only relevant for VRT testing with forced states - prevents :focus style (in case getFocusJssStyle() condition is not matching)
@@ -136,19 +145,24 @@ export const getComponentCss = (
             'input:checked': {
               borderColor: checkedColor,
               backgroundColor: checkedColor,
-              ...prefersColorSchemeDarkMediaQuery(theme, {
-                borderColor: checkedColorDark,
-                backgroundColor: checkedColorDark,
-              }),
               backgroundImage: getCheckedSVGBackgroundImage(checkedIconColor),
               ...prefersColorSchemeDarkMediaQuery(theme, {
                 backgroundImage: getCheckedSVGBackgroundImage(checkedIconColorDark),
+                borderColor: checkedColorDark,
+                backgroundColor: checkedColorDark,
               }),
             },
             'input:indeterminate': {
+              background, // fix for indeterminate mode and checked in safari
+              borderColor: uncheckedColor, // fix for indeterminate mode and checked in safari
               backgroundImage: getIndeterminateSVGBackgroundImage(indeterminateIconColor),
               ...prefersColorSchemeDarkMediaQuery(theme, {
                 backgroundImage: getIndeterminateSVGBackgroundImage(indeterminateIconColorDark),
+                borderColor: uncheckedColorDark, // fix for indeterminate mode and checked in safari
+                backgroundColor: 'transparent',
+                ...(disabledOrLoading && {
+                  backgroundImage: getIndeterminateSVGBackgroundImage(indeterminateIconColor),
+                }),
               }),
             },
           }
@@ -180,6 +194,16 @@ export const getComponentCss = (
               backgroundColor: checkedHoverColorDark,
             }),
           },
+          'input:indeterminate:hover,label:hover~.wrapper input:indeterminate': {
+            background, // fix for indeterminate mode without formState in safari
+            borderColor: uncheckedHoverColor, // fix for indeterminate mode without formState in safari
+            backgroundImage: getIndeterminateSVGBackgroundImage(escapeHashCharacter(indeterminateIconHoverColor)),
+            ...prefersColorSchemeDarkMediaQuery(theme, {
+              backgroundImage: getIndeterminateSVGBackgroundImage(escapeHashCharacter(indeterminateIconHoverColorDark)),
+              borderColor: uncheckedHoverColorDark, // fix for indeterminate mode without formState in safari
+              backgroundColor: 'transparent',
+            }),
+          },
           'label:hover~.wrapper input': supportsChromiumMediaQuery({
             transition: 'unset', // Fixes chrome bug where transition properties are stuck on hover
           }),
@@ -207,7 +231,7 @@ export const getComponentCss = (
       display: 'grid',
       gridArea: '1/1',
       alignSelf: 'flex-start', // in case label becomes multiline
-      ...(isDisabledOrLoading(isDisabled, isLoading) && {
+      ...(disabledOrLoading && {
         cursor: 'not-allowed',
       }),
     },
