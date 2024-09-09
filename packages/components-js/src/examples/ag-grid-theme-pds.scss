@@ -1,6 +1,7 @@
 @use '@porsche-design-system/components-js/styles' as *;
 @use 'ag-grid-community/styles' as ag;
 
+// https://www.ag-grid.com/javascript-data-grid/global-style-customisation-variables/
 @include ag.grid-styles(
   (
     themes: (
@@ -24,7 +25,7 @@
         // TODO: PDS Sass variable missing
         selected-row-background-color: #cbced7,
         // TODO: Add to docs: Can be enabled (disabled by default)
-        //odd-row-background-color: $pds-theme-light-background-surface,
+        odd-row-background-color: $pds-theme-light-background-surface,
         modal-overlay-background-color: $pds-theme-light-background-frosted,
         row-height: calc(var(--ag-font-size) + var(--ag-grid-size) * 4),
         row-hover-color: $pds-theme-light-state-hover,
@@ -35,29 +36,28 @@
         input-border-color: $pds-theme-light-contrast-medium,
         input-border-color-invalid: $pds-theme-light-notification-error,
         input-disabled-border-color: $pds-theme-light-state-disabled,
-        // TODO: How to show disabled input
-        // input-disabled-background-color: $pds-theme-light-background-base,
+        input-disabled-background-color: $pds-theme-light-background-base,
         border-radius: $pds-border-radius-small,
         invalid-color: $pds-theme-light-notification-error,
-        // TODO: Fix checkbox (replace with custom icons)
         checkbox-checked-color: $pds-theme-light-primary,
         checkbox-unchecked-color: $pds-theme-light-contrast-medium,
         checkbox-indeterminate-color: $pds-theme-light-background-base,
         checkbox-border-radius: $pds-border-radius-small,
         checkbox-background-color: $pds-theme-light-background-base,
         // TODO: Fix toggle button styles
-        // toggle-button-border-width: 2px,
-        toggle-button-on-border-color: $pds-theme-light-primary,
-        // toggle-button-off-border-color: $pds-theme-light-background-base,
-        // toggle-button-switch-border-color: $pds-theme-light-background-base,
-        toggle-button-on-background-color: $pds-theme-light-primary,
-        // toggle-button-off-background-color: $pds-theme-light-background-base,
-        // toggle-button-switch-background-color: $pds-theme-light-primary,
+        toggle-button-border-width: 2px,
+        toggle-button-on-border-color: $pds-theme-light-notification-success,
+        toggle-button-off-border-color: $pds-theme-dark-state-disabled,
+        toggle-button-switch-border-color: transparent,
+        toggle-button-on-background-color: $pds-theme-light-notification-success,
+        toggle-button-off-background-color: $pds-theme-light-background-base,
+        toggle-button-switch-background-color: $pds-theme-light-primary,
+        toggle-button-height: 28px,
+        toggle-button-width: 48px,
         input-focus-box-shadow: none,
         input-focus-border-color: $pds-theme-light-primary,
         grid-size: 10px,
         icon-size: 24px,
-        // TODO: Check here after icon-size https://www.ag-grid.com/javascript-data-grid/global-style-customisation-variables/
         font-family: $pds-font-family,
         font-size: $pds-font-size-text-small,
         icon-font-family: none,
@@ -158,6 +158,23 @@
   &:hover {
     border-color: #{$pds-theme-light-contrast-high};
     background-color: #{$pds-theme-light-contrast-high};
+  }
+}
+
+.ag-toggle-button-input-wrapper {
+  $spacing: 4px;
+  &::before {
+    height: calc(var(--ag-toggle-button-height) - $spacing * 2);
+    width: calc(var(--ag-toggle-button-height) - $spacing * 2);
+    top: calc($spacing - var(--ag-toggle-button-border-width));
+    left: calc($spacing - var(--ag-toggle-button-border-width));
+  }
+  &.ag-checked {
+    &::before {
+      --ag-toggle-button-switch-background-color: #{$pds-theme-light-background-base};
+      --ag-toggle-button-on-border-color: #{$pds-theme-light-background-base};
+      left: calc(100% - var(--ag-toggle-button-height) + $spacing);
+    }
   }
 }
 

@@ -9,14 +9,19 @@
 
     // Optional: Params for rendering. The same params that are passed to the cellRenderer function.
     init(params) {
+      let spanElement = document.createElement('span');
+      spanElement.classList.add('cell-centered');
+
       let imageElement = document.createElement('img');
 
       imageElement.src = params.value.replace('/porsche-design-system/', '/dummyasset/'); // TODO: why is this needed?
-      imageElement.style = 'margin-inline-end: 8px; object-fit: contain;';
+      imageElement.style = 'object-fit: contain;';
       imageElement.width = 80;
       imageElement.height = 45;
 
-      this.eGui = imageElement;
+      spanElement.appendChild(imageElement);
+
+      this.eGui = spanElement;
     }
 
     // Required: Return the DOM element of the component, this is what the grid puts into the cell
@@ -67,11 +72,15 @@
       {
         field: 'active',
         showDisabledCheckboxes: true,
+        width: '150px',
       },
       {
         field: 'imageUrl',
         headerName: 'Image',
         cellRenderer: ImageUrlRenderer,
+        editable: false,
+        filter: false,
+        width: '130px',
       },
       {
         field: 'model',
@@ -79,25 +88,36 @@
       },
       {
         field: 'date',
+        editable: false,
       },
       {
         field: 'interest',
+        editable: false,
       },
       {
         field: 'vin',
+        width: '250px',
+        editable: false,
       },
       {
         field: 'purchaseIntention',
+        editable: false,
       },
       {
         field: 'status',
+        editable: false,
       },
       {
         field: 'comment',
+        filter: false,
+        width: '500px',
       },
       {
         field: 'leadId',
         cellRenderer: ButtonRenderer,
+        editable: false,
+        filter: false,
+        width: '150px',
       },
     ],
     // Configurations applied to all columns
@@ -121,7 +141,6 @@
   .cell-centered {
     height: 100%;
     display: flex;
-    justify-content: space-between;
     align-items: center;
   }
 </style>
