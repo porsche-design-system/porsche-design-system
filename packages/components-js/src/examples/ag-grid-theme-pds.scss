@@ -11,20 +11,13 @@
       pds: (
         extend-theme: quartz,
         active-color: $pds-theme-light-notification-info,
-        // TODO: Add to Docs: Can be changed ($pds-theme-light-background-base, $pds-theme-light-background-surface)
         background-color: $pds-theme-light-background-base,
         foreground-color: $pds-theme-light-primary,
         header-background-color: $pds-theme-light-background-surface,
         header-height: calc(var(--ag-font-size) + var(--ag-grid-size) * 2.9),
-        // disabled-foreground-color: $pds-theme-light-state-disabled, // Is defined by foreground-color 50%
-        // subheader-background-color: transparent // Default is transparent
-        // subheader-toolbar-background-color: transparent // Default is transparent
-        // control-panel-background-color: Default set to header-background-color
-        // ag-side-button-selected-background-color: Default to transparent (header-background-color)
-        // backgroundSurfaceColorDarken
+        disabled-foreground-color: $pds-theme-light-state-disabled,
         // TODO: PDS Sass variable missing
         selected-row-background-color: #cbced7,
-        // TODO: Add to docs: Can be enabled (disabled by default)
         odd-row-background-color: $pds-theme-light-background-surface,
         modal-overlay-background-color: $pds-theme-light-background-frosted,
         row-height: calc(var(--ag-font-size) + var(--ag-grid-size) * 4),
@@ -44,10 +37,9 @@
         checkbox-indeterminate-color: $pds-theme-light-background-base,
         checkbox-border-radius: $pds-border-radius-small,
         checkbox-background-color: $pds-theme-light-background-base,
-        // TODO: Fix toggle button styles
         toggle-button-border-width: 2px,
         toggle-button-on-border-color: $pds-theme-light-notification-success,
-        toggle-button-off-border-color: $pds-theme-dark-state-disabled,
+        toggle-button-off-border-color: $pds-theme-light-state-disabled,
         toggle-button-switch-border-color: transparent,
         toggle-button-on-background-color: $pds-theme-light-notification-success,
         toggle-button-off-background-color: $pds-theme-light-background-base,
@@ -73,14 +65,7 @@
   --ag-icon-image-opacity-checkbox-checked: 1;
 }
 
-.ag-theme-pds-dark {
-  --ag-menu-background-color: #{$pds-theme-dark-background-base};
-  --ag-panel-background-color: #{$pds-theme-dark-background-base};
-}
-
 .ag-theme-pds {
-  --ag-menu-background-color: #{$pds-theme-light-background-base};
-  --ag-panel-background-color: #{$pds-theme-light-background-base};
   --ag-icon-image-checkbox-checked: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23FBFCFF" d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>');
   --ag-icon-image-aggregation: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" style="enable-background:new 0 0 24 24" viewBox="0 0 24 24"><path d="M17.2 19.3H5.7l6.5-7.6-6.5-7h11.5v1H7.9l5.7 6-5.7 6.6h9.3z" style="fill:%23020202"/></svg>');
   --ag-icon-image-arrows: url('data:image/svg+xml;charset=UTF-8, <svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" style="enable-background:new 0 0 24 24" viewBox="0 0 24 24"><path d="m22 12-2-3h-1.4l1.7 2.5H15v1h5.3L18.6 15H20l2-3zM12 2 9 4v1.4l2.5-1.7V9h1V3.7L15 5.4V4zM12.5 20.3V15h-1v5.3L9 18.6V20l3 2 3-2v-1.4zM9 11.5H3.7L5.4 9H4l-2 3 2 3h1.4l-1.7-2.5H9z"/></svg>');
@@ -137,7 +122,7 @@
 }
 
 // Custom overrides since there is no variable
-.ag-theme-pds .ag-icon::before,
+.ag-icon::before,
 .ag-checkbox-input-wrapper::after,
 .ag-checkbox-input-wrapper.ag-checked::after {
   content: none;
