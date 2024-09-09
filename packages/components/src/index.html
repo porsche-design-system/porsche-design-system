@@ -85,181 +85,27 @@
         margin-bottom: 16px;
       }
     </style>
-    <style>
-      .teaser {
-        grid-column: 1 / -1;
-        height: 40vh;
-        margin: -24px -24px 0;
-
-        & video {
-          width: 100%;
-          height: 100%;
-          object-fit: cover;
-        }
-      }
-
-      .module {
-        display: grid;
-        grid-template-columns: subgrid;
-        grid-column: 1 / -1;
-        grid-row-gap: 16px;
-      }
-
-      .tile {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        padding: 16px;
-        background: rgba(100, 100, 100, 0.1);
-      }
-
-      [data-theme='dark'] .tile {
-        background: rgba(255, 255, 255, 0.1);
-      }
-
-      .tile--full {
-        grid-column: var(--pds-grid-span-full);
-      }
-
-      .tile--one-half {
-        grid-column: var(--pds-grid-span-one-half);
-      }
-
-      .tile--one-third {
-        grid-column: var(--pds-grid-span-one-third);
-      }
-
-      .tile--two-thirds {
-        grid-column: var(--pds-grid-span-two-thirds);
-      }
-    </style>
-
-    <style>
-      body {
-        overflow-x: hidden;
-      }
-
-      p-canvas [slot='sidebar-end'] p-divider {
-        margin-block: 16px;
-      }
-    </style>
   </head>
   <body>
-    <p-canvas
-      sidebar-start-open="false"
-      sidebar-start-width="medium"
-      sidebar-end-open="false"
-      sidebar-end-width="medium"
-    >
-      <div slot="header-start">
-        <p-text>GEARBOX </p-text>
-      </div>
+    <header dir="ltr">
+      <h1>Porsche Design System - Playground</h1>
 
-      <div slot="header-end">
-        <p-button id="toggle-flyout-search" icon="search" variant="ghost" compact="true" hide-label="true"
-          >Open search
-        </p-button>
-      </div>
+      <select id="theme" onchange="updateRoute({theme: this.value})">
+        <option disabled selected>Select a theme</option>
+        <option value="light">Light</option>
+        <option value="dark">Dark</option>
+        <option value="auto">Auto</option>
+      </select>
 
-      <div class="teaser">
-        <video
-          poster="https://porsche-design-system.github.io/dummyasset/ocean.jpg"
-          src="https://porsche-design-system.github.io/dummyasset/ocean.mp4"
-          autoplay
-          playsinline
-          loop
-          muted
-        ></video>
-      </div>
+      <select id="dir" onchange="updateRoute({dir: this.value})">
+        <option disabled selected>Select a direction</option>
+        <option value="ltr">LTR (left-to-right)</option>
+        <option value="rtl">RTL (right-to-left)</option>
+        <option value="auto">Auto</option>
+      </select>
+    </header>
 
-      <div class="module">
-        <p-heading class="tile--full" tag="h1">Getting started</p-heading>
-        <p-link-tile class="tile--one-third" href="#" label="Some label" description="Some Description">
-          <img src="https://designsystem.porsche.com/v3/img/lights.1124400a.jpg" alt="Some image description" />
-        </p-link-tile>
-        <p-link-tile class="tile--one-third" href="#" label="Some label" description="Some Description">
-          <img src="https://designsystem.porsche.com/v3/img/lights.1124400a.jpg" alt="Some image description" />
-        </p-link-tile>
-        <p-link-tile class="tile--one-third" href="#" label="Some label" description="Some Description">
-          <img src="https://designsystem.porsche.com/v3/img/lights.1124400a.jpg" alt="Some image description" />
-        </p-link-tile>
-      </div>
-
-      <div slot="footer">
-        <p-text color="contrast-medium" size="x-small">© 2024 Dr. Ing. h.c. F. Porsche AG</p-text>
-      </div>
-
-      <div slot="sidebar-start">
-        <p-accordion heading="Some category" heading-tag="h2" compact="true">
-          <p-link-pure href="#" icon="none" stretch="true">Some anchor</p-link-pure>
-          <p-link-pure href="#" icon="none" stretch="true">Some anchor</p-link-pure>
-          <p-link-pure href="#" icon="none" stretch="true">Some anchor</p-link-pure>
-        </p-accordion>
-        <p-accordion heading="Some category" heading-tag="h2" compact="true">
-          <p-link-pure href="#" icon="none" stretch="true">Some anchor</p-link-pure>
-          <p-link-pure href="#" icon="none" stretch="true">Some anchor</p-link-pure>
-          <p-link-pure href="#" icon="none" stretch="true">Some anchor</p-link-pure>
-          <p-link-pure href="#" icon="none" stretch="true">Some anchor</p-link-pure>
-          <p-link-pure href="#" icon="none" stretch="true">Some anchor</p-link-pure>
-          <p-link-pure href="#" icon="none" stretch="true">Some anchor</p-link-pure>
-        </p-accordion>
-        <p-link-pure href="#" icon="none" stretch="true">Some anchor</p-link-pure>
-        <p-link-pure href="#" icon="none" stretch="true">Some anchor</p-link-pure>
-        <p-link-pure href="#" icon="none" stretch="true">Some anchor</p-link-pure>
-      </div>
-
-      <div slot="sidebar-end">
-        <p-link-pure href="#" icon="none">Profil</p-link-pure>
-        <p-link-pure href="#" icon="none">Abmelden</p-link-pure>
-        <p-divider></p-divider>
-        <p-link-pure href="#" icon="configurate">Settings</p-link-pure>
-        <p-switch align-label="start" stretch="true"><p-icon name="moon"></p-icon> Dark Mode</p-switch>
-      </div>
-    </p-canvas>
-
-    <p-flyout open="false" aria="{ 'aria-label': 'Some Heading' }" style="--p-flyout-max-width: 480px">
-      <p-display slot="header" size="small" tag="h2">What are you looking for?</p-display>
-      <p-text-field-wrapper label="Search" hide-label="true">
-        <input type="search" name="some-name" placeholder="Some placeholder" />
-      </p-text-field-wrapper>
-    </p-flyout>
-
-    <script>
-      document
-        .getElementById('toggle-flyout-search')
-        .addEventListener('click', () => (document.querySelector('p-flyout').open = true));
-
-      document
-        .querySelectorAll('p-accordion')
-        .forEach((el) => el.addEventListener('update', (e) => (e.target.open = e.detail.open)));
-
-      document.querySelectorAll('p-switch').forEach((el) =>
-        el.addEventListener('update', (e) => {
-          e.target.checked = e.detail.checked;
-
-          // update local storage with selected theme
-          localStorage.setItem('theme', localStorage.getItem('theme') === 'dark' ? 'light' : 'dark');
-
-          updateTheme();
-        })
-      );
-
-      document
-        .querySelectorAll('p-flyout')
-        .forEach((el) => el.addEventListener('dismiss', (e) => (e.target.open = false)));
-
-      function updateTheme() {
-        // update custom theme attribute on body
-        document.querySelector('body').setAttribute('data-theme', localStorage.getItem('theme') || 'light');
-
-        // update theme prop of all PDS components in Light DOM
-        Array.from(document.querySelectorAll('*'))
-          .filter((el) => el.tagName.startsWith('P-'))
-          .forEach((el) => (el.theme = localStorage.getItem('theme') || 'light'));
-      }
-
-      updateTheme();
-    </script>
+    <main></main>
 
     <script>
       <!-- START: keep this snippet to log component lifecycle events -->
@@ -293,23 +139,23 @@
 
         document.querySelector('html').setAttribute('dir', dir);
         const mainEl = document.querySelector('main');
-        // mainEl.querySelectorAll('.playground').forEach((el) => {
-        //   el.classList.remove('light', 'dark', 'auto');
-        //   el.classList.add(theme);
-        // });
-        //
-        // mainEl.querySelectorAll('*').forEach((el) => (el.theme = theme));
+        mainEl.querySelectorAll('.playground').forEach((el) => {
+          el.classList.remove('light', 'dark', 'auto');
+          el.classList.add(theme);
+        });
+
+        mainEl.querySelectorAll('*').forEach((el) => (el.theme = theme));
       };
 
       const updateSelect = (id, value) => {
         if (id && value) {
-          // Array.from(document.querySelectorAll(`#${id} option`)).filter((e) => e.value === value)[0].selected = true;
+          Array.from(document.querySelectorAll(`#${id} option`)).filter((e) => e.value === value)[0].selected = true;
         }
       };
 
-      // updateSelect('theme', getTheme());
-      // updateSelect('dir', getDir());
-      // updateRoute();
+      updateSelect('theme', getTheme());
+      updateSelect('dir', getDir());
+      updateRoute();
     </script>
     <!-- /END -->
   </body>
