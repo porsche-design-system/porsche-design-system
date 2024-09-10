@@ -1340,32 +1340,8 @@ exports[`should match snapshot 1`] = `
     "styling": "jss",
   },
   "p-canvas": {
-    "controlledMeta": [
-      {
-        "event": "dismissSidebarStart",
-        "props": [
-          "sidebarStartOpen",
-        ],
-      },
-      {
-        "event": "dismissSidebarEnd",
-        "props": [
-          "sidebarEndOpen",
-        ],
-      },
-    ],
-    "eventsMeta": {
-      "dismissSidebarEnd": {
-        "description": "Emitted when the component requests to close the sidebar on the end side.",
-        "type": "void",
-      },
-      "dismissSidebarStart": {
-        "description": "Emitted when the component requests to close the sidebar on the start side.",
-        "type": "void",
-      },
-    },
     "hasAriaProp": false,
-    "hasEvent": true,
+    "hasEvent": false,
     "hasObserveAttributes": false,
     "hasObserveChildren": false,
     "hasSlot": true,
@@ -1373,26 +1349,31 @@ exports[`should match snapshot 1`] = `
     "isDelegatingFocus": false,
     "isExperimental": true,
     "isInternal": false,
-    "isThemeable": false,
+    "isThemeable": true,
     "nestedComponents": [
-      "p-button-pure",
+      "p-button",
+      "p-crest",
+      "p-wordmark",
       "p-flyout",
     ],
     "propsMeta": {
+      "sidebarEndIcon": {
+        "allowedValues": "string",
+        "defaultValue": "configurate",
+        "description": "The icon to toggle the Sidebar on the end side",
+        "type": "CanvasSidebarEndIcon",
+      },
       "sidebarEndOpen": {
         "allowedValues": "boolean",
         "defaultValue": false,
         "description": "Open Sidebar on the end side",
         "type": "boolean",
       },
-      "sidebarEndWidth": {
-        "allowedValues": [
-          "medium",
-          "large",
-        ],
-        "defaultValue": "medium",
-        "description": "Defines the width of the sidebar on the end side",
-        "type": "CanvasSidebarEndWidth",
+      "sidebarStartIcon": {
+        "allowedValues": "string",
+        "defaultValue": "menu-lines",
+        "description": "The icon to toggle the Sidebar on the start side",
+        "type": "CanvasSidebarStartIcon",
       },
       "sidebarStartOpen": {
         "allowedValues": "boolean",
@@ -1400,14 +1381,15 @@ exports[`should match snapshot 1`] = `
         "description": "Open Sidebar on the start side",
         "type": "boolean",
       },
-      "sidebarStartWidth": {
+      "theme": {
         "allowedValues": [
-          "medium",
-          "large",
+          "light",
+          "dark",
+          "auto",
         ],
-        "defaultValue": "medium",
-        "description": "Defines the width of the sidebar on the start side",
-        "type": "CanvasSidebarStartWidth",
+        "defaultValue": "light",
+        "description": "Adapts the color depending on the theme. Has no effect when "inherit" is set as color prop.",
+        "type": "Theme",
       },
     },
     "slotsMeta": {
@@ -1417,14 +1399,20 @@ exports[`should match snapshot 1`] = `
       "footer": {
         "description": "Shows a footer section, flowing under the content area when scrollable.",
       },
-      "header": {
-        "description": "Renders a **sticky** header section above the content area.",
+      "header-end": {
+        "description": "Renders a **sticky** header section above the content area on the **end** side (**right** in **LTR** mode / **left** in **RTL** mode).",
+      },
+      "header-start": {
+        "description": "Renders a **sticky** header section above the content area on the **start** side (**left** in **LTR** mode / **right** in **RTL** mode).",
       },
       "sidebar-end": {
         "description": "Shows a sidebar area on the **end** side (**right** in **LTR** mode / **left** in **RTL** mode). On mobile view it transforms into a flyout.",
       },
       "sidebar-start": {
         "description": "Shows a sidebar area on the **start** side (**left** in **LTR** mode / **right** in **RTL** mode). On mobile view it transforms into a flyout.",
+      },
+      "title": {
+        "description": "Application name",
       },
     },
     "styling": "jss",
