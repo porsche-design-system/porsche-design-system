@@ -39,15 +39,16 @@
     eGui;
 
     // Optional: Params for rendering. The same params that are passed to the cellRenderer function.
-    init(params) {
+    init({ data }) {
       let spanElement = document.createElement('span');
       spanElement.classList.add('cell-centered');
 
       let linkElement = document.createElement('p-link-pure');
-      linkElement.href = 'https://www.porsche.com';
-      linkElement.innerHTML = 'Some value';
+      linkElement.href = 'https://www.porsche.com/germany/models/' + data.model.toLowerCase();
+      linkElement.innerHTML = 'More information';
       linkElement.underline = true;
       linkElement.theme = theme;
+      linkElement.target = '_blank';
 
       spanElement.appendChild(linkElement);
 
@@ -116,11 +117,11 @@
       },
       {
         field: 'leadId',
+        headerName: 'More',
         cellRenderer: ButtonRenderer,
         editable: false,
         sortable: false,
         filter: false,
-        width: '150px',
       },
     ],
     // Configurations applied to all columns
