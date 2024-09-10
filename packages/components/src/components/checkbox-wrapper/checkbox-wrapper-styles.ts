@@ -11,6 +11,7 @@ import {
   getInvertedThemedColors,
   getThemedColors,
   hostHiddenStyles,
+  hoverMediaQuery,
   prefersColorSchemeDarkMediaQuery,
   preventFoucOfNestedElementsStyles,
 } from '../../styles';
@@ -106,53 +107,59 @@ export const getComponentCss = (
       },
       ...preventFoucOfNestedElementsStyles,
       // ::slotted(input)
-      ...mergeDeep(getSlottedCheckboxRadioButtonStyles(state, isDisabled, isLoading, theme), {
-        '::slotted': {
-          '&(input)': {
-            gridArea: '1/1',
-            borderRadius: borderRadiusSmall,
-          },
-          // TODO: is it somehow useful possible to make following styles configurable by parameter?
-          ...(!isLoading && {
-            '&(input:checked)': {
-              backgroundImage: getCheckedSVGBackgroundImage(checkedIconColor),
-              ...prefersColorSchemeDarkMediaQuery(theme, {
-                backgroundImage: getCheckedSVGBackgroundImage(checkedIconColorDark),
-                borderColor: checkedColorDark,
-                backgroundColor: checkedColorDark,
-              }),
+      ...addImportantToEachRule(
+        mergeDeep(getSlottedCheckboxRadioButtonStyles(state, isDisabled, isLoading, theme), {
+          '::slotted': {
+            '&(input)': {
+              gridArea: '1/1',
+              borderRadius: borderRadiusSmall,
             },
-            '&(input:indeterminate)': {
-              background, // fix for indeterminate mode and checked in safari
-              borderColor: uncheckedColor, // fix for indeterminate mode and checked in safari
-              backgroundImage: getIndeterminateSVGBackgroundImage(indeterminateIconColor),
-              ...prefersColorSchemeDarkMediaQuery(theme, {
-                backgroundImage: getIndeterminateSVGBackgroundImage(indeterminateIconColorDark),
-                borderColor: uncheckedColorDark, // fix for indeterminate mode and checked in safari
-                backgroundColor: 'transparent',
-              }),
-            },
-          }),
-          ...(!disabledOrLoading && {
-            '&(input:indeterminate:hover),label:hover~.wrapper &(input:indeterminate)': {
-              ...addImportantToEachRule({
-                backgroundColor: 'transparent', // fix for indeterminate mode without formState in safari
-                borderColor: uncheckedHoverColor, // fix for indeterminate mode without formState in safari
-              }),
-              backgroundImage: getIndeterminateSVGBackgroundImage(escapeHashCharacter(indeterminateIconHoverColor)),
-              ...prefersColorSchemeDarkMediaQuery(theme, {
-                backgroundImage: getIndeterminateSVGBackgroundImage(
-                  escapeHashCharacter(indeterminateIconHoverColorDark)
-                ),
-                ...addImportantToEachRule({
-                  // backgroundColor: 'transparent', // fix for indeterminate mode without formState in safari
-                  borderColor: uncheckedHoverColorDark, // fix for indeterminate mode without formState in safari
+            // TODO: is it somehow useful possible to make following styles configurable by parameter?
+            ...(!isLoading && {
+              '&(input:checked)': {
+                backgroundImage: getCheckedSVGBackgroundImage(checkedIconColor),
+                ...prefersColorSchemeDarkMediaQuery(theme, {
+                  backgroundImage: getCheckedSVGBackgroundImage(checkedIconColorDark),
+                  borderColor: checkedColorDark,
+                  backgroundColor: checkedColorDark,
                 }),
-              }),
-            },
-          }),
-        },
-      }),
+              },
+              '&(input:indeterminate)': {
+                background, // fix for indeterminate mode and checked in safari
+                borderColor: uncheckedColor, // fix for indeterminate mode and checked in safari
+                backgroundImage: getIndeterminateSVGBackgroundImage(indeterminateIconColor),
+                ...prefersColorSchemeDarkMediaQuery(theme, {
+                  backgroundImage: getIndeterminateSVGBackgroundImage(indeterminateIconColorDark),
+                  borderColor: uncheckedColorDark, // fix for indeterminate mode and checked in safari
+                  backgroundColor: 'transparent',
+                  ...(disabledOrLoading && {
+                    backgroundImage: getIndeterminateSVGBackgroundImage(indeterminateIconColor),
+                  }),
+                }),
+              },
+            }),
+            ...(!disabledOrLoading &&
+              hoverMediaQuery({
+                '&(input:indeterminate:hover),label:hover~.wrapper &(input:indeterminate)': {
+                  ...addImportantToEachRule({
+                    backgroundColor: 'transparent', // fix for indeterminate mode without formState in safari
+                    borderColor: uncheckedHoverColor, // fix for indeterminate mode without formState in safari
+                  }),
+                  backgroundImage: getIndeterminateSVGBackgroundImage(escapeHashCharacter(indeterminateIconHoverColor)),
+                  ...prefersColorSchemeDarkMediaQuery(theme, {
+                    backgroundImage: getIndeterminateSVGBackgroundImage(
+                      escapeHashCharacter(indeterminateIconHoverColorDark)
+                    ),
+                    ...addImportantToEachRule({
+                      // backgroundColor: 'transparent', // fix for indeterminate mode without formState in safari
+                      borderColor: uncheckedHoverColorDark, // fix for indeterminate mode without formState in safari
+                    }),
+                  }),
+                },
+              })),
+          },
+        })
+      ),
     },
     root: {
       display: 'grid',
