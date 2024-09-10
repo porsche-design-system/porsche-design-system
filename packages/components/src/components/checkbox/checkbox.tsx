@@ -108,7 +108,7 @@ export class Checkbox {
 
   private controllerHost = new ControllerHost(this);
   private loadingCtrl = new InitialLoadingController(this.controllerHost);
-  private input: HTMLInputElement;
+  private inputElement: HTMLInputElement;
 
   @Listen('keydown')
   public onKeydown(e: KeyboardEvent): void {
@@ -120,12 +120,12 @@ export class Checkbox {
 
   @Watch('value')
   public onValueChange(newValue: string): void {
-    this.internals.setFormValue(this.input.checked ? newValue : undefined);
+    this.internals.setFormValue(this.inputElement.checked ? newValue : undefined);
   }
 
   @Watch('indeterminate')
   public onIndeterminateChange(newValue: boolean): void {
-    this.input.indeterminate = newValue;
+    this.inputElement.indeterminate = newValue;
   }
 
   @Watch('checked')
@@ -142,8 +142,8 @@ export class Checkbox {
   }
 
   public componentDidLoad(): void {
-    this.input.indeterminate = this.indeterminate;
-    if (this.input.checked) {
+    this.inputElement.indeterminate = this.indeterminate;
+    if (this.inputElement.checked) {
       this.internals.setFormValue(this.value);
     }
   }
@@ -151,7 +151,7 @@ export class Checkbox {
   public formResetCallback(): void {
     this.internals.setValidity({});
     this.internals.setFormValue(undefined);
-    this.input.checked = false;
+    this.inputElement.checked = false;
     this.checked = false;
   }
 
@@ -187,7 +187,7 @@ export class Checkbox {
             onChange={this.onChange}
             required={this.required}
             disabled={this.disabled}
-            ref={(el: HTMLInputElement) => (this.input = el)}
+            ref={(el: HTMLInputElement) => (this.inputElement = el)}
           />
           {this.loading && (
             <PrefixedTagNames.pSpinner class="spinner" size="inherit" theme={this.theme} aria-hidden="true" />
@@ -199,13 +199,12 @@ export class Checkbox {
     );
   }
 
-  private onChange = (e: Event): void => {
-    const checked = (e.target as HTMLInputElement).checked;
-    this.internals.setFormValue(checked ? this.value : undefined);
+  private onChange = (): void => {
+    this.internals.setFormValue(this.inputElement.checked ? this.value : undefined);
     this.update.emit({
       value: this.value,
       name: this.name,
-      checked: (e.target as HTMLInputElement).checked,
+      checked: this.inputElement.checked,
     });
   };
 }
