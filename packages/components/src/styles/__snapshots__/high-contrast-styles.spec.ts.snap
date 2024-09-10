@@ -36,6 +36,17 @@ exports[`should have only high contrast styles for p-checkbox 1`] = `
 ]
 `;
 
+exports[`should have only high contrast styles for p-checkbox-wrapper 1`] = `
+[
+  {
+    "::slotted(input:checked)": {
+      "background-color": "CanvasText",
+      "border-color": "CanvasText",
+    },
+  },
+]
+`;
+
 exports[`should have only high contrast styles for p-divider 1`] = `
 [
   {

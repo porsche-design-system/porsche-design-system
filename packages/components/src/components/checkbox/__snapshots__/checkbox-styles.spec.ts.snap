@@ -35,7 +35,9 @@ input:checked {
   background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23FBFCFF" d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>');
 }
 input:indeterminate {
-  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23010205" d="m20,11v2H4v-2h16Z"/></svg>');
+  background: transparent 0% 0% / calc(6px + 2.125ex);
+  border-color: #949598;
+  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%237E7F82" d="m20,11v2H4v-2h16Z"/></svg>');
 }
 input::-moz-focus-inner {
   border: 0;
@@ -214,7 +216,9 @@ input:checked {
   background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23010205" d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>');
 }
 input:indeterminate {
-  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23FBFCFF" d="m20,11v2H4v-2h16Z"/></svg>');
+  background: transparent 0% 0% / calc(6px + 2.125ex);
+  border-color: #FC4040;
+  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23FC4040" d="m20,11v2H4v-2h16Z"/></svg>');
 }
 input::-moz-focus-inner {
   border: 0;
@@ -233,6 +237,11 @@ input:focus-visible {
   input:checked:hover,label:hover~.wrapper input:checked {
     border-color: #FB0404;
     background-color: #FB0404;
+  }
+  input:indeterminate:hover,label:hover~.wrapper input:indeterminate {
+    background: transparent 0% 0% / calc(6px + 2.125ex);
+    border-color: #FB0404;
+    background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23FB0404" d="m20,11v2H4v-2h16Z"/></svg>');
   }
 @media screen and (-webkit-min-device-pixel-ratio: 0) and (min-resolution: 0.001dpcm) {
     label:hover~.wrapper input {
@@ -341,7 +350,9 @@ input:checked {
   background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23FBFCFF" d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>');
 }
 input:indeterminate {
-  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23010205" d="m20,11v2H4v-2h16Z"/></svg>');
+  background: transparent 0% 0% / calc(6px + 2.125ex);
+  border-color: #CC1922;
+  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23CC1922" d="m20,11v2H4v-2h16Z"/></svg>');
 }
 input::-moz-focus-inner {
   border: 0;
@@ -360,6 +371,11 @@ input:focus-visible {
   input:checked:hover,label:hover~.wrapper input:checked {
     border-color: #951219;
     background-color: #951219;
+  }
+  input:indeterminate:hover,label:hover~.wrapper input:indeterminate {
+    background: transparent 0% 0% / calc(6px + 2.125ex);
+    border-color: #951219;
+    background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23951219" d="m20,11v2H4v-2h16Z"/></svg>');
   }
 @media screen and (-webkit-min-device-pixel-ratio: 0) and (min-resolution: 0.001dpcm) {
     label:hover~.wrapper input {
@@ -468,7 +484,9 @@ input:checked {
   background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23010205" d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>');
 }
 input:indeterminate {
-  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23FBFCFF" d="m20,11v2H4v-2h16Z"/></svg>');
+  background: transparent 0% 0% / calc(6px + 2.125ex);
+  border-color: #7E7F82;
+  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%237E7F82" d="m20,11v2H4v-2h16Z"/></svg>');
 }
 input::-moz-focus-inner {
   border: 0;
@@ -579,7 +597,9 @@ input:checked {
   background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23FBFCFF" d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>');
 }
 input:indeterminate {
-  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23010205" d="m20,11v2H4v-2h16Z"/></svg>');
+  background: transparent 0% 0% / calc(6px + 2.125ex);
+  border-color: #949598;
+  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%237E7F82" d="m20,11v2H4v-2h16Z"/></svg>');
 }
 input::-moz-focus-inner {
   border: 0;
@@ -690,6 +710,8 @@ input:checked {
   background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23010205" d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>');
 }
 input:indeterminate {
+  background: transparent 0% 0% / calc(6px + 2.125ex);
+  border-color: #88898C;
   background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23FBFCFF" d="m20,11v2H4v-2h16Z"/></svg>');
 }
 input::-moz-focus-inner {
@@ -709,6 +731,11 @@ input:focus-visible {
   input:checked:hover,label:hover~.wrapper input:checked {
     border-color: #AFB0B3;
     background-color: #AFB0B3;
+  }
+  input:indeterminate:hover,label:hover~.wrapper input:indeterminate {
+    background: transparent 0% 0% / calc(6px + 2.125ex);
+    border-color: #FBFCFF;
+    background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23FBFCFF" d="m20,11v2H4v-2h16Z"/></svg>');
   }
 @media screen and (-webkit-min-device-pixel-ratio: 0) and (min-resolution: 0.001dpcm) {
     label:hover~.wrapper input {
@@ -816,6 +843,8 @@ input:checked {
   background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23FBFCFF" d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>');
 }
 input:indeterminate {
+  background: transparent 0% 0% / calc(6px + 2.125ex);
+  border-color: #6B6D70;
   background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23010205" d="m20,11v2H4v-2h16Z"/></svg>');
 }
 input::-moz-focus-inner {
@@ -835,6 +864,11 @@ input:focus-visible {
   input:checked:hover,label:hover~.wrapper input:checked {
     border-color: #535457;
     background-color: #535457;
+  }
+  input:indeterminate:hover,label:hover~.wrapper input:indeterminate {
+    background: transparent 0% 0% / calc(6px + 2.125ex);
+    border-color: #010205;
+    background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23010205" d="m20,11v2H4v-2h16Z"/></svg>');
   }
 @media screen and (-webkit-min-device-pixel-ratio: 0) and (min-resolution: 0.001dpcm) {
     label:hover~.wrapper input {
@@ -942,7 +976,9 @@ input:checked {
   background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23010205" d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>');
 }
 input:indeterminate {
-  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23FBFCFF" d="m20,11v2H4v-2h16Z"/></svg>');
+  background: transparent 0% 0% / calc(6px + 2.125ex);
+  border-color: #7E7F82;
+  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%237E7F82" d="m20,11v2H4v-2h16Z"/></svg>');
 }
 input::-moz-focus-inner {
   border: 0;
@@ -1052,7 +1088,9 @@ input:checked {
   background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23FBFCFF" d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>');
 }
 input:indeterminate {
-  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23010205" d="m20,11v2H4v-2h16Z"/></svg>');
+  background: transparent 0% 0% / calc(6px + 2.125ex);
+  border-color: #949598;
+  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%237E7F82" d="m20,11v2H4v-2h16Z"/></svg>');
 }
 input::-moz-focus-inner {
   border: 0;
@@ -1162,7 +1200,9 @@ input:checked {
   background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23010205" d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>');
 }
 input:indeterminate {
-  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23FBFCFF" d="m20,11v2H4v-2h16Z"/></svg>');
+  background: transparent 0% 0% / calc(6px + 2.125ex);
+  border-color: #09D087;
+  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%2309D087" d="m20,11v2H4v-2h16Z"/></svg>');
 }
 input::-moz-focus-inner {
   border: 0;
@@ -1181,6 +1221,11 @@ input:focus-visible {
   input:checked:hover,label:hover~.wrapper input:checked {
     border-color: #069561;
     background-color: #069561;
+  }
+  input:indeterminate:hover,label:hover~.wrapper input:indeterminate {
+    background: transparent 0% 0% / calc(6px + 2.125ex);
+    border-color: #069561;
+    background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23069561" d="m20,11v2H4v-2h16Z"/></svg>');
   }
 @media screen and (-webkit-min-device-pixel-ratio: 0) and (min-resolution: 0.001dpcm) {
     label:hover~.wrapper input {
@@ -1289,7 +1334,9 @@ input:checked {
   background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23FBFCFF" d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>');
 }
 input:indeterminate {
-  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23010205" d="m20,11v2H4v-2h16Z"/></svg>');
+  background: transparent 0% 0% / calc(6px + 2.125ex);
+  border-color: #197E10;
+  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23197E10" d="m20,11v2H4v-2h16Z"/></svg>');
 }
 input::-moz-focus-inner {
   border: 0;
@@ -1308,6 +1355,11 @@ input:focus-visible {
   input:checked:hover,label:hover~.wrapper input:checked {
     border-color: #0E4809;
     background-color: #0E4809;
+  }
+  input:indeterminate:hover,label:hover~.wrapper input:indeterminate {
+    background: transparent 0% 0% / calc(6px + 2.125ex);
+    border-color: #0E4809;
+    background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%230E4809" d="m20,11v2H4v-2h16Z"/></svg>');
   }
 @media screen and (-webkit-min-device-pixel-ratio: 0) and (min-resolution: 0.001dpcm) {
     label:hover~.wrapper input {
@@ -1416,7 +1468,9 @@ input:checked {
   background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23010205" d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>');
 }
 input:indeterminate {
-  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23FBFCFF" d="m20,11v2H4v-2h16Z"/></svg>');
+  background: transparent 0% 0% / calc(6px + 2.125ex);
+  border-color: #7E7F82;
+  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%237E7F82" d="m20,11v2H4v-2h16Z"/></svg>');
 }
 input::-moz-focus-inner {
   border: 0;
@@ -1527,7 +1581,9 @@ input:checked {
   background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23FBFCFF" d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>');
 }
 input:indeterminate {
-  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23010205" d="m20,11v2H4v-2h16Z"/></svg>');
+  background: transparent 0% 0% / calc(6px + 2.125ex);
+  border-color: #949598;
+  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%237E7F82" d="m20,11v2H4v-2h16Z"/></svg>');
 }
 input::-moz-focus-inner {
   border: 0;
@@ -1638,7 +1694,9 @@ input:checked {
   background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23010205" d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>');
 }
 input:indeterminate {
-  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23FBFCFF" d="m20,11v2H4v-2h16Z"/></svg>');
+  background: transparent 0% 0% / calc(6px + 2.125ex);
+  border-color: #FC4040;
+  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23FC4040" d="m20,11v2H4v-2h16Z"/></svg>');
 }
 input::-moz-focus-inner {
   border: 0;
@@ -1657,6 +1715,11 @@ input:focus-visible {
   input:checked:hover,label:hover~.wrapper input:checked {
     border-color: #FB0404;
     background-color: #FB0404;
+  }
+  input:indeterminate:hover,label:hover~.wrapper input:indeterminate {
+    background: transparent 0% 0% / calc(6px + 2.125ex);
+    border-color: #FB0404;
+    background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23FB0404" d="m20,11v2H4v-2h16Z"/></svg>');
   }
 @media screen and (-webkit-min-device-pixel-ratio: 0) and (min-resolution: 0.001dpcm) {
     label:hover~.wrapper input {
@@ -1763,7 +1826,9 @@ input:checked {
   background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23FBFCFF" d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>');
 }
 input:indeterminate {
-  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23010205" d="m20,11v2H4v-2h16Z"/></svg>');
+  background: transparent 0% 0% / calc(6px + 2.125ex);
+  border-color: #CC1922;
+  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23CC1922" d="m20,11v2H4v-2h16Z"/></svg>');
 }
 input::-moz-focus-inner {
   border: 0;
@@ -1782,6 +1847,11 @@ input:focus-visible {
   input:checked:hover,label:hover~.wrapper input:checked {
     border-color: #951219;
     background-color: #951219;
+  }
+  input:indeterminate:hover,label:hover~.wrapper input:indeterminate {
+    background: transparent 0% 0% / calc(6px + 2.125ex);
+    border-color: #951219;
+    background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23951219" d="m20,11v2H4v-2h16Z"/></svg>');
   }
 @media screen and (-webkit-min-device-pixel-ratio: 0) and (min-resolution: 0.001dpcm) {
     label:hover~.wrapper input {
@@ -1888,7 +1958,9 @@ input:checked {
   background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23010205" d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>');
 }
 input:indeterminate {
-  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23FBFCFF" d="m20,11v2H4v-2h16Z"/></svg>');
+  background: transparent 0% 0% / calc(6px + 2.125ex);
+  border-color: #7E7F82;
+  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%237E7F82" d="m20,11v2H4v-2h16Z"/></svg>');
 }
 input::-moz-focus-inner {
   border: 0;
@@ -1997,7 +2069,9 @@ input:checked {
   background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23FBFCFF" d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>');
 }
 input:indeterminate {
-  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23010205" d="m20,11v2H4v-2h16Z"/></svg>');
+  background: transparent 0% 0% / calc(6px + 2.125ex);
+  border-color: #949598;
+  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%237E7F82" d="m20,11v2H4v-2h16Z"/></svg>');
 }
 input::-moz-focus-inner {
   border: 0;
@@ -2106,6 +2180,8 @@ input:checked {
   background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23010205" d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>');
 }
 input:indeterminate {
+  background: transparent 0% 0% / calc(6px + 2.125ex);
+  border-color: #88898C;
   background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23FBFCFF" d="m20,11v2H4v-2h16Z"/></svg>');
 }
 input::-moz-focus-inner {
@@ -2125,6 +2201,11 @@ input:focus-visible {
   input:checked:hover,label:hover~.wrapper input:checked {
     border-color: #AFB0B3;
     background-color: #AFB0B3;
+  }
+  input:indeterminate:hover,label:hover~.wrapper input:indeterminate {
+    background: transparent 0% 0% / calc(6px + 2.125ex);
+    border-color: #FBFCFF;
+    background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23FBFCFF" d="m20,11v2H4v-2h16Z"/></svg>');
   }
 @media screen and (-webkit-min-device-pixel-ratio: 0) and (min-resolution: 0.001dpcm) {
     label:hover~.wrapper input {
@@ -2230,6 +2311,8 @@ input:checked {
   background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23FBFCFF" d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>');
 }
 input:indeterminate {
+  background: transparent 0% 0% / calc(6px + 2.125ex);
+  border-color: #6B6D70;
   background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23010205" d="m20,11v2H4v-2h16Z"/></svg>');
 }
 input::-moz-focus-inner {
@@ -2249,6 +2332,11 @@ input:focus-visible {
   input:checked:hover,label:hover~.wrapper input:checked {
     border-color: #535457;
     background-color: #535457;
+  }
+  input:indeterminate:hover,label:hover~.wrapper input:indeterminate {
+    background: transparent 0% 0% / calc(6px + 2.125ex);
+    border-color: #010205;
+    background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23010205" d="m20,11v2H4v-2h16Z"/></svg>');
   }
 @media screen and (-webkit-min-device-pixel-ratio: 0) and (min-resolution: 0.001dpcm) {
     label:hover~.wrapper input {
@@ -2580,7 +2668,9 @@ input:checked {
   background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23010205" d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>');
 }
 input:indeterminate {
-  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23FBFCFF" d="m20,11v2H4v-2h16Z"/></svg>');
+  background: transparent 0% 0% / calc(6px + 2.125ex);
+  border-color: #7E7F82;
+  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%237E7F82" d="m20,11v2H4v-2h16Z"/></svg>');
 }
 input::-moz-focus-inner {
   border: 0;
@@ -2688,7 +2778,9 @@ input:checked {
   background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23FBFCFF" d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>');
 }
 input:indeterminate {
-  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23010205" d="m20,11v2H4v-2h16Z"/></svg>');
+  background: transparent 0% 0% / calc(6px + 2.125ex);
+  border-color: #949598;
+  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%237E7F82" d="m20,11v2H4v-2h16Z"/></svg>');
 }
 input::-moz-focus-inner {
   border: 0;
@@ -3022,7 +3114,9 @@ input:checked {
   background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23010205" d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>');
 }
 input:indeterminate {
-  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23FBFCFF" d="m20,11v2H4v-2h16Z"/></svg>');
+  background: transparent 0% 0% / calc(6px + 2.125ex);
+  border-color: #09D087;
+  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%2309D087" d="m20,11v2H4v-2h16Z"/></svg>');
 }
 input::-moz-focus-inner {
   border: 0;
@@ -3041,6 +3135,11 @@ input:focus-visible {
   input:checked:hover,label:hover~.wrapper input:checked {
     border-color: #069561;
     background-color: #069561;
+  }
+  input:indeterminate:hover,label:hover~.wrapper input:indeterminate {
+    background: transparent 0% 0% / calc(6px + 2.125ex);
+    border-color: #069561;
+    background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23069561" d="m20,11v2H4v-2h16Z"/></svg>');
   }
 @media screen and (-webkit-min-device-pixel-ratio: 0) and (min-resolution: 0.001dpcm) {
     label:hover~.wrapper input {
@@ -3147,7 +3246,9 @@ input:checked {
   background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23FBFCFF" d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>');
 }
 input:indeterminate {
-  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23010205" d="m20,11v2H4v-2h16Z"/></svg>');
+  background: transparent 0% 0% / calc(6px + 2.125ex);
+  border-color: #197E10;
+  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23197E10" d="m20,11v2H4v-2h16Z"/></svg>');
 }
 input::-moz-focus-inner {
   border: 0;
@@ -3166,6 +3267,11 @@ input:focus-visible {
   input:checked:hover,label:hover~.wrapper input:checked {
     border-color: #0E4809;
     background-color: #0E4809;
+  }
+  input:indeterminate:hover,label:hover~.wrapper input:indeterminate {
+    background: transparent 0% 0% / calc(6px + 2.125ex);
+    border-color: #0E4809;
+    background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%230E4809" d="m20,11v2H4v-2h16Z"/></svg>');
   }
 @media screen and (-webkit-min-device-pixel-ratio: 0) and (min-resolution: 0.001dpcm) {
     label:hover~.wrapper input {
@@ -3272,7 +3378,9 @@ input:checked {
   background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23010205" d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>');
 }
 input:indeterminate {
-  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23FBFCFF" d="m20,11v2H4v-2h16Z"/></svg>');
+  background: transparent 0% 0% / calc(6px + 2.125ex);
+  border-color: #7E7F82;
+  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%237E7F82" d="m20,11v2H4v-2h16Z"/></svg>');
 }
 input::-moz-focus-inner {
   border: 0;
@@ -3381,7 +3489,9 @@ input:checked {
   background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23FBFCFF" d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>');
 }
 input:indeterminate {
-  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23010205" d="m20,11v2H4v-2h16Z"/></svg>');
+  background: transparent 0% 0% / calc(6px + 2.125ex);
+  border-color: #949598;
+  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%237E7F82" d="m20,11v2H4v-2h16Z"/></svg>');
 }
 input::-moz-focus-inner {
   border: 0;
