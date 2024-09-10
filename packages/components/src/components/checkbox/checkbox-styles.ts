@@ -153,16 +153,15 @@ export const getComponentCss = (
               }),
             },
             'input:indeterminate': {
-              background, // fix for indeterminate mode and checked in safari
-              borderColor: uncheckedColor, // fix for indeterminate mode and checked in safari
+              background, // Safari fix: ensures proper rendering of 'indeterminate' mode with 'checked' state.
+              borderColor: uncheckedColor, // Safari fix: ensures proper rendering of 'indeterminate' mode with 'checked' state.
               backgroundImage: getIndeterminateSVGBackgroundImage(indeterminateIconColor),
               ...prefersColorSchemeDarkMediaQuery(theme, {
-                backgroundImage: getIndeterminateSVGBackgroundImage(indeterminateIconColorDark),
-                borderColor: uncheckedColorDark, // fix for indeterminate mode and checked in safari
-                backgroundColor: 'transparent',
-                ...(disabledOrLoading && {
-                  backgroundImage: getIndeterminateSVGBackgroundImage(indeterminateIconColor),
-                }),
+                backgroundImage: getIndeterminateSVGBackgroundImage(
+                  disabledOrLoading ? indeterminateIconColor : indeterminateIconColorDark
+                ),
+                borderColor: uncheckedColorDark, // Safari fix: ensures proper rendering of 'indeterminate' mode with 'checked' state.
+                backgroundColor: 'transparent', // Safari fix: ensures proper rendering of 'indeterminate' mode with 'checked' state.
               }),
             },
           }
@@ -195,12 +194,12 @@ export const getComponentCss = (
             }),
           },
           'input:indeterminate:hover,label:hover~.wrapper input:indeterminate': {
-            background, // fix for indeterminate mode without formState in safari
-            borderColor: uncheckedHoverColor, // fix for indeterminate mode without formState in safari
+            background, // Safari fix: ensures proper rendering of 'indeterminate' mode with 'checked' state.
+            borderColor: uncheckedHoverColor, // Safari fix: ensures proper rendering of 'indeterminate' mode with 'checked' state.
             backgroundImage: getIndeterminateSVGBackgroundImage(escapeHashCharacter(indeterminateIconHoverColor)),
             ...prefersColorSchemeDarkMediaQuery(theme, {
               backgroundImage: getIndeterminateSVGBackgroundImage(escapeHashCharacter(indeterminateIconHoverColorDark)),
-              borderColor: uncheckedHoverColorDark, // fix for indeterminate mode without formState in safari
+              borderColor: uncheckedHoverColorDark, // Safari fix: ensures proper rendering of 'indeterminate' mode
               backgroundColor: 'transparent',
             }),
           },
