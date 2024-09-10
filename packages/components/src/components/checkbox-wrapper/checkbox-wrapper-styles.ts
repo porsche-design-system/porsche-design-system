@@ -11,7 +11,6 @@ import {
   getInvertedThemedColors,
   getThemedColors,
   hostHiddenStyles,
-  hoverMediaQuery,
   prefersColorSchemeDarkMediaQuery,
   preventFoucOfNestedElementsStyles,
 } from '../../styles';
@@ -26,7 +25,6 @@ import {
 import { getFunctionalComponentLabelStyles } from '../common/label/label-styles';
 import { getFunctionalComponentStateMessageStyles } from '../common/state-message/state-message-styles';
 import { getFunctionalComponentLoadingMessageStyles } from '../common/loading-message/loading-message-styles';
-import { getThemedFormStateColors } from '../../styles/form-state-color-styles';
 
 const getCheckedSVGBackgroundImage = (fill: string): string => {
   return getInlineSVGBackgroundImage(
@@ -45,23 +43,6 @@ export const getComponentCss = (
   isLoading: boolean,
   theme: Theme
 ): string => {
-  const { primaryColor, contrastMediumColor, /* contrastHighColor , */ disabledColor /* , focusColor */ } =
-    getThemedColors(theme);
-  const {
-    primaryColor: primaryColorDark,
-    contrastMediumColor: contrastMediumColorDark,
-    // contrastHighColor: contrastHighColorDark,
-    disabledColor: disabledColorDark,
-    // focusColor: focusColorDark,
-  } = getThemedColors('dark');
-  const { formStateColor, formStateHoverColor } = getThemedFormStateColors(theme, state);
-  const { formStateColor: formStateColorDark, formStateHoverColor: formStateHoverColorDark } = getThemedFormStateColors(
-    'dark',
-    state
-  );
-  const { canvasTextColor } = getHighContrastColors();
-  const disabledOrLoading = isDisabledOrLoading(isDisabled, isLoading);
-
   const { canvasColor } = getHighContrastColors();
   const checkedIconColor = isHighContrastMode
     ? canvasColor
@@ -71,30 +52,10 @@ export const getComponentCss = (
     : escapeHashCharacter(getInvertedThemedColors('dark').primaryColor);
   const indeterminateIconColor = isHighContrastMode
     ? canvasColor
-    : escapeHashCharacter(disabledOrLoading ? disabledColorDark : formStateColor || primaryColor);
+    : escapeHashCharacter(getThemedColors(theme).primaryColor);
   const indeterminateIconColorDark = isHighContrastMode
     ? canvasColor
-    : escapeHashCharacter(formStateColorDark || primaryColorDark);
-
-  const background = `transparent 0% 0% / ${fontLineHeight}`;
-
-  const uncheckedHoverColor = formStateHoverColor || primaryColor;
-  const uncheckedHoverColorDark = formStateHoverColorDark || primaryColorDark;
-  const uncheckedColor = disabledOrLoading ? disabledColor : formStateColor || contrastMediumColor;
-  const uncheckedColorDark = disabledOrLoading ? disabledColorDark : formStateColorDark || contrastMediumColorDark;
-
-  const indeterminateIconHoverColor = isHighContrastMode
-    ? canvasColor
-    : escapeHashCharacter(formStateHoverColor || primaryColor);
-  const indeterminateIconHoverColorDark = isHighContrastMode
-    ? canvasColor
-    : escapeHashCharacter(formStateHoverColorDark || primaryColorDark);
-
-  const checkedColorDark = isHighContrastMode
-    ? canvasTextColor
-    : disabledOrLoading
-      ? disabledColorDark
-      : formStateColorDark || primaryColorDark;
+    : escapeHashCharacter(getThemedColors('dark').primaryColor);
 
   return getCss({
     '@global': {
@@ -120,43 +81,15 @@ export const getComponentCss = (
                 backgroundImage: getCheckedSVGBackgroundImage(checkedIconColor),
                 ...prefersColorSchemeDarkMediaQuery(theme, {
                   backgroundImage: getCheckedSVGBackgroundImage(checkedIconColorDark),
-                  borderColor: checkedColorDark,
-                  backgroundColor: checkedColorDark,
                 }),
               },
               '&(input:indeterminate)': {
-                background, // fix for indeterminate mode and checked in safari
-                borderColor: uncheckedColor, // fix for indeterminate mode and checked in safari
                 backgroundImage: getIndeterminateSVGBackgroundImage(indeterminateIconColor),
                 ...prefersColorSchemeDarkMediaQuery(theme, {
                   backgroundImage: getIndeterminateSVGBackgroundImage(indeterminateIconColorDark),
-                  borderColor: uncheckedColorDark, // fix for indeterminate mode and checked in safari
-                  backgroundColor: 'transparent',
-                  ...(disabledOrLoading && {
-                    backgroundImage: getIndeterminateSVGBackgroundImage(indeterminateIconColor),
-                  }),
                 }),
               },
             }),
-            ...(!disabledOrLoading &&
-              hoverMediaQuery({
-                '&(input:indeterminate:hover),label:hover~.wrapper &(input:indeterminate)': {
-                  ...addImportantToEachRule({
-                    backgroundColor: 'transparent', // fix for indeterminate mode without formState in safari
-                    borderColor: uncheckedHoverColor, // fix for indeterminate mode without formState in safari
-                  }),
-                  backgroundImage: getIndeterminateSVGBackgroundImage(escapeHashCharacter(indeterminateIconHoverColor)),
-                  ...prefersColorSchemeDarkMediaQuery(theme, {
-                    backgroundImage: getIndeterminateSVGBackgroundImage(
-                      escapeHashCharacter(indeterminateIconHoverColorDark)
-                    ),
-                    ...addImportantToEachRule({
-                      // backgroundColor: 'transparent', // fix for indeterminate mode without formState in safari
-                      borderColor: uncheckedHoverColorDark, // fix for indeterminate mode without formState in safari
-                    }),
-                  }),
-                },
-              })),
           },
         })
       ),
@@ -170,7 +103,7 @@ export const getComponentCss = (
       display: 'grid',
       gridArea: '1/1',
       alignSelf: 'flex-start', // in case label becomes multiline
-      ...(disabledOrLoading && {
+      ...(isDisabledOrLoading(isDisabled, isLoading) && {
         // TODO: maybe .wrapper should handle it for all form components while pointer-events: none is set to input
         cursor: 'not-allowed',
       }),
