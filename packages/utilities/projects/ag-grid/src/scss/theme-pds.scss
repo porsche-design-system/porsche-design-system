@@ -1,6 +1,1 @@
 @use '../../../utilities/dist' as *;
-
-:where(.ag-root-wrapper, .ag-measurement-container, .ag-apply-theme-variables, .ag-popup) {
-  --ag-background-color: #{$pds-theme-light-background-base};
-  --ag-foreground-color: #{$pds-theme-light-primary};
-}

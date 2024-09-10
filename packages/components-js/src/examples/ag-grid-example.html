@@ -43,10 +43,11 @@
       let spanElement = document.createElement('span');
       spanElement.classList.add('cell-centered');
 
-      let linkElement = document.createElement('p-link');
+      let linkElement = document.createElement('p-link-pure');
       linkElement.href = 'https://www.porsche.com';
       linkElement.innerHTML = 'Some value';
-      linkElement.compact = true;
+      linkElement.underline = true;
+      linkElement.theme = theme;
 
       spanElement.appendChild(linkElement);
 
