@@ -27,7 +27,7 @@
             "styles": [
               "@porsche-design-system/shared/css/styles.css",
               "ag-grid-enterprise/styles/ag-grid.css",
-              "@porsche-design-system/components-js/ag-grid/theme-light.css"
+              "@porsche-design-system/components-js/ag-grid/theme-pds.css"
             ],
             "inlineStyleLanguage": "scss",
             "scripts": [],
