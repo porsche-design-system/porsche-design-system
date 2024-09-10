@@ -199,12 +199,13 @@ export class Checkbox {
     );
   }
 
-  private onChange = (): void => {
-    this.internals.setFormValue(this.inputElement.checked ? this.value : undefined);
+  private onChange = (e: Event): void => {
+    const checked = (e.target as HTMLInputElement).checked;
+    this.internals.setFormValue(checked ? this.value : undefined);
     this.update.emit({
       value: this.value,
       name: this.name,
-      checked: this.inputElement.checked,
+      checked,
     });
   };
 }
