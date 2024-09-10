@@ -7,8 +7,8 @@ import { escapeHashCharacter } from '../../utils/svg/escapeHashCharacter';
 import {
   addImportantToEachRule,
   colorSchemeStyles,
-  getHighContrastColors,
   getInvertedThemedColors,
+  getSchemedHighContrastMediaQuery,
   getThemedColors,
   hostHiddenStyles,
   prefersColorSchemeDarkMediaQuery,
@@ -43,19 +43,10 @@ export const getComponentCss = (
   isLoading: boolean,
   theme: Theme
 ): string => {
-  const { canvasColor } = getHighContrastColors();
-  const checkedIconColor = isHighContrastMode
-    ? canvasColor
-    : escapeHashCharacter(getInvertedThemedColors(theme).primaryColor);
-  const checkedIconColorDark = isHighContrastMode
-    ? canvasColor
-    : escapeHashCharacter(getInvertedThemedColors('dark').primaryColor);
-  const indeterminateIconColor = isHighContrastMode
-    ? canvasColor
-    : escapeHashCharacter(getThemedColors(theme).primaryColor);
-  const indeterminateIconColorDark = isHighContrastMode
-    ? canvasColor
-    : escapeHashCharacter(getThemedColors('dark').primaryColor);
+  const checkedIconColor = escapeHashCharacter(getInvertedThemedColors(theme).primaryColor);
+  const checkedIconColorDark = escapeHashCharacter(getInvertedThemedColors('dark').primaryColor);
+  const indeterminateIconColor = escapeHashCharacter(getThemedColors(theme).primaryColor);
+  const indeterminateIconColorDark = escapeHashCharacter(getThemedColors('dark').primaryColor);
 
   return getCss({
     '@global': {
@@ -82,12 +73,32 @@ export const getComponentCss = (
                 ...prefersColorSchemeDarkMediaQuery(theme, {
                   backgroundImage: getCheckedSVGBackgroundImage(checkedIconColorDark),
                 }),
+                // This is a workaround for Blink based browsers, which do not reflect the high contrast system colors (e.g.: "Canvas" and "CanvasText") when added to background SVG's.
+                ...(isHighContrastMode &&
+                  getSchemedHighContrastMediaQuery(
+                    {
+                      backgroundImage: getCheckedSVGBackgroundImage('white'),
+                    },
+                    {
+                      backgroundImage: getCheckedSVGBackgroundImage('black'),
+                    }
+                  )),
               },
               '&(input:indeterminate)': {
                 backgroundImage: getIndeterminateSVGBackgroundImage(indeterminateIconColor),
                 ...prefersColorSchemeDarkMediaQuery(theme, {
                   backgroundImage: getIndeterminateSVGBackgroundImage(indeterminateIconColorDark),
                 }),
+                // This is a workaround for Blink based browsers, which do not reflect the high contrast system colors (e.g.: "Canvas" and "CanvasText") when added to background SVG's.
+                ...(isHighContrastMode &&
+                  getSchemedHighContrastMediaQuery(
+                    {
+                      backgroundImage: getIndeterminateSVGBackgroundImage('white'),
+                    },
+                    {
+                      backgroundImage: getIndeterminateSVGBackgroundImage('black'),
+                    }
+                  )),
               },
             }),
           },
