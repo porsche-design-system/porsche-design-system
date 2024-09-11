@@ -10,7 +10,7 @@ import { type CheckboxUpdateEventDetail } from '@porsche-design-system/component
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CheckboxExampleControlledComponent {
-  value: string = '';
+  value: string | undefined = '';
   get debugText(): string {
     return `Value: ${this.value}`;
   }
