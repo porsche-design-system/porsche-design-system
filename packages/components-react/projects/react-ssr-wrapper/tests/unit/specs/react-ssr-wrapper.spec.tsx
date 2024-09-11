@@ -70,6 +70,14 @@ it.each(Object.keys(fromComponents))('should render dsr component for %s', (comp
       readOnly: true,
     };
   }
+
+  if (tagName === 'p-checkbox') {
+    props = {
+      ...props,
+      checked: null,
+    };
+  }
+
   const consoleSpy = vi.spyOn(console, 'error');
   const { container } = render(
     <PorscheDesignSystemProvider>
