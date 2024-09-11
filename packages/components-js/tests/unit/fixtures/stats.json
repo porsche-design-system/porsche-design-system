@@ -41,13 +41,13 @@
   },
   {
     "chunkShortName": "checkbox",
-    "size": 13192,
-    "gzipSize": 5014
+    "size": 13167,
+    "gzipSize": 5013
   },
   {
     "chunkShortName": "checkbox-wrapper",
-    "size": 12963,
-    "gzipSize": 5030
+    "size": 12193,
+    "gzipSize": 4818
   },
   {
     "chunkShortName": "content-wrapper",
