@@ -20,7 +20,7 @@ const initComponent = (): Checkbox => {
   const input = document.createElement('input');
   input.type = 'checkbox';
   component.host.shadowRoot.appendChild(input);
-  component['inputElement'] = input;
+  component['checkboxInputElement'] = input;
   component['internals'] = new MockElementInternals() as unknown as ElementInternals;
 
   mockEmit = jest.fn();
@@ -56,21 +56,21 @@ describe('formResetCallback', () => {
   expect(setValiditySpy).toHaveBeenCalledWith({});
   expect(setFormValueSpy).toHaveBeenCalledWith(undefined);
   expect(component.value).toBe(value);
-  expect(component['inputElement'].value).toBe('on');
+  expect(component['checkboxInputElement'].value).toBe('on');
   expect(component.checked).toBe(false);
-  expect(component['inputElement'].checked).toBe(false);
+  expect(component['checkboxInputElement'].checked).toBe(false);
 });
 
 describe('componentDidLoad', () => {
   it('should call setFormValue() on componentDidLoad() if checkbox is checked', () => {
     const component = initComponent();
     component.value = 'test';
-    component['inputElement'].checked = true;
+    component['checkboxInputElement'].checked = true;
     component.indeterminate = true;
-    expect(component['inputElement'].indeterminate).toBe(false);
+    expect(component['checkboxInputElement'].indeterminate).toBe(false);
     const setFormValueSpy = jest.spyOn(component['internals'], 'setFormValue' as any);
     component.componentDidLoad();
-    expect(component['inputElement'].indeterminate).toBe(true);
+    expect(component['checkboxInputElement'].indeterminate).toBe(true);
     expect(setFormValueSpy).toHaveBeenCalledWith(component.value);
   });
 
