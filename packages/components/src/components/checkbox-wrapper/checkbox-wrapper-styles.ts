@@ -93,10 +93,10 @@ export const getComponentCss = (
                 ...(isHighContrastMode &&
                   getSchemedHighContrastMediaQuery(
                     {
-                      backgroundImage: getIndeterminateSVGBackgroundImage('white'),
+                      backgroundImage: getIndeterminateSVGBackgroundImage('black'),
                     },
                     {
-                      backgroundImage: getIndeterminateSVGBackgroundImage('black'),
+                      backgroundImage: getIndeterminateSVGBackgroundImage('white'),
                     }
                   )),
               },
