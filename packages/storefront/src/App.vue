@@ -327,7 +327,9 @@
 
   #app {
     @include pds-grid;
-    grid-row-gap: $pds-spacing-fluid-x-large;
-    grid-template-rows: repeat(3, auto);
+    & {
+      grid-row-gap: $pds-spacing-fluid-x-large;
+      grid-template-rows: repeat(3, auto);
+    }
   }
 </style>

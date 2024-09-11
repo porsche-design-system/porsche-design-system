@@ -248,16 +248,18 @@
 
         pre {
           @include pds-focus();
-          margin-top: $pds-spacing-static-small;
-          display: block;
-          padding: $pds-spacing-static-small $pds-spacing-static-medium;
-          word-break: break-all;
-          word-wrap: break-word;
-          background-color: var(--theme-custom-background-code);
-          color: var(--theme-primary);
-          border-radius: $pds-border-radius-medium;
-          overflow-x: auto;
-          -webkit-overflow-scrolling: touch;
+          & {
+            margin-top: $pds-spacing-static-small;
+            display: block;
+            padding: $pds-spacing-static-small $pds-spacing-static-medium;
+            word-break: break-all;
+            word-wrap: break-word;
+            background-color: var(--theme-custom-background-code);
+            color: var(--theme-primary);
+            border-radius: $pds-border-radius-medium;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+          }
         }
 
         // Tables
@@ -269,7 +271,9 @@
         a {
           color: inherit;
           @include pds-hover;
-          @include pds-focus('none');
+          & {
+            @include pds-focus('none');
+          }
         }
 
         // Media
