@@ -2,7 +2,7 @@
   const theme = new URL(document.location).searchParams.get('theme') || 'light';
   const grid = document.querySelector('#my-grid');
 
-  grid.classList.add(theme === 'dark' ? 'ag-theme-pds-dark' : 'ag-theme-pds');
+  grid.classList.add(theme === 'light' ? 'ag-theme-pds' : 'ag-theme-pds-dark');
 
   class ImageUrlRenderer {
     eGui;

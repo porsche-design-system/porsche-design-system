@@ -18,7 +18,18 @@ type ColumnDefs = DataAdvanced & {
       <img [src]="value.replace('/porsche-design-system/', '/dummyasset/')" width="80" height="45" alt="" />
     </span>
   `,
-  styles: ['img { object-fit: contain }'],
+  styles: [
+    `
+      img {
+        object-fit: contain;
+      }
+      .cell-centered {
+        height: 100%;
+        display: flex;
+        align-items: center;
+      }
+    `,
+  ],
 })
 class ImageUrlRendererer implements ICellRendererAngularComp {
   // Init Cell Value
@@ -50,7 +61,18 @@ class ImageUrlRendererer implements ICellRendererAngularComp {
       </p-link-pure>
     </span>
   `,
-  styles: ['img { object-fit: contain }'],
+  styles: [
+    `
+      img {
+        object-fit: contain;
+      }
+      .cell-centered {
+        height: 100%;
+        display: flex;
+        align-items: center;
+      }
+    `,
+  ],
   imports: [PorscheDesignSystemModule, AsyncPipe],
 })
 class ButtonRenderer implements ICellRendererAngularComp {
@@ -73,13 +95,13 @@ class ButtonRenderer implements ICellRendererAngularComp {
   selector: 'ag-grid-example',
   template: ` <ag-grid-angular
     style="width: 100%; height: 550px;"
-    [class]="theme === 'dark' ? 'ag-theme-pds-dark' : 'ag-theme-pds'"
+    [class]="theme === 'light' ? 'ag-theme-pds' : 'ag-theme-pds-dark'"
     [rowData]="rowData"
     [columnDefs]="columnDefs"
     [defaultColDef]="defaultColDef"
     [pagination]="true"
-    [sideBar]="sideBar"
-    [enableRangeSelection]="enableRangeSelection"
+    [sideBar]="true"
+    [enableRangeSelection]="true"
   />`,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
@@ -146,9 +168,4 @@ export class AgGridExampleComponent {
     filter: true,
     editable: true,
   };
-  // Grid Options & Callbacks
-  pagination = true;
-  sideBar = true;
-  // loading: true,
-  enableRangeSelection = true;
 }
