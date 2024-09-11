@@ -41,7 +41,7 @@
     },
   };
 
-  const rowData = dataAdvanced.map((row) => ({ active: Math.random() < 0.5 /* random boolean */, ...row }));
+  const rowData = dataAdvanced.map((row, index) => ({ active: Boolean(index % 2) /* odd rows */, ...row }));
 
   const columnDefs = [
     {

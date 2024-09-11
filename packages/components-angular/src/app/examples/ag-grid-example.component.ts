@@ -107,7 +107,7 @@ class ButtonRenderer implements ICellRendererAngularComp {
 })
 export class AgGridExampleComponent {
   public theme: Theme = 'light';
-  rowData = dataAdvanced.map((row) => ({ active: Math.random() < 0.5 /* random boolean */, ...row }));
+  rowData = dataAdvanced.map((row, index) => ({ active: Boolean(index % 2) /* odd rows */, ...row }));
   // Columns to be displayed (Should match rowData properties)
   columnDefs: ColDef<ColumnDefs>[] = [
     {
