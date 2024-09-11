@@ -1,0 +1,13 @@
+<div class="root">
+  <label class="label" id="label" for="checkbox"> </label>
+  <div class="wrapper">
+    <input
+      type="checkbox"
+      id="checkbox"
+      aria-describedby="description message"
+      value="on"
+      name=""
+    />
+  </div>
+  <span id="loading" class="loading" role="status"> </span>
+</div>
