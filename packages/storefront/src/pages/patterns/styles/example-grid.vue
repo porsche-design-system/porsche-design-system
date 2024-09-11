@@ -163,9 +163,11 @@
   .visualize-grid {
     z-index: 9999999;
     @include pds-grid;
-    position: fixed;
-    inset: 0;
-    pointer-events: none;
+    & {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+    }
 
     > span {
       background: rgba(0, 0, 255, 0.1);
@@ -263,7 +265,9 @@
   // Hero
   .hero-grid {
     @include pds-grid;
-    align-items: end;
+    & {
+      align-items: end;
+    }
   }
 
   .hero-media {
@@ -286,7 +290,9 @@
   // Wide Content
   .wide-grid {
     @include pds-grid;
-    margin-top: $pds-spacing-fluid-large;
+    & {
+      margin-top: $pds-spacing-fluid-large;
+    }
   }
 
   .wide-sidebar {
@@ -310,7 +316,9 @@
   // Extended Content
   .extended-content-grid {
     @include pds-grid;
-    margin-top: $pds-spacing-fluid-large;
+    & {
+      margin-top: $pds-spacing-fluid-large;
+    }
   }
 
   .extended-content-half-left {
@@ -326,7 +334,9 @@
   // Masonry
   .masonry-grid {
     @include pds-grid;
-    margin-top: $pds-grid-gap;
+    & {
+      margin-top: $pds-grid-gap;
+    }
   }
 
   .masonry-custom-1 {
@@ -357,7 +367,9 @@
   // Teaser
   .teaser-grid {
     @include pds-grid;
-    margin-top: $pds-spacing-fluid-large;
+    & {
+      margin-top: $pds-spacing-fluid-large;
+    }
   }
 
   .teaser-media {
@@ -376,7 +388,9 @@
   // Basic Content
   .basic-content-grid {
     @include pds-grid;
-    margin-top: $pds-spacing-fluid-large;
+    & {
+      margin-top: $pds-spacing-fluid-large;
+    }
   }
 
   .basic-content {
@@ -442,7 +456,9 @@
   // Narrow Content
   .narrow-content-grid {
     @include pds-grid;
-    margin-top: $pds-spacing-fluid-large;
+    & {
+      margin-top: $pds-spacing-fluid-large;
+    }
   }
 
   .narrow-content {
