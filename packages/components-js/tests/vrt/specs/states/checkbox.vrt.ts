@@ -14,17 +14,17 @@ const component = 'checkbox';
 
 const scenario = async (page: Page, theme: Theme, scheme?: PrefersColorScheme): Promise<void> => {
   const markup = () => `
-    <p-checkbox label="When input gets hovered or focused" name="some-name"/>
-    <p-checkbox class="force-label" label="When label gets hovered or focused" name="some-name" />
-    <p-checkbox label="Disabled" name="some-name" disabled />
-    <p-checkbox label="Disabled and checked" name="some-name" checked disabled />
-    <p-checkbox label="Loading" loading="true" name="some-name" />
-    <p-checkbox label="Loading and Checked" loading="true" name="some-name" checked />
-    <p-checkbox label="State error" state="error" message="Some error validation message." name="some-name" />
-    <p-checkbox label="State success" state="success" message="Some success validation message." name="some-name" />
-    <p-checkbox label="Checked" name="some-name" checked />
-    <p-checkbox label="Checked with state error" state="error" message="Some error validation message." name="some-name" checked />
-    <p-checkbox label="Checked with state success" state="success" message="Some success validation message." name="some-name" checked />
+    <p-checkbox label="When input gets hovered or focused" name="some-name"></p-checkbox>
+    <p-checkbox class="force-label" label="When label gets hovered or focused" name="some-name" ></p-checkbox>
+    <p-checkbox label="Disabled" name="some-name" disabled ></p-checkbox>
+    <p-checkbox label="Disabled and checked" name="some-name" checked disabled ></p-checkbox>
+    <p-checkbox label="Loading" loading="true" name="some-name" ></p-checkbox>
+    <p-checkbox label="Loading and Checked" loading="true" name="some-name" checked ></p-checkbox>
+    <p-checkbox label="State error" state="error" message="Some error validation message." name="some-name" ></p-checkbox>
+    <p-checkbox label="State success" state="success" message="Some success validation message." name="some-name" ></p-checkbox>
+    <p-checkbox label="Checked" name="some-name" checked ></p-checkbox>
+    <p-checkbox label="Checked with state error" state="error" message="Some error validation message." name="some-name" checked ></p-checkbox>
+    <p-checkbox label="Checked with state success" state="success" message="Some success validation message." name="some-name" checked ></p-checkbox>
     <p-checkbox name="some-name">
       <span slot="label">
         Slotted label
