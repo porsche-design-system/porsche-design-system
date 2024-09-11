@@ -108,7 +108,7 @@ export class Checkbox {
 
   private controllerHost = new ControllerHost(this);
   private loadingCtrl = new InitialLoadingController(this.controllerHost);
-  private inputElement: HTMLInputElement;
+  private checkboxInputElement: HTMLInputElement;
 
   @Listen('keydown')
   public onKeydown(e: KeyboardEvent): void {
@@ -120,13 +120,13 @@ export class Checkbox {
 
   @Watch('value')
   public onValueChange(newValue: string): void {
-    this.internals.setFormValue(this.inputElement && this.inputElement.checked ? newValue : undefined);
+    this.internals.setFormValue(this.checkboxInputElement && this.checkboxInputElement.checked ? newValue : undefined);
   }
 
   @Watch('indeterminate')
   public onIndeterminateChange(newValue: boolean): void {
-    if (this.inputElement) {
-      this.inputElement.indeterminate = newValue;
+    if (this.checkboxInputElement) {
+      this.checkboxInputElement.indeterminate = newValue;
     }
   }
 
@@ -144,8 +144,8 @@ export class Checkbox {
   }
 
   public componentDidLoad(): void {
-    this.inputElement.indeterminate = this.indeterminate;
-    if (this.inputElement.checked) {
+    this.checkboxInputElement.indeterminate = this.indeterminate;
+    if (this.checkboxInputElement.checked) {
       this.internals.setFormValue(this.value);
     }
   }
@@ -153,7 +153,7 @@ export class Checkbox {
   public formResetCallback(): void {
     this.internals.setValidity({});
     this.internals.setFormValue(undefined);
-    this.inputElement.checked = false;
+    this.checkboxInputElement.checked = false;
     this.checked = false;
   }
 
@@ -189,7 +189,7 @@ export class Checkbox {
             onChange={this.onChange}
             required={this.required}
             disabled={this.disabled}
-            ref={(el: HTMLInputElement) => (this.inputElement = el)}
+            ref={(el: HTMLInputElement) => (this.checkboxInputElement = el)}
           />
           {this.loading && (
             <PrefixedTagNames.pSpinner class="spinner" size="inherit" theme={this.theme} aria-hidden="true" />
