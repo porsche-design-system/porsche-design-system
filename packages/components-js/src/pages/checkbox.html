@@ -1,11 +1,11 @@
 <div class="playground light auto-layout-inline" title="should render with label">
   <p-checkbox label="Some label" name="some-name"></p-checkbox>
-  <p-checkbox label="Some label" name="some-name" checked></p-checkbox>
+  <p-checkbox label="Some label" name="some-name" checked="true"></p-checkbox>
 </div>
 
 <div class="playground light auto-layout-inline" title="should render without label">
   <p-checkbox label="Some label" hide-label="true" name="some-name"></p-checkbox>
-  <p-checkbox label="Some label" hide-label="true" name="some-name" checked></p-checkbox>
+  <p-checkbox label="Some label" hide-label="true" name="some-name" checked="true"></p-checkbox>
 </div>
 
 <div class="playground light auto-layout-inline" title="should render with responsive label">
@@ -18,50 +18,56 @@
     label="Some label"
     hide-label="{ base: true, xs: false, s: true, m: false, l: true, xl: false }"
     name="some-name"
-    checked
+    checked="true"
   ></p-checkbox>
 </div>
 
 <div class="playground light auto-layout-inline" title="should render in indeterminate mode">
-  <p-checkbox label="Some label" name="some-name" indeterminate></p-checkbox>
-  <p-checkbox label="Some label" name="some-name" checked indeterminate></p-checkbox>
-  <p-checkbox label="Some label" name="some-name" disabled indeterminate></p-checkbox>
-  <p-checkbox label="Some label" name="some-name" state="success" indeterminate></p-checkbox>
-  <p-checkbox label="Some label" name="some-name" state="error" indeterminate></p-checkbox>
+  <p-checkbox label="Some label" name="some-name" indeterminate="true"></p-checkbox>
+  <p-checkbox label="Some label" name="some-name" checked="true" indeterminate="true"></p-checkbox>
+  <p-checkbox label="Some label" name="some-name" disabled="true" indeterminate="true"></p-checkbox>
+  <p-checkbox label="Some label" name="some-name" state="success" indeterminate="true"></p-checkbox>
+  <p-checkbox label="Some label" name="some-name" state="error" indeterminate="true"></p-checkbox>
 </div>
 
 <div class="playground light auto-layout-inline" title="should render in required state">
-  <p-checkbox label="Some label" name="some-name" required></p-checkbox>
+  <p-checkbox label="Some label" name="some-name" required="true"></p-checkbox>
   <p-checkbox
     label="This is a very insanely super long label across multiple lines"
     name="some-name"
-    required
+    required="true"
   ></p-checkbox>
-  <p-checkbox label="Some label" name="some-name" required disabled></p-checkbox>
-  <p-checkbox label="Some label" loading name="some-name" required></p-checkbox>
-  <p-checkbox label="Some label" name="some-name" required checked></p-checkbox>
-  <p-checkbox label="Some label" name="some-name" required checked disabled></p-checkbox>
-  <p-checkbox label="Some label" loading name="some-name" required checked></p-checkbox>
+  <p-checkbox label="Some label" name="some-name" required="true" disabled="true"></p-checkbox>
+  <p-checkbox label="Some label" loading="true" name="some-name" required="true"></p-checkbox>
+  <p-checkbox label="Some label" name="some-name" required="true" checked="true"></p-checkbox>
+  <p-checkbox label="Some label" name="some-name" required="true" checked="true" disabled="true"></p-checkbox>
+  <p-checkbox label="Some label" loading="true" name="some-name" required="true" checked="true"></p-checkbox>
 </div>
 
 <div class="playground light auto-layout-inline" title="should render in disabled state">
-  <p-checkbox label="Some label" name="some-name" disabled></p-checkbox>
-  <p-checkbox label="Some label" name="some-name" checked disabled></p-checkbox>
+  <p-checkbox label="Some label" name="some-name" disabled="true"></p-checkbox>
+  <p-checkbox label="Some label" name="some-name" checked="true" disabled="true"></p-checkbox>
 </div>
 
 <div class="playground light auto-layout-inline" title="should render in loading state">
-  <p-checkbox label="Some label" loading name="some-name"></p-checkbox>
-  <p-checkbox label="Some label" loading name="some-name" checked></p-checkbox>
+  <p-checkbox label="Some label" loading="true" name="some-name"></p-checkbox>
+  <p-checkbox label="Some label" loading="true" name="some-name" checked="true"></p-checkbox>
 </div>
 
 <div class="playground light auto-layout-inline" title="should render with success state and success message">
   <p-checkbox label="Some label" state="success" message="Some success message." name="some-name"></p-checkbox>
-  <p-checkbox label="Some label" state="success" message="Some success message." name="some-name" checked></p-checkbox>
+  <p-checkbox
+    label="Some label"
+    state="success"
+    message="Some success message."
+    name="some-name"
+    checked="true"
+  ></p-checkbox>
 </div>
 
 <div class="playground light auto-layout-inline" title="should render with success state and no success message">
   <p-checkbox label="Some label" state="success" name="some-name"></p-checkbox>
-  <p-checkbox label="Some label" state="success" name="some-name" checked></p-checkbox>
+  <p-checkbox label="Some label" state="success" name="some-name" checked="true"></p-checkbox>
 </div>
 
 <div class="playground light auto-layout-inline" title="should render with error state and error message">
@@ -71,13 +77,13 @@
     state="error"
     message="Some error validation message."
     name="some-name"
-    checked
+    checked="true"
   ></p-checkbox>
 </div>
 
 <div class="playground light auto-layout-inline" title="should render with error state but without error message">
   <p-checkbox label="Some label" state="error" name="some-name"></p-checkbox>
-  <p-checkbox label="Some label" state="error" name="some-name" checked></p-checkbox>
+  <p-checkbox label="Some label" state="error" name="some-name" checked="true"></p-checkbox>
 </div>
 
 <div
@@ -135,7 +141,7 @@
   ></p-checkbox>
   <p-checkbox
     label="Lorem ipsum dolor sit amet, consetetur sadipscing"
-    loading
+    loading="true"
     style="width: 15rem"
     name="some-name"
   ></p-checkbox>
