@@ -109,7 +109,7 @@
     :columnDefs="columnDefs"
     :defaultColDef="defaultColDef"
     style="height: 80vh"
-    :class="theme === 'light' ? 'ag-grid-pds' : 'ag-grid-pds-dark'"
+    :class="theme === 'light' ? 'ag-theme-pds' : 'ag-theme-pds-dark'"
     :pagination="true"
     :sideBar="true"
     :enableRangeSelection="true"
