@@ -18,7 +18,9 @@
   };
 
   const ButtonRenderer = {
-    components: [PLinkPure],
+    components: {
+      PLinkPure,
+    },
     template: `
       <span class="cell-centered">
       <PLinkPure
