@@ -31,7 +31,7 @@
   },
   {
     "chunkShortName": "canvas",
-    "size": 9576,
+    "size": 9616,
     "gzipSize": 3647
   },
   {
@@ -41,8 +41,8 @@
   },
   {
     "chunkShortName": "checkbox-wrapper",
-    "size": 12127,
-    "gzipSize": 4807
+    "size": 12427,
+    "gzipSize": 4890
   },
   {
     "chunkShortName": "content-wrapper",
@@ -191,8 +191,8 @@
   },
   {
     "chunkShortName": "radio-button-wrapper",
-    "size": 11731,
-    "gzipSize": 4664
+    "size": 11953,
+    "gzipSize": 4738
   },
   {
     "chunkShortName": "scroller",
