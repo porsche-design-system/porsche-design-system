@@ -119,7 +119,9 @@
 
   main {
     @include pds-grid;
-    overflow-x: hidden;
+    & {
+      overflow-x: hidden;
+    }
 
     section {
       &:first-of-type {
