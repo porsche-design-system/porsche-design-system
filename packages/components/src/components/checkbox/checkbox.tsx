@@ -59,8 +59,10 @@ const propTypes: PropTypes<typeof Checkbox> = {
 export class Checkbox {
   @Element() public host!: HTMLElement;
 
-  /** The name text. */
-  @Prop() public name?: string = '';
+  /** The name of the checkbox. */
+  @Prop({ reflect: true }) public name: string;
+  // The "name" property is reflected as an attribute to ensure compatibility with native form submission.
+  // In the React wrapper, all props are synced as properties on the element ref, so reflecting "name" as an attribute ensures it is properly handled in the form submission process.
 
   /** Marks the checkbox as required. */
   @Prop() public required?: boolean = false;
