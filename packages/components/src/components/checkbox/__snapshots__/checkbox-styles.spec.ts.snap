@@ -39,16 +39,6 @@ input:indeterminate {
   border-color: #949598;
   background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%237E7F82" d="m20,11v2H4v-2h16Z"/></svg>');
 }
-input::-moz-focus-inner {
-  border: 0;
-}
-input:focus {
-  outline: 0;
-}
-input:focus-visible {
-  outline: 2px solid #1A44EA;
-  outline-offset: 2px;
-}
 .root {
   display: grid;
   grid-template-columns: auto minmax(0, 1fr);
@@ -488,16 +478,6 @@ input:indeterminate {
   border-color: #7E7F82;
   background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%237E7F82" d="m20,11v2H4v-2h16Z"/></svg>');
 }
-input::-moz-focus-inner {
-  border: 0;
-}
-input:focus {
-  outline: 0;
-}
-input:focus-visible {
-  outline: 2px solid #1A44EA;
-  outline-offset: 2px;
-}
 .root {
   display: grid;
   grid-template-columns: auto minmax(0, 1fr);
@@ -600,16 +580,6 @@ input:indeterminate {
   background: transparent 0% 0% / calc(6px + 2.125ex);
   border-color: #949598;
   background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%237E7F82" d="m20,11v2H4v-2h16Z"/></svg>');
-}
-input::-moz-focus-inner {
-  border: 0;
-}
-input:focus {
-  outline: 0;
-}
-input:focus-visible {
-  outline: 2px solid #1A44EA;
-  outline-offset: 2px;
 }
 .root {
   display: grid;
@@ -980,16 +950,6 @@ input:indeterminate {
   border-color: #7E7F82;
   background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%237E7F82" d="m20,11v2H4v-2h16Z"/></svg>');
 }
-input::-moz-focus-inner {
-  border: 0;
-}
-input:focus {
-  outline: 0;
-}
-input:focus-visible {
-  outline: 2px solid #1A44EA;
-  outline-offset: 2px;
-}
 .root {
   display: grid;
   grid-template-columns: auto minmax(0, 1fr);
@@ -1091,16 +1051,6 @@ input:indeterminate {
   background: transparent 0% 0% / calc(6px + 2.125ex);
   border-color: #949598;
   background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%237E7F82" d="m20,11v2H4v-2h16Z"/></svg>');
-}
-input::-moz-focus-inner {
-  border: 0;
-}
-input:focus {
-  outline: 0;
-}
-input:focus-visible {
-  outline: 2px solid #1A44EA;
-  outline-offset: 2px;
 }
 .root {
   display: grid;
@@ -1472,16 +1422,6 @@ input:indeterminate {
   border-color: #7E7F82;
   background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%237E7F82" d="m20,11v2H4v-2h16Z"/></svg>');
 }
-input::-moz-focus-inner {
-  border: 0;
-}
-input:focus {
-  outline: 0;
-}
-input:focus-visible {
-  outline: 2px solid #1A44EA;
-  outline-offset: 2px;
-}
 .root {
   display: grid;
   grid-template-columns: auto minmax(0, 1fr);
@@ -1584,16 +1524,6 @@ input:indeterminate {
   background: transparent 0% 0% / calc(6px + 2.125ex);
   border-color: #949598;
   background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%237E7F82" d="m20,11v2H4v-2h16Z"/></svg>');
-}
-input::-moz-focus-inner {
-  border: 0;
-}
-input:focus {
-  outline: 0;
-}
-input:focus-visible {
-  outline: 2px solid #1A44EA;
-  outline-offset: 2px;
 }
 .root {
   display: grid;
@@ -1962,16 +1892,6 @@ input:indeterminate {
   border-color: #7E7F82;
   background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%237E7F82" d="m20,11v2H4v-2h16Z"/></svg>');
 }
-input::-moz-focus-inner {
-  border: 0;
-}
-input:focus {
-  outline: 0;
-}
-input:focus-visible {
-  outline: 2px solid #1A44EA;
-  outline-offset: 2px;
-}
 .root {
   display: grid;
   grid-template-columns: auto minmax(0, 1fr);
@@ -2072,16 +1992,6 @@ input:indeterminate {
   background: transparent 0% 0% / calc(6px + 2.125ex);
   border-color: #949598;
   background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%237E7F82" d="m20,11v2H4v-2h16Z"/></svg>');
-}
-input::-moz-focus-inner {
-  border: 0;
-}
-input:focus {
-  outline: 0;
-}
-input:focus-visible {
-  outline: 2px solid #1A44EA;
-  outline-offset: 2px;
 }
 .root {
   display: grid;
@@ -2672,16 +2582,6 @@ input:indeterminate {
   border-color: #7E7F82;
   background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%237E7F82" d="m20,11v2H4v-2h16Z"/></svg>');
 }
-input::-moz-focus-inner {
-  border: 0;
-}
-input:focus {
-  outline: 0;
-}
-input:focus-visible {
-  outline: 2px solid #1A44EA;
-  outline-offset: 2px;
-}
 .root {
   display: grid;
   grid-template-columns: auto minmax(0, 1fr);
@@ -2782,16 +2682,6 @@ input:indeterminate {
   border-color: #949598;
   background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%237E7F82" d="m20,11v2H4v-2h16Z"/></svg>');
 }
-input::-moz-focus-inner {
-  border: 0;
-}
-input:focus {
-  outline: 0;
-}
-input:focus-visible {
-  outline: 2px solid #1A44EA;
-  outline-offset: 2px;
-}
 .root {
   display: grid;
   grid-template-columns: auto minmax(0, 1fr);
@@ -2885,16 +2775,6 @@ input {
 input:checked {
   border-color: #7E7F82;
   background-color: #7E7F82;
-}
-input::-moz-focus-inner {
-  border: 0;
-}
-input:focus {
-  outline: 0;
-}
-input:focus-visible {
-  outline: 2px solid #1A44EA;
-  outline-offset: 2px;
 }
 .root {
   display: grid;
@@ -2998,16 +2878,6 @@ input {
 input:checked {
   border-color: #949598;
   background-color: #949598;
-}
-input::-moz-focus-inner {
-  border: 0;
-}
-input:focus {
-  outline: 0;
-}
-input:focus-visible {
-  outline: 2px solid #1A44EA;
-  outline-offset: 2px;
 }
 .root {
   display: grid;
@@ -3382,16 +3252,6 @@ input:indeterminate {
   border-color: #7E7F82;
   background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%237E7F82" d="m20,11v2H4v-2h16Z"/></svg>');
 }
-input::-moz-focus-inner {
-  border: 0;
-}
-input:focus {
-  outline: 0;
-}
-input:focus-visible {
-  outline: 2px solid #1A44EA;
-  outline-offset: 2px;
-}
 .root {
   display: grid;
   grid-template-columns: auto minmax(0, 1fr);
@@ -3492,16 +3352,6 @@ input:indeterminate {
   background: transparent 0% 0% / calc(6px + 2.125ex);
   border-color: #949598;
   background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%237E7F82" d="m20,11v2H4v-2h16Z"/></svg>');
-}
-input::-moz-focus-inner {
-  border: 0;
-}
-input:focus {
-  outline: 0;
-}
-input:focus-visible {
-  outline: 2px solid #1A44EA;
-  outline-offset: 2px;
 }
 .root {
   display: grid;
