@@ -8,6 +8,7 @@ import {
   colorSchemeStyles,
   getHighContrastColors,
   getInvertedThemedColors,
+  getSchemedHighContrastMediaQuery,
   getThemedColors,
   getTransition,
   hostHiddenStyles,
@@ -80,26 +81,18 @@ export const getComponentCss = (
   const checkedHoverColor = formStateHoverColor || contrastHighColor;
   const checkedHoverColorDark = formStateHoverColorDark || contrastHighColorDark;
 
-  const { canvasColor } = getHighContrastColors();
-  const checkedIconColor = isHighContrastMode
-    ? canvasColor
-    : escapeHashCharacter(getInvertedThemedColors(theme).primaryColor);
-  const checkedIconColorDark = isHighContrastMode
-    ? canvasColor
-    : escapeHashCharacter(getInvertedThemedColors('dark').primaryColor);
-  const indeterminateIconColor = isHighContrastMode
-    ? canvasColor
-    : escapeHashCharacter(disabledOrLoading ? disabledColorDark : formStateColor || primaryColor);
-  const indeterminateIconColorDark = isHighContrastMode
-    ? canvasColor
-    : escapeHashCharacter(formStateColorDark || primaryColorDark);
+  const checkedIconColor = escapeHashCharacter(getInvertedThemedColors(theme).primaryColor);
+  const checkedIconColorDark = escapeHashCharacter(getInvertedThemedColors('dark').primaryColor);
 
-  const indeterminateIconHoverColor = isHighContrastMode
-    ? canvasColor
-    : escapeHashCharacter(formStateHoverColor || primaryColor);
-  const indeterminateIconHoverColorDark = isHighContrastMode
-    ? canvasColor
-    : escapeHashCharacter(formStateHoverColorDark || primaryColorDark);
+  const indeterminateIconColor = escapeHashCharacter(
+    disabledOrLoading ? disabledColorDark : formStateColor || primaryColor
+  );
+  // const indeterminateIconColor = escapeHashCharacter(getThemedColors(theme).primaryColor);
+  const indeterminateIconColorDark = escapeHashCharacter(formStateColorDark || primaryColorDark);
+  // const indeterminateIconColorDark = escapeHashCharacter(getThemedColors('dark').primaryColor);
+
+  const indeterminateIconHoverColor = escapeHashCharacter(formStateHoverColor || primaryColor);
+  const indeterminateIconHoverColorDark = escapeHashCharacter(formStateHoverColorDark || primaryColorDark);
 
   const background = `transparent 0% 0% / ${fontLineHeight}`;
 
@@ -151,6 +144,16 @@ export const getComponentCss = (
                 borderColor: checkedColorDark,
                 backgroundColor: checkedColorDark,
               }),
+              // This is a workaround for Blink based browsers, which do not reflect the high contrast system colors (e.g.: "Canvas" and "CanvasText") when added to background SVG's.
+              ...(isHighContrastMode &&
+                getSchemedHighContrastMediaQuery(
+                  {
+                    backgroundImage: getCheckedSVGBackgroundImage('white'),
+                  },
+                  {
+                    backgroundImage: getCheckedSVGBackgroundImage('black'),
+                  }
+                )),
             },
             'input:indeterminate': {
               background, // Safari fix: ensures proper rendering of 'indeterminate' mode with 'checked' state.
@@ -163,6 +166,16 @@ export const getComponentCss = (
                 borderColor: uncheckedColorDark, // Safari fix: ensures proper rendering of 'indeterminate' mode with 'checked' state.
                 backgroundColor: 'transparent', // Safari fix: ensures proper rendering of 'indeterminate' mode with 'checked' state.
               }),
+              // This is a workaround for Blink based browsers, which do not reflect the high contrast system colors (e.g.: "Canvas" and "CanvasText") when added to background SVG's.
+              ...(isHighContrastMode &&
+                getSchemedHighContrastMediaQuery(
+                  {
+                    backgroundImage: getIndeterminateSVGBackgroundImage('black'),
+                  },
+                  {
+                    backgroundImage: getIndeterminateSVGBackgroundImage('white'),
+                  }
+                )),
             },
           }
         : {
