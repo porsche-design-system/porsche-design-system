@@ -1687,7 +1687,7 @@ exports[`should match snapshot 1`] = `
       "name": {
         "allowedValues": "string",
         "defaultValue": "",
-        "description": "The name text.",
+        "description": "The name of the checkbox.",
         "type": "string",
       },
       "required": {
