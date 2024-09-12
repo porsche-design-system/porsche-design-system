@@ -55,13 +55,13 @@ const scenario = async (page: Page, theme: Theme, scheme?: PrefersColorScheme): 
     prefersColorScheme: scheme,
   });
 
-  await forceHoverState(page, '.hover p-checkbox:not(.force-label)');
+  await forceHoverState(page, '.hover p-checkbox:not(.force-label) >>> input');
   await forceHoverState(page, '.hover p-checkbox.force-label >>> label');
   await forceHoverState(page, '.hover p-checkbox span a');
-  await forceFocusVisibleState(page, '.focus p-checkbox');
+  await forceFocusVisibleState(page, '.focus p-checkbox >>> input');
   await forceFocusVisibleState(page, '.focus p-checkbox span a');
-  await forceFocusHoverState(page, '.focus-hover p-checkbox:not(.force-label)');
-  await forceFocusVisibleState(page, '.focus-hover p-checkbox.force-label');
+  await forceFocusHoverState(page, '.focus-hover p-checkbox:not(.force-label) >>> input');
+  await forceFocusVisibleState(page, '.focus-hover p-checkbox.force-label >>> input');
   await forceHoverState(page, '.focus-hover p-checkbox.force-label >>> label');
   await forceFocusHoverState(page, '.focus-hover p-checkbox span a');
 };
