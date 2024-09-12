@@ -60,7 +60,7 @@ export class Checkbox {
   @Element() public host!: HTMLElement;
 
   /** The name of the checkbox. */
-  @Prop({ reflect: true }) public name: string;
+  @Prop({ reflect: true }) public name?: string = '';
   // The "name" property is reflected as an attribute to ensure compatibility with native form submission.
   // In the React wrapper, all props are synced as properties on the element ref, so reflecting "name" as an attribute ensures it is properly handled in the form submission process.
 
