@@ -207,19 +207,21 @@ export const getComponentCss = (
             transition: 'unset', // Fixes chrome bug where transition properties are stuck on hover
           }),
         })),
-      'input::-moz-focus-inner': {
-        border: 0, // reset ua-style (for FF)
-      },
-      'input:focus': {
-        outline: 0, // reset ua-style (for older browsers)
-      },
-      'input:focus-visible': {
-        outline: `${borderWidthBase} solid ${focusColor}`,
-        outlineOffset: '2px',
-        ...prefersColorSchemeDarkMediaQuery(theme, {
-          outlineColor: focusColorDark,
-        }),
-      },
+      ...(!isDisabled && {
+        'input::-moz-focus-inner': {
+          border: 0, // reset ua-style (for FF)
+        },
+        'input:focus': {
+          outline: 0, // reset ua-style (for older browsers)
+        },
+        'input:focus-visible': {
+          outline: `${borderWidthBase} solid ${focusColor}`,
+          outlineOffset: '2px',
+          ...prefersColorSchemeDarkMediaQuery(theme, {
+            outlineColor: focusColorDark,
+          }),
+        },
+      }),
     },
     root: {
       display: 'grid',
