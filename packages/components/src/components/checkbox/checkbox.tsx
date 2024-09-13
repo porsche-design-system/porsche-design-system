@@ -44,6 +44,7 @@ const propTypes: PropTypes<typeof Checkbox> = {
   message: AllowedTypes.string,
   hideLabel: AllowedTypes.breakpoint('boolean'),
   loading: AllowedTypes.boolean,
+  compact: AllowedTypes.boolean,
   theme: AllowedTypes.oneOf<Theme>(THEMES),
 };
 
@@ -74,7 +75,7 @@ export class Checkbox {
   @Prop() public indeterminate?: boolean = false;
 
   /** Marks the checkbox as pre-selected (checked) on initial load. */
-  @Prop() public checked?: boolean = false;
+  @Prop({ mutable: true }) public checked?: boolean = false;
 
   /** The id of a form element the checkbox should be associated with. */
   @Prop() public form?: string;
@@ -99,6 +100,9 @@ export class Checkbox {
 
   /** @experimental Disables the checkbox and shows a loading indicator. */
   @Prop() public loading?: boolean = false;
+
+  /** Displays as compact version. */
+  @Prop() public compact?: boolean = false;
 
   /** Adapts the color depending on the theme. */
   @Prop() public theme?: Theme = 'light';
@@ -162,7 +166,16 @@ export class Checkbox {
   public render(): JSX.Element {
     validateProps(this, propTypes);
 
-    attachComponentCss(this.host, getComponentCss, this.hideLabel, this.state, this.disabled, this.loading, this.theme);
+    attachComponentCss(
+      this.host,
+      getComponentCss,
+      this.hideLabel,
+      this.state,
+      this.disabled,
+      this.loading,
+      this.compact,
+      this.theme
+    );
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
@@ -177,7 +190,7 @@ export class Checkbox {
           isDisabled={this.disabled}
           isRequired={this.required}
         />
-        <div class="wrapper">
+        <div class="wrapper" onClick={this.onClick}>
           <input
             type="checkbox"
             id={id}
@@ -188,7 +201,6 @@ export class Checkbox {
             form={this.form}
             value={this.value}
             name={this.name}
-            onChange={this.onChange}
             required={this.required}
             disabled={this.disabled}
             ref={(el: HTMLInputElement) => (this.checkboxInputElement = el)}
@@ -203,13 +215,17 @@ export class Checkbox {
     );
   }
 
-  private onChange = (e: Event): void => {
-    const checked = (e.target as HTMLInputElement).checked;
-    this.internals.setFormValue(checked ? this.value : undefined);
+  private onClick = (): void => {
+    if (this.disabled || this.loading) {
+      return;
+    }
+    const checkedToggle = !this.checked;
+    this.checked = checkedToggle;
+    this.internals.setFormValue(checkedToggle ? this.value : undefined);
     this.update.emit({
       value: this.value,
       name: this.name,
-      checked,
+      checked: checkedToggle,
     });
   };
 }
