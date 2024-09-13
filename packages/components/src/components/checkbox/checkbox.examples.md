@@ -104,6 +104,14 @@ automatically, you can use the `update` event to update the external state.
 <p-text :theme="theme">{{ selectedValueControlled }}</p-text>
 </Playground>
 
+## Compact
+
+By setting `compact` to `true` you can have a more compact checkbox with reduced dimensions.
+
+<Playground :markup="compact" :config="config"></Playground>
+
+---
+
 <script lang="ts">
 import Vue from 'vue';
 import {getCheckboxCodeSamples} from "shared/src";
@@ -153,6 +161,9 @@ export default class Code extends Vue {
 <p-checkbox label="Some label" loading="${this.isLoading}" name="some-name" checked>
 </p-checkbox>`;
   }
+
+  compact = `<p-checkbox compact="true" label="Some label"></p-checkbox>
+<p-checkbox compact="true" checked="true" label="Some label"></p-checkbox>`;
 
 
   state = 'error';
