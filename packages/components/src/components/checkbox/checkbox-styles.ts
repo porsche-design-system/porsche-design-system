@@ -15,6 +15,7 @@ import {
   hoverMediaQuery,
   prefersColorSchemeDarkMediaQuery,
   preventFoucOfNestedElementsStyles,
+  SCALING_BASE_VALUE,
 } from '../../styles';
 import {
   borderRadiusSmall,
@@ -40,11 +41,14 @@ const getIndeterminateSVGBackgroundImage = (fill: string): string => {
   return getInlineSVGBackgroundImage(`<path fill="${fill}" d="m20,11v2H4v-2h16Z"/>`);
 };
 
+const cssVarInternalCheckboxScaling = '--p-internal-checkbox-scaling';
+
 export const getComponentCss = (
   hideLabel: BreakpointCustomizable<boolean>,
   state: FormState,
   isDisabled: boolean,
   isLoading: boolean,
+  compact: boolean,
   theme: Theme
 ): string => {
   const { primaryColor, contrastMediumColor, contrastHighColor, disabledColor, focusColor } = getThemedColors(theme);
@@ -87,14 +91,19 @@ export const getComponentCss = (
   const indeterminateIconColor = escapeHashCharacter(
     disabledOrLoading ? disabledColorDark : formStateColor || primaryColor
   );
-  // const indeterminateIconColor = escapeHashCharacter(getThemedColors(theme).primaryColor);
   const indeterminateIconColorDark = escapeHashCharacter(formStateColorDark || primaryColorDark);
-  // const indeterminateIconColorDark = escapeHashCharacter(getThemedColors('dark').primaryColor);
 
   const indeterminateIconHoverColor = escapeHashCharacter(formStateHoverColor || primaryColor);
   const indeterminateIconHoverColorDark = escapeHashCharacter(formStateHoverColorDark || primaryColorDark);
 
+  const minimumTouchTargetSize = '24px';
   const background = `transparent 0% 0% / ${fontLineHeight}`;
+
+  const scalingVar = `var(${cssVarInternalCheckboxScaling}, ${compact ? 0.6668 : 1})`; // Compact mode needs to have 20px dimension thus this scaling factor
+  const dimension = `calc(max(${SCALING_BASE_VALUE} * 0.75, ${scalingVar} * ${fontLineHeight}))`; // 0.75 * SCALING_BASE_VALUE corresponds to 12px and is the minimum size of the checkbox without border
+  const dimensionFull = `calc(${dimension} + ${borderWidthBase} * 2)`;
+  const paddingInlineStart = `calc(${spacingStaticSmall} - (max(0px, ${minimumTouchTargetSize} - ${dimensionFull})))`;
+  const paddingTop = `calc((${dimensionFull} - ${fontLineHeight}) / 2)`;
 
   return getCss({
     '@global': {
@@ -107,8 +116,8 @@ export const getComponentCss = (
       },
       ...preventFoucOfNestedElementsStyles,
       input: {
-        width: fontLineHeight,
-        height: fontLineHeight,
+        width: dimension,
+        height: dimension,
         font: `${fontSizeTextSmall} ${fontFamily}`, // needed for correct width and height definition based on ex-unit
         display: 'block',
         margin: 0,
@@ -132,6 +141,9 @@ export const getComponentCss = (
         }),
         gridArea: '1/1',
         borderRadius: borderRadiusSmall,
+        ...addImportantToEachRule({
+          backgroundSize: 'cover',
+        }),
       },
       ...(!isLoading
         ? {
@@ -192,13 +204,13 @@ export const getComponentCss = (
       ...(!disabledOrLoading &&
         !isHighContrastMode &&
         hoverMediaQuery({
-          'input:hover,label:hover~.wrapper input': {
+          '.wrapper:hover input,input:hover,label:hover~.wrapper input': {
             borderColor: uncheckedHoverColor,
             ...prefersColorSchemeDarkMediaQuery(theme, {
               borderColor: uncheckedHoverColorDark,
             }),
           },
-          'input:checked:hover,label:hover~.wrapper input:checked': {
+          '.wrapper:hover input:checked,input:checked:hover,label:hover~.wrapper input:checked': {
             borderColor: checkedHoverColor,
             backgroundColor: checkedHoverColor,
             ...prefersColorSchemeDarkMediaQuery(theme, {
@@ -206,7 +218,7 @@ export const getComponentCss = (
               backgroundColor: checkedHoverColorDark,
             }),
           },
-          'input:indeterminate:hover,label:hover~.wrapper input:indeterminate': {
+          '.wrapper:hover input:indeterminate,input:indeterminate:hover,label:hover~.wrapper input:indeterminate': {
             background, // Safari fix: ensures proper rendering of 'indeterminate' mode with 'checked' state.
             borderColor: uncheckedHoverColor, // Safari fix: ensures proper rendering of 'indeterminate' mode with 'checked' state.
             backgroundImage: getIndeterminateSVGBackgroundImage(escapeHashCharacter(indeterminateIconHoverColor)),
@@ -242,6 +254,11 @@ export const getComponentCss = (
       rowGap: spacingStaticXSmall,
     },
     wrapper: {
+      cursor: 'pointer',
+      minWidth: minimumTouchTargetSize,
+      minHeight: minimumTouchTargetSize,
+      justifyContent: 'center',
+      alignItems: 'center',
       display: 'grid',
       gridArea: '1/1',
       alignSelf: 'flex-start', // in case label becomes multiline
@@ -254,8 +271,8 @@ export const getComponentCss = (
         position: 'relative', // ensure correct stacking, can be removed as soon as focus for input is handled with outline
         gridArea: '1/1',
         placeSelf: 'center',
-        width: fontLineHeight,
-        height: fontLineHeight,
+        width: dimension,
+        height: dimension,
         font: `${fontSizeTextSmall} ${fontFamily}`, // needed for correct width and height definition based on ex-unit
         pointerEvents: 'none',
       },
@@ -269,8 +286,8 @@ export const getComponentCss = (
         gridArea: '1/2',
       },
       {
-        paddingTop: '2px', // compensate vertical alignment
-        paddingInlineStart: spacingStaticSmall, // asymmetric padding used instead of gap to prevent not clickable area between label and input
+        paddingTop, // compensate vertical alignment
+        paddingInlineStart, // asymmetric padding used instead of gap to prevent not clickable area between label and input
       }
     ),
     // .message
