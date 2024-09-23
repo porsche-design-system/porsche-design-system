@@ -87,9 +87,7 @@ export const getComponentCss = (
   const indeterminateIconColor = escapeHashCharacter(
     disabledOrLoading ? disabledColorDark : formStateColor || primaryColor
   );
-  // const indeterminateIconColor = escapeHashCharacter(getThemedColors(theme).primaryColor);
   const indeterminateIconColorDark = escapeHashCharacter(formStateColorDark || primaryColorDark);
-  // const indeterminateIconColorDark = escapeHashCharacter(getThemedColors('dark').primaryColor);
 
   const indeterminateIconHoverColor = escapeHashCharacter(formStateHoverColor || primaryColor);
   const indeterminateIconHoverColorDark = escapeHashCharacter(formStateHoverColorDark || primaryColorDark);
