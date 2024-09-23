@@ -462,3 +462,37 @@ test.describe('form', () => {
     expect(await getFormDataValue(form, name)).toBe(null);
   });
 });
+
+test.describe('Event', () => {
+  skipInBrowsers(['firefox', 'webkit'], () => {
+    test('should trigger a update event when checkbox checked state has changed', async ({ page }) => {
+      const value = 'some-value';
+      await initCheckbox(page, { value });
+      const host = getHost(page);
+      const input = getInput(page);
+
+      await addEventListener(host, 'update');
+      expect((await getEventSummary(host, 'update')).counter).toBe(0);
+
+      await input.click();
+      await waitForStencilLifecycle(page);
+
+      expect((await getEventSummary(host, 'update')).counter).toBe(1);
+      expect((await getEventSummary(host, 'update')).details).toEqual([{ checked: true, name: 'some-name', value }]);
+    });
+    test('should trigger a blur event when the checkbox loses focus', async ({ page }) => {
+      await initCheckbox(page);
+      const host = getHost(page);
+      const input = getInput(page);
+
+      await addEventListener(host, 'blur');
+      expect((await getEventSummary(host, 'blur')).counter).toBe(0);
+
+      await input.click();
+      await input.press('Tab');
+      await waitForStencilLifecycle(page);
+
+      expect((await getEventSummary(host, 'blur')).counter).toBe(1);
+    });
+  });
+});
