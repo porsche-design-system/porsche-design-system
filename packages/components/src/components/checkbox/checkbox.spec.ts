@@ -26,6 +26,7 @@ const initComponent = (): Checkbox => {
   mockEmit = jest.fn();
 
   component.update = { emit: mockEmit } as any;
+  component.blur = { emit: mockEmit } as any;
   return component;
 };
 
@@ -80,6 +81,22 @@ describe('componentDidLoad', () => {
     const setFormValueSpy = jest.spyOn(component['internals'], 'setFormValue' as any);
     component.componentDidLoad();
     expect(setFormValueSpy).not.toHaveBeenCalled();
+  });
+});
+
+describe('onBlur', () => {
+  it('should stop propagation and emit blur event on onBlur', () => {
+    const component = initComponent();
+    const event = {
+      stopPropagation: jest.fn(),
+      stopImmediatePropagation: jest.fn(),
+    } as unknown as Event;
+
+    component['onBlur'](event);
+
+    expect(event.stopPropagation).toHaveBeenCalled();
+    expect(event.stopImmediatePropagation).toHaveBeenCalled();
+    expect(mockEmit).toHaveBeenCalledWith(event);
   });
 });
 
