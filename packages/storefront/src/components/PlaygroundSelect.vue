@@ -3,7 +3,7 @@
     <select :value="value" :aria-label="name" @input="$emit('input', $event.target.value)">
       <option disabled>{{ `Select ${name}` }}</option>
       <!-- prettier-ignore -->
-      <option v-for="option in processedValues" :key="option.value" :value="option.value">
+      <option v-for="option in processedValues" :key="option.value" :value="`${option.value}`.replace(' (deprecated)', '')">
         {{ option.label }}
       </option>
     </select>
