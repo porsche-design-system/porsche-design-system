@@ -1,19 +1,21 @@
 <div class="canvas">
-  <header part="header">
-    <slot name="header"> </slot>
+  <header>
+    <div class="header">
+      <h2>
+        <slot name="title"> </slot>
+      </h2>
+      <slot name="header-start"> </slot>
+    </div>
+    <p-crest class="crest hydrated"> </p-crest>
+    <p-wordmark class="wordmark hydrated"> </p-wordmark>
+    <div class="header">
+      <slot name="header-end"> </slot>
+    </div>
   </header>
-  <main part="main">
+  <main>
     <slot> </slot>
   </main>
-  <footer part="footer">
+  <footer>
     <slot name="footer"> </slot>
   </footer>
-  <aside part="sidebar-start" inert="">
-    <p-button-pure class="close hydrated"> Close Sidebar</p-button-pure>
-    <slot name="sidebar-start"> </slot>
-  </aside>
-  <aside part="sidebar-end" inert="">
-    <p-button-pure class="close hydrated"> Close Sidebar</p-button-pure>
-    <slot name="sidebar-end"> </slot>
-  </aside>
 </div>

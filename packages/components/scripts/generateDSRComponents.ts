@@ -189,7 +189,7 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
             `namedSlotChildren.filter(({ props: { slot } }) => slot === 'subline').length > 0`
           )
           .replace(
-            /hasNamedSlot\(this\.props\.host, '(caption|title|description|heading|header|controls|footer|sub-footer)'\)/g,
+            /hasNamedSlot\(this\.props\.host, '(caption|title|description|heading|header|controls|footer|sub-footer|sidebar-start|sidebar-end)'\)/g,
             `namedSlotChildren.filter(({ props: { slot } }) => slot === '$1').length > 0`
           );
       } else if (newFileContent.includes('FunctionalComponent')) {
@@ -617,6 +617,10 @@ $&`
           .replace(/spellcheck/, 'spellCheck')
           .replace(/autocomplete/, 'autoComplete')
           .replace(/this\.props\.value = '';/, '');
+      } else if (tagName === 'p-canvas') {
+        newFileContent = newFileContent
+          .replace(/this\.props\.(hasSidebarStart|hasSidebarEnd)/g, '$1')
+          .replace(/(?:hasSidebarStart|hasSidebarEnd) =/g, 'const $&');
       }
 
       return newFileContent;

@@ -69,7 +69,11 @@
   .native-anchor {
     @include pds-text-small;
     @include pds-hover;
-    @include pds-focus('none');
-    color: inherit;
+    & {
+      @include pds-focus('none');
+    }
+    & {
+      color: inherit;
+    }
   }
 </style>
