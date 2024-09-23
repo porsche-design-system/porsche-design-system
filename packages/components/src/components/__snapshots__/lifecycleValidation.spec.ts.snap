@@ -117,6 +117,7 @@ exports[`should call validateProps() with correct parameters via render for p-ca
   "skipLinkTarget": "string",
   "slidesPerPage": "oneOf",
   "theme": "oneOf",
+  "trimSpace": "boolean",
   "width": "oneOf",
   "wrapContent": "boolean",
 }
