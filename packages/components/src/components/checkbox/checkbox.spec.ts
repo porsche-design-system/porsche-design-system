@@ -2,7 +2,6 @@ import { Checkbox } from './checkbox';
 import * as applyConstructableStylesheetStylesUtils from '../../utils/applyConstructableStylesheetStyle';
 import { getSlottedAnchorStyles } from '../../styles';
 import { expect } from '@jest/globals';
-import { getCheckboxRadioButtonSafariRenderingFix } from '../../utils/form/applyCheckboxRadioButtonSafariRenderingFix';
 
 jest.mock('../../utils/dom');
 
@@ -39,11 +38,7 @@ describe('connectedCallback', () => {
     const component = initComponent();
 
     component.connectedCallback();
-    expect(applyConstructableStylesheetStylesSpy).toHaveBeenCalledWith(
-      component.host,
-      getSlottedAnchorStyles,
-      getCheckboxRadioButtonSafariRenderingFix
-    );
+    expect(applyConstructableStylesheetStylesSpy).toHaveBeenCalledWith(component.host, getSlottedAnchorStyles);
   });
 });
 
