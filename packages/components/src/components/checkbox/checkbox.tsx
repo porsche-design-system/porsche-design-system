@@ -23,7 +23,7 @@ import {
 } from '../../utils';
 import { type BreakpointCustomizable, type PropTypes, type Theme } from '../../types';
 import { getComponentCss } from './checkbox-styles';
-import type { CheckboxState, CheckboxUpdateEventDetail } from './checkbox-utils';
+import type { CheckboxState, CheckboxUpdateEventDetail, CheckboxBlurEventDetail } from './checkbox-utils';
 import { messageId, StateMessage } from '../common/state-message/state-message';
 import { descriptionId, Label } from '../common/label/label';
 import { LoadingMessage } from '../common/loading-message/loading-message';
@@ -104,6 +104,9 @@ export class Checkbox {
 
   /** Emitted when checkbox checked property is changed. */
   @Event({ bubbles: false }) public update: EventEmitter<CheckboxUpdateEventDetail>;
+
+  /** Emitted when the checkbox has lost focus. */
+  @Event({ bubbles: false }) public blur: EventEmitter<CheckboxBlurEventDetail>;
 
   @AttachInternals() private internals: ElementInternals;
 
@@ -187,6 +190,7 @@ export class Checkbox {
             value={this.value}
             name={this.name}
             onChange={this.onChange}
+            onBlur={this.onBlur}
             required={this.required}
             disabled={this.disabled}
             ref={(el: HTMLInputElement) => (this.checkboxInputElement = el)}
@@ -200,6 +204,12 @@ export class Checkbox {
       </div>
     );
   }
+
+  private onBlur = (e: Event): void => {
+    e.stopPropagation();
+    e.stopImmediatePropagation();
+    this.blur.emit(e);
+  };
 
   private onChange = (e: Event): void => {
     const checked = (e.target as HTMLInputElement).checked;
