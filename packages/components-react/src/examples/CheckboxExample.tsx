@@ -13,7 +13,7 @@ export const CheckboxExamplePage = (): JSX.Element => {
   return (
     <>
       <form onSubmit={onSubmit}>
-        <PCheckbox name="some-name" label="Some Label"></PCheckbox>
+        <PCheckbox name="some-name" value="some-value" label="Some Label"></PCheckbox>
         <button type="submit">Submit</button>
       </form>
 
