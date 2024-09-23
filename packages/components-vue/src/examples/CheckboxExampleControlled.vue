@@ -1,19 +1,23 @@
 <script setup lang="ts">
   import { PCheckbox, PText, type CheckboxUpdateEventDetail } from '@porsche-design-system/components-vue';
-  import { computed, ref } from 'vue';
+  import { ref } from 'vue';
 
-  const value = ref<string | undefined>('');
+  const state = ref<{ [key: string]: boolean }>({
+    'some-name': true,
+  });
 
   const onUpdate = (e: CheckboxUpdateEventDetail) => {
-    value.value = e.checked ? e.value : '';
+    state.value[e.name] = e.checked;
   };
-
-  const debugText = computed(() => {
-    return `Value: ${value.value}`;
-  });
 </script>
 
 <template>
-  <PCheckbox :name="'some-name'" :label="'Some Label'" :value="'some-value'" @update="onUpdate" />
-  <PText>{{ debugText }}</PText>
+  <PCheckbox
+    :name="'some-name'"
+    :label="'Some Label'"
+    :checked="state['some-name']"
+    :value="'some-value'"
+    @update="onUpdate"
+  />
+  <PText>some-name: {{ state['some-name'] ? 'checked' : 'not checked' }}</PText>
 </template>
