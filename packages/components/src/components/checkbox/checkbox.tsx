@@ -28,7 +28,6 @@ import { messageId, StateMessage } from '../common/state-message/state-message';
 import { descriptionId, Label } from '../common/label/label';
 import { LoadingMessage } from '../common/loading-message/loading-message';
 import { ControllerHost, InitialLoadingController } from '../../controllers';
-import { getCheckboxRadioButtonSafariRenderingFix } from '../../utils/form/applyCheckboxRadioButtonSafariRenderingFix';
 import { getSlottedAnchorStyles } from '../../styles';
 
 const propTypes: PropTypes<typeof Checkbox> = {
@@ -74,7 +73,7 @@ export class Checkbox {
   @Prop() public indeterminate?: boolean = false;
 
   /** Marks the checkbox as pre-selected (checked) on initial load. */
-  @Prop() public checked?: boolean = false;
+  @Prop({ mutable: true }) public checked?: boolean = false;
 
   /** The id of a form element the checkbox should be associated with. */
   @Prop() public form?: string;
@@ -138,7 +137,7 @@ export class Checkbox {
   }
 
   public connectedCallback(): void {
-    applyConstructableStylesheetStyles(this.host, getSlottedAnchorStyles, getCheckboxRadioButtonSafariRenderingFix);
+    applyConstructableStylesheetStyles(this.host, getSlottedAnchorStyles);
   }
 
   public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
