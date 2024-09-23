@@ -36,6 +36,7 @@ const scenario = async (page: Page, theme: Theme): Promise<void> => {
     'p-text-field-wrapper': '<input type="text" value="Some value" />',
     'p-pin-code': '', // readonly is not supported
     'p-textarea': '',
+    'p-checkbox': '',
     'p-textarea-wrapper': '<textarea>Some value</textarea>',
   };
 
