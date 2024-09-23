@@ -1579,6 +1579,12 @@ exports[`should match snapshot 1`] = `
         "description": "Adapts the color when used on dark background.",
         "type": "Theme",
       },
+      "trimSpace": {
+        "allowedValues": "boolean",
+        "defaultValue": true,
+        "description": "Determines whether to trim spaces before/after the carousel if \`focusOnCenterSlide\` option is true.",
+        "type": "boolean",
+      },
       "width": {
         "allowedValues": [
           "basic",

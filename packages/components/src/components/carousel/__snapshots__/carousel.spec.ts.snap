@@ -34,6 +34,7 @@ exports[`componentDidLoad should call Splide constructor with correct parameters
     "rewindByDrag": true,
     "speed": 400,
     "start": 0,
+    "trimSpace": true,
   },
 ]
 `;
@@ -72,6 +73,7 @@ exports[`componentDidLoad should call Splide constructor with correct parameters
     "rewindByDrag": true,
     "speed": 400,
     "start": 0,
+    "trimSpace": true,
   },
 ]
 `;

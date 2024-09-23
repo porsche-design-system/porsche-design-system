@@ -146,24 +146,20 @@ Slides can be added and removed dynamically.
   <button type="button" @click="amountOfSlides--">Remove last slide</button>
 </Playground>
 
-## Focus On Center Slide
+## Centered Slide and Gradient Customization
 
-The carousel centers the active slide and individually loops through each slide, when multiple slides are visible. You
-can customize the styles for the active slide, as well as the previous and next slides, to highlight their visibility.
+The carousel centers the active slide and loops through slides individually rather than by page when multiple slides are
+visible. You can control its behavior with the `focusOnCenterSlide` prop to keep the active slide centered, and the
+`trimSpace` prop to manage spacing around the carousel. The `gradientColor` prop allows you to customize the background
+gradient, while the `--p-gradient-color-width` CSS variable gives you precise control over the gradient’s width,
+ensuring a consistent and visually polished design.
 
-<Playground :frameworkMarkup="focusOnCenterSlideExamples" :config="{ ...config, withoutDemo: true }">
-  <p-carousel :theme="theme" :heading="basicHeading" slides-per-page="3" active-slide-index="2" focus-on-center-slide="true" style="margin: 0 0 1rem" @update="onCarouselUpdate">
-  <div v-for="(_, index) in Array(6)" :key="index" :class="getSlideClass(index)">Slide {{index + 1}}</div>
-</p-carousel>
-</Playground>
-
-## Gradient Color
-
-The background and gradient has to align with your chosen background.
-
-<Playground :markup="gradientColorMarkup" :config="{ ...config, backgroundColor: gradientColor }">
+<Playground :frameworkMarkup="focusOnCenterSlideExamples" :config="{ ...config, backgroundColor: gradientColor }">
   <PlaygroundSelect v-model="gradientColor" :values="gradientColors" name="gradientColor"></PlaygroundSelect>
   <PlaygroundSelect v-model="gradientColorWidth" :values="gradientColorWidths" name="gradientColorWidth"></PlaygroundSelect>
+  <p-carousel :theme="theme" :heading="basicHeading" :gradient-color="gradientColor" slides-per-page="3" focus-on-center-slide="true" trim-space="false" :style="{ '--p-gradient-color-width': gradientColorWidth, margin: '0 0 1rem' }" @update="onCarouselUpdate">
+    <div v-for="(_, index) in Array(6)" :key="index" :class="getSlideClass(index)">Slide {{index + 1}}</div>
+  </p-carousel>
 </Playground>
 
 ## Internationalization (i18n)
@@ -242,7 +238,7 @@ export default class Code extends Vue {
     return this.$store.getters.playgroundTheme;
   }
 
-  activeSlideIndexRef = ref(2);
+  activeSlideIndexRef = ref(0);
   
   getSlideClass = (index) => {
     return {
@@ -257,13 +253,19 @@ export default class Code extends Vue {
   };
 
   basicHeading = "Some heading";
+  gradientWidth = 33;
   basicDescription = "Some description";
   getSlides = (amount = 6, join = '\n  ') => Array.from(Array(amount), (_, i) => `<div>Slide ${i+1}</div>`).join(join);
   gradientColor = 'background-surface';
   gradientColors = CAROUSEL_GRADIENT_COLORS;
 
-  gradientColorWidth = '33% (default)';
-  gradientColorWidths = ['50%', '25%', '33% (default)'];
+  gradientColorWidth = '25%';
+  gradientColorWidths = [
+    { label: '33% (Default)', value: '33%' },
+    { label: '10%', value: '10%' },
+    { label: '25%', value: '25%' },
+    { label: '50%', value: '50%' }
+  ];
 
   basic = `<p-carousel heading="${this.basicHeading}">
   ${this.getSlides(4)}
@@ -273,12 +275,6 @@ export default class Code extends Vue {
   slidesPerPages = [1, 2, 3, 4, 5, '{ base: 1, s: 2, m: 3 }'];
   get slidesPerPageMarkup() {
     return `<p-carousel slides-per-page="${this.slidesPerPage}" heading="${this.basicHeading}">
-      ${this.getSlides()}
-    </p-carousel>`;
-  }
-
-  get gradientColorMarkup() {
-    return `<p-carousel style="--p-gradient-color-width: ${this.gradientColorWidth === this.gradientColorWidths[2] ? '33%' : this.gradientColorWidth}" slides-per-page="3" active-slide-index="2" heading="${this.basicHeading}" gradient-color="${this.gradientColor}">
       ${this.getSlides()}
     </p-carousel>`;
   }
