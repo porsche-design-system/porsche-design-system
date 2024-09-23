@@ -11,7 +11,6 @@ import {
   setContentWithDesignSystem,
   setProperty,
   skipInBrowsers,
-  waitForInputTransition,
   waitForStencilLifecycle,
 } from '../helpers';
 import type { CheckboxState } from '@porsche-design-system/components';
@@ -126,7 +125,6 @@ test('should toggle checkbox when input is clicked', async ({ page }) => {
 
   // ensure that checked and indeterminate use different images
   await setProperty(host, 'indeterminate', true);
-  await waitForInputTransition(page);
   expect(checkedImage).not.toBe(await getBackgroundImage(input));
 });
 
@@ -221,19 +219,6 @@ test('should toggle checkbox when label text is clicked and not set input as act
   expect(await getActiveElementTagName(page)).toBe('P-CHECKBOX');
 });
 
-test('should check/uncheck checkbox when checkbox attribute is changed programmatically', async ({ page }) => {
-  await initCheckbox(page);
-  const input = getInput(page);
-
-  expect(await getBackgroundImage(input)).toBe('none');
-
-  await setProperty(input, 'checked', true);
-  expect(await getBackgroundImage(input)).toContain(backgroundURL);
-
-  await setProperty(input, 'checked', false);
-  expect(await getBackgroundImage(input)).toBe('none');
-});
-
 test('should check/uncheck checkbox when checkbox property is changed programmatically', async ({ page }) => {
   await initCheckbox(page);
   const input = getInput(page);
@@ -263,21 +248,18 @@ skipInBrowsers(['firefox', 'webkit'], () => {
     expect(await getInputPointerEvents()).toBe('auto');
 
     await setProperty(host, 'disabled', true);
-    await waitForInputTransition(page);
 
     expect(await getWrapperCursor()).toBe('not-allowed');
     expect(await getInputCursor()).toBe('default');
     expect(await getInputPointerEvents()).toBe('none'); // prevents checkbox from being toggleable in disabled and especially loading state
 
     await setProperty(host, 'disabled', false);
-    await waitForInputTransition(page);
 
     expect(await getWrapperCursor()).toBe('auto');
     expect(await getInputCursor()).toBe('pointer');
     expect(await getInputPointerEvents()).toBe('auto');
 
     await setProperty(host, 'loading', true);
-    await waitForInputTransition(page);
 
     expect(await getWrapperCursor()).toBe('not-allowed');
     expect(await getInputCursor()).toBe('default');
@@ -296,12 +278,10 @@ test.describe('indeterminate state', () => {
     expect(await getBackgroundImage(input)).toBe('none');
 
     await setProperty(host, 'indeterminate', true);
-    await waitForInputTransition(page);
 
     expect(await getBackgroundImage(input)).toContain(backgroundURL);
 
     await setProperty(host, 'indeterminate', false);
-    await waitForInputTransition(page);
     expect(await getBackgroundImage(input)).toBe('none');
   });
 
@@ -311,7 +291,6 @@ test.describe('indeterminate state', () => {
     const input = getInput(page);
 
     await setProperty(host, 'indeterminate', true);
-    await waitForInputTransition(page);
     const indeterminateImage = await getBackgroundImage(input);
     expect(indeterminateImage, 'first indeterminate set').toContain(backgroundURL);
 
@@ -322,7 +301,6 @@ test.describe('indeterminate state', () => {
     expect(indeterminateImage).not.toBe(checkedImage);
 
     await setProperty(host, 'indeterminate', true);
-    await waitForInputTransition(page);
     expect(await getBackgroundImage(input), 'second indeterminate set').toContain(backgroundURL);
 
     await input.click();
@@ -335,7 +313,6 @@ test.describe('indeterminate state', () => {
     const input = getInput(page);
 
     await setProperty(host, 'indeterminate', true);
-    await waitForInputTransition(page);
     expect(await getBackgroundImage(input)).toContain(backgroundURL);
 
     await setChecked(input, true);
