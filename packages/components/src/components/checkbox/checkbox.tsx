@@ -154,7 +154,6 @@ export class Checkbox {
   public formResetCallback(): void {
     this.internals.setValidity({});
     this.internals.setFormValue(undefined);
-    this.checkboxInputElement.checked = false;
     this.checked = false;
   }
 
