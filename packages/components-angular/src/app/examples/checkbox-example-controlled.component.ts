@@ -11,7 +11,7 @@ import { type CheckboxUpdateEventDetail } from '@porsche-design-system/component
       [checked]="state['some-name']"
       (update)="onUpdate($event)"
     />
-    <p-text>some-name: {{ state['some-name'] ? 'checked' : 'not checked' }}</p-text>
+    <p-text>some-name: {{ state['some-name'] }}</p-text>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
