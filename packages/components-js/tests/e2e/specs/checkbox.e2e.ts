@@ -204,6 +204,8 @@ test.describe('focus', () => {
   test('should receive focus in loading state', async ({ page }) => {
     await initCheckbox(page, { loading: true });
     const input = getInput(page);
+    await expect(input).toHaveCSS('outline', 'rgb(0, 0, 0) none 0px');
+    await expect(input).toHaveCSS('outline-offset', '0px');
 
     await input.focus();
     expect(await getActiveElementTagName(page)).toBe('P-CHECKBOX');
@@ -214,6 +216,8 @@ test.describe('focus', () => {
   test('should receive focus when focus is set programmatically', async ({ page }) => {
     await initCheckbox(page);
     const input = getInput(page);
+    await expect(input).toHaveCSS('outline', 'rgb(0, 0, 0) none 0px');
+    await expect(input).toHaveCSS('outline-offset', '0px');
 
     await input.focus();
     expect(await getActiveElementTagName(page)).toBe('P-CHECKBOX');
