@@ -213,6 +213,7 @@ export class Checkbox {
 
   private onChange = (e: Event): void => {
     const checked = (e.target as HTMLInputElement).checked;
+    this.checked = checked;
     this.internals.setFormValue(checked ? this.value : undefined);
     this.update.emit({
       value: this.value,
