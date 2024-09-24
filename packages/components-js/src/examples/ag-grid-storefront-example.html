@@ -88,6 +88,7 @@
       {
         field: 'model',
         editable: false,
+        filter: true,
       },
       {
         field: 'date',
@@ -131,12 +132,9 @@
     },
     // Grid Options & Callbacks
     pagination: true,
-    sideBar: true,
-    // loading: true,
-    enableRangeSelection: true,
   };
 
-  window.agGridEnterprise.createGrid(grid, gridOptions);
+  window.agGridCommunity.createGrid(grid, gridOptions);
 </script>
 
 <div id="my-grid" style="height: 80vh; padding: 1rem"></div>
