@@ -28,6 +28,7 @@ const scenario = async (page: Page, theme: Theme): Promise<void> => {
     </style>`;
 
   const tagNameToChildMap: { [key in TagName]?: string } = {
+    'p-checkbox': '',
     'p-checkbox-wrapper': '<input type="checkbox" />', // readonly is not supported
     'p-radio-button-wrapper': '<input type="radio" />', // readonly is not supported
     'p-select': '<p-select-option>Some value</p-select-option>', // readonly is not supported
@@ -36,7 +37,6 @@ const scenario = async (page: Page, theme: Theme): Promise<void> => {
     'p-text-field-wrapper': '<input type="text" value="Some value" />',
     'p-pin-code': '', // readonly is not supported
     'p-textarea': '',
-    'p-checkbox': '',
     'p-textarea-wrapper': '<textarea>Some value</textarea>',
   };
 
