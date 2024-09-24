@@ -2397,6 +2397,7 @@ input:focus-visible {
   clip: rect(0,0,0,0);
   white-space: nowrap;
   grid-area: 1/2;
+  pointer-events: none;
 }
 .label:empty {
   display: none;
@@ -2510,6 +2511,7 @@ input:focus-visible {
   clip: rect(0,0,0,0);
   white-space: nowrap;
   grid-area: 1/2;
+  pointer-events: none;
 }
 .label:empty {
   display: none;
@@ -2813,6 +2815,7 @@ input:checked {
   clip: rect(0,0,0,0);
   white-space: nowrap;
   grid-area: 1/2;
+  pointer-events: none;
 }
 .label:empty {
   display: none;
@@ -2916,6 +2919,7 @@ input:checked {
   clip: rect(0,0,0,0);
   white-space: nowrap;
   grid-area: 1/2;
+  pointer-events: none;
 }
 .label:empty {
   display: none;
