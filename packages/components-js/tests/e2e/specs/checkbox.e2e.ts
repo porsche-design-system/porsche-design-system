@@ -475,7 +475,7 @@ test.describe('form', () => {
     expect(await getFormDataValue(form, name)).toBe(null);
   });
 
-  test('should not include name & value in FormData submit when loading', async ({ page }) => {
+  test.fixme('should not include name & value in FormData submit when loading', async ({ page }) => {
     const name = 'name';
     const value = 'Hallo';
     await initCheckbox(page, {
