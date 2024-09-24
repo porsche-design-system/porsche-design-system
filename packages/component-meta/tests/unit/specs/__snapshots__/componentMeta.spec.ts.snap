@@ -1620,6 +1620,11 @@ exports[`should match snapshot 1`] = `
   },
   "p-checkbox": {
     "eventsMeta": {
+      "blur": {
+        "description": "Emitted when the checkbox has lost focus.",
+        "type": "CheckboxBlurEventDetail",
+        "typeDetail": "Event",
+      },
       "update": {
         "description": "Emitted when checkbox checked property is changed.",
         "type": "CheckboxUpdateEventDetail",
