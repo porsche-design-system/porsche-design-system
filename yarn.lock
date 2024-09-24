@@ -7840,6 +7840,11 @@ ag-charts-types@10.1.0:
   resolved "https://registry.yarnpkg.com/ag-charts-types/-/ag-charts-types-10.1.0.tgz#f265665f6b92742bb0bc2dcfab319b21e6d78749"
   integrity sha512-pk9ft8hbgTXJ/thI/SEUR1BoauNplYExpcHh7tMOqVikoDsta1O15TB1ZL4XWnl4TPIzROBmONKsz7d8a2HBuQ==
 
+ag-charts-types@10.2.0:
+  version "10.2.0"
+  resolved "https://registry.yarnpkg.com/ag-charts-types/-/ag-charts-types-10.2.0.tgz#9af7e333d196d02da1635b19b2649a9b2d06241a"
+  integrity sha512-PUqH1QtugpYLnlbMdeSZVf5PpT1XZVsP69qN1JXhetLtQpVC28zaj7ikwu9CMA9N9b+dBboA9QcjUQUJZVUokQ==
+
 ag-grid-angular@^32.1.0:
   version "32.1.0"
   resolved "https://registry.yarnpkg.com/ag-grid-angular/-/ag-grid-angular-32.1.0.tgz#6cc14ac456ca35c18197e2af6df7711993b1c76a"
@@ -7853,6 +7858,13 @@ ag-grid-community@32.1.0:
   integrity sha512-RVvkjRH61nuCXwIqTKQPqNbKR+8cGBKw7S1qmmMXsy0pCBAJaQn4kL3v31hKHxDtV4bPscBXLFKGnKzHuss0GQ==
   dependencies:
     ag-charts-types "10.1.0"
+
+ag-grid-community@32.2.0:
+  version "32.2.0"
+  resolved "https://registry.yarnpkg.com/ag-grid-community/-/ag-grid-community-32.2.0.tgz#67e2d962202961293717e5a9a1c30973e0869819"
+  integrity sha512-zr29DGo6U4JR6pSOgZrZWuN1CTWdpUCfZWWpF47us6MzdFWGN5gcdiXGw40wg9XMGacShNX1aW8o33S4yVkzMw==
+  dependencies:
+    ag-charts-types "10.2.0"
 
 ag-grid-enterprise@^32.1.0:
   version "32.1.0"
