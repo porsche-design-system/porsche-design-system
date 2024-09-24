@@ -72,7 +72,7 @@ export class Checkbox {
   /** Marks the checkbox as indeterminate. */
   @Prop() public indeterminate?: boolean = false;
 
-  /** Marks the checkbox as pre-selected (checked) on initial load. */
+  /** Reflects the checkbox current checked state and allows setting the initial checked state. */
   @Prop({ mutable: true }) public checked?: boolean = false;
 
   /** The id of a form element the checkbox should be associated with. */
