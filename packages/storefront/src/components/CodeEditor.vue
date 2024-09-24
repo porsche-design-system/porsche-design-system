@@ -43,7 +43,6 @@
     stackBlitzIcon = require('../assets/icon-stackblitz.svg');
 
     public async mounted(): void {
-      console.log(this.isEmbedded);
       if (this.isEmbedded) {
         openInStackBlitz({
           porscheDesignSystemBundle: await CodeEditor.porscheDesignSystemBundle(this.framework, this.pdsVersion),
@@ -51,7 +50,7 @@
           framework: this.framework,
           theme: this.theme,
           dir: this.dir,
-          externalDependencies: ['ag-grid-enterprise'],
+          externalDependencies: ['ag-grid-community'],
           backgroundColor: this.backgroundColor,
           sharedImportKeys: this.sharedImportKeys,
           pdsVersion: this.pdsVersion,

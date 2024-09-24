@@ -2,8 +2,9 @@ import './style.scss';
 
 import { componentsReady } from '@porsche-design-system/components-js';
 
+import * as agGrid from 'ag-grid-community';
 import * as agGridEnterprise from 'ag-grid-enterprise';
-import * as agGridCommunity from 'ag-grid-community';
+
 import { dataAdvanced } from '@porsche-design-system/shared';
 
 const getPage = () => window.location.pathname.substring(1);
@@ -119,8 +120,8 @@ const updateSelect = (id, value) => {
     );
   };
 
+  window.agGrid = agGrid;
   window.agGridEnterprise = agGridEnterprise;
-  window.agGridCommunity = agGridCommunity;
   window.rowData = dataAdvanced;
 
   if (!isPageLoadedInIFrame()) {

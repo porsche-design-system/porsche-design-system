@@ -7,6 +7,7 @@ type CodeSample = {
   component:
     | TagName
     | 'componentsReady'
+    | 'ag-grid'
     | 'styles-border'
     | 'styles-drop-shadow'
     | 'styles-focus'
@@ -49,7 +50,7 @@ const generateCodeSamples = (): void => {
       component: 'ag-grid',
       samples: [
         [
-          componentsJsPath + '/ag-grid-example.html',
+          componentsJsPath + '/ag-grid-storefront-example.html',
           componentsAngularPath + '/ag-grid-example.component.ts',
           componentsReactPath + '/AGGridExample.tsx',
           componentsVuePath + '/AGGridExample.vue',
@@ -550,7 +551,8 @@ const generateCodeSamples = (): void => {
             }
 
             // Replace locally served assets with public assets folder of storefront
-            fileContent = fileContent.replace(/http:\/\/localhost:3002/g, '/assets');
+            // TODO: Improve this local/prod and for table data advanced etc.
+            fileContent = fileContent.replace(/http:\/\/localhost:3002/g, 'https://designsystem.porsche.com/v3/assets');
 
             return { [framework]: fileContent };
           });
