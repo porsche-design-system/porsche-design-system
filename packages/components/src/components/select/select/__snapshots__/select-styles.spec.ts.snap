@@ -38,36 +38,37 @@ button {
   text-overflow: ellipsis;
   cursor: pointer;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  color: #010205;
-  background: #FFF;
-  border: 2px solid #6B6D70;
+  color: var(--p-select-text-color, #010205);
+  background: var(--p-select-background-color, #FFF);
+  border: 2px solid var(--p-select-border-color, #6B6D70);
   border-radius: 4px;
 }
 button:disabled {
   cursor: not-allowed;
 }
-button:focus {
-  border-color: #010205;
+button:focus-visible {
+  border-color: var(--p-select-focus-border-color, #010205);
+  background: var(--p-select-focus-background-color, #FFF);
 }
-button:not(:focus)::placeholder {
-  color: #010205;
+button:not(:focus-visible)::placeholder {
+  color: var(--p-select-text-color, #010205);
   opacity: 1;
 }
-button:not(:focus)::-webkit-input-placeholder {
-  color: #010205;
+button:not(:focus-visible)::-webkit-input-placeholder {
+  color: var(--p-select-text-color, #010205);
   opacity: 1;
 }
-button:not(:focus)::-moz-placeholder {
-  color: #010205;
+button:not(:focus-visible)::-moz-placeholder {
+  color: var(--p-select-text-color, #010205);
   opacity: 1;
 }
-button:not(:focus):-moz-placeholder {
-  color: #010205;
+button:not(:focus-visible):-moz-placeholder {
+  color: var(--p-select-text-color, #010205);
   opacity: 1;
 }
 @media(hover:hover) {
-  button:hover:not(:disabled):not(:focus), label:hover~.wrapper button:not(:disabled):not(:focus) {
-    border-color: #010205;
+  button:hover:not(:disabled):not(:focus-visible), label:hover~.wrapper button:not(:disabled):not(:focus-visible) {
+    border-color: var(--p-select-border-color, #010205);
   }
 }
 
@@ -89,6 +90,7 @@ button:not(:focus):-moz-placeholder {
   pointer-events: none;
   transform: rotate3d(0,0,1,0.0001deg);
   transition: transform var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  filter: var(--p-select-icon-filter);
 }
 .icon--rotate {
   transform: rotate3d(0,0,1,180deg);
@@ -112,7 +114,7 @@ button:not(:focus):-moz-placeholder {
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
   background: #FFF;
-  border: 2px solid #010205;
+  border: 2px solid var(--p-select-border-color, #010205);
   border-top: none;
   border-radius: 4px;
   border-top-left-radius: 0;
@@ -209,36 +211,37 @@ button {
   text-overflow: ellipsis;
   cursor: pointer;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  color: #010205;
-  background: #FFF;
-  border: 2px solid #197E10;
+  color: var(--p-select-text-color, #010205);
+  background: var(--p-select-background-color, #FFF);
+  border: 2px solid var(--p-select-border-color, #197E10);
   border-radius: 4px;
 }
 button:disabled {
   cursor: not-allowed;
 }
-button:focus {
-  border-color: #010205;
+button:focus-visible {
+  border-color: var(--p-select-focus-border-color, #010205);
+  background: var(--p-select-focus-background-color, #FFF);
 }
-button:not(:focus)::placeholder {
-  color: #010205;
+button:not(:focus-visible)::placeholder {
+  color: var(--p-select-text-color, #010205);
   opacity: 1;
 }
-button:not(:focus)::-webkit-input-placeholder {
-  color: #010205;
+button:not(:focus-visible)::-webkit-input-placeholder {
+  color: var(--p-select-text-color, #010205);
   opacity: 1;
 }
-button:not(:focus)::-moz-placeholder {
-  color: #010205;
+button:not(:focus-visible)::-moz-placeholder {
+  color: var(--p-select-text-color, #010205);
   opacity: 1;
 }
-button:not(:focus):-moz-placeholder {
-  color: #010205;
+button:not(:focus-visible):-moz-placeholder {
+  color: var(--p-select-text-color, #010205);
   opacity: 1;
 }
 @media(hover:hover) {
-  button:hover:not(:disabled):not(:focus), label:hover~.wrapper button:not(:disabled):not(:focus) {
-    border-color: #0E4809;
+  button:hover:not(:disabled):not(:focus-visible), label:hover~.wrapper button:not(:disabled):not(:focus-visible) {
+    border-color: var(--p-select-border-color, #0E4809);
   }
 }
 
@@ -260,6 +263,7 @@ button:not(:focus):-moz-placeholder {
   pointer-events: none;
   transform: rotate3d(0,0,1,0.0001deg);
   transition: transform var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  filter: var(--p-select-icon-filter);
 }
 .icon--rotate {
   transform: rotate3d(0,0,1,180deg);
@@ -283,7 +287,7 @@ button:not(:focus):-moz-placeholder {
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
   background: #FFF;
-  border: 2px solid #010205;
+  border: 2px solid var(--p-select-border-color, #010205);
   border-top: none;
   border-radius: 4px;
   border-top-left-radius: 0;
@@ -376,8 +380,8 @@ button {
   cursor: not-allowed;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   color: #949598;
-  background: #FFF;
-  border: 2px solid #6B6D70;
+  background: var(--p-select-background-color, #FFF);
+  border: 2px solid var(--p-select-border-color, #6B6D70);
   border-radius: 4px;
   border-color: #949598;
   -webkit-text-fill-color: #949598;
@@ -397,25 +401,25 @@ button::-moz-placeholder {
 button:-moz-placeholder {
   color: #949598;
 }
-button:not(:focus)::placeholder {
-  color: #010205;
+button:not(:focus-visible)::placeholder {
+  color: var(--p-select-text-color, #010205);
   opacity: 1;
 }
-button:not(:focus)::-webkit-input-placeholder {
-  color: #010205;
+button:not(:focus-visible)::-webkit-input-placeholder {
+  color: var(--p-select-text-color, #010205);
   opacity: 1;
 }
-button:not(:focus)::-moz-placeholder {
-  color: #010205;
+button:not(:focus-visible)::-moz-placeholder {
+  color: var(--p-select-text-color, #010205);
   opacity: 1;
 }
-button:not(:focus):-moz-placeholder {
-  color: #010205;
+button:not(:focus-visible):-moz-placeholder {
+  color: var(--p-select-text-color, #010205);
   opacity: 1;
 }
 @media(hover:hover) {
-  button:hover:not(:disabled):not(:focus), label:hover~.wrapper button:not(:disabled):not(:focus) {
-    border-color: #010205;
+  button:hover:not(:disabled):not(:focus-visible), label:hover~.wrapper button:not(:disabled):not(:focus-visible) {
+    border-color: var(--p-select-border-color, #010205);
   }
 }
 
@@ -436,6 +440,7 @@ button:not(:focus):-moz-placeholder {
   pointer-events: none;
   transform: rotate3d(0,0,1,0.0001deg);
   transition: transform var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  filter: var(--p-select-icon-filter);
 }
 .icon--rotate {
   transform: rotate3d(0,0,1,180deg);
@@ -459,7 +464,7 @@ button:not(:focus):-moz-placeholder {
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
   background: #FFF;
-  border: 2px solid #010205;
+  border: 2px solid var(--p-select-border-color, #010205);
   border-top: none;
   border-radius: 4px;
   border-top-left-radius: 0;
@@ -568,8 +573,8 @@ button {
   cursor: not-allowed;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   color: #949598;
-  background: #FFF;
-  border: 2px solid #6B6D70;
+  background: var(--p-select-background-color, #FFF);
+  border: 2px solid var(--p-select-border-color, #6B6D70);
   border-radius: 4px;
   border-color: #949598;
   -webkit-text-fill-color: #949598;
@@ -589,25 +594,25 @@ button::-moz-placeholder {
 button:-moz-placeholder {
   color: #949598;
 }
-button:not(:focus)::placeholder {
-  color: #010205;
+button:not(:focus-visible)::placeholder {
+  color: var(--p-select-text-color, #010205);
   opacity: 1;
 }
-button:not(:focus)::-webkit-input-placeholder {
-  color: #010205;
+button:not(:focus-visible)::-webkit-input-placeholder {
+  color: var(--p-select-text-color, #010205);
   opacity: 1;
 }
-button:not(:focus)::-moz-placeholder {
-  color: #010205;
+button:not(:focus-visible)::-moz-placeholder {
+  color: var(--p-select-text-color, #010205);
   opacity: 1;
 }
-button:not(:focus):-moz-placeholder {
-  color: #010205;
+button:not(:focus-visible):-moz-placeholder {
+  color: var(--p-select-text-color, #010205);
   opacity: 1;
 }
 @media(hover:hover) {
-  button:hover:not(:disabled):not(:focus), label:hover~.wrapper button:not(:disabled):not(:focus) {
-    border-color: #010205;
+  button:hover:not(:disabled):not(:focus-visible), label:hover~.wrapper button:not(:disabled):not(:focus-visible) {
+    border-color: var(--p-select-border-color, #010205);
   }
 }
 
@@ -629,6 +634,7 @@ button:not(:focus):-moz-placeholder {
   pointer-events: none;
   transform: rotate3d(0,0,1,0.0001deg);
   transition: transform var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  filter: var(--p-select-icon-filter);
 }
 .icon--rotate {
   transform: rotate3d(0,0,1,180deg);
@@ -652,7 +658,7 @@ button:not(:focus):-moz-placeholder {
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
   background: #FFF;
-  border: 2px solid #010205;
+  border: 2px solid var(--p-select-border-color, #010205);
   border-top: none;
   border-radius: 4px;
   border-top-left-radius: 0;
@@ -749,8 +755,8 @@ button {
   cursor: not-allowed;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   color: #949598;
-  background: #FFF;
-  border: 2px solid #6B6D70;
+  background: var(--p-select-background-color, #FFF);
+  border: 2px solid var(--p-select-border-color, #6B6D70);
   border-radius: 4px;
   border-color: #949598;
   -webkit-text-fill-color: #949598;
@@ -770,25 +776,25 @@ button::-moz-placeholder {
 button:-moz-placeholder {
   color: #949598;
 }
-button:not(:focus)::placeholder {
-  color: #010205;
+button:not(:focus-visible)::placeholder {
+  color: var(--p-select-text-color, #010205);
   opacity: 1;
 }
-button:not(:focus)::-webkit-input-placeholder {
-  color: #010205;
+button:not(:focus-visible)::-webkit-input-placeholder {
+  color: var(--p-select-text-color, #010205);
   opacity: 1;
 }
-button:not(:focus)::-moz-placeholder {
-  color: #010205;
+button:not(:focus-visible)::-moz-placeholder {
+  color: var(--p-select-text-color, #010205);
   opacity: 1;
 }
-button:not(:focus):-moz-placeholder {
-  color: #010205;
+button:not(:focus-visible):-moz-placeholder {
+  color: var(--p-select-text-color, #010205);
   opacity: 1;
 }
 @media(hover:hover) {
-  button:hover:not(:disabled):not(:focus), label:hover~.wrapper button:not(:disabled):not(:focus) {
-    border-color: #010205;
+  button:hover:not(:disabled):not(:focus-visible), label:hover~.wrapper button:not(:disabled):not(:focus-visible) {
+    border-color: var(--p-select-border-color, #010205);
   }
 }
 
@@ -810,6 +816,7 @@ button:not(:focus):-moz-placeholder {
   pointer-events: none;
   transform: rotate3d(0,0,1,0.0001deg);
   transition: transform var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  filter: var(--p-select-icon-filter);
 }
 .icon--rotate {
   transform: rotate3d(0,0,1,180deg);
@@ -833,7 +840,7 @@ button:not(:focus):-moz-placeholder {
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
   background: #FFF;
-  border: 2px solid #010205;
+  border: 2px solid var(--p-select-border-color, #010205);
   border-top: none;
   border-radius: 4px;
   border-top-left-radius: 0;
@@ -930,8 +937,8 @@ button {
   cursor: not-allowed;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   color: #949598;
-  background: #FFF;
-  border: 2px solid #197E10;
+  background: var(--p-select-background-color, #FFF);
+  border: 2px solid var(--p-select-border-color, #197E10);
   border-radius: 4px;
   border-color: #949598;
   -webkit-text-fill-color: #949598;
@@ -951,25 +958,25 @@ button::-moz-placeholder {
 button:-moz-placeholder {
   color: #949598;
 }
-button:not(:focus)::placeholder {
-  color: #010205;
+button:not(:focus-visible)::placeholder {
+  color: var(--p-select-text-color, #010205);
   opacity: 1;
 }
-button:not(:focus)::-webkit-input-placeholder {
-  color: #010205;
+button:not(:focus-visible)::-webkit-input-placeholder {
+  color: var(--p-select-text-color, #010205);
   opacity: 1;
 }
-button:not(:focus)::-moz-placeholder {
-  color: #010205;
+button:not(:focus-visible)::-moz-placeholder {
+  color: var(--p-select-text-color, #010205);
   opacity: 1;
 }
-button:not(:focus):-moz-placeholder {
-  color: #010205;
+button:not(:focus-visible):-moz-placeholder {
+  color: var(--p-select-text-color, #010205);
   opacity: 1;
 }
 @media(hover:hover) {
-  button:hover:not(:disabled):not(:focus), label:hover~.wrapper button:not(:disabled):not(:focus) {
-    border-color: #0E4809;
+  button:hover:not(:disabled):not(:focus-visible), label:hover~.wrapper button:not(:disabled):not(:focus-visible) {
+    border-color: var(--p-select-border-color, #0E4809);
   }
 }
 
@@ -991,6 +998,7 @@ button:not(:focus):-moz-placeholder {
   pointer-events: none;
   transform: rotate3d(0,0,1,0.0001deg);
   transition: transform var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  filter: var(--p-select-icon-filter);
 }
 .icon--rotate {
   transform: rotate3d(0,0,1,180deg);
@@ -1014,7 +1022,7 @@ button:not(:focus):-moz-placeholder {
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
   background: #FFF;
-  border: 2px solid #010205;
+  border: 2px solid var(--p-select-border-color, #010205);
   border-top: none;
   border-radius: 4px;
   border-top-left-radius: 0;
@@ -1112,8 +1120,8 @@ button {
   cursor: not-allowed;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   color: #949598;
-  background: #FFF;
-  border: 2px solid #6B6D70;
+  background: var(--p-select-background-color, #FFF);
+  border: 2px solid var(--p-select-border-color, #6B6D70);
   border-radius: 4px;
   border-color: #949598;
   -webkit-text-fill-color: #949598;
@@ -1133,25 +1141,25 @@ button::-moz-placeholder {
 button:-moz-placeholder {
   color: #949598;
 }
-button:not(:focus)::placeholder {
-  color: #010205;
+button:not(:focus-visible)::placeholder {
+  color: var(--p-select-text-color, #010205);
   opacity: 1;
 }
-button:not(:focus)::-webkit-input-placeholder {
-  color: #010205;
+button:not(:focus-visible)::-webkit-input-placeholder {
+  color: var(--p-select-text-color, #010205);
   opacity: 1;
 }
-button:not(:focus)::-moz-placeholder {
-  color: #010205;
+button:not(:focus-visible)::-moz-placeholder {
+  color: var(--p-select-text-color, #010205);
   opacity: 1;
 }
-button:not(:focus):-moz-placeholder {
-  color: #010205;
+button:not(:focus-visible):-moz-placeholder {
+  color: var(--p-select-text-color, #010205);
   opacity: 1;
 }
 @media(hover:hover) {
-  button:hover:not(:disabled):not(:focus), label:hover~.wrapper button:not(:disabled):not(:focus) {
-    border-color: #010205;
+  button:hover:not(:disabled):not(:focus-visible), label:hover~.wrapper button:not(:disabled):not(:focus-visible) {
+    border-color: var(--p-select-border-color, #010205);
   }
 }
 
@@ -1173,6 +1181,7 @@ button:not(:focus):-moz-placeholder {
   pointer-events: none;
   transform: rotate3d(0,0,1,0.0001deg);
   transition: transform var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  filter: var(--p-select-icon-filter);
 }
 .icon--rotate {
   transform: rotate3d(0,0,1,180deg);
@@ -1196,7 +1205,7 @@ button:not(:focus):-moz-placeholder {
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
   background: #FFF;
-  border: 2px solid #010205;
+  border: 2px solid var(--p-select-border-color, #010205);
   border-top: none;
   border-radius: 4px;
   border-top-left-radius: 0;
@@ -1293,8 +1302,8 @@ button {
   cursor: not-allowed;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   color: #949598;
-  background: #FFF;
-  border: 2px solid #6B6D70;
+  background: var(--p-select-background-color, #FFF);
+  border: 2px solid var(--p-select-border-color, #6B6D70);
   border-radius: 4px;
   border-color: #949598;
   -webkit-text-fill-color: #949598;
@@ -1314,25 +1323,25 @@ button::-moz-placeholder {
 button:-moz-placeholder {
   color: #949598;
 }
-button:not(:focus)::placeholder {
-  color: #010205;
+button:not(:focus-visible)::placeholder {
+  color: var(--p-select-text-color, #010205);
   opacity: 1;
 }
-button:not(:focus)::-webkit-input-placeholder {
-  color: #010205;
+button:not(:focus-visible)::-webkit-input-placeholder {
+  color: var(--p-select-text-color, #010205);
   opacity: 1;
 }
-button:not(:focus)::-moz-placeholder {
-  color: #010205;
+button:not(:focus-visible)::-moz-placeholder {
+  color: var(--p-select-text-color, #010205);
   opacity: 1;
 }
-button:not(:focus):-moz-placeholder {
-  color: #010205;
+button:not(:focus-visible):-moz-placeholder {
+  color: var(--p-select-text-color, #010205);
   opacity: 1;
 }
 @media(hover:hover) {
-  button:hover:not(:disabled):not(:focus), label:hover~.wrapper button:not(:disabled):not(:focus) {
-    border-color: #010205;
+  button:hover:not(:disabled):not(:focus-visible), label:hover~.wrapper button:not(:disabled):not(:focus-visible) {
+    border-color: var(--p-select-border-color, #010205);
   }
 }
 
@@ -1354,6 +1363,7 @@ button:not(:focus):-moz-placeholder {
   pointer-events: none;
   transform: rotate3d(0,0,1,0.0001deg);
   transition: transform var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  filter: var(--p-select-icon-filter);
 }
 .icon--rotate {
   transform: rotate3d(0,0,1,180deg);
@@ -1377,7 +1387,7 @@ button:not(:focus):-moz-placeholder {
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
   background: #FFF;
-  border: 2px solid #010205;
+  border: 2px solid var(--p-select-border-color, #010205);
   border-top: none;
   border-radius: 4px;
   border-top-left-radius: 0;
@@ -1473,9 +1483,9 @@ button {
   text-overflow: ellipsis;
   cursor: pointer;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  color: #010205;
-  background: #FFF;
-  border: 2px solid #010205;
+  color: var(--p-select-text-color, #010205);
+  background: var(--p-select-background-color, #FFF);
+  border: 2px solid var(--p-select-border-color, #010205);
   border-radius: 4px;
   padding-bottom: calc(8px + 1px);
   border-bottom: 1px solid #6B6D70 !important;
@@ -1485,28 +1495,29 @@ button {
 button:disabled {
   cursor: not-allowed;
 }
-button:focus {
-  border-color: #010205;
+button:focus-visible {
+  border-color: var(--p-select-focus-border-color, #010205);
+  background: var(--p-select-focus-background-color, #FFF);
 }
-button:not(:focus)::placeholder {
-  color: #010205;
+button:not(:focus-visible)::placeholder {
+  color: var(--p-select-text-color, #010205);
   opacity: 1;
 }
-button:not(:focus)::-webkit-input-placeholder {
-  color: #010205;
+button:not(:focus-visible)::-webkit-input-placeholder {
+  color: var(--p-select-text-color, #010205);
   opacity: 1;
 }
-button:not(:focus)::-moz-placeholder {
-  color: #010205;
+button:not(:focus-visible)::-moz-placeholder {
+  color: var(--p-select-text-color, #010205);
   opacity: 1;
 }
-button:not(:focus):-moz-placeholder {
-  color: #010205;
+button:not(:focus-visible):-moz-placeholder {
+  color: var(--p-select-text-color, #010205);
   opacity: 1;
 }
 @media(hover:hover) {
-  button:hover:not(:disabled):not(:focus), label:hover~.wrapper button:not(:disabled):not(:focus) {
-    border-color: #010205;
+  button:hover:not(:disabled):not(:focus-visible), label:hover~.wrapper button:not(:disabled):not(:focus-visible) {
+    border-color: var(--p-select-border-color, #010205);
   }
 }
 
@@ -1528,6 +1539,7 @@ button:not(:focus):-moz-placeholder {
   pointer-events: none;
   transform: rotate3d(0,0,1,0.0001deg);
   transition: transform var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  filter: var(--p-select-icon-filter);
 }
 .icon--rotate {
   transform: rotate3d(0,0,1,180deg);
@@ -1551,7 +1563,7 @@ button:not(:focus):-moz-placeholder {
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
   background: #FFF;
-  border: 2px solid #010205;
+  border: 2px solid var(--p-select-border-color, #010205);
   border-top: none;
   border-radius: 4px;
   border-top-left-radius: 0;
@@ -1648,9 +1660,9 @@ button {
   text-overflow: ellipsis;
   cursor: pointer;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  color: #010205;
-  background: #FFF;
-  border: 2px solid #010205;
+  color: var(--p-select-text-color, #010205);
+  background: var(--p-select-background-color, #FFF);
+  border: 2px solid var(--p-select-border-color, #010205);
   border-radius: 4px;
   padding-bottom: calc(8px + 1px);
   border-bottom: 1px solid #6B6D70 !important;
@@ -1660,28 +1672,29 @@ button {
 button:disabled {
   cursor: not-allowed;
 }
-button:focus {
-  border-color: #010205;
+button:focus-visible {
+  border-color: var(--p-select-focus-border-color, #010205);
+  background: var(--p-select-focus-background-color, #FFF);
 }
-button:not(:focus)::placeholder {
-  color: #010205;
+button:not(:focus-visible)::placeholder {
+  color: var(--p-select-text-color, #010205);
   opacity: 1;
 }
-button:not(:focus)::-webkit-input-placeholder {
-  color: #010205;
+button:not(:focus-visible)::-webkit-input-placeholder {
+  color: var(--p-select-text-color, #010205);
   opacity: 1;
 }
-button:not(:focus)::-moz-placeholder {
-  color: #010205;
+button:not(:focus-visible)::-moz-placeholder {
+  color: var(--p-select-text-color, #010205);
   opacity: 1;
 }
-button:not(:focus):-moz-placeholder {
-  color: #010205;
+button:not(:focus-visible):-moz-placeholder {
+  color: var(--p-select-text-color, #010205);
   opacity: 1;
 }
 @media(hover:hover) {
-  button:hover:not(:disabled):not(:focus), label:hover~.wrapper button:not(:disabled):not(:focus) {
-    border-color: #010205;
+  button:hover:not(:disabled):not(:focus-visible), label:hover~.wrapper button:not(:disabled):not(:focus-visible) {
+    border-color: var(--p-select-border-color, #010205);
   }
 }
 
@@ -1703,6 +1716,7 @@ button:not(:focus):-moz-placeholder {
   pointer-events: none;
   transform: rotate3d(0,0,1,0.0001deg);
   transition: transform var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  filter: var(--p-select-icon-filter);
 }
 .icon--rotate {
   transform: rotate3d(0,0,1,180deg);
@@ -1726,7 +1740,7 @@ button:not(:focus):-moz-placeholder {
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
   background: #FFF;
-  border: 2px solid #010205;
+  border: 2px solid var(--p-select-border-color, #010205);
   border-top: none;
   border-radius: 4px;
   border-top-left-radius: 0;
@@ -1823,9 +1837,9 @@ button {
   text-overflow: ellipsis;
   cursor: pointer;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  color: #010205;
-  background: #FFF;
-  border: 2px solid #010205;
+  color: var(--p-select-text-color, #010205);
+  background: var(--p-select-background-color, #FFF);
+  border: 2px solid var(--p-select-border-color, #010205);
   border-radius: 4px;
   padding-bottom: calc(8px + 1px);
   border-bottom: 1px solid #6B6D70 !important;
@@ -1835,28 +1849,29 @@ button {
 button:disabled {
   cursor: not-allowed;
 }
-button:focus {
-  border-color: #010205;
+button:focus-visible {
+  border-color: var(--p-select-focus-border-color, #010205);
+  background: var(--p-select-focus-background-color, #FFF);
 }
-button:not(:focus)::placeholder {
-  color: #010205;
+button:not(:focus-visible)::placeholder {
+  color: var(--p-select-text-color, #010205);
   opacity: 1;
 }
-button:not(:focus)::-webkit-input-placeholder {
-  color: #010205;
+button:not(:focus-visible)::-webkit-input-placeholder {
+  color: var(--p-select-text-color, #010205);
   opacity: 1;
 }
-button:not(:focus)::-moz-placeholder {
-  color: #010205;
+button:not(:focus-visible)::-moz-placeholder {
+  color: var(--p-select-text-color, #010205);
   opacity: 1;
 }
-button:not(:focus):-moz-placeholder {
-  color: #010205;
+button:not(:focus-visible):-moz-placeholder {
+  color: var(--p-select-text-color, #010205);
   opacity: 1;
 }
 @media(hover:hover) {
-  button:hover:not(:disabled):not(:focus), label:hover~.wrapper button:not(:disabled):not(:focus) {
-    border-color: #010205;
+  button:hover:not(:disabled):not(:focus-visible), label:hover~.wrapper button:not(:disabled):not(:focus-visible) {
+    border-color: var(--p-select-border-color, #010205);
   }
 }
 
@@ -1878,6 +1893,7 @@ button:not(:focus):-moz-placeholder {
   pointer-events: none;
   transform: rotate3d(0,0,1,0.0001deg);
   transition: transform var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  filter: var(--p-select-icon-filter);
 }
 .icon--rotate {
   transform: rotate3d(0,0,1,180deg);
@@ -1901,7 +1917,7 @@ button:not(:focus):-moz-placeholder {
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
   background: #FFF;
-  border: 2px solid #010205;
+  border: 2px solid var(--p-select-border-color, #010205);
   border-top: none;
   border-radius: 4px;
   border-top-left-radius: 0;
@@ -1998,9 +2014,9 @@ button {
   text-overflow: ellipsis;
   cursor: pointer;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  color: #010205;
-  background: #FFF;
-  border: 2px solid #010205;
+  color: var(--p-select-text-color, #010205);
+  background: var(--p-select-background-color, #FFF);
+  border: 2px solid var(--p-select-border-color, #010205);
   border-radius: 4px;
   padding-bottom: calc(8px + 1px);
   border-bottom: 1px solid #6B6D70 !important;
@@ -2010,28 +2026,29 @@ button {
 button:disabled {
   cursor: not-allowed;
 }
-button:focus {
-  border-color: #010205;
+button:focus-visible {
+  border-color: var(--p-select-focus-border-color, #010205);
+  background: var(--p-select-focus-background-color, #FFF);
 }
-button:not(:focus)::placeholder {
-  color: #010205;
+button:not(:focus-visible)::placeholder {
+  color: var(--p-select-text-color, #010205);
   opacity: 1;
 }
-button:not(:focus)::-webkit-input-placeholder {
-  color: #010205;
+button:not(:focus-visible)::-webkit-input-placeholder {
+  color: var(--p-select-text-color, #010205);
   opacity: 1;
 }
-button:not(:focus)::-moz-placeholder {
-  color: #010205;
+button:not(:focus-visible)::-moz-placeholder {
+  color: var(--p-select-text-color, #010205);
   opacity: 1;
 }
-button:not(:focus):-moz-placeholder {
-  color: #010205;
+button:not(:focus-visible):-moz-placeholder {
+  color: var(--p-select-text-color, #010205);
   opacity: 1;
 }
 @media(hover:hover) {
-  button:hover:not(:disabled):not(:focus), label:hover~.wrapper button:not(:disabled):not(:focus) {
-    border-color: #010205;
+  button:hover:not(:disabled):not(:focus-visible), label:hover~.wrapper button:not(:disabled):not(:focus-visible) {
+    border-color: var(--p-select-border-color, #010205);
   }
 }
 
@@ -2053,6 +2070,7 @@ button:not(:focus):-moz-placeholder {
   pointer-events: none;
   transform: rotate3d(0,0,1,0.0001deg);
   transition: transform var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  filter: var(--p-select-icon-filter);
 }
 .icon--rotate {
   transform: rotate3d(0,0,1,180deg);
@@ -2076,7 +2094,7 @@ button:not(:focus):-moz-placeholder {
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
   background: #FFF;
-  border: 2px solid #010205;
+  border: 2px solid var(--p-select-border-color, #010205);
   border-top: none;
   border-radius: 4px;
   border-top-left-radius: 0;
@@ -2175,8 +2193,8 @@ button {
   cursor: not-allowed;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   color: #949598;
-  background: #FFF;
-  border: 2px solid #010205;
+  background: var(--p-select-background-color, #FFF);
+  border: 2px solid var(--p-select-border-color, #010205);
   border-radius: 4px;
   padding-bottom: calc(8px + 1px);
   border-bottom: 1px solid #6B6D70 !important;
@@ -2200,25 +2218,25 @@ button::-moz-placeholder {
 button:-moz-placeholder {
   color: #949598;
 }
-button:not(:focus)::placeholder {
-  color: #010205;
+button:not(:focus-visible)::placeholder {
+  color: var(--p-select-text-color, #010205);
   opacity: 1;
 }
-button:not(:focus)::-webkit-input-placeholder {
-  color: #010205;
+button:not(:focus-visible)::-webkit-input-placeholder {
+  color: var(--p-select-text-color, #010205);
   opacity: 1;
 }
-button:not(:focus)::-moz-placeholder {
-  color: #010205;
+button:not(:focus-visible)::-moz-placeholder {
+  color: var(--p-select-text-color, #010205);
   opacity: 1;
 }
-button:not(:focus):-moz-placeholder {
-  color: #010205;
+button:not(:focus-visible):-moz-placeholder {
+  color: var(--p-select-text-color, #010205);
   opacity: 1;
 }
 @media(hover:hover) {
-  button:hover:not(:disabled):not(:focus), label:hover~.wrapper button:not(:disabled):not(:focus) {
-    border-color: #010205;
+  button:hover:not(:disabled):not(:focus-visible), label:hover~.wrapper button:not(:disabled):not(:focus-visible) {
+    border-color: var(--p-select-border-color, #010205);
   }
 }
 
@@ -2240,6 +2258,7 @@ button:not(:focus):-moz-placeholder {
   pointer-events: none;
   transform: rotate3d(0,0,1,0.0001deg);
   transition: transform var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  filter: var(--p-select-icon-filter);
 }
 .icon--rotate {
   transform: rotate3d(0,0,1,180deg);
@@ -2263,7 +2282,7 @@ button:not(:focus):-moz-placeholder {
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
   background: #FFF;
-  border: 2px solid #010205;
+  border: 2px solid var(--p-select-border-color, #010205);
   border-top: none;
   border-radius: 4px;
   border-top-left-radius: 0;
@@ -2360,8 +2379,8 @@ button {
   cursor: not-allowed;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   color: #949598;
-  background: #FFF;
-  border: 2px solid #010205;
+  background: var(--p-select-background-color, #FFF);
+  border: 2px solid var(--p-select-border-color, #010205);
   border-radius: 4px;
   padding-bottom: calc(8px + 1px);
   border-bottom: 1px solid #6B6D70 !important;
@@ -2385,25 +2404,25 @@ button::-moz-placeholder {
 button:-moz-placeholder {
   color: #949598;
 }
-button:not(:focus)::placeholder {
-  color: #010205;
+button:not(:focus-visible)::placeholder {
+  color: var(--p-select-text-color, #010205);
   opacity: 1;
 }
-button:not(:focus)::-webkit-input-placeholder {
-  color: #010205;
+button:not(:focus-visible)::-webkit-input-placeholder {
+  color: var(--p-select-text-color, #010205);
   opacity: 1;
 }
-button:not(:focus)::-moz-placeholder {
-  color: #010205;
+button:not(:focus-visible)::-moz-placeholder {
+  color: var(--p-select-text-color, #010205);
   opacity: 1;
 }
-button:not(:focus):-moz-placeholder {
-  color: #010205;
+button:not(:focus-visible):-moz-placeholder {
+  color: var(--p-select-text-color, #010205);
   opacity: 1;
 }
 @media(hover:hover) {
-  button:hover:not(:disabled):not(:focus), label:hover~.wrapper button:not(:disabled):not(:focus) {
-    border-color: #010205;
+  button:hover:not(:disabled):not(:focus-visible), label:hover~.wrapper button:not(:disabled):not(:focus-visible) {
+    border-color: var(--p-select-border-color, #010205);
   }
 }
 
@@ -2425,6 +2444,7 @@ button:not(:focus):-moz-placeholder {
   pointer-events: none;
   transform: rotate3d(0,0,1,0.0001deg);
   transition: transform var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  filter: var(--p-select-icon-filter);
 }
 .icon--rotate {
   transform: rotate3d(0,0,1,180deg);
@@ -2448,7 +2468,7 @@ button:not(:focus):-moz-placeholder {
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
   background: #FFF;
-  border: 2px solid #010205;
+  border: 2px solid var(--p-select-border-color, #010205);
   border-top: none;
   border-radius: 4px;
   border-top-left-radius: 0;
@@ -2544,36 +2564,37 @@ button {
   text-overflow: ellipsis;
   cursor: pointer;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  color: #FBFCFF;
-  background: #0E0E12;
-  border: 2px solid #09D087;
+  color: var(--p-select-text-color, #FBFCFF);
+  background: var(--p-select-background-color, #0E0E12);
+  border: 2px solid var(--p-select-border-color, #09D087);
   border-radius: 4px;
 }
 button:disabled {
   cursor: not-allowed;
 }
-button:focus {
-  border-color: #FBFCFF;
+button:focus-visible {
+  border-color: var(--p-select-focus-border-color, #FBFCFF);
+  background: var(--p-select-focus-background-color, #0E0E12);
 }
-button:not(:focus)::placeholder {
-  color: #FBFCFF;
+button:not(:focus-visible)::placeholder {
+  color: var(--p-select-text-color, #FBFCFF);
   opacity: 1;
 }
-button:not(:focus)::-webkit-input-placeholder {
-  color: #FBFCFF;
+button:not(:focus-visible)::-webkit-input-placeholder {
+  color: var(--p-select-text-color, #FBFCFF);
   opacity: 1;
 }
-button:not(:focus)::-moz-placeholder {
-  color: #FBFCFF;
+button:not(:focus-visible)::-moz-placeholder {
+  color: var(--p-select-text-color, #FBFCFF);
   opacity: 1;
 }
-button:not(:focus):-moz-placeholder {
-  color: #FBFCFF;
+button:not(:focus-visible):-moz-placeholder {
+  color: var(--p-select-text-color, #FBFCFF);
   opacity: 1;
 }
 @media(hover:hover) {
-  button:hover:not(:disabled):not(:focus), label:hover~.wrapper button:not(:disabled):not(:focus) {
-    border-color: #069561;
+  button:hover:not(:disabled):not(:focus-visible), label:hover~.wrapper button:not(:disabled):not(:focus-visible) {
+    border-color: var(--p-select-border-color, #069561);
   }
 }
 
@@ -2595,6 +2616,7 @@ button:not(:focus):-moz-placeholder {
   pointer-events: none;
   transform: rotate3d(0,0,1,0.0001deg);
   transition: transform var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  filter: var(--p-select-icon-filter);
 }
 .icon--rotate {
   transform: rotate3d(0,0,1,180deg);
@@ -2618,7 +2640,7 @@ button:not(:focus):-moz-placeholder {
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
   background: #0E0E12;
-  border: 2px solid #FBFCFF;
+  border: 2px solid var(--p-select-border-color, #FBFCFF);
   border-bottom: none;
   border-radius: 4px;
   border-bottom-left-radius: 0;
@@ -2716,36 +2738,37 @@ button {
   text-overflow: ellipsis;
   cursor: pointer;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  color: #FBFCFF;
-  background: #0E0E12;
-  border: 2px solid #FC4040;
+  color: var(--p-select-text-color, #FBFCFF);
+  background: var(--p-select-background-color, #0E0E12);
+  border: 2px solid var(--p-select-border-color, #FC4040);
   border-radius: 4px;
 }
 button:disabled {
   cursor: not-allowed;
 }
-button:focus {
-  border-color: #FBFCFF;
+button:focus-visible {
+  border-color: var(--p-select-focus-border-color, #FBFCFF);
+  background: var(--p-select-focus-background-color, #0E0E12);
 }
-button:not(:focus)::placeholder {
-  color: #FBFCFF;
+button:not(:focus-visible)::placeholder {
+  color: var(--p-select-text-color, #FBFCFF);
   opacity: 1;
 }
-button:not(:focus)::-webkit-input-placeholder {
-  color: #FBFCFF;
+button:not(:focus-visible)::-webkit-input-placeholder {
+  color: var(--p-select-text-color, #FBFCFF);
   opacity: 1;
 }
-button:not(:focus)::-moz-placeholder {
-  color: #FBFCFF;
+button:not(:focus-visible)::-moz-placeholder {
+  color: var(--p-select-text-color, #FBFCFF);
   opacity: 1;
 }
-button:not(:focus):-moz-placeholder {
-  color: #FBFCFF;
+button:not(:focus-visible):-moz-placeholder {
+  color: var(--p-select-text-color, #FBFCFF);
   opacity: 1;
 }
 @media(hover:hover) {
-  button:hover:not(:disabled):not(:focus), label:hover~.wrapper button:not(:disabled):not(:focus) {
-    border-color: #FB0404;
+  button:hover:not(:disabled):not(:focus-visible), label:hover~.wrapper button:not(:disabled):not(:focus-visible) {
+    border-color: var(--p-select-border-color, #FB0404);
   }
 }
 
@@ -2767,6 +2790,7 @@ button:not(:focus):-moz-placeholder {
   pointer-events: none;
   transform: rotate3d(0,0,1,0.0001deg);
   transition: transform var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  filter: var(--p-select-icon-filter);
 }
 .icon--rotate {
   transform: rotate3d(0,0,1,180deg);
@@ -2790,7 +2814,7 @@ button:not(:focus):-moz-placeholder {
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
   background: #0E0E12;
-  border: 2px solid #FBFCFF;
+  border: 2px solid var(--p-select-border-color, #FBFCFF);
   border-bottom: none;
   border-radius: 4px;
   border-bottom-left-radius: 0;
@@ -2889,8 +2913,8 @@ button {
   cursor: not-allowed;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   color: #7E7F82;
-  background: #0E0E12;
-  border: 2px solid #FC4040;
+  background: var(--p-select-background-color, #0E0E12);
+  border: 2px solid var(--p-select-border-color, #FC4040);
   border-radius: 4px;
   border-color: #7E7F82;
   -webkit-text-fill-color: #7E7F82;
@@ -2910,25 +2934,25 @@ button::-moz-placeholder {
 button:-moz-placeholder {
   color: #7E7F82;
 }
-button:not(:focus)::placeholder {
-  color: #FBFCFF;
+button:not(:focus-visible)::placeholder {
+  color: var(--p-select-text-color, #FBFCFF);
   opacity: 1;
 }
-button:not(:focus)::-webkit-input-placeholder {
-  color: #FBFCFF;
+button:not(:focus-visible)::-webkit-input-placeholder {
+  color: var(--p-select-text-color, #FBFCFF);
   opacity: 1;
 }
-button:not(:focus)::-moz-placeholder {
-  color: #FBFCFF;
+button:not(:focus-visible)::-moz-placeholder {
+  color: var(--p-select-text-color, #FBFCFF);
   opacity: 1;
 }
-button:not(:focus):-moz-placeholder {
-  color: #FBFCFF;
+button:not(:focus-visible):-moz-placeholder {
+  color: var(--p-select-text-color, #FBFCFF);
   opacity: 1;
 }
 @media(hover:hover) {
-  button:hover:not(:disabled):not(:focus), label:hover~.wrapper button:not(:disabled):not(:focus) {
-    border-color: #FB0404;
+  button:hover:not(:disabled):not(:focus-visible), label:hover~.wrapper button:not(:disabled):not(:focus-visible) {
+    border-color: var(--p-select-border-color, #FB0404);
   }
 }
 
@@ -2950,6 +2974,7 @@ button:not(:focus):-moz-placeholder {
   pointer-events: none;
   transform: rotate3d(0,0,1,0.0001deg);
   transition: transform var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  filter: var(--p-select-icon-filter);
 }
 .icon--rotate {
   transform: rotate3d(0,0,1,180deg);
@@ -2973,7 +2998,7 @@ button:not(:focus):-moz-placeholder {
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
   background: #0E0E12;
-  border: 2px solid #FBFCFF;
+  border: 2px solid var(--p-select-border-color, #FBFCFF);
   border-bottom: none;
   border-radius: 4px;
   border-bottom-left-radius: 0;
@@ -3071,8 +3096,8 @@ button {
   cursor: not-allowed;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   color: #7E7F82;
-  background: #0E0E12;
-  border: 2px solid #FC4040;
+  background: var(--p-select-background-color, #0E0E12);
+  border: 2px solid var(--p-select-border-color, #FC4040);
   border-radius: 4px;
   border-color: #7E7F82;
   -webkit-text-fill-color: #7E7F82;
@@ -3092,25 +3117,25 @@ button::-moz-placeholder {
 button:-moz-placeholder {
   color: #7E7F82;
 }
-button:not(:focus)::placeholder {
-  color: #FBFCFF;
+button:not(:focus-visible)::placeholder {
+  color: var(--p-select-text-color, #FBFCFF);
   opacity: 1;
 }
-button:not(:focus)::-webkit-input-placeholder {
-  color: #FBFCFF;
+button:not(:focus-visible)::-webkit-input-placeholder {
+  color: var(--p-select-text-color, #FBFCFF);
   opacity: 1;
 }
-button:not(:focus)::-moz-placeholder {
-  color: #FBFCFF;
+button:not(:focus-visible)::-moz-placeholder {
+  color: var(--p-select-text-color, #FBFCFF);
   opacity: 1;
 }
-button:not(:focus):-moz-placeholder {
-  color: #FBFCFF;
+button:not(:focus-visible):-moz-placeholder {
+  color: var(--p-select-text-color, #FBFCFF);
   opacity: 1;
 }
 @media(hover:hover) {
-  button:hover:not(:disabled):not(:focus), label:hover~.wrapper button:not(:disabled):not(:focus) {
-    border-color: #FB0404;
+  button:hover:not(:disabled):not(:focus-visible), label:hover~.wrapper button:not(:disabled):not(:focus-visible) {
+    border-color: var(--p-select-border-color, #FB0404);
   }
 }
 
@@ -3132,6 +3157,7 @@ button:not(:focus):-moz-placeholder {
   pointer-events: none;
   transform: rotate3d(0,0,1,0.0001deg);
   transition: transform var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  filter: var(--p-select-icon-filter);
 }
 .icon--rotate {
   transform: rotate3d(0,0,1,180deg);
@@ -3155,7 +3181,7 @@ button:not(:focus):-moz-placeholder {
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
   background: #0E0E12;
-  border: 2px solid #FBFCFF;
+  border: 2px solid var(--p-select-border-color, #FBFCFF);
   border-bottom: none;
   border-radius: 4px;
   border-bottom-left-radius: 0;
@@ -3253,8 +3279,8 @@ button {
   cursor: not-allowed;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   color: #7E7F82;
-  background: #0E0E12;
-  border: 2px solid #FC4040;
+  background: var(--p-select-background-color, #0E0E12);
+  border: 2px solid var(--p-select-border-color, #FC4040);
   border-radius: 4px;
   border-color: #7E7F82;
   -webkit-text-fill-color: #7E7F82;
@@ -3274,25 +3300,25 @@ button::-moz-placeholder {
 button:-moz-placeholder {
   color: #7E7F82;
 }
-button:not(:focus)::placeholder {
-  color: #FBFCFF;
+button:not(:focus-visible)::placeholder {
+  color: var(--p-select-text-color, #FBFCFF);
   opacity: 1;
 }
-button:not(:focus)::-webkit-input-placeholder {
-  color: #FBFCFF;
+button:not(:focus-visible)::-webkit-input-placeholder {
+  color: var(--p-select-text-color, #FBFCFF);
   opacity: 1;
 }
-button:not(:focus)::-moz-placeholder {
-  color: #FBFCFF;
+button:not(:focus-visible)::-moz-placeholder {
+  color: var(--p-select-text-color, #FBFCFF);
   opacity: 1;
 }
-button:not(:focus):-moz-placeholder {
-  color: #FBFCFF;
+button:not(:focus-visible):-moz-placeholder {
+  color: var(--p-select-text-color, #FBFCFF);
   opacity: 1;
 }
 @media(hover:hover) {
-  button:hover:not(:disabled):not(:focus), label:hover~.wrapper button:not(:disabled):not(:focus) {
-    border-color: #FB0404;
+  button:hover:not(:disabled):not(:focus-visible), label:hover~.wrapper button:not(:disabled):not(:focus-visible) {
+    border-color: var(--p-select-border-color, #FB0404);
   }
 }
 
@@ -3314,6 +3340,7 @@ button:not(:focus):-moz-placeholder {
   pointer-events: none;
   transform: rotate3d(0,0,1,0.0001deg);
   transition: transform var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  filter: var(--p-select-icon-filter);
 }
 .icon--rotate {
   transform: rotate3d(0,0,1,180deg);
@@ -3337,7 +3364,7 @@ button:not(:focus):-moz-placeholder {
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
   background: #0E0E12;
-  border: 2px solid #FBFCFF;
+  border: 2px solid var(--p-select-border-color, #FBFCFF);
   border-bottom: none;
   border-radius: 4px;
   border-bottom-left-radius: 0;
@@ -3435,8 +3462,8 @@ button {
   cursor: not-allowed;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   color: #7E7F82;
-  background: #0E0E12;
-  border: 2px solid #09D087;
+  background: var(--p-select-background-color, #0E0E12);
+  border: 2px solid var(--p-select-border-color, #09D087);
   border-radius: 4px;
   border-color: #7E7F82;
   -webkit-text-fill-color: #7E7F82;
@@ -3456,25 +3483,25 @@ button::-moz-placeholder {
 button:-moz-placeholder {
   color: #7E7F82;
 }
-button:not(:focus)::placeholder {
-  color: #FBFCFF;
+button:not(:focus-visible)::placeholder {
+  color: var(--p-select-text-color, #FBFCFF);
   opacity: 1;
 }
-button:not(:focus)::-webkit-input-placeholder {
-  color: #FBFCFF;
+button:not(:focus-visible)::-webkit-input-placeholder {
+  color: var(--p-select-text-color, #FBFCFF);
   opacity: 1;
 }
-button:not(:focus)::-moz-placeholder {
-  color: #FBFCFF;
+button:not(:focus-visible)::-moz-placeholder {
+  color: var(--p-select-text-color, #FBFCFF);
   opacity: 1;
 }
-button:not(:focus):-moz-placeholder {
-  color: #FBFCFF;
+button:not(:focus-visible):-moz-placeholder {
+  color: var(--p-select-text-color, #FBFCFF);
   opacity: 1;
 }
 @media(hover:hover) {
-  button:hover:not(:disabled):not(:focus), label:hover~.wrapper button:not(:disabled):not(:focus) {
-    border-color: #069561;
+  button:hover:not(:disabled):not(:focus-visible), label:hover~.wrapper button:not(:disabled):not(:focus-visible) {
+    border-color: var(--p-select-border-color, #069561);
   }
 }
 
@@ -3496,6 +3523,7 @@ button:not(:focus):-moz-placeholder {
   pointer-events: none;
   transform: rotate3d(0,0,1,0.0001deg);
   transition: transform var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  filter: var(--p-select-icon-filter);
 }
 .icon--rotate {
   transform: rotate3d(0,0,1,180deg);
@@ -3519,7 +3547,7 @@ button:not(:focus):-moz-placeholder {
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
   background: #0E0E12;
-  border: 2px solid #FBFCFF;
+  border: 2px solid var(--p-select-border-color, #FBFCFF);
   border-bottom: none;
   border-radius: 4px;
   border-bottom-left-radius: 0;
@@ -3616,9 +3644,9 @@ button {
   text-overflow: ellipsis;
   cursor: pointer;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  color: #FBFCFF;
-  background: #0E0E12;
-  border: 2px solid #FBFCFF;
+  color: var(--p-select-text-color, #FBFCFF);
+  background: var(--p-select-background-color, #0E0E12);
+  border: 2px solid var(--p-select-border-color, #FBFCFF);
   border-radius: 4px;
   padding-top: calc(8px + 1px);
   border-top: 1px solid #88898C !important;
@@ -3628,28 +3656,29 @@ button {
 button:disabled {
   cursor: not-allowed;
 }
-button:focus {
-  border-color: #FBFCFF;
+button:focus-visible {
+  border-color: var(--p-select-focus-border-color, #FBFCFF);
+  background: var(--p-select-focus-background-color, #0E0E12);
 }
-button:not(:focus)::placeholder {
-  color: #FBFCFF;
+button:not(:focus-visible)::placeholder {
+  color: var(--p-select-text-color, #FBFCFF);
   opacity: 1;
 }
-button:not(:focus)::-webkit-input-placeholder {
-  color: #FBFCFF;
+button:not(:focus-visible)::-webkit-input-placeholder {
+  color: var(--p-select-text-color, #FBFCFF);
   opacity: 1;
 }
-button:not(:focus)::-moz-placeholder {
-  color: #FBFCFF;
+button:not(:focus-visible)::-moz-placeholder {
+  color: var(--p-select-text-color, #FBFCFF);
   opacity: 1;
 }
-button:not(:focus):-moz-placeholder {
-  color: #FBFCFF;
+button:not(:focus-visible):-moz-placeholder {
+  color: var(--p-select-text-color, #FBFCFF);
   opacity: 1;
 }
 @media(hover:hover) {
-  button:hover:not(:disabled):not(:focus), label:hover~.wrapper button:not(:disabled):not(:focus) {
-    border-color: #FBFCFF;
+  button:hover:not(:disabled):not(:focus-visible), label:hover~.wrapper button:not(:disabled):not(:focus-visible) {
+    border-color: var(--p-select-border-color, #FBFCFF);
   }
 }
 
@@ -3671,6 +3700,7 @@ button:not(:focus):-moz-placeholder {
   pointer-events: none;
   transform: rotate3d(0,0,1,0.0001deg);
   transition: transform var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  filter: var(--p-select-icon-filter);
 }
 .icon--rotate {
   transform: rotate3d(0,0,1,180deg);
@@ -3694,7 +3724,7 @@ button:not(:focus):-moz-placeholder {
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
   background: #0E0E12;
-  border: 2px solid #FBFCFF;
+  border: 2px solid var(--p-select-border-color, #FBFCFF);
   border-bottom: none;
   border-radius: 4px;
   border-bottom-left-radius: 0;
@@ -3792,9 +3822,9 @@ button {
   text-overflow: ellipsis;
   cursor: pointer;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  color: #FBFCFF;
-  background: #0E0E12;
-  border: 2px solid #FBFCFF;
+  color: var(--p-select-text-color, #FBFCFF);
+  background: var(--p-select-background-color, #0E0E12);
+  border: 2px solid var(--p-select-border-color, #FBFCFF);
   border-radius: 4px;
   padding-top: calc(8px + 1px);
   border-top: 1px solid #88898C !important;
@@ -3804,28 +3834,29 @@ button {
 button:disabled {
   cursor: not-allowed;
 }
-button:focus {
-  border-color: #FBFCFF;
+button:focus-visible {
+  border-color: var(--p-select-focus-border-color, #FBFCFF);
+  background: var(--p-select-focus-background-color, #0E0E12);
 }
-button:not(:focus)::placeholder {
-  color: #FBFCFF;
+button:not(:focus-visible)::placeholder {
+  color: var(--p-select-text-color, #FBFCFF);
   opacity: 1;
 }
-button:not(:focus)::-webkit-input-placeholder {
-  color: #FBFCFF;
+button:not(:focus-visible)::-webkit-input-placeholder {
+  color: var(--p-select-text-color, #FBFCFF);
   opacity: 1;
 }
-button:not(:focus)::-moz-placeholder {
-  color: #FBFCFF;
+button:not(:focus-visible)::-moz-placeholder {
+  color: var(--p-select-text-color, #FBFCFF);
   opacity: 1;
 }
-button:not(:focus):-moz-placeholder {
-  color: #FBFCFF;
+button:not(:focus-visible):-moz-placeholder {
+  color: var(--p-select-text-color, #FBFCFF);
   opacity: 1;
 }
 @media(hover:hover) {
-  button:hover:not(:disabled):not(:focus), label:hover~.wrapper button:not(:disabled):not(:focus) {
-    border-color: #FBFCFF;
+  button:hover:not(:disabled):not(:focus-visible), label:hover~.wrapper button:not(:disabled):not(:focus-visible) {
+    border-color: var(--p-select-border-color, #FBFCFF);
   }
 }
 
@@ -3847,6 +3878,7 @@ button:not(:focus):-moz-placeholder {
   pointer-events: none;
   transform: rotate3d(0,0,1,0.0001deg);
   transition: transform var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  filter: var(--p-select-icon-filter);
 }
 .icon--rotate {
   transform: rotate3d(0,0,1,180deg);
@@ -3870,7 +3902,7 @@ button:not(:focus):-moz-placeholder {
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
   background: #0E0E12;
-  border: 2px solid #FBFCFF;
+  border: 2px solid var(--p-select-border-color, #FBFCFF);
   border-bottom: none;
   border-radius: 4px;
   border-bottom-left-radius: 0;
@@ -3968,9 +4000,9 @@ button {
   text-overflow: ellipsis;
   cursor: pointer;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  color: #FBFCFF;
-  background: #0E0E12;
-  border: 2px solid #FBFCFF;
+  color: var(--p-select-text-color, #FBFCFF);
+  background: var(--p-select-background-color, #0E0E12);
+  border: 2px solid var(--p-select-border-color, #FBFCFF);
   border-radius: 4px;
   padding-top: calc(8px + 1px);
   border-top: 1px solid #88898C !important;
@@ -3980,28 +4012,29 @@ button {
 button:disabled {
   cursor: not-allowed;
 }
-button:focus {
-  border-color: #FBFCFF;
+button:focus-visible {
+  border-color: var(--p-select-focus-border-color, #FBFCFF);
+  background: var(--p-select-focus-background-color, #0E0E12);
 }
-button:not(:focus)::placeholder {
-  color: #FBFCFF;
+button:not(:focus-visible)::placeholder {
+  color: var(--p-select-text-color, #FBFCFF);
   opacity: 1;
 }
-button:not(:focus)::-webkit-input-placeholder {
-  color: #FBFCFF;
+button:not(:focus-visible)::-webkit-input-placeholder {
+  color: var(--p-select-text-color, #FBFCFF);
   opacity: 1;
 }
-button:not(:focus)::-moz-placeholder {
-  color: #FBFCFF;
+button:not(:focus-visible)::-moz-placeholder {
+  color: var(--p-select-text-color, #FBFCFF);
   opacity: 1;
 }
-button:not(:focus):-moz-placeholder {
-  color: #FBFCFF;
+button:not(:focus-visible):-moz-placeholder {
+  color: var(--p-select-text-color, #FBFCFF);
   opacity: 1;
 }
 @media(hover:hover) {
-  button:hover:not(:disabled):not(:focus), label:hover~.wrapper button:not(:disabled):not(:focus) {
-    border-color: #FBFCFF;
+  button:hover:not(:disabled):not(:focus-visible), label:hover~.wrapper button:not(:disabled):not(:focus-visible) {
+    border-color: var(--p-select-border-color, #FBFCFF);
   }
 }
 
@@ -4023,6 +4056,7 @@ button:not(:focus):-moz-placeholder {
   pointer-events: none;
   transform: rotate3d(0,0,1,0.0001deg);
   transition: transform var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  filter: var(--p-select-icon-filter);
 }
 .icon--rotate {
   transform: rotate3d(0,0,1,180deg);
@@ -4046,7 +4080,7 @@ button:not(:focus):-moz-placeholder {
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
   background: #0E0E12;
-  border: 2px solid #FBFCFF;
+  border: 2px solid var(--p-select-border-color, #FBFCFF);
   border-bottom: none;
   border-radius: 4px;
   border-bottom-left-radius: 0;
@@ -4144,9 +4178,9 @@ button {
   text-overflow: ellipsis;
   cursor: pointer;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  color: #FBFCFF;
-  background: #0E0E12;
-  border: 2px solid #FBFCFF;
+  color: var(--p-select-text-color, #FBFCFF);
+  background: var(--p-select-background-color, #0E0E12);
+  border: 2px solid var(--p-select-border-color, #FBFCFF);
   border-radius: 4px;
   padding-top: calc(8px + 1px);
   border-top: 1px solid #88898C !important;
@@ -4156,28 +4190,29 @@ button {
 button:disabled {
   cursor: not-allowed;
 }
-button:focus {
-  border-color: #FBFCFF;
+button:focus-visible {
+  border-color: var(--p-select-focus-border-color, #FBFCFF);
+  background: var(--p-select-focus-background-color, #0E0E12);
 }
-button:not(:focus)::placeholder {
-  color: #FBFCFF;
+button:not(:focus-visible)::placeholder {
+  color: var(--p-select-text-color, #FBFCFF);
   opacity: 1;
 }
-button:not(:focus)::-webkit-input-placeholder {
-  color: #FBFCFF;
+button:not(:focus-visible)::-webkit-input-placeholder {
+  color: var(--p-select-text-color, #FBFCFF);
   opacity: 1;
 }
-button:not(:focus)::-moz-placeholder {
-  color: #FBFCFF;
+button:not(:focus-visible)::-moz-placeholder {
+  color: var(--p-select-text-color, #FBFCFF);
   opacity: 1;
 }
-button:not(:focus):-moz-placeholder {
-  color: #FBFCFF;
+button:not(:focus-visible):-moz-placeholder {
+  color: var(--p-select-text-color, #FBFCFF);
   opacity: 1;
 }
 @media(hover:hover) {
-  button:hover:not(:disabled):not(:focus), label:hover~.wrapper button:not(:disabled):not(:focus) {
-    border-color: #FBFCFF;
+  button:hover:not(:disabled):not(:focus-visible), label:hover~.wrapper button:not(:disabled):not(:focus-visible) {
+    border-color: var(--p-select-border-color, #FBFCFF);
   }
 }
 
@@ -4199,6 +4234,7 @@ button:not(:focus):-moz-placeholder {
   pointer-events: none;
   transform: rotate3d(0,0,1,0.0001deg);
   transition: transform var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  filter: var(--p-select-icon-filter);
 }
 .icon--rotate {
   transform: rotate3d(0,0,1,180deg);
@@ -4222,7 +4258,7 @@ button:not(:focus):-moz-placeholder {
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
   background: #0E0E12;
-  border: 2px solid #FBFCFF;
+  border: 2px solid var(--p-select-border-color, #FBFCFF);
   border-bottom: none;
   border-radius: 4px;
   border-bottom-left-radius: 0;
@@ -4321,8 +4357,8 @@ button {
   cursor: not-allowed;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   color: #7E7F82;
-  background: #0E0E12;
-  border: 2px solid #FBFCFF;
+  background: var(--p-select-background-color, #0E0E12);
+  border: 2px solid var(--p-select-border-color, #FBFCFF);
   border-radius: 4px;
   padding-top: calc(8px + 1px);
   border-top: 1px solid #88898C !important;
@@ -4346,25 +4382,25 @@ button::-moz-placeholder {
 button:-moz-placeholder {
   color: #7E7F82;
 }
-button:not(:focus)::placeholder {
-  color: #FBFCFF;
+button:not(:focus-visible)::placeholder {
+  color: var(--p-select-text-color, #FBFCFF);
   opacity: 1;
 }
-button:not(:focus)::-webkit-input-placeholder {
-  color: #FBFCFF;
+button:not(:focus-visible)::-webkit-input-placeholder {
+  color: var(--p-select-text-color, #FBFCFF);
   opacity: 1;
 }
-button:not(:focus)::-moz-placeholder {
-  color: #FBFCFF;
+button:not(:focus-visible)::-moz-placeholder {
+  color: var(--p-select-text-color, #FBFCFF);
   opacity: 1;
 }
-button:not(:focus):-moz-placeholder {
-  color: #FBFCFF;
+button:not(:focus-visible):-moz-placeholder {
+  color: var(--p-select-text-color, #FBFCFF);
   opacity: 1;
 }
 @media(hover:hover) {
-  button:hover:not(:disabled):not(:focus), label:hover~.wrapper button:not(:disabled):not(:focus) {
-    border-color: #FBFCFF;
+  button:hover:not(:disabled):not(:focus-visible), label:hover~.wrapper button:not(:disabled):not(:focus-visible) {
+    border-color: var(--p-select-border-color, #FBFCFF);
   }
 }
 
@@ -4386,6 +4422,7 @@ button:not(:focus):-moz-placeholder {
   pointer-events: none;
   transform: rotate3d(0,0,1,0.0001deg);
   transition: transform var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  filter: var(--p-select-icon-filter);
 }
 .icon--rotate {
   transform: rotate3d(0,0,1,180deg);
@@ -4409,7 +4446,7 @@ button:not(:focus):-moz-placeholder {
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
   background: #0E0E12;
-  border: 2px solid #FBFCFF;
+  border: 2px solid var(--p-select-border-color, #FBFCFF);
   border-bottom: none;
   border-radius: 4px;
   border-bottom-left-radius: 0;
@@ -4501,8 +4538,8 @@ button {
   cursor: not-allowed;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   color: #7E7F82;
-  background: #0E0E12;
-  border: 2px solid #FBFCFF;
+  background: var(--p-select-background-color, #0E0E12);
+  border: 2px solid var(--p-select-border-color, #FBFCFF);
   border-radius: 4px;
   padding-top: calc(8px + 1px);
   border-top: 1px solid #88898C !important;
@@ -4526,25 +4563,25 @@ button::-moz-placeholder {
 button:-moz-placeholder {
   color: #7E7F82;
 }
-button:not(:focus)::placeholder {
-  color: #FBFCFF;
+button:not(:focus-visible)::placeholder {
+  color: var(--p-select-text-color, #FBFCFF);
   opacity: 1;
 }
-button:not(:focus)::-webkit-input-placeholder {
-  color: #FBFCFF;
+button:not(:focus-visible)::-webkit-input-placeholder {
+  color: var(--p-select-text-color, #FBFCFF);
   opacity: 1;
 }
-button:not(:focus)::-moz-placeholder {
-  color: #FBFCFF;
+button:not(:focus-visible)::-moz-placeholder {
+  color: var(--p-select-text-color, #FBFCFF);
   opacity: 1;
 }
-button:not(:focus):-moz-placeholder {
-  color: #FBFCFF;
+button:not(:focus-visible):-moz-placeholder {
+  color: var(--p-select-text-color, #FBFCFF);
   opacity: 1;
 }
 @media(hover:hover) {
-  button:hover:not(:disabled):not(:focus), label:hover~.wrapper button:not(:disabled):not(:focus) {
-    border-color: #FBFCFF;
+  button:hover:not(:disabled):not(:focus-visible), label:hover~.wrapper button:not(:disabled):not(:focus-visible) {
+    border-color: var(--p-select-border-color, #FBFCFF);
   }
 }
 
@@ -4565,6 +4602,7 @@ button:not(:focus):-moz-placeholder {
   pointer-events: none;
   transform: rotate3d(0,0,1,0.0001deg);
   transition: transform var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  filter: var(--p-select-icon-filter);
 }
 .icon--rotate {
   transform: rotate3d(0,0,1,180deg);
@@ -4588,7 +4626,7 @@ button:not(:focus):-moz-placeholder {
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
   background: #0E0E12;
-  border: 2px solid #FBFCFF;
+  border: 2px solid var(--p-select-border-color, #FBFCFF);
   border-bottom: none;
   border-radius: 4px;
   border-bottom-left-radius: 0;
@@ -4698,8 +4736,8 @@ button {
   cursor: not-allowed;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   color: #7E7F82;
-  background: #0E0E12;
-  border: 2px solid #FBFCFF;
+  background: var(--p-select-background-color, #0E0E12);
+  border: 2px solid var(--p-select-border-color, #FBFCFF);
   border-radius: 4px;
   padding-top: calc(8px + 1px);
   border-top: 1px solid #88898C !important;
@@ -4723,25 +4761,25 @@ button::-moz-placeholder {
 button:-moz-placeholder {
   color: #7E7F82;
 }
-button:not(:focus)::placeholder {
-  color: #FBFCFF;
+button:not(:focus-visible)::placeholder {
+  color: var(--p-select-text-color, #FBFCFF);
   opacity: 1;
 }
-button:not(:focus)::-webkit-input-placeholder {
-  color: #FBFCFF;
+button:not(:focus-visible)::-webkit-input-placeholder {
+  color: var(--p-select-text-color, #FBFCFF);
   opacity: 1;
 }
-button:not(:focus)::-moz-placeholder {
-  color: #FBFCFF;
+button:not(:focus-visible)::-moz-placeholder {
+  color: var(--p-select-text-color, #FBFCFF);
   opacity: 1;
 }
-button:not(:focus):-moz-placeholder {
-  color: #FBFCFF;
+button:not(:focus-visible):-moz-placeholder {
+  color: var(--p-select-text-color, #FBFCFF);
   opacity: 1;
 }
 @media(hover:hover) {
-  button:hover:not(:disabled):not(:focus), label:hover~.wrapper button:not(:disabled):not(:focus) {
-    border-color: #FBFCFF;
+  button:hover:not(:disabled):not(:focus-visible), label:hover~.wrapper button:not(:disabled):not(:focus-visible) {
+    border-color: var(--p-select-border-color, #FBFCFF);
   }
 }
 
@@ -4763,6 +4801,7 @@ button:not(:focus):-moz-placeholder {
   pointer-events: none;
   transform: rotate3d(0,0,1,0.0001deg);
   transition: transform var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  filter: var(--p-select-icon-filter);
 }
 .icon--rotate {
   transform: rotate3d(0,0,1,180deg);
@@ -4786,7 +4825,7 @@ button:not(:focus):-moz-placeholder {
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
   background: #0E0E12;
-  border: 2px solid #FBFCFF;
+  border: 2px solid var(--p-select-border-color, #FBFCFF);
   border-bottom: none;
   border-radius: 4px;
   border-bottom-left-radius: 0;
@@ -4884,8 +4923,8 @@ button {
   cursor: not-allowed;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   color: #7E7F82;
-  background: #0E0E12;
-  border: 2px solid #FBFCFF;
+  background: var(--p-select-background-color, #0E0E12);
+  border: 2px solid var(--p-select-border-color, #FBFCFF);
   border-radius: 4px;
   padding-top: calc(8px + 1px);
   border-top: 1px solid #88898C !important;
@@ -4909,25 +4948,25 @@ button::-moz-placeholder {
 button:-moz-placeholder {
   color: #7E7F82;
 }
-button:not(:focus)::placeholder {
-  color: #FBFCFF;
+button:not(:focus-visible)::placeholder {
+  color: var(--p-select-text-color, #FBFCFF);
   opacity: 1;
 }
-button:not(:focus)::-webkit-input-placeholder {
-  color: #FBFCFF;
+button:not(:focus-visible)::-webkit-input-placeholder {
+  color: var(--p-select-text-color, #FBFCFF);
   opacity: 1;
 }
-button:not(:focus)::-moz-placeholder {
-  color: #FBFCFF;
+button:not(:focus-visible)::-moz-placeholder {
+  color: var(--p-select-text-color, #FBFCFF);
   opacity: 1;
 }
-button:not(:focus):-moz-placeholder {
-  color: #FBFCFF;
+button:not(:focus-visible):-moz-placeholder {
+  color: var(--p-select-text-color, #FBFCFF);
   opacity: 1;
 }
 @media(hover:hover) {
-  button:hover:not(:disabled):not(:focus), label:hover~.wrapper button:not(:disabled):not(:focus) {
-    border-color: #FBFCFF;
+  button:hover:not(:disabled):not(:focus-visible), label:hover~.wrapper button:not(:disabled):not(:focus-visible) {
+    border-color: var(--p-select-border-color, #FBFCFF);
   }
 }
 
@@ -4949,6 +4988,7 @@ button:not(:focus):-moz-placeholder {
   pointer-events: none;
   transform: rotate3d(0,0,1,0.0001deg);
   transition: transform var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  filter: var(--p-select-icon-filter);
 }
 .icon--rotate {
   transform: rotate3d(0,0,1,180deg);
@@ -4972,7 +5012,7 @@ button:not(:focus):-moz-placeholder {
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
   background: #0E0E12;
-  border: 2px solid #FBFCFF;
+  border: 2px solid var(--p-select-border-color, #FBFCFF);
   border-bottom: none;
   border-radius: 4px;
   border-bottom-left-radius: 0;

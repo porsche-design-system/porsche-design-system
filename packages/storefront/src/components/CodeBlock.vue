@@ -153,9 +153,11 @@
 
     pre {
       @include pds-focus('small', 1px);
-      max-height: 20rem;
-      overflow: auto;
-      background: var(--code-block-background); // to ensure scrollbar coloring is optimal for any theme
+      & {
+        max-height: 20rem;
+        overflow: auto;
+        background: var(--code-block-background); // to ensure scrollbar coloring is optimal for any theme
+      }
 
       :deep(code) {
         // source: https://github.com/ericwbailey/a11y-syntax-highlighting/blob/main/dist/prism/a11y-light.css#L52-L107

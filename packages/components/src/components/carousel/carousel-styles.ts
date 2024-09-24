@@ -1,5 +1,5 @@
 import type { BreakpointCustomizable, Theme } from '../../types';
-import type { CarouselAlignHeader, CarouselHeadingSize, CarouselWidth } from './carousel-utils';
+import type { CarouselAlignHeader, CarouselGradientColor, CarouselHeadingSize, CarouselWidth } from './carousel-utils';
 import { buildResponsiveStyles, getCss, isHighContrastMode } from '../../utils';
 import {
   addImportantToEachRule,
@@ -36,6 +36,7 @@ import {
 import type { JssStyle } from 'jss';
 
 const cssVariablePrevNextFilter = '--p-carousel-prev-next-filter';
+export const cssVariableGradientColorWidth = '--p-gradient-color-width';
 export const carouselTransitionDuration = motionDurationModerate;
 export const paginationInfiniteStartCaseClass = 'pagination--infinite';
 export const bulletClass = 'bullet';
@@ -74,7 +75,37 @@ const backfaceVisibilityJssStyle: JssStyle = {
   WebkitBackfaceVisibility: 'hidden',
 };
 
+const gradientColorLight: Record<CarouselGradientColor, string> = {
+  'background-base': '255,255,255',
+  'background-surface': '238,239,242',
+  none: '',
+};
+
+const gradientColorDark: Record<CarouselGradientColor, string> = {
+  'background-base': '14,14,18',
+  'background-surface': '33,34,37',
+  none: '',
+};
+
+const gradientColorMap: Record<Theme, Record<CarouselGradientColor, string>> = {
+  auto: gradientColorLight,
+  light: gradientColorLight,
+  dark: gradientColorDark,
+};
+
+const getGradient = (theme: Theme, gradientColorTheme: CarouselGradientColor): string => {
+  const gradientColor = gradientColorMap[theme][gradientColorTheme];
+
+  return (
+    `rgba(${gradientColor},1) 20%,` +
+    `rgba(${gradientColor},0.6) 48%,` +
+    `rgba(${gradientColor},0.3) 68%,` +
+    `rgba(${gradientColor},0)`
+  );
+};
+
 export const getComponentCss = (
+  gradientColor: CarouselGradientColor,
   hasHeading: boolean,
   hasDescription: boolean,
   hasControlsSlot: boolean,
@@ -90,6 +121,17 @@ export const getComponentCss = (
   const { primaryColor: primaryColorDark, contrastMediumColor: contrastMediumColorDark } = getThemedColors('dark');
   const { canvasTextColor } = getHighContrastColors();
   const isHeaderAlignCenter = alignHeader === 'center';
+
+  const getGradientStyles = (direction: 'left' | 'right'): JssStyle =>
+    gradientColor
+      ? {
+          [direction === 'left' ? 'right' : 'left']: 0,
+          background: `linear-gradient(to ${direction}, ${getGradient(theme, gradientColor)} 100%)`,
+          ...prefersColorSchemeDarkMediaQuery(theme, {
+            background: `linear-gradient(to ${direction}, ${getGradient('dark', gradientColor)} 100%)`,
+          }),
+        }
+      : {};
 
   return getCss({
     '@global': {
@@ -197,6 +239,7 @@ export const getComponentCss = (
       padding: '4px 0', // for slide focus outline
       margin: '-4px 0', // for slide focus outline
       '&__track': {
+        position: 'relative',
         // !important is necessary to override inline styles set by splide library
         ...addImportantToEachRule({
           padding: `0 ${spacingMap[width].base}`,
@@ -216,6 +259,16 @@ export const getComponentCss = (
           WebkitUserSelect: 'none',
           WebkitTouchCallout: 'none',
         },
+        '&::before, &::after': {
+          content: '""',
+          position: 'absolute',
+          zIndex: 1,
+          top: 0,
+          height: '100%',
+          width: `var(${cssVariableGradientColorWidth}, 33%)`,
+        },
+        '&::before': getGradientStyles('right'),
+        '&::after': getGradientStyles('left'),
       },
       '&__list': {
         ...backfaceVisibilityJssStyle,

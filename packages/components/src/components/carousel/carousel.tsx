@@ -7,9 +7,11 @@ import {
   type CarouselInternationalization,
   type CarouselUpdateEventDetail,
   type CarouselWidth,
+  type CarouselGradientColor,
   CAROUSEL_ALIGN_HEADERS,
   CAROUSEL_ARIA_ATTRIBUTES,
   CAROUSEL_WIDTHS,
+  CAROUSEL_GRADIENT_COLORS,
   getAmountOfPages,
   getSlidesAndAddAttributes,
   getSplideBreakpoints,
@@ -66,6 +68,9 @@ const propTypes: PropTypes<typeof Carousel> = {
     AllowedTypes.breakpoint('number'),
     AllowedTypes.oneOf(['auto']),
   ]),
+  gradientColor: AllowedTypes.oneOf<CarouselGradientColor>(CAROUSEL_GRADIENT_COLORS),
+  focusOnCenterSlide: AllowedTypes.boolean,
+  trimSpace: AllowedTypes.boolean,
   disablePagination: AllowedTypes.breakpoint('boolean'),
   pagination: AllowedTypes.breakpoint('boolean'),
   aria: AllowedTypes.aria<CarouselAriaAttribute>(CAROUSEL_ARIA_ATTRIBUTES),
@@ -148,6 +153,18 @@ export class Carousel {
   @Prop() public skipLinkTarget?: string;
 
   /**
+   * Indicates whether focus should be set on the center slide.
+   * If true, the carousel loops by individual slide; otherwise, it loops by page.
+   */
+  @Prop() public focusOnCenterSlide?: boolean = false;
+
+  /** Adapts the background gradient for the left and right edge. */
+  @Prop() public gradientColor?: CarouselGradientColor = 'none';
+
+  /** Determines whether to trim spaces before/after the carousel if `focusOnCenterSlide` option is true. */
+  @Prop() public trimSpace?: boolean = true;
+
+  /**
    * @deprecated since v3.0.0, will be removed with next major release, use `update` event instead.
    * Emitted when carousel's content slides. */
   @Event({ bubbles: false }) public carouselChange: EventEmitter<CarouselUpdateEventDetail>;
@@ -208,6 +225,8 @@ export class Carousel {
       autoWidth: this.slidesPerPage === 'auto', // https://splidejs.com/guides/auto-width/#auto-width
       arrows: false,
       easing: motionEasingBase,
+      focus: this.focusOnCenterSlide ? 'center' : undefined,
+      trimSpace: this.trimSpace,
       pagination: false,
       rewind: this.rewind,
       rewindByDrag: true, // only works when rewind: true
@@ -262,6 +281,7 @@ export class Carousel {
     attachComponentCss(
       this.host,
       getComponentCss,
+      this.gradientColor,
       hasHeadingPropOrSlot,
       hasDescriptionPropOrSlot,
       hasControlsSlot,
@@ -275,7 +295,7 @@ export class Carousel {
             ) as BreakpointCustomizable<boolean>)
           : !this.disablePagination
         : this.pagination,
-      isInfinitePagination(this.amountOfPages),
+      isInfinitePagination(this.focusOnCenterSlide ? this.slides.length : this.amountOfPages),
       (alignHeaderDeprecationMap[this.alignHeader as keyof AlignHeaderDeprecationMapType] ||
         this.alignHeader) as Exclude<CarouselAlignHeader, CarouselAlignHeaderDeprecated>,
       this.theme,
@@ -329,7 +349,7 @@ export class Carousel {
                 {...btnProps}
                 icon="arrow-left"
                 ref={(ref: HTMLPButtonPureElement) => (this.btnPrev = ref)}
-                onClick={() => slidePrev(this.splide, this.amountOfPages)}
+                onClick={() => slidePrev(this.splide, this.amountOfPages, this.focusOnCenterSlide)}
               />
             )}
             {this.hasNavigation && (
@@ -337,7 +357,7 @@ export class Carousel {
                 {...btnProps}
                 icon="arrow-right"
                 ref={(ref: HTMLPButtonPureElement) => (this.btnNext = ref)}
-                onClick={() => slideNext(this.splide, this.amountOfPages)}
+                onClick={() => slideNext(this.splide, this.amountOfPages, this.focusOnCenterSlide)}
                 onKeyDown={this.onNextKeyDown}
               />
             )}
@@ -379,13 +399,13 @@ export class Carousel {
     splide.on('mounted', () => {
       if (this.splide.options.drag) {
         updatePrevNextButtons(this.btnPrev, this.btnNext, splide);
-        renderPagination(this.paginationEl, this.amountOfPages, this.activeSlideIndex, this.splide); // initial pagination
+        renderPagination(this.paginationEl, this.getPageCount(), this.activeSlideIndex, this.splide); // initial pagination
       }
     });
 
     splide.on('move', (activeIndex, previousIndex): void => {
       updatePrevNextButtons(this.btnPrev, this.btnNext, splide);
-      updatePagination(this.paginationEl, this.amountOfPages, activeIndex);
+      updatePagination(this.paginationEl, this.getPageCount(), activeIndex);
       this.update.emit({ activeIndex, previousIndex });
       this.carouselChange.emit({ activeIndex, previousIndex });
     });
@@ -421,6 +441,8 @@ export class Carousel {
     }
   };
 
+  private getPageCount = (): number => (this.focusOnCenterSlide ? this.slides.length : this.amountOfPages);
+
   private onSplideFocusIn = (e: FocusEvent & { target: HTMLElement }): void => {
     const { target } = e;
     const { index: splideIndex } = this.splide;
@@ -429,10 +451,10 @@ export class Carousel {
       this.splide.Components.Elements.slides[slideIndexOfFocusedElement].classList.contains('is-visible');
 
     if (splideIndex !== slideIndexOfFocusedElement) {
-      if (slideIndexOfFocusedElement > splideIndex && !slideIsVisible) {
-        slideNext(this.splide, this.amountOfPages);
+      if (slideIndexOfFocusedElement > splideIndex && (!slideIsVisible || this.focusOnCenterSlide)) {
+        slideNext(this.splide, this.amountOfPages, this.focusOnCenterSlide);
       } else if (slideIndexOfFocusedElement < splideIndex) {
-        slidePrev(this.splide, this.amountOfPages);
+        slidePrev(this.splide, this.amountOfPages, this.focusOnCenterSlide);
       }
     }
   };

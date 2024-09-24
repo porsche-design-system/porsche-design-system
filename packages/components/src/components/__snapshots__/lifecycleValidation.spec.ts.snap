@@ -92,10 +92,11 @@ exports[`should call validateProps() with correct parameters via render for p-bu
 
 exports[`should call validateProps() with correct parameters via render for p-canvas: propTypes with ValidatorFunctions 1`] = `
 {
+  "sidebarEndIcon": "string",
   "sidebarEndOpen": "boolean",
-  "sidebarEndWidth": "oneOf",
+  "sidebarStartIcon": "string",
   "sidebarStartOpen": "boolean",
-  "sidebarStartWidth": "oneOf",
+  "theme": "oneOf",
 }
 `;
 
@@ -106,6 +107,8 @@ exports[`should call validateProps() with correct parameters via render for p-ca
   "aria": "aria",
   "description": "string",
   "disablePagination": "breakpoint",
+  "focusOnCenterSlide": "boolean",
+  "gradientColor": "oneOf",
   "heading": "string",
   "headingSize": "oneOf",
   "intl": "shape",
@@ -114,6 +117,7 @@ exports[`should call validateProps() with correct parameters via render for p-ca
   "skipLinkTarget": "string",
   "slidesPerPage": "oneOf",
   "theme": "oneOf",
+  "trimSpace": "boolean",
   "width": "oneOf",
   "wrapContent": "boolean",
 }

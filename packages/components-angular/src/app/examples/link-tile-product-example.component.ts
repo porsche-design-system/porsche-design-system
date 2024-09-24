@@ -13,12 +13,7 @@ import type { LinkTileProductLikeEventDetail } from '@porsche-design-system/comp
       (like)="handleLike($event)"
     >
       <p-tag slot="header" [color]="'background-base'">New</p-tag>
-      <img
-        src="https://porsche-design-system.github.io/dummyasset/placeholder_800x900.svg"
-        width="800"
-        height="900"
-        alt="Some alt text"
-      />
+      <img src="http://localhost:3002/placeholder_800x900.svg" width="800" height="900" alt="Some alt text" />
     </p-link-tile-product>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,

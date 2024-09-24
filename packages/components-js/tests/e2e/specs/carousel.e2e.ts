@@ -28,6 +28,7 @@ type InitOptions = {
   withFocusableElements?: boolean;
   rewind?: boolean;
   activeSlideIndex?: number;
+  focusOnCenterSlide?: boolean;
   skipLinkTarget?: string;
   dir?: 'ltr' | 'rtl';
 };
@@ -40,6 +41,7 @@ const initCarousel = (page: Page, opts?: InitOptions) => {
     withFocusableElements = false,
     rewind = true,
     activeSlideIndex,
+    focusOnCenterSlide = false,
     skipLinkTarget,
     dir = 'ltr',
   } = opts || {};
@@ -56,8 +58,9 @@ const initCarousel = (page: Page, opts?: InitOptions) => {
   const attrs = [
     aria && `aria="${aria}"`,
     slidesPerPage ? `slides-per-page="${slidesPerPage}"` : '',
-    rewind === false ? 'rewind="false"' : '',
+    !rewind ? 'rewind="false"' : '',
     activeSlideIndex ? `active-slide-index="${activeSlideIndex}"` : '',
+    focusOnCenterSlide ? `focus-on-center-slide="${focusOnCenterSlide}"` : '',
     skipLinkTarget ? `skip-link-target="${skipLinkTarget}"` : '',
     dir ? `dir="${dir}"` : '',
   ].join(' ');
@@ -1116,5 +1119,104 @@ test.describe('rtl mode', () => {
     await isElementCompletelyInViewport(slide1);
     await isElementNotInViewport(slide2);
     await isElementNotInViewport(slide3);
+  });
+});
+
+test.describe('focusOnCenterSlide', () => {
+  test('should loop by individual slide and focus last one', async ({ page }) => {
+    await initCarousel(page, { amountOfSlides: 6, slidesPerPage: 3, activeSlideIndex: 0, focusOnCenterSlide: true });
+    const buttonNext = getButtonNext(page);
+    const [slide1, slide2, slide3, slide4, slide5, slide6] = await getSlides(page);
+
+    await isElementCompletelyInViewport(slide1);
+    await isElementCompletelyInViewport(slide2);
+    await isElementCompletelyInViewport(slide3);
+
+    await buttonNext.click({ clickCount: 2 });
+    await waitForSlideToBeActive(slide3);
+    await isElementNotInViewport(slide1);
+    await isElementCompletelyInViewport(slide2);
+    await isElementCompletelyInViewport(slide3);
+    await isElementCompletelyInViewport(slide4);
+
+    await buttonNext.click();
+    await waitForSlideToBeActive(slide4);
+    await isElementNotInViewport(slide2);
+    await isElementCompletelyInViewport(slide3);
+    await isElementCompletelyInViewport(slide4);
+    await isElementCompletelyInViewport(slide5);
+
+    await buttonNext.click();
+    await waitForSlideToBeActive(slide5);
+    await isElementNotInViewport(slide3);
+    await isElementCompletelyInViewport(slide4);
+    await isElementCompletelyInViewport(slide5);
+    await isElementCompletelyInViewport(slide6);
+
+    await buttonNext.click();
+    await waitForSlideToBeActive(slide6);
+    await isElementNotInViewport(slide3);
+    await isElementCompletelyInViewport(slide4);
+    await isElementCompletelyInViewport(slide5);
+    await isElementCompletelyInViewport(slide6);
+  });
+
+  test('should slide correctly if slides without focusable elements are tabbed for slidesPerPage=3', async ({
+    page,
+  }) => {
+    await initCarousel(page, {
+      amountOfSlides: 6,
+      slidesPerPage: 3,
+      withFocusableElements: false,
+      focusOnCenterSlide: true,
+    });
+    const [slide1, slide2, slide3, slide4, slide5, slide6] = await getSlides(page);
+    const [slideSlotted1] = await getSlottedSlides(page);
+
+    await slideSlotted1.focus();
+    await isElementCompletelyInViewport(slide1);
+    await isElementCompletelyInViewport(slide2);
+    await isElementCompletelyInViewport(slide3);
+    await isElementNotInViewport(slide4);
+
+    await page.keyboard.press('Tab');
+    await waitForSlideToBeActive(slide2);
+    await isElementCompletelyInViewport(slide1);
+    await isElementCompletelyInViewport(slide2);
+    await isElementCompletelyInViewport(slide3);
+    await isElementNotInViewport(slide4);
+
+    await page.keyboard.press('Tab');
+    await waitForSlideToBeActive(slide3);
+    await isElementNotInViewport(slide1);
+    await isElementCompletelyInViewport(slide2);
+    await isElementCompletelyInViewport(slide3);
+    await isElementCompletelyInViewport(slide4);
+
+    await page.keyboard.press('Tab');
+    await waitForSlideToBeActive(slide4);
+
+    await isElementNotInViewport(slide2);
+    await isElementCompletelyInViewport(slide3);
+    await isElementCompletelyInViewport(slide4);
+    await isElementCompletelyInViewport(slide5);
+
+    await page.keyboard.down('Shift');
+    await page.keyboard.press('Tab');
+    await waitForSlideToBeActive(slide3);
+
+    await isElementNotInViewport(slide1);
+    await isElementCompletelyInViewport(slide2);
+    await isElementCompletelyInViewport(slide3);
+    await isElementCompletelyInViewport(slide4);
+
+    await page.keyboard.down('Shift');
+    await page.keyboard.press('Tab');
+    await waitForSlideToBeActive(slide2);
+
+    await isElementCompletelyInViewport(slide1);
+    await isElementCompletelyInViewport(slide2);
+    await isElementCompletelyInViewport(slide3);
+    await isElementNotInViewport(slide4);
   });
 });

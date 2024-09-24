@@ -4,6 +4,7 @@ export * from './BannerExample';
 export * from './ButtonExampleForm';
 export * from './CanvasExample';
 export * from './CarouselExampleDynamicSlides';
+export * from './CarouselExampleFocusOnCenterSlide';
 export * from './CarouselExampleEvents';
 export * from './CarouselExampleJumpToSlide';
 export * from './FlyoutExample';

@@ -116,6 +116,12 @@ const generateCodeSamples = (): void => {
           componentsVuePath + '/CarouselExampleDynamicSlides.vue',
         ],
         [
+          componentsJsPath + '/carousel-example-focus-on-center-slide.html',
+          componentsAngularPath + '/carousel-example-focus-on-center-slide.component.ts',
+          componentsReactPath + '/CarouselExampleFocusOnCenterSlide.tsx',
+          componentsVuePath + '/CarouselExampleFocusOnCenterSlide.vue',
+        ],
+        [
           componentsJsPath + '/carousel-example-jump-to-slide.html',
           componentsAngularPath + '/carousel-example-jump-to-slide.component.ts',
           componentsReactPath + '/CarouselExampleJumpToSlide.tsx',
@@ -542,6 +548,9 @@ const generateCodeSamples = (): void => {
               // remove getHeadAndData() helper function
               fileContent = fileContent.replace(/\s\sconst getHeadAndData = (\s|\S)*?return(.*\s){3}/, '');
             }
+
+            // Replace locally served assets with public assets folder of storefront
+            fileContent = fileContent.replace(/http:\/\/localhost:3002/g, '/assets');
 
             return { [framework]: fileContent };
           });

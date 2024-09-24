@@ -77,6 +77,8 @@
   .native-anchor {
     @include pds-text-small;
     @include pds-focus;
-    color: inherit;
+    & {
+      color: inherit;
+    }
   }
 </style>

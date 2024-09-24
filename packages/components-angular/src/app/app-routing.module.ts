@@ -121,6 +121,11 @@ export const routes: ExtendedRoute[] = [
     component: fromExamples.CarouselExampleDynamicSlidesComponent,
   },
   {
+    name: 'Carousel Example Focus On Center Slide',
+    path: 'carousel-example-focus-on-center-slide',
+    component: fromExamples.CarouselExampleFocusOnCenterSlideComponent,
+  },
+  {
     name: 'Carousel Example Events',
     path: 'carousel-example-events',
     component: fromExamples.CarouselExampleEventsComponent,

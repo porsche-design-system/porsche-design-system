@@ -25,10 +25,6 @@
   @use '@/styles/internal.variables.scss' as *;
 
   .menu-desktop {
-    @include pds-media-query-max('m') {
-      display: none;
-    }
-
     display: flex;
     flex-direction: column;
     gap: $pds-spacing-fluid-large;
@@ -50,6 +46,9 @@
       // Move scrollbar out of Porsche Grid to keep navigation content properly aligned
       $pds-spacing-fluid-x-large $pds-grid-wide-offset-s; // Enables the scrollable area of the sidebar to the left side of the viewport while the content is still being placed on the Porsche Grid
 
+    @include pds-media-query-max('m') {
+      display: none;
+    }
     @include pds-media-query-min('xxl') {
       margin-inline-start: calc(#{$pds-grid-wide-offset-xxl} * -1);
       padding-inline-start: $pds-grid-wide-offset-xxl;

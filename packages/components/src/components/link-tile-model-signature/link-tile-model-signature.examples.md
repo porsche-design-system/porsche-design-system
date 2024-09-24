@@ -155,8 +155,8 @@ export default class Code extends Vue {
   <p-link-tile-model-signature heading="Some heading">
     <p-tag slot="header" theme="dark" color="background-frosted" compact="true">Some tag</p-tag>
     <video
-      poster="https://porsche-design-system.github.io/dummyasset/ocean.jpg"
-      src="https://porsche-design-system.github.io/dummyasset/ocean.mp4"
+      poster="/assets/ocean.jpg"
+      src="/assets/ocean.mp4"
       loop
       muted
       autoplay

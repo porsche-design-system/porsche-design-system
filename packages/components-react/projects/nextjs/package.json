@@ -9,8 +9,8 @@
     "prestartAndBuild": "yarn clean:build && tsx scripts/prepareSharedStyles.ts",
     "prestart": "yarn prestartAndBuild",
     "prebuild-app": "yarn prestartAndBuild",
-    "start": "concurrently -k -s 'first' -n 'cdn,nextjs' 'serve-cdn' 'next dev'",
-    "start-app": "concurrently -k -s 'first' -n 'cdn,app' 'serve-cdn' 'next start'",
+    "start": "concurrently -k -s 'first' -n 'cdn,dummyassets,nextjs' 'serve-cdn' 'serve-dummyassets' 'next dev'",
+    "start-app": "concurrently -k -s 'first' -n 'cdn,dummyassets,app' 'serve-cdn' 'serve-dummyassets' 'next start'",
     "build-app": "next build",
     "lint": "next lint",
     "test": "yarn test:e2e && yarn test:vrt",
@@ -29,7 +29,7 @@
     "@types/react": "18.3.3",
     "@types/react-dom": "^18.3.0",
     "eslint": "^8.57.0",
-    "eslint-config-next": "^14.2.5"
+    "eslint-config-next": "^14.2.6"
   },
   "peerDependencies": {
     "ag-grid-enterprise": ">= 32.0.0 <33.0.0",

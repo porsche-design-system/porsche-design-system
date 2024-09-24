@@ -41,7 +41,8 @@ export const getComponentCss = (
   showPasswordToggle: boolean,
   isWithinForm: boolean,
   hasSubmitButton: boolean,
-  theme: Theme
+  theme: Theme,
+  unitLength: number
 ): string => {
   const isSearch = isType(inputType, 'search');
   const isPassword = isType(inputType, 'password');
@@ -52,6 +53,10 @@ export const getComponentCss = (
   const isSearchWithoutFormOrSubmitButton = isSearch && (!isWithinForm || !hasSubmitButton);
   const isSearchWithForm = isSearch && isWithinForm;
   const isCalendarOrTimeWithCustomIndicator = showCustomCalendarOrTimeIndicator(isCalendar, isTime);
+  const counterCharacterLengthCssVar = 'var(--p-internal-counter-character-length)';
+  const paddingInlineIfUnitOrCounter =
+    hasUnitOrVisibleCounter &&
+    `calc(${formElementLayeredGap} + ${formElementPaddingHorizontal} + ${borderWidthBase} + ${unitLength || counterCharacterLengthCssVar} * 1ch * log(2.6))`;
 
   return getCss({
     '@global': {
@@ -68,8 +73,14 @@ export const getComponentCss = (
         ...getSlottedTextFieldTextareaSelectStyles('input', state, false, theme, {
           gridArea: '1/1/1/-1',
           padding: `${formElementPaddingVertical} ${formElementPaddingHorizontal}`,
-          paddingInlineStart: `var(${cssVariableInputPaddingStart})`, // iOS Safari 14.5 can't handle padding-inline shorthand with css variables
-          paddingInlineEnd: `var(${cssVariableInputPaddingEnd})`, // iOS Safari 14.5 can't handle padding-inline shorthand with css variables
+          paddingInlineStart:
+            hasUnitOrVisibleCounter && unitPosition === 'prefix'
+              ? paddingInlineIfUnitOrCounter
+              : `var(${cssVariableInputPaddingStart})`, // iOS Safari 14.5 can't handle padding-inline shorthand with css variables
+          paddingInlineEnd:
+            hasUnitOrVisibleCounter && unitPosition === 'suffix'
+              ? paddingInlineIfUnitOrCounter
+              : `var(${cssVariableInputPaddingEnd})`, // iOS Safari 14.5 can't handle padding-inline shorthand with css variables
           // TODO: move into getSlottedTextFieldTextareaSelectStyles()
           ...(isNumber && {
             MozAppearance: 'textfield', // hides up/down spin button for Firefox

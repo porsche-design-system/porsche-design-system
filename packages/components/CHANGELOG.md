@@ -14,6 +14,41 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ### [Unreleased]
 
+#### Added
+
+- `Carousel`: introduce `trimSpace` prop
+  ([#3496](https://github.com/porsche-design-system/porsche-design-system/pull/3496))
+
+#### Fixed
+
+- `Checkbox Wrapper`, `Radio Button Wrapper`: rendering of `checked` state in Blink based Browsers when component is
+  rendered in high contrast mode ([#3488](https://github.com/porsche-design-system/porsche-design-system/pull/3488))
+
+### [3.19.0-rc.1] - 2024-09-06
+
+#### Changed
+
+- `Canvas`: Improve UX ([#3494](https://github.com/porsche-design-system/porsche-design-system/pull/3494))
+
+### [3.19.0-rc.0] - 2024-09-03
+
+#### Added
+
+- `componentsReady()`: Introduce optional `readyState` parameter
+  ([#3460](https://github.com/porsche-design-system/porsche-design-system/pull/3460))
+- `Carousel`: introduce `focusOnCenterSlide` & `gradientColor` props
+  ([#3488](https://github.com/porsche-design-system/porsche-design-system/pull/3488))
+
+#### Changed
+
+- `Text Field Wrapper`: width calculation of counter and unit element are now CSS based in relation to the number of
+  characters ([#3472](https://github.com/porsche-design-system/porsche-design-system/pull/3472))
+
+#### Fixed
+
+- `jsdom-polyfill`: errors from included polyfill packages
+  ([3481](https://github.com/porsche-design-system/porsche-design-system/pull/3481))
+
 ### [3.18.0] - 2024-08-21
 
 ### [3.18.0-rc.0] - 2024-08-21

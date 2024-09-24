@@ -57,6 +57,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 .root {
   display: grid;
   gap: 4px;
+  min-width: calc(1rem + 16px*2 + 2px*2);
 }
 .wrapper {
   display: grid;
@@ -245,6 +246,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 .root {
   display: grid;
   gap: 4px;
+  min-width: calc(1rem + 16px*2 + 2px*2);
 }
 .wrapper {
   display: grid;
@@ -433,6 +435,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 .root {
   display: grid;
   gap: 4px;
+  min-width: calc(1rem + 16px*2 + 2px*2);
 }
 .wrapper {
   display: grid;
@@ -534,6 +537,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 .root {
   display: grid;
   gap: 4px;
+  min-width: calc(1rem + 16px*2 + 2px*2);
 }
 .wrapper {
   display: grid;
@@ -658,6 +662,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 .root {
   display: grid;
   gap: 4px;
+  min-width: calc(1rem + 16px*2 + 2px*2);
 }
 .wrapper {
   display: grid;
@@ -758,6 +763,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 .root {
   display: grid;
   gap: 4px;
+  min-width: calc(1rem + 16px*2 + 2px*2);
 }
 .wrapper {
   display: grid;
@@ -881,6 +887,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 .root {
   display: grid;
   gap: 4px;
+  min-width: calc(1rem + 16px*2 + 2px*2);
 }
 .wrapper {
   display: grid;
@@ -982,6 +989,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 .root {
   display: grid;
   gap: 4px;
+  min-width: calc(1rem + 16px*2 + 2px*2);
 }
 .wrapper {
   display: grid;
@@ -1106,6 +1114,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 .root {
   display: grid;
   gap: 4px;
+  min-width: calc(1rem + 16px*2 + 2px*2);
 }
 .wrapper {
   display: grid;
@@ -1207,6 +1216,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 .root {
   display: grid;
   gap: 4px;
+  min-width: calc(1rem + 16px*2 + 2px*2);
 }
 .wrapper {
   display: grid;
@@ -1331,6 +1341,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 .root {
   display: grid;
   gap: 4px;
+  min-width: calc(1rem + 16px*2 + 2px*2);
 }
 .wrapper {
   display: grid;
@@ -1431,6 +1442,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 .root {
   display: grid;
   gap: 4px;
+  min-width: calc(1rem + 16px*2 + 2px*2);
 }
 .wrapper {
   display: grid;
@@ -1554,6 +1566,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 .root {
   display: grid;
   gap: 4px;
+  min-width: calc(1rem + 16px*2 + 2px*2);
 }
 .wrapper {
   display: grid;
@@ -1655,6 +1668,7 @@ exports[`getComponentCss() should return correct css for isDisabled: false, hide
 .root {
   display: grid;
   gap: 4px;
+  min-width: calc(1rem + 16px*2 + 2px*2);
 }
 .wrapper {
   display: grid;
@@ -1779,6 +1793,7 @@ exports[`getComponentCss() should return correct css for isDisabled: true, hideL
 .root {
   display: grid;
   gap: 4px;
+  min-width: calc(1rem + 16px*2 + 2px*2);
 }
 .wrapper {
   display: grid;

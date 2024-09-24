@@ -19,6 +19,18 @@ import type { CarouselUpdateEventDetail } from '@porsche-design-system/component
       {{ i + 1 }}
     </button>
   `,
+  styles: `
+    @use '@porsche-design-system/components-angular/styles' as *;
+
+    p-carousel div {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #00b0f4;
+      height: 150px;
+      color: $pds-theme-light-primary;
+    }
+  `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CarouselExampleJumpToSlideComponent {

@@ -1,3 +1,14 @@
+<style>
+  p-select.css-variables {
+    --p-select-background-color: royalblue;
+    --p-select-text-color: #fff;
+    --p-select-border-color: darkblue;
+    --p-select-icon-filter: invert(1);
+    --p-select-focus-background-color: #000;
+    --p-select-focus-border-color: #000;
+  }
+</style>
+
 <!-- skip this axe-core test because it is just needed for vrt -->
 <div class="playground light skip-axe-core-test" title="should render without label and without description">
   <p-select name="options" value="a">
@@ -357,41 +368,21 @@
 >
   <p-select name="options" label="Opened with slotted images" dropdown-direction="down" class="open">
     <p-select-option value="a">
-      <img
-        src="https://porsche-design-system.github.io/dummyasset/placeholder_800x500.svg"
-        alt="Some alt text"
-        width="800"
-        height="500"
-      />
+      <img src="http://localhost:3002/placeholder_800x500.svg" alt="Some alt text" width="800" height="500" />
       Multiline options could be quite long, especially on smaller screens. Let's check if the height of the option is
       displaying correctly. Also, the slotted image should be aligned correctly to the top-left and preserve the space
       even for multiple lines.</p-select-option
     >
     <p-select-option value="b">
-      <img
-        src="https://porsche-design-system.github.io/dummyasset/placeholder_800x900.svg"
-        alt="Some alt text"
-        width="800"
-        height="900"
-      />
+      <img src="http://localhost:3002/placeholder_800x900.svg" alt="Some alt text" width="800" height="900" />
       Option B
     </p-select-option>
     <p-select-option value="c">
-      <img
-        src="https://porsche-design-system.github.io/dummyasset/placeholder_800x900.svg"
-        alt="Some alt text"
-        width="800"
-        height="900"
-      />
+      <img src="http://localhost:3002/placeholder_800x900.svg" alt="Some alt text" width="800" height="900" />
       Option C
     </p-select-option>
     <p-select-option value="d">
-      <img
-        src="https://porsche-design-system.github.io/dummyasset/718.png"
-        alt="Some alt text"
-        width="271"
-        height="96"
-      />
+      <img src="http://localhost:3002/718.png" alt="Some alt text" width="271" height="96" />
       Option C
     </p-select-option>
     <p-select-option value="e">Option E</p-select-option>
@@ -400,13 +391,22 @@
 </div>
 
 <div class="playground light" title="should render with ellipsis and min-width in a smaller container">
-  <div style="width: 60px">
+  <div style="width: 0">
     <p-select name="options" value="a" label="Some label">
       <p-select-option value="a">Option A</p-select-option>
       <p-select-option value="b">Option B</p-select-option>
       <p-select-option value="c">Option C</p-select-option>
     </p-select>
   </div>
+</div>
+
+<!-- when theme="dark" is used then icon will also be dark because `--p-select-icon-filter` needs to be defined by the integrating team -->
+<div class="playground light" title="should render with custom css variables">
+  <p-select class="css-variables" name="options" value="a" label="Some label">
+    <p-select-option value="a">Option A</p-select-option>
+    <p-select-option value="b">Option B</p-select-option>
+    <p-select-option value="c">Option C</p-select-option>
+  </p-select>
 </div>
 
 <script>
