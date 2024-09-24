@@ -503,7 +503,7 @@ export namespace Components {
     }
     interface PCheckbox {
         /**
-          * Marks the checkbox as pre-selected (checked) on initial load.
+          * Reflects the checkbox current checked state and allows setting the initial checked state.
          */
         "checked"?: boolean;
         /**
@@ -3618,7 +3618,7 @@ declare namespace LocalJSX {
     }
     interface PCheckbox {
         /**
-          * Marks the checkbox as pre-selected (checked) on initial load.
+          * Reflects the checkbox current checked state and allows setting the initial checked state.
          */
         "checked"?: boolean;
         /**
