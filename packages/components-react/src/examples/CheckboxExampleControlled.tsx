@@ -20,7 +20,7 @@ export const CheckboxControlledExamplePage = (): JSX.Element => {
         value="some-value"
         onUpdate={(e) => onUpdate(e)}
       />
-      <PText>some-name: {state['some-name'] ? 'checked' : 'not checked'}</PText>
+      <PText>some-name: {state['some-name'].toString()}</PText>
     </>
   );
 };
