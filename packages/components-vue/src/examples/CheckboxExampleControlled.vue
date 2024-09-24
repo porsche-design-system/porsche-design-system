@@ -19,5 +19,5 @@
     :value="'some-value'"
     @update="onUpdate"
   />
-  <PText>some-name: {{ state['some-name'] ? 'checked' : 'not checked' }}</PText>
+  <PText>some-name: {{ state['some-name'] }}</PText>
 </template>
