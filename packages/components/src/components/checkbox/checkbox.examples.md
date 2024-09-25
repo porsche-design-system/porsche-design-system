@@ -180,7 +180,7 @@ export default class Code extends Vue {
 
   selectedValueControlled = 'Selected value: ';
   updateControlledExample(e) {
-    this.selectedValueControlled = `Selected value: ${e.detail.checked ? e.detail.value : ''}`;
+    this.selectedValueControlled = `Selected value: ${e.detail.checked}`;
   }
 }
 </script>
