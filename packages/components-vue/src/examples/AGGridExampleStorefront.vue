@@ -1,5 +1,5 @@
 <script setup lang="ts">
-  import 'ag-grid-enterprise';
+  import 'ag-grid-community';
   import { AgGridVue } from 'ag-grid-vue3'; // Vue Data Grid Component
   import { dataAdvanced } from '@porsche-design-system/shared';
   import { PLinkPure } from '@porsche-design-system/components-vue';
@@ -8,7 +8,7 @@
 
   const ImageUrlRendererer = {
     template: `
-      <img :src="cellValue.replace('/porsche-design-system/', '/dummyasset/')" width="80" height="45" alt="" />
+      <img :src="cellValue" width="80" height="45" alt="" />
     `,
     setup(props) {
       return {
@@ -110,10 +110,9 @@
     :rowData="rowData"
     :columnDefs="columnDefs"
     :defaultColDef="defaultColDef"
-    style="height: 80vh"
+    style="height: 100vh"
     :class="theme === 'light' ? 'ag-theme-pds' : 'ag-theme-pds-dark'"
     :pagination="true"
-    :sideBar="true"
     :enableRangeSelection="true"
   >
   </ag-grid-vue>

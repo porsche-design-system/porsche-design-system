@@ -1,7 +1,7 @@
 import { AgGridReact } from 'ag-grid-react';
 import { dataAdvanced, type DataAdvanced } from '@porsche-design-system/shared';
-import 'ag-grid-enterprise';
-import { ColDef } from 'ag-grid-enterprise';
+import 'ag-grid-community';
+import { ColDef } from 'ag-grid-community';
 import '@porsche-design-system/components-react/ag-grid/theme-pds.css';
 import { PLinkPure, Theme } from '@porsche-design-system/components-react';
 
@@ -117,15 +117,14 @@ const defaultColDef = {
   editable: true,
 };
 
-export const AGGridExamplePage = (): JSX.Element => {
+export const AGGridExampleStorefrontPage = (): JSX.Element => {
   return (
-    <div className={theme === 'light' ? 'ag-theme-pds' : 'ag-theme-pds-dark'} style={{ height: '80vh' }}>
+    <div className={theme === 'light' ? 'ag-theme-pds' : 'ag-theme-pds-dark'} style={{ height: '100vh' }}>
       <AgGridReact
         rowData={rowData}
         columnDefs={columnDefs}
         defaultColDef={defaultColDef}
         pagination={true}
-        sideBar={true}
         enableRangeSelection={true}
       />
     </div>

@@ -55,7 +55,14 @@ export const openInStackBlitz = (opts: OpenInStackBlitzOpts): void => {
   const { openFile, ...project } = getProjectAndOpenOptionsMap[framework](stackBlitzFrameworkOpts);
 
   if (embedElement) {
-    sdk.embedProject(embedElement, project, { openFile });
+    sdk.embedProject(embedElement, project, {
+      openFile,
+      height: '500px',
+      view: 'preview',
+      hideDevTools: true,
+      hideExplorer: true,
+      hideNavigation: true,
+    });
   } else {
     sdk.openProject(project, { openFile });
   }

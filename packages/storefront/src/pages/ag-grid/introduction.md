@@ -1,17 +1,46 @@
-# Ag Grid
+# AG Grid
 
 <TableOfContents></TableOfContents>
 
-### Stackblitz
+We provide a custom theme for the [AG Grid library](https://www.ag-grid.com/) for cases where a more sophisticated table
+is required beyond the capabilities of our [p-table](components/table/examples) component. This theme is aligned with
+the Porsche Design System's visual language and ensures consistency across your application.
 
-<Playground :frameworkMarkup="AGGridExamples" :config="{ ...config, withoutDemo: true }"></Playground>
+### Theme
+
+The Porsche Design System AG Grid theme is based on the default AG Grid theme, `ag-theme-quartz`, and is available in
+both light (`ag-theme-pds`) and dark (`ag-theme-pds-dark`) modes.
+
+For more information on AG Grid's base themes, you can refer to the official
+[AG Grid Themes documentation](https://www.ag-grid.com/javascript-data-grid/themes/).
+
+### Usage
+
+1. **Import the Theme**  
+   Import the Porsche Design System AG Grid theme into your application:
+
+   ```js
+   import '@porsche-design-system/components-{js|angular|react|vue}/ag-grid/theme-pds.css';
+   ```
+
+2. **Apply the Theme Class**  
+   Add the theme class (`ag-theme-pds` or `ag-theme-pds-dark`) to the AG Grid container:
+
+   ```html
+   <div id="my-grid" class="ag-theme-pds"></div>
+   ```
+
+### Example
+
+<Playground :frameworkMarkup="AGGridExamples" :config="{ ...config, withoutDemo: true }" :externalStackBlitzDependencies="externalStackBlitzDependencies"></Playground>
 
 <script lang="ts">
 import Vue from 'vue';
 import Component from 'vue-class-component'; 
 import {getButtonCodeSamples} from "@porsche-design-system/shared"; 
-import type { Theme } from '@/models'; 
+import type { Theme, Framework } from '@/models'; 
 import {getAgGridCodeSamples} from "shared/src"; 
+import type { ExternalDependency } from '../utils';
 
 @Component
 export default class Code extends Vue {
@@ -19,6 +48,22 @@ export default class Code extends Vue {
 
   get theme(): Theme {
     return this.$store.getters.playgroundTheme;
+  }
+
+  get activeFramework(): Framework {
+    return this.$store.getters.selectedFramework;
+  }
+
+  get externalStackBlitzDependencies(): ExternalDependency[] {
+      if (this.activeFramework === 'angular') {
+         return ['ag-grid-community', 'ag-grid-angular'];
+      } else if (this.activeFramework === 'react') {
+         return ['ag-grid-community'];
+      } else if (this.activeFramework === 'react') {
+         return ['ag-grid-community'];
+      } else {
+         return ['ag-grid-community'];
+      }
   }
 
   AGGridExamples = getAgGridCodeSamples();

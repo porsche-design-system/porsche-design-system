@@ -50,10 +50,11 @@ const generateCodeSamples = (): void => {
       component: 'ag-grid',
       samples: [
         [
-          componentsJsPath + '/ag-grid-storefront-example.html',
-          componentsAngularPath + '/ag-grid-example.component.ts',
-          componentsReactPath + '/AGGridExample.tsx',
-          componentsVuePath + '/AGGridExample.vue',
+          componentsJsPath + '/ag-grid-example-storefront.html',
+          componentsAngularPath + '/ag-grid-example-storefront.component.ts',
+          componentsReactPath + '/AGGridExampleStorefront.tsx',
+          componentsVuePath + '/AGGridExampleStorefront.vue',
+          'src/data/table-data-advanced.ts', // order is important since part of filename is extracted for param types of function name
         ],
       ],
     },

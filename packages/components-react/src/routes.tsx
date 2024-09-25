@@ -82,6 +82,11 @@ export const routes: RouteType[] = [
     element: <fromExamples.AGGridExamplePage />,
   },
   {
+    name: 'AG Grid Example Storefront',
+    path: '/aggrid-example-storefront',
+    element: <fromExamples.AGGridExampleStorefrontPage />,
+  },
+  {
     name: 'Banner Example',
     path: '/banner-example',
     element: <fromExamples.BannerExamplePage />,

@@ -1,9 +1,9 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { DataAdvanced, dataAdvanced } from '@porsche-design-system/shared';
-import 'ag-grid-enterprise';
-import { ColDef, ICellRendererParams } from 'ag-grid-enterprise';
+import { dataAdvanced, type DataAdvanced, headAdvanced } from '@porsche-design-system/shared';
+import 'ag-grid-community';
+import { ColDef, ICellRendererParams } from 'ag-grid-community';
 import { ICellRendererAngularComp } from 'ag-grid-angular';
-import { PorscheDesignSystemModule, Theme } from '@porsche-design-system/components-angular';
+import { PorscheDesignSystemModule, type Theme } from '@porsche-design-system/components-angular';
 import { AsyncPipe } from '@angular/common';
 
 type ColumnDefs = DataAdvanced & {
@@ -94,18 +94,17 @@ class ButtonRenderer implements ICellRendererAngularComp {
 @Component({
   selector: 'ag-grid-example',
   template: ` <ag-grid-angular
-    style="width: 100%; height: 550px;"
+    style="width: 100%; height: 100vh;"
     [class]="theme === 'light' ? 'ag-theme-pds' : 'ag-theme-pds-dark'"
     [rowData]="rowData"
     [columnDefs]="columnDefs"
     [defaultColDef]="defaultColDef"
     [pagination]="true"
-    [sideBar]="true"
     [enableRangeSelection]="true"
   />`,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class AgGridExampleComponent {
+export class AgGridExampleStorefrontComponent {
   public theme: Theme = 'light';
   rowData = dataAdvanced.map((row, index) => ({ active: Boolean(index % 2) /* odd rows */, ...row }));
   // Columns to be displayed (Should match rowData properties)

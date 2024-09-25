@@ -26,8 +26,7 @@
             "assets": ["src/favicon.ico"],
             "styles": [
               "@porsche-design-system/shared/css/styles.css",
-              "ag-grid-enterprise/styles/ag-grid.css",
-              "@porsche-design-system/components-js/ag-grid/theme-pds.css"
+              "@porsche-design-system/components-angular/ag-grid/theme-pds.css"
             ],
             "inlineStyleLanguage": "scss",
             "scripts": [],

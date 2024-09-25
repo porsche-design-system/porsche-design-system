@@ -1,4 +1,4 @@
-import { dependencies } from '../../../../components-angular/package.json';
+import { dependencies, devDependencies } from '../../../../components-angular/package.json';
 import {
   convertImportPaths,
   getExternalDependencies,
@@ -86,6 +86,10 @@ const externalDependencyModuleImportMap: Partial<Record<ExternalDependency, { mo
     module: 'IMaskModule',
     import: "import { IMaskModule } from 'angular-imask';",
   },
+  'ag-grid-community': {
+    module: 'AgGridAngular',
+    import: "import { AgGridAngular } from 'ag-grid-angular';",
+  },
 };
 
 export const getAppModuleTs = (externalDependencies: ExternalDependency[], pdsVersion: string): string => {
@@ -168,6 +172,12 @@ export const dependencyMap: Partial<DependencyMap<typeof dependencies>> = {
   imask: {
     imask: dependencies['imask'],
     'angular-imask': dependencies['angular-imask'],
+  },
+  'ag-grid-community': {
+    'ag-grid-community': devDependencies['ag-grid-enterprise'],
+  },
+  'ag-grid-angular': {
+    'ag-grid-angular': devDependencies['ag-grid-angular'],
   },
 };
 

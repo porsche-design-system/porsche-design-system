@@ -1,17 +1,15 @@
 <template>
-  <div>
-    <div v-if="isEmbedded" id="stackblitz-demo"></div>
-    <p-button
-      v-else
-      type="button"
-      :theme="theme"
-      :icon-source="stackBlitzIcon"
-      :disabled="framework === 'shared'"
-      :loading="isLoading"
-      @click="onButtonClick()"
-      >{{ buttonLabel }}
-    </p-button>
-  </div>
+  <div v-if="isEmbedded" id="stackblitz-demo"></div>
+  <p-button
+    v-else
+    type="button"
+    :theme="theme"
+    :icon-source="stackBlitzIcon"
+    :disabled="framework === 'shared'"
+    :loading="isLoading"
+    @click="onButtonClick()"
+    >{{ buttonLabel }}
+  </p-button>
 </template>
 
 <script lang="ts">
@@ -50,7 +48,7 @@
           framework: this.framework,
           theme: this.theme,
           dir: this.dir,
-          externalDependencies: ['ag-grid-community'],
+          externalDependencies: this.externalStackBlitzDependencies,
           backgroundColor: this.backgroundColor,
           sharedImportKeys: this.sharedImportKeys,
           pdsVersion: this.pdsVersion,
@@ -117,3 +115,12 @@
     }
   }
 </script>
+
+<style lang="scss">
+  @use '@porsche-design-system/components-js/styles' as *;
+  //@import '../styles/internal.variables';
+  iframe#stackblitz-demo {
+    border: 1px solid var(--playground-border-color);
+    border-radius: $pds-border-radius-medium;
+  }
+</style>
