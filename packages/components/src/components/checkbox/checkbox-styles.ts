@@ -238,14 +238,14 @@ export const getComponentCss = (
       display: 'grid',
       gridTemplateColumns: 'auto minmax(0, 1fr)',
       rowGap: spacingStaticXSmall,
+      ...(disabledOrLoading && {
+        cursor: 'not-allowed',
+      }),
     },
     wrapper: {
       display: 'grid',
       gridArea: '1/1',
       alignSelf: 'flex-start', // in case label becomes multiline
-      ...(disabledOrLoading && {
-        cursor: 'not-allowed',
-      }),
     },
     ...(isLoading && {
       spinner: {
