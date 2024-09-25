@@ -43,12 +43,12 @@ input:indeterminate {
   display: grid;
   grid-template-columns: auto minmax(0, 1fr);
   row-gap: 4px;
+  cursor: not-allowed;
 }
 .wrapper {
   display: grid;
   grid-area: 1/1;
   align-self: flex-start;
-  cursor: not-allowed;
 }
 .label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -482,12 +482,12 @@ input:indeterminate {
   display: grid;
   grid-template-columns: auto minmax(0, 1fr);
   row-gap: 4px;
+  cursor: not-allowed;
 }
 .wrapper {
   display: grid;
   grid-area: 1/1;
   align-self: flex-start;
-  cursor: not-allowed;
 }
 .label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -585,12 +585,12 @@ input:indeterminate {
   display: grid;
   grid-template-columns: auto minmax(0, 1fr);
   row-gap: 4px;
+  cursor: not-allowed;
 }
 .wrapper {
   display: grid;
   grid-area: 1/1;
   align-self: flex-start;
-  cursor: not-allowed;
 }
 .label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -954,12 +954,12 @@ input:indeterminate {
   display: grid;
   grid-template-columns: auto minmax(0, 1fr);
   row-gap: 4px;
+  cursor: not-allowed;
 }
 .wrapper {
   display: grid;
   grid-area: 1/1;
   align-self: flex-start;
-  cursor: not-allowed;
 }
 .label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -1056,12 +1056,12 @@ input:indeterminate {
   display: grid;
   grid-template-columns: auto minmax(0, 1fr);
   row-gap: 4px;
+  cursor: not-allowed;
 }
 .wrapper {
   display: grid;
   grid-area: 1/1;
   align-self: flex-start;
-  cursor: not-allowed;
 }
 .label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -1426,12 +1426,12 @@ input:indeterminate {
   display: grid;
   grid-template-columns: auto minmax(0, 1fr);
   row-gap: 4px;
+  cursor: not-allowed;
 }
 .wrapper {
   display: grid;
   grid-area: 1/1;
   align-self: flex-start;
-  cursor: not-allowed;
 }
 .label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -1529,12 +1529,12 @@ input:indeterminate {
   display: grid;
   grid-template-columns: auto minmax(0, 1fr);
   row-gap: 4px;
+  cursor: not-allowed;
 }
 .wrapper {
   display: grid;
   grid-area: 1/1;
   align-self: flex-start;
-  cursor: not-allowed;
 }
 .label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -1896,12 +1896,12 @@ input:indeterminate {
   display: grid;
   grid-template-columns: auto minmax(0, 1fr);
   row-gap: 4px;
+  cursor: not-allowed;
 }
 .wrapper {
   display: grid;
   grid-area: 1/1;
   align-self: flex-start;
-  cursor: not-allowed;
 }
 .label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -1997,12 +1997,12 @@ input:indeterminate {
   display: grid;
   grid-template-columns: auto minmax(0, 1fr);
   row-gap: 4px;
+  cursor: not-allowed;
 }
 .wrapper {
   display: grid;
   grid-area: 1/1;
   align-self: flex-start;
-  cursor: not-allowed;
 }
 .label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -2364,12 +2364,12 @@ input:focus-visible {
   display: grid;
   grid-template-columns: auto minmax(0, 1fr);
   row-gap: 4px;
+  cursor: not-allowed;
 }
 .wrapper {
   display: grid;
   grid-area: 1/1;
   align-self: flex-start;
-  cursor: not-allowed;
 }
 .spinner {
   position: relative;
@@ -2478,12 +2478,12 @@ input:focus-visible {
   display: grid;
   grid-template-columns: auto minmax(0, 1fr);
   row-gap: 4px;
+  cursor: not-allowed;
 }
 .wrapper {
   display: grid;
   grid-area: 1/1;
   align-self: flex-start;
-  cursor: not-allowed;
 }
 .spinner {
   position: relative;
@@ -2588,12 +2588,12 @@ input:indeterminate {
   display: grid;
   grid-template-columns: auto minmax(0, 1fr);
   row-gap: 4px;
+  cursor: not-allowed;
 }
 .wrapper {
   display: grid;
   grid-area: 1/1;
   align-self: flex-start;
-  cursor: not-allowed;
 }
 .label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -2688,12 +2688,12 @@ input:indeterminate {
   display: grid;
   grid-template-columns: auto minmax(0, 1fr);
   row-gap: 4px;
+  cursor: not-allowed;
 }
 .wrapper {
   display: grid;
   grid-area: 1/1;
   align-self: flex-start;
-  cursor: not-allowed;
 }
 .label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -2782,12 +2782,12 @@ input:checked {
   display: grid;
   grid-template-columns: auto minmax(0, 1fr);
   row-gap: 4px;
+  cursor: not-allowed;
 }
 .wrapper {
   display: grid;
   grid-area: 1/1;
   align-self: flex-start;
-  cursor: not-allowed;
 }
 .spinner {
   position: relative;
@@ -2886,12 +2886,12 @@ input:checked {
   display: grid;
   grid-template-columns: auto minmax(0, 1fr);
   row-gap: 4px;
+  cursor: not-allowed;
 }
 .wrapper {
   display: grid;
   grid-area: 1/1;
   align-self: flex-start;
-  cursor: not-allowed;
 }
 .spinner {
   position: relative;
@@ -3260,12 +3260,12 @@ input:indeterminate {
   display: grid;
   grid-template-columns: auto minmax(0, 1fr);
   row-gap: 4px;
+  cursor: not-allowed;
 }
 .wrapper {
   display: grid;
   grid-area: 1/1;
   align-self: flex-start;
-  cursor: not-allowed;
 }
 .label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -3361,12 +3361,12 @@ input:indeterminate {
   display: grid;
   grid-template-columns: auto minmax(0, 1fr);
   row-gap: 4px;
+  cursor: not-allowed;
 }
 .wrapper {
   display: grid;
   grid-area: 1/1;
   align-self: flex-start;
-  cursor: not-allowed;
 }
 .label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
