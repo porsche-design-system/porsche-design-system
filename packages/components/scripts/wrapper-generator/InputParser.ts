@@ -90,7 +90,7 @@ export class InputParser {
 
   public canHaveChildren(component: TagName): boolean {
     const fileContent = this.getComponentSourceCode(component);
-    return fileContent.includes('<slot');
+    return fileContent.includes('@slot');
   }
 
   public getDeprecationMessage(component: TagName): string {

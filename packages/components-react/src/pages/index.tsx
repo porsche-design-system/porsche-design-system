@@ -29,6 +29,7 @@ import { ButtonGroupPage } from './generated/ButtonGroup';
 import { ButtonPurePage } from './generated/ButtonPure';
 import { ButtonTilePage } from './generated/ButtonTile';
 import { CarouselPage } from './generated/Carousel';
+import { CheckboxPage } from './generated/Checkbox';
 import { CheckboxWrapperPage } from './generated/CheckboxWrapper';
 import { ContentWrapperPage } from './generated/ContentWrapper';
 import { CrestPage } from './generated/Crest';
@@ -210,6 +211,11 @@ export const generatedRoutes: RouteType[] = [
     name: 'Carousel',
     path: '/carousel',
     element: <CarouselPage />,
+  },
+  {
+    name: 'Checkbox',
+    path: '/checkbox',
+    element: <CheckboxPage />,
   },
   {
     name: 'Checkbox Wrapper',

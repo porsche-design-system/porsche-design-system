@@ -28,6 +28,7 @@ const scenario = async (page: Page, theme: Theme): Promise<void> => {
     </style>`;
 
   const tagNameToChildMap: { [key in TagName]?: string } = {
+    'p-checkbox': '',
     'p-checkbox-wrapper': '<input type="checkbox" />', // readonly is not supported
     'p-radio-button-wrapper': '<input type="radio" />', // readonly is not supported
     'p-select': '<p-select-option>Some value</p-select-option>', // readonly is not supported
@@ -45,7 +46,11 @@ const scenario = async (page: Page, theme: Theme): Promise<void> => {
         const childDisabled = child.replace(/((?: \/)?>)/, ' disabled$1');
         const childReadonly = child.replace(/((?: \/)?>)/, ' readonly$1');
         const disabledAttribute =
-          tag === 'p-pin-code' || tag === 'p-multi-select' || tag === 'p-textarea' || tag === 'p-select'
+          tag === 'p-pin-code' ||
+          tag === 'p-multi-select' ||
+          tag === 'p-textarea' ||
+          tag === 'p-checkbox' ||
+          tag === 'p-select'
             ? ' disabled="true"'
             : '';
 
@@ -87,6 +92,7 @@ const scenario = async (page: Page, theme: Theme): Promise<void> => {
   const valueOfForAttribute = await getValueOfForAttribute(page, 'p-pin-code label');
 
   await forceHoverState(page, '.hover input');
+  await forceHoverState(page, '.hover p-checkbox >>> input');
   await forceHoverState(page, '.hover select');
   await forceHoverState(page, '.hover textarea');
   await forceHoverState(page, '.hover p-select >>> button');
@@ -98,12 +104,14 @@ const scenario = async (page: Page, theme: Theme): Promise<void> => {
   await forceFocusState(page, '.focus select');
   await forceFocusState(page, '.focus textarea');
   await forceFocusVisibleState(page, '.focus p-select >>> button');
+  await forceFocusVisibleState(page, '.focus p-checkbox >>> input');
   await forceFocusState(page, '.focus p-multi-select >>> input');
   await forceFocusState(page, `.focus p-pin-code >>> #${valueOfForAttribute}`);
   await forceFocusHoverState(page, '.focus-hover input');
   await forceFocusHoverState(page, '.focus-hover select');
   await forceFocusHoverState(page, '.focus-hover textarea');
   await forceFocusHoverState(page, '.focus-hover p-select >>> button');
+  await forceFocusHoverState(page, '.focus-hover p-checkbox >>> input');
   await forceFocusVisibleState(page, '.focus-hover p-select >>> button');
   await forceFocusHoverState(page, '.focus-hover p-multi-select >>> input');
   await forceFocusHoverState(page, `.focus-hover p-pin-code >>> #${valueOfForAttribute}`);

@@ -123,6 +123,24 @@ exports[`should call validateProps() with correct parameters via render for p-ca
 }
 `;
 
+exports[`should call validateProps() with correct parameters via render for p-checkbox: propTypes with ValidatorFunctions 1`] = `
+{
+  "checked": "boolean",
+  "disabled": "boolean",
+  "form": "string",
+  "hideLabel": "breakpoint",
+  "indeterminate": "boolean",
+  "label": "string",
+  "loading": "boolean",
+  "message": "string",
+  "name": "string",
+  "required": "boolean",
+  "state": "oneOf",
+  "theme": "oneOf",
+  "value": "string",
+}
+`;
+
 exports[`should call validateProps() with correct parameters via render for p-checkbox-wrapper: propTypes with ValidatorFunctions 1`] = `
 {
   "hideLabel": "breakpoint",

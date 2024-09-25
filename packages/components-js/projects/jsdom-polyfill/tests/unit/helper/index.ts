@@ -47,6 +47,7 @@ export const tagNameMarkup: Record<TagNameRelevant, string> = {
     <div>2</div>
     <div>3</div>
   </p-carousel>`,
+  'p-checkbox': `<p-checkbox label="Some label"></p-checkbox>`,
   'p-checkbox-wrapper': `<p-checkbox-wrapper label="Some label">
     <input type="checkbox" />
 </p-checkbox-wrapper>`,

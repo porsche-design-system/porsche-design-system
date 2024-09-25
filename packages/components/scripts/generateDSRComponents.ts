@@ -621,6 +621,10 @@ $&`
         newFileContent = newFileContent
           .replace(/this\.props\.(hasSidebarStart|hasSidebarEnd)/g, '$1')
           .replace(/(?:hasSidebarStart|hasSidebarEnd) =/g, 'const $&');
+      } else if (tagName === 'p-checkbox') {
+        newFileContent = newFileContent
+          .replace(/@AttachInternals\(\)/, '')
+          .replace(/this\.props\.checked = false;/, '');
       }
 
       return newFileContent;
