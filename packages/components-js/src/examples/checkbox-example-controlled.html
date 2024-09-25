@@ -1,0 +1,16 @@
+<p-checkbox name="some-name" label="Some Label" value="some-value" checked></p-checkbox>
+
+<p-text>some-name: true</p-text>
+
+<script>
+  const debugElement = document.querySelector('p-text');
+  const checkbox = document.querySelector('p-checkbox');
+
+  checkbox.addEventListener('update', (e) => {
+    setDebugText(e.detail.checked);
+  });
+
+  function setDebugText(value) {
+    debugElement.innerText = `some-name: ${value}`;
+  }
+</script>

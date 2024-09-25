@@ -119,6 +119,23 @@ const generateCodeSamples = (): void => {
       ],
     },
     {
+      component: 'p-checkbox',
+      samples: [
+        [
+          componentsJsPath + '/checkbox-example.html',
+          componentsAngularPath + '/checkbox-example.component.ts',
+          componentsReactPath + '/CheckboxExample.tsx',
+          componentsVuePath + '/CheckboxExample.vue',
+        ],
+        [
+          componentsJsPath + '/checkbox-example-controlled.html',
+          componentsAngularPath + '/checkbox-example-controlled.component.ts',
+          componentsReactPath + '/CheckboxExampleControlled.tsx',
+          componentsVuePath + '/CheckboxExampleControlled.vue',
+        ],
+      ],
+    },
+    {
       component: 'p-flyout',
       samples: [
         [

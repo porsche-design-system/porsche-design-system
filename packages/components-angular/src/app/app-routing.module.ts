@@ -276,6 +276,16 @@ export const routes: ExtendedRoute[] = [
     component: fromExamples.TextareaExampleControlledComponent,
   },
   {
+    name: 'Checkbox Example',
+    path: 'checkbox-example',
+    component: fromExamples.CheckboxExampleComponent,
+  },
+  {
+    name: 'Checkbox Example Controlled',
+    path: 'checkbox-controlled-example',
+    component: fromExamples.CheckboxExampleControlledComponent,
+  },
+  {
     name: 'Text Field Wrapper Example IMask',
     path: 'text-field-wrapper-example-imask',
     component: fromExamples.TextFieldWrapperExampleImaskComponent,

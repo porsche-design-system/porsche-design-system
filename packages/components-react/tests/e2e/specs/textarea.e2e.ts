@@ -12,7 +12,7 @@ const getForm = (page: Page) => page.locator('form');
 
 test('should include name & value in FormData submit', async ({ page }) => {
   await goto(page, 'textarea-example');
-  expect(await waitForComponentsReady(page)).toBe(2); // p-carousel and p-text
+  expect(await waitForComponentsReady(page)).toBe(2); // p-textarea and p-text
   const host = getHost(page);
   const form = getForm(page);
   const testValue = 'test';

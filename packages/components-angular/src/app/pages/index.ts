@@ -47,6 +47,7 @@ import { ButtonGroupComponent } from './generated/button-group.component';
 import { ButtonPureComponent } from './generated/button-pure.component';
 import { ButtonTileComponent } from './generated/button-tile.component';
 import { CarouselComponent } from './generated/carousel.component';
+import { CheckboxComponent } from './generated/checkbox.component';
 import { CheckboxWrapperComponent } from './generated/checkbox-wrapper.component';
 import { ContentWrapperComponent } from './generated/content-wrapper.component';
 import { CoreInitializerComponent } from './generated/core-initializer.component';
@@ -167,6 +168,7 @@ export const generatedPages = [
   ButtonPureComponent,
   ButtonTileComponent,
   CarouselComponent,
+  CheckboxComponent,
   CheckboxWrapperComponent,
   ContentWrapperComponent,
   CoreInitializerComponent,
@@ -351,6 +353,11 @@ export const generatedRoutes: ExtendedRoute[] = [
     name: 'Carousel',
     path: 'carousel',
     component: CarouselComponent,
+  },
+  {
+    name: 'Checkbox',
+    path: 'checkbox',
+    component: CheckboxComponent,
   },
   {
     name: 'Checkbox Wrapper',
