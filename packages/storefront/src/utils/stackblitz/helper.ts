@@ -30,7 +30,14 @@ export const getSharedImportConstants = (sharedImportKeys: SharedImportKey[]): s
   return sharedImportConstants ? `${sharedImportConstants}\n\n` : '';
 };
 
-export const EXTERNAL_DEPENDENCIES = ['imask', 'styled-components', 'ag-grid-community', 'ag-grid-angular'] as const;
+export const EXTERNAL_DEPENDENCIES = [
+  'imask',
+  'styled-components',
+  'ag-grid-community',
+  'ag-grid-angular',
+  'ag-grid-react',
+  'ag-grid-vue3',
+] as const;
 export type ExternalDependency = (typeof EXTERNAL_DEPENDENCIES)[number];
 
 export type DependencyMap<T> = Record<ExternalDependency, { [K in keyof T]?: T[K] }>;

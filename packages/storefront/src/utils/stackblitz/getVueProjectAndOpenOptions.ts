@@ -113,6 +113,12 @@ export const dependencyMap: Partial<DependencyMap<typeof dependencies>> = {
   imask: {
     'vue-imask': dependencies['vue-imask'],
   },
+  'ag-grid-community': {
+    'ag-grid-community': devDependencies['ag-grid-community'],
+  },
+  'ag-grid-vue3': {
+    'ag-grid-vue3': devDependencies['ag-grid-vue3'],
+  },
 };
 
 export const getDependencies = (

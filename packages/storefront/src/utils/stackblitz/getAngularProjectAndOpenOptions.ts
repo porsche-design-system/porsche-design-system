@@ -174,7 +174,7 @@ export const dependencyMap: Partial<DependencyMap<typeof dependencies>> = {
     'angular-imask': dependencies['angular-imask'],
   },
   'ag-grid-community': {
-    'ag-grid-community': devDependencies['ag-grid-enterprise'],
+    'ag-grid-community': devDependencies['ag-grid-community'],
   },
   'ag-grid-angular': {
     'ag-grid-angular': devDependencies['ag-grid-angular'],

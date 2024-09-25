@@ -92,7 +92,7 @@ class ButtonRenderer implements ICellRendererAngularComp {
 }
 
 @Component({
-  selector: 'ag-grid-example',
+  selector: 'porsche-design-system-app',
   template: ` <ag-grid-angular
     style="width: 100%; height: 100vh;"
     [class]="theme === 'light' ? 'ag-theme-pds' : 'ag-theme-pds-dark'"

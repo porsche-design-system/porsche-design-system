@@ -124,6 +124,12 @@ export const dependencyMap: Partial<DependencyMap<typeof dependencies>> = {
   'styled-components': {
     'styled-components': dependencies['styled-components'],
   },
+  'ag-grid-community': {
+    'ag-grid-community': devDependencies['ag-grid-community'],
+  },
+  'ag-grid-react': {
+    'ag-grid-react': devDependencies['ag-grid-react'],
+  },
 };
 
 export const getDependencies = (

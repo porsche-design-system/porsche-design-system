@@ -3,6 +3,7 @@
   import { AgGridVue } from 'ag-grid-vue3'; // Vue Data Grid Component
   import { dataAdvanced } from '@porsche-design-system/shared';
   import { PLinkPure } from '@porsche-design-system/components-vue';
+  import '@porsche-design-system/components-vue/ag-grid/theme-pds.css';
 
   const theme = 'light';
 
@@ -119,8 +120,6 @@
 </template>
 
 <style>
-  @import '@porsche-design-system/components-vue/ag-grid/theme-pds.css';
-
   img {
     object-fit: contain;
   }

@@ -15,7 +15,7 @@
 <script lang="ts">
   import Vue from 'vue';
   import Component from 'vue-class-component';
-  import { Prop } from 'vue-property-decorator';
+  import { Prop, Watch } from 'vue-property-decorator';
   import type { BackgroundColor, Framework, PlaygroundDir, PlaygroundTheme } from '@/models';
   import { openInStackBlitz } from '@/utils';
   import type { ExternalDependency, SharedImportKey } from '@/utils';
@@ -42,18 +42,14 @@
 
     public async mounted(): void {
       if (this.isEmbedded) {
-        openInStackBlitz({
-          porscheDesignSystemBundle: await CodeEditor.porscheDesignSystemBundle(this.framework, this.pdsVersion),
-          markup: this.markup,
-          framework: this.framework,
-          theme: this.theme,
-          dir: this.dir,
-          externalDependencies: this.externalStackBlitzDependencies,
-          backgroundColor: this.backgroundColor,
-          sharedImportKeys: this.sharedImportKeys,
-          pdsVersion: this.pdsVersion,
-          embedElement: 'stackblitz-demo',
-        });
+        await this.initializeStackBlitzEmbed();
+      }
+    }
+
+    @Watch('markup')
+    public onMarkupChange(newMarkup: string, oldMarkup: string): Promise<void> {
+      if (this.isEmbedded && newMarkup !== oldMarkup) {
+        this.updateStackBlitz();
       }
     }
 
@@ -72,6 +68,31 @@
         embedElement: undefined,
       });
       this.isLoading = false;
+    }
+
+    private async initializeStackBlitzEmbed() {
+      if (this.framework !== 'shared') {
+        openInStackBlitz({
+          porscheDesignSystemBundle: await CodeEditor.porscheDesignSystemBundle(this.framework, this.pdsVersion),
+          markup: this.markup,
+          framework: this.framework,
+          theme: this.theme,
+          dir: this.dir,
+          externalDependencies: this.externalStackBlitzDependencies,
+          backgroundColor: this.backgroundColor,
+          sharedImportKeys: this.sharedImportKeys,
+          pdsVersion: this.pdsVersion,
+          embedElement: 'stackblitz-demo',
+        });
+      }
+    }
+
+    private updateStackBlitz() {
+      const iframe = document.getElementById('stackblitz-demo') as HTMLIFrameElement;
+      if (iframe) {
+        iframe.src = '';
+        this.initializeStackBlitzEmbed();
+      }
     }
 
     private static async porscheDesignSystemBundle(

@@ -1,4 +1,4 @@
-import { dependencies } from '../../../../components-js/package.json';
+import { dependencies, devDependencies } from '../../../../components-js/package.json';
 import {
   getExternalDependencies,
   getSharedImportConstants,
@@ -89,7 +89,7 @@ export const dependencyMap: Partial<DependencyMap<typeof dependencies>> = {
     imask: dependencies['imask'],
   },
   'ag-grid-community': {
-    'ag-grid-community': '32.2.0',
+    'ag-grid-community': devDependencies['ag-grid-community'],
   },
 };
 

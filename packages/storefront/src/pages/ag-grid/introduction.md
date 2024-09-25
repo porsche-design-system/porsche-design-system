@@ -58,9 +58,9 @@ export default class Code extends Vue {
       if (this.activeFramework === 'angular') {
          return ['ag-grid-community', 'ag-grid-angular'];
       } else if (this.activeFramework === 'react') {
-         return ['ag-grid-community'];
-      } else if (this.activeFramework === 'react') {
-         return ['ag-grid-community'];
+         return ['ag-grid-community', 'ag-grid-react'];
+      } else if (this.activeFramework === 'vue') {
+         return ['ag-grid-community', 'ag-grid-vue3'];
       } else {
          return ['ag-grid-community'];
       }
