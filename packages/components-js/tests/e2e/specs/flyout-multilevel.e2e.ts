@@ -19,6 +19,7 @@ import {
   waitForStencilLifecycle,
 } from '../helpers';
 import type { Components } from '@porsche-design-system/components';
+import { scrollLockStyles } from '@porsche-design-system/components/src/utils';
 
 const CSS_TRANSITION_DURATION = 600;
 
@@ -33,7 +34,6 @@ const getFlyoutMultilevelItemScroller = (page: Page, identifier: string) =>
   page.locator(`p-flyout-multilevel-item[identifier="${identifier}"] .scroller`);
 const getFlyoutMultilevelItemScrollerVisibility = async (page: Page, identifier: string) =>
   await getElementStyle(getFlyoutMultilevelItemScroller(page, identifier), 'visibility');
-const getBodyStyle = async (page: Page) => getAttribute(page.locator('body'), 'style');
 
 const waitForFlyoutTransition = async () => sleep(CSS_TRANSITION_DURATION);
 
@@ -209,7 +209,7 @@ test.describe('dismiss event', () => {
     const dismissBtn = getFlyoutMultilevelDismissButton(page);
 
     await expect(dismissBtn).not.toHaveCount(0);
-    expect(await getProperty(dismissBtn, 'type')).toBe('button');
+    expect(await getProperty<string>(dismissBtn, 'type')).toBe('button');
 
     expect((await getEventSummary(host, 'dismiss')).counter).toBe(0);
 
@@ -438,35 +438,42 @@ test.describe('focus behavior', () => {
 });
 
 test.describe('scroll lock', () => {
-  const bodyLockedStyle = 'overflow: hidden;';
+  const styleAttribute = 'data-pds-scroll-lock-styles';
 
   test('should prevent page from scrolling when open', async ({ page }) => {
     await initBasicFlyoutMultilevel(page, { open: false });
-    expect(await getBodyStyle(page)).toBe(null);
+    const styleElement = page.locator(`style[${styleAttribute}]`);
+
+    await expect(styleElement).toHaveCount(0);
 
     await openFlyoutMultilevel(page);
-    expect(await getBodyStyle(page)).toBe(bodyLockedStyle);
+    await expect(styleElement).toHaveCount(1);
+    expect(await styleElement.innerHTML()).toContain(scrollLockStyles);
 
     await setProperty(getHost(page), 'open', false);
     await waitForStencilLifecycle(page);
-    expect(await getBodyStyle(page)).toBe('');
+    await expect(styleElement).toHaveCount(0);
   });
 
   test('should prevent page from scrolling when initially open', async ({ page }) => {
     await initBasicFlyoutMultilevel(page, { open: true });
-    expect(await getBodyStyle(page)).toBe(bodyLockedStyle);
+    const styleElement = page.locator(`style[${styleAttribute}]`);
+    await expect(styleElement).toHaveCount(1);
+    expect(await styleElement.innerHTML()).toContain(scrollLockStyles);
   });
 
   test('should remove overflow hidden from body if unmounted', async ({ page }) => {
     await initBasicFlyoutMultilevel(page, { open: true });
-    expect(await getBodyStyle(page)).toBe(bodyLockedStyle);
+    const styleElement = page.locator(`style[${styleAttribute}]`);
+    await expect(styleElement).toHaveCount(1);
+    expect(await styleElement.innerHTML()).toContain(scrollLockStyles);
 
     await page.evaluate(() => {
       document.querySelector('p-flyout-multilevel').remove();
     });
     await waitForStencilLifecycle(page);
 
-    expect(await getBodyStyle(page)).toBe('');
+    await expect(styleElement).toHaveCount(0);
   });
 });
 
