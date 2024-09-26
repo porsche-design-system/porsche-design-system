@@ -10,7 +10,7 @@
     template: `
       <img :src="cellValue" width="80" height="45" alt="" />
     `,
-    setup(props) {
+    setup(props: any) {
       return {
         cellValue: props.params.value,
       };
