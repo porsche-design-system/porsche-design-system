@@ -22,6 +22,8 @@ const exampleUrls = exampleRoutes.map((item) => item.path.slice(1));
 
 for (const exampleUrl of exampleUrls) {
   test(`should work without error or warning for ${exampleUrl}`, async ({ page }) => {
+    // Skip AG Grid pages since they will show licensing errors
+    test.skip(['ag-grid-example', 'ag-grid-example-storefront'].includes(exampleUrl));
     await goto(page, exampleUrl);
     expect(getConsoleErrorsAmount()).toBe(0);
     expect(getConsoleWarningsAmount()).toBe(0);
