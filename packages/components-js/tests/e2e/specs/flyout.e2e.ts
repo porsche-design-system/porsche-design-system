@@ -18,6 +18,7 @@ import {
   type Options,
 } from '../helpers';
 import { Components } from '@porsche-design-system/components';
+import { scrollLockStyles } from '@porsche-design-system/components/src/utils';
 
 const CSS_TRANSITION_DURATION = 600; // Corresponds to motionDurationLong
 const flyoutMinWidth = 320;
@@ -29,7 +30,6 @@ const getHeader = (page: Page) => page.locator('p-flyout slot[name="header"]');
 const getFooter = (page: Page) => page.locator('p-flyout slot[name="footer"]');
 const getFlyoutDismissButton = (page: Page) => page.locator('p-flyout .dismiss');
 const getFlyoutDismissButtonReal = (page: Page) => page.locator('p-flyout .dismiss button');
-const getBodyStyle = async (page: Page) => getAttribute(page.locator('body'), 'style');
 const getFlyoutVisibility = async (page: Page) => await getElementStyle(getFlyout(page), 'visibility');
 const waitForFlyoutTransition = async () => sleep(CSS_TRANSITION_DURATION);
 const waitForSlotChange = () => sleep();
@@ -586,35 +586,42 @@ test('should open flyout at scroll top position zero when its content is scrolla
 });
 
 test.describe('scroll lock', () => {
-  const bodyLockedStyle = 'overflow: hidden;';
+  const styleAttribute = 'data-pds-scroll-lock-styles';
 
   test('should prevent page from scrolling when open', async ({ page }) => {
     await initBasicFlyout(page, { open: false });
-    expect(await getBodyStyle(page)).toBe(null);
+    const styleElement = page.locator(`style[${styleAttribute}]`);
+
+    await expect(styleElement).toHaveCount(0);
 
     await openFlyout(page);
-    expect(await getBodyStyle(page)).toBe(bodyLockedStyle);
+    await expect(styleElement).toHaveCount(1);
+    expect(await styleElement.innerHTML()).toContain(scrollLockStyles);
 
     await setProperty(getHost(page), 'open', false);
     await waitForStencilLifecycle(page);
-    expect(await getBodyStyle(page)).toBe('');
+    await expect(styleElement).toHaveCount(0);
   });
 
   test('should prevent page from scrolling when initially open', async ({ page }) => {
     await initBasicFlyout(page, { open: true });
-    expect(await getBodyStyle(page)).toBe(bodyLockedStyle);
+    const styleElement = page.locator(`style[${styleAttribute}]`);
+    await expect(styleElement).toHaveCount(1);
+    expect(await styleElement.innerHTML()).toContain(scrollLockStyles);
   });
 
   test('should remove overflow hidden from body if unmounted', async ({ page }) => {
     await initBasicFlyout(page, { open: true });
-    expect(await getBodyStyle(page)).toBe(bodyLockedStyle);
+    const styleElement = page.locator(`style[${styleAttribute}]`);
+    await expect(styleElement).toHaveCount(1);
+    expect(await styleElement.innerHTML()).toContain(scrollLockStyles);
 
     await page.evaluate(() => {
       document.querySelector('p-flyout').remove();
     });
     await waitForStencilLifecycle(page);
 
-    expect(await getBodyStyle(page)).toBe('');
+    await expect(styleElement).toHaveCount(0);
   });
 });
 
