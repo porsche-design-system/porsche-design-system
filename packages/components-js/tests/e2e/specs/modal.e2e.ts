@@ -17,6 +17,7 @@ import {
   type Options,
 } from '../helpers';
 import type { ModalAriaAttribute, SelectedAriaAttributes } from '@porsche-design-system/components';
+import { scrollLockStyles } from '@porsche-design-system/components/src/utils';
 
 const CSS_TRANSITION_DURATION = 600; // Corresponds to motionDurationLong
 
@@ -28,7 +29,6 @@ const getModal = (page: Page) => page.locator('p-modal .root');
 const getDismissButton = (page: Page) => page.locator('p-modal .dismiss');
 const getFooter = (page: Page) => page.locator('p-modal slot[name="footer"]');
 const getFooterBoxShadow = async (page: Page): Promise<string> => getElementStyle(getFooter(page), 'boxShadow');
-const getBodyStyle = async (page: Page) => getAttribute(page.locator('body'), 'style');
 const waitForModalTransition = async () => sleep(CSS_TRANSITION_DURATION);
 
 const initBasicModal = (
@@ -544,35 +544,42 @@ test('should open modal at scroll top position zero when its content is scrollab
 });
 
 test.describe('scroll lock', () => {
-  const bodyLockedStyle = 'overflow: hidden;';
+  const styleAttribute = 'data-pds-scroll-lock-styles';
 
   test('should prevent page from scrolling when open', async ({ page }) => {
     await initBasicModal(page, { isOpen: false });
-    expect(await getBodyStyle(page)).toBe(null);
+    const styleElement = page.locator(`style[${styleAttribute}]`);
+
+    await expect(styleElement).toHaveCount(0);
 
     await openModal(page);
-    expect(await getBodyStyle(page)).toBe(bodyLockedStyle);
+    await expect(styleElement).toHaveCount(1);
+    expect(await styleElement.innerHTML()).toContain(scrollLockStyles);
 
     await setProperty(getHost(page), 'open', false);
     await waitForStencilLifecycle(page);
-    expect(await getBodyStyle(page)).toBe('');
+    await expect(styleElement).toHaveCount(0);
   });
 
   test('should prevent page from scrolling when initially open', async ({ page }) => {
     await initBasicModal(page, { isOpen: true });
-    expect(await getBodyStyle(page)).toBe(bodyLockedStyle);
+    const styleElement = page.locator(`style[${styleAttribute}]`);
+    await expect(styleElement).toHaveCount(1);
+    expect(await styleElement.innerHTML()).toContain(scrollLockStyles);
   });
 
   test('should remove overflow hidden from body if unmounted', async ({ page }) => {
     await initBasicModal(page, { isOpen: true });
-    expect(await getBodyStyle(page)).toBe(bodyLockedStyle);
+    const styleElement = page.locator(`style[${styleAttribute}]`);
+    await expect(styleElement).toHaveCount(1);
+    expect(await styleElement.innerHTML()).toContain(scrollLockStyles);
 
     await page.evaluate(() => {
       document.querySelector('p-modal').remove();
     });
     await waitForStencilLifecycle(page);
 
-    expect(await getBodyStyle(page)).toBe('');
+    await expect(styleElement).toHaveCount(0);
   });
 });
 
