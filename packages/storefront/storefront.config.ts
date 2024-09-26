@@ -410,7 +410,7 @@ export const config: StorefrontConfig = {
     },
   },
   'Ag Grid': {
-    Introduction: [() => import('@/pages/ag-grid/introduction.md')],
+    Theme: [() => import('@/pages/ag-grid/theme.md')],
   },
   'Must Know': {
     Initialization: {

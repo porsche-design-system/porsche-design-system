@@ -1,5 +1,6 @@
 [
   "/",
+  "/ag-grid/theme",
   "/assets/compulsory-statement.txt",
   "/components/accordion/examples",
   "/components/accordion/props",
@@ -407,6 +408,8 @@
   "https://w3.org/WAI/standards-guidelines/wcag",
   "https://wa.me/491525557912",
   "https://web.dev/declarative-shadow-dom",
+  "https://www.ag-grid.com/",
+  "https://www.ag-grid.com/javascript-data-grid/themes/",
   "https://www.wechat.com",
   "https://xing.com",
   "https://yarnpkg.com",
