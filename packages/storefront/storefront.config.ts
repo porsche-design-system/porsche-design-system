@@ -93,6 +93,11 @@ export const config: StorefrontConfig = {
       Usage: [() => import('@/../../components/src/components/carousel/carousel.usage.md')],
       Props: [() => import('@/../../components/src/components/carousel/carousel.props.md')],
     },
+    Checkbox: {
+      Examples: [() => import('@/../../components/src/components/checkbox/checkbox.examples.md')],
+      Usage: [() => import('@/../../components/src/components/checkbox/checkbox.usage.md')],
+      Props: [() => import('@/../../components/src/components/checkbox/checkbox.props.md')],
+    },
     'Checkbox Wrapper': {
       Examples: [() => import('@/../../components/src/components/checkbox-wrapper/checkbox-wrapper.examples.md')],
       Usage: [() => import('@/../../components/src/components/checkbox-wrapper/checkbox-wrapper.usage.md')],

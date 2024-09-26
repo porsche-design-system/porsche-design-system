@@ -8,6 +8,8 @@ export * from './CarouselExampleDynamicSlides';
 export * from './CarouselExampleFocusOnCenterSlide';
 export * from './CarouselExampleEvents';
 export * from './CarouselExampleJumpToSlide';
+export * from './CheckboxExample';
+export * from './CheckboxExampleControlled';
 export * from './FlyoutExample';
 export * from './FlyoutMultilevelExample';
 export * from './FlyoutMultilevelExampleActiveIdentifier';

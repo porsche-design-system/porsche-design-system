@@ -81,6 +81,16 @@ export const routes: RouteType[] = [
     component: fromExamples.CarouselExampleJumpToSlide,
   },
   {
+    path: '/checkbox-example',
+    name: 'Checkbox Example',
+    component: fromExamples.CheckboxExample,
+  },
+  {
+    path: '/checkbox-example-controlled',
+    name: 'Checkbox Example Controlled',
+    component: fromExamples.CheckboxExampleControlled,
+  },
+  {
     path: '/flyout-basic',
     name: 'FlyoutBasic',
     component: fromPages.FlyoutBasicPage,

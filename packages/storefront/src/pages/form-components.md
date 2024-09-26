@@ -25,6 +25,7 @@ type Variation = {
 };
 
 const variations: Variation[] = [
+  { tagName: 'p-checkbox', child: '', isCustomElement: true },
   { tagName: 'p-checkbox-wrapper', child: '<input type="checkbox" />' },
   { tagName: 'p-radio-button-wrapper', child: '<input type="radio" />' },
   { tagName: 'p-select', child: '<p-select-option value="1">Option 1</p-select-option><p-select-option value="2">Option 2</p-select-option>', isCustomElement: true},
@@ -84,7 +85,8 @@ export default class Code extends Vue {
         .replace(/(<input type="(?:checkbox|radio)")/g, '$1 checked')
         .replace(/(<input type="[^cr][a-z]+")/g, '$1 value="Value"')
         .replace(/(<textarea.*?>)(<\/textarea>)/g, '$1Value$2')
-        .replace(/(<p-textarea\s.*?)/g, '$1 value="Value"');
+        .replace(/(<p-textarea\s.*?)/g, '$1 value="Value"')
+        .replace(/(<p-checkbox\s.*?)/g, '$1 checked="Value"');
 
     }
     return this.isWrappedInForm ? `<form onsubmit="return false">${content}</form>` : content;

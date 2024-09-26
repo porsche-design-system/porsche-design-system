@@ -8,6 +8,8 @@ import { CarouselExampleDynamicSlidesComponent } from './carousel-example-dynami
 import { CarouselExampleFocusOnCenterSlideComponent } from './carousel-example-focus-on-center-slide.component';
 import { CarouselExampleEventsComponent } from './carousel-example-events.component';
 import { CarouselExampleJumpToSlideComponent } from './carousel-example-jump-to-slide.component';
+import { CheckboxExampleComponent } from './checkbox-example.component';
+import { CheckboxExampleControlledComponent } from './checkbox-example-controlled.component';
 import { FlyoutExampleComponent } from './flyout-example.component';
 import { FlyoutMultilevelExampleComponent } from './flyout-multilevel-example.component';
 import { FlyoutMultilevelExampleActiveIdentifierComponent } from './flyout-multilevel-example-active-identifier.component';
@@ -52,6 +54,8 @@ export const examples = [
   CarouselExampleFocusOnCenterSlideComponent,
   CarouselExampleEventsComponent,
   CarouselExampleJumpToSlideComponent,
+  CheckboxExampleControlledComponent,
+  CheckboxExampleComponent,
   FlyoutExampleComponent,
   FlyoutMultilevelExampleComponent,
   FlyoutMultilevelExampleActiveIdentifierComponent,
@@ -96,6 +100,8 @@ export * from './carousel-example-dynamic-slides.component';
 export * from './carousel-example-focus-on-center-slide.component';
 export * from './carousel-example-events.component';
 export * from './carousel-example-jump-to-slide.component';
+export * from './checkbox-example.component';
+export * from './checkbox-example-controlled.component';
 export * from './flyout-example.component';
 export * from './flyout-multilevel-example.component';
 export * from './flyout-multilevel-example-active-identifier.component';
