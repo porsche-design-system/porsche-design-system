@@ -1,18 +1,16 @@
-# AG Grid
+# Theme
 
 <TableOfContents></TableOfContents>
 
-We provide a custom theme for the [AG Grid library](https://www.ag-grid.com/) for cases where a more sophisticated table
+We provide a custom theme for the [AG Grid library](https://www.ag-grid.com) for cases where a more sophisticated table
 is required beyond the capabilities of our [p-table](components/table/examples) component. This theme is aligned with
 the Porsche Design System's visual language and ensures consistency across your application.
-
-### Theme
 
 The Porsche Design System AG Grid theme is based on the default AG Grid theme, `ag-theme-quartz`, and is available in
 both light (`ag-theme-pds`) and dark (`ag-theme-pds-dark`) modes.
 
 For more information on AG Grid's base themes, you can refer to the official
-[AG Grid Themes documentation](https://www.ag-grid.com/javascript-data-grid/themes/).
+[AG Grid Themes documentation](https://www.ag-grid.com/javascript-data-grid/themes).
 
 ### Usage
 
