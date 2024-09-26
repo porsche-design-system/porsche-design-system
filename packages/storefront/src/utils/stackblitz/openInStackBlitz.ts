@@ -23,6 +23,7 @@ export type OpenInStackBlitzOpts = {
   externalDependencies: ExternalDependency[];
   sharedImportKeys: SharedImportKey[];
   pdsVersion: string;
+  embedElement?: string | HTMLElement;
 };
 
 export const openInStackBlitz = (opts: OpenInStackBlitzOpts): void => {

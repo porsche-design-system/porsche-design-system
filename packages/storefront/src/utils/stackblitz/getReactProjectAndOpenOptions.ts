@@ -117,7 +117,7 @@ root.render(
   );
 };
 
-export const dependencyMap: Partial<DependencyMap<typeof dependencies>> = {
+export const dependencyMap: Partial<DependencyMap<typeof dependencies & typeof devDependencies>> = {
   imask: {
     'react-imask': dependencies['react-imask'],
   },

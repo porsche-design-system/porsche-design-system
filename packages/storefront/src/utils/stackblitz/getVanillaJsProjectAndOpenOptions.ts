@@ -76,15 +76,14 @@ export const getIndexHtml = (
 };
 
 export const getIndexJs = (pdsVersion: string, additionalImports?: string): string => {
+  const imports = `import * as porscheDesignSystem from './@porsche-design-system/components-js';
+window.porscheDesignSystem = porscheDesignSystem;${additionalImports ? `\n${additionalImports}` : ''}`;
+
   // workaround to initialize local package
-  return isStableStorefrontReleaseOrForcedPdsVersion(pdsVersion)
-    ? ''
-    : `import * as porscheDesignSystem from './@porsche-design-system/components-js';
-window.porscheDesignSystem = porscheDesignSystem;
-${additionalImports}`; // appears to be using cjs build
+  return isStableStorefrontReleaseOrForcedPdsVersion(pdsVersion) ? '' : imports; // appears to be using cjs build
 };
 
-export const dependencyMap: Partial<DependencyMap<typeof dependencies>> = {
+export const dependencyMap: Partial<DependencyMap<typeof dependencies & typeof devDependencies>> = {
   imask: {
     imask: dependencies['imask'],
   },

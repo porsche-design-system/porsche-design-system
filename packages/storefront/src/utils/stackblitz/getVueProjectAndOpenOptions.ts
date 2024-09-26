@@ -109,7 +109,7 @@ app.mount('#root');
 `;
 };
 
-export const dependencyMap: Partial<DependencyMap<typeof dependencies>> = {
+export const dependencyMap: Partial<DependencyMap<typeof dependencies & typeof devDependencies>> = {
   imask: {
     'vue-imask': dependencies['vue-imask'],
   },

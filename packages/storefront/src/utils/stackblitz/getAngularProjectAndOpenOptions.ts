@@ -168,7 +168,7 @@ platformBrowserDynamic()
   .catch((err) => console.error(err));`;
 };
 
-export const dependencyMap: Partial<DependencyMap<typeof dependencies>> = {
+export const dependencyMap: Partial<DependencyMap<typeof dependencies & typeof devDependencies>> = {
   imask: {
     imask: dependencies['imask'],
     'angular-imask': dependencies['angular-imask'],
