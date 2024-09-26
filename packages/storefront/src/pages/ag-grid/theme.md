@@ -12,7 +12,7 @@ both light (`ag-theme-pds`) and dark (`ag-theme-pds-dark`) modes.
 For more information on AG Grid's base themes, you can refer to the official
 [AG Grid Themes documentation](https://www.ag-grid.com/javascript-data-grid/themes).
 
-### Usage
+## Usage
 
 1. **Import the Theme**  
    Import the Porsche Design System AG Grid theme into your application:
@@ -28,7 +28,7 @@ For more information on AG Grid's base themes, you can refer to the official
    <div id="my-grid" class="ag-theme-pds"></div>
    ```
 
-### Example
+## Example
 
 <Playground :frameworkMarkup="AGGridExamples" :config="{ ...config, withoutDemo: true }" :externalStackBlitzDependencies="externalStackBlitzDependencies"></Playground>
 
