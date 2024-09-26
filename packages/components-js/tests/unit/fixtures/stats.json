@@ -36,18 +36,18 @@
   },
   {
     "chunkShortName": "carousel",
-    "size": 48002,
-    "gzipSize": 19495
+    "size": 48067,
+    "gzipSize": 19515
   },
   {
     "chunkShortName": "checkbox",
-    "size": 13567,
-    "gzipSize": 5114
+    "size": 13633,
+    "gzipSize": 5133
   },
   {
     "chunkShortName": "checkbox-wrapper",
-    "size": 12493,
-    "gzipSize": 4902
+    "size": 12483,
+    "gzipSize": 4901
   },
   {
     "chunkShortName": "content-wrapper",
@@ -86,13 +86,13 @@
   },
   {
     "chunkShortName": "flyout",
-    "size": 9656,
-    "gzipSize": 4082
+    "size": 10165,
+    "gzipSize": 4283
   },
   {
     "chunkShortName": "flyout-multilevel",
-    "size": 12294,
-    "gzipSize": 4552
+    "size": 12803,
+    "gzipSize": 4763
   },
   {
     "chunkShortName": "grid",
@@ -151,8 +151,8 @@
   },
   {
     "chunkShortName": "main",
-    "size": 81038,
-    "gzipSize": 26843
+    "size": 81072,
+    "gzipSize": 26853
   },
   {
     "chunkShortName": "marque",
@@ -161,8 +161,8 @@
   },
   {
     "chunkShortName": "modal",
-    "size": 11475,
-    "gzipSize": 4600
+    "size": 11984,
+    "gzipSize": 4800
   },
   {
     "chunkShortName": "model-signature",
@@ -196,8 +196,8 @@
   },
   {
     "chunkShortName": "radio-button-wrapper",
-    "size": 12019,
-    "gzipSize": 4754
+    "size": 12009,
+    "gzipSize": 4748
   },
   {
     "chunkShortName": "scroller",
