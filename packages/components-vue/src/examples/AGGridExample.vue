@@ -10,7 +10,7 @@
     template: `
       <img :src="cellValue.replace('/porsche-design-system/', '/dummyasset/')" width="80" height="45" alt="" />
     `,
-    setup(props) {
+    setup(props: any) {
       return {
         cellValue: props.params.value,
       };
@@ -33,7 +33,7 @@
       </PLinkPure>
       </span>
     `,
-    setup(props) {
+    setup(props: any) {
       return {
         theme,
         data: props.params.data,

@@ -2,7 +2,6 @@
   import 'ag-grid-community';
   import { AgGridVue } from 'ag-grid-vue3'; // Vue Data Grid Component
   import { dataAdvanced } from '@porsche-design-system/shared';
-  import { PLinkPure } from '@porsche-design-system/components-vue';
   import '@porsche-design-system/components-vue/ag-grid/theme-pds.css';
 
   const theme = 'light';
@@ -14,30 +13,6 @@
     setup(props) {
       return {
         cellValue: props.params.value,
-      };
-    },
-  };
-
-  const ButtonRenderer = {
-    components: {
-      PLinkPure,
-    },
-    template: `
-      <span class="cell-centered">
-      <PLinkPure
-        :underline="true"
-        :theme="theme"
-        target="_blank"
-        :href="'https://www.porsche.com/germany/models/' + data.model.toLowerCase()"
-      >
-        More information
-      </PLinkPure>
-      </span>
-    `,
-    setup(props) {
-      return {
-        theme,
-        data: props.params.data,
       };
     },
   };
@@ -89,14 +64,6 @@
       filter: false,
       width: 500,
     },
-    {
-      field: 'leadId',
-      headerName: 'More',
-      cellRenderer: ButtonRenderer,
-      editable: false,
-      sortable: false,
-      filter: false,
-    },
   ];
 
   // Configurations applied to all columns
@@ -114,7 +81,6 @@
     style="height: 100vh"
     :class="theme === 'light' ? 'ag-theme-pds' : 'ag-theme-pds-dark'"
     :pagination="true"
-    :enableRangeSelection="true"
   >
   </ag-grid-vue>
 </template>

@@ -3,7 +3,7 @@ import { dataAdvanced, type DataAdvanced } from '@porsche-design-system/shared';
 import 'ag-grid-community';
 import { ColDef } from 'ag-grid-community';
 import '@porsche-design-system/components-react/ag-grid/theme-pds.css';
-import { PLinkPure, Theme } from '@porsche-design-system/components-react';
+import { Theme } from '@porsche-design-system/components-react';
 
 type ColumnDefs = DataAdvanced & {
   active: boolean;
@@ -30,27 +30,6 @@ export const AGGridExampleStorefrontPage = (): JSX.Element => {
           height="45"
           alt=""
         />
-      </span>
-    );
-  };
-
-  const ButtonRenderer = ({ data }: { data: any }) => {
-    return (
-      <span
-        style={{
-          height: '100%',
-          display: 'flex',
-          alignItems: 'center',
-        }}
-      >
-        <PLinkPure
-          underline={true}
-          theme={theme}
-          target="_blank"
-          href={'https://www.porsche.com/germany/models/' + data.model.toLowerCase()}
-        >
-          More information
-        </PLinkPure>
       </span>
     );
   };
@@ -102,14 +81,6 @@ export const AGGridExampleStorefrontPage = (): JSX.Element => {
       filter: false,
       width: 500,
     },
-    {
-      field: 'leadId',
-      headerName: 'More',
-      cellRenderer: ButtonRenderer,
-      editable: false,
-      sortable: false,
-      filter: false,
-    },
   ];
 
   // Configurations applied to all columns
@@ -120,13 +91,7 @@ export const AGGridExampleStorefrontPage = (): JSX.Element => {
 
   return (
     <div className={theme === 'light' ? 'ag-theme-pds' : 'ag-theme-pds-dark'} style={{ height: '100vh' }}>
-      <AgGridReact
-        rowData={rowData}
-        columnDefs={columnDefs}
-        defaultColDef={defaultColDef}
-        pagination={true}
-        enableRangeSelection={true}
-      />
+      <AgGridReact rowData={rowData} columnDefs={columnDefs} defaultColDef={defaultColDef} pagination={true} />
     </div>
   );
 };

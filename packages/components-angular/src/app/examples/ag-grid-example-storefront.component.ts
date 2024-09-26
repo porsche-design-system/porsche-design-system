@@ -1,10 +1,10 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { dataAdvanced, type DataAdvanced, headAdvanced } from '@porsche-design-system/shared';
+import { dataAdvanced, type DataAdvanced } from '@porsche-design-system/shared';
 import 'ag-grid-community';
 import { ColDef, ICellRendererParams } from 'ag-grid-community';
 import { ICellRendererAngularComp } from 'ag-grid-angular';
-import { PorscheDesignSystemModule, type Theme } from '@porsche-design-system/components-angular';
-import { AsyncPipe } from '@angular/common';
+import { type Theme } from '@porsche-design-system/components-angular';
+import '@porsche-design-system/components-angular/ag-grid/theme-pds.css';
 
 type ColumnDefs = DataAdvanced & {
   active: boolean;
@@ -47,51 +47,6 @@ class ImageUrlRendererer implements ICellRendererAngularComp {
 }
 
 @Component({
-  selector: 'app-company-button-renderer',
-  standalone: true,
-  template: `
-    <span class="cell-centered'">
-      <p-link-pure
-        [underline]="true"
-        [theme]="theme"
-        target="_blank"
-        [href]="'https://www.porsche.com/germany/models/' + data.model.toLowerCase()"
-      >
-        More information
-      </p-link-pure>
-    </span>
-  `,
-  styles: [
-    `
-      img {
-        object-fit: contain;
-      }
-      .cell-centered {
-        height: 100%;
-        display: flex;
-        align-items: center;
-      }
-    `,
-  ],
-  imports: [PorscheDesignSystemModule, AsyncPipe],
-})
-class ButtonRenderer implements ICellRendererAngularComp {
-  // Init Cell Value
-  public data!: any;
-  public theme: Theme = 'light';
-
-  agInit(params: ICellRendererParams): void {
-    this.data = params.data;
-  }
-
-  // Return Cell Value
-  refresh(params: ICellRendererParams): boolean {
-    this.data = params.data;
-    return true;
-  }
-}
-
-@Component({
   selector: 'porsche-design-system-app',
   template: ` <ag-grid-angular
     style="width: 100%; height: 100vh;"
@@ -100,7 +55,6 @@ class ButtonRenderer implements ICellRendererAngularComp {
     [columnDefs]="columnDefs"
     [defaultColDef]="defaultColDef"
     [pagination]="true"
-    [enableRangeSelection]="true"
   />`,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
@@ -152,14 +106,6 @@ export class AgGridExampleStorefrontComponent {
       field: 'comment',
       filter: false,
       width: 500,
-    },
-    {
-      field: 'leadId',
-      headerName: 'More',
-      cellRenderer: ButtonRenderer,
-      editable: false,
-      sortable: false,
-      filter: false,
     },
   ];
   // Configurations applied to all columns
