@@ -41,7 +41,7 @@ for (const exampleUrl of exampleUrls) {
       ].includes(exampleUrl)
     );
     // Skip AG Grid pages since they will show licensing errors
-    test.skip(['ag-grid-example', 'ag-grid-example-storefront'].includes(exampleUrl));
+    test.skip(['/ag-grid-example', '/ag-grid-example-storefront'].includes(exampleUrl));
     await goto(page, exampleUrl);
     expect(getConsoleErrorsAmount()).toBe(0);
     expect(getConsoleWarningsAmount()).toBe(0);
