@@ -23,12 +23,11 @@ import {
 } from '../../utils';
 import { type BreakpointCustomizable, type PropTypes, type Theme } from '../../types';
 import { getComponentCss } from './checkbox-styles';
-import type { CheckboxState, CheckboxUpdateEventDetail } from './checkbox-utils';
+import type { CheckboxState, CheckboxUpdateEventDetail, CheckboxBlurEventDetail } from './checkbox-utils';
 import { messageId, StateMessage } from '../common/state-message/state-message';
 import { descriptionId, Label } from '../common/label/label';
 import { LoadingMessage } from '../common/loading-message/loading-message';
 import { ControllerHost, InitialLoadingController } from '../../controllers';
-import { getCheckboxRadioButtonSafariRenderingFix } from '../../utils/form/applyCheckboxRadioButtonSafariRenderingFix';
 import { getSlottedAnchorStyles } from '../../styles';
 
 const propTypes: PropTypes<typeof Checkbox> = {
@@ -74,7 +73,7 @@ export class Checkbox {
   /** Marks the checkbox as indeterminate. */
   @Prop() public indeterminate?: boolean = false;
 
-  /** Marks the checkbox as pre-selected (checked) on initial load. */
+  /** Reflects the checkbox current checked state and allows setting the initial checked state. */
   @Prop({ mutable: true }) public checked?: boolean = false;
 
   /** The id of a form element the checkbox should be associated with. */
@@ -110,6 +109,9 @@ export class Checkbox {
   /** Emitted when checkbox checked property is changed. */
   @Event({ bubbles: false }) public update: EventEmitter<CheckboxUpdateEventDetail>;
 
+  /** Emitted when the checkbox has lost focus. */
+  @Event({ bubbles: false }) public blur: EventEmitter<CheckboxBlurEventDetail>;
+
   @AttachInternals() private internals: ElementInternals;
 
   private controllerHost = new ControllerHost(this);
@@ -142,7 +144,7 @@ export class Checkbox {
   }
 
   public connectedCallback(): void {
-    applyConstructableStylesheetStyles(this.host, getSlottedAnchorStyles, getCheckboxRadioButtonSafariRenderingFix);
+    applyConstructableStylesheetStyles(this.host, getSlottedAnchorStyles);
   }
 
   public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
@@ -159,7 +161,6 @@ export class Checkbox {
   public formResetCallback(): void {
     this.internals.setValidity({});
     this.internals.setFormValue(undefined);
-    this.checkboxInputElement.checked = false;
     this.checked = false;
   }
 
@@ -201,6 +202,8 @@ export class Checkbox {
             form={this.form}
             value={this.value}
             name={this.name}
+            onChange={this.onChange}
+            onBlur={this.onBlur}
             required={this.required}
             disabled={this.disabled}
             ref={(el: HTMLInputElement) => (this.checkboxInputElement = el)}
@@ -215,6 +218,12 @@ export class Checkbox {
     );
   }
 
+  private onBlur = (e: Event): void => {
+    e.stopPropagation();
+    e.stopImmediatePropagation();
+    this.blur.emit(e);
+  };
+
   private onClick = (): void => {
     if (this.disabled || this.loading) {
       return;
@@ -226,6 +235,18 @@ export class Checkbox {
       value: this.value,
       name: this.name,
       checked: checkedToggle,
+    });
+  };
+
+
+  private onChange = (e: Event): void => {
+    const checked = (e.target as HTMLInputElement).checked;
+    this.checked = checked;
+    this.internals.setFormValue(checked ? this.value : undefined);
+    this.update.emit({
+      value: this.value,
+      name: this.name,
+      checked,
     });
   };
 }

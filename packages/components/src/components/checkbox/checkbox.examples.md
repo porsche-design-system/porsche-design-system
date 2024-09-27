@@ -95,8 +95,8 @@ resetting the form. Native form validation features are not yet supported.
 
 ## Controlled
 
-In the controlled approach, the `p-checkbox` value is externally managed. While the internal value will be updated
-automatically, you can use the `update` event to update the external state.
+In the controlled approach, the `p-checkbox` checked state is externally managed. While the internal checked state will
+be updated automatically, you can use the `update` or `blur` event to update the external state.
 
 <Playground :frameworkMarkup="controlledExample" :config="{ ...config, withoutDemo: true }">
 <p-checkbox name="some-name" label="Some Label" value="some-value" :theme="theme" @update="updateControlledExample"></p-checkbox>
@@ -191,7 +191,7 @@ export default class Code extends Vue {
 
   selectedValueControlled = 'Selected value: ';
   updateControlledExample(e) {
-    this.selectedValueControlled = `Selected value: ${e.detail.checked ? e.detail.value : ''}`;
+    this.selectedValueControlled = `Selected value: ${e.detail.checked}`;
   }
 }
 </script>

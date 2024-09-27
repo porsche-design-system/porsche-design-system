@@ -252,6 +252,9 @@ export const getComponentCss = (
       display: 'grid',
       gridTemplateColumns: 'auto minmax(0, 1fr)',
       rowGap: spacingStaticXSmall,
+      ...(disabledOrLoading && {
+        cursor: 'not-allowed',
+      }),
     },
     wrapper: {
       cursor: 'pointer',
@@ -262,9 +265,6 @@ export const getComponentCss = (
       display: 'grid',
       gridArea: '1/1',
       alignSelf: 'flex-start', // in case label becomes multiline
-      ...(disabledOrLoading && {
-        cursor: 'not-allowed',
-      }),
     },
     ...(isLoading && {
       spinner: {
@@ -284,6 +284,7 @@ export const getComponentCss = (
       theme,
       {
         gridArea: '1/2',
+        ...(isLoading && { pointerEvents: 'none' }), // prevent default htmlFor behavior. TODO: Remove as soon as label component for custom form components exists.
       },
       {
         paddingTop, // compensate vertical alignment

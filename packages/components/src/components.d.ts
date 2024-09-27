@@ -14,7 +14,7 @@ import { ButtonPureAlignLabel, ButtonPureAriaAttribute, ButtonPureIcon, ButtonPu
 import { ButtonTileAlign, ButtonTileAriaAttribute, ButtonTileAspectRatio, ButtonTileBackground, ButtonTileIcon, ButtonTileSize, ButtonTileType, ButtonTileWeight } from "./components/button-tile/button-tile-utils";
 import { CanvasSidebarEndIcon, CanvasSidebarStartIcon } from "./components/canvas/canvas-utils";
 import { CarouselAlignHeader, CarouselAriaAttribute, CarouselGradientColor, CarouselHeadingSize, CarouselInternationalization, CarouselUpdateEventDetail, CarouselWidth } from "./components/carousel/carousel-utils";
-import { CheckboxState, CheckboxUpdateEventDetail } from "./components/checkbox/checkbox-utils";
+import { CheckboxBlurEventDetail, CheckboxState, CheckboxUpdateEventDetail } from "./components/checkbox/checkbox-utils";
 import { CheckboxWrapperState } from "./components/checkbox-wrapper/checkbox-wrapper-utils";
 import { ContentWrapperBackgroundColor, ContentWrapperWidth } from "./components/content-wrapper/content-wrapper-utils";
 import { CrestAriaAttribute, CrestTarget } from "./components/crest/crest-utils";
@@ -78,7 +78,7 @@ export { ButtonPureAlignLabel, ButtonPureAriaAttribute, ButtonPureIcon, ButtonPu
 export { ButtonTileAlign, ButtonTileAriaAttribute, ButtonTileAspectRatio, ButtonTileBackground, ButtonTileIcon, ButtonTileSize, ButtonTileType, ButtonTileWeight } from "./components/button-tile/button-tile-utils";
 export { CanvasSidebarEndIcon, CanvasSidebarStartIcon } from "./components/canvas/canvas-utils";
 export { CarouselAlignHeader, CarouselAriaAttribute, CarouselGradientColor, CarouselHeadingSize, CarouselInternationalization, CarouselUpdateEventDetail, CarouselWidth } from "./components/carousel/carousel-utils";
-export { CheckboxState, CheckboxUpdateEventDetail } from "./components/checkbox/checkbox-utils";
+export { CheckboxBlurEventDetail, CheckboxState, CheckboxUpdateEventDetail } from "./components/checkbox/checkbox-utils";
 export { CheckboxWrapperState } from "./components/checkbox-wrapper/checkbox-wrapper-utils";
 export { ContentWrapperBackgroundColor, ContentWrapperWidth } from "./components/content-wrapper/content-wrapper-utils";
 export { CrestAriaAttribute, CrestTarget } from "./components/crest/crest-utils";
@@ -488,6 +488,10 @@ export namespace Components {
          */
         "theme"?: Theme;
         /**
+          * Determines whether to trim spaces before/after the carousel if `focusOnCenterSlide` option is true.
+         */
+        "trimSpace"?: boolean;
+        /**
           * Defines the outer spacings between the carousel and the left and right screen sides.
          */
         "width"?: CarouselWidth;
@@ -499,7 +503,7 @@ export namespace Components {
     }
     interface PCheckbox {
         /**
-          * Marks the checkbox as pre-selected (checked) on initial load.
+          * Reflects the checkbox current checked state and allows setting the initial checked state.
          */
         "checked"?: boolean;
         /**
@@ -2455,6 +2459,7 @@ declare global {
     };
     interface HTMLPCheckboxElementEventMap {
         "update": CheckboxUpdateEventDetail;
+        "blur": CheckboxBlurEventDetail;
     }
     interface HTMLPCheckboxElement extends Components.PCheckbox, HTMLStencilElement {
         addEventListener<K extends keyof HTMLPCheckboxElementEventMap>(type: K, listener: (this: HTMLPCheckboxElement, ev: PCheckboxCustomEvent<HTMLPCheckboxElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
@@ -3602,6 +3607,10 @@ declare namespace LocalJSX {
          */
         "theme"?: Theme;
         /**
+          * Determines whether to trim spaces before/after the carousel if `focusOnCenterSlide` option is true.
+         */
+        "trimSpace"?: boolean;
+        /**
           * Defines the outer spacings between the carousel and the left and right screen sides.
          */
         "width"?: CarouselWidth;
@@ -3613,7 +3622,7 @@ declare namespace LocalJSX {
     }
     interface PCheckbox {
         /**
-          * Marks the checkbox as pre-selected (checked) on initial load.
+          * Reflects the checkbox current checked state and allows setting the initial checked state.
          */
         "checked"?: boolean;
         /**
@@ -3652,6 +3661,10 @@ declare namespace LocalJSX {
           * The name of the checkbox.
          */
         "name"?: string;
+        /**
+          * Emitted when the checkbox has lost focus.
+         */
+        "onBlur"?: (event: PCheckboxCustomEvent<CheckboxBlurEventDetail>) => void;
         /**
           * Emitted when checkbox checked property is changed.
          */

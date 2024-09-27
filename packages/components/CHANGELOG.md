@@ -14,6 +14,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ### [Unreleased]
 
+#### Added
+
+- `Carousel`: introduce `trimSpace` prop
+  ([#3496](https://github.com/porsche-design-system/porsche-design-system/pull/3496))
+- `Checkbox`: ([#3498](https://github.com/porsche-design-system/porsche-design-system/pull/3498))
+
 #### Fixed
 
 - `Checkbox Wrapper`, `Radio Button Wrapper`: rendering of `checked` state in Blink based Browsers when component is

@@ -70,6 +70,7 @@ const propTypes: PropTypes<typeof Carousel> = {
   ]),
   gradientColor: AllowedTypes.oneOf<CarouselGradientColor>(CAROUSEL_GRADIENT_COLORS),
   focusOnCenterSlide: AllowedTypes.boolean,
+  trimSpace: AllowedTypes.boolean,
   disablePagination: AllowedTypes.breakpoint('boolean'),
   pagination: AllowedTypes.breakpoint('boolean'),
   aria: AllowedTypes.aria<CarouselAriaAttribute>(CAROUSEL_ARIA_ATTRIBUTES),
@@ -160,6 +161,9 @@ export class Carousel {
   /** Adapts the background gradient for the left and right edge. */
   @Prop() public gradientColor?: CarouselGradientColor = 'none';
 
+  /** Determines whether to trim spaces before/after the carousel if `focusOnCenterSlide` option is true. */
+  @Prop() public trimSpace?: boolean = true;
+
   /**
    * @deprecated since v3.0.0, will be removed with next major release, use `update` event instead.
    * Emitted when carousel's content slides. */
@@ -222,6 +226,7 @@ export class Carousel {
       arrows: false,
       easing: motionEasingBase,
       focus: this.focusOnCenterSlide ? 'center' : undefined,
+      trimSpace: this.trimSpace,
       pagination: false,
       rewind: this.rewind,
       rewindByDrag: true, // only works when rewind: true

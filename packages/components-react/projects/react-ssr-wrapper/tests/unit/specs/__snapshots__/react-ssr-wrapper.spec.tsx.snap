@@ -8360,6 +8360,7 @@ input::-moz-focus-inner {
       />
     </div>
   </template>
+  Some child
 </p-checkbox>
 `;
 
@@ -17292,6 +17293,7 @@ textarea[readonly] {
       </div>
     </div>
   </template>
+  Some child
 </p-textarea>
 `;
 

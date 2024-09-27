@@ -1,4 +1,8 @@
 <style>
+  p-carousel {
+    --p-gradient-color-width: 25%;
+  }
+
   p-carousel div {
     display: flex;
     align-items: center;
@@ -18,7 +22,7 @@
   }
 </style>
 
-<p-carousel slides-per-page="3" focus-on-center-slide="true">
+<p-carousel slides-per-page="3" focus-on-center-slide="true" trim-space="false" gradient-color="background-surface">
   <div>Slide 1</div>
   <div>Slide 2</div>
   <div>Slide 3</div>

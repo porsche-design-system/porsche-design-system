@@ -1579,6 +1579,12 @@ exports[`should match snapshot 1`] = `
         "description": "Adapts the color when used on dark background.",
         "type": "Theme",
       },
+      "trimSpace": {
+        "allowedValues": "boolean",
+        "defaultValue": true,
+        "description": "Determines whether to trim spaces before/after the carousel if \`focusOnCenterSlide\` option is true.",
+        "type": "boolean",
+      },
       "width": {
         "allowedValues": [
           "basic",
@@ -1614,6 +1620,11 @@ exports[`should match snapshot 1`] = `
   },
   "p-checkbox": {
     "eventsMeta": {
+      "blur": {
+        "description": "Emitted when the checkbox has lost focus.",
+        "type": "CheckboxBlurEventDetail",
+        "typeDetail": "Event",
+      },
       "update": {
         "description": "Emitted when checkbox checked property is changed.",
         "type": "CheckboxUpdateEventDetail",
@@ -1637,7 +1648,7 @@ exports[`should match snapshot 1`] = `
       "checked": {
         "allowedValues": "boolean",
         "defaultValue": false,
-        "description": "Marks the checkbox as pre-selected (checked) on initial load.",
+        "description": "Reflects the checkbox current checked state and allows setting the initial checked state.",
         "type": "boolean",
       },
       "disabled": {
