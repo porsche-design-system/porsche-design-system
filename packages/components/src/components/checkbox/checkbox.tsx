@@ -191,7 +191,7 @@ export class Checkbox {
           isDisabled={this.disabled}
           isRequired={this.required}
         />
-        <div class="wrapper" onClick={this.onClick}>
+        <div class="wrapper" onClick={this.onClick} onBlur={this.onBlur}>
           <input
             type="checkbox"
             id={id}
@@ -202,8 +202,6 @@ export class Checkbox {
             form={this.form}
             value={this.value}
             name={this.name}
-            onChange={this.onChange}
-            onBlur={this.onBlur}
             required={this.required}
             disabled={this.disabled}
             ref={(el: HTMLInputElement) => (this.checkboxInputElement = el)}
@@ -228,19 +226,7 @@ export class Checkbox {
     if (this.disabled || this.loading) {
       return;
     }
-    const checkedToggle = !this.checked;
-    this.checked = checkedToggle;
-    this.internals.setFormValue(checkedToggle ? this.value : undefined);
-    this.update.emit({
-      value: this.value,
-      name: this.name,
-      checked: checkedToggle,
-    });
-  };
-
-
-  private onChange = (e: Event): void => {
-    const checked = (e.target as HTMLInputElement).checked;
+    const checked = !this.checked;
     this.checked = checked;
     this.internals.setFormValue(checked ? this.value : undefined);
     this.update.emit({
