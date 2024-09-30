@@ -4,7 +4,6 @@ import 'ag-grid-community';
 import { ColDef, ICellRendererParams } from 'ag-grid-community';
 import { ICellRendererAngularComp } from 'ag-grid-angular';
 import { type Theme } from '@porsche-design-system/components-angular';
-import '@porsche-design-system/components-angular/ag-grid/theme.css';
 
 type ColumnDefs = DataAdvanced & {
   active: boolean;
