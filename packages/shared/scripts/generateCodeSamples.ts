@@ -571,12 +571,12 @@ const generateCodeSamples = (): void => {
             // Replace locally served assets with public assets folder of storefront
             fileContent = fileContent.replace(/http:\/\/localhost:3002/g, 'assets');
 
-            if (fileName.includes('ag-grid-example-storefront.component.ts')) {
-              fileContent = fileContent.replace(
-                /import[^\n]*/,
-                "\nimport '@porsche-design-system/components-angular/ag-grid/theme.css';\n"
-              );
-            }
+            // if (fileName.includes('ag-grid-example-storefront.component.ts')) {
+            //   fileContent = fileContent.replace(
+            //     /import[^\n]*/,
+            //     "\nimport '@porsche-design-system/components-angular/ag-grid/theme.css';\n"
+            //   );
+            // }
 
             return { [framework]: fileContent };
           });

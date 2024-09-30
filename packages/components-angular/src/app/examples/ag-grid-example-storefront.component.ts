@@ -56,6 +56,7 @@ class ImageUrlRendererer implements ICellRendererAngularComp {
     [pagination]="true"
   />`,
   changeDetection: ChangeDetectionStrategy.OnPush,
+  styleUrl: './../../@porsche-design-system/components-angular/ag-grid/theme.css',
 })
 export class AgGridExampleStorefrontComponent {
   public theme: Theme = 'light';
