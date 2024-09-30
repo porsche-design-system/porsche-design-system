@@ -41,7 +41,6 @@ describe('url', () => {
               break;
             case 'https://vmmedia.porsche.de':
             case 'https://vmmedia.porsche.de/prod/vmmedia/Resources.nsf':
-            case 'https://linkedin.com':
               expect([401, 403, 429]).toContain(status); // 401 Unauthorized, 403 Forbidden or 429 Too Many Requests
               break;
             case 'https://twitter.com':
