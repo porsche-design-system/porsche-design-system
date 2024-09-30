@@ -2,9 +2,8 @@ import './style.scss';
 
 import { componentsReady } from '@porsche-design-system/components-js';
 
-const currentUrl = new URL(location).toString();
-
 import { dataAdvanced } from '@porsche-design-system/shared';
+import * as agGrid from 'ag-grid-enterprise';
 
 const getPage = () => window.location.pathname.substring(1);
 const getTheme = () => new URL(document.location).searchParams.get('theme') || 'light';
@@ -97,13 +96,6 @@ const updateSelect = (id, value) => {
 };
 
 (async () => {
-  // Necessary to only include one of the packages since the ag-grid-community will behave different when the ag-grid-enterprise package is also loaded. Even when not used. Reload is needed after route change.
-  if (currentUrl.match(/\/ag-grid-example-storefront.*/)) {
-    window.agGrid = await import('ag-grid-community');
-  } else if (currentUrl.match(/\/ag-grid-example[^-]*/)) {
-    window.agGrid = await import('ag-grid-enterprise');
-  }
-
   window.porscheDesignSystem.componentsReady = componentsReady;
   window.porscheDesignSystem.waitForComponentsReadyWithinIFrames = async () => {
     return await Promise.all(
@@ -126,6 +118,7 @@ const updateSelect = (id, value) => {
     );
   };
 
+  window.agGrid = agGrid;
   window.rowData = dataAdvanced;
 
   if (!isPageLoadedInIFrame()) {
