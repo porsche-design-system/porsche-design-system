@@ -569,8 +569,7 @@ const generateCodeSamples = (): void => {
             }
 
             // Replace locally served assets with public assets folder of storefront
-            // TODO: Improve this local/prod and for table data advanced etc.
-            fileContent = fileContent.replace(/http:\/\/localhost:3002/g, 'https://designsystem.porsche.com/v3/assets');
+            fileContent = fileContent.replace(/http:\/\/localhost:3002/g, 'assets');
 
             return { [framework]: fileContent };
           });
