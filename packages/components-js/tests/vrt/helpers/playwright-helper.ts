@@ -24,6 +24,7 @@ const isOrContainsPIcon = (tagName: TagName): boolean => {
 export const waitForComponentsReady = async (page: Page): Promise<number> => {
   // this solves a race condition where the html page with the pds markup is loaded async and componentsReady()
   // is called before the markup is initialized, it can resolve early with 0
+  await page.waitForFunction(async () => typeof (window as any).porscheDesignSystem.componentsReady == 'function');
   await page.waitForFunction(async () => (await (window as any).porscheDesignSystem.componentsReady()) > 0);
 
   // remove loading="lazy" from icon img elements which might otherwise be missing when a screenshot or pdf is created
