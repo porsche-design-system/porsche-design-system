@@ -2,7 +2,7 @@
   import 'ag-grid-community';
   import { AgGridVue } from 'ag-grid-vue3'; // Vue Data Grid Component
   import { dataAdvanced } from '@porsche-design-system/shared';
-  import '@porsche-design-system/components-vue/ag-grid/theme-pds.css';
+  import '@porsche-design-system/components-vue/ag-grid/theme.css';
 
   const theme = 'light';
 

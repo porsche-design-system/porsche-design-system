@@ -18,7 +18,7 @@ For more information on AG Grid's base themes, you can refer to the official
    Import the Porsche Design System AG Grid theme into your application:
 
    ```js
-   import '@porsche-design-system/components-{js|angular|react|vue}/ag-grid/theme-pds.css';
+   import '@porsche-design-system/components-{js|angular|react|vue}/ag-grid/theme.css';
    ```
 
 2. **Apply the Theme Class**  

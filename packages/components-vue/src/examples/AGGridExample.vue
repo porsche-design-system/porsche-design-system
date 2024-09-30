@@ -120,7 +120,7 @@
 </template>
 
 <style>
-  @import '@porsche-design-system/components-vue/ag-grid/theme-pds.css';
+  @import '@porsche-design-system/components-vue/ag-grid/theme.css';
 
   img {
     object-fit: contain;

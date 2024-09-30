@@ -124,7 +124,7 @@ export const getVanillaJsProjectAndOpenOptions: GetStackBlitzProjectAndOpenOptio
       'index.js': getIndexJs(
         pdsVersion,
         externalDependencies.includes('ag-grid-community')
-          ? `import './@porsche-design-system/components-js/ag-grid/theme-pds.css';`
+          ? `import './@porsche-design-system/components-js/ag-grid/theme.css';`
           : ''
       ),
     },

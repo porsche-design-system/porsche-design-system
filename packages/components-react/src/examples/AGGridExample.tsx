@@ -2,7 +2,7 @@ import { AgGridReact } from 'ag-grid-react';
 import { dataAdvanced, type DataAdvanced } from '@porsche-design-system/shared';
 import 'ag-grid-enterprise';
 import { ColDef } from 'ag-grid-enterprise';
-import '@porsche-design-system/components-react/ag-grid/theme-pds.css';
+import '@porsche-design-system/components-react/ag-grid/theme.css';
 import { PLinkPure, Theme } from '@porsche-design-system/components-react';
 
 type ColumnDefs = DataAdvanced & {
