@@ -191,7 +191,7 @@ export class Checkbox {
           isDisabled={this.disabled}
           isRequired={this.required}
         />
-        <div class="wrapper" onClick={this.onClick} onBlur={this.onBlur}>
+        <div class="wrapper">
           <input
             type="checkbox"
             id={id}
@@ -199,6 +199,8 @@ export class Checkbox {
             aria-invalid={this.state === 'error' ? 'true' : null}
             aria-disabled={this.loading || this.disabled ? 'true' : null}
             checked={this.checked}
+            onClick={this.onClick}
+            onBlur={this.onBlur}
             form={this.form}
             value={this.value}
             name={this.name}
@@ -223,9 +225,6 @@ export class Checkbox {
   };
 
   private onClick = (): void => {
-    if (this.disabled || this.loading) {
-      return;
-    }
     const checked = !this.checked;
     this.checked = checked;
     this.internals.setFormValue(checked ? this.value : undefined);

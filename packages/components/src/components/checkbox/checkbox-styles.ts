@@ -104,6 +104,7 @@ export const getComponentCss = (
   const dimensionFull = `calc(${dimension} + ${borderWidthBase} * 2)`;
   const paddingInlineStart = `calc(${spacingStaticSmall} - (max(0px, ${minimumTouchTargetSize} - ${dimensionFull})))`;
   const paddingTop = `calc((${dimensionFull} - ${fontLineHeight}) / 2)`;
+  const inset = `calc(-${borderWidthBase} - max(0px, (${minimumTouchTargetSize} - ${dimensionFull}) / 2))`;
 
   return getCss({
     '@global': {
@@ -116,6 +117,14 @@ export const getComponentCss = (
       },
       ...preventFoucOfNestedElementsStyles,
       input: {
+        position: 'relative',
+        '&::before': {
+          content: '""',
+          position: 'absolute',
+          minWidth: minimumTouchTargetSize,
+          minHeight: minimumTouchTargetSize,
+          inset,
+        },
         width: dimension,
         height: dimension,
         font: `${fontSizeTextSmall} ${fontFamily}`, // needed for correct width and height definition based on ex-unit
