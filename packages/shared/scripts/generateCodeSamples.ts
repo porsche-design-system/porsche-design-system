@@ -573,8 +573,8 @@ const generateCodeSamples = (): void => {
 
             if (fileName.includes('ag-grid-example-storefront.component.ts')) {
               fileContent = fileContent.replace(
-                /import[^\n]*/,
-                "\nimport '@porsche-design-system/components-angular/ag-grid/theme.css';\n"
+                /(import[^\n]*)/,
+                "$1\nimport '@porsche-design-system/components-angular/ag-grid/theme.css';"
               );
             }
 
