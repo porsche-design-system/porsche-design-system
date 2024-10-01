@@ -202,7 +202,7 @@ export class Checkbox {
             form={this.form}
             value={this.value}
             name={this.name}
-            onClick={this.onClick}
+            onChange={this.onChange}
             onBlur={this.onBlur}
             required={this.required}
             disabled={this.disabled}
@@ -224,8 +224,8 @@ export class Checkbox {
     this.blur.emit(e);
   };
 
-  private onClick = (): void => {
-    const checked = !this.checked;
+  private onChange = (e: Event): void => {
+    const checked = (e.target as HTMLInputElement).checked;
     this.checked = checked;
     this.internals.setFormValue(checked ? this.value : undefined);
     this.update.emit({
