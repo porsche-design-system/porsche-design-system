@@ -86,8 +86,7 @@ export class Canvas {
         <div class="canvas">
           <header>
             <div class="header">
-              {/* TODO: define active state for button */}
-              {this.hasSidebarStart && (
+              {this.hasSidebarStart && !this.sidebarStartOpen && (
                 <PrefixedTagNames.pButton
                   theme={this.theme}
                   icon={this.sidebarStartIcon}
@@ -109,7 +108,6 @@ export class Canvas {
             <PrefixedTagNames.pWordmark class="wordmark" size="inherit" theme={this.theme} />
             <div class="header">
               <slot name="header-end" />
-              {/* TODO: define active state for button */}
               {this.hasSidebarEnd && (
                 <PrefixedTagNames.pButton
                   theme={this.theme}
@@ -142,7 +140,22 @@ export class Canvas {
                   inert={this.sidebarStartOpen ? null : true}
                   aria-label={`Navigation sidebar ${this.sidebarStartOpen ? 'open' : 'closed'}`}
                 >
-                  <slot name="sidebar-start" />
+                  <div class="scroller">
+                    <div class="sidebar-header">
+                      <PrefixedTagNames.pButton
+                        theme={this.theme}
+                        icon={this.sidebarStartIcon}
+                        variant="ghost"
+                        compact={true}
+                        hide-label="true"
+                        aria={{ 'aria-expanded': this.sidebarStartOpen }}
+                        onClick={this.toggleSidebarStart}
+                      >
+                        {this.sidebarStartOpen ? 'Close' : 'Open'} navigation sidebar
+                      </PrefixedTagNames.pButton>
+                    </div>
+                    <slot name="sidebar-start" />
+                  </div>
                 </aside>
               )}
               {this.hasSidebarEnd && (

@@ -24,10 +24,13 @@ const cssVarSidebarEndWidth = '--p-canvas-sidebar-end-width';
 const gridProductiveGap = gridGap.replace('36px', '24px');
 const mediaQueryDesktopView = getMediaQueryMin('m');
 const sidebarWidth = '320px';
-const headerHeight = 'calc(1.5rem + 28px)';
+
+const borderRadius = '16px';
+
+const headerPadding = spacingStaticSmall;
 
 export const getComponentCss = (theme: Theme, isSidebarStartOpen: boolean, isSidebarEndOpen: boolean): string => {
-  const { primaryColor, backgroundColor, backgroundSurfaceColor } = getThemedColors(theme);
+  const { primaryColor, backgroundColor, backgroundSurfaceColor, contrastLowColor } = getThemedColors(theme);
 
   return getCss({
     '@global': {
@@ -97,8 +100,12 @@ export const getComponentCss = (theme: Theme, isSidebarStartOpen: boolean, isSid
         textDecoration: 'none',
         color: 'inherit',
       },
+      'slot[name="sidebar-start"]': {
+        display: 'block',
+      },
       h2: {
         ...textSmallStyle,
+        margin: 0,
         color: primaryColor,
         textTransform: 'uppercase',
         letterSpacing: '2px',
@@ -109,37 +116,21 @@ export const getComponentCss = (theme: Theme, isSidebarStartOpen: boolean, isSid
         zIndex: 0,
       },
       header: {
+        paddingBlock: headerPadding,
         gridArea: 'header',
         position: 'sticky',
         top: 0,
-        zIndex: 9999999,
-        height: headerHeight,
+        zIndex: 100,
         display: 'grid',
         gridTemplateColumns: 'minmax(0, 1fr) auto minmax(0, 1fr)',
         gap: gridProductiveGap,
-        backgroundColor: backgroundSurfaceColor,
+        backgroundColor: 'hsla(0,0%,100%,0.79)',
+        WebkitBackdropFilter: 'blur(32px)',
+        backdropFilter: 'blur(32px)',
         alignItems: 'center',
-        paddingBlock: 0,
-        '&::before, &::after': {
-          content: '""',
-          position: 'absolute',
-          backgroundColor: 'transparent',
-          bottom: `calc(${borderRadiusLarge} * -2)`,
-          height: `calc(${borderRadiusLarge} * 2)`,
-          width: borderRadiusLarge,
-          boxShadow: `0 -${borderRadiusLarge} 0 0 ${backgroundSurfaceColor}`,
-          pointerEvents: 'none',
-        },
-        '&::before': {
-          left: 0,
-          borderTopLeftRadius: borderRadiusLarge,
-        },
-        '&::after': {
-          right: 0,
-          borderTopRightRadius: borderRadiusLarge,
-        },
       },
       main: {
+        zIndex: 10,
         gridArea: 'main',
         '--p-canvas-grid-span-full': 'span 6',
         '--p-canvas-grid-span-one-half': 'span 3',
@@ -149,7 +140,7 @@ export const getComponentCss = (theme: Theme, isSidebarStartOpen: boolean, isSid
         gridTemplateColumns: 'repeat(6, minmax(0, 1fr))',
         gap: gridProductiveGap,
         alignContent: 'flex-start',
-        backgroundColor,
+        // backgroundColor,
         [mediaQueryDesktopView]: {
           '--p-canvas-grid-span-full': 'span 12',
           '--p-canvas-grid-span-one-half': 'span 6',
@@ -159,30 +150,73 @@ export const getComponentCss = (theme: Theme, isSidebarStartOpen: boolean, isSid
         },
       },
       footer: {
+        position: 'sticky',
+        bottom: 0,
         gridArea: 'footer',
-        backgroundColor,
+        zIndex: 200,
+        background: `linear-gradient(0deg, ${backgroundColor} 0%, ${backgroundColor} 65%, rgba(255,255,255,0) 100%)`,
+        // backgroundColor,
       },
       aside: {
+        zIndex: 200,
         transition: getTransition('margin'),
         position: 'sticky',
-        top: headerHeight,
-        height: `calc(100dvh - ${headerHeight})`,
-        overflow: 'hidden auto',
+        top: 0,
+        height: '100dvh',
+      },
+    },
+    scroller: {
+      position: 'absolute',
+      inset: 0,
+      padding: gridProductiveGap,
+      overflow: 'hidden auto',
+    },
+    'sidebar-header': {
+      position: 'sticky',
+      top: `calc(${gridProductiveGap} * -1)`,
+      padding: `${headerPadding} ${gridProductiveGap}`,
+      marginBlockStart: `calc(${gridProductiveGap} * -1)`,
+      marginInline: `calc(${gridProductiveGap} * -1)`,
+      // backgroundColor: backgroundSurfaceColor,
+      zIndex: 1,
+      '&::before': {
+        content: '""',
+        position: 'absolute',
+        top: 0,
+        bottom: '-8px',
+        left: 0,
+        right: 0,
+        background: `linear-gradient(180deg, ${backgroundSurfaceColor} 0%, ${backgroundSurfaceColor} 65%, rgba(255,255,255,0) 100%)`,
+        pointerEvents: 'none',
       },
     },
     'sidebar-start': {
-      borderInlineEnd: `1px solid ${backgroundSurfaceColor}`,
-      backgroundColor,
+      backgroundColor: backgroundSurfaceColor,
       gridArea: 'sidebar-start',
       width: `var(${cssVarSidebarStartWidth}, ${sidebarWidth})`,
-      marginInlineStart: isSidebarStartOpen ? 0 : `calc(var(${cssVarSidebarStartWidth}, ${sidebarWidth}) * -1)`,
+      marginInlineStart: isSidebarStartOpen
+        ? 0
+        : `calc((var(${cssVarSidebarStartWidth}, ${sidebarWidth}) + ${borderRadius}) * -1)`,
+      '&::before': {
+        content: '""',
+        position: 'absolute',
+        backgroundColor: 'transparent',
+        right: `-${borderRadius}`,
+        height: `calc(${borderRadius} * 2)`,
+        width: borderRadius,
+        pointerEvents: 'none',
+        top: 0,
+        borderTopLeftRadius: borderRadius,
+        boxShadow: `0 -${borderRadius} 0 0 ${backgroundSurfaceColor}`,
+      },
     },
     'sidebar-end': {
-      borderInlineStart: `1px solid ${backgroundSurfaceColor}`,
+      borderInlineStart: `1px solid ${contrastLowColor}`,
       backgroundColor,
       gridArea: 'sidebar-end',
       width: `var(${cssVarSidebarEndWidth}, ${sidebarWidth})`,
       marginInlineEnd: isSidebarEndOpen ? 0 : `calc(var(${cssVarSidebarEndWidth}, ${sidebarWidth}) * -1)`,
+      overflow: 'hidden auto',
     },
     canvas: {
       display: 'grid',
@@ -192,7 +226,8 @@ export const getComponentCss = (theme: Theme, isSidebarStartOpen: boolean, isSid
       minHeight: '100dvh',
       [mediaQueryDesktopView]: {
         gridTemplate: 'auto minmax(0, 1fr) auto / auto minmax(0, 1fr) auto',
-        gridTemplateAreas: '"header header header" "sidebar-start main sidebar-end" "sidebar-start footer sidebar-end"',
+        gridTemplateAreas:
+          '"sidebar-start header sidebar-end" "sidebar-start main sidebar-end" "sidebar-start footer sidebar-end"',
       },
     },
     crest: {
