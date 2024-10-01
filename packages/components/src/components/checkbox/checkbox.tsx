@@ -199,11 +199,11 @@ export class Checkbox {
             aria-invalid={this.state === 'error' ? 'true' : null}
             aria-disabled={this.loading || this.disabled ? 'true' : null}
             checked={this.checked}
-            onClick={this.onClick}
-            onBlur={this.onBlur}
             form={this.form}
             value={this.value}
             name={this.name}
+            onClick={this.onClick}
+            onBlur={this.onBlur}
             required={this.required}
             disabled={this.disabled}
             ref={(el: HTMLInputElement) => (this.checkboxInputElement = el)}
