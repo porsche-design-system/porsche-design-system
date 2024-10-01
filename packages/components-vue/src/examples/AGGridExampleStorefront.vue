@@ -6,17 +6,6 @@
 
   const theme = 'light';
 
-  const ImageUrlRendererer = {
-    template: `
-      <img :src="cellValue" width="80" height="45" alt="" />
-    `,
-    setup(props: any) {
-      return {
-        cellValue: props.params.value,
-      };
-    },
-  };
-
   const rowData = dataAdvanced.map((row, index) => ({ active: Boolean(index % 2) /* odd rows */, ...row }));
 
   const columnDefs = [
@@ -24,15 +13,6 @@
       field: 'active',
       showDisabledCheckboxes: true,
       width: 170,
-    },
-    {
-      field: 'imageUrl',
-      headerName: 'Image',
-      cellRenderer: ImageUrlRendererer,
-      editable: false,
-      filter: false,
-      sortable: false,
-      width: 130,
     },
     {
       field: 'model',
@@ -84,14 +64,3 @@
   >
   </ag-grid-vue>
 </template>
-
-<style>
-  img {
-    object-fit: contain;
-  }
-  .cell-centered {
-    height: 100%;
-    display: flex;
-    align-items: center;
-  }
-</style>

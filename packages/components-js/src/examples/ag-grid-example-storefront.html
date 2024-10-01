@@ -1,40 +1,8 @@
 <script type="module">
   const grid = document.querySelector('#my-grid');
 
-  class ImageUrlRenderer {
-    eGui;
-
-    // Optional: Params for rendering. The same params that are passed to the cellRenderer function.
-    init(params) {
-      let spanElement = document.createElement('span');
-      spanElement.classList.add('cell-centered');
-
-      let imageElement = document.createElement('img');
-
-      imageElement.src = params.value;
-      imageElement.style = 'object-fit: contain;';
-      imageElement.width = 80;
-      imageElement.height = 45;
-
-      spanElement.appendChild(imageElement);
-
-      this.eGui = spanElement;
-    }
-
-    // Required: Return the DOM element of the component, this is what the grid puts into the cell
-    getGui() {
-      return this.eGui;
-    }
-
-    // Required: Get the cell to refresh.
-    refresh(params) {
-      return false;
-    }
-  }
-
   const rowData = [
     {
-      imageUrl: 'http://localhost:3002/718.png',
       model: '718',
       date: '23.06.2021',
       interest: 'New Car',
@@ -45,7 +13,6 @@
       leadId: '0000824402',
     },
     {
-      imageUrl: 'http://localhost:3002/panamera.png',
       model: 'Panamera',
       date: '19.06.2021',
       interest: 'New Car',
@@ -56,7 +23,6 @@
       leadId: '0000824409',
     },
     {
-      imageUrl: 'http://localhost:3002/911.png',
       model: '911',
       date: '19.05.2021',
       interest: 'Used Car',
@@ -67,7 +33,6 @@
       leadId: '0000824408',
     },
     {
-      imageUrl: 'http://localhost:3002/macan.png',
       model: 'Macan',
       date: '10.05.2021',
       interest: 'Used Car',
@@ -78,7 +43,6 @@
       leadId: '0000824407',
     },
     {
-      imageUrl: 'http://localhost:3002/taycan.png',
       model: 'Taycan',
       date: '03.05.2021',
       interest: 'New Car',
@@ -99,15 +63,6 @@
         field: 'active',
         showDisabledCheckboxes: true,
         width: '170px',
-      },
-      {
-        field: 'imageUrl',
-        headerName: 'Image',
-        cellRenderer: ImageUrlRenderer,
-        editable: false,
-        filter: false,
-        sortable: false,
-        width: '130px',
       },
       {
         field: 'model',
@@ -154,11 +109,3 @@
 </script>
 
 <div id="my-grid" class="ag-theme-pds" style="height: 100vh; padding: 1rem"></div>
-
-<style>
-  .cell-centered {
-    height: 100%;
-    display: flex;
-    align-items: center;
-  }
-</style>

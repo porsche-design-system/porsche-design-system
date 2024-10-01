@@ -1,49 +1,12 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { dataAdvanced, type DataAdvanced } from '@porsche-design-system/shared';
 import 'ag-grid-community';
-import { ColDef, ICellRendererParams } from 'ag-grid-community';
-import { ICellRendererAngularComp } from 'ag-grid-angular';
+import { ColDef } from 'ag-grid-community';
 import { type Theme } from '@porsche-design-system/components-angular';
 
 type ColumnDefs = DataAdvanced & {
   active: boolean;
 };
-
-@Component({
-  selector: 'app-company-logo-renderer',
-  standalone: true,
-  template: `
-    <span class="cell-centered'">
-      <img [src]="value" width="80" height="45" alt="" />
-    </span>
-  `,
-  styles: [
-    `
-      img {
-        object-fit: contain;
-      }
-      .cell-centered {
-        height: 100%;
-        display: flex;
-        align-items: center;
-      }
-    `,
-  ],
-})
-class ImageUrlRendererer implements ICellRendererAngularComp {
-  // Init Cell Value
-  public value!: string;
-
-  agInit(params: ICellRendererParams): void {
-    this.value = params.value;
-  }
-
-  // Return Cell Value
-  refresh(params: ICellRendererParams): boolean {
-    this.value = params.value;
-    return true;
-  }
-}
 
 @Component({
   selector: 'porsche-design-system-app',
@@ -66,15 +29,6 @@ export class AgGridExampleStorefrontComponent {
       field: 'active',
       showDisabledCheckboxes: true,
       width: 170,
-    },
-    {
-      field: 'imageUrl',
-      headerName: 'Image',
-      cellRenderer: ImageUrlRendererer,
-      editable: false,
-      filter: false,
-      sortable: false,
-      width: 130,
     },
     {
       field: 'model',
