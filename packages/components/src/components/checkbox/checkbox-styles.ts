@@ -211,13 +211,13 @@ export const getComponentCss = (
       ...(!disabledOrLoading &&
         !isHighContrastMode &&
         hoverMediaQuery({
-          '.wrapper:hover input,input:hover,label:hover~.wrapper input': {
+          'input:hover,label:hover~.wrapper input': {
             borderColor: uncheckedHoverColor,
             ...prefersColorSchemeDarkMediaQuery(theme, {
               borderColor: uncheckedHoverColorDark,
             }),
           },
-          '.wrapper:hover input:checked,input:checked:hover,label:hover~.wrapper input:checked': {
+          'input:checked:hover,label:hover~.wrapper input:checked': {
             borderColor: checkedHoverColor,
             backgroundColor: checkedHoverColor,
             ...prefersColorSchemeDarkMediaQuery(theme, {
@@ -225,7 +225,7 @@ export const getComponentCss = (
               backgroundColor: checkedHoverColorDark,
             }),
           },
-          '.wrapper:hover input:indeterminate,input:indeterminate:hover,label:hover~.wrapper input:indeterminate': {
+          'input:indeterminate:hover,label:hover~.wrapper input:indeterminate': {
             background, // Safari fix: ensures proper rendering of 'indeterminate' mode with 'checked' state.
             borderColor: uncheckedHoverColor, // Safari fix: ensures proper rendering of 'indeterminate' mode with 'checked' state.
             backgroundImage: getIndeterminateSVGBackgroundImage(escapeHashCharacter(indeterminateIconHoverColor)),
@@ -264,7 +264,6 @@ export const getComponentCss = (
       }),
     },
     wrapper: {
-      cursor: 'pointer',
       minWidth: minimumTouchTargetSize,
       minHeight: minimumTouchTargetSize,
       justifyContent: 'center',
