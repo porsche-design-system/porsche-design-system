@@ -121,8 +121,6 @@ export const getComponentCss = (
         '&::before': {
           content: '""',
           position: 'absolute',
-          minWidth: minimumTouchTargetSize,
-          minHeight: minimumTouchTargetSize,
           inset,
         },
         width: dimension,
