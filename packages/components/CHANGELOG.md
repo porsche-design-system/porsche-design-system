@@ -14,6 +14,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ### [Unreleased]
 
+#### Fixed
+
+- `Carousel`: remove gradient styles for carousel if `gradientColor` is not defined
+  ([#3518](https://github.com/porsche-design-system/porsche-design-system/pull/3518))
+
 ### [3.19.0-rc.2] - 2024-10-01
 
 #### Added
