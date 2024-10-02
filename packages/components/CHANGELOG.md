@@ -14,6 +14,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ### [Unreleased]
 
+### [3.19.0-rc.3] - 2024-10-02
+
 #### Fixed
 
 - `Carousel`: remove gradient styles for carousel if `gradientColor` is not defined
