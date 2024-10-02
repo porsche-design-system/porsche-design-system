@@ -25,6 +25,7 @@ import {
   fontSizeTextSmall,
   spacingStaticSmall,
   spacingStaticXSmall,
+  textSmallStyle,
 } from '@porsche-design-system/styles';
 import { getFunctionalComponentLabelStyles } from '../common/label/label-styles';
 import { getFunctionalComponentStateMessageStyles } from '../common/state-message/state-message-styles';
@@ -105,6 +106,7 @@ export const getComponentCss = (
   const paddingInlineStart = `calc(${spacingStaticSmall} - (max(0px, ${minimumTouchTargetSize} - ${dimensionFull})))`;
   const paddingTop = `calc((${dimensionFull} - ${fontLineHeight}) / 2)`;
   const inset = `calc(-${borderWidthBase} - max(0px, (${minimumTouchTargetSize} - ${dimensionFull}) / 2))`;
+  const height = `calc(max(${fontLineHeight}, ${dimensionFull}))`;
 
   return getCss({
     '@global': {
@@ -264,6 +266,7 @@ export const getComponentCss = (
       }),
     },
     wrapper: {
+      ...textSmallStyle,
       minWidth: minimumTouchTargetSize,
       minHeight: minimumTouchTargetSize,
       justifyContent: 'center',
@@ -271,6 +274,7 @@ export const getComponentCss = (
       display: 'grid',
       gridArea: '1/1',
       alignSelf: 'flex-start', // in case label becomes multiline
+      height,
     },
     ...(isLoading && {
       spinner: {
