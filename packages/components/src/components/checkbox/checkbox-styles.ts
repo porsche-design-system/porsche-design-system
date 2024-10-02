@@ -96,17 +96,28 @@ export const getComponentCss = (
 
   const indeterminateIconHoverColor = escapeHashCharacter(formStateHoverColor || primaryColor);
   const indeterminateIconHoverColorDark = escapeHashCharacter(formStateHoverColorDark || primaryColorDark);
-
-  const minimumTouchTargetSize = '24px';
   const background = `transparent 0% 0% / ${fontLineHeight}`;
 
-  const scalingVar = `var(${cssVarInternalCheckboxScaling}, ${compact ? 0.6668 : 1})`; // Compact mode needs to have 20px dimension thus this scaling factor
-  const dimension = `calc(max(${SCALING_BASE_VALUE} * 0.75, ${scalingVar} * ${fontLineHeight}))`; // 0.75 * SCALING_BASE_VALUE corresponds to 12px and is the minimum size of the checkbox without border
-  const dimensionFull = `calc(${dimension} + ${borderWidthBase} * 2)`;
-  const paddingInlineStart = `calc(${spacingStaticSmall} - (max(0px, ${minimumTouchTargetSize} - ${dimensionFull})))`;
-  const paddingTop = `calc((${dimensionFull} - ${fontLineHeight}) / 2)`;
-  const inset = `calc(-${borderWidthBase} - max(0px, (${minimumTouchTargetSize} - ${dimensionFull}) / 2))`;
-  const height = `calc(max(${fontLineHeight}, ${dimensionFull}))`;
+  const minimumTouchTargetSize = '24px'; // Minimum touch target size to comply with accessibility guidelines.
+
+  const scalingVar = `var(${cssVarInternalCheckboxScaling}, ${compact ? 0.6668 : 1})`;
+  // Determines the scaling factor for the checkbox size. In "compact" mode, it uses 0.6668 to achieve a 20px checkbox (compact size).
+  // Defaults to 1 for the standard size and can be overridden by the CSS variable `cssVarInternalCheckboxScaling`.
+
+  const dimension = `calc(max(${SCALING_BASE_VALUE} * 0.75, ${scalingVar} * ${fontLineHeight}))`;
+  // Calculates the checkbox size and ensures a minimum size of 12px (0.75 * SCALING_BASE_VALUE).
+  // Scales proportionally with the line height and the scaling factor.
+
+  const dimensionFull = `calc(${dimension} + ${borderWidthBase} * 2)`; // Calculates the total size of the checkbox including its borders.
+  const touchTargetSizeDiff = `calc(${minimumTouchTargetSize} - ${dimensionFull})`; // Difference between the minimum touch target size and the checkbox full size.
+
+  const paddingInlineStart = `calc(${spacingStaticSmall} - (max(0px, ${touchTargetSizeDiff})))`;
+  // Adjusts padding to maintain consistent spacing when the checkbox is smaller than the minimum touch target size.
+  // Uses asymmetric padding instead of `gap` to ensure there is no non-clickable area between the label and the input.
+
+  const paddingTop = `calc((${dimensionFull} - ${fontLineHeight}) / 2)`; // Vertically centers the checkbox label relative to the checkbox size.
+  const inset = `calc(-${borderWidthBase} - max(0px, ${touchTargetSizeDiff} / 2))`; // Positions the checkbox ::before pseudo-element with a negative offset to align it with the touch target.
+  const height = `calc(max(${fontLineHeight}, ${dimensionFull}))`; // Ensures the wrapper height matches either the font's line height or the full size of the checkbox, whichever is larger.
 
   return getCss({
     '@global': {
@@ -121,6 +132,8 @@ export const getComponentCss = (
       input: {
         position: 'relative',
         '&::before': {
+          // Ensures the touch target is at least 24px, even if the checkbox is smaller than the minimum touch target size.
+          // This pseudo-element expands the clickable area without affecting the visual size of the checkbox itself.
           content: '""',
           position: 'absolute',
           inset,
@@ -297,8 +310,8 @@ export const getComponentCss = (
         ...(isLoading && { pointerEvents: 'none' }), // prevent default htmlFor behavior. TODO: Remove as soon as label component for custom form components exists.
       },
       {
-        paddingTop, // compensate vertical alignment
-        paddingInlineStart, // asymmetric padding used instead of gap to prevent not clickable area between label and input
+        paddingTop,
+        paddingInlineStart,
       }
     ),
     // .message
