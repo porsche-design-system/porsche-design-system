@@ -2,6 +2,10 @@
 
 <TableOfContents></TableOfContents>
 
+<Notification heading="Attention" heading-tag="h2" state="warning">
+  Please note that components such as <code>p-select</code>, <code>p-select-wrapper</code>, <code>p-multi-select</code>, and <code>p-popover</code> will not work correctly within the AG Grid at the moment. The dropdowns will be cut off because the table cells have <code>overflow: hidden</code> set, and the dropdowns do not yet use the native popover API.
+</Notification>
+
 We provide a custom theme for the [AG Grid library](https://ag-grid.com) for cases where a more sophisticated table is
 required beyond the capabilities of our [p-table](components/table/examples) component. This theme is aligned with the
 Porsche Design System's visual language and ensures consistency across your application.
