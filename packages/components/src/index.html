@@ -18,145 +18,253 @@
         padding: 0;
       }
 
-      /* Playground */
-      .playground {
-        /* TODO: we should generate background colors with scss or js styles package */
-        --theme-light-background-base: #fff;
-        --theme-light-background-surface: #eeeff2;
-        --theme-dark-background-base: #0e0e12;
-        --theme-dark-background-surface: #212225;
-        padding: 16px;
+      :root {
+        /* --p-transition-duration: 2s; */
+      }
+    </style>
+    <style>
+      body {
+        overflow-x: hidden;
       }
 
-      .playground.light,
-      .playground.auto {
-        background: var(--theme-light-background-base);
+      p-canvas {
+        --p-canvas-background: radial-gradient(circle, rgba(238, 174, 202, 0.5) 0%, rgba(148, 187, 233, 0) 100%);
       }
 
-      .playground.light.surface,
-      .playground.auto.surface {
-        background: var(--theme-light-background-surface);
+      p-divider {
+        margin-block: clamp(8px, 0.5vw + 6px, 16px);
       }
 
-      .playground.dark {
-        background: var(--theme-dark-background-base);
+      p-accordion p-link-pure {
+        margin-top: clamp(4px, 0.25vw + 3px, 8px);
       }
-
-      .playground.dark.surface {
-        background: var(--theme-dark-background-surface);
-      }
-
-      @media (prefers-color-scheme: dark) {
-        .playground.auto {
-          background: var(--theme-dark-background-base);
-        }
-
-        .playground.auto.surface {
-          background: var(--theme-dark-background-surface);
-        }
-      }
-
-      .playground.auto-layout-inline,
-      .playground.auto-layout-block {
+    </style>
+    <style>
+      /* main module: hello */
+      .hello {
+        grid-column: 1 / -1;
         display: flex;
-        flex-wrap: wrap;
-        align-items: flex-start;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .hello > :first-child {
+        max-width: 40rem;
+      }
+
+      /* main module: cards */
+      .cards {
+        grid-column: 1 / -1;
+        display: grid;
+        grid-auto-rows: 1fr auto;
         gap: 16px;
       }
 
-      .playground.auto-layout-inline {
-        flex-direction: row;
+      .cards__item {
+        all: unset;
+        cursor: pointer;
+        background: hsl(240 4% 85%/35%);
+        -webkit-backdrop-filter: blur(32px);
+        backdrop-filter: blur(32px);
+        transition: background 0.5s;
+        padding: 16px;
+        border-radius: 12px;
+        display: grid;
+        grid-template: subgrid / auto 1fr;
+        grid-row: span 2;
+        gap: clamp(16px, 1.25vw + 12px, 36px) 8px;
       }
 
-      .playground.auto-layout-block {
-        flex-direction: column;
+      .cards__item:hover {
+        background: hsl(240 4% 85%/90%);
       }
 
-      .playground[title]::before {
-        content: attr(title);
-        display: block;
-        width: 100%;
-        font: 12px/16px 'Porsche Next';
-        color: deeppink;
-        text-align: left;
+      .cards__item:focus-visible {
+        outline: 2px solid blue;
+        outline-offset: 2px;
       }
 
-      .playground:not([class*='auto-layout'])::before {
-        margin-bottom: 16px;
+      .cards__item > :first-child {
+        grid-column: 1 / -1;
+      }
+
+      @container (min-width: 480px) {
+        .cards {
+          grid-column: 2 / -2;
+        }
+      }
+
+      @container (min-width: 1000px) {
+        .cards {
+          grid-template-columns: repeat(3, minmax(0, 1fr));
+        }
+      }
+    </style>
+    <style>
+      /* module: search */
+      .search {
+        grid-column: 1 / -1;
+        display: grid;
+        grid-template-columns: auto minmax(0, 1fr) auto auto;
+        align-items: center;
+        gap: 16px;
+        padding: 8px;
+        padding-inline-start: 16px;
+        border-radius: 8px;
+        background: hsl(240 4% 85%/35%);
+        backdrop-filter: blur(32px);
+        -webkit-backdrop-filter: blur(32px);
+      }
+
+      .search input {
+        all: unset;
+        font-family: 'Porsche Next', sans-serif;
+      }
+
+      @container (min-width: 760px) {
+        .search {
+          grid-column: 2 / -2;
+        }
+      }
+
+      @container (min-width: 1000px) {
+        .search {
+          grid-column: 3 / -3;
+        }
+      }
+
+      /* module: controls */
+      .controls {
+        grid-column: 1 / -1;
+        display: flex;
+        gap: 16px;
+        align-items: center;
+        justify-content: center;
       }
     </style>
   </head>
   <body>
-    <header dir="ltr">
-      <h1>Porsche Design System - Playground</h1>
+    <p-canvas>
+      <a href="#" slot="title">Co-Driver</a>
 
-      <select id="theme" onchange="updateRoute({theme: this.value})">
-        <option disabled selected>Select a theme</option>
-        <option value="light">Light</option>
-        <option value="dark">Dark</option>
-        <option value="auto">Auto</option>
-      </select>
+      <div slot="header-start"></div>
 
-      <select id="dir" onchange="updateRoute({dir: this.value})">
-        <option disabled selected>Select a direction</option>
-        <option value="ltr">LTR (left-to-right)</option>
-        <option value="rtl">RTL (right-to-left)</option>
-        <option value="auto">Auto</option>
-      </select>
-    </header>
+      <div slot="header-end">
+        <p-button id="button-search" icon="search" variant="ghost" compact="true" hide-label="true"
+          >Open search
+        </p-button>
+      </div>
 
-    <main></main>
+      <div class="hello">
+        <p-display size="medium" align="center">Hi Ferdinand!<br />Can I help you with something?</p-display>
+      </div>
+
+      <div class="cards">
+        <button class="cards__item">
+          <p-text>How has Porsche’s design philosophy evolved over the years?</p-text>
+          <p-icon name="chat"></p-icon>
+          <p-text>Ask Co-Driver</p-text>
+        </button>
+        <button class="cards__item">
+          <p-text>Can</p-text>
+          <p-icon name="chat"></p-icon>
+          <p-text>Ask Co-Driver</p-text>
+        </button>
+        <button class="cards__item">
+          <p-text>What makes the Porsche 911 so iconic in automotive history?</p-text>
+          <p-icon name="chat"></p-icon>
+          <p-text>Ask Co-Driver</p-text>
+        </button>
+      </div>
+
+      <div slot="footer" class="search">
+        <p-button-pure hide-label="true" icon="broadcast">Some label</p-button-pure>
+        <input type="search" name="some-name" placeholder="Some placeholder" />
+        <p-button-pure hide-label="true" icon="send">Some label</p-button-pure>
+        <p-button variant="primary" theme="dark" hide-label="true" icon="arrow-up">Search</p-button>
+      </div>
+
+      <div slot="footer" class="controls">
+        <p-button-pure icon="delete">Delete chat</p-button-pure>
+        <p-button-pure icon="wrench">Service Desk</p-button-pure>
+        <p-button-pure icon="information">Rules</p-button-pure>
+      </div>
+
+      <div slot="sidebar-start">
+        <p-accordion heading="Some category" heading-tag="h2" compact="true">
+          <p-link-pure href="#" icon="none" stretch="true">Some anchor</p-link-pure>
+          <p-link-pure href="#" icon="none" stretch="true">Some anchor</p-link-pure>
+          <p-link-pure href="#" icon="none" stretch="true">Some anchor</p-link-pure>
+        </p-accordion>
+        <p-accordion heading="Some category" heading-tag="h2" compact="true">
+          <p-link-pure href="#" icon="none" stretch="true">Some anchor</p-link-pure>
+          <p-link-pure href="#" icon="none" stretch="true">Some anchor</p-link-pure>
+          <p-link-pure href="#" icon="none" stretch="true">Some anchor</p-link-pure>
+          <p-link-pure href="#" icon="none" stretch="true">Some anchor</p-link-pure>
+        </p-accordion>
+        <p-accordion heading="Some category" heading-tag="h2" compact="true">
+          <p-link-pure href="#" icon="none" stretch="true">Some anchor</p-link-pure>
+          <p-link-pure href="#" icon="none" stretch="true">Some anchor</p-link-pure>
+          <p-link-pure href="#" icon="none" stretch="true">Some anchor</p-link-pure>
+          <p-link-pure href="#" icon="none" stretch="true">Some anchor</p-link-pure>
+          <p-link-pure href="#" icon="none" stretch="true">Some anchor</p-link-pure>
+          <p-link-pure href="#" icon="none" stretch="true">Some anchor</p-link-pure>
+        </p-accordion>
+        <p-divider></p-divider>
+        <p-link-pure href="#" icon="none" stretch="true">Some anchor</p-link-pure>
+        <p-link-pure href="#" icon="none" stretch="true">Some anchor</p-link-pure>
+        <p-link-pure href="#" icon="none" stretch="true">Some anchor</p-link-pure>
+      </div>
+
+      <div slot="sidebar-end">
+        <p-link-pure href="#" icon="none">Profil</p-link-pure>
+        <p-link-pure href="#" icon="none">Abmelden</p-link-pure>
+        <p-divider></p-divider>
+        <p-link-pure href="#" icon="configurate">Settings</p-link-pure>
+        <p-switch id="theme-switch" align-label="start" stretch="true">
+          <p-icon name="moon"></p-icon>
+          Dark Mode
+        </p-switch>
+      </div>
+    </p-canvas>
+
+    <p-flyout
+      id="flyout-search"
+      open="false"
+      aria="{ 'aria-label': 'Some Heading' }"
+      style="--p-flyout-max-width: 480px"
+    >
+      <p-display slot="header" size="small" tag="h2">What are you looking for?</p-display>
+      <p-text-field-wrapper label="Search" hide-label="true">
+        <input type="search" name="some-name" placeholder="Some placeholder" />
+      </p-text-field-wrapper>
+    </p-flyout>
 
     <script>
-      <!-- START: keep this snippet to log component lifecycle events -->
-      ['componentWillLoad', 'componentDidLoad', 'componentWillUpdate', 'componentDidUpdate'].forEach((x) =>
-        window.addEventListener(`stencil_${x}`, (e) => {
-          const eventName = e.type + (e.type.includes('Did') ? ' ' : '');
-          console.log(eventName, e.composedPath()[0].tagName.toLowerCase(), new Date().toISOString());
-        })
-      );
+      document
+        .querySelectorAll('p-accordion')
+        .forEach((el) => el.addEventListener('update', (e) => (e.target.open = e.detail.open)));
 
-      const getTheme = () => new URL(document.location).searchParams.get('theme') || 'light';
-      const getDir = () => new URL(document.location).searchParams.get('dir') || 'ltr';
+      document
+        .querySelectorAll('p-tabs-bar')
+        .forEach((el) => el.addEventListener('update', (e) => (e.target.activeTabIndex = e.detail.activeTabIndex)));
 
-      const updateRoute = (opts) => {
-        if (opts) {
-          const url = new URL(location);
-          if (opts.pathname) {
-            url.pathname = opts.pathname;
-          }
-          if (opts.theme) {
-            url.searchParams.set('theme', opts.theme);
-          }
-          if (opts.dir) {
-            url.searchParams.set('dir', opts.dir);
-          }
-          history.pushState(null, '', url);
-        }
+      document
+        .querySelectorAll('p-flyout')
+        .forEach((el) => el.addEventListener('dismiss', (e) => (e.target.open = false)));
 
-        const theme = getTheme();
-        const dir = getDir();
+      document
+        .getElementById('button-search')
+        .addEventListener('click', () => (document.getElementById('flyout-search').open = true));
 
-        document.querySelector('html').setAttribute('dir', dir);
-        const mainEl = document.querySelector('main');
-        mainEl.querySelectorAll('.playground').forEach((el) => {
-          el.classList.remove('light', 'dark', 'auto');
-          el.classList.add(theme);
-        });
+      document.getElementById('theme-switch').addEventListener('update', (e) => {
+        e.target.checked = e.detail.checked;
 
-        mainEl.querySelectorAll('*').forEach((el) => (el.theme = theme));
-      };
-
-      const updateSelect = (id, value) => {
-        if (id && value) {
-          Array.from(document.querySelectorAll(`#${id} option`)).filter((e) => e.value === value)[0].selected = true;
-        }
-      };
-
-      updateSelect('theme', getTheme());
-      updateSelect('dir', getDir());
-      updateRoute();
+        // update theme prop of all PDS components in Light DOM
+        Array.from(document.querySelectorAll('*'))
+          .filter((el) => el.tagName.startsWith('P-'))
+          .forEach((el) => (el.theme = e.detail.checked ? 'dark' : 'light'));
+      });
     </script>
-    <!-- /END -->
   </body>
 </html>

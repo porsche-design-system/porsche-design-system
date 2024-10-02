@@ -167,7 +167,22 @@ export class Canvas {
                   inert={this.sidebarEndOpen ? null : true}
                   aria-label={`Settings sidebar ${this.sidebarEndOpen ? 'open' : 'closed'}`}
                 >
-                  <slot name="sidebar-end" />
+                  <div class="scroller">
+                    <div class="sidebar-header">
+                      <PrefixedTagNames.pButton
+                        theme={this.theme}
+                        icon="close"
+                        variant="ghost"
+                        compact={true}
+                        hide-label="true"
+                        aria={{ 'aria-expanded': this.sidebarEndOpen }}
+                        onClick={this.toggleSidebarEnd}
+                      >
+                        {this.sidebarStartOpen ? 'Close' : 'Open'} navigation sidebar
+                      </PrefixedTagNames.pButton>
+                    </div>
+                    <slot name="sidebar-end" />
+                  </div>
                 </aside>
               )}
             </Fragment>

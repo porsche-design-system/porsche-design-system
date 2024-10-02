@@ -1,4 +1,4 @@
-import { getCss, type Theme } from '../../utils';
+import { getCss, isThemeDark, type Theme } from '../../utils';
 import {
   addImportantToEachRule,
   colorSchemeStyles,
@@ -8,8 +8,8 @@ import {
   preventFoucOfNestedElementsStyles,
 } from '../../styles';
 import {
-  borderRadiusLarge,
-  getMediaQueryMax,
+  breakpointM,
+  breakpointS,
   getMediaQueryMin,
   gridGap,
   spacingStaticLarge,
@@ -20,10 +20,18 @@ import {
 
 const cssVarSidebarStartWidth = '--p-canvas-sidebar-start-width';
 const cssVarSidebarEndWidth = '--p-canvas-sidebar-end-width';
+const cssVarBackground = '--p-canvas-background';
 
-const gridProductiveGap = gridGap.replace('36px', '24px');
+const spacingBase = gridGap.replace('36px', '24px');
+const mainGridColumnGap = gridGap.replace('36px', '24px').replace('vw', 'cqw');
+const mainGridRowGap = gridGap.replace('vw', 'cqw');
 const mediaQueryDesktopView = getMediaQueryMin('m');
 const sidebarWidth = '320px';
+
+const sidebarStartWidth = `var(${cssVarSidebarStartWidth}, ${sidebarWidth})`;
+const sidebarEndWidth = `var(${cssVarSidebarEndWidth}, ${sidebarWidth})`;
+
+const sidebarTransition = getTransition('margin');
 
 const borderRadius = '16px';
 
@@ -32,6 +40,8 @@ const headerPadding = spacingStaticSmall;
 export const getComponentCss = (theme: Theme, isSidebarStartOpen: boolean, isSidebarEndOpen: boolean): string => {
   const { primaryColor, backgroundColor, backgroundSurfaceColor, contrastLowColor } = getThemedColors(theme);
 
+  const headerColor = isThemeDark(theme) ? 'rgba(14, 14, 18, 0.79)' : 'hsla(0, 0%, 100%, 0.79)';
+
   return getCss({
     '@global': {
       ':host': {
@@ -39,6 +49,10 @@ export const getComponentCss = (theme: Theme, isSidebarStartOpen: boolean, isSid
         ...addImportantToEachRule({
           ...colorSchemeStyles,
           ...hostHiddenStyles,
+          containerType: 'inline-size',
+          marginInlineStart: isSidebarStartOpen ? sidebarStartWidth : 0,
+          marginInlineEnd: isSidebarEndOpen ? sidebarEndWidth : 0,
+          transition: sidebarTransition,
         }),
       },
       ...preventFoucOfNestedElementsStyles,
@@ -60,7 +74,7 @@ export const getComponentCss = (theme: Theme, isSidebarStartOpen: boolean, isSid
         '&(.p-module--subgrid)': {
           display: 'grid',
           gridTemplateColumns: 'subgrid',
-          rowGap: gridProductiveGap,
+          rowGap: spacingBase,
         },
         '&(.p-module--more-space-above-small)': {
           marginTop: spacingStaticSmall,
@@ -72,13 +86,13 @@ export const getComponentCss = (theme: Theme, isSidebarStartOpen: boolean, isSid
           marginTop: spacingStaticLarge,
         },
         '&(.p-module--less-space-above-small)': {
-          marginTop: `max(calc(-1 * ${gridProductiveGap}), calc(-1 * ${spacingStaticSmall}))`,
+          marginTop: `max(calc(-1 * ${spacingBase}), calc(-1 * ${spacingStaticSmall}))`,
         },
         '&(.p-module--less-space-above-medium)': {
-          marginTop: `max(calc(-1 * ${gridProductiveGap}), calc(-1 * ${spacingStaticMedium}))`,
+          marginTop: `max(calc(-1 * ${spacingBase}), calc(-1 * ${spacingStaticMedium}))`,
         },
         '&(.p-module--less-space-above-large)': {
-          marginTop: `max(calc(-1 * ${gridProductiveGap}), calc(-1 * ${spacingStaticLarge}))`,
+          marginTop: `max(calc(-1 * ${spacingBase}), calc(-1 * ${spacingStaticLarge}))`,
         },
         '&(.p-flex)': {
           display: 'flex',
@@ -111,7 +125,7 @@ export const getComponentCss = (theme: Theme, isSidebarStartOpen: boolean, isSid
         letterSpacing: '2px',
       },
       'header, main, footer, aside': {
-        padding: gridProductiveGap,
+        padding: spacingBase,
         boxSizing: 'border-box',
         zIndex: 0,
       },
@@ -123,43 +137,51 @@ export const getComponentCss = (theme: Theme, isSidebarStartOpen: boolean, isSid
         zIndex: 100,
         display: 'grid',
         gridTemplateColumns: 'minmax(0, 1fr) auto minmax(0, 1fr)',
-        gap: gridProductiveGap,
-        backgroundColor: 'hsla(0,0%,100%,0.79)',
+        gap: spacingBase,
+        backgroundColor: headerColor,
         WebkitBackdropFilter: 'blur(32px)',
         backdropFilter: 'blur(32px)',
         alignItems: 'center',
       },
-      main: {
-        zIndex: 10,
-        gridArea: 'main',
+      'main, footer': {
+        '--p-canvas-grid-columns': '6',
         '--p-canvas-grid-span-full': 'span 6',
         '--p-canvas-grid-span-one-half': 'span 3',
         '--p-canvas-grid-span-one-third': 'span 2',
         '--p-canvas-grid-span-two-thirds': 'span 4',
         display: 'grid',
-        gridTemplateColumns: 'repeat(6, minmax(0, 1fr))',
-        gap: gridProductiveGap,
+        gridTemplateColumns: 'repeat(var(--p-canvas-grid-columns), minmax(0, 1fr))',
+        gap: `${mainGridRowGap} ${mainGridColumnGap}`,
         alignContent: 'flex-start',
-        // backgroundColor,
-        [mediaQueryDesktopView]: {
+        [`@container(min-width:${breakpointM}px)`]: {
+          '--p-canvas-grid-columns': '12',
           '--p-canvas-grid-span-full': 'span 12',
           '--p-canvas-grid-span-one-half': 'span 6',
           '--p-canvas-grid-span-one-third': 'span 4',
           '--p-canvas-grid-span-two-thirds': 'span 8',
-          gridTemplateColumns: 'repeat(12, minmax(0, 1fr))',
         },
+      },
+      main: {
+        zIndex: 10,
+        gridArea: 'main',
       },
       footer: {
         position: 'sticky',
         bottom: 0,
         gridArea: 'footer',
         zIndex: 200,
-        background: `linear-gradient(0deg, ${backgroundColor} 0%, ${backgroundColor} 65%, rgba(255,255,255,0) 100%)`,
         // backgroundColor,
+        '&::before': {
+          content: '""',
+          position: 'absolute',
+          inset: '-60px 0 0',
+          pointerEvents: 'none',
+          background: `linear-gradient(0deg, ${backgroundColor} 0%, ${backgroundColor} 65%, rgba(255,255,255,0) 100%)`,
+        },
       },
       aside: {
         zIndex: 200,
-        transition: getTransition('margin'),
+        transition: sidebarTransition,
         position: 'sticky',
         top: 0,
         height: '100dvh',
@@ -168,32 +190,35 @@ export const getComponentCss = (theme: Theme, isSidebarStartOpen: boolean, isSid
     scroller: {
       position: 'absolute',
       inset: 0,
-      padding: gridProductiveGap,
+      padding: spacingBase,
       overflow: 'hidden auto',
+      display: 'grid',
+      gridTemplateRows: 'auto 1fr',
+      gap: spacingBase,
     },
     'sidebar-header': {
+      display: 'flex',
+      justifyContent: 'var(--p-internal-justify)',
       position: 'sticky',
-      top: `calc(${gridProductiveGap} * -1)`,
-      padding: `${headerPadding} ${gridProductiveGap}`,
-      marginBlockStart: `calc(${gridProductiveGap} * -1)`,
-      marginInline: `calc(${gridProductiveGap} * -1)`,
-      // backgroundColor: backgroundSurfaceColor,
+      top: `calc(${spacingBase} * -1)`,
+      padding: `${headerPadding} ${spacingBase}`,
+      marginBlockStart: `calc(${spacingBase} * -1)`,
+      marginInline: `calc(${spacingBase} * -1)`,
       zIndex: 1,
       '&::before': {
         content: '""',
         position: 'absolute',
-        top: 0,
-        bottom: '-8px',
-        left: 0,
-        right: 0,
-        background: `linear-gradient(180deg, ${backgroundSurfaceColor} 0%, ${backgroundSurfaceColor} 65%, rgba(255,255,255,0) 100%)`,
+        inset: '0 0 -8px',
+        background: 'var(--p-internal-gradient)',
         pointerEvents: 'none',
       },
     },
     'sidebar-start': {
+      '--p-internal-gradient': `linear-gradient(180deg, ${backgroundSurfaceColor} 0%, ${backgroundSurfaceColor} 65%, rgba(255,255,255,0) 100%)`,
+      '--p-internal-justify': 'flex-start',
       backgroundColor: backgroundSurfaceColor,
       gridArea: 'sidebar-start',
-      width: `var(${cssVarSidebarStartWidth}, ${sidebarWidth})`,
+      width: sidebarStartWidth,
       marginInlineStart: isSidebarStartOpen
         ? 0
         : `calc((var(${cssVarSidebarStartWidth}, ${sidebarWidth}) + ${borderRadius}) * -1)`,
@@ -211,33 +236,49 @@ export const getComponentCss = (theme: Theme, isSidebarStartOpen: boolean, isSid
       },
     },
     'sidebar-end': {
+      '--p-internal-gradient': `linear-gradient(180deg, ${backgroundColor} 0%, ${backgroundColor} 65%, rgba(255,255,255,0) 100%)`,
+      '--p-internal-justify': 'flex-end',
       borderInlineStart: `1px solid ${contrastLowColor}`,
       backgroundColor,
       gridArea: 'sidebar-end',
-      width: `var(${cssVarSidebarEndWidth}, ${sidebarWidth})`,
+      width: sidebarEndWidth,
       marginInlineEnd: isSidebarEndOpen ? 0 : `calc(var(${cssVarSidebarEndWidth}, ${sidebarWidth}) * -1)`,
       overflow: 'hidden auto',
     },
     canvas: {
+      marginInlineStart: isSidebarStartOpen ? `calc(${sidebarStartWidth} * -1)` : 0,
+      marginInlineEnd: isSidebarEndOpen ? `calc(${sidebarEndWidth} * -1)` : 0,
+      transition: sidebarTransition,
       display: 'grid',
       gridTemplateRows: 'auto minmax(0, 1fr) auto',
       gridTemplateAreas: '"header" "main" "footer"',
       minWidth: '320px',
       minHeight: '100dvh',
+      backgroundColor,
       [mediaQueryDesktopView]: {
         gridTemplate: 'auto minmax(0, 1fr) auto / auto minmax(0, 1fr) auto',
         gridTemplateAreas:
           '"sidebar-start header sidebar-end" "sidebar-start main sidebar-end" "sidebar-start footer sidebar-end"',
       },
+      '&::after': {
+        content: '""',
+        gridColumn: '1 / -1',
+        gridRow: '1 / -1',
+        pointerEvents: 'none',
+        background: `var(${cssVarBackground})`,
+        backgroundAttachment: 'fixed',
+      },
     },
     crest: {
-      [getMediaQueryMin('s')]: {
+      [`@container(min-width:${breakpointS}px)`]: {
+        // [getMediaQueryMin('s')]: {
         display: 'none',
       },
     },
     wordmark: {
       height: '10px',
-      [getMediaQueryMax('s')]: {
+      [`@container(max-width:${breakpointS - 1}px)`]: {
+        // [getMediaQueryMax('s')]: {
         display: 'none',
       },
     },
