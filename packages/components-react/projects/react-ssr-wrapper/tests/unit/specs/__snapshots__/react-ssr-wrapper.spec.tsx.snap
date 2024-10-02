@@ -8089,22 +8089,6 @@ exports[`should render dsr component for PCarousel 1`] = `
   -webkit-user-select: none;
   -webkit-touch-callout: none;
 }
-.splide__track::before, .splide__track::after {
-  content: "";
-  position: absolute;
-  z-index: 1;
-  top: 0;
-  height: 100%;
-  width: var(--p-gradient-color-width, 33%);
-}
-.splide__track::before {
-  left: 0;
-  background: linear-gradient(to right, rgba(,1) 20%,rgba(,0.6) 48%,rgba(,0.3) 68%,rgba(,0) 100%);
-}
-.splide__track::after {
-  right: 0;
-  background: linear-gradient(to left, rgba(,1) 20%,rgba(,0.6) 48%,rgba(,0.3) 68%,rgba(,0) 100%);
-}
 .pagination-container {
   display: flex;
   position: relative;
