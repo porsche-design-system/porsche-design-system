@@ -27,7 +27,8 @@ $pds-icon-dark-mode-filter: var(
         column-hover-color: $pds-theme-dark-state-hover,
         range-selection-border-color: $pds-theme-dark-state-focus,
         border-color: $pds-theme-dark-contrast-low,
-        borders-input: $pds-border-width-base solid,
+        borders-input: 1px solid,
+        // 1px to be consistent with other borders of ag-grid.
         input-border-color: $pds-theme-dark-contrast-medium,
         input-border-color-invalid: $pds-theme-dark-notification-error,
         input-disabled-border-color: $pds-theme-dark-state-disabled,
@@ -73,7 +74,8 @@ $pds-icon-dark-mode-filter: var(
         column-hover-color: $pds-theme-light-state-hover,
         range-selection-border-color: $pds-theme-light-state-focus,
         border-color: $pds-theme-light-contrast-low,
-        borders-input: $pds-border-width-base solid,
+        borders-input: 1px solid,
+        // 1px to be consistent with other borders of ag-grid.
         input-border-color: $pds-theme-light-contrast-medium,
         input-border-color-invalid: $pds-theme-light-notification-error,
         input-disabled-border-color: $pds-theme-light-state-disabled,
@@ -110,8 +112,6 @@ $pds-icon-dark-mode-filter: var(
 .ag-theme-pds,
 .ag-theme-pds-dark {
   --ag-wrapper-border-radius: #{$pds-border-radius-medium};
-  --ag-icon-image-opacity-checkbox-checked: 1;
-  --ag-icon-image-checkbox-checked: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23FBFCFF" d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>');
   --ag-icon-image-aggregation: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" style="enable-background:new 0 0 24 24" viewBox="0 0 24 24"><path d="M17.2 19.3H5.7l6.5-7.6-6.5-7h11.5v1H7.9l5.7 6-5.7 6.6h9.3z" style="fill:%23020202"/></svg>');
   --ag-icon-image-arrows: url('data:image/svg+xml;charset=UTF-8, <svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" style="enable-background:new 0 0 24 24" viewBox="0 0 24 24"><path d="m22 12-2-3h-1.4l1.7 2.5H15v1h5.3L18.6 15H20l2-3zM12 2 9 4v1.4l2.5-1.7V9h1V3.7L15 5.4V4zM12.5 20.3V15h-1v5.3L9 18.6V20l3 2 3-2v-1.4zM9 11.5H3.7L5.4 9H4l-2 3 2 3h1.4l-1.7-2.5H9z"/></svg>');
   --ag-icon-image-asc: url('data:image/svg+xml;charset=UTF-8, <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m5.5 9.48.642.77L11.5 5.732V20h1V5.732l5.358 4.518.642-.768-6.494-5.476L12.001 4h-.002l-.002.003z" style="fill:%23000"/></svg>');
@@ -164,12 +164,27 @@ $pds-icon-dark-mode-filter: var(
   --ag-icon-image-up: url('data:image/svg+xml;charset=UTF-8, <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m5.5 9.48.642.77L11.5 5.732V20h1V5.732l5.358 4.518.642-.768-6.494-5.476L12.001 4h-.002l-.002.003z" style="fill:%23000"/></svg>');
   --ag-icon-image-grip: url('data:image/svg+xml;charset=UTF-8, <svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" style="enable-background:new 0 0 24 24" viewBox="0 0 24 24"><path d="M18 14v1H6v-1h12zm0-5v1H6V9h12z"/></svg>');
   --ag-icon-image-settings: url('data:image/svg+xml;charset=UTF-8, <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m13.18 4 .451 2.254c.93.263 1.811.733 2.55 1.453l2.157-.729 1.18 2.044-1.722 1.513a6 6 0 0 1 0 2.93l1.722 1.514-1.18 2.044-2.156-.73a5.93 5.93 0 0 1-2.55 1.453L13.18 20h-2.36l-.451-2.254a5.94 5.94 0 0 1-2.55-1.453l-2.157.729-1.18-2.044 1.722-1.513a6 6 0 0 1 0-2.93L4.482 9.022l1.18-2.044 2.156.73a5.94 5.94 0 0 1 2.55-1.454L10.82 4zM14 3h-4l-.497 2.486A6.9 6.9 0 0 0 7.59 6.575l-2.384-.807-2 3.464 1.904 1.672a7 7 0 0 0 0 2.192l-1.904 1.672 2 3.464 2.384-.806q.857.691 1.913 1.088L10 21h4l.498-2.486a6.9 6.9 0 0 0 1.912-1.089l2.384.808 2-3.464-1.903-1.673a7 7 0 0 0 0-2.192l1.903-1.672-2-3.464-2.384.806a6.9 6.9 0 0 0-1.912-1.088zm-2 7a2 2 0 1 1 0 4 2 2 0 0 1 0-4m0-1c-1.654 0-3 1.346-3 3s1.346 3 3 3 3-1.346 3-3-1.346-3-3-3" style="fill:%23000"/></svg>');
+  --ag-icon-image-opacity: 1; // Reset default opacity of 0.9
+}
+
+// Different icons for light/dark (All other icons are inverted with filter)
+.ag-theme-pds {
+  --ag-icon-image-checkbox-checked: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23FBFCFF" d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>');
+  --ag-icon-image-radio-button-on: url('data:image/svg+xml;charset=UTF-8, <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle fill="%23FBFCFF" cx="12" cy="12" r="6"/></svg>');
+}
+
+// Different icons for light/dark (All other icons are inverted with filter)
+.ag-theme-pds-dark {
+  --ag-icon-image-checkbox-checked: url('data:image/svg+xml;charset=UTF-8, <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23010205" d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>');
+  --ag-icon-image-radio-button-on: url('data:image/svg+xml;charset=UTF-8, <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle fill="%23010205" cx="12" cy="12" r="6"/></svg>');
 }
 
 // Custom overrides since there is no variable
 .ag-icon::before,
 .ag-checkbox-input-wrapper::after,
-.ag-checkbox-input-wrapper.ag-checked::after {
+.ag-checkbox-input-wrapper.ag-checked::after,
+.ag-radio-button-input-wrapper::after,
+.ag-radio-button-input-wrapper.ag-checked::after {
   content: none;
 }
 
@@ -181,7 +196,8 @@ $pds-icon-dark-mode-filter: var(
   }
 }
 
-.ag-checkbox-input-wrapper {
+.ag-checkbox-input-wrapper,
+.ag-radio-button-input-wrapper {
   border: #{$pds-border-width-base} solid #{$pds-theme-light-contrast-medium};
   // Unfortunately :focus is not working on the checkbox
   &:hover {
@@ -209,9 +225,6 @@ $pds-icon-dark-mode-filter: var(
         border-color: #{$pds-theme-dark-contrast-high};
         background-color: #{$pds-theme-dark-contrast-high};
       }
-      &::before {
-        filter: #{$pds-icon-dark-mode-filter};
-      }
     }
   }
 }
@@ -228,7 +241,7 @@ $pds-icon-dark-mode-filter: var(
     &::before {
       --ag-toggle-button-switch-background-color: #{$pds-theme-light-background-base};
       --ag-toggle-button-on-border-color: #{$pds-theme-light-background-base};
-      left: calc(100% - var(--ag-toggle-button-height) + $spacing);
+      left: calc(100% - var(--ag-toggle-button-height) + 6px);
     }
   }
 }
