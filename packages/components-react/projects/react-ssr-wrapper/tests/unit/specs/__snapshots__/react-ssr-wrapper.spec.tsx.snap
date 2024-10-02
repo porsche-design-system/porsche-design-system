@@ -8247,7 +8247,7 @@ input {
 input::before {
   content: "";
   position: absolute;
-  inset: calc(-2px - max(0px, (24px - calc(calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2)) / 2));
+  inset: calc(-2px - max(0px, calc(24px - calc(calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2)) / 2));
 }
 input:checked {
   border-color: #010205;
@@ -8269,6 +8269,9 @@ input::-moz-focus-inner {
   row-gap: 4px;
 }
 .wrapper {
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
   min-width: 24px;
   min-height: 24px;
   justify-content: center;
@@ -8276,6 +8279,7 @@ input::-moz-focus-inner {
   display: grid;
   grid-area: 1/1;
   align-self: flex-start;
+  height: calc(max(calc(6px + 2.125ex), calc(calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2)));
 }
 .label {
   font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
@@ -8294,7 +8298,7 @@ input::-moz-focus-inner {
   clip: auto;
   white-space: normal;
   padding-top: calc((calc(calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2) - calc(6px + 2.125ex)) / 2);
-  padding-inline-start: calc(8px - (max(0px, 24px - calc(calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2))));
+  padding-inline-start: calc(8px - (max(0px, calc(24px - calc(calc(max(16px * 0.75, var(--p-internal-checkbox-scaling, 1) * calc(6px + 2.125ex))) + 2px * 2)))));
   grid-area: 1/2;
 }
 .label:empty {
