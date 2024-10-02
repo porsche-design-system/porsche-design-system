@@ -259,16 +259,19 @@ export const getComponentCss = (
           WebkitUserSelect: 'none',
           WebkitTouchCallout: 'none',
         },
-        '&::before, &::after': {
-          content: '""',
-          position: 'absolute',
-          zIndex: 1,
-          top: 0,
-          height: '100%',
-          width: `var(${cssVariableGradientColorWidth}, 33%)`,
-        },
-        '&::before': getGradientStyles('right'),
-        '&::after': getGradientStyles('left'),
+        ...(gradientColor &&
+          gradientColor !== 'none' && {
+            '&::before, &::after': {
+              content: '""',
+              position: 'absolute',
+              zIndex: 1,
+              top: 0,
+              height: '100%',
+              width: `var(${cssVariableGradientColorWidth}, 33%)`,
+            },
+            '&::before': getGradientStyles('right'),
+            '&::after': getGradientStyles('left'),
+          }),
       },
       '&__list': {
         ...backfaceVisibilityJssStyle,
