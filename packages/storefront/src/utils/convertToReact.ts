@@ -4,10 +4,9 @@ import type { TagName } from '@porsche-design-system/shared';
 
 type TagNamesInfo = { [tagName: string]: { [propName: string]: PropMeta } | undefined };
 
-export const transformObjectValues = (markup: string): string => {
+export const transformObjectValues = (markup: string): string =>
   // remove quotes from object values but add double brackets and camelCase
-  return markup.replace(/\s(\S+)="({.*?})"/g, (_, $key, $value) => ` ${camelCase($key)}={${$value}}`);
-};
+  markup.replace(/\s(\S+)="({.*?})"/g, (_, $key, $value) => ` ${camelCase($key)}={${$value}}`);
 
 export const transformStandardAttributes = (markup: string): string =>
   // transform all standard attributes to camel case
