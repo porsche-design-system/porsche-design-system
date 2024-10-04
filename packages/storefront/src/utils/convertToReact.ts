@@ -1,8 +1,13 @@
 import { camelCase, pascalCase, paramCase } from 'change-case';
+import { getComponentMeta, PropMeta } from '@porsche-design-system/component-meta';
+import type { TagName } from '@porsche-design-system/shared';
 
-export const transformObjectValues = (markup: string): string =>
+type TagNamesInfo = { [tagName: string]: { [propName: string]: PropMeta } | undefined };
+
+export const transformObjectValues = (markup: string): string => {
   // remove quotes from object values but add double brackets and camelCase
-  markup.replace(/\s(\S+)="({.*?})"/g, (_, $key, $value) => ` ${camelCase($key)}={${$value}}`);
+  return markup.replace(/\s(\S+)="({.*?})"/g, (_, $key, $value) => ` ${camelCase($key)}={${$value}}`);
+};
 
 export const transformStandardAttributes = (markup: string): string =>
   // transform all standard attributes to camel case
@@ -20,11 +25,30 @@ export const transformEvents = (markup: string): string =>
   // transform to camelCase event binding syntax
   markup.replace(/\son([a-z]+?)="(.*?)"/g, (_, $key, $value) => ` on${pascalCase($key)}={() => { ${$value} }}`);
 
-export const transformBooleanDigitAndUndefinedValues = (markup: string): string =>
-  markup
+export const transformBooleanDigitAndUndefinedValues = (markup: string): string => {
+  const tagNamesPropsMeta = getPropsMeta(markup);
+
+  return markup
     .replace(/\s(\S+)="(true|false|-?\d*|undefined)"/g, ' $1={$2}')
-    .replace(/{(911|718)}/g, '"$1"') // TODO replace temporary 911|718 work around with more generic approach
-    .replace(/{(1234)}/g, '"$1"'); // pin-code value prop
+    .replace(/<([a-zA-Z][\w-]*)([^>]*?)\s(\S+)=\{(.*?)}/g, (match, tagName, rest, key, value) => {
+      const propsMeta = tagNamesPropsMeta[tagName];
+
+      if (propsMeta) {
+        const propMeta = propsMeta[key];
+        if (
+          propMeta &&
+          // we assume that each type starting with a capital letter is a none primitive type. See: https://developer.mozilla.org/en-US/docs/Glossary/Primitive
+          initialIsCapital(propMeta.type) &&
+          Array.isArray(propMeta.allowedValues) &&
+          propMeta.allowedValues.every((item) => typeof item === 'string')
+        ) {
+          return `<${tagName}${rest} ${key}="${value}"`;
+        }
+      }
+
+      return match;
+    });
+};
 
 export const transformCustomElementTagName = (markup: string): string =>
   markup.replace(/<(\/?)(p-[\w-]+)/g, (_, $slash, $tag) => `<${$slash}${pascalCase($tag)}`);
@@ -50,6 +74,29 @@ export const transformStyleAttribute = (markup: string): string =>
 
     return ` style={{ ${pairs.join(', ')} }}`;
   });
+
+function getTagNames(markup: string): TagName[] {
+  const regex = /<\s*(p-[a-zA-Z-]+)\b/g;
+  const components = [];
+  let match;
+  while ((match = regex.exec(markup)) !== null) {
+    components.push(match[1]);
+  }
+  return [...new Set(components)] as TagName[];
+}
+
+function getPropsMeta(markup: string): TagNamesInfo {
+  const tagNames = getTagNames(markup);
+
+  return tagNames.reduce((acc: TagNamesInfo, tagName) => {
+    acc[tagName] = getComponentMeta(tagName).propsMeta;
+    return acc;
+  }, {});
+}
+
+function initialIsCapital(word: string): boolean {
+  return word[0] !== word[0].toLowerCase();
+}
 
 export const convertToReact = (markup: string): string =>
   [
