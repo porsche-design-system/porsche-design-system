@@ -7835,11 +7835,6 @@ ag-charts-locale@10.2.0:
   resolved "https://registry.yarnpkg.com/ag-charts-locale/-/ag-charts-locale-10.2.0.tgz#b89af32f9ca3a3ea8eaf1862bcb5c179f5d345c0"
   integrity sha512-JAwuJFXwoVE94YFuwo1ZtnCJa4rFLQna+t2xT5qT2KUaohVPHB+Zd8ivP62lOv9j2ZgzSg4WANBo2UT1LCtl2Q==
 
-ag-charts-types@10.1.0:
-  version "10.1.0"
-  resolved "https://registry.yarnpkg.com/ag-charts-types/-/ag-charts-types-10.1.0.tgz#f265665f6b92742bb0bc2dcfab319b21e6d78749"
-  integrity sha512-pk9ft8hbgTXJ/thI/SEUR1BoauNplYExpcHh7tMOqVikoDsta1O15TB1ZL4XWnl4TPIzROBmONKsz7d8a2HBuQ==
-
 ag-charts-types@10.2.0:
   version "10.2.0"
   resolved "https://registry.yarnpkg.com/ag-charts-types/-/ag-charts-types-10.2.0.tgz#9af7e333d196d02da1635b19b2649a9b2d06241a"
@@ -7851,13 +7846,6 @@ ag-grid-angular@32.2.1:
   integrity sha512-+fGmp9F69bex8gOb3YmR5B8WNDXaZENZthXg64ADki9SDIDRlgObjK+QyXTwVQ684e0ht2k3ZwRd22yaAC3E/g==
   dependencies:
     tslib "^2.3.0"
-
-ag-grid-community@32.1.0:
-  version "32.1.0"
-  resolved "https://registry.yarnpkg.com/ag-grid-community/-/ag-grid-community-32.1.0.tgz#69d5b0af1b4d5cd5262705ecd87a3bd16c9c4155"
-  integrity sha512-RVvkjRH61nuCXwIqTKQPqNbKR+8cGBKw7S1qmmMXsy0pCBAJaQn4kL3v31hKHxDtV4bPscBXLFKGnKzHuss0GQ==
-  dependencies:
-    ag-charts-types "10.1.0"
 
 ag-grid-community@32.2.0:
   version "32.2.0"
@@ -7881,12 +7869,12 @@ ag-grid-enterprise@32.2.1:
     ag-charts-community "10.2.0"
     ag-grid-community "32.2.1"
 
-ag-grid-react@32.1.0:
-  version "32.1.0"
-  resolved "https://registry.yarnpkg.com/ag-grid-react/-/ag-grid-react-32.1.0.tgz#539620927a187961911b99439917df58076ad8bb"
-  integrity sha512-GDbtvU3aicSajWXWxvQio5ZaPqJDx2jzgRBKQf1RF1IVzL+XATDmLFNuMND0+wJ/VW/xUjBFjiq9W1fjXg/DCA==
+ag-grid-react@32.2.1:
+  version "32.2.1"
+  resolved "https://registry.yarnpkg.com/ag-grid-react/-/ag-grid-react-32.2.1.tgz#eda45785a3591f740f21ed69bfe2b934abb47fb5"
+  integrity sha512-lojTKsT/ncRZ81mrDa7qkIhZePfYlLCHIiAL1WbzL1mNPrglaa7QQKkE6hhhuAXvAm2uUhK1OfkMPnrqsEFldA==
   dependencies:
-    ag-grid-community "32.1.0"
+    ag-grid-community "32.2.1"
     prop-types "^15.8.1"
 
 ag-grid-vue3@32.2.1:
