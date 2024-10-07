@@ -139,7 +139,7 @@
 
 <style lang="scss">
   @use '@porsche-design-system/components-js/styles' as *;
-  //@import '../styles/internal.variables';
+
   iframe#stackblitz-demo {
     border: 1px solid var(--playground-border-color);
     border-radius: $pds-border-radius-medium;
