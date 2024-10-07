@@ -22,6 +22,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 #### Fixed
 
+- `Switch`: widht/height calculation of the toggle element supports browser based text only zoom
+  ([#3542](https://github.com/porsche-design-system/porsche-design-system/pull/3542))
 - Partials: Replace meta tag `apple-mobile-web-app-capable` with `mobile-web-app-capable` in `getMetaTagsAndIconLinks`
   partial. ([#3519](https://github.com/porsche-design-system/porsche-design-system/pull/3519))
 
