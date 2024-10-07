@@ -25,6 +25,8 @@ jest.mock('../../../components-react/package.json', () => ({
   devDependencies: {
     '@types/react': '0.0.0',
     '@types/react-dom': '0.0.0',
+    'ag-grid-community': '0.0.0',
+    'ag-grid-react': '0.0.0',
   },
 }));
 

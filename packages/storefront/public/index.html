@@ -16,9 +16,6 @@
     <%= require('@porsche-design-system/components-js/partials').getInitialStyles() %>
 
     <% if (process.env.NODE_ENV === 'production') { %>
-    <!-- CSP_PLACEHOLDER -->
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self' https://cdn.ui.porsche.com; style-src 'self' 'unsafe-inline' https://cdn.ui.porsche.com; script-src 'self' https://cdn.ui.porsche.com 'sha256-IpDuO0aLOEjddrp8nhEnyP7IYuV+C4wPFSh3Mx/2l2g=' 'sha256-AjifP4agQgIcC1ep5F7cnXwxUy33FSINnoMBQ3vTjJk='; img-src 'self' https://cdn.ui.porsche.com https://porsche-design-system.github.io data:; media-src 'self' https://porsche-design-system.github.io; connect-src 'self' https://*.algolia.net https://*.algolianet.com https://registry.npmjs.org/@porsche-design-system/components-js" />
-
     <!-- prettier-ignore -->
     <%= require('@porsche-design-system/components-js/partials').getFontLinks({ subset: 'latin', weights: ['regular', 'semi-bold', 'bold'] }) %>
     <%= require('@porsche-design-system/components-js/partials').getFontFaceStyles() %>
@@ -29,6 +26,7 @@
     <link rel="icon" href="http://localhost:3001/meta-icons/favicon-32x32.d42ac2876697ec701e95e4a4d608fb0e.png" />
     <link rel="stylesheet" href="http://localhost:3001/styles/font-face.css" />
     <% } %>
+    <%= require('./getCSPMetaTag').getCSPMetaTag() %>
     <!-- Open Graph Meta Tags -->
     <meta property="og:image" content="/assets/og-image.png">
     <meta property="og:image:alt" content="Porsche Wordmark" />

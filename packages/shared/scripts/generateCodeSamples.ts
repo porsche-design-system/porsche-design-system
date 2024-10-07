@@ -7,6 +7,7 @@ type CodeSample = {
   component:
     | TagName
     | 'componentsReady'
+    | 'ag-grid'
     | 'styles-border'
     | 'styles-drop-shadow'
     | 'styles-focus'
@@ -43,6 +44,18 @@ const generateCodeSamples = (): void => {
         [componentsAngularPath + '/../../../tests/unit/specs/componentsReady-testbed.spec.ts'],
         [componentsAngularPath + '/../../../tests/unit/specs/componentsReady-testing-library.spec.ts'],
         // TODO: vue is missing
+      ],
+    },
+    {
+      component: 'ag-grid',
+      samples: [
+        [
+          componentsJsPath + '/ag-grid-example-storefront.html',
+          componentsAngularPath + '/ag-grid-example-storefront.component.ts',
+          componentsReactPath + '/AGGridExampleStorefront.tsx',
+          componentsVuePath + '/AGGridExampleStorefront.vue',
+          'src/data/table-data-advanced.ts', // order is important since part of filename is extracted for param types of function name
+        ],
       ],
     },
     {
@@ -556,7 +569,14 @@ const generateCodeSamples = (): void => {
             }
 
             // Replace locally served assets with public assets folder of storefront
-            fileContent = fileContent.replace(/http:\/\/localhost:3002/g, '/assets');
+            fileContent = fileContent.replace(/http:\/\/localhost:3002/g, 'assets');
+
+            if (fileName.includes('ag-grid-example-storefront.component.ts')) {
+              fileContent = fileContent.replace(
+                /(import[^\n]*)/,
+                "$1\nimport '@porsche-design-system/components-angular/ag-grid/theme.css';"
+              );
+            }
 
             return { [framework]: fileContent };
           });

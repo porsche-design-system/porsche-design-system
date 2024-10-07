@@ -1,6 +1,9 @@
 import './style.scss';
 
-import { load, componentsReady } from '@porsche-design-system/components-js';
+import { componentsReady } from '@porsche-design-system/components-js';
+
+import { dataAdvanced } from '@porsche-design-system/shared';
+import * as agGrid from 'ag-grid-enterprise';
 
 const getPage = () => window.location.pathname.substring(1);
 const getTheme = () => new URL(document.location).searchParams.get('theme') || 'light';
@@ -114,6 +117,9 @@ const updateSelect = (id, value) => {
       })
     );
   };
+
+  window.agGrid = agGrid;
+  window.rowData = dataAdvanced;
 
   if (!isPageLoadedInIFrame()) {
     updateSelect('page', getPage());

@@ -20,6 +20,10 @@ jest.mock('../../../components-vue/package.json', () => ({
     'vue-imask': '0.0.0',
     vue: '0.0.0',
   },
+  devDependencies: {
+    'ag-grid-community': '0.0.0',
+    'ag-grid-vue3': '0.0.0',
+  },
 }));
 
 afterEach(() => {
