@@ -21,10 +21,16 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 #### Added
 
+- `AG Grid`: custom theme ([#3517](https://github.com/porsche-design-system/porsche-design-system/pull/3517))
 - `Checkbox`: Added a `compact` prop to enable a smaller, space-saving version of the checkbox for compact layouts.
   ([#3504](https://github.com/porsche-design-system/porsche-design-system/pull/3504))
 - `Text`, `Display`, `Heading`, and `Headline`: allow using `align="inherit"` without errors
   ([#3520](https://github.com/porsche-design-system/porsche-design-system/pull/3520))
+
+#### Fixed
+
+- Partials: Replace meta tag `apple-mobile-web-app-capable` with `mobile-web-app-capable` in `getMetaTagsAndIconLinks`
+  partial. ([#3519](https://github.com/porsche-design-system/porsche-design-system/pull/3519))
 
 ### [3.19.0-rc.3] - 2024-10-02
 

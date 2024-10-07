@@ -20,7 +20,9 @@
     "@porsche-design-system/components-js": "3.19.0-rc.3"
   },
   "peerDependencies": {
-    "vue": ">=3.0.0 <4.0.0"
+    "vue": ">=3.0.0 <4.0.0",
+    "ag-grid-enterprise": ">= 32.0.0 <33.0.0",
+    "ag-grid-vue3": ">= 32.0.0 <33.0.0"
   },
   "main": "cjs/public-api.cjs",
   "module": "esm/public-api.mjs",
@@ -47,6 +49,7 @@
       "import": "./styles/esm/index.mjs",
       "default": "./styles/cjs/index.cjs"
     },
+    "./ag-grid/*.css": "./ag-grid/*.css",
     "./testing": {
       "types": "./testing/index.d.ts",
       "default": "./testing/index.cjs"
