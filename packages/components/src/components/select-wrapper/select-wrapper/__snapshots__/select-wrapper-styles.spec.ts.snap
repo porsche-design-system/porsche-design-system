@@ -34,6 +34,10 @@ exports[`getComponentCss() should return correct css for disabled: false, hasCus
   padding: 8px 16px !important;
   padding-inline-end: calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 1) !important;
 }
+::slotted(select) > * {
+  color: #010205 !important;
+  background-color: #FFF !important;
+}
 ::slotted(:not(input[type="password"])) {
   text-overflow: ellipsis !important;
 }
@@ -215,6 +219,10 @@ exports[`getComponentCss() should return correct css for disabled: false, hasCus
   padding: 8px 16px !important;
   padding-inline-end: calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 1) !important;
 }
+::slotted(select) > * {
+  color: #FBFCFF !important;
+  background-color: #0E0E12 !important;
+}
 ::slotted(:not(input[type="password"])) {
   text-overflow: ellipsis !important;
 }
@@ -331,6 +339,10 @@ exports[`getComponentCss() should return correct css for disabled: false, hasCus
   cursor: pointer !important;
   padding: 8px 16px !important;
   padding-inline-end: calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 1) !important;
+}
+::slotted(select) > * {
+  color: #010205 !important;
+  background-color: #FFF !important;
 }
 ::slotted(:not(input[type="password"])) {
   text-overflow: ellipsis !important;
@@ -449,6 +461,10 @@ exports[`getComponentCss() should return correct css for disabled: false, hasCus
   padding: 8px 16px !important;
   padding-inline-end: calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 1) !important;
 }
+::slotted(select) > * {
+  color: #FBFCFF !important;
+  background-color: #0E0E12 !important;
+}
 ::slotted(:not(input[type="password"])) {
   text-overflow: ellipsis !important;
 }
@@ -565,6 +581,10 @@ exports[`getComponentCss() should return correct css for disabled: false, hasCus
   cursor: pointer !important;
   padding: 8px 16px !important;
   padding-inline-end: calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 1) !important;
+}
+::slotted(select) > * {
+  color: #010205 !important;
+  background-color: #FFF !important;
 }
 ::slotted(:not(input[type="password"])) {
   text-overflow: ellipsis !important;
@@ -683,6 +703,10 @@ exports[`getComponentCss() should return correct css for disabled: false, hasCus
   padding: 8px 16px !important;
   padding-inline-end: calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 1) !important;
 }
+::slotted(select) > * {
+  color: #FBFCFF !important;
+  background-color: #0E0E12 !important;
+}
 ::slotted(:not(input[type="password"])) {
   text-overflow: ellipsis !important;
 }
@@ -798,6 +822,10 @@ exports[`getComponentCss() should return correct css for disabled: false, hasCus
   cursor: pointer !important;
   padding: 8px 16px !important;
   padding-inline-end: calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 1) !important;
+}
+::slotted(select) > * {
+  color: #010205 !important;
+  background-color: #FFF !important;
 }
 ::slotted(:not(input[type="password"])) {
   text-overflow: ellipsis !important;
