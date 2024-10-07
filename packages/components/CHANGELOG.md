@@ -18,6 +18,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 - Partials: Replace meta tag `apple-mobile-web-app-capable` with `mobile-web-app-capable` in `getMetaTagsAndIconLinks`
   partial. ([#3519](https://github.com/porsche-design-system/porsche-design-system/pull/3519))
+- `Text`, `Display`, `Heading`, and `Headline`: allow using `align="inherit"` without errors
+  ([#3520](https://github.com/porsche-design-system/porsche-design-system/pull/3520))
 
 #### Added
 
