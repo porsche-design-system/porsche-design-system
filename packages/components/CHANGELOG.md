@@ -19,7 +19,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 - `AG Grid`: custom theme ([#3517](https://github.com/porsche-design-system/porsche-design-system/pull/3517))
 - `Checkbox`: Added a `compact` prop to enable a smaller, space-saving version of the checkbox for compact layouts.
   ([#3504](https://github.com/porsche-design-system/porsche-design-system/pull/3504))
-- `Text`, `Display`, `Heading`, and `Headline`: allow using `align="inherit"` without errors
+- `Text`, `Display`, `Heading`, and `Headline`: introduce new option `inherit` to prop `align`
   ([#3520](https://github.com/porsche-design-system/porsche-design-system/pull/3520))
 
 #### Fixed
