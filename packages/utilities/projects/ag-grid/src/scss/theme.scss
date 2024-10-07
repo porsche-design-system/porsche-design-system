@@ -170,12 +170,14 @@ $pds-icon-dark-mode-filter: var(
 // Different icons for light/dark (All other icons are inverted with filter)
 .ag-theme-pds {
   --ag-icon-image-checkbox-checked: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23FBFCFF" d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>');
+  --ag-icon-image-checkbox-indeterminate: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23010205" d="m20,11v2H4v-2h16Z"/></svg>');
   --ag-icon-image-radio-button-on: url('data:image/svg+xml;charset=UTF-8, <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle fill="%23FBFCFF" cx="12" cy="12" r="6"/></svg>');
 }
 
 // Different icons for light/dark (All other icons are inverted with filter)
 .ag-theme-pds-dark {
   --ag-icon-image-checkbox-checked: url('data:image/svg+xml;charset=UTF-8, <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23010205" d="m20.22,7.47l-1.47-1.42-9.26,9.02-4.24-4.15-1.47,1.42,5.71,5.6,10.73-10.47Z"/></svg>');
+  --ag-icon-image-checkbox-indeterminate: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23FBFCFF" d="m20,11v2H4v-2h16Z"/></svg>');
   --ag-icon-image-radio-button-on: url('data:image/svg+xml;charset=UTF-8, <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle fill="%23010205" cx="12" cy="12" r="6"/></svg>');
 }
 
@@ -183,6 +185,7 @@ $pds-icon-dark-mode-filter: var(
 .ag-icon::before,
 .ag-checkbox-input-wrapper::after,
 .ag-checkbox-input-wrapper.ag-checked::after,
+.ag-checkbox-input-wrapper.ag-indeterminate::after,
 .ag-radio-button-input-wrapper::after,
 .ag-radio-button-input-wrapper.ag-checked::after {
   content: none;
