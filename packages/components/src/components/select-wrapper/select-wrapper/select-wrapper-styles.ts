@@ -3,8 +3,10 @@ import { getCss } from '../../../utils';
 import {
   addImportantToEachRule,
   colorSchemeStyles,
+  getThemedColors,
   getTransition,
   hostHiddenStyles,
+  prefersColorSchemeDarkMediaQuery,
   preventFoucOfNestedElementsStyles,
 } from '../../../styles';
 import {
@@ -27,6 +29,8 @@ export const getComponentCss = (
   state: FormState,
   theme: Theme
 ): string => {
+  const { primaryColor, backgroundColor } = getThemedColors(theme);
+  const { primaryColor: primaryColorDark, backgroundColor: backgroundColorDark } = getThemedColors('dark');
   return getCss({
     '@global': {
       ':host': {
@@ -49,6 +53,18 @@ export const getComponentCss = (
           paddingInlineEnd: getCalculatedFormElementPaddingHorizontal(1),
           // TODO: needs to be aligned with multi-select
           ...(hasCustomDropdown && !isDisabled && { borderColor: 'transparent' }),
+          ...(!hasCustomDropdown &&
+            !isDisabled && {
+              // Explicitly set option styles to avoid wrong colors in native mode
+              '& > *': {
+                color: primaryColor,
+                backgroundColor,
+                ...prefersColorSchemeDarkMediaQuery(theme, {
+                  color: primaryColorDark,
+                  backgroundColor: backgroundColorDark,
+                }),
+              },
+            }),
         })
       ),
     },
