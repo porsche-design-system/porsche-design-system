@@ -12,6 +12,9 @@
     "test:unit": "vitest --config tests/unit/config/vitest.config.ts",
     "clean:build": "rm -rf ./dist && rm -rf ./src/css"
   },
+  "devDependencies": {
+    "ag-grid-community": "32.2.1"
+  },
   "peerDependencies": {
     "sass": "*"
   },
