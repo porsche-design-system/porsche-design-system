@@ -17,7 +17,7 @@
 
     <% if (process.env.NODE_ENV === 'production') { %>
     <!-- CSP_PLACEHOLDER -->
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self' https://cdn.ui.porsche.com; style-src 'self' 'unsafe-inline' https://cdn.ui.porsche.com; script-src 'self' https://cdn.ui.porsche.com 'sha256-oGjFXlblBVl7yEVdFkopiZFnzuSAEN3lI1doNwVvEFw=' 'sha256-AjifP4agQgIcC1ep5F7cnXwxUy33FSINnoMBQ3vTjJk='; img-src 'self' https://cdn.ui.porsche.com https://porsche-design-system.github.io data:; media-src 'self' https://porsche-design-system.github.io; connect-src 'self' https://*.algolia.net https://*.algolianet.com https://registry.npmjs.org/@porsche-design-system/components-js" />
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' https://cdn.ui.porsche.com; style-src 'self' 'unsafe-inline' https://cdn.ui.porsche.com; script-src 'self' https://cdn.ui.porsche.com 'sha256-IpDuO0aLOEjddrp8nhEnyP7IYuV+C4wPFSh3Mx/2l2g=' 'sha256-AjifP4agQgIcC1ep5F7cnXwxUy33FSINnoMBQ3vTjJk='; img-src 'self' https://cdn.ui.porsche.com https://porsche-design-system.github.io data:; media-src 'self' https://porsche-design-system.github.io; connect-src 'self' https://*.algolia.net https://*.algolianet.com https://registry.npmjs.org/@porsche-design-system/components-js" />
 
     <!-- prettier-ignore -->
     <%= require('@porsche-design-system/components-js/partials').getFontLinks({ subset: 'latin', weights: ['regular', 'semi-bold', 'bold'] }) %>
