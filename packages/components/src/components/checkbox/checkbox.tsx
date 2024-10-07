@@ -43,6 +43,7 @@ const propTypes: PropTypes<typeof Checkbox> = {
   message: AllowedTypes.string,
   hideLabel: AllowedTypes.breakpoint('boolean'),
   loading: AllowedTypes.boolean,
+  compact: AllowedTypes.boolean,
   theme: AllowedTypes.oneOf<Theme>(THEMES),
 };
 
@@ -98,6 +99,9 @@ export class Checkbox {
 
   /** @experimental Disables the checkbox and shows a loading indicator. */
   @Prop() public loading?: boolean = false;
+
+  /** Displays as compact version. */
+  @Prop() public compact?: boolean = false;
 
   /** Adapts the color depending on the theme. */
   @Prop() public theme?: Theme = 'light';
@@ -163,7 +167,16 @@ export class Checkbox {
   public render(): JSX.Element {
     validateProps(this, propTypes);
 
-    attachComponentCss(this.host, getComponentCss, this.hideLabel, this.state, this.disabled, this.loading, this.theme);
+    attachComponentCss(
+      this.host,
+      getComponentCss,
+      this.hideLabel,
+      this.state,
+      this.disabled,
+      this.loading,
+      this.compact,
+      this.theme
+    );
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 

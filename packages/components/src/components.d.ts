@@ -507,6 +507,10 @@ export namespace Components {
          */
         "checked"?: boolean;
         /**
+          * Displays as compact version.
+         */
+        "compact"?: boolean;
+        /**
           * Marks the checkbox as disabled.
          */
         "disabled"?: boolean;
@@ -3621,6 +3625,10 @@ declare namespace LocalJSX {
           * Reflects the checkbox current checked state and allows setting the initial checked state.
          */
         "checked"?: boolean;
+        /**
+          * Displays as compact version.
+         */
+        "compact"?: boolean;
         /**
           * Marks the checkbox as disabled.
          */

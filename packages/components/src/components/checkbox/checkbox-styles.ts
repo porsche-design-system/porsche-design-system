@@ -15,6 +15,7 @@ import {
   hoverMediaQuery,
   prefersColorSchemeDarkMediaQuery,
   preventFoucOfNestedElementsStyles,
+  SCALING_BASE_VALUE,
 } from '../../styles';
 import {
   borderRadiusSmall,
@@ -24,6 +25,7 @@ import {
   fontSizeTextSmall,
   spacingStaticSmall,
   spacingStaticXSmall,
+  textSmallStyle,
 } from '@porsche-design-system/styles';
 import { getFunctionalComponentLabelStyles } from '../common/label/label-styles';
 import { getFunctionalComponentStateMessageStyles } from '../common/state-message/state-message-styles';
@@ -40,11 +42,14 @@ const getIndeterminateSVGBackgroundImage = (fill: string): string => {
   return getInlineSVGBackgroundImage(`<path fill="${fill}" d="m20,11v2H4v-2h16Z"/>`);
 };
 
+const cssVarInternalCheckboxScaling = '--p-internal-checkbox-scaling';
+
 export const getComponentCss = (
   hideLabel: BreakpointCustomizable<boolean>,
   state: FormState,
   isDisabled: boolean,
   isLoading: boolean,
+  compact: boolean,
   theme: Theme
 ): string => {
   const { primaryColor, contrastMediumColor, contrastHighColor, disabledColor, focusColor } = getThemedColors(theme);
@@ -91,8 +96,28 @@ export const getComponentCss = (
 
   const indeterminateIconHoverColor = escapeHashCharacter(formStateHoverColor || primaryColor);
   const indeterminateIconHoverColorDark = escapeHashCharacter(formStateHoverColorDark || primaryColorDark);
-
   const background = `transparent 0% 0% / ${fontLineHeight}`;
+
+  const minimumTouchTargetSize = '24px'; // Minimum touch target size to comply with accessibility guidelines.
+
+  const scalingVar = `var(${cssVarInternalCheckboxScaling}, ${compact ? 0.6668 : 1})`;
+  // Determines the scaling factor for the checkbox size. In "compact" mode, it uses 0.6668 to achieve a 20px checkbox (compact size).
+  // Defaults to 1 for the standard size and can be overridden by the CSS variable `cssVarInternalCheckboxScaling`.
+
+  const dimension = `calc(max(${SCALING_BASE_VALUE} * 0.75, ${scalingVar} * ${fontLineHeight}))`;
+  // Calculates the checkbox size and ensures a minimum size of 12px (0.75 * SCALING_BASE_VALUE).
+  // Scales proportionally with the line height and the scaling factor.
+
+  const dimensionFull = `calc(${dimension} + ${borderWidthBase} * 2)`; // Calculates the total size of the checkbox including its borders.
+  const touchTargetSizeDiff = `calc(${minimumTouchTargetSize} - ${dimensionFull})`; // Difference between the minimum touch target size and the checkbox full size.
+
+  const paddingInlineStart = `calc(${spacingStaticSmall} - (max(0px, ${touchTargetSizeDiff})))`;
+  // Adjusts padding to maintain consistent spacing when the checkbox is smaller than the minimum touch target size.
+  // Uses asymmetric padding instead of `gap` to ensure there is no non-clickable area between the label and the input.
+
+  const paddingTop = `calc((${dimensionFull} - ${fontLineHeight}) / 2)`; // Vertically centers the checkbox label relative to the checkbox size.
+  const inset = `calc(-${borderWidthBase} - max(0px, ${touchTargetSizeDiff} / 2))`; // Positions the checkbox ::before pseudo-element with a negative offset to align it with the touch target.
+  const height = `calc(max(${fontLineHeight}, ${dimensionFull}))`; // Ensures the wrapper height matches either the font's line height or the full size of the checkbox, whichever is larger.
 
   return getCss({
     '@global': {
@@ -105,8 +130,16 @@ export const getComponentCss = (
       },
       ...preventFoucOfNestedElementsStyles,
       input: {
-        width: fontLineHeight,
-        height: fontLineHeight,
+        position: 'relative',
+        '&::before': {
+          // Ensures the touch target is at least 24px, even if the checkbox is smaller than the minimum touch target size.
+          // This pseudo-element expands the clickable area without affecting the visual size of the checkbox itself.
+          content: '""',
+          position: 'absolute',
+          inset,
+        },
+        width: dimension,
+        height: dimension,
         font: `${fontSizeTextSmall} ${fontFamily}`, // needed for correct width and height definition based on ex-unit
         display: 'block',
         margin: 0,
@@ -130,6 +163,9 @@ export const getComponentCss = (
         }),
         gridArea: '1/1',
         borderRadius: borderRadiusSmall,
+        ...addImportantToEachRule({
+          backgroundSize: 'cover',
+        }),
       },
       ...(!isLoading
         ? {
@@ -243,17 +279,23 @@ export const getComponentCss = (
       }),
     },
     wrapper: {
+      ...textSmallStyle,
+      minWidth: minimumTouchTargetSize,
+      minHeight: minimumTouchTargetSize,
+      justifyContent: 'center',
+      alignItems: 'center',
       display: 'grid',
       gridArea: '1/1',
       alignSelf: 'flex-start', // in case label becomes multiline
+      height,
     },
     ...(isLoading && {
       spinner: {
         position: 'relative', // ensure correct stacking, can be removed as soon as focus for input is handled with outline
         gridArea: '1/1',
         placeSelf: 'center',
-        width: fontLineHeight,
-        height: fontLineHeight,
+        width: dimension,
+        height: dimension,
         font: `${fontSizeTextSmall} ${fontFamily}`, // needed for correct width and height definition based on ex-unit
         pointerEvents: 'none',
       },
@@ -268,8 +310,8 @@ export const getComponentCss = (
         ...(isLoading && { pointerEvents: 'none' }), // prevent default htmlFor behavior. TODO: Remove as soon as label component for custom form components exists.
       },
       {
-        paddingTop: '2px', // compensate vertical alignment
-        paddingInlineStart: spacingStaticSmall, // asymmetric padding used instead of gap to prevent not clickable area between label and input
+        paddingTop,
+        paddingInlineStart,
       }
     ),
     // .message
