@@ -25,6 +25,7 @@ const cssVarBackground = '--p-canvas-background';
 const spacingBase = gridGap.replace('36px', '24px');
 const mainGridColumnGap = gridGap.replace('36px', '24px').replace('vw', 'cqw');
 const mainGridRowGap = gridGap.replace('vw', 'cqw');
+const mediaQueryTabletView = getMediaQueryMin('s');
 const mediaQueryDesktopView = getMediaQueryMin('m');
 const sidebarWidth = '320px';
 
@@ -37,7 +38,12 @@ const borderRadius = '16px';
 
 const headerPadding = spacingStaticSmall;
 
-export const getComponentCss = (theme: Theme, isSidebarStartOpen: boolean, isSidebarEndOpen: boolean): string => {
+export const getComponentCss = (
+  theme: Theme,
+  isSidebarStartOpen: boolean,
+  isSidebarEndOpen: boolean,
+  gridMaxWidth: boolean
+): string => {
   const { primaryColor, backgroundColor, backgroundSurfaceColor, contrastLowColor } = getThemedColors(theme);
 
   const headerColor = isThemeDark(theme) ? 'rgba(14, 14, 18, 0.79)' : 'hsla(0, 0%, 100%, 0.79)';
@@ -63,9 +69,9 @@ export const getComponentCss = (theme: Theme, isSidebarStartOpen: boolean, isSid
           gap: spacingStaticSmall,
         },
         '&([slot*="sidebar"])': {
-          display: 'flex',
-          flexDirection: 'column',
-          gap: spacingStaticSmall,
+          // display: 'flex',
+          // flexDirection: 'column',
+          // gap: spacingStaticSmall,
         },
         // pre-defined utility classes
         '&(.p-module)': {
@@ -133,6 +139,8 @@ export const getComponentCss = (theme: Theme, isSidebarStartOpen: boolean, isSid
         paddingBlock: headerPadding,
         gridArea: 'header',
         position: 'sticky',
+        minHeight: '56px',
+
         top: 0,
         zIndex: 100,
         display: 'grid',
@@ -149,6 +157,10 @@ export const getComponentCss = (theme: Theme, isSidebarStartOpen: boolean, isSid
         '--p-canvas-grid-span-one-half': 'span 3',
         '--p-canvas-grid-span-one-third': 'span 2',
         '--p-canvas-grid-span-two-thirds': 'span 4',
+        ...(gridMaxWidth && {
+          maxWidth: '1311px', // TODO: should be aligned with Porsche Marketing Grid
+          marginInline: 'auto',
+        }),
         display: 'grid',
         gridTemplateColumns: 'repeat(var(--p-canvas-grid-columns), minmax(0, 1fr))',
         gap: `${mainGridRowGap} ${mainGridColumnGap}`,
@@ -164,17 +176,20 @@ export const getComponentCss = (theme: Theme, isSidebarStartOpen: boolean, isSid
       main: {
         zIndex: 10,
         gridArea: 'main',
+        width: '100%',
       },
       footer: {
         position: 'sticky',
         bottom: 0,
+        width: '100%',
         gridArea: 'footer',
         zIndex: 200,
         // backgroundColor,
         '&::before': {
           content: '""',
+
           position: 'absolute',
-          inset: '-60px 0 0',
+          inset: '-60px -500px 0',
           pointerEvents: 'none',
           background: `linear-gradient(0deg, ${backgroundColor} 0%, ${backgroundColor} 65%, rgba(255,255,255,0) 100%)`,
         },
@@ -232,6 +247,7 @@ export const getComponentCss = (theme: Theme, isSidebarStartOpen: boolean, isSid
         pointerEvents: 'none',
         top: 0,
         borderTopLeftRadius: borderRadius,
+
         boxShadow: `0 -${borderRadius} 0 0 ${backgroundSurfaceColor}`,
       },
     },
@@ -250,11 +266,16 @@ export const getComponentCss = (theme: Theme, isSidebarStartOpen: boolean, isSid
       marginInlineEnd: isSidebarEndOpen ? `calc(${sidebarEndWidth} * -1)` : 0,
       transition: sidebarTransition,
       display: 'grid',
+
       gridTemplateRows: 'auto minmax(0, 1fr) auto',
       gridTemplateAreas: '"header" "main" "footer"',
       minWidth: '320px',
       minHeight: '100dvh',
       backgroundColor,
+      [mediaQueryTabletView]: {
+        gridTemplate: 'auto minmax(0, 1fr) / auto minmax(0, 1fr) auto',
+        gridTemplateAreas: '"sidebar-start header" "sidebar-start main" "sidebar-start footer"',
+      },
       [mediaQueryDesktopView]: {
         gridTemplate: 'auto minmax(0, 1fr) auto / auto minmax(0, 1fr) auto',
         gridTemplateAreas:
@@ -262,11 +283,16 @@ export const getComponentCss = (theme: Theme, isSidebarStartOpen: boolean, isSid
       },
       '&::after': {
         content: '""',
+
         gridColumn: '1 / -1',
         gridRow: '1 / -1',
         pointerEvents: 'none',
         background: `var(${cssVarBackground})`,
+        backgroundRepeat: 'no-repeat',
+        backgroundSize: 'cover',
         backgroundAttachment: 'fixed',
+        filter: 'blur(32px)',
+        opacity: 0.5,
       },
     },
     crest: {
@@ -289,6 +315,12 @@ export const getComponentCss = (theme: Theme, isSidebarStartOpen: boolean, isSid
       '&:last-of-type': {
         justifyContent: 'end',
       },
+    },
+    'flyout-start': {
+      '--p-flyout-max-width': 'min(100dvw, 400px)',
+    },
+    'flyout-end': {
+      '--p-flyout-max-width': 'min(100dvw, 400px)',
     },
   });
 };

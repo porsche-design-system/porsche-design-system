@@ -28,7 +28,7 @@
       }
 
       p-canvas {
-        --p-canvas-background: radial-gradient(circle, rgba(238, 174, 202, 0.5) 0%, rgba(148, 187, 233, 0) 100%);
+        --p-canvas-background: url(assets/bg.webp);
       }
 
       p-divider {
@@ -42,18 +42,29 @@
     <style>
       /* main module: hello */
       .hello {
+        margin-top: clamp(32px, 2.75vw + 23px, 76px);
+
         grid-column: 1 / -1;
         display: flex;
+        flex-direction: column;
+        gap: clamp(8px, 0.5vw + 6px, 16px);
         align-items: center;
         justify-content: center;
       }
 
       .hello > :first-child {
-        max-width: 40rem;
+        max-width: 45rem;
+      }
+
+      .hello img {
+        width: 72px;
+        height: 72px;
+        display: block;
       }
 
       /* main module: cards */
       .cards {
+        margin-top: clamp(32px, 2.75vw + 23px, 76px);
         grid-column: 1 / -1;
         display: grid;
         grid-auto-rows: 1fr auto;
@@ -88,7 +99,7 @@
         grid-column: 1 / -1;
       }
 
-      @container (min-width: 480px) {
+      @container (min-width: 760px) {
         .cards {
           grid-column: 2 / -2;
         }
@@ -96,19 +107,21 @@
 
       @container (min-width: 1000px) {
         .cards {
+          grid-column: 3 / -3;
           grid-template-columns: repeat(3, minmax(0, 1fr));
         }
       }
     </style>
+
     <style>
       /* module: search */
       .search {
         grid-column: 1 / -1;
         display: grid;
-        grid-template-columns: auto minmax(0, 1fr) auto auto;
+        grid-template-columns: minmax(0, 1fr) auto;
         align-items: center;
         gap: 16px;
-        padding: 8px;
+        padding: 4px;
         padding-inline-start: 16px;
         border-radius: 8px;
         background: hsl(240 4% 85%/35%);
@@ -137,14 +150,113 @@
       .controls {
         grid-column: 1 / -1;
         display: flex;
-        gap: 16px;
-        align-items: center;
+        gap: clamp(16px, 1.25vw + 12px, 36px);
+        align-items: flex-start;
         justify-content: center;
+      }
+    </style>
+
+    <style>
+      div[slot='sidebar-start'] {
+      }
+
+      .last-topics {
+        margin-top: 8px;
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+      }
+
+      .controller {
+        position: relative;
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) repeat(2, auto);
+        gap: 8px;
+        align-items: center;
+        min-height: 28px;
+      }
+
+      .controller ~ .controller {
+        margin-top: 16px;
+      }
+
+      .controller::before {
+        content: '';
+        position: absolute;
+        inset: -4px -6px;
+        background: transparent;
+        transition: 0.3s background;
+        border-radius: 4px;
+      }
+
+      .controller:hover::before,
+      .controller--active::before {
+        background: #eeeff2;
+      }
+
+      @media (min-width: 760px) {
+        .controller:hover::before,
+        .controller--active::before {
+          background: #fff;
+        }
+      }
+
+      .controller button {
+        all: unset;
+        position: relative;
+        font-family: 'Porsche Next', sans-serif;
+        display: flex;
+        gap: 8px;
+        cursor: pointer;
+        border-radius: 4px;
+      }
+
+      .controller button:focus-visible {
+        outline: 2px solid blue;
+        outline-offset: 4px;
+      }
+
+      .controller button img {
+        width: 24px;
+        height: 24px;
+      }
+
+      .controller button span {
+        display: block;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      .controller button ~ * {
+        display: none;
+      }
+
+      .controller:hover button ~ *,
+      .controller button:focus-visible ~ * {
+        display: block;
+      }
+
+      .controller:focus-within button ~ * {
+        display: block;
+      }
+
+      .card-plugin {
+        all: unset;
+        background: #eeeff2;
+        border-radius: 12px;
+        padding: clamp(8px, 0.5vw + 6px, 16px);
+        cursor: pointer;
+      }
+
+      .card-plugin img {
+        width: 72px;
+        height: 72px;
       }
     </style>
   </head>
   <body>
-    <p-canvas>
+    <p-canvas grid-max-width="true">
       <a href="#" slot="title">Co-Driver</a>
 
       <div slot="header-start"></div>
@@ -156,7 +268,9 @@
       </div>
 
       <div class="hello">
-        <p-display size="medium" align="center">Hi Ferdinand!<br />Can I help you with something?</p-display>
+        <img src="assets/codriver.webp" alt="Co-Driver logo" />
+        <p-display size="medium" align="center">Good morning,<br />how can I help you?</p-display>
+        <p-text color="contrast-medium">Please type your message below</p-text>
       </div>
 
       <div class="cards">
@@ -166,7 +280,7 @@
           <p-text>Ask Co-Driver</p-text>
         </button>
         <button class="cards__item">
-          <p-text>Can</p-text>
+          <p-text>Can you explain the significance of Porsche’s flat-six engine?</p-text>
           <p-icon name="chat"></p-icon>
           <p-text>Ask Co-Driver</p-text>
         </button>
@@ -178,42 +292,189 @@
       </div>
 
       <div slot="footer" class="search">
-        <p-button-pure hide-label="true" icon="broadcast">Some label</p-button-pure>
         <input type="search" name="some-name" placeholder="Some placeholder" />
-        <p-button-pure hide-label="true" icon="send">Some label</p-button-pure>
         <p-button variant="primary" theme="dark" hide-label="true" icon="arrow-up">Search</p-button>
       </div>
 
       <div slot="footer" class="controls">
-        <p-button-pure icon="delete">Delete chat</p-button-pure>
-        <p-button-pure icon="wrench">Service Desk</p-button-pure>
-        <p-button-pure icon="information">Rules</p-button-pure>
+        <p-button-pure class="show-delete-chat" icon="delete">Delete chat</p-button-pure>
+        <p-button-pure id="show-rules" icon="information">Rules</p-button-pure>
+        <p-button-pure icon="light">Service Desk</p-button-pure>
       </div>
 
       <div slot="sidebar-start">
-        <p-accordion heading="Some category" heading-tag="h2" compact="true">
-          <p-link-pure href="#" icon="none" stretch="true">Some anchor</p-link-pure>
-          <p-link-pure href="#" icon="none" stretch="true">Some anchor</p-link-pure>
-          <p-link-pure href="#" icon="none" stretch="true">Some anchor</p-link-pure>
-        </p-accordion>
-        <p-accordion heading="Some category" heading-tag="h2" compact="true">
-          <p-link-pure href="#" icon="none" stretch="true">Some anchor</p-link-pure>
-          <p-link-pure href="#" icon="none" stretch="true">Some anchor</p-link-pure>
-          <p-link-pure href="#" icon="none" stretch="true">Some anchor</p-link-pure>
-          <p-link-pure href="#" icon="none" stretch="true">Some anchor</p-link-pure>
-        </p-accordion>
-        <p-accordion heading="Some category" heading-tag="h2" compact="true">
-          <p-link-pure href="#" icon="none" stretch="true">Some anchor</p-link-pure>
-          <p-link-pure href="#" icon="none" stretch="true">Some anchor</p-link-pure>
-          <p-link-pure href="#" icon="none" stretch="true">Some anchor</p-link-pure>
-          <p-link-pure href="#" icon="none" stretch="true">Some anchor</p-link-pure>
-          <p-link-pure href="#" icon="none" stretch="true">Some anchor</p-link-pure>
-          <p-link-pure href="#" icon="none" stretch="true">Some anchor</p-link-pure>
-        </p-accordion>
-        <p-divider></p-divider>
-        <p-link-pure href="#" icon="none" stretch="true">Some anchor</p-link-pure>
-        <p-link-pure href="#" icon="none" stretch="true">Some anchor</p-link-pure>
-        <p-link-pure href="#" icon="none" stretch="true">Some anchor</p-link-pure>
+        <div class="controller controller--active">
+          <button>
+            <img src="assets/codriver.webp" alt="Co-Driver logo" />
+            <span>Co-Driver powered by Porsche</span>
+          </button>
+          <p-button
+            class="show-rules"
+            variant="ghost"
+            compact="true"
+            icon="information"
+            hide-label="true"
+            style="--p-internal-button-scaling: 0"
+            >Show rules</p-button
+          >
+          <p-button
+            class="show-remove-plugin"
+            variant="ghost"
+            compact="true"
+            icon="delete"
+            hide-label="true"
+            style="--p-internal-button-scaling: 0"
+            >Delete</p-button
+          >
+        </div>
+        <div class="controller">
+          <button>
+            <img src="assets/c.webp" alt="Internal Configurator" />
+            <span>Internal Configurator</span>
+          </button>
+          <p-button
+            class="show-rules"
+            variant="ghost"
+            compact="true"
+            icon="information"
+            hide-label="true"
+            style="--p-internal-button-scaling: 0"
+            >Show rules</p-button
+          >
+          <p-button
+            class="show-remove-plugin"
+            variant="ghost"
+            compact="true"
+            icon="delete"
+            hide-label="true"
+            style="--p-internal-button-scaling: 0"
+            >Delete</p-button
+          >
+        </div>
+        <div class="controller">
+          <button>
+            <img src="assets/world.webp" alt="Consumption Disclaimer Bot" />
+            <span>Consumption Disclaimer Bot</span>
+          </button>
+          <p-button
+            class="show-rules"
+            variant="ghost"
+            compact="true"
+            icon="information"
+            hide-label="true"
+            style="--p-internal-button-scaling: 0"
+            >Show rules</p-button
+          >
+          <p-button
+            class="show-remove-plugin"
+            variant="ghost"
+            compact="true"
+            icon="delete"
+            hide-label="true"
+            style="--p-internal-button-scaling: 0"
+            >Delete</p-button
+          >
+        </div>
+        <p-link-pure id="explore-plugins" href="#explore-plugins" icon="none" underline="true" style="margin-top: 24px"
+          >Explore Plugins</p-link-pure
+        >
+        <p-heading size="small" style="margin-top: 40px">Last topics</p-heading>
+        <div class="last-topics">
+          <div style="display: grid; grid-template-columns: 1fr auto auto; gap: 8px; align-items: flex-start">
+            <p-link-pure
+              href="#"
+              icon="chat"
+              active="true"
+              style="margin-top: 2px"
+              title="Which configuration for 911 hjdot hjdtihj dtoij h"
+              >How has Porsche’s design philosophy evolved over the years?</p-link-pure
+            >
+            <p-button
+              variant="ghost"
+              compact="true"
+              icon="edit"
+              hide-label="true"
+              style="--p-internal-button-scaling: 0"
+              >Edit</p-button
+            >
+            <p-button
+              class="show-delete-chat"
+              variant="ghost"
+              compact="true"
+              icon="delete"
+              hide-label="true"
+              style="--p-internal-button-scaling: 0"
+              >Delete</p-button
+            >
+          </div>
+          <div style="display: grid; grid-template-columns: 1fr auto auto; gap: 8px">
+            <p-link-pure href="#" icon="chat" title="Which configuration for 911 hjdot hjdtihj dtoij h"
+              >What makes the Porsche 911 so iconic in automotive history?</p-link-pure
+            >
+            <p-button
+              variant="ghost"
+              compact="true"
+              icon="edit"
+              hide-label="true"
+              style="--p-internal-button-scaling: 0"
+              >Edit</p-button
+            >
+            <p-button
+              class="show-delete-chat"
+              variant="ghost"
+              compact="true"
+              icon="delete"
+              hide-label="true"
+              style="--p-internal-button-scaling: 0"
+              >Delete</p-button
+            >
+          </div>
+          <div style="display: grid; grid-template-columns: 1fr auto auto; gap: 8px">
+            <p-link-pure href="#" icon="chat" title="Which configuration for 911 hjdot hjdtihj dtoij h"
+              >Can you explain the significance of Porsche’s flat-six engine?</p-link-pure
+            >
+            <p-button
+              variant="ghost"
+              compact="true"
+              icon="edit"
+              hide-label="true"
+              style="--p-internal-button-scaling: 0"
+              >Edit</p-button
+            >
+            <p-button
+              class="show-delete-chat"
+              variant="ghost"
+              compact="true"
+              icon="delete"
+              hide-label="true"
+              style="--p-internal-button-scaling: 0"
+              >Delete</p-button
+            >
+          </div>
+          <div style="display: grid; grid-template-columns: 1fr auto auto; gap: 8px">
+            <p-link-pure href="#" icon="chat" title="Which configuration for 911 hjdot hjdtihj dtoij h"
+              >Which configuration for 911 is the best?</p-link-pure
+            >
+            <p-button
+              variant="ghost"
+              compact="true"
+              icon="edit"
+              hide-label="true"
+              style="--p-internal-button-scaling: 0"
+              >Edit</p-button
+            >
+            <p-button
+              class="show-delete-chat"
+              variant="ghost"
+              compact="true"
+              icon="delete"
+              hide-label="true"
+              style="--p-internal-button-scaling: 0"
+              >Delete</p-button
+            >
+          </div>
+        </div>
+        <p-link-pure href="#" icon="none" underline="true" style="margin-top: 24px">Start conversation</p-link-pure>
       </div>
 
       <div slot="sidebar-end">
@@ -229,16 +490,123 @@
     </p-canvas>
 
     <p-flyout
-      id="flyout-search"
+      id="flyout-plugins"
       open="false"
       aria="{ 'aria-label': 'Some Heading' }"
       style="--p-flyout-max-width: 480px"
     >
-      <p-display slot="header" size="small" tag="h2">What are you looking for?</p-display>
+      <p-heading slot="header" size="large" tag="h2">Plugins</p-heading>
+      <p-text size="medium"
+        >Discover and create customized ChatGPT versions that combine hints, additional knowledge, and a variety of
+        skills.</p-text
+      >
       <p-text-field-wrapper label="Search" hide-label="true">
-        <input type="search" name="some-name" placeholder="Some placeholder" />
+        <input type="search" name="some-name" placeholder="Search for plugins" />
       </p-text-field-wrapper>
+
+      <p-heading size="medium">Popular</p-heading>
+      <p-text color="contrast-medium">Most used plugins by the community</p-text>
+      <button class="card-plugin">
+        <img src="assets/codriver.webp" alt="" />
+        <p-heading>Co-Driver</p-heading>
+        <p-text>Discover and create customized ChatGPT versions that combine hint</p-text>
+        <p-text color="contrast-medium" size="x-small">Published by Porsche AG</p-text>
+      </button>
     </p-flyout>
+
+    <p-modal id="modal-remove-plugin" open="false" aria="{ 'aria-label': 'Some Heading' }">
+      <p-heading slot="header" size="large" tag="h2">Remove plugin?</p-heading>
+      <p-text>This will remove "Some plugin".</p-text>
+      <p-button-group slot="footer">
+        <p-button type="button">Remove</p-button>
+        <p-button type="button" variant="secondary">Cancel</p-button>
+      </p-button-group>
+    </p-modal>
+
+    <p-modal id="modal-delete-chat" open="false" aria="{ 'aria-label': 'Some Heading' }">
+      <p-heading slot="header" size="large" tag="h2">Delete chat?</p-heading>
+      <p-text>This will delete "Some chat".</p-text>
+      <p-button-group slot="footer">
+        <p-button type="button">Delete</p-button>
+        <p-button type="button" variant="secondary">Cancel</p-button>
+      </p-button-group>
+    </p-modal>
+
+    <p-modal id="modal-rules" open="false" aria="{ 'aria-label': 'Rules for using Co-Driver' }">
+      <p-heading slot="header" size="large" tag="h2"
+        ><p-wordmark></p-wordmark><br />Rules for using Co-Driver</p-heading
+      >
+      <p-text size="medium"
+        >Co-Driver ist eine Plattform, um Chat GPT-Technologien hei Porsche in siner sicheren Umgehung nutzen zu können.
+        Fachbereiche können diese Plattform mit eigenen "Plugins" erweiter, hopse: um ihr Fachbereichswissen
+        einzubinden. Bitte beachte: Zusätz ich zu diesen Regeln können weitere Plugin-spenfische Regeln gelten, die
+        einzuhalten sind.</p-text
+      >
+      <p-text>
+        Wir stellen ein kurzes Video zur Sensibilisierung bereit, dessen Ansicht vor der Nutzung von Co-Diver
+        verpflichtend ist. Weitergehend haben wir folgende Schulungen für euch vor bereitet:
+      </p-text>
+      <p-heading size="small">Verantwortlichkeit:</p-heading>
+      <p-text
+        >Go-Driver ist nur ein Arbeitsmittel: Wie Du Co-Driver verwendest und wes Du mit den Antworten und Ausgaben von
+        Co-Driver machst, liegt immer in Deiner eigenen Verantwortung.  Inshesandere können Ausgaben fehlerhaft sein
+        [Halkzination) oder von Vorurtelen behaftet (Bias). Vorurteile können aus den Trainingsdaten des Modells
+        entstahen, die hauptsächlich in den USA entstanden sind. Es ist daher winhtig, dass Du die Ausgaben von
+        Co-Driver immer volständig verstehst, nachvalziehst und auf inhaltliche und sprachliche Richtigkeit
+        [insbesondere bei Übersetzungen), Volständigkeit, Vorurteilsfreiheit und Aktualität prüfst, bevor Du sie im
+        Rahmen Deiner Aufgaben für Porsche verwendest.</p-text
+      >
+      <p-heading size="small">Zugelassene Endgeräte:</p-heading>
+      <p-text>Co-Driver darf nicht mit privaten Endgeräten genutzt werden.</p-text>
+      <p-heading size="small">Zuständigkeiten und Entscheidungen:</p-heading>
+      <p-text
+        >Go-Driver ersetzt nicht die Konsultation von Porsche Fachexperten wie der Rechtsabteilung, Steuerabteilung,
+        Datenschutz, Technische Konformität ete. Wende Dich daher bitte mit konkreten Fragen an die jeweils zuständigen
+        Porsche-Kolegen Insbesondere relevante Geschäftsentsche dungen dürfen nicht allein aufgrund von Informationen
+        aus Co-Driver getroffen werden Betriebliche Richtlirien und Prozesse müssen immer eingehalten werden.</p-text
+      >
+      <p-heading size="small">Daterschutz:</p-heading>
+      <p-text
+        >Dein Input und Chats werden im Regelfall nicht nachverfelgt oder gespelchert, außer Du nutzt die
+        Feedback-Funktion. Hier kannst du den Chatverlauf selbst noch einmal anpassen, nachdem Du den Teut in das
+        Freitestfeld kopiert hast. Deine Chats werden auf einer gesicherten Porsche Umgebung auf Microsoft Azure
+        verarbeitet. Die Eingaben sind genauso geschützt. wie auf anderen dienstlichen Systemen der Porsche AG, Achte
+        bitte gleichwohl darauf, keine personenbezogenen Daten in den Chat einzugeben. Es gilt der Datenschutzhinasis
+        für PAG  Beschäftigte.</p-text
+      >
+      <p-heading size="small">Eingabe von Daten:</p-heading>
+      <p-text
+        >1. Informationssicherheit:<br />Bei Co-Driver darfst du Daten bis zur Klassihkation *vertraulich" nutzen, die
+        keinen Personenbezug haben (d.h. keine Namen oder andere Merkmale, die einen Personenbezug aufweisen konnen].
+        Daten, die z.B. als "geheim" klassifiziert sind, darfst Du nicht eingeben.
+        <br />
+        <br />2. Befugnis zur Verwendung von Daten:<br />Vor der Eingabe von Daten in Co-Driver musst Du prüfen, oh Du
+        die Daten dafür verwenden darfst. Dies kann insbesondere bei Geschäftsgeheimnissen Dritter oder urheberrechtlich
+        geschützten Informationen kritisch sein. Hole Dir im Zweifel die Einwilligung des Dateninhabers ein.</p-text
+      >
+      <p-heading size="small">Ausgabe von Daten:</p-heading>
+      <p-text
+        >1. Rechte Dritter:<br />Bei generativer Ki kénnen Ausgaben die Rechte Dritter verletzen. Dies kann insbesondere
+        bei Software-Code, Bildem, längeren kreativen Texten oder anderen urheberechtlich geschützten Werken vorkommen.
+        Überprüfe daher vor Verwendung der Antworten, ob es identische Werke Dritter gibt, deren Rechte durch die
+        Verwendung verletzt sein könnten. <br /><br />
+        2. Schutzrechte der Ausgaben:<br />Die Antworten von Co-Driver sind urheberrechtlich nicht geschützt. Wenn eine
+        konkrete Antwort von Co-Driver für Porsche sehr werthaltig ist, musst Du sie daher mit Hilfe von technischen
+        Maßnahmen vor unbefugten Zugriffen schützen.
+      </p-text>
+      <p-heading size="small">Qualitätssicherung:</p-heading>
+      <p-text
+        >Das Co-Driver Plugin ,ChatGPT* nutzt das reine ChatGPT Modeli von OpenAl in einer für Porsche geschützten
+        Umgebung mit dem technischen Informationsstand von September 2021. Plugins vnn Fachhereichen grifen auf eine
+        stetig wachsende Anzahl ausgewählter Quelien zu, die bei der Nutzung des jeweiligen Plugins transparent gemacht
+        werden. Din Ausgaben von</p-text
+      >
+
+      <p-button-group slot="footer">
+        <p-button type="button">Accept</p-button>
+        <p-button type="button" variant="secondary">Deny</p-button>
+      </p-button-group>
+    </p-modal>
 
     <script>
       document
@@ -254,8 +622,36 @@
         .forEach((el) => el.addEventListener('dismiss', (e) => (e.target.open = false)));
 
       document
+        .querySelectorAll('p-modal')
+        .forEach((el) => el.addEventListener('dismiss', (e) => (e.target.open = false)));
+
+      document
         .getElementById('button-search')
-        .addEventListener('click', () => (document.getElementById('flyout-search').open = true));
+        .addEventListener('click', () => (document.getElementById('flyout-plugins').open = true));
+
+      document
+        .getElementById('explore-plugins')
+        .addEventListener('click', () => (document.getElementById('flyout-plugins').open = true));
+
+      document
+        .getElementById('show-rules')
+        .addEventListener('click', () => (document.getElementById('modal-rules').open = true));
+
+      document
+        .querySelectorAll('.show-rules')
+        .forEach((el) => el.addEventListener('click', () => (document.getElementById('modal-rules').open = true)));
+
+      document
+        .querySelectorAll('.show-delete-chat')
+        .forEach((el) =>
+          el.addEventListener('click', () => (document.getElementById('modal-delete-chat').open = true))
+        );
+
+      document
+        .querySelectorAll('.show-remove-plugin')
+        .forEach((el) =>
+          el.addEventListener('click', () => (document.getElementById('modal-remove-plugin').open = true))
+        );
 
       document.getElementById('theme-switch').addEventListener('update', (e) => {
         e.target.checked = e.detail.checked;
