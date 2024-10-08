@@ -9,6 +9,6 @@
  */
 export const isDeprecatedComponent = (fileContent: string): [boolean, string] => {
   // Regex does not work for multiline deprecation message
-  const [deprecated, rawDeprecationMessage = ''] = /@deprecated ([^\n]*)[\s\S]*?@Component/.exec(fileContent) || [];
+  const [deprecated, rawDeprecationMessage = ''] = /@deprecated ([^*\n]*)[\s\S]*?@Component/.exec(fileContent) || [];
   return [!!deprecated, rawDeprecationMessage];
 };
