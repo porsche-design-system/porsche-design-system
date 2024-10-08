@@ -134,6 +134,20 @@ describe('transformBooleanDigitAndUndefinedValues()', () => {
     );
   });
 
+  it('should transform numeric string attributes to JSX expressions unless specified as string in metadata', () => {
+    const markup2 = `<p-some-tag value="1234" label="With Value"></p-some-tag>
+<p-pin-code value="1234" label="With Value"></p-pin-code>
+<p-model-signature theme="auto" model="718"></p-model-signature>
+<p-icon theme="auto" name="360" aria="{ 'aria-label': '360 icon' }"></p-icon>`;
+
+    expect(transformBooleanDigitAndUndefinedValues(markup2)).toBe(
+      `<p-some-tag value={1234} label="With Value"></p-some-tag>
+<p-pin-code value="1234" label="With Value"></p-pin-code>
+<p-model-signature theme="auto" model="718"></p-model-signature>
+<p-icon theme="auto" name="360" aria="{ 'aria-label': '360 icon' }"></p-icon>`
+    );
+  });
+
   it('should remove quotes and add brackets to undefined values', () => {
     expect(transformBooleanDigitAndUndefinedValues(`<p-some-tag attribute="undefined"></p-some-tag>`)).toBe(
       `<p-some-tag attribute={undefined}></p-some-tag>`
