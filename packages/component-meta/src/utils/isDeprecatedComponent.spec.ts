@@ -50,4 +50,35 @@ describe('isDeprecatedComponent', () => {
 
     expect(result).toEqual([false, '']);
   });
+
+  it('should return false and an empty string if no component deprecation message is present', () => {
+    const fileContent = `/**
+ * @slot {"name": "", "description": "Default slot for main content." }
+ */
+@Component({
+  tag: 'p-content-wrapper',
+  shadow: true,
+})
+export class ContentWrapper {
+  @Element() public host!: HTMLElement;
+
+  /** Defines the outer spacings between the content area and the left and right screen sides, as well as centering its content and setting a max-width. */
+  @Prop() public width?: ContentWrapperWidth = 'extended';
+
+  /**
+   * Has no effect anymore
+   * @deprecated since v3.0.0, will be removed with next major release
+   */
+  @Prop() public backgroundColor?: ContentWrapperBackgroundColor = 'transparent';
+
+  /**
+   * Has no effect anymore
+   * @deprecated since v3.0.0, will be removed with next major release
+   */
+  @Prop() public theme?: Theme = 'light';`;
+
+    const result = isDeprecatedComponent(fileContent);
+
+    expect(result).toEqual([false, '']);
+  });
 });
