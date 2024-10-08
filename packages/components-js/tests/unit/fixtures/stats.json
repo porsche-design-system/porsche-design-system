@@ -41,8 +41,8 @@
   },
   {
     "chunkShortName": "checkbox",
-    "size": 13636,
-    "gzipSize": 5135
+    "size": 14128,
+    "gzipSize": 5358
   },
   {
     "chunkShortName": "checkbox-wrapper",
@@ -151,8 +151,8 @@
   },
   {
     "chunkShortName": "main",
-    "size": 81072,
-    "gzipSize": 26867
+    "size": 81086,
+    "gzipSize": 26869
   },
   {
     "chunkShortName": "marque",
@@ -216,8 +216,8 @@
   },
   {
     "chunkShortName": "select-wrapper",
-    "size": 27776,
-    "gzipSize": 9339
+    "size": 27575,
+    "gzipSize": 9300
   },
   {
     "chunkShortName": "spinner",

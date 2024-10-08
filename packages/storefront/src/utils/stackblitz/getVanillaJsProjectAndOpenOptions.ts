@@ -1,4 +1,4 @@
-import { dependencies } from '../../../../components-js/package.json';
+import { dependencies, devDependencies } from '../../../../components-js/package.json';
 import {
   getExternalDependencies,
   getSharedImportConstants,
@@ -13,6 +13,7 @@ import { initialStyles } from '@/lib/partialResults';
 
 const externalDependencyToSrcMap: Partial<Record<ExternalDependency, string>> = {
   imask: 'node_modules/imask/dist/imask.min.js',
+  'ag-grid-community': 'node_modules/ag-grid-community/dist/ag-grid-community.min.js',
 };
 
 export const replaceSharedAsyncFunctionWithConstants = (
@@ -43,7 +44,7 @@ export const getIndexHtml = (
   const externalScripts = externalDependencies
     .map((dependency) => `<script src="${externalDependencyToSrcMap[dependency]}"></script>`)
     .join('\n    ');
-  const scripts = [porscheDesignSystemScript, ...externalScripts].join('\n    ');
+  const scripts = [porscheDesignSystemScript, externalScripts].join('\n    ');
 
   const extendedMarkupWithLoadFunction = getExtendedMarkupWithLoadFunction(markup);
 
@@ -74,17 +75,20 @@ export const getIndexHtml = (
 </html>`;
 };
 
-export const getIndexJs = (pdsVersion: string): string => {
+export const getIndexJs = (pdsVersion: string, additionalImports?: string): string => {
+  const imports = `import * as porscheDesignSystem from './@porsche-design-system/components-js';
+window.porscheDesignSystem = porscheDesignSystem;${additionalImports ? `\n${additionalImports}` : ''}`;
+
   // workaround to initialize local package
-  return isStableStorefrontReleaseOrForcedPdsVersion(pdsVersion)
-    ? ''
-    : `import * as porscheDesignSystem from './@porsche-design-system/components-js';
-window.porscheDesignSystem = porscheDesignSystem;`; // appears to be using cjs build
+  return isStableStorefrontReleaseOrForcedPdsVersion(pdsVersion) ? '' : imports; // appears to be using cjs build
 };
 
-export const dependencyMap: Partial<DependencyMap<typeof dependencies>> = {
+export const dependencyMap: Partial<DependencyMap<typeof dependencies & typeof devDependencies>> = {
   imask: {
     imask: dependencies['imask'],
+  },
+  'ag-grid-community': {
+    'ag-grid-community': devDependencies['ag-grid-community'],
   },
 };
 
@@ -117,7 +121,12 @@ export const getVanillaJsProjectAndOpenOptions: GetStackBlitzProjectAndOpenOptio
     files: {
       ...porscheDesignSystemBundle,
       'index.html': getIndexHtml(markup, dir, globalStyles, externalDependencies, sharedImportKeys, pdsVersion),
-      'index.js': getIndexJs(pdsVersion),
+      'index.js': getIndexJs(
+        pdsVersion,
+        externalDependencies.includes('ag-grid-community')
+          ? `import './@porsche-design-system/components-js/ag-grid/theme.css';`
+          : ''
+      ),
     },
     template: 'javascript',
     title,

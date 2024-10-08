@@ -117,12 +117,18 @@ root.render(
   );
 };
 
-export const dependencyMap: Partial<DependencyMap<typeof dependencies>> = {
+export const dependencyMap: Partial<DependencyMap<typeof dependencies & typeof devDependencies>> = {
   imask: {
     'react-imask': dependencies['react-imask'],
   },
   'styled-components': {
     'styled-components': dependencies['styled-components'],
+  },
+  'ag-grid-community': {
+    'ag-grid-community': devDependencies['ag-grid-community'],
+  },
+  'ag-grid-react': {
+    'ag-grid-react': devDependencies['ag-grid-react'],
   },
 };
 

@@ -1,0 +1,111 @@
+<script type="module">
+  const grid = document.querySelector('#my-grid');
+
+  const rowData = [
+    {
+      model: '718',
+      date: '23.06.2021',
+      interest: 'New Car',
+      vin: '1FM5K7F84FGB16304',
+      purchaseIntention: '08/2021',
+      status: 'Won',
+      comment: '-',
+      leadId: '0000824402',
+    },
+    {
+      model: 'Panamera',
+      date: '19.06.2021',
+      interest: 'New Car',
+      vin: '2GCEC13T141374801',
+      purchaseIntention: '11/2021',
+      status: 'Lost',
+      comment: 'Some multiline text and a column with a min width.',
+      leadId: '0000824409',
+    },
+    {
+      model: '911',
+      date: '19.05.2021',
+      interest: 'Used Car',
+      vin: '5GAKVCKD8EJ335750',
+      purchaseIntention: '09/2021',
+      status: 'Won',
+      comment: '-',
+      leadId: '0000824408',
+    },
+    {
+      model: 'Macan',
+      date: '10.05.2021',
+      interest: 'Used Car',
+      vin: '1FMPU17L83LC09302',
+      purchaseIntention: '07/2021',
+      status: 'Lost',
+      comment: '-',
+      leadId: '0000824407',
+    },
+    {
+      model: 'Taycan',
+      date: '03.05.2021',
+      interest: 'New Car',
+      vin: 'JN1BY1AR3BM375187',
+      purchaseIntention: '05/2021',
+      status: 'Won',
+      comment: '-',
+      leadId: '0000824406',
+    },
+  ];
+
+  const gridOptions = {
+    // Data to be displayed
+    rowData: rowData.map((row, index) => ({ active: Boolean(index % 2) /* odd rows */, ...row })),
+    // Columns to be displayed (Should match rowData properties)
+    columnDefs: [
+      {
+        field: 'active',
+        showDisabledCheckboxes: true,
+        width: '170px',
+      },
+      {
+        field: 'model',
+        editable: false,
+        filter: true,
+      },
+      {
+        field: 'date',
+        editable: false,
+      },
+      {
+        field: 'interest',
+        editable: false,
+      },
+      {
+        field: 'vin',
+        width: '250px',
+        editable: false,
+      },
+      {
+        field: 'purchaseIntention',
+        editable: false,
+      },
+      {
+        field: 'status',
+        editable: false,
+      },
+      {
+        field: 'comment',
+        filter: false,
+        width: '500px',
+      },
+    ],
+    // Configurations applied to all columns
+    defaultColDef: {
+      filter: true,
+      editable: true,
+    },
+    // Grid Options & Callbacks
+    pagination: true,
+  };
+
+  agGrid.createGrid(grid, gridOptions);
+</script>
+
+<div id="my-grid" class="ag-theme-pds" style="height: 100vh; padding: 1rem"></div>

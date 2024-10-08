@@ -1,5 +1,6 @@
 [
   "/",
+  "/ag-grid/theme",
   "/assets/compulsory-statement.txt",
   "/components/accordion/examples",
   "/components/accordion/props",
@@ -283,6 +284,8 @@
   "/styles/spacing",
   "/styles/theme",
   "/styles/typography",
+  "https://ag-grid.com",
+  "https://ag-grid.com/javascript-data-grid/themes",
   "https://angular.io",
   "https://angular.io/api/core/CUSTOM_ELEMENTS_SCHEMA",
   "https://angular.io/guide/standalone-components",

@@ -16,16 +16,22 @@ export const cleanMarkup = (markup: string): string =>
     // remove multiple new lines
     .replace(/\n{3,}/g, '\n\n');
 
-export const patchThemeIntoMarkup = (markup: string, theme: PlaygroundTheme): string =>
-  ['dark', 'auto'].includes(theme)
-    ? markup
+export const patchThemeIntoMarkup = (markup: string, theme: PlaygroundTheme): string => {
+  markup = markup.replace(/ag-theme-pds(-dark)?/, theme === 'dark' ? 'ag-theme-pds-dark' : 'ag-theme-pds');
+  if (['dark', 'auto'].includes(theme)) {
+    return (
+      markup
         // add dark theme attribute if component supports it
         .replace(/(<[pP][\w-]+)/g, (m, $tag) => {
           return getComponentMeta(paramCase($tag.replace(/</g, '')) as TagName)?.isThemeable
             ? `${$tag} theme="${theme}"`
             : $tag;
         })
-    : markup;
+    );
+  } else {
+    return markup;
+  }
+};
 
 export const escapeHtml = (input: string): string =>
   input
