@@ -40,10 +40,11 @@ export const transformBooleanDigitAndUndefinedValues = (markup: string): string 
 
           // if the property type is 'string', or it's a non-primitive type with string-only allowed values, revert the value to a string
           if (
-            propMeta.type === 'string' ||
-            (propMeta.type[0] !== propMeta.type[0].toLowerCase() && // assume types starting with a capital letter are non-primitive. See: https://developer.mozilla.org/en-US/docs/Glossary/Primitive
-              Array.isArray(propMeta.allowedValues) &&
-              !propMeta.allowedValues.filter((item) => item !== null).some((item) => typeof item !== 'string'))
+            propMeta &&
+            (propMeta.type === 'string' ||
+              (propMeta.type[0] !== propMeta.type[0].toLowerCase() && // assume types starting with a capital letter are non-primitive. See: https://developer.mozilla.org/en-US/docs/Glossary/Primitive
+                Array.isArray(propMeta.allowedValues) &&
+                !propMeta.allowedValues.filter((item) => item !== null).some((item) => typeof item !== 'string')))
           ) {
             return `<${tagName}${rest} ${key}="${value}"`;
           }
