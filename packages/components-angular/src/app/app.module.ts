@@ -9,6 +9,7 @@ import * as fromComponents from './components';
 import * as fromExamples from './examples';
 import * as fromPages from './pages';
 import * as fromStyles from './styles';
+import { AgGridAngular } from 'ag-grid-angular';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import * as fromStyles from './styles';
     BrowserModule,
     FormsModule,
     AppRoutingModule,
+    AgGridAngular,
     IMaskModule,
     PorscheDesignSystemModule.load({ prefix: '', cdn: 'auto' }), // first configured theme wins or fallback 'light'
     PorscheDesignSystemModule.load({ prefix: 'my-prefix', cdn: 'auto', theme: 'dark' }),

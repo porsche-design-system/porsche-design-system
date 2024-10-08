@@ -6,6 +6,7 @@ describe('getComponentCss()', () => {
     ['small', 'regular', 'start', 'primary', false, 'light'],
     ['small', 'regular', 'left', 'primary', false, 'light'],
     ['small', 'regular', 'right', 'primary', false, 'light'],
+    ['small', 'regular', 'inherit', 'primary', false, 'light'],
     ['large', 'semi-bold', 'start', 'notification-info', true, 'light'],
     ['medium', 'bold', 'end', 'contrast-high', true, 'dark'],
     [

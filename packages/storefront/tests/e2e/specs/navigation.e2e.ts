@@ -18,6 +18,9 @@ test.beforeEach(async ({ page }) => {
   initConsoleObserver(page);
 
   page.on('request', (request) => {
+    // Skip test for pages which include embedded stackblitz example
+    if (page.url().includes('/ag-grid/theme')) return;
+
     const url = request.url();
     const allowedURLs = [
       'localhost:3001',

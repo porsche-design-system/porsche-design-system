@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, type Route } from '@angular/router';
+import { type Route, RouterModule } from '@angular/router';
 import * as fromExamples from './examples';
 import * as fromPages from './pages';
 import * as fromStyles from './styles';
@@ -94,6 +94,16 @@ export const routes: ExtendedRoute[] = [
     name: 'Accordion Example',
     path: 'accordion-example',
     component: fromExamples.AccordionExampleComponent,
+  },
+  {
+    name: 'AG Grid Example',
+    path: 'ag-grid-example',
+    component: fromExamples.AgGridExampleComponent,
+  },
+  {
+    name: 'AG Grid Example Storefront',
+    path: 'ag-grid-example-storefront',
+    component: fromExamples.AgGridExampleStorefrontComponent,
   },
   {
     name: 'Banner Example',

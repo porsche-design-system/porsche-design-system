@@ -33,6 +33,10 @@ jest.mock('../../../components-angular/package.json', () => ({
     imask: '0.0.0',
     'angular-imask': '0.0.0',
   },
+  devDependencies: {
+    'ag-grid-community': '0.0.0',
+    'ag-grid-angular': '0.0.0',
+  },
 }));
 
 describe('replaceSharedImportsWithConstants()', () => {
