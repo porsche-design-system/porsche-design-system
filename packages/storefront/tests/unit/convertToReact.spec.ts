@@ -335,4 +335,18 @@ describe('convertToReact()', () => {
 </PSomeTag>`
     );
   });
+
+  it('should convert markup with breakpoint customizable to React syntax', () => {
+    const markupWithBreakpointCustomizable = `<p-accordion
+    heading="Heading (size=responsive)"
+    size="{ base: 'small', xs: 'medium', s: 'small', m: 'medium', l: 'small', xl: 'medium' }"
+  ></p-accordion>`;
+
+    expect(convertToReact(markupWithBreakpointCustomizable)).toBe(
+      `<PAccordion
+    heading="Heading (size=responsive)"
+    size={{ base: 'small', xs: 'medium', s: 'small', m: 'medium', l: 'small', xl: 'medium' }}
+   />`
+    );
+  });
 });
