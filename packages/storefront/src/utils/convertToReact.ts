@@ -33,18 +33,14 @@ export const transformBooleanDigitAndUndefinedValues = (markup: string): string 
       .replace(/\s(\S+)="(true|false|-?\d*|undefined)"/g, ' $1={$2}')
       // iterate over transformed markup to check tag and prop metadata
       .replace(/<([a-zA-Z][\w-]*)([^>]*?)\s(\S+)=\{(.*?)}/g, (match, tagName, rest, key, value) => {
-        const propsMeta = tagNamesPropsMeta[tagName];
-
-        if (propsMeta) {
-          const propMeta = propsMeta[key];
-
+        const propMeta = tagNamesPropsMeta[tagName]?.[key];
+        if (propMeta) {
           // if the property type is 'string', or it's a non-primitive type with string-only allowed values, revert the value to a string
           if (
-            propMeta &&
-            (propMeta.type === 'string' ||
-              (propMeta.type[0] !== propMeta.type[0].toLowerCase() && // assume types starting with a capital letter are non-primitive. See: https://developer.mozilla.org/en-US/docs/Glossary/Primitive
-                Array.isArray(propMeta.allowedValues) &&
-                !propMeta.allowedValues.filter((item) => item !== null).some((item) => typeof item !== 'string')))
+            propMeta.type === 'string' ||
+            (propMeta.type[0] !== propMeta.type[0].toLowerCase() && // assume types starting with a capital letter are non-primitive. See: https://developer.mozilla.org/en-US/docs/Glossary/Primitive
+              Array.isArray(propMeta.allowedValues) &&
+              !propMeta.allowedValues.filter((item) => item !== null).some((item) => typeof item !== 'string'))
           ) {
             return `<${tagName}${rest} ${key}="${value}"`;
           }
