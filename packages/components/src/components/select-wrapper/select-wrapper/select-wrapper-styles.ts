@@ -3,10 +3,8 @@ import { getCss } from '../../../utils';
 import {
   addImportantToEachRule,
   colorSchemeStyles,
-  getThemedColors,
   getTransition,
   hostHiddenStyles,
-  prefersColorSchemeDarkMediaQuery,
   preventFoucOfNestedElementsStyles,
 } from '../../../styles';
 import {
@@ -29,8 +27,6 @@ export const getComponentCss = (
   state: FormState,
   theme: Theme
 ): string => {
-  const { primaryColor, backgroundColor } = getThemedColors(theme);
-  const { primaryColor: primaryColorDark, backgroundColor: backgroundColorDark } = getThemedColors('dark');
   return getCss({
     '@global': {
       ':host': {
