@@ -125,7 +125,7 @@ export const getComponentCss = (
         font: `${fontSizeTextSmall} ${fontFamily}`, // needed for correct width and height definition based on ex-unit
         boxSizing: 'content-box',
         border: `${borderWidthBase} solid ${buttonBorderColor}`,
-        borderRadius: `calc((${fontLineHeight} + ${borderWidthBase}*2)  / 2)`,
+        borderRadius: `calc((${fontLineHeight} + ${borderWidthBase}*2) / 2)`,
         backgroundColor: buttonBackgroundColor,
         cursor: isDisabledOrLoading(disabled, loading) ? 'not-allowed' : 'pointer',
         transition: `${getTransition('background-color')}, ${getTransition('border-color')}, ${getTransition('color')}`,
