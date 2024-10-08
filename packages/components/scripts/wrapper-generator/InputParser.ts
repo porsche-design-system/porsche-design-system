@@ -95,8 +95,8 @@ export class InputParser {
 
   public getDeprecationMessage(component: TagName): string {
     const fileContent = this.getComponentSourceCode(component);
-    const [deprecated, rawDeprecationMessage = ''] =
-      /\/\*\* @deprecated (.*)\*\/\n@Component\({/.exec(fileContent) || [];
+    // Regex does not work for multiline deprecation message
+    const [deprecated, rawDeprecationMessage = ''] = /@deprecated ([^*]*)[\s\S]*?@Component/.exec(fileContent) || [];
 
     return !!deprecated ? `/** @deprecated ${rawDeprecationMessage.trim()} */\n` : '';
   }
