@@ -27,26 +27,38 @@ export const transformEvents = (markup: string): string =>
 export const transformBooleanDigitAndUndefinedValues = (markup: string): string => {
   const tagNamesPropsMeta = getPropsMeta(markup);
 
+  return (
+    markup
+      // replace boolean, numeric, and 'undefined' string values with their JSX expression form (e.g., true -> {true}, "1" -> {1})
+      .replace(/\s(\S+)="(true|false|-?\d*|undefined)"/g, ' $1={$2}')
+      // iterate over transformed markup to check tag and prop metadata
+      .replace(/<([a-zA-Z][\w-]*)([^>]*?)\s(\S+)=\{(.*?)}/g, (match, tagName, rest, key, value) => {
+        const propsMeta = tagNamesPropsMeta[tagName];
+
+        if (propsMeta) {
+          const propMeta = propsMeta[key];
+
+          // if the property type is 'string', or it's a non-primitive type with string-only allowed values, revert the value to a string
+          if (
+            propMeta.type === 'string' ||
+            (propMeta.type[0] !== propMeta.type[0].toLowerCase() && // assume types starting with a capital letter are non-primitive. See: https://developer.mozilla.org/en-US/docs/Glossary/Primitive
+              Array.isArray(propMeta.allowedValues) &&
+              propMeta.allowedValues.every((item) => typeof item === 'string'))
+          ) {
+            return `<${tagName}${rest} ${key}="${value}"`;
+          }
+        }
+
+        return match; // return original match if no special handling is required
+      })
+  );
+};
+
+export const transformBooleanDigitAndUndefinedValues2 = (markup: string): string => {
   return markup
     .replace(/\s(\S+)="(true|false|-?\d*|undefined)"/g, ' $1={$2}')
-    .replace(/<([a-zA-Z][\w-]*)([^>]*?)\s(\S+)=\{(.*?)}/g, (match, tagName, rest, key, value) => {
-      const propsMeta = tagNamesPropsMeta[tagName];
-
-      if (propsMeta) {
-        const propMeta = propsMeta[key];
-        if (
-          propMeta &&
-          // we assume that each type starting with a capital letter is a none primitive type. See: https://developer.mozilla.org/en-US/docs/Glossary/Primitive
-          initialIsCapital(propMeta.type) &&
-          Array.isArray(propMeta.allowedValues) &&
-          propMeta.allowedValues.every((item) => typeof item === 'string')
-        ) {
-          return `<${tagName}${rest} ${key}="${value}"`;
-        }
-      }
-
-      return match;
-    });
+    .replace(/{(911|718)}/g, '"$1"') // TODO replace temporary 911|718 work around with more generic approach
+    .replace(/{(1234)}/g, '"$1"'); // pin-code value prop
 };
 
 export const transformCustomElementTagName = (markup: string): string =>
@@ -88,13 +100,12 @@ function getPropsMeta(markup: string): TagNamesInfo {
   const tagNames = getTagNames(markup);
 
   return tagNames.reduce((acc: TagNamesInfo, tagName) => {
-    acc[tagName] = getComponentMeta(tagName).propsMeta;
+    const componentMeta = getComponentMeta(tagName);
+    if (componentMeta?.propsMeta) {
+      acc[tagName] = componentMeta.propsMeta;
+    }
     return acc;
   }, {});
-}
-
-function initialIsCapital(word: string): boolean {
-  return word[0] !== word[0].toLowerCase();
 }
 
 export const convertToReact = (markup: string): string =>
