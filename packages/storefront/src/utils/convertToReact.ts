@@ -43,7 +43,7 @@ export const transformBooleanDigitAndUndefinedValues = (markup: string): string 
             propMeta.type === 'string' ||
             (propMeta.type[0] !== propMeta.type[0].toLowerCase() && // assume types starting with a capital letter are non-primitive. See: https://developer.mozilla.org/en-US/docs/Glossary/Primitive
               Array.isArray(propMeta.allowedValues) &&
-              propMeta.allowedValues.every((item) => typeof item === 'string'))
+              !propMeta.allowedValues.some((item) => typeof item !== 'string'))
           ) {
             return `<${tagName}${rest} ${key}="${value}"`;
           }
