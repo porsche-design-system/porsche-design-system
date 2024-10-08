@@ -24,6 +24,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 #### Fixed
 
+- Angular, React, Vue: missing `@deprecated` annotations for deprecated components
+  ([#3525](https://github.com/porsche-design-system/porsche-design-system/pull/3525))
 - Partials: Replace meta tag `apple-mobile-web-app-capable` with `mobile-web-app-capable` in `getMetaTagsAndIconLinks`
   partial. ([#3519](https://github.com/porsche-design-system/porsche-design-system/pull/3519))
 
