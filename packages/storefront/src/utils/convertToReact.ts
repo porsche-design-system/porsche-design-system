@@ -32,24 +32,34 @@ export const transformBooleanDigitAndUndefinedValues = (markup: string): string 
       // replace boolean, numeric, and 'undefined' string values with their JSX expression form (e.g., true -> {true}, "1" -> {1})
       .replace(/\s(\S+)="(true|false|-?\d*|undefined)"/g, ' $1={$2}')
       // iterate over transformed markup to check tag and prop metadata
-      .replace(/<([a-zA-Z][\w-]*)([^>]*?)\s(\S+)=\{(.*?)}/g, (match, tagName, rest, key, value) => {
-        const propMeta = tagNamesPropsMeta[tagName]?.[key];
-        if (propMeta) {
+      .replace(
+        /<([a-zA-Z][\w-]*)([^>]*?)\s(\S+)=\{([^{}]*(?:\{[^{}]*}[^{}]*)*)}/g,
+        (match, tagName, rest, key, value) => {
+          const propMeta = tagNamesPropsMeta[tagName]?.[key];
+          if (!propMeta) return match;
+
+          const { type, isBreakpointCustomizable, allowedValues } = propMeta;
+          const isStringType = type === 'string';
+          const isNonPrimitiveType = type[0] !== type[0].toLowerCase(); // assume types starting with a capital letter are non-primitive
+          const hasOnlyStringValues =
+            Array.isArray(allowedValues) && allowedValues.every((item) => item === null || typeof item === 'string');
+
           // if the property type is 'string', or it's a non-primitive type with string-only allowed values, revert the value to a string
-          if (
-            propMeta.type === 'string' ||
-            (propMeta.type[0] !== propMeta.type[0].toLowerCase() && // assume types starting with a capital letter are non-primitive. See: https://developer.mozilla.org/en-US/docs/Glossary/Primitive
-              Array.isArray(propMeta.allowedValues) &&
-              !propMeta.allowedValues.filter((item) => item !== null).some((item) => typeof item !== 'string'))
-          ) {
+          if (!isBreakpointCustomizable && (isStringType || (isNonPrimitiveType && hasOnlyStringValues))) {
             return `<${tagName}${rest} ${key}="${value}"`;
           }
-        }
 
-        return match; // return original match if no special handling is required
-      })
+          return match;
+        }
+      )
   );
 };
+
+export const transformBooleanDigitAndUndefinedValues2 = (markup: string): string =>
+  markup
+    .replace(/\s(\S+)="(true|false|-?\d*|undefined)"/g, ' $1={$2}')
+    .replace(/{(911|718)}/g, '"$1"') // TODO replace temporary 911|718 work around with more generic approach
+    .replace(/{(1234)}/g, '"$1"'); // pin-code value prop
 
 export const transformCustomElementTagName = (markup: string): string =>
   markup.replace(/<(\/?)(p-[\w-]+)/g, (_, $slash, $tag) => `<${$slash}${pascalCase($tag)}`);
