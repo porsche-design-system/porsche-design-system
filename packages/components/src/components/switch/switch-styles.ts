@@ -94,7 +94,8 @@ export const getComponentCss = (
     toggleBackgroundColorHover: toggleBackgroundColorHoverDark,
     textColor: textColorDark,
   } = getColors(checked, disabled, loading, 'dark');
-  const toggleTransitionOffset = `calc(${fontLineHeight} - ${borderWidthBase})`;
+  const toggleTransitionOffsetLtr = `calc(${fontLineHeight} - 2px)`;
+  const toggleTransitionOffsetRtl = `calc((${fontLineHeight} - 2px) * -1)`;
 
   return getCss({
     '@global': {
@@ -186,9 +187,9 @@ export const getComponentCss = (
       borderRadius: '50%',
       backgroundColor: toggleBackgroundColor,
       transition: `${getTransition('background-color')}, ${getTransition('transform')}`,
-      transform: `translate3d(${checked ? toggleTransitionOffset : '2px'}, 0, 0)`,
+      transform: `translate3d(${checked ? toggleTransitionOffsetLtr : '2px'}, 0, 0)`,
       '&:dir(rtl)': {
-        transform: `translate3d(${checked ? -toggleTransitionOffset : '-2px'}, 0, 0)`,
+        transform: `translate3d(${checked ? toggleTransitionOffsetRtl : '-2px'}, 0, 0)`,
       },
       ...prefersColorSchemeDarkMediaQuery(theme, {
         backgroundColor: toggleBackgroundColorDark,
