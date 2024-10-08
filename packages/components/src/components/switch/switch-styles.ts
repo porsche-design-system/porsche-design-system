@@ -13,7 +13,14 @@ import {
   prefersColorSchemeDarkMediaQuery,
   preventFoucOfNestedElementsStyles,
 } from '../../styles';
-import { borderWidthBase, spacingStaticSmall, textSmallStyle } from '@porsche-design-system/styles';
+import {
+  borderWidthBase,
+  fontFamily,
+  fontLineHeight,
+  fontSizeTextSmall,
+  spacingStaticSmall,
+  textSmallStyle,
+} from '@porsche-design-system/styles';
 import { getFunctionalComponentLoadingMessageStyles } from '../common/loading-message/loading-message-styles';
 
 const getColors = (
@@ -87,6 +94,8 @@ export const getComponentCss = (
     toggleBackgroundColorHover: toggleBackgroundColorHoverDark,
     textColor: textColorDark,
   } = getColors(checked, disabled, loading, 'dark');
+  const toggleTransitionOffsetLtr = `calc(${fontLineHeight} - 2px)`;
+  const toggleTransitionOffsetRtl = `calc((${fontLineHeight} - 2px) * -1)`;
 
   return getCss({
     '@global': {
@@ -111,11 +120,12 @@ export const getComponentCss = (
         display: 'flex',
         alignItems: 'center',
         flexShrink: 0,
-        width: '48px',
-        height: '28px',
-        boxSizing: 'border-box',
+        width: `calc(${fontLineHeight} * 2 - ${borderWidthBase}*2)`,
+        height: fontLineHeight,
+        font: `${fontSizeTextSmall} ${fontFamily}`, // needed for correct width and height definition based on ex-unit
+        boxSizing: 'content-box',
         border: `${borderWidthBase} solid ${buttonBorderColor}`,
-        borderRadius: '14px',
+        borderRadius: `calc((${fontLineHeight} + ${borderWidthBase}*2) / 2)`,
         backgroundColor: buttonBackgroundColor,
         cursor: isDisabledOrLoading(disabled, loading) ? 'not-allowed' : 'pointer',
         transition: `${getTransition('background-color')}, ${getTransition('border-color')}, ${getTransition('color')}`,
@@ -172,14 +182,14 @@ export const getComponentCss = (
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center',
-      width: '20px',
-      height: '20px',
+      width: `calc(${fontLineHeight} - ${borderWidthBase}*2)`,
+      height: `calc(${fontLineHeight} - ${borderWidthBase}*2)`,
       borderRadius: '50%',
       backgroundColor: toggleBackgroundColor,
       transition: `${getTransition('background-color')}, ${getTransition('transform')}`,
-      transform: `translate3d(${checked ? '22px' : '2px'}, 0, 0)`,
+      transform: `translate3d(${checked ? toggleTransitionOffsetLtr : '2px'}, 0, 0)`,
       '&:dir(rtl)': {
-        transform: `translate3d(${checked ? '-22px' : '-2px'}, 0, 0)`,
+        transform: `translate3d(${checked ? toggleTransitionOffsetRtl : '-2px'}, 0, 0)`,
       },
       ...prefersColorSchemeDarkMediaQuery(theme, {
         backgroundColor: toggleBackgroundColorDark,
@@ -187,8 +197,8 @@ export const getComponentCss = (
     },
     ...(loading && {
       spinner: {
-        width: '28px',
-        height: '28px',
+        width: `calc(${fontLineHeight} + ${borderWidthBase}*2)`,
+        height: `calc(${fontLineHeight} + ${borderWidthBase}*2)`,
       },
     }),
     // .loading
