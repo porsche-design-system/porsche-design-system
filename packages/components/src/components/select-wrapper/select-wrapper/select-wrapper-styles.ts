@@ -53,18 +53,6 @@ export const getComponentCss = (
           paddingInlineEnd: getCalculatedFormElementPaddingHorizontal(1),
           // TODO: needs to be aligned with multi-select
           ...(hasCustomDropdown && !isDisabled && { borderColor: 'transparent' }),
-          ...(!hasCustomDropdown &&
-            !isDisabled && {
-              // Explicitly set option styles to avoid wrong colors in native mode
-              '& > *': {
-                color: primaryColor,
-                backgroundColor,
-                ...prefersColorSchemeDarkMediaQuery(theme, {
-                  color: primaryColorDark,
-                  backgroundColor: backgroundColorDark,
-                }),
-              },
-            }),
         })
       ),
     },
