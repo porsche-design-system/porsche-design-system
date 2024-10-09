@@ -251,6 +251,20 @@ test.describe('form', () => {
     expect((await getEventSummary(form, 'submit')).counter).toBe(1);
     expect(await getFormDataValue(form, name)).toBe('');
   });
+
+  test('should disable textarea if within disabled fieldset', async ({ page }) => {
+    const name = 'name';
+    const value = 'Hallo';
+    const host = getHost(page);
+    await initTextarea(page, {
+      props: { name, value },
+      isWithinForm: true,
+      markupBefore: `<fieldset disabled>`,
+      markupAfter: `</fieldset>`,
+    });
+
+    await expect(host).toHaveJSProperty('disabled', true);
+  });
 });
 
 test.describe('focus state', () => {
