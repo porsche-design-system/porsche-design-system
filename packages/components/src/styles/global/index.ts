@@ -1,3 +1,3 @@
-// Since slotted input indicator is only relevant for one component we don't want it to bundle into main chunk
+// Since slotted input indicator and slotted select option is only relevant for one component we don't want it to bundle into main chunk
 export * from './slotted-anchor-styles';
 export * from './slotted-picture-image-styles';
