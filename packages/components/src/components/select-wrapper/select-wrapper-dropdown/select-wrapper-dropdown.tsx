@@ -50,7 +50,7 @@ import { getComponentCss } from './select-wrapper-dropdown-styles';
 
 @Component({
   tag: 'p-select-wrapper-dropdown',
-  shadow: true,
+  shadow: { delegatesFocus: true },
 })
 export class SelectWrapperDropdown {
   @Element() public host!: HTMLElement;

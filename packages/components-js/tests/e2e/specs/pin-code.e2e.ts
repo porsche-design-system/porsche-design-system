@@ -53,7 +53,7 @@ const initPinCode = (page: Page, opts?: InitOptions) => {
   return setContentWithDesignSystem(page, isWithinForm ? `<form onsubmit="return false;">${markup}</form>` : markup);
 };
 
-test.describe('label', () => {
+test.describe('focus state', () => {
   test('should focus input with id="current-input" when label text is clicked', async ({ page }) => {
     await initPinCode(page, { props: { label: 'Some label' } });
     const label = getLabel(page);
@@ -65,6 +65,20 @@ test.describe('label', () => {
     await label.click();
 
     expect((await getEventSummary(input, 'focus')).counter).toBe(1);
+  });
+  test('should focus input with id="current-input" when host is focused', async ({ page }) => {
+    await initPinCode(page);
+    const host = getHost(page);
+    const input = getCurrentInput(page);
+
+    await addEventListener(input, 'focus');
+    expect((await getEventSummary(input, 'focus')).counter).toBe(0);
+    await expect(input).toHaveCSS('border-color', 'rgb(107, 109, 112)');
+
+    await host.focus();
+    await waitForStencilLifecycle(page);
+    expect((await getEventSummary(input, 'focus')).counter).toBe(1);
+    await expect(input).toHaveCSS('border-color', 'rgb(1, 2, 5)');
   });
 });
 

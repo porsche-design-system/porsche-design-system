@@ -686,11 +686,13 @@ skipInBrowsers(['firefox', 'webkit'], () => {
       await addEventListener(inputElement, 'focus');
 
       expect((await getEventSummary(inputElement, 'focus')).counter).toBe(0);
+      await expect(inputElement).toHaveCSS('border-color', 'rgb(107, 109, 112)');
 
       await host.focus();
       await waitForStencilLifecycle(page);
 
       expect((await getEventSummary(inputElement, 'focus')).counter).toBe(1);
+      await expect(inputElement).toHaveCSS('border-color', 'rgb(1, 2, 5)');
     });
   });
 });

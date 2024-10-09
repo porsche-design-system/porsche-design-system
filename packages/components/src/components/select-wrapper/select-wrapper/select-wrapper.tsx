@@ -49,7 +49,7 @@ const propTypes: PropTypes<typeof SelectWrapper> = {
  */
 @Component({
   tag: 'p-select-wrapper',
-  shadow: true,
+  shadow: { delegatesFocus: true },
 })
 export class SelectWrapper {
   @Element() public host!: HTMLElement;
