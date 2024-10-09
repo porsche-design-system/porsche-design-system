@@ -61,7 +61,7 @@ const propTypes: PropTypes<typeof PinCode> = {
  */
 @Component({
   tag: 'p-pin-code',
-  shadow: true,
+  shadow: { delegatesFocus: true },
 })
 export class PinCode {
   @Element() public host!: HTMLElement;
