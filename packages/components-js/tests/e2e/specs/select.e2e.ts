@@ -673,11 +673,13 @@ test.describe('focus', () => {
     await addEventListener(buttonElement, 'focus');
 
     expect((await getEventSummary(buttonElement, 'focus')).counter).toBe(0);
+    await expect(buttonElement).toHaveCSS('border-color', 'rgb(107, 109, 112)');
 
     await host.focus();
     await waitForStencilLifecycle(page);
 
     expect((await getEventSummary(buttonElement, 'focus')).counter).toBe(1);
+    await expect(buttonElement).toHaveCSS('border-color', 'rgb(1, 2, 5)');
   });
 });
 
