@@ -14849,11 +14849,12 @@ button {
   display: flex;
   align-items: center;
   flex-shrink: 0;
-  width: 48px;
-  height: 28px;
-  box-sizing: border-box;
+  width: calc(calc(6px + 2.125ex) * 2 - 2px*2);
+  height: calc(6px + 2.125ex);
+  font: 1rem 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  box-sizing: content-box;
   border: 2px solid #6B6D70;
-  border-radius: 14px;
+  border-radius: calc((calc(6px + 2.125ex) + 2px*2) / 2);
   background-color: transparent;
   cursor: pointer;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
@@ -14889,8 +14890,8 @@ label {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 20px;
-  height: 20px;
+  width: calc(calc(6px + 2.125ex) - 2px*2);
+  height: calc(calc(6px + 2.125ex) - 2px*2);
   border-radius: 50%;
   background-color: #010205;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), transform var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
