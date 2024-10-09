@@ -175,6 +175,14 @@ export class Textarea {
     this.value = '';
   }
 
+  public formDisabledCallback(disabled: boolean): void {
+    this.disabled = disabled;
+  }
+
+  public formStateRestoreCallback(state: any): void {
+    this.value = state;
+  }
+
   public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
     return hasPropValueChanged(newVal, oldVal);
   }
@@ -186,6 +194,11 @@ export class Textarea {
     if (this.hasCounter) {
       this.setCounterAriaTextDebounced();
     }
+    this.internals.setValidity(
+      this.textAreaElement.validity,
+      this.textAreaElement.validationMessage,
+      this.textAreaElement
+    );
   }
 
   public render(): JSX.Element {
