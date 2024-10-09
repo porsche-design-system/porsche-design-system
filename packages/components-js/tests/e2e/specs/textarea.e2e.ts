@@ -281,7 +281,6 @@ test.describe('focus state', () => {
       expect((await getEventSummary(textarea, 'focus')).counter).toBe(1);
     });
   });
-
   test('should focus textarea when host is focused', async ({ page }) => {
     await initTextarea(page);
     const host = getHost(page);
@@ -289,10 +288,12 @@ test.describe('focus state', () => {
 
     await addEventListener(textarea, 'focus');
     expect((await getEventSummary(textarea, 'focus')).counter).toBe(0);
+    await expect(textarea).toHaveCSS('border-color', 'rgb(107, 109, 112)');
 
     await host.focus();
     await waitForStencilLifecycle(page);
     expect((await getEventSummary(textarea, 'focus')).counter).toBe(1);
+    await expect(textarea).toHaveCSS('border-color', 'rgb(1, 2, 5)');
   });
 });
 
