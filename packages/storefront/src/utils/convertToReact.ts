@@ -1,8 +1,4 @@
 import { camelCase, pascalCase, paramCase } from 'change-case';
-import { getComponentMeta, PropMeta } from '@porsche-design-system/component-meta';
-import type { TagName } from '@porsche-design-system/shared';
-
-type TagNamesInfo = { [tagName: string]: { [propName: string]: PropMeta } | undefined };
 
 export const transformObjectValues = (markup: string): string =>
   // remove quotes from object values but add double brackets and camelCase
@@ -24,36 +20,8 @@ export const transformEvents = (markup: string): string =>
   // transform to camelCase event binding syntax
   markup.replace(/\son([a-z]+?)="(.*?)"/g, (_, $key, $value) => ` on${pascalCase($key)}={() => { ${$value} }}`);
 
-export const transformBooleanDigitAndUndefinedValues = (markup: string): string => {
-  const tagNamesPropsMeta = getPropsMeta(markup);
-
-  return (
-    markup
-      // replace boolean, numeric, and 'undefined' string values with their JSX expression form (e.g., true -> {true}, "1" -> {1})
-      .replace(/\s(\S+)="(true|false|-?\d*|undefined)"/g, ' $1={$2}')
-      // iterate over transformed markup to check tag and prop metadata
-      .replace(
-        /<([a-zA-Z][\w-]*)([^>]*?)\s(\S+)=\{([^{}]*(?:\{[^{}]*}[^{}]*)*)}/g,
-        (match, tagName, rest, key, value) => {
-          const propMeta = tagNamesPropsMeta[tagName]?.[key];
-          if (!propMeta) return match;
-
-          const { type, isBreakpointCustomizable, allowedValues } = propMeta;
-          const isStringType = type === 'string';
-          const isNonPrimitiveType = type[0] !== type[0].toLowerCase(); // assume types starting with a capital letter are non-primitive
-          const hasOnlyStringValues =
-            Array.isArray(allowedValues) && allowedValues.every((item) => item === null || typeof item === 'string');
-
-          // if the property type is 'string', or it's a non-primitive type with string-only allowed values, revert the value to a string
-          if (!isBreakpointCustomizable && (isStringType || (isNonPrimitiveType && hasOnlyStringValues))) {
-            return `<${tagName}${rest} ${key}="${value}"`;
-          }
-
-          return match;
-        }
-      )
-  );
-};
+export const transformBooleanDigitAndUndefinedValues = (markup: string): string =>
+  markup.replace(/\s(\S+)="(true|false|-?\d*|undefined)"/g, ' $1={$2}').replace(/{(911|718|360|1234)}/g, '"$1"'); // TODO replace hardcoded values with more generic approach (Configurable Storefront Examples #3315)
 
 export const transformCustomElementTagName = (markup: string): string =>
   markup.replace(/<(\/?)(p-[\w-]+)/g, (_, $slash, $tag) => `<${$slash}${pascalCase($tag)}`);
@@ -79,28 +47,6 @@ export const transformStyleAttribute = (markup: string): string =>
 
     return ` style={{ ${pairs.join(', ')} }}`;
   });
-
-function getTagNames(markup: string): TagName[] {
-  const regex = /<\s*(p-[a-zA-Z-]+)\b/g;
-  const components = [];
-  let match;
-  while ((match = regex.exec(markup)) !== null) {
-    components.push(match[1]);
-  }
-  return [...new Set(components)] as TagName[];
-}
-
-function getPropsMeta(markup: string): TagNamesInfo {
-  const tagNames = getTagNames(markup);
-
-  return tagNames.reduce((acc: TagNamesInfo, tagName) => {
-    const componentMeta = getComponentMeta(tagName);
-    if (componentMeta?.propsMeta) {
-      acc[tagName] = componentMeta.propsMeta;
-    }
-    return acc;
-  }, {});
-}
 
 export const convertToReact = (markup: string): string =>
   [
