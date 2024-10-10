@@ -590,6 +590,21 @@ test.describe('form', () => {
     expect((await getEventSummary(form, 'submit')).counter).toBe(1);
     expect(await getFormDataValue(form, name)).toBe(null);
   });
+
+  test('should disable checkbox if within disabled fieldset', async ({ page }) => {
+    const name = 'name';
+    const value = 'Hallo';
+    const host = getHost(page);
+    await initCheckbox(page, {
+      name,
+      value,
+      isWithinForm: true,
+      markupBefore: `<fieldset disabled>`,
+      markupAfter: `</fieldset>`,
+    });
+
+    await expect(host).toHaveJSProperty('disabled', true);
+  });
 });
 
 test.describe('Event', () => {

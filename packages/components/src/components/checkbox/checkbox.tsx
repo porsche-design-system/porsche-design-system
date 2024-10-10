@@ -161,7 +161,23 @@ export class Checkbox {
   public formResetCallback(): void {
     this.internals.setValidity({});
     this.internals.setFormValue(undefined);
-    this.checked = false;
+    this.checked = false; // TODO: Reset to the initial 'checked' state. Directly using this.host.hasAttribute('checked') doesn't work in frameworks like React, as it may not reflect the actual state. Need a more reliable way to track and restore the original checked value.
+  }
+
+  public formDisabledCallback(disabled: boolean): void {
+    this.disabled = disabled;
+  }
+
+  public formStateRestoreCallback(state: string): void {
+    this.checked = !!state;
+  }
+
+  public componentDidRender(): void {
+    this.internals.setValidity(
+      this.checkboxInputElement.validity,
+      this.checkboxInputElement.validationMessage,
+      this.checkboxInputElement
+    );
   }
 
   public render(): JSX.Element {
