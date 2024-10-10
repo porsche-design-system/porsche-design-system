@@ -401,10 +401,6 @@ export namespace Components {
      */
     interface PCanvas {
         /**
-          * The grid for main and footer slot is limited to a max-width
-         */
-        "gridMaxWidth"?: boolean;
-        /**
           * The icon to toggle the Sidebar on the end side
          */
         "sidebarEndIcon"?: CanvasSidebarEndIcon;
@@ -3434,10 +3430,6 @@ declare namespace LocalJSX {
      * @experimental 
      */
     interface PCanvas {
-        /**
-          * The grid for main and footer slot is limited to a max-width
-         */
-        "gridMaxWidth"?: boolean;
         /**
           * The icon to toggle the Sidebar on the end side
          */

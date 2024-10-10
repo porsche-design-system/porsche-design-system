@@ -1,4 +1,4 @@
-import { getCss, isThemeDark, type Theme } from '../../utils';
+import { getCss, type Theme } from '../../utils';
 import {
   addImportantToEachRule,
   colorSchemeStyles,
@@ -8,23 +8,21 @@ import {
   preventFoucOfNestedElementsStyles,
 } from '../../styles';
 import {
-  breakpointM,
   breakpointS,
   getMediaQueryMin,
   gridGap,
-  spacingStaticLarge,
-  spacingStaticMedium,
   spacingStaticSmall,
   textSmallStyle,
 } from '@porsche-design-system/styles';
 
 const cssVarSidebarStartWidth = '--p-canvas-sidebar-start-width';
 const cssVarSidebarEndWidth = '--p-canvas-sidebar-end-width';
-const cssVarBackground = '--p-canvas-background';
+const cssVarGridColumns = '--p-canvas-grid-columns';
+const cssVarGridMaxWidth = '--p-canvas-grid-max-width';
 
 const spacingBase = gridGap.replace('36px', '24px');
 const mainGridColumnGap = gridGap.replace('36px', '24px').replace('vw', 'cqw');
-const mainGridRowGap = gridGap.replace('vw', 'cqw');
+// const mainGridRowGap = gridGap.replace('vw', 'cqw');
 const mediaQueryTabletView = getMediaQueryMin('s');
 const mediaQueryDesktopView = getMediaQueryMin('m');
 const sidebarWidth = '320px';
@@ -38,15 +36,8 @@ const borderRadius = '16px';
 
 const headerPadding = spacingStaticSmall;
 
-export const getComponentCss = (
-  theme: Theme,
-  isSidebarStartOpen: boolean,
-  isSidebarEndOpen: boolean,
-  gridMaxWidth: boolean
-): string => {
+export const getComponentCss = (theme: Theme, isSidebarStartOpen: boolean, isSidebarEndOpen: boolean): string => {
   const { primaryColor, backgroundColor, backgroundSurfaceColor, contrastLowColor } = getThemedColors(theme);
-
-  const headerColor = isThemeDark(theme) ? 'rgba(14, 14, 18, 0.79)' : 'hsla(0, 0%, 100%, 0.79)';
 
   return getCss({
     '@global': {
@@ -73,47 +64,25 @@ export const getComponentCss = (
           // flexDirection: 'column',
           // gap: spacingStaticSmall,
         },
-        // pre-defined utility classes
-        '&(.p-module)': {
-          gridColumn: '1/-1',
-        },
-        '&(.p-module--subgrid)': {
-          display: 'grid',
-          gridTemplateColumns: 'subgrid',
-          rowGap: spacingBase,
-        },
-        '&(.p-module--more-space-above-small)': {
-          marginTop: spacingStaticSmall,
-        },
-        '&(.p-module--more-space-above-medium)': {
-          marginTop: spacingStaticMedium,
-        },
-        '&(.p-module--more-space-above-large)': {
-          marginTop: spacingStaticLarge,
-        },
-        '&(.p-module--less-space-above-small)': {
-          marginTop: `max(calc(-1 * ${spacingBase}), calc(-1 * ${spacingStaticSmall}))`,
-        },
-        '&(.p-module--less-space-above-medium)': {
-          marginTop: `max(calc(-1 * ${spacingBase}), calc(-1 * ${spacingStaticMedium}))`,
-        },
-        '&(.p-module--less-space-above-large)': {
-          marginTop: `max(calc(-1 * ${spacingBase}), calc(-1 * ${spacingStaticLarge}))`,
-        },
-        '&(.p-flex)': {
-          display: 'flex',
-        },
-        '&(.p-align-items--center)': {
-          alignItems: 'center',
-        },
-        '&(.p-gap--small)': {
-          gap: spacingStaticSmall,
-        },
-        '&(.p-gap--medium)': {
-          gap: spacingStaticMedium,
-        },
-        '&(.p-gap--large)': {
-          gap: spacingStaticLarge,
+      },
+      'slot[name="background"]': {
+        display: 'block',
+        gridArea: '1/1/-1/-1',
+        position: 'sticky',
+        top: 0,
+        zIndex: 0,
+        width: '100dvw',
+        height: '100dvh',
+        pointerEvents: 'none',
+        overflow: 'hidden',
+        // filter: 'blur(32px)', // empower ultra smooth video or image gradients
+        // transform: 'scale3d(1.5, 1.5, 1.5)', // needed for Safari to force GPU acceleration for `filter` and to ensure blurry area appear at the edges
+        // opacity: 0.5,
+        transform: 'translate3d(0,0,0)', // needed for Safari to force GPU acceleration
+        '&::slotted(video), &::slotted(img)': {
+          width: '100%',
+          height: '100%',
+          objectFit: 'cover',
         },
       },
       'slot[name="title"]::slotted(a)': {
@@ -146,32 +115,109 @@ export const getComponentCss = (
         display: 'grid',
         gridTemplateColumns: 'minmax(0, 1fr) auto minmax(0, 1fr)',
         gap: spacingBase,
-        backgroundColor: headerColor,
-        WebkitBackdropFilter: 'blur(32px)',
-        backdropFilter: 'blur(32px)',
+        // backgroundColor: 'transparent',
+        // WebkitBackdropFilter: 'blur(32px)',
+        // backdropFilter: 'blur(32px)',
         alignItems: 'center',
       },
+      'header .blur-layers': {
+        position: 'absolute',
+        inset: 0,
+        zIndex: -1,
+        pointerEvents: 'none',
+        height: '100%',
+        width: '100%',
+      },
+      'header .blur-layers:before': {
+        content: '""',
+        zIndex: 1,
+        WebkitBackdropFilter: 'blur(64px)',
+        backdropFilter: 'blur(64px)',
+        WebkitMaskImage:
+          'linear-gradient(to bottom, rgba(0, 0, 0, 100%) 0%, rgba(0, 0, 0, 1) 12.5%, rgba(0, 0, 0, 1) 25%, rgba(0, 0, 0, 0) 37.5%)', // Safari prefix
+        maskImage:
+          'linear-gradient(to bottom, rgba(0, 0, 0, 100%) 0%, rgba(0, 0, 0, 1) 12.5%, rgba(0, 0, 0, 1) 25%, rgba(0, 0, 0, 0) 37.5%)',
+        position: 'absolute',
+        top: 0,
+        left: 0,
+        right: 0,
+        bottom: 0,
+      },
+      'header .blur-layers > div': {
+        position: 'absolute',
+        top: 0,
+        left: 0,
+        right: 0,
+        bottom: 0,
+      },
+      'header .blur-layers > div:nth-of-type(1)': {
+        zIndex: 2,
+        WebkitBackdropFilter: 'blur(32px)',
+        backdropFilter: 'blur(32px)',
+        WebkitMaskImage:
+          'linear-gradient(to bottom, rgba(0, 0, 0, 0) 12.5%, rgba(0, 0, 0, 1) 25%, rgba(0, 0, 0, 1) 37.5%, rgba(0, 0, 0, 0) 50%)',
+        maskImage:
+          'linear-gradient(to bottom, rgba(0, 0, 0, 0) 12.5%, rgba(0, 0, 0, 1) 25%, rgba(0, 0, 0, 1) 37.5%, rgba(0, 0, 0, 0) 50%)',
+      },
+      'header .blur-layers > div:nth-of-type(2)': {
+        zIndex: 3,
+        WebkitBackdropFilter: 'blur(16px)',
+        backdropFilter: 'blur(16px)',
+        WebkitMaskImage:
+          'linear-gradient(to bottom, rgba(0, 0, 0, 0) 25%, rgba(0, 0, 0, 1) 37.5%, rgba(0, 0, 0, 1) 50%, rgba(0, 0, 0, 0) 62.5%)',
+        maskImage:
+          'linear-gradient(to bottom, rgba(0, 0, 0, 0) 25%, rgba(0, 0, 0, 1) 37.5%, rgba(0, 0, 0, 1) 50%, rgba(0, 0, 0, 0) 62.5%)',
+      },
+      'header .blur-layers > div:nth-of-type(3)': {
+        zIndex: 4,
+        WebkitBackdropFilter: 'blur(8px)',
+        backdropFilter: 'blur(8px)',
+        WebkitMaskImage:
+          'linear-gradient(to bottom, rgba(0, 0, 0, 0) 37.5%, rgba(0, 0, 0, 1) 50%, rgba(0, 0, 0, 1) 62.5%, rgba(0, 0, 0, 0) 75%)',
+        maskImage:
+          'linear-gradient(to bottom, rgba(0, 0, 0, 0) 37.5%, rgba(0, 0, 0, 1) 50%, rgba(0, 0, 0, 1) 62.5%, rgba(0, 0, 0, 0) 75%)',
+      },
+      'header .blur-layers > div:nth-of-type(4)': {
+        zIndex: 5,
+        WebkitBackdropFilter: 'blur(4px)',
+        backdropFilter: 'blur(4px)',
+        WebkitMaskImage:
+          'linear-gradient(to bottom, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 1) 62.5%, rgba(0, 0, 0, 1) 75%, rgba(0, 0, 0, 0) 87.5%)',
+        maskImage:
+          'linear-gradient(to bottom, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 1) 62.5%, rgba(0, 0, 0, 1) 75%, rgba(0, 0, 0, 0) 87.5%)',
+      },
+      'header .blur-layers > div:nth-of-type(5)': {
+        zIndex: 6,
+        WebkitBackdropFilter: 'blur(2px)',
+        backdropFilter: 'blur(2px)',
+        WebkitMaskImage:
+          'linear-gradient(to bottom, rgba(0, 0, 0, 0) 62.5%, rgba(0, 0, 0, 1) 75%, rgba(0, 0, 0, 1) 87.5%, rgba(0, 0, 0, 0) 100%)',
+        maskImage:
+          'linear-gradient(to bottom, rgba(0, 0, 0, 0) 62.5%, rgba(0, 0, 0, 1) 75%, rgba(0, 0, 0, 1) 87.5%, rgba(0, 0, 0, 0) 100%)',
+      },
+      'header .blur-layers > div:nth-of-type(6)': {
+        zIndex: 7,
+        WebkitBackdropFilter: 'blur(1px)',
+        backdropFilter: 'blur(1px)',
+        WebkitMaskImage:
+          'linear-gradient(to bottom, rgba(0, 0, 0, 0) 75%, rgba(0, 0, 0, 1) 87.5%, rgba(0, 0, 0, 1) 100%)',
+        maskImage: 'linear-gradient(to bottom, rgba(0, 0, 0, 0) 75%, rgba(0, 0, 0, 1) 87.5%, rgba(0, 0, 0, 1) 100%)',
+      },
+      'header .blur-layers:after': {
+        content: '""',
+        zIndex: 8,
+        WebkitBackdropFilter: 'blur(0.5px)',
+        backdropFilter: 'blur(0.5px)',
+        WebkitMaskImage: 'linear-gradient(to bottom, rgba(0, 0, 0, 0) 87.5%, rgba(0, 0, 0, 1) 100%)',
+        maskImage: 'linear-gradient(to bottom, rgba(0, 0, 0, 0) 87.5%, rgba(0, 0, 0, 1) 100%)',
+      },
       'main, footer': {
-        '--p-canvas-grid-columns': '6',
-        '--p-canvas-grid-span-full': 'span 6',
-        '--p-canvas-grid-span-one-half': 'span 3',
-        '--p-canvas-grid-span-one-third': 'span 2',
-        '--p-canvas-grid-span-two-thirds': 'span 4',
-        ...(gridMaxWidth && {
-          maxWidth: '1311px', // TODO: should be aligned with Porsche Marketing Grid
-          marginInline: 'auto',
-        }),
         display: 'grid',
-        gridTemplateColumns: 'repeat(var(--p-canvas-grid-columns), minmax(0, 1fr))',
-        gap: `${mainGridRowGap} ${mainGridColumnGap}`,
+        gridTemplateColumns: `repeat(var(${cssVarGridColumns}, 12), minmax(0, 1fr))`,
+        columnGap: mainGridColumnGap,
         alignContent: 'flex-start',
-        [`@container(min-width:${breakpointM}px)`]: {
-          '--p-canvas-grid-columns': '12',
-          '--p-canvas-grid-span-full': 'span 12',
-          '--p-canvas-grid-span-one-half': 'span 6',
-          '--p-canvas-grid-span-one-third': 'span 4',
-          '--p-canvas-grid-span-two-thirds': 'span 8',
-        },
+        maxWidth: `var(${cssVarGridMaxWidth}, none)`,
+        marginInline: 'auto',
       },
       main: {
         zIndex: 10,
@@ -189,9 +235,26 @@ export const getComponentCss = (
           content: '""',
 
           position: 'absolute',
-          inset: '-60px -500px 0',
+          inset: '-220px -500px 0',
           pointerEvents: 'none',
-          background: `linear-gradient(0deg, ${backgroundColor} 0%, ${backgroundColor} 65%, rgba(255,255,255,0) 100%)`,
+          background: `linear-gradient(
+            to bottom,
+            hsla(0, 0%, 100%, 0) 0%,
+            hsla(0, 0%, 100%, 0.013) 8.1%,
+            hsla(0, 0%, 100%, 0.049) 15.5%,
+            hsla(0, 0%, 100%, 0.104) 22.5%,
+            hsla(0, 0%, 100%, 0.175) 29%,
+            hsla(0, 0%, 100%, 0.259) 35.3%,
+            hsla(0, 0%, 100%, 0.352) 41.2%,
+            hsla(0, 0%, 100%, 0.45) 47.1%,
+            hsla(0, 0%, 100%, 0.55) 52.9%,
+            hsla(0, 0%, 100%, 0.648) 58.8%,
+            hsla(0, 0%, 100%, 0.741) 64.7%,
+            hsla(0, 0%, 100%, 0.825) 71%,
+            hsla(0, 0%, 100%, 0.896) 77.5%,
+            hsla(0, 0%, 100%, 0.951) 84.5%,
+            hsla(0, 0%, 100%, 0.987) 91.9%,
+            hsl(0, 0%, 100%) 100%)`,
         },
       },
       aside: {
@@ -280,19 +343,6 @@ export const getComponentCss = (
         gridTemplate: 'auto minmax(0, 1fr) auto / auto minmax(0, 1fr) auto',
         gridTemplateAreas:
           '"sidebar-start header sidebar-end" "sidebar-start main sidebar-end" "sidebar-start footer sidebar-end"',
-      },
-      '&::after': {
-        content: '""',
-
-        gridColumn: '1 / -1',
-        gridRow: '1 / -1',
-        pointerEvents: 'none',
-        background: `var(${cssVarBackground})`,
-        backgroundRepeat: 'no-repeat',
-        backgroundSize: 'cover',
-        backgroundAttachment: 'fixed',
-        filter: 'blur(32px)',
-        opacity: 0.5,
       },
     },
     crest: {

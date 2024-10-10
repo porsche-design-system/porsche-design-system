@@ -1,6 +1,300 @@
 @use '@porsche-design-system/components-js/styles' as *;
-@import '@porsche-design-system/shared/css/styles.css';
 
-/*body {
-  background: $pds-theme-dark-background-base;
-}*/
+// global style reset
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+// global utility classes
+
+.-mt-static-x-small {
+  margin-top: $pds-spacing-static-x-small;
+}
+.-mt-static-small {
+  margin-top: $pds-spacing-static-small;
+}
+.-mt-static-medium {
+  margin-top: $pds-spacing-static-medium;
+}
+.-mt-static-large {
+  margin-top: $pds-spacing-static-large;
+}
+.-mt-static-x-large {
+  margin-top: $pds-spacing-static-x-large;
+}
+.-mt-static-xx-large {
+  margin-top: $pds-spacing-static-xx-large;
+}
+
+.-mt-fluid-x-small {
+  margin-top: $pds-spacing-fluid-x-small;
+}
+.-mt-fluid-small {
+  margin-top: $pds-spacing-fluid-small;
+}
+.-mt-fluid-medium {
+  margin-top: $pds-spacing-fluid-medium;
+}
+.-mt-fluid-large {
+  margin-top: $pds-spacing-fluid-large;
+}
+.-mt-fluid-x-large {
+  margin-top: $pds-spacing-fluid-x-large;
+}
+.-mt-fluid-xx-large {
+  margin-top: $pds-spacing-fluid-xx-large;
+}
+
+.-ellipsis-1 {
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.-ellipsis-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.-ellipsis-3 {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+// pds component customization
+
+p-canvas {
+  --p-canvas-background: url(assets/bg.gif);
+}
+
+p-flyout#flyout-plugins {
+  --p-flyout-width: 80vw;
+  --p-flyout-max-width: 50rem;
+}
+
+// module classes
+
+.intro {
+  grid-column: 1 / -1;
+  justify-self: center;
+  max-width: 45rem;
+  display: flex;
+  gap: $pds-spacing-fluid-medium;
+  flex-direction: column;
+  align-items: center;
+
+  &__image {
+    width: clamp(48px, 7cqw, 72px);
+    height: clamp(48px, 7cqw, 72px);
+  }
+
+  &__text {
+    display: grid;
+    justify-items: center;
+    gap: $pds-spacing-fluid-x-small;
+  }
+}
+
+.intro-cards {
+  grid-column: 1 / -1;
+  justify-self: center;
+  max-width: 50rem;
+  display: grid;
+  grid-auto-rows: 1fr auto;
+  gap: $pds-spacing-static-medium;
+
+  @container (min-width: #{$pds-breakpoint-m}px) {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  :is(a, button) {
+    @include pds-focus;
+    all: unset;
+    cursor: pointer;
+    padding: $pds-spacing-static-medium;
+    border-radius: $pds-border-radius-large;
+    background: hsl(0deg 0% 100% / 15%);
+    transition: background $pds-motion-duration-moderate $pds-motion-easing-base;
+    display: grid;
+    grid-template-rows: subgrid;
+    grid-row: span 2;
+    gap: $pds-spacing-static-medium $pds-spacing-static-small;
+
+    @media (hover: hover) {
+      &:hover {
+        background: hsl(0deg 0% 100% / 40%);
+      }
+    }
+  }
+}
+
+.controls {
+  display: grid;
+  gap: $pds-spacing-static-medium;
+
+  &__item {
+    --p-internal-button-scaling: 0;
+    position: relative;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) repeat(2, auto);
+    gap: $pds-spacing-static-small;
+    align-items: center;
+
+    @media (hover: hover) {
+      &:not(:hover):not(:focus-within) {
+        grid-template-columns: minmax(0, 1fr);
+
+        :is(button, a) ~ * {
+          display: none;
+        }
+      }
+
+      &:hover::before {
+        background: $pds-theme-light-background-base;
+      }
+    }
+
+    &::before {
+      content: '';
+      position: absolute;
+      inset: -4px -6px;
+      transition: background $pds-motion-duration-short $pds-motion-easing-base;
+      border-radius: $pds-border-radius-small;
+    }
+
+    &--active::before {
+      background: $pds-theme-light-background-base;
+    }
+
+    :is(button, a) {
+      @include pds-focus;
+      @include pds-text-small;
+      all: unset;
+      cursor: pointer;
+      position: relative;
+      display: flex;
+      gap: $pds-spacing-static-small;
+      padding-block: 2px;
+      border-radius: $pds-border-radius-small;
+
+      img {
+        width: $pds-font-line-height;
+        height: $pds-font-line-height;
+      }
+
+      span {
+        display: block;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+    }
+  }
+}
+
+.plugin-search {
+  max-width: 30rem;
+  margin-inline: auto;
+}
+
+.plugin-cards {
+  --plugin-cards-background: #{$pds-theme-light-background-surface};
+  --plugin-cards-background-hover: #{$pds-theme-light-background-surface};
+  --plugin-cards-image-size: clamp(40px, 6vw, 80px);
+  display: grid;
+  grid-auto-rows: 1fr;
+  gap: $pds-spacing-static-medium;
+
+  @include pds-media-query-min('s') {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  &--small {
+    --plugin-cards-background: transparent;
+    --plugin-cards-background-hover: #{$pds-theme-light-background-surface};
+    --plugin-cards-image-size: clamp(24px, 3vw, 48px);
+  }
+
+  :is(a, button) {
+    @include pds-focus;
+    all: unset;
+    cursor: pointer;
+    padding: $pds-spacing-fluid-small;
+    border-radius: $pds-border-radius-large;
+    background: var(--plugin-cards-background);
+    transition: background $pds-motion-duration-moderate $pds-motion-easing-base;
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    gap: $pds-spacing-static-medium;
+
+    @media (hover: hover) {
+      &:hover {
+        background: var(--plugin-cards-background-hover);
+      }
+    }
+  }
+
+  img {
+    width: var(--plugin-cards-image-size);
+    height: var(--plugin-cards-image-size);
+  }
+
+  span {
+    display: grid;
+    grid-template-rows: repeat(2, auto) 1fr;
+    align-items: flex-end;
+  }
+}
+
+// // //
+
+/* module: search */
+.search {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 16px;
+  padding: 4px;
+  padding-inline-start: 16px;
+  border-radius: 8px;
+  background: hsl(240 4% 85%/35%);
+  backdrop-filter: blur(32px);
+  -webkit-backdrop-filter: blur(32px);
+}
+
+.search input {
+  all: unset;
+  font-family: 'Porsche Next', sans-serif;
+}
+
+@container (min-width: 760px) {
+  .search {
+    grid-column: 2 / -2;
+  }
+}
+
+@container (min-width: 1000px) {
+  .search {
+    grid-column: 3 / -3;
+  }
+}
+
+/* module: controls */
+.controls-footer {
+  grid-column: 1 / -1;
+  display: flex;
+  gap: clamp(16px, 1.25vw + 12px, 36px);
+  align-items: flex-start;
+  justify-content: center;
+}

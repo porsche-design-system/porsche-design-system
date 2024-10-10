@@ -17,7 +17,6 @@ const propTypes: PropTypes<typeof Canvas> = {
   sidebarStartIcon: AllowedTypes.string,
   sidebarEndOpen: AllowedTypes.boolean,
   sidebarEndIcon: AllowedTypes.string,
-  gridMaxWidth: AllowedTypes.boolean,
   theme: AllowedTypes.oneOf<Theme>(THEMES),
 };
 
@@ -29,6 +28,7 @@ const propTypes: PropTypes<typeof Canvas> = {
  * @slot {"name": "footer", "description": "Shows a footer section, flowing under the content area when scrollable." }
  * @slot {"name": "sidebar-start", "description": "Shows a sidebar area on the **start** side (**left** in **LTR** mode / **right** in **RTL** mode). On mobile view it transforms into a flyout." }
  * @slot {"name": "sidebar-end", "description": "Shows a sidebar area on the **end** side (**right** in **LTR** mode / **left** in **RTL** mode). On mobile view it transforms into a flyout." }
+ * @slot {"name": "background", "description": "Can be used to pass a sticky media element placed over the whole main area." }
  *
  * @experimental
  */
@@ -50,9 +50,6 @@ export class Canvas {
 
   /** The icon to toggle the Sidebar on the end side */
   @Prop() public sidebarEndIcon?: CanvasSidebarEndIcon = 'configurate';
-
-  /** The grid for main and footer slot is limited to a max-width */
-  @Prop() public gridMaxWidth?: boolean = false;
 
   /** Adapts the color depending on the theme. Has no effect when "inherit" is set as color prop. */
   @Prop() public theme?: Theme = 'light';
@@ -88,14 +85,7 @@ export class Canvas {
     this.hasSidebarStart = hasNamedSlot(this.host, 'sidebar-start');
     this.hasSidebarEnd = hasNamedSlot(this.host, 'sidebar-end');
 
-    attachComponentCss(
-      this.host,
-      getComponentCss,
-      this.theme,
-      this.sidebarStartOpen,
-      this.sidebarEndOpen,
-      this.gridMaxWidth
-    );
+    attachComponentCss(this.host, getComponentCss, this.theme, this.sidebarStartOpen, this.sidebarEndOpen);
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
@@ -103,6 +93,14 @@ export class Canvas {
       <Host>
         <div class="canvas">
           <header>
+            <div class="blur-layers">
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+            </div>
             <div class="header">
               {this.hasSidebarStart && !this.sidebarStartOpen && (
                 <PrefixedTagNames.pButton
@@ -201,6 +199,7 @@ export class Canvas {
               </div>
             </aside>
           )}
+          <slot name="background" />
         </div>
         {!this.isTabletView && this.hasSidebarStart && (
           <PrefixedTagNames.pFlyout
