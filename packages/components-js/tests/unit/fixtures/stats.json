@@ -41,8 +41,8 @@
   },
   {
     "chunkShortName": "checkbox",
-    "size": 14183,
-    "gzipSize": 5380
+    "size": 14422,
+    "gzipSize": 5430
   },
   {
     "chunkShortName": "checkbox-wrapper",
@@ -152,7 +152,7 @@
   {
     "chunkShortName": "main",
     "size": 81084,
-    "gzipSize": 26861
+    "gzipSize": 26860
   },
   {
     "chunkShortName": "marque",
@@ -276,8 +276,8 @@
   },
   {
     "chunkShortName": "textarea",
-    "size": 13466,
-    "gzipSize": 4978
+    "size": 13665,
+    "gzipSize": 5020
   },
   {
     "chunkShortName": "textarea-wrapper",
