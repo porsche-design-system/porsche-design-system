@@ -179,7 +179,7 @@ export class Textarea {
     this.disabled = disabled;
   }
 
-  public formStateRestoreCallback(state: any): void {
+  public formStateRestoreCallback(state: string): void {
     this.value = state;
   }
 
