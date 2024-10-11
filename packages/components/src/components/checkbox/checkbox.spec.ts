@@ -82,6 +82,13 @@ describe('componentDidRender', () => {
       component['checkboxInputElement']
     );
   });
+  it('should not call ElementInternals setValidity() if checkbox is disabled', () => {
+    const component = initComponent();
+    const setValiditySpy = jest.spyOn(component['internals'], 'setValidity' as any);
+    component.disabled = true;
+    component.componentDidRender();
+    expect(setValiditySpy).toHaveBeenCalledTimes(0);
+  });
 });
 
 describe('componentDidLoad', () => {
