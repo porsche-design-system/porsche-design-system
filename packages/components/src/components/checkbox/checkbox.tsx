@@ -173,11 +173,15 @@ export class Checkbox {
   }
 
   public componentDidRender(): void {
-    this.internals.setValidity(
-      this.checkboxInputElement.validity,
-      this.checkboxInputElement.validationMessage,
-      this.checkboxInputElement
-    );
+    // Skip validation if the checkbox is disabled; it's ignored in form validation
+    // and always has an empty validationMessage, even if some ValidityState flags are true.
+    if (!this.disabled) {
+      this.internals.setValidity(
+        this.checkboxInputElement.validity,
+        this.checkboxInputElement.validationMessage,
+        this.checkboxInputElement
+      );
+    }
   }
 
   public render(): JSX.Element {
