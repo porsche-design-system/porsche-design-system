@@ -6,18 +6,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
   </head>
   <body>
-    <p-canvas grid-max-width="true">
+    <p-canvas sidebar-end-icon="user">
       <a slot="title" href="#">Co-Driver</a>
 
       <div slot="header-start"></div>
 
-      <div slot="header-end">
-        <p-button data-onclick="show-flyout-plugins" icon="search" variant="ghost" compact="true" hide-label="true"
-          >Open search
-        </p-button>
-      </div>
+      <div slot="header-end"></div>
 
-      <div class="intro -mt-fluid-medium">
+      <!--<div class="intro -mt-fluid-medium">
         <img class="intro__image" src="assets/codriver.webp" width="384" height="384" alt="Co-Driver logo" />
         <div class="intro__text">
           <p-display size="small" align="center" tag="h1">Good morning,<br />how can I help you?</p-display>
@@ -37,17 +33,65 @@
           <p-text tag="span">What makes the Porsche 911 so iconic in automotive history?</p-text>
           <p-icon name="chat"></p-icon>
         </a>
+      </div>-->
+
+      <div class="chat">
+        <p-text class="chat__bubble chat__bubble--question">What's the latest Porsche model?</p-text>
+        <div class="chat__bubble chat__bubble--answer">
+          <img src="assets/codriver.webp" width="384" height="384" alt="Co-Driver logo" />
+          <div>
+            <p-text
+              >The latest Porsche model is the 2024 Porsche 718 Spyder RS. This car represents the pinnacle of open-top,
+              mid-engine driving within the 718 family. It features a powerful 4.0-liter naturally aspirated flat-six
+              engine from the Porsche 911 GT3, producing 493 horsepower and 331 lb-ft of torque. The engine allows the
+              Spyder RS to accelerate from 0-60 mph in just 3.2 seconds, with a top speed of 191 mph.</p-text
+            >
+            <p-text class="-mt-static-small" size="x-small" color="contrast-medium"
+              >Note that answers could be wrong, please check again.</p-text
+            >
+            <p-button-group class="-mt-static-medium" direction="row">
+              <p-button-pure icon="copy" type="button" hide-label="true">Copy to clipboard</p-button-pure>
+              <p-button-pure icon="email" type="button" hide-label="true">Mail</p-button-pure>
+              <p-button-pure icon="heart" type="button" hide-label="true">Dislike</p-button-pure>
+              <p-button-pure icon="heart-filled" type="button" hide-label="true">Like</p-button-pure>
+            </p-button-group>
+          </div>
+        </div>
+        <p-text class="chat__bubble chat__bubble--question"
+          >Show me accelatration figures for the cayenne 2024 gts</p-text
+        >
+        <div class="chat__bubble chat__bubble--answer">
+          <img src="assets/codriver.webp" width="384" height="384" alt="Co-Driver logo" />
+          <div>
+            <p-text
+              >Since 1931, Porsche has been synonymous with automotive excellence. From the iconic 911 to the electric
+              Taycan, Porsche combines cutting-edge technology with timeless design, delivering exhilarating driving
+              experiences. With a relentless commitment to precision and passion, Porsche remains at the forefront of
+              automotive innovation, shaping the future of driving.</p-text
+            >
+            <p-text class="-mt-static-small" size="x-small" color="contrast-medium"
+              >Note that answers could be wrong, please check again.</p-text
+            >
+            <p-button-group class="-mt-static-medium" direction="row">
+              <p-button-pure icon="copy" type="button" hide-label="true">Copy to clipboard</p-button-pure>
+              <p-button-pure icon="email" type="button" hide-label="true">Mail</p-button-pure>
+              <p-button-pure icon="heart" type="button" hide-label="true">Dislike</p-button-pure>
+              <p-button-pure icon="heart-filled" type="button" hide-label="true">Like</p-button-pure>
+            </p-button-group>
+          </div>
+        </div>
       </div>
 
       <div slot="footer" class="search">
-        <input type="search" name="some-name" placeholder="Some placeholder" />
-        <p-button variant="primary" theme="dark" hide-label="true" icon="arrow-up">Search</p-button>
+        <input type="search" name="some-name" placeholder="Type a message…" />
+        <p-button class="search__submit" type="button" variant="primary" theme="dark" hide-label="true" icon="arrow-up"
+          >Ask Co-Driver</p-button
+        >
       </div>
 
-      <div slot="footer" class="controls-footer">
+      <div slot="footer" class="footer -mt-fluid-small">
         <p-button-pure data-onclick="show-modal-delete-chat" icon="delete">Delete chat</p-button-pure>
-        <p-button-pure data-onclick="show-modal-rules" icon="information">Rules</p-button-pure>
-        <p-button-pure icon="light">Service Desk</p-button-pure>
+        <p-link-pure href="#" icon="light">Service Desk</p-link-pure>
       </div>
 
       <div slot="sidebar-start">
@@ -137,9 +181,6 @@
               <p-icon name="chat"></p-icon>
               <span>How has Porsche’s design philosophy evolved over the years?</span>
             </button>
-            <p-button data-onclick="show-modal-rules" variant="ghost" compact="true" icon="edit" hide-label="true"
-              >Show rules</p-button
-            >
             <p-button
               data-onclick="show-modal-delete-chat"
               variant="ghost"
@@ -154,9 +195,6 @@
               <p-icon name="chat"></p-icon>
               <span>What makes the Porsche 911 so iconic in automotive history?</span>
             </button>
-            <p-button data-onclick="show-modal-rules" variant="ghost" compact="true" icon="edit" hide-label="true"
-              >Show rules</p-button
-            >
             <p-button
               data-onclick="show-modal-delete-chat"
               variant="ghost"
@@ -171,9 +209,6 @@
               <p-icon name="chat"></p-icon>
               <span>Can you explain the significance of Porsche’s flat-six engine?</span>
             </button>
-            <p-button data-onclick="show-modal-rules" variant="ghost" compact="true" icon="edit" hide-label="true"
-              >Show rules</p-button
-            >
             <p-button
               data-onclick="show-modal-delete-chat"
               variant="ghost"
@@ -353,79 +388,99 @@
     </p-modal>
 
     <p-modal id="modal-rules" open="false" aria="{ 'aria-label': 'Rules for using Co-Driver' }">
-      <p-heading slot="header" size="large" tag="h2"
-        ><p-wordmark></p-wordmark><br />Rules for using Co-Driver</p-heading
-      >
-      <p-text size="medium"
-        >Co-Driver ist eine Plattform, um Chat GPT-Technologien hei Porsche in siner sicheren Umgehung nutzen zu können.
-        Fachbereiche können diese Plattform mit eigenen "Plugins" erweiter, hopse: um ihr Fachbereichswissen
-        einzubinden. Bitte beachte: Zusätz ich zu diesen Regeln können weitere Plugin-spenfische Regeln gelten, die
-        einzuhalten sind.</p-text
-      >
-      <p-text>
-        Wir stellen ein kurzes Video zur Sensibilisierung bereit, dessen Ansicht vor der Nutzung von Co-Diver
-        verpflichtend ist. Weitergehend haben wir folgende Schulungen für euch vor bereitet:
-      </p-text>
-      <p-heading size="small">Verantwortlichkeit:</p-heading>
-      <p-text
-        >Go-Driver ist nur ein Arbeitsmittel: Wie Du Co-Driver verwendest und wes Du mit den Antworten und Ausgaben von
-        Co-Driver machst, liegt immer in Deiner eigenen Verantwortung.  Inshesandere können Ausgaben fehlerhaft sein
-        [Halkzination) oder von Vorurtelen behaftet (Bias). Vorurteile können aus den Trainingsdaten des Modells
-        entstahen, die hauptsächlich in den USA entstanden sind. Es ist daher winhtig, dass Du die Ausgaben von
-        Co-Driver immer volständig verstehst, nachvalziehst und auf inhaltliche und sprachliche Richtigkeit
-        [insbesondere bei Übersetzungen), Volständigkeit, Vorurteilsfreiheit und Aktualität prüfst, bevor Du sie im
-        Rahmen Deiner Aufgaben für Porsche verwendest.</p-text
-      >
-      <p-heading size="small">Zugelassene Endgeräte:</p-heading>
-      <p-text>Co-Driver darf nicht mit privaten Endgeräten genutzt werden.</p-text>
-      <p-heading size="small">Zuständigkeiten und Entscheidungen:</p-heading>
-      <p-text
-        >Go-Driver ersetzt nicht die Konsultation von Porsche Fachexperten wie der Rechtsabteilung, Steuerabteilung,
-        Datenschutz, Technische Konformität ete. Wende Dich daher bitte mit konkreten Fragen an die jeweils zuständigen
-        Porsche-Kolegen Insbesondere relevante Geschäftsentsche dungen dürfen nicht allein aufgrund von Informationen
-        aus Co-Driver getroffen werden Betriebliche Richtlirien und Prozesse müssen immer eingehalten werden.</p-text
-      >
-      <p-heading size="small">Daterschutz:</p-heading>
-      <p-text
-        >Dein Input und Chats werden im Regelfall nicht nachverfelgt oder gespelchert, außer Du nutzt die
-        Feedback-Funktion. Hier kannst du den Chatverlauf selbst noch einmal anpassen, nachdem Du den Teut in das
-        Freitestfeld kopiert hast. Deine Chats werden auf einer gesicherten Porsche Umgebung auf Microsoft Azure
-        verarbeitet. Die Eingaben sind genauso geschützt. wie auf anderen dienstlichen Systemen der Porsche AG, Achte
-        bitte gleichwohl darauf, keine personenbezogenen Daten in den Chat einzugeben. Es gilt der Datenschutzhinasis
-        für PAG  Beschäftigte.</p-text
-      >
-      <p-heading size="small">Eingabe von Daten:</p-heading>
-      <p-text
-        >1. Informationssicherheit:<br />Bei Co-Driver darfst du Daten bis zur Klassihkation *vertraulich" nutzen, die
-        keinen Personenbezug haben (d.h. keine Namen oder andere Merkmale, die einen Personenbezug aufweisen konnen].
-        Daten, die z.B. als "geheim" klassifiziert sind, darfst Du nicht eingeben.
+      <p-display slot="header" class="-ms-auto -me-auto -max-w-medium" size="small" tag="h2" align="center">
+        <img class="-img-small" src="/assets/codriver.webp" width="384" height="384" alt="Co-Driver logo" />
         <br />
-        <br />2. Befugnis zur Verwendung von Daten:<br />Vor der Eingabe von Daten in Co-Driver musst Du prüfen, oh Du
-        die Daten dafür verwenden darfst. Dies kann insbesondere bei Geschäftsgeheimnissen Dritter oder urheberrechtlich
-        geschützten Informationen kritisch sein. Hole Dir im Zweifel die Einwilligung des Dateninhabers ein.</p-text
-      >
-      <p-heading size="small">Ausgabe von Daten:</p-heading>
-      <p-text
-        >1. Rechte Dritter:<br />Bei generativer Ki kénnen Ausgaben die Rechte Dritter verletzen. Dies kann insbesondere
-        bei Software-Code, Bildem, längeren kreativen Texten oder anderen urheberechtlich geschützten Werken vorkommen.
-        Überprüfe daher vor Verwendung der Antworten, ob es identische Werke Dritter gibt, deren Rechte durch die
-        Verwendung verletzt sein könnten. <br /><br />
-        2. Schutzrechte der Ausgaben:<br />Die Antworten von Co-Driver sind urheberrechtlich nicht geschützt. Wenn eine
-        konkrete Antwort von Co-Driver für Porsche sehr werthaltig ist, musst Du sie daher mit Hilfe von technischen
-        Maßnahmen vor unbefugten Zugriffen schützen.
-      </p-text>
-      <p-heading size="small">Qualitätssicherung:</p-heading>
-      <p-text
-        >Das Co-Driver Plugin ,ChatGPT* nutzt das reine ChatGPT Modeli von OpenAl in einer für Porsche geschützten
-        Umgebung mit dem technischen Informationsstand von September 2021. Plugins vnn Fachhereichen grifen auf eine
-        stetig wachsende Anzahl ausgewählter Quelien zu, die bei der Nutzung des jeweiligen Plugins transparent gemacht
-        werden. Din Ausgaben von</p-text
-      >
+        Rules for using Co-Driver
+      </p-display>
 
-      <p-button-group slot="footer">
-        <p-button type="button">Accept</p-button>
-        <p-button type="button" variant="secondary">Deny</p-button>
-      </p-button-group>
+      <video class="-mt-fluid-medium -max-w-full" src="assets/bg.webm" controls></video>
+
+      <div class="-ms-auto -me-auto -max-w-medium -mt-fluid-large">
+        <p-text size="medium"
+          >Co-Driver ist eine Plattform, um Chat GPT-Technologien hei Porsche in siner sicheren Umgehung nutzen zu
+          können. Fachbereiche können diese Plattform mit eigenen "Plugins" erweiter, hopse: um ihr Fachbereichswissen
+          einzubinden. Bitte beachte: Zusätz ich zu diesen Regeln können weitere Plugin-spenfische Regeln gelten, die
+          einzuhalten sind.</p-text
+        >
+
+        <p-text class="-mt-fluid-medium">
+          Wir stellen ein kurzes Video zur Sensibilisierung bereit, dessen Ansicht vor der Nutzung von Co-Diver
+          verpflichtend ist. Weitergehend haben wir folgende Schulungen für euch vor bereitet:
+        </p-text>
+
+        <p-heading class="-mt-fluid-medium" tag="h3" size="small">Verantwortlichkeit:</p-heading>
+        <p-text
+          >Go-Driver ist nur ein Arbeitsmittel: Wie Du Co-Driver verwendest und wes Du mit den Antworten und Ausgaben
+          von Co-Driver machst, liegt immer in Deiner eigenen Verantwortung.  Inshesandere können Ausgaben fehlerhaft
+          sein [Halkzination) oder von Vorurtelen behaftet (Bias). Vorurteile können aus den Trainingsdaten des Modells
+          entstahen, die hauptsächlich in den USA entstanden sind. Es ist daher winhtig, dass Du die Ausgaben von
+          Co-Driver immer volständig verstehst, nachvalziehst und auf inhaltliche und sprachliche Richtigkeit
+          [insbesondere bei Übersetzungen), Volständigkeit, Vorurteilsfreiheit und Aktualität prüfst, bevor Du sie im
+          Rahmen Deiner Aufgaben für Porsche verwendest.</p-text
+        >
+
+        <p-heading class="-mt-fluid-medium" tag="h3" size="small">Zugelassene Endgeräte:</p-heading>
+        <p-text>Co-Driver darf nicht mit privaten Endgeräten genutzt werden.</p-text>
+
+        <p-heading class="-mt-fluid-medium" tag="h3" size="small">Zuständigkeiten und Entscheidungen:</p-heading>
+        <p-text
+          >Go-Driver ersetzt nicht die Konsultation von Porsche Fachexperten wie der Rechtsabteilung, Steuerabteilung,
+          Datenschutz, Technische Konformität ete. Wende Dich daher bitte mit konkreten Fragen an die jeweils
+          zuständigen Porsche-Kolegen Insbesondere relevante Geschäftsentsche dungen dürfen nicht allein aufgrund von
+          Informationen aus Co-Driver getroffen werden Betriebliche Richtlirien und Prozesse müssen immer eingehalten
+          werden.</p-text
+        >
+
+        <p-heading class="-mt-fluid-medium" tag="h3" size="small">Daterschutz:</p-heading>
+        <p-text
+          >Dein Input und Chats werden im Regelfall nicht nachverfelgt oder gespelchert, außer Du nutzt die
+          Feedback-Funktion. Hier kannst du den Chatverlauf selbst noch einmal anpassen, nachdem Du den Teut in das
+          Freitestfeld kopiert hast. Deine Chats werden auf einer gesicherten Porsche Umgebung auf Microsoft Azure
+          verarbeitet. Die Eingaben sind genauso geschützt. wie auf anderen dienstlichen Systemen der Porsche AG, Achte
+          bitte gleichwohl darauf, keine personenbezogenen Daten in den Chat einzugeben. Es gilt der Datenschutzhinasis
+          für PAG  Beschäftigte.</p-text
+        >
+
+        <p-heading class="-mt-fluid-medium" tag="h3" size="small">Eingabe von Daten:</p-heading>
+        <p-text
+          >1. Informationssicherheit:<br />Bei Co-Driver darfst du Daten bis zur Klassihkation *vertraulich" nutzen, die
+          keinen Personenbezug haben (d.h. keine Namen oder andere Merkmale, die einen Personenbezug aufweisen konnen].
+          Daten, die z.B. als "geheim" klassifiziert sind, darfst Du nicht eingeben.
+          <br />
+          <br />2. Befugnis zur Verwendung von Daten:<br />Vor der Eingabe von Daten in Co-Driver musst Du prüfen, oh Du
+          die Daten dafür verwenden darfst. Dies kann insbesondere bei Geschäftsgeheimnissen Dritter oder
+          urheberrechtlich geschützten Informationen kritisch sein. Hole Dir im Zweifel die Einwilligung des
+          Dateninhabers ein.</p-text
+        >
+
+        <p-heading class="-mt-fluid-medium" tag="h3" size="small">Ausgabe von Daten:</p-heading>
+        <p-text
+          >1. Rechte Dritter:<br />Bei generativer Ki kénnen Ausgaben die Rechte Dritter verletzen. Dies kann
+          insbesondere bei Software-Code, Bildem, längeren kreativen Texten oder anderen urheberechtlich geschützten
+          Werken vorkommen. Überprüfe daher vor Verwendung der Antworten, ob es identische Werke Dritter gibt, deren
+          Rechte durch die Verwendung verletzt sein könnten. <br /><br />
+          2. Schutzrechte der Ausgaben:<br />Die Antworten von Co-Driver sind urheberrechtlich nicht geschützt. Wenn
+          eine konkrete Antwort von Co-Driver für Porsche sehr werthaltig ist, musst Du sie daher mit Hilfe von
+          technischen Maßnahmen vor unbefugten Zugriffen schützen.
+        </p-text>
+
+        <p-heading class="-mt-fluid-medium" tag="h3" size="small">Qualitätssicherung:</p-heading>
+        <p-text
+          >Das Co-Driver Plugin ,ChatGPT* nutzt das reine ChatGPT Modeli von OpenAl in einer für Porsche geschützten
+          Umgebung mit dem technischen Informationsstand von September 2021. Plugins vnn Fachhereichen grifen auf eine
+          stetig wachsende Anzahl ausgewählter Quelien zu, die bei der Nutzung des jeweiligen Plugins transparent
+          gemacht werden. Din Ausgaben von</p-text
+        >
+      </div>
+
+      <p-button
+        slot="footer"
+        class="-ms-auto -me-auto -max-w-medium -block"
+        type="button"
+        data-onclick="dismiss-modal-rules"
+        >Open Co-Driver</p-button
+      >
     </p-modal>
 
     <script type="module" src="main.js"></script>

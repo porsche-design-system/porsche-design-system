@@ -12,7 +12,7 @@ body {
   overflow-x: hidden;
 }
 
-// global utility classes
+// global utility classes (Tailwind like utility classes)
 
 .-mt-static-x-small {
   margin-top: $pds-spacing-static-x-small;
@@ -52,6 +52,29 @@ body {
   margin-top: $pds-spacing-fluid-xx-large;
 }
 
+.-ms-auto {
+  margin-inline-start: auto;
+}
+.-me-auto {
+  margin-inline-end: auto;
+}
+
+.-block {
+  display: block;
+}
+
+.-img-small {
+  width: clamp(48px, 7cqw, 72px);
+  height: clamp(48px, 7cqw, 72px);
+}
+
+.-max-w-full {
+  max-width: 100%;
+}
+.-max-w-medium {
+  max-width: 40rem;
+}
+
 .-ellipsis-1 {
   display: -webkit-box;
   -webkit-line-clamp: 1;
@@ -74,7 +97,7 @@ body {
 // pds component customization
 
 p-canvas {
-  --p-canvas-background: url(assets/bg.gif);
+  --p-canvas-grid-max-width: 50rem;
 }
 
 p-flyout#flyout-plugins {
@@ -82,12 +105,14 @@ p-flyout#flyout-plugins {
   --p-flyout-max-width: 50rem;
 }
 
-// module classes
+p-modal#modal-rules {
+  --p-modal-width: clamp(276px, 80dvw, 60rem);
+}
+
+// "main" section
 
 .intro {
   grid-column: 1 / -1;
-  justify-self: center;
-  max-width: 45rem;
   display: flex;
   gap: $pds-spacing-fluid-medium;
   flex-direction: column;
@@ -107,8 +132,6 @@ p-flyout#flyout-plugins {
 
 .intro-cards {
   grid-column: 1 / -1;
-  justify-self: center;
-  max-width: 50rem;
   display: grid;
   grid-auto-rows: 1fr auto;
   gap: $pds-spacing-static-medium;
@@ -256,45 +279,64 @@ p-flyout#flyout-plugins {
   }
 }
 
-// // //
-
-/* module: search */
-.search {
+.chat {
   grid-column: 1 / -1;
   display: grid;
-  grid-template-columns: minmax(0, 1fr) auto;
-  align-items: center;
-  gap: 16px;
-  padding: 4px;
-  padding-inline-start: 16px;
-  border-radius: 8px;
-  background: hsl(240 4% 85%/35%);
-  backdrop-filter: blur(32px);
-  -webkit-backdrop-filter: blur(32px);
-}
+  gap: $pds-spacing-static-x-large;
 
-.search input {
-  all: unset;
-  font-family: 'Porsche Next', sans-serif;
-}
+  &__bubble {
+    border-radius: $pds-border-radius-large;
+    max-width: 30rem;
 
-@container (min-width: 760px) {
-  .search {
-    grid-column: 2 / -2;
+    &--question {
+      justify-self: flex-end;
+      background: $pds-theme-light-background-surface;
+      padding: $pds-spacing-static-medium $pds-spacing-static-medium;
+    }
+
+    &--answer {
+      justify-self: flex-start;
+      background: transparent;
+      display: grid;
+      grid-template-columns: 36px minmax(0, 1fr);
+      gap: $pds-spacing-static-medium;
+    }
+
+    img {
+      width: 100%;
+      height: auto;
+    }
   }
 }
 
-@container (min-width: 1000px) {
-  .search {
-    grid-column: 3 / -3;
+// "footer" section
+
+.search {
+  z-index: 1;
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template: $pds-spacing-static-x-small auto $pds-spacing-static-x-small / minmax(0, 1fr) auto $pds-spacing-static-x-small;
+
+  input {
+    all: unset;
+    @include pds-focus;
+    @include pds-text-small;
+    color: $pds-theme-light-primary;
+    grid-area: 1 / 1 / -1 / -1;
+    border-radius: $pds-border-radius-medium;
+    padding-inline: $pds-spacing-static-medium 4rem;
+    background: $pds-theme-light-background-surface;
+  }
+
+  &__submit {
+    grid-area: 2 / 2;
   }
 }
 
-/* module: controls */
-.controls-footer {
+.footer {
   grid-column: 1 / -1;
   display: flex;
-  gap: clamp(16px, 1.25vw + 12px, 36px);
+  gap: $pds-spacing-static-medium;
   align-items: flex-start;
   justify-content: center;
 }

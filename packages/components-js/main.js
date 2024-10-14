@@ -19,6 +19,9 @@ document.querySelectorAll('[data-onclick]').forEach((el) => {
       case 'show-modal-rules':
         modalRulesElement.open = true;
         break;
+      case 'dismiss-modal-rules':
+        modalRulesElement.open = false;
+        break;
       case 'show-modal-remove-plugin':
         modalRemovePluginElement.open = true;
         break;
