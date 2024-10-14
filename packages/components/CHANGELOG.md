@@ -24,9 +24,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 #### Fixed
 
+- `Pin Code`, `Select Wrapper`: programmatic focus
+  ([#3527](https://github.com/porsche-design-system/porsche-design-system/pull/3527))
 - `Select Wrapper`: native option dropdown has wrong colors in theme dark
   ([#3523](https://github.com/porsche-design-system/porsche-design-system/pull/3523))
-- `Switch`: width/height calculation of the toggle element supports browser based text only zoom 
+- `Switch`: width/height calculation of the toggle element supports browser based text only zoom
   ([#3542](https://github.com/porsche-design-system/porsche-design-system/pull/3542))
 - Angular, React, Vue: missing `@deprecated` annotations for deprecated components
   ([#3525](https://github.com/porsche-design-system/porsche-design-system/pull/3525))
