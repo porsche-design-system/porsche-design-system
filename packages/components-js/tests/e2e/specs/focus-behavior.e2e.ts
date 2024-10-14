@@ -10,7 +10,10 @@ import {
 
 skipInBrowsers(['webkit', 'firefox']);
 
-const tagNames: TagName[] = TAG_NAMES.filter((tagName) => getComponentMeta(tagName).isDelegatingFocus);
+// p-select-wrapper excluded since does not work without slotted select
+const tagNames: TagName[] = TAG_NAMES.filter((tagName) => tagName !== 'p-select-wrapper').filter(
+  (tagName) => getComponentMeta(tagName).isDelegatingFocus
+);
 
 for (const tagName of tagNames) {
   const href =
