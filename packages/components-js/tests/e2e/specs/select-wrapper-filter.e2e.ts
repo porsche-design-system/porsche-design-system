@@ -141,6 +141,7 @@ test.describe('focus state', () => {
     const host = getHost(page);
     const filterInput = getFilterInput(page);
     const filterInputOverlay = getFilterInputOverlay(page);
+    await page.mouse.click(300, 300); // Remove focus
 
     await addEventListener(filterInput, 'focus');
     expect((await getEventSummary(filterInput, 'focus')).counter).toBe(0);
