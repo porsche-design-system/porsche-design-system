@@ -632,8 +632,8 @@ test.describe('form', () => {
 
     await expect(host).toHaveJSProperty('value', value);
     await expect(input).toHaveValue(value);
-    await expect(host).toHaveJSProperty('checked', false);
-    expect(await isInputChecked()).toBe(false);
+    await expect(host).toHaveJSProperty('checked', true);
+    expect(await isInputChecked()).toBe(true);
 
     await page.locator('button[type="submit"]').click(); // Check if ElementInternal value was reset as well
 
