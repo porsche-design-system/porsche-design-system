@@ -481,6 +481,32 @@ test.describe('form', () => {
     expect((await getEventSummary(form, 'submit')).counter).toBe(0);
   });
 
+  test('should submit if required and checked programmatically', async ({ page }) => {
+    const name = 'name';
+    const value = 'test';
+    await initCheckbox(page, {
+      required: true,
+      name,
+      value,
+      checked: false,
+      isWithinForm: true,
+      markupAfter: '<button type="submit">Submit</button>',
+    });
+    const form = getForm(page);
+    const host = getHost(page);
+    const input = getInput(page);
+
+    await addEventListener(form, 'submit');
+    expect((await getEventSummary(form, 'submit')).counter).toBe(0);
+
+    await input.click();
+    await expect(host).toHaveJSProperty('checked', true);
+
+    await page.locator('button[type="submit"]').click();
+    expect((await getEventSummary(form, 'submit')).counter).toBe(1);
+    expect(await getFormDataValue(form, name)).toBe(value);
+  });
+
   test('should not include name & value in FormData submit when disabled', async ({ page }) => {
     const name = 'name';
     const value = 'Hallo';
