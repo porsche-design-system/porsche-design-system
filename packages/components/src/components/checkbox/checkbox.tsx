@@ -114,6 +114,7 @@ export class Checkbox {
 
   @AttachInternals() private internals: ElementInternals;
 
+  private defaultChecked: boolean;
   private controllerHost = new ControllerHost(this);
   private loadingCtrl = new InitialLoadingController(this.controllerHost);
   private checkboxInputElement: HTMLInputElement;
@@ -151,6 +152,10 @@ export class Checkbox {
     return hasPropValueChanged(newVal, oldVal);
   }
 
+  public componentWillLoad(): void {
+    this.defaultChecked = this.checked;
+  }
+
   public componentDidLoad(): void {
     this.checkboxInputElement.indeterminate = this.indeterminate;
     if (this.checkboxInputElement.checked) {
@@ -161,7 +166,7 @@ export class Checkbox {
   public formResetCallback(): void {
     this.internals.setValidity({});
     this.internals.setFormValue(undefined);
-    this.checked = false; // TODO: Reset to the initial 'checked' state. Directly using this.host.hasAttribute('checked') doesn't work in frameworks like React, as it may not reflect the actual state. Need a more reliable way to track and restore the original checked value.
+    this.checked = this.defaultChecked;
   }
 
   public formDisabledCallback(disabled: boolean): void {
