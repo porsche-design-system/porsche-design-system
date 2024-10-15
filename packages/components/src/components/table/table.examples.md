@@ -208,7 +208,10 @@ export default class Code extends Vue {
   headSorting = headSorting;
   dataSorting = dataSorting;
   headAdvanced = headAdvanced;
-  dataAdvanced = dataAdvanced;
+  dataAdvanced = dataAdvanced.map(({imageUrl, ...rest}) => ({
+    ...rest,
+    imageUrl: imageUrl.replace(/http:\/\/localhost:3002/, '/assets')
+  }));
 
   basic = getTableCodeSamples('example-basic');
   sorting = getTableCodeSamples('example-sorting');

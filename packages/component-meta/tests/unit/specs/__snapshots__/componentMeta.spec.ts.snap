@@ -1340,32 +1340,8 @@ exports[`should match snapshot 1`] = `
     "styling": "jss",
   },
   "p-canvas": {
-    "controlledMeta": [
-      {
-        "event": "dismissSidebarStart",
-        "props": [
-          "sidebarStartOpen",
-        ],
-      },
-      {
-        "event": "dismissSidebarEnd",
-        "props": [
-          "sidebarEndOpen",
-        ],
-      },
-    ],
-    "eventsMeta": {
-      "dismissSidebarEnd": {
-        "description": "Emitted when the component requests to close the sidebar on the end side.",
-        "type": "void",
-      },
-      "dismissSidebarStart": {
-        "description": "Emitted when the component requests to close the sidebar on the start side.",
-        "type": "void",
-      },
-    },
     "hasAriaProp": false,
-    "hasEvent": true,
+    "hasEvent": false,
     "hasObserveAttributes": false,
     "hasObserveChildren": false,
     "hasSlot": true,
@@ -1373,26 +1349,31 @@ exports[`should match snapshot 1`] = `
     "isDelegatingFocus": false,
     "isExperimental": true,
     "isInternal": false,
-    "isThemeable": false,
+    "isThemeable": true,
     "nestedComponents": [
-      "p-button-pure",
+      "p-button",
+      "p-crest",
+      "p-wordmark",
       "p-flyout",
     ],
     "propsMeta": {
+      "sidebarEndIcon": {
+        "allowedValues": "string",
+        "defaultValue": "configurate",
+        "description": "The icon to toggle the Sidebar on the end side",
+        "type": "CanvasSidebarEndIcon",
+      },
       "sidebarEndOpen": {
         "allowedValues": "boolean",
         "defaultValue": false,
         "description": "Open Sidebar on the end side",
         "type": "boolean",
       },
-      "sidebarEndWidth": {
-        "allowedValues": [
-          "medium",
-          "large",
-        ],
-        "defaultValue": "medium",
-        "description": "Defines the width of the sidebar on the end side",
-        "type": "CanvasSidebarEndWidth",
+      "sidebarStartIcon": {
+        "allowedValues": "string",
+        "defaultValue": "menu-lines",
+        "description": "The icon to toggle the Sidebar on the start side",
+        "type": "CanvasSidebarStartIcon",
       },
       "sidebarStartOpen": {
         "allowedValues": "boolean",
@@ -1400,14 +1381,15 @@ exports[`should match snapshot 1`] = `
         "description": "Open Sidebar on the start side",
         "type": "boolean",
       },
-      "sidebarStartWidth": {
+      "theme": {
         "allowedValues": [
-          "medium",
-          "large",
+          "light",
+          "dark",
+          "auto",
         ],
-        "defaultValue": "medium",
-        "description": "Defines the width of the sidebar on the start side",
-        "type": "CanvasSidebarStartWidth",
+        "defaultValue": "light",
+        "description": "Adapts the color depending on the theme. Has no effect when "inherit" is set as color prop.",
+        "type": "Theme",
       },
     },
     "slotsMeta": {
@@ -1417,14 +1399,20 @@ exports[`should match snapshot 1`] = `
       "footer": {
         "description": "Shows a footer section, flowing under the content area when scrollable.",
       },
-      "header": {
-        "description": "Renders a **sticky** header section above the content area.",
+      "header-end": {
+        "description": "Renders a **sticky** header section above the content area on the **end** side (**right** in **LTR** mode / **left** in **RTL** mode).",
+      },
+      "header-start": {
+        "description": "Renders a **sticky** header section above the content area on the **start** side (**left** in **LTR** mode / **right** in **RTL** mode).",
       },
       "sidebar-end": {
         "description": "Shows a sidebar area on the **end** side (**right** in **LTR** mode / **left** in **RTL** mode). On mobile view it transforms into a flyout.",
       },
       "sidebar-start": {
         "description": "Shows a sidebar area on the **start** side (**left** in **LTR** mode / **right** in **RTL** mode). On mobile view it transforms into a flyout.",
+      },
+      "title": {
+        "description": "Application name",
       },
     },
     "styling": "jss",
@@ -1508,6 +1496,22 @@ exports[`should match snapshot 1`] = `
         "isDeprecated": true,
         "type": "boolean",
       },
+      "focusOnCenterSlide": {
+        "allowedValues": "boolean",
+        "defaultValue": false,
+        "description": "Indicates whether focus should be set on the center slide. If true, the carousel loops by individual slide; otherwise, it loops by page.",
+        "type": "boolean",
+      },
+      "gradientColor": {
+        "allowedValues": [
+          "background-base",
+          "background-surface",
+          "none",
+        ],
+        "defaultValue": "none",
+        "description": "Adapts the background gradient for the left and right edge.",
+        "type": "CarouselGradientColor",
+      },
       "heading": {
         "allowedValues": "string",
         "defaultValue": null,
@@ -1575,6 +1579,12 @@ exports[`should match snapshot 1`] = `
         "description": "Adapts the color when used on dark background.",
         "type": "Theme",
       },
+      "trimSpace": {
+        "allowedValues": "boolean",
+        "defaultValue": true,
+        "description": "Determines whether to trim spaces before/after the carousel if \`focusOnCenterSlide\` option is true.",
+        "type": "boolean",
+      },
       "width": {
         "allowedValues": [
           "basic",
@@ -1604,6 +1614,138 @@ exports[`should match snapshot 1`] = `
       },
       "heading": {
         "description": "Renders a heading above the carousel.",
+      },
+    },
+    "styling": "jss",
+  },
+  "p-checkbox": {
+    "eventsMeta": {
+      "blur": {
+        "description": "Emitted when the checkbox has lost focus.",
+        "type": "CheckboxBlurEventDetail",
+        "typeDetail": "Event",
+      },
+      "update": {
+        "description": "Emitted when checkbox checked property is changed.",
+        "type": "CheckboxUpdateEventDetail",
+        "typeDetail": "{ name: string; value?: string; checked: boolean }",
+      },
+    },
+    "hasAriaProp": false,
+    "hasEvent": true,
+    "hasObserveAttributes": false,
+    "hasObserveChildren": false,
+    "hasSlot": true,
+    "isChunked": true,
+    "isDelegatingFocus": true,
+    "isInternal": false,
+    "isThemeable": true,
+    "nestedComponents": [
+      "p-spinner",
+      "p-icon",
+    ],
+    "propsMeta": {
+      "checked": {
+        "allowedValues": "boolean",
+        "defaultValue": false,
+        "description": "Reflects the checkbox current checked state and allows setting the initial checked state.",
+        "type": "boolean",
+      },
+      "compact": {
+        "allowedValues": "boolean",
+        "defaultValue": false,
+        "description": "Displays as compact version.",
+        "type": "boolean",
+      },
+      "disabled": {
+        "allowedValues": "boolean",
+        "defaultValue": false,
+        "description": "Marks the checkbox as disabled.",
+        "type": "boolean",
+      },
+      "form": {
+        "allowedValues": "string",
+        "defaultValue": null,
+        "description": "The id of a form element the checkbox should be associated with.",
+        "type": "string",
+      },
+      "hideLabel": {
+        "allowedValues": "boolean",
+        "defaultValue": false,
+        "description": "Show or hide label. For better accessibility it's recommended to show the label.",
+        "isBreakpointCustomizable": true,
+        "type": "boolean",
+      },
+      "indeterminate": {
+        "allowedValues": "boolean",
+        "defaultValue": false,
+        "description": "Marks the checkbox as indeterminate.",
+        "type": "boolean",
+      },
+      "label": {
+        "allowedValues": "string",
+        "defaultValue": "",
+        "description": "The label text.",
+        "type": "string",
+      },
+      "loading": {
+        "allowedValues": "boolean",
+        "defaultValue": false,
+        "description": "@experimental Disables the checkbox and shows a loading indicator.",
+        "isExperimental": true,
+        "type": "boolean",
+      },
+      "message": {
+        "allowedValues": "string",
+        "defaultValue": "",
+        "description": "The message styled depending on validation state.",
+        "type": "string",
+      },
+      "name": {
+        "allowedValues": "string",
+        "defaultValue": "",
+        "description": "The name of the checkbox.",
+        "type": "string",
+      },
+      "required": {
+        "allowedValues": "boolean",
+        "defaultValue": false,
+        "description": "Marks the checkbox as required.",
+        "type": "boolean",
+      },
+      "state": {
+        "allowedValues": [
+          "none",
+          "error",
+          "success",
+        ],
+        "defaultValue": "none",
+        "description": "The validation state.",
+        "type": "CheckboxState",
+      },
+      "theme": {
+        "allowedValues": [
+          "light",
+          "dark",
+          "auto",
+        ],
+        "defaultValue": "light",
+        "description": "Adapts the color depending on the theme.",
+        "type": "Theme",
+      },
+      "value": {
+        "allowedValues": "string",
+        "defaultValue": "on",
+        "description": "The checkbox value. When a form is submitted, only a checkbox which is currently checked is included in the submission.",
+        "type": "string",
+      },
+    },
+    "slotsMeta": {
+      "label": {
+        "description": "Shows a label. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed.",
+      },
+      "message": {
+        "description": "Shows a state message. Only [phrasing content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content) is allowed.",
       },
     },
     "styling": "jss",
@@ -1801,6 +1943,7 @@ exports[`should match snapshot 1`] = `
           "start",
           "center",
           "end",
+          "inherit",
           "left",
           "right",
         ],
@@ -2632,6 +2775,7 @@ exports[`should match snapshot 1`] = `
           "start",
           "center",
           "end",
+          "inherit",
           "left",
           "right",
         ],
@@ -2722,6 +2866,7 @@ exports[`should match snapshot 1`] = `
           "start",
           "center",
           "end",
+          "inherit",
           "left",
           "right",
         ],
@@ -5445,7 +5590,7 @@ exports[`should match snapshot 1`] = `
     "hasObserveChildren": false,
     "hasSlot": true,
     "isChunked": true,
-    "isDelegatingFocus": false,
+    "isDelegatingFocus": true,
     "isInternal": false,
     "isThemeable": true,
     "nestedComponents": [
@@ -6353,7 +6498,7 @@ exports[`should match snapshot 1`] = `
     "hasObserveChildren": false,
     "hasSlot": true,
     "isChunked": true,
-    "isDelegatingFocus": false,
+    "isDelegatingFocus": true,
     "isInternal": false,
     "isThemeable": true,
     "nestedComponents": [
@@ -6458,7 +6603,7 @@ exports[`should match snapshot 1`] = `
     "hasObserveChildren": true,
     "hasSlot": false,
     "isChunked": false,
-    "isDelegatingFocus": false,
+    "isDelegatingFocus": true,
     "isInternal": true,
     "isThemeable": true,
     "nestedComponents": [
@@ -7582,6 +7727,7 @@ exports[`should match snapshot 1`] = `
           "start",
           "center",
           "end",
+          "inherit",
           "left",
           "right",
         ],

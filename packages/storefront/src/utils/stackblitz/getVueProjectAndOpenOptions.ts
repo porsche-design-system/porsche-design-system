@@ -109,9 +109,15 @@ app.mount('#root');
 `;
 };
 
-export const dependencyMap: Partial<DependencyMap<typeof dependencies>> = {
+export const dependencyMap: Partial<DependencyMap<typeof dependencies & typeof devDependencies>> = {
   imask: {
     'vue-imask': dependencies['vue-imask'],
+  },
+  'ag-grid-community': {
+    'ag-grid-community': devDependencies['ag-grid-community'],
+  },
+  'ag-grid-vue3': {
+    'ag-grid-vue3': devDependencies['ag-grid-vue3'],
   },
 };
 

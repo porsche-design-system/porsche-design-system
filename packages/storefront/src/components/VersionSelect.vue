@@ -35,16 +35,20 @@
   }
 
   select {
-    @include pds-focus;
     @include pds-text-x-small;
-    -webkit-appearance: none;
-    appearance: none;
-    border: 0;
-    padding: $pds-spacing-static-x-small $pds-spacing-static-small;
-    cursor: pointer;
-    box-sizing: content-box;
-    border-radius: $pds-border-radius-small;
-    background: var(--theme-state-hover);
-    color: var(--theme-primary);
+    & {
+      @include pds-focus;
+    }
+    & {
+      -webkit-appearance: none;
+      appearance: none;
+      border: 0;
+      padding: $pds-spacing-static-x-small $pds-spacing-static-small;
+      cursor: pointer;
+      box-sizing: content-box;
+      border-radius: $pds-border-radius-small;
+      background: var(--theme-state-hover);
+      color: var(--theme-primary);
+    }
   }
 </style>

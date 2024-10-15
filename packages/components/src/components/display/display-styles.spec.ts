@@ -15,6 +15,7 @@ describe('getComponentCss()', () => {
     ['medium', 'start', 'inherit', false, 'light'],
     ['small', 'end', 'inherit', true, 'dark'],
     ['small', 'start', 'inherit', false, 'light'],
+    ['small', 'inherit', 'primary', false, 'light'],
     ['inherit', 'center', 'primary', false, 'light'],
     [
       { base: 'medium', xs: 'large', s: 'medium', m: 'inherit', l: 'large', xl: 'medium' },

@@ -3,8 +3,8 @@ import { type FormState } from '../../utils/form/form-state';
 import {
   addImportantToEachRule,
   colorSchemeStyles,
-  getHighContrastColors,
   getInvertedThemedColors,
+  getSchemedHighContrastMediaQuery,
   hostHiddenStyles,
   prefersColorSchemeDarkMediaQuery,
   preventFoucOfNestedElementsStyles,
@@ -35,12 +35,8 @@ export const getComponentCss = (
   isLoading: boolean,
   theme: Theme
 ): string => {
-  const checkedIconColor = isHighContrastMode
-    ? getHighContrastColors().canvasColor
-    : escapeHashCharacter(getInvertedThemedColors(theme).primaryColor);
-  const checkedIconColorDark = isHighContrastMode
-    ? getHighContrastColors().canvasColor
-    : escapeHashCharacter(getInvertedThemedColors('dark').primaryColor);
+  const checkedIconColor = escapeHashCharacter(getInvertedThemedColors(theme).primaryColor);
+  const checkedIconColorDark = escapeHashCharacter(getInvertedThemedColors('dark').primaryColor);
 
   return getCss({
     '@global': {
@@ -67,6 +63,16 @@ export const getComponentCss = (
                 ...prefersColorSchemeDarkMediaQuery(theme, {
                   backgroundImage: getCheckedSVGBackgroundImage(checkedIconColorDark),
                 }),
+                // This is a workaround for Blink based browsers, which do not reflect the high contrast system colors (e.g.: "Canvas" and "CanvasText") when added to background SVG's.
+                ...(isHighContrastMode &&
+                  getSchemedHighContrastMediaQuery(
+                    {
+                      backgroundImage: getCheckedSVGBackgroundImage('white'),
+                    },
+                    {
+                      backgroundImage: getCheckedSVGBackgroundImage('black'),
+                    }
+                  )),
               },
             }),
           },

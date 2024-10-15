@@ -7,6 +7,7 @@ type CodeSample = {
   component:
     | TagName
     | 'componentsReady'
+    | 'ag-grid'
     | 'styles-border'
     | 'styles-drop-shadow'
     | 'styles-focus'
@@ -43,6 +44,18 @@ const generateCodeSamples = (): void => {
         [componentsAngularPath + '/../../../tests/unit/specs/componentsReady-testbed.spec.ts'],
         [componentsAngularPath + '/../../../tests/unit/specs/componentsReady-testing-library.spec.ts'],
         // TODO: vue is missing
+      ],
+    },
+    {
+      component: 'ag-grid',
+      samples: [
+        [
+          componentsJsPath + '/ag-grid-example-storefront.html',
+          componentsAngularPath + '/ag-grid-example-storefront.component.ts',
+          componentsReactPath + '/AGGridExampleStorefront.tsx',
+          componentsVuePath + '/AGGridExampleStorefront.vue',
+          'src/data/table-data-advanced.ts', // order is important since part of filename is extracted for param types of function name
+        ],
       ],
     },
     {
@@ -105,10 +118,33 @@ const generateCodeSamples = (): void => {
           componentsVuePath + '/CarouselExampleDynamicSlides.vue',
         ],
         [
+          componentsJsPath + '/carousel-example-focus-on-center-slide.html',
+          componentsAngularPath + '/carousel-example-focus-on-center-slide.component.ts',
+          componentsReactPath + '/CarouselExampleFocusOnCenterSlide.tsx',
+          componentsVuePath + '/CarouselExampleFocusOnCenterSlide.vue',
+        ],
+        [
           componentsJsPath + '/carousel-example-jump-to-slide.html',
           componentsAngularPath + '/carousel-example-jump-to-slide.component.ts',
           componentsReactPath + '/CarouselExampleJumpToSlide.tsx',
           componentsVuePath + '/CarouselExampleJumpToSlide.vue',
+        ],
+      ],
+    },
+    {
+      component: 'p-checkbox',
+      samples: [
+        [
+          componentsJsPath + '/checkbox-example.html',
+          componentsAngularPath + '/checkbox-example.component.ts',
+          componentsReactPath + '/CheckboxExample.tsx',
+          componentsVuePath + '/CheckboxExample.vue',
+        ],
+        [
+          componentsJsPath + '/checkbox-example-controlled.html',
+          componentsAngularPath + '/checkbox-example-controlled.component.ts',
+          componentsReactPath + '/CheckboxExampleControlled.tsx',
+          componentsVuePath + '/CheckboxExampleControlled.vue',
         ],
       ],
     },
@@ -530,6 +566,16 @@ const generateCodeSamples = (): void => {
             if (framework === 'vanilla-js') {
               // remove getHeadAndData() helper function
               fileContent = fileContent.replace(/\s\sconst getHeadAndData = (\s|\S)*?return(.*\s){3}/, '');
+            }
+
+            // Replace locally served assets with public assets folder of storefront
+            fileContent = fileContent.replace(/http:\/\/localhost:3002/g, 'assets');
+
+            if (fileName.includes('ag-grid-example-storefront.component.ts')) {
+              fileContent = fileContent.replace(
+                /(import[^\n]*)/,
+                "$1\nimport '@porsche-design-system/components-angular/ag-grid/theme.css';"
+              );
             }
 
             return { [framework]: fileContent };

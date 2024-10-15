@@ -1,25 +1,33 @@
 import * as textFieldWrapperUtils from './text-field-wrapper-utils';
 import {
+  addCounterCharacterLengthCssVarStyleSheet,
   addInputEventListenerForSearch,
+  counterCharacterLengthCssVarStyleSheetMap,
   dispatchInputEvent,
   getInputPaddingLeftOrRight,
   hasCounterAndIsTypeText,
   hasLocateAction,
   hasUnitAndIsTypeTextOrNumber,
   isType,
-  setInputStyles,
   throwIfUnitLengthExceeded,
+  updateCounterCharacterLengthCssVarStyleSheet,
 } from './text-field-wrapper-utils';
 import * as formUtils from '../../utils/form/form-utils';
+import * as jssUtils from './../../utils/jss';
+
+class MockHTMLElement {
+  constructor() {
+    this.shadowRoot = { adoptedStyleSheets: [] } as DocumentOrShadowRoot;
+  }
+  shadowRoot: DocumentOrShadowRoot;
+  getBoundingClientRect() {
+    return { height: 100 };
+  }
+}
 
 const getInputElement = (): HTMLInputElement => {
   const el = document.createElement('input');
   el.id = 'input';
-  return el;
-};
-const getCounterElement = (): HTMLSpanElement => {
-  const el = document.createElement('span');
-  el.id = 'counter';
   return el;
 };
 
@@ -137,33 +145,6 @@ describe('getInputPaddingLeftOrRight()', () => {
   });
 });
 
-describe('setInputStyles()', () => {
-  it('should do nothing if unitOrCounterElement is undefined', () => {
-    const input = getInputElement();
-    setInputStyles(input, undefined, 'prefix');
-
-    expect(input.style.cssText).toBe('');
-  });
-
-  it('should set inline padding-left var on input', () => {
-    const input = getInputElement();
-    const unitElement = getCounterElement();
-    Object.defineProperty(unitElement, 'offsetWidth', { value: 60 });
-    setInputStyles(input, unitElement, 'prefix');
-
-    expect(input.style.cssText).toBe('--p-internal-text-field-input-padding-start: calc(60px - 2px) !important;');
-  });
-
-  it('should set inline padding-right var on input', () => {
-    const input = getInputElement();
-    const unitElement = getCounterElement();
-    Object.defineProperty(unitElement, 'offsetWidth', { value: 60 });
-    setInputStyles(input, unitElement, 'suffix');
-
-    expect(input.style.cssText).toBe('--p-internal-text-field-input-padding-end: calc(60px - 2px) !important;');
-  });
-});
-
 describe('throwIfUnitLengthExceeded()', () => {
   it('should throw error if unit length > 5', () => {
     expect(() => throwIfUnitLengthExceeded('123456')).toThrow();
@@ -256,5 +237,76 @@ describe('dispatchInputEvent()', () => {
 
     expect(spy).toHaveBeenCalledWith(new Event('input', { bubbles: true }));
     expect(spy.mock.calls[0][0].bubbles).toBe(true); // .toHaveBeenCalledWith( matcher doesn't verify value of bubbles
+  });
+});
+
+describe('addCounterCharacterLengthCssVarStyleSheet()', () => {
+  let host;
+  let stylesheetMock = {
+    replaceSync: jest.fn(),
+    insertRule: jest.fn(),
+    deleteRule: jest.fn(),
+    cssRules: [],
+  } as unknown as CSSStyleSheet;
+
+  beforeEach(() => {
+    global.CSSStyleSheet = jest.fn().mockImplementation(() => {
+      return stylesheetMock;
+    });
+    host = new MockHTMLElement();
+  });
+
+  it('should not do anything if getHasConstructableStylesheetSupport() returns false', () => {
+    const getHasConstructableStylesheetSupportSpy = jest
+      .spyOn(jssUtils, 'getHasConstructableStylesheetSupport')
+      .mockReturnValueOnce(false);
+
+    addCounterCharacterLengthCssVarStyleSheet(host);
+
+    expect(getHasConstructableStylesheetSupportSpy).toHaveBeenCalled();
+    expect(counterCharacterLengthCssVarStyleSheetMap.get(host)).toBeUndefined();
+  });
+
+  it('should create new stylesheet and push it into host.adoptedStyleSheets and update --p-internal-counter-character-length var', () => {
+    const getHasConstructableStylesheetSupportSpy = jest
+      .spyOn(jssUtils, 'getHasConstructableStylesheetSupport')
+      .mockReturnValueOnce(true);
+    const updateCounterCharacterLengthCssVarStyleSheet = jest.spyOn(
+      textFieldWrapperUtils,
+      'updateCounterCharacterLengthCssVarStyleSheet'
+    );
+
+    addCounterCharacterLengthCssVarStyleSheet(host);
+
+    expect(getHasConstructableStylesheetSupportSpy).toHaveBeenCalled();
+    expect(counterCharacterLengthCssVarStyleSheetMap.get(host)).toBe(stylesheetMock);
+    expect(host.shadowRoot.adoptedStyleSheets).toStrictEqual([stylesheetMock]);
+    expect(updateCounterCharacterLengthCssVarStyleSheet).toHaveBeenCalledWith(host, 0);
+  });
+});
+
+describe('updateCounterCharacterLengthCssVarStyleSheet()', () => {
+  let host;
+  let stylesheetMock = {
+    replaceSync: jest.fn(),
+    insertRule: jest.fn(),
+    deleteRule: jest.fn(),
+    cssRules: [],
+  } as unknown as CSSStyleSheet;
+
+  beforeEach(() => {
+    host = new MockHTMLElement();
+    global.CSSStyleSheet = jest.fn().mockImplementation(() => {
+      return stylesheetMock;
+    });
+  });
+
+  it('should update stylesheet correctly', () => {
+    counterCharacterLengthCssVarStyleSheetMap.set(host, stylesheetMock);
+    const replaceSyncSpy = jest.spyOn(stylesheetMock, 'replaceSync');
+
+    updateCounterCharacterLengthCssVarStyleSheet(host, 10);
+
+    expect(replaceSyncSpy).toHaveBeenCalledWith(':host{--p-internal-counter-character-length:10}');
   });
 });

@@ -30,6 +30,7 @@ for (const exampleUrl of exampleUrls) {
     test.fixme(
       [
         '/carousel-example-dynamic-slides',
+        '/carousel-example-focus-on-center-slide',
         '/carousel-example-events',
         '/carousel-example-jump-to-slide',
         '/inline-notification-example-action-button',
@@ -39,6 +40,8 @@ for (const exampleUrl of exampleUrls) {
         '/text-field-wrapper-example-search',
       ].includes(exampleUrl)
     );
+    // Skip AG Grid pages since they will show licensing errors
+    test.skip(['/ag-grid-example', '/ag-grid-example-storefront'].includes(exampleUrl));
     await goto(page, exampleUrl);
     expect(getConsoleErrorsAmount()).toBe(0);
     expect(getConsoleWarningsAmount()).toBe(0);

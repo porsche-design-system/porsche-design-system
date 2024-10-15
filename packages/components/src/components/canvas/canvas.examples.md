@@ -14,7 +14,11 @@ The `p-canvas` is an experimental layout component for productive web applicatio
 
 ### Supported named slots:
 
-- `slot="header"`: Renders a **sticky** header section above the content area.
+- `slot="header-start"`: Renders a **sticky** header section above the content area on the **start** side (**left** in
+  **LTR** mode / **right** in **RTL** mode).
+- `slot="header-end"`: Renders a **sticky** header section above the content area on the **end** side (**right** in
+  **LTR** mode / **left** in **RTL** mode).
+- `slot="title"`: Application name.
 - `slot`: Shows the content area.
 - `slot="footer"`: Shows a footer section, flowing under the content area when scrollable.
 - `slot="sidebar-start"`: Shows a sidebar area on the **start** side (**left** in **LTR** mode / **right** in **RTL**
@@ -26,11 +30,43 @@ The `p-canvas` is an experimental layout component for productive web applicatio
 
 ## Custom styling
 
-The canvas component has some values which can be overwritten by CSS Custom Properties (aka CSS Variables).
+The canvas component has some values which can be overwritten by **CSS Variables**.
 
 ```scss
 --p-canvas-sidebar-start-width: 50vw;
 --p-canvas-sidebar-end-width: 20vw;
+```
+
+The canvas component is also exposing **CSS Variables** to be used in `subgrid` context (see example).
+
+```scss
+var(--p-canvas-grid-span-full)
+var(--p-canvas-grid-span-one-half)
+var(--p-canvas-grid-span-one-third)
+var(--p-canvas-grid-span-two-third)
+```
+
+In addition, the canvas component also exposes some **utility CSS classes** which can be used on direct children of
+slotted main content.
+
+```scss
+.p-module
+
+.p-module--subgrid // inherits the shadowed CSS Grid defined by the canvas component
+
+.p-module--more-space-above-small
+.p-module--more-space-above-medium
+.p-module--more-space-above-large
+
+.p-module--less-space-above-small
+.p-module--less-space-above-medium
+.p-module--less-space-above-large
+
+.p-flex // might be removed in a future release in favour of PDS Tailwind
+.p-align-items--center // might be removed in a future release in favour of PDS Tailwind
+.p-gap--small // might be removed in a future release in favour of PDS Tailwind
+.p-gap--medium // might be removed in a future release in favour of PDS Tailwind
+.p-gap--large // might be removed in a future release in favour of PDS Tailwind
 ```
 
 ## Open Issues

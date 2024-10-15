@@ -23,8 +23,11 @@
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.app.json",
             "aot": true,
-            "assets": ["src/favicon.ico", "src/assets"],
-            "styles": ["@porsche-design-system/shared/css/styles.css"],
+            "assets": ["src/favicon.ico"],
+            "styles": [
+              "@porsche-design-system/shared/css/styles.css",
+              "@porsche-design-system/components-angular/ag-grid/theme.css"
+            ],
             "inlineStyleLanguage": "scss",
             "scripts": [],
             "indexTransform": "./scripts/injectPartials.js"
@@ -85,7 +88,7 @@
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.spec.json",
             "karmaConfig": "karma.conf.js",
-            "assets": ["src/favicon.ico", "src/assets"],
+            "assets": ["src/favicon.ico"],
             "styles": [],
             "scripts": []
           }

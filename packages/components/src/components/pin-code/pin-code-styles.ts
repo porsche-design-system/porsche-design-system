@@ -39,10 +39,13 @@ export const getComponentCss = (
         // TODO: move into getSlottedTextFieldTextareaSelectStyles() via parameter, e.g. textAlign=center|start
         textAlign: 'center',
         // TODO: move into getSlottedTextFieldTextareaSelectStyles() via parameter, e.g. size=max|min
-        width: inputSize,
+        maxWidth: inputSize,
+        // min width is needed for showing at least 1 character in very narrow containers. The "1rem" value is the minimum safe zone to show at least.
+        minWidth: `calc(1rem + ${borderWidthBase}*2 + ${spacingStaticSmall}*2)`,
         ...(length > 4 && {
           [getMediaQueryMax('xs')]: {
             // TODO: instead of having dedicated css rules depending on length we should try to implement a fluid one fits all solution
+            maxWidth: 'auto',
             width: `calc((276px - (${spacingStaticSmall} * ${length - 1})) / ${length})`, // calculate the max with of the inputs that fit into grid in viewport base (276px)
           },
         }),
@@ -95,7 +98,7 @@ export const getComponentCss = (
     },
     wrapper: {
       display: 'grid',
-      gridTemplateColumns: `repeat(${length}, minmax(0, 1fr))`,
+      gridTemplateColumns: `repeat(${length}, minmax(auto, 1fr))`,
       justifySelf: 'flex-start',
       gap: spacingStaticSmall,
     },

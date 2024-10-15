@@ -13,7 +13,7 @@ import {
   waitForInputTransition,
   waitForStencilLifecycle,
 } from '../helpers';
-import type { FormState } from '@porsche-design-system/components';
+import type { CheckboxWrapperState } from '@porsche-design-system/components';
 
 const getHost = (page: Page) => page.locator('p-checkbox-wrapper');
 const getInput = (page: Page) => page.locator('p-checkbox-wrapper input[type="checkbox"]');
@@ -36,7 +36,7 @@ type InitOptions = {
   label?: string;
   useSlottedLabel?: boolean;
   useSlottedMessage?: boolean;
-  state?: FormState;
+  state?: CheckboxWrapperState;
   loading?: boolean;
 };
 

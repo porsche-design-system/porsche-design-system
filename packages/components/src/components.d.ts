@@ -12,8 +12,9 @@ import { ButtonIcon } from "./components/button/button-utils";
 import { ButtonGroupDirection } from "./components/button-group/button-group-utils";
 import { ButtonPureAlignLabel, ButtonPureAriaAttribute, ButtonPureIcon, ButtonPureSize, ButtonPureType, ButtonPureWeight } from "./components/button-pure/button-pure-utils";
 import { ButtonTileAlign, ButtonTileAriaAttribute, ButtonTileAspectRatio, ButtonTileBackground, ButtonTileIcon, ButtonTileSize, ButtonTileType, ButtonTileWeight } from "./components/button-tile/button-tile-utils";
-import { CanvasSidebarEndWidth, CanvasSidebarStartWidth } from "./components/canvas/canvas-utils";
-import { CarouselAlignHeader, CarouselAriaAttribute, CarouselHeadingSize, CarouselInternationalization, CarouselUpdateEventDetail, CarouselWidth } from "./components/carousel/carousel-utils";
+import { CanvasSidebarEndIcon, CanvasSidebarStartIcon } from "./components/canvas/canvas-utils";
+import { CarouselAlignHeader, CarouselAriaAttribute, CarouselGradientColor, CarouselHeadingSize, CarouselInternationalization, CarouselUpdateEventDetail, CarouselWidth } from "./components/carousel/carousel-utils";
+import { CheckboxBlurEventDetail, CheckboxState, CheckboxUpdateEventDetail } from "./components/checkbox/checkbox-utils";
 import { CheckboxWrapperState } from "./components/checkbox-wrapper/checkbox-wrapper-utils";
 import { ContentWrapperBackgroundColor, ContentWrapperWidth } from "./components/content-wrapper/content-wrapper-utils";
 import { CrestAriaAttribute, CrestTarget } from "./components/crest/crest-utils";
@@ -75,8 +76,9 @@ export { ButtonIcon } from "./components/button/button-utils";
 export { ButtonGroupDirection } from "./components/button-group/button-group-utils";
 export { ButtonPureAlignLabel, ButtonPureAriaAttribute, ButtonPureIcon, ButtonPureSize, ButtonPureType, ButtonPureWeight } from "./components/button-pure/button-pure-utils";
 export { ButtonTileAlign, ButtonTileAriaAttribute, ButtonTileAspectRatio, ButtonTileBackground, ButtonTileIcon, ButtonTileSize, ButtonTileType, ButtonTileWeight } from "./components/button-tile/button-tile-utils";
-export { CanvasSidebarEndWidth, CanvasSidebarStartWidth } from "./components/canvas/canvas-utils";
-export { CarouselAlignHeader, CarouselAriaAttribute, CarouselHeadingSize, CarouselInternationalization, CarouselUpdateEventDetail, CarouselWidth } from "./components/carousel/carousel-utils";
+export { CanvasSidebarEndIcon, CanvasSidebarStartIcon } from "./components/canvas/canvas-utils";
+export { CarouselAlignHeader, CarouselAriaAttribute, CarouselGradientColor, CarouselHeadingSize, CarouselInternationalization, CarouselUpdateEventDetail, CarouselWidth } from "./components/carousel/carousel-utils";
+export { CheckboxBlurEventDetail, CheckboxState, CheckboxUpdateEventDetail } from "./components/checkbox/checkbox-utils";
 export { CheckboxWrapperState } from "./components/checkbox-wrapper/checkbox-wrapper-utils";
 export { ContentWrapperBackgroundColor, ContentWrapperWidth } from "./components/content-wrapper/content-wrapper-utils";
 export { CrestAriaAttribute, CrestTarget } from "./components/crest/crest-utils";
@@ -397,27 +399,29 @@ export namespace Components {
         "weight"?: BreakpointCustomizable<ButtonTileWeight>;
     }
     /**
-     * @controlled {"props": ["sidebarStartOpen"], "event": "dismissSidebarStart"}
-     * @controlled {"props": ["sidebarEndOpen"], "event": "dismissSidebarEnd"}
      * @experimental 
      */
     interface PCanvas {
+        /**
+          * The icon to toggle the Sidebar on the end side
+         */
+        "sidebarEndIcon"?: CanvasSidebarEndIcon;
         /**
           * Open Sidebar on the end side
          */
         "sidebarEndOpen"?: boolean;
         /**
-          * Defines the width of the sidebar on the end side
+          * The icon to toggle the Sidebar on the start side
          */
-        "sidebarEndWidth"?: CanvasSidebarEndWidth;
+        "sidebarStartIcon"?: CanvasSidebarStartIcon;
         /**
           * Open Sidebar on the start side
          */
         "sidebarStartOpen"?: boolean;
         /**
-          * Defines the width of the sidebar on the start side
+          * Adapts the color depending on the theme. Has no effect when "inherit" is set as color prop.
          */
-        "sidebarStartWidth"?: CanvasSidebarStartWidth;
+        "theme"?: Theme;
     }
     /**
      * @controlled { "props": ["activeSlideIndex"], "event": "update", "isInternallyMutated": true }
@@ -443,6 +447,14 @@ export namespace Components {
           * @deprecated since v3.0.0, will be removed with next major release, use `pagination` instead. If true, the carousel will not show pagination bullets at the bottom.
          */
         "disablePagination"?: BreakpointCustomizable<boolean>;
+        /**
+          * Indicates whether focus should be set on the center slide. If true, the carousel loops by individual slide; otherwise, it loops by page.
+         */
+        "focusOnCenterSlide"?: boolean;
+        /**
+          * Adapts the background gradient for the left and right edge.
+         */
+        "gradientColor"?: CarouselGradientColor;
         /**
           * Defines the heading used in the carousel.
          */
@@ -476,6 +488,10 @@ export namespace Components {
          */
         "theme"?: Theme;
         /**
+          * Determines whether to trim spaces before/after the carousel if `focusOnCenterSlide` option is true.
+         */
+        "trimSpace"?: boolean;
+        /**
           * Defines the outer spacings between the carousel and the left and right screen sides.
          */
         "width"?: CarouselWidth;
@@ -484,6 +500,64 @@ export namespace Components {
           * @deprecated since v3.0.0, will be removed with next major release
          */
         "wrapContent"?: boolean;
+    }
+    interface PCheckbox {
+        /**
+          * Reflects the checkbox current checked state and allows setting the initial checked state.
+         */
+        "checked"?: boolean;
+        /**
+          * Displays as compact version.
+         */
+        "compact"?: boolean;
+        /**
+          * Marks the checkbox as disabled.
+         */
+        "disabled"?: boolean;
+        /**
+          * The id of a form element the checkbox should be associated with.
+         */
+        "form"?: string;
+        /**
+          * Show or hide label. For better accessibility it's recommended to show the label.
+         */
+        "hideLabel"?: BreakpointCustomizable<boolean>;
+        /**
+          * Marks the checkbox as indeterminate.
+         */
+        "indeterminate"?: boolean;
+        /**
+          * The label text.
+         */
+        "label"?: string;
+        /**
+          * @experimental Disables the checkbox and shows a loading indicator.
+         */
+        "loading"?: boolean;
+        /**
+          * The message styled depending on validation state.
+         */
+        "message"?: string;
+        /**
+          * The name of the checkbox.
+         */
+        "name"?: string;
+        /**
+          * Marks the checkbox as required.
+         */
+        "required"?: boolean;
+        /**
+          * The validation state.
+         */
+        "state"?: CheckboxState;
+        /**
+          * Adapts the color depending on the theme.
+         */
+        "theme"?: Theme;
+        /**
+          * The checkbox value. When a form is submitted, only a checkbox which is currently checked is included in the submission.
+         */
+        "value"?: string;
     }
     interface PCheckboxWrapper {
         /**
@@ -2207,13 +2281,13 @@ export interface PBannerCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLPBannerElement;
 }
-export interface PCanvasCustomEvent<T> extends CustomEvent<T> {
-    detail: T;
-    target: HTMLPCanvasElement;
-}
 export interface PCarouselCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLPCarouselElement;
+}
+export interface PCheckboxCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLPCheckboxElement;
 }
 export interface PFlyoutCustomEvent<T> extends CustomEvent<T> {
     detail: T;
@@ -2353,24 +2427,10 @@ declare global {
         prototype: HTMLPButtonTileElement;
         new (): HTMLPButtonTileElement;
     };
-    interface HTMLPCanvasElementEventMap {
-        "dismissSidebarStart": void;
-        "dismissSidebarEnd": void;
-    }
     /**
-     * @controlled {"props": ["sidebarStartOpen"], "event": "dismissSidebarStart"}
-     * @controlled {"props": ["sidebarEndOpen"], "event": "dismissSidebarEnd"}
      * @experimental 
      */
     interface HTMLPCanvasElement extends Components.PCanvas, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLPCanvasElementEventMap>(type: K, listener: (this: HTMLPCanvasElement, ev: PCanvasCustomEvent<HTMLPCanvasElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLPCanvasElementEventMap>(type: K, listener: (this: HTMLPCanvasElement, ev: PCanvasCustomEvent<HTMLPCanvasElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLPCanvasElement: {
         prototype: HTMLPCanvasElement;
@@ -2396,6 +2456,24 @@ declare global {
     var HTMLPCarouselElement: {
         prototype: HTMLPCarouselElement;
         new (): HTMLPCarouselElement;
+    };
+    interface HTMLPCheckboxElementEventMap {
+        "update": CheckboxUpdateEventDetail;
+        "blur": CheckboxBlurEventDetail;
+    }
+    interface HTMLPCheckboxElement extends Components.PCheckbox, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLPCheckboxElementEventMap>(type: K, listener: (this: HTMLPCheckboxElement, ev: PCheckboxCustomEvent<HTMLPCheckboxElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLPCheckboxElementEventMap>(type: K, listener: (this: HTMLPCheckboxElement, ev: PCheckboxCustomEvent<HTMLPCheckboxElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLPCheckboxElement: {
+        prototype: HTMLPCheckboxElement;
+        new (): HTMLPCheckboxElement;
     };
     interface HTMLPCheckboxWrapperElement extends Components.PCheckboxWrapper, HTMLStencilElement {
     }
@@ -3085,6 +3163,7 @@ declare global {
         "p-button-tile": HTMLPButtonTileElement;
         "p-canvas": HTMLPCanvasElement;
         "p-carousel": HTMLPCarouselElement;
+        "p-checkbox": HTMLPCheckboxElement;
         "p-checkbox-wrapper": HTMLPCheckboxWrapperElement;
         "p-content-wrapper": HTMLPContentWrapperElement;
         "p-crest": HTMLPCrestElement;
@@ -3431,35 +3510,29 @@ declare namespace LocalJSX {
         "weight"?: BreakpointCustomizable<ButtonTileWeight>;
     }
     /**
-     * @controlled {"props": ["sidebarStartOpen"], "event": "dismissSidebarStart"}
-     * @controlled {"props": ["sidebarEndOpen"], "event": "dismissSidebarEnd"}
      * @experimental 
      */
     interface PCanvas {
         /**
-          * Emitted when the component requests to close the sidebar on the end side.
+          * The icon to toggle the Sidebar on the end side
          */
-        "onDismissSidebarEnd"?: (event: PCanvasCustomEvent<void>) => void;
-        /**
-          * Emitted when the component requests to close the sidebar on the start side.
-         */
-        "onDismissSidebarStart"?: (event: PCanvasCustomEvent<void>) => void;
+        "sidebarEndIcon"?: CanvasSidebarEndIcon;
         /**
           * Open Sidebar on the end side
          */
         "sidebarEndOpen"?: boolean;
         /**
-          * Defines the width of the sidebar on the end side
+          * The icon to toggle the Sidebar on the start side
          */
-        "sidebarEndWidth"?: CanvasSidebarEndWidth;
+        "sidebarStartIcon"?: CanvasSidebarStartIcon;
         /**
           * Open Sidebar on the start side
          */
         "sidebarStartOpen"?: boolean;
         /**
-          * Defines the width of the sidebar on the start side
+          * Adapts the color depending on the theme. Has no effect when "inherit" is set as color prop.
          */
-        "sidebarStartWidth"?: CanvasSidebarStartWidth;
+        "theme"?: Theme;
     }
     /**
      * @controlled { "props": ["activeSlideIndex"], "event": "update", "isInternallyMutated": true }
@@ -3485,6 +3558,14 @@ declare namespace LocalJSX {
           * @deprecated since v3.0.0, will be removed with next major release, use `pagination` instead. If true, the carousel will not show pagination bullets at the bottom.
          */
         "disablePagination"?: BreakpointCustomizable<boolean>;
+        /**
+          * Indicates whether focus should be set on the center slide. If true, the carousel loops by individual slide; otherwise, it loops by page.
+         */
+        "focusOnCenterSlide"?: boolean;
+        /**
+          * Adapts the background gradient for the left and right edge.
+         */
+        "gradientColor"?: CarouselGradientColor;
         /**
           * Defines the heading used in the carousel.
          */
@@ -3526,6 +3607,10 @@ declare namespace LocalJSX {
          */
         "theme"?: Theme;
         /**
+          * Determines whether to trim spaces before/after the carousel if `focusOnCenterSlide` option is true.
+         */
+        "trimSpace"?: boolean;
+        /**
           * Defines the outer spacings between the carousel and the left and right screen sides.
          */
         "width"?: CarouselWidth;
@@ -3534,6 +3619,72 @@ declare namespace LocalJSX {
           * @deprecated since v3.0.0, will be removed with next major release
          */
         "wrapContent"?: boolean;
+    }
+    interface PCheckbox {
+        /**
+          * Reflects the checkbox current checked state and allows setting the initial checked state.
+         */
+        "checked"?: boolean;
+        /**
+          * Displays as compact version.
+         */
+        "compact"?: boolean;
+        /**
+          * Marks the checkbox as disabled.
+         */
+        "disabled"?: boolean;
+        /**
+          * The id of a form element the checkbox should be associated with.
+         */
+        "form"?: string;
+        /**
+          * Show or hide label. For better accessibility it's recommended to show the label.
+         */
+        "hideLabel"?: BreakpointCustomizable<boolean>;
+        /**
+          * Marks the checkbox as indeterminate.
+         */
+        "indeterminate"?: boolean;
+        /**
+          * The label text.
+         */
+        "label"?: string;
+        /**
+          * @experimental Disables the checkbox and shows a loading indicator.
+         */
+        "loading"?: boolean;
+        /**
+          * The message styled depending on validation state.
+         */
+        "message"?: string;
+        /**
+          * The name of the checkbox.
+         */
+        "name"?: string;
+        /**
+          * Emitted when the checkbox has lost focus.
+         */
+        "onBlur"?: (event: PCheckboxCustomEvent<CheckboxBlurEventDetail>) => void;
+        /**
+          * Emitted when checkbox checked property is changed.
+         */
+        "onUpdate"?: (event: PCheckboxCustomEvent<CheckboxUpdateEventDetail>) => void;
+        /**
+          * Marks the checkbox as required.
+         */
+        "required"?: boolean;
+        /**
+          * The validation state.
+         */
+        "state"?: CheckboxState;
+        /**
+          * Adapts the color depending on the theme.
+         */
+        "theme"?: Theme;
+        /**
+          * The checkbox value. When a form is submitted, only a checkbox which is currently checked is included in the submission.
+         */
+        "value"?: string;
     }
     interface PCheckboxWrapper {
         /**
@@ -5392,6 +5543,7 @@ declare namespace LocalJSX {
         "p-button-tile": PButtonTile;
         "p-canvas": PCanvas;
         "p-carousel": PCarousel;
+        "p-checkbox": PCheckbox;
         "p-checkbox-wrapper": PCheckboxWrapper;
         "p-content-wrapper": PContentWrapper;
         "p-crest": PCrest;
@@ -5477,8 +5629,6 @@ declare module "@stencil/core" {
             "p-button-pure": LocalJSX.PButtonPure & JSXBase.HTMLAttributes<HTMLPButtonPureElement>;
             "p-button-tile": LocalJSX.PButtonTile & JSXBase.HTMLAttributes<HTMLPButtonTileElement>;
             /**
-             * @controlled {"props": ["sidebarStartOpen"], "event": "dismissSidebarStart"}
-             * @controlled {"props": ["sidebarEndOpen"], "event": "dismissSidebarEnd"}
              * @experimental 
              */
             "p-canvas": LocalJSX.PCanvas & JSXBase.HTMLAttributes<HTMLPCanvasElement>;
@@ -5486,6 +5636,7 @@ declare module "@stencil/core" {
              * @controlled { "props": ["activeSlideIndex"], "event": "update", "isInternallyMutated": true }
              */
             "p-carousel": LocalJSX.PCarousel & JSXBase.HTMLAttributes<HTMLPCarouselElement>;
+            "p-checkbox": LocalJSX.PCheckbox & JSXBase.HTMLAttributes<HTMLPCheckboxElement>;
             "p-checkbox-wrapper": LocalJSX.PCheckboxWrapper & JSXBase.HTMLAttributes<HTMLPCheckboxWrapperElement>;
             /**
              * @deprecated since v3.0.0, will be removed with next major release. Use native CSS Grid instead.

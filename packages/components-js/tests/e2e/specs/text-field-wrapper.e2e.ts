@@ -31,6 +31,10 @@ const getLocateActionButton = (page: Page) => page.locator('p-text-field-wrapper
 const getSubmitButtonHost = (page: Page) => page.locator('p-text-field-wrapper p-button-pure').first();
 const getSubmitButton = (page: Page) => page.locator('p-text-field-wrapper p-button-pure button').first();
 const getIconName = (icon: Locator) => getProperty(icon, 'icon');
+const counterCharacterLengthCssVarValue = async (page: Page) =>
+  getHost(page).evaluate((element) =>
+    getComputedStyle(element).getPropertyValue('--p-internal-counter-character-length')
+  );
 
 type InitOptions = {
   useSlottedLabel?: boolean;
@@ -507,6 +511,20 @@ test.describe('showCounter', () => {
 
     await expect(page.getByText('0/20')).toBeHidden();
     await expect(getLabelSrText(page)).toHaveCount(0);
+  });
+
+  skipInBrowsers(['webkit'], () => {
+    test('should update css character length custom property correctly', async ({ page }) => {
+      await initTextField(page, { showCounter: true });
+      const input = getInput(page);
+      await setAttribute(input, 'maxlength', '20');
+      expect(await counterCharacterLengthCssVarValue(page)).toBe('4');
+
+      await setProperty(input, 'value', 'some longer text');
+      await waitForStencilLifecycle(page);
+
+      expect(await counterCharacterLengthCssVarValue(page)).toBe('5');
+    });
   });
 });
 

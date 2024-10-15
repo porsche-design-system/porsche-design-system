@@ -1,9 +1,14 @@
 export { default as AccordionExample } from './AccordionExample.vue';
+export { default as AGGridExample } from './AGGridExample.vue';
+export { default as AGGridExampleStorefront } from './AGGridExampleStorefront.vue';
 export { default as ButtonExampleForm } from './ButtonExampleForm.vue';
 export { default as CanvasExample } from './CanvasExample.vue';
 export { default as CarouselExampleDynamicSlides } from './CarouselExampleDynamicSlides.vue';
+export { default as CarouselExampleFocusOnCenterSlide } from './CarouselExampleFocusOnCenterSlide.vue';
 export { default as CarouselExampleEvents } from './CarouselExampleEvents.vue';
 export { default as CarouselExampleJumpToSlide } from './CarouselExampleJumpToSlide.vue';
+export { default as CheckboxExample } from './CheckboxExample.vue';
+export { default as CheckboxExampleControlled } from './CheckboxExampleControlled.vue';
 export { default as FlyoutExample } from './FlyoutExample.vue';
 export { default as FlyoutMultilevelExample } from './FlyoutMultilevelExample.vue';
 export { default as FlyoutMultilevelExampleActiveIdentifier } from './FlyoutMultilevelExampleActiveIdentifier.vue';

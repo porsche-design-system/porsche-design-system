@@ -27,6 +27,7 @@ import { getComponentCss } from './select-wrapper-styles';
 import { StateMessage } from '../../common/state-message/state-message';
 import { Label } from '../../common/label/label';
 import { getSlottedAnchorStyles } from '../../../styles';
+import { getSlottedSelectOptionStyles } from '../../../styles/global/slotted-select-option-styles';
 
 const propTypes: PropTypes<typeof SelectWrapper> = {
   label: AllowedTypes.string,
@@ -48,7 +49,7 @@ const propTypes: PropTypes<typeof SelectWrapper> = {
  */
 @Component({
   tag: 'p-select-wrapper',
-  shadow: true,
+  shadow: { delegatesFocus: true },
 })
 export class SelectWrapper {
   @Element() public host!: HTMLElement;
@@ -85,7 +86,7 @@ export class SelectWrapper {
   private hasCustomDropdown: boolean;
 
   public connectedCallback(): void {
-    applyConstructableStylesheetStyles(this.host, getSlottedAnchorStyles);
+    applyConstructableStylesheetStyles(this.host, getSlottedAnchorStyles, getSlottedSelectOptionStyles);
     this.observeAttributes(); // on every reconnect
   }
 
