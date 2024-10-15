@@ -600,7 +600,7 @@ test.describe('form', () => {
     expect(await getFormDataValue(form, name)).toBe(value);
   });
 
-  test('should reset checkbox value on form reset', async ({ page }) => {
+  test('should reset checkbox on form reset', async ({ page }) => {
     const name = 'name';
     const value = 'Hallo';
     const checked = true;
