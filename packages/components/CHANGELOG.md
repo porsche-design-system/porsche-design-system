@@ -14,6 +14,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ### [Unreleased]
 
+#### Added
+
+- `Checkbox`, `Textarea`: use `formDisabledCallback` and `formStateRestoreCallback` from ElementInternals API and sync
+  validity with native component. ([#3528](https://github.com/porsche-design-system/porsche-design-system/pull/3528))
+
 ### [3.19.0] - 2024-10-14
 
 ### [3.19.0-rc.4] - 2024-10-14
