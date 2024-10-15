@@ -2496,6 +2496,7 @@ exports[`manual test cases > should pass internal props correctly to p-pin-code 
 >
   <template
     shadowroot="open"
+    shadowrootdelegatesfocus="true"
     shadowrootmode="open"
   >
     <style>
@@ -3199,6 +3200,7 @@ exports[`manual test cases > should pass internal props correctly to p-select-wr
 >
   <template
     shadowroot="open"
+    shadowrootdelegatesfocus="true"
     shadowrootmode="open"
   >
     <style>
@@ -3375,6 +3377,7 @@ img {
         >
           <template
             shadowroot="open"
+            shadowrootdelegatesfocus="true"
             shadowrootmode="open"
           >
             <style>
@@ -3493,6 +3496,7 @@ exports[`manual test cases > should pass internal props correctly to p-select-wr
 >
   <template
     shadowroot="open"
+    shadowrootdelegatesfocus="true"
     shadowrootmode="open"
   >
     <style>
@@ -12591,6 +12595,7 @@ exports[`should render dsr component for PPinCode 1`] = `
 >
   <template
     shadowroot="open"
+    shadowrootdelegatesfocus="true"
     shadowrootmode="open"
   >
     <style>
@@ -13932,6 +13937,7 @@ exports[`should render dsr component for PSelectWrapper 1`] = `
 >
   <template
     shadowroot="open"
+    shadowrootdelegatesfocus="true"
     shadowrootmode="open"
   >
     <style>
@@ -14106,6 +14112,7 @@ img {
         >
           <template
             shadowroot="open"
+            shadowrootdelegatesfocus="true"
             shadowrootmode="open"
           >
             <style>

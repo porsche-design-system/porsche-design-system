@@ -136,6 +136,22 @@ test.describe('focus state', () => {
     await label.click();
     expect((await getEventSummary(filterInput, 'focus')).counter).toBe(1);
   });
+  test('should focus filter when host is focused', async ({ page }) => {
+    await initSelect(page);
+    const host = getHost(page);
+    const filterInput = getFilterInput(page);
+    const filterInputOverlay = getFilterInputOverlay(page);
+    await page.mouse.click(300, 300); // Remove focus
+
+    await addEventListener(filterInput, 'focus');
+    expect((await getEventSummary(filterInput, 'focus')).counter).toBe(0);
+    await expect(filterInputOverlay).toHaveCSS('border-color', 'rgb(107, 109, 112)'); // Border is on overlay element
+
+    await host.focus(); // Slotted select has to be focused
+    await waitForStencilLifecycle(page);
+    expect((await getEventSummary(filterInput, 'focus')).counter).toBe(1);
+    await expect(filterInputOverlay).toHaveCSS('border-color', 'rgb(1, 2, 5)'); // Border is on overlay element
+  });
 });
 
 // TODO: Activate test
