@@ -16,6 +16,7 @@ import {
 import type { CheckboxState } from '@porsche-design-system/components';
 
 const getHost = (page: Page) => page.locator('p-checkbox');
+const getFieldset = (page: Page) => page.locator('fieldset');
 const getInput = (page: Page) => page.locator('p-checkbox input[type="checkbox"]');
 const getWrapper = (page: Page) => page.locator('p-checkbox .wrapper');
 const getLabel = (page: Page) => page.locator('p-checkbox label');
@@ -47,6 +48,7 @@ type InitOptions = {
   value?: string;
   label?: string;
   checked?: boolean;
+  required?: boolean;
   indeterminate?: boolean;
   disabled?: boolean;
   useSlottedLabel?: boolean;
@@ -65,6 +67,7 @@ const initCheckbox = (page: Page, opts?: InitOptions): Promise<void> => {
     value = '',
     form = '',
     checked = false,
+    required = false,
     indeterminate = false,
     disabled = false,
     useSlottedLabel = false,
@@ -91,6 +94,7 @@ const initCheckbox = (page: Page, opts?: InitOptions): Promise<void> => {
     form && `form="${form}"`,
     loading && 'loading="true"',
     checked && 'checked="true"',
+    required && 'required="true"',
     disabled && 'disabled="true"',
     indeterminate && 'indeterminate="true"',
   ]
@@ -457,6 +461,26 @@ test.describe('form', () => {
     expect(await getFormDataValue(form, name)).toBe(value);
   });
 
+  test('should not submit if required but false', async ({ page }) => {
+    const name = 'name';
+    const value = '';
+    await initCheckbox(page, {
+      required: true,
+      name,
+      value,
+      checked: false,
+      isWithinForm: true,
+      markupAfter: '<button type="submit">Submit</button>',
+    });
+    const form = getForm(page);
+
+    await addEventListener(form, 'submit');
+    expect((await getEventSummary(form, 'submit')).counter).toBe(0);
+
+    await page.locator('button[type="submit"]').click();
+    expect((await getEventSummary(form, 'submit')).counter).toBe(0);
+  });
+
   test('should not include name & value in FormData submit when disabled', async ({ page }) => {
     const name = 'name';
     const value = 'Hallo';
@@ -604,6 +628,27 @@ test.describe('form', () => {
     });
 
     await expect(host).toHaveJSProperty('disabled', true);
+  });
+
+  test('should sync disabled state with fieldset when updated programmatically', async ({ page }) => {
+    await initCheckbox(page, {
+      isWithinForm: true,
+      markupBefore: `<fieldset disabled>`,
+      markupAfter: `</fieldset>`,
+    });
+    const host = getHost(page);
+    const textarea = getInput(page);
+    const fieldset = getFieldset(page);
+    await expect(fieldset).toHaveJSProperty('disabled', true);
+    await expect(host).toHaveJSProperty('disabled', true);
+    await expect(textarea).toHaveJSProperty('disabled', true);
+
+    await setProperty(fieldset, 'disabled', false);
+    await waitForStencilLifecycle(page);
+
+    await expect(fieldset).toHaveJSProperty('disabled', false);
+    await expect(host).toHaveJSProperty('disabled', false);
+    await expect(textarea).toHaveJSProperty('disabled', false);
   });
 });
 

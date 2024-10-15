@@ -16,6 +16,7 @@ import {
 import { Components } from '@porsche-design-system/components';
 
 const getHost = (page: Page) => page.locator('p-textarea');
+const getFieldset = (page: Page) => page.locator('fieldset');
 const getTextarea = (page: Page) => page.locator('p-textarea textarea');
 const getLabel = (page: Page) => page.locator('p-textarea label');
 const getCounter = (page: Page) => page.locator('p-textarea .counter');
@@ -220,6 +221,24 @@ test.describe('form', () => {
     expect(await getFormDataValue(form, name)).toBe(value);
   });
 
+  test('should not submit if required but empty', async ({ page }) => {
+    const name = 'name';
+    const value = '';
+    const required = true;
+    await initTextarea(page, {
+      props: { name, value, required },
+      isWithinForm: true,
+      markupAfter: '<button type="submit">Submit</button>',
+    });
+    const form = getForm(page);
+
+    await addEventListener(form, 'submit');
+    expect((await getEventSummary(form, 'submit')).counter).toBe(0);
+
+    await page.locator('button[type="submit"]').click();
+    expect((await getEventSummary(form, 'submit')).counter).toBe(0);
+  });
+
   test('should reset textarea value on form reset', async ({ page }) => {
     const name = 'name';
     const value = 'Hallo';
@@ -264,6 +283,27 @@ test.describe('form', () => {
     });
 
     await expect(host).toHaveJSProperty('disabled', true);
+  });
+
+  test('should sync disabled state with fieldset when updated programmatically', async ({ page }) => {
+    await initTextarea(page, {
+      isWithinForm: true,
+      markupBefore: `<fieldset disabled>`,
+      markupAfter: `</fieldset>`,
+    });
+    const host = getHost(page);
+    const textarea = getTextarea(page);
+    const fieldset = getFieldset(page);
+    await expect(fieldset).toHaveJSProperty('disabled', true);
+    await expect(host).toHaveJSProperty('disabled', true);
+    await expect(textarea).toHaveJSProperty('disabled', true);
+
+    await setProperty(fieldset, 'disabled', false);
+    await waitForStencilLifecycle(page);
+
+    await expect(fieldset).toHaveJSProperty('disabled', false);
+    await expect(host).toHaveJSProperty('disabled', false);
+    await expect(textarea).toHaveJSProperty('disabled', false);
   });
 });
 
