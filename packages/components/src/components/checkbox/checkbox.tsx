@@ -114,6 +114,7 @@ export class Checkbox {
 
   @AttachInternals() private internals: ElementInternals;
 
+  private defaultChecked: boolean;
   private controllerHost = new ControllerHost(this);
   private loadingCtrl = new InitialLoadingController(this.controllerHost);
   private checkboxInputElement: HTMLInputElement;
@@ -151,6 +152,10 @@ export class Checkbox {
     return hasPropValueChanged(newVal, oldVal);
   }
 
+  public componentWillLoad(): void {
+    this.defaultChecked = this.checked;
+  }
+
   public componentDidLoad(): void {
     this.checkboxInputElement.indeterminate = this.indeterminate;
     if (this.checkboxInputElement.checked) {
@@ -159,9 +164,28 @@ export class Checkbox {
   }
 
   public formResetCallback(): void {
-    this.internals.setValidity({});
-    this.internals.setFormValue(undefined);
-    this.checked = false;
+    this.internals.setFormValue(this.defaultChecked ? this.value : undefined);
+    this.checked = this.defaultChecked;
+  }
+
+  public formDisabledCallback(disabled: boolean): void {
+    this.disabled = disabled;
+  }
+
+  public formStateRestoreCallback(state: string): void {
+    this.checked = !!state;
+  }
+
+  public componentDidRender(): void {
+    // Skip validation if the checkbox is disabled; it's ignored in form validation
+    // and always has an empty validationMessage, even if some ValidityState flags are true.
+    if (!this.disabled) {
+      this.internals.setValidity(
+        this.checkboxInputElement.validity,
+        this.checkboxInputElement.validationMessage,
+        this.checkboxInputElement
+      );
+    }
   }
 
   public render(): JSX.Element {

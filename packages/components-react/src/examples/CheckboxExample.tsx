@@ -15,6 +15,7 @@ export const CheckboxExamplePage = (): JSX.Element => {
       <form onSubmit={onSubmit}>
         <PCheckbox name="some-name" value="some-value" label="Some Label"></PCheckbox>
         <button type="submit">Submit</button>
+        <button type="reset">Reset</button>
       </form>
 
       <PText>Last submitted data: {lastSubmittedData}</PText>
