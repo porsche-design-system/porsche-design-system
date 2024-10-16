@@ -13,10 +13,35 @@
 
       <div slot="header-end"></div>
 
-      <div slot="footer" class="search">
+      <div slot="footer" class="chat-input">
         <input type="search" name="some-name" placeholder="Type a message…" />
+        <p-button-pure
+          class="chat-input__file-upload"
+          icon="attachment"
+          hide-label="true"
+          onclick="document.querySelector('.chat-input__files').toggleAttribute('hidden');"
+          >Upload attachment</p-button-pure
+        >
+        <div class="chat-input__files" hidden>
+          <p-tag color="background-frosted" icon="document">
+            911-datasheet.jpg
+            <p-button-pure size="x-small" hide-label="true" icon="delete">Delete attachment</p-button-pure>
+          </p-tag>
+          <p-tag color="background-frosted" icon="document">
+            718-color.jpg
+            <p-button-pure size="x-small" hide-label="true" icon="delete">Delete attachment</p-button-pure>
+          </p-tag>
+          <p-tag color="background-frosted" icon="document">
+            taycan-specs.jpg
+            <p-button-pure size="x-small" hide-label="true" icon="delete">Delete attachment</p-button-pure>
+          </p-tag>
+          <p-tag color="background-frosted" icon="document">
+            macan-specs.jpg
+            <p-button-pure size="x-small" hide-label="true" icon="delete">Delete attachment</p-button-pure>
+          </p-tag>
+        </div>
         <p-link
-          class="search__submit"
+          class="chat-input__submit"
           href="#template-chat"
           type="button"
           variant="primary"
@@ -249,7 +274,15 @@
               </p-button-group>
             </div>
           </div>
-          <p-text class="chat__bubble chat__bubble--question">Tell me more about Porsche</p-text>
+          <div class="chat__bubble chat__bubble--question">
+            <p-text>Tell me more about Porsche</p-text>
+            <div class="chat__files">
+              <p-tag color="background-frosted" icon="document" compact="true">911-datasheet.jpg</p-tag>
+              <p-tag color="background-frosted" icon="document" compact="true">718-specs.jpg</p-tag>
+              <p-tag color="background-frosted" icon="document" compact="true">macan-specs.jpg</p-tag>
+              <p-tag color="background-frosted" icon="document" compact="true">taycan-specs.jpg</p-tag>
+            </div>
+          </div>
           <div class="chat__bubble chat__bubble--answer">
             <img src="assets/codriver.webp" width="384" height="384" alt="Co-Driver logo" />
             <div>
