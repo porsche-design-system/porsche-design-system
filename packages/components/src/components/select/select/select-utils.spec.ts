@@ -3,19 +3,14 @@ import {
   getSelectDropdownDirection,
   getSelectedOptionString,
   getSrHighlightedOptionText,
-  initNativeSelect,
   resetSelectedOption,
   type SelectOption,
   setSelectedOption,
-  syncNativeSelect,
   syncSelectChildrenProps,
-  updateNativeSelectOption,
   updateSelectOptions,
 } from './select-utils';
 import * as stencilUtils from '@stencil/core';
 import * as loggerUtils from '../../../utils/log/logger';
-import * as setAttributesUtils from '../../../utils/dom/setAttributes';
-import * as setAttributeUtils from '../../../utils/dom/setAttribute';
 import * as dropdownDirectionUtils from '../../../utils/select/select-dropdown';
 import * as keyboardBehaviorUtils from '../../../utils/select/keyboard-behavior';
 
@@ -159,99 +154,6 @@ describe('setSelectedOption', () => {
     expect(options[2].selected).toBe(false);
     expect(resetSelectedOptionSpy).toHaveBeenCalledWith(options);
     expect(forceUpdateSpy).toHaveBeenCalledWith(options[1]);
-  });
-});
-
-describe('initNativeSelect', () => {
-  it('should return native select with added attributes and add native select to host', () => {
-    const spy = jest.spyOn(setAttributesUtils, 'setAttributes');
-    const syncNativeSelectSpy = jest.spyOn(selectUtils, 'syncNativeSelect');
-
-    const host = document.createElement('p-select');
-    const name = 'options';
-    const disabled = true;
-    const required = false;
-
-    const nativeSelect = initNativeSelect(host, name, disabled, required);
-
-    expect(nativeSelect instanceof HTMLSelectElement).toBe(true);
-    expect(spy).toHaveBeenCalledWith(nativeSelect, {
-      'aria-hidden': 'true',
-      tabindex: '-1',
-      slot: 'internal-select',
-    });
-    expect(syncNativeSelectSpy).toHaveBeenCalledWith(nativeSelect, name, disabled, required);
-    expect(host.firstChild).toBe(nativeSelect);
-  });
-});
-
-describe('syncNativeSelect', () => {
-  it('should synchronize attributes of native select element', () => {
-    const setAttributeSpy = jest.spyOn(setAttributeUtils, 'setAttribute');
-
-    const nativeSelect = document.createElement('select');
-    const toggleAttributeSpy = jest.spyOn(nativeSelect, 'toggleAttribute');
-    const name = 'testSelect';
-    const disabled = true;
-    const required = false;
-
-    syncNativeSelect(nativeSelect, name, disabled, required);
-
-    expect(setAttributeSpy).toHaveBeenCalledWith(nativeSelect, 'name', name);
-    expect(toggleAttributeSpy).toHaveBeenCalledWith('disabled', true);
-    expect(toggleAttributeSpy).toHaveBeenCalledWith('required', false);
-  });
-
-  it('should remove "disabled" and "required" attributes when not disabled and not required', () => {
-    const setAttributeSpy = jest.spyOn(setAttributeUtils, 'setAttribute');
-    const nativeSelect = document.createElement('select');
-    const toggleAttributeSpy = jest.spyOn(nativeSelect, 'toggleAttribute');
-    const name = 'testSelect';
-    const disabled = false;
-    const required = false;
-
-    syncNativeSelect(nativeSelect, name, disabled, required);
-
-    expect(setAttributeSpy).toHaveBeenCalledWith(nativeSelect, 'name', name);
-    expect(toggleAttributeSpy).toHaveBeenCalledWith('disabled', false);
-    expect(toggleAttributeSpy).toHaveBeenCalledWith('required', false);
-  });
-
-  it('should add "required" and "disabled" attributes when required and disabled', () => {
-    const setAttributeSpy = jest.spyOn(setAttributeUtils, 'setAttribute');
-    const nativeSelect = document.createElement('select');
-    const toggleAttributeSpy = jest.spyOn(nativeSelect, 'toggleAttribute');
-    const name = 'testSelect';
-    const disabled = true;
-    const required = true;
-
-    syncNativeSelect(nativeSelect, name, disabled, required);
-
-    expect(setAttributeSpy).toHaveBeenCalledWith(nativeSelect, 'name', name);
-    expect(toggleAttributeSpy).toHaveBeenCalledWith('disabled', true);
-    expect(toggleAttributeSpy).toHaveBeenCalledWith('required', true);
-  });
-});
-
-describe('updateNativeSelectOption', () => {
-  it('should update the innerHTML of the nativeSelect', () => {
-    const nativeSelect = document.createElement('select');
-    const selectedOption = [1];
-    const options = generateOptions({ amount: 4, selectedIndices: selectedOption });
-
-    updateNativeSelectOption(nativeSelect, options);
-    expect(nativeSelect.innerHTML).toBe('<option value="Value 1" selected=""></option>');
-  });
-
-  it('should not update the innerHTML of the nativeSelect when the selected option has undefined value', () => {
-    const nativeSelect = document.createElement('select');
-    const options = [
-      { value: undefined, selected: true },
-      { value: 'a', selected: false },
-      { value: 'b', selected: false },
-    ] as SelectOption[];
-    updateNativeSelectOption(nativeSelect, options);
-    expect(nativeSelect.innerHTML).toBe('');
   });
 });
 
