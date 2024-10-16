@@ -30,12 +30,14 @@ test.describe('form', () => {
     expect(await getFormDataValue(form, 'some-name')).toBe(testValue);
   });
 
-  test('should reset checkbox on form reset', async ({ page }) => {
+  test('should reset checkbox to its initial state on form reset', async ({ page }) => {
     await goto(page, 'checkbox-example');
     expect(await waitForComponentsReady(page)).toBe(2); // p-checkbox and p-text
     const host = getHost(page);
     const form = getForm(page);
     const testValue = 'test';
+
+    await expect(host).toHaveJSProperty('checked', false);
 
     await setProperty(host, 'value', testValue);
     await setProperty(host, 'checked', true);
