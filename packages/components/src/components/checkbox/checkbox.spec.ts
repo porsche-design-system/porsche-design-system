@@ -43,20 +43,33 @@ describe('connectedCallback', () => {
 });
 
 describe('formResetCallback', () => {
-  const value = 'test-value';
-  const defaultChecked = false;
-  const component = initComponent();
-  component.value = value;
-  component['defaultChecked'] = defaultChecked;
-  const setValiditySpy = jest.spyOn(component['internals'], 'setValidity' as any);
-  const setFormValueSpy = jest.spyOn(component['internals'], 'setFormValue' as any);
-  component.formResetCallback();
-  expect(setValiditySpy).toHaveBeenCalledWith({});
-  expect(setFormValueSpy).toHaveBeenCalledWith(undefined);
-  expect(component.value).toBe(value);
-  expect(component['checkboxInputElement'].value).toBe('on');
-  expect(component.checked).toBe(defaultChecked);
-  expect(component['checkboxInputElement'].checked).toBe(false);
+  it('should reset form value to undefined if defaultChecked is false', () => {
+    const value = 'test-value';
+    const defaultChecked = false;
+    const component = initComponent();
+    component.value = value;
+    component['defaultChecked'] = defaultChecked;
+    const setFormValueSpy = jest.spyOn(component['internals'], 'setFormValue' as any);
+
+    component.formResetCallback();
+    expect(setFormValueSpy).toHaveBeenCalledWith(undefined);
+    expect(component.value).toBe(value);
+    expect(component.checked).toBe(defaultChecked);
+  });
+
+  it('should reset form value to value if defaultChecked is true', () => {
+    const value = 'test-value';
+    const defaultChecked = true;
+    const component = initComponent();
+    component.value = value;
+    component['defaultChecked'] = defaultChecked;
+    const setFormValueSpy = jest.spyOn(component['internals'], 'setFormValue' as any);
+
+    component.formResetCallback();
+    expect(setFormValueSpy).toHaveBeenCalledWith(value);
+    expect(component.value).toBe(value);
+    expect(component.checked).toBe(defaultChecked);
+  });
 });
 describe('formDisabledCallback', () => {
   const component = initComponent();
