@@ -185,27 +185,27 @@ export default class Code extends Vue {
 
   iconsExample = `<p-select name="options" label="Some Label" description="Some description" required>
   <p-select-option value="718">
-    <img src="/assets/718.png" />
+    <img src="assets/718.png" />
     718
   </p-select-option>
   <p-select-option value="911">
-    <img src="/assets/911.png" />
+    <img src="assets/911.png" />
     911
   </p-select-option>
   <p-select-option value="taycan">
-    <img src="/assets/taycan.png" />
+    <img src="assets/taycan.png" />
     Taycan
   </p-select-option>
   <p-select-option value="macan">
-    <img src="/assets/macan.png" />
+    <img src="assets/macan.png" />
     Macan
   </p-select-option>
   <p-select-option value="cayenne">
-    <img src="/assets/cayenne.png" />
+    <img src="assets/cayenne.png" />
     Cayenne
   </p-select-option>
   <p-select-option value="panamera">
-    <img src="/assets/panamera.png" />
+    <img src="assets/panamera.png" />
     Panamera
   </p-select-option>
 </p-select>`;

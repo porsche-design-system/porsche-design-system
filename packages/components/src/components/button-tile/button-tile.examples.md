@@ -157,8 +157,8 @@ export default class Code extends Vue {
   >
     <p-tag slot="header" theme="dark" color="background-frosted" compact="true">Some tag</p-tag>
     <video
-      poster="/assets/ocean.jpg"
-      src="/assets/ocean.mp4"
+      poster="assets/ocean.jpg"
+      src="assets/ocean.mp4"
       loop
       muted
       autoplay
