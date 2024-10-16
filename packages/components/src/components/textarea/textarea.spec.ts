@@ -48,21 +48,23 @@ describe('connectedCallback', () => {
 describe('componentWillLoad', () => {
   it('should call updateCounterVisibility()', () => {
     const component = initComponent();
+    const value = 'test';
+    component.value = value;
     const updateCounterVisibilitySpy = jest.spyOn(component, 'updateCounterVisibility' as any);
-
     component.componentWillLoad();
     expect(updateCounterVisibilitySpy).toHaveBeenCalledTimes(1);
+    expect(component['defaultValue']).toBe(value);
   });
 });
 describe('formResetCallback', () => {
   const component = initComponent();
+  const defaultValue = 'default-value';
+  component['defaultValue'] = defaultValue;
   component.value = 'test';
-  const setValiditySpy = jest.spyOn(component['internals'], 'setValidity' as any);
   const setFormValueSpy = jest.spyOn(component['internals'], 'setFormValue' as any);
   component.formResetCallback();
-  expect(setValiditySpy).toHaveBeenCalledWith({});
-  expect(setFormValueSpy).toHaveBeenCalledWith('');
-  expect(component.value).toBe('');
+  expect(setFormValueSpy).toHaveBeenCalledWith(defaultValue);
+  expect(component.value).toBe(defaultValue);
 });
 describe('formDisabledCallback', () => {
   const component = initComponent();
