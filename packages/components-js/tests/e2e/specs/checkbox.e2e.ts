@@ -686,7 +686,7 @@ test.describe('form', () => {
     expect(await getFormDataValue(form, name)).toBe(value);
   });
 
-  test('should reset checkbox on form reset', async ({ page }) => {
+  test('should reset checkbox state to its initial value on form reset', async ({ page }) => {
     const name = 'name';
     const value = 'Hallo';
     const checked = true;
@@ -709,8 +709,12 @@ test.describe('form', () => {
 
     await expect(host).toHaveJSProperty('value', value);
     await expect(input).toHaveValue(value);
-    await expect(host).toHaveJSProperty('checked', true);
-    await expect(input).toHaveJSProperty('checked', true);
+
+    await input.click();
+    await waitForStencilLifecycle(page);
+
+    await expect(host).toHaveJSProperty('checked', false);
+    await expect(input).toHaveJSProperty('checked', false);
 
     await page.locator('button[type="reset"]').click();
 
