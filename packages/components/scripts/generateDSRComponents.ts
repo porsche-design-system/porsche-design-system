@@ -514,7 +514,8 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
           )
           .replace(/<span className="sr-only"[^<]*<\/span>/, '')
           // .replace(/(SelectDropdownDirectionInternal)/, 'type $1')
-          .replace(/private searchTimeout: any\.Timeout \| number = null;/, '');
+          .replace(/private searchTimeout: any\.Timeout \| number = null;/, '')
+          .replace(/@AttachInternals\(\)/, '');
       } else if (tagName === 'p-select-option') {
         newFileContent = newFileContent.replace(/this\.theme/, 'this.props.theme');
       } else if (tagName === 'p-text-field-wrapper') {
@@ -616,7 +617,12 @@ $&`
           .replace(/autofocus/, 'autoFocus')
           .replace(/spellcheck/, 'spellCheck')
           .replace(/autocomplete/, 'autoComplete')
-          .replace(/this\.props\.value = '';/, '');
+          // TODO replace ElementInternals lifecycle callbacks (formAssociatedCallback, formDisabledCallback, formResetCallback, formStateRestoreCallback) completely
+          .replace(/this\.props\.value = this\.props\.defaultValue;/, '')
+          .replace(/this\.props\.disabled = disabled;/, '')
+          .replace(/this\.props\.value = state;/, '')
+          .replace(/formDisabledCallback\(disabled: boolean\)/, 'formDisabledCallback()')
+          .replace(/formStateRestoreCallback\(state: string\)/, 'formStateRestoreCallback()');
       } else if (tagName === 'p-canvas') {
         newFileContent = newFileContent
           .replace(/this\.props\.(hasSidebarStart|hasSidebarEnd)/g, '$1')
@@ -624,7 +630,11 @@ $&`
       } else if (tagName === 'p-checkbox') {
         newFileContent = newFileContent
           .replace(/@AttachInternals\(\)/, '')
-          .replace(/this\.props\.checked = false;/, '');
+          .replace(/this\.props\.checked = this\.props\.defaultChecked;/, '')
+          .replace(/this\.props\.disabled = disabled;/, '')
+          .replace(/this\.props\.checked = !!state;/, '')
+          .replace(/formDisabledCallback\(disabled: boolean\)/, 'formDisabledCallback()')
+          .replace(/formStateRestoreCallback\(state: string\)/, 'formStateRestoreCallback()');
       }
 
       return newFileContent;
