@@ -94,21 +94,6 @@ body {
   overflow: hidden;
 }
 
-// pds component customization
-
-p-canvas {
-  --p-canvas-grid-max-width: 50rem;
-}
-
-p-flyout#flyout-plugins {
-  --p-flyout-width: 80vw;
-  --p-flyout-max-width: 50rem;
-}
-
-p-modal#modal-rules {
-  --p-modal-width: clamp(276px, 80dvw, 60rem);
-}
-
 // "main" section
 
 .intro {
@@ -169,21 +154,22 @@ p-modal#modal-rules {
     --p-internal-button-scaling: 0;
     position: relative;
     display: grid;
-    grid-template-columns: minmax(0, 1fr) repeat(2, auto);
+    grid-template-columns: var(--controls-grid-template, minmax(0, 1fr) auto);
     gap: $pds-spacing-static-small;
     align-items: center;
 
+    &--active {
+      --controls-item-background: #{$pds-theme-light-background-base};
+    }
+
     @media (hover: hover) {
       &:not(:hover):not(:focus-within) {
-        grid-template-columns: minmax(0, 1fr);
-
-        :is(button, a) ~ * {
-          display: none;
-        }
+        --controls-grid-template: minmax(0, 1fr);
+        --controls-group-display: none;
       }
 
-      &:hover::before {
-        background: $pds-theme-light-background-base;
+      &:hover {
+        --controls-item-background: #{$pds-theme-light-background-base};
       }
     }
 
@@ -193,10 +179,7 @@ p-modal#modal-rules {
       inset: -4px -6px;
       transition: background $pds-motion-duration-short $pds-motion-easing-base;
       border-radius: $pds-border-radius-small;
-    }
-
-    &--active::before {
-      background: $pds-theme-light-background-base;
+      background: var(--controls-item-background, transparent);
     }
 
     :is(button, a) {
@@ -222,6 +205,11 @@ p-modal#modal-rules {
         text-overflow: ellipsis;
       }
     }
+  }
+
+  &__group {
+    display: var(--controls-group-display, flex);
+    gap: $pds-spacing-static-small;
   }
 }
 

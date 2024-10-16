@@ -83,6 +83,7 @@ export const getComponentCss = (theme: Theme, isSidebarStartOpen: boolean, isSid
           width: '100%',
           height: '100%',
           objectFit: 'cover',
+          transition: getTransition('opacity', 'veryLong'),
         },
       },
       'slot[name="title"]::slotted(a)': {

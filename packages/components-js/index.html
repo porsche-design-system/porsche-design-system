@@ -6,91 +6,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
   </head>
   <body>
-    <p-canvas sidebar-end-icon="user">
-      <a slot="title" href="#">Co-Driver</a>
+    <p-canvas sidebar-end-icon="user" style="--p-canvas-grid-max-width: 50rem">
+      <a slot="title" href="#template-intro">Co-Driver</a>
 
       <div slot="header-start"></div>
 
       <div slot="header-end"></div>
 
-      <!--<div class="intro -mt-fluid-medium">
-        <img class="intro__image" src="assets/codriver.webp" width="384" height="384" alt="Co-Driver logo" />
-        <div class="intro__text">
-          <p-display size="small" align="center" tag="h1">Good morning,<br />how can I help you?</p-display>
-        </div>
-      </div>
-
-      <div class="intro-cards -mt-fluid-large">
-        <a href="#">
-          <p-text tag="span">How has Porsche’s design philosophy evolved over the years?</p-text>
-          <p-icon name="chat"></p-icon>
-        </a>
-        <a href="#">
-          <p-text tag="span">Can you explain the significance of Porsche’s flat-six engine?</p-text>
-          <p-icon name="chat"></p-icon>
-        </a>
-        <a href="#">
-          <p-text tag="span">What makes the Porsche 911 so iconic in automotive history?</p-text>
-          <p-icon name="chat"></p-icon>
-        </a>
-      </div>-->
-
-      <div class="chat">
-        <p-text class="chat__bubble chat__bubble--question">What's the latest Porsche model?</p-text>
-        <div class="chat__bubble chat__bubble--answer">
-          <img src="assets/codriver.webp" width="384" height="384" alt="Co-Driver logo" />
-          <div>
-            <p-text
-              >The latest Porsche model is the 2024 Porsche 718 Spyder RS. This car represents the pinnacle of open-top,
-              mid-engine driving within the 718 family. It features a powerful 4.0-liter naturally aspirated flat-six
-              engine from the Porsche 911 GT3, producing 493 horsepower and 331 lb-ft of torque. The engine allows the
-              Spyder RS to accelerate from 0-60 mph in just 3.2 seconds, with a top speed of 191 mph.</p-text
-            >
-            <p-text class="-mt-static-small" size="x-small" color="contrast-medium"
-              >Note that answers could be wrong, please check again.</p-text
-            >
-            <p-button-group class="-mt-static-medium" direction="row">
-              <p-button-pure icon="copy" type="button" hide-label="true">Copy to clipboard</p-button-pure>
-              <p-button-pure icon="email" type="button" hide-label="true">Mail</p-button-pure>
-              <p-button-pure icon="heart" type="button" hide-label="true">Dislike</p-button-pure>
-              <p-button-pure icon="heart-filled" type="button" hide-label="true">Like</p-button-pure>
-            </p-button-group>
-          </div>
-        </div>
-        <p-text class="chat__bubble chat__bubble--question"
-          >Show me accelatration figures for the cayenne 2024 gts</p-text
-        >
-        <div class="chat__bubble chat__bubble--answer">
-          <img src="assets/codriver.webp" width="384" height="384" alt="Co-Driver logo" />
-          <div>
-            <p-text
-              >Since 1931, Porsche has been synonymous with automotive excellence. From the iconic 911 to the electric
-              Taycan, Porsche combines cutting-edge technology with timeless design, delivering exhilarating driving
-              experiences. With a relentless commitment to precision and passion, Porsche remains at the forefront of
-              automotive innovation, shaping the future of driving.</p-text
-            >
-            <p-text class="-mt-static-small" size="x-small" color="contrast-medium"
-              >Note that answers could be wrong, please check again.</p-text
-            >
-            <p-button-group class="-mt-static-medium" direction="row">
-              <p-button-pure icon="copy" type="button" hide-label="true">Copy to clipboard</p-button-pure>
-              <p-button-pure icon="email" type="button" hide-label="true">Mail</p-button-pure>
-              <p-button-pure icon="heart" type="button" hide-label="true">Dislike</p-button-pure>
-              <p-button-pure icon="heart-filled" type="button" hide-label="true">Like</p-button-pure>
-            </p-button-group>
-          </div>
-        </div>
-      </div>
-
       <div slot="footer" class="search">
         <input type="search" name="some-name" placeholder="Type a message…" />
-        <p-button class="search__submit" type="button" variant="primary" theme="dark" hide-label="true" icon="arrow-up"
-          >Ask Co-Driver</p-button
+        <p-link
+          class="search__submit"
+          href="#template-chat"
+          type="button"
+          variant="primary"
+          theme="dark"
+          hide-label="true"
+          icon="arrow-up"
+          >Ask Co-Driver</p-link
         >
       </div>
 
       <div slot="footer" class="footer -mt-fluid-small">
-        <p-button-pure data-onclick="show-modal-delete-chat" icon="delete">Delete chat</p-button-pure>
+        <p-button-pure icon="delete" onclick="document.querySelector('p-modal#delete-chat').open = true;"
+          >Delete chat</p-button-pure
+        >
         <p-link-pure href="#" icon="light">Service Desk</p-link-pure>
       </div>
 
@@ -101,76 +41,81 @@
               <img src="assets/codriver.webp" width="384" height="384" alt="Co-Driver logo" />
               <span>Co-Driver powered by Porsche</span>
             </button>
-            <p-button
-              data-onclick="show-modal-rules"
-              variant="ghost"
-              compact="true"
-              icon="information"
-              hide-label="true"
-              >Show rules</p-button
-            >
-            <p-button
-              data-onclick="show-modal-remove-plugin"
-              variant="ghost"
-              compact="true"
-              icon="delete"
-              hide-label="true"
-              >Delete</p-button
-            >
+            <div class="controls__group">
+              <p-button
+                variant="ghost"
+                compact="true"
+                icon="information"
+                hide-label="true"
+                onclick="document.querySelector('p-modal#rules').open = true;"
+                >Show rules</p-button
+              >
+              <p-button
+                variant="ghost"
+                compact="true"
+                icon="delete"
+                hide-label="true"
+                onclick="document.querySelector('p-modal#remove-plugin').open = true;"
+                >Delete</p-button
+              >
+            </div>
           </div>
           <div class="controls__item">
             <button title="Internal Configurator">
               <img src="assets/c.webp" width="384" height="384" alt="Internal Configurator" />
               <span>Internal Configurator</span>
             </button>
-            <p-button
-              data-onclick="show-modal-rules"
-              variant="ghost"
-              compact="true"
-              icon="information"
-              hide-label="true"
-              >Show rules</p-button
-            >
-            <p-button
-              data-onclick="show-modal-remove-plugin"
-              variant="ghost"
-              compact="true"
-              icon="delete"
-              hide-label="true"
-              >Delete</p-button
-            >
+            <div class="controls__group">
+              <p-button
+                variant="ghost"
+                compact="true"
+                icon="information"
+                hide-label="true"
+                onclick="document.querySelector('p-modal#rules').open = true;"
+                >Show rules</p-button
+              >
+              <p-button
+                variant="ghost"
+                compact="true"
+                icon="delete"
+                hide-label="true"
+                onclick="document.querySelector('p-modal#remove-plugin').open = true;"
+                >Delete</p-button
+              >
+            </div>
           </div>
           <div class="controls__item">
             <button title="Consumption Disclaimer Bot">
               <img src="assets/world.webp" width="384" height="384" alt="Consumption Disclaimer Bot" />
               <span>Consumption Disclaimer Bot</span>
             </button>
-            <p-button
-              data-onclick="show-modal-rules"
-              variant="ghost"
-              compact="true"
-              icon="information"
-              hide-label="true"
-              >Show rules</p-button
-            >
-            <p-button
-              data-onclick="show-modal-remove-plugin"
-              variant="ghost"
-              compact="true"
-              icon="delete"
-              hide-label="true"
-              >Delete</p-button
-            >
+            <div class="controls__group">
+              <p-button
+                variant="ghost"
+                compact="true"
+                icon="information"
+                hide-label="true"
+                onclick="document.querySelector('p-modal#rules').open = true;"
+                >Show rules</p-button
+              >
+              <p-button
+                variant="ghost"
+                compact="true"
+                icon="delete"
+                hide-label="true"
+                onclick="document.querySelector('p-modal#remove-plugin').open = true;"
+                >Delete</p-button
+              >
+            </div>
           </div>
         </div>
 
-        <p-link-pure
+        <p-button-pure
           class="-mt-fluid-medium"
-          data-onclick="show-flyout-plugins"
-          href="#explore-plugins"
           icon="none"
           underline="true"
-          >Explore Plugins</p-link-pure
+          onclick="document.querySelector('p-flyout#explore-plugins').open = true;"
+          >Explore Plugins</p-button-pure
         >
 
         <p-heading class="-mt-fluid-large" size="small">Last topics</p-heading>
@@ -181,46 +126,54 @@
               <p-icon name="chat"></p-icon>
               <span>How has Porsche’s design philosophy evolved over the years?</span>
             </button>
-            <p-button
-              data-onclick="show-modal-delete-chat"
-              variant="ghost"
-              compact="true"
-              icon="delete"
-              hide-label="true"
-              >Delete</p-button
-            >
+            <div class="controls__group">
+              <p-button
+                variant="ghost"
+                compact="true"
+                icon="delete"
+                hide-label="true"
+                onclick="document.querySelector('p-modal#delete-chat').open = true;"
+                >Delete</p-button
+              >
+            </div>
           </div>
           <div class="controls__item">
             <button title="What makes the Porsche 911 so iconic in automotive history?">
               <p-icon name="chat"></p-icon>
               <span>What makes the Porsche 911 so iconic in automotive history?</span>
             </button>
-            <p-button
-              data-onclick="show-modal-delete-chat"
-              variant="ghost"
-              compact="true"
-              icon="delete"
-              hide-label="true"
-              >Delete</p-button
-            >
+            <div class="controls__group">
+              <p-button
+                variant="ghost"
+                compact="true"
+                icon="delete"
+                hide-label="true"
+                onclick="document.querySelector('p-modal#delete-chat').open = true;"
+                >Delete</p-button
+              >
+            </div>
           </div>
           <div class="controls__item">
             <button title="Can you explain the significance of Porsche’s flat-six engine?">
               <p-icon name="chat"></p-icon>
               <span>Can you explain the significance of Porsche’s flat-six engine?</span>
             </button>
-            <p-button
-              data-onclick="show-modal-delete-chat"
-              variant="ghost"
-              compact="true"
-              icon="delete"
-              hide-label="true"
-              >Delete</p-button
-            >
+            <div class="controls__group">
+              <p-button
+                variant="ghost"
+                compact="true"
+                icon="delete"
+                hide-label="true"
+                onclick="document.querySelector('p-modal#delete-chat').open = true;"
+                >Delete</p-button
+              >
+            </div>
           </div>
         </div>
 
-        <p-link-pure class="-mt-fluid-medium" href="#" icon="none" underline="true">Start conversation</p-link-pure>
+        <p-link-pure class="-mt-fluid-medium" href="#template-chat" icon="none" underline="true"
+          >Start conversation</p-link-pure
+        >
       </div>
 
       <div slot="sidebar-end">
@@ -229,9 +182,122 @@
       </div>
 
       <video slot="background" src="assets/bg.webm" loop muted autoplay aria-hidden="true"></video>
+
+      <template id="template-intro">
+        <div class="intro -mt-fluid-medium">
+          <img class="intro__image" src="assets/codriver.webp" width="384" height="384" alt="Co-Driver logo" />
+          <div class="intro__text">
+            <p-display size="small" align="center" tag="h1">Good morning,<br />how can I help you?</p-display>
+          </div>
+        </div>
+
+        <div class="intro-cards -mt-fluid-large">
+          <a href="#template-chat">
+            <p-text tag="span">How has Porsche’s design philosophy evolved over the years?</p-text>
+            <p-icon name="chat"></p-icon>
+          </a>
+          <a href="#template-chat">
+            <p-text tag="span">Can you explain the significance of Porsche’s flat-six engine?</p-text>
+            <p-icon name="chat"></p-icon>
+          </a>
+          <a href="#template-chat">
+            <p-text tag="span">What makes the Porsche 911 so iconic in automotive history?</p-text>
+            <p-icon name="chat"></p-icon>
+          </a>
+        </div>
+      </template>
+
+      <template id="template-chat">
+        <div class="chat">
+          <p-text class="chat__bubble chat__bubble--question">What's the latest Porsche model?</p-text>
+          <div class="chat__bubble chat__bubble--answer">
+            <img src="assets/codriver.webp" width="384" height="384" alt="Co-Driver logo" />
+            <div>
+              <p-text
+                >The latest Porsche model is the 2024 Porsche 718 Spyder RS. This car represents the pinnacle of
+                open-top, mid-engine driving within the 718 family. It features a powerful 4.0-liter naturally aspirated
+                flat-six engine from the Porsche 911 GT3, producing 493 horsepower and 331 lb-ft of torque. The engine
+                allows the Spyder RS to accelerate from 0-60 mph in just 3.2 seconds, with a top speed of 191
+                mph.</p-text
+              >
+              <p-text class="-mt-static-small" size="x-small" color="contrast-medium"
+                >Note that answers could be wrong, please check again.</p-text
+              >
+              <p-button-group class="-mt-static-medium" direction="row">
+                <p-button-pure
+                  icon="copy"
+                  type="button"
+                  hide-label="true"
+                  onclick="document.querySelector('p-toast').addMessage({ text: 'Copied to clipboard', state: 'success' })"
+                  >Copy to clipboard</p-button-pure
+                >
+                <p-button-pure icon="email" type="button" hide-label="true">Mail</p-button-pure>
+                <p-button-pure
+                  icon="like"
+                  type="button"
+                  hide-label="true"
+                  onclick="this.icon = this.icon === 'like' ? 'like-filled' : 'like';"
+                  >Like</p-button-pure
+                >
+                <p-button-pure
+                  icon="dislike"
+                  type="button"
+                  hide-label="true"
+                  onclick="this.icon = this.icon === 'dislike' ? 'dislike-filled' : 'dislike';"
+                  >Dislike</p-button-pure
+                >
+              </p-button-group>
+            </div>
+          </div>
+          <p-text class="chat__bubble chat__bubble--question">Tell me more about Porsche</p-text>
+          <div class="chat__bubble chat__bubble--answer">
+            <img src="assets/codriver.webp" width="384" height="384" alt="Co-Driver logo" />
+            <div>
+              <p-text
+                >Since 1931, Porsche has been synonymous with automotive excellence. From the iconic 911 to the electric
+                Taycan, Porsche combines cutting-edge technology with timeless design, delivering exhilarating driving
+                experiences. With a relentless commitment to precision and passion, Porsche remains at the forefront of
+                automotive innovation, shaping the future of driving.</p-text
+              >
+              <p-text class="-mt-static-small" size="x-small" color="contrast-medium"
+                >Note that answers could be wrong, please check again.</p-text
+              >
+              <p-button-group class="-mt-static-medium" direction="row">
+                <p-button-pure
+                  icon="copy"
+                  type="button"
+                  hide-label="true"
+                  onclick="document.querySelector('p-toast').addMessage({ text: 'Copied to clipboard', state: 'success' })"
+                  >Copy to clipboard</p-button-pure
+                >
+                <p-button-pure icon="email" type="button" hide-label="true">Mail</p-button-pure>
+                <p-button-pure
+                  icon="like"
+                  type="button"
+                  hide-label="true"
+                  onclick="this.icon = this.icon === 'like' ? 'like-filled' : 'like';"
+                  >Like</p-button-pure
+                >
+                <p-button-pure
+                  icon="dislike"
+                  type="button"
+                  hide-label="true"
+                  onclick="this.icon = this.icon === 'dislike' ? 'dislike-filled' : 'dislike';"
+                  >Dislike</p-button-pure
+                >
+              </p-button-group>
+            </div>
+          </div>
+        </div>
+      </template>
     </p-canvas>
 
-    <p-flyout id="flyout-plugins" open="false" aria="{ 'aria-label': 'Some Heading' }">
+    <p-flyout
+      id="explore-plugins"
+      open="false"
+      aria="{ 'aria-label': 'Explore plugins' }"
+      style="--p-flyout-width: 80vw; --p-flyout-max-width: 50rem"
+    >
       <p-display size="medium" align="center" tag="h2">Plugins</p-display>
       <p-text class="-mt-fluid-small" size="medium" align="center"
         >Discover and create customized ChatGPT versions that combine hints, additional knowledge, and a variety of
@@ -246,7 +312,7 @@
       <p-text color="contrast-medium">Most used plugins by the community</p-text>
 
       <div class="plugin-cards -mt-fluid-medium">
-        <a href="#">
+        <button>
           <img src="assets/codriver.webp" width="384" height="384" alt="" />
           <span>
             <p-text tag="span" size="medium">Co-Driver</p-text>
@@ -256,8 +322,8 @@
             >
             <p-text tag="span" color="contrast-medium" size="x-small">Published by Porsche AG</p-text>
           </span>
-        </a>
-        <a href="#">
+        </button>
+        <button>
           <img src="assets/c.webp" width="384" height="384" alt="" />
           <span>
             <p-text tag="span" size="medium">Internal Configurator</p-text>
@@ -267,30 +333,30 @@
             >
             <p-text tag="span" color="contrast-medium" size="x-small">Published by Porsche AG</p-text>
           </span>
-        </a>
-        <a href="#">
+        </button>
+        <button>
           <img src="assets/world.webp" width="384" height="384" alt="" />
           <span>
             <p-text tag="span" size="medium">World Information Charging Bot</p-text>
             <p-text tag="span" class="-ellipsis-2">Discover the bot.</p-text>
             <p-text tag="span" color="contrast-medium" size="x-small">Published by Porsche AG</p-text>
           </span>
-        </a>
-        <a href="#">
+        </button>
+        <button>
           <img src="assets/taycan.webp" width="384" height="384" alt="" />
           <span>
             <p-text tag="span" size="medium">Consumption Bot</p-text>
             <p-text tag="span" class="-ellipsis-2">Discover the bot.</p-text>
             <p-text tag="span" color="contrast-medium" size="x-small">Published by Porsche AG</p-text>
           </span>
-        </a>
+        </button>
       </div>
 
       <p-heading class="-mt-fluid-large" size="large" tag="h3">Archive</p-heading>
       <p-text color="contrast-medium">Available Plugins for Porsche internal</p-text>
 
       <div class="plugin-cards plugin-cards--small -mt-fluid-medium">
-        <a href="#">
+        <button>
           <img src="assets/codriver.webp" width="384" height="384" alt="" />
           <span>
             <p-text tag="span">Co-Driver</p-text>
@@ -300,8 +366,8 @@
             >
             <p-text tag="span" color="contrast-medium" size="xx-small">Published by Porsche AG</p-text>
           </span>
-        </a>
-        <a href="#">
+        </button>
+        <button>
           <img src="assets/c.webp" width="384" height="384" alt="" />
           <span>
             <p-text tag="span">Internal Configurator</p-text>
@@ -311,24 +377,24 @@
             >
             <p-text tag="span" color="contrast-medium" size="xx-small">Published by Porsche AG</p-text>
           </span>
-        </a>
-        <a href="#">
+        </button>
+        <button>
           <img src="assets/world.webp" width="384" height="384" alt="" />
           <span>
             <p-text tag="span">World Information Charging Bot</p-text>
             <p-text tag="span" size="x-small" class="-ellipsis-2">Discover the bot.</p-text>
             <p-text tag="span" color="contrast-medium" size="xx-small">Published by Porsche AG</p-text>
           </span>
-        </a>
-        <a href="#">
+        </button>
+        <button>
           <img src="assets/taycan.webp" width="384" height="384" alt="" />
           <span>
             <p-text tag="span">Consumption Bot</p-text>
             <p-text tag="span" size="x-small" class="-ellipsis-2">Discover the bot.</p-text>
             <p-text tag="span" color="contrast-medium" size="xx-small">Published by Porsche AG</p-text>
           </span>
-        </a>
-        <a href="#">
+        </button>
+        <button>
           <img src="assets/codriver.webp" width="384" height="384" alt="" />
           <span>
             <p-text tag="span">Co-Driver</p-text>
@@ -338,8 +404,8 @@
             >
             <p-text tag="span" color="contrast-medium" size="xx-small">Published by Porsche AG</p-text>
           </span>
-        </a>
-        <a href="#">
+        </button>
+        <button>
           <img src="assets/c.webp" width="384" height="384" alt="" />
           <span>
             <p-text tag="span">Internal Configurator</p-text>
@@ -349,45 +415,32 @@
             >
             <p-text tag="span" color="contrast-medium" size="xx-small">Published by Porsche AG</p-text>
           </span>
-        </a>
-        <a href="#">
+        </button>
+        <button>
           <img src="assets/world.webp" width="384" height="384" alt="" />
           <span>
             <p-text tag="span">World Information Charging Bot</p-text>
             <p-text tag="span" size="x-small" class="-ellipsis-2">Discover the bot.</p-text>
             <p-text tag="span" color="contrast-medium" size="xx-small">Published by Porsche AG</p-text>
           </span>
-        </a>
-        <a href="#">
+        </button>
+        <button>
           <img src="assets/taycan.webp" width="384" height="384" alt="" />
           <span>
             <p-text tag="span">Consumption Bot</p-text>
             <p-text tag="span" size="x-small" class="-ellipsis-2">Discover the bot.</p-text>
             <p-text tag="span" color="contrast-medium" size="xx-small">Published by Porsche AG</p-text>
           </span>
-        </a>
+        </button>
       </div>
     </p-flyout>
 
-    <p-modal id="modal-remove-plugin" open="false" aria="{ 'aria-label': 'Some Heading' }">
-      <p-heading slot="header" size="large" tag="h2">Remove plugin?</p-heading>
-      <p-text>This will remove "some plugin".</p-text>
-      <p-button-group slot="footer">
-        <p-button data-onclick="remove-plugin" type="button">Remove</p-button>
-        <p-button type="button" variant="secondary" data-onclick="dismiss-modal-remove-plugin">Cancel</p-button>
-      </p-button-group>
-    </p-modal>
-
-    <p-modal id="modal-delete-chat" open="false" aria="{ 'aria-label': 'Some Heading' }">
-      <p-heading slot="header" size="large" tag="h2">Delete chat?</p-heading>
-      <p-text>This will delete "some chat".</p-text>
-      <p-button-group slot="footer">
-        <p-button data-onclick="delete-chat" type="button">Delete</p-button>
-        <p-button type="button" variant="secondary" data-onclick="dismiss-modal-delete-chat">Cancel</p-button>
-      </p-button-group>
-    </p-modal>
-
-    <p-modal id="modal-rules" open="false" aria="{ 'aria-label': 'Rules for using Co-Driver' }">
+    <p-modal
+      id="rules"
+      open="false"
+      aria="{ 'aria-label': 'Rules for using Co-Driver' }"
+      style="--p-modal-width: clamp(276px, 80dvw, 60rem)"
+    >
       <p-display slot="header" class="-ms-auto -me-auto -max-w-medium" size="small" tag="h2" align="center">
         <img class="-img-small" src="/assets/codriver.webp" width="384" height="384" alt="Co-Driver logo" />
         <br />
@@ -478,10 +531,62 @@
         slot="footer"
         class="-ms-auto -me-auto -max-w-medium -block"
         type="button"
-        data-onclick="dismiss-modal-rules"
+        onclick="document.querySelector('p-modal#rules').open = false;"
         >Open Co-Driver</p-button
       >
     </p-modal>
+
+    <p-modal id="remove-plugin" open="false" aria="{ 'aria-label': 'Remove plugin' }">
+      <p-heading slot="header" size="large" tag="h2">Remove plugin?</p-heading>
+      <p-text>This will remove "some plugin".</p-text>
+      <p-button-group slot="footer">
+        <p-button
+          type="button"
+          onclick="
+            this.loading = true;
+            // simulates an API call
+            setTimeout(() => {
+              this.loading = false;
+              document.querySelector('p-modal#remove-plugin').open = false;
+            }, 1000);
+          "
+          >Remove</p-button
+        >
+        <p-button
+          type="button"
+          variant="secondary"
+          onclick="document.querySelector('p-modal#remove-plugin').open = false;"
+          >Cancel</p-button
+        >
+      </p-button-group>
+    </p-modal>
+
+    <p-modal id="delete-chat" open="false" aria="{ 'aria-label': 'Delete chat' }">
+      <p-heading slot="header" size="large" tag="h2">Delete chat?</p-heading>
+      <p-text>This will delete "some chat".</p-text>
+      <p-button-group slot="footer">
+        <p-button
+          type="button"
+          onclick="
+            this.loading = true;
+            // simulates an API call
+            setTimeout(() => {
+              this.loading = false;
+              document.querySelector('p-modal#delete-chat').open = false;
+            }, 1000);
+          "
+          >Delete</p-button
+        >
+        <p-button
+          type="button"
+          variant="secondary"
+          onclick="document.querySelector('p-modal#delete-chat').open = false;"
+          >Cancel</p-button
+        >
+      </p-button-group>
+    </p-modal>
+
+    <p-toast></p-toast>
 
     <script type="module" src="main.js"></script>
   </body>

@@ -49,7 +49,7 @@ export class Canvas {
   @Prop() public sidebarEndOpen?: boolean = false;
 
   /** The icon to toggle the Sidebar on the end side */
-  @Prop() public sidebarEndIcon?: CanvasSidebarEndIcon = 'configurate';
+  @Prop() public sidebarEndIcon?: CanvasSidebarEndIcon = 'menu-lines';
 
   /** Adapts the color depending on the theme. Has no effect when "inherit" is set as color prop. */
   @Prop() public theme?: Theme = 'light';
