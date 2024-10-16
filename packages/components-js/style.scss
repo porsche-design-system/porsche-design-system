@@ -358,3 +358,25 @@ body {
   align-items: flex-start;
   justify-content: center;
 }
+
+.profile {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: center;
+  gap: $pds-spacing-static-medium;
+
+  &::before {
+    --profile-initials-size: 72px;
+    @include pds-text-medium;
+    color: $pds-theme-light-contrast-medium;
+    text-align: center;
+    line-height: var(--profile-initials-size);
+    letter-spacing: 1px;
+    content: '' attr(data-initials) '';
+    display: block;
+    width: var(--profile-initials-size);
+    height: var(--profile-initials-size);
+    border-radius: 50%;
+    background: $pds-theme-light-background-surface;
+  }
+}
