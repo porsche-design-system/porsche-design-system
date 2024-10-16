@@ -140,6 +140,7 @@ export class Textarea {
 
   @AttachInternals() private internals: ElementInternals;
 
+  private defaultValue: string;
   private textAreaElement: HTMLTextAreaElement;
   private counterElement: HTMLSpanElement;
   private hasCounter: boolean;
@@ -165,14 +166,13 @@ export class Textarea {
   }
 
   public componentWillLoad(): void {
+    this.defaultValue = this.value;
     this.updateCounterVisibility();
   }
 
   public formResetCallback(): void {
-    this.internals.setValidity({});
-    this.internals.setFormValue('');
-    this.textAreaElement.value = '';
-    this.value = '';
+    this.internals.setFormValue(this.defaultValue);
+    this.value = this.defaultValue;
   }
 
   public formDisabledCallback(disabled: boolean): void {
