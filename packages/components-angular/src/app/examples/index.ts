@@ -1,4 +1,6 @@
 import { AccordionExampleComponent } from './accordion-example.component';
+import { AgGridExampleComponent } from './ag-grid-example.component';
+import { AgGridExampleStorefrontComponent } from './ag-grid-example-storefront.component';
 import { BannerExampleComponent } from './banner-example.component';
 import { ButtonExampleFormComponent } from './button-example-form.component';
 import { CanvasExampleComponent } from './canvas-example.component';
@@ -6,6 +8,8 @@ import { CarouselExampleDynamicSlidesComponent } from './carousel-example-dynami
 import { CarouselExampleFocusOnCenterSlideComponent } from './carousel-example-focus-on-center-slide.component';
 import { CarouselExampleEventsComponent } from './carousel-example-events.component';
 import { CarouselExampleJumpToSlideComponent } from './carousel-example-jump-to-slide.component';
+import { CheckboxExampleComponent } from './checkbox-example.component';
+import { CheckboxExampleControlledComponent } from './checkbox-example-controlled.component';
 import { FlyoutExampleComponent } from './flyout-example.component';
 import { FlyoutMultilevelExampleComponent } from './flyout-multilevel-example.component';
 import { FlyoutMultilevelExampleActiveIdentifierComponent } from './flyout-multilevel-example-active-identifier.component';
@@ -41,6 +45,8 @@ import { ToastExampleComponent } from './toast-example.component';
 
 export const examples = [
   AccordionExampleComponent,
+  AgGridExampleComponent,
+  AgGridExampleStorefrontComponent,
   BannerExampleComponent,
   ButtonExampleFormComponent,
   CanvasExampleComponent,
@@ -48,6 +54,8 @@ export const examples = [
   CarouselExampleFocusOnCenterSlideComponent,
   CarouselExampleEventsComponent,
   CarouselExampleJumpToSlideComponent,
+  CheckboxExampleControlledComponent,
+  CheckboxExampleComponent,
   FlyoutExampleComponent,
   FlyoutMultilevelExampleComponent,
   FlyoutMultilevelExampleActiveIdentifierComponent,
@@ -83,6 +91,8 @@ export const examples = [
 ];
 
 export * from './accordion-example.component';
+export * from './ag-grid-example.component';
+export * from './ag-grid-example-storefront.component';
 export * from './banner-example.component';
 export * from './button-example-form.component';
 export * from './canvas-example.component';
@@ -90,6 +100,8 @@ export * from './carousel-example-dynamic-slides.component';
 export * from './carousel-example-focus-on-center-slide.component';
 export * from './carousel-example-events.component';
 export * from './carousel-example-jump-to-slide.component';
+export * from './checkbox-example.component';
+export * from './checkbox-example-controlled.component';
 export * from './flyout-example.component';
 export * from './flyout-multilevel-example.component';
 export * from './flyout-multilevel-example-active-identifier.component';

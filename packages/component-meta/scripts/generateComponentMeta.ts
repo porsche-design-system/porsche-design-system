@@ -5,6 +5,7 @@ import { kebabCase } from 'change-case';
 import { INTERNAL_TAG_NAMES, TAG_NAMES, TAG_NAMES_WITH_CHUNK, type TagName } from '@porsche-design-system/shared';
 import { ICONS_MANIFEST } from '@porsche-design-system/assets';
 import type { ComponentMeta, ComponentsMeta, PropMeta, SlotMeta } from '../src/types/component-meta';
+import { isDeprecatedComponent } from '../src/utils';
 
 declare namespace NodeJS {
   interface Global {
@@ -63,7 +64,7 @@ const generateComponentMeta = (): void => {
   const meta: ComponentsMeta = TAG_NAMES.reduce((result, tagName) => {
     const source = componentSourceCode[tagName];
 
-    const [deprecated, rawDeprecationMessage] = /@deprecated ([^*]*)[\s\S]*?@Component/.exec(source) || [];
+    const [deprecated, rawDeprecationMessage] = isDeprecatedComponent(source);
     const isDeprecated = !!deprecated;
     const deprecationMessage = rawDeprecationMessage?.trim();
     const isExperimental = !!source.match(/@experimental[\s\S]*?@Component/);

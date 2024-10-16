@@ -77,6 +77,16 @@ export const routes: RouteType[] = [
     element: <fromExamples.AccordionExamplePage />,
   },
   {
+    name: 'AG Grid Example',
+    path: '/aggrid-example',
+    element: <fromExamples.AGGridExamplePage />,
+  },
+  {
+    name: 'AG Grid Example Storefront',
+    path: '/aggrid-example-storefront',
+    element: <fromExamples.AGGridExampleStorefrontPage />,
+  },
+  {
     name: 'Banner Example',
     path: '/banner-example',
     element: <fromExamples.BannerExamplePage />,
@@ -110,6 +120,16 @@ export const routes: RouteType[] = [
     name: 'Carousel Example Jump to Slide',
     path: '/carousel-example-jump-to-slide',
     element: <fromExamples.CarouselExampleJumpToSlidePage />,
+  },
+  {
+    name: 'Checkbox Example',
+    path: '/checkbox-example',
+    element: <fromExamples.CheckboxExamplePage />,
+  },
+  {
+    name: 'Checkbox Example Controlled',
+    path: '/checkbox-example-controlled',
+    element: <fromExamples.CheckboxControlledExamplePage />,
   },
   {
     name: 'Flyout Example',

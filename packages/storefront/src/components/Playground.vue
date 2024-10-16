@@ -67,6 +67,7 @@
           :externalStackBlitzDependencies="getExternalDependenciesOrThrow(externalStackBlitzDependencies)"
           :sharedImportKeys="sharedImportKeys"
           :backgroundColor="config.backgroundColor"
+          :is-embedded="config.embedStackblitz"
         ></CodeEditor>
       </template>
     </div>
@@ -94,6 +95,7 @@
     overflowX: 'auto' | 'visible';
     withoutDemo: boolean;
     supportsFullWindow: boolean;
+    embedStackblitz: boolean;
   };
 
   export const initialConfig: PlaygroundConfig = {
@@ -104,6 +106,7 @@
     overflowX: 'auto',
     withoutDemo: false,
     supportsFullWindow: false,
+    embedStackblitz: false,
   };
 
   const themeableComponentsSelector = Object.entries(componentMeta)

@@ -14,10 +14,45 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ### [Unreleased]
 
+### [3.19.0] - 2024-10-14
+
+### [3.19.0-rc.4] - 2024-10-14
+
+#### Added
+
+- `AG Grid`: custom theme ([#3517](https://github.com/porsche-design-system/porsche-design-system/pull/3517))
+- `Checkbox`: Added a `compact` prop to enable a smaller, space-saving version of the checkbox for compact layouts.
+  ([#3504](https://github.com/porsche-design-system/porsche-design-system/pull/3504))
+- `Text`, `Display`, `Heading` and `Headline`: introduce new option `inherit` to prop `align`
+  ([#3520](https://github.com/porsche-design-system/porsche-design-system/pull/3520))
+
+#### Fixed
+
+- `Pin Code`, `Select Wrapper`: programmatic focus
+  ([#3527](https://github.com/porsche-design-system/porsche-design-system/pull/3527))
+- `Select Wrapper`: native option dropdown has wrong colors in theme dark
+  ([#3523](https://github.com/porsche-design-system/porsche-design-system/pull/3523))
+- `Switch`: width/height calculation of the toggle element supports browser based text only zoom
+  ([#3542](https://github.com/porsche-design-system/porsche-design-system/pull/3542))
+- Angular, React, Vue: missing `@deprecated` annotations for deprecated components
+  ([#3525](https://github.com/porsche-design-system/porsche-design-system/pull/3525))
+- Partials: Replace meta tag `apple-mobile-web-app-capable` with `mobile-web-app-capable` in `getMetaTagsAndIconLinks`
+  partial. ([#3519](https://github.com/porsche-design-system/porsche-design-system/pull/3519))
+
+### [3.19.0-rc.3] - 2024-10-02
+
+#### Fixed
+
+- `Carousel`: remove gradient styles for carousel if `gradientColor` is not defined
+  ([#3518](https://github.com/porsche-design-system/porsche-design-system/pull/3518))
+
+### [3.19.0-rc.2] - 2024-10-01
+
 #### Added
 
 - `Carousel`: introduce `trimSpace` prop
   ([#3496](https://github.com/porsche-design-system/porsche-design-system/pull/3496))
+- `Checkbox`: ([#3498](https://github.com/porsche-design-system/porsche-design-system/pull/3498))
 
 #### Fixed
 

@@ -52,7 +52,7 @@ export const generateMetaTagsAndIconLinksPartial = (): string => {
   const metaIconLinks: string[] = [
     `<meta name="theme-color" content="${themeColorLight}" media="(prefers-color-scheme:light)" />`,
     `<meta name="theme-color" content="${themeColorDark}" media="(prefers-color-scheme:dark)" />`,
-    '<meta name="apple-mobile-web-app-capable" content="yes" />',
+    '<meta name="mobile-web-app-capable" content="yes" />',
     '<meta name="apple-mobile-web-app-status-bar-style" content="default" />',
     '<meta name="apple-mobile-web-app-title" content="$appTitle" />',
     `<meta name="msapplication-TileImage" content='${metaIconCDNPath}/${META_ICONS_MANIFEST.mstile.mstile_270x270}' />`,

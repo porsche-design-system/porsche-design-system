@@ -1,5 +1,5 @@
-import { createRouter, createWebHistory } from 'vue-router';
 import type { RouteComponent, RouteRecordRaw } from 'vue-router';
+import { createRouter, createWebHistory } from 'vue-router';
 import * as fromPages from '../pages';
 import { kebabCase } from 'change-case';
 import * as fromExamples from '../examples';
@@ -29,6 +29,16 @@ export const routes: RouteType[] = [
     path: '/accordion-example',
     name: 'Accordion Example',
     component: fromExamples.AccordionExample,
+  },
+  {
+    path: '/ag-grid-example',
+    name: 'AG Grid Example',
+    component: fromExamples.AGGridExample,
+  },
+  {
+    path: '/ag-grid-example-storefront',
+    name: 'AG Grid Example Storefront',
+    component: fromExamples.AGGridExampleStorefront,
   },
   {
     path: '/banner-basic',
@@ -69,6 +79,16 @@ export const routes: RouteType[] = [
     path: '/carousel-example-jump-to-slide',
     name: 'Carousel Example Jump to Slide',
     component: fromExamples.CarouselExampleJumpToSlide,
+  },
+  {
+    path: '/checkbox-example',
+    name: 'Checkbox Example',
+    component: fromExamples.CheckboxExample,
+  },
+  {
+    path: '/checkbox-example-controlled',
+    name: 'Checkbox Example Controlled',
+    component: fromExamples.CheckboxExampleControlled,
   },
   {
     path: '/flyout-basic',

@@ -45,4 +45,4 @@ exports[`convertImportPaths() should return markup without modification 1`] = `
 "
 `;
 
-exports[`validateExternalDependencies() should throw error if invalid externalDependency is passed 1`] = `"Passed 'externalStackBlitzDependencies[]' contains invalid value. Allowed are 'imask, styled-components'."`;
+exports[`validateExternalDependencies() should throw error if invalid externalDependency is passed 1`] = `"Passed 'externalStackBlitzDependencies[]' contains invalid value. Allowed are 'imask, styled-components, ag-grid-community, ag-grid-angular, ag-grid-react, ag-grid-vue3'."`;

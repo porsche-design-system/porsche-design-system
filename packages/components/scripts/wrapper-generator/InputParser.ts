@@ -2,6 +2,7 @@ import type { TagName } from '@porsche-design-system/shared';
 import * as path from 'path';
 import * as fs from 'fs';
 import { globbySync } from 'globby';
+import { isDeprecatedComponent } from '@porsche-design-system/component-meta/src/utils';
 
 const ROOT_DIR = path.normalize(__dirname + '/../../');
 const DIST_DIR = path.resolve(ROOT_DIR, 'dist');
@@ -90,15 +91,13 @@ export class InputParser {
 
   public canHaveChildren(component: TagName): boolean {
     const fileContent = this.getComponentSourceCode(component);
-    return fileContent.includes('<slot');
+    return fileContent.includes('@slot');
   }
 
   public getDeprecationMessage(component: TagName): string {
     const fileContent = this.getComponentSourceCode(component);
-    const [deprecated, rawDeprecationMessage = ''] =
-      /\/\*\* @deprecated (.*)\*\/\n@Component\({/.exec(fileContent) || [];
-
-    return !!deprecated ? `/** @deprecated ${rawDeprecationMessage.trim()} */\n` : '';
+    const [isDeprecated, rawDeprecationMessage] = isDeprecatedComponent(fileContent);
+    return isDeprecated ? `/** @deprecated ${rawDeprecationMessage.trim()} */\n` : '';
   }
 
   public getDefaultValueForProp(component: TagName, prop: string): string {

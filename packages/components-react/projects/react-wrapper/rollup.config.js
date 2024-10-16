@@ -122,6 +122,7 @@ export default [
               import: './styles/esm/index.mjs',
               default: './styles/cjs/index.cjs',
             },
+            './ag-grid/*.css': './ag-grid/*.css',
             './testing': {
               types: './testing/index.d.ts',
               default: './testing/index.cjs',

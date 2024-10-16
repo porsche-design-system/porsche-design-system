@@ -38,7 +38,7 @@ const generateComponentsBundleForStackBlitz = (framework: Framework): void => {
   // https://developer.stackblitz.com/platform/api/javascript-sdk-options#projecttemplate
   const esmOrCjsFileExtension = framework === 'js' ? 'cjs,mjs' : framework === 'vue' ? 'mjs' : 'cjs';
   const files = globbySync(
-    `../components-${framework}/dist/${distSubFolder}/**/*.{js,${esmOrCjsFileExtension},d.ts,json,scss}`
+    `../components-${framework}/dist/${distSubFolder}/**/*.{js,${esmOrCjsFileExtension},d.ts,json,scss,css}`
   ).filter(
     (filePath) =>
       !ignoredSubPackages.some((subPackage) =>

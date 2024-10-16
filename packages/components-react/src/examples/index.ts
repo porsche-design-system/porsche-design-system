@@ -1,4 +1,6 @@
 export * from './AccordionExample';
+export * from './AGGridExample';
+export * from './AGGridExampleStorefront';
 export * from './BannerExample';
 export * from './ButtonExampleForm';
 export * from './CanvasExample';
@@ -6,6 +8,8 @@ export * from './CarouselExampleDynamicSlides';
 export * from './CarouselExampleFocusOnCenterSlide';
 export * from './CarouselExampleEvents';
 export * from './CarouselExampleJumpToSlide';
+export * from './CheckboxExample';
+export * from './CheckboxExampleControlled';
 export * from './FlyoutExample';
 export * from './FlyoutMultilevelExample';
 export * from './FlyoutMultilevelExampleActiveIdentifier';
