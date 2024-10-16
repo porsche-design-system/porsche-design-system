@@ -35,7 +35,6 @@ import { getFunctionalComponentLabelStyles } from '../../common/label/label-styl
 import { getFunctionalComponentStateMessageStyles } from '../../common/state-message/state-message-styles';
 import { getPopoverResetJssStyle } from '../../../styles/popover-reset-styles';
 import { OPTION_HEIGHT } from '../../../styles/option-styles';
-import { INTERNAL_SELECT_SLOT } from './select-utils';
 
 const cssVarBackgroundColor = '--p-select-background-color';
 const cssVarTextColor = '--p-select-text-color';
@@ -51,7 +50,6 @@ export const getComponentCss = (
   isDisabled: boolean,
   hideLabel: BreakpointCustomizable<boolean>,
   state: FormState,
-  isWithinForm: boolean,
   isNativePopoverCase: boolean,
   theme: Theme
 ): string => {
@@ -65,15 +63,6 @@ export const getComponentCss = (
         }),
       },
       ...preventFoucOfNestedElementsStyles,
-      ...(isWithinForm &&
-        addImportantToEachRule({
-          [`::slotted([slot=${INTERNAL_SELECT_SLOT}])`]: {
-            position: 'absolute',
-            opacity: 0,
-            height: '0px',
-            bottom: 0,
-          },
-        })),
       // TODO: re-use select-wrapper-style
       button: getButtonStyles(isDisabled, direction, isOpen, state, theme),
     },
@@ -82,9 +71,6 @@ export const getComponentCss = (
       gap: spacingStaticXSmall,
       // min width is needed for showing at least 1 character in very narrow containers. The "1rem" value is the minimum safe zone to show at least 1 character plus the ellipsis dots.
       minWidth: `calc(1rem + ${formElementPaddingHorizontal} + ${borderWidthBase} * 2 + ${getCalculatedFormElementPaddingHorizontal(1)})`,
-      ...(isWithinForm && {
-        position: 'relative', // Necessary for native HTML validation box positioning (internal-select)
-      }),
     },
     wrapper: {
       position: 'relative',
