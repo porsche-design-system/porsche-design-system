@@ -55,7 +55,6 @@ import { FlyoutHeaderFooterSubfooterPositionStartPage } from './generated/Flyout
 import { FlyoutHeaderFooterSubfooterScrollableContentPage } from './generated/FlyoutHeaderFooterSubfooterScrollableContent';
 import { FlyoutHeaderFooterSubfooterScrolledPage } from './generated/FlyoutHeaderFooterSubfooterScrolled';
 import { FlyoutHeaderFooterSubfooterScrolledOverlapPage } from './generated/FlyoutHeaderFooterSubfooterScrolledOverlap';
-import { FlyoutHeaderFooterSubfooterSlottedAnchorPage } from './generated/FlyoutHeaderFooterSubfooterSlottedAnchor';
 import { FlyoutHeaderScrollableContentPage } from './generated/FlyoutHeaderScrollableContent';
 import { FlyoutMultilevelPage } from './generated/FlyoutMultilevel';
 import { FlyoutMultilevelActiveIdentifierPage } from './generated/FlyoutMultilevelActiveIdentifier';
@@ -341,11 +340,6 @@ export const generatedRoutes: RouteType[] = [
     name: 'Flyout Header Footer Subfooter Scrolled Overlap',
     path: '/flyout-header-footer-subfooter-scrolled-overlap',
     element: <FlyoutHeaderFooterSubfooterScrolledOverlapPage />,
-  },
-  {
-    name: 'Flyout Header Footer Subfooter Slotted Anchor',
-    path: '/flyout-header-footer-subfooter-slotted-anchor',
-    element: <FlyoutHeaderFooterSubfooterSlottedAnchorPage />,
   },
   {
     name: 'Flyout Header Scrollable Content',

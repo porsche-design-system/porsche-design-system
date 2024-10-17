@@ -74,7 +74,6 @@ import { FlyoutHeaderFooterSubfooterPositionStartComponent } from './generated/f
 import { FlyoutHeaderFooterSubfooterScrollableContentComponent } from './generated/flyout-header-footer-subfooter-scrollable-content.component';
 import { FlyoutHeaderFooterSubfooterScrolledComponent } from './generated/flyout-header-footer-subfooter-scrolled.component';
 import { FlyoutHeaderFooterSubfooterScrolledOverlapComponent } from './generated/flyout-header-footer-subfooter-scrolled-overlap.component';
-import { FlyoutHeaderFooterSubfooterSlottedAnchorComponent } from './generated/flyout-header-footer-subfooter-slotted-anchor.component';
 import { FlyoutHeaderScrollableContentComponent } from './generated/flyout-header-scrollable-content.component';
 import { FlyoutMultilevelComponent } from './generated/flyout-multilevel.component';
 import { FlyoutMultilevelActiveIdentifierComponent } from './generated/flyout-multilevel-active-identifier.component';
@@ -195,7 +194,6 @@ export const generatedPages = [
   FlyoutHeaderFooterSubfooterScrollableContentComponent,
   FlyoutHeaderFooterSubfooterScrolledComponent,
   FlyoutHeaderFooterSubfooterScrolledOverlapComponent,
-  FlyoutHeaderFooterSubfooterSlottedAnchorComponent,
   FlyoutHeaderScrollableContentComponent,
   FlyoutMultilevelComponent,
   FlyoutMultilevelActiveIdentifierComponent,
@@ -483,11 +481,6 @@ export const generatedRoutes: ExtendedRoute[] = [
     name: 'Flyout Header Footer Subfooter Scrolled Overlap',
     path: 'flyout-header-footer-subfooter-scrolled-overlap',
     component: FlyoutHeaderFooterSubfooterScrolledOverlapComponent,
-  },
-  {
-    name: 'Flyout Header Footer Subfooter Slotted Anchor',
-    path: 'flyout-header-footer-subfooter-slotted-anchor',
-    component: FlyoutHeaderFooterSubfooterSlottedAnchorComponent,
   },
   {
     name: 'Flyout Header Scrollable Content',

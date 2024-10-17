@@ -172,10 +172,6 @@ const generatedRoutes = {
     "path": "/flyout-header-footer-subfooter-scrolled-overlap",
     "name": "FlyoutHeaderFooterSubfooterScrolledOverlap"
   },
-  "flyoutHeaderFooterSubfooterSlottedAnchor": {
-    "path": "/flyout-header-footer-subfooter-slotted-anchor",
-    "name": "FlyoutHeaderFooterSubfooterSlottedAnchor"
-  },
   "flyoutHeaderScrollableContent": {
     "path": "/flyout-header-scrollable-content",
     "name": "FlyoutHeaderScrollableContent"
