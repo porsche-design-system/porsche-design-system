@@ -31,7 +31,7 @@ export default [
        */
       modify({
         find: /if \(!document\)/,
-        replace: () => `if (typeof document === 'undefined')`,
+        replace: () => `if (typeof document === 'undefined' || !document)`,
       }),
       modify({
         find: /(:not\(:defined,\[data-ssr]\)['"`]:\s*{)[^}]*(})/,
