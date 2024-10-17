@@ -124,9 +124,7 @@
         padding: 4px;
         padding-inline-start: 16px;
         border-radius: 8px;
-        background: hsl(240 4% 85%/35%);
-        backdrop-filter: blur(32px);
-        -webkit-backdrop-filter: blur(32px);
+        background: deeppink;
       }
 
       .search input {
@@ -262,7 +260,9 @@
     <p-canvas grid-max-width="true">
       <a href="#" slot="title">Co-Driver</a>
 
-      <div slot="header-start"></div>
+      <div slot="header-start">
+        <p-button variant="ghost" compact="true" hide-label="true" icon="new-conversation">Start new chat</p-button>
+      </div>
 
       <div slot="header-end">
         <p-button id="button-search" icon="search" variant="ghost" compact="true" hide-label="true"

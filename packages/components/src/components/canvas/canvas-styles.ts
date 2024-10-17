@@ -11,8 +11,10 @@ import {
   breakpointS,
   getMediaQueryMin,
   gridGap,
+  spacingFluidMedium,
+  spacingFluidSmall,
   spacingStaticSmall,
-  textSmallStyle,
+  textXSmallStyle,
 } from '@porsche-design-system/styles';
 
 const cssVarSidebarStartWidth = '--p-canvas-sidebar-start-width';
@@ -59,11 +61,6 @@ export const getComponentCss = (theme: Theme, isSidebarStartOpen: boolean, isSid
           alignItems: 'center',
           gap: spacingStaticSmall,
         },
-        '&([slot*="sidebar"])': {
-          // display: 'flex',
-          // flexDirection: 'column',
-          // gap: spacingStaticSmall,
-        },
       },
       'slot[name="background"]': {
         display: 'block',
@@ -75,9 +72,6 @@ export const getComponentCss = (theme: Theme, isSidebarStartOpen: boolean, isSid
         height: '100dvh',
         pointerEvents: 'none',
         overflow: 'hidden',
-        // filter: 'blur(32px)', // empower ultra smooth video or image gradients
-        // transform: 'scale3d(1.5, 1.5, 1.5)', // needed for Safari to force GPU acceleration for `filter` and to ensure blurry area appear at the edges
-        // opacity: 0.5,
         transform: 'translate3d(0,0,0)', // needed for Safari to force GPU acceleration
         '&::slotted(video), &::slotted(img)': {
           width: '100%',
@@ -92,9 +86,16 @@ export const getComponentCss = (theme: Theme, isSidebarStartOpen: boolean, isSid
       },
       'slot[name="sidebar-start"]': {
         display: 'block',
+        marginTop: spacingFluidMedium,
+        [mediaQueryTabletView]: {
+          marginTop: 0,
+        },
       },
       h2: {
-        ...textSmallStyle,
+        ...textXSmallStyle,
+        textOverflow: 'ellipsis',
+        overflow: 'hidden',
+        whiteSpace: 'nowrap',
         margin: 0,
         color: primaryColor,
         textTransform: 'uppercase',
@@ -116,9 +117,6 @@ export const getComponentCss = (theme: Theme, isSidebarStartOpen: boolean, isSid
         display: 'grid',
         gridTemplateColumns: 'minmax(0, 1fr) auto minmax(0, 1fr)',
         gap: spacingBase,
-        // backgroundColor: 'transparent',
-        // WebkitBackdropFilter: 'blur(32px)',
-        // backdropFilter: 'blur(32px)',
         alignItems: 'center',
       },
       'header .blur-layers': {
@@ -231,12 +229,12 @@ export const getComponentCss = (theme: Theme, isSidebarStartOpen: boolean, isSid
         width: '100%',
         gridArea: 'footer',
         zIndex: 200,
-        // backgroundColor,
+        paddingBottom: spacingFluidSmall,
         '&::before': {
           content: '""',
-
+          zIndex: '-1',
           position: 'absolute',
-          inset: '-220px -500px 0',
+          inset: '-140px -50dvw 0',
           pointerEvents: 'none',
           background: `linear-gradient(
             to bottom,
@@ -277,6 +275,7 @@ export const getComponentCss = (theme: Theme, isSidebarStartOpen: boolean, isSid
     },
     'sidebar-header': {
       display: 'flex',
+      gap: spacingStaticSmall,
       justifyContent: 'var(--p-internal-justify)',
       position: 'sticky',
       top: `calc(${spacingBase} * -1)`,
@@ -330,7 +329,6 @@ export const getComponentCss = (theme: Theme, isSidebarStartOpen: boolean, isSid
       marginInlineEnd: isSidebarEndOpen ? `calc(${sidebarEndWidth} * -1)` : 0,
       transition: sidebarTransition,
       display: 'grid',
-
       gridTemplateRows: 'auto minmax(0, 1fr) auto',
       gridTemplateAreas: '"header" "main" "footer"',
       minWidth: '320px',
@@ -348,14 +346,12 @@ export const getComponentCss = (theme: Theme, isSidebarStartOpen: boolean, isSid
     },
     crest: {
       [`@container(min-width:${breakpointS}px)`]: {
-        // [getMediaQueryMin('s')]: {
         display: 'none',
       },
     },
     wordmark: {
       height: '10px',
       [`@container(max-width:${breakpointS - 1}px)`]: {
-        // [getMediaQueryMax('s')]: {
         display: 'none',
       },
     },

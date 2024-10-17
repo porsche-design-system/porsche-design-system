@@ -9,7 +9,9 @@
     <p-canvas sidebar-end-icon="user" style="--p-canvas-grid-max-width: 50rem">
       <a slot="title" href="#template-intro">Co-Driver</a>
 
-      <div slot="header-start"></div>
+      <div slot="header-start">
+        <p-button variant="ghost" compact="true" hide-label="true" icon="new-chat">Start new chat</p-button>
+      </div>
 
       <div slot="header-end"></div>
 
@@ -53,10 +55,10 @@
       </div>
 
       <div slot="footer" class="footer -mt-fluid-small">
-        <p-button-pure icon="delete" onclick="document.querySelector('p-modal#delete-chat').open = true;"
+        <p-button-pure icon="delete" size="x-small" onclick="document.querySelector('p-modal#delete-chat').open = true;"
           >Delete chat</p-button-pure
         >
-        <p-link-pure href="#" icon="light">Service Desk</p-link-pure>
+        <p-link-pure href="#" icon="light" size="x-small">Service Desk</p-link-pure>
       </div>
 
       <div slot="sidebar-start">

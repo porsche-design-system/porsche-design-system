@@ -115,10 +115,12 @@ export class Canvas {
                   {this.sidebarStartOpen ? 'Close' : 'Open'} navigation sidebar
                 </PrefixedTagNames.pButton>
               )}
-              <h2>
-                <slot name="title" />
-              </h2>
-              <slot name="header-start" />
+              {this.hasSidebarStart && !this.sidebarStartOpen && <slot name="header-start" />}
+              {this.isTabletView && (
+                <h2>
+                  <slot name="title" />
+                </h2>
+              )}
             </div>
             <PrefixedTagNames.pCrest class="crest" />
             <PrefixedTagNames.pWordmark class="wordmark" size="inherit" theme={this.theme} />
@@ -167,6 +169,7 @@ export class Canvas {
                   >
                     {this.sidebarStartOpen ? 'Close' : 'Open'} navigation sidebar
                   </PrefixedTagNames.pButton>
+                  <slot name="header-start" />
                 </div>
                 <slot name="sidebar-start" />
               </div>
@@ -209,6 +212,9 @@ export class Canvas {
             position="start"
             onDismiss={this.onDismissSidebarStart}
           >
+            <h2 slot="header">
+              <slot name="title" />
+            </h2>
             <slot name="sidebar-start" />
           </PrefixedTagNames.pFlyout>
         )}

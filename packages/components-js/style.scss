@@ -273,13 +273,13 @@ body {
   gap: $pds-spacing-static-x-large;
 
   &__bubble {
-    border-radius: $pds-border-radius-large;
     max-width: 30rem;
 
     &--question {
       justify-self: flex-end;
       background: $pds-theme-light-background-surface;
       padding: $pds-spacing-static-medium $pds-spacing-static-medium;
+      border-radius: $pds-border-radius-large $pds-border-radius-large $pds-border-radius-small $pds-border-radius-large;
     }
 
     &--answer {
@@ -307,7 +307,6 @@ body {
 // "footer" section
 
 .chat-input {
-  z-index: 1;
   grid-column: 1 / -1;
   display: grid;
   grid-template: repeat(2, auto) / auto minmax(0, 1fr) auto;
