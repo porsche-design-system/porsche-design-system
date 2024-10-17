@@ -19,7 +19,7 @@ const transformIndexHtmlPlugin = () => {
     name: 'html-transform',
     transformIndexHtml(html) {
       const headPartials = [
-        getInitialStyles(),
+        getInitialStyles({ prefix: ['', 'my-prefix'] }),
         getComponentChunkLinks({ components: [...COMPONENT_CHUNK_NAMES] }),
         // Icon links produce too many requests in flyout iframes page which leads to ERR_INSUFFICIENT_RESOURCES error
         // getIconLinks({ icons: [...ICON_NAMES] }),
