@@ -571,11 +571,10 @@ const generateCodeSamples = (): void => {
             // Replace locally served assets with public assets folder of storefront
             fileContent = fileContent.replace(/http:\/\/localhost:3002/g, 'assets');
 
+            // Style import in stackblitz for angular only works like this, so we add it here
             if (fileName.includes('ag-grid-example-storefront.component.ts')) {
-              fileContent = fileContent.replace(
-                /(import[^\n]*)/,
-                "$1\nimport '@porsche-design-system/components-angular/ag-grid/theme.css';"
-              );
+              const agGridImport = `styles: [\`@import './../turbo_modules/@porsche-design-system/components-angular/ag-grid/theme.css';\`],`;
+              fileContent = fileContent.replace(/(ChangeDetectionStrategy\.OnPush,)/, `$1\n  ${agGridImport}`);
             }
 
             return { [framework]: fileContent };
