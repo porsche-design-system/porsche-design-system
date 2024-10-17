@@ -14,6 +14,17 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ### [Unreleased]
 
+#### Added
+
+- `Icon`: `attachment`, `dislike`, `dislike-filled`, `like`, `like-filled`, `new-chat`
+
+#### Changed
+
+- `Canvas`: Improve UI and UX behaviour
+  ([#3515](https://github.com/porsche-design-system/porsche-design-system/pull/3515))
+- `Flyout`, `Modal`: Removed default styling for slotted anchors
+  ([#3515](https://github.com/porsche-design-system/porsche-design-system/pull/3515))
+
 ### [3.19.0] - 2024-10-14
 
 ### [3.19.0-rc.4] - 2024-10-14

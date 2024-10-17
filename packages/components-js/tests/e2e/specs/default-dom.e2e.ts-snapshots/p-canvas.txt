@@ -1,10 +1,17 @@
 <div class="canvas">
   <header>
+    <div class="blur-layers">
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
     <div class="header">
       <h2>
         <slot name="title"> </slot>
       </h2>
-      <slot name="header-start"> </slot>
     </div>
     <p-crest class="crest hydrated"> </p-crest>
     <p-wordmark class="wordmark hydrated"> </p-wordmark>
@@ -18,4 +25,5 @@
   <footer>
     <slot name="footer"> </slot>
   </footer>
+  <slot name="background"> </slot>
 </div>

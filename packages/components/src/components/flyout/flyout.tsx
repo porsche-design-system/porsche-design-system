@@ -4,16 +4,15 @@ import {
   FLYOUT_ARIA_ATTRIBUTES,
   FLYOUT_POSITIONS,
   type FlyoutAriaAttribute,
+  type FlyoutMotionHiddenEndEventDetail,
+  type FlyoutMotionVisibleEndEventDetail,
   type FlyoutPosition,
   type FlyoutPositionDeprecated,
-  type FlyoutMotionVisibleEndEventDetail,
-  type FlyoutMotionHiddenEndEventDetail,
   handleUpdateStickyTopCssVar,
 } from './flyout-utils';
 import { getComponentCss } from './flyout-styles';
 import {
   AllowedTypes,
-  applyConstructableStylesheetStyles,
   attachComponentCss,
   getPrefixedTagNames,
   hasNamedSlot,
@@ -30,7 +29,6 @@ import {
   warnIfDeprecatedPropValueIsUsed,
 } from '../../utils';
 import type { PropTypes, SelectedAriaAttributes, Theme } from '../../types';
-import { getSlottedAnchorStyles } from '../../styles';
 import { observeStickyArea } from '../../utils/dialog/observer';
 import { onTransitionEnd } from '../../utils/dialog/dialog';
 
@@ -96,7 +94,6 @@ export class Flyout {
   }
 
   public connectedCallback(): void {
-    applyConstructableStylesheetStyles(this.host, getSlottedAnchorStyles);
     // Observe dynamic slot changes
     observeChildren(
       this.host,

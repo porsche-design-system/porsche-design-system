@@ -22,16 +22,8 @@ const scenario = async (
   const markup = `
 <div class="playground light ${pseudoState}" title="should render :${pseudoState}" style="height: 600px;">
   <p-modal open="true">
-    <div slot="heading">
-      Some slotted heading
-      <span>
-        and some slotted, deeply nested <a href="#">anchor</a>.
-      </span>
-    </div>
+    <div slot="header">Some heading</div>
     Some content
-    <span>
-      and some slotted, deeply nested <a href="#">anchor</a>.
-    </span>
   </p-modal>
 </div>`;
 

@@ -36,13 +36,6 @@ beforeEach(() => {
 });
 
 describe('connectedCallback', () => {
-  it('should call applyConstructableStylesheetStyles() with correct parameters', () => {
-    const utilsSpy = jest.spyOn(applyConstructableStylesheetStyleUtils, 'applyConstructableStylesheetStyles');
-    component.open = true;
-    component.connectedCallback();
-
-    expect(utilsSpy).toHaveBeenCalledWith(component.host, getSlottedAnchorStyles);
-  });
   it('should call observeChildren with correct parameters', () => {
     const spy = jest.spyOn(childrenObserverUtils, 'observeChildren');
     component.connectedCallback();
