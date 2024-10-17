@@ -14,6 +14,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ### [Unreleased]
 
+#### Fixed
+
+- `jsdom-polyfill`: errors from included polyfill packages
+  ([3543](https://github.com/porsche-design-system/porsche-design-system/pull/3543))
+
 ### [3.19.0] - 2024-10-14
 
 ### [3.19.0-rc.4] - 2024-10-14
