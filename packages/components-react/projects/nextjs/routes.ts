@@ -60,6 +60,58 @@ const generatedRoutes = {
     "path": "/button-tile",
     "name": "ButtonTile"
   },
+  "canvas": {
+    "path": "/canvas",
+    "name": "Canvas"
+  },
+  "canvasBackground": {
+    "path": "/canvas-background",
+    "name": "CanvasBackground"
+  },
+  "canvasBasic": {
+    "path": "/canvas-basic",
+    "name": "CanvasBasic"
+  },
+  "canvasCssVariables": {
+    "path": "/canvas-css-variables",
+    "name": "CanvasCssVariables"
+  },
+  "canvasFooter": {
+    "path": "/canvas-footer",
+    "name": "CanvasFooter"
+  },
+  "canvasGrid": {
+    "path": "/canvas-grid",
+    "name": "CanvasGrid"
+  },
+  "canvasHeaderEnd": {
+    "path": "/canvas-header-end",
+    "name": "CanvasHeaderEnd"
+  },
+  "canvasHeaderStart": {
+    "path": "/canvas-header-start",
+    "name": "CanvasHeaderStart"
+  },
+  "canvasNamedSlots": {
+    "path": "/canvas-named-slots",
+    "name": "CanvasNamedSlots"
+  },
+  "canvasScrollable": {
+    "path": "/canvas-scrollable",
+    "name": "CanvasScrollable"
+  },
+  "canvasSidebarEnd": {
+    "path": "/canvas-sidebar-end",
+    "name": "CanvasSidebarEnd"
+  },
+  "canvasSidebarStart": {
+    "path": "/canvas-sidebar-start",
+    "name": "CanvasSidebarStart"
+  },
+  "canvasTitle": {
+    "path": "/canvas-title",
+    "name": "CanvasTitle"
+  },
   "carousel": {
     "path": "/carousel",
     "name": "Carousel"

@@ -46,6 +46,19 @@ import { ButtonComponent } from './generated/button.component';
 import { ButtonGroupComponent } from './generated/button-group.component';
 import { ButtonPureComponent } from './generated/button-pure.component';
 import { ButtonTileComponent } from './generated/button-tile.component';
+import { CanvasComponent } from './generated/canvas.component';
+import { CanvasBackgroundComponent } from './generated/canvas-background.component';
+import { CanvasBasicComponent } from './generated/canvas-basic.component';
+import { CanvasCssVariablesComponent } from './generated/canvas-css-variables.component';
+import { CanvasFooterComponent } from './generated/canvas-footer.component';
+import { CanvasGridComponent } from './generated/canvas-grid.component';
+import { CanvasHeaderEndComponent } from './generated/canvas-header-end.component';
+import { CanvasHeaderStartComponent } from './generated/canvas-header-start.component';
+import { CanvasNamedSlotsComponent } from './generated/canvas-named-slots.component';
+import { CanvasScrollableComponent } from './generated/canvas-scrollable.component';
+import { CanvasSidebarEndComponent } from './generated/canvas-sidebar-end.component';
+import { CanvasSidebarStartComponent } from './generated/canvas-sidebar-start.component';
+import { CanvasTitleComponent } from './generated/canvas-title.component';
 import { CarouselComponent } from './generated/carousel.component';
 import { CheckboxComponent } from './generated/checkbox.component';
 import { CheckboxWrapperComponent } from './generated/checkbox-wrapper.component';
@@ -166,6 +179,19 @@ export const generatedPages = [
   ButtonGroupComponent,
   ButtonPureComponent,
   ButtonTileComponent,
+  CanvasComponent,
+  CanvasBackgroundComponent,
+  CanvasBasicComponent,
+  CanvasCssVariablesComponent,
+  CanvasFooterComponent,
+  CanvasGridComponent,
+  CanvasHeaderEndComponent,
+  CanvasHeaderStartComponent,
+  CanvasNamedSlotsComponent,
+  CanvasScrollableComponent,
+  CanvasSidebarEndComponent,
+  CanvasSidebarStartComponent,
+  CanvasTitleComponent,
   CarouselComponent,
   CheckboxComponent,
   CheckboxWrapperComponent,
@@ -346,6 +372,71 @@ export const generatedRoutes: ExtendedRoute[] = [
     name: 'Button Tile',
     path: 'button-tile',
     component: ButtonTileComponent,
+  },
+  {
+    name: 'Canvas',
+    path: 'canvas',
+    component: CanvasComponent,
+  },
+  {
+    name: 'Canvas Background',
+    path: 'canvas-background',
+    component: CanvasBackgroundComponent,
+  },
+  {
+    name: 'Canvas Basic',
+    path: 'canvas-basic',
+    component: CanvasBasicComponent,
+  },
+  {
+    name: 'Canvas Css Variables',
+    path: 'canvas-css-variables',
+    component: CanvasCssVariablesComponent,
+  },
+  {
+    name: 'Canvas Footer',
+    path: 'canvas-footer',
+    component: CanvasFooterComponent,
+  },
+  {
+    name: 'Canvas Grid',
+    path: 'canvas-grid',
+    component: CanvasGridComponent,
+  },
+  {
+    name: 'Canvas Header End',
+    path: 'canvas-header-end',
+    component: CanvasHeaderEndComponent,
+  },
+  {
+    name: 'Canvas Header Start',
+    path: 'canvas-header-start',
+    component: CanvasHeaderStartComponent,
+  },
+  {
+    name: 'Canvas Named Slots',
+    path: 'canvas-named-slots',
+    component: CanvasNamedSlotsComponent,
+  },
+  {
+    name: 'Canvas Scrollable',
+    path: 'canvas-scrollable',
+    component: CanvasScrollableComponent,
+  },
+  {
+    name: 'Canvas Sidebar End',
+    path: 'canvas-sidebar-end',
+    component: CanvasSidebarEndComponent,
+  },
+  {
+    name: 'Canvas Sidebar Start',
+    path: 'canvas-sidebar-start',
+    component: CanvasSidebarStartComponent,
+  },
+  {
+    name: 'Canvas Title',
+    path: 'canvas-title',
+    component: CanvasTitleComponent,
   },
   {
     name: 'Carousel',
