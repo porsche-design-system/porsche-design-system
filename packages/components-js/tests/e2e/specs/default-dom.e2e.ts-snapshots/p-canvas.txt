@@ -8,22 +8,12 @@
       <div></div>
       <div></div>
     </div>
-    <div class="header">
-      <h2>
-        <slot name="title"> </slot>
-      </h2>
-    </div>
+    <div class="header"></div>
     <p-crest class="crest hydrated"> </p-crest>
     <p-wordmark class="wordmark hydrated"> </p-wordmark>
-    <div class="header">
-      <slot name="header-end"> </slot>
-    </div>
+    <div class="header"></div>
   </header>
   <main>
     <slot> </slot>
   </main>
-  <footer>
-    <slot name="footer"> </slot>
-  </footer>
-  <slot name="background"> </slot>
 </div>
