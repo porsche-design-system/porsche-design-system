@@ -1,10 +1,11 @@
-import { getCss, type Theme } from '../../utils';
+import { getCss, isThemeDark, type Theme } from '../../utils';
 import {
   addImportantToEachRule,
   colorSchemeStyles,
   getThemedColors,
   getTransition,
   hostHiddenStyles,
+  prefersColorSchemeDarkMediaQuery,
   preventFoucOfNestedElementsStyles,
 } from '../../styles';
 import {
@@ -14,8 +15,11 @@ import {
   spacingFluidMedium,
   spacingFluidSmall,
   spacingStaticSmall,
+  textSmallStyle,
   textXSmallStyle,
 } from '@porsche-design-system/styles';
+
+// TODO: styling needs to be cleaned up
 
 const cssVarSidebarStartWidth = '--p-canvas-sidebar-start-width';
 const cssVarSidebarEndWidth = '--p-canvas-sidebar-end-width';
@@ -38,8 +42,19 @@ const borderRadius = '16px';
 
 const headerPadding = spacingStaticSmall;
 
+const headerMinHeight = '56px';
+
 export const getComponentCss = (theme: Theme, isSidebarStartOpen: boolean, isSidebarEndOpen: boolean): string => {
   const { primaryColor, backgroundColor, backgroundSurfaceColor, contrastLowColor } = getThemedColors(theme);
+  const {
+    primaryColor: primaryColorDark,
+    backgroundColor: backgroundColorDark,
+    backgroundSurfaceColor: backgroundSurfaceColorDark,
+    contrastLowColor: contrastLowColorDark,
+  } = getThemedColors('dark');
+
+  const footerGradientDark = '0%';
+  const footerGradient = isThemeDark(theme) ? footerGradientDark : '100%';
 
   return getCss({
     '@global': {
@@ -100,6 +115,9 @@ export const getComponentCss = (theme: Theme, isSidebarStartOpen: boolean, isSid
         color: primaryColor,
         textTransform: 'uppercase',
         letterSpacing: '2px',
+        ...prefersColorSchemeDarkMediaQuery(theme, {
+          color: primaryColorDark,
+        }),
       },
       'header, main, footer, aside': {
         padding: spacingBase,
@@ -110,8 +128,8 @@ export const getComponentCss = (theme: Theme, isSidebarStartOpen: boolean, isSid
         paddingBlock: headerPadding,
         gridArea: 'header',
         position: 'sticky',
-        minHeight: '56px',
-
+        minHeight: headerMinHeight,
+        boxSizing: 'border-box',
         top: 0,
         zIndex: 100,
         display: 'grid',
@@ -236,8 +254,10 @@ export const getComponentCss = (theme: Theme, isSidebarStartOpen: boolean, isSid
           position: 'absolute',
           inset: '-140px -50dvw 0',
           pointerEvents: 'none',
-          background:
-            'linear-gradient(to bottom, hsla(0, 0%, 100%, 0) 0%, hsla(0, 0%, 100%, 0.013) 8.1%, hsla(0, 0%, 100%, 0.049) 15.5%, hsla(0, 0%, 100%, 0.104) 22.5%, hsla(0, 0%, 100%, 0.175) 29%, hsla(0, 0%, 100%, 0.259) 35.3%, hsla(0, 0%, 100%, 0.352) 41.2%, hsla(0, 0%, 100%, 0.45) 47.1%, hsla(0, 0%, 100%, 0.55) 52.9%, hsla(0, 0%, 100%, 0.648) 58.8%, hsla(0, 0%, 100%, 0.741) 64.7%, hsla(0, 0%, 100%, 0.825) 71%, hsla(0, 0%, 100%, 0.896) 77.5%, hsla(0, 0%, 100%, 0.951) 84.5%, hsla(0, 0%, 100%, 0.987) 91.9%, hsl(0, 0%, 100%) 100%)',
+          background: `linear-gradient(to bottom, hsla(0, 0%, ${footerGradient}, 0) 0%, hsla(0, 0%, ${footerGradient}, 0.013) 8.1%, hsla(0, 0%, ${footerGradient}, 0.049) 15.5%, hsla(0, 0%, ${footerGradient}, 0.104) 22.5%, hsla(0, 0%, ${footerGradient}, 0.175) 29%, hsla(0, 0%, ${footerGradient}, 0.259) 35.3%, hsla(0, 0%, ${footerGradient}, 0.352) 41.2%, hsla(0, 0%, ${footerGradient}, 0.45) 47.1%, hsla(0, 0%, ${footerGradient}, 0.55) 52.9%, hsla(0, 0%, ${footerGradient}, 0.648) 58.8%, hsla(0, 0%, ${footerGradient}, 0.741) 64.7%, hsla(0, 0%, ${footerGradient}, 0.825) 71%, hsla(0, 0%, ${footerGradient}, 0.896) 77.5%, hsla(0, 0%, ${footerGradient}, 0.951) 84.5%, hsla(0, 0%, ${footerGradient}, 0.987) 91.9%, hsl(0, 0%, ${footerGradient}) 100%)`,
+          ...prefersColorSchemeDarkMediaQuery(theme, {
+            background: `linear-gradient(to bottom, hsla(0, 0%, ${footerGradientDark}, 0) 0%, hsla(0, 0%, ${footerGradientDark}, 0.013) 8.1%, hsla(0, 0%, ${footerGradientDark}, 0.049) 15.5%, hsla(0, 0%, ${footerGradientDark}, 0.104) 22.5%, hsla(0, 0%, ${footerGradientDark}, 0.175) 29%, hsla(0, 0%, ${footerGradientDark}, 0.259) 35.3%, hsla(0, 0%, ${footerGradientDark}, 0.352) 41.2%, hsla(0, 0%, ${footerGradientDark}, 0.45) 47.1%, hsla(0, 0%, ${footerGradientDark}, 0.55) 52.9%, hsla(0, 0%, ${footerGradientDark}, 0.648) 58.8%, hsla(0, 0%, ${footerGradientDark}, 0.741) 64.7%, hsla(0, 0%, ${footerGradientDark}, 0.825) 71%, hsla(0, 0%, ${footerGradientDark}, 0.896) 77.5%, hsla(0, 0%, ${footerGradientDark}, 0.951) 84.5%, hsla(0, 0%, ${footerGradientDark}, 0.987) 91.9%, hsl(0, 0%, ${footerGradientDark}) 100%)`,
+          }),
         },
       },
       aside: {
@@ -260,6 +280,7 @@ export const getComponentCss = (theme: Theme, isSidebarStartOpen: boolean, isSid
     'sidebar-header': {
       display: 'flex',
       gap: spacingStaticSmall,
+      alignItems: 'center',
       justifyContent: 'var(--p-internal-justify)',
       position: 'sticky',
       top: `calc(${spacingBase} * -1)`,
@@ -267,8 +288,11 @@ export const getComponentCss = (theme: Theme, isSidebarStartOpen: boolean, isSid
       marginBlockStart: `calc(${spacingBase} * -1)`,
       marginInline: `calc(${spacingBase} * -1)`,
       zIndex: 1,
+      minHeight: headerMinHeight,
+      boxSizing: 'border-box',
       '&::before': {
         content: '""',
+        zIndex: '-1',
         position: 'absolute',
         inset: '0 0 -8px',
         background: 'var(--p-internal-gradient)',
@@ -284,8 +308,13 @@ export const getComponentCss = (theme: Theme, isSidebarStartOpen: boolean, isSid
       marginInlineStart: isSidebarStartOpen
         ? 0
         : `calc((var(${cssVarSidebarStartWidth}, ${sidebarWidth}) + ${borderRadius}) * -1)`,
+      ...prefersColorSchemeDarkMediaQuery(theme, {
+        '--p-internal-gradient': `linear-gradient(180deg, ${backgroundSurfaceColorDark} 0%, ${backgroundSurfaceColorDark} 65%, rgba(255,255,255,0) 100%)`,
+        backgroundColor: backgroundSurfaceColorDark,
+      }),
       '&::before': {
         content: '""',
+        zIndex: '-1',
         position: 'absolute',
         backgroundColor: 'transparent',
         right: `-${borderRadius}`,
@@ -294,8 +323,10 @@ export const getComponentCss = (theme: Theme, isSidebarStartOpen: boolean, isSid
         pointerEvents: 'none',
         top: 0,
         borderTopLeftRadius: borderRadius,
-
         boxShadow: `0 -${borderRadius} 0 0 ${backgroundSurfaceColor}`,
+        ...prefersColorSchemeDarkMediaQuery(theme, {
+          boxShadow: `0 -${borderRadius} 0 0 ${backgroundSurfaceColorDark}`,
+        }),
       },
     },
     'sidebar-end': {
@@ -307,6 +338,11 @@ export const getComponentCss = (theme: Theme, isSidebarStartOpen: boolean, isSid
       width: sidebarEndWidth,
       marginInlineEnd: isSidebarEndOpen ? 0 : `calc(var(${cssVarSidebarEndWidth}, ${sidebarWidth}) * -1)`,
       overflow: 'hidden auto',
+      ...prefersColorSchemeDarkMediaQuery(theme, {
+        borderColor: contrastLowColorDark,
+        backgroundColor: backgroundColorDark,
+        '--p-internal-gradient': `linear-gradient(180deg, ${backgroundColorDark} 0%, ${backgroundColorDark} 65%, rgba(255,255,255,0) 100%)`,
+      }),
     },
     canvas: {
       marginInlineStart: isSidebarStartOpen ? `calc(${sidebarStartWidth} * -1)` : 0,
@@ -317,7 +353,13 @@ export const getComponentCss = (theme: Theme, isSidebarStartOpen: boolean, isSid
       gridTemplateAreas: '"header" "main" "footer"',
       minWidth: '320px',
       minHeight: '100dvh',
+      font: textSmallStyle.font,
+      color: primaryColor,
       backgroundColor,
+      ...prefersColorSchemeDarkMediaQuery(theme, {
+        color: primaryColorDark,
+        backgroundColor: backgroundColorDark,
+      }),
       [mediaQueryTabletView]: {
         gridTemplate: 'auto minmax(0, 1fr) / auto minmax(0, 1fr) auto',
         gridTemplateAreas: '"sidebar-start header" "sidebar-start main" "sidebar-start footer"',
@@ -348,10 +390,14 @@ export const getComponentCss = (theme: Theme, isSidebarStartOpen: boolean, isSid
       },
     },
     'flyout-start': {
-      '--p-flyout-max-width': 'min(100dvw, 400px)',
+      // TODO: why does the flyout component has a fixed min-width defined, should be a CSS variable too?
+      '--p-flyout-width': '100dvw',
+      '--p-flyout-max-width': sidebarStartWidth,
     },
     'flyout-end': {
-      '--p-flyout-max-width': 'min(100dvw, 400px)',
+      // TODO: why does the flyout component has a fixed min-width defined, should be a CSS variable too?
+      '--p-flyout-width': '100dvw',
+      '--p-flyout-max-width': sidebarEndWidth,
     },
   });
 };
