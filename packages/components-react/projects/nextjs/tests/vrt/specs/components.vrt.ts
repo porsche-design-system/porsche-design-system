@@ -18,7 +18,7 @@ const components = (TAG_NAMES as unknown as TagName[])
 // });
 
 test(`should have certain amount of components`, () => {
-  expect(components.length).toBe(56);
+  expect(components.length).toBe(57);
 });
 
 components.forEach((component) => {
