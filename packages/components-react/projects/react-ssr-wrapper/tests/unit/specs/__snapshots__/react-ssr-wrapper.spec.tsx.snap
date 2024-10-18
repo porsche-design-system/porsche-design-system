@@ -7722,6 +7722,7 @@ header {
   grid-area: header;
   position: sticky;
   min-height: 56px;
+  box-sizing: border-box;
   top: 0;
   z-index: 100;
   display: grid;
@@ -7861,6 +7862,7 @@ aside {
 .sidebar-header {
   display: flex;
   gap: 8px;
+  align-items: center;
   justify-content: var(--p-internal-justify);
   position: sticky;
   top: calc(clamp(16px, 1.25vw + 12px, 24px) * -1);
@@ -7868,9 +7870,12 @@ aside {
   margin-block-start: calc(clamp(16px, 1.25vw + 12px, 24px) * -1);
   margin-inline: calc(clamp(16px, 1.25vw + 12px, 24px) * -1);
   z-index: 1;
+  min-height: 56px;
+  box-sizing: border-box;
 }
 .sidebar-header::before {
   content: "";
+  z-index: -1;
   position: absolute;
   inset: 0 0 -8px;
   background: var(--p-internal-gradient);
@@ -7886,6 +7891,7 @@ aside {
 }
 .sidebar-start::before {
   content: "";
+  z-index: -1;
   position: absolute;
   background-color: transparent;
   right: -16px;
@@ -7915,6 +7921,8 @@ aside {
   grid-template-areas: "header" "main" "footer";
   min-width: 320px;
   min-height: 100dvh;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  color: #010205;
   background-color: #FFF;
 }
 .wordmark {
@@ -7929,10 +7937,12 @@ aside {
   justify-content: end;
 }
 .flyout-start {
-  --p-flyout-max-width: min(100dvw, 400px);
+  --p-flyout-width: 100dvw;
+  --p-flyout-max-width: var(--p-canvas-sidebar-start-width, 320px);
 }
 .flyout-end {
-  --p-flyout-max-width: min(100dvw, 400px);
+  --p-flyout-width: 100dvw;
+  --p-flyout-max-width: var(--p-canvas-sidebar-end-width, 320px);
 }
 @container(min-width:760px) {
   .crest {
@@ -8111,23 +8121,11 @@ svg {
         </p-wordmark>
         <div
           class="header"
-        >
-          <slot
-            name="header-end"
-          />
-        </div>
+        />
       </header>
       <main>
         <slot />
       </main>
-      <footer>
-        <slot
-          name="footer"
-        />
-      </footer>
-      <slot
-        name="background"
-      />
     </div>
   </template>
   Some child
