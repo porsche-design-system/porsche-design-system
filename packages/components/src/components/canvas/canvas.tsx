@@ -1,4 +1,4 @@
-import type { PropTypes, Theme } from '../../types';
+import { type PropTypes, type Theme } from '../../types';
 import {
   AllowedTypes,
   attachComponentCss,
@@ -7,10 +7,10 @@ import {
   THEMES,
   validateProps,
 } from '../../utils';
-import { Component, Element, Fragment, h, Host, type JSX, Prop, State } from '@stencil/core';
+import { Component, Element, h, Host, type JSX, Prop, State } from '@stencil/core';
 import { getComponentCss } from './canvas-styles';
-import { type CanvasSidebarEndIcon, type CanvasSidebarStartIcon } from './canvas-utils';
-import { breakpointM } from '@porsche-design-system/styles';
+import { type CanvasSidebarStartIcon, type CanvasSidebarEndIcon } from './canvas-utils';
+import { breakpointS, breakpointM } from '@porsche-design-system/styles';
 
 const propTypes: PropTypes<typeof Canvas> = {
   sidebarStartOpen: AllowedTypes.boolean,
@@ -21,13 +21,14 @@ const propTypes: PropTypes<typeof Canvas> = {
 };
 
 /**
- * @slot {"name": "header-start", "description": "Renders a **sticky** header section above the content area on the **start** side (**left** in **LTR** mode / **right** in **RTL** mode)." }
+ * @slot {"name": "title", "description": "Renders the application name in the header section. In case **sidebar-start slot** is present it will be rendered in the corresponding flyout on mobile view." }
+ * @slot {"name": "header-start", "description": "Renders a **sticky** header section above the content area on the **start** side (**left** in **LTR** mode / **right** in **RTL** mode). On desktop view, in case **sidebar-start slot** is present and opened it will be rendered within." }
  * @slot {"name": "header-end", "description": "Renders a **sticky** header section above the content area on the **end** side (**right** in **LTR** mode / **left** in **RTL** mode)." }
- * @slot {"name": "", "description": "Default slot for the main content" }
- * @slot {"name": "title", "description": "Application name" }
- * @slot {"name": "footer", "description": "Shows a footer section, flowing under the content area when scrollable." }
- * @slot {"name": "sidebar-start", "description": "Shows a sidebar area on the **start** side (**left** in **LTR** mode / **right** in **RTL** mode). On mobile view it transforms into a flyout." }
- * @slot {"name": "sidebar-end", "description": "Shows a sidebar area on the **end** side (**right** in **LTR** mode / **left** in **RTL** mode). On mobile view it transforms into a flyout." }
+ * @slot {"name": "", "description": "Default slot for the main content." }
+ * @slot {"name": "footer", "description": "Renders a **sticky** footer section underneath the main content." }
+ * @slot {"name": "sidebar-start", "description": "Renders a sidebar area on the **start** side (**left** in **LTR** mode / **right** in **RTL** mode). On mobile view it transforms into a flyout." }
+ * @slot {"name": "sidebar-end", "description": "Renders a sidebar area on the **end** side (**right** in **LTR** mode / **left** in **RTL** mode). On mobile view it transforms into a flyout." }
+ * @slot {"name": "background", "description": "Can be used to pass a sticky media element <img/> or <video/> placed underneath the main content." }
  *
  * @experimental
  */
@@ -38,44 +39,62 @@ const propTypes: PropTypes<typeof Canvas> = {
 export class Canvas {
   @Element() public host!: HTMLElement;
 
-  /** Open Sidebar on the start side */
+  /** Open the sidebar on the start side */
   @Prop({ mutable: true }) public sidebarStartOpen?: boolean = false;
 
-  /** The icon to toggle the Sidebar on the start side */
+  /** The icon to toggle the sidebar on the start side */
   @Prop() public sidebarStartIcon?: CanvasSidebarStartIcon = 'menu-lines';
 
-  /** Open Sidebar on the end side */
-  @Prop() public sidebarEndOpen?: boolean = false;
+  /** Open the sidebar on the end side */
+  @Prop({ mutable: true }) public sidebarEndOpen?: boolean = false;
 
-  /** The icon to toggle the Sidebar on the end side */
-  @Prop() public sidebarEndIcon?: CanvasSidebarEndIcon = 'configurate';
+  /** The icon to toggle the sidebar on the end side */
+  @Prop() public sidebarEndIcon?: CanvasSidebarEndIcon = 'menu-lines';
 
-  /** Adapts the color depending on the theme. Has no effect when "inherit" is set as color prop. */
+  /** Adapts the color depending on the theme. */
   @Prop() public theme?: Theme = 'light';
 
-  @State() private isDesktopView = false;
+  @State() private isMediaQueryS = false;
+  @State() private isMediaQueryM = false;
 
-  private mediaQueryDesktopView = window.matchMedia(`(min-width: ${breakpointM}px)`);
+  private matchMediaQueryS = window.matchMedia(`(min-width: ${breakpointS}px)`);
+  private matchMediaQueryM = window.matchMedia(`(min-width: ${breakpointM}px)`);
+
+  private hasTitle: boolean;
+  private hasHeaderStart: boolean;
+  private hasHeaderEnd: boolean;
   private hasSidebarStart: boolean;
   private hasSidebarEnd: boolean;
+  private hasFooter: boolean;
+  private hasBackground: boolean;
 
   public connectedCallback(): void {
-    this.handleMediaQuery(this.mediaQueryDesktopView);
-    this.mediaQueryDesktopView.addEventListener('change', this.handleMediaQuery);
-    if (this.isDesktopView) {
+    this.handleMediaQueryS(this.matchMediaQueryS);
+    this.handleMediaQueryM(this.matchMediaQueryM);
+
+    this.matchMediaQueryS.addEventListener('change', this.handleMediaQueryS);
+    this.matchMediaQueryM.addEventListener('change', this.handleMediaQueryM);
+
+    if (this.isMediaQueryS) {
       this.sidebarStartOpen = true;
     }
   }
 
   public disconnectedCallback(): void {
-    this.mediaQueryDesktopView.removeEventListener('change', this.handleMediaQuery);
+    this.matchMediaQueryS.removeEventListener('change', this.handleMediaQueryS);
+    this.matchMediaQueryM.removeEventListener('change', this.handleMediaQueryM);
   }
 
   public render(): JSX.Element {
     validateProps(this, propTypes);
 
+    this.hasTitle = hasNamedSlot(this.host, 'title');
+    this.hasHeaderStart = hasNamedSlot(this.host, 'header-start');
+    this.hasHeaderEnd = hasNamedSlot(this.host, 'header-end');
     this.hasSidebarStart = hasNamedSlot(this.host, 'sidebar-start');
     this.hasSidebarEnd = hasNamedSlot(this.host, 'sidebar-end');
+    this.hasFooter = hasNamedSlot(this.host, 'footer');
+    this.hasBackground = hasNamedSlot(this.host, 'background');
 
     attachComponentCss(this.host, getComponentCss, this.theme, this.sidebarStartOpen, this.sidebarEndOpen);
 
@@ -85,9 +104,16 @@ export class Canvas {
       <Host>
         <div class="canvas">
           <header>
+            <div class="blur-layers">
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+            </div>
             <div class="header">
-              {/* TODO: define active state for button */}
-              {this.hasSidebarStart && (
+              {this.hasSidebarStart && !this.sidebarStartOpen && (
                 <PrefixedTagNames.pButton
                   theme={this.theme}
                   icon={this.sidebarStartIcon}
@@ -100,16 +126,19 @@ export class Canvas {
                   {this.sidebarStartOpen ? 'Close' : 'Open'} navigation sidebar
                 </PrefixedTagNames.pButton>
               )}
-              <h2>
-                <slot name="title" />
-              </h2>
-              <slot name="header-start" />
+              {this.hasHeaderStart && ((this.hasSidebarStart && !this.sidebarStartOpen) || !this.hasSidebarStart) && (
+                <slot name="header-start" />
+              )}
+              {this.hasTitle && ((this.hasSidebarStart && this.isMediaQueryS) || !this.hasSidebarStart) && (
+                <h2>
+                  <slot name="title" />
+                </h2>
+              )}
             </div>
             <PrefixedTagNames.pCrest class="crest" />
             <PrefixedTagNames.pWordmark class="wordmark" size="inherit" theme={this.theme} />
             <div class="header">
-              <slot name="header-end" />
-              {/* TODO: define active state for button */}
+              {this.hasHeaderEnd && <slot name="header-end" />}
               {this.hasSidebarEnd && (
                 <PrefixedTagNames.pButton
                   theme={this.theme}
@@ -128,68 +157,105 @@ export class Canvas {
           <main>
             <slot />
           </main>
-          <footer>
-            <slot name="footer" />
-          </footer>
-          {this.isDesktopView && (
-            <Fragment>
-              {this.hasSidebarStart && (
-                <aside
-                  class="sidebar-start"
-                  // "inert" will be known from React 19 onwards, see https://github.com/facebook/react/pull/24730
-                  // eslint-disable-next-line
-                  /* @ts-ignore */
-                  inert={this.sidebarStartOpen ? null : true}
-                  aria-label={`Navigation sidebar ${this.sidebarStartOpen ? 'open' : 'closed'}`}
-                >
-                  <slot name="sidebar-start" />
-                </aside>
-              )}
-              {this.hasSidebarEnd && (
-                <aside
-                  class="sidebar-end"
-                  // "inert" will be known from React 19 onwards, see https://github.com/facebook/react/pull/24730
-                  // eslint-disable-next-line
-                  /* @ts-ignore */
-                  inert={this.sidebarEndOpen ? null : true}
-                  aria-label={`Settings sidebar ${this.sidebarEndOpen ? 'open' : 'closed'}`}
-                >
-                  <slot name="sidebar-end" />
-                </aside>
-              )}
-            </Fragment>
+          {this.hasFooter && (
+            <footer>
+              <slot name="footer" />
+            </footer>
           )}
-        </div>
-        {!this.isDesktopView && (
-          <Fragment>
-            {this.hasSidebarStart && (
-              <PrefixedTagNames.pFlyout
-                theme={this.theme}
-                open={this.sidebarStartOpen}
-                position="start"
-                onDismiss={this.onDismissSidebarStart}
-              >
+          {this.hasSidebarStart && this.isMediaQueryS && (
+            <aside
+              class="sidebar-start"
+              // "inert" will be known from React 19 onwards, see https://github.com/facebook/react/pull/24730
+              // eslint-disable-next-line
+              /* @ts-ignore */
+              inert={this.sidebarStartOpen ? null : true}
+              aria-label={`Navigation sidebar ${this.sidebarStartOpen ? 'open' : 'closed'}`}
+            >
+              <div class="scroller">
+                <div class="sidebar-header">
+                  <PrefixedTagNames.pButton
+                    theme={this.theme}
+                    icon={this.sidebarStartIcon}
+                    variant="ghost"
+                    compact={true}
+                    hide-label="true"
+                    aria={{ 'aria-expanded': this.sidebarStartOpen }}
+                    onClick={this.toggleSidebarStart}
+                  >
+                    {this.sidebarStartOpen ? 'Close' : 'Open'} navigation sidebar
+                  </PrefixedTagNames.pButton>
+                  {this.hasHeaderStart && <slot name="header-start" />}
+                </div>
                 <slot name="sidebar-start" />
-              </PrefixedTagNames.pFlyout>
-            )}
-            {this.hasSidebarEnd && (
-              <PrefixedTagNames.pFlyout
-                theme={this.theme}
-                open={this.sidebarEndOpen}
-                position="end"
-                onDismiss={this.onDismissSidebarEnd}
-              >
+              </div>
+            </aside>
+          )}
+          {this.hasSidebarEnd && this.isMediaQueryM && (
+            <aside
+              class="sidebar-end"
+              // "inert" will be known from React 19 onwards, see https://github.com/facebook/react/pull/24730
+              // eslint-disable-next-line
+              /* @ts-ignore */
+              inert={this.sidebarEndOpen ? null : true}
+              aria-label={`Settings sidebar ${this.sidebarEndOpen ? 'open' : 'closed'}`}
+            >
+              <div class="scroller">
+                <div class="sidebar-header">
+                  <PrefixedTagNames.pButton
+                    theme={this.theme}
+                    icon="close"
+                    variant="ghost"
+                    compact={true}
+                    hide-label="true"
+                    aria={{ 'aria-expanded': this.sidebarEndOpen }}
+                    onClick={this.toggleSidebarEnd}
+                  >
+                    {this.sidebarStartOpen ? 'Close' : 'Open'} navigation sidebar
+                  </PrefixedTagNames.pButton>
+                </div>
                 <slot name="sidebar-end" />
-              </PrefixedTagNames.pFlyout>
+              </div>
+            </aside>
+          )}
+          {this.hasBackground && <slot name="background" />}
+        </div>
+        {this.hasSidebarStart && !this.isMediaQueryS && (
+          <PrefixedTagNames.pFlyout
+            class="flyout-start"
+            theme={this.theme}
+            open={this.sidebarStartOpen}
+            position="start"
+            onDismiss={this.onDismissSidebarStart}
+          >
+            {this.hasTitle && (
+              <h2 slot="header">
+                <slot name="title" />
+              </h2>
             )}
-          </Fragment>
+            <slot name="sidebar-start" />
+          </PrefixedTagNames.pFlyout>
+        )}
+        {this.hasSidebarEnd && !this.isMediaQueryM && (
+          <PrefixedTagNames.pFlyout
+            class="flyout-end"
+            theme={this.theme}
+            open={this.sidebarEndOpen}
+            position="end"
+            onDismiss={this.onDismissSidebarEnd}
+          >
+            <slot name="sidebar-end" />
+          </PrefixedTagNames.pFlyout>
         )}
       </Host>
     );
   }
 
-  private handleMediaQuery = (e: MediaQueryList | MediaQueryListEvent): void => {
-    this.isDesktopView = !!e.matches;
+  private handleMediaQueryS = (e: MediaQueryList | MediaQueryListEvent): void => {
+    this.isMediaQueryS = !!e.matches;
+  };
+
+  private handleMediaQueryM = (e: MediaQueryList | MediaQueryListEvent): void => {
+    this.isMediaQueryM = !!e.matches;
   };
 
   private toggleSidebarStart = (): void => {
