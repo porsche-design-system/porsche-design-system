@@ -1378,25 +1378,25 @@ exports[`should match snapshot 1`] = `
       "sidebarEndIcon": {
         "allowedValues": "string",
         "defaultValue": "menu-lines",
-        "description": "The icon to toggle the Sidebar on the end side",
+        "description": "The icon to toggle the sidebar on the end side",
         "type": "CanvasSidebarEndIcon",
       },
       "sidebarEndOpen": {
         "allowedValues": "boolean",
         "defaultValue": false,
-        "description": "Open Sidebar on the end side",
+        "description": "Open the sidebar on the end side",
         "type": "boolean",
       },
       "sidebarStartIcon": {
         "allowedValues": "string",
         "defaultValue": "menu-lines",
-        "description": "The icon to toggle the Sidebar on the start side",
+        "description": "The icon to toggle the sidebar on the start side",
         "type": "CanvasSidebarStartIcon",
       },
       "sidebarStartOpen": {
         "allowedValues": "boolean",
         "defaultValue": false,
-        "description": "Open Sidebar on the start side",
+        "description": "Open the sidebar on the start side",
         "type": "boolean",
       },
       "theme": {
@@ -1406,34 +1406,34 @@ exports[`should match snapshot 1`] = `
           "auto",
         ],
         "defaultValue": "light",
-        "description": "Adapts the color depending on the theme. Has no effect when "inherit" is set as color prop.",
+        "description": "Adapts the color depending on the theme.",
         "type": "Theme",
       },
     },
     "slotsMeta": {
       "": {
-        "description": "Default slot for the main content",
+        "description": "Default slot for the main content.",
       },
       "background": {
-        "description": "Can be used to pass a sticky media element placed over the whole main area.",
+        "description": "Can be used to pass a sticky media element <img/> or <video/> placed underneath the main content.",
       },
       "footer": {
-        "description": "Shows a footer section, flowing under the content area when scrollable.",
+        "description": "Renders a **sticky** footer section underneath the main content.",
       },
       "header-end": {
         "description": "Renders a **sticky** header section above the content area on the **end** side (**right** in **LTR** mode / **left** in **RTL** mode).",
       },
       "header-start": {
-        "description": "Renders a **sticky** header section above the content area on the **start** side (**left** in **LTR** mode / **right** in **RTL** mode).",
+        "description": "Renders a **sticky** header section above the content area on the **start** side (**left** in **LTR** mode / **right** in **RTL** mode). On desktop view, in case **sidebar-start slot** is present and opened it will be rendered within.",
       },
       "sidebar-end": {
-        "description": "Shows a sidebar area on the **end** side (**right** in **LTR** mode / **left** in **RTL** mode). On mobile view it transforms into a flyout.",
+        "description": "Renders a sidebar area on the **end** side (**right** in **LTR** mode / **left** in **RTL** mode). On mobile view it transforms into a flyout.",
       },
       "sidebar-start": {
-        "description": "Shows a sidebar area on the **start** side (**left** in **LTR** mode / **right** in **RTL** mode). On mobile view it transforms into a flyout.",
+        "description": "Renders a sidebar area on the **start** side (**left** in **LTR** mode / **right** in **RTL** mode). On mobile view it transforms into a flyout.",
       },
       "title": {
-        "description": "Application name",
+        "description": "Renders the application name in the header section. In case **sidebar-start slot** is present it will be rendered in the corresponding flyout on mobile view.",
       },
     },
     "styling": "jss",
