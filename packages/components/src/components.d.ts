@@ -403,23 +403,23 @@ export namespace Components {
      */
     interface PCanvas {
         /**
-          * The icon to toggle the Sidebar on the end side
+          * The icon to toggle the sidebar on the end side
          */
         "sidebarEndIcon"?: CanvasSidebarEndIcon;
         /**
-          * Open Sidebar on the end side
+          * Open the sidebar on the end side
          */
         "sidebarEndOpen"?: boolean;
         /**
-          * The icon to toggle the Sidebar on the start side
+          * The icon to toggle the sidebar on the start side
          */
         "sidebarStartIcon"?: CanvasSidebarStartIcon;
         /**
-          * Open Sidebar on the start side
+          * Open the sidebar on the start side
          */
         "sidebarStartOpen"?: boolean;
         /**
-          * Adapts the color depending on the theme. Has no effect when "inherit" is set as color prop.
+          * Adapts the color depending on the theme.
          */
         "theme"?: Theme;
     }
@@ -3514,23 +3514,23 @@ declare namespace LocalJSX {
      */
     interface PCanvas {
         /**
-          * The icon to toggle the Sidebar on the end side
+          * The icon to toggle the sidebar on the end side
          */
         "sidebarEndIcon"?: CanvasSidebarEndIcon;
         /**
-          * Open Sidebar on the end side
+          * Open the sidebar on the end side
          */
         "sidebarEndOpen"?: boolean;
         /**
-          * The icon to toggle the Sidebar on the start side
+          * The icon to toggle the sidebar on the start side
          */
         "sidebarStartIcon"?: CanvasSidebarStartIcon;
         /**
-          * Open Sidebar on the start side
+          * Open the sidebar on the start side
          */
         "sidebarStartOpen"?: boolean;
         /**
-          * Adapts the color depending on the theme. Has no effect when "inherit" is set as color prop.
+          * Adapts the color depending on the theme.
          */
         "theme"?: Theme;
     }
