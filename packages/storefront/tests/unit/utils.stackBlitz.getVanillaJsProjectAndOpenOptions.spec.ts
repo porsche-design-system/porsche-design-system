@@ -217,6 +217,10 @@ describe('getIndexJs()', () => {
     it('should return correct no script when pds version is not chosen for bug reporting', () => {
       expect(getIndexJs('')).toMatchSnapshot();
     });
+
+    it('should return correct script with additionalImports', () => {
+      expect(getIndexJs('', ['ag-grid-community'])).toMatchSnapshot();
+    });
   });
 
   describe('development mode or non stable storefront release (e.g. /issue/…, /release/…)', () => {
@@ -229,7 +233,7 @@ describe('getIndexJs()', () => {
     });
 
     it('should return correct script with additionalImports', () => {
-      expect(getIndexJs('', `import foo from 'bar';`)).toMatchSnapshot();
+      expect(getIndexJs('', ['ag-grid-community'])).toMatchSnapshot();
     });
 
     it('should return correct no script when pds version is chosen for bug reporting', () => {

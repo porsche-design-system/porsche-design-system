@@ -75,12 +75,19 @@ export const getIndexHtml = (
 </html>`;
 };
 
-export const getIndexJs = (pdsVersion: string, additionalImports?: string): string => {
-  const imports = `import * as porscheDesignSystem from './@porsche-design-system/components-js';
-window.porscheDesignSystem = porscheDesignSystem;${additionalImports ? `\n${additionalImports}` : ''}`;
+export const getIndexJs = (pdsVersion: string, externalDependencies?: ExternalDependency[]): string => {
+  const localImports = `import * as porscheDesignSystem from './@porsche-design-system/components-js';
+window.porscheDesignSystem = porscheDesignSystem;${
+    externalDependencies?.includes('ag-grid-community')
+      ? `\nimport './@porsche-design-system/components-js/ag-grid/theme.css';`
+      : ''
+  }`;
+  const releaseImports = externalDependencies?.includes('ag-grid-community')
+    ? `import '@porsche-design-system/components-js/ag-grid/theme.css';`
+    : '';
 
   // workaround to initialize local package
-  return isStableStorefrontReleaseOrForcedPdsVersion(pdsVersion) ? '' : imports; // appears to be using cjs build
+  return isStableStorefrontReleaseOrForcedPdsVersion(pdsVersion) ? releaseImports : localImports; // appears to be using cjs build
 };
 
 export const dependencyMap: Partial<DependencyMap<typeof dependencies & typeof devDependencies>> = {
@@ -121,12 +128,7 @@ export const getVanillaJsProjectAndOpenOptions: GetStackBlitzProjectAndOpenOptio
     files: {
       ...porscheDesignSystemBundle,
       'index.html': getIndexHtml(markup, dir, globalStyles, externalDependencies, sharedImportKeys, pdsVersion),
-      'index.js': getIndexJs(
-        pdsVersion,
-        externalDependencies.includes('ag-grid-community')
-          ? `import './@porsche-design-system/components-js/ag-grid/theme.css';`
-          : ''
-      ),
+      'index.js': getIndexJs(pdsVersion, externalDependencies),
     },
     template: 'javascript',
     title,
