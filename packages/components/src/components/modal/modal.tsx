@@ -2,7 +2,6 @@ import { Component, Element, Event, type EventEmitter, forceUpdate, h, type JSX,
 import type { BreakpointCustomizable, PropTypes, SelectedAriaAttributes, Theme } from '../../types';
 import {
   AllowedTypes,
-  applyConstructableStylesheetStyles,
   attachComponentCss,
   consoleWarn,
   getPrefixedTagNames,
@@ -22,15 +21,14 @@ import {
   warnIfDeprecatedPropIsUsed,
 } from '../../utils';
 import {
+  MODAL_ARIA_ATTRIBUTES,
   type ModalAriaAttribute,
   type ModalBackdrop,
-  type ModalMotionVisibleEndEventDetail,
   type ModalMotionHiddenEndEventDetail,
-  MODAL_ARIA_ATTRIBUTES,
+  type ModalMotionVisibleEndEventDetail,
 } from './modal-utils';
 import { getComponentCss } from './modal-styles';
 import { BACKDROPS } from '../../styles/dialog-styles';
-import { getSlottedAnchorStyles } from '../../styles';
 import { observeStickyArea } from '../../utils/dialog/observer';
 import { getDeprecatedPropOrSlotWarningMessage } from '../../utils/log/helper';
 import { onTransitionEnd } from '../../utils/dialog/dialog';
@@ -121,7 +119,6 @@ export class Modal {
   }
 
   public connectedCallback(): void {
-    applyConstructableStylesheetStyles(this.host, getSlottedAnchorStyles);
     // Observe dynamic slot changes
     observeChildren(
       this.host,

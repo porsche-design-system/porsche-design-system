@@ -1,0 +1,52 @@
+<style>
+  body {
+    overflow-x: hidden;
+  }
+
+  p-canvas {
+    --p-canvas-sidebar-start-width: 220px;
+    --p-canvas-sidebar-end-width: 180px;
+    --p-canvas-grid-columns: 6;
+    --p-canvas-grid-max-width: 400px;
+  }
+
+  span {
+    display: block;
+    height: 100dvh;
+    background: hsla(328, 100%, 54%, 0.2);
+  }
+
+  span[slot='footer'] {
+    height: 50px;
+    background: hsla(250, 100%, 54%, 0.2);
+  }
+</style>
+
+<p-canvas sidebar-start-open="true" sidebar-end-open="true">
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span slot="footer"></span>
+  <span slot="footer"></span>
+  <span slot="footer"></span>
+  <span slot="footer"></span>
+  <span slot="footer"></span>
+  <span slot="footer"></span>
+  <span slot="footer"></span>
+  <span slot="footer"></span>
+  <span slot="footer"></span>
+  <span slot="footer"></span>
+  <span slot="footer"></span>
+  <span slot="footer"></span>
+  <div slot="sidebar-start">Sidebar Start</div>
+  <div slot="sidebar-end">Sidebar End</div>
+</p-canvas>

@@ -19,6 +19,19 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 - `jsdom-polyfill`: errors from included polyfill packages
   ([3543](https://github.com/porsche-design-system/porsche-design-system/pull/3543))
 
+### [3.20.0-rc.0] - 2024-10-18
+
+#### Added
+
+- `Icon`: `attachment`, `dislike`, `dislike-filled`, `like`, `like-filled`, `new-chat`
+
+#### Changed
+
+- `Canvas`: Improve UI and UX behaviour
+  ([#3515](https://github.com/porsche-design-system/porsche-design-system/pull/3515))
+- `Flyout`, `Modal`: Removed default styling for slotted anchors
+  ([#3515](https://github.com/porsche-design-system/porsche-design-system/pull/3515))
+
 ### [3.19.0] - 2024-10-14
 
 ### [3.19.0-rc.4] - 2024-10-14
