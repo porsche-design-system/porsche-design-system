@@ -102,17 +102,9 @@ export class Canvas {
 
     return (
       <Host>
-        <div class="canvas">
-          <header>
-            <div class="blur-layers">
-              <div></div>
-              <div></div>
-              <div></div>
-              <div></div>
-              <div></div>
-              <div></div>
-            </div>
-            <div class="header">
+        <div class="root">
+          <header class="header">
+            <div class="header__area header__area--start">
               {this.hasSidebarStart && !this.sidebarStartOpen && (
                 <PrefixedTagNames.pButton
                   theme={this.theme}
@@ -135,9 +127,9 @@ export class Canvas {
                 </h2>
               )}
             </div>
-            <PrefixedTagNames.pCrest class="crest" />
-            <PrefixedTagNames.pWordmark class="wordmark" size="inherit" theme={this.theme} />
-            <div class="header">
+            <PrefixedTagNames.pCrest class="header__crest" />
+            <PrefixedTagNames.pWordmark class="header__wordmark" size="inherit" theme={this.theme} />
+            <div class="header__area header__area--end">
               {this.hasHeaderEnd && <slot name="header-end" />}
               {this.hasSidebarEnd && (
                 <PrefixedTagNames.pButton
@@ -154,25 +146,25 @@ export class Canvas {
               )}
             </div>
           </header>
-          <main>
+          <main class="main">
             <slot />
           </main>
           {this.hasFooter && (
-            <footer>
+            <footer class="footer">
               <slot name="footer" />
             </footer>
           )}
           {this.hasSidebarStart && this.isMediaQueryS && (
             <aside
-              class="sidebar-start"
+              class="sidebar sidebar--start"
               // "inert" will be known from React 19 onwards, see https://github.com/facebook/react/pull/24730
               // eslint-disable-next-line
               /* @ts-ignore */
               inert={this.sidebarStartOpen ? null : true}
               aria-label={`Navigation sidebar ${this.sidebarStartOpen ? 'open' : 'closed'}`}
             >
-              <div class="scroller">
-                <div class="sidebar-header">
+              <div class="sidebar__scroller">
+                <header class="sidebar__header sidebar__header--start">
                   <PrefixedTagNames.pButton
                     theme={this.theme}
                     icon={this.sidebarStartIcon}
@@ -185,22 +177,22 @@ export class Canvas {
                     {this.sidebarStartOpen ? 'Close' : 'Open'} navigation sidebar
                   </PrefixedTagNames.pButton>
                   {this.hasHeaderStart && <slot name="header-start" />}
-                </div>
+                </header>
                 <slot name="sidebar-start" />
               </div>
             </aside>
           )}
           {this.hasSidebarEnd && this.isMediaQueryM && (
             <aside
-              class="sidebar-end"
+              class="sidebar sidebar--end"
               // "inert" will be known from React 19 onwards, see https://github.com/facebook/react/pull/24730
               // eslint-disable-next-line
               /* @ts-ignore */
               inert={this.sidebarEndOpen ? null : true}
               aria-label={`Settings sidebar ${this.sidebarEndOpen ? 'open' : 'closed'}`}
             >
-              <div class="scroller">
-                <div class="sidebar-header">
+              <div class="sidebar__scroller">
+                <header class="sidebar__header sidebar__header--end">
                   <PrefixedTagNames.pButton
                     theme={this.theme}
                     icon="close"
@@ -212,7 +204,7 @@ export class Canvas {
                   >
                     {this.sidebarStartOpen ? 'Close' : 'Open'} navigation sidebar
                   </PrefixedTagNames.pButton>
-                </div>
+                </header>
                 <slot name="sidebar-end" />
               </div>
             </aside>
