@@ -2,6 +2,7 @@ import { getCss, type Theme } from '../../utils';
 import {
   addImportantToEachRule,
   colorSchemeStyles,
+  dismissButtonJssStyle,
   hostHiddenStyles,
   preventFoucOfNestedElementsStyles,
 } from '../../styles';
@@ -14,7 +15,6 @@ import {
   getDialogJssStyle,
   getDialogStickyAreaJssStyle,
   getDialogTransitionJssStyle,
-  getDialogDismissButtonJssStyle,
   getScrollerJssStyle,
 } from '../../styles/dialog-styles';
 
@@ -79,7 +79,11 @@ export const getComponentCss = (
       ...getScrollerJssStyle(isPositionStart ? 'start' : 'end', theme),
       // compared to Modal, the transition is handled on the scroller to have correct stucked behaviour (visibility of drop shadow)
       // for sticky header area while transitioned
-      ...getDialogTransitionJssStyle(isOpen, isPositionStart ? '>' : '<'),
+      ...getDialogTransitionJssStyle(isOpen, isPositionStart ? '>' : '<', !isPositionStart),
+      // Though this might be an accessibility issue, we don't want an outline to be rendered until we have a proper design solution
+      '&:focus-visible': {
+        outline: 'none',
+      },
     },
     flyout: {
       ...dialogGridJssStyle,
@@ -89,7 +93,7 @@ export const getComponentCss = (
       maxWidth: `var(${cssVariableMaxWidth},1180px)`,
     },
     dismiss: {
-      ...getDialogDismissButtonJssStyle(isOpen, !isPositionStart),
+      ...dismissButtonJssStyle,
       gridArea: '1/3',
       zIndex: 4, // ensures dismiss button is above everything
       position: 'sticky',
