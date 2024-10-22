@@ -104,6 +104,16 @@ export class Canvas {
       <Host>
         <div class="root">
           <header class="header">
+            <div class="blur">
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+            </div>
             <div class="header__area header__area--start">
               {this.hasSidebarStart && !this.sidebarStartOpen && (
                 <PrefixedTagNames.pButton
@@ -118,14 +128,7 @@ export class Canvas {
                   {this.sidebarStartOpen ? 'Close' : 'Open'} navigation sidebar
                 </PrefixedTagNames.pButton>
               )}
-              {this.hasHeaderStart && ((this.hasSidebarStart && !this.sidebarStartOpen) || !this.hasSidebarStart) && (
-                <slot name="header-start" />
-              )}
-              {this.hasTitle && ((this.hasSidebarStart && this.isMediaQueryS) || !this.hasSidebarStart) && (
-                <h2>
-                  <slot name="title" />
-                </h2>
-              )}
+              {this.hasHeaderStart && <slot name="header-start" />}
             </div>
             <PrefixedTagNames.pCrest class="header__crest" />
             <PrefixedTagNames.pWordmark class="header__wordmark" size="inherit" theme={this.theme} />
@@ -176,9 +179,15 @@ export class Canvas {
                   >
                     {this.sidebarStartOpen ? 'Close' : 'Open'} navigation sidebar
                   </PrefixedTagNames.pButton>
-                  {this.hasHeaderStart && <slot name="header-start" />}
+                  {this.hasTitle && (
+                    <h2>
+                      <slot name="title" />
+                    </h2>
+                  )}
                 </header>
-                <slot name="sidebar-start" />
+                <div class="sidebar__content">
+                  <slot name="sidebar-start" />
+                </div>
               </div>
             </aside>
           )}
@@ -205,7 +214,9 @@ export class Canvas {
                     {this.sidebarStartOpen ? 'Close' : 'Open'} navigation sidebar
                   </PrefixedTagNames.pButton>
                 </header>
-                <slot name="sidebar-end" />
+                <div class="sidebar__content">
+                  <slot name="sidebar-end" />
+                </div>
               </div>
             </aside>
           )}
