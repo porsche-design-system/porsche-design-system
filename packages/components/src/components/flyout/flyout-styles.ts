@@ -88,7 +88,7 @@ export const getComponentCss = (
     flyout: {
       ...dialogGridJssStyle,
       ...getDialogColorJssStyle(theme),
-      width: `var(${cssVariableWidth},max-content)`,
+      width: `var(${cssVariableWidth},auto)`,
       minWidth: '320px',
       maxWidth: `var(${cssVariableMaxWidth},1180px)`,
     },

@@ -59,7 +59,7 @@ dialog::backdrop {
   inset-block: 0;
   inset-inline-end: 0;
   overflow: hidden auto;
-  overscroll-behavior-y: none;
+  overscroll-behavior-y: contain;
   background: rgba(255,255,255,.01);
   opacity: 0;
   margin-inline-end: 200vw;
@@ -81,7 +81,7 @@ dialog::backdrop {
   align-content: flex-start;
   color: #010205;
   background: #FFF;
-  width: var(--p-flyout-width,max-content);
+  width: var(--p-flyout-width,auto);
   min-width: 320px;
   max-width: var(--p-flyout-max-width,1180px);
 }
@@ -160,7 +160,7 @@ dialog::backdrop {
   inset-block: 0;
   inset-inline-end: 0;
   overflow: hidden auto;
-  overscroll-behavior-y: none;
+  overscroll-behavior-y: contain;
   background: rgba(0,0,0,.01);
   opacity: 0;
   margin-inline-end: 200vw;
@@ -182,7 +182,7 @@ dialog::backdrop {
   align-content: flex-start;
   color: #FBFCFF;
   background: #0E0E12;
-  width: var(--p-flyout-width,max-content);
+  width: var(--p-flyout-width,auto);
   min-width: 320px;
   max-width: var(--p-flyout-max-width,1180px);
 }
@@ -276,7 +276,7 @@ dialog::backdrop {
   inset-block: 0;
   inset-inline-end: 0;
   overflow: hidden auto;
-  overscroll-behavior-y: none;
+  overscroll-behavior-y: contain;
   background: rgba(0,0,0,.01);
   opacity: 0;
   margin-inline-end: 200vw;
@@ -298,7 +298,7 @@ dialog::backdrop {
   align-content: flex-start;
   color: #FBFCFF;
   background: #0E0E12;
-  width: var(--p-flyout-width,max-content);
+  width: var(--p-flyout-width,auto);
   min-width: 320px;
   max-width: var(--p-flyout-max-width,1180px);
 }
@@ -388,7 +388,7 @@ dialog::backdrop {
   inset-block: 0;
   inset-inline-end: 0;
   overflow: hidden auto;
-  overscroll-behavior-y: none;
+  overscroll-behavior-y: contain;
   background: rgba(255,255,255,.01);
   opacity: 0;
   margin-inline-end: 200vw;
@@ -410,7 +410,7 @@ dialog::backdrop {
   align-content: flex-start;
   color: #010205;
   background: #FFF;
-  width: var(--p-flyout-width,max-content);
+  width: var(--p-flyout-width,auto);
   min-width: 320px;
   max-width: var(--p-flyout-max-width,1180px);
 }
@@ -485,7 +485,7 @@ dialog::backdrop {
   inset-block: 0;
   inset-inline-start: 0;
   overflow: hidden auto;
-  overscroll-behavior-y: none;
+  overscroll-behavior-y: contain;
   background: rgba(255,255,255,.01);
   opacity: 0;
   transform: translateX(-100%);
@@ -506,7 +506,7 @@ dialog::backdrop {
   align-content: flex-start;
   color: #010205;
   background: #FFF;
-  width: var(--p-flyout-width,max-content);
+  width: var(--p-flyout-width,auto);
   min-width: 320px;
   max-width: var(--p-flyout-max-width,1180px);
 }
@@ -581,7 +581,7 @@ dialog::backdrop {
   inset-block: 0;
   inset-inline-end: 0;
   overflow: hidden auto;
-  overscroll-behavior-y: none;
+  overscroll-behavior-y: contain;
   background: rgba(255,255,255,.01);
   opacity: 0;
   margin-inline-end: 200vw;
@@ -603,7 +603,7 @@ dialog::backdrop {
   align-content: flex-start;
   color: #010205;
   background: #FFF;
-  width: var(--p-flyout-width,max-content);
+  width: var(--p-flyout-width,auto);
   min-width: 320px;
   max-width: var(--p-flyout-max-width,1180px);
 }
@@ -678,7 +678,7 @@ dialog::backdrop {
   inset-block: 0;
   inset-inline-start: 0;
   overflow: hidden auto;
-  overscroll-behavior-y: none;
+  overscroll-behavior-y: contain;
   background: rgba(255,255,255,.01);
   opacity: 0;
   transform: translateX(-100%);
@@ -699,7 +699,7 @@ dialog::backdrop {
   align-content: flex-start;
   color: #010205;
   background: #FFF;
-  width: var(--p-flyout-width,max-content);
+  width: var(--p-flyout-width,auto);
   min-width: 320px;
   max-width: var(--p-flyout-max-width,1180px);
 }
@@ -778,7 +778,7 @@ dialog::backdrop {
   inset-block: 0;
   inset-inline-start: 0;
   overflow: hidden auto;
-  overscroll-behavior-y: none;
+  overscroll-behavior-y: contain;
   background: rgba(0,0,0,.01);
   opacity: 0;
   transform: translateX(-100%);
@@ -799,7 +799,7 @@ dialog::backdrop {
   align-content: flex-start;
   color: #FBFCFF;
   background: #0E0E12;
-  width: var(--p-flyout-width,max-content);
+  width: var(--p-flyout-width,auto);
   min-width: 320px;
   max-width: var(--p-flyout-max-width,1180px);
 }
@@ -893,7 +893,7 @@ dialog::backdrop {
   inset-block: 0;
   inset-inline-start: 0;
   overflow: hidden auto;
-  overscroll-behavior-y: none;
+  overscroll-behavior-y: contain;
   background: rgba(0,0,0,.01);
   opacity: 0;
   transform: translateX(-100%);
@@ -914,7 +914,7 @@ dialog::backdrop {
   align-content: flex-start;
   color: #FBFCFF;
   background: #0E0E12;
-  width: var(--p-flyout-width,max-content);
+  width: var(--p-flyout-width,auto);
   min-width: 320px;
   max-width: var(--p-flyout-max-width,1180px);
 }
@@ -997,7 +997,7 @@ dialog::backdrop {
   inset-block: 0;
   inset-inline-end: 0;
   overflow: hidden auto;
-  overscroll-behavior-y: none;
+  overscroll-behavior-y: contain;
   background: rgba(255,255,255,.01);
   opacity: 1;
   transform: initial;
@@ -1016,7 +1016,7 @@ dialog::backdrop {
   align-content: flex-start;
   color: #010205;
   background: #FFF;
-  width: var(--p-flyout-width,max-content);
+  width: var(--p-flyout-width,auto);
   min-width: 320px;
   max-width: var(--p-flyout-max-width,1180px);
 }
@@ -1103,7 +1103,7 @@ dialog::backdrop {
   inset-block: 0;
   inset-inline-end: 0;
   overflow: hidden auto;
-  overscroll-behavior-y: none;
+  overscroll-behavior-y: contain;
   background: rgba(0,0,0,.01);
   opacity: 1;
   transform: initial;
@@ -1122,7 +1122,7 @@ dialog::backdrop {
   align-content: flex-start;
   color: #FBFCFF;
   background: #0E0E12;
-  width: var(--p-flyout-width,max-content);
+  width: var(--p-flyout-width,auto);
   min-width: 320px;
   max-width: var(--p-flyout-max-width,1180px);
 }
@@ -1199,7 +1199,7 @@ dialog::backdrop {
   inset-block: 0;
   inset-inline-end: 0;
   overflow: hidden auto;
-  overscroll-behavior-y: none;
+  overscroll-behavior-y: contain;
   background: rgba(255,255,255,.01);
   opacity: 1;
   transform: initial;
@@ -1218,7 +1218,7 @@ dialog::backdrop {
   align-content: flex-start;
   color: #010205;
   background: #FFF;
-  width: var(--p-flyout-width,max-content);
+  width: var(--p-flyout-width,auto);
   min-width: 320px;
   max-width: var(--p-flyout-max-width,1180px);
 }
@@ -1305,7 +1305,7 @@ dialog::backdrop {
   inset-block: 0;
   inset-inline-end: 0;
   overflow: hidden auto;
-  overscroll-behavior-y: none;
+  overscroll-behavior-y: contain;
   background: rgba(255,255,255,.01);
   opacity: 1;
   transform: initial;
@@ -1324,7 +1324,7 @@ dialog::backdrop {
   align-content: flex-start;
   color: #010205;
   background: #FFF;
-  width: var(--p-flyout-width,max-content);
+  width: var(--p-flyout-width,auto);
   min-width: 320px;
   max-width: var(--p-flyout-max-width,1180px);
 }
@@ -1426,7 +1426,7 @@ dialog::backdrop {
   inset-block: 0;
   inset-inline-end: 0;
   overflow: hidden auto;
-  overscroll-behavior-y: none;
+  overscroll-behavior-y: contain;
   background: rgba(0,0,0,.01);
   opacity: 1;
   transform: initial;
@@ -1445,7 +1445,7 @@ dialog::backdrop {
   align-content: flex-start;
   color: #FBFCFF;
   background: #0E0E12;
-  width: var(--p-flyout-width,max-content);
+  width: var(--p-flyout-width,auto);
   min-width: 320px;
   max-width: var(--p-flyout-max-width,1180px);
 }
@@ -1537,7 +1537,7 @@ dialog::backdrop {
   inset-block: 0;
   inset-inline-end: 0;
   overflow: hidden auto;
-  overscroll-behavior-y: none;
+  overscroll-behavior-y: contain;
   background: rgba(255,255,255,.01);
   opacity: 1;
   transform: initial;
@@ -1556,7 +1556,7 @@ dialog::backdrop {
   align-content: flex-start;
   color: #010205;
   background: #FFF;
-  width: var(--p-flyout-width,max-content);
+  width: var(--p-flyout-width,auto);
   min-width: 320px;
   max-width: var(--p-flyout-max-width,1180px);
 }
@@ -1652,7 +1652,7 @@ dialog::backdrop {
   inset-block: 0;
   inset-inline-end: 0;
   overflow: hidden auto;
-  overscroll-behavior-y: none;
+  overscroll-behavior-y: contain;
   background: rgba(255,255,255,.01);
   opacity: 1;
   transform: initial;
@@ -1671,7 +1671,7 @@ dialog::backdrop {
   align-content: flex-start;
   color: #010205;
   background: #FFF;
-  width: var(--p-flyout-width,max-content);
+  width: var(--p-flyout-width,auto);
   min-width: 320px;
   max-width: var(--p-flyout-max-width,1180px);
 }
@@ -1782,7 +1782,7 @@ dialog::backdrop {
   inset-block: 0;
   inset-inline-end: 0;
   overflow: hidden auto;
-  overscroll-behavior-y: none;
+  overscroll-behavior-y: contain;
   background: rgba(255,255,255,.01);
   opacity: 1;
   transform: initial;
@@ -1801,7 +1801,7 @@ dialog::backdrop {
   align-content: flex-start;
   color: #010205;
   background: #FFF;
-  width: var(--p-flyout-width,max-content);
+  width: var(--p-flyout-width,auto);
   min-width: 320px;
   max-width: var(--p-flyout-max-width,1180px);
 }
@@ -1878,7 +1878,7 @@ dialog::backdrop {
   inset-block: 0;
   inset-inline-start: 0;
   overflow: hidden auto;
-  overscroll-behavior-y: none;
+  overscroll-behavior-y: contain;
   background: rgba(0,0,0,.01);
   opacity: 1;
   transform: initial;
@@ -1896,7 +1896,7 @@ dialog::backdrop {
   align-content: flex-start;
   color: #FBFCFF;
   background: #0E0E12;
-  width: var(--p-flyout-width,max-content);
+  width: var(--p-flyout-width,auto);
   min-width: 320px;
   max-width: var(--p-flyout-max-width,1180px);
 }
@@ -1973,7 +1973,7 @@ dialog::backdrop {
   inset-block: 0;
   inset-inline-start: 0;
   overflow: hidden auto;
-  overscroll-behavior-y: none;
+  overscroll-behavior-y: contain;
   background: rgba(255,255,255,.01);
   opacity: 1;
   transform: initial;
@@ -1991,7 +1991,7 @@ dialog::backdrop {
   align-content: flex-start;
   color: #010205;
   background: #FFF;
-  width: var(--p-flyout-width,max-content);
+  width: var(--p-flyout-width,auto);
   min-width: 320px;
   max-width: var(--p-flyout-max-width,1180px);
 }
@@ -2083,7 +2083,7 @@ dialog::backdrop {
   inset-block: 0;
   inset-inline-start: 0;
   overflow: hidden auto;
-  overscroll-behavior-y: none;
+  overscroll-behavior-y: contain;
   background: rgba(0,0,0,.01);
   opacity: 1;
   transform: initial;
@@ -2101,7 +2101,7 @@ dialog::backdrop {
   align-content: flex-start;
   color: #FBFCFF;
   background: #0E0E12;
-  width: var(--p-flyout-width,max-content);
+  width: var(--p-flyout-width,auto);
   min-width: 320px;
   max-width: var(--p-flyout-max-width,1180px);
 }
@@ -2193,7 +2193,7 @@ dialog::backdrop {
   inset-block: 0;
   inset-inline-start: 0;
   overflow: hidden auto;
-  overscroll-behavior-y: none;
+  overscroll-behavior-y: contain;
   background: rgba(255,255,255,.01);
   opacity: 1;
   transform: initial;
@@ -2211,7 +2211,7 @@ dialog::backdrop {
   align-content: flex-start;
   color: #010205;
   background: #FFF;
-  width: var(--p-flyout-width,max-content);
+  width: var(--p-flyout-width,auto);
   min-width: 320px;
   max-width: var(--p-flyout-max-width,1180px);
 }
@@ -2307,7 +2307,7 @@ dialog::backdrop {
   inset-block: 0;
   inset-inline-start: 0;
   overflow: hidden auto;
-  overscroll-behavior-y: none;
+  overscroll-behavior-y: contain;
   background: rgba(255,255,255,.01);
   opacity: 1;
   transform: initial;
@@ -2325,7 +2325,7 @@ dialog::backdrop {
   align-content: flex-start;
   color: #010205;
   background: #FFF;
-  width: var(--p-flyout-width,max-content);
+  width: var(--p-flyout-width,auto);
   min-width: 320px;
   max-width: var(--p-flyout-max-width,1180px);
 }
