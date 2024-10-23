@@ -52,9 +52,6 @@ export class Canvas {
   private matchMediaQueryM = window.matchMedia(`(min-width: ${breakpointM}px)`);
 
   private hasTitle: boolean;
-  private hasHeaderStart: boolean;
-  private hasHeaderEnd: boolean;
-  private hasSidebarStart: boolean;
   private hasSidebarEnd: boolean;
   private hasFooter: boolean;
   private hasBackground: boolean;
@@ -80,9 +77,6 @@ export class Canvas {
     validateProps(this, propTypes);
 
     this.hasTitle = hasNamedSlot(this.host, 'title');
-    this.hasHeaderStart = hasNamedSlot(this.host, 'header-start');
-    this.hasHeaderEnd = hasNamedSlot(this.host, 'header-end');
-    this.hasSidebarStart = hasNamedSlot(this.host, 'sidebar-start');
     this.hasSidebarEnd = hasNamedSlot(this.host, 'sidebar-end');
     this.hasFooter = hasNamedSlot(this.host, 'footer');
     this.hasBackground = hasNamedSlot(this.host, 'background');
@@ -106,7 +100,7 @@ export class Canvas {
               <div></div>
             </div>
             <div class="header__area header__area--start">
-              {this.hasSidebarStart && !this.sidebarStartOpen && (
+              {!this.sidebarStartOpen && (
                 <PrefixedTagNames.pButton
                   theme={this.theme}
                   icon="sidebar"
@@ -119,11 +113,13 @@ export class Canvas {
                   {this.sidebarStartOpen ? 'Close' : 'Open'} navigation sidebar
                 </PrefixedTagNames.pButton>
               )}
-              {this.hasHeaderStart && <slot name="header-start" />}
+              <slot name="header-start" />
             </div>
             <PrefixedTagNames.pCrest class="header__crest" />
             <PrefixedTagNames.pWordmark class="header__wordmark" size="inherit" theme={this.theme} />
-            <div class="header__area header__area--end">{this.hasHeaderEnd && <slot name="header-end" />}</div>
+            <div class="header__area header__area--end">
+              <slot name="header-end" />
+            </div>
           </header>
           <main class="main">
             <slot />
@@ -133,7 +129,7 @@ export class Canvas {
               <slot name="footer" />
             </footer>
           )}
-          {this.hasSidebarStart && this.isMediaQueryS && (
+          {this.isMediaQueryS && (
             <aside
               class="sidebar sidebar--start"
               // "inert" will be known from React 19 onwards, see https://github.com/facebook/react/pull/24730
@@ -155,11 +151,9 @@ export class Canvas {
                   >
                     {this.sidebarStartOpen ? 'Close' : 'Open'} navigation sidebar
                   </PrefixedTagNames.pButton>
-                  {this.hasTitle && (
-                    <h2>
-                      <slot name="title" />
-                    </h2>
-                  )}
+                  <h2>
+                    <slot name="title" />
+                  </h2>
                 </header>
                 <div class="sidebar__content">
                   <slot name="sidebar-start" />
@@ -198,7 +192,7 @@ export class Canvas {
           )}
           {this.hasBackground && <slot name="background" />}
         </div>
-        {this.hasSidebarStart && !this.isMediaQueryS && (
+        {!this.isMediaQueryS && (
           <PrefixedTagNames.pFlyout
             class="flyout-start"
             theme={this.theme}
