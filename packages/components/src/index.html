@@ -17,1048 +17,146 @@
         margin: 0;
         padding: 0;
       }
-      /*
-      body {
-        overflow-x: hidden;
-      }*/
-      p-canvas {
-        --p-canvas-grid-max-width: 50rem;
-      }
-      p-flyout#explore-plugins {
-        --p-flyout-width: 80vw;
-        --p-flyout-max-width: 50rem;
-      }
-      p-modal#rules {
-        --p-modal-width: clamp(276px, 80dvw, 60rem);
-      }
-      .-mt-static-x-small {
-        margin-top: 4px;
-      }
-      .-mt-static-small {
-        margin-top: 8px;
-      }
-      .-mt-static-medium {
-        margin-top: 16px;
-      }
-      .-mt-static-large {
-        margin-top: 32px;
-      }
-      .-mt-static-x-large {
-        margin-top: 48px;
-      }
-      .-mt-static-xx-large {
-        margin-top: 80px;
-      }
-      .-mt-fluid-x-small {
-        margin-top: clamp(4px, 0.25vw + 3px, 8px);
-      }
-      .-mt-fluid-small {
-        margin-top: clamp(8px, 0.5vw + 6px, 16px);
-      }
-      .-mt-fluid-medium {
-        margin-top: clamp(16px, 1.25vw + 12px, 36px);
-      }
-      .-mt-fluid-large {
-        margin-top: clamp(32px, 2.75vw + 23px, 76px);
-      }
-      .-mt-fluid-x-large {
-        margin-top: clamp(48px, 3vw + 38px, 96px);
-      }
-      .-mt-fluid-xx-large {
-        margin-top: clamp(80px, 7.5vw + 56px, 200px);
-      }
-      .-ms-auto {
-        margin-inline-start: auto;
-      }
-      .-me-auto {
-        margin-inline-end: auto;
-      }
-      .-block {
-        display: block;
-      }
-      .-img-small {
-        width: clamp(48px, 7cqw, 72px);
-        height: clamp(48px, 7cqw, 72px);
-      }
-      .-max-w-full {
-        max-width: 100%;
-      }
-      .-max-w-medium {
-        max-width: 40rem;
-      }
-      .-ellipsis-1 {
-        display: -webkit-box;
-        -webkit-line-clamp: 1;
-        -webkit-box-orient: vertical;
-        overflow: hidden;
-      }
-      .-ellipsis-2 {
-        display: -webkit-box;
-        -webkit-line-clamp: 2;
-        -webkit-box-orient: vertical;
-        overflow: hidden;
-      }
-      .-ellipsis-3 {
-        display: -webkit-box;
-        -webkit-line-clamp: 3;
-        -webkit-box-orient: vertical;
-        overflow: hidden;
-      }
-      .intro {
-        grid-column: 1/-1;
-        display: flex;
-        gap: clamp(16px, 1.25vw + 12px, 36px);
-        flex-direction: column;
-        align-items: center;
-      }
-      .intro__image {
-        width: clamp(48px, 7cqw, 72px);
-        height: clamp(48px, 7cqw, 72px);
-      }
-      .intro__text {
-        display: grid;
-        justify-items: center;
-        gap: clamp(4px, 0.25vw + 3px, 8px);
-      }
-      .intro-cards {
-        grid-column: 1/-1;
-        display: grid;
-        grid-auto-rows: 1fr auto;
-        gap: 16px;
-      }
-      @container (min-width: 700px) {
-        .intro-cards {
-          grid-template-columns: repeat(3, minmax(0, 1fr));
-        }
-      }
-      .intro-cards :is(a, button) {
-        all: unset;
-        cursor: pointer;
+
+      /* Playground */
+      .playground {
+        /* TODO: we should generate background colors with scss or js styles package */
+        --theme-light-background-base: #fff;
+        --theme-light-background-surface: #eeeff2;
+        --theme-dark-background-base: #0e0e12;
+        --theme-dark-background-surface: #212225;
         padding: 16px;
-        border-radius: 12px;
-        background: #ffffff26;
-        transition: background 0.4s cubic-bezier(0.25, 0.1, 0.25, 1);
-        display: grid;
-        grid-template-rows: subgrid;
-        grid-row: span 2;
-        gap: 16px 8px;
       }
-      .intro-cards :is(a, button):focus {
-        outline: 2px solid #1a44ea;
-        outline-offset: 2px;
+
+      .playground.light,
+      .playground.auto {
+        background: var(--theme-light-background-base);
       }
-      .intro-cards :is(a, button):focus:not(:focus-visible) {
-        outline-color: transparent;
+
+      .playground.light.surface,
+      .playground.auto.surface {
+        background: var(--theme-light-background-surface);
       }
-      @media (hover: hover) {
-        .intro-cards :is(a, button):hover {
-          background: #fff6;
+
+      .playground.dark {
+        background: var(--theme-dark-background-base);
+      }
+
+      .playground.dark.surface {
+        background: var(--theme-dark-background-surface);
+      }
+
+      @media (prefers-color-scheme: dark) {
+        .playground.auto {
+          background: var(--theme-dark-background-base);
+        }
+
+        .playground.auto.surface {
+          background: var(--theme-dark-background-surface);
         }
       }
-      .controls {
-        display: grid;
-        gap: 16px;
-      }
-      .controls__item {
-        --p-internal-button-scaling: 0;
-        position: relative;
-        display: grid;
-        grid-template-columns: var(--controls-grid-template, minmax(0, 1fr) auto);
-        gap: 8px;
-        align-items: center;
-      }
-      .controls__item--active {
-        --controls-item-background: #fff;
-      }
-      @media (hover: hover) {
-        .controls__item:not(:hover):not(:focus-within) {
-          --controls-grid-template: minmax(0, 1fr);
-          --controls-group-display: none;
-        }
-        .controls__item:hover {
-          --controls-item-background: #fff;
-        }
-      }
-      .controls__item:before {
-        content: '';
-        position: absolute;
-        top: -4px;
-        right: -6px;
-        bottom: -4px;
-        left: -6px;
-        transition: background 0.25s cubic-bezier(0.25, 0.1, 0.25, 1);
-        border-radius: 4px;
-        background: var(--controls-item-background, transparent);
-      }
-      .controls__item :is(button, a) {
-        font:
-          400 1rem / calc(6px + 2.125ex) Porsche Next,
-          Arial Narrow,
-          Arial,
-          Heiti SC,
-          SimHei,
-          sans-serif;
-        -webkit-hyphens: auto;
-        hyphens: auto;
-        overflow-wrap: break-word;
-        all: unset;
-        cursor: pointer;
-        position: relative;
-        display: flex;
-        gap: 8px;
-        padding-block: 2px;
-        border-radius: 4px;
-      }
-      .controls__item :is(button, a):focus {
-        outline: 2px solid #1a44ea;
-        outline-offset: 2px;
-      }
-      .controls__item :is(button, a):focus:not(:focus-visible) {
-        outline-color: transparent;
-      }
-      .controls__item :is(button, a) img {
-        width: calc(6px + 2.125ex);
-        height: calc(6px + 2.125ex);
-      }
-      .controls__item :is(button, a) span {
-        display: block;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-      }
-      .controls__group {
-        display: var(--controls-group-display, flex);
-        gap: 8px;
-      }
-      .plugin-search {
-        max-width: 30rem;
-        margin-inline: auto;
-      }
-      .plugin-cards {
-        --plugin-cards-background: #eeeff2;
-        --plugin-cards-background-hover: #eeeff2;
-        --plugin-cards-image-size: clamp(40px, 6vw, 80px);
-        display: grid;
-        grid-auto-rows: 1fr;
-        gap: 16px;
-      }
-      @media (min-width: 760px) {
-        .plugin-cards {
-          grid-template-columns: repeat(2, minmax(0, 1fr));
-        }
-      }
-      .plugin-cards--small {
-        --plugin-cards-background: transparent;
-        --plugin-cards-background-hover: #eeeff2;
-        --plugin-cards-image-size: clamp(24px, 3vw, 48px);
-      }
-      .plugin-cards :is(a, button) {
-        all: unset;
-        cursor: pointer;
-        padding: clamp(8px, 0.5vw + 6px, 16px);
-        border-radius: 12px;
-        background: var(--plugin-cards-background);
-        transition: background 0.4s cubic-bezier(0.25, 0.1, 0.25, 1);
-        display: grid;
-        grid-template-columns: auto minmax(0, 1fr);
-        gap: 16px;
-      }
-      .plugin-cards :is(a, button):focus {
-        outline: 2px solid #1a44ea;
-        outline-offset: 2px;
-      }
-      .plugin-cards :is(a, button):focus:not(:focus-visible) {
-        outline-color: transparent;
-      }
-      @media (hover: hover) {
-        .plugin-cards :is(a, button):hover {
-          background: var(--plugin-cards-background-hover);
-        }
-      }
-      .plugin-cards img {
-        width: var(--plugin-cards-image-size);
-        height: var(--plugin-cards-image-size);
-      }
-      .plugin-cards span {
-        display: grid;
-        grid-template-rows: repeat(2, auto) 1fr;
-        align-items: flex-end;
-      }
-      .chat {
-        grid-column: 1/-1;
-        display: grid;
-        gap: 48px;
-      }
-      .chat__bubble {
-        max-width: 30rem;
-      }
-      .chat__bubble--question {
-        justify-self: flex-end;
-        background: #eeeff2;
-        padding: 16px;
-        border-radius: 12px 12px 4px;
-      }
-      .chat__bubble--answer {
-        justify-self: flex-start;
-        background: transparent;
-        display: grid;
-        grid-template-columns: 36px minmax(0, 1fr);
-        gap: 16px;
-      }
-      .chat__bubble img {
-        width: 100%;
-        height: auto;
-      }
-      .chat__files {
-        margin-top: clamp(8px, 0.5vw + 6px, 16px);
+
+      .playground.auto-layout-inline,
+      .playground.auto-layout-block {
         display: flex;
         flex-wrap: wrap;
-        gap: 8px;
-      }
-      .chat-input {
-        grid-column: 1/-1;
-        display: grid;
-        grid-template: repeat(2, auto) / auto minmax(0, 1fr) auto;
-        padding: 4px;
-        border-radius: 8px;
-        background: #eeeff2;
-      }
-      .chat-input input {
-        all: unset;
-        font:
-          400 1rem / calc(6px + 2.125ex) Porsche Next,
-          Arial Narrow,
-          Arial,
-          Heiti SC,
-          SimHei,
-          sans-serif;
-        -webkit-hyphens: auto;
-        hyphens: auto;
-        overflow-wrap: break-word;
-        color: #010205;
-        grid-area: 2/2;
-      }
-      .chat-input input::-webkit-search-cancel-button {
-        display: none;
-      }
-      .chat-input__file-upload {
-        grid-area: 2/1;
-        place-self: center;
-        margin-inline: clamp(8px, 0.5vw + 6px, 16px);
-      }
-      .chat-input__files {
-        grid-area: 1/2 / auto/-1;
-        flex-wrap: wrap;
-        gap: 8px;
-        max-height: 80px;
-        overflow: hidden auto;
-        margin-bottom: 8px;
-        padding-block: 8px;
-        padding-inline: 0 4px;
-      }
-      .chat-input__files:not([hidden]) {
-        display: flex;
-      }
-      .chat-input__submit {
-        grid-area: 2/3;
-      }
-      .footer {
-        grid-column: 1/-1;
-        display: flex;
-        gap: 16px;
         align-items: flex-start;
-        justify-content: center;
-      }
-      .profile {
-        display: grid;
-        grid-template-columns: auto minmax(0, 1fr);
-        align-items: center;
         gap: 16px;
       }
-      .profile:before {
-        --profile-initials-size: 72px;
-        font:
-          normal normal 400 clamp(1.13rem, 0.21vw + 1.08rem, 1.33rem) / calc(6px + 2.125ex) 'Porsche Next',
-          'Arial Narrow',
-          Arial,
-          'Heiti SC',
-          SimHei,
-          sans-serif;
-        -webkit-hyphens: auto;
-        hyphens: auto;
-        overflow-wrap: break-word;
-        color: #6b6d70;
-        text-align: center;
-        line-height: var(--profile-initials-size);
-        letter-spacing: 1px;
-        content: '' attr(data-initials) '';
+
+      .playground.auto-layout-inline {
+        flex-direction: row;
+      }
+
+      .playground.auto-layout-block {
+        flex-direction: column;
+      }
+
+      .playground[title]::before {
+        content: attr(title);
         display: block;
-        width: var(--profile-initials-size);
-        height: var(--profile-initials-size);
-        border-radius: 50%;
-        background: #eeeff2;
+        width: 100%;
+        font: 12px/16px 'Porsche Next';
+        color: deeppink;
+        text-align: left;
+      }
+
+      .playground:not([class*='auto-layout'])::before {
+        margin-bottom: 16px;
       }
     </style>
   </head>
   <body>
-    <p-canvas sidebar-end-icon="user">
-      <a slot="title" href="#template-intro">Co-Driver</a>
+    <header dir="ltr">
+      <h1>Porsche Design System - Playground</h1>
 
-      <div slot="header-start">
-        <p-button variant="ghost" compact="true" hide-label="true" icon="new-chat">Start new chat</p-button>
-      </div>
+      <select id="theme" onchange="updateRoute({theme: this.value})">
+        <option disabled selected>Select a theme</option>
+        <option value="light">Light</option>
+        <option value="dark">Dark</option>
+        <option value="auto">Auto</option>
+      </select>
 
-      <div slot="header-end"></div>
+      <select id="dir" onchange="updateRoute({dir: this.value})">
+        <option disabled selected>Select a direction</option>
+        <option value="ltr">LTR (left-to-right)</option>
+        <option value="rtl">RTL (right-to-left)</option>
+        <option value="auto">Auto</option>
+      </select>
+    </header>
 
-      <!--<div slot="footer" class="chat-input">
-        <input type="search" name="some-name" placeholder="Type a message…" />
-        <p-button-pure
-          class="chat-input__file-upload"
-          icon="attachment"
-          hide-label="true"
-          onclick="document.querySelector('.chat-input__files').toggleAttribute('hidden');"
-          >Upload attachment</p-button-pure
-        >
-        <div class="chat-input__files" hidden>
-          <p-tag color="background-frosted" icon="document">
-            911-datasheet.jpg
-            <p-button-pure size="x-small" hide-label="true" icon="delete">Delete attachment</p-button-pure>
-          </p-tag>
-          <p-tag color="background-frosted" icon="document">
-            718-color.jpg
-            <p-button-pure size="x-small" hide-label="true" icon="delete">Delete attachment</p-button-pure>
-          </p-tag>
-          <p-tag color="background-frosted" icon="document">
-            taycan-specs.jpg
-            <p-button-pure size="x-small" hide-label="true" icon="delete">Delete attachment</p-button-pure>
-          </p-tag>
-          <p-tag color="background-frosted" icon="document">
-            macan-specs.jpg
-            <p-button-pure size="x-small" hide-label="true" icon="delete">Delete attachment</p-button-pure>
-          </p-tag>
-        </div>
-        <p-link
-          class="chat-input__submit"
-          href="#template-chat"
-          type="button"
-          variant="primary"
-          theme="dark"
-          hide-label="true"
-          icon="arrow-up"
-          >Ask Co-Driver</p-link
-        >
-      </div>
-
-      <div slot="footer" class="footer -mt-fluid-small">
-        <p-button-pure icon="delete" size="x-small" onclick="document.querySelector('p-modal#delete-chat').open = true;"
-          >Delete chat</p-button-pure
-        >
-        <p-link-pure href="#" icon="light" size="x-small">Service Desk</p-link-pure>
-      </div>-->
-
-      <div slot="sidebar-start">
-        <div class="controls -mt-fluid-medium">
-          <div class="controls__item controls__item--active">
-            <button title="Co-Driver powered by Porsche">
-              <img src="/templates/assets/co-driver-DqKc4-8H.webp" width="384" height="384" alt="Co-Driver logo" />
-              <span>Co-Driver powered by Porsche</span>
-            </button>
-            <div class="controls__group">
-              <p-button
-                variant="ghost"
-                compact="true"
-                icon="information"
-                hide-label="true"
-                onclick="document.querySelector('p-modal#rules').open = true;"
-                >Show rules</p-button
-              >
-              <p-button
-                variant="ghost"
-                compact="true"
-                icon="delete"
-                hide-label="true"
-                onclick="document.querySelector('p-modal#remove-plugin').open = true;"
-                >Delete</p-button
-              >
-            </div>
-          </div>
-          <div class="controls__item">
-            <button title="Internal Configurator">
-              <img src="/templates/assets/c-SUr_3M-9.webp" width="384" height="384" alt="Internal Configurator" />
-              <span>Internal Configurator</span>
-            </button>
-            <div class="controls__group">
-              <p-button
-                variant="ghost"
-                compact="true"
-                icon="information"
-                hide-label="true"
-                onclick="document.querySelector('p-modal#rules').open = true;"
-                >Show rules</p-button
-              >
-              <p-button
-                variant="ghost"
-                compact="true"
-                icon="delete"
-                hide-label="true"
-                onclick="document.querySelector('p-modal#remove-plugin').open = true;"
-                >Delete</p-button
-              >
-            </div>
-          </div>
-          <div class="controls__item">
-            <button title="Consumption Disclaimer Bot">
-              <img
-                src="/templates/assets/world-_pim36v5.webp"
-                width="384"
-                height="384"
-                alt="Consumption Disclaimer Bot"
-              />
-              <span>Consumption Disclaimer Bot</span>
-            </button>
-            <div class="controls__group">
-              <p-button
-                variant="ghost"
-                compact="true"
-                icon="information"
-                hide-label="true"
-                onclick="document.querySelector('p-modal#rules').open = true;"
-                >Show rules</p-button
-              >
-              <p-button
-                variant="ghost"
-                compact="true"
-                icon="delete"
-                hide-label="true"
-                onclick="document.querySelector('p-modal#remove-plugin').open = true;"
-                >Delete</p-button
-              >
-            </div>
-          </div>
-        </div>
-
-        <p-button-pure
-          class="-mt-fluid-medium"
-          icon="none"
-          underline="true"
-          onclick="document.querySelector('p-flyout#explore-plugins').open = true;"
-          >Explore Plugins</p-button-pure
-        >
-
-        <p-heading class="-mt-fluid-large" size="small">Last topics</p-heading>
-
-        <div class="controls -mt-fluid-small">
-          <div class="controls__item controls__item--active">
-            <button title="How has Porsche’s design philosophy evolved over the years?">
-              <p-icon name="chat"></p-icon>
-              <span>How has Porsche’s design philosophy evolved over the years?</span>
-            </button>
-            <div class="controls__group">
-              <p-button
-                variant="ghost"
-                compact="true"
-                icon="delete"
-                hide-label="true"
-                onclick="document.querySelector('p-modal#delete-chat').open = true;"
-                >Delete</p-button
-              >
-            </div>
-          </div>
-          <div class="controls__item">
-            <button title="What makes the Porsche 911 so iconic in automotive history?">
-              <p-icon name="chat"></p-icon>
-              <span>What makes the Porsche 911 so iconic in automotive history?</span>
-            </button>
-            <div class="controls__group">
-              <p-button
-                variant="ghost"
-                compact="true"
-                icon="delete"
-                hide-label="true"
-                onclick="document.querySelector('p-modal#delete-chat').open = true;"
-                >Delete</p-button
-              >
-            </div>
-          </div>
-          <div class="controls__item">
-            <button title="Can you explain the significance of Porsche’s flat-six engine?">
-              <p-icon name="chat"></p-icon>
-              <span>Can you explain the significance of Porsche’s flat-six engine?</span>
-            </button>
-            <div class="controls__group">
-              <p-button
-                variant="ghost"
-                compact="true"
-                icon="delete"
-                hide-label="true"
-                onclick="document.querySelector('p-modal#delete-chat').open = true;"
-                >Delete</p-button
-              >
-            </div>
-          </div>
-        </div>
-
-        <p-link-pure class="-mt-fluid-medium" href="#template-chat" icon="none" underline="true"
-          >Start conversation</p-link-pure
-        >
-      </div>
-
-      <div slot="sidebar-end">
-        <div class="profile" data-initials="FP">
-          <div>
-            <p-heading size="small" tag="h6">Ferdinand Porsche</p-heading>
-            <p-link-pure href="#" underline="true" icon="none">Logout</p-link-pure>
-          </div>
-          <div style="height: 100vh; width: 10px; background: deeppink"></div>
-        </div>
-      </div>
-
-      <video
-        slot="background"
-        src="https://porsche-design-system.github.io/templates/assets/bg-BdXTHTJF.webm"
-        loop
-        muted
-        autoplay
-        aria-hidden="true"
-      ></video>
-
-      <!--<img
-        slot="background"
-        srcset="https://porsche-design-system.github.io/templates/assets/header@2x-DiYkZRlV.webp 2x"
-        src="https://porsche-design-system.github.io/templates/assets/header-CFnExl7g.webp"
-        width="1920"
-        height="1200"
-        alt="Some alternative text for screen readers describing the image"
-      />-->
-
-      <div class="-p-canvas-grid">
-        <div class="intro -mt-fluid-medium">
-          <img
-            class="intro__image"
-            src="https://porsche-design-system.github.io/dummyasset/co-driver.webp"
-            width="384"
-            height="384"
-            alt="Co-Driver logo"
-          />
-          <div class="intro__text">
-            <p-display size="small" align="center" tag="h1">Good morning,<br />how can I help you?</p-display>
-          </div>
-        </div>
-
-        <div class="intro-cards -mt-fluid-large">
-          <a href="#template-chat">
-            <p-text tag="span">How has Porsche’s design philosophy evolved over the years?</p-text>
-            <p-icon name="chat"></p-icon>
-          </a>
-          <a href="#template-chat">
-            <p-text tag="span">Can you explain the significance of Porsche’s flat-six engine?</p-text>
-            <p-icon name="chat"></p-icon>
-          </a>
-          <a href="#template-chat">
-            <p-text tag="span">What makes the Porsche 911 so iconic in automotive history?</p-text>
-            <p-icon name="chat"></p-icon>
-          </a>
-        </div>
-      </div>
-
-      <template id="template-chat">
-        <div class="chat">
-          <p-text class="chat__bubble chat__bubble--question">What's the latest Porsche model?</p-text>
-          <div class="chat__bubble chat__bubble--answer">
-            <img
-              src="https://porsche-design-system.github.io/dummyasset/co-driver.webp"
-              width="384"
-              height="384"
-              alt="Co-Driver logo"
-            />
-            <div>
-              <p-text
-                >The latest Porsche model is the 2024 Porsche 718 Spyder RS. This car represents the pinnacle of
-                open-top, mid-engine driving within the 718 family. It features a powerful 4.0-liter naturally aspirated
-                flat-six engine from the Porsche 911 GT3, producing 493 horsepower and 331 lb-ft of torque. The engine
-                allows the Spyder RS to accelerate from 0-60 mph in just 3.2 seconds, with a top speed of 191
-                mph.</p-text
-              >
-              <p-text class="-mt-static-small" size="x-small" color="contrast-medium"
-                >Note that answers could be wrong, please check again.</p-text
-              >
-              <p-button-group class="-mt-static-medium" direction="row">
-                <p-button-pure
-                  icon="copy"
-                  type="button"
-                  hide-label="true"
-                  onclick="document.querySelector('p-toast').addMessage({ text: 'Copied to clipboard', state: 'success' })"
-                  >Copy to clipboard</p-button-pure
-                >
-                <p-button-pure icon="email" type="button" hide-label="true">Mail</p-button-pure>
-                <p-button-pure
-                  icon="like"
-                  type="button"
-                  hide-label="true"
-                  onclick="this.icon = this.icon === 'like' ? 'like-filled' : 'like';"
-                  >Like</p-button-pure
-                >
-                <p-button-pure
-                  icon="dislike"
-                  type="button"
-                  hide-label="true"
-                  onclick="this.icon = this.icon === 'dislike' ? 'dislike-filled' : 'dislike';"
-                  >Dislike</p-button-pure
-                >
-              </p-button-group>
-            </div>
-          </div>
-          <div class="chat__bubble chat__bubble--question">
-            <p-text>Tell me more about Porsche</p-text>
-            <div class="chat__files">
-              <p-tag color="background-frosted" icon="document" compact="true">911-datasheet.jpg</p-tag>
-              <p-tag color="background-frosted" icon="document" compact="true">718-specs.jpg</p-tag>
-              <p-tag color="background-frosted" icon="document" compact="true">macan-specs.jpg</p-tag>
-              <p-tag color="background-frosted" icon="document" compact="true">taycan-specs.jpg</p-tag>
-            </div>
-          </div>
-          <div class="chat__bubble chat__bubble--answer">
-            <img
-              src="https://porsche-design-system.github.io/dummyasset/co-driver.webp"
-              width="384"
-              height="384"
-              alt="Co-Driver logo"
-            />
-            <div>
-              <p-text
-                >Since 1931, Porsche has been synonymous with automotive excellence. From the iconic 911 to the electric
-                Taycan, Porsche combines cutting-edge technology with timeless design, delivering exhilarating driving
-                experiences. With a relentless commitment to precision and passion, Porsche remains at the forefront of
-                automotive innovation, shaping the future of driving.</p-text
-              >
-              <p-text class="-mt-static-small" size="x-small" color="contrast-medium"
-                >Note that answers could be wrong, please check again.</p-text
-              >
-              <p-button-group class="-mt-static-medium" direction="row">
-                <p-button-pure
-                  icon="copy"
-                  type="button"
-                  hide-label="true"
-                  onclick="document.querySelector('p-toast').addMessage({ text: 'Copied to clipboard', state: 'success' })"
-                  >Copy to clipboard</p-button-pure
-                >
-                <p-button-pure icon="email" type="button" hide-label="true">Mail</p-button-pure>
-                <p-button-pure
-                  icon="like"
-                  type="button"
-                  hide-label="true"
-                  onclick="this.icon = this.icon === 'like' ? 'like-filled' : 'like';"
-                  >Like</p-button-pure
-                >
-                <p-button-pure
-                  icon="dislike"
-                  type="button"
-                  hide-label="true"
-                  onclick="this.icon = this.icon === 'dislike' ? 'dislike-filled' : 'dislike';"
-                  >Dislike</p-button-pure
-                >
-              </p-button-group>
-            </div>
-          </div>
-        </div>
-      </template>
-    </p-canvas>
-
-    <p-flyout id="explore-plugins" open="false" aria="{ 'aria-label': 'Explore plugins' }">
-      <p-display size="medium" align="center" tag="h2">Plugins</p-display>
-      <p-text class="-mt-fluid-small" size="medium" align="center"
-        >Discover and create customized ChatGPT versions that combine hints, additional knowledge, and a variety of
-        skills.</p-text
-      >
-
-      <p-text-field-wrapper class="plugin-search -mt-fluid-medium" label="Search" hide-label="true">
-        <input type="search" name="some-name" placeholder="Search for plugins" />
-      </p-text-field-wrapper>
-
-      <p-heading class="-mt-fluid-large" size="large" tag="h3">Popular</p-heading>
-      <p-text color="contrast-medium">Most used plugins by the community</p-text>
-
-      <div class="plugin-cards -mt-fluid-medium">
-        <button>
-          <img src="/templates/assets/co-driver-DqKc4-8H.webp" width="384" height="384" alt="" />
-          <span>
-            <p-text tag="span" size="medium">Co-Driver</p-text>
-            <p-text class="-ellipsis-2" tag="span"
-              >Discover and create customized ChatGPT versions that combine hints, additional knowledge, and a variety
-              of skills.</p-text
-            >
-            <p-text tag="span" color="contrast-medium" size="x-small">Published by Porsche AG</p-text>
-          </span>
-        </button>
-        <button>
-          <img src="/templates/assets/c-SUr_3M-9.webp" width="384" height="384" alt="" />
-          <span>
-            <p-text tag="span" size="medium">Internal Configurator</p-text>
-            <p-text class="-ellipsis-2" tag="span"
-              >Discover and create customized ChatGPT versions that combine hints, additional knowledge, and a variety
-              of skills.</p-text
-            >
-            <p-text tag="span" color="contrast-medium" size="x-small">Published by Porsche AG</p-text>
-          </span>
-        </button>
-        <button>
-          <img src="/templates/assets/world-_pim36v5.webp" width="384" height="384" alt="" />
-          <span>
-            <p-text tag="span" size="medium">World Information Charging Bot</p-text>
-            <p-text class="-ellipsis-2" tag="span">Discover the bot.</p-text>
-            <p-text tag="span" color="contrast-medium" size="x-small">Published by Porsche AG</p-text>
-          </span>
-        </button>
-        <button>
-          <img src="/templates/assets/taycan-DuzZBNSO.webp" width="384" height="384" alt="" />
-          <span>
-            <p-text tag="span" size="medium">Consumption Bot</p-text>
-            <p-text class="-ellipsis-2" tag="span">Discover the bot.</p-text>
-            <p-text tag="span" color="contrast-medium" size="x-small">Published by Porsche AG</p-text>
-          </span>
-        </button>
-      </div>
-
-      <p-heading class="-mt-fluid-large" size="large" tag="h3">Archive</p-heading>
-      <p-text color="contrast-medium">Available Plugins for Porsche internal</p-text>
-
-      <div class="plugin-cards plugin-cards--small -mt-fluid-medium">
-        <button>
-          <img src="/templates/assets/co-driver-DqKc4-8H.webp" width="384" height="384" alt="" />
-          <span>
-            <p-text tag="span">Co-Driver</p-text>
-            <p-text class="-ellipsis-2" tag="span" size="x-small"
-              >Discover and create customized ChatGPT versions that combine hints, additional knowledge, and a variety
-              of skills.</p-text
-            >
-            <p-text tag="span" color="contrast-medium" size="xx-small">Published by Porsche AG</p-text>
-          </span>
-        </button>
-        <button>
-          <img src="/templates/assets/c-SUr_3M-9.webp" width="384" height="384" alt="" />
-          <span>
-            <p-text tag="span">Internal Configurator</p-text>
-            <p-text class="-ellipsis-2" tag="span" size="x-small"
-              >Discover and create customized ChatGPT versions that combine hints, additional knowledge, and a variety
-              of skills.</p-text
-            >
-            <p-text tag="span" color="contrast-medium" size="xx-small">Published by Porsche AG</p-text>
-          </span>
-        </button>
-        <button>
-          <img src="/templates/assets/world-_pim36v5.webp" width="384" height="384" alt="" />
-          <span>
-            <p-text tag="span">World Information Charging Bot</p-text>
-            <p-text class="-ellipsis-2" tag="span" size="x-small">Discover the bot.</p-text>
-            <p-text tag="span" color="contrast-medium" size="xx-small">Published by Porsche AG</p-text>
-          </span>
-        </button>
-        <button>
-          <img src="/templates/assets/taycan-DuzZBNSO.webp" width="384" height="384" alt="" />
-          <span>
-            <p-text tag="span">Consumption Bot</p-text>
-            <p-text class="-ellipsis-2" tag="span" size="x-small">Discover the bot.</p-text>
-            <p-text tag="span" color="contrast-medium" size="xx-small">Published by Porsche AG</p-text>
-          </span>
-        </button>
-        <button>
-          <img src="/templates/assets/co-driver-DqKc4-8H.webp" width="384" height="384" alt="" />
-          <span>
-            <p-text tag="span">Co-Driver</p-text>
-            <p-text class="-ellipsis-2" tag="span" size="x-small"
-              >Discover and create customized ChatGPT versions that combine hints, additional knowledge, and a variety
-              of skills.</p-text
-            >
-            <p-text tag="span" color="contrast-medium" size="xx-small">Published by Porsche AG</p-text>
-          </span>
-        </button>
-        <button>
-          <img src="/templates/assets/c-SUr_3M-9.webp" width="384" height="384" alt="" />
-          <span>
-            <p-text tag="span">Internal Configurator</p-text>
-            <p-text class="-ellipsis-2" tag="span" size="x-small"
-              >Discover and create customized ChatGPT versions that combine hints, additional knowledge, and a variety
-              of skills.</p-text
-            >
-            <p-text tag="span" color="contrast-medium" size="xx-small">Published by Porsche AG</p-text>
-          </span>
-        </button>
-        <button>
-          <img src="/templates/assets/world-_pim36v5.webp" width="384" height="384" alt="" />
-          <span>
-            <p-text tag="span">World Information Charging Bot</p-text>
-            <p-text class="-ellipsis-2" tag="span" size="x-small">Discover the bot.</p-text>
-            <p-text tag="span" color="contrast-medium" size="xx-small">Published by Porsche AG</p-text>
-          </span>
-        </button>
-        <button>
-          <img src="/templates/assets/taycan-DuzZBNSO.webp" width="384" height="384" alt="" />
-          <span>
-            <p-text tag="span">Consumption Bot</p-text>
-            <p-text class="-ellipsis-2" tag="span" size="x-small">Discover the bot.</p-text>
-            <p-text tag="span" color="contrast-medium" size="xx-small">Published by Porsche AG</p-text>
-          </span>
-        </button>
-      </div>
-    </p-flyout>
-
-    <p-modal id="rules" open="false" aria="{ 'aria-label': 'Rules for using Co-Driver' }">
-      <p-display slot="header" class="-ms-auto -me-auto -max-w-medium" size="small" tag="h2" align="center">
-        <img
-          class="-img-small"
-          src="/templates/assets/co-driver-DqKc4-8H.webp"
-          width="384"
-          height="384"
-          alt="Co-Driver logo"
-        />
-        <br />
-        Rules for using Co-Driver
-      </p-display>
-
-      <video class="-mt-fluid-medium -max-w-full" src="/templates/assets/bg-BdXTHTJF.webm" controls></video>
-
-      <div class="-ms-auto -me-auto -max-w-medium -mt-fluid-large">
-        <p-text size="medium"
-          >Co-Driver ist eine Plattform, um Chat GPT-Technologien hei Porsche in siner sicheren Umgehung nutzen zu
-          können. Fachbereiche können diese Plattform mit eigenen "Plugins" erweiter, hopse: um ihr Fachbereichswissen
-          einzubinden. Bitte beachte: Zusätz ich zu diesen Regeln können weitere Plugin-spenfische Regeln gelten, die
-          einzuhalten sind.</p-text
-        >
-
-        <p-text class="-mt-fluid-medium">
-          Wir stellen ein kurzes Video zur Sensibilisierung bereit, dessen Ansicht vor der Nutzung von Co-Diver
-          verpflichtend ist. Weitergehend haben wir folgende Schulungen für euch vor bereitet:
-        </p-text>
-
-        <p-heading class="-mt-fluid-medium" tag="h3" size="small">Verantwortlichkeit:</p-heading>
-        <p-text
-          >Go-Driver ist nur ein Arbeitsmittel: Wie Du Co-Driver verwendest und wes Du mit den Antworten und Ausgaben
-          von Co-Driver machst, liegt immer in Deiner eigenen Verantwortung.  Inshesandere können Ausgaben fehlerhaft
-          sein [Halkzination) oder von Vorurtelen behaftet (Bias). Vorurteile können aus den Trainingsdaten des Modells
-          entstahen, die hauptsächlich in den USA entstanden sind. Es ist daher winhtig, dass Du die Ausgaben von
-          Co-Driver immer volständig verstehst, nachvalziehst und auf inhaltliche und sprachliche Richtigkeit
-          [insbesondere bei Übersetzungen), Volständigkeit, Vorurteilsfreiheit und Aktualität prüfst, bevor Du sie im
-          Rahmen Deiner Aufgaben für Porsche verwendest.</p-text
-        >
-
-        <p-heading class="-mt-fluid-medium" tag="h3" size="small">Zugelassene Endgeräte:</p-heading>
-        <p-text>Co-Driver darf nicht mit privaten Endgeräten genutzt werden.</p-text>
-
-        <p-heading class="-mt-fluid-medium" tag="h3" size="small">Zuständigkeiten und Entscheidungen:</p-heading>
-        <p-text
-          >Go-Driver ersetzt nicht die Konsultation von Porsche Fachexperten wie der Rechtsabteilung, Steuerabteilung,
-          Datenschutz, Technische Konformität ete. Wende Dich daher bitte mit konkreten Fragen an die jeweils
-          zuständigen Porsche-Kolegen Insbesondere relevante Geschäftsentsche dungen dürfen nicht allein aufgrund von
-          Informationen aus Co-Driver getroffen werden Betriebliche Richtlirien und Prozesse müssen immer eingehalten
-          werden.</p-text
-        >
-
-        <p-heading class="-mt-fluid-medium" tag="h3" size="small">Daterschutz:</p-heading>
-        <p-text
-          >Dein Input und Chats werden im Regelfall nicht nachverfelgt oder gespelchert, außer Du nutzt die
-          Feedback-Funktion. Hier kannst du den Chatverlauf selbst noch einmal anpassen, nachdem Du den Teut in das
-          Freitestfeld kopiert hast. Deine Chats werden auf einer gesicherten Porsche Umgebung auf Microsoft Azure
-          verarbeitet. Die Eingaben sind genauso geschützt. wie auf anderen dienstlichen Systemen der Porsche AG, Achte
-          bitte gleichwohl darauf, keine personenbezogenen Daten in den Chat einzugeben. Es gilt der Datenschutzhinasis
-          für PAG  Beschäftigte.</p-text
-        >
-
-        <p-heading class="-mt-fluid-medium" tag="h3" size="small">Eingabe von Daten:</p-heading>
-        <p-text
-          >1. Informationssicherheit:<br />Bei Co-Driver darfst du Daten bis zur Klassihkation *vertraulich" nutzen, die
-          keinen Personenbezug haben (d.h. keine Namen oder andere Merkmale, die einen Personenbezug aufweisen konnen].
-          Daten, die z.B. als "geheim" klassifiziert sind, darfst Du nicht eingeben.
-          <br />
-          <br />2. Befugnis zur Verwendung von Daten:<br />Vor der Eingabe von Daten in Co-Driver musst Du prüfen, oh Du
-          die Daten dafür verwenden darfst. Dies kann insbesondere bei Geschäftsgeheimnissen Dritter oder
-          urheberrechtlich geschützten Informationen kritisch sein. Hole Dir im Zweifel die Einwilligung des
-          Dateninhabers ein.</p-text
-        >
-
-        <p-heading class="-mt-fluid-medium" tag="h3" size="small">Ausgabe von Daten:</p-heading>
-        <p-text
-          >1. Rechte Dritter:<br />Bei generativer Ki kénnen Ausgaben die Rechte Dritter verletzen. Dies kann
-          insbesondere bei Software-Code, Bildem, längeren kreativen Texten oder anderen urheberechtlich geschützten
-          Werken vorkommen. Überprüfe daher vor Verwendung der Antworten, ob es identische Werke Dritter gibt, deren
-          Rechte durch die Verwendung verletzt sein könnten. <br /><br />
-          2. Schutzrechte der Ausgaben:<br />Die Antworten von Co-Driver sind urheberrechtlich nicht geschützt. Wenn
-          eine konkrete Antwort von Co-Driver für Porsche sehr werthaltig ist, musst Du sie daher mit Hilfe von
-          technischen Maßnahmen vor unbefugten Zugriffen schützen.
-        </p-text>
-
-        <p-heading class="-mt-fluid-medium" tag="h3" size="small">Qualitätssicherung:</p-heading>
-        <p-text
-          >Das Co-Driver Plugin ,ChatGPT* nutzt das reine ChatGPT Modeli von OpenAl in einer für Porsche geschützten
-          Umgebung mit dem technischen Informationsstand von September 2021. Plugins vnn Fachhereichen grifen auf eine
-          stetig wachsende Anzahl ausgewählter Quelien zu, die bei der Nutzung des jeweiligen Plugins transparent
-          gemacht werden. Din Ausgaben von</p-text
-        >
-      </div>
-
-      <p-button
-        slot="footer"
-        class="-ms-auto -me-auto -max-w-medium -block"
-        type="button"
-        onclick="document.querySelector('p-modal#rules').open = false;"
-        >Open Co-Driver</p-button
-      >
-    </p-modal>
-
-    <p-modal id="remove-plugin" open="false" aria="{ 'aria-label': 'Remove plugin' }">
-      <p-heading slot="header" size="large" tag="h2">Remove plugin?</p-heading>
-      <p-text>This will remove "some plugin".</p-text>
-      <p-button-group slot="footer">
-        <p-button
-          type="button"
-          onclick="
-          this.loading = true;
-          // simulates an API call
-          setTimeout(() => {
-            this.loading = false;
-            document.querySelector('p-modal#remove-plugin').open = false;
-          }, 1000);
-        "
-          >Remove</p-button
-        >
-        <p-button
-          type="button"
-          variant="secondary"
-          onclick="document.querySelector('p-modal#remove-plugin').open = false;"
-          >Cancel</p-button
-        >
-      </p-button-group>
-    </p-modal>
-
-    <p-modal id="delete-chat" open="false" aria="{ 'aria-label': 'Delete chat' }">
-      <p-heading slot="header" size="large" tag="h2">Delete chat?</p-heading>
-      <p-text>This will delete "some chat".</p-text>
-      <p-button-group slot="footer">
-        <p-button
-          type="button"
-          onclick="
-          this.loading = true;
-          // simulates an API call
-          setTimeout(() => {
-            this.loading = false;
-            document.querySelector('p-modal#delete-chat').open = false;
-          }, 1000);
-        "
-          >Delete</p-button
-        >
-        <p-button
-          type="button"
-          variant="secondary"
-          onclick="document.querySelector('p-modal#delete-chat').open = false;"
-          >Cancel</p-button
-        >
-      </p-button-group>
-    </p-modal>
-
-    <p-toast></p-toast>
+    <main></main>
 
     <script>
-      document.querySelectorAll('p-flyout').forEach((e) => e.addEventListener('dismiss', (t) => (t.target.open = !1)));
-      document.querySelectorAll('p-modal').forEach((e) => e.addEventListener('dismiss', (t) => (t.target.open = !1)));
+      <!-- START: keep this snippet to log component lifecycle events -->
+      ['componentWillLoad', 'componentDidLoad', 'componentWillUpdate', 'componentDidUpdate'].forEach((x) =>
+        window.addEventListener(`stencil_${x}`, (e) => {
+          const eventName = e.type + (e.type.includes('Did') ? ' ' : '');
+          console.log(eventName, e.composedPath()[0].tagName.toLowerCase(), new Date().toISOString());
+        })
+      );
+
+      const getTheme = () => new URL(document.location).searchParams.get('theme') || 'light';
+      const getDir = () => new URL(document.location).searchParams.get('dir') || 'ltr';
+
+      const updateRoute = (opts) => {
+        if (opts) {
+          const url = new URL(location);
+          if (opts.pathname) {
+            url.pathname = opts.pathname;
+          }
+          if (opts.theme) {
+            url.searchParams.set('theme', opts.theme);
+          }
+          if (opts.dir) {
+            url.searchParams.set('dir', opts.dir);
+          }
+          history.pushState(null, '', url);
+        }
+
+        const theme = getTheme();
+        const dir = getDir();
+
+        document.querySelector('html').setAttribute('dir', dir);
+        const mainEl = document.querySelector('main');
+        mainEl.querySelectorAll('.playground').forEach((el) => {
+          el.classList.remove('light', 'dark', 'auto');
+          el.classList.add(theme);
+        });
+
+        mainEl.querySelectorAll('*').forEach((el) => (el.theme = theme));
+      };
+
+      const updateSelect = (id, value) => {
+        if (id && value) {
+          Array.from(document.querySelectorAll(`#${id} option`)).filter((e) => e.value === value)[0].selected = true;
+        }
+      };
+
+      updateSelect('theme', getTheme());
+      updateSelect('dir', getDir());
+      updateRoute();
     </script>
+    <!-- /END -->
   </body>
 </html>
