@@ -171,6 +171,7 @@
   { "name": "shopping-bag", "size": 261, "gzipSize": 195 },
   { "name": "shopping-cart-filled", "size": 259, "gzipSize": 195 },
   { "name": "shopping-cart", "size": 310, "gzipSize": 223 },
+  { "name": "sidebar", "size": 680, "gzipSize": 300 },
   { "name": "sidelights", "size": 720, "gzipSize": 411 },
   { "name": "snowflake", "size": 593, "gzipSize": 303 },
   { "name": "sort", "size": 243, "gzipSize": 197 },
