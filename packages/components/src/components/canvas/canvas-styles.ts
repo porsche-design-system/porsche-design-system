@@ -158,9 +158,6 @@ export const getComponentCss = (theme: Theme, isSidebarStartOpen: boolean, isSid
           boxShadow: `1px 0 0 0 var(${cssVarColorContrastLow})`,
           background: `var(${cssVarColorBackgroundBase})`,
           pointerEvents: 'none',
-          '&:dir(rtl)': {
-            boxShadow: `0 1px 0 0 var(${cssVarColorContrastLow})`,
-          },
         },
       },
     },
