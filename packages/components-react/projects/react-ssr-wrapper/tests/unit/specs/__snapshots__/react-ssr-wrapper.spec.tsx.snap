@@ -9038,7 +9038,7 @@ dialog::backdrop {
   align-content: flex-start;
   color: #010205;
   background: #FFF;
-  width: var(--p-flyout-width,auto);
+  width: var(--p-flyout-width,max-content);
   min-width: 320px;
   max-width: var(--p-flyout-max-width,1180px);
 }
