@@ -58,7 +58,7 @@ components.forEach((component) => {
 
             if (component === 'canvas') {
               // TODO: fix asap
-              expect(accessibilityScanResults.violations.length).toBe(3);
+              expect(accessibilityScanResults.violations.length).toBe(2);
             } else {
               expect(accessibilityScanResults.violations.length).toBe(0);
             }
