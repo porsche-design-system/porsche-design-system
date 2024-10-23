@@ -4,10 +4,6 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   selector: 'page-canvas-example',
   styles: [
     `
-      body {
-        overflow-x: hidden;
-      }
-
       .-col-span-full-1 {
         grid-column: 1 / -1;
       }
@@ -35,21 +31,35 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     `,
   ],
   template: `
-    <p-canvas>
+    <p-canvas [sidebarEndOpen]="isSidebarEndOpen">
       <a slot="title" href="#">App Name</a>
 
-      <p-text class="-col-span-full-1">Content</p-text>
+      <p-button
+        slot="header-end"
+        icon="configurate"
+        variant="ghost"
+        [compact]="true"
+        [hideLabel]="true"
+        (click)="onOpenSidebarEnd()"
+        >Open sidebar
+      </p-button>
 
-      <div class="tile -col-span-4">Grid span 4x</div>
-      <div class="tile -col-span-4">Grid span 4x</div>
-      <div class="tile -col-span-4">Grid span 4x</div>
+      <div class="-p-canvas-grid">
+        <p-text class="-col-span-full-1">Content</p-text>
 
-      <div class="tile -col-span-full-1">12 Grid columns</div>
-      <div class="tile -col-span-full-2">10 Grid columns</div>
-      <div class="tile -col-span-full-3">8 Grid columns</div>
+        <div class="tile -col-span-4">Grid span 4x</div>
+        <div class="tile -col-span-4">Grid span 4x</div>
+        <div class="tile -col-span-4">Grid span 4x</div>
 
-      <p-text slot="footer" class="-col-span-full-1">Footer</p-text>
-      <div slot="footer" class="tile -col-span-full-1">12 Grid columns</div>
+        <div class="tile -col-span-full-1">12 Grid columns</div>
+        <div class="tile -col-span-full-2">10 Grid columns</div>
+        <div class="tile -col-span-full-3">8 Grid columns</div>
+      </div>
+
+      <div slot="footer" class="-p-canvas-grid">
+        <p-text class="-col-span-full-1">Footer</p-text>
+        <div class="tile -col-span-full-1">12 Grid columns</div>
+      </div>
 
       <div slot="sidebar-start">
         <p-text>Sidebar Start</p-text>
@@ -62,4 +72,10 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class CanvasExampleComponent {}
+export class CanvasExampleComponent {
+  isSidebarEndOpen: boolean = false;
+
+  onOpenSidebarEnd() {
+    this.isSidebarEndOpen = true;
+  }
+}
