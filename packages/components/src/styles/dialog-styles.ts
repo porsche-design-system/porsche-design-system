@@ -151,11 +151,7 @@ export const getDialogColorJssStyle = (theme: Theme): JssStyle => {
   };
 };
 
-export const getDialogTransitionJssStyle = (
-  isVisible: boolean,
-  slideIn: '^' | '<' | '>',
-  applyAutoFocusHack: boolean = false
-): JssStyle => {
+export const getDialogTransitionJssStyle = (isVisible: boolean, slideIn: '^' | '<' | '>'): JssStyle => {
   const duration = isVisible ? 'moderate' : 'short';
   const easing = isVisible ? 'in' : 'out';
 
@@ -170,13 +166,13 @@ export const getDialogTransitionJssStyle = (
           // viewport (or off the view on the start-hand side) before the dialog transition starts otherwise the transition
           // won't work in all cases, e.g. `dir="rtl"` and `<p-flyout position="end" />`. Because auto focus would force the
           // focused elements to be rendered in the viewport immediately and ignore the transition.
-          ...(applyAutoFocusHack && {
+          ...(slideIn === '<' && {
             marginInlineEnd: 0,
           }),
         }
       : {
           opacity: 0,
-          ...(applyAutoFocusHack && {
+          ...(slideIn === '<' && {
             marginInlineEnd: '200vw',
           }),
           transform: slideIn === '^' ? 'translateY(25vh)' : `translateX(${slideIn === '>' ? '-' : ''}100%)`,

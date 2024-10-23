@@ -79,7 +79,7 @@ export const getComponentCss = (
       ...getScrollerJssStyle(isPositionStart ? 'start' : 'end', theme),
       // compared to Modal, the transition is handled on the scroller to have correct stucked behaviour (visibility of drop shadow)
       // for sticky header area while transitioned
-      ...getDialogTransitionJssStyle(isOpen, isPositionStart ? '>' : '<', !isPositionStart),
+      ...getDialogTransitionJssStyle(isOpen, isPositionStart ? '>' : '<'),
       // Though this might be an accessibility issue, we don't want an outline to be rendered until we have a proper design solution
       '&:focus-visible': {
         outline: 'none',
