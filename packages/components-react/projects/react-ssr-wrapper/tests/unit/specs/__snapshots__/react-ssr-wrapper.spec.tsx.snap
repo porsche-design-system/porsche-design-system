@@ -8203,11 +8203,11 @@ dialog::backdrop {
   inset-block: 0;
   inset-inline-start: 0;
   overflow: hidden auto;
-  overscroll-behavior-y: none;
+  overscroll-behavior-y: contain;
   background: rgba(255,255,255,.01);
   opacity: 1;
   transform: initial;
-  transition: opacity var(--p-transition-duration, 0.4s) cubic-bezier(0,0,0.2,1), transform var(--p-transition-duration, 0.4s) cubic-bezier(0,0,0.2,1);
+  transition: opacity var(--p-transition-duration, 0.4s) cubic-bezier(0,0,0.2,1), transform var(--p-transition-duration, 0.4s) cubic-bezier(0,0,0.2,1), margin-inline-end 0s linear var(--p-transition-duration, 1ms);
 }
 .flyout {
   display: grid;
