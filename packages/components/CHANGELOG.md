@@ -14,11 +14,22 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ### [Unreleased]
 
+#### Added
+
+- `Icon`: `sidebar-open`, `sidebar-close`
+  ([#3556](https://github.com/porsche-design-system/porsche-design-system/pull/3556))
+
+#### Changed
+
+- `Canvas`: Improve UI and UX behaviour in Safari
+  ([#3556](https://github.com/porsche-design-system/porsche-design-system/pull/3556))
+
 ### [3.20.0-rc.0] - 2024-10-18
 
 #### Added
 
 - `Icon`: `attachment`, `dislike`, `dislike-filled`, `like`, `like-filled`, `new-chat`
+  ([#3515](https://github.com/porsche-design-system/porsche-design-system/pull/3515))
 
 #### Changed
 
