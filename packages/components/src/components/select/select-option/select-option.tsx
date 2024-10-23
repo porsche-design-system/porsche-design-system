@@ -15,6 +15,7 @@ import { getComponentCss } from './select-option-styles';
 const propTypes: PropTypes<typeof SelectOption> = {
   value: AllowedTypes.string,
   disabled: AllowedTypes.boolean,
+  hidden: AllowedTypes.boolean,
 };
 
 /**
@@ -34,7 +35,7 @@ export class SelectOption {
   @Prop() public disabled?: boolean = false;
 
   /** Hides the option. */
-  @Prop() public hidden?: boolean = false;
+  @Prop() public hidden: boolean = false;
 
   public connectedCallback(): void {
     throwIfParentIsNotOfKind(this.host, ['p-select', 'p-optgroup']);
