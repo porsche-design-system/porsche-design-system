@@ -9,7 +9,6 @@ import {
 } from '@porsche-design-system/styles';
 import {
   cssVariableTransitionDuration,
-  dismissButtonJssStyle,
   getThemedColors,
   getTransition,
   motionDurationMap,
@@ -120,7 +119,7 @@ export const getScrollerJssStyle = (position: 'fullscreen' | 'start' | 'end', th
           [position === 'start' ? 'insetInlineStart' : 'insetInlineEnd']: 0,
         }),
     overflow: 'hidden auto',
-    overscrollBehaviorY: 'none',
+    overscrollBehaviorY: 'contain',
     // TODO: check if smooth scrolling on iOS is given?
     background: background[theme],
     ...prefersColorSchemeDarkMediaQuery(theme, {
@@ -163,29 +162,25 @@ export const getDialogTransitionJssStyle = (isVisible: boolean, slideIn: '^' | '
       ? {
           opacity: 1,
           transform: 'initial',
+          // we need to ensure that the elements inside, which get auto focused by `.showModal()`, to always be in the
+          // viewport (or off the view on the start-hand side) before the dialog transition starts otherwise the transition
+          // won't work in all cases, e.g. `dir="rtl"` and `<p-flyout position="end" />`. Because auto focus would force the
+          // focused elements to be rendered in the viewport immediately and ignore the transition.
+          ...(slideIn === '<' && {
+            marginInlineEnd: 0,
+          }),
         }
       : {
           opacity: 0,
+          ...(slideIn === '<' && {
+            marginInlineEnd: '200vw',
+          }),
           transform: slideIn === '^' ? 'translateY(25vh)' : `translateX(${slideIn === '>' ? '-' : ''}100%)`,
           '&:dir(rtl)': {
             transform: slideIn === '^' ? 'translateY(25vh)' : `translateX(${slideIn === '>' ? '' : '-'}100%)`,
           },
         }),
-    transition: `${getTransition('opacity', duration, easing)}, ${getTransition('transform', duration, easing)}`,
-  };
-};
-
-export const getDialogDismissButtonJssStyle = (isOpen: boolean, applyAutoFocusHack: boolean = false): JssStyle => {
-  return {
-    ...dismissButtonJssStyle,
-    // we need to ensure that the dismiss button, which gets auto focused by `.showModal()`, to always be in the
-    // viewport (or off the view on the start-hand side) before the dialog transition starts otherwise the transition
-    // won't work in all cases, e.g. `dir="rtl"` and `<p-flyout position="end" />`. Because auto focus would force the
-    // dismiss button to be rendered in the viewport immediately and ignore the transition.
-    ...(applyAutoFocusHack && {
-      marginInlineEnd: isOpen ? 0 : '200vw',
-      transition: `margin-inline-end 0s linear var(${cssVariableTransitionDuration}, ${isOpen ? '1ms' : '0s'})`,
-    }),
+    transition: `${getTransition('opacity', duration, easing)}, ${getTransition('transform', duration, easing)}, margin-inline-end 0s linear var(${cssVariableTransitionDuration}, ${isVisible ? '1ms' : motionDurationMap[duration]})`,
   };
 };
 

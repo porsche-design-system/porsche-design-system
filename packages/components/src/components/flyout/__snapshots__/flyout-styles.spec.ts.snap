@@ -59,14 +59,18 @@ dialog::backdrop {
   inset-block: 0;
   inset-inline-end: 0;
   overflow: hidden auto;
-  overscroll-behavior-y: none;
+  overscroll-behavior-y: contain;
   background: rgba(255,255,255,.01);
   opacity: 0;
+  margin-inline-end: 200vw;
   transform: translateX(100%);
-  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.4,0,0.5,1), transform var(--p-transition-duration, 0.25s) cubic-bezier(0.4,0,0.5,1);
+  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.4,0,0.5,1), transform var(--p-transition-duration, 0.25s) cubic-bezier(0.4,0,0.5,1), margin-inline-end 0s linear var(--p-transition-duration, 0.25s);
 }
 .scroller:dir(rtl) {
   transform: translateX(-100%);
+}
+.scroller:focus-visible {
+  outline: none;
 }
 .flyout {
   display: grid;
@@ -83,8 +87,6 @@ dialog::backdrop {
 }
 .dismiss {
   --p-internal-button-scaling: 0;
-  margin-inline-end: 200vw;
-  transition: margin-inline-end 0s linear var(--p-transition-duration, 0s);
   grid-area: 1/3;
   z-index: 4;
   position: sticky;
@@ -158,14 +160,18 @@ dialog::backdrop {
   inset-block: 0;
   inset-inline-end: 0;
   overflow: hidden auto;
-  overscroll-behavior-y: none;
+  overscroll-behavior-y: contain;
   background: rgba(0,0,0,.01);
   opacity: 0;
+  margin-inline-end: 200vw;
   transform: translateX(100%);
-  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.4,0,0.5,1), transform var(--p-transition-duration, 0.25s) cubic-bezier(0.4,0,0.5,1);
+  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.4,0,0.5,1), transform var(--p-transition-duration, 0.25s) cubic-bezier(0.4,0,0.5,1), margin-inline-end 0s linear var(--p-transition-duration, 0.25s);
 }
 .scroller:dir(rtl) {
   transform: translateX(-100%);
+}
+.scroller:focus-visible {
+  outline: none;
 }
 .flyout {
   display: grid;
@@ -182,8 +188,6 @@ dialog::backdrop {
 }
 .dismiss {
   --p-internal-button-scaling: 0;
-  margin-inline-end: 200vw;
-  transition: margin-inline-end 0s linear var(--p-transition-duration, 0s);
   grid-area: 1/3;
   z-index: 4;
   position: sticky;
@@ -272,14 +276,18 @@ dialog::backdrop {
   inset-block: 0;
   inset-inline-end: 0;
   overflow: hidden auto;
-  overscroll-behavior-y: none;
+  overscroll-behavior-y: contain;
   background: rgba(0,0,0,.01);
   opacity: 0;
+  margin-inline-end: 200vw;
   transform: translateX(100%);
-  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.4,0,0.5,1), transform var(--p-transition-duration, 0.25s) cubic-bezier(0.4,0,0.5,1);
+  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.4,0,0.5,1), transform var(--p-transition-duration, 0.25s) cubic-bezier(0.4,0,0.5,1), margin-inline-end 0s linear var(--p-transition-duration, 0.25s);
 }
 .scroller:dir(rtl) {
   transform: translateX(-100%);
+}
+.scroller:focus-visible {
+  outline: none;
 }
 .flyout {
   display: grid;
@@ -296,8 +304,6 @@ dialog::backdrop {
 }
 .dismiss {
   --p-internal-button-scaling: 0;
-  margin-inline-end: 200vw;
-  transition: margin-inline-end 0s linear var(--p-transition-duration, 0s);
   grid-area: 1/3;
   z-index: 4;
   position: sticky;
@@ -382,14 +388,18 @@ dialog::backdrop {
   inset-block: 0;
   inset-inline-end: 0;
   overflow: hidden auto;
-  overscroll-behavior-y: none;
+  overscroll-behavior-y: contain;
   background: rgba(255,255,255,.01);
   opacity: 0;
+  margin-inline-end: 200vw;
   transform: translateX(100%);
-  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.4,0,0.5,1), transform var(--p-transition-duration, 0.25s) cubic-bezier(0.4,0,0.5,1);
+  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.4,0,0.5,1), transform var(--p-transition-duration, 0.25s) cubic-bezier(0.4,0,0.5,1), margin-inline-end 0s linear var(--p-transition-duration, 0.25s);
 }
 .scroller:dir(rtl) {
   transform: translateX(-100%);
+}
+.scroller:focus-visible {
+  outline: none;
 }
 .flyout {
   display: grid;
@@ -406,8 +416,6 @@ dialog::backdrop {
 }
 .dismiss {
   --p-internal-button-scaling: 0;
-  margin-inline-end: 200vw;
-  transition: margin-inline-end 0s linear var(--p-transition-duration, 0s);
   grid-area: 1/3;
   z-index: 4;
   position: sticky;
@@ -477,14 +485,17 @@ dialog::backdrop {
   inset-block: 0;
   inset-inline-start: 0;
   overflow: hidden auto;
-  overscroll-behavior-y: none;
+  overscroll-behavior-y: contain;
   background: rgba(255,255,255,.01);
   opacity: 0;
   transform: translateX(-100%);
-  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.4,0,0.5,1), transform var(--p-transition-duration, 0.25s) cubic-bezier(0.4,0,0.5,1);
+  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.4,0,0.5,1), transform var(--p-transition-duration, 0.25s) cubic-bezier(0.4,0,0.5,1), margin-inline-end 0s linear var(--p-transition-duration, 0.25s);
 }
 .scroller:dir(rtl) {
   transform: translateX(100%);
+}
+.scroller:focus-visible {
+  outline: none;
 }
 .flyout {
   display: grid;
@@ -570,14 +581,18 @@ dialog::backdrop {
   inset-block: 0;
   inset-inline-end: 0;
   overflow: hidden auto;
-  overscroll-behavior-y: none;
+  overscroll-behavior-y: contain;
   background: rgba(255,255,255,.01);
   opacity: 0;
+  margin-inline-end: 200vw;
   transform: translateX(100%);
-  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.4,0,0.5,1), transform var(--p-transition-duration, 0.25s) cubic-bezier(0.4,0,0.5,1);
+  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.4,0,0.5,1), transform var(--p-transition-duration, 0.25s) cubic-bezier(0.4,0,0.5,1), margin-inline-end 0s linear var(--p-transition-duration, 0.25s);
 }
 .scroller:dir(rtl) {
   transform: translateX(-100%);
+}
+.scroller:focus-visible {
+  outline: none;
 }
 .flyout {
   display: grid;
@@ -594,8 +609,6 @@ dialog::backdrop {
 }
 .dismiss {
   --p-internal-button-scaling: 0;
-  margin-inline-end: 200vw;
-  transition: margin-inline-end 0s linear var(--p-transition-duration, 0s);
   grid-area: 1/3;
   z-index: 4;
   position: sticky;
@@ -665,14 +678,17 @@ dialog::backdrop {
   inset-block: 0;
   inset-inline-start: 0;
   overflow: hidden auto;
-  overscroll-behavior-y: none;
+  overscroll-behavior-y: contain;
   background: rgba(255,255,255,.01);
   opacity: 0;
   transform: translateX(-100%);
-  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.4,0,0.5,1), transform var(--p-transition-duration, 0.25s) cubic-bezier(0.4,0,0.5,1);
+  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.4,0,0.5,1), transform var(--p-transition-duration, 0.25s) cubic-bezier(0.4,0,0.5,1), margin-inline-end 0s linear var(--p-transition-duration, 0.25s);
 }
 .scroller:dir(rtl) {
   transform: translateX(100%);
+}
+.scroller:focus-visible {
+  outline: none;
 }
 .flyout {
   display: grid;
@@ -762,14 +778,17 @@ dialog::backdrop {
   inset-block: 0;
   inset-inline-start: 0;
   overflow: hidden auto;
-  overscroll-behavior-y: none;
+  overscroll-behavior-y: contain;
   background: rgba(0,0,0,.01);
   opacity: 0;
   transform: translateX(-100%);
-  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.4,0,0.5,1), transform var(--p-transition-duration, 0.25s) cubic-bezier(0.4,0,0.5,1);
+  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.4,0,0.5,1), transform var(--p-transition-duration, 0.25s) cubic-bezier(0.4,0,0.5,1), margin-inline-end 0s linear var(--p-transition-duration, 0.25s);
 }
 .scroller:dir(rtl) {
   transform: translateX(100%);
+}
+.scroller:focus-visible {
+  outline: none;
 }
 .flyout {
   display: grid;
@@ -874,14 +893,17 @@ dialog::backdrop {
   inset-block: 0;
   inset-inline-start: 0;
   overflow: hidden auto;
-  overscroll-behavior-y: none;
+  overscroll-behavior-y: contain;
   background: rgba(0,0,0,.01);
   opacity: 0;
   transform: translateX(-100%);
-  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.4,0,0.5,1), transform var(--p-transition-duration, 0.25s) cubic-bezier(0.4,0,0.5,1);
+  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.4,0,0.5,1), transform var(--p-transition-duration, 0.25s) cubic-bezier(0.4,0,0.5,1), margin-inline-end 0s linear var(--p-transition-duration, 0.25s);
 }
 .scroller:dir(rtl) {
   transform: translateX(100%);
+}
+.scroller:focus-visible {
+  outline: none;
 }
 .flyout {
   display: grid;
@@ -975,11 +997,15 @@ dialog::backdrop {
   inset-block: 0;
   inset-inline-end: 0;
   overflow: hidden auto;
-  overscroll-behavior-y: none;
+  overscroll-behavior-y: contain;
   background: rgba(255,255,255,.01);
   opacity: 1;
   transform: initial;
-  transition: opacity var(--p-transition-duration, 0.4s) cubic-bezier(0,0,0.2,1), transform var(--p-transition-duration, 0.4s) cubic-bezier(0,0,0.2,1);
+  margin-inline-end: 0;
+  transition: opacity var(--p-transition-duration, 0.4s) cubic-bezier(0,0,0.2,1), transform var(--p-transition-duration, 0.4s) cubic-bezier(0,0,0.2,1), margin-inline-end 0s linear var(--p-transition-duration, 1ms);
+}
+.scroller:focus-visible {
+  outline: none;
 }
 .flyout {
   display: grid;
@@ -996,8 +1022,6 @@ dialog::backdrop {
 }
 .dismiss {
   --p-internal-button-scaling: 0;
-  margin-inline-end: 0;
-  transition: margin-inline-end 0s linear var(--p-transition-duration, 1ms);
   grid-area: 1/3;
   z-index: 4;
   position: sticky;
@@ -1079,11 +1103,15 @@ dialog::backdrop {
   inset-block: 0;
   inset-inline-end: 0;
   overflow: hidden auto;
-  overscroll-behavior-y: none;
+  overscroll-behavior-y: contain;
   background: rgba(0,0,0,.01);
   opacity: 1;
   transform: initial;
-  transition: opacity var(--p-transition-duration, 0.4s) cubic-bezier(0,0,0.2,1), transform var(--p-transition-duration, 0.4s) cubic-bezier(0,0,0.2,1);
+  margin-inline-end: 0;
+  transition: opacity var(--p-transition-duration, 0.4s) cubic-bezier(0,0,0.2,1), transform var(--p-transition-duration, 0.4s) cubic-bezier(0,0,0.2,1), margin-inline-end 0s linear var(--p-transition-duration, 1ms);
+}
+.scroller:focus-visible {
+  outline: none;
 }
 .flyout {
   display: grid;
@@ -1100,8 +1128,6 @@ dialog::backdrop {
 }
 .dismiss {
   --p-internal-button-scaling: 0;
-  margin-inline-end: 0;
-  transition: margin-inline-end 0s linear var(--p-transition-duration, 1ms);
   grid-area: 1/3;
   z-index: 4;
   position: sticky;
@@ -1173,11 +1199,15 @@ dialog::backdrop {
   inset-block: 0;
   inset-inline-end: 0;
   overflow: hidden auto;
-  overscroll-behavior-y: none;
+  overscroll-behavior-y: contain;
   background: rgba(255,255,255,.01);
   opacity: 1;
   transform: initial;
-  transition: opacity var(--p-transition-duration, 0.4s) cubic-bezier(0,0,0.2,1), transform var(--p-transition-duration, 0.4s) cubic-bezier(0,0,0.2,1);
+  margin-inline-end: 0;
+  transition: opacity var(--p-transition-duration, 0.4s) cubic-bezier(0,0,0.2,1), transform var(--p-transition-duration, 0.4s) cubic-bezier(0,0,0.2,1), margin-inline-end 0s linear var(--p-transition-duration, 1ms);
+}
+.scroller:focus-visible {
+  outline: none;
 }
 .flyout {
   display: grid;
@@ -1194,8 +1224,6 @@ dialog::backdrop {
 }
 .dismiss {
   --p-internal-button-scaling: 0;
-  margin-inline-end: 0;
-  transition: margin-inline-end 0s linear var(--p-transition-duration, 1ms);
   grid-area: 1/3;
   z-index: 4;
   position: sticky;
@@ -1277,11 +1305,15 @@ dialog::backdrop {
   inset-block: 0;
   inset-inline-end: 0;
   overflow: hidden auto;
-  overscroll-behavior-y: none;
+  overscroll-behavior-y: contain;
   background: rgba(255,255,255,.01);
   opacity: 1;
   transform: initial;
-  transition: opacity var(--p-transition-duration, 0.4s) cubic-bezier(0,0,0.2,1), transform var(--p-transition-duration, 0.4s) cubic-bezier(0,0,0.2,1);
+  margin-inline-end: 0;
+  transition: opacity var(--p-transition-duration, 0.4s) cubic-bezier(0,0,0.2,1), transform var(--p-transition-duration, 0.4s) cubic-bezier(0,0,0.2,1), margin-inline-end 0s linear var(--p-transition-duration, 1ms);
+}
+.scroller:focus-visible {
+  outline: none;
 }
 .flyout {
   display: grid;
@@ -1298,8 +1330,6 @@ dialog::backdrop {
 }
 .dismiss {
   --p-internal-button-scaling: 0;
-  margin-inline-end: 0;
-  transition: margin-inline-end 0s linear var(--p-transition-duration, 1ms);
   grid-area: 1/3;
   z-index: 4;
   position: sticky;
@@ -1396,11 +1426,15 @@ dialog::backdrop {
   inset-block: 0;
   inset-inline-end: 0;
   overflow: hidden auto;
-  overscroll-behavior-y: none;
+  overscroll-behavior-y: contain;
   background: rgba(0,0,0,.01);
   opacity: 1;
   transform: initial;
-  transition: opacity var(--p-transition-duration, 0.4s) cubic-bezier(0,0,0.2,1), transform var(--p-transition-duration, 0.4s) cubic-bezier(0,0,0.2,1);
+  margin-inline-end: 0;
+  transition: opacity var(--p-transition-duration, 0.4s) cubic-bezier(0,0,0.2,1), transform var(--p-transition-duration, 0.4s) cubic-bezier(0,0,0.2,1), margin-inline-end 0s linear var(--p-transition-duration, 1ms);
+}
+.scroller:focus-visible {
+  outline: none;
 }
 .flyout {
   display: grid;
@@ -1417,8 +1451,6 @@ dialog::backdrop {
 }
 .dismiss {
   --p-internal-button-scaling: 0;
-  margin-inline-end: 0;
-  transition: margin-inline-end 0s linear var(--p-transition-duration, 1ms);
   grid-area: 1/3;
   z-index: 4;
   position: sticky;
@@ -1505,11 +1537,15 @@ dialog::backdrop {
   inset-block: 0;
   inset-inline-end: 0;
   overflow: hidden auto;
-  overscroll-behavior-y: none;
+  overscroll-behavior-y: contain;
   background: rgba(255,255,255,.01);
   opacity: 1;
   transform: initial;
-  transition: opacity var(--p-transition-duration, 0.4s) cubic-bezier(0,0,0.2,1), transform var(--p-transition-duration, 0.4s) cubic-bezier(0,0,0.2,1);
+  margin-inline-end: 0;
+  transition: opacity var(--p-transition-duration, 0.4s) cubic-bezier(0,0,0.2,1), transform var(--p-transition-duration, 0.4s) cubic-bezier(0,0,0.2,1), margin-inline-end 0s linear var(--p-transition-duration, 1ms);
+}
+.scroller:focus-visible {
+  outline: none;
 }
 .flyout {
   display: grid;
@@ -1526,8 +1562,6 @@ dialog::backdrop {
 }
 .dismiss {
   --p-internal-button-scaling: 0;
-  margin-inline-end: 0;
-  transition: margin-inline-end 0s linear var(--p-transition-duration, 1ms);
   grid-area: 1/3;
   z-index: 4;
   position: sticky;
@@ -1618,11 +1652,15 @@ dialog::backdrop {
   inset-block: 0;
   inset-inline-end: 0;
   overflow: hidden auto;
-  overscroll-behavior-y: none;
+  overscroll-behavior-y: contain;
   background: rgba(255,255,255,.01);
   opacity: 1;
   transform: initial;
-  transition: opacity var(--p-transition-duration, 0.4s) cubic-bezier(0,0,0.2,1), transform var(--p-transition-duration, 0.4s) cubic-bezier(0,0,0.2,1);
+  margin-inline-end: 0;
+  transition: opacity var(--p-transition-duration, 0.4s) cubic-bezier(0,0,0.2,1), transform var(--p-transition-duration, 0.4s) cubic-bezier(0,0,0.2,1), margin-inline-end 0s linear var(--p-transition-duration, 1ms);
+}
+.scroller:focus-visible {
+  outline: none;
 }
 .flyout {
   display: grid;
@@ -1639,8 +1677,6 @@ dialog::backdrop {
 }
 .dismiss {
   --p-internal-button-scaling: 0;
-  margin-inline-end: 0;
-  transition: margin-inline-end 0s linear var(--p-transition-duration, 1ms);
   grid-area: 1/3;
   z-index: 4;
   position: sticky;
@@ -1746,11 +1782,15 @@ dialog::backdrop {
   inset-block: 0;
   inset-inline-end: 0;
   overflow: hidden auto;
-  overscroll-behavior-y: none;
+  overscroll-behavior-y: contain;
   background: rgba(255,255,255,.01);
   opacity: 1;
   transform: initial;
-  transition: opacity var(--p-transition-duration, 0.4s) cubic-bezier(0,0,0.2,1), transform var(--p-transition-duration, 0.4s) cubic-bezier(0,0,0.2,1);
+  margin-inline-end: 0;
+  transition: opacity var(--p-transition-duration, 0.4s) cubic-bezier(0,0,0.2,1), transform var(--p-transition-duration, 0.4s) cubic-bezier(0,0,0.2,1), margin-inline-end 0s linear var(--p-transition-duration, 1ms);
+}
+.scroller:focus-visible {
+  outline: none;
 }
 .flyout {
   display: grid;
@@ -1767,8 +1807,6 @@ dialog::backdrop {
 }
 .dismiss {
   --p-internal-button-scaling: 0;
-  margin-inline-end: 0;
-  transition: margin-inline-end 0s linear var(--p-transition-duration, 1ms);
   grid-area: 1/3;
   z-index: 4;
   position: sticky;
@@ -1840,11 +1878,14 @@ dialog::backdrop {
   inset-block: 0;
   inset-inline-start: 0;
   overflow: hidden auto;
-  overscroll-behavior-y: none;
+  overscroll-behavior-y: contain;
   background: rgba(0,0,0,.01);
   opacity: 1;
   transform: initial;
-  transition: opacity var(--p-transition-duration, 0.4s) cubic-bezier(0,0,0.2,1), transform var(--p-transition-duration, 0.4s) cubic-bezier(0,0,0.2,1);
+  transition: opacity var(--p-transition-duration, 0.4s) cubic-bezier(0,0,0.2,1), transform var(--p-transition-duration, 0.4s) cubic-bezier(0,0,0.2,1), margin-inline-end 0s linear var(--p-transition-duration, 1ms);
+}
+.scroller:focus-visible {
+  outline: none;
 }
 .flyout {
   display: grid;
@@ -1932,11 +1973,14 @@ dialog::backdrop {
   inset-block: 0;
   inset-inline-start: 0;
   overflow: hidden auto;
-  overscroll-behavior-y: none;
+  overscroll-behavior-y: contain;
   background: rgba(255,255,255,.01);
   opacity: 1;
   transform: initial;
-  transition: opacity var(--p-transition-duration, 0.4s) cubic-bezier(0,0,0.2,1), transform var(--p-transition-duration, 0.4s) cubic-bezier(0,0,0.2,1);
+  transition: opacity var(--p-transition-duration, 0.4s) cubic-bezier(0,0,0.2,1), transform var(--p-transition-duration, 0.4s) cubic-bezier(0,0,0.2,1), margin-inline-end 0s linear var(--p-transition-duration, 1ms);
+}
+.scroller:focus-visible {
+  outline: none;
 }
 .flyout {
   display: grid;
@@ -2039,11 +2083,14 @@ dialog::backdrop {
   inset-block: 0;
   inset-inline-start: 0;
   overflow: hidden auto;
-  overscroll-behavior-y: none;
+  overscroll-behavior-y: contain;
   background: rgba(0,0,0,.01);
   opacity: 1;
   transform: initial;
-  transition: opacity var(--p-transition-duration, 0.4s) cubic-bezier(0,0,0.2,1), transform var(--p-transition-duration, 0.4s) cubic-bezier(0,0,0.2,1);
+  transition: opacity var(--p-transition-duration, 0.4s) cubic-bezier(0,0,0.2,1), transform var(--p-transition-duration, 0.4s) cubic-bezier(0,0,0.2,1), margin-inline-end 0s linear var(--p-transition-duration, 1ms);
+}
+.scroller:focus-visible {
+  outline: none;
 }
 .flyout {
   display: grid;
@@ -2146,11 +2193,14 @@ dialog::backdrop {
   inset-block: 0;
   inset-inline-start: 0;
   overflow: hidden auto;
-  overscroll-behavior-y: none;
+  overscroll-behavior-y: contain;
   background: rgba(255,255,255,.01);
   opacity: 1;
   transform: initial;
-  transition: opacity var(--p-transition-duration, 0.4s) cubic-bezier(0,0,0.2,1), transform var(--p-transition-duration, 0.4s) cubic-bezier(0,0,0.2,1);
+  transition: opacity var(--p-transition-duration, 0.4s) cubic-bezier(0,0,0.2,1), transform var(--p-transition-duration, 0.4s) cubic-bezier(0,0,0.2,1), margin-inline-end 0s linear var(--p-transition-duration, 1ms);
+}
+.scroller:focus-visible {
+  outline: none;
 }
 .flyout {
   display: grid;
@@ -2257,11 +2307,14 @@ dialog::backdrop {
   inset-block: 0;
   inset-inline-start: 0;
   overflow: hidden auto;
-  overscroll-behavior-y: none;
+  overscroll-behavior-y: contain;
   background: rgba(255,255,255,.01);
   opacity: 1;
   transform: initial;
-  transition: opacity var(--p-transition-duration, 0.4s) cubic-bezier(0,0,0.2,1), transform var(--p-transition-duration, 0.4s) cubic-bezier(0,0,0.2,1);
+  transition: opacity var(--p-transition-duration, 0.4s) cubic-bezier(0,0,0.2,1), transform var(--p-transition-duration, 0.4s) cubic-bezier(0,0,0.2,1), margin-inline-end 0s linear var(--p-transition-duration, 1ms);
+}
+.scroller:focus-visible {
+  outline: none;
 }
 .flyout {
   display: grid;
