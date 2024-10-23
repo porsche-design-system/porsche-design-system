@@ -210,7 +210,7 @@ export default class Code extends Vue {
   headAdvanced = headAdvanced;
   dataAdvanced = dataAdvanced.map(({imageUrl, ...rest}) => ({
     ...rest,
-    imageUrl: imageUrl.replace(/http:\/\/localhost:3002/, '/assets')
+    imageUrl: imageUrl.replace(/http:\/\/localhost:3002/, 'assets')
   }));
 
   basic = getTableCodeSamples('example-basic');

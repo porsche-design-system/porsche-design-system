@@ -21,16 +21,8 @@ const scenario = async (
   const markup = `
 <div class="playground light ${pseudoState}" title="should render :${pseudoState}" style="height: 300px">
   <p-flyout open="true">
-    <div slot="header">
-      Some slotted heading
-      <span>
-        and some slotted, deeply nested <a href="#">anchor</a>.
-      </span>
-    </div>
+    <div slot="header">Some header</div>
     Some content
-    <span>
-      and some slotted, deeply nested <a href="#">anchor</a>.
-    </span>
   </p-flyout>
 </div>`;
 

@@ -5,7 +5,7 @@ import { getComponentMeta } from '@porsche-design-system/component-meta';
 import { schemes, themes, viewportWidthM, viewportWidths } from '@porsche-design-system/shared/testing/playwright.vrt';
 
 const components = (TAG_NAMES as unknown as TagName[])
-  .filter((tagName) => !['p-canvas', 'p-optgroup'].includes(tagName)) // TODO: remove filter as soon as component becomes stable
+  .filter((tagName) => !['p-optgroup'].includes(tagName)) // TODO: remove filter as soon as component becomes stable
   // Filter out non-chunked components
   .filter((tagName) => {
     const { isChunked } = getComponentMeta(tagName);
@@ -20,13 +20,13 @@ const isComponentThemeable = (component: string): boolean => getComponentMeta(`p
 // VRT pages making use of iFrames can't reliably ensure which iframe is loaded last
 // and therefore can't be sure which autofocus gets triggered
 const revertAutoFocus = async (page: Page, component: string): Promise<void> => {
-  if (['flyout-multilevel', 'flyout', 'modal'].includes(component)) {
+  if (['flyout-multilevel', 'flyout', 'modal', 'canvas'].includes(component)) {
     await page.mouse.click(0, 0); // click top left corner of the page to remove focus
   }
 };
 
 test(`should have certain amount of components`, () => {
-  expect(components.length).toBe(56);
+  expect(components.length).toBe(57);
 });
 
 components.forEach((component) => {

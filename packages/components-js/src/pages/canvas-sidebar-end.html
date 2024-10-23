@@ -1,0 +1,28 @@
+<style>
+  body {
+    overflow-x: hidden;
+  }
+
+  p-canvas > div:not([slot]) {
+    grid-column: 1 / -1;
+  }
+
+  span {
+    display: block;
+    height: 100dvh;
+    background: hsla(328, 100%, 54%, 0.2);
+  }
+</style>
+
+<p-canvas sidebar-end-open="true">
+  <div>
+    Content
+    <span></span>
+    Content
+  </div>
+  <div slot="sidebar-end">
+    Sidebar End
+    <span></span>
+    Sidebar End
+  </div>
+</p-canvas>
