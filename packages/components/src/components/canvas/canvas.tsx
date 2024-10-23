@@ -9,14 +9,11 @@ import {
 } from '../../utils';
 import { Component, Element, h, Host, type JSX, Prop, State } from '@stencil/core';
 import { getComponentCss } from './canvas-styles';
-import { type CanvasSidebarStartIcon, type CanvasSidebarEndIcon } from './canvas-utils';
 import { breakpointS, breakpointM } from '@porsche-design-system/styles';
 
 const propTypes: PropTypes<typeof Canvas> = {
   sidebarStartOpen: AllowedTypes.boolean,
-  sidebarStartIcon: AllowedTypes.string,
   sidebarEndOpen: AllowedTypes.boolean,
-  sidebarEndIcon: AllowedTypes.string,
   theme: AllowedTypes.oneOf<Theme>(THEMES),
 };
 
@@ -40,16 +37,10 @@ export class Canvas {
   @Element() public host!: HTMLElement;
 
   /** Open the sidebar on the start side */
-  @Prop({ mutable: true }) public sidebarStartOpen?: boolean = false;
-
-  /** The icon to toggle the sidebar on the start side */
-  @Prop() public sidebarStartIcon?: CanvasSidebarStartIcon = 'menu-lines';
+  @Prop({ mutable: true }) public sidebarStartOpen?: boolean = true;
 
   /** Open the sidebar on the end side */
   @Prop({ mutable: true }) public sidebarEndOpen?: boolean = false;
-
-  /** The icon to toggle the sidebar on the end side */
-  @Prop() public sidebarEndIcon?: CanvasSidebarEndIcon = 'menu-lines';
 
   /** Adapts the color depending on the theme. */
   @Prop() public theme?: Theme = 'light';
@@ -75,8 +66,8 @@ export class Canvas {
     this.matchMediaQueryS.addEventListener('change', this.handleMediaQueryS);
     this.matchMediaQueryM.addEventListener('change', this.handleMediaQueryM);
 
-    if (this.isMediaQueryS) {
-      this.sidebarStartOpen = true;
+    if (this.sidebarStartOpen && !this.isMediaQueryS) {
+      this.sidebarStartOpen = false;
     }
   }
 
@@ -118,7 +109,7 @@ export class Canvas {
               {this.hasSidebarStart && !this.sidebarStartOpen && (
                 <PrefixedTagNames.pButton
                   theme={this.theme}
-                  icon={this.sidebarStartIcon}
+                  icon="sidebar"
                   variant="ghost"
                   compact={true}
                   hide-label="true"
@@ -132,22 +123,7 @@ export class Canvas {
             </div>
             <PrefixedTagNames.pCrest class="header__crest" />
             <PrefixedTagNames.pWordmark class="header__wordmark" size="inherit" theme={this.theme} />
-            <div class="header__area header__area--end">
-              {this.hasHeaderEnd && <slot name="header-end" />}
-              {this.hasSidebarEnd && (
-                <PrefixedTagNames.pButton
-                  theme={this.theme}
-                  icon={this.sidebarEndIcon}
-                  variant="ghost"
-                  compact={true}
-                  hide-label="true"
-                  aria={{ 'aria-expanded': this.sidebarEndOpen }}
-                  onClick={this.toggleSidebarEnd}
-                >
-                  {this.sidebarEndOpen ? 'Close' : 'Open'} settings sidebar
-                </PrefixedTagNames.pButton>
-              )}
-            </div>
+            <div class="header__area header__area--end">{this.hasHeaderEnd && <slot name="header-end" />}</div>
           </header>
           <main class="main">
             <slot />
@@ -170,7 +146,7 @@ export class Canvas {
                 <header class="sidebar__header sidebar__header--start">
                   <PrefixedTagNames.pButton
                     theme={this.theme}
-                    icon={this.sidebarStartIcon}
+                    icon="sidebar"
                     variant="ghost"
                     compact={true}
                     hide-label="true"

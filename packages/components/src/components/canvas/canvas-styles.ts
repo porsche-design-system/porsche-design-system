@@ -26,14 +26,10 @@ const cssClassGrid = '-p-canvas-grid';
 // public css variables
 const cssVarSidebarStartWidth = '--p-canvas-sidebar-start-width';
 const cssVarSidebarEndWidth = '--p-canvas-sidebar-end-width';
-const cssVarGridColumns = '--p-canvas-grid-columns';
-const cssVarGridMaxWidth = '--p-canvas-grid-max-width';
 
 // default values for public css variables
 const sidebarStartWidth = `var(${cssVarSidebarStartWidth},320px)`;
 const sidebarEndWidth = `var(${cssVarSidebarEndWidth},320px)`;
-const gridColumns = `var(${cssVarGridColumns},12)`;
-const gridMaxWidth = `var(${cssVarGridMaxWidth},none)`;
 
 // private css variables
 const cssVarColorPrimary = '--_a';
@@ -74,10 +70,8 @@ export const getComponentCss = (theme: Theme, isSidebarStartOpen: boolean, isSid
         '&:not([name]),&[name="footer"]': {
           [`&::slotted(.${cssClassGrid})`]: {
             display: 'grid',
-            gridTemplateColumns: `repeat(${gridColumns},minmax(0,1fr))`,
+            gridTemplateColumns: 'repeat(12,minmax(0,1fr))',
             columnGap: spacingBase,
-            alignContent: 'flex-start',
-            maxWidth: gridMaxWidth,
             marginInline: 'auto',
             containerType: 'inline-size',
           },
