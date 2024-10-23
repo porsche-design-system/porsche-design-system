@@ -16,7 +16,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 #### Added
 
-- `Icon`: `sidebar-open`, `sidebar-close`
+- React: better tree-shaking for `@porsche-design-system/components-react`
+  ([#3554](https://github.com/porsche-design-system/porsche-design-system/pull/3554))
+- `Icon`: `sidebar`
   ([#3556](https://github.com/porsche-design-system/porsche-design-system/pull/3556))
 
 #### Changed
