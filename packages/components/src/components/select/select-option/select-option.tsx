@@ -15,6 +15,7 @@ import { getComponentCss } from './select-option-styles';
 const propTypes: PropTypes<typeof SelectOption> = {
   value: AllowedTypes.string,
   disabled: AllowedTypes.boolean,
+  hidden: AllowedTypes.boolean,
 };
 
 /**
@@ -33,13 +34,16 @@ export class SelectOption {
   /** Disables the option. */
   @Prop() public disabled?: boolean = false;
 
+  /** Hides the option. */
+  @Prop() public hidden?: boolean = false;
+
   public connectedCallback(): void {
     throwIfParentIsNotOfKind(this.host, ['p-select', 'p-optgroup']);
   }
 
   public render(): JSX.Element {
     validateProps(this, propTypes);
-    const { theme = 'light', selected, highlighted, hidden } = this.host;
+    const { theme = 'light', selected, highlighted } = this.host;
     attachComponentCss(this.host, getComponentCss, theme);
     const PrefixedTagNames = getPrefixedTagNames(this.host);
 
@@ -53,7 +57,7 @@ export class SelectOption {
             'option--highlighted': highlighted,
             'option--disabled': this.disabled,
           }}
-          {...getOptionAriaAttributes(selected, this.disabled, hidden, !!this.value)}
+          {...getOptionAriaAttributes(selected, this.disabled, this.hidden, !!this.value)}
         >
           <slot onSlotchange={this.onSlotChange} />
           {selected && (
