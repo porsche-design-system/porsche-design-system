@@ -126,7 +126,7 @@ export class ReactWrapperGenerator extends AbstractWrapperGenerator {
 
     const genericType = hasGeneric ? '<T extends object>' : '';
 
-    return `${this.inputParser.getDeprecationMessage(component)}export const ${pascalCase(component)} = forwardRef(
+    return `${this.inputParser.getDeprecationMessage(component)}export const ${pascalCase(component)} = /*#__PURE__*/ forwardRef(
   ${genericType}(
     ${wrapperProps}: ${wrapperPropsType},
     ref: ForwardedRef<HTMLElement>

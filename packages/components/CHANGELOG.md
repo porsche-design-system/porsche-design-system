@@ -14,6 +14,16 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ### [Unreleased]
 
+#### Added
+
+- React: better tree-shaking for `@porsche-design-system/components-react`
+  ([#3554](https://github.com/porsche-design-system/porsche-design-system/pull/3554))
+
+#### Fixed
+
+- `Flyout`: transition animation in Chrome Browser if `Flyout` has scrollable content
+  ([#3550](https://github.com/porsche-design-system/porsche-design-system/pull/3550))
+
 ### [3.20.0-rc.0] - 2024-10-18
 
 #### Added
