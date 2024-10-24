@@ -34,7 +34,7 @@ export class MultiSelectOption {
   @Prop() public disabled?: boolean = false;
 
   /** Hides the option. */
-  @Prop() public hidden: boolean = false;
+  @Prop() public hidden?: boolean = false;
 
   public connectedCallback(): void {
     throwIfParentIsNotOfKind(this.host, ['p-multi-select', 'p-optgroup']);
