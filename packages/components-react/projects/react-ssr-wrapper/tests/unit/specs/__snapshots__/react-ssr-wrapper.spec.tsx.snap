@@ -7870,7 +7870,7 @@ h2 {
   position: absolute;
   inset: 0;
   overflow: hidden auto;
-  overscroll-behavior: contain;
+  overscroll-behavior-y: contain;
   background: inherit;
 }
 .sidebar__header {
@@ -8350,7 +8350,7 @@ dialog::backdrop {
   inset-block: 0;
   inset-inline-start: 0;
   overflow: hidden auto;
-  overscroll-behavior-y: contain;
+  overscroll-behavior-y: none;
   background: rgba(255,255,255,.01);
   opacity: 0;
   transform: translateX(-100%);
@@ -9442,7 +9442,7 @@ dialog::backdrop {
   inset-block: 0;
   inset-inline-end: 0;
   overflow: hidden auto;
-  overscroll-behavior-y: contain;
+  overscroll-behavior-y: none;
   background: rgba(255,255,255,.01);
   opacity: 0;
   margin-inline-end: 200vw;
@@ -12315,7 +12315,7 @@ dialog::backdrop {
   display: grid;
   inset: 0;
   overflow: hidden auto;
-  overscroll-behavior-y: contain;
+  overscroll-behavior-y: none;
   background: rgba(255,255,255,.01);
 }
 .modal {
