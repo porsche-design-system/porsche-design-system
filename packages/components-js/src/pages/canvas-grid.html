@@ -6,38 +6,42 @@
   span {
     display: block;
     height: 100dvh;
-    background: hsla(328, 100%, 54%, 0.2);
+    background: deeppink;
   }
 
-  span[slot='footer'] {
+  div[slot='footer'] span {
     height: 50px;
-    background: hsla(250, 100%, 54%, 0.2);
+    background: purple;
   }
 </style>
 
 <p-canvas>
-  <span></span>
-  <span></span>
-  <span></span>
-  <span></span>
-  <span></span>
-  <span></span>
-  <span></span>
-  <span></span>
-  <span></span>
-  <span></span>
-  <span></span>
-  <span></span>
-  <span slot="footer"></span>
-  <span slot="footer"></span>
-  <span slot="footer"></span>
-  <span slot="footer"></span>
-  <span slot="footer"></span>
-  <span slot="footer"></span>
-  <span slot="footer"></span>
-  <span slot="footer"></span>
-  <span slot="footer"></span>
-  <span slot="footer"></span>
-  <span slot="footer"></span>
-  <span slot="footer"></span>
+  <div class="-p-canvas-grid">
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+  <div slot="footer" class="-p-canvas-grid">
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
 </p-canvas>

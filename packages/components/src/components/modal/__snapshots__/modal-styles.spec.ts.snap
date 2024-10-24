@@ -89,7 +89,7 @@ dialog::backdrop {
   display: grid;
   inset: 0;
   overflow: hidden auto;
-  overscroll-behavior-y: contain;
+  overscroll-behavior-y: none;
   background: rgba(255,255,255,.01);
 }
 .modal {
@@ -189,7 +189,7 @@ dialog::backdrop {
   display: grid;
   inset: 0;
   overflow: hidden auto;
-  overscroll-behavior-y: contain;
+  overscroll-behavior-y: none;
   background: rgba(255,255,255,.01);
 }
 .modal {
@@ -315,7 +315,7 @@ dialog::backdrop {
   display: grid;
   inset: 0;
   overflow: hidden auto;
-  overscroll-behavior-y: contain;
+  overscroll-behavior-y: none;
   background: rgba(0,0,0,.01);
 }
 .modal {
@@ -425,7 +425,7 @@ dialog::backdrop {
   display: grid;
   inset: 0;
   overflow: hidden auto;
-  overscroll-behavior-y: contain;
+  overscroll-behavior-y: none;
   background: rgba(255,255,255,.01);
 }
 .modal {
@@ -541,7 +541,7 @@ dialog::backdrop {
   display: grid;
   inset: 0;
   overflow: hidden auto;
-  overscroll-behavior-y: contain;
+  overscroll-behavior-y: none;
   background: rgba(0,0,0,.01);
 }
 .modal {
@@ -641,7 +641,7 @@ dialog::backdrop {
   display: grid;
   inset: 0;
   overflow: hidden auto;
-  overscroll-behavior-y: contain;
+  overscroll-behavior-y: none;
   background: rgba(255,255,255,.01);
 }
 .modal {
@@ -761,7 +761,7 @@ dialog::backdrop {
   display: grid;
   inset: 0;
   overflow: hidden auto;
-  overscroll-behavior-y: contain;
+  overscroll-behavior-y: none;
   background: rgba(0,0,0,.01);
 }
 .modal {
@@ -887,7 +887,7 @@ dialog::backdrop {
   display: grid;
   inset: 0;
   overflow: hidden auto;
-  overscroll-behavior-y: contain;
+  overscroll-behavior-y: none;
   background: rgba(255,255,255,.01);
 }
 .modal {
@@ -997,7 +997,7 @@ dialog::backdrop {
   display: grid;
   inset: 0;
   overflow: hidden auto;
-  overscroll-behavior-y: contain;
+  overscroll-behavior-y: none;
   background: rgba(255,255,255,.01);
 }
 .modal {
@@ -1107,7 +1107,7 @@ dialog::backdrop {
   display: grid;
   inset: 0;
   overflow: hidden auto;
-  overscroll-behavior-y: contain;
+  overscroll-behavior-y: none;
   background: rgba(255,255,255,.01);
 }
 .modal {
@@ -1227,7 +1227,7 @@ dialog::backdrop {
   display: grid;
   inset: 0;
   overflow: hidden auto;
-  overscroll-behavior-y: contain;
+  overscroll-behavior-y: none;
   background: rgba(0,0,0,.01);
 }
 .modal {
@@ -1394,7 +1394,7 @@ dialog::backdrop {
   display: grid;
   inset: 0;
   overflow: hidden auto;
-  overscroll-behavior-y: contain;
+  overscroll-behavior-y: none;
   background: rgba(255,255,255,.01);
 }
 .modal {
@@ -1572,7 +1572,7 @@ dialog::backdrop {
   display: grid;
   inset: 0;
   overflow: hidden auto;
-  overscroll-behavior-y: contain;
+  overscroll-behavior-y: none;
   background: rgba(255,255,255,.01);
 }
 .modal {
@@ -1687,7 +1687,7 @@ dialog::backdrop {
   display: grid;
   inset: 0;
   overflow: hidden auto;
-  overscroll-behavior-y: contain;
+  overscroll-behavior-y: none;
   background: rgba(0,0,0,.01);
 }
 .modal {
@@ -1816,7 +1816,7 @@ dialog::backdrop {
   display: grid;
   inset: 0;
   overflow: hidden auto;
-  overscroll-behavior-y: contain;
+  overscroll-behavior-y: none;
   background: rgba(0,0,0,.01);
 }
 .modal {
@@ -1915,7 +1915,7 @@ dialog::backdrop {
   display: grid;
   inset: 0;
   overflow: hidden auto;
-  overscroll-behavior-y: contain;
+  overscroll-behavior-y: none;
   background: rgba(0,0,0,.01);
 }
 .modal {
@@ -2040,7 +2040,7 @@ dialog::backdrop {
   display: grid;
   inset: 0;
   overflow: hidden auto;
-  overscroll-behavior-y: contain;
+  overscroll-behavior-y: none;
   background: rgba(255,255,255,.01);
 }
 .modal {
@@ -2149,7 +2149,7 @@ dialog::backdrop {
   display: grid;
   inset: 0;
   overflow: hidden auto;
-  overscroll-behavior-y: contain;
+  overscroll-behavior-y: none;
   background: rgba(0,0,0,.01);
 }
 .modal {
@@ -2264,7 +2264,7 @@ dialog::backdrop {
   display: grid;
   inset: 0;
   overflow: hidden auto;
-  overscroll-behavior-y: contain;
+  overscroll-behavior-y: none;
   background: rgba(255,255,255,.01);
 }
 .modal {
@@ -2363,7 +2363,7 @@ dialog::backdrop {
   display: grid;
   inset: 0;
   overflow: hidden auto;
-  overscroll-behavior-y: contain;
+  overscroll-behavior-y: none;
   background: rgba(255,255,255,.01);
 }
 .modal {
@@ -2488,7 +2488,7 @@ dialog::backdrop {
   display: grid;
   inset: 0;
   overflow: hidden auto;
-  overscroll-behavior-y: contain;
+  overscroll-behavior-y: none;
   background: rgba(0,0,0,.01);
 }
 .modal {
