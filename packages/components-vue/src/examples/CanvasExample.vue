@@ -1,16 +1,32 @@
 <script setup lang="ts">
-  import { PCanvas, PText, PButton } from '@porsche-design-system/components-vue';
+  import { PCanvas, PText, PButton, type CanvasUpdateEventDetail } from '@porsche-design-system/components-vue';
+  import { breakpointS } from '@porsche-design-system/components-vue/styles';
   import { ref } from 'vue';
 
+  // initially, sidebar should be closed on mobile and opened on desktop
+  const isSidebarStartOpen = ref(window.matchMedia(`(min-width: ${breakpointS}px)`).matches);
   const isSidebarEndOpen = ref(false);
 
-  const onOpenSidebarEnd = (): void => {
+  const onSidebarStartUpdate = (e: CanvasUpdateEventDetail): void => {
+    isSidebarStartOpen.value = e.open;
+  };
+
+  const onSidebarEndOpen = (): void => {
     isSidebarEndOpen.value = true;
+  };
+
+  const onSidebarEndDismiss = (): void => {
+    isSidebarEndOpen.value = false;
   };
 </script>
 
 <template>
-  <PCanvas :sidebarEndOpen="isSidebarEndOpen">
+  <PCanvas
+    :sidebarStartOpen="isSidebarStartOpen"
+    :sidebarEndOpen="isSidebarEndOpen"
+    @sidebarStartUpdate="onSidebarStartUpdate"
+    @sidebarEndDismiss="onSidebarEndDismiss"
+  >
     <a slot="title" href="#">App Name</a>
 
     <PButton
@@ -19,7 +35,7 @@
       variant="ghost"
       :compact="true"
       :hideLabel="true"
-      @click="onOpenSidebarEnd"
+      @click="onSidebarEndOpen"
     >
       Open sidebar
     </PButton>

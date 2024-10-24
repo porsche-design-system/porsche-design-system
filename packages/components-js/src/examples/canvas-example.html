@@ -63,3 +63,12 @@
     background: lightpink;
   }
 </style>
+
+<script>
+  document.querySelector('p-canvas').addEventListener('sidebarStartUpdate', (e) => {
+    e.target.sidebarStartOpen = e.detail.open;
+  });
+  document.querySelector('p-canvas').addEventListener('sidebarEndDismiss', (e) => {
+    e.target.sidebarEndOpen = false;
+  });
+</script>

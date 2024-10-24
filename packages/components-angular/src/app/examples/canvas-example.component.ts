@@ -1,4 +1,6 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
+import type { CanvasUpdateEventDetail } from '@porsche-design-system/components-angular';
+import { breakpointS } from '@porsche-design-system/components-angular/styles';
 
 @Component({
   selector: 'page-canvas-example',
@@ -31,7 +33,12 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     `,
   ],
   template: `
-    <p-canvas [sidebarEndOpen]="isSidebarEndOpen">
+    <p-canvas
+      [sidebarStartOpen]="isSidebarStartOpen"
+      [sidebarEndOpen]="isSidebarEndOpen"
+      (sidebarStartUpdate)="onSidebarStartUpdate($event)"
+      (sidebarEndDismiss)="onSidebarEndDismiss()"
+    >
       <a slot="title" href="#">App Name</a>
 
       <p-button
@@ -40,7 +47,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
         variant="ghost"
         [compact]="true"
         [hideLabel]="true"
-        (click)="onOpenSidebarEnd()"
+        (click)="onSidebarEndOpen()"
         >Open sidebar
       </p-button>
 
@@ -73,9 +80,19 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CanvasExampleComponent {
+  // initially, sidebar should be closed on mobile and opened on desktop
+  isSidebarStartOpen: boolean = window.matchMedia(`(min-width: ${breakpointS}px)`).matches;
   isSidebarEndOpen: boolean = false;
 
-  onOpenSidebarEnd() {
+  onSidebarStartUpdate(e: CustomEvent<CanvasUpdateEventDetail>) {
+    this.isSidebarStartOpen = e.detail.open;
+  }
+
+  onSidebarEndOpen() {
     this.isSidebarEndOpen = true;
+  }
+
+  onSidebarEndDismiss() {
+    this.isSidebarEndOpen = false;
   }
 }

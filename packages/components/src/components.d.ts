@@ -3522,11 +3522,11 @@ declare namespace LocalJSX {
      */
     interface PCanvas {
         /**
-          * Emitted when the sidebar end will be dismissed.
+          * Emitted when the sidebar end requests to be dismissed.
          */
         "onSidebarEndDismiss"?: (event: PCanvasCustomEvent<void>) => void;
         /**
-          * Emitted when the sidebar start will be dismissed.
+          * Emitted when the sidebar start requests to be opened or dismissed.
          */
         "onSidebarStartUpdate"?: (event: PCanvasCustomEvent<CanvasUpdateEventDetail>) => void;
         /**

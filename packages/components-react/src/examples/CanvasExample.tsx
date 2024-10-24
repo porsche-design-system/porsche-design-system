@@ -1,10 +1,22 @@
-import { PCanvas, PText, PButton } from '@porsche-design-system/components-react';
+import { PCanvas, PText, PButton, type CanvasUpdateEventDetail } from '@porsche-design-system/components-react';
+import { breakpointS } from '@porsche-design-system/components-react/styles';
 import { useCallback, useState } from 'react';
 
 export const CanvasExamplePage = (): JSX.Element => {
+  const [isSidebarStartOpen, setIsSidebarStartOpen] = useState<boolean>(
+    // initially, sidebar should be closed on mobile and opened on desktop
+    window.matchMedia(`(min-width: ${breakpointS}px)`).matches
+  );
   const [isSidebarEndOpen, setIsSidebarEndOpen] = useState<boolean>(false);
-  const onOpenSidebarEnd = useCallback(() => {
+
+  const onSidebarStartUpdate = useCallback((e: CustomEvent<CanvasUpdateEventDetail>) => {
+    setIsSidebarStartOpen(e.detail.open);
+  }, []);
+  const onSidebarEndOpen = useCallback(() => {
     setIsSidebarEndOpen(true);
+  }, []);
+  const onSidebarEndDismiss = useCallback(() => {
+    setIsSidebarEndOpen(false);
   }, []);
 
   const style = `
@@ -37,7 +49,12 @@ export const CanvasExamplePage = (): JSX.Element => {
   return (
     <>
       <style dangerouslySetInnerHTML={{ __html: style }} />
-      <PCanvas sidebarEndOpen={isSidebarEndOpen}>
+      <PCanvas
+        sidebarStartOpen={isSidebarStartOpen}
+        sidebarEndOpen={isSidebarEndOpen}
+        onSidebarStartUpdate={onSidebarStartUpdate}
+        onSidebarEndDismiss={onSidebarEndDismiss}
+      >
         <a slot="title" href="#">
           App Name
         </a>
@@ -48,7 +65,7 @@ export const CanvasExamplePage = (): JSX.Element => {
           variant="ghost"
           compact={true}
           hideLabel={true}
-          onClick={onOpenSidebarEnd}
+          onClick={onSidebarEndOpen}
         >
           Open sidebar
         </PButton>
