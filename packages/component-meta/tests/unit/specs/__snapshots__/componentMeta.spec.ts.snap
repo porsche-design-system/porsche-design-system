@@ -1361,8 +1361,19 @@ exports[`should match snapshot 1`] = `
     "styling": "jss",
   },
   "p-canvas": {
+    "eventsMeta": {
+      "sidebarEndDismiss": {
+        "description": "Emitted when the sidebar end requests to be dismissed.",
+        "type": "void",
+      },
+      "sidebarStartUpdate": {
+        "description": "Emitted when the sidebar start requests to be opened or dismissed.",
+        "type": "CanvasSidebarStartUpdateEventDetail",
+        "typeDetail": "{ open: boolean }",
+      },
+    },
     "hasAriaProp": false,
-    "hasEvent": false,
+    "hasEvent": true,
     "hasObserveAttributes": false,
     "hasObserveChildren": false,
     "hasSlot": true,
@@ -1386,7 +1397,7 @@ exports[`should match snapshot 1`] = `
       },
       "sidebarStartOpen": {
         "allowedValues": "boolean",
-        "defaultValue": true,
+        "defaultValue": false,
         "description": "Open the sidebar on the start side",
         "type": "boolean",
       },
@@ -1415,7 +1426,7 @@ exports[`should match snapshot 1`] = `
         "description": "Renders a **sticky** header section above the content area on the **end** side (**right** in **LTR** mode / **left** in **RTL** mode).",
       },
       "header-start": {
-        "description": "Renders a **sticky** header section above the content area on the **start** side (**left** in **LTR** mode / **right** in **RTL** mode). On desktop view, in case **sidebar-start slot** is present and opened it will be rendered within.",
+        "description": "Renders a **sticky** header section above the content area on the **start** side (**left** in **LTR** mode / **right** in **RTL** mode).",
       },
       "sidebar-end": {
         "description": "Renders a sidebar area on the **end** side (**right** in **LTR** mode / **left** in **RTL** mode). On mobile view it transforms into a flyout.",
@@ -1424,7 +1435,7 @@ exports[`should match snapshot 1`] = `
         "description": "Renders a sidebar area on the **start** side (**left** in **LTR** mode / **right** in **RTL** mode). On mobile view it transforms into a flyout.",
       },
       "title": {
-        "description": "Renders the application name in the header section. In case **sidebar-start slot** is present it will be rendered in the corresponding flyout on mobile view.",
+        "description": "Renders the application name in the header section of the sidebar start area.",
       },
     },
     "styling": "jss",
