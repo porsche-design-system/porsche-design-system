@@ -7720,7 +7720,7 @@ h2 {
   --_c: #EEEFF2;
   --_d: #D8D8DB;
   --_e: 0,0%,100%;
-  --_f: var(--p-canvas-sidebar-start-width,320px);
+  --_f: 0px;
   --_g: 0px;
   display: grid;
   grid-template-rows: auto minmax(0,1fr) auto;
@@ -7885,6 +7885,7 @@ h2 {
   box-sizing: border-box;
 }
 .sidebar__content {
+  position: relative;
   z-index: 0;
   display: block;
   padding: clamp(16px, 1.25vw + 12px, 24px);
@@ -7985,6 +7986,154 @@ h2 {
         <div
           class="header__area header__area--start"
         >
+          <p-button
+            data-ssr=""
+            hide-label="true"
+          >
+            <template
+              shadowroot="open"
+              shadowrootdelegatesfocus="true"
+              shadowrootmode="open"
+            >
+              <style>
+                :host {
+  display: inline-block;
+  vertical-align: top !important;
+  outline: 0 !important;
+  border-radius: 4px !important;
+  color-scheme: light dark !important;
+}
+:host([hidden]) {
+  display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
+.root {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  width: 100%;
+  min-width: min-content;
+  box-sizing: border-box;
+  text-align: start;
+  -webkit-appearance: none;
+  appearance: none;
+  text-decoration: none;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  -webkit-backdrop-filter: blur(32px);
+  backdrop-filter: blur(32px);
+  border: none;
+  border-radius: 4px;
+  transform: translate3d(0,0,0);
+  background-color: hsl(240 4% 85%/35%);
+  color: #010205;
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  padding: calc(var(--p-internal-button-scaling, calc(4 / 13)) * 0.8125 * 16px + 2px) max(calc(var(--p-internal-button-scaling, calc(4 / 13)) * 1.625 * 16px + 2px), 6px);
+  gap: clamp(2px, calc(var(--p-internal-button-scaling, calc(4 / 13)) * 0.5 * 16px), 16px);
+  cursor: pointer;
+  margin: 0;
+}
+.root::-moz-focus-inner {
+  border: 0;
+}
+.label {
+  position: static;
+  width: auto;
+  height: auto;
+  padding: 0;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
+  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+}
+.icon {
+  width: calc(6px + 2.125ex);
+  height: calc(6px + 2.125ex);
+  margin-inline-start: clamp(-16px, calc(var(--p-internal-button-scaling, calc(4 / 13)) * -0.5 * 16px), -2px);
+  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+}
+.loading {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+}
+
+              </style>
+              <button
+                aria-expanded="false"
+                class="root"
+                type="submit"
+              >
+                <p-icon
+                  aria-hidden="true"
+                  class="icon"
+                  data-ssr=""
+                >
+                  <template
+                    shadowroot="open"
+                    shadowrootmode="open"
+                  >
+                    <style>
+                      :host {
+  display: inline-block;
+  vertical-align: top;
+  color-scheme: light dark !important;
+}
+:host([hidden]) {
+  display: none !important;
+}
+img {
+  display: block;
+  margin: 0;
+  padding: 0;
+  pointer-events: none;
+  filter: var(--p-internal-icon-filter,invert(3%) sepia(7%) saturate(2930%) hue-rotate(188deg) brightness(91%) contrast(103%));
+  -webkit-animation: rerender-light-primary 1ms;
+  width: inherit;
+  height: inherit;
+}
+@keyframes rerender-light-primary {
+  0% {
+    transform: rotateZ(0);
+  }
+  100% {
+    transform: rotateZ(0);
+  }
+}
+                    </style>
+                    <img
+                      alt=""
+                      height="24"
+                      loading="lazy"
+                      src="http://localhost:3001/icons/sidebar.8e43896.svg"
+                      width="24"
+                    />
+                  </template>
+                </p-icon>
+                <span
+                  class="label"
+                >
+                  <slot />
+                </span>
+              </button>
+              <span
+                class="loading"
+                id="loading"
+                role="status"
+              />
+            </template>
+            Open
+             navigation sidebar
+          </p-button>
           <slot
             name="header-start"
           />
@@ -8181,19 +8330,17 @@ dialog {
   display: block;
   outline: 0;
   z-index: 9999999;
-  visibility: inherit;
-  pointer-events: auto;
-  background: rgba(1, 2, 5, 0.67);
-  -webkit-backdrop-filter: blur(32px);
-  backdrop-filter: blur(32px);
-  transition: visibility 0s linear var(--p-transition-duration, 0s), background-color var(--p-transition-duration, 0.6s) cubic-bezier(0,0,0.2,1), -webkit-backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0,0,0.2,1), backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0,0,0.2,1);
+  visibility: hidden;
+  pointer-events: none;
+  background: transparent;
+  transition: visibility 0s linear var(--p-transition-duration, 0.4s), background-color var(--p-transition-duration, 0.4s) cubic-bezier(0.4,0,0.5,1), -webkit-backdrop-filter var(--p-transition-duration, 0.4s) cubic-bezier(0.4,0,0.5,1), backdrop-filter var(--p-transition-duration, 0.4s) cubic-bezier(0.4,0,0.5,1);
 }
 dialog::backdrop {
   display: none;
 }
 @supports (transition-behavior: allow-discrete) {
   dialog {
-    transition: visibility 0s linear var(--p-transition-duration, 0s), background-color var(--p-transition-duration, 0.6s) cubic-bezier(0,0,0.2,1), -webkit-backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0,0,0.2,1), backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0,0,0.2,1), overlay var(--p-transition-duration, 0.6s) cubic-bezier(0,0,0.2,1) allow-discrete;
+    transition: visibility 0s linear var(--p-transition-duration, 0.4s), background-color var(--p-transition-duration, 0.4s) cubic-bezier(0.4,0,0.5,1), -webkit-backdrop-filter var(--p-transition-duration, 0.4s) cubic-bezier(0.4,0,0.5,1), backdrop-filter var(--p-transition-duration, 0.4s) cubic-bezier(0.4,0,0.5,1), overlay var(--p-transition-duration, 0.4s) cubic-bezier(0.4,0,0.5,1) allow-discrete;
   }
 }
 
@@ -8205,9 +8352,12 @@ dialog::backdrop {
   overflow: hidden auto;
   overscroll-behavior-y: contain;
   background: rgba(255,255,255,.01);
-  opacity: 1;
-  transform: initial;
-  transition: opacity var(--p-transition-duration, 0.4s) cubic-bezier(0,0,0.2,1), transform var(--p-transition-duration, 0.4s) cubic-bezier(0,0,0.2,1), margin-inline-end 0s linear var(--p-transition-duration, 1ms);
+  opacity: 0;
+  transform: translateX(-100%);
+  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.4,0,0.5,1), transform var(--p-transition-duration, 0.25s) cubic-bezier(0.4,0,0.5,1), margin-inline-end 0s linear var(--p-transition-duration, 0.25s);
+}
+.scroller:dir(rtl) {
+  transform: translateX(100%);
 }
 .flyout {
   display: grid;
@@ -8234,8 +8384,9 @@ dialog::backdrop {
 }
         </style>
         <dialog
-          aria-hidden="false"
+          aria-hidden="true"
           aria-modal="true"
+          inert=""
           tabindex="-1"
         >
           <div
