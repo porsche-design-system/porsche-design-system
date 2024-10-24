@@ -1,1 +1,1 @@
-export type CanvasUpdateEventDetail = { open: boolean };
+export type CanvasSidebarStartUpdateEventDetail = { open: boolean };

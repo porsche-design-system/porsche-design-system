@@ -10,7 +10,7 @@ import {
 import { Component, Element, Event, type EventEmitter, h, Host, type JSX, Prop, State } from '@stencil/core';
 import { getComponentCss } from './canvas-styles';
 import { breakpointS, breakpointM } from '@porsche-design-system/styles';
-import { type CanvasUpdateEventDetail } from './canvas-utils';
+import { type CanvasSidebarStartUpdateEventDetail } from './canvas-utils';
 
 const propTypes: PropTypes<typeof Canvas> = {
   sidebarStartOpen: AllowedTypes.boolean,
@@ -47,7 +47,7 @@ export class Canvas {
   @Prop() public theme?: Theme = 'light';
 
   /** Emitted when the sidebar start requests to be opened or dismissed. */
-  @Event({ bubbles: false }) public sidebarStartUpdate?: EventEmitter<CanvasUpdateEventDetail>;
+  @Event({ bubbles: false }) public sidebarStartUpdate?: EventEmitter<CanvasSidebarStartUpdateEventDetail>;
 
   /** Emitted when the sidebar end requests to be dismissed. */
   @Event({ bubbles: false }) public sidebarEndDismiss?: EventEmitter<void>;

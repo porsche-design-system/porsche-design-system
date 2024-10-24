@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import type { CanvasUpdateEventDetail } from '@porsche-design-system/components-angular';
+import type { CanvasSidebarStartUpdateEventDetail } from '@porsche-design-system/components-angular';
 import { breakpointS } from '@porsche-design-system/components-angular/styles';
 
 @Component({
@@ -84,7 +84,7 @@ export class CanvasExampleComponent {
   isSidebarStartOpen: boolean = window.matchMedia(`(min-width: ${breakpointS}px)`).matches;
   isSidebarEndOpen: boolean = false;
 
-  onSidebarStartUpdate(e: CustomEvent<CanvasUpdateEventDetail>) {
+  onSidebarStartUpdate(e: CustomEvent<CanvasSidebarStartUpdateEventDetail>) {
     this.isSidebarStartOpen = e.detail.open;
   }
 

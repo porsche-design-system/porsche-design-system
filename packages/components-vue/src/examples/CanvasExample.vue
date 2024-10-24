@@ -1,5 +1,10 @@
 <script setup lang="ts">
-  import { PCanvas, PText, PButton, type CanvasUpdateEventDetail } from '@porsche-design-system/components-vue';
+  import {
+    PCanvas,
+    PText,
+    PButton,
+    type CanvasSidebarStartUpdateEventDetail,
+  } from '@porsche-design-system/components-vue';
   import { breakpointS } from '@porsche-design-system/components-vue/styles';
   import { ref } from 'vue';
 
@@ -7,7 +12,7 @@
   const isSidebarStartOpen = ref(window.matchMedia(`(min-width: ${breakpointS}px)`).matches);
   const isSidebarEndOpen = ref(false);
 
-  const onSidebarStartUpdate = (e: CanvasUpdateEventDetail): void => {
+  const onSidebarStartUpdate = (e: CanvasSidebarStartUpdateEventDetail): void => {
     isSidebarStartOpen.value = e.open;
   };
 
