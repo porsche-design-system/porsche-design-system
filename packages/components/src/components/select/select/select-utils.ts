@@ -15,7 +15,7 @@ import { forceUpdate } from '@stencil/core';
 import type { OptgroupInternalHTMLProps } from '../../optgroup/optgroup-utils';
 
 export type SelectState = FormState;
-export type SelectOption = HTMLPSelectOptionElement & SelectOptionInternalHTMLProps;
+export type SelectOption = HTMLPSelectOptionElement & SelectOptionInternalHTMLProps & HTMLElement;
 export type SelectDropdownDirection = SelectComponentsDropdownDirection;
 export type SelectOptgroup = HTMLPOptgroupElement & OptgroupInternalHTMLProps;
 
