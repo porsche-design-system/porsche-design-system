@@ -365,6 +365,7 @@ export const getComponentCss = (theme: Theme, isSidebarStartOpen: boolean, isSid
         },
       },
       '&__content': {
+        position: 'relative', // needed for z-index to work
         zIndex: 0, // ensures slotted dom nodes can't be on top of sidebar header
         display: 'block',
         padding: spacingBase,

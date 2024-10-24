@@ -7,9 +7,10 @@ import {
   THEMES,
   validateProps,
 } from '../../utils';
-import { Component, Element, h, Host, type JSX, Prop, State } from '@stencil/core';
+import { Component, Element, Event, type EventEmitter, h, Host, type JSX, Prop, State } from '@stencil/core';
 import { getComponentCss } from './canvas-styles';
 import { breakpointS, breakpointM } from '@porsche-design-system/styles';
+import { type CanvasUpdateEventDetail } from './canvas-utils';
 
 const propTypes: PropTypes<typeof Canvas> = {
   sidebarStartOpen: AllowedTypes.boolean,
@@ -18,8 +19,8 @@ const propTypes: PropTypes<typeof Canvas> = {
 };
 
 /**
- * @slot {"name": "title", "description": "Renders the application name in the header section. In case **sidebar-start slot** is present it will be rendered in the corresponding flyout on mobile view." }
- * @slot {"name": "header-start", "description": "Renders a **sticky** header section above the content area on the **start** side (**left** in **LTR** mode / **right** in **RTL** mode). On desktop view, in case **sidebar-start slot** is present and opened it will be rendered within." }
+ * @slot {"name": "title", "description": "Renders the application name in the header section of the sidebar start area." }
+ * @slot {"name": "header-start", "description": "Renders a **sticky** header section above the content area on the **start** side (**left** in **LTR** mode / **right** in **RTL** mode)." }
  * @slot {"name": "header-end", "description": "Renders a **sticky** header section above the content area on the **end** side (**right** in **LTR** mode / **left** in **RTL** mode)." }
  * @slot {"name": "", "description": "Default slot for the main content." }
  * @slot {"name": "footer", "description": "Renders a **sticky** footer section underneath the main content." }
@@ -37,13 +38,19 @@ export class Canvas {
   @Element() public host!: HTMLElement;
 
   /** Open the sidebar on the start side */
-  @Prop({ mutable: true }) public sidebarStartOpen?: boolean = true;
+  @Prop() public sidebarStartOpen?: boolean = false;
 
   /** Open the sidebar on the end side */
-  @Prop({ mutable: true }) public sidebarEndOpen?: boolean = false;
+  @Prop() public sidebarEndOpen?: boolean = false;
 
   /** Adapts the color depending on the theme. */
   @Prop() public theme?: Theme = 'light';
+
+  /** Emitted when the sidebar start requests to be opened or dismissed. */
+  @Event({ bubbles: false }) public sidebarStartUpdate?: EventEmitter<CanvasUpdateEventDetail>;
+
+  /** Emitted when the sidebar end requests to be dismissed. */
+  @Event({ bubbles: false }) public sidebarEndDismiss?: EventEmitter<void>;
 
   @State() private isMediaQueryS = false;
   @State() private isMediaQueryM = false;
@@ -62,10 +69,6 @@ export class Canvas {
 
     this.matchMediaQueryS.addEventListener('change', this.handleMediaQueryS);
     this.matchMediaQueryM.addEventListener('change', this.handleMediaQueryM);
-
-    if (this.sidebarStartOpen && !this.isMediaQueryS) {
-      this.sidebarStartOpen = false;
-    }
   }
 
   public disconnectedCallback(): void {
@@ -179,7 +182,7 @@ export class Canvas {
                     compact={true}
                     hide-label="true"
                     aria={{ 'aria-expanded': this.sidebarEndOpen }}
-                    onClick={this.toggleSidebarEnd}
+                    onClick={this.onDismissSidebarEnd}
                   >
                     {this.sidebarStartOpen ? 'Close' : 'Open'} navigation sidebar
                   </PrefixedTagNames.pButton>
@@ -232,18 +235,18 @@ export class Canvas {
   };
 
   private toggleSidebarStart = (): void => {
-    this.sidebarStartOpen = !this.sidebarStartOpen;
-  };
-
-  private toggleSidebarEnd = (): void => {
-    this.sidebarEndOpen = !this.sidebarEndOpen;
+    this.sidebarStartUpdate.emit({
+      open: !this.sidebarStartOpen,
+    });
   };
 
   private onDismissSidebarStart = (): void => {
-    this.sidebarStartOpen = false;
+    this.sidebarStartUpdate.emit({
+      open: false,
+    });
   };
 
   private onDismissSidebarEnd = (): void => {
-    this.sidebarEndOpen = false;
+    this.sidebarEndDismiss.emit();
   };
 }
