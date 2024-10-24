@@ -14,6 +14,41 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ### [Unreleased]
 
+### [3.20.0] - 2024-10-24
+
+### [3.20.0-rc.1] - 2024-10-24
+
+#### Added
+
+- React: better tree-shaking for `@porsche-design-system/components-react`
+  ([#3554](https://github.com/porsche-design-system/porsche-design-system/pull/3554))
+- `Icon`: `sidebar`
+  ([#3556](https://github.com/porsche-design-system/porsche-design-system/pull/3556))
+
+#### Changed
+
+- `Canvas`: Improve UI and UX behaviour in Safari
+  ([#3556](https://github.com/porsche-design-system/porsche-design-system/pull/3556))
+
+#### Fixed
+
+- `Flyout`: transition animation in Chrome Browser if `Flyout` has scrollable content
+  ([#3550](https://github.com/porsche-design-system/porsche-design-system/pull/3550))
+
+### [3.20.0-rc.0] - 2024-10-18
+
+#### Added
+
+- `Icon`: `attachment`, `dislike`, `dislike-filled`, `like`, `like-filled`, `new-chat`
+  ([#3515](https://github.com/porsche-design-system/porsche-design-system/pull/3515))
+
+#### Changed
+
+- `Canvas`: Improve UI and UX behaviour
+  ([#3515](https://github.com/porsche-design-system/porsche-design-system/pull/3515))
+- `Flyout`, `Modal`: Removed default styling for slotted anchors
+  ([#3515](https://github.com/porsche-design-system/porsche-design-system/pull/3515))
+
 ### [3.19.0] - 2024-10-14
 
 ### [3.19.0-rc.4] - 2024-10-14

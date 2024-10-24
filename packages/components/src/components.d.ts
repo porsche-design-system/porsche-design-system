@@ -12,7 +12,7 @@ import { ButtonIcon } from "./components/button/button-utils";
 import { ButtonGroupDirection } from "./components/button-group/button-group-utils";
 import { ButtonPureAlignLabel, ButtonPureAriaAttribute, ButtonPureIcon, ButtonPureSize, ButtonPureType, ButtonPureWeight } from "./components/button-pure/button-pure-utils";
 import { ButtonTileAlign, ButtonTileAriaAttribute, ButtonTileAspectRatio, ButtonTileBackground, ButtonTileIcon, ButtonTileSize, ButtonTileType, ButtonTileWeight } from "./components/button-tile/button-tile-utils";
-import { CanvasSidebarEndIcon, CanvasSidebarStartIcon } from "./components/canvas/canvas-utils";
+import { CanvasSidebarStartUpdateEventDetail } from "./components/canvas/canvas-utils";
 import { CarouselAlignHeader, CarouselAriaAttribute, CarouselGradientColor, CarouselHeadingSize, CarouselInternationalization, CarouselUpdateEventDetail, CarouselWidth } from "./components/carousel/carousel-utils";
 import { CheckboxBlurEventDetail, CheckboxState, CheckboxUpdateEventDetail } from "./components/checkbox/checkbox-utils";
 import { CheckboxWrapperState } from "./components/checkbox-wrapper/checkbox-wrapper-utils";
@@ -76,7 +76,7 @@ export { ButtonIcon } from "./components/button/button-utils";
 export { ButtonGroupDirection } from "./components/button-group/button-group-utils";
 export { ButtonPureAlignLabel, ButtonPureAriaAttribute, ButtonPureIcon, ButtonPureSize, ButtonPureType, ButtonPureWeight } from "./components/button-pure/button-pure-utils";
 export { ButtonTileAlign, ButtonTileAriaAttribute, ButtonTileAspectRatio, ButtonTileBackground, ButtonTileIcon, ButtonTileSize, ButtonTileType, ButtonTileWeight } from "./components/button-tile/button-tile-utils";
-export { CanvasSidebarEndIcon, CanvasSidebarStartIcon } from "./components/canvas/canvas-utils";
+export { CanvasSidebarStartUpdateEventDetail } from "./components/canvas/canvas-utils";
 export { CarouselAlignHeader, CarouselAriaAttribute, CarouselGradientColor, CarouselHeadingSize, CarouselInternationalization, CarouselUpdateEventDetail, CarouselWidth } from "./components/carousel/carousel-utils";
 export { CheckboxBlurEventDetail, CheckboxState, CheckboxUpdateEventDetail } from "./components/checkbox/checkbox-utils";
 export { CheckboxWrapperState } from "./components/checkbox-wrapper/checkbox-wrapper-utils";
@@ -403,23 +403,15 @@ export namespace Components {
      */
     interface PCanvas {
         /**
-          * The icon to toggle the Sidebar on the end side
-         */
-        "sidebarEndIcon"?: CanvasSidebarEndIcon;
-        /**
-          * Open Sidebar on the end side
+          * Open the sidebar on the end side
          */
         "sidebarEndOpen"?: boolean;
         /**
-          * The icon to toggle the Sidebar on the start side
-         */
-        "sidebarStartIcon"?: CanvasSidebarStartIcon;
-        /**
-          * Open Sidebar on the start side
+          * Open the sidebar on the start side
          */
         "sidebarStartOpen"?: boolean;
         /**
-          * Adapts the color depending on the theme. Has no effect when "inherit" is set as color prop.
+          * Adapts the color depending on the theme.
          */
         "theme"?: Theme;
     }
@@ -2281,6 +2273,10 @@ export interface PBannerCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLPBannerElement;
 }
+export interface PCanvasCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLPCanvasElement;
+}
 export interface PCarouselCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLPCarouselElement;
@@ -2427,10 +2423,22 @@ declare global {
         prototype: HTMLPButtonTileElement;
         new (): HTMLPButtonTileElement;
     };
+    interface HTMLPCanvasElementEventMap {
+        "sidebarStartUpdate": CanvasSidebarStartUpdateEventDetail;
+        "sidebarEndDismiss": void;
+    }
     /**
      * @experimental 
      */
     interface HTMLPCanvasElement extends Components.PCanvas, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLPCanvasElementEventMap>(type: K, listener: (this: HTMLPCanvasElement, ev: PCanvasCustomEvent<HTMLPCanvasElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLPCanvasElementEventMap>(type: K, listener: (this: HTMLPCanvasElement, ev: PCanvasCustomEvent<HTMLPCanvasElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLPCanvasElement: {
         prototype: HTMLPCanvasElement;
@@ -3514,23 +3522,23 @@ declare namespace LocalJSX {
      */
     interface PCanvas {
         /**
-          * The icon to toggle the Sidebar on the end side
+          * Emitted when the sidebar end requests to be dismissed.
          */
-        "sidebarEndIcon"?: CanvasSidebarEndIcon;
+        "onSidebarEndDismiss"?: (event: PCanvasCustomEvent<void>) => void;
         /**
-          * Open Sidebar on the end side
+          * Emitted when the sidebar start requests to be opened or dismissed.
+         */
+        "onSidebarStartUpdate"?: (event: PCanvasCustomEvent<CanvasSidebarStartUpdateEventDetail>) => void;
+        /**
+          * Open the sidebar on the end side
          */
         "sidebarEndOpen"?: boolean;
         /**
-          * The icon to toggle the Sidebar on the start side
-         */
-        "sidebarStartIcon"?: CanvasSidebarStartIcon;
-        /**
-          * Open Sidebar on the start side
+          * Open the sidebar on the start side
          */
         "sidebarStartOpen"?: boolean;
         /**
-          * Adapts the color depending on the theme. Has no effect when "inherit" is set as color prop.
+          * Adapts the color depending on the theme.
          */
         "theme"?: Theme;
     }

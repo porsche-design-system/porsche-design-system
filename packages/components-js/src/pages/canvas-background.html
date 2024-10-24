@@ -1,0 +1,24 @@
+<style>
+  body {
+    overflow-x: hidden;
+  }
+
+  p-canvas > div:not([slot]) {
+    grid-column: 1 / -1;
+  }
+
+  span {
+    display: block;
+    height: 100dvh;
+    background: deeppink;
+  }
+</style>
+
+<p-canvas>
+  <div>
+    Content
+    <span></span>
+    Content
+  </div>
+  <img slot="background" src="http://localhost:3002/gradient.png" width="2792" height="1450" alt="Some alt text" />
+</p-canvas>

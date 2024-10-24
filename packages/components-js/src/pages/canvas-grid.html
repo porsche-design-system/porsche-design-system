@@ -1,0 +1,47 @@
+<style>
+  body {
+    overflow-x: hidden;
+  }
+
+  span {
+    display: block;
+    height: 100dvh;
+    background: deeppink;
+  }
+
+  div[slot='footer'] span {
+    height: 50px;
+    background: purple;
+  }
+</style>
+
+<p-canvas>
+  <div class="-p-canvas-grid">
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+  <div slot="footer" class="-p-canvas-grid">
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</p-canvas>
