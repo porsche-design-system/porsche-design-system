@@ -331,7 +331,7 @@ export const getComponentCss = (theme: Theme, isSidebarStartOpen: boolean, isSid
         position: 'absolute',
         inset: 0,
         overflow: 'hidden auto',
-        overscrollBehavior: 'contain',
+        overscrollBehaviorY: 'contain',
         background: 'inherit', // ensures correct scrollbar coloring in light / dark mode
       },
       '&__header': {

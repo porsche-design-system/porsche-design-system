@@ -119,7 +119,7 @@ export const getScrollerJssStyle = (position: 'fullscreen' | 'start' | 'end', th
           [position === 'start' ? 'insetInlineStart' : 'insetInlineEnd']: 0,
         }),
     overflow: 'hidden auto',
-    overscrollBehaviorY: 'contain',
+    overscrollBehaviorY: 'none',
     // TODO: check if smooth scrolling on iOS is given?
     background: background[theme],
     ...prefersColorSchemeDarkMediaQuery(theme, {
