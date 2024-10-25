@@ -1,3 +1,6 @@
+<script setup lang="ts">
+  import { PButton, PSelect, PSelectOption } from '../../dist/vue-wrapper';
+</script>
 <template>
   <div>
     <PSelect name="options" label="Some Label" value="a">
@@ -27,6 +30,3 @@
     </PButton>
   </div>
 </template>
-<script setup lang="ts">
-  import { PButton, PSelect, PSelectOption } from '../../dist/vue-wrapper';
-</script>

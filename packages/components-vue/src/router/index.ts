@@ -133,7 +133,7 @@ export const routes: RouteType[] = [
   {
     path: '/hidden-attribute-example',
     name: 'HiddenAttributeExample',
-    component: fromPages.HiddenAttributeExample,
+    component: fromExamples.HiddenAttributeExample,
   },
   {
     path: '/inline-notification-example-action-button',
