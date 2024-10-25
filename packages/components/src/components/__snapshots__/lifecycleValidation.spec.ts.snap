@@ -92,9 +92,7 @@ exports[`should call validateProps() with correct parameters via render for p-bu
 
 exports[`should call validateProps() with correct parameters via render for p-canvas: propTypes with ValidatorFunctions 1`] = `
 {
-  "sidebarEndIcon": "string",
   "sidebarEndOpen": "boolean",
-  "sidebarStartIcon": "string",
   "sidebarStartOpen": "boolean",
   "theme": "oneOf",
 }

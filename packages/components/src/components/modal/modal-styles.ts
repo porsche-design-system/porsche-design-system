@@ -11,6 +11,7 @@ import { buildResponsiveStyles, getCss, mergeDeep } from '../../utils';
 import {
   addImportantToEachRule,
   colorSchemeStyles,
+  dismissButtonJssStyle,
   hostHiddenStyles,
   preventFoucOfNestedElementsStyles,
 } from '../../styles';
@@ -22,7 +23,6 @@ import {
   getDialogJssStyle,
   getDialogStickyAreaJssStyle,
   getDialogTransitionJssStyle,
-  getDialogDismissButtonJssStyle,
   getScrollerJssStyle,
   headingTags,
 } from '../../styles/dialog-styles';
@@ -157,7 +157,7 @@ export const getComponentCss = (
     },
     ...(hasDismissButton && {
       dismiss: {
-        ...getDialogDismissButtonJssStyle(isOpen),
+        ...dismissButtonJssStyle,
         gridArea: '1/3',
         zIndex: 2, // ensures dismiss button is above sticky footer, header and content
         position: 'sticky',
