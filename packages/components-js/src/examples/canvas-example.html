@@ -1,18 +1,32 @@
 <p-canvas>
   <a slot="title" href="#">App Name</a>
 
-  <p-text class="-col-span-full-1">Content</p-text>
+  <p-button
+    slot="header-end"
+    icon="configurate"
+    variant="ghost"
+    compact="true"
+    hide-label="true"
+    onclick="document.querySelector('p-canvas').sidebarEndOpen = true;"
+    >Open sidebar
+  </p-button>
 
-  <div class="tile -col-span-4">Grid span 4x</div>
-  <div class="tile -col-span-4">Grid span 4x</div>
-  <div class="tile -col-span-4">Grid span 4x</div>
+  <div class="-p-canvas-grid">
+    <p-text class="-col-span-full-1">Content</p-text>
 
-  <div class="tile -col-span-full-1">12 Grid columns</div>
-  <div class="tile -col-span-full-2">10 Grid columns</div>
-  <div class="tile -col-span-full-3">8 Grid columns</div>
+    <div class="tile -col-span-4">Grid span 4x</div>
+    <div class="tile -col-span-4">Grid span 4x</div>
+    <div class="tile -col-span-4">Grid span 4x</div>
 
-  <p-text slot="footer" class="-col-span-full-1">Footer</p-text>
-  <div slot="footer" class="tile -col-span-full-1">12 Grid columns</div>
+    <div class="tile -col-span-full-1">12 Grid columns</div>
+    <div class="tile -col-span-full-2">10 Grid columns</div>
+    <div class="tile -col-span-full-3">8 Grid columns</div>
+  </div>
+
+  <div slot="footer" class="-p-canvas-grid">
+    <p-text class="-col-span-full-1">Footer</p-text>
+    <div class="tile -col-span-full-1">12 Grid columns</div>
+  </div>
 
   <div slot="sidebar-start">
     <p-text>Sidebar Start</p-text>
@@ -24,10 +38,6 @@
 </p-canvas>
 
 <style>
-  body {
-    overflow-x: hidden;
-  }
-
   .-col-span-full-1 {
     grid-column: 1 / -1;
   }
@@ -53,3 +63,12 @@
     background: lightpink;
   }
 </style>
+
+<script>
+  document.querySelector('p-canvas').addEventListener('sidebarStartUpdate', (e) => {
+    e.target.sidebarStartOpen = e.detail.open;
+  });
+  document.querySelector('p-canvas').addEventListener('sidebarEndDismiss', (e) => {
+    e.target.sidebarEndOpen = false;
+  });
+</script>
