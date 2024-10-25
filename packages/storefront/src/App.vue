@@ -96,6 +96,10 @@
     @Watch('$route')
     private onRouteChange(): void {
       this.$store.commit('setIsMenuActive', false);
+      if (!window.matchMedia(`(min-width: ${breakpointS}px)`).matches) {
+        this.isSidebarStartOpen = false;
+        this.isSidebarEndOpen = false;
+      }
     }
   }
 </script>
