@@ -230,10 +230,10 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
       cleanedComponent = cleanedComponent.replace(
           'useEventCallback(elementRef, \'update\', onUpdate as any);',
           [
-              'const eventCallback = (e) => {',
-              '       rest.uxpinOnChange(value, e.detail.value, \'value\');',
+              'const eventCallback = (e:Event) => {',
+              '       rest.uxpinOnChange(value, (e as CustomEvent<PinCodeUpdateEventDetail>).detail.value, \'value\');',
               '       if (onUpdate) {',
-              '         onUpdate(e);',
+              '         onUpdate(e as CustomEvent<PinCodeUpdateEventDetail>);',
               '       }',
               '    }',
               '    useEventCallback(elementRef, \'update\', eventCallback);',
