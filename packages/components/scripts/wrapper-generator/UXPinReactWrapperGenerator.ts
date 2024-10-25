@@ -103,6 +103,11 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
     // remove BreakpointCustomizable types since designers can't use JSON
     props = props.replace(/BreakpointCustomizable<(.*)>/g, '$1');
 
+
+    // hidden uxpin props which allows updating property from library level in uxpin editor
+    props = addProp(props, '/** @uxpinignoreprop */ \n  uxpinOnChange?: (prevValue: any, nextValue: any, propertyName: string) => void;');
+
+
     // remove useless props
     if (component === 'p-marque') {
       props = removeProp(props, 'href');
@@ -219,6 +224,21 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
     } else if (component === 'p-marque') {
       cleanedComponent = removeDestructuredProp(cleanedComponent, 'href');
       cleanedComponent = removeDestructuredProp(cleanedComponent, 'target');
+    }
+
+    if (component === 'p-pin-code') {
+      cleanedComponent = cleanedComponent.replace(
+          'useEventCallback(elementRef, \'update\', onUpdate as any);',
+          [
+              'const eventCallback = (e: CustomEvent<PinCodeUpdateEventDetail>) => {',
+              '       rest.uxpinOnChange(value, e.detail.value, \'value\');',
+              '       if (onUpdate) {',
+              '         onUpdate(e);',
+              '       }',
+              '    }',
+              '    useEventCallback(elementRef, \'update\', eventCallback);',
+          ].join('\n')
+      )
     }
 
     // cast BreakpointCustomizable default prop values to any because BreakpointCustomizable types are removed for uxpin
