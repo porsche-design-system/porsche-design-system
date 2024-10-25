@@ -131,6 +131,11 @@ export const routes: RouteType[] = [
     component: fromPages.FlyoutMultilevelPrefixedPage,
   },
   {
+    path: '/hidden-attribute-example',
+    name: 'HiddenAttributeExample',
+    component: fromPages.HiddenAttributeExample,
+  },
+  {
     path: '/inline-notification-example-action-button',
     name: 'Inline Notification Example Action Button',
     component: fromExamples.InlineNotificationExampleActionButton,
