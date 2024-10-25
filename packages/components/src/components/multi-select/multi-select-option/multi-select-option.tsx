@@ -38,7 +38,7 @@ export class MultiSelectOption {
 
   public render(): JSX.Element {
     validateProps(this, propTypes);
-    const { theme = 'light', selected, highlighted, textContent, hidden } = this.host;
+    const { theme = 'light', selected, highlighted, hidden, textContent } = this.host;
     attachComponentCss(this.host, getComponentCss, theme);
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
