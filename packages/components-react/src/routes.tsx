@@ -152,6 +152,11 @@ export const routes: RouteType[] = [
     element: <fromExamples.FlyoutMultilevelExampleCustomContentPage />,
   },
   {
+    name: 'Hidden Attribute Example',
+    path: '/hidden-attribute-example',
+    element: <fromExamples.HiddenAttributeExamplePage />,
+  },
+  {
     name: 'Inline Notification Example Action Button',
     path: '/inline-notification-example-action-button',
     element: <fromExamples.InlineNotificationExampleActionButtonPage />,

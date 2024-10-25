@@ -14,6 +14,7 @@ export * from './FlyoutExample';
 export * from './FlyoutMultilevelExample';
 export * from './FlyoutMultilevelExampleActiveIdentifier';
 export * from './FlyoutMultilevelExampleCustomContent';
+export * from './HiddenAttributeExample';
 export * from './InlineNotificationExampleActionButton';
 export * from './InlineNotificationExampleEvents';
 export * from './LinkTileProductExample';
