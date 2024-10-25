@@ -13,6 +13,7 @@
         "
       >
         <input
+          autofocus
           ref="search"
           type="search"
           name="search"

@@ -3,14 +3,38 @@
     <!-- patterns are rendered here  -->
     <router-view />
   </main>
-  <div v-else id="app">
-    <Header />
-    <MenuMobile />
-    <MenuDesktop />
+  <p-canvas
+    v-else
+    id="app"
+    :sidebar-start-open="isSidebarStartOpen"
+    :sidebar-end-open="isSidebarEndOpen"
+    :theme="storefrontTheme"
+    @sidebarStartUpdate="onSidebarStartUpdate"
+    @sidebarEndDismiss="onSidebarEndDismiss"
+  >
+    <a slot="title" :theme="$store.getters.storefrontTheme" href="/">Porsche Design System</a>
+    <VersionSelect slot="header-start" />
+    <CycleStorefrontTheme slot="header-end" />
+    <GitHubAnchor slot="header-end" />
+    <p-button
+      slot="header-end"
+      :theme="storefrontTheme"
+      icon="search"
+      variant="ghost"
+      compact="true"
+      hide-label="true"
+      aria-live="polite"
+      type="button"
+      @click="onSidebarEndOpen()"
+    >
+      Search within Porsche Design System documentation
+    </p-button>
+    <MenuDesktop slot="sidebar-start" />
+    <Search slot="sidebar-end" />
     <Main>
       <router-view class="router-view" />
     </Main>
-  </div>
+  </p-canvas>
 </template>
 
 <script lang="ts">
@@ -21,9 +45,19 @@
   import MenuMobile from '@/components/MenuMobile.vue';
   import MenuDesktop from '@/components/MenuDesktop.vue';
   import { Watch } from 'vue-property-decorator';
+  import GitHubAnchor from '@/components/GitHubAnchor.vue';
+  import CycleStorefrontTheme from '@/components/CycleStorefrontTheme.vue';
+  import type { StorefrontTheme } from '@/models';
+  import { breakpointS } from '@porsche-design-system/components-js/styles';
+  import VersionSelect from '@/components/VersionSelect.vue';
+  import Search from '@/components/Search.vue';
 
   @Component({
     components: {
+      Search,
+      VersionSelect,
+      CycleStorefrontTheme,
+      GitHubAnchor,
       Header,
       Main,
       MenuMobile,
@@ -37,6 +71,26 @@
 
     public get isLoading(): boolean {
       return this.$store.getters.isLoading;
+    }
+
+    public get storefrontTheme(): StorefrontTheme {
+      return this.$store.getters.storefrontTheme;
+    }
+
+    // initially, sidebar should be closed on mobile and opened on desktop
+    public isSidebarStartOpen: boolean = window.matchMedia(`(min-width: ${breakpointS}px)`).matches;
+    public isSidebarEndOpen: boolean = false;
+
+    onSidebarStartUpdate(e: { detail: { open: boolean } }): void {
+      this.isSidebarStartOpen = e.detail.open;
+    }
+
+    onSidebarEndOpen(): void {
+      this.isSidebarEndOpen = true;
+    }
+
+    onSidebarEndDismiss(): void {
+      this.isSidebarEndOpen = false;
     }
 
     @Watch('$route')
@@ -54,6 +108,7 @@
     --theme-background-base: #{$pds-theme-light-background-base};
     --theme-background-surface: #{$pds-theme-light-background-surface};
     --theme-background-shading: #{$pds-theme-light-background-shading};
+    --theme-background-frosted: #{$pds-theme-light-background-frosted};
     --theme-state-hover: #{$pds-theme-light-state-hover};
     --theme-contrast-medium: #{$pds-theme-light-contrast-medium};
     --theme-contrast-low: #{$pds-theme-light-contrast-low};
@@ -72,6 +127,7 @@
       --theme-background-base: #{$pds-theme-dark-background-base};
       --theme-background-surface: #{$pds-theme-dark-background-surface};
       --theme-background-shading: #{$pds-theme-dark-background-shading};
+      --theme-background-frosted: #{$pds-theme-dark-background-frosted};
       --theme-state-hover: #{$pds-theme-dark-state-hover};
       --theme-contrast-medium: #{$pds-theme-dark-contrast-medium};
       --theme-contrast-low: #{$pds-theme-dark-contrast-low};
@@ -91,6 +147,7 @@
       --theme-background-base: #{$pds-theme-light-background-base} !important;
       --theme-background-surface: #{$pds-theme-light-background-surface} !important;
       --theme-background-shading: #{$pds-theme-light-background-shading} !important;
+      --theme-background-frosted: #{$pds-theme-light-background-frosted} !important;
       --theme-state-hover: #{$pds-theme-light-state-hover} !important;
       --theme-contrast-medium: #{$pds-theme-light-contrast-medium} !important;
       --theme-contrast-low: #{$pds-theme-light-contrast-low} !important;
@@ -110,6 +167,7 @@
       --theme-background-base: #{$pds-theme-dark-background-base} !important;
       --theme-background-surface: #{$pds-theme-dark-background-surface} !important;
       --theme-background-shading: #{$pds-theme-dark-background-shading} !important;
+      --theme-background-frosted: #{$pds-theme-dark-background-frosted} !important;
       --theme-state-hover: #{$pds-theme-dark-state-hover} !important;
       --theme-contrast-medium: #{$pds-theme-dark-contrast-medium} !important;
       --theme-contrast-low: #{$pds-theme-dark-contrast-low} !important;
@@ -318,18 +376,5 @@
 
   .no-before::before {
     display: none;
-  }
-</style>
-
-<style scoped lang="scss">
-  @use '@porsche-design-system/components-js/styles' as *;
-  @use '@/styles/internal.variables.scss' as *;
-
-  #app {
-    @include pds-grid;
-    & {
-      grid-row-gap: $pds-spacing-fluid-x-large;
-      grid-template-rows: repeat(3, auto);
-    }
   }
 </style>

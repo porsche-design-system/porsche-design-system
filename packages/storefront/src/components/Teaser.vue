@@ -37,6 +37,7 @@
       content: '';
       position: absolute;
       inset: 0 calc(#{$pds-grid-extended-offset-base} * -1);
+      inset-inline-end: calc(clamp(16px, 12px + 1.25vw, 24px) * -1);
       // TODO: we should use a mixin, and maybe even split gradient and image into ::before and ::after
       background:
         var(--theme-custom-teaser-background) no-repeat bottom -6vw center / min(86%, 320px),
@@ -62,7 +63,6 @@
 
       @include pds-media-query-min('s') {
         inset-inline-start: 0;
-        inset-inline-end: calc(#{$pds-grid-extended-offset-s} * -1);
         // TODO: we should use a mixin, and maybe even split gradient and image into ::before and ::after
         background:
           var(--theme-custom-teaser-background) no-repeat bottom -6vw right 10% / min(50%, 600px),
@@ -75,7 +75,6 @@
       }
 
       @include pds-media-query-min('m') {
-        inset-inline-end: calc(#{$pds-grid-wide-offset-s} * -1);
         // TODO: we should use a mixin, and maybe even split gradient and image into ::before and ::after
         background:
           var(--theme-custom-teaser-background) no-repeat bottom -6vw right 10% / min(50%, 660px),
@@ -85,10 +84,6 @@
             var(--theme-custom-teaser-gradient-2) 52.6%,
             transparent 100%
           );
-      }
-
-      @include pds-media-query-min('xxl') {
-        inset-inline-end: calc(#{$pds-grid-wide-offset-xxl} * -1);
       }
     }
 

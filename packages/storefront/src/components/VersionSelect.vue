@@ -1,6 +1,5 @@
 <template>
   <label>
-    <p-heading :theme="$store.getters.storefrontTheme" size="small">Porsche Design System</p-heading>
     <select v-model="version" v-on:change="onVersionChange" aria-label="Switch Porsche Design System version">
       <option v-for="option in versionOptions" :key="option" :value="option">{{ option }}</option>
     </select>
@@ -36,19 +35,28 @@
 
   select {
     @include pds-text-x-small;
-    & {
-      @include pds-focus;
-    }
-    & {
-      -webkit-appearance: none;
-      appearance: none;
-      border: 0;
-      padding: $pds-spacing-static-x-small $pds-spacing-static-small;
-      cursor: pointer;
-      box-sizing: content-box;
-      border-radius: $pds-border-radius-small;
-      background: var(--theme-state-hover);
-      color: var(--theme-primary);
+    @include pds-focus;
+    @include pds-frosted-glass;
+    -webkit-appearance: none;
+    appearance: none;
+    border: 0;
+    width: 36px;
+    height: 36px;
+    text-align: center;
+    cursor: pointer;
+    box-sizing: content-box;
+    border-radius: $pds-border-radius-small;
+    background: var(--theme-background-frosted);
+    color: var(--theme-primary);
+    transition:
+      border-color #{$pds-motion-duration-short},
+      background-color #{$pds-motion-duration-short};
+
+    @media (hover: hover) {
+      &:hover {
+        background-color: hsl(240 4% 70% / 35%);
+        border-color: hsl(240 4% 70% / 35%);
+      }
     }
   }
 </style>
