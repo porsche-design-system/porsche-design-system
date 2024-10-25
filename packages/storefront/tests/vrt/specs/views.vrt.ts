@@ -1,4 +1,3 @@
-/*
 import { expect, test } from '@playwright/test';
 import {
   schemes,
@@ -60,4 +59,3 @@ for (const [name, url] of Object.entries(urls)) {
     });
   });
 }
-*/
