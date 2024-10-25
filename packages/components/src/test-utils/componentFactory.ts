@@ -3,7 +3,7 @@ import { type ClassType, TAG_NAMES_CONSTRUCTOR_MAP } from './tag-names-construct
 
 export const componentFactory = (tagName: TagName): ClassType => {
   const component = new TAG_NAMES_CONSTRUCTOR_MAP[tagName]();
-  component.host = document.createElement(tagName) as HTMLElement;
+  component.host = document.createElement(tagName);
   component.host.attachShadow({ mode: 'open' });
   return component;
 };

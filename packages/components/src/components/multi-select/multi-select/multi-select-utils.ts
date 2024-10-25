@@ -14,7 +14,7 @@ import type { OptgroupInternalHTMLProps } from '../../optgroup/optgroup-utils';
 
 export type MultiSelectState = FormState;
 export type MultiSelectDropdownDirection = SelectComponentsDropdownDirection;
-export type MultiSelectOption = HTMLPMultiSelectOptionElement & MultiSelectOptionInternalHTMLProps & HTMLElement;
+export type MultiSelectOption = HTMLPMultiSelectOptionElement & MultiSelectOptionInternalHTMLProps;
 export type MultiSelectOptgroup = HTMLPOptgroupElement & OptgroupInternalHTMLProps;
 
 /** @deprecated */

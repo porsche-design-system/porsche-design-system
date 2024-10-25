@@ -1427,10 +1427,6 @@ export namespace Components {
          */
         "disabled"?: boolean;
         /**
-          * Hides the option.
-         */
-        "hidden"?: boolean;
-        /**
           * The option value.
          */
         "value": string;
@@ -1731,10 +1727,6 @@ export namespace Components {
           * Disables the option.
          */
         "disabled"?: boolean;
-        /**
-          * Hides the option.
-         */
-        "hidden"?: boolean;
         /**
           * The option value.
          */
@@ -4630,10 +4622,6 @@ declare namespace LocalJSX {
          */
         "disabled"?: boolean;
         /**
-          * Hides the option.
-         */
-        "hidden"?: boolean;
-        /**
           * The option value.
          */
         "value"?: string;
@@ -4958,10 +4946,6 @@ declare namespace LocalJSX {
           * Disables the option.
          */
         "disabled"?: boolean;
-        /**
-          * Hides the option.
-         */
-        "hidden"?: boolean;
         /**
           * The option value.
          */
