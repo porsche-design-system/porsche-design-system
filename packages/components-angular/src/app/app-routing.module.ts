@@ -161,6 +161,11 @@ export const routes: ExtendedRoute[] = [
     component: fromExamples.FlyoutMultilevelExampleCustomContentComponent,
   },
   {
+    name: 'Hidden Attribute Example',
+    path: 'hidden-attribute-example',
+    component: fromExamples.HiddenAttributeExampleComponent,
+  },
+  {
     name: 'Inline Notification Example Action Button',
     path: 'inline-notification-example-action-button',
     component: fromExamples.InlineNotificationExampleActionButtonComponent,
