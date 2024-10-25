@@ -105,7 +105,7 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
 
 
     // hidden uxpin props which allows updating property from library level in uxpin editor
-    props = addProp(props, '/** @uxpinignoreprop */ \n  uxpinOnChange?: (prevValue: any, nextValue: any, propertyName: string) => void;');
+    props = addProp(props, '/** @uxpinignoreprop */ \n  uxpinOnChange: (prevValue: any, nextValue: any, propertyName: string) => void;');
 
 
     // remove useless props
@@ -230,7 +230,7 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
       cleanedComponent = cleanedComponent.replace(
           'useEventCallback(elementRef, \'update\', onUpdate as any);',
           [
-              'const eventCallback = (e: CustomEvent<PinCodeUpdateEventDetail>) => {',
+              'const eventCallback = (e) => {',
               '       rest.uxpinOnChange(value, e.detail.value, \'value\');',
               '       if (onUpdate) {',
               '         onUpdate(e);',
