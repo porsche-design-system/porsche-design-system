@@ -241,6 +241,21 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
       )
     }
 
+    if (component === 'p-flyout') {
+      cleanedComponent = cleanedComponent.replace(
+          'useEventCallback(elementRef, \'dismiss\', onDismiss as any);',
+          [
+            'const dismissCallback = (e:Event) => {',
+            '       rest.uxpinOnChange(open, false, \'open\');',
+            '       if (onDismiss) {',
+            '         onDismiss(e as CustomEvent<void>);',
+            '       }',
+            '    }',
+            '    useEventCallback(elementRef, \'dismiss\', dismissCallback);',
+          ].join('\n')
+      )
+    }
+
     // cast BreakpointCustomizable default prop values to any because BreakpointCustomizable types are removed for uxpin
     extendedProps
       .filter((prop) => prop.isDefaultValueComplex && prop.defaultValue.match(/\bbase\b/))
