@@ -995,7 +995,7 @@ export namespace Components {
         /**
           * Displays as compact version.
          */
-        "compact"?: boolean;
+        "compact"?: BreakpointCustomizable<boolean>;
         /**
           * Special download attribute to open native browser download dialog if target url points to a downloadable file.
          */
@@ -4166,7 +4166,7 @@ declare namespace LocalJSX {
         /**
           * Displays as compact version.
          */
-        "compact"?: boolean;
+        "compact"?: BreakpointCustomizable<boolean>;
         /**
           * Special download attribute to open native browser download dialog if target url points to a downloadable file.
          */

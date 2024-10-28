@@ -75,7 +75,7 @@ export const getLinkButtonStyles = (
   hideLabel: BreakpointCustomizable<boolean>,
   isDisabledOrLoading: boolean,
   hasSlottedAnchor: boolean,
-  compact: boolean,
+  compact: BreakpointCustomizable<boolean>,
   cssVariableInternalScaling: string,
   theme: Theme
 ): Styles => {
