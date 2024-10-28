@@ -101,6 +101,7 @@ export const getComponentCss = (
       insetInlineEnd: spacingFluidSmall,
       marginBlockStart: `calc(${spacingFluidMedium} * -1)`,
       justifySelf: 'flex-end',
+      height: 'fit-content',
     },
   });
 };
