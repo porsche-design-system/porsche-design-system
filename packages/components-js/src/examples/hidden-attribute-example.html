@@ -1,0 +1,30 @@
+<p-text
+  >In vanilla js even if hidden is explicitly defined as @Prop in the component hidden="false" won't work! For all other
+  frameworks hidden="false" should work since the typing allows a boolean value here.</p-text
+>
+
+<p-select name="options" label="Some Label" value="a">
+  <p-select-option title="visible" value="a"> Option should be visible (no hidden attribute) </p-select-option>
+  <p-select-option title="hidden" value="b" hidden>
+    Option shouldn't be visible (hidden attribute without value)
+  </p-select-option>
+  <p-select-option title="hidden" value="c" hidden="true">
+    Option shouldn't be visible (hidden attribute with boolean true)
+  </p-select-option>
+  <p-select-option title="hidden" value="d" hidden="false">
+    Option shouldn't be visible (hidden attribute with boolean false)
+  </p-select-option>
+</p-select>
+
+<p-button title="visible" name="option" value="A" type="submit">
+  Button should be visible (no hidden attribute)
+</p-button>
+<p-button title="hidden" name="option" value="A" type="submit" hidden>
+  Button shouldn't be visible (hidden attribute without value)
+</p-button>
+<p-button title="hidden" name="option" value="B" type="submit" hidden="true">
+  Button shouldn't be visible (hidden attribute with boolean true)
+</p-button>
+<p-button title="hidden" name="option" value="B" type="submit" hidden="false">
+  Button shouldn't visible (hidden attribute with boolean false)
+</p-button>
