@@ -142,7 +142,7 @@ export class Canvas {
               aria-label={`Navigation sidebar ${this.sidebarStartOpen ? 'open' : 'closed'}`}
             >
               <div class="sidebar__scroller">
-                <header class="sidebar__header sidebar__header--start">
+                <div class="sidebar__header sidebar__header--start">
                   <PrefixedTagNames.pButton
                     theme={this.theme}
                     icon="sidebar"
@@ -154,10 +154,12 @@ export class Canvas {
                   >
                     {this.sidebarStartOpen ? 'Close' : 'Open'} navigation sidebar
                   </PrefixedTagNames.pButton>
-                  <h2>
-                    <slot name="title" />
-                  </h2>
-                </header>
+                  {this.hasTitle && (
+                    <h2>
+                      <slot name="title" />
+                    </h2>
+                  )}
+                </div>
                 <div class="sidebar__content">
                   <slot name="sidebar-start" />
                 </div>
@@ -174,7 +176,7 @@ export class Canvas {
               aria-label={`Settings sidebar ${this.sidebarEndOpen ? 'open' : 'closed'}`}
             >
               <div class="sidebar__scroller">
-                <header class="sidebar__header sidebar__header--end">
+                <div class="sidebar__header sidebar__header--end">
                   <PrefixedTagNames.pButton
                     theme={this.theme}
                     icon="close"
@@ -186,7 +188,7 @@ export class Canvas {
                   >
                     {this.sidebarStartOpen ? 'Close' : 'Open'} navigation sidebar
                   </PrefixedTagNames.pButton>
-                </header>
+                </div>
                 <div class="sidebar__content">
                   <slot name="sidebar-end" />
                 </div>
