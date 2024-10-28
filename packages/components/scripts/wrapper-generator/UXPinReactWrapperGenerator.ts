@@ -13,6 +13,7 @@ const addNestedIndentation = (x: string): string => `  ${x}`;
 
 export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
   protected projectDir = 'uxpin-wrapper';
+  protected hiddenComponents: TagName[] = [];
 
   constructor() {
     super();
@@ -35,6 +36,12 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
       'p-select-wrapper',
       'p-textarea-wrapper',
     ];
+
+    // components which should be generated and hidden in uxpin editor
+    this.hiddenComponents = [
+        'p-text-field-wrapper',
+        'p-radio-button-wrapper',
+    ]
   }
 
   public getComponentFileName(component: TagName): string {
@@ -360,6 +367,10 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
       'p-radio-button-wrapper': {
         props: { label: 'RadioButtonWrapper' },
         children: '<DummyRadioButton uxpId="dummy-radio-button" />',
+        formComponent: {
+          name: 'RadioButton',
+          extraProps: { label: 'My RadioButton', checked: true },
+        },
       },
       'p-segmented-control': {
         props: { value: 1 },
@@ -387,6 +398,10 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
       'p-text-field-wrapper': {
         props: { label: 'TextFieldWrapper' },
         children: '<DummyTextField uxpId="dummy-text-field" />',
+        formComponent: {
+          name: 'TextField',
+          extraProps: { label: 'My TextField' },
+        },
       },
       'p-textarea-wrapper': {
         props: { label: 'TextareaWrapper' },
@@ -556,7 +571,12 @@ export default <${formComponentName} ${stringifiedProps} />;
 
   private generateUXPinConfigFile(): AdditionalFile {
     const componentsBasePath = 'src/lib/components/';
-    const componentPaths = this.relevantComponentTagNames
+    const uxpinComponents = [
+      `'src/form/RadioButton/RadioButton.tsx'`,
+      `'src/form/TextField/TextField.tsx'`,
+    ];
+    const componentPaths = [...this.relevantComponentTagNames
+      .filter((component) => !this.hiddenComponents.includes(component))
       .map((component) => {
         const componentSubDir = this.shouldGenerateFolderPerComponent(component)
           ? this.stripFileExtension(component) + '/'
@@ -564,8 +584,13 @@ export default <${formComponentName} ${stringifiedProps} />;
         const fileName = this.getComponentFileName(component);
         return `${componentsBasePath}${componentSubDir}${fileName}`;
       })
-      .map((path) => `'${path}'`)
-      .join(',\n          ');
+      .map((path) => `'${path}'`),
+      ...uxpinComponents
+    ].sort((componentA, componentB) => (
+      componentA.split('/').pop().toLowerCase()
+          .localeCompare(componentB.split('/').pop().toLowerCase())
+    )).join(',\n          ');
+
 
     const content = `module.exports = {
   components: {
