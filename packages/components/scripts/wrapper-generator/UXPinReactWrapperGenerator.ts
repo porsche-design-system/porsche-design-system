@@ -18,12 +18,22 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
     super();
     this.ignoreComponents = [
       ...this.ignoreComponents,
+      'p-canvas',
+      'p-checkbox-wrapper',
       'p-content-wrapper',
+      'p-fieldset-wrapper',
       'p-flex',
       'p-flex-item',
+      'p-flyout-multilevel',
+      'p-flyout-multilevel-item',
       'p-grid',
       'p-grid-item',
+      'p-headline',
+      'p-link-social',
+      'p-marque',
       'p-pagination',
+      'p-select-wrapper',
+      'p-textarea-wrapper',
     ];
   }
 
@@ -319,10 +329,6 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
       'p-checkbox-wrapper': {
         props: { label: 'CheckboxWrapper' },
         children: '<DummyCheckbox uxpId="dummy-checkbox" />',
-        formComponent: {
-          name: 'Checkbox',
-          extraProps: { label: 'My Checkbox', checked: true },
-        },
       },
       'p-fieldset': {
         props: { label: 'Fieldset' },
@@ -354,10 +360,6 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
       'p-radio-button-wrapper': {
         props: { label: 'RadioButtonWrapper' },
         children: '<DummyRadioButton uxpId="dummy-radio-button" />',
-        formComponent: {
-          name: 'RadioButton',
-          extraProps: { label: 'My RadioButton', checked: true },
-        },
       },
       'p-segmented-control': {
         props: { value: 1 },
@@ -374,10 +376,6 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
         props: { label: 'SelectWrapper' },
         children:
           '<DummySelect uxpId="dummy-select" options={Array.from(Array(3)).map((_, i) => `Option ${i + 1}`)} />',
-        formComponent: {
-          name: 'SelectWrapperDummy',
-          extraProps: { label: 'My Select', options: ['Option 1', 'Option 2', 'Option 3'] },
-        },
       },
       'p-stepper-horizontal': {
         children: [
@@ -389,18 +387,10 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
       'p-text-field-wrapper': {
         props: { label: 'TextFieldWrapper' },
         children: '<DummyTextField uxpId="dummy-text-field" />',
-        formComponent: {
-          name: 'TextField',
-          extraProps: { label: 'My TextField' },
-        },
       },
       'p-textarea-wrapper': {
         props: { label: 'TextareaWrapper' },
         children: '<DummyTextarea uxpId="dummy-textarea" />',
-        formComponent: {
-          name: 'Textarea',
-          extraProps: { label: 'My Textarea' },
-        },
       },
       'p-table': {
         children: [
@@ -586,10 +576,6 @@ export default <${formComponentName} ${stringifiedProps} />;
         include: [
           ${componentPaths}
         ],
-      },
-      {
-        name: 'Form components',
-        include: ['src/form/*/*.tsx'],
       },
       {
         name: 'Dummy',
