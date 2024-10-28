@@ -66,8 +66,8 @@ export class ModelSignature {
     return (
       <Host>
         <slot />
-        {/* @ts-expect-error although `fetchpriority` should already be supported by TSX, it's not with Stencil/TSX */}
-        <img fetchpriority={fetchPriority} loading={loading} src={getSvgUrl(this.model)} alt={this.model} />
+        {/* @ts-expect-error although `fetchPriority` should already be supported by TSX, it's not with Stencil/TSX */}
+        <img fetchPriority={fetchPriority} loading={loading} src={getSvgUrl(this.model)} alt={this.model} />
       </Host>
     );
   }
