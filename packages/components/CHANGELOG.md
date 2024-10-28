@@ -14,6 +14,13 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ### [Unreleased]
 
+#### Fixed
+
+- `jsdom-polyfill`: errors from included polyfill packages
+  ([3543](https://github.com/porsche-design-system/porsche-design-system/pull/3543))
+- React: global `hidden` attribute with value `false` not working
+  ([#3555](https://github.com/porsche-design-system/porsche-design-system/pull/3555))
+
 ### [3.20.0] - 2024-10-24
 
 ### [3.20.0-rc.1] - 2024-10-24
@@ -22,8 +29,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 - React: better tree-shaking for `@porsche-design-system/components-react`
   ([#3554](https://github.com/porsche-design-system/porsche-design-system/pull/3554))
-- `Icon`: `sidebar`
-  ([#3556](https://github.com/porsche-design-system/porsche-design-system/pull/3556))
+- `Icon`: `sidebar` ([#3556](https://github.com/porsche-design-system/porsche-design-system/pull/3556))
 
 #### Changed
 

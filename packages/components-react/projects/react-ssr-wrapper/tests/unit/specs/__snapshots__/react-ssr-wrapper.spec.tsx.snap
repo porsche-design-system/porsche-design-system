@@ -5521,7 +5521,7 @@ img:dir(rtl) {
   </p-tabs-item>
   <p-tabs-item
     data-ssr=""
-    hidden="true"
+    hidden=""
   >
     <template
       shadowroot="open"
@@ -6309,7 +6309,7 @@ img {
         <p-button-pure
           class="button"
           data-ssr=""
-          hidden="true"
+          hidden=""
           tabindex="-1"
         >
           <template

@@ -13,6 +13,7 @@ export { default as FlyoutExample } from './FlyoutExample.vue';
 export { default as FlyoutMultilevelExample } from './FlyoutMultilevelExample.vue';
 export { default as FlyoutMultilevelExampleActiveIdentifier } from './FlyoutMultilevelExampleActiveIdentifier.vue';
 export { default as FlyoutMultilevelExampleCustomContent } from './FlyoutMultilevelExampleCustomContent.vue';
+export { default as HiddenAttributeExample } from './HiddenAttributeExample.vue';
 export { default as InlineNotificationExampleActionButton } from './InlineNotificationExampleActionButton.vue';
 export { default as InlineNotificationExampleEvents } from './InlineNotificationExampleEvents.vue';
 export { default as LinkTileProductExample } from './LinkTileProductExample.vue';
