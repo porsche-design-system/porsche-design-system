@@ -115,6 +115,7 @@ export class ReactWrapperGenerator extends AbstractWrapperGenerator {
 
     const componentPropsArr: string[] = [
       '...rest',
+      'hidden: rest.hidden ? "" : undefined',
       `class: useMergedClass(elementRef, className)`,
       'ref: syncRef(elementRef, ref)',
     ];
