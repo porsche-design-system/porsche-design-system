@@ -86,7 +86,7 @@
   "devDependencies": {
     "@arethetypeswrong/core": "^0.15.1",
     "@porsche-design-system/shared": "0.0.0",
-    "ag-grid-community": "32.2.1",
+    "ag-grid-community": "32.3.1",
     "ag-grid-enterprise": "32.2.1",
     "devtools-protocol": "^0.0.1304228",
     "jsdom": "^24.1.0",
