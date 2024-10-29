@@ -1,6 +1,6 @@
 <template>
   <label>
-    <select v-model="version" v-on:change="onVersionChange" aria-label="Switch Porsche Design System version">
+    <select v-model="version" @change="onVersionChange" aria-label="Switch Porsche Design System version">
       <option v-for="option in versionOptions" :key="option" :value="option">{{ option }}</option>
     </select>
   </label>
@@ -37,14 +37,14 @@
     @include pds-text-x-small;
     @include pds-focus;
     @include pds-frosted-glass;
-    -webkit-appearance: none;
-    appearance: none;
-    border: 0;
+    all: unset;
+    display: grid;
+    place-items: center;
     width: 36px;
     height: 36px;
     text-align: center;
+    text-align-last: center;
     cursor: pointer;
-    box-sizing: content-box;
     border-radius: $pds-border-radius-small;
     background: var(--theme-background-frosted);
     color: var(--theme-primary);

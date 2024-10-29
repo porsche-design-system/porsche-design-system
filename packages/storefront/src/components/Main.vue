@@ -1,7 +1,7 @@
 <template>
-  <main>
+  <div id="main">
     <slot />
-  </main>
+  </div>
 </template>
 
 <script lang="ts">
@@ -19,7 +19,7 @@
   @use '@porsche-design-system/components-js/styles' as *;
   @use '@/styles/internal.variables.scss' as *;
 
-  main {
+  #main {
     position: relative;
     grid-column: $pds-grid-extended-column-start / $pds-grid-extended-column-end;
 

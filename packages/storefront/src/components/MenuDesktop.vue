@@ -27,6 +27,7 @@
   .menu-desktop {
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
     gap: $pds-spacing-fluid-large;
   }
 </style>

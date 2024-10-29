@@ -6,6 +6,7 @@
   <p-canvas
     v-else
     id="app"
+    href="/"
     :sidebar-start-open="isSidebarStartOpen"
     :sidebar-end-open="isSidebarEndOpen"
     :theme="storefrontTheme"
@@ -34,6 +35,10 @@
     <Main>
       <router-view class="router-view" />
     </Main>
+    <video v-if="isHome" slot="background" poster="assets/bg.webp" loop muted autoplay playsinline aria-hidden="true">
+      <source src="assets/bg.webm" type="video/webm" />
+      <source src="assets/bg.mp4" type="video/mp4" />
+    </video>
   </p-canvas>
 </template>
 
@@ -65,6 +70,10 @@
     },
   })
   export default class App extends Vue {
+    public get isHome(): boolean {
+      return this.$route.name === 'home';
+    }
+
     public get isStandalone(): boolean {
       return this.$route.meta?.standalone;
     }
@@ -200,8 +209,14 @@
     box-sizing: border-box;
   }
 
-  main {
-    display: block;
+  #main {
+    container-type: inline-size;
+
+    & > .router-view {
+      padding-inline: clamp(0px, -39px + 5.172413793103448cqw, 60px);
+      margin-inline: auto;
+      max-width: 75rem;
+    }
   }
 
   .router-link {

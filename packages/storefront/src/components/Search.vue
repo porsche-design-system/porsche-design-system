@@ -3,7 +3,7 @@
     <ais-search-box :class-names="{ 'ais-SearchBox': 'search' }">
       <debounced-search-box :on-focus="shouldDisplayHits" v-on:query-change="shouldDisplayHits" />
     </ais-search-box>
-    <div v-show="displayHits" class="spacer">
+    <div class="spacer">
       <ais-state-results>
         <template v-slot="{ results: { hits } }">
           {{ onHitsChange(hits) }}
