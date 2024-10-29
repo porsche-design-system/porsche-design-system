@@ -75,6 +75,7 @@ import { FlyoutBasicComponent } from './generated/flyout-basic.component';
 import { FlyoutCssVariablesComponent } from './generated/flyout-css-variables.component';
 import { FlyoutFooterComponent } from './generated/flyout-footer.component';
 import { FlyoutFooterScrollableContentComponent } from './generated/flyout-footer-scrollable-content.component';
+import { FlyoutFooterScrolledComponent } from './generated/flyout-footer-scrolled.component';
 import { FlyoutGridComponent } from './generated/flyout-grid.component';
 import { FlyoutHeaderComponent } from './generated/flyout-header.component';
 import { FlyoutHeaderFooterComponent } from './generated/flyout-header-footer.component';
@@ -114,6 +115,7 @@ import { ModalBackdropShadingComponent } from './generated/modal-backdrop-shadin
 import { ModalBasicComponent } from './generated/modal-basic.component';
 import { ModalCssVariablesComponent } from './generated/modal-css-variables.component';
 import { ModalDisableCloseButtonComponent } from './generated/modal-disable-close-button.component';
+import { ModalFooterScrolledComponent } from './generated/modal-footer-scrolled.component';
 import { ModalFullscreenComponent } from './generated/modal-fullscreen.component';
 import { ModalFullscreenResponsiveComponent } from './generated/modal-fullscreen-responsive.component';
 import { ModalGridComponent } from './generated/modal-grid.component';
@@ -208,6 +210,7 @@ export const generatedPages = [
   FlyoutCssVariablesComponent,
   FlyoutFooterComponent,
   FlyoutFooterScrollableContentComponent,
+  FlyoutFooterScrolledComponent,
   FlyoutGridComponent,
   FlyoutHeaderComponent,
   FlyoutHeaderFooterComponent,
@@ -247,6 +250,7 @@ export const generatedPages = [
   ModalBasicComponent,
   ModalCssVariablesComponent,
   ModalDisableCloseButtonComponent,
+  ModalFooterScrolledComponent,
   ModalFullscreenComponent,
   ModalFullscreenResponsiveComponent,
   ModalGridComponent,
@@ -514,6 +518,11 @@ export const generatedRoutes: ExtendedRoute[] = [
     component: FlyoutFooterScrollableContentComponent,
   },
   {
+    name: 'Flyout Footer Scrolled',
+    path: 'flyout-footer-scrolled',
+    component: FlyoutFooterScrolledComponent,
+  },
+  {
     name: 'Flyout Grid',
     path: 'flyout-grid',
     component: FlyoutGridComponent,
@@ -707,6 +716,11 @@ export const generatedRoutes: ExtendedRoute[] = [
     name: 'Modal Disable Close Button',
     path: 'modal-disable-close-button',
     component: ModalDisableCloseButtonComponent,
+  },
+  {
+    name: 'Modal Footer Scrolled',
+    path: 'modal-footer-scrolled',
+    component: ModalFooterScrolledComponent,
   },
   {
     name: 'Modal Fullscreen',
