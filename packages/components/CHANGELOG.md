@@ -21,6 +21,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 #### Fixed
 
+- `Flyout`, `Modal`:
+  - dismiss button not sticky in case header slot is not present
+    ([#3574](https://github.com/porsche-design-system/porsche-design-system/pull/3574))
+  - dismiss button overlaps content area
+    ([#3574](https://github.com/porsche-design-system/porsche-design-system/pull/3574))
 - `jsdom-polyfill`: errors from included polyfill packages
   ([3543](https://github.com/porsche-design-system/porsche-design-system/pull/3543))
 - React: global `hidden` attribute with value `false` not working

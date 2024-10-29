@@ -8380,7 +8380,7 @@ dialog::backdrop {
   inset-block-start: clamp(8px, 0.5vw + 6px, 16px);
   inset-inline-end: clamp(8px, 0.5vw + 6px, 16px);
   margin-block-start: calc(clamp(16px, 1.25vw + 12px, 36px) * -1);
-  justify-self: flex-end;
+  place-self: flex-start flex-end;
 }
         </style>
         <dialog
@@ -9473,7 +9473,7 @@ dialog::backdrop {
   inset-block-start: clamp(8px, 0.5vw + 6px, 16px);
   inset-inline-end: clamp(8px, 0.5vw + 6px, 16px);
   margin-block-start: calc(clamp(16px, 1.25vw + 12px, 36px) * -1);
-  justify-self: flex-end;
+  place-self: flex-start flex-end;
 }
     </style>
     <dialog
@@ -12348,7 +12348,7 @@ dialog::backdrop {
   inset-block-start: clamp(8px, 0.5vw + 6px, 16px);
   margin-block-start: calc(clamp(16px, 1.25vw + 12px, 36px) * -1);
   margin-inline-end: clamp(8px, 0.5vw + 6px, 16px);
-  justify-self: flex-end;
+  place-self: flex-start flex-end;
 }
     </style>
     <dialog
