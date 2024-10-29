@@ -10,11 +10,13 @@ import {
 import { Component, Element, Event, type EventEmitter, h, Host, type JSX, Prop, State } from '@stencil/core';
 import { getComponentCss } from './canvas-styles';
 import { breakpointS, breakpointM } from '@porsche-design-system/styles';
-import { type CanvasSidebarStartUpdateEventDetail } from './canvas-utils';
+import { type CanvasSidebarStartUpdateEventDetail, type CanvasTarget } from './canvas-utils';
 
 const propTypes: PropTypes<typeof Canvas> = {
   sidebarStartOpen: AllowedTypes.boolean,
   sidebarEndOpen: AllowedTypes.boolean,
+  href: AllowedTypes.string,
+  target: AllowedTypes.string,
   theme: AllowedTypes.oneOf<Theme>(THEMES),
 };
 
@@ -42,6 +44,12 @@ export class Canvas {
 
   /** Open the sidebar on the end side */
   @Prop() public sidebarEndOpen?: boolean = false;
+
+  /** When providing an url then the wordmark/crest will be rendered as `<a>`. */
+  @Prop() public href?: string;
+
+  /** Target attribute where the anchor of wordmark/crest should be opened. */
+  @Prop() public target?: CanvasTarget = '_self';
 
   /** Adapts the color depending on the theme. */
   @Prop() public theme?: Theme = 'light';
@@ -118,8 +126,14 @@ export class Canvas {
               )}
               <slot name="header-start" />
             </div>
-            <PrefixedTagNames.pCrest class="header__crest" />
-            <PrefixedTagNames.pWordmark class="header__wordmark" size="inherit" theme={this.theme} />
+            <PrefixedTagNames.pCrest class="header__crest" href={this.href} target={this.target} />
+            <PrefixedTagNames.pWordmark
+              class="header__wordmark"
+              size="inherit"
+              href={this.href}
+              target={this.target}
+              theme={this.theme}
+            />
             <div class="header__area header__area--end">
               <slot name="header-end" />
             </div>

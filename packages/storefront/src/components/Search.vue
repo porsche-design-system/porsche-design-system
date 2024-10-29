@@ -3,7 +3,7 @@
     <ais-search-box :class-names="{ 'ais-SearchBox': 'search' }">
       <debounced-search-box :on-focus="shouldDisplayHits" v-on:query-change="shouldDisplayHits" />
     </ais-search-box>
-    <div v-show="displayHits" class="spacer">
+    <div class="spacer">
       <ais-state-results>
         <template v-slot="{ results: { hits } }">
           {{ onHitsChange(hits) }}
@@ -124,27 +124,6 @@
     position: relative;
   }
 
-  .spacer {
-    @include pds-media-query-min('m') {
-      position: absolute;
-      bottom: -20px;
-      left: 50%;
-      z-index: 1;
-      filter: drop-shadow(0 0 16px rgba(0, 0, 0, 0.3));
-
-      &::before {
-        content: '';
-        position: absolute;
-        border-style: solid;
-        bottom: 0;
-        left: 50%;
-        transform: translateX(-50%);
-        border-width: 0 12px 12px;
-        border-color: transparent transparent var(--theme-custom-background-search);
-      }
-    }
-  }
-
   .ais-hits-list,
   ul {
     list-style: none;
@@ -157,20 +136,8 @@
     text-decoration: none;
   }
 
-  .hits {
-    @include pds-media-query-min('m') {
-      position: absolute;
-      width: 263px;
-      max-height: 70vh;
-      right: 0;
-      top: 0;
-      transform: translate(50%, 0);
-      padding: $pds-spacing-static-medium 0;
-      border-radius: $pds-border-radius-small;
-      background: var(--theme-custom-background-search);
-      overflow: auto;
-      z-index: 1;
-    }
+  .spacer {
+    margin-top: $pds-spacing-fluid-medium;
   }
 
   .category {
@@ -182,10 +149,6 @@
 
     @include pds-media-query-max('m') {
       margin-top: $pds-spacing-fluid-large;
-    }
-
-    @include pds-media-query-min('m') {
-      padding: $pds-spacing-static-small $pds-spacing-static-large $pds-spacing-static-small;
     }
   }
 </style>

@@ -5,54 +5,54 @@
       class="code-before-table"
       v-html="breakpointCustomizableGeneric"
     ></code>
-    <table v-if="type === 'props'">
-      <thead>
-        <tr>
-          <th>Property</th>
-          <th>Attribute</th>
-          <th>Description</th>
-          <th>Type</th>
-          <th>Default</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr v-for="(value, name, index) in propsMeta" :key="index">
-          <td>
+    <p-table v-if="type === 'props'">
+      <p-table-head>
+        <p-table-head-row>
+          <p-table-head-cell>Property</p-table-head-cell>
+          <p-table-head-cell>Attribute</p-table-head-cell>
+          <p-table-head-cell>Description</p-table-head-cell>
+          <p-table-head-cell>Type</p-table-head-cell>
+          <p-table-head-cell>Default</p-table-head-cell>
+        </p-table-head-row>
+      </p-table-head>
+      <p-table-body>
+        <p-table-row v-for="(value, name, index) in propsMeta" :key="index">
+          <p-table-cell>
             <code>{{ name }}</code>
             <span v-if="value.isDeprecated" title="deprecated"> 🚫</span>
             <span v-else-if="value.isExperimental" title="experimental"> 🧪</span>
-          </td>
-          <td>
+          </p-table-cell>
+          <p-table-cell>
             <code>{{ paramCase(name) }}</code>
             <span v-if="value.isDeprecated" title="deprecated"> 🚫</span>
             <span v-else-if="value.isExperimental" title="experimental"> 🧪</span>
-          </td>
-          <td v-html="formatDescription(value)"></td>
-          <td v-html="formatPropType(value)"></td>
-          <td v-html="formatPropDefaultValue(value)"></td>
-        </tr>
-      </tbody>
-    </table>
+          </p-table-cell>
+          <p-table-cell multiline="true" v-html="formatDescription(value)" style="min-width: 10rem"></p-table-cell>
+          <p-table-cell v-html="formatPropType(value)"></p-table-cell>
+          <p-table-cell v-html="formatPropDefaultValue(value)"></p-table-cell>
+        </p-table-row>
+      </p-table-body>
+    </p-table>
 
-    <table v-else-if="type === 'events'">
-      <thead>
-        <tr>
-          <th>Event</th>
-          <th>Description</th>
-          <th>Type</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr v-for="(value, name, index) in eventsMeta" :key="index">
-          <td>
+    <p-table v-else-if="type === 'events'">
+      <p-table-head>
+        <p-table-head-row>
+          <p-table-head-cell>Event</p-table-head-cell>
+          <p-table-head-cell>Description</p-table-head-cell>
+          <p-table-head-cell>Type</p-table-head-cell>
+        </p-table-head-row>
+      </p-table-head>
+      <p-table-body>
+        <p-table-row v-for="(value, name, index) in eventsMeta" :key="index">
+          <p-table-cell>
             <code>{{ name }}</code>
             <span v-if="value.isDeprecated" title="deprecated"> 🚫</span>
-          </td>
-          <td v-html="formatDescription(value)"></td>
-          <td v-html="formatEventType(value)"></td>
-        </tr>
-      </tbody>
-    </table>
+          </p-table-cell>
+          <p-table-cell multiline="true" v-html="formatDescription(value)" style="min-width: 10rem"></p-table-cell>
+          <p-table-cell v-html="formatEventType(value)"></p-table-cell>
+        </p-table-row>
+      </p-table-body>
+    </p-table>
   </div>
 </template>
 
@@ -134,9 +134,8 @@
     text-transform: uppercase;
   }
 
-  table,
-  :deep(table) {
-    @include tableStyles;
+  p-table {
+    margin-top: $pds-spacing-fluid-medium;
   }
 
   code,

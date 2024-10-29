@@ -1,14 +1,16 @@
 <template>
-  <p-button-pure
+  <p-button
     :theme="storefrontTheme"
     :icon="getIcon()"
+    variant="ghost"
+    compact="true"
     hide-label="true"
     aria-live="polite"
     type="button"
     @click="cycleTheme()"
   >
     Use {{ getIcon() === 'moon' ? 'dark' : 'light' }} mode
-  </p-button-pure>
+  </p-button>
 </template>
 
 <script lang="ts">

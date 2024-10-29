@@ -1,13 +1,15 @@
 <template>
-  <p-link-pure
+  <p-link
     :theme="$store.getters.storefrontTheme"
     :icon-source="require('@/assets/github.svg')"
+    variant="ghost"
+    compact="true"
     href="https://github.com/porsche-design-system/porsche-design-system"
     target="_blank"
     hide-label="true"
   >
     Navigate to GitHub repository of Porsche Design System
-  </p-link-pure>
+  </p-link>
 </template>
 
 <script lang="ts">

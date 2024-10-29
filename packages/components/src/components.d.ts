@@ -12,7 +12,7 @@ import { ButtonIcon } from "./components/button/button-utils";
 import { ButtonGroupDirection } from "./components/button-group/button-group-utils";
 import { ButtonPureAlignLabel, ButtonPureAriaAttribute, ButtonPureIcon, ButtonPureSize, ButtonPureType, ButtonPureWeight } from "./components/button-pure/button-pure-utils";
 import { ButtonTileAlign, ButtonTileAriaAttribute, ButtonTileAspectRatio, ButtonTileBackground, ButtonTileIcon, ButtonTileSize, ButtonTileType, ButtonTileWeight } from "./components/button-tile/button-tile-utils";
-import { CanvasSidebarStartUpdateEventDetail } from "./components/canvas/canvas-utils";
+import { CanvasSidebarStartUpdateEventDetail, CanvasTarget } from "./components/canvas/canvas-utils";
 import { CarouselAlignHeader, CarouselAriaAttribute, CarouselGradientColor, CarouselHeadingSize, CarouselInternationalization, CarouselUpdateEventDetail, CarouselWidth } from "./components/carousel/carousel-utils";
 import { CheckboxBlurEventDetail, CheckboxState, CheckboxUpdateEventDetail } from "./components/checkbox/checkbox-utils";
 import { CheckboxWrapperState } from "./components/checkbox-wrapper/checkbox-wrapper-utils";
@@ -76,7 +76,7 @@ export { ButtonIcon } from "./components/button/button-utils";
 export { ButtonGroupDirection } from "./components/button-group/button-group-utils";
 export { ButtonPureAlignLabel, ButtonPureAriaAttribute, ButtonPureIcon, ButtonPureSize, ButtonPureType, ButtonPureWeight } from "./components/button-pure/button-pure-utils";
 export { ButtonTileAlign, ButtonTileAriaAttribute, ButtonTileAspectRatio, ButtonTileBackground, ButtonTileIcon, ButtonTileSize, ButtonTileType, ButtonTileWeight } from "./components/button-tile/button-tile-utils";
-export { CanvasSidebarStartUpdateEventDetail } from "./components/canvas/canvas-utils";
+export { CanvasSidebarStartUpdateEventDetail, CanvasTarget } from "./components/canvas/canvas-utils";
 export { CarouselAlignHeader, CarouselAriaAttribute, CarouselGradientColor, CarouselHeadingSize, CarouselInternationalization, CarouselUpdateEventDetail, CarouselWidth } from "./components/carousel/carousel-utils";
 export { CheckboxBlurEventDetail, CheckboxState, CheckboxUpdateEventDetail } from "./components/checkbox/checkbox-utils";
 export { CheckboxWrapperState } from "./components/checkbox-wrapper/checkbox-wrapper-utils";
@@ -403,6 +403,10 @@ export namespace Components {
      */
     interface PCanvas {
         /**
+          * When providing an url then the wordmark/crest will be rendered as `<a>`.
+         */
+        "href"?: string;
+        /**
           * Open the sidebar on the end side
          */
         "sidebarEndOpen"?: boolean;
@@ -410,6 +414,10 @@ export namespace Components {
           * Open the sidebar on the start side
          */
         "sidebarStartOpen"?: boolean;
+        /**
+          * Target attribute where the anchor of wordmark/crest should be opened.
+         */
+        "target"?: CanvasTarget;
         /**
           * Adapts the color depending on the theme.
          */
@@ -3522,6 +3530,10 @@ declare namespace LocalJSX {
      */
     interface PCanvas {
         /**
+          * When providing an url then the wordmark/crest will be rendered as `<a>`.
+         */
+        "href"?: string;
+        /**
           * Emitted when the sidebar end requests to be dismissed.
          */
         "onSidebarEndDismiss"?: (event: PCanvasCustomEvent<void>) => void;
@@ -3537,6 +3549,10 @@ declare namespace LocalJSX {
           * Open the sidebar on the start side
          */
         "sidebarStartOpen"?: boolean;
+        /**
+          * Target attribute where the anchor of wordmark/crest should be opened.
+         */
+        "target"?: CanvasTarget;
         /**
           * Adapts the color depending on the theme.
          */

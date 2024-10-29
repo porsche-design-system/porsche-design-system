@@ -82,7 +82,7 @@
     display: grid;
     gap: $pds-spacing-fluid-medium;
 
-    @include pds-media-query-min('s') {
+    @container (min-width:#{$pds-breakpoint-s}px) {
       grid-template-columns: repeat(2, minmax(0, 1fr));
 
       & > *:last-child {

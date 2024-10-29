@@ -333,6 +333,8 @@ export const getComponentCss = (theme: Theme, isSidebarStartOpen: boolean, isSid
         overflow: 'hidden auto',
         overscrollBehaviorY: 'contain',
         background: 'inherit', // ensures correct scrollbar coloring in light / dark mode
+        display: 'grid',
+        gridTemplateRows: 'auto minmax(0,1fr)', // ensures `slot="sidebar-{start|end}"` has max height available to position slotted elements properly
       },
       '&__header': {
         zIndex: 1,
@@ -367,7 +369,7 @@ export const getComponentCss = (theme: Theme, isSidebarStartOpen: boolean, isSid
       '&__content': {
         position: 'relative', // needed for z-index to work
         zIndex: 0, // ensures slotted dom nodes can't be on top of sidebar header
-        display: 'block',
+        display: 'grid',
         padding: spacingBase,
       },
     },

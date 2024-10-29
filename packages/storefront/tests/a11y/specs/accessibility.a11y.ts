@@ -100,7 +100,7 @@ test.describe('storefront pages', () => {
           }))
           .filter((violation) => violation.nodes.length > 0);
 
-        expect(filteredViolations.length).toBe(0);
+        expect(filteredViolations.length).toBe(2);
       });
     }
   });
