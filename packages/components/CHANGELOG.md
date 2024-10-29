@@ -16,6 +16,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 #### Fixed
 
+- `jsdom-polyfill`: errors from included polyfill packages
+  ([3543](https://github.com/porsche-design-system/porsche-design-system/pull/3543))
 - React: global `hidden` attribute with value `false` not working
   ([#3555](https://github.com/porsche-design-system/porsche-design-system/pull/3555))
 
