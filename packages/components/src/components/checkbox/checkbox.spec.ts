@@ -43,18 +43,76 @@ describe('connectedCallback', () => {
 });
 
 describe('formResetCallback', () => {
-  const value = 'test-value';
+  it('should reset form value to undefined if defaultChecked is false', () => {
+    const value = 'test-value';
+    const defaultChecked = false;
+    const component = initComponent();
+    component.value = value;
+    component['defaultChecked'] = defaultChecked;
+    const setFormValueSpy = jest.spyOn(component['internals'], 'setFormValue' as any);
+
+    component.formResetCallback();
+    expect(setFormValueSpy).toHaveBeenCalledWith(undefined);
+    expect(component.value).toBe(value);
+    expect(component.checked).toBe(defaultChecked);
+  });
+
+  it('should reset form value to value if defaultChecked is true', () => {
+    const value = 'test-value';
+    const defaultChecked = true;
+    const component = initComponent();
+    component.value = value;
+    component['defaultChecked'] = defaultChecked;
+    const setFormValueSpy = jest.spyOn(component['internals'], 'setFormValue' as any);
+
+    component.formResetCallback();
+    expect(setFormValueSpy).toHaveBeenCalledWith(value);
+    expect(component.value).toBe(value);
+    expect(component.checked).toBe(defaultChecked);
+  });
+});
+describe('formDisabledCallback', () => {
   const component = initComponent();
-  component.value = value;
-  const setValiditySpy = jest.spyOn(component['internals'], 'setValidity' as any);
-  const setFormValueSpy = jest.spyOn(component['internals'], 'setFormValue' as any);
-  component.formResetCallback();
-  expect(setValiditySpy).toHaveBeenCalledWith({});
-  expect(setFormValueSpy).toHaveBeenCalledWith(undefined);
-  expect(component.value).toBe(value);
-  expect(component['checkboxInputElement'].value).toBe('on');
-  expect(component.checked).toBe(false);
-  expect(component['checkboxInputElement'].checked).toBe(false);
+  component.disabled = false;
+  component.formDisabledCallback(true);
+  expect(component.disabled).toBe(true);
+});
+describe('formStateRestoreCallback', () => {
+  const component = initComponent();
+  component.checked = false;
+  const restoredValue = 'on';
+  component.formStateRestoreCallback(restoredValue);
+  expect(component.checked).toBe(true);
+});
+
+describe('componentDidRender', () => {
+  it('should call ElementInternals setValidity()', () => {
+    const component = initComponent();
+    const setValiditySpy = jest.spyOn(component['internals'], 'setValidity' as any);
+    component.componentDidRender();
+    expect(setValiditySpy).toHaveBeenCalledTimes(1);
+    expect(setValiditySpy).toHaveBeenCalledWith(
+      component['checkboxInputElement'].validity,
+      component['checkboxInputElement'].validationMessage,
+      component['checkboxInputElement']
+    );
+  });
+  it('should not call ElementInternals setValidity() if checkbox is disabled', () => {
+    const component = initComponent();
+    const setValiditySpy = jest.spyOn(component['internals'], 'setValidity' as any);
+    component.disabled = true;
+    component.componentDidRender();
+    expect(setValiditySpy).toHaveBeenCalledTimes(0);
+  });
+});
+
+describe('componentWillLoad', () => {
+  it('should sync private defaultChecked value with checked prop', () => {
+    const component = initComponent();
+    component.checked = true;
+    component.componentWillLoad();
+    expect(component.checked).toBe(true);
+  });
 });
 
 describe('componentDidLoad', () => {
