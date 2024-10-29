@@ -28,6 +28,19 @@ import { ButtonPage } from './generated/Button';
 import { ButtonGroupPage } from './generated/ButtonGroup';
 import { ButtonPurePage } from './generated/ButtonPure';
 import { ButtonTilePage } from './generated/ButtonTile';
+import { CanvasPage } from './generated/Canvas';
+import { CanvasBackgroundPage } from './generated/CanvasBackground';
+import { CanvasBasicPage } from './generated/CanvasBasic';
+import { CanvasCssVariablesPage } from './generated/CanvasCssVariables';
+import { CanvasFooterPage } from './generated/CanvasFooter';
+import { CanvasGridPage } from './generated/CanvasGrid';
+import { CanvasHeaderEndPage } from './generated/CanvasHeaderEnd';
+import { CanvasHeaderStartPage } from './generated/CanvasHeaderStart';
+import { CanvasNamedSlotsPage } from './generated/CanvasNamedSlots';
+import { CanvasScrollablePage } from './generated/CanvasScrollable';
+import { CanvasSidebarEndPage } from './generated/CanvasSidebarEnd';
+import { CanvasSidebarStartPage } from './generated/CanvasSidebarStart';
+import { CanvasTitlePage } from './generated/CanvasTitle';
 import { CarouselPage } from './generated/Carousel';
 import { CheckboxPage } from './generated/Checkbox';
 import { CheckboxWrapperPage } from './generated/CheckboxWrapper';
@@ -55,7 +68,6 @@ import { FlyoutHeaderFooterSubfooterPositionStartPage } from './generated/Flyout
 import { FlyoutHeaderFooterSubfooterScrollableContentPage } from './generated/FlyoutHeaderFooterSubfooterScrollableContent';
 import { FlyoutHeaderFooterSubfooterScrolledPage } from './generated/FlyoutHeaderFooterSubfooterScrolled';
 import { FlyoutHeaderFooterSubfooterScrolledOverlapPage } from './generated/FlyoutHeaderFooterSubfooterScrolledOverlap';
-import { FlyoutHeaderFooterSubfooterSlottedAnchorPage } from './generated/FlyoutHeaderFooterSubfooterSlottedAnchor';
 import { FlyoutHeaderScrollableContentPage } from './generated/FlyoutHeaderScrollableContent';
 import { FlyoutMultilevelPage } from './generated/FlyoutMultilevel';
 import { FlyoutMultilevelActiveIdentifierPage } from './generated/FlyoutMultilevelActiveIdentifier';
@@ -208,6 +220,71 @@ export const generatedRoutes: RouteType[] = [
     element: <ButtonTilePage />,
   },
   {
+    name: 'Canvas',
+    path: '/canvas',
+    element: <CanvasPage />,
+  },
+  {
+    name: 'Canvas Background',
+    path: '/canvas-background',
+    element: <CanvasBackgroundPage />,
+  },
+  {
+    name: 'Canvas Basic',
+    path: '/canvas-basic',
+    element: <CanvasBasicPage />,
+  },
+  {
+    name: 'Canvas Css Variables',
+    path: '/canvas-css-variables',
+    element: <CanvasCssVariablesPage />,
+  },
+  {
+    name: 'Canvas Footer',
+    path: '/canvas-footer',
+    element: <CanvasFooterPage />,
+  },
+  {
+    name: 'Canvas Grid',
+    path: '/canvas-grid',
+    element: <CanvasGridPage />,
+  },
+  {
+    name: 'Canvas Header End',
+    path: '/canvas-header-end',
+    element: <CanvasHeaderEndPage />,
+  },
+  {
+    name: 'Canvas Header Start',
+    path: '/canvas-header-start',
+    element: <CanvasHeaderStartPage />,
+  },
+  {
+    name: 'Canvas Named Slots',
+    path: '/canvas-named-slots',
+    element: <CanvasNamedSlotsPage />,
+  },
+  {
+    name: 'Canvas Scrollable',
+    path: '/canvas-scrollable',
+    element: <CanvasScrollablePage />,
+  },
+  {
+    name: 'Canvas Sidebar End',
+    path: '/canvas-sidebar-end',
+    element: <CanvasSidebarEndPage />,
+  },
+  {
+    name: 'Canvas Sidebar Start',
+    path: '/canvas-sidebar-start',
+    element: <CanvasSidebarStartPage />,
+  },
+  {
+    name: 'Canvas Title',
+    path: '/canvas-title',
+    element: <CanvasTitlePage />,
+  },
+  {
     name: 'Carousel',
     path: '/carousel',
     element: <CarouselPage />,
@@ -341,11 +418,6 @@ export const generatedRoutes: RouteType[] = [
     name: 'Flyout Header Footer Subfooter Scrolled Overlap',
     path: '/flyout-header-footer-subfooter-scrolled-overlap',
     element: <FlyoutHeaderFooterSubfooterScrolledOverlapPage />,
-  },
-  {
-    name: 'Flyout Header Footer Subfooter Slotted Anchor',
-    path: '/flyout-header-footer-subfooter-slotted-anchor',
-    element: <FlyoutHeaderFooterSubfooterSlottedAnchorPage />,
   },
   {
     name: 'Flyout Header Scrollable Content',

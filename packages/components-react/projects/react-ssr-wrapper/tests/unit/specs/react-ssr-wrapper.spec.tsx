@@ -87,7 +87,13 @@ it.each(Object.keys(fromComponents))('should render dsr component for %s', (comp
 
   // eslint-disable-next-line testing-library/no-node-access
   expect(container.firstElementChild).toMatchSnapshot();
-  expect(consoleSpy).not.toHaveBeenCalled(); // detect react jsx errors/warnings
+  if (tagName === 'p-canvas') {
+    // eslint-disable-next-line jest/no-conditional-expect
+    expect(consoleSpy).toHaveBeenCalledTimes(1); // jsdom isn't able to parse @container queries
+  } else {
+    // eslint-disable-next-line jest/no-conditional-expect
+    expect(consoleSpy).not.toHaveBeenCalled(); // detect react jsx errors/warnings
+  }
 });
 
 describe('manual test cases', () => {

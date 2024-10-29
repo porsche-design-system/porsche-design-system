@@ -1,21 +1,47 @@
-<div class="canvas">
-  <header>
-    <div class="header">
-      <h2>
-        <slot name="title"> </slot>
-      </h2>
+<div class="root">
+  <header class="header">
+    <div class="blur">
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+    <div class="header__area header__area--start">
+      <p-button hide-label="true" class="hydrated">
+        Open navigation sidebar</p-button
+      >
       <slot name="header-start"> </slot>
     </div>
-    <p-crest class="crest hydrated"> </p-crest>
-    <p-wordmark class="wordmark hydrated"> </p-wordmark>
-    <div class="header">
+    <p-crest class="header__crest hydrated"> </p-crest>
+    <p-wordmark class="header__wordmark hydrated"> </p-wordmark>
+    <div class="header__area header__area--end">
       <slot name="header-end"> </slot>
     </div>
   </header>
-  <main>
+  <main class="main">
     <slot> </slot>
   </main>
-  <footer>
-    <slot name="footer"> </slot>
-  </footer>
+  <aside
+    class="sidebar sidebar--start"
+    inert=""
+    aria-label="Navigation sidebar closed"
+  >
+    <div class="sidebar__scroller">
+      <header class="sidebar__header sidebar__header--start">
+        <p-button hide-label="true" class="hydrated">
+          Open navigation sidebar</p-button
+        >
+        <h2>
+          <slot name="title"> </slot>
+        </h2>
+      </header>
+      <div class="sidebar__content">
+        <slot name="sidebar-start"> </slot>
+      </div>
+    </div>
+  </aside>
 </div>

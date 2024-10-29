@@ -5,7 +5,7 @@ import { viewportWidths } from '@porsche-design-system/shared/testing/playwright
 const components = (TAG_NAMES as unknown as TagName[])
   .filter((tagName) => {
     // TODO: should not needed to be maintained like this, e.g. find a logic here with matching names or use/extend getComponentMeta() accordingly
-    return !/item$|-table-|-select-wrapper-|multi-select-option|select-option|-canvas|-optgroup$/.test(tagName);
+    return !/item$|-table-|-select-wrapper-|multi-select-option|select-option|-optgroup$/.test(tagName);
   })
   .map((tagName) => {
     return tagName.substring(2);
@@ -18,7 +18,7 @@ const components = (TAG_NAMES as unknown as TagName[])
 // });
 
 test(`should have certain amount of components`, () => {
-  expect(components.length).toBe(56);
+  expect(components.length).toBe(57);
 });
 
 components.forEach((component) => {
