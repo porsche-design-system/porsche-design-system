@@ -56,6 +56,7 @@ import { FlyoutBasicPage } from './generated/FlyoutBasic';
 import { FlyoutCssVariablesPage } from './generated/FlyoutCssVariables';
 import { FlyoutFooterPage } from './generated/FlyoutFooter';
 import { FlyoutFooterScrollableContentPage } from './generated/FlyoutFooterScrollableContent';
+import { FlyoutFooterScrolledPage } from './generated/FlyoutFooterScrolled';
 import { FlyoutGridPage } from './generated/FlyoutGrid';
 import { FlyoutHeaderPage } from './generated/FlyoutHeader';
 import { FlyoutHeaderFooterPage } from './generated/FlyoutHeaderFooter';
@@ -95,6 +96,7 @@ import { ModalBackdropShadingPage } from './generated/ModalBackdropShading';
 import { ModalBasicPage } from './generated/ModalBasic';
 import { ModalCssVariablesPage } from './generated/ModalCssVariables';
 import { ModalDisableCloseButtonPage } from './generated/ModalDisableCloseButton';
+import { ModalFooterScrolledPage } from './generated/ModalFooterScrolled';
 import { ModalFullscreenPage } from './generated/ModalFullscreen';
 import { ModalFullscreenResponsivePage } from './generated/ModalFullscreenResponsive';
 import { ModalGridPage } from './generated/ModalGrid';
@@ -360,6 +362,11 @@ export const generatedRoutes: RouteType[] = [
     element: <FlyoutFooterScrollableContentPage />,
   },
   {
+    name: 'Flyout Footer Scrolled',
+    path: '/flyout-footer-scrolled',
+    element: <FlyoutFooterScrolledPage />,
+  },
+  {
     name: 'Flyout Grid',
     path: '/flyout-grid',
     element: <FlyoutGridPage />,
@@ -553,6 +560,11 @@ export const generatedRoutes: RouteType[] = [
     name: 'Modal Disable Close Button',
     path: '/modal-disable-close-button',
     element: <ModalDisableCloseButtonPage />,
+  },
+  {
+    name: 'Modal Footer Scrolled',
+    path: '/modal-footer-scrolled',
+    element: <ModalFooterScrolledPage />,
   },
   {
     name: 'Modal Fullscreen',
