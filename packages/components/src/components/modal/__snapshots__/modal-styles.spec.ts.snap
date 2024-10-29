@@ -223,6 +223,7 @@ dialog::backdrop {
   margin-block-start: calc(clamp(16px, 1.25vw + 12px, 36px) * -1);
   margin-inline-end: clamp(8px, 0.5vw + 6px, 16px);
   justify-self: flex-end;
+  height: fit-content;
 }"
 `;
 
@@ -349,6 +350,7 @@ dialog::backdrop {
   margin-block-start: calc(clamp(16px, 1.25vw + 12px, 36px) * -1);
   margin-inline-end: clamp(8px, 0.5vw + 6px, 16px);
   justify-self: flex-end;
+  height: fit-content;
 }"
 `;
 
@@ -675,6 +677,7 @@ dialog::backdrop {
   margin-block-start: calc(clamp(16px, 1.25vw + 12px, 36px) * -1);
   margin-inline-end: clamp(8px, 0.5vw + 6px, 16px);
   justify-self: flex-end;
+  height: fit-content;
 }
 @media (prefers-color-scheme: dark) {
   .scroller {
@@ -795,6 +798,7 @@ dialog::backdrop {
   margin-block-start: calc(clamp(16px, 1.25vw + 12px, 36px) * -1);
   margin-inline-end: clamp(8px, 0.5vw + 6px, 16px);
   justify-self: flex-end;
+  height: fit-content;
 }"
 `;
 
@@ -921,6 +925,7 @@ dialog::backdrop {
   margin-block-start: calc(clamp(16px, 1.25vw + 12px, 36px) * -1);
   margin-inline-end: clamp(8px, 0.5vw + 6px, 16px);
   justify-self: flex-end;
+  height: fit-content;
 }"
 `;
 
@@ -1031,6 +1036,7 @@ dialog::backdrop {
   margin-block-start: calc(clamp(16px, 1.25vw + 12px, 36px) * -1);
   margin-inline-end: clamp(8px, 0.5vw + 6px, 16px);
   justify-self: flex-end;
+  height: fit-content;
 }"
 `;
 
@@ -1141,6 +1147,7 @@ dialog::backdrop {
   margin-block-start: calc(clamp(16px, 1.25vw + 12px, 36px) * -1);
   margin-inline-end: clamp(8px, 0.5vw + 6px, 16px);
   justify-self: flex-end;
+  height: fit-content;
 }
 @media (prefers-color-scheme: dark) {
   .scroller {
@@ -1261,6 +1268,7 @@ dialog::backdrop {
   margin-block-start: calc(clamp(16px, 1.25vw + 12px, 36px) * -1);
   margin-inline-end: clamp(8px, 0.5vw + 6px, 16px);
   justify-self: flex-end;
+  height: fit-content;
 }"
 `;
 
@@ -1425,6 +1433,7 @@ dialog::backdrop {
   margin-block-start: calc(clamp(16px, 1.25vw + 12px, 36px) * -1);
   margin-inline-end: clamp(8px, 0.5vw + 6px, 16px);
   justify-self: flex-end;
+  height: fit-content;
 }
 @media(min-width:480px) {
   .modal {
@@ -1946,6 +1955,7 @@ dialog::backdrop {
   margin-block-start: calc(clamp(16px, 1.25vw + 12px, 36px) * -1);
   margin-inline-end: clamp(8px, 0.5vw + 6px, 16px);
   justify-self: flex-end;
+  height: fit-content;
 }"
 `;
 
@@ -2071,6 +2081,7 @@ dialog::backdrop {
   margin-block-start: calc(clamp(16px, 1.25vw + 12px, 36px) * -1);
   margin-inline-end: clamp(8px, 0.5vw + 6px, 16px);
   justify-self: flex-end;
+  height: fit-content;
 }"
 `;
 
@@ -2394,6 +2405,7 @@ dialog::backdrop {
   margin-block-start: calc(clamp(16px, 1.25vw + 12px, 36px) * -1);
   margin-inline-end: clamp(8px, 0.5vw + 6px, 16px);
   justify-self: flex-end;
+  height: fit-content;
 }"
 `;
 
@@ -2519,5 +2531,6 @@ dialog::backdrop {
   margin-block-start: calc(clamp(16px, 1.25vw + 12px, 36px) * -1);
   margin-inline-end: clamp(8px, 0.5vw + 6px, 16px);
   justify-self: flex-end;
+  height: fit-content;
 }"
 `;

@@ -94,6 +94,7 @@ dialog::backdrop {
   inset-inline-end: clamp(8px, 0.5vw + 6px, 16px);
   margin-block-start: calc(clamp(16px, 1.25vw + 12px, 36px) * -1);
   justify-self: flex-end;
+  height: fit-content;
 }"
 `;
 
@@ -195,6 +196,7 @@ dialog::backdrop {
   inset-inline-end: clamp(8px, 0.5vw + 6px, 16px);
   margin-block-start: calc(clamp(16px, 1.25vw + 12px, 36px) * -1);
   justify-self: flex-end;
+  height: fit-content;
 }"
 `;
 
@@ -311,6 +313,7 @@ dialog::backdrop {
   inset-inline-end: clamp(8px, 0.5vw + 6px, 16px);
   margin-block-start: calc(clamp(16px, 1.25vw + 12px, 36px) * -1);
   justify-self: flex-end;
+  height: fit-content;
 }"
 `;
 
@@ -423,6 +426,7 @@ dialog::backdrop {
   inset-inline-end: clamp(8px, 0.5vw + 6px, 16px);
   margin-block-start: calc(clamp(16px, 1.25vw + 12px, 36px) * -1);
   justify-self: flex-end;
+  height: fit-content;
 }"
 `;
 
@@ -519,6 +523,7 @@ dialog::backdrop {
   inset-inline-end: clamp(8px, 0.5vw + 6px, 16px);
   margin-block-start: calc(clamp(16px, 1.25vw + 12px, 36px) * -1);
   justify-self: flex-end;
+  height: fit-content;
 }"
 `;
 
@@ -616,6 +621,7 @@ dialog::backdrop {
   inset-inline-end: clamp(8px, 0.5vw + 6px, 16px);
   margin-block-start: calc(clamp(16px, 1.25vw + 12px, 36px) * -1);
   justify-self: flex-end;
+  height: fit-content;
 }"
 `;
 
@@ -712,6 +718,7 @@ dialog::backdrop {
   inset-inline-end: clamp(8px, 0.5vw + 6px, 16px);
   margin-block-start: calc(clamp(16px, 1.25vw + 12px, 36px) * -1);
   justify-self: flex-end;
+  height: fit-content;
 }"
 `;
 
@@ -812,6 +819,7 @@ dialog::backdrop {
   inset-inline-end: clamp(8px, 0.5vw + 6px, 16px);
   margin-block-start: calc(clamp(16px, 1.25vw + 12px, 36px) * -1);
   justify-self: flex-end;
+  height: fit-content;
 }"
 `;
 
@@ -927,6 +935,7 @@ dialog::backdrop {
   inset-inline-end: clamp(8px, 0.5vw + 6px, 16px);
   margin-block-start: calc(clamp(16px, 1.25vw + 12px, 36px) * -1);
   justify-self: flex-end;
+  height: fit-content;
 }"
 `;
 
@@ -1029,6 +1038,7 @@ dialog::backdrop {
   inset-inline-end: clamp(8px, 0.5vw + 6px, 16px);
   margin-block-start: calc(clamp(16px, 1.25vw + 12px, 36px) * -1);
   justify-self: flex-end;
+  height: fit-content;
 }
 @media (prefers-color-scheme: dark) {
   .scroller {
@@ -1135,6 +1145,7 @@ dialog::backdrop {
   inset-inline-end: clamp(8px, 0.5vw + 6px, 16px);
   margin-block-start: calc(clamp(16px, 1.25vw + 12px, 36px) * -1);
   justify-self: flex-end;
+  height: fit-content;
 }"
 `;
 
@@ -1231,6 +1242,7 @@ dialog::backdrop {
   inset-inline-end: clamp(8px, 0.5vw + 6px, 16px);
   margin-block-start: calc(clamp(16px, 1.25vw + 12px, 36px) * -1);
   justify-self: flex-end;
+  height: fit-content;
 }"
 `;
 
@@ -1337,6 +1349,7 @@ dialog::backdrop {
   inset-inline-end: clamp(8px, 0.5vw + 6px, 16px);
   margin-block-start: calc(clamp(16px, 1.25vw + 12px, 36px) * -1);
   justify-self: flex-end;
+  height: fit-content;
 }
 @media (prefers-color-scheme: dark) {
   .scroller {
@@ -1458,6 +1471,7 @@ dialog::backdrop {
   inset-inline-end: clamp(8px, 0.5vw + 6px, 16px);
   margin-block-start: calc(clamp(16px, 1.25vw + 12px, 36px) * -1);
   justify-self: flex-end;
+  height: fit-content;
 }"
 `;
 
@@ -1569,6 +1583,7 @@ dialog::backdrop {
   inset-inline-end: clamp(8px, 0.5vw + 6px, 16px);
   margin-block-start: calc(clamp(16px, 1.25vw + 12px, 36px) * -1);
   justify-self: flex-end;
+  height: fit-content;
 }"
 `;
 
@@ -1684,6 +1699,7 @@ dialog::backdrop {
   inset-inline-end: clamp(8px, 0.5vw + 6px, 16px);
   margin-block-start: calc(clamp(16px, 1.25vw + 12px, 36px) * -1);
   justify-self: flex-end;
+  height: fit-content;
 }"
 `;
 
@@ -1814,6 +1830,7 @@ dialog::backdrop {
   inset-inline-end: clamp(8px, 0.5vw + 6px, 16px);
   margin-block-start: calc(clamp(16px, 1.25vw + 12px, 36px) * -1);
   justify-self: flex-end;
+  height: fit-content;
 }"
 `;
 
@@ -1909,6 +1926,7 @@ dialog::backdrop {
   inset-inline-end: clamp(8px, 0.5vw + 6px, 16px);
   margin-block-start: calc(clamp(16px, 1.25vw + 12px, 36px) * -1);
   justify-self: flex-end;
+  height: fit-content;
 }"
 `;
 
@@ -2004,6 +2022,7 @@ dialog::backdrop {
   inset-inline-end: clamp(8px, 0.5vw + 6px, 16px);
   margin-block-start: calc(clamp(16px, 1.25vw + 12px, 36px) * -1);
   justify-self: flex-end;
+  height: fit-content;
 }"
 `;
 
@@ -2114,6 +2133,7 @@ dialog::backdrop {
   inset-inline-end: clamp(8px, 0.5vw + 6px, 16px);
   margin-block-start: calc(clamp(16px, 1.25vw + 12px, 36px) * -1);
   justify-self: flex-end;
+  height: fit-content;
 }"
 `;
 
@@ -2224,6 +2244,7 @@ dialog::backdrop {
   inset-inline-end: clamp(8px, 0.5vw + 6px, 16px);
   margin-block-start: calc(clamp(16px, 1.25vw + 12px, 36px) * -1);
   justify-self: flex-end;
+  height: fit-content;
 }"
 `;
 
@@ -2338,5 +2359,6 @@ dialog::backdrop {
   inset-inline-end: clamp(8px, 0.5vw + 6px, 16px);
   margin-block-start: calc(clamp(16px, 1.25vw + 12px, 36px) * -1);
   justify-self: flex-end;
+  height: fit-content;
 }"
 `;
