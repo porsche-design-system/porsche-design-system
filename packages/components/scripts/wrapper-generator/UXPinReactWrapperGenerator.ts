@@ -13,18 +13,35 @@ const addNestedIndentation = (x: string): string => `  ${x}`;
 
 export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
   protected projectDir = 'uxpin-wrapper';
+  protected hiddenComponents: TagName[] = [];
 
   constructor() {
     super();
     this.ignoreComponents = [
       ...this.ignoreComponents,
+      'p-canvas',
+      'p-checkbox-wrapper',
       'p-content-wrapper',
+      'p-fieldset-wrapper',
       'p-flex',
       'p-flex-item',
+      'p-flyout-multilevel',
+      'p-flyout-multilevel-item',
       'p-grid',
       'p-grid-item',
+      'p-headline',
+      'p-link-social',
+      'p-marque',
       'p-pagination',
+      'p-select-wrapper',
+      'p-textarea-wrapper',
     ];
+
+    // components which should be generated and hidden in uxpin editor
+    this.hiddenComponents = [
+        'p-text-field-wrapper',
+        'p-radio-button-wrapper',
+    ]
   }
 
   public getComponentFileName(component: TagName): string {
@@ -319,10 +336,6 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
       'p-checkbox-wrapper': {
         props: { label: 'CheckboxWrapper' },
         children: '<DummyCheckbox uxpId="dummy-checkbox" />',
-        formComponent: {
-          name: 'Checkbox',
-          extraProps: { label: 'My Checkbox', checked: true },
-        },
       },
       'p-fieldset': {
         props: { label: 'Fieldset' },
@@ -374,10 +387,6 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
         props: { label: 'SelectWrapper' },
         children:
           '<DummySelect uxpId="dummy-select" options={Array.from(Array(3)).map((_, i) => `Option ${i + 1}`)} />',
-        formComponent: {
-          name: 'SelectWrapperDummy',
-          extraProps: { label: 'My Select', options: ['Option 1', 'Option 2', 'Option 3'] },
-        },
       },
       'p-stepper-horizontal': {
         children: [
@@ -397,10 +406,6 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
       'p-textarea-wrapper': {
         props: { label: 'TextareaWrapper' },
         children: '<DummyTextarea uxpId="dummy-textarea" />',
-        formComponent: {
-          name: 'Textarea',
-          extraProps: { label: 'My Textarea' },
-        },
       },
       'p-table': {
         children: [
@@ -566,7 +571,12 @@ export default <${formComponentName} ${stringifiedProps} />;
 
   private generateUXPinConfigFile(): AdditionalFile {
     const componentsBasePath = 'src/lib/components/';
-    const componentPaths = this.relevantComponentTagNames
+    const uxpinComponents = [
+      `'src/form/RadioButton/RadioButton.tsx'`,
+      `'src/form/TextField/TextField.tsx'`,
+    ];
+    const componentPaths = [...this.relevantComponentTagNames
+      .filter((component) => !this.hiddenComponents.includes(component))
       .map((component) => {
         const componentSubDir = this.shouldGenerateFolderPerComponent(component)
           ? this.stripFileExtension(component) + '/'
@@ -574,8 +584,13 @@ export default <${formComponentName} ${stringifiedProps} />;
         const fileName = this.getComponentFileName(component);
         return `${componentsBasePath}${componentSubDir}${fileName}`;
       })
-      .map((path) => `'${path}'`)
-      .join(',\n          ');
+      .map((path) => `'${path}'`),
+      ...uxpinComponents
+    ].sort((componentA, componentB) => (
+      componentA.split('/').pop().toLowerCase()
+          .localeCompare(componentB.split('/').pop().toLowerCase())
+    )).join(',\n          ');
+
 
     const content = `module.exports = {
   components: {
@@ -586,10 +601,6 @@ export default <${formComponentName} ${stringifiedProps} />;
         include: [
           ${componentPaths}
         ],
-      },
-      {
-        name: 'Form components',
-        include: ['src/form/*/*.tsx'],
       },
       {
         name: 'Dummy',
