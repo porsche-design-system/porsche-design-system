@@ -221,7 +221,7 @@ export namespace Components {
         /**
           * Displays as compact version.
          */
-        "compact"?: boolean;
+        "compact"?: BreakpointCustomizable<boolean>;
         /**
           * Disables the button. No events will be triggered while disabled state is active.
          */
@@ -3340,7 +3340,7 @@ declare namespace LocalJSX {
         /**
           * Displays as compact version.
          */
-        "compact"?: boolean;
+        "compact"?: BreakpointCustomizable<boolean>;
         /**
           * Disables the button. No events will be triggered while disabled state is active.
          */

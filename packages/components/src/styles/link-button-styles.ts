@@ -95,7 +95,7 @@ export const getLinkButtonStyles = (
   const { focusColor } = getThemedColors(theme);
   const hasIcon = hasVisibleIcon(icon, iconSource) || hideLabel;
 
-  const scalingVar = `var(${cssVariableInternalScaling}, ${compact ? 'calc(4 / 13)' : 1})`; // Compact mode needs to have 4px paddingBlock thus this scaling factor
+  const scalingVar = `var(${cssVariableInternalScaling}, var(--p-internal-scaling-factor))`;
 
   const borderCompensation = variant === 'ghost' ? `+ ${borderWidthBase}` : ''; // Compensate for missing border in ghost variant (Fixes border backdrop-filter blur rendering issue in safari)
 
@@ -137,6 +137,9 @@ export const getLinkButtonStyles = (
       transform: 'translate3d(0,0,0)', // creates new stacking context (for slotted anchor + focus)
       backgroundColor,
       color: textColor,
+      ...buildResponsiveStyles(compact, (compactValue: boolean) => ({
+        '--p-internal-scaling-factor': compactValue ? 'calc(4 / 13)' : 1, // Compact mode needs to have 4px paddingBlock thus this scaling factor
+      })),
       transition: `${getTransition('background-color')}, ${getTransition('border-color')}, ${getTransition('color')}`,
       ...buildResponsiveStyles(hideLabel, (hideLabelValue: boolean) => ({
         padding: hideLabelValue ? paddingBlock : `${paddingBlock} ${paddingInline}`,
