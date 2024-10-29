@@ -14,6 +14,7 @@ import { FlyoutExampleComponent } from './flyout-example.component';
 import { FlyoutMultilevelExampleComponent } from './flyout-multilevel-example.component';
 import { FlyoutMultilevelExampleActiveIdentifierComponent } from './flyout-multilevel-example-active-identifier.component';
 import { FlyoutMultilevelExampleCustomContentComponent } from './flyout-multilevel-example-custom-content.component';
+import { HiddenAttributeExampleComponent } from './hidden-attribute-example.component';
 import { InlineNotificationExampleActionButtonComponent } from './inline-notification-example-action-button.component';
 import { InlineNotificationExampleEventsComponent } from './inline-notification-example-events.component';
 import { LinkTileProductExampleComponent } from './link-tile-product-example.component';
@@ -60,6 +61,7 @@ export const examples = [
   FlyoutMultilevelExampleComponent,
   FlyoutMultilevelExampleActiveIdentifierComponent,
   FlyoutMultilevelExampleCustomContentComponent,
+  HiddenAttributeExampleComponent,
   InlineNotificationExampleActionButtonComponent,
   InlineNotificationExampleEventsComponent,
   LinkTileProductExampleComponent,
@@ -106,6 +108,7 @@ export * from './flyout-example.component';
 export * from './flyout-multilevel-example.component';
 export * from './flyout-multilevel-example-active-identifier.component';
 export * from './flyout-multilevel-example-custom-content.component';
+export * from './hidden-attribute-example.component';
 export * from './inline-notification-example-action-button.component';
 export * from './inline-notification-example-events.component';
 export * from './link-tile-product-example.component';

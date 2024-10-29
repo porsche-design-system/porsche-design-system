@@ -13,20 +13,35 @@ const addNestedIndentation = (x: string): string => `  ${x}`;
 
 export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
   protected projectDir = 'uxpin-wrapper';
-
-  private spacingProps: string[] = ['top', 'left', 'right', 'bottom'].map((x) => `spacing${pascalCase(x)}`);
+  protected hiddenComponents: TagName[] = [];
 
   constructor() {
     super();
     this.ignoreComponents = [
       ...this.ignoreComponents,
+      'p-canvas',
+      'p-checkbox-wrapper',
       'p-content-wrapper',
+      'p-fieldset-wrapper',
       'p-flex',
       'p-flex-item',
+      'p-flyout-multilevel',
+      'p-flyout-multilevel-item',
       'p-grid',
       'p-grid-item',
+      'p-headline',
+      'p-link-social',
+      'p-marque',
       'p-pagination',
+      'p-select-wrapper',
+      'p-textarea-wrapper',
     ];
+
+    // components which should be generated and hidden in uxpin editor
+    this.hiddenComponents = [
+        'p-text-field-wrapper',
+        'p-radio-button-wrapper',
+    ]
   }
 
   public getComponentFileName(component: TagName): string {
@@ -49,11 +64,6 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
     } else if (component === 'p-text') {
       imports = imports.replace(/, TextSize/, '');
     }
-
-    // add spacing imports
-    imports += ['import type { Spacing }', 'import { getPaddingStyles }']
-      .map((imp, i) => `${i === 0 ? '\n' : ''}${imp} from '../../spacing';`)
-      .join('\n');
 
     // when component is nested we need to fix relative imports
     if (this.shouldGenerateFolderPerComponent(component)) {
@@ -110,6 +120,11 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
     // remove BreakpointCustomizable types since designers can't use JSON
     props = props.replace(/BreakpointCustomizable<(.*)>/g, '$1');
 
+
+    // hidden uxpin props which allows updating property from library level in uxpin editor
+    props = addProp(props, '/** @uxpinignoreprop */ \n  uxpinOnChange: (prevValue: any, nextValue: any, propertyName: string) => void;');
+
+
     // remove useless props
     if (component === 'p-marque') {
       props = removeProp(props, 'href');
@@ -146,10 +161,6 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
       props = addUxPinBindAnnotation(props, 'activeTabIndex', 'onTabChange', 'activeTabIndex');
     }
 
-    // add spacing props to every component
-    const spacings = this.spacingProps.map((x) => `${x}?: Spacing;`).join('\n  ');
-    props = props.replace(/BaseProps & \{\n/, `$&  ${spacings}\n`);
-
     return props;
   }
 
@@ -161,16 +172,6 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
       .replace(/\s+class.*/, ''); // remove class mapping via useMergedClass since it is useless
 
     cleanedComponent = this.insertComponentAnnotation(cleanedComponent, component);
-
-    // destructure spacing props
-    const spacings = this.spacingProps.join(', ');
-    cleanedComponent = cleanedComponent.replace(/(\.\.\.rest)/, `${spacings}, $1`);
-
-    // build inline style prop
-    cleanedComponent = cleanedComponent.replace(
-      /(\.\.\.rest,\n)/,
-      `$1      style: getPaddingStyles({ ${spacings} }),\n`
-    );
 
     // add default children for components that need it
     if (cleanedComponent.includes('PropsWithChildren')) {
@@ -242,6 +243,36 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
       cleanedComponent = removeDestructuredProp(cleanedComponent, 'target');
     }
 
+    if (component === 'p-pin-code') {
+      cleanedComponent = cleanedComponent.replace(
+          'useEventCallback(elementRef, \'update\', onUpdate as any);',
+          [
+              'const eventCallback = (e:Event) => {',
+              '       rest.uxpinOnChange(value, (e as CustomEvent<PinCodeUpdateEventDetail>).detail.value, \'value\');',
+              '       if (onUpdate) {',
+              '         onUpdate(e as CustomEvent<PinCodeUpdateEventDetail>);',
+              '       }',
+              '    }',
+              '    useEventCallback(elementRef, \'update\', eventCallback);',
+          ].join('\n')
+      )
+    }
+
+    if (component === 'p-flyout') {
+      cleanedComponent = cleanedComponent.replace(
+          'useEventCallback(elementRef, \'dismiss\', onDismiss as any);',
+          [
+            'const dismissCallback = (e:Event) => {',
+            '       rest.uxpinOnChange(open, false, \'open\');',
+            '       if (onDismiss) {',
+            '         onDismiss(e as CustomEvent<void>);',
+            '       }',
+            '    }',
+            '    useEventCallback(elementRef, \'dismiss\', dismissCallback);',
+          ].join('\n')
+      )
+    }
+
     // cast BreakpointCustomizable default prop values to any because BreakpointCustomizable types are removed for uxpin
     extendedProps
       .filter((prop) => prop.isDefaultValueComplex && prop.defaultValue.match(/\bbase\b/))
@@ -305,10 +336,6 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
       'p-checkbox-wrapper': {
         props: { label: 'CheckboxWrapper' },
         children: '<DummyCheckbox uxpId="dummy-checkbox" />',
-        formComponent: {
-          name: 'Checkbox',
-          extraProps: { label: 'My Checkbox', checked: true },
-        },
       },
       'p-fieldset': {
         props: { label: 'Fieldset' },
@@ -329,7 +356,7 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
         props: { heading: 'Heading', open: true },
         children: [
           '<Text uxpId="modal-text">Some Content</Text>',
-          '<ButtonGroup uxpId="modal-button-group" spacingTop={32}>',
+          '<ButtonGroup uxpId="modal-button-group" >',
           ...[
             '<Button uxpId="modal-button-1" children="Save" />',
             '<Button uxpId="modal-button-2" variant="tertiary" children="Close" />',
@@ -360,10 +387,6 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
         props: { label: 'SelectWrapper' },
         children:
           '<DummySelect uxpId="dummy-select" options={Array.from(Array(3)).map((_, i) => `Option ${i + 1}`)} />',
-        formComponent: {
-          name: 'SelectWrapperDummy',
-          extraProps: { label: 'My Select', options: ['Option 1', 'Option 2', 'Option 3'] },
-        },
       },
       'p-stepper-horizontal': {
         children: [
@@ -383,10 +406,6 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
       'p-textarea-wrapper': {
         props: { label: 'TextareaWrapper' },
         children: '<DummyTextarea uxpId="dummy-textarea" />',
-        formComponent: {
-          name: 'Textarea',
-          extraProps: { label: 'My Textarea' },
-        },
       },
       'p-table': {
         children: [
@@ -552,7 +571,12 @@ export default <${formComponentName} ${stringifiedProps} />;
 
   private generateUXPinConfigFile(): AdditionalFile {
     const componentsBasePath = 'src/lib/components/';
-    const componentPaths = this.relevantComponentTagNames
+    const uxpinComponents = [
+      `'src/form/RadioButton/RadioButton.tsx'`,
+      `'src/form/TextField/TextField.tsx'`,
+    ];
+    const componentPaths = [...this.relevantComponentTagNames
+      .filter((component) => !this.hiddenComponents.includes(component))
       .map((component) => {
         const componentSubDir = this.shouldGenerateFolderPerComponent(component)
           ? this.stripFileExtension(component) + '/'
@@ -560,8 +584,13 @@ export default <${formComponentName} ${stringifiedProps} />;
         const fileName = this.getComponentFileName(component);
         return `${componentsBasePath}${componentSubDir}${fileName}`;
       })
-      .map((path) => `'${path}'`)
-      .join(',\n          ');
+      .map((path) => `'${path}'`),
+      ...uxpinComponents
+    ].sort((componentA, componentB) => (
+      componentA.split('/').pop().toLowerCase()
+          .localeCompare(componentB.split('/').pop().toLowerCase())
+    )).join(',\n          ');
+
 
     const content = `module.exports = {
   components: {
@@ -574,10 +603,6 @@ export default <${formComponentName} ${stringifiedProps} />;
         ],
       },
       {
-        name: 'Form components',
-        include: ['src/form/*/*.tsx'],
-      },
-      {
         name: 'Dummy',
         include: ['src/dummy/*.tsx'],
       },
@@ -586,6 +611,7 @@ export default <${formComponentName} ${stringifiedProps} />;
     webpackConfig: 'webpack.config.js',
   },
   name: 'Porsche Design System',
+  settings: { useUXPinProps: true, useFitToContentAsDefault: true },
 };`;
 
     return { name: 'uxpin.config.js', relativePath: '../../..', content };
