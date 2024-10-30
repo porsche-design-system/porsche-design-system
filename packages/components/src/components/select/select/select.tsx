@@ -11,6 +11,7 @@ import {
   setSelectedOption,
   syncSelectChildrenProps,
   updateSelectOptions,
+  determineSelectedOption,
 } from './select-utils';
 
 import {
@@ -133,6 +134,7 @@ export class Select {
 
   @AttachInternals() private internals: ElementInternals;
 
+  private defaultValue: string;
   private comboboxContainer: HTMLDivElement;
   private combobox: HTMLButtonElement;
   private listElement: HTMLDivElement;
@@ -175,6 +177,12 @@ export class Select {
   public componentWillLoad(): void {
     this.updateOptions();
     updateSelectOptions(this.selectOptions, this.value);
+
+    if (this.value === undefined) {
+      this.value = determineSelectedOption(this.selectOptions)?.value;
+    }
+
+    this.defaultValue = this.value;
   }
 
   public componentDidLoad(): void {
@@ -207,8 +215,8 @@ export class Select {
   }
 
   public formResetCallback(): void {
-    this.internals.setValidity({});
-    this.internals.setFormValue('');
+    this.internals.setFormValue(this.defaultValue);
+    this.value = this.defaultValue;
   }
 
   public render(): JSX.Element {
