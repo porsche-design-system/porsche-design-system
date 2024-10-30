@@ -5,10 +5,8 @@ import {
   addEventListener,
   getActiveElementTagName,
   getActiveElementTagNameInShadowRoot,
-  getAttribute,
   getElementStyle,
   getEventSummary,
-  getFormDataValue,
   getHTMLAttributes,
   getLifecycleStatus,
   getProperty,
@@ -26,7 +24,7 @@ const getButton = (page: Page) => page.locator('p-select button').first();
 const getButtonText = async (page: Page): Promise<string | number> => getProperty(getButton(page), 'textContent');
 const getDropdown = (page: Page) => page.locator('p-select .listbox');
 const getDropdownDisplay = async (page: Page): Promise<string> => await getElementStyle(getDropdown(page), 'display');
-const getSelectOption = (page: Page, n: number) => page.locator(`p-select p-select-option:nth-child(${n + 1})`); // First one is native select
+const getSelectOption = (page: Page, n: number) => page.locator(`p-select p-select-option:nth-child(${n})`);
 const getSelectedSelectOptionProperty = async <K extends keyof SelectOption>(
   page: Page,
   property: K
@@ -63,10 +61,7 @@ const getHighlightedOptionIndex = async (page: Page): Promise<number> =>
     .evaluateAll((options: SelectOption[]) =>
       options.filter((option) => !option.hidden).indexOf(options.find((option: SelectOption) => option.highlighted))
     );
-const getNativeSelect = (page: Page) => page.locator('p-select select');
-const getNativeSelectValue = async (page: Page): Promise<string | number> =>
-  await getProperty(getNativeSelect(page), 'value');
-const getNativeSelectInnerHTML = (page: Page) => page.locator('p-select select').evaluate((el) => el.innerHTML);
+
 const getLabel = (page: Page) => page.locator('p-select label');
 
 const getForm = (page: Page) => page.locator('form');
@@ -283,227 +278,6 @@ test('should render', async ({ page }) => {
   await waitForStencilLifecycle(page);
 
   expect(await getDropdownDisplay(page)).toBe('flex');
-});
-
-test.describe('native select', () => {
-  test('should be rendered', async ({ page }) => {
-    await initSelect(page);
-    const nativeSelectElement = getNativeSelect(page);
-    await expect(nativeSelectElement).not.toHaveCount(0);
-    expect(await nativeSelectElement.evaluate((el: HTMLSelectElement) => el.selectedOptions.length)).toBe(0);
-  });
-
-  test('should not be visible', async ({ page }) => {
-    await initSelect(page);
-    const nativeSelectElement = getNativeSelect(page);
-    expect(await getElementStyle(nativeSelectElement, 'opacity')).toBe('0');
-  });
-
-  test('props should be in sync', async ({ page }) => {
-    await initSelect(page);
-    const nativeSelectElement = getNativeSelect(page);
-    expect(await getAttribute(nativeSelectElement, 'name')).toBe('options');
-
-    const host = getHost(page);
-    await setProperty(host, 'required', true);
-    await setProperty(host, 'disabled', true);
-
-    await waitForStencilLifecycle(page);
-
-    expect(await getProperty(nativeSelectElement, 'required')).toBe(true);
-    expect(await getProperty(nativeSelectElement, 'disabled')).toBe(true);
-
-    await setProperty(host, 'required', false);
-    await setProperty(host, 'disabled', false);
-
-    await waitForStencilLifecycle(page);
-
-    expect(await getProperty(nativeSelectElement, 'required')).toBe(false);
-    expect(await getProperty(nativeSelectElement, 'disabled')).toBe(false);
-  });
-
-  test('should be in sync with selected option when selecting option', async ({ page }) => {
-    await initSelect(page);
-    expect(await getNativeSelectValue(page), 'initial').toBe('');
-    expect(await getNativeSelectInnerHTML(page), 'initial').toBe('');
-
-    const buttonElement = getButton(page);
-    await buttonElement.click();
-    await waitForStencilLifecycle(page);
-
-    await getSelectOption(page, 1).click();
-    await waitForStencilLifecycle(page);
-
-    expect(await getNativeSelectValue(page), 'after first option selected').toBe('a');
-    expect(await getNativeSelectInnerHTML(page), 'after first option selected').toBe(
-      '<option value="a" selected=""></option>'
-    );
-
-    await buttonElement.click();
-    await waitForStencilLifecycle(page);
-
-    getSelectOption(page, 2).click();
-    await waitForStencilLifecycle(page);
-
-    expect(await getNativeSelectValue(page), 'after second option selected').toBe('b');
-    expect(await getNativeSelectInnerHTML(page), 'after second option selected').toBe(
-      '<option value="b" selected=""></option>'
-    );
-  });
-
-  test('should be in sync with selected option initial and when deselecting option', async ({ page }) => {
-    await initSelect(page, { props: { name: 'options', value: 'a' }, options: { values: ['', 'a'] } });
-    expect(await getNativeSelectValue(page), 'initial').toBe('a');
-    expect(await getNativeSelectInnerHTML(page), 'initial').toBe('<option value="a" selected=""></option>');
-
-    const buttonElement = getButton(page);
-    await buttonElement.click();
-    await waitForStencilLifecycle(page);
-
-    getSelectOption(page, 1).click();
-    await waitForStencilLifecycle(page);
-
-    expect(await getNativeSelectValue(page), 'after deselection').toBe('');
-    expect(await getNativeSelectInnerHTML(page), 'after deselection').toBe('');
-  });
-
-  test('should be in sync with selected options when setting value', async ({ page }) => {
-    await initSelect(page);
-    expect(await getNativeSelectValue(page), 'initial').toBe('');
-    expect(await getNativeSelectInnerHTML(page), 'initial').toBe('');
-
-    await setValue(page, 'a');
-    await waitForStencilLifecycle(page);
-
-    expect(await getNativeSelectValue(page), 'after setting value="a"').toBe('a');
-    expect(await getNativeSelectInnerHTML(page), 'after setting value="a"').toBe(
-      '<option value="a" selected=""></option>'
-    );
-
-    await setValue(page, undefined);
-    await waitForStencilLifecycle(page);
-
-    expect(await getNativeSelectValue(page), 'after setting value undefined').toBe('');
-    expect(await getNativeSelectInnerHTML(page), 'after setting value undefined').toBe('');
-  });
-
-  test('should be in sync with selected options when adding new selected option', async ({ page }) => {
-    await initSelect(page);
-
-    expect(await getNativeSelectValue(page), 'initial').toBe('');
-    expect(await getNativeSelectInnerHTML(page), 'initial').toBe('');
-
-    await setValue(page, 'test');
-    await waitForStencilLifecycle(page);
-    await addOption(page, 'test');
-    await waitForStencilLifecycle(page);
-
-    expect(await getNativeSelectValue(page), 'after adding matching option').toBe('test');
-    expect(await getNativeSelectInnerHTML(page), 'after adding matching option').toBe(
-      '<option value="test" selected=""></option>'
-    );
-  });
-
-  test('should be in sync with selected options when removing selected option', async ({ page }) => {
-    await initSelect(page);
-    await setValue(page, 'c');
-    await waitForStencilLifecycle(page);
-
-    expect(await getNativeSelectValue(page), 'after adding matching option').toBe('c');
-    expect(await getNativeSelectInnerHTML(page), 'after adding matching option').toBe(
-      '<option value="c" selected=""></option>'
-    );
-
-    await removeLastOption(page);
-    await waitForStencilLifecycle(page);
-
-    expect(await getNativeSelectValue(page), 'after removing option').toBe('');
-    expect(await getNativeSelectInnerHTML(page), 'after removing option').toBe('');
-  });
-
-  test('should not be rendered when used without wrapping form', async ({ page }) => {
-    await initSelect(page, {
-      options: {
-        isWithinForm: false,
-      },
-    });
-    const nativeSelectElement = getNativeSelect(page);
-    await expect(nativeSelectElement).toHaveCount(0);
-  });
-
-  // TODO: Focus host (currently native select is focused and native validation box shown)
-  test.fixme('should receive focus when form is submitted but native validation fails', async ({ page }) => {
-    await initSelect(page, {
-      props: { name: 'options', required: true },
-      options: { isWithinForm: true, markupAfter: '<button type="submit">Submit</button>' },
-    });
-    const buttonElement = getButton(page);
-    const form = getForm(page);
-
-    await addEventListener(form, 'submit');
-    expect((await getEventSummary(form, 'submit')).counter).toBe(0);
-
-    await page.locator('button[type="submit"]').click();
-
-    expect((await getEventSummary(form, 'submit')).counter).toBe(1);
-    await expect(buttonElement).toBeFocused();
-  });
-
-  test('should include name & value in FormData submit', async ({ page }) => {
-    const name = 'name';
-    const value = 'a';
-    await initSelect(page, {
-      props: { name },
-      options: {
-        isWithinForm: true,
-        markupAfter: '<button type="submit">Submit</button>',
-      },
-    });
-    const host = await getHost(page);
-    await setProperty(host, 'value', value);
-    const form = getForm(page);
-
-    await addEventListener(form, 'submit');
-    expect((await getEventSummary(form, 'submit')).counter).toBe(0);
-
-    await page.locator('button[type=submit]').click();
-
-    expect((await getEventSummary(form, 'submit')).counter).toBe(1);
-    expect(await getFormDataValue(form, name)).toStrictEqual(value);
-  });
-
-  // TODO: Reset not implemented yet (Only way to do this would be to add reset listener to wrapping form?)
-  test.fixme('should reset select value on form reset', async ({ page }) => {
-    const name = 'name';
-    const value = 'a';
-    await initSelect(page, {
-      props: { name },
-      options: {
-        isWithinForm: true,
-        markupAfter: `
-        <button type="submit">Submit</button>
-        <button type="reset">Reset</button>
-      `,
-      },
-    });
-    const host = getHost(page);
-    await setProperty(host, 'value', value);
-    const form = getForm(page);
-
-    await addEventListener(form, 'submit');
-    expect((await getEventSummary(form, 'submit')).counter).toBe(0);
-    await setProperty(host, 'value', 'b');
-    await expect(host).toHaveJSProperty('value', 'b');
-
-    await page.locator('button[type="reset"]').click();
-
-    await expect(host).toHaveJSProperty('value', value); // Should be initial value again
-
-    await page.locator('button[type="submit"]').click();
-
-    expect((await getEventSummary(form, 'submit')).counter).toBe(1);
-    expect(await getFormDataValue(form, name)).toStrictEqual(value);
-  });
 });
 
 // TODO: Should the update event be emitted when slot changes? e.g. option with current set value is added
@@ -744,7 +518,7 @@ test.describe('keyboard behavior', () => {
       await waitForStencilLifecycle(page);
 
       expect(await getDropdownDisplay(page), 'initial').toBe('none');
-      expect(await getSelectValue(page)).toBeUndefined(); // No option got selected
+      expect(await getSelectValue(page)).toEqual('a');
     });
     // Opens the listbox and moves visual focus to the first option.
     test('should open the listbox and move highlight to first option when pressing Home', async ({ page }) => {
@@ -1093,10 +867,6 @@ test.describe('selection', () => {
     await buttonElement.press('Enter');
     await waitForStencilLifecycle(page);
 
-    expect(await getNativeSelectValue(page), 'after first option selected').toBe('b');
-    expect(await getNativeSelectInnerHTML(page), 'after first option selected').toBe(
-      '<option value="b" selected=""></option>'
-    );
     expect(await getSelectValue(page), 'after first option selected').toBe('b');
     expect(await getSelectedSelectOptionProperty(page, 'value'), 'after first option selected').toEqual('b');
     expect(await getButtonText(page)).toBe('b');
@@ -1113,10 +883,6 @@ test.describe('selection', () => {
     await buttonElement.press('Enter');
     await waitForStencilLifecycle(page);
 
-    expect(await getNativeSelectValue(page), 'after first option selected').toBe('c');
-    expect(await getNativeSelectInnerHTML(page), 'after first option selected').toBe(
-      '<option value="c" selected=""></option>'
-    );
     expect(await getSelectValue(page), 'after first option selected').toBe('c');
     expect(await getSelectedSelectOptionProperty(page, 'value'), 'after first option selected').toEqual('c');
     expect(await getButtonText(page)).toBe('c');
@@ -1135,10 +901,6 @@ test.describe('selection', () => {
     await buttonElement.press('Space');
     await waitForStencilLifecycle(page);
 
-    expect(await getNativeSelectValue(page), 'after first option selected').toBe('b');
-    expect(await getNativeSelectInnerHTML(page), 'after first option selected').toBe(
-      '<option value="b" selected=""></option>'
-    );
     expect(await getSelectValue(page), 'after first option selected').toBe('b');
     expect(await getSelectedSelectOptionProperty(page, 'value'), 'after first option selected').toEqual('b');
     expect(await getButtonText(page)).toBe('b');
@@ -1155,10 +917,6 @@ test.describe('selection', () => {
     await buttonElement.press('Space');
     await waitForStencilLifecycle(page);
 
-    expect(await getNativeSelectValue(page), 'after first option selected').toBe('c');
-    expect(await getNativeSelectInnerHTML(page), 'after first option selected').toBe(
-      '<option value="c" selected=""></option>'
-    );
     expect(await getSelectValue(page), 'after first option selected').toBe('c');
     expect(await getSelectedSelectOptionProperty(page, 'value'), 'after first option selected').toEqual('c');
     expect(await getButtonText(page)).toBe('c');
@@ -1177,10 +935,6 @@ test.describe('selection', () => {
     await buttonElement.press('Tab');
     await waitForStencilLifecycle(page);
 
-    expect(await getNativeSelectValue(page), 'after first option selected').toBe('b');
-    expect(await getNativeSelectInnerHTML(page), 'after first option selected').toBe(
-      '<option value="b" selected=""></option>'
-    );
     expect(await getSelectValue(page), 'after first option selected').toBe('b');
     expect(await getSelectedSelectOptionProperty(page, 'value'), 'after first option selected').toEqual('b');
     expect(await getButtonText(page)).toBe('b');
@@ -1197,10 +951,6 @@ test.describe('selection', () => {
     await buttonElement.press('Tab');
     await waitForStencilLifecycle(page);
 
-    expect(await getNativeSelectValue(page), 'after first option selected').toBe('c');
-    expect(await getNativeSelectInnerHTML(page), 'after first option selected').toBe(
-      '<option value="c" selected=""></option>'
-    );
     expect(await getSelectValue(page), 'after first option selected').toBe('c');
     expect(await getSelectedSelectOptionProperty(page, 'value'), 'after first option selected').toEqual('c');
     expect(await getButtonText(page)).toBe('c');
@@ -1219,10 +969,6 @@ test.describe('selection', () => {
     await buttonElement.press('Enter');
     await waitForStencilLifecycle(page);
 
-    expect(await getNativeSelectValue(page), 'after first option selected').toBe('b');
-    expect(await getNativeSelectInnerHTML(page), 'after first option selected').toBe(
-      '<option value="b" selected=""></option>'
-    );
     expect(await getSelectValue(page), 'after first option selected').toBe('b');
     expect(await getSelectedSelectOptionProperty(page, 'value'), 'after first option selected').toEqual('b');
     expect(await getButtonText(page)).toBe('b');
@@ -1236,8 +982,6 @@ test.describe('selection', () => {
     await buttonElement.press('Enter');
     await waitForStencilLifecycle(page);
 
-    expect(await getNativeSelectValue(page), 'after first option selected').toBe('');
-    expect(await getNativeSelectInnerHTML(page), 'after first option selected').toBe('');
     expect(await getSelectValue(page), 'after first option selected').toBeUndefined();
     expect(await getSelectedSelectOptionProperty(page, 'value'), 'after first option selected').toBeUndefined();
     expect(await getButtonText(page)).toBe('');
@@ -1256,10 +1000,6 @@ test.describe('selection', () => {
     await option.click();
     await waitForStencilLifecycle(page);
 
-    expect(await getNativeSelectValue(page), 'after first option selected').toBe('a');
-    expect(await getNativeSelectInnerHTML(page), 'after first option selected').toBe(
-      '<option value="a" selected=""></option>'
-    );
     expect(await getSelectValue(page), 'after first option selected').toBe('a');
     expect(await getSelectedSelectOptionProperty(page, 'value'), 'after first option selected').toEqual('a');
     expect(await getButtonText(page)).toBe('a');
@@ -1274,10 +1014,6 @@ test.describe('selection', () => {
     await option2.click();
     await waitForStencilLifecycle(page);
 
-    expect(await getNativeSelectValue(page), 'after first option selected').toBe('c');
-    expect(await getNativeSelectInnerHTML(page), 'after first option selected').toBe(
-      '<option value="c" selected=""></option>'
-    );
     expect(await getSelectValue(page), 'after first option selected').toBe('c');
     expect(await getSelectedSelectOptionProperty(page, 'value'), 'after first option selected').toEqual('c');
     expect(await getButtonText(page)).toBe('c');
@@ -1294,19 +1030,15 @@ test.describe('selection', () => {
     await option.click();
     await waitForStencilLifecycle(page);
 
-    expect(await getNativeSelectValue(page), 'after first option selected').toBe('');
-    expect(await getNativeSelectInnerHTML(page), 'after first option selected').toBe('');
-    expect(await getSelectValue(page), 'after first option selected').toBeUndefined();
-    expect(await getSelectedSelectOptionProperty(page, 'value'), 'after first option selected').toBeUndefined();
-    expect(await getButtonText(page)).toBe('');
+    expect(await getSelectValue(page), 'after first option selected').toBe('b');
+    expect(await getSelectedSelectOptionProperty(page, 'value'), 'after first option selected').toBe('b');
+    expect(await getButtonText(page)).toBe('b');
   });
 
   test('should select empty option when setting value to undefined', async ({ page }) => {
     await initSelect(page, { props: { name: 'options', value: 'a' }, options: { values: ['', 'a', 'b', 'c'] } });
 
     expect(await getSelectedOptionIndex(page)).toBe(1);
-    expect(await getNativeSelectValue(page), 'initial').toBe('a');
-    expect(await getNativeSelectInnerHTML(page), 'initial').toBe('<option value="a" selected=""></option>');
     expect(await getSelectValue(page), 'initial').toBe('a');
     expect(await getSelectedSelectOptionProperty(page, 'value'), 'initial').toEqual('a');
     expect(await getButtonText(page)).toBe('a');
@@ -1314,31 +1046,27 @@ test.describe('selection', () => {
     await setValue(page, undefined);
 
     expect(await getSelectedOptionIndex(page)).toBe(0);
-    expect(await getNativeSelectValue(page), 'after setting value to undefined').toBe('');
-    expect(await getNativeSelectInnerHTML(page), 'after setting value to undefined').toBe('');
     expect(await getSelectValue(page), 'initial').toBeUndefined();
     expect(await getSelectedSelectOptionProperty(page, 'value'), 'after setting value to undefined').toBeUndefined();
     expect(await getButtonText(page)).toBe('');
   });
 
-  test('should reset selection when value is set to undefined and no empty option provided', async ({ page }) => {
-    await initSelect(page, { props: { name: 'options', value: 'a' } });
+  test('should reset selection to default when value is set to undefined and no empty option provided', async ({
+    page,
+  }) => {
+    await initSelect(page, { props: { name: 'options', value: 'c' } });
 
-    expect(await getSelectedOptionIndex(page)).toBe(0);
-    expect(await getNativeSelectValue(page), 'initial').toBe('a');
-    expect(await getNativeSelectInnerHTML(page), 'initial').toBe('<option value="a" selected=""></option>');
-    expect(await getSelectValue(page), 'initial').toBe('a');
-    expect(await getSelectedSelectOptionProperty(page, 'value'), 'initial').toEqual('a');
-    expect(await getButtonText(page)).toBe('a');
+    expect(await getSelectedOptionIndex(page)).toBe(2);
+    expect(await getSelectValue(page), 'initial').toBe('c');
+    expect(await getSelectedSelectOptionProperty(page, 'value'), 'initial').toEqual('c');
+    expect(await getButtonText(page)).toBe('c');
 
     await setValue(page, undefined);
 
-    expect(await getSelectedOptionIndex(page)).toBe(-1);
-    expect(await getNativeSelectValue(page), 'after setting value to undefined').toBe('');
-    expect(await getNativeSelectInnerHTML(page), 'after setting value to undefined').toBe('');
+    expect(await getSelectedOptionIndex(page)).toBe(0);
     expect(await getSelectValue(page), 'initial').toBeUndefined();
-    expect(await getSelectedSelectOptionProperty(page, 'value'), 'after setting value to undefined').toBeUndefined();
-    expect(await getButtonText(page)).toBe('');
+    expect(await getSelectedSelectOptionProperty(page, 'value'), 'after setting value to undefined').toBe('a');
+    expect(await getButtonText(page)).toBe('a');
   });
 });
 
@@ -1387,18 +1115,15 @@ test.describe('click events', () => {
 test.describe('slots', () => {
   test('should update when selected option is added', async ({ page }) => {
     await initSelect(page);
-    expect(await getSelectValue(page)).toBeUndefined();
+    expect(await getSelectValue(page)).toBe('a');
 
     await setValue(page, 'd');
     await waitForStencilLifecycle(page);
     expect(await getSelectValue(page)).toBe('d');
-    expect(await getNativeSelectValue(page), 'after setting value').toBe('');
 
     await addOption(page, 'd', 'd');
     await waitForStencilLifecycle(page);
 
-    expect(await getNativeSelectValue(page), 'after option added').toBe('d');
-    expect(await getNativeSelectInnerHTML(page), 'after option added').toBe('<option value="d" selected=""></option>');
     expect(await getSelectValue(page), 'after option added').toBe('d');
     expect(await getSelectedSelectOptionProperty(page, 'value'), 'after option added').toEqual('d');
     expect(await getButtonText(page)).toBe('d');
@@ -1408,8 +1133,6 @@ test.describe('slots', () => {
     await initSelect(page, { props: { name: 'options', value: 'c' } });
     await waitForStencilLifecycle(page);
 
-    expect(await getNativeSelectValue(page), 'initial').toBe('c');
-    expect(await getNativeSelectInnerHTML(page), 'initial').toBe('<option value="c" selected=""></option>');
     expect(await getSelectValue(page), 'initial').toBe('c');
     expect(await getSelectedSelectOptionProperty(page, 'value'), 'initial').toEqual('c');
     expect(await getButtonText(page)).toBe('c');
@@ -1421,8 +1144,6 @@ test.describe('slots', () => {
 
     await waitForStencilLifecycle(page);
 
-    expect(await getNativeSelectValue(page), 'after option selected removed').toBe('');
-    expect(await getNativeSelectInnerHTML(page), 'after option selected removed').toBe('');
     expect(await getSelectValue(page), 'after option selected removed').toBe('c');
     expect(await getSelectedSelectOptionProperty(page, 'value'), 'after option selected removed').toBeUndefined();
     expect(await getButtonText(page)).toBe('');
@@ -1437,9 +1158,9 @@ test.describe('lifecycle', () => {
 
     expect(status1.componentDidLoad['p-select'], 'componentDidLoad: p-select').toBe(1);
     expect(status1.componentDidLoad['p-select-option'], 'componentDidLoad: p-select-option').toBe(3);
-    expect(status1.componentDidLoad['p-icon'], 'componentDidLoad: p-icon').toBe(1); // arrow down
+    expect(status1.componentDidLoad['p-icon'], 'componentDidLoad: p-icon').toBe(2); // arrow down
 
-    expect(status1.componentDidLoad.all, 'componentDidLoad: all').toBe(5);
+    expect(status1.componentDidLoad.all, 'componentDidLoad: all').toBe(6);
     expect(status1.componentDidUpdate.all, 'componentDidUpdate: all').toBe(0);
 
     await buttonElement.click();
@@ -1459,9 +1180,9 @@ test.describe('lifecycle', () => {
 
     expect(status1.componentDidLoad['p-select'], 'componentDidLoad: p-select').toBe(1);
     expect(status1.componentDidLoad['p-select-option'], 'componentDidLoad: p-select-option').toBe(3);
-    expect(status1.componentDidLoad['p-icon'], 'componentDidLoad: p-icon').toBe(1); // arrow down
+    expect(status1.componentDidLoad['p-icon'], 'componentDidLoad: p-icon').toBe(2); // arrow down
 
-    expect(status1.componentDidLoad.all, 'componentDidLoad: all').toBe(5);
+    expect(status1.componentDidLoad.all, 'componentDidLoad: all').toBe(6);
     expect(status1.componentDidUpdate.all, 'componentDidUpdate: all').toBe(1);
 
     const option1 = getSelectOption(page, 1);
@@ -1471,7 +1192,7 @@ test.describe('lifecycle', () => {
     const status2 = await getLifecycleStatus(page);
     expect(status2.componentDidUpdate['p-select-option'], 'componentDidUpdate: p-select-option').toBe(1);
     expect(status2.componentDidUpdate['p-select'], 'componentDidUpdate: p-select').toBe(2);
-    expect(status1.componentDidLoad['p-icon'], 'componentDidLoad: p-icon').toBe(1); // checkmark icon
+    expect(status1.componentDidLoad['p-icon'], 'componentDidLoad: p-icon').toBe(2); // checkmark icon
     expect(status2.componentDidUpdate.all, 'componentDidUpdate: all').toBe(3);
   });
 
