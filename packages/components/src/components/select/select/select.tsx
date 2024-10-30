@@ -11,7 +11,6 @@ import {
   setSelectedOption,
   syncSelectChildrenProps,
   updateSelectOptions,
-  determineSelectedOption,
 } from './select-utils';
 
 import {
@@ -175,14 +174,9 @@ export class Select {
   }
 
   public componentWillLoad(): void {
+    this.defaultValue = this.value;
     this.updateOptions();
     updateSelectOptions(this.selectOptions, this.value);
-
-    if (this.value === undefined) {
-      this.value = determineSelectedOption(this.selectOptions)?.value;
-    }
-
-    this.defaultValue = this.value;
   }
 
   public componentDidLoad(): void {

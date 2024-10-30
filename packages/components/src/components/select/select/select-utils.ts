@@ -43,15 +43,11 @@ export const resetSelectedOption = (options: SelectOption[]): void => {
   }
 };
 
-export const determineSelectedOption = (options: SelectOption[]): SelectOption | undefined =>
-  options.find((option) => option.value === undefined && !option.disabled) ||
-  options.find((option) => !option.disabled);
-
 export const updateSelectOptions = (options: SelectOption[], value: string): void => {
   resetSelectedOption(options);
   if (value === undefined) {
-    // Selects the first option with an undefined value; otherwise, defaults to the first option.
-    const optionToSelect = determineSelectedOption(options);
+    // Option without value for empty selection
+    const optionToSelect = options.find((option) => option.value === undefined);
     if (optionToSelect) {
       optionToSelect.selected = true;
       forceUpdate(optionToSelect);
