@@ -604,7 +604,12 @@ export default <${formComponentName} ${stringifiedProps} />;
       },
       {
         name: 'Dummy',
-        include: ['src/dummy/*.tsx'],
+        include: [
+         'src/dummy/DummyImg.tsx',
+         'src/dummy/DummyLink.tsx',
+         'src/dummy/DummySpan.tsx',
+         'src/dummy/DummyDiv.tsx'
+        ],
       },
     ],
     wrapper: 'src/UXPinWrapper.tsx',
