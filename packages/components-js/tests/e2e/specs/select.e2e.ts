@@ -518,7 +518,7 @@ test.describe('keyboard behavior', () => {
       await waitForStencilLifecycle(page);
 
       expect(await getDropdownDisplay(page), 'initial').toBe('none');
-      expect(await getSelectValue(page)).toEqual('a');
+      expect(await getSelectValue(page)).toBeUndefined();
     });
     // Opens the listbox and moves visual focus to the first option.
     test('should open the listbox and move highlight to first option when pressing Home', async ({ page }) => {
@@ -1030,9 +1030,9 @@ test.describe('selection', () => {
     await option.click();
     await waitForStencilLifecycle(page);
 
-    expect(await getSelectValue(page), 'after first option selected').toBe('b');
-    expect(await getSelectedSelectOptionProperty(page, 'value'), 'after first option selected').toBe('b');
-    expect(await getButtonText(page)).toBe('b');
+    expect(await getSelectValue(page), 'after first option selected').toBeUndefined();
+    expect(await getSelectedSelectOptionProperty(page, 'value'), 'after first option selected').toBeUndefined();
+    expect(await getButtonText(page)).toBe('');
   });
 
   test('should select empty option when setting value to undefined', async ({ page }) => {
@@ -1063,10 +1063,10 @@ test.describe('selection', () => {
 
     await setValue(page, undefined);
 
-    expect(await getSelectedOptionIndex(page)).toBe(0);
+    expect(await getSelectedOptionIndex(page)).toBe(-1);
     expect(await getSelectValue(page), 'initial').toBeUndefined();
-    expect(await getSelectedSelectOptionProperty(page, 'value'), 'after setting value to undefined').toBe('a');
-    expect(await getButtonText(page)).toBe('a');
+    expect(await getSelectedSelectOptionProperty(page, 'value'), 'after setting value to undefined').toBeUndefined();
+    expect(await getButtonText(page)).toBe('');
   });
 });
 
@@ -1115,7 +1115,7 @@ test.describe('click events', () => {
 test.describe('slots', () => {
   test('should update when selected option is added', async ({ page }) => {
     await initSelect(page);
-    expect(await getSelectValue(page)).toBe('a');
+    expect(await getSelectValue(page)).toBeUndefined();
 
     await setValue(page, 'd');
     await waitForStencilLifecycle(page);
@@ -1158,9 +1158,9 @@ test.describe('lifecycle', () => {
 
     expect(status1.componentDidLoad['p-select'], 'componentDidLoad: p-select').toBe(1);
     expect(status1.componentDidLoad['p-select-option'], 'componentDidLoad: p-select-option').toBe(3);
-    expect(status1.componentDidLoad['p-icon'], 'componentDidLoad: p-icon').toBe(2); // arrow down
+    expect(status1.componentDidLoad['p-icon'], 'componentDidLoad: p-icon').toBe(1); // arrow down
 
-    expect(status1.componentDidLoad.all, 'componentDidLoad: all').toBe(6);
+    expect(status1.componentDidLoad.all, 'componentDidLoad: all').toBe(5);
     expect(status1.componentDidUpdate.all, 'componentDidUpdate: all').toBe(0);
 
     await buttonElement.click();
@@ -1180,9 +1180,9 @@ test.describe('lifecycle', () => {
 
     expect(status1.componentDidLoad['p-select'], 'componentDidLoad: p-select').toBe(1);
     expect(status1.componentDidLoad['p-select-option'], 'componentDidLoad: p-select-option').toBe(3);
-    expect(status1.componentDidLoad['p-icon'], 'componentDidLoad: p-icon').toBe(2); // arrow down
+    expect(status1.componentDidLoad['p-icon'], 'componentDidLoad: p-icon').toBe(1); // arrow down
 
-    expect(status1.componentDidLoad.all, 'componentDidLoad: all').toBe(6);
+    expect(status1.componentDidLoad.all, 'componentDidLoad: all').toBe(5);
     expect(status1.componentDidUpdate.all, 'componentDidUpdate: all').toBe(1);
 
     const option1 = getSelectOption(page, 1);
@@ -1192,7 +1192,7 @@ test.describe('lifecycle', () => {
     const status2 = await getLifecycleStatus(page);
     expect(status2.componentDidUpdate['p-select-option'], 'componentDidUpdate: p-select-option').toBe(1);
     expect(status2.componentDidUpdate['p-select'], 'componentDidUpdate: p-select').toBe(2);
-    expect(status1.componentDidLoad['p-icon'], 'componentDidLoad: p-icon').toBe(2); // checkmark icon
+    expect(status1.componentDidLoad['p-icon'], 'componentDidLoad: p-icon').toBe(1); // checkmark icon
     expect(status2.componentDidUpdate.all, 'componentDidUpdate: all').toBe(3);
   });
 
