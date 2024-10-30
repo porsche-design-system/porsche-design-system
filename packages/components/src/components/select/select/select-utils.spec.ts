@@ -93,44 +93,15 @@ describe('resetSelectedOption', () => {
   });
 });
 
-describe('determineSelectedOption', () => {
-  test.each<[SelectOption[], SelectOption]>([
-    [
-      [
-        { value: undefined, disabled: false },
-        { value: 'a', disabled: true },
-        { value: 'b', disabled: false },
-      ],
-      { value: undefined, disabled: false },
-    ],
-    [
-      [
-        { value: undefined, disabled: true },
-        { value: 'a', disabled: false },
-        { value: 'b', disabled: false },
-      ],
-      { value: 'a', disabled: false },
-    ],
-    [
-      [
-        { value: undefined, disabled: true },
-        { value: 'a', disabled: true },
-        { value: 'b', disabled: false },
-      ],
-      { value: 'b', disabled: false },
-    ],
-  ])('should return correct option for options: %s', (options, expected) => {
-    expect(selectUtils.determineSelectedOption(options)).toEqual(expected);
-  });
-});
-
 describe('updateSelectOptions', () => {
-  it('should select first not disabled option when value="undefined" and no option with that value exists', () => {
+  it('should not select option when value="undefined" and no option with that value exists', () => {
     const options = generateOptions();
     const resetSelectedOptionSpy = jest.spyOn(selectUtils, 'resetSelectedOption');
     updateSelectOptions(options, undefined);
     expect(resetSelectedOptionSpy).toHaveBeenCalledWith(options);
-    expect(options[0].selected).toBe(true);
+    options.forEach((option) => {
+      expect(option.selected).toBe(false);
+    });
   });
 
   it('should select correct option when value="undefined" and option with that value exists', () => {
