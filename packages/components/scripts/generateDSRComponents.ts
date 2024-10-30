@@ -515,7 +515,13 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
           .replace(/<span className="sr-only"[^<]*<\/span>/, '')
           // .replace(/(SelectDropdownDirectionInternal)/, 'type $1')
           .replace(/private searchTimeout: any\.Timeout \| number = null;/, '')
-          .replace(/@AttachInternals\(\)/, '');
+          // TODO replace ElementInternals lifecycle callbacks (formAssociatedCallback, formDisabledCallback, formResetCallback, formStateRestoreCallback) completely
+          .replace(/@AttachInternals\(\)/, '')
+          .replace(/this\.props\.value = this\.props\.defaultValue;/, '')
+          .replace(/this\.props\.disabled = disabled;/, '')
+          .replace(/this\.props\.value = state;/, '')
+          .replace(/formDisabledCallback\(disabled: boolean\)/, 'formDisabledCallback()')
+          .replace(/formStateRestoreCallback\(state: string\)/, 'formStateRestoreCallback()');
       } else if (tagName === 'p-select-option') {
         newFileContent = newFileContent.replace(/this\.theme/, 'this.props.theme');
       } else if (tagName === 'p-text-field-wrapper') {
