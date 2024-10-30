@@ -153,7 +153,6 @@ export class Select {
 
   @Watch('value')
   public onValueChange(): void {
-    console.log('onValueChange', this.value);
     this.internals.setFormValue(this.value);
     // When setting initial value the watcher gets called before the options are defined
     if (this.selectOptions.length > 0) {
