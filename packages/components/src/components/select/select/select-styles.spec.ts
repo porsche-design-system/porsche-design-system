@@ -32,7 +32,7 @@ describe('getComponentCss()', () => {
     ['up', false, true, false, 'error', false, 'dark'],
     ['up', true, true, false, 'error', false, 'dark'],
   ])(
-    'should return correct css for direction: %s, isOpen: %s, isDisabled: %s, hideLabel: %o, state: %s, isWithinForm: %s, isNativePopoverCase: %s and theme: %s',
+    'should return correct css for direction: %s, isOpen: %s, isDisabled: %s, hideLabel: %o, state: %s, isNativePopoverCase: %s and theme: %s',
     (...args) => {
       validateCssAndMatchSnapshot(getComponentCss(...args));
     }
