@@ -1,32 +1,27 @@
 import { Select } from './select';
 import * as selectUtils from './select-utils';
-import * as getClosestHTMLElementUtils from '../../../utils/dom/getClosestHTMLElement';
 import * as getShadowRootHTMLElementUtils from '../../../utils/dom/getShadowRootHTMLElement';
+import { expect } from '@jest/globals';
+
+class MockElementInternals {
+  setValidity = jest.fn();
+  setFormValue = jest.fn();
+}
 
 const initComponent = (): Select => {
   const component = new Select();
   component.host = document.createElement('p-select');
   component.host.attachShadow({ mode: 'open' });
+  component['internals'] = new MockElementInternals() as unknown as ElementInternals;
   return component;
 };
 
 describe('connectedCallback', () => {
-  it('should add event listener and set is within form', () => {
+  it('should add event listener', () => {
     const component = initComponent();
-    const getClosestHTMLElementSpy = jest.spyOn(getClosestHTMLElementUtils, 'getClosestHTMLElement');
     const addEventListenerSpy = jest.spyOn(document, 'addEventListener');
     component.connectedCallback();
-    expect(getClosestHTMLElementSpy).toHaveBeenCalledWith(component.host, 'form');
-    expect(component['form']).toBe(null);
-    expect(component['isWithinForm']).toBe(false);
     expect(addEventListenerSpy).toHaveBeenCalledWith('mousedown', component['onClickOutside'], true);
-  });
-
-  it('should set isWithinForm if is within form', () => {
-    const component = initComponent();
-    jest.spyOn(getClosestHTMLElementUtils, 'getClosestHTMLElement').mockReturnValueOnce(document.createElement('form'));
-    component.connectedCallback();
-    expect(component['isWithinForm']).toBe(true);
   });
 });
 
@@ -37,58 +32,23 @@ describe('componentWillLoad', () => {
     component.componentWillLoad();
     expect(updateSelectOptionsSpy).toHaveBeenCalledWith(component['selectOptions'], component['value']);
   });
-
-  it('should call initNativeSelect() and updateNativeSelectOption() with correct parameters if is within form', () => {
-    const component = initComponent();
-    component['isWithinForm'] = true;
-    const initNativeSelectSpy = jest.spyOn(selectUtils, 'initNativeSelect');
-    const updateNativeSelectOptionSpy = jest.spyOn(selectUtils, 'updateNativeSelectOption');
-    component.componentWillLoad();
-    expect(initNativeSelectSpy).toHaveBeenCalledWith(component.host, undefined, false, false);
-    expect(updateNativeSelectOptionSpy).toHaveBeenCalledWith(component['nativeSelect'], component['selectOptions']);
-  });
-
-  it('should not call initNativeSelect() and updateNativeSelectOption() if is not within form', () => {
-    const component = initComponent();
-    component['isWithinForm'] = false;
-    const initNativeSelectSpy = jest.spyOn(selectUtils, 'initNativeSelect');
-    const updateNativeSelectOptionSpy = jest.spyOn(selectUtils, 'updateNativeSelectOption');
-    component.componentWillLoad();
-    expect(initNativeSelectSpy).not.toHaveBeenCalled();
-    expect(updateNativeSelectOptionSpy).not.toHaveBeenCalled();
-  });
 });
 
 describe('componentDidLoad', () => {
-  it('should call getShadowRootHTMLElement() with correct parameters and add event listener', () => {
+  it('should call getShadowRootHTMLElement() with correct parameters, add event listener and call setFormValue()', () => {
     const component = initComponent();
+    component.value = 'test';
     const slot = document.createElement('slot');
     const slotSpy = jest.spyOn(slot, 'addEventListener');
     const getShadowRootHTMLElementSpy = jest
-    .spyOn(getShadowRootHTMLElementUtils, 'getShadowRootHTMLElement')
-    .mockReturnValueOnce(slot);
+      .spyOn(getShadowRootHTMLElementUtils, 'getShadowRootHTMLElement')
+      .mockReturnValueOnce(slot);
+    const setFormValueSpy = jest.spyOn(component['internals'], 'setFormValue' as any);
+
     component.componentDidLoad();
     expect(getShadowRootHTMLElementSpy).toHaveBeenCalledWith(component.host, 'slot');
     expect(slotSpy).toHaveBeenCalledTimes(1);
-  });
-});
-
-describe('componentWillUpdate', () => {
-  it('should call syncNativeSelect() with correct parameters if is within form', () => {
-    const component = initComponent();
-    component['nativeSelect'] = document.createElement('select');
-    component['isWithinForm'] = true;
-    const syncNativeSelectSpy = jest.spyOn(selectUtils, 'syncNativeSelect');
-    component.componentWillUpdate();
-    expect(syncNativeSelectSpy).toHaveBeenCalledWith(component['nativeSelect'], undefined, false, false);
-  });
-
-  it('should not call syncNativeSelect() if is not within form', () => {
-    const component = initComponent();
-    component['isWithinForm'] = false;
-    const syncNativeSelectSpy = jest.spyOn(selectUtils, 'syncNativeSelect');
-    component.componentWillUpdate();
-    expect(syncNativeSelectSpy).not.toHaveBeenCalled();
+    expect(setFormValueSpy).toHaveBeenCalledWith(component.value);
   });
 });
 
@@ -108,4 +68,30 @@ describe('render', () => {
     component.render();
     expect(spy).toHaveBeenCalledWith(component['selectOptions'], component.theme);
   });
+});
+
+describe('formResetCallback', () => {
+  const component = initComponent();
+  const defaultValue = 'default-value';
+  component['defaultValue'] = defaultValue;
+  component.value = 'test';
+  const setFormValueSpy = jest.spyOn(component['internals'], 'setFormValue' as any);
+  component.formResetCallback();
+  expect(setFormValueSpy).toHaveBeenCalledWith(defaultValue);
+  expect(component.value).toBe(defaultValue);
+});
+
+describe('formDisabledCallback', () => {
+  const component = initComponent();
+  component.disabled = false;
+  component.formDisabledCallback(true);
+  expect(component.disabled).toBe(true);
+});
+
+describe('formStateRestoreCallback', () => {
+  const component = initComponent();
+  component.value = 'test';
+  const restoredValue = 'restored-value';
+  component.formStateRestoreCallback(restoredValue);
+  expect(component.value).toBe(restoredValue);
 });
