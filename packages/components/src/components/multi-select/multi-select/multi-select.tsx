@@ -35,6 +35,7 @@ import {
   getNativePopoverDropdownPosition,
   getPrefixedTagNames,
   getShadowRootHTMLElement,
+  handleButtonEvent,
   hasPropValueChanged,
   isClickOutside,
   isElementOfKind,
@@ -459,6 +460,15 @@ export class MultiSelect {
           this.emitUpdateEvent();
           this.updateSrHighlightedOptionText();
           forceUpdate(highlightedOption);
+        } else {
+          if (this.internals.form) {
+            handleButtonEvent(
+              e,
+              this.host,
+              () => 'submit',
+              () => this.disabled
+            );
+          }
         }
         break;
       case 'Escape':
