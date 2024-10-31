@@ -84,9 +84,9 @@
     "imask": "^7.6.1"
   },
   "devDependencies": {
-    "@arethetypeswrong/core": "^0.15.1",
+    "@arethetypeswrong/core": "^0.16.4",
     "@porsche-design-system/shared": "0.0.0",
-    "devtools-protocol": "^0.0.1304228",
+    "devtools-protocol": "^0.0.1376096",
     "jsdom": "^24.1.0",
     "mime": "^4.0.4",
     "terser-webpack-plugin": "^5.3.10",
