@@ -21,7 +21,7 @@
   "devDependencies": {
     "@babel/preset-typescript": "^7.24.7",
     "@porsche-design-system/assets": "5.0.2",
-    "@types/react": "18.3.3",
+    "@types/react": "18.3.12",
     "@uxpin/merge-cli": "3.4.3",
     "babel-loader": "^9.1.3"
   },
