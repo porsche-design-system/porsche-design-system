@@ -4,6 +4,7 @@ import { ReactWrapperGenerator } from './ReactWrapperGenerator';
 import type { ExtendedProp } from './DataStructureBuilder';
 import type { AdditionalFile } from './AbstractWrapperGenerator';
 import { kebabCase, pascalCase } from 'latest-change-case';
+import {useBrowserLayoutEffect} from "../../../components-react/projects/uxpin-wrapper/src/hooks";
 
 type PresetsProps = { [key: string]: number | string | boolean | string[] | object | null };
 
@@ -113,7 +114,7 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
     }
 
     // add onClick prop for marque, buttons and links, but not button-group
-    else if (!!component.match(/(button|link|marque|stepper-horizontal-item|tag-dismissible)(?!-group)/)) {
+    else if (!!component.match(/(button|link|marque|stepper-horizontal-item|tag-dismissible|crest)(?!-group)/)) {
       props = addProp(props, 'onClick?: (e: MouseEvent) => void;');
     }
 
@@ -142,8 +143,9 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
     // add uxpinignoreprop annotations
     if (component === 'p-modal') {
       props = addUxPinIgnorePropAnnotation(props, 'open');
-    } else if (component === 'p-link' || component === 'p-link-pure' || component === 'p-link-social') {
+    } else if (component === 'p-link' || component === 'p-link-pure' || component === 'p-link-social'  || component === 'p-crest') {
       props = addUxPinIgnorePropAnnotation(props, 'href');
+      props = addUxPinIgnorePropAnnotation(props, 'target');
     }
 
     // add uxpinbind annotations
@@ -270,6 +272,22 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
             '    }',
             '    useEventCallback(elementRef, \'dismiss\', dismissCallback);',
           ].join('\n')
+      )
+    }
+
+    // make crest link if onClick is defined
+    if (component === 'p-crest') {
+      cleanedComponent = cleanedComponent.replace(
+          'const props = {',
+          [
+            '',
+            'useBrowserLayoutEffect(() => {',
+            '  const { current } = elementRef;',
+            '  (current as any).href = rest.onClick ? \'#\' : undefined;',
+            '}, [rest.onClick]);',
+            '',
+            'const props = {',
+          ].join('\n    ')
       )
     }
 
@@ -605,6 +623,7 @@ export default <${formComponentName} ${stringifiedProps} />;
       {
         name: 'Dummy',
         include: [
+         'src/dummy/DummyButton.tsx',
          'src/dummy/DummyImg.tsx',
          'src/dummy/DummyLink.tsx',
          'src/dummy/DummySpan.tsx',
