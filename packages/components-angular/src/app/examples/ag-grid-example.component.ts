@@ -1,9 +1,9 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { DataAdvanced, dataAdvanced } from '@porsche-design-system/shared';
+import { type DataAdvanced, dataAdvanced } from '@porsche-design-system/shared';
 import 'ag-grid-enterprise';
-import { ColDef, ICellRendererParams } from 'ag-grid-enterprise';
-import { ICellRendererAngularComp } from 'ag-grid-angular';
-import { PorscheDesignSystemModule, Theme } from '@porsche-design-system/components-angular';
+import { type ColDef, type ICellRendererParams } from 'ag-grid-community';
+import { type ICellRendererAngularComp } from 'ag-grid-angular';
+import { PorscheDesignSystemModule, type Theme } from '@porsche-design-system/components-angular';
 import { AsyncPipe } from '@angular/common';
 
 type ColumnDefs = DataAdvanced & {
