@@ -31,8 +31,8 @@
   },
   "devDependencies": {
     "@porsche-design-system/shared": "0.0.0",
-    "@remix-run/dev": "^2.10.2",
-    "@remix-run/eslint-config": "^2.10.2",
+    "@remix-run/dev": "^2.13.1",
+    "@remix-run/eslint-config": "^2.13.1",
     "@types/eslint": "^8.56.10",
     "@types/react": "18.3.12",
     "@types/react-dom": "^18.3.1",
