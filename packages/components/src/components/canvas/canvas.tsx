@@ -126,13 +126,7 @@ export class Canvas {
     return (
       <Host>
         <div class="root" ref={(el: HTMLElement) => (this.root = el)}>
-          <header
-            class="header"
-            tabindex="-1"
-            ref={(el: HTMLElement) => {
-              this.header = el;
-            }}
-          >
+          <header class="header" tabindex="-1" ref={(el: HTMLHeadElement) => (this.header = el)}>
             <div class="blur">
               <div></div>
               <div></div>
