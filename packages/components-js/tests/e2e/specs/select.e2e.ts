@@ -7,6 +7,7 @@ import {
   getActiveElementTagNameInShadowRoot,
   getElementStyle,
   getEventSummary,
+  getFormDataValue,
   getHTMLAttributes,
   getLifecycleStatus,
   getProperty,
@@ -19,6 +20,7 @@ import {
 import type { SelectOption } from '@porsche-design-system/components/src/components/select/select/select-utils';
 
 const getHost = (page: Page) => page.locator('p-select');
+const getFieldset = (page: Page) => page.locator('fieldset');
 const getSelectValue = async (page: Page): Promise<string | number> => await getProperty(getHost(page), 'value');
 const getButton = (page: Page) => page.locator('p-select button').first();
 const getButtonText = async (page: Page): Promise<string | number> => getProperty(getButton(page), 'textContent');
@@ -1352,5 +1354,121 @@ test.describe('optgroups', () => {
     for (const child of children) {
       await expect(child).not.toBeVisible();
     }
+  });
+});
+
+test.describe('form', () => {
+  test('should include name & value in FormData submit', async ({ page }) => {
+    const name = 'name';
+    const value = 'Hallo';
+    await initSelect(page, {
+      props: { name, value },
+      options: { isWithinForm: true, markupAfter: '<button type="submit">Submit</button>' },
+    });
+    const form = getForm(page);
+
+    await addEventListener(form, 'submit');
+    expect((await getEventSummary(form, 'submit')).counter).toBe(0);
+
+    await page.locator('button[type="submit"]').click();
+
+    expect((await getEventSummary(form, 'submit')).counter).toBe(1);
+    expect(await getFormDataValue(form, name)).toBe(value);
+  });
+
+  test('should include name & value in FormData submit if outside of form', async ({ page }) => {
+    const name = 'name';
+    const value = 'a';
+    const formId = 'myForm';
+    await initSelect(page, {
+      props: { name, value, form: formId },
+      options: {
+        isWithinForm: false,
+        markupBefore: `<form id="myForm" onsubmit="return false;"><button type="submit">Submit</button></form>`,
+      },
+    });
+    const form = getForm(page);
+
+    await addEventListener(form, 'submit');
+    expect((await getEventSummary(form, 'submit')).counter).toBe(0);
+
+    await page.locator('button[type="submit"]').click();
+
+    expect((await getEventSummary(form, 'submit')).counter).toBe(1);
+    expect(await getFormDataValue(form, name)).toBe(value);
+  });
+
+  test('should reset select value to its initial value on form reset', async ({ page }) => {
+    const name = 'name';
+    const value = 'b';
+    const newValue = 'c';
+    const host = getHost(page);
+    const select = getHost(page);
+    await initSelect(page, {
+      props: { name, value },
+      options: {
+        isWithinForm: true,
+        markupAfter: `
+        <button type="submit">Submit</button>
+        <button type="reset">Reset</button>
+      `,
+      },
+    });
+    const form = getForm(page);
+
+    await addEventListener(form, 'submit');
+    expect((await getEventSummary(form, 'submit')).counter).toBe(0);
+
+    await setProperty(select, 'value', newValue);
+
+    await expect(host).toHaveJSProperty('value', newValue);
+
+    await page.locator('button[type="reset"]').click();
+
+    await expect(host).toHaveJSProperty('value', value);
+
+    await page.locator('button[type="submit"]').click();
+
+    expect((await getEventSummary(form, 'submit')).counter).toBe(1);
+    expect(await getFormDataValue(form, name)).toBe(value);
+  });
+
+  test('should disable select if within disabled fieldset', async ({ page }) => {
+    const name = 'name';
+    const value = 'Hallo';
+    const host = getHost(page);
+    await initSelect(page, {
+      props: { name, value },
+      options: {
+        isWithinForm: true,
+        markupBefore: `<fieldset disabled>`,
+        markupAfter: `</fieldset>`,
+      },
+    });
+
+    await expect(host).toHaveJSProperty('disabled', true);
+  });
+
+  test('should sync disabled state with fieldset when updated programmatically', async ({ page }) => {
+    await initSelect(page, {
+      options: {
+        isWithinForm: true,
+        markupBefore: `<fieldset disabled>`,
+        markupAfter: `</fieldset>`,
+      },
+    });
+    const host = getHost(page);
+    const select = getHost(page);
+    const fieldset = getFieldset(page);
+    await expect(fieldset).toHaveJSProperty('disabled', true);
+    await expect(host).toHaveJSProperty('disabled', true);
+    await expect(select).toHaveJSProperty('disabled', true);
+
+    await setProperty(fieldset, 'disabled', false);
+    await waitForStencilLifecycle(page);
+
+    await expect(fieldset).toHaveJSProperty('disabled', false);
+    await expect(host).toHaveJSProperty('disabled', false);
+    await expect(select).toHaveJSProperty('disabled', false);
   });
 });
