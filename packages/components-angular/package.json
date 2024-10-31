@@ -54,13 +54,13 @@
     "@testing-library/angular": "^17.3.1",
     "@types/jasmine": "^5.1.4",
     "globby": "^11.1.0",
-    "jest-preset-angular": "^14.1.1",
-    "karma": "~6.4.3",
+    "jest-preset-angular": "^14.2.4",
+    "karma": "~6.4.4",
     "karma-chrome-launcher": "~3.2.0",
     "karma-coverage-istanbul-reporter": "~3.0.3",
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "^2.1.0",
-    "ng-packagr": "^18.1.0"
+    "ng-packagr": "^18.2.1"
   },
   "peerDependencies": {
     "@playwright/test": "*",

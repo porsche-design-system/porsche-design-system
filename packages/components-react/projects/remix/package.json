@@ -33,12 +33,12 @@
     "@porsche-design-system/shared": "0.0.0",
     "@remix-run/dev": "^2.13.1",
     "@remix-run/eslint-config": "^2.13.1",
-    "@types/eslint": "^8.56.10",
+    "@types/eslint": "^9.6.1",
     "@types/react": "18.3.12",
     "@types/react-dom": "^18.3.1",
     "binode": "^1.0.5",
     "cross-env": "^7.0.3",
-    "eslint": "^8.57.0",
+    "eslint": "^9.13.0",
     "eslint-config-prettier": "^9.1.0"
   },
   "peerDependencies": {
