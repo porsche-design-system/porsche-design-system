@@ -911,7 +911,7 @@ test.describe('keyboard and click events', () => {
     expect(await getDropdownDisplay(page), 'after second Esc').toBe('none');
   });
 
-  test.fixme('should submit form with correct values when is wrapped by form on Enter', async ({ page }) => {
+  test('should submit form with correct values when is wrapped by form on Enter', async ({ page }) => {
     await initMultiSelect(page);
     const form = page.locator('form');
     const inputElement = getInput(page);
