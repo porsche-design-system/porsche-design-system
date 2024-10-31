@@ -1,52 +1,31 @@
 import { MultiSelect } from './multi-select';
 import * as multiSelectUtils from './multi-select-utils';
-import * as getClosestHTMLElementUtils from '../../../utils/dom/getClosestHTMLElement';
 import * as getShadowRootHTMLElementUtils from '../../../utils/dom/getShadowRootHTMLElement';
+import { expect } from '@jest/globals';
+
+class MockElementInternals {
+  setValidity = jest.fn();
+  setFormValue = jest.fn();
+}
 
 const initComponent = (): MultiSelect => {
   const component = new MultiSelect();
   component.host = document.createElement('p-multi-select');
   component.host.attachShadow({ mode: 'open' });
+  component['internals'] = new MockElementInternals() as unknown as ElementInternals;
   return component;
 };
 
 describe('connectedCallback', () => {
-  it('should add event listener and set is within form', () => {
+  it('should add event listener', () => {
     const component = initComponent();
-    const getClosestHTMLElementSpy = jest.spyOn(getClosestHTMLElementUtils, 'getClosestHTMLElement');
     const addEventListenerSpy = jest.spyOn(document, 'addEventListener');
     component.connectedCallback();
-    expect(getClosestHTMLElementSpy).toHaveBeenCalledWith(component.host, 'form');
-    expect(component['form']).toBe(null);
-    expect(component['isWithinForm']).toBe(false);
     expect(addEventListenerSpy).toHaveBeenCalledWith('mousedown', component['onClickOutside'], true);
-  });
-
-  it('should set isWithinForm if is within form', () => {
-    const component = initComponent();
-    jest.spyOn(getClosestHTMLElementUtils, 'getClosestHTMLElement').mockReturnValueOnce(document.createElement('form'));
-    component.connectedCallback();
-    expect(component['isWithinForm']).toBe(true);
   });
 });
 
 describe('componentWillLoad', () => {
-  it('should call initNativeSelect() with correct parameters if is within form', () => {
-    const component = initComponent();
-    component['isWithinForm'] = true;
-    const initNativeSelectSpy = jest.spyOn(multiSelectUtils, 'initNativeMultiSelect');
-    component.componentWillLoad();
-    expect(initNativeSelectSpy).toHaveBeenCalledWith(component.host, undefined, false, false);
-  });
-
-  it('should not call initNativeSelect() if is not within form', () => {
-    const component = initComponent();
-    component['isWithinForm'] = false;
-    const initNativeSelectSpy = jest.spyOn(multiSelectUtils, 'initNativeMultiSelect');
-    component.componentWillLoad();
-    expect(initNativeSelectSpy).not.toHaveBeenCalled();
-  });
-
   it('should call setSelectedOptions() with correct parameters', () => {
     const component = initComponent();
     const setSelectedOptionsSpy = jest.spyOn(multiSelectUtils, 'setSelectedOptions');
@@ -69,25 +48,6 @@ describe('componentDidLoad', () => {
   });
 });
 
-describe('componentWillUpdate', () => {
-  it('should call syncNativeSelect() with correct parameters if is within form', () => {
-    const component = initComponent();
-    component['nativeSelect'] = document.createElement('select');
-    component['isWithinForm'] = true;
-    const syncNativeSelectSpy = jest.spyOn(multiSelectUtils, 'syncNativeMultiSelect');
-    component.componentWillUpdate();
-    expect(syncNativeSelectSpy).toHaveBeenCalledWith(component['nativeSelect'], undefined, false, false);
-  });
-
-  it('should not call syncNativeSelect() if is not within form', () => {
-    const component = initComponent();
-    component['isWithinForm'] = false;
-    const syncNativeSelectSpy = jest.spyOn(multiSelectUtils, 'syncNativeMultiSelect');
-    component.componentWillUpdate();
-    expect(syncNativeSelectSpy).not.toHaveBeenCalled();
-  });
-});
-
 describe('disconnectedCallback', () => {
   it('should remove event listener', () => {
     const component = initComponent();
@@ -104,4 +64,35 @@ describe('render', () => {
     component.render();
     expect(spy).toHaveBeenCalledWith(component['multiSelectOptions'], component.theme);
   });
+});
+
+describe('formResetCallback', () => {
+  const component = initComponent();
+  const defaultValue = ['default-value'];
+  component['defaultValue'] = defaultValue;
+  component.value = ['test'];
+  component.name = 'name';
+  const setFormValueSpy = jest.spyOn(component['internals'], 'setFormValue' as any);
+  component.formResetCallback();
+  const formData = new FormData();
+  defaultValue.forEach((val) => formData.append(component.name, val));
+  expect(setFormValueSpy).toHaveBeenCalledWith(formData);
+  expect(component.value).toBe(defaultValue);
+});
+
+describe('formDisabledCallback', () => {
+  const component = initComponent();
+  component.disabled = false;
+  component.formDisabledCallback(true);
+  expect(component.disabled).toBe(true);
+});
+
+describe('formStateRestoreCallback', () => {
+  const component = initComponent();
+  component.value = ['test'];
+  const restoredValue = 'restored-value';
+  const formData = new FormData();
+  formData.append(component.name, restoredValue);
+  component.formStateRestoreCallback(formData);
+  expect(component.value).toStrictEqual([restoredValue]);
 });
