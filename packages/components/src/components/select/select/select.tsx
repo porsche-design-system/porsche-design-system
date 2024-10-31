@@ -72,6 +72,7 @@ const propTypes: PropTypes<typeof Select> = {
   hideLabel: AllowedTypes.breakpoint('boolean'),
   disabled: AllowedTypes.boolean,
   required: AllowedTypes.boolean,
+  form: AllowedTypes.string,
   dropdownDirection: AllowedTypes.oneOf<SelectDropdownDirection>(SELECT_DROPDOWN_DIRECTIONS),
   theme: AllowedTypes.oneOf<Theme>(THEMES),
 };
@@ -125,6 +126,9 @@ export class Select {
   /** Adapts the select color depending on the theme. */
   @Prop() public theme?: Theme = 'light';
 
+  /** The id of a form element the select should be associated with. */
+  @Prop() public form?: string;
+
   /** Emitted when the selection is changed. */
   @Event({ bubbles: false }) public update: EventEmitter<SelectUpdateEventDetail>;
 
@@ -161,6 +165,16 @@ export class Select {
         updateSelectOptions(this.selectOptions, this.value);
       }
       this.preventOptionUpdate = false;
+    }
+  }
+
+  @Watch('form')
+  public updateFormAssociation(): void {
+    if (this.form) {
+      const formElement = document.getElementById(this.form) as HTMLFormElement;
+      if (formElement) {
+        formElement.appendChild(this.host);
+      }
     }
   }
 
