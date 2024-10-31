@@ -51,6 +51,7 @@
     "@angular/compiler-cli": "^18.2.10",
     "@angular/language-service": "^18.2.10",
     "@porsche-design-system/assets": "5.0.2",
+    "@porsche-design-system/shared": "0.0.0",
     "@testing-library/angular": "^17.3.1",
     "@types/jasmine": "^5.1.4",
     "globby": "^11.1.0",
@@ -60,7 +61,8 @@
     "karma-coverage-istanbul-reporter": "~3.0.3",
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "^2.1.0",
-    "ng-packagr": "^18.2.1"
+    "ng-packagr": "^18.2.1",
+    "typescript": "^5.5.4"
   },
   "peerDependencies": {
     "@playwright/test": "*",
@@ -69,8 +71,7 @@
     "ag-grid-enterprise": "*",
     "change-case": "*",
     "concurrently": "*",
-    "local-web-server": "*",
-    "typescript": "*"
+    "local-web-server": "*"
   },
   "volta": {
     "extends": "../../package.json"
