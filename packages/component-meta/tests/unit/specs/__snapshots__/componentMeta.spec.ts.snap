@@ -5350,6 +5350,12 @@ exports[`should match snapshot 1`] = `
         "description": "Changes the direction to which the dropdown list appears.",
         "type": "MultiSelectDropdownDirection",
       },
+      "form": {
+        "allowedValues": "string",
+        "defaultValue": null,
+        "description": "The id of a form element the select should be associated with.",
+        "type": "string",
+      },
       "hideLabel": {
         "allowedValues": "boolean",
         "defaultValue": false,
@@ -6442,6 +6448,12 @@ exports[`should match snapshot 1`] = `
         "defaultValue": "auto",
         "description": "Changes the direction to which the dropdown list appears.",
         "type": "SelectDropdownDirection",
+      },
+      "form": {
+        "allowedValues": "string",
+        "defaultValue": null,
+        "description": "The id of a form element the select should be associated with.",
+        "type": "string",
       },
       "hideLabel": {
         "allowedValues": "boolean",
