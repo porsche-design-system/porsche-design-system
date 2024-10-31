@@ -1389,6 +1389,10 @@ export namespace Components {
          */
         "dropdownDirection"?: MultiSelectDropdownDirection;
         /**
+          * The id of a form element the select should be associated with.
+         */
+        "form"?: string;
+        /**
           * Show or hide label. For better accessibility it is recommended to show the label.
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
@@ -4583,6 +4587,10 @@ declare namespace LocalJSX {
           * Changes the direction to which the dropdown list appears.
          */
         "dropdownDirection"?: MultiSelectDropdownDirection;
+        /**
+          * The id of a form element the select should be associated with.
+         */
+        "form"?: string;
         /**
           * Show or hide label. For better accessibility it is recommended to show the label.
          */
