@@ -47,7 +47,6 @@
     "ag-grid-community": "32.3.1",
     "ag-grid-enterprise": "32.2.1",
     "ag-grid-react": "32.3.1",
-    "local-web-server": "^5.3.3",
     "react-scripts": "^5.0.1"
   },
   "peerDependencies": {
@@ -55,6 +54,7 @@
     "change-case": "*",
     "concurrently": "*",
     "globby": "*",
+    "local-web-server": "*",
     "typescript": "*"
   },
   "eslintConfig": {

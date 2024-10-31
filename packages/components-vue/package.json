@@ -51,7 +51,6 @@
     "ag-grid-vue3": "32.3.1",
     "eslint": "^8.57.0",
     "eslint-plugin-vue": "^9.27.0",
-    "local-web-server": "^5.3.3",
     "vite-plugin-html": "^3.2.2",
     "vite-plugin-static-copy": "^1.0.6",
     "vue-tsc": "2.0.22"
@@ -61,6 +60,7 @@
     "change-case": "*",
     "concurrently": "*",
     "globby": "*",
+    "local-web-server": "*",
     "tsx": "*",
     "typescript": "*",
     "vite": "*"
