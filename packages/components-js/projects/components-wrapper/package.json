@@ -16,6 +16,9 @@
   "author": "Dr. Ing. h.c. F. Porsche AG",
   "license": "SEE LICENSE IN LICENSE",
   "homepage": "https://designsystem.porsche.com",
+  "peerDependencies": {
+    "ag-grid-enterprise": ">= 32.0.0 <33.0.0"
+  },
   "main": "cjs/index.cjs",
   "module": "index.js",
   "types": "esm/index.d.ts",

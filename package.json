@@ -177,6 +177,11 @@
     "clean:utilities:build": "yarn --cwd ./packages/utilities clean:build"
   },
   "dependencies": {
+    "ag-grid-angular": "^32.3.2",
+    "ag-grid-community": "^32.3.2",
+    "ag-grid-enterprise": "^32.3.2",
+    "ag-grid-react": "^32.3.2",
+    "ag-grid-vue3": "^32.3.2",
     "change-case": "^5.4.4",
     "jss": "^10.10.0",
     "jss-plugin-sort-css-media-queries": "^1.0.1-beta.0",

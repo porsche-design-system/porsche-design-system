@@ -41,7 +41,6 @@
     "@porsche-design-system/fallbacks": "0.0.0",
     "@porsche-design-system/shared": "0.0.0",
     "@stackblitz/sdk": "1.8.2",
-    "ag-grid-community": "32.3.1",
     "algoliasearch": "^4.24.0",
     "change-case": "^4.1.2",
     "core-js": "^3.37.1",
@@ -78,6 +77,7 @@
   "peerDependencies": {
     "@axe-core/playwright": "*",
     "@playwright/test": "*",
+    "ag-grid-community": "*",
     "concurrently": "*",
     "globby": "*",
     "local-web-server": "*",
