@@ -18,7 +18,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 - `Checkbox`, `Textarea`: `formDisabledCallback` and `formStateRestoreCallback` from ElementInternals API and sync
   validity with form element. ([#3528](https://github.com/porsche-design-system/porsche-design-system/pull/3528))
-- `Select`: Use ElementInternals API and remove native select
+
+#### Changed
+
+- `Select`: Remove native select and use ElementInternals API
   ([#3542](https://github.com/porsche-design-system/porsche-design-system/pull/3542))
 
 #### Fixed
