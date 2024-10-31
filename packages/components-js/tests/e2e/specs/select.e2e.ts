@@ -1458,17 +1458,14 @@ test.describe('form', () => {
       },
     });
     const host = getHost(page);
-    const select = getHost(page);
     const fieldset = getFieldset(page);
     await expect(fieldset).toHaveJSProperty('disabled', true);
     await expect(host).toHaveJSProperty('disabled', true);
-    await expect(select).toHaveJSProperty('disabled', true);
 
     await setProperty(fieldset, 'disabled', false);
     await waitForStencilLifecycle(page);
 
     await expect(fieldset).toHaveJSProperty('disabled', false);
     await expect(host).toHaveJSProperty('disabled', false);
-    await expect(select).toHaveJSProperty('disabled', false);
   });
 });

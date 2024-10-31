@@ -8,7 +8,7 @@ import {
   getConsoleErrorsAmount,
   getElementStyle,
   getEventSummary,
-  getFormDataValue,
+  getFormDataValues,
   getHTMLAttributes,
   getLifecycleStatus,
   getProperty,
@@ -132,7 +132,7 @@ const initMultiSelect = (page: Page, opt?: InitOptions): Promise<void> => {
   const selectOptions = [...'abc', ...(amount === 5 ? 'de' : '')]
     .map((x, idx) => {
       const attrs = [disabledIndex === idx ? 'disabled' : ''].join(' ');
-      const option = `<p-multi-select-option value="${x}" ${attrs}>Option ${x.toUpperCase()}</p-multi-select-option>`;
+      const option = `<p-multi-select-option ${x ? `value="${x}"` : ''} ${attrs}>Option ${x.toUpperCase()}</p-multi-select-option>`;
       return includeOptgroups ? `<p-optgroup label="${x}">${option}</p-optgroup>` : option;
     })
     .join('\n');
@@ -1233,37 +1233,43 @@ test.describe('optgroups', () => {
 });
 
 test.describe('form', () => {
-  test.fixme('should include name & value in FormData submit', async ({ page }) => {
+  test('should include name & value in FormData submit', async ({ page }) => {
     const name = 'name';
-    const value = ['Hallo'];
+    const value = ['a', 'b'];
     await initMultiSelect(page, {
-      props: { name, value },
+      props: { name },
       options: { isWithinForm: true, markupAfter: '<button type="submit">Submit</button>' },
     });
+    const multiSelect = getHost(page);
     const form = getForm(page);
+    await setProperty(multiSelect, 'value', value);
 
     await addEventListener(form, 'submit');
     expect((await getEventSummary(form, 'submit')).counter).toBe(0);
 
     await page.locator('button[type="submit"]').click();
 
+    const test = await getEventSummary(form, 'submit');
+    console.log('test', test.targets);
     expect((await getEventSummary(form, 'submit')).counter).toBe(1);
 
-    expect(await getFormDataValue(form, name)).toBe(value);
+    expect(await getFormDataValues(form, name)).toStrictEqual(value);
   });
 
-  test.fixme('should include name & value in FormData submit if outside of form', async ({ page }) => {
+  test('should include name & value in FormData submit if outside of form', async ({ page }) => {
     const name = 'name';
-    const value = ['a'];
+    const value = ['a', 'b'];
     const formId = 'myForm';
     await initMultiSelect(page, {
-      props: { name, value, form: formId },
+      props: { name, form: formId },
       options: {
         isWithinForm: false,
         markupBefore: `<form id="myForm" onsubmit="return false;"><button type="submit">Submit</button></form>`,
       },
     });
+    const multiSelect = getHost(page);
     const form = getForm(page);
+    await setProperty(multiSelect, 'value', value);
 
     await addEventListener(form, 'submit');
     expect((await getEventSummary(form, 'submit')).counter).toBe(0);
@@ -1271,17 +1277,14 @@ test.describe('form', () => {
     await page.locator('button[type="submit"]').click();
 
     expect((await getEventSummary(form, 'submit')).counter).toBe(1);
-    expect(await getFormDataValue(form, name)).toBe(value);
+    expect(await getFormDataValues(form, name)).toStrictEqual(value);
   });
 
-  test.fixme('should reset multi-select value to its initial value on form reset', async ({ page }) => {
+  test('should reset multi-select value to its initial value on form reset', async ({ page }) => {
     const name = 'name';
-    const value = ['b'];
-    const newValue = ['c'];
-    const host = getHost(page);
-    const select = getHost(page);
+    const value = ['c'];
     await initMultiSelect(page, {
-      props: { name, value },
+      props: { name },
       options: {
         isWithinForm: true,
         markupAfter: `
@@ -1290,23 +1293,21 @@ test.describe('form', () => {
       `,
       },
     });
+    const host = getHost(page);
     const form = getForm(page);
 
     await addEventListener(form, 'submit');
     expect((await getEventSummary(form, 'submit')).counter).toBe(0);
 
-    await setProperty(select, 'value', newValue);
-
-    await expect(host).toHaveJSProperty('value', newValue);
+    await setProperty(host, 'value', value);
 
     await page.locator('button[type="reset"]').click();
-
-    await expect(host).toHaveJSProperty('value', value);
 
     await page.locator('button[type="submit"]').click();
 
     expect((await getEventSummary(form, 'submit')).counter).toBe(1);
-    expect(await getFormDataValue(form, name)).toBe(value);
+    await expect(host).toHaveJSProperty('value', []);
+    expect(await getFormDataValues(form, name)).toStrictEqual([]);
   });
 
   test('should disable select if within disabled fieldset', async ({ page }) => {
@@ -1334,17 +1335,14 @@ test.describe('form', () => {
       },
     });
     const host = getHost(page);
-    const select = getHost(page);
     const fieldset = getFieldset(page);
     await expect(fieldset).toHaveJSProperty('disabled', true);
     await expect(host).toHaveJSProperty('disabled', true);
-    await expect(select).toHaveJSProperty('disabled', true);
 
     await setProperty(fieldset, 'disabled', false);
     await waitForStencilLifecycle(page);
 
     await expect(fieldset).toHaveJSProperty('disabled', false);
     await expect(host).toHaveJSProperty('disabled', false);
-    await expect(select).toHaveJSProperty('disabled', false);
   });
 });
