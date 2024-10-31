@@ -80,6 +80,16 @@ describe('formResetCallback', () => {
   expect(component.value).toBe(defaultValue);
 });
 
+describe('setFormValue', () => {
+  const component = initComponent();
+  const setFormValueSpy = jest.spyOn(component['internals'], 'setFormValue' as any);
+  const value = ['a', 'b', 'c'];
+  component.setFormValue(value);
+  const formData = new FormData();
+  value.forEach((val) => formData.append(component.name, val));
+  expect(setFormValueSpy).toHaveBeenCalledWith(formData);
+});
+
 describe('formDisabledCallback', () => {
   const component = initComponent();
   component.disabled = false;
