@@ -125,12 +125,7 @@ export class Canvas {
 
     return (
       <Host>
-        <div
-          class="root"
-          ref={(el: HTMLElement) => {
-            this.root = el;
-          }}
-        >
+        <div class="root" ref={(el: HTMLElement) => (this.root = el)}>
           <header
             class="header"
             tabindex="-1"
@@ -179,9 +174,7 @@ export class Canvas {
               inert={this.sidebarStartOpen ? null : true}
               aria-label={`Navigation sidebar ${this.sidebarStartOpen ? 'open' : 'closed'}`}
               tabindex="-1"
-              ref={(el: HTMLElement) => {
-                this.sidebarStart = el;
-              }}
+              ref={(el: HTMLElement) => (this.sidebarStart = el)}
             >
               <div class="sidebar__scroller">
                 <div class="sidebar__header sidebar__header--start">
@@ -220,9 +213,7 @@ export class Canvas {
               inert={this.sidebarEndOpen ? null : true}
               aria-label={`Settings sidebar ${this.sidebarEndOpen ? 'open' : 'closed'}`}
               tabindex="-1"
-              ref={(el: HTMLElement) => {
-                this.sidebarEnd = el;
-              }}
+              ref={(el: HTMLElement) => (this.sidebarEnd = el)}
             >
               <div class="sidebar__scroller">
                 <div class="sidebar__header sidebar__header--end">
