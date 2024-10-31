@@ -4,7 +4,6 @@ import { ReactWrapperGenerator } from './ReactWrapperGenerator';
 import type { ExtendedProp } from './DataStructureBuilder';
 import type { AdditionalFile } from './AbstractWrapperGenerator';
 import { kebabCase, pascalCase } from 'latest-change-case';
-import {useBrowserLayoutEffect} from "../../../components-react/projects/uxpin-wrapper/src/hooks";
 
 type PresetsProps = { [key: string]: number | string | boolean | string[] | object | null };
 
