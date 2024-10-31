@@ -646,7 +646,18 @@ export default <${formComponentName} ${stringifiedProps} />;
     webpackConfig: 'webpack.config.js',
   },
   name: 'Porsche Design System',
-  settings: { useUXPinProps: true, useFitToContentAsDefault: true },
+  settings: { 
+    useUXPinProps: true, 
+    useFitToContentAsDefault: true,
+    propertyConfigurations: {
+      Flyout: {
+        open: { disabled: true, context: 'canvas', value: false, },
+      },
+      Modal: {
+        open: { disabled: true, context: 'canvas', value: false },
+      }
+    }
+  },
 };`;
 
     return { name: 'uxpin.config.js', relativePath: '../../..', content };
