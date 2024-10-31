@@ -235,9 +235,9 @@
     "**/@vue/cli-shared-utils/@achrinza/node-ipc": "^10.1.11",
     "**/eslint-config-next/eslint-plugin-react-hooks": "^5.0.0",
     "**/eslint-config-react-app/eslint-plugin-jest": "^28.8.3",
-    "**/ng-packagr/rollup": "^4.13.0",
-    "**/vite/rollup": "^4.13.0",
-    "**/workbox-build/rollup": "^4.13.0"
+    "**/ng-packagr/rollup": "^4.24.3",
+    "**/vite/rollup": "^4.24.3",
+    "**/workbox-build/rollup": "^4.24.3"
   },
   "volta": {
     "node": "20.11.1",
