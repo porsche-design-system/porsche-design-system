@@ -103,7 +103,7 @@ export class PinCode {
   /** Adapts the color depending on the theme. */
   @Prop() public theme?: Theme = 'light';
 
-  /** The id of a form element the textarea should be associated with. */
+  /** The id of a form element the pin-code should be associated with. */
   @Prop() public form?: string;
 
   /** Emitted when selected element changes. */
