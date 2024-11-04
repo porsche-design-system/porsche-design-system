@@ -199,7 +199,7 @@
     "@types/jest": "^29.5.14",
     "@types/jest-expect-message": "^1.1.0",
     "@types/madge": "^5.0.3",
-    "@types/node": "^22.8.5",
+    "@types/node": "^22.8.7",
     "@vitest/ui": "^2.1.4",
     "concurrently": "^9.0.1",
     "globby": "^14.0.2",
@@ -208,7 +208,7 @@
     "local-web-server": "^5.4.0",
     "madge": "^8.0.0",
     "prettier": "^3.3.3",
-    "rollup": "^4.24.3",
+    "rollup": "^4.24.4",
     "rollup-plugin-bin": "^1.0.0",
     "rollup-plugin-copy": "^3.5.0",
     "rollup-plugin-generate-package-json": "^3.2.0",
@@ -216,7 +216,7 @@
     "rollup-plugin-preserve-directives": "^0.4.0",
     "rollup-plugin-preserve-shebang": "^1.0.1",
     "rollup-plugin-terser": "^7.0.2",
-    "sass": "^1.80.5",
+    "sass": "^1.80.6",
     "svgo": "^3.2.0",
     "ts-jest": "^29.2.5",
     "tsup": "^8.3.5",
@@ -224,7 +224,7 @@
     "typescript": "~5.6.3",
     "vite": "^5.4.10",
     "vitest": "^2.1.4",
-    "webpack": "5.95.0"
+    "webpack": "5.96.1"
   },
   "resolutions": {
     "**/@types/scheduler": "0.23.0",
@@ -235,9 +235,9 @@
     "**/@vue/cli-shared-utils/@achrinza/node-ipc": "^10.1.11",
     "**/eslint-config-next/eslint-plugin-react-hooks": "^5.0.0",
     "**/eslint-config-react-app/eslint-plugin-jest": "^28.8.3",
-    "**/ng-packagr/rollup": "^4.24.3",
-    "**/vite/rollup": "^4.24.3",
-    "**/workbox-build/rollup": "^4.24.3"
+    "**/ng-packagr/rollup": "^4.24.4",
+    "**/vite/rollup": "^4.24.4",
+    "**/workbox-build/rollup": "^4.24.4"
   },
   "volta": {
     "node": "20.11.1",
