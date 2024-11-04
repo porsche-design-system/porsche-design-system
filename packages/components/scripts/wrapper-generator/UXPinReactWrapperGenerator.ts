@@ -276,8 +276,8 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
       )
     }
 
-    // make crest link if onClick is defined
-    if (component === 'p-crest') {
+    // make crest and link-pure anchor if onClick is defined
+    if (component === 'p-crest' || component === 'p-link-pure') {
       cleanedComponent = cleanedComponent.replace(
           'const props = {',
           [
