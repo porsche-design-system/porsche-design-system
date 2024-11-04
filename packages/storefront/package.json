@@ -77,7 +77,6 @@
   "peerDependencies": {
     "@axe-core/playwright": "*",
     "@playwright/test": "*",
-    "ag-grid-community": "*",
     "concurrently": "*",
     "globby": "*",
     "local-web-server": "*",
