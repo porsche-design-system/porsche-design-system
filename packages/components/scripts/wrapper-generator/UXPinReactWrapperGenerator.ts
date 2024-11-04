@@ -159,6 +159,8 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
     } else if (component === 'p-tabs-bar') {
       props = addUxPinBindAnnotation(props, 'activeTabIndex', 'onUpdate', 'activeTabIndex');
       props = addUxPinBindAnnotation(props, 'activeTabIndex', 'onTabChange', 'activeTabIndex');
+    } else if (component === 'p-select' || component === 'p-multi-select') {
+      props = addUxPinBindAnnotation(props, 'value', 'onUpdate', 'value');
     }
 
     return props;
@@ -292,9 +294,11 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
       case 'p-fieldset':
       case 'p-link-tile':
       case 'p-link-tile-model-signature':
+      case 'p-multi-select':
       case 'p-modal':
       case 'p-radio-button-wrapper':
       case 'p-segmented-control':
+      case 'p-select':
       case 'p-select-wrapper':
       case 'p-stepper-horizontal':
       case 'p-text-field-wrapper':
@@ -352,6 +356,24 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
           '<Link slot="secondary" variant="secondary" theme="dark" href="#" uxpId="link-secondary">Some link</Link>', // we need to set variant and theme props for uxpin editor to display the right config
         ].join(glue),
       },
+      'p-multi-select': {
+        props: { name:'options', label:'Some Label' },
+        children: [
+          '<Optgroup uxpId="group-1" label="Some optgroup label 1">',
+          ' <MultiSelectOption uxpId="opt-1" value="a">Option A</MultiSelectOption>',
+          ' <MultiSelectOption uxpId="opt-2" value="b">Option B</MultiSelectOption>',
+          ' <MultiSelectOption uxpId="opt-3" value="c">Option C</MultiSelectOption>',
+          ' <MultiSelectOption uxpId="opt-4" value="d">Option D</MultiSelectOption>',
+          ' <MultiSelectOption uxpId="opt-5" value="e">Option E</MultiSelectOption>',
+          ' <MultiSelectOption uxpId="opt-6" value="f">Option F</MultiSelectOption>',
+          '</Optgroup>',
+          '<Optgroup uxpId="group-3" label="Some optgroup label 2">',
+          ' <MultiSelectOption uxpId="opt-7"  value="g">Option G</MultiSelectOption>',
+          ' <MultiSelectOption uxpId="opt-8"  value="h">Option H</MultiSelectOption>',
+          ' <MultiSelectOption uxpId="opt-9"  value="i">Option I</MultiSelectOption>',
+          '</Optgroup>',
+        ].join(glue),
+      },
       'p-modal': {
         props: { heading: 'Heading', open: true },
         children: [
@@ -382,6 +404,14 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
               }" />`
           )
           .join(glue),
+      },
+      'p-select': {
+        props: { name:'options', label:'Some Label', description: 'Some description', value:'a'  },
+        children: [
+            '<SelectOption uxpId="opt-1" value="a">Option A</SelectOption>',
+            '<SelectOption uxpId="opt-2" value="b">Option B</SelectOption>',
+            '<SelectOption uxpId="opt-3" value="c">Option C</SelectOption>',
+        ].join(glue),
       },
       'p-select-wrapper': {
         props: { label: 'SelectWrapper' },
@@ -604,14 +634,30 @@ export default <${formComponentName} ${stringifiedProps} />;
       },
       {
         name: 'Dummy',
-        include: ['src/dummy/*.tsx'],
+        include: [
+         'src/dummy/DummyImg.tsx',
+         'src/dummy/DummyLink.tsx',
+         'src/dummy/DummySpan.tsx',
+         'src/dummy/DummyDiv.tsx'
+        ],
       },
     ],
     wrapper: 'src/UXPinWrapper.tsx',
     webpackConfig: 'webpack.config.js',
   },
   name: 'Porsche Design System',
-  settings: { useUXPinProps: true, useFitToContentAsDefault: true },
+  settings: { 
+    useUXPinProps: true, 
+    useFitToContentAsDefault: true,
+    propertyConfigurations: {
+      Flyout: {
+        open: { disabled: true, context: 'canvas', value: false, },
+      },
+      Modal: {
+        open: { disabled: true, context: 'canvas', value: false },
+      }
+    }
+  },
 };`;
 
     return { name: 'uxpin.config.js', relativePath: '../../..', content };
