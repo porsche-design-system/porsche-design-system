@@ -1,6 +1,5 @@
 import * as pinCodeUtils from './pin-code-utils';
 import { PinCode } from './pin-code';
-import { expect } from '@jest/globals';
 
 class MockElementInternals {
   setValidity = jest.fn();
