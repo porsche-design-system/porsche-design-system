@@ -5,11 +5,12 @@
   "license": "UNLICENSED",
   "scope": "@porsche-design-system",
   "author": "Dr. Ing. h.c. F. Porsche AG",
+  "type": "module",
   "scripts": {
-    "start": "SKIP_PREFLIGHT_CHECK=true concurrently -k -s 'first' -n 'cdn,dummyassets,react' 'serve-cdn' 'serve-dummyassets' 'react-scripts start'",
+    "start": "concurrently -k -s 'first' -n 'cdn,dummyassets,react' 'serve-cdn' 'serve-dummyassets' 'vite'",
     "start-app": "concurrently -k -s 'first' -n 'cdn,dummyassets,app' 'serve-cdn' 'serve-dummyassets' 'ws --spa index.html -p 3000 -d ./dist/demo-app'",
     "build": "yarn clean:build && yarn build:react-wrapper && yarn build:react-ssr-wrapper && yarn build:ag-grid && yarn build:uxpin-wrapper",
-    "build-app": "BUILD_PATH='./dist/demo-app' SKIP_PREFLIGHT_CHECK=true react-scripts build",
+    "build-app": "tsc -b && vite build",
     "build:react-wrapper": "yarn rollup -c ./projects/react-wrapper/rollup.config.js --bundleConfigAsCjs && yarn build:typings && chmod +x dist/react-wrapper/bin/patchRemixRunProcessBrowserGlobalIdentifier.js",
     "build:react-ssr-wrapper": "yarn --cwd ./projects/react-ssr-wrapper build",
     "build:typings": "DEST=./dist/react-wrapper && SRC=$DEST/esm && mv $SRC/jsdom-polyfill/index.d.ts $DEST/jsdom-polyfill/index.d.ts && rm -rf $SRC/jsdom-polyfill && mv $SRC/partials/index.d.ts $DEST/partials/index.d.ts && rm -rf $SRC/partials && mv $SRC/styles/index.d.ts $DEST/styles/esm/index.d.ts && rm -rf $SRC/styles && mv $SRC/testing/index.d.ts $DEST/testing/index.d.ts && rm -rf $SRC/testing",
@@ -35,16 +36,22 @@
     "styled-components": "^6.1.13"
   },
   "devDependencies": {
-    "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
+    "@eslint/js": "^9.13.0",
     "@porsche-design-system/assets": "5.0.2",
     "@porsche-design-system/shared": "0.0.0",
     "@testing-library/jest-dom": "^6.6.3",
     "@testing-library/react": "^16.0.1",
     "@testing-library/user-event": "^14.5.2",
-    "@types/react": "18.3.12",
+    "@types/react": "^18.3.12",
     "@types/react-dom": "^18.3.1",
-    "@types/styled-components": "^5.1.34",
-    "react-scripts": "^5.0.1"
+    "@vitejs/plugin-react": "^4.3.3",
+    "eslint": "^9.13.0",
+    "eslint-plugin-react-hooks": "^5.0.0",
+    "eslint-plugin-react-refresh": "^0.4.14",
+    "globals": "^15.11.0",
+    "typescript": "~5.6.2",
+    "typescript-eslint": "^8.11.0",
+    "vite-plugin-html": "^3.2.2"
   },
   "peerDependencies": {
     "@playwright/test": "*",
@@ -55,28 +62,8 @@
     "concurrently": "*",
     "globby": "*",
     "local-web-server": "*",
-    "typescript": "*"
-  },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ],
-    "rules": {
-      "jsx-a11y/anchor-is-valid": "off"
-    }
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
+    "typescript": "*",
+    "vite": "*"
   },
   "volta": {
     "extends": "../../package.json"
