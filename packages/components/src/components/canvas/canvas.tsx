@@ -72,7 +72,7 @@ export class Canvas {
   public openChangeHandlerSidebarStart(isOpen: boolean): void {
     if (this.isMediaQueryS) {
       this.root.ontransitionend = (): void => {
-         this[isOpen ? 'sidebarStart' : 'header'].focus({ preventScroll: true });
+        this[isOpen ? 'sidebarStart' : 'header'].focus({ preventScroll: true });
       };
     }
   }
@@ -81,10 +81,8 @@ export class Canvas {
   public openChangeHandlerSidebarEnd(isOpen: boolean): void {
     if (this.isMediaQueryM) {
       this.root.ontransitionend = (): void => {
-         this[isOpen ? 'sidebarEnd' : 'header'].focus({ preventScroll: true });
+        this[isOpen ? 'sidebarEnd' : 'header'].focus({ preventScroll: true });
       };
-    }
-      }
     }
   }
 
