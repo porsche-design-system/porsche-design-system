@@ -1,9 +1,9 @@
 import { expect, type Locator, test, type Page } from '@playwright/test';
 import {
   addEventListener,
-  getAttribute,
   getElementStyle,
   getEventSummary,
+  getFormDataValue,
   getHTMLAttributes,
   getLifecycleStatus,
   getProperty,
@@ -15,10 +15,11 @@ import {
 import { Components } from '@porsche-design-system/components';
 
 const getHost = (page: Page) => page.locator('p-pin-code');
+const getFieldset = (page: Page) => page.locator('fieldset');
 const getLabel = (page: Page) => page.locator('p-pin-code label');
 const getCurrentInput = (page: Page) => page.locator('p-pin-code #current-input');
-const getHiddenInput = (page: Page) => page.locator('p-pin-code input[slot="internal-input"]');
 const getInput = (page: Page, n: number) => page.locator(`p-pin-code .wrapper input:nth-child(${n})`);
+const getForm = (page: Page) => page.locator('form');
 const getActiveElementsAriaLabelInShadowRoot = (page: Page, element: Locator): Promise<string> => {
   return element.evaluate((el) => el.shadowRoot.activeElement.ariaLabel);
 };
@@ -93,43 +94,149 @@ test.describe('render', () => {
   }
 });
 
-test.describe('within form', () => {
-  test.describe('hidden input', () => {
-    test('should be rendered', async ({ page }) => {
-      await initPinCode(page, { options: { isWithinForm: true } });
-      const hiddenInput = getHiddenInput(page);
+test.describe('form', () => {
+  test('should include name & value in FormData submit', async ({ page }) => {
+    const name = 'name';
+    const value = '1234';
+    await initPinCode(page, {
+      props: { name, value },
+      options: {
+        isWithinForm: true,
+        markupAfter: '<button type="submit">Submit</button>',
+      },
+    });
+    const form = getForm(page);
 
-      expect(hiddenInput).not.toBeNull();
+    await addEventListener(form, 'submit');
+    expect((await getEventSummary(form, 'submit')).counter).toBe(0);
+
+    await page.locator('button[type="submit"]').click();
+
+    expect((await getEventSummary(form, 'submit')).counter).toBe(1);
+    expect(await getFormDataValue(form, name)).toBe(value);
+  });
+
+  test('should include name & value in FormData submit if outside of form', async ({ page }) => {
+    const name = 'name';
+    const value = '1234';
+    const formId = 'myForm';
+    await initPinCode(page, {
+      props: { name, value, form: formId },
+      options: {
+        markupBefore: `<form id="myForm" onsubmit="return false;"><button type="submit">Submit</button></form>`,
+      },
+    });
+    const form = getForm(page);
+
+    await addEventListener(form, 'submit');
+    expect((await getEventSummary(form, 'submit')).counter).toBe(0);
+
+    await page.locator('button[type="submit"]').click();
+
+    expect((await getEventSummary(form, 'submit')).counter).toBe(1);
+    expect(await getFormDataValue(form, name)).toBe(value);
+  });
+
+  test('should reset pin-code value to its initial value on form reset', async ({ page }) => {
+    const name = 'name';
+    const value = '1234';
+    const newValue = '5555';
+    const host = getHost(page);
+    const input1 = getInput(page, 1);
+    const input2 = getInput(page, 2);
+    const input3 = getInput(page, 3);
+    const input4 = getInput(page, 4);
+    await initPinCode(page, {
+      props: { name, value },
+      options: {
+        isWithinForm: true,
+        markupAfter: `
+        <button type="submit">Submit</button>
+        <button type="reset">Reset</button>
+      `,
+      },
+    });
+    const form = getForm(page);
+
+    await addEventListener(form, 'submit');
+    expect((await getEventSummary(form, 'submit')).counter).toBe(0);
+
+    await input1.focus();
+
+    await input1.evaluate((el) => {
+      const data = new DataTransfer();
+      data.items.add('5555', 'text/plain');
+      const evt = new ClipboardEvent('paste', { clipboardData: data, bubbles: true });
+      el.dispatchEvent(evt);
+    });
+    await waitForStencilLifecycle(page);
+
+    await expect(host).toHaveJSProperty('value', newValue);
+    await expect(input1).toHaveValue('5');
+    await expect(input2).toHaveValue('5');
+    await expect(input3).toHaveValue('5');
+    await expect(input4).toHaveValue('5');
+
+    await page.locator('button[type="reset"]').click();
+
+    await expect(host).toHaveJSProperty('value', value);
+    await expect(input1).toHaveValue('1');
+    await expect(input2).toHaveValue('2');
+    await expect(input3).toHaveValue('3');
+    await expect(input4).toHaveValue('4');
+
+    await page.locator('button[type="submit"]').click(); // Check if ElementInternal value was reset as well
+
+    expect((await getEventSummary(form, 'submit')).counter).toBe(1);
+    expect(await getFormDataValue(form, name)).toBe(value);
+  });
+
+  test('should disable pin-code if within disabled fieldset', async ({ page }) => {
+    const name = 'name';
+    const value = 'Hallo';
+    const host = getHost(page);
+    await initPinCode(page, {
+      props: { name, value },
+      options: {
+        isWithinForm: true,
+        markupBefore: `<fieldset disabled>`,
+        markupAfter: `</fieldset>`,
+      },
     });
 
-    test('should not be visible', async ({ page }) => {
-      await initPinCode(page, { options: { isWithinForm: true } });
-      const hiddenInput = getHiddenInput(page);
+    await expect(host).toHaveJSProperty('disabled', true);
+  });
 
-      expect(await getElementStyle(hiddenInput, 'opacity')).toBe('0');
+  test('should sync disabled state with fieldset when updated programmatically', async ({ page }) => {
+    await initPinCode(page, {
+      options: {
+        isWithinForm: true,
+        markupBefore: `<fieldset disabled>`,
+        markupAfter: `</fieldset>`,
+      },
     });
+    const host = getHost(page);
+    const input1 = getInput(page, 1);
+    const input2 = getInput(page, 2);
+    const input3 = getInput(page, 3);
+    const input4 = getInput(page, 4);
+    const fieldset = getFieldset(page);
+    await expect(fieldset).toHaveJSProperty('disabled', true);
+    await expect(host).toHaveJSProperty('disabled', true);
+    await expect(input1).toHaveJSProperty('disabled', true);
+    await expect(input2).toHaveJSProperty('disabled', true);
+    await expect(input3).toHaveJSProperty('disabled', true);
+    await expect(input4).toHaveJSProperty('disabled', true);
 
-    test('should sync with name, value, disabled and required props', async ({ page }) => {
-      await initPinCode(page, { options: { isWithinForm: true } });
-      const host = getHost(page);
-      const hiddenInput = getHiddenInput(page);
+    await setProperty(fieldset, 'disabled', false);
+    await waitForStencilLifecycle(page);
 
-      expect(await getProperty(hiddenInput, 'name')).toBe('name');
-      expect(await getAttribute(hiddenInput, 'value')).toBe('');
-      expect(await getProperty(hiddenInput, 'required')).toBeFalsy();
-      expect(await getProperty(hiddenInput, 'disabled')).toBeFalsy();
-
-      await setProperty(host, 'name', 'updatedName');
-      await setProperty(host, 'value', '1234');
-      await setProperty(host, 'disabled', true);
-      await setProperty(host, 'required', true);
-      await waitForStencilLifecycle(page);
-
-      expect(await getProperty(hiddenInput, 'name')).toBe('updatedName');
-      expect(await getProperty(hiddenInput, 'value')).toBe('1234');
-      expect(await getProperty(hiddenInput, 'required')).toBeTruthy();
-      expect(await getProperty(hiddenInput, 'disabled')).toBeTruthy();
-    });
+    await expect(fieldset).toHaveJSProperty('disabled', false);
+    await expect(host).toHaveJSProperty('disabled', false);
+    await expect(input1).toHaveJSProperty('disabled', false);
+    await expect(input2).toHaveJSProperty('disabled', false);
+    await expect(input3).toHaveJSProperty('disabled', false);
+    await expect(input4).toHaveJSProperty('disabled', false);
   });
 
   test('should submit on key Enter if form does not contain another input element and no button/input type=submit', async ({
@@ -355,13 +462,6 @@ test.describe('within form', () => {
 });
 
 test.describe('update event', () => {
-  test('should not render hidden input', async ({ page }) => {
-    await initPinCode(page);
-    const hiddenInput = getHiddenInput(page);
-
-    await expect(hiddenInput).toHaveCount(0);
-  });
-
   test('should emit update event on valid input and focus next input if there is one', async ({ page }) => {
     await initPinCode(page);
     const host = getHost(page);
