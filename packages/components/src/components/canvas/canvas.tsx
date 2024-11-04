@@ -71,15 +71,9 @@ export class Canvas {
   @Watch('sidebarStartOpen')
   public openChangeHandlerSidebarStart(isOpen: boolean): void {
     if (this.isMediaQueryS) {
-      if (isOpen) {
-        this.root.ontransitionend = (): void => {
-          this.sidebarStart.focus({ preventScroll: true });
-        };
-      } else {
-        this.root.ontransitionend = (): void => {
-          this.header.focus({ preventScroll: true });
-        };
-      }
+      this.root.ontransitionend = (): void => {
+         this[isOpen ? 'sidebarStart' : 'header'].focus({ preventScroll: true });
+      };
     }
   }
 
