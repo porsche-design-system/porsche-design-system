@@ -1,4 +1,4 @@
-import { Component, Element, Event, type EventEmitter, h, type JSX, Prop } from '@stencil/core';
+import { AttachInternals, Component, Element, Event, type EventEmitter, h, type JSX, Prop } from '@stencil/core';
 import type { BreakpointCustomizable, PropTypes, Theme } from '../../types';
 import {
   type PinCodeLength,
@@ -8,24 +8,20 @@ import {
   type HTMLInputElementEventTarget,
   getConcatenatedInputValues,
   getSanitisedValue,
-  initHiddenInput,
   isCurrentInput,
-  isFormSubmittable,
   isInputOnlyDigits,
   PIN_CODE_LENGTHS,
   PIN_CODE_TYPES,
   removeWhiteSpaces,
-  syncHiddenInput,
+  isFormSubmittable,
 } from './pin-code-utils';
 import {
   AllowedTypes,
   applyConstructableStylesheetStyles,
   attachComponentCss,
   FORM_STATES,
-  getClosestHTMLElement,
   getPrefixedTagNames,
   hasPropValueChanged,
-  isWithinForm,
   THEMES,
   validateProps,
 } from '../../utils';
@@ -46,6 +42,7 @@ const propTypes: PropTypes<typeof PinCode> = {
   disabled: AllowedTypes.boolean,
   loading: AllowedTypes.boolean,
   required: AllowedTypes.boolean,
+  form: AllowedTypes.string,
   message: AllowedTypes.string,
   type: AllowedTypes.oneOf<PinCodeType>(PIN_CODE_TYPES),
   value: AllowedTypes.string,
@@ -62,6 +59,7 @@ const propTypes: PropTypes<typeof PinCode> = {
 @Component({
   tag: 'p-pin-code',
   shadow: { delegatesFocus: true },
+  formAssociated: true,
 })
 export class PinCode {
   @Element() public host!: HTMLElement;
@@ -105,14 +103,17 @@ export class PinCode {
   /** Adapts the color depending on the theme. */
   @Prop() public theme?: Theme = 'light';
 
+  /** The id of a form element the textarea should be associated with. */
+  @Prop() public form?: string;
+
   /** Emitted when selected element changes. */
   @Event({ bubbles: false }) public update: EventEmitter<PinCodeUpdateEventDetail>;
 
+  @AttachInternals() private internals: ElementInternals;
+
+  private defaultValue: string;
   private controllerHost = new ControllerHost(this);
   private loadingCtrl = new InitialLoadingController(this.controllerHost);
-  private form: HTMLFormElement;
-  private isWithinForm: boolean;
-  private hiddenInput: HTMLInputElement;
   private inputElements: HTMLInputElement[] = [];
 
   public connectedCallback(): void {
@@ -120,15 +121,12 @@ export class PinCode {
   }
 
   public componentWillLoad(): void {
-    this.form = getClosestHTMLElement(this.host, 'form');
-    this.isWithinForm = !!this.form;
-    if (this.isWithinForm) {
-      this.hiddenInput = initHiddenInput(this.host, this.name, this.value, this.disabled, this.required);
-    }
     this.value = getSanitisedValue(this.host, this.value, this.length);
+    this.defaultValue = this.value;
   }
 
   public componentDidLoad(): void {
+    this.internals.setFormValue(this.value);
     // The beforeinput event is the only event which fires and can be prevented reliably on all keyboard types
     this.inputElements.forEach((input) =>
       input.addEventListener('beforeinput', (event: InputEvent & HTMLInputElementEventTarget) => {
@@ -146,14 +144,21 @@ export class PinCode {
     );
   }
 
-  public componentWillUpdate(): void {
-    if (this.isWithinForm) {
-      syncHiddenInput(this.hiddenInput, this.name, this.value, this.disabled, this.required);
-    }
-  }
-
   public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
     return hasPropValueChanged(newVal, oldVal);
+  }
+
+  public formResetCallback(): void {
+    this.internals.setFormValue(this.defaultValue);
+    this.value = this.defaultValue;
+  }
+
+  public formDisabledCallback(disabled: boolean): void {
+    this.disabled = disabled;
+  }
+
+  public formStateRestoreCallback(state: string): void {
+    this.value = state;
   }
 
   public render(): JSX.Element {
@@ -165,7 +170,6 @@ export class PinCode {
       this.state,
       this.disabled,
       this.loading,
-      this.isWithinForm,
       this.length,
       this.theme
     );
@@ -192,6 +196,8 @@ export class PinCode {
           {Array.from(Array(this.length), (_, index) => (
             <input
               key={index}
+              name={this.name}
+              form={this.form}
               {...(isCurrentInput(index, this.value, this.length) && { id: currentInputId })}
               type={this.type === 'number' ? 'text' : this.type}
               aria-label={`${index + 1}-${this.length}`}
@@ -212,7 +218,6 @@ export class PinCode {
           )}
         </div>
         <StateMessage state={this.state} message={this.message} theme={this.theme} host={this.host} />
-        {this.isWithinForm && <slot name="internal-input" />}
         <LoadingMessage loading={this.loading} initialLoading={this.loadingCtrl.initialLoading} />
       </div>
     );
@@ -254,8 +259,8 @@ export class PinCode {
       target.value = '';
       this.updateValue(getConcatenatedInputValues(this.inputElements));
     } else if (key === 'Enter') {
-      if (isWithinForm && isFormSubmittable(this.host, this.form)) {
-        this.form.requestSubmit();
+      if (this.internals.form && isFormSubmittable(this.host, this.internals.form)) {
+        this.internals.form.requestSubmit();
       }
     }
     // workaround since 'Dead' key e.g. ^¨ can not be prevented with e.preventDefault()
@@ -279,6 +284,7 @@ export class PinCode {
 
   private updateValue = (newValue: string): void => {
     this.value = newValue;
+    this.internals.setFormValue(this.value);
     this.update.emit({ value: newValue, isComplete: removeWhiteSpaces(newValue).length === this.length });
   };
 
