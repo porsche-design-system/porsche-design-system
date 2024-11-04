@@ -96,7 +96,6 @@
   "peerDependencies": {
     "@playwright/test": "*",
     "ag-grid-enterprise": "*",
-    "ag-grid-react": "*",
     "change-case": "*",
     "concurrently": "*",
     "globby": "*",
