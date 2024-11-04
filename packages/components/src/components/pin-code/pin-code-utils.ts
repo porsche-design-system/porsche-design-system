@@ -73,7 +73,7 @@ export const isFormSubmittable = (host: HTMLElement, form: HTMLFormElement): boo
   const PrefixedTagNames = getPrefixedTagNames(host);
 
   return !!(
-    form.querySelectorAll('input:not([type=submit]):not([type=hidden])').length === 1 || // other sibling form elements e.g. select, textarea do not prevent submission
+    form.querySelectorAll('input:not([type=submit]):not([type=hidden])').length === 0 || // other sibling form elements e.g. select, textarea do not prevent submission
     Array.from(
       form.querySelectorAll(
         `${PrefixedTagNames.pButton},${PrefixedTagNames.pButtonPure},button[type=submit],input[type=submit]`
