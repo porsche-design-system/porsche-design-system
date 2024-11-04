@@ -1508,7 +1508,7 @@ export namespace Components {
          */
         "disabled"?: boolean;
         /**
-          * The id of a form element the textarea should be associated with.
+          * The id of a form element the pin-code should be associated with.
          */
         "form"?: string;
         /**
@@ -4723,7 +4723,7 @@ declare namespace LocalJSX {
          */
         "disabled"?: boolean;
         /**
-          * The id of a form element the textarea should be associated with.
+          * The id of a form element the pin-code should be associated with.
          */
         "form"?: string;
         /**
