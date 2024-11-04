@@ -88,6 +88,7 @@ export class Flyout {
   private hasHeader: boolean;
   private hasFooter: boolean;
   private hasSubFooter: boolean;
+  private dismissBtn: HTMLPButtonElement;
 
   public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
     return hasPropValueChanged(newVal, oldVal);
@@ -173,7 +174,9 @@ export class Flyout {
         onCancel={(e) => onCancelDialog(e, this.dismissDialog)}
         // Previously done with onMouseDown to change the click behavior (not closing when pressing mousedown on flyout and mouseup on backdrop) but changed back to native behavior
         onClick={(e) => onClickDialog(e, this.dismissDialog, this.disableBackdropClick)}
-        onTransitionEnd={(e) => onTransitionEnd(e, this.open, this.motionVisibleEnd, this.motionHiddenEnd)}
+        onTransitionEnd={(e) =>
+          onTransitionEnd(e, this.open, this.motionVisibleEnd, this.motionHiddenEnd, this.dismissBtn, this.dialog)
+        }
         {...parseAndGetAriaAttributes({
           'aria-modal': true,
           'aria-hidden': !this.open,
@@ -190,6 +193,7 @@ export class Flyout {
               icon="close"
               theme={this.theme}
               onClick={this.dismissDialog}
+              ref={(el: HTMLPButtonElement) => (this.dismissBtn = el)}
             >
               Dismiss flyout
             </PrefixedTagNames.pButton>

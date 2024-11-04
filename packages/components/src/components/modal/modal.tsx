@@ -110,6 +110,8 @@ export class Modal {
   private footer: HTMLSlotElement;
   private hasHeader: boolean;
   private hasFooter: boolean;
+  private dismissBtn: HTMLPButtonElement;
+
   private get hasDismissButton(): boolean {
     return this.disableCloseButton ? false : this.dismissButton;
   }
@@ -203,7 +205,9 @@ export class Modal {
         onCancel={(e) => onCancelDialog(e, this.dismissDialog, !this.hasDismissButton)}
         // Previously done with onMouseDown to change the click behavior (not closing when pressing mousedown on modal and mouseup on backdrop) but changed back to native behavior
         onClick={(e) => onClickDialog(e, this.dismissDialog, this.disableBackdropClick)}
-        onTransitionEnd={(e) => onTransitionEnd(e, this.open, this.motionVisibleEnd, this.motionHiddenEnd)}
+        onTransitionEnd={(e) =>
+          onTransitionEnd(e, this.open, this.motionVisibleEnd, this.motionHiddenEnd, this.dismissBtn, this.dialog)
+        }
         {...parseAndGetAriaAttributes({
           'aria-modal': true,
           'aria-label': this.heading,
@@ -222,6 +226,7 @@ export class Modal {
                 icon="close"
                 onClick={this.dismissDialog}
                 theme={this.theme}
+                ref={(el: HTMLPButtonElement) => (this.dismissBtn = el)}
               >
                 Dismiss modal
               </PrefixedTagNames.pButton>

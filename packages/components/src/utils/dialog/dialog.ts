@@ -5,7 +5,9 @@ export const setDialogVisibility = (isOpen: boolean, dialog: HTMLDialogElement, 
   // (e.g. in `componentDidRender()`) to prepare visibility states of dialog in order to focus the dismiss button correctly
   if (isOpen === true && !dialog.open) {
     scrollArea.scrollTo(0, 0); // reset scroll position each time dialog gets opened again
+    dialog.inert = true; // This will prevent the autofocus of the dialog element which is conflicting with our transition
     dialog.showModal(); // shows modal on `#top-layer`
+    dialog.inert = false;
   } else if (isOpen === false && dialog.open) {
     dialog.close();
   }
@@ -32,8 +34,14 @@ export const onTransitionEnd = (
   nativeEvent: TransitionEvent,
   isOpen: boolean,
   motionVisibleEndEvent: EventEmitter,
-  motionHiddenEndEvent: EventEmitter
+  motionHiddenEndEvent: EventEmitter,
+  dismissBtn: HTMLElement,
+  dialog: HTMLDialogElement
 ): void => {
+  if (isOpen && nativeEvent.target === dialog) {
+    const elementToFocus = dialog.querySelector('[autofocus]') || dismissBtn;
+    (elementToFocus as HTMLElement).focus();
+  }
   // Use property which has the longest duration
   if (nativeEvent.propertyName === 'background-color') {
     // eslint-disable-next-line no-unused-expressions
