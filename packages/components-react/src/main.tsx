@@ -13,18 +13,22 @@ createRoot(document.getElementById('root')!).render(
   </StrictMode>
 );
 
-(window as any).componentsReady = componentsReady; // for vrt
-(window as any).waitForComponentsReadyWithinIFrames = async () => {
+(window as unknown as Window & { componentsReady: () => Promise<number> }).componentsReady = componentsReady; // for vrt
+(
+  window as unknown as Window & { waitForComponentsReadyWithinIFrames: () => Promise<unknown[]> }
+).waitForComponentsReadyWithinIFrames = async () => {
   return await Promise.all(
     Array.from(document.querySelectorAll('iframe')).map(async (iframe) => {
-      const pollForComponentsReady = (resolve: any) =>
+      const pollForComponentsReady = (resolve: (value: unknown) => void) =>
         setTimeout(() => {
-          if ((iframe.contentWindow as any)?.componentsReady) {
-            (iframe.contentWindow as any)
+          if (
+            (iframe.contentWindow as unknown as Window & { componentsReady: () => Promise<number> })?.componentsReady
+          ) {
+            (iframe.contentWindow as unknown as Window & { componentsReady: () => Promise<number> })
               .componentsReady()
               // this solves a race condition where the html page with the pds markup is loaded async and componentsReady()
               // is called before the markup is initialized, it can resolve early with 0
-              .then((res: any) => (res > 0 ? resolve(res) : pollForComponentsReady(resolve)));
+              .then((res: number) => (res > 0 ? resolve(res) : pollForComponentsReady(resolve)));
           } else {
             pollForComponentsReady(resolve);
           }

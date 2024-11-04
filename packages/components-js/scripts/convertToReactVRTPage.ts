@@ -108,7 +108,7 @@ useEffect(() => {
       iconsRegEx,
       `$1
   {ICON_NAMES.map((x) => (
-    <PIcon key={x} name={x as any} size="inherit" color="inherit" aria-label={\`\${x} icon\`} />
+    <PIcon key={x} name={x} size="inherit" color="inherit" aria-label={\`\${x} icon\`} />
   ))}
 $2`
     );

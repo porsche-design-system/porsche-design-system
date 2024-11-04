@@ -242,8 +242,7 @@ const generateVRTPagesForJsFramework = (htmlFileContentMap: Record<string, strin
 export const generatedRoutes: ExtendedRoute[] = [\n${routes}\n];`;
     barrelFileName = 'index.ts';
   } else if (framework === 'react') {
-    const eslintRule = '/* eslint-disable import/first */';
-    frameworkImports = [separatorStart, eslintRule, importsAndExports].join('\n');
+    frameworkImports = [separatorStart, importsAndExports].join('\n');
     frameworkRoutes = `export const generatedRoutes: RouteType[] = [\n${routes}\n];`;
     barrelFileName = 'index.tsx';
   } else if (framework === 'nextjs') {

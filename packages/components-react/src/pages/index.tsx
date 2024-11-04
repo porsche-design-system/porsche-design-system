@@ -10,7 +10,6 @@ export * from './ThemeInjection';
 export * from './Utilities';
 
 /* Auto Generated Below */
-/* eslint-disable import/first */
 export * from './generated/CoreInitializer';
 export * from './generated/Overview';
 import { AccordionPage } from './generated/Accordion';
