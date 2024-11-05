@@ -144,8 +144,6 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
       props = addUxPinIgnorePropAnnotation(props, 'open');
     } else if (component === 'p-link' || component === 'p-link-pure' || component === 'p-link-social') {
       props = addUxPinIgnorePropAnnotation(props, 'href');
-<<<<<<< Updated upstream
-=======
       props = addUxPinIgnorePropAnnotation(props, 'target');
     } else if (component === 'p-banner') {
       props = addUxPinIgnorePropAnnotation(props, 'width');
@@ -158,7 +156,6 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
       props = addUxPinIgnorePropAnnotation(props, 'fetchPriority');
       props = addUxPinIgnorePropAnnotation(props, 'lazy');
 
->>>>>>> Stashed changes
     }
 
     // add uxpinbind annotations
@@ -290,8 +287,6 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
       )
     }
 
-<<<<<<< Updated upstream
-=======
     if (component === 'p-inline-notification') {
       cleanedComponent = cleanedComponent.replace(
           'useEventCallback(elementRef, \'dismiss\', onDismiss as any);',
@@ -322,8 +317,6 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
           ].join('\n    ')
       )
     }
-
->>>>>>> Stashed changes
     // cast BreakpointCustomizable default prop values to any because BreakpointCustomizable types are removed for uxpin
     extendedProps
       .filter((prop) => prop.isDefaultValueComplex && prop.defaultValue.match(/\bbase\b/))
