@@ -9,7 +9,7 @@ const generateConstructorMap = (): void => {
   const sourceDirectory = path.resolve('./src/components');
   const componentFiles = globbySync(`${sourceDirectory}/**/*.tsx`);
 
-  const importsRaw: string[] = ["import type { TagName } from '@porsche-design-system/shared';"];
+  const importsRaw: string[] = ['import type { TagName } from \'@porsche-design-system/shared\';'];
 
   const tagNamesConstructorMap: string = componentFiles
     .map((filePath) => {

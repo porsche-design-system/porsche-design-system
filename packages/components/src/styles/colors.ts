@@ -127,7 +127,7 @@ const themeDark = {
 };
 
 const themeAuto = {
-  ...themeLight,};
+  ...themeLight, };
 
 const themes = {
   'light': themeLight,

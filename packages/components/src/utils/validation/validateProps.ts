@@ -35,11 +35,11 @@ export const formatObjectOutput = (value: any): string => {
 
 export const formatArrayOutput = <T>(value: T[] | readonly T[]): string => {
   return (
-    // eslint-disable-next-line @typescript-eslint/no-base-to-string
+
     JSON.stringify(value.map((x) => (x === undefined ? `${x}` : x))) // wrap undefined in quotes to not convert it to null
       .replace(/'/g, '') // remove single quotes
       // eslint-disable-next-line @typescript-eslint/quotes
-      .replace(/"/g, "'") // replace double quotes with single quotes
+      .replace(/"/g, '\'') // replace double quotes with single quotes
       .replace(/'(undefined)'/, '$1') // remove quotes around undefined
       .replace(/,/g, ', ') // add space after comma
   );
@@ -104,7 +104,7 @@ export const getAriaStructure = <T>(allowedAriaAttributes: readonly T[]): string
     )
       .replace(/":/g, '"?:') // add optional modifier on keys before colon
       // eslint-disable-next-line @typescript-eslint/quotes
-      .replace(/"/g, "'") // replace double quotes with single quotes
+      .replace(/"/g, '\'') // replace double quotes with single quotes
   );
 };
 
@@ -139,11 +139,11 @@ export const AllowedTypes: {
   breakpoint: ValidatorFunctionBreakpointCustomizableCreator;
   shape: ValidatorFunctionShapeCreator;
 } = {
-  // eslint-disable-next-line id-blacklist
+
   string: (...args) => validateValueOfType(...args, 'string'),
-  // eslint-disable-next-line id-blacklist
+
   number: (...args) => validateValueOfType(...args, 'number'),
-  // eslint-disable-next-line id-blacklist
+
   boolean: (...args) => validateValueOfType(...args, 'boolean'),
   array: (allowedType: ValidatorFunction): ValidatorFunction =>
     // eslint-disable-next-line prefer-arrow/prefer-arrow-functions

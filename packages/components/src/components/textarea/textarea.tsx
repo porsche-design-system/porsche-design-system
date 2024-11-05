@@ -186,6 +186,7 @@ export class Textarea {
   public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
     return hasPropValueChanged(newVal, oldVal);
   }
+
   public componentDidLoad(): void {
     this.internals.setFormValue(this.value);
   }

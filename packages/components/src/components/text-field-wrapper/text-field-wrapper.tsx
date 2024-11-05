@@ -118,7 +118,7 @@ export class TextFieldWrapper {
   /** Disables the action button and shows a loading indicator. No events will be triggered while loading state is active. */
   @Prop() public actionLoading?: boolean = false;
 
-  /** Show search button if wrapped inside a form.*/
+  /** Show search button if wrapped inside a form. */
   @Prop() public submitButton?: boolean = true;
 
   /** @experimental Show or hide password toggle for `input type="password"`. */

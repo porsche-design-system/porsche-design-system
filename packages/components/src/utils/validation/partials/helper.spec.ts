@@ -119,7 +119,7 @@ describe('getPdsComponentsSelector()', () => {
 });
 
 describe('getUsedTagNamesForVersions()', () => {
-  describe("when prefix 'phn' and phn-header is not found", () => {
+  describe('when prefix \'phn\' and phn-header is not found', () => {
     const prefixesForVersion = { '1.2.3': ['', 'my-prefix', 'some-prefix'], '1.2.4': ['', 'my-prefix', 'some-prefix'] };
 
     it('should call getPdsComponentsSelector() with correct parameters', () => {
@@ -188,7 +188,7 @@ describe('getUsedTagNamesForVersions()', () => {
     });
   });
 
-  describe("when prefix 'phn' and phn-header is found", () => {
+  describe('when prefix \'phn\' and phn-header is found', () => {
     const prefixesForVersion = { '1.2.3': ['', 'phn'] };
 
     const phnHeader = document.createElement('phn-header');

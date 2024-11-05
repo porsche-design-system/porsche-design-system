@@ -41,7 +41,7 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
     this.hiddenComponents = [
         'p-text-field-wrapper',
         'p-radio-button-wrapper',
-    ]
+    ];
   }
 
   public getComponentFileName(component: TagName): string {
@@ -67,7 +67,7 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
 
     // when component is nested we need to fix relative imports
     if (this.shouldGenerateFolderPerComponent(component)) {
-      imports = imports.replace(/'(\.\.\/)/g, "'$1$1");
+      imports = imports.replace(/'(\.\.\/)/g, '\'$1$1');
     }
 
     return imports;
@@ -113,17 +113,15 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
     }
 
     // add onClick prop for marque, buttons and links, but not button-group
-    else if (!!component.match(/(button|link|marque|stepper-horizontal-item|tag-dismissible)(?!-group)/)) {
+    else if (component.match(/(button|link|marque|stepper-horizontal-item|tag-dismissible)(?!-group)/)) {
       props = addProp(props, 'onClick?: (e: MouseEvent) => void;');
     }
 
     // remove BreakpointCustomizable types since designers can't use JSON
     props = props.replace(/BreakpointCustomizable<(.*)>/g, '$1');
 
-
     // hidden uxpin props which allows updating property from library level in uxpin editor
     props = addProp(props, '/** @uxpinignoreprop */ \n  uxpinOnChange: (prevValue: any, nextValue: any, propertyName: string) => void;');
-
 
     // remove useless props
     if (component === 'p-marque') {
@@ -186,14 +184,14 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
       if (component === 'p-text') {
         cleanedComponent = cleanedComponent
           .replace(/(size =) 'small'/, '$1 16') // change destructured size
-          .replace(', size,', ", 'inherit',") // always set inherit in propsToSync
+          .replace(', size,', ', \'inherit\',') // always set inherit in propsToSync
           .replace(/(style: )(getPaddingStyles.+),/, '$1{ ...$2, fontSize: size },'); // patch inline style
       } else if (component === 'p-link' || component === 'p-link-social') {
         // set default href
-        cleanedComponent = cleanedComponent.replace(/(href),(.*?PropsWithChildren)/, "$1 = '#',$2");
+        cleanedComponent = cleanedComponent.replace(/(href),(.*?PropsWithChildren)/, '$1 = \'#\',$2');
       } else if (component === 'p-segmented-control-item') {
         // set default value, otherwise validation will throw an error
-        cleanedComponent = cleanedComponent.replace(/(, value),/, "$1 = 'value',");
+        cleanedComponent = cleanedComponent.replace(/(, value),/, '$1 = \'value\',');
       } else if (component === 'p-text-field-wrapper') {
         cleanedComponent = cleanedComponent
           .replace(/(\.\.\.rest)/, 'isWithinForm, onFormSubmit, $1') // destructure custom props
@@ -218,7 +216,7 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
       }
     } else if (component === 'p-toast') {
       cleanedComponent = cleanedComponent
-        .replace(/(\.\.\.rest)/, "text, state = 'info', $1") // destructure custom props
+        .replace(/(\.\.\.rest)/, 'text, state = \'info\', $1') // destructure custom props
         .replace(
           // integrate toast manager hook and call addMessage based on custom 'text' and 'state' props
           /((const propsToSync =)|(useBrowserLayoutEffect\(\(\) =>))/,
@@ -257,7 +255,7 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
               '    }',
               '    useEventCallback(elementRef, \'update\', eventCallback);',
           ].join('\n')
-      )
+      );
     }
 
     if (component === 'p-flyout') {
@@ -272,7 +270,7 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
             '    }',
             '    useEventCallback(elementRef, \'dismiss\', dismissCallback);',
           ].join('\n')
-      )
+      );
     }
 
     // cast BreakpointCustomizable default prop values to any because BreakpointCustomizable types are removed for uxpin
@@ -357,7 +355,7 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
         ].join(glue),
       },
       'p-multi-select': {
-        props: { name:'options', label:'Some Label' },
+        props: { name: 'options', label: 'Some Label' },
         children: [
           '<Optgroup uxpId="group-1" label="Some optgroup label 1">',
           ' <MultiSelectOption uxpId="opt-1" value="a">Option A</MultiSelectOption>',
@@ -406,7 +404,7 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
           .join(glue),
       },
       'p-select': {
-        props: { name:'options', label:'Some Label', description: 'Some description', value:'a'  },
+        props: { name: 'options', label: 'Some Label', description: 'Some description', value: 'a' },
         children: [
             '<SelectOption uxpId="opt-1" value="a">Option A</SelectOption>',
             '<SelectOption uxpId="opt-2" value="b">Option B</SelectOption>',
@@ -620,7 +618,6 @@ export default <${formComponentName} ${stringifiedProps} />;
       componentA.split('/').pop().toLowerCase()
           .localeCompare(componentB.split('/').pop().toLowerCase())
     )).join(',\n          ');
-
 
     const content = `module.exports = {
   components: {

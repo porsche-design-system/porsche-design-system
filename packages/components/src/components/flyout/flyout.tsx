@@ -58,7 +58,7 @@ export class Flyout {
   @Element() public host!: HTMLElement;
 
   /** If true, the flyout is open. */
-  @Prop() public open: boolean = false; // eslint-disable-line @typescript-eslint/no-inferrable-types
+  @Prop() public open: boolean = false;
 
   /** The position of the flyout */
   @Prop() public position?: FlyoutPosition = 'end';

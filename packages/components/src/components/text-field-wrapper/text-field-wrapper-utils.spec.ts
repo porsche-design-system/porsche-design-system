@@ -19,6 +19,7 @@ class MockHTMLElement {
   constructor() {
     this.shadowRoot = { adoptedStyleSheets: [] } as DocumentOrShadowRoot;
   }
+
   shadowRoot: DocumentOrShadowRoot;
   getBoundingClientRect() {
     return { height: 100 };
@@ -242,7 +243,7 @@ describe('dispatchInputEvent()', () => {
 
 describe('addCounterCharacterLengthCssVarStyleSheet()', () => {
   let host;
-  let stylesheetMock = {
+  const stylesheetMock = {
     replaceSync: jest.fn(),
     insertRule: jest.fn(),
     deleteRule: jest.fn(),
@@ -287,7 +288,7 @@ describe('addCounterCharacterLengthCssVarStyleSheet()', () => {
 
 describe('updateCounterCharacterLengthCssVarStyleSheet()', () => {
   let host;
-  let stylesheetMock = {
+  const stylesheetMock = {
     replaceSync: jest.fn(),
     insertRule: jest.fn(),
     deleteRule: jest.fn(),

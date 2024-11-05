@@ -61,7 +61,7 @@ export class Modal {
   @Element() public host!: HTMLElement;
 
   /** If true, the modal is open. */
-  @Prop() public open: boolean = false; // eslint-disable-line @typescript-eslint/no-inferrable-types
+  @Prop() public open: boolean = false;
 
   /**
    * If true, the modal will not have a dismiss button.

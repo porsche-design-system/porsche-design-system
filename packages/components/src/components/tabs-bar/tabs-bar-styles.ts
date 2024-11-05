@@ -153,7 +153,7 @@ export const getComponentCss = (
     // conditionally applied and removed based on if activeTabIndex exists
     [scrollerAnimatedCssClass]: {
       ['& ' +
-      transformSelector(
+        transformSelector(
         '::slotted([role][aria-selected="true"])::after, ::slotted([role][aria-current="true"])::after'
       )]: {
         transition: addImportantToRule(

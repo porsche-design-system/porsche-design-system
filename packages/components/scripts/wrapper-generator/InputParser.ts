@@ -44,9 +44,9 @@ export class InputParser {
     const cleanInterface = (input: string): string =>
       input
         .replace(/"(\w+)"(\??:)/g, '$1$2') // clean double quotes around interface/type keys
-        .replace(/    |\t\t/g, '  ') // adjust indentation
-        .replace(/    \*/g, '   *') // adjust indentation before jsdocs
-        .replace(/(  |\t)}$/g, '}') // adjust indentation at closing }
+        .replace(/ {4}|\t\t/g, '  ') // adjust indentation
+        .replace(/ {4}\*/g, '   *') // adjust indentation before jsdocs
+        .replace(/( {2}|\t)}$/g, '}') // adjust indentation at closing }
         .replace(/(\?: \(event: )([a-zA-Z]+)(<[a-zA-Z]+>\))/g, '$1CustomEvent$3'); // remove stencil custom event
     rawLocalJSXInterface = cleanInterface(rawLocalJSXInterface);
 
@@ -66,7 +66,7 @@ export class InputParser {
 
   public getComponentInterface(component: TagName): ParsedInterface {
     const rawInterface = this.getRawComponentInterface(component);
-    const cleanedInterface = rawInterface.replace(/\??: (.+?);/g, ": '$1',"); // convert to valid js object
+    const cleanedInterface = rawInterface.replace(/\??: (.+?);/g, ': \'$1\','); // convert to valid js object
 
     const parsedInterface: ParsedInterface = eval(`(${cleanedInterface})`);
     return parsedInterface;
@@ -163,7 +163,7 @@ export class InputParser {
 
     let [, rawIntrinsicElements] = /interface IntrinsicElements ({(?:\n|.)*?})/.exec(rawLocalJSX) || [];
 
-    rawIntrinsicElements = rawIntrinsicElements.replace(/ (\w+);/g, " '$1',");
+    rawIntrinsicElements = rawIntrinsicElements.replace(/ (\w+);/g, ' \'$1\',');
     this.intrinsicElements = eval(`(${rawIntrinsicElements})`);
 
     console.log(`Found ${Object.keys(this.intrinsicElements).length} intrinsicElements in ${bundleDtsFileName}`);

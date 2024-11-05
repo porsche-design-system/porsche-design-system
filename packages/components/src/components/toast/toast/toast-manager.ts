@@ -87,7 +87,7 @@ export class ToastManagerClass {
             this.dismissToastItem,
             // override timeout if --p-temporary-toast-timeout css variable is set
             parseInt(getComputedStyle(this.toastEl).getPropertyValue(TEMPORARY_TOAST_TIMEOUT), 10) ||
-              TOAST_DEFAULT_TIMEOUT
+            TOAST_DEFAULT_TIMEOUT
           );
         }
       }

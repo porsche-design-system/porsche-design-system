@@ -9,8 +9,8 @@ import { prefersColorSchemeDarkMediaQuery } from './prefers-color-scheme-dark-me
 export const getTypographyRootJssStyle = (
   baseTextStyle: JssStyle,
   responsiveStyle: JssStyle,
-  align: TypographyAlign, // eslint-disable-line @typescript-eslint/no-duplicate-type-constituents
-  color: Exclude<TypographyTextColor, TypographyTextColorDeprecated> | HeadlineColor | HeadingColor | DisplayColor, // eslint-disable-line @typescript-eslint/no-duplicate-type-constituents
+  align: TypographyAlign,
+  color: Exclude<TypographyTextColor, TypographyTextColorDeprecated> | HeadlineColor | HeadingColor | DisplayColor,
   ellipsis: boolean,
   theme: Theme
 ): JssStyle => {

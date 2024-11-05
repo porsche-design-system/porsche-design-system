@@ -36,7 +36,6 @@ export const onTransitionEnd = (
 ): void => {
   // Use property which has the longest duration
   if (nativeEvent.propertyName === 'background-color') {
-    // eslint-disable-next-line no-unused-expressions
     isOpen ? motionVisibleEndEvent.emit(nativeEvent) : motionHiddenEndEvent.emit(nativeEvent);
   }
 };

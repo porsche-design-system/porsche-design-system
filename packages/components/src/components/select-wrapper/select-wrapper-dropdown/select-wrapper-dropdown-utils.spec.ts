@@ -87,7 +87,7 @@ const getVisibleOptionsAmount = (options: OptionMap[]): number => options.filter
 const getFirstInOptgroupAmount = (options: OptionMap[]): number => options.filter((item) => item.showOptgroup).length;
 
 describe('getOptionsElements()', () => {
-  it("should return a select's option elements", () => {
+  it('should return a select\'s option elements', () => {
     const select = document.createElement('select');
     const option1 = document.createElement('option');
     option1.value = 'a';

@@ -34,23 +34,23 @@ const generateDSRComponents = (): void => {
         .replace(/@Component\({[\s\S]+?\)\n/g, '')
         .replace(/ implements [A-Za-z]+/g, '')
         .replace(/@Element\(\) /g, '')
-        .replace(/(?:\n  \/\*\*[\s\S]*?)?@Prop\(.*?\) [\s\S]*?;.*\n/g, '')
-        .replace(/\n  @Listen\(.*\)[\s\S]+?\n  }\n/g, '')
-        .replace(/@Watch\(.*\)[\s\S]+?\n  }\n/g, '')
-        .replace(/@Method\(.*\)[\s\S]+?\n  }\n/g, '')
+        .replace(/(?:\n {2}\/\*\*[\s\S]*?)?@Prop\(.*?\) [\s\S]*?;.*\n/g, '')
+        .replace(/\n {2}@Listen\(.*\)[\s\S]+?\n {2}}\n/g, '')
+        .replace(/@Watch\(.*\)[\s\S]+?\n {2}}\n/g, '')
+        .replace(/@Method\(.*\)[\s\S]+?\n {2}}\n/g, '')
         .replace(/@State\(\) /g, '')
-        .replace(/(?:\n  \/\*\*(?:.*\n){0,3})?  @Event\(.*\).*\n/g, '')
-        .replace(/\n  public connectedCallback\(\): void {[\s\S]+?\n  }\n/g, '')
-        .replace(/\n  public componentWillLoad\(\): void {[\s\S]+?\n  }\n/g, '')
-        .replace(/\n  public componentDidLoad\(\): void {[\s\S]+?\n  }\n/g, '')
-        .replace(/\n  public componentWillUpdate\(\): void {[\s\S]+?\n  }\n/g, '')
-        .replace(/\n  public componentWillRender\(\): void {[\s\S]+?\n  }\n/g, '')
-        .replace(/\n  public componentDidUpdate\(\): void {[\s\S]+?\n  }\n/g, '')
-        .replace(/\n  public componentDidRender\(\): void {[\s\S]+?\n  }\n/g, '')
-        .replace(/\n  public disconnectedCallback\(\): void {[\s\S]+?\n  }\n/g, '')
-        .replace(/\n  public componentShouldUpdate\([\s\S]+?\n  }\n/g, '')
+        .replace(/(?:\n {2}\/\*\*(?:.*\n){0,3})? {2}@Event\(.*\).*\n/g, '')
+        .replace(/\n {2}public connectedCallback\(\): void {[\s\S]+?\n {2}}\n/g, '')
+        .replace(/\n {2}public componentWillLoad\(\): void {[\s\S]+?\n {2}}\n/g, '')
+        .replace(/\n {2}public componentDidLoad\(\): void {[\s\S]+?\n {2}}\n/g, '')
+        .replace(/\n {2}public componentWillUpdate\(\): void {[\s\S]+?\n {2}}\n/g, '')
+        .replace(/\n {2}public componentWillRender\(\): void {[\s\S]+?\n {2}}\n/g, '')
+        .replace(/\n {2}public componentDidUpdate\(\): void {[\s\S]+?\n {2}}\n/g, '')
+        .replace(/\n {2}public componentDidRender\(\): void {[\s\S]+?\n {2}}\n/g, '')
+        .replace(/\n {2}public disconnectedCallback\(\): void {[\s\S]+?\n {2}}\n/g, '')
+        .replace(/\n {2}public componentShouldUpdate\([\s\S]+?\n {2}}\n/g, '')
         .replace(/private(.*?)window.matchMedia(.*?);/g, '')
-        .replace(/\n  private (?!get).+(\n.+)*?\{[\s\S]+?\n  };?\n/g, '') // private methods without getters
+        .replace(/\n {2}private (?!get).+(\n.+)*?\{[\s\S]+?\n {2}};?\n/g, '') // private methods without getters
         .replace(/\nconst propTypes[\s\S]*?};\n/g, '') // temporary
         .replace(/\s+validateProps\(this, propTypes\);/, '')
         .replace(/\s+attachComponentCss\([\s\S]+?\);/, '')
@@ -80,9 +80,9 @@ const generateDSRComponents = (): void => {
           group.endsWith('utils')
             ? m.replace(group, utilsBundleImportPath)
             : group.endsWith('state-message') ||
-                group.endsWith('loading-message') ||
-                group.endsWith('required') ||
-                group.endsWith('label')
+              group.endsWith('loading-message') ||
+              group.endsWith('required') ||
+              group.endsWith('label')
               ? m.replace(group, './' + group.split('/').pop())
               : ''
         )
@@ -122,9 +122,9 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
         {this.children}`
           : '';
 
-        newFileContent = newFileContent.replace(/public render\(\)[\s\S]*?\n  }/, (match) => {
+        newFileContent = newFileContent.replace(/public render\(\)[\s\S]*?\n {2}}/, (match) => {
           const delegatesFocusProp = isDelegatingFocus ? ' shadowrootdelegatesfocus="true"' : '';
-          return match.replace(/\n    return \(?([\s\S]*?(?:\n    )|.*)\)?;/, (_, g1) => {
+          return match.replace(/\n {4}return \(?([\s\S]*?(?:\n {4})|.*)\)?;/, (_, g1) => {
             return `
     const style = minifyCss(stripFocusAndHoverStyles(get${componentName}Css(${getComponentCssParams})));
 
@@ -170,7 +170,7 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
           )
           .replace(
             /this\.(?:input|select|textarea)(?!Elements)/g,
-            "typeof otherChildren[0] === 'object' && 'props' in otherChildren[0] && otherChildren[0]?.props"
+            'typeof otherChildren[0] === \'object\' && \'props\' in otherChildren[0] && otherChildren[0]?.props'
           ); // fallback for undefined input, select and textarea reference
 
         // adjust named slot conditions
@@ -194,7 +194,7 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
           );
       } else if (newFileContent.includes('FunctionalComponent')) {
         newFileContent = newFileContent
-          .replace(/import { Component } from 'react';/, "import type { FC } from 'react';")
+          .replace(/import { Component } from 'react';/, 'import type { FC } from \'react\';')
           .replace(/FunctionalComponent/, 'FC')
           .replace(/: FormState/g, ': any')
           .replace(/: Theme/g, ': any')
@@ -224,11 +224,11 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
       newFileContent = newFileContent
         .replace(
           /(<Label(?!Props))([\s\S]*?\/>)/,
-          "$1 hasLabel={this.props.label || namedSlotChildren.filter(({ props: { slot } }) => slot === 'label').length > 0} hasDescription={this.props.description || namedSlotChildren.filter(({ props: { slot } }) => slot === 'description').length > 0}$2"
+          '$1 hasLabel={this.props.label || namedSlotChildren.filter(({ props: { slot } }) => slot === \'label\').length > 0} hasDescription={this.props.description || namedSlotChildren.filter(({ props: { slot } }) => slot === \'description\').length > 0}$2'
         )
         .replace(
           /(<StateMessage(?!Props))([\s\S]*?\/>)/,
-          "$1 hasMessage={(this.props.message || namedSlotChildren.filter(({ props: { slot } }) => slot === 'message').length > 0) && ['success', 'error'].includes(this.props.state)}$2"
+          '$1 hasMessage={(this.props.message || namedSlotChildren.filter(({ props: { slot } }) => slot === \'message\').length > 0) && [\'success\', \'error\'].includes(this.props.state)}$2'
         )
         .replace(/(this\.props)\.host/g, '$1') // general
         .replace(/(getSegmentedControlCss)\(getItemMaxWidth\(this\.props\)/, '$1(100') // segmented-control
@@ -262,7 +262,7 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
         .replace(/import type { TextTag }.*;/g, '') // text
         .replace(
           /getSlotTextContent\(this\.props, '([a-z]+)'\)/g,
-          "namedSlotChildren.find(({ props: { slot } }) => slot === '$1')?.props.children"
+          'namedSlotChildren.find(({ props: { slot } }) => slot === \'$1\')?.props.children'
         ) // carousel, select-wrapper
         .replace(
           /= typeof otherChildren\[0\] === 'object' && 'props' in otherChildren\[0\] && otherChildren\[0]\?\.props/,
@@ -273,8 +273,8 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
         .replace(/toastManager\.getToast\(\)/, 'false') // toast
         .replace(/ {\.\.\.toast}/, '') // toast
         .replace(/return this\.selectRef\.selectedIndex;/, 'return 0;') // select-wrapper-dropdown
-        .replace(/determineDropdownDirection\(this\.props\,.+\)/, "'down'") // select-wrapper-dropdown
-        .replace(/(getDropdownDirection|getSelectDropdownDirection)\(this\.props.+\)/, "'down'") // select and multi-select
+        .replace(/determineDropdownDirection\(this\.props\,.+\)/, '\'down\'') // select-wrapper-dropdown
+        .replace(/(getDropdownDirection|getSelectDropdownDirection)\(this\.props.+\)/, '\'down\'') // select and multi-select
         .replace(/(this\.)props\.(isDisabledOrLoading)/g, '$1$2') // button, button-pure
         .replace(/(const (?:iconProps|btnProps|linkProps|buttonProps)) =/, '$1: any =') // workaround typing issue
         .replace(/(any)Deprecated/g, '$1') // workaround typings of deprecation maps
@@ -287,13 +287,13 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
       if (tagName === 'p-carousel') {
         newFileContent = newFileContent
           .replace(/this\.slides(\.map)/, `otherChildren$1`)
-          .replace(/^/, "$&import type { BreakpointCustomizable } from '../types';\n")
+          .replace(/^/, '$&import type { BreakpointCustomizable } from \'../types\';\n')
           .replace(/.*onFocusin=\{.*\n/, '')
           .replace(/this\.slidesPerPage/, 'this.props.slidesPerPage')
           // Since slidesPerPage is BreakpointCustomizable we have to replace hasNavigation with a working serverside condition
           .replace(
             /this\.props\.hasNavigation/g,
-            "(this.props.slidesPerPage === 'auto' || typeof this.props.slidesPerPage === 'object' || this.props.slidesPerPage < otherChildren.length)"
+            '(this.props.slidesPerPage === \'auto\' || typeof this.props.slidesPerPage === \'object\' || this.props.slidesPerPage < otherChildren.length)'
           );
       } else if (tagName === 'p-banner') {
         // remove warning about deprecated title slot
@@ -321,7 +321,7 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
             '$&    const hasDismissButton = this.props.disableCloseButton ? false : this.props.dismissButton;'
           )
           .replace(/\n.*\/\/ eslint-disable-next-line @typescript-eslint\/member-ordering/g, '')
-          .replace(/(inert=\{this\.props\.open \? null : )true(})/, "$1''$2") // transform true to empty string ''
+          .replace(/(inert=\{this\.props\.open \? null : )true(})/, '$1\'\'$2') // transform true to empty string ''
           .replace(/onScroll=\{hasFooter && this\.props\.onScroll}/, '')
           .replace(/if\s\(.*[^}]*}/, '') // Remove deprecation warning check
           .replace(/onTransitionEnd={[^}]*}\s*/, '');
@@ -330,7 +330,7 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
           .replace(/this\.props\.(hasHeader|hasFooter|hasSubFooter)/g, '$1')
           .replace(/(?:hasHeader|hasFooter|hasSubFooter) =/g, 'const $&')
           .replace(/\n.*\/\/ eslint-disable-next-line @typescript-eslint\/member-ordering/g, '')
-          .replace(/(inert=\{this\.props\.open \? null : )true(})/, "$1''$2") // transform true to empty string ''
+          .replace(/(inert=\{this\.props\.open \? null : )true(})/, '$1\'\'$2') // transform true to empty string ''
           .replace(/onTransitionEnd={[^}]*}\s*/, '');
       } else if (tagName === 'p-radio-button-wrapper') {
         newFileContent = newFileContent.replace(
@@ -342,7 +342,7 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
           .replace(/this\.tabsItemElements(\.map)/, `otherChildren$1`)
           .replace(
             /(<button key={index} type="button">)\s*{tab\.label}\s*(<\/button>)/g,
-            "$1{typeof tab === 'object' && 'props' in tab && tab.props.label}$2"
+            '$1{typeof tab === \'object\' && \'props\' in tab && tab.props.label}$2'
           )
           .replace(
             /const { children, namedSlotChildren, otherChildren } =.*/,
@@ -463,7 +463,7 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
           // Add PSelectWrapperDropdown component import
           .replace(
             /(import\s*{\s*PIcon\s*}\s*from\s*'\.\.\/components';\s*)/,
-            "$1import { PSelectWrapperDropdown } from '../components/select-wrapper-dropdown.wrapper';\r"
+            '$1import { PSelectWrapperDropdown } from \'../components/select-wrapper-dropdown.wrapper\';\r'
           )
           // Remove hasCustomDropdown attribute
           .replace(/^\s*private\s+hasCustomDropdown\s*:\s*any\s*;\s*$/gm, '')
@@ -540,7 +540,7 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
               .replace(/const (?:hasUnit|hasCounter) = /, '$&false; // ') // TODO: unsupported because of inline styles calculated via js
               .replace(
                 /!!otherChildren\[0\]\?\.props\.value/,
-                "typeof otherChildren[0] === 'object' && 'props' in otherChildren[0] && $&" // fix typing of otherChildren
+                'typeof otherChildren[0] === \'object\' && \'props\' in otherChildren[0] && $&' // fix typing of otherChildren
               )
           )
           .join('\n    ');
@@ -569,13 +569,13 @@ $&`
       } else if (tagName === 'p-flyout-multilevel') {
         newFileContent = newFileContent
           .replace(/validateActiveIdentifier\(.*\);/g, '')
-          .replace(/(inert=\{this\.props\.open \? null : )true(})/, "$1''$2"); // transform true to empty string '';
+          .replace(/(inert=\{this\.props\.open \? null : )true(})/, '$1\'\'$2'); // transform true to empty string '';
       } else if (tagName === 'p-flyout-multilevel-item') {
         newFileContent = newFileContent
           .replace(/: Theme/g, ': any')
           .replace(/this\.props\.theme(?! \|\|)/g, 'this.theme')
           .replace(/this\.props\.open(?! \|\|)/g, 'this.open')
-          .replace(/(inert=\{this\.open \? null : )true(})/, "$1''$2"); // transform true to empty string '';
+          .replace(/(inert=\{this\.open \? null : )true(})/, '$1\'\'$2'); // transform true to empty string '';
       } else if (tagName === 'p-link-tile-model-signature') {
         newFileContent = newFileContent
           .replace(/ {4}.*getNamedSlotOrThrow[\s\S]+?;\n/g, '') // remove validation

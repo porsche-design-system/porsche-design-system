@@ -3,21 +3,46 @@ import eslintJs from '@eslint/js';
 import eslintTs from 'typescript-eslint';
 import eslintStylistic from '@stylistic/eslint-plugin';
 import eslintConfigPrettier from 'eslint-config-prettier';
-import eslintVitest from 'eslint-plugin-vitest';
-import eslintPlaywright from 'eslint-plugin-playwright';
+// import eslintVitest from 'eslint-plugin-vitest';
+// import eslintPlaywright from 'eslint-plugin-playwright';
 
 export default [
   eslintJs.configs.recommended,
-  // ...eslintTs.configs.recommended,
+  ...eslintTs.configs.recommended,
   eslintStylistic.configs['recommended-flat'],
-  eslintPlaywright.configs['flat/recommended'],
-  eslintVitest.configs.recommended,
+  // eslintPlaywright.configs['flat/recommended'],
+  // eslintVitest.configs.recommended,
   eslintConfigPrettier,
   {
     rules: {
-      '@stylistic/arrow-parens': ['error', 'as-needed'],
+      'no-console': [
+        'error',
+        {
+          allow: ['warn', 'error']
+        }
+      ],
+      '@stylistic/comma-dangle': 'off',
+      '@stylistic/arrow-parens': 'off',
       '@stylistic/quote-props': 'off',
+      '@stylistic/brace-style': 'off',
+      '@stylistic/operator-linebreak': 'off',
+      '@stylistic/multiline-ternary': 'off',
+      '@stylistic/indent': 'off',
+      '@stylistic/jsx-one-expression-per-line': 'off',
       '@stylistic/semi': ['error', 'always'],
+      '@stylistic/member-delimiter-style': [
+        'error',
+        {
+          multiline: {
+            delimiter: 'semi',
+            requireLast: true,
+          },
+          singleline: {
+            delimiter: 'semi',
+            requireLast: false,
+          },
+        },
+      ],
     },
   },
   {
@@ -35,6 +60,7 @@ export default [
       'dist',
       'node_modules',
       'www',
+      'src/types/aria-types.d.ts',
     ],
   },
 ];

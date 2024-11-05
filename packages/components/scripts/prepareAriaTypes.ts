@@ -18,7 +18,7 @@ const prepareAriaTypes = (): void => {
   const ariaRoleTypes = `export ${ariaRoleRawTypes.replace(/ {8}/g, '  ').replace(/\n {2,}\| \(string & \{}\)/g, '')};`;
   const content = [
     '/* Auto Generated Below */\n/* eslint-disable @typescript-eslint/quotes */',
-    "type Booleanish = boolean | 'true' | 'false';",
+    'type Booleanish = boolean | \'true\' | \'false\';',
     ariaTypes,
     ariaRoleTypes,
   ].join('\n\n');

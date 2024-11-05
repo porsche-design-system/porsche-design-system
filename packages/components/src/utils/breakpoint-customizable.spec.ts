@@ -12,7 +12,7 @@ describe('parseJSON()', () => {
     ]
   >([
     ['{base: true, s: false}', { base: true, s: false }],
-    ["{base: 'initial', l: 'equal'}", { base: 'initial', l: 'equal' }],
+    ['{base: \'initial\', l: \'equal\'}', { base: 'initial', l: 'equal' }],
     ['{base: "initial", l: "equal"}', { base: 'initial', l: 'equal' }],
     ['{"base": "right", "s": "left"}', { base: 'right', s: 'left' }],
     ['{base: "https://porsche.com"}', { base: 'https://porsche.com' }],
