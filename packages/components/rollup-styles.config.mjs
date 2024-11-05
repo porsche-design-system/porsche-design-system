@@ -7,7 +7,7 @@ import { globbySync } from 'globby';
 import * as path from 'path';
 import * as fs from 'fs';
 import { pascalCase } from 'latest-change-case';
-import pkgJson from './package.json' assert { type: 'json' };
+import pkgJson from './package.json' with { type: 'json' };
 import { fileURLToPath } from 'url';
 import { dirname } from 'path';
 
@@ -20,7 +20,7 @@ const generateStylesEntryFile = () => {
   const stylesPaths = globbySync(`${componentsDir}/**/*-styles.ts`).sort();
 
   const stylesExports = stylesPaths
-    .map((utilPath) => {
+    .map(utilPath => {
       const isCommonComponent = utilPath.includes('/components/common/');
       const styleExport = isCommonComponent
         ? `*`

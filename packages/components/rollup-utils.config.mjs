@@ -6,7 +6,7 @@ import generatePackageJson from 'rollup-plugin-generate-package-json';
 import { globbySync } from 'globby';
 import * as path from 'path';
 import * as fs from 'fs';
-import pkgJson from './package.json' assert { type: 'json' };
+import pkgJson from './package.json' with { type: 'json' };
 import { fileURLToPath } from 'url';
 import { dirname } from 'path';
 
@@ -19,7 +19,7 @@ const generateUtilsEntryFile = () => {
   const utilsPaths = globbySync(`${componentsDir}/**/*-utils.ts`).sort();
 
   const utilsExports = utilsPaths
-    .map((utilPath) => `export * from './components${utilPath.replace(componentsDir, '').replace(/\.ts$/, '')}';`)
+    .map(utilPath => `export * from './components${utilPath.replace(componentsDir, '').replace(/\.ts$/, '')}';`)
     .join('\n');
 
   const inputContent = `/* Auto Generated File */

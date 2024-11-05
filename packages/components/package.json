@@ -48,6 +48,7 @@
     "@stencil/core": "~4.22.0"
   },
   "devDependencies": {
+    "@eslint/js": "^9.14.0",
     "@types/react": "18.3.12",
     "@types/tinycolor2": "^1.4.6",
     "change-case": "^4.1.2",
@@ -56,8 +57,12 @@
     "@typescript-eslint/eslint-plugin": "^8.12.2",
     "@typescript-eslint/parser": "^8.12.2",
     "eslint": "^9.14.0",
+    "typescript-eslint": "^8.13.0",
+    "eslint-plugin-vitest": "^0.5.4",
+    "eslint-plugin-playwright": "^2.0.0",
     "@stylistic/eslint-plugin": "^2.10.1",
     "eslint-plugin-fp": "^2.3.0",
+    "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-prefer-arrow": "^1.2.3",
     "globby-legacy": "npm:globby@^11.0.4",
     "imask": "7.1.3",
