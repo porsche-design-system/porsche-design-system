@@ -29,6 +29,18 @@
     "@octokit/core": "^6.1.2"
   },
   "peerDependencies": {
+    "@eslint/js": "*",
+    "@typescript-eslint/eslint-plugin": "*",
+    "@typescript-eslint/parser": "*",
+    "typescript-eslint": "*",
+    "eslint-plugin-vitest": "*",
+    "eslint-plugin-playwright": "*",
+    "@stylistic/eslint-plugin": "*",
+    "eslint-plugin-fp": "*",
+    "eslint-config-prettier": "*",
+    "eslint-plugin-prefer-arrow": "*",
+    "globals": "*",
+    "eslint": "*",
     "@rollup/plugin-commonjs": "*",
     "@rollup/plugin-json": "*",
     "@rollup/plugin-node-resolve": "*",
