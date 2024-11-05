@@ -301,7 +301,7 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
           ].join('\n')
       )
     }
-    
+
     // cast BreakpointCustomizable default prop values to any because BreakpointCustomizable types are removed for uxpin
     extendedProps
       .filter((prop) => prop.isDefaultValueComplex && prop.defaultValue.match(/\bbase\b/))
@@ -409,7 +409,7 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
         props: { heading: 'Heading', open: true },
         children: [
           '<Text uxpId="modal-text">Some Content</Text>',
-          '<ButtonGroup uxpId="modal-button-group" >',
+          '<ButtonGroup slot="footer" uxpId="modal-button-group" >',
           ...[
             '<Button uxpId="modal-button-1" children="Save" />',
             '<Button uxpId="modal-button-2" variant="tertiary" children="Close" />',
