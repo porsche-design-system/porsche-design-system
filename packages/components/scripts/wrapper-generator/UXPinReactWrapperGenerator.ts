@@ -144,6 +144,21 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
       props = addUxPinIgnorePropAnnotation(props, 'open');
     } else if (component === 'p-link' || component === 'p-link-pure' || component === 'p-link-social') {
       props = addUxPinIgnorePropAnnotation(props, 'href');
+<<<<<<< Updated upstream
+=======
+      props = addUxPinIgnorePropAnnotation(props, 'target');
+    } else if (component === 'p-banner') {
+      props = addUxPinIgnorePropAnnotation(props, 'width');
+    } else if (component === 'p-button' || component === 'p-button-pure') {
+      props = addUxPinIgnorePropAnnotation(props, 'name');
+      props = addUxPinIgnorePropAnnotation(props, 'value');
+    } else if (component === 'p-icon') {
+      props = addUxPinIgnorePropAnnotation(props, 'lazy');
+    } else if (component === 'p-model-signature') {
+      props = addUxPinIgnorePropAnnotation(props, 'fetchPriority');
+      props = addUxPinIgnorePropAnnotation(props, 'lazy');
+
+>>>>>>> Stashed changes
     }
 
     // add uxpinbind annotations
@@ -260,7 +275,7 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
       )
     }
 
-    if (component === 'p-flyout') {
+    if (['p-flyout', 'p-modal', 'p-banner'].includes(component)) {
       cleanedComponent = cleanedComponent.replace(
           'useEventCallback(elementRef, \'dismiss\', onDismiss as any);',
           [
@@ -275,6 +290,40 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
       )
     }
 
+<<<<<<< Updated upstream
+=======
+    if (component === 'p-inline-notification') {
+      cleanedComponent = cleanedComponent.replace(
+          'useEventCallback(elementRef, \'dismiss\', onDismiss as any);',
+          [
+            'const dismissCallback = (e:Event) => {',
+            '       rest.uxpinOnChange(\`visible\`, \'hidden\', \'stateIa\');',
+            '       if (onDismiss) {',
+            '         onDismiss(e as CustomEvent<void>);',
+            '       }',
+            '    }',
+            '    useEventCallback(elementRef, \'dismiss\', dismissCallback);',
+          ].join('\n')
+      )
+    }
+
+    // make crest and link-pure anchor if onClick is defined
+    if (component === 'p-crest' || component === 'p-link-pure') {
+      cleanedComponent = cleanedComponent.replace(
+          'const props = {',
+          [
+            '',
+            'useBrowserLayoutEffect(() => {',
+            '  const { current } = elementRef;',
+            '  (current as any).href = rest.onClick ? \'#\' : undefined;',
+            '}, [rest.onClick]);',
+            '',
+            'const props = {',
+          ].join('\n    ')
+      )
+    }
+
+>>>>>>> Stashed changes
     // cast BreakpointCustomizable default prop values to any because BreakpointCustomizable types are removed for uxpin
     extendedProps
       .filter((prop) => prop.isDefaultValueComplex && prop.defaultValue.match(/\bbase\b/))
@@ -288,9 +337,10 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
   public shouldGenerateFolderPerComponent(component: TagName): boolean {
     switch (component) {
       case 'p-accordion':
+      case 'p-banner':
       case 'p-button-group':
       case 'p-button-tile':
-      case 'p-checkbox-wrapper':
+      case 'p-checkbox':
       case 'p-fieldset':
       case 'p-link-tile':
       case 'p-link-tile-model-signature':
@@ -327,6 +377,9 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
         props: { heading: 'Heading' },
         children: '<Text uxpId="accordion-text" children="Content" />',
       },
+      'p-banner': {
+        props: { heading: 'Heading', description: 'Description', open: true, },
+      },
       'p-button-group': {
         children: [
           '<Button variant="primary" uxpId="button-primary" />',
@@ -337,8 +390,8 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
         props: { label: 'Some label', description: 'Some description' },
         children: '<DummyImg uxpId="dummy-img" />',
       },
-      'p-checkbox-wrapper': {
-        props: { label: 'CheckboxWrapper' },
+      'p-checkbox': {
+        props: { label: 'label' },
         children: '<DummyCheckbox uxpId="dummy-checkbox" />',
       },
       'p-fieldset': {
