@@ -142,6 +142,7 @@ const generateThemesObject = (): void => {
     `$1${content}$2`
   );
   fs.writeFileSync(targetPath, newFileContent);
+  // eslint-disable-next-line no-console
   console.log(`Injected static colors map into '${targetPath}'`);
 };
 

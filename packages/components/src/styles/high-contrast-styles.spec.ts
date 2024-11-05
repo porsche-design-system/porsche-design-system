@@ -62,5 +62,8 @@ it.each<TagName>(tagNamesWithJss)('should have only high contrast styles for %s'
     }
     return null;
   });
-  filteredCSS.length && expect(filteredCSS).toMatchSnapshot();
+
+  if (filteredCSS.length) {
+    expect(filteredCSS).toMatchSnapshot();
+  }
 });

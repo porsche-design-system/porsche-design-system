@@ -166,6 +166,7 @@ export class InputParser {
     rawIntrinsicElements = rawIntrinsicElements.replace(/ (\w+);/g, ' \'$1\',');
     this.intrinsicElements = eval(`(${rawIntrinsicElements})`);
 
+    // eslint-disable-next-line no-console
     console.log(`Found ${Object.keys(this.intrinsicElements).length} intrinsicElements in ${bundleDtsFileName}`);
   }
 

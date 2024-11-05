@@ -28,6 +28,7 @@ export abstract class AbstractWrapperGenerator {
   protected unexposedComponentTagNames: TagName[] = INTERNAL_TAG_NAMES;
 
   public generate(): void {
+    // eslint-disable-next-line no-console
     console.log(`Generating wrappers for package '${this.packageDir}' in project '${this.projectDir}'`);
     this.setRelevantComponentTagNames();
     this.generateDirs();
@@ -35,6 +36,7 @@ export abstract class AbstractWrapperGenerator {
     this.generateComponentWrappers();
     this.generateBarrelFile();
     this.generateAdditionalFiles();
+    // eslint-disable-next-line no-console
     console.log(`Generated wrappers for package '${this.packageDir}' in project '${this.projectDir}'`);
   }
 
@@ -64,6 +66,7 @@ export abstract class AbstractWrapperGenerator {
     const targetFile = path.resolve(this.libDir, targetFileName);
 
     fs.writeFileSync(targetFile, content);
+    // eslint-disable-next-line no-console
     console.log(`Generated shared types: ${targetFile}`);
   }
 
@@ -87,6 +90,7 @@ export abstract class AbstractWrapperGenerator {
     const content = [this.getAdditionalBarrelFileContent(), componentExports].filter((x) => x).join('\n\n');
 
     fs.writeFileSync(targetFile, content);
+    // eslint-disable-next-line no-console
     console.log(`Generated barrel: ${this.barrelFileName}`);
   }
 
@@ -96,7 +100,7 @@ export abstract class AbstractWrapperGenerator {
       .forEach((component) => {
         this.generateComponentWrapper(component);
       });
-
+    // eslint-disable-next-line no-console
     console.log(`Generated ${this.relevantComponentTagNames.length} components`);
   }
 
@@ -134,6 +138,7 @@ export abstract class AbstractWrapperGenerator {
 
         fs.mkdirSync(targetDir, { recursive: true });
         fs.writeFileSync(targetFile, content);
+        // eslint-disable-next-line no-console
         console.log(`Generated file: ${relativePath}/${name}`);
       });
     }
@@ -154,6 +159,7 @@ export abstract class AbstractWrapperGenerator {
   }
 
   // helper that can be used to have wrapper generated into separate folder
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   public shouldGenerateFolderPerComponent(_: TagName): boolean {
     return false;
   }

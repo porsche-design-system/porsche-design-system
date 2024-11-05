@@ -13,7 +13,8 @@ describe('render', () => {
     component.host.attachShadow({ mode: 'open' });
     try {
       component.render();
-    } catch {
+    } catch (e) {
+      console.error(e);
     }
 
     expect(spy).toHaveBeenNthCalledWith(1, component.host, 'primary');
@@ -26,9 +27,9 @@ describe('render', () => {
     const mockedPLink2 = document.createElement('p-link');
     mockedPLink2.id = '2';
     jest
-    .spyOn(getNamedSlotOrThrowUtils, 'getNamedSlotOrThrow')
-    .mockReturnValueOnce(mockedPLink1)
-    .mockReturnValueOnce(mockedPLink2);
+      .spyOn(getNamedSlotOrThrowUtils, 'getNamedSlotOrThrow')
+      .mockReturnValueOnce(mockedPLink1)
+      .mockReturnValueOnce(mockedPLink2);
 
     const spy = jest.spyOn(throwIfElementIsNotOfKindUtils, 'throwIfElementIsNotOfKind').mockImplementation(jest.fn());
 
@@ -37,7 +38,8 @@ describe('render', () => {
     component.host.attachShadow({ mode: 'open' });
     try {
       component.render();
-    } catch {
+    } catch (e) {
+      console.error(e);
     }
 
     expect(spy).toHaveBeenNthCalledWith(1, component.host, mockedPLink1, 'p-link');
@@ -50,9 +52,9 @@ describe('render', () => {
     const mockedPLink2 = document.createElement('p-link');
     mockedPLink2.id = '2';
     jest
-    .spyOn(getNamedSlotOrThrowUtils, 'getNamedSlotOrThrow')
-    .mockReturnValueOnce(mockedPLink1)
-    .mockReturnValueOnce(mockedPLink2);
+      .spyOn(getNamedSlotOrThrowUtils, 'getNamedSlotOrThrow')
+      .mockReturnValueOnce(mockedPLink1)
+      .mockReturnValueOnce(mockedPLink2);
 
     const spy = jest.spyOn(linkTileModelSignatureUtils, 'setRequiredPropsOfSlottedLinks');
 
@@ -61,7 +63,8 @@ describe('render', () => {
     component.host.attachShadow({ mode: 'open' });
     try {
       component.render();
-    } catch {
+    } catch (e) {
+      console.error(e);
     }
 
     expect(spy).toHaveBeenCalledWith([mockedPLink1, mockedPLink2]);
@@ -78,7 +81,8 @@ describe('render', () => {
     component.host.attachShadow({ mode: 'open' });
     try {
       component.render();
-    } catch {
+    } catch (e) {
+      console.error(e);
     }
 
     expect(spy).toHaveBeenCalledWith(mockedPLink);

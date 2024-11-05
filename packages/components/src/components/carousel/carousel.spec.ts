@@ -13,6 +13,7 @@ import * as hasDescription from '../../utils/form/hasDescription';
 
 const splideMock = {
   index: 0,
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   on: (_, __) => ({}) as Splide,
   mount: () => {},
 } as Splide;

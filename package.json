@@ -251,7 +251,8 @@
     "**/eslint-config-react-app/eslint-plugin-jest": "^28.8.3",
     "**/ng-packagr/rollup": "^4.24.4",
     "**/vite/rollup": "^4.24.4",
-    "**/workbox-build/rollup": "^4.24.4"
+    "**/workbox-build/rollup": "^4.24.4",
+    "**/globals": "^15.12.0"
   },
   "volta": {
     "node": "20.11.1",

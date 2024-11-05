@@ -104,7 +104,9 @@ describe('parseAndGetAriaAttributes()', () => {
         component.host.shadowRoot.append(document.createElement('i'));
         component['setIconContent']();
       }
-    } catch (e) {}
+    } catch (e) {
+      console.error(e);
+    }
 
     expect(spy).toHaveBeenCalledWith(component['aria']);
   });

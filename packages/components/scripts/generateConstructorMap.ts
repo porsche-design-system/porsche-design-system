@@ -51,6 +51,7 @@ const generateConstructorMap = (): void => {
   const filePath = path.resolve(rootDirectory, fileName);
 
   fs.writeFileSync(filePath, content);
+  // eslint-disable-next-line no-console
   console.log(`Wrote TAG_NAMES_CONSTRUCTOR_MAP into '${fileName}'`);
 };
 

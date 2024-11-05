@@ -234,7 +234,9 @@ describe('render', () => {
 
     try {
       component.render();
-    } catch {}
+    } catch (e) {
+      console.error(e);
+    }
 
     expect(spy).toHaveBeenCalledWith('123456');
   });

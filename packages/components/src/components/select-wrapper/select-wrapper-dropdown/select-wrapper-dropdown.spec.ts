@@ -30,7 +30,9 @@ describe('disconnectedCallback', () => {
 
     try {
       component.disconnectedCallback();
-    } catch {}
+    } catch (e) {
+      console.error(e);
+    }
 
     expect(spy).toHaveBeenCalledWith(component.host);
   });
@@ -44,7 +46,9 @@ describe('componentDidRender', () => {
     const spy = jest.spyOn(selectWrapperDropdownUtils, 'handleScroll');
     try {
       component.componentDidRender();
-    } catch (e) {}
+    } catch (e) {
+      console.error(e);
+    }
 
     expect(spy).toHaveBeenCalledWith(undefined, -1);
   });
@@ -54,7 +58,9 @@ describe('componentDidRender', () => {
     const spy = jest.spyOn(selectWrapperDropdownUtils, 'handleScroll');
     try {
       component.componentDidRender();
-    } catch (e) {}
+    } catch (e) {
+      console.error(e);
+    }
 
     expect(spy).not.toHaveBeenCalled();
   });
@@ -67,7 +73,9 @@ describe('componentWillLoad', () => {
     const spy = jest.spyOn(component, 'observeProperties' as any);
     try {
       component.componentWillLoad();
-    } catch (e) {}
+    } catch (e) {
+      console.error(e);
+    }
 
     expect(spy).toHaveBeenCalledTimes(1);
   });

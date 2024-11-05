@@ -1,5 +1,5 @@
 import type { TagName } from '@porsche-design-system/shared';
-import { ComponentMeta, getComponentMeta, PropMeta } from '@porsche-design-system/component-meta';
+import { ComponentMeta, getComponentMeta } from '@porsche-design-system/component-meta';
 import { ReactWrapperGenerator } from './ReactWrapperGenerator';
 import type { ExtendedProp } from './DataStructureBuilder';
 import type { AdditionalFile } from './AbstractWrapperGenerator';
@@ -38,10 +38,7 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
     ];
 
     // components which should be generated and hidden in uxpin editor
-    this.hiddenComponents = [
-        'p-text-field-wrapper',
-        'p-radio-button-wrapper',
-    ];
+    this.hiddenComponents = ['p-text-field-wrapper', 'p-radio-button-wrapper'];
   }
 
   public getComponentFileName(component: TagName): string {
@@ -121,7 +118,10 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
     props = props.replace(/BreakpointCustomizable<(.*)>/g, '$1');
 
     // hidden uxpin props which allows updating property from library level in uxpin editor
-    props = addProp(props, '/** @uxpinignoreprop */ \n  uxpinOnChange: (prevValue: any, nextValue: any, propertyName: string) => void;');
+    props = addProp(
+      props,
+      '/** @uxpinignoreprop */ \n  uxpinOnChange: (prevValue: any, nextValue: any, propertyName: string) => void;'
+    );
 
     // remove useless props
     if (component === 'p-marque') {
@@ -245,31 +245,31 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
 
     if (component === 'p-pin-code') {
       cleanedComponent = cleanedComponent.replace(
-          'useEventCallback(elementRef, \'update\', onUpdate as any);',
-          [
-              'const eventCallback = (e:Event) => {',
-              '       rest.uxpinOnChange(value, (e as CustomEvent<PinCodeUpdateEventDetail>).detail.value, \'value\');',
-              '       if (onUpdate) {',
-              '         onUpdate(e as CustomEvent<PinCodeUpdateEventDetail>);',
-              '       }',
-              '    }',
-              '    useEventCallback(elementRef, \'update\', eventCallback);',
-          ].join('\n')
+        'useEventCallback(elementRef, \'update\', onUpdate as any);',
+        [
+          'const eventCallback = (e:Event) => {',
+          '       rest.uxpinOnChange(value, (e as CustomEvent<PinCodeUpdateEventDetail>).detail.value, \'value\');',
+          '       if (onUpdate) {',
+          '         onUpdate(e as CustomEvent<PinCodeUpdateEventDetail>);',
+          '       }',
+          '    }',
+          '    useEventCallback(elementRef, \'update\', eventCallback);',
+        ].join('\n')
       );
     }
 
     if (component === 'p-flyout') {
       cleanedComponent = cleanedComponent.replace(
-          'useEventCallback(elementRef, \'dismiss\', onDismiss as any);',
-          [
-            'const dismissCallback = (e:Event) => {',
-            '       rest.uxpinOnChange(open, false, \'open\');',
-            '       if (onDismiss) {',
-            '         onDismiss(e as CustomEvent<void>);',
-            '       }',
-            '    }',
-            '    useEventCallback(elementRef, \'dismiss\', dismissCallback);',
-          ].join('\n')
+        'useEventCallback(elementRef, \'dismiss\', onDismiss as any);',
+        [
+          'const dismissCallback = (e:Event) => {',
+          '       rest.uxpinOnChange(open, false, \'open\');',
+          '       if (onDismiss) {',
+          '         onDismiss(e as CustomEvent<void>);',
+          '       }',
+          '    }',
+          '    useEventCallback(elementRef, \'dismiss\', dismissCallback);',
+        ].join('\n')
       );
     }
 
@@ -406,9 +406,9 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
       'p-select': {
         props: { name: 'options', label: 'Some Label', description: 'Some description', value: 'a' },
         children: [
-            '<SelectOption uxpId="opt-1" value="a">Option A</SelectOption>',
-            '<SelectOption uxpId="opt-2" value="b">Option B</SelectOption>',
-            '<SelectOption uxpId="opt-3" value="c">Option C</SelectOption>',
+          '<SelectOption uxpId="opt-1" value="a">Option A</SelectOption>',
+          '<SelectOption uxpId="opt-2" value="b">Option B</SelectOption>',
+          '<SelectOption uxpId="opt-3" value="c">Option C</SelectOption>',
         ].join(glue),
       },
       'p-select-wrapper': {
@@ -599,25 +599,24 @@ export default <${formComponentName} ${stringifiedProps} />;
 
   private generateUXPinConfigFile(): AdditionalFile {
     const componentsBasePath = 'src/lib/components/';
-    const uxpinComponents = [
-      `'src/form/RadioButton/RadioButton.tsx'`,
-      `'src/form/TextField/TextField.tsx'`,
-    ];
-    const componentPaths = [...this.relevantComponentTagNames
-      .filter((component) => !this.hiddenComponents.includes(component))
-      .map((component) => {
-        const componentSubDir = this.shouldGenerateFolderPerComponent(component)
-          ? this.stripFileExtension(component) + '/'
-          : '';
-        const fileName = this.getComponentFileName(component);
-        return `${componentsBasePath}${componentSubDir}${fileName}`;
-      })
-      .map((path) => `'${path}'`),
-      ...uxpinComponents
-    ].sort((componentA, componentB) => (
-      componentA.split('/').pop().toLowerCase()
-          .localeCompare(componentB.split('/').pop().toLowerCase())
-    )).join(',\n          ');
+    const uxpinComponents = [`'src/form/RadioButton/RadioButton.tsx'`, `'src/form/TextField/TextField.tsx'`];
+    const componentPaths = [
+      ...this.relevantComponentTagNames
+        .filter((component) => !this.hiddenComponents.includes(component))
+        .map((component) => {
+          const componentSubDir = this.shouldGenerateFolderPerComponent(component)
+            ? this.stripFileExtension(component) + '/'
+            : '';
+          const fileName = this.getComponentFileName(component);
+          return `${componentsBasePath}${componentSubDir}${fileName}`;
+        })
+        .map((path) => `'${path}'`),
+      ...uxpinComponents,
+    ]
+      .sort((componentA, componentB) =>
+        componentA.split('/').pop().toLowerCase().localeCompare(componentB.split('/').pop().toLowerCase())
+      )
+      .join(',\n          ');
 
     const content = `module.exports = {
   components: {
@@ -643,8 +642,8 @@ export default <${formComponentName} ${stringifiedProps} />;
     webpackConfig: 'webpack.config.js',
   },
   name: 'Porsche Design System',
-  settings: { 
-    useUXPinProps: true, 
+  settings: {
+    useUXPinProps: true,
     useFitToContentAsDefault: true,
     propertyConfigurations: {
       Flyout: {

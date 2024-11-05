@@ -36,6 +36,7 @@ export class AngularWrapperGenerator extends AbstractWrapperGenerator {
       .join('\n');
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   public generateProps(_: TagName, __: string): string {
     return '';
   }

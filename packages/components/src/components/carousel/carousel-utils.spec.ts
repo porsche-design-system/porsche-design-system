@@ -151,6 +151,7 @@ describe('isLastPage()', () => {
 describe('slidePrev()', () => {
   it('should call isFirstPage() with correct parameter', () => {
     const spy = jest.spyOn(carouselUtils, 'isFirstPage');
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const splide = { index: 1, go: (_: string | number) => {} } as Splide;
     slidePrev(splide, 5);
 
@@ -181,6 +182,7 @@ describe('slidePrev()', () => {
 describe('slideNext()', () => {
   it('should call isLastPage() with correct parameter', () => {
     const spy = jest.spyOn(carouselUtils, 'isLastPage');
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const splide = { index: 1, go: (_: string | number) => {} } as Splide;
     slideNext(splide, 5);
 
