@@ -462,6 +462,30 @@ test.describe('adding/removing slides', () => {
     expect(await pagination.evaluate((el) => el.children.length)).toBe(2);
   });
 
+  test('should update pagination in focusOnCenterSlide mode', async ({ page }) => {
+    await initCarousel(page, { amountOfSlides: 6, slidesPerPage: 3, activeSlideIndex: 0, focusOnCenterSlide: true });
+    const host = getHost(page);
+
+    const pagination = getPagination(page);
+    expect(await pagination.evaluate((el) => el.children.length)).toBe(6);
+    const [bullet1, bullet2] = await getPaginationBullets(page);
+    expect(await getCssClasses(bullet1)).toBe('bullet bullet--active');
+    expect(await getCssClasses(bullet2)).toBe('bullet');
+
+    await addSlide(host);
+    await waitForStencilLifecycle(page);
+
+    expect((await getSlides(page)).length).toBe(7);
+    expect(await pagination.evaluate((el) => el.children.length)).toBe(7);
+    const [, , bullet3] = await getPaginationBullets(page);
+    expect(await getCssClasses(bullet3)).toBe('bullet');
+
+    await removeSlide(host);
+    await waitForStencilLifecycle(page);
+    expect((await getSlides(page)).length).toBe(6);
+    expect(await pagination.evaluate((el) => el.children.length)).toBe(6);
+  });
+
   test('should update infinite pagination', async ({ page }) => {
     await initCarousel(page, { amountOfSlides: 6 });
     const host = getHost(page);
@@ -609,6 +633,29 @@ test.describe('viewport change', () => {
     await page.setViewportSize({ height: 1000, width: 1000 });
     await waitForStencilLifecycle(page);
     expect(await pagination.evaluate((el) => el.children.length)).toBe(4);
+  });
+
+  test('should update pagination for BreakpointCustomizable in focusOnCenterSlide mode', async ({ page }) => {
+    await initCarousel(page, {
+      slidesPerPage: '{ base: 1, s: 2, m: 3}',
+      amountOfSlides: 6,
+      activeSlideIndex: 0,
+      focusOnCenterSlide: true,
+    });
+
+    const pagination = getPagination(page);
+
+    await page.setViewportSize({ height: 1000, width: 350 });
+    await waitForStencilLifecycle(page);
+    expect(await pagination.evaluate((el) => el.children.length)).toBe(6);
+
+    await page.setViewportSize({ height: 1000, width: 760 });
+    await waitForStencilLifecycle(page);
+    expect(await pagination.evaluate((el) => el.children.length)).toBe(6);
+
+    await page.setViewportSize({ height: 1000, width: 1000 });
+    await waitForStencilLifecycle(page);
+    expect(await pagination.evaluate((el) => el.children.length)).toBe(6);
   });
 });
 
