@@ -318,6 +318,7 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
       case 'p-banner':
       case 'p-button-group':
       case 'p-button-tile':
+      case 'p-carousel':
       case 'p-checkbox':
       case 'p-fieldset':
       case 'p-link-tile':
@@ -367,6 +368,17 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
       'p-button-tile': {
         props: { label: 'Some label', description: 'Some description' },
         children: '<DummyImg uxpId="dummy-img" />',
+      },
+      'p-carousel': {
+        props: { heading: 'Some heading' },
+        children: [
+          '<DummyDiv uxpId="dummy-div-1" uxpinCustomStyles={{ display: \'flex\', alignItems: \'center\', justifyContent: \'center\', background: \'#00b0f4\', height: 150 }} children="Slide 1" />',
+          '<DummyDiv uxpId="dummy-div-2" uxpinCustomStyles={{ display: \'flex\', alignItems: \'center\', justifyContent: \'center\', background: \'#00b0f4\', height: 150 }}  children="Slide 2" />',
+          '<DummyDiv uxpId="dummy-div-3" uxpinCustomStyles={{ display: \'flex\', alignItems: \'center\', justifyContent: \'center\', background: \'#00b0f4\', height: 150 }}  children="Slide 3" />',
+          '<DummyDiv uxpId="dummy-div-4" uxpinCustomStyles={{ display: \'flex\', alignItems: \'center\', justifyContent: \'center\', background: \'#00b0f4\', height: 150 }}  children="Slide 4" />',
+          '<DummyDiv uxpId="dummy-div-5" uxpinCustomStyles={{ display: \'flex\', alignItems: \'center\', justifyContent: \'center\', background: \'#00b0f4\', height: 150 }}  children="Slide 5" />',
+
+        ].join(glue),
       },
       'p-checkbox': {
         props: { label: 'label' },
