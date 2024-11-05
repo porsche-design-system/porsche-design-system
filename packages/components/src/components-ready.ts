@@ -52,7 +52,6 @@ const isDesignSystemReady = (): Promise<void> => {
     const promise: Promise<void> = new Promise((resolve) => (promiseResolve = resolve));
 
     const proxyHandler = {
-      // eslint-disable-next-line prefer-arrow/prefer-arrow-functions
       set(_: any, prop: string, value: { isReady: () => Promise<void> }) {
         if (prop === ROLLUP_REPLACE_VERSION) {
           value.isReady().then(promiseResolve);

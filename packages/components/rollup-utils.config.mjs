@@ -29,6 +29,7 @@ ${utilsExports}
 `;
 
   fs.writeFileSync(path.resolve(__dirname, input), inputContent);
+  // eslint-disable-next-line no-console
   console.log(`Successfully generated ${input}`);
 };
 

@@ -12,5 +12,5 @@ export const consoleError = (...messages: (string | object)[]): void => {
 };
 
 export const throwException = (message: string): void => {
-  throw new Error(`${prefix} ${message}`); // eslint-disable-line fp/no-throw
+  throw new Error(`${prefix} ${message}`);
 };

@@ -34,15 +34,11 @@ export const formatObjectOutput = (value: any): string => {
 };
 
 export const formatArrayOutput = <T>(value: T[] | readonly T[]): string => {
-  return (
-
-    JSON.stringify(value.map((x) => (x === undefined ? `${x}` : x))) // wrap undefined in quotes to not convert it to null
-      .replace(/'/g, '') // remove single quotes
-      // eslint-disable-next-line @typescript-eslint/quotes
-      .replace(/"/g, '\'') // replace double quotes with single quotes
-      .replace(/'(undefined)'/, '$1') // remove quotes around undefined
-      .replace(/,/g, ', ') // add space after comma
-  );
+  return JSON.stringify(value.map((x) => (x === undefined ? `${x}` : x))) // wrap undefined in quotes to not convert it to null
+    .replace(/'/g, '') // remove single quotes
+    .replace(/"/g, '\'') // replace double quotes with single quotes
+    .replace(/'(undefined)'/, '$1') // remove quotes around undefined
+    .replace(/,/g, ', '); // add space after comma
 };
 
 export const printErrorMessage = ({
@@ -92,20 +88,17 @@ export const getBreakpointCustomizableStructure = <T>(
 };
 
 export const getAriaStructure = <T>(allowedAriaAttributes: readonly T[]): string => {
-  return (
-    formatObjectOutput(
-      allowedAriaAttributes.reduce(
-        (prev, key) => ({
-          ...prev,
-          [key as any]: 'value',
-        }),
-        {}
-      )
+  return formatObjectOutput(
+    allowedAriaAttributes.reduce(
+      (prev, key) => ({
+        ...prev,
+        [key as any]: 'value',
+      }),
+      {}
     )
-      .replace(/":/g, '"?:') // add optional modifier on keys before colon
-      // eslint-disable-next-line @typescript-eslint/quotes
-      .replace(/"/g, '\'') // replace double quotes with single quotes
-  );
+  )
+    .replace(/":/g, '"?:') // add optional modifier on keys before colon
+    .replace(/"/g, '\''); // replace double quotes with single quotes
 };
 
 export const getShapeStructure = <T>(shapeStructure: { [key in keyof T]: ValidatorFunction }): string => {
@@ -139,20 +132,17 @@ export const AllowedTypes: {
   breakpoint: ValidatorFunctionBreakpointCustomizableCreator;
   shape: ValidatorFunctionShapeCreator;
 } = {
-
   string: (...args) => validateValueOfType(...args, 'string'),
 
   number: (...args) => validateValueOfType(...args, 'number'),
 
   boolean: (...args) => validateValueOfType(...args, 'boolean'),
   array: (allowedType: ValidatorFunction): ValidatorFunction =>
-    // eslint-disable-next-line prefer-arrow/prefer-arrow-functions
     function array(propName, propValue) {
       return isValidArray(propName, propValue, allowedType);
     },
   oneOf: <T>(allowedValuesOrValidatorFunctions: T[]): ValidatorFunction =>
     // @ts-expect-error: Not all code paths return a value
-    // eslint-disable-next-line prefer-arrow/prefer-arrow-functions
     function oneOf(propName, propValue) {
       // use first item to determine if we've got primitive types or validator functions
       if (typeof allowedValuesOrValidatorFunctions[0] !== 'function') {
@@ -173,7 +163,6 @@ export const AllowedTypes: {
     },
   breakpoint: (allowedValues): ValidatorFunction =>
     // @ts-expect-error: Not all code paths return a value
-    // eslint-disable-next-line prefer-arrow/prefer-arrow-functions
     function breakpoint(propName, propValue) {
       // TODO: do parseJSON once in the component, currently it is happening multiple times in a single lifecycle
       const value = parseJSON(propValue as BreakpointValues<any>);
@@ -204,7 +193,6 @@ export const AllowedTypes: {
     },
   aria: <T = keyof AriaAttributes>(allowedAriaAttributes: readonly T[]): ValidatorFunction =>
     // @ts-expect-error: Not all code paths return a value
-    // eslint-disable-next-line prefer-arrow/prefer-arrow-functions
     function aria(propName, propValue) {
       const ariaAttributes = parseJSONAttribute<AriaAttributes>(propValue as string);
       if (
@@ -220,7 +208,6 @@ export const AllowedTypes: {
     },
   shape: <T>(shapeStructure: { [key in keyof T]: ValidatorFunction }): ValidatorFunction =>
     // @ts-expect-error: Not all code paths return a value
-    // eslint-disable-next-line prefer-arrow/prefer-arrow-functions
     function shape(propName, propValue) {
       if (propValue) {
         // const propValueKeys = Object.keys(propValue);

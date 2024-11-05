@@ -1,7 +1,7 @@
 import * as path from 'path';
 import * as fs from 'fs';
 
-// dts-bundler doesnt bundle the import of HTMLStencilElement and EventEmitter.
+// dts-bundler doesn't bundle the import of HTMLStencilElement and EventEmitter.
 // We have to export them beforehand to ensure it gets included in the bundle.d.ts file
 const addMissingHTMLStencilElementExport = (): void => {
   const rootDirectory = path.resolve(__dirname, '..');
@@ -12,6 +12,7 @@ const addMissingHTMLStencilElementExport = (): void => {
 
   if (!fileContent.includes(missingExport)) {
     fs.writeFileSync(filePath, `${fileContent}${missingExport}`);
+    // eslint-disable-next-line no-console
     console.log(`Added to '${fileName}': ${missingExport}`);
   }
 };

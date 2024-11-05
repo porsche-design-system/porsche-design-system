@@ -136,7 +136,7 @@ export class Canvas {
             <aside
               class="sidebar sidebar--start"
               // "inert" will be known from React 19 onwards, see https://github.com/facebook/react/pull/24730
-              // eslint-disable-next-line
+
               /* @ts-ignore */
               inert={this.sidebarStartOpen ? null : true}
               aria-label={`Navigation sidebar ${this.sidebarStartOpen ? 'open' : 'closed'}`}
@@ -170,7 +170,7 @@ export class Canvas {
             <aside
               class="sidebar sidebar--end"
               // "inert" will be known from React 19 onwards, see https://github.com/facebook/react/pull/24730
-              // eslint-disable-next-line
+
               /* @ts-ignore */
               inert={this.sidebarEndOpen ? null : true}
               aria-label={`Settings sidebar ${this.sidebarEndOpen ? 'open' : 'closed'}`}

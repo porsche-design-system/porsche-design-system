@@ -5,6 +5,7 @@ import eslintStylistic from '@stylistic/eslint-plugin';
 import eslintConfigPrettier from 'eslint-config-prettier';
 // import eslintVitest from 'eslint-plugin-vitest';
 // import eslintPlaywright from 'eslint-plugin-playwright';
+// import eslintFunctionalProgramming from 'eslint-plugin-fp';
 
 export default [
   eslintJs.configs.recommended,
@@ -12,6 +13,7 @@ export default [
   eslintStylistic.configs['recommended-flat'],
   // eslintPlaywright.configs['flat/recommended'],
   // eslintVitest.configs.recommended,
+  // eslintFunctionalProgramming.configs.recommended,
   eslintConfigPrettier,
   {
     rules: {
@@ -41,6 +43,17 @@ export default [
             delimiter: 'semi',
             requireLast: false,
           },
+        },
+      ],
+      '@typescript-eslint/ban-ts-comment': 'off',
+      '@typescript-eslint/no-explicit-any': 'off',
+      '@typescript-eslint/no-unused-vars': [
+        'error',
+        {
+          vars: 'all',
+          args: 'after-used',
+          ignoreRestSiblings: false,
+          varsIgnorePattern: 'h',
         },
       ],
     },
@@ -137,20 +150,11 @@ export default [
 //       // '@stylistic/member-ordering': 'error',
 //       // '@stylistic/no-empty-function': 'error',
 //       // '@stylistic/no-empty-interface': 'error',
-//       // '@stylistic/no-explicit-any': 'off',
 //       // '@stylistic/no-misused-new': 'error',
 //       // '@stylistic/no-namespace': 'error',
 //       // '@stylistic/no-parameter-properties': 'off',
 //       // '@stylistic/no-use-before-define': 'off',
-//       // 'no-unused-vars': [
-//       //   'error',
-//       //   {
-//       //     vars: 'all',
-//       //     args: 'after-used',
-//       //     ignoreRestSiblings: false,
-//       //     varsIgnorePattern: 'h',
-//       //   },
-//       // ],
+//
 //       // '@stylistic/no-var-requires': 'error',
 //       // '@stylistic/prefer-for-of': 'off',
 //       // '@stylistic/prefer-function-type': 'error',

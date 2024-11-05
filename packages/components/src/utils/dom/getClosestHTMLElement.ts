@@ -1,5 +1,3 @@
-/* eslint-disable prefer-arrow/prefer-arrow-functions */
-
 // prettier-ignore
 export function getClosestHTMLElement<K extends keyof HTMLElementTagNameMap>(element: HTMLElement, selector: K): HTMLElementTagNameMap[K] | null;
 // prettier-ignore

@@ -50,7 +50,9 @@ it.each<TagName>(tagNamesWithRequiredChild)(
 
     try {
       component.componentWillLoad();
-    } catch {}
+    } catch (e) {
+      console.error(e);
+    }
 
     expect(spy).toHaveBeenCalledWith(component.host, getComponentMeta(tagName).requiredChildSelector);
   }
@@ -84,7 +86,9 @@ it.each<TagName>(tagNamesWithRequiredRootNode)(
 
     try {
       component.connectedCallback();
-    } catch {}
+    } catch (e) {
+      console.error(e);
+    }
 
     expect(spy).toHaveBeenCalledWith(component.host, getComponentMeta(tagName).requiredRootNode);
   }
@@ -111,13 +115,17 @@ it.each<TagName>(tagNamesPublicWithProps)(
 
     try {
       component.componentWillRender();
-    } catch {}
+    } catch (e) {
+      console.error(e);
+    }
 
     expect(spy).not.toHaveBeenCalled();
 
     try {
       component.render();
-    } catch {}
+    } catch (e) {
+      console.error(e);
+    }
 
     // it would be possible to exclude a prop from propTypes via Omit<...>
     // to get confidence that isn't the case, we check against components meta which contains all props
@@ -146,7 +154,9 @@ it.each<TagName>(tagNamesPublicWithoutProps)('should not call validateProps() fo
 
   try {
     component.componentWillRender();
-  } catch {}
+  } catch (e) {
+    console.error(e);
+  }
 
   expect(spy).not.toHaveBeenCalled();
 });
@@ -182,7 +192,9 @@ it.each<TagName>(tagNamesWithJss)(
     if (component.connectedCallback) {
       try {
         component.connectedCallback();
-      } catch {}
+      } catch (e) {
+        console.error(e);
+      }
 
       expect(spy).not.toHaveBeenCalled();
     }
@@ -190,14 +202,18 @@ it.each<TagName>(tagNamesWithJss)(
     if (component.componentWillRender) {
       try {
         component.componentWillRender();
-      } catch {}
+      } catch (e) {
+        console.error(e);
+      }
 
       expect(spy).not.toHaveBeenCalled();
     }
 
     try {
       component.render();
-    } catch {}
+    } catch (e) {
+      console.error(e);
+    }
 
     expect(spy).toHaveBeenCalledTimes(1); // via render
   }
@@ -257,7 +273,9 @@ describe.each<TagName>(tagNamesWithObserveChildren.filter((tagName) => tagName !
       try {
         // carousel's splide.destroy() gets caught here
         component.disconnectedCallback();
-      } catch {}
+      } catch (e) {
+        console.error(e);
+      }
 
       expect(spy).toHaveBeenCalledWith(component.host);
     });

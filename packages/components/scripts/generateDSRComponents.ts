@@ -273,7 +273,7 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
         .replace(/toastManager\.getToast\(\)/, 'false') // toast
         .replace(/ {\.\.\.toast}/, '') // toast
         .replace(/return this\.selectRef\.selectedIndex;/, 'return 0;') // select-wrapper-dropdown
-        .replace(/determineDropdownDirection\(this\.props\,.+\)/, '\'down\'') // select-wrapper-dropdown
+        .replace(/determineDropdownDirection\(this\.props,.+\)/, '\'down\'') // select-wrapper-dropdown
         .replace(/(getDropdownDirection|getSelectDropdownDirection)\(this\.props.+\)/, '\'down\'') // select and multi-select
         .replace(/(this\.)props\.(isDisabledOrLoading)/g, '$1$2') // button, button-pure
         .replace(/(const (?:iconProps|btnProps|linkProps|buttonProps)) =/, '$1: any =') // workaround typing issue
@@ -362,7 +362,7 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
         // only keep :host , button, .icon & .label styles
         newFileContent = newFileContent.replace(
           /getPopoverCss\(.+?\)/,
-          `$&.replace(/(:host {[\\S\\s]+?})[\\S\\s]+(button {[\\S\\s]+?})[\\S\\s]+(.icon {[\\S\\s]+?})[\\S\\s]+(.label {[\\S\\s]+?})[\\S\\s]+/, '\$1\\n\$2\\n$3\\n$4')`
+          `$&.replace(/(:host {[\\S\\s]+?})[\\S\\s]+(button {[\\S\\s]+?})[\\S\\s]+(.icon {[\\S\\s]+?})[\\S\\s]+(.label {[\\S\\s]+?})[\\S\\s]+/, '$1\\n\$2\\n$3\\n$4')`
         );
       } else if (tagName === 'p-tabs-bar') {
         newFileContent = newFileContent
@@ -550,7 +550,7 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
             // use local constants instead of previously replaced private members that became something like
             // this.props.isSearch, this.props.hasUnit, etc.
             new RegExp(
-              `this\.props\.(${Array.from(constants.matchAll(/const ([A-Za-z]+)/g))
+              `this.props.(${Array.from(constants.matchAll(/const ([A-Za-z]+)/g))
                 .map(([, group]) => group)
                 .join('|')})`,
               'g'
@@ -656,6 +656,7 @@ $&`
     const filePath = path.resolve(destinationDirectory, fileName);
 
     fs.writeFileSync(filePath, fileContent);
+    // eslint-disable-next-line no-console
     console.log(`Generated DSR Component into '${relativeDestinationDirectory}/${fileName}'`);
   });
 };

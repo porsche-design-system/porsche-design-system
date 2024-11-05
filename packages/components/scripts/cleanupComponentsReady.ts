@@ -13,6 +13,7 @@ const cleanupComponentsReady = () => {
 
   fs.writeFileSync(srcFile, content);
 
+  // eslint-disable-next-line no-console
   console.log(`Replaced 'ROLLUP_REPLACE_VERSION' with '"${version}"' in '${srcFilePath}'`);
 };
 
