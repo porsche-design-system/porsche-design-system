@@ -13,6 +13,7 @@ class SomeInstance {
 
 const SOME_INSTANCE_PROP_DEPRECATED = ['deprecatedValue'] as const;
 type SomeInstancePropDeprecated = (typeof SOME_INSTANCE_PROP_DEPRECATED)[number];
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const SOME_INSTANCE_PROP = ['value', ...SOME_INSTANCE_PROP_DEPRECATED] as const;
 type SomeInstanceProp = (typeof SOME_INSTANCE_PROP)[number];
 

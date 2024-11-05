@@ -1,4 +1,4 @@
-import eslintConfig from '@porsche-design-system/shared/eslint/index.js'
+import eslintConfig from '@porsche-design-system/shared/eslint/index.js';
 
 export default [
   ...eslintConfig,
