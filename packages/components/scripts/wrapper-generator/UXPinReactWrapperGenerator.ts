@@ -301,22 +301,7 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
           ].join('\n')
       )
     }
-
-    // make crest and link-pure anchor if onClick is defined
-    if (component === 'p-crest' || component === 'p-link-pure') {
-      cleanedComponent = cleanedComponent.replace(
-          'const props = {',
-          [
-            '',
-            'useBrowserLayoutEffect(() => {',
-            '  const { current } = elementRef;',
-            '  (current as any).href = rest.onClick ? \'#\' : undefined;',
-            '}, [rest.onClick]);',
-            '',
-            'const props = {',
-          ].join('\n    ')
-      )
-    }
+    
     // cast BreakpointCustomizable default prop values to any because BreakpointCustomizable types are removed for uxpin
     extendedProps
       .filter((prop) => prop.isDefaultValueComplex && prop.defaultValue.match(/\bbase\b/))
