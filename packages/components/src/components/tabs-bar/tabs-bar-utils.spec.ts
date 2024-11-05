@@ -53,7 +53,7 @@ describe('getPrevNextTabIndex()', () => {
 });
 
 describe('getFocusedTabIndex()', () => {
-  const getButtons = () => Array.from(document.querySelectorAll('button')) as HTMLElement[];
+  const getButtons = (): HTMLElement[] => Array.from(document.querySelectorAll('button'));
 
   beforeEach(() => {
     document.body.innerHTML = '';

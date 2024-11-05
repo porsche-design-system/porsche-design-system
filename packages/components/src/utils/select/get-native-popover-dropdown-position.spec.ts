@@ -4,7 +4,7 @@ describe('getNativePopoverDropdownPosition()', () => {
   const nativePopover = document.createElement('div');
   const host = document.createElement('div');
 
-  const setViewport = () => {
+  const setViewport = (): void => {
     // clientWidth/Height mockBoundingClientRect is always 0 in JSDOM so we mock it
     Object.defineProperties(document.documentElement, {
       clientWidth: {

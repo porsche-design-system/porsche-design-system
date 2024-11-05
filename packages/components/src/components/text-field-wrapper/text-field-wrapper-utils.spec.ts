@@ -21,7 +21,7 @@ class MockHTMLElement {
   }
 
   shadowRoot: DocumentOrShadowRoot;
-  getBoundingClientRect() {
+  getBoundingClientRect(): { height: number } {
     return { height: 100 };
   }
 }

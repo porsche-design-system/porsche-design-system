@@ -3,7 +3,7 @@ import { getComponentMeta } from '@porsche-design-system/component-meta';
 import { getCssObject } from '../../../src/test-utils';
 import type { TagName } from '@porsche-design-system/shared';
 
-export const validateCssAndMatchSnapshot = (css: string) => {
+export const validateCssAndMatchSnapshot = (css: string): void => {
   const cssObject: any = getCssObject(css);
   const componentName = expect.getState().testPath.match(/\/([^/]+)\/[^/]+\.spec\.ts/)[1];
   const componentTagName = `p-${componentName}` as TagName;
@@ -30,7 +30,7 @@ export const validateCssAndMatchSnapshot = (css: string) => {
   expect(css).toMatchSnapshot();
 };
 
-const validatePreventFoucOfNestedElementsStyle = (cssObject: any, isComponentWithNestedComponents: boolean) => {
+const validatePreventFoucOfNestedElementsStyle = (cssObject: any, isComponentWithNestedComponents: boolean): void => {
   const selector = ':not(:defined,[data-ssr])';
   if (isComponentWithNestedComponents) {
     expect(cssObject[selector]).toEqual({ visibility: 'hidden' });
@@ -40,7 +40,7 @@ const validatePreventFoucOfNestedElementsStyle = (cssObject: any, isComponentWit
 };
 
 // We shouldn't use visibility: visible since it cannot be overridden, use inherit instead
-const validateVisibilityStyle = (cssObject: object) => {
+const validateVisibilityStyle = (cssObject: object): void => {
   recursivelyApply(cssObject, (key, value) => {
     if (key === 'visibility') {
       expect(value).not.toMatch(/visible/);
@@ -49,7 +49,7 @@ const validateVisibilityStyle = (cssObject: object) => {
 };
 
 // Expect no !important rule on display style of :host selector since it should be overridable
-const validateHostDisplayStyle = (cssObject: any) => {
+const validateHostDisplayStyle = (cssObject: any): void => {
   if (cssObject[':host'].display) {
     expect(cssObject[':host'].display).not.toMatch(/!important/);
   } else {
@@ -59,7 +59,7 @@ const validateHostDisplayStyle = (cssObject: any) => {
 };
 
 // Expect all form components to have display: block as host style
-const validateFormComponentHostDisplayStyle = (cssObject: any, tagName: TagName) => {
+const validateFormComponentHostDisplayStyle = (cssObject: any, tagName: TagName): void => {
   if (
     [
       'p-checkbox-wrapper',
@@ -78,7 +78,7 @@ const validateFormComponentHostDisplayStyle = (cssObject: any, tagName: TagName)
 };
 
 // Expect all slotted styles to be !important since they shouldn't be overridable
-const validateSlottedStyles = (cssObject: any, tagName: TagName) => {
+const validateSlottedStyles = (cssObject: any, tagName: TagName): void => {
   recursivelyApplyForKeyIncludes(cssObject, '::slotted', (_, value) => {
     Object.entries(value).forEach(([cssProp, cssValue]) => {
       // exceptions for tagName and css property are defined here
@@ -97,7 +97,7 @@ const validateSlottedStyles = (cssObject: any, tagName: TagName) => {
 };
 
 // All :hover styles should be wrapped in a @media(hover:hover) since they are only needed for devices which support hover
-const validateHoverMediaQuery = (cssObject: object) => {
+const validateHoverMediaQuery = (cssObject: object): void => {
   Object.entries(cssObject).forEach(([key, value]) => {
     // potential media query
     if (typeof value === 'object') {
@@ -121,7 +121,7 @@ const validateHoverMediaQuery = (cssObject: object) => {
  * @param obj - The object to traverse recursively.
  * @param fn - The function to apply to each key-value pair.
  */
-const recursivelyApply = (obj: object, fn: (key: string, value: any) => void) => {
+const recursivelyApply = (obj: object, fn: (key: string, value: any) => void): void => {
   for (const [key, value] of Object.entries(obj)) {
     if (typeof value === 'object') {
       recursivelyApply(value, fn);
@@ -137,7 +137,11 @@ const recursivelyApply = (obj: object, fn: (key: string, value: any) => void) =>
  * @param keySearch - The string to be included in the key for applying the function.
  * @param fn - The function to apply to matching key-value pairs.
  */
-const recursivelyApplyForKeyIncludes = (obj: object, keySearch: string, fn: (key: string, value: any) => void) => {
+const recursivelyApplyForKeyIncludes = (
+  obj: object,
+  keySearch: string,
+  fn: (key: string, value: any) => void
+): void => {
   for (const [key, value] of Object.entries(obj)) {
     if (key.includes(keySearch)) {
       fn(key, value);

@@ -24,7 +24,7 @@ export class InputParser {
     this.parseInput();
   }
 
-  public static get Instance() {
+  public static get Instance(): InputParser {
     return this._instance || (this._instance = new this());
   }
 

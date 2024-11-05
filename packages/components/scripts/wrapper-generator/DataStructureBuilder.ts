@@ -22,7 +22,7 @@ export class DataStructureBuilder {
     this.inputParser = inputParser;
   }
 
-  public static get Instance() {
+  public static get Instance(): DataStructureBuilder {
     return this._instance || (this._instance = new this(InputParser.Instance));
   }
 
@@ -47,7 +47,7 @@ export class DataStructureBuilder {
     ];
     const nonPrimitiveTypes: string[] = [];
 
-    const handleCustomGenericTypes = (nonPrimitiveType: string) => {
+    const handleCustomGenericTypes = (nonPrimitiveType: string): void => {
       if (!whitelistedTypes.includes(nonPrimitiveType)) {
         // extract potential generic and array
         const [, genericType] = /<(.*)>/.exec(nonPrimitiveType) || [];

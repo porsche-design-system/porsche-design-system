@@ -1,6 +1,7 @@
 import type { TagName } from '@porsche-design-system/shared';
 import { INTERNAL_TAG_NAMES } from '@porsche-design-system/shared';
-import { DataStructureBuilder, ExtendedProp } from './DataStructureBuilder';
+import type { ExtendedProp } from './DataStructureBuilder';
+import { DataStructureBuilder } from './DataStructureBuilder';
 import { InputParser } from './InputParser';
 import * as path from 'path';
 import * as fs from 'fs';

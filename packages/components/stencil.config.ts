@@ -1,4 +1,4 @@
-import { Config } from '@stencil/core';
+import type { Config } from '@stencil/core';
 import * as path from 'path';
 import replace from '@rollup/plugin-replace';
 import type { TagName } from '@porsche-design-system/shared';

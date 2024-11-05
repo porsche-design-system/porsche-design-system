@@ -1,7 +1,7 @@
 import * as fs from 'fs';
 import * as path from 'path';
 
-const cleanupLoader = () => {
+const cleanupLoader = (): void => {
   const srcFilePath = './dist/esm/loader.js';
   const srcFile = path.normalize(srcFilePath);
   const srcContent = fs.readFileSync(srcFile, 'utf8');

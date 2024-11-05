@@ -1,5 +1,6 @@
 import type { TagName } from '@porsche-design-system/shared';
-import { ComponentMeta, getComponentMeta } from '@porsche-design-system/component-meta';
+import type { ComponentMeta } from '@porsche-design-system/component-meta';
+import { getComponentMeta } from '@porsche-design-system/component-meta';
 import { ReactWrapperGenerator } from './ReactWrapperGenerator';
 import type { ExtendedProp } from './DataStructureBuilder';
 import type { AdditionalFile } from './AbstractWrapperGenerator';

@@ -1,4 +1,6 @@
 import * as keyboardBehaviorUtils from './keyboard-behavior';
+import type {
+  Option } from './keyboard-behavior';
 import {
   filterSelectOptions,
   getHighlightedSelectOption,
@@ -6,7 +8,6 @@ import {
   getMatchingSelectOptionIndex,
   getUpdatedIndex,
   getUsableSelectOptions,
-  Option,
   setHighlightedSelectOption,
   setMatchingSelectOptionHighlighted,
   setNextSelectOptionHighlighted,

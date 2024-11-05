@@ -20,9 +20,9 @@ class MockResizeObserver {
 
   public callback: any;
 
-  observe() {}
-  unobserve() {}
-  disconnect() {}
+  observe(): void {}
+  unobserve(): void {}
+  disconnect(): void {}
 }
 
 global.ResizeObserver = MockResizeObserver;

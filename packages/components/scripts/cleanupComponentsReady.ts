@@ -4,7 +4,7 @@ import { version } from '../package.json';
 
 // unfortunately, stencil does not replace the ROLLUP_REPLACE_VERSION placeholder in the transpiled collection/components-ready.js
 // that's why we do it here manually
-const cleanupComponentsReady = () => {
+const cleanupComponentsReady = (): void => {
   const srcFilePath = './dist/collection/components-ready.js';
   const srcFile = path.normalize(srcFilePath);
   const srcContent = fs.readFileSync(srcFile, 'utf8');

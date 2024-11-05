@@ -1,6 +1,9 @@
 import type { DropdownDirectionInternal } from '../select-wrapper/select-wrapper-utils';
-import {
+import type {
   DropdownInteractionType,
+  OptgroupOptionMap,
+  OptionMap } from './select-wrapper-dropdown-utils';
+import {
   getAmountOfVisibleOptionsAndOptgroups,
   getDropdownVisibility,
   getHighlightedOptionMapIndex,
@@ -12,8 +15,6 @@ import {
   getSelectedOptionMapIndex,
   getValidOptions,
   hasFilterResults,
-  OptgroupOptionMap,
-  OptionMap,
   resetFilteredOptionMaps,
   resetHighlightedToSelectedOptionMaps,
   setFilteredOptionMaps,

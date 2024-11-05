@@ -16,9 +16,9 @@ class MockResizeObserver {
   }
 
   public callback: any;
-  observe() {}
-  unobserve() {}
-  disconnect() {}
+  observe(): void {}
+  unobserve(): void {}
+  disconnect(): void {}
 }
 
 class MockHTMLElement {
@@ -27,7 +27,7 @@ class MockHTMLElement {
   }
 
   shadowRoot: DocumentOrShadowRoot;
-  getBoundingClientRect() {
+  getBoundingClientRect(): { height: number } {
     return { height: 100 };
   }
 }

@@ -132,10 +132,13 @@ export const AllowedTypes: {
   breakpoint: ValidatorFunctionBreakpointCustomizableCreator;
   shape: ValidatorFunctionShapeCreator;
 } = {
+  // eslint-disable-next-line id-blacklist
   string: (...args) => validateValueOfType(...args, 'string'),
 
+  // eslint-disable-next-line id-blacklist
   number: (...args) => validateValueOfType(...args, 'number'),
 
+  // eslint-disable-next-line id-blacklist
   boolean: (...args) => validateValueOfType(...args, 'boolean'),
   array: (allowedType: ValidatorFunction): ValidatorFunction =>
     function array(propName, propValue) {

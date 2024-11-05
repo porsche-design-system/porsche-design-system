@@ -25,7 +25,9 @@ const tagNamesPublicWithoutProps = TAG_NAMES.filter(
 );
 const tagNamesWithPropsOfTypeObject = TAG_NAMES.filter((tagName) => {
   const { propsMeta } = getComponentMeta(tagName);
-  if (!propsMeta) return false;
+  if (!propsMeta) {
+    return false;
+  }
   const propsMetaEntries = Object.entries(propsMeta);
   const breakpointCustomizableProps = propsMetaEntries.filter(([, value]) => value.isBreakpointCustomizable);
   const hasPropsOfTypeObject = propsMetaEntries

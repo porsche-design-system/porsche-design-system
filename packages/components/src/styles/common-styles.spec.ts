@@ -1,4 +1,6 @@
 import type { JssStyle } from 'jss';
+import type {
+  motionEasingMap } from './common-styles';
 import {
   addImportantToEachRule,
   addImportantToRule,
@@ -6,8 +8,7 @@ import {
   getFocusJssStyle,
   getHiddenTextJssStyle,
   getTransition,
-  type MotionDurationKey,
-  motionEasingMap,
+  type MotionDurationKey
 } from './common-styles';
 import type { PropertiesHyphen } from 'csstype';
 

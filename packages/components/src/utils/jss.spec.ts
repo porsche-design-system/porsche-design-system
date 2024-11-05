@@ -375,18 +375,18 @@ describe('getCachedComponentCss()', () => {
 
   it('should return css provided by css function', () => {
     const host = document.createElement('p-some-element');
-    const getComponentCss = () => 'some css';
+    const getComponentCss = (): string => 'some css';
 
     expect(getCachedComponentCss(host, getComponentCss)).toBe('some css');
   });
 
   it('should call passed css function with infinite passed arguments', () => {
     const host = document.createElement('p-some-element');
-    const getComponentCss1 = (a: number, b: boolean, c: string) => `some css ${a} ${b} ${c}`;
+    const getComponentCss1 = (a: number, b: boolean, c: string): string => `some css ${a} ${b} ${c}`;
 
     expect(getCachedComponentCss(host, getComponentCss1, 1, true, 'some string')).toBe('some css 1 true some string');
 
-    const getComponentCss2 = (d: { someProp: string }) => `some css ${d.someProp}`;
+    const getComponentCss2 = (d: { someProp: string }): string => `some css ${d.someProp}`;
 
     expect(getCachedComponentCss(host, getComponentCss2, { someProp: 'some-object-value' })).toBe(
       'some css some-object-value'
@@ -398,7 +398,7 @@ describe('getCachedComponentCss()', () => {
     const host2 = document.createElement('my-prefix-p-some-element');
     const host3 = document.createElement('p-another-element');
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    const getComponentCss1 = (_a?: number, _b?: boolean, _c?: string, _d?: { someProp: string }) => 'some css';
+    const getComponentCss1 = (_a?: number, _b?: boolean, _c?: string, _d?: { someProp: string }): string => 'some css';
 
     getCachedComponentCss(host1, getComponentCss1, 1, true, 'some string', { someProp: 'some value' });
     getCachedComponentCss(host1, getComponentCss1, 1, true, 'some string', { someProp: 'some value' });
