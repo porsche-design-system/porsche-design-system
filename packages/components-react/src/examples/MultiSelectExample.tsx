@@ -13,7 +13,7 @@ export const MultiSelectExamplePage = (): JSX.Element => {
   return (
     <>
       <form onSubmit={onSubmit}>
-        <PMultiSelect name="options" label="Some Label">
+        <PMultiSelect name="options" label="Some Label" value={['a']}>
           <PMultiSelectOption value="a">Option A</PMultiSelectOption>
           <PMultiSelectOption value="b">Option B</PMultiSelectOption>
           <PMultiSelectOption value="c">Option C</PMultiSelectOption>
@@ -22,6 +22,7 @@ export const MultiSelectExamplePage = (): JSX.Element => {
           <PMultiSelectOption value="f">Option F</PMultiSelectOption>
         </PMultiSelect>
         <button type="submit">Submit</button>
+        <button type="reset">Reset</button>
       </form>
 
       <PText>Last submitted data: {lastSubmittedData}</PText>
