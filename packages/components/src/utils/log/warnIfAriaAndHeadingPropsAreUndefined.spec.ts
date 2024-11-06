@@ -6,8 +6,8 @@ describe('warnIfAriaAndHeadingPropsAreUndefined()', () => {
     const host = document.createElement('p-modal');
 
     warnIfAriaAndHeadingPropsAreUndefined(host, true, undefined);
-    warnIfAriaAndHeadingPropsAreUndefined(host, false, '{\'aria-label\': \'OtherHeading\'}');
-    warnIfAriaAndHeadingPropsAreUndefined(host, true, '{\'aria-label\': \'OtherHeading\'}');
+    warnIfAriaAndHeadingPropsAreUndefined(host, false, "{'aria-label': 'OtherHeading'}");
+    warnIfAriaAndHeadingPropsAreUndefined(host, true, "{'aria-label': 'OtherHeading'}");
 
     expect(spy).not.toHaveBeenCalled();
 

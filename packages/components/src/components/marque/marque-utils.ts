@@ -19,7 +19,6 @@ export const getInnerManifest = (variant?: MarqueVariant, trademark?: boolean): 
   ];
 
 export const buildSrcSet = (innerManifest: InnerManifest, size: MarqueSize, format: MarqueFormat): string =>
-
   Object.entries(innerManifest[size as keyof InnerManifest])
     .map(([resolution, fileName]) => `${getCDNBaseURL()}/marque/${fileName[format]} ${resolution}`)
     .join();

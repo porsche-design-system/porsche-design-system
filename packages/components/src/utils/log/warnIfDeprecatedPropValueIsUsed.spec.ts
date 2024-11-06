@@ -3,8 +3,8 @@ import * as helperUtils from './helper';
 import { warnIfDeprecatedPropValueIsUsed } from './warnIfDeprecatedPropValueIsUsed';
 
 const warningMessage1 =
-  'prop=\'deprecatedValue\' is deprecated for component span and will be removed with next major release.';
-const warningMessage2 = 'Please use prop=\'value\' instead.';
+  "prop='deprecatedValue' is deprecated for component span and will be removed with next major release.";
+const warningMessage2 = "Please use prop='value' instead.";
 
 class SomeInstance {
   host = document.createElement('span');
@@ -27,7 +27,7 @@ it('should call getDeprecatedPropOrSlotWarningMessage() with correct parameters 
     deprecatedValue: 'value',
   });
 
-  expect(getDeprecatedPropOrSlotWarningMessageSpy).toHaveBeenCalledWith(instance.host, 'prop=\'deprecatedValue\'');
+  expect(getDeprecatedPropOrSlotWarningMessageSpy).toHaveBeenCalledWith(instance.host, "prop='deprecatedValue'");
   expect(consoleWarnSpy).toHaveBeenCalledWith(warningMessage1, warningMessage2, instance.host);
 });
 

@@ -39,6 +39,7 @@
     "eslint-plugin-fp": "*",
     "eslint-config-prettier": "*",
     "eslint-plugin-prefer-arrow": "*",
+    "eslint-plugin-prettier": "*",
     "globals": "*",
     "eslint": "*",
     "@rollup/plugin-commonjs": "*",

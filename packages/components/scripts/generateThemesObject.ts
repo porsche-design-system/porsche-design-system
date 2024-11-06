@@ -119,7 +119,7 @@ const formatValues = (theme: Theme, colors: ThemedColors): string => {
   // clean up colors object
   let result = JSON.stringify(reducedThemedColors, null, 2)
     .replace(/"([a-zA-Z]+)":/g, '$1:') // remove quotes around keys that don't need it
-    .replace(/"/g, '\''); // replace quotes
+    .replace(/"/g, "'"); // replace quotes
 
   // colors object composition with base themes
   if (!isBaseTheme) {

@@ -93,7 +93,7 @@ describe('validateActiveIdentifier()', () => {
     expect(spy).toHaveBeenCalledWith(errorMessage);
   });
 
-  it('should call consoleError() util when activeIdentifier of flyout-multilevel matches multiple identifier of flyout-multilevel-item\'s', () => {
+  it("should call consoleError() util when activeIdentifier of flyout-multilevel matches multiple identifier of flyout-multilevel-item's", () => {
     const instance = new SomeInstance();
     const items = [createChild(identifier), createChild(identifier)];
 

@@ -19,7 +19,7 @@ const generateUtilsEntryFile = () => {
   const utilsPaths = globbySync(`${componentsDir}/**/*-utils.ts`).sort();
 
   const utilsExports = utilsPaths
-    .map(utilPath => `export * from './components${utilPath.replace(componentsDir, '').replace(/\.ts$/, '')}';`)
+    .map((utilPath) => `export * from './components${utilPath.replace(componentsDir, '').replace(/\.ts$/, '')}';`)
     .join('\n');
 
   const inputContent = `/* Auto Generated File */

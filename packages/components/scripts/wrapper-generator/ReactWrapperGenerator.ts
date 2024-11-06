@@ -43,7 +43,7 @@ export class ReactWrapperGenerator extends AbstractWrapperGenerator {
       : '';
 
     return [
-      '\'use client\';\n',
+      "'use client';\n",
       importsFromReact,
       importsFromBaseProps,
       importsFromHooks,

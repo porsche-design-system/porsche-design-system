@@ -20,7 +20,7 @@ const generateStylesEntryFile = () => {
   const stylesPaths = globbySync(`${componentsDir}/**/*-styles.ts`).sort();
 
   const stylesExports = stylesPaths
-    .map(utilPath => {
+    .map((utilPath) => {
       const isCommonComponent = utilPath.includes('/components/common/');
       const styleExport = isCommonComponent
         ? `*`

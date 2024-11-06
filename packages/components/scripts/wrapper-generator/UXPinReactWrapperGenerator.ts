@@ -64,7 +64,7 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
 
     // when component is nested we need to fix relative imports
     if (this.shouldGenerateFolderPerComponent(component)) {
-      imports = imports.replace(/'(\.\.\/)/g, '\'$1$1');
+      imports = imports.replace(/'(\.\.\/)/g, "'$1$1");
     }
 
     return imports;
@@ -184,14 +184,14 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
       if (component === 'p-text') {
         cleanedComponent = cleanedComponent
           .replace(/(size =) 'small'/, '$1 16') // change destructured size
-          .replace(', size,', ', \'inherit\',') // always set inherit in propsToSync
+          .replace(', size,', ", 'inherit',") // always set inherit in propsToSync
           .replace(/(style: )(getPaddingStyles.+),/, '$1{ ...$2, fontSize: size },'); // patch inline style
       } else if (component === 'p-link' || component === 'p-link-social') {
         // set default href
-        cleanedComponent = cleanedComponent.replace(/(href),(.*?PropsWithChildren)/, '$1 = \'#\',$2');
+        cleanedComponent = cleanedComponent.replace(/(href),(.*?PropsWithChildren)/, "$1 = '#',$2");
       } else if (component === 'p-segmented-control-item') {
         // set default value, otherwise validation will throw an error
-        cleanedComponent = cleanedComponent.replace(/(, value),/, '$1 = \'value\',');
+        cleanedComponent = cleanedComponent.replace(/(, value),/, "$1 = 'value',");
       } else if (component === 'p-text-field-wrapper') {
         cleanedComponent = cleanedComponent
           .replace(/(\.\.\.rest)/, 'isWithinForm, onFormSubmit, $1') // destructure custom props
@@ -216,7 +216,7 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
       }
     } else if (component === 'p-toast') {
       cleanedComponent = cleanedComponent
-        .replace(/(\.\.\.rest)/, 'text, state = \'info\', $1') // destructure custom props
+        .replace(/(\.\.\.rest)/, "text, state = 'info', $1") // destructure custom props
         .replace(
           // integrate toast manager hook and call addMessage based on custom 'text' and 'state' props
           /((const propsToSync =)|(useBrowserLayoutEffect\(\(\) =>))/,
@@ -245,30 +245,30 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
 
     if (component === 'p-pin-code') {
       cleanedComponent = cleanedComponent.replace(
-        'useEventCallback(elementRef, \'update\', onUpdate as any);',
+        "useEventCallback(elementRef, 'update', onUpdate as any);",
         [
           'const eventCallback = (e:Event) => {',
-          '       rest.uxpinOnChange(value, (e as CustomEvent<PinCodeUpdateEventDetail>).detail.value, \'value\');',
+          "       rest.uxpinOnChange(value, (e as CustomEvent<PinCodeUpdateEventDetail>).detail.value, 'value');",
           '       if (onUpdate) {',
           '         onUpdate(e as CustomEvent<PinCodeUpdateEventDetail>);',
           '       }',
           '    }',
-          '    useEventCallback(elementRef, \'update\', eventCallback);',
+          "    useEventCallback(elementRef, 'update', eventCallback);",
         ].join('\n')
       );
     }
 
     if (component === 'p-flyout') {
       cleanedComponent = cleanedComponent.replace(
-        'useEventCallback(elementRef, \'dismiss\', onDismiss as any);',
+        "useEventCallback(elementRef, 'dismiss', onDismiss as any);",
         [
           'const dismissCallback = (e:Event) => {',
-          '       rest.uxpinOnChange(open, false, \'open\');',
+          "       rest.uxpinOnChange(open, false, 'open');",
           '       if (onDismiss) {',
           '         onDismiss(e as CustomEvent<void>);',
           '       }',
           '    }',
-          '    useEventCallback(elementRef, \'dismiss\', dismissCallback);',
+          "    useEventCallback(elementRef, 'dismiss', dismissCallback);",
         ].join('\n')
       );
     }

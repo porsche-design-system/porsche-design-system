@@ -132,7 +132,7 @@ ${[importsFromVue, importsFromUtils, importsFromTypes].filter(Boolean).join('\n'
         : `onMounted(syncProps);`,
       `onUpdated(syncProps);`,
       hasTheme &&
-      `watch(themeRef, (theme) => {
+        `watch(themeRef, (theme) => {
   syncProperties(pdsComponentRef, { theme: props.theme || theme });
 });`,
     ]

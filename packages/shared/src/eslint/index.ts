@@ -3,6 +3,7 @@ import globals from 'globals';
 import eslintStylistic from '@stylistic/eslint-plugin';
 import eslintJs from '@eslint/js';
 import eslintTs from 'typescript-eslint';
+import eslintPrettier from 'eslint-plugin-prettier/recommended';
 // import eslintVitest from 'eslint-plugin-vitest';
 // import eslintPlaywright from 'eslint-plugin-playwright';
 
@@ -14,6 +15,8 @@ const config: Linter.Config[] = [
   // eslintVitest.configs.recommended,
   {
     rules: {
+      '@stylistic/quotes': 'off', // conflicts with prettier
+      '@stylistic/indent-binary-ops': 'off', // conflicts with prettier
       '@stylistic/comma-dangle': 'off',
       '@stylistic/arrow-parens': 'off',
       '@stylistic/quote-props': 'off',
@@ -161,6 +164,7 @@ const config: Linter.Config[] = [
       'no-shadow': 'off',
     },
   },
+  eslintPrettier,
   {
     languageOptions: {
       globals: {
@@ -170,7 +174,7 @@ const config: Linter.Config[] = [
     },
   },
   {
-    ignores: ['dist', 'node_modules'],
+    ignores: ['dist', 'node_modules', '**/*.snap'],
   },
 ];
 

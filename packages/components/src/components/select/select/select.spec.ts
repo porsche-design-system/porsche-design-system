@@ -65,8 +65,8 @@ describe('componentDidLoad', () => {
     const slot = document.createElement('slot');
     const slotSpy = jest.spyOn(slot, 'addEventListener');
     const getShadowRootHTMLElementSpy = jest
-    .spyOn(getShadowRootHTMLElementUtils, 'getShadowRootHTMLElement')
-    .mockReturnValueOnce(slot);
+      .spyOn(getShadowRootHTMLElementUtils, 'getShadowRootHTMLElement')
+      .mockReturnValueOnce(slot);
     component.componentDidLoad();
     expect(getShadowRootHTMLElementSpy).toHaveBeenCalledWith(component.host, 'slot');
     expect(slotSpy).toHaveBeenCalledTimes(1);

@@ -348,7 +348,7 @@ describe('AllowedTypes', () => {
         expect(result).toEqual({
           propName: 'propName',
           propValue: 'c',
-          propType: '[\'a\', \'b\']',
+          propType: "['a', 'b']",
         });
       });
 

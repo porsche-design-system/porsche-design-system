@@ -566,7 +566,7 @@ describe('onDocumentKeydown()', () => {
     document.removeEventListener('keydown', onDocumentKeydown);
   });
 
-  describe.each(['Enter', 'SpaceBar', ' '])('for key \'%s\'', (key) => {
+  describe.each(['Enter', 'SpaceBar', ' '])("for key '%s'", (key) => {
     it(`should change open to false when composedPath does not include host`, () => {
       popover.open = true;
       document.body.dispatchEvent(new KeyboardEvent('keydown', { key, bubbles: true }));
@@ -595,7 +595,7 @@ describe('onDocumentKeydown()', () => {
     });
   });
 
-  describe('for key \'Escape\'', () => {
+  describe("for key 'Escape'", () => {
     it('should change open to false', () => {
       popover.open = true;
       document.body.dispatchEvent(new KeyboardEvent('keydown', { key: 'Escape', bubbles: true }));

@@ -66,7 +66,7 @@ export class InputParser {
 
   public getComponentInterface(component: TagName): ParsedInterface {
     const rawInterface = this.getRawComponentInterface(component);
-    const cleanedInterface = rawInterface.replace(/\??: (.+?);/g, ': \'$1\','); // convert to valid js object
+    const cleanedInterface = rawInterface.replace(/\??: (.+?);/g, ": '$1',"); // convert to valid js object
 
     // eslint-disable-next-line no-eval
     return eval(`(${cleanedInterface})`);
@@ -163,7 +163,7 @@ export class InputParser {
 
     let [, rawIntrinsicElements] = /interface IntrinsicElements ({(?:\n|.)*?})/.exec(rawLocalJSX) || [];
 
-    rawIntrinsicElements = rawIntrinsicElements.replace(/ (\w+);/g, ' \'$1\',');
+    rawIntrinsicElements = rawIntrinsicElements.replace(/ (\w+);/g, " '$1',");
     // eslint-disable-next-line no-eval
     this.intrinsicElements = eval(`(${rawIntrinsicElements})`);
 

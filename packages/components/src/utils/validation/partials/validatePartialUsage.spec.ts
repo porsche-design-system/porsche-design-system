@@ -378,7 +378,7 @@ describe('getValidatePartialErrorPrimaryText()', () => {
 
   it('should return correct string when called with "getFontLinks" and "my-prefix"', () => {
     expect(getValidatePartialErrorPrimaryText('getFontLinks', 'my-prefix')).toEqual(
-      'The Porsche Design System with prefix: \'my-prefix\' is used without using the getFontLinks() partial.'
+      "The Porsche Design System with prefix: 'my-prefix' is used without using the getFontLinks() partial."
     );
   });
 });

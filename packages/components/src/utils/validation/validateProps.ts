@@ -36,7 +36,7 @@ export const formatObjectOutput = (value: any): string => {
 export const formatArrayOutput = <T>(value: T[] | readonly T[]): string => {
   return JSON.stringify(value.map((x) => (x === undefined ? `${x}` : x))) // wrap undefined in quotes to not convert it to null
     .replace(/'/g, '') // remove single quotes
-    .replace(/"/g, '\'') // replace double quotes with single quotes
+    .replace(/"/g, "'") // replace double quotes with single quotes
     .replace(/'(undefined)'/, '$1') // remove quotes around undefined
     .replace(/,/g, ', '); // add space after comma
 };
@@ -98,7 +98,7 @@ export const getAriaStructure = <T>(allowedAriaAttributes: readonly T[]): string
     )
   )
     .replace(/":/g, '"?:') // add optional modifier on keys before colon
-    .replace(/"/g, '\''); // replace double quotes with single quotes
+    .replace(/"/g, "'"); // replace double quotes with single quotes
 };
 
 export const getShapeStructure = <T>(shapeStructure: { [key in keyof T]: ValidatorFunction }): string => {

@@ -35,7 +35,7 @@ export class NextJsReactWrapperGenerator extends ReactWrapperGenerator {
       tweakedComponent = tweakedComponent.replace(/.*\.\.\.rest/, '    // @ts-ignore\n$&');
 
       Object.entries(componentMeta.internalProps).forEach(([prop, value]) => {
-        value = value ? ' = ' + (typeof value === 'string' ? '\'' + value + '\'' : value) : '';
+        value = value ? ' = ' + (typeof value === 'string' ? "'" + value + "'" : value) : '';
         tweakedComponent = tweakedComponent.replace(/\.\.\.rest/, `${prop}${value}, $&`);
       });
     }
