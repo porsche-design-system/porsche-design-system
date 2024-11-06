@@ -18,6 +18,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 - `Checkbox`, `Textarea`: `formDisabledCallback` and `formStateRestoreCallback` from ElementInternals API and sync
   validity with form element. ([#3528](https://github.com/porsche-design-system/porsche-design-system/pull/3528))
+- `Link`, `Link Pure`, `Link Tile`: `aria-haspopup` is now supported for `aria` prop
+  ([#3589](https://github.com/porsche-design-system/porsche-design-system/pull/3589))
 
 #### Fixed
 
