@@ -1922,6 +1922,7 @@ exports[`should match snapshot 1`] = `
       "aria": {
         "allowedValues": {
           "aria-current": "string",
+          "aria-haspopup": "string",
           "aria-label": "string",
         },
         "defaultValue": null,
@@ -3620,6 +3621,7 @@ exports[`should match snapshot 1`] = `
       "aria": {
         "allowedValues": {
           "aria-current": "string",
+          "aria-haspopup": "string",
           "aria-label": "string",
         },
         "defaultValue": null,
@@ -3964,6 +3966,7 @@ exports[`should match snapshot 1`] = `
       "aria": {
         "allowedValues": {
           "aria-current": "string",
+          "aria-haspopup": "string",
           "aria-label": "string",
         },
         "defaultValue": null,
@@ -4615,6 +4618,7 @@ exports[`should match snapshot 1`] = `
       "aria": {
         "allowedValues": {
           "aria-current": "string",
+          "aria-haspopup": "string",
           "aria-label": "string",
         },
         "defaultValue": null,
@@ -5026,6 +5030,7 @@ exports[`should match snapshot 1`] = `
       "aria": {
         "allowedValues": {
           "aria-current": "string",
+          "aria-haspopup": "string",
           "aria-label": "string",
         },
         "defaultValue": null,
@@ -8524,6 +8529,7 @@ exports[`should match snapshot 1`] = `
       "aria": {
         "allowedValues": {
           "aria-current": "string",
+          "aria-haspopup": "string",
           "aria-label": "string",
         },
         "defaultValue": null,
