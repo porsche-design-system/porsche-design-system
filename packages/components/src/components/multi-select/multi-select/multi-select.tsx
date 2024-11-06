@@ -177,16 +177,6 @@ export class MultiSelect {
     }
   }
 
-  @Watch('form')
-  public updateFormAssociation(): void {
-    if (this.form) {
-      const formElement = document.getElementById(this.form) as HTMLFormElement;
-      if (formElement) {
-        formElement.appendChild(this.host);
-      }
-    }
-  }
-
   public setFormValue(value: string[]): void {
     const formData = new FormData();
     value.forEach((val) => formData.append(this.name, val));
@@ -204,13 +194,13 @@ export class MultiSelect {
 
   public componentWillLoad(): void {
     this.defaultValue = this.value;
+    this.setFormValue(this.value);
     this.updateOptions();
     // Use initial value to set options
     setSelectedOptions(this.multiSelectOptions, this.value);
   }
 
   public componentDidLoad(): void {
-    this.setFormValue(this.value);
     getShadowRootHTMLElement(this.host, 'slot').addEventListener('slotchange', this.onSlotchange);
   }
 

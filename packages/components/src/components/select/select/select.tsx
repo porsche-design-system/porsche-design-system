@@ -168,16 +168,6 @@ export class Select {
     }
   }
 
-  @Watch('form')
-  public updateFormAssociation(): void {
-    if (this.form) {
-      const formElement = document.getElementById(this.form) as HTMLFormElement;
-      if (formElement) {
-        formElement.appendChild(this.host);
-      }
-    }
-  }
-
   public connectedCallback(): void {
     applyConstructableStylesheetStyles(this.host, getSlottedAnchorStyles);
     document.addEventListener('mousedown', this.onClickOutside, true);
@@ -189,12 +179,12 @@ export class Select {
 
   public componentWillLoad(): void {
     this.defaultValue = this.value;
+    this.internals.setFormValue(this.value);
     this.updateOptions();
     updateSelectOptions(this.selectOptions, this.value);
   }
 
   public componentDidLoad(): void {
-    this.internals.setFormValue(this.value);
     getShadowRootHTMLElement(this.host, 'slot').addEventListener('slotchange', this.onSlotchange);
   }
 
