@@ -125,10 +125,10 @@ export class MultiSelect {
   /** Changes the direction to which the dropdown list appears. */
   @Prop() public dropdownDirection?: MultiSelectDropdownDirection = 'auto';
 
-  /** Adapts the select color depending on the theme. */
+  /** Adapts the multi-select color depending on the theme. */
   @Prop() public theme?: Theme = 'light';
 
-  /** The id of a form element the select should be associated with. */
+  /** The id of a form element the multi-select should be associated with. */
   @Prop() public form?: string;
 
   /** Emitted when the selection is changed. */
