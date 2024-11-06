@@ -1,5 +1,6 @@
 import { MultiSelect } from './multi-select';
 import * as multiSelectUtils from './multi-select-utils';
+import * as addNativePopoverScrollAndResizeListenersUtils from '../../../utils/add-native-popover-scroll-and-resize-listeners';
 import * as getShadowRootHTMLElementUtils from '../../../utils/dom/getShadowRootHTMLElement';
 import { expect } from '@jest/globals';
 
@@ -26,11 +27,19 @@ describe('connectedCallback', () => {
 });
 
 describe('componentWillLoad', () => {
-  it('should call setSelectedOptions() with correct parameters', () => {
+  it('should call setSelectedOptions() and setFormValue() with correct parameters', () => {
     const component = initComponent();
     const setSelectedOptionsSpy = jest.spyOn(multiSelectUtils, 'setSelectedOptions');
+    const setFormValueSpy = jest.spyOn(component['internals'], 'setFormValue' as any);
+    const value = 'a';
+    component.name = 'some-name';
+    component.value = [value];
+    const formData = new FormData();
+    formData.append(component.name, value);
+
     component.componentWillLoad();
-    expect(setSelectedOptionsSpy).toHaveBeenCalledWith([], []);
+    expect(setSelectedOptionsSpy).toHaveBeenCalledWith([], component.value);
+    expect(setFormValueSpy).toHaveBeenCalledWith(formData);
   });
 });
 
@@ -84,6 +93,7 @@ describe('setFormValue', () => {
   const component = initComponent();
   const setFormValueSpy = jest.spyOn(component['internals'], 'setFormValue' as any);
   const value = ['a', 'b', 'c'];
+  component.name = 'some-name';
   component.setFormValue(value);
   const formData = new FormData();
   value.forEach((val) => formData.append(component.name, val));
