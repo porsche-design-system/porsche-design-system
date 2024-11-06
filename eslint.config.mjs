@@ -172,12 +172,46 @@ export default [
       },
     },
   },
-  // {
-  //   ignores: ['**/dist', 'dist', 'dist/*', '**/node_modules', 'node_modules', 'node_modules/*', '**/*.snap', '**/.stencil', '.github', 'aws', 'docker', 'docs', 'packages/assets',
-  //     'packages/component-meta', 'packages/components', 'packages/components/www', 'packages/components/src/types/aria-types.d.ts', 'packages/components/src/styles/colors.ts', 'packages/component-angular', 'packages/component-js', 'packages/component-react',
-  //     'packages/component-vue', 'crawler', 'shared', 'storefront', 'utilities' ],
-  // },
   {
-    ignores: ['.github', 'aws', 'docker', 'docs', '**/node_modules', 'packages'],
+    ignores: ['**/dist', 'dist', 'dist/*', '**/node_modules', 'node_modules', 'node_modules/*', '**/*.snap', '**/.stencil', '.github', 'aws', 'docker', 'docs', 'packages/assets',
+      'packages/component-meta', 'packages/components', 'packages/components/www', 'packages/components/src/types/aria-types.d.ts', 'packages/components/src/styles/colors.ts', 'packages/component-angular', 'packages/component-js', 'packages/component-react',
+      'packages/component-vue', 'crawler', 'shared', 'storefront', 'utilities' ],
+  },
+  {
+    ignores: [
+      '.github/',
+      '.yarn/',
+      'aws/',
+      'docker/',
+      'docs/',
+      '**/dist/',
+      '**/node_modules/',
+      'packages/assets/',
+      'packages/component-meta/',
+      // 'packages/components/',
+      'packages/components/www/',
+      'packages/components/.stencil/',
+      'packages/components/src/types/aria-types.d.ts',
+      'packages/components/src/styles/colors.ts',
+      'packages/component-angular/',
+      'packages/component-js/',
+      'packages/component-react/',
+      'packages/component-vue/',
+      'packages/crawler/',
+      'packages/crest/',
+      'packages/fallbacks/',
+      'packages/fonts/',
+      'packages/icons/',
+      'packages/marque/',
+      'packages/meta-icons/',
+      'packages/model-signatures/',
+      'packages/shared/',
+      'packages/storefront/',
+      'packages/utilities/'
+    ],
+    rules: {
+      'no-console': 'error',
+    }
+    // files: ['packages/components-vue/src/*']
   },
 ];
