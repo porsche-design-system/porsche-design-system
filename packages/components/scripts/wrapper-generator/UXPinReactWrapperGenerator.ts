@@ -398,7 +398,6 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
       },
       'p-checkbox': {
         props: { label: 'label' },
-        children: '<DummyCheckbox uxpId="dummy-checkbox" />',
       },
       'p-fieldset': {
         props: { label: 'Fieldset' },
