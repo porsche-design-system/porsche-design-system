@@ -5353,7 +5353,7 @@ exports[`should match snapshot 1`] = `
       "form": {
         "allowedValues": "string",
         "defaultValue": null,
-        "description": "The id of a form element the select should be associated with.",
+        "description": "The id of a form element the multi-select should be associated with.",
         "type": "string",
       },
       "hideLabel": {
@@ -5405,7 +5405,7 @@ exports[`should match snapshot 1`] = `
           "auto",
         ],
         "defaultValue": "light",
-        "description": "Adapts the select color depending on the theme.",
+        "description": "Adapts the multi-select color depending on the theme.",
         "type": "Theme",
       },
       "value": {
