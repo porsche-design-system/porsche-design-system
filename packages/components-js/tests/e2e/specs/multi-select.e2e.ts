@@ -132,7 +132,7 @@ const initMultiSelect = (page: Page, opt?: InitOptions): Promise<void> => {
   const selectOptions = [...'abc', ...(amount === 5 ? 'de' : '')]
     .map((x, idx) => {
       const attrs = [disabledIndex === idx ? 'disabled' : ''].join(' ');
-      const option = `<p-multi-select-option ${x ? `value="${x}"` : ''} ${attrs}>Option ${x.toUpperCase()}</p-multi-select-option>`;
+      const option = `<p-multi-select-option value="${x}" ${attrs}>Option ${x.toUpperCase()}</p-multi-select-option>`;
       return includeOptgroups ? `<p-optgroup label="${x}">${option}</p-optgroup>` : option;
     })
     .join('\n');
@@ -1233,26 +1233,85 @@ test.describe('optgroups', () => {
 });
 
 test.describe('form', () => {
-  test('should include name & value in FormData submit', async ({ page }) => {
+  test('should include name & value in FormData submit if updated programmatically', async ({ page }) => {
     const name = 'name';
     const value = ['a', 'b'];
     await initMultiSelect(page, {
       props: { name },
       options: { isWithinForm: true, markupAfter: '<button type="submit">Submit</button>' },
     });
-    const multiSelect = getHost(page);
+    const host = getHost(page);
     const form = getForm(page);
-    await setProperty(multiSelect, 'value', value);
+    await setProperty(host, 'value', value);
 
     await addEventListener(form, 'submit');
     expect((await getEventSummary(form, 'submit')).counter).toBe(0);
 
     await page.locator('button[type="submit"]').click();
 
-    const test = await getEventSummary(form, 'submit');
-    console.log('test', test.targets);
     expect((await getEventSummary(form, 'submit')).counter).toBe(1);
+    expect(await getFormDataValues(form, name)).toStrictEqual(value);
+  });
 
+  test('should include name & value in FormData submit if updated using keyboard', async ({ page }) => {
+    const name = 'options';
+    const value = ['a'];
+    await initMultiSelect(page, {
+      props: { name },
+      options: {
+        isWithinForm: true,
+        markupBefore: '<p-text>Some Text</p-text>',
+        markupAfter: '<button type="submit">Submit</button>',
+      },
+    });
+    const form = getForm(page);
+    const text = page.locator('p-text');
+    await addEventListener(form, 'submit');
+    expect((await getEventSummary(form, 'submit')).counter).toBe(0);
+
+    await page.keyboard.press('Tab');
+    await page.keyboard.press('Space');
+    await waitForStencilLifecycle(page);
+
+    await page.keyboard.press('ArrowDown');
+    await page.keyboard.press('Enter');
+    await text.click();
+    await waitForStencilLifecycle(page);
+
+    await page.locator('button[type="submit"]').click();
+
+    expect((await getEventSummary(form, 'submit')).counter).toBe(1);
+    expect(await getFormDataValues(form, name)).toStrictEqual(value);
+  });
+
+  test('should include name & value in FormData submit if updated using mouse', async ({ page }) => {
+    const name = 'options';
+    const value = ['b'];
+    await initMultiSelect(page, {
+      props: { name },
+      options: {
+        isWithinForm: true,
+        markupBefore: '<p-text>Some Text</p-text>',
+        markupAfter: '<button type="submit">Submit</button>',
+      },
+    });
+    const inputElement = getInput(page);
+    const form = getForm(page);
+    const text = page.locator('p-text');
+    await addEventListener(form, 'submit');
+    expect((await getEventSummary(form, 'submit')).counter).toBe(0);
+
+    await inputElement.click();
+    await waitForStencilLifecycle(page);
+
+    const dropdownOption = getMultiSelectOption(page, 2);
+    await dropdownOption.click();
+    await text.click();
+    await waitForStencilLifecycle(page);
+
+    await page.locator('button[type="submit"]').click();
+
+    expect((await getEventSummary(form, 'submit')).counter).toBe(1);
     expect(await getFormDataValues(form, name)).toStrictEqual(value);
   });
 
