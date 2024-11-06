@@ -1,4 +1,4 @@
-import { App, createApp } from 'vue';
+import { type App, createApp } from 'vue';
 import { flushPromises } from '@vue/test-utils';
 import * as componentsJs from '@porsche-design-system/components-js';
 import {

@@ -1,11 +1,11 @@
-import { expect, Page, test } from '@playwright/test';
+import { expect, type Locator, type Page, test } from '@playwright/test';
 import { goto, waitForComponentsReady } from '../helpers';
 
-const getSelect = (page: Page) => page.locator('p-select button');
-const getSelectOptionsVisible = (page: Page) => page.locator('p-select-option[title="visible"]');
-const getSelectOptionsHidden = (page: Page) => page.locator('p-select-option[title="hidden"]');
-const getButtonsVisible = (page: Page) => page.locator('p-button[title="visible"]');
-const getButtonsHidden = (page: Page) => page.locator('p-button[title="hidden"]');
+const getSelect = (page: Page): Locator => page.locator('p-select button');
+const getSelectOptionsVisible = (page: Page): Locator => page.locator('p-select-option[title="visible"]');
+const getSelectOptionsHidden = (page: Page): Locator => page.locator('p-select-option[title="hidden"]');
+const getButtonsVisible = (page: Page): Locator => page.locator('p-button[title="visible"]');
+const getButtonsHidden = (page: Page): Locator => page.locator('p-button[title="hidden"]');
 
 test('should apply global hidden attribute correctly', async ({ page }) => {
   await goto(page, 'hidden-attribute-example');

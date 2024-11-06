@@ -154,7 +154,7 @@ const config: Linter.Config[] = [
     },
   },
   {
-    files: ['tests/**/*', 'src/**/*.spec.*'],
+    files: ['tests/**/*', '**/*.spec.*'],
     rules: {
       'no-console': 'off',
       'no-empty-function': 'off',

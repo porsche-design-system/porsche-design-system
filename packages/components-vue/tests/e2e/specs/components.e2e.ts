@@ -1,6 +1,7 @@
 import { test, expect } from '@playwright/test';
 import { getConsoleErrorsAmount, getOuterHTML, goto, initConsoleObserver } from '../helpers';
 
+/* eslint-disable @typescript-eslint/no-require-imports */
 const console = require('console');
 
 test('overview should work without errors', async ({ page }) => {

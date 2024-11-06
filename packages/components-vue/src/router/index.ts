@@ -1,5 +1,4 @@
-import type { RouteComponent, RouteRecordRaw } from 'vue-router';
-import { createRouter, createWebHistory } from 'vue-router';
+import { type RouteComponent, type RouteRecordRaw, createRouter, createWebHistory } from 'vue-router';
 import * as fromPages from '../pages';
 import { kebabCase } from 'change-case';
 import * as fromExamples from '../examples';
@@ -12,7 +11,7 @@ const generatedRoutes: RouteType[] = Object.keys(fromPages).map<RouteType>((page
   const name = page.replace(/Page$/, '');
   return {
     path: '/' + kebabCase(name),
-    name: name,
+    name,
     component: (fromPages as Record<string, RouteComponent>)[page],
   };
 });
