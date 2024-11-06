@@ -50,7 +50,7 @@ export const dispatchInputEvent = (el: HTMLInputElement): void => {
   el.dispatchEvent(new Event('input', { bubbles: true }));
 };
 
-export const _hasShowPickerSupport = (): boolean => {
+export const getHasShowPickerSupport = (): boolean => {
   return (
     hasDocument &&
     'showPicker' in HTMLInputElement.prototype &&
@@ -58,7 +58,7 @@ export const _hasShowPickerSupport = (): boolean => {
     !!window.navigator.userAgent.match(/chrome|chromium|crios|edg/i)
   );
 };
-const hasShowPickerSupport = _hasShowPickerSupport();
+const hasShowPickerSupport = getHasShowPickerSupport();
 
 export const showCustomCalendarOrTimeIndicator = (isCalendar: boolean, isTime: boolean): boolean => {
   return hasShowPickerSupport && (isCalendar || isTime);

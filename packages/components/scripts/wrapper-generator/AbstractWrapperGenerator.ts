@@ -1,7 +1,5 @@
-import type { TagName } from '@porsche-design-system/shared';
-import { INTERNAL_TAG_NAMES } from '@porsche-design-system/shared';
-import type { ExtendedProp } from './DataStructureBuilder';
-import { DataStructureBuilder } from './DataStructureBuilder';
+import { type TagName, INTERNAL_TAG_NAMES } from '@porsche-design-system/shared';
+import { type ExtendedProp, DataStructureBuilder } from './DataStructureBuilder';
 import { InputParser } from './InputParser';
 import * as path from 'path';
 import * as fs from 'fs';
@@ -15,21 +13,19 @@ export type AdditionalFile = {
 };
 
 export abstract class AbstractWrapperGenerator {
-  protected abstract packageDir: string;
   protected projectDir: string = 'components-wrapper';
   protected barrelFileName: string = 'index.ts';
   protected ignoreComponents: TagName[] = INTERNAL_TAG_NAMES;
-  private libDir: string = '';
-  private componentsDir: string = '';
-
   protected inputParser = InputParser.Instance;
-  private dataStructureBuilder = DataStructureBuilder.Instance;
   protected intrinsicElements = this.inputParser.getIntrinsicElements();
   protected relevantComponentTagNames: TagName[] = [];
   protected unexposedComponentTagNames: TagName[] = INTERNAL_TAG_NAMES;
+  private libDir: string = '';
+  private componentsDir: string = '';
+  private dataStructureBuilder = DataStructureBuilder.Instance;
+  protected abstract packageDir: string;
 
   public generate(): void {
-    // eslint-disable-next-line no-console
     console.log(`Generating wrappers for package '${this.packageDir}' in project '${this.projectDir}'`);
     this.setRelevantComponentTagNames();
     this.generateDirs();
@@ -37,8 +33,37 @@ export abstract class AbstractWrapperGenerator {
     this.generateComponentWrappers();
     this.generateBarrelFile();
     this.generateAdditionalFiles();
-    // eslint-disable-next-line no-console
+
     console.log(`Generated wrappers for package '${this.packageDir}' in project '${this.projectDir}'`);
+  }
+
+  public stripFileExtension(component: TagName): string {
+    return path.parse(this.getComponentFileName(component)).name;
+  }
+
+  // helper to possibly inject additional contents into barrel file
+  public getAdditionalBarrelFileContent(): string {
+    return '';
+  }
+
+  // helper that can be used to inject other files to be generated
+  public getAdditionalFiles(): AdditionalFile[] {
+    return [];
+  }
+
+  // helper that can be used to have wrapper generated into separate folder
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  public shouldGenerateFolderPerComponent(_: TagName): boolean {
+    return false;
+  }
+
+  public getBarrelFileContent(componentFileNameWithoutExtension: string, componentSubDir?: string): string {
+    return `export * from './${componentSubDir ? componentSubDir + '/' : ''}${componentFileNameWithoutExtension}';`;
+  }
+
+  // Can be used to transform content e.g. indentation
+  public transformContent(content: string): string {
+    return content;
   }
 
   private setRelevantComponentTagNames(): void {
@@ -67,7 +92,7 @@ export abstract class AbstractWrapperGenerator {
     const targetFile = path.resolve(this.libDir, targetFileName);
 
     fs.writeFileSync(targetFile, content);
-    // eslint-disable-next-line no-console
+
     console.log(`Generated shared types: ${targetFile}`);
   }
 
@@ -91,7 +116,7 @@ export abstract class AbstractWrapperGenerator {
     const content = [this.getAdditionalBarrelFileContent(), componentExports].filter((x) => x).join('\n\n');
 
     fs.writeFileSync(targetFile, content);
-    // eslint-disable-next-line no-console
+
     console.log(`Generated barrel: ${this.barrelFileName}`);
   }
 
@@ -101,7 +126,7 @@ export abstract class AbstractWrapperGenerator {
       .forEach((component) => {
         this.generateComponentWrapper(component);
       });
-    // eslint-disable-next-line no-console
+
     console.log(`Generated ${this.relevantComponentTagNames.length} components`);
   }
 
@@ -139,39 +164,10 @@ export abstract class AbstractWrapperGenerator {
 
         fs.mkdirSync(targetDir, { recursive: true });
         fs.writeFileSync(targetFile, content);
-        // eslint-disable-next-line no-console
+
         console.log(`Generated file: ${relativePath}/${name}`);
       });
     }
-  }
-
-  public stripFileExtension(component: TagName): string {
-    return path.parse(this.getComponentFileName(component)).name;
-  }
-
-  // helper to possibly inject additional contents into barrel file
-  public getAdditionalBarrelFileContent(): string {
-    return '';
-  }
-
-  // helper that can be used to inject other files to be generated
-  public getAdditionalFiles(): AdditionalFile[] {
-    return [];
-  }
-
-  // helper that can be used to have wrapper generated into separate folder
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  public shouldGenerateFolderPerComponent(_: TagName): boolean {
-    return false;
-  }
-
-  public getBarrelFileContent(componentFileNameWithoutExtension: string, componentSubDir?: string): string {
-    return `export * from './${componentSubDir ? componentSubDir + '/' : ''}${componentFileNameWithoutExtension}';`;
-  }
-
-  // Can be used to transform content e.g. indentation
-  public transformContent(content: string): string {
-    return content;
   }
 
   // prettier-ignore

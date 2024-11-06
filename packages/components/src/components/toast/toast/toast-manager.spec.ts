@@ -1,5 +1,4 @@
-import type { ToastManager } from './toast-manager';
-import { ToastManagerClass } from './toast-manager';
+import { type ToastManager, ToastManagerClass } from './toast-manager';
 import * as stencilCore from '@stencil/core';
 
 let toastManager: ToastManager;

@@ -15,22 +15,15 @@ export type ExtendedProp = {
 };
 
 export class DataStructureBuilder {
-  private static _instance: DataStructureBuilder;
+  private static instance: DataStructureBuilder;
   private readonly inputParser: InputParser;
 
-  constructor(inputParser: InputParser) {
+  public constructor(inputParser: InputParser) {
     this.inputParser = inputParser;
   }
 
   public static get Instance(): DataStructureBuilder {
-    return this._instance || (this._instance = new this(InputParser.Instance));
-  }
-
-  private splitLiteralTypeToNonPrimitiveTypes(literalType: string): string[] {
-    return literalType
-      .split(/[<>,|&]/) // split complex generic types like union types or type literals => e.g. Extract<TextColor, "default" | "inherit">
-      .map((x) => x.trim())
-      .filter((x) => x.match(/[A-Z]\w*/)); // Check for non-primitive types
+    return this.instance || (this.instance = new this(InputParser.Instance));
   }
 
   public extractNonPrimitiveTypes(input: string, isNonPrimitiveType: boolean = false): string[] {
@@ -86,6 +79,23 @@ export class DataStructureBuilder {
     return nonPrimitiveTypes.filter((x, i, a) => a.indexOf(x) === i);
   }
 
+  // Enrich parsedInterface with meta information for further processing
+  public convertToExtendedProps(component: TagName): ExtendedProp[] {
+    const parsedInterface = this.inputParser.getComponentInterface(component);
+    const sharedTypes = this.inputParser.getSharedTypes();
+
+    return Object.entries(parsedInterface).map(([propKey, propValueType]) =>
+      this.convertToExtendedProp(component, propKey, propValueType, sharedTypes)
+    );
+  }
+
+  private splitLiteralTypeToNonPrimitiveTypes(literalType: string): string[] {
+    return literalType
+      .split(/[<>,|&]/) // split complex generic types like union types or type literals => e.g. Extract<TextColor, "default" | "inherit">
+      .map((x) => x.trim())
+      .filter((x) => x.match(/[A-Z]\w*/)); // Check for non-primitive types
+  }
+
   // Recursively check prop value for type of object
   private valueCanBeObject(propValue: string, sharedTypes: string): boolean {
     let result = false;
@@ -127,29 +137,17 @@ export class DataStructureBuilder {
     const canBeObject = !isEvent && this.valueCanBeObject(propValueType, sharedTypes);
     const defaultValueForProp = this.inputParser.getDefaultValueForProp(component, propKey);
 
-    const extendedProp: ExtendedProp = {
+    return {
       key: propKey,
       rawValueType: propValueType,
       hasToBeMapped: (!isEvent && !!propKey.match(/[A-Z]/g)) || canBeObject,
       canBeObject: canBeObject && !isCallback,
       canBeUndefined: !!propValueType.match(/undefined/),
-      isEvent: isEvent,
+      isEvent,
       defaultValue: !isEvent ? defaultValueForProp : '',
       isDefaultValueComplex: defaultValueForProp ? this.valueCanBeObject(defaultValueForProp, sharedTypes) : false,
       isDeprecated: this.inputParser.isPropDeprecated(component, propKey),
       isOptional: this.inputParser.isPropOptional(component, propKey),
     };
-
-    return extendedProp;
-  }
-
-  // Enrich parsedInterface with meta information for further processing
-  public convertToExtendedProps(component: TagName): ExtendedProp[] {
-    const parsedInterface = this.inputParser.getComponentInterface(component);
-    const sharedTypes = this.inputParser.getSharedTypes();
-
-    return Object.entries(parsedInterface).map(([propKey, propValueType]) =>
-      this.convertToExtendedProp(component, propKey, propValueType, sharedTypes)
-    );
   }
 }

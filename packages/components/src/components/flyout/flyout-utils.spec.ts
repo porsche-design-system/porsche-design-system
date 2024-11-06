@@ -11,22 +11,24 @@ import * as jssUtils from './../../utils/jss';
 import { expect } from '@jest/globals';
 
 class MockResizeObserver {
+  public callback: any;
+
   constructor(callback) {
     this.callback = callback;
   }
 
-  public callback: any;
   observe(): void {}
   unobserve(): void {}
   disconnect(): void {}
 }
 
 class MockHTMLElement {
+  shadowRoot: DocumentOrShadowRoot;
+
   constructor() {
     this.shadowRoot = { adoptedStyleSheets: [] } as DocumentOrShadowRoot;
   }
 
-  shadowRoot: DocumentOrShadowRoot;
   getBoundingClientRect(): { height: number } {
     return { height: 100 };
   }

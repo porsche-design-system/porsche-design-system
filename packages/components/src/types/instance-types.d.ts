@@ -7,6 +7,4 @@ export type FunctionPropertyNames<T> = {
 }[keyof T];
 
 // eslint-disable-next-line @typescript-eslint/no-unsafe-function-type
-export type Class<T> = Function & {
-  new (...args: any[]): T;
-};
+export type Class<T> = Function & (new (...args: any[]) => T);

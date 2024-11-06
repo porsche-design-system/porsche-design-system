@@ -3,8 +3,7 @@ import * as fs from 'fs';
 import { globbySync } from 'globby';
 import { kebabCase, pascalCase } from 'latest-change-case';
 import { breakpoint } from '@porsche-design-system/styles';
-import type { TagName } from '@porsche-design-system/shared';
-import { INTERNAL_TAG_NAMES } from '@porsche-design-system/shared';
+import { type TagName, INTERNAL_TAG_NAMES } from '@porsche-design-system/shared';
 import { getComponentMeta } from '@porsche-design-system/component-meta';
 
 const EXCLUDED_COMPONENTS: TagName[] = ['p-toast-item'];
@@ -653,7 +652,7 @@ $&`
     const filePath = path.resolve(destinationDirectory, fileName);
 
     fs.writeFileSync(filePath, fileContent);
-    // eslint-disable-next-line no-console
+
     console.log(`Generated DSR Component into '${relativeDestinationDirectory}/${fileName}'`);
   });
 };

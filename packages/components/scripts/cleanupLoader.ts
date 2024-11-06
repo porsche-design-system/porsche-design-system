@@ -49,7 +49,6 @@ export const defineCustomElements = (options) => {
   const targetFile = path.normalize(targetFilePath);
   fs.writeFileSync(targetFile, `/* Auto Generated File */\n${content}`);
 
-  // eslint-disable-next-line no-console
   console.log(`Cleaned up ${srcFilePath} => ${targetFilePath}`);
 };
 

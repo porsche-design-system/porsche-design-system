@@ -1,5 +1,4 @@
-import type { BreakpointValue, BreakpointValues } from './breakpoint-customizable';
-import { parseJSON } from './breakpoint-customizable';
+import { type BreakpointValue, type BreakpointValues, parseJSON } from './breakpoint-customizable';
 import * as path from 'path';
 import * as fs from 'fs';
 import * as globby from 'globby-legacy';

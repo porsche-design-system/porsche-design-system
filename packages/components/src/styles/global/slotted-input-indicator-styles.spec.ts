@@ -1,7 +1,9 @@
 import { componentFactory } from '../../test-utils';
 import { expect } from '@jest/globals';
-import { getSlottedInputIndicatorStyles } from './slotted-input-indicator-styles';
-import { tagNamesWithSlottedInputIndicatorArray } from './slotted-input-indicator-styles';
+import {
+  tagNamesWithSlottedInputIndicatorArray,
+  getSlottedInputIndicatorStyles,
+} from './slotted-input-indicator-styles';
 import * as getSlottedInputIndicatorStylesUtils from './slotted-input-indicator-styles';
 import * as applyConstructableStylesheetStylesUtils from '../../utils/applyConstructableStylesheetStyle';
 

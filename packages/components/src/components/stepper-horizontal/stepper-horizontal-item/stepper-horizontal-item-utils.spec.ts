@@ -1,10 +1,10 @@
 import {
+  type StepperHorizontalItemState,
   getStepperHorizontalIconName,
   isItemClickable,
   isStateCompleteOrWarning,
   throwIfCurrentAndDisabled,
 } from './stepper-horizontal-item-utils';
-import type { StepperHorizontalItemState } from './stepper-horizontal-item-utils';
 import * as stepperHorizontalItemUtils from './stepper-horizontal-item-utils';
 
 describe('isStateCompleteOrWarning()', () => {

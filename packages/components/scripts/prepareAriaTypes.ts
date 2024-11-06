@@ -27,7 +27,7 @@ const prepareAriaTypes = (): void => {
   const filePath = path.resolve(rootDirectory, fileName);
 
   fs.writeFileSync(filePath, content);
-  // eslint-disable-next-line no-console
+
   console.log(`Generated aria types into '${fileName}'`);
 };
 

@@ -1,4 +1,3 @@
-import type { Breakpoint } from '@porsche-design-system/styles';
 import type { BreakpointCustomizable } from './breakpoint-customizable';
 import {
   flippedBreakpoint,
@@ -7,7 +6,7 @@ import {
 } from './breakpoint-observer-utils';
 import * as breakpointObserverUtils from './breakpoint-observer-utils';
 import { mediaQueryLists, overrideMediaQueryLists } from './breakpoint-observer';
-import { breakpoints } from '@porsche-design-system/styles';
+import { type Breakpoint, breakpoints } from '@porsche-design-system/styles';
 
 it('should match flippedBreakpoint snapshot', () => {
   expect(flippedBreakpoint).toMatchSnapshot();

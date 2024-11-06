@@ -12,7 +12,7 @@ const addMissingHTMLStencilElementExport = (): void => {
 
   if (!fileContent.includes(missingExport)) {
     fs.writeFileSync(filePath, `${fileContent}${missingExport}`);
-    // eslint-disable-next-line no-console
+
     console.log(`Added to '${fileName}': ${missingExport}`);
   }
 };

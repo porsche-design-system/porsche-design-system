@@ -104,7 +104,10 @@ export const getAriaStructure = <T>(allowedAriaAttributes: readonly T[]): string
 export const getShapeStructure = <T>(shapeStructure: { [key in keyof T]: ValidatorFunction }): string => {
   return formatObjectOutput(
     Object.keys(shapeStructure).reduce(
-      (prev, key) => ({ ...prev, [key]: shapeStructure[key as keyof { [key in keyof T]: ValidatorFunction }].name }),
+      (prev, key) => ({
+        ...prev,
+        [key]: shapeStructure[key as keyof { [keyword in keyof T]: ValidatorFunction }].name,
+      }),
       {}
     )
   ).replace(/"/g, ''); // remove double quotes

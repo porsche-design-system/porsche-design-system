@@ -1,5 +1,4 @@
-import type { TagName } from '@porsche-design-system/shared';
-import { TAG_NAMES } from '@porsche-design-system/shared';
+import { type TagName, TAG_NAMES } from '@porsche-design-system/shared';
 import * as fs from 'fs';
 import * as path from 'path';
 import * as globby from 'globby-legacy';

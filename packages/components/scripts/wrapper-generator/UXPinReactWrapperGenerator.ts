@@ -1,6 +1,5 @@
 import type { TagName } from '@porsche-design-system/shared';
-import type { ComponentMeta } from '@porsche-design-system/component-meta';
-import { getComponentMeta } from '@porsche-design-system/component-meta';
+import { type ComponentMeta, getComponentMeta } from '@porsche-design-system/component-meta';
 import { ReactWrapperGenerator } from './ReactWrapperGenerator';
 import type { ExtendedProp } from './DataStructureBuilder';
 import type { AdditionalFile } from './AbstractWrapperGenerator';
@@ -16,7 +15,7 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
   protected projectDir = 'uxpin-wrapper';
   protected hiddenComponents: TagName[] = [];
 
-  constructor() {
+  public constructor() {
     super();
     this.ignoreComponents = [
       ...this.ignoreComponents,
@@ -232,8 +231,8 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
         .replace(/(style: )(getPaddingStyles.+),/, '$1{ ...$2, minWidth: 100, minHeight: 50 },'); // patch inline style
     }
 
-    const removeDestructuredProp = (component: string, prop: string): string => {
-      return component.replace(new RegExp(`('?${prop}'?(?: = [A-z'-]+)?(?:, )?)`, 'g'), '');
+    const removeDestructuredProp = (tagName: string, prop: string): string => {
+      return tagName.replace(new RegExp(`('?${prop}'?(?: = [A-z'-]+)?(?:, )?)`, 'g'), '');
     };
 
     // remove destructured props

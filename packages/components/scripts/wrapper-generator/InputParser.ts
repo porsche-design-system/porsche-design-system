@@ -13,19 +13,19 @@ export type ParsedInterface = { [key: string]: string };
 export type IntrinsicElements = { [key in TagName]?: string };
 
 export class InputParser {
-  private static _instance: InputParser;
+  private static instance: InputParser;
 
   private sharedTypes: string = '';
   private rawLocalJSX: string = '';
   private rawComponents: string = '';
   private intrinsicElements: IntrinsicElements = {};
 
-  constructor() {
+  public constructor() {
     this.parseInput();
   }
 
   public static get Instance(): InputParser {
-    return this._instance || (this._instance = new this());
+    return this.instance || (this.instance = new this());
   }
 
   public getSharedTypes(): string {
@@ -68,8 +68,8 @@ export class InputParser {
     const rawInterface = this.getRawComponentInterface(component);
     const cleanedInterface = rawInterface.replace(/\??: (.+?);/g, ': \'$1\','); // convert to valid js object
 
-    const parsedInterface: ParsedInterface = eval(`(${cleanedInterface})`);
-    return parsedInterface;
+    // eslint-disable-next-line no-eval
+    return eval(`(${cleanedInterface})`);
   }
 
   public isPropOptional(component: TagName, propName: string): boolean {
@@ -164,9 +164,9 @@ export class InputParser {
     let [, rawIntrinsicElements] = /interface IntrinsicElements ({(?:\n|.)*?})/.exec(rawLocalJSX) || [];
 
     rawIntrinsicElements = rawIntrinsicElements.replace(/ (\w+);/g, ' \'$1\',');
+    // eslint-disable-next-line no-eval
     this.intrinsicElements = eval(`(${rawIntrinsicElements})`);
 
-    // eslint-disable-next-line no-console
     console.log(`Found ${Object.keys(this.intrinsicElements).length} intrinsicElements in ${bundleDtsFileName}`);
   }
 

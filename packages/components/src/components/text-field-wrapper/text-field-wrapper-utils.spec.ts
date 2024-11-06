@@ -16,11 +16,12 @@ import * as formUtils from '../../utils/form/form-utils';
 import * as jssUtils from './../../utils/jss';
 
 class MockHTMLElement {
+  shadowRoot: DocumentOrShadowRoot;
+
   constructor() {
     this.shadowRoot = { adoptedStyleSheets: [] } as DocumentOrShadowRoot;
   }
 
-  shadowRoot: DocumentOrShadowRoot;
   getBoundingClientRect(): { height: number } {
     return { height: 100 };
   }

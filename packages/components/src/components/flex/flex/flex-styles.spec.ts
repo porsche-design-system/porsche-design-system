@@ -1,13 +1,11 @@
 import { getComponentCss } from './flex-styles';
-import type {
-  FlexAlignContent,
-  FlexAlignItems,
-  FlexDirection,
-  FlexInline,
-  FlexJustifyContent,
-  FlexWrap,
-} from './flex-utils';
 import {
+  type FlexAlignContent,
+  type FlexAlignItems,
+  type FlexDirection,
+  type FlexInline,
+  type FlexJustifyContent,
+  type FlexWrap,
   FLEX_ALIGN_CONTENTS,
   FLEX_ALIGN_ITEMS,
   FLEX_DIRECTIONS,

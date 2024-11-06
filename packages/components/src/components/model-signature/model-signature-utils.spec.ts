@@ -1,5 +1,4 @@
-import { getSvgUrl, MODEL_SIGNATURE_MODELS } from './model-signature-utils';
-import type { ModelSignatureModel } from './model-signature-utils';
+import { type ModelSignatureModel, getSvgUrl, MODEL_SIGNATURE_MODELS } from './model-signature-utils';
 import { MODEL_SIGNATURES_MANIFEST } from '@porsche-design-system/model-signatures';
 
 describe('MODEL_SIGNATURE_MODELS', () => {

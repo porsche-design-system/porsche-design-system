@@ -1,5 +1,4 @@
-import type { GridItemOffset, GridItemSize } from './grid-item-utils';
-import { GRID_ITEM_OFFSETS, GRID_ITEM_SIZES } from './grid-item-utils';
+import { type GridItemOffset, type GridItemSize, GRID_ITEM_OFFSETS, GRID_ITEM_SIZES } from './grid-item-utils';
 import { getComponentCss } from './grid-item-styles';
 import type { BreakpointCustomizable } from '../../../types';
 import { validateCssAndMatchSnapshot } from '../../../../tests/unit/helpers';

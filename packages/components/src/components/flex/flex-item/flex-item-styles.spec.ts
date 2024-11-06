@@ -1,13 +1,11 @@
 import { getComponentCss } from './flex-item-styles';
-import type {
-  FlexItemAlignSelf,
-  FlexItemFlex,
-  FlexItemGrow,
-  FlexItemOffset,
-  FlexItemShrink,
-  FlexItemWidth,
-} from './flex-item-utils';
 import {
+  type FlexItemAlignSelf,
+  type FlexItemFlex,
+  type FlexItemGrow,
+  type FlexItemOffset,
+  type FlexItemShrink,
+  type FlexItemWidth,
   FLEX_ITEM_ALIGN_SELFS,
   FLEX_ITEM_FLEXS,
   FLEX_ITEM_GROWS,

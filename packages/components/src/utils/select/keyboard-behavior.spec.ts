@@ -1,7 +1,6 @@
 import * as keyboardBehaviorUtils from './keyboard-behavior';
-import type {
-  Option } from './keyboard-behavior';
 import {
+  type Option,
   filterSelectOptions,
   getHighlightedSelectOption,
   getHighlightedSelectOptionIndex,

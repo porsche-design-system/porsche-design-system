@@ -1,9 +1,8 @@
 import type { DropdownDirectionInternal } from '../select-wrapper/select-wrapper-utils';
-import type {
-  DropdownInteractionType,
-  OptgroupOptionMap,
-  OptionMap } from './select-wrapper-dropdown-utils';
 import {
+  type DropdownInteractionType,
+  type OptgroupOptionMap,
+  type OptionMap,
   getAmountOfVisibleOptionsAndOptgroups,
   getDropdownVisibility,
   getHighlightedOptionMapIndex,

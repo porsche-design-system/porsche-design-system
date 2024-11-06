@@ -1,8 +1,7 @@
-import type { Theme } from '@porsche-design-system/styles';
 import type { ThemedColors } from '../src/styles';
 import * as path from 'path';
 import * as fs from 'fs';
-import { themeLight, themeDark } from '@porsche-design-system/styles';
+import { type Theme, themeLight, themeDark } from '@porsche-design-system/styles';
 import tinycolor2 from 'tinycolor2';
 import { pascalCase } from 'latest-change-case';
 
@@ -144,7 +143,7 @@ const generateThemesObject = (): void => {
     `$1${content}$2`
   );
   fs.writeFileSync(targetPath, newFileContent);
-  // eslint-disable-next-line no-console
+
   console.log(`Injected static colors map into '${targetPath}'`);
 };
 

@@ -1,9 +1,8 @@
-import type { TagName } from '@porsche-design-system/shared';
+import { type TagName, INTERNAL_TAG_NAMES } from '@porsche-design-system/shared';
 import { ReactWrapperGenerator } from './ReactWrapperGenerator';
 import type { ExtendedProp } from './DataStructureBuilder';
 import { pascalCase, kebabCase } from 'latest-change-case';
 import { getComponentMeta } from '@porsche-design-system/component-meta';
-import { INTERNAL_TAG_NAMES } from '@porsche-design-system/shared';
 
 export class NextJsReactWrapperGenerator extends ReactWrapperGenerator {
   protected projectDir = 'react-ssr-wrapper';

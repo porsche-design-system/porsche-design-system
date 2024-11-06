@@ -1,6 +1,5 @@
 import type { MarqueSize } from './marque-size';
-import type { InnerManifest, MarqueFormat } from './marque-utils';
-import { buildImgSrc, buildSrcSet, getInnerManifest } from './marque-utils';
+import { type InnerManifest, type MarqueFormat, buildImgSrc, buildSrcSet, getInnerManifest } from './marque-utils';
 import { MARQUES_MANIFEST } from '@porsche-design-system/assets';
 
 describe('getManifestPath()', () => {

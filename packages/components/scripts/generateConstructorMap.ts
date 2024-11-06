@@ -1,8 +1,7 @@
 import * as fs from 'fs';
 import * as path from 'path';
 import { globbySync } from 'globby';
-import type { TagName } from '@porsche-design-system/shared';
-import { TAG_NAMES } from '@porsche-design-system/shared';
+import { type TagName, TAG_NAMES } from '@porsche-design-system/shared';
 import { pascalCase } from 'latest-change-case';
 
 const generateConstructorMap = (): void => {
@@ -51,7 +50,7 @@ const generateConstructorMap = (): void => {
   const filePath = path.resolve(rootDirectory, fileName);
 
   fs.writeFileSync(filePath, content);
-  // eslint-disable-next-line no-console
+
   console.log(`Wrote TAG_NAMES_CONSTRUCTOR_MAP into '${fileName}'`);
 };
 

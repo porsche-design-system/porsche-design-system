@@ -1,5 +1,9 @@
-import type { ScrollerDirection } from './scroller-utils';
-import { getScrollerElements, getScrollPositionAfterPrevNextClick, isScrollable } from './scroller-utils';
+import {
+  type ScrollerDirection,
+  getScrollerElements,
+  getScrollPositionAfterPrevNextClick,
+  isScrollable,
+} from './scroller-utils';
 import * as getHTMLElementsUtils from '../../utils/dom/getHTMLElements';
 
 describe('getScrollPositionAfterPrevNextClick()', () => {
@@ -13,7 +17,7 @@ describe('getScrollPositionAfterPrevNextClick()', () => {
     'should for offsetWidth: %s, scrollLeft: %s and direction: %s return %s',
     (offsetWidth, scrollLeft, direction, expected) => {
       expect(getScrollPositionAfterPrevNextClick({ offsetWidth, scrollLeft } as HTMLElement, direction)).toBe(expected);
-    },
+    }
   );
 });
 

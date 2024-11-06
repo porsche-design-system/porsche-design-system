@@ -1,4 +1,6 @@
 import {
+  type PopoverDirection,
+  type PopoverInternal,
   calcSpaceForDirections,
   getAutoDirection,
   getPopoverMargin,
@@ -13,7 +15,6 @@ import {
   updateNativePopoverStyles,
   safeZonePx,
 } from './popover-utils';
-import type { PopoverDirection, PopoverInternal } from './popover-utils';
 import * as popoverUtils from './popover-utils';
 import * as utils from '../../utils/jss';
 import { Popover } from './popover';
