@@ -125,6 +125,11 @@ export class PinCode {
     this.defaultValue = this.value;
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
+  public componentWillUpdate(): void {
+    // TODO fix this workaround for InitialLoadingController
+  }
+
   public componentDidLoad(): void {
     this.internals.setFormValue(this.value);
     // The beforeinput event is the only event which fires and can be prevented reliably on all keyboard types

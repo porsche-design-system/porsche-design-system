@@ -47,7 +47,7 @@ export type ReactiveControllerHost<T extends object> = {
  *
  * Controllers are added to a host component, or other object that implements
  * the `ReactiveControllerHost` interface, via the `addController()` method.
- * They can hook their host components's lifecycle by implementing one or more
+ * They can hook their host component's lifecycle by implementing one or more
  * of the lifecycle callbacks, or initiate an update of the host component by
  * calling `requestUpdate()` on the host.
  */
