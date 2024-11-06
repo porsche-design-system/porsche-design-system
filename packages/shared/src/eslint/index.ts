@@ -5,7 +5,6 @@ import eslintJs from '@eslint/js';
 import eslintTs from 'typescript-eslint';
 // import eslintVitest from 'eslint-plugin-vitest';
 // import eslintPlaywright from 'eslint-plugin-playwright';
-// import eslintFunctionalProgramming from 'eslint-plugin-fp';
 
 const config: Linter.Config[] = [
   eslintJs.configs.recommended,
@@ -13,8 +12,6 @@ const config: Linter.Config[] = [
   ...(eslintTs.configs.recommended as any), // typescript-eslint comes with outdated typings
   // eslintPlaywright.configs['flat/recommended'],
   // eslintVitest.configs.recommended,
-  // eslintFunctionalProgramming.configs.recommended,
-  // import eslintPluginPrettierRecommended from 'eslint-plugin-prettier/recommended'
   {
     rules: {
       '@stylistic/comma-dangle': 'off',
