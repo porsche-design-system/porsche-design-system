@@ -4,5 +4,6 @@ exports[`LINK_ARIA_ATTRIBUTES should match snapshot 1`] = `
 [
   "aria-label",
   "aria-current",
+  "aria-haspopup",
 ]
 `;
