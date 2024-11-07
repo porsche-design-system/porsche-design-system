@@ -21,6 +21,7 @@ import {
 import type { MultiSelectOption } from '@porsche-design-system/components/dist/types/components/multi-select/multi-select/multi-select-utils';
 
 const getHost = (page: Page) => page.locator('p-multi-select');
+const getFieldset = (page: Page) => page.locator('fieldset');
 const getMultiSelectValue = async (page: Page): Promise<string[]> => await getProperty(getHost(page), 'value');
 const getInput = (page: Page) => page.locator('p-multi-select input').first();
 const getInputValue = async (page: Page): Promise<string | number> => getProperty(getInput(page), 'value');
@@ -29,7 +30,7 @@ const getDropdown = (page: Page) => page.locator('p-multi-select .listbox');
 const getDropdownDisplay = async (page: Page): Promise<string> => await getElementStyle(getDropdown(page), 'display');
 const getShadowDropdownOption = (page: Page, n: number) => page.locator(`p-multi-select .listbox div:nth-child(${n})`);
 const getMultiSelectOption = (page: Page, n: number) =>
-  page.locator(`p-multi-select p-multi-select-option:nth-child(${n + 1})`); // First one is native select
+  page.locator(`p-multi-select p-multi-select-option:nth-child(${n})`);
 const getMultiSelectOptions = (page: Page): Promise<Locator[]> =>
   page.locator('p-multi-select p-multi-select-option').all();
 const getAmountOfVisibleMultiSelectOptions = async (page: Page): Promise<(SVGElement | HTMLElement)[]> =>
@@ -67,10 +68,6 @@ const getSelectedOptionIndicies = async (page: Page): Promise<number[]> =>
     .evaluateAll((options) =>
       options.filter((option: any) => option.selected).map((option) => options.indexOf(option))
     );
-const getNativeSelect = (page: Page) => page.locator('p-multi-select select').first();
-const getNativeSelectValue = async (page: Page): Promise<string | number> =>
-  await getProperty(getNativeSelect(page), 'value');
-const getNativeSelectOptions = (page: Page) => page.locator('p-multi-select select option').all();
 const getLabel = (page: Page) => page.locator('p-multi-select label').first();
 const getResetButton = (page: Page) => page.locator('p-multi-select .button').first();
 const getForm = (page: Page) => page.locator('form');
@@ -163,225 +160,6 @@ test('should render', async ({ page }) => {
   await waitForStencilLifecycle(page);
 
   expect(await getDropdownDisplay(page)).toBe('flex');
-});
-
-test.describe('native select', () => {
-  test('should be rendered', async ({ page }) => {
-    await initMultiSelect(page);
-    const nativeSelectElement = getNativeSelect(page);
-    expect(nativeSelectElement).not.toBeNull();
-    expect(await getProperty(nativeSelectElement, 'multiple')).toBeTruthy();
-    expect(await nativeSelectElement.evaluate((el: HTMLSelectElement) => el.selectedOptions.length)).toBe(0);
-  });
-
-  test('should not be visible', async ({ page }) => {
-    await initMultiSelect(page);
-    const nativeSelectElement = getNativeSelect(page);
-    expect(await getElementStyle(nativeSelectElement, 'opacity')).toBe('0');
-  });
-
-  test('props should be in sync', async ({ page }) => {
-    await initMultiSelect(page);
-    const nativeSelectElement = getNativeSelect(page);
-    expect(await getAttribute(nativeSelectElement, 'name')).toBe('name');
-
-    const host = getHost(page);
-    await setProperty(host, 'required', true);
-    await setProperty(host, 'disabled', true);
-
-    await waitForStencilLifecycle(page);
-
-    expect(await getProperty(nativeSelectElement, 'required')).toBe(true);
-    expect(await getProperty(nativeSelectElement, 'disabled')).toBe(true);
-
-    await setProperty(host, 'required', false);
-    await setProperty(host, 'disabled', false);
-
-    await waitForStencilLifecycle(page);
-
-    expect(await getProperty(nativeSelectElement, 'required')).toBe(false);
-    expect(await getProperty(nativeSelectElement, 'disabled')).toBe(false);
-  });
-
-  test('should be in sync with selected options when selecting option', async ({ page }) => {
-    await initMultiSelect(page);
-    const nativeSelectOptions = await getNativeSelectOptions(page);
-    expect(nativeSelectOptions.length, 'initial').toEqual(0);
-
-    const inputElement = getInput(page);
-    await inputElement.click();
-    await waitForStencilLifecycle(page);
-
-    const option = getMultiSelectOption(page, 1);
-    await option.click();
-    await waitForStencilLifecycle(page);
-    const nativeSelectOptions1 = await getNativeSelectOptions(page);
-
-    expect(nativeSelectOptions1[0], 'after selected').not.toBeUndefined();
-    expect(await getProperty(nativeSelectOptions1[0], 'value'), 'after selected').toEqual('a');
-
-    await option.click();
-    await waitForStencilLifecycle(page);
-    const nativeSelectOptions2 = await getNativeSelectOptions(page);
-    expect(nativeSelectOptions2[0], 'after unselected').toBeUndefined();
-    expect(nativeSelectOptions2.length, 'after unselected').toEqual(0);
-  });
-
-  test('should be in sync with selected options when setting value', async ({ page }) => {
-    await initMultiSelect(page);
-    const nativeSelectOptions = await getNativeSelectOptions(page);
-    expect(nativeSelectOptions.length, 'initial').toEqual(0);
-
-    await setValue(page, ['a']);
-    await waitForStencilLifecycle(page);
-    const nativeSelectOptions1 = await getNativeSelectOptions(page);
-
-    expect(nativeSelectOptions1[0], 'after selected').not.toBeUndefined();
-    expect(await getProperty(nativeSelectOptions1[0], 'value'), 'after selected').toEqual('a');
-
-    await setValue(page, []);
-    await waitForStencilLifecycle(page);
-    const nativeSelectOptions2 = await getNativeSelectOptions(page);
-    expect(nativeSelectOptions2[0], 'after unselected').toBeUndefined();
-    expect(nativeSelectOptions2.length, 'after unselected').toEqual(0);
-  });
-
-  test('should be in sync when resetting options', async ({ page }) => {
-    await initMultiSelect(page);
-    await setValue(page, ['a', 'b']);
-    await waitForStencilLifecycle(page);
-
-    const nativeSelectOptions = await getNativeSelectOptions(page);
-    expect(nativeSelectOptions.length, 'initial').toEqual(2);
-    expect(await getProperty(nativeSelectOptions[0], 'value')).toEqual('a');
-    expect(await getProperty(nativeSelectOptions[1], 'value')).toEqual('b');
-
-    const resetButton = getResetButton(page);
-    await resetButton.click();
-    await waitForStencilLifecycle(page);
-
-    const nativeSelectOptionsAfter = await getNativeSelectOptions(page);
-    expect(nativeSelectOptionsAfter.length, 'after reset').toEqual(0);
-    expect(nativeSelectOptionsAfter[0], 'after reset').toBeUndefined();
-  });
-
-  test('should be in sync with selected options when adding new selected option', async ({ page }) => {
-    await initMultiSelect(page);
-
-    const nativeSelectOptions = await getNativeSelectOptions(page);
-    expect(nativeSelectOptions.length, 'initial').toEqual(0);
-
-    await setValue(page, ['test']);
-    await waitForStencilLifecycle(page);
-    await addOption(page, 'test');
-    await waitForStencilLifecycle(page);
-
-    const nativeSelectOptionsAfter = await getNativeSelectOptions(page);
-
-    expect(nativeSelectOptionsAfter[0]).not.toBeUndefined();
-    expect(await getProperty(nativeSelectOptionsAfter[0], 'value')).toEqual('test');
-  });
-
-  test('should be in sync with selected options when removing selected option', async ({ page }) => {
-    await initMultiSelect(page);
-    await setValue(page, ['c']);
-    await waitForStencilLifecycle(page);
-
-    const nativeSelectOptions = await getNativeSelectOptions(page);
-    expect(nativeSelectOptions.length, 'initial').toEqual(1);
-    expect(await getProperty(nativeSelectOptions[0], 'value'), 'initial').toEqual('c');
-
-    await removeLastOption(page);
-    await waitForStencilLifecycle(page);
-
-    const nativeSelectOptionsAfter = await getNativeSelectOptions(page);
-    expect(nativeSelectOptionsAfter.length, 'after removing option').toEqual(0);
-    expect(nativeSelectOptionsAfter[0]).toBeUndefined();
-  });
-
-  test('should not be rendered when used without wrapping form', async ({ page }) => {
-    await initMultiSelect(page, {
-      options: {
-        isWithinForm: false,
-      },
-    });
-    const nativeSelectElement = getNativeSelect(page);
-    await expect(nativeSelectElement).toHaveCount(0);
-  });
-
-  // TODO: Focus host (currently native select is focused and native validation box shown)
-  test.fixme('should receive focus when form is submitted but native validation fails', async ({ page }) => {
-    await initMultiSelect(page, {
-      props: { name: 'options', required: true },
-      options: { isWithinForm: true, markupAfter: '<button type="submit">Submit</button>' },
-    });
-    const inputElement = getInput(page);
-    const form = getForm(page);
-
-    await addEventListener(form, 'submit');
-    expect((await getEventSummary(form, 'submit')).counter).toBe(0);
-
-    await page.locator('button[type="submit"]').click();
-
-    expect((await getEventSummary(form, 'submit')).counter).toBe(1);
-    await expect(inputElement).toBeFocused();
-  });
-
-  test('should include name & value in FormData submit', async ({ page }) => {
-    const name = 'name';
-    const value = ['a', 'b'];
-    await initMultiSelect(page, {
-      props: { name },
-      options: {
-        isWithinForm: true,
-        markupAfter: '<button type="submit">Submit</button>',
-      },
-    });
-    const host = await getHost(page);
-    await setProperty(host, 'value', value);
-    const form = getForm(page);
-
-    await addEventListener(form, 'submit');
-    expect((await getEventSummary(form, 'submit')).counter).toBe(0);
-
-    await page.locator('button[type=submit]').click();
-
-    expect((await getEventSummary(form, 'submit')).counter).toBe(1);
-    expect(await getFormDataValues(form)).toStrictEqual(value);
-  });
-
-  // TODO: Reset not implemented yet (Only way to do this would be to add reset listener to wrapping form?)
-  test.fixme('should reset multi-select value on form reset', async ({ page }) => {
-    const name = 'name';
-    const value = ['a'];
-    await initMultiSelect(page, {
-      props: { name },
-      options: {
-        isWithinForm: true,
-        markupAfter: `
-        <button type="submit">Submit</button>
-        <button type="reset">Reset</button>
-      `,
-      },
-    });
-    const host = getHost(page);
-    await setProperty(host, 'value', value);
-    const form = getForm(page);
-
-    await addEventListener(form, 'submit');
-    expect((await getEventSummary(form, 'submit')).counter).toBe(0);
-    await setProperty(host, 'value', ['b']);
-    await expect(host).toHaveJSProperty('value', ['b']);
-
-    await page.locator('button[type="reset"]').click();
-
-    await expect(host).toHaveJSProperty('value', value); // Should be initial value again
-
-    await page.locator('button[type="submit"]').click();
-
-    expect((await getEventSummary(form, 'submit')).counter).toBe(1);
-    expect(await getFormDataValues(form)).toStrictEqual(value);
-  });
 });
 
 test.describe('Update Event', () => {
@@ -674,7 +452,6 @@ skipInBrowsers(['firefox', 'webkit'], () => {
       await expect(getResetButton(page)).toHaveCount(0);
       expect((await getEventSummary(inputElement, 'focus')).counter).toBe(2);
       expect(await getActiveElementTagNameInShadowRoot(host)).toBe('INPUT');
-      expect(await getNativeSelectValue(page)).toStrictEqual('');
       expect(await getMultiSelectValue(page)).toStrictEqual([]);
     });
 
@@ -715,11 +492,6 @@ test.describe('filter', () => {
     await inputElement.press('Enter');
     await waitForStencilLifecycle(page);
 
-    const nativeOptions = await getNativeSelectOptions(page);
-
-    expect(nativeOptions.length).toBe(1);
-    expect(await getProperty(nativeOptions[0], 'value')).toBe('b');
-    expect(await getNativeSelectValue(page)).toBe('b');
     expect(await getMultiSelectValue(page)).toStrictEqual(['b']);
   });
 
@@ -754,12 +526,10 @@ test.describe('selection', () => {
     await waitForStencilLifecycle(page);
 
     const value = await getMultiSelectValue(page);
-    const nativeSelectOptions = await getNativeSelectOptions(page);
     const filterPlaceholder = await getInputPlaceholder(page);
     const selectedMultiSelectOptions = await getSelectedMultiSelectOptionProperty(page, 'textContent');
 
     expect(value).toStrictEqual(['b']);
-    expect(await getProperty(nativeSelectOptions[0], 'value'), 'after first option selected').toEqual('b');
     expect(selectedMultiSelectOptions, 'after first option selected').toEqual(['Option B']);
     expect(filterPlaceholder, 'after first option selected').toBe(selectedMultiSelectOptions.join(', '));
 
@@ -770,13 +540,10 @@ test.describe('selection', () => {
     await waitForStencilLifecycle(page);
 
     const valueAfter = await getMultiSelectValue(page);
-    const nativeSelectOptionsAfter = await getNativeSelectOptions(page);
     const filterPlaceholderSecond = await getInputPlaceholder(page);
     const selectedMultiSelectOptionsSecond = await getSelectedMultiSelectOptionProperty(page, 'textContent');
 
     expect(valueAfter).toStrictEqual(['b', 'c']);
-    expect(await getProperty(nativeSelectOptionsAfter[0], 'value'), 'after second option selected').toEqual('b');
-    expect(await getProperty(nativeSelectOptionsAfter[1], 'value'), 'after second option selected').toEqual('c');
     expect(selectedMultiSelectOptionsSecond, 'after second option selected').toEqual(['Option B', 'Option C']);
     expect(filterPlaceholderSecond, 'after second option selected').toBe(selectedMultiSelectOptionsSecond.join(', '));
   });
@@ -793,12 +560,10 @@ test.describe('selection', () => {
     await waitForStencilLifecycle(page);
 
     const value = await getMultiSelectValue(page);
-    const nativeSelectOptions = await getNativeSelectOptions(page);
     const filterPlaceholder = await getInputPlaceholder(page);
     const selectedMultiSelectOptions = await getSelectedMultiSelectOptionProperty(page, 'textContent');
 
     expect(value).toStrictEqual(['b']);
-    expect(await getProperty(nativeSelectOptions[0], 'value'), 'after first option selected').toEqual('b');
     expect(filterPlaceholder, 'after first selection').toBe('Option B');
     expect(filterPlaceholder, 'after first selection').toEqual(selectedMultiSelectOptions.join(', '));
 
@@ -807,13 +572,10 @@ test.describe('selection', () => {
     await waitForStencilLifecycle(page);
 
     const valueAfter = await getMultiSelectValue(page);
-    const nativeSelectOptionsAfter = await getNativeSelectOptions(page);
     const filterPlaceholderSecond = await getInputPlaceholder(page);
     const selectedMultiSelectOptionsSecond = await getSelectedMultiSelectOptionProperty(page, 'textContent');
 
     expect(valueAfter).toStrictEqual(['b', 'c']);
-    expect(await getProperty(nativeSelectOptionsAfter[0], 'value'), 'after second option selected').toEqual('b');
-    expect(await getProperty(nativeSelectOptionsAfter[1], 'value'), 'after second option selected').toEqual('c');
     expect(filterPlaceholderSecond, 'after second selection').toBe('Option B, Option C');
     expect(filterPlaceholderSecond, 'after second selection').toEqual(selectedMultiSelectOptionsSecond.join(', '));
   });
@@ -829,7 +591,6 @@ test.describe('selection', () => {
       await inputElement.press('Enter');
       await waitForStencilLifecycle(page);
 
-      expect(await getProperty((await getNativeSelectOptions(page))[0], 'value')).toEqual('a');
       expect(await getMultiSelectValue(page)).toEqual(['a']);
       expect(await getSelectedMultiSelectOptionProperty(page, 'value')).toEqual(['a']);
 
@@ -843,7 +604,6 @@ test.describe('selection', () => {
       await resetButton.press('Enter');
       await waitForStencilLifecycle(page);
 
-      expect(await getNativeSelectOptions(page)).toEqual([]);
       expect(await getMultiSelectValue(page)).toEqual([]);
       expect(await getSelectedMultiSelectOptionProperty(page, 'value')).toEqual([]);
     });
@@ -861,8 +621,6 @@ test.describe('selection', () => {
     await option2.click();
     await waitForStencilLifecycle(page);
 
-    expect(await getProperty((await getNativeSelectOptions(page))[0], 'value')).toEqual('a');
-    expect(await getProperty((await getNativeSelectOptions(page))[1], 'value')).toEqual('b');
     expect(await getMultiSelectValue(page)).toEqual(['a', 'b']);
     expect(await getSelectedMultiSelectOptionProperty(page, 'value')).toEqual(['a', 'b']);
 
@@ -870,7 +628,6 @@ test.describe('selection', () => {
     await resetButton.click();
     await waitForStencilLifecycle(page);
 
-    expect(await getNativeSelectOptions(page)).toEqual([]);
     expect(await getMultiSelectValue(page)).toEqual([]);
     expect(await getSelectedMultiSelectOptionProperty(page, 'value')).toEqual([]);
   });
@@ -1249,9 +1006,7 @@ test.describe('slots', () => {
 
     await addOption(page, 'd', 'Option D');
     await waitForStencilLifecycle(page);
-    const nativeOptions = await getNativeSelectOptions(page);
     const filterPlaceholder = await getInputPlaceholder(page);
-    expect(await getProperty(nativeOptions[0], 'value'), 'after option was added').toStrictEqual('d');
     expect(filterPlaceholder, 'after option was added').toBe('Option D');
   });
 
@@ -1259,9 +1014,7 @@ test.describe('slots', () => {
     await initMultiSelect(page);
     await setValue(page, ['c']);
     await waitForStencilLifecycle(page);
-    const nativeOptions = await getNativeSelectOptions(page);
     const filterPlaceholder = await getInputPlaceholder(page);
-    expect(await getProperty(nativeOptions[0], 'value'), 'after option was added').toStrictEqual('c');
     expect(await getMultiSelectValue(page)).toStrictEqual(['c']);
     expect(filterPlaceholder, 'after option was added').toBe('Option C');
 
@@ -1272,10 +1025,8 @@ test.describe('slots', () => {
 
     await waitForStencilLifecycle(page);
 
-    const nativeOptionsAfter = await getNativeSelectOptions(page);
     const filterPlaceholderAfter = await getInputPlaceholder(page);
 
-    expect(nativeOptionsAfter, 'after selected option was removed').toStrictEqual([]);
     expect(filterPlaceholderAfter, 'after option was added').toBeNull();
   });
 });
@@ -1478,5 +1229,179 @@ test.describe('optgroups', () => {
     for (const child of children) {
       await expect(child).not.toBeVisible();
     }
+  });
+});
+
+test.describe('form', () => {
+  test('should include name & value in FormData submit if updated programmatically', async ({ page }) => {
+    const name = 'name';
+    const value = ['a', 'b'];
+    await initMultiSelect(page, {
+      props: { name },
+      options: { isWithinForm: true, markupAfter: '<button type="submit">Submit</button>' },
+    });
+    const host = getHost(page);
+    const form = getForm(page);
+    await setProperty(host, 'value', value);
+
+    await addEventListener(form, 'submit');
+    expect((await getEventSummary(form, 'submit')).counter).toBe(0);
+
+    await page.locator('button[type="submit"]').click();
+
+    expect((await getEventSummary(form, 'submit')).counter).toBe(1);
+    expect(await getFormDataValues(form, name)).toStrictEqual(value);
+  });
+
+  test('should include name & value in FormData submit if updated using keyboard', async ({ page }) => {
+    const name = 'options';
+    const value = ['a'];
+    await initMultiSelect(page, {
+      props: { name },
+      options: {
+        isWithinForm: true,
+        markupBefore: '<p-text>Some Text</p-text>',
+        markupAfter: '<button type="submit">Submit</button>',
+      },
+    });
+    const form = getForm(page);
+    const text = page.locator('p-text');
+    await addEventListener(form, 'submit');
+    expect((await getEventSummary(form, 'submit')).counter).toBe(0);
+
+    await page.keyboard.press('Tab');
+    await page.keyboard.press('Space');
+    await waitForStencilLifecycle(page);
+
+    await page.keyboard.press('ArrowDown');
+    await page.keyboard.press('Enter');
+    await text.click();
+    await waitForStencilLifecycle(page);
+
+    await page.locator('button[type="submit"]').click();
+
+    expect((await getEventSummary(form, 'submit')).counter).toBe(1);
+    expect(await getFormDataValues(form, name)).toStrictEqual(value);
+  });
+
+  test('should include name & value in FormData submit if updated using mouse', async ({ page }) => {
+    const name = 'options';
+    const value = ['b'];
+    await initMultiSelect(page, {
+      props: { name },
+      options: {
+        isWithinForm: true,
+        markupBefore: '<p-text>Some Text</p-text>',
+        markupAfter: '<button type="submit">Submit</button>',
+      },
+    });
+    const inputElement = getInput(page);
+    const form = getForm(page);
+    const text = page.locator('p-text');
+    await addEventListener(form, 'submit');
+    expect((await getEventSummary(form, 'submit')).counter).toBe(0);
+
+    await inputElement.click();
+    await waitForStencilLifecycle(page);
+
+    const dropdownOption = getMultiSelectOption(page, 2);
+    await dropdownOption.click();
+    await text.click();
+    await waitForStencilLifecycle(page);
+
+    await page.locator('button[type="submit"]').click();
+
+    expect((await getEventSummary(form, 'submit')).counter).toBe(1);
+    expect(await getFormDataValues(form, name)).toStrictEqual(value);
+  });
+
+  test('should include name & value in FormData submit if outside of form', async ({ page }) => {
+    const name = 'name';
+    const value = ['a', 'b'];
+    const formId = 'myForm';
+    await initMultiSelect(page, {
+      props: { name, form: formId },
+      options: {
+        isWithinForm: false,
+        markupBefore: `<form id="myForm" onsubmit="return false;"><button type="submit">Submit</button></form>`,
+      },
+    });
+    const multiSelect = getHost(page);
+    const form = getForm(page);
+    await setProperty(multiSelect, 'value', value);
+
+    await addEventListener(form, 'submit');
+    expect((await getEventSummary(form, 'submit')).counter).toBe(0);
+
+    await page.locator('button[type="submit"]').click();
+
+    expect((await getEventSummary(form, 'submit')).counter).toBe(1);
+    expect(await getFormDataValues(form, name)).toStrictEqual(value);
+  });
+
+  test('should reset multi-select value to its initial value on form reset', async ({ page }) => {
+    const name = 'name';
+    const value = ['c'];
+    await initMultiSelect(page, {
+      props: { name },
+      options: {
+        isWithinForm: true,
+        markupAfter: `
+        <button type="submit">Submit</button>
+        <button type="reset">Reset</button>
+      `,
+      },
+    });
+    const host = getHost(page);
+    const form = getForm(page);
+
+    await addEventListener(form, 'submit');
+    expect((await getEventSummary(form, 'submit')).counter).toBe(0);
+
+    await setProperty(host, 'value', value);
+
+    await page.locator('button[type="reset"]').click();
+
+    await page.locator('button[type="submit"]').click();
+
+    expect((await getEventSummary(form, 'submit')).counter).toBe(1);
+    await expect(host).toHaveJSProperty('value', []);
+    expect(await getFormDataValues(form, name)).toStrictEqual([]);
+  });
+
+  test('should disable select if within disabled fieldset', async ({ page }) => {
+    const name = 'name';
+    const value = ['Hallo'];
+    const host = getHost(page);
+    await initMultiSelect(page, {
+      props: { name, value },
+      options: {
+        isWithinForm: true,
+        markupBefore: `<fieldset disabled>`,
+        markupAfter: `</fieldset>`,
+      },
+    });
+
+    await expect(host).toHaveJSProperty('disabled', true);
+  });
+
+  test('should sync disabled state with fieldset when updated programmatically', async ({ page }) => {
+    await initMultiSelect(page, {
+      options: {
+        isWithinForm: true,
+        markupBefore: `<fieldset disabled>`,
+        markupAfter: `</fieldset>`,
+      },
+    });
+    const host = getHost(page);
+    const fieldset = getFieldset(page);
+    await expect(fieldset).toHaveJSProperty('disabled', true);
+    await expect(host).toHaveJSProperty('disabled', true);
+
+    await setProperty(fieldset, 'disabled', false);
+    await waitForStencilLifecycle(page);
+
+    await expect(fieldset).toHaveJSProperty('disabled', false);
+    await expect(host).toHaveJSProperty('disabled', false);
   });
 });
