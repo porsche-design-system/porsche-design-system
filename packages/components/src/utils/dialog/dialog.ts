@@ -35,12 +35,11 @@ export const onTransitionEnd = (
   isOpen: boolean,
   motionVisibleEndEvent: EventEmitter,
   motionHiddenEndEvent: EventEmitter,
-  dismissBtn: HTMLElement,
   dialog: HTMLDialogElement
 ): void => {
+  // Native <dialog> autofocus is prevented and instead set here to the dialog itself after the transition finished to avoid conflicts.
   if (isOpen && nativeEvent.target === dialog) {
-    const elementToFocus = dialog.querySelector('[autofocus]') || dismissBtn;
-    (elementToFocus as HTMLElement).focus();
+    dialog.focus();
   }
   // Use property which has the longest duration
   if (nativeEvent.propertyName === 'background-color') {
