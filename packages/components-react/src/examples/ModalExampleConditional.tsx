@@ -7,8 +7,6 @@ export const ModalExampleConditionalPage = (): JSX.Element => {
   const onOpen = useCallback(() => setIsOpen(true), []);
   const onDismiss = useCallback(() => setIsOpen(false), []);
 
-  console.log('react render');
-
   return (
     <>
       <PButton type="button" aria={{ 'aria-haspopup': 'dialog' }} onClick={onOpen}>
