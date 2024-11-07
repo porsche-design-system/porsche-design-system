@@ -7,7 +7,7 @@ import {
   preventFoucOfNestedElementsStyles,
 } from '../../styles';
 import { spacingFluidMedium, spacingFluidSmall } from '@porsche-design-system/styles';
-import { type FlyoutPosition } from './flyout-utils';
+import type { FlyoutFooterBehavior, FlyoutPosition } from './flyout-utils';
 import {
   dialogGridJssStyle,
   dialogHostJssStyle,
@@ -28,9 +28,11 @@ export const getComponentCss = (
   hasHeader: boolean,
   hasFooter: boolean,
   hasSubFooter: boolean,
+  footerBehavior: FlyoutFooterBehavior,
   theme: Theme
 ): string => {
   const isPositionStart = position === 'start' || position === 'left';
+  const isFooterFixed = footerBehavior === 'fixed';
 
   return getCss({
     '@global': {
@@ -51,12 +53,20 @@ export const getComponentCss = (
         '&:not([name])': {
           gridColumn: '2/3',
           zIndex: 0, // controls layering + creates new stacking context (prevents content within to be above other dialog areas)
+          ...(isFooterFixed &&
+            hasHeader && {
+              gridRow: 2,
+            }),
         },
         ...(hasHeader && {
           '&[name=header]': {
             ...getDialogStickyAreaJssStyle('header', theme),
             gridColumn: '1/-1',
             zIndex: 3, // controls layering + creates new stacking context (prevents content within to be above other dialog areas)
+            ...(isFooterFixed && {
+              gridRow: 1,
+            }),
+            marginBlockStart: 0,
           },
         }),
         ...(hasFooter && {
@@ -64,6 +74,12 @@ export const getComponentCss = (
             ...getDialogStickyAreaJssStyle('footer', theme),
             gridColumn: '1/-1',
             zIndex: 2, // controls layering + creates new stacking context (prevents content within to be above other dialog areas)
+            ...(isFooterFixed && {
+              gridRow: hasHeader ? 3 : 2,
+              ...(!hasSubFooter && {
+                marginBlockEnd: '0px',
+              }),
+            }),
           },
         }),
         ...(hasSubFooter && {
@@ -91,6 +107,23 @@ export const getComponentCss = (
       width: `var(${cssVariableWidth},auto)`,
       minWidth: '320px',
       maxWidth: `var(${cssVariableMaxWidth},1180px)`,
+      ...(hasHeader && {
+        paddingBlockStart: 0,
+      }),
+      ...(isFooterFixed &&
+        !hasSubFooter && {
+          paddingBlockEnd: 0,
+        }),
+      ...(isFooterFixed && {
+        gridTemplateRows: hasHeader ? 'min-content 1fr min-content' : '1fr',
+        '&::before': {
+          content: '""',
+          minHeight: hasHeader ? '100vh' : `calc(100vh - calc(${spacingFluidSmall} + ${spacingFluidMedium}))`,
+          gridRow: hasHeader ? '1 / 4' : '1 / 3',
+          gridColumn: '1 / -1',
+          pointerEvents: 'none',
+        },
+      }),
     },
     dismiss: {
       ...dismissButtonJssStyle,

@@ -24,7 +24,7 @@ import { FieldsetLabelSize, FieldsetState } from "./components/fieldset/fieldset
 import { FieldsetWrapperLabelSize, FieldsetWrapperState } from "./components/fieldset-wrapper/fieldset-wrapper-utils";
 import { FlexAlignContent, FlexAlignItems, FlexDirection, FlexInline, FlexJustifyContent, FlexWrap } from "./components/flex/flex/flex-utils";
 import { FlexItemAlignSelf, FlexItemFlex, FlexItemGrow, FlexItemOffset, FlexItemShrink, FlexItemWidth } from "./components/flex/flex-item/flex-item-utils";
-import { FlyoutAriaAttribute, FlyoutMotionHiddenEndEventDetail, FlyoutMotionVisibleEndEventDetail, FlyoutPosition } from "./components/flyout/flyout-utils";
+import { FlyoutAriaAttribute, FlyoutFooterBehavior, FlyoutMotionHiddenEndEventDetail, FlyoutMotionVisibleEndEventDetail, FlyoutPosition } from "./components/flyout/flyout-utils";
 import { FlyoutMultilevelAriaAttribute, FlyoutMultilevelUpdateEventDetail } from "./components/flyout-multilevel/flyout-multilevel/flyout-multilevel-utils";
 import { GridDirection, GridGutter, GridWrap } from "./components/grid/grid/grid-utils";
 import { GridItemOffset, GridItemSize } from "./components/grid/grid-item/grid-item-utils";
@@ -88,7 +88,7 @@ export { FieldsetLabelSize, FieldsetState } from "./components/fieldset/fieldset
 export { FieldsetWrapperLabelSize, FieldsetWrapperState } from "./components/fieldset-wrapper/fieldset-wrapper-utils";
 export { FlexAlignContent, FlexAlignItems, FlexDirection, FlexInline, FlexJustifyContent, FlexWrap } from "./components/flex/flex/flex-utils";
 export { FlexItemAlignSelf, FlexItemFlex, FlexItemGrow, FlexItemOffset, FlexItemShrink, FlexItemWidth } from "./components/flex/flex-item/flex-item-utils";
-export { FlyoutAriaAttribute, FlyoutMotionHiddenEndEventDetail, FlyoutMotionVisibleEndEventDetail, FlyoutPosition } from "./components/flyout/flyout-utils";
+export { FlyoutAriaAttribute, FlyoutFooterBehavior, FlyoutMotionHiddenEndEventDetail, FlyoutMotionVisibleEndEventDetail, FlyoutPosition } from "./components/flyout/flyout-utils";
 export { FlyoutMultilevelAriaAttribute, FlyoutMultilevelUpdateEventDetail } from "./components/flyout-multilevel/flyout-multilevel/flyout-multilevel-utils";
 export { GridDirection, GridGutter, GridWrap } from "./components/grid/grid/grid-utils";
 export { GridItemOffset, GridItemSize } from "./components/grid/grid-item/grid-item-utils";
@@ -779,6 +779,10 @@ export namespace Components {
           * If true, the flyout will not be closable via backdrop click.
          */
         "disableBackdropClick"?: boolean;
+        /**
+          * Specifies footer position behavior, in case fixed the flyout content will stretch to the full height to make the footer always fixed to the bottom. In case sticky the footer will flow beneath the content and becomes fixed in case content overflows.
+         */
+        "footerBehavior"?: FlyoutFooterBehavior;
         /**
           * If true, the flyout is open.
          */
@@ -3922,6 +3926,10 @@ declare namespace LocalJSX {
           * If true, the flyout will not be closable via backdrop click.
          */
         "disableBackdropClick"?: boolean;
+        /**
+          * Specifies footer position behavior, in case fixed the flyout content will stretch to the full height to make the footer always fixed to the bottom. In case sticky the footer will flow beneath the content and becomes fixed in case content overflows.
+         */
+        "footerBehavior"?: FlyoutFooterBehavior;
         /**
           * Emitted when the component requests to be dismissed.
          */

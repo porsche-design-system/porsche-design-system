@@ -2,8 +2,10 @@ import { Component, Element, Event, type EventEmitter, forceUpdate, h, type JSX,
 import {
   addStickyTopCssVarStyleSheet,
   FLYOUT_ARIA_ATTRIBUTES,
+  FLYOUT_FOOTER_BEHAVIOR,
   FLYOUT_POSITIONS,
   type FlyoutAriaAttribute,
+  type FlyoutFooterBehavior,
   type FlyoutMotionHiddenEndEventDetail,
   type FlyoutMotionVisibleEndEventDetail,
   type FlyoutPosition,
@@ -38,6 +40,7 @@ const propTypes: PropTypes<typeof Flyout> = {
   open: AllowedTypes.boolean,
   position: AllowedTypes.oneOf<FlyoutPosition>(FLYOUT_POSITIONS),
   disableBackdropClick: AllowedTypes.boolean,
+  footerBehavior: AllowedTypes.oneOf<FlyoutFooterBehavior>(FLYOUT_FOOTER_BEHAVIOR),
   theme: AllowedTypes.oneOf<Theme>(THEMES),
   aria: AllowedTypes.aria<FlyoutAriaAttribute>(FLYOUT_ARIA_ATTRIBUTES),
 };
@@ -65,6 +68,9 @@ export class Flyout {
 
   /** If true, the flyout will not be closable via backdrop click. */
   @Prop() public disableBackdropClick?: boolean = false;
+
+  /** Specifies footer position behavior, in case fixed the flyout content will stretch to the full height to make the footer always fixed to the bottom. In case sticky the footer will flow beneath the content and becomes fixed in case content overflows. */
+  @Prop() public footerBehavior?: FlyoutFooterBehavior = 'sticky';
 
   /** Adapts the flyout color depending on the theme. */
   @Prop() public theme?: Theme = 'light';
@@ -157,6 +163,7 @@ export class Flyout {
       this.hasHeader,
       this.hasFooter,
       this.hasSubFooter,
+      this.footerBehavior,
       this.theme
     );
 
