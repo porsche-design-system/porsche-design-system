@@ -54,6 +54,14 @@ import { FlexPage } from './generated/Flex';
 import { FlyoutPage } from './generated/Flyout';
 import { FlyoutBasicPage } from './generated/FlyoutBasic';
 import { FlyoutCssVariablesPage } from './generated/FlyoutCssVariables';
+import { FlyoutFixedFooterPage } from './generated/FlyoutFixedFooter';
+import { FlyoutFixedFooterHeaderPage } from './generated/FlyoutFixedFooterHeader';
+import { FlyoutFixedFooterHeaderScrollableContentPage } from './generated/FlyoutFixedFooterHeaderScrollableContent';
+import { FlyoutFixedFooterHeaderSubfooterPage } from './generated/FlyoutFixedFooterHeaderSubfooter';
+import { FlyoutFixedFooterHeaderSubfooterScrollableContentPage } from './generated/FlyoutFixedFooterHeaderSubfooterScrollableContent';
+import { FlyoutFixedFooterScrollableContentPage } from './generated/FlyoutFixedFooterScrollableContent';
+import { FlyoutFixedFooterSubfooterPage } from './generated/FlyoutFixedFooterSubfooter';
+import { FlyoutFixedFooterSubfooterScrollableContentPage } from './generated/FlyoutFixedFooterSubfooterScrollableContent';
 import { FlyoutFooterPage } from './generated/FlyoutFooter';
 import { FlyoutFooterScrollableContentPage } from './generated/FlyoutFooterScrollableContent';
 import { FlyoutFooterScrolledPage } from './generated/FlyoutFooterScrolled';
@@ -350,6 +358,46 @@ export const generatedRoutes: RouteType[] = [
     name: 'Flyout Css Variables',
     path: '/flyout-css-variables',
     element: <FlyoutCssVariablesPage />,
+  },
+  {
+    name: 'Flyout Fixed Footer',
+    path: '/flyout-fixed-footer',
+    element: <FlyoutFixedFooterPage />,
+  },
+  {
+    name: 'Flyout Fixed Footer Header',
+    path: '/flyout-fixed-footer-header',
+    element: <FlyoutFixedFooterHeaderPage />,
+  },
+  {
+    name: 'Flyout Fixed Footer Header Scrollable Content',
+    path: '/flyout-fixed-footer-header-scrollable-content',
+    element: <FlyoutFixedFooterHeaderScrollableContentPage />,
+  },
+  {
+    name: 'Flyout Fixed Footer Header Subfooter',
+    path: '/flyout-fixed-footer-header-subfooter',
+    element: <FlyoutFixedFooterHeaderSubfooterPage />,
+  },
+  {
+    name: 'Flyout Fixed Footer Header Subfooter Scrollable Content',
+    path: '/flyout-fixed-footer-header-subfooter-scrollable-content',
+    element: <FlyoutFixedFooterHeaderSubfooterScrollableContentPage />,
+  },
+  {
+    name: 'Flyout Fixed Footer Scrollable Content',
+    path: '/flyout-fixed-footer-scrollable-content',
+    element: <FlyoutFixedFooterScrollableContentPage />,
+  },
+  {
+    name: 'Flyout Fixed Footer Subfooter',
+    path: '/flyout-fixed-footer-subfooter',
+    element: <FlyoutFixedFooterSubfooterPage />,
+  },
+  {
+    name: 'Flyout Fixed Footer Subfooter Scrollable Content',
+    path: '/flyout-fixed-footer-subfooter-scrollable-content',
+    element: <FlyoutFixedFooterSubfooterScrollableContentPage />,
   },
   {
     name: 'Flyout Footer',
