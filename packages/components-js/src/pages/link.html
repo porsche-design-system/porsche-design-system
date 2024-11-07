@@ -195,6 +195,53 @@
   >
 </div>
 
+<div class="playground light auto-layout-inline" title="should render link in responsive compact mode">
+  <p-link compact="{ base: true, xs: false, s: true, m: false, l: true, xl: false }" href="https://porsche.com"
+    >Some label</p-link
+  >
+  <p-link compact="{ base: true, xs: false, s: true, m: false, l: true, xl: false }"
+    ><a href="https://porsche.com">Some label</a></p-link
+  >
+  <p-link
+    compact="{ base: true, xs: false, s: true, m: false, l: true, xl: false }"
+    href="https://porsche.com"
+    variant="secondary"
+    >Some label</p-link
+  >
+  <p-link
+    compact="{ base: true, xs: false, s: true, m: false, l: true, xl: false }"
+    href="https://porsche.com"
+    variant="ghost"
+    >Some label</p-link
+  >
+  <p-link
+    compact="{ base: true, xs: false, s: true, m: false, l: true, xl: false }"
+    href="https://porsche.com"
+    icon="delete"
+    >Some label</p-link
+  >
+  <p-link
+    compact="{ base: true, xs: false, s: true, m: false, l: true, xl: false }"
+    href="https://porsche.com"
+    icon-source="http://localhost:3002/icon-custom-kaixin.svg"
+    >Some label</p-link
+  >
+  <p-link
+    compact="{ base: true, xs: false, s: true, m: false, l: true, xl: false }"
+    href="https://porsche.com"
+    hide-label="true"
+    icon="delete"
+    >Some label</p-link
+  >
+  <p-link
+    compact="{ base: true, xs: false, s: true, m: false, l: true, xl: false }"
+    href="https://porsche.com"
+    hide-label="true"
+    icon-source="http://localhost:3002/icon-custom-kaixin.svg"
+    >Some label</p-link
+  >
+</div>
+
 <div class="playground light auto-layout-inline" title="should render link with scaling 0">
   <p-link class="scaling-0" href="https://porsche.com" icon="arrow-right" hide-label="true">Scaling 0</p-link>
   <p-link class="scaling-0" href="https://porsche.com" variant="ghost">Scaling 0</p-link>

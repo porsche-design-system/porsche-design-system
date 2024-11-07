@@ -34,7 +34,7 @@ const propTypes: PropTypes<typeof Link> = {
   download: AllowedTypes.string,
   rel: AllowedTypes.string,
   hideLabel: AllowedTypes.breakpoint('boolean'),
-  compact: AllowedTypes.boolean,
+  compact: AllowedTypes.breakpoint('boolean'),
   theme: AllowedTypes.oneOf<Theme>(THEMES),
   aria: AllowedTypes.aria<LinkAriaAttribute>(LINK_ARIA_ATTRIBUTES),
 };
@@ -74,7 +74,7 @@ export class Link {
   @Prop() public hideLabel?: BreakpointCustomizable<boolean> = false;
 
   /** Displays as compact version. */
-  @Prop() public compact?: boolean = false;
+  @Prop() public compact?: BreakpointCustomizable<boolean> = false;
 
   /** Adapts the link color when used on dark background. */
   @Prop() public theme?: Theme = 'light';
