@@ -165,7 +165,12 @@ export default class Code extends Vue {
 
   compact = `<p-button compact="true">Some label</p-button>
 <p-button compact="true" variant="secondary">Some label</p-button>
-<p-button compact="true" variant="ghost">Some label</p-button>`;
+<p-button compact="true" variant="ghost">Some label</p-button>
+<br>
+<p-button compact="{ base: true, m: false }">Some label</p-button>
+<p-button compact="{ base: true, m: false }" variant="secondary">Some label</p-button>
+<p-button compact="{ base: true, m: false }" variant="ghost">Some label</p-button>
+`;
 
   icon =
 `<p-button icon="delete">Some label</p-button>
