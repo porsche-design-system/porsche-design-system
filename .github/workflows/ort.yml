@@ -42,7 +42,7 @@ jobs:
       - name: "Send ORT Analyzer Result to OSO"
         run: |
           zip -j analyzer-result.zip ort/analyzer-result.yml
-          curl -X POST https://${{ env.OSO_JENKINS_USER }}:${{ env.OSO_JENKINS_TOKEN }}@oso-ort-scan.aws.platform.porsche-preview.cloud/job/ort-porsche-scancode/buildWithParameters --form ort/analyzer-result.zip=@analyzer-result.zip --form ProjectName=${{ env.OSO_PROJECT_NAME }} --fail
+          curl -X POST https://${{ env.OSO_JENKINS_USER }}:${{ env.OSO_JENKINS_TOKEN }}@scanning-environment.opensourceofficeprod.aws.platform.porsche.cloud/job/ort-porsche-scancode/buildWithParameters --form ort/analyzer-result.zip=@analyzer-result.zip --form ProjectName=${{ env.OSO_PROJECT_NAME }} --fail
         shell: bash
         env:
           OSO_JENKINS_USER: ${{ secrets.OSO_JENKINS_USER }}
