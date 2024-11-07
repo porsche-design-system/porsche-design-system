@@ -168,6 +168,38 @@ const generatedRoutes = {
     "path": "/flyout-css-variables",
     "name": "FlyoutCssVariables"
   },
+  "flyoutFixedFooter": {
+    "path": "/flyout-fixed-footer",
+    "name": "FlyoutFixedFooter"
+  },
+  "flyoutFixedFooterHeader": {
+    "path": "/flyout-fixed-footer-header",
+    "name": "FlyoutFixedFooterHeader"
+  },
+  "flyoutFixedFooterHeaderScrollableContent": {
+    "path": "/flyout-fixed-footer-header-scrollable-content",
+    "name": "FlyoutFixedFooterHeaderScrollableContent"
+  },
+  "flyoutFixedFooterHeaderSubfooter": {
+    "path": "/flyout-fixed-footer-header-subfooter",
+    "name": "FlyoutFixedFooterHeaderSubfooter"
+  },
+  "flyoutFixedFooterHeaderSubfooterScrollableContent": {
+    "path": "/flyout-fixed-footer-header-subfooter-scrollable-content",
+    "name": "FlyoutFixedFooterHeaderSubfooterScrollableContent"
+  },
+  "flyoutFixedFooterScrollableContent": {
+    "path": "/flyout-fixed-footer-scrollable-content",
+    "name": "FlyoutFixedFooterScrollableContent"
+  },
+  "flyoutFixedFooterSubfooter": {
+    "path": "/flyout-fixed-footer-subfooter",
+    "name": "FlyoutFixedFooterSubfooter"
+  },
+  "flyoutFixedFooterSubfooterScrollableContent": {
+    "path": "/flyout-fixed-footer-subfooter-scrollable-content",
+    "name": "FlyoutFixedFooterSubfooterScrollableContent"
+  },
   "flyoutFooter": {
     "path": "/flyout-footer",
     "name": "FlyoutFooter"
