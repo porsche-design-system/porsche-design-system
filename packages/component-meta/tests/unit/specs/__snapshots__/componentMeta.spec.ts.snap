@@ -275,6 +275,7 @@ exports[`should match snapshot 1`] = `
         "allowedValues": "boolean",
         "defaultValue": false,
         "description": "Displays as compact version.",
+        "isBreakpointCustomizable": true,
         "type": "boolean",
       },
       "disabled": {
@@ -3633,6 +3634,7 @@ exports[`should match snapshot 1`] = `
         "allowedValues": "boolean",
         "defaultValue": false,
         "description": "Displays as compact version.",
+        "isBreakpointCustomizable": true,
         "type": "boolean",
       },
       "download": {
