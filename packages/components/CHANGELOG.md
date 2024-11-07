@@ -24,6 +24,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 #### Fixed
 
 - `Flyout`, `Modal`:
+  - transition not working correctly when using conditionally rendered content
+    ([#3590](https://github.com/porsche-design-system/porsche-design-system/pull/3590))
   - dismiss button not sticky in case header slot is not present
     ([#3574](https://github.com/porsche-design-system/porsche-design-system/pull/3574))
   - dismiss button overlaps content area
