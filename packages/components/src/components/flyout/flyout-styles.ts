@@ -77,7 +77,7 @@ export const getComponentCss = (
             ...(isFooterFixed && {
               gridRow: hasHeader ? 3 : 2,
               ...(!hasSubFooter && {
-                marginBlockEnd: '0px',
+                marginBlockEnd: '.3px', // lets the footer shadow disappear when flyout is scrolled to the bottom
               }),
             }),
           },
@@ -118,7 +118,7 @@ export const getComponentCss = (
         gridTemplateRows: hasHeader ? 'min-content 1fr min-content' : '1fr',
         '&::before': {
           content: '""',
-          minHeight: hasHeader ? '100vh' : `calc(100vh - calc(${spacingFluidSmall} + ${spacingFluidMedium}))`,
+          minHeight: hasHeader ? '100dvh' : `calc(100dvh - calc(${spacingFluidSmall} + ${spacingFluidMedium}))`,
           gridRow: hasHeader ? '1 / 4' : '1 / 3',
           gridColumn: '1 / -1',
           pointerEvents: 'none',
