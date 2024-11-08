@@ -79,8 +79,10 @@ import { FlyoutFixedFooterHeaderScrollableContentComponent } from './generated/f
 import { FlyoutFixedFooterHeaderSubfooterComponent } from './generated/flyout-fixed-footer-header-subfooter.component';
 import { FlyoutFixedFooterHeaderSubfooterScrollableContentComponent } from './generated/flyout-fixed-footer-header-subfooter-scrollable-content.component';
 import { FlyoutFixedFooterScrollableContentComponent } from './generated/flyout-fixed-footer-scrollable-content.component';
+import { FlyoutFixedFooterScrollableContentScrolledComponent } from './generated/flyout-fixed-footer-scrollable-content-scrolled.component';
 import { FlyoutFixedFooterSubfooterComponent } from './generated/flyout-fixed-footer-subfooter.component';
 import { FlyoutFixedFooterSubfooterScrollableContentComponent } from './generated/flyout-fixed-footer-subfooter-scrollable-content.component';
+import { FlyoutFixedFooterSubfooterScrollableContentScrolledComponent } from './generated/flyout-fixed-footer-subfooter-scrollable-content-scrolled.component';
 import { FlyoutFooterComponent } from './generated/flyout-footer.component';
 import { FlyoutFooterScrollableContentComponent } from './generated/flyout-footer-scrollable-content.component';
 import { FlyoutFooterScrolledComponent } from './generated/flyout-footer-scrolled.component';
@@ -222,8 +224,10 @@ export const generatedPages = [
   FlyoutFixedFooterHeaderSubfooterComponent,
   FlyoutFixedFooterHeaderSubfooterScrollableContentComponent,
   FlyoutFixedFooterScrollableContentComponent,
+  FlyoutFixedFooterScrollableContentScrolledComponent,
   FlyoutFixedFooterSubfooterComponent,
   FlyoutFixedFooterSubfooterScrollableContentComponent,
+  FlyoutFixedFooterSubfooterScrollableContentScrolledComponent,
   FlyoutFooterComponent,
   FlyoutFooterScrollableContentComponent,
   FlyoutFooterScrolledComponent,
@@ -554,6 +558,11 @@ export const generatedRoutes: ExtendedRoute[] = [
     component: FlyoutFixedFooterScrollableContentComponent,
   },
   {
+    name: 'Flyout Fixed Footer Scrollable Content Scrolled',
+    path: 'flyout-fixed-footer-scrollable-content-scrolled',
+    component: FlyoutFixedFooterScrollableContentScrolledComponent,
+  },
+  {
     name: 'Flyout Fixed Footer Subfooter',
     path: 'flyout-fixed-footer-subfooter',
     component: FlyoutFixedFooterSubfooterComponent,
@@ -562,6 +571,11 @@ export const generatedRoutes: ExtendedRoute[] = [
     name: 'Flyout Fixed Footer Subfooter Scrollable Content',
     path: 'flyout-fixed-footer-subfooter-scrollable-content',
     component: FlyoutFixedFooterSubfooterScrollableContentComponent,
+  },
+  {
+    name: 'Flyout Fixed Footer Subfooter Scrollable Content Scrolled',
+    path: 'flyout-fixed-footer-subfooter-scrollable-content-scrolled',
+    component: FlyoutFixedFooterSubfooterScrollableContentScrolledComponent,
   },
   {
     name: 'Flyout Footer',

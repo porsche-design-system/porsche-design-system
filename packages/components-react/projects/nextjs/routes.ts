@@ -192,6 +192,10 @@ const generatedRoutes = {
     "path": "/flyout-fixed-footer-scrollable-content",
     "name": "FlyoutFixedFooterScrollableContent"
   },
+  "flyoutFixedFooterScrollableContentScrolled": {
+    "path": "/flyout-fixed-footer-scrollable-content-scrolled",
+    "name": "FlyoutFixedFooterScrollableContentScrolled"
+  },
   "flyoutFixedFooterSubfooter": {
     "path": "/flyout-fixed-footer-subfooter",
     "name": "FlyoutFixedFooterSubfooter"
@@ -199,6 +203,10 @@ const generatedRoutes = {
   "flyoutFixedFooterSubfooterScrollableContent": {
     "path": "/flyout-fixed-footer-subfooter-scrollable-content",
     "name": "FlyoutFixedFooterSubfooterScrollableContent"
+  },
+  "flyoutFixedFooterSubfooterScrollableContentScrolled": {
+    "path": "/flyout-fixed-footer-subfooter-scrollable-content-scrolled",
+    "name": "FlyoutFixedFooterSubfooterScrollableContentScrolled"
   },
   "flyoutFooter": {
     "path": "/flyout-footer",

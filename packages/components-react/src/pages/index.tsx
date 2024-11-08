@@ -60,8 +60,10 @@ import { FlyoutFixedFooterHeaderScrollableContentPage } from './generated/Flyout
 import { FlyoutFixedFooterHeaderSubfooterPage } from './generated/FlyoutFixedFooterHeaderSubfooter';
 import { FlyoutFixedFooterHeaderSubfooterScrollableContentPage } from './generated/FlyoutFixedFooterHeaderSubfooterScrollableContent';
 import { FlyoutFixedFooterScrollableContentPage } from './generated/FlyoutFixedFooterScrollableContent';
+import { FlyoutFixedFooterScrollableContentScrolledPage } from './generated/FlyoutFixedFooterScrollableContentScrolled';
 import { FlyoutFixedFooterSubfooterPage } from './generated/FlyoutFixedFooterSubfooter';
 import { FlyoutFixedFooterSubfooterScrollableContentPage } from './generated/FlyoutFixedFooterSubfooterScrollableContent';
+import { FlyoutFixedFooterSubfooterScrollableContentScrolledPage } from './generated/FlyoutFixedFooterSubfooterScrollableContentScrolled';
 import { FlyoutFooterPage } from './generated/FlyoutFooter';
 import { FlyoutFooterScrollableContentPage } from './generated/FlyoutFooterScrollableContent';
 import { FlyoutFooterScrolledPage } from './generated/FlyoutFooterScrolled';
@@ -390,6 +392,11 @@ export const generatedRoutes: RouteType[] = [
     element: <FlyoutFixedFooterScrollableContentPage />,
   },
   {
+    name: 'Flyout Fixed Footer Scrollable Content Scrolled',
+    path: '/flyout-fixed-footer-scrollable-content-scrolled',
+    element: <FlyoutFixedFooterScrollableContentScrolledPage />,
+  },
+  {
     name: 'Flyout Fixed Footer Subfooter',
     path: '/flyout-fixed-footer-subfooter',
     element: <FlyoutFixedFooterSubfooterPage />,
@@ -398,6 +405,11 @@ export const generatedRoutes: RouteType[] = [
     name: 'Flyout Fixed Footer Subfooter Scrollable Content',
     path: '/flyout-fixed-footer-subfooter-scrollable-content',
     element: <FlyoutFixedFooterSubfooterScrollableContentPage />,
+  },
+  {
+    name: 'Flyout Fixed Footer Subfooter Scrollable Content Scrolled',
+    path: '/flyout-fixed-footer-subfooter-scrollable-content-scrolled',
+    element: <FlyoutFixedFooterSubfooterScrollableContentScrolledPage />,
   },
   {
     name: 'Flyout Footer',
