@@ -28,7 +28,7 @@ type InitOptions = {
   useSlottedLabel?: boolean;
   useSlottedDescription?: boolean;
   useSlottedMessage?: boolean;
-  isWithinForm?: true;
+  isWithinForm?: boolean;
   markupBefore?: string;
   markupAfter?: string;
 };
@@ -320,6 +320,7 @@ test.describe('form', () => {
   test('should reset textarea value to its initial value on form reset', async ({ page }) => {
     const name = 'name';
     const value = 'Hallo';
+    const newValue = 'New value';
     const host = getHost(page);
     const textarea = getTextarea(page);
     await initTextarea(page, {
@@ -335,8 +336,12 @@ test.describe('form', () => {
     await addEventListener(form, 'submit');
     expect((await getEventSummary(form, 'submit')).counter).toBe(0);
 
-    await expect(host).toHaveJSProperty('value', value);
-    await expect(textarea).toHaveValue(value);
+    await textarea.fill(newValue);
+    await textarea.press('Tab');
+    await waitForStencilLifecycle(page);
+
+    await expect(host).toHaveJSProperty('value', newValue);
+    await expect(textarea).toHaveValue(newValue);
 
     await page.locator('button[type="reset"]').click();
 

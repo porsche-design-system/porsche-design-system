@@ -4,7 +4,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   selector: 'page-multi-select-example',
   template: `
     <form (submit)="onSubmit($event)">
-      <p-multi-select name="options" label="Some Label">
+      <p-multi-select name="options" label="Some Label" [value]="['a']">
         <p-multi-select-option value="a">Option A</p-multi-select-option>
         <p-multi-select-option value="b">Option B</p-multi-select-option>
         <p-multi-select-option value="c">Option C</p-multi-select-option>
@@ -13,6 +13,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
         <p-multi-select-option value="f">Option F</p-multi-select-option>
       </p-multi-select>
       <button type="submit">Submit</button>
+      <button type="reset">Reset</button>
     </form>
 
     <p-text>Last submitted data: {{ lastSubmittedData }}</p-text>
