@@ -489,7 +489,7 @@ test.describe('after content change', () => {
     await initAdvancedFlyout(page);
     await addButtonsBeforeAndAfterFlyout(page);
     await openFlyout(page);
-    await expectDismissButtonToBeFocused(page, 'initially');
+    await expectDialogAndThenDismissButtonToBeFocused(page, 'initially');
     await page.keyboard.press('Tab');
     expect(await getActiveElementId(page), 'after 1st tab').toBe('btn-header');
 
@@ -521,7 +521,7 @@ test.describe('after content change', () => {
       el.append(button);
     });
     await waitForSlotChange();
-    await expectDismissButtonToBeFocused(page, 'after button appended');
+    await expectDialogAndThenDismissButtonToBeFocused(page, 'after button appended');
 
     await page.keyboard.press('Tab');
     expect(await getActiveElementId(page)).toBe('btn-header');
@@ -546,7 +546,7 @@ test.describe('can be controlled via keyboard', () => {
   test('should cycle tab events within flyout', async ({ page }) => {
     await initAdvancedFlyout(page);
     await openFlyout(page);
-    await expectDismissButtonToBeFocused(page, 'initially');
+    await expectDialogAndThenDismissButtonToBeFocused(page, 'initially');
 
     await page.keyboard.press('Tab');
     expect(await getActiveElementId(page)).toBe('btn-header');
@@ -565,7 +565,7 @@ test.describe('can be controlled via keyboard', () => {
   test('should reverse cycle tab events within flyout', async ({ page }) => {
     await initAdvancedFlyout(page);
     await openFlyout(page);
-    await expectDismissButtonToBeFocused(page, 'initially');
+    await expectDialogAndThenDismissButtonToBeFocused(page, 'initially');
 
     await page.keyboard.down('ShiftLeft');
     await page.keyboard.press('Tab');
@@ -802,7 +802,7 @@ test.describe('after dynamic slot change', () => {
     await addHeaderSlot(host);
     await waitForStencilLifecycle(page);
 
-    expect(await getStickyTopCssVarValue(page)).toBe('191px');
+    expect(await getStickyTopCssVarValue(page)).toBe('95px');
 
     await page.setViewportSize({ width: 320, height: 500 });
 
