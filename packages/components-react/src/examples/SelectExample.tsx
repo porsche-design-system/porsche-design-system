@@ -22,6 +22,7 @@ export const SelectExamplePage = (): JSX.Element => {
           <PSelectOption value="f">Option F</PSelectOption>
         </PSelect>
         <button type="submit">Submit</button>
+        <button type="reset">Reset</button>
       </form>
 
       <PText>Last submitted data: {lastSubmittedData}</PText>
