@@ -780,7 +780,7 @@ export namespace Components {
          */
         "disableBackdropClick"?: boolean;
         /**
-          * Specifies footer position behavior, in case fixed the flyout content will stretch to the full height to make the footer always fixed to the bottom. In case sticky the footer will flow beneath the content and becomes fixed in case content overflows.
+          * Determines the footer's position behavior. When set to "fixed," the flyout content stretches to fill the full height, keeping the footer permanently at the bottom. When set to "sticky," the footer flows beneath the content and only becomes fixed if the content overflows.
          */
         "footerBehavior"?: FlyoutFooterBehavior;
         /**
@@ -3935,7 +3935,7 @@ declare namespace LocalJSX {
          */
         "disableBackdropClick"?: boolean;
         /**
-          * Specifies footer position behavior, in case fixed the flyout content will stretch to the full height to make the footer always fixed to the bottom. In case sticky the footer will flow beneath the content and becomes fixed in case content overflows.
+          * Determines the footer's position behavior. When set to "fixed," the flyout content stretches to fill the full height, keeping the footer permanently at the bottom. When set to "sticky," the footer flows beneath the content and only becomes fixed if the content overflows.
          */
         "footerBehavior"?: FlyoutFooterBehavior;
         /**
