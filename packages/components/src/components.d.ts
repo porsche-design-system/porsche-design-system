@@ -1389,7 +1389,7 @@ export namespace Components {
          */
         "dropdownDirection"?: MultiSelectDropdownDirection;
         /**
-          * The id of a form element the select should be associated with.
+          * The id of a form element the multi-select should be associated with.
          */
         "form"?: string;
         /**
@@ -1417,7 +1417,7 @@ export namespace Components {
          */
         "state"?: MultiSelectState;
         /**
-          * Adapts the select color depending on the theme.
+          * Adapts the multi-select color depending on the theme.
          */
         "theme"?: Theme;
         /**
@@ -4592,7 +4592,7 @@ declare namespace LocalJSX {
          */
         "dropdownDirection"?: MultiSelectDropdownDirection;
         /**
-          * The id of a form element the select should be associated with.
+          * The id of a form element the multi-select should be associated with.
          */
         "form"?: string;
         /**
@@ -4624,7 +4624,7 @@ declare namespace LocalJSX {
          */
         "state"?: MultiSelectState;
         /**
-          * Adapts the select color depending on the theme.
+          * Adapts the multi-select color depending on the theme.
          */
         "theme"?: Theme;
         /**

@@ -125,11 +125,11 @@ export class MultiSelect {
   /** Changes the direction to which the dropdown list appears. */
   @Prop() public dropdownDirection?: MultiSelectDropdownDirection = 'auto';
 
-  /** Adapts the select color depending on the theme. */
+  /** Adapts the multi-select color depending on the theme. */
   @Prop() public theme?: Theme = 'light';
 
-  /** The id of a form element the select should be associated with. */
-  @Prop() public form?: string;
+  /** The id of a form element the multi-select should be associated with. */
+  @Prop({ reflect: true }) public form?: string; // The ElementInternals API automatically detects the form attribute
 
   /** Emitted when the selection is changed. */
   @Event({ bubbles: false }) public update: EventEmitter<MultiSelectUpdateEventDetail>;
@@ -177,16 +177,6 @@ export class MultiSelect {
     }
   }
 
-  @Watch('form')
-  public updateFormAssociation(): void {
-    if (this.form) {
-      const formElement = document.getElementById(this.form) as HTMLFormElement;
-      if (formElement) {
-        formElement.appendChild(this.host);
-      }
-    }
-  }
-
   public setFormValue(value: string[]): void {
     const formData = new FormData();
     value.forEach((val) => formData.append(this.name, val));
@@ -204,13 +194,13 @@ export class MultiSelect {
 
   public componentWillLoad(): void {
     this.defaultValue = this.value;
+    this.setFormValue(this.value);
     this.updateOptions();
     // Use initial value to set options
     setSelectedOptions(this.multiSelectOptions, this.value);
   }
 
   public componentDidLoad(): void {
-    this.setFormValue(this.value);
     getShadowRootHTMLElement(this.host, 'slot').addEventListener('slotchange', this.onSlotchange);
   }
 
