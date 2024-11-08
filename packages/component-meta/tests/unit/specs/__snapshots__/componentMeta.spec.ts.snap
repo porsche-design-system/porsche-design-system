@@ -2497,6 +2497,15 @@ exports[`should match snapshot 1`] = `
         "description": "If true, the flyout will not be closable via backdrop click.",
         "type": "boolean",
       },
+      "footerBehavior": {
+        "allowedValues": [
+          "sticky",
+          "fixed",
+        ],
+        "defaultValue": "sticky",
+        "description": "Specifies footer position behavior, in case fixed the flyout content will stretch to the full height to make the footer always fixed to the bottom. In case sticky the footer will flow beneath the content and becomes fixed in case content overflows.",
+        "type": "FlyoutFooterBehavior",
+      },
       "open": {
         "allowedValues": "boolean",
         "defaultValue": false,
