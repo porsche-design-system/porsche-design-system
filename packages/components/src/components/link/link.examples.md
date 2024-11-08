@@ -128,7 +128,11 @@ export default class Code extends Vue {
 
   compact = `<p-link compact="true" href="https://porsche.com">Some label</p-link>
 <p-link compact="true" variant="secondary" href="https://porsche.com">Some label</p-link>
-<p-link compact="true" variant="ghost" href="https://porsche.com">Some label</p-link>`;
+<p-link compact="true" variant="ghost" href="https://porsche.com">Some label</p-link>
+<br>
+<p-link compact="{ base: true, m: false }" href="https://porsche.com">Some label</p-link>
+<p-link compact="{ base: true, m: false }" variant="secondary" href="https://porsche.com">Some label</p-link>
+<p-link compact="{ base: true, m: false }" variant="ghost" href="https://porsche.com">Some label</p-link>`;
 
   icon =
 `<p-link href="https://porsche.com" icon="phone">Some label</p-link>

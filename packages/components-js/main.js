@@ -54,7 +54,7 @@ const updateRoute = async (opts) => {
     document.querySelector('html').style.fontSize = `${scale}%`;
 
     if (isPageLoadedInIFrame()) {
-      controls.innerHTML = '';
+      controls.remove();
     }
 
     const style = `<style>

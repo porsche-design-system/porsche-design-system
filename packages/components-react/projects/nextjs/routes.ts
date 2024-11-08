@@ -176,6 +176,10 @@ const generatedRoutes = {
     "path": "/flyout-footer-scrollable-content",
     "name": "FlyoutFooterScrollableContent"
   },
+  "flyoutFooterScrolled": {
+    "path": "/flyout-footer-scrolled",
+    "name": "FlyoutFooterScrolled"
+  },
   "flyoutGrid": {
     "path": "/flyout-grid",
     "name": "FlyoutGrid"
@@ -331,6 +335,10 @@ const generatedRoutes = {
   "modalDisableCloseButton": {
     "path": "/modal-disable-close-button",
     "name": "ModalDisableCloseButton"
+  },
+  "modalFooterScrolled": {
+    "path": "/modal-footer-scrolled",
+    "name": "ModalFooterScrolled"
   },
   "modalFullscreen": {
     "path": "/modal-fullscreen",

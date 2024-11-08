@@ -113,7 +113,7 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
     }
 
     // add onClick prop for marque, buttons and links, but not button-group
-    else if (!!component.match(/(button|link|marque|stepper-horizontal-item|tag-dismissible)(?!-group)/)) {
+    else if (!!component.match(/(button|link|marque|stepper-horizontal-item|tag-dismissible|crest)(?!-group)/)) {
       props = addProp(props, 'onClick?: (e: MouseEvent) => void;');
     }
 
@@ -142,8 +142,20 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
     // add uxpinignoreprop annotations
     if (component === 'p-modal') {
       props = addUxPinIgnorePropAnnotation(props, 'open');
-    } else if (component === 'p-link' || component === 'p-link-pure' || component === 'p-link-social') {
+    } else if (component === 'p-link' || component === 'p-link-pure' || component === 'p-link-social'  || component === 'p-crest') {
       props = addUxPinIgnorePropAnnotation(props, 'href');
+      props = addUxPinIgnorePropAnnotation(props, 'target');
+    } else if (component === 'p-banner') {
+      props = addUxPinIgnorePropAnnotation(props, 'width');
+    } else if (component === 'p-button' || component === 'p-button-pure') {
+      props = addUxPinIgnorePropAnnotation(props, 'name');
+      props = addUxPinIgnorePropAnnotation(props, 'value');
+    } else if (component === 'p-icon') {
+      props = addUxPinIgnorePropAnnotation(props, 'lazy');
+    } else if (component === 'p-model-signature') {
+      props = addUxPinIgnorePropAnnotation(props, 'fetchPriority');
+      props = addUxPinIgnorePropAnnotation(props, 'lazy');
+
     }
 
     // add uxpinbind annotations
@@ -159,6 +171,8 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
     } else if (component === 'p-tabs-bar') {
       props = addUxPinBindAnnotation(props, 'activeTabIndex', 'onUpdate', 'activeTabIndex');
       props = addUxPinBindAnnotation(props, 'activeTabIndex', 'onTabChange', 'activeTabIndex');
+    } else if (component === 'p-select' || component === 'p-multi-select') {
+      props = addUxPinBindAnnotation(props, 'value', 'onUpdate', 'value');
     }
 
     return props;
@@ -258,12 +272,43 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
       )
     }
 
-    if (component === 'p-flyout') {
+    if (['p-flyout', 'p-modal', 'p-banner'].includes(component)) {
       cleanedComponent = cleanedComponent.replace(
           'useEventCallback(elementRef, \'dismiss\', onDismiss as any);',
           [
             'const dismissCallback = (e:Event) => {',
             '       rest.uxpinOnChange(open, false, \'open\');',
+            '       if (onDismiss) {',
+            '         onDismiss(e as CustomEvent<void>);',
+            '       }',
+            '    }',
+            '    useEventCallback(elementRef, \'dismiss\', dismissCallback);',
+          ].join('\n')
+      )
+    }
+
+    // make crest and link-pure anchor if onClick is defined
+    if (component === 'p-crest' || component === 'p-link-pure') {
+      cleanedComponent = cleanedComponent.replace(
+          'const props = {',
+          [
+            '',
+            'useBrowserLayoutEffect(() => {',
+            '  const { current } = elementRef;',
+            '  (current as any).href = rest.onClick ? \'#\' : undefined;',
+            '}, [rest.onClick]);',
+            '',
+            'const props = {',
+          ].join('\n    ')
+      )
+    }
+
+    if (component === 'p-inline-notification') {
+      cleanedComponent = cleanedComponent.replace(
+          'useEventCallback(elementRef, \'dismiss\', onDismiss as any);',
+          [
+            'const dismissCallback = (e:Event) => {',
+            '       rest.uxpinOnChange(\`visible\`, \'hidden\', \'stateIa\');',
             '       if (onDismiss) {',
             '         onDismiss(e as CustomEvent<void>);',
             '       }',
@@ -286,15 +331,19 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
   public shouldGenerateFolderPerComponent(component: TagName): boolean {
     switch (component) {
       case 'p-accordion':
+      case 'p-banner':
       case 'p-button-group':
       case 'p-button-tile':
-      case 'p-checkbox-wrapper':
+      case 'p-carousel':
+      case 'p-checkbox':
       case 'p-fieldset':
       case 'p-link-tile':
       case 'p-link-tile-model-signature':
+      case 'p-multi-select':
       case 'p-modal':
       case 'p-radio-button-wrapper':
       case 'p-segmented-control':
+      case 'p-select':
       case 'p-select-wrapper':
       case 'p-stepper-horizontal':
       case 'p-text-field-wrapper':
@@ -323,6 +372,9 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
         props: { heading: 'Heading' },
         children: '<Text uxpId="accordion-text" children="Content" />',
       },
+      'p-banner': {
+        props: { heading: 'Heading', description: 'Description', open: true, },
+      },
       'p-button-group': {
         children: [
           '<Button variant="primary" uxpId="button-primary" />',
@@ -333,9 +385,19 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
         props: { label: 'Some label', description: 'Some description' },
         children: '<DummyImg uxpId="dummy-img" />',
       },
-      'p-checkbox-wrapper': {
-        props: { label: 'CheckboxWrapper' },
-        children: '<DummyCheckbox uxpId="dummy-checkbox" />',
+      'p-carousel': {
+        props: { heading: 'Some heading' },
+        children: [
+          '<DummyDiv uxpId="dummy-div-1" uxpinCustomStyles={{ display: \'flex\', alignItems: \'center\', justifyContent: \'center\', background: \'#00b0f4\', height: 150 }} children="Slide 1" />',
+          '<DummyDiv uxpId="dummy-div-2" uxpinCustomStyles={{ display: \'flex\', alignItems: \'center\', justifyContent: \'center\', background: \'#00b0f4\', height: 150 }}  children="Slide 2" />',
+          '<DummyDiv uxpId="dummy-div-3" uxpinCustomStyles={{ display: \'flex\', alignItems: \'center\', justifyContent: \'center\', background: \'#00b0f4\', height: 150 }}  children="Slide 3" />',
+          '<DummyDiv uxpId="dummy-div-4" uxpinCustomStyles={{ display: \'flex\', alignItems: \'center\', justifyContent: \'center\', background: \'#00b0f4\', height: 150 }}  children="Slide 4" />',
+          '<DummyDiv uxpId="dummy-div-5" uxpinCustomStyles={{ display: \'flex\', alignItems: \'center\', justifyContent: \'center\', background: \'#00b0f4\', height: 150 }}  children="Slide 5" />',
+
+        ].join(glue),
+      },
+      'p-checkbox': {
+        props: { label: 'label' },
       },
       'p-fieldset': {
         props: { label: 'Fieldset' },
@@ -352,11 +414,29 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
           '<Link slot="secondary" variant="secondary" theme="dark" href="#" uxpId="link-secondary">Some link</Link>', // we need to set variant and theme props for uxpin editor to display the right config
         ].join(glue),
       },
+      'p-multi-select': {
+        props: { name:'options', label:'Some Label' },
+        children: [
+          '<Optgroup uxpId="group-1" label="Some optgroup label 1">',
+          ' <MultiSelectOption uxpId="opt-1" value="a">Option A</MultiSelectOption>',
+          ' <MultiSelectOption uxpId="opt-2" value="b">Option B</MultiSelectOption>',
+          ' <MultiSelectOption uxpId="opt-3" value="c">Option C</MultiSelectOption>',
+          ' <MultiSelectOption uxpId="opt-4" value="d">Option D</MultiSelectOption>',
+          ' <MultiSelectOption uxpId="opt-5" value="e">Option E</MultiSelectOption>',
+          ' <MultiSelectOption uxpId="opt-6" value="f">Option F</MultiSelectOption>',
+          '</Optgroup>',
+          '<Optgroup uxpId="group-3" label="Some optgroup label 2">',
+          ' <MultiSelectOption uxpId="opt-7"  value="g">Option G</MultiSelectOption>',
+          ' <MultiSelectOption uxpId="opt-8"  value="h">Option H</MultiSelectOption>',
+          ' <MultiSelectOption uxpId="opt-9"  value="i">Option I</MultiSelectOption>',
+          '</Optgroup>',
+        ].join(glue),
+      },
       'p-modal': {
         props: { heading: 'Heading', open: true },
         children: [
           '<Text uxpId="modal-text">Some Content</Text>',
-          '<ButtonGroup uxpId="modal-button-group" >',
+          '<ButtonGroup slot="footer" uxpId="modal-button-group" >',
           ...[
             '<Button uxpId="modal-button-1" children="Save" />',
             '<Button uxpId="modal-button-2" variant="tertiary" children="Close" />',
@@ -382,6 +462,14 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
               }" />`
           )
           .join(glue),
+      },
+      'p-select': {
+        props: { name:'options', label:'Some Label', description: 'Some description', value:'a'  },
+        children: [
+            '<SelectOption uxpId="opt-1" value="a">Option A</SelectOption>',
+            '<SelectOption uxpId="opt-2" value="b">Option B</SelectOption>',
+            '<SelectOption uxpId="opt-3" value="c">Option C</SelectOption>',
+        ].join(glue),
       },
       'p-select-wrapper': {
         props: { label: 'SelectWrapper' },
@@ -604,14 +692,31 @@ export default <${formComponentName} ${stringifiedProps} />;
       },
       {
         name: 'Dummy',
-        include: ['src/dummy/*.tsx'],
+        include: [
+         'src/dummy/DummyButton.tsx',
+         'src/dummy/DummyImg.tsx',
+         'src/dummy/DummyLink.tsx',
+         'src/dummy/DummySpan.tsx',
+         'src/dummy/DummyDiv.tsx'
+        ],
       },
     ],
     wrapper: 'src/UXPinWrapper.tsx',
     webpackConfig: 'webpack.config.js',
   },
   name: 'Porsche Design System',
-  settings: { useUXPinProps: true, useFitToContentAsDefault: true },
+  settings: { 
+    useUXPinProps: true, 
+    useFitToContentAsDefault: true,
+    propertyConfigurations: {
+      Flyout: {
+        open: { disabled: true, context: 'canvas', value: false, },
+      },
+      Modal: {
+        open: { disabled: true, context: 'canvas', value: false },
+      }
+    }
+  },
 };`;
 
     return { name: 'uxpin.config.js', relativePath: '../../..', content };

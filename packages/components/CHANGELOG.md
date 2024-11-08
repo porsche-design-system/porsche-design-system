@@ -18,6 +18,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 - `Checkbox`, `Textarea`: `formDisabledCallback` and `formStateRestoreCallback` from ElementInternals API and sync
   validity with form element. ([#3528](https://github.com/porsche-design-system/porsche-design-system/pull/3528))
+- `Link`, `Link Pure`, `Link Tile`: `aria-haspopup` is now supported for `aria` prop
+  ([#3589](https://github.com/porsche-design-system/porsche-design-system/pull/3589))
+- `Button`, `Link`: `compact` prop is breakpoint customizable
+  ([#3580](https://github.com/porsche-design-system/porsche-design-system/pull/3580))
 - `Select`, `Multi-Select`: Added `form` prop to explicitly associate these components with a specific form when they
   are not directly nested within it. ([#3542](https://github.com/porsche-design-system/porsche-design-system/pull/3542))
 
@@ -31,6 +35,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 #### Fixed
 
+- `Flyout`, `Modal`:
+  - dismiss button not sticky in case header slot is not present
+    ([#3574](https://github.com/porsche-design-system/porsche-design-system/pull/3574))
+  - dismiss button overlaps content area
+    ([#3574](https://github.com/porsche-design-system/porsche-design-system/pull/3574))
 - `jsdom-polyfill`: errors from included polyfill packages
   ([3543](https://github.com/porsche-design-system/porsche-design-system/pull/3543))
 - React: global `hidden` attribute with value `false` not working

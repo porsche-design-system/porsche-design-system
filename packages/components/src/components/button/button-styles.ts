@@ -47,7 +47,7 @@ export const getComponentCss = (
   hideLabel: BreakpointCustomizable<boolean>,
   disabled: boolean,
   loading: boolean,
-  compact: boolean,
+  compact: BreakpointCustomizable<boolean>,
   theme: Theme
 ): string => {
   const disabledOrLoading = isDisabledOrLoading(disabled, loading);
