@@ -16,6 +16,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 #### Added
 
+- `Flyout`: Prop `footerBehavior` to always make footer fixed
+  ([3590](https://github.com/porsche-design-system/porsche-design-system/pull/3590))
 - `Checkbox`, `Textarea`: `formDisabledCallback` and `formStateRestoreCallback` from ElementInternals API and sync
   validity with form element. ([#3528](https://github.com/porsche-design-system/porsche-design-system/pull/3528))
 - `Link`, `Link Pure`, `Link Tile`: `aria-haspopup` is now supported for `aria` prop
