@@ -9464,7 +9464,6 @@ dialog::backdrop {
   overscroll-behavior-y: none;
   background: rgba(255,255,255,.01);
   opacity: 0;
-  margin-inline-end: 200vw;
   transform: translateX(100%);
   transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.4,0,0.5,1), transform var(--p-transition-duration, 0.25s) cubic-bezier(0.4,0,0.5,1), margin-inline-end 0s linear var(--p-transition-duration, 0.25s);
 }
