@@ -275,6 +275,7 @@ exports[`should match snapshot 1`] = `
         "allowedValues": "boolean",
         "defaultValue": false,
         "description": "Displays as compact version.",
+        "isBreakpointCustomizable": true,
         "type": "boolean",
       },
       "disabled": {
@@ -1922,6 +1923,7 @@ exports[`should match snapshot 1`] = `
       "aria": {
         "allowedValues": {
           "aria-current": "string",
+          "aria-haspopup": "string",
           "aria-label": "string",
         },
         "defaultValue": null,
@@ -3620,6 +3622,7 @@ exports[`should match snapshot 1`] = `
       "aria": {
         "allowedValues": {
           "aria-current": "string",
+          "aria-haspopup": "string",
           "aria-label": "string",
         },
         "defaultValue": null,
@@ -3631,6 +3634,7 @@ exports[`should match snapshot 1`] = `
         "allowedValues": "boolean",
         "defaultValue": false,
         "description": "Displays as compact version.",
+        "isBreakpointCustomizable": true,
         "type": "boolean",
       },
       "download": {
@@ -3964,6 +3968,7 @@ exports[`should match snapshot 1`] = `
       "aria": {
         "allowedValues": {
           "aria-current": "string",
+          "aria-haspopup": "string",
           "aria-label": "string",
         },
         "defaultValue": null,
@@ -4615,6 +4620,7 @@ exports[`should match snapshot 1`] = `
       "aria": {
         "allowedValues": {
           "aria-current": "string",
+          "aria-haspopup": "string",
           "aria-label": "string",
         },
         "defaultValue": null,
@@ -5026,6 +5032,7 @@ exports[`should match snapshot 1`] = `
       "aria": {
         "allowedValues": {
           "aria-current": "string",
+          "aria-haspopup": "string",
           "aria-label": "string",
         },
         "defaultValue": null,
@@ -8542,6 +8549,7 @@ exports[`should match snapshot 1`] = `
       "aria": {
         "allowedValues": {
           "aria-current": "string",
+          "aria-haspopup": "string",
           "aria-label": "string",
         },
         "defaultValue": null,
