@@ -11,8 +11,8 @@
   },
   {
     "chunkShortName": "button",
-    "size": 9942,
-    "gzipSize": 3853
+    "size": 10039,
+    "gzipSize": 3884
   },
   {
     "chunkShortName": "button-group",
@@ -86,8 +86,8 @@
   },
   {
     "chunkShortName": "flyout",
-    "size": 9504,
-    "gzipSize": 3990
+    "size": 9017,
+    "gzipSize": 3799
   },
   {
     "chunkShortName": "flyout-multilevel",
@@ -121,8 +121,8 @@
   },
   {
     "chunkShortName": "link",
-    "size": 7115,
-    "gzipSize": 3078
+    "size": 7212,
+    "gzipSize": 3096
   },
   {
     "chunkShortName": "link-pure",
@@ -131,8 +131,8 @@
   },
   {
     "chunkShortName": "link-social",
-    "size": 6867,
-    "gzipSize": 3016
+    "size": 6950,
+    "gzipSize": 3044
   },
   {
     "chunkShortName": "link-tile",
@@ -151,8 +151,8 @@
   },
   {
     "chunkShortName": "main",
-    "size": 81036,
-    "gzipSize": 26861
+    "size": 80997,
+    "gzipSize": 26849
   },
   {
     "chunkShortName": "marque",
@@ -161,8 +161,8 @@
   },
   {
     "chunkShortName": "modal",
-    "size": 10845,
-    "gzipSize": 4342
+    "size": 10854,
+    "gzipSize": 4332
   },
   {
     "chunkShortName": "model-signature",
