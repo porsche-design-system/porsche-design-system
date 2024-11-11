@@ -11,6 +11,7 @@ import type { FlyoutFooterBehavior, FlyoutPosition } from './flyout-utils';
 import {
   dialogGridJssStyle,
   dialogHostJssStyle,
+  dialogPaddingBlock,
   getDialogColorJssStyle,
   getDialogJssStyle,
   getDialogStickyAreaJssStyle,
@@ -115,12 +116,11 @@ export const getComponentCss = (
           paddingBlockEnd: 0,
         }),
       ...(isFooterFixed && {
-        gridTemplateRows: hasHeader ? 'min-content 1fr min-content' : '1fr',
+        gridTemplateRows: hasHeader ? 'auto 1fr auto' : '1fr',
         '&::before': {
           content: '""',
-          minHeight: hasHeader ? '100dvh' : `calc(100dvh - calc(${spacingFluidSmall} + ${spacingFluidMedium}))`,
-          gridRow: hasHeader ? '1 / 4' : '1 / 3',
-          gridColumn: '1 / -1',
+          minHeight: hasHeader ? '100dvh' : `calc(100dvh - ${dialogPaddingBlock})`,
+          gridArea: `1/1/${hasHeader ? '4' : '3'}/-1`,
           pointerEvents: 'none',
         },
       }),
