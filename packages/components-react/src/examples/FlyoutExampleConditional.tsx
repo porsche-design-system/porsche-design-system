@@ -22,9 +22,7 @@ export const FlyoutExampleConditionalPage = (): JSX.Element => {
               Some Heading
             </PHeading>
             <PText>Some Content</PText>
-            <button type="button" autoFocus={true}>
-              Test
-            </button>
+            <button type="button">Test</button>
           </>
         )}
       </PFlyout>
