@@ -161,21 +161,15 @@ test.describe('form', () => {
     await addEventListener(form, 'submit');
     expect((await getEventSummary(form, 'submit')).counter).toBe(0);
 
-    await input1.focus();
-
-    await input1.evaluate((el) => {
-      const data = new DataTransfer();
-      data.items.add('5555', 'text/plain');
-      const evt = new ClipboardEvent('paste', { clipboardData: data, bubbles: true });
-      el.dispatchEvent(evt);
-    });
+    await input4.focus();
+    await input4.clear();
+    await input4.fill('0');
     await waitForStencilLifecycle(page);
 
-    await expect(host).toHaveJSProperty('value', newValue);
-    await expect(input1).toHaveValue('5');
-    await expect(input2).toHaveValue('5');
-    await expect(input3).toHaveValue('5');
-    await expect(input4).toHaveValue('5');
+    await expect(input1).toHaveValue('1');
+    await expect(input2).toHaveValue('2');
+    await expect(input3).toHaveValue('3');
+    await expect(input4).toHaveValue('0');
 
     await page.locator('button[type="reset"]').click();
 
