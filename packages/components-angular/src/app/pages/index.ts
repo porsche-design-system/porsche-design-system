@@ -70,7 +70,8 @@ import { DividerComponent } from './generated/divider.component';
 import { FieldsetComponent } from './generated/fieldset.component';
 import { FieldsetWrapperComponent } from './generated/fieldset-wrapper.component';
 import { FlexComponent } from './generated/flex.component';
-import { FlyoutComponent } from './generated/flyout.component';
+import { Flyout_1Component } from './generated/flyout-1.component';
+import { Flyout_2Component } from './generated/flyout-2.component';
 import { FlyoutBasicComponent } from './generated/flyout-basic.component';
 import { FlyoutCssVariablesComponent } from './generated/flyout-css-variables.component';
 import { FlyoutFixedFooterComponent } from './generated/flyout-fixed-footer.component';
@@ -84,7 +85,6 @@ import { FlyoutFixedFooterSubfooterComponent } from './generated/flyout-fixed-fo
 import { FlyoutFixedFooterSubfooterScrollableContentComponent } from './generated/flyout-fixed-footer-subfooter-scrollable-content.component';
 import { FlyoutFixedFooterSubfooterScrollableContentScrolledComponent } from './generated/flyout-fixed-footer-subfooter-scrollable-content-scrolled.component';
 import { FlyoutFooterComponent } from './generated/flyout-footer.component';
-import { FlyoutFooterBehaviorComponent } from './generated/flyout-footer-behavior.component';
 import { FlyoutFooterScrollableContentComponent } from './generated/flyout-footer-scrollable-content.component';
 import { FlyoutFooterScrolledComponent } from './generated/flyout-footer-scrolled.component';
 import { FlyoutGridComponent } from './generated/flyout-grid.component';
@@ -216,7 +216,8 @@ export const generatedPages = [
   FieldsetComponent,
   FieldsetWrapperComponent,
   FlexComponent,
-  FlyoutComponent,
+  Flyout_1Component,
+  Flyout_2Component,
   FlyoutBasicComponent,
   FlyoutCssVariablesComponent,
   FlyoutFixedFooterComponent,
@@ -230,7 +231,6 @@ export const generatedPages = [
   FlyoutFixedFooterSubfooterScrollableContentComponent,
   FlyoutFixedFooterSubfooterScrollableContentScrolledComponent,
   FlyoutFooterComponent,
-  FlyoutFooterBehaviorComponent,
   FlyoutFooterScrollableContentComponent,
   FlyoutFooterScrolledComponent,
   FlyoutGridComponent,
@@ -515,9 +515,14 @@ export const generatedRoutes: ExtendedRoute[] = [
     component: FlexComponent,
   },
   {
-    name: 'Flyout',
-    path: 'flyout',
-    component: FlyoutComponent,
+    name: 'Flyout 1',
+    path: 'flyout-1',
+    component: Flyout_1Component,
+  },
+  {
+    name: 'Flyout 2',
+    path: 'flyout-2',
+    component: Flyout_2Component,
   },
   {
     name: 'Flyout Basic',
@@ -583,11 +588,6 @@ export const generatedRoutes: ExtendedRoute[] = [
     name: 'Flyout Footer',
     path: 'flyout-footer',
     component: FlyoutFooterComponent,
-  },
-  {
-    name: 'Flyout Footer Behavior',
-    path: 'flyout-footer-behavior',
-    component: FlyoutFooterBehaviorComponent,
   },
   {
     name: 'Flyout Footer Scrollable Content',

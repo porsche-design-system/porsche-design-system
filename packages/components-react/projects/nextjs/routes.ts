@@ -156,9 +156,13 @@ const generatedRoutes = {
     "path": "/flex",
     "name": "Flex"
   },
-  "flyout": {
-    "path": "/flyout",
-    "name": "Flyout"
+  "flyout_1": {
+    "path": "/flyout-1",
+    "name": "Flyout_1"
+  },
+  "flyout_2": {
+    "path": "/flyout-2",
+    "name": "Flyout_2"
   },
   "flyoutBasic": {
     "path": "/flyout-basic",
@@ -211,10 +215,6 @@ const generatedRoutes = {
   "flyoutFooter": {
     "path": "/flyout-footer",
     "name": "FlyoutFooter"
-  },
-  "flyoutFooterBehavior": {
-    "path": "/flyout-footer-behavior",
-    "name": "FlyoutFooterBehavior"
   },
   "flyoutFooterScrollableContent": {
     "path": "/flyout-footer-scrollable-content",

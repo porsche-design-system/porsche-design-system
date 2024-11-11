@@ -51,7 +51,8 @@ import { DividerPage } from './generated/Divider';
 import { FieldsetPage } from './generated/Fieldset';
 import { FieldsetWrapperPage } from './generated/FieldsetWrapper';
 import { FlexPage } from './generated/Flex';
-import { FlyoutPage } from './generated/Flyout';
+import { Flyout_1Page } from './generated/Flyout_1';
+import { Flyout_2Page } from './generated/Flyout_2';
 import { FlyoutBasicPage } from './generated/FlyoutBasic';
 import { FlyoutCssVariablesPage } from './generated/FlyoutCssVariables';
 import { FlyoutFixedFooterPage } from './generated/FlyoutFixedFooter';
@@ -65,7 +66,6 @@ import { FlyoutFixedFooterSubfooterPage } from './generated/FlyoutFixedFooterSub
 import { FlyoutFixedFooterSubfooterScrollableContentPage } from './generated/FlyoutFixedFooterSubfooterScrollableContent';
 import { FlyoutFixedFooterSubfooterScrollableContentScrolledPage } from './generated/FlyoutFixedFooterSubfooterScrollableContentScrolled';
 import { FlyoutFooterPage } from './generated/FlyoutFooter';
-import { FlyoutFooterBehaviorPage } from './generated/FlyoutFooterBehavior';
 import { FlyoutFooterScrollableContentPage } from './generated/FlyoutFooterScrollableContent';
 import { FlyoutFooterScrolledPage } from './generated/FlyoutFooterScrolled';
 import { FlyoutGridPage } from './generated/FlyoutGrid';
@@ -348,9 +348,14 @@ export const generatedRoutes: RouteType[] = [
     element: <FlexPage />,
   },
   {
-    name: 'Flyout',
-    path: '/flyout',
-    element: <FlyoutPage />,
+    name: 'Flyout 1',
+    path: '/flyout-1',
+    element: <Flyout_1Page />,
+  },
+  {
+    name: 'Flyout 2',
+    path: '/flyout-2',
+    element: <Flyout_2Page />,
   },
   {
     name: 'Flyout Basic',
@@ -416,11 +421,6 @@ export const generatedRoutes: RouteType[] = [
     name: 'Flyout Footer',
     path: '/flyout-footer',
     element: <FlyoutFooterPage />,
-  },
-  {
-    name: 'Flyout Footer Behavior',
-    path: '/flyout-footer-behavior',
-    element: <FlyoutFooterBehaviorPage />,
   },
   {
     name: 'Flyout Footer Scrollable Content',
