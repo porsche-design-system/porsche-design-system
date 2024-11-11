@@ -27,7 +27,6 @@ import type { CheckboxState, CheckboxUpdateEventDetail, CheckboxBlurEventDetail 
 import { messageId, StateMessage } from '../common/state-message/state-message';
 import { descriptionId, Label } from '../common/label/label';
 import { LoadingMessage } from '../common/loading-message/loading-message';
-import { ControllerHost, InitialLoadingController } from '../../controllers';
 import { getSlottedAnchorStyles } from '../../styles';
 
 const propTypes: PropTypes<typeof Checkbox> = {
@@ -114,9 +113,8 @@ export class Checkbox {
 
   @AttachInternals() private internals: ElementInternals;
 
+  private initialLoading: boolean = false;
   private defaultChecked: boolean;
-  private controllerHost = new ControllerHost(this);
-  private loadingCtrl = new InitialLoadingController(this.controllerHost);
   private checkboxInputElement: HTMLInputElement;
 
   @Listen('keydown')
@@ -145,6 +143,7 @@ export class Checkbox {
   }
 
   public connectedCallback(): void {
+    this.initialLoading = this.loading;
     applyConstructableStylesheetStyles(this.host, getSlottedAnchorStyles);
   }
 
@@ -153,6 +152,7 @@ export class Checkbox {
   }
 
   public componentWillLoad(): void {
+    this.initialLoading = this.loading;
     this.defaultChecked = this.checked;
   }
 
@@ -160,6 +160,12 @@ export class Checkbox {
     this.checkboxInputElement.indeterminate = this.indeterminate;
     if (this.checkboxInputElement.checked) {
       this.internals.setFormValue(this.value);
+    }
+  }
+
+  public componentWillUpdate(): void {
+    if (this.loading) {
+      this.initialLoading = true;
     }
   }
 
@@ -237,7 +243,7 @@ export class Checkbox {
           )}
         </div>
         <StateMessage state={this.state} message={this.message} theme={this.theme} host={this.host} />
-        <LoadingMessage loading={this.loading} initialLoading={this.loadingCtrl.initialLoading} />
+        <LoadingMessage loading={this.loading} initialLoading={this.initialLoading} />
       </div>
     );
   }

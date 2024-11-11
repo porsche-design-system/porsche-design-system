@@ -29,7 +29,6 @@ import { getComponentCss } from './pin-code-styles';
 import { messageId, StateMessage } from '../common/state-message/state-message';
 import { descriptionId, Label, labelId } from '../common/label/label';
 import { LoadingMessage } from '../common/loading-message/loading-message';
-import { ControllerHost, InitialLoadingController } from '../../controllers';
 import { getSlottedAnchorStyles } from '../../styles';
 
 const propTypes: PropTypes<typeof PinCode> = {
@@ -111,23 +110,25 @@ export class PinCode {
 
   @AttachInternals() private internals: ElementInternals;
 
+  private initialLoading: boolean = false;
   private defaultValue: string;
-  private controllerHost = new ControllerHost(this);
-  private loadingCtrl = new InitialLoadingController(this.controllerHost);
   private inputElements: HTMLInputElement[] = [];
 
   public connectedCallback(): void {
+    this.initialLoading = this.loading;
     applyConstructableStylesheetStyles(this.host, getSlottedAnchorStyles);
   }
 
   public componentWillLoad(): void {
+    this.initialLoading = this.loading;
     this.value = getSanitisedValue(this.host, this.value, this.length);
     this.defaultValue = this.value;
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-empty-function
   public componentWillUpdate(): void {
-    // TODO fix this workaround for InitialLoadingController
+    if (this.loading) {
+      this.initialLoading = true;
+    }
   }
 
   public componentDidLoad(): void {
@@ -223,7 +224,7 @@ export class PinCode {
           )}
         </div>
         <StateMessage state={this.state} message={this.message} theme={this.theme} host={this.host} />
-        <LoadingMessage loading={this.loading} initialLoading={this.loadingCtrl.initialLoading} />
+        <LoadingMessage loading={this.loading} initialLoading={this.initialLoading} />
       </div>
     );
   }

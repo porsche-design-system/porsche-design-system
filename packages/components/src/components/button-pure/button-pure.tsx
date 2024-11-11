@@ -31,7 +31,6 @@ import {
 } from './button-pure-utils';
 import { getComponentCss } from './button-pure-styles';
 import { LoadingMessage, loadingId } from '../common/loading-message/loading-message';
-import { ControllerHost, InitialLoadingController } from '../../controllers';
 
 const propTypes: PropTypes<typeof ButtonPure> = {
   type: AllowedTypes.oneOf<ButtonPureType>(BUTTON_TYPES),
@@ -113,8 +112,7 @@ export class ButtonPure {
   /** Add ARIA attributes. */
   @Prop() public aria?: SelectedAriaAttributes<ButtonPureAriaAttribute>;
 
-  private controllerHost = new ControllerHost(this);
-  private loadingCtrl = new InitialLoadingController(this.controllerHost);
+  private initialLoading: boolean = false;
 
   private get isDisabledOrLoading(): boolean {
     return isDisabledOrLoading(this.disabled, this.loading);
@@ -125,6 +123,20 @@ export class ButtonPure {
   public onClick(e: MouseEvent): void {
     if (this.isDisabledOrLoading) {
       e.stopPropagation();
+    }
+  }
+
+  public connectedCallback(): void {
+    this.initialLoading = this.loading;
+  }
+
+  public componentWillLoad(): void {
+    this.initialLoading = this.loading;
+  }
+
+  public componentWillUpdate(): void {
+    if (this.loading) {
+      this.initialLoading = true;
     }
   }
 
@@ -214,7 +226,7 @@ export class ButtonPure {
             <slot />
           </span>
         </button>
-        <LoadingMessage loading={this.loading} initialLoading={this.loadingCtrl.initialLoading} />
+        <LoadingMessage loading={this.loading} initialLoading={this.initialLoading} />
       </Host>
     );
   }
