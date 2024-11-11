@@ -212,6 +212,10 @@ const generatedRoutes = {
     "path": "/flyout-footer",
     "name": "FlyoutFooter"
   },
+  "flyoutFooterBehavior": {
+    "path": "/flyout-footer-behavior",
+    "name": "FlyoutFooterBehavior"
+  },
   "flyoutFooterScrollableContent": {
     "path": "/flyout-footer-scrollable-content",
     "name": "FlyoutFooterScrollableContent"

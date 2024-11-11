@@ -65,6 +65,7 @@ import { FlyoutFixedFooterSubfooterPage } from './generated/FlyoutFixedFooterSub
 import { FlyoutFixedFooterSubfooterScrollableContentPage } from './generated/FlyoutFixedFooterSubfooterScrollableContent';
 import { FlyoutFixedFooterSubfooterScrollableContentScrolledPage } from './generated/FlyoutFixedFooterSubfooterScrollableContentScrolled';
 import { FlyoutFooterPage } from './generated/FlyoutFooter';
+import { FlyoutFooterBehaviorPage } from './generated/FlyoutFooterBehavior';
 import { FlyoutFooterScrollableContentPage } from './generated/FlyoutFooterScrollableContent';
 import { FlyoutFooterScrolledPage } from './generated/FlyoutFooterScrolled';
 import { FlyoutGridPage } from './generated/FlyoutGrid';
@@ -415,6 +416,11 @@ export const generatedRoutes: RouteType[] = [
     name: 'Flyout Footer',
     path: '/flyout-footer',
     element: <FlyoutFooterPage />,
+  },
+  {
+    name: 'Flyout Footer Behavior',
+    path: '/flyout-footer-behavior',
+    element: <FlyoutFooterBehaviorPage />,
   },
   {
     name: 'Flyout Footer Scrollable Content',

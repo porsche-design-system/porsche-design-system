@@ -84,6 +84,7 @@ import { FlyoutFixedFooterSubfooterComponent } from './generated/flyout-fixed-fo
 import { FlyoutFixedFooterSubfooterScrollableContentComponent } from './generated/flyout-fixed-footer-subfooter-scrollable-content.component';
 import { FlyoutFixedFooterSubfooterScrollableContentScrolledComponent } from './generated/flyout-fixed-footer-subfooter-scrollable-content-scrolled.component';
 import { FlyoutFooterComponent } from './generated/flyout-footer.component';
+import { FlyoutFooterBehaviorComponent } from './generated/flyout-footer-behavior.component';
 import { FlyoutFooterScrollableContentComponent } from './generated/flyout-footer-scrollable-content.component';
 import { FlyoutFooterScrolledComponent } from './generated/flyout-footer-scrolled.component';
 import { FlyoutGridComponent } from './generated/flyout-grid.component';
@@ -229,6 +230,7 @@ export const generatedPages = [
   FlyoutFixedFooterSubfooterScrollableContentComponent,
   FlyoutFixedFooterSubfooterScrollableContentScrolledComponent,
   FlyoutFooterComponent,
+  FlyoutFooterBehaviorComponent,
   FlyoutFooterScrollableContentComponent,
   FlyoutFooterScrolledComponent,
   FlyoutGridComponent,
@@ -581,6 +583,11 @@ export const generatedRoutes: ExtendedRoute[] = [
     name: 'Flyout Footer',
     path: 'flyout-footer',
     component: FlyoutFooterComponent,
+  },
+  {
+    name: 'Flyout Footer Behavior',
+    path: 'flyout-footer-behavior',
+    component: FlyoutFooterBehaviorComponent,
   },
   {
     name: 'Flyout Footer Scrollable Content',
