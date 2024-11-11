@@ -14,6 +14,12 @@ const components = (TAG_NAMES as unknown as TagName[])
   .map((tagName) => {
     return tagName.substring(2);
   });
+// // Use like this: "test:vrt": "playwright test --config=tests/vrt/config/playwright.config.ts common/components flyout",
+// .filter((tagName) => {
+//   // TODO: how does this work? why slice it on every iteration?
+//   const argv = process.argv.slice(5);
+//   return !argv.length || argv.includes(tagName);
+// });
 
 const isComponentThemeable = (component: string): boolean => getComponentMeta(`p-${component}` as TagName).isThemeable;
 
