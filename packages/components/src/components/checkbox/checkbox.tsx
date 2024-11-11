@@ -76,7 +76,7 @@ export class Checkbox {
   @Prop({ mutable: true }) public checked?: boolean = false;
 
   /** The id of a form element the checkbox should be associated with. */
-  @Prop() public form?: string;
+  @Prop({ reflect: true }) public form?: string; // The ElementInternals API automatically detects the form attribute
 
   /**
    * The checkbox value.

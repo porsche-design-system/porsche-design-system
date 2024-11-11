@@ -106,7 +106,7 @@ export class Textarea {
   @Prop() public minLength?: number;
 
   /** The id of a form element the textarea should be associated with. */
-  @Prop() public form?: string;
+  @Prop({ reflect: true }) public form?: string; // The ElementInternals API automatically detects the form attribute
 
   /** The amount of rows of the textarea. */
   @Prop() public rows?: number = 7;

@@ -103,7 +103,7 @@ export class PinCode {
   @Prop() public theme?: Theme = 'light';
 
   /** The id of a form element the pin-code should be associated with. */
-  @Prop() public form?: string;
+  @Prop({ reflect: true }) public form?: string; // The ElementInternals API automatically detects the form attribute
 
   /** Emitted when selected element changes. */
   @Event({ bubbles: false }) public update: EventEmitter<PinCodeUpdateEventDetail>;
