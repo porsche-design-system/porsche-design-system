@@ -80,9 +80,7 @@ allowed.
 
 The `p-checkbox` component is a form-associated custom element that integrates seamlessly with forms. Leveraging the
 [ElementInternals](https://developer.mozilla.org/en-US/docs/Web/API/ElementInternals) API, it functions like a native
-checkbox, ensuring compatibility with form behaviors. However, note that browser support for this API is limited. At
-present, the component only supports including the checkbox value in the `FormData` object during form submission and
-resetting the form. Native form validation features are not yet supported.
+checkbox, ensuring compatibility with form behaviors. However, note that browser support for this API is limited.
 
 <Playground :frameworkMarkup="formExample" :config="{ ...config, withoutDemo: true }">
   <form @submit.prevent="onSubmit">
