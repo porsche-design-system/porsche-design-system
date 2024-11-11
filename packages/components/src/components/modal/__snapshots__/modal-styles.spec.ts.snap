@@ -86,6 +86,7 @@ dialog::backdrop {
 
 .scroller {
   position: absolute;
+  isolation: isolate;
   display: grid;
   inset: 0;
   overflow: hidden auto;
@@ -186,6 +187,7 @@ dialog::backdrop {
 
 .scroller {
   position: absolute;
+  isolation: isolate;
   display: grid;
   inset: 0;
   overflow: hidden auto;
@@ -312,6 +314,7 @@ dialog::backdrop {
 
 .scroller {
   position: absolute;
+  isolation: isolate;
   display: grid;
   inset: 0;
   overflow: hidden auto;
@@ -422,6 +425,7 @@ dialog::backdrop {
 
 .scroller {
   position: absolute;
+  isolation: isolate;
   display: grid;
   inset: 0;
   overflow: hidden auto;
@@ -538,6 +542,7 @@ dialog::backdrop {
 
 .scroller {
   position: absolute;
+  isolation: isolate;
   display: grid;
   inset: 0;
   overflow: hidden auto;
@@ -638,6 +643,7 @@ dialog::backdrop {
 
 .scroller {
   position: absolute;
+  isolation: isolate;
   display: grid;
   inset: 0;
   overflow: hidden auto;
@@ -758,6 +764,7 @@ dialog::backdrop {
 
 .scroller {
   position: absolute;
+  isolation: isolate;
   display: grid;
   inset: 0;
   overflow: hidden auto;
@@ -884,6 +891,7 @@ dialog::backdrop {
 
 .scroller {
   position: absolute;
+  isolation: isolate;
   display: grid;
   inset: 0;
   overflow: hidden auto;
@@ -994,6 +1002,7 @@ dialog::backdrop {
 
 .scroller {
   position: absolute;
+  isolation: isolate;
   display: grid;
   inset: 0;
   overflow: hidden auto;
@@ -1104,6 +1113,7 @@ dialog::backdrop {
 
 .scroller {
   position: absolute;
+  isolation: isolate;
   display: grid;
   inset: 0;
   overflow: hidden auto;
@@ -1224,6 +1234,7 @@ dialog::backdrop {
 
 .scroller {
   position: absolute;
+  isolation: isolate;
   display: grid;
   inset: 0;
   overflow: hidden auto;
@@ -1391,6 +1402,7 @@ dialog::backdrop {
 
 .scroller {
   position: absolute;
+  isolation: isolate;
   display: grid;
   inset: 0;
   overflow: hidden auto;
@@ -1569,6 +1581,7 @@ dialog::backdrop {
 
 .scroller {
   position: absolute;
+  isolation: isolate;
   display: grid;
   inset: 0;
   overflow: hidden auto;
@@ -1684,6 +1697,7 @@ dialog::backdrop {
 
 .scroller {
   position: absolute;
+  isolation: isolate;
   display: grid;
   inset: 0;
   overflow: hidden auto;
@@ -1813,6 +1827,7 @@ dialog::backdrop {
 
 .scroller {
   position: absolute;
+  isolation: isolate;
   display: grid;
   inset: 0;
   overflow: hidden auto;
@@ -1912,6 +1927,7 @@ dialog::backdrop {
 
 .scroller {
   position: absolute;
+  isolation: isolate;
   display: grid;
   inset: 0;
   overflow: hidden auto;
@@ -2037,6 +2053,7 @@ dialog::backdrop {
 
 .scroller {
   position: absolute;
+  isolation: isolate;
   display: grid;
   inset: 0;
   overflow: hidden auto;
@@ -2146,6 +2163,7 @@ dialog::backdrop {
 
 .scroller {
   position: absolute;
+  isolation: isolate;
   display: grid;
   inset: 0;
   overflow: hidden auto;
@@ -2261,6 +2279,7 @@ dialog::backdrop {
 
 .scroller {
   position: absolute;
+  isolation: isolate;
   display: grid;
   inset: 0;
   overflow: hidden auto;
@@ -2360,6 +2379,7 @@ dialog::backdrop {
 
 .scroller {
   position: absolute;
+  isolation: isolate;
   display: grid;
   inset: 0;
   overflow: hidden auto;
@@ -2485,6 +2505,7 @@ dialog::backdrop {
 
 .scroller {
   position: absolute;
+  isolation: isolate;
   display: grid;
   inset: 0;
   overflow: hidden auto;

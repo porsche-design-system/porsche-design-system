@@ -35,6 +35,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 #### Fixed
 
+- `Flyout`: overlapping of scrollbar in iOS/iPadOS Safari when sticky header/footer is used
+  ([#3607](https://github.com/porsche-design-system/porsche-design-system/pull/3607))
 - `Carousel`: dynamic change in `slidesPerPages` when using `focusOnCenterSlide` prop breaks pagination
   ([#3592](https://github.com/porsche-design-system/porsche-design-system/pull/3592))
 - `Flyout`, `Modal`:
