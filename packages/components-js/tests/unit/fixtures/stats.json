@@ -11,8 +11,8 @@
   },
   {
     "chunkShortName": "button",
-    "size": 10043,
-    "gzipSize": 3875
+    "size": 8944,
+    "gzipSize": 3608
   },
   {
     "chunkShortName": "button-group",
@@ -21,8 +21,8 @@
   },
   {
     "chunkShortName": "button-pure",
-    "size": 10033,
-    "gzipSize": 4002
+    "size": 8934,
+    "gzipSize": 3744
   },
   {
     "chunkShortName": "button-tile",
@@ -36,18 +36,18 @@
   },
   {
     "chunkShortName": "carousel",
-    "size": 48081,
-    "gzipSize": 19522
+    "size": 48083,
+    "gzipSize": 19527
   },
   {
     "chunkShortName": "checkbox",
-    "size": 14500,
-    "gzipSize": 5454
+    "size": 13361,
+    "gzipSize": 5167
   },
   {
     "chunkShortName": "checkbox-wrapper",
-    "size": 12467,
-    "gzipSize": 4901
+    "size": 11328,
+    "gzipSize": 4622
   },
   {
     "chunkShortName": "content-wrapper",
@@ -151,8 +151,8 @@
   },
   {
     "chunkShortName": "main",
-    "size": 81036,
-    "gzipSize": 26851
+    "size": 81042,
+    "gzipSize": 26855
   },
   {
     "chunkShortName": "marque",
@@ -186,8 +186,8 @@
   },
   {
     "chunkShortName": "pin-code",
-    "size": 15233,
-    "gzipSize": 5814
+    "size": 14071,
+    "gzipSize": 5536
   },
   {
     "chunkShortName": "popover",
@@ -196,8 +196,8 @@
   },
   {
     "chunkShortName": "radio-button-wrapper",
-    "size": 11993,
-    "gzipSize": 4744
+    "size": 10854,
+    "gzipSize": 4467
   },
   {
     "chunkShortName": "scroller",
@@ -231,8 +231,8 @@
   },
   {
     "chunkShortName": "switch",
-    "size": 8592,
-    "gzipSize": 3321
+    "size": 7473,
+    "gzipSize": 3056
   },
   {
     "chunkShortName": "table",
@@ -277,7 +277,7 @@
   {
     "chunkShortName": "textarea",
     "size": 13656,
-    "gzipSize": 5030
+    "gzipSize": 5022
   },
   {
     "chunkShortName": "textarea-wrapper",
