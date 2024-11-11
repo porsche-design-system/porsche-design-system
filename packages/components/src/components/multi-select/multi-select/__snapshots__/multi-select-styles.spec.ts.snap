@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`getComponentCss() should return correct css for direction: down, isOpen: false, isDisabled: false, hideLabel: false, state: none, isWithinForm: true, isNativePopoverCase: false and theme: light 1`] = `
+exports[`getComponentCss() should return correct css for direction: down, isOpen: false, isDisabled: false, hideLabel: false, state: none, isNativePopoverCase: false and theme: light 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -10,12 +10,6 @@ exports[`getComponentCss() should return correct css for direction: down, isOpen
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
-}
-::slotted([slot=internal-select]) {
-  position: absolute !important;
-  opacity: 0 !important;
-  height: 0px !important;
-  bottom: 0 !important;
 }
 input {
   grid-area: 1/1/1/-1;
@@ -71,7 +65,6 @@ input:not(:focus):-moz-placeholder {
   display: grid;
   gap: 4px;
   min-width: calc(1rem + 16px + 2px * 2 + calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 2));
-  position: relative;
 }
 .wrapper {
   position: relative;
@@ -190,7 +183,7 @@ input:not(:focus):-moz-placeholder {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for direction: down, isOpen: false, isDisabled: false, hideLabel: true, state: success, isWithinForm: true, isNativePopoverCase: false and theme: light 1`] = `
+exports[`getComponentCss() should return correct css for direction: down, isOpen: false, isDisabled: false, hideLabel: true, state: success, isNativePopoverCase: false and theme: light 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -200,12 +193,6 @@ exports[`getComponentCss() should return correct css for direction: down, isOpen
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
-}
-::slotted([slot=internal-select]) {
-  position: absolute !important;
-  opacity: 0 !important;
-  height: 0px !important;
-  bottom: 0 !important;
 }
 input {
   grid-area: 1/1/1/-1;
@@ -261,7 +248,6 @@ input:not(:focus):-moz-placeholder {
   display: grid;
   gap: 4px;
   min-width: calc(1rem + 16px + 2px * 2 + calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 2));
-  position: relative;
 }
 .wrapper {
   position: relative;
@@ -381,7 +367,395 @@ input:not(:focus):-moz-placeholder {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for direction: down, isOpen: false, isDisabled: true, hideLabel: false, state: none, isWithinForm: false, isNativePopoverCase: true and theme: light 1`] = `
+exports[`getComponentCss() should return correct css for direction: down, isOpen: false, isDisabled: true, hideLabel: false, state: none, isNativePopoverCase: false and theme: light 1`] = `
+":host {
+  display: block;
+  color-scheme: light dark !important;
+}
+:host([hidden]) {
+  display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
+input {
+  grid-area: 1/1/1/-1;
+  flex: 1;
+  min-width: 0;
+  height: calc(calc(6px + 2.125ex) + 10px + 2px * 2 + 8px * 2);
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  margin: 0;
+  padding: 8px 16px;
+  padding-inline-end: calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 2);
+  box-sizing: border-box;
+  outline: 0;
+  -webkit-appearance: none;
+  appearance: none;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  text-overflow: ellipsis;
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  color: #949598;
+  background: #FFF;
+  border: 2px solid #6B6D70;
+  border-radius: 4px;
+  cursor: not-allowed;
+  border-color: #949598;
+  -webkit-text-fill-color: #949598;
+}
+input:disabled {
+  cursor: not-allowed;
+}
+input::placeholder {
+  color: #949598;
+}
+input::-webkit-input-placeholder {
+  color: #949598;
+}
+input::-moz-placeholder {
+  color: #949598;
+}
+input:-moz-placeholder {
+  color: #949598;
+}
+input:not(:focus)::placeholder {
+  color: #010205;
+  opacity: 1;
+}
+input:not(:focus)::-webkit-input-placeholder {
+  color: #010205;
+  opacity: 1;
+}
+input:not(:focus)::-moz-placeholder {
+  color: #010205;
+  opacity: 1;
+}
+input:not(:focus):-moz-placeholder {
+  color: #010205;
+  opacity: 1;
+}
+@media(hover:hover) {
+  input:hover:not(:disabled):not(:focus), label:hover~.wrapper input:not(:disabled):not(:focus) {
+    border-color: #010205;
+  }
+}
+
+.root {
+  display: grid;
+  gap: 4px;
+  min-width: calc(1rem + 16px + 2px * 2 + calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 2));
+}
+.wrapper {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto auto calc(9px + 2px);
+}
+.icon {
+  grid-area: 1/3;
+  place-self: center;
+  padding: 4px;
+  pointer-events: none;
+  transform: rotate3d(0,0,1,0.0001deg);
+  transition: transform var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+}
+.icon--rotate {
+  transform: rotate3d(0,0,1,180deg);
+}
+.button {
+  grid-area: 1/2;
+  place-self: center;
+  padding: 4px;
+}
+.listbox {
+  position: absolute;
+  margin: 0;
+  display: none;
+  flex-direction: column;
+  gap: 8px;
+  padding: 6px;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  z-index: 10;
+  left: 0;
+  right: 0;
+  top: 100%;
+  box-sizing: border-box;
+  max-height: 450px;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  background: #FFF;
+  border: 2px solid #010205;
+  border-top: none;
+  border-radius: 4px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  scrollbar-width: thin;
+  scrollbar-color: auto;
+  transition: border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  transform: translate3d(0,0,0);
+}
+.no-results {
+  padding: 8px 12px;
+  box-sizing: border-box;
+  color: #535457;
+}
+.no-results[role=status] {
+  cursor: not-allowed;
+}
+.no-results__sr {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+}
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+}
+.label {
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  cursor: not-allowed;
+  justify-self: flex-start;
+  color: #949598;
+  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  position: static;
+  width: auto;
+  height: auto;
+  padding: 0;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
+}
+.label:empty {
+  display: none;
+}
+.label+.label {
+  cursor: unset;
+  margin-top: -4px;
+  font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
+}
+.required {
+  user-select: none;
+}
+.message {
+  display: flex;
+  gap: 4px;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+}"
+`;
+
+exports[`getComponentCss() should return correct css for direction: down, isOpen: false, isDisabled: true, hideLabel: false, state: none, isNativePopoverCase: false and theme: light 2`] = `
+":host {
+  display: block;
+  color-scheme: light dark !important;
+}
+:host([hidden]) {
+  display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
+input {
+  grid-area: 1/1/1/-1;
+  flex: 1;
+  min-width: 0;
+  height: calc(calc(6px + 2.125ex) + 10px + 2px * 2 + 8px * 2);
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  margin: 0;
+  padding: 8px 16px;
+  padding-inline-end: calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 2);
+  box-sizing: border-box;
+  outline: 0;
+  -webkit-appearance: none;
+  appearance: none;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  text-overflow: ellipsis;
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  color: #949598;
+  background: #FFF;
+  border: 2px solid #6B6D70;
+  border-radius: 4px;
+  cursor: not-allowed;
+  border-color: #949598;
+  -webkit-text-fill-color: #949598;
+}
+input:disabled {
+  cursor: not-allowed;
+}
+input::placeholder {
+  color: #949598;
+}
+input::-webkit-input-placeholder {
+  color: #949598;
+}
+input::-moz-placeholder {
+  color: #949598;
+}
+input:-moz-placeholder {
+  color: #949598;
+}
+input:not(:focus)::placeholder {
+  color: #010205;
+  opacity: 1;
+}
+input:not(:focus)::-webkit-input-placeholder {
+  color: #010205;
+  opacity: 1;
+}
+input:not(:focus)::-moz-placeholder {
+  color: #010205;
+  opacity: 1;
+}
+input:not(:focus):-moz-placeholder {
+  color: #010205;
+  opacity: 1;
+}
+@media(hover:hover) {
+  input:hover:not(:disabled):not(:focus), label:hover~.wrapper input:not(:disabled):not(:focus) {
+    border-color: #010205;
+  }
+}
+
+.root {
+  display: grid;
+  gap: 4px;
+  min-width: calc(1rem + 16px + 2px * 2 + calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 2));
+}
+.wrapper {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto auto calc(9px + 2px);
+}
+.icon {
+  grid-area: 1/3;
+  place-self: center;
+  padding: 4px;
+  pointer-events: none;
+  transform: rotate3d(0,0,1,0.0001deg);
+  transition: transform var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+}
+.icon--rotate {
+  transform: rotate3d(0,0,1,180deg);
+}
+.button {
+  grid-area: 1/2;
+  place-self: center;
+  padding: 4px;
+}
+.listbox {
+  position: absolute;
+  margin: 0;
+  display: none;
+  flex-direction: column;
+  gap: 8px;
+  padding: 6px;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  z-index: 10;
+  left: 0;
+  right: 0;
+  top: 100%;
+  box-sizing: border-box;
+  max-height: 450px;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  background: #FFF;
+  border: 2px solid #010205;
+  border-top: none;
+  border-radius: 4px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  scrollbar-width: thin;
+  scrollbar-color: auto;
+  transition: border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  transform: translate3d(0,0,0);
+}
+.no-results {
+  padding: 8px 12px;
+  box-sizing: border-box;
+  color: #535457;
+}
+.no-results[role=status] {
+  cursor: not-allowed;
+}
+.no-results__sr {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+}
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+}
+.label {
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  cursor: not-allowed;
+  justify-self: flex-start;
+  color: #949598;
+  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  position: static;
+  width: auto;
+  height: auto;
+  padding: 0;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
+}
+.label:empty {
+  display: none;
+}
+.label+.label {
+  cursor: unset;
+  margin-top: -4px;
+  font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
+}
+.required {
+  user-select: none;
+}
+.message {
+  display: flex;
+  gap: 4px;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+}"
+`;
+
+exports[`getComponentCss() should return correct css for direction: down, isOpen: false, isDisabled: true, hideLabel: false, state: none, isNativePopoverCase: true and theme: light 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -587,7 +961,7 @@ input:not(:focus):-moz-placeholder {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for direction: down, isOpen: false, isDisabled: true, hideLabel: false, state: none, isWithinForm: true, isNativePopoverCase: false and theme: light 1`] = `
+exports[`getComponentCss() should return correct css for direction: down, isOpen: false, isDisabled: true, hideLabel: false, state: success, isNativePopoverCase: false and theme: light 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -597,414 +971,6 @@ exports[`getComponentCss() should return correct css for direction: down, isOpen
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
-}
-::slotted([slot=internal-select]) {
-  position: absolute !important;
-  opacity: 0 !important;
-  height: 0px !important;
-  bottom: 0 !important;
-}
-input {
-  grid-area: 1/1/1/-1;
-  flex: 1;
-  min-width: 0;
-  height: calc(calc(6px + 2.125ex) + 10px + 2px * 2 + 8px * 2);
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  margin: 0;
-  padding: 8px 16px;
-  padding-inline-end: calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 2);
-  box-sizing: border-box;
-  outline: 0;
-  -webkit-appearance: none;
-  appearance: none;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  text-overflow: ellipsis;
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  color: #949598;
-  background: #FFF;
-  border: 2px solid #6B6D70;
-  border-radius: 4px;
-  cursor: not-allowed;
-  border-color: #949598;
-  -webkit-text-fill-color: #949598;
-}
-input:disabled {
-  cursor: not-allowed;
-}
-input::placeholder {
-  color: #949598;
-}
-input::-webkit-input-placeholder {
-  color: #949598;
-}
-input::-moz-placeholder {
-  color: #949598;
-}
-input:-moz-placeholder {
-  color: #949598;
-}
-input:not(:focus)::placeholder {
-  color: #010205;
-  opacity: 1;
-}
-input:not(:focus)::-webkit-input-placeholder {
-  color: #010205;
-  opacity: 1;
-}
-input:not(:focus)::-moz-placeholder {
-  color: #010205;
-  opacity: 1;
-}
-input:not(:focus):-moz-placeholder {
-  color: #010205;
-  opacity: 1;
-}
-@media(hover:hover) {
-  input:hover:not(:disabled):not(:focus), label:hover~.wrapper input:not(:disabled):not(:focus) {
-    border-color: #010205;
-  }
-}
-
-.root {
-  display: grid;
-  gap: 4px;
-  min-width: calc(1rem + 16px + 2px * 2 + calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 2));
-  position: relative;
-}
-.wrapper {
-  position: relative;
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) auto auto calc(9px + 2px);
-}
-.icon {
-  grid-area: 1/3;
-  place-self: center;
-  padding: 4px;
-  pointer-events: none;
-  transform: rotate3d(0,0,1,0.0001deg);
-  transition: transform var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-}
-.icon--rotate {
-  transform: rotate3d(0,0,1,180deg);
-}
-.button {
-  grid-area: 1/2;
-  place-self: center;
-  padding: 4px;
-}
-.listbox {
-  position: absolute;
-  margin: 0;
-  display: none;
-  flex-direction: column;
-  gap: 8px;
-  padding: 6px;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  z-index: 10;
-  left: 0;
-  right: 0;
-  top: 100%;
-  box-sizing: border-box;
-  max-height: 450px;
-  overflow-y: auto;
-  -webkit-overflow-scrolling: touch;
-  background: #FFF;
-  border: 2px solid #010205;
-  border-top: none;
-  border-radius: 4px;
-  border-top-left-radius: 0;
-  border-top-right-radius: 0;
-  scrollbar-width: thin;
-  scrollbar-color: auto;
-  transition: border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  transform: translate3d(0,0,0);
-}
-.no-results {
-  padding: 8px 12px;
-  box-sizing: border-box;
-  color: #535457;
-}
-.no-results[role=status] {
-  cursor: not-allowed;
-}
-.no-results__sr {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0,0,0,0);
-  white-space: nowrap;
-}
-.sr-only {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0,0,0,0);
-  white-space: nowrap;
-}
-.label {
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  cursor: not-allowed;
-  justify-self: flex-start;
-  color: #949598;
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  position: static;
-  width: auto;
-  height: auto;
-  padding: 0;
-  margin: 0;
-  overflow: visible;
-  clip: auto;
-  white-space: normal;
-}
-.label:empty {
-  display: none;
-}
-.label+.label {
-  cursor: unset;
-  margin-top: -4px;
-  font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
-}
-.required {
-  user-select: none;
-}
-.message {
-  display: flex;
-  gap: 4px;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-}"
-`;
-
-exports[`getComponentCss() should return correct css for direction: down, isOpen: false, isDisabled: true, hideLabel: false, state: none, isWithinForm: true, isNativePopoverCase: false and theme: light 2`] = `
-":host {
-  display: block;
-  color-scheme: light dark !important;
-}
-:host([hidden]) {
-  display: none !important;
-}
-:not(:defined,[data-ssr]) {
-  visibility: hidden;
-}
-::slotted([slot=internal-select]) {
-  position: absolute !important;
-  opacity: 0 !important;
-  height: 0px !important;
-  bottom: 0 !important;
-}
-input {
-  grid-area: 1/1/1/-1;
-  flex: 1;
-  min-width: 0;
-  height: calc(calc(6px + 2.125ex) + 10px + 2px * 2 + 8px * 2);
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  margin: 0;
-  padding: 8px 16px;
-  padding-inline-end: calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 2);
-  box-sizing: border-box;
-  outline: 0;
-  -webkit-appearance: none;
-  appearance: none;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  text-overflow: ellipsis;
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  color: #949598;
-  background: #FFF;
-  border: 2px solid #6B6D70;
-  border-radius: 4px;
-  cursor: not-allowed;
-  border-color: #949598;
-  -webkit-text-fill-color: #949598;
-}
-input:disabled {
-  cursor: not-allowed;
-}
-input::placeholder {
-  color: #949598;
-}
-input::-webkit-input-placeholder {
-  color: #949598;
-}
-input::-moz-placeholder {
-  color: #949598;
-}
-input:-moz-placeholder {
-  color: #949598;
-}
-input:not(:focus)::placeholder {
-  color: #010205;
-  opacity: 1;
-}
-input:not(:focus)::-webkit-input-placeholder {
-  color: #010205;
-  opacity: 1;
-}
-input:not(:focus)::-moz-placeholder {
-  color: #010205;
-  opacity: 1;
-}
-input:not(:focus):-moz-placeholder {
-  color: #010205;
-  opacity: 1;
-}
-@media(hover:hover) {
-  input:hover:not(:disabled):not(:focus), label:hover~.wrapper input:not(:disabled):not(:focus) {
-    border-color: #010205;
-  }
-}
-
-.root {
-  display: grid;
-  gap: 4px;
-  min-width: calc(1rem + 16px + 2px * 2 + calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 2));
-  position: relative;
-}
-.wrapper {
-  position: relative;
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) auto auto calc(9px + 2px);
-}
-.icon {
-  grid-area: 1/3;
-  place-self: center;
-  padding: 4px;
-  pointer-events: none;
-  transform: rotate3d(0,0,1,0.0001deg);
-  transition: transform var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-}
-.icon--rotate {
-  transform: rotate3d(0,0,1,180deg);
-}
-.button {
-  grid-area: 1/2;
-  place-self: center;
-  padding: 4px;
-}
-.listbox {
-  position: absolute;
-  margin: 0;
-  display: none;
-  flex-direction: column;
-  gap: 8px;
-  padding: 6px;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  z-index: 10;
-  left: 0;
-  right: 0;
-  top: 100%;
-  box-sizing: border-box;
-  max-height: 450px;
-  overflow-y: auto;
-  -webkit-overflow-scrolling: touch;
-  background: #FFF;
-  border: 2px solid #010205;
-  border-top: none;
-  border-radius: 4px;
-  border-top-left-radius: 0;
-  border-top-right-radius: 0;
-  scrollbar-width: thin;
-  scrollbar-color: auto;
-  transition: border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  transform: translate3d(0,0,0);
-}
-.no-results {
-  padding: 8px 12px;
-  box-sizing: border-box;
-  color: #535457;
-}
-.no-results[role=status] {
-  cursor: not-allowed;
-}
-.no-results__sr {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0,0,0,0);
-  white-space: nowrap;
-}
-.sr-only {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0,0,0,0);
-  white-space: nowrap;
-}
-.label {
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  cursor: not-allowed;
-  justify-self: flex-start;
-  color: #949598;
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  position: static;
-  width: auto;
-  height: auto;
-  padding: 0;
-  margin: 0;
-  overflow: visible;
-  clip: auto;
-  white-space: normal;
-}
-.label:empty {
-  display: none;
-}
-.label+.label {
-  cursor: unset;
-  margin-top: -4px;
-  font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
-}
-.required {
-  user-select: none;
-}
-.message {
-  display: flex;
-  gap: 4px;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-}"
-`;
-
-exports[`getComponentCss() should return correct css for direction: down, isOpen: false, isDisabled: true, hideLabel: false, state: success, isWithinForm: true, isNativePopoverCase: false and theme: light 1`] = `
-":host {
-  display: block;
-  color-scheme: light dark !important;
-}
-:host([hidden]) {
-  display: none !important;
-}
-:not(:defined,[data-ssr]) {
-  visibility: hidden;
-}
-::slotted([slot=internal-select]) {
-  position: absolute !important;
-  opacity: 0 !important;
-  height: 0px !important;
-  bottom: 0 !important;
 }
 input {
   grid-area: 1/1/1/-1;
@@ -1072,7 +1038,6 @@ input:not(:focus):-moz-placeholder {
   display: grid;
   gap: 4px;
   min-width: calc(1rem + 16px + 2px * 2 + calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 2));
-  position: relative;
 }
 .wrapper {
   position: relative;
@@ -1191,7 +1156,7 @@ input:not(:focus):-moz-placeholder {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for direction: down, isOpen: false, isDisabled: true, hideLabel: true, state: none, isWithinForm: true, isNativePopoverCase: false and theme: light 1`] = `
+exports[`getComponentCss() should return correct css for direction: down, isOpen: false, isDisabled: true, hideLabel: true, state: none, isNativePopoverCase: false and theme: light 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -1201,12 +1166,6 @@ exports[`getComponentCss() should return correct css for direction: down, isOpen
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
-}
-::slotted([slot=internal-select]) {
-  position: absolute !important;
-  opacity: 0 !important;
-  height: 0px !important;
-  bottom: 0 !important;
 }
 input {
   grid-area: 1/1/1/-1;
@@ -1274,7 +1233,6 @@ input:not(:focus):-moz-placeholder {
   display: grid;
   gap: 4px;
   min-width: calc(1rem + 16px + 2px * 2 + calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 2));
-  position: relative;
 }
 .wrapper {
   position: relative;
@@ -1392,7 +1350,7 @@ input:not(:focus):-moz-placeholder {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for direction: down, isOpen: false, isDisabled: true, hideLabel: true, state: none, isWithinForm: true, isNativePopoverCase: false and theme: light 2`] = `
+exports[`getComponentCss() should return correct css for direction: down, isOpen: false, isDisabled: true, hideLabel: true, state: none, isNativePopoverCase: false and theme: light 2`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -1402,12 +1360,6 @@ exports[`getComponentCss() should return correct css for direction: down, isOpen
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
-}
-::slotted([slot=internal-select]) {
-  position: absolute !important;
-  opacity: 0 !important;
-  height: 0px !important;
-  bottom: 0 !important;
 }
 input {
   grid-area: 1/1/1/-1;
@@ -1475,7 +1427,6 @@ input:not(:focus):-moz-placeholder {
   display: grid;
   gap: 4px;
   min-width: calc(1rem + 16px + 2px * 2 + calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 2));
-  position: relative;
 }
 .wrapper {
   position: relative;
@@ -1593,7 +1544,7 @@ input:not(:focus):-moz-placeholder {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for direction: down, isOpen: true, isDisabled: false, hideLabel: false, state: none, isWithinForm: true, isNativePopoverCase: false and theme: light 1`] = `
+exports[`getComponentCss() should return correct css for direction: down, isOpen: true, isDisabled: false, hideLabel: false, state: none, isNativePopoverCase: false and theme: light 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -1603,12 +1554,6 @@ exports[`getComponentCss() should return correct css for direction: down, isOpen
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
-}
-::slotted([slot=internal-select]) {
-  position: absolute !important;
-  opacity: 0 !important;
-  height: 0px !important;
-  bottom: 0 !important;
 }
 input {
   grid-area: 1/1/1/-1;
@@ -1668,7 +1613,6 @@ input:not(:focus):-moz-placeholder {
   display: grid;
   gap: 4px;
   min-width: calc(1rem + 16px + 2px * 2 + calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 2));
-  position: relative;
 }
 .wrapper {
   position: relative;
@@ -1787,7 +1731,7 @@ input:not(:focus):-moz-placeholder {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for direction: down, isOpen: true, isDisabled: false, hideLabel: false, state: none, isWithinForm: true, isNativePopoverCase: false and theme: light 2`] = `
+exports[`getComponentCss() should return correct css for direction: down, isOpen: true, isDisabled: false, hideLabel: false, state: none, isNativePopoverCase: false and theme: light 2`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -1797,12 +1741,6 @@ exports[`getComponentCss() should return correct css for direction: down, isOpen
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
-}
-::slotted([slot=internal-select]) {
-  position: absolute !important;
-  opacity: 0 !important;
-  height: 0px !important;
-  bottom: 0 !important;
 }
 input {
   grid-area: 1/1/1/-1;
@@ -1862,7 +1800,6 @@ input:not(:focus):-moz-placeholder {
   display: grid;
   gap: 4px;
   min-width: calc(1rem + 16px + 2px * 2 + calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 2));
-  position: relative;
 }
 .wrapper {
   position: relative;
@@ -1981,7 +1918,7 @@ input:not(:focus):-moz-placeholder {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for direction: down, isOpen: true, isDisabled: false, hideLabel: true, state: none, isWithinForm: true, isNativePopoverCase: false and theme: light 1`] = `
+exports[`getComponentCss() should return correct css for direction: down, isOpen: true, isDisabled: false, hideLabel: true, state: none, isNativePopoverCase: false and theme: light 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -1991,12 +1928,6 @@ exports[`getComponentCss() should return correct css for direction: down, isOpen
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
-}
-::slotted([slot=internal-select]) {
-  position: absolute !important;
-  opacity: 0 !important;
-  height: 0px !important;
-  bottom: 0 !important;
 }
 input {
   grid-area: 1/1/1/-1;
@@ -2056,7 +1987,6 @@ input:not(:focus):-moz-placeholder {
   display: grid;
   gap: 4px;
   min-width: calc(1rem + 16px + 2px * 2 + calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 2));
-  position: relative;
 }
 .wrapper {
   position: relative;
@@ -2175,7 +2105,7 @@ input:not(:focus):-moz-placeholder {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for direction: down, isOpen: true, isDisabled: false, hideLabel: true, state: success, isWithinForm: true, isNativePopoverCase: false and theme: light 1`] = `
+exports[`getComponentCss() should return correct css for direction: down, isOpen: true, isDisabled: false, hideLabel: true, state: success, isNativePopoverCase: false and theme: light 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -2185,12 +2115,6 @@ exports[`getComponentCss() should return correct css for direction: down, isOpen
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
-}
-::slotted([slot=internal-select]) {
-  position: absolute !important;
-  opacity: 0 !important;
-  height: 0px !important;
-  bottom: 0 !important;
 }
 input {
   grid-area: 1/1/1/-1;
@@ -2250,7 +2174,6 @@ input:not(:focus):-moz-placeholder {
   display: grid;
   gap: 4px;
   min-width: calc(1rem + 16px + 2px * 2 + calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 2));
-  position: relative;
 }
 .wrapper {
   position: relative;
@@ -2370,7 +2293,7 @@ input:not(:focus):-moz-placeholder {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for direction: down, isOpen: true, isDisabled: true, hideLabel: false, state: none, isWithinForm: true, isNativePopoverCase: false and theme: light 1`] = `
+exports[`getComponentCss() should return correct css for direction: down, isOpen: true, isDisabled: true, hideLabel: false, state: none, isNativePopoverCase: false and theme: light 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -2380,12 +2303,6 @@ exports[`getComponentCss() should return correct css for direction: down, isOpen
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
-}
-::slotted([slot=internal-select]) {
-  position: absolute !important;
-  opacity: 0 !important;
-  height: 0px !important;
-  bottom: 0 !important;
 }
 input {
   grid-area: 1/1/1/-1;
@@ -2457,7 +2374,6 @@ input:not(:focus):-moz-placeholder {
   display: grid;
   gap: 4px;
   min-width: calc(1rem + 16px + 2px * 2 + calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 2));
-  position: relative;
 }
 .wrapper {
   position: relative;
@@ -2575,7 +2491,7 @@ input:not(:focus):-moz-placeholder {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for direction: down, isOpen: true, isDisabled: true, hideLabel: true, state: none, isWithinForm: true, isNativePopoverCase: false and theme: light 1`] = `
+exports[`getComponentCss() should return correct css for direction: down, isOpen: true, isDisabled: true, hideLabel: true, state: none, isNativePopoverCase: false and theme: light 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -2585,12 +2501,6 @@ exports[`getComponentCss() should return correct css for direction: down, isOpen
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
-}
-::slotted([slot=internal-select]) {
-  position: absolute !important;
-  opacity: 0 !important;
-  height: 0px !important;
-  bottom: 0 !important;
 }
 input {
   grid-area: 1/1/1/-1;
@@ -2662,7 +2572,6 @@ input:not(:focus):-moz-placeholder {
   display: grid;
   gap: 4px;
   min-width: calc(1rem + 16px + 2px * 2 + calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 2));
-  position: relative;
 }
 .wrapper {
   position: relative;
@@ -2780,7 +2689,7 @@ input:not(:focus):-moz-placeholder {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for direction: up, isOpen: false, isDisabled: false, hideLabel: false, state: success, isWithinForm: true, isNativePopoverCase: false and theme: dark 1`] = `
+exports[`getComponentCss() should return correct css for direction: up, isOpen: false, isDisabled: false, hideLabel: false, state: success, isNativePopoverCase: false and theme: dark 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -2790,12 +2699,6 @@ exports[`getComponentCss() should return correct css for direction: up, isOpen: 
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
-}
-::slotted([slot=internal-select]) {
-  position: absolute !important;
-  opacity: 0 !important;
-  height: 0px !important;
-  bottom: 0 !important;
 }
 input {
   grid-area: 1/1/1/-1;
@@ -2851,7 +2754,6 @@ input:not(:focus):-moz-placeholder {
   display: grid;
   gap: 4px;
   min-width: calc(1rem + 16px + 2px * 2 + calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 2));
-  position: relative;
 }
 .wrapper {
   position: relative;
@@ -2971,7 +2873,7 @@ input:not(:focus):-moz-placeholder {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for direction: up, isOpen: false, isDisabled: false, hideLabel: true, state: error, isWithinForm: true, isNativePopoverCase: false and theme: dark 1`] = `
+exports[`getComponentCss() should return correct css for direction: up, isOpen: false, isDisabled: false, hideLabel: true, state: error, isNativePopoverCase: false and theme: dark 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -2981,12 +2883,6 @@ exports[`getComponentCss() should return correct css for direction: up, isOpen: 
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
-}
-::slotted([slot=internal-select]) {
-  position: absolute !important;
-  opacity: 0 !important;
-  height: 0px !important;
-  bottom: 0 !important;
 }
 input {
   grid-area: 1/1/1/-1;
@@ -3042,7 +2938,6 @@ input:not(:focus):-moz-placeholder {
   display: grid;
   gap: 4px;
   min-width: calc(1rem + 16px + 2px * 2 + calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 2));
-  position: relative;
 }
 .wrapper {
   position: relative;
@@ -3162,7 +3057,7 @@ input:not(:focus):-moz-placeholder {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for direction: up, isOpen: false, isDisabled: true, hideLabel: false, state: error, isWithinForm: true, isNativePopoverCase: false and theme: dark 1`] = `
+exports[`getComponentCss() should return correct css for direction: up, isOpen: false, isDisabled: true, hideLabel: false, state: error, isNativePopoverCase: false and theme: dark 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -3172,12 +3067,6 @@ exports[`getComponentCss() should return correct css for direction: up, isOpen: 
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
-}
-::slotted([slot=internal-select]) {
-  position: absolute !important;
-  opacity: 0 !important;
-  height: 0px !important;
-  bottom: 0 !important;
 }
 input {
   grid-area: 1/1/1/-1;
@@ -3245,7 +3134,6 @@ input:not(:focus):-moz-placeholder {
   display: grid;
   gap: 4px;
   min-width: calc(1rem + 16px + 2px * 2 + calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 2));
-  position: relative;
 }
 .wrapper {
   position: relative;
@@ -3364,7 +3252,7 @@ input:not(:focus):-moz-placeholder {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for direction: up, isOpen: false, isDisabled: true, hideLabel: false, state: error, isWithinForm: true, isNativePopoverCase: false and theme: dark 2`] = `
+exports[`getComponentCss() should return correct css for direction: up, isOpen: false, isDisabled: true, hideLabel: false, state: error, isNativePopoverCase: false and theme: dark 2`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -3374,12 +3262,6 @@ exports[`getComponentCss() should return correct css for direction: up, isOpen: 
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
-}
-::slotted([slot=internal-select]) {
-  position: absolute !important;
-  opacity: 0 !important;
-  height: 0px !important;
-  bottom: 0 !important;
 }
 input {
   grid-area: 1/1/1/-1;
@@ -3447,7 +3329,6 @@ input:not(:focus):-moz-placeholder {
   display: grid;
   gap: 4px;
   min-width: calc(1rem + 16px + 2px * 2 + calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 2));
-  position: relative;
 }
 .wrapper {
   position: relative;
@@ -3566,7 +3447,7 @@ input:not(:focus):-moz-placeholder {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for direction: up, isOpen: false, isDisabled: true, hideLabel: true, state: error, isWithinForm: true, isNativePopoverCase: false and theme: dark 1`] = `
+exports[`getComponentCss() should return correct css for direction: up, isOpen: false, isDisabled: true, hideLabel: true, state: error, isNativePopoverCase: false and theme: dark 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -3576,12 +3457,6 @@ exports[`getComponentCss() should return correct css for direction: up, isOpen: 
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
-}
-::slotted([slot=internal-select]) {
-  position: absolute !important;
-  opacity: 0 !important;
-  height: 0px !important;
-  bottom: 0 !important;
 }
 input {
   grid-area: 1/1/1/-1;
@@ -3649,7 +3524,6 @@ input:not(:focus):-moz-placeholder {
   display: grid;
   gap: 4px;
   min-width: calc(1rem + 16px + 2px * 2 + calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 2));
-  position: relative;
 }
 .wrapper {
   position: relative;
@@ -3768,7 +3642,7 @@ input:not(:focus):-moz-placeholder {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for direction: up, isOpen: false, isDisabled: true, hideLabel: true, state: success, isWithinForm: true, isNativePopoverCase: false and theme: dark 1`] = `
+exports[`getComponentCss() should return correct css for direction: up, isOpen: false, isDisabled: true, hideLabel: true, state: success, isNativePopoverCase: false and theme: dark 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -3778,12 +3652,6 @@ exports[`getComponentCss() should return correct css for direction: up, isOpen: 
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
-}
-::slotted([slot=internal-select]) {
-  position: absolute !important;
-  opacity: 0 !important;
-  height: 0px !important;
-  bottom: 0 !important;
 }
 input {
   grid-area: 1/1/1/-1;
@@ -3851,7 +3719,6 @@ input:not(:focus):-moz-placeholder {
   display: grid;
   gap: 4px;
   min-width: calc(1rem + 16px + 2px * 2 + calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 2));
-  position: relative;
 }
 .wrapper {
   position: relative;
@@ -3970,7 +3837,7 @@ input:not(:focus):-moz-placeholder {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for direction: up, isOpen: true, isDisabled: false, hideLabel: false, state: error, isWithinForm: true, isNativePopoverCase: false and theme: dark 1`] = `
+exports[`getComponentCss() should return correct css for direction: up, isOpen: true, isDisabled: false, hideLabel: false, state: error, isNativePopoverCase: false and theme: dark 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -3980,12 +3847,6 @@ exports[`getComponentCss() should return correct css for direction: up, isOpen: 
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
-}
-::slotted([slot=internal-select]) {
-  position: absolute !important;
-  opacity: 0 !important;
-  height: 0px !important;
-  bottom: 0 !important;
 }
 input {
   grid-area: 1/1/1/-1;
@@ -4045,7 +3906,6 @@ input:not(:focus):-moz-placeholder {
   display: grid;
   gap: 4px;
   min-width: calc(1rem + 16px + 2px * 2 + calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 2));
-  position: relative;
 }
 .wrapper {
   position: relative;
@@ -4165,7 +4025,7 @@ input:not(:focus):-moz-placeholder {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for direction: up, isOpen: true, isDisabled: false, hideLabel: false, state: error, isWithinForm: true, isNativePopoverCase: false and theme: dark 2`] = `
+exports[`getComponentCss() should return correct css for direction: up, isOpen: true, isDisabled: false, hideLabel: false, state: error, isNativePopoverCase: false and theme: dark 2`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -4175,12 +4035,6 @@ exports[`getComponentCss() should return correct css for direction: up, isOpen: 
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
-}
-::slotted([slot=internal-select]) {
-  position: absolute !important;
-  opacity: 0 !important;
-  height: 0px !important;
-  bottom: 0 !important;
 }
 input {
   grid-area: 1/1/1/-1;
@@ -4240,7 +4094,6 @@ input:not(:focus):-moz-placeholder {
   display: grid;
   gap: 4px;
   min-width: calc(1rem + 16px + 2px * 2 + calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 2));
-  position: relative;
 }
 .wrapper {
   position: relative;
@@ -4360,7 +4213,7 @@ input:not(:focus):-moz-placeholder {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for direction: up, isOpen: true, isDisabled: false, hideLabel: true, state: error, isWithinForm: true, isNativePopoverCase: false and theme: dark 1`] = `
+exports[`getComponentCss() should return correct css for direction: up, isOpen: true, isDisabled: false, hideLabel: true, state: error, isNativePopoverCase: false and theme: dark 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -4370,12 +4223,6 @@ exports[`getComponentCss() should return correct css for direction: up, isOpen: 
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
-}
-::slotted([slot=internal-select]) {
-  position: absolute !important;
-  opacity: 0 !important;
-  height: 0px !important;
-  bottom: 0 !important;
 }
 input {
   grid-area: 1/1/1/-1;
@@ -4435,7 +4282,6 @@ input:not(:focus):-moz-placeholder {
   display: grid;
   gap: 4px;
   min-width: calc(1rem + 16px + 2px * 2 + calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 2));
-  position: relative;
 }
 .wrapper {
   position: relative;
@@ -4555,7 +4401,7 @@ input:not(:focus):-moz-placeholder {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for direction: up, isOpen: true, isDisabled: false, hideLabel: true, state: success, isWithinForm: true, isNativePopoverCase: false and theme: dark 1`] = `
+exports[`getComponentCss() should return correct css for direction: up, isOpen: true, isDisabled: false, hideLabel: true, state: success, isNativePopoverCase: false and theme: dark 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -4565,12 +4411,6 @@ exports[`getComponentCss() should return correct css for direction: up, isOpen: 
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
-}
-::slotted([slot=internal-select]) {
-  position: absolute !important;
-  opacity: 0 !important;
-  height: 0px !important;
-  bottom: 0 !important;
 }
 input {
   grid-area: 1/1/1/-1;
@@ -4630,7 +4470,6 @@ input:not(:focus):-moz-placeholder {
   display: grid;
   gap: 4px;
   min-width: calc(1rem + 16px + 2px * 2 + calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 2));
-  position: relative;
 }
 .wrapper {
   position: relative;
@@ -4750,7 +4589,7 @@ input:not(:focus):-moz-placeholder {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for direction: up, isOpen: true, isDisabled: true, hideLabel: false, state: error, isWithinForm: true, isNativePopoverCase: false and theme: dark 1`] = `
+exports[`getComponentCss() should return correct css for direction: up, isOpen: true, isDisabled: true, hideLabel: false, state: error, isNativePopoverCase: false and theme: dark 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -4760,12 +4599,6 @@ exports[`getComponentCss() should return correct css for direction: up, isOpen: 
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
-}
-::slotted([slot=internal-select]) {
-  position: absolute !important;
-  opacity: 0 !important;
-  height: 0px !important;
-  bottom: 0 !important;
 }
 input {
   grid-area: 1/1/1/-1;
@@ -4837,7 +4670,6 @@ input:not(:focus):-moz-placeholder {
   display: grid;
   gap: 4px;
   min-width: calc(1rem + 16px + 2px * 2 + calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 2));
-  position: relative;
 }
 .wrapper {
   position: relative;
@@ -4956,7 +4788,206 @@ input:not(:focus):-moz-placeholder {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for direction: up, isOpen: true, isDisabled: true, hideLabel: false, state: success, isWithinForm: false, isNativePopoverCase: true and theme: dark 1`] = `
+exports[`getComponentCss() should return correct css for direction: up, isOpen: true, isDisabled: true, hideLabel: false, state: success, isNativePopoverCase: false and theme: dark 1`] = `
+":host {
+  display: block;
+  color-scheme: light dark !important;
+}
+:host([hidden]) {
+  display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
+input {
+  grid-area: 1/1/1/-1;
+  flex: 1;
+  min-width: 0;
+  height: calc(calc(6px + 2.125ex) + 10px + 2px * 2 + 8px * 2);
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  margin: 0;
+  padding: 8px 16px;
+  padding-inline-end: calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 2);
+  box-sizing: border-box;
+  outline: 0;
+  -webkit-appearance: none;
+  appearance: none;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  text-overflow: ellipsis;
+  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  color: #7E7F82;
+  background: #0E0E12;
+  border: 2px solid #FBFCFF;
+  border-radius: 4px;
+  padding-top: calc(8px + 1px);
+  border-top: 1px solid #88898C !important;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  cursor: not-allowed;
+  border-color: #7E7F82;
+  -webkit-text-fill-color: #7E7F82;
+}
+input:disabled {
+  cursor: not-allowed;
+}
+input::placeholder {
+  color: #7E7F82;
+}
+input::-webkit-input-placeholder {
+  color: #7E7F82;
+}
+input::-moz-placeholder {
+  color: #7E7F82;
+}
+input:-moz-placeholder {
+  color: #7E7F82;
+}
+input:not(:focus)::placeholder {
+  color: #FBFCFF;
+  opacity: 1;
+}
+input:not(:focus)::-webkit-input-placeholder {
+  color: #FBFCFF;
+  opacity: 1;
+}
+input:not(:focus)::-moz-placeholder {
+  color: #FBFCFF;
+  opacity: 1;
+}
+input:not(:focus):-moz-placeholder {
+  color: #FBFCFF;
+  opacity: 1;
+}
+@media(hover:hover) {
+  input:hover:not(:disabled):not(:focus), label:hover~.wrapper input:not(:disabled):not(:focus) {
+    border-color: #FBFCFF;
+  }
+}
+
+.root {
+  display: grid;
+  gap: 4px;
+  min-width: calc(1rem + 16px + 2px * 2 + calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 2));
+}
+.wrapper {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto auto calc(9px + 2px);
+}
+.icon {
+  grid-area: 1/3;
+  place-self: center;
+  padding: 4px;
+  pointer-events: none;
+  transform: rotate3d(0,0,1,0.0001deg);
+  transition: transform var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+}
+.icon--rotate {
+  transform: rotate3d(0,0,1,180deg);
+}
+.button {
+  grid-area: 1/2;
+  place-self: center;
+  padding: 4px;
+}
+.listbox {
+  position: absolute;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 6px;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  z-index: 10;
+  left: 0;
+  right: 0;
+  bottom: 100%;
+  box-sizing: border-box;
+  max-height: 450px;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  background: #0E0E12;
+  border: 2px solid #FBFCFF;
+  border-bottom: none;
+  border-radius: 4px;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  scrollbar-width: thin;
+  scrollbar-color: auto;
+  transition: border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  transform: translate3d(0,0,0);
+}
+.no-results {
+  padding: 8px 12px;
+  box-sizing: border-box;
+  color: #AFB0B3;
+}
+.no-results[role=status] {
+  cursor: not-allowed;
+}
+.no-results__sr {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+}
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+}
+.label {
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  cursor: not-allowed;
+  justify-self: flex-start;
+  color: #7E7F82;
+  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  position: static;
+  width: auto;
+  height: auto;
+  padding: 0;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
+}
+.label:empty {
+  display: none;
+}
+.label+.label {
+  cursor: unset;
+  margin-top: -4px;
+  font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
+}
+.required {
+  user-select: none;
+}
+.message {
+  display: flex;
+  gap: 4px;
+  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  color: #09D087;
+  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+}"
+`;
+
+exports[`getComponentCss() should return correct css for direction: up, isOpen: true, isDisabled: true, hideLabel: false, state: success, isNativePopoverCase: true and theme: dark 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -5167,7 +5198,7 @@ input:not(:focus):-moz-placeholder {
 }"
 `;
 
-exports[`getComponentCss() should return correct css for direction: up, isOpen: true, isDisabled: true, hideLabel: false, state: success, isWithinForm: true, isNativePopoverCase: false and theme: dark 1`] = `
+exports[`getComponentCss() should return correct css for direction: up, isOpen: true, isDisabled: true, hideLabel: true, state: error, isNativePopoverCase: false and theme: dark 1`] = `
 ":host {
   display: block;
   color-scheme: light dark !important;
@@ -5177,12 +5208,6 @@ exports[`getComponentCss() should return correct css for direction: up, isOpen: 
 }
 :not(:defined,[data-ssr]) {
   visibility: hidden;
-}
-::slotted([slot=internal-select]) {
-  position: absolute !important;
-  opacity: 0 !important;
-  height: 0px !important;
-  bottom: 0 !important;
 }
 input {
   grid-area: 1/1/1/-1;
@@ -5254,213 +5279,6 @@ input:not(:focus):-moz-placeholder {
   display: grid;
   gap: 4px;
   min-width: calc(1rem + 16px + 2px * 2 + calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 2));
-  position: relative;
-}
-.wrapper {
-  position: relative;
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) auto auto calc(9px + 2px);
-}
-.icon {
-  grid-area: 1/3;
-  place-self: center;
-  padding: 4px;
-  pointer-events: none;
-  transform: rotate3d(0,0,1,0.0001deg);
-  transition: transform var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-}
-.icon--rotate {
-  transform: rotate3d(0,0,1,180deg);
-}
-.button {
-  grid-area: 1/2;
-  place-self: center;
-  padding: 4px;
-}
-.listbox {
-  position: absolute;
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  padding: 6px;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  z-index: 10;
-  left: 0;
-  right: 0;
-  bottom: 100%;
-  box-sizing: border-box;
-  max-height: 450px;
-  overflow-y: auto;
-  -webkit-overflow-scrolling: touch;
-  background: #0E0E12;
-  border: 2px solid #FBFCFF;
-  border-bottom: none;
-  border-radius: 4px;
-  border-bottom-left-radius: 0;
-  border-bottom-right-radius: 0;
-  scrollbar-width: thin;
-  scrollbar-color: auto;
-  transition: border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  transform: translate3d(0,0,0);
-}
-.no-results {
-  padding: 8px 12px;
-  box-sizing: border-box;
-  color: #AFB0B3;
-}
-.no-results[role=status] {
-  cursor: not-allowed;
-}
-.no-results__sr {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0,0,0,0);
-  white-space: nowrap;
-}
-.sr-only {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0,0,0,0);
-  white-space: nowrap;
-}
-.label {
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  cursor: not-allowed;
-  justify-self: flex-start;
-  color: #7E7F82;
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  position: static;
-  width: auto;
-  height: auto;
-  padding: 0;
-  margin: 0;
-  overflow: visible;
-  clip: auto;
-  white-space: normal;
-}
-.label:empty {
-  display: none;
-}
-.label+.label {
-  cursor: unset;
-  margin-top: -4px;
-  font-size: clamp(0.81rem, 0.23vw + 0.77rem, 0.88rem);
-}
-.required {
-  user-select: none;
-}
-.message {
-  display: flex;
-  gap: 4px;
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  color: #09D087;
-  transition: color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-}"
-`;
-
-exports[`getComponentCss() should return correct css for direction: up, isOpen: true, isDisabled: true, hideLabel: true, state: error, isWithinForm: true, isNativePopoverCase: false and theme: dark 1`] = `
-":host {
-  display: block;
-  color-scheme: light dark !important;
-}
-:host([hidden]) {
-  display: none !important;
-}
-:not(:defined,[data-ssr]) {
-  visibility: hidden;
-}
-::slotted([slot=internal-select]) {
-  position: absolute !important;
-  opacity: 0 !important;
-  height: 0px !important;
-  bottom: 0 !important;
-}
-input {
-  grid-area: 1/1/1/-1;
-  flex: 1;
-  min-width: 0;
-  height: calc(calc(6px + 2.125ex) + 10px + 2px * 2 + 8px * 2);
-  font: normal normal 400 1rem/calc(6px + 2.125ex) 'Porsche Next','Arial Narrow',Arial,'Heiti SC',SimHei,sans-serif;
-  margin: 0;
-  padding: 8px 16px;
-  padding-inline-end: calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 2);
-  box-sizing: border-box;
-  outline: 0;
-  -webkit-appearance: none;
-  appearance: none;
-  overflow-wrap: break-word;
-  hyphens: auto;
-  text-overflow: ellipsis;
-  transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  color: #7E7F82;
-  background: #0E0E12;
-  border: 2px solid #FBFCFF;
-  border-radius: 4px;
-  padding-top: calc(8px + 1px);
-  border-top: 1px solid #88898C !important;
-  border-top-left-radius: 0;
-  border-top-right-radius: 0;
-  cursor: not-allowed;
-  border-color: #7E7F82;
-  -webkit-text-fill-color: #7E7F82;
-}
-input:disabled {
-  cursor: not-allowed;
-}
-input::placeholder {
-  color: #7E7F82;
-}
-input::-webkit-input-placeholder {
-  color: #7E7F82;
-}
-input::-moz-placeholder {
-  color: #7E7F82;
-}
-input:-moz-placeholder {
-  color: #7E7F82;
-}
-input:not(:focus)::placeholder {
-  color: #FBFCFF;
-  opacity: 1;
-}
-input:not(:focus)::-webkit-input-placeholder {
-  color: #FBFCFF;
-  opacity: 1;
-}
-input:not(:focus)::-moz-placeholder {
-  color: #FBFCFF;
-  opacity: 1;
-}
-input:not(:focus):-moz-placeholder {
-  color: #FBFCFF;
-  opacity: 1;
-}
-@media(hover:hover) {
-  input:hover:not(:disabled):not(:focus), label:hover~.wrapper input:not(:disabled):not(:focus) {
-    border-color: #FBFCFF;
-  }
-}
-
-.root {
-  display: grid;
-  gap: 4px;
-  min-width: calc(1rem + 16px + 2px * 2 + calc(9px + 16px / 2 + (calc(6px + 2.125ex) + 4px * 2) * 2));
-  position: relative;
 }
 .wrapper {
   position: relative;

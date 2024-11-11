@@ -4,6 +4,13 @@ The `p-select` component is a versatile custom form element that enables the sel
 used [within a form](components/select/examples#form) or in a
 [controlled manner](components/select/examples#controlled).
 
+<Notification heading="Attention" heading-tag="h2" state="warning">
+When the <code>p-select</code> component is used within a form, it utilizes the
+<a href="https://developer.mozilla.org/en-US/docs/Web/API/ElementInternals">ElementInternals</a> API, which has limited
+browser support. For broader browser compatibility, consider using a
+<a href="components/select/examples#controlled">controlled</a> approach instead.
+</Notification>
+
 <TableOfContents></TableOfContents>
 
 ## Basic usage
@@ -62,10 +69,20 @@ that the `p-select-option` can only contain a `#text` and an `img` node.
 
 ## Form
 
-When used within a form element, the `p-select` component creates an underlying native select element to handle the
-selected value. This is necessary due to the constraints of shadow DOM boundaries. To ensure proper form submission,
-it's required to provide a name attribute to the `p-select` component. This attribute establishes the link between the
-component and the form, enabling the selected value to be included in the form's data when it's submitted.
+The `p-select` component is a form-associated custom element that integrates seamlessly with forms. Leveraging the
+[ElementInternals](https://developer.mozilla.org/en-US/docs/Web/API/ElementInternals) API, it functions similar to a
+native select, ensuring compatibility with form behaviors. However, note that browser support for this API is limited.
+
+When used within a form element, it's required to provide a name attribute to the `p-select` component. This attribute
+establishes the link between the component and the form, enabling the selected value to be included in the form's data
+when it's submitted.
+
+<Notification heading="Attention" heading-tag="h2" state="warning">
+<code>p-select</code> does not use a native select internally. As a result, it lacks access to native <code>ValidityState</code>
+properties and <code>validationMessage</code>, and it cannot display the native validation popover. This means validation behavior
+and error display will need to be implemented separately if required.
+
+</Notification>
 
 <Playground :frameworkMarkup="formExample" :config="{ ...config, withoutDemo: true }">
   <form @submit.prevent="onSubmit">
