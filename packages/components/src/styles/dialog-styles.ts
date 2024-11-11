@@ -128,10 +128,12 @@ export const getScrollerJssStyle = (position: 'fullscreen' | 'start' | 'end', th
   };
 };
 
+export const dialogPaddingBlock = `calc(${spacingFluidSmall} + ${spacingFluidMedium})`;
+
 export const dialogGridJssStyle: JssStyle = {
   display: 'grid',
   gridTemplate: `auto/${spacingFluidSmall} auto ${spacingFluidSmall}`,
-  paddingBlock: `calc(${spacingFluidSmall} + ${spacingFluidMedium})`,
+  paddingBlock: dialogPaddingBlock,
   rowGap: spacingFluidMedium,
   columnGap: `calc(${spacingFluidLarge} - ${spacingFluidSmall})`,
   alignContent: 'flex-start',
@@ -170,7 +172,7 @@ export const getDialogTransitionJssStyle = (isVisible: boolean, slideIn: '^' | '
             transform: slideIn === '^' ? 'translateY(25vh)' : `translateX(${slideIn === '>' ? '' : '-'}100%)`,
           },
         }),
-    transition: `${getTransition('opacity', duration, easing)}, ${getTransition('transform', duration, easing)}, margin-inline-end 0s linear var(${cssVariableTransitionDuration}, ${isVisible ? '1ms' : motionDurationMap[duration]})`,
+    transition: `${getTransition('opacity', duration, easing)}, ${getTransition('transform', duration, easing)}`,
   };
 };
 
