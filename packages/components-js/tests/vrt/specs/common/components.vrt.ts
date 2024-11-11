@@ -10,23 +10,23 @@ const sourceDirectory = path.resolve('src/pages');
 const fileNames = globby.sync(`${sourceDirectory}/*.html`).map((filePath) => path.basename(filePath, '.html'));
 
 const tagNames = (TAG_NAMES as unknown as TagName[])
-  .filter((tagName) => !['p-optgroup'].includes(tagName)) // TODO: remove filter as soon as component becomes stable
-  // Filter out non-chunked components
+  // Filter out components which don't work on their own
   .filter((tagName) => {
-    const { isChunked } = getComponentMeta(tagName);
-    return isChunked;
+    const { isChunked, requiredParent } = getComponentMeta(tagName);
+    return isChunked && !requiredParent;
   })
   .map((tagName) => {
     return tagName.substring(2);
   });
 
-const components = fileNames
-  .filter((name) => tagNames.filter((component) => name.match(new RegExp(`^${component}(-\\d+)?$`))).length > 0)
-  .filter((name) => {
-    // TODO: how does this work? why slice it on every iteration?
-    const argv = process.argv.slice(5);
-    return !argv.length || argv.includes(name);
-  });
+const components = fileNames.filter(
+  (name) => tagNames.filter((component) => name.match(new RegExp(`^${component}(-\\d+)?$`))).length > 0
+);
+// .filter((name) => {
+//   // TODO: how does this work? why slice it on every iteration?
+//   const argv = process.argv.slice(5);
+//   return !argv.length || argv.includes(name);
+// });
 
 const isComponentThemeable = (component: string): boolean =>
   getComponentMeta(`p-${component.replace(/-\d+/, '')}` as TagName).isThemeable;
