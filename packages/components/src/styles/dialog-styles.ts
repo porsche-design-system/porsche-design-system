@@ -109,6 +109,7 @@ export const getScrollerJssStyle = (position: 'fullscreen' | 'start' | 'end', th
 
   return {
     position: 'absolute',
+    isolation: 'isolate', // creates new stacking context to show scrollbars on top of header/footer areas (on iOS/iPadOS)
     display: 'grid',
     ...(position === 'fullscreen'
       ? {
