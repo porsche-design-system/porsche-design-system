@@ -1,4 +1,15 @@
-import { Component, Element, Event, type EventEmitter, forceUpdate, h, Host, type JSX, Prop } from '@stencil/core';
+import {
+  AttachInternals,
+  Component,
+  Element,
+  Event,
+  type EventEmitter,
+  forceUpdate,
+  h,
+  Host,
+  type JSX,
+  Prop,
+} from '@stencil/core';
 import {
   AllowedTypes,
   attachComponentCss,
@@ -32,6 +43,9 @@ const propTypes: PropTypes<typeof SegmentedControl> = {
   theme: AllowedTypes.oneOf<Theme>(THEMES),
   value: AllowedTypes.oneOf<ValidatorFunction>([AllowedTypes.string, AllowedTypes.number]),
   columns: AllowedTypes.breakpoint<SegmentedControlColumns>(SEGMENTED_CONTROL_COLUMNS),
+  name: AllowedTypes.string,
+  form: AllowedTypes.string,
+  disabled: AllowedTypes.boolean,
 };
 
 /**
@@ -42,6 +56,7 @@ const propTypes: PropTypes<typeof SegmentedControl> = {
 @Component({
   tag: 'p-segmented-control',
   shadow: true,
+  formAssociated: true,
 })
 export class SegmentedControl {
   @Element() public host!: HTMLElement;
@@ -57,8 +72,17 @@ export class SegmentedControl {
   /** Sets the initial value of the segmented-control. */
   @Prop({ mutable: true }) public value?: string | number;
 
+  /** The name of the segmented-control. */
+  @Prop({ reflect: true }) public name: string;
+
   /** Sets the amount of columns. */
   @Prop() public columns?: BreakpointCustomizable<SegmentedControlColumns> = 'auto';
+
+  /** The id of a form element the segmented-control should be associated with. */
+  @Prop({ reflect: true }) public form?: string; // The ElementInternals API automatically detects the form attribute
+
+  /** Disables the segmented-control. */
+  @Prop() public disabled?: boolean = false;
 
   /**
    * @deprecated since v3.0.0, will be removed with next major release, use `update` event instead.
@@ -67,6 +91,10 @@ export class SegmentedControl {
 
   /** Emitted when selected element changes. */
   @Event({ bubbles: false }) public update: EventEmitter<SegmentedControlUpdateEventDetail>;
+
+  @AttachInternals() private internals: ElementInternals;
+
+  private defaultValue: string | number;
 
   public connectedCallback(): void {
     throwIfChildrenAreNotOfKind(this.host, 'p-segmented-control-item');
@@ -79,10 +107,30 @@ export class SegmentedControl {
     });
   }
 
+  public componentWillLoad(): void {
+    this.defaultValue = this.value;
+    this.updateSegmentedControlItemDisabledState();
+  }
+
+  public updateSegmentedControlItemDisabledState(): void {
+    if (this.disabled) {
+      Array.from(this.host.children).forEach((child) => {
+        (child as unknown as SegmentedControlItem).disabled = true;
+      });
+    }
+  }
+
   public componentDidLoad(): void {
-    this.host.addEventListener('click', (e) =>
-      this.updateValue(getClickedItem(this.host, 'p-segmented-control-item', e.composedPath()))
-    );
+    this.internals.setFormValue(this.value.toString());
+    this.host.addEventListener('click', (e) => {
+      const item: HTMLElement & SegmentedControlItem = getClickedItem(
+        this.host,
+        'p-segmented-control-item',
+        e.composedPath()
+      );
+      this.internals.setFormValue(item.value.toString());
+      this.updateValue(item);
+    });
   }
 
   public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
@@ -91,6 +139,20 @@ export class SegmentedControl {
 
   public disconnectedCallback(): void {
     unobserveChildren(this.host);
+  }
+
+  public formResetCallback(): void {
+    this.internals.setFormValue(this.defaultValue.toString());
+    this.value = this.defaultValue;
+  }
+
+  public formDisabledCallback(disabled: boolean): void {
+    this.disabled = disabled;
+    this.updateSegmentedControlItemDisabledState();
+  }
+
+  public formStateRestoreCallback(state: string): void {
+    this.value = state;
   }
 
   public render(): JSX.Element {

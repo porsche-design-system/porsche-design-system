@@ -1643,6 +1643,18 @@ export namespace Components {
          */
         "columns"?: BreakpointCustomizable<SegmentedControlColumns>;
         /**
+          * Disables the segmented-control.
+         */
+        "disabled"?: boolean;
+        /**
+          * The id of a form element the segmented-control should be associated with.
+         */
+        "form"?: string;
+        /**
+          * The name of the segmented-control.
+         */
+        "name": string;
+        /**
           * Adapts the segmented-control color depending on the theme.
          */
         "theme"?: Theme;
@@ -1686,7 +1698,7 @@ export namespace Components {
          */
         "description"?: string;
         /**
-          * Disables the select
+          * Disables the select.
          */
         "disabled"?: boolean;
         /**
@@ -4858,6 +4870,18 @@ declare namespace LocalJSX {
          */
         "columns"?: BreakpointCustomizable<SegmentedControlColumns>;
         /**
+          * Disables the segmented-control.
+         */
+        "disabled"?: boolean;
+        /**
+          * The id of a form element the segmented-control should be associated with.
+         */
+        "form"?: string;
+        /**
+          * The name of the segmented-control.
+         */
+        "name"?: string;
+        /**
           * @deprecated since v3.0.0, will be removed with next major release, use `update` event instead. Emitted when selected element changes.
          */
         "onSegmentedControlChange"?: (event: PSegmentedControlCustomEvent<SegmentedControlUpdateEventDetail>) => void;
@@ -4909,7 +4933,7 @@ declare namespace LocalJSX {
          */
         "description"?: string;
         /**
-          * Disables the select
+          * Disables the select.
          */
         "disabled"?: boolean;
         /**

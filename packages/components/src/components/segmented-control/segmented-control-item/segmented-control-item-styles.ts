@@ -35,7 +35,7 @@ export const getColors = (
   return {
     buttonColor: isDisabled ? disabledColor : primaryColor,
     labelColor: isDisabled ? disabledColor : contrastMediumColor,
-    borderColor: isSelected ? (isHighContrastMode ? highlightColor : primaryColor) : contrastLowColor,
+    borderColor: isSelected && !isDisabled ? (isHighContrastMode ? highlightColor : primaryColor) : contrastLowColor,
     hoverBorderColor: primaryColor,
   };
 };
