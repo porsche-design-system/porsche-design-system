@@ -156,9 +156,13 @@ const generatedRoutes = {
     "path": "/flex",
     "name": "Flex"
   },
-  "flyout": {
-    "path": "/flyout",
-    "name": "Flyout"
+  "flyout_1": {
+    "path": "/flyout-1",
+    "name": "Flyout_1"
+  },
+  "flyout_2": {
+    "path": "/flyout-2",
+    "name": "Flyout_2"
   },
   "flyoutBasic": {
     "path": "/flyout-basic",
@@ -167,6 +171,46 @@ const generatedRoutes = {
   "flyoutCssVariables": {
     "path": "/flyout-css-variables",
     "name": "FlyoutCssVariables"
+  },
+  "flyoutFixedFooter": {
+    "path": "/flyout-fixed-footer",
+    "name": "FlyoutFixedFooter"
+  },
+  "flyoutFixedFooterHeader": {
+    "path": "/flyout-fixed-footer-header",
+    "name": "FlyoutFixedFooterHeader"
+  },
+  "flyoutFixedFooterHeaderScrollableContent": {
+    "path": "/flyout-fixed-footer-header-scrollable-content",
+    "name": "FlyoutFixedFooterHeaderScrollableContent"
+  },
+  "flyoutFixedFooterHeaderSubfooter": {
+    "path": "/flyout-fixed-footer-header-subfooter",
+    "name": "FlyoutFixedFooterHeaderSubfooter"
+  },
+  "flyoutFixedFooterHeaderSubfooterScrollableContent": {
+    "path": "/flyout-fixed-footer-header-subfooter-scrollable-content",
+    "name": "FlyoutFixedFooterHeaderSubfooterScrollableContent"
+  },
+  "flyoutFixedFooterScrollableContent": {
+    "path": "/flyout-fixed-footer-scrollable-content",
+    "name": "FlyoutFixedFooterScrollableContent"
+  },
+  "flyoutFixedFooterScrollableContentScrolled": {
+    "path": "/flyout-fixed-footer-scrollable-content-scrolled",
+    "name": "FlyoutFixedFooterScrollableContentScrolled"
+  },
+  "flyoutFixedFooterSubfooter": {
+    "path": "/flyout-fixed-footer-subfooter",
+    "name": "FlyoutFixedFooterSubfooter"
+  },
+  "flyoutFixedFooterSubfooterScrollableContent": {
+    "path": "/flyout-fixed-footer-subfooter-scrollable-content",
+    "name": "FlyoutFixedFooterSubfooterScrollableContent"
+  },
+  "flyoutFixedFooterSubfooterScrollableContentScrolled": {
+    "path": "/flyout-fixed-footer-subfooter-scrollable-content-scrolled",
+    "name": "FlyoutFixedFooterSubfooterScrollableContentScrolled"
   },
   "flyoutFooter": {
     "path": "/flyout-footer",

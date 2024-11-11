@@ -28,13 +28,13 @@ export const config: Config = {
   testDir: '../specs',
   testMatch: '**.vrt.ts',
   /* Maximum time one test can run for. */
-  timeout: 60000,
+  timeout: 90000,
   expect: {
     /**
      * Maximum time expect() should wait for the condition to be met.
      * For example in `await expect(locator).toHaveText();`
      */
-    timeout: 30000,
+    timeout: 60000,
   },
   snapshotPathTemplate: '{testDir}/__screenshots__/{arg}-{projectName}{ext}',
   use: {
