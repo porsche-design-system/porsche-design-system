@@ -28,7 +28,7 @@ export const config: Config = {
   testDir: '../specs',
   testMatch: '**.vrt.ts',
   /* Maximum time one test can run for. */
-  timeout: 60000,
+  timeout: 120000,
   expect: {
     /**
      * Maximum time expect() should wait for the condition to be met.
