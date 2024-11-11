@@ -103,7 +103,7 @@ dialog::backdrop {
   background: #FFF;
   opacity: 0;
   transform: translateY(25vh);
-  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.4,0,0.5,1), transform var(--p-transition-duration, 0.25s) cubic-bezier(0.4,0,0.5,1), margin-inline-end 0s linear var(--p-transition-duration, 0.25s);
+  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.4,0,0.5,1), transform var(--p-transition-duration, 0.25s) cubic-bezier(0.4,0,0.5,1);
   width: var(--p-modal-width,auto);
   min-width: 276px;
   max-width: 1535.5px;
@@ -203,7 +203,7 @@ dialog::backdrop {
   background: #FFF;
   opacity: 0;
   transform: translateY(25vh);
-  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.4,0,0.5,1), transform var(--p-transition-duration, 0.25s) cubic-bezier(0.4,0,0.5,1), margin-inline-end 0s linear var(--p-transition-duration, 0.25s);
+  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.4,0,0.5,1), transform var(--p-transition-duration, 0.25s) cubic-bezier(0.4,0,0.5,1);
   width: var(--p-modal-width,auto);
   min-width: 276px;
   max-width: 1535.5px;
@@ -329,7 +329,7 @@ dialog::backdrop {
   background: #0E0E12;
   opacity: 0;
   transform: translateY(25vh);
-  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.4,0,0.5,1), transform var(--p-transition-duration, 0.25s) cubic-bezier(0.4,0,0.5,1), margin-inline-end 0s linear var(--p-transition-duration, 0.25s);
+  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.4,0,0.5,1), transform var(--p-transition-duration, 0.25s) cubic-bezier(0.4,0,0.5,1);
   width: var(--p-modal-width,auto);
   min-width: 276px;
   max-width: 1535.5px;
@@ -439,7 +439,7 @@ dialog::backdrop {
   background: #FFF;
   opacity: 0;
   transform: translateY(25vh);
-  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.4,0,0.5,1), transform var(--p-transition-duration, 0.25s) cubic-bezier(0.4,0,0.5,1), margin-inline-end 0s linear var(--p-transition-duration, 0.25s);
+  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.4,0,0.5,1), transform var(--p-transition-duration, 0.25s) cubic-bezier(0.4,0,0.5,1);
   width: auto;
   min-width: auto;
   max-width: none;
@@ -555,7 +555,7 @@ dialog::backdrop {
   background: #0E0E12;
   opacity: 0;
   transform: translateY(25vh);
-  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.4,0,0.5,1), transform var(--p-transition-duration, 0.25s) cubic-bezier(0.4,0,0.5,1), margin-inline-end 0s linear var(--p-transition-duration, 0.25s);
+  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.4,0,0.5,1), transform var(--p-transition-duration, 0.25s) cubic-bezier(0.4,0,0.5,1);
   width: auto;
   min-width: auto;
   max-width: none;
@@ -655,7 +655,7 @@ dialog::backdrop {
   background: #FFF;
   opacity: 0;
   transform: translateY(25vh);
-  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.4,0,0.5,1), transform var(--p-transition-duration, 0.25s) cubic-bezier(0.4,0,0.5,1), margin-inline-end 0s linear var(--p-transition-duration, 0.25s);
+  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.4,0,0.5,1), transform var(--p-transition-duration, 0.25s) cubic-bezier(0.4,0,0.5,1);
   width: auto;
   min-width: auto;
   max-width: none;
@@ -775,7 +775,7 @@ dialog::backdrop {
   background: #0E0E12;
   opacity: 0;
   transform: translateY(25vh);
-  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.4,0,0.5,1), transform var(--p-transition-duration, 0.25s) cubic-bezier(0.4,0,0.5,1), margin-inline-end 0s linear var(--p-transition-duration, 0.25s);
+  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.4,0,0.5,1), transform var(--p-transition-duration, 0.25s) cubic-bezier(0.4,0,0.5,1);
   width: auto;
   min-width: auto;
   max-width: none;
@@ -901,7 +901,7 @@ dialog::backdrop {
   background: #FFF;
   opacity: 0;
   transform: translateY(25vh);
-  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.4,0,0.5,1), transform var(--p-transition-duration, 0.25s) cubic-bezier(0.4,0,0.5,1), margin-inline-end 0s linear var(--p-transition-duration, 0.25s);
+  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.4,0,0.5,1), transform var(--p-transition-duration, 0.25s) cubic-bezier(0.4,0,0.5,1);
   width: auto;
   min-width: auto;
   max-width: none;
@@ -1011,7 +1011,7 @@ dialog::backdrop {
   background: #FFF;
   opacity: 0;
   transform: translateY(25vh);
-  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.4,0,0.5,1), transform var(--p-transition-duration, 0.25s) cubic-bezier(0.4,0,0.5,1), margin-inline-end 0s linear var(--p-transition-duration, 0.25s);
+  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.4,0,0.5,1), transform var(--p-transition-duration, 0.25s) cubic-bezier(0.4,0,0.5,1);
   width: var(--p-modal-width,auto);
   min-width: 276px;
   max-width: 1535.5px;
@@ -1121,7 +1121,7 @@ dialog::backdrop {
   background: #FFF;
   opacity: 0;
   transform: translateY(25vh);
-  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.4,0,0.5,1), transform var(--p-transition-duration, 0.25s) cubic-bezier(0.4,0,0.5,1), margin-inline-end 0s linear var(--p-transition-duration, 0.25s);
+  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.4,0,0.5,1), transform var(--p-transition-duration, 0.25s) cubic-bezier(0.4,0,0.5,1);
   width: auto;
   min-width: auto;
   max-width: none;
@@ -1241,7 +1241,7 @@ dialog::backdrop {
   background: #0E0E12;
   opacity: 0;
   transform: translateY(25vh);
-  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.4,0,0.5,1), transform var(--p-transition-duration, 0.25s) cubic-bezier(0.4,0,0.5,1), margin-inline-end 0s linear var(--p-transition-duration, 0.25s);
+  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.4,0,0.5,1), transform var(--p-transition-duration, 0.25s) cubic-bezier(0.4,0,0.5,1);
   width: auto;
   min-width: auto;
   max-width: none;
@@ -1408,7 +1408,7 @@ dialog::backdrop {
   background: #FFF;
   opacity: 1;
   transform: initial;
-  transition: opacity var(--p-transition-duration, 0.4s) cubic-bezier(0,0,0.2,1), transform var(--p-transition-duration, 0.4s) cubic-bezier(0,0,0.2,1), margin-inline-end 0s linear var(--p-transition-duration, 1ms);
+  transition: opacity var(--p-transition-duration, 0.4s) cubic-bezier(0,0,0.2,1), transform var(--p-transition-duration, 0.4s) cubic-bezier(0,0,0.2,1);
   width: auto;
   min-width: auto;
   max-width: none;
@@ -1586,7 +1586,7 @@ dialog::backdrop {
   background: #FFF;
   opacity: 1;
   transform: initial;
-  transition: opacity var(--p-transition-duration, 0.4s) cubic-bezier(0,0,0.2,1), transform var(--p-transition-duration, 0.4s) cubic-bezier(0,0,0.2,1), margin-inline-end 0s linear var(--p-transition-duration, 1ms);
+  transition: opacity var(--p-transition-duration, 0.4s) cubic-bezier(0,0,0.2,1), transform var(--p-transition-duration, 0.4s) cubic-bezier(0,0,0.2,1);
   width: var(--p-modal-width,auto);
   min-width: 276px;
   max-width: 1535.5px;
@@ -1701,7 +1701,7 @@ dialog::backdrop {
   background: #0E0E12;
   opacity: 1;
   transform: initial;
-  transition: opacity var(--p-transition-duration, 0.4s) cubic-bezier(0,0,0.2,1), transform var(--p-transition-duration, 0.4s) cubic-bezier(0,0,0.2,1), margin-inline-end 0s linear var(--p-transition-duration, 1ms);
+  transition: opacity var(--p-transition-duration, 0.4s) cubic-bezier(0,0,0.2,1), transform var(--p-transition-duration, 0.4s) cubic-bezier(0,0,0.2,1);
   width: var(--p-modal-width,auto);
   min-width: 276px;
   max-width: 1535.5px;
@@ -1830,7 +1830,7 @@ dialog::backdrop {
   background: #0E0E12;
   opacity: 1;
   transform: initial;
-  transition: opacity var(--p-transition-duration, 0.4s) cubic-bezier(0,0,0.2,1), transform var(--p-transition-duration, 0.4s) cubic-bezier(0,0,0.2,1), margin-inline-end 0s linear var(--p-transition-duration, 1ms);
+  transition: opacity var(--p-transition-duration, 0.4s) cubic-bezier(0,0,0.2,1), transform var(--p-transition-duration, 0.4s) cubic-bezier(0,0,0.2,1);
   width: var(--p-modal-width,auto);
   min-width: 276px;
   max-width: 1535.5px;
@@ -1929,7 +1929,7 @@ dialog::backdrop {
   background: #0E0E12;
   opacity: 1;
   transform: initial;
-  transition: opacity var(--p-transition-duration, 0.4s) cubic-bezier(0,0,0.2,1), transform var(--p-transition-duration, 0.4s) cubic-bezier(0,0,0.2,1), margin-inline-end 0s linear var(--p-transition-duration, 1ms);
+  transition: opacity var(--p-transition-duration, 0.4s) cubic-bezier(0,0,0.2,1), transform var(--p-transition-duration, 0.4s) cubic-bezier(0,0,0.2,1);
   width: var(--p-modal-width,auto);
   min-width: 276px;
   max-width: 1535.5px;
@@ -2054,7 +2054,7 @@ dialog::backdrop {
   background: #FFF;
   opacity: 1;
   transform: initial;
-  transition: opacity var(--p-transition-duration, 0.4s) cubic-bezier(0,0,0.2,1), transform var(--p-transition-duration, 0.4s) cubic-bezier(0,0,0.2,1), margin-inline-end 0s linear var(--p-transition-duration, 1ms);
+  transition: opacity var(--p-transition-duration, 0.4s) cubic-bezier(0,0,0.2,1), transform var(--p-transition-duration, 0.4s) cubic-bezier(0,0,0.2,1);
   width: var(--p-modal-width,auto);
   min-width: 276px;
   max-width: 1535.5px;
@@ -2163,7 +2163,7 @@ dialog::backdrop {
   background: #0E0E12;
   opacity: 1;
   transform: initial;
-  transition: opacity var(--p-transition-duration, 0.4s) cubic-bezier(0,0,0.2,1), transform var(--p-transition-duration, 0.4s) cubic-bezier(0,0,0.2,1), margin-inline-end 0s linear var(--p-transition-duration, 1ms);
+  transition: opacity var(--p-transition-duration, 0.4s) cubic-bezier(0,0,0.2,1), transform var(--p-transition-duration, 0.4s) cubic-bezier(0,0,0.2,1);
   width: auto;
   min-width: auto;
   max-width: none;
@@ -2278,7 +2278,7 @@ dialog::backdrop {
   background: #FFF;
   opacity: 1;
   transform: initial;
-  transition: opacity var(--p-transition-duration, 0.4s) cubic-bezier(0,0,0.2,1), transform var(--p-transition-duration, 0.4s) cubic-bezier(0,0,0.2,1), margin-inline-end 0s linear var(--p-transition-duration, 1ms);
+  transition: opacity var(--p-transition-duration, 0.4s) cubic-bezier(0,0,0.2,1), transform var(--p-transition-duration, 0.4s) cubic-bezier(0,0,0.2,1);
   width: auto;
   min-width: auto;
   max-width: none;
@@ -2377,7 +2377,7 @@ dialog::backdrop {
   background: #FFF;
   opacity: 1;
   transform: initial;
-  transition: opacity var(--p-transition-duration, 0.4s) cubic-bezier(0,0,0.2,1), transform var(--p-transition-duration, 0.4s) cubic-bezier(0,0,0.2,1), margin-inline-end 0s linear var(--p-transition-duration, 1ms);
+  transition: opacity var(--p-transition-duration, 0.4s) cubic-bezier(0,0,0.2,1), transform var(--p-transition-duration, 0.4s) cubic-bezier(0,0,0.2,1);
   width: auto;
   min-width: auto;
   max-width: none;
@@ -2502,7 +2502,7 @@ dialog::backdrop {
   background: #0E0E12;
   opacity: 1;
   transform: initial;
-  transition: opacity var(--p-transition-duration, 0.4s) cubic-bezier(0,0,0.2,1), transform var(--p-transition-duration, 0.4s) cubic-bezier(0,0,0.2,1), margin-inline-end 0s linear var(--p-transition-duration, 1ms);
+  transition: opacity var(--p-transition-duration, 0.4s) cubic-bezier(0,0,0.2,1), transform var(--p-transition-duration, 0.4s) cubic-bezier(0,0,0.2,1);
   width: auto;
   min-width: auto;
   max-width: none;
