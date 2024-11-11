@@ -15,6 +15,32 @@ const initComponent = (): PinCode => {
   return component;
 };
 
+describe('connectedCallback()', () => {
+  it('should assign this.initialLoading to value of this.loading', () => {
+    const component = initComponent();
+    component.loading = true;
+
+    expect(component['initialLoading']).toBe(false);
+    component.connectedCallback();
+    expect(component['initialLoading']).toBe(true);
+
+    component.loading = false;
+    component.connectedCallback();
+    expect(component['initialLoading']).toBe(false);
+  });
+});
+
+describe('componentWillUpdate()', () => {
+  it('should assign this.initialLoading to true for this.loading = true', () => {
+    const component = initComponent();
+    component.loading = true;
+
+    expect(component['initialLoading']).toBe(false);
+    component.componentWillUpdate();
+    expect(component['initialLoading']).toBe(true);
+  });
+});
+
 describe('componentWillLoad', () => {
   it('should call getSanitisedValue() with correct parameters', () => {
     const component = initComponent();
@@ -25,6 +51,19 @@ describe('componentWillLoad', () => {
 
     expect(spy).toHaveBeenCalledWith(component.host, component.value, component.length);
     expect(component['defaultValue']).toBe(value);
+  });
+
+  it('should assign this.initialLoading to value of this.loading', () => {
+    const component = initComponent();
+    component.loading = true;
+
+    expect(component['initialLoading']).toBe(false);
+    component.componentWillLoad();
+    expect(component['initialLoading']).toBe(true);
+
+    component.loading = false;
+    component.componentWillLoad();
+    expect(component['initialLoading']).toBe(false);
   });
 });
 describe('componentDidLoad', () => {
