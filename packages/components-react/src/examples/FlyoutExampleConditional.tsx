@@ -15,7 +15,7 @@ export const FlyoutExampleConditionalPage = (): JSX.Element => {
         Open Modal
       </PButton>
 
-      <PFlyout open={isOpen} onDismiss={onDismiss} style={{ '--p-flyout-width': '33vw' } as any}>
+      <PFlyout open={isOpen} onDismiss={onDismiss}>
         {isOpen && (
           <>
             <PHeading slot="header" size="large" tag="h2">
