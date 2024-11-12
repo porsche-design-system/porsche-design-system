@@ -8374,7 +8374,7 @@ dialog::backdrop {
   background: rgba(255,255,255,.01);
   opacity: 0;
   transform: translateX(-100%);
-  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.4,0,0.5,1), transform var(--p-transition-duration, 0.25s) cubic-bezier(0.4,0,0.5,1), margin-inline-end 0s linear var(--p-transition-duration, 0.25s);
+  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.4,0,0.5,1), transform var(--p-transition-duration, 0.25s) cubic-bezier(0.4,0,0.5,1);
 }
 .scroller:dir(rtl) {
   transform: translateX(100%);
@@ -9467,9 +9467,8 @@ dialog::backdrop {
   overscroll-behavior-y: none;
   background: rgba(255,255,255,.01);
   opacity: 0;
-  margin-inline-end: 200vw;
   transform: translateX(100%);
-  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.4,0,0.5,1), transform var(--p-transition-duration, 0.25s) cubic-bezier(0.4,0,0.5,1), margin-inline-end 0s linear var(--p-transition-duration, 0.25s);
+  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.4,0,0.5,1), transform var(--p-transition-duration, 0.25s) cubic-bezier(0.4,0,0.5,1);
 }
 .scroller:dir(rtl) {
   transform: translateX(-100%);
@@ -12359,7 +12358,7 @@ dialog::backdrop {
   background: #FFF;
   opacity: 0;
   transform: translateY(25vh);
-  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.4,0,0.5,1), transform var(--p-transition-duration, 0.25s) cubic-bezier(0.4,0,0.5,1), margin-inline-end 0s linear var(--p-transition-duration, 0.25s);
+  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.4,0,0.5,1), transform var(--p-transition-duration, 0.25s) cubic-bezier(0.4,0,0.5,1);
   width: var(--p-modal-width,auto);
   min-width: 276px;
   max-width: 1535.5px;

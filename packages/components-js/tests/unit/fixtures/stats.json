@@ -31,8 +31,8 @@
   },
   {
     "chunkShortName": "canvas",
-    "size": 16261,
-    "gzipSize": 5164
+    "size": 15669,
+    "gzipSize": 4997
   },
   {
     "chunkShortName": "carousel",
@@ -86,8 +86,8 @@
   },
   {
     "chunkShortName": "flyout",
-    "size": 9023,
-    "gzipSize": 3801
+    "size": 9512,
+    "gzipSize": 3993
   },
   {
     "chunkShortName": "flyout-multilevel",
@@ -151,8 +151,8 @@
   },
   {
     "chunkShortName": "main",
-    "size": 81134,
-    "gzipSize": 26863
+    "size": 81064,
+    "gzipSize": 26860
   },
   {
     "chunkShortName": "marque",
@@ -161,8 +161,8 @@
   },
   {
     "chunkShortName": "modal",
-    "size": 10861,
-    "gzipSize": 4334
+    "size": 10854,
+    "gzipSize": 4347
   },
   {
     "chunkShortName": "model-signature",

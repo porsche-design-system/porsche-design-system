@@ -235,6 +235,7 @@ exports[`should call validateProps() with correct parameters via render for p-fl
 {
   "aria": "aria",
   "disableBackdropClick": "boolean",
+  "footerBehavior": "oneOf",
   "open": "boolean",
   "position": "oneOf",
   "theme": "oneOf",
