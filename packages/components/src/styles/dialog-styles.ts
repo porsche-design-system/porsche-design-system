@@ -129,10 +129,12 @@ export const getScrollerJssStyle = (position: 'fullscreen' | 'start' | 'end', th
   };
 };
 
+export const dialogPaddingBlock = `calc(${spacingFluidSmall} + ${spacingFluidMedium})`;
+
 export const dialogGridJssStyle: JssStyle = {
   display: 'grid',
   gridTemplate: `auto/${spacingFluidSmall} auto ${spacingFluidSmall}`,
-  paddingBlock: `calc(${spacingFluidSmall} + ${spacingFluidMedium})`,
+  paddingBlock: dialogPaddingBlock,
   rowGap: spacingFluidMedium,
   columnGap: `calc(${spacingFluidLarge} - ${spacingFluidSmall})`,
   alignContent: 'flex-start',
@@ -163,25 +165,15 @@ export const getDialogTransitionJssStyle = (isVisible: boolean, slideIn: '^' | '
       ? {
           opacity: 1,
           transform: 'initial',
-          // we need to ensure that the elements inside, which get auto focused by `.showModal()`, to always be in the
-          // viewport (or off the view on the start-hand side) before the dialog transition starts otherwise the transition
-          // won't work in all cases, e.g. `dir="rtl"` and `<p-flyout position="end" />`. Because auto focus would force the
-          // focused elements to be rendered in the viewport immediately and ignore the transition.
-          ...(slideIn === '<' && {
-            marginInlineEnd: 0,
-          }),
         }
       : {
           opacity: 0,
-          ...(slideIn === '<' && {
-            marginInlineEnd: '200vw',
-          }),
           transform: slideIn === '^' ? 'translateY(25vh)' : `translateX(${slideIn === '>' ? '-' : ''}100%)`,
           '&:dir(rtl)': {
             transform: slideIn === '^' ? 'translateY(25vh)' : `translateX(${slideIn === '>' ? '' : '-'}100%)`,
           },
         }),
-    transition: `${getTransition('opacity', duration, easing)}, ${getTransition('transform', duration, easing)}, margin-inline-end 0s linear var(${cssVariableTransitionDuration}, ${isVisible ? '1ms' : motionDurationMap[duration]})`,
+    transition: `${getTransition('opacity', duration, easing)}, ${getTransition('transform', duration, easing)}`,
   };
 };
 

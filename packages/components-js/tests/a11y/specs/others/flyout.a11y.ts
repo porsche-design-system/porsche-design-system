@@ -8,6 +8,8 @@ import {
 import { type Page, test, expect } from '@playwright/test';
 import { Components } from '@porsche-design-system/components';
 
+test.setTimeout(120000); // Flyout's in iframes need more time to load
+
 const getHost = (page: Page) => page.locator('p-flyout');
 const getFlyout = (page: Page) => page.locator('p-flyout dialog');
 const getHeader = (page: Page) => page.locator('p-flyout .header');
