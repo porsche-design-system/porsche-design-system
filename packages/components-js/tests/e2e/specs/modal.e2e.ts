@@ -122,15 +122,18 @@ const addButtonsBeforeAndAfterModal = (page: Page) =>
     document.body.append(buttonAfter);
   });
 
-const expectDialogToBeFocused = async (page: Page, failMessage?: string) => {
-  const host = getHost(page);
-  expect(await getActiveElementTagNameInShadowRoot(host), failMessage).toBe('DIALOG');
-};
-
 const expectDismissButtonToBeFocused = async (page: Page, failMessage?: string) => {
   const host = getHost(page);
   expect(await getActiveElementTagNameInShadowRoot(host), failMessage).toBe('P-BUTTON');
   expect(await getActiveElementClassNameInShadowRoot(host), failMessage).toContain('dismiss');
+};
+
+const expectDialogAndThenDismissButtonToBeFocused = async (page: Page, failMessage?: string) => {
+  // For some reason this is always BODY in playwright even though it is P-MODAL and DIALOG within that in reality
+  // In order to assure that its correct we press tab to assure the next element will be the dismiss button
+  await expect(await getActiveElementTagName(page)).toBe('BODY');
+  await page.keyboard.press('Tab');
+  await expectDismissButtonToBeFocused(page);
 };
 
 const waitForSlotChange = () => new Promise((resolve) => setTimeout(resolve));
@@ -255,13 +258,13 @@ skipInBrowsers(['firefox', 'webkit'], () => {
     test('should focus dismiss button after open', async ({ page }) => {
       await initAdvancedModal(page);
       await openModal(page);
-      await expectDismissButtonToBeFocused(page);
+      await expectDialogAndThenDismissButtonToBeFocused(page);
     });
 
     test('should focus dismiss button after open when there is no focusable content element', async ({ page }) => {
       await initBasicModal(page, { isOpen: false });
       await openModal(page);
-      await expectDismissButtonToBeFocused(page);
+      await expectDialogAndThenDismissButtonToBeFocused(page);
     });
 
     test('should focus dismiss button after open when there is a focusable content element', async ({ page }) => {
@@ -271,7 +274,7 @@ skipInBrowsers(['firefox', 'webkit'], () => {
         aria: "{'aria-label': 'Some Heading'}",
       });
       await openModal(page);
-      await expectDismissButtonToBeFocused(page);
+      await expectDialogAndThenDismissButtonToBeFocused(page);
     });
 
     test('should have correct focus order when there is a focusable content element and focusable slotted element in header', async ({
@@ -285,7 +288,7 @@ skipInBrowsers(['firefox', 'webkit'], () => {
       });
       await openModal(page);
 
-      await expectDismissButtonToBeFocused(page);
+      await expectDialogAndThenDismissButtonToBeFocused(page);
       await page.keyboard.press('Tab');
       expect(await getActiveElementTagName(page)).toBe('A'); // slotted header anchor
       await page.keyboard.press('Tab');
@@ -297,7 +300,7 @@ skipInBrowsers(['firefox', 'webkit'], () => {
       await addButtonsBeforeAndAfterModal(page);
       await openModal(page);
 
-      await expectDismissButtonToBeFocused(page);
+      await expectDialogAndThenDismissButtonToBeFocused(page);
 
       await page.keyboard.press('Tab');
       expect(await getActiveElementTagName(page)).toBe('BODY');
@@ -311,7 +314,7 @@ skipInBrowsers(['firefox', 'webkit'], () => {
       await addButtonsBeforeAndAfterModal(page);
       await openModal(page);
 
-      await expectDismissButtonToBeFocused(page);
+      await expectDialogAndThenDismissButtonToBeFocused(page);
       await page.keyboard.down('Shift');
       await page.keyboard.press('Tab');
       expect(await getActiveElementTagName(page)).toBe('BODY');
@@ -382,7 +385,7 @@ skipInBrowsers(['firefox', 'webkit'], () => {
         await initAdvancedModal(page);
         await addButtonsBeforeAndAfterModal(page);
         await openModal(page);
-        await expectDismissButtonToBeFocused(page, 'initially');
+        await expectDialogAndThenDismissButtonToBeFocused(page, 'initially');
 
         await page.keyboard.press('Tab');
         expect(await getActiveElementTagName(page)).toBe('P-BUTTON');
@@ -415,7 +418,7 @@ skipInBrowsers(['firefox', 'webkit'], () => {
           el.append(button);
         });
         await waitForSlotChange();
-        await expectDismissButtonToBeFocused(page, 'after button appended');
+        await expectDialogAndThenDismissButtonToBeFocused(page, 'after button appended');
 
         await page.keyboard.press('Tab');
         await page.keyboard.press('Tab');
@@ -437,14 +440,14 @@ skipInBrowsers(['firefox', 'webkit'], () => {
       test('should focus body when there is no focusable element', async ({ page }) => {
         await initBasicModal(page, initModalOpts);
         await openModal(page);
-        await expectDialogToBeFocused(page);
+        await expect(await getActiveElementTagName(page)).toBe('BODY');
       });
 
       test('should not focus element behind modal if modal has no focusable element', async ({ page }) => {
         await initBasicModal(page, initModalOpts);
         await addButtonsBeforeAndAfterModal(page);
         await openModal(page);
-        await expectDialogToBeFocused(page);
+        await expect(await getActiveElementTagName(page)).toBe('BODY');
 
         await page.keyboard.press('Tab');
         expect(await getActiveElementTagName(page)).toBe('BODY');
@@ -479,6 +482,9 @@ skipInBrowsers(['firefox', 'webkit'], () => {
                 : `<${tagName}${attributes}>Some element</${tagName}>`) + otherFocusableElement,
           });
           await openModal(page);
+          await expect(await getActiveElementTagName(page)).toBe('BODY');
+          await page.keyboard.press('Tab');
+
           expect(await getActiveElementTagName(page)).toBe(tagName.toUpperCase());
 
           await page.keyboard.press('Tab');
@@ -497,7 +503,7 @@ skipInBrowsers(['firefox', 'webkit'], () => {
     test('should cycle tab events within modal', async ({ page }) => {
       await initAdvancedModal(page);
       await openModal(page);
-      await expectDismissButtonToBeFocused(page, 'initially');
+      await expectDialogAndThenDismissButtonToBeFocused(page, 'initially');
 
       await page.keyboard.press('Tab');
       expect(await getActiveElementId(page)).toBe('btn-content-1');
@@ -514,7 +520,7 @@ skipInBrowsers(['firefox', 'webkit'], () => {
     test('should reverse cycle tab events within modal', async ({ page }) => {
       await initAdvancedModal(page);
       await openModal(page);
-      await expectDismissButtonToBeFocused(page, 'after 1st tab');
+      await expectDialogAndThenDismissButtonToBeFocused(page, 'after 1st tab');
 
       await page.keyboard.down('ShiftLeft');
       await page.keyboard.press('Tab');

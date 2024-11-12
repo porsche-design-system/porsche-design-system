@@ -2,8 +2,10 @@ import { Component, Element, Event, type EventEmitter, forceUpdate, h, type JSX,
 import {
   addStickyTopCssVarStyleSheet,
   FLYOUT_ARIA_ATTRIBUTES,
+  FLYOUT_FOOTER_BEHAVIOR,
   FLYOUT_POSITIONS,
   type FlyoutAriaAttribute,
+  type FlyoutFooterBehavior,
   type FlyoutMotionHiddenEndEventDetail,
   type FlyoutMotionVisibleEndEventDetail,
   type FlyoutPosition,
@@ -38,6 +40,7 @@ const propTypes: PropTypes<typeof Flyout> = {
   open: AllowedTypes.boolean,
   position: AllowedTypes.oneOf<FlyoutPosition>(FLYOUT_POSITIONS),
   disableBackdropClick: AllowedTypes.boolean,
+  footerBehavior: AllowedTypes.oneOf<FlyoutFooterBehavior>(FLYOUT_FOOTER_BEHAVIOR),
   theme: AllowedTypes.oneOf<Theme>(THEMES),
   aria: AllowedTypes.aria<FlyoutAriaAttribute>(FLYOUT_ARIA_ATTRIBUTES),
 };
@@ -65,6 +68,9 @@ export class Flyout {
 
   /** If true, the flyout will not be closable via backdrop click. */
   @Prop() public disableBackdropClick?: boolean = false;
+
+  /** Determines the footer's position behavior. When set to "fixed," the flyout content stretches to fill the full height, keeping the footer permanently at the bottom. When set to "sticky," the footer flows beneath the content and only becomes fixed if the content overflows. */
+  @Prop() public footerBehavior?: FlyoutFooterBehavior = 'sticky';
 
   /** Adapts the flyout color depending on the theme. */
   @Prop() public theme?: Theme = 'light';
@@ -157,6 +163,7 @@ export class Flyout {
       this.hasHeader,
       this.hasFooter,
       this.hasSubFooter,
+      this.footerBehavior,
       this.theme
     );
 
@@ -173,7 +180,7 @@ export class Flyout {
         onCancel={(e) => onCancelDialog(e, this.dismissDialog)}
         // Previously done with onMouseDown to change the click behavior (not closing when pressing mousedown on flyout and mouseup on backdrop) but changed back to native behavior
         onClick={(e) => onClickDialog(e, this.dismissDialog, this.disableBackdropClick)}
-        onTransitionEnd={(e) => onTransitionEnd(e, this.open, this.motionVisibleEnd, this.motionHiddenEnd)}
+        onTransitionEnd={(e) => onTransitionEnd(e, this.open, this.motionVisibleEnd, this.motionHiddenEnd, this.dialog)}
         {...parseAndGetAriaAttributes({
           'aria-modal': true,
           'aria-hidden': !this.open,

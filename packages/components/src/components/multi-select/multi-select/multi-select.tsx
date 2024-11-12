@@ -11,8 +11,6 @@ import {
   getSelectedOptionsString,
   getSelectedOptionValues,
   hasFilterOptionResults,
-  initNativeMultiSelect,
-  INTERNAL_MULTI_SELECT_SLOT,
   resetFilteredOptions,
   resetHighlightedOptions,
   resetSelectedOptions,
@@ -20,9 +18,7 @@ import {
   setLastOptionHighlighted,
   setSelectedOptions,
   syncMultiSelectChildrenProps,
-  syncNativeMultiSelect,
   updateHighlightedOption,
-  updateNativeOptions,
   updateOptionsFilterState,
 } from './multi-select-utils';
 import type { BreakpointCustomizable, PropTypes, Theme } from '../../../types';
@@ -34,7 +30,6 @@ import {
   detectNativePopoverCase,
   findClosestComponent,
   FORM_STATES,
-  getClosestHTMLElement,
   getFilterInputAriaAttributes,
   getListAriaAttributes,
   getNativePopoverDropdownPosition,
@@ -51,6 +46,7 @@ import {
   validateProps,
 } from '../../../utils';
 import {
+  AttachInternals,
   Component,
   Element,
   Event,
@@ -78,6 +74,7 @@ const propTypes: PropTypes<typeof MultiSelect> = {
   hideLabel: AllowedTypes.breakpoint('boolean'),
   disabled: AllowedTypes.boolean,
   required: AllowedTypes.boolean,
+  form: AllowedTypes.string,
   dropdownDirection: AllowedTypes.oneOf<MultiSelectDropdownDirection>(SELECT_DROPDOWN_DIRECTIONS),
   theme: AllowedTypes.oneOf<Theme>(THEMES),
 };
@@ -93,6 +90,7 @@ const propTypes: PropTypes<typeof MultiSelect> = {
 @Component({
   tag: 'p-multi-select',
   shadow: { delegatesFocus: true },
+  formAssociated: true,
 })
 export class MultiSelect {
   @Element() public host!: HTMLElement;
@@ -127,8 +125,11 @@ export class MultiSelect {
   /** Changes the direction to which the dropdown list appears. */
   @Prop() public dropdownDirection?: MultiSelectDropdownDirection = 'auto';
 
-  /** Adapts the select color depending on the theme. */
+  /** Adapts the multi-select color depending on the theme. */
   @Prop() public theme?: Theme = 'light';
+
+  /** The id of a form element the multi-select should be associated with. */
+  @Prop({ reflect: true }) public form?: string; // The ElementInternals API automatically detects the form attribute
 
   /** Emitted when the selection is changed. */
   @Event({ bubbles: false }) public update: EventEmitter<MultiSelectUpdateEventDetail>;
@@ -137,14 +138,14 @@ export class MultiSelect {
   @State() private srHighlightedOptionText = '';
   @State() private hasFilterResults = true;
 
-  private nativeSelect: HTMLSelectElement;
+  @AttachInternals() private internals: ElementInternals;
+
+  private defaultValue: string[];
   private multiSelectOptions: MultiSelectOption[] = [];
   private multiSelectOptgroups: MultiSelectOptgroup[] = [];
   private inputContainer: HTMLDivElement;
   private inputElement: HTMLInputElement;
   private listElement: HTMLDivElement;
-  private form: HTMLFormElement;
-  private isWithinForm: boolean;
   private preventOptionUpdate = false; // Used to prevent value watcher from updating options when options are already updated
   private isNativePopoverCase: boolean = false;
   private parentTableElement: HTMLElement;
@@ -166,23 +167,25 @@ export class MultiSelect {
 
   @Watch('value')
   public onValueChange(): void {
+    this.setFormValue(this.value);
     // When setting initial value the watcher gets called before the options are defined
     if (this.multiSelectOptions.length > 0) {
       if (!this.preventOptionUpdate) {
         setSelectedOptions(this.multiSelectOptions, this.value);
       }
       this.preventOptionUpdate = false;
-      if (this.isWithinForm) {
-        updateNativeOptions(this.nativeSelect, this.multiSelectOptions);
-      }
     }
+  }
+
+  public setFormValue(value: string[]): void {
+    const formData = new FormData();
+    value.forEach((val) => formData.append(this.name, val));
+    this.internals.setFormValue(formData);
   }
 
   public connectedCallback(): void {
     applyConstructableStylesheetStyles(this.host, getSlottedAnchorStyles);
     document.addEventListener('mousedown', this.onClickOutside, true);
-    this.form = getClosestHTMLElement(this.host, 'form');
-    this.isWithinForm = !!this.form;
     this.isNativePopoverCase = detectNativePopoverCase(this.host, false);
     if (this.isNativePopoverCase) {
       this.parentTableElement = findClosestComponent(this.host, 'pTable');
@@ -190,13 +193,11 @@ export class MultiSelect {
   }
 
   public componentWillLoad(): void {
+    this.defaultValue = this.value;
+    this.setFormValue(this.value);
     this.updateOptions();
     // Use initial value to set options
     setSelectedOptions(this.multiSelectOptions, this.value);
-    if (this.isWithinForm) {
-      this.nativeSelect = initNativeMultiSelect(this.host, this.name, this.disabled, this.required);
-      updateNativeOptions(this.nativeSelect, this.multiSelectOptions);
-    }
   }
 
   public componentDidLoad(): void {
@@ -226,14 +227,21 @@ export class MultiSelect {
     return hasPropValueChanged(newVal, oldVal);
   }
 
-  public componentWillUpdate(): void {
-    if (this.isWithinForm) {
-      syncNativeMultiSelect(this.nativeSelect, this.name, this.disabled, this.required);
-    }
-  }
-
   public disconnectedCallback(): void {
     document.removeEventListener('mousedown', this.onClickOutside, true);
+  }
+
+  public formDisabledCallback(disabled: boolean): void {
+    this.disabled = disabled;
+  }
+
+  public formStateRestoreCallback(state: FormData): void {
+    this.value = state.getAll(this.name) as string[];
+  }
+
+  public formResetCallback(): void {
+    this.setFormValue(this.defaultValue);
+    this.value = this.defaultValue;
   }
 
   public render(): JSX.Element {
@@ -246,7 +254,6 @@ export class MultiSelect {
       this.disabled,
       this.hideLabel,
       this.state,
-      this.isWithinForm,
       this.isNativePopoverCase,
       this.theme
     );
@@ -347,8 +354,6 @@ export class MultiSelect {
         <span class="sr-only" role="status" aria-live="assertive" aria-relevant="additions text">
           {this.srHighlightedOptionText}
         </span>
-        {/* named slot needs to be placed before closing root element, otherwise slot change listener might not always work for unknown reasons */}
-        {this.isWithinForm && <slot name={INTERNAL_MULTI_SELECT_SLOT} />}
       </div>
     );
   }
@@ -356,9 +361,6 @@ export class MultiSelect {
   private onSlotchange = (): void => {
     this.updateOptions();
     setSelectedOptions(this.multiSelectOptions, this.value);
-    if (this.isWithinForm) {
-      updateNativeOptions(this.nativeSelect, this.multiSelectOptions);
-    }
     // Necessary to update selected options in placeholder
     forceUpdate(this.host);
   };
@@ -449,7 +451,7 @@ export class MultiSelect {
           this.updateSrHighlightedOptionText();
           forceUpdate(highlightedOption);
         } else {
-          if (this.isWithinForm) {
+          if (this.internals.form) {
             handleButtonEvent(
               e,
               this.host,

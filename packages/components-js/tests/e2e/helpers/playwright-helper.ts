@@ -458,10 +458,10 @@ export const hoverElementPosition = async (page: Page, el: Locator): Promise<voi
   await page.mouse.move(x + width / 2, y + height / 2);
 };
 
-export const getFormDataValues = async (form: Locator) => {
-  return form.evaluate((el: HTMLFormElement) => {
-    return Array.from(new FormData(el).values());
-  });
+export const getFormDataValues = async (form: Locator, name: string) => {
+  return form.evaluate((el: HTMLFormElement, name: string) => {
+    return new FormData(el).getAll(name);
+  }, name);
 };
 
 export const getFormDataValue = async (form: Locator, name: string) => {

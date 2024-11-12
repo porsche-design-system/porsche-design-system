@@ -69,7 +69,7 @@ Run `yarn start` or `npm start` and check if the components are displayed correc
 
 #### Using Standalone Components
 
-When using [Standalone Components](https://angular.io/guide/standalone-components) the `PorscheDesignSystemModule` needs
+When using [Standalone Components](https://angular.dev/guide/components/importing#standalone-components) the `PorscheDesignSystemModule` needs
 to be included in the component itself.
 
 ```ts

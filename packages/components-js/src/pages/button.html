@@ -160,6 +160,39 @@
   <p-button compact="true" disabled="true">Some label</p-button>
 </div>
 
+<div class="playground light auto-layout-inline" title="should render button in responsive compact mode">
+  <p-button compact="{ base: true, xs: false, s: true, m: false, l: true, xl: false }">Some label</p-button>
+  <p-button compact="{ base: true, xs: false, s: true, m: false, l: true, xl: false }" variant="secondary"
+    >Some label</p-button
+  >
+  <p-button compact="{ base: true, xs: false, s: true, m: false, l: true, xl: false }" variant="ghost"
+    >Some label</p-button
+  >
+  <p-button compact="{ base: true, xs: false, s: true, m: false, l: true, xl: false }" icon="delete"
+    >Some label</p-button
+  >
+  <p-button
+    compact="{ base: true, xs: false, s: true, m: false, l: true, xl: false }"
+    icon-source="http://localhost:3002/icon-custom-kaixin.svg"
+    >Some label</p-button
+  >
+  <p-button compact="{ base: true, xs: false, s: true, m: false, l: true, xl: false }" hide-label="true" icon="delete"
+    >Some label</p-button
+  >
+  <p-button
+    compact="{ base: true, xs: false, s: true, m: false, l: true, xl: false }"
+    hide-label="true"
+    icon-source="http://localhost:3002/icon-custom-kaixin.svg"
+    >Some label</p-button
+  >
+  <p-button compact="{ base: true, xs: false, s: true, m: false, l: true, xl: false }" loading="true"
+    >Some label</p-button
+  >
+  <p-button compact="{ base: true, xs: false, s: true, m: false, l: true, xl: false }" disabled="true"
+    >Some label</p-button
+  >
+</div>
+
 <div class="playground light auto-layout-inline" title="should render button with scaling 0">
   <p-button class="scaling-0" icon="arrow-right" hide-label="true">Scaling 0</p-button>
   <p-button class="scaling-0" variant="ghost">Scaling 0</p-button>
