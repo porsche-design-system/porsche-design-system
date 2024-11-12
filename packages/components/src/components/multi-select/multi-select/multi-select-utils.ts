@@ -5,8 +5,6 @@ import {
   type Theme,
   consoleWarn,
   determineDropdownDirection,
-  setAttribute,
-  setAttributes,
 } from '../../../utils';
 import type { MultiSelectOptionInternalHTMLProps } from '../multi-select-option/multi-select-option-utils';
 import { forceUpdate } from '@stencil/core';
@@ -24,8 +22,6 @@ export type MultiSelectUpdateEvent = {
 };
 export type MultiSelectUpdateEventDetail = MultiSelectUpdateEvent;
 
-export const INTERNAL_MULTI_SELECT_SLOT = 'internal-select';
-
 // TODO: share between select & multi-select
 export const syncMultiSelectChildrenProps = (
   children: (MultiSelectOption | MultiSelectOptgroup)[],
@@ -37,41 +33,6 @@ export const syncMultiSelectChildrenProps = (
       child.theme = theme;
       forceUpdate(child);
     });
-};
-
-export const initNativeMultiSelect = (
-  host: HTMLElement,
-  name: string,
-  disabled: boolean,
-  required: boolean
-): HTMLSelectElement => {
-  const nativeSelect = document.createElement('select');
-  setAttributes(nativeSelect, {
-    multiple: 'true',
-    'aria-hidden': 'true',
-    tabindex: '-1',
-    slot: INTERNAL_MULTI_SELECT_SLOT,
-  });
-  syncNativeMultiSelect(nativeSelect, name, disabled, required);
-  host.prepend(nativeSelect);
-  return nativeSelect;
-};
-
-export const syncNativeMultiSelect = (
-  nativeSelect: HTMLSelectElement,
-  name: string,
-  disabled: boolean,
-  required: boolean
-): void => {
-  setAttribute(nativeSelect, 'name', name);
-  nativeSelect.toggleAttribute('disabled', disabled);
-  nativeSelect.toggleAttribute('required', required);
-};
-
-export const updateNativeOptions = (nativeSelect: HTMLSelectElement, multiSelectOptions: MultiSelectOption[]): void => {
-  nativeSelect.innerHTML = getSelectedOptions(multiSelectOptions)
-    .map((option) => `<option value="${option.value}" selected="${option.selected}">${option.textContent}</option>`)
-    .join('');
 };
 
 export const updateOptionsFilterState = (

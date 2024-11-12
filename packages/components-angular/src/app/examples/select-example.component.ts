@@ -13,6 +13,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
         <p-select-option value="f">Option F</p-select-option>
       </p-select>
       <button type="submit">Submit</button>
+      <button type="reset">Reset</button>
     </form>
 
     <p-text>Last submitted data: {{ lastSubmittedData }}</p-text>

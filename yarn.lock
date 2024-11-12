@@ -6562,10 +6562,10 @@
   resolved "https://registry.yarnpkg.com/@ungap/structured-clone/-/structured-clone-1.2.0.tgz#756641adb587851b5ccb3e095daf27ae581c8406"
   integrity sha512-zuVdFrMJiuCDQUMCzQaD6KL28MjnqqN8XnAqiEq9PNm/hCPTSGfrXCOfwj1ow4LFb/tNymJPwsNbVePc1xFqrQ==
 
-"@uxpin/merge-cli@3.4.3":
-  version "3.4.3"
-  resolved "https://registry.yarnpkg.com/@uxpin/merge-cli/-/merge-cli-3.4.3.tgz#884b9d1c9a653bc71007e3d07598d6d40487ecf6"
-  integrity sha512-IVh4oHGdV9ajWkw5/6xgLrSJ9QlFkLhQlIh+4qlRjXDNLBGpmu/i3mas3VG50FWvMlJcD3pF36I44CfsJPTVYw==
+"@uxpin/merge-cli@3.4.7":
+  version "3.4.7"
+  resolved "https://registry.yarnpkg.com/@uxpin/merge-cli/-/merge-cli-3.4.7.tgz#73f0b84720dc18e3f6135bd07f1f9483692c92f1"
+  integrity sha512-nHZyh7IspUNqM3+KAsa3/kl/z/1+SxSs+rUjy/6uOUGoQWERIIne/2tPfRfHXh13MXI1WAQdXrEc8pGpGD0ukw==
   dependencies:
     "@babel/core" "^7.21.8"
     "@babel/plugin-proposal-class-properties" "^7.2.3"

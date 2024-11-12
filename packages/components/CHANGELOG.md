@@ -14,6 +14,49 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ### [Unreleased]
 
+### [3.21.0] - 2024-11-12
+
+### [3.21.0-rc.0] - 2024-11-11
+
+#### Added
+
+- `Flyout`: Prop `footerBehavior` to always make footer fixed
+  ([3590](https://github.com/porsche-design-system/porsche-design-system/pull/3590))
+- `Checkbox`, `Textarea`: `formDisabledCallback` and `formStateRestoreCallback` from ElementInternals API and sync
+  validity with form element. ([#3528](https://github.com/porsche-design-system/porsche-design-system/pull/3528))
+- `Link`, `Link Pure`, `Link Tile`: `aria-haspopup` is now supported for `aria` prop
+  ([#3589](https://github.com/porsche-design-system/porsche-design-system/pull/3589))
+- `Button`, `Link`: `compact` prop is breakpoint customizable
+  ([#3580](https://github.com/porsche-design-system/porsche-design-system/pull/3580))
+- `Select`, `Multi-Select`: Added `form` prop to explicitly associate these components with a specific form when they
+  are not directly nested within it. ([#3542](https://github.com/porsche-design-system/porsche-design-system/pull/3542))
+
+#### Changed
+
+- `Select`, `Multi-Select`:
+  - Remove native select and use ElementInternals API
+    ([#3542](https://github.com/porsche-design-system/porsche-design-system/pull/3542))
+  - **Breaking Change**: `Select` and `Multi-Select` components no longer support native validation due to the removal
+    of the underlying native `<select>` element.
+
+#### Fixed
+
+- `Flyout`: overlapping of scrollbar in iOS/iPadOS Safari when sticky header/footer is used
+  ([#3607](https://github.com/porsche-design-system/porsche-design-system/pull/3607))
+- `Carousel`: dynamic change in `slidesPerPages` when using `focusOnCenterSlide` prop breaks pagination
+  ([#3592](https://github.com/porsche-design-system/porsche-design-system/pull/3592))
+- `Flyout`, `Modal`:
+  - transition not working correctly when using conditionally rendered content
+    ([#3590](https://github.com/porsche-design-system/porsche-design-system/pull/3590))
+  - dismiss button not sticky in case header slot is not present
+    ([#3574](https://github.com/porsche-design-system/porsche-design-system/pull/3574))
+  - dismiss button overlaps content area
+    ([#3574](https://github.com/porsche-design-system/porsche-design-system/pull/3574))
+- `jsdom-polyfill`: errors from included polyfill packages
+  ([3543](https://github.com/porsche-design-system/porsche-design-system/pull/3543))
+- React: global `hidden` attribute with value `false` not working
+  ([#3555](https://github.com/porsche-design-system/porsche-design-system/pull/3555))
+
 ### [3.20.0] - 2024-10-24
 
 ### [3.20.0-rc.1] - 2024-10-24
@@ -22,8 +65,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 - React: better tree-shaking for `@porsche-design-system/components-react`
   ([#3554](https://github.com/porsche-design-system/porsche-design-system/pull/3554))
-- `Icon`: `sidebar`
-  ([#3556](https://github.com/porsche-design-system/porsche-design-system/pull/3556))
+- `Icon`: `sidebar` ([#3556](https://github.com/porsche-design-system/porsche-design-system/pull/3556))
 
 #### Changed
 

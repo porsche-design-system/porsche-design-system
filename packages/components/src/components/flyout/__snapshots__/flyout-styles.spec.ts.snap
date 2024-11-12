@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`getComponentCss() should return correct css for isOpen: false, position: end, hasHeader: false, hasFooter: false, hasSubFooter: false, theme: light 1`] = `
+exports[`getComponentCss() should return correct css for isOpen: false, position: end, hasHeader: false, hasFooter: false, hasSubFooter: false, footerBehavior: sticky, theme: light 1`] = `
 ":host {
   display: block;
   --pds-internal-grid-outer-column: calc(clamp(32px, 2.75vw + 23px, 76px) - clamp(16px, 1.25vw + 12px, 36px)) !important;
@@ -55,6 +55,7 @@ dialog::backdrop {
 
 .scroller {
   position: absolute;
+  isolation: isolate;
   display: grid;
   inset-block: 0;
   inset-inline-end: 0;
@@ -62,9 +63,8 @@ dialog::backdrop {
   overscroll-behavior-y: none;
   background: rgba(255,255,255,.01);
   opacity: 0;
-  margin-inline-end: 200vw;
   transform: translateX(100%);
-  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.4,0,0.5,1), transform var(--p-transition-duration, 0.25s) cubic-bezier(0.4,0,0.5,1), margin-inline-end 0s linear var(--p-transition-duration, 0.25s);
+  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.4,0,0.5,1), transform var(--p-transition-duration, 0.25s) cubic-bezier(0.4,0,0.5,1);
 }
 .scroller:dir(rtl) {
   transform: translateX(-100%);
@@ -93,11 +93,11 @@ dialog::backdrop {
   inset-block-start: clamp(8px, 0.5vw + 6px, 16px);
   inset-inline-end: clamp(8px, 0.5vw + 6px, 16px);
   margin-block-start: calc(clamp(16px, 1.25vw + 12px, 36px) * -1);
-  justify-self: flex-end;
+  place-self: flex-start flex-end;
 }"
 `;
 
-exports[`getComponentCss() should return correct css for isOpen: false, position: end, hasHeader: false, hasFooter: false, hasSubFooter: true, theme: dark 1`] = `
+exports[`getComponentCss() should return correct css for isOpen: false, position: end, hasHeader: false, hasFooter: false, hasSubFooter: true, footerBehavior: sticky, theme: dark 1`] = `
 ":host {
   display: block;
   --pds-internal-grid-outer-column: calc(clamp(32px, 2.75vw + 23px, 76px) - clamp(16px, 1.25vw + 12px, 36px)) !important;
@@ -156,6 +156,7 @@ dialog::backdrop {
 
 .scroller {
   position: absolute;
+  isolation: isolate;
   display: grid;
   inset-block: 0;
   inset-inline-end: 0;
@@ -163,9 +164,8 @@ dialog::backdrop {
   overscroll-behavior-y: none;
   background: rgba(0,0,0,.01);
   opacity: 0;
-  margin-inline-end: 200vw;
   transform: translateX(100%);
-  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.4,0,0.5,1), transform var(--p-transition-duration, 0.25s) cubic-bezier(0.4,0,0.5,1), margin-inline-end 0s linear var(--p-transition-duration, 0.25s);
+  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.4,0,0.5,1), transform var(--p-transition-duration, 0.25s) cubic-bezier(0.4,0,0.5,1);
 }
 .scroller:dir(rtl) {
   transform: translateX(-100%);
@@ -194,11 +194,11 @@ dialog::backdrop {
   inset-block-start: clamp(8px, 0.5vw + 6px, 16px);
   inset-inline-end: clamp(8px, 0.5vw + 6px, 16px);
   margin-block-start: calc(clamp(16px, 1.25vw + 12px, 36px) * -1);
-  justify-self: flex-end;
+  place-self: flex-start flex-end;
 }"
 `;
 
-exports[`getComponentCss() should return correct css for isOpen: false, position: end, hasHeader: false, hasFooter: true, hasSubFooter: true, theme: dark 1`] = `
+exports[`getComponentCss() should return correct css for isOpen: false, position: end, hasHeader: false, hasFooter: true, hasSubFooter: true, footerBehavior: sticky, theme: dark 1`] = `
 ":host {
   display: block;
   --pds-internal-grid-outer-column: calc(clamp(32px, 2.75vw + 23px, 76px) - clamp(16px, 1.25vw + 12px, 36px)) !important;
@@ -272,6 +272,7 @@ dialog::backdrop {
 
 .scroller {
   position: absolute;
+  isolation: isolate;
   display: grid;
   inset-block: 0;
   inset-inline-end: 0;
@@ -279,9 +280,8 @@ dialog::backdrop {
   overscroll-behavior-y: none;
   background: rgba(0,0,0,.01);
   opacity: 0;
-  margin-inline-end: 200vw;
   transform: translateX(100%);
-  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.4,0,0.5,1), transform var(--p-transition-duration, 0.25s) cubic-bezier(0.4,0,0.5,1), margin-inline-end 0s linear var(--p-transition-duration, 0.25s);
+  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.4,0,0.5,1), transform var(--p-transition-duration, 0.25s) cubic-bezier(0.4,0,0.5,1);
 }
 .scroller:dir(rtl) {
   transform: translateX(-100%);
@@ -310,11 +310,11 @@ dialog::backdrop {
   inset-block-start: clamp(8px, 0.5vw + 6px, 16px);
   inset-inline-end: clamp(8px, 0.5vw + 6px, 16px);
   margin-block-start: calc(clamp(16px, 1.25vw + 12px, 36px) * -1);
-  justify-self: flex-end;
+  place-self: flex-start flex-end;
 }"
 `;
 
-exports[`getComponentCss() should return correct css for isOpen: false, position: end, hasHeader: true, hasFooter: false, hasSubFooter: false, theme: light 1`] = `
+exports[`getComponentCss() should return correct css for isOpen: false, position: end, hasHeader: true, hasFooter: false, hasSubFooter: false, footerBehavior: sticky, theme: light 1`] = `
 ":host {
   display: block;
   --pds-internal-grid-outer-column: calc(clamp(32px, 2.75vw + 23px, 76px) - clamp(16px, 1.25vw + 12px, 36px)) !important;
@@ -350,6 +350,7 @@ slot[name=header] {
   transition: box-shadow var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   grid-column: 1/-1;
   z-index: 3;
+  margin-block-start: 0;
 }
 slot[name=header][data-stuck] {
   box-shadow: rgba(204, 204, 204, 0.35) 0 5px 10px;
@@ -384,6 +385,7 @@ dialog::backdrop {
 
 .scroller {
   position: absolute;
+  isolation: isolate;
   display: grid;
   inset-block: 0;
   inset-inline-end: 0;
@@ -391,9 +393,8 @@ dialog::backdrop {
   overscroll-behavior-y: none;
   background: rgba(255,255,255,.01);
   opacity: 0;
-  margin-inline-end: 200vw;
   transform: translateX(100%);
-  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.4,0,0.5,1), transform var(--p-transition-duration, 0.25s) cubic-bezier(0.4,0,0.5,1), margin-inline-end 0s linear var(--p-transition-duration, 0.25s);
+  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.4,0,0.5,1), transform var(--p-transition-duration, 0.25s) cubic-bezier(0.4,0,0.5,1);
 }
 .scroller:dir(rtl) {
   transform: translateX(-100%);
@@ -413,6 +414,7 @@ dialog::backdrop {
   width: var(--p-flyout-width,auto);
   min-width: 320px;
   max-width: var(--p-flyout-max-width,1180px);
+  padding-block-start: 0;
 }
 .dismiss {
   --p-internal-button-scaling: 0;
@@ -422,11 +424,11 @@ dialog::backdrop {
   inset-block-start: clamp(8px, 0.5vw + 6px, 16px);
   inset-inline-end: clamp(8px, 0.5vw + 6px, 16px);
   margin-block-start: calc(clamp(16px, 1.25vw + 12px, 36px) * -1);
-  justify-self: flex-end;
+  place-self: flex-start flex-end;
 }"
 `;
 
-exports[`getComponentCss() should return correct css for isOpen: false, position: left, hasHeader: false, hasFooter: false, hasSubFooter: false, theme: light 1`] = `
+exports[`getComponentCss() should return correct css for isOpen: false, position: left, hasHeader: false, hasFooter: false, hasSubFooter: false, footerBehavior: sticky, theme: light 1`] = `
 ":host {
   display: block;
   --pds-internal-grid-outer-column: calc(clamp(32px, 2.75vw + 23px, 76px) - clamp(16px, 1.25vw + 12px, 36px)) !important;
@@ -481,6 +483,7 @@ dialog::backdrop {
 
 .scroller {
   position: absolute;
+  isolation: isolate;
   display: grid;
   inset-block: 0;
   inset-inline-start: 0;
@@ -489,7 +492,7 @@ dialog::backdrop {
   background: rgba(255,255,255,.01);
   opacity: 0;
   transform: translateX(-100%);
-  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.4,0,0.5,1), transform var(--p-transition-duration, 0.25s) cubic-bezier(0.4,0,0.5,1), margin-inline-end 0s linear var(--p-transition-duration, 0.25s);
+  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.4,0,0.5,1), transform var(--p-transition-duration, 0.25s) cubic-bezier(0.4,0,0.5,1);
 }
 .scroller:dir(rtl) {
   transform: translateX(100%);
@@ -518,11 +521,11 @@ dialog::backdrop {
   inset-block-start: clamp(8px, 0.5vw + 6px, 16px);
   inset-inline-end: clamp(8px, 0.5vw + 6px, 16px);
   margin-block-start: calc(clamp(16px, 1.25vw + 12px, 36px) * -1);
-  justify-self: flex-end;
+  place-self: flex-start flex-end;
 }"
 `;
 
-exports[`getComponentCss() should return correct css for isOpen: false, position: right, hasHeader: false, hasFooter: false, hasSubFooter: false, theme: light 1`] = `
+exports[`getComponentCss() should return correct css for isOpen: false, position: right, hasHeader: false, hasFooter: false, hasSubFooter: false, footerBehavior: sticky, theme: light 1`] = `
 ":host {
   display: block;
   --pds-internal-grid-outer-column: calc(clamp(32px, 2.75vw + 23px, 76px) - clamp(16px, 1.25vw + 12px, 36px)) !important;
@@ -577,6 +580,7 @@ dialog::backdrop {
 
 .scroller {
   position: absolute;
+  isolation: isolate;
   display: grid;
   inset-block: 0;
   inset-inline-end: 0;
@@ -584,9 +588,8 @@ dialog::backdrop {
   overscroll-behavior-y: none;
   background: rgba(255,255,255,.01);
   opacity: 0;
-  margin-inline-end: 200vw;
   transform: translateX(100%);
-  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.4,0,0.5,1), transform var(--p-transition-duration, 0.25s) cubic-bezier(0.4,0,0.5,1), margin-inline-end 0s linear var(--p-transition-duration, 0.25s);
+  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.4,0,0.5,1), transform var(--p-transition-duration, 0.25s) cubic-bezier(0.4,0,0.5,1);
 }
 .scroller:dir(rtl) {
   transform: translateX(-100%);
@@ -615,11 +618,11 @@ dialog::backdrop {
   inset-block-start: clamp(8px, 0.5vw + 6px, 16px);
   inset-inline-end: clamp(8px, 0.5vw + 6px, 16px);
   margin-block-start: calc(clamp(16px, 1.25vw + 12px, 36px) * -1);
-  justify-self: flex-end;
+  place-self: flex-start flex-end;
 }"
 `;
 
-exports[`getComponentCss() should return correct css for isOpen: false, position: start, hasHeader: false, hasFooter: false, hasSubFooter: false, theme: light 1`] = `
+exports[`getComponentCss() should return correct css for isOpen: false, position: start, hasHeader: false, hasFooter: false, hasSubFooter: false, footerBehavior: sticky, theme: light 1`] = `
 ":host {
   display: block;
   --pds-internal-grid-outer-column: calc(clamp(32px, 2.75vw + 23px, 76px) - clamp(16px, 1.25vw + 12px, 36px)) !important;
@@ -674,6 +677,7 @@ dialog::backdrop {
 
 .scroller {
   position: absolute;
+  isolation: isolate;
   display: grid;
   inset-block: 0;
   inset-inline-start: 0;
@@ -682,7 +686,7 @@ dialog::backdrop {
   background: rgba(255,255,255,.01);
   opacity: 0;
   transform: translateX(-100%);
-  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.4,0,0.5,1), transform var(--p-transition-duration, 0.25s) cubic-bezier(0.4,0,0.5,1), margin-inline-end 0s linear var(--p-transition-duration, 0.25s);
+  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.4,0,0.5,1), transform var(--p-transition-duration, 0.25s) cubic-bezier(0.4,0,0.5,1);
 }
 .scroller:dir(rtl) {
   transform: translateX(100%);
@@ -711,11 +715,11 @@ dialog::backdrop {
   inset-block-start: clamp(8px, 0.5vw + 6px, 16px);
   inset-inline-end: clamp(8px, 0.5vw + 6px, 16px);
   margin-block-start: calc(clamp(16px, 1.25vw + 12px, 36px) * -1);
-  justify-self: flex-end;
+  place-self: flex-start flex-end;
 }"
 `;
 
-exports[`getComponentCss() should return correct css for isOpen: false, position: start, hasHeader: false, hasFooter: false, hasSubFooter: true, theme: dark 1`] = `
+exports[`getComponentCss() should return correct css for isOpen: false, position: start, hasHeader: false, hasFooter: false, hasSubFooter: true, footerBehavior: sticky, theme: dark 1`] = `
 ":host {
   display: block;
   --pds-internal-grid-outer-column: calc(clamp(32px, 2.75vw + 23px, 76px) - clamp(16px, 1.25vw + 12px, 36px)) !important;
@@ -774,6 +778,7 @@ dialog::backdrop {
 
 .scroller {
   position: absolute;
+  isolation: isolate;
   display: grid;
   inset-block: 0;
   inset-inline-start: 0;
@@ -782,7 +787,7 @@ dialog::backdrop {
   background: rgba(0,0,0,.01);
   opacity: 0;
   transform: translateX(-100%);
-  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.4,0,0.5,1), transform var(--p-transition-duration, 0.25s) cubic-bezier(0.4,0,0.5,1), margin-inline-end 0s linear var(--p-transition-duration, 0.25s);
+  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.4,0,0.5,1), transform var(--p-transition-duration, 0.25s) cubic-bezier(0.4,0,0.5,1);
 }
 .scroller:dir(rtl) {
   transform: translateX(100%);
@@ -811,11 +816,11 @@ dialog::backdrop {
   inset-block-start: clamp(8px, 0.5vw + 6px, 16px);
   inset-inline-end: clamp(8px, 0.5vw + 6px, 16px);
   margin-block-start: calc(clamp(16px, 1.25vw + 12px, 36px) * -1);
-  justify-self: flex-end;
+  place-self: flex-start flex-end;
 }"
 `;
 
-exports[`getComponentCss() should return correct css for isOpen: false, position: start, hasHeader: false, hasFooter: true, hasSubFooter: true, theme: dark 1`] = `
+exports[`getComponentCss() should return correct css for isOpen: false, position: start, hasHeader: false, hasFooter: true, hasSubFooter: true, footerBehavior: sticky, theme: dark 1`] = `
 ":host {
   display: block;
   --pds-internal-grid-outer-column: calc(clamp(32px, 2.75vw + 23px, 76px) - clamp(16px, 1.25vw + 12px, 36px)) !important;
@@ -889,6 +894,7 @@ dialog::backdrop {
 
 .scroller {
   position: absolute;
+  isolation: isolate;
   display: grid;
   inset-block: 0;
   inset-inline-start: 0;
@@ -897,7 +903,7 @@ dialog::backdrop {
   background: rgba(0,0,0,.01);
   opacity: 0;
   transform: translateX(-100%);
-  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.4,0,0.5,1), transform var(--p-transition-duration, 0.25s) cubic-bezier(0.4,0,0.5,1), margin-inline-end 0s linear var(--p-transition-duration, 0.25s);
+  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.4,0,0.5,1), transform var(--p-transition-duration, 0.25s) cubic-bezier(0.4,0,0.5,1);
 }
 .scroller:dir(rtl) {
   transform: translateX(100%);
@@ -926,11 +932,115 @@ dialog::backdrop {
   inset-block-start: clamp(8px, 0.5vw + 6px, 16px);
   inset-inline-end: clamp(8px, 0.5vw + 6px, 16px);
   margin-block-start: calc(clamp(16px, 1.25vw + 12px, 36px) * -1);
-  justify-self: flex-end;
+  place-self: flex-start flex-end;
 }"
 `;
 
-exports[`getComponentCss() should return correct css for isOpen: true, position: end, hasHeader: false, hasFooter: false, hasSubFooter: false, theme: auto 1`] = `
+exports[`getComponentCss() should return correct css for isOpen: true, position: end, hasHeader: false, hasFooter: false, hasSubFooter: false, footerBehavior: fixed, theme: light 1`] = `
+":host {
+  display: block;
+  --pds-internal-grid-outer-column: calc(clamp(32px, 2.75vw + 23px, 76px) - clamp(16px, 1.25vw + 12px, 36px)) !important;
+  --pds-internal-grid-margin: calc(clamp(32px, 2.75vw + 23px, 76px) * -1) !important;
+  --pds-internal-grid-width-min: auto !important;
+  --pds-internal-grid-width-max: none !important;
+  color-scheme: light dark !important;
+}
+:host([hidden]) {
+  display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
+slot {
+  display: block;
+}
+slot:first-of-type {
+  grid-row-start: 1;
+}
+slot:not([name]) {
+  grid-column: 2/3;
+  z-index: 0;
+}
+dialog {
+  position: fixed;
+  inset: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  width: 100dvw;
+  height: 100dvh;
+  max-width: 100dvw;
+  max-height: 100dvh;
+  overflow: hidden;
+  display: block;
+  outline: 0;
+  z-index: 9999999;
+  visibility: inherit;
+  pointer-events: auto;
+  background: rgba(1, 2, 5, 0.67);
+  -webkit-backdrop-filter: blur(32px);
+  backdrop-filter: blur(32px);
+  transition: visibility 0s linear var(--p-transition-duration, 0s), background-color var(--p-transition-duration, 0.6s) cubic-bezier(0,0,0.2,1), -webkit-backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0,0,0.2,1), backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0,0,0.2,1);
+}
+dialog::backdrop {
+  display: none;
+}
+@supports (transition-behavior: allow-discrete) {
+  dialog {
+    transition: visibility 0s linear var(--p-transition-duration, 0s), background-color var(--p-transition-duration, 0.6s) cubic-bezier(0,0,0.2,1), -webkit-backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0,0,0.2,1), backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0,0,0.2,1), overlay var(--p-transition-duration, 0.6s) cubic-bezier(0,0,0.2,1) allow-discrete;
+  }
+}
+
+.scroller {
+  position: absolute;
+  isolation: isolate;
+  display: grid;
+  inset-block: 0;
+  inset-inline-end: 0;
+  overflow: hidden auto;
+  overscroll-behavior-y: none;
+  background: rgba(255,255,255,.01);
+  opacity: 1;
+  transform: initial;
+  transition: opacity var(--p-transition-duration, 0.4s) cubic-bezier(0,0,0.2,1), transform var(--p-transition-duration, 0.4s) cubic-bezier(0,0,0.2,1);
+}
+.scroller:focus-visible {
+  outline: none;
+}
+.flyout {
+  display: grid;
+  grid-template: auto/clamp(8px, 0.5vw + 6px, 16px) auto clamp(8px, 0.5vw + 6px, 16px);
+  padding-block: calc(clamp(8px, 0.5vw + 6px, 16px) + clamp(16px, 1.25vw + 12px, 36px));
+  row-gap: clamp(16px, 1.25vw + 12px, 36px);
+  column-gap: calc(clamp(32px, 2.75vw + 23px, 76px) - clamp(8px, 0.5vw + 6px, 16px));
+  align-content: flex-start;
+  color: #010205;
+  background: #FFF;
+  width: var(--p-flyout-width,auto);
+  min-width: 320px;
+  max-width: var(--p-flyout-max-width,1180px);
+  padding-block-end: 0;
+  grid-template-rows: 1fr;
+}
+.flyout::before {
+  content: "";
+  min-height: calc(100dvh - calc(clamp(8px, 0.5vw + 6px, 16px) + clamp(16px, 1.25vw + 12px, 36px)));
+  grid-area: 1/1/3/-1;
+  pointer-events: none;
+}
+.dismiss {
+  --p-internal-button-scaling: 0;
+  grid-area: 1/3;
+  z-index: 4;
+  position: sticky;
+  inset-block-start: clamp(8px, 0.5vw + 6px, 16px);
+  inset-inline-end: clamp(8px, 0.5vw + 6px, 16px);
+  margin-block-start: calc(clamp(16px, 1.25vw + 12px, 36px) * -1);
+  place-self: flex-start flex-end;
+}"
+`;
+
+exports[`getComponentCss() should return correct css for isOpen: true, position: end, hasHeader: false, hasFooter: false, hasSubFooter: false, footerBehavior: sticky, theme: auto 1`] = `
 ":host {
   display: block;
   --pds-internal-grid-outer-column: calc(clamp(32px, 2.75vw + 23px, 76px) - clamp(16px, 1.25vw + 12px, 36px)) !important;
@@ -993,6 +1103,7 @@ dialog::backdrop {
 
 .scroller {
   position: absolute;
+  isolation: isolate;
   display: grid;
   inset-block: 0;
   inset-inline-end: 0;
@@ -1001,8 +1112,7 @@ dialog::backdrop {
   background: rgba(255,255,255,.01);
   opacity: 1;
   transform: initial;
-  margin-inline-end: 0;
-  transition: opacity var(--p-transition-duration, 0.4s) cubic-bezier(0,0,0.2,1), transform var(--p-transition-duration, 0.4s) cubic-bezier(0,0,0.2,1), margin-inline-end 0s linear var(--p-transition-duration, 1ms);
+  transition: opacity var(--p-transition-duration, 0.4s) cubic-bezier(0,0,0.2,1), transform var(--p-transition-duration, 0.4s) cubic-bezier(0,0,0.2,1);
 }
 .scroller:focus-visible {
   outline: none;
@@ -1028,7 +1138,7 @@ dialog::backdrop {
   inset-block-start: clamp(8px, 0.5vw + 6px, 16px);
   inset-inline-end: clamp(8px, 0.5vw + 6px, 16px);
   margin-block-start: calc(clamp(16px, 1.25vw + 12px, 36px) * -1);
-  justify-self: flex-end;
+  place-self: flex-start flex-end;
 }
 @media (prefers-color-scheme: dark) {
   .scroller {
@@ -1042,7 +1152,7 @@ dialog::backdrop {
 "
 `;
 
-exports[`getComponentCss() should return correct css for isOpen: true, position: end, hasHeader: false, hasFooter: false, hasSubFooter: false, theme: dark 1`] = `
+exports[`getComponentCss() should return correct css for isOpen: true, position: end, hasHeader: false, hasFooter: false, hasSubFooter: false, footerBehavior: sticky, theme: dark 1`] = `
 ":host {
   display: block;
   --pds-internal-grid-outer-column: calc(clamp(32px, 2.75vw + 23px, 76px) - clamp(16px, 1.25vw + 12px, 36px)) !important;
@@ -1099,6 +1209,7 @@ dialog::backdrop {
 
 .scroller {
   position: absolute;
+  isolation: isolate;
   display: grid;
   inset-block: 0;
   inset-inline-end: 0;
@@ -1107,8 +1218,7 @@ dialog::backdrop {
   background: rgba(0,0,0,.01);
   opacity: 1;
   transform: initial;
-  margin-inline-end: 0;
-  transition: opacity var(--p-transition-duration, 0.4s) cubic-bezier(0,0,0.2,1), transform var(--p-transition-duration, 0.4s) cubic-bezier(0,0,0.2,1), margin-inline-end 0s linear var(--p-transition-duration, 1ms);
+  transition: opacity var(--p-transition-duration, 0.4s) cubic-bezier(0,0,0.2,1), transform var(--p-transition-duration, 0.4s) cubic-bezier(0,0,0.2,1);
 }
 .scroller:focus-visible {
   outline: none;
@@ -1134,11 +1244,11 @@ dialog::backdrop {
   inset-block-start: clamp(8px, 0.5vw + 6px, 16px);
   inset-inline-end: clamp(8px, 0.5vw + 6px, 16px);
   margin-block-start: calc(clamp(16px, 1.25vw + 12px, 36px) * -1);
-  justify-self: flex-end;
+  place-self: flex-start flex-end;
 }"
 `;
 
-exports[`getComponentCss() should return correct css for isOpen: true, position: end, hasHeader: false, hasFooter: false, hasSubFooter: false, theme: light 1`] = `
+exports[`getComponentCss() should return correct css for isOpen: true, position: end, hasHeader: false, hasFooter: false, hasSubFooter: false, footerBehavior: sticky, theme: light 1`] = `
 ":host {
   display: block;
   --pds-internal-grid-outer-column: calc(clamp(32px, 2.75vw + 23px, 76px) - clamp(16px, 1.25vw + 12px, 36px)) !important;
@@ -1195,6 +1305,7 @@ dialog::backdrop {
 
 .scroller {
   position: absolute;
+  isolation: isolate;
   display: grid;
   inset-block: 0;
   inset-inline-end: 0;
@@ -1203,8 +1314,7 @@ dialog::backdrop {
   background: rgba(255,255,255,.01);
   opacity: 1;
   transform: initial;
-  margin-inline-end: 0;
-  transition: opacity var(--p-transition-duration, 0.4s) cubic-bezier(0,0,0.2,1), transform var(--p-transition-duration, 0.4s) cubic-bezier(0,0,0.2,1), margin-inline-end 0s linear var(--p-transition-duration, 1ms);
+  transition: opacity var(--p-transition-duration, 0.4s) cubic-bezier(0,0,0.2,1), transform var(--p-transition-duration, 0.4s) cubic-bezier(0,0,0.2,1);
 }
 .scroller:focus-visible {
   outline: none;
@@ -1230,11 +1340,118 @@ dialog::backdrop {
   inset-block-start: clamp(8px, 0.5vw + 6px, 16px);
   inset-inline-end: clamp(8px, 0.5vw + 6px, 16px);
   margin-block-start: calc(clamp(16px, 1.25vw + 12px, 36px) * -1);
-  justify-self: flex-end;
+  place-self: flex-start flex-end;
 }"
 `;
 
-exports[`getComponentCss() should return correct css for isOpen: true, position: end, hasHeader: false, hasFooter: false, hasSubFooter: true, theme: auto 1`] = `
+exports[`getComponentCss() should return correct css for isOpen: true, position: end, hasHeader: false, hasFooter: false, hasSubFooter: true, footerBehavior: fixed, theme: light 1`] = `
+":host {
+  display: block;
+  --pds-internal-grid-outer-column: calc(clamp(32px, 2.75vw + 23px, 76px) - clamp(16px, 1.25vw + 12px, 36px)) !important;
+  --pds-internal-grid-margin: calc(clamp(32px, 2.75vw + 23px, 76px) * -1) !important;
+  --pds-internal-grid-width-min: auto !important;
+  --pds-internal-grid-width-max: none !important;
+  color-scheme: light dark !important;
+}
+:host([hidden]) {
+  display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
+slot {
+  display: block;
+}
+slot:first-of-type {
+  grid-row-start: 1;
+}
+slot:not([name]) {
+  grid-column: 2/3;
+  z-index: 0;
+}
+slot[name=sub-footer] {
+  grid-column: 2/3;
+  z-index: 1;
+}
+dialog {
+  position: fixed;
+  inset: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  width: 100dvw;
+  height: 100dvh;
+  max-width: 100dvw;
+  max-height: 100dvh;
+  overflow: hidden;
+  display: block;
+  outline: 0;
+  z-index: 9999999;
+  visibility: inherit;
+  pointer-events: auto;
+  background: rgba(1, 2, 5, 0.67);
+  -webkit-backdrop-filter: blur(32px);
+  backdrop-filter: blur(32px);
+  transition: visibility 0s linear var(--p-transition-duration, 0s), background-color var(--p-transition-duration, 0.6s) cubic-bezier(0,0,0.2,1), -webkit-backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0,0,0.2,1), backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0,0,0.2,1);
+}
+dialog::backdrop {
+  display: none;
+}
+@supports (transition-behavior: allow-discrete) {
+  dialog {
+    transition: visibility 0s linear var(--p-transition-duration, 0s), background-color var(--p-transition-duration, 0.6s) cubic-bezier(0,0,0.2,1), -webkit-backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0,0,0.2,1), backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0,0,0.2,1), overlay var(--p-transition-duration, 0.6s) cubic-bezier(0,0,0.2,1) allow-discrete;
+  }
+}
+
+.scroller {
+  position: absolute;
+  isolation: isolate;
+  display: grid;
+  inset-block: 0;
+  inset-inline-end: 0;
+  overflow: hidden auto;
+  overscroll-behavior-y: none;
+  background: rgba(255,255,255,.01);
+  opacity: 1;
+  transform: initial;
+  transition: opacity var(--p-transition-duration, 0.4s) cubic-bezier(0,0,0.2,1), transform var(--p-transition-duration, 0.4s) cubic-bezier(0,0,0.2,1);
+}
+.scroller:focus-visible {
+  outline: none;
+}
+.flyout {
+  display: grid;
+  grid-template: auto/clamp(8px, 0.5vw + 6px, 16px) auto clamp(8px, 0.5vw + 6px, 16px);
+  padding-block: calc(clamp(8px, 0.5vw + 6px, 16px) + clamp(16px, 1.25vw + 12px, 36px));
+  row-gap: clamp(16px, 1.25vw + 12px, 36px);
+  column-gap: calc(clamp(32px, 2.75vw + 23px, 76px) - clamp(8px, 0.5vw + 6px, 16px));
+  align-content: flex-start;
+  color: #010205;
+  background: #FFF;
+  width: var(--p-flyout-width,auto);
+  min-width: 320px;
+  max-width: var(--p-flyout-max-width,1180px);
+  grid-template-rows: 1fr;
+}
+.flyout::before {
+  content: "";
+  min-height: calc(100dvh - calc(clamp(8px, 0.5vw + 6px, 16px) + clamp(16px, 1.25vw + 12px, 36px)));
+  grid-area: 1/1/3/-1;
+  pointer-events: none;
+}
+.dismiss {
+  --p-internal-button-scaling: 0;
+  grid-area: 1/3;
+  z-index: 4;
+  position: sticky;
+  inset-block-start: clamp(8px, 0.5vw + 6px, 16px);
+  inset-inline-end: clamp(8px, 0.5vw + 6px, 16px);
+  margin-block-start: calc(clamp(16px, 1.25vw + 12px, 36px) * -1);
+  place-self: flex-start flex-end;
+}"
+`;
+
+exports[`getComponentCss() should return correct css for isOpen: true, position: end, hasHeader: false, hasFooter: false, hasSubFooter: true, footerBehavior: sticky, theme: auto 1`] = `
 ":host {
   display: block;
   --pds-internal-grid-outer-column: calc(clamp(32px, 2.75vw + 23px, 76px) - clamp(16px, 1.25vw + 12px, 36px)) !important;
@@ -1301,6 +1518,7 @@ dialog::backdrop {
 
 .scroller {
   position: absolute;
+  isolation: isolate;
   display: grid;
   inset-block: 0;
   inset-inline-end: 0;
@@ -1309,8 +1527,7 @@ dialog::backdrop {
   background: rgba(255,255,255,.01);
   opacity: 1;
   transform: initial;
-  margin-inline-end: 0;
-  transition: opacity var(--p-transition-duration, 0.4s) cubic-bezier(0,0,0.2,1), transform var(--p-transition-duration, 0.4s) cubic-bezier(0,0,0.2,1), margin-inline-end 0s linear var(--p-transition-duration, 1ms);
+  transition: opacity var(--p-transition-duration, 0.4s) cubic-bezier(0,0,0.2,1), transform var(--p-transition-duration, 0.4s) cubic-bezier(0,0,0.2,1);
 }
 .scroller:focus-visible {
   outline: none;
@@ -1336,7 +1553,7 @@ dialog::backdrop {
   inset-block-start: clamp(8px, 0.5vw + 6px, 16px);
   inset-inline-end: clamp(8px, 0.5vw + 6px, 16px);
   margin-block-start: calc(clamp(16px, 1.25vw + 12px, 36px) * -1);
-  justify-self: flex-end;
+  place-self: flex-start flex-end;
 }
 @media (prefers-color-scheme: dark) {
   .scroller {
@@ -1350,7 +1567,128 @@ dialog::backdrop {
 "
 `;
 
-exports[`getComponentCss() should return correct css for isOpen: true, position: end, hasHeader: false, hasFooter: true, hasSubFooter: false, theme: dark 1`] = `
+exports[`getComponentCss() should return correct css for isOpen: true, position: end, hasHeader: false, hasFooter: true, hasSubFooter: false, footerBehavior: fixed, theme: light 1`] = `
+":host {
+  display: block;
+  --pds-internal-grid-outer-column: calc(clamp(32px, 2.75vw + 23px, 76px) - clamp(16px, 1.25vw + 12px, 36px)) !important;
+  --pds-internal-grid-margin: calc(clamp(32px, 2.75vw + 23px, 76px) * -1) !important;
+  --pds-internal-grid-width-min: auto !important;
+  --pds-internal-grid-width-max: none !important;
+  color-scheme: light dark !important;
+}
+:host([hidden]) {
+  display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
+slot {
+  display: block;
+}
+slot:first-of-type {
+  grid-row-start: 1;
+}
+slot:not([name]) {
+  grid-column: 2/3;
+  z-index: 0;
+}
+slot[name=footer] {
+  position: sticky;
+  bottom: -.1px;
+  transform: translateZ(0);
+  padding: 16px clamp(32px, 2.75vw + 23px, 76px);
+  margin-block: -16px -16px;
+  background: #FFF;
+  clip-path: inset(-20px 0 0 0);
+  transition: box-shadow var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  grid-column: 1/-1;
+  z-index: 2;
+  grid-row: 2;
+  margin-block-end: .3px;
+}
+slot[name=footer][data-stuck] {
+  box-shadow: rgba(204, 204, 204, 0.35) 0 -5px 10px;
+}
+dialog {
+  position: fixed;
+  inset: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  width: 100dvw;
+  height: 100dvh;
+  max-width: 100dvw;
+  max-height: 100dvh;
+  overflow: hidden;
+  display: block;
+  outline: 0;
+  z-index: 9999999;
+  visibility: inherit;
+  pointer-events: auto;
+  background: rgba(1, 2, 5, 0.67);
+  -webkit-backdrop-filter: blur(32px);
+  backdrop-filter: blur(32px);
+  transition: visibility 0s linear var(--p-transition-duration, 0s), background-color var(--p-transition-duration, 0.6s) cubic-bezier(0,0,0.2,1), -webkit-backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0,0,0.2,1), backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0,0,0.2,1);
+}
+dialog::backdrop {
+  display: none;
+}
+@supports (transition-behavior: allow-discrete) {
+  dialog {
+    transition: visibility 0s linear var(--p-transition-duration, 0s), background-color var(--p-transition-duration, 0.6s) cubic-bezier(0,0,0.2,1), -webkit-backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0,0,0.2,1), backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0,0,0.2,1), overlay var(--p-transition-duration, 0.6s) cubic-bezier(0,0,0.2,1) allow-discrete;
+  }
+}
+
+.scroller {
+  position: absolute;
+  isolation: isolate;
+  display: grid;
+  inset-block: 0;
+  inset-inline-end: 0;
+  overflow: hidden auto;
+  overscroll-behavior-y: none;
+  background: rgba(255,255,255,.01);
+  opacity: 1;
+  transform: initial;
+  transition: opacity var(--p-transition-duration, 0.4s) cubic-bezier(0,0,0.2,1), transform var(--p-transition-duration, 0.4s) cubic-bezier(0,0,0.2,1);
+}
+.scroller:focus-visible {
+  outline: none;
+}
+.flyout {
+  display: grid;
+  grid-template: auto/clamp(8px, 0.5vw + 6px, 16px) auto clamp(8px, 0.5vw + 6px, 16px);
+  padding-block: calc(clamp(8px, 0.5vw + 6px, 16px) + clamp(16px, 1.25vw + 12px, 36px));
+  row-gap: clamp(16px, 1.25vw + 12px, 36px);
+  column-gap: calc(clamp(32px, 2.75vw + 23px, 76px) - clamp(8px, 0.5vw + 6px, 16px));
+  align-content: flex-start;
+  color: #010205;
+  background: #FFF;
+  width: var(--p-flyout-width,auto);
+  min-width: 320px;
+  max-width: var(--p-flyout-max-width,1180px);
+  padding-block-end: 0;
+  grid-template-rows: 1fr;
+}
+.flyout::before {
+  content: "";
+  min-height: calc(100dvh - calc(clamp(8px, 0.5vw + 6px, 16px) + clamp(16px, 1.25vw + 12px, 36px)));
+  grid-area: 1/1/3/-1;
+  pointer-events: none;
+}
+.dismiss {
+  --p-internal-button-scaling: 0;
+  grid-area: 1/3;
+  z-index: 4;
+  position: sticky;
+  inset-block-start: clamp(8px, 0.5vw + 6px, 16px);
+  inset-inline-end: clamp(8px, 0.5vw + 6px, 16px);
+  margin-block-start: calc(clamp(16px, 1.25vw + 12px, 36px) * -1);
+  place-self: flex-start flex-end;
+}"
+`;
+
+exports[`getComponentCss() should return correct css for isOpen: true, position: end, hasHeader: false, hasFooter: true, hasSubFooter: false, footerBehavior: sticky, theme: dark 1`] = `
 ":host {
   display: block;
   --pds-internal-grid-outer-column: calc(clamp(32px, 2.75vw + 23px, 76px) - clamp(16px, 1.25vw + 12px, 36px)) !important;
@@ -1422,6 +1760,7 @@ dialog::backdrop {
 
 .scroller {
   position: absolute;
+  isolation: isolate;
   display: grid;
   inset-block: 0;
   inset-inline-end: 0;
@@ -1430,8 +1769,7 @@ dialog::backdrop {
   background: rgba(0,0,0,.01);
   opacity: 1;
   transform: initial;
-  margin-inline-end: 0;
-  transition: opacity var(--p-transition-duration, 0.4s) cubic-bezier(0,0,0.2,1), transform var(--p-transition-duration, 0.4s) cubic-bezier(0,0,0.2,1), margin-inline-end 0s linear var(--p-transition-duration, 1ms);
+  transition: opacity var(--p-transition-duration, 0.4s) cubic-bezier(0,0,0.2,1), transform var(--p-transition-duration, 0.4s) cubic-bezier(0,0,0.2,1);
 }
 .scroller:focus-visible {
   outline: none;
@@ -1457,11 +1795,11 @@ dialog::backdrop {
   inset-block-start: clamp(8px, 0.5vw + 6px, 16px);
   inset-inline-end: clamp(8px, 0.5vw + 6px, 16px);
   margin-block-start: calc(clamp(16px, 1.25vw + 12px, 36px) * -1);
-  justify-self: flex-end;
+  place-self: flex-start flex-end;
 }"
 `;
 
-exports[`getComponentCss() should return correct css for isOpen: true, position: end, hasHeader: false, hasFooter: true, hasSubFooter: false, theme: light 1`] = `
+exports[`getComponentCss() should return correct css for isOpen: true, position: end, hasHeader: false, hasFooter: true, hasSubFooter: false, footerBehavior: sticky, theme: light 1`] = `
 ":host {
   display: block;
   --pds-internal-grid-outer-column: calc(clamp(32px, 2.75vw + 23px, 76px) - clamp(16px, 1.25vw + 12px, 36px)) !important;
@@ -1533,6 +1871,7 @@ dialog::backdrop {
 
 .scroller {
   position: absolute;
+  isolation: isolate;
   display: grid;
   inset-block: 0;
   inset-inline-end: 0;
@@ -1541,8 +1880,7 @@ dialog::backdrop {
   background: rgba(255,255,255,.01);
   opacity: 1;
   transform: initial;
-  margin-inline-end: 0;
-  transition: opacity var(--p-transition-duration, 0.4s) cubic-bezier(0,0,0.2,1), transform var(--p-transition-duration, 0.4s) cubic-bezier(0,0,0.2,1), margin-inline-end 0s linear var(--p-transition-duration, 1ms);
+  transition: opacity var(--p-transition-duration, 0.4s) cubic-bezier(0,0,0.2,1), transform var(--p-transition-duration, 0.4s) cubic-bezier(0,0,0.2,1);
 }
 .scroller:focus-visible {
   outline: none;
@@ -1568,11 +1906,134 @@ dialog::backdrop {
   inset-block-start: clamp(8px, 0.5vw + 6px, 16px);
   inset-inline-end: clamp(8px, 0.5vw + 6px, 16px);
   margin-block-start: calc(clamp(16px, 1.25vw + 12px, 36px) * -1);
-  justify-self: flex-end;
+  place-self: flex-start flex-end;
 }"
 `;
 
-exports[`getComponentCss() should return correct css for isOpen: true, position: end, hasHeader: false, hasFooter: true, hasSubFooter: true, theme: light 1`] = `
+exports[`getComponentCss() should return correct css for isOpen: true, position: end, hasHeader: false, hasFooter: true, hasSubFooter: true, footerBehavior: fixed, theme: light 1`] = `
+":host {
+  display: block;
+  --pds-internal-grid-outer-column: calc(clamp(32px, 2.75vw + 23px, 76px) - clamp(16px, 1.25vw + 12px, 36px)) !important;
+  --pds-internal-grid-margin: calc(clamp(32px, 2.75vw + 23px, 76px) * -1) !important;
+  --pds-internal-grid-width-min: auto !important;
+  --pds-internal-grid-width-max: none !important;
+  color-scheme: light dark !important;
+}
+:host([hidden]) {
+  display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
+slot {
+  display: block;
+}
+slot:first-of-type {
+  grid-row-start: 1;
+}
+slot:not([name]) {
+  grid-column: 2/3;
+  z-index: 0;
+}
+slot[name=footer] {
+  position: sticky;
+  bottom: -.1px;
+  transform: translateZ(0);
+  padding: 16px clamp(32px, 2.75vw + 23px, 76px);
+  margin-block: -16px -16px;
+  background: #FFF;
+  clip-path: inset(-20px 0 0 0);
+  transition: box-shadow var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  grid-column: 1/-1;
+  z-index: 2;
+  grid-row: 2;
+}
+slot[name=sub-footer] {
+  grid-column: 2/3;
+  z-index: 1;
+}
+slot[name=footer][data-stuck] {
+  box-shadow: rgba(204, 204, 204, 0.35) 0 -5px 10px;
+}
+dialog {
+  position: fixed;
+  inset: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  width: 100dvw;
+  height: 100dvh;
+  max-width: 100dvw;
+  max-height: 100dvh;
+  overflow: hidden;
+  display: block;
+  outline: 0;
+  z-index: 9999999;
+  visibility: inherit;
+  pointer-events: auto;
+  background: rgba(1, 2, 5, 0.67);
+  -webkit-backdrop-filter: blur(32px);
+  backdrop-filter: blur(32px);
+  transition: visibility 0s linear var(--p-transition-duration, 0s), background-color var(--p-transition-duration, 0.6s) cubic-bezier(0,0,0.2,1), -webkit-backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0,0,0.2,1), backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0,0,0.2,1);
+}
+dialog::backdrop {
+  display: none;
+}
+@supports (transition-behavior: allow-discrete) {
+  dialog {
+    transition: visibility 0s linear var(--p-transition-duration, 0s), background-color var(--p-transition-duration, 0.6s) cubic-bezier(0,0,0.2,1), -webkit-backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0,0,0.2,1), backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0,0,0.2,1), overlay var(--p-transition-duration, 0.6s) cubic-bezier(0,0,0.2,1) allow-discrete;
+  }
+}
+
+.scroller {
+  position: absolute;
+  isolation: isolate;
+  display: grid;
+  inset-block: 0;
+  inset-inline-end: 0;
+  overflow: hidden auto;
+  overscroll-behavior-y: none;
+  background: rgba(255,255,255,.01);
+  opacity: 1;
+  transform: initial;
+  transition: opacity var(--p-transition-duration, 0.4s) cubic-bezier(0,0,0.2,1), transform var(--p-transition-duration, 0.4s) cubic-bezier(0,0,0.2,1);
+}
+.scroller:focus-visible {
+  outline: none;
+}
+.flyout {
+  display: grid;
+  grid-template: auto/clamp(8px, 0.5vw + 6px, 16px) auto clamp(8px, 0.5vw + 6px, 16px);
+  padding-block: calc(clamp(8px, 0.5vw + 6px, 16px) + clamp(16px, 1.25vw + 12px, 36px));
+  row-gap: clamp(16px, 1.25vw + 12px, 36px);
+  column-gap: calc(clamp(32px, 2.75vw + 23px, 76px) - clamp(8px, 0.5vw + 6px, 16px));
+  align-content: flex-start;
+  color: #010205;
+  background: #FFF;
+  width: var(--p-flyout-width,auto);
+  min-width: 320px;
+  max-width: var(--p-flyout-max-width,1180px);
+  grid-template-rows: 1fr;
+}
+.flyout::before {
+  content: "";
+  min-height: calc(100dvh - calc(clamp(8px, 0.5vw + 6px, 16px) + clamp(16px, 1.25vw + 12px, 36px)));
+  grid-area: 1/1/3/-1;
+  pointer-events: none;
+}
+.dismiss {
+  --p-internal-button-scaling: 0;
+  grid-area: 1/3;
+  z-index: 4;
+  position: sticky;
+  inset-block-start: clamp(8px, 0.5vw + 6px, 16px);
+  inset-inline-end: clamp(8px, 0.5vw + 6px, 16px);
+  margin-block-start: calc(clamp(16px, 1.25vw + 12px, 36px) * -1);
+  place-self: flex-start flex-end;
+}"
+`;
+
+exports[`getComponentCss() should return correct css for isOpen: true, position: end, hasHeader: false, hasFooter: true, hasSubFooter: true, footerBehavior: sticky, theme: light 1`] = `
 ":host {
   display: block;
   --pds-internal-grid-outer-column: calc(clamp(32px, 2.75vw + 23px, 76px) - clamp(16px, 1.25vw + 12px, 36px)) !important;
@@ -1648,6 +2109,7 @@ dialog::backdrop {
 
 .scroller {
   position: absolute;
+  isolation: isolate;
   display: grid;
   inset-block: 0;
   inset-inline-end: 0;
@@ -1656,8 +2118,7 @@ dialog::backdrop {
   background: rgba(255,255,255,.01);
   opacity: 1;
   transform: initial;
-  margin-inline-end: 0;
-  transition: opacity var(--p-transition-duration, 0.4s) cubic-bezier(0,0,0.2,1), transform var(--p-transition-duration, 0.4s) cubic-bezier(0,0,0.2,1), margin-inline-end 0s linear var(--p-transition-duration, 1ms);
+  transition: opacity var(--p-transition-duration, 0.4s) cubic-bezier(0,0,0.2,1), transform var(--p-transition-duration, 0.4s) cubic-bezier(0,0,0.2,1);
 }
 .scroller:focus-visible {
   outline: none;
@@ -1683,11 +2144,542 @@ dialog::backdrop {
   inset-block-start: clamp(8px, 0.5vw + 6px, 16px);
   inset-inline-end: clamp(8px, 0.5vw + 6px, 16px);
   margin-block-start: calc(clamp(16px, 1.25vw + 12px, 36px) * -1);
-  justify-self: flex-end;
+  place-self: flex-start flex-end;
 }"
 `;
 
-exports[`getComponentCss() should return correct css for isOpen: true, position: end, hasHeader: true, hasFooter: true, hasSubFooter: true, theme: light 1`] = `
+exports[`getComponentCss() should return correct css for isOpen: true, position: end, hasHeader: true, hasFooter: false, hasSubFooter: false, footerBehavior: fixed, theme: light 1`] = `
+":host {
+  display: block;
+  --pds-internal-grid-outer-column: calc(clamp(32px, 2.75vw + 23px, 76px) - clamp(16px, 1.25vw + 12px, 36px)) !important;
+  --pds-internal-grid-margin: calc(clamp(32px, 2.75vw + 23px, 76px) * -1) !important;
+  --pds-internal-grid-width-min: auto !important;
+  --pds-internal-grid-width-max: none !important;
+  color-scheme: light dark !important;
+}
+:host([hidden]) {
+  display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
+slot {
+  display: block;
+}
+slot:first-of-type {
+  grid-row-start: 1;
+}
+slot:not([name]) {
+  grid-column: 2/3;
+  z-index: 0;
+  grid-row: 2;
+}
+slot[name=header] {
+  position: sticky;
+  top: -.1px;
+  transform: translateZ(0);
+  padding: 16px clamp(32px, 2.75vw + 23px, 76px);
+  margin-block: calc((clamp(8px, 0.5vw + 6px, 16px) + clamp(16px, 1.25vw + 12px, 36px)) * -1) -16px;
+  background: #FFF;
+  clip-path: inset(0 0 -20px 0);
+  transition: box-shadow var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  grid-column: 1/-1;
+  z-index: 3;
+  grid-row: 1;
+  margin-block-start: 0;
+}
+slot[name=header][data-stuck] {
+  box-shadow: rgba(204, 204, 204, 0.35) 0 5px 10px;
+}
+dialog {
+  position: fixed;
+  inset: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  width: 100dvw;
+  height: 100dvh;
+  max-width: 100dvw;
+  max-height: 100dvh;
+  overflow: hidden;
+  display: block;
+  outline: 0;
+  z-index: 9999999;
+  visibility: inherit;
+  pointer-events: auto;
+  background: rgba(1, 2, 5, 0.67);
+  -webkit-backdrop-filter: blur(32px);
+  backdrop-filter: blur(32px);
+  transition: visibility 0s linear var(--p-transition-duration, 0s), background-color var(--p-transition-duration, 0.6s) cubic-bezier(0,0,0.2,1), -webkit-backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0,0,0.2,1), backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0,0,0.2,1);
+}
+dialog::backdrop {
+  display: none;
+}
+@supports (transition-behavior: allow-discrete) {
+  dialog {
+    transition: visibility 0s linear var(--p-transition-duration, 0s), background-color var(--p-transition-duration, 0.6s) cubic-bezier(0,0,0.2,1), -webkit-backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0,0,0.2,1), backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0,0,0.2,1), overlay var(--p-transition-duration, 0.6s) cubic-bezier(0,0,0.2,1) allow-discrete;
+  }
+}
+
+.scroller {
+  position: absolute;
+  isolation: isolate;
+  display: grid;
+  inset-block: 0;
+  inset-inline-end: 0;
+  overflow: hidden auto;
+  overscroll-behavior-y: none;
+  background: rgba(255,255,255,.01);
+  opacity: 1;
+  transform: initial;
+  transition: opacity var(--p-transition-duration, 0.4s) cubic-bezier(0,0,0.2,1), transform var(--p-transition-duration, 0.4s) cubic-bezier(0,0,0.2,1);
+}
+.scroller:focus-visible {
+  outline: none;
+}
+.flyout {
+  display: grid;
+  grid-template: auto/clamp(8px, 0.5vw + 6px, 16px) auto clamp(8px, 0.5vw + 6px, 16px);
+  padding-block: calc(clamp(8px, 0.5vw + 6px, 16px) + clamp(16px, 1.25vw + 12px, 36px));
+  row-gap: clamp(16px, 1.25vw + 12px, 36px);
+  column-gap: calc(clamp(32px, 2.75vw + 23px, 76px) - clamp(8px, 0.5vw + 6px, 16px));
+  align-content: flex-start;
+  color: #010205;
+  background: #FFF;
+  width: var(--p-flyout-width,auto);
+  min-width: 320px;
+  max-width: var(--p-flyout-max-width,1180px);
+  padding-block-start: 0;
+  padding-block-end: 0;
+  grid-template-rows: auto 1fr auto;
+}
+.flyout::before {
+  content: "";
+  min-height: 100dvh;
+  grid-area: 1/1/4/-1;
+  pointer-events: none;
+}
+.dismiss {
+  --p-internal-button-scaling: 0;
+  grid-area: 1/3;
+  z-index: 4;
+  position: sticky;
+  inset-block-start: clamp(8px, 0.5vw + 6px, 16px);
+  inset-inline-end: clamp(8px, 0.5vw + 6px, 16px);
+  margin-block-start: calc(clamp(16px, 1.25vw + 12px, 36px) * -1);
+  place-self: flex-start flex-end;
+}"
+`;
+
+exports[`getComponentCss() should return correct css for isOpen: true, position: end, hasHeader: true, hasFooter: false, hasSubFooter: true, footerBehavior: fixed, theme: light 1`] = `
+":host {
+  display: block;
+  --pds-internal-grid-outer-column: calc(clamp(32px, 2.75vw + 23px, 76px) - clamp(16px, 1.25vw + 12px, 36px)) !important;
+  --pds-internal-grid-margin: calc(clamp(32px, 2.75vw + 23px, 76px) * -1) !important;
+  --pds-internal-grid-width-min: auto !important;
+  --pds-internal-grid-width-max: none !important;
+  color-scheme: light dark !important;
+}
+:host([hidden]) {
+  display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
+slot {
+  display: block;
+}
+slot:first-of-type {
+  grid-row-start: 1;
+}
+slot:not([name]) {
+  grid-column: 2/3;
+  z-index: 0;
+  grid-row: 2;
+}
+slot[name=header] {
+  position: sticky;
+  top: -.1px;
+  transform: translateZ(0);
+  padding: 16px clamp(32px, 2.75vw + 23px, 76px);
+  margin-block: calc((clamp(8px, 0.5vw + 6px, 16px) + clamp(16px, 1.25vw + 12px, 36px)) * -1) -16px;
+  background: #FFF;
+  clip-path: inset(0 0 -20px 0);
+  transition: box-shadow var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  grid-column: 1/-1;
+  z-index: 3;
+  grid-row: 1;
+  margin-block-start: 0;
+}
+slot[name=sub-footer] {
+  grid-column: 2/3;
+  z-index: 1;
+}
+slot[name=header][data-stuck] {
+  box-shadow: rgba(204, 204, 204, 0.35) 0 5px 10px;
+}
+dialog {
+  position: fixed;
+  inset: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  width: 100dvw;
+  height: 100dvh;
+  max-width: 100dvw;
+  max-height: 100dvh;
+  overflow: hidden;
+  display: block;
+  outline: 0;
+  z-index: 9999999;
+  visibility: inherit;
+  pointer-events: auto;
+  background: rgba(1, 2, 5, 0.67);
+  -webkit-backdrop-filter: blur(32px);
+  backdrop-filter: blur(32px);
+  transition: visibility 0s linear var(--p-transition-duration, 0s), background-color var(--p-transition-duration, 0.6s) cubic-bezier(0,0,0.2,1), -webkit-backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0,0,0.2,1), backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0,0,0.2,1);
+}
+dialog::backdrop {
+  display: none;
+}
+@supports (transition-behavior: allow-discrete) {
+  dialog {
+    transition: visibility 0s linear var(--p-transition-duration, 0s), background-color var(--p-transition-duration, 0.6s) cubic-bezier(0,0,0.2,1), -webkit-backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0,0,0.2,1), backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0,0,0.2,1), overlay var(--p-transition-duration, 0.6s) cubic-bezier(0,0,0.2,1) allow-discrete;
+  }
+}
+
+.scroller {
+  position: absolute;
+  isolation: isolate;
+  display: grid;
+  inset-block: 0;
+  inset-inline-end: 0;
+  overflow: hidden auto;
+  overscroll-behavior-y: none;
+  background: rgba(255,255,255,.01);
+  opacity: 1;
+  transform: initial;
+  transition: opacity var(--p-transition-duration, 0.4s) cubic-bezier(0,0,0.2,1), transform var(--p-transition-duration, 0.4s) cubic-bezier(0,0,0.2,1);
+}
+.scroller:focus-visible {
+  outline: none;
+}
+.flyout {
+  display: grid;
+  grid-template: auto/clamp(8px, 0.5vw + 6px, 16px) auto clamp(8px, 0.5vw + 6px, 16px);
+  padding-block: calc(clamp(8px, 0.5vw + 6px, 16px) + clamp(16px, 1.25vw + 12px, 36px));
+  row-gap: clamp(16px, 1.25vw + 12px, 36px);
+  column-gap: calc(clamp(32px, 2.75vw + 23px, 76px) - clamp(8px, 0.5vw + 6px, 16px));
+  align-content: flex-start;
+  color: #010205;
+  background: #FFF;
+  width: var(--p-flyout-width,auto);
+  min-width: 320px;
+  max-width: var(--p-flyout-max-width,1180px);
+  padding-block-start: 0;
+  grid-template-rows: auto 1fr auto;
+}
+.flyout::before {
+  content: "";
+  min-height: 100dvh;
+  grid-area: 1/1/4/-1;
+  pointer-events: none;
+}
+.dismiss {
+  --p-internal-button-scaling: 0;
+  grid-area: 1/3;
+  z-index: 4;
+  position: sticky;
+  inset-block-start: clamp(8px, 0.5vw + 6px, 16px);
+  inset-inline-end: clamp(8px, 0.5vw + 6px, 16px);
+  margin-block-start: calc(clamp(16px, 1.25vw + 12px, 36px) * -1);
+  place-self: flex-start flex-end;
+}"
+`;
+
+exports[`getComponentCss() should return correct css for isOpen: true, position: end, hasHeader: true, hasFooter: true, hasSubFooter: false, footerBehavior: fixed, theme: light 1`] = `
+":host {
+  display: block;
+  --pds-internal-grid-outer-column: calc(clamp(32px, 2.75vw + 23px, 76px) - clamp(16px, 1.25vw + 12px, 36px)) !important;
+  --pds-internal-grid-margin: calc(clamp(32px, 2.75vw + 23px, 76px) * -1) !important;
+  --pds-internal-grid-width-min: auto !important;
+  --pds-internal-grid-width-max: none !important;
+  color-scheme: light dark !important;
+}
+:host([hidden]) {
+  display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
+slot {
+  display: block;
+}
+slot:first-of-type {
+  grid-row-start: 1;
+}
+slot:not([name]) {
+  grid-column: 2/3;
+  z-index: 0;
+  grid-row: 2;
+}
+slot[name=header] {
+  position: sticky;
+  top: -.1px;
+  transform: translateZ(0);
+  padding: 16px clamp(32px, 2.75vw + 23px, 76px);
+  margin-block: calc((clamp(8px, 0.5vw + 6px, 16px) + clamp(16px, 1.25vw + 12px, 36px)) * -1) -16px;
+  background: #FFF;
+  clip-path: inset(0 0 -20px 0);
+  transition: box-shadow var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  grid-column: 1/-1;
+  z-index: 3;
+  grid-row: 1;
+  margin-block-start: 0;
+}
+slot[name=footer] {
+  position: sticky;
+  bottom: -.1px;
+  transform: translateZ(0);
+  padding: 16px clamp(32px, 2.75vw + 23px, 76px);
+  margin-block: -16px -16px;
+  background: #FFF;
+  clip-path: inset(-20px 0 0 0);
+  transition: box-shadow var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  grid-column: 1/-1;
+  z-index: 2;
+  grid-row: 3;
+  margin-block-end: .3px;
+}
+slot[name=footer][data-stuck] {
+  box-shadow: rgba(204, 204, 204, 0.35) 0 -5px 10px;
+}
+slot[name=header][data-stuck] {
+  box-shadow: rgba(204, 204, 204, 0.35) 0 5px 10px;
+}
+dialog {
+  position: fixed;
+  inset: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  width: 100dvw;
+  height: 100dvh;
+  max-width: 100dvw;
+  max-height: 100dvh;
+  overflow: hidden;
+  display: block;
+  outline: 0;
+  z-index: 9999999;
+  visibility: inherit;
+  pointer-events: auto;
+  background: rgba(1, 2, 5, 0.67);
+  -webkit-backdrop-filter: blur(32px);
+  backdrop-filter: blur(32px);
+  transition: visibility 0s linear var(--p-transition-duration, 0s), background-color var(--p-transition-duration, 0.6s) cubic-bezier(0,0,0.2,1), -webkit-backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0,0,0.2,1), backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0,0,0.2,1);
+}
+dialog::backdrop {
+  display: none;
+}
+@supports (transition-behavior: allow-discrete) {
+  dialog {
+    transition: visibility 0s linear var(--p-transition-duration, 0s), background-color var(--p-transition-duration, 0.6s) cubic-bezier(0,0,0.2,1), -webkit-backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0,0,0.2,1), backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0,0,0.2,1), overlay var(--p-transition-duration, 0.6s) cubic-bezier(0,0,0.2,1) allow-discrete;
+  }
+}
+
+.scroller {
+  position: absolute;
+  isolation: isolate;
+  display: grid;
+  inset-block: 0;
+  inset-inline-end: 0;
+  overflow: hidden auto;
+  overscroll-behavior-y: none;
+  background: rgba(255,255,255,.01);
+  opacity: 1;
+  transform: initial;
+  transition: opacity var(--p-transition-duration, 0.4s) cubic-bezier(0,0,0.2,1), transform var(--p-transition-duration, 0.4s) cubic-bezier(0,0,0.2,1);
+}
+.scroller:focus-visible {
+  outline: none;
+}
+.flyout {
+  display: grid;
+  grid-template: auto/clamp(8px, 0.5vw + 6px, 16px) auto clamp(8px, 0.5vw + 6px, 16px);
+  padding-block: calc(clamp(8px, 0.5vw + 6px, 16px) + clamp(16px, 1.25vw + 12px, 36px));
+  row-gap: clamp(16px, 1.25vw + 12px, 36px);
+  column-gap: calc(clamp(32px, 2.75vw + 23px, 76px) - clamp(8px, 0.5vw + 6px, 16px));
+  align-content: flex-start;
+  color: #010205;
+  background: #FFF;
+  width: var(--p-flyout-width,auto);
+  min-width: 320px;
+  max-width: var(--p-flyout-max-width,1180px);
+  padding-block-start: 0;
+  padding-block-end: 0;
+  grid-template-rows: auto 1fr auto;
+}
+.flyout::before {
+  content: "";
+  min-height: 100dvh;
+  grid-area: 1/1/4/-1;
+  pointer-events: none;
+}
+.dismiss {
+  --p-internal-button-scaling: 0;
+  grid-area: 1/3;
+  z-index: 4;
+  position: sticky;
+  inset-block-start: clamp(8px, 0.5vw + 6px, 16px);
+  inset-inline-end: clamp(8px, 0.5vw + 6px, 16px);
+  margin-block-start: calc(clamp(16px, 1.25vw + 12px, 36px) * -1);
+  place-self: flex-start flex-end;
+}"
+`;
+
+exports[`getComponentCss() should return correct css for isOpen: true, position: end, hasHeader: true, hasFooter: true, hasSubFooter: true, footerBehavior: fixed, theme: light 1`] = `
+":host {
+  display: block;
+  --pds-internal-grid-outer-column: calc(clamp(32px, 2.75vw + 23px, 76px) - clamp(16px, 1.25vw + 12px, 36px)) !important;
+  --pds-internal-grid-margin: calc(clamp(32px, 2.75vw + 23px, 76px) * -1) !important;
+  --pds-internal-grid-width-min: auto !important;
+  --pds-internal-grid-width-max: none !important;
+  color-scheme: light dark !important;
+}
+:host([hidden]) {
+  display: none !important;
+}
+:not(:defined,[data-ssr]) {
+  visibility: hidden;
+}
+slot {
+  display: block;
+}
+slot:first-of-type {
+  grid-row-start: 1;
+}
+slot:not([name]) {
+  grid-column: 2/3;
+  z-index: 0;
+  grid-row: 2;
+}
+slot[name=header] {
+  position: sticky;
+  top: -.1px;
+  transform: translateZ(0);
+  padding: 16px clamp(32px, 2.75vw + 23px, 76px);
+  margin-block: calc((clamp(8px, 0.5vw + 6px, 16px) + clamp(16px, 1.25vw + 12px, 36px)) * -1) -16px;
+  background: #FFF;
+  clip-path: inset(0 0 -20px 0);
+  transition: box-shadow var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  grid-column: 1/-1;
+  z-index: 3;
+  grid-row: 1;
+  margin-block-start: 0;
+}
+slot[name=footer] {
+  position: sticky;
+  bottom: -.1px;
+  transform: translateZ(0);
+  padding: 16px clamp(32px, 2.75vw + 23px, 76px);
+  margin-block: -16px -16px;
+  background: #FFF;
+  clip-path: inset(-20px 0 0 0);
+  transition: box-shadow var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
+  grid-column: 1/-1;
+  z-index: 2;
+  grid-row: 3;
+}
+slot[name=sub-footer] {
+  grid-column: 2/3;
+  z-index: 1;
+}
+slot[name=footer][data-stuck] {
+  box-shadow: rgba(204, 204, 204, 0.35) 0 -5px 10px;
+}
+slot[name=header][data-stuck] {
+  box-shadow: rgba(204, 204, 204, 0.35) 0 5px 10px;
+}
+dialog {
+  position: fixed;
+  inset: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  width: 100dvw;
+  height: 100dvh;
+  max-width: 100dvw;
+  max-height: 100dvh;
+  overflow: hidden;
+  display: block;
+  outline: 0;
+  z-index: 9999999;
+  visibility: inherit;
+  pointer-events: auto;
+  background: rgba(1, 2, 5, 0.67);
+  -webkit-backdrop-filter: blur(32px);
+  backdrop-filter: blur(32px);
+  transition: visibility 0s linear var(--p-transition-duration, 0s), background-color var(--p-transition-duration, 0.6s) cubic-bezier(0,0,0.2,1), -webkit-backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0,0,0.2,1), backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0,0,0.2,1);
+}
+dialog::backdrop {
+  display: none;
+}
+@supports (transition-behavior: allow-discrete) {
+  dialog {
+    transition: visibility 0s linear var(--p-transition-duration, 0s), background-color var(--p-transition-duration, 0.6s) cubic-bezier(0,0,0.2,1), -webkit-backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0,0,0.2,1), backdrop-filter var(--p-transition-duration, 0.6s) cubic-bezier(0,0,0.2,1), overlay var(--p-transition-duration, 0.6s) cubic-bezier(0,0,0.2,1) allow-discrete;
+  }
+}
+
+.scroller {
+  position: absolute;
+  isolation: isolate;
+  display: grid;
+  inset-block: 0;
+  inset-inline-end: 0;
+  overflow: hidden auto;
+  overscroll-behavior-y: none;
+  background: rgba(255,255,255,.01);
+  opacity: 1;
+  transform: initial;
+  transition: opacity var(--p-transition-duration, 0.4s) cubic-bezier(0,0,0.2,1), transform var(--p-transition-duration, 0.4s) cubic-bezier(0,0,0.2,1);
+}
+.scroller:focus-visible {
+  outline: none;
+}
+.flyout {
+  display: grid;
+  grid-template: auto/clamp(8px, 0.5vw + 6px, 16px) auto clamp(8px, 0.5vw + 6px, 16px);
+  padding-block: calc(clamp(8px, 0.5vw + 6px, 16px) + clamp(16px, 1.25vw + 12px, 36px));
+  row-gap: clamp(16px, 1.25vw + 12px, 36px);
+  column-gap: calc(clamp(32px, 2.75vw + 23px, 76px) - clamp(8px, 0.5vw + 6px, 16px));
+  align-content: flex-start;
+  color: #010205;
+  background: #FFF;
+  width: var(--p-flyout-width,auto);
+  min-width: 320px;
+  max-width: var(--p-flyout-max-width,1180px);
+  padding-block-start: 0;
+  grid-template-rows: auto 1fr auto;
+}
+.flyout::before {
+  content: "";
+  min-height: 100dvh;
+  grid-area: 1/1/4/-1;
+  pointer-events: none;
+}
+.dismiss {
+  --p-internal-button-scaling: 0;
+  grid-area: 1/3;
+  z-index: 4;
+  position: sticky;
+  inset-block-start: clamp(8px, 0.5vw + 6px, 16px);
+  inset-inline-end: clamp(8px, 0.5vw + 6px, 16px);
+  margin-block-start: calc(clamp(16px, 1.25vw + 12px, 36px) * -1);
+  place-self: flex-start flex-end;
+}"
+`;
+
+exports[`getComponentCss() should return correct css for isOpen: true, position: end, hasHeader: true, hasFooter: true, hasSubFooter: true, footerBehavior: sticky, theme: light 1`] = `
 ":host {
   display: block;
   --pds-internal-grid-outer-column: calc(clamp(32px, 2.75vw + 23px, 76px) - clamp(16px, 1.25vw + 12px, 36px)) !important;
@@ -1723,6 +2715,7 @@ slot[name=header] {
   transition: box-shadow var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
   grid-column: 1/-1;
   z-index: 3;
+  margin-block-start: 0;
 }
 slot[name=footer] {
   position: sticky;
@@ -1778,6 +2771,7 @@ dialog::backdrop {
 
 .scroller {
   position: absolute;
+  isolation: isolate;
   display: grid;
   inset-block: 0;
   inset-inline-end: 0;
@@ -1786,8 +2780,7 @@ dialog::backdrop {
   background: rgba(255,255,255,.01);
   opacity: 1;
   transform: initial;
-  margin-inline-end: 0;
-  transition: opacity var(--p-transition-duration, 0.4s) cubic-bezier(0,0,0.2,1), transform var(--p-transition-duration, 0.4s) cubic-bezier(0,0,0.2,1), margin-inline-end 0s linear var(--p-transition-duration, 1ms);
+  transition: opacity var(--p-transition-duration, 0.4s) cubic-bezier(0,0,0.2,1), transform var(--p-transition-duration, 0.4s) cubic-bezier(0,0,0.2,1);
 }
 .scroller:focus-visible {
   outline: none;
@@ -1804,6 +2797,7 @@ dialog::backdrop {
   width: var(--p-flyout-width,auto);
   min-width: 320px;
   max-width: var(--p-flyout-max-width,1180px);
+  padding-block-start: 0;
 }
 .dismiss {
   --p-internal-button-scaling: 0;
@@ -1813,11 +2807,11 @@ dialog::backdrop {
   inset-block-start: clamp(8px, 0.5vw + 6px, 16px);
   inset-inline-end: clamp(8px, 0.5vw + 6px, 16px);
   margin-block-start: calc(clamp(16px, 1.25vw + 12px, 36px) * -1);
-  justify-self: flex-end;
+  place-self: flex-start flex-end;
 }"
 `;
 
-exports[`getComponentCss() should return correct css for isOpen: true, position: start, hasHeader: false, hasFooter: false, hasSubFooter: false, theme: dark 1`] = `
+exports[`getComponentCss() should return correct css for isOpen: true, position: start, hasHeader: false, hasFooter: false, hasSubFooter: false, footerBehavior: sticky, theme: dark 1`] = `
 ":host {
   display: block;
   --pds-internal-grid-outer-column: calc(clamp(32px, 2.75vw + 23px, 76px) - clamp(16px, 1.25vw + 12px, 36px)) !important;
@@ -1874,6 +2868,7 @@ dialog::backdrop {
 
 .scroller {
   position: absolute;
+  isolation: isolate;
   display: grid;
   inset-block: 0;
   inset-inline-start: 0;
@@ -1882,7 +2877,7 @@ dialog::backdrop {
   background: rgba(0,0,0,.01);
   opacity: 1;
   transform: initial;
-  transition: opacity var(--p-transition-duration, 0.4s) cubic-bezier(0,0,0.2,1), transform var(--p-transition-duration, 0.4s) cubic-bezier(0,0,0.2,1), margin-inline-end 0s linear var(--p-transition-duration, 1ms);
+  transition: opacity var(--p-transition-duration, 0.4s) cubic-bezier(0,0,0.2,1), transform var(--p-transition-duration, 0.4s) cubic-bezier(0,0,0.2,1);
 }
 .scroller:focus-visible {
   outline: none;
@@ -1908,11 +2903,11 @@ dialog::backdrop {
   inset-block-start: clamp(8px, 0.5vw + 6px, 16px);
   inset-inline-end: clamp(8px, 0.5vw + 6px, 16px);
   margin-block-start: calc(clamp(16px, 1.25vw + 12px, 36px) * -1);
-  justify-self: flex-end;
+  place-self: flex-start flex-end;
 }"
 `;
 
-exports[`getComponentCss() should return correct css for isOpen: true, position: start, hasHeader: false, hasFooter: false, hasSubFooter: false, theme: light 1`] = `
+exports[`getComponentCss() should return correct css for isOpen: true, position: start, hasHeader: false, hasFooter: false, hasSubFooter: false, footerBehavior: sticky, theme: light 1`] = `
 ":host {
   display: block;
   --pds-internal-grid-outer-column: calc(clamp(32px, 2.75vw + 23px, 76px) - clamp(16px, 1.25vw + 12px, 36px)) !important;
@@ -1969,6 +2964,7 @@ dialog::backdrop {
 
 .scroller {
   position: absolute;
+  isolation: isolate;
   display: grid;
   inset-block: 0;
   inset-inline-start: 0;
@@ -1977,7 +2973,7 @@ dialog::backdrop {
   background: rgba(255,255,255,.01);
   opacity: 1;
   transform: initial;
-  transition: opacity var(--p-transition-duration, 0.4s) cubic-bezier(0,0,0.2,1), transform var(--p-transition-duration, 0.4s) cubic-bezier(0,0,0.2,1), margin-inline-end 0s linear var(--p-transition-duration, 1ms);
+  transition: opacity var(--p-transition-duration, 0.4s) cubic-bezier(0,0,0.2,1), transform var(--p-transition-duration, 0.4s) cubic-bezier(0,0,0.2,1);
 }
 .scroller:focus-visible {
   outline: none;
@@ -2003,11 +2999,11 @@ dialog::backdrop {
   inset-block-start: clamp(8px, 0.5vw + 6px, 16px);
   inset-inline-end: clamp(8px, 0.5vw + 6px, 16px);
   margin-block-start: calc(clamp(16px, 1.25vw + 12px, 36px) * -1);
-  justify-self: flex-end;
+  place-self: flex-start flex-end;
 }"
 `;
 
-exports[`getComponentCss() should return correct css for isOpen: true, position: start, hasHeader: false, hasFooter: true, hasSubFooter: false, theme: dark 1`] = `
+exports[`getComponentCss() should return correct css for isOpen: true, position: start, hasHeader: false, hasFooter: true, hasSubFooter: false, footerBehavior: sticky, theme: dark 1`] = `
 ":host {
   display: block;
   --pds-internal-grid-outer-column: calc(clamp(32px, 2.75vw + 23px, 76px) - clamp(16px, 1.25vw + 12px, 36px)) !important;
@@ -2079,6 +3075,7 @@ dialog::backdrop {
 
 .scroller {
   position: absolute;
+  isolation: isolate;
   display: grid;
   inset-block: 0;
   inset-inline-start: 0;
@@ -2087,7 +3084,7 @@ dialog::backdrop {
   background: rgba(0,0,0,.01);
   opacity: 1;
   transform: initial;
-  transition: opacity var(--p-transition-duration, 0.4s) cubic-bezier(0,0,0.2,1), transform var(--p-transition-duration, 0.4s) cubic-bezier(0,0,0.2,1), margin-inline-end 0s linear var(--p-transition-duration, 1ms);
+  transition: opacity var(--p-transition-duration, 0.4s) cubic-bezier(0,0,0.2,1), transform var(--p-transition-duration, 0.4s) cubic-bezier(0,0,0.2,1);
 }
 .scroller:focus-visible {
   outline: none;
@@ -2113,11 +3110,11 @@ dialog::backdrop {
   inset-block-start: clamp(8px, 0.5vw + 6px, 16px);
   inset-inline-end: clamp(8px, 0.5vw + 6px, 16px);
   margin-block-start: calc(clamp(16px, 1.25vw + 12px, 36px) * -1);
-  justify-self: flex-end;
+  place-self: flex-start flex-end;
 }"
 `;
 
-exports[`getComponentCss() should return correct css for isOpen: true, position: start, hasHeader: false, hasFooter: true, hasSubFooter: false, theme: light 1`] = `
+exports[`getComponentCss() should return correct css for isOpen: true, position: start, hasHeader: false, hasFooter: true, hasSubFooter: false, footerBehavior: sticky, theme: light 1`] = `
 ":host {
   display: block;
   --pds-internal-grid-outer-column: calc(clamp(32px, 2.75vw + 23px, 76px) - clamp(16px, 1.25vw + 12px, 36px)) !important;
@@ -2189,6 +3186,7 @@ dialog::backdrop {
 
 .scroller {
   position: absolute;
+  isolation: isolate;
   display: grid;
   inset-block: 0;
   inset-inline-start: 0;
@@ -2197,7 +3195,7 @@ dialog::backdrop {
   background: rgba(255,255,255,.01);
   opacity: 1;
   transform: initial;
-  transition: opacity var(--p-transition-duration, 0.4s) cubic-bezier(0,0,0.2,1), transform var(--p-transition-duration, 0.4s) cubic-bezier(0,0,0.2,1), margin-inline-end 0s linear var(--p-transition-duration, 1ms);
+  transition: opacity var(--p-transition-duration, 0.4s) cubic-bezier(0,0,0.2,1), transform var(--p-transition-duration, 0.4s) cubic-bezier(0,0,0.2,1);
 }
 .scroller:focus-visible {
   outline: none;
@@ -2223,11 +3221,11 @@ dialog::backdrop {
   inset-block-start: clamp(8px, 0.5vw + 6px, 16px);
   inset-inline-end: clamp(8px, 0.5vw + 6px, 16px);
   margin-block-start: calc(clamp(16px, 1.25vw + 12px, 36px) * -1);
-  justify-self: flex-end;
+  place-self: flex-start flex-end;
 }"
 `;
 
-exports[`getComponentCss() should return correct css for isOpen: true, position: start, hasHeader: false, hasFooter: true, hasSubFooter: true, theme: light 1`] = `
+exports[`getComponentCss() should return correct css for isOpen: true, position: start, hasHeader: false, hasFooter: true, hasSubFooter: true, footerBehavior: sticky, theme: light 1`] = `
 ":host {
   display: block;
   --pds-internal-grid-outer-column: calc(clamp(32px, 2.75vw + 23px, 76px) - clamp(16px, 1.25vw + 12px, 36px)) !important;
@@ -2303,6 +3301,7 @@ dialog::backdrop {
 
 .scroller {
   position: absolute;
+  isolation: isolate;
   display: grid;
   inset-block: 0;
   inset-inline-start: 0;
@@ -2311,7 +3310,7 @@ dialog::backdrop {
   background: rgba(255,255,255,.01);
   opacity: 1;
   transform: initial;
-  transition: opacity var(--p-transition-duration, 0.4s) cubic-bezier(0,0,0.2,1), transform var(--p-transition-duration, 0.4s) cubic-bezier(0,0,0.2,1), margin-inline-end 0s linear var(--p-transition-duration, 1ms);
+  transition: opacity var(--p-transition-duration, 0.4s) cubic-bezier(0,0,0.2,1), transform var(--p-transition-duration, 0.4s) cubic-bezier(0,0,0.2,1);
 }
 .scroller:focus-visible {
   outline: none;
@@ -2337,6 +3336,6 @@ dialog::backdrop {
   inset-block-start: clamp(8px, 0.5vw + 6px, 16px);
   inset-inline-end: clamp(8px, 0.5vw + 6px, 16px);
   margin-block-start: calc(clamp(16px, 1.25vw + 12px, 36px) * -1);
-  justify-self: flex-end;
+  place-self: flex-start flex-end;
 }"
 `;

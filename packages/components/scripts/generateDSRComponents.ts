@@ -488,7 +488,14 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
           // replace toggle icon className
           .replace(/className=\{\{ icon: true, 'icon--rotate': this\.props\.isOpen }}/, 'className="icon"')
           .replace(/this\.props\.currentValue\.length > 0/g, 'this.props.currentValue')
-          .replace(/getSelectedOptions\(this\.props\.multiSelectOptions\)\.length > 0/, 'false');
+          .replace(/getSelectedOptions\(this\.props\.multiSelectOptions\)\.length > 0/, 'false')
+          // TODO replace ElementInternals lifecycle callbacks (formAssociatedCallback, formDisabledCallback, formResetCallback, formStateRestoreCallback) completely
+          .replace(/@AttachInternals\(\)/, '')
+          .replace(/this\.props\.value = this\.props\.defaultValue;/, '')
+          .replace(/this\.props\.disabled = disabled;/, '')
+          .replace(/this\.props\.value = state.getAll\(this.props.name\) as string\[];/, '')
+          .replace(/formDisabledCallback\(disabled: boolean\)/, 'formDisabledCallback()')
+          .replace(/formStateRestoreCallback\(state: FormData\)/, 'formStateRestoreCallback()');
       } else if (tagName === 'p-multi-select-option') {
         newFileContent = newFileContent
           // remove any jsx since options are not visible in closed multi-select
@@ -514,7 +521,14 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
           )
           .replace(/<span className="sr-only"[^<]*<\/span>/, '')
           // .replace(/(SelectDropdownDirectionInternal)/, 'type $1')
-          .replace(/private searchTimeout: any\.Timeout \| number = null;/, '');
+          .replace(/private searchTimeout: any\.Timeout \| number = null;/, '')
+          // TODO replace ElementInternals lifecycle callbacks (formAssociatedCallback, formDisabledCallback, formResetCallback, formStateRestoreCallback) completely
+          .replace(/@AttachInternals\(\)/, '')
+          .replace(/this\.props\.value = this\.props\.defaultValue;/, '')
+          .replace(/this\.props\.disabled = disabled;/, '')
+          .replace(/this\.props\.value = state;/, '')
+          .replace(/formDisabledCallback\(disabled: boolean\)/, 'formDisabledCallback()')
+          .replace(/formStateRestoreCallback\(state: string\)/, 'formStateRestoreCallback()');
       } else if (tagName === 'p-select-option') {
         newFileContent = newFileContent.replace(/this\.theme/, 'this.props.theme');
       } else if (tagName === 'p-text-field-wrapper') {
@@ -616,7 +630,12 @@ $&`
           .replace(/autofocus/, 'autoFocus')
           .replace(/spellcheck/, 'spellCheck')
           .replace(/autocomplete/, 'autoComplete')
-          .replace(/this\.props\.value = '';/, '');
+          // TODO replace ElementInternals lifecycle callbacks (formAssociatedCallback, formDisabledCallback, formResetCallback, formStateRestoreCallback) completely
+          .replace(/this\.props\.value = this\.props\.defaultValue;/, '')
+          .replace(/this\.props\.disabled = disabled;/, '')
+          .replace(/this\.props\.value = state;/, '')
+          .replace(/formDisabledCallback\(disabled: boolean\)/, 'formDisabledCallback()')
+          .replace(/formStateRestoreCallback\(state: string\)/, 'formStateRestoreCallback()');
       } else if (tagName === 'p-canvas') {
         newFileContent = newFileContent
           .replace(
@@ -630,7 +649,11 @@ $&`
       } else if (tagName === 'p-checkbox') {
         newFileContent = newFileContent
           .replace(/@AttachInternals\(\)/, '')
-          .replace(/this\.props\.checked = false;/, '');
+          .replace(/this\.props\.checked = this\.props\.defaultChecked;/, '')
+          .replace(/this\.props\.disabled = disabled;/, '')
+          .replace(/this\.props\.checked = !!state;/, '')
+          .replace(/formDisabledCallback\(disabled: boolean\)/, 'formDisabledCallback()')
+          .replace(/formStateRestoreCallback\(state: string\)/, 'formStateRestoreCallback()');
       }
 
       return newFileContent;

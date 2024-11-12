@@ -22,7 +22,7 @@ import {
   validateProps,
 } from '../../utils';
 import { Component, Element, h, Host, type JSX, Listen, Prop } from '@stencil/core';
-import { getButtonAriaAttributes ,type  ButtonIcon } from './button-utils';
+import { getButtonAriaAttributes, type ButtonIcon } from './button-utils';
 import { getComponentCss } from './button-styles';
 import { loadingId, LoadingMessage } from '../common/loading-message/loading-message';
 import { ControllerHost, InitialLoadingController } from '../../controllers';
@@ -37,7 +37,7 @@ const propTypes: PropTypes<typeof Button> = {
   icon: AllowedTypes.string,
   iconSource: AllowedTypes.string,
   hideLabel: AllowedTypes.breakpoint('boolean'),
-  compact: AllowedTypes.boolean,
+  compact: AllowedTypes.breakpoint('boolean'),
   theme: AllowedTypes.oneOf<Theme>(THEMES),
   aria: AllowedTypes.aria<ButtonAriaAttribute>(BUTTON_ARIA_ATTRIBUTES),
 };
@@ -80,7 +80,7 @@ export class Button {
   @Prop() public hideLabel?: BreakpointCustomizable<boolean> = false;
 
   /** Displays as compact version. */
-  @Prop() public compact?: boolean = false;
+  @Prop() public compact?: BreakpointCustomizable<boolean> = false;
 
   /** Adapts the button color depending on the theme. */
   @Prop() public theme?: Theme = 'light';
