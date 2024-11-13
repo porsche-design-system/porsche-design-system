@@ -1653,7 +1653,7 @@ export namespace Components {
         /**
           * The name of the segmented-control.
          */
-        "name": string;
+        "name"?: string;
         /**
           * Adapts the segmented-control color depending on the theme.
          */
