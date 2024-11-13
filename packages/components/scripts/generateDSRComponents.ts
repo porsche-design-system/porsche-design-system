@@ -429,7 +429,14 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
         : child
     );`
           )
-          .replace(/{this\.props\.children}/, '{manipulatedChildren}');
+          .replace(/{this\.props\.children}/, '{manipulatedChildren}')
+          // TODO replace ElementInternals lifecycle callbacks (formAssociatedCallback, formDisabledCallback, formResetCallback, formStateRestoreCallback) completely
+          .replace(/@AttachInternals\(\)/, '')
+          .replace(/this\.props\.value = this\.props\.defaultValue;/, '')
+          .replace(/this\.props\.disabled = disabled;/, '')
+          .replace(/this\.props\.value = state;/, '')
+          .replace(/formDisabledCallback\(disabled: boolean\)/, 'formDisabledCallback()')
+          .replace(/formStateRestoreCallback\(state: string\)/, 'formStateRestoreCallback()');
       } else if (tagName === 'p-segmented-control-item') {
         newFileContent = newFileContent.replace(/!!this\.props\.innerHTML/, '!!children.length');
       } else if (tagName === 'p-stepper-horizontal') {
