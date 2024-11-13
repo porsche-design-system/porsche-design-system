@@ -104,6 +104,12 @@ input, ensuring compatibility with form behaviors. However, note that browser su
 To ensure proper submission of the form, it's required to provide an individual `name` prop to the `p-pin-code`
 component, enabling the `p-pin-code`'s value to be included in the form's data when it is submitted.
 
+<Notification heading="Attention" heading-tag="h2" state="warning">
+<code>p-pin-code</code> does not use a native input internally. As a result, it lacks access to native <code>ValidityState</code>
+properties and <code>validationMessage</code>, and it cannot display the native validation popover. This means validation behavior
+and error display will need to be implemented separately if required.
+</Notification>
+
 <Playground :frameworkMarkup="formExample" :config="config">
   <form @submit.prevent="onSubmit" >
     <p-pin-code :theme="theme" label="Some Label" name="pin-code"></p-pin-code>
