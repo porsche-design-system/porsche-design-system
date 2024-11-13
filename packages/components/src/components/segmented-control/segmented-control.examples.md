@@ -8,6 +8,12 @@ you could purely rely on the change event.
 
 Visually the `p-segmented-control` displays all options in equal size based on its largest option.
 
+<Notification heading="Attention" heading-tag="h2" state="warning">
+When the <code>p-segmented-control</code> component is used within a form, it utilizes the
+<a href="https://developer.mozilla.org/en-US/docs/Web/API/ElementInternals">ElementInternals</a> API, which has limited
+browser support.
+</Notification>
+
 <TableOfContents></TableOfContents>
 
 ## Basic
