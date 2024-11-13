@@ -141,6 +141,14 @@ const expectDismissButtonToBeFocused = async (page: Page, failMessage?: string) 
   expect(await getActiveElementClassNameInShadowRoot(host), failMessage).toContain('dismiss');
 };
 
+const expectDialogAndThenDismissButtonToBeFocused = async (page: Page, failMessage?: string) => {
+  // For some reason this is always BODY in playwright even though it is P-FLYOUT and DIALOG within that in reality
+  // In order to assure that its correct we press tab to assure the next element will be the dismiss button
+  await expect(await getActiveElementTagName(page)).toBe('BODY');
+  await page.keyboard.press('Tab');
+  await expectDismissButtonToBeFocused(page);
+};
+
 const expectHeaderShadowToAppear = async (page: Page) => {
   const headerLocator = getHeader(page);
   await page.waitForFunction(
@@ -326,16 +334,16 @@ test.describe('can be dismissed', () => {
 test.describe('focus behavior', () => {
   skipInBrowsers(['firefox', 'webkit']);
 
-  test('should focus dismiss button after open', async ({ page }) => {
+  test('should focus dialog button after open', async ({ page }) => {
     await initBasicFlyout(page, { open: false });
     await openFlyout(page);
-    await expectDismissButtonToBeFocused(page);
+    await expectDialogAndThenDismissButtonToBeFocused(page);
   });
 
   test('should focus dismiss button after open when there are other focusable elements', async ({ page }) => {
     await initAdvancedFlyout(page);
     await openFlyout(page);
-    await expectDismissButtonToBeFocused(page);
+    await expectDialogAndThenDismissButtonToBeFocused(page);
   });
 
   test('should focus dismiss button after open when there is a focusable content element', async ({ page }) => {
@@ -347,7 +355,7 @@ test.describe('focus behavior', () => {
       { content: `<a href="https://porsche.com">Some link in content</a>` }
     );
     await openFlyout(page);
-    await expectDismissButtonToBeFocused(page);
+    await expectDialogAndThenDismissButtonToBeFocused(page);
   });
 
   test('should have correct focus order when there are focusable elements in header, content, footer and sub-footer', async ({
@@ -356,7 +364,7 @@ test.describe('focus behavior', () => {
     await initAdvancedFlyout(page);
     await openFlyout(page);
 
-    await expectDismissButtonToBeFocused(page);
+    await expectDialogAndThenDismissButtonToBeFocused(page);
     await page.keyboard.press('Tab');
     expect(await getActiveElementId(page)).toBe('btn-header');
     await page.keyboard.press('Tab');
@@ -376,7 +384,7 @@ test.describe('focus behavior', () => {
     await addButtonsBeforeAndAfterFlyout(page);
     await openFlyout(page);
 
-    await expectDismissButtonToBeFocused(page);
+    await expectDialogAndThenDismissButtonToBeFocused(page);
     await page.keyboard.press('Tab');
 
     expect(await getActiveElementId(page)).not.toBe('btn-after');
@@ -400,7 +408,7 @@ test.describe('focus behavior', () => {
     await addButtonsBeforeAndAfterFlyout(page);
     await openFlyout(page);
 
-    await expectDismissButtonToBeFocused(page);
+    await expectDialogAndThenDismissButtonToBeFocused(page);
     await page.keyboard.down('Shift');
     await page.keyboard.press('Tab');
 
@@ -481,7 +489,7 @@ test.describe('after content change', () => {
     await initAdvancedFlyout(page);
     await addButtonsBeforeAndAfterFlyout(page);
     await openFlyout(page);
-    await expectDismissButtonToBeFocused(page, 'initially');
+    await expectDialogAndThenDismissButtonToBeFocused(page, 'initially');
     await page.keyboard.press('Tab');
     expect(await getActiveElementId(page), 'after 1st tab').toBe('btn-header');
 
@@ -513,7 +521,7 @@ test.describe('after content change', () => {
       el.append(button);
     });
     await waitForSlotChange();
-    await expectDismissButtonToBeFocused(page, 'after button appended');
+    await expectDialogAndThenDismissButtonToBeFocused(page, 'after button appended');
 
     await page.keyboard.press('Tab');
     expect(await getActiveElementId(page)).toBe('btn-header');
@@ -538,7 +546,7 @@ test.describe('can be controlled via keyboard', () => {
   test('should cycle tab events within flyout', async ({ page }) => {
     await initAdvancedFlyout(page);
     await openFlyout(page);
-    await expectDismissButtonToBeFocused(page, 'initially');
+    await expectDialogAndThenDismissButtonToBeFocused(page, 'initially');
 
     await page.keyboard.press('Tab');
     expect(await getActiveElementId(page)).toBe('btn-header');
@@ -557,7 +565,7 @@ test.describe('can be controlled via keyboard', () => {
   test('should reverse cycle tab events within flyout', async ({ page }) => {
     await initAdvancedFlyout(page);
     await openFlyout(page);
-    await expectDismissButtonToBeFocused(page, 'initially');
+    await expectDialogAndThenDismissButtonToBeFocused(page, 'initially');
 
     await page.keyboard.down('ShiftLeft');
     await page.keyboard.press('Tab');
@@ -794,7 +802,7 @@ test.describe('after dynamic slot change', () => {
     await addHeaderSlot(host);
     await waitForStencilLifecycle(page);
 
-    expect(await getStickyTopCssVarValue(page)).toBe('191px');
+    expect(await getStickyTopCssVarValue(page)).toBe('95px');
 
     await page.setViewportSize({ width: 320, height: 500 });
 

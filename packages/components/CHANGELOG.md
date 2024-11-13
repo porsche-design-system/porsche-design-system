@@ -14,8 +14,14 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ### [Unreleased]
 
+### [3.21.0] - 2024-11-12
+
+### [3.21.0-rc.0] - 2024-11-11
+
 #### Added
 
+- `Flyout`: Prop `footerBehavior` to always make footer fixed
+  ([3590](https://github.com/porsche-design-system/porsche-design-system/pull/3590))
 - `Checkbox`, `Textarea`: `formDisabledCallback` and `formStateRestoreCallback` from ElementInternals API and sync
   validity with form element. ([#3528](https://github.com/porsche-design-system/porsche-design-system/pull/3528))
 - `Link`, `Link Pure`, `Link Tile`: `aria-haspopup` is now supported for `aria` prop
@@ -35,7 +41,13 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 #### Fixed
 
+- `Flyout`: overlapping of scrollbar in iOS/iPadOS Safari when sticky header/footer is used
+  ([#3607](https://github.com/porsche-design-system/porsche-design-system/pull/3607))
+- `Carousel`: dynamic change in `slidesPerPages` when using `focusOnCenterSlide` prop breaks pagination
+  ([#3592](https://github.com/porsche-design-system/porsche-design-system/pull/3592))
 - `Flyout`, `Modal`:
+  - transition not working correctly when using conditionally rendered content
+    ([#3590](https://github.com/porsche-design-system/porsche-design-system/pull/3590))
   - dismiss button not sticky in case header slot is not present
     ([#3574](https://github.com/porsche-design-system/porsche-design-system/pull/3574))
   - dismiss button overlaps content area
