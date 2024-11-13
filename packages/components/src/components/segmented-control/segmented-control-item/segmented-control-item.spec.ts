@@ -10,9 +10,54 @@ describe('render', () => {
 
     try {
       component.render();
-    } catch {
-    }
+    } catch {}
 
     expect(spy).toHaveBeenCalledWith(component.host, 'value', component.value);
+  });
+
+  describe('onClick', () => {
+    it('should dispatch "internalSegmentedControlItemUpdate" event when not disabled or selected', () => {
+      const component = new SegmentedControlItem();
+      component.host = document.createElement('p-segmented-control-item') as any;
+
+      const dispatchEventSpy = jest.spyOn(component.host, 'dispatchEvent');
+      component.disabled = false;
+      component.host.selected = false;
+
+      component['onClick']();
+
+      expect(dispatchEventSpy).toHaveBeenCalledWith(
+        expect.objectContaining({
+          type: 'internalSegmentedControlItemUpdate',
+          bubbles: true,
+        })
+      );
+    });
+
+    it('should not dispatch event if disabled is true', () => {
+      const component = new SegmentedControlItem();
+      component.host = document.createElement('p-segmented-control-item') as any;
+
+      const dispatchEventSpy = jest.spyOn(component.host, 'dispatchEvent');
+      component.disabled = true;
+      component.host.selected = false;
+
+      component['onClick']();
+
+      expect(dispatchEventSpy).not.toHaveBeenCalled();
+    });
+
+    it('should not dispatch event if selected is true', () => {
+      const component = new SegmentedControlItem();
+      component.host = document.createElement('p-segmented-control-item') as any;
+
+      const dispatchEventSpy = jest.spyOn(component.host, 'dispatchEvent');
+      component.disabled = false;
+      component.host.selected = true;
+
+      component['onClick']();
+
+      expect(dispatchEventSpy).not.toHaveBeenCalled();
+    });
   });
 });
