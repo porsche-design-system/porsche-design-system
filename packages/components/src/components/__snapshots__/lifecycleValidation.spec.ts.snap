@@ -554,6 +554,9 @@ exports[`should call validateProps() with correct parameters via render for p-se
 {
   "backgroundColor": "oneOf",
   "columns": "breakpoint",
+  "disabled": "boolean",
+  "form": "string",
+  "name": "string",
   "theme": "oneOf",
   "value": "oneOf",
 }
