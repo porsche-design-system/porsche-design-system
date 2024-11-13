@@ -892,9 +892,10 @@ img {
   transform: translate3d(0,0,0);
   background-color: #FBFCFF;
   color: #010205;
+  --p-internal-scaling-factor: 1;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  padding: calc(var(--p-internal-link-scaling, 1) * 0.8125 * 16px ) max(calc(var(--p-internal-link-scaling, 1) * 1.625 * 16px ), 4px);
-  gap: clamp(2px, calc(var(--p-internal-link-scaling, 1) * 0.5 * 16px), 16px);
+  padding: calc(var(--p-internal-link-scaling, var(--p-internal-scaling-factor)) * 0.8125 * 16px ) max(calc(var(--p-internal-link-scaling, var(--p-internal-scaling-factor)) * 1.625 * 16px ), 4px);
+  gap: clamp(2px, calc(var(--p-internal-link-scaling, var(--p-internal-scaling-factor)) * 0.5 * 16px), 16px);
 }
 .root::-moz-focus-inner {
   border: 0;
@@ -970,9 +971,10 @@ img {
   transform: translate3d(0,0,0);
   background-color: transparent;
   color: #FBFCFF;
+  --p-internal-scaling-factor: 1;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  padding: calc(var(--p-internal-link-scaling, 1) * 0.8125 * 16px ) max(calc(var(--p-internal-link-scaling, 1) * 1.625 * 16px ), 4px);
-  gap: clamp(2px, calc(var(--p-internal-link-scaling, 1) * 0.5 * 16px), 16px);
+  padding: calc(var(--p-internal-link-scaling, var(--p-internal-scaling-factor)) * 0.8125 * 16px ) max(calc(var(--p-internal-link-scaling, var(--p-internal-scaling-factor)) * 1.625 * 16px ), 4px);
+  gap: clamp(2px, calc(var(--p-internal-link-scaling, var(--p-internal-scaling-factor)) * 0.5 * 16px), 16px);
 }
 .root::-moz-focus-inner {
   border: 0;
@@ -1274,9 +1276,10 @@ img {
   transform: translate3d(0,0,0);
   background-color: #FBFCFF;
   color: #010205;
+  --p-internal-scaling-factor: 1;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  padding: calc(var(--p-internal-link-scaling, 1) * 0.8125 * 16px ) max(calc(var(--p-internal-link-scaling, 1) * 1.625 * 16px ), 4px);
-  gap: clamp(2px, calc(var(--p-internal-link-scaling, 1) * 0.5 * 16px), 16px);
+  padding: calc(var(--p-internal-link-scaling, var(--p-internal-scaling-factor)) * 0.8125 * 16px ) max(calc(var(--p-internal-link-scaling, var(--p-internal-scaling-factor)) * 1.625 * 16px ), 4px);
+  gap: clamp(2px, calc(var(--p-internal-link-scaling, var(--p-internal-scaling-factor)) * 0.5 * 16px), 16px);
 }
 .label {
   position: static;
@@ -1370,9 +1373,10 @@ img {
   transform: translate3d(0,0,0);
   background-color: transparent;
   color: #FBFCFF;
+  --p-internal-scaling-factor: 1;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  padding: calc(var(--p-internal-link-scaling, 1) * 0.8125 * 16px ) max(calc(var(--p-internal-link-scaling, 1) * 1.625 * 16px ), 4px);
-  gap: clamp(2px, calc(var(--p-internal-link-scaling, 1) * 0.5 * 16px), 16px);
+  padding: calc(var(--p-internal-link-scaling, var(--p-internal-scaling-factor)) * 0.8125 * 16px ) max(calc(var(--p-internal-link-scaling, var(--p-internal-scaling-factor)) * 1.625 * 16px ), 4px);
+  gap: clamp(2px, calc(var(--p-internal-link-scaling, var(--p-internal-scaling-factor)) * 0.5 * 16px), 16px);
 }
 .label {
   position: static;
@@ -1673,9 +1677,10 @@ img {
   transform: translate3d(0,0,0);
   background-color: #FBFCFF;
   color: #010205;
+  --p-internal-scaling-factor: 1;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  padding: calc(var(--p-internal-link-scaling, 1) * 0.8125 * 16px ) max(calc(var(--p-internal-link-scaling, 1) * 1.625 * 16px ), 4px);
-  gap: clamp(2px, calc(var(--p-internal-link-scaling, 1) * 0.5 * 16px), 16px);
+  padding: calc(var(--p-internal-link-scaling, var(--p-internal-scaling-factor)) * 0.8125 * 16px ) max(calc(var(--p-internal-link-scaling, var(--p-internal-scaling-factor)) * 1.625 * 16px ), 4px);
+  gap: clamp(2px, calc(var(--p-internal-link-scaling, var(--p-internal-scaling-factor)) * 0.5 * 16px), 16px);
 }
 .label {
   position: static;
@@ -1769,9 +1774,10 @@ img {
   transform: translate3d(0,0,0);
   background-color: transparent;
   color: #FBFCFF;
+  --p-internal-scaling-factor: 1;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  padding: calc(var(--p-internal-link-scaling, 1) * 0.8125 * 16px ) max(calc(var(--p-internal-link-scaling, 1) * 1.625 * 16px ), 4px);
-  gap: clamp(2px, calc(var(--p-internal-link-scaling, 1) * 0.5 * 16px), 16px);
+  padding: calc(var(--p-internal-link-scaling, var(--p-internal-scaling-factor)) * 0.8125 * 16px ) max(calc(var(--p-internal-link-scaling, var(--p-internal-scaling-factor)) * 1.625 * 16px ), 4px);
+  gap: clamp(2px, calc(var(--p-internal-link-scaling, var(--p-internal-scaling-factor)) * 0.5 * 16px), 16px);
 }
 .label {
   position: static;
@@ -2072,9 +2078,10 @@ img {
   transform: translate3d(0,0,0);
   background-color: #FBFCFF;
   color: #010205;
+  --p-internal-scaling-factor: 1;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  padding: calc(var(--p-internal-link-scaling, 1) * 0.8125 * 16px ) max(calc(var(--p-internal-link-scaling, 1) * 1.625 * 16px ), 4px);
-  gap: clamp(2px, calc(var(--p-internal-link-scaling, 1) * 0.5 * 16px), 16px);
+  padding: calc(var(--p-internal-link-scaling, var(--p-internal-scaling-factor)) * 0.8125 * 16px ) max(calc(var(--p-internal-link-scaling, var(--p-internal-scaling-factor)) * 1.625 * 16px ), 4px);
+  gap: clamp(2px, calc(var(--p-internal-link-scaling, var(--p-internal-scaling-factor)) * 0.5 * 16px), 16px);
 }
 .label {
   position: static;
@@ -2171,9 +2178,10 @@ img {
   transform: translate3d(0,0,0);
   background-color: transparent;
   color: #FBFCFF;
+  --p-internal-scaling-factor: 1;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  padding: calc(var(--p-internal-link-scaling, 1) * 0.8125 * 16px ) max(calc(var(--p-internal-link-scaling, 1) * 1.625 * 16px ), 4px);
-  gap: clamp(2px, calc(var(--p-internal-link-scaling, 1) * 0.5 * 16px), 16px);
+  padding: calc(var(--p-internal-link-scaling, var(--p-internal-scaling-factor)) * 0.8125 * 16px ) max(calc(var(--p-internal-link-scaling, var(--p-internal-scaling-factor)) * 1.625 * 16px ), 4px);
+  gap: clamp(2px, calc(var(--p-internal-link-scaling, var(--p-internal-scaling-factor)) * 0.5 * 16px), 16px);
 }
 .label {
   position: static;
@@ -3904,9 +3912,10 @@ exports[`manual test cases > should pass internal props correctly to p-stepper-h
   transform: translate3d(0,0,0);
   background-color: hsl(240 3% 26%/35%);
   color: #FBFCFF;
+  --p-internal-scaling-factor: 1;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  padding: calc(var(--p-internal-button-scaling, 1) * 0.8125 * 16px + 2px) max(calc(var(--p-internal-button-scaling, 1) * 1.625 * 16px + 2px), 6px);
-  gap: clamp(2px, calc(var(--p-internal-button-scaling, 1) * 0.5 * 16px), 16px);
+  padding: calc(var(--p-internal-button-scaling, var(--p-internal-scaling-factor)) * 0.8125 * 16px + 2px) max(calc(var(--p-internal-button-scaling, var(--p-internal-scaling-factor)) * 1.625 * 16px + 2px), 6px);
+  gap: clamp(2px, calc(var(--p-internal-button-scaling, var(--p-internal-scaling-factor)) * 0.5 * 16px), 16px);
   cursor: pointer;
   margin: 0;
 }
@@ -3927,7 +3936,7 @@ exports[`manual test cases > should pass internal props correctly to p-stepper-h
 .icon {
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
-  margin-inline-start: clamp(-16px, calc(var(--p-internal-button-scaling, 1) * -0.5 * 16px), -2px);
+  margin-inline-start: clamp(-16px, calc(var(--p-internal-button-scaling, var(--p-internal-scaling-factor)) * -0.5 * 16px), -2px);
   transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 .loading {
@@ -4060,9 +4069,10 @@ img:dir(rtl) {
   transform: translate3d(0,0,0);
   background-color: hsl(240 3% 26%/35%);
   color: #FBFCFF;
+  --p-internal-scaling-factor: 1;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  padding: calc(var(--p-internal-button-scaling, 1) * 0.8125 * 16px + 2px) max(calc(var(--p-internal-button-scaling, 1) * 1.625 * 16px + 2px), 6px);
-  gap: clamp(2px, calc(var(--p-internal-button-scaling, 1) * 0.5 * 16px), 16px);
+  padding: calc(var(--p-internal-button-scaling, var(--p-internal-scaling-factor)) * 0.8125 * 16px + 2px) max(calc(var(--p-internal-button-scaling, var(--p-internal-scaling-factor)) * 1.625 * 16px + 2px), 6px);
+  gap: clamp(2px, calc(var(--p-internal-button-scaling, var(--p-internal-scaling-factor)) * 0.5 * 16px), 16px);
   cursor: pointer;
   margin: 0;
 }
@@ -4083,7 +4093,7 @@ img:dir(rtl) {
 .icon {
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
-  margin-inline-start: clamp(-16px, calc(var(--p-internal-button-scaling, 1) * -0.5 * 16px), -2px);
+  margin-inline-start: clamp(-16px, calc(var(--p-internal-button-scaling, var(--p-internal-scaling-factor)) * -0.5 * 16px), -2px);
   transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 .loading {
@@ -4631,9 +4641,10 @@ exports[`manual test cases > should pass internal props correctly to p-tabs-bar 
   transform: translate3d(0,0,0);
   background-color: hsl(240 4% 85%/35%);
   color: #010205;
+  --p-internal-scaling-factor: 1;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  padding: calc(var(--p-internal-button-scaling, 1) * 0.8125 * 16px + 2px) max(calc(var(--p-internal-button-scaling, 1) * 1.625 * 16px + 2px), 6px);
-  gap: clamp(2px, calc(var(--p-internal-button-scaling, 1) * 0.5 * 16px), 16px);
+  padding: calc(var(--p-internal-button-scaling, var(--p-internal-scaling-factor)) * 0.8125 * 16px + 2px) max(calc(var(--p-internal-button-scaling, var(--p-internal-scaling-factor)) * 1.625 * 16px + 2px), 6px);
+  gap: clamp(2px, calc(var(--p-internal-button-scaling, var(--p-internal-scaling-factor)) * 0.5 * 16px), 16px);
   cursor: pointer;
   margin: 0;
 }
@@ -4654,7 +4665,7 @@ exports[`manual test cases > should pass internal props correctly to p-tabs-bar 
 .icon {
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
-  margin-inline-start: clamp(-16px, calc(var(--p-internal-button-scaling, 1) * -0.5 * 16px), -2px);
+  margin-inline-start: clamp(-16px, calc(var(--p-internal-button-scaling, var(--p-internal-scaling-factor)) * -0.5 * 16px), -2px);
   transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 .loading {
@@ -4787,9 +4798,10 @@ img:dir(rtl) {
   transform: translate3d(0,0,0);
   background-color: hsl(240 4% 85%/35%);
   color: #010205;
+  --p-internal-scaling-factor: 1;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  padding: calc(var(--p-internal-button-scaling, 1) * 0.8125 * 16px + 2px) max(calc(var(--p-internal-button-scaling, 1) * 1.625 * 16px + 2px), 6px);
-  gap: clamp(2px, calc(var(--p-internal-button-scaling, 1) * 0.5 * 16px), 16px);
+  padding: calc(var(--p-internal-button-scaling, var(--p-internal-scaling-factor)) * 0.8125 * 16px + 2px) max(calc(var(--p-internal-button-scaling, var(--p-internal-scaling-factor)) * 1.625 * 16px + 2px), 6px);
+  gap: clamp(2px, calc(var(--p-internal-button-scaling, var(--p-internal-scaling-factor)) * 0.5 * 16px), 16px);
   cursor: pointer;
   margin: 0;
 }
@@ -4810,7 +4822,7 @@ img:dir(rtl) {
 .icon {
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
-  margin-inline-start: clamp(-16px, calc(var(--p-internal-button-scaling, 1) * -0.5 * 16px), -2px);
+  margin-inline-start: clamp(-16px, calc(var(--p-internal-button-scaling, var(--p-internal-scaling-factor)) * -0.5 * 16px), -2px);
   transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 .loading {
@@ -5207,9 +5219,10 @@ exports[`manual test cases > should pass internal props correctly to p-tabs-item
   transform: translate3d(0,0,0);
   background-color: hsl(240 3% 26%/35%);
   color: #FBFCFF;
+  --p-internal-scaling-factor: 1;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  padding: calc(var(--p-internal-button-scaling, 1) * 0.8125 * 16px + 2px) max(calc(var(--p-internal-button-scaling, 1) * 1.625 * 16px + 2px), 6px);
-  gap: clamp(2px, calc(var(--p-internal-button-scaling, 1) * 0.5 * 16px), 16px);
+  padding: calc(var(--p-internal-button-scaling, var(--p-internal-scaling-factor)) * 0.8125 * 16px + 2px) max(calc(var(--p-internal-button-scaling, var(--p-internal-scaling-factor)) * 1.625 * 16px + 2px), 6px);
+  gap: clamp(2px, calc(var(--p-internal-button-scaling, var(--p-internal-scaling-factor)) * 0.5 * 16px), 16px);
   cursor: pointer;
   margin: 0;
 }
@@ -5230,7 +5243,7 @@ exports[`manual test cases > should pass internal props correctly to p-tabs-item
 .icon {
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
-  margin-inline-start: clamp(-16px, calc(var(--p-internal-button-scaling, 1) * -0.5 * 16px), -2px);
+  margin-inline-start: clamp(-16px, calc(var(--p-internal-button-scaling, var(--p-internal-scaling-factor)) * -0.5 * 16px), -2px);
   transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 .loading {
@@ -5363,9 +5376,10 @@ img:dir(rtl) {
   transform: translate3d(0,0,0);
   background-color: hsl(240 3% 26%/35%);
   color: #FBFCFF;
+  --p-internal-scaling-factor: 1;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  padding: calc(var(--p-internal-button-scaling, 1) * 0.8125 * 16px + 2px) max(calc(var(--p-internal-button-scaling, 1) * 1.625 * 16px + 2px), 6px);
-  gap: clamp(2px, calc(var(--p-internal-button-scaling, 1) * 0.5 * 16px), 16px);
+  padding: calc(var(--p-internal-button-scaling, var(--p-internal-scaling-factor)) * 0.8125 * 16px + 2px) max(calc(var(--p-internal-button-scaling, var(--p-internal-scaling-factor)) * 1.625 * 16px + 2px), 6px);
+  gap: clamp(2px, calc(var(--p-internal-button-scaling, var(--p-internal-scaling-factor)) * 0.5 * 16px), 16px);
   cursor: pointer;
   margin: 0;
 }
@@ -5386,7 +5400,7 @@ img:dir(rtl) {
 .icon {
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
-  margin-inline-start: clamp(-16px, calc(var(--p-internal-button-scaling, 1) * -0.5 * 16px), -2px);
+  margin-inline-start: clamp(-16px, calc(var(--p-internal-button-scaling, var(--p-internal-scaling-factor)) * -0.5 * 16px), -2px);
   transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 .loading {
@@ -7018,8 +7032,9 @@ img {
   transform: translate3d(0,0,0);
   background-color: hsl(240 4% 85%/35%);
   color: #010205;
+  --p-internal-scaling-factor: 1;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  padding: calc(var(--p-internal-button-scaling, 1) * 0.8125 * 16px + 2px);
+  padding: calc(var(--p-internal-button-scaling, var(--p-internal-scaling-factor)) * 0.8125 * 16px + 2px);
   gap: 0;
   cursor: pointer;
   margin: 0;
@@ -7169,9 +7184,10 @@ exports[`should render dsr component for PButton 1`] = `
   transform: translate3d(0,0,0);
   background-color: #010205;
   color: #FBFCFF;
+  --p-internal-scaling-factor: 1;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  padding: calc(var(--p-internal-button-scaling, 1) * 0.8125 * 16px ) max(calc(var(--p-internal-button-scaling, 1) * 1.625 * 16px ), 4px);
-  gap: clamp(2px, calc(var(--p-internal-button-scaling, 1) * 0.5 * 16px), 16px);
+  padding: calc(var(--p-internal-button-scaling, var(--p-internal-scaling-factor)) * 0.8125 * 16px ) max(calc(var(--p-internal-button-scaling, var(--p-internal-scaling-factor)) * 1.625 * 16px ), 4px);
+  gap: clamp(2px, calc(var(--p-internal-button-scaling, var(--p-internal-scaling-factor)) * 0.5 * 16px), 16px);
   cursor: pointer;
   margin: 0;
 }
@@ -7587,9 +7603,10 @@ p {
   transform: translate3d(0,0,0);
   background-color: transparent;
   color: #FBFCFF;
+  --p-internal-scaling-factor: 1;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  padding: calc(var(--p-internal-button-scaling, 1) * 0.8125 * 16px ) max(calc(var(--p-internal-button-scaling, 1) * 1.625 * 16px ), 4px);
-  gap: clamp(2px, calc(var(--p-internal-button-scaling, 1) * 0.5 * 16px), 16px);
+  padding: calc(var(--p-internal-button-scaling, var(--p-internal-scaling-factor)) * 0.8125 * 16px ) max(calc(var(--p-internal-button-scaling, var(--p-internal-scaling-factor)) * 1.625 * 16px ), 4px);
+  gap: clamp(2px, calc(var(--p-internal-button-scaling, var(--p-internal-scaling-factor)) * 0.5 * 16px), 16px);
   cursor: pointer;
   margin: 0;
 }
@@ -8030,9 +8047,10 @@ h2 {
   transform: translate3d(0,0,0);
   background-color: hsl(240 4% 85%/35%);
   color: #010205;
+  --p-internal-scaling-factor: calc(4 / 13);
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  padding: calc(var(--p-internal-button-scaling, calc(4 / 13)) * 0.8125 * 16px + 2px) max(calc(var(--p-internal-button-scaling, calc(4 / 13)) * 1.625 * 16px + 2px), 6px);
-  gap: clamp(2px, calc(var(--p-internal-button-scaling, calc(4 / 13)) * 0.5 * 16px), 16px);
+  padding: calc(var(--p-internal-button-scaling, var(--p-internal-scaling-factor)) * 0.8125 * 16px + 2px) max(calc(var(--p-internal-button-scaling, var(--p-internal-scaling-factor)) * 1.625 * 16px + 2px), 6px);
+  gap: clamp(2px, calc(var(--p-internal-button-scaling, var(--p-internal-scaling-factor)) * 0.5 * 16px), 16px);
   cursor: pointer;
   margin: 0;
 }
@@ -8053,7 +8071,7 @@ h2 {
 .icon {
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
-  margin-inline-start: clamp(-16px, calc(var(--p-internal-button-scaling, calc(4 / 13)) * -0.5 * 16px), -2px);
+  margin-inline-start: clamp(-16px, calc(var(--p-internal-button-scaling, var(--p-internal-scaling-factor)) * -0.5 * 16px), -2px);
   transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 .loading {
@@ -8346,6 +8364,7 @@ dialog::backdrop {
 
 .scroller {
   position: absolute;
+  isolation: isolate;
   display: grid;
   inset-block: 0;
   inset-inline-start: 0;
@@ -8354,7 +8373,7 @@ dialog::backdrop {
   background: rgba(255,255,255,.01);
   opacity: 0;
   transform: translateX(-100%);
-  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.4,0,0.5,1), transform var(--p-transition-duration, 0.25s) cubic-bezier(0.4,0,0.5,1), margin-inline-end 0s linear var(--p-transition-duration, 0.25s);
+  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.4,0,0.5,1), transform var(--p-transition-duration, 0.25s) cubic-bezier(0.4,0,0.5,1);
 }
 .scroller:dir(rtl) {
   transform: translateX(100%);
@@ -8439,8 +8458,9 @@ dialog::backdrop {
   transform: translate3d(0,0,0);
   background-color: hsl(240 4% 85%/35%);
   color: #010205;
+  --p-internal-scaling-factor: 1;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  padding: calc(var(--p-internal-button-scaling, 1) * 0.8125 * 16px + 2px);
+  padding: calc(var(--p-internal-button-scaling, var(--p-internal-scaling-factor)) * 0.8125 * 16px + 2px);
   gap: 0;
   cursor: pointer;
   margin: 0;
@@ -9438,6 +9458,7 @@ dialog::backdrop {
 
 .scroller {
   position: absolute;
+  isolation: isolate;
   display: grid;
   inset-block: 0;
   inset-inline-end: 0;
@@ -9445,9 +9466,8 @@ dialog::backdrop {
   overscroll-behavior-y: none;
   background: rgba(255,255,255,.01);
   opacity: 0;
-  margin-inline-end: 200vw;
   transform: translateX(100%);
-  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.4,0,0.5,1), transform var(--p-transition-duration, 0.25s) cubic-bezier(0.4,0,0.5,1), margin-inline-end 0s linear var(--p-transition-duration, 0.25s);
+  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.4,0,0.5,1), transform var(--p-transition-duration, 0.25s) cubic-bezier(0.4,0,0.5,1);
 }
 .scroller:dir(rtl) {
   transform: translateX(-100%);
@@ -9532,8 +9552,9 @@ dialog::backdrop {
   transform: translate3d(0,0,0);
   background-color: hsl(240 4% 85%/35%);
   color: #010205;
+  --p-internal-scaling-factor: 1;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  padding: calc(var(--p-internal-button-scaling, 1) * 0.8125 * 16px + 2px);
+  padding: calc(var(--p-internal-button-scaling, var(--p-internal-scaling-factor)) * 0.8125 * 16px + 2px);
   gap: 0;
   cursor: pointer;
   margin: 0;
@@ -10786,8 +10807,9 @@ img {
   transform: translate3d(0,0,0);
   background-color: hsl(240 4% 85%/35%);
   color: #010205;
+  --p-internal-scaling-factor: 1;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  padding: calc(var(--p-internal-button-scaling, 1) * 0.8125 * 16px + 2px);
+  padding: calc(var(--p-internal-button-scaling, var(--p-internal-scaling-factor)) * 0.8125 * 16px + 2px);
   gap: 0;
   cursor: pointer;
   margin: 0;
@@ -10954,9 +10976,10 @@ exports[`should render dsr component for PLink 1`] = `
   transform: translate3d(0,0,0);
   background-color: #010205;
   color: #FBFCFF;
+  --p-internal-scaling-factor: 1;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  padding: calc(var(--p-internal-link-scaling, 1) * 0.8125 * 16px ) max(calc(var(--p-internal-link-scaling, 1) * 1.625 * 16px ), 4px);
-  gap: clamp(2px, calc(var(--p-internal-link-scaling, 1) * 0.5 * 16px), 16px);
+  padding: calc(var(--p-internal-link-scaling, var(--p-internal-scaling-factor)) * 0.8125 * 16px ) max(calc(var(--p-internal-link-scaling, var(--p-internal-scaling-factor)) * 1.625 * 16px ), 4px);
+  gap: clamp(2px, calc(var(--p-internal-link-scaling, var(--p-internal-scaling-factor)) * 0.5 * 16px), 16px);
 }
 .label {
   position: static;
@@ -11202,9 +11225,10 @@ exports[`should render dsr component for PLinkSocial 1`] = `
   transform: translate3d(0,0,0);
   background-color: #010205;
   color: #FBFCFF;
+  --p-internal-scaling-factor: 1;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  padding: calc(var(--p-internal-link-scaling, 1) * 0.8125 * 16px ) max(calc(var(--p-internal-link-scaling, 1) * 1.625 * 16px ), 4px);
-  gap: clamp(2px, calc(var(--p-internal-link-scaling, 1) * 0.5 * 16px), 16px);
+  padding: calc(var(--p-internal-link-scaling, var(--p-internal-scaling-factor)) * 0.8125 * 16px ) max(calc(var(--p-internal-link-scaling, var(--p-internal-scaling-factor)) * 1.625 * 16px ), 4px);
+  gap: clamp(2px, calc(var(--p-internal-link-scaling, var(--p-internal-scaling-factor)) * 0.5 * 16px), 16px);
 }
 .label {
   position: static;
@@ -11219,7 +11243,7 @@ exports[`should render dsr component for PLinkSocial 1`] = `
 .icon {
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
-  margin-inline-start: clamp(-16px, calc(var(--p-internal-link-scaling, 1) * -0.5 * 16px), -2px);
+  margin-inline-start: clamp(-16px, calc(var(--p-internal-link-scaling, var(--p-internal-scaling-factor)) * -0.5 * 16px), -2px);
   filter: invert(1);
 }
 
@@ -11473,9 +11497,10 @@ p {
   transform: translate3d(0,0,0);
   background-color: transparent;
   color: #FBFCFF;
+  --p-internal-scaling-factor: 1;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  padding: calc(var(--p-internal-link-scaling, 1) * 0.8125 * 16px ) max(calc(var(--p-internal-link-scaling, 1) * 1.625 * 16px ), 4px);
-  gap: clamp(2px, calc(var(--p-internal-link-scaling, 1) * 0.5 * 16px), 16px);
+  padding: calc(var(--p-internal-link-scaling, var(--p-internal-scaling-factor)) * 0.8125 * 16px ) max(calc(var(--p-internal-link-scaling, var(--p-internal-scaling-factor)) * 1.625 * 16px ), 4px);
+  gap: clamp(2px, calc(var(--p-internal-link-scaling, var(--p-internal-scaling-factor)) * 0.5 * 16px), 16px);
 }
 .label {
   position: static;
@@ -11754,9 +11779,10 @@ img {
   transform: translate3d(0,0,0);
   background-color: #FBFCFF;
   color: #010205;
+  --p-internal-scaling-factor: 1;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  padding: calc(var(--p-internal-link-scaling, 1) * 0.8125 * 16px ) max(calc(var(--p-internal-link-scaling, 1) * 1.625 * 16px ), 4px);
-  gap: clamp(2px, calc(var(--p-internal-link-scaling, 1) * 0.5 * 16px), 16px);
+  padding: calc(var(--p-internal-link-scaling, var(--p-internal-scaling-factor)) * 0.8125 * 16px ) max(calc(var(--p-internal-link-scaling, var(--p-internal-scaling-factor)) * 1.625 * 16px ), 4px);
+  gap: clamp(2px, calc(var(--p-internal-link-scaling, var(--p-internal-scaling-factor)) * 0.5 * 16px), 16px);
 }
 .root::-moz-focus-inner {
   border: 0;
@@ -11832,9 +11858,10 @@ img {
   transform: translate3d(0,0,0);
   background-color: transparent;
   color: #FBFCFF;
+  --p-internal-scaling-factor: 1;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  padding: calc(var(--p-internal-link-scaling, 1) * 0.8125 * 16px ) max(calc(var(--p-internal-link-scaling, 1) * 1.625 * 16px ), 4px);
-  gap: clamp(2px, calc(var(--p-internal-link-scaling, 1) * 0.5 * 16px), 16px);
+  padding: calc(var(--p-internal-link-scaling, var(--p-internal-scaling-factor)) * 0.8125 * 16px ) max(calc(var(--p-internal-link-scaling, var(--p-internal-scaling-factor)) * 1.625 * 16px ), 4px);
+  gap: clamp(2px, calc(var(--p-internal-link-scaling, var(--p-internal-scaling-factor)) * 0.5 * 16px), 16px);
 }
 .root::-moz-focus-inner {
   border: 0;
@@ -12312,6 +12339,7 @@ dialog::backdrop {
 
 .scroller {
   position: absolute;
+  isolation: isolate;
   display: grid;
   inset: 0;
   overflow: hidden auto;
@@ -12329,7 +12357,7 @@ dialog::backdrop {
   background: #FFF;
   opacity: 0;
   transform: translateY(25vh);
-  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.4,0,0.5,1), transform var(--p-transition-duration, 0.25s) cubic-bezier(0.4,0,0.5,1), margin-inline-end 0s linear var(--p-transition-duration, 0.25s);
+  transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.4,0,0.5,1), transform var(--p-transition-duration, 0.25s) cubic-bezier(0.4,0,0.5,1);
   width: var(--p-modal-width,auto);
   min-width: 276px;
   max-width: 1535.5px;
@@ -12407,8 +12435,9 @@ dialog::backdrop {
   transform: translate3d(0,0,0);
   background-color: hsl(240 4% 85%/35%);
   color: #010205;
+  --p-internal-scaling-factor: 1;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  padding: calc(var(--p-internal-button-scaling, 1) * 0.8125 * 16px + 2px);
+  padding: calc(var(--p-internal-button-scaling, var(--p-internal-scaling-factor)) * 0.8125 * 16px + 2px);
   gap: 0;
   cursor: pointer;
   margin: 0;
@@ -13784,9 +13813,10 @@ exports[`should render dsr component for PScroller 1`] = `
   transform: translate3d(0,0,0);
   background-color: hsl(240 4% 85%/35%);
   color: #010205;
+  --p-internal-scaling-factor: 1;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  padding: calc(var(--p-internal-button-scaling, 1) * 0.8125 * 16px + 2px) max(calc(var(--p-internal-button-scaling, 1) * 1.625 * 16px + 2px), 6px);
-  gap: clamp(2px, calc(var(--p-internal-button-scaling, 1) * 0.5 * 16px), 16px);
+  padding: calc(var(--p-internal-button-scaling, var(--p-internal-scaling-factor)) * 0.8125 * 16px + 2px) max(calc(var(--p-internal-button-scaling, var(--p-internal-scaling-factor)) * 1.625 * 16px + 2px), 6px);
+  gap: clamp(2px, calc(var(--p-internal-button-scaling, var(--p-internal-scaling-factor)) * 0.5 * 16px), 16px);
   cursor: pointer;
   margin: 0;
 }
@@ -13807,7 +13837,7 @@ exports[`should render dsr component for PScroller 1`] = `
 .icon {
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
-  margin-inline-start: clamp(-16px, calc(var(--p-internal-button-scaling, 1) * -0.5 * 16px), -2px);
+  margin-inline-start: clamp(-16px, calc(var(--p-internal-button-scaling, var(--p-internal-scaling-factor)) * -0.5 * 16px), -2px);
   transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 .loading {
@@ -13940,9 +13970,10 @@ img:dir(rtl) {
   transform: translate3d(0,0,0);
   background-color: hsl(240 4% 85%/35%);
   color: #010205;
+  --p-internal-scaling-factor: 1;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  padding: calc(var(--p-internal-button-scaling, 1) * 0.8125 * 16px + 2px) max(calc(var(--p-internal-button-scaling, 1) * 1.625 * 16px + 2px), 6px);
-  gap: clamp(2px, calc(var(--p-internal-button-scaling, 1) * 0.5 * 16px), 16px);
+  padding: calc(var(--p-internal-button-scaling, var(--p-internal-scaling-factor)) * 0.8125 * 16px + 2px) max(calc(var(--p-internal-button-scaling, var(--p-internal-scaling-factor)) * 1.625 * 16px + 2px), 6px);
+  gap: clamp(2px, calc(var(--p-internal-button-scaling, var(--p-internal-scaling-factor)) * 0.5 * 16px), 16px);
   cursor: pointer;
   margin: 0;
 }
@@ -13963,7 +13994,7 @@ img:dir(rtl) {
 .icon {
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
-  margin-inline-start: clamp(-16px, calc(var(--p-internal-button-scaling, 1) * -0.5 * 16px), -2px);
+  margin-inline-start: clamp(-16px, calc(var(--p-internal-button-scaling, var(--p-internal-scaling-factor)) * -0.5 * 16px), -2px);
   transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 .loading {
@@ -14995,9 +15026,10 @@ exports[`should render dsr component for PStepperHorizontal 1`] = `
   transform: translate3d(0,0,0);
   background-color: hsl(240 4% 85%/35%);
   color: #010205;
+  --p-internal-scaling-factor: 1;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  padding: calc(var(--p-internal-button-scaling, 1) * 0.8125 * 16px + 2px) max(calc(var(--p-internal-button-scaling, 1) * 1.625 * 16px + 2px), 6px);
-  gap: clamp(2px, calc(var(--p-internal-button-scaling, 1) * 0.5 * 16px), 16px);
+  padding: calc(var(--p-internal-button-scaling, var(--p-internal-scaling-factor)) * 0.8125 * 16px + 2px) max(calc(var(--p-internal-button-scaling, var(--p-internal-scaling-factor)) * 1.625 * 16px + 2px), 6px);
+  gap: clamp(2px, calc(var(--p-internal-button-scaling, var(--p-internal-scaling-factor)) * 0.5 * 16px), 16px);
   cursor: pointer;
   margin: 0;
 }
@@ -15018,7 +15050,7 @@ exports[`should render dsr component for PStepperHorizontal 1`] = `
 .icon {
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
-  margin-inline-start: clamp(-16px, calc(var(--p-internal-button-scaling, 1) * -0.5 * 16px), -2px);
+  margin-inline-start: clamp(-16px, calc(var(--p-internal-button-scaling, var(--p-internal-scaling-factor)) * -0.5 * 16px), -2px);
   transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 .loading {
@@ -15151,9 +15183,10 @@ img:dir(rtl) {
   transform: translate3d(0,0,0);
   background-color: hsl(240 4% 85%/35%);
   color: #010205;
+  --p-internal-scaling-factor: 1;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  padding: calc(var(--p-internal-button-scaling, 1) * 0.8125 * 16px + 2px) max(calc(var(--p-internal-button-scaling, 1) * 1.625 * 16px + 2px), 6px);
-  gap: clamp(2px, calc(var(--p-internal-button-scaling, 1) * 0.5 * 16px), 16px);
+  padding: calc(var(--p-internal-button-scaling, var(--p-internal-scaling-factor)) * 0.8125 * 16px + 2px) max(calc(var(--p-internal-button-scaling, var(--p-internal-scaling-factor)) * 1.625 * 16px + 2px), 6px);
+  gap: clamp(2px, calc(var(--p-internal-button-scaling, var(--p-internal-scaling-factor)) * 0.5 * 16px), 16px);
   cursor: pointer;
   margin: 0;
 }
@@ -15174,7 +15207,7 @@ img:dir(rtl) {
 .icon {
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
-  margin-inline-start: clamp(-16px, calc(var(--p-internal-button-scaling, 1) * -0.5 * 16px), -2px);
+  margin-inline-start: clamp(-16px, calc(var(--p-internal-button-scaling, var(--p-internal-scaling-factor)) * -0.5 * 16px), -2px);
   transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 .loading {
@@ -15686,9 +15719,10 @@ exports[`should render dsr component for PTable 1`] = `
   transform: translate3d(0,0,0);
   background-color: hsl(240 4% 85%/35%);
   color: #010205;
+  --p-internal-scaling-factor: 1;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  padding: calc(var(--p-internal-button-scaling, 1) * 0.8125 * 16px + 2px) max(calc(var(--p-internal-button-scaling, 1) * 1.625 * 16px + 2px), 6px);
-  gap: clamp(2px, calc(var(--p-internal-button-scaling, 1) * 0.5 * 16px), 16px);
+  padding: calc(var(--p-internal-button-scaling, var(--p-internal-scaling-factor)) * 0.8125 * 16px + 2px) max(calc(var(--p-internal-button-scaling, var(--p-internal-scaling-factor)) * 1.625 * 16px + 2px), 6px);
+  gap: clamp(2px, calc(var(--p-internal-button-scaling, var(--p-internal-scaling-factor)) * 0.5 * 16px), 16px);
   cursor: pointer;
   margin: 0;
 }
@@ -15709,7 +15743,7 @@ exports[`should render dsr component for PTable 1`] = `
 .icon {
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
-  margin-inline-start: clamp(-16px, calc(var(--p-internal-button-scaling, 1) * -0.5 * 16px), -2px);
+  margin-inline-start: clamp(-16px, calc(var(--p-internal-button-scaling, var(--p-internal-scaling-factor)) * -0.5 * 16px), -2px);
   transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 .loading {
@@ -15842,9 +15876,10 @@ img:dir(rtl) {
   transform: translate3d(0,0,0);
   background-color: hsl(240 4% 85%/35%);
   color: #010205;
+  --p-internal-scaling-factor: 1;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  padding: calc(var(--p-internal-button-scaling, 1) * 0.8125 * 16px + 2px) max(calc(var(--p-internal-button-scaling, 1) * 1.625 * 16px + 2px), 6px);
-  gap: clamp(2px, calc(var(--p-internal-button-scaling, 1) * 0.5 * 16px), 16px);
+  padding: calc(var(--p-internal-button-scaling, var(--p-internal-scaling-factor)) * 0.8125 * 16px + 2px) max(calc(var(--p-internal-button-scaling, var(--p-internal-scaling-factor)) * 1.625 * 16px + 2px), 6px);
+  gap: clamp(2px, calc(var(--p-internal-button-scaling, var(--p-internal-scaling-factor)) * 0.5 * 16px), 16px);
   cursor: pointer;
   margin: 0;
 }
@@ -15865,7 +15900,7 @@ img:dir(rtl) {
 .icon {
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
-  margin-inline-start: clamp(-16px, calc(var(--p-internal-button-scaling, 1) * -0.5 * 16px), -2px);
+  margin-inline-start: clamp(-16px, calc(var(--p-internal-button-scaling, var(--p-internal-scaling-factor)) * -0.5 * 16px), -2px);
   transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 .loading {
@@ -16412,9 +16447,10 @@ exports[`should render dsr component for PTabs 1`] = `
   transform: translate3d(0,0,0);
   background-color: hsl(240 4% 85%/35%);
   color: #010205;
+  --p-internal-scaling-factor: 1;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  padding: calc(var(--p-internal-button-scaling, 1) * 0.8125 * 16px + 2px) max(calc(var(--p-internal-button-scaling, 1) * 1.625 * 16px + 2px), 6px);
-  gap: clamp(2px, calc(var(--p-internal-button-scaling, 1) * 0.5 * 16px), 16px);
+  padding: calc(var(--p-internal-button-scaling, var(--p-internal-scaling-factor)) * 0.8125 * 16px + 2px) max(calc(var(--p-internal-button-scaling, var(--p-internal-scaling-factor)) * 1.625 * 16px + 2px), 6px);
+  gap: clamp(2px, calc(var(--p-internal-button-scaling, var(--p-internal-scaling-factor)) * 0.5 * 16px), 16px);
   cursor: pointer;
   margin: 0;
 }
@@ -16435,7 +16471,7 @@ exports[`should render dsr component for PTabs 1`] = `
 .icon {
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
-  margin-inline-start: clamp(-16px, calc(var(--p-internal-button-scaling, 1) * -0.5 * 16px), -2px);
+  margin-inline-start: clamp(-16px, calc(var(--p-internal-button-scaling, var(--p-internal-scaling-factor)) * -0.5 * 16px), -2px);
   transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 .loading {
@@ -16568,9 +16604,10 @@ img:dir(rtl) {
   transform: translate3d(0,0,0);
   background-color: hsl(240 4% 85%/35%);
   color: #010205;
+  --p-internal-scaling-factor: 1;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  padding: calc(var(--p-internal-button-scaling, 1) * 0.8125 * 16px + 2px) max(calc(var(--p-internal-button-scaling, 1) * 1.625 * 16px + 2px), 6px);
-  gap: clamp(2px, calc(var(--p-internal-button-scaling, 1) * 0.5 * 16px), 16px);
+  padding: calc(var(--p-internal-button-scaling, var(--p-internal-scaling-factor)) * 0.8125 * 16px + 2px) max(calc(var(--p-internal-button-scaling, var(--p-internal-scaling-factor)) * 1.625 * 16px + 2px), 6px);
+  gap: clamp(2px, calc(var(--p-internal-button-scaling, var(--p-internal-scaling-factor)) * 0.5 * 16px), 16px);
   cursor: pointer;
   margin: 0;
 }
@@ -16591,7 +16628,7 @@ img:dir(rtl) {
 .icon {
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
-  margin-inline-start: clamp(-16px, calc(var(--p-internal-button-scaling, 1) * -0.5 * 16px), -2px);
+  margin-inline-start: clamp(-16px, calc(var(--p-internal-button-scaling, var(--p-internal-scaling-factor)) * -0.5 * 16px), -2px);
   transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 .loading {
@@ -16969,9 +17006,10 @@ exports[`should render dsr component for PTabsBar 1`] = `
   transform: translate3d(0,0,0);
   background-color: hsl(240 4% 85%/35%);
   color: #010205;
+  --p-internal-scaling-factor: 1;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  padding: calc(var(--p-internal-button-scaling, 1) * 0.8125 * 16px + 2px) max(calc(var(--p-internal-button-scaling, 1) * 1.625 * 16px + 2px), 6px);
-  gap: clamp(2px, calc(var(--p-internal-button-scaling, 1) * 0.5 * 16px), 16px);
+  padding: calc(var(--p-internal-button-scaling, var(--p-internal-scaling-factor)) * 0.8125 * 16px + 2px) max(calc(var(--p-internal-button-scaling, var(--p-internal-scaling-factor)) * 1.625 * 16px + 2px), 6px);
+  gap: clamp(2px, calc(var(--p-internal-button-scaling, var(--p-internal-scaling-factor)) * 0.5 * 16px), 16px);
   cursor: pointer;
   margin: 0;
 }
@@ -16992,7 +17030,7 @@ exports[`should render dsr component for PTabsBar 1`] = `
 .icon {
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
-  margin-inline-start: clamp(-16px, calc(var(--p-internal-button-scaling, 1) * -0.5 * 16px), -2px);
+  margin-inline-start: clamp(-16px, calc(var(--p-internal-button-scaling, var(--p-internal-scaling-factor)) * -0.5 * 16px), -2px);
   transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 .loading {
@@ -17125,9 +17163,10 @@ img:dir(rtl) {
   transform: translate3d(0,0,0);
   background-color: hsl(240 4% 85%/35%);
   color: #010205;
+  --p-internal-scaling-factor: 1;
   transition: background-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), border-color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1), color var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
-  padding: calc(var(--p-internal-button-scaling, 1) * 0.8125 * 16px + 2px) max(calc(var(--p-internal-button-scaling, 1) * 1.625 * 16px + 2px), 6px);
-  gap: clamp(2px, calc(var(--p-internal-button-scaling, 1) * 0.5 * 16px), 16px);
+  padding: calc(var(--p-internal-button-scaling, var(--p-internal-scaling-factor)) * 0.8125 * 16px + 2px) max(calc(var(--p-internal-button-scaling, var(--p-internal-scaling-factor)) * 1.625 * 16px + 2px), 6px);
+  gap: clamp(2px, calc(var(--p-internal-button-scaling, var(--p-internal-scaling-factor)) * 0.5 * 16px), 16px);
   cursor: pointer;
   margin: 0;
 }
@@ -17148,7 +17187,7 @@ img:dir(rtl) {
 .icon {
   width: calc(6px + 2.125ex);
   height: calc(6px + 2.125ex);
-  margin-inline-start: clamp(-16px, calc(var(--p-internal-button-scaling, 1) * -0.5 * 16px), -2px);
+  margin-inline-start: clamp(-16px, calc(var(--p-internal-button-scaling, var(--p-internal-scaling-factor)) * -0.5 * 16px), -2px);
   transition: opacity var(--p-transition-duration, 0.25s) cubic-bezier(0.25,0.1,0.25,1);
 }
 .loading {

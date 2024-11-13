@@ -24,7 +24,7 @@ import { FieldsetLabelSize, FieldsetState } from "./components/fieldset/fieldset
 import { FieldsetWrapperLabelSize, FieldsetWrapperState } from "./components/fieldset-wrapper/fieldset-wrapper-utils";
 import { FlexAlignContent, FlexAlignItems, FlexDirection, FlexInline, FlexJustifyContent, FlexWrap } from "./components/flex/flex/flex-utils";
 import { FlexItemAlignSelf, FlexItemFlex, FlexItemGrow, FlexItemOffset, FlexItemShrink, FlexItemWidth } from "./components/flex/flex-item/flex-item-utils";
-import { FlyoutAriaAttribute, FlyoutMotionHiddenEndEventDetail, FlyoutMotionVisibleEndEventDetail, FlyoutPosition } from "./components/flyout/flyout-utils";
+import { FlyoutAriaAttribute, FlyoutFooterBehavior, FlyoutMotionHiddenEndEventDetail, FlyoutMotionVisibleEndEventDetail, FlyoutPosition } from "./components/flyout/flyout-utils";
 import { FlyoutMultilevelAriaAttribute, FlyoutMultilevelUpdateEventDetail } from "./components/flyout-multilevel/flyout-multilevel/flyout-multilevel-utils";
 import { GridDirection, GridGutter, GridWrap } from "./components/grid/grid/grid-utils";
 import { GridItemOffset, GridItemSize } from "./components/grid/grid-item/grid-item-utils";
@@ -88,7 +88,7 @@ export { FieldsetLabelSize, FieldsetState } from "./components/fieldset/fieldset
 export { FieldsetWrapperLabelSize, FieldsetWrapperState } from "./components/fieldset-wrapper/fieldset-wrapper-utils";
 export { FlexAlignContent, FlexAlignItems, FlexDirection, FlexInline, FlexJustifyContent, FlexWrap } from "./components/flex/flex/flex-utils";
 export { FlexItemAlignSelf, FlexItemFlex, FlexItemGrow, FlexItemOffset, FlexItemShrink, FlexItemWidth } from "./components/flex/flex-item/flex-item-utils";
-export { FlyoutAriaAttribute, FlyoutMotionHiddenEndEventDetail, FlyoutMotionVisibleEndEventDetail, FlyoutPosition } from "./components/flyout/flyout-utils";
+export { FlyoutAriaAttribute, FlyoutFooterBehavior, FlyoutMotionHiddenEndEventDetail, FlyoutMotionVisibleEndEventDetail, FlyoutPosition } from "./components/flyout/flyout-utils";
 export { FlyoutMultilevelAriaAttribute, FlyoutMultilevelUpdateEventDetail } from "./components/flyout-multilevel/flyout-multilevel/flyout-multilevel-utils";
 export { GridDirection, GridGutter, GridWrap } from "./components/grid/grid/grid-utils";
 export { GridItemOffset, GridItemSize } from "./components/grid/grid-item/grid-item-utils";
@@ -221,7 +221,7 @@ export namespace Components {
         /**
           * Displays as compact version.
          */
-        "compact"?: boolean;
+        "compact"?: BreakpointCustomizable<boolean>;
         /**
           * Disables the button. No events will be triggered while disabled state is active.
          */
@@ -780,6 +780,10 @@ export namespace Components {
          */
         "disableBackdropClick"?: boolean;
         /**
+          * Determines the footer's position behavior. When set to "fixed," the flyout content stretches to fill the full height, keeping the footer permanently at the bottom. When set to "sticky," the footer flows beneath the content and only becomes fixed if the content overflows.
+         */
+        "footerBehavior"?: FlyoutFooterBehavior;
+        /**
           * If true, the flyout is open.
          */
         "open": boolean;
@@ -995,7 +999,7 @@ export namespace Components {
         /**
           * Displays as compact version.
          */
-        "compact"?: boolean;
+        "compact"?: BreakpointCustomizable<boolean>;
         /**
           * Special download attribute to open native browser download dialog if target url points to a downloadable file.
          */
@@ -1389,6 +1393,10 @@ export namespace Components {
          */
         "dropdownDirection"?: MultiSelectDropdownDirection;
         /**
+          * The id of a form element the multi-select should be associated with.
+         */
+        "form"?: string;
+        /**
           * Show or hide label. For better accessibility it is recommended to show the label.
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
@@ -1413,7 +1421,7 @@ export namespace Components {
          */
         "state"?: MultiSelectState;
         /**
-          * Adapts the select color depending on the theme.
+          * Adapts the multi-select color depending on the theme.
          */
         "theme"?: Theme;
         /**
@@ -1689,6 +1697,10 @@ export namespace Components {
           * Changes the direction to which the dropdown list appears.
          */
         "dropdownDirection"?: SelectDropdownDirection;
+        /**
+          * The id of a form element the select should be associated with.
+         */
+        "form"?: string;
         /**
           * Show or hide label. For better accessibility it is recommended to show the label.
          */
@@ -3340,7 +3352,7 @@ declare namespace LocalJSX {
         /**
           * Displays as compact version.
          */
-        "compact"?: boolean;
+        "compact"?: BreakpointCustomizable<boolean>;
         /**
           * Disables the button. No events will be triggered while disabled state is active.
          */
@@ -3923,6 +3935,10 @@ declare namespace LocalJSX {
          */
         "disableBackdropClick"?: boolean;
         /**
+          * Determines the footer's position behavior. When set to "fixed," the flyout content stretches to fill the full height, keeping the footer permanently at the bottom. When set to "sticky," the footer flows beneath the content and only becomes fixed if the content overflows.
+         */
+        "footerBehavior"?: FlyoutFooterBehavior;
+        /**
           * Emitted when the component requests to be dismissed.
          */
         "onDismiss"?: (event: PFlyoutCustomEvent<void>) => void;
@@ -4166,7 +4182,7 @@ declare namespace LocalJSX {
         /**
           * Displays as compact version.
          */
-        "compact"?: boolean;
+        "compact"?: BreakpointCustomizable<boolean>;
         /**
           * Special download attribute to open native browser download dialog if target url points to a downloadable file.
          */
@@ -4580,6 +4596,10 @@ declare namespace LocalJSX {
          */
         "dropdownDirection"?: MultiSelectDropdownDirection;
         /**
+          * The id of a form element the multi-select should be associated with.
+         */
+        "form"?: string;
+        /**
           * Show or hide label. For better accessibility it is recommended to show the label.
          */
         "hideLabel"?: BreakpointCustomizable<boolean>;
@@ -4608,7 +4628,7 @@ declare namespace LocalJSX {
          */
         "state"?: MultiSelectState;
         /**
-          * Adapts the select color depending on the theme.
+          * Adapts the multi-select color depending on the theme.
          */
         "theme"?: Theme;
         /**
@@ -4904,6 +4924,10 @@ declare namespace LocalJSX {
           * Changes the direction to which the dropdown list appears.
          */
         "dropdownDirection"?: SelectDropdownDirection;
+        /**
+          * The id of a form element the select should be associated with.
+         */
+        "form"?: string;
         /**
           * Show or hide label. For better accessibility it is recommended to show the label.
          */

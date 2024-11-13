@@ -11,6 +11,9 @@ export type FlyoutPositionDeprecated = (typeof FLYOUT_POSITIONS_DEPRECATED)[numb
 export const FLYOUT_POSITIONS = ['start', 'end', ...FLYOUT_POSITIONS_DEPRECATED] as const;
 export type FlyoutPosition = (typeof FLYOUT_POSITIONS)[number];
 
+export const FLYOUT_FOOTER_BEHAVIOR = ['sticky', 'fixed'] as const;
+export type FlyoutFooterBehavior = (typeof FLYOUT_FOOTER_BEHAVIOR)[number];
+
 export const FLYOUT_ARIA_ATTRIBUTES = ['aria-label'] as const;
 export type FlyoutAriaAttribute = (typeof FLYOUT_ARIA_ATTRIBUTES)[number];
 

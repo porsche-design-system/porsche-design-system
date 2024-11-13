@@ -32,7 +32,7 @@ test('should focus correct element', async ({ page }) => {
   await page.waitForSelector('#loading');
   await expectDismissButtonToBeFocused('after open 1st tab');
   await page.keyboard.press('Tab');
-  expect(await getActiveElementTagName()).toBe('BODY');
+  expect(await getActiveElementTagName()).toBe('P-MODAL');
   await page.keyboard.press('Tab');
   await expectDismissButtonToBeFocused('after open 3rd tab');
 

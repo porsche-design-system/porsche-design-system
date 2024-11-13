@@ -50,9 +50,20 @@ import { DividerPage } from './generated/Divider';
 import { FieldsetPage } from './generated/Fieldset';
 import { FieldsetWrapperPage } from './generated/FieldsetWrapper';
 import { FlexPage } from './generated/Flex';
-import { FlyoutPage } from './generated/Flyout';
+import { Flyout_1Page } from './generated/Flyout_1';
+import { Flyout_2Page } from './generated/Flyout_2';
 import { FlyoutBasicPage } from './generated/FlyoutBasic';
 import { FlyoutCssVariablesPage } from './generated/FlyoutCssVariables';
+import { FlyoutFixedFooterPage } from './generated/FlyoutFixedFooter';
+import { FlyoutFixedFooterHeaderPage } from './generated/FlyoutFixedFooterHeader';
+import { FlyoutFixedFooterHeaderScrollableContentPage } from './generated/FlyoutFixedFooterHeaderScrollableContent';
+import { FlyoutFixedFooterHeaderSubfooterPage } from './generated/FlyoutFixedFooterHeaderSubfooter';
+import { FlyoutFixedFooterHeaderSubfooterScrollableContentPage } from './generated/FlyoutFixedFooterHeaderSubfooterScrollableContent';
+import { FlyoutFixedFooterScrollableContentPage } from './generated/FlyoutFixedFooterScrollableContent';
+import { FlyoutFixedFooterScrollableContentScrolledPage } from './generated/FlyoutFixedFooterScrollableContentScrolled';
+import { FlyoutFixedFooterSubfooterPage } from './generated/FlyoutFixedFooterSubfooter';
+import { FlyoutFixedFooterSubfooterScrollableContentPage } from './generated/FlyoutFixedFooterSubfooterScrollableContent';
+import { FlyoutFixedFooterSubfooterScrollableContentScrolledPage } from './generated/FlyoutFixedFooterSubfooterScrollableContentScrolled';
 import { FlyoutFooterPage } from './generated/FlyoutFooter';
 import { FlyoutFooterScrollableContentPage } from './generated/FlyoutFooterScrollableContent';
 import { FlyoutFooterScrolledPage } from './generated/FlyoutFooterScrolled';
@@ -336,9 +347,14 @@ export const generatedRoutes: RouteType[] = [
     element: <FlexPage />,
   },
   {
-    name: 'Flyout',
-    path: '/flyout',
-    element: <FlyoutPage />,
+    name: 'Flyout 1',
+    path: '/flyout-1',
+    element: <Flyout_1Page />,
+  },
+  {
+    name: 'Flyout 2',
+    path: '/flyout-2',
+    element: <Flyout_2Page />,
   },
   {
     name: 'Flyout Basic',
@@ -349,6 +365,56 @@ export const generatedRoutes: RouteType[] = [
     name: 'Flyout Css Variables',
     path: '/flyout-css-variables',
     element: <FlyoutCssVariablesPage />,
+  },
+  {
+    name: 'Flyout Fixed Footer',
+    path: '/flyout-fixed-footer',
+    element: <FlyoutFixedFooterPage />,
+  },
+  {
+    name: 'Flyout Fixed Footer Header',
+    path: '/flyout-fixed-footer-header',
+    element: <FlyoutFixedFooterHeaderPage />,
+  },
+  {
+    name: 'Flyout Fixed Footer Header Scrollable Content',
+    path: '/flyout-fixed-footer-header-scrollable-content',
+    element: <FlyoutFixedFooterHeaderScrollableContentPage />,
+  },
+  {
+    name: 'Flyout Fixed Footer Header Subfooter',
+    path: '/flyout-fixed-footer-header-subfooter',
+    element: <FlyoutFixedFooterHeaderSubfooterPage />,
+  },
+  {
+    name: 'Flyout Fixed Footer Header Subfooter Scrollable Content',
+    path: '/flyout-fixed-footer-header-subfooter-scrollable-content',
+    element: <FlyoutFixedFooterHeaderSubfooterScrollableContentPage />,
+  },
+  {
+    name: 'Flyout Fixed Footer Scrollable Content',
+    path: '/flyout-fixed-footer-scrollable-content',
+    element: <FlyoutFixedFooterScrollableContentPage />,
+  },
+  {
+    name: 'Flyout Fixed Footer Scrollable Content Scrolled',
+    path: '/flyout-fixed-footer-scrollable-content-scrolled',
+    element: <FlyoutFixedFooterScrollableContentScrolledPage />,
+  },
+  {
+    name: 'Flyout Fixed Footer Subfooter',
+    path: '/flyout-fixed-footer-subfooter',
+    element: <FlyoutFixedFooterSubfooterPage />,
+  },
+  {
+    name: 'Flyout Fixed Footer Subfooter Scrollable Content',
+    path: '/flyout-fixed-footer-subfooter-scrollable-content',
+    element: <FlyoutFixedFooterSubfooterScrollableContentPage />,
+  },
+  {
+    name: 'Flyout Fixed Footer Subfooter Scrollable Content Scrolled',
+    path: '/flyout-fixed-footer-subfooter-scrollable-content-scrolled',
+    element: <FlyoutFixedFooterSubfooterScrollableContentScrolledPage />,
   },
   {
     name: 'Flyout Footer',

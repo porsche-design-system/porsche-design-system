@@ -275,6 +275,7 @@ exports[`should match snapshot 1`] = `
         "allowedValues": "boolean",
         "defaultValue": false,
         "description": "Displays as compact version.",
+        "isBreakpointCustomizable": true,
         "type": "boolean",
       },
       "disabled": {
@@ -1922,6 +1923,7 @@ exports[`should match snapshot 1`] = `
       "aria": {
         "allowedValues": {
           "aria-current": "string",
+          "aria-haspopup": "string",
           "aria-label": "string",
         },
         "defaultValue": null,
@@ -2495,6 +2497,15 @@ exports[`should match snapshot 1`] = `
         "defaultValue": false,
         "description": "If true, the flyout will not be closable via backdrop click.",
         "type": "boolean",
+      },
+      "footerBehavior": {
+        "allowedValues": [
+          "sticky",
+          "fixed",
+        ],
+        "defaultValue": "sticky",
+        "description": "Determines the footer's position behavior. When set to "fixed," the flyout content stretches to fill the full height, keeping the footer permanently at the bottom. When set to "sticky," the footer flows beneath the content and only becomes fixed if the content overflows.",
+        "type": "FlyoutFooterBehavior",
       },
       "open": {
         "allowedValues": "boolean",
@@ -3620,6 +3631,7 @@ exports[`should match snapshot 1`] = `
       "aria": {
         "allowedValues": {
           "aria-current": "string",
+          "aria-haspopup": "string",
           "aria-label": "string",
         },
         "defaultValue": null,
@@ -3631,6 +3643,7 @@ exports[`should match snapshot 1`] = `
         "allowedValues": "boolean",
         "defaultValue": false,
         "description": "Displays as compact version.",
+        "isBreakpointCustomizable": true,
         "type": "boolean",
       },
       "download": {
@@ -3964,6 +3977,7 @@ exports[`should match snapshot 1`] = `
       "aria": {
         "allowedValues": {
           "aria-current": "string",
+          "aria-haspopup": "string",
           "aria-label": "string",
         },
         "defaultValue": null,
@@ -4615,6 +4629,7 @@ exports[`should match snapshot 1`] = `
       "aria": {
         "allowedValues": {
           "aria-current": "string",
+          "aria-haspopup": "string",
           "aria-label": "string",
         },
         "defaultValue": null,
@@ -5026,6 +5041,7 @@ exports[`should match snapshot 1`] = `
       "aria": {
         "allowedValues": {
           "aria-current": "string",
+          "aria-haspopup": "string",
           "aria-label": "string",
         },
         "defaultValue": null,
@@ -5350,6 +5366,12 @@ exports[`should match snapshot 1`] = `
         "description": "Changes the direction to which the dropdown list appears.",
         "type": "MultiSelectDropdownDirection",
       },
+      "form": {
+        "allowedValues": "string",
+        "defaultValue": null,
+        "description": "The id of a form element the multi-select should be associated with.",
+        "type": "string",
+      },
       "hideLabel": {
         "allowedValues": "boolean",
         "defaultValue": false,
@@ -5399,7 +5421,7 @@ exports[`should match snapshot 1`] = `
           "auto",
         ],
         "defaultValue": "light",
-        "description": "Adapts the select color depending on the theme.",
+        "description": "Adapts the multi-select color depending on the theme.",
         "type": "Theme",
       },
       "value": {
@@ -6442,6 +6464,12 @@ exports[`should match snapshot 1`] = `
         "defaultValue": "auto",
         "description": "Changes the direction to which the dropdown list appears.",
         "type": "SelectDropdownDirection",
+      },
+      "form": {
+        "allowedValues": "string",
+        "defaultValue": null,
+        "description": "The id of a form element the select should be associated with.",
+        "type": "string",
       },
       "hideLabel": {
         "allowedValues": "boolean",
@@ -8524,6 +8552,7 @@ exports[`should match snapshot 1`] = `
       "aria": {
         "allowedValues": {
           "aria-current": "string",
+          "aria-haspopup": "string",
           "aria-label": "string",
         },
         "defaultValue": null,
