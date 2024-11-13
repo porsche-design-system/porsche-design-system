@@ -14,6 +14,18 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ### [Unreleased]
 
+#### Added
+
+- `Segmented-Control`: Use ElementInternals API and add `form` prop to explicitly associate the component with a form,
+  even when it's not directly nested within it.
+  ([#3614](https://github.com/porsche-design-system/porsche-design-system/pull/3614))
+
+#### Fixed
+
+- `Select`, `Multi-Select`: Ensure that dynamically changing the `disabled` property via `optgroups` persists the
+  `disabled` state for individual options within the group.
+  ([#3614](https://github.com/porsche-design-system/porsche-design-system/pull/3614))
+
 ### [3.21.0] - 2024-11-12
 
 ### [3.21.0-rc.0] - 2024-11-11
