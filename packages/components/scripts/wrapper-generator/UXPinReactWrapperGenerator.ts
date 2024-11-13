@@ -394,7 +394,7 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
       },
       'p-segmented-control': {
         props: { value: 1 },
-        children: Array.from(Array(3))
+        children: Array.from(new Array(3))
           .map(
             (_, i) =>
               `<SegmentedControlItem uxpId="segmented-control-item-${i + 1}" value="${i + 1}" children="Value ${
@@ -448,7 +448,7 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
           ].map(addNestedIndentation),
           '</TableHead>',
           '<TableBody uxpId="table-body">',
-          ...Array.from(Array(3)).map((_, i) =>
+          ...Array.from(new Array(3)).map((_, i) =>
             [
               `<TableRow uxpId="table-row-${i + 1}">`,
               ...[
@@ -465,18 +465,18 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
       },
       'p-tabs': {
         props: { activeTabIndex: 0 },
-        children: Array.from(Array(2))
+        children: Array.from(new Array(2))
           .map((_, i) => `<TabsItem label="Tab ${i + 1}" uxpId="tabs-item-${i + 1}" children="Content ${i + 1}" />`)
           .join(glue),
       },
       'p-tabs-bar': {
         props: { activeTabIndex: 0 },
-        children: Array.from(Array(3))
+        children: Array.from(new Array(3))
           .map((_, i) => `<DummyButton uxpId="dummy-button-${i + 1}" children="Tab ${i + 1}" />`)
           .join(glue),
       },
       'p-text-list': {
-        children: Array.from(Array(2))
+        children: Array.from(new Array(2))
           .map((_, i) => `<TextListItem uxpId="text-list-item-${i + 1}" children="Item ${i + 1}" />`)
           .join(glue),
       },

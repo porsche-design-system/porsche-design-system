@@ -38,7 +38,7 @@ export const generateOptions = (
   }
 ): Option[] => {
   return Array.from(
-    Array(amount),
+    new Array(amount),
     (_, idx) =>
       ({
         value: values?.[idx] ? values[idx] : `Value ${idx}`,

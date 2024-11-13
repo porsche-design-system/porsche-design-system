@@ -1,5 +1,6 @@
 import type { BreakpointCustomizable, PropTypes, Theme } from '../../../types';
 import {
+  INTERNAL_SELECT_SLOT,
   type SelectDropdownDirection,
   type SelectOptgroup,
   type SelectOption,
@@ -9,7 +10,6 @@ import {
   getSelectedOptionString,
   getSrHighlightedOptionText,
   initNativeSelect,
-  INTERNAL_SELECT_SLOT,
   setSelectedOption,
   syncNativeSelect,
   syncSelectChildrenProps,
@@ -18,26 +18,30 @@ import {
 } from './select-utils';
 
 import {
-  type EventEmitter,
-  type JSX,
   Component,
   Element,
   Event,
-  forceUpdate,
-  h,
+  type EventEmitter,
+  type JSX,
   Listen,
   Prop,
   State,
   Watch,
+  forceUpdate,
+  h,
 } from '@stencil/core';
+import { getSlottedAnchorStyles } from '../../../styles';
 import {
-  addNativePopoverScrollAndResizeListeners,
   AllowedTypes,
+  FORM_STATES,
+  SELECT_DROPDOWN_DIRECTIONS,
+  SELECT_SEARCH_TIMEOUT,
+  THEMES,
+  addNativePopoverScrollAndResizeListeners,
   applyConstructableStylesheetStyles,
   attachComponentCss,
   detectNativePopoverCase,
   findClosestComponent,
-  FORM_STATES,
   getActionFromKeyboardEvent,
   getClosestHTMLElement,
   getComboboxAriaAttributes,
@@ -54,17 +58,13 @@ import {
   hasPropValueChanged,
   isClickOutside,
   isElementOfKind,
-  SELECT_DROPDOWN_DIRECTIONS,
-  SELECT_SEARCH_TIMEOUT,
   setNextSelectOptionHighlighted,
-  THEMES,
   throwIfElementIsNotOfKind,
   validateProps,
 } from '../../../utils';
-import { getComponentCss } from './select-styles';
 import { Label, labelId } from '../../common/label/label';
-import { messageId, StateMessage } from '../../common/state-message/state-message';
-import { getSlottedAnchorStyles } from '../../../styles';
+import { StateMessage, messageId } from '../../common/state-message/state-message';
+import { getComponentCss } from './select-styles';
 
 const propTypes: PropTypes<typeof Select> = {
   label: AllowedTypes.string,
@@ -381,8 +381,8 @@ export class Select {
     switch (action) {
       case 'Last':
       case 'First':
+        // biome-ignore lint/suspicious/noFallthroughSwitchClause: intentional fallthrough
         this.updateMenuState(true);
-      // intentional fallthrough
       case 'Next':
       case 'Previous':
       case 'PageUp':
@@ -400,9 +400,9 @@ export class Select {
         this.updateSrHighlightedOptionText();
         break;
       case 'CloseSelect':
+        // biome-ignore lint/suspicious/noFallthroughSwitchClause: intentional fallthrough
         event.preventDefault();
         this.updateSelectedOption(getHighlightedSelectOption(this.selectOptions));
-      // intentional fallthrough
       case 'Close':
         event.preventDefault();
         this.updateMenuState(false);

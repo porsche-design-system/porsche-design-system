@@ -1,10 +1,11 @@
-import { ControllerHost, type ReactiveController } from './controller-host';
+import { expect } from '@jest/globals';
 import type { ComponentInterface } from '@stencil/core';
 import * as stencilCore from '@stencil/core';
-import { expect } from '@jest/globals';
+import { ControllerHost, type ReactiveController } from './controller-host';
 
 class SomeComponent implements ComponentInterface {
   // @ts-ignore
+  // biome-ignore lint/correctness/noUnusedPrivateClassMembers: <explanation>
   private controllerHost = new ControllerHost(this);
 
   connectedCallback(): void {}

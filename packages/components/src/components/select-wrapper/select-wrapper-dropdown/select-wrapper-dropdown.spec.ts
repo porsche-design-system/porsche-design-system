@@ -104,7 +104,7 @@ describe('this.observeOptions()', () => {
     const component = initComponent();
     const options: HTMLOptionElement[] = [];
 
-    Array.from(Array(3)).forEach((_, idx) => {
+    Array.from(new Array(3)).forEach((_, idx) => {
       const el = document.createElement('option');
       el.value = `${idx}`;
       component.selectRef.appendChild(el);

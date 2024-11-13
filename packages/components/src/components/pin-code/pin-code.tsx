@@ -189,7 +189,7 @@ export class PinCode {
           isDisabled={this.disabled}
         />
         <div class="wrapper" onKeyDown={this.onKeyDown} onPaste={this.onPaste} onInput={this.onInput}>
-          {Array.from(Array(this.length), (_, index) => (
+          {Array.from(new Array(this.length), (_, index) => (
             <input
               key={index}
               {...(isCurrentInput(index, this.value, this.length) && { id: currentInputId })}

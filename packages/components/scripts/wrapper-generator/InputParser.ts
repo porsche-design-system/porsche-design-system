@@ -1,8 +1,8 @@
-import type { TagName } from '@porsche-design-system/shared';
-import * as path from 'path';
 import * as fs from 'fs';
-import { globbySync } from 'globby';
+import * as path from 'path';
 import { isDeprecatedComponent } from '@porsche-design-system/component-meta/src/utils';
+import type { TagName } from '@porsche-design-system/shared';
+import { globbySync } from 'globby';
 
 const ROOT_DIR = path.normalize(__dirname + '/../../');
 const DIST_DIR = path.resolve(ROOT_DIR, 'dist');
@@ -68,7 +68,7 @@ export class InputParser {
     const rawInterface = this.getRawComponentInterface(component);
     const cleanedInterface = rawInterface.replace(/\??: (.+?);/g, ": '$1',"); // convert to valid js object
 
-    // eslint-disable-next-line no-eval
+    // biome-ignore lint/security/noGlobalEval: safe to use here
     return eval(`(${cleanedInterface})`);
   }
 
@@ -164,7 +164,7 @@ export class InputParser {
     let [, rawIntrinsicElements] = /interface IntrinsicElements ({(?:\n|.)*?})/.exec(rawLocalJSX) || [];
 
     rawIntrinsicElements = rawIntrinsicElements.replace(/ (\w+);/g, " '$1',");
-    // eslint-disable-next-line no-eval
+    // biome-ignore lint/security/noGlobalEval: safe to use here
     this.intrinsicElements = eval(`(${rawIntrinsicElements})`);
 
     console.log(`Found ${Object.keys(this.intrinsicElements).length} intrinsicElements in ${bundleDtsFileName}`);
