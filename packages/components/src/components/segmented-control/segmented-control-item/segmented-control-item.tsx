@@ -1,4 +1,4 @@
-import { Component, Element, h, type JSX, Listen, Prop, Watch } from '@stencil/core';
+import { Component, Element, h, type JSX, Prop, Watch } from '@stencil/core';
 import {
   AllowedTypes,
   attachComponentCss,
@@ -65,13 +65,6 @@ export class SegmentedControlItem {
     updateParent(this.host);
   }
 
-  @Listen('click', { capture: true })
-  public onClick(e: MouseEvent): void {
-    if (this.disabled || this.host.selected) {
-      e.stopPropagation();
-    }
-  }
-
   public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
     return hasPropValueChanged(newVal, oldVal);
   }
@@ -87,10 +80,12 @@ export class SegmentedControlItem {
     const hasIcon = !!this.icon || !!this.iconSource;
     const hasSlottedContent = !!this.host.innerHTML;
 
+    const isDisabled = this.disabled || this.host.disabledParent;
+
     attachComponentCss(
       this.host,
       getComponentCss,
-      this.disabled,
+      isDisabled,
       this.host.selected,
       hasIcon,
       hasSlottedContent,
@@ -98,9 +93,12 @@ export class SegmentedControlItem {
     );
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
-
     return (
-      <button type="button" {...getSegmentedControlItemAriaAttributes(this.host.selected, this.disabled, this.aria)}>
+      <button
+        type="button"
+        onClick={!isDisabled && this.onClick}
+        {...getSegmentedControlItemAriaAttributes(this.host.selected, this.disabled, this.aria)}
+      >
         {this.label && <span>{this.label}</span>}
         {hasIcon && (
           <PrefixedTagNames.pIcon
@@ -117,4 +115,14 @@ export class SegmentedControlItem {
       </button>
     );
   }
+
+  private onClick = (): void => {
+    if (!this.disabled && !this.host.selected) {
+      this.host.dispatchEvent(
+        new CustomEvent('internalSegmentedControlItemUpdate', {
+          bubbles: true,
+        })
+      );
+    }
+  };
 }

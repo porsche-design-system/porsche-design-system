@@ -8,6 +8,7 @@ import {
   h,
   Host,
   type JSX,
+  Listen,
   Prop,
 } from '@stencil/core';
 import {
@@ -33,7 +34,6 @@ import {
   syncSegmentedControlItemsProps,
 } from './segmented-control-utils';
 import type { SegmentedControlItem } from '../segmented-control-item/segmented-control-item';
-import { getClickedItem } from '../../../utils/dom/getClickedItem';
 
 const propTypes: PropTypes<typeof SegmentedControl> = {
   backgroundColor: AllowedTypes.oneOf<SegmentedControlBackgroundColor>([
@@ -73,7 +73,7 @@ export class SegmentedControl {
   @Prop({ mutable: true }) public value?: string | number;
 
   /** The name of the segmented-control. */
-  @Prop({ reflect: true }) public name: string;
+  @Prop({ reflect: true }) public name?: string;
 
   /** Sets the amount of columns. */
   @Prop() public columns?: BreakpointCustomizable<SegmentedControlColumns> = 'auto';
@@ -82,7 +82,7 @@ export class SegmentedControl {
   @Prop({ reflect: true }) public form?: string; // The ElementInternals API automatically detects the form attribute
 
   /** Disables the segmented-control. */
-  @Prop() public disabled?: boolean = false;
+  @Prop({ mutable: true }) public disabled?: boolean = false;
 
   /**
    * @deprecated since v3.0.0, will be removed with next major release, use `update` event instead.
@@ -95,6 +95,15 @@ export class SegmentedControl {
   @AttachInternals() private internals: ElementInternals;
 
   private defaultValue: string | number;
+
+  @Listen('internalSegmentedControlItemUpdate')
+  public updateSegmentedControlItemHandler(e: Event & { target: HTMLElement & SegmentedControlItem }): void {
+    e.stopPropagation();
+    if (!this.disabled) {
+      this.internals.setFormValue(e.target.value.toString());
+      this.updateValue(e.target);
+    }
+  }
 
   public connectedCallback(): void {
     throwIfChildrenAreNotOfKind(this.host, 'p-segmented-control-item');
@@ -109,28 +118,10 @@ export class SegmentedControl {
 
   public componentWillLoad(): void {
     this.defaultValue = this.value;
-    this.updateSegmentedControlItemDisabledState();
-  }
-
-  public updateSegmentedControlItemDisabledState(): void {
-    if (this.disabled) {
-      Array.from(this.host.children).forEach((child) => {
-        (child as unknown as SegmentedControlItem).disabled = true;
-      });
-    }
   }
 
   public componentDidLoad(): void {
-    this.internals.setFormValue(this.value.toString());
-    this.host.addEventListener('click', (e) => {
-      const item: HTMLElement & SegmentedControlItem = getClickedItem(
-        this.host,
-        'p-segmented-control-item',
-        e.composedPath()
-      );
-      this.internals.setFormValue(item.value.toString());
-      this.updateValue(item);
-    });
+    this.internals.setFormValue(this.value?.toString());
   }
 
   public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
@@ -142,13 +133,12 @@ export class SegmentedControl {
   }
 
   public formResetCallback(): void {
-    this.internals.setFormValue(this.defaultValue.toString());
+    this.internals.setFormValue(this.defaultValue?.toString());
     this.value = this.defaultValue;
   }
 
   public formDisabledCallback(disabled: boolean): void {
     this.disabled = disabled;
-    this.updateSegmentedControlItemDisabledState();
   }
 
   public formStateRestoreCallback(state: string): void {
@@ -160,21 +150,19 @@ export class SegmentedControl {
     warnIfDeprecatedPropIsUsed<typeof SegmentedControl>(this, 'backgroundColor');
 
     attachComponentCss(this.host, getComponentCss, getItemMaxWidth(this.host), this.columns);
-    syncSegmentedControlItemsProps(this.host, this.value, this.theme);
+    syncSegmentedControlItemsProps(this.host, this.value, this.disabled, this.theme);
 
     return (
-      <Host role="group">
+      <Host role="group" inert={this.disabled}>
         <slot />
       </Host>
     );
   }
 
   private updateValue = (item: HTMLElement & SegmentedControlItem): void => {
-    if (item) {
-      this.value = item.value; // causes rerender
-      this.update.emit({ value: this.value });
-      this.segmentedControlChange.emit({ value: this.value });
-      item.focus();
-    }
+    this.value = item.value; // causes rerender
+    this.update.emit({ value: this.value });
+    this.segmentedControlChange.emit({ value: this.value });
+    item.focus();
   };
 }
