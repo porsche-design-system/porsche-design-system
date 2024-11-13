@@ -205,7 +205,6 @@ export class Select {
   }
 
   public formDisabledCallback(disabled: boolean): void {
-    console.log('formDisabledCallback:SELECT', disabled);
     this.disabled = disabled;
   }
 
