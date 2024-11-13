@@ -42,15 +42,16 @@ export class MultiSelectOption {
     attachComponentCss(this.host, getComponentCss, theme);
 
     const PrefixedTagNames = getPrefixedTagNames(this.host);
+    const isDisabled = this.disabled || this.host.disabledParent;
 
     return (
-      <Host onClick={!this.disabled && this.onClick}>
+      <Host onClick={!isDisabled && this.onClick}>
         <div
           class={{
             option: true,
             'option--selected': selected,
             'option--highlighted': highlighted,
-            'option--disabled': this.disabled,
+            'option--disabled': isDisabled,
           }}
         >
           <PrefixedTagNames.pCheckboxWrapper class="checkbox" theme={theme}>
@@ -58,8 +59,8 @@ export class MultiSelectOption {
               role="option"
               type="checkbox"
               checked={selected}
-              disabled={this.disabled}
-              {...getOptionAriaAttributes(selected, this.disabled, hidden, !!this.value)}
+              disabled={isDisabled}
+              {...getOptionAriaAttributes(selected, isDisabled, hidden, !!this.value)}
               aria-label={textContent}
               tabindex="-1"
             />

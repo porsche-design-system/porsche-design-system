@@ -42,18 +42,19 @@ export class SelectOption {
     const { theme = 'light', selected, highlighted, hidden } = this.host;
     attachComponentCss(this.host, getComponentCss, theme);
     const PrefixedTagNames = getPrefixedTagNames(this.host);
+    const isDisabled = this.disabled || this.host.disabledParent;
 
     return (
-      <Host onClick={!this.disabled && this.onClick}>
+      <Host onClick={!isDisabled && this.onClick}>
         <div
           role="option"
           class={{
             option: true,
             'option--selected': selected,
             'option--highlighted': highlighted,
-            'option--disabled': this.disabled,
+            'option--disabled': isDisabled,
           }}
-          {...getOptionAriaAttributes(selected, this.disabled, hidden, !!this.value)}
+          {...getOptionAriaAttributes(selected, isDisabled, hidden, !!this.value)}
         >
           <slot onSlotchange={this.onSlotChange} />
           {selected && (
@@ -61,7 +62,7 @@ export class SelectOption {
               class="icon"
               aria-hidden="true"
               name="check"
-              color={this.disabled ? 'state-disabled' : 'primary'}
+              color={isDisabled ? 'state-disabled' : 'primary'}
               theme={theme}
             />
           )}

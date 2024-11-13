@@ -4,6 +4,8 @@ import { consoleError, getTagNameWithoutPrefix } from '../../../utils';
 export type SelectOptionInternalHTMLProps = {
   /** The option selected state. */
   selected?: boolean;
+  /** The disabled state of the parent optgroup. */
+  disabledParent?: boolean;
   /** Highlights options when navigating with keyboard **/
   highlighted?: boolean;
   /** Option theme (synchronized from p-select) **/

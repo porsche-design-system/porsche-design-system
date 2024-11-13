@@ -115,7 +115,7 @@ export class Select {
   @Prop() public hideLabel?: BreakpointCustomizable<boolean> = false;
 
   /** Disables the select. */
-  @Prop() public disabled?: boolean = false;
+  @Prop({ mutable: true }) public disabled?: boolean = false;
 
   /** A Boolean attribute indicating that an option with a non-empty string value must be selected. */
   @Prop() public required?: boolean = false;
@@ -205,6 +205,7 @@ export class Select {
   }
 
   public formDisabledCallback(disabled: boolean): void {
+    console.log('formDisabledCallback:SELECT', disabled);
     this.disabled = disabled;
   }
 
