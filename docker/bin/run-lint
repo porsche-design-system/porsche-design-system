@@ -4,9 +4,35 @@ set -o errexit
 set -o pipefail
 
 if
+  [[ "--assets" == "${1}" ]] ||
+  [[ "--assets:crest" == "${1}" ]] ||
+  [[ "--assets:fallbacks" == "${1}" ]] ||
+  [[ "--assets:font-face" == "${1}" ]] ||
+  [[ "--assets:fonts" == "${1}" ]] ||
+  [[ "--assets:icons" == "${1}" ]] ||
+  [[ "--assets:marque" == "${1}" ]] ||
+  [[ "--assets:meta-icons" == "${1}" ]] ||
+  [[ "--assets:model-signatures" == "${1}" ]] ||
+  [[ "--component-meta" == "${1}" ]] ||
   [[ "--components" == "${1}" ]] ||
+  [[ "--components-angular" == "${1}" ]] ||
+  [[ "--components-js" == "${1}" ]] ||
+  [[ "--components-js:components-manager-cli" == "${1}" ]] ||
+  [[ "--components-js:components-manager-core" == "${1}" ]] ||
+  [[ "--components-js:jsdom-polyfill" == "${1}" ]] ||
+  [[ "--components-js:partials" == "${1}" ]] ||
+  [[ "--components-react" == "${1}" ]] ||
+  [[ "--components-react:nextjs" == "${1}" ]] ||
+  [[ "--components-react:react-ssr-wrapper" == "${1}" ]] ||
+  [[ "--components-react:remix" == "${1}" ]] ||
+  [[ "--components-react:uxpin-wrapper" == "${1}" ]] ||
   [[ "--components-vue" == "${1}" ]] ||
-  [[ "--storefront" == "${1}" ]]
+  [[ "--crawler" == "${1}" ]] ||
+  [[ "--shared" == "${1}" ]] ||
+  [[ "--storefront" == "${1}" ]] ||
+  [[ "--utilities" == "${1}" ]] ||
+  [[ "--utilities:ag-grid" == "${1}" ]] ||
+  [[ "--utilities:utilities" == "${1}" ]]
 then
   yarn lint:${1:2}
 else
