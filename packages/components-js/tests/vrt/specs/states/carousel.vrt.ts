@@ -25,7 +25,7 @@ const scenario = async (page: Page, theme: Theme, scheme?: PrefersColorScheme): 
       }
     </style>`;
 
-  const slides = Array.from(Array(6))
+  const slides = Array.from(new Array(6))
     .map((_, i) => `<div>Slide ${i + 1}</div>`)
     .join('');
 

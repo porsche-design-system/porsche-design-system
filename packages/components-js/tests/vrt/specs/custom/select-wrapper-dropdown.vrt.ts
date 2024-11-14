@@ -24,7 +24,7 @@ const scenario = async (page: Page): Promise<void> => {
     const getDropdown = (label: string, theme: Theme): Node => {
       const select = document.createElement('select');
       select.append(
-        ...Array.from(Array(4)).map((_, idx) => {
+        ...Array.from(new Array(4)).map((_, idx) => {
           const option = document.createElement('option');
           option.textContent = `Option ${label} ${idx + 1}`;
           return option;
@@ -63,7 +63,7 @@ const scenario = async (page: Page): Promise<void> => {
 
       const dropdownScrollable = getDropdown('scrollable', theme);
       (dropdownScrollable as any).selectRef.append(
-        ...Array.from(Array(8)).map((_, idx) => {
+        ...Array.from(new Array(8)).map((_, idx) => {
           const option = document.createElement('option');
           option.textContent = `Option scrollable ${idx + 4 + 1}`;
           return option;
@@ -78,7 +78,7 @@ const scenario = async (page: Page): Promise<void> => {
       (dropdownFilter as any).selectRef = document.createElement('select'); // without options
 
       const dropdownMultiline = getDropdown('multiline', theme);
-      (dropdownMultiline as any).selectRef.innerHTML = Array.from(Array(2))
+      (dropdownMultiline as any).selectRef.innerHTML = Array.from(new Array(2))
         .map(
           (_, idx) =>
             `<option>Option multiline ${

@@ -35,14 +35,14 @@ const initTable = (page: Page, opts?: InitOptions): Promise<void> => {
   ${hasSlottedCaption ? '<span slot="caption">Some caption</span>' : ''}
   <p-table-head>
     <p-table-head-row>
-      ${Array.from(Array(columnAmount)).map((_, i) => `<p-table-head-cell>Column ${i + 1}</p-table-head-cell>`)}
+      ${Array.from(new Array(columnAmount)).map((_, i) => `<p-table-head-cell>Column ${i + 1}</p-table-head-cell>`)}
     </p-table-head-row>
   </p-table-head>
   <p-table-body>
-    ${Array.from(Array(rowAmount)).map(
+    ${Array.from(new Array(rowAmount)).map(
       (_, i) => `
       <p-table-row>
-        ${Array.from(Array(columnAmount)).map((_, j) => `<p-table-cell>Row ${i + 1} Cell ${j + 1}</p-table-cell>`)}
+        ${Array.from(new Array(columnAmount)).map((_, j) => `<p-table-cell>Row ${i + 1} Cell ${j + 1}</p-table-cell>`)}
       </p-table-row>`
     )}
   </p-table-body>

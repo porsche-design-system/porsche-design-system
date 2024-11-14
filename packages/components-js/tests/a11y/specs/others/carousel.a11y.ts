@@ -36,7 +36,7 @@ const initCarousel = (page: Page, opts?: InitOptions) => {
     skipLinkTarget,
   } = opts || {};
 
-  const slides = Array.from(Array(amountOfSlides))
+  const slides = Array.from(new Array(amountOfSlides))
     .map((_, i) => {
       const link = withFocusableElements ? ` <a id="link-${i + 1}" href="#" onclick="return false;">Link</a>` : '';
       return `<div id="slide${i + 1}">Slide ${i + 1}${link}</div>`;

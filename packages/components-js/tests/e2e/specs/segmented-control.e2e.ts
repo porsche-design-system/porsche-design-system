@@ -30,7 +30,7 @@ const getFirstItemOffsetWidth = async (page: Page): Promise<number> => getOffset
 
 const initSegmentedControl = (page: Page, opts?: { amount?: number; value?: number }): Promise<void> => {
   const { amount = 1, value } = opts || {};
-  const items = Array.from(Array(amount))
+  const items = Array.from(new Array(amount))
     .map((_, i) => `<p-segmented-control-item value="${i + 1}">Option ${i + 1}</p-segmented-control-item>`)
     .join('\n');
 

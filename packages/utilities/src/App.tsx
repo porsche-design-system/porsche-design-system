@@ -168,10 +168,10 @@ export const App = (): JSX.Element => {
   return (
     <Fragment>
       <Grid>
-        {[...Array(8)].map((_, i) => (
+        {[...new Array(8)].map((_, i) => (
           <GridColumnMobile key={i} />
         ))}
-        {[...Array(16)].map((_, i) => (
+        {[...new Array(16)].map((_, i) => (
           <GridColumnDesktop key={i} />
         ))}
       </Grid>

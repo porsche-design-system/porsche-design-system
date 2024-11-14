@@ -26,7 +26,7 @@ const initScroller = (page: Page, opts?: InitOptions) => {
   const { amount = 8, isWrapped, otherMarkup = '', tag = 'button', scrollToPosition, hasScrollbar } = opts || {};
 
   const elementAttributes = tag === 'a' ? ' onclick="return false" href="#"' : '';
-  const elements = Array.from(Array(amount), (_, i) => `<${tag}${elementAttributes}>Button ${i + 1}</${tag}>`).join('');
+  const elements = Array.from(new Array(amount), (_, i) => `<${tag}${elementAttributes}>Button ${i + 1}</${tag}>`).join('');
 
   const attrs = [
     scrollToPosition ? `scroll-to-position="{ scrollPosition: ${scrollToPosition.scrollPosition} }"` : '',
@@ -238,7 +238,7 @@ test.describe('next/prev buttons', () => {
     // There seems to be a rounding issue that causes the element inside scroller to exceed the scroll container,
     // therefore the trigger gets pushed outside and the gradient is always shown.
     // To ensure the element exceeds the width of the wrapping div we need to assign static width values.
-    const steps = Array.from(Array(10)).map((_, index) => parseFloat(`150.${index}`));
+    const steps = Array.from(new Array(10)).map((_, index) => parseFloat(`150.${index}`));
 
     for (const width of steps) {
       test(`should not show actionNext for element with a width of ${width}`, async ({ page }) => {

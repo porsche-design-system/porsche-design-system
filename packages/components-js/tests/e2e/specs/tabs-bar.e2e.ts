@@ -37,7 +37,7 @@ const initTabsBar = (page: Page, opts?: InitOptions) => {
   const { amount = 8, activeTabIndex, size = 'small', isWrapped, otherMarkup = '', tag = 'button' } = opts || {};
 
   const tabAttributes = tag === 'a' ? ' onclick="return false" href="#"' : '';
-  const tabs = Array.from(Array(amount))
+  const tabs = Array.from(new Array(amount))
     .map((_, i) => `<${tag}${tabAttributes}>Tab Button ${i + 1}</${tag}>`)
     .join('');
 
@@ -486,7 +486,7 @@ test.describe('events', () => {
     await page.evaluate((COUNTER_KEY: string) => {
       const el = document.createElement('p-tabs-bar');
 
-      Array.from(Array(2)).forEach((_, i) => {
+      Array.from(new Array(2)).forEach((_, i) => {
         const child = document.createElement('button');
         child.innerText = `Tab ${i + 1}`;
         el.appendChild(child);
@@ -539,7 +539,7 @@ test.describe('errors', () => {
       const el = document.createElement('p-tabs-bar');
       el['activeTabIndex'] = -1;
 
-      Array.from(Array(2)).forEach((_, i) => {
+      Array.from(new Array(2)).forEach((_, i) => {
         const child = document.createElement('button');
         child.innerText = `Content ${i + 1}`;
         el.appendChild(child);

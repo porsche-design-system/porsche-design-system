@@ -160,7 +160,7 @@ describe('chunk size', () => {
 
     const tableHead = [
       header.map((x, idx) => (idx === 0 ? formatFirstCol(x) : formatNumberCol(x))),
-      Array.from(Array(9)).map((_, idx) => (idx === 0 ? formatFirstCol('', '-') : formatNumberCol('', '-'))),
+      Array.from(new Array(9)).map((_, idx) => (idx === 0 ? formatFirstCol('', '-') : formatNumberCol('', '-'))),
     ]
       .map((arr) => arr.join(''))
       .join('\n');
@@ -189,7 +189,7 @@ describe('chunk size', () => {
     );
 
     const tableFooter = [
-      Array.from(Array(9)).map((_, idx) => (idx === 0 ? formatFirstCol('', '-') : formatNumberCol('', '-'))),
+      Array.from(new Array(9)).map((_, idx) => (idx === 0 ? formatFirstCol('', '-') : formatNumberCol('', '-'))),
       [totalStats].map(formatTable),
     ]
       .map((arr) => arr.join(''))

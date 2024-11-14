@@ -12,7 +12,7 @@ const initTabs = (page: Page, opts?: { amount?: number; activeTabIndex?: number 
   const { amount = 3, activeTabIndex } = opts || {};
 
   const content = `<p-tabs ${activeTabIndex ? `active-tab-index="${activeTabIndex}"` : ''}>
-  ${Array.from(Array(amount))
+  ${Array.from(new Array(amount))
     .map((_, i) => `<p-tabs-item label="Tab ${i + 1}">Content ${i + 1}</p-tabs-item>`)
     .join('')}
 </p-tabs>`;

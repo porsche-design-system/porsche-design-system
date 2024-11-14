@@ -24,7 +24,7 @@ const shadowFactory =
 
     try {
       resultElement = getByFunc(container, idOrRole, options);
-    } catch (e) {
+    } catch (_e) {
       const elements = getHTMLElementsWithShadowRoot(container);
 
       for (const el of elements) {

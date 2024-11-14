@@ -35,7 +35,7 @@ const initBasicFlyoutMultilevel = (
 
   const flyoutMarkup = `
 <p-flyout-multilevel ${getHTMLAttributes(flyoutMultilevelProps)}>
-  ${[...Array(amount)]
+  ${[...new Array(amount)]
     .map(
       (_, i) =>
         `<p-flyout-multilevel-item identifier="item-${i + 1}">${

@@ -7,7 +7,7 @@ export const openAllSelectWrapper = async (page: Page): Promise<void> => {
       const selectType = select.getAttribute('filter') === 'true' ? 'filter' : 'select';
       select.shadowRoot
         .querySelector('p-select-wrapper-dropdown')
-        .shadowRoot.querySelector(selectType == 'filter' ? 'input' : 'button')
+        .shadowRoot.querySelector(selectType === 'filter' ? 'input' : 'button')
         .click();
     });
   });

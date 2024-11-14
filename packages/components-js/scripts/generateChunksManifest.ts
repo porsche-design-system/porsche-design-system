@@ -43,7 +43,7 @@ const generateChunksManifest = (): void => {
   try {
     const indexJsFile = require.resolve(packageName);
     manifest = createManifest(indexJsFile);
-  } catch (e) {
+  } catch (_e) {
     throw new Error(`"${packageName}" can't be resolved, so manifest will be empty`);
   }
 
