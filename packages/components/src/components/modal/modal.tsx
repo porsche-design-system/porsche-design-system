@@ -5,6 +5,7 @@ import {
   attachComponentCss,
   consoleWarn,
   getPrefixedTagNames,
+  getSlotTextContent,
   hasHeading,
   hasNamedSlot,
   hasPropValueChanged,
@@ -110,6 +111,7 @@ export class Modal {
   private footer: HTMLSlotElement;
   private hasHeader: boolean;
   private hasFooter: boolean;
+  private ariaLabelText: string;
 
   private get hasDismissButton(): boolean {
     return this.disableCloseButton ? false : this.dismissButton;
@@ -137,6 +139,9 @@ export class Modal {
 
   public componentDidRender(): void {
     setDialogVisibility(this.open, this.dialog, this.scroller);
+    if (this.hasHeader) {
+      this.headerText();
+    }
   }
 
   public componentDidLoad(): void {
@@ -207,7 +212,7 @@ export class Modal {
         onTransitionEnd={(e) => onTransitionEnd(e, this.open, this.motionVisibleEnd, this.motionHiddenEnd, this.dialog)}
         {...parseAndGetAriaAttributes({
           'aria-modal': true,
-          'aria-label': this.heading,
+          'aria-label': this.ariaLabelText,
           'aria-hidden': !this.open,
           ...parseAndGetAriaAttributes(this.aria),
         })}
@@ -246,5 +251,9 @@ export class Modal {
   private dismissDialog = (): void => {
     this.dismiss.emit();
     this.close.emit();
+  };
+
+  private headerText = (): void => {
+    this.ariaLabelText = hasNamedSlot(this.host, 'header') ? getSlotTextContent(this.host, 'header') : this.heading;
   };
 }
