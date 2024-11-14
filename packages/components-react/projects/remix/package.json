@@ -12,7 +12,7 @@
     "start": "concurrently -k -s 'first' -n 'cdn,dummyassets,app' 'serve-cdn' 'serve-dummyassets' 'cross-env NODE_ENV=development binode -- @remix-run/dev:remix dev'",
     "start-app": "concurrently -k -s 'first' -n 'cdn,dummyassets,app' 'serve-cdn' 'serve-dummyassets' 'remix-serve ./build/index.js'",
     "build-app": "remix build",
-    "lint": "eslint --cache --cache-location ./node_modules/.cache/eslint .",
+    "lint": "biome lint",
     "test": "yarn test:e2e && yarn test:vrt",
     "test:e2e": "yarn build-app && playwright test --config=tests/e2e/config/playwright.config.ts",
     "test:vrt": "playwright test --config=tests/vrt/config/playwright.config.ts",
@@ -32,14 +32,10 @@
   "devDependencies": {
     "@porsche-design-system/shared": "0.0.0",
     "@remix-run/dev": "^2.13.1",
-    "@remix-run/eslint-config": "^2.13.1",
-    "@types/eslint": "^9.6.1",
     "@types/react": "18.3.12",
     "@types/react-dom": "^18.3.1",
     "binode": "^1.0.5",
-    "cross-env": "^7.0.3",
-    "eslint": "^8.57.1",
-    "eslint-config-prettier": "^9.1.0"
+    "cross-env": "^7.0.3"
   },
   "peerDependencies": {
     "ag-grid-enterprise": "*",
@@ -48,11 +44,6 @@
     "tsx": "*",
     "typescript": "*"
   },
-  "eslintIgnore": [
-    "/node_modules",
-    "/build",
-    "/public/build"
-  ],
   "engines": {
     "node": ">=14"
   },
