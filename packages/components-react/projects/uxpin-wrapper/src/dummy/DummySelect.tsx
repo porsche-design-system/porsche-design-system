@@ -17,7 +17,7 @@ export type DummySelectProps = {
 };
 
 export const DummySelect = ({
-  options = Array.from(Array(3)).map((_, i) => `Option ${i + 1}`),
+  options = Array.from(new Array(3)).map((_, i) => `Option ${i + 1}`),
   ...props
 }: DummySelectProps): JSX.Element => {
   return (

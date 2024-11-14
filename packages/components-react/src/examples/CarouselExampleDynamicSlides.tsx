@@ -17,7 +17,7 @@ export const CarouselExampleDynamicSlidesPage = (): JSX.Element => {
   return (
     <>
       <PCarousel slidesPerPage={2} heading="Some Heading">
-        {Array.from(Array(amountOfSlides)).map((_, i) => (
+        {Array.from(new Array(amountOfSlides)).map((_, i) => (
           <div style={slideStyle} key={i} children={`Slide ${i + 1}`} />
         ))}
       </PCarousel>

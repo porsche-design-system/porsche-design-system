@@ -53,7 +53,7 @@ export const SelectDynamicExamplePage = (): JSX.Element => {
       </button>
 
       <PSelect name="options" label="Some Label" value={selectedValue} onUpdate={onUpdate}>
-        {[...Array(optionCount).keys()].map((idx) => (
+        {[...new Array(optionCount).keys()].map((idx) => (
           <PSelectOption key={idx} value={`${idx + 1}`}>
             Option {idx + 1}
           </PSelectOption>

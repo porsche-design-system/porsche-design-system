@@ -338,7 +338,7 @@ export const GridLayout = ({ visualizeGrid = true }: Props): JSX.Element => {
     <>
       {visualizeGrid && (
         <VisualizeGrid>
-          {[...Array(18)].map((_, i) => (
+          {[...new Array(18)].map((_, i) => (
             <VisualizeGridColumns key={i} />
           ))}
         </VisualizeGrid>
