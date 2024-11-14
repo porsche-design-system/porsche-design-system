@@ -84,6 +84,7 @@ const updateRoute = async (opts) => {
 
     const scripts = app.getElementsByTagName('script');
     for (let i = 0; i < scripts.length; i++) {
+      // biome-ignore lint/security/noGlobalEval: safe to use here
       eval(scripts[i].innerText); // execute scripts inserted via innerHTML
     }
   }

@@ -96,6 +96,7 @@
     },
     "ignore": [
       "**/aws/*",
+      "**/bin/*",
       "**/dist/*",
       "**/node_modules/*",
       "**/*.snap",
@@ -121,6 +122,9 @@
       "quoteStyle": "single",
       "attributePosition": "auto",
       "bracketSpacing": true
+    },
+    "parser": {
+      "unsafeParameterDecoratorsEnabled": true
     },
     "globals": [
       "onscrollend",
@@ -293,7 +297,15 @@
       }
     },
     {
-      "include": ["**/scripts/*", "**/bin/*", "**/rollup*"],
+      "include": [
+        "**/scripts/*",
+        "**/bin/*",
+        "./packages/crawler/*",
+        "./packages/components-js/projects/components-manager-cli/*",
+        "**/rollup*",
+        "**/webpack*",
+        "**/build*"
+      ],
       "linter": { "rules": { "suspicious": { "noConsole": "off" } } }
     },
     {

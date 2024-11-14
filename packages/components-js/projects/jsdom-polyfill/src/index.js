@@ -29,7 +29,8 @@ document.porscheDesignSystem = {
     url: 'https://cdn.ui.porsche.com', // needs to be set because we're not initializing via components-js load() method which would normally set this
     prefixes: [],
   },
-  'ROLLUP_REPLACE_VERSION': {
+  ROLLUP_REPLACE_VERSION: {
+    // biome-ignore lint/suspicious/noEmptyBlockStatements: ok
     readyResolve: () => {},
     isReady: () => Promise.resolve(),
   },

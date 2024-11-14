@@ -14,27 +14,31 @@ import {
 } from './select-utils';
 
 import {
-  type EventEmitter,
-  type JSX,
+  AttachInternals,
   Component,
   Element,
   Event,
-  forceUpdate,
-  h,
+  type EventEmitter,
+  type JSX,
   Listen,
   Prop,
   State,
   Watch,
-  AttachInternals,
+  forceUpdate,
+  h,
 } from '@stencil/core';
+import { getSlottedAnchorStyles } from '../../../styles';
 import {
-  addNativePopoverScrollAndResizeListeners,
   AllowedTypes,
+  FORM_STATES,
+  SELECT_DROPDOWN_DIRECTIONS,
+  SELECT_SEARCH_TIMEOUT,
+  THEMES,
+  addNativePopoverScrollAndResizeListeners,
   applyConstructableStylesheetStyles,
   attachComponentCss,
   detectNativePopoverCase,
   findClosestComponent,
-  FORM_STATES,
   getActionFromKeyboardEvent,
   getComboboxAriaAttributes,
   getHighlightedSelectOption,
@@ -50,17 +54,13 @@ import {
   hasPropValueChanged,
   isClickOutside,
   isElementOfKind,
-  SELECT_DROPDOWN_DIRECTIONS,
-  SELECT_SEARCH_TIMEOUT,
   setNextSelectOptionHighlighted,
-  THEMES,
   throwIfElementIsNotOfKind,
   validateProps,
 } from '../../../utils';
-import { getComponentCss } from './select-styles';
 import { Label, labelId } from '../../common/label/label';
-import { messageId, StateMessage } from '../../common/state-message/state-message';
-import { getSlottedAnchorStyles } from '../../../styles';
+import { StateMessage, messageId } from '../../common/state-message/state-message';
+import { getComponentCss } from './select-styles';
 
 const propTypes: PropTypes<typeof Select> = {
   label: AllowedTypes.string,
@@ -378,6 +378,7 @@ export class Select {
     switch (action) {
       case 'Last':
       case 'First':
+        // biome-ignore lint/suspicious/noFallthroughSwitchClause: intentional fallthrough
         this.updateMenuState(true);
       // intentional fallthrough
       case 'Next':
@@ -397,6 +398,7 @@ export class Select {
         this.updateSrHighlightedOptionText();
         break;
       case 'CloseSelect':
+        // biome-ignore lint/suspicious/noFallthroughSwitchClause: intentional fallthrough
         event.preventDefault();
         this.updateSelectedOption(getHighlightedSelectOption(this.selectOptions));
       // intentional fallthrough
