@@ -141,7 +141,7 @@ const generateVRTPagesForJsFramework = (htmlFileContentMap: Record<string, strin
       fileContent = fileContent.trim();
 
       // extract and replace style if there is any
-      let [, style] = fileContent.match(styleRegEx) || [];
+      const [, style] = fileContent.match(styleRegEx) || [];
       fileContent = fileContent.replace(styleRegEx, '\n');
 
       // get rid of prettier commented
@@ -165,7 +165,7 @@ const generateVRTPagesForJsFramework = (htmlFileContentMap: Record<string, strin
       const usesSetAllReady = script?.includes('componentsReady()') && fileName === 'core-initializer';
 
       // extract template if there is any, replacing is framework specific
-      let [, template] = fileContent.match(templateRegEx) || [];
+      const [, template] = fileContent.match(templateRegEx) || [];
 
       fileContent = fileContent.trim();
 

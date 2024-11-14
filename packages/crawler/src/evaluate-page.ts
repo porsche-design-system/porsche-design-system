@@ -169,7 +169,7 @@ export const evaluatePage = async (page: Page): Promise<ConsumedTagNamesForVersi
 
     let consumedTagNames = {};
 
-    for (let prefix of prefixes) {
+    for (const prefix of prefixes) {
       const allPdsElementsForPrefix = await getAllPdsElements(allDOMElements, prefix);
 
       consumedTagNames = {
