@@ -1,4 +1,4 @@
-import type { type InjectionKey, type Ref, inject } from 'vue';
+import { type InjectionKey, type Ref, inject } from 'vue';
 import type { Theme, ToastMessage } from './lib/types';
 
 export const prefixInjectionKey = Symbol('pdsPrefix') as InjectionKey<string>;

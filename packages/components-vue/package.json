@@ -45,7 +45,7 @@
     "@vue/vue3-jest": "29.2.6",
     "vite-plugin-html": "^3.2.2",
     "vite-plugin-static-copy": "^2.0.0",
-    "vue-tsc": "2.1.10"
+    "vue-tsc": "^2.1.10"
   },
   "peerDependencies": {
     "globals": "*",
