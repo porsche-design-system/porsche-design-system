@@ -6,8 +6,6 @@ import {
   getUsableSelectOptions,
   type SelectDropdownDirectionInternal,
   type SelectComponentsDropdownDirection,
-  setAttribute,
-  setAttributes,
   type Theme,
 } from '../../../utils';
 import type { SelectOptionInternalHTMLProps } from '../select-option/select-option-utils';
@@ -23,8 +21,6 @@ export type SelectUpdateEventDetail = {
   name: string;
   value: string;
 };
-
-export const INTERNAL_SELECT_SLOT = 'internal-select';
 
 // TODO: share between select & multi-select
 export const syncSelectChildrenProps = (children: (SelectOption | SelectOptgroup)[], theme: Theme): void => {
@@ -73,43 +69,6 @@ export const setSelectedOption = (options: SelectOption[], selectedOption: Selec
   resetSelectedOption(options);
   selectedOption.selected = true;
   forceUpdate(selectedOption);
-};
-
-// TODO: Mostly same as multi-select
-// TODO: Extract slot name into const
-export const initNativeSelect = (
-  host: HTMLElement,
-  name: string,
-  disabled: boolean,
-  required: boolean
-): HTMLSelectElement => {
-  const nativeSelect = document.createElement('select');
-  setAttributes(nativeSelect, {
-    'aria-hidden': 'true',
-    tabindex: '-1',
-    slot: INTERNAL_SELECT_SLOT,
-  });
-  syncNativeSelect(nativeSelect, name, disabled, required);
-  host.prepend(nativeSelect);
-  return nativeSelect;
-};
-
-// TODO: Same as multi-select
-export const syncNativeSelect = (
-  nativeSelect: HTMLSelectElement,
-  name: string,
-  disabled: boolean,
-  required: boolean
-): void => {
-  setAttribute(nativeSelect, 'name', name);
-  nativeSelect.toggleAttribute('disabled', disabled);
-  nativeSelect.toggleAttribute('required', required);
-};
-
-export const updateNativeSelectOption = (nativeSelect: HTMLSelectElement, selectOptions: SelectOption[]): void => {
-  const selectedOption = selectOptions.find((option) => option.selected);
-  // Check for value since empty option can also be selected
-  nativeSelect.innerHTML = selectedOption?.value ? `<option value="${selectedOption.value}" selected></option>` : '';
 };
 
 // TODO: This is copied from multi-select, extract and reuse in both components

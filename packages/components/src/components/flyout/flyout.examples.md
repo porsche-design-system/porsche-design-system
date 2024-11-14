@@ -54,6 +54,16 @@ It's possible to disable closing the flyout by click on the backdrop.
   <PlaygroundSelect v-model="position" :values="positions" name="position"></PlaygroundSelect>
 </Playground>
 
+## Footer Behavior
+
+The flyout footer flows beneath the content by default and becomes sticky at the bottom when the content overflows the
+container height (`footer-behavior="sticky"`). To keep the footer fixed at the bottom at all times, regardless of
+content height, set the `footer-behavior` prop to `fixed`.
+
+<Playground :markup="footerBehaviorMarkup" :config="config">
+  <PlaygroundSelect v-model="footerBehavior" :values="footerBehaviors" name="footer-behavior"></PlaygroundSelect>
+</Playground>
+
 ## Example: Scrollable footer with sticky footer and sub footer
 
 If the flyout's content does not fit into the current boundaries the content becomes scrollable and the footer area
@@ -194,6 +204,19 @@ export default class Code extends Vue {
     </div>  
   </div>
 </p-flyout>`;
+
+  footerBehaviors = ['sticky', 'fixed'];
+  footerBehavior = 'fixed';
+  get footerBehaviorMarkup() { 
+    return `<p-button type="button" aria="{ 'aria-haspopup': 'dialog' }">Open Flyout</p-button>
+<p-flyout footer-behavior="${this.footerBehavior}" aria="{ 'aria-label': 'Some Heading' }" open="false">
+  <p-text>Some Content</p-text>
+  <p-button-group slot="footer">
+    <p-button type="button">Proceed</p-button>
+    <p-button type="button" variant="secondary">Cancel</p-button>
+  </p-button-group>
+</p-flyout>`;
+  }
 
   cssVariableWidth = '80vw';
   cssVariableMaxWidth = '1000px';

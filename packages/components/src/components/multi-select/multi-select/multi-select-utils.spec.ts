@@ -9,7 +9,6 @@ import {
   getSelectedOptionValues,
   getUsableOptions,
   hasFilterOptionResults,
-  initNativeMultiSelect,
   type MultiSelectOptgroup,
   type MultiSelectOption,
   resetFilteredOptions,
@@ -21,13 +20,9 @@ import {
   setNextOptionHighlighted,
   setSelectedOptions,
   syncMultiSelectChildrenProps,
-  syncNativeMultiSelect,
   updateHighlightedOption,
-  updateNativeOptions,
   updateOptionsFilterState,
 } from './multi-select-utils';
-import * as setAttributesUtils from '../../../utils/dom/setAttributes';
-import * as setAttributeUtils from '../../../utils/dom/setAttribute';
 import * as dropdownDirectionUtils from '../../../utils/select/select-dropdown';
 import type { DropdownDirectionInternal } from '../../select-wrapper/select-wrapper/select-wrapper-utils';
 
@@ -93,97 +88,6 @@ describe('syncMultiSelectChildrenProps', () => {
 
     options.forEach((option) => {
       expect(option.theme).toBe('dark');
-    });
-  });
-});
-
-describe('initNativeMultiSelect', () => {
-  it('should return native select with added attributes and add native select to host', () => {
-    const spy = jest.spyOn(setAttributesUtils, 'setAttributes');
-    const syncNativeMultiSelectSpy = jest.spyOn(multiSelectUtils, 'syncNativeMultiSelect');
-
-    const host = document.createElement('p-multi-select');
-    const name = 'options';
-    const disabled = true;
-    const required = false;
-
-    const nativeSelect = initNativeMultiSelect(host, name, disabled, required);
-
-    expect(nativeSelect instanceof HTMLSelectElement).toBe(true);
-    expect(spy).toHaveBeenCalledWith(nativeSelect, {
-      multiple: 'true',
-      'aria-hidden': 'true',
-      tabindex: '-1',
-      slot: 'internal-select',
-    });
-    expect(syncNativeMultiSelectSpy).toHaveBeenCalledWith(nativeSelect, name, disabled, required);
-    expect(host.firstChild).toBe(nativeSelect);
-  });
-});
-
-describe('syncNativeMultiSelect', () => {
-  it('should synchronize attributes of native select element', () => {
-    const setAttributeSpy = jest.spyOn(setAttributeUtils, 'setAttribute');
-
-    const nativeSelect = document.createElement('select');
-    const toggleAttributeSpy = jest.spyOn(nativeSelect, 'toggleAttribute');
-    const name = 'testSelect';
-    const disabled = true;
-    const required = false;
-
-    syncNativeMultiSelect(nativeSelect, name, disabled, required);
-
-    expect(setAttributeSpy).toHaveBeenCalledWith(nativeSelect, 'name', name);
-    expect(toggleAttributeSpy).toHaveBeenCalledWith('disabled', true);
-    expect(toggleAttributeSpy).toHaveBeenCalledWith('required', false);
-  });
-
-  it('should remove "disabled" and "required" attributes when not disabled and not required', () => {
-    const setAttributeSpy = jest.spyOn(setAttributeUtils, 'setAttribute');
-    const nativeSelect = document.createElement('select');
-    const toggleAttributeSpy = jest.spyOn(nativeSelect, 'toggleAttribute');
-    const name = 'testSelect';
-    const disabled = false;
-    const required = false;
-
-    syncNativeMultiSelect(nativeSelect, name, disabled, required);
-
-    expect(setAttributeSpy).toHaveBeenCalledWith(nativeSelect, 'name', name);
-    expect(toggleAttributeSpy).toHaveBeenCalledWith('disabled', false);
-    expect(toggleAttributeSpy).toHaveBeenCalledWith('required', false);
-  });
-
-  it('should add "required" and "disabled" attributes when required and disabled', () => {
-    const setAttributeSpy = jest.spyOn(setAttributeUtils, 'setAttribute');
-    const nativeSelect = document.createElement('select');
-    const toggleAttributeSpy = jest.spyOn(nativeSelect, 'toggleAttribute');
-    const name = 'testSelect';
-    const disabled = true;
-    const required = true;
-
-    syncNativeMultiSelect(nativeSelect, name, disabled, required);
-
-    expect(setAttributeSpy).toHaveBeenCalledWith(nativeSelect, 'name', name);
-    expect(toggleAttributeSpy).toHaveBeenCalledWith('disabled', true);
-    expect(toggleAttributeSpy).toHaveBeenCalledWith('required', true);
-  });
-});
-
-describe('updateNativeOptions()', () => {
-  it('should update the innerHTML of the nativeSelect', () => {
-    const nativeSelect = document.createElement('select');
-    const selectedOptions = [0, 1, 2];
-    const options = generateMultiSelectOptions({ amount: 4, selectedIndices: selectedOptions });
-
-    updateNativeOptions(nativeSelect, options);
-    const optionElements = nativeSelect.querySelectorAll('option');
-    expect(optionElements.length).toBe(selectedOptions.length);
-
-    optionElements.forEach((option, index) => {
-      expect(option.value).toBe(options[index].value);
-      // prop reflection not completed yet
-      expect(option.getAttribute('selected') === 'true').toBe(options[index].selected);
-      expect(option.textContent).toBe(options[index].textContent);
     });
   });
 });

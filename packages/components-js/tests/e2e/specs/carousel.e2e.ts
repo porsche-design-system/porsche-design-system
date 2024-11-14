@@ -229,6 +229,44 @@ test('should update pagination on next button clicks', async ({ page }) => {
   expect(await getCssClasses(bullet3)).toBe('bullet');
 });
 
+test('should update pagination in focusOnCenterSlide mode if slidesPerPage changed dynamically and on next button clicks', async ({
+  page,
+}) => {
+  await initCarousel(page, {
+    slidesPerPage: 1,
+    amountOfSlides: 6,
+    activeSlideIndex: 0,
+    focusOnCenterSlide: true,
+  });
+  const host = getHost(page);
+  const buttonNext = getButtonNext(page);
+  const pagination = getPagination(page);
+  const [bullet1, bullet2, bullet3] = await getPaginationBullets(page);
+
+  expect(await pagination.evaluate((el) => el.children.length)).toBe(6);
+  expect(await getCssClasses(bullet1)).toBe('bullet bullet--active');
+  expect(await getCssClasses(bullet2)).toBe('bullet');
+  expect(await getCssClasses(bullet3)).toBe('bullet');
+
+  await buttonNext.click();
+  expect(await getCssClasses(bullet1)).toBe('bullet');
+  expect(await getCssClasses(bullet2)).toBe('bullet bullet--active');
+  expect(await getCssClasses(bullet3)).toBe('bullet');
+
+  await setProperty(host, 'slidesPerPage', 3);
+  await waitForStencilLifecycle(page);
+  expect(await pagination.evaluate((el) => el.children.length)).toBe(6);
+
+  expect(await getCssClasses(bullet1)).toBe('bullet');
+  expect(await getCssClasses(bullet2)).toBe('bullet bullet--active');
+  expect(await getCssClasses(bullet3)).toBe('bullet');
+
+  await buttonNext.click();
+  expect(await getCssClasses(bullet1)).toBe('bullet bullet--infinite');
+  expect(await getCssClasses(bullet2)).toBe('bullet');
+  expect(await getCssClasses(bullet3)).toBe('bullet bullet--active');
+});
+
 test('should update infinite pagination on next button clicks', async ({ page }) => {
   await initCarousel(page, { amountOfSlides: 6 });
   const buttonNext = getButtonNext(page);
@@ -460,6 +498,30 @@ test.describe('adding/removing slides', () => {
     await waitForStencilLifecycle(page);
     expect((await getSlides(page)).length).toBe(2);
     expect(await pagination.evaluate((el) => el.children.length)).toBe(2);
+  });
+
+  test('should update pagination in focusOnCenterSlide mode', async ({ page }) => {
+    await initCarousel(page, { amountOfSlides: 6, slidesPerPage: 3, activeSlideIndex: 0, focusOnCenterSlide: true });
+    const host = getHost(page);
+
+    const pagination = getPagination(page);
+    expect(await pagination.evaluate((el) => el.children.length)).toBe(6);
+    const [bullet1, bullet2] = await getPaginationBullets(page);
+    expect(await getCssClasses(bullet1)).toBe('bullet bullet--active');
+    expect(await getCssClasses(bullet2)).toBe('bullet');
+
+    await addSlide(host);
+    await waitForStencilLifecycle(page);
+
+    expect((await getSlides(page)).length).toBe(7);
+    expect(await pagination.evaluate((el) => el.children.length)).toBe(7);
+    const [, , bullet3] = await getPaginationBullets(page);
+    expect(await getCssClasses(bullet3)).toBe('bullet');
+
+    await removeSlide(host);
+    await waitForStencilLifecycle(page);
+    expect((await getSlides(page)).length).toBe(6);
+    expect(await pagination.evaluate((el) => el.children.length)).toBe(6);
   });
 
   test('should update infinite pagination', async ({ page }) => {

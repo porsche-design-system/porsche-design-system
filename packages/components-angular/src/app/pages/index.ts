@@ -70,9 +70,20 @@ import { DividerComponent } from './generated/divider.component';
 import { FieldsetComponent } from './generated/fieldset.component';
 import { FieldsetWrapperComponent } from './generated/fieldset-wrapper.component';
 import { FlexComponent } from './generated/flex.component';
-import { FlyoutComponent } from './generated/flyout.component';
+import { Flyout_1Component } from './generated/flyout-1.component';
+import { Flyout_2Component } from './generated/flyout-2.component';
 import { FlyoutBasicComponent } from './generated/flyout-basic.component';
 import { FlyoutCssVariablesComponent } from './generated/flyout-css-variables.component';
+import { FlyoutFixedFooterComponent } from './generated/flyout-fixed-footer.component';
+import { FlyoutFixedFooterHeaderComponent } from './generated/flyout-fixed-footer-header.component';
+import { FlyoutFixedFooterHeaderScrollableContentComponent } from './generated/flyout-fixed-footer-header-scrollable-content.component';
+import { FlyoutFixedFooterHeaderSubfooterComponent } from './generated/flyout-fixed-footer-header-subfooter.component';
+import { FlyoutFixedFooterHeaderSubfooterScrollableContentComponent } from './generated/flyout-fixed-footer-header-subfooter-scrollable-content.component';
+import { FlyoutFixedFooterScrollableContentComponent } from './generated/flyout-fixed-footer-scrollable-content.component';
+import { FlyoutFixedFooterScrollableContentScrolledComponent } from './generated/flyout-fixed-footer-scrollable-content-scrolled.component';
+import { FlyoutFixedFooterSubfooterComponent } from './generated/flyout-fixed-footer-subfooter.component';
+import { FlyoutFixedFooterSubfooterScrollableContentComponent } from './generated/flyout-fixed-footer-subfooter-scrollable-content.component';
+import { FlyoutFixedFooterSubfooterScrollableContentScrolledComponent } from './generated/flyout-fixed-footer-subfooter-scrollable-content-scrolled.component';
 import { FlyoutFooterComponent } from './generated/flyout-footer.component';
 import { FlyoutFooterScrollableContentComponent } from './generated/flyout-footer-scrollable-content.component';
 import { FlyoutFooterScrolledComponent } from './generated/flyout-footer-scrolled.component';
@@ -205,9 +216,20 @@ export const generatedPages = [
   FieldsetComponent,
   FieldsetWrapperComponent,
   FlexComponent,
-  FlyoutComponent,
+  Flyout_1Component,
+  Flyout_2Component,
   FlyoutBasicComponent,
   FlyoutCssVariablesComponent,
+  FlyoutFixedFooterComponent,
+  FlyoutFixedFooterHeaderComponent,
+  FlyoutFixedFooterHeaderScrollableContentComponent,
+  FlyoutFixedFooterHeaderSubfooterComponent,
+  FlyoutFixedFooterHeaderSubfooterScrollableContentComponent,
+  FlyoutFixedFooterScrollableContentComponent,
+  FlyoutFixedFooterScrollableContentScrolledComponent,
+  FlyoutFixedFooterSubfooterComponent,
+  FlyoutFixedFooterSubfooterScrollableContentComponent,
+  FlyoutFixedFooterSubfooterScrollableContentScrolledComponent,
   FlyoutFooterComponent,
   FlyoutFooterScrollableContentComponent,
   FlyoutFooterScrolledComponent,
@@ -493,9 +515,14 @@ export const generatedRoutes: ExtendedRoute[] = [
     component: FlexComponent,
   },
   {
-    name: 'Flyout',
-    path: 'flyout',
-    component: FlyoutComponent,
+    name: 'Flyout 1',
+    path: 'flyout-1',
+    component: Flyout_1Component,
+  },
+  {
+    name: 'Flyout 2',
+    path: 'flyout-2',
+    component: Flyout_2Component,
   },
   {
     name: 'Flyout Basic',
@@ -506,6 +533,56 @@ export const generatedRoutes: ExtendedRoute[] = [
     name: 'Flyout Css Variables',
     path: 'flyout-css-variables',
     component: FlyoutCssVariablesComponent,
+  },
+  {
+    name: 'Flyout Fixed Footer',
+    path: 'flyout-fixed-footer',
+    component: FlyoutFixedFooterComponent,
+  },
+  {
+    name: 'Flyout Fixed Footer Header',
+    path: 'flyout-fixed-footer-header',
+    component: FlyoutFixedFooterHeaderComponent,
+  },
+  {
+    name: 'Flyout Fixed Footer Header Scrollable Content',
+    path: 'flyout-fixed-footer-header-scrollable-content',
+    component: FlyoutFixedFooterHeaderScrollableContentComponent,
+  },
+  {
+    name: 'Flyout Fixed Footer Header Subfooter',
+    path: 'flyout-fixed-footer-header-subfooter',
+    component: FlyoutFixedFooterHeaderSubfooterComponent,
+  },
+  {
+    name: 'Flyout Fixed Footer Header Subfooter Scrollable Content',
+    path: 'flyout-fixed-footer-header-subfooter-scrollable-content',
+    component: FlyoutFixedFooterHeaderSubfooterScrollableContentComponent,
+  },
+  {
+    name: 'Flyout Fixed Footer Scrollable Content',
+    path: 'flyout-fixed-footer-scrollable-content',
+    component: FlyoutFixedFooterScrollableContentComponent,
+  },
+  {
+    name: 'Flyout Fixed Footer Scrollable Content Scrolled',
+    path: 'flyout-fixed-footer-scrollable-content-scrolled',
+    component: FlyoutFixedFooterScrollableContentScrolledComponent,
+  },
+  {
+    name: 'Flyout Fixed Footer Subfooter',
+    path: 'flyout-fixed-footer-subfooter',
+    component: FlyoutFixedFooterSubfooterComponent,
+  },
+  {
+    name: 'Flyout Fixed Footer Subfooter Scrollable Content',
+    path: 'flyout-fixed-footer-subfooter-scrollable-content',
+    component: FlyoutFixedFooterSubfooterScrollableContentComponent,
+  },
+  {
+    name: 'Flyout Fixed Footer Subfooter Scrollable Content Scrolled',
+    path: 'flyout-fixed-footer-subfooter-scrollable-content-scrolled',
+    component: FlyoutFixedFooterSubfooterScrollableContentScrolledComponent,
   },
   {
     name: 'Flyout Footer',

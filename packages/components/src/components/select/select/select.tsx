@@ -1,6 +1,5 @@
 import type { BreakpointCustomizable, PropTypes, Theme } from '../../../types';
 import {
-  INTERNAL_SELECT_SLOT,
   type SelectDropdownDirection,
   type SelectOptgroup,
   type SelectOption,
@@ -9,41 +8,34 @@ import {
   getSelectDropdownDirection,
   getSelectedOptionString,
   getSrHighlightedOptionText,
-  initNativeSelect,
   setSelectedOption,
-  syncNativeSelect,
   syncSelectChildrenProps,
-  updateNativeSelectOption,
   updateSelectOptions,
 } from './select-utils';
 
 import {
+  type EventEmitter,
+  type JSX,
   Component,
   Element,
   Event,
-  type EventEmitter,
-  type JSX,
+  forceUpdate,
+  h,
   Listen,
   Prop,
   State,
   Watch,
-  forceUpdate,
-  h,
+  AttachInternals,
 } from '@stencil/core';
-import { getSlottedAnchorStyles } from '../../../styles';
 import {
-  AllowedTypes,
-  FORM_STATES,
-  SELECT_DROPDOWN_DIRECTIONS,
-  SELECT_SEARCH_TIMEOUT,
-  THEMES,
   addNativePopoverScrollAndResizeListeners,
+  AllowedTypes,
   applyConstructableStylesheetStyles,
   attachComponentCss,
   detectNativePopoverCase,
   findClosestComponent,
+  FORM_STATES,
   getActionFromKeyboardEvent,
-  getClosestHTMLElement,
   getComboboxAriaAttributes,
   getHighlightedSelectOption,
   getHighlightedSelectOptionIndex,
@@ -58,13 +50,17 @@ import {
   hasPropValueChanged,
   isClickOutside,
   isElementOfKind,
+  SELECT_DROPDOWN_DIRECTIONS,
+  SELECT_SEARCH_TIMEOUT,
   setNextSelectOptionHighlighted,
+  THEMES,
   throwIfElementIsNotOfKind,
   validateProps,
 } from '../../../utils';
-import { Label, labelId } from '../../common/label/label';
-import { StateMessage, messageId } from '../../common/state-message/state-message';
 import { getComponentCss } from './select-styles';
+import { Label, labelId } from '../../common/label/label';
+import { messageId, StateMessage } from '../../common/state-message/state-message';
+import { getSlottedAnchorStyles } from '../../../styles';
 
 const propTypes: PropTypes<typeof Select> = {
   label: AllowedTypes.string,
@@ -76,6 +72,7 @@ const propTypes: PropTypes<typeof Select> = {
   hideLabel: AllowedTypes.breakpoint('boolean'),
   disabled: AllowedTypes.boolean,
   required: AllowedTypes.boolean,
+  form: AllowedTypes.string,
   dropdownDirection: AllowedTypes.oneOf<SelectDropdownDirection>(SELECT_DROPDOWN_DIRECTIONS),
   theme: AllowedTypes.oneOf<Theme>(THEMES),
 };
@@ -91,6 +88,7 @@ const propTypes: PropTypes<typeof Select> = {
 @Component({
   tag: 'p-select',
   shadow: { delegatesFocus: true },
+  formAssociated: true,
 })
 export class Select {
   @Element() public host!: HTMLElement;
@@ -128,20 +126,23 @@ export class Select {
   /** Adapts the select color depending on the theme. */
   @Prop() public theme?: Theme = 'light';
 
+  /** The id of a form element the select should be associated with. */
+  @Prop({ reflect: true }) public form?: string; // The ElementInternals API automatically detects the form attribute
+
   /** Emitted when the selection is changed. */
   @Event({ bubbles: false }) public update: EventEmitter<SelectUpdateEventDetail>;
 
   @State() private isOpen = false;
   @State() private srHighlightedOptionText = '';
 
-  private nativeSelect: HTMLSelectElement;
+  @AttachInternals() private internals: ElementInternals;
+
+  private defaultValue: string;
   private comboboxContainer: HTMLDivElement;
   private combobox: HTMLButtonElement;
   private listElement: HTMLDivElement;
   private selectOptions: SelectOption[] = [];
   private selectOptgroups: SelectOptgroup[] = [];
-  private form: HTMLFormElement;
-  private isWithinForm: boolean;
   private preventOptionUpdate = false; // Used to prevent value watcher from updating options when options are already updated
   private searchString: string = '';
   private searchTimeout: ReturnType<typeof setTimeout> | number = null;
@@ -157,23 +158,19 @@ export class Select {
 
   @Watch('value')
   public onValueChange(): void {
+    this.internals.setFormValue(this.value);
     // When setting initial value the watcher gets called before the options are defined
     if (this.selectOptions.length > 0) {
       if (!this.preventOptionUpdate) {
         updateSelectOptions(this.selectOptions, this.value);
       }
       this.preventOptionUpdate = false;
-      if (this.isWithinForm) {
-        updateNativeSelectOption(this.nativeSelect, this.selectOptions);
-      }
     }
   }
 
   public connectedCallback(): void {
     applyConstructableStylesheetStyles(this.host, getSlottedAnchorStyles);
     document.addEventListener('mousedown', this.onClickOutside, true);
-    this.form = getClosestHTMLElement(this.host, 'form');
-    this.isWithinForm = !!this.form;
     this.isNativePopoverCase = detectNativePopoverCase(this.host, false);
     if (this.isNativePopoverCase) {
       this.parentTableElement = findClosestComponent(this.host, 'pTable');
@@ -181,12 +178,10 @@ export class Select {
   }
 
   public componentWillLoad(): void {
+    this.defaultValue = this.value;
+    this.internals.setFormValue(this.value);
     this.updateOptions();
     updateSelectOptions(this.selectOptions, this.value);
-    if (this.isWithinForm) {
-      this.nativeSelect = initNativeSelect(this.host, this.name, this.disabled, this.required);
-      updateNativeSelectOption(this.nativeSelect, this.selectOptions);
-    }
   }
 
   public componentDidLoad(): void {
@@ -205,14 +200,21 @@ export class Select {
     return hasPropValueChanged(newVal, oldVal);
   }
 
-  public componentWillUpdate(): void {
-    if (this.isWithinForm) {
-      syncNativeSelect(this.nativeSelect, this.name, this.disabled, this.required);
-    }
-  }
-
   public disconnectedCallback(): void {
     document.removeEventListener('mousedown', this.onClickOutside, true);
+  }
+
+  public formDisabledCallback(disabled: boolean): void {
+    this.disabled = disabled;
+  }
+
+  public formStateRestoreCallback(state: string): void {
+    this.value = state;
+  }
+
+  public formResetCallback(): void {
+    this.internals.setFormValue(this.defaultValue);
+    this.value = this.defaultValue;
   }
 
   public render(): JSX.Element {
@@ -225,7 +227,6 @@ export class Select {
       this.disabled,
       this.hideLabel,
       this.state,
-      this.isWithinForm,
       this.isNativePopoverCase,
       this.theme
     );
@@ -298,7 +299,6 @@ export class Select {
         <span class="sr-only" role="status" aria-live="assertive" aria-relevant="additions text">
           {this.srHighlightedOptionText}
         </span>
-        {this.isWithinForm && <slot name={INTERNAL_SELECT_SLOT} />}
       </div>
     );
   }
@@ -306,9 +306,6 @@ export class Select {
   private onSlotchange = (): void => {
     this.updateOptions();
     updateSelectOptions(this.selectOptions, this.value);
-    if (this.isWithinForm) {
-      updateNativeSelectOption(this.nativeSelect, this.selectOptions);
-    }
     // Necessary to update selected options in placeholder
     forceUpdate(this.host);
   };
@@ -381,8 +378,8 @@ export class Select {
     switch (action) {
       case 'Last':
       case 'First':
-        // biome-ignore lint/suspicious/noFallthroughSwitchClause: intentional fallthrough
         this.updateMenuState(true);
+      // intentional fallthrough
       case 'Next':
       case 'Previous':
       case 'PageUp':
@@ -400,9 +397,9 @@ export class Select {
         this.updateSrHighlightedOptionText();
         break;
       case 'CloseSelect':
-        // biome-ignore lint/suspicious/noFallthroughSwitchClause: intentional fallthrough
         event.preventDefault();
         this.updateSelectedOption(getHighlightedSelectOption(this.selectOptions));
+      // intentional fallthrough
       case 'Close':
         event.preventDefault();
         this.updateMenuState(false);

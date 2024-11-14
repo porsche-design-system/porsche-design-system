@@ -137,6 +137,11 @@ export const routes: RouteType[] = [
     element: <fromExamples.FlyoutExamplePage />,
   },
   {
+    name: 'Flyout Example Conditional',
+    path: '/flyout-example-conditional',
+    element: <fromExamples.FlyoutExampleConditionalPage />,
+  },
+  {
     name: 'Flyout Multilevel Example',
     path: '/flyout-multilevel-example',
     element: <fromExamples.FlyoutMultilevelExamplePage />,
@@ -170,6 +175,11 @@ export const routes: RouteType[] = [
     name: 'Modal Example Accessibility',
     path: '/modal-example-accessibility',
     element: <fromExamples.ModalExampleAccessibilityPage />,
+  },
+  {
+    name: 'Modal Example Conditional',
+    path: '/modal-example-conditional',
+    element: <fromExamples.ModalExampleConditionalPage />,
   },
   {
     name: 'Multi-Select Example',
