@@ -170,7 +170,7 @@ platformBrowserDynamic()
 
 export const dependencyMap: Partial<DependencyMap<typeof dependencies & typeof devDependencies>> = {
   imask: {
-    imask: dependencies['imask'],
+    imask: dependencies.imask,
     'angular-imask': dependencies['angular-imask'],
   },
   'ag-grid-community': {
@@ -198,8 +198,8 @@ export const getDependencies = (
     '@angular/platform-browser': dependencies['@angular/platform-browser'],
     '@angular/platform-browser-dynamic': dependencies['@angular/platform-browser-dynamic'],
     '@angular/router': dependencies['@angular/router'],
-    rxjs: dependencies['rxjs'],
-    tslib: dependencies['tslib'],
+    rxjs: dependencies.rxjs,
+    tslib: dependencies.tslib,
     'zone.js': dependencies['zone.js'],
     ...getExternalDependencies(externalDependencies, dependencyMap),
   };

@@ -189,7 +189,7 @@ describe('getDependencies()', () => {
     vue: '0.0.0',
   };
 
-  const expectedDevDependencies = {
+  const _expectedDevDependencies = {
     '@vitejs/plugin-vue': '0.0.0',
     '@vitejs/plugin-vue-jsx': '0.0.0',
     typescript: '0.0.0',

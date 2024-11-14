@@ -1,22 +1,10 @@
-import { Locator, type Page } from '@playwright/test';
-import { test, expect } from '../helpers';
 import * as fs from 'fs';
 import * as path from 'path';
+import { Locator, type Page } from '@playwright/test';
 import { schemes } from '@porsche-design-system/shared/testing/playwright.vrt';
+import { expect, test } from '../helpers';
 
 const console = require('console'); // workaround for nicer logs
-
-const getInternalUrls = (): string[] => {
-  const sitemapPath = path.resolve(__dirname, '../../e2e/fixtures/sitemap.json');
-  const sitemap = JSON.parse(fs.readFileSync(sitemapPath, 'utf8'));
-
-  return (
-    sitemap
-      .filter((link) => link.startsWith('/'))
-      // drop "base" links that are redirected to first tab
-      .filter((link, i, array) => !array.some((x) => x.startsWith(link + '/')))
-  );
-};
 
 // style overrides for css variables
 const styleOverrides = fs.readFileSync(

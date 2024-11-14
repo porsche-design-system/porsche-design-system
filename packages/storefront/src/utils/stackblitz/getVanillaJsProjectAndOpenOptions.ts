@@ -92,7 +92,7 @@ window.porscheDesignSystem = porscheDesignSystem;${
 
 export const dependencyMap: Partial<DependencyMap<typeof dependencies & typeof devDependencies>> = {
   imask: {
-    imask: dependencies['imask'],
+    imask: dependencies.imask,
   },
   'ag-grid-community': {
     'ag-grid-community': devDependencies['ag-grid-community'],

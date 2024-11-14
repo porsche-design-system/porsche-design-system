@@ -1,10 +1,10 @@
-import { paramCase } from 'change-case';
+import { EventMeta, PropMeta, getComponentMeta } from '@porsche-design-system/component-meta';
 import type { TagName } from '@porsche-design-system/shared';
-import { getComponentMeta, EventMeta, PropMeta } from '@porsche-design-system/component-meta';
+import { paramCase } from 'change-case';
+import type { Framework, PlaygroundTheme } from '../models';
 import { convertToAngular } from './convertToAngular';
 import { convertToReact } from './convertToReact';
 import { convertToVue } from './convertToVue';
-import type { Framework, PlaygroundTheme } from '../models';
 
 export * from './convertToAngular';
 export * from './convertToReact';
@@ -22,7 +22,7 @@ export const patchThemeIntoMarkup = (markup: string, theme: PlaygroundTheme): st
     return (
       markup
         // add dark theme attribute if component supports it
-        .replace(/(<[pP][\w-]+)/g, (m, $tag) => {
+        .replace(/(<[pP][\w-]+)/g, (_, $tag) => {
           return getComponentMeta(paramCase($tag.replace(/</g, '')) as TagName)?.isThemeable
             ? `${$tag} theme="${theme}"`
             : $tag;

@@ -1,11 +1,11 @@
-import { expect, type Locator, type Page, test } from '@playwright/test';
-import { getConsoleErrorsAmount, initConsoleObserver } from '../helpers';
-import { config as STOREFRONT_CONFIG } from '../../../storefront.config';
-import { paramCase } from 'change-case';
-import * as path from 'path';
 import * as fs from 'fs';
+import * as path from 'path';
+import { type Locator, type Page, expect, test } from '@playwright/test';
+import { paramCase } from 'change-case';
+import { config as STOREFRONT_CONFIG } from '../../../storefront.config';
+import { getConsoleErrorsAmount, initConsoleObserver } from '../helpers';
 
-const console = require('console'); // workaround for nicer logs
+const _console = require('console'); // workaround for nicer logs
 
 // style overrides for css variables
 const styleOverrides = fs.readFileSync(
@@ -57,7 +57,7 @@ const waitForHeading = async (page: Page): Promise<Locator> => {
   const headingElement = page.locator('main .vmark > h1');
   await headingElement.waitFor();
 
-  // NOTE: sometimes h1 or p-heading is rendered empty for whatever reason 🤷‍
+  // NOTE: sometimes h1 or p-heading is rendered empty for whatever reason 🤷
   await page.waitForFunction(
     (el) => el.innerText !== '',
     (await headingElement.elementHandle()) as unknown as HTMLElement
@@ -101,7 +101,7 @@ for (const [path, category, page, tab, isFirst] of sitemap) {
     ([itemCategory, itemPage, itemTab]) => itemCategory === category && itemPage === page && itemTab === tab
   );
   const humanCaseIndex = caseIndex + 1;
-  const counter = `${Array.from(Array(cases.length.toString().length - humanCaseIndex.toString().length))
+  const counter = `${Array.from(new Array(cases.length.toString().length - humanCaseIndex.toString().length))
     .map(() => ' ') // add leading spaces if needed for nice formatting
     .join('')}${humanCaseIndex}/${cases.length}`;
   test(`should navigate to (${counter}) "${path}" and have correct heading`, async ({ page: browserPage }) => {
@@ -133,7 +133,7 @@ for (const [path, category, page, tab, isFirst] of sitemap) {
       .all();
     expect(await isLinkActive(linkPureElement), 'sidebar link should not be active initially').toBe(false);
 
-    // NOTE: very flaky and potential timeout here 🤷‍
+    // NOTE: very flaky and potential timeout here 🤷
     await Promise.all([browserPage.waitForURL(browserPage.url()), linkPureElement.click()]);
 
     // wait for p-heading and p-tabs-bar to be ready

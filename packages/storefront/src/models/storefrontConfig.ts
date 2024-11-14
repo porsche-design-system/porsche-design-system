@@ -11,4 +11,4 @@ export type StorefrontConfig = {
 };
 
 export type StorefrontConfigPageImport = () => Promise<EsModule<Component>>;
-export type StorefrontConfigPage = Array<StorefrontConfigPageImport>;
+export type StorefrontConfigPage = StorefrontConfigPageImport[];

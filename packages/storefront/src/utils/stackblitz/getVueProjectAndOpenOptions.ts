@@ -134,7 +134,7 @@ export const getDependencies = (
       : {
           '@porsche-design-system/components-vue': pdsVersion || dependencies['@porsche-design-system/components-vue'],
         }),
-    vue: dependencies['vue'],
+    vue: dependencies.vue,
     ...getExternalDependencies(externalDependencies, dependencyMap),
   };
 };
@@ -143,8 +143,8 @@ export const getDevDependencies = (): StackBlitzProjectDependencies => {
   return {
     '@vitejs/plugin-vue': devDependencies['@vitejs/plugin-vue'],
     '@vitejs/plugin-vue-jsx': devDependencies['@vitejs/plugin-vue-jsx'],
-    typescript: devDependenciesRoot['typescript'],
-    vite: devDependenciesRoot['vite'],
+    typescript: devDependenciesRoot.typescript,
+    vite: devDependenciesRoot.vite,
     'vue-tsc': devDependencies['vue-tsc'],
   };
 };

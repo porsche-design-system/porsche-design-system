@@ -141,7 +141,7 @@ export const getDependencies = (
     ...(isStableStorefrontReleaseOrForcedPdsVersion(pdsVersion) && {
       '@porsche-design-system/components-react': pdsVersion || dependencies['@porsche-design-system/components-react'],
     }),
-    react: dependencies['react'],
+    react: dependencies.react,
     'react-dom': dependencies['react-dom'],
     '@types/react': devDependencies['@types/react'],
     '@types/react-dom': devDependencies['@types/react-dom'],
