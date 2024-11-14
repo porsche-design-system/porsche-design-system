@@ -293,12 +293,13 @@
     },
     { "include": ["**/scripts/**/*", "**/rollup*"], "linter": { "rules": { "suspicious": { "noConsole": "off" } } } },
     {
-      "include": ["**/tests/**/*", "**/*.spec.*"],
+      "include": ["**/tests/**/*", "**/*.spec.*", "**/*.a11y.*", "**/*.e2e.*", "**/*.vrt.*"],
       "linter": {
         "rules": {
           "complexity": { "useLiteralKeys": "off" },
           "suspicious": { "noConsole": "off", "noEmptyBlockStatements": "off" },
-          "security": { "noGlobalEval": "off" }
+          "security": { "noGlobalEval": "off" },
+          "correctness": { "noUnusedVariables": "off" }
         }
       }
     },
