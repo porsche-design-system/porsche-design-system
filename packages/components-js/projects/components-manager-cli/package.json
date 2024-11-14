@@ -10,6 +10,7 @@
     "build": "yarn clean:build && yarn build:cli && yarn build:lib",
     "build:cli": "tsc --build tsconfig.json && chmod +x dist/bin/cm.js",
     "build:lib": "tsc --build tsconfig.library-entry.json",
+    "lint": "biome lint",
     "test": "yarn test:unit",
     "test:unit": "jest",
     "clean:build": "rm -rf ./dist"

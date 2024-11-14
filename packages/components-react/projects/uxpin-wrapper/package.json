@@ -9,6 +9,7 @@
     "prestart": "yarn clean:build && yarn build",
     "start": "concurrently -k -s 'first' -n 'cdn,uxpin' 'serve-cdn' 'uxpin-merge --disable-tunneling'",
     "build": "cp ../react-wrapper/src/provider.tsx ./src && cp ../react-wrapper/src/BaseProps.ts ./src && cp ../react-wrapper/src/hooks.ts ./src && cp ../react-wrapper/src/utils.ts ./src",
+    "lint": "biome lint",
     "test": "yarn test:unit",
     "test:unit": "vitest --config tests/unit/config/vitest.config.ts",
     "clean:build": "rm -rf ./.uxpin-merge",

@@ -12,6 +12,7 @@
     "build": "yarn clean:build && yarn build:generateScss && yarn build:bundle",
     "build:generateScss": "tsx scripts/generateScss.ts",
     "build:bundle": "rollup -c rollup.config.js --bundleConfigAsCjs",
+    "lint": "biome lint",
     "test": "yarn test:unit",
     "test:unit": "vitest --config tests/unit/config/vitest.config.ts",
     "clean:build": "rm -rf ./dist && rm -rf ./src/scss/lib"

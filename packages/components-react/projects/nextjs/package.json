@@ -12,7 +12,7 @@
     "start": "concurrently -k -s 'first' -n 'cdn,dummyassets,nextjs' 'serve-cdn' 'serve-dummyassets' 'next dev'",
     "start-app": "concurrently -k -s 'first' -n 'cdn,dummyassets,app' 'serve-cdn' 'serve-dummyassets' 'next start'",
     "build-app": "next build",
-    "lint": "next lint",
+    "lint": "biome lint",
     "test": "yarn test:e2e && yarn test:vrt",
     "test:e2e": "yarn build-app && playwright test --config=tests/e2e/config/playwright.config.ts",
     "test:vrt": "playwright test --config=tests/vrt/config/playwright.config.ts",

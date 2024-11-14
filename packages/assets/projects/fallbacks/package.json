@@ -19,9 +19,7 @@
     }
   },
   "types": "./dist/index.d.ts",
-  "files": [
-    "./dist/"
-  ],
+  "files": ["./dist/"],
   "author": "Dr. Ing. h.c. F. Porsche AG",
   "homepage": "https://designsystem.porsche.com",
   "scripts": {
@@ -34,6 +32,7 @@
     "build:fallbacks:cdn+loader": "tsx scripts/generate-cdn-loader.ts",
     "build:lib": "tsup index.ts --format esm,cjs --dts",
     "build:www": "rm -rf ./www && mkdir -p ./www && cp -r ./public/. ./www && cp -r ./dist/tmp/. ./www/.",
+    "lint": "biome lint",
     "test:unit": "vitest --config tests/unit/config/vitest.config.ts",
     "test:vrt": "playwright test --config=tests/vrt/config/playwright.config.ts",
     "clean:build": "rm -rf ./index.ts && rm -rf ./dist && rm -rf ./cdn && rm -rf ./tmp && rm -rf ./www"

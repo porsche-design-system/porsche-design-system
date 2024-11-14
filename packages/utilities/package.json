@@ -9,6 +9,7 @@
     "build:utilities": "yarn --cwd ./projects/utilities build",
     "build:ag-grid": "yarn --cwd ./projects/ag-grid build",
     "build-app": "react-scripts build",
+    "lint": "biome lint",
     "test": "yarn test:unit",
     "test:unit": "yarn --cwd ./projects/utilities test:unit",
     "clean:build": "yarn --cwd ./projects/utilities clean:build"

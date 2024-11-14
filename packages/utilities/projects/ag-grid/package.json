@@ -8,6 +8,7 @@
   "scripts": {
     "build": "yarn clean:build && yarn build:sass",
     "build:sass": "sass src/scss:dist --load-path=../../../../node_modules --no-source-map",
+    "lint": "biome lint",
     "test": "yarn build && yarn test:unit",
     "test:unit": "vitest --config tests/unit/config/vitest.config.ts",
     "clean:build": "rm -rf ./dist && rm -rf ./src/css"

@@ -18,6 +18,7 @@
     "build:generatePartialNames": "tsx scripts/generatePartialNames.ts",
     "build:bundle": "rollup -c rollup.config.js --bundleConfigAsCjs && chmod +x bin/serve-dummyassets.js",
     "clearGitHubActionLogs": "tsx scripts/clearGitHubActionLogs.ts",
+    "lint": "biome lint",
     "test": "yarn test:unit",
     "test:unit": "jest --colors -c tests/unit/config/jest.config.js",
     "clean:build": "rm -rf ./src/lib && rm -rf ./dist"

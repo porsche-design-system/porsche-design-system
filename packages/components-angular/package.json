@@ -19,6 +19,7 @@
     "build:subPackages:typings:styles": "tsc projects/angular-wrapper/src/styles/index.ts --declaration --emitDeclarationOnly --declarationDir dist/angular-wrapper/styles/esm --types node",
     "build:subPackages:ag-grid": "TARGET=./dist/angular-wrapper/ag-grid && rm -rf $TARGET && cp -r ../utilities/projects/ag-grid/dist $TARGET",
     "build-app": "ng build demo-app --configuration production",
+    "lint": "biome lint",
     "test": "yarn test:unit && yarn test:e2e && yarn test:vrt",
     "test:unit": "yarn test:unit:jest && yarn test:unit:karma",
     "test:unit:jest": "jest --colors -c tests/unit/config/jest.config.js",
