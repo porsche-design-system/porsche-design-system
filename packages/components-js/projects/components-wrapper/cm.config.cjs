@@ -10,10 +10,15 @@ const targetDirectory = isIifeBuild ? npmDistTmpPath : npmDistPath;
 const format = isIifeBuild ? 'iife' : isEsmBuild ? 'esm' : 'umd';
 
 const isDev = process.env.PORSCHE_DESIGN_SYSTEM_DEV === '1';
+// biome-ignore lint/suspicious/noConsole: ok
 console.log('Environment:', isDev ? 'dev' : 'prod');
+// biome-ignore lint/suspicious/noConsole: ok
 console.log('Version:', version);
+// biome-ignore lint/suspicious/noConsole: ok
 console.log('Format:', format);
+// biome-ignore lint/suspicious/noConsole: ok
 console.log('Deploy URL:', deployUrl);
+// biome-ignore lint/suspicious/noConsole: ok
 console.log('Target Directory:', targetDirectory);
 
 // type PorscheWebComponentManagerConfig = {

@@ -106,7 +106,8 @@
       "./packages/components/src/components.d.ts",
       "./packages/components/src/types/aria-types.d.ts",
       "./packages/components/src/styles/colors.ts",
-      "./packages/components-vue/projects/vue-wrapper/src/lib/*"
+      "./packages/components-vue/projects/vue-wrapper/src/lib/*",
+      "./packages/components-js/public/*"
     ]
   },
   "javascript": {
@@ -291,9 +292,12 @@
         }
       }
     },
-    { "include": ["**/scripts/**/*", "**/rollup*"], "linter": { "rules": { "suspicious": { "noConsole": "off" } } } },
     {
-      "include": ["**/tests/**/*", "**/*.spec.*", "**/*.a11y.*", "**/*.e2e.*", "**/*.vrt.*"],
+      "include": ["**/scripts/*", "**/bin/*", "**/rollup*"],
+      "linter": { "rules": { "suspicious": { "noConsole": "off" } } }
+    },
+    {
+      "include": ["**/tests/*", "**/*.spec.*", "**/*.a11y.*", "**/*.e2e.*", "**/*.vrt.*"],
       "linter": {
         "rules": {
           "complexity": { "useLiteralKeys": "off" },

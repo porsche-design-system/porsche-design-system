@@ -9,8 +9,10 @@ lerna-debug.log*
 # Directories
 **/node_modules/
 **/dist/
+**/dist-tmp/
 **/cdn/
 **/lib/
+**/results/
 **/www/
 **/.stencil/
 **/playwright-report/

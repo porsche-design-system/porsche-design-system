@@ -1,7 +1,7 @@
 import * as fs from 'fs';
 import * as path from 'path';
-import { kebabCase } from 'change-case';
 import type { TagName } from '@porsche-design-system/shared';
+import { kebabCase } from 'change-case';
 
 type Manifest = {
   [key in TagName | 'core']?: string;
@@ -18,6 +18,7 @@ const createManifest = (indexJsFile: string): Manifest => {
   const coreJsCode = fs.readFileSync(coreJsFile, 'utf8');
 
   const [, rawChunkFileMapping] = /porsche-design-system\.".*?({.*?})/.exec(coreJsCode) || [];
+  // biome-ignore lint/security/noGlobalEval: safe to use here
   const chunkFileMapping = eval(`(${rawChunkFileMapping})`); // convert object string to real js object
   const chunkFileNames = Object.entries(chunkFileMapping).map(
     ([chunk, hash]) => `porsche-design-system.${chunk}.${hash}.js`
