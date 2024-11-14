@@ -6,8 +6,15 @@ yarn-debug.log*
 yarn-error.log*
 lerna-debug.log*
 
-# Dependency directories
-node_modules
+# Directories
+**/node_modules/
+**/dist/
+**/cdn/
+**/lib/
+**/www/
+**/.stencil/
+**/playwright-report/
+**/coverage/
 
 # Cache
 .aws-sam
