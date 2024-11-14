@@ -45,7 +45,7 @@ const copyAssets = (): void => {
         fs.copyFileSync(path.resolve(pathToFiles, file), path.resolve(targetDirectory, file));
         console.log(` - ${file}`);
       }
-    } catch (e) {
+    } catch (_e) {
       if (isComponentsOnly) {
         throw new Error(`Package '${packageName}' doesn't exist and can't be copied`);
       } else {
