@@ -1,5 +1,5 @@
-import * as path from 'path';
 import * as fs from 'fs';
+import * as path from 'path';
 
 const prepareAriaTypes = (): void => {
   const rootDirectory = path.resolve(__dirname, '..');
@@ -17,7 +17,7 @@ const prepareAriaTypes = (): void => {
     .replace(/ {4}/g, '')};`;
   const ariaRoleTypes = `export ${ariaRoleRawTypes.replace(/ {8}/g, '  ').replace(/\n {2,}\| \(string & \{}\)/g, '')};`;
   const content = [
-    '/* Auto Generated Below */\n/* eslint-disable @typescript-eslint/quotes */',
+    '/* Auto Generated Below */\n',
     "type Booleanish = boolean | 'true' | 'false';",
     ariaTypes,
     ariaRoleTypes,

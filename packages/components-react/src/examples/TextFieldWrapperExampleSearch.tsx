@@ -1,5 +1,5 @@
-import { type ChangeEvent, useCallback, useState } from 'react';
 import { PText, PTextFieldWrapper } from '@porsche-design-system/components-react';
+import { type ChangeEvent, useCallback, useState } from 'react';
 
 export const TextFieldWrapperExampleSearchPage = (): JSX.Element => {
   const [isLoading, setIsLoading] = useState(false);
@@ -15,15 +15,12 @@ export const TextFieldWrapperExampleSearchPage = (): JSX.Element => {
     }, 3000);
   }, []);
 
-  const onInput = useCallback(
-    (e: ChangeEvent<HTMLInputElement>) => {
-      setValue(e.target.value);
-      if (isLoading) {
-        setIsLoading(false);
-      }
-    },
-    [] // eslint-disable-line react-hooks/exhaustive-deps
-  );
+  const onInput = useCallback((e: ChangeEvent<HTMLInputElement>) => {
+    setValue(e.target.value);
+    if (isLoading) {
+      setIsLoading(false);
+    }
+  }, []);
 
   return (
     <>

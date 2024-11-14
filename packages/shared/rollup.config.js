@@ -1,11 +1,11 @@
+import commonjs from '@rollup/plugin-commonjs';
+import json from '@rollup/plugin-json';
+import resolve from '@rollup/plugin-node-resolve';
 import typescript from '@rollup/plugin-typescript';
 import copy from 'rollup-plugin-copy';
 import generatePackageJson from 'rollup-plugin-generate-package-json';
-import pkg from './package.json' with { type: 'json' };
 import shebang from 'rollup-plugin-preserve-shebang';
-import resolve from '@rollup/plugin-node-resolve';
-import json from '@rollup/plugin-json';
-import commonjs from '@rollup/plugin-commonjs';
+import pkg from './package.json' with { type: 'json' };
 
 const input = 'src/index.ts';
 const external = [...Object.keys(pkg.dependencies), 'fs', 'path'];
@@ -69,14 +69,6 @@ export default [
     external,
     output: {
       dir: 'dist/data',
-      format: 'cjs',
-    },
-    plugins: [typescript()],
-  },
-  {
-    input: 'src/eslint/index.ts',
-    output: {
-      dir: 'dist/eslint',
       format: 'cjs',
     },
     plugins: [typescript()],

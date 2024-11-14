@@ -66,7 +66,6 @@ export default class TableOfContents extends Vue {
         (link as any).icon = 'none';
         // biome-ignore lint/suspicious/noExplicitAny: ok
         (link as any).href = encodeURI(href);
-        /* eslint-enable */
         link.addEventListener('click', (e) => {
           this.onLinkClick({ title: '', href }, e);
         });

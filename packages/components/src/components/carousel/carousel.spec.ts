@@ -1,19 +1,18 @@
-import { Carousel } from './carousel';
-import * as carouselUtils from './carousel-utils';
-import * as breakpointObserverUtils from '../../utils/breakpoint-observer';
-import * as validatePropsUtils from '../../utils/validation/validateProps';
-import * as breakpointCustomizableUtils from '../../utils/breakpoint-customizable';
-import * as breakpointObserverUtilsUtils from '../../utils/breakpoint-observer-utils';
-import * as jsonUtils from '../../utils/json';
 import * as splideModule from '@splidejs/splide';
 import { Splide } from '@splidejs/splide';
-import * as warnIfDeprecatedPropIsUsed from '../../utils/log/warnIfDeprecatedPropIsUsed';
-import * as hasHeading from '../../utils/form/hasHeading';
+import * as breakpointCustomizableUtils from '../../utils/breakpoint-customizable';
+import * as breakpointObserverUtils from '../../utils/breakpoint-observer';
+import * as breakpointObserverUtilsUtils from '../../utils/breakpoint-observer-utils';
 import * as hasDescription from '../../utils/form/hasDescription';
+import * as hasHeading from '../../utils/form/hasHeading';
+import * as jsonUtils from '../../utils/json';
+import * as warnIfDeprecatedPropIsUsed from '../../utils/log/warnIfDeprecatedPropIsUsed';
+import * as validatePropsUtils from '../../utils/validation/validateProps';
+import { Carousel } from './carousel';
+import * as carouselUtils from './carousel-utils';
 
 const splideMock = {
   index: 0,
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   on: (_, __) => ({}) as Splide,
   mount: () => {},
 } as Splide;

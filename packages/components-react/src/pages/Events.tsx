@@ -1,10 +1,9 @@
-import { type ChangeEvent, useCallback, useState } from 'react';
 import type {
   AccordionUpdateEvent, // using deprecated to verify it is still available
   CarouselUpdateEvent, // using deprecated to verify it is still available
   PaginationUpdateEvent, // using deprecated to verify it is still available
-  TableUpdateEvent, // using deprecated to verify it is still available
   SwitchUpdateEvent, // using deprecated to verify it is still available
+  TableUpdateEvent, // using deprecated to verify it is still available
   TabsBarUpdateEvent, // using deprecated to verify it is still available
   TabsUpdateEvent, // using deprecated to verify it is still available
 } from '@porsche-design-system/components-react';
@@ -24,6 +23,7 @@ import {
   PTabsItem,
   PTextFieldWrapper,
 } from '@porsche-design-system/components-react';
+import { type ChangeEvent, useCallback, useState } from 'react';
 
 export const EventsPage = (): JSX.Element => {
   const [accordionUpdateEventCounter, setAccordionUpdateEventCounter] = useState(0);
@@ -43,22 +43,18 @@ export const EventsPage = (): JSX.Element => {
 
   // unused event parameters are used to verify that types can be imported from package root
   const onAccordionUpdate = useCallback(
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     (_: CustomEvent<AccordionUpdateEvent>) => setAccordionUpdateEventCounter((prev) => prev + 1),
     []
   );
   const onPaginationUpdate = useCallback(
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     (_: CustomEvent<PaginationUpdateEvent>) => setPaginationUpdateEventCounter((prev) => prev + 1),
     []
   );
   const onTabsBarUpdate = useCallback(
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     (_: CustomEvent<TabsBarUpdateEvent>) => setTabsBarUpdateEventCounter((prev) => prev + 1),
     []
   );
   const onTabsUpdate = useCallback(
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     (_: CustomEvent<TabsUpdateEvent>) => setTabsUpdateEventCounter((prev) => prev + 1),
     []
   );
@@ -67,7 +63,6 @@ export const EventsPage = (): JSX.Element => {
     []
   );
   const onSwitchUpdate = useCallback(
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     (_: CustomEvent<SwitchUpdateEvent>) => setSwitchUpdateEventCounter((prev) => prev + 1),
     []
   );
@@ -80,12 +75,10 @@ export const EventsPage = (): JSX.Element => {
     setIsModalOpen(false);
   }, []);
   const onTableUpdate = useCallback(
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     (_: CustomEvent<TableUpdateEvent>) => setTableUpdateEventCounter((prev) => prev + 1),
     []
   );
   const onCarouselUpdate = useCallback(
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     (_: CustomEvent<CarouselUpdateEvent>) => setCarouselUpdateEventCounter((prev) => prev + 1),
     []
   );

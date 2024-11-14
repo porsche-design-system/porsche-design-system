@@ -22,7 +22,6 @@ npm init next-app
 ```
 ✔ What is your project named? "my-app"
 ✔ Would you like to use TypeScript with this project? "Yes"
-✔ Would you like to use ESLint with this project? "Yes"
 ```
 
 - Install the Porsche Design System within your project directory (e.g. "my-app"):

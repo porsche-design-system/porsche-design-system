@@ -1,8 +1,8 @@
-import { type TagName, INTERNAL_TAG_NAMES } from '@porsche-design-system/shared';
-import { type ExtendedProp, DataStructureBuilder } from './DataStructureBuilder';
-import { InputParser } from './InputParser';
-import * as path from 'path';
 import * as fs from 'fs';
+import * as path from 'path';
+import { INTERNAL_TAG_NAMES, type TagName } from '@porsche-design-system/shared';
+import { DataStructureBuilder, type ExtendedProp } from './DataStructureBuilder';
+import { InputParser } from './InputParser';
 
 const BASE_DIR = path.normalize('..');
 
@@ -52,7 +52,6 @@ export abstract class AbstractWrapperGenerator {
   }
 
   // helper that can be used to have wrapper generated into separate folder
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   public shouldGenerateFolderPerComponent(_: TagName): boolean {
     return false;
   }
@@ -171,7 +170,11 @@ export abstract class AbstractWrapperGenerator {
   }
 
   // prettier-ignore
-  public abstract generateImports(component: TagName, extendedProps: ExtendedProp[], nonPrimitiveTypes: string[]): string;
+  public abstract generateImports(
+    component: TagName,
+    extendedProps: ExtendedProp[],
+    nonPrimitiveTypes: string[]
+  ): string;
   public abstract generateProps(component: TagName, rawComponentInterface: string): string;
   public abstract generateComponent(component: TagName, extendedProps: ExtendedProp[]): string;
   public abstract getComponentFileName(component: TagName): string;

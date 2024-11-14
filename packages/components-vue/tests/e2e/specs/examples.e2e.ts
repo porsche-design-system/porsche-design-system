@@ -1,21 +1,19 @@
-import { test, expect } from '@playwright/test';
-import { goto, initConsoleObserver, getConsoleErrorsAmount, getConsoleWarningsAmount } from '../helpers';
 import * as fs from 'fs';
 import * as path from 'path';
+import { expect, test } from '@playwright/test';
+import { getConsoleErrorsAmount, getConsoleWarningsAmount, goto, initConsoleObserver } from '../helpers';
 
 test.beforeEach(async ({ page }) => {
   initConsoleObserver(page);
 });
 
 const filePath = path.resolve(
-  /* eslint-disable @typescript-eslint/no-require-imports */
   require.resolve('@porsche-design-system/components-vue'),
   '../../../../src/router/index.ts'
 );
 const fileContent = fs.readFileSync(filePath, 'utf8');
 
 const [, rawRoutes] = /const routes.*(\[[\s\S]*\]);/.exec(fileContent) || [];
-/* eslint-disable no-eval */
 const routes: { name: string; path: string; component: string }[] = eval(
   rawRoutes
     .replace(/\.\.\..*/, '') // get rid of generatedRoutes

@@ -1,3 +1,7 @@
+import * as fs from 'fs';
+import * as path from 'path';
+import * as globby from 'globby-legacy';
+import type { JssStyle, Styles } from 'jss';
 import * as jssUtils from './jss';
 import {
   attachComponentCss,
@@ -9,10 +13,6 @@ import {
   mergeDeep,
   supportsConstructableStylesheets,
 } from './jss';
-import type { JssStyle, Styles } from 'jss';
-import * as globby from 'globby-legacy';
-import * as path from 'path';
-import * as fs from 'fs';
 
 describe('getCss()', () => {
   const data: { input: Styles; result: string }[] = [
@@ -308,7 +308,9 @@ describe('mergeDeep()', () => {
   ];
   it.each(
     data.map(({ input, result }) => [
-      input.map((x) => JSON.stringify(x)).join(', '), // for test description
+      input
+        .map((x) => JSON.stringify(x))
+        .join(', '), // for test description
       JSON.stringify(result), // for test description
       input,
       result,
@@ -328,12 +330,10 @@ describe('attachComponentCss()', () => {
     host.attachShadow({ mode: 'open' });
     const spy = jest.spyOn(jssUtils, 'getCachedComponentCss').mockImplementation(() => '');
 
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     attachComponentCss(host, (_x: boolean) => 'some css', true);
 
     expect(spy).toHaveBeenCalledWith(host, expect.anything(), true);
 
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     attachComponentCss(host, (_x: boolean, _y: string, _z: number) => 'some css', false, '', 1);
 
     expect(spy).toHaveBeenCalledWith(host, expect.anything(), false, '', 1);
@@ -397,7 +397,6 @@ describe('getCachedComponentCss()', () => {
     const host1 = document.createElement('p-some-element');
     const host2 = document.createElement('my-prefix-p-some-element');
     const host3 = document.createElement('p-another-element');
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const getComponentCss1 = (_a?: number, _b?: boolean, _c?: string, _d?: { someProp: string }): string => 'some css';
 
     getCachedComponentCss(host1, getComponentCss1, 1, true, 'some string', { someProp: 'some value' });

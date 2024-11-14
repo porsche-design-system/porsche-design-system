@@ -48,7 +48,6 @@ declare global {
   const ROLLUP_REPLACE_VERSION: string;
   const ROLLUP_REPLACE_CDN_BASE_URL: string;
 
-  // eslint-disable-next-line @typescript-eslint/consistent-type-definitions
   interface Document {
     porscheDesignSystem: PorscheDesignSystem;
   }

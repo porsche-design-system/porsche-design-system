@@ -21,7 +21,6 @@ lerna-debug.log*
 # Cache
 .aws-sam
 .npm
-.eslintcache
 
 # Jest coverage report
 coverage

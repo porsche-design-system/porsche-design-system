@@ -1,10 +1,10 @@
-import * as path from 'path';
 import * as fs from 'fs';
+import * as path from 'path';
+import { getComponentMeta } from '@porsche-design-system/component-meta';
+import { INTERNAL_TAG_NAMES, type TagName } from '@porsche-design-system/shared';
+import { breakpoint } from '@porsche-design-system/styles';
 import { globbySync } from 'globby';
 import { kebabCase, pascalCase } from 'latest-change-case';
-import { breakpoint } from '@porsche-design-system/styles';
-import { type TagName, INTERNAL_TAG_NAMES } from '@porsche-design-system/shared';
-import { getComponentMeta } from '@porsche-design-system/component-meta';
 
 const EXCLUDED_COMPONENTS: TagName[] = ['p-toast-item'];
 
@@ -319,7 +319,6 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
             /const hasFooter = .+\n/,
             '$&    const hasDismissButton = this.props.disableCloseButton ? false : this.props.dismissButton;'
           )
-          .replace(/\n.*\/\/ eslint-disable-next-line @typescript-eslint\/member-ordering/g, '')
           .replace(/(inert=\{this\.props\.open \? null : )true(})/, "$1''$2") // transform true to empty string ''
           .replace(/onScroll=\{hasFooter && this\.props\.onScroll}/, '')
           .replace(/if\s\(.*[^}]*}/, '') // Remove deprecation warning check
@@ -328,7 +327,6 @@ import { get${componentName}Css } from '${stylesBundleImportPath}';
         newFileContent = newFileContent
           .replace(/this\.props\.(hasHeader|hasFooter|hasSubFooter)/g, '$1')
           .replace(/(?:hasHeader|hasFooter|hasSubFooter) =/g, 'const $&')
-          .replace(/\n.*\/\/ eslint-disable-next-line @typescript-eslint\/member-ordering/g, '')
           .replace(/(inert=\{this\.props\.open \? null : )true(})/, "$1''$2") // transform true to empty string ''
           .replace(/onTransitionEnd={[^}]*}\s*/, '');
       } else if (tagName === 'p-radio-button-wrapper') {
