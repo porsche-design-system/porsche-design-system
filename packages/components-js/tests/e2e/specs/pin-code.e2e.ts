@@ -140,7 +140,6 @@ test.describe('form', () => {
   test('should reset pin-code value to its initial value on form reset', async ({ page }) => {
     const name = 'name';
     const value = '1234';
-    const newValue = '5555';
     const host = getHost(page);
     const input1 = getInput(page, 1);
     const input2 = getInput(page, 2);
@@ -549,14 +548,14 @@ test.describe('update event', () => {
 
     expect((await getEventSummary(host, 'update')).counter, 'after input').toBe(0);
     expect((await getEventSummary(host, 'update')).details, 'after input').toEqual([]);
-    expect(await getProperty(input, 'value')).toBe('');
+    expect(await getProperty<string>(input, 'value')).toBe('');
 
     page.keyboard.press('^');
     await waitForStencilLifecycle(page);
 
     expect((await getEventSummary(host, 'update')).counter, 'after input').toBe(0);
     expect((await getEventSummary(host, 'update')).details, 'after input').toEqual([]);
-    expect(await getProperty(input, 'value')).toBe('');
+    expect(await getProperty<string>(input, 'value')).toBe('');
   });
 
   test('should emit update event on backspace and focus correct input element', async ({ page }) => {
@@ -659,12 +658,12 @@ test.describe('events', () => {
       await input1.type('1234');
       await waitForStencilLifecycle(page);
 
-      expect(await getProperty(input1, 'value')).toBe('1');
-      expect(await getProperty(input2, 'value')).toBe('2');
-      expect(await getProperty(input3, 'value')).toBe('3');
-      expect(await getProperty(input4, 'value')).toBe('4');
+      expect(await getProperty<string>(input1, 'value')).toBe('1');
+      expect(await getProperty<string>(input2, 'value')).toBe('2');
+      expect(await getProperty<string>(input3, 'value')).toBe('3');
+      expect(await getProperty<string>(input4, 'value')).toBe('4');
       expect(await getActiveElementsAriaLabelInShadowRoot(page, host)).toBe('4-4');
-      expect(await getProperty(host, 'value')).toStrictEqual('1234');
+      expect(await getProperty<string>(host, 'value')).toStrictEqual('1234');
     });
 
     test('should spread value over input elements and focus last input element when delaying input events', async ({
@@ -683,12 +682,12 @@ test.describe('events', () => {
       await input1.type('1234', { delay: 50 });
       await waitForStencilLifecycle(page);
 
-      expect(await getProperty(input1, 'value')).toBe('1');
-      expect(await getProperty(input2, 'value')).toBe('2');
-      expect(await getProperty(input3, 'value')).toBe('3');
-      expect(await getProperty(input4, 'value')).toBe('4');
+      expect(await getProperty<string>(input1, 'value')).toBe('1');
+      expect(await getProperty<string>(input2, 'value')).toBe('2');
+      expect(await getProperty<string>(input3, 'value')).toBe('3');
+      expect(await getProperty<string>(input4, 'value')).toBe('4');
       expect(await getActiveElementsAriaLabelInShadowRoot(page, host)).toBe('4-4');
-      expect(await getProperty(host, 'value')).toStrictEqual('1234');
+      expect(await getProperty<string>(host, 'value')).toStrictEqual('1234');
     });
 
     test('should spread value over input elements and focus last empty input element if value is too short', async ({
@@ -707,12 +706,12 @@ test.describe('events', () => {
       await input1.type('12');
       await waitForStencilLifecycle(page);
 
-      expect(await getProperty(input1, 'value')).toBe('1');
-      expect(await getProperty(input2, 'value')).toBe('2');
-      expect(await getProperty(input3, 'value')).toBe('');
-      expect(await getProperty(input4, 'value')).toBe('');
+      expect(await getProperty<string>(input1, 'value')).toBe('1');
+      expect(await getProperty<string>(input2, 'value')).toBe('2');
+      expect(await getProperty<string>(input3, 'value')).toBe('');
+      expect(await getProperty<string>(input4, 'value')).toBe('');
       expect(await getActiveElementsAriaLabelInShadowRoot(page, host)).toBe('3-4');
-      expect(await getProperty(host, 'value')).toStrictEqual('12  ');
+      expect(await getProperty<string>(host, 'value')).toStrictEqual('12  ');
     });
 
     test('should spread value over input elements and focus last empty input element if value is too short and inputs events are delayed', async ({
@@ -731,12 +730,12 @@ test.describe('events', () => {
       await input1.type('12', { delay: 50 });
       await waitForStencilLifecycle(page);
 
-      expect(await getProperty(input1, 'value')).toBe('1');
-      expect(await getProperty(input2, 'value')).toBe('2');
-      expect(await getProperty(input3, 'value')).toBe('');
-      expect(await getProperty(input4, 'value')).toBe('');
+      expect(await getProperty<string>(input1, 'value')).toBe('1');
+      expect(await getProperty<string>(input2, 'value')).toBe('2');
+      expect(await getProperty<string>(input3, 'value')).toBe('');
+      expect(await getProperty<string>(input4, 'value')).toBe('');
       expect(await getActiveElementsAriaLabelInShadowRoot(page, host)).toBe('3-4');
-      expect(await getProperty(host, 'value')).toStrictEqual('12  ');
+      expect(await getProperty<string>(host, 'value')).toStrictEqual('12  ');
     });
 
     test('should spread value over input elements and focus last empty input element if value is too long', async ({
@@ -755,12 +754,12 @@ test.describe('events', () => {
       await input1.type('12345');
       await waitForStencilLifecycle(page);
 
-      expect(await getProperty(input1, 'value')).toBe('1');
-      expect(await getProperty(input2, 'value')).toBe('2');
-      expect(await getProperty(input3, 'value')).toBe('3');
-      expect(await getProperty(input4, 'value')).toBe('4');
+      expect(await getProperty<string>(input1, 'value')).toBe('1');
+      expect(await getProperty<string>(input2, 'value')).toBe('2');
+      expect(await getProperty<string>(input3, 'value')).toBe('3');
+      expect(await getProperty<string>(input4, 'value')).toBe('4');
       expect(await getActiveElementsAriaLabelInShadowRoot(page, host)).toBe('4-4');
-      expect(await getProperty(host, 'value')).toStrictEqual('1234');
+      expect(await getProperty<string>(host, 'value')).toStrictEqual('1234');
     });
 
     test('should spread value over input elements and focus last empty input element if value is too long and inputs events are delayed', async ({
@@ -779,12 +778,12 @@ test.describe('events', () => {
       await input1.type('12345', { delay: 50 });
       await waitForStencilLifecycle(page);
 
-      expect(await getProperty(input1, 'value')).toBe('1');
-      expect(await getProperty(input2, 'value')).toBe('2');
-      expect(await getProperty(input3, 'value')).toBe('3');
-      expect(await getProperty(input4, 'value')).toBe('4');
+      expect(await getProperty<string>(input1, 'value')).toBe('1');
+      expect(await getProperty<string>(input2, 'value')).toBe('2');
+      expect(await getProperty<string>(input3, 'value')).toBe('3');
+      expect(await getProperty<string>(input4, 'value')).toBe('4');
       expect(await getActiveElementsAriaLabelInShadowRoot(page, host)).toBe('4-4');
-      expect(await getProperty(host, 'value')).toStrictEqual('1234');
+      expect(await getProperty<string>(host, 'value')).toStrictEqual('1234');
     });
 
     skipInBrowsers(['firefox', 'webkit'], () => {
@@ -812,11 +811,11 @@ test.describe('events', () => {
 
         await waitForStencilLifecycle(page);
 
-        expect(await getProperty(input1, 'value')).toBe('1');
-        expect(await getProperty(input2, 'value')).toBe('');
-        expect(await getProperty(input3, 'value')).toBe('');
-        expect(await getProperty(input4, 'value')).toBe('');
-        expect(await getProperty(host, 'value')).toStrictEqual('1   ');
+        expect(await getProperty<string>(input1, 'value')).toBe('1');
+        expect(await getProperty<string>(input2, 'value')).toBe('');
+        expect(await getProperty<string>(input3, 'value')).toBe('');
+        expect(await getProperty<string>(input4, 'value')).toBe('');
+        expect(await getProperty<string>(host, 'value')).toStrictEqual('1   ');
       });
     });
 
@@ -846,11 +845,11 @@ test.describe('events', () => {
 
         await waitForStencilLifecycle(page);
 
-        expect(await getProperty(input1, 'value')).toBe('1');
-        expect(await getProperty(input2, 'value')).toBe('2');
-        expect(await getProperty(input3, 'value')).toBe('3');
-        expect(await getProperty(input4, 'value')).toBe('4');
-        expect(await getProperty(host, 'value')).toStrictEqual('1234');
+        expect(await getProperty<string>(input1, 'value')).toBe('1');
+        expect(await getProperty<string>(input2, 'value')).toBe('2');
+        expect(await getProperty<string>(input3, 'value')).toBe('3');
+        expect(await getProperty<string>(input4, 'value')).toBe('4');
+        expect(await getProperty<string>(host, 'value')).toStrictEqual('1234');
       });
     });
   });
@@ -877,12 +876,12 @@ test.describe('events', () => {
 
       expect((await getEventSummary(input1, 'paste')).counter).toBe(1);
 
-      expect(await getProperty(input1, 'value')).toBe('1');
-      expect(await getProperty(input2, 'value')).toBe('2');
-      expect(await getProperty(input3, 'value')).toBe('3');
-      expect(await getProperty(input4, 'value')).toBe('4');
+      expect(await getProperty<string>(input1, 'value')).toBe('1');
+      expect(await getProperty<string>(input2, 'value')).toBe('2');
+      expect(await getProperty<string>(input3, 'value')).toBe('3');
+      expect(await getProperty<string>(input4, 'value')).toBe('4');
       expect(await getActiveElementsAriaLabelInShadowRoot(page, host)).toBe('4-4');
-      expect(await getProperty(host, 'value')).toStrictEqual('1234');
+      expect(await getProperty<string>(host, 'value')).toStrictEqual('1234');
     });
   });
 });
@@ -925,14 +924,14 @@ test.describe('loading state', () => {
     const input = getCurrentInput(page);
     await addEventListener(input, 'focus');
 
-    expect(await getProperty(input, 'value')).toBe('');
+    expect(await getProperty<string>(input, 'value')).toBe('');
     expect((await getEventSummary(input, 'focus')).counter, 'before focus').toBe(0);
 
     await page.keyboard.press('Tab');
     expect((await getEventSummary(input, 'focus')).counter, 'before focus').toBe(1);
 
     await page.keyboard.press('1');
-    expect(await getProperty(input, 'value')).toBe('');
+    expect(await getProperty<string>(input, 'value')).toBe('');
   });
 
   skipInBrowsers(['webkit'], () => {
