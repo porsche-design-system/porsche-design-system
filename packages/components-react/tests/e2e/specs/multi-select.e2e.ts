@@ -14,7 +14,7 @@ test.describe('form', () => {
     await expect(host).toHaveJSProperty('value', newValue);
 
     await page.locator('button[type="reset"]').click();
-    await expect(host).toHaveJSProperty('value', []);
+    await expect(host).toHaveJSProperty('value', ['a']);
   });
 
   test('should include name & value in FormData submit if updated programmatically', async ({ page }) => {
