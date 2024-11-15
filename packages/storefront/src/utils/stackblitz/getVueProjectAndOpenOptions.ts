@@ -1,5 +1,6 @@
 import { initialStyles } from '@/lib/partialResults';
 import { devDependencies as devDependenciesRoot } from '../../../../../package.json';
+import { dependencies as rootDependencies } from '../../../../../package.json';
 import { dependencies, devDependencies } from '../../../../components-vue/package.json';
 import type { PlaygroundDir, StackBlitzProjectDependencies } from '../../models';
 import type {
@@ -109,15 +110,17 @@ app.mount('#root');
 `;
 };
 
-export const dependencyMap: Partial<DependencyMap<typeof dependencies & typeof devDependencies>> = {
+export const dependencyMap: Partial<
+  DependencyMap<typeof dependencies & typeof devDependencies & typeof rootDependencies>
+> = {
   imask: {
     'vue-imask': dependencies['vue-imask'],
   },
   'ag-grid-community': {
-    'ag-grid-community': devDependencies['ag-grid-community'],
+    'ag-grid-community': rootDependencies['ag-grid-community'],
   },
   'ag-grid-vue3': {
-    'ag-grid-vue3': devDependencies['ag-grid-vue3'],
+    'ag-grid-vue3': rootDependencies['ag-grid-vue3'],
   },
 };
 

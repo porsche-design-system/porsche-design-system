@@ -1,12 +1,13 @@
+import { initialStyles } from '@/lib/partialResults';
+import { dependencies as rootDependencies } from '../../../../../package.json';
 import { dependencies, devDependencies } from '../../../../components-js/package.json';
+import type { PlaygroundDir, StackBlitzProjectDependencies } from '../../models';
 import {
   getExternalDependencies,
   getSharedImportConstants,
   isStableStorefrontReleaseOrForcedPdsVersion,
 } from './helper';
-import type { PlaygroundDir, StackBlitzProjectDependencies } from '../../models';
 import type { DependencyMap, ExternalDependency, GetStackBlitzProjectAndOpenOptions, SharedImportKey } from './helper';
-import { initialStyles } from '@/lib/partialResults';
 
 // TODO: this entire puzzle should be refactored into an object-oriented way so that there is a clear and clean structure
 // as well as code flow, similar to our WrapperGenerator
@@ -90,12 +91,14 @@ window.porscheDesignSystem = porscheDesignSystem;${
   return isStableStorefrontReleaseOrForcedPdsVersion(pdsVersion) ? releaseImports : localImports; // appears to be using cjs build
 };
 
-export const dependencyMap: Partial<DependencyMap<typeof dependencies & typeof devDependencies>> = {
+export const dependencyMap: Partial<
+  DependencyMap<typeof dependencies & typeof devDependencies & typeof rootDependencies>
+> = {
   imask: {
     imask: dependencies.imask,
   },
   'ag-grid-community': {
-    'ag-grid-community': devDependencies['ag-grid-community'],
+    'ag-grid-community': rootDependencies['ag-grid-community'],
   },
 };
 

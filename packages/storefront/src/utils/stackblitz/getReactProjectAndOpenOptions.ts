@@ -1,4 +1,14 @@
-import { devDependencies, dependencies } from '../../../../components-react/package.json';
+import { initialStyles } from '@/lib/partialResults';
+import { dependencies as rootDependencies } from '../../../../../package.json';
+import { dependencies, devDependencies } from '../../../../components-react/package.json';
+import type { PlaygroundDir, StackBlitzProjectDependencies } from '../../models';
+import type {
+  DependencyMap,
+  ExternalDependency,
+  GetStackBlitzProjectAndOpenOptions,
+  SharedImportKey,
+} from '../../utils';
+import { convertMarkup } from '../../utils/formatting';
 import {
   convertImportPaths,
   getExternalDependencies,
@@ -6,15 +16,6 @@ import {
   isStableStorefrontReleaseOrForcedPdsVersion,
   removeSharedImport,
 } from './helper';
-import { convertMarkup } from '../../utils/formatting';
-import type {
-  DependencyMap,
-  GetStackBlitzProjectAndOpenOptions,
-  SharedImportKey,
-  ExternalDependency,
-} from '../../utils';
-import type { PlaygroundDir, StackBlitzProjectDependencies } from '../../models';
-import { initialStyles } from '@/lib/partialResults';
 
 const componentNameRegex = /(export const )[a-zA-Z]+( = \(({[^}]+})?\): JSX.Element => {)/;
 
@@ -117,7 +118,9 @@ root.render(
   );
 };
 
-export const dependencyMap: Partial<DependencyMap<typeof dependencies & typeof devDependencies>> = {
+export const dependencyMap: Partial<
+  DependencyMap<typeof dependencies & typeof devDependencies & typeof rootDependencies>
+> = {
   imask: {
     'react-imask': dependencies['react-imask'],
   },
@@ -125,10 +128,10 @@ export const dependencyMap: Partial<DependencyMap<typeof dependencies & typeof d
     'styled-components': dependencies['styled-components'],
   },
   'ag-grid-community': {
-    'ag-grid-community': devDependencies['ag-grid-community'],
+    'ag-grid-community': rootDependencies['ag-grid-community'],
   },
   'ag-grid-react': {
-    'ag-grid-react': devDependencies['ag-grid-react'],
+    'ag-grid-react': rootDependencies['ag-grid-react'],
   },
 };
 

@@ -1,4 +1,9 @@
+import { initialStyles } from '@/lib/partialResults';
+import type { PlaygroundDir, StackBlitzProjectDependencies } from '@/models';
+import type { DependencyMap, ExternalDependency, GetStackBlitzProjectAndOpenOptions, SharedImportKey } from '@/utils';
+import { dependencies as rootDependencies } from '../../../../../package.json';
 import { dependencies, devDependencies } from '../../../../components-angular/package.json';
+import { convertMarkup } from '../../utils/formatting';
 import {
   convertImportPaths,
   getExternalDependencies,
@@ -6,10 +11,6 @@ import {
   isStableStorefrontReleaseOrForcedPdsVersion,
   removeSharedImport,
 } from './helper';
-import { convertMarkup } from '../../utils/formatting';
-import type { DependencyMap, SharedImportKey, GetStackBlitzProjectAndOpenOptions, ExternalDependency } from '@/utils';
-import type { PlaygroundDir, StackBlitzProjectDependencies } from '@/models';
-import { initialStyles } from '@/lib/partialResults';
 
 const classNameRegex = /(export class )[a-zA-Z]+( {)/;
 
@@ -168,16 +169,18 @@ platformBrowserDynamic()
   .catch((err) => console.error(err));`;
 };
 
-export const dependencyMap: Partial<DependencyMap<typeof dependencies & typeof devDependencies>> = {
+export const dependencyMap: Partial<
+  DependencyMap<typeof dependencies & typeof devDependencies & typeof rootDependencies>
+> = {
   imask: {
     imask: dependencies.imask,
     'angular-imask': dependencies['angular-imask'],
   },
   'ag-grid-community': {
-    'ag-grid-community': devDependencies['ag-grid-community'],
+    'ag-grid-community': rootDependencies['ag-grid-community'],
   },
   'ag-grid-angular': {
-    'ag-grid-angular': devDependencies['ag-grid-angular'],
+    'ag-grid-angular': rootDependencies['ag-grid-angular'],
   },
 };
 
