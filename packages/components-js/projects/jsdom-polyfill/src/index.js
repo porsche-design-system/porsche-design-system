@@ -29,7 +29,8 @@ document.porscheDesignSystem = {
     url: 'https://cdn.ui.porsche.com', // needs to be set because we're not initializing via components-js load() method which would normally set this
     prefixes: [],
   },
-  ROLLUP_REPLACE_VERSION: {
+  // biome-ignore lint/complexity/useLiteralKeys: will be modified by rollup and replace with a version, e.g. "3.21.0" and therefore needs to be quoted
+  ['ROLLUP_REPLACE_VERSION']: {
     // biome-ignore lint/suspicious/noEmptyBlockStatements: ok
     readyResolve: () => {},
     isReady: () => Promise.resolve(),
