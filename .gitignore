@@ -17,6 +17,7 @@ lerna-debug.log*
 **/.stencil/
 **/playwright-report/
 **/coverage/
+**/test-results/*
 
 # Cache
 .aws-sam

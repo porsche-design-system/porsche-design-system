@@ -5,7 +5,6 @@
   "license": "UNLICENSED",
   "scope": "@porsche-design-system",
   "author": "Dr. Ing. h.c. F. Porsche AG",
-  "type": "module",
   "scripts": {
     "start": "concurrently -k -s 'first' -n 'cdn,dummyassets,react' 'serve-cdn' 'serve-dummyassets' 'vite'",
     "start-app": "concurrently -k -s 'first' -n 'cdn,dummyassets,app' 'serve-cdn' 'serve-dummyassets' 'ws --spa index.html -p 3000 -d ./dist/demo-app'",
