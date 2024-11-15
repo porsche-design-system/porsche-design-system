@@ -70,7 +70,9 @@ export class PinCode {
   @Prop() public description?: string = '';
 
   /** Name of the control. */
-  @Prop() public name?: string;
+  @Prop({ reflect: true }) public name?: string;
+  // The "name" property is reflected as an attribute to ensure compatibility with native form submission.
+  // In the React wrapper, all props are synced as properties on the element ref, so reflecting "name" as an attribute ensures it is properly handled in the form submission process.
 
   /** Number of characters of the Pin Code. */
   @Prop() public length?: PinCodeLength = 4;
