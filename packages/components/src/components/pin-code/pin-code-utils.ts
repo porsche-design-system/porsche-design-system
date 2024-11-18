@@ -1,6 +1,6 @@
 import type { FormState } from '../../utils/form/form-state';
 import type { Styles } from 'jss';
-import { consoleWarn, getPrefixedTagNames, getTagNameWithoutPrefix, setAttributes } from '../../utils';
+import { consoleWarn, getPrefixedTagNames, getTagNameWithoutPrefix } from '../../utils';
 
 export const PIN_CODE_TYPES = ['number', 'password'] as const;
 export type PinCodeType = (typeof PIN_CODE_TYPES)[number];
@@ -68,45 +68,12 @@ export const getSanitisedValue = (host: HTMLElement, value: string, length: numb
 
 export const removeWhiteSpaces = (value: string): string => value.replace(/\s/g, '');
 
-export const initHiddenInput = (
-  host: HTMLElement,
-  name: string,
-  value: string,
-  disabled: boolean,
-  required: boolean
-): HTMLInputElement => {
-  const hiddenInput = document.createElement('input');
-  setAttributes(hiddenInput, {
-    'aria-hidden': 'true',
-    slot: 'internal-input',
-    tabindex: '-1',
-  });
-  syncHiddenInput(hiddenInput, name, value, disabled, required);
-  host.prepend(hiddenInput);
-  return hiddenInput;
-};
-
-export const syncHiddenInput = (
-  hiddenInput: HTMLInputElement,
-  name: string,
-  value: string,
-  disabled: boolean,
-  required: boolean
-): void => {
-  setAttributes(hiddenInput, {
-    ...(name && { name }),
-    value: removeWhiteSpaces(value),
-  });
-  hiddenInput.toggleAttribute('disabled', disabled);
-  hiddenInput.toggleAttribute('required', required);
-};
-
 // This reproduces native behavior where the form is only submittable under certain circumstances
 export const isFormSubmittable = (host: HTMLElement, form: HTMLFormElement): boolean => {
   const PrefixedTagNames = getPrefixedTagNames(host);
 
   return !!(
-    form.querySelectorAll('input:not([type=submit]):not([type=hidden])').length === 1 || // other sibling form elements e.g. select, textarea do not prevent submission
+    form.querySelectorAll('input:not([type=submit]):not([type=hidden])').length === 0 || // other sibling form elements e.g. select, textarea do not prevent submission
     Array.from(
       form.querySelectorAll(
         `${PrefixedTagNames.pButton},${PrefixedTagNames.pButtonPure},button[type=submit],input[type=submit]`

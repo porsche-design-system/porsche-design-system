@@ -40,6 +40,19 @@ describe('connectedCallback', () => {
     component.connectedCallback();
     expect(applyConstructableStylesheetStylesSpy).toHaveBeenCalledWith(component.host, getSlottedAnchorStyles);
   });
+
+  it('should assign this.initialLoading to value of this.loading', () => {
+    const component = initComponent();
+    component.loading = true;
+
+    expect(component['initialLoading']).toBe(false);
+    component.connectedCallback();
+    expect(component['initialLoading']).toBe(true);
+
+    component.loading = false;
+    component.connectedCallback();
+    expect(component['initialLoading']).toBe(false);
+  });
 });
 
 describe('formResetCallback', () => {
@@ -106,12 +119,36 @@ describe('componentDidRender', () => {
   });
 });
 
+describe('componentWillUpdate()', () => {
+  it('should assign this.initialLoading to true for this.loading = true', () => {
+    const component = initComponent();
+    component.loading = true;
+
+    expect(component['initialLoading']).toBe(false);
+    component.componentWillUpdate();
+    expect(component['initialLoading']).toBe(true);
+  });
+});
+
 describe('componentWillLoad', () => {
   it('should sync private defaultChecked value with checked prop', () => {
     const component = initComponent();
     component.checked = true;
     component.componentWillLoad();
     expect(component.checked).toBe(true);
+  });
+
+  it('should assign this.initialLoading to value of this.loading', () => {
+    const component = initComponent();
+    component.loading = true;
+
+    expect(component['initialLoading']).toBe(false);
+    component.componentWillLoad();
+    expect(component['initialLoading']).toBe(true);
+
+    component.loading = false;
+    component.componentWillLoad();
+    expect(component['initialLoading']).toBe(false);
   });
 });
 

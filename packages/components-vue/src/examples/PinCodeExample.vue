@@ -14,6 +14,7 @@
   <form @submit.prevent="onSubmit">
     <PPinCode :label="'Some Label'" name="pin-code"></PPinCode>
     <PButton type="submit">Submit</PButton>
+    <PButton type="submit">Reset</PButton>
   </form>
   <PText>Last submitted data: {{ lastSubmittedValue }}</PText>
 </template>

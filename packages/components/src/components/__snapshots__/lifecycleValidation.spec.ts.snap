@@ -504,6 +504,7 @@ exports[`should call validateProps() with correct parameters via render for p-pi
 {
   "description": "string",
   "disabled": "boolean",
+  "form": "string",
   "hideLabel": "breakpoint",
   "label": "string",
   "length": "oneOf",
