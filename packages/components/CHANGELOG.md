@@ -14,6 +14,13 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 
 ### [Unreleased]
 
+#### Added
+
+- `Modal`, `Flyout`:
+  - `aria-label` is generated for of slotted header contents if `aria` prop is not provided
+  - ARIA `role` to `aria` prop of `Modal` component to support setting `alertdialog` role
+    ([3618](https://github.com/porsche-design-system/porsche-design-system/pull/3618))
+
 ### [3.21.0] - 2024-11-12
 
 ### [3.21.0-rc.0] - 2024-11-11
