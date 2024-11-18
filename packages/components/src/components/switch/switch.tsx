@@ -20,7 +20,6 @@ import {
   getSwitchButtonAriaAttributes,
 } from './switch-utils';
 import { LoadingMessage, loadingId } from '../common/loading-message/loading-message';
-import { ControllerHost, InitialLoadingController } from '../../controllers';
 import { getSlottedAnchorStyles } from '../../styles';
 
 const propTypes: PropTypes<typeof Switch> = {
@@ -74,8 +73,7 @@ export class Switch {
   /** Emitted when checked status is changed. */
   @Event({ bubbles: false }) public update: EventEmitter<SwitchUpdateEventDetail>;
 
-  private controllerHost = new ControllerHost(this);
-  private loadingCtrl = new InitialLoadingController(this.controllerHost);
+  private initialLoading: boolean = false;
 
   @Listen('click', { capture: true })
   public onClick(e: MouseEvent): void {
@@ -85,7 +83,18 @@ export class Switch {
   }
 
   public connectedCallback(): void {
+    this.initialLoading = this.loading;
     applyConstructableStylesheetStyles(this.host, getSlottedAnchorStyles);
+  }
+
+  public componentWillLoad(): void {
+    this.initialLoading = this.loading;
+  }
+
+  public componentWillUpdate(): void {
+    if (this.loading) {
+      this.initialLoading = true;
+    }
   }
 
   public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
@@ -143,7 +152,7 @@ export class Switch {
         <label id="label" htmlFor="switch">
           <slot />
         </label>
-        <LoadingMessage loading={this.loading} initialLoading={this.loadingCtrl.initialLoading} />
+        <LoadingMessage loading={this.loading} initialLoading={this.initialLoading} />
       </Host>
     );
   }
