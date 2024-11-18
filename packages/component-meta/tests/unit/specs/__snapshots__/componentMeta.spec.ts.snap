@@ -5141,6 +5141,7 @@ exports[`should match snapshot 1`] = `
       "aria": {
         "allowedValues": {
           "aria-label": "string",
+          "role": "string",
         },
         "defaultValue": null,
         "description": "Add ARIA attributes.",
