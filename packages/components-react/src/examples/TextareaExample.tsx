@@ -15,6 +15,7 @@ export const TextareaExamplePage = (): JSX.Element => {
       <form onSubmit={onSubmit}>
         <PTextarea name="some-name" label="Some Label"></PTextarea>
         <button type="submit">Submit</button>
+        <button type="reset">Reset</button>
       </form>
 
       <PText>Last submitted data: {lastSubmittedData}</PText>

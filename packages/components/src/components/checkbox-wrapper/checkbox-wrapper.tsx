@@ -20,7 +20,6 @@ import { type CheckboxWrapperState } from './checkbox-wrapper-utils';
 import { StateMessage } from '../common/state-message/state-message';
 import { Label } from '../common/label/label';
 import { LoadingMessage } from '../common/loading-message/loading-message';
-import { ControllerHost, InitialLoadingController } from '../../controllers';
 import { getCheckboxRadioButtonSafariRenderingFix } from '../../utils/form/applyCheckboxRadioButtonSafariRenderingFix';
 import { getSlottedAnchorStyles } from '../../styles';
 
@@ -63,8 +62,7 @@ export class CheckboxWrapper {
   /** Adapts the color depending on the theme. */
   @Prop() public theme?: Theme = 'light';
 
-  private controllerHost = new ControllerHost(this);
-  private loadingCtrl = new InitialLoadingController(this.controllerHost);
+  private initialLoading: boolean = false;
   private input: HTMLInputElement;
 
   @Listen('keydown')
@@ -76,13 +74,21 @@ export class CheckboxWrapper {
   }
 
   public connectedCallback(): void {
+    this.initialLoading = this.loading;
     applyConstructableStylesheetStyles(this.host, getSlottedAnchorStyles, getCheckboxRadioButtonSafariRenderingFix);
     this.observeAttributes(); // on every reconnect
   }
 
   public componentWillLoad(): void {
+    this.initialLoading = this.loading;
     this.input = getOnlyChildOfKindHTMLElementOrThrow(this.host, 'input[type=checkbox]');
     this.observeAttributes(); // once initially
+  }
+
+  public componentWillUpdate(): void {
+    if (this.loading) {
+      this.initialLoading = true;
+    }
   }
 
   public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
@@ -131,7 +137,7 @@ export class CheckboxWrapper {
           )}
         </div>
         <StateMessage state={this.state} message={this.message} theme={this.theme} host={this.host} />
-        <LoadingMessage loading={this.loading} initialLoading={this.loadingCtrl.initialLoading} />
+        <LoadingMessage loading={this.loading} initialLoading={this.initialLoading} />
       </div>
     );
   }

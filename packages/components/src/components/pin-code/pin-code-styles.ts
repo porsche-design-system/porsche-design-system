@@ -25,7 +25,6 @@ export const getComponentCss = (
   state: FormState,
   isDisabled: boolean,
   isLoading: boolean,
-  isWithinForm: boolean,
   length: PinCodeLength,
   theme: Theme
 ): string => {
@@ -82,15 +81,6 @@ export const getComponentCss = (
       ...preventFoucOfNestedElementsStyles,
       // input
       ...inputStyles,
-      ...(isWithinForm &&
-        addImportantToEachRule({
-          '::slotted([slot=internal-input])': {
-            position: 'absolute',
-            height: inputSize,
-            width: 0,
-            opacity: 0,
-          },
-        })),
     },
     root: {
       display: 'grid',
