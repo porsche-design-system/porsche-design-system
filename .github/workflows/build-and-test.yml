@@ -6,22 +6,8 @@ on:
         required: true
 name: 'Build and Test'
 env:
-  PDS_PLAYWRIGHT_DOCKER_IMAGE: ghcr.io/porsche-design-system/porsche-design-system/playwright:v1.42.1-focal-16
+  PDS_PLAYWRIGHT_DOCKER_IMAGE: ghcr.io/porsche-design-system/porsche-design-system/playwright:v1.42.1-focal-fix-ci
 jobs:
-  lint:
-    name: 'Lint'
-    runs-on: ubuntu-latest
-    steps:
-      - name: 'Checkout'
-        uses: actions/checkout@v4
-      - name: 'Setup and install'
-        uses: ./.github/actions/setup-and-install
-        with:
-          github-token: ${{ secrets.github-token }}
-      - name: 'Lint'
-        uses: ./.github/actions/docker-run-playwright
-        with:
-          entrypoint: run-lint
   assets:
     name: 'Assets'
     runs-on: ubuntu-latest
@@ -83,6 +69,11 @@ jobs:
         with:
           entrypoint: run-build
           args: --core-dependencies
+      - name: 'Lint'
+        uses: ./.github/actions/docker-run-playwright
+        with:
+          entrypoint: run-lint
+          args: --components
       - name: 'Unit Test'
         uses: ./.github/actions/docker-run-playwright
         with:
@@ -452,6 +443,11 @@ jobs:
           github-token: ${{ secrets.github-token }}
       - name: 'Build assets, component-meta, components, components-js, shared and utilities'
         uses: ./.github/actions/build-components-js
+      - name: 'Lint'
+        uses: ./.github/actions/docker-run-playwright
+        with:
+          entrypoint: run-lint
+          args: --components-vue
       - name: 'Build Components Vue'
         uses: ./.github/actions/docker-run-playwright
         with:
@@ -562,6 +558,11 @@ jobs:
         with:
           entrypoint: run-build
           args: --components-vue
+      - name: 'Lint'
+        uses: ./.github/actions/docker-run-playwright
+        with:
+          entrypoint: run-lint
+          args: --storefront
       - name: 'Unit Test'
         uses: ./.github/actions/docker-run-playwright
         with:

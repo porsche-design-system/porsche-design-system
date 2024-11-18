@@ -6,22 +6,13 @@ yarn-debug.log*
 yarn-error.log*
 lerna-debug.log*
 
-# Directories
-**/node_modules/
-**/dist/
-**/dist-tmp/
-**/cdn/
-**/lib/
-**/results/
-**/www/
-**/.stencil/
-**/playwright-report/
-**/coverage/
-**/test-results/*
+# Dependency directories
+node_modules
 
 # Cache
 .aws-sam
 .npm
+.eslintcache
 
 # Jest coverage report
 coverage
