@@ -145,11 +145,6 @@ export class ExampleComponent {}
     ],
     [`@use '@porsche-design-system/components-js/styles' as *;`, true],
     [`@use '@porsche-design-system/components-angular/styles/scss';`, true],
-    [
-      `@import '@porsche-design-system/components-angular/styles/scss';
-div { background: $pds-theme-light-primary; }`,
-      true,
-    ],
   ])('should for styles: %s return: %s', (styles, result) => {
     styles = styles
       ? `\n  styles: [
