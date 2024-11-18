@@ -17,7 +17,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0), 
 #### Added
 
 - `Modal`, `Flyout`:
-  - `aria-label` is generated for of slotted header contents if `aria` prop is not provided
+  - `aria-label` is generated from slotted header contents if `aria` prop is not provided
   - ARIA `role` to `aria` prop of `Modal` component to support setting `alertdialog` role
     ([3618](https://github.com/porsche-design-system/porsche-design-system/pull/3618))
 - `Pin-Code`: Add `form` prop to explicitly associate the component with a form, even when it's not directly nested
