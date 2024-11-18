@@ -139,9 +139,6 @@ export class Modal {
 
   public componentDidRender(): void {
     setDialogVisibility(this.open, this.dialog, this.scroller);
-    if (this.hasHeader) {
-      this.headerText();
-    }
   }
 
   public componentDidLoad(): void {
@@ -179,6 +176,10 @@ export class Modal {
     this.hasHeader = hasHeading(this.host, this.heading) || hasNamedSlot(this.host, 'header');
     this.hasFooter = hasNamedSlot(this.host, 'footer');
 
+    if (this.hasHeader) {
+      this.headerText();
+    }
+
     // TODO: why do we validate only when opened?
     if (this.open) {
       warnIfAriaAndHeadingPropsAreUndefined(this.host, this.hasHeader, this.aria);
@@ -213,7 +214,6 @@ export class Modal {
         {...parseAndGetAriaAttributes({
           'aria-modal': true,
           'aria-label': this.ariaLabelText,
-          'aria-hidden': !this.open,
           ...parseAndGetAriaAttributes(this.aria),
         })}
       >
@@ -254,6 +254,9 @@ export class Modal {
   };
 
   private headerText = (): void => {
-    this.ariaLabelText = hasNamedSlot(this.host, 'header') ? getSlotTextContent(this.host, 'header') : this.heading;
+    this.ariaLabelText =
+      this.heading ||
+      (hasNamedSlot(this.host, 'heading') && getSlotTextContent(this.host, 'heading')) ||
+      (hasNamedSlot(this.host, 'header') && getSlotTextContent(this.host, 'header'));
   };
 }
