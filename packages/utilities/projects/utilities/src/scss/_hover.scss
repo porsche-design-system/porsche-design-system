@@ -3,7 +3,7 @@
 @use 'lib/theme';
 @use 'lib/motion';
 
-$pds-focus-border-radius-map: (
+$pds-hover-border-radius-map: (
   'small': border.$pds-border-radius-small,
   'medium': border.$pds-border-radius-medium,
 );
@@ -12,13 +12,13 @@ $pds-offset-horizontal: 2px;
 
 @mixin pds-hover($border-radius: 'small') {
   // it can easily be overwritten on purpose (when placed here) and visually reflected
-  @if map-has-key($pds-focus-border-radius-map, $border-radius) {
-    border-radius: map-get($pds-focus-border-radius-map, $border-radius);
+  @if map-has-key($pds-hover-border-radius-map, $border-radius) {
+    border-radius: map-get($pds-hover-border-radius-map, $border-radius);
   } @else {
     @if ($border-radius) {
       border-radius: $border-radius;
     } @else {
-      border-radius: map-get($pds-focus-border-radius-map, 'small');
+      border-radius: map-get($pds-hover-border-radius-map, 'small');
     }
   }
   margin-left: -#{$pds-offset-horizontal};
