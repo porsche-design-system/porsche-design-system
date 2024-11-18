@@ -111,7 +111,6 @@ export class Modal {
   private footer: HTMLSlotElement;
   private hasHeader: boolean;
   private hasFooter: boolean;
-  private ariaLabelText: string;
 
   private get hasDismissButton(): boolean {
     return this.disableCloseButton ? false : this.dismissButton;
@@ -176,10 +175,6 @@ export class Modal {
     this.hasHeader = hasHeading(this.host, this.heading) || hasNamedSlot(this.host, 'header');
     this.hasFooter = hasNamedSlot(this.host, 'footer');
 
-    if (this.hasHeader) {
-      this.headerText();
-    }
-
     // TODO: why do we validate only when opened?
     if (this.open) {
       warnIfAriaAndHeadingPropsAreUndefined(this.host, this.hasHeader, this.aria);
@@ -213,7 +208,7 @@ export class Modal {
         onTransitionEnd={(e) => onTransitionEnd(e, this.open, this.motionVisibleEnd, this.motionHiddenEnd, this.dialog)}
         {...parseAndGetAriaAttributes({
           'aria-modal': true,
-          'aria-label': this.ariaLabelText,
+          ...(this.hasHeader && { 'aria-label': this.ariaLabel() }),
           ...parseAndGetAriaAttributes(this.aria),
         })}
       >
@@ -253,10 +248,8 @@ export class Modal {
     this.close.emit();
   };
 
-  private headerText = (): void => {
-    this.ariaLabelText =
-      this.heading ||
-      (hasNamedSlot(this.host, 'heading') && getSlotTextContent(this.host, 'heading')) ||
-      (hasNamedSlot(this.host, 'header') && getSlotTextContent(this.host, 'header'));
-  };
+  private ariaLabel = (): string =>
+    this.heading ||
+    (hasNamedSlot(this.host, 'heading') && getSlotTextContent(this.host, 'heading')) ||
+    (hasNamedSlot(this.host, 'header') && getSlotTextContent(this.host, 'header'));
 }
