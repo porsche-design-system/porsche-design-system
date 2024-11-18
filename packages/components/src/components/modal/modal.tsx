@@ -248,8 +248,11 @@ export class Modal {
     this.close.emit();
   };
 
-  private ariaLabel = (): string =>
-    this.heading ||
-    (hasNamedSlot(this.host, 'heading') && getSlotTextContent(this.host, 'heading')) ||
-    (hasNamedSlot(this.host, 'header') && getSlotTextContent(this.host, 'header'));
+  private ariaLabel = (): string => {
+    return (
+      this.heading ||
+      (hasNamedSlot(this.host, 'heading') && getSlotTextContent(this.host, 'heading')) ||
+      (hasNamedSlot(this.host, 'header') && getSlotTextContent(this.host, 'header'))
+    );
+  };
 }
