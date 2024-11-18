@@ -12,7 +12,3 @@ it('should not contain comments', () => {
 it('should not contain prettier-ignore annotations', () => {
   expect(JSON.stringify(componentMeta)).not.toMatch(/prettier-ignore/);
 });
-
-it('should not contain eslint annotations', () => {
-  expect(JSON.stringify(componentMeta)).not.toMatch(/eslint/);
-});

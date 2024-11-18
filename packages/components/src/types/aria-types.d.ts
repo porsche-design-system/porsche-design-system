@@ -1,5 +1,4 @@
 /* Auto Generated Below */
-/* eslint-disable @typescript-eslint/quotes */
 
 type Booleanish = boolean | 'true' | 'false';
 

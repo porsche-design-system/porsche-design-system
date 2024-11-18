@@ -26,7 +26,7 @@ export type DataVrt = {
   shortText: string;
 };
 
-export const dataVrt: DataVrt[] = Array.from(Array(4)).map(() => ({
+export const dataVrt: DataVrt[] = Array.from(new Array(4)).map(() => ({
   imageUrl: 'https://nav.porsche.com/00BC524/series-assets/1366/911@2x.jpg',
   imageWidth: 80,
   imageHeight: 48,

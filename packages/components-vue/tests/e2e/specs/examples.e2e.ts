@@ -1,7 +1,7 @@
-import { test, expect } from '@playwright/test';
-import { goto, initConsoleObserver, getConsoleErrorsAmount, getConsoleWarningsAmount } from '../helpers';
 import * as fs from 'fs';
 import * as path from 'path';
+import { expect, test } from '@playwright/test';
+import { getConsoleErrorsAmount, getConsoleWarningsAmount, goto, initConsoleObserver } from '../helpers';
 
 test.beforeEach(async ({ page }) => {
   initConsoleObserver(page);

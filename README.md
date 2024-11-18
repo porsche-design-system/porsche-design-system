@@ -57,18 +57,28 @@ volta install yarn
 
 _Note: `./docker.sh run-install` and `yarn` should be executed after every pull._
 
-### Setup prettier
+### Setup Prettier (Formatter)
 
 1. Go to Webstorm `Preferences`
-2. Click on the Plugins tab and search for `prettier`
-3. Install prettier
-4. In `Preferences` go to `Languages and Frameworks` -> `Javascript` -> `Prettier`
-5. Set `Prettier Package` to `{PATH_TO_YOUR_DIRECTORY}/node_modules/prettier`
-6. Change `Run for files` to `{**/*,*}.{js,ts,jsx,tsx,vue,scss,json,css,html,md}`
-7. Click checkbox `on save` and apply
-8. You should be good to go.
-9. If you have to exclude code fom being prettified, see
+2. In `Preferences` go to `Languages and Frameworks` -> `Javascript` -> `Prettier`
+3. Activate `Automatic Prettier configuration`
+4. Change `Run for files` to `{**/*,*}.{md}`
+5. Click checkbox `Run on save` and apply
+6. You should be good to go.
+7. If you have to exclude code fom being prettified, see
    [Prettier configuration](https://prettier.io/docs/en/ignore.html#javascript)
+
+### Setup Biome (Formatter + Linter)
+
+1. Go to Webstorm `Preferences`
+2. Click on the Plugins tab and search for `biome`
+3. Install Biome
+4. In `Preferences` go to `Languages and Frameworks` -> `Biome`
+5. Activate `Automatic Biome configuration`
+6. Change `Run for files` to `**/*.{js,mjs,cjs,ts,jsx,tsx,cts,json,jsonc,vue,svelte,astro,css}`
+7. Click checkbox `Run format on save` + `Run safe fixes on save` and apply
+8. You should be good to go.
+9. If you have to exclude code fom being prettified, see [Biome configuration](https://biomejs.dev/linter/#ignore-code)
 
 ### Build
 
@@ -111,9 +121,36 @@ _Note: `./docker.sh run-install` and `yarn` should be executed after every pull.
 1. Switch to **project root directory**
 2. For the different applications, select one of the following commands:
 
-- `./docker.sh run-lint` (lints the entire application)
-- `./docker.sh run-lint --components-js` (lints native web components)
-- `./docker.sh run-lint --storefront` (lints storefront)
+- `yarn lint` or `./docker.sh run-lint` (lints the entire monorepo)
+- `yarn lint:assets` or `./docker.sh run-lint --assets`
+- `yarn lint:assets:crest` or `./docker.sh run-lint --assets:crest`
+- `yarn lint:assets:fallbacks` or `./docker.sh run-lint --assets:fallbacks`
+- `yarn lint:assets:font-face` or `./docker.sh run-lint --assets:font-face`
+- `yarn lint:assets:fonts` or `./docker.sh run-lint --assets:fonts`
+- `yarn lint:assets:icons` or `./docker.sh run-lint --assets:icons`
+- `yarn lint:assets:marque` or `./docker.sh run-lint --assets:marque`
+- `yarn lint:assets:meta-icons` or `./docker.sh run-lint --assets:meta-icons`
+- `yarn lint:assets:model-signatures` or `./docker.sh run-lint --assets:model-signatures`
+- `yarn lint:component-meta` or `./docker.sh run-lint --component-meta`
+- `yarn lint:components` or `./docker.sh run-lint --components`
+- `yarn lint:components-angular` or `./docker.sh run-lint --components-angular`
+- `yarn lint:components-js` or `./docker.sh run-lint --components-js`
+- `yarn lint:components-js:components-manager-cli` or `./docker.sh run-lint --components-js:components-manager-cli`
+- `yarn lint:components-js:components-manager-core` or `./docker.sh run-lint --components-js:components-manager-core`
+- `yarn lint:components-js:jsdom-polyfill` or `./docker.sh run-lint --components-js:jsdom-polyfill`
+- `yarn lint:components-js:partials` or `./docker.sh run-lint --components-js:partials`
+- `yarn lint:components-react` or `./docker.sh run-lint --components-react`
+- `yarn lint:components-react:nextjs` or `./docker.sh run-lint --components-react:nextjs`
+- `yarn lint:components-react:react-ssr-wrapper` or `./docker.sh run-lint --components-react:react-ssr-wrapper`
+- `yarn lint:components-react:remix` or `./docker.sh run-lint --components-react:remix`
+- `yarn lint:components-react:uxpin-wrapper` or `./docker.sh run-lint --components-react:uxpin-wrapper`
+- `yarn lint:components-vue` or `./docker.sh run-lint --components-vue`
+- `yarn lint:crawler` or `./docker.sh run-lint --crawler`
+- `yarn lint:shared` or `./docker.sh run-lint --shared`
+- `yarn lint:storefront` or `./docker.sh run-lint --storefront`
+- `yarn lint:utilities` or `./docker.sh run-lint --utilities`
+- `yarn lint:utilities:ag-grid` or `./docker.sh run-lint --utilities:ag-grid`
+- `yarn lint:utilities:utilities` or `./docker.sh run-lint --utilities:utilities`
 
 ### All Tests
 

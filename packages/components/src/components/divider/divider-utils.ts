@@ -5,15 +5,15 @@ export const DIVIDER_COLORS_DEPRECATED = [
   'neutral-contrast-low',
 ] as const;
 /** @deprecated */
-export type DividerColorDeprecated = typeof DIVIDER_COLORS_DEPRECATED[number];
+export type DividerColorDeprecated = (typeof DIVIDER_COLORS_DEPRECATED)[number];
 export const DIVIDER_COLORS = [
   'contrast-low',
   'contrast-medium',
   'contrast-high',
   ...DIVIDER_COLORS_DEPRECATED,
 ] as const;
-export type DividerColor = typeof DIVIDER_COLORS[number];
+export type DividerColor = (typeof DIVIDER_COLORS)[number];
 
 export const DIVIDER_DIRECTIONS = ['vertical', 'horizontal'] as const;
-export type DividerDirection = typeof DIVIDER_DIRECTIONS[number];
+export type DividerDirection = (typeof DIVIDER_DIRECTIONS)[number];
 export type DividerOrientation = DividerDirection;

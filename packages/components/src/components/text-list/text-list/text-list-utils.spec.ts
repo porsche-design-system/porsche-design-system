@@ -1,5 +1,10 @@
-import type { TextListType, TextListListType, TextListOrderType } from './text-list-utils';
-import { isListTypeOrdered, isListTypeNumbered } from './text-list-utils';
+import {
+  type TextListType,
+  type TextListListType,
+  type TextListOrderType,
+  isListTypeOrdered,
+  isListTypeNumbered,
+} from './text-list-utils';
 
 describe('isListTypeOrdered()', () => {
   it.each<[TextListType | TextListListType, boolean]>([

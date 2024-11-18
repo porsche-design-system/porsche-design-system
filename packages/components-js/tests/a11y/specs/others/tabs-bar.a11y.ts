@@ -26,7 +26,7 @@ const initTabsBar = (page: Page, opts?: InitOptions) => {
   const { amount = 8, activeTabIndex, size = 'small', isWrapped, otherMarkup = '', tag = 'button' } = opts || {};
 
   const tabAttributes = tag === 'a' ? ' onclick="return false" href="#"' : '';
-  const tabs = Array.from(Array(amount))
+  const tabs = Array.from(new Array(amount))
     .map((_, i) => `<${tag}${tabAttributes}>Tab Button ${i + 1}</${tag}>`)
     .join('');
 

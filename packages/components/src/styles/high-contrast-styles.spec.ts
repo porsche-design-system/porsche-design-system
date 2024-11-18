@@ -1,5 +1,4 @@
-import type { TagName } from '@porsche-design-system/shared';
-import { TAG_NAMES } from '@porsche-design-system/shared';
+import { type TagName, TAG_NAMES } from '@porsche-design-system/shared';
 import { getComponentMeta } from '@porsche-design-system/component-meta';
 import {
   addParentAndSetRequiredProps,
@@ -62,5 +61,8 @@ it.each<TagName>(tagNamesWithJss)('should have only high contrast styles for %s'
     }
     return null;
   });
-  filteredCSS.length && expect(filteredCSS).toMatchSnapshot();
+
+  if (filteredCSS.length) {
+    expect(filteredCSS).toMatchSnapshot();
+  }
 });

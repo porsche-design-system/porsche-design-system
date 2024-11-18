@@ -49,7 +49,7 @@ describe('getScrollActivePosition()', () => {
   it('should return scrollActivePosition = 16 if scrolling to last tab', () => {
     jest.spyOn(scrollerUtils, 'getScrollerElements').mockReturnValue([scrollAreaElement, gradientElement]);
     expect(
-      getScrollActivePosition([{ offsetLeft: 20, offsetWidth: 0 }] as HTMLElement[], 'next', 0, scrollerElement),
+      getScrollActivePosition([{ offsetLeft: 20, offsetWidth: 0 }] as HTMLElement[], 'next', 0, scrollerElement)
     ).toBe(16);
   });
 
@@ -63,15 +63,15 @@ describe('getScrollActivePosition()', () => {
         ] as HTMLElement[],
         'next',
         0,
-        scrollerElement,
-      ),
+        scrollerElement
+      )
     ).toBe(8);
   });
 
   it('should return 0 if direction is "prev" and first tab is set as active', () => {
     jest.spyOn(scrollerUtils, 'getScrollerElements').mockReturnValue([scrollAreaElement, gradientElement]);
     expect(
-      getScrollActivePosition([{ offsetLeft: 0, offsetWidth: 0 }] as HTMLElement[], 'prev', 0, scrollerElement),
+      getScrollActivePosition([{ offsetLeft: 0, offsetWidth: 0 }] as HTMLElement[], 'prev', 0, scrollerElement)
     ).toBe(0);
   });
 
@@ -85,8 +85,8 @@ describe('getScrollActivePosition()', () => {
         ] as HTMLElement[],
         'prev',
         1,
-        scrollerElement,
-      ),
+        scrollerElement
+      )
     ).toBe(41);
   });
 });

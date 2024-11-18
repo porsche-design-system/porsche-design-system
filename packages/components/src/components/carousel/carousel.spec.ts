@@ -1,15 +1,15 @@
-import { Carousel } from './carousel';
-import * as carouselUtils from './carousel-utils';
-import * as breakpointObserverUtils from '../../utils/breakpoint-observer';
-import * as validatePropsUtils from '../../utils/validation/validateProps';
-import * as breakpointCustomizableUtils from '../../utils/breakpoint-customizable';
-import * as breakpointObserverUtilsUtils from '../../utils/breakpoint-observer-utils';
-import * as jsonUtils from '../../utils/json';
 import * as splideModule from '@splidejs/splide';
 import { Splide } from '@splidejs/splide';
-import * as warnIfDeprecatedPropIsUsed from '../../utils/log/warnIfDeprecatedPropIsUsed';
-import * as hasHeading from '../../utils/form/hasHeading';
+import * as breakpointCustomizableUtils from '../../utils/breakpoint-customizable';
+import * as breakpointObserverUtils from '../../utils/breakpoint-observer';
+import * as breakpointObserverUtilsUtils from '../../utils/breakpoint-observer-utils';
 import * as hasDescription from '../../utils/form/hasDescription';
+import * as hasHeading from '../../utils/form/hasHeading';
+import * as jsonUtils from '../../utils/json';
+import * as warnIfDeprecatedPropIsUsed from '../../utils/log/warnIfDeprecatedPropIsUsed';
+import * as validatePropsUtils from '../../utils/validation/validateProps';
+import { Carousel } from './carousel';
+import * as carouselUtils from './carousel-utils';
 
 const splideMock = {
   index: 0,
@@ -513,7 +513,7 @@ describe('updateAmountOfPages()', () => {
     const mathRoundSpy = jest.spyOn(Math, 'round').mockReturnValue(12);
     const component = new Carousel();
     component.slidesPerPage = 1;
-    component['slides'] = Array(2);
+    component['slides'] = new Array(2);
     expect(component['amountOfPages']).toBeUndefined();
 
     component['updateAmountOfPages']();
@@ -532,7 +532,7 @@ describe('updateAmountOfPages()', () => {
     const mathRoundSpy = jest.spyOn(Math, 'round').mockReturnValue(12);
     const component = new Carousel();
     component.slidesPerPage = 'auto';
-    component['slides'] = Array(2);
+    component['slides'] = new Array(2);
     expect(component['amountOfPages']).toBeUndefined();
 
     component['updateAmountOfPages']();
@@ -546,7 +546,7 @@ describe('updateAmountOfPages()', () => {
     jest.spyOn(carouselUtils, 'getAmountOfPages').mockReturnValue(5);
     const spy = jest.spyOn(carouselUtils, 'renderPagination');
     const component = new Carousel();
-    component['slides'] = Array(2);
+    component['slides'] = new Array(2);
     component['splide'] = { index: 1 } as Splide;
 
     component['updateAmountOfPages']();

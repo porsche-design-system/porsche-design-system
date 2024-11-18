@@ -1,5 +1,5 @@
-import * as loggerUtils from './logger';
 import * as helperUtils from './helper';
+import * as loggerUtils from './logger';
 import { warnIfDeprecatedPropValueIsUsed } from './warnIfDeprecatedPropValueIsUsed';
 
 const warningMessage1 =

@@ -5,11 +5,11 @@ describe('observeChildren()', () => {
     observedNodesMap.clear();
   });
 
-  const tick = () => new Promise((resolve) => setTimeout(resolve, 0));
+  const tick = (): Promise<void> => new Promise((resolve) => setTimeout(resolve, 0));
 
   it('should add callback and key to childrenMutationMap', () => {
     const node = document.createElement('input');
-    const callback = () => {};
+    const callback = (): void => {};
 
     observeChildren(node, callback);
     expect(observedNodesMap.size).toBe(1);
@@ -118,9 +118,9 @@ describe('unobserveChildren()', () => {
     const node1 = document.createElement('input');
     const node2 = document.createElement('select');
     const node3 = document.createElement('input');
-    const callback1 = () => {};
-    const callback2 = () => {};
-    const callback3 = () => {};
+    const callback1 = (): void => {};
+    const callback2 = (): void => {};
+    const callback3 = (): void => {};
 
     observeChildren(node1, callback1);
     observeChildren(node2, callback2);

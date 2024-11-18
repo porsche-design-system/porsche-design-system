@@ -1,9 +1,11 @@
-import type { Page, Locator } from '@playwright/test';
+import type { Locator, Page } from '@playwright/test';
 
 export const supportsDeclarativeShadowDOM = async (page: Page): Promise<boolean> => {
   return page.evaluate(
     () =>
+      // biome-ignore lint/suspicious/noPrototypeBuiltins: ok
       HTMLTemplateElement.prototype.hasOwnProperty('shadowRoot') ||
+      // biome-ignore lint/suspicious/noPrototypeBuiltins: ok
       HTMLTemplateElement.prototype.hasOwnProperty('shadowRootMode')
   );
 };

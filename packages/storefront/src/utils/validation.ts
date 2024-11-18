@@ -1,7 +1,6 @@
 import type { Schema } from 'yup';
 import { ValidationError } from 'yup';
 
-/* eslint-disable @typescript-eslint/ban-types */
 export type ValidationBag<T extends object> = {
   data: T;
   errors: Record<keyof T, string>;

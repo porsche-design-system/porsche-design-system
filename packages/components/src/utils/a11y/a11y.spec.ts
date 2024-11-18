@@ -1,12 +1,11 @@
 import * as a11yUtils from './a11y';
-import { parseAndGetAriaAttributes, setAriaAttributes, SetAriaAttributesOptions } from './a11y';
+import { type SetAriaAttributesOptions, parseAndGetAriaAttributes, setAriaAttributes } from './a11y';
 import * as jsonUtils from '../json';
 import * as setAttributeUtils from '../dom/setAttribute';
 import * as removeAttributeUtils from '../dom/removeAttribute';
 import type { AriaAttributes } from '../../types';
-import { TAG_NAMES } from '@porsche-design-system/shared';
+import { type TagName, TAG_NAMES } from '@porsche-design-system/shared';
 import { getComponentMeta } from '@porsche-design-system/component-meta';
-import type { TagName } from '@porsche-design-system/shared';
 import { componentFactory } from '../../test-utils';
 
 describe('setAriaAttributes()', () => {
@@ -104,7 +103,9 @@ describe('parseAndGetAriaAttributes()', () => {
         component.host.shadowRoot.append(document.createElement('i'));
         component['setIconContent']();
       }
-    } catch (e) {}
+    } catch (e) {
+      console.error(e);
+    }
 
     expect(spy).toHaveBeenCalledWith(component['aria']);
   });

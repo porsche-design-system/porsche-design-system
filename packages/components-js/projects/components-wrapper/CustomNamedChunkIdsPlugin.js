@@ -73,6 +73,7 @@ const customGetShortChunkName = (chunk, chunkGraph, context, delimiter, associat
     .map((m) => requestToId(getShortModuleName(m, context, associatedObjectForCache)))
     .map((m) => {
       const chunkName = /p-([a-z-]*)/.exec(m)[1];
+      // biome-ignore lint/suspicious/noConsole: ok
       console.log('Short Chunk Name:', chunkName);
       return chunkName;
     }); // extract component name from something like: porsche-design-system.components_dist_esm_p-banner_entry_js.848dce0f7bfd1fde6bd3.js

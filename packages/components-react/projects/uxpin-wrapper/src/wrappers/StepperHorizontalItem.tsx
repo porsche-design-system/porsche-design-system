@@ -37,7 +37,7 @@ export const StepperHorizontalItem = forwardRef(
     if (props.activeStepIndex !== props.index && props.state === 'current') {
       decoratedProps.state = undefined;
       props.uxpinOnChange(props.state, decoratedProps.state, 'state');
-    } else if (props.activeStepIndex == props.index) {
+    } else if (props.activeStepIndex === props.index) {
       decoratedProps.state = 'current';
       props.uxpinOnChange(props.state, decoratedProps.state, 'state');
     }

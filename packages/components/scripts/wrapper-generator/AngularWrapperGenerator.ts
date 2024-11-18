@@ -1,14 +1,14 @@
+import * as path from 'path';
 import type { TagName } from '@porsche-design-system/shared';
 import { camelCase, pascalCase } from 'latest-change-case';
 import { AbstractWrapperGenerator } from './AbstractWrapperGenerator';
 import type { ExtendedProp } from './DataStructureBuilder';
-import * as path from 'path';
 
 export class AngularWrapperGenerator extends AbstractWrapperGenerator {
   protected packageDir = 'components-angular';
   protected projectDir = 'angular-wrapper';
 
-  // ngc with { enableIvy: false } can't handle index.ts barrel files 🤷‍♂️
+  // ngc with { enableIvy: false } can't handle index.ts barrel files 🤷
   // https://github.com/ng-packagr/ng-packagr/issues/1013#issuecomment-424877378
   protected barrelFileName = 'barrel.ts';
 

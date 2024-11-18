@@ -1,9 +1,9 @@
-import { AgGridReact } from 'ag-grid-react';
+import { AgGridReact, type CustomCellRendererProps } from 'ag-grid-react';
 import { dataAdvanced, type DataAdvanced } from '@porsche-design-system/shared';
 import 'ag-grid-enterprise';
-import { ColDef } from 'ag-grid-enterprise';
+import { type ColDef } from 'ag-grid-community';
 import '@porsche-design-system/components-react/ag-grid/theme.css';
-import { PLinkPure, Theme } from '@porsche-design-system/components-react';
+import { PLinkPure, type Theme } from '@porsche-design-system/components-react';
 
 type ColumnDefs = DataAdvanced & {
   active: boolean;
@@ -11,7 +11,7 @@ type ColumnDefs = DataAdvanced & {
 
 const theme: Theme = 'light';
 
-const ImageUrlRendererer = ({ value }: { value: string }) => {
+const ImageUrlRenderer = ({ value }: CustomCellRendererProps) => {
   return (
     <span
       style={{
@@ -33,7 +33,7 @@ const ImageUrlRendererer = ({ value }: { value: string }) => {
   );
 };
 
-const ButtonRenderer = ({ data }: { data: any }) => {
+const ButtonRenderer = ({ data }: CustomCellRendererProps) => {
   return (
     <span
       style={{
@@ -65,7 +65,7 @@ const columnDefs: ColDef<ColumnDefs>[] = [
   {
     field: 'imageUrl',
     headerName: 'Image',
-    cellRenderer: ImageUrlRendererer,
+    cellRenderer: ImageUrlRenderer,
     editable: false,
     filter: false,
     sortable: false,

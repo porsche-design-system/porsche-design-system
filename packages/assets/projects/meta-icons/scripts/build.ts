@@ -61,7 +61,7 @@ const copyMetaIconsAndBuildIconManifest = (files: string[]): MetaIconsManifest =
 
   const manifest: MetaIconsManifest = {};
 
-  for (let file of files) {
+  for (const file of files) {
     const ext = path.extname(file);
     const sourcePath = path.normalize(file);
     const info = sourcePath.split(/[\/]/g);

@@ -8,7 +8,7 @@ import * as formUtils from '../../utils/form/form-utils';
 
 jest.mock('../../utils/dom');
 
-const mockGetOnlyChildOfKindHTMLElementOrThrow = (input: HTMLInputElement) =>
+const mockGetOnlyChildOfKindHTMLElementOrThrow = (input: HTMLInputElement): any =>
   jest.spyOn(getOnlyChildOfKindHTMLElementOrThrowUtils, 'getOnlyChildOfKindHTMLElementOrThrow').mockReturnValue(input);
 
 describe('componentWillLoad', () => {
@@ -234,7 +234,9 @@ describe('render', () => {
 
     try {
       component.render();
-    } catch {}
+    } catch (e) {
+      console.error(e);
+    }
 
     expect(spy).toHaveBeenCalledWith('123456');
   });

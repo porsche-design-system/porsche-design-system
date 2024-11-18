@@ -1,4 +1,3 @@
-/* eslint-disable prefer-arrow/prefer-arrow-functions */
 import { getTagNameWithoutPrefix, throwException } from '..';
 import { getDirectChildHTMLElement } from '../dom/getDirectChildHTMLElement';
 

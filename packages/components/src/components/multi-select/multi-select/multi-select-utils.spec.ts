@@ -49,7 +49,7 @@ export const generateMultiSelectOptions = (
   }
 ): MultiSelectOption[] => {
   return Array.from(
-    Array(amount),
+    new Array(amount),
     (_, idx) =>
       ({
         value: `Value ${idx}`,
@@ -68,7 +68,7 @@ export const generateMultiSelectOptgroups = (
   }
 ): MultiSelectOptgroup[] => {
   return Array.from(
-    Array(amount),
+    new Array(amount),
     (_, idx) =>
       ({
         label: `Label ${idx}`,

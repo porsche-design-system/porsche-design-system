@@ -1,17 +1,16 @@
 <script setup lang="ts">
-  import { PTextarea, PText, type TextareaInputEventDetail } from '@porsche-design-system/components-vue';
-  import { computed, ref } from 'vue';
+import { PText, PTextarea, type TextareaInputEventDetail } from '@porsche-design-system/components-vue';
+import { computed, ref } from 'vue';
 
-  const value = ref<string>('');
+const value = ref<string>('');
 
-  const onInput = (e: TextareaInputEventDetail) => {
-    console.log(e);
-    value.value = (e.target as HTMLTextAreaElement).value;
-  };
+const onInput = (e: TextareaInputEventDetail) => {
+  value.value = (e.target as HTMLTextAreaElement).value;
+};
 
-  const debugText = computed(() => {
-    return `Value: ${value.value}`;
-  });
+const debugText = computed(() => {
+  return `Value: ${value.value}`;
+});
 </script>
 
 <template>

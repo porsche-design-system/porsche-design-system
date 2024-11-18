@@ -1,9 +1,9 @@
-import typescript from '@rollup/plugin-typescript';
-import copy from 'rollup-plugin-copy';
-import generatePackageJson from 'rollup-plugin-generate-package-json';
 import resolve from '@rollup/plugin-node-resolve';
 import replace from '@rollup/plugin-replace';
+import typescript from '@rollup/plugin-typescript';
 import bin from 'rollup-plugin-bin';
+import copy from 'rollup-plugin-copy';
+import generatePackageJson from 'rollup-plugin-generate-package-json';
 import preserveDirectives from 'rollup-plugin-preserve-directives';
 
 const rootDir = '../..';
@@ -25,6 +25,7 @@ const external = [
   'react/jsx-runtime',
 ];
 
+// biome-ignore lint/correctness/noUnusedVariables: const can be removed?
 const subPackageJsonConfig = {
   baseContents: {
     main: 'index.js',

@@ -221,7 +221,6 @@
 
     async onSubmit(): Promise<void> {
       const isValid = await validateForm(this.bag);
-      console.log('isValid', isValid);
 
       if (!isValid) {
         const input = this.$refs[getFirstErrorKey(this.bag)!] as HTMLElement;

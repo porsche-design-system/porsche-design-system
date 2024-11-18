@@ -1,10 +1,9 @@
-import { type ChangeEvent, useCallback, useState } from 'react';
 import type {
   AccordionUpdateEvent, // using deprecated to verify it is still available
   CarouselUpdateEvent, // using deprecated to verify it is still available
   PaginationUpdateEvent, // using deprecated to verify it is still available
-  TableUpdateEvent, // using deprecated to verify it is still available
   SwitchUpdateEvent, // using deprecated to verify it is still available
+  TableUpdateEvent, // using deprecated to verify it is still available
   TabsBarUpdateEvent, // using deprecated to verify it is still available
   TabsUpdateEvent, // using deprecated to verify it is still available
 } from '@porsche-design-system/components-react';
@@ -24,6 +23,7 @@ import {
   PTabsItem,
   PTextFieldWrapper,
 } from '@porsche-design-system/components-react';
+import { type ChangeEvent, useCallback, useState } from 'react';
 
 export const EventsPage = (): JSX.Element => {
   const [accordionUpdateEventCounter, setAccordionUpdateEventCounter] = useState(0);

@@ -1,70 +1,70 @@
 <script lang="ts" setup>
-  import {
-    PAccordion,
-    PButton,
-    PButtonGroup,
-    PButtonPure,
-    PButtonTile,
-    PCarousel,
-    PCheckboxWrapper,
-    PContentWrapper,
-    PCrest,
-    PDisplay,
-    PDivider,
-    PFieldset,
-    PFieldsetWrapper,
-    PFlex,
-    PFlexItem,
-    PGrid,
-    PGridItem,
-    PHeading,
-    PHeadline,
-    PIcon,
-    PInlineNotification,
-    PLink,
-    PLinkPure,
-    PLinkSocial,
-    PLinkTile,
-    PLinkTileModelSignature,
-    PLinkTileProduct,
-    PMarque,
-    PModelSignature,
-    PMultiSelect,
-    PMultiSelectOption,
-    PorscheDesignSystemProvider,
-    PPagination,
-    PPinCode,
-    PPopover,
-    PRadioButtonWrapper,
-    PScroller,
-    PSegmentedControl,
-    PSegmentedControlItem,
-    PSelect,
-    PSelectOption,
-    PSelectWrapper,
-    PSpinner,
-    PStepperHorizontal,
-    PStepperHorizontalItem,
-    PSwitch,
-    PTable,
-    PTableBody,
-    PTableCell,
-    PTableHead,
-    PTableHeadCell,
-    PTableHeadRow,
-    PTableRow,
-    PTabs,
-    PTabsBar,
-    PTabsItem,
-    PTag,
-    PTagDismissible,
-    PText,
-    PTextareaWrapper,
-    PTextFieldWrapper,
-    PTextList,
-    PTextListItem,
-    PWordmark,
-  } from '@porsche-design-system/components-vue';
+import {
+  PAccordion,
+  PButton,
+  PButtonGroup,
+  PButtonPure,
+  PButtonTile,
+  PCarousel,
+  PCheckboxWrapper,
+  PContentWrapper,
+  PCrest,
+  PDisplay,
+  PDivider,
+  PFieldset,
+  PFieldsetWrapper,
+  PFlex,
+  PFlexItem,
+  PGrid,
+  PGridItem,
+  PHeading,
+  PHeadline,
+  PIcon,
+  PInlineNotification,
+  PLink,
+  PLinkPure,
+  PLinkSocial,
+  PLinkTile,
+  PLinkTileModelSignature,
+  PLinkTileProduct,
+  PMarque,
+  PModelSignature,
+  PMultiSelect,
+  PMultiSelectOption,
+  PPagination,
+  PPinCode,
+  PPopover,
+  PRadioButtonWrapper,
+  PScroller,
+  PSegmentedControl,
+  PSegmentedControlItem,
+  PSelect,
+  PSelectOption,
+  PSelectWrapper,
+  PSpinner,
+  PStepperHorizontal,
+  PStepperHorizontalItem,
+  PSwitch,
+  PTable,
+  PTableBody,
+  PTableCell,
+  PTableHead,
+  PTableHeadCell,
+  PTableHeadRow,
+  PTableRow,
+  PTabs,
+  PTabsBar,
+  PTabsItem,
+  PTag,
+  PTagDismissible,
+  PText,
+  PTextFieldWrapper,
+  PTextList,
+  PTextListItem,
+  PTextareaWrapper,
+  PWordmark,
+  PorscheDesignSystemProvider,
+} from '@porsche-design-system/components-vue';
 </script>
 
 <template>
@@ -382,7 +382,6 @@
       </div>
 
       <div class="playground light" title="should render default link-tile-model-signature">
-        <!-- eslint-disable vue/no-deprecated-slot-attribute -->
         <PLinkTileModelSignature :description="'Default'" :heading="'Some Heading'">
           <img
             alt="Beach"
@@ -393,7 +392,6 @@
           <PLink slot="primary" :href="'#primary'">Some label</PLink>
           <PLink slot="secondary" :href="'#secondary'">Some label</PLink>
         </PLinkTileModelSignature>
-        <!-- eslint-enable vue/no-deprecated-slot-attribute -->
       </div>
 
       <div class="playground light" title="should render default link-tile-product">
@@ -721,7 +719,6 @@
         </div>
 
         <div class="playground light" title="should render default link-tile-model-signature with custom prefix">
-          <!-- eslint-disable vue/no-deprecated-slot-attribute -->
           <PLinkTileModelSignature :description="'Default'" :heading="'Some Heading'">
             <img
               alt="Beach"
@@ -732,7 +729,6 @@
             <PLink slot="primary" :href="'#primary'">Some label</PLink>
             <PLink slot="secondary" :href="'#secondary'">Some label</PLink>
           </PLinkTileModelSignature>
-          <!-- eslint-enable vue/no-deprecated-slot-attribute -->
         </div>
 
         <div class="playground light" title="should render default link-tile-product with custom prefix">

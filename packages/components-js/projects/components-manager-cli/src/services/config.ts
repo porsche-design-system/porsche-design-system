@@ -45,7 +45,7 @@ export async function getConfig(): Promise<ComponentsManagerConfig> {
 
   try {
     fs.statSync(configFilePath);
-  } catch (error) {
+  } catch (_e) {
     console.error(`Config file could not be found.`);
     console.error(`Please ensure that you've created a valid configuration file`);
     console.error(`named "${configFileName}" in the directory you're executing the`);
@@ -60,7 +60,7 @@ export function getProjectPackageJson(): PackageJson {
   const packageJsonPath = path.resolve(getProjectRootPath(), packageJsonFileName);
   try {
     fs.statSync(packageJsonPath);
-  } catch (error) {
+  } catch (_e) {
     console.error(`"${packageJsonFileName}" could not be found.`);
     console.error(`Please ensure that you're executing the cm command in the`);
     console.error(`directory your "${packageJsonFileName}" is in.`);

@@ -7,12 +7,13 @@
   "author": "Dr. Ing. h.c. F. Porsche AG",
   "scripts": {
     "build": "rollup -c rollup.config.js --bundleConfigAsCjs && mv ../../dist/components-wrapper/testing/testing.d.ts ../../dist/components-wrapper/testing/index.d.ts",
+    "lint": "biome lint",
     "test": "yarn test:unit",
     "test:unit": "vitest --config tests/unit/config/vitest.config.ts",
     "clean:build": "rm -rf ../../dist/jsdom-polyfill"
   },
   "dependencies": {
-    "@oddbird/popover-polyfill": "^0.4.3",
+    "@oddbird/popover-polyfill": "^0.5.0",
     "construct-style-sheets-polyfill": "^3.1.0",
     "intersection-observer": "^0.12.2",
     "matchmedia-polyfill": "^0.3.2",
@@ -22,8 +23,8 @@
   },
   "devDependencies": {
     "@porsche-design-system/shared": "0.0.0",
-    "@testing-library/dom": "^10.3.2",
-    "@testing-library/jest-dom": "^6.4.6",
+    "@testing-library/dom": "^10.4.0",
+    "@testing-library/jest-dom": "^6.6.3",
     "@testing-library/user-event": "^14.5.2"
   },
   "volta": {

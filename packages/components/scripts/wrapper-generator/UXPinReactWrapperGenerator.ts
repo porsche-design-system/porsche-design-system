@@ -1,5 +1,5 @@
 import type { TagName } from '@porsche-design-system/shared';
-import { ComponentMeta, getComponentMeta, PropMeta } from '@porsche-design-system/component-meta';
+import { type ComponentMeta, getComponentMeta } from '@porsche-design-system/component-meta';
 import { ReactWrapperGenerator } from './ReactWrapperGenerator';
 import type { ExtendedProp } from './DataStructureBuilder';
 import type { AdditionalFile } from './AbstractWrapperGenerator';
@@ -15,7 +15,7 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
   protected projectDir = 'uxpin-wrapper';
   protected hiddenComponents: TagName[] = [];
 
-  constructor() {
+  public constructor() {
     super();
     this.ignoreComponents = [
       ...this.ignoreComponents,
@@ -115,17 +115,18 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
     }
 
     // add onClick prop for marque, buttons and links, but not button-group
-    else if (!!component.match(/(button|link|marque|stepper-horizontal-item|tag-dismissible|crest)(?!-group)/)) {
+    else if (component.match(/(button|link|marque|stepper-horizontal-item|tag-dismissible|crest)(?!-group)/)) {
       props = addProp(props, 'onClick?: (e: MouseEvent) => void;');
     }
 
     // remove BreakpointCustomizable types since designers can't use JSON
     props = props.replace(/BreakpointCustomizable<(.*)>/g, '$1');
 
-
     // hidden uxpin props which allows updating property from library level in uxpin editor
-    props = addProp(props, '/** @uxpinignoreprop */ \n  uxpinOnChange: (prevValue: any, nextValue: any, propertyName: string) => void;');
-
+    props = addProp(
+      props,
+      '/** @uxpinignoreprop */ \n  uxpinOnChange: (prevValue: any, nextValue: any, propertyName: string) => void;'
+    );
 
     // remove useless props
     if (component === 'p-marque') {
@@ -247,8 +248,8 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
         .replace(/(style: )(getPaddingStyles.+),/, '$1{ ...$2, minWidth: 100, minHeight: 50 },'); // patch inline style
     }
 
-    const removeDestructuredProp = (component: string, prop: string): string => {
-      return component.replace(new RegExp(`('?${prop}'?(?: = [A-z'-]+)?(?:, )?)`, 'g'), '');
+    const removeDestructuredProp = (tagName: string, prop: string): string => {
+      return tagName.replace(new RegExp(`('?${prop}'?(?: = [A-z'-]+)?(?:, )?)`, 'g'), '');
     };
 
     // remove destructured props
@@ -261,32 +262,32 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
 
     if (component === 'p-pin-code') {
       cleanedComponent = cleanedComponent.replace(
-          'useEventCallback(elementRef, \'update\', onUpdate as any);',
-          [
-              'const eventCallback = (e:Event) => {',
-              '       rest.uxpinOnChange(value, (e as CustomEvent<PinCodeUpdateEventDetail>).detail.value, \'value\');',
-              '       if (onUpdate) {',
-              '         onUpdate(e as CustomEvent<PinCodeUpdateEventDetail>);',
-              '       }',
-              '    }',
-              '    useEventCallback(elementRef, \'update\', eventCallback);',
-          ].join('\n')
-      )
+        "useEventCallback(elementRef, 'update', onUpdate as any);",
+        [
+          'const eventCallback = (e:Event) => {',
+          "       rest.uxpinOnChange(value, (e as CustomEvent<PinCodeUpdateEventDetail>).detail.value, 'value');",
+          '       if (onUpdate) {',
+          '         onUpdate(e as CustomEvent<PinCodeUpdateEventDetail>);',
+          '       }',
+          '    }',
+          "    useEventCallback(elementRef, 'update', eventCallback);",
+        ].join('\n')
+      );
     }
 
     if (['p-flyout', 'p-modal', 'p-banner'].includes(component)) {
       cleanedComponent = cleanedComponent.replace(
-          'useEventCallback(elementRef, \'dismiss\', onDismiss as any);',
-          [
-            'const dismissCallback = (e:Event) => {',
-            '       rest.uxpinOnChange(open, false, \'open\');',
-            '       if (onDismiss) {',
-            '         onDismiss(e as CustomEvent<void>);',
-            '       }',
-            '    }',
-            '    useEventCallback(elementRef, \'dismiss\', dismissCallback);',
-          ].join('\n')
-      )
+        "useEventCallback(elementRef, 'dismiss', onDismiss as any);",
+        [
+          'const dismissCallback = (e:Event) => {',
+          "       rest.uxpinOnChange(open, false, 'open');",
+          '       if (onDismiss) {',
+          '         onDismiss(e as CustomEvent<void>);',
+          '       }',
+          '    }',
+          "    useEventCallback(elementRef, 'dismiss', dismissCallback);",
+        ].join('\n')
+      );
     }
 
     // make crest and link-pure anchor if onClick is defined
@@ -422,7 +423,7 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
         children: '<DummyImg uxpId="dummy-img" src="https://designsystem.porsche.com/v3/assets/weekender.webp" />',
       },
       'p-multi-select': {
-        props: { name:'options', label:'Some Label' },
+        props: { name: 'options', label: 'Some Label' },
         children: [
           '<Optgroup uxpId="group-1" label="Some optgroup label 1">',
           ' <MultiSelectOption uxpId="opt-1" value="a">Option A</MultiSelectOption>',
@@ -461,7 +462,7 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
       },
       'p-segmented-control': {
         props: { value: 1 },
-        children: Array.from(Array(3))
+        children: Array.from(new Array(3))
           .map(
             (_, i) =>
               `<SegmentedControlItem uxpId="segmented-control-item-${i + 1}" value="${i + 1}" children="Value ${
@@ -471,11 +472,11 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
           .join(glue),
       },
       'p-select': {
-        props: { name:'options', label:'Some Label', description: 'Some description', value:'a'  },
+        props: { name: 'options', label: 'Some Label', description: 'Some description', value: 'a' },
         children: [
-            '<SelectOption uxpId="opt-1" value="a">Option A</SelectOption>',
-            '<SelectOption uxpId="opt-2" value="b">Option B</SelectOption>',
-            '<SelectOption uxpId="opt-3" value="c">Option C</SelectOption>',
+          '<SelectOption uxpId="opt-1" value="a">Option A</SelectOption>',
+          '<SelectOption uxpId="opt-2" value="b">Option B</SelectOption>',
+          '<SelectOption uxpId="opt-3" value="c">Option C</SelectOption>',
         ].join(glue),
       },
       'p-select-wrapper': {
@@ -515,7 +516,7 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
           ].map(addNestedIndentation),
           '</TableHead>',
           '<TableBody uxpId="table-body">',
-          ...Array.from(Array(3)).map((_, i) =>
+          ...Array.from(new Array(3)).map((_, i) =>
             [
               `<TableRow uxpId="table-row-${i + 1}">`,
               ...[
@@ -532,18 +533,18 @@ export class UXPinReactWrapperGenerator extends ReactWrapperGenerator {
       },
       'p-tabs': {
         props: { activeTabIndex: 0 },
-        children: Array.from(Array(2))
+        children: Array.from(new Array(2))
           .map((_, i) => `<TabsItem label="Tab ${i + 1}" uxpId="tabs-item-${i + 1}" children="Content ${i + 1}" />`)
           .join(glue),
       },
       'p-tabs-bar': {
         props: { activeTabIndex: 0 },
-        children: Array.from(Array(3))
+        children: Array.from(new Array(3))
           .map((_, i) => `<DummyButton uxpId="dummy-button-${i + 1}" children="Tab ${i + 1}" />`)
           .join(glue),
       },
       'p-text-list': {
-        children: Array.from(Array(2))
+        children: Array.from(new Array(2))
           .map((_, i) => `<TextListItem uxpId="text-list-item-${i + 1}" children="Item ${i + 1}" />`)
           .join(glue),
       },
@@ -682,11 +683,13 @@ export default <${formComponentName} ${stringifiedProps} />;
         return `${componentsBasePath}${componentSubDir}${fileName}`;
       })
       .map((path) => `'${path}'`),
-      ...uxpinComponents
-    ].sort((componentA, componentB) => (
+      ...uxpinComponents,
+    ]
+      .sort((componentA, componentB) => (
       componentA.split('/').pop().toLowerCase()
           .localeCompare(componentB.split('/').pop().toLowerCase())
-    )).join(',\n          ');
+    ))
+      .join(',\n          ');
 
 
     const content = `module.exports = {
@@ -714,8 +717,8 @@ export default <${formComponentName} ${stringifiedProps} />;
     webpackConfig: 'webpack.config.js',
   },
   name: 'Porsche Design System',
-  settings: { 
-    useUXPinProps: true, 
+  settings: {
+    useUXPinProps: true,
     useFitToContentAsDefault: true,
     propertyConfigurations: {
       Flyout: {

@@ -1,10 +1,9 @@
 import { type Locator, type Page } from '@playwright/test';
 import type { TagName } from '@porsche-design-system/shared';
-import { ConsumedTagNamesForVersionsAndPrefixes, Properties, TagNameData } from './types';
 import { getPdsTagNamesWithPropertyNames } from './helpers/convert-data-helper';
+import { ConsumedTagNamesForVersionsAndPrefixes, Properties, TagNameData } from './types';
 
 declare global {
-  // eslint-disable-next-line @typescript-eslint/consistent-type-definitions
   interface Document {
     porscheDesignSystem: {
       [key: `${number}.${number}.${number}`]: {
@@ -169,7 +168,7 @@ export const evaluatePage = async (page: Page): Promise<ConsumedTagNamesForVersi
 
     let consumedTagNames = {};
 
-    for (let prefix of prefixes) {
+    for (const prefix of prefixes) {
       const allPdsElementsForPrefix = await getAllPdsElements(allDOMElements, prefix);
 
       consumedTagNames = {

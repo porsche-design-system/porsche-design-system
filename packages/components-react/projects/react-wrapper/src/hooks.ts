@@ -2,9 +2,9 @@
 
 import type { MutableRefObject } from 'react';
 import { useContext, useEffect, useLayoutEffect, useMemo, useRef } from 'react';
+import type { Theme, ToastMessage } from './lib/types';
 import { PorscheDesignSystemContext } from './provider';
 import { getMergedClassName } from './utils';
-import type { Theme, ToastMessage } from './lib/types';
 
 let skipCheck = false;
 
@@ -20,7 +20,7 @@ export const usePrefix = (tagName: string): string => {
   if (process.env.NODE_ENV === 'test' && skipCheck) {
     return tagName;
   } else {
-    const { prefix } = useContext(PorscheDesignSystemContext); // eslint-disable-line react-hooks/rules-of-hooks
+    const { prefix } = useContext(PorscheDesignSystemContext);
 
     if (prefix === undefined) {
       throw new Error('It appears the <PorscheDesignSystemProvider /> is missing. Make sure to wrap your App in it.');
@@ -34,7 +34,7 @@ export const useTheme = (): Theme => {
   if (process.env.NODE_ENV === 'test' && skipCheck) {
     return 'light';
   } else {
-    return useContext(PorscheDesignSystemContext).theme; // eslint-disable-line react-hooks/rules-of-hooks
+    return useContext(PorscheDesignSystemContext).theme;
   }
 };
 
@@ -50,7 +50,7 @@ export const useEventCallback = (
       current.addEventListener(eventName, eventHandler);
       return () => current?.removeEventListener(eventName, eventHandler);
     }
-  }, [eventHandler]); // eslint-disable-line react-hooks/exhaustive-deps
+  }, [eventHandler]);
 };
 
 export const useMergedClass = (ref: MutableRefObject<HTMLElement | undefined>, className?: string) => {
@@ -70,7 +70,7 @@ export const useMergedClass = (ref: MutableRefObject<HTMLElement | undefined>, c
     }
     prevComponentClassName.current = className;
     return newClassName;
-  }, [className]); // eslint-disable-line react-hooks/exhaustive-deps
+  }, [className]);
 };
 
 export const useBrowserLayoutEffect = typeof window !== 'undefined' ? useLayoutEffect : useEffect;

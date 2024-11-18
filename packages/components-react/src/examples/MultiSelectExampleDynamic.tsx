@@ -53,7 +53,7 @@ export const MultiSelectDynamicExamplePage = (): JSX.Element => {
       </button>
 
       <PMultiSelect name="options" label="Some Label" value={selectedValues} onUpdate={onUpdate}>
-        {[...Array(optionCount).keys()].map((idx) => (
+        {[...new Array(optionCount).keys()].map((idx) => (
           <PMultiSelectOption key={idx} value={`${idx + 1}`}>
             Option {idx + 1}
           </PMultiSelectOption>

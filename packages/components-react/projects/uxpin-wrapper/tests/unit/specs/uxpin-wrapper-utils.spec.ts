@@ -1,4 +1,5 @@
 import { partitionProps } from '../../../src/form-utils';
+import { expect, it } from 'vitest';
 
 const input = { a: 1, b: 2, c: 3 };
 

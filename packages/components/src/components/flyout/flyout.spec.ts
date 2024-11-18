@@ -14,15 +14,15 @@ jest.mock('../../utils/dom');
 let component: Flyout;
 
 class MockResizeObserver {
+  public callback: any;
+
   constructor(callback) {
     this.callback = callback;
   }
 
-  public callback: any;
-
-  observe() {}
-  unobserve() {}
-  disconnect() {}
+  observe(): void {}
+  unobserve(): void {}
+  disconnect(): void {}
 }
 
 global.ResizeObserver = MockResizeObserver;

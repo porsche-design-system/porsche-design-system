@@ -74,6 +74,7 @@ function getLibraryHandlerData(version: `${number}.${number}.${number}`): Librar
   const { [version]: libraryHandlerData } = cmData;
 
   if (!libraryHandlerData) {
+    // biome-ignore lint/suspicious/noEmptyBlockStatements: to be refactored
     let readyPromiseResolve: ReadyResolve = () => {};
     const readyPromise: Promise<void> = new Promise((resolve: ReadyResolve) => (readyPromiseResolve = resolve));
 

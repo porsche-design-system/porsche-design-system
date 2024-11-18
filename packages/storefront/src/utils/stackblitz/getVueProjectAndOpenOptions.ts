@@ -1,5 +1,15 @@
-import { devDependencies, dependencies } from '../../../../components-vue/package.json';
+import { initialStyles } from '@/lib/partialResults';
 import { devDependencies as devDependenciesRoot } from '../../../../../package.json';
+import { dependencies as rootDependencies } from '../../../../../package.json';
+import { dependencies, devDependencies } from '../../../../components-vue/package.json';
+import type { PlaygroundDir, StackBlitzProjectDependencies } from '../../models';
+import type {
+  DependencyMap,
+  ExternalDependency,
+  GetStackBlitzProjectAndOpenOptions,
+  SharedImportKey,
+} from '../../utils';
+import { convertMarkup } from '../../utils/formatting';
 import {
   convertImportPaths,
   getExternalDependencies,
@@ -7,15 +17,6 @@ import {
   isStableStorefrontReleaseOrForcedPdsVersion,
   removeSharedImport,
 } from './helper';
-import { convertMarkup } from '../../utils/formatting';
-import type {
-  DependencyMap,
-  GetStackBlitzProjectAndOpenOptions,
-  SharedImportKey,
-  ExternalDependency,
-} from '../../utils';
-import type { PlaygroundDir, StackBlitzProjectDependencies } from '../../models';
-import { initialStyles } from '@/lib/partialResults';
 
 // TODO: this entire puzzle should be refactored into an object-oriented way so that there is a clear and clean structure
 // as well as code flow, similar to our WrapperGenerator
@@ -67,7 +68,7 @@ export const getAppVue = (
   markup: string,
   isExampleMarkup: boolean,
   sharedImportKeys: SharedImportKey[],
-  pdsVersion: string // eslint-disable-line @typescript-eslint/no-unused-vars
+  pdsVersion: string
 ): string => {
   const finalMarkup = isExampleMarkup
     ? extendExampleWithConstantsAndProvider(markup, sharedImportKeys)
@@ -109,15 +110,17 @@ app.mount('#root');
 `;
 };
 
-export const dependencyMap: Partial<DependencyMap<typeof dependencies & typeof devDependencies>> = {
+export const dependencyMap: Partial<
+  DependencyMap<typeof dependencies & typeof devDependencies & typeof rootDependencies>
+> = {
   imask: {
     'vue-imask': dependencies['vue-imask'],
   },
   'ag-grid-community': {
-    'ag-grid-community': devDependencies['ag-grid-community'],
+    'ag-grid-community': rootDependencies['ag-grid-community'],
   },
   'ag-grid-vue3': {
-    'ag-grid-vue3': devDependencies['ag-grid-vue3'],
+    'ag-grid-vue3': rootDependencies['ag-grid-vue3'],
   },
 };
 
@@ -134,7 +137,7 @@ export const getDependencies = (
       : {
           '@porsche-design-system/components-vue': pdsVersion || dependencies['@porsche-design-system/components-vue'],
         }),
-    vue: dependencies['vue'],
+    vue: dependencies.vue,
     ...getExternalDependencies(externalDependencies, dependencyMap),
   };
 };
@@ -143,8 +146,8 @@ export const getDevDependencies = (): StackBlitzProjectDependencies => {
   return {
     '@vitejs/plugin-vue': devDependencies['@vitejs/plugin-vue'],
     '@vitejs/plugin-vue-jsx': devDependencies['@vitejs/plugin-vue-jsx'],
-    typescript: devDependenciesRoot['typescript'],
-    vite: devDependenciesRoot['vite'],
+    typescript: devDependenciesRoot.typescript,
+    vite: devDependenciesRoot.vite,
     'vue-tsc': devDependencies['vue-tsc'],
   };
 };

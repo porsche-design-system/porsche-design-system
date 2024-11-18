@@ -5,7 +5,7 @@ import {
 } from './stepper-horizontal-utils';
 import type { StepperHorizontalItemInternalHTMLProps } from '../stepper-horizontal-item/stepper-horizontal-item-utils';
 import type { Theme } from '../../../types';
-import { StepperHorizontalItem } from '../stepper-horizontal-item/stepper-horizontal-item';
+import type { StepperHorizontalItem } from '../stepper-horizontal-item/stepper-horizontal-item';
 import * as stencilCore from '@stencil/core';
 
 describe('getIndexOfStepWithStateCurrent()', () => {

@@ -26,6 +26,7 @@ declare global {
 /**
  * CM_CONFIG will be provided via webpack
  */
+// biome-ignore lint/style/noVar: to be refactored
 declare var CM_CONFIG: EntryConfig;
 
 /**

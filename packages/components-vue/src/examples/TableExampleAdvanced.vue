@@ -1,37 +1,35 @@
 <script setup lang="ts">
-  import { type DataAdvanced, dataAdvanced, headAdvanced } from '@porsche-design-system/shared';
-  import {
-    PButtonPure,
-    PHeading,
-    PTable,
-    PTableBody,
-    PTableCell,
-    PTableHead,
-    PTableHeadCell,
-    PTableHeadRow,
-    PTableRow,
-    PText,
-    type TableUpdateEventDetail,
-  } from '@porsche-design-system/components-vue';
-  import { ref } from 'vue';
+import {
+  PButtonPure,
+  PHeading,
+  PTable,
+  PTableBody,
+  PTableCell,
+  PTableHead,
+  PTableHeadCell,
+  PTableHeadRow,
+  PTableRow,
+  PText,
+  type TableUpdateEventDetail,
+} from '@porsche-design-system/components-vue';
+import { type DataAdvanced, dataAdvanced, headAdvanced } from '@porsche-design-system/shared';
+import { ref } from 'vue';
 
-  const head = ref(headAdvanced);
-  const data = ref(dataAdvanced);
+const head = ref(headAdvanced);
+const data = ref(dataAdvanced);
 
-  const onUpdate = (e: TableUpdateEventDetail): void => {
-    const { id, direction } = e as TableUpdateEventDetail & { id: keyof DataAdvanced };
-    head.value = head.value.map((item) => ({ ...item, active: false, ...(item.id === id && e) }));
-    data.value = [...data.value].sort((a, b) =>
-      direction === 'asc' ? a[id].localeCompare(b[id]) : b[id].localeCompare(a[id])
-    );
-  };
+const onUpdate = (e: TableUpdateEventDetail): void => {
+  const { id, direction } = e as TableUpdateEventDetail & { id: keyof DataAdvanced };
+  head.value = head.value.map((item) => ({ ...item, active: false, ...(item.id === id && e) }));
+  data.value = [...data.value].sort((a, b) =>
+    direction === 'asc' ? a[id].localeCompare(b[id]) : b[id].localeCompare(a[id])
+  );
+};
 </script>
 
 <template>
   <PTable @update="onUpdate">
-    <!-- eslint-disable vue/no-deprecated-slot-attribute -->
     <PHeading :slot="'caption'" :size="'large'">Some visual caption</PHeading>
-    <!-- eslint-enable -->
     <PTableHead>
       <PTableHeadRow>
         <PTableHeadCell v-for="(item, i) in head" :key="i" :sort="item" :hideLabel="item.hideLabel">

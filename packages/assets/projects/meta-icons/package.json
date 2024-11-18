@@ -19,15 +19,14 @@
     }
   },
   "types": "./dist/index.d.ts",
-  "files": [
-    "./dist/"
-  ],
+  "files": ["./dist/"],
   "author": "Dr. Ing. h.c. F. Porsche AG",
   "homepage": "https://designsystem.porsche.com",
   "scripts": {
     "build": "yarn clean:build && yarn build:meta-icons && yarn build:lib",
     "build:meta-icons": "tsx scripts/build.ts",
     "build:lib": "tsup index.ts --format esm,cjs --dts",
+    "lint": "biome lint",
     "clean:build": "rm -rf ./index.ts && rm -rf ./dist"
   },
   "devDependencies": {

@@ -1,16 +1,17 @@
-import type { Theme } from '@porsche-design-system/styles';
 import type { ThemedColors } from '../src/styles';
 import * as path from 'path';
 import * as fs from 'fs';
-import { themeLight, themeDark } from '@porsche-design-system/styles';
+import { type Theme, themeLight, themeDark } from '@porsche-design-system/styles';
 import tinycolor2 from 'tinycolor2';
 import { pascalCase } from 'latest-change-case';
 
-const darkenColor = (color: string) => tinycolor2(color).darken(12).toHexString().toUpperCase();
-const darkenColorSlightly = (color: string) => tinycolor2(color).darken(6).desaturate(37).toHexString().toUpperCase();
+const darkenColor = (color: string): string => tinycolor2(color).darken(12).toHexString().toUpperCase();
+const darkenColorSlightly = (color: string): string =>
+  tinycolor2(color).darken(6).desaturate(37).toHexString().toUpperCase();
 
-const lightenColor = (color: string) => tinycolor2(color).lighten(12).toHexString().toUpperCase();
-const lightenColorSlightly = (color: string) => tinycolor2(color).lighten(6).desaturate(37).toHexString().toUpperCase();
+const lightenColor = (color: string): string => tinycolor2(color).lighten(12).toHexString().toUpperCase();
+const lightenColorSlightly = (color: string): string =>
+  tinycolor2(color).lighten(6).desaturate(37).toHexString().toUpperCase();
 
 const getStaticThemedColors = (theme: Theme): ThemedColors => {
   const {
@@ -142,6 +143,7 @@ const generateThemesObject = (): void => {
     `$1${content}$2`
   );
   fs.writeFileSync(targetPath, newFileContent);
+
   console.log(`Injected static colors map into '${targetPath}'`);
 };
 

@@ -1,8 +1,8 @@
-import type { TagName } from '@porsche-design-system/shared';
-import * as path from 'path';
 import * as fs from 'fs';
-import { globbySync } from 'globby';
+import * as path from 'path';
 import { isDeprecatedComponent } from '@porsche-design-system/component-meta/src/utils';
+import type { TagName } from '@porsche-design-system/shared';
+import { globbySync } from 'globby';
 
 const ROOT_DIR = path.normalize(__dirname + '/../../');
 const DIST_DIR = path.resolve(ROOT_DIR, 'dist');
@@ -13,19 +13,19 @@ export type ParsedInterface = { [key: string]: string };
 export type IntrinsicElements = { [key in TagName]?: string };
 
 export class InputParser {
-  private static _instance: InputParser;
+  private static instance: InputParser;
 
   private sharedTypes: string = '';
   private rawLocalJSX: string = '';
   private rawComponents: string = '';
   private intrinsicElements: IntrinsicElements = {};
 
-  constructor() {
+  public constructor() {
     this.parseInput();
   }
 
-  public static get Instance() {
-    return this._instance || (this._instance = new this());
+  public static get Instance(): InputParser {
+    return this.instance || (this.instance = new this());
   }
 
   public getSharedTypes(): string {
@@ -44,9 +44,9 @@ export class InputParser {
     const cleanInterface = (input: string): string =>
       input
         .replace(/"(\w+)"(\??:)/g, '$1$2') // clean double quotes around interface/type keys
-        .replace(/    |\t\t/g, '  ') // adjust indentation
-        .replace(/    \*/g, '   *') // adjust indentation before jsdocs
-        .replace(/(  |\t)}$/g, '}') // adjust indentation at closing }
+        .replace(/ {4}|\t\t/g, '  ') // adjust indentation
+        .replace(/ {4}\*/g, '   *') // adjust indentation before jsdocs
+        .replace(/( {2}|\t)}$/g, '}') // adjust indentation at closing }
         .replace(/(\?: \(event: )([a-zA-Z]+)(<[a-zA-Z]+>\))/g, '$1CustomEvent$3'); // remove stencil custom event
     rawLocalJSXInterface = cleanInterface(rawLocalJSXInterface);
 
@@ -68,8 +68,8 @@ export class InputParser {
     const rawInterface = this.getRawComponentInterface(component);
     const cleanedInterface = rawInterface.replace(/\??: (.+?);/g, ": '$1',"); // convert to valid js object
 
-    const parsedInterface: ParsedInterface = eval(`(${cleanedInterface})`);
-    return parsedInterface;
+    // biome-ignore lint/security/noGlobalEval: safe to use here
+    return eval(`(${cleanedInterface})`);
   }
 
   public isPropOptional(component: TagName, propName: string): boolean {
@@ -137,7 +137,7 @@ export class InputParser {
       .replace(/.*interface EventEmitter(\s|\S)*?}\n/, '')
       // remove global declaration of `const ROLLUP_REPLACE_IS_STAGING: string;`, `const ROLLUP_REPLACE_VERSION: string;` and `const ROLLUP_REPLACE_CDN_BASE_URL: string;`
       .replace(
-        /declare global {\n\tconst ROLLUP_REPLACE_IS_STAGING: string;\n\tconst ROLLUP_REPLACE_VERSION: string;\n\tconst ROLLUP_REPLACE_CDN_BASE_URL: string;\n\t\/\/ eslint-disable-next-line @typescript-eslint\/consistent-type-definitions\n\tinterface Document {\n\t\tporscheDesignSystem: PorscheDesignSystem;\n\t}\n}\n/,
+        /declare global {\n\tconst ROLLUP_REPLACE_IS_STAGING: string;\n\tconst ROLLUP_REPLACE_VERSION: string;\n\tconst ROLLUP_REPLACE_CDN_BASE_URL: string;\n\tinterface Document {\n\t\tporscheDesignSystem: PorscheDesignSystem;\n\t}\n}\n/,
         ''
       )
       // remove global declaration of `window.PORSCHE_DESIGN_SYSTEM_CDN` and `window.PORSCHE_DESIGN_SYSTEM_CDN_URL`
@@ -164,6 +164,7 @@ export class InputParser {
     let [, rawIntrinsicElements] = /interface IntrinsicElements ({(?:\n|.)*?})/.exec(rawLocalJSX) || [];
 
     rawIntrinsicElements = rawIntrinsicElements.replace(/ (\w+);/g, " '$1',");
+    // biome-ignore lint/security/noGlobalEval: safe to use here
     this.intrinsicElements = eval(`(${rawIntrinsicElements})`);
 
     console.log(`Found ${Object.keys(this.intrinsicElements).length} intrinsicElements in ${bundleDtsFileName}`);
