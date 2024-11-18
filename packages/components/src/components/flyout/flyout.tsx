@@ -95,7 +95,6 @@ export class Flyout {
   private hasHeader: boolean;
   private hasFooter: boolean;
   private hasSubFooter: boolean;
-  private ariaLabelText: string;
 
   public componentShouldUpdate(newVal: unknown, oldVal: unknown): boolean {
     return hasPropValueChanged(newVal, oldVal);
@@ -154,10 +153,6 @@ export class Flyout {
     this.hasFooter = hasNamedSlot(this.host, 'footer');
     this.hasSubFooter = hasNamedSlot(this.host, 'sub-footer');
 
-    if (this.hasHeader) {
-      this.headerText();
-    }
-
     attachComponentCss(
       this.host,
       getComponentCss,
@@ -189,7 +184,7 @@ export class Flyout {
         onTransitionEnd={(e) => onTransitionEnd(e, this.open, this.motionVisibleEnd, this.motionHiddenEnd, this.dialog)}
         {...parseAndGetAriaAttributes({
           'aria-modal': true,
-          'aria-label': this.ariaLabelText,
+          ...(this.hasHeader && { 'aria-label': getSlotTextContent(this.host, 'header') }),
           ...parseAndGetAriaAttributes(this.aria),
         })}
       >
@@ -231,9 +226,5 @@ export class Flyout {
     }
     // When header slot changes dynamically the resize observer and adopted stylesheet for the CSS custom property --p-flyout-sticky-top has to be updated
     handleUpdateStickyTopCssVar(this.host, this.hasHeader, this.header);
-  };
-
-  private headerText = (): void => {
-    this.ariaLabelText = hasNamedSlot(this.host, 'header') && getSlotTextContent(this.host, 'header');
   };
 }
